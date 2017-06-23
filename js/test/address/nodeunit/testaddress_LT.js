@@ -34,9 +34,9 @@ module.exports.testaddress_LT = {
     },
 
     testParseAddressLTNormal: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("Adelei Mickienei Plento g. 17-2 Ariogala\n60249 Raseiniu r.sav\nLITHUANIA", {locale: 'lt-LT'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Adelei Mickienei Plento g. 17-2 Ariogala");
         test.equal(parsedAddress.locality, "Raseiniu r.sav");
@@ -48,9 +48,9 @@ module.exports.testaddress_LT = {
     },
     
     testParseAddressLTNoZip: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("Adelei Mickienei Plento g. 17-2 Ariogala\nRaseiniu r.sav\nLITHUANIA", {locale: 'lt-LT'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Adelei Mickienei Plento g. 17-2 Ariogala");
         test.equal(parsedAddress.locality, "Raseiniu r.sav");
@@ -62,9 +62,9 @@ module.exports.testaddress_LT = {
     },
     
     testParseAddressLTNoCountry: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("Adelei Mickienei Plento g. 17-2 Ariogala\n60249 Raseiniu r.sav", {locale: 'lt-LT'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Adelei Mickienei Plento g. 17-2 Ariogala");
         test.equal(parsedAddress.locality, "Raseiniu r.sav");
@@ -76,8 +76,8 @@ module.exports.testaddress_LT = {
     },
     
     testParseAddressLTManyLines: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("Adelei Mickienei\nPlento g.\n17-2 Ariogala\n\n60249\n\nRaseiniu r.sav\n\n\nLITHUANIA\n\n\n", {locale: 'lt-LT'});
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Adelei Mickienei, Plento g., 17-2 Ariogala");
         test.equal(parsedAddress.locality, "Raseiniu r.sav");
@@ -89,9 +89,9 @@ module.exports.testaddress_LT = {
     },
     
     testParseAddressLTOneLine: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("Adelei Mickienei , Plento g. , 17-2 Ariogala , 60249 , Raseiniu r.sav , LITHUANIA", {locale: 'lt-LT'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Adelei Mickienei, Plento g., 17-2 Ariogala");
         test.equal(parsedAddress.locality, "Raseiniu r.sav");
@@ -103,9 +103,9 @@ module.exports.testaddress_LT = {
     },
     
     testParseAddressLTSuperfluousWhitespace: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("\t\t\tAdelei Mickienei\t\t\rPlento g.\t\t\r17-2 Ariogala\n\n60249\n\nRaseiniu r.sav\n\t LITHUANIA\n\n\n", {locale: 'lt-LT'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Adelei Mickienei Plento g. 17-2 Ariogala");
         test.equal(parsedAddress.locality, "Raseiniu r.sav");
@@ -117,9 +117,9 @@ module.exports.testaddress_LT = {
     },
     
     testParseAddressLTNoDelimiters: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("Adelei Mickienei Plento g. 17-2 Ariogala 60249 Raseiniu r.sav LITHUANIA", {locale: 'lt-LT'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Adelei Mickienei Plento g. 17-2 Ariogala");
         test.equal(parsedAddress.locality, "Raseiniu r.sav");
@@ -131,11 +131,11 @@ module.exports.testaddress_LT = {
     },
     
     testParseAddressLTFromUS: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("Adelei Mickienei Plento g. 17-2 Ariogala\n60249 Raseiniu r.sav\nLITHUANIA", {locale: 'en-US'});
         
         // the country name is in German because this address is for a contact in a German database
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Adelei Mickienei Plento g. 17-2 Ariogala");
         test.equal(parsedAddress.locality, "Raseiniu r.sav");
@@ -147,7 +147,6 @@ module.exports.testaddress_LT = {
     },
     
     testFormatAddressLT: function(test) {
-        test.expect(1);
         var parsedAddress = new Address({
             streetAddress: "Adelei Mickienei Plento g. 17-2 Ariogala",
             locality: "Raseiniu r.sav",
@@ -158,12 +157,12 @@ module.exports.testaddress_LT = {
         
         var expected = "Adelei Mickienei Plento g. 17-2 Ariogala\n60249 Raseiniu r.sav\nLITHUANIA";
         var formatter = new AddressFmt({locale: 'lt-LT'});
+        test.expect(1);
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     },
     
     testFormatAddressLTFromUS: function(test) {
-        test.expect(1);
         var parsedAddress = new Address({
             streetAddress: "Adelei Mickienei Plento g. 17-2 Ariogala",
             locality: "Raseiniu r.sav",
@@ -174,6 +173,7 @@ module.exports.testaddress_LT = {
         
         var expected = "Adelei Mickienei Plento g. 17-2 Ariogala\n60249 Raseiniu r.sav\nLITHUANIA";
         var formatter = new AddressFmt({locale: 'en-US'});
+        test.expect(1);
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     }

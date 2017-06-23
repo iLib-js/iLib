@@ -32,17 +32,17 @@ module.exports.testcharmap = {
     },
 
     testCharmapConstructor: function(test) {
-        test.expect(1);
         var cm = CharmapFactory();
+        test.expect(1);
         test.ok(typeof(cm) !== "undefined");
         test.done();
     },
     
     testCharmapLoadMap: function(test) {
-        test.expect(3);
         var cm = CharmapFactory({
             name: "ISO-8859-15"
         });
+        test.expect(3);
         test.ok(typeof(cm) !== "undefined");
         test.ok(typeof(cm.map) !== "undefined");
         test.equal(cm.getName(), "ISO-8859-15");
@@ -50,10 +50,10 @@ module.exports.testcharmap = {
     },
     
     testCharmapAlias: function(test) {
-        test.expect(3);
         var cm = CharmapFactory({
             name: "ISO-Latin-9"
         });
+        test.expect(3);
         test.ok(typeof(cm) !== "undefined");
         test.ok(typeof(cm.map) !== "undefined");
         test.equal(cm.getName(), "ISO-8859-15");
@@ -61,10 +61,10 @@ module.exports.testcharmap = {
     },
     
     testCharmapLoadAlgorithmic: function(test) {
-        test.expect(3);
         var cm = CharmapFactory({
             name: "UTF-8"
         });
+        test.expect(3);
         test.ok(typeof(cm) !== "undefined");
         test.ok(typeof(cm.map) === "undefined"); // no map because it's algorithmic
         test.equal(cm.getName(), "UTF-8");

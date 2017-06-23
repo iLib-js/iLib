@@ -37,17 +37,17 @@ module.exports.testdatefmt_am_ET = {
     },
 
     testDateFmtConstructorEmpty_am_ET: function(test) {
-        test.expect(1);
         var fmt = new DateFmt({locale: "am-ET"});
         
+        test.expect(1);
         test.ok(fmt !== null);
         test.done();
     },
     
     
     testDateFmtSimpleShort_am_ET: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({locale: "am-ET", length: "short"});
+        test.expect(2);
         test.ok(fmt !== null);
         
         var date = new EthiopicDate({
@@ -65,8 +65,8 @@ module.exports.testdatefmt_am_ET = {
     },
     
     testDateFmtSimpleMedium_am_ET: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({locale: "am-ET", length: "medium"});
+        test.expect(2);
         test.ok(fmt !== null);
         
         var date = new EthiopicDate({
@@ -84,8 +84,8 @@ module.exports.testdatefmt_am_ET = {
     },
     
     testDateFmtSimpleLong_am_ET: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({locale: "am-ET", length: "long"});
+        test.expect(2);
         test.ok(fmt !== null);
         
         var date = new EthiopicDate({
@@ -103,8 +103,8 @@ module.exports.testdatefmt_am_ET = {
     },
     
     testDateFmtSimpleFull_am_ET: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({locale: "am-ET", length: "full"});
+        test.expect(2);
         test.ok(fmt !== null);
         
         var date = new EthiopicDate({
@@ -122,8 +122,8 @@ module.exports.testdatefmt_am_ET = {
     },
     
     testDateFmtSimpleTimeShort_am_ET: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({locale: "am-ET", length: "short", type: "time"});
+        test.expect(2);
         test.ok(fmt !== null);
         
         var date = new EthiopicDate({
@@ -141,8 +141,8 @@ module.exports.testdatefmt_am_ET = {
     },
     
     testDateFmtSimpleTimeMedium_am_ET: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({locale: "am-ET", length: "medium", type: "time"});
+        test.expect(2);
         test.ok(fmt !== null);
         
         var date = new EthiopicDate({
@@ -160,8 +160,8 @@ module.exports.testdatefmt_am_ET = {
     },
     
     testDateFmtSimpleTimeLong_am_ET: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({locale: "am-ET", timelength: "long", type: "time"});
+        test.expect(2);
         test.ok(fmt !== null);
         
         var date = new EthiopicDate({
@@ -179,8 +179,8 @@ module.exports.testdatefmt_am_ET = {
     },
     
     testDateFmtSimpleTimeFull_am_ET: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({locale: "am-ET", length: "full", type: "time"});
+        test.expect(2);
         test.ok(fmt !== null);
         
         var date = new EthiopicDate({
@@ -198,8 +198,8 @@ module.exports.testdatefmt_am_ET = {
     },
     
     testDateFmtDateTimeSimpleShort_am_ET: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({locale: "am-ET", length: "short", type: "datetime"});
+        test.expect(2);
         test.ok(fmt !== null);
         
         var date = new EthiopicDate({
@@ -217,8 +217,8 @@ module.exports.testdatefmt_am_ET = {
     },
     
     testDateFmtDateTimeSimpleMedium_am_ET: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({locale: "am-ET", length: "medium", type: "datetime"});
+        test.expect(2);
         test.ok(fmt !== null);
         
         var date = new EthiopicDate({
@@ -236,8 +236,8 @@ module.exports.testdatefmt_am_ET = {
     },
     
     testDateFmtDateTimeSimpleLong_am_ET: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({locale: "am-ET", length: "long", type: "datetime"});
+        test.expect(2);
         test.ok(fmt !== null);
         
         var date = new EthiopicDate({
@@ -255,8 +255,8 @@ module.exports.testdatefmt_am_ET = {
     },
     
     testDateFmtDateTimeSimpleFull_am_ET: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({locale: "am-ET", length: "full", type: "datetime"});
+        test.expect(2);
         test.ok(fmt !== null);
         
         var date = new EthiopicDate({
@@ -274,8 +274,8 @@ module.exports.testdatefmt_am_ET = {
     },
     
     testDateFmtjTemplateMorning_am_ET: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({locale: "am-ET", template: "h"});
+        test.expect(2);
         test.ok(fmt !== null);
         
         var date = new EthiopicDate({
@@ -293,8 +293,8 @@ module.exports.testdatefmt_am_ET = {
     },
     
     testDateFmtjjTemplateMorning_am_ET: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({locale: "am-ET", template: "hh"});
+        test.expect(2);
         test.ok(fmt !== null);
         
         var date = new EthiopicDate({
@@ -312,8 +312,8 @@ module.exports.testdatefmt_am_ET = {
     },
     
     testDateFmtjTemplateEvening_am_ET: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({locale: "am-ET", template: "h"});
+        test.expect(2);
         test.ok(fmt !== null);
         
         var date = new EthiopicDate({
@@ -331,8 +331,8 @@ module.exports.testdatefmt_am_ET = {
     },
     
     testDateFmtjjTemplateEvening_am_ET: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({locale: "am-ET", template: "hh"});
+        test.expect(2);
         test.ok(fmt !== null);
         
         var date = new EthiopicDate({
@@ -350,8 +350,8 @@ module.exports.testdatefmt_am_ET = {
     },
     
     testDateFmtjjTemplateTransitionBefore_am_ET: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({locale: "am-ET", template: "hh"});
+        test.expect(2);
         test.ok(fmt !== null);
         
         var date = new EthiopicDate({
@@ -369,8 +369,8 @@ module.exports.testdatefmt_am_ET = {
     },
     
     testDateFmtjjTemplateTransitionAfter_am_ET: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({locale: "am-ET", template: "hh"});
+        test.expect(2);
         test.ok(fmt !== null);
         
         var date = new EthiopicDate({
@@ -388,8 +388,8 @@ module.exports.testdatefmt_am_ET = {
     },
     
     testDateFmtjjTemplateTransitionEveningBefore_am_ET: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({locale: "am-ET", template: "hh"});
+        test.expect(2);
         test.ok(fmt !== null);
         
         var date = new EthiopicDate({
@@ -407,8 +407,8 @@ module.exports.testdatefmt_am_ET = {
     },
     
     testDateFmtjjTemplateTransitionEveningAfter_am_ET: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({locale: "am-ET", template: "hh"});
+        test.expect(2);
         test.ok(fmt !== null);
         
         var date = new EthiopicDate({
@@ -427,8 +427,8 @@ module.exports.testdatefmt_am_ET = {
     
     
     testDateFmtTemplateCalendar_am_ET: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({locale: "am-ET", calendar: "julian", template: "yyyy-MM-dd"});
+        test.expect(2);
         test.ok(fmt !== null);
         
         var date = new JulianDate({
@@ -447,8 +447,8 @@ module.exports.testdatefmt_am_ET = {
     
     
     testDateFmtTemplateCalendarIncompatibleDateType_am_ET: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({locale: "am-ET", calendar: "julian", template: "yyyy-MM-dd HH:mm"});
+        test.expect(2);
         test.ok(fmt !== null);
         
         var date = new EthiopicDate({
@@ -467,8 +467,8 @@ module.exports.testdatefmt_am_ET = {
     },
     
     testDateFmtTemplateClock12SwitchHH_am_ET: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({locale: "am-ET", clock: "12", template: "HH:mm"});
+        test.expect(2);
         test.ok(fmt !== null);
         
         var date = new EthiopicDate({
@@ -486,8 +486,8 @@ module.exports.testdatefmt_am_ET = {
     },
     
     testDateFmtTemplateClock12Switchkk_am_ET: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({locale: "am-ET", clock: "12", template: "kk:mm"});
+        test.expect(2);
         test.ok(fmt !== null);
         
         var date = new EthiopicDate({
@@ -505,8 +505,8 @@ module.exports.testdatefmt_am_ET = {
     },
     
     testDateFmtTemplateClock24Switchhh_am_ET: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({locale: "am-ET", clock: "24", template: "hh:mm"});
+        test.expect(2);
         test.ok(fmt !== null);
         
         var date = new EthiopicDate({
@@ -524,8 +524,8 @@ module.exports.testdatefmt_am_ET = {
     },
     
     testDateFmtTemplateClock24SwitchKK_am_ET: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({locale: "am-ET", clock: "24", template: "KK:mm"});
+        test.expect(2);
         test.ok(fmt !== null);
         
         var date = new EthiopicDate({
@@ -543,8 +543,8 @@ module.exports.testdatefmt_am_ET = {
     },
     
     testDateFmtTemplateNoClockDoNotFollowLocaleDefault12hh_am_ET: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({locale: "am-ET", template: "hh:mm"});
+        test.expect(2);
         test.ok(fmt !== null);
         
         var date = new EthiopicDate({
@@ -562,8 +562,8 @@ module.exports.testdatefmt_am_ET = {
     },
     
     testDateFmtTemplateNoClockDoNotFollowLocaleDefault12KK_am_ET: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({locale: "am-ET", template: "KK:mm"});
+        test.expect(2);
         test.ok(fmt !== null);
         
         var date = new EthiopicDate({
@@ -581,8 +581,8 @@ module.exports.testdatefmt_am_ET = {
     },
     
     testDateFmtTemplateNoClockDoNotFollowLocaleDefault24HH_am_ET: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({locale: "am-ET", template: "HH:mm"});
+        test.expect(2);
         test.ok(fmt !== null);
         
         var date = new EthiopicDate({
@@ -600,8 +600,8 @@ module.exports.testdatefmt_am_ET = {
     },
     
     testDateFmtTemplateNoClockDoNotFollowLocaleDefault24kk_am_ET: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({locale: "am-ET", template: "kk:mm"});
+        test.expect(2);
         test.ok(fmt !== null);
         
         var date = new EthiopicDate({
@@ -620,8 +620,8 @@ module.exports.testdatefmt_am_ET = {
     
     
     testDateFmtTypeDate_am_ET: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({locale: "am-ET", type: "date"});
+        test.expect(2);
         test.ok(fmt !== null);
         
         var date = new EthiopicDate({
@@ -639,8 +639,8 @@ module.exports.testdatefmt_am_ET = {
     },
     
     testDateFmtTypeTime_am_ET: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({locale: "am-ET", type: "time"});
+        test.expect(2);
         test.ok(fmt !== null);
         
         var date = new EthiopicDate({
@@ -658,8 +658,8 @@ module.exports.testdatefmt_am_ET = {
     },
     
     testDateFmtTypeDateTime_am_ET: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({locale: "am-ET", type: "datetime"});
+        test.expect(2);
         test.ok(fmt !== null);
         
         var date = new EthiopicDate({
@@ -678,8 +678,8 @@ module.exports.testdatefmt_am_ET = {
     
     
     testDateFmtShortDateComponentsY_am_ET: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({locale: "am-ET", date: "y"});
+        test.expect(2);
         test.ok(fmt !== null);
         
         var date = new EthiopicDate({
@@ -697,8 +697,8 @@ module.exports.testdatefmt_am_ET = {
     },
     
     testDateFmtShortDateComponentsM_am_ET: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({locale: "am-ET", date: "m"});
+        test.expect(2);
         test.ok(fmt !== null);
         
         var date = new EthiopicDate({
@@ -716,8 +716,8 @@ module.exports.testdatefmt_am_ET = {
     },
     
     testDateFmtShortDateComponentsN_am_ET: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({locale: "am-ET", date: "n"});
+        test.expect(2);
         test.ok(fmt !== null);
         
         var date = new EthiopicDate({
@@ -735,8 +735,8 @@ module.exports.testdatefmt_am_ET = {
     },
     
     testDateFmtShortDateComponentsD: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({locale: "am-ET", date: "d"});
+        test.expect(2);
         test.ok(fmt !== null);
         
         var date = new EthiopicDate({
@@ -754,8 +754,8 @@ module.exports.testdatefmt_am_ET = {
     },
     
     testDateFmtShortDateComponentsDM_am_ET: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({locale: "am-ET", date: "dm"});
+        test.expect(2);
         test.ok(fmt !== null);
         
         var date = new EthiopicDate({
@@ -773,8 +773,8 @@ module.exports.testdatefmt_am_ET = {
     },
     
     testDateFmtShortDateComponentsMY_am_ET: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({locale: "am-ET", date: "my"});
+        test.expect(2);
         test.ok(fmt !== null);
         
         var date = new EthiopicDate({
@@ -792,8 +792,8 @@ module.exports.testdatefmt_am_ET = {
     },
     
     testDateFmtShortDateComponentsDMY_am_ET: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({locale: "am-ET", date: "dmy"});
+        test.expect(2);
         test.ok(fmt !== null);
         
         var date = new EthiopicDate({
@@ -811,8 +811,8 @@ module.exports.testdatefmt_am_ET = {
     },
     
     testDateFmtShortDateComponentsWDM_am_ET: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({locale: "am-ET", date: "wdm"});
+        test.expect(2);
         test.ok(fmt !== null);
         
         var date = new EthiopicDate({
@@ -830,8 +830,8 @@ module.exports.testdatefmt_am_ET = {
     },
     
     testDateFmtShortDateComponentsWDMY_am_ET: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({locale: "am-ET", date: "wdmy"});
+        test.expect(2);
         test.ok(fmt !== null);
         
         var date = new EthiopicDate({
@@ -850,8 +850,8 @@ module.exports.testdatefmt_am_ET = {
     
     
     testDateFmtFullDateComponentsY_am_ET: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({locale: "am-ET", length: "full", date: "y"});
+        test.expect(2);
         test.ok(fmt !== null);
         
         var date = new EthiopicDate({
@@ -869,8 +869,8 @@ module.exports.testdatefmt_am_ET = {
     },
     
     testDateFmtFullDateComponentsM_am_ET: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({locale: "am-ET", length: "full", date: "m"});
+        test.expect(2);
         test.ok(fmt !== null);
         
         var date = new EthiopicDate({
@@ -888,8 +888,8 @@ module.exports.testdatefmt_am_ET = {
     },
     
     testDateFmtFullDateComponentsD: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({locale: "am-ET", length: "full", date: "d"});
+        test.expect(2);
         test.ok(fmt !== null);
         
         var date = new EthiopicDate({
@@ -907,8 +907,8 @@ module.exports.testdatefmt_am_ET = {
     },
     
     testDateFmtFullDateComponentsDM_am_ET: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({locale: "am-ET", length: "full", date: "dm"});
+        test.expect(2);
         test.ok(fmt !== null);
         
         var date = new EthiopicDate({
@@ -926,8 +926,8 @@ module.exports.testdatefmt_am_ET = {
     },
     
     testDateFmtFullDateComponentsMY_am_ET: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({locale: "am-ET", length: "full", date: "my"});
+        test.expect(2);
         test.ok(fmt !== null);
         
         var date = new EthiopicDate({
@@ -945,8 +945,8 @@ module.exports.testdatefmt_am_ET = {
     },
     
     testDateFmtFullDateComponentsDMY_am_ET: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({locale: "am-ET", length: "full", date: "dmy"});
+        test.expect(2);
         test.ok(fmt !== null);
         
         var date = new EthiopicDate({
@@ -964,8 +964,8 @@ module.exports.testdatefmt_am_ET = {
     },
     
     testDateFmtFullDateComponentsWDM_am_ET: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({locale: "am-ET", length: "full", date: "wdm"});
+        test.expect(2);
         test.ok(fmt !== null);
         
         var date = new EthiopicDate({
@@ -983,8 +983,8 @@ module.exports.testdatefmt_am_ET = {
     },
     
     testDateFmtFullDateComponentsWDMY_am_ET: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({locale: "am-ET", length: "full", date: "wdmy"});
+        test.expect(2);
         test.ok(fmt !== null);
         
         var date = new EthiopicDate({
@@ -1003,8 +1003,8 @@ module.exports.testdatefmt_am_ET = {
     
     
     testDateFmtShortTimeComponentsS_am_ET: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({locale: "am-ET", type: "time", time: "s"});
+        test.expect(2);
         test.ok(fmt !== null);
         
         var date = new EthiopicDate({
@@ -1022,8 +1022,8 @@ module.exports.testdatefmt_am_ET = {
     },
     
     testDateFmtShortTimeComponentsM_am_ET: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({locale: "am-ET", type: "time", time: "m"});
+        test.expect(2);
         test.ok(fmt !== null);
         
         var date = new EthiopicDate({
@@ -1041,8 +1041,8 @@ module.exports.testdatefmt_am_ET = {
     },
     
     testDateFmtShortTimeComponentsH_am_ET: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({locale: "am-ET", type: "time", time: "h"});
+        test.expect(2);
         test.ok(fmt !== null);
         
         var date = new EthiopicDate({
@@ -1060,8 +1060,8 @@ module.exports.testdatefmt_am_ET = {
     },
     
     testDateFmtShortTimeComponentsMS_am_ET: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({locale: "am-ET", type: "time", time: "ms"});
+        test.expect(2);
         test.ok(fmt !== null);
         
         var date = new EthiopicDate({
@@ -1079,8 +1079,8 @@ module.exports.testdatefmt_am_ET = {
     },
     
     testDateFmtShortTimeComponentsHM_am_ET: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({locale: "am-ET", type: "time", time: "hm"});
+        test.expect(2);
         test.ok(fmt !== null);
         
         var date = new EthiopicDate({
@@ -1098,8 +1098,8 @@ module.exports.testdatefmt_am_ET = {
     },
     
     testDateFmtShortTimeComponentsHMS_am_ET: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({locale: "am-ET", type: "time", time: "hms"});
+        test.expect(2);
         test.ok(fmt !== null);
         
         var date = new EthiopicDate({
@@ -1117,8 +1117,8 @@ module.exports.testdatefmt_am_ET = {
     },
     
     testDateFmtShortTimeComponentsHMA_am_ET: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({locale: "am-ET", type: "time", time: "hma"});
+        test.expect(2);
         test.ok(fmt !== null);
         
         var date = new EthiopicDate({
@@ -1136,13 +1136,13 @@ module.exports.testdatefmt_am_ET = {
     },
     
     testDateFmtShortTimeComponentsHMZ_am_ET: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({
             locale: "am-ET", 
             type: "time", 
             time: "hmz", 
             timezone: "Africa/Addis_Ababa"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var date = new EthiopicDate({
@@ -1160,13 +1160,13 @@ module.exports.testdatefmt_am_ET = {
     },
     
     testDateFmtShortTimeComponentsHMAZ_am_ET: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({
             locale: "am-ET", 
             type: "time", 
             time: "hmaz", 
             timezone: "Africa/Addis_Ababa"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var date = new EthiopicDate({
@@ -1184,8 +1184,8 @@ module.exports.testdatefmt_am_ET = {
     },
     
     testDateFmtShortTimeComponentsHMSA_am_ET: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({locale: "am-ET", type: "time", time: "hmsa"});
+        test.expect(2);
         test.ok(fmt !== null);
         
         var date = new EthiopicDate({
@@ -1203,13 +1203,13 @@ module.exports.testdatefmt_am_ET = {
     },
     
     testDateFmtShortTimeComponentsHMSZ_am_ET: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({
             locale: "am-ET", 
             type: "time", 
             time: "hmsz", 
             timezone: "Africa/Addis_Ababa"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var date = new EthiopicDate({
@@ -1227,13 +1227,13 @@ module.exports.testdatefmt_am_ET = {
     },
     
     testDateFmtShortTimeComponentsHMSAZ_am_ET: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({
             locale: "am-ET", 
             type: "time", 
             time: "hmsaz", 
             timezone: "Africa/Addis_Ababa"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var date = new EthiopicDate({
@@ -1252,8 +1252,8 @@ module.exports.testdatefmt_am_ET = {
     
     
     testDateFmtFullTimeComponentsS_am_ET: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({locale: "am-ET", type: "time", length: "full", time: "s"});
+        test.expect(2);
         test.ok(fmt !== null);
         
         var date = new EthiopicDate({
@@ -1271,8 +1271,8 @@ module.exports.testdatefmt_am_ET = {
     },
     
     testDateFmtFullTimeComponentsM_am_ET: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({locale: "am-ET", type: "time", length: "full", time: "m"});
+        test.expect(2);
         test.ok(fmt !== null);
         
         var date = new EthiopicDate({
@@ -1290,8 +1290,8 @@ module.exports.testdatefmt_am_ET = {
     },
     
     testDateFmtFullTimeComponentsH_am_ET: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({locale: "am-ET", type: "time", length: "full", time: "h"});
+        test.expect(2);
         test.ok(fmt !== null);
         
         var date = new EthiopicDate({
@@ -1309,8 +1309,8 @@ module.exports.testdatefmt_am_ET = {
     },
     
     testDateFmtFullTimeComponentsMS_am_ET: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({locale: "am-ET", type: "time", length: "full", time: "ms"});
+        test.expect(2);
         test.ok(fmt !== null);
         
         var date = new EthiopicDate({
@@ -1328,8 +1328,8 @@ module.exports.testdatefmt_am_ET = {
     },
     
     testDateFmtFullTimeComponentsHM_am_ET: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({locale: "am-ET", type: "time", length: "full", time: "hm"});
+        test.expect(2);
         test.ok(fmt !== null);
         
         var date = new EthiopicDate({
@@ -1347,8 +1347,8 @@ module.exports.testdatefmt_am_ET = {
     },
     
     testDateFmtFullTimeComponentsHMS_am_ET: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({locale: "am-ET", type: "time", length: "full", time: "hms"});
+        test.expect(2);
         test.ok(fmt !== null);
         
         var date = new EthiopicDate({
@@ -1366,8 +1366,8 @@ module.exports.testdatefmt_am_ET = {
     },
     
     testDateFmtFullTimeComponentsHMA_am_ET: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({locale: "am-ET", type: "time", length: "full", time: "hma"});
+        test.expect(2);
         test.ok(fmt !== null);
         
         var date = new EthiopicDate({
@@ -1385,7 +1385,6 @@ module.exports.testdatefmt_am_ET = {
     },
     
     testDateFmtFullTimeComponentsHMZ_am_ET: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({
             locale: "am-ET", 
             type: "time", 
@@ -1393,6 +1392,7 @@ module.exports.testdatefmt_am_ET = {
             time: "hmz", 
             timezone: "Africa/Addis_Ababa"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var date = new EthiopicDate({
@@ -1410,7 +1410,6 @@ module.exports.testdatefmt_am_ET = {
     },
     
     testDateFmtFullTimeComponentsHMAZ_am_ET: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({
             locale: "am-ET", 
             type: "time", 
@@ -1418,6 +1417,7 @@ module.exports.testdatefmt_am_ET = {
             time: "hmaz", 
             timezone: "Africa/Addis_Ababa"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var date = new EthiopicDate({
@@ -1435,8 +1435,8 @@ module.exports.testdatefmt_am_ET = {
     },
     
     testDateFmtFullTimeComponentsHMSA_am_ET: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({locale: "am-ET", type: "time", length: "full", time: "hmsa"});
+        test.expect(2);
         test.ok(fmt !== null);
         
         var date = new EthiopicDate({
@@ -1454,7 +1454,6 @@ module.exports.testdatefmt_am_ET = {
     },
     
     testDateFmtFullTimeComponentsHMSZ_am_ET: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({
             locale: "am-ET", 
             type: "time", 
@@ -1462,6 +1461,7 @@ module.exports.testdatefmt_am_ET = {
             time: "hmsz", 
             timezone: "Africa/Addis_Ababa"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var date = new EthiopicDate({
@@ -1479,7 +1479,6 @@ module.exports.testdatefmt_am_ET = {
     },
     
     testDateFmtFullTimeComponentsHMSAZ_am_ET: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({
             locale: "am-ET", 
             type: "time", 
@@ -1487,6 +1486,7 @@ module.exports.testdatefmt_am_ET = {
             time: "hmsaz", 
             timezone: "Africa/Addis_Ababa"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var date = new EthiopicDate({
@@ -1504,7 +1504,6 @@ module.exports.testdatefmt_am_ET = {
     },
     
     testDateFmtWithTimeZoneAndNoDST_am_ET: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({
             locale: "am-ET", 
             type: "time", 
@@ -1512,6 +1511,7 @@ module.exports.testdatefmt_am_ET = {
             time: "hmsz", 
             timezone: "Africa/Addis_Ababa"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var date = new EthiopicDate({
@@ -1530,7 +1530,6 @@ module.exports.testdatefmt_am_ET = {
     },
     
     testDateFmtTimeMeridiem0_am_ET: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({
             locale: "am-ET", 
             type: "time", 
@@ -1538,6 +1537,7 @@ module.exports.testdatefmt_am_ET = {
             time: "hma", 
             timezone: "Africa/Addis_Ababa"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var date = new EthiopicDate({
@@ -1555,7 +1555,6 @@ module.exports.testdatefmt_am_ET = {
     },
     
     testDateFmtTimeMeridiem1_am_ET: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({
             locale: "am-ET", 
             type: "time", 
@@ -1563,6 +1562,7 @@ module.exports.testdatefmt_am_ET = {
             time: "hma", 
             timezone: "Africa/Addis_Ababa"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var date = new EthiopicDate({
@@ -1580,7 +1580,6 @@ module.exports.testdatefmt_am_ET = {
     },
     
     testDateFmtTimeMeridiem2_am_ET: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({
             locale: "am-ET", 
             type: "time", 
@@ -1588,6 +1587,7 @@ module.exports.testdatefmt_am_ET = {
             time: "hma", 
             timezone: "Africa/Addis_Ababa"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var date = new EthiopicDate({
@@ -1605,7 +1605,6 @@ module.exports.testdatefmt_am_ET = {
     },
     
     testDateFmtTimeMeridiem3_am_ET: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({
             locale: "am-ET", 
             type: "time", 
@@ -1613,6 +1612,7 @@ module.exports.testdatefmt_am_ET = {
             time: "hma", 
             timezone: "Africa/Addis_Ababa"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var date = new EthiopicDate({
@@ -1630,7 +1630,6 @@ module.exports.testdatefmt_am_ET = {
     },
     
     testDateFmtTimeMeridiem4_am_ET: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({
             locale: "am-ET", 
             type: "time", 
@@ -1638,6 +1637,7 @@ module.exports.testdatefmt_am_ET = {
             time: "hma", 
             timezone: "Africa/Addis_Ababa"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var date = new EthiopicDate({
@@ -1655,8 +1655,8 @@ module.exports.testdatefmt_am_ET = {
     },
     
     testDateFmtFormatRelativeWithinMinuteAfter_am_ET: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({locale: "am-ET", length: "full"});
+        test.expect(2);
         test.ok(fmt !== null);
         
         var reference = new EthiopicDate({
@@ -1683,8 +1683,8 @@ module.exports.testdatefmt_am_ET = {
         test.done();
     },
     testDateFmtFormatRelativeWithinMinuteBefore_am_ET: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({locale: "am-ET", length: "full"});
+        test.expect(2);
         test.ok(fmt !== null);
         
         var reference = new EthiopicDate({
@@ -1711,8 +1711,8 @@ module.exports.testdatefmt_am_ET = {
         test.done();
     },
     testDateFmtFormatRelativeWithinHourAfter_am_ET: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({locale: "am-ET", length: "full"});
+        test.expect(2);
         test.ok(fmt !== null);
         
         var reference = new EthiopicDate({
@@ -1739,8 +1739,8 @@ module.exports.testdatefmt_am_ET = {
         test.done();
     },
     testDateFmtFormatRelativeWithinHourBefore_am_ET: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({locale: "am-ET", length: "full"});
+        test.expect(2);
         test.ok(fmt !== null);
         
         var reference = new EthiopicDate({
@@ -1767,8 +1767,8 @@ module.exports.testdatefmt_am_ET = {
         test.done();
     },
     testDateFmtFormatRelativeWithinDayAfter_am_ET: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({locale: "am-ET", length: "full"});
+        test.expect(2);
         test.ok(fmt !== null);
         
         var reference = new EthiopicDate({
@@ -1795,8 +1795,8 @@ module.exports.testdatefmt_am_ET = {
         test.done();
     },
     testDateFmtFormatRelativeWithinDayBefore_am_ET: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({locale: "am-ET", length: "full"});
+        test.expect(2);
         test.ok(fmt !== null);
         
         var reference = new EthiopicDate({
@@ -1824,8 +1824,8 @@ module.exports.testdatefmt_am_ET = {
     },
     
     testDateFmtFormatRelativeWithinFortnightAfter_am_ET: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({locale: "am-ET", length: "full"});
+        test.expect(2);
         test.ok(fmt !== null);
         
         var reference = new EthiopicDate({
@@ -1852,8 +1852,8 @@ module.exports.testdatefmt_am_ET = {
         test.done();
     },
     testDateFmtFormatRelativeWithinFortnightBefore_am_ET: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({locale: "am-ET", length: "full"});
+        test.expect(2);
         test.ok(fmt !== null);
         
         var reference = new EthiopicDate({
@@ -1881,8 +1881,8 @@ module.exports.testdatefmt_am_ET = {
     },
     
     testDateFmtFormatRelativeWithinQuarterAfter_am_ET: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({locale: "am-ET", length: "full"});
+        test.expect(2);
         test.ok(fmt !== null);
         
         var reference = new EthiopicDate({
@@ -1909,8 +1909,8 @@ module.exports.testdatefmt_am_ET = {
         test.done();
     },
     testDateFmtFormatRelativeWithinQuarterBefore_am_ET: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({locale: "am-ET", length: "full"});
+        test.expect(2);
         test.ok(fmt !== null);
         
         var reference = new EthiopicDate({
@@ -1938,8 +1938,8 @@ module.exports.testdatefmt_am_ET = {
     },
     
     testDateFmtFormatRelativeWithinTwoYearsAfter_am_ET: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({locale: "am-ET", length: "full"});
+        test.expect(2);
         test.ok(fmt !== null);
         
         var reference = new EthiopicDate({
@@ -1966,8 +1966,8 @@ module.exports.testdatefmt_am_ET = {
         test.done();
     },
     testDateFmtFormatRelativeWithinTwoYearsBefore_am_ET: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({locale: "am-ET", length: "full"});
+        test.expect(2);
         test.ok(fmt !== null);
         
         var reference = new EthiopicDate({
@@ -1995,8 +1995,8 @@ module.exports.testdatefmt_am_ET = {
     },
     
     testDateFmtFormatRelativeYearsAfter_am_ET: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({locale: "am-ET", length: "full"});
+        test.expect(2);
         test.ok(fmt !== null);
         
         var reference = new EthiopicDate({
@@ -2023,8 +2023,8 @@ module.exports.testdatefmt_am_ET = {
         test.done();
     },
     testDateFmtFormatRelativeYearsBefore_am_ET: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({locale: "am-ET", length: "full"});
+        test.expect(2);
         test.ok(fmt !== null);
         
         var reference = new EthiopicDate({

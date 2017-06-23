@@ -35,17 +35,17 @@ module.exports.testcharset = {
     },
 
     testCharsetConstructor: function(test) {
-        test.expect(1);
         var cs = new Charset();
     
+        test.expect(1);
         test.ok(cs !== null);
         test.done();
     },
     
     testCharsetConstructorCurrentLocale: function(test) {
-        test.expect(2);
         var cs = new Charset();
     
+        test.expect(2);
         test.ok(cs !== null);
         
         // should be the charset of the current locale
@@ -162,77 +162,76 @@ module.exports.testcharset = {
     },
     
     testCharsetMinCharWidth1: function(test) {
-        test.expect(1);
         var cs = new Charset({name: "Latin1"});
+        test.expect(1);
         test.equal(cs.getMinCharWidth(), 1);
         test.done();
     },
     
     testCharsetMinCharWidth2: function(test) {
-        test.expect(1);
         var cs = new Charset({name: "UCS-2"});
+        test.expect(1);
         test.equal(cs.getMinCharWidth(), 2);
         test.done();
     },
     
     testCharsetMinCharWidthUTF16: function(test) {
-        test.expect(1);
         var cs = new Charset({name: "UTF-16"});
+        test.expect(1);
         test.equal(cs.getMinCharWidth(), 2);
         test.done();
     },
     
     testCharsetMinCharWidthMultibyte: function(test) {
-        test.expect(1);
         var cs = new Charset({name: "EUC-JP"});
+        test.expect(1);
         test.equal(cs.getMinCharWidth(), 1);
         test.done();
     },
     
     testCharsetMaxCharWidth1: function(test) {
-        test.expect(1);
         var cs = new Charset({name: "Latin1"});
+        test.expect(1);
         test.equal(cs.getMaxCharWidth(), 1);
         test.done();
     },
     
     testCharsetMaxCharWidth2: function(test) {
-        test.expect(1);
         var cs = new Charset({name: "UCS-2"});
+        test.expect(1);
         test.equal(cs.getMaxCharWidth(), 2);
         test.done();
     },
     
     testCharsetMaxCharWidthUTF16: function(test) {
-        test.expect(1);
         var cs = new Charset({name: "UTF-16"});
+        test.expect(1);
         test.equal(cs.getMaxCharWidth(), 2);
         test.done();
     },
     
     testCharsetMaxCharWidthMultibyte: function(test) {
-        test.expect(1);
         var cs = new Charset({name: "EUC-JP"});
+        test.expect(1);
         test.equal(cs.getMaxCharWidth(), 3);
         test.done();
     },
     
     testCharsetIsMultibyteTrue: function(test) {
-        test.expect(1);
         var cs = new Charset({name: "Shift_JIS"});
+        test.expect(1);
         test.ok(cs.isMultibyte());
         test.done();
     },
     
     testCharsetIsMultibyteFalse: function(test) {
-        test.expect(1);
         var cs = new Charset({name: "Latin1"});
+        test.expect(1);
         test.ok(!cs.isMultibyte());
         test.done();
     },
     
     testCharsetGetScriptsJP: function(test) {
-        test.expect(1);
         var cs = new Charset({name: "Shift_JIS"});
         var expected = [
             "Latn",
@@ -242,30 +241,31 @@ module.exports.testcharset = {
             "Jpan",
             "Hani"
         ];
+        test.expect(1);
         test.equalIgnoringOrder(cs.getScripts(), expected);
         test.done();
     },
     
     testCharsetGetScriptsEN: function(test) {
-        test.expect(1);
         var cs = new Charset({name: "ISO-Latin-15"});
         var expected = [
             "Latn"
         ];
+        test.expect(1);
         test.equalIgnoringOrder(cs.getScripts(), expected);
         test.done();
     },
     
     testCharsetIsBigEndianUTF16: function(test) {
-        test.expect(1);
         var cs = new Charset({name: "UTF-16"});
+        test.expect(1);
         test.ok(cs.isBigEndian());
         test.done();
     },
     
     testCharsetIsBigEndianUTF16LE: function(test) {
-        test.expect(1);
         var cs = new Charset({name: "UTF-16LE"});
+        test.expect(1);
         test.ok(!cs.isBigEndian());
         test.done();
     }

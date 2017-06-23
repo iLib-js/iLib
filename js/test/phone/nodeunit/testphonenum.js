@@ -26,6 +26,91 @@ if (typeof(PhoneNumber) === "undefined") {
 if (typeof(PhoneHandlerFactory) === "undefined") {
     var PhoneHandlerFactory = require("../.././../lib/PhoneHandlerFactory.js");
 }
+function mockLoader(paths, sync, params, callback) {
+    var data = [];
+    
+    data.push(ilib.data.states); // for the generic, shared stuff
+    data.push(ilib.data.states_US);
+    data.push(ilib.data.states_FR);
+    
+    if (typeof(callback) !== 'undefined') {
+        callback.call(this, data);    
+    }
+    return data;
+}
+
+var lookAheadStates = {
+    "s": [
+        0,
+        0,
+        0,
+        0,
+        {    // 4 -> area
+            "l": 7,
+            "s": [
+                0,
+                0,
+                0,
+                0,
+                0,
+                { // 45 -> area
+                    "l": 7,
+                    "s": [
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        7    // 456 -> area
+                    ]
+                },
+                {  // 46
+                    "s": [
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        { // 465
+                            "s": [
+                                0,
+                                0,
+                                0,
+                                0,
+                                0,
+                                { // 4655
+                                    "s": [
+                                        0,
+                                        0,
+                                        0,
+                                        0,
+                                        0,
+                                        7    // 46555 -> area
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        { // ^
+            "s": [
+                12 // ^0 -> trunk
+            ]
+        }
+    ]
+};
+
 
 if (typeof(ilib) === "undefined") {
     var ilib = require("../../..");
@@ -38,7 +123,6 @@ module.exports.phonenum = {
     },
 
     testNumberMatchFRDepartments1: function(test) {
-        test.expect(1);
         var left = new PhoneNumber({
             iddPrefix: "+",
             countryCode: "590",
@@ -51,21 +135,21 @@ module.exports.phonenum = {
             subscriberNumber: "123456"
         }, {locale: "fr-FR"});
         
+        test.expect(1);
         test.equal(left.compare(right), 100);
         test.done();
     },
     
     testStringsNumberMatchUSIgnoreSomeFields: function(test) {
-        test.expect(2);
         var left = new PhoneNumber('1 (650) 456-7890'),
             right = new PhoneNumber('650-456-7890');
+        test.expect(2);
         test.ok(typeof(left) !== "undefined");
         test.equal(left.compare(right), 100);
         test.done();
     },
     
     testNumberMatchFRDepartments2: function(test) {
-        test.expect(1);
         var left = new PhoneNumber({
             iddPrefix: "+",
             countryCode: "590",
@@ -78,12 +162,12 @@ module.exports.phonenum = {
             subscriberNumber: "123456"
         }, {locale: "fr-FR"});
         
+        test.expect(1);
         test.equal(left.compare(right), 100);
         test.done();
     },
     
     testNumberMatchFRDepartments3: function(test) {
-        test.expect(1);
         var left = new PhoneNumber({
             iddPrefix: "+",
             countryCode: "590",
@@ -96,12 +180,12 @@ module.exports.phonenum = {
             subscriberNumber: "123456"
         }, {locale: "fr-FR"});
         
+        test.expect(1);
         test.equal(left.compare(right), 100);
         test.done();
     },
     
     testNumberMatchFRDepartments1Reverse: function(test) {
-        test.expect(1);
         var left = new PhoneNumber({
             iddPrefix: "+",
             countryCode: "590",
@@ -114,12 +198,12 @@ module.exports.phonenum = {
             subscriberNumber: "123456"
         }, {locale: "fr-FR"});
         
+        test.expect(1);
         test.equal(right.compare(left), 100);
         test.done();
     },
     
     testNumberMatchFRDepartmentsWrongArea: function(test) {
-        test.expect(1);
         var left = new PhoneNumber({
             iddPrefix: "+",
             countryCode: "590",
@@ -132,12 +216,12 @@ module.exports.phonenum = {
             subscriberNumber: "123456"
         }, {locale: "fr-FR"});
         
+        test.expect(1);
         test.equal(left.compare(right), 0);
         test.done();
     },
     
     testNumberMatchFRDepartmentsWrongAreaReverse: function(test) {
-        test.expect(1);
         var left = new PhoneNumber({
             iddPrefix: "+",
             countryCode: "590",
@@ -150,12 +234,12 @@ module.exports.phonenum = {
             subscriberNumber: "123456"
         }, {locale: "fr-FR"});
         
+        test.expect(1);
         test.equal(right.compare(left), 0);
         test.done();
     },
     
     testNumberMatchFRDepartmentsDifferentCountryCodes: function(test) {
-        test.expect(1);
         var left = new PhoneNumber({
             iddPrefix: "+",
             countryCode: "590",
@@ -169,12 +253,12 @@ module.exports.phonenum = {
             subscriberNumber: "123456"
         }, {locale: "fr-FR"});
         
+        test.expect(1);
         test.equal(left.compare(right), 100);
         test.done();
     },
     
     testNumberMatchFRDifferentSN: function(test) {
-        test.expect(1);
         var left = new PhoneNumber({
             iddPrefix: "+",
             countryCode: "590",
@@ -187,12 +271,12 @@ module.exports.phonenum = {
             subscriberNumber: "123454"
         }, {locale: "fr-FR"});
         
+        test.expect(1);
         test.equal(left.compare(right), 0);    
         test.done();
     },
     
     testNumberMatchUSTrunk: function(test) {
-        test.expect(1);
         var left = new PhoneNumber({
             trunkAccess: "1",
             areaCode: "590",
@@ -203,12 +287,12 @@ module.exports.phonenum = {
             subscriberNumber: "1234567"
         }, {locale: "en-US"});
         
+        test.expect(1);
         test.equal(left.compare(right), 100);
         test.done();
     },
     
     testNumberMatchUSTrunkReverse: function(test) {
-        test.expect(1);
         var left = new PhoneNumber({
             trunkAccess: "1",
             areaCode: "590",
@@ -219,12 +303,12 @@ module.exports.phonenum = {
             subscriberNumber: "1234567"
         }, {locale: "en-US"});
         
+        test.expect(1);
         test.equal(right.compare(left), 100);
         test.done();
     },
     
     testNumberMatchUSTrunkDefaultLocale: function(test) {
-        test.expect(1);
         var left = new PhoneNumber({
             trunkAccess: "1",
             areaCode: "590",
@@ -235,12 +319,12 @@ module.exports.phonenum = {
             subscriberNumber: "1234567"
         });
         
+        test.expect(1);
         test.equal(left.compare(right), 100);
         test.done();
     },
     
     testNumberMatchUSTrunkDefaultLocaleReverse: function(test) {
-        test.expect(1);
         var left = new PhoneNumber({
             trunkAccess: "1",
             areaCode: "590",
@@ -251,12 +335,12 @@ module.exports.phonenum = {
             subscriberNumber: "1234567"
         });
         
+        test.expect(1);
         test.equal(right.compare(left), 100);
         test.done();
     },
     
     testNumberMatchUSTrunkWrongLocale: function(test) {
-        test.expect(1);
         var left = new PhoneNumber({
             trunkAccess: "1",
             areaCode: "590",
@@ -267,12 +351,12 @@ module.exports.phonenum = {
             subscriberNumber: "1234567"
         }, {locale: "fr-FR"});
         
+        test.expect(1);
         test.equal(left.compare(right), 100);
         test.done();
     },
     
     testNumberMatchUSTrunkWrongLocaleReverse: function(test) {
-        test.expect(1);
         var left = new PhoneNumber({
             trunkAccess: "1",
             areaCode: "590",
@@ -283,12 +367,12 @@ module.exports.phonenum = {
             subscriberNumber: "1234567"
         }, {locale: "fr-FR"});
         
+        test.expect(1);
         test.equal(right.compare(left), 100);
         test.done();
     },
     
     testNumberMatchUSMissingArea: function(test) {
-        test.expect(1);
         var left = new PhoneNumber({
             trunkAccess: "1",
             areaCode: "590",
@@ -298,12 +382,12 @@ module.exports.phonenum = {
             subscriberNumber: "1234567"
         }, {locale: "en-US"});
         
+        test.expect(1);
         test.equal(left.compare(right), 88);
         test.done();
     },
     
     testNumberMatchUSMissingAreaReverse: function(test) {
-        test.expect(1);
         var left = new PhoneNumber({
             trunkAccess: "1",
             areaCode: "590",
@@ -313,12 +397,12 @@ module.exports.phonenum = {
             subscriberNumber: "1234567"
         }, {locale: "en-US"});
         
+        test.expect(1);
         test.equal(right.compare(left), 88);
         test.done();
     },
     
     testNumberMatchUSDifferentArea: function(test) {
-        test.expect(1);
         var left = new PhoneNumber({
             areaCode: "590",
             subscriberNumber: "1234567"
@@ -328,12 +412,12 @@ module.exports.phonenum = {
             subscriberNumber: "1234567"
         }, {locale: "en-US"});
         
+        test.expect(1);
         test.equal(left.compare(right), 0);
         test.done();
     },
     
     testNumberMatchUSDifferentAreaReverse: function(test) {
-        test.expect(1);
         var left = new PhoneNumber({
             areaCode: "590",
             subscriberNumber: "1234567"
@@ -343,12 +427,12 @@ module.exports.phonenum = {
             subscriberNumber: "1234567"
         }, {locale: "en-US"});
         
+        test.expect(1);
         test.equal(right.compare(left), 0);
         test.done();
     },
     
     testNumberMatchUSCompletelyDifferentCountryCodes: function(test) {
-        test.expect(1);
         // different area codes, where neither is the US
         var left = new PhoneNumber({
             iddPrefix: "+",
@@ -363,12 +447,12 @@ module.exports.phonenum = {
             subscriberNumber: "123456"
         }, {locale: "en-US"});
         
+        test.expect(1);
         test.equal(left.compare(right), 0);
         test.done();
     },
     
     testNumberMatchUSMissingCountryCodeThisCountry: function(test) {
-        test.expect(1);
         // missing area code, where the one that is present is the same as the locale
         var left = new PhoneNumber({
             areaCode: "590",
@@ -381,12 +465,12 @@ module.exports.phonenum = {
             subscriberNumber: "1234567"
         }, {locale: "es-ES"});
         
+        test.expect(1);
         test.equal(left.compare(right), 84);
         test.done();
     },
     
     testNumberMatchUSMissingCountryCodeThisCountryReverse: function(test) {
-        test.expect(1);
         // missing area code, where the one that is present is the same as the locale
         var left = new PhoneNumber({
             areaCode: "590",
@@ -399,12 +483,12 @@ module.exports.phonenum = {
             subscriberNumber: "1234567"
         }, {locale: "es-ES"});
         
+        test.expect(1);
         test.equal(right.compare(left), 84);
         test.done();
     },
     
     testNumberMatchUSMissingCountryCodeOtherCountry: function(test) {
-        test.expect(1);
         // missing area codes, where the one that is present is not the same as the current locale (US)
         var left = new PhoneNumber({
             areaCode: "590",
@@ -417,12 +501,12 @@ module.exports.phonenum = {
             subscriberNumber: "1234567"
         }, {locale: "en-US"});
         
+        test.expect(1);
         test.equal(left.compare(right), 68);
         test.done();
     },
     
     testNumberMatchUSMissingCountryCodeOtherCountryReverse: function(test) {
-        test.expect(1);
         // missing area codes, where the one that is present is not the same as the current locale (US)
         var left = new PhoneNumber({
             areaCode: "590",
@@ -435,12 +519,12 @@ module.exports.phonenum = {
             subscriberNumber: "1234567"
         }, {locale: "en-US"});
         
+        test.expect(1);
         test.equal(right.compare(left), 68);
         test.done();
     },
     
     testNumberMatchITSanMarino: function(test) {
-        test.expect(1);
         var left = new PhoneNumber({
             countryCode: "378",
             trunkAccess: "0",
@@ -453,12 +537,12 @@ module.exports.phonenum = {
             subscriberNumber: "123456"
         }, {locale: "it-IT"});
         
+        test.expect(1);
         test.equal(left.compare(right), 100);
         test.done();
     },
     
     testNumberMatchITSanMarinoReverse: function(test) {
-        test.expect(1);
         var left = new PhoneNumber({
             countryCode: "378",
             trunkAccess: "0",
@@ -471,12 +555,12 @@ module.exports.phonenum = {
             subscriberNumber: "123456"
         }, {locale: "it-IT"});
         
+        test.expect(1);
         test.equal(right.compare(left), 100);
         test.done();
     },
     
     testNumberMatchUSSanMarino: function(test) {
-        test.expect(1);
         var left = new PhoneNumber({
             countryCode: "378",
             trunkAccess: "0",
@@ -490,12 +574,12 @@ module.exports.phonenum = {
         }, {locale: "en-US"});
     
         // only a 100% match if calling from inside of italy
+        test.expect(1);
         test.equal(left.compare(right), 68);
         test.done();
     },
     
     testNumberMatchITSanMarinoWrongArea: function(test) {
-        test.expect(1);
         var left = new PhoneNumber({
             countryCode: "378",
             trunkAccess: "0",
@@ -508,12 +592,12 @@ module.exports.phonenum = {
             subscriberNumber: "123456"
         }, {locale: "it-IT"});
         
+        test.expect(1);
         test.equal(left.compare(right), 0);
         test.done();
     },
     
     testNumberMatchITSanMarinoDifferentCountryCodes: function(test) {
-        test.expect(1);
         var left = new PhoneNumber({
             iddPrefix: "+",
             countryCode: "378",
@@ -529,12 +613,12 @@ module.exports.phonenum = {
             subscriberNumber: "123456"
         }, {locale: "en-US"});
         
+        test.expect(1);
         test.equal(left.compare(right), 100);
         test.done();
     },
     
     testNumberMatchITSanMarinoDifferentCountryCodesReverse: function(test) {
-        test.expect(1);
         var left = new PhoneNumber({
             iddPrefix: "+",
             countryCode: "378",
@@ -550,12 +634,12 @@ module.exports.phonenum = {
             subscriberNumber: "123456"
         }, {locale: "en-US"});
         
+        test.expect(1);
         test.equal(right.compare(left), 100);
         test.done();
     },
     
     testNumberMatchITSanMarinoDifferentCountryCodesDiffAreaCodes: function(test) {
-        test.expect(1);
         var left = new PhoneNumber({
             iddPrefix: "+",
             countryCode: "378",
@@ -571,12 +655,12 @@ module.exports.phonenum = {
             subscriberNumber: "123456"
         }, {locale: "en-US"});
         
+        test.expect(1);
         test.equal(left.compare(right), 0);
         test.done();
     },
     
     testNumberMatchITVaticanCity: function(test) {
-        test.expect(1);
         var left = new PhoneNumber({
             iddPrefix: "+",
             countryCode: "379",
@@ -590,12 +674,12 @@ module.exports.phonenum = {
             subscriberNumber: "69812345"
         }, {locale: "it-IT"});
         
+        test.expect(1);
         test.equal(left.compare(right), 100);
         test.done();
     },
     
     testNumberMatchITVaticanCityReverse: function(test) {
-        test.expect(1);
         var left = new PhoneNumber({
             iddPrefix: "+",
             countryCode: "379",
@@ -609,12 +693,12 @@ module.exports.phonenum = {
             subscriberNumber: "69812345"
         }, {locale: "it-IT"});
         
+        test.expect(1);
         test.equal(right.compare(left), 100);
         test.done();
     },
     
     testNumberMatchITOther: function(test) {
-        test.expect(1);
         var left = new PhoneNumber({
             iddPrefix: "+",
             countryCode: "44",
@@ -628,12 +712,12 @@ module.exports.phonenum = {
             subscriberNumber: "69812345"
         }, {locale: "it-IT"});
         
+        test.expect(1);
         test.equal(left.compare(right), 84);
         test.done();
     },
     
     testNumberMatchITOtherReverse: function(test) {
-        test.expect(1);
         var left = new PhoneNumber({
             iddPrefix: "+",
             countryCode: "44",
@@ -647,12 +731,12 @@ module.exports.phonenum = {
             subscriberNumber: "69812345"
         }, {locale: "it-IT"});
         
+        test.expect(1);
         test.equal(right.compare(left), 84);
         test.done();
     },
     
     testNumberMatchUSDifferentCountryCodesIT: function(test) {
-        test.expect(1);
         // both ways are valid ways to reach the Vatican from abroad
         var left = new PhoneNumber({
             countryCode: "379",
@@ -667,12 +751,12 @@ module.exports.phonenum = {
             subscriberNumber: "69812345"
         }, {locale: "en-US"});
         
+        test.expect(1);
         test.equal(left.compare(right), 100);
         test.done();
     },
     
     testNumberMatchUSDifferentCountryCodesITReverse: function(test) {
-        test.expect(1);
         // both ways are valid ways to reach the Vatican from abroad
         var left = new PhoneNumber({
             countryCode: "379",
@@ -687,12 +771,12 @@ module.exports.phonenum = {
             subscriberNumber: "69812345"
         }, {locale: "en-US"});
         
+        test.expect(1);
         test.equal(right.compare(left), 100);
         test.done();
     },
     
     testNumberMatchUSDifferentCountryCodesFR: function(test) {
-        test.expect(1);
         // both ways are valid ways to reach the departments from abroad
         var left = new PhoneNumber({
             iddPrefix: "+",
@@ -707,12 +791,12 @@ module.exports.phonenum = {
             subscriberNumber: "123456"
         }, {locale: "en-US"});
         
+        test.expect(1);
         test.equal(left.compare(right), 100);
         test.done();
     },
     
     testNumberMatchUSDifferentCountryCodesFRReverse: function(test) {
-        test.expect(1);
         // both ways are valid ways to reach the departments from abroad
         var left = new PhoneNumber({
             iddPrefix: "+",
@@ -727,12 +811,12 @@ module.exports.phonenum = {
             subscriberNumber: "123456"
         }, {locale: "en-US"});
         
+        test.expect(1);
         test.equal(right.compare(left), 100);
         test.done();
     },
     
     testNumberMatchDEMissingExtension: function(test) {
-        test.expect(1);
         var left = new PhoneNumber({
             trunkAccess: "0",
             areaCode: "2203",
@@ -745,12 +829,12 @@ module.exports.phonenum = {
             extension: "789"
         }, {locale: "de-DE"});
         
+        test.expect(1);
         test.equal(left.compare(right), 0);
         test.done();
     },
     
     testNumberMatchDEMissingExtensionReverse: function(test) {
-        test.expect(1);
         var left = new PhoneNumber({
             trunkAccess: "0",
             areaCode: "2203",
@@ -763,12 +847,12 @@ module.exports.phonenum = {
             extension: "789"
         }, {locale: "de-DE"});
         
+        test.expect(1);
         test.equal(right.compare(left), 0);
         test.done();
     },
     
     testNumberMatchDEDifferentExtension: function(test) {
-        test.expect(1);
         var location;
         var left = new PhoneNumber({
             trunkAccess: "0",
@@ -783,12 +867,12 @@ module.exports.phonenum = {
             extension: "789"
         }, {locale: "de-DE"});
         
+        test.expect(1);
         test.equal(left.compare(right), 0);
         test.done();
     },
     
     testNumberMatchUSEverythingDifferent: function(test) {
-        test.expect(1);
         var location;
         var left = new PhoneNumber({
             trunkAccess: "0",
@@ -803,12 +887,12 @@ module.exports.phonenum = {
             subscriberNumber: "7654321"
         }, {locale: "en-US"});
         
+        test.expect(1);
         test.equal(left.compare(right), 0);
         test.done();
     },
     
     testNumberMatchCAUseNanpRules: function(test) {
-        test.expect(1);
         var location;
         var left = new PhoneNumber({
             areaCode: "416",
@@ -820,13 +904,13 @@ module.exports.phonenum = {
             subscriberNumber: "1234567"
         }, {locale: "en-CA"});
         
+        test.expect(1);
         test.equal(left.compare(right), 100);
         test.done();
     },
     
     // for bug NOV-116615
     testNumberMatchMobileVsLDNumber: function(test) {
-        test.expect(1);
         var location;
         var left = new PhoneNumber({
             iddPrefix: "+",
@@ -840,6 +924,7 @@ module.exports.phonenum = {
             subscriberNumber: "345345"
         }, {locale: "en-gb"});
         
+        test.expect(1);
         test.equal(left.compare(right), 0);
         test.done();
     },
@@ -847,7 +932,6 @@ module.exports.phonenum = {
     //for bug NOV-118901
     
     testNumberMatchSG: function(test) {
-        test.expect(1);
         var location;
         var left = new PhoneNumber({
             iddPrefix: "+",
@@ -858,12 +942,12 @@ module.exports.phonenum = {
             subscriberNumber: "93897077"
         }, {locale: "en-SG"});
         
+        test.expect(1);
         test.equal(left.compare(right), 84);
         test.done();
     },
     
     testNumberMatchSGWrongLocale: function(test) {
-        test.expect(1);
         var location;
         var left = new PhoneNumber({
             iddPrefix: "+",
@@ -874,133 +958,133 @@ module.exports.phonenum = {
             subscriberNumber: "93897077"
         }, {locale: "en-US"});
         
+        test.expect(1);
         test.equal(left.compare(right), 68);
         test.done();
     },
     
     testStringsNumberMatchITSanMarinoDifferentCountryCodes: function(test) {
-        test.expect(1);
         var left = new PhoneNumber('+378 0549 123 456', {locale: "en-US"}),
             right = new PhoneNumber('+39 0549 123 456', {locale: "en-US"});
+        test.expect(1);
         test.equal(left.compare(right), 100);
         test.done();
     },
     
     testStringsNumberMatchITSanMarinoMissingCountryCodes: function(test) {
-        test.expect(1);
         var left = new PhoneNumber('+378 0549 123 456', {locale: "it-IT"}),
             right = new PhoneNumber('0549 123 456', {locale: "it-IT"});
+        test.expect(1);
         test.equal(left.compare(right), 100);
         test.done();
     },
     
     testStringsNumberMatchITSanMarinoDifferentCountryCodesDiffAreaCodes: function(test) {
-        test.expect(1);
         var left = new PhoneNumber('+378 0548 123 456', {locale: "en-US"}),
             right = new PhoneNumber('+39 0545 123 456', {locale: "en-US"});
+        test.expect(1);
         test.equal(left.compare(right), 0);
         test.done();
     },
     
     testStringsNumberMatchITOther: function(test) {
-        test.expect(1);
         var left = new PhoneNumber('+39 06 69812345', {locale: "it-IT"}),
             right = new PhoneNumber('06-69812345', {locale: "it-IT"});
+        test.expect(1);
         test.equal(left.compare(right), 84);
         test.done();
     },
     
     testStringsNumberMatchFRDepartments1: function(test) {
-        test.expect(1);
         var left = new PhoneNumber('+590 590 123 456', {locale: "fr-FR"}),
             right = new PhoneNumber('0590 123 456', {locale: "fr-FR"});
+        test.expect(1);
         test.equal(left.compare(right), 100);
         test.done();
     },
     
     testStringsNumberMatchDEMissingExtension: function(test) {
-        test.expect(1);
         var left = new PhoneNumber('02203 123456', {locale: "de-DE"}),
             right = new PhoneNumber('02203 123456-789', {locale: "de-DE"});
+        test.expect(1);
         test.equal(left.compare(right), 0);
         test.done();
     },
     
     testStringsNumberMatchDEDifferentExtension: function(test) {
-        test.expect(1);
         var left = new PhoneNumber('02203/123456-833', {locale: "de-DE"}),
             right = new PhoneNumber('02203 123456-789', {locale: "de-DE"});
+        test.expect(1);
         test.equal(left.compare(right), 0);
         test.done();
     },
     
     testStringsNumberMatchUSIgnoreSomeFieldsReverse: function(test) {
-        test.expect(1);
         var left = new PhoneNumber('650-456-7890', {locale: "en-US"}),
             right = new PhoneNumber('1 (650) 456-7890', {locale: "en-US"});
+        test.expect(1);
         test.equal(left.compare(right), 100);
         test.done();
     },
     
     testStringsNumberMatchITSanMarinoDifferentCountryCodesReverse: function(test) {
-        test.expect(1);
         var left = new PhoneNumber('+39 0549 123 456', {locale: "en-US"}),
             right = new PhoneNumber('+378 0549 123 456', {locale: "en-US"});
+        test.expect(1);
         test.equal(left.compare(right), 100);
         test.done();
     },
     
     testStringsNumberMatchITSanMarinoMissingCountryCodesReverse: function(test) {
-        test.expect(1);
         var left = new PhoneNumber('0549 123 456', {locale: "it-IT"}),
             right = new PhoneNumber('+378 0549 123 456', {locale: "it-IT"});
+        test.expect(1);
         test.equal(left.compare(right), 100);
         test.done();
     },
     
     testStringsNumberMatchITSanMarinoDifferentCountryCodesDiffAreaCodesReverse: function(test) {
-        test.expect(1);
         var left = new PhoneNumber('+39 0545 123 456', {locale: "en-US"}),
             right = new PhoneNumber('+378 0548 123 456', {locale: "en-US"});
+        test.expect(1);
         test.equal(left.compare(right), 0);
         test.done();
     },
     
     testStringsNumberMatchITOtherReverse: function(test) {
-        test.expect(1);
         var left = new PhoneNumber('06-69812345', {locale: "it-IT"}),
             right = new PhoneNumber('+39 06 69812345', {locale: "it-IT"});
+        test.expect(1);
         test.equal(left.compare(right), 84);
         test.done();
     },
     
     testStringsNumberMatchFRDepartments1Reverse: function(test) {
-        test.expect(1);
         var left = new PhoneNumber('0590 123 456', {locale: "fr-FR"}),
             right = new PhoneNumber('+590 590 123 456', {locale: "fr-FR"});
+        test.expect(1);
         test.equal(left.compare(right), 100);
         test.done();
     },
     
     testStringsNumberMatchDEMissingExtensionReverse: function(test) {
-        test.expect(1);
         var left = new PhoneNumber('02203 123456-789', {locale: "de-DE"}),
             right = new PhoneNumber('02203 123456', {locale: "de-DE"});
+        test.expect(1);
         test.equal(left.compare(right), 0);
         test.done();
     },
     
     testStringsNumberMatchDEDifferentExtensionReverse: function(test) {
-        test.expect(1);
         var left = new PhoneNumber('02203 123456-789', {locale: "de-DE"}),
             right = new PhoneNumber('02203/123456-833', {locale: "de-DE"});
+        test.expect(1);
         test.equal(left.compare(right), 0);    
         test.done();
     },
     
     
     testEqualsNotEqual: function(test) {
-        test.expect(1);
         var left = new PhoneNumber({
             iddPrefix: "+",
             countryCode: "590",
@@ -1013,12 +1097,12 @@ module.exports.phonenum = {
             subscriberNumber: "123456"
         }, {locale: "fr-FR"});
         
+        test.expect(1);
         test.ok(!left.equals(right));
         test.done();
     },
     
     testEquals: function(test) {
-        test.expect(1);
         var left = new PhoneNumber({
             iddPrefix: "+",
             countryCode: "590",
@@ -1032,12 +1116,12 @@ module.exports.phonenum = {
             subscriberNumber: "123456"
         }, {locale: "fr-FR"});
         
+        test.expect(1);
         test.ok(left.equals(right));
         test.done();
     },
     
     testEqualsDifferentLocaleOkay: function(test) {
-        test.expect(1);
         var left = new PhoneNumber({
             iddPrefix: "+",
             countryCode: "590",
@@ -1052,12 +1136,12 @@ module.exports.phonenum = {
         }, {locale: "fr-FR"});
         
         // same number because they have the country code
+        test.expect(1);
         test.ok(left.equals(right));    
         test.done();
     },
     
     testEqualsDifferentLocaleNotOkay: function(test) {
-        test.expect(1);
         var left = new PhoneNumber({
             areaCode: "590",
             subscriberNumber: "123456"
@@ -1068,12 +1152,12 @@ module.exports.phonenum = {
         }, {locale: "fr-FR"});
         
         // same local number, but different country
+        test.expect(1);
         test.ok(!left.equals(right));
         test.done();
     },
     
     testEqualsMissingLocaleLeft: function(test) {
-        test.expect(1);
         var left = new PhoneNumber({
             iddPrefix: "+",
             countryCode: "590",
@@ -1087,12 +1171,12 @@ module.exports.phonenum = {
             subscriberNumber: "123456"
         }, {locale: "fr-FR"});
         
+        test.expect(1);
         test.ok(left.equals(right));
         test.done();
     },
     
     testEqualsMissingLocaleRight: function(test) {
-        test.expect(1);
         var left = new PhoneNumber({
             iddPrefix: "+",
             countryCode: "590",
@@ -1106,13 +1190,12 @@ module.exports.phonenum = {
             subscriberNumber: "123456"
         });
         
+        test.expect(1);
         test.ok(left.equals(right));
         test.done();
     },
     
     testEqualsMissingLocaleBoth: function(test) {
-        test.expect(1);
-        test.expect(1);
         var left = new PhoneNumber({
             iddPrefix: "+",
             countryCode: "590",
@@ -1126,30 +1209,16 @@ module.exports.phonenum = {
             subscriberNumber: "123456"
         });
     
-    test.done();
+        test.expect(1);
         test.ok(left.equals(right));
         test.done();
     },
     
-    function mockLoader(paths, sync, params, callback) {
-        var data = [];
-        
-        data.push(ilib.data.states); // for the generic, shared stuff
-        data.push(ilib.data.states_US);
-        data.push(ilib.data.states_FR);
-        
-        if (typeof(callback) !== 'undefined') {
-            callback.call(this, data);    
-        }
-        return data;
-    },
-    
     testPhoneNumLoadLocaleDataSynch: function(test) {
-        test.expect(1);
-        test.expect(1);
         if (ilib.isDynData()) {
             // don't need to test loading on the dynamic load version because we are testing
             // it via all the other tests already.
+        test.done();
             return;
         }
         
@@ -1169,86 +1238,13 @@ module.exports.phonenum = {
         }, {locale: "fr-FR", 
             sync: false});
         
-        test.done();
+        test.expect(1);
         test.equal(left.compare(right), 100);
         test.done();
         ilib.setLoaderCallback(undefined);
     },
     
-    var lookAheadStates = {
-        "s": [
-            0,
-            0,
-            0,
-            0,
-            {    // 4 -> area
-                "l": 7,
-                "s": [
-                    0,
-                    0,
-                    0,
-                    0,
-                    0,
-                    { // 45 -> area
-                        "l": 7,
-                        "s": [
-                            0,
-                            0,
-                            0,
-                            0,
-                            0,
-                            0,
-                            7    // 456 -> area
-                        ]
-                    },
-                    {  // 46
-                        "s": [
-                            0,
-                            0,
-                            0,
-                            0,
-                            0,
-                            { // 465
-                                "s": [
-                                    0,
-                                    0,
-                                    0,
-                                    0,
-                                    0,
-                                    { // 4655
-                                        "s": [
-                                            0,
-                                            0,
-                                            0,
-                                            0,
-                                            0,
-                                            7    // 46555 -> area
-                                        ]
-                                    }
-                                ]
-                            }
-                        ]
-                    }
-                ]
-            },
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            0,
-            { // ^
-                "s": [
-                    12 // ^0 -> trunk
-                ]
-            }
-        ]
-    },
-    
     testPhoneNumLookaheadRoot: function(test) {
-        test.expect(2);
         var left = new PhoneNumber("0", {locale: "XX"});
         
         left.trunkAccess = undefined;
@@ -1263,13 +1259,13 @@ module.exports.phonenum = {
         
         left._parseNumber("^04", regionData, {sync: true});
         
+        test.expect(2);
         test.equal(left.trunkAccess, "0");
         test.equal(left.areaCode, "4");
         test.done();
     },
     
     testPhoneNumLookaheadSubleaf1: function(test) {
-        test.expect(2);
         var left = new PhoneNumber("0", {locale: "XX"});
         
         left.trunkAccess = undefined;
@@ -1284,13 +1280,13 @@ module.exports.phonenum = {
         
         left._parseNumber("^045", regionData, {sync: true});
         
+        test.expect(2);
         test.equal(left.trunkAccess, "0");
         test.equal(left.areaCode, "45");
         test.done();
     },
     
     testPhoneNumLookaheadSubleaf2: function(test) {
-        test.expect(2);
         var left = new PhoneNumber("0", {locale: "XX"});
         
         left.trunkAccess = undefined;
@@ -1305,13 +1301,13 @@ module.exports.phonenum = {
         
         left._parseNumber("^0456", regionData, {sync: true});
         
+        test.expect(2);
         test.equal(left.trunkAccess, "0");
         test.equal(left.areaCode, "456");
         test.done();
     },
     
     testPhoneNumLookaheadSubleaf3: function(test) {
-        test.expect(2);
         var left = new PhoneNumber("0", {locale: "XX"});
         
         left.trunkAccess = undefined;
@@ -1326,13 +1322,13 @@ module.exports.phonenum = {
         
         left._parseNumber("^046555", regionData, {sync: true});
         
+        test.expect(2);
         test.equal(left.trunkAccess, "0");
         test.equal(left.areaCode, "46555");
         test.done();
     },
     
     testPhoneNumLookaheadFallback1: function(test) {
-        test.expect(3);
         var left = new PhoneNumber("0", {locale: "XX"});
         
         left.trunkAccess = undefined;
@@ -1348,6 +1344,7 @@ module.exports.phonenum = {
         
         left._parseNumber("^047", regionData, {sync: true});
         
+        test.expect(3);
         test.equal(left.trunkAccess, "0");
         test.equal(left.areaCode, "4");
         test.equal(left.subscriberNumber, "7");
@@ -1355,7 +1352,6 @@ module.exports.phonenum = {
     },
     
     testPhoneNumLookaheadFallback2: function(test) {
-        test.expect(3);
         var left = new PhoneNumber("0", {locale: "XX"});
         
         left.trunkAccess = undefined;
@@ -1371,6 +1367,7 @@ module.exports.phonenum = {
         
         left._parseNumber("^046", regionData, {sync: true});
         
+        test.expect(3);
         test.equal(left.trunkAccess, "0");
         test.equal(left.areaCode, "4");
         test.equal(left.subscriberNumber, "6");
@@ -1378,7 +1375,6 @@ module.exports.phonenum = {
     },
     
     testPhoneNumLookaheadFallback3: function(test) {
-        test.expect(3);
         var left = new PhoneNumber("0", {locale: "XX"});
         
         left.trunkAccess = undefined;
@@ -1394,6 +1390,7 @@ module.exports.phonenum = {
         
         left._parseNumber("^04655", regionData, {sync: true});
         
+        test.expect(3);
         test.equal(left.trunkAccess, "0");
         test.equal(left.areaCode, "4");
         test.equal(left.subscriberNumber, "655");
@@ -1401,7 +1398,6 @@ module.exports.phonenum = {
     },
     
     testPhoneNumLookaheadFallback4: function(test) {
-        test.expect(3);
         var left = new PhoneNumber("0", {locale: "XX"});
         
         left.trunkAccess = undefined;
@@ -1417,6 +1413,7 @@ module.exports.phonenum = {
         
         left._parseNumber("^0457", regionData, {sync: true});
         
+        test.expect(3);
         test.equal(left.trunkAccess, "0");
         test.equal(left.areaCode, "45");
         test.equal(left.subscriberNumber, "7");
@@ -1424,7 +1421,6 @@ module.exports.phonenum = {
     },
     
     testPhoneNumLookaheadFallback5: function(test) {
-        test.expect(3);
         var left = new PhoneNumber("0", {locale: "XX"});
         
         left.trunkAccess = undefined;
@@ -1440,6 +1436,7 @@ module.exports.phonenum = {
         
         left._parseNumber("^0477", regionData, {sync: true});
         
+        test.expect(3);
         test.equal(left.trunkAccess, "0");
         test.equal(left.areaCode, "4");
         test.equal(left.subscriberNumber, "77");

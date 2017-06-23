@@ -34,9 +34,9 @@ module.exports.testaddress_AU = {
     },
 
     testParseAUAddressNormal: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("Level 5, 48 Pirrama Road,\nPyrmont, NSW 2009\nAustralia", {locale: 'en-AU'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Level 5, 48 Pirrama Road");
         test.equal(parsedAddress.locality, "Pyrmont");
@@ -48,9 +48,9 @@ module.exports.testaddress_AU = {
     },
     
     testParseAUAddressNoZip: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("Canberra Nara Centre,\n1 Constitution Ave\nCanberra City, Australia", {locale: 'en-AU'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Canberra Nara Centre, 1 Constitution Ave");
         test.equal(parsedAddress.locality, "Canberra City");
@@ -62,9 +62,9 @@ module.exports.testaddress_AU = {
     },
     
     testParseAUAddressNoCountry: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("Trevarrick Rd\nSevenhill SA 5453", {locale: 'en-AU'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Trevarrick Rd");
         test.equal(parsedAddress.locality, "Sevenhill");
@@ -76,9 +76,9 @@ module.exports.testaddress_AU = {
     },
     
     testParseAUAddressManyLines: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("Dept of Treasury\nLangton Crs\nParkes\nACT 2600\nAustralia\n\n\n", {locale: 'en-AU'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Dept of Treasury, Langton Crs");
         test.equal(parsedAddress.locality, "Parkes");
@@ -90,9 +90,9 @@ module.exports.testaddress_AU = {
     },
     
     testParseAUAddressOneLine: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("630 Beaufort St, Mt Lawley, WA 6050, Australia", {locale: 'en-AU'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "630 Beaufort St");
         test.equal(parsedAddress.locality, "Mt Lawley");
@@ -104,9 +104,9 @@ module.exports.testaddress_AU = {
     },
     
     testParseAUAddressSuperfluousWhitespace: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("\t\t\tPiccadilly\t\t\r  Lot 6B Spring \r\r\tGully Rd\nPiccadilly \n\t\rSA \r\t\n5151\nAustralia    \n\n\n", {locale: 'en-AU'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Piccadilly Lot 6B Spring Gully Rd");
         test.equal(parsedAddress.locality, "Piccadilly");
@@ -118,9 +118,9 @@ module.exports.testaddress_AU = {
     },
     
     testParseAUAddressNoDelimiters: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("630 Beaufort St Mt Lawley WA 6050 Australia", {locale: 'en-AU'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "630 Beaufort St");
         test.equal(parsedAddress.locality, "Mt Lawley");
@@ -132,11 +132,11 @@ module.exports.testaddress_AU = {
     },
     
     testParseAUAddressFromUS: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("Shp1/ Wanneroo Rd\nLandsdale WA 6065\nAustralia", {locale: 'en-US'});
         
         // the country name is in English because this address is for a contact in a US database
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Shp1/ Wanneroo Rd");
         test.equal(parsedAddress.locality, "Landsdale");
@@ -148,7 +148,6 @@ module.exports.testaddress_AU = {
     },
     
     testFormatAddressAU: function(test) {
-        test.expect(1);
         var parsedAddress = new Address({
             streetAddress: "Shp1/ Wanneroo Rd",
             locality: "Landsdale",
@@ -160,12 +159,12 @@ module.exports.testaddress_AU = {
         
         var expected = "Shp1/ Wanneroo Rd\nLandsdale WA 6065\nAustralia";
         var formatter = new AddressFmt({locale: 'en-AU'});
+        test.expect(1);
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     },
     
     testFormatAddressAUFromUS: function(test) {
-        test.expect(1);
         var parsedAddress = new Address({
             streetAddress: "Shp1/ Wanneroo Rd",
             locality: "Landsdale",
@@ -177,6 +176,7 @@ module.exports.testaddress_AU = {
         
         var expected = "Shp1/ Wanneroo Rd\nLandsdale WA 6065\nAustralia";
         var formatter = new AddressFmt({locale: 'en-US'});
+        test.expect(1);
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     }

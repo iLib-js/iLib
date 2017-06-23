@@ -34,8 +34,8 @@ module.exports.testdatefmtrange_et_EE = {
     },
 
     testDateRngFmtEERangeinDayShort: function(test) {
-        test.expect(2);
         var fmt = new DateRngFmt({locale: "et-EE", length: "short"});
+        test.expect(2);
         test.ok(fmt !== null);
         
         var start = new GregorianDate({
@@ -60,8 +60,8 @@ module.exports.testdatefmtrange_et_EE = {
         test.done();
     },
     testDateRngFmtEERangeinDayMedium: function(test) {
-        test.expect(2);
         var fmt = new DateRngFmt({locale: "et-EE", length: "medium"});
+        test.expect(2);
         test.ok(fmt !== null);
         
         var start = new GregorianDate({
@@ -86,8 +86,8 @@ module.exports.testdatefmtrange_et_EE = {
         test.done();
     },
     testDateRngFmtEERangeinDayLong: function(test) {
-        test.expect(2);
         var fmt = new DateRngFmt({locale: "et-EE", length: "long"});
+        test.expect(2);
         test.ok(fmt !== null);
         
         var start = new GregorianDate({
@@ -112,8 +112,8 @@ module.exports.testdatefmtrange_et_EE = {
         test.done();
     },
     testDateRngFmtEERangeinDayFull: function(test) {
-        test.expect(2);
         var fmt = new DateRngFmt({locale: "et-EE", length: "full"});
+        test.expect(2);
         test.ok(fmt !== null);
         
         var start = new GregorianDate({
@@ -139,8 +139,8 @@ module.exports.testdatefmtrange_et_EE = {
     },
     
     testDateRngFmtEERangeNextDayShort: function(test) {
-        test.expect(2);
         var fmt = new DateRngFmt({locale: "et-EE", length: "short"});
+        test.expect(2);
         test.ok(fmt !== null);
         
         var start = new GregorianDate({
@@ -165,8 +165,8 @@ module.exports.testdatefmtrange_et_EE = {
         test.done();
     },
     testDateRngFmtEERangeNextDayMedium: function(test) {
-        test.expect(2);
         var fmt = new DateRngFmt({locale: "et-EE", length: "medium"});
+        test.expect(2);
         test.ok(fmt !== null);
         
         var start = new GregorianDate({
@@ -191,8 +191,8 @@ module.exports.testdatefmtrange_et_EE = {
         test.done();
     },
     testDateRngFmtEERangeNextDayLong: function(test) {
-        test.expect(2);
         var fmt = new DateRngFmt({locale: "et-EE", length: "long"});
+        test.expect(2);
         test.ok(fmt !== null);
         
         var start = new GregorianDate({
@@ -217,8 +217,8 @@ module.exports.testdatefmtrange_et_EE = {
         test.done();
     },
     testDateRngFmtEERangeNextDayFull: function(test) {
-        test.expect(2);
         var fmt = new DateRngFmt({locale: "et-EE", length: "full"});
+        test.expect(2);
         test.ok(fmt !== null);
         
         var start = new GregorianDate({
@@ -244,8 +244,8 @@ module.exports.testdatefmtrange_et_EE = {
     },
     
     testDateRngFmtEERangeMultiDayShort: function(test) {
-        test.expect(2);
         var fmt = new DateRngFmt({locale: "et-EE", length: "short"});
+        test.expect(2);
         test.ok(fmt !== null);
         
         var start = new GregorianDate({
@@ -270,8 +270,8 @@ module.exports.testdatefmtrange_et_EE = {
         test.done();
     },
     testDateRngFmtEERangeMultiDayMedium: function(test) {
-        test.expect(2);
         var fmt = new DateRngFmt({locale: "et-EE", length: "medium"});
+        test.expect(2);
         test.ok(fmt !== null);
         
         var start = new GregorianDate({
@@ -296,8 +296,8 @@ module.exports.testdatefmtrange_et_EE = {
         test.done();
     },
     testDateRngFmtEERangeMultiDayLong: function(test) {
-        test.expect(2);
         var fmt = new DateRngFmt({locale: "et-EE", length: "long"});
+        test.expect(2);
         test.ok(fmt !== null);
         
         var start = new GregorianDate({
@@ -322,8 +322,8 @@ module.exports.testdatefmtrange_et_EE = {
         test.done();
     },
     testDateRngFmtEERangeMultiDayFull: function(test) {
-        test.expect(2);
         var fmt = new DateRngFmt({locale: "et-EE", length: "full"});
+        test.expect(2);
         test.ok(fmt !== null);
         
         var start = new GregorianDate({
@@ -349,8 +349,8 @@ module.exports.testdatefmtrange_et_EE = {
     },
     
     testDateRngFmtEERangeNextMonthShort: function(test) {
-        test.expect(2);
         var fmt = new DateRngFmt({locale: "et-EE", length: "short"});
+        test.expect(2);
         test.ok(fmt !== null);
         
         var start = new GregorianDate({
@@ -375,8 +375,8 @@ module.exports.testdatefmtrange_et_EE = {
         test.done();
     },
     testDateRngFmtEERangeNextMonthMedium: function(test) {
-        test.expect(2);
         var fmt = new DateRngFmt({locale: "et-EE", length: "medium"});
+        test.expect(2);
         test.ok(fmt !== null);
         
         var start = new GregorianDate({
@@ -401,8 +401,8 @@ module.exports.testdatefmtrange_et_EE = {
         test.done();
     },
     testDateRngFmtEERangeNextMonthLong: function(test) {
-        test.expect(2);
         var fmt = new DateRngFmt({locale: "et-EE", length: "long"});
+        test.expect(2);
         test.ok(fmt !== null);
         
         var start = new GregorianDate({
@@ -427,8 +427,8 @@ module.exports.testdatefmtrange_et_EE = {
         test.done();
     },
     testDateRngFmtEERangeNextMonthFull: function(test) {
-        test.expect(2);
         var fmt = new DateRngFmt({locale: "et-EE", length: "full"});
+        test.expect(2);
         test.ok(fmt !== null);
         
         var start = new GregorianDate({
@@ -454,8 +454,8 @@ module.exports.testdatefmtrange_et_EE = {
     },
     
     testDateRngFmtEERangeNextYearShort: function(test) {
-        test.expect(2);
         var fmt = new DateRngFmt({locale: "et-EE", length: "short"});
+        test.expect(2);
         test.ok(fmt !== null);
         
         var start = new GregorianDate({
@@ -480,8 +480,8 @@ module.exports.testdatefmtrange_et_EE = {
         test.done();
     },
     testDateRngFmtEERangeNextYearMedium: function(test) {
-        test.expect(2);
         var fmt = new DateRngFmt({locale: "et-EE", length: "medium"});
+        test.expect(2);
         test.ok(fmt !== null);
         
         var start = new GregorianDate({
@@ -506,8 +506,8 @@ module.exports.testdatefmtrange_et_EE = {
         test.done();
     },
     testDateRngFmtEERangeNextYearLong: function(test) {
-        test.expect(2);
         var fmt = new DateRngFmt({locale: "et-EE", length: "long"});
+        test.expect(2);
         test.ok(fmt !== null);
         
         var start = new GregorianDate({
@@ -532,8 +532,8 @@ module.exports.testdatefmtrange_et_EE = {
         test.done();
     },
     testDateRngFmtEERangeNextYearFull: function(test) {
-        test.expect(2);
         var fmt = new DateRngFmt({locale: "et-EE", length: "full"});
+        test.expect(2);
         test.ok(fmt !== null);
         
         var start = new GregorianDate({
@@ -559,8 +559,8 @@ module.exports.testdatefmtrange_et_EE = {
     },
     
     testDateRngFmtEERangeMultiYearShort: function(test) {
-        test.expect(2);
         var fmt = new DateRngFmt({locale: "et-EE", length: "short"});
+        test.expect(2);
         test.ok(fmt !== null);
         
         var start = new GregorianDate({
@@ -585,8 +585,8 @@ module.exports.testdatefmtrange_et_EE = {
         test.done();
     },
     testDateRngFmtEERangeMultiYearMedium: function(test) {
-        test.expect(2);
         var fmt = new DateRngFmt({locale: "et-EE", length: "medium"});
+        test.expect(2);
         test.ok(fmt !== null);
         
         var start = new GregorianDate({
@@ -611,8 +611,8 @@ module.exports.testdatefmtrange_et_EE = {
         test.done();
     },
     testDateRngFmtEERangeMultiYearLong: function(test) {
-        test.expect(2);
         var fmt = new DateRngFmt({locale: "et-EE", length: "long"});
+        test.expect(2);
         test.ok(fmt !== null);
         
         var start = new GregorianDate({
@@ -637,8 +637,8 @@ module.exports.testdatefmtrange_et_EE = {
         test.done();
     },
     testDateRngFmtEERangeMultiYearFull: function(test) {
-        test.expect(2);
         var fmt = new DateRngFmt({locale: "et-EE", length: "full"});
+        test.expect(2);
         test.ok(fmt !== null);
         
         var start = new GregorianDate({
@@ -663,8 +663,8 @@ module.exports.testdatefmtrange_et_EE = {
         test.done();
     },
     testDateRngFmtEEManyYearsFull: function(test) {
-        test.expect(2);
         var fmt = new DateRngFmt({locale: "et-EE", length: "full"});
+        test.expect(2);
         test.ok(fmt !== null);
         
         var start = new GregorianDate({

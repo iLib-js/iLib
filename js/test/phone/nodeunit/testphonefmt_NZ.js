@@ -34,7 +34,6 @@ module.exports.phonefmt_NZ = {
     },
 
     testFormatNZStyle0: function(test) {
-        test.expect(1);
         var formatted;
         var parsed = new PhoneNumber({
                 trunkAccess: "0",
@@ -46,6 +45,7 @@ module.exports.phonefmt_NZ = {
         var fmt = new PhoneFmt({locale: "en-NZ", style: "default"});
         formatted = fmt.format(parsed);
         
+        test.expect(1);
         test.equal(formatted, expected);
         test.done();
         
@@ -53,7 +53,6 @@ module.exports.phonefmt_NZ = {
     },
     
     testFormatNZStyle1: function(test) {
-        test.expect(1);
         var formatted;
         var parsed = new PhoneNumber({
                 trunkAccess: "0",
@@ -65,6 +64,7 @@ module.exports.phonefmt_NZ = {
         var fmt = new PhoneFmt({locale: "en-NZ", style: "spaces"});
         formatted = fmt.format(parsed);
         
+        test.expect(1);
         test.equal(formatted, expected);
         test.done();
         
@@ -72,7 +72,6 @@ module.exports.phonefmt_NZ = {
     },
     
     testFormatNZInternational: function(test) {
-        test.expect(1);
         var formatted;
         var parsed = new PhoneNumber({
                 iddPrefix: "+",
@@ -85,6 +84,7 @@ module.exports.phonefmt_NZ = {
         var fmt = new PhoneFmt({locale: "en-NZ", style: "spaces"});
         formatted = fmt.format(parsed);
         
+        test.expect(1);
         test.equal(formatted, expected);
         test.done();
         
@@ -92,7 +92,6 @@ module.exports.phonefmt_NZ = {
     },
     
     testFormatNZInternationalAccessCode: function(test) {
-        test.expect(1);
         var formatted;
         var parsed = new PhoneNumber({
                 iddPrefix: "00",
@@ -105,6 +104,7 @@ module.exports.phonefmt_NZ = {
         var fmt = new PhoneFmt({locale: "en-NZ", style: "default"});
         formatted = fmt.format(parsed);
         
+        test.expect(1);
         test.equal(formatted, expected);
         test.done();
         
@@ -112,7 +112,6 @@ module.exports.phonefmt_NZ = {
     },
     
     testFormatNZLongNumber: function(test) {
-        test.expect(1);
         var formatted;
         var parsed = new PhoneNumber({
                 trunkAccess: "0",
@@ -124,6 +123,7 @@ module.exports.phonefmt_NZ = {
         var fmt = new PhoneFmt({locale: "en-NZ", style: "default"});
         formatted = fmt.format(parsed);
         
+        test.expect(1);
         test.equal(formatted, expected);
         test.done();
         
@@ -132,7 +132,6 @@ module.exports.phonefmt_NZ = {
     
     
     testFormatNZMobile: function(test) {
-        test.expect(1);
         var formatted;
         var parsed = new PhoneNumber({
                 trunkAccess: "0",
@@ -144,6 +143,7 @@ module.exports.phonefmt_NZ = {
         var fmt = new PhoneFmt({locale: "en-NZ", style: "default"});
         formatted = fmt.format(parsed);
         
+        test.expect(1);
         test.equal(formatted, expected);
         test.done();
         
@@ -151,7 +151,6 @@ module.exports.phonefmt_NZ = {
     },
     
     testFormatNZMobileInternational: function(test) {
-        test.expect(1);
         var formatted;
         var parsed = new PhoneNumber({
                 iddPrefix: "+",
@@ -165,6 +164,7 @@ module.exports.phonefmt_NZ = {
         var fmt = new PhoneFmt({locale: "en-NZ", style: "default"});
         formatted = fmt.format(parsed);
         
+        test.expect(1);
         test.equal(formatted, expected);
         test.done();
         
@@ -172,7 +172,6 @@ module.exports.phonefmt_NZ = {
     },
     
     testFormatNZService: function(test) {
-        test.expect(1);
         var formatted;
         var parsed = new PhoneNumber({
                 trunkAccess: "0",
@@ -184,6 +183,7 @@ module.exports.phonefmt_NZ = {
         var fmt = new PhoneFmt({locale: "en-NZ", style: "default"});
         formatted = fmt.format(parsed);
         
+        test.expect(1);
         test.equal(formatted, expected);
         test.done();
         
@@ -191,7 +191,6 @@ module.exports.phonefmt_NZ = {
     },
     
     testFormatNZIEIDD: function(test) {
-        test.expect(1);
         var formatted;
         var parsed = new PhoneNumber({
                 iddPrefix: "+",
@@ -205,6 +204,7 @@ module.exports.phonefmt_NZ = {
         var fmt = new PhoneFmt({locale: "en-NZ", style: "default"});
         formatted = fmt.format(parsed);
         
+        test.expect(1);
         test.equal(formatted, expected);
         test.done();
         
@@ -212,7 +212,6 @@ module.exports.phonefmt_NZ = {
     },
     
     testFormatNZStyle0Partial0: function(test) {
-        test.expect(1);
         var formatted;
         var parsed = new PhoneNumber({
                 trunkAccess: "0"
@@ -222,13 +221,13 @@ module.exports.phonefmt_NZ = {
         var fmt = new PhoneFmt({locale: "en-NZ", style: "default"});
         formatted = fmt.format(parsed, {partial: true});
         
+        test.expect(1);
         test.equal(formatted, expected);
         test.done();
         
         
     },
     testFormatNZStyle0Partial1: function(test) {
-        test.expect(1);
         var formatted;
         var parsed = new PhoneNumber({
                 trunkAccess: "0",
@@ -239,13 +238,13 @@ module.exports.phonefmt_NZ = {
         var fmt = new PhoneFmt({ locale: "en-NZ", style: "default"});
         formatted = fmt.format(parsed, {partial: true});
         
+        test.expect(1);
         test.equal(formatted, expected);
         test.done();
         
         
     },
     testFormatNZStyle0Partial2: function(test) {
-        test.expect(1);
         var formatted;
         var parsed = new PhoneNumber({
                 trunkAccess: "0",
@@ -257,13 +256,13 @@ module.exports.phonefmt_NZ = {
         var fmt = new PhoneFmt({locale: "en-NZ", style: "default"});
         formatted = fmt.format(parsed, {partial: true});
         
+        test.expect(1);
         test.equal(formatted, expected);
         test.done();
         
         
     },
     testFormatNZStyle0Partial3: function(test) {
-        test.expect(1);
         var formatted;
         var parsed = new PhoneNumber({
                 trunkAccess: "0",
@@ -275,13 +274,13 @@ module.exports.phonefmt_NZ = {
         var fmt = new PhoneFmt({locale: "en-NZ", style: "default"});
         formatted = fmt.format(parsed, {partial: true});
         
+        test.expect(1);
         test.equal(formatted, expected);
         test.done();
         
         
     },
     testFormatNZStyle0Partial4: function(test) {
-        test.expect(1);
         var formatted;
         var parsed = new PhoneNumber({
                 trunkAccess: "0",
@@ -293,13 +292,13 @@ module.exports.phonefmt_NZ = {
         var fmt = new PhoneFmt({locale: "en-NZ", style: "default"});
         formatted = fmt.format(parsed, {partial: true});
         
+        test.expect(1);
         test.equal(formatted, expected);
         test.done();
         
         
     },
     testFormatNZStyle0Partial5: function(test) {
-        test.expect(1);
         var formatted;
         var parsed = new PhoneNumber({
                 trunkAccess: "0",
@@ -311,13 +310,13 @@ module.exports.phonefmt_NZ = {
         var fmt = new PhoneFmt({locale: "en-NZ", style: "default"});
         formatted = fmt.format(parsed, {partial: true});
         
+        test.expect(1);
         test.equal(formatted, expected);
         test.done();
         
         
     },
     testFormatNZStyle0Partial6: function(test) {
-        test.expect(1);
         var formatted;
         var parsed = new PhoneNumber({
                 trunkAccess: "0",
@@ -329,13 +328,13 @@ module.exports.phonefmt_NZ = {
         var fmt = new PhoneFmt({locale: "en-NZ", style: "default"});
         formatted = fmt.format(parsed, {partial: true});
         
+        test.expect(1);
         test.equal(formatted, expected);
         test.done();
         
         
     },
     testFormatNZStyle0Partial7: function(test) {
-        test.expect(1);
         var formatted;
         var parsed = new PhoneNumber({
                 trunkAccess: "0",
@@ -347,13 +346,13 @@ module.exports.phonefmt_NZ = {
         var fmt = new PhoneFmt({locale: "en-NZ", style: "default"});
         formatted = fmt.format(parsed, {partial: true});
         
+        test.expect(1);
         test.equal(formatted, expected);
         test.done();
         
         
     },
     testFormatNZStyle0Partial8: function(test) {
-        test.expect(1);
         var formatted;
         var parsed = new PhoneNumber({
                 trunkAccess: "0",
@@ -365,13 +364,13 @@ module.exports.phonefmt_NZ = {
         var fmt = new PhoneFmt({locale: "en-NZ", style: "default"});
         formatted = fmt.format(parsed, {partial: true});
         
+        test.expect(1);
         test.equal(formatted, expected);
         test.done();
         
         
     },
     testFormatNZStyle0Partial9: function(test) {
-        test.expect(1);
         var formatted;
         var parsed = new PhoneNumber({
                 trunkAccess: "0",
@@ -383,13 +382,13 @@ module.exports.phonefmt_NZ = {
         var fmt = new PhoneFmt({locale: "en-NZ", style: "default"});
         formatted = fmt.format(parsed, {partial: true});
         
+        test.expect(1);
         test.equal(formatted, expected);
         test.done();
         
         
     },
     testFormatNZStyle0Partial10: function(test) {
-        test.expect(1);
         var formatted;
         var parsed = new PhoneNumber({
                 trunkAccess: "0",
@@ -401,6 +400,7 @@ module.exports.phonefmt_NZ = {
         var fmt = new PhoneFmt({locale: "en-NZ", style: "default"});
         formatted = fmt.format(parsed, {partial: true});
         
+        test.expect(1);
         test.equal(formatted, expected);
         test.done();
         
@@ -408,7 +408,6 @@ module.exports.phonefmt_NZ = {
     },
     
     testFormatNZStyle0PartialLocal1: function(test) {
-        test.expect(1);
         var formatted;
         var parsed = new PhoneNumber({
                 subscriberNumber: "4"
@@ -418,13 +417,13 @@ module.exports.phonefmt_NZ = {
         var fmt = new PhoneFmt({locale: "en-NZ", style: "default"});
         formatted = fmt.format(parsed, {partial: true});
         
+        test.expect(1);
         test.equal(formatted, expected);
         test.done();
         
         
     },
     testFormatNZStyle0PartialLocal2: function(test) {
-        test.expect(1);
         var formatted;
         var parsed = new PhoneNumber({
                 subscriberNumber: "45"
@@ -434,13 +433,13 @@ module.exports.phonefmt_NZ = {
         var fmt = new PhoneFmt({locale: "en-NZ", style: "default"});
         formatted = fmt.format(parsed, {partial: true});
         
+        test.expect(1);
         test.equal(formatted, expected);
         test.done();
         
         
     },
     testFormatNZStyle0PartialLocal3: function(test) {
-        test.expect(1);
         var formatted;
         var parsed = new PhoneNumber({
                 subscriberNumber: "456"
@@ -450,13 +449,13 @@ module.exports.phonefmt_NZ = {
         var fmt = new PhoneFmt({locale: "en-NZ", style: "default"});
         formatted = fmt.format(parsed, {partial: true});
         
+        test.expect(1);
         test.equal(formatted, expected);
         test.done();
         
         
     },
     testFormatNZStyle0PartialLocal4: function(test) {
-        test.expect(1);
         var formatted;
         var parsed = new PhoneNumber({
                 subscriberNumber: "4563"
@@ -466,13 +465,13 @@ module.exports.phonefmt_NZ = {
         var fmt = new PhoneFmt({locale: "en-NZ", style: "default"});
         formatted = fmt.format(parsed, {partial: true});
         
+        test.expect(1);
         test.equal(formatted, expected);
         test.done();
         
         
     },
     testFormatNZStyle0PartialLocal5: function(test) {
-        test.expect(1);
         var formatted;
         var parsed = new PhoneNumber({
                 subscriberNumber: "45634"
@@ -482,13 +481,13 @@ module.exports.phonefmt_NZ = {
         var fmt = new PhoneFmt({locale: "en-NZ", style: "default"});
         formatted = fmt.format(parsed, {partial: true});
         
+        test.expect(1);
         test.equal(formatted, expected);
         test.done();
         
         
     },
     testFormatNZStyle0PartialLocal6: function(test) {
-        test.expect(1);
         var formatted;
         var parsed = new PhoneNumber({
                 subscriberNumber: "456345"
@@ -498,13 +497,13 @@ module.exports.phonefmt_NZ = {
         var fmt = new PhoneFmt({locale: "en-NZ", style: "default"});
         formatted = fmt.format(parsed, {partial: true});
         
+        test.expect(1);
         test.equal(formatted, expected);
         test.done();
         
         
     },
     testFormatNZStyle0PartialLocal7: function(test) {
-        test.expect(1);
         var formatted;
         var parsed = new PhoneNumber({
                 subscriberNumber: "4563453"
@@ -514,13 +513,13 @@ module.exports.phonefmt_NZ = {
         var fmt = new PhoneFmt({locale: "en-NZ", style: "default"});
         formatted = fmt.format(parsed, {partial: true});
         
+        test.expect(1);
         test.equal(formatted, expected);
         test.done();
         
         
     },
     testFormatNZStyle0PartialLocal8: function(test) {
-        test.expect(1);
         var formatted;
         var parsed = new PhoneNumber({
                 subscriberNumber: "45634535"
@@ -530,13 +529,13 @@ module.exports.phonefmt_NZ = {
         var fmt = new PhoneFmt({locale: "en-NZ", style: "default"});
         formatted = fmt.format(parsed, {partial: true});
         
+        test.expect(1);
         test.equal(formatted, expected);
         test.done();
         
         
     },
     testFormatNZStyle0PartialLocal9: function(test) {
-        test.expect(1);
         var formatted;
         var parsed = new PhoneNumber({
                 subscriberNumber: "456345352"    // too long
@@ -546,6 +545,7 @@ module.exports.phonefmt_NZ = {
         var fmt = new PhoneFmt({locale: "en-NZ", style: "default"});
         formatted = fmt.format(parsed, {partial: true});
         
+        test.expect(1);
         test.equal(formatted, expected);
         test.done();
         
@@ -553,7 +553,6 @@ module.exports.phonefmt_NZ = {
     },
     
     testFormatNZStyle1PartialLocal1: function(test) {
-        test.expect(1);
         var formatted;
         var parsed = new PhoneNumber({
                 subscriberNumber: "4"
@@ -563,13 +562,13 @@ module.exports.phonefmt_NZ = {
         var fmt = new PhoneFmt({locale: "en-NZ", style: "spaces"});
         formatted = fmt.format(parsed, {partial: true});
         
+        test.expect(1);
         test.equal(formatted, expected);
         test.done();
         
         
     },
     testFormatNZStyle1PartialLocal2: function(test) {
-        test.expect(1);
         var formatted;
         var parsed = new PhoneNumber({
                 subscriberNumber: "45"
@@ -579,13 +578,13 @@ module.exports.phonefmt_NZ = {
         var fmt = new PhoneFmt({locale: "en-NZ", style: "spaces"});
         formatted = fmt.format(parsed, {partial: true});
         
+        test.expect(1);
         test.equal(formatted, expected);
         test.done();
         
         
     },
     testFormatNZStyle1PartialLocal3: function(test) {
-        test.expect(1);
         var formatted;
         var parsed = new PhoneNumber({
                 subscriberNumber: "456"
@@ -595,13 +594,13 @@ module.exports.phonefmt_NZ = {
         var fmt = new PhoneFmt({locale: "en-NZ", style: "spaces"});
         formatted = fmt.format(parsed, {partial: true});
         
+        test.expect(1);
         test.equal(formatted, expected);
         test.done();
         
         
     },
     testFormatNZStyle1PartialLocal4: function(test) {
-        test.expect(1);
         var formatted;
         var parsed = new PhoneNumber({
                 subscriberNumber: "4563"
@@ -611,13 +610,13 @@ module.exports.phonefmt_NZ = {
         var fmt = new PhoneFmt({locale: "en-NZ", style: "spaces"});
         formatted = fmt.format(parsed, {partial: true});
         
+        test.expect(1);
         test.equal(formatted, expected);
         test.done();
         
         
     },
     testFormatNZStyle1PartialLocal5: function(test) {
-        test.expect(1);
         var formatted;
         var parsed = new PhoneNumber({
                 subscriberNumber: "45634"
@@ -627,13 +626,13 @@ module.exports.phonefmt_NZ = {
         var fmt = new PhoneFmt({locale: "en-NZ", style: "spaces"});
         formatted = fmt.format(parsed, {partial: true});
         
+        test.expect(1);
         test.equal(formatted, expected);
         test.done();
         
         
     },
     testFormatNZStyle1PartialLocal6: function(test) {
-        test.expect(1);
         var formatted;
         var parsed = new PhoneNumber({
                 subscriberNumber: "456345"
@@ -643,13 +642,13 @@ module.exports.phonefmt_NZ = {
         var fmt = new PhoneFmt({locale: "en-NZ", style: "spaces"});
         formatted = fmt.format(parsed, {partial: true});
         
+        test.expect(1);
         test.equal(formatted, expected);
         test.done();
         
         
     },
     testFormatNZStyle1PartialLocal7: function(test) {
-        test.expect(1);
         var formatted;
         var parsed = new PhoneNumber({
                 subscriberNumber: "4563453"
@@ -659,13 +658,13 @@ module.exports.phonefmt_NZ = {
         var fmt = new PhoneFmt({locale: "en-NZ", style: "spaces"});
         formatted = fmt.format(parsed, {partial: true});
         
+        test.expect(1);
         test.equal(formatted, expected);
         test.done();
         
         
     },
     testFormatNZStyle1PartialLocal8: function(test) {
-        test.expect(1);
         var formatted;
         var parsed = new PhoneNumber({
                 subscriberNumber: "45634534"
@@ -675,13 +674,13 @@ module.exports.phonefmt_NZ = {
         var fmt = new PhoneFmt({locale: "en-NZ", style: "spaces"});
         formatted = fmt.format(parsed, {partial: true});
         
+        test.expect(1);
         test.equal(formatted, expected);
         test.done();
         
         
     },
     testFormatNZStyle1PartialLocal9: function(test) {
-        test.expect(1);
         var formatted;
         var parsed = new PhoneNumber({
                 subscriberNumber: "456345345"    // too long
@@ -691,6 +690,7 @@ module.exports.phonefmt_NZ = {
         var fmt = new PhoneFmt({locale: "en-NZ", style: "spaces"});
         formatted = fmt.format(parsed, {partial: true});
         
+        test.expect(1);
         test.equal(formatted, expected);
         test.done();
         

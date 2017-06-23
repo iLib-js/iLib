@@ -294,7 +294,7 @@ function testNumFmtNumberZAStyleNogroupingFloat() {
     assertEquals("123456789,345345", fmt.format(123456789.345345));
 }
 
-function GetUseNativeHasNativeButFalse() {
+function testGetUseNativeZAHasNativeButFalse() {
     var fmt = new NumFmt({
         locale: "af-ZA"
     });
@@ -783,7 +783,7 @@ function testNumFmtNumberNAStyleNogroupingFloat() {
     assertEquals("123456789,345345", fmt.format(123456789.345345));
 }
 
-function GetUseNativeHasNativeButFalse() {
+function testGetUseNativeNAHasNativeButFalse() {
     var fmt = new NumFmt({
         locale: "af-NA"
     });

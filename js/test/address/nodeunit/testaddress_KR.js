@@ -34,9 +34,9 @@ module.exports.testaddress_KR = {
     },
 
     testParseAddressKRNormal: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("Seoul National University, 1 Gwanak-ro, Gwanak-gu, Seoul 151-742\nSOUTH KOREA", {locale: 'ko-KR'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Seoul National University, 1 Gwanak-ro, Gwanak-gu");
         test.equal(parsedAddress.locality, "Seoul");
@@ -48,9 +48,9 @@ module.exports.testaddress_KR = {
     },
     
     testParseAddressKRNormalNative: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("대한민국\n151-742 서울시 관악구 관악로 1 서울대학교", {locale: 'ko-KR'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "관악구 관악로 1 서울대학교");
         test.equal(parsedAddress.locality, "서울시");
@@ -62,9 +62,9 @@ module.exports.testaddress_KR = {
     },
     
     testParseAddressKRWithBrackets: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("(609-735) 부산광역시 금정구 부산대학로63번길 2 (장전동)", {locale: 'ko-KR'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "금정구 부산대학로63번길 2 (장전동)");
         test.equal(parsedAddress.locality, "부산광역시");
@@ -76,9 +76,9 @@ module.exports.testaddress_KR = {
     },
     
     testParseAddressKRWithRegion: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("Chuncheon National University of Education.\nGongji Ro 126, Chuncheon 200-703, Gangwon-Do, Republic of Korea", {locale: 'ko-KR'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Chuncheon National University of Education., Gongji Ro 126");
         test.equal(parsedAddress.locality, "Chuncheon");
@@ -90,9 +90,9 @@ module.exports.testaddress_KR = {
     },
     
     testParseAddressKRWithRegionNative: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("(200-703) 강원도 춘천시 공지로 126(석사동)", {locale: 'ko-KR'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.postalCode, "(200-703)");
         test.equal(parsedAddress.region, "강원도");
@@ -104,9 +104,9 @@ module.exports.testaddress_KR = {
     },
     
     testParseAddressKRNoZip: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("Seoul National University, 1 Gwanak-ro, Gwanak-gu, Seoul\nSOUTH KOREA", {locale: 'ko-KR'});
     
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Seoul National University, 1 Gwanak-ro, Gwanak-gu");
         test.equal(parsedAddress.locality, "Seoul");
@@ -118,9 +118,9 @@ module.exports.testaddress_KR = {
     },
     
     testParseAddressKRNoZipNative: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("대한민국\n서울시 관악구 관악로 1 서울대학교", {locale: 'ko-KR'});
     
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "관악구 관악로 1 서울대학교");
         test.equal(parsedAddress.locality, "서울시");
@@ -132,9 +132,9 @@ module.exports.testaddress_KR = {
     },
     
     testParseAddressKRNoCountry: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("Seoul National University, 1 Gwanak-ro, Gwanak-gu, Seoul 151-742", {locale: 'ko-KR'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Seoul National University, 1 Gwanak-ro, Gwanak-gu");
         test.equal(parsedAddress.locality, "Seoul");
@@ -146,9 +146,9 @@ module.exports.testaddress_KR = {
     },
     
     testParseAddressKRNoCountryNative: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("151-742 서울시 관악구 관악로 1 서울대학교", {locale: 'ko-KR'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "관악구 관악로 1 서울대학교");
         test.equal(parsedAddress.locality, "서울시");
@@ -160,9 +160,9 @@ module.exports.testaddress_KR = {
     },
     
     testParseAddressKRManyLines: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("Seoul National University\n1 Gwanak-ro\nGwanak-gu\nSeoul\n151-742\nKorea\n", {locale: 'ko-KR'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Seoul National University, 1 Gwanak-ro, Gwanak-gu");
         test.equal(parsedAddress.locality, "Seoul");
@@ -174,9 +174,9 @@ module.exports.testaddress_KR = {
     },
     
     testParseAddressKRManyLinesNative: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("대한민국\n151-742\n서울시\n관악구 관악로\n1 서울대학교", {locale: 'ko-KR'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "관악구 관악로 1 서울대학교");
         test.equal(parsedAddress.locality, "서울시");
@@ -188,9 +188,9 @@ module.exports.testaddress_KR = {
     },
     
     testParseAddressKROneLine: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("Seoul National University, 1 Gwanak-ro, Gwanak-gu, Seoul 151-742, SOUTH KOREA", {locale: 'ko-KR'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Seoul National University, 1 Gwanak-ro, Gwanak-gu");
         test.equal(parsedAddress.locality, "Seoul");
@@ -202,9 +202,9 @@ module.exports.testaddress_KR = {
     },
     
     testParseAddressKROneLineNative: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("대한민국, 151-742 서울시 관악구 관악로 1 서울대학교", {locale: 'ko-KR'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "관악구 관악로 1 서울대학교");
         test.equal(parsedAddress.locality, "서울시");
@@ -216,9 +216,9 @@ module.exports.testaddress_KR = {
     },
     
     testParseAddressKRNoDelimiters: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("Seoul National University 1 Gwanak-ro Gwanak-gu Seoul 151-742 SOUTH KOREA", {locale: 'ko-KR'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Seoul National University 1 Gwanak-ro Gwanak-gu");
         test.equal(parsedAddress.locality, "Seoul");
@@ -230,9 +230,9 @@ module.exports.testaddress_KR = {
     },
     
     testParseAddressKRNoDelimitersNative: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("대한민국 151-742 서울시 관악구 관악로 1 서울대학교", {locale: 'ko-KR'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "관악구 관악로 1 서울대학교");
         test.equal(parsedAddress.locality, "서울시");
@@ -244,9 +244,9 @@ module.exports.testaddress_KR = {
     },
     
     testParseAddressKRLatinFromUS: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("Seoul National University, 1 Gwanak-ro, Gwanak-gu\nSeoul 151-742\nRepublic of Korea", {locale: 'en-US'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Seoul National University, 1 Gwanak-ro, Gwanak-gu");
         test.equal(parsedAddress.locality, "Seoul");
@@ -258,7 +258,6 @@ module.exports.testaddress_KR = {
     },
     
     testFormatAddressKRLatin: function(test) {
-        test.expect(1);
         var parsedAddress = new Address({
             streetAddress: "Seoul National University, 1 Gwanak-ro, Gwanak-gu",
             locality: "Seoul",
@@ -270,12 +269,12 @@ module.exports.testaddress_KR = {
         
         var expected = "Seoul National University, 1 Gwanak-ro, Gwanak-gu\nSeoul 151-742\nSOUTH KOREA";
         var formatter = new AddressFmt({locale: 'ko-KR'});
+        test.expect(1);
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     },
     
     testFormatAddressKRLatinWithRegion: function(test) {
-        test.expect(1);
         var parsedAddress = new Address({
             streetAddress: "Chuncheon National University of Education, 339 Seoksa-dong",
             locality: "Chuncheon-si",
@@ -288,12 +287,12 @@ module.exports.testaddress_KR = {
         
         var expected = "Chuncheon National University of Education, 339 Seoksa-dong\nChuncheon-si Gangwon-do 200-703\nSouth Korea";
         var formatter = new AddressFmt({locale: 'ko-KR'});
+        test.expect(1);
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     },
     
     testFormatAddressKRLatinFromUS: function(test) {
-        test.expect(1);
         var parsedAddress = new Address({
             streetAddress: "Seoul National University, 1 Gwanak-ro, Gwanak-gu",
             locality: "Seoul",
@@ -305,12 +304,12 @@ module.exports.testaddress_KR = {
         
         var expected = "Seoul National University, 1 Gwanak-ro, Gwanak-gu\nSeoul 151-742\nSOUTH KOREA";
         var formatter = new AddressFmt({locale: 'en-US'});
+        test.expect(1);
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     },
     
     testFormatAddressKRNative: function(test) {
-        test.expect(1);
         var parsedAddress = new Address({
             streetAddress: "관악구 관악로 1 서울대학교",
             locality: "서울시",
@@ -322,12 +321,12 @@ module.exports.testaddress_KR = {
         
         var expected = "대한민국\n151-742 서울시 관악구 관악로 1 서울대학교";
         var formatter = new AddressFmt({locale: 'ko-KR'});
+        test.expect(1);
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     },
     
     testFormatAddressKRNativeWithRegion: function(test) {
-        test.expect(1);
         var parsedAddress = new Address({
             streetAddress: "공지로 126(석사동)",
             locality: "춘천시",
@@ -340,6 +339,7 @@ module.exports.testaddress_KR = {
         
         var expected = "대한민국\n(200-703) 강원도 춘천시 공지로 126(석사동)";
         var formatter = new AddressFmt({locale: 'ko-KR'});
+        test.expect(1);
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     }

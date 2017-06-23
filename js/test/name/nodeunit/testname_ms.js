@@ -34,8 +34,8 @@ module.exports.testname_ms = {
     },
 
     testParseSimpleName_ms_MY: function(test) {
-        test.expect(2);
         var parsed = new Name("Carmen Soo", {locale: 'ms-MY'});
+        test.expect(2);
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {
@@ -51,8 +51,8 @@ module.exports.testname_ms = {
     
     
     testParseTitle_ms_MY: function(test) {
-        test.expect(2);
         var parsed = new Name("Carmen Soo bersara", {locale: 'ms-MY'});
+        test.expect(2);
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {
@@ -68,8 +68,8 @@ module.exports.testname_ms = {
     
     
     testParseTitleWithFamilyOnly_ms_MY: function(test) {
-        test.expect(2);
         var parsed = new Name("cik Soo", {locale: 'ms-MY'});
+        test.expect(2);
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {
@@ -84,8 +84,8 @@ module.exports.testname_ms = {
     
     
     testParseEverything_ms_MY: function(test) {
-        test.expect(2);
         var parsed = new Name("encik dan cik Soo", {locale: 'ms-MY'});
+        test.expect(2);
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {
@@ -98,8 +98,8 @@ module.exports.testname_ms = {
     },
     
     testParseprefix_ms_MY: function(test) {
-        test.expect(2);
         var parsed = new Name("cik Carmen Soo", {locale: 'ms-MY'});
+        test.expect(2);
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {
@@ -116,7 +116,6 @@ module.exports.testname_ms = {
      */
     
     testFormatSimpleNameShort_ms_MY: function(test) {
-        test.expect(2);
         var name = new Name({
             givenName: "Carmen",
             familyName: "Soo"
@@ -126,6 +125,7 @@ module.exports.testname_ms = {
             locale: 'ms-MY'
         });
         var formatted = fmt.format(name);
+        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "Carmen Soo";
@@ -135,7 +135,6 @@ module.exports.testname_ms = {
     },
     
     testFormatSimpleNameMedium_ms_MY: function(test) {
-        test.expect(2);
         var name = new Name({
             givenName: "Carmen",
             familyName: "Soo"
@@ -145,6 +144,7 @@ module.exports.testname_ms = {
             locale: 'ms-MY'
         });
         var formatted = fmt.format(name);
+        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "Carmen Soo";
@@ -154,7 +154,6 @@ module.exports.testname_ms = {
     },
     
     testFormatSimpleNameLong_ms_MY: function(test) {
-        test.expect(2);
         var name = new Name({
             givenName: "Carmen",
             familyName: "Soo",
@@ -165,6 +164,7 @@ module.exports.testname_ms = {
             locale: 'ms-MY'
         });
         var formatted = fmt.format(name);
+        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "Carmen Soo";
@@ -176,7 +176,6 @@ module.exports.testname_ms = {
     
     
     testFormatSurname_ms_MY: function(test) {
-        test.expect(2);
         var name = new Name({
             prefix: "encik dan cik",
             familyName: "Soo"
@@ -186,6 +185,7 @@ module.exports.testname_ms = {
             locale: 'ms-MY'
         });
         var formatted = fmt.format(name);
+        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "encik dan cik Soo";
@@ -195,7 +195,6 @@ module.exports.testname_ms = {
     },
     
     testFormatSimpleNameFull_ms_MY: function(test) {
-        test.expect(2);
         var name = new Name({
             prefix: "pesuruhjaya",
             givenName: "Carmen",
@@ -207,6 +206,7 @@ module.exports.testname_ms = {
             locale: 'ms-MY'
         });
         var formatted = fmt.format(name);
+        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "pesuruhjaya Carmen Soo bersara";
@@ -216,7 +216,6 @@ module.exports.testname_ms = {
     },
     
     testFormatComplexNameShort_ms_MY: function(test) {
-        test.expect(2);
         var name = new Name({
             prefix: "pesuruhjaya",
             givenName: "Carmen",
@@ -227,6 +226,7 @@ module.exports.testname_ms = {
             locale: 'ms-MY'
         });
         var formatted = fmt.format(name);
+        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "Carmen Soo";
@@ -236,7 +236,6 @@ module.exports.testname_ms = {
     },
     
     testFormatComplexNameMedium_ms_MY: function(test) {
-        test.expect(2);
         var name = new Name({
             prefix: "pesuruhjaya",
             givenName: "Carmen",
@@ -247,6 +246,7 @@ module.exports.testname_ms = {
             locale: 'ms-MY'
         });
         var formatted = fmt.format(name);
+        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "Carmen Soo";
@@ -256,7 +256,6 @@ module.exports.testname_ms = {
     },
     
     testFormatComplexNameLong_ms_MY: function(test) {
-        test.expect(2);
         var name = new Name({
             prefix: "pesuruhjaya",
             givenName: "Carmen",
@@ -267,6 +266,7 @@ module.exports.testname_ms = {
             locale: 'ms-MY'
         });
         var formatted = fmt.format(name);
+        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "pesuruhjaya Carmen Soo";

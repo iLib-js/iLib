@@ -42,12 +42,12 @@ module.exports.testdatefmt_fa_IR = {
     },
 
     testDateFmtSimpleShort_fa_IR: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({
             locale: "fa-IR",
             calendar: "gregorian",
             length: "short"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var date = new GregorianDate({
@@ -65,12 +65,12 @@ module.exports.testdatefmt_fa_IR = {
     },
     
     testDateFmtSimpleMedium_fa_IR: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({
             locale: "fa-IR",
             calendar: "gregorian",
             length: "medium"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var date = new GregorianDate({
@@ -88,12 +88,12 @@ module.exports.testdatefmt_fa_IR = {
     },
     
     testDateFmtSimpleLong_fa_IR: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({
             locale: "fa-IR",
             calendar: "gregorian",
             length: "long"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var date = new GregorianDate({
@@ -111,12 +111,12 @@ module.exports.testdatefmt_fa_IR = {
     },
     
     testDateFmtSimpleFull_fa_IR: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({
             locale: "fa-IR",
             calendar: "gregorian",
             length: "full"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var date = new GregorianDate({
@@ -134,13 +134,13 @@ module.exports.testdatefmt_fa_IR = {
     },
     
     testDateFmtSimpleTimeShort_fa_IR: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({
             locale: "fa-IR",
             calendar: "gregorian",
             length: "short",
             type: "time"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var date = new GregorianDate({
@@ -158,13 +158,13 @@ module.exports.testdatefmt_fa_IR = {
     },
     
     testDateFmtSimpleTimeMedium_fa_IR: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({
             locale: "fa-IR",
             calendar: "gregorian",
             length: "medium",
             type: "time"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var date = new GregorianDate({
@@ -182,13 +182,13 @@ module.exports.testdatefmt_fa_IR = {
     },
     
     testDateFmtSimpleTimeLong_fa_IR: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({
             locale: "fa-IR",
             calendar: "gregorian",
             timelength: "long",
             type: "time"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var date = new GregorianDate({
@@ -206,13 +206,13 @@ module.exports.testdatefmt_fa_IR = {
     },
     
     testDateFmtSimpleTimeFull_fa_IR: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({
             locale: "fa-IR",
             calendar: "gregorian",
             length: "full",
             type: "time"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var date = new GregorianDate({
@@ -230,13 +230,13 @@ module.exports.testdatefmt_fa_IR = {
     },
     
     testDateFmtDateTimeSimpleShort_fa_IR: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({
             locale: "fa-IR",
             calendar: "gregorian",
             length: "short",
             type: "datetime"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var date = new GregorianDate({
@@ -254,13 +254,13 @@ module.exports.testdatefmt_fa_IR = {
     },
     
     testDateFmtDateTimeSimpleMedium_fa_IR: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({
             locale: "fa-IR",
             calendar: "gregorian",
             length: "medium",
             type: "datetime"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var date = new GregorianDate({
@@ -278,13 +278,13 @@ module.exports.testdatefmt_fa_IR = {
     },
     
     testDateFmtDateTimeSimpleLong_fa_IR: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({
             locale: "fa-IR",
             calendar: "gregorian",
             length: "long",
             type: "datetime"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var date = new GregorianDate({
@@ -302,13 +302,13 @@ module.exports.testdatefmt_fa_IR = {
     },
     
     testDateFmtDateTimeSimpleFull_fa_IR: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({
             locale: "fa-IR",
             calendar: "gregorian",
             length: "full",
             type: "datetime"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var date = new GregorianDate({
@@ -327,12 +327,12 @@ module.exports.testdatefmt_fa_IR = {
     
     
     testDateFmtTemplateCalendar_fa_IR: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({
             locale: "fa-IR", 
             calendar: "julian", 
             template: "yyyy-MM-dd"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var date = new JulianDate({
@@ -351,13 +351,13 @@ module.exports.testdatefmt_fa_IR = {
     
     
     testDateFmtTemplateClock12SwitchHH_fa_IR: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({
             locale: "fa-IR",
             calendar: "gregorian",
             clock: "12",
             template: "HH:mm"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var date = new GregorianDate({
@@ -375,13 +375,13 @@ module.exports.testdatefmt_fa_IR = {
     },
     
     testDateFmtTemplateClock12Switchkk_fa_IR: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({
             locale: "fa-IR",
             calendar: "gregorian",
             clock: "12",
             template: "kk:mm"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var date = new GregorianDate({
@@ -399,13 +399,13 @@ module.exports.testdatefmt_fa_IR = {
     },
     
     testDateFmtTemplateClock24Switchhh_fa_IR: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({
             locale: "fa-IR",
             calendar: "gregorian",
             clock: "24", 
             template: "hh:mm"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var date = new GregorianDate({
@@ -423,13 +423,13 @@ module.exports.testdatefmt_fa_IR = {
     },
     
     testDateFmtTemplateClock24SwitchKK_fa_IR: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({
             locale: "fa-IR",
             calendar: "gregorian",
             clock: "24", 
             template: "KK:mm"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var date = new GregorianDate({
@@ -447,12 +447,12 @@ module.exports.testdatefmt_fa_IR = {
     },
     
     testDateFmtTemplateNoClockDoNotFollowLocaleDefault12hh_fa_IR: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({
             locale: "fa-IR",
             calendar: "gregorian",
             template: "hh:mm"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var date = new GregorianDate({
@@ -470,12 +470,12 @@ module.exports.testdatefmt_fa_IR = {
     },
     
     testDateFmtTemplateNoClockDoNotFollowLocaleDefault12KK_fa_IR: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({
             locale: "fa-IR",
             calendar: "gregorian",
             template: "KK:mm"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var date = new GregorianDate({
@@ -493,12 +493,12 @@ module.exports.testdatefmt_fa_IR = {
     },
     
     testDateFmtTemplateNoClockDoNotFollowLocaleDefault24HH_fa_IR: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({
             locale: "fa-IR",
             calendar: "gregorian",
             template: "HH:mm"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var date = new GregorianDate({
@@ -516,12 +516,12 @@ module.exports.testdatefmt_fa_IR = {
     },
     
     testDateFmtTemplateNoClockDoNotFollowLocaleDefault24kk_fa_IR: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({
             locale: "fa-IR",
             calendar: "gregorian",
             template: "kk:mm"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var date = new GregorianDate({
@@ -540,12 +540,12 @@ module.exports.testdatefmt_fa_IR = {
     
     
     testDateFmtTypeDate_fa_IR: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({
             locale: "fa-IR",
             calendar: "gregorian",
             type: "date"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var date = new GregorianDate({
@@ -563,12 +563,12 @@ module.exports.testdatefmt_fa_IR = {
     },
     
     testDateFmtTypeTime_fa_IR: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({
             locale: "fa-IR",
             calendar: "gregorian",
             type: "time"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var date = new GregorianDate({
@@ -586,12 +586,12 @@ module.exports.testdatefmt_fa_IR = {
     },
     
     testDateFmtTypeDateTime_fa_IR: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({
             locale: "fa-IR",
             calendar: "gregorian",
             type: "datetime"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var date = new GregorianDate({
@@ -610,12 +610,12 @@ module.exports.testdatefmt_fa_IR = {
     
     
     testDateFmtShortDateComponentsY_fa_IR: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({
             locale: "fa-IR",
             calendar: "gregorian",
             date: "y"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var date = new GregorianDate({
@@ -633,12 +633,12 @@ module.exports.testdatefmt_fa_IR = {
     },
     
     testDateFmtShortDateComponentsM_fa_IR: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({
             locale: "fa-IR",
             calendar: "gregorian",
             date: "m"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var date = new GregorianDate({
@@ -657,12 +657,12 @@ module.exports.testdatefmt_fa_IR = {
     
     
     testDateFmtShortDateComponentsD_fa_IR: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({
             locale: "fa-IR",
             calendar: "gregorian",
             date: "d"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var date = new GregorianDate({
@@ -680,12 +680,12 @@ module.exports.testdatefmt_fa_IR = {
     },
     
     testDateFmtShortDateComponentsDM_fa_IR: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({
             locale: "fa-IR",
             calendar: "gregorian",
             date: "dm"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var date = new GregorianDate({
@@ -703,12 +703,12 @@ module.exports.testdatefmt_fa_IR = {
     },
     
     testDateFmtShortDateComponentsMY_fa_IR: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({
             locale: "fa-IR",
             calendar: "gregorian",
             date: "my"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var date = new GregorianDate({
@@ -726,12 +726,12 @@ module.exports.testdatefmt_fa_IR = {
     },
     
     testDateFmtShortDateComponentsDMY_fa_IR: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({
             locale: "fa-IR",
             calendar: "gregorian",
             date: "dmy"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var date = new GregorianDate({
@@ -749,12 +749,12 @@ module.exports.testdatefmt_fa_IR = {
     },
     
     testDateFmtShortDateComponentsWDM_fa_IR: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({
             locale: "fa-IR",
             calendar: "gregorian",
             date: "wdm"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var date = new GregorianDate({
@@ -772,12 +772,12 @@ module.exports.testdatefmt_fa_IR = {
     },
     
     testDateFmtShortDateComponentsWDMY_fa_IR: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({
             locale: "fa-IR",
             calendar: "gregorian",
             date: "wdmy"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var date = new GregorianDate({
@@ -796,13 +796,13 @@ module.exports.testdatefmt_fa_IR = {
     
     
     testDateFmtFullDateComponentsY_fa_IR: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({
             locale: "fa-IR",
             calendar: "gregorian",
             length: "full",
             date: "y"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var date = new GregorianDate({
@@ -820,13 +820,13 @@ module.exports.testdatefmt_fa_IR = {
     },
     
     testDateFmtFullDateComponentsM_fa_IR: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({
             locale: "fa-IR",
             calendar: "gregorian",
             length: "full",
             date: "m"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var date = new GregorianDate({
@@ -844,13 +844,13 @@ module.exports.testdatefmt_fa_IR = {
     },
     
     testDateFmtFullDateComponentsD_fa_IR: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({
             locale: "fa-IR",
             calendar: "gregorian",
             length: "full",
             date: "d"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var date = new GregorianDate({
@@ -868,13 +868,13 @@ module.exports.testdatefmt_fa_IR = {
     },
     
     testDateFmtFullDateComponentsDM_fa_IR: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({
             locale: "fa-IR",
             calendar: "gregorian",
             length: "full",
             date: "dm"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var date = new GregorianDate({
@@ -892,13 +892,13 @@ module.exports.testdatefmt_fa_IR = {
     },
     
     testDateFmtFullDateComponentsMY_fa_IR: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({
             locale: "fa-IR",
             calendar: "gregorian",
             length: "full",
             date: "my"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var date = new GregorianDate({
@@ -916,13 +916,13 @@ module.exports.testdatefmt_fa_IR = {
     },
     
     testDateFmtFullDateComponentsDMY_fa_IR: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({
             locale: "fa-IR",
             calendar: "gregorian",
             length: "full",
             date: "dmy"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var date = new GregorianDate({
@@ -940,13 +940,13 @@ module.exports.testdatefmt_fa_IR = {
     },
     
     testDateFmtFullDateComponentsWDM_fa_IR: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({
             locale: "fa-IR",
             calendar: "gregorian",
             length: "full",
             date: "wdm"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var date = new GregorianDate({
@@ -965,13 +965,13 @@ module.exports.testdatefmt_fa_IR = {
     
     
     testDateFmtFullDateComponentsWDMY_fa_IR: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({
             locale: "fa-IR",
             calendar: "gregorian",
             length: "full",
             date: "wdmy"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var date = new GregorianDate({
@@ -990,13 +990,13 @@ module.exports.testdatefmt_fa_IR = {
     
     
     testDateFmtShortTimeComponentsS_fa_IR: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({
             locale: "fa-IR",
             calendar: "gregorian",
             type: "time",
             time: "s"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var date = new GregorianDate({
@@ -1014,13 +1014,13 @@ module.exports.testdatefmt_fa_IR = {
     },
     
     testDateFmtShortTimeComponentsM_fa_IR: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({
             locale: "fa-IR",
             calendar: "gregorian",
             type: "time",
             time: "m"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var date = new GregorianDate({
@@ -1038,13 +1038,13 @@ module.exports.testdatefmt_fa_IR = {
     },
     
     testDateFmtShortTimeComponentsH_fa_IR: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({
             locale: "fa-IR",
             calendar: "gregorian",
             type: "time",
             time: "h"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var date = new GregorianDate({
@@ -1062,13 +1062,13 @@ module.exports.testdatefmt_fa_IR = {
     },
     
     testDateFmtShortTimeComponentsMS_fa_IR: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({
             locale: "fa-IR",
             calendar: "gregorian",
             type: "time",
             time: "ms"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var date = new GregorianDate({
@@ -1086,13 +1086,13 @@ module.exports.testdatefmt_fa_IR = {
     },
     
     testDateFmtShortTimeComponentsHM_fa_IR: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({
             locale: "fa-IR",
             calendar: "gregorian",
             type: "time",
             time: "hm"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var date = new GregorianDate({
@@ -1110,13 +1110,13 @@ module.exports.testdatefmt_fa_IR = {
     },
     
     testDateFmtShortTimeComponentsHMS_fa_IR: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({
             locale: "fa-IR",
             calendar: "gregorian",
             type: "time",
             time: "hms"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var date = new GregorianDate({
@@ -1134,13 +1134,13 @@ module.exports.testdatefmt_fa_IR = {
     },
     
     testDateFmtShortTimeComponentsHMA_fa_IR: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({
             locale: "fa-IR",
             calendar: "gregorian",
             type: "time",
             time: "hma"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var date = new GregorianDate({
@@ -1158,13 +1158,13 @@ module.exports.testdatefmt_fa_IR = {
     },
     
     testDateFmtShortTimeComponentsHMZ_fa_IR: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({
             locale: "fa-IR", 
             calendar: "gregorian",
             type: "time", 
             time: "hmz"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var date = new GregorianDate({
@@ -1182,13 +1182,13 @@ module.exports.testdatefmt_fa_IR = {
     },
     
     testDateFmtShortTimeComponentsHMAZ_fa_IR: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({
             locale: "fa-IR", 
             calendar: "gregorian",
             type: "time", 
             time: "hmaz"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var date = new GregorianDate({
@@ -1206,13 +1206,13 @@ module.exports.testdatefmt_fa_IR = {
     },
     
     testDateFmtShortTimeComponentsHMSA_fa_IR: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({
             locale: "fa-IR",
             calendar: "gregorian",
             type: "time",
             time: "hmsa"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var date = new GregorianDate({
@@ -1230,13 +1230,13 @@ module.exports.testdatefmt_fa_IR = {
     },
     
     testDateFmtShortTimeComponentsHMSZ_fa_IR: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({
             locale: "fa-IR", 
             calendar: "gregorian",
             type: "time", 
             time: "hmsz"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var date = new GregorianDate({
@@ -1254,13 +1254,13 @@ module.exports.testdatefmt_fa_IR = {
     },
     
     testDateFmtShortTimeComponentsHMSAZ_fa_IR: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({
             locale: "fa-IR", 
             calendar: "gregorian",
             type: "time", 
             time: "hmsaz"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var date = new GregorianDate({
@@ -1279,7 +1279,6 @@ module.exports.testdatefmt_fa_IR = {
     
     
     testDateFmtFullTimeComponentsS_fa_IR: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({
             locale: "fa-IR",
             calendar: "gregorian",
@@ -1287,6 +1286,7 @@ module.exports.testdatefmt_fa_IR = {
             length: "full",
             time: "s"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var date = new GregorianDate({
@@ -1304,7 +1304,6 @@ module.exports.testdatefmt_fa_IR = {
     },
     
     testDateFmtFullTimeComponentsM_fa_IR: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({
             locale: "fa-IR",
             calendar: "gregorian",
@@ -1312,6 +1311,7 @@ module.exports.testdatefmt_fa_IR = {
             length: "full",
             time: "m"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var date = new GregorianDate({
@@ -1329,7 +1329,6 @@ module.exports.testdatefmt_fa_IR = {
     },
     
     testDateFmtFullTimeComponentsH_fa_IR: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({
             locale: "fa-IR",
             calendar: "gregorian",
@@ -1337,6 +1336,7 @@ module.exports.testdatefmt_fa_IR = {
             length: "full",
             time: "h"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var date = new GregorianDate({
@@ -1354,7 +1354,6 @@ module.exports.testdatefmt_fa_IR = {
     },
     
     testDateFmtFullTimeComponentsMS_fa_IR: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({
             locale: "fa-IR",
             calendar: "gregorian",
@@ -1362,6 +1361,7 @@ module.exports.testdatefmt_fa_IR = {
             length: "full",
             time: "ms"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var date = new GregorianDate({
@@ -1379,7 +1379,6 @@ module.exports.testdatefmt_fa_IR = {
     },
     
     testDateFmtFullTimeComponentsHM_fa_IR: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({
             locale: "fa-IR",
             calendar: "gregorian",
@@ -1387,6 +1386,7 @@ module.exports.testdatefmt_fa_IR = {
             length: "full",
             time: "hm"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var date = new GregorianDate({
@@ -1404,7 +1404,6 @@ module.exports.testdatefmt_fa_IR = {
     },
     
     testDateFmtFullTimeComponentsHMS_fa_IR: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({
             locale: "fa-IR",
             calendar: "gregorian",
@@ -1412,6 +1411,7 @@ module.exports.testdatefmt_fa_IR = {
             length: "full",
             time: "hms"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var date = new GregorianDate({
@@ -1429,7 +1429,6 @@ module.exports.testdatefmt_fa_IR = {
     },
     
     testDateFmtFullTimeComponentsHMA_fa_IR: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({
             locale: "fa-IR",
             calendar: "gregorian",
@@ -1437,6 +1436,7 @@ module.exports.testdatefmt_fa_IR = {
             length: "full",
             time: "hma"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var date = new GregorianDate({
@@ -1454,7 +1454,6 @@ module.exports.testdatefmt_fa_IR = {
     },
     
     testDateFmtFullTimeComponentsHMZ_fa_IR: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({
             locale: "fa-IR", 
             calendar: "gregorian",
@@ -1462,6 +1461,7 @@ module.exports.testdatefmt_fa_IR = {
             length: "full", 
             time: "hmz"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var date = new GregorianDate({
@@ -1479,7 +1479,6 @@ module.exports.testdatefmt_fa_IR = {
     },
     
     testDateFmtFullTimeComponentsHMAZ_fa_IR: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({
             locale: "fa-IR", 
             calendar: "gregorian",
@@ -1487,6 +1486,7 @@ module.exports.testdatefmt_fa_IR = {
             length: "full", 
             time: "hmaz"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var date = new GregorianDate({
@@ -1504,7 +1504,6 @@ module.exports.testdatefmt_fa_IR = {
     },
     
     testDateFmtFullTimeComponentsHMSA_fa_IR: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({
             locale: "fa-IR",
             calendar: "gregorian",
@@ -1512,6 +1511,7 @@ module.exports.testdatefmt_fa_IR = {
             length: "full",
             time: "hmsa"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var date = new GregorianDate({
@@ -1529,7 +1529,6 @@ module.exports.testdatefmt_fa_IR = {
     },
     
     testDateFmtFullTimeComponentsHMSZ_fa_IR: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({
             locale: "fa-IR", 
             calendar: "gregorian",
@@ -1537,6 +1536,7 @@ module.exports.testdatefmt_fa_IR = {
             length: "full", 
             time: "hmsz"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var date = new GregorianDate({
@@ -1554,7 +1554,6 @@ module.exports.testdatefmt_fa_IR = {
     },
     
     testDateFmtFullTimeComponentsHMSAZ_fa_IR: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({
             locale: "fa-IR", 
             calendar: "gregorian",
@@ -1562,6 +1561,7 @@ module.exports.testdatefmt_fa_IR = {
             length: "full", 
             time: "hmsaz"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var date = new GregorianDate({
@@ -1579,7 +1579,6 @@ module.exports.testdatefmt_fa_IR = {
     },
     
     testDateFmtWithTimeZoneAndNoDST_fa_IR: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({
             locale: "fa-IR", 
             calendar: "gregorian",
@@ -1587,6 +1586,7 @@ module.exports.testdatefmt_fa_IR = {
             length: "full", 
             time: "hmsz"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var date = new GregorianDate({
@@ -1604,12 +1604,12 @@ module.exports.testdatefmt_fa_IR = {
     },
     
     testDateFmtFormatRelativeWithinMinuteAfter_fa_IR: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({
             locale: "fa-IR",
             calendar: "gregorian",
             length: "full"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var reference = new GregorianDate({
@@ -1636,12 +1636,12 @@ module.exports.testdatefmt_fa_IR = {
         test.done();
     },
     testDateFmtFormatRelativeWithinMinuteBefore_fa_IR: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({
             locale: "fa-IR",
             calendar: "gregorian",
             length: "full"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var reference = new GregorianDate({
@@ -1668,12 +1668,12 @@ module.exports.testdatefmt_fa_IR = {
         test.done();
     },
     testDateFmtFormatRelativeWithinHourAfter_fa_IR: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({
             locale: "fa-IR",
             calendar: "gregorian",
             length: "full"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var reference = new GregorianDate({
@@ -1700,12 +1700,12 @@ module.exports.testdatefmt_fa_IR = {
         test.done();
     },
     testDateFmtFormatRelativeWithinHourBefore_fa_IR: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({
             locale: "fa-IR",
             calendar: "gregorian",
             length: "full"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var reference = new GregorianDate({
@@ -1732,12 +1732,12 @@ module.exports.testdatefmt_fa_IR = {
         test.done();
     },
     testDateFmtFormatRelativeWithinDayAfter_fa_IR: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({
             locale: "fa-IR",
             calendar: "gregorian",
             length: "full"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var reference = new GregorianDate({
@@ -1766,12 +1766,12 @@ module.exports.testdatefmt_fa_IR = {
     
     
     testDateFmtFormatRelativeWithinDayBefore_fa_IR: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({
             locale: "fa-IR",
             calendar: "gregorian",
             length: "full"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var reference = new GregorianDate({
@@ -1799,12 +1799,12 @@ module.exports.testdatefmt_fa_IR = {
     },
     
     testDateFmtFormatRelativeWithinFortnightAfter_fa_IR: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({
             locale: "fa-IR",
             calendar: "gregorian",
             length: "full"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var reference = new GregorianDate({
@@ -1831,12 +1831,12 @@ module.exports.testdatefmt_fa_IR = {
         test.done();
     },
     testDateFmtFormatRelativeWithinFortnightBefore_fa_IR: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({
             locale: "fa-IR",
             calendar: "gregorian",
             length: "full"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var reference = new GregorianDate({
@@ -1864,12 +1864,12 @@ module.exports.testdatefmt_fa_IR = {
     },
     
     testDateFmtFormatRelativeWithinQuarterAfter_fa_IR: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({
             locale: "fa-IR",
             calendar: "gregorian",
             length: "full"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var reference = new GregorianDate({
@@ -1896,12 +1896,12 @@ module.exports.testdatefmt_fa_IR = {
         test.done();
     },
     testDateFmtFormatRelativeWithinQuarterBefore_fa_IR: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({
             locale: "fa-IR",
             calendar: "gregorian",
             length: "full"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var reference = new GregorianDate({
@@ -1929,12 +1929,12 @@ module.exports.testdatefmt_fa_IR = {
     },
     
     testDateFmtFormatRelativeWithinTwoYearsAfter_fa_IR: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({
             locale: "fa-IR",
             calendar: "gregorian",
             length: "full"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var reference = new GregorianDate({
@@ -1961,12 +1961,12 @@ module.exports.testdatefmt_fa_IR = {
         test.done();
     },
     testDateFmtFormatRelativeWithinTwoYearsBefore_fa_IR: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({
             locale: "fa-IR",
             calendar: "gregorian",
             length: "full"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var reference = new GregorianDate({
@@ -1994,12 +1994,12 @@ module.exports.testdatefmt_fa_IR = {
     },
     
     testDateFmtFormatRelativeYearsAfter_fa_IR: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({
             locale: "fa-IR",
             calendar: "gregorian",
             length: "full"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var reference = new GregorianDate({
@@ -2026,12 +2026,12 @@ module.exports.testdatefmt_fa_IR = {
         test.done();
     },
     testDateFmtFormatRelativeYearsBefore_fa_IR: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({
             locale: "fa-IR",
             calendar: "gregorian",
             length: "full"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var reference = new GregorianDate({
@@ -2062,12 +2062,12 @@ module.exports.testdatefmt_fa_IR = {
     /* Now Persian calendar tests */
     
     testDateFmtPersSimpleShort_fa_IR: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({
             calendar: "persian",
             locale: "fa-IR",
             length: "short"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var date = new PersianDate({
@@ -2085,12 +2085,12 @@ module.exports.testdatefmt_fa_IR = {
     },
     
     testDateFmtPersSimpleMedium_fa_IR: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({
             calendar: "persian",
             locale: "fa-IR",
             length: "medium"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var date = new PersianDate({
@@ -2108,12 +2108,12 @@ module.exports.testdatefmt_fa_IR = {
     },
     
     testDateFmtPersSimpleLong_fa_IR: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({
             calendar: "persian",
             locale: "fa-IR",
             length: "long"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var date = new PersianDate({
@@ -2131,12 +2131,12 @@ module.exports.testdatefmt_fa_IR = {
     },
     
     testDateFmtPersSimpleFull_fa_IR: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({
             calendar: "persian",
             locale: "fa-IR",
             length: "full"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var date = new PersianDate({
@@ -2154,13 +2154,13 @@ module.exports.testdatefmt_fa_IR = {
     },
     
     testDateFmtPersSimpleTimeShort_fa_IR: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({
             calendar: "persian",
             locale: "fa-IR",
             length: "short",
             type: "time"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var date = new PersianDate({
@@ -2178,13 +2178,13 @@ module.exports.testdatefmt_fa_IR = {
     },
     
     testDateFmtPersSimpleTimeMedium_fa_IR: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({
             calendar: "persian",
             locale: "fa-IR",
             length: "medium",
             type: "time"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var date = new PersianDate({
@@ -2202,13 +2202,13 @@ module.exports.testdatefmt_fa_IR = {
     },
     
     testDateFmtPersSimpleTimeLong_fa_IR: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({
             calendar: "persian",
             locale: "fa-IR", 
             timelength: "long",
             type: "time"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var date = new PersianDate({
@@ -2226,13 +2226,13 @@ module.exports.testdatefmt_fa_IR = {
     },
     
     testDateFmtPersSimpleTimeFull_fa_IR: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({
             calendar: "persian",
             locale: "fa-IR",
             length: "full",
             type: "time"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var date = new PersianDate({
@@ -2250,13 +2250,13 @@ module.exports.testdatefmt_fa_IR = {
     },
     
     testDateFmtPersDateTimeSimpleShort_fa_IR: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({
             calendar: "persian",
             locale: "fa-IR",
             length: "short",
             type: "datetime"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var date = new PersianDate({
@@ -2274,13 +2274,13 @@ module.exports.testdatefmt_fa_IR = {
     },
     
     testDateFmtPersDateTimeSimpleMedium_fa_IR: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({
             calendar: "persian",
             locale: "fa-IR",
             length: "medium",
             type: "datetime"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var date = new PersianDate({
@@ -2298,13 +2298,13 @@ module.exports.testdatefmt_fa_IR = {
     },
     
     testDateFmtPersDateTimeSimpleLong_fa_IR: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({
             calendar: "persian",
             locale: "fa-IR",
             length: "long",
             type: "datetime"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var date = new PersianDate({
@@ -2322,13 +2322,13 @@ module.exports.testdatefmt_fa_IR = {
     },
     
     testDateFmtPersDateTimeSimpleFull_fa_IR: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({
             calendar: "persian",
             locale: "fa-IR",
             length: "full",
             type: "datetime"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var date = new PersianDate({

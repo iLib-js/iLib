@@ -1222,8 +1222,8 @@ module.exports.testdatefmt_es_CO = {
     },
 
     testDateFmtFormatRelativeWithinMinuteAfter_es_CO: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({locale: "es-CO", length: "full"});
+        test.expect(2);
         test.ok(fmt !== null);
         
         var reference = new GregorianDate({
@@ -1250,8 +1250,8 @@ module.exports.testdatefmt_es_CO = {
         test.done();
     },
     testDateFmtFormatRelativeWithinMinuteBefore_es_CO: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({locale: "es-CO", length: "full"});
+        test.expect(2);
         test.ok(fmt !== null);
         
         var reference = new GregorianDate({
@@ -1278,8 +1278,8 @@ module.exports.testdatefmt_es_CO = {
         test.done();
     },
     testDateFmtFormatRelativeWithinHourAfter_es_CO: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({locale: "es-CO", length: "full"});
+        test.expect(2);
         test.ok(fmt !== null);
         
         var reference = new GregorianDate({
@@ -1306,8 +1306,8 @@ module.exports.testdatefmt_es_CO = {
         test.done();
     },
     testDateFmtFormatRelativeWithinHourBefore_es_CO: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({locale: "es-CO", length: "full"});
+        test.expect(2);
         test.ok(fmt !== null);
         
         var reference = new GregorianDate({
@@ -1334,8 +1334,8 @@ module.exports.testdatefmt_es_CO = {
         test.done();
     },
     testDateFmtFormatRelativeWithinDayAfter_es_CO: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({locale: "es-CO", length: "full"});
+        test.expect(2);
         test.ok(fmt !== null);
         
         var reference = new GregorianDate({
@@ -1364,8 +1364,8 @@ module.exports.testdatefmt_es_CO = {
     
     
     testDateFmtFormatRelativeWithinDayBefore_es_CO: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({locale: "es-CO", length: "full"});
+        test.expect(2);
         test.ok(fmt !== null);
         
         var reference = new GregorianDate({
@@ -1393,8 +1393,8 @@ module.exports.testdatefmt_es_CO = {
     },
     
     testDateFmtFormatRelativeWithinFortnightAfter_es_CO: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({locale: "es-CO", length: "full"});
+        test.expect(2);
         test.ok(fmt !== null);
         
         var reference = new GregorianDate({
@@ -1421,8 +1421,8 @@ module.exports.testdatefmt_es_CO = {
         test.done();
     },
     testDateFmtFormatRelativeWithinFortnightBefore_es_CO: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({locale: "es-CO", length: "full"});
+        test.expect(2);
         test.ok(fmt !== null);
         
         var reference = new GregorianDate({
@@ -1450,8 +1450,8 @@ module.exports.testdatefmt_es_CO = {
     },
     
     testDateFmtFormatRelativeWithinQuarterAfter_es_CO: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({locale: "es-CO", length: "full"});
+        test.expect(2);
         test.ok(fmt !== null);
         
         var reference = new GregorianDate({
@@ -1478,8 +1478,8 @@ module.exports.testdatefmt_es_CO = {
         test.done();
     },
     testDateFmtFormatRelativeWithinQuarterBefore_es_CO: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({locale: "es-CO", length: "full"});
+        test.expect(2);
         test.ok(fmt !== null);
         
         var reference = new GregorianDate({
@@ -1507,8 +1507,8 @@ module.exports.testdatefmt_es_CO = {
     },
     
     testDateFmtFormatRelativeWithinTwoYearsAfter_es_CO: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({locale: "es-CO", length: "full"});
+        test.expect(2);
         test.ok(fmt !== null);
         
         var reference = new GregorianDate({
@@ -1535,8 +1535,8 @@ module.exports.testdatefmt_es_CO = {
         test.done();
     },
     testDateFmtFormatRelativeWithinTwoYearsBefore_es_CO: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({locale: "es-CO", length: "full"});
+        test.expect(2);
         test.ok(fmt !== null);
         
         var reference = new GregorianDate({
@@ -1564,8 +1564,8 @@ module.exports.testdatefmt_es_CO = {
     },
     
     testDateFmtFormatRelativeYearsAfter_es_CO: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({locale: "es-CO", length: "full"});
+        test.expect(2);
         test.ok(fmt !== null);
         
         var reference = new GregorianDate({
@@ -1592,8 +1592,8 @@ module.exports.testdatefmt_es_CO = {
         test.done();
     },
     testDateFmtFormatRelativeYearsBefore_es_CO: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({locale: "es-CO", length: "full"});
+        test.expect(2);
         test.ok(fmt !== null);
         
         var reference = new GregorianDate({

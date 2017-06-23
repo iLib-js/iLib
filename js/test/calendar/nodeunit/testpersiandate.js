@@ -72,138 +72,137 @@ module.exports.testpersiandate = {
     },
 
     testPersAlgoDateConstructor: function(test) {
-        test.expect(1);
         var pd = new PersianAlgoDate();
         
+        test.expect(1);
         test.ok(pd !== null);
         test.done();
     },
     
     testPersAlgoDateCalcYearPositive1: function(test) {
-        test.expect(1);
         var pd = new PersianAlgoDate({rd: 0, timezone: "Etc/UTC"});
         
+        test.expect(1);
         test.equal(pd._calcYear(1), 1);
         test.done();
     },
     
     testPersAlgoDateCalcYearPositive2: function(test) {
-        test.expect(1);
         var pd = new PersianAlgoDate({rd: 0, timezone: "Etc/UTC"});
         
+        test.expect(1);
         test.equal(pd._calcYear(365), 1);
         test.done();
     },
     
     testPersAlgoDateCalcYearPositive3: function(test) {
-        test.expect(1);
         var pd = new PersianAlgoDate({rd: 0, timezone: "Etc/UTC"});
         
+        test.expect(1);
         test.equal(pd._calcYear(366), 2);
         test.done();
     },
     testPersAlgoDateCalcYearPositive4: function(test) {
-        test.expect(1);
         var pd = new PersianAlgoDate({rd: 0, timezone: "Etc/UTC"});
         
+        test.expect(1);
         test.equal(pd._calcYear(730), 2);
         test.done();
     },
     testPersAlgoDateCalcYearPositive5: function(test) {
-        test.expect(1);
         var pd = new PersianAlgoDate({rd: 0, timezone: "Etc/UTC"});
         
+        test.expect(1);
         test.equal(pd._calcYear(731), 3);
         test.done();
     },
     testPersAlgoDateCalcYearPositive6: function(test) {
-        test.expect(1);
         var pd = new PersianAlgoDate({rd: 0, timezone: "Etc/UTC"});
         
+        test.expect(1);
         test.equal(pd._calcYear(1095), 3);
         test.done();
     },
     testPersAlgoDateCalcYearPositive7: function(test) {
-        test.expect(1);
         var pd = new PersianAlgoDate({rd: 0, timezone: "Etc/UTC"});
         
+        test.expect(1);
         test.equal(pd._calcYear(1096), 4);
         test.done();
     },
     testPersAlgoDateCalcYearPositive8: function(test) {
-        test.expect(1);
         var pd = new PersianAlgoDate({rd: 0, timezone: "Etc/UTC"});
         
+        test.expect(1);
         test.equal(pd._calcYear(1461), 4);
         test.done();
     },
     testPersAlgoDateCalcYearPositive9: function(test) {
-        test.expect(1);
         var pd = new PersianAlgoDate({rd: 0, timezone: "Etc/UTC"});
         
+        test.expect(1);
         test.equal(pd._calcYear(1462), 5);
         test.done();
     },
     testPersAlgoDateCalcYearPositive10: function(test) {
-        test.expect(1);
         var pd = new PersianAlgoDate({rd: 0, timezone: "Etc/UTC"});
         
+        test.expect(1);
         test.equal(pd._calcYear(1826), 5);
         test.done();
     },
     testPersAlgoDateCalcYearPositive11: function(test) {
-        test.expect(1);
         var pd = new PersianAlgoDate({rd: 0, timezone: "Etc/UTC"});
         
+        test.expect(1);
         test.equal(pd._calcYear(1827), 6);
         test.done();
     },
     
     testPersAlgoDateCalcYearNegative1: function(test) {
-        test.expect(1);
         var pd = new PersianAlgoDate({rd: 0, timezone: "Etc/UTC"});
         
+        test.expect(1);
         test.equal(pd._calcYear(0), -1);
         test.done();
     },
     testPersAlgoDateCalcYearNegative2: function(test) {
-        test.expect(1);
         var pd = new PersianAlgoDate({rd: 0, timezone: "Etc/UTC"});
         
+        test.expect(1);
         test.equal(pd._calcYear(-365), -1);
         test.done();
     },
     testPersAlgoDateCalcYearNegative3: function(test) {
-        test.expect(1);
         var pd = new PersianAlgoDate({rd: 0, timezone: "Etc/UTC"});
         
+        test.expect(1);
         test.equal(pd._calcYear(-366), -2);
         test.done();
     },
     testPersAlgoDateCalcYearNegative4: function(test) {
-        test.expect(1);
         var pd = new PersianAlgoDate({rd: 0, timezone: "Etc/UTC"});
         
+        test.expect(1);
         test.equal(pd._calcYear(-730), -2);
         test.done();
     },
     testPersAlgoDateCalcYearNegative5: function(test) {
-        test.expect(1);
         var pd = new PersianAlgoDate({rd: 0, timezone: "Etc/UTC"});
         
+        test.expect(1);
         test.equal(pd._calcYear(-731), -3);
         test.done();
     },
     testPersAlgoDateCalcYearNegative6: function(test) {
-        test.expect(1);
         var pd = new PersianAlgoDate({rd: 0, timezone: "Etc/UTC"});
         
+        test.expect(1);
         test.equal(pd._calcYear(-441089), -1208);
         test.done();
     },
     
     testPersAlgoRataDieConstructorFromDateComponents1: function(test) {
-        test.expect(2);
         var prd = new PersAlgoRataDie({
             year: 1,
             month: 1,
@@ -214,12 +213,12 @@ module.exports.testpersiandate = {
             millisecond: 0
         });
         
+        test.expect(2);
         test.equal(typeof(prd), 'object');
         test.equal(prd.getRataDie(), 1);
         test.done();
     },
     testPersAlgoRataDieConstructorFromDateComponents2: function(test) {
-        test.expect(2);
         var prd = new PersAlgoRataDie({
             year: -1,
             month: 12,
@@ -230,12 +229,12 @@ module.exports.testpersiandate = {
             millisecond: 0
         });
         
+        test.expect(2);
         test.equal(typeof(prd), 'object');
         test.equal(prd.getRataDie(), 0);
         test.done();
     },
     testPersAlgoRataDieConstructorFromDateComponents3: function(test) {
-        test.expect(2);
         var prd = new PersAlgoRataDie({
             year: 1,
             month: 12,
@@ -246,12 +245,12 @@ module.exports.testpersiandate = {
             millisecond: 0
         });
         
+        test.expect(2);
         test.equal(typeof(prd), 'object');
         test.equal(prd.getRataDie(), 365);
         test.done();
     },
     testPersAlgoRataDieConstructorFromDateComponents4: function(test) {
-        test.expect(2);
         var prd = new PersAlgoRataDie({
             year: 2,
             month: 1,
@@ -262,12 +261,12 @@ module.exports.testpersiandate = {
             millisecond: 0
         });
         
+        test.expect(2);
         test.equal(typeof(prd), 'object');
         test.equal(prd.getRataDie(), 366);
         test.done();
     },
     testPersAlgoRataDieConstructorFromDateComponents5: function(test) {
-        test.expect(2);
         var prd = new PersAlgoRataDie({
             year: 1,
             month: 1,
@@ -278,12 +277,12 @@ module.exports.testpersiandate = {
             millisecond: 0
         });
         
+        test.expect(2);
         test.equal(typeof(prd), 'object');
         test.equal(prd.getRataDie(), 31);
         test.done();
     },
     testPersAlgoRataDieConstructorFromDateComponents6: function(test) {
-        test.expect(2);
         var prd = new PersAlgoRataDie({
             year: 1,
             month: 2,
@@ -294,12 +293,12 @@ module.exports.testpersiandate = {
             millisecond: 0
         });
         
+        test.expect(2);
         test.equal(typeof(prd), 'object');
         test.equal(prd.getRataDie(), 32);
         test.done();
     },
     testPersAlgoRataDieConstructorFromDateComponents7: function(test) {
-        test.expect(2);
         var prd = new PersAlgoRataDie({
             year: 2,
             month: 12,
@@ -310,12 +309,12 @@ module.exports.testpersiandate = {
             millisecond: 0
         });
         
+        test.expect(2);
         test.equal(typeof(prd), 'object');
         test.equal(prd.getRataDie(), 730);
         test.done();
     },
     testPersAlgoRataDieConstructorFromDateComponents8: function(test) {
-        test.expect(2);
         var prd = new PersAlgoRataDie({
             year: 3,
             month: 1,
@@ -326,12 +325,12 @@ module.exports.testpersiandate = {
             millisecond: 0
         });
         
+        test.expect(2);
         test.equal(typeof(prd), 'object');
         test.equal(prd.getRataDie(), 731);
         test.done();
     },
     testPersAlgoRataDieConstructorFromDateComponents9: function(test) {
-        test.expect(2);
         var prd = new PersAlgoRataDie({
             year: 3,
             month: 12,
@@ -342,12 +341,12 @@ module.exports.testpersiandate = {
             millisecond: 0
         });
         
+        test.expect(2);
         test.equal(typeof(prd), 'object');
         test.equal(prd.getRataDie(), 1095);
         test.done();
     },
     testPersAlgoRataDieConstructorFromDateComponents10: function(test) {
-        test.expect(2);
         var prd = new PersAlgoRataDie({
             year: 4,
             month: 1,
@@ -358,12 +357,12 @@ module.exports.testpersiandate = {
             millisecond: 0
         });
         
+        test.expect(2);
         test.equal(typeof(prd), 'object');
         test.equal(prd.getRataDie(), 1096);
         test.done();
     },
     testPersAlgoRataDieConstructorFromDateComponents11: function(test) {
-        test.expect(2);
         var prd = new PersAlgoRataDie({
             year: 4,
             month: 12,
@@ -374,12 +373,12 @@ module.exports.testpersiandate = {
             millisecond: 0
         });
         
+        test.expect(2);
         test.equal(typeof(prd), 'object');
         test.equal(prd.getRataDie(), 1461);
         test.done();
     },
     testPersAlgoRataDieConstructorFromDateComponents12: function(test) {
-        test.expect(2);
         var prd = new PersAlgoRataDie({
             year: 5,
             month: 1,
@@ -390,12 +389,12 @@ module.exports.testpersiandate = {
             millisecond: 0
         });
         
+        test.expect(2);
         test.equal(typeof(prd), 'object');
         test.equal(prd.getRataDie(), 1462);
         test.done();
     },
     testPersAlgoRataDieConstructorFromDateComponents13: function(test) {
-        test.expect(2);
         var prd = new PersAlgoRataDie({
             year: 5,
             month: 12,
@@ -406,12 +405,12 @@ module.exports.testpersiandate = {
             millisecond: 0
         });
         
+        test.expect(2);
         test.equal(typeof(prd), 'object');
         test.equal(prd.getRataDie(), 1826);
         test.done();
     },
     testPersAlgoRataDieConstructorFromDateComponents14: function(test) {
-        test.expect(2);
         var prd = new PersAlgoRataDie({
             year: 6,
             month: 1,
@@ -422,12 +421,12 @@ module.exports.testpersiandate = {
             millisecond: 0
         });
         
+        test.expect(2);
         test.equal(typeof(prd), 'object');
         test.equal(prd.getRataDie(), 1827);
         test.done();
     },
     testPersAlgoRataDieConstructorFromDateComponents15: function(test) {
-        test.expect(2);
         var prd = new PersAlgoRataDie({
             year: -1208,
             month: 5,
@@ -438,6 +437,7 @@ module.exports.testpersiandate = {
             millisecond: 0
         });
         
+        test.expect(2);
         test.equal(typeof(prd), 'object');
         test.equal(prd.getRataDie(), -441088);
         test.done();
@@ -445,9 +445,9 @@ module.exports.testpersiandate = {
     
     /* julian date is rd 366 + epoch */
     testPersAlgoDateConstructorFromJD: function(test) {
-        test.expect(9);
         var pd = new PersianAlgoDate({julianday: 1948685.5, timezone: "Etc/UTC"});
         
+        test.expect(9);
         test.equal(typeof(pd), 'object');
         test.equal(pd.getRataDie(), 366);
         test.equal(pd.getYears(), 2);
@@ -463,9 +463,9 @@ module.exports.testpersiandate = {
     // year 4 was a leap year, so Esfand 0004 contains 30 days instead of 29, and 
     // Farvardin 1 0005 is one day later than expected. RD is 1462
     testPersAlgoDateAfterLeapYear: function(test) {
-        test.expect(9);
         var pd = new PersianAlgoDate({julianday: 1949781.9, timezone: "Etc/UTC"});  // Far 1, 0005, 9:36am
         
+        test.expect(9);
         test.equal(typeof(pd), 'object');
         test.equal(pd.getRataDie(), 1462.4);
         test.equal(pd.getYears(), 5);
@@ -484,7 +484,7 @@ module.exports.testpersiandate = {
         for (var i = 0; i < testDatesPersAlgoPersian.length; i++) {
             pd = new PersianAlgoDate({julianday: testDatesPersAlgoPersian[i][0], timezone: "Etc/UTC"});
         
-        console.log("testing jd=" + testDatesPersAlgoPersian[i][0]);
+        // console.log("testing jd=" + testDatesPersAlgoPersian[i][0]);
             
             test.equal(typeof(pd), 'object');
             test.equal((testDatesPersAlgoPersian[i][0] - 1948319.5), pd.getRataDie(), "testing rd for " + testDatesPersAlgoPersian[i][0]);
@@ -515,7 +515,7 @@ module.exports.testpersiandate = {
                 timezone: "Etc/UTC"
             });
         
-        console.log("testing jd=" + testDatesPersAlgoPersian[i][0]);
+        // console.log("testing jd=" + testDatesPersAlgoPersian[i][0]);
             
             test.equal(typeof(pd), 'object');
             test.equal(testDatesPersAlgoPersian[i][0], pd.getJulianDay(), "testing row " + testDatesPersAlgoPersian[i][0]);
@@ -525,7 +525,6 @@ module.exports.testpersiandate = {
     },
     
     testPersAlgoDateConstructorFull: function(test) {
-        test.expect(8);
         var pd = new PersianAlgoDate({
             year: 1392,
             month: 9,
@@ -537,6 +536,7 @@ module.exports.testpersiandate = {
             timezone: "Etc/UTC"
         });
         
+        test.expect(8);
         test.ok(pd !== null);
         
         test.equal(pd.getYears(), 1392);
@@ -550,7 +550,6 @@ module.exports.testpersiandate = {
     },
     
     testPersAlgoDateConstructorFullWithStrings: function(test) {
-        test.expect(8);
         var pd = new PersianAlgoDate({
             year: "1392", 
             month: "9",
@@ -561,6 +560,7 @@ module.exports.testpersiandate = {
             millisecond: "123"
         });
         
+        test.expect(8);
         test.ok(pd !== null);
         
         test.equal(pd.getYears(), 1392);
@@ -574,7 +574,6 @@ module.exports.testpersiandate = {
     },
     
     testPersAlgoDateConstructorCopy: function(test) {
-        test.expect(8);
         var pd = new PersianAlgoDate({
             year: 1392, 
             month: 9, 
@@ -586,6 +585,7 @@ module.exports.testpersiandate = {
             timezone: "Etc/UTC"
         });
         
+        test.expect(8);
         test.ok(pd !== null);
         
         test.equal(pd.getYears(), 1392);
@@ -599,9 +599,9 @@ module.exports.testpersiandate = {
     },
     
     testPersAlgoDateSetYears: function(test) {
-        test.expect(2);
         var pd = new PersianAlgoDate();
         
+        test.expect(2);
         test.ok(pd !== null);
         
         pd.setYears(123);
@@ -611,9 +611,9 @@ module.exports.testpersiandate = {
     },
     
     testPersAlgoDateSetMonths: function(test) {
-        test.expect(2);
         var pd = new PersianAlgoDate();
         
+        test.expect(2);
         test.ok(pd !== null);
         
         pd.setMonths(7);
@@ -623,9 +623,9 @@ module.exports.testpersiandate = {
     },
     
     testPersAlgoDateSetDays: function(test) {
-        test.expect(2);
         var pd = new PersianAlgoDate();
         
+        test.expect(2);
         test.ok(pd !== null);
         
         pd.setDays(12);
@@ -635,9 +635,9 @@ module.exports.testpersiandate = {
     },
     
     testPersAlgoDateSetHours: function(test) {
-        test.expect(2);
         var pd = new PersianAlgoDate();
         
+        test.expect(2);
         test.ok(pd !== null);
         
         pd.setHours(12);
@@ -647,9 +647,9 @@ module.exports.testpersiandate = {
     },
     
     testPersAlgoDateSetMinutes: function(test) {
-        test.expect(2);
         var pd = new PersianAlgoDate();
         
+        test.expect(2);
         test.ok(pd !== null);
         
         pd.setMinutes(13);
@@ -659,9 +659,9 @@ module.exports.testpersiandate = {
     },
     
     testPersAlgoDateSetSeconds: function(test) {
-        test.expect(2);
         var pd = new PersianAlgoDate();
         
+        test.expect(2);
         test.ok(pd !== null);
         
         pd.setSeconds(23);
@@ -671,9 +671,9 @@ module.exports.testpersiandate = {
     },
     
     testPersAlgoDateSetMilliseconds: function(test) {
-        test.expect(2);
         var pd = new PersianAlgoDate();
         
+        test.expect(2);
         test.ok(pd !== null);
         
         pd.setMilliseconds(123);
@@ -683,7 +683,6 @@ module.exports.testpersiandate = {
     },
     
     testGetDayOfWeek1: function(test) {
-        test.expect(2);
         var pd = new PersianAlgoDate({
             year: 1393,
             month: 3,
@@ -691,6 +690,7 @@ module.exports.testpersiandate = {
             timezone: "Etc/UTC"
         });
         
+        test.expect(2);
         test.ok(pd !== null);
         
         test.equal(pd.getDayOfWeek(), 5);
@@ -698,7 +698,6 @@ module.exports.testpersiandate = {
     },
     
     testGetDayOfWeekWithTime: function(test) {
-        test.expect(2);
         var pd = new PersianAlgoDate({
             year: 1393,
             month: 3,
@@ -709,6 +708,7 @@ module.exports.testpersiandate = {
             timezone: "Etc/UTC"
         });
         
+        test.expect(2);
         test.ok(pd !== null);
         
         test.equal(pd.getDayOfWeek(), 5);
@@ -716,13 +716,13 @@ module.exports.testpersiandate = {
     },
     
     testPersAlgoDateTestGetTimeZero: function(test) {
-        test.expect(2);
         var pd = new PersianAlgoDate({
             year: 1348,
             month: 10,
             day: 11,
             timezone: "Etc/UTC"
         });
+        test.expect(2);
         test.ok(pd !== null);
         
         test.equal(pd.getTime(), 0);
@@ -730,8 +730,8 @@ module.exports.testpersiandate = {
     },
     
     testPersAlgoDateTestGetTimeZeroJD: function(test) {
-        test.expect(2);
         var pd = new PersianAlgoDate({julianday: 2440587.5});
+        test.expect(2);
         test.ok(pd !== null);
         
         test.equal(pd.getTime(), 0);
@@ -739,7 +739,6 @@ module.exports.testpersiandate = {
     },
     
     testPersAlgoDateTestGetTime: function(test) {
-        test.expect(2);
         var pd = new PersianAlgoDate({
             year: 1348,
             month: 10,
@@ -748,6 +747,7 @@ module.exports.testpersiandate = {
             minute: 30,
             timezone: "Etc/UTC"
         });
+        test.expect(2);
         test.ok(pd !== null);
         
         test.equal(pd.getTime(), 30600000);
@@ -755,13 +755,13 @@ module.exports.testpersiandate = {
     },
     
     testPersAlgoDateTestGetTimeTooEarly: function(test) {
-        test.expect(2);
         var pd = new PersianAlgoDate({
             year: 1348,
             month: 10,
             day: 10,
             timezone: "Etc/UTC"
         });
+        test.expect(2);
         test.ok(pd !== null);
         
         test.equal(pd.getTime(), -1);
@@ -769,13 +769,13 @@ module.exports.testpersiandate = {
     },
     
     testPersAlgoDateTestGetTimeTooLate: function(test) {
-        test.expect(2);
         var pd = new PersianAlgoDate({
             year: 1416,
             month: 11,
             day: 1,
             timezone: "Etc/UTC"
         });
+        test.expect(2);
         test.ok(pd !== null);
         
         test.equal(pd.getTime(), -1);
@@ -784,13 +784,13 @@ module.exports.testpersiandate = {
     
     // test some of the helper functions to make sure they are producing the right thing
     testPersAlgoDateOnOrBeforeSun: function(test) {
-        test.expect(3);
         var pd = new PersianAlgoDate({
             year: 1388,
             month: 9,
             day: 27,
             timezone: "Etc/UTC"
         });
+        test.expect(3);
         test.ok(pd !== null);
         
         test.equal(pd.getDayOfWeek(), 5); // Friday
@@ -802,13 +802,13 @@ module.exports.testpersiandate = {
     },
     
     testPersAlgoDateOnOrBeforeMon: function(test) {
-        test.expect(3);
         var pd = new PersianAlgoDate({
             year: 1388,
             month: 9,
             day: 27,
             timezone: "Etc/UTC"
         });
+        test.expect(3);
         test.ok(pd !== null);
         
         test.equal(pd.getDayOfWeek(), 5); // Friday
@@ -819,13 +819,13 @@ module.exports.testpersiandate = {
     },
     
     testPersAlgoDateOnOrBeforeTue: function(test) {
-        test.expect(3);
         var pd = new PersianAlgoDate({
             year: 1388,
             month: 9,
             day: 27,
             timezone: "Etc/UTC"
         });
+        test.expect(3);
         test.ok(pd !== null);
         
         test.equal(pd.getDayOfWeek(), 5); // Friday
@@ -836,13 +836,13 @@ module.exports.testpersiandate = {
     },
     
     testPersAlgoDateOnOrBeforeWed: function(test) {
-        test.expect(3);
         var pd = new PersianAlgoDate({
             year: 1388,
             month: 9,
             day: 27,
             timezone: "Etc/UTC"
         });
+        test.expect(3);
         test.ok(pd !== null);
         
         test.equal(pd.getDayOfWeek(), 5); // Friday
@@ -853,13 +853,13 @@ module.exports.testpersiandate = {
     },
     
     testPersAlgoDateOnOrBeforeThu: function(test) {
-        test.expect(3);
         var pd = new PersianAlgoDate({
             year: 1388,
             month: 9,
             day: 27,
             timezone: "Etc/UTC"
         });
+        test.expect(3);
         test.ok(pd !== null);
         
         test.equal(pd.getDayOfWeek(), 5); // Friday
@@ -870,13 +870,13 @@ module.exports.testpersiandate = {
     },
     
     testPersAlgoDateOnOrBeforeFri: function(test) {
-        test.expect(3);
         var pd = new PersianAlgoDate({
             year: 1388,
             month: 9,
             day: 27,
             timezone: "Etc/UTC"
         });
+        test.expect(3);
         test.ok(pd !== null);
         
         test.equal(pd.getDayOfWeek(), 5); // Friday
@@ -887,13 +887,13 @@ module.exports.testpersiandate = {
     },
     
     testPersAlgoDateOnOrBeforeSat: function(test) {
-        test.expect(3);
         var pd = new PersianAlgoDate({
             year: 1388,
             month: 9,
             day: 27,
             timezone: "Etc/UTC"
         });
+        test.expect(3);
         test.ok(pd !== null);
         
         test.equal(pd.getDayOfWeek(), 5); // Friday
@@ -904,13 +904,13 @@ module.exports.testpersiandate = {
     },
     
     testPersAlgoDateOnOrAfterSun: function(test) {
-        test.expect(3);
         var pd = new PersianAlgoDate({
             year: 1388,
             month: 9,
             day: 27,
             timezone: "Etc/UTC"
         });
+        test.expect(3);
         test.ok(pd !== null);
         
         test.equal(pd.getDayOfWeek(), 5); // Friday
@@ -922,13 +922,13 @@ module.exports.testpersiandate = {
     },
     
     testPersAlgoDateOnOrAfterMon: function(test) {
-        test.expect(3);
         var pd = new PersianAlgoDate({
             year: 1388,
             month: 9,
             day: 27,
             timezone: "Etc/UTC"
         });
+        test.expect(3);
         test.ok(pd !== null);
         
         test.equal(pd.getDayOfWeek(), 5); // Friday
@@ -939,13 +939,13 @@ module.exports.testpersiandate = {
     },
     
     testPersAlgoDateOnOrAfterTue: function(test) {
-        test.expect(3);
         var pd = new PersianAlgoDate({
             year: 1388,
             month: 9,
             day: 27,
             timezone: "Etc/UTC"
         });
+        test.expect(3);
         test.ok(pd !== null);
         
         test.equal(pd.getDayOfWeek(), 5); // Friday
@@ -956,13 +956,13 @@ module.exports.testpersiandate = {
     },
     
     testPersAlgoDateOnOrAfterWed: function(test) {
-        test.expect(3);
         var pd = new PersianAlgoDate({
             year: 1388,
             month: 9,
             day: 27,
             timezone: "Etc/UTC"
         });
+        test.expect(3);
         test.ok(pd !== null);
         
         test.equal(pd.getDayOfWeek(), 5); // Friday
@@ -973,13 +973,13 @@ module.exports.testpersiandate = {
     },
     
     testPersAlgoDateOnOrAfterThu: function(test) {
-        test.expect(3);
         var pd = new PersianAlgoDate({
             year: 1388,
             month: 9,
             day: 27,
             timezone: "Etc/UTC"
         });
+        test.expect(3);
         test.ok(pd !== null);
         
         test.equal(pd.getDayOfWeek(), 5); // Friday
@@ -990,13 +990,13 @@ module.exports.testpersiandate = {
     },
     
     testPersAlgoDateOnOrAfterFri: function(test) {
-        test.expect(3);
         var pd = new PersianAlgoDate({
             year: 1388,
             month: 9,
             day: 27,
             timezone: "Etc/UTC"
         });
+        test.expect(3);
         test.ok(pd !== null);
         
         test.equal(pd.getDayOfWeek(), 5); // Friday
@@ -1007,13 +1007,13 @@ module.exports.testpersiandate = {
     },
     
     testPersAlgoDateOnOrAfterSat: function(test) {
-        test.expect(3);
         var pd = new PersianAlgoDate({
             year: 1388,
             month: 9,
             day: 27,
             timezone: "Etc/UTC"
         });
+        test.expect(3);
         test.ok(pd !== null);
         
         test.equal(pd.getDayOfWeek(), 5); // Friday
@@ -1024,13 +1024,13 @@ module.exports.testpersiandate = {
     },
     
     testPersAlgoDateBeforeSun: function(test) {
-        test.expect(3);
         var pd = new PersianAlgoDate({
             year: 1388,
             month: 9,
             day: 27,
             timezone: "Etc/UTC"
         });
+        test.expect(3);
         test.ok(pd !== null);
         
         test.equal(pd.getDayOfWeek(), 5); // Friday
@@ -1042,13 +1042,13 @@ module.exports.testpersiandate = {
     },
     
     testPersAlgoDateBeforeMon: function(test) {
-        test.expect(3);
         var pd = new PersianAlgoDate({
             year: 1388,
             month: 9,
             day: 27,
             timezone: "Etc/UTC"
         });
+        test.expect(3);
         test.ok(pd !== null);
         
         test.equal(pd.getDayOfWeek(), 5); // Friday
@@ -1059,13 +1059,13 @@ module.exports.testpersiandate = {
     },
     
     testPersAlgoDateBeforeTue: function(test) {
-        test.expect(3);
         var pd = new PersianAlgoDate({
             year: 1388,
             month: 9,
             day: 27,
             timezone: "Etc/UTC"
         });
+        test.expect(3);
         test.ok(pd !== null);
         
         test.equal(pd.getDayOfWeek(), 5); // Friday
@@ -1076,13 +1076,13 @@ module.exports.testpersiandate = {
     },
     
     testPersAlgoDateBeforeWed: function(test) {
-        test.expect(3);
         var pd = new PersianAlgoDate({
             year: 1388,
             month: 9,
             day: 27,
             timezone: "Etc/UTC"
         });
+        test.expect(3);
         test.ok(pd !== null);
         
         test.equal(pd.getDayOfWeek(), 5); // Friday
@@ -1093,13 +1093,13 @@ module.exports.testpersiandate = {
     },
     
     testPersAlgoDateBeforeThu: function(test) {
-        test.expect(3);
         var pd = new PersianAlgoDate({
             year: 1388,
             month: 9,
             day: 27,
             timezone: "Etc/UTC"
         });
+        test.expect(3);
         test.ok(pd !== null);
         
         test.equal(pd.getDayOfWeek(), 5); // Friday
@@ -1110,13 +1110,13 @@ module.exports.testpersiandate = {
     },
     
     testPersAlgoDateBeforeFri: function(test) {
-        test.expect(3);
         var pd = new PersianAlgoDate({
             year: 1388,
             month: 9,
             day: 27,
             timezone: "Etc/UTC"
         });
+        test.expect(3);
         test.ok(pd !== null);
         
         test.equal(pd.getDayOfWeek(), 5); // Friday
@@ -1127,13 +1127,13 @@ module.exports.testpersiandate = {
     },
     
     testPersAlgoDateBeforeSat: function(test) {
-        test.expect(3);
         var pd = new PersianAlgoDate({
             year: 1388,
             month: 9,
             day: 27,
             timezone: "Etc/UTC"
         });
+        test.expect(3);
         test.ok(pd !== null);
         
         test.equal(pd.getDayOfWeek(), 5); // Friday
@@ -1144,13 +1144,13 @@ module.exports.testpersiandate = {
     },
     
     testPersAlgoDateAfterSun: function(test) {
-        test.expect(3);
         var pd = new PersianAlgoDate({
             year: 1388,
             month: 9,
             day: 27,
             timezone: "Etc/UTC"
         });
+        test.expect(3);
         test.ok(pd !== null);
         
         test.equal(pd.getDayOfWeek(), 5); // Friday
@@ -1162,13 +1162,13 @@ module.exports.testpersiandate = {
     },
     
     testPersAlgoDateAfterMon: function(test) {
-        test.expect(3);
         var pd = new PersianAlgoDate({
             year: 1388,
             month: 9,
             day: 27,
             timezone: "Etc/UTC"
         });
+        test.expect(3);
         test.ok(pd !== null);
         
         test.equal(pd.getDayOfWeek(), 5); // Friday
@@ -1179,13 +1179,13 @@ module.exports.testpersiandate = {
     },
     
     testPersAlgoDateAfterTue: function(test) {
-        test.expect(3);
         var pd = new PersianAlgoDate({
             year: 1388,
             month: 9,
             day: 27,
             timezone: "Etc/UTC"
         });
+        test.expect(3);
         test.ok(pd !== null);
         
         test.equal(pd.getDayOfWeek(), 5); // Friday
@@ -1196,13 +1196,13 @@ module.exports.testpersiandate = {
     },
     
     testPersAlgoDateAfterWed: function(test) {
-        test.expect(3);
         var pd = new PersianAlgoDate({
             year: 1388,
             month: 9,
             day: 27,
             timezone: "Etc/UTC"
         });
+        test.expect(3);
         test.ok(pd !== null);
         
         test.equal(pd.getDayOfWeek(), 5); // Friday
@@ -1213,13 +1213,13 @@ module.exports.testpersiandate = {
     },
     
     testPersAlgoDateAfterThu: function(test) {
-        test.expect(3);
         var pd = new PersianAlgoDate({
             year: 1388,
             month: 9,
             day: 27,
             timezone: "Etc/UTC"
         });
+        test.expect(3);
         test.ok(pd !== null);
         
         test.equal(pd.getDayOfWeek(), 5); // Friday
@@ -1230,13 +1230,13 @@ module.exports.testpersiandate = {
     },
     
     testPersAlgoDateAfterFri: function(test) {
-        test.expect(3);
         var pd = new PersianAlgoDate({
             year: 1388,
             month: 9,
             day: 27,
             timezone: "Etc/UTC"
         });
+        test.expect(3);
         test.ok(pd !== null);
         
         test.equal(pd.getDayOfWeek(), 5); // Friday
@@ -1247,13 +1247,13 @@ module.exports.testpersiandate = {
     },
     
     testPersAlgoDateAfterSat: function(test) {
-        test.expect(3);
         var pd = new PersianAlgoDate({
             year: 1388,
             month: 9,
             day: 27,
             timezone: "Etc/UTC"
         });
+        test.expect(3);
         test.ok(pd !== null);
         
         test.equal(pd.getDayOfWeek(), 5); // Friday
@@ -1264,13 +1264,13 @@ module.exports.testpersiandate = {
     },
     
     testPersAlgoDateTestGetWeekOfYearThisYear: function(test) {
-        test.expect(2);
         var pd = new PersianAlgoDate({
             year: 1388,
             month: 2,
             day: 1,
             timezone: "Etc/UTC"
         });
+        test.expect(2);
         test.ok(pd !== null);
         
         test.equal(pd.getWeekOfYear(), 5);
@@ -1278,13 +1278,13 @@ module.exports.testpersiandate = {
     },
     
     testPersAlgoDateTestGetWeekOfYearThisYear2: function(test) {
-        test.expect(2);
         var pd = new PersianAlgoDate({
             year: 1388,
             month: 3,
             day: 19,
             timezone: "Etc/UTC"
         });
+        test.expect(2);
         test.ok(pd !== null);
         
         test.equal(pd.getWeekOfYear(), 12);
@@ -1292,13 +1292,13 @@ module.exports.testpersiandate = {
     },
     
     testPersAlgoDateTestGetWeekOfYearThisYear3: function(test) {
-        test.expect(2);
         var pd = new PersianAlgoDate({
             year: 1388,
             month: 12,
             day: 29,
             timezone: "Etc/UTC"
         });
+        test.expect(2);
         test.ok(pd !== null);
         
         test.equal(pd.getWeekOfYear(), 52);
@@ -1306,7 +1306,6 @@ module.exports.testpersiandate = {
     },
     
     testPersAlgoDateTestGetWeekOfYearThisYearWithTime: function(test) {
-        test.expect(2);
         var pd = new PersianAlgoDate({
             year: 1388,
             month: 12,
@@ -1317,6 +1316,7 @@ module.exports.testpersiandate = {
             millisecond: 232,
             timezone: "Etc/UTC"
         });
+        test.expect(2);
         test.ok(pd !== null);
         
         test.equal(pd.getWeekOfYear(), 52);
@@ -1324,13 +1324,13 @@ module.exports.testpersiandate = {
     },
     
     testPersAlgoDateTestGetWeekOfYearPreviousYear: function(test) {
-        test.expect(2);
         var pd = new PersianAlgoDate({
             year: 1388,
             month: 1,
             day: 1,
             timezone: "Etc/UTC"
         });
+        test.expect(2);
         test.ok(pd !== null);
         
         test.equal(pd.getWeekOfYear(), 53);
@@ -1338,13 +1338,13 @@ module.exports.testpersiandate = {
     },
     
     testPersAlgoDateTestGetWeekOfYearLastWeekLeap: function(test) {
-        test.expect(2);
         var pd = new PersianAlgoDate({
             year: 1383,
             month: 12,
             day: 30,
             timezone: "Etc/UTC"
         });
+        test.expect(2);
         test.ok(pd !== null);
         
         test.equal(pd.getWeekOfYear(), 1);
@@ -1352,13 +1352,13 @@ module.exports.testpersiandate = {
     },
     
     testPersAlgoDateTestGetWeekOfYearLastWeekRegular1: function(test) {
-        test.expect(2);
         var pd = new PersianAlgoDate({
             year: 1389,
             month: 12,
             day: 29,
             timezone: "Etc/UTC"
         });
+        test.expect(2);
         test.ok(pd !== null);
         
         test.equal(pd.getWeekOfYear(), 1);
@@ -1366,13 +1366,13 @@ module.exports.testpersiandate = {
     },
     
     testPersAlgoDateTestGetWeekOfYearLastWeekRegular2: function(test) {
-        test.expect(2);
         var pd = new PersianAlgoDate({
             year: 1390,
             month: 12,
             day: 29,
             timezone: "Etc/UTC"
         });
+        test.expect(2);
         test.ok(pd !== null);
         
         test.equal(pd.getWeekOfYear(), 1);
@@ -1380,13 +1380,13 @@ module.exports.testpersiandate = {
     },
     
     testPersAlgoDateTestGetWeekOfYearLastWeekRegular3: function(test) {
-        test.expect(2);
         var pd = new PersianAlgoDate({
             year: 1391,
             month: 12,
             day: 30,
             timezone: "Etc/UTC"
         });
+        test.expect(2);
         test.ok(pd !== null);
         
         test.equal(pd.getWeekOfYear(), 1);
@@ -1394,13 +1394,13 @@ module.exports.testpersiandate = {
     },
     
     testPersAlgoDateTestGetWeekOfYearLastWeekRegular4: function(test) {
-        test.expect(2);
         var pd = new PersianAlgoDate({
             year: 1392,
             month: 12,
             day: 29,
             timezone: "Etc/UTC"
         });
+        test.expect(2);
         test.ok(pd !== null);
         
         test.equal(pd.getWeekOfYear(), 53);
@@ -1408,13 +1408,13 @@ module.exports.testpersiandate = {
     },
     
     testPersAlgoDateTestGetWeekOfYearLastWeekRegular5: function(test) {
-        test.expect(2);
         var pd = new PersianAlgoDate({
             year: 1393,
             month: 12,
             day: 29,
             timezone: "Etc/UTC"
         });
+        test.expect(2);
         test.ok(pd !== null);
         
         test.equal(pd.getWeekOfYear(), 52);
@@ -1422,13 +1422,13 @@ module.exports.testpersiandate = {
     },
     
     testPersAlgoDateTestGetWeekOfYearLastWeekRegular6: function(test) {
-        test.expect(2);
         var pd = new PersianAlgoDate({
             year: 1394,
             month: 12,
             day: 29,
             timezone: "Etc/UTC"
         });
+        test.expect(2);
         test.ok(pd !== null);
         
         test.equal(pd.getWeekOfYear(), 52);
@@ -1436,13 +1436,13 @@ module.exports.testpersiandate = {
     },
     
     testPersAlgoDateGetDayOfYearFirstDay: function(test) {
-        test.expect(2);
         var pd = new PersianAlgoDate({
             year: 1388,
             month: 1,
             day: 1,
             timezone: "Etc/UTC"
         });
+        test.expect(2);
         test.ok(pd !== null);
         
         test.equal(pd.getDayOfYear(), 1);
@@ -1450,13 +1450,13 @@ module.exports.testpersiandate = {
     },
     
     testPersAlgoDateGetDayOfYearMidYear: function(test) {
-        test.expect(2);
         var pd = new PersianAlgoDate({
             year: 1388,
             month: 3,
             day: 17,
             timezone: "Etc/UTC"
         });
+        test.expect(2);
         test.ok(pd !== null);
         
         test.equal(pd.getDayOfYear(), 79);
@@ -1464,13 +1464,13 @@ module.exports.testpersiandate = {
     },
     
     testPersAlgoDateGetDayOfYearLastDay: function(test) {
-        test.expect(2);
         var pd = new PersianAlgoDate({
             year: 1388,
             month: 12,
             day: 29,
             timezone: "Etc/UTC"
         });
+        test.expect(2);
         test.ok(pd !== null);
         
         test.equal(pd.getDayOfYear(), 365);
@@ -1478,13 +1478,13 @@ module.exports.testpersiandate = {
     },
     
     testPersAlgoDateGetDayOfYearLastDayLeapYear: function(test) {
-        test.expect(2);
         var pd = new PersianAlgoDate({
             year: 1387,
             month: 12,
             day: 30,
             timezone: "Etc/UTC"
         });
+        test.expect(2);
         test.ok(pd !== null);
         
         test.equal(pd.getDayOfYear(), 366);
@@ -1492,13 +1492,13 @@ module.exports.testpersiandate = {
     },
     
     testPersAlgoDateGetWeekOfMonth0: function(test) {
-        test.expect(2);
         var pd = new PersianAlgoDate({
             year: 1388,
             month: 3,
             day: 1,
             timezone: "Etc/UTC"
         });
+        test.expect(2);
         test.ok(pd !== null);
         
         test.equal(pd.getWeekOfMonth("en-US"), 0);
@@ -1506,13 +1506,13 @@ module.exports.testpersiandate = {
     },
     
     testPersAlgoDateGetWeekOfMonth1: function(test) {
-        test.expect(2);
         var pd = new PersianAlgoDate({
             year: 1388,
             month: 3,
             day: 4,
             timezone: "Etc/UTC"
         });
+        test.expect(2);
         test.ok(pd !== null);
         
         test.equal(pd.getWeekOfMonth("en-US"), 1);
@@ -1520,13 +1520,13 @@ module.exports.testpersiandate = {
     },
     
     testPersAlgoDateGetWeekOfMonth2: function(test) {
-        test.expect(2);
         var pd = new PersianAlgoDate({
             year: 1388,
             month: 3,
             day: 11,
             timezone: "Etc/UTC"
         });
+        test.expect(2);
         test.ok(pd !== null);
         
         test.equal(pd.getWeekOfMonth("en-US"), 2);
@@ -1534,13 +1534,13 @@ module.exports.testpersiandate = {
     },
     
     testPersAlgoDateGetWeekOfMonth3: function(test) {
-        test.expect(2);
         var pd = new PersianAlgoDate({
             year: 1388,
             month: 3,
             day: 20,
             timezone: "Etc/UTC"
         });
+        test.expect(2);
         test.ok(pd !== null);
         
         test.equal(pd.getWeekOfMonth("en-US"), 3);
@@ -1548,13 +1548,13 @@ module.exports.testpersiandate = {
     },
     
     testPersAlgoDateGetWeekOfMonth4: function(test) {
-        test.expect(2);
         var pd = new PersianAlgoDate({
             year: 1388,
             month: 3,
             day: 29,
             timezone: "Etc/UTC"
         });
+        test.expect(2);
         test.ok(pd !== null);
         
         test.equal(pd.getWeekOfMonth("en-US"), 4);
@@ -1562,13 +1562,13 @@ module.exports.testpersiandate = {
     },
     
     testPersAlgoDateGetWeekOfMonth5: function(test) {
-        test.expect(2);
         var pd = new PersianAlgoDate({
             year: 1388,
             month: 3,
             day: 31,
             timezone: "Etc/UTC"
         });
+        test.expect(2);
         test.ok(pd !== null);
         
         test.equal(pd.getWeekOfMonth("en-US"), 5);
@@ -1576,13 +1576,13 @@ module.exports.testpersiandate = {
     },
     
     testPersAlgoDateGetWeekOfMonth6: function(test) {
-        test.expect(2);
         var pd = new PersianAlgoDate({
             year: 1388,
             month: 4,
             day: 1,
             timezone: "Etc/UTC"
         });
+        test.expect(2);
         test.ok(pd !== null);
         
         test.equal(pd.getWeekOfMonth("en-US"), 1);
@@ -1590,13 +1590,13 @@ module.exports.testpersiandate = {
     },
     
     testPersAlgoDateGetWeekOfMonth7: function(test) {
-        test.expect(2);
         var pd = new PersianAlgoDate({
             year: 1388,
             month: 5,
             day: 1,
             timezone: "Etc/UTC"
         });
+        test.expect(2);
         test.ok(pd !== null);
         
         test.equal(pd.getWeekOfMonth("en-US"), 0);
@@ -1604,13 +1604,13 @@ module.exports.testpersiandate = {
     },
     
     testPersAlgoDateGetWeekOfMonth8: function(test) {
-        test.expect(2);
         var pd = new PersianAlgoDate({
             year: 1388,
             month: 6,
             day: 1,
             timezone: "Etc/UTC"
         });
+        test.expect(2);
         test.ok(pd !== null);
         
         test.equal(pd.getWeekOfMonth("en-US"), 1);
@@ -1618,13 +1618,13 @@ module.exports.testpersiandate = {
     },
     
     testPersAlgoDateGetWeekOfMonth9: function(test) {
-        test.expect(2);
         var pd = new PersianAlgoDate({
             year: 1388,
             month: 7,
             day: 1,
             timezone: "Etc/UTC"
         });
+        test.expect(2);
         test.ok(pd !== null);
         
         test.equal(pd.getWeekOfMonth("en-US"), 1);
@@ -1632,13 +1632,13 @@ module.exports.testpersiandate = {
     },
     
     testPersAlgoDateGetWeekOfMonthIR0: function(test) {
-        test.expect(2);
         var pd = new PersianAlgoDate({
             year: 1388,
             month: 3,
             day: 1,
             timezone: "Etc/UTC"
         });
+        test.expect(2);
         test.ok(pd !== null);
         
         test.equal(pd.getWeekOfMonth("fa-IR"), 0);
@@ -1646,13 +1646,13 @@ module.exports.testpersiandate = {
     },
     
     testPersAlgoDateGetWeekOfMonthIR1: function(test) {
-        test.expect(2);
         var pd = new PersianAlgoDate({
             year: 1388,
             month: 3,
             day: 4,
             timezone: "Etc/UTC"
         });
+        test.expect(2);
         test.ok(pd !== null);
         
         test.equal(pd.getWeekOfMonth("fa-IR"), 1);
@@ -1660,13 +1660,13 @@ module.exports.testpersiandate = {
     },
     
     testPersAlgoDateGetWeekOfMonthIR2: function(test) {
-        test.expect(2);
         var pd = new PersianAlgoDate({
             year: 1388,
             month: 3,
             day: 11,
             timezone: "Etc/UTC"
         });
+        test.expect(2);
         test.ok(pd !== null);
         
         test.equal(pd.getWeekOfMonth("fa-IR"), 2);
@@ -1674,13 +1674,13 @@ module.exports.testpersiandate = {
     },
     
     testPersAlgoDateGetWeekOfMonthIR3: function(test) {
-        test.expect(2);
         var pd = new PersianAlgoDate({
             year: 1388,
             month: 3,
             day: 20,
             timezone: "Etc/UTC"
         });
+        test.expect(2);
         test.ok(pd !== null);
         
         test.equal(pd.getWeekOfMonth("fa-IR"), 3);
@@ -1688,13 +1688,13 @@ module.exports.testpersiandate = {
     },
     
     testPersAlgoDateGetWeekOfMonthIR4: function(test) {
-        test.expect(2);
         var pd = new PersianAlgoDate({
             year: 1388,
             month: 3,
             day: 29,
             timezone: "Etc/UTC"
         });
+        test.expect(2);
         test.ok(pd !== null);
         
         test.equal(pd.getWeekOfMonth("fa-IR"), 4);
@@ -1702,13 +1702,13 @@ module.exports.testpersiandate = {
     },
     
     testPersAlgoDateGetWeekOfMonthIR5: function(test) {
-        test.expect(2);
         var pd = new PersianAlgoDate({
             year: 1388,
             month: 3,
             day: 31,
             timezone: "Etc/UTC"
         });
+        test.expect(2);
         test.ok(pd !== null);
         
         test.equal(pd.getWeekOfMonth("fa-IR"), 5);
@@ -1716,13 +1716,13 @@ module.exports.testpersiandate = {
     },
     
     testPersAlgoDateGetWeekOfMonthIR6: function(test) {
-        test.expect(2);
         var pd = new PersianAlgoDate({
             year: 1388,
             month: 4,
             day: 1,
             timezone: "Etc/UTC"
         });
+        test.expect(2);
         test.ok(pd !== null);
         
         test.equal(pd.getWeekOfMonth("fa-IR"), 1);
@@ -1730,13 +1730,13 @@ module.exports.testpersiandate = {
     },
     
     testPersAlgoDateGetWeekOfMonthIR7: function(test) {
-        test.expect(2);
         var pd = new PersianAlgoDate({
             year: 1388,
             month: 5,
             day: 1,
             timezone: "Etc/UTC"
         });
+        test.expect(2);
         test.ok(pd !== null);
         
         test.equal(pd.getWeekOfMonth("fa-IR"), 0);
@@ -1744,13 +1744,13 @@ module.exports.testpersiandate = {
     },
     
     testPersAlgoDateGetWeekOfMonthIR8: function(test) {
-        test.expect(2);
         var pd = new PersianAlgoDate({
             year: 1388,
             month: 6,
             day: 1,
             timezone: "Etc/UTC"
         });
+        test.expect(2);
         test.ok(pd !== null);
         
         test.equal(pd.getWeekOfMonth("fa-IR"), 1);
@@ -1758,13 +1758,13 @@ module.exports.testpersiandate = {
     },
     
     testPersAlgoDateGetWeekOfMonthIR9: function(test) {
-        test.expect(2);
         var pd = new PersianAlgoDate({
             year: 1388,
             month: 7,
             day: 1,
             timezone: "Etc/UTC"
         });
+        test.expect(2);
         test.ok(pd !== null);
         
         test.equal(pd.getWeekOfMonth("fa-IR"), 0);
@@ -1772,13 +1772,13 @@ module.exports.testpersiandate = {
     },
     
     testPersAlgoDateGetWeekOfMonthIR10: function(test) {
-        test.expect(2);
         var pd = new PersianAlgoDate({
             year: 1388,
             month: 8,
             day: 1,
             timezone: "Etc/UTC"
         });
+        test.expect(2);
         test.ok(pd !== null);
         
         test.equal(pd.getWeekOfMonth("fa-IR"), 0);
@@ -1786,13 +1786,13 @@ module.exports.testpersiandate = {
     },
     
     testPersAlgoDateGetWeekOfMonthIR11: function(test) {
-        test.expect(2);
         var pd = new PersianAlgoDate({
             year: 1388,
             month: 9,
             day: 1,
             timezone: "Etc/UTC"
         });
+        test.expect(2);
         test.ok(pd !== null);
         
         test.equal(pd.getWeekOfMonth("fa-IR"), 1);
@@ -1800,13 +1800,13 @@ module.exports.testpersiandate = {
     },
     
     testPersAlgoDateGetWeekOfMonthIR12: function(test) {
-        test.expect(2);
         var pd = new PersianAlgoDate({
             year: 1388,
             month: 10,
             day: 1,
             timezone: "Etc/UTC"
         });
+        test.expect(2);
         test.ok(pd !== null);
         
         test.equal(pd.getWeekOfMonth("fa-IR"), 1);
@@ -1814,13 +1814,13 @@ module.exports.testpersiandate = {
     },
     
     testPersAlgoDateGetWeekOfMonthIR13: function(test) {
-        test.expect(2);
         var pd = new PersianAlgoDate({
             year: 1388,
             month: 11,
             day: 1,
             timezone: "Etc/UTC"
         });
+        test.expect(2);
         test.ok(pd !== null);
         
         test.equal(pd.getWeekOfMonth("fa-IR"), 0);
@@ -1828,13 +1828,13 @@ module.exports.testpersiandate = {
     },
     
     testPersAlgoDateGetWeekOfMonthIR14: function(test) {
-        test.expect(2);
         var pd = new PersianAlgoDate({
             year: 1388,
             month: 12,
             day: 1,
             timezone: "Etc/UTC"
         });
+        test.expect(2);
         test.ok(pd !== null);
         
         test.equal(pd.getWeekOfMonth("fa-IR"), 1);
@@ -1842,13 +1842,13 @@ module.exports.testpersiandate = {
     },
     
     testPersAlgoDateGetWeekOfMonthUS: function(test) {
-        test.expect(2);
         var pd = new PersianAlgoDate({
             year: 1388,
             month: 8,
             day: 1,
             timezone: "Etc/UTC"
         });
+        test.expect(2);
         test.ok(pd !== null);
         
         test.equal(pd.getWeekOfMonth("en-US"), 0);
@@ -1856,13 +1856,13 @@ module.exports.testpersiandate = {
     },
     
     testPersAlgoDateGetWeekOfMonthDE: function(test) {
-        test.expect(2);
         var pd = new PersianAlgoDate({
             year: 1388,
             month: 8,
             day: 1,
             timezone: "Etc/UTC"
         });
+        test.expect(2);
         test.ok(pd !== null);
         
         // weeks in Germany start on Monday, and 8/1 is a Sunday, so it is at the 
@@ -1872,13 +1872,13 @@ module.exports.testpersiandate = {
     },
     
     testPersAlgoDateGetEraAP: function(test) {
-        test.expect(2);
         var pd = new PersianAlgoDate({
             year: 1388,
             month: 5,
             day: 1,
             timezone: "Etc/UTC"
         });
+        test.expect(2);
         test.ok(pd !== null);
         
         test.equal(pd.getEra(), 1);
@@ -1886,7 +1886,6 @@ module.exports.testpersiandate = {
     },
     
     testPersAlgoDateGetEraBAP: function(test) {
-        test.expect(2);
         var pd = new PersianAlgoDate({
             year: -46,
             month: 5,
@@ -1896,6 +1895,7 @@ module.exports.testpersiandate = {
             second: 0,
             timezone: "Etc/UTC"
         });
+        test.expect(2);
         test.ok(pd !== null);
         
         test.equal(pd.getEra(), -1);
@@ -1903,13 +1903,13 @@ module.exports.testpersiandate = {
     },
     
     testPersAlgoDateGetEraAPYear1: function(test) {
-        test.expect(2);
         var pd = new PersianAlgoDate({
             year: 1,
             month: 1,
             day: 1,
             timezone: "Etc/UTC"
         });
+        test.expect(2);
         test.ok(pd !== null);
         
         test.equal(pd.getEra(), 1);
@@ -1917,13 +1917,13 @@ module.exports.testpersiandate = {
     },
     
     testPersAlgoDateGetEraBAPYear0: function(test) {
-        test.expect(2);
         var pd = new PersianAlgoDate({
             year: 0,
             month: 12,
             day: 29,
             timezone: "Etc/UTC"
         });
+        test.expect(2);
         test.ok(pd !== null);
         
         test.equal(pd.getEra(), -1);
@@ -1931,13 +1931,13 @@ module.exports.testpersiandate = {
     },
     
     testPersAlgoDateSetTimeZone: function(test) {
-        test.expect(3);
         var pd = new PersianAlgoDate({
             year: 1433, 
             month: 3, 
             day: 8,
             timezone: "America/Los_Angeles"
         });
+        test.expect(3);
         test.ok(pd !== null);
         
         test.equal(pd.getTimeZone(), "America/Los_Angeles");
@@ -1949,13 +1949,13 @@ module.exports.testpersiandate = {
     },
     
     testPersAlgoDateSetTimeZoneNotString: function(test) {
-        test.expect(3);
         var pd = new PersianAlgoDate({
             year: 1433, 
             month: 3, 
             day: 8,
             timezone: "America/Los_Angeles"
         });
+        test.expect(3);
         test.ok(pd !== null);
         
         test.equal(pd.getTimeZone(), "America/Los_Angeles");
@@ -1967,13 +1967,13 @@ module.exports.testpersiandate = {
     },
     
     testPersAlgoDateSetTimeZoneUndefined: function(test) {
-        test.expect(3);
         var pd = new PersianAlgoDate({
             year: 1433, 
             month: 3, 
             day: 8,
             timezone: "America/Los_Angeles"
         });
+        test.expect(3);
         test.ok(pd !== null);
         
         test.equal(pd.getTimeZone(), "America/Los_Angeles");
@@ -1986,13 +1986,13 @@ module.exports.testpersiandate = {
     },
     
     testPersAlgoDateSetTimeZoneEmpty: function(test) {
-        test.expect(3);
         var pd = new PersianAlgoDate({
             year: 1433, 
             month: 3, 
             day: 8,
             timezone: "America/Los_Angeles"
         });
+        test.expect(3);
         test.ok(pd !== null);
         
         test.equal(pd.getTimeZone(), "America/Los_Angeles");
@@ -2005,10 +2005,10 @@ module.exports.testpersiandate = {
     },
     
     testPersAlgoDateInitWithUnixTimeRightTimeZone: function(test) {
-        test.expect(2);
         var pd = new PersianAlgoDate({
             unixtime: 0
         });
+        test.expect(2);
         test.ok(pd !== null);
         
         test.equal(pd.getTimeZone(), "local");
@@ -2016,10 +2016,10 @@ module.exports.testpersiandate = {
     },
     
     testPersAlgoDateInitWithJDRightTimeZone: function(test) {
-        test.expect(2);
         var pd = new PersianAlgoDate({
             julianday: 0
         });
+        test.expect(2);
         test.ok(pd !== null);
         
         test.equal(pd.getTimeZone(), "local");
@@ -2027,10 +2027,10 @@ module.exports.testpersiandate = {
     },
     
     testPersAlgoDateInitWithRDRightTimeZone: function(test) {
-        test.expect(2);
         var pd = new PersianAlgoDate({
             rd: 0
         });
+        test.expect(2);
         test.ok(pd !== null);
         
         test.equal(pd.getTimeZone(), "local");
@@ -2038,13 +2038,13 @@ module.exports.testpersiandate = {
     },
     
     testPersDateAlgoRoundTripConstruction: function(test) {
-        test.expect(8);
         var pd = new PersianAlgoDate({
             year: 1393,
             month: 8,
             day: 12,
             timezone: "local"
         });
+        test.expect(8);
         test.ok(pd !== null);
         // console.log("pd is " + JSON.stringify(pd, undefined, 4));
         
@@ -2066,13 +2066,13 @@ module.exports.testpersiandate = {
     },
     
     testPersDateAlgoRoundTripConstruction2: function(test) {
-        test.expect(8);
         var pd = new PersianAlgoDate({
             year: 1393,
             month: 8,
             day: 12,
             timezone: "America/Los_Angeles"
         });
+        test.expect(8);
         test.ok(pd !== null);
         // console.log("pd is " + JSON.stringify(pd, undefined, 4));
         

@@ -34,8 +34,8 @@ module.exports.testname_kn = {
     },
 
     testParseSimpleName_kn_IN: function(test) {
-        test.expect(2);
         var parsed = new Name("ಮಂಜುನಾಥ ಗೌಡ", {locale: 'kn-IN'});
+        test.expect(2);
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {
@@ -50,8 +50,8 @@ module.exports.testname_kn = {
     
     
     testParseTitle_kn_IN: function(test) {
-        test.expect(2);
         var parsed = new Name("ಮಂಜುನಾಥ ಗೌಡ ಹಿರಿಯ", {locale: 'kn-IN'});
+        test.expect(2);
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {
@@ -67,8 +67,8 @@ module.exports.testname_kn = {
     
     
     testParseTitleWithFamilyOnly_kn_IN: function(test) {
-        test.expect(2);
         var parsed = new Name("ವೈದ್ಯರು ಗೌಡ", {locale: 'kn-IN'});
+        test.expect(2);
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {
@@ -83,8 +83,8 @@ module.exports.testname_kn = {
     
     
     testParseEverything_kn_IN: function(test) {
-        test.expect(2);
         var parsed = new Name("ಶ್ರೀ ಮತ್ತು ಶ್ರೀಮತಿ ಗೌಡ", {locale: 'kn-IN'});
+        test.expect(2);
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {
@@ -97,8 +97,8 @@ module.exports.testname_kn = {
     },
     
     testParseprefix_kn_IN: function(test) {
-        test.expect(2);
         var parsed = new Name("ಶ್ರೀ ಮಂಜುನಾಥ ಗೌಡ", {locale: 'kn-IN'});
+        test.expect(2);
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {
@@ -115,7 +115,6 @@ module.exports.testname_kn = {
      */
     
     testFormatSimpleNameShort_kn_IN: function(test) {
-        test.expect(2);
         var name = new Name({
             givenName: "ಮಂಜುನಾಥ",
             familyName: "ಗೌಡ"
@@ -125,6 +124,7 @@ module.exports.testname_kn = {
             locale: 'kn-IN'
         });
         var formatted = fmt.format(name);
+        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "ಮಂಜುನಾಥ ಗೌಡ";
@@ -134,7 +134,6 @@ module.exports.testname_kn = {
     },
     
     testFormatSimpleNameMedium_kn_IN: function(test) {
-        test.expect(2);
         var name = new Name({
             givenName: "ಮಂಜುನಾಥ",
             
@@ -145,6 +144,7 @@ module.exports.testname_kn = {
             locale: 'kn-IN'
         });
         var formatted = fmt.format(name);
+        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "ಮಂಜುನಾಥ ಗೌಡ";
@@ -154,7 +154,6 @@ module.exports.testname_kn = {
     },
     
     testFormatSimpleNameLong_kn_IN: function(test) {
-        test.expect(2);
         var name = new Name({
             givenName: "ಮಂಜುನಾಥ",
             
@@ -165,6 +164,7 @@ module.exports.testname_kn = {
             locale: 'kn-IN'
         });
         var formatted = fmt.format(name);
+        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "ಮಂಜುನಾಥ ಗೌಡ";
@@ -174,7 +174,6 @@ module.exports.testname_kn = {
     },
     
     testFormatSurname_kn_IN: function(test) {
-        test.expect(2);
         var name = new Name({
             prefix: "ಶ್ರೀ ಮತ್ತು ಶ್ರೀಮತಿ",
             familyName: "ಗೌಡ"
@@ -184,6 +183,7 @@ module.exports.testname_kn = {
             locale: 'kn-IN'
         });
         var formatted = fmt.format(name);
+        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "ಶ್ರೀ ಮತ್ತು ಶ್ರೀಮತಿ ಗೌಡ";
@@ -193,7 +193,6 @@ module.exports.testname_kn = {
     },
     
     testFormatSimpleNameFull_kn_IN: function(test) {
-        test.expect(2);
         var name = new Name({
             prefix: "ವೈದ್ಯರು",
             givenName: "ಮಂಜುನಾಥ",
@@ -206,6 +205,7 @@ module.exports.testname_kn = {
             locale: 'kn-IN'
         });
         var formatted = fmt.format(name);
+        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "ವೈದ್ಯರು ಮಂಜುನಾಥ ಗೌಡ ಕಿರಿಯ";
@@ -215,7 +215,6 @@ module.exports.testname_kn = {
     },
     
     testFormatComplexNameShort_kn_IN: function(test) {
-        test.expect(2);
         var name = new Name({
             prefix: "ವೈದ್ಯರು",
             givenName: "ಮಂಜುನಾಥ",
@@ -226,6 +225,7 @@ module.exports.testname_kn = {
             locale: 'kn-IN'
         });
         var formatted = fmt.format(name);
+        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "ಮಂಜುನಾಥ ಗೌಡ";
@@ -235,7 +235,6 @@ module.exports.testname_kn = {
     },
     
     testFormatComplexNameMedium_kn_IN: function(test) {
-        test.expect(2);
         var name = new Name({
             prefix: "ವೈದ್ಯರು",
             givenName: "ಮಂಜುನಾಥ",
@@ -246,6 +245,7 @@ module.exports.testname_kn = {
             locale: 'kn-IN'
         });
         var formatted = fmt.format(name);
+        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "ಮಂಜುನಾಥ ಗೌಡ";
@@ -255,7 +255,6 @@ module.exports.testname_kn = {
     },
     
     testFormatComplexNameLong_kn_IN: function(test) {
-        test.expect(2);
         var name = new Name({
             prefix: "ವೈದ್ಯರು",
             givenName: "ಮಂಜುನಾಥ",
@@ -266,6 +265,7 @@ module.exports.testname_kn = {
             locale: 'kn-IN'
         });
         var formatted = fmt.format(name);
+        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "ವೈದ್ಯರು ಮಂಜುನಾಥ ಗೌಡ";

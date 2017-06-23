@@ -34,9 +34,9 @@ module.exports.testaddress_KW = {
     },
 
     testParseAddressKWNormal: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("حمد عبد الله حسن\n آل الصباح ١٠٠٨٤\n١٥٥٤٥ الكويت\n\nالكويت\n\n\n", {locale: 'ar-KW'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "حمد عبد الله حسن, آل الصباح ١٠٠٨٤");
         test.equal(parsedAddress.locality, "الكويت");
@@ -48,9 +48,9 @@ module.exports.testaddress_KW = {
     },
     
     testParseAddressKWNoZip: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("حمد عبد الله حسن آل الصباح ١٠٠٨٤\nالكويت\nالكويت", {locale: 'ar-KW'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "حمد عبد الله حسن آل الصباح ١٠٠٨٤");
         test.equal(parsedAddress.locality, "الكويت");
@@ -62,9 +62,9 @@ module.exports.testaddress_KW = {
     },
     
     testParseAddressKWNoCountry: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("حمد عبد الله حسن آل الصباح ١٠٠٨٤\n١٥٥٤٥ الجهرا", {locale: 'ar-KW'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "حمد عبد الله حسن آل الصباح ١٠٠٨٤");
         test.equal(parsedAddress.locality, "الجهرا");
@@ -76,8 +76,8 @@ module.exports.testaddress_KW = {
     },
     
     testParseAddressKWManyLines: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("حمد عبد الله حسن\n آل الصباح ١٠٠٨٤\n١٥٥٤٥\nالكويت\n\nالكويت\n\n\n", {locale: 'ar-KW'});
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "حمد عبد الله حسن, آل الصباح ١٠٠٨٤");
         test.equal(parsedAddress.locality, "الكويت");
@@ -90,9 +90,9 @@ module.exports.testaddress_KW = {
     
     
     testParseAddressKWSuperfluousWhitespace: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("\t\t\tحمد عبد الله حسن\n\n\t آل الصباح ١٠٠٨٤\n\n\t١٥٥٤٥\n\n\tالكويت\n\n\tالكويت\n\n\n", {locale: 'ar-KW'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "حمد عبد الله حسن, آل الصباح ١٠٠٨٤");
         test.equal(parsedAddress.locality, "الكويت");
@@ -105,11 +105,11 @@ module.exports.testaddress_KW = {
     
     
     testParseAddressKWFromUS: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("حمد عبد الله حسن آل الصباح ١٠٠٨٤\n١٥٥٤٥\nالكويت\nKuwait", {locale: 'en-US'});
         
         
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "حمد عبد الله حسن آل الصباح ١٠٠٨٤");
         test.equal(parsedAddress.locality, "الكويت");
@@ -121,7 +121,6 @@ module.exports.testaddress_KW = {
     },
     
     testFormatAddressKW: function(test) {
-        test.expect(1);
         var parsedAddress = new Address({
             streetAddress: "حمد عبد الله حسن آل الصباح ١٠٠٨٤",
             locality: "الكويت",
@@ -132,12 +131,12 @@ module.exports.testaddress_KW = {
         
         var expected = "حمد عبد الله حسن آل الصباح ١٠٠٨٤\n١٥٥٤٥ الكويت\nالكويت";
         var formatter = new AddressFmt({locale: 'ar-KW'});
+        test.expect(1);
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     },
     
     testFormatAddressKWFromUS: function(test) {
-        test.expect(1);
         var parsedAddress = new Address({
             streetAddress: "حمد عبد الله حسن آل الصباح ١٠٠٨٤",
             locality: "الكويت",
@@ -148,6 +147,7 @@ module.exports.testaddress_KW = {
         
         var expected = "حمد عبد الله حسن آل الصباح ١٠٠٨٤\n١٥٥٤٥ الكويت\nKuwait";
         var formatter = new AddressFmt({locale: 'en-US'});
+        test.expect(1);
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     }

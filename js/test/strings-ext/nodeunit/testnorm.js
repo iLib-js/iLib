@@ -97,10 +97,10 @@ module.exports.testnorm = {
     },
     
     testCharIteratorNormal: function(test) {
-        test.expect(8);
         var s = new NormString("aba");
         var it = s.charIterator();
         
+        test.expect(8);
         test.ok(it.hasNext());
         test.equal(it.next(), "a");
         test.ok(it.hasNext());
@@ -113,10 +113,10 @@ module.exports.testnorm = {
     },
     
     testCharIteratorDecomposed: function(test) {
-        test.expect(8);
         var s = new NormString("aÄa"); // the A umlaut is a decomposed char
         var it = s.charIterator();
         
+        test.expect(8);
         test.ok(it.hasNext());
         test.equal(it.next(), "a");
         test.ok(it.hasNext());
@@ -129,20 +129,20 @@ module.exports.testnorm = {
     },
     
     testCharIteratorEmpty: function(test) {
-        test.expect(2);
         var s = new NormString(""); // the A umlaut is a decomposed char
         var it = s.charIterator();
         
+        test.expect(2);
         test.ok(!it.hasNext());
         test.equal(it.next(), undefined);
         test.done();
     },
     
     testCharIteratorWithSurrogates: function(test) {
-        test.expect(10);
         var str = new NormString("a\uD800\uDF02b\uD800\uDC00");
     
         var it = str.charIterator();
+        test.expect(10);
         test.ok(it.hasNext());
         test.equal(it.next(), "a");
         test.ok(it.hasNext());
@@ -157,10 +157,10 @@ module.exports.testnorm = {
     },
     
     testCharIteratorWithSurrogatesAndDecomposedChars: function(test) {
-        test.expect(12);
         var str = new NormString("a\uD800\uDF02bï\uD800\uDC00"); // the ï is a decomposed i + umlaut
     
         var it = str.charIterator();
+        test.expect(12);
         test.ok(it.hasNext());
         test.equal(it.next(), "a");
         test.ok(it.hasNext());
@@ -177,10 +177,10 @@ module.exports.testnorm = {
     },
     
     testCharIteratorMultipleDecomposed: function(test) {
-        test.expect(8);
         var s = new NormString("aẬa"); // the accented A is a decomposed char with 2 accents
         var it = s.charIterator();
         
+        test.expect(8);
         test.ok(it.hasNext());
         test.equal(it.next(), "a");
         test.ok(it.hasNext());
@@ -193,10 +193,10 @@ module.exports.testnorm = {
     },
     
     testCharIteratorAgrave: function(test) {
-        test.expect(4);
         var s = new NormString("À"); // the accented A is a decomposed char
         var it = s.charIterator();
         
+        test.expect(4);
         test.ok(it.hasNext());
         test.equal(it.next(), "À");
         test.ok(!it.hasNext());

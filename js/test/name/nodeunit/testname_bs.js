@@ -34,8 +34,8 @@ module.exports.testname_bs = {
     },
 
     testParseSimpleName_bs: function(test) {
-        test.expect(2);
         var parsed = new Name("Derviš Sušić", {locale: 'bs-BA'});
+        test.expect(2);
         test.ok(typeof(parsed) !== "undefined");
         
         var expected =   {
@@ -49,8 +49,8 @@ module.exports.testname_bs = {
     
     
     testParseAdjunctNames_bs: function(test) {
-        test.expect(2);
         var parsed = new Name("Derviš Sušić", {locale: 'bs-BA'});
+        test.expect(2);
         test.ok(typeof(parsed) !== "undefined");
         
         var expected =  {
@@ -65,8 +65,8 @@ module.exports.testname_bs = {
     
     
     testParseSingleNameWithPrefixAndAdjunct_bs: function(test) {
-        test.expect(2);
         var parsed = new Name("Gospodin i Gospođica Sušić", {locale: 'bs-BA'});
+        test.expect(2);
         test.ok(typeof(parsed) !== "undefined");
         
         var expected =   {
@@ -80,8 +80,8 @@ module.exports.testname_bs = {
     
     
     testParseTitle_bs: function(test) {
-        test.expect(2);
         var parsed = new Name("Derviš Sušić viši", {locale: 'bs-BA'});
+        test.expect(2);
         test.ok(typeof(parsed) !== "undefined");
         
         var expected =    {
@@ -97,8 +97,8 @@ module.exports.testname_bs = {
     
     
     testParseTitleWithFamilyOnly_bs: function(test) {
-        test.expect(2);
         var parsed = new Name("predsjednik Sušić", {locale: 'bs-BA'});
+        test.expect(2);
         test.ok(typeof(parsed) !== "undefined");
         
         var expected =   {
@@ -113,8 +113,8 @@ module.exports.testname_bs = {
     
     
     testParseEverything_bs: function(test) {
-        test.expect(2);
         var parsed = new Name("predsjednik Derviš Sušić", {locale: 'bs-BA'});
+        test.expect(2);
         test.ok(typeof(parsed) !== "undefined");
         
         var expected =    {
@@ -133,7 +133,6 @@ module.exports.testname_bs = {
      */
     
     testFormatSimpleNameShort_bs: function(test) {
-        test.expect(2);
         var name = new Name({
             givenName: "Derviš",
             familyName: "Sušić"  
@@ -143,6 +142,7 @@ module.exports.testname_bs = {
             locale: 'bs-BA'
         });
         var formatted = fmt.format(name);
+        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "Derviš Sušić";
@@ -152,7 +152,6 @@ module.exports.testname_bs = {
     },
     
     testFormatSimpleNameMedium_bs: function(test) {
-        test.expect(2);
         var name = new Name({
             givenName: "Derviš",
             familyName: "Sušić"  
@@ -162,6 +161,7 @@ module.exports.testname_bs = {
             locale: 'bs-BA'
         });
         var formatted = fmt.format(name);
+        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "Derviš Sušić";
@@ -171,7 +171,6 @@ module.exports.testname_bs = {
     },
     
     testFormatSimpleNameLong_bs: function(test) {
-        test.expect(2);
         var name = new Name({
             givenName: "Derviš",
             
@@ -183,6 +182,7 @@ module.exports.testname_bs = {
             locale: 'bs-BA'
         });
         var formatted = fmt.format(name);
+        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "Derviš Sušić";
@@ -192,7 +192,6 @@ module.exports.testname_bs = {
     },
     
     testFormatSimpleNameFull_bs: function(test) {
-        test.expect(2);
         var name = new Name({
             prefix: "Gospodin",
             givenName: "Derviš",
@@ -204,6 +203,7 @@ module.exports.testname_bs = {
             locale: 'bs-BA'
         });
         var formatted = fmt.format(name);
+        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "Gospodin Derviš Sušić viši";
@@ -213,7 +213,6 @@ module.exports.testname_bs = {
     },
     
     testFormatComplexNameShort_bs: function(test) {
-        test.expect(2);
         var name = new Name({
             prefix: "Gospodin",
             givenName: "Derviš",
@@ -224,6 +223,7 @@ module.exports.testname_bs = {
             locale: 'bs-BA'
         });
         var formatted = fmt.format(name);
+        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "Derviš Sušić";
@@ -233,7 +233,6 @@ module.exports.testname_bs = {
     },
     
     testFormatComplexNameMedium_bs: function(test) {
-        test.expect(2);
         var name = new Name({
             prefix: "Gospodin",
             givenName: "Derviš",
@@ -244,6 +243,7 @@ module.exports.testname_bs = {
             locale: 'bs-BA'
         });
         var formatted = fmt.format(name);
+        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "Derviš Sušić";
@@ -253,7 +253,6 @@ module.exports.testname_bs = {
     },
     
     testFormatComplexNameLong_bs: function(test) {
-        test.expect(2);
         var name = new Name({
             prefix: "Gospodin",
             givenName: "Derviš",
@@ -264,6 +263,7 @@ module.exports.testname_bs = {
             locale: 'bs-BA'
         });
         var formatted = fmt.format(name);
+        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "Gospodin Derviš Sušić";
@@ -273,7 +273,6 @@ module.exports.testname_bs = {
     },
     
     testFormatAsianNameShort_bs: function(test) {
-        test.expect(2);
         var name = new Name({
             prefix: "小",
             givenName: "獸",
@@ -284,6 +283,7 @@ module.exports.testname_bs = {
             locale: 'bs-BA'
         });
         var formatted = fmt.format(name);
+        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "地獸";
@@ -293,7 +293,6 @@ module.exports.testname_bs = {
     },
     
     testFormatAsianNameMedium_bs: function(test) {
-        test.expect(2);
         var name = new Name({
             prefix: "小",
             givenName: "獸",
@@ -304,6 +303,7 @@ module.exports.testname_bs = {
             locale: 'bs-BA'
         });
         var formatted = fmt.format(name);
+        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "地獸";
@@ -313,7 +313,6 @@ module.exports.testname_bs = {
     },
     
     testFormatAsianNameLong_bs: function(test) {
-        test.expect(2);
         var name = new Name({
             prefix: "小",
             givenName: "獸",
@@ -324,6 +323,7 @@ module.exports.testname_bs = {
             locale: 'bs-BA'
         });
         var formatted = fmt.format(name);
+        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "小地獸";

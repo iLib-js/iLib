@@ -32,121 +32,121 @@ module.exports.testjulian = {
     },
 
     testJulianGetNumMonths: function(test) {
-        test.expect(1);
         var cal = new JulianCal();
         
+        test.expect(1);
         test.equal(cal.getNumMonths(2011), 12);
         test.done();
     },
     
     testJuliangetMonLengthJan: function(test) {
-        test.expect(1);
         var cal = new JulianCal();
         
+        test.expect(1);
         test.equal(cal.getMonLength(1, 2011), 31);
         test.done();
     },
     
     testJuliangetMonLengthFeb: function(test) {
-        test.expect(1);
         var cal = new JulianCal();
         
+        test.expect(1);
         test.equal(cal.getMonLength(2, 2011), 28);
         test.done();
     },
     
     testJuliangetMonLengthFebLeapYear: function(test) {
-        test.expect(1);
         var cal = new JulianCal();
         
+        test.expect(1);
         test.equal(cal.getMonLength(2, 2012), 29);
         test.done();
     },
     
     testJuliangetMonLengthMar: function(test) {
-        test.expect(1);
         var cal = new JulianCal();
         
+        test.expect(1);
         test.equal(cal.getMonLength(3, 2011), 31);
         test.done();
     },
     
     testJuliangetMonLengthApr: function(test) {
-        test.expect(1);
         var cal = new JulianCal();
         
+        test.expect(1);
         test.equal(cal.getMonLength(4, 2011), 30);
         test.done();
     },
     
     testJuliangetMonLengthMay: function(test) {
-        test.expect(1);
         var cal = new JulianCal();
         
+        test.expect(1);
         test.equal(cal.getMonLength(5, 2011), 31);
         test.done();
     },
     
     testJuliangetMonLengthJun: function(test) {
-        test.expect(1);
         var cal = new JulianCal();
         
+        test.expect(1);
         test.equal(cal.getMonLength(6, 2011), 30);
         test.done();
     },
     
     testJuliangetMonLengthJul: function(test) {
-        test.expect(1);
         var cal = new JulianCal();
         
+        test.expect(1);
         test.equal(cal.getMonLength(7, 2011), 31);
         test.done();
     },
     
     testJuliangetMonLengthAug: function(test) {
-        test.expect(1);
         var cal = new JulianCal();
         
+        test.expect(1);
         test.equal(cal.getMonLength(8, 2011), 31);
         test.done();
     },
     
     testJuliangetMonLengthSep: function(test) {
-        test.expect(1);
         var cal = new JulianCal();
         
+        test.expect(1);
         test.equal(cal.getMonLength(9, 2011), 30);
         test.done();
     },
     
     testJuliangetMonLengthOct: function(test) {
-        test.expect(1);
         var cal = new JulianCal();
         
+        test.expect(1);
         test.equal(cal.getMonLength(10, 2011), 31);
         test.done();
     },
     
     testJuliangetMonLengthNov: function(test) {
-        test.expect(1);
         var cal = new JulianCal();
         
+        test.expect(1);
         test.equal(cal.getMonLength(11, 2011), 30);
         test.done();
     },
     
     testJuliangetMonLengthDec: function(test) {
-        test.expect(1);
         var cal = new JulianCal();
         
+        test.expect(1);
         test.equal(cal.getMonLength(12, 2011), 31);
         test.done();
     },
     
     testJulianIsLeapYear: function(test) {
-        test.expect(1);
         var cal = new JulianCal();
         
+        test.expect(1);
         test.ok(cal.isLeapYear(2012));
         test.done();
     },
@@ -159,63 +159,62 @@ module.exports.testjulian = {
     as -1 in our calculations.
     */
     testJulianIsLeapYearBCEFalse: function(test) {
-        test.expect(1);
         var cal = new JulianCal();
         
+        test.expect(1);
         test.ok(!cal.isLeapYear(-3));
         test.done();
     },
     
     testJulianIsLeapYearBCETrue: function(test) {
-        test.expect(1);
         var cal = new JulianCal();
         
+        test.expect(1);
         test.ok(cal.isLeapYear(-1));
         test.done();
     },
     
     testJulianIsLeapYearNot: function(test) {
-        test.expect(1);
         var cal = new JulianCal();
         
+        test.expect(1);
         test.ok(!cal.isLeapYear(2011));
         test.done();
     },
     
     testJulianIsLeapYearNotOnCentury1: function(test) {
-        test.expect(1);
         var cal = new JulianCal();
         
+        test.expect(1);
         test.ok(cal.isLeapYear(1700));
         test.done();
     },
     
     testJulianIsLeapYearNotOnCentury2: function(test) {
-        test.expect(1);
         var cal = new JulianCal();
         
+        test.expect(1);
         test.ok(cal.isLeapYear(1800));
         test.done();
     },
     
     testJulianIsLeapYearNotOnCentury3: function(test) {
-        test.expect(1);
         var cal = new JulianCal();
         
+        test.expect(1);
         test.ok(cal.isLeapYear(1900));
         test.done();
     },
     
     testJulianIsLeapYearOnQuadCentennial: function(test) {
-        test.expect(1);
         var cal = new JulianCal();
         
+        test.expect(1);
         test.ok(cal.isLeapYear(2000));
         test.done();
     },
     
     testJulianNewDateInstance: function(test) {
-        test.expect(3);
         var cal = new JulianCal();
         var d = cal.newDateInstance({
             year: 20,
@@ -223,6 +222,7 @@ module.exports.testjulian = {
             day: 1
         });
         
+        test.expect(3);
         test.ok(typeof(d) !== "undefined");
         test.ok(typeof(d.cal) !== "undefined");
         test.equal(d.cal.type, "julian");

@@ -34,9 +34,9 @@ module.exports.testaddress_UY = {
     },
 
     testParseAddressUYNormal: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("Florencio Agustini Eduardo Acevedo Diaz 1753\n11801 Montevideo\nUruguay", {locale: 'es-UY'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Florencio Agustini Eduardo Acevedo Diaz 1753");
         test.equal(parsedAddress.locality, "Montevideo");
@@ -48,9 +48,9 @@ module.exports.testaddress_UY = {
     },
     
     testParseAddressUYNoZip: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("Florencio Agustini Eduardo Acevedo Diaz 1753\nMontevideo\nUruguay", {locale: 'es-UY'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Florencio Agustini Eduardo Acevedo Diaz 1753");
         test.equal(parsedAddress.locality, "Montevideo");
@@ -62,9 +62,9 @@ module.exports.testaddress_UY = {
     },
     
     testParseAddressUYNoCountry: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("Florencio Agustini Eduardo Acevedo Diaz 1753\n11801 Montevideo", {locale: 'es-UY'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Florencio Agustini Eduardo Acevedo Diaz 1753");
         test.equal(parsedAddress.locality, "Montevideo");
@@ -76,8 +76,8 @@ module.exports.testaddress_UY = {
     },
     
     testParseAddressUYManyLines: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("Mr. Richard Chanda\n10\nNyimba\nRoad\n11801\nMontevideo\nUruguay\n\n\n", {locale: 'es-UY'});
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Mr. Richard Chanda, 10, Nyimba, Road");
         test.equal(parsedAddress.locality, "Montevideo");
@@ -89,9 +89,9 @@ module.exports.testaddress_UY = {
     },
     
     testParseAddressUYOneLine: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("Mr. Richard Chanda , 10 , Nyimba , Road , 11801 , Montevideo , Uruguay", {locale: 'es-UY'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Mr. Richard Chanda, 10, Nyimba, Road");
         test.equal(parsedAddress.locality, "Montevideo");
@@ -103,9 +103,9 @@ module.exports.testaddress_UY = {
     },
     
     testParseAddressUYSuperfluousWhitespace: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("\t\t\tMr. Richard Chanda\n\t\t\t10 \t\t\t\r\r Nyimba \n \r \tRoad \n\t\n11801\t\nMontevideo\n\t Uruguay\n\n\n", {locale: 'es-UY'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Mr. Richard Chanda, 10 Nyimba, Road");
         test.equal(parsedAddress.locality, "Montevideo");
@@ -117,9 +117,9 @@ module.exports.testaddress_UY = {
     },
     
     testParseAddressUYNoDelimiters: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("Florencio Agustini Eduardo Acevedo Diaz 1753 11801 Montevideo Uruguay", {locale: 'es-UY'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Florencio Agustini Eduardo Acevedo Diaz 1753");
         test.equal(parsedAddress.locality, "Montevideo");
@@ -131,11 +131,11 @@ module.exports.testaddress_UY = {
     },
     
     testParseAddressUYFromUS: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("Florencio Agustini Eduardo Acevedo Diaz 1753\n56001 Montevideo\nUruguay", {locale: 'en-US'});
         
         // the country name is in German because this address is for a contact in a German database
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Florencio Agustini Eduardo Acevedo Diaz 1753");
         test.equal(parsedAddress.locality, "Montevideo");
@@ -147,7 +147,6 @@ module.exports.testaddress_UY = {
     },
     
     testFormatAddressUY: function(test) {
-        test.expect(1);
         var parsedAddress = new Address({
             streetAddress: "Florencio Agustini Eduardo Acevedo Diaz 1753",
             locality: "Montevideo",
@@ -158,12 +157,12 @@ module.exports.testaddress_UY = {
         
         var expected = "Florencio Agustini Eduardo Acevedo Diaz 1753\n56001 Montevideo\nUruguay";
         var formatter = new AddressFmt({locale: 'es-UY'});
+        test.expect(1);
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     },
     
     testFormatAddressUYFromUS: function(test) {
-        test.expect(1);
         var parsedAddress = new Address({
             streetAddress: "Florencio Agustini Eduardo Acevedo Diaz 1753",
             locality: "Montevideo",
@@ -174,6 +173,7 @@ module.exports.testaddress_UY = {
         
         var expected = "Florencio Agustini Eduardo Acevedo Diaz 1753\n56001 Montevideo\nUruguay";
         var formatter = new AddressFmt({locale: 'en-US'});
+        test.expect(1);
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     }

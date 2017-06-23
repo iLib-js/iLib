@@ -36,9 +36,9 @@ module.exports.testaddress_BA = {
     },
 
     testParseAddressBANormal: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("Nedim Marevac, ul. Skenderija 60, 71000 SARAJEVO, BOSNIA", {locale: 'bs-Latn-BA'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Nedim Marevac, ul. Skenderija 60");
         test.ok(typeof(parsedAddress.region) === "undefined");
@@ -50,9 +50,9 @@ module.exports.testaddress_BA = {
     },
     
     testParseAddressBANoZip: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("Nedim Marevac, ul. Skenderija 60, SARAJEVO, BOSNIA", {locale: 'bs-Latn-BA'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Nedim Marevac, ul. Skenderija 60");
         test.ok(typeof(parsedAddress.region) === "undefined");
@@ -64,9 +64,9 @@ module.exports.testaddress_BA = {
     },
     
     testParseAddressBAManyLines: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("Nedim Marevac\nul. Skenderija 60\n71000 SARAJEVO\nBOSNIA", {locale: 'bs-Latn-BA'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Nedim Marevac, ul. Skenderija 60");
         test.ok(typeof(parsedAddress.region) === "undefined");
@@ -78,9 +78,9 @@ module.exports.testaddress_BA = {
     },
     
     testParseAddressBAOneLine: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("Nedim Marevac, ul. Skenderija 60, 71000 SARAJEVO, BOSNIA", {locale: 'bs-Latn-BA'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Nedim Marevac, ul. Skenderija 60");
         test.ok(typeof(parsedAddress.region) === "undefined");
@@ -92,9 +92,9 @@ module.exports.testaddress_BA = {
     },
     
     testParseAddressBASuperfluousWhitespace: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("Nedim Marevac, ul. Skenderija 60  \n\t\n 71000 SARAJEVO\t\n\n BOSNIA  \n  \t\t\t", {locale: 'bs-Latn-BA'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Nedim Marevac, ul. Skenderija 60");
         test.ok(typeof(parsedAddress.region) === "undefined");
@@ -106,9 +106,9 @@ module.exports.testaddress_BA = {
     },
     
     testParseAddressBANoDelimiters: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("Nedim Marevac FEDERICO TERRAZAS ARIAS CALLE ADELA ZAMUDIO 1716 PO BAX 580 71000 SARAJEVO BOSNIA", {locale: 'bs-Latn-BA'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Nedim Marevac FEDERICO TERRAZAS ARIAS CALLE ADELA ZAMUDIO 1716 PO BAX 580");
         test.ok(typeof(parsedAddress.region) === "undefined");
@@ -120,9 +120,9 @@ module.exports.testaddress_BA = {
     },
     
     testParseAddressBASpeciAMChars: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("Nedim Marevac, ul. Skenderija 60, 71000 SARAJEVO, BOSNIA", {locale: 'bs-Latn-BA'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Nedim Marevac, ul. Skenderija 60");
         test.ok(typeof(parsedAddress.region) === "undefined");
@@ -134,11 +134,11 @@ module.exports.testaddress_BA = {
     },
     
     testParseAddressBAFromUS: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("Nedim Marevac, ul. Skenderija 60, 71000 SARAJEVO, BOSNIA", {locale: 'en-US'});
         
         // the country name is in English because this address is for a contact in a US database
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Nedim Marevac, ul. Skenderija 60");
         test.ok(typeof(parsedAddress.region) === "undefined");
@@ -150,7 +150,6 @@ module.exports.testaddress_BA = {
     },
     
     testFormatAddressBA: function(test) {
-        test.expect(1);
         var parsedAddress = new Address({
             streetAddress: "Nedim Marevac, ul. Skenderija 60",
             locality: "71000 SARAJEVO",
@@ -160,12 +159,12 @@ module.exports.testaddress_BA = {
         
         var expected = "Nedim Marevac, ul. Skenderija 60\n71000 SARAJEVO\nBOSNIA";
         var formatter = new AddressFmt({locale: 'bs-Latn-BA'});
+        test.expect(1);
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     },
     
     testFormatAddressBAFromUS: function(test) {
-        test.expect(1);
         var parsedAddress = new Address({
             streetAddress: "Nedim Marevac, ul. Skenderija 60",
             country: "BOSNIA",
@@ -175,6 +174,7 @@ module.exports.testaddress_BA = {
         
         var expected = "Nedim Marevac, ul. Skenderija 60\n71000 SARAJEVO\nBOSNIA";
         var formatter = new AddressFmt({locale: 'en-US'});
+        test.expect(1);
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     }

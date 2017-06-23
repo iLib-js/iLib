@@ -34,9 +34,9 @@ module.exports.testaddress_SL = {
     },
 
     testParseAddressSLNormal: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("Mr. John Kamara 7A Ross Road Cline\nFreetown\nSierra Leone", {locale: 'en-SL'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Mr. John Kamara 7A Ross Road Cline");
         test.equal(parsedAddress.locality, "Freetown");
@@ -48,9 +48,9 @@ module.exports.testaddress_SL = {
     },
     
     testParseAddressSLNoZip: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("Mr. John Kamara 7A Ross Road Cline\nFreetown\nSierra Leone", {locale: 'en-SL'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Mr. John Kamara 7A Ross Road Cline");
         test.equal(parsedAddress.locality, "Freetown");
@@ -62,9 +62,9 @@ module.exports.testaddress_SL = {
     },
     
     testParseAddressSLNoCountry: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("Mr. John Kamara 7A Ross Road Cline\nFreetown", {locale: 'en-SL'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Mr. John Kamara 7A Ross Road Cline");
         test.equal(parsedAddress.locality, "Freetown");
@@ -76,8 +76,8 @@ module.exports.testaddress_SL = {
     },
     
     testParseAddressSLManyLines: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("Mr. John Kamara\n7A Ross Road Cline\nFreetown\nSierra Leone\n\n\n", {locale: 'en-SL'});
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Mr. John Kamara, 7A Ross Road Cline");
         test.equal(parsedAddress.locality, "Freetown");
@@ -89,9 +89,9 @@ module.exports.testaddress_SL = {
     },
     
     testParseAddressSLOneLine: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("Mr. John Kamara , 7A Ross Road Cline , Freetown , Sierra Leone", {locale: 'en-SL'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Mr. John Kamara, 7A Ross Road Cline");
         test.equal(parsedAddress.locality, "Freetown");
@@ -103,9 +103,9 @@ module.exports.testaddress_SL = {
     },
     
     testParseAddressSLSuperfluousWhitespace: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("\t\t\t\tMr. John Kamara\t\t\t7A Ross Road Cline\t\nFreetown\n\t Sierra Leone\n\n\n", {locale: 'en-SL'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Mr. John Kamara 7A Ross Road Cline");
         test.equal(parsedAddress.locality, "Freetown");
@@ -117,9 +117,9 @@ module.exports.testaddress_SL = {
     },
     
     testParseAddressSLNoDelimiters: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("Mr. John Kamara 7A Ross Road Cline, Freetown Sierra Leone", {locale: 'en-SL'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Mr. John Kamara 7A Ross Road Cline");
         test.equal(parsedAddress.locality, "Freetown");
@@ -131,9 +131,9 @@ module.exports.testaddress_SL = {
     },
     
     testParseAddressSLFromUS: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("Mr. John Kamara 7A Ross Road Cline\nFreetown\nSierra Leone", {locale: 'en-US'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Mr. John Kamara 7A Ross Road Cline");
         test.equal(parsedAddress.locality, "Freetown");
@@ -145,7 +145,6 @@ module.exports.testaddress_SL = {
     },
     
     testFormatAddressSL: function(test) {
-        test.expect(1);
         var parsedAddress = new Address({
             streetAddress: "Mr. John Kamara 7A Ross Road Cline",
             locality: "Freetown",
@@ -155,12 +154,12 @@ module.exports.testaddress_SL = {
         
         var expected = "Mr. John Kamara 7A Ross Road Cline\nFreetown\nSierra Leone";
         var formatter = new AddressFmt({locale: 'en-SL'});
+        test.expect(1);
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     },
     
     testFormatAddressSLFromUS: function(test) {
-        test.expect(1);
         var parsedAddress = new Address({
             streetAddress: "Mr. John Kamara 7A Ross Road Cline",
             locality: "Freetown",
@@ -170,12 +169,12 @@ module.exports.testaddress_SL = {
         
         var expected = "Mr. John Kamara 7A Ross Road Cline\nFreetown\nSierra Leone";
         var formatter = new AddressFmt({locale: 'en-US'});
+        test.expect(1);
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     },
     
     testFormatAddressSL1: function(test) {
-        test.expect(1);
         var parsedAddress = new Address({
             streetAddress: "Mr. Simon Hunter 87 Florence's, Peninsula Road",
             locality: "Freetown",
@@ -185,12 +184,12 @@ module.exports.testaddress_SL = {
         
         var expected = "Mr. Simon Hunter 87 Florence's, Peninsula Road\nFreetown\nSierra Leone";
         var formatter = new AddressFmt({locale: 'en-US'});
+        test.expect(1);
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     },
     
     testFormatAddressSL2: function(test) {
-        test.expect(1);
         var parsedAddress = new Address({
             streetAddress: "Mr. Simon Hunter 87 Florence's, Peninsula Road",
             locality: "Freetown",
@@ -200,14 +199,15 @@ module.exports.testaddress_SL = {
         
         var expected = "Mr. Simon Hunter 87 Florence's, Peninsula Road\nFreetown\nSierra Leone";
         var formatter = new AddressFmt({locale: 'en-US'});
+        test.expect(1);
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     },
     
     testParseAddressSL3: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("Mr. Simon Hunter 87 Florence's, Peninsula Road\nFreetown\nSierra Leone", {locale: 'en-SL'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Mr. Simon Hunter 87 Florence's, Peninsula Road");
         test.equal(parsedAddress.locality, "Freetown");

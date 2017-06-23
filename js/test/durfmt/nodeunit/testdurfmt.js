@@ -32,17 +32,17 @@ module.exports.testdurfmt = {
     },
 
     testDurFmtConstructorEmpty: function(test) {
-        test.expect(1);
         var fmt = new DurationFmt();
         
+        test.expect(1);
         test.ok(fmt !== null);
         test.done();
     },
     
     testDurFmtConstructorDefaultLocale: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt();
         
+        test.expect(2);
         test.ok(fmt !== null);
         
         test.equal(fmt.getLocale().toString(), "en-US");
@@ -50,8 +50,8 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtGetLength: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({length: "full"});
+        test.expect(2);
         test.ok(fmt !== null);
         
         test.equal(fmt.getLength(), "full");
@@ -59,8 +59,8 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtGetLengthDefault: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt();
+        test.expect(2);
         test.ok(fmt !== null);
         
         test.equal(fmt.getLength(), "short");
@@ -68,8 +68,8 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtGetLengthBogus: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({length: "asdf"});
+        test.expect(2);
         test.ok(fmt !== null);
         
         test.equal(fmt.getLength(), "short");
@@ -77,8 +77,8 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtGetLocale: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({locale: "de-DE"});
+        test.expect(2);
         test.ok(fmt !== null);
         
         test.equal(fmt.getLocale().toString(), "de-DE");
@@ -86,8 +86,8 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtGetLocaleDefault: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt();
+        test.expect(2);
         test.ok(fmt !== null);
         
         test.equal(fmt.getLocale().toString(), "en-US");
@@ -95,8 +95,8 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtGetLocaleBogus: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({locale: "zyy-XX"});
+        test.expect(2);
         test.ok(fmt !== null);
         
         test.equal(fmt.getLocale().toString(), "zyy-XX");
@@ -104,8 +104,8 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtGetStyleDefault: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt();
+        test.expect(2);
         test.ok(fmt !== null);
         
         test.equal(fmt.getStyle(), "text");
@@ -113,8 +113,8 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtGetStyleText: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({style: "text"});
+        test.expect(2);
         test.ok(fmt !== null);
         
         test.equal(fmt.getStyle(), "text");
@@ -122,8 +122,8 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtGetStyleClock: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({style: "clock"});
+        test.expect(2);
         test.ok(fmt !== null);
         
         test.equal(fmt.getStyle(), "clock");
@@ -131,8 +131,8 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtGetStyleBogus: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({style: "asdf"});
+        test.expect(2);
         test.ok(fmt !== null);
         
         test.equal(fmt.getStyle(), "text");
@@ -140,10 +140,10 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtFormatShortText: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             length: "short"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -161,11 +161,11 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtFormatShortClock: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             length: "short",
             style: "clock"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -183,11 +183,11 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtFormatShortExceedClockLimitsNoWrap: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             length: "short",
             style: "clock"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -204,11 +204,11 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtFormatShortClockNoMinutesSeconds: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             length: "short",
             style: "clock"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -223,11 +223,11 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtFormatShortTextNoMinutesSeconds: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             length: "short",
             style: "text"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -242,10 +242,10 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtFormatMedium: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             length: "medium"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -263,10 +263,10 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtFormatLongSingle: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             length: "long"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -284,10 +284,10 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtFormatFullSingle: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             length: "full"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -305,11 +305,11 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtFormatFullSingle_en_GB: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             length: "full",
             locale: "en-GB"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -327,10 +327,10 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtFormatFullSingleNotAllFields: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             length: "full"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -344,11 +344,11 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtFormatFullSingleNotAllFields_en_GB: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             length: "full",
             locale: "en-GB"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -362,10 +362,10 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtFormatLongPlural: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             length: "long"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -383,10 +383,10 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtFormatFullPlural: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             length: "full"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -404,11 +404,11 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtFormatFullPlural_en_GB: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             length: "full",
             locale: "en-GB"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -426,11 +426,11 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtFormatShortDEDefaultStyle: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "de-DE",
             length: "short"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -448,12 +448,12 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtFormatShortDEText: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "de-DE",
             length: "short",
             style: "text"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -471,12 +471,12 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtFormatShortDEClock: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "de-DE",
             length: "short",
             style: "clock"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -494,11 +494,11 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtFormatMediumDE: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "de-DE",
             length: "medium"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -516,11 +516,11 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtFormatLongDESingle: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "de-DE",
             length: "long"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -538,11 +538,11 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtFormatFullDESingle: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "de-DE",
             length: "full"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -560,11 +560,11 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtFormatLongDEPlural: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "de-DE",
             length: "long"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -582,11 +582,11 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtFormatFullDEPlural: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "de-DE",
             length: "full"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -604,11 +604,11 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtFormatShortZHDefaultStyle: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "zh-Hans-CN",
             length: "short"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -626,12 +626,12 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtFormatShortZHText: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "zh-Hans-CN",
             length: "short",
             style: "text"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -649,12 +649,12 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtFormatShortZHClock: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "zh-Hans-CN",
             length: "short",
             style: "clock"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -672,11 +672,11 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtFormatMediumZH: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "zh-Hans-CN",
             length: "medium"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -694,11 +694,11 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtFormatLongZH: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "zh-Hans-CN",
             length: "long"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -716,11 +716,11 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtFormatFullZH: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "zh-Hans-CN",
             length: "full"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -738,11 +738,11 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtFormatFullzh_Hans_MY: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "zh-Hans-MY",
             length: "full"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -760,11 +760,11 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtFormatShortFRDefaultStyle: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "fr-FR",
             length: "short"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -782,12 +782,12 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtFormatShortFRText: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "fr-FR",
             length: "short",
             style: "text"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -805,12 +805,12 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtFormatShortFRClock: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "fr-FR",
             length: "short",
             style: "clock"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -828,11 +828,11 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtFormatMediumFR: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "fr-FR",
             length: "medium"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -850,11 +850,11 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtFormatLongFR: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "fr-FR",
             length: "long"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -872,11 +872,11 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtFormatFullFR: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "fr-FR",
             length: "full"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -896,11 +896,11 @@ module.exports.testdurfmt = {
     //test cases for bg-BG
     
     testDurFmtBGFormatShortDefaultStyle: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "bg-BG",
             length: "short"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -917,12 +917,12 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtBGFormatShortText: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "bg-BG",
             length: "short",
             style: "text"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -939,12 +939,12 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtBGFormatShortClock: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "bg-BG",
             length: "short",
             style: "clock"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -961,11 +961,11 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtBGFormatMedium: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "bg-BG",
             length: "medium"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -982,11 +982,11 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtBGFormatLong: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "bg-BG",
             length: "long"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -1003,11 +1003,11 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtBGFormatFull: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "bg-BG",
             length: "full"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -1027,11 +1027,11 @@ module.exports.testdurfmt = {
     //test cases for bs-Latn-BA
     
     testDurFmtBSLatnFormatShortDefaultStyle: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "bs-Latn-BA",
             length: "short"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -1048,12 +1048,12 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtBSLatnFormatShortText: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "bs-Latn-BA",
             length: "short",
             style: "text"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -1070,12 +1070,12 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtBSLatnFormatShortClock: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "bs-Latn-BA",
             length: "short",
             style: "clock"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -1092,11 +1092,11 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtBSLatnFormatMedium: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "bs-Latn-BA",
             length: "medium"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -1113,11 +1113,11 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtBSLatnFormatLong: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "bs-Latn-BA",
             length: "long"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -1134,11 +1134,11 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtBSLatnFormatFull: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "bs-Latn-BA",
             length: "full"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -1157,11 +1157,11 @@ module.exports.testdurfmt = {
     //test cases for cs-CZ
     
     testDurFmtCSFormatShortDefaultStyle: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "cs-CZ",
             length: "short"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -1178,12 +1178,12 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtCSFormatShortText: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "cs-CZ",
             length: "short",
             style: "text"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -1200,12 +1200,12 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtCSFormatShortClock: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "cs-CZ",
             length: "short",
             style: "clock"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -1222,11 +1222,11 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtCSFormatMedium: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "cs-CZ",
             length: "medium"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -1243,11 +1243,11 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtCSFormatLong: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "cs-CZ",
             length: "long"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -1264,11 +1264,11 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtCSFormatFull: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "cs-CZ",
             length: "full"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -1288,11 +1288,11 @@ module.exports.testdurfmt = {
     
     
     testDurFmtDAFormatShortDefaultStyle: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "da-DK",
             length: "short"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -1309,12 +1309,12 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtDAFormatShortText: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "da-DK",
             length: "short",
             style: "text"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -1331,12 +1331,12 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtDAFormatShortClock: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "da-DK",
             length: "short",
             style: "clock"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -1353,11 +1353,11 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtDAFormatMedium: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "da-DK",
             length: "medium"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -1374,11 +1374,11 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtDAFormatLong: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "da-DK",
             length: "long"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -1395,11 +1395,11 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtDAFormatFull: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "da-DK",
             length: "full"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -1419,11 +1419,11 @@ module.exports.testdurfmt = {
     
     
     testDurFmtGRFormatShortDefaultStyle: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "el-GR",
             length: "short"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -1440,12 +1440,12 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtGRFormatShortText: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "el-GR",
             length: "short",
             style: "text"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -1462,12 +1462,12 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtGRFormatShortClock: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "el-GR",
             length: "short",
             style: "clock"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -1484,11 +1484,11 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtGRFormatMedium: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "el-GR",
             length: "medium"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -1505,11 +1505,11 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtGRFormatLong: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "el-GR",
             length: "long"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -1526,11 +1526,11 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtGRFormatFull: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "el-GR",
             length: "full"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -1550,11 +1550,11 @@ module.exports.testdurfmt = {
     
     
     testDurFmtESFormatShortDefaultStyle: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "es-CO",
             length: "short"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -1571,12 +1571,12 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtESFormatShortText: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "es-CO",
             length: "short",
             style: "text"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -1593,12 +1593,12 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtESFormatShortClock: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "es-CO",
             length: "short",
             style: "clock"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -1615,11 +1615,11 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtESFormatMedium: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "es-CO",
             length: "medium"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -1636,11 +1636,11 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtESFormatLong: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "es-CO",
             length: "long"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -1657,11 +1657,11 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtESFormatFull: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "es-CO",
             length: "full"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -1681,11 +1681,11 @@ module.exports.testdurfmt = {
     //test cases for estonian
     
     testDurFmtETFormatShortDefaultStyle: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "et-EE",
             length: "short"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -1702,12 +1702,12 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtETFormatShortText: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "et-EE",
             length: "short",
             style: "text"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -1724,12 +1724,12 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtETFormatShortClock: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "et-EE",
             length: "short",
             style: "clock"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -1746,11 +1746,11 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtETFormatMedium: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "et-EE",
             length: "medium"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -1767,11 +1767,11 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtETFormatLong: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "et-EE",
             length: "long"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -1788,11 +1788,11 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtETFormatFull: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "et-EE",
             length: "full"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -1811,11 +1811,11 @@ module.exports.testdurfmt = {
     //test cases for fa-IR
     
     testDurFmtFAFormatShortDefaultStyle: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "fa-IR",
             length: "short"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -1832,12 +1832,12 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtFAFormatShortText: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "fa-IR",
             length: "short",
             style: "text"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -1854,12 +1854,12 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtFAFormatShortClock: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "fa-IR",
             length: "short",
             style: "clock"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -1876,11 +1876,11 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtFAFormatMedium: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "fa-IR",
             length: "medium"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -1897,11 +1897,11 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtFAFormatLong: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "fa-IR",
             length: "long"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -1918,11 +1918,11 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtFAFormatFull: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "fa-IR",
             length: "full"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -1942,11 +1942,11 @@ module.exports.testdurfmt = {
     
     
     testDurFmtFIFormatShortDefaultStyle: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "fi-FI",
             length: "short"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -1963,12 +1963,12 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtFIFormatShortText: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "fi-FI",
             length: "short",
             style: "text"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -1985,12 +1985,12 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtFIFormatShortClock: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "fi-FI",
             length: "short",
             style: "clock"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -2007,11 +2007,11 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtFIFormatMedium: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "fi-FI",
             length: "medium"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -2028,11 +2028,11 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtFIFormatLong: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "fi-FI",
             length: "long"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -2049,11 +2049,11 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtFIFormatFull: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "fi-FI",
             length: "full"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -2072,11 +2072,11 @@ module.exports.testdurfmt = {
     //test cases for fr-CA
     
     testDurFmtFRCAFormatShortDefaultStyle: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "fr-CA",
             length: "short"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -2093,12 +2093,12 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtFRCAFormatShortText: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "fr-CA",
             length: "short",
             style: "text"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -2115,12 +2115,12 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtFRCAFormatShortClock: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "fr-CA",
             length: "short",
             style: "clock"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -2137,11 +2137,11 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtFRCAFormatMedium: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "fr-CA",
             length: "medium"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -2158,11 +2158,11 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtFRCAFormatLong: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "fr-CA",
             length: "long"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -2179,11 +2179,11 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtFRCAFormatFull: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "fr-CA",
             length: "full"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -2202,11 +2202,11 @@ module.exports.testdurfmt = {
     //test cases for ga-IE
     
     testDurFmtGAFormatShortDefaultStyle: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "ga-IE",
             length: "short"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -2223,12 +2223,12 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtGAFormatShortText: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "ga-IE",
             length: "short",
             style: "text"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -2245,12 +2245,12 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtGAFormatShortClock: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "ga-IE",
             length: "short",
             style: "clock"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -2267,11 +2267,11 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtGAFormatMedium: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "ga-IE",
             length: "medium"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -2288,11 +2288,11 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtGAFormatLong: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "ga-IE",
             length: "long"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -2309,11 +2309,11 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtGAFormatFull: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "ga-IE",
             length: "full"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -2332,11 +2332,11 @@ module.exports.testdurfmt = {
     //test cases for hebrew
     
     testDurFmtHEFormatShortDefaultStyle: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "he-IL",
             length: "short",
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -2353,12 +2353,12 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtHEFormatShortText: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "he-IL",
             length: "short",
             style: "text"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -2375,12 +2375,12 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtHEFormatShortClock: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "he-IL",
             length: "short",
             style: "clock"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -2397,11 +2397,11 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtHEFormatMedium: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "he-IL",
             length: "medium"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -2418,11 +2418,11 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtHEFormatLong: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "he-IL",
             length: "long"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -2439,11 +2439,11 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtHEFormatFull: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "he-IL",
             length: "full"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -2460,11 +2460,11 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtHEFormatShortManyNumber: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "he-IL",
             length: "short"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -2481,11 +2481,11 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtHEFormatMediumManyNumber: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "he-IL",
             length: "medium"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -2502,11 +2502,11 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtHEFormatLongManyNumber: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "he-IL",
             length: "long"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -2523,11 +2523,11 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtHEFormatFullManyNumber: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "he-IL",
             length: "full"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -2544,11 +2544,11 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtHEFormatShortOtherNumber: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "he-IL",
             length: "short"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -2565,11 +2565,11 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtHEFormatMediumOtherNumber: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "he-IL",
             length: "medium"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -2586,11 +2586,11 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtHEFormatLongOtherNumber: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "he-IL",
             length: "long"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -2607,11 +2607,11 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtHEFormatFullOtherNumber: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "he-IL",
             length: "full"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -2630,11 +2630,11 @@ module.exports.testdurfmt = {
     //test cases for hi-IN
     
     testDurFmtHIFormatShortDefaultStyle: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "hi-IN",
             length: "short"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -2651,12 +2651,12 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtHIFormatShortText: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "hi-IN",
             length: "short",
             style: "text"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -2673,12 +2673,12 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtHIFormatShortClock: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "hi-IN",
             length: "short",
             style: "clock"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -2695,11 +2695,11 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtHIFormatMedium: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "hi-IN",
             length: "medium"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -2716,11 +2716,11 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtHIFormatLong: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "hi-IN",
             length: "long"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -2737,11 +2737,11 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtHIFormatFull: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "hi-IN",
             length: "full"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -2761,11 +2761,11 @@ module.exports.testdurfmt = {
     //test cases for marathi mr-IN
     
     testDurFmtMRFormatShortDefaultStyle: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "mr-IN",
             length: "short"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -2782,12 +2782,12 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtMRFormatShortText: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "mr-IN",
             length: "short",
             style: "text"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -2804,12 +2804,12 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtMRFormatShortClock: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "mr-IN",
             length: "short",
             style: "clock"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -2826,11 +2826,11 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtMRFormatMedium: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "mr-IN",
             length: "medium"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -2847,11 +2847,11 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtMRFormatLong: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "mr-IN",
             length: "long"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -2868,11 +2868,11 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtMRFormatFull: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "mr-IN",
             length: "full"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -2893,11 +2893,11 @@ module.exports.testdurfmt = {
     //testa cases for Telugu (te-IN)
     
     testDurFmtTEFormatShortDefaultStyle: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "te-IN",
             length: "short"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -2914,12 +2914,12 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtTEFormatShortText: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "te-IN",
             length: "short",
             style: "text"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -2936,12 +2936,12 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtTEFormatShortClock: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "te-IN",
             length: "short",
             style: "clock"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -2959,11 +2959,11 @@ module.exports.testdurfmt = {
     
     
     testDurFmtTEFormatMedium: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "te-IN",
             length: "medium"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -2980,11 +2980,11 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtTEFormatLong: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "te-IN",
             length: "long"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -3001,11 +3001,11 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtTEFormatFull: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "te-IN",
             length: "full"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -3025,11 +3025,11 @@ module.exports.testdurfmt = {
     //test cases for kannada(kn-IN)
     
     testDurFmtKNFormatShortDefaultStyle: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "kn-IN",
             length: "short"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -3046,12 +3046,12 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtKNFormatShortText: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "kn-IN",
             length: "short",
             style: "text"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -3068,12 +3068,12 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtKNFormatShortClock: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "kn-IN",
             length: "short",
             style: "clock"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -3090,11 +3090,11 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtKNFormatMedium: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "kn-IN",
             length: "medium"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -3111,11 +3111,11 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtKNFormatLong: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "kn-IN",
             length: "long"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -3132,11 +3132,11 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtKNFormatFull: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "kn-IN",
             length: "full"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -3155,11 +3155,11 @@ module.exports.testdurfmt = {
     //test cases for tamil(ta-IN)
     
     testDurFmtTAFormatShortDefaultStyle: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "ta-IN",
             length: "short"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -3176,12 +3176,12 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtTAFormatShortText: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "ta-IN",
             length: "short",
             style: "text"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -3198,12 +3198,12 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtTAFormatShortClock: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "ta-IN",
             length: "short",
             style: "clock"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -3220,11 +3220,11 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtTAFormatMedium: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "ta-IN",
             length: "medium"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -3241,11 +3241,11 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtTAFormatLong: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "ta-IN",
             length: "long"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -3262,11 +3262,11 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtTAFormatFull: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "ta-IN",
             length: "full"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -3285,11 +3285,11 @@ module.exports.testdurfmt = {
     //test cases for Malaylam(ml-IN)
     
     testDurFmtMLFormatShortDefaultStyle: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "ml-IN",
             length: "short"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -3306,12 +3306,12 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtMLFormatShortText: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "ml-IN",
             length: "short",
             style: "text"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -3328,12 +3328,12 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtMLFormatShortClock: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "ml-IN",
             length: "short",
             style: "clock"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -3350,11 +3350,11 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtMLFormatMedium: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "ml-IN",
             length: "medium"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -3371,11 +3371,11 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtMLFormatLong: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "ml-IN",
             length: "long"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -3392,11 +3392,11 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtMLFormatFull: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "ml-IN",
             length: "full"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -3415,11 +3415,11 @@ module.exports.testdurfmt = {
     //test cases for Gujrati(gu-IN)
     
     testDurFmtGUFormatShortDefaultStyle: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "gu-IN",
             length: "short"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -3436,12 +3436,12 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtGUFormatShortText: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "gu-IN",
             length: "short",
             style: "text"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -3458,12 +3458,12 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtGUFormatShortClock: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "gu-IN",
             length: "short",
             style: "clock"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -3480,11 +3480,11 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtGUFormatMedium: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "gu-IN",
             length: "medium"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -3501,11 +3501,11 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtGUFormatLong: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "gu-IN",
             length: "long"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -3522,11 +3522,11 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtGUFormatFull: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "gu-IN",
             length: "full"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -3546,11 +3546,11 @@ module.exports.testdurfmt = {
     //test cases for Bengali(bn-IN)
     
     testDurFmtBNFormatShortDefaultStyle: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "bn-IN",
             length: "short"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -3567,12 +3567,12 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtBNFormatShortDefaultStyleNative: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "bn-IN",
             length: "short",
             useNative: true
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -3589,12 +3589,12 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtBNFormatShortText: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "bn-IN",
             length: "short",
             style: "text"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -3611,12 +3611,12 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtBNFormatShortClock: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "bn-IN",
             length: "short",
             style: "clock"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -3633,13 +3633,13 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtBNFormatShortClockNative: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "bn-IN",
             length: "short",
             style: "clock",
             useNative: true
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -3656,13 +3656,13 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtBNFormatShortClockWestern: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "bn-IN",
             length: "short",
             style: "clock",
             useNative: false
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -3679,11 +3679,11 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtBNFormatMedium: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "bn-IN",
             length: "medium"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -3700,11 +3700,11 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtBNFormatLong: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "bn-IN",
             length: "long"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -3721,11 +3721,11 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtBNFormatFull: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "bn-IN",
             length: "full"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -3745,11 +3745,11 @@ module.exports.testdurfmt = {
     //test cases for Assamese(as-IN)
     /*
     testDurFmtASFormatShortDefaultStyle: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "as-IN",
             length: "short"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -3766,12 +3766,12 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtASFormatShortText: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "as-IN",
             length: "short",
             style: "text"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -3788,12 +3788,12 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtASFormatShortClock: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "as-IN",
             length: "short",
             style: "clock"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -3810,11 +3810,11 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtASFormatMedium: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "as-IN",
             length: "medium"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -3831,11 +3831,11 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtASFormatLong: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "as-IN",
             length: "long"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -3852,11 +3852,11 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtASFormatFull: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "as-IN",
             length: "full"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -3876,11 +3876,11 @@ module.exports.testdurfmt = {
     //test cases for Punjabi(pa-Guru-IN)
     
     testDurFmtPAFormatShortDefaultStyle: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "pa-Guru-IN",
             length: "short"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -3897,12 +3897,12 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtPAFormatShortText: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "pa-Guru-IN",
             length: "short",
             style: "text"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -3919,12 +3919,12 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtPAFormatShortClock: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "pa-Guru-IN",
             length: "short",
             style: "clock"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -3941,11 +3941,11 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtPAFormatMedium: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "pa-Guru-IN",
             length: "medium"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -3962,11 +3962,11 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtPAFormatLong: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "pa-Guru-IN",
             length: "long"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -3983,11 +3983,11 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtPAFormatFull: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "pa-Guru-IN",
             length: "full"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -4006,11 +4006,11 @@ module.exports.testdurfmt = {
     //test cases for Urdu(ur-IN)
     
     testDurFmtURFormatShortDefaultStyle: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "ur-IN",
             length: "short"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -4027,12 +4027,12 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtURFormatShortText: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "ur-IN",
             length: "short",
             style: "text"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -4049,13 +4049,13 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtURFormatShortTextWestern: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "ur-IN",
             length: "short",
             style: "text",
             useNative: false
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -4072,12 +4072,12 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtURFormatShortClock: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "ur-IN",
             length: "short",
             style: "clock"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -4094,11 +4094,11 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtURFormatMedium: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "ur-IN",
             length: "medium"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -4115,11 +4115,11 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtURFormatLong: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "ur-IN",
             length: "long"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -4136,11 +4136,11 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtURFormatFull: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "ur-IN",
             length: "full"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -4159,11 +4159,11 @@ module.exports.testdurfmt = {
     //test cases for croation
     
     testDurFmtHRFormatShortDefaultStyle: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "hr-HR",
             length: "short"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -4180,12 +4180,12 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtHRFormatShortText: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "hr-HR",
             length: "short",
             style: "text"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -4202,12 +4202,12 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtHRFormatShortClock: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "hr-HR",
             length: "short",
             style: "clock"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -4224,11 +4224,11 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtHRFormatMedium: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "hr-HR",
             length: "medium"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -4245,11 +4245,11 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtHRFormatLong: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "hr-HR",
             length: "long"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -4266,11 +4266,11 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtHRFormatFull: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "hr-HR",
             length: "full"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -4288,11 +4288,11 @@ module.exports.testdurfmt = {
     
     //test cases for hungarian
     testDurFmtHUFormatShortDefaultStyle: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "hu-HU",
             length: "short"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -4309,12 +4309,12 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtHUFormatShortText: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "hu-HU",
             length: "short",
             style: "text"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -4331,12 +4331,12 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtHUFormatShortClock: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "hu-HU",
             length: "short",
             style: "clock"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -4353,11 +4353,11 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtHUFormatMedium: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "hu-HU",
             length: "medium"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -4374,11 +4374,11 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtHUFormatLong: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "hu-HU",
             length: "long"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -4395,11 +4395,11 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtHUFormatFull: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "hu-HU",
             length: "full"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -4418,11 +4418,11 @@ module.exports.testdurfmt = {
     //test cases for indonesia
     
     testDurFmtIDFormatShortDefaultStyle: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "id-ID",
             length: "short"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -4439,12 +4439,12 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtIDFormatShortText: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "id-ID",
             length: "short",
             style: "text"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -4461,12 +4461,12 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtIDFormatShortClock: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "id-ID",
             length: "short",
             style: "clock"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -4483,11 +4483,11 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtIDFormatMedium: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "id-ID",
             length: "medium"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -4504,11 +4504,11 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtIDFormatLong: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "id-ID",
             length: "long"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -4525,11 +4525,11 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtIDFormatFull: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "id-ID",
             length: "full"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -4548,11 +4548,11 @@ module.exports.testdurfmt = {
     //test cases for Italy
     
     testDurFmtITFormatShortDefaultStyle: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "it-IT",
             length: "short"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -4569,12 +4569,12 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtITFormatShortText: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "it-IT",
             length: "short",
             style: "text"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -4591,12 +4591,12 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtITFormatShortClock: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "it-IT",
             length: "short",
             style: "clock"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -4613,11 +4613,11 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtITFormatMedium: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "it-IT",
             length: "medium"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -4634,11 +4634,11 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtITFormatLong: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "it-IT",
             length: "long"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -4655,11 +4655,11 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtITFormatFull: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "it-IT",
             length: "full"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -4678,11 +4678,11 @@ module.exports.testdurfmt = {
     //test cases for japanese
     
     testDurFmtJAFormatShortDefaultStyle: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "ja-JP",
             length: "short"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -4700,12 +4700,12 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtJAFormatShortText: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "ja-JP",
             length: "short",
             style: "text"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -4723,12 +4723,12 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtJAFormatShortClock: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "ja-JP",
             length: "short",
             style: "clock"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -4746,11 +4746,11 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtJAFormatMedium: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "ja-JP",
             length: "medium"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -4768,11 +4768,11 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtJAFormatLong: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "ja-JP",
             length: "long"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -4790,11 +4790,11 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtJAFormatFull: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "ja-JP",
             length: "full"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -4815,11 +4815,11 @@ module.exports.testdurfmt = {
     //test cases for kk-Cyrl-KZ
     
     testDurFmtKKFormatShortDefaultStyle: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "kk-Cyrl-KZ",
             length: "short"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -4836,12 +4836,12 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtKKFormatShortText: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "kk-Cyrl-KZ",
             length: "short",
             style: "text"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -4858,12 +4858,12 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtKKFormatShortClock: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "kk-Cyrl-KZ",
             length: "short",
             style: "clock"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -4881,11 +4881,11 @@ module.exports.testdurfmt = {
     
     
     testDurFmtKKFormatLong: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "kk-Cyrl-KZ",
             length: "long"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -4902,11 +4902,11 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtKKFormatFull: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "kk-Cyrl-KZ",
             length: "full"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -4926,11 +4926,11 @@ module.exports.testdurfmt = {
     //test cases for ko-KR
     
     testDurFmtKOFormatShortDefaultStyle: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "ko-KR",
             length: "short"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -4948,12 +4948,12 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtKOFormatShortText: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "ko-KR",
             length: "short",
             style: "text"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -4971,12 +4971,12 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtKOFormatShortClock: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "ko-KR",
             length: "short",
             style: "clock"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -4994,11 +4994,11 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtKOFormatMedium: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "ko-KR",
             length: "medium"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -5016,11 +5016,11 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtKOFormatLong: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "ko-KR",
             length: "long"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -5038,11 +5038,11 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtKOFormatFull: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "ko-KR",
             length: "full"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -5060,11 +5060,11 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtKUFormatShortDefaultStyle: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "ku-Arab-IQ",
             length: "short"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -5081,12 +5081,12 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtKUFormatShortText: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "ku-Arab-IQ",
             length: "short",
             style: "text"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -5103,12 +5103,12 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtKUFormatShortClock: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "ku-Arab-IQ",
             length: "short",
             style: "clock"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -5125,11 +5125,11 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtKUFormatMedium: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "ku-Arab-IQ",
             length: "medium"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -5146,11 +5146,11 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtKUFormatLong: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "ku-Arab-IQ",
             length: "long"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -5167,11 +5167,11 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtKUFormatFull: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "ku-Arab-IQ",
             length: "full"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -5190,11 +5190,11 @@ module.exports.testdurfmt = {
     //test cases for lt-LT
     
     testDurFmtLTFormatShortDefaultStyle: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "lt-LT",
             length: "short"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -5211,12 +5211,12 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtLTFormatShortText: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "lt-LT",
             length: "short",
             style: "text"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -5233,12 +5233,12 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtLTFormatShortClock: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "lt-LT",
             length: "short",
             style: "clock"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -5255,11 +5255,11 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtLTFormatMedium: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "lt-LT",
             length: "medium"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -5276,11 +5276,11 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtLTFormatLong: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "lt-LT",
             length: "long"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -5297,11 +5297,11 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtLTFormatFull: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "lt-LT",
             length: "full"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -5320,11 +5320,11 @@ module.exports.testdurfmt = {
     //test cases for lv-LV
     
     testDurFmtLVFormatShortDefaultStyle: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "lv-LV",
             length: "short"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -5341,12 +5341,12 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtLVFormatShortText: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "lv-LV",
             length: "short",
             style: "text"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -5363,12 +5363,12 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtLVFormatShortClock: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "lv-LV",
             length: "short",
             style: "clock"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -5385,11 +5385,11 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtLVFormatMedium: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "lv-LV",
             length: "medium"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -5406,11 +5406,11 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtLVFormatLong: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "lv-LV",
             length: "long"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -5427,11 +5427,11 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtLVFormatFull: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "lv-LV",
             length: "full"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -5450,11 +5450,11 @@ module.exports.testdurfmt = {
     //test cases for mk-MK
     
     testDurFmtMKFormatShortDefaultStyle: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "mk-MK",
             length: "short"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -5471,12 +5471,12 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtMKFormatShortText: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "mk-MK",
             length: "short",
             style: "text"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -5493,12 +5493,12 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtMKFormatShortClock: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "mk-MK",
             length: "short",
             style: "clock"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -5515,11 +5515,11 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtMKFormatMedium: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "mk-MK",
             length: "medium"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -5536,11 +5536,11 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtMKFormatLong: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "mk-MK",
             length: "long"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -5557,11 +5557,11 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtMKFormatFull: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "mk-MK",
             length: "full"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -5581,11 +5581,11 @@ module.exports.testdurfmt = {
     //test cases for mn-Cyrl-MN
     
     testDurFmtMNFormatShortDefaultStyle: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "mn-Cyrl-MN",
             length: "short"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -5602,12 +5602,12 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtMNFormatShortText: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "mn-Cyrl-MN",
             length: "short",
             style: "text"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -5624,12 +5624,12 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtMNFormatShortClock: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "mn-Cyrl-MN",
             length: "short",
             style: "clock"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -5646,11 +5646,11 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtMNFormatMedium: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "mn-Cyrl-MN",
             length: "medium"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -5667,11 +5667,11 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtMNFormatLong: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "mn-Cyrl-MN",
             length: "long"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -5688,11 +5688,11 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtMNFormatFull: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "mn-Cyrl-MN",
             length: "full"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -5711,11 +5711,11 @@ module.exports.testdurfmt = {
     //test cases for ms-Latn-MY
     
     testDurFmtMSFormatShortDefaultStyle: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "ms-Latn-MY",
             length: "short"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -5732,12 +5732,12 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtMSFormatShortText: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "ms-Latn-MY",
             length: "short",
             style: "text"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -5754,12 +5754,12 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtMSFormatShortClock: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "ms-Latn-MY",
             length: "short",
             style: "clock"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -5776,11 +5776,11 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtMSFormatMedium: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "ms-Latn-MY",
             length: "medium"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -5797,11 +5797,11 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtMSFormatLong: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "ms-Latn-MY",
             length: "long"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -5818,11 +5818,11 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtMSFormatFull: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "ms-Latn-MY",
             length: "full"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -5843,11 +5843,11 @@ module.exports.testdurfmt = {
     
     
     testDurFmtNBFormatShortDefaultStyle: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "nb-NO",
             length: "short"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -5864,12 +5864,12 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtNBFormatShortText: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "nb-NO",
             length: "short",
             style: "text"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -5886,12 +5886,12 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtNBFormatShortClock: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "nb-NO",
             length: "short",
             style: "clock"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -5908,11 +5908,11 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtNBFormatMedium: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "nb-NO",
             length: "medium"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -5929,11 +5929,11 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtNBFormatLong: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "nb-NO",
             length: "long"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -5950,11 +5950,11 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtNBFormatFull: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "nb-NO",
             length: "full"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -5973,11 +5973,11 @@ module.exports.testdurfmt = {
     //test cases for nl-NL
     
     testDurFmtNLFormatShortDefaultStyle: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "nl-NL",
             length: "short"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -5994,12 +5994,12 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtNLFormatShortText: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "nl-NL",
             length: "short",
             style: "text"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -6016,12 +6016,12 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtNLFormatShortClock: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "nl-NL",
             length: "short",
             style: "clock"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -6038,11 +6038,11 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtNLFormatMedium: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "nl-NL",
             length: "medium"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -6059,11 +6059,11 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtNLFormatLong: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "nl-NL",
             length: "long"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -6080,11 +6080,11 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtNLFormatFull: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "nl-NL",
             length: "full"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -6103,11 +6103,11 @@ module.exports.testdurfmt = {
     //test cases for pl-PL
     
     testDurFmtPLFormatShortDefaultStyle: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "pl-PL",
             length: "short"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -6124,12 +6124,12 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtPLFormatShortText: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "pl-PL",
             length: "short",
             style: "text"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -6146,12 +6146,12 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtPLFormatShortClock: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "pl-PL",
             length: "short",
             style: "clock"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -6168,11 +6168,11 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtPLFormatMedium: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "pl-PL",
             length: "medium"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -6189,11 +6189,11 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtPLFormatLong: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "pl-PL",
             length: "long"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -6210,11 +6210,11 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtPLFormatFull: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "pl-PL",
             length: "full"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -6236,11 +6236,11 @@ module.exports.testdurfmt = {
     //test cases for pt-BR
     
     testDurFmtPTFormatShortDefaultStyle: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "pt-BR",
             length: "short"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -6257,12 +6257,12 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtPTFormatShortText: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "pt-BR",
             length: "short",
             style: "text"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -6279,12 +6279,12 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtPTFormatShortClock: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "pt-BR",
             length: "short",
             style: "clock"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -6301,11 +6301,11 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtPTFormatMedium: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "pt-BR",
             length: "medium"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -6322,11 +6322,11 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtPTFormatLong: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "pt-BR",
             length: "long"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -6343,11 +6343,11 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtPTFormatFull: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "pt-BR",
             length: "full"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -6366,11 +6366,11 @@ module.exports.testdurfmt = {
     //test cases for ro-RO
     
     testDurFmtROFormatShortDefaultStyle: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "ro-RO",
             length: "short"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -6387,12 +6387,12 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtROFormatShortText: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "ro-RO",
             length: "short",
             style: "text"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -6409,12 +6409,12 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtROFormatShortClock: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "ro-RO",
             length: "short",
             style: "clock"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -6431,11 +6431,11 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtROFormatMedium: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "ro-RO",
             length: "medium"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -6452,11 +6452,11 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtROFormatLong: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "ro-RO",
             length: "long"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -6473,11 +6473,11 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtROFormatFull: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "ro-RO",
             length: "full"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -6496,11 +6496,11 @@ module.exports.testdurfmt = {
     //test cases for ru-RU
     
     testDurFmtRUFormatShortDefaultStyle: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "ru-RU",
             length: "short"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -6517,12 +6517,12 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtRUFormatShortText: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "ru-RU",
             length: "short",
             style: "text"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -6539,12 +6539,12 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtRUFormatShortClock: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "ru-RU",
             length: "short",
             style: "clock"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -6561,11 +6561,11 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtRUFormatMedium: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "ru-RU",
             length: "medium"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -6582,11 +6582,11 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtRUFormatLong: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "ru-RU",
             length: "long"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -6603,11 +6603,11 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtRUFormatFull: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "ru-RU",
             length: "full"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -6627,11 +6627,11 @@ module.exports.testdurfmt = {
     //test cases for sk-SK
     
     testDurFmtSKFormatShortDefaultStyle: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "sk-SK",
             length: "short"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -6648,12 +6648,12 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtSKFormatShortText: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "sk-SK",
             length: "short",
             style: "text"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -6670,12 +6670,12 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtSKFormatShortClock: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "sk-SK",
             length: "short",
             style: "clock"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -6692,11 +6692,11 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtSKFormatMedium: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "sk-SK",
             length: "medium"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -6713,11 +6713,11 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtSKFormatLong: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "sk-SK",
             length: "long"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -6734,11 +6734,11 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtSKFormatFull: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "sk-SK",
             length: "full"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -6757,11 +6757,11 @@ module.exports.testdurfmt = {
     //test cases for sq-AL
     
     testDurFmtSQFormatShortDefaultStyle: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "sq-AL",
             length: "short"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -6778,12 +6778,12 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtSQFormatShortText: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "sq-AL",
             length: "short",
             style: "text"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -6800,12 +6800,12 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtSQFormatShortClock: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "sq-AL",
             length: "short",
             style: "clock"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -6822,11 +6822,11 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtSQFormatMedium: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "sq-AL",
             length: "medium"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -6843,11 +6843,11 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtSQFormatLong: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "sq-AL",
             length: "long"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -6864,11 +6864,11 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtSQFormatFull: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "sq-AL",
             length: "full"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -6888,11 +6888,11 @@ module.exports.testdurfmt = {
     //test cases for sr-Latn-RS
     
     testDurFmtSRFormatShortDefaultStyle: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "sr-Latn-RS",
             length: "short"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -6909,12 +6909,12 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtSRFormatShortText: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "sr-Latn-RS",
             length: "short",
             style: "text"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -6931,12 +6931,12 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtSRFormatShortClock: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "sr-Latn-RS",
             length: "short",
             style: "clock"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -6954,11 +6954,11 @@ module.exports.testdurfmt = {
     
     
     testDurFmtSRFormatLong: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "sr-Latn-RS",
             length: "long"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -6975,11 +6975,11 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtSRFormatFull: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "sr-Latn-RS",
             length: "full"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -6998,11 +6998,11 @@ module.exports.testdurfmt = {
     //test cases for th-TH
     
     testDurFmtTHFormatShortDefaultStyle: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "th-TH",
             length: "short"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -7019,12 +7019,12 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtTHFormatShortText: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "th-TH",
             length: "short",
             style: "text"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -7041,12 +7041,12 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtTHFormatShortClock: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "th-TH",
             length: "short",
             style: "clock"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -7063,11 +7063,11 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtTHFormatMedium: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "th-TH",
             length: "medium"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -7084,11 +7084,11 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtTHFormatLong: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "th-TH",
             length: "long"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -7105,11 +7105,11 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtTHFormatFull: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "th-TH",
             length: "full"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -7128,11 +7128,11 @@ module.exports.testdurfmt = {
     //test cases for uk-UA
     
     testDurFmtUKUAFormatShortDefaultStyle: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "uk-UA",
             length: "short"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -7149,12 +7149,12 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtUKUAFormatShortText: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "uk-UA",
             length: "short",
             style: "text"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -7171,12 +7171,12 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtUKUAFormatShortClock: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "uk-UA",
             length: "short",
             style: "clock"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -7193,11 +7193,11 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtUKUAFormatMedium: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "uk-UA",
             length: "medium"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -7214,11 +7214,11 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtUKUAFormatLong: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "uk-UA",
             length: "long"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -7235,11 +7235,11 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtUKUAFormatFull: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "uk-UA",
             length: "full"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -7258,11 +7258,11 @@ module.exports.testdurfmt = {
     //test cases for uz-Cyrl-UZ
     
     testDurFmtUZFormatShortDefaultStyle: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "uz-Cyrl-UZ",
             length: "short"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -7279,12 +7279,12 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtUZFormatShortText: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "uz-Cyrl-UZ",
             length: "short",
             style: "text"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -7301,12 +7301,12 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtUZFormatShortClock: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "uz-Cyrl-UZ",
             length: "short",
             style: "clock"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -7323,11 +7323,11 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtUZFormatMedium: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "uz-Cyrl-UZ",
             length: "medium"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -7344,11 +7344,11 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtUZFormatLong: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "uz-Cyrl-UZ",
             length: "long"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -7365,11 +7365,11 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtUZFormatFull: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "uz-Cyrl-UZ",
             length: "full"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -7388,11 +7388,11 @@ module.exports.testdurfmt = {
     //test cases for uz-Latn-UZ
     
     testDurFmtUZLATNFormatShortDefaultStyle: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "uz-Latn-UZ",
             length: "short"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -7409,12 +7409,12 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtUZLATNFormatShortText: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "uz-Latn-UZ",
             length: "short",
             style: "text"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -7431,12 +7431,12 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtUZLATNFormatShortClock: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "uz-Latn-UZ",
             length: "short",
             style: "clock"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -7453,11 +7453,11 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtUZLATNFormatMedium: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "uz-Latn-UZ",
             length: "medium"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -7474,11 +7474,11 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtUZLATNFormatLong: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "uz-Latn-UZ",
             length: "long"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -7495,11 +7495,11 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtUZLATNFormatFull: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "uz-Latn-UZ",
             length: "full"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -7518,11 +7518,11 @@ module.exports.testdurfmt = {
     //test cases for vietnemese
     
     testDurFmtVIFormatShortDefaultStyle: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "vi-VN",
             length: "short"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -7539,12 +7539,12 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtVIFormatShortText: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "vi-VN",
             length: "short",
             style: "text"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -7561,12 +7561,12 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtVIFormatShortClock: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "vi-VN",
             length: "short",
             style: "clock"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -7583,11 +7583,11 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtVIFormatMedium: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "vi-VN",
             length: "medium"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -7604,11 +7604,11 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtVIFormatLong: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "vi-VN",
             length: "long"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -7625,11 +7625,11 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtVIFormatFull: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "vi-VN",
             length: "full"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -7648,11 +7648,11 @@ module.exports.testdurfmt = {
     //test cases for zh-Hant-TW
     
     testDurFmtZHFormatShortDefaultStyle: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "zh-Hant-TW",
             length: "short"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -7670,12 +7670,12 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtZHFormatShortText: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "zh-Hant-TW",
             length: "short",
             style: "text"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -7692,12 +7692,12 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtZHFormatShortClock: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "zh-Hant-TW",
             length: "short",
             style: "clock"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -7714,11 +7714,11 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtZHFormatMedium: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "zh-Hant-TW",
             length: "medium"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -7735,11 +7735,11 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtZHFormatLong: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "zh-Hant-TW",
             length: "long"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -7756,11 +7756,11 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtZHFormatFull: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "zh-Hant-TW",
             length: "full"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -7779,11 +7779,11 @@ module.exports.testdurfmt = {
     //test cases for zh-Hank-HK
     
     testDurFmtZHHKFormatShortDefaultStyle: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "zh-Hant-HK",
             length: "short"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -7801,12 +7801,12 @@ module.exports.testdurfmt = {
     
     
     testDurFmtZHHKFormatShortText: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "zh-Hant-HK",
             length: "short",
             style: "text"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -7823,12 +7823,12 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtZHHKFormatShortClock: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "zh-Hant-HK",
             length: "short",
             style: "clock"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -7845,11 +7845,11 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtZHHKFormatMedium: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "zh-Hant-HK",
             length: "medium"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -7866,11 +7866,11 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtZHHKFormatLong: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "zh-Hant-HK",
             length: "long"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -7887,11 +7887,11 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtZHHKFormatFull: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "zh-Hant-HK",
             length: "full"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -7910,11 +7910,11 @@ module.exports.testdurfmt = {
     //test cases for tr-TR
     
     testDurFmtTRFormatShortDefaultStyle: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "tr-TR",
             length: "short"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -7931,12 +7931,12 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtTRFormatShortText: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "tr-TR",
             length: "short",
             style: "text"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -7953,12 +7953,12 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtTRFormatShortClock: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "tr-TR",
             length: "short",
             style: "clock"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -7975,11 +7975,11 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtTRFormatMedium: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "tr-TR",
             length: "medium"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -7996,11 +7996,11 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtTRFormatLong: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "tr-TR",
             length: "long"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -8017,11 +8017,11 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtTRFormatFull: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "tr-TR",
             length: "full"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -8040,11 +8040,11 @@ module.exports.testdurfmt = {
     //test cases for swedish
     
     testDurFmtSVFormatShortDefaultStyle: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "sv-SE",
             length: "short"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -8061,12 +8061,12 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtSVFormatShortText: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "sv-SE",
             length: "short",
             style: "text"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -8083,12 +8083,12 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtSVFormatShortClock: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "sv-SE",
             length: "short",
             style: "clock"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -8105,11 +8105,11 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtSVFormatMedium: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "sv-SE",
             length: "medium"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -8126,11 +8126,11 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtSVFormatLong: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "sv-SE",
             length: "long"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -8147,11 +8147,11 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtSVFormatFull: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "sv-SE",
             length: "full"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -8170,11 +8170,11 @@ module.exports.testdurfmt = {
     //test cases for sl-SI
     
     testDurFmtSLFormatShortDefaultStyle: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "sl-SI",
             length: "short"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -8191,12 +8191,12 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtSLFormatShortText: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "sl-SI",
             length: "short",
             style: "text"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -8213,12 +8213,12 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtSLFormatShortClock: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "sl-SI",
             length: "short",
             style: "clock"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -8235,11 +8235,11 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtSLFormatMedium: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "sl-SI",
             length: "medium"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -8256,11 +8256,11 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtSLFormatLong: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "sl-SI",
             length: "long"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -8277,11 +8277,11 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtSLFormatFull: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "sl-SI",
             length: "full"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -8300,11 +8300,11 @@ module.exports.testdurfmt = {
     //test cases for portuguese pt-PU
     
     testDurFmtPTPTFormatShortDefaultStyle: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "pt-PT",
             length: "short"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -8321,12 +8321,12 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtPTPTFormatShortText: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "pt-PT",
             length: "short",
             style: "text"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -8343,12 +8343,12 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtPTPTFormatShortClock: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "pt-PT",
             length: "short",
             style: "clock"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -8365,11 +8365,11 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtPTPTFormatMedium: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "pt-PT",
             length: "medium"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -8386,11 +8386,11 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtPTPTFormatLong: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "pt-PT",
             length: "long"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -8407,11 +8407,11 @@ module.exports.testdurfmt = {
     },
     
     testDurFmtPTPTFormatFull: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "pt-PT",
             length: "full"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({

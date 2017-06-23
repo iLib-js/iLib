@@ -34,7 +34,6 @@ module.exports.phonefmt_SG = {
     },
 
     testFormatSGStyle0: function(test) {
-        test.expect(1);
         var formatted;
         var parsed = new PhoneNumber({
             subscriberNumber: "34523434"
@@ -44,6 +43,7 @@ module.exports.phonefmt_SG = {
         var fmt = new PhoneFmt({locale: "en-SG", style: "default"});
         formatted = fmt.format(parsed);
         
+        test.expect(1);
         test.equal(formatted, expected);
         test.done();
         
@@ -51,7 +51,6 @@ module.exports.phonefmt_SG = {
     },
     
     testFormatSGInternational: function(test) {
-        test.expect(1);
         var formatted;
         var parsed = new PhoneNumber({
                 iddPrefix: "+",
@@ -64,6 +63,7 @@ module.exports.phonefmt_SG = {
         var fmt = new PhoneFmt({locale: "en-SG", style: "default"});
         formatted = fmt.format(parsed);
         
+        test.expect(1);
         test.equal(formatted, expected);
         test.done();
         
@@ -71,7 +71,6 @@ module.exports.phonefmt_SG = {
     },
     
     testFormatSGInternationalAccessCode: function(test) {
-        test.expect(1);
         var formatted;
         var parsed = new PhoneNumber({
                 iddPrefix: "001",
@@ -84,6 +83,7 @@ module.exports.phonefmt_SG = {
         var fmt = new PhoneFmt({locale: "en-SG", style: "default"});
         formatted = fmt.format(parsed);
         
+        test.expect(1);
         test.equal(formatted, expected);
         test.done();
         
@@ -91,7 +91,6 @@ module.exports.phonefmt_SG = {
     },
     
     testFormatSGMobile: function(test) {
-        test.expect(1);
         var formatted;
         var parsed = new PhoneNumber({
             subscriberNumber: "81234567"
@@ -101,6 +100,7 @@ module.exports.phonefmt_SG = {
         var fmt = new PhoneFmt({locale: "en-SG", style: "default"});
         formatted = fmt.format(parsed);
         
+        test.expect(1);
         test.equal(formatted, expected);
         test.done();
         
@@ -108,7 +108,6 @@ module.exports.phonefmt_SG = {
     },
     
     testFormatSGMobileInternational: function(test) {
-        test.expect(1);
         var formatted;
         var parsed = new PhoneNumber({
                 iddPrefix: "+",
@@ -120,6 +119,7 @@ module.exports.phonefmt_SG = {
         var fmt = new PhoneFmt({locale: "en-SG", style: "default"});
         formatted = fmt.format(parsed);
         
+        test.expect(1);
         test.equal(formatted, expected);
         test.done();
         
@@ -127,7 +127,6 @@ module.exports.phonefmt_SG = {
     },
     
     testFormatSGService: function(test) {
-        test.expect(1);
         var formatted;
         var parsed = new PhoneNumber({
                 serviceCode: "800",
@@ -138,6 +137,7 @@ module.exports.phonefmt_SG = {
         var fmt = new PhoneFmt({locale: "en-SG", style: "default"});
         formatted = fmt.format(parsed);
         
+        test.expect(1);
         test.equal(formatted, expected);
         test.done();
         
@@ -145,7 +145,6 @@ module.exports.phonefmt_SG = {
     },
     
     testFormatSGIEIDD: function(test) {
-        test.expect(1);
         var formatted;
         var parsed = new PhoneNumber({
                 iddPrefix: "+",
@@ -159,6 +158,7 @@ module.exports.phonefmt_SG = {
         var fmt = new PhoneFmt({locale: "en-SG", style: "default"});
         formatted = fmt.format(parsed);
         
+        test.expect(1);
         test.equal(formatted, expected);
         test.done();
         
@@ -166,7 +166,6 @@ module.exports.phonefmt_SG = {
     },
     
     testFormatSGStyle0Partial0: function(test) {
-        test.expect(1);
         var formatted;
         var parsed = new PhoneNumber({
                 subscriberNumber: "6"
@@ -176,13 +175,13 @@ module.exports.phonefmt_SG = {
         var fmt = new PhoneFmt({locale: "en-SG"});
         formatted = fmt.format(parsed, {partial: true});
         
+        test.expect(1);
         test.equal(formatted, expected);
         test.done();
         
         
     },
     testFormatSGStyle0Partial1: function(test) {
-        test.expect(1);
         var formatted;
         var parsed = new PhoneNumber({
                 subscriberNumber: "61"
@@ -192,13 +191,13 @@ module.exports.phonefmt_SG = {
         var fmt = new PhoneFmt({locale: "en-SG"});
         formatted = fmt.format(parsed, {partial: true});
         
+        test.expect(1);
         test.equal(formatted, expected);
         test.done();
         
         
     },
     testFormatSGStyle0Partial2: function(test) {
-        test.expect(1);
         var formatted;
         var parsed = new PhoneNumber({
                 subscriberNumber: "612"
@@ -208,13 +207,13 @@ module.exports.phonefmt_SG = {
         var fmt = new PhoneFmt({locale: "en-SG"});
         formatted = fmt.format(parsed, {partial: true});
         
+        test.expect(1);
         test.equal(formatted, expected);
         test.done();
         
         
     },
     testFormatSGStyle0Partial3: function(test) {
-        test.expect(1);
         var formatted;
         var parsed = new PhoneNumber({
                 subscriberNumber: "6123"
@@ -224,13 +223,13 @@ module.exports.phonefmt_SG = {
         var fmt = new PhoneFmt({locale: "en-SG"});
         formatted = fmt.format(parsed, {partial: true});
         
+        test.expect(1);
         test.equal(formatted, expected);
         test.done();
         
         
     },
     testFormatSGStyle0Partial4: function(test) {
-        test.expect(1);
         var formatted;
         var parsed = new PhoneNumber({
                 subscriberNumber: "61234"
@@ -240,13 +239,13 @@ module.exports.phonefmt_SG = {
         var fmt = new PhoneFmt({locale: "en-SG"});
         formatted = fmt.format(parsed, {partial: true});
         
+        test.expect(1);
         test.equal(formatted, expected);
         test.done();
         
         
     },
     testFormatSGStyle0Partial5: function(test) {
-        test.expect(1);
         var formatted;
         var parsed = new PhoneNumber({
                 subscriberNumber: "612345"
@@ -256,13 +255,13 @@ module.exports.phonefmt_SG = {
         var fmt = new PhoneFmt({locale: "en-SG"});
         formatted = fmt.format(parsed, {partial: true});
         
+        test.expect(1);
         test.equal(formatted, expected);
         test.done();
         
         
     },
     testFormatSGStyle0Partial6: function(test) {
-        test.expect(1);
         var formatted;
         var parsed = new PhoneNumber({
                 subscriberNumber: "6123456"
@@ -272,13 +271,13 @@ module.exports.phonefmt_SG = {
         var fmt = new PhoneFmt({locale: "en-SG"});
         formatted = fmt.format(parsed, {partial: true});
         
+        test.expect(1);
         test.equal(formatted, expected);
         test.done();
         
         
     },
     testFormatSGStyle0Partial7: function(test) {
-        test.expect(1);
         var formatted;
         var parsed = new PhoneNumber({
                 subscriberNumber: "61234567"
@@ -288,13 +287,13 @@ module.exports.phonefmt_SG = {
         var fmt = new PhoneFmt({locale: "en-SG"});
         formatted = fmt.format(parsed, {partial: true});
         
+        test.expect(1);
         test.equal(formatted, expected);
         test.done();
         
         
     },
     testFormatSGStyle0Partial8: function(test) {
-        test.expect(1);
         var formatted;
         var parsed = new PhoneNumber({
                 subscriberNumber: "612345678"    // too long
@@ -304,6 +303,7 @@ module.exports.phonefmt_SG = {
         var fmt = new PhoneFmt({locale: "en-SG"});
         formatted = fmt.format(parsed, {partial: true});
         
+        test.expect(1);
         test.equal(formatted, expected);
         test.done();
         

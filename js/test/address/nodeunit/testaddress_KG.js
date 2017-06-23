@@ -34,9 +34,9 @@ module.exports.testaddress_KG = {
     },
 
     testParseAddressKGNormal: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("720001 БИШКЕК\nПроспект Чуй, 193, кв. 28 Колупаева Анара\nКиргизия", {locale: 'ru-KG'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Проспект Чуй, 193, кв. 28 Колупаева Анара");
         test.equal(parsedAddress.locality, "БИШКЕК");
@@ -48,9 +48,9 @@ module.exports.testaddress_KG = {
     },
     
     testParseAddressKGNoZip: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("БИШКЕК\nПроспект Чуй, 193, кв. 28 Колупаева Анара\nКиргизия", {locale: 'ru-KG'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Проспект Чуй, 193, кв. 28 Колупаева Анара");
         test.equal(parsedAddress.locality, "БИШКЕК");
@@ -62,9 +62,9 @@ module.exports.testaddress_KG = {
     },
     
     testParseAddressKGNoCountry: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("720001 БИШКЕК\nПроспект Чуй, 193, кв. 28 Колупаева Анара", {locale: 'ru-KG'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Проспект Чуй, 193, кв. 28 Колупаева Анара");
         test.equal(parsedAddress.locality, "БИШКЕК");
@@ -76,8 +76,8 @@ module.exports.testaddress_KG = {
     },
     
     testParseAddressKGManyLines: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("720001\nБИШКЕК\nПроспект Чуй\n193\nкв. 28 Колупаева\nАнара\nКиргизия\n\n\n", {locale: 'ru-KG'});
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Проспект Чуй, 193, кв. 28 Колупаева, Анара");
         test.equal(parsedAddress.locality, "БИШКЕК");
@@ -89,9 +89,9 @@ module.exports.testaddress_KG = {
     },
     
     testParseAddressKGOneLine: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("720001 , БИШКЕК , Проспект Чуй , 193 , кв. 28 Колупаева , Анара , Киргизия", {locale: 'ru-KG'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Проспект Чуй, 193, кв. 28 Колупаева, Анара");
         test.equal(parsedAddress.locality, "БИШКЕК");
@@ -103,9 +103,9 @@ module.exports.testaddress_KG = {
     },
     
     testParseAddressKGSuperfluousWhitespace: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("\t\t\t720001\t\t\nБИШКЕК\t\t\nПроспект Чуй\t\t193\t\tкв. 28 Колупаева\t\tАнара\t\nКиргизия\n\n\n", {locale: 'ru-KG'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Проспект Чуй 193 кв. 28 Колупаева Анара");
         test.equal(parsedAddress.locality, "БИШКЕК");
@@ -117,9 +117,9 @@ module.exports.testaddress_KG = {
     },
     
     testParseAddressKGNoDelimiters: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("720001 БИШКЕК Проспект Чуй 193 кв. 28 Колупаева Анара Киргизия", {locale: 'ru-KG'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Проспект Чуй 193 кв. 28 Колупаева Анара");
         test.equal(parsedAddress.locality, "БИШКЕК");
@@ -131,9 +131,9 @@ module.exports.testaddress_KG = {
     },
     
     testParseAddressKGFromUS: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("720001 БИШКЕК\nПроспект Чуй, 193, кв. 28 Колупаева Анара\nKyrgyzstan", {locale: 'en-US'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Проспект Чуй, 193, кв. 28 Колупаева Анара");
         test.equal(parsedAddress.locality, "БИШКЕК");
@@ -145,7 +145,6 @@ module.exports.testaddress_KG = {
     },
     
     testFormatAddressKG: function(test) {
-        test.expect(1);
         var parsedAddress = new Address({
             streetAddress: "Проспект Чуй, 193, кв. 28 Колупаева Анара",
             locality: "БИШКЕК",
@@ -156,12 +155,12 @@ module.exports.testaddress_KG = {
         
         var expected = "720001 БИШКЕК\nПроспект Чуй, 193, кв. 28 Колупаева Анара\nКиргизия";
         var formatter = new AddressFmt({locale: 'ru-KG'});
+        test.expect(1);
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     },
     
     testFormatAddressKGFromUS: function(test) {
-        test.expect(1);
         var parsedAddress = new Address({
             streetAddress: "Проспект Чуй, 193, кв. 28 Колупаева Анара",
             locality: "БИШКЕК",
@@ -172,6 +171,7 @@ module.exports.testaddress_KG = {
         
         var expected = "720001 БИШКЕК\nПроспект Чуй, 193, кв. 28 Колупаева Анара\nKyrgyzstan";
         var formatter = new AddressFmt({locale: 'en-US'});
+        test.expect(1);
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     }

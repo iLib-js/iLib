@@ -34,9 +34,9 @@ module.exports.testaddress_CI = {
     },
 
     testParseAddressCINormal: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("Madame KOUAME AKISSI COMMERCANTE 06 B.P. 37 ABIDJAN 06\ncôte d’ivoire", {locale: 'fr-CI'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Madame KOUAME AKISSI COMMERCANTE 06 B.P. 37");
         test.equal(parsedAddress.locality, "ABIDJAN 06");
@@ -48,9 +48,9 @@ module.exports.testaddress_CI = {
     },
     
     testParseAddressCINoZip: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("Madame KOUAME AKISSI COMMERCANTE 06 B.P. 37 ABIDJAN 06\ncôte d’ivoire", {locale: 'fr-CI'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Madame KOUAME AKISSI COMMERCANTE 06 B.P. 37");
         test.equal(parsedAddress.locality, "ABIDJAN 06");
@@ -62,9 +62,9 @@ module.exports.testaddress_CI = {
     },
     
     testParseAddressCINoCountry: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("Madame KOUAME AKISSI COMMERCANTE 06 B.P. 37\nABIDJAN 06", {locale: 'fr-CI'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Madame KOUAME AKISSI COMMERCANTE 06 B.P. 37");
         test.equal(parsedAddress.locality, "ABIDJAN 06");
@@ -76,9 +76,9 @@ module.exports.testaddress_CI = {
     },
     
     testParseAddressCIManyLines: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("Madame KOUAME AKISSI\nCOMMERCANTE 06 B.P. 37\nABIDJAN 06\ncôte d’ivoire", {locale: 'fr-CI'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
           test.equal(parsedAddress.streetAddress, "Madame KOUAME AKISSI, COMMERCANTE 06 B.P. 37");
         test.equal(parsedAddress.locality, "ABIDJAN 06");
@@ -90,9 +90,9 @@ module.exports.testaddress_CI = {
     },
     
     testParseAddressCIOneLine: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("Madame KOUAME AKISSI , COMMERCANTE 06 B.P. 37 , ABIDJAN 06 , côte d’ivoire", {locale: 'fr-CI'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
           test.equal(parsedAddress.streetAddress, "Madame KOUAME AKISSI, COMMERCANTE 06 B.P. 37");
         test.equal(parsedAddress.locality, "ABIDJAN 06");
@@ -104,9 +104,9 @@ module.exports.testaddress_CI = {
     },
     
     testParseAddressCISuperfluousWhitespace: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("Madame KOUAME AKISSI\n\n\t\r\t\t\rCOMMERCANTE 06 B.P. 37\r\r\n\nABIDJAN 06\t\r\n\t\rcôte d’ivoire", {locale: 'fr-CI'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
           test.equal(parsedAddress.streetAddress, "Madame KOUAME AKISSI, COMMERCANTE 06 B.P. 37");
         test.equal(parsedAddress.locality, "ABIDJAN 06");
@@ -118,9 +118,9 @@ module.exports.testaddress_CI = {
     },
     
     testParseAddressCINoDelimiters: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("Madame KOUAME AKISSI COMMERCANTE 06 B.P. 37 ABIDJAN 06 côte d’ivoire", {locale: 'fr-CI'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Madame KOUAME AKISSI COMMERCANTE 06 B.P. 37");
         test.equal(parsedAddress.locality, "ABIDJAN 06");
@@ -132,9 +132,9 @@ module.exports.testaddress_CI = {
     },
     
     testParseAddressCIFromUS: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("Madame KOUAME AKISSI COMMERCANTE 06 B.P. 37\nABIDJAN 06\ncôte d’ivoire", {locale: 'fr-CI'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Madame KOUAME AKISSI COMMERCANTE 06 B.P. 37");
         test.equal(parsedAddress.locality, "ABIDJAN 06");
@@ -146,7 +146,6 @@ module.exports.testaddress_CI = {
     },
     
     testFormatAddressCI: function(test) {
-        test.expect(1);
         var parsedAddress = new Address({
             streetAddress: "Madame KOUAME AKISSI COMMERCANTE 06 B.P. 37",
             locality: "ABIDJAN 06",
@@ -157,12 +156,12 @@ module.exports.testaddress_CI = {
         
         var expected = "Madame KOUAME AKISSI COMMERCANTE 06 B.P. 37 ABIDJAN 06\ncôte d’ivoire";
         var formatter = new AddressFmt({locale: 'fr-CI'});
+        test.expect(1);
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     },
     
     testFormatAddressCIFromUS: function(test) {
-        test.expect(1);
         var parsedAddress = new Address({
             streetAddress: "Madame KOUAME AKISSI COMMERCANTE 06 B.P. 37",
             locality: "ABIDJAN 06",
@@ -173,6 +172,7 @@ module.exports.testaddress_CI = {
         
         var expected = "Madame KOUAME AKISSI COMMERCANTE 06 B.P. 37 ABIDJAN 06\ncôte d’ivoire";
         var formatter = new AddressFmt({locale: 'en-US'});
+        test.expect(1);
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     }

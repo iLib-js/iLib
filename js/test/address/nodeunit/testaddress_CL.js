@@ -36,9 +36,9 @@ module.exports.testaddress_CL = {
     },
 
     testParseAddressCLNormal: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("Av. Bellavista N° 185, Dep. 609, 8420000, Recoleta, Chile", {locale: 'es-CL'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Av. Bellavista N° 185, Dep. 609");
         test.ok(typeof(parsedAddress.region) === "undefined");
@@ -50,9 +50,9 @@ module.exports.testaddress_CL = {
     },
     
     testParseAddressCLNoZip: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("Av. Bellavista N° 185, Dep. 609, 8420000, Recoleta, Chile", {locale: 'es-CL'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Av. Bellavista N° 185, Dep. 609");
         test.ok(typeof(parsedAddress.region) === "undefined");
@@ -64,9 +64,9 @@ module.exports.testaddress_CL = {
     },
     
     testParseAddressCLManyLines: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("Av. Bellavista N° 185\nDep. 609\n8420000\nRecoleta\nChile", {locale: 'es-CL'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Av. Bellavista N° 185, Dep. 609");
         test.ok(typeof(parsedAddress.region) === "undefined");
@@ -78,9 +78,9 @@ module.exports.testaddress_CL = {
     },
     
     testParseAddressCLOneLine: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("Av. Bellavista N° 185, Dep. 609, 8420000, Recoleta, Chile", {locale: 'es-CL'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Av. Bellavista N° 185, Dep. 609");
         test.ok(typeof(parsedAddress.region) === "undefined");
@@ -92,9 +92,9 @@ module.exports.testaddress_CL = {
     },
     
     testParseAddressCLSuperfluousWhitespace: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("Av. Bellavista N° 185, Dep. 609 \n\t\n 8420000\nRecoleta\t\n\n Chile  \n  \t\t\t", {locale: 'es-CL'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Av. Bellavista N° 185, Dep. 609");
         test.ok(typeof(parsedAddress.region) === "undefined");
@@ -106,9 +106,9 @@ module.exports.testaddress_CL = {
     },
     
     testParseAddressCLNoDelimiters: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("Av. Bellavista N° 185 Dep. 609 8420000 Recoleta Chile", {locale: 'es-CL'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Av. Bellavista N° 185 Dep. 609");
         test.ok(typeof(parsedAddress.region) === "undefined");
@@ -120,9 +120,9 @@ module.exports.testaddress_CL = {
     },
     
     testParseAddressCLSpecialChars: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("Av. Bellavista N° 185, Dep. 609, 8420000, Recoleta, Chile", {locale: 'es-CL'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Av. Bellavista N° 185, Dep. 609");
         test.ok(typeof(parsedAddress.region) === "undefined");
@@ -134,11 +134,11 @@ module.exports.testaddress_CL = {
     },
     
     testParseAddressCLFromUS: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("Av. Bellavista N° 185, Dep. 609, 8420000, Recoleta, Chile", {locale: 'en-US'});
         
         // the country name is in English because this address is for a contact in a US database
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Av. Bellavista N° 185, Dep. 609");
         test.ok(typeof(parsedAddress.region) === "undefined");
@@ -150,7 +150,6 @@ module.exports.testaddress_CL = {
     },
     
     testFormatAddressCL: function(test) {
-        test.expect(1);
         var parsedAddress = new Address({
             streetAddress: "Av. Bellavista N° 185, Dep. 609",
             locality: "Recoleta",
@@ -161,12 +160,12 @@ module.exports.testaddress_CL = {
         
         var expected = "Av. Bellavista N° 185, Dep. 609\n8420000\nRecoleta\nChile";
         var formatter = new AddressFmt({locale: 'es-CL'});
+        test.expect(1);
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     },
     
     testFormatAddressCLFromUS: function(test) {
-        test.expect(1);
         var parsedAddress = new Address({
             streetAddress: "Av. Bellavista N° 185, Dep. 609",
             locality: "Recoleta",
@@ -177,16 +176,17 @@ module.exports.testaddress_CL = {
         
         var expected = "Av. Bellavista N° 185, Dep. 609\n8420000\nRecoleta\nChile";
         var formatter = new AddressFmt({locale: 'en-US'});
+        test.expect(1);
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     },
     
     testFormatAddressCL1: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("Señorita Patricia Vivas, Moneda 1155, 8340457, SANTIAGO, CHILE", {locale: 'es-CL'});
         
         // the country name is in English because this address is for a contact in a US database
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Señorita Patricia Vivas, Moneda 1155");
         test.ok(typeof(parsedAddress.region) === "undefined");
@@ -197,7 +197,6 @@ module.exports.testaddress_CL = {
         test.done();
     },
     testFormatAddressCL2: function(test) {
-        test.expect(1);
         var parsedAddress = new Address({
             streetAddress: "Señorita Patricia Vivas Moneda 1155",
             locality: "SANTIAGO",
@@ -208,6 +207,7 @@ module.exports.testaddress_CL = {
         
         var expected = "Señorita Patricia Vivas Moneda 1155\n8340457\nSANTIAGO\nCHILE";
         var formatter = new AddressFmt({locale: 'en-US'});
+        test.expect(1);
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     }

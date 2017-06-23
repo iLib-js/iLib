@@ -34,13 +34,13 @@ module.exports.testcollation_fr = {
     },
 
     testCollatorNativefrFRCase: function(test) {
-        test.expect(2);
         // only test on platforms that support the new Intl class natively
         if (typeof(Intl) !== 'undefined') {
             var col = new Collator({
                 locale: "fr-FR",
                 sensitivity: "case"
             });
+        test.expect(2);
             test.ok(typeof(col) !== "undefined");
     
             var input = [
@@ -89,7 +89,6 @@ module.exports.testcollation_fr = {
     },
     
     testCollatorNativefrFRVariant: function(test) {
-        test.expect(2);
         // only test on platforms that support the new Intl class natively
         if (typeof(Intl) !== 'undefined') {
             var col = new Collator({
@@ -97,6 +96,7 @@ module.exports.testcollation_fr = {
                 sensitivity: "variant",
                 frenchAccents: true
             });
+        test.expect(2);
             test.ok(typeof(col) !== "undefined");
     
             var input = [
@@ -148,13 +148,13 @@ module.exports.testcollation_fr = {
     },
     
     testCollatorNativefrCACase: function(test) {
-        test.expect(2);
         // only test on platforms that support the new Intl class natively
         if (typeof(Intl) !== 'undefined') {
             var col = new Collator({
                 locale: "fr-CA",
                 sensitivity: "case"
             });
+        test.expect(2);
             test.ok(typeof(col) !== "undefined");
     
             var input = [
@@ -203,13 +203,13 @@ module.exports.testcollation_fr = {
     },
     
     testCollatorNativefrCAVariant: function(test) {
-        test.expect(2);
         // only test on platforms that support the new Intl class natively
         if (typeof(Intl) !== 'undefined') {
             var col = new Collator({
                 locale: "fr-CA",
                 sensitivity: "variant"
             });
+        test.expect(2);
             test.ok(typeof(col) !== "undefined");
     
             var input = [

@@ -32,36 +32,36 @@ module.exports.testnumprs = {
     },
 
     testNumberConstructorDefault: function(test) {
-        test.expect(1);
         var num = new INumber("3.4");
+        test.expect(1);
         test.ok(num !== null);
         test.done();
     },
     
     testNumberConstructorWithPrimitiveNumber: function(test) {
-        test.expect(1);
         var num = new INumber(3.4);
+        test.expect(1);
         test.ok(num !== null);
         test.done();
     },
     
     testNumberConstructorWithNumber: function(test) {
-        test.expect(1);
         var num = new INumber(new Number(3.4));
+        test.expect(1);
         test.ok(num !== null);
         test.done();
     },
     
     testNumberConstructorWithIlibNumber: function(test) {
-        test.expect(1);
         var num = new INumber(new INumber("3.4"));
+        test.expect(1);
         test.ok(num !== null);
         test.done();
     },
     
     testNumberGetLocaleDefault: function(test) {
-        test.expect(2);
         var num = new INumber("3.4");
+        test.expect(2);
         test.ok(num !== null);
     
         test.equal(num.getLocale().getSpec(), "en-US");
@@ -69,10 +69,10 @@ module.exports.testnumprs = {
     },
     
     testNumberGetLocaleOther: function(test) {
-        test.expect(2);
         var num = new INumber("3.4", {
             locale: "de-DE"
         });
+        test.expect(2);
         test.ok(num !== null);
     
         test.equal(num.getLocale().getSpec(), "de-DE");
@@ -80,8 +80,8 @@ module.exports.testnumprs = {
     },
     
     testNumberFloat: function(test) {
-        test.expect(2);
         var num = new INumber("3.4");
+        test.expect(2);
         test.ok(num !== null);
     
         test.equal(num.valueOf(), 3.4);
@@ -89,8 +89,8 @@ module.exports.testnumprs = {
     },
     
     testNumberFloatWithPrimitiveNumber: function(test) {
-        test.expect(2);
         var num = new INumber(3.4);
+        test.expect(2);
         test.ok(num !== null);
     
         test.equal(num.valueOf(), 3.4);
@@ -98,8 +98,8 @@ module.exports.testnumprs = {
     },
     
     testNumberFloatWithNumberObject: function(test) {
-        test.expect(2);
         var num = new INumber(new Number(3.4));
+        test.expect(2);
         test.ok(num !== null);
     
         test.equal(num.valueOf(), 3.4);
@@ -107,8 +107,8 @@ module.exports.testnumprs = {
     },
     
     testNumberFloatWithIlibNumberObject: function(test) {
-        test.expect(2);
         var num = new INumber(new INumber(3.4));
+        test.expect(2);
         test.ok(num !== null);
     
         test.equal(num.valueOf(), 3.4);
@@ -116,8 +116,8 @@ module.exports.testnumprs = {
     },
     
     testNumberFloatThousands: function(test) {
-        test.expect(2);
         var num = new INumber("1,233.4");
+        test.expect(2);
         test.ok(num !== null);
     
         test.equal(num.valueOf(), 1233.4);
@@ -125,8 +125,8 @@ module.exports.testnumprs = {
     },
     
     testNumberFloatNegative: function(test) {
-        test.expect(2);
         var num = new INumber("-1233.4");
+        test.expect(2);
         test.ok(num !== null);
     
         test.equal(num.valueOf(), -1233.4);
@@ -134,8 +134,8 @@ module.exports.testnumprs = {
     },
     
     testNumberFloatIgnoreInternalDashes: function(test) {
-        test.expect(2);
         var num = new INumber("123-33.4");
+        test.expect(2);
         test.ok(num !== null);
     
         test.equal(num.valueOf(), 12333.4);
@@ -143,8 +143,8 @@ module.exports.testnumprs = {
     },
     
     testNumberFloatIgnoreInternalDashesNegative: function(test) {
-        test.expect(2);
         var num = new INumber("-123-33.4");
+        test.expect(2);
         test.ok(num !== null);
     
         test.equal(num.valueOf(), -12333.4);
@@ -152,8 +152,8 @@ module.exports.testnumprs = {
     },
     
     testNumberFloatThousandsNoFormatting: function(test) {
-        test.expect(2);
         var num = new INumber("1233.4");
+        test.expect(2);
         test.ok(num !== null);
     
         test.equal(num.valueOf(), 1233.4);
@@ -161,8 +161,8 @@ module.exports.testnumprs = {
     },
     
     testNumberFloatThousandsBogusFormatting: function(test) {
-        test.expect(2);
         var num = new INumber("1,2,3,3,.4");
+        test.expect(2);
         test.ok(num !== null);
     
         test.equal(num.valueOf(), 1233.4);
@@ -170,8 +170,8 @@ module.exports.testnumprs = {
     },
     
     testNumberFloatInvalid: function(test) {
-        test.expect(2);
         var num = new INumber("1.A4");
+        test.expect(2);
         test.ok(num !== null);
     
         // just parse what you can and ignore the rest
@@ -180,8 +180,8 @@ module.exports.testnumprs = {
     },
     
     testNumberFloatStartsWithDecimal: function(test) {
-        test.expect(2);
         var num = new INumber(".4342");
+        test.expect(2);
         test.ok(num !== null);
     
         test.equal(num.valueOf(), 0.4342);
@@ -189,8 +189,8 @@ module.exports.testnumprs = {
     },
     
     testNumberFloatStartsWithZero: function(test) {
-        test.expect(2);
         var num = new INumber("0.4342");
+        test.expect(2);
         test.ok(num !== null);
     
         test.equal(num.valueOf(), 0.4342);
@@ -198,8 +198,8 @@ module.exports.testnumprs = {
     },
     
     testNumberFloatStartsWithDecimalNegative: function(test) {
-        test.expect(2);
         var num = new INumber("-.4342");
+        test.expect(2);
         test.ok(num !== null);
     
         test.equal(num.valueOf(), -0.4342);
@@ -207,8 +207,8 @@ module.exports.testnumprs = {
     },
     
     testNumberFloatStartsWithZeroNegative: function(test) {
-        test.expect(2);
         var num = new INumber("-0.4342");
+        test.expect(2);
         test.ok(num !== null);
     
         test.equal(num.valueOf(), -0.4342);
@@ -217,8 +217,8 @@ module.exports.testnumprs = {
     
     
     testNumberInt: function(test) {
-        test.expect(2);
         var num = new INumber("123");
+        test.expect(2);
         test.ok(num !== null);
     
         test.equal(num.valueOf(), 123);
@@ -226,8 +226,8 @@ module.exports.testnumprs = {
     },
     
     testNumberIntThousands: function(test) {
-        test.expect(2);
         var num = new INumber("123,456");
+        test.expect(2);
         test.ok(num !== null);
     
         test.equal(num.valueOf(), 123456);
@@ -235,8 +235,8 @@ module.exports.testnumprs = {
     },
     
     testNumberInvalid: function(test) {
-        test.expect(2);
         var num = new INumber("123.234.234");
+        test.expect(2);
         test.ok(num !== null);
     
         test.equal(num.valueOf(), 123.234);
@@ -244,8 +244,8 @@ module.exports.testnumprs = {
     },
     
     testNumberEmpty: function(test) {
-        test.expect(2);
         var num = new INumber("");
+        test.expect(2);
         test.ok(num !== null);
     
         test.equal(num.valueOf(), 0);
@@ -253,8 +253,8 @@ module.exports.testnumprs = {
     },
     
     testNumberPercentage: function(test) {
-        test.expect(2);
         var num = new INumber("58.3%", {type: "percentage"});
+        test.expect(2);
         test.ok(num !== null);
     
         test.equal(num.valueOf(), 0.583);
@@ -262,8 +262,8 @@ module.exports.testnumprs = {
     },
     
     testNumberPercentageNegative: function(test) {
-        test.expect(2);
         var num = new INumber("-58.3%", {type: "percentage"});
+        test.expect(2);
         test.ok(num !== null);
     
         test.equal(num.valueOf(), -0.583);
@@ -271,8 +271,8 @@ module.exports.testnumprs = {
     },
     
     testNumberPercentageNoTypeSpecified: function(test) {
-        test.expect(2);
         var num = new INumber("58.3%");
+        test.expect(2);
         test.ok(num !== null);
     
         test.equal(num.valueOf(), 58.3);
@@ -280,8 +280,8 @@ module.exports.testnumprs = {
     },
     
     testNumberCurrencyValue: function(test) {
-        test.expect(2);
         var num = new INumber("$5.80", {type: "currency"});
+        test.expect(2);
         test.ok(num !== null);
     
         test.equal(num.valueOf(), 5.80);
@@ -289,8 +289,8 @@ module.exports.testnumprs = {
     },
     
     testNumberCurrencyValueNegative1: function(test) {
-        test.expect(2);
         var num = new INumber("$-5.80", {type: "currency"});
+        test.expect(2);
         test.ok(num !== null);
     
         test.equal(num.valueOf(), -5.80);
@@ -298,8 +298,8 @@ module.exports.testnumprs = {
     },
     
     testNumberCurrencyValueNegative2: function(test) {
-        test.expect(2);
         var num = new INumber("-$5.80", {type: "currency"});
+        test.expect(2);
         test.ok(num !== null);
     
         test.equal(num.valueOf(), -5.80);
@@ -307,8 +307,8 @@ module.exports.testnumprs = {
     },
     
     testNumberCurrencyType: function(test) {
-        test.expect(3);
         var num = new INumber("$5.80", {type: "currency"});
+        test.expect(3);
         test.ok(num !== null);
     
         var cur = num.getCurrency();
@@ -318,8 +318,8 @@ module.exports.testnumprs = {
     },
     
     testNumberCurrencyTypeUsingISOCode: function(test) {
-        test.expect(3);
         var num = new INumber("USD 5.80", {type: "currency"});
+        test.expect(3);
         test.ok(num !== null);
     
         var cur = num.getCurrency();
@@ -329,8 +329,8 @@ module.exports.testnumprs = {
     },
     
     testNumberCurrencyNotForLocale: function(test) {
-        test.expect(3);
         var num = new INumber("£5.80", {type: "currency"});
+        test.expect(3);
         test.ok(num !== null);
     
         var cur = num.getCurrency();
@@ -340,8 +340,8 @@ module.exports.testnumprs = {
     },
     
     testNumberCurrencyForLocale: function(test) {
-        test.expect(3);
         var num = new INumber("£5.80", {locale: "ar-EG", type: "currency"});
+        test.expect(3);
         test.ok(num !== null);
     
         var cur = num.getCurrency();
@@ -351,10 +351,10 @@ module.exports.testnumprs = {
     },
     
     testNumberFloatDE: function(test) {
-        test.expect(2);
         var num = new INumber("3,4", {
             locale: "de-DE"
         });
+        test.expect(2);
         test.ok(num !== null);
     
         test.equal(num.valueOf(), 3.4);
@@ -362,10 +362,10 @@ module.exports.testnumprs = {
     },
     
     testNumberFloatDENegative: function(test) {
-        test.expect(2);
         var num = new INumber("-3,4", {
             locale: "de-DE"
         });
+        test.expect(2);
         test.ok(num !== null);
     
         test.equal(num.valueOf(), -3.4);
@@ -373,10 +373,10 @@ module.exports.testnumprs = {
     },
     
     testNumberFloatDEThousands: function(test) {
-        test.expect(2);
         var num = new INumber("1.233,4", {
             locale: "de-DE"
         });
+        test.expect(2);
         test.ok(num !== null);
     
         test.equal(num.valueOf(), 1233.4);
@@ -384,10 +384,10 @@ module.exports.testnumprs = {
     },
     
     testNumberFloatDEThousandsNegative: function(test) {
-        test.expect(2);
         var num = new INumber("-1.233,4", {
             locale: "de-DE"
         });
+        test.expect(2);
         test.ok(num !== null);
     
         test.equal(num.valueOf(), -1233.4);
@@ -395,10 +395,10 @@ module.exports.testnumprs = {
     },
     
     testNumberFloatDEWithDashForZeros: function(test) {
-        test.expect(2);
         var num = new INumber("3,-", {
             locale: "de-DE"
         });
+        test.expect(2);
         test.ok(num !== null);
     
         test.equal(num.valueOf(), 3.0);
@@ -406,10 +406,10 @@ module.exports.testnumprs = {
     },
     
     testNumberFloatDEStartsWithDecimal: function(test) {
-        test.expect(2);
         var num = new INumber(",4342", {
             locale: "de-DE"
         });
+        test.expect(2);
         test.ok(num !== null);
     
         test.equal(num.valueOf(), 0.4342);
@@ -417,10 +417,10 @@ module.exports.testnumprs = {
     },
     
     testNumberFloatDEStartsWithZero: function(test) {
-        test.expect(2);
         var num = new INumber("0,4342", {
             locale: "de-DE"
         });
+        test.expect(2);
         test.ok(num !== null);
     
         test.equal(num.valueOf(), 0.4342);
@@ -428,10 +428,10 @@ module.exports.testnumprs = {
     },
     
     testNumberFloatDEStartsWithDecimalNegative: function(test) {
-        test.expect(2);
         var num = new INumber("-,4342", {
             locale: "de-DE"
         });
+        test.expect(2);
         test.ok(num !== null);
     
         test.equal(num.valueOf(), -0.4342);
@@ -439,10 +439,10 @@ module.exports.testnumprs = {
     },
     
     testNumberFloatDEStartsWithZeroNegative: function(test) {
-        test.expect(2);
         var num = new INumber("-0,4342", {
             locale: "de-DE"
         });
+        test.expect(2);
         test.ok(num !== null);
     
         test.equal(num.valueOf(), -0.4342);
@@ -450,10 +450,10 @@ module.exports.testnumprs = {
     },
     
     testNumberFloatDEStartsWithPeriodIgnore: function(test) {
-        test.expect(2);
         var num = new INumber(".4342", {
             locale: "de-DE"
         });
+        test.expect(2);
         test.ok(num !== null);
     
         test.equal(num.valueOf(), 4342.0);
@@ -461,10 +461,10 @@ module.exports.testnumprs = {
     },
     
     testNumberFloatDEWithMDashForZeros: function(test) {
-        test.expect(2);
         var num = new INumber("3,—", {
             locale: "de-DE"
         });
+        test.expect(2);
         test.ok(num !== null);
     
         test.equal(num.valueOf(), 3.0);
@@ -472,10 +472,10 @@ module.exports.testnumprs = {
     },
     
     testNumberIntDE: function(test) {
-        test.expect(2);
         var num = new INumber("123", {
             locale: "de-DE"
         });
+        test.expect(2);
         test.ok(num !== null);
     
         test.equal(num.valueOf(), 123);
@@ -483,10 +483,10 @@ module.exports.testnumprs = {
     },
     
     testNumberIntDEThousands: function(test) {
-        test.expect(2);
         var num = new INumber("123.456", {
             locale: "de-DE"
         });
+        test.expect(2);
         test.ok(num !== null);
     
         test.equal(num.valueOf(), 123456);
@@ -494,10 +494,10 @@ module.exports.testnumprs = {
     },
     
     testNumberInvalidDE: function(test) {
-        test.expect(2);
         var num = new INumber("123,234,234", {
             locale: "de-DE"
         });
+        test.expect(2);
         test.ok(num !== null);
     
         test.equal(num.valueOf(), 123.234);
@@ -505,10 +505,10 @@ module.exports.testnumprs = {
     },
     
     testNumberEmptyDE: function(test) {
-        test.expect(2);
         var num = new INumber("", {
             locale: "de-DE"
         });
+        test.expect(2);
         test.ok(num !== null);
     
         test.equal(num.valueOf(), 0);
@@ -516,11 +516,11 @@ module.exports.testnumprs = {
     },
     
     testNumberPercentageDE: function(test) {
-        test.expect(2);
         var num = new INumber("58,4 %", {
             locale: "de-DE",
             type: "percentage"
         });
+        test.expect(2);
         test.ok(num !== null);
     
         test.equal(num.valueOf(), 0.584);
@@ -528,10 +528,10 @@ module.exports.testnumprs = {
     },
     
     testNumberPercentageDENoTypeSpecified: function(test) {
-        test.expect(2);
         var num = new INumber("58,4 %", {
             locale: "de-DE"
         });
+        test.expect(2);
         test.ok(num !== null);
     
         test.equal(num.valueOf(), 58.4);
@@ -539,11 +539,11 @@ module.exports.testnumprs = {
     },
     
     testNumberCurrencyDEValue: function(test) {
-        test.expect(2);
         var num = new INumber("5,84 €", {
             locale: "de-DE",
             type: "currency"
         });
+        test.expect(2);
         test.ok(num !== null);
     
         test.equal(num.valueOf(), 5.84);
@@ -551,11 +551,11 @@ module.exports.testnumprs = {
     },
     
     testNumberCurrencyDEType: function(test) {
-        test.expect(3);
         var num = new INumber("5,84 €", {
             locale: "de-DE",
             type: "currency"
         });
+        test.expect(3);
         test.ok(num !== null);
     
         var cur = num.getCurrency();
@@ -565,10 +565,10 @@ module.exports.testnumprs = {
     },
     
     testNumberCurrencyDENoTypeSpecified: function(test) {
-        test.expect(2);
         var num = new INumber("5,84 €", {
             locale: "de-DE"
         });
+        test.expect(2);
         test.ok(num !== null);
     
         test.ok(typeof(num.getCurrency()) === "undefined");
@@ -576,11 +576,11 @@ module.exports.testnumprs = {
     },
     
     testNumberCurrencyDETypeUsingISOCode: function(test) {
-        test.expect(3);
         var num = new INumber("5,84 EUR", {
             locale: "de-DE",
             type: "currency"
         });
+        test.expect(3);
         test.ok(num !== null);
     
         var cur = num.getCurrency();
@@ -590,10 +590,10 @@ module.exports.testnumprs = {
     },
     
     testNumberZH: function(test) {
-        test.expect(2);
         var num = new INumber("12,3234", {
             locale: "zh-CN"
         });
+        test.expect(2);
         test.ok(num !== null);
     
         test.equal(num.valueOf(), 123234.0);
@@ -601,10 +601,10 @@ module.exports.testnumprs = {
     },
     
     testNumberZHDecimal: function(test) {
-        test.expect(2);
         var num = new INumber("12,3234.324", {
             locale: "zh-CN"
         });
+        test.expect(2);
         test.ok(num !== null);
     
         test.equal(num.valueOf(), 123234.324);
@@ -613,11 +613,11 @@ module.exports.testnumprs = {
     
     
     testNumberParseAsync: function(test) {
-        test.expect(2);
         new INumber("-0,4342", {
             locale: "de-DE",
             sync: false,
             onLoad: function (num) {
+        test.expect(2);
                 test.ok(num !== null);
     
                 test.equal(num.valueOf(), -0.4342);
@@ -627,12 +627,12 @@ module.exports.testnumprs = {
     },
     
     testNumberParseAsyncCurrency: function(test) {
-        test.expect(3);
         new INumber("5,84 EUR", {
             locale: "de-DE",
             type: "currency",
             sync: false,
             onLoad: function (num) {
+        test.expect(3);
                 test.ok(num !== null);
     
                 var cur = num.getCurrency();
@@ -645,10 +645,10 @@ module.exports.testnumprs = {
     
     /*Test cases for Afrikaans*/
     testNumberFloatAF: function(test) {
-        test.expect(2);
         var num = new INumber("3,4", {
             locale: "af-ZA"
         });
+        test.expect(2);
         test.ok(num !== null);
     
         test.equal(num.valueOf(), 3.4);
@@ -656,10 +656,10 @@ module.exports.testnumprs = {
     },
     
     testNumberFloatAFNegative: function(test) {
-        test.expect(2);
         var num = new INumber("-3,4", {
             locale: "af-ZA"
         });
+        test.expect(2);
         test.ok(num !== null);
     
         test.equal(num.valueOf(), -3.4);
@@ -667,10 +667,10 @@ module.exports.testnumprs = {
     },
     
     testNumberFloatAFThousands: function(test) {
-        test.expect(2);
         var num = new INumber("1.233,4", {
             locale: "af-ZA"
         });
+        test.expect(2);
         test.ok(num !== null);
     
         test.equal(num.valueOf(), 1233.4);
@@ -678,10 +678,10 @@ module.exports.testnumprs = {
     },
     
     testNumberFloatAFThousandsNegative: function(test) {
-        test.expect(2);
         var num = new INumber("-1.233,4", {
             locale: "af-ZA"
         });
+        test.expect(2);
         test.ok(num !== null);
     
         test.equal(num.valueOf(), -1233.4);
@@ -689,10 +689,10 @@ module.exports.testnumprs = {
     },
     
     testNumberFloatAFWithDashForZeros: function(test) {
-        test.expect(2);
         var num = new INumber("3,-", {
             locale: "af-ZA"
         });
+        test.expect(2);
         test.ok(num !== null);
     
         test.equal(num.valueOf(), 3.0);
@@ -700,10 +700,10 @@ module.exports.testnumprs = {
     },
     
     testNumberFloatAFStartsWithDecimal: function(test) {
-        test.expect(2);
         var num = new INumber(",4342", {
             locale: "af-ZA"
         });
+        test.expect(2);
         test.ok(num !== null);
     
         test.equal(num.valueOf(), 0.4342);
@@ -711,10 +711,10 @@ module.exports.testnumprs = {
     },
     
     testNumberFloatAFStartsWithZero: function(test) {
-        test.expect(2);
         var num = new INumber("0,4342", {
             locale: "af-ZA"
         });
+        test.expect(2);
         test.ok(num !== null);
     
         test.equal(num.valueOf(), 0.4342);
@@ -722,10 +722,10 @@ module.exports.testnumprs = {
     },
     
     testNumberFloatAFStartsWithDecimalNegative: function(test) {
-        test.expect(2);
         var num = new INumber("-,4342", {
             locale: "af-ZA"
         });
+        test.expect(2);
         test.ok(num !== null);
     
         test.equal(num.valueOf(), -0.4342);
@@ -733,10 +733,10 @@ module.exports.testnumprs = {
     },
     
     testNumberFloatAFStartsWithZeroNegative: function(test) {
-        test.expect(2);
         var num = new INumber("-0,4342", {
             locale: "af-ZA"
         });
+        test.expect(2);
         test.ok(num !== null);
     
         test.equal(num.valueOf(), -0.4342);
@@ -744,10 +744,10 @@ module.exports.testnumprs = {
     },
     
     testNumberFloatAFStartsWithPeriodIgnore: function(test) {
-        test.expect(2);
         var num = new INumber(".4342", {
             locale: "af-ZA"
         });
+        test.expect(2);
         test.ok(num !== null);
     
         test.equal(num.valueOf(), 4342.0);
@@ -755,10 +755,10 @@ module.exports.testnumprs = {
     },
     
     testNumberFloatAFWithMDashForZeros: function(test) {
-        test.expect(2);
         var num = new INumber("3,—", {
             locale: "af-ZA"
         });
+        test.expect(2);
         test.ok(num !== null);
     
         test.equal(num.valueOf(), 3.0);
@@ -766,10 +766,10 @@ module.exports.testnumprs = {
     },
     
     testNumberIntAF: function(test) {
-        test.expect(2);
         var num = new INumber("123", {
             locale: "af-ZA"
         });
+        test.expect(2);
         test.ok(num !== null);
     
         test.equal(num.valueOf(), 123);
@@ -777,10 +777,10 @@ module.exports.testnumprs = {
     },
     
     testNumberIntAFThousands: function(test) {
-        test.expect(2);
         var num = new INumber("123.456", {
             locale: "af-ZA"
         });
+        test.expect(2);
         test.ok(num !== null);
     
         test.equal(num.valueOf(), 123456);
@@ -788,10 +788,10 @@ module.exports.testnumprs = {
     },
     
     testNumberInvalidAF: function(test) {
-        test.expect(2);
         var num = new INumber("123,234,234", {
             locale: "af-ZA"
         });
+        test.expect(2);
         test.ok(num !== null);
     
         test.equal(num.valueOf(), 123.234);
@@ -799,10 +799,10 @@ module.exports.testnumprs = {
     },
     
     testNumberEmptyAF: function(test) {
-        test.expect(2);
         var num = new INumber("", {
             locale: "af-ZA"
         });
+        test.expect(2);
         test.ok(num !== null);
     
         test.equal(num.valueOf(), 0);
@@ -810,11 +810,11 @@ module.exports.testnumprs = {
     },
     
     testNumberPercentageAF: function(test) {
-        test.expect(2);
         var num = new INumber("58,4 %", {
             locale: "af-ZA",
             type: "percentage"
         });
+        test.expect(2);
         test.ok(num !== null);
     
         test.equal(num.valueOf(), 0.584);
@@ -822,10 +822,10 @@ module.exports.testnumprs = {
     },
     
     testNumberPercentageAFNoTypeSpecified: function(test) {
-        test.expect(2);
         var num = new INumber("58,4 %", {
             locale: "af-ZA"
         });
+        test.expect(2);
         test.ok(num !== null);
     
         test.equal(num.valueOf(), 58.4);
@@ -833,11 +833,11 @@ module.exports.testnumprs = {
     },
     
     testNumberCurrencyAFValue: function(test) {
-        test.expect(2);
         var num = new INumber("R5,84", {
             locale: "af-ZA",
             type: "currency"
         });
+        test.expect(2);
         test.ok(num !== null);
     
         test.equal(num.valueOf(), 5.84);
@@ -845,11 +845,11 @@ module.exports.testnumprs = {
     },
     
     testNumberCurrencyAFType: function(test) {
-        test.expect(3);
         var num = new INumber("R5,84", {
             locale: "af-ZA",
             type: "currency"
         });
+        test.expect(3);
         test.ok(num !== null);
     
         var cur = num.getCurrency();
@@ -859,10 +859,10 @@ module.exports.testnumprs = {
     },
     
     testNumberCurrencyAFNoTypeSpecified: function(test) {
-        test.expect(2);
         var num = new INumber("5,84 €", {
             locale: "af-ZA"
         });
+        test.expect(2);
         test.ok(num !== null);
     
         test.ok(typeof(num.getCurrency()) === "undefined");
@@ -870,11 +870,11 @@ module.exports.testnumprs = {
     },
     
     testNumberCurrencyAFTypeUsingISOCode: function(test) {
-        test.expect(3);
         var num = new INumber("5,84 ZAR", {
             locale: "af-ZA",
             type: "currency"
         });
+        test.expect(3);
         test.ok(num !== null);
     
         var cur = num.getCurrency();
@@ -885,10 +885,10 @@ module.exports.testnumprs = {
     /*Nambian*/
     /*Test cases for Afrikaans*/
     testNumberFloatNA: function(test) {
-        test.expect(2);
         var num = new INumber("3,4", {
             locale: "af-NA"
         });
+        test.expect(2);
         test.ok(num !== null);
     
         test.equal(num.valueOf(), 3.4);
@@ -896,10 +896,10 @@ module.exports.testnumprs = {
     },
     
     testNumberFloatNANegative: function(test) {
-        test.expect(2);
         var num = new INumber("-3,4", {
             locale: "af-NA"
         });
+        test.expect(2);
         test.ok(num !== null);
     
         test.equal(num.valueOf(), -3.4);
@@ -907,10 +907,10 @@ module.exports.testnumprs = {
     },
     
     testNumberFloatNAThousands: function(test) {
-        test.expect(2);
         var num = new INumber("1.233,4", {
             locale: "af-NA"
         });
+        test.expect(2);
         test.ok(num !== null);
     
         test.equal(num.valueOf(), 1233.4);
@@ -918,10 +918,10 @@ module.exports.testnumprs = {
     },
     
     testNumberFloatNAThousandsNegative: function(test) {
-        test.expect(2);
         var num = new INumber("-1.233,4", {
             locale: "af-NA"
         });
+        test.expect(2);
         test.ok(num !== null);
     
         test.equal(num.valueOf(), -1233.4);
@@ -929,10 +929,10 @@ module.exports.testnumprs = {
     },
     
     testNumberFloatNAWithDashForZeros: function(test) {
-        test.expect(2);
         var num = new INumber("3,-", {
             locale: "af-NA"
         });
+        test.expect(2);
         test.ok(num !== null);
     
         test.equal(num.valueOf(), 3.0);
@@ -940,10 +940,10 @@ module.exports.testnumprs = {
     },
     
     testNumberFloatNAStartsWithDecimal: function(test) {
-        test.expect(2);
         var num = new INumber(",4342", {
             locale: "af-NA"
         });
+        test.expect(2);
         test.ok(num !== null);
     
         test.equal(num.valueOf(), 0.4342);
@@ -951,10 +951,10 @@ module.exports.testnumprs = {
     },
     
     testNumberFloatNAStartsWithZero: function(test) {
-        test.expect(2);
         var num = new INumber("0,4342", {
             locale: "af-NA"
         });
+        test.expect(2);
         test.ok(num !== null);
     
         test.equal(num.valueOf(), 0.4342);
@@ -962,10 +962,10 @@ module.exports.testnumprs = {
     },
     
     testNumberFloatNAStartsWithDecimalNegative: function(test) {
-        test.expect(2);
         var num = new INumber("-,4342", {
             locale: "af-NA"
         });
+        test.expect(2);
         test.ok(num !== null);
     
         test.equal(num.valueOf(), -0.4342);
@@ -973,10 +973,10 @@ module.exports.testnumprs = {
     },
     
     testNumberFloatNAStartsWithZeroNegative: function(test) {
-        test.expect(2);
         var num = new INumber("-0,4342", {
             locale: "af-NA"
         });
+        test.expect(2);
         test.ok(num !== null);
     
         test.equal(num.valueOf(), -0.4342);
@@ -984,10 +984,10 @@ module.exports.testnumprs = {
     },
     
     testNumberFloatNAStartsWithPeriodIgnore: function(test) {
-        test.expect(2);
         var num = new INumber(".4342", {
             locale: "af-NA"
         });
+        test.expect(2);
         test.ok(num !== null);
     
         test.equal(num.valueOf(), 4342.0);
@@ -995,10 +995,10 @@ module.exports.testnumprs = {
     },
     
     testNumberFloatNAWithMDashForZeros: function(test) {
-        test.expect(2);
         var num = new INumber("3,—", {
             locale: "af-NA"
         });
+        test.expect(2);
         test.ok(num !== null);
     
         test.equal(num.valueOf(), 3.0);
@@ -1006,10 +1006,10 @@ module.exports.testnumprs = {
     },
     
     testNumberIntNA: function(test) {
-        test.expect(2);
         var num = new INumber("123", {
             locale: "af-NA"
         });
+        test.expect(2);
         test.ok(num !== null);
     
         test.equal(num.valueOf(), 123);
@@ -1017,10 +1017,10 @@ module.exports.testnumprs = {
     },
     
     testNumberIntNAThousands: function(test) {
-        test.expect(2);
         var num = new INumber("123.456", {
             locale: "af-NA"
         });
+        test.expect(2);
         test.ok(num !== null);
     
         test.equal(num.valueOf(), 123456);
@@ -1028,10 +1028,10 @@ module.exports.testnumprs = {
     },
     
     testNumberInvalidNA: function(test) {
-        test.expect(2);
         var num = new INumber("123,234,234", {
             locale: "af-NA"
         });
+        test.expect(2);
         test.ok(num !== null);
     
         test.equal(num.valueOf(), 123.234);
@@ -1039,10 +1039,10 @@ module.exports.testnumprs = {
     },
     
     testNumberEmptyNA: function(test) {
-        test.expect(2);
         var num = new INumber("", {
             locale: "af-NA"
         });
+        test.expect(2);
         test.ok(num !== null);
     
         test.equal(num.valueOf(), 0);
@@ -1050,11 +1050,11 @@ module.exports.testnumprs = {
     },
     
     testNumberPercentageNA: function(test) {
-        test.expect(2);
         var num = new INumber("58,4 %", {
             locale: "af-NA",
             type: "percentage"
         });
+        test.expect(2);
         test.ok(num !== null);
     
         test.equal(num.valueOf(), 0.584);
@@ -1062,10 +1062,10 @@ module.exports.testnumprs = {
     },
     
     testNumberPercentageNANoTypeSpecified: function(test) {
-        test.expect(2);
         var num = new INumber("58,4 %", {
             locale: "af-NA"
         });
+        test.expect(2);
         test.ok(num !== null);
     
         test.equal(num.valueOf(), 58.4);
@@ -1073,11 +1073,11 @@ module.exports.testnumprs = {
     },
     
     testNumberCurrencyNAValue: function(test) {
-        test.expect(2);
         var num = new INumber("5,84 $", {
             locale: "af-NA",
             type: "currency"
         });
+        test.expect(2);
         test.ok(num !== null);
     
         test.equal(num.valueOf(), 5.84);
@@ -1085,11 +1085,11 @@ module.exports.testnumprs = {
     },
     
     testNumberCurrencyNAType: function(test) {
-        test.expect(3);
         var num = new INumber("$5,84", {
             locale: "af-NA",
             type: "currency"
         });
+        test.expect(3);
         test.ok(num !== null);
     
         var cur = num.getCurrency();
@@ -1099,10 +1099,10 @@ module.exports.testnumprs = {
     },
     
     testNumberCurrencyNANoTypeSpecified: function(test) {
-        test.expect(2);
         var num = new INumber("5,84 $", {
             locale: "af-NA"
         });
+        test.expect(2);
         test.ok(num !== null);
     
         test.ok(typeof(num.getCurrency()) === "undefined");
@@ -1110,11 +1110,11 @@ module.exports.testnumprs = {
     },
     
     testNumberCurrencyNATypeUsingISOCode: function(test) {
-        test.expect(3);
         var num = new INumber("5,84 NAD", {
             locale: "af-NA",
             type: "currency"
         });
+        test.expect(3);
         test.ok(num !== null);
     
         var cur = num.getCurrency();
@@ -1125,10 +1125,10 @@ module.exports.testnumprs = {
     
     // number parsing test cases for Hausa
     testNumberFloat_ha_Latn_NG: function(test) {
-        test.expect(2);
         var num = new INumber("3.4", {
             locale: "ha-Latn-NG"
         });
+        test.expect(2);
         test.ok(num !== null);
     
         test.equal(num.valueOf(), 3.4);
@@ -1136,10 +1136,10 @@ module.exports.testnumprs = {
     },
     
     testNumberFloat_ha_Latn_NG_Negative: function(test) {
-        test.expect(2);
         var num = new INumber("-3.4", {
             locale: "ha-Latn-NG"
         });
+        test.expect(2);
         test.ok(num !== null);
     
         test.equal(num.valueOf(), -3.4);
@@ -1147,10 +1147,10 @@ module.exports.testnumprs = {
     },
     
     testNumberFloat_ha_Latn_NG_Thousands: function(test) {
-        test.expect(2);
         var num = new INumber("1,233.4", {
             locale: "ha-Latn-NG"
         });
+        test.expect(2);
         test.ok(num !== null);
     
         test.equal(num.valueOf(), 1233.4);
@@ -1158,10 +1158,10 @@ module.exports.testnumprs = {
     },
     
     testNumberFloat_ha_Latn_NG_ThousandsNegative: function(test) {
-        test.expect(2);
         var num = new INumber("-1,233.4", {
             locale: "ha-Latn-NG"
         });
+        test.expect(2);
         test.ok(num !== null);
     
         test.equal(num.valueOf(), -1233.4);
@@ -1169,10 +1169,10 @@ module.exports.testnumprs = {
     },
     
     testNumberFloat_ha_Latn_NG_WithDashForZeros: function(test) {
-        test.expect(2);
         var num = new INumber("3.-", {
             locale: "ha-Latn-NG"
         });
+        test.expect(2);
         test.ok(num !== null);
     
         test.equal(num.valueOf(), 3.0);
@@ -1180,10 +1180,10 @@ module.exports.testnumprs = {
     },
     
     testNumberFloat_ha_Latn_NG_StartsWithDecimal: function(test) {
-        test.expect(2);
         var num = new INumber(".4342", {
             locale: "ha-Latn-NG"
         });
+        test.expect(2);
         test.ok(num !== null);
     
         test.equal(num.valueOf(), 0.4342);
@@ -1191,10 +1191,10 @@ module.exports.testnumprs = {
     },
     
     testNumberFloat_ha_Latn_NG_StartsWithZero: function(test) {
-        test.expect(2);
         var num = new INumber("0.4342", {
             locale: "ha-Latn-NG"
         });
+        test.expect(2);
         test.ok(num !== null);
     
         test.equal(num.valueOf(), 0.4342);
@@ -1202,10 +1202,10 @@ module.exports.testnumprs = {
     },
     
     testNumberFloat_ha_Latn_NG_StartsWithDecimalNegative: function(test) {
-        test.expect(2);
         var num = new INumber("-.4342", {
             locale: "ha-Latn-NG"
         });
+        test.expect(2);
         test.ok(num !== null);
     
         test.equal(num.valueOf(), -0.4342);
@@ -1213,10 +1213,10 @@ module.exports.testnumprs = {
     },
     
     testNumberFloat_ha_Latn_NG_StartsWithZeroNegative: function(test) {
-        test.expect(2);
         var num = new INumber("-0.4342", {
             locale: "ha-Latn-NG"
         });
+        test.expect(2);
         test.ok(num !== null);
     
         test.equal(num.valueOf(), -0.4342);
@@ -1224,10 +1224,10 @@ module.exports.testnumprs = {
     },
     
     testNumberFloat_ha_Latn_NG_StartsWithPeriodIgnore: function(test) {
-        test.expect(2);
         var num = new INumber(",4342", {
             locale: "ha-Latn-NG"
         });
+        test.expect(2);
         test.ok(num !== null);
     
         test.equal(num.valueOf(), 4342.0);
@@ -1235,10 +1235,10 @@ module.exports.testnumprs = {
     },
     
     testNumberFloat_ha_Latn_NG_WithMDashForZeros: function(test) {
-        test.expect(2);
         var num = new INumber("3.—", {
             locale: "ha-Latn-NG"
         });
+        test.expect(2);
         test.ok(num !== null);
     
         test.equal(num.valueOf(), 3.0);
@@ -1246,10 +1246,10 @@ module.exports.testnumprs = {
     },
     
     testNumberInt_ha_Latn_NG_: function(test) {
-        test.expect(2);
         var num = new INumber("123", {
             locale: "ha-Latn-NG"
         });
+        test.expect(2);
         test.ok(num !== null);
     
         test.equal(num.valueOf(), 123);
@@ -1257,10 +1257,10 @@ module.exports.testnumprs = {
     },
     
     testNumberInt_ha_Latn_NG_Thousands: function(test) {
-        test.expect(2);
         var num = new INumber("123,456", {
             locale: "ha-Latn-NG"
         });
+        test.expect(2);
         test.ok(num !== null);
     
         test.equal(num.valueOf(), 123456);
@@ -1268,10 +1268,10 @@ module.exports.testnumprs = {
     },
     
     testNumberInvalid_ha_Latn_NG_: function(test) {
-        test.expect(2);
         var num = new INumber("123.234.234", {
             locale: "ha-Latn-NG"
         });
+        test.expect(2);
         test.ok(num !== null);
     
         test.equal(num.valueOf(), 123.234);
@@ -1279,10 +1279,10 @@ module.exports.testnumprs = {
     },
     
     testNumberEmpty_ha_Latn_NG_: function(test) {
-        test.expect(2);
         var num = new INumber("", {
             locale: "ha-Latn-NG"
         });
+        test.expect(2);
         test.ok(num !== null);
     
         test.equal(num.valueOf(), 0);
@@ -1290,11 +1290,11 @@ module.exports.testnumprs = {
     },
     
     testNumberPercentage_ha_Latn_NG_: function(test) {
-        test.expect(2);
         var num = new INumber("58.4 %", {
             locale: "ha-Latn-NG",
             type: "percentage"
         });
+        test.expect(2);
         test.ok(num !== null);
     
         test.equal(num.valueOf(), 0.584);
@@ -1302,10 +1302,10 @@ module.exports.testnumprs = {
     },
     
     testNumberPercentage_ha_Latn_NG_NoTypeSpecified: function(test) {
-        test.expect(2);
         var num = new INumber("58.4 %", {
             locale: "ha-Latn-NG"
         });
+        test.expect(2);
         test.ok(num !== null);
     
         test.equal(num.valueOf(), 58.4);
@@ -1313,11 +1313,11 @@ module.exports.testnumprs = {
     },
     
     testNumberCurrency_ha_Latn_NG_Value: function(test) {
-        test.expect(2);
         var num = new INumber("5.84 ₦", {
             locale: "ha-Latn-NG",
             type: "currency"
         });
+        test.expect(2);
         test.ok(num !== null);
     
         test.equal(num.valueOf(), 5.84);
@@ -1325,11 +1325,11 @@ module.exports.testnumprs = {
     },
     
     testNumberCurrency_ha_Latn_NG_Type: function(test) {
-        test.expect(3);
         var num = new INumber("5.84 ₦", {
             locale: "ha-Latn-NG",
             type: "currency"
         });
+        test.expect(3);
         test.ok(num !== null);
     
         var cur = num.getCurrency();
@@ -1339,10 +1339,10 @@ module.exports.testnumprs = {
     },
     
     testNumberCurrency_ha_Latn_NG_NoTypeSpecified: function(test) {
-        test.expect(2);
         var num = new INumber("5.84 ₦", {
             locale: "ha-Latn-NG"
         });
+        test.expect(2);
         test.ok(num !== null);
     
         test.ok(typeof(num.getCurrency()) === "undefined");
@@ -1350,11 +1350,11 @@ module.exports.testnumprs = {
     },
     
     testNumberCurrency_ha_Latn_NG_TypeUsingISOCode: function(test) {
-        test.expect(3);
         var num = new INumber("5.84 NGN", {
             locale: "ha-Latn-NG",
             type: "currency"
         });
+        test.expect(3);
         test.ok(num !== null);
     
         var cur = num.getCurrency();
@@ -1365,10 +1365,10 @@ module.exports.testnumprs = {
     
     // number parsing test cases for Oriya
     testNumberFloat_or_IN: function(test) {
-        test.expect(2);
         var num = new INumber("3.4", {
             locale: "or-IN"
         });
+        test.expect(2);
         test.ok(num !== null);
     
         test.equal(num.valueOf(), 3.4);
@@ -1376,10 +1376,10 @@ module.exports.testnumprs = {
     },
     
     testNumberFloat_or_INNegative: function(test) {
-        test.expect(2);
         var num = new INumber("-3.4", {
             locale: "or-IN"
         });
+        test.expect(2);
         test.ok(num !== null);
     
         test.equal(num.valueOf(), -3.4);
@@ -1387,10 +1387,10 @@ module.exports.testnumprs = {
     },
     
     testNumberFloat_or_IN_Thousands: function(test) {
-        test.expect(2);
         var num = new INumber("1,233.4", {
             locale: "or-IN"
         });
+        test.expect(2);
         test.ok(num !== null);
     
         test.equal(num.valueOf(), 1233.4);
@@ -1398,10 +1398,10 @@ module.exports.testnumprs = {
     },
     
     testNumberFloat_or_IN_ThousandsNegative: function(test) {
-        test.expect(2);
         var num = new INumber("-1,233.4", {
             locale: "or-IN"
         });
+        test.expect(2);
         test.ok(num !== null);
     
         test.equal(num.valueOf(), -1233.4);
@@ -1409,10 +1409,10 @@ module.exports.testnumprs = {
     },
     
     testNumberFloat_or_IN_WithDashForZeros: function(test) {
-        test.expect(2);
         var num = new INumber("3.-", {
             locale: "or-IN"
         });
+        test.expect(2);
         test.ok(num !== null);
     
         test.equal(num.valueOf(), 3.0);
@@ -1420,10 +1420,10 @@ module.exports.testnumprs = {
     },
     
     testNumberFloat_or_IN_StartsWithDecimal: function(test) {
-        test.expect(2);
         var num = new INumber(".4342", {
             locale: "or-IN"
         });
+        test.expect(2);
         test.ok(num !== null);
     
         test.equal(num.valueOf(), 0.4342);
@@ -1431,10 +1431,10 @@ module.exports.testnumprs = {
     },
     
     testNumberFloat_or_IN_StartsWithZero: function(test) {
-        test.expect(2);
         var num = new INumber("0.4342", {
             locale: "or-IN"
         });
+        test.expect(2);
         test.ok(num !== null);
     
         test.equal(num.valueOf(), 0.4342);
@@ -1442,10 +1442,10 @@ module.exports.testnumprs = {
     },
     
     testNumberFloat_or_IN_StartsWithDecimalNegative: function(test) {
-        test.expect(2);
         var num = new INumber("-.4342", {
             locale: "or-IN"
         });
+        test.expect(2);
         test.ok(num !== null);
     
         test.equal(num.valueOf(), -0.4342);
@@ -1453,10 +1453,10 @@ module.exports.testnumprs = {
     },
     
     testNumberFloat_or_IN_StartsWithZeroNegative: function(test) {
-        test.expect(2);
         var num = new INumber("-0.4342", {
             locale: "or-IN"
         });
+        test.expect(2);
         test.ok(num !== null);
     
         test.equal(num.valueOf(), -0.4342);
@@ -1464,10 +1464,10 @@ module.exports.testnumprs = {
     },
     
     testNumberFloat_or_IN_StartsWithPeriodIgnore: function(test) {
-        test.expect(2);
         var num = new INumber(",4342", {
             locale: "or-IN"
         });
+        test.expect(2);
         test.ok(num !== null);
     
         test.equal(num.valueOf(), 4342.0);
@@ -1475,10 +1475,10 @@ module.exports.testnumprs = {
     },
     
     testNumberFloat_or_IN_WithMDashForZeros: function(test) {
-        test.expect(2);
         var num = new INumber("3.—", {
             locale: "or-IN"
         });
+        test.expect(2);
         test.ok(num !== null);
     
         test.equal(num.valueOf(), 3.0);
@@ -1486,10 +1486,10 @@ module.exports.testnumprs = {
     },
     
     testNumberInt_or_IN_: function(test) {
-        test.expect(2);
         var num = new INumber("123", {
             locale: "or-IN"
         });
+        test.expect(2);
         test.ok(num !== null);
     
         test.equal(num.valueOf(), 123);
@@ -1497,10 +1497,10 @@ module.exports.testnumprs = {
     },
     
     testNumberInt_or_IN_Thousands: function(test) {
-        test.expect(2);
         var num = new INumber("123,456", {
             locale: "or-IN"
         });
+        test.expect(2);
         test.ok(num !== null);
     
         test.equal(num.valueOf(), 123456);
@@ -1508,10 +1508,10 @@ module.exports.testnumprs = {
     },
     
     testNumberInvalid_or_IN_: function(test) {
-        test.expect(2);
         var num = new INumber("123.234.234", {
             locale: "or-IN"
         });
+        test.expect(2);
         test.ok(num !== null);
     
         test.equal(num.valueOf(), 123.234);
@@ -1519,10 +1519,10 @@ module.exports.testnumprs = {
     },
     
     testNumberEmpty_or_IN_: function(test) {
-        test.expect(2);
         var num = new INumber("", {
             locale: "or-IN"
         });
+        test.expect(2);
         test.ok(num !== null);
     
         test.equal(num.valueOf(), 0);
@@ -1530,11 +1530,11 @@ module.exports.testnumprs = {
     },
     
     testNumberPercentage_or_IN_: function(test) {
-        test.expect(2);
         var num = new INumber("58.4 %", {
             locale: "or-IN",
             type: "percentage"
         });
+        test.expect(2);
         test.ok(num !== null);
     
         test.equal(num.valueOf(), 0.584);
@@ -1542,10 +1542,10 @@ module.exports.testnumprs = {
     },
     
     testNumberPercentage_or_IN_NoTypeSpecified: function(test) {
-        test.expect(2);
         var num = new INumber("58.4 %", {
             locale: "or-IN"
         });
+        test.expect(2);
         test.ok(num !== null);
     
         test.equal(num.valueOf(), 58.4);
@@ -1553,11 +1553,11 @@ module.exports.testnumprs = {
     },
     
     testNumberCurrency_or_IN_Value: function(test) {
-        test.expect(2);
         var num = new INumber("5.84 ₹", {
             locale: "or-IN",
             type: "currency"
         });
+        test.expect(2);
         test.ok(num !== null);
     
         test.equal(num.valueOf(), 5.84);
@@ -1565,11 +1565,11 @@ module.exports.testnumprs = {
     },
     
     testNumberCurrency_or_IN_Type: function(test) {
-        test.expect(3);
         var num = new INumber("5.84 ₹", {
             locale: "or-IN",
             type: "currency"
         });
+        test.expect(3);
         test.ok(num !== null);
     
         var cur = num.getCurrency();
@@ -1579,10 +1579,10 @@ module.exports.testnumprs = {
     },
     
     testNumberCurrency_or_IN_NoTypeSpecified: function(test) {
-        test.expect(2);
         var num = new INumber("5.84 ₹", {
             locale: "or-IN"
         });
+        test.expect(2);
         test.ok(num !== null);
     
         test.ok(typeof(num.getCurrency()) === "undefined");
@@ -1590,11 +1590,11 @@ module.exports.testnumprs = {
     },
     
     testNumberCurrency_or_IN_TypeUsingISOCode: function(test) {
-        test.expect(3);
         var num = new INumber("5.84 IND", {
             locale: "or-IN",
             type: "currency"
         });
+        test.expect(3);
         test.ok(num !== null);
     
         var cur = num.getCurrency();
@@ -1604,10 +1604,10 @@ module.exports.testnumprs = {
     },
     /*Amharic test cases */
     testNumberFloatET: function(test) {
-        test.expect(2);
         var num = new INumber("3.4", {
             locale: "am-ET"
         });
+        test.expect(2);
         test.ok(num !== null);
     
         test.equal(num.valueOf(), 3.4);
@@ -1615,10 +1615,10 @@ module.exports.testnumprs = {
     },
     
     testNumberFloatETNegative: function(test) {
-        test.expect(2);
         var num = new INumber("-3.4", {
             locale: "am-ET"
         });
+        test.expect(2);
         test.ok(num !== null);
     
         test.equal(num.valueOf(), -3.4);
@@ -1626,10 +1626,10 @@ module.exports.testnumprs = {
     },
     
     testNumberFloatETThousands: function(test) {
-        test.expect(2);
         var num = new INumber("1.233.4", {
             locale: "am-ET"
         });
+        test.expect(2);
         test.ok(num !== null);
     
         test.equal(num.valueOf(), 1.233);
@@ -1637,10 +1637,10 @@ module.exports.testnumprs = {
     },
     
     testNumberFloatETThousandsNegative: function(test) {
-        test.expect(2);
         var num = new INumber("-1.2334", {
             locale: "am-ET"
         });
+        test.expect(2);
         test.ok(num !== null);
     
         test.equal(num.valueOf(), -1.2334);
@@ -1648,10 +1648,10 @@ module.exports.testnumprs = {
     },
     
     testNumberFloatETWithDashForZeros: function(test) {
-        test.expect(2);
         var num = new INumber("3.-", {
             locale: "am-ET"
         });
+        test.expect(2);
         test.ok(num !== null);
     
         test.equal(num.valueOf(), 3.0);
@@ -1659,10 +1659,10 @@ module.exports.testnumprs = {
     },
     
     testNumberFloatETStartsWithDecimal: function(test) {
-        test.expect(2);
         var num = new INumber(".4342", {
             locale: "am-ET"
         });
+        test.expect(2);
         test.ok(num !== null);
     
         test.equal(num.valueOf(), 0.4342);
@@ -1670,10 +1670,10 @@ module.exports.testnumprs = {
     },
     
     testNumberFloatETStartsWithZero: function(test) {
-        test.expect(2);
         var num = new INumber("0.4342", {
             locale: "am-ET"
         });
+        test.expect(2);
         test.ok(num !== null);
     
         test.equal(num.valueOf(), 0.4342);
@@ -1681,10 +1681,10 @@ module.exports.testnumprs = {
     },
     
     testNumberFloatETStartsWithDecimalNegative: function(test) {
-        test.expect(2);
         var num = new INumber("-.4342", {
             locale: "am-ET"
         });
+        test.expect(2);
         test.ok(num !== null);
     
         test.equal(num.valueOf(), -0.4342);
@@ -1692,10 +1692,10 @@ module.exports.testnumprs = {
     },
     
     testNumberFloatETStartsWithZeroNegative: function(test) {
-        test.expect(2);
         var num = new INumber("-0.4342", {
             locale: "am-ET"
         });
+        test.expect(2);
         test.ok(num !== null);
     
         test.equal(num.valueOf(), -0.4342);
@@ -1703,10 +1703,10 @@ module.exports.testnumprs = {
     },
     
     testNumberFloatETStartsWithPeriodIgnore: function(test) {
-        test.expect(2);
         var num = new INumber("4342", {
             locale: "am-ET"
         });
+        test.expect(2);
         test.ok(num !== null);
     
         test.equal(num.valueOf(), 4342.0);
@@ -1714,10 +1714,10 @@ module.exports.testnumprs = {
     },
     
     testNumberFloatETWithMDashForZeros: function(test) {
-        test.expect(2);
         var num = new INumber("3.—", {
             locale: "am-ET"
         });
+        test.expect(2);
         test.ok(num !== null);
     
         test.equal(num.valueOf(), 3.0);
@@ -1725,10 +1725,10 @@ module.exports.testnumprs = {
     },
     
     testNumberIntET: function(test) {
-        test.expect(2);
         var num = new INumber("123", {
             locale: "am-ET"
         });
+        test.expect(2);
         test.ok(num !== null);
     
         test.equal(num.valueOf(), 123);
@@ -1736,10 +1736,10 @@ module.exports.testnumprs = {
     },
     
     testNumberIntETThousands: function(test) {
-        test.expect(2);
         var num = new INumber("123,456", {
             locale: "am-ET"
         });
+        test.expect(2);
         test.ok(num !== null);
     
         test.equal(num.valueOf(), 123456);
@@ -1747,10 +1747,10 @@ module.exports.testnumprs = {
     },
     
     testNumberInvalidET: function(test) {
-        test.expect(2);
         var num = new INumber("123.234.234", {
             locale: "am-ET"
         });
+        test.expect(2);
         test.ok(num !== null);
     
         test.equal(num.valueOf(), 123.234);
@@ -1758,10 +1758,10 @@ module.exports.testnumprs = {
     },
     
     testNumberEmptyET: function(test) {
-        test.expect(2);
         var num = new INumber("", {
             locale: "am-ET"
         });
+        test.expect(2);
         test.ok(num !== null);
     
         test.equal(num.valueOf(), 0);
@@ -1769,11 +1769,11 @@ module.exports.testnumprs = {
     },
     
     testNumberPercentageET: function(test) {
-        test.expect(2);
         var num = new INumber("58.4 %", {
             locale: "am-ET",
             type: "percentage"
         });
+        test.expect(2);
         test.ok(num !== null);
     
         test.equal(num.valueOf(), 0.584);
@@ -1781,10 +1781,10 @@ module.exports.testnumprs = {
     },
     
     testNumberPercentageETNoTypeSpecified: function(test) {
-        test.expect(2);
         var num = new INumber("58.4 %", {
             locale: "am-ET"
         });
+        test.expect(2);
         test.ok(num !== null);
     
         test.equal(num.valueOf(), 58.4);
@@ -1792,11 +1792,11 @@ module.exports.testnumprs = {
     },
     
     testNumberCurrencyETValue: function(test) {
-        test.expect(2);
         var num = new INumber("5.84 Br", {
             locale: "am-ET",
             type: "currency"
         });
+        test.expect(2);
         test.ok(num !== null);
     
         test.equal(num.valueOf(), 5.84);
@@ -1804,11 +1804,11 @@ module.exports.testnumprs = {
     },
     
     testNumberCurrencyETType: function(test) {
-        test.expect(3);
         var num = new INumber("Br 5.84", {
             locale: "am-ET",
             type: "currency"
         });
+        test.expect(3);
         test.ok(num !== null);
     
         var cur = num.getCurrency();
@@ -1818,10 +1818,10 @@ module.exports.testnumprs = {
     },
     
     testNumberCurrencyETNoTypeSpecified: function(test) {
-        test.expect(2);
         var num = new INumber("5.84 €", {
             locale: "am-ET"
         });
+        test.expect(2);
         test.ok(num !== null);
     
         test.ok(typeof(num.getCurrency()) === "undefined");
@@ -1829,11 +1829,11 @@ module.exports.testnumprs = {
     },
     
     testNumberCurrencyETTypeUsingISOCode: function(test) {
-        test.expect(3);
         var num = new INumber("5.84 ETB", {
             locale: "am-ET",
             type: "currency"
         });
+        test.expect(3);
         test.ok(num !== null);
     
         var cur = num.getCurrency();

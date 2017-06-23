@@ -35,9 +35,9 @@ module.exports.testaddress_MA = {
     },
 
     testParseAddressMANormal: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("السيد. محمد إبراهيم, بلدية خريبكة,٢٥٠٠٥ خريبكة , المغرب", {locale: 'ar-MA'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "السيد. محمد إبراهيم, بلدية خريبكة");
         test.ok(typeof(parsedAddress.region) === "undefined");
@@ -49,9 +49,9 @@ module.exports.testaddress_MA = {
     },
     
     testParseAddressMANoZip: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("السيد. محمد إبراهيم, بلدية خريبكة,خريبكة , المغرب", {locale: 'ar-MA'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "السيد. محمد إبراهيم, بلدية خريبكة");
         test.ok(typeof(parsedAddress.region) === "undefined");
@@ -63,9 +63,9 @@ module.exports.testaddress_MA = {
     },
     
     testParseAddressMAManyLines: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("السيد. محمد إبراهيم, بلدية خريبكة\n٢٥٠٠٥ خريبكة \n المغرب", {locale: 'ar-MA'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "السيد. محمد إبراهيم, بلدية خريبكة");
         test.ok(typeof(parsedAddress.region) === "undefined");
@@ -77,9 +77,9 @@ module.exports.testaddress_MA = {
     },
     
     testParseAddressMAOneLine: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("السيد. محمد إبراهيم, بلدية خريبكة,٢٥٠٠٥ خريبكة , المغرب", {locale: 'ar-MA'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "السيد. محمد إبراهيم, بلدية خريبكة");
         test.ok(typeof(parsedAddress.region) === "undefined");
@@ -91,9 +91,9 @@ module.exports.testaddress_MA = {
     },
     
     testParseAddressMASuperfluousWhitespace: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("السيد. محمد إبراهيم, بلدية خريبكة   \n\t\n٢٥٠٠٥ خريبكة \t\n\n  المغرب  \n  \t\t\t", {locale: 'ar-MA'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "السيد. محمد إبراهيم, بلدية خريبكة");
         test.ok(typeof(parsedAddress.region) === "undefined");
@@ -105,9 +105,9 @@ module.exports.testaddress_MA = {
     },
     
     testParseAddressMANoDelimiters: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("السيد. محمد إبراهيم بلدية خريبكة  ٢ شارع الاستقلال٢٥٠٠٥  خريبكة   المغرب", {locale: 'ar-MA'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "السيد. محمد إبراهيم بلدية خريبكة ٢ شارع الاستقلال");
         test.ok(typeof(parsedAddress.region) === "undefined");
@@ -119,9 +119,9 @@ module.exports.testaddress_MA = {
     },
     
     testParseAddressMASpecialChars: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("السيد. محمد إبراهيم, بلدية خريبكة,٢٥٠٠٥ خريبكة , المغرب", {locale: 'ar-MA'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "السيد. محمد إبراهيم, بلدية خريبكة");
         test.ok(typeof(parsedAddress.region) === "undefined");
@@ -133,11 +133,11 @@ module.exports.testaddress_MA = {
     },
     
     testParseAddressMAFromUS: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("السيد. محمد إبراهيم, بلدية خريبكة,٢٥٠٠٥ خريبكة , Morocco", {locale: 'en-US'});
         
         // the country name is in English because this address is for a contact in a US database
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "السيد. محمد إبراهيم, بلدية خريبكة");
         test.ok(typeof(parsedAddress.region) === "undefined");
@@ -149,7 +149,6 @@ module.exports.testaddress_MA = {
     },
     
     testFormatAddressMA: function(test) {
-        test.expect(1);
         var parsedAddress = new Address({
             streetAddress: "السيد. محمد إبراهيم, بلدية خريبكة",
             locality: "طرابلس",
@@ -159,12 +158,12 @@ module.exports.testaddress_MA = {
         
         var expected = "السيد. محمد إبراهيم, بلدية خريبكة\nطرابلس\nالمغرب";
         var formatter = new AddressFmt({locale: 'ar-MA'});
+        test.expect(1);
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     },
     
     testFormatAddressMAARFromUS: function(test) {
-        test.expect(1);
         var parsedAddress = new Address({
             streetAddress: "السيد. محمد إبراهيم, بلدية خريبكة",
             locality: "طرابلس",
@@ -174,6 +173,7 @@ module.exports.testaddress_MA = {
         
         var expected = "السيد. محمد إبراهيم, بلدية خريبكة\nطرابلس\nMorocco";
         var formatter = new AddressFmt({locale: 'en-US'});
+        test.expect(1);
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     }

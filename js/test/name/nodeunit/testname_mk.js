@@ -34,8 +34,8 @@ module.exports.testname_mk = {
     },
 
     testParseSimpleName_mk_MK: function(test) {
-        test.expect(2);
         var parsed = new Name("Љубunша Самарџunќ", {locale: 'mk-MK'});
+        test.expect(2);
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {
@@ -48,8 +48,8 @@ module.exports.testname_mk = {
     },
     
     testParseSimpleWithHiphen_mk_MK: function(test) {
-        test.expect(2);
         var parsed = new Name("Nikola-Kole Angelovski", {locale: 'mk-MK'});
+        test.expect(2);
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {
@@ -64,8 +64,8 @@ module.exports.testname_mk = {
     
     
     testParseTitle_mk_MK: function(test) {
-        test.expect(2);
         var parsed = new Name("Љубunша Самарџunќ високи", {locale: 'mk-MK'});
+        test.expect(2);
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {
@@ -81,8 +81,8 @@ module.exports.testname_mk = {
     
     
     testParseTitleWithFamilyOnly_mk_MK: function(test) {
-        test.expect(2);
         var parsed = new Name("г-дин Самарџunќ", {locale: 'mk-MK'});
+        test.expect(2);
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {
@@ -97,8 +97,8 @@ module.exports.testname_mk = {
     
     
     testParseEverything_mk_MK: function(test) {
-        test.expect(2);
         var parsed = new Name("г-дин и г-ѓа Самарџunќ", {locale: 'mk-MK'});
+        test.expect(2);
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {
@@ -111,8 +111,8 @@ module.exports.testname_mk = {
     },
     
     testParseprefix_mk_MK: function(test) {
-        test.expect(2);
         var parsed = new Name("г-дин Љубunша Самарџunќ", {locale: 'mk-MK'});
+        test.expect(2);
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {
@@ -129,7 +129,6 @@ module.exports.testname_mk = {
      */
     
     testFormatSimpleNameShort_mk_MK: function(test) {
-        test.expect(2);
         var name = new Name({
             givenName: "Љубunша",
             familyName: "Самарџunќ"
@@ -139,6 +138,7 @@ module.exports.testname_mk = {
             locale: 'mk-MK'
         });
         var formatted = fmt.format(name);
+        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "Љубunша Самарџunќ";
@@ -148,7 +148,6 @@ module.exports.testname_mk = {
     },
     
     testFormatSimpleNameMedium_mk_MK: function(test) {
-        test.expect(2);
         var name = new Name({
             givenName: "Љубunша",
             familyName: "Самарџunќ"
@@ -158,6 +157,7 @@ module.exports.testname_mk = {
             locale: 'mk-MK'
         });
         var formatted = fmt.format(name);
+        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "Љубunша Самарџunќ";
@@ -167,7 +167,6 @@ module.exports.testname_mk = {
     },
     
     testFormatSimpleNameLong_mk_MK: function(test) {
-        test.expect(2);
         var name = new Name({
             givenName: "Љубunша",
             familyName: "Самарџunќ",
@@ -178,6 +177,7 @@ module.exports.testname_mk = {
             locale: 'mk-MK'
         });
         var formatted = fmt.format(name);
+        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "Љубunша Самарџunќ";
@@ -189,7 +189,6 @@ module.exports.testname_mk = {
     
     
     testFormatSurname_mk_MK: function(test) {
-        test.expect(2);
         var name = new Name({
             prefix: "г-дunн и kundze",
             familyName: "Самарџunќ"
@@ -199,6 +198,7 @@ module.exports.testname_mk = {
             locale: 'mk-MK'
         });
         var formatted = fmt.format(name);
+        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "г-дunн и kundze Самарџunќ";
@@ -208,7 +208,6 @@ module.exports.testname_mk = {
     },
     
     testFormatSimpleNameFull_mk_MK: function(test) {
-        test.expect(2);
         var name = new Name({
             prefix: "претседател",
             givenName: "Љубunша",
@@ -220,6 +219,7 @@ module.exports.testname_mk = {
             locale: 'mk-MK'
         });
         var formatted = fmt.format(name);
+        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "претседател Љубunша Самарџunќ помладun";
@@ -229,7 +229,6 @@ module.exports.testname_mk = {
     },
     
     testFormatComplexNameShort_mk_MK: function(test) {
-        test.expect(2);
         var name = new Name({
             prefix: "претседател",
             givenName: "Љубunша",
@@ -240,6 +239,7 @@ module.exports.testname_mk = {
             locale: 'mk-MK'
         });
         var formatted = fmt.format(name);
+        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "Љубunша Самарџunќ";
@@ -249,7 +249,6 @@ module.exports.testname_mk = {
     },
     
     testFormatComplexNameMedium_mk_MK: function(test) {
-        test.expect(2);
         var name = new Name({
             prefix: "претседател",
             givenName: "Љубunша",
@@ -260,6 +259,7 @@ module.exports.testname_mk = {
             locale: 'mk-MK'
         });
         var formatted = fmt.format(name);
+        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "Љубunша Самарџunќ";
@@ -269,7 +269,6 @@ module.exports.testname_mk = {
     },
     
     testFormatComplexNameLong_mk_MK: function(test) {
-        test.expect(2);
         var name = new Name({
             prefix: "претседател",
             givenName: "Љубunша",
@@ -280,6 +279,7 @@ module.exports.testname_mk = {
             locale: 'mk-MK'
         });
         var formatted = fmt.format(name);
+        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "претседател Љубunша Самарџunќ";

@@ -34,9 +34,9 @@ module.exports.testaddress_IQ = {
     },
 
     testParseAddressIQNormal: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("السيد احمد طارق, ١٠ قهوة الشريعة\nالاصمعي , البصرة\n٦١٠٠٢\nالعراق", {locale: 'ar-IQ'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "السيد احمد طارق, ١٠ قهوة الشريعة");
         test.equal(parsedAddress.locality, "الاصمعي");
@@ -50,9 +50,9 @@ module.exports.testaddress_IQ = {
     
     
     testParseAddressIQNoZip: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("السيد احمد طارق, ١٠ قهوة الشريعة\nالاصمعي , البصرة\nالعراق", {locale: 'ar-IQ'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "السيد احمد طارق, ١٠ قهوة الشريعة");
         test.equal(parsedAddress.locality, "الاصمعي");
@@ -65,9 +65,9 @@ module.exports.testaddress_IQ = {
     
     
     testParseAddressIQNoCountry: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("السيد احمد طارق, ١٠ قهوة الشريعة\nالاصمعي , البصرة\n ٦١٠٠٢", {locale: 'ar-IQ'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "السيد احمد طارق, ١٠ قهوة الشريعة");
         test.equal(parsedAddress.locality, "الاصمعي");
@@ -81,9 +81,9 @@ module.exports.testaddress_IQ = {
     
     
     testParseAddressIQManyLines: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("السيد احمد طارق\n١٠ قهوة الشريعة\nالاصمعي\nالبصرة\n٦١٠٠٢\nالعراق\n\n", {locale: 'ar-IQ'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "السيد احمد طارق, ١٠ قهوة الشريعة");
         test.equal(parsedAddress.locality, "الاصمعي");
@@ -95,9 +95,9 @@ module.exports.testaddress_IQ = {
     },
     
     testParseAddressIQOneLine: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("السيد احمد طارق , ١٠ قهوة الشريعة , الاصمعي , البصرة , ٦١٠٠٢ , العراق", {locale: 'ar-IQ'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "السيد احمد طارق, ١٠ قهوة الشريعة");
         test.equal(parsedAddress.locality, "الاصمعي");
@@ -110,9 +110,9 @@ module.exports.testaddress_IQ = {
     
     
     testParseAddressIQNoDelimiters: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("السيد احمد طارق, ١٠ قهوة الشريعة الاصمعي  البصرة  ٦١٠٠٢ العراق", {locale: 'ar-IQ'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "السيد احمد طارق, ١٠ قهوة الشريعة");
         test.equal(parsedAddress.locality, "الاصمعي");
@@ -124,9 +124,9 @@ module.exports.testaddress_IQ = {
     },
     
     testParseAddressIQFromUS: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("السيد احمد طارق, ١٠ قهوة الشريعة\nالاصمعي , البصرة\n ٦١٠٠٢\nIraq", {locale: 'en-US'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "السيد احمد طارق, ١٠ قهوة الشريعة");
         test.equal(parsedAddress.locality, "الاصمعي");
@@ -139,7 +139,6 @@ module.exports.testaddress_IQ = {
     
     
     testFormatAddressIQ: function(test) {
-        test.expect(1);
         var parsedAddress = new Address({
             streetAddress: "السيد احمد طارق, ١٠ قهوة الشريعة",
             locality: "الاصمعي",
@@ -151,13 +150,13 @@ module.exports.testaddress_IQ = {
         
         var expected = "السيد احمد طارق, ١٠ قهوة الشريعة\nالاصمعي, البصرة\n٦١٠٠٢\nالعراق";
         var formatter = new AddressFmt({locale: 'ar-IQ'});
+        test.expect(1);
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     },
     
     
     testFormatAddressIQFromUS: function(test) {
-        test.expect(1);
         var parsedAddress = new Address({
             streetAddress: "السيد احمد طارق, ١٠ قهوة الشريعة",
             locality: "الاصمعي",
@@ -169,6 +168,7 @@ module.exports.testaddress_IQ = {
         
         var expected = "السيد احمد طارق, ١٠ قهوة الشريعة\nالاصمعي, البصرة\n٦١٠٠٢\nIraq";
         var formatter = new AddressFmt({locale: 'en-US'});
+        test.expect(1);
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     }

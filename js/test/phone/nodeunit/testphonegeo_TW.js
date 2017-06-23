@@ -34,7 +34,6 @@ module.exports.phonegeo_TW = {
     },
 
     testNANPUStoTaiwan: function(test) {
-        test.expect(6);
         var parsed = new PhoneNumber("011 886 2 3210 3210");
         var expected = {
             country: {
@@ -51,6 +50,7 @@ module.exports.phonegeo_TW = {
         var locator = new PhoneGeoLocator();
         var geoInfo = locator.locate(parsed);
         
+        test.expect(6);
         test.ok(typeof(locator) !== "undefined");
         test.equal(geoInfo.country.code, expected.country.code);
         test.equal(geoInfo.country.sn, expected.country.sn);
@@ -61,7 +61,6 @@ module.exports.phonegeo_TW = {
     },
     
     testTWLocalNumber2: function(test) {
-        test.expect(4);
         var parsed = new PhoneNumber("212-3456",{locale: "en-US"});
         var expected = {
             country: {
@@ -74,6 +73,7 @@ module.exports.phonegeo_TW = {
         var locator = new PhoneGeoLocator({locale: "tw-TW"});
         var geoInfo = locator.locate(parsed);
         
+        test.expect(4);
         test.ok(typeof(locator) !== "undefined");
         test.equal(geoInfo.country.code, expected.country.code);
         test.equal(geoInfo.country.sn, expected.country.sn);
@@ -82,7 +82,6 @@ module.exports.phonegeo_TW = {
     },
     
     testTWNumberWithAreaCode1: function(test) {
-        test.expect(5);
         var parsed = new PhoneNumber("(89) 456-7890",{locale: "en-US"});
         var expected = {
             country: {
@@ -99,6 +98,7 @@ module.exports.phonegeo_TW = {
         var locator = new PhoneGeoLocator({locale: 'tw-TW'});
         var geoInfo = locator.locate(parsed);
         
+        test.expect(5);
         test.equal(geoInfo.country.code, expected.country.code);
         test.equal(geoInfo.country.sn, expected.country.sn);
         test.equal(geoInfo.country.ln, expected.country.ln);
@@ -108,7 +108,6 @@ module.exports.phonegeo_TW = {
     },
     
     testTWNumberWithAreaCode2: function(test) {
-        test.expect(5);
         var parsed = new PhoneNumber("(49)212-3456",{locale: "en-US"});
         var expected = {
             country: {
@@ -125,6 +124,7 @@ module.exports.phonegeo_TW = {
         var locator = new PhoneGeoLocator({locale: 'tw-TW'});
         var geoInfo = locator.locate(parsed);
         
+        test.expect(5);
         test.equal(geoInfo.country.code, expected.country.code);
         test.equal(geoInfo.country.sn, expected.country.sn);
         test.equal(geoInfo.country.ln, expected.country.ln);
@@ -134,8 +134,6 @@ module.exports.phonegeo_TW = {
     },
     
     testTWNumberWithAreaCodeAndCountry1: function(test) {
-        test.expect(10);
-        test.expect(5);
         var parsed = new PhoneNumber("+886-49-312-3456");
         var expected = {
             country: {
@@ -152,6 +150,7 @@ module.exports.phonegeo_TW = {
         var locator = new PhoneGeoLocator({locale: 'ko-KR'});
         var geoInfo = locator.locate(parsed);
         
+        test.expect(5);
         test.equal(geoInfo.country.code, expected.country.code);
         test.equal(geoInfo.country.sn, expected.country.sn);
         test.equal(geoInfo.country.ln, expected.country.ln);
@@ -159,7 +158,8 @@ module.exports.phonegeo_TW = {
         test.equal(geoInfo.area.ln, expected.area.ln);
         test.done();
     },
-     function testTWNumberWithAreaCodeAndCountry2() {
+    
+    testTWNumberWithAreaCodeAndCountry2: function(test) {
         var parsed = new PhoneNumber("+886-49-32-456-1");
         var expected = {
             country: {
@@ -176,6 +176,7 @@ module.exports.phonegeo_TW = {
         var locator = new PhoneGeoLocator({locale: 'en-US'});
         var geoInfo = locator.locate(parsed);
         
+        test.expect(5);
         test.equal(geoInfo.country.code, expected.country.code);
         test.equal(geoInfo.country.sn, expected.country.sn);
         test.equal(geoInfo.country.ln, expected.country.ln);
@@ -185,7 +186,6 @@ module.exports.phonegeo_TW = {
     },
     
     testTWNumberWithAreaCodeAndCountry3: function(test) {
-        test.expect(5);
         var parsed = new PhoneNumber("+886-2-212-3456");
         var expected = {
             country: {
@@ -202,6 +202,7 @@ module.exports.phonegeo_TW = {
         var locator = new PhoneGeoLocator({locale: 'en-US'});
         var geoInfo = locator.locate(parsed);
         
+        test.expect(5);
         test.equal(geoInfo.country.code, expected.country.code);
         test.equal(geoInfo.country.sn, expected.country.sn);
         test.equal(geoInfo.country.ln, expected.country.ln);
@@ -211,7 +212,6 @@ module.exports.phonegeo_TW = {
     },
     
     testTWNumberCallFromUS: function(test) {
-        test.expect(5);
         var parsed = new PhoneNumber("011 886-812-212-3456");
         var expected = {
             country: {
@@ -228,6 +228,7 @@ module.exports.phonegeo_TW = {
         var locator = new PhoneGeoLocator({locale: 'en-US'});
         var geoInfo = locator.locate(parsed);
         
+        test.expect(5);
         test.equal(geoInfo.country.code, expected.country.code);
         test.equal(geoInfo.country.sn, expected.country.sn);
         test.equal(geoInfo.country.ln, expected.country.ln);
@@ -237,7 +238,6 @@ module.exports.phonegeo_TW = {
     },
     
     testTWNumberWithAreaCodeAndCountry4: function(test) {
-        test.expect(5);
         var parsed = new PhoneNumber("+886-37-212-3456");
         var expected = {
             country: {
@@ -254,6 +254,7 @@ module.exports.phonegeo_TW = {
         var locator = new PhoneGeoLocator({locale: 'fr-FR'});
         var geoInfo = locator.locate(parsed);
         
+        test.expect(5);
         test.equal(geoInfo.country.code, expected.country.code);
         test.equal(geoInfo.country.sn, expected.country.sn);
         test.equal(geoInfo.country.ln, expected.country.ln);
@@ -263,7 +264,6 @@ module.exports.phonegeo_TW = {
     },
     
     testTWPolice: function(test) {
-        test.expect(6);
         var parsed = new PhoneNumber("112",{locale: "tw-TW"});
         var expected = {
             country: {
@@ -279,6 +279,7 @@ module.exports.phonegeo_TW = {
         var locator = new PhoneGeoLocator({locale: "tw-TW"});
         var geoInfo = locator.locate(parsed);
     
+        test.expect(6);
         test.ok(typeof(locator) !== "undefined");
         test.equal(geoInfo.country.code, expected.country.code);
         test.equal(geoInfo.country.sn, expected.country.sn);
@@ -289,7 +290,6 @@ module.exports.phonegeo_TW = {
     },
     
     testTWFireAndAmbulance: function(test) {
-        test.expect(6);
         var parsed = new PhoneNumber("119",{locale: "tw-TW"});
         var expected = {
             country: {
@@ -305,6 +305,7 @@ module.exports.phonegeo_TW = {
         var locator = new PhoneGeoLocator({locale: "tw-TW"});
         var geoInfo = locator.locate(parsed);
     
+        test.expect(6);
         test.ok(typeof(locator) !== "undefined");
         test.equal(geoInfo.country.code, expected.country.code);
         test.equal(geoInfo.country.sn, expected.country.sn);

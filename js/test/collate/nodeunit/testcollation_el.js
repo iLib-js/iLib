@@ -34,7 +34,6 @@ module.exports.testcollation_el = {
     },
 
     testJSCollatorQuat_el: function(test) {
-        test.expect(91);
         var col = new Collator({
             locale: "el-GR",
             useNative: false,
@@ -42,6 +41,7 @@ module.exports.testcollation_el = {
             usage: "search"
         });
     
+        test.expect(91);
         test.ok(typeof(col) !== "undefined");
     
         // Α α Ά Ά ά ά Β β Γ γ Δ δ Ε ε Έ Έ έ έ Ζ ζ Η η Ή Ή ή ή Θ θ Ι ι Ί Ί ί ί Ϊ Ϊ ϊ ϊ ΐ ΐ ί̈ Κ κ Λ λ Μ μ Ν ν Ξ ξ Ο ο Ό Ό ό ό Π π Ρ ρ Σ σ ς Τ τ Υ υ Ύ Ύ ύ ύ Ϋ Ϋ ϋ ϋ ΰ ΰ ύ̈ Φ φ Χ χ Ψ ψ Ω ω Ώ Ώ ώ ώ 
@@ -140,7 +140,6 @@ module.exports.testcollation_el = {
     },
     
     testJSCollatorTer_el: function(test) {
-        test.expect(91);
         var col = new Collator({
             locale: "el-GR",
             useNative: false,
@@ -148,6 +147,7 @@ module.exports.testcollation_el = {
             usage: "search"
         });
     
+        test.expect(91);
         test.ok(typeof(col) !== "undefined");
     
         // Α α Ά Ά ά ά Β β Γ γ Δ δ Ε ε Έ Έ έ έ Ζ ζ Η η Ή Ή ή ή Θ θ Ι ι Ί Ί ί ί Ϊ Ϊ ϊ ϊ ΐ ΐ ί̈ Κ κ Λ λ Μ μ Ν ν Ξ ξ Ο ο Ό Ό ό ό Π π Ρ ρ Σ σ ς Τ τ Υ υ Ύ Ύ ύ ύ Ϋ Ϋ ϋ ϋ ΰ ΰ ύ̈ Φ φ Χ χ Ψ ψ Ω ω Ώ Ώ ώ ώ 
@@ -246,7 +246,6 @@ module.exports.testcollation_el = {
     },
     
     testJSCollatorSec_el: function(test) {
-        test.expect(91);
         var col = new Collator({
             locale: "el-GR",
             useNative: false,
@@ -254,6 +253,7 @@ module.exports.testcollation_el = {
             usage: "search"
         });
     
+        test.expect(91);
         test.ok(typeof(col) !== "undefined");
     
         // Α α Ά Ά ά ά Β β Γ γ Δ δ Ε ε Έ Έ έ έ Ζ ζ Η η Ή Ή ή ή Θ θ Ι ι Ί Ί ί ί Ϊ Ϊ ϊ ϊ ΐ ΐ ί̈ Κ κ Λ λ Μ μ Ν ν Ξ ξ Ο ο Ό Ό ό ό Π π Ρ ρ Σ σ ς Τ τ Υ υ Ύ Ύ ύ ύ Ϋ Ϋ ϋ ϋ ΰ ΰ ύ̈ Φ φ Χ χ Ψ ψ Ω ω Ώ Ώ ώ ώ 
@@ -352,7 +352,6 @@ module.exports.testcollation_el = {
     },
     
     testJSCollatorPri_el: function(test) {
-        test.expect(91);
         var col = new Collator({
             locale: "el-GR",
             useNative: false,
@@ -360,6 +359,7 @@ module.exports.testcollation_el = {
             usage: "search"
         });
     
+        test.expect(91);
         test.ok(typeof(col) !== "undefined");
     
         // Α α Ά Ά ά ά Β β Γ γ Δ δ Ε ε Έ Έ έ έ Ζ ζ Η η Ή Ή ή ή Θ θ Ι ι Ί Ί ί ί Ϊ Ϊ ϊ ϊ ΐ ΐ ί̈ Κ κ Λ λ Μ μ Ν ν Ξ ξ Ο ο Ό Ό ό ό Π π Ρ ρ Σ σ ς Τ τ Υ υ Ύ Ύ ύ ύ Ϋ Ϋ ϋ ϋ ΰ ΰ ύ̈ Φ φ Χ χ Ψ ψ Ω ω Ώ Ώ ώ ώ 
@@ -458,7 +458,6 @@ module.exports.testcollation_el = {
     },
     
     testJSCollatorQuatSort_el: function(test) {
-        test.expect(91);
         var col = new Collator({
             locale: "el-GR",
             useNative: false,
@@ -466,6 +465,7 @@ module.exports.testcollation_el = {
             usage: "sort"
         });
     
+        test.expect(91);
         test.ok(typeof(col) !== "undefined");
     
         // Α α Ά Ά ά ά Β β Γ γ Δ δ Ε ε Έ Έ έ έ Ζ ζ Η η Ή Ή ή ή Θ θ Ι ι Ί Ί ί ί Ϊ Ϊ ϊ ϊ ΐ ΐ ί̈ Κ κ Λ λ Μ μ Ν ν Ξ ξ Ο ο Ό Ό ό ό Π π Ρ ρ Σ σ ς Τ τ Υ υ Ύ Ύ ύ ύ Ϋ Ϋ ϋ ϋ ΰ ΰ ύ̈ Φ φ Χ χ Ψ ψ Ω ω Ώ Ώ ώ ώ 
@@ -564,7 +564,6 @@ module.exports.testcollation_el = {
     },
     
     testJSCollatorTerSort_el: function(test) {
-        test.expect(91);
         var col = new Collator({
             locale: "el-GR",
             useNative: false,
@@ -572,6 +571,7 @@ module.exports.testcollation_el = {
             usage: "sort"
         });
     
+        test.expect(91);
         test.ok(typeof(col) !== "undefined");
     
         // Α α Ά Ά ά ά Β β Γ γ Δ δ Ε ε Έ Έ έ έ Ζ ζ Η η Ή Ή ή ή Θ θ Ι ι Ί Ί ί ί Ϊ Ϊ ϊ ϊ ΐ ΐ ί̈ Κ κ Λ λ Μ μ Ν ν Ξ ξ Ο ο Ό Ό ό ό Π π Ρ ρ Σ σ ς Τ τ Υ υ Ύ Ύ ύ ύ Ϋ Ϋ ϋ ϋ ΰ ΰ ύ̈ Φ φ Χ χ Ψ ψ Ω ω Ώ Ώ ώ ώ 
@@ -670,7 +670,6 @@ module.exports.testcollation_el = {
     },
     
     testJSCollatorSecSort_el: function(test) {
-        test.expect(91);
         var col = new Collator({
             locale: "el-GR",
             useNative: false,
@@ -678,6 +677,7 @@ module.exports.testcollation_el = {
             usage: "sort"
         });
     
+        test.expect(91);
         test.ok(typeof(col) !== "undefined");
     
         // Α α Ά Ά ά ά Β β Γ γ Δ δ Ε ε Έ Έ έ έ Ζ ζ Η η Ή Ή ή ή Θ θ Ι ι Ί Ί ί ί Ϊ Ϊ ϊ ϊ ΐ ΐ ί̈ Κ κ Λ λ Μ μ Ν ν Ξ ξ Ο ο Ό Ό ό ό Π π Ρ ρ Σ σ ς Τ τ Υ υ Ύ Ύ ύ ύ Ϋ Ϋ ϋ ϋ ΰ ΰ ύ̈ Φ φ Χ χ Ψ ψ Ω ω Ώ Ώ ώ ώ 
@@ -776,7 +776,6 @@ module.exports.testcollation_el = {
     },
     
     testJSCollatorPriSort_el: function(test) {
-        test.expect(91);
         var col = new Collator({
             locale: "el-GR",
             useNative: false,
@@ -784,6 +783,7 @@ module.exports.testcollation_el = {
             usage: "sort"
         });
     
+        test.expect(91);
         test.ok(typeof(col) !== "undefined");
     
         // Α α Ά Ά ά ά Β β Γ γ Δ δ Ε ε Έ Έ έ έ Ζ ζ Η η Ή Ή ή ή Θ θ Ι ι Ί Ί ί ί Ϊ Ϊ ϊ ϊ ΐ ΐ ί̈ Κ κ Λ λ Μ μ Ν ν Ξ ξ Ο ο Ό Ό ό ό Π π Ρ ρ Σ σ ς Τ τ Υ υ Ύ Ύ ύ ύ Ϋ Ϋ ϋ ϋ ΰ ΰ ύ̈ Φ φ Χ χ Ψ ψ Ω ω Ώ Ώ ώ ώ 
@@ -882,13 +882,13 @@ module.exports.testcollation_el = {
     },
     
     testCollatorCase_el: function(test) {
-        test.expect(2);
         var col = new Collator({
             locale: "el-GR",
             useNative: false,
             sensitivity: "case",
             usage: "sort"
         });
+        test.expect(2);
         test.ok(typeof(col) !== "undefined");
         
         var input = [
@@ -950,13 +950,13 @@ module.exports.testcollation_el = {
     },
     
     testCollatorPrimary_el: function(test) {
-        test.expect(2);
         var col = new Collator({
             locale: "el-GR",
             useNative: false,
             sensitivity: "primary",
             usage: "sort"
         });
+        test.expect(2);
         test.ok(typeof(col) !== "undefined");
     
         var input = [
@@ -1022,13 +1022,13 @@ module.exports.testcollation_el = {
     },
     
     testCollatorIgnoreStressMarks_el: function(test) {
-        test.expect(3);
         var col = new Collator({
             locale: "el-GR",
             useNative: false,
             sensitivity: "primary",
             usage: "search"
         });
+        test.expect(3);
         test.ok(typeof(col) !== "undefined");
     
         var comp = col.getComparator();
@@ -1040,7 +1040,6 @@ module.exports.testcollation_el = {
     },
     
     testJSCollatorQuatLatin_el: function(test) {
-        test.expect(18);
         var col = new Collator({
             locale: "el-GR",
             useNative: false,
@@ -1048,6 +1047,7 @@ module.exports.testcollation_el = {
             usage: "search"
         });
     
+        test.expect(18);
         test.ok(typeof(col) !== "undefined");
     
         // all latin letters
@@ -1072,13 +1072,13 @@ module.exports.testcollation_el = {
     },
     
     testCollatorPrimaryMixed_el: function(test) {
-        test.expect(2);
         var col = new Collator({
             locale: "el-GR",
             useNative: false,
             sensitivity: "primary",
             usage: "sort"
         });
+        test.expect(2);
         test.ok(typeof(col) !== "undefined");
     
         var input = [

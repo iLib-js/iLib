@@ -34,8 +34,8 @@ module.exports.testname_ur = {
     },
 
     testParseSimpleName_ur_IN: function(test) {
-        test.expect(2);
         var parsed = new Name("موہن لال", {locale: 'ur-IN'});
+        test.expect(2);
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {
@@ -50,8 +50,8 @@ module.exports.testname_ur = {
     
     
     testParseTitle_ur_IN: function(test) {
-        test.expect(2);
         var parsed = new Name("موہن لال میں", {locale: 'ur-IN'});
+        test.expect(2);
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {
@@ -67,8 +67,8 @@ module.exports.testname_ur = {
     
     
     testParseTitleWithFamilyOnly_ur_IN: function(test) {
-        test.expect(2);
         var parsed = new Name("مسٹر لال", {locale: 'ur-IN'});
+        test.expect(2);
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {
@@ -83,8 +83,8 @@ module.exports.testname_ur = {
     
     
     testParseEverything_ur_IN: function(test) {
-        test.expect(2);
         var parsed = new Name("مسٹر اور مسز لال", {locale: 'ur-IN'});
+        test.expect(2);
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {
@@ -97,8 +97,8 @@ module.exports.testname_ur = {
     },
     
     testParseprefix_ur_IN: function(test) {
-        test.expect(2);
         var parsed = new Name("مسٹر موہن لال", {locale: 'ur-IN'});
+        test.expect(2);
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {
@@ -115,7 +115,6 @@ module.exports.testname_ur = {
      */
     
     testFormatSimpleNameShort_ur_IN: function(test) {
-        test.expect(2);
         var name = new Name({
             givenName: "موہن",
             familyName: "لال"
@@ -125,6 +124,7 @@ module.exports.testname_ur = {
             locale: 'ur-IN'
         });
         var formatted = fmt.format(name);
+        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "موہن لال";
@@ -134,7 +134,6 @@ module.exports.testname_ur = {
     },
     
     testFormatSimpleNameMedium_ur_IN: function(test) {
-        test.expect(2);
         var name = new Name({
             givenName: "موہن",
             familyName: "لال"
@@ -144,6 +143,7 @@ module.exports.testname_ur = {
             locale: 'ur-IN'
         });
         var formatted = fmt.format(name);
+        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "موہن لال";
@@ -153,7 +153,6 @@ module.exports.testname_ur = {
     },
     
     testFormatSimpleNameLong_ur_IN: function(test) {
-        test.expect(2);
         var name = new Name({
             givenName: "موہن",
             familyName: "لال"
@@ -163,6 +162,7 @@ module.exports.testname_ur = {
             locale: 'ur-IN'
         });
         var formatted = fmt.format(name);
+        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "موہن لال";
@@ -172,7 +172,6 @@ module.exports.testname_ur = {
     },
     
     testFormatSurname_ur_IN: function(test) {
-        test.expect(2);
         var name = new Name({
             prefix: "مسٹر اور مسز",
             familyName: "لال"
@@ -182,6 +181,7 @@ module.exports.testname_ur = {
             locale: 'ur-IN'
         });
         var formatted = fmt.format(name);
+        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "مسٹر اور مسز لال";
@@ -191,7 +191,6 @@ module.exports.testname_ur = {
     },
     
     testFormatSimpleNameFull_ur_IN: function(test) {
-        test.expect(2);
         var name = new Name({
             prefix: "ڈاکٹر",
             givenName: "موہن",
@@ -203,6 +202,7 @@ module.exports.testname_ur = {
             locale: 'ur-IN'
         });
         var formatted = fmt.format(name);
+        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "ڈاکٹر موہن لال میں";
@@ -212,7 +212,6 @@ module.exports.testname_ur = {
     },
     
     testFormatComplexNameShort_ur_IN: function(test) {
-        test.expect(2);
         var name = new Name({
             prefix: "ڈاکٹر",
             givenName: "موہن",
@@ -223,6 +222,7 @@ module.exports.testname_ur = {
             locale: 'ur-IN'
         });
         var formatted = fmt.format(name);
+        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "موہن لال";
@@ -232,7 +232,6 @@ module.exports.testname_ur = {
     },
     
     testFormatComplexNameMedium_ur_IN: function(test) {
-        test.expect(2);
         var name = new Name({
             prefix: "ڈاکٹر",
             givenName: "موہن",
@@ -243,6 +242,7 @@ module.exports.testname_ur = {
             locale: 'ur-IN'
         });
         var formatted = fmt.format(name);
+        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "موہن لال";
@@ -252,7 +252,6 @@ module.exports.testname_ur = {
     },
     
     testFormatComplexNameLong_ur_IN: function(test) {
-        test.expect(2);
         var name = new Name({
             prefix: "ڈاکٹر",
             givenName: "موہن",
@@ -263,6 +262,7 @@ module.exports.testname_ur = {
             locale: 'ur-IN'
         });
         var formatted = fmt.format(name);
+        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "ڈاکٹر موہن لال";

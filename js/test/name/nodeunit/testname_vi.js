@@ -34,8 +34,8 @@ module.exports.testname_vi = {
     },
 
     testParseSimpleName_vi: function(test) {
-        test.expect(2);
         var parsed = new Name("Chau-Giang Thi Nguyen", {locale: 'vi-VN'});
+        test.expect(2);
         test.ok(typeof(parsed) !== "undefined");
         
         var expected =   {
@@ -50,8 +50,8 @@ module.exports.testname_vi = {
     
     
     testParseAdjunctNames_vi: function(test) {
-        test.expect(2);
         var parsed = new Name("Chau-Giang Thi Nguyen", {locale: 'vi-VN'});
+        test.expect(2);
         test.ok(typeof(parsed) !== "undefined");
         
         var expected =  {
@@ -67,8 +67,8 @@ module.exports.testname_vi = {
     
     
     testParseSingleNameWithPrefixAndAdjunct_vi: function(test) {
-        test.expect(2);
         var parsed = new Name("Ông và Bà Nguyen", {locale: 'vi-VN'});
+        test.expect(2);
         test.ok(typeof(parsed) !== "undefined");
         
         var expected =   {
@@ -82,8 +82,8 @@ module.exports.testname_vi = {
     
     
     testParseTitle_vi: function(test) {
-        test.expect(2);
         var parsed = new Name("Chau-Giang Nguyen Cao cấp", {locale: 'vi-VN'});
+        test.expect(2);
         test.ok(typeof(parsed) !== "undefined");
         
         var expected =    {
@@ -99,8 +99,8 @@ module.exports.testname_vi = {
     
     
     testParseTitleWithFamilyOnly_vi: function(test) {
-        test.expect(2);
         var parsed = new Name("Thị trưởng Nguyen", {locale: 'vi-VN'});
+        test.expect(2);
         test.ok(typeof(parsed) !== "undefined");
         
         var expected =   {
@@ -115,8 +115,8 @@ module.exports.testname_vi = {
     
     
     testParseEverything_vi: function(test) {
-        test.expect(2);
         var parsed = new Name("Ông Chau-Giang Thi Nguyen", {locale: 'vi-VN'});
+        test.expect(2);
         test.ok(typeof(parsed) !== "undefined");
         
         var expected =    {
@@ -136,7 +136,6 @@ module.exports.testname_vi = {
      */
     
     testFormatSimpleNameShort_vi: function(test) {
-        test.expect(2);
         var name = new Name({
             givenName: "Chau-Giang",
             middleName: "Thi",
@@ -147,6 +146,7 @@ module.exports.testname_vi = {
             locale: 'vi-VN'
         });
         var formatted = fmt.format(name);
+        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "Chau-Giang Nguyen";
@@ -156,7 +156,6 @@ module.exports.testname_vi = {
     },
     
     testFormatSimpleNameMedium_vi: function(test) {
-        test.expect(2);
         var name = new Name({
             givenName: "Chau-Giang",
             middleName: "Thi",
@@ -167,6 +166,7 @@ module.exports.testname_vi = {
             locale: 'vi-VN'
         });
         var formatted = fmt.format(name);
+        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "Chau-Giang Thi Nguyen";
@@ -176,7 +176,6 @@ module.exports.testname_vi = {
     },
     
     testFormatSimpleNameLong_vi: function(test) {
-        test.expect(2);
         var name = new Name({
             givenName: "Chau-Giang",
             middleName: "Thi",
@@ -188,6 +187,7 @@ module.exports.testname_vi = {
             locale: 'vi-VN'
         });
         var formatted = fmt.format(name);
+        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "Chau-Giang Thi Nguyen";
@@ -197,7 +197,6 @@ module.exports.testname_vi = {
     },
     
     testFormatSimpleNameFull_vi: function(test) {
-        test.expect(2);
         var name = new Name({
             prefix: "Ông",
             givenName: "Chau-Giang",
@@ -210,6 +209,7 @@ module.exports.testname_vi = {
             locale: 'vi-VN'
         });
         var formatted = fmt.format(name);
+        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "Ông Chau-Giang Thi Nguyen Cao cấp";
@@ -219,7 +219,6 @@ module.exports.testname_vi = {
     },
     
     testFormatComplexNameShort_vi: function(test) {
-        test.expect(2);
         var name = new Name({
             prefix: "Ông",
             givenName: "Chau-Giang",
@@ -231,6 +230,7 @@ module.exports.testname_vi = {
             locale: 'vi-VN'
         });
         var formatted = fmt.format(name);
+        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "Chau-Giang Nguyen";
@@ -240,7 +240,6 @@ module.exports.testname_vi = {
     },
     
     testFormatComplexNameMedium_vi: function(test) {
-        test.expect(2);
         var name = new Name({
             prefix: "Ông",
             givenName: "Chau-Giang",
@@ -252,6 +251,7 @@ module.exports.testname_vi = {
             locale: 'vi-VN'
         });
         var formatted = fmt.format(name);
+        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "Chau-Giang Thi Nguyen";
@@ -261,7 +261,6 @@ module.exports.testname_vi = {
     },
     
     testFormatComplexNameLong_vi: function(test) {
-        test.expect(2);
         var name = new Name({
             prefix: "Ông",
             givenName: "Chau-Giang",
@@ -273,6 +272,7 @@ module.exports.testname_vi = {
             locale: 'vi-VN'
         });
         var formatted = fmt.format(name);
+        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "Ông Chau-Giang Thi Nguyen";
@@ -282,7 +282,6 @@ module.exports.testname_vi = {
     },
     
     testFormatAsianNameShort_vi: function(test) {
-        test.expect(2);
         var name = new Name({
             prefix: "小",
             givenName: "獸",
@@ -293,6 +292,7 @@ module.exports.testname_vi = {
             locale: 'vi-VN'
         });
         var formatted = fmt.format(name);
+        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "地獸";
@@ -302,7 +302,6 @@ module.exports.testname_vi = {
     },
     
     testFormatAsianNameMedium_vi: function(test) {
-        test.expect(2);
         var name = new Name({
             prefix: "小",
             givenName: "獸",
@@ -313,6 +312,7 @@ module.exports.testname_vi = {
             locale: 'vi-VN'
         });
         var formatted = fmt.format(name);
+        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "地獸";
@@ -322,7 +322,6 @@ module.exports.testname_vi = {
     },
     
     testFormatAsianNameLong_vi: function(test) {
-        test.expect(2);
         var name = new Name({
             prefix: "小",
             givenName: "獸",
@@ -333,6 +332,7 @@ module.exports.testname_vi = {
             locale: 'vi-VN'
         });
         var formatted = fmt.format(name);
+        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "小地獸";

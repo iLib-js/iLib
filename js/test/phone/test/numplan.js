@@ -20,6 +20,18 @@
 var ilib = require("./../lib/ilib.js");
 var NumberingPlan = require("./../lib/NumberingPlan.js");
 
+function mockLoader(paths, sync, params, callback) {
+	var data = [];
+	
+	data.push(ilib.data.numplan); // for the generic, shared stuff
+	data.push(ilib.data.numplan_US);
+	
+	if (typeof(callback) !== 'undefined') {
+		callback.call(this, data);	
+	}
+	return data;
+}
+
 function testGet1() {
 	var plan = new NumberingPlan({locale: "en-US"});
 	assertNotUndefined(plan);
@@ -78,18 +90,6 @@ function testRightContents() {
 	assertEquals("closed", plan.getPlanStyle());
 	assertEquals(" ()-.", plan.getCommonFormatChars());	
 };
-
-function mockLoader(paths, sync, params, callback) {
-	var data = [];
-	
-	data.push(ilib.data.numplan); // for the generic, shared stuff
-	data.push(ilib.data.numplan_US);
-	
-	if (typeof(callback) !== 'undefined') {
-		callback.call(this, data);	
-	}
-	return data;
-}
 
 function testNumPlanLoadLocaleDataSynch() {
 	if (ilib.isDynData()) {

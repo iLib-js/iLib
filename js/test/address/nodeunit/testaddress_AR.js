@@ -35,9 +35,9 @@ module.exports.testaddress_AR = {
     },
 
     testParseARAddressNormal: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("Luis Escala Piedras 623\nPiso 2, depto 4\nC1070AAM Capital Federa\nARGENTINA", {locale: 'es-AR'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Luis Escala Piedras 623, Piso 2, depto 4");
         test.equal(parsedAddress.locality, "Capital Federa");
@@ -50,9 +50,9 @@ module.exports.testaddress_AR = {
     
     
     testParseARAddressNoZip: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("Luis Escala Piedras 623\nPiso 2, depto 4\nCapital Federa\nARGENTINA", {locale: 'es-AR'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Luis Escala Piedras 623, Piso 2, depto 4");
         test.equal(parsedAddress.locality, "Capital Federa");
@@ -64,9 +64,9 @@ module.exports.testaddress_AR = {
     },
     
     testParseARAddressNoCountry: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("Juana Aguirre, Piedras No 623, Piso2 Dto.4\nC1070AAM Capital Federal", {locale: 'es-AR'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Juana Aguirre, Piedras No 623, Piso2 Dto.4");
         test.equal(parsedAddress.locality, "Capital Federal");
@@ -78,9 +78,9 @@ module.exports.testaddress_AR = {
     },
     
     testParseARAddressManyLines: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("Juana Aguirre\nEscuela Rural 45 \nPiedras No 623\nPiso2 Dto.4\nC1070AAM Capital Federal\nARGENTINA\n\n\n", {locale: 'es-AR'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Juana Aguirre, Escuela Rural 45, Piedras No 623, Piso2 Dto.4");
         test.equal(parsedAddress.locality, "Capital Federal");
@@ -93,9 +93,9 @@ module.exports.testaddress_AR = {
     },
     
     testParseARAddressOneLine: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("Juana Aguirre, Piedras No 623, Piso2 Dto.4, C1070AAM Capital Federal, ARGENTINA", {locale: 'es-AR'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Juana Aguirre, Piedras No 623, Piso2 Dto.4");
         test.equal(parsedAddress.locality, "Capital Federal");
@@ -108,9 +108,9 @@ module.exports.testaddress_AR = {
     },
     
     testParseARAddressSuperfluousWhitespace: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("\t\t\tLuis Escala Piedras 623\n\n\nPiso 2, depto 4\n   \t\nC1070AAM Capital Federa\n   \r\t\t \t \t ARGENTINA\n\n\n", {locale: 'es-AR'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Luis Escala Piedras 623, Piso 2, depto 4");
         test.equal(parsedAddress.locality, "Capital Federa");
@@ -123,9 +123,9 @@ module.exports.testaddress_AR = {
     },
     
     testParseARAddressNoDelimiters: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("Luis Escala Piedras 623 Piso 2, depto 4 C1070AAM  Capital Federa ARGENTINA", {locale: 'es-AR'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Luis Escala Piedras 623 Piso 2, depto 4");
         test.equal(parsedAddress.locality, "Capital Federa");
@@ -138,9 +138,9 @@ module.exports.testaddress_AR = {
     },
     
     testParseARAddressSpecialChars: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("At. Sr. Hiro Gordo-Globo\nSumo Informática S.A.\nCalle 39 No 1540\nB1000TBU San Sebastian\nARGENTINA", {locale: 'es-AR'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "At. Sr. Hiro Gordo-Globo, Sumo Informática S.A., Calle 39 No 1540");
         test.equal(parsedAddress.locality, "San Sebastian");
@@ -154,11 +154,11 @@ module.exports.testaddress_AR = {
     
     
     testParseARAddressFromUS: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("At. Sr. Hiro Gordo-Globo, Sumo Informática S.A., Calle 39 No 1540\nB1000TBU San Sebastian\nArgentina", {locale: 'en-US'});
         
         // the country name is in English because this address is for a contact in a US database
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "At. Sr. Hiro Gordo-Globo, Sumo Informática S.A., Calle 39 No 1540");
         test.equal(parsedAddress.locality, "San Sebastian");
@@ -171,7 +171,6 @@ module.exports.testaddress_AR = {
     },
     
     testFormatAddressAR: function(test) {
-        test.expect(1);
         var parsedAddress = new Address({
             streetAddress: "At. Sr. Hiro Gordo-Globo, Sumo Informática S.A., Calle 39 No 1540",
             locality: "San Sebastian",
@@ -182,13 +181,13 @@ module.exports.testaddress_AR = {
         
         var expected = "At. Sr. Hiro Gordo-Globo, Sumo Informática S.A., Calle 39 No 1540\nB1000TBU San Sebastian\nARGENTINA";
         var formatter = new AddressFmt({locale: 'es-AR'});
+        test.expect(1);
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
         
     },
     
     testFormatAddressARFromUS: function(test) {
-        test.expect(1);
         var parsedAddress = new Address({
             streetAddress: "At. Sr. Hiro Gordo-Globo, Sumo Informática S.A., Calle 39 No 1540",
             locality: "San Sebastian",
@@ -199,6 +198,7 @@ module.exports.testaddress_AR = {
         
         var expected = "At. Sr. Hiro Gordo-Globo, Sumo Informática S.A., Calle 39 No 1540\nB1000TBU San Sebastian\nArgentina";
         var formatter = new AddressFmt({locale: 'en-US'});
+        test.expect(1);
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
         

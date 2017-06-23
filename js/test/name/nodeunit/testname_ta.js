@@ -34,8 +34,8 @@ module.exports.testname_ta = {
     },
 
     testParseSimpleName_ta_IN: function(test) {
-        test.expect(2);
         var parsed = new Name("மஹிலா ஜெயவர்த்தனே", {locale: 'ta-IN'});
+        test.expect(2);
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {
@@ -48,8 +48,8 @@ module.exports.testname_ta = {
     },
     
     testParseTitle_ta_IN: function(test) {
-        test.expect(2);
         var parsed = new Name("மஹிலா ஜெயவர்த்தனே மூத்த", {locale: 'ta-IN'});
+        test.expect(2);
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {
@@ -63,8 +63,8 @@ module.exports.testname_ta = {
     },
     
     testParseTitleWithFamilyOnly_ta_IN: function(test) {
-        test.expect(2);
         var parsed = new Name("திரு ஜெயவர்த்தனே", {locale: 'ta-IN'});
+        test.expect(2);
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {
@@ -77,8 +77,8 @@ module.exports.testname_ta = {
     },
     
     testParseEverything_ta_IN: function(test) {
-        test.expect(2);
         var parsed = new Name("திரு மற்றும் திருமதி ஜெயவர்த்தனே", {locale: 'ta-IN'});
+        test.expect(2);
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {
@@ -91,8 +91,8 @@ module.exports.testname_ta = {
     },
     
     testParseprefix_ta_IN: function(test) {
-        test.expect(2);
         var parsed = new Name("திரு மஹிலா ஜெயவர்த்தனே", {locale: 'ta-IN'});
+        test.expect(2);
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {
@@ -109,7 +109,6 @@ module.exports.testname_ta = {
      */
     
     testFormatSimpleNameShort_ta_IN: function(test) {
-        test.expect(2);
         var name = new Name({
             givenName: "மஹிலா",
             familyName: "ஜெயவர்த்தனே"
@@ -119,6 +118,7 @@ module.exports.testname_ta = {
             locale: 'ta-IN'
         });
         var formatted = fmt.format(name);
+        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "மஹிலா ஜெயவர்த்தனே";
@@ -128,7 +128,6 @@ module.exports.testname_ta = {
     },
     
     testFormatSimpleNameMedium_ta_IN: function(test) {
-        test.expect(2);
         var name = new Name({
             givenName: "மஹிலா",
             familyName: "ஜெயவர்த்தனே"
@@ -138,6 +137,7 @@ module.exports.testname_ta = {
             locale: 'ta-IN'
         });
         var formatted = fmt.format(name);
+        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "மஹிலா ஜெயவர்த்தனே";
@@ -147,7 +147,6 @@ module.exports.testname_ta = {
     },
     
     testFormatSimpleNameLong_ta_IN: function(test) {
-        test.expect(2);
         var name = new Name({
             givenName: "மஹிலா",
             familyName: "ஜெயவர்த்தனே"
@@ -157,6 +156,7 @@ module.exports.testname_ta = {
             locale: 'ta-IN'
         });
         var formatted = fmt.format(name);
+        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "மஹிலா ஜெயவர்த்தனே";
@@ -166,7 +166,6 @@ module.exports.testname_ta = {
     },
     
     testFormatSurname_ta_IN: function(test) {
-        test.expect(2);
         var name = new Name({
             prefix: "திரு மற்றும் திருமதி",
             familyName: "ஜெயவர்த்தனே"
@@ -176,6 +175,7 @@ module.exports.testname_ta = {
             locale: 'ta-IN'
         });
         var formatted = fmt.format(name);
+        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "திரு மற்றும் திருமதி ஜெயவர்த்தனே";
@@ -185,7 +185,6 @@ module.exports.testname_ta = {
     },
     
     testFormatSimpleNameFull_ta_IN: function(test) {
-        test.expect(2);
         var name = new Name({
             prefix: "வைத்தியர்",
             givenName: "மஹிலா",
@@ -197,6 +196,7 @@ module.exports.testname_ta = {
             locale: 'ta-IN'
         });
         var formatted = fmt.format(name);
+        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "வைத்தியர் மஹிலா ஜெயவர்த்தனே மிஸ்";
@@ -206,7 +206,6 @@ module.exports.testname_ta = {
     },
     
     testFormatComplexNameShort_ta_IN: function(test) {
-        test.expect(2);
         var name = new Name({
             prefix: "வைத்தியர்",
             givenName: "மஹிலா",
@@ -217,6 +216,7 @@ module.exports.testname_ta = {
             locale: 'ta-IN'
         });
         var formatted = fmt.format(name);
+        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "மஹிலா ஜெயவர்த்தனே";
@@ -226,7 +226,6 @@ module.exports.testname_ta = {
     },
     
     testFormatComplexNameMedium_ta_IN: function(test) {
-        test.expect(2);
         var name = new Name({
             prefix: "வைத்தியர்",
             givenName: "மஹிலா",
@@ -237,6 +236,7 @@ module.exports.testname_ta = {
             locale: 'ta-IN'
         });
         var formatted = fmt.format(name);
+        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "மஹிலா ஜெயவர்த்தனே";
@@ -246,7 +246,6 @@ module.exports.testname_ta = {
     },
     
     testFormatComplexNameLong_ta_IN: function(test) {
-        test.expect(2);
         var name = new Name({
             prefix: "வைத்தியர்",
             givenName: "மஹிலா",
@@ -257,6 +256,7 @@ module.exports.testname_ta = {
             locale: 'ta-IN'
         });
         var formatted = fmt.format(name);
+        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "வைத்தியர் மஹிலா ஜெயவர்த்தனே";

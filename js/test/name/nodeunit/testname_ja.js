@@ -34,8 +34,8 @@ module.exports.testname_ja = {
     },
 
     testParseSimpleNameEuro_ja_JP: function(test) {
-        test.expect(2);
         var parsed = new Name("Takuya Kimura", {locale: 'ja-JP'});
+        test.expect(2);
         test.ok(typeof(parsed) !== "undefined");
     
         var expected = {
@@ -48,8 +48,8 @@ module.exports.testname_ja = {
     },
     
     testParseSimpleNameAsian_ja_JP: function(test) {
-        test.expect(2);
         var parsed = new Name("高橋弘樹", {locale: 'ja-JP'});
+        test.expect(2);
         test.ok(typeof(parsed) !== "undefined");
     
         var expected = {
@@ -62,8 +62,8 @@ module.exports.testname_ja = {
     },
     
     testParseSingleNameWithPrefixAndAdjunct_ja_JP: function(test) {
-        test.expect(2);
         var parsed = new Name("高橋弘樹さん", {locale: 'ja-JP'});
+        test.expect(2);
         test.ok(typeof(parsed) !== "undefined");
     
         var expected = {
@@ -77,8 +77,8 @@ module.exports.testname_ja = {
     },
     
     testParseTitle_ja_JP1: function(test) {
-        test.expect(2);
         var parsed = new Name("高橋弘樹知事", {locale: 'ja-JP'});
+        test.expect(2);
         test.ok(typeof(parsed) !== "undefined");
     
         var expected = {
@@ -92,8 +92,8 @@ module.exports.testname_ja = {
     },
     
     testParseTitleWithFamilyOnlyAndAdjunct_ja_JP: function(test) {
-        test.expect(2);
         var parsed = new Name("高橋弘樹教授", {locale: 'ja-JP'});
+        test.expect(2);
         test.ok(typeof(parsed) !== "undefined");
     
         var expected = {
@@ -107,8 +107,8 @@ module.exports.testname_ja = {
     },
     
     testParseCompoundHonorific_ja_JP: function(test) {
-        test.expect(2);
         var parsed = new Name("高橋教授", {locale: 'ja-JP'});
+        test.expect(2);
         test.ok(typeof(parsed) !== "undefined");
     
         var expected = {
@@ -121,8 +121,8 @@ module.exports.testname_ja = {
     },
     
     testParseCompoundHonorific_ja_JP1: function(test) {
-        test.expect(2);
         var parsed = new Name("高橋総裁", {locale: 'ja-JP'});
+        test.expect(2);
         test.ok(typeof(parsed) !== "undefined");
     
         var expected = {
@@ -135,8 +135,8 @@ module.exports.testname_ja = {
     },
     
     testParseFamilyName_ja_JP1: function(test) {
-        test.expect(2);
         var parsed = new Name("佐々木主浩", {locale: 'ja-JP'});
+        test.expect(2);
         test.ok(typeof(parsed) !== "undefined");
     
         var expected = {
@@ -150,8 +150,8 @@ module.exports.testname_ja = {
     
     
     testParseWithLongMixedName_ja_JP: function(test) {
-        test.expect(2);
         var parsed = new Name("佐々木主浩/Software Engineer", {locale: "ja-JP"});
+        test.expect(2);
         test.ok(typeof(parsed) !== "undefined");    
         var expected = {
             givenName : "主浩",
@@ -167,7 +167,6 @@ module.exports.testname_ja = {
      */
     
     testFormatSimpleNameShort_ja_JP: function(test) {
-        test.expect(2);
         var name = new Name({
             givenName: "弘樹",
             familyName: "高橋"
@@ -177,6 +176,7 @@ module.exports.testname_ja = {
             locale: 'ja-JP'
         });
         var formatted = fmt.format(name);
+        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
     
         var expected = "高橋弘樹";
@@ -186,7 +186,6 @@ module.exports.testname_ja = {
     },
     
     testFormatSimpleNameMedium_ja_JP: function(test) {
-        test.expect(2);
         var name = new Name({
             givenName: "弘樹",
             familyName: "高橋"
@@ -196,6 +195,7 @@ module.exports.testname_ja = {
             locale: 'ja-JP'
         });
         var formatted = fmt.format(name);
+        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
     
         var expected = "高橋弘樹";
@@ -205,7 +205,6 @@ module.exports.testname_ja = {
     },
     
     testFormatSimpleNameFull_ja_JP: function(test) {
-        test.expect(2);
         var name = new Name({
             givenName: "弘樹",
             familyName: "高橋",
@@ -216,6 +215,7 @@ module.exports.testname_ja = {
             locale: 'ja-JP'
         });
         var formatted = fmt.format(name);
+        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
     
         var expected = "高橋弘樹副大統領ご";
@@ -225,7 +225,6 @@ module.exports.testname_ja = {
     },
     
     testFormatComplexNameShort_ja_JP: function(test) {
-        test.expect(2);
         var name = new Name({
             suffix: "きゅう",
             givenName: "弘樹",
@@ -236,6 +235,7 @@ module.exports.testname_ja = {
             locale: 'ja-JP'
         });
         var formatted = fmt.format(name);
+        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
     
         var expected = "高橋弘樹";
@@ -246,7 +246,6 @@ module.exports.testname_ja = {
     
     
     testFormatAsianNameMedium_ja_JP: function(test) {
-        test.expect(2);
         var name = new Name({
             prefix: "小",
             givenName: "獸",
@@ -258,6 +257,7 @@ module.exports.testname_ja = {
             locale: 'ja-JP'
         });
         var formatted = fmt.format(name);
+        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
     
         var expected = "地獸";
@@ -267,7 +267,6 @@ module.exports.testname_ja = {
     },
     
     testFormatAsianNameLong_ja_JP: function(test) {
-        test.expect(2);
         var name = new Name({
             prefix: "小",
             givenName: "獸",
@@ -279,6 +278,7 @@ module.exports.testname_ja = {
             locale: 'ja-JP'
         });
         var formatted = fmt.format(name);
+        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
     
         var expected = "小地獸太太";

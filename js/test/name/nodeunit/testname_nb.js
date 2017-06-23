@@ -34,8 +34,8 @@ module.exports.testname_nb = {
     },
 
     testParseSimpleName_nb_NO: function(test) {
-        test.expect(2);
         var parsed = new Name("Maria Bonnevie", {locale: 'nb-NO'});
+        test.expect(2);
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {
@@ -49,8 +49,8 @@ module.exports.testname_nb = {
     
     
     testParseTitle_nb_NO: function(test) {
-        test.expect(2);
         var parsed = new Name("Maria Bonnevie pensjonert", {locale: 'nb-NO'});
+        test.expect(2);
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {
@@ -66,8 +66,8 @@ module.exports.testname_nb = {
     
     
     testParseTitleWithFamilyOnly_nb_NO: function(test) {
-        test.expect(2);
         var parsed = new Name("Mrs. Bonnevie", {locale: 'nb-NO'});
+        test.expect(2);
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {
@@ -82,8 +82,8 @@ module.exports.testname_nb = {
     
     
     testParseEverything_nb_NO: function(test) {
-        test.expect(2);
         var parsed = new Name("Mr. og Mrs. Bonnevie", {locale: 'nb-NO'});
+        test.expect(2);
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {
@@ -96,8 +96,8 @@ module.exports.testname_nb = {
     },
     
     testParseprefix_nb_NO: function(test) {
-        test.expect(2);
         var parsed = new Name("Mrs. Maria Bonnevie", {locale: 'nb-NO'});
+        test.expect(2);
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {
@@ -114,7 +114,6 @@ module.exports.testname_nb = {
      */
     
     testFormatSimpleNameShort_nb_NO: function(test) {
-        test.expect(2);
         var name = new Name({
             givenName: "Maria",
             familyName: "Bonnevie"
@@ -124,6 +123,7 @@ module.exports.testname_nb = {
             locale: 'nb-NO'
         });
         var formatted = fmt.format(name);
+        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "Maria Bonnevie";
@@ -133,7 +133,6 @@ module.exports.testname_nb = {
     },
     
     testFormatSimpleNameMedium_nb_NO: function(test) {
-        test.expect(2);
         var name = new Name({
             givenName: "Maria",
             familyName: "Bonnevie"
@@ -143,6 +142,7 @@ module.exports.testname_nb = {
             locale: 'nb-NO'
         });
         var formatted = fmt.format(name);
+        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "Maria Bonnevie";
@@ -152,7 +152,6 @@ module.exports.testname_nb = {
     },
     
     testFormatSimpleNameLong_nb_NO: function(test) {
-        test.expect(2);
         var name = new Name({
             givenName: "Maria",
             familyName: "Bonnevie",
@@ -163,6 +162,7 @@ module.exports.testname_nb = {
             locale: 'nb-NO'
         });
         var formatted = fmt.format(name);
+        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "Maria Bonnevie";
@@ -174,7 +174,6 @@ module.exports.testname_nb = {
     
     
     testFormatSurname_nb_NO: function(test) {
-        test.expect(2);
         var name = new Name({
             prefix: "Mr. og Mrs.",
             familyName: "Bonnevie"
@@ -184,6 +183,7 @@ module.exports.testname_nb = {
             locale: 'nb-NO'
         });
         var formatted = fmt.format(name);
+        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "Mr. og Mrs. Bonnevie";
@@ -193,7 +193,6 @@ module.exports.testname_nb = {
     },
     
     testFormatSimpleNameFull_nb_NO: function(test) {
-        test.expect(2);
         var name = new Name({
             prefix: "vice president",
             givenName: "Maria",
@@ -205,6 +204,7 @@ module.exports.testname_nb = {
             locale: 'nb-NO'
         });
         var formatted = fmt.format(name);
+        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "vice president Maria Bonnevie pensjonert";
@@ -214,7 +214,6 @@ module.exports.testname_nb = {
     },
     
     testFormatComplexNameShort_nb_NO: function(test) {
-        test.expect(2);
         var name = new Name({
             prefix: "vice president",
             givenName: "Maria",
@@ -225,6 +224,7 @@ module.exports.testname_nb = {
             locale: 'nb-NO'
         });
         var formatted = fmt.format(name);
+        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "Maria Bonnevie";
@@ -234,7 +234,6 @@ module.exports.testname_nb = {
     },
     
     testFormatComplexNameMedium_nb_NO: function(test) {
-        test.expect(2);
         var name = new Name({
             prefix: "vice president",
             givenName: "Maria",
@@ -245,6 +244,7 @@ module.exports.testname_nb = {
             locale: 'nb-NO'
         });
         var formatted = fmt.format(name);
+        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "Maria Bonnevie";
@@ -254,7 +254,6 @@ module.exports.testname_nb = {
     },
     
     testFormatComplexNameLong_nb_NO: function(test) {
-        test.expect(2);
         var name = new Name({
             prefix: "vice president",
             givenName: "Maria",
@@ -265,6 +264,7 @@ module.exports.testname_nb = {
             locale: 'nb-NO'
         });
         var formatted = fmt.format(name);
+        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "vice president Maria Bonnevie";

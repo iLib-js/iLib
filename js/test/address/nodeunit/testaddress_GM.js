@@ -34,9 +34,9 @@ module.exports.testaddress_GM = {
     },
 
     testParseAddressGMNormal: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("Mr. A. Ceesay 21 Liberation Avenue\nBANJUL\nGAMBIA", {locale: 'en-GM'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Mr. A. Ceesay 21 Liberation Avenue");
         test.equal(parsedAddress.locality, "BANJUL");
@@ -48,9 +48,9 @@ module.exports.testaddress_GM = {
     },
     
     testParseAddressGMNoZip: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("Mr. A. Ceesay 21 Liberation Avenue\nBANJUL\nGAMBIA", {locale: 'en-GM'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Mr. A. Ceesay 21 Liberation Avenue");
         test.equal(parsedAddress.locality, "BANJUL");
@@ -62,9 +62,9 @@ module.exports.testaddress_GM = {
     },
     
     testParseAddressGMNoCountry: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("Mr. A. Ceesay 21 Liberation Avenue\nBANJUL", {locale: 'en-GM'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Mr. A. Ceesay 21 Liberation Avenue");
         test.equal(parsedAddress.locality, "BANJUL");
@@ -76,9 +76,9 @@ module.exports.testaddress_GM = {
     },
     
     testParseAddressGMManyLines: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("Mr. A. Ceesay\n21 Liberation Avenue\nBANJUL\nGAMBIA", {locale: 'en-GM'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
           test.equal(parsedAddress.streetAddress, "Mr. A. Ceesay, 21 Liberation Avenue");
         test.equal(parsedAddress.locality, "BANJUL");
@@ -90,9 +90,9 @@ module.exports.testaddress_GM = {
     },
     
     testParseAddressGMOneLine: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("Mr. A. Ceesay , 21 Liberation Avenue , BANJUL , GAMBIA", {locale: 'en-GM'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
           test.equal(parsedAddress.streetAddress, "Mr. A. Ceesay, 21 Liberation Avenue");
         test.equal(parsedAddress.locality, "BANJUL");
@@ -104,9 +104,9 @@ module.exports.testaddress_GM = {
     },
     
     testParseAddressGMSuperfluousWhitespace: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("Mr. A. Ceesay\n\n\t\r\t\t\r21 Liberation Avenue\r\r\n\nBANJUL\t\r\n\t\rGAMBIA", {locale: 'en-GM'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
           test.equal(parsedAddress.streetAddress, "Mr. A. Ceesay, 21 Liberation Avenue");
         test.equal(parsedAddress.locality, "BANJUL");
@@ -119,9 +119,9 @@ module.exports.testaddress_GM = {
     
     /*
     testParseAddressGMNoDelimiters: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("Mr. A. Ceesay 21 Liberation Avenue BANJUL GAMBIA", {locale: 'en-GM'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Mr. A. Ceesay 21 Liberation Avenue");
         test.equal(parsedAddress.locality, "BANJUL");
@@ -134,9 +134,9 @@ module.exports.testaddress_GM = {
     */
     
     testParseAddressGMFromUS: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("Mr. A. Ceesay 21 Liberation Avenue\nBANJUL\nGAMBIA", {locale: 'en-GM'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Mr. A. Ceesay 21 Liberation Avenue");
         test.equal(parsedAddress.locality, "BANJUL");
@@ -148,7 +148,6 @@ module.exports.testaddress_GM = {
     },
     
     testFormatAddressGM: function(test) {
-        test.expect(1);
         var parsedAddress = new Address({
             streetAddress: "Mr. A. Ceesay 21 Liberation Avenue",
             locality: "BANJUL",
@@ -159,12 +158,12 @@ module.exports.testaddress_GM = {
         
         var expected = "Mr. A. Ceesay 21 Liberation Avenue\nBANJUL\nGAMBIA";
         var formatter = new AddressFmt({locale: 'en-GM'});
+        test.expect(1);
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     },
     
     testFormatAddressGMFromUS: function(test) {
-        test.expect(1);
         var parsedAddress = new Address({
             streetAddress: "Mr. A. Ceesay 21 Liberation Avenue",
             locality: "BANJUL",
@@ -175,6 +174,7 @@ module.exports.testaddress_GM = {
         
         var expected = "Mr. A. Ceesay 21 Liberation Avenue\nBANJUL\nGAMBIA";
         var formatter = new AddressFmt({locale: 'en-US'});
+        test.expect(1);
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     }

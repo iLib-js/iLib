@@ -37,9 +37,9 @@ module.exports.testaddress_LB = {
     },
 
     testParseAddressLBFRNormal: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("Banque du Liban, P.O. Box 11–5544, RIAD EL SOLH BEIRUT 1107 2810, Liban", {locale: 'fr-LB'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Banque du Liban, P.O. Box 11–5544");
         test.ok(typeof(parsedAddress.region) === "undefined");
@@ -51,9 +51,9 @@ module.exports.testaddress_LB = {
     },
     
     testParseAddressLBFRNoZip: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("Banque du Liban, P.O. Box 11–5544, RIAD EL SOLH BEIRUT, Liban", {locale: 'fr-LB'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Banque du Liban, P.O. Box 11–5544");
         test.ok(typeof(parsedAddress.region) === "undefined");
@@ -65,9 +65,9 @@ module.exports.testaddress_LB = {
     },
     
     testParseAddressLBFRManyLines: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("Banque du Liban\nP.O. Box 11–5544\nRIAD EL SOLH BEIRUT 1107 2810\n Liban", {locale: 'fr-LB'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Banque du Liban, P.O. Box 11–5544");
         test.ok(typeof(parsedAddress.region) === "undefined");
@@ -79,9 +79,9 @@ module.exports.testaddress_LB = {
     },
     
     testParseAddressLBFROneLine: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("Banque du Liban, P.O. Box 11–5544,RIAD EL SOLH BEIRUT 1107 2810, Liban", {locale: 'fr-LB'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Banque du Liban, P.O. Box 11–5544");
         test.ok(typeof(parsedAddress.region) === "undefined");
@@ -93,9 +93,9 @@ module.exports.testaddress_LB = {
     },
     
     testParseAddressLBFRSuperfluousWhitespace: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("Banque du Liban \n P.O. Box 11–5544\t\n\n  RIAD EL SOLH BEIRUT 1107 2810  \nLiban  \t\t\t", {locale: 'fr-LB'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Banque du Liban, P.O. Box 11–5544");
         test.ok(typeof(parsedAddress.region) === "undefined");
@@ -107,9 +107,9 @@ module.exports.testaddress_LB = {
     },
     
     testParseAddressLBFRNoDelimiters: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("Banque du Liban 2  P.O. Box 11–5544 RIAD EL SOLH BEIRUT 1107 2810  Liban", {locale: 'fr-LB'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Banque du Liban 2 P.O. Box 11–5544");
         test.ok(typeof(parsedAddress.region) === "undefined");
@@ -121,9 +121,9 @@ module.exports.testaddress_LB = {
     },
     
     testParseAddressLBFRSpecialChars: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("Banque du Liban,P.O. Box 11–5544,RIAD EL SOLH BEIRUT 1107 2810, Liban", {locale: 'fr-LB'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Banque du Liban, P.O. Box 11–5544");
         test.ok(typeof(parsedAddress.region) === "undefined");
@@ -135,11 +135,11 @@ module.exports.testaddress_LB = {
     },
     
     testParseAddressLBFRFromUS: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("Banque du Liban,P.O. Box 11–5544,RIAD EL SOLH BEIRUT 1107 2810, Lebanon", {locale: 'en-US'});
         
         // the country name is in English because this address is for a contact in a US database
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Banque du Liban, P.O. Box 11–5544");
         test.ok(typeof(parsedAddress.region) === "undefined");
@@ -151,7 +151,6 @@ module.exports.testaddress_LB = {
     },
     
     testFormatAddressLBFR: function(test) {
-        test.expect(1);
         var parsedAddress = new Address({
             streetAddress: "Banque du Liban\nP.O. Box 11–5544",
             locality: "RIAD EL SOLH BEIRUT",
@@ -161,12 +160,12 @@ module.exports.testaddress_LB = {
         
         var expected = "Banque du Liban\nP.O. Box 11–5544\nRIAD EL SOLH BEIRUT\nLiban";
         var formatter = new AddressFmt({locale: 'fr-LB'});
+        test.expect(1);
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     },
     
     testFormatAddressLBFRFromUS: function(test) {
-        test.expect(1);
         var parsedAddress = new Address({
             streetAddress: "Banque du Liban\nP.O. Box 11–5544",
             locality: "RIAD EL SOLH BEIRUT",
@@ -176,15 +175,16 @@ module.exports.testaddress_LB = {
         
         var expected = "Banque du Liban\nP.O. Box 11–5544\nRIAD EL SOLH BEIRUT\nLebanon";
         var formatter = new AddressFmt({locale: 'en-US'});
+        test.expect(1);
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     },
     
     
     testParseAddressLBARNormal: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("مركز الفرز بيروت, مطار بيروت الدولي, بيروت ١٠٠٠, لبنان", {locale: 'ar-LB'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "مركز الفرز بيروت, مطار بيروت الدولي");
         test.ok(typeof(parsedAddress.region) === "undefined");
@@ -196,9 +196,9 @@ module.exports.testaddress_LB = {
     },
     
     testParseAddressLBARNoZip: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("مركز الفرز بيروت, مطار بيروت الدولي, بيروت , لبنان", {locale: 'ar-LB'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "مركز الفرز بيروت, مطار بيروت الدولي");
         test.ok(typeof(parsedAddress.region) === "undefined");
@@ -210,9 +210,9 @@ module.exports.testaddress_LB = {
     },
     
     testParseAddressLBARManyLines: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("مركز الفرز بيروت, مطار بيروت الدولي\nبيروت ١٠٠٠\n لبنان", {locale: 'ar-LB'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "مركز الفرز بيروت, مطار بيروت الدولي");
         test.ok(typeof(parsedAddress.region) === "undefined");
@@ -224,9 +224,9 @@ module.exports.testaddress_LB = {
     },
     
     testParseAddressLBAROneLine: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("مركز الفرز بيروت, مطار بيروت الدولي,بيروت ١٠٠٠, لبنان", {locale: 'ar-LB'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "مركز الفرز بيروت, مطار بيروت الدولي");
         test.ok(typeof(parsedAddress.region) === "undefined");
@@ -238,9 +238,9 @@ module.exports.testaddress_LB = {
     },
     
     testParseAddressLBARSuperfluousWhitespace: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("مركز الفرز بيروت, مطار بيروت الدولي   \n\t\n   بيروت ١٠٠٠  \n  \t\t\tلبنان", {locale: 'ar-LB'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "مركز الفرز بيروت, مطار بيروت الدولي");
         test.ok(typeof(parsedAddress.region) === "undefined");
@@ -253,9 +253,9 @@ module.exports.testaddress_LB = {
     
     /*
     testParseAddressLBARNoDelimiters: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("مركز الفرز بيروت, مطار بيروت الدولي  ٢ شارع الاستقلال  بيروت ١٠٠٠  لبنان", {locale: 'ar-LB'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "مركز الفرز بيروت, مطار بيروت الدولي ٢ شارع الاستقلا");
         test.ok(typeof(parsedAddress.region) === "undefined");
@@ -268,9 +268,9 @@ module.exports.testaddress_LB = {
     */
     
     testParseAddressLBARSpecialChars: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("مركز الفرز بيروت, مطار بيروت الدولي,بيروت ١٠٠٠, لبنان", {locale: 'ar-LB'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "مركز الفرز بيروت, مطار بيروت الدولي");
         test.ok(typeof(parsedAddress.region) === "undefined");
@@ -282,11 +282,11 @@ module.exports.testaddress_LB = {
     },
     
     testParseAddressLBARFromUS: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("مركز الفرز بيروت , مطار بيروت الدولي ,بيروت ١٠٠٠, Lebanon", {locale: 'en-US'});
         
         // the country name is in English because this address is for a contact in a US database
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "مركز الفرز بيروت, مطار بيروت الدولي");
         test.ok(typeof(parsedAddress.region) === "undefined");
@@ -298,7 +298,6 @@ module.exports.testaddress_LB = {
     },
     
     testFormatARAddress: function(test) {
-        test.expect(1);
         var parsedAddress = new Address({
             streetAddress: "مركز الفرز بيروت, مطار بيروت الدولي",
             locality: "لبنان",
@@ -308,12 +307,12 @@ module.exports.testaddress_LB = {
         
         var expected = "مركز الفرز بيروت, مطار بيروت الدولي\nلبنان\nلبنان";
         var formatter = new AddressFmt({locale: 'ar-LB'});
+        test.expect(1);
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     },
     
     testFormatAddressLBARFromUS: function(test) {
-        test.expect(1);
         var parsedAddress = new Address({
             streetAddress: "مركز الفرز بيروت, مطار بيروت الدولي",
             locality: "لبنان",
@@ -323,6 +322,7 @@ module.exports.testaddress_LB = {
         
         var expected = "مركز الفرز بيروت, مطار بيروت الدولي\nلبنان\nLebanon";
         var formatter = new AddressFmt({locale: 'en-US'});
+        test.expect(1);
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     }

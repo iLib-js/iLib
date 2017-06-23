@@ -34,9 +34,9 @@ module.exports.testaddress_ZM = {
     },
 
     testParseAddressZMNormal: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("Mr. Richard Chanda 10 Nyimba Road\n50100 NDOLA\nZAMBIA", {locale: 'en-ZM'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Mr. Richard Chanda 10 Nyimba Road");
         test.equal(parsedAddress.locality, "NDOLA");
@@ -48,9 +48,9 @@ module.exports.testaddress_ZM = {
     },
     
     testParseAddressZMNoZip: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("Mr. Richard Chanda 10 Nyimba Road\nNDOLA\nZAMBIA", {locale: 'en-ZM'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Mr. Richard Chanda 10 Nyimba Road");
         test.equal(parsedAddress.locality, "NDOLA");
@@ -62,9 +62,9 @@ module.exports.testaddress_ZM = {
     },
     
     testParseAddressZMNoCountry: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("Mr. Richard Chanda 10 Nyimba Road\n50100 NDOLA", {locale: 'en-ZM'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Mr. Richard Chanda 10 Nyimba Road");
         test.equal(parsedAddress.locality, "NDOLA");
@@ -76,8 +76,8 @@ module.exports.testaddress_ZM = {
     },
     
     testParseAddressZMManyLines: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("Mr. Richard Chanda\n10\nNyimba\nRoad\n50100\nNDOLA\nZAMBIA\n\n\n", {locale: 'en-ZM'});
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Mr. Richard Chanda, 10, Nyimba, Road");
         test.equal(parsedAddress.locality, "NDOLA");
@@ -89,9 +89,9 @@ module.exports.testaddress_ZM = {
     },
     
     testParseAddressZMOneLine: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("Mr. Richard Chanda , 10 , Nyimba , Road , 50100 , NDOLA , ZAMBIA", {locale: 'en-ZM'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Mr. Richard Chanda, 10, Nyimba, Road");
         test.equal(parsedAddress.locality, "NDOLA");
@@ -103,9 +103,9 @@ module.exports.testaddress_ZM = {
     },
     
     testParseAddressZMSuperfluousWhitespace: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("\t\t\tMr. Richard Chanda\n\t\t\t10 \t\t\t\r\r Nyimba \n \r \tRoad \n\t\n50100\t\nNDOLA\n\t ZAMBIA\n\n\n", {locale: 'en-ZM'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Mr. Richard Chanda, 10 Nyimba, Road");
         test.equal(parsedAddress.locality, "NDOLA");
@@ -117,9 +117,9 @@ module.exports.testaddress_ZM = {
     },
     
     testParseAddressZMNoDelimiters: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("Mr. Richard Chanda 10 Nyimba Road 50100 NDOLA ZAMBIA", {locale: 'en-ZM'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Mr. Richard Chanda 10 Nyimba Road");
         test.equal(parsedAddress.locality, "NDOLA");
@@ -131,11 +131,11 @@ module.exports.testaddress_ZM = {
     },
     
     testParseAddressZMFromUS: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("Mr. Richard Chanda 10 Nyimba Road\n56001 NDOLA\nZAMBIA", {locale: 'en-US'});
         
         // the country name is in German because this address is for a contact in a German database
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Mr. Richard Chanda 10 Nyimba Road");
         test.equal(parsedAddress.locality, "NDOLA");
@@ -147,7 +147,6 @@ module.exports.testaddress_ZM = {
     },
     
     testFormatAddressZM: function(test) {
-        test.expect(1);
         var parsedAddress = new Address({
             streetAddress: "Mr. Richard Chanda 10 Nyimba Road",
             locality: "NDOLA",
@@ -158,12 +157,12 @@ module.exports.testaddress_ZM = {
         
         var expected = "Mr. Richard Chanda 10 Nyimba Road\n56001 NDOLA\nZAMBIA";
         var formatter = new AddressFmt({locale: 'en-ZM'});
+        test.expect(1);
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     },
     
     testFormatAddressZMFromUS: function(test) {
-        test.expect(1);
         var parsedAddress = new Address({
             streetAddress: "Mr. Richard Chanda 10 Nyimba Road",
             locality: "NDOLA",
@@ -174,6 +173,7 @@ module.exports.testaddress_ZM = {
         
         var expected = "Mr. Richard Chanda 10 Nyimba Road\n56001 NDOLA\nZAMBIA";
         var formatter = new AddressFmt({locale: 'en-US'});
+        test.expect(1);
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     }

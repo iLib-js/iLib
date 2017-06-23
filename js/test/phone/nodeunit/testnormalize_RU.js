@@ -32,63 +32,62 @@ module.exports.normalize_RU = {
     },
 
     testRUIDDPrefix: function(test) {
-        test.expect(1);
         var parsed = new PhoneNumber("8 10 31 456 3453434", {locale: 'ru-RU'});
         var expected = "+314563453434";
         
+        test.expect(1);
         test.equal(parsed.normalize({locale: 'ru-RU'}), expected); // 'ru-RU'
         test.done();
     },
     
     testRUIDDPrefixAlreadyPlus: function(test) {
-        test.expect(1);
         var parsed = new PhoneNumber("+31 456 3453434", {locale: 'ru-RU'});
         var expected = "+314563453434";
         
+        test.expect(1);
         test.equal(parsed.normalize({locale: 'ru-RU'}), expected); // 'ru-RU'
         test.done();
     },
     
     testRUWithNoLocale: function(test) {
-        test.expect(1);
         var parsed = new PhoneNumber("8 10 31 456 3453434", {locale: 'ru-RU'});
         var expected = "+314563453434";
         
+        test.expect(1);
         test.equal(parsed.normalize({}), expected);
         test.done();
     },
     
     testRUNoHints: function(test) {
-        test.expect(1);
         var parsed = new PhoneNumber("8 10 31 456 3453434", {locale: 'ru-RU'});
         var expected = "+314563453434";
         
+        test.expect(1);
         test.equal(parsed.normalize(), expected); // 'ru-RU'
         test.done();
     },
     
     testRUWithNoHintsNoLocale: function(test) {
-        test.expect(1);
         var parsed = new PhoneNumber("8 10 31 456 3453434", {locale: 'ru-RU'});
         var expected = "+314563453434";
         
+        test.expect(1);
         test.equal(parsed.normalize(), expected);
         test.done();
     },
     
     testRULDNumberUsingRUMCC: function(test) {
-        test.expect(1);
         var parsed = new PhoneNumber("8.812.234-56-78", {locale: 'ru-RU'});
         var hints = {
             mcc: "250"
         };
         var expected = "+78122345678";
+        test.expect(1);
         test.equal(parsed.normalize(hints), expected); // 'ru-RU'
         test.done();
     },
     
     testRULDNumberUsingRUMCCOtherLocale: function(test) {
-        test.expect(1);
         var parsed = new PhoneNumber("8.812.234-56-78", {locale: 'ru-RU'});
         var hints = {
             mcc: "250",
@@ -96,56 +95,56 @@ module.exports.normalize_RU = {
         };
         var expected = "+78122345678";
         
+        test.expect(1);
         test.equal(parsed.normalize(hints), expected); // 'de-DE'
         test.done();
     },
     
     testRULDNumberUsingRUMCC: function(test) {
-        test.expect(1);
         var parsed = new PhoneNumber("02302 654321", {locale: 'de-DE'});
         var hints = {
             mcc: "250" //ru-RU
         };
         var expected = "+492302654321";
         
+        test.expect(1);
         test.equal(parsed.normalize(hints), expected); // 'de-DE'
         test.done();
     },
     
     testRUAreaCodeFromHint: function(test) {
-        test.expect(1);
         var parsed = new PhoneNumber("212-3456", {locale: 'ru-RU'});
         var hints = {
             defaultAreaCode: "8332"
         };
         var expected = "+783322123456";
         
+        test.expect(1);
         test.equal(parsed.normalize(hints), expected); // 'ru-RU'
         test.done();
     },
     testRUAreaCodeIgnoreHint: function(test) {
-        test.expect(1);
         var parsed = new PhoneNumber("8.812.234-56-78", {locale: 'ru-RU'});
         var hints = {
             defaultAreaCode: "877"
         };
         var expected = "+78122345678";
         
+        test.expect(1);
         test.equal(parsed.normalize(hints), expected); // 'ko-KR'
         test.done();
     },
     
     testRUNoAreaCodeAndNoCountry: function(test) {
-        test.expect(1);
         var parsed = new PhoneNumber("212-3456", {locale: 'ru-RU'});
         var expected = "2123456";
         
+        test.expect(1);
         test.equal(parsed.normalize(), expected);
         test.done();
     },
     
     testRUAssistedDialingLocalToLocalUMTSRU: function(test) {
-        test.expect(1);
         var phone = new PhoneNumber("2123456", {locale: 'ru-RU'});
         var hints = {
             mcc: "250",
@@ -155,12 +154,12 @@ module.exports.normalize_RU = {
         };
         var expectedString = "2123456";
     
+        test.expect(1);
         test.equal(phone.normalize(hints), expectedString); // 'ru-RU'    
         test.done();
     },
     
     testRUAssistedDialingLocalToLocalUMTSAddTrunkOpen: function(test) {
-        test.expect(1);
         var phone = new PhoneNumber("+7 495 2123456", {locale: 'ru-RU'});
         var hints = {
             mcc: "250",
@@ -169,12 +168,12 @@ module.exports.normalize_RU = {
             assistedDialing: true
         };
         var expectedString = "84952123456";
+        test.expect(1);
         test.equal(phone.normalize(hints), expectedString); // 'ru-RU'    
         test.done();
     },
     
     testRUAssistedDialingLocalToLocalCDMA: function(test) {
-        test.expect(1);
         var phone = new PhoneNumber("2123456", {locale: 'ru-RU'});
         var hints = {
             mcc: "250",
@@ -184,12 +183,12 @@ module.exports.normalize_RU = {
         };
         var expectedString = "2123456";
     
+        test.expect(1);
         test.equal(phone.normalize(hints), expectedString); 
         test.done();
     },
     
     testRUAssistedDialingRULocalToLocalCDMAAddTrunkOpen: function(test) {
-        test.expect(1);
         var phone = new PhoneNumber("+7 495 2123456", {locale: 'ru-RU'});
         var hints = {
             mcc: "250",
@@ -199,12 +198,12 @@ module.exports.normalize_RU = {
         };
         var expectedString = "84952123456";
     
+        test.expect(1);
         test.equal(phone.normalize(hints), expectedString); 
         test.done();
     },
     
     testRURUAssistedDialingIntlToLocalUMTS: function(test) {
-        test.expect(1);
         var phone = new PhoneNumber("22-33-44", {locale: 'ru-RU'});
         var hints = {
             mcc: "208", // from France
@@ -214,12 +213,12 @@ module.exports.normalize_RU = {
         };
         var expectedString = "+7495223344";
     
+        test.expect(1);
         test.equal(phone.normalize(hints), expectedString); 
         test.done();
     },
     
     testRURUAssistedDialingIntlToLDUMTS: function(test) {
-        test.expect(1);
         var phone = new PhoneNumber("83022 212345", {locale: 'ru-RU'});
         var hints = {
             mcc: "208", // from France
@@ -229,12 +228,12 @@ module.exports.normalize_RU = {
         };
         var expectedString = "+73022212345";
     
+        test.expect(1);
         test.equal(phone.normalize(hints), expectedString); // 'ru-RU'    
         test.done();
     },
     
     testRUAssistedDialingIntlToLocalCDMARU: function(test) {
-        test.expect(1);
         var phone = new PhoneNumber("2123456", {locale: 'ru-RU'});
         var hints = {
             mcc: "505", // From Australia
@@ -244,12 +243,12 @@ module.exports.normalize_RU = {
         };
         var expectedString = "001174952123456";
     
+        test.expect(1);
         test.equal(phone.normalize(hints), expectedString); // 'ru-RU'    
         test.done();
     },
     
     testRUAssistedDialingIntlToLDCDMARU: function(test) {
-        test.expect(1);
         var phone = new PhoneNumber("84952123456", {locale: 'ru-RU'});
         var hints = {
             mcc: "208", // from France
@@ -259,6 +258,7 @@ module.exports.normalize_RU = {
         };
         var expectedString = "0074952123456";
     
+        test.expect(1);
         test.equal(phone.normalize(hints), expectedString); // 'ru-RU'    
         test.done();
     }

@@ -20,6 +20,91 @@
 var ilib = require("./../lib/ilib.js");
 var PhoneNumber = require("./../lib/PhoneNumber.js");
 var PhoneHandlerFactory = require("./../lib/PhoneHandlerFactory.js");
+function mockLoader(paths, sync, params, callback) {
+	var data = [];
+	
+	data.push(ilib.data.states); // for the generic, shared stuff
+	data.push(ilib.data.states_US);
+	data.push(ilib.data.states_FR);
+	
+	if (typeof(callback) !== 'undefined') {
+		callback.call(this, data);	
+	}
+	return data;
+}
+
+var lookAheadStates = {
+    "s": [
+        0,
+        0,
+        0,
+        0,
+        {	// 4 -> area
+            "l": 7,
+            "s": [
+                0,
+                0,
+                0,
+                0,
+                0,
+                { // 45 -> area
+                    "l": 7,
+                    "s": [
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        7	// 456 -> area
+                    ]
+                },
+                {  // 46
+                    "s": [
+                        0,
+                        0,
+                        0,
+                        0,
+                        0,
+                        { // 465
+                            "s": [
+                                0,
+                                0,
+                                0,
+                                0,
+                                0,
+                                { // 4655
+                                    "s": [
+                                        0,
+                                        0,
+                                        0,
+                                        0,
+                                        0,
+                                        7	// 46555 -> area
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        { // ^
+            "s": [
+                12 // ^0 -> trunk
+            ]
+        }
+    ]
+};
+
 
 function testNumberMatchFRDepartments1(){
 	var left = new PhoneNumber({
@@ -975,19 +1060,6 @@ function testEqualsMissingLocaleBoth(){
 	assertTrue(left.equals(right));
 };
 
-function mockLoader(paths, sync, params, callback) {
-	var data = [];
-	
-	data.push(ilib.data.states); // for the generic, shared stuff
-	data.push(ilib.data.states_US);
-	data.push(ilib.data.states_FR);
-	
-	if (typeof(callback) !== 'undefined') {
-		callback.call(this, data);	
-	}
-	return data;
-}
-
 function testPhoneNumLoadLocaleDataSynch() {
 	if (ilib.isDynData()) {
 		// don't need to test loading on the dynamic load version because we are testing
@@ -1013,78 +1085,6 @@ function testPhoneNumLoadLocaleDataSynch() {
 	
 	assertEquals(100, left.compare(right));
     ilib.setLoaderCallback(undefined);
-};
-
-var lookAheadStates = {
-    "s": [
-        0,
-        0,
-        0,
-        0,
-        {	// 4 -> area
-            "l": 7,
-            "s": [
-                0,
-                0,
-                0,
-                0,
-                0,
-                { // 45 -> area
-                    "l": 7,
-                    "s": [
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        7	// 456 -> area
-                    ]
-                },
-                {  // 46
-                    "s": [
-                        0,
-                        0,
-                        0,
-                        0,
-                        0,
-                        { // 465
-                            "s": [
-                                0,
-                                0,
-                                0,
-                                0,
-                                0,
-                                { // 4655
-                                    "s": [
-                                        0,
-                                        0,
-                                        0,
-                                        0,
-                                        0,
-                                        7	// 46555 -> area
-                                    ]
-                                }
-                            ]
-                        }
-                    ]
-                }
-            ]
-        },
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        { // ^
-            "s": [
-                12 // ^0 -> trunk
-            ]
-        }
-    ]
 };
 
 function testPhoneNumLookaheadRoot() {

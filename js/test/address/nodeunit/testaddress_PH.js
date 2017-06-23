@@ -34,9 +34,9 @@ module.exports.testaddress_PH = {
     },
 
     testParseAddressPHNormal: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("Juan dela Cruz Rm 107, 1901 Airport Road Cabungaan\n2900 Laoag City Ilocos Norte\nPhilippines", {locale: 'es-PH'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Juan dela Cruz Rm 107, 1901 Airport Road Cabungaan");
         test.equal(parsedAddress.locality, "Laoag City");
@@ -48,9 +48,9 @@ module.exports.testaddress_PH = {
     },
     
     testParseAddressPHNoZip: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("Juan dela Cruz Rm 107, 1901 Airport Road Cabungaan\nLaoag City Ilocos Norte\nPhilippines", {locale: 'es-PH'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Juan dela Cruz Rm 107, 1901 Airport Road Cabungaan");
         test.equal(parsedAddress.locality, "Laoag City");
@@ -62,9 +62,9 @@ module.exports.testaddress_PH = {
     },
     
     testParseAddressPHNoCountry: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("Juan dela Cruz Rm 107, 1901 Airport Road Cabungaan\n2900 Laoag City Ilocos Norte", {locale: 'es-PH'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Juan dela Cruz Rm 107, 1901 Airport Road Cabungaan");
         test.equal(parsedAddress.locality, "Laoag City");
@@ -76,9 +76,9 @@ module.exports.testaddress_PH = {
     },
     
     testParseAddressPHManyLines: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("Juan dela Cruz Rm 107\n1901 Airport Road\nCabungaan\n2900 Laoag City Ilocos Norte\nPhilippines", {locale: 'es-PH'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
           test.equal(parsedAddress.streetAddress, "Juan dela Cruz Rm 107, 1901 Airport Road, Cabungaan");
         test.equal(parsedAddress.locality, "Laoag City");
@@ -90,9 +90,9 @@ module.exports.testaddress_PH = {
     },
     
     testParseAddressPHOneLine: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("Juan dela Cruz Rm 107 , 1901 Airport Road , Cabungaan , 2900 , Laoag City , Ilocos Norte , Philippines", {locale: 'es-PH'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
           test.equal(parsedAddress.streetAddress, "Juan dela Cruz Rm 107, 1901 Airport Road, Cabungaan");
         test.equal(parsedAddress.locality, "Laoag City");
@@ -104,9 +104,9 @@ module.exports.testaddress_PH = {
     },
     
     testParseAddressPHSuperfluousWhitespace: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("Juan dela Cruz Rm 107\n\n\t\r1901 Airport Road\t\t\rCabungaan\n\n\t\r2900\r\n\nLaoag City\t\rIlocos Norte\t\t\rPhilippines", {locale: 'es-PH'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
           test.equal(parsedAddress.streetAddress, "Juan dela Cruz Rm 107, 1901 Airport Road Cabungaan");
         test.equal(parsedAddress.locality, "Laoag City");
@@ -118,9 +118,9 @@ module.exports.testaddress_PH = {
     },
     
     testParseAddressPHNoDelimiters: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("Juan dela Cruz Rm 107 1901 Airport Road Cabungaan 2900 Laoag City Ilocos Norte Philippines", {locale: 'es-PH'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Juan dela Cruz Rm 107 1901 Airport Road Cabungaan");
         test.equal(parsedAddress.locality, "Laoag City");
@@ -132,9 +132,9 @@ module.exports.testaddress_PH = {
     },
     
     testParseAddressPHFromUS: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("Juan dela Cruz Rm 107, 1901 Airport Road Cabungaan\n2900 Laoag City Ilocos Norte\nPhilippines", {locale: 'es-PH'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Juan dela Cruz Rm 107, 1901 Airport Road Cabungaan");
         test.equal(parsedAddress.locality, "Laoag City");
@@ -146,7 +146,6 @@ module.exports.testaddress_PH = {
     },
     
     testFormatAddressPH: function(test) {
-        test.expect(1);
         var parsedAddress = new Address({
             streetAddress: "Juan dela Cruz Rm 107, 1901 Airport Road Cabungaan",
             locality: "Laoag City",
@@ -158,12 +157,12 @@ module.exports.testaddress_PH = {
         
         var expected = "Juan dela Cruz Rm 107, 1901 Airport Road Cabungaan\n2900 Laoag City Ilocos Norte\nPhilippines";
         var formatter = new AddressFmt({locale: 'es-PH'});
+        test.expect(1);
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     },
     
     testFormatAddressPHFromUS: function(test) {
-        test.expect(1);
         var parsedAddress = new Address({
             streetAddress: "Juan dela Cruz Rm 107, 1901 Airport Road Cabungaan",
             locality: "Laoag City",
@@ -175,6 +174,7 @@ module.exports.testaddress_PH = {
         
         var expected = "Juan dela Cruz Rm 107, 1901 Airport Road Cabungaan\n2900 Laoag City Ilocos Norte\nPhilippines";
         var formatter = new AddressFmt({locale: 'en-US'});
+        test.expect(1);
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     }

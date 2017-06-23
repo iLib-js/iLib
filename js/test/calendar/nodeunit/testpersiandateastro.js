@@ -72,145 +72,144 @@ module.exports.testpersiandateastro = {
     },
 
     testPersDateAstroConstructor: function(test) {
-        test.expect(1);
         var pd = new PersianDate();
         
+        test.expect(1);
         test.ok(pd !== null);
         test.done();
     },
     
     testPersDateAstroCalcYearPositive1: function(test) {
-        test.expect(1);
         var pd = new PersianDate({rd: 0, timezone: "Etc/UTC"});
         
+        test.expect(1);
         test.equal(pd._calcYear(1), 1);
         test.done();
     },
     
     testPersDateAstroCalcYearPositive2: function(test) {
-        test.expect(1);
         var pd = new PersianDate({rd: 0, timezone: "Etc/UTC"});
         
+        test.expect(1);
         test.equal(pd._calcYear(365), 1);
         test.done();
     },
     
     testPersDateAstroCalcYearPositive3: function(test) {
-        test.expect(1);
         var pd = new PersianDate({rd: 0, timezone: "Etc/UTC"});
         
+        test.expect(1);
         test.equal(pd._calcYear(366), 2);
         test.done();
     },
     testPersDateAstroCalcYearPositive4: function(test) {
-        test.expect(1);
         var pd = new PersianDate({rd: 0, timezone: "Etc/UTC"});
         
+        test.expect(1);
         test.equal(pd._calcYear(730), 2);
         test.done();
     },
     testPersDateAstroCalcYearPositive5: function(test) {
-        test.expect(1);
         var pd = new PersianDate({rd: 0, timezone: "Etc/UTC"});
         
+        test.expect(1);
         test.equal(pd._calcYear(731), 3);
         test.done();
     },
     testPersDateAstroCalcYearPositive6: function(test) {
-        test.expect(1);
         var pd = new PersianDate({rd: 0, timezone: "Etc/UTC"});
         
+        test.expect(1);
         test.equal(pd._calcYear(1095), 3);
         test.done();
     },
     testPersDateAstroCalcYearPositive7: function(test) {
-        test.expect(1);
         var pd = new PersianDate({rd: 0, timezone: "Etc/UTC"});
         
+        test.expect(1);
         test.equal(pd._calcYear(1096), 4);
         test.done();
     },
     testPersDateAstroCalcYearPositive8: function(test) {
-        test.expect(1);
         var pd = new PersianDate({rd: 0, timezone: "Etc/UTC"});
         
+        test.expect(1);
         test.equal(pd._calcYear(1461), 4);
         test.done();
     },
     testPersDateAstroCalcYearPositive9: function(test) {
-        test.expect(1);
         var pd = new PersianDate({rd: 0, timezone: "Etc/UTC"});
         
+        test.expect(1);
         test.equal(pd._calcYear(1462), 5);
         test.done();
     },
     testPersDateAstroCalcYearPositive10: function(test) {
-        test.expect(1);
         var pd = new PersianDate({rd: 0, timezone: "Etc/UTC"});
         
+        test.expect(1);
         test.equal(pd._calcYear(1826), 5);
         test.done();
     },
     testPersDateAstroCalcYearPositive11: function(test) {
-        test.expect(1);
         var pd = new PersianDate({rd: 0, timezone: "Etc/UTC"});
         
+        test.expect(1);
         test.equal(pd._calcYear(1827), 6);
         test.done();
     },
     
     testPersDateAstroCalcYearNegative0: function(test) {
-        test.expect(1);
         var pd = new PersianDate({rd: 0, timezone: "Etc/UTC"});
         
+        test.expect(1);
         test.equal(pd._calcYear(0), 0);
         test.done();
     },
     testPersDateAstroCalcYearNegative1: function(test) {
-        test.expect(1);
         var pd = new PersianDate({rd: 0, timezone: "Etc/UTC"});
         
+        test.expect(1);
         test.equal(pd._calcYear(-1), 0);
         test.done();
     },
     testPersDateAstroCalcYearNegative2: function(test) {
-        test.expect(1);
         var pd = new PersianDate({rd: 0, timezone: "Etc/UTC"});
         
+        test.expect(1);
         test.equal(pd._calcYear(-365), 0);
         test.done();
     },
     testPersDateAstroCalcYearNegative3: function(test) {
-        test.expect(1);
         var pd = new PersianDate({rd: 0, timezone: "Etc/UTC"});
         
+        test.expect(1);
         test.equal(pd._calcYear(-366), -1);
         test.done();
     },
     testPersDateAstroCalcYearNegative4: function(test) {
-        test.expect(1);
         var pd = new PersianDate({rd: 0, timezone: "Etc/UTC"});
         
+        test.expect(1);
         test.equal(pd._calcYear(-730), -1);
         test.done();
     },
     testPersDateAstroCalcYearNegative5: function(test) {
-        test.expect(1);
         var pd = new PersianDate({rd: 0, timezone: "Etc/UTC"});
         
+        test.expect(1);
         test.equal(pd._calcYear(-731), -2);
         test.done();
     },
     testPersDateAstroCalcYearNegative6: function(test) {
-        test.expect(1);
         var pd = new PersianDate({rd: 0, timezone: "Etc/UTC"});
         
+        test.expect(1);
         test.equal(pd._calcYear(-441089), -1207);
         test.done();
     },
     
     testPersRataDieAstroConstructorFromDateComponents1: function(test) {
-        test.expect(2);
         var prd = new PersRataDie({
             year: 1,
             month: 1,
@@ -221,12 +220,12 @@ module.exports.testpersiandateastro = {
             millisecond: 0
         });
         
+        test.expect(2);
         test.equal(typeof(prd), 'object');
         test.equal(prd.getRataDie(), 1);
         test.done();
     },
     testPersRataDieAstroConstructorFromDateComponents2: function(test) {
-        test.expect(2);
         var prd = new PersRataDie({
             year: 0,
             month: 12,
@@ -237,12 +236,12 @@ module.exports.testpersiandateastro = {
             millisecond: 0
         });
         
+        test.expect(2);
         test.equal(typeof(prd), 'object');
         test.equal(prd.getRataDie(), 0);
         test.done();
     },
     testPersRataDieAstroConstructorFromDateComponents3: function(test) {
-        test.expect(2);
         var prd = new PersRataDie({
             year: 1,
             month: 12,
@@ -253,12 +252,12 @@ module.exports.testpersiandateastro = {
             millisecond: 0
         });
         
+        test.expect(2);
         test.equal(typeof(prd), 'object');
         test.equal(prd.getRataDie(), 365);
         test.done();
     },
     testPersRataDieAstroConstructorFromDateComponents4: function(test) {
-        test.expect(2);
         var prd = new PersRataDie({
             year: 2,
             month: 1,
@@ -269,12 +268,12 @@ module.exports.testpersiandateastro = {
             millisecond: 0
         });
         
+        test.expect(2);
         test.equal(typeof(prd), 'object');
         test.equal(prd.getRataDie(), 366);
         test.done();
     },
     testPersRataDieAstroConstructorFromDateComponents5: function(test) {
-        test.expect(2);
         var prd = new PersRataDie({
             year: 1,
             month: 1,
@@ -285,12 +284,12 @@ module.exports.testpersiandateastro = {
             millisecond: 0
         });
         
+        test.expect(2);
         test.equal(typeof(prd), 'object');
         test.equal(prd.getRataDie(), 31);
         test.done();
     },
     testPersRataDieAstroConstructorFromDateComponents6: function(test) {
-        test.expect(2);
         var prd = new PersRataDie({
             year: 1,
             month: 2,
@@ -301,12 +300,12 @@ module.exports.testpersiandateastro = {
             millisecond: 0
         });
         
+        test.expect(2);
         test.equal(typeof(prd), 'object');
         test.equal(prd.getRataDie(), 32);
         test.done();
     },
     testPersRataDieAstroConstructorFromDateComponents7: function(test) {
-        test.expect(2);
         var prd = new PersRataDie({
             year: 2,
             month: 12,
@@ -317,12 +316,12 @@ module.exports.testpersiandateastro = {
             millisecond: 0
         });
         
+        test.expect(2);
         test.equal(typeof(prd), 'object');
         test.equal(prd.getRataDie(), 730);
         test.done();
     },
     testPersRataDieAstroConstructorFromDateComponents8: function(test) {
-        test.expect(2);
         var prd = new PersRataDie({
             year: 3,
             month: 1,
@@ -333,12 +332,12 @@ module.exports.testpersiandateastro = {
             millisecond: 0
         });
         
+        test.expect(2);
         test.equal(typeof(prd), 'object');
         test.equal(prd.getRataDie(), 731);
         test.done();
     },
     testPersRataDieAstroConstructorFromDateComponents9: function(test) {
-        test.expect(2);
         var prd = new PersRataDie({
             year: 3,
             month: 12,
@@ -349,12 +348,12 @@ module.exports.testpersiandateastro = {
             millisecond: 0
         });
         
+        test.expect(2);
         test.equal(typeof(prd), 'object');
         test.equal(prd.getRataDie(), 1095);
         test.done();
     },
     testPersRataDieAstroConstructorFromDateComponents10: function(test) {
-        test.expect(2);
         var prd = new PersRataDie({
             year: 4,
             month: 1,
@@ -365,12 +364,12 @@ module.exports.testpersiandateastro = {
             millisecond: 0
         });
         
+        test.expect(2);
         test.equal(typeof(prd), 'object');
         test.equal(prd.getRataDie(), 1096);
         test.done();
     },
     testPersRataDieAstroConstructorFromDateComponents11: function(test) {
-        test.expect(2);
         var prd = new PersRataDie({
             year: 4,
             month: 12,
@@ -381,12 +380,12 @@ module.exports.testpersiandateastro = {
             millisecond: 0
         });
         
+        test.expect(2);
         test.equal(typeof(prd), 'object');
         test.equal(prd.getRataDie(), 1461);
         test.done();
     },
     testPersRataDieAstroConstructorFromDateComponents12: function(test) {
-        test.expect(2);
         var prd = new PersRataDie({
             year: 5,
             month: 1,
@@ -397,12 +396,12 @@ module.exports.testpersiandateastro = {
             millisecond: 0
         });
         
+        test.expect(2);
         test.equal(typeof(prd), 'object');
         test.equal(prd.getRataDie(), 1462);
         test.done();
     },
     testPersRataDieAstroConstructorFromDateComponents13: function(test) {
-        test.expect(2);
         var prd = new PersRataDie({
             year: 5,
             month: 12,
@@ -413,12 +412,12 @@ module.exports.testpersiandateastro = {
             millisecond: 0
         });
         
+        test.expect(2);
         test.equal(typeof(prd), 'object');
         test.equal(prd.getRataDie(), 1826);
         test.done();
     },
     testPersRataDieAstroConstructorFromDateComponents14: function(test) {
-        test.expect(2);
         var prd = new PersRataDie({
             year: 6,
             month: 1,
@@ -429,12 +428,12 @@ module.exports.testpersiandateastro = {
             millisecond: 0
         });
         
+        test.expect(2);
         test.equal(typeof(prd), 'object');
         test.equal(prd.getRataDie(), 1827);
         test.done();
     },
     testPersRataDieAstroConstructorFromDateComponents15: function(test) {
-        test.expect(2);
         var prd = new PersRataDie({
             year: -1207,
             month: 5,
@@ -445,6 +444,7 @@ module.exports.testpersiandateastro = {
             millisecond: 0
         });
         
+        test.expect(2);
         test.equal(typeof(prd), 'object');
         test.equal(prd.getRataDie(), -441088);
         test.done();
@@ -452,9 +452,9 @@ module.exports.testpersiandateastro = {
     
     /* julian date is rd 366 + epoch */
     testPersDateAstroConstructorFromJD: function(test) {
-        test.expect(9);
         var pd = new PersianDate({julianday: 1948685.5, timezone: "Etc/UTC"});
         
+        test.expect(9);
         test.equal(typeof(pd), 'object');
         test.equal(pd.getRataDie(), 366);
         test.equal(pd.getYears(), 2);
@@ -470,9 +470,9 @@ module.exports.testpersiandateastro = {
     // year 4 was a leap year, so Esfand 0004 contains 30 days instead of 29, and 
     // Farvardin 1 0005 is one day later than expected. RD is 1462
     testPersDateAstroAfterLeapYear: function(test) {
-        test.expect(9);
         var pd = new PersianDate({julianday: 1949781.9, timezone: "Etc/UTC"});  // Far 1, 0005, 9:36am
         
+        test.expect(9);
         test.equal(typeof(pd), 'object');
         test.equal(pd.getRataDie(), 1462.4);
         test.equal(pd.getYears(), 5);
@@ -486,9 +486,9 @@ module.exports.testpersiandateastro = {
     },
     
     testPersDateAstroLastDayOfLeapYear: function(test) {
-        test.expect(9);
         var pd = new PersianDate({julianday: 1949780.9, timezone: "Etc/UTC"});  // Esf 30, 0004, 9:36am
         
+        test.expect(9);
         test.equal(typeof(pd), 'object');
         test.equal(pd.getRataDie(), 1461.4);
         test.equal(pd.getYears(), 4);
@@ -507,7 +507,7 @@ module.exports.testpersiandateastro = {
         for (var i = 0; i < testDatesPersianPersianAstro.length; i++) {
             pd = new PersianDate({julianday: testDatesPersianPersianAstro[i][0], timezone: "Etc/UTC"});
         
-        console.log("testing jd=" + testDatesPersianPersianAstro[i][0]);
+        // console.log("testing jd=" + testDatesPersianPersianAstro[i][0]);
             
             test.equal(typeof(pd), 'object');
             test.equal((testDatesPersianPersianAstro[i][0] - 1948319.5), pd.getRataDie(), "testing rd for " + testDatesPersianPersianAstro[i][0]);
@@ -538,7 +538,7 @@ module.exports.testpersiandateastro = {
                 timezone: "Etc/UTC"
             });
         
-        console.log("testing jd=" + testDatesPersianPersianAstro[i][0]);
+        // console.log("testing jd=" + testDatesPersianPersianAstro[i][0]);
             
             test.equal(typeof(pd), 'object');
             test.equal(testDatesPersianPersianAstro[i][0], pd.getJulianDay(), "testing row " + testDatesPersianPersianAstro[i][0]);
@@ -548,7 +548,6 @@ module.exports.testpersiandateastro = {
     },
     
     testPersDateAstroConstructorFull: function(test) {
-        test.expect(8);
         var pd = new PersianDate({
             year: 1392,
             month: 9,
@@ -560,6 +559,7 @@ module.exports.testpersiandateastro = {
             timezone: "Etc/UTC"
         });
         
+        test.expect(8);
         test.ok(pd !== null);
         
         test.equal(pd.getYears(), 1392);
@@ -573,7 +573,6 @@ module.exports.testpersiandateastro = {
     },
     
     testPersDateAstroConstructorFullWithStrings: function(test) {
-        test.expect(8);
         var pd = new PersianDate({
             year: "1392", 
             month: "9",
@@ -584,6 +583,7 @@ module.exports.testpersiandateastro = {
             millisecond: "123"
         });
         
+        test.expect(8);
         test.ok(pd !== null);
         
         test.equal(pd.getYears(), 1392);
@@ -597,7 +597,6 @@ module.exports.testpersiandateastro = {
     },
     
     testPersDateAstroConstructorCopy: function(test) {
-        test.expect(8);
         var pd = new PersianDate({
             year: 1392, 
             month: 9, 
@@ -609,6 +608,7 @@ module.exports.testpersiandateastro = {
             timezone: "Etc/UTC"
         });
         
+        test.expect(8);
         test.ok(pd !== null);
         
         test.equal(pd.getYears(), 1392);
@@ -622,9 +622,9 @@ module.exports.testpersiandateastro = {
     },
     
     testPersDateAstroSetYears: function(test) {
-        test.expect(2);
         var pd = new PersianDate();
         
+        test.expect(2);
         test.ok(pd !== null);
         
         pd.setYears(123);
@@ -634,9 +634,9 @@ module.exports.testpersiandateastro = {
     },
     
     testPersDateAstroSetMonths: function(test) {
-        test.expect(2);
         var pd = new PersianDate();
         
+        test.expect(2);
         test.ok(pd !== null);
         
         pd.setMonths(7);
@@ -646,9 +646,9 @@ module.exports.testpersiandateastro = {
     },
     
     testPersDateAstroSetDays: function(test) {
-        test.expect(2);
         var pd = new PersianDate();
         
+        test.expect(2);
         test.ok(pd !== null);
         
         pd.setDays(12);
@@ -658,9 +658,9 @@ module.exports.testpersiandateastro = {
     },
     
     testPersDateAstroSetHours: function(test) {
-        test.expect(2);
         var pd = new PersianDate();
         
+        test.expect(2);
         test.ok(pd !== null);
         
         pd.setHours(12);
@@ -670,9 +670,9 @@ module.exports.testpersiandateastro = {
     },
     
     testPersDateAstroSetMinutes: function(test) {
-        test.expect(2);
         var pd = new PersianDate();
         
+        test.expect(2);
         test.ok(pd !== null);
         
         pd.setMinutes(13);
@@ -682,9 +682,9 @@ module.exports.testpersiandateastro = {
     },
     
     testPersDateAstroSetSeconds: function(test) {
-        test.expect(2);
         var pd = new PersianDate();
         
+        test.expect(2);
         test.ok(pd !== null);
         
         pd.setSeconds(23);
@@ -694,9 +694,9 @@ module.exports.testpersiandateastro = {
     },
     
     testPersDateAstroSetMilliseconds: function(test) {
-        test.expect(2);
         var pd = new PersianDate();
         
+        test.expect(2);
         test.ok(pd !== null);
         
         pd.setMilliseconds(123);
@@ -706,7 +706,6 @@ module.exports.testpersiandateastro = {
     },
     
     testGetDayOfWeek1: function(test) {
-        test.expect(2);
         var pd = new PersianDate({
             year: 1393,
             month: 3,
@@ -714,6 +713,7 @@ module.exports.testpersiandateastro = {
             timezone: "Etc/UTC"
         });
         
+        test.expect(2);
         test.ok(pd !== null);
         
         test.equal(pd.getDayOfWeek(), 5);
@@ -721,7 +721,6 @@ module.exports.testpersiandateastro = {
     },
     
     testGetDayOfWeekWithTime: function(test) {
-        test.expect(2);
         var pd = new PersianDate({
             year: 1393,
             month: 3,
@@ -732,6 +731,7 @@ module.exports.testpersiandateastro = {
             timezone: "Etc/UTC"
         });
         
+        test.expect(2);
         test.ok(pd !== null);
         
         test.equal(pd.getDayOfWeek(), 5);
@@ -739,13 +739,13 @@ module.exports.testpersiandateastro = {
     },
     
     testPersDateAstroTestGetTimeZero: function(test) {
-        test.expect(2);
         var pd = new PersianDate({
             year: 1348,
             month: 10,
             day: 11,
             timezone: "Etc/UTC"
         });
+        test.expect(2);
         test.ok(pd !== null);
         
         test.equal(pd.getTime(), 0);
@@ -753,8 +753,8 @@ module.exports.testpersiandateastro = {
     },
     
     testPersDateAstroTestGetTimeZeroJD: function(test) {
-        test.expect(2);
         var pd = new PersianDate({julianday: 2440587.5});
+        test.expect(2);
         test.ok(pd !== null);
         
         test.equal(pd.getTime(), 0);
@@ -762,7 +762,6 @@ module.exports.testpersiandateastro = {
     },
     
     testPersDateAstroTestGetTime: function(test) {
-        test.expect(2);
         var pd = new PersianDate({
             year: 1348,
             month: 10,
@@ -771,6 +770,7 @@ module.exports.testpersiandateastro = {
             minute: 30,
             timezone: "Etc/UTC"
         });
+        test.expect(2);
         test.ok(pd !== null);
         
         test.equal(pd.getTime(), 30600000);
@@ -778,13 +778,13 @@ module.exports.testpersiandateastro = {
     },
     
     testPersDateAstroTestGetTimeTooEarly: function(test) {
-        test.expect(2);
         var pd = new PersianDate({
             year: 1348,
             month: 10,
             day: 10,
             timezone: "Etc/UTC"
         });
+        test.expect(2);
         test.ok(pd !== null);
         
         test.equal(pd.getTime(), -1);
@@ -792,13 +792,13 @@ module.exports.testpersiandateastro = {
     },
     
     testPersDateAstroTestGetTimeTooLate: function(test) {
-        test.expect(2);
         var pd = new PersianDate({
             year: 1416,
             month: 11,
             day: 1,
             timezone: "Etc/UTC"
         });
+        test.expect(2);
         test.ok(pd !== null);
         
         test.equal(pd.getTime(), -1);
@@ -807,13 +807,13 @@ module.exports.testpersiandateastro = {
     
     // test some of the helper functions to make sure they are producing the right thing
     testPersDateAstroOnOrBeforeSun: function(test) {
-        test.expect(3);
         var pd = new PersianDate({
             year: 1388,
             month: 9,
             day: 27,
             timezone: "Etc/UTC"
         });
+        test.expect(3);
         test.ok(pd !== null);
         
         test.equal(pd.getDayOfWeek(), 5); // Friday
@@ -825,13 +825,13 @@ module.exports.testpersiandateastro = {
     },
     
     testPersDateAstroOnOrBeforeMon: function(test) {
-        test.expect(3);
         var pd = new PersianDate({
             year: 1388,
             month: 9,
             day: 27,
             timezone: "Etc/UTC"
         });
+        test.expect(3);
         test.ok(pd !== null);
         
         test.equal(pd.getDayOfWeek(), 5); // Friday
@@ -842,13 +842,13 @@ module.exports.testpersiandateastro = {
     },
     
     testPersDateAstroOnOrBeforeTue: function(test) {
-        test.expect(3);
         var pd = new PersianDate({
             year: 1388,
             month: 9,
             day: 27,
             timezone: "Etc/UTC"
         });
+        test.expect(3);
         test.ok(pd !== null);
         
         test.equal(pd.getDayOfWeek(), 5); // Friday
@@ -859,13 +859,13 @@ module.exports.testpersiandateastro = {
     },
     
     testPersDateAstroOnOrBeforeWed: function(test) {
-        test.expect(3);
         var pd = new PersianDate({
             year: 1388,
             month: 9,
             day: 27,
             timezone: "Etc/UTC"
         });
+        test.expect(3);
         test.ok(pd !== null);
         
         test.equal(pd.getDayOfWeek(), 5); // Friday
@@ -876,13 +876,13 @@ module.exports.testpersiandateastro = {
     },
     
     testPersDateAstroOnOrBeforeThu: function(test) {
-        test.expect(3);
         var pd = new PersianDate({
             year: 1388,
             month: 9,
             day: 27,
             timezone: "Etc/UTC"
         });
+        test.expect(3);
         test.ok(pd !== null);
         
         test.equal(pd.getDayOfWeek(), 5); // Friday
@@ -893,13 +893,13 @@ module.exports.testpersiandateastro = {
     },
     
     testPersDateAstroOnOrBeforeFri: function(test) {
-        test.expect(3);
         var pd = new PersianDate({
             year: 1388,
             month: 9,
             day: 27,
             timezone: "Etc/UTC"
         });
+        test.expect(3);
         test.ok(pd !== null);
         
         test.equal(pd.getDayOfWeek(), 5); // Friday
@@ -910,13 +910,13 @@ module.exports.testpersiandateastro = {
     },
     
     testPersDateAstroOnOrBeforeSat: function(test) {
-        test.expect(3);
         var pd = new PersianDate({
             year: 1388,
             month: 9,
             day: 27,
             timezone: "Etc/UTC"
         });
+        test.expect(3);
         test.ok(pd !== null);
         
         test.equal(pd.getDayOfWeek(), 5); // Friday
@@ -927,13 +927,13 @@ module.exports.testpersiandateastro = {
     },
     
     testPersDateAstroOnOrAfterSun: function(test) {
-        test.expect(3);
         var pd = new PersianDate({
             year: 1388,
             month: 9,
             day: 27,
             timezone: "Etc/UTC"
         });
+        test.expect(3);
         test.ok(pd !== null);
         
         test.equal(pd.getDayOfWeek(), 5); // Friday
@@ -945,13 +945,13 @@ module.exports.testpersiandateastro = {
     },
     
     testPersDateAstroOnOrAfterMon: function(test) {
-        test.expect(3);
         var pd = new PersianDate({
             year: 1388,
             month: 9,
             day: 27,
             timezone: "Etc/UTC"
         });
+        test.expect(3);
         test.ok(pd !== null);
         
         test.equal(pd.getDayOfWeek(), 5); // Friday
@@ -962,13 +962,13 @@ module.exports.testpersiandateastro = {
     },
     
     testPersDateAstroOnOrAfterTue: function(test) {
-        test.expect(3);
         var pd = new PersianDate({
             year: 1388,
             month: 9,
             day: 27,
             timezone: "Etc/UTC"
         });
+        test.expect(3);
         test.ok(pd !== null);
         
         test.equal(pd.getDayOfWeek(), 5); // Friday
@@ -979,13 +979,13 @@ module.exports.testpersiandateastro = {
     },
     
     testPersDateAstroOnOrAfterWed: function(test) {
-        test.expect(3);
         var pd = new PersianDate({
             year: 1388,
             month: 9,
             day: 27,
             timezone: "Etc/UTC"
         });
+        test.expect(3);
         test.ok(pd !== null);
         
         test.equal(pd.getDayOfWeek(), 5); // Friday
@@ -996,13 +996,13 @@ module.exports.testpersiandateastro = {
     },
     
     testPersDateAstroOnOrAfterThu: function(test) {
-        test.expect(3);
         var pd = new PersianDate({
             year: 1388,
             month: 9,
             day: 27,
             timezone: "Etc/UTC"
         });
+        test.expect(3);
         test.ok(pd !== null);
         
         test.equal(pd.getDayOfWeek(), 5); // Friday
@@ -1013,13 +1013,13 @@ module.exports.testpersiandateastro = {
     },
     
     testPersDateAstroOnOrAfterFri: function(test) {
-        test.expect(3);
         var pd = new PersianDate({
             year: 1388,
             month: 9,
             day: 27,
             timezone: "Etc/UTC"
         });
+        test.expect(3);
         test.ok(pd !== null);
         
         test.equal(pd.getDayOfWeek(), 5); // Friday
@@ -1030,13 +1030,13 @@ module.exports.testpersiandateastro = {
     },
     
     testPersDateAstroOnOrAfterSat: function(test) {
-        test.expect(3);
         var pd = new PersianDate({
             year: 1388,
             month: 9,
             day: 27,
             timezone: "Etc/UTC"
         });
+        test.expect(3);
         test.ok(pd !== null);
         
         test.equal(pd.getDayOfWeek(), 5); // Friday
@@ -1047,13 +1047,13 @@ module.exports.testpersiandateastro = {
     },
     
     testPersDateAstroBeforeSun: function(test) {
-        test.expect(3);
         var pd = new PersianDate({
             year: 1388,
             month: 9,
             day: 27,
             timezone: "Etc/UTC"
         });
+        test.expect(3);
         test.ok(pd !== null);
         
         test.equal(pd.getDayOfWeek(), 5); // Friday
@@ -1065,13 +1065,13 @@ module.exports.testpersiandateastro = {
     },
     
     testPersDateAstroBeforeMon: function(test) {
-        test.expect(3);
         var pd = new PersianDate({
             year: 1388,
             month: 9,
             day: 27,
             timezone: "Etc/UTC"
         });
+        test.expect(3);
         test.ok(pd !== null);
         
         test.equal(pd.getDayOfWeek(), 5); // Friday
@@ -1082,13 +1082,13 @@ module.exports.testpersiandateastro = {
     },
     
     testPersDateAstroBeforeTue: function(test) {
-        test.expect(3);
         var pd = new PersianDate({
             year: 1388,
             month: 9,
             day: 27,
             timezone: "Etc/UTC"
         });
+        test.expect(3);
         test.ok(pd !== null);
         
         test.equal(pd.getDayOfWeek(), 5); // Friday
@@ -1099,13 +1099,13 @@ module.exports.testpersiandateastro = {
     },
     
     testPersDateAstroBeforeWed: function(test) {
-        test.expect(3);
         var pd = new PersianDate({
             year: 1388,
             month: 9,
             day: 27,
             timezone: "Etc/UTC"
         });
+        test.expect(3);
         test.ok(pd !== null);
         
         test.equal(pd.getDayOfWeek(), 5); // Friday
@@ -1116,13 +1116,13 @@ module.exports.testpersiandateastro = {
     },
     
     testPersDateAstroBeforeThu: function(test) {
-        test.expect(3);
         var pd = new PersianDate({
             year: 1388,
             month: 9,
             day: 27,
             timezone: "Etc/UTC"
         });
+        test.expect(3);
         test.ok(pd !== null);
         
         test.equal(pd.getDayOfWeek(), 5); // Friday
@@ -1133,13 +1133,13 @@ module.exports.testpersiandateastro = {
     },
     
     testPersDateAstroBeforeFri: function(test) {
-        test.expect(3);
         var pd = new PersianDate({
             year: 1388,
             month: 9,
             day: 27,
             timezone: "Etc/UTC"
         });
+        test.expect(3);
         test.ok(pd !== null);
         
         test.equal(pd.getDayOfWeek(), 5); // Friday
@@ -1150,13 +1150,13 @@ module.exports.testpersiandateastro = {
     },
     
     testPersDateAstroBeforeSat: function(test) {
-        test.expect(3);
         var pd = new PersianDate({
             year: 1388,
             month: 9,
             day: 27,
             timezone: "Etc/UTC"
         });
+        test.expect(3);
         test.ok(pd !== null);
         
         test.equal(pd.getDayOfWeek(), 5); // Friday
@@ -1167,13 +1167,13 @@ module.exports.testpersiandateastro = {
     },
     
     testPersDateAstroAfterSun: function(test) {
-        test.expect(3);
         var pd = new PersianDate({
             year: 1388,
             month: 9,
             day: 27,
             timezone: "Etc/UTC"
         });
+        test.expect(3);
         test.ok(pd !== null);
         
         test.equal(pd.getDayOfWeek(), 5); // Friday
@@ -1185,13 +1185,13 @@ module.exports.testpersiandateastro = {
     },
     
     testPersDateAstroAfterMon: function(test) {
-        test.expect(3);
         var pd = new PersianDate({
             year: 1388,
             month: 9,
             day: 27,
             timezone: "Etc/UTC"
         });
+        test.expect(3);
         test.ok(pd !== null);
         
         test.equal(pd.getDayOfWeek(), 5); // Friday
@@ -1202,13 +1202,13 @@ module.exports.testpersiandateastro = {
     },
     
     testPersDateAstroAfterTue: function(test) {
-        test.expect(3);
         var pd = new PersianDate({
             year: 1388,
             month: 9,
             day: 27,
             timezone: "Etc/UTC"
         });
+        test.expect(3);
         test.ok(pd !== null);
         
         test.equal(pd.getDayOfWeek(), 5); // Friday
@@ -1219,13 +1219,13 @@ module.exports.testpersiandateastro = {
     },
     
     testPersDateAstroAfterWed: function(test) {
-        test.expect(3);
         var pd = new PersianDate({
             year: 1388,
             month: 9,
             day: 27,
             timezone: "Etc/UTC"
         });
+        test.expect(3);
         test.ok(pd !== null);
         
         test.equal(pd.getDayOfWeek(), 5); // Friday
@@ -1236,13 +1236,13 @@ module.exports.testpersiandateastro = {
     },
     
     testPersDateAstroAfterThu: function(test) {
-        test.expect(3);
         var pd = new PersianDate({
             year: 1388,
             month: 9,
             day: 27,
             timezone: "Etc/UTC"
         });
+        test.expect(3);
         test.ok(pd !== null);
         
         test.equal(pd.getDayOfWeek(), 5); // Friday
@@ -1253,13 +1253,13 @@ module.exports.testpersiandateastro = {
     },
     
     testPersDateAstroAfterFri: function(test) {
-        test.expect(3);
         var pd = new PersianDate({
             year: 1388,
             month: 9,
             day: 27,
             timezone: "Etc/UTC"
         });
+        test.expect(3);
         test.ok(pd !== null);
         
         test.equal(pd.getDayOfWeek(), 5); // Friday
@@ -1270,13 +1270,13 @@ module.exports.testpersiandateastro = {
     },
     
     testPersDateAstroAfterSat: function(test) {
-        test.expect(3);
         var pd = new PersianDate({
             year: 1388,
             month: 9,
             day: 27,
             timezone: "Etc/UTC"
         });
+        test.expect(3);
         test.ok(pd !== null);
         
         test.equal(pd.getDayOfWeek(), 5); // Friday
@@ -1287,13 +1287,13 @@ module.exports.testpersiandateastro = {
     },
     
     testPersDateAstroTestGetWeekOfYearThisYear: function(test) {
-        test.expect(2);
         var pd = new PersianDate({
             year: 1388,
             month: 2,
             day: 1,
             timezone: "Etc/UTC"
         });
+        test.expect(2);
         test.ok(pd !== null);
         
         test.equal(pd.getWeekOfYear(), 5);
@@ -1301,13 +1301,13 @@ module.exports.testpersiandateastro = {
     },
     
     testPersDateAstroTestGetWeekOfYearThisYear2: function(test) {
-        test.expect(2);
         var pd = new PersianDate({
             year: 1388,
             month: 3,
             day: 19,
             timezone: "Etc/UTC"
         });
+        test.expect(2);
         test.ok(pd !== null);
         
         test.equal(pd.getWeekOfYear(), 12);
@@ -1315,13 +1315,13 @@ module.exports.testpersiandateastro = {
     },
     
     testPersDateAstroTestGetWeekOfYearThisYear3: function(test) {
-        test.expect(2);
         var pd = new PersianDate({
             year: 1388,
             month: 12,
             day: 29,
             timezone: "Etc/UTC"
         });
+        test.expect(2);
         test.ok(pd !== null);
         
         test.equal(pd.getWeekOfYear(), 52);
@@ -1329,7 +1329,6 @@ module.exports.testpersiandateastro = {
     },
     
     testPersDateAstroTestGetWeekOfYearThisYearWithTime: function(test) {
-        test.expect(2);
         var pd = new PersianDate({
             year: 1388,
             month: 12,
@@ -1340,6 +1339,7 @@ module.exports.testpersiandateastro = {
             millisecond: 232,
             timezone: "Etc/UTC"
         });
+        test.expect(2);
         test.ok(pd !== null);
         
         test.equal(pd.getWeekOfYear(), 52);
@@ -1347,13 +1347,13 @@ module.exports.testpersiandateastro = {
     },
     
     testPersDateAstroTestGetWeekOfYearPreviousYear: function(test) {
-        test.expect(2);
         var pd = new PersianDate({
             year: 1388,
             month: 1,
             day: 1,
             timezone: "Etc/UTC"
         });
+        test.expect(2);
         test.ok(pd !== null);
         
         test.equal(pd.getWeekOfYear(), 53);
@@ -1361,13 +1361,13 @@ module.exports.testpersiandateastro = {
     },
     
     testPersDateAstroTestGetWeekOfYearLastWeekLeap: function(test) {
-        test.expect(2);
         var pd = new PersianDate({
             year: 1383,
             month: 12,
             day: 30,
             timezone: "Etc/UTC"
         });
+        test.expect(2);
         test.ok(pd !== null);
         
         test.equal(pd.getWeekOfYear(), 1);
@@ -1375,13 +1375,13 @@ module.exports.testpersiandateastro = {
     },
     
     testPersDateAstroTestGetWeekOfYearLastWeekRegular1: function(test) {
-        test.expect(2);
         var pd = new PersianDate({
             year: 1389,
             month: 12,
             day: 29,
             timezone: "Etc/UTC"
         });
+        test.expect(2);
         test.ok(pd !== null);
         
         test.equal(pd.getWeekOfYear(), 1);
@@ -1389,13 +1389,13 @@ module.exports.testpersiandateastro = {
     },
     
     testPersDateAstroTestGetWeekOfYearLastWeekRegular2: function(test) {
-        test.expect(2);
         var pd = new PersianDate({
             year: 1390,
             month: 12,
             day: 29,
             timezone: "Etc/UTC"
         });
+        test.expect(2);
         test.ok(pd !== null);
         
         test.equal(pd.getWeekOfYear(), 1);
@@ -1403,13 +1403,13 @@ module.exports.testpersiandateastro = {
     },
     
     testPersDateAstroTestGetWeekOfYearLastWeekRegular3: function(test) {
-        test.expect(2);
         var pd = new PersianDate({
             year: 1391,
             month: 12,
             day: 30,
             timezone: "Etc/UTC"
         });
+        test.expect(2);
         test.ok(pd !== null);
         
         test.equal(pd.getWeekOfYear(), 1);
@@ -1417,13 +1417,13 @@ module.exports.testpersiandateastro = {
     },
     
     testPersDateAstroTestGetWeekOfYearLastWeekRegular4: function(test) {
-        test.expect(2);
         var pd = new PersianDate({
             year: 1392,
             month: 12,
             day: 29,
             timezone: "Etc/UTC"
         });
+        test.expect(2);
         test.ok(pd !== null);
         
         test.equal(pd.getWeekOfYear(), 53);
@@ -1431,13 +1431,13 @@ module.exports.testpersiandateastro = {
     },
     
     testPersDateAstroTestGetWeekOfYearLastWeekRegular5: function(test) {
-        test.expect(2);
         var pd = new PersianDate({
             year: 1393,
             month: 12,
             day: 29,
             timezone: "Etc/UTC"
         });
+        test.expect(2);
         test.ok(pd !== null);
         
         test.equal(pd.getWeekOfYear(), 52);
@@ -1445,13 +1445,13 @@ module.exports.testpersiandateastro = {
     },
     
     testPersDateAstroTestGetWeekOfYearLastWeekRegular6: function(test) {
-        test.expect(2);
         var pd = new PersianDate({
             year: 1394,
             month: 12,
             day: 29,
             timezone: "Etc/UTC"
         });
+        test.expect(2);
         test.ok(pd !== null);
         
         test.equal(pd.getWeekOfYear(), 52);
@@ -1459,13 +1459,13 @@ module.exports.testpersiandateastro = {
     },
     
     testPersDateAstroGetDayOfYearFirstDay: function(test) {
-        test.expect(2);
         var pd = new PersianDate({
             year: 1388,
             month: 1,
             day: 1,
             timezone: "Etc/UTC"
         });
+        test.expect(2);
         test.ok(pd !== null);
         
         test.equal(pd.getDayOfYear(), 1);
@@ -1473,13 +1473,13 @@ module.exports.testpersiandateastro = {
     },
     
     testPersDateAstroGetDayOfYearMidYear: function(test) {
-        test.expect(2);
         var pd = new PersianDate({
             year: 1388,
             month: 3,
             day: 17,
             timezone: "Etc/UTC"
         });
+        test.expect(2);
         test.ok(pd !== null);
         
         test.equal(pd.getDayOfYear(), 79);
@@ -1487,13 +1487,13 @@ module.exports.testpersiandateastro = {
     },
     
     testPersDateAstroGetDayOfYearLastDay: function(test) {
-        test.expect(2);
         var pd = new PersianDate({
             year: 1388,
             month: 12,
             day: 29,
             timezone: "Etc/UTC"
         });
+        test.expect(2);
         test.ok(pd !== null);
         
         test.equal(pd.getDayOfYear(), 365);
@@ -1501,13 +1501,13 @@ module.exports.testpersiandateastro = {
     },
     
     testPersDateAstroGetDayOfYearLastDayLeapYear: function(test) {
-        test.expect(2);
         var pd = new PersianDate({
             year: 1387,
             month: 12,
             day: 30,
             timezone: "Etc/UTC"
         });
+        test.expect(2);
         test.ok(pd !== null);
         
         test.equal(pd.getDayOfYear(), 366);
@@ -1515,13 +1515,13 @@ module.exports.testpersiandateastro = {
     },
     
     testPersDateAstroGetWeekOfMonth0: function(test) {
-        test.expect(2);
         var pd = new PersianDate({
             year: 1388,
             month: 3,
             day: 1,
             timezone: "Etc/UTC"
         });
+        test.expect(2);
         test.ok(pd !== null);
         
         test.equal(pd.getWeekOfMonth("en-US"), 0);
@@ -1529,13 +1529,13 @@ module.exports.testpersiandateastro = {
     },
     
     testPersDateAstroGetWeekOfMonth1: function(test) {
-        test.expect(2);
         var pd = new PersianDate({
             year: 1388,
             month: 3,
             day: 4,
             timezone: "Etc/UTC"
         });
+        test.expect(2);
         test.ok(pd !== null);
         
         test.equal(pd.getWeekOfMonth("en-US"), 1);
@@ -1543,13 +1543,13 @@ module.exports.testpersiandateastro = {
     },
     
     testPersDateAstroGetWeekOfMonth2: function(test) {
-        test.expect(2);
         var pd = new PersianDate({
             year: 1388,
             month: 3,
             day: 11,
             timezone: "Etc/UTC"
         });
+        test.expect(2);
         test.ok(pd !== null);
         
         test.equal(pd.getWeekOfMonth("en-US"), 2);
@@ -1557,13 +1557,13 @@ module.exports.testpersiandateastro = {
     },
     
     testPersDateAstroGetWeekOfMonth3: function(test) {
-        test.expect(2);
         var pd = new PersianDate({
             year: 1388,
             month: 3,
             day: 20,
             timezone: "Etc/UTC"
         });
+        test.expect(2);
         test.ok(pd !== null);
         
         test.equal(pd.getWeekOfMonth("en-US"), 3);
@@ -1571,13 +1571,13 @@ module.exports.testpersiandateastro = {
     },
     
     testPersDateAstroGetWeekOfMonth4: function(test) {
-        test.expect(2);
         var pd = new PersianDate({
             year: 1388,
             month: 3,
             day: 29,
             timezone: "Etc/UTC"
         });
+        test.expect(2);
         test.ok(pd !== null);
         
         test.equal(pd.getWeekOfMonth("en-US"), 4);
@@ -1585,13 +1585,13 @@ module.exports.testpersiandateastro = {
     },
     
     testPersDateAstroGetWeekOfMonth5: function(test) {
-        test.expect(2);
         var pd = new PersianDate({
             year: 1388,
             month: 3,
             day: 31,
             timezone: "Etc/UTC"
         });
+        test.expect(2);
         test.ok(pd !== null);
         
         test.equal(pd.getWeekOfMonth("en-US"), 5);
@@ -1599,13 +1599,13 @@ module.exports.testpersiandateastro = {
     },
     
     testPersDateAstroGetWeekOfMonth6: function(test) {
-        test.expect(2);
         var pd = new PersianDate({
             year: 1388,
             month: 4,
             day: 1,
             timezone: "Etc/UTC"
         });
+        test.expect(2);
         test.ok(pd !== null);
         
         test.equal(pd.getWeekOfMonth("en-US"), 1);
@@ -1613,13 +1613,13 @@ module.exports.testpersiandateastro = {
     },
     
     testPersDateAstroGetWeekOfMonth7: function(test) {
-        test.expect(2);
         var pd = new PersianDate({
             year: 1388,
             month: 5,
             day: 1,
             timezone: "Etc/UTC"
         });
+        test.expect(2);
         test.ok(pd !== null);
         
         test.equal(pd.getWeekOfMonth("en-US"), 0);
@@ -1627,13 +1627,13 @@ module.exports.testpersiandateastro = {
     },
     
     testPersDateAstroGetWeekOfMonth8: function(test) {
-        test.expect(2);
         var pd = new PersianDate({
             year: 1388,
             month: 6,
             day: 1,
             timezone: "Etc/UTC"
         });
+        test.expect(2);
         test.ok(pd !== null);
         
         test.equal(pd.getWeekOfMonth("en-US"), 1);
@@ -1641,13 +1641,13 @@ module.exports.testpersiandateastro = {
     },
     
     testPersDateAstroGetWeekOfMonth9: function(test) {
-        test.expect(2);
         var pd = new PersianDate({
             year: 1388,
             month: 7,
             day: 1,
             timezone: "Etc/UTC"
         });
+        test.expect(2);
         test.ok(pd !== null);
         
         test.equal(pd.getWeekOfMonth("en-US"), 1);
@@ -1655,13 +1655,13 @@ module.exports.testpersiandateastro = {
     },
     
     testPersDateAstroGetWeekOfMonthIR0: function(test) {
-        test.expect(2);
         var pd = new PersianDate({
             year: 1388,
             month: 3,
             day: 1,
             timezone: "Etc/UTC"
         });
+        test.expect(2);
         test.ok(pd !== null);
         
         test.equal(pd.getWeekOfMonth("fa-IR"), 0);
@@ -1669,13 +1669,13 @@ module.exports.testpersiandateastro = {
     },
     
     testPersDateAstroGetWeekOfMonthIR1: function(test) {
-        test.expect(2);
         var pd = new PersianDate({
             year: 1388,
             month: 3,
             day: 4,
             timezone: "Etc/UTC"
         });
+        test.expect(2);
         test.ok(pd !== null);
         
         test.equal(pd.getWeekOfMonth("fa-IR"), 1);
@@ -1683,13 +1683,13 @@ module.exports.testpersiandateastro = {
     },
     
     testPersDateAstroGetWeekOfMonthIR2: function(test) {
-        test.expect(2);
         var pd = new PersianDate({
             year: 1388,
             month: 3,
             day: 11,
             timezone: "Etc/UTC"
         });
+        test.expect(2);
         test.ok(pd !== null);
         
         test.equal(pd.getWeekOfMonth("fa-IR"), 2);
@@ -1697,13 +1697,13 @@ module.exports.testpersiandateastro = {
     },
     
     testPersDateAstroGetWeekOfMonthIR3: function(test) {
-        test.expect(2);
         var pd = new PersianDate({
             year: 1388,
             month: 3,
             day: 20,
             timezone: "Etc/UTC"
         });
+        test.expect(2);
         test.ok(pd !== null);
         
         test.equal(pd.getWeekOfMonth("fa-IR"), 3);
@@ -1711,13 +1711,13 @@ module.exports.testpersiandateastro = {
     },
     
     testPersDateAstroGetWeekOfMonthIR4: function(test) {
-        test.expect(2);
         var pd = new PersianDate({
             year: 1388,
             month: 3,
             day: 29,
             timezone: "Etc/UTC"
         });
+        test.expect(2);
         test.ok(pd !== null);
         
         test.equal(pd.getWeekOfMonth("fa-IR"), 4);
@@ -1725,13 +1725,13 @@ module.exports.testpersiandateastro = {
     },
     
     testPersDateAstroGetWeekOfMonthIR5: function(test) {
-        test.expect(2);
         var pd = new PersianDate({
             year: 1388,
             month: 3,
             day: 31,
             timezone: "Etc/UTC"
         });
+        test.expect(2);
         test.ok(pd !== null);
         
         test.equal(pd.getWeekOfMonth("fa-IR"), 5);
@@ -1739,13 +1739,13 @@ module.exports.testpersiandateastro = {
     },
     
     testPersDateAstroGetWeekOfMonthIR6: function(test) {
-        test.expect(2);
         var pd = new PersianDate({
             year: 1388,
             month: 4,
             day: 1,
             timezone: "Etc/UTC"
         });
+        test.expect(2);
         test.ok(pd !== null);
         
         test.equal(pd.getWeekOfMonth("fa-IR"), 1);
@@ -1753,13 +1753,13 @@ module.exports.testpersiandateastro = {
     },
     
     testPersDateAstroGetWeekOfMonthIR7: function(test) {
-        test.expect(2);
         var pd = new PersianDate({
             year: 1388,
             month: 5,
             day: 1,
             timezone: "Etc/UTC"
         });
+        test.expect(2);
         test.ok(pd !== null);
         
         test.equal(pd.getWeekOfMonth("fa-IR"), 0);
@@ -1767,13 +1767,13 @@ module.exports.testpersiandateastro = {
     },
     
     testPersDateAstroGetWeekOfMonthIR8: function(test) {
-        test.expect(2);
         var pd = new PersianDate({
             year: 1388,
             month: 6,
             day: 1,
             timezone: "Etc/UTC"
         });
+        test.expect(2);
         test.ok(pd !== null);
         
         test.equal(pd.getWeekOfMonth("fa-IR"), 1);
@@ -1781,13 +1781,13 @@ module.exports.testpersiandateastro = {
     },
     
     testPersDateAstroGetWeekOfMonthIR9: function(test) {
-        test.expect(2);
         var pd = new PersianDate({
             year: 1388,
             month: 7,
             day: 1,
             timezone: "Etc/UTC"
         });
+        test.expect(2);
         test.ok(pd !== null);
         
         test.equal(pd.getWeekOfMonth("fa-IR"), 0);
@@ -1795,13 +1795,13 @@ module.exports.testpersiandateastro = {
     },
     
     testPersDateAstroGetWeekOfMonthIR10: function(test) {
-        test.expect(2);
         var pd = new PersianDate({
             year: 1388,
             month: 8,
             day: 1,
             timezone: "Etc/UTC"
         });
+        test.expect(2);
         test.ok(pd !== null);
         
         test.equal(pd.getWeekOfMonth("fa-IR"), 0);
@@ -1809,13 +1809,13 @@ module.exports.testpersiandateastro = {
     },
     
     testPersDateAstroGetWeekOfMonthIR11: function(test) {
-        test.expect(2);
         var pd = new PersianDate({
             year: 1388,
             month: 9,
             day: 1,
             timezone: "Etc/UTC"
         });
+        test.expect(2);
         test.ok(pd !== null);
         
         test.equal(pd.getWeekOfMonth("fa-IR"), 1);
@@ -1823,13 +1823,13 @@ module.exports.testpersiandateastro = {
     },
     
     testPersDateAstroGetWeekOfMonthIR12: function(test) {
-        test.expect(2);
         var pd = new PersianDate({
             year: 1388,
             month: 10,
             day: 1,
             timezone: "Etc/UTC"
         });
+        test.expect(2);
         test.ok(pd !== null);
         
         test.equal(pd.getWeekOfMonth("fa-IR"), 1);
@@ -1837,13 +1837,13 @@ module.exports.testpersiandateastro = {
     },
     
     testPersDateAstroGetWeekOfMonthIR13: function(test) {
-        test.expect(2);
         var pd = new PersianDate({
             year: 1388,
             month: 11,
             day: 1,
             timezone: "Etc/UTC"
         });
+        test.expect(2);
         test.ok(pd !== null);
         
         test.equal(pd.getWeekOfMonth("fa-IR"), 0);
@@ -1851,13 +1851,13 @@ module.exports.testpersiandateastro = {
     },
     
     testPersDateAstroGetWeekOfMonthIR14: function(test) {
-        test.expect(2);
         var pd = new PersianDate({
             year: 1388,
             month: 12,
             day: 1,
             timezone: "Etc/UTC"
         });
+        test.expect(2);
         test.ok(pd !== null);
         
         test.equal(pd.getWeekOfMonth("fa-IR"), 1);
@@ -1865,13 +1865,13 @@ module.exports.testpersiandateastro = {
     },
     
     testPersDateAstroGetWeekOfMonthUS: function(test) {
-        test.expect(2);
         var pd = new PersianDate({
             year: 1388,
             month: 8,
             day: 1,
             timezone: "Etc/UTC"
         });
+        test.expect(2);
         test.ok(pd !== null);
         
         test.equal(pd.getWeekOfMonth("en-US"), 0);
@@ -1879,13 +1879,13 @@ module.exports.testpersiandateastro = {
     },
     
     testPersDateAstroGetWeekOfMonthDE: function(test) {
-        test.expect(2);
         var pd = new PersianDate({
             year: 1388,
             month: 8,
             day: 1,
             timezone: "Etc/UTC"
         });
+        test.expect(2);
         test.ok(pd !== null);
         
         // weeks in Germany start on Monday, and 8/1 is a Sunday, so it is at the 
@@ -1895,13 +1895,13 @@ module.exports.testpersiandateastro = {
     },
     
     testPersDateAstroGetEraAP: function(test) {
-        test.expect(2);
         var pd = new PersianDate({
             year: 1388,
             month: 5,
             day: 1,
             timezone: "Etc/UTC"
         });
+        test.expect(2);
         test.ok(pd !== null);
         
         test.equal(pd.getEra(), 1);
@@ -1909,7 +1909,6 @@ module.exports.testpersiandateastro = {
     },
     
     testPersDateAstroGetEraBAP: function(test) {
-        test.expect(2);
         var pd = new PersianDate({
             year: -46,
             month: 5,
@@ -1919,6 +1918,7 @@ module.exports.testpersiandateastro = {
             second: 0,
             timezone: "Etc/UTC"
         });
+        test.expect(2);
         test.ok(pd !== null);
         
         test.equal(pd.getEra(), -1);
@@ -1926,13 +1926,13 @@ module.exports.testpersiandateastro = {
     },
     
     testPersDateAstroGetEraAPYear1: function(test) {
-        test.expect(2);
         var pd = new PersianDate({
             year: 1,
             month: 1,
             day: 1,
             timezone: "Etc/UTC"
         });
+        test.expect(2);
         test.ok(pd !== null);
         
         test.equal(pd.getEra(), 1);
@@ -1940,13 +1940,13 @@ module.exports.testpersiandateastro = {
     },
     
     testPersDateAstroGetEraBAPYear0: function(test) {
-        test.expect(2);
         var pd = new PersianDate({
             year: 0,
             month: 12,
             day: 29,
             timezone: "Etc/UTC"
         });
+        test.expect(2);
         test.ok(pd !== null);
         
         test.equal(pd.getEra(), -1);
@@ -1954,13 +1954,13 @@ module.exports.testpersiandateastro = {
     },
     
     testPersDateAstroSetTimeZone: function(test) {
-        test.expect(3);
         var pd = new PersianDate({
             year: 1433, 
             month: 3, 
             day: 8,
             timezone: "America/Los_Angeles"
         });
+        test.expect(3);
         test.ok(pd !== null);
         
         test.equal(pd.getTimeZone(), "America/Los_Angeles");
@@ -1972,13 +1972,13 @@ module.exports.testpersiandateastro = {
     },
     
     testPersDateAstroSetTimeZoneNotString: function(test) {
-        test.expect(3);
         var pd = new PersianDate({
             year: 1433, 
             month: 3, 
             day: 8,
             timezone: "America/Los_Angeles"
         });
+        test.expect(3);
         test.ok(pd !== null);
         
         test.equal(pd.getTimeZone(), "America/Los_Angeles");
@@ -1990,13 +1990,13 @@ module.exports.testpersiandateastro = {
     },
     
     testPersDateAstroSetTimeZoneUndefined: function(test) {
-        test.expect(3);
         var pd = new PersianDate({
             year: 1433, 
             month: 3, 
             day: 8,
             timezone: "America/Los_Angeles"
         });
+        test.expect(3);
         test.ok(pd !== null);
         
         test.equal(pd.getTimeZone(), "America/Los_Angeles");
@@ -2009,13 +2009,13 @@ module.exports.testpersiandateastro = {
     },
     
     testPersDateAstroSetTimeZoneEmpty: function(test) {
-        test.expect(3);
         var pd = new PersianDate({
             year: 1433, 
             month: 3, 
             day: 8,
             timezone: "America/Los_Angeles"
         });
+        test.expect(3);
         test.ok(pd !== null);
         
         test.equal(pd.getTimeZone(), "America/Los_Angeles");
@@ -2028,10 +2028,10 @@ module.exports.testpersiandateastro = {
     },
     
     testPersDateAstroInitWithUnixTimeRightTimeZone: function(test) {
-        test.expect(2);
         var pd = new PersianDate({
             unixtime: 0
         });
+        test.expect(2);
         test.ok(pd !== null);
         
         test.equal(pd.getTimeZone(), "local");
@@ -2039,10 +2039,10 @@ module.exports.testpersiandateastro = {
     },
     
     testPersDateAstroInitWithJDRightTimeZone: function(test) {
-        test.expect(2);
         var pd = new PersianDate({
             julianday: 0
         });
+        test.expect(2);
         test.ok(pd !== null);
         
         test.equal(pd.getTimeZone(), "local");
@@ -2050,10 +2050,10 @@ module.exports.testpersiandateastro = {
     },
     
     testPersDateAstroInitWithRDRightTimeZone: function(test) {
-        test.expect(2);
         var pd = new PersianDate({
             rd: 0
         });
+        test.expect(2);
         test.ok(pd !== null);
         
         test.equal(pd.getTimeZone(), "local");
@@ -2061,13 +2061,13 @@ module.exports.testpersiandateastro = {
     },
     
     testPersDateAstroRoundTripConstruction: function(test) {
-        test.expect(8);
         var pd = new PersianDate({
             year: 1393,
             month: 8,
             day: 12,
             timezone: "local"
         });
+        test.expect(8);
         test.ok(pd !== null);
         // console.log("pd is " + JSON.stringify(pd, undefined, 4));
         
@@ -2089,13 +2089,13 @@ module.exports.testpersiandateastro = {
     },
     
     testPersDateAstroRoundTripConstruction2: function(test) {
-        test.expect(8);
         var pd = new PersianDate({
             year: 1393,
             month: 8,
             day: 12,
             timezone: "America/Los_Angeles"
         });
+        test.expect(8);
         test.ok(pd !== null);
         // console.log("pd is " + JSON.stringify(pd, undefined, 4));
         

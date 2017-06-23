@@ -36,8 +36,8 @@ module.exports.testaddress_AZ = {
     },
 
     testParseAZAddressNormal: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("ILHAZ SHAHRIAR, 45 Hatai Str., 2012 GÄNCÄ, AZERBAIJAN", {locale: 'en-AZ'});
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "ILHAZ SHAHRIAR, 45 Hatai Str.");
         test.ok(typeof(parsedAddress.region) === "undefined");
@@ -49,9 +49,9 @@ module.exports.testaddress_AZ = {
     },
     
     testParseAZAddressNoZip: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("ILHAZ SHAHRIAR, 45 Hatai Str.,GÄNCÄ, AZERBAIJAN", {locale: 'en-AZ'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "ILHAZ SHAHRIAR, 45 Hatai Str.");
         test.ok(typeof(parsedAddress.region) === "undefined");
@@ -63,9 +63,9 @@ module.exports.testaddress_AZ = {
     },
     
     testParseAZAddressManyLines: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("ILHAZ SHAHRIAR\n45 Hatai Str.\n2012 GÄNCÄ\nAZERBAIJAN", {locale: 'en-AZ'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "ILHAZ SHAHRIAR, 45 Hatai Str.");
         test.ok(typeof(parsedAddress.region) === "undefined");
@@ -77,9 +77,9 @@ module.exports.testaddress_AZ = {
     },
     
     testParseAZAddressOneLine: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("ILHAZ SHAHRIAR, 45 Hatai Str., 2012 GÄNCÄ, AZERBAIJAN", {locale: 'en-AZ'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "ILHAZ SHAHRIAR, 45 Hatai Str.");
         test.ok(typeof(parsedAddress.region) === "undefined");
@@ -91,9 +91,9 @@ module.exports.testaddress_AZ = {
     },
     
     testParseAZAddressSuperfluousWhitespace: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("ILHAZ SHAHRIAR, 45 Hatai Str.  \n\t\n 2012 GÄNCÄ\t\n\n AZERBAIJAN  \n  \t\t\t", {locale: 'en-AZ'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "ILHAZ SHAHRIAR, 45 Hatai Str.");
         test.ok(typeof(parsedAddress.region) === "undefined");
@@ -105,9 +105,9 @@ module.exports.testaddress_AZ = {
     },
     
     testParseAZAddressNoDelimiters: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("ILHAZ SHAHRIAR 45 Hatai Str. 2012 GÄNCÄ AZERBAIJAN", {locale: 'en-AZ'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "ILHAZ SHAHRIAR 45 Hatai Str.");
         test.ok(typeof(parsedAddress.region) === "undefined");
@@ -119,9 +119,9 @@ module.exports.testaddress_AZ = {
     },
     
     testParseAZAddressSpecialChars: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("ILHAZ SHAHRIAR, 45 Hatai Str., 2012 GÄNCÄ, AZERBAIJAN", {locale: 'en-AZ'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "ILHAZ SHAHRIAR, 45 Hatai Str.");
         test.ok(typeof(parsedAddress.region) === "undefined");
@@ -133,11 +133,11 @@ module.exports.testaddress_AZ = {
     },
     
     testParseAZAddressFromUS: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("ILHAZ SHAHRIAR, 45 Hatai Str., 2012 GÄNCÄ, AZERBAIJAN", {locale: 'en-US'});
         
         // the country nAZe is in English because this address is for a contact in a US database
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "ILHAZ SHAHRIAR, 45 Hatai Str.");
         test.ok(typeof(parsedAddress.region) === "undefined");
@@ -149,7 +149,6 @@ module.exports.testaddress_AZ = {
     },
     
     testFormatAddressAZ: function(test) {
-        test.expect(1);
         var parsedAddress = new Address({
             streetAddress: "ILHAZ SHAHRIAR, 45 Hatai Str.",
             locality: "GÄNCÄ",
@@ -160,12 +159,12 @@ module.exports.testaddress_AZ = {
         
         var expected = "ILHAZ SHAHRIAR, 45 Hatai Str.\n2012 GÄNCÄ\nAZERBAIJAN";
         var formatter = new AddressFmt({locale: 'en-AZ'});
+        test.expect(1);
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     },
     
     testFormatAddressAZFromUS: function(test) {
-        test.expect(1);
         var parsedAddress = new Address({
             streetAddress: "ILHAZ SHAHRIAR, 45 Hatai Str.",
             postalCode: "2012",
@@ -176,6 +175,7 @@ module.exports.testaddress_AZ = {
         
         var expected = "ILHAZ SHAHRIAR, 45 Hatai Str.\n2012 GÄNCÄ\nAZERBAIJAN";
         var formatter = new AddressFmt({locale: 'en-US'});
+        test.expect(1);
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     }

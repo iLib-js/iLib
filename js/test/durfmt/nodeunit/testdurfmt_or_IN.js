@@ -31,11 +31,11 @@ module.exports.testdurfmt_or_IN = {
     },
 
     testDurFmtORFormatShortDefaultStyle: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "or-IN",
             length: "short"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -52,12 +52,12 @@ module.exports.testdurfmt_or_IN = {
     },
     
     testDurFmtORFormatShortText: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "or-IN",
             length: "short",
             style: "text"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -74,12 +74,12 @@ module.exports.testdurfmt_or_IN = {
     },
     
     testDurFmtORFormatShortClock: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "or-IN",
             length: "short",
             style: "clock"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -96,11 +96,11 @@ module.exports.testdurfmt_or_IN = {
     },
     
     testDurFmtORFormatMedium: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "or-IN",
             length: "medium"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -117,11 +117,11 @@ module.exports.testdurfmt_or_IN = {
     },
     
     testDurFmtORFormatLong: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "or-IN",
             length: "long"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -138,11 +138,11 @@ module.exports.testdurfmt_or_IN = {
     },
     
     testDurFmtORFormatFull: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "or-IN",
             length: "full"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var duration = fmt.format({
@@ -160,12 +160,12 @@ module.exports.testdurfmt_or_IN = {
     
     
     testDurFmtORAsyncWithLocale: function(test) {
-        test.expect(2);
         new DurationFmt({
             locale: "or-IN",
             length: "full",
             sync: false,
             onLoad: function (fmt) {
+        test.expect(2);
                 test.ok(fmt !== null);
                 
                 var duration = fmt.format({
@@ -184,13 +184,13 @@ module.exports.testdurfmt_or_IN = {
     },
     
     testDurFmtORFormatShortClockAsync: function(test) {
-        test.expect(2);
         new DurationFmt({
             locale: "or-IN",
             length: "short",
             style: "clock",
             sync: false,
             onLoad: function (fmt) {
+        test.expect(2);
                 test.ok(fmt !== null);
                 
                 var duration = fmt.format({

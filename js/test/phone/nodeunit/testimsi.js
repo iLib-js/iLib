@@ -24,6 +24,18 @@ if (typeof(PhoneNumber) === "undefined") {
     var PhoneNumber = require("../.././../lib/PhoneNumber.js");
 }
 
+function mockLoader(paths, sync, params, callback) {
+    var data = [];
+    
+    data.push(ilib.data.mnc); // for the generic, shared stuff
+    
+    
+    if (typeof(callback) !== 'undefined') {
+        callback.call(this, data);    
+    }
+    return data;
+}
+
 if (typeof(ilib) === "undefined") {
     var ilib = require("../../..");
 }
@@ -35,7 +47,6 @@ module.exports.imsi = {
     },
 
     testRegularImsi3DigitMNC: function(test) {
-        test.expect(1);
         var imsi = "31003014084567890"
         var expected = {
             mcc: "310",
@@ -43,12 +54,12 @@ module.exports.imsi = {
             msin: "14084567890"
         };
     
+        test.expect(1);
         test.deepEqual(PhoneNumber.parseImsi(imsi), expected);
         test.done();
     },
     
     testRegularImsi2DigitMNC: function(test) {
-        test.expect(1);
         var imsi = "26207201234567"
         var expected = {
             mcc: "262",
@@ -56,12 +67,12 @@ module.exports.imsi = {
             msin: "201234567"
         };
     
+        test.expect(1);
         test.deepEqual(PhoneNumber.parseImsi(imsi), expected);
         test.done();
     },
     
     testSpecialImsi1: function(test) {
-        test.expect(1);
         var imsi = "31000201234567"
         var expected = {
             mcc: "310",
@@ -69,12 +80,12 @@ module.exports.imsi = {
             msin: "201234567"
         };
         
+        test.expect(1);
         test.deepEqual(PhoneNumber.parseImsi(imsi), expected);
         test.done();
     },
     
     testSpecialImsi2: function(test) {
-        test.expect(1);
         var imsi = "310004201234567"
         var expected = {
             mcc: "310",
@@ -82,12 +93,12 @@ module.exports.imsi = {
             msin: "201234567"
         };
         
+        test.expect(1);
         test.deepEqual(PhoneNumber.parseImsi(imsi), expected);
         test.done();
     },
     
     testBrokenMCC: function(test) {
-        test.expect(1);
         var imsi = "32000414084567890"
         var expected = {
             mcc: "320",
@@ -96,12 +107,12 @@ module.exports.imsi = {
         };
         
         // should default to a 3 digit mnc
+        test.expect(1);
         test.deepEqual(PhoneNumber.parseImsi(imsi), expected);
         test.done();
     },
     
     testBrokenMNC: function(test) {
-        test.expect(1);
         var imsi = "31014114084567890"
         var expected = {
             mcc: "310",
@@ -110,42 +121,29 @@ module.exports.imsi = {
         };
         
         // should default to a 3 digit mnc
+        test.expect(1);
         test.deepEqual(PhoneNumber.parseImsi(imsi), expected);
         test.done();
     },
     
     testTooShort: function(test) {
-        test.expect(1);
         var imsi = "31"
+        test.expect(1);
         test.deepEqual(PhoneNumber.parseImsi(imsi), undefined);
         test.done();
     },
     
     testUndefined: function(test) {
         test.expect(1);
-        test.expect(1);
-        test.done();
         test.ok(typeof(PhoneNumber.parseImsi(undefined)) === "undefined");
         test.done();
     },
     
-    function mockLoader(paths, sync, params, callback) {
-        var data = [];
-        
-        data.push(ilib.data.mnc); // for the generic, shared stuff
-        
-        
-        if (typeof(callback) !== 'undefined') {
-            callback.call(this, data);    
-        }
-        return data;
-    },
-    
     testIMSILoadLocaleDataSynch: function(test) {
-        test.expect(1);
         if (ilib.isDynData()) {
             // don't need to test loading on the dynamic load version because we are testing
             // it via all the other tests already.
+        test.done();
             return;
         }
         
@@ -161,8 +159,10 @@ module.exports.imsi = {
         };
         
         fields = PhoneNumber.parseImsi(imsi)
+        test.expect(1);
         test.deepEqual(options), expected, PhoneNumber.parseImsi(imsi);
         test.done();
         ilib.setLoaderCallback(undefined);
     }
+    
 };

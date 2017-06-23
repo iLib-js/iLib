@@ -34,11 +34,11 @@ module.exports.testaddressasync = {
     },
 
     testParseAddressAsyncSimple: function(test) {
-        test.expect(8);
         var pa = new Address("950 W Maude Ave.\nSunnyvale, CA 94085\nUSA", {
             locale: 'en-US',
             sync: false,
             onLoad: function(parsedAddress) {
+        test.expect(8);
                 test.ok(typeof(parsedAddress) !== "undefined");
                 test.equal(parsedAddress.streetAddress, "950 W Maude Ave.");
                 test.equal(parsedAddress.locality, "Sunnyvale");
@@ -54,11 +54,11 @@ module.exports.testaddressasync = {
     
     // to verify NOV-111026
     testParseAddressAsyncSimple2: function(test) {
-        test.expect(8);
         var pa = new Address("20 Main St.\nMyTown, NY 11530\nUSA", {
             locale: 'en-US',
             sync: false,
             onLoad: function(parsedAddress) {
+        test.expect(8);
                 test.ok(typeof(parsedAddress) !== "undefined");
                 test.equal(parsedAddress.streetAddress, "20 Main St.");
                 test.equal(parsedAddress.locality, "MyTown");
@@ -73,11 +73,11 @@ module.exports.testaddressasync = {
     },
     
     testParseAddressAsyncSimple3: function(test) {
-        test.expect(8);
         var pa = new Address("5-2-1 Ginza, Chuo-ku\nTokyo 170-3293\nJapan", {
             locale: 'en-US',
             sync: false,
             onLoad: function(parsedAddress) {
+        test.expect(8);
                 test.ok(typeof(parsedAddress) !== "undefined");
                 test.equal(parsedAddress.streetAddress, "5-2-1 Ginza");
                 test.equal(parsedAddress.locality, "Chuo-ku");
@@ -92,11 +92,11 @@ module.exports.testaddressasync = {
     },
     
     testParseAddressAsyncMoreComplex: function(test) {
-        test.expect(8);
         var pa = new Address("950 W 21st Ave, Apt 45\nNY, NY 10234", {
             locale: 'en-US',
             sync: false,
             onLoad: function(parsedAddress) {
+        test.expect(8);
                 test.ok(typeof(parsedAddress) !== "undefined");
                 test.equal(parsedAddress.streetAddress, "950 W 21st Ave, Apt 45");
                 test.equal(parsedAddress.locality, "NY");
@@ -111,11 +111,11 @@ module.exports.testaddressasync = {
     },
     
     testParseAddressAsyncSpelledOutState: function(test) {
-        test.expect(8);
         var pa = new Address("20 Main St.\nMyTown, Arizona 11530\nUSA", {
             locale: 'en-US',
             sync: false,
             onLoad: function(parsedAddress) {
+        test.expect(8);
                 test.ok(typeof(parsedAddress) !== "undefined");
                 test.equal(parsedAddress.streetAddress, "20 Main St.");
                 test.equal(parsedAddress.locality, "MyTown");
@@ -130,11 +130,11 @@ module.exports.testaddressasync = {
     },
     
     testParseAddressAsyncSpelledOutStateWithSpaces: function(test) {
-        test.expect(8);
         var pa = new Address("20 Main St.\nMyTown, New York 11530\nUSA", {
             locale: 'en-US',
             sync: false,
             onLoad: function(parsedAddress) {
+        test.expect(8);
                 test.ok(typeof(parsedAddress) !== "undefined");
                 test.equal(parsedAddress.streetAddress, "20 Main St.");
                 test.equal(parsedAddress.locality, "MyTown");
@@ -149,12 +149,12 @@ module.exports.testaddressasync = {
     },
     
     testParseAddressAsyncUnknown: function(test) {
-        test.expect(8);
     
         var pa = new Address("123 Main Street, Pretoria 5678, South Africa", {
             locale: 'en-US',
             sync: false,
             onLoad: function(parsedAddress) {
+        test.expect(8);
                 test.ok(typeof(parsedAddress) !== "undefined");
                 test.equal(parsedAddress.streetAddress, "123 Main Street");
                 test.equal(parsedAddress.locality, "Pretoria");
@@ -169,11 +169,11 @@ module.exports.testaddressasync = {
     },
     
     testParseAddressAsyncNonUS: function(test) {
-        test.expect(8);
         var pa = new Address("Achterberglaan 23, 2345 GD Uithoorn, Netherlands", {
             locale: 'en-US',
             sync: false,
             onLoad: function(parsedAddress) {
+        test.expect(8);
                 test.ok(typeof(parsedAddress) !== "undefined");
                 test.equal(parsedAddress.streetAddress, "Achterberglaan 23");
                 test.equal(parsedAddress.locality, "Uithoorn");
@@ -188,7 +188,6 @@ module.exports.testaddressasync = {
     },
         
     testFormatAddressAsyncUS: function(test) {
-        test.expect(3);
         var pa = new Address({
             streetAddress: "1234 Any Street",
             locality: "Anytown",
@@ -203,6 +202,7 @@ module.exports.testaddressasync = {
             locale: 'en-US',
             sync: false,
             onLoad: function(formatter) {
+        test.expect(3);
                 test.ok(typeof(formatter) !== "undefined");
                 test.equal(formatter.format(pa), expected);
             }
@@ -212,7 +212,6 @@ module.exports.testaddressasync = {
     },
     
     testFormatAddressAsyncUnknownLocaleQQ: function(test) {
-        test.expect(3);
         var pa = new Address({
             streetAddress: "123 mcdonald ave, apt 234", 
             locality: "Sunnyvale",
@@ -227,6 +226,7 @@ module.exports.testaddressasync = {
             style: 'nocountry',
             sync: false,
             onLoad: function(formatter) {
+        test.expect(3);
                 test.ok(typeof(formatter) !== "undefined");
                 test.equal(formatter.format(pa), expected);
             }
@@ -236,11 +236,11 @@ module.exports.testaddressasync = {
     },
     
     testParseAddressAsyncJPAsianNormal1: function(test) {
-        test.expect(7);
         var pa = new Address("〒150-2345 東京都渋谷区本町2丁目4-7サニーマンション203",  {
             locale: 'ja-JP',
             sync: false,
             onLoad: function(parsedAddress) {
+        test.expect(7);
                 test.ok(typeof(parsedAddress) !== "undefined");
                 test.equal(parsedAddress.streetAddress, "本町2丁目4-7サニーマンション203");
                 test.equal(parsedAddress.locality, "渋谷区");
@@ -254,7 +254,6 @@ module.exports.testaddressasync = {
     },
     
     testFormatAddressAsyncJPAsianNormal: function(test) {
-        test.expect(3);
         var parsedAddress = new Address({
             streetAddress: "本町2丁目4-7サニーマンション203",
             locality: "渋谷区",
@@ -270,6 +269,7 @@ module.exports.testaddressasync = {
             locale: 'ja-JP',
             sync: false,
             onLoad: function(formatter) {
+        test.expect(3);
                 test.ok(typeof(formatter) !== "undefined");
                 test.equal(formatter.format(parsedAddress), expected);
             }
@@ -280,11 +280,11 @@ module.exports.testaddressasync = {
     
     
     testParseAddressAsyncCNAsianNormal: function(test) {
-        test.expect(8);
         var pa = new Address("中国北京市朝阳区建国路112号 中国惠普大厦100022", {
             locale: 'zh-CN',
             sync: false,
             onLoad: function(parsedAddress) {
+        test.expect(8);
                 test.ok(typeof(parsedAddress) !== "undefined");
                 test.equal(parsedAddress.streetAddress, "建国路112号 中国惠普大厦");
                 test.equal(parsedAddress.locality, "朝阳区");
@@ -299,11 +299,11 @@ module.exports.testaddressasync = {
     },
     
     testParseAddressAsyncDENormal: function(test) {
-        test.expect(8);
         var pa = new Address("Herrenberger Straße 140, 71034 Böblingen, Deutschland", {
             locale: 'de-DE',
             sync: false,
             onLoad: function(parsedAddress) {
+        test.expect(8);
                 test.ok(typeof(parsedAddress) !== "undefined");
                 test.equal(parsedAddress.streetAddress, "Herrenberger Straße 140");
                 test.equal(parsedAddress.locality, "Böblingen");
@@ -318,11 +318,11 @@ module.exports.testaddressasync = {
     },
     
     testParseAddressAsyncTHNormal: function(test) {
-        test.expect(8);
         var pa = new Address("49 ซอยร่วมฤดี, ถนนเพลินจิต, ลุมพินี\nเขตปทุมวัน กรุงเทพฯ 10330\nประเทศไทย", {
             locale: 'th-Th',
             sync: false,
             onLoad: function(parsedAddress) {
+        test.expect(8);
                 test.ok(typeof(parsedAddress) !== "undefined");
                 test.equal(parsedAddress.streetAddress, "49 ซอยร่วมฤดี, ถนนเพลินจิต, ลุมพินี");
                 test.equal(parsedAddress.locality, "เขตปทุมวัน");
@@ -337,11 +337,11 @@ module.exports.testaddressasync = {
     },
     
     testParseAddressAsyncRUNormal: function(test) {
-        test.expect(8);
         var pa = new Address("Петров Иван Сергеевич ул. Лесная D. 5 поз. Лесной\nАЛЕКСЕЕВСКИЙ R-N\nВоронежская область\nРоссия\n247112", {
             locale: 'ru-RU',
             sync: false,
             onLoad: function(parsedAddress) {
+        test.expect(8);
                 test.ok(typeof(parsedAddress) !== "undefined");
                 test.equal(parsedAddress.streetAddress, "Петров Иван Сергеевич ул. Лесная D. 5 поз. Лесной");
                 test.equal(parsedAddress.locality, "АЛЕКСЕЕВСКИЙ R-N");
@@ -356,11 +356,11 @@ module.exports.testaddressasync = {
     },
     
     testParseAddressAsyncSANormalNative: function(test) {
-        test.expect(8);
         var pa = new Address("السيد عبد الله ناصر\nمكة المكرمة ٢١۴۵۴\nالمملكة العربية السعودية", {
             locale: 'ar-SA',
             sync: false,
             onLoad: function(parsedAddress) {
+        test.expect(8);
                 test.ok(typeof(parsedAddress) !== "undefined");
                 test.equal(parsedAddress.streetAddress, "السيد عبد الله ناصر");
                 test.equal(parsedAddress.locality, "مكة المكرمة");
@@ -375,11 +375,11 @@ module.exports.testaddressasync = {
     },
     
     testParseAddressAsyncINHINormal: function(test) {
-        test.expect(8);
         var pa = new Address("१२५/१, एजी टावर्स. ३ तल, पार्क स्ट्रीट. सर्कस एवेन्यू\nकोलकाता\nपश्चिम बंगाल\n७०००१७\nभारत", {
             locale: 'hi-IN',
             sync: false,
             onLoad: function(parsedAddress) {    
+        test.expect(8);
                 test.ok(typeof(parsedAddress) !== "undefined");
                 test.equal(parsedAddress.streetAddress, "१२५/१, एजी टावर्स. ३ तल, पार्क स्ट्रीट. सर्कस एवेन्यू");
                 test.equal(parsedAddress.locality, "कोलकाता");
@@ -394,11 +394,11 @@ module.exports.testaddressasync = {
     },
     
     testParseAddressAsyncINGUNoZip: function(test) {
-        test.expect(8);
         var pa = new Address("125/1, એજી ટાવર્સ. 3 જો માળ, પાર્ક સ્ટ્રીટ. સર્કસ એવન્યુ\nકોલકાતા\nપશ્ચિમ બંગાળ\nભારત", {
             locale: 'gu-IN',
             sync: false,
             onLoad: function(parsedAddress) {                        
+        test.expect(8);
                 test.ok(typeof(parsedAddress) !== "undefined");
                 test.equal(parsedAddress.streetAddress, "125/1, એજી ટાવર્સ. 3 જો માળ, પાર્ક સ્ટ્રીટ. સર્કસ એવન્યુ");
                 test.equal(parsedAddress.locality, "કોલકાતા");

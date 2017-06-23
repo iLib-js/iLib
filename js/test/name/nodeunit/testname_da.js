@@ -34,8 +34,8 @@ module.exports.testname_da = {
     },
 
     testDKParseSimpleName: function(test) {
-        test.expect(2);
         var parsed = new Name("Maren Jensdatter", {locale: 'da-DK'});
+        test.expect(2);
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {
@@ -48,8 +48,8 @@ module.exports.testname_da = {
     },
     
     testDKParseTripleName: function(test) {
-        test.expect(2);
         var parsed = new Name("Jan Michael Jensdatter", {locale: 'da-DK'});
+        test.expect(2);
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {
@@ -63,8 +63,8 @@ module.exports.testname_da = {
     },
     
     testDKParseAdjunctNames: function(test) {
-        test.expect(2);
         var parsed = new Name("Jan Michael Jensdatter", {locale: 'da-DK'});
+        test.expect(2);
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {
@@ -78,8 +78,8 @@ module.exports.testname_da = {
     },
     
     testDKParseMultiAdjunctNames: function(test) {
-        test.expect(2);
         var parsed = new Name("Jan Michael Jensdatter", {locale: 'da-DK'});
+        test.expect(2);
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {
@@ -92,8 +92,8 @@ module.exports.testname_da = {
     },
     
     testDKParseHypenatedName: function(test) {
-        test.expect(2);
         var parsed = new Name("Jan Michael Bergische-Jensdatter", {locale: 'da-DK'});
+        test.expect(2);
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {
@@ -107,8 +107,8 @@ module.exports.testname_da = {
     },
     
     testDKParseQuadrupleName: function(test) {
-        test.expect(2);
         var parsed = new Name("Jan Michael Jürgen Jensdatter", {locale: 'da-DK'});
+        test.expect(2);
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {
@@ -122,8 +122,8 @@ module.exports.testname_da = {
     },
     
     testDKParseTitle: function(test) {
-        test.expect(2);
         var parsed = new Name("Dr. Jan Jensdatter", {locale: 'da-DK'});
+        test.expect(2);
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {
@@ -137,8 +137,8 @@ module.exports.testname_da = {
     },
     
     testDKParseHonorific: function(test) {
-        test.expect(2);
         var parsed = new Name("Fru Julia Jensdatter", {locale: 'da-DK'});
+        test.expect(2);
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {
@@ -152,8 +152,8 @@ module.exports.testname_da = {
     },
     
     testDKParseEverything: function(test) {
-        test.expect(2);
         var parsed = new Name("Præsident Jan Michael Jürgen Jensdatter Jr.", {locale: 'da-DK'});
+        test.expect(2);
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {
@@ -173,7 +173,6 @@ module.exports.testname_da = {
      */
     
     testDKFormatSimpleNameShort: function(test) {
-        test.expect(2);
         var name = new Name({
             givenName: "Jan",
             middleName: "Michael",
@@ -181,6 +180,7 @@ module.exports.testname_da = {
         });
         var fmt = new NameFmt({style: "short", locale: 'da-DK'});
         var formatted = fmt.format(name);
+        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "Jan Jensdatter";
@@ -190,7 +190,6 @@ module.exports.testname_da = {
     },
     
     testDKFormatSimpleNameMedium: function(test) {
-        test.expect(2);
         var name = new Name({
             givenName: "Jan",
             middleName: "Michael",
@@ -198,6 +197,7 @@ module.exports.testname_da = {
         });
         var fmt = new NameFmt({style: "medium", locale: 'da-DK'});
         var formatted = fmt.format(name);
+        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "Jan Michael Jensdatter";
@@ -207,7 +207,6 @@ module.exports.testname_da = {
     },
     
     testDKFormatSimpleNameLong: function(test) {
-        test.expect(2);
         var name = new Name({
             givenName: "Jan",
             middleName: "Michael",
@@ -215,6 +214,7 @@ module.exports.testname_da = {
         });
         var fmt = new NameFmt({style: "long", locale: 'da-DK'});
         var formatted = fmt.format(name);
+        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "Jan Michael Jensdatter";
@@ -224,7 +224,6 @@ module.exports.testname_da = {
     },
     
     testDKFormatSimpleNameFull: function(test) {
-        test.expect(2);
         var name = new Name({
             givenName: "Jan",
             middleName: "Michael",
@@ -232,6 +231,7 @@ module.exports.testname_da = {
         });
         var fmt = new NameFmt({style: "full", locale: 'da-DK'});
         var formatted = fmt.format(name);
+        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "Jan Michael Jensdatter";
@@ -241,7 +241,6 @@ module.exports.testname_da = {
     },
     
     testDKFormatComplexNameShort: function(test) {
-        test.expect(2);
         var name = new Name({
             prefix: "Dr.",
             givenName: "Jan",
@@ -251,6 +250,7 @@ module.exports.testname_da = {
         });
         var fmt = new NameFmt({style: "short", locale: 'da-DK'});
         var formatted = fmt.format(name);
+        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "Jan Jensdatter";
@@ -260,7 +260,6 @@ module.exports.testname_da = {
     },
     
     testDKFormatComplexNameMedium: function(test) {
-        test.expect(2);
         var name = new Name({
             prefix: "Dr.",
             givenName: "Jan",
@@ -270,6 +269,7 @@ module.exports.testname_da = {
         });
         var fmt = new NameFmt({style: "medium", locale: 'da-DK'});
         var formatted = fmt.format(name);
+        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "Jan Michael Pieter Jensdatter";
@@ -279,7 +279,6 @@ module.exports.testname_da = {
     },
     
     testDKFormatComplexNameLong: function(test) {
-        test.expect(2);
         var name = new Name({
             prefix: "Dr.",
             givenName: "Jan",
@@ -289,6 +288,7 @@ module.exports.testname_da = {
         });
         var fmt = new NameFmt({style: "long", locale: 'da-DK'});
         var formatted = fmt.format(name);
+        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "Dr. Jan Michael Pieter Jensdatter";
@@ -298,7 +298,6 @@ module.exports.testname_da = {
     },
     
     testDKFormatComplexNameFull: function(test) {
-        test.expect(2);
         var name = new Name({
             prefix: "Dr.",
             givenName: "Jan",
@@ -308,6 +307,7 @@ module.exports.testname_da = {
         });
         var fmt = new NameFmt({style: "full", locale: 'da-DK'});
         var formatted = fmt.format(name);
+        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "Dr. Jan Michael Pieter Jensdatter III";
@@ -317,7 +317,6 @@ module.exports.testname_da = {
     },
     
     testDKFormatAsianNameShort: function(test) {
-        test.expect(2);
         var name = new Name({
             prefix: "小",
             givenName: "獸",
@@ -326,6 +325,7 @@ module.exports.testname_da = {
         });
         var fmt = new NameFmt({style: "short", locale: 'da-DK'});
         var formatted = fmt.format(name);
+        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "地獸";
@@ -335,7 +335,6 @@ module.exports.testname_da = {
     },
     
     testDKFormatAsianNameMedium: function(test) {
-        test.expect(2);
         var name = new Name({
             prefix: "小",
             givenName: "獸",
@@ -344,6 +343,7 @@ module.exports.testname_da = {
         });
         var fmt = new NameFmt({style: "medium", locale: 'da-DK'});
         var formatted = fmt.format(name);
+        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "地獸";
@@ -353,7 +353,6 @@ module.exports.testname_da = {
     },
     
     testDKFormatAsianNameLong: function(test) {
-        test.expect(2);
         var name = new Name({
             prefix: "小",
             givenName: "獸",
@@ -362,6 +361,7 @@ module.exports.testname_da = {
         });
         var fmt = new NameFmt({style: "long", locale: 'da-DK'});
         var formatted = fmt.format(name);
+        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "小地獸";
@@ -371,7 +371,6 @@ module.exports.testname_da = {
     },
     
     testDKFormatAsianNameFull: function(test) {
-        test.expect(2);
         var name = new Name({
             prefix: "小",
             givenName: "獸",
@@ -380,6 +379,7 @@ module.exports.testname_da = {
         });
         var fmt = new NameFmt({style: "full", locale: 'da-DK'});
         var formatted = fmt.format(name);
+        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "小地獸太太";

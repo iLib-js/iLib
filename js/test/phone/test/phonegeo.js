@@ -23,6 +23,17 @@ var PhoneLocale = require("./../lib/PhoneLocale.js");
 var PhoneGeoLocator = require("./../lib/PhoneGeoLocator.js");
 var NumberingPlan = require("./../lib/NumberingPlan.js");
 
+function mockLoader(paths, sync, params, callback) {
+	var data = [];
+	
+	data.push(ilib.data.area_US); // for the generic, shared stuff
+	
+	if (typeof(callback) !== 'undefined') {
+		callback.call(this, data);	
+	}
+	return data;
+}
+
 function testNANP() {
 	var parsed = new PhoneNumber("+1 650 654 3210");
 	var expected = {
@@ -1858,17 +1869,6 @@ function testHKMobile() {
 	assertEquals(expected.country.ln, geoInfo.country.ln);
 	assertEquals(expected.country.sn, geoInfo.country.sn);
 };
-
-function mockLoader(paths, sync, params, callback) {
-	var data = [];
-	
-	data.push(ilib.data.area_US); // for the generic, shared stuff
-	
-	if (typeof(callback) !== 'undefined') {
-		callback.call(this, data);	
-	}
-	return data;
-}
 
 function testPhoneGeoLoadLocaleDataSynch() {
 	if (ilib.isDynData()) {

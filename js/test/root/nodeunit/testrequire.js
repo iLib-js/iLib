@@ -51,13 +51,14 @@ module.exports.testrequire = {
     },
 
     testRequireSingleFile: function(test) {
-        test.expect(2);
         if (!ilib.isDynCode()) {
             // can't test the require function unless you're 
             // in dynamic code loading mode
+        test.done();
             return;
         }
         var mod = require("./root/test/testfiles/datefmt2.js");
+        test.expect(2);
         test.ok(typeof(mod) !== "undefined");
         
         test.equal(typeof(mod), "function");
@@ -65,12 +66,13 @@ module.exports.testrequire = {
     },
     
     testRequireDoNotReloadSameFile: function(test) {
-        test.expect(4);
         if (!ilib.isDynCode()) {
             // can't test the require function unless you're 
             // in dynamic code loading mode
+        test.done();
             return;
         }
+        test.expect(4);
         test.ok(typeof(Qwerty) === "undefined");
     
         var Qwerty = require("./root/test/testfiles/qwerty.js");
@@ -90,14 +92,15 @@ module.exports.testrequire = {
     },
     
     testRequireRunCode1: function(test) {
-        test.expect(3);
         if (!ilib.isDynCode()) {
             // can't test the require function unless you're 
             // in dynamic code loading mode
+        test.done();
             return;
         }
         var Locale2 = require("./root/test/testfiles/locale2.js");
         
+        test.expect(3);
         test.ok(typeof(Locale2) !== "undefined");
     
         var locale = new Locale2("de-DE");
@@ -108,14 +111,15 @@ module.exports.testrequire = {
     },
     
     testRequireRunCode2: function(test) {
-        test.expect(4);
         if (!ilib.isDynCode()) {
             // can't test the require function unless you're 
             // in dynamic code loading mode
+        test.done();
             return;
         }
         
         var Locale2 = require("./root/test/testfiles/locale2.js");
+        test.expect(4);
         test.ok(typeof(Locale2) !== "undefined");
         
         var DateFmt2 = require("./root/test/testfiles/datefmt2.js");

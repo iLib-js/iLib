@@ -34,8 +34,8 @@ module.exports.testname_pa = {
     },
 
     testParseSimpleName_pa_IN: function(test) {
-        test.expect(2);
         var parsed = new Name("ਹਰਭਜਨ ਸਿੰਘ", {locale: 'pa-IN'});
+        test.expect(2);
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {
@@ -50,8 +50,8 @@ module.exports.testname_pa = {
     
     
     testParseTitle_pa_IN: function(test) {
-        test.expect(2);
         var parsed = new Name("ਹਰਭਜਨ ਸਿੰਘ ਸੇਨਿਓਰ", {locale: 'pa-IN'});
+        test.expect(2);
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {
@@ -67,8 +67,8 @@ module.exports.testname_pa = {
     
     
     testParseTitleWithFamilyOnly_pa_IN: function(test) {
-        test.expect(2);
         var parsed = new Name("ਦਰ ਸਿੰਘ", {locale: 'pa-IN'});
+        test.expect(2);
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {
@@ -83,8 +83,8 @@ module.exports.testname_pa = {
     
     
     testParseEverything_pa_IN: function(test) {
-        test.expect(2);
         var parsed = new Name("ਦਰ ਏੰਡ ਮਰ ਸਿੰਘ", {locale: 'pa-IN'});
+        test.expect(2);
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {
@@ -97,8 +97,8 @@ module.exports.testname_pa = {
     },
     
     testParseprefix_pa_IN: function(test) {
-        test.expect(2);
         var parsed = new Name("ਦਰ ਹਰਭਜਨ ਸਿੰਘ", {locale: 'pa-IN'});
+        test.expect(2);
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {
@@ -115,7 +115,6 @@ module.exports.testname_pa = {
      */
     
     testFormatSimpleNameShort_pa_IN: function(test) {
-        test.expect(2);
         var name = new Name({
             givenName: "ਹਰਭਜਨ",
             familyName: "ਸਿੰਘ"
@@ -125,6 +124,7 @@ module.exports.testname_pa = {
             locale: 'pa-IN'
         });
         var formatted = fmt.format(name);
+        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "ਹਰਭਜਨ ਸਿੰਘ";
@@ -134,7 +134,6 @@ module.exports.testname_pa = {
     },
     
     testFormatSimpleNameMedium_pa_IN: function(test) {
-        test.expect(2);
         var name = new Name({
             givenName: "ਹਰਭਜਨ",
             familyName: "ਸਿੰਘ"
@@ -144,6 +143,7 @@ module.exports.testname_pa = {
             locale: 'pa-IN'
         });
         var formatted = fmt.format(name);
+        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "ਹਰਭਜਨ ਸਿੰਘ";
@@ -153,7 +153,6 @@ module.exports.testname_pa = {
     },
     
     testFormatSimpleNameLong_pa_IN: function(test) {
-        test.expect(2);
         var name = new Name({
             givenName: "ਹਰਭਜਨ",
             familyName: "ਸਿੰਘ"
@@ -163,6 +162,7 @@ module.exports.testname_pa = {
             locale: 'pa-IN'
         });
         var formatted = fmt.format(name);
+        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "ਹਰਭਜਨ ਸਿੰਘ";
@@ -172,7 +172,6 @@ module.exports.testname_pa = {
     },
     
     testFormatSurname_pa_IN: function(test) {
-        test.expect(2);
         var name = new Name({
             prefix: "ਦਰ ਏੰਡ ਮਰ",
             familyName: "ਸਿੰਘ"
@@ -182,6 +181,7 @@ module.exports.testname_pa = {
             locale: 'pa-IN'
         });
         var formatted = fmt.format(name);
+        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "ਦਰ ਏੰਡ ਮਰ ਸਿੰਘ";
@@ -191,7 +191,6 @@ module.exports.testname_pa = {
     },
     
     testFormatSimpleNameFull_pa_IN: function(test) {
-        test.expect(2);
         var name = new Name({
             prefix: "ਡਾਕ੍ਟਰ",
             givenName: "ਹਰਭਜਨ",
@@ -203,6 +202,7 @@ module.exports.testname_pa = {
             locale: 'pa-IN'
         });
         var formatted = fmt.format(name);
+        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "ਡਾਕ੍ਟਰ ਹਰਭਜਨ ਸਿੰਘ ਸੇਨਿਓਰ";
@@ -212,7 +212,6 @@ module.exports.testname_pa = {
     },
     
     testFormatComplexNameShort_pa_IN: function(test) {
-        test.expect(2);
         var name = new Name({
             prefix: "ਡਾਕ੍ਟਰ",
             givenName: "ਹਰਭਜਨ",
@@ -223,6 +222,7 @@ module.exports.testname_pa = {
             locale: 'pa-IN'
         });
         var formatted = fmt.format(name);
+        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "ਹਰਭਜਨ ਸਿੰਘ";
@@ -232,7 +232,6 @@ module.exports.testname_pa = {
     },
     
     testFormatComplexNameMedium_pa_IN: function(test) {
-        test.expect(2);
         var name = new Name({
             prefix: "ਡਾਕ੍ਟਰ",
             givenName: "ਹਰਭਜਨ",
@@ -243,6 +242,7 @@ module.exports.testname_pa = {
             locale: 'pa-IN'
         });
         var formatted = fmt.format(name);
+        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "ਹਰਭਜਨ ਸਿੰਘ";
@@ -252,7 +252,6 @@ module.exports.testname_pa = {
     },
     
     testFormatComplexNameLong_pa_IN: function(test) {
-        test.expect(2);
         var name = new Name({
             prefix: "ਡਾਕ੍ਟਰ",
             givenName: "ਹਰਭਜਨ",
@@ -263,6 +262,7 @@ module.exports.testname_pa = {
             locale: 'pa-IN'
         });
         var formatted = fmt.format(name);
+        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "ਡਾਕ੍ਟਰ ਹਰਭਜਨ ਸਿੰਘ";

@@ -17,10 +17,102 @@
  * limitations under the License.
  */
 
-var ilib = require("../lib/ilib.js")
+var ilib = require("./../lib/ilib.js")
 if (typeof(LocaleInfo) === "undefined") {
     var LocaleInfo = require("../.././../lib/LocaleInfo.js");
 }
+
+function mockLoader(paths, sync, params, callback) {
+    var data = [];
+    // for the generic, shared stuff
+    data.push(ilib.data.localeinfo || {
+        "calendar": "gregorian",
+        "clock": "24",
+        "currency": "USD",
+        "firstDayOfWeek": 1,
+        "numfmt": {
+            "script": "Latn",
+            "decimalChar": ",",
+            "groupChar": ".",
+            "prigroupSize": 3,
+            "pctFmt": "{n}%",
+            "pctChar": "%",
+            "roundingMode": "halfdown",
+            "exponential": "e",
+            "currencyFormats": {
+                "common": "{s}{n}",
+                "commonNegative": "{s}-{n}"
+            }
+        },
+        "timezone": "Etc/UTC",
+        "units": "metric"
+    });
+    paths.shift();
+    paths.forEach(function (path) {
+        if (path.search("fr/localeinfo.json$") !== -1) {
+            data.push({
+                "language.name": "French",
+                "numfmt": {
+                    "groupChar": " ",
+                    "currencyFormats": {
+                        "common": "{n} {s}",
+                        "commonNegative": "({n} {s})"
+                    },
+                    "pctFmt": "{n} %"
+                },
+                "paperSizes": {
+                    "regular": "A4",
+                    "photo": "4x6"
+                },
+                "scripts": [
+                    "Latn"
+                ],
+                "locale": "fr"
+            });
+        } else if (path.search("FR/localeinfo.json$") !== -1) {
+            data.push({
+                "currency": "EUR",
+                "firstDayOfWeek": 1,
+                "region.name": "France",
+                "timezone": "Europe/Paris",
+                "locale": "FR"
+            });
+        } else {
+            data.push((path.indexOf('zzz') === -1) ? undefined : {
+                "clock": "24",
+                "units": "metric",
+                "calendar": "hebrew",
+                "firstDayOfWeek": 4,
+                "currency": "JPY",
+                "timezone": "Asia/Tokyo",
+                "numfmt": {
+                    "decimalChar": ".",
+                    "groupChar": ",",
+                    "groupSize": 4,
+                    "pctFmt": "{n} %",
+                    "pctChar": "%",
+                    "currencyFormats": {
+                        "common": "common {s} {n}",
+                        "iso": "iso {s} {n}"
+                    }
+                },
+                "locale": "zzz-ZZ"
+            });
+        }
+    });
+    if (typeof (callback) !== 'undefined') {
+        callback.call(this, data);
+    }
+    return data;
+};
+
+// locale with no script
+ilib.data.localeinfo_fr_FR_overseas = {
+    "currency": "USD",
+    "locale": "fr-FR-overseas",
+    "timezone": "Pacific/Tahiti"
+};
+
 
 if (typeof(ilib) === "undefined") {
     var ilib = require("../../..");
@@ -33,17 +125,17 @@ module.exports.testlocaleinfo = {
     },
 
     testLocaleInfoConstructor: function(test) {
-        test.expect(1);
         var loc = new LocaleInfo();
     
+        test.expect(1);
         test.ok(loc !== null);
         test.done();
     },
     
     testLocaleInfoConstructorCurrentLocale: function(test) {
-        test.expect(4);
         var loc, info = new LocaleInfo(); // gives locale of the host JS engine
     
+        test.expect(4);
         test.ok(info !== null);
     
         loc = info.getLocale();
@@ -55,9 +147,9 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoConstructorGivenLocale: function(test) {
-        test.expect(4);
         var loc, info = new LocaleInfo("de-DE");
     
+        test.expect(4);
         test.ok(info !== null);
     
         loc = info.getLocale();
@@ -69,8 +161,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetClockUS: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("en-US");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getClock(), "12");
@@ -78,8 +170,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetClockCA: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("en-CA");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getClock(), "12");
@@ -87,8 +179,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetClockGB: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("en-GB");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getClock(), "24");
@@ -96,8 +188,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetClockDE: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("de-DE");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getClock(), "24");
@@ -105,8 +197,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetCalendarUS: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("en-US");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCalendar(), "gregorian");
@@ -114,8 +206,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetCalendarDE: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("de-DE");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCalendar(), "gregorian");
@@ -123,8 +215,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetUnitsUS: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("en-US");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getUnits(), "uscustomary");
@@ -132,8 +224,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetUnitsCA: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("en-CA");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getUnits(), "metric");
@@ -141,8 +233,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetUnitsGB: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("en-GB");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getUnits(), "imperial");
@@ -150,8 +242,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetCalendarDE: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("de-DE");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getUnits(), "metric");
@@ -159,8 +251,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetFirstDayOfWeekUS: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("en-US");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getFirstDayOfWeek(), 0);
@@ -168,8 +260,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetFirstDayOfWeekDE: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("de-DE");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getFirstDayOfWeek(), 1);
@@ -177,8 +269,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetFirstDayOfWeekFR: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("fr-FR");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getFirstDayOfWeek(), 1);
@@ -186,8 +278,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetTimeZoneUS: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("en-US");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getTimeZone(), "America/Los_Angeles");
@@ -195,8 +287,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetTimeZoneUS: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("de-DE");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getTimeZone(), "Europe/Berlin");
@@ -204,8 +296,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetTimeZoneES: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("es-ES");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getTimeZone(), "Europe/Madrid");
@@ -213,8 +305,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetTimeZoneDefault: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("zz-ZZ");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getTimeZone(), "Etc/UTC");
@@ -222,8 +314,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetCurrency: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("en-US");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrency(), "USD");
@@ -231,8 +323,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetCurrencyDE: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("de-DE");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrency(), "EUR");
@@ -240,8 +332,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetCurrencyGB: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("en-GB");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrency(), "GBP");
@@ -249,8 +341,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetCurrencyUnknown: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("zxx-XX");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrency(), "USD");
@@ -258,8 +350,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetRoundingModeDefault: function(test) {
-        test.expect(2);
         var info = new LocaleInfo();
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getRoundingMode(), "halfdown");
@@ -267,8 +359,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetRoundingModeyy: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("yy-YY");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getRoundingMode(), "halfdown");
@@ -276,8 +368,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetDecimalSeparator1: function(test) {
-        test.expect(2);
         var info = new LocaleInfo();
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getDecimalSeparator(), ".");
@@ -285,8 +377,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetDecimalSeparator2: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("de-DE");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getDecimalSeparator(), ",");
@@ -297,16 +389,16 @@ module.exports.testlocaleinfo = {
     //test cases for en-GB number format
     
     testLocaleInfoGetDecimalSeparatorfor_en_GB: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("en-GB");
+        test.expect(2);
         test.ok(info !== null);
         test.equal(info.getDecimalSeparator(), ".");
         test.done();
     },
     
     testLocaleInfoGetGroupingSeparatorfor_en_GB: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("en-GB");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getGroupingSeparator(), ",");
@@ -314,8 +406,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetPercentageFormat_en_GB: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("en-GB");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getPercentageFormat(), "{n}%");
@@ -323,8 +415,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetCurrencyFormat_en_GB: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("en-GB");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().common, "{s}{n}");
@@ -332,8 +424,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeNumberFormat_en_GB: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("en-GB");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativeNumberFormat(), "-{n}");
@@ -341,8 +433,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativePercentageFormat_en_GB: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("en-GB");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativePercentageFormat(), "-{n}%");
@@ -350,8 +442,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeCurrencyFormat_en_GB: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("en-GB");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().commonNegative, "-{s}{n}");
@@ -361,16 +453,16 @@ module.exports.testlocaleinfo = {
     //test cases for ko-KR number format
     
     testLocaleInfoGetDecimalSeparatorfor_ko_KR: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ko-KR");
+        test.expect(2);
         test.ok(info !== null);
         test.equal(info.getDecimalSeparator(), ".");
         test.done();
     },
     
     testLocaleInfoGetGroupingSeparatorfor_ko_KR: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ko-KR");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getGroupingSeparator(), ",");
@@ -378,8 +470,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetPercentageFormat_ko_KR: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ko-KR");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getPercentageFormat(), "{n}%");
@@ -387,8 +479,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetCurrencyFormat_ko_KR: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ko-KR");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().common, "{s}{n}");
@@ -396,8 +488,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeNumberFormat_ko_KR: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ko-KR");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativeNumberFormat(), "-{n}");
@@ -405,8 +497,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativePercentageFormat_ko_KR: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ko-KR");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativePercentageFormat(), "-{n}%");
@@ -414,8 +506,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeCurrencyFormat_ko_KR: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ko-KR");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().commonNegative, "-{s}{n}");
@@ -425,16 +517,16 @@ module.exports.testlocaleinfo = {
     //test cases for zh-CN-Hans number format
     
     testLocaleInfoGetDecimalSeparatorfor_zh_CN_Hans: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("zh-CN-Hans");
+        test.expect(2);
         test.ok(info !== null);
         test.equal(info.getDecimalSeparator(), ".");
         test.done();
     },
     
     testLocaleInfoGetGroupingSeparatorfor_zh_CN_Hans: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("zh-CN-Hans");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getGroupingSeparator(), ",");
@@ -442,8 +534,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetPercentageFormat_zh_CN_Hans: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("zh-CN-Hans");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getPercentageFormat(), "{n}%");
@@ -451,8 +543,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetCurrencyFormat_zh_CN_Hans: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("zh-CN-Hans");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().common, "{s}{n}");
@@ -460,8 +552,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeNumberFormat_zh_CN_Hans: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("zh-CN-Hans");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativeNumberFormat(), "-{n}");
@@ -469,8 +561,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativePercentageFormat_zh_CN_Hans: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("zh-CN-Hans");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativePercentageFormat(), "-{n}%");
@@ -478,8 +570,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeCurrencyFormat_zh_CN_Hans: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("zh-CN-Hans");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().commonNegative, "-{s}{n}");
@@ -489,16 +581,16 @@ module.exports.testlocaleinfo = {
     //test cases for zh-HK-Hans
     
     testLocaleInfoGetDecimalSeparatorfor_zh_HK_Hans: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("zh-HK-Hans");
+        test.expect(2);
         test.ok(info !== null);
         test.equal(info.getDecimalSeparator(), ".");
         test.done();
     },
     
     testLocaleInfoGetGroupingSeparatorfor_zh_HK_Hans: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("zh-HK-Hans");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getGroupingSeparator(), ",");
@@ -506,8 +598,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetPercentageFormat_zh_HK_Hans: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("zh-HK-Hans");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getPercentageFormat(), "{n}%");
@@ -515,8 +607,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetCurrencyFormat_zh_HK_Hans: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("zh-HK-Hans");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().common, "{s}{n}");
@@ -524,8 +616,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeNumberFormat_zh_HK_Hans: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("zh-HK-Hans");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativeNumberFormat(), "-{n}");
@@ -533,16 +625,16 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativePercentageFormat_zh_HK_Hans: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("zh-HK-Hans");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativePercentageFormat(), "-{n}%");
         test.done();
     },
     testLocaleInfoGetNegativeCurrencyFormat_zh_HK_Hans: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("zh-HK-Hans");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().commonNegative, "-{s}{n}");
@@ -552,16 +644,16 @@ module.exports.testlocaleinfo = {
     //test cases fot zh-TW-Hant
     
     testLocaleInfoGetDecimalSeparatorfor_zh_TW_Hant: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("zh-TW-Hant");
+        test.expect(2);
         test.ok(info !== null);
         test.equal(info.getDecimalSeparator(), ".");
         test.done();
     },
     
     testLocaleInfoGetGroupingSeparatorfor_zh_TW_Hant: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("zh-TW-Hant");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getGroupingSeparator(), ",");
@@ -569,8 +661,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetPercentageFormat_zh_TW_Hant: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("zh-TW-Hant");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getPercentageFormat(), "{n}%");
@@ -578,8 +670,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetCurrencyFormat_zh_TW_Hant: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("zh-TW-Hant");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().common, "{s}{n}");
@@ -587,8 +679,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeNumberFormat_zh_TW_Hant: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("zh-TW-Hant");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativeNumberFormat(), "-{n}");
@@ -596,8 +688,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativePercentageFormat_zh_TW_Hant: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("zh-TW-Hant");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativePercentageFormat(), "-{n}%");
@@ -605,8 +697,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeCurrencyFormat_zh_TW_Hant: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("zh-TW-Hant");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().commonNegative, "-{s}{n}");
@@ -616,16 +708,16 @@ module.exports.testlocaleinfo = {
     //test cases for fr-FR number format
     
     testLocaleInfoGetDecimalSeparatorfor_fr_FR: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("fr-FR");
+        test.expect(2);
         test.ok(info !== null);
         test.equal(info.getDecimalSeparator(), ",");
         test.done();
     },
     
     testLocaleInfoGetGroupingSeparatorfor_fr_FR: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("fr-FR");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getGroupingSeparator(), " ");
@@ -633,8 +725,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetPercentageFormat_fr_FR: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("fr-FR");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getPercentageFormat(), "{n} %");
@@ -642,8 +734,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetCurrencyFormat_fr_FR: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("fr-FR");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().common, "{n} {s}");
@@ -651,8 +743,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeNumberFormat_fr_FR: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("fr-FR");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativeNumberFormat(), "-{n}");
@@ -660,8 +752,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativePercentageFormat_fr_FR: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("fr-FR");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativePercentageFormat(), "-{n} %");
@@ -669,8 +761,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeCurrencyFormat_fr_FR: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("fr-FR");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().commonNegative, "-{n} {s}");
@@ -680,16 +772,16 @@ module.exports.testlocaleinfo = {
     //test cases for fr-CA unmber format
     
     testLocaleInfoGetDecimalSeparatorfor_fr_CA: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("fr-CA");
+        test.expect(2);
         test.ok(info !== null);
         test.equal(info.getDecimalSeparator(), ",");
         test.done();
     },
     
     testLocaleInfoGetGroupingSeparatorfor_fr_CA: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("fr-CA");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getGroupingSeparator(), " ");
@@ -697,8 +789,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetPercentageFormat_fr_CA: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("fr-CA");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getPercentageFormat(), "{n} %");
@@ -706,8 +798,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetCurrencyFormat_fr_CA: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("fr-CA");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().common, "{n} {s}");
@@ -715,8 +807,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeNumberFormat_fr_CA: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("fr-CA");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativeNumberFormat(), "-{n}");
@@ -724,8 +816,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativePercentageFormat_fr_CA: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("fr-CA");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativePercentageFormat(), "-{n} %");
@@ -733,8 +825,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeCurrencyFormat_fr_CA: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("fr-CA");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().commonNegative, "-{n} {s}");
@@ -744,16 +836,16 @@ module.exports.testlocaleinfo = {
     //test cases for pt_BR numberformat
     
     testLocaleInfoGetDecimalSeparatorfor_pt_BR: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("pt-BR");
+        test.expect(2);
         test.ok(info !== null);
         test.equal(info.getDecimalSeparator(), ",");
         test.done();
     },
     
     testLocaleInfoGetGroupingSeparatorfor_pt_BR: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("pt-BR");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getGroupingSeparator(), ".");
@@ -761,8 +853,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetPercentageFormat_pt_BR: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("pt-BR");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getPercentageFormat(), "{n}%");
@@ -770,8 +862,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetCurrencyFormat_pt_BR: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("pt-BR");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().common, "{s}{n}");
@@ -779,8 +871,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeNumberFormat_pt_BR: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("pt-BR");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativeNumberFormat(), "-{n}");
@@ -788,8 +880,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativePercentageFormat_pt_BR: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("pt-BR");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativePercentageFormat(), "-{n}%");
@@ -797,8 +889,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeCurrencyFormat_pt_BR: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("pt-BR");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().commonNegative, "-{s}{n}");
@@ -807,16 +899,16 @@ module.exports.testlocaleinfo = {
     //test cases for pt_PT
     
     testLocaleInfoGetDecimalSeparatorfor_pt_PT: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("pt-PT");
+        test.expect(2);
         test.ok(info !== null);
         test.equal(info.getDecimalSeparator(), ",");
         test.done();
     },
     
     testLocaleInfoGetGroupingSeparatorfor_pt_PT: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("pt-PT");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getGroupingSeparator(), " ");
@@ -824,8 +916,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetPercentageFormat_pt_PT: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("pt-PT");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getPercentageFormat(), "{n}%");
@@ -833,8 +925,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetCurrencyFormat_pt_PT: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("pt-PT");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().common, "{n} {s}");
@@ -842,8 +934,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeNumberFormat_pt_PT: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("pt-PT");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativeNumberFormat(), "-{n}");
@@ -851,8 +943,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativePercentageFormat_pt_PT: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("pt-PT");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativePercentageFormat(), "-{n}%");
@@ -860,8 +952,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeCurrencyFormat_pt_PT: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("pt-PT");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().commonNegative, "-{n} {s}");
@@ -871,16 +963,16 @@ module.exports.testlocaleinfo = {
     //test cases for es_ES number format
     
     testLocaleInfoGetDecimalSeparatorfor_es_ES: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("es-ES");
+        test.expect(2);
         test.ok(info !== null);
         test.equal(info.getDecimalSeparator(), ",");
         test.done();
     },
     
     testLocaleInfoGetGroupingSeparatorfor_es_ES: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("es-ES");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getGroupingSeparator(), ".");
@@ -888,8 +980,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetPercentageFormat_es_ES: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("es-ES");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getPercentageFormat(), "{n} %");
@@ -897,8 +989,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetCurrencyFormat_es_ES: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("es-ES");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().common, "{n} {s}");
@@ -906,8 +998,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeNumberFormat_es_ES: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("es-ES");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativeNumberFormat(), "-{n}");
@@ -915,8 +1007,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativePercentageFormat_es_ES: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("es-ES");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativePercentageFormat(), "-{n} %");
@@ -924,8 +1016,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeCurrencyFormat_es_ES: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("es-ES");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().commonNegative, "-{n} {s}");
@@ -935,16 +1027,16 @@ module.exports.testlocaleinfo = {
     //test case for es_Co
     
     testLocaleInfoGetDecimalSeparatorfor_es_CO: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("es-CO");
+        test.expect(2);
         test.ok(info !== null);
         test.equal(info.getDecimalSeparator(), ",");
         test.done();
     },
     
     testLocaleInfoGetGroupingSeparatorfor_es_CO: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("es-CO");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getGroupingSeparator(), ".");
@@ -952,8 +1044,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetPercentageFormat_es_CO: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("es-CO");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getPercentageFormat(), "{n}%");
@@ -961,8 +1053,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetCurrencyFormat_es_CO: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("es-CO");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().common, "{s} {n}");
@@ -970,8 +1062,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeNumberFormat_es_CO: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("es-CO");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativeNumberFormat(), "-{n}");
@@ -979,8 +1071,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativePercentageFormat_es_CO: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("es-CO");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativePercentageFormat(), "-{n}%");
@@ -988,8 +1080,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeCurrencyFormat_es_CO: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("es-CO");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().commonNegative, "-{s} {n}");
@@ -999,16 +1091,16 @@ module.exports.testlocaleinfo = {
     //test cases for ja-JP
     
     testLocaleInfoGetDecimalSeparatorfor_ja_JP: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ja-JP");
+        test.expect(2);
         test.ok(info !== null);
         test.equal(info.getDecimalSeparator(), ".");
         test.done();
     },
     
     testLocaleInfoGetGroupingSeparatorfor_ja_JP: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ja-JP");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getGroupingSeparator(), ",");
@@ -1016,8 +1108,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetPercentageFormat_ja_JP: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ja-JP");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getPercentageFormat(), "{n}%");
@@ -1025,8 +1117,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetCurrencyFormat_ja_JP: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ja-JP");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().common, "{s}{n}");
@@ -1034,8 +1126,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeNumberFormat_ja_JP: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ja-JP");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativeNumberFormat(), "-{n}");
@@ -1043,8 +1135,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativePercentageFormat_ja_JP: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ja-JP");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativePercentageFormat(), "-{n}%");
@@ -1052,8 +1144,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeCurrencyFormat_ja_JP: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ja-JP");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().commonNegative, "-{s}{n}");
@@ -1062,16 +1154,16 @@ module.exports.testlocaleinfo = {
     //test cases for de-DE
     
     testLocaleInfoGetDecimalSeparatorfor_de_DE: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("de-DE");
+        test.expect(2);
         test.ok(info !== null);
         test.equal(info.getDecimalSeparator(), ",");
         test.done();
     },
     
     testLocaleInfoGetGroupingSeparatorfor_de_DE: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("de-DE");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getGroupingSeparator(), ".");
@@ -1079,8 +1171,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetPercentageFormat_de_DE: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("de-DE");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getPercentageFormat(), "{n} %");
@@ -1088,8 +1180,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetCurrencyFormat_de_DE: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("de-DE");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().common, "{n} {s}");
@@ -1097,8 +1189,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeNumberFormat_de_DE: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("de-DE");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativeNumberFormat(), "-{n}");
@@ -1106,8 +1198,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativePercentageFormat_de_DE: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("de-DE");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativePercentageFormat(), "-{n} %");
@@ -1115,8 +1207,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeCurrencyFormat_de_DE: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("de-DE");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().commonNegative, "-{n} {s}");
@@ -1126,16 +1218,16 @@ module.exports.testlocaleinfo = {
     //test cases for it-IT
     
     testLocaleInfoGetDecimalSeparatorfor_it_IT: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("it-IT");
+        test.expect(2);
         test.ok(info !== null);
         test.equal(info.getDecimalSeparator(), ",");
         test.done();
     },
     
     testLocaleInfoGetGroupingSeparatorfor_it_IT: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("it-IT");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getGroupingSeparator(), ".");
@@ -1143,8 +1235,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetPercentageFormat_it_IT: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("it-IT");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getPercentageFormat(), "{n}%");
@@ -1152,8 +1244,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetCurrencyFormat_it_IT: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("it-IT");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().common, "{n} {s}");
@@ -1161,8 +1253,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeNumberFormat_it_IT: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("it-IT");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativeNumberFormat(), "-{n}");
@@ -1170,8 +1262,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativePercentageFormat_it_IT: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("it-IT");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativePercentageFormat(), "-{n}%");
@@ -1179,8 +1271,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeCurrencyFormat_it_IT: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("it-IT");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().commonNegative, "-{n} {s}");
@@ -1190,16 +1282,16 @@ module.exports.testlocaleinfo = {
     //test cases for sv-SE
     
     testLocaleInfoGetDecimalSeparatorfor_sv_SE: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("sv-SE");
+        test.expect(2);
         test.ok(info !== null);
         test.equal(info.getDecimalSeparator(), ",");
         test.done();
     },
     
     testLocaleInfoGetGroupingSeparatorfor_sv_SE: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("sv-SE");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getGroupingSeparator(), " ");
@@ -1207,8 +1299,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetPercentageFormat_sv_SE: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("sv-SE");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getPercentageFormat(), "{n} %");
@@ -1216,8 +1308,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetCurrencyFormat_sv_SE: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("sv-SE");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().common, "{n} {s}");
@@ -1225,8 +1317,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeNumberFormat_sv_SE: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("sv-SE");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativeNumberFormat(), "−{n}");
@@ -1234,8 +1326,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativePercentageFormat_sv_SE: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("sv-SE");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativePercentageFormat(), "−{n} %");
@@ -1243,8 +1335,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeCurrencyFormat_sv_SE: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("sv-SE");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().commonNegative, "−{n} {s}");
@@ -1254,16 +1346,16 @@ module.exports.testlocaleinfo = {
     //test cases for fi-FI
     
     testLocaleInfoGetDecimalSeparatorfor_fi_FI: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("fi-FI");
+        test.expect(2);
         test.ok(info !== null);
         test.equal(info.getDecimalSeparator(), ",");
         test.done();
     },
     
     testLocaleInfoGetGroupingSeparatorfor_fi_FI: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("fi-FI");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getGroupingSeparator(), " ");
@@ -1271,8 +1363,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetPercentageFormat_fi_FI: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("fi-FI");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getPercentageFormat(), "{n} %");
@@ -1280,8 +1372,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetCurrencyFormat_fi_FI: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("fi-FI");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().common, "{n} {s}");
@@ -1289,8 +1381,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeNumberFormat_fi_FI: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("fi-FI");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativeNumberFormat(), "−{n}");
@@ -1298,8 +1390,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativePercentageFormat_fi_FI: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("fi-FI");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativePercentageFormat(), "−{n} %");
@@ -1307,8 +1399,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeCurrencyFormat_fi_FI: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("fi-FI");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().commonNegative, "−{n} {s}");
@@ -1318,16 +1410,16 @@ module.exports.testlocaleinfo = {
     //test cases for cs_CZ
     
     testLocaleInfoGetDecimalSeparatorfor_cs_CZ: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("cs-CZ");
+        test.expect(2);
         test.ok(info !== null);
         test.equal(info.getDecimalSeparator(), ",");
         test.done();
     },
     
     testLocaleInfoGetGroupingSeparatorfor_cs_CZ: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("cs-CZ");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getGroupingSeparator(), " ");
@@ -1335,8 +1427,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetPercentageFormat_cs_CZ: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("cs-CZ");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getPercentageFormat(), "{n} %");
@@ -1344,8 +1436,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetCurrencyFormat_cs_CZ: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("cs-CZ");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().common, "{n} {s}");
@@ -1353,8 +1445,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeNumberFormat_cs_CZ: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("cs-CZ");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativeNumberFormat(), "-{n}");
@@ -1362,8 +1454,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativePercentageFormat_cs_CZ: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("cs-CZ");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativePercentageFormat(), "-{n} %");
@@ -1371,8 +1463,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeCurrencyFormat_cs_CZ: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("cs-CZ");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().commonNegative, "-{n} {s}");
@@ -1382,16 +1474,16 @@ module.exports.testlocaleinfo = {
     //test cases for el_GR
     
     testLocaleInfoGetDecimalSeparatorfor_el_GR: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("el-GR");
+        test.expect(2);
         test.ok(info !== null);
         test.equal(info.getDecimalSeparator(), ",");
         test.done();
     },
     
     testLocaleInfoGetGroupingSeparatorfor_el_GR: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("el-GR");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getGroupingSeparator(), ".");
@@ -1399,8 +1491,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetPercentageFormat_el_GR: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("el-GR");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getPercentageFormat(), "{n}%");
@@ -1408,8 +1500,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetCurrencyFormat_el_GR: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("el-GR");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().common, "{n} {s}");
@@ -1417,8 +1509,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeNumberFormat_el_GR: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("el-GR");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativeNumberFormat(), "-{n}");
@@ -1426,8 +1518,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativePercentageFormat_el_GR: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("el-GR");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativePercentageFormat(), "-{n}%");
@@ -1435,8 +1527,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeCurrencyFormat_el_GR: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("el-GR");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().commonNegative, "-{n} {s}");
@@ -1446,16 +1538,16 @@ module.exports.testlocaleinfo = {
     //test cases for hu-HU
     
     testLocaleInfoGetDecimalSeparatorfor_hu_HU: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("hu-HU");
+        test.expect(2);
         test.ok(info !== null);
         test.equal(info.getDecimalSeparator(), ",");
         test.done();
     },
     
     testLocaleInfoGetGroupingSeparatorfor_hu_HU: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("hu-HU");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getGroupingSeparator(), " ");
@@ -1463,8 +1555,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetPercentageFormat_hu_HU: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("hu-HU");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getPercentageFormat(), "{n}%");
@@ -1472,8 +1564,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetCurrencyFormat_hu_HU: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("hu-HU");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().common, "{n} {s}");
@@ -1481,8 +1573,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeNumberFormat_hu_HU: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("hu-HU");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativeNumberFormat(), "-{n}");
@@ -1490,8 +1582,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativePercentageFormat_hu_HU: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("hu-HU");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativePercentageFormat(), "-{n}%");
@@ -1499,8 +1591,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeCurrencyFormat_hu_HU: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("hu-HU");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().commonNegative, "-{n} {s}");
@@ -1510,16 +1602,16 @@ module.exports.testlocaleinfo = {
     //test cases for nl_NL
     
     testLocaleInfoGetDecimalSeparatorfor_nl_NL: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("nl-NL");
+        test.expect(2);
         test.ok(info !== null);
         test.equal(info.getDecimalSeparator(), ",");
         test.done();
     },
     
     testLocaleInfoGetGroupingSeparatorfor_nl_NL: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("nl-NL");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getGroupingSeparator(), ".");
@@ -1527,8 +1619,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetPercentageFormat_nl_NL: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("nl-NL");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getPercentageFormat(), "{n}%");
@@ -1536,8 +1628,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetCurrencyFormat_nl_NL: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("nl-NL");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().common, "{s} {n}");
@@ -1545,8 +1637,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeNumberFormat_nl_NL: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("nl-NL");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativeNumberFormat(), "-{n}");
@@ -1554,8 +1646,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativePercentageFormat_nl_NL: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("nl-NL");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativePercentageFormat(), "-{n}%");
@@ -1563,8 +1655,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeCurrencyFormat_nl_NL: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("nl-NL");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().commonNegative, "{s} -{n}");
@@ -1574,16 +1666,16 @@ module.exports.testlocaleinfo = {
     //test cases for pl_PL
     
     testLocaleInfoGetDecimalSeparatorfor_pl_PL: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("pl-PL");
+        test.expect(2);
         test.ok(info !== null);
         test.equal(info.getDecimalSeparator(), ",");
         test.done();
     },
     
     testLocaleInfoGetGroupingSeparatorfor_pl_PL: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("pl-PL");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getGroupingSeparator(), " ");
@@ -1591,8 +1683,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetPercentageFormat_pl_PL: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("pl-PL");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getPercentageFormat(), "{n}%");
@@ -1600,8 +1692,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetCurrencyFormat_pl_PL: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("pl-PL");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().common, "{n} {s}");
@@ -1609,8 +1701,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeNumberFormat_pl_PL: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("pl-PL");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativeNumberFormat(), "-{n}");
@@ -1618,8 +1710,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativePercentageFormat_pl_PL: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("pl-PL");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativePercentageFormat(), "-{n}%");
@@ -1627,8 +1719,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeCurrencyFormat_pl_PL: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("pl-PL");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().commonNegative, "-{n} {s}");
@@ -1638,16 +1730,16 @@ module.exports.testlocaleinfo = {
     //test cases for da-DK
     
     testLocaleInfoGetDecimalSeparatorfor_da_Dk: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("da-DK");
+        test.expect(2);
         test.ok(info !== null);
         test.equal(info.getDecimalSeparator(), ",");
         test.done();
     },
     
     testLocaleInfoGetGroupingSeparatorfor_da_Dk: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("da-DK");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getGroupingSeparator(), ".");
@@ -1655,8 +1747,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetPercentageFormat_da_Dk: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("da-DK");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getPercentageFormat(), "{n} %");
@@ -1664,8 +1756,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetCurrencyFormat_da_Dk: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("da-DK");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().common, "{n} {s}");
@@ -1673,8 +1765,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeNumberFormat_da_Dk: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("da-DK");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativeNumberFormat(), "-{n}");
@@ -1682,8 +1774,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativePercentageFormat_da_Dk: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("da-DK");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativePercentageFormat(), "-{n} %");
@@ -1691,8 +1783,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeCurrencyFormat_da_Dk: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("da-DK");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().commonNegative, "-{n} {s}");
@@ -1702,16 +1794,16 @@ module.exports.testlocaleinfo = {
     //test cases for roRO
     
     testLocaleInfoGetDecimalSeparatorfor_ro_RO: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ro-RO");
+        test.expect(2);
         test.ok(info !== null);
         test.equal(info.getDecimalSeparator(), ",");
         test.done();
     },
     
     testLocaleInfoGetGroupingSeparatorfor_ro_RO: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ro-RO");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getGroupingSeparator(), ".");
@@ -1719,8 +1811,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetPercentageFormat_ro_RO: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ro-RO");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getPercentageFormat(), "{n} %");
@@ -1728,8 +1820,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetCurrencyFormat_ro_RO: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ro-RO");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().common, "{n} {s}");
@@ -1737,8 +1829,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeNumberFormat_ro_RO: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ro-RO");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativeNumberFormat(), "-{n}");
@@ -1746,8 +1838,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativePercentageFormat_ro_RO: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ro-RO");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativePercentageFormat(), "-{n} %");
@@ -1755,8 +1847,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeCurrencyFormat_ro_RO: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ro-RO");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().commonNegative, "-{n} {s}");
@@ -1766,16 +1858,16 @@ module.exports.testlocaleinfo = {
     //test cases for aa-DJ
     
     testLocaleInfoGetDecimalSeparatorfor_aa_DJ: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("aa-DJ");
+        test.expect(2);
         test.ok(info !== null);
         test.equal(info.getDecimalSeparator(), ".");
         test.done();
     },
     
     testLocaleInfoGetGroupingSeparatorfor_aa_DJ: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("aa-DJ");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getGroupingSeparator(), ",");
@@ -1783,8 +1875,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetPercentageFormat_aa_DJ: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("aa-DJ");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getPercentageFormat(), "{n}%");
@@ -1792,8 +1884,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetCurrencyFormat_aa_DJ: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("aa-DJ");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().common, "{s}{n}");
@@ -1801,8 +1893,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeNumberFormat_aa_DJ: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("aa-DJ");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativeNumberFormat(), "-{n}");
@@ -1810,8 +1902,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativePercentageFormat_aa_DJ: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("aa-DJ");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativePercentageFormat(), "-{n}%");
@@ -1819,8 +1911,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeCurrencyFormat_aa_DJ: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("aa-DJ");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().commonNegative, "-{s} {n}");
@@ -1828,8 +1920,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetPrimaryGroupingDigits_aa_DJ: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("aa-DJ");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getPrimaryGroupingDigits(), 3);
@@ -1837,8 +1929,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetSecondaryGroupingDigits_aa_DJ: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("aa-DJ");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getSecondaryGroupingDigits(), 0);
@@ -1846,8 +1938,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoRoundingMode_aa_DJ: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("aa-DJ");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getRoundingMode(), "halfdown");
@@ -1857,16 +1949,16 @@ module.exports.testlocaleinfo = {
     //test cases for af-NA
     
     testLocaleInfoGetDecimalSeparatorfor_af_NA: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("af-NA");
+        test.expect(2);
         test.ok(info !== null);
         test.equal(info.getDecimalSeparator(), ",");
         test.done();
     },
     
     testLocaleInfoGetGroupingSeparatorfor_af_NA: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("af-NA");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getGroupingSeparator(), " ");
@@ -1874,8 +1966,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetPercentageFormat_af_NA: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("af-NA");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getPercentageFormat(), "{n}%");
@@ -1883,8 +1975,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetCurrencyFormat_af_NA: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("af-NA");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().common, "{s}{n}");
@@ -1892,8 +1984,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeNumberFormat_af_NA: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("af-NA");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativeNumberFormat(), "-{n}");
@@ -1901,8 +1993,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativePercentageFormat_af_NA: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("af-NA");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativePercentageFormat(), "-{n}%");
@@ -1910,8 +2002,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeCurrencyFormat_af_NA: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("af-NA");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().commonNegative, "-{s}{n}");
@@ -1919,8 +2011,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetPrimaryGroupingDigits_af_NA: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("af-NA");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getPrimaryGroupingDigits(), 3);
@@ -1928,8 +2020,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetSecondaryGroupingDigits_af_NA: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("af-NA");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getSecondaryGroupingDigits(), 0);
@@ -1937,8 +2029,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoRoundingMode_af_NA: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("af-NA");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getRoundingMode(), "halfdown");
@@ -1948,16 +2040,16 @@ module.exports.testlocaleinfo = {
     //test cases for agq-CM
     
     testLocaleInfoGetDecimalSeparatorfor_agq_CM: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("agq-CM");
+        test.expect(2);
         test.ok(info !== null);
         test.equal(info.getDecimalSeparator(), ",");
         test.done();
     },
     
     testLocaleInfoGetGroupingSeparatorfor_agq_CM: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("agq-CM");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getGroupingSeparator(), " ");
@@ -1965,8 +2057,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetPercentageFormat_agq_CM: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("agq-CM");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getPercentageFormat(), "{n}%");
@@ -1974,8 +2066,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetCurrencyFormat_agq_CM: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("agq-CM");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().common, "{n}{s}");
@@ -1983,8 +2075,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeNumberFormat_agq_CM: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("agq-CM");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativeNumberFormat(), "-{n}");
@@ -1992,8 +2084,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativePercentageFormat_agq_CM: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("agq-CM");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativePercentageFormat(), "-{n}%");
@@ -2001,8 +2093,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeCurrencyFormat_agq_CM: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("agq-CM");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().commonNegative, "-{n}{s}");
@@ -2010,8 +2102,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetPrimaryGroupingDigits_agq_CM: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("agq-CM");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getPrimaryGroupingDigits(), 3);
@@ -2019,8 +2111,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetSecondaryGroupingDigits_agq_CM: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("agq-CM");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getSecondaryGroupingDigits(), 0);
@@ -2028,8 +2120,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoRoundingMode_agq_CM: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("agq-CM");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getRoundingMode(), "halfdown");
@@ -2039,16 +2131,16 @@ module.exports.testlocaleinfo = {
     //test cases for ak-GH
     
     testLocaleInfoGetDecimalSeparatorfor_ak_GH: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ak-GH");
+        test.expect(2);
         test.ok(info !== null);
         test.equal(info.getDecimalSeparator(), ".");
         test.done();
     },
     
     testLocaleInfoGetGroupingSeparatorfor_ak_GH: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ak-GH");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getGroupingSeparator(), ",");
@@ -2056,8 +2148,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetPercentageFormat_ak_GH: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ak-GH");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getPercentageFormat(), "{n}%");
@@ -2065,8 +2157,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetCurrencyFormat_ak_GH: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ak-GH");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().common, "{s}{n}");
@@ -2074,8 +2166,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeNumberFormat_ak_GH: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ak-GH");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativeNumberFormat(), "-{n}");
@@ -2083,8 +2175,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativePercentageFormat_ak_GH: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ak-GH");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativePercentageFormat(), "-{n}%");
@@ -2092,8 +2184,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeCurrencyFormat_ak_GH: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ak-GH");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().commonNegative, "-{s}{n}");
@@ -2101,8 +2193,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetPrimaryGroupingDigits_ak_GH: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ak-GH");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getPrimaryGroupingDigits(), 3);
@@ -2110,8 +2202,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetSecondaryGroupingDigits_ak_GH: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ak-GH");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getSecondaryGroupingDigits(), 0);
@@ -2119,8 +2211,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoRoundingMode_ak_GH: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ak-GH");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getRoundingMode(), "halfdown");
@@ -2129,16 +2221,16 @@ module.exports.testlocaleinfo = {
     //test cases for am-ET
     
     testLocaleInfoGetDecimalSeparatorfor_am_ET: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("am-ET");
+        test.expect(2);
         test.ok(info !== null);
         test.equal(info.getDecimalSeparator(), ".");
         test.done();
     },
     
     testLocaleInfoGetGroupingSeparatorfor_am_ET: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("am-ET");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getGroupingSeparator(), ",");
@@ -2146,8 +2238,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetPercentageFormat_am_ET: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("am-ET");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getPercentageFormat(), "{n}%");
@@ -2155,8 +2247,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetCurrencyFormat_am_ET: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("am-ET");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().common, "{s}{n}");
@@ -2164,8 +2256,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeNumberFormat_am_ET: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("am-ET");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativeNumberFormat(), "-{n}");
@@ -2173,8 +2265,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativePercentageFormat_am_ET: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("am-ET");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativePercentageFormat(), "-{n}%");
@@ -2182,8 +2274,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeCurrencyFormat_am_ET: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("am-ET");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().commonNegative, "-{s}{n}");
@@ -2191,8 +2283,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetPrimaryGroupingDigits_am_ET: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("am-ET");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getPrimaryGroupingDigits(), 3);
@@ -2200,8 +2292,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetSecondaryGroupingDigits_am_ET: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("am-ET");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getSecondaryGroupingDigits(), 0);
@@ -2209,8 +2301,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoRoundingMode_am_ET: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("am-ET");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getRoundingMode(), "halfdown");
@@ -2220,16 +2312,16 @@ module.exports.testlocaleinfo = {
     //test casess for ar-AE
     
     testLocaleInfoGetDecimalSeparatorfor_ar_AE: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ar-AE");
+        test.expect(2);
         test.ok(info !== null);
         test.equal(info.getDecimalSeparator(), "٫");
         test.done();
     },
     
     testLocaleInfoGetGroupingSeparatorfor_ar_AE: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ar-AE");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getGroupingSeparator(), "٬");
@@ -2237,8 +2329,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetPercentageFormat_ar_AE: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ar-AE");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getPercentageFormat(), "{n} ٪؜");
@@ -2246,8 +2338,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetCurrencyFormat_ar_AE: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ar-AE");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().common, "{n} {s}");
@@ -2255,8 +2347,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeNumberFormat_ar_AE: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ar-AE");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativeNumberFormat(), "؜-{n}");
@@ -2264,8 +2356,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativePercentageFormat_ar_AE: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ar-AE");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativePercentageFormat(), "؜-{n} ٪؜");
@@ -2273,8 +2365,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeCurrencyFormat_ar_AE: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ar-AE");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().commonNegative, "؜-{n} {s}");
@@ -2282,8 +2374,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetPrimaryGroupingDigits_ar_AE: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ar-AE");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getPrimaryGroupingDigits(), 3);
@@ -2291,8 +2383,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetSecondaryGroupingDigits_ar_AE: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ar-AE");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getSecondaryGroupingDigits(), 0);
@@ -2300,8 +2392,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoRoundingMode_ar_AE: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ar-AE");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getRoundingMode(), "halfdown");
@@ -2311,16 +2403,16 @@ module.exports.testlocaleinfo = {
     //test cases for ar-DZ
     
     testLocaleInfoGetDecimalSeparatorfor_ar_DZ: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ar-DZ");
+        test.expect(2);
         test.ok(info !== null);
         test.equal(info.getDecimalSeparator(), ",");
         test.done();
     },
     
     testLocaleInfoGetGroupingSeparatorfor_ar_DZ: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ar-DZ");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getGroupingSeparator(), ".");
@@ -2328,8 +2420,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetPercentageFormat_ar_DZ: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ar-DZ");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getPercentageFormat(), "{n}‎%‎");
@@ -2337,8 +2429,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetCurrencyFormat_ar_DZ: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ar-DZ");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().common, "{s} {n}");
@@ -2346,8 +2438,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeNumberFormat_ar_DZ: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ar-DZ");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativeNumberFormat(), "‎-{n}");
@@ -2355,8 +2447,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativePercentageFormat_ar_DZ: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ar-DZ");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativePercentageFormat(), "‎-{n}‎%‎");
@@ -2364,8 +2456,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeCurrencyFormat_ar_DZ: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ar-DZ");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().commonNegative, "‎-{s} {n}");
@@ -2373,8 +2465,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetPrimaryGroupingDigits_ar_DZ: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ar-DZ");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getPrimaryGroupingDigits(), 3);
@@ -2382,8 +2474,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetSecondaryGroupingDigits_ar_DZ: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ar-DZ");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getSecondaryGroupingDigits(), 0);
@@ -2391,8 +2483,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoRoundingMode_ar_DZ: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ar-DZ");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getRoundingMode(), "halfdown");
@@ -2402,16 +2494,16 @@ module.exports.testlocaleinfo = {
     //test cases for ar-TN
     
     testLocaleInfoGetDecimalSeparatorfor_ar_TN: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ar-TN");
+        test.expect(2);
         test.ok(info !== null);
         test.equal(info.getDecimalSeparator(), ",");
         test.done();
     },
     
     testLocaleInfoGetGroupingSeparatorfor_ar_TN: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ar-TN");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getGroupingSeparator(), ".");
@@ -2419,8 +2511,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetPercentageFormat_ar_TN: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ar-TN");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getPercentageFormat(), "{n}‎%‎");
@@ -2428,8 +2520,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetCurrencyFormat_ar_TN: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ar-TN");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().common, "{s} {n}");
@@ -2437,8 +2529,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeNumberFormat_ar_TN: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ar-TN");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativeNumberFormat(), "‎-{n}");
@@ -2446,8 +2538,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativePercentageFormat_ar_TN: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ar-TN");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativePercentageFormat(), "‎-{n}‎%‎");
@@ -2455,8 +2547,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeCurrencyFormat_ar_TN: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ar-TN");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().commonNegative, "‎-{s} {n}");
@@ -2464,8 +2556,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetPrimaryGroupingDigits_ar_TN: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ar-TN");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getPrimaryGroupingDigits(), 3);
@@ -2473,8 +2565,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetSecondaryGroupingDigits_ar_TN: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ar-TN");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getSecondaryGroupingDigits(), 0);
@@ -2482,8 +2574,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoRoundingMode_ar_TN: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ar-TN");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getRoundingMode(), "halfdown");
@@ -2492,16 +2584,16 @@ module.exports.testlocaleinfo = {
     //test cases for as-IN
     
     testLocaleInfoGetDecimalSeparatorfor_as_IN: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("as-IN");
+        test.expect(2);
         test.ok(info !== null);
         test.equal(info.getDecimalSeparator(), ".");
         test.done();
     },
     
     testLocaleInfoGetGroupingSeparatorfor_as_IN: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("as-IN");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getGroupingSeparator(), ",");
@@ -2509,8 +2601,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetPercentageFormat_as_IN: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("as-IN");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getPercentageFormat(), "{n}%");
@@ -2518,8 +2610,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetCurrencyFormat_as_IN: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("as-IN");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().common, "{s} {n}");
@@ -2527,8 +2619,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeNumberFormat_as_IN: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("as-IN");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativeNumberFormat(), "-{n}");
@@ -2536,8 +2628,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativePercentageFormat_as_IN: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("as-IN");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativePercentageFormat(), "-{n}%");
@@ -2545,8 +2637,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeCurrencyFormat_as_IN: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("as-IN");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().commonNegative, "-{s} {n}");
@@ -2554,8 +2646,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetPrimaryGroupingDigits_as_IN: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("as-IN");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getPrimaryGroupingDigits(), 3);
@@ -2563,8 +2655,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetSecondaryGroupingDigits_as_IN: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("as-IN");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getSecondaryGroupingDigits(), 2);
@@ -2572,8 +2664,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoRoundingMode_as_IN: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("as-IN");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getRoundingMode(), "halfdown");
@@ -2582,16 +2674,16 @@ module.exports.testlocaleinfo = {
     //test cases for asa_TZ
     
     testLocaleInfoGetDecimalSeparatorfor_asa_TZ: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("asa-TZ");
+        test.expect(2);
         test.ok(info !== null);
         test.equal(info.getDecimalSeparator(), ".");
         test.done();
     },
     
     testLocaleInfoGetGroupingSeparatorfor_asa_TZ: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("asa-TZ");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getGroupingSeparator(), ",");
@@ -2599,8 +2691,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetPercentageFormat_asa_TZ: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("asa-TZ");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getPercentageFormat(), "{n}%");
@@ -2608,8 +2700,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetCurrencyFormat_asa_TZ: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("asa-TZ");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().common, "{n} {s}");
@@ -2617,8 +2709,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeNumberFormat_asa_TZ: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("asa-TZ");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativeNumberFormat(), "-{n}");
@@ -2626,8 +2718,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativePercentageFormat_asa_TZ: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("asa-TZ");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativePercentageFormat(), "-{n}%");
@@ -2635,8 +2727,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeCurrencyFormat_asa_TZ: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("asa-TZ");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().commonNegative, "-{n} {s}");
@@ -2644,8 +2736,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetPrimaryGroupingDigits_asa_TZ: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("asa-TZ");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getPrimaryGroupingDigits(), 3);
@@ -2653,8 +2745,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetSecondaryGroupingDigits_asa_TZ: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("asa-TZ");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getSecondaryGroupingDigits(), 0);
@@ -2662,8 +2754,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoRoundingMode_asa_TZ: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("asa-TZ");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getRoundingMode(), "halfdown");
@@ -2673,16 +2765,16 @@ module.exports.testlocaleinfo = {
     //test cases for az-AZ
     
     testLocaleInfoGetDecimalSeparatorfor_az_AZ: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("az-AZ");
+        test.expect(2);
         test.ok(info !== null);
         test.equal(info.getDecimalSeparator(), ",");
         test.done();
     },
     
     testLocaleInfoGetGroupingSeparatorfor_az_AZ: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("az-AZ");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getGroupingSeparator(), ".");
@@ -2690,8 +2782,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetPercentageFormat_az_AZ: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("az-AZ");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getPercentageFormat(), "{n}%");
@@ -2699,8 +2791,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetCurrencyFormat_az_AZ: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("az-AZ");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().common, "{s} {n}");
@@ -2708,8 +2800,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeNumberFormat_az_AZ: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("az-AZ");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativeNumberFormat(), "-{n}");
@@ -2717,8 +2809,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativePercentageFormat_az_AZ: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("az-AZ");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativePercentageFormat(), "-{n}%");
@@ -2726,8 +2818,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeCurrencyFormat_az_AZ: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("az-AZ");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().commonNegative, "-{s} {n}");
@@ -2735,8 +2827,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetPrimaryGroupingDigits_az_AZ: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("az-AZ");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getPrimaryGroupingDigits(), 3);
@@ -2744,8 +2836,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetSecondaryGroupingDigits_az_AZ: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("az-AZ");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getSecondaryGroupingDigits(), 0);
@@ -2753,8 +2845,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoRoundingMode_az_AZ: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("az-AZ");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getRoundingMode(), "halfdown");
@@ -2764,16 +2856,16 @@ module.exports.testlocaleinfo = {
     //test cases for be-BY
     
     testLocaleInfoGetDecimalSeparatorfor_be_BY: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("be-BY");
+        test.expect(2);
         test.ok(info !== null);
         test.equal(info.getDecimalSeparator(), ",");
         test.done();
     },
     
     testLocaleInfoGetGroupingSeparatorfor_be_BY: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("be-BY");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getGroupingSeparator(), " ");
@@ -2781,8 +2873,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetPercentageFormat_be_BY: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("be-BY");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getPercentageFormat(), "{n} %");
@@ -2790,8 +2882,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetCurrencyFormat_be_BY: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("be-BY");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().common, "{n} {s}");
@@ -2799,8 +2891,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeNumberFormat_be_BY: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("be-BY");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativeNumberFormat(), "-{n}");
@@ -2808,8 +2900,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativePercentageFormat_be_BY: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("be-BY");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativePercentageFormat(), "-{n} %");
@@ -2817,8 +2909,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeCurrencyFormat_be_BY: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("be-BY");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().commonNegative, "-{n} {s}");
@@ -2826,8 +2918,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetPrimaryGroupingDigits_be_BY: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("be-BY");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getPrimaryGroupingDigits(), 3);
@@ -2835,8 +2927,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetSecondaryGroupingDigits_be_BY: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("be-BY");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getSecondaryGroupingDigits(), 0);
@@ -2844,8 +2936,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoRoundingMode_be_BY: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("be-BY");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getRoundingMode(), "halfdown");
@@ -2854,16 +2946,16 @@ module.exports.testlocaleinfo = {
     
     
     testLocaleInfoGetDecimalSeparatorfor_bg_BG: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("bg-BG");
+        test.expect(2);
         test.ok(info !== null);
         test.equal(info.getDecimalSeparator(), ",");
         test.done();
     },
     
     testLocaleInfoGetGroupingSeparatorfor_bg_BG: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("bg-BG");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getGroupingSeparator(), " ");
@@ -2871,8 +2963,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetPercentageFormat_bg_BG: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("bg-BG");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getPercentageFormat(), "{n}%");
@@ -2880,8 +2972,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetCurrencyFormat_bg_BG: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("bg-BG");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().common, "{n} {s}");
@@ -2889,8 +2981,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeNumberFormat_bg_BG: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("bg-BG");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativeNumberFormat(), "-{n}");
@@ -2898,8 +2990,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativePercentageFormat_bg_BG: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("bg-BG");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativePercentageFormat(), "-{n}%");
@@ -2907,8 +2999,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeCurrencyFormat_bg_BG: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("bg-BG");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().commonNegative, "-{n} {s}");
@@ -2916,8 +3008,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetPrimaryGroupingDigits_bg_BG: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("bg-BG");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getPrimaryGroupingDigits(), 3);
@@ -2925,8 +3017,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetSecondaryGroupingDigits_bg_BG: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("bg-BG");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getSecondaryGroupingDigits(), 0);
@@ -2936,16 +3028,16 @@ module.exports.testlocaleinfo = {
     
     
     testLocaleInfoGetDecimalSeparatorfor_bm_ML: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("bm-ML");
+        test.expect(2);
         test.ok(info !== null);
         test.equal(info.getDecimalSeparator(), ".");
         test.done();
     },
     
     testLocaleInfoGetGroupingSeparatorfor_bm_ML: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("bm-ML");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getGroupingSeparator(), ",");
@@ -2953,8 +3045,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetPercentageFormat_bm_ML: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("bm-ML");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getPercentageFormat(), "{n}%");
@@ -2962,8 +3054,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetCurrencyFormat_bm_ML: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("bm-ML");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().common, "{s}{n}");
@@ -2971,8 +3063,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeNumberFormat_bm_ML: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("bm-ML");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativeNumberFormat(), "-{n}");
@@ -2980,8 +3072,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativePercentageFormat_bm_ML: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("bm-ML");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativePercentageFormat(), "-{n}%");
@@ -2989,8 +3081,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeCurrencyFormat_bm_ML: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("bm-ML");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().commonNegative, "-{s}{n}");
@@ -2998,8 +3090,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetPrimaryGroupingDigits_bm_ML: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("bm-ML");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getPrimaryGroupingDigits(), 3);
@@ -3007,8 +3099,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetSecondaryGroupingDigits_bm_ML: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("bm-ML");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getSecondaryGroupingDigits(), 0);
@@ -3016,8 +3108,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoRoundingMode_bm_ML: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("bm-ML");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getRoundingMode(), "halfdown");
@@ -3025,16 +3117,16 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetDecimalSeparatorfor_bn_IN: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("bn-IN");
+        test.expect(2);
         test.ok(info !== null);
         test.equal(info.getDecimalSeparator(), ".");
         test.done();
     },
     
     testLocaleInfoGetGroupingSeparatorfor_bn_IN: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("bn-IN");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getGroupingSeparator(), ",");
@@ -3042,8 +3134,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetPercentageFormat_bn_IN: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("bn-IN");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getPercentageFormat(), "{n}%");
@@ -3051,8 +3143,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetCurrencyFormat_bn_IN: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("bn-IN");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().common, "{n}{s}");
@@ -3060,8 +3152,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeNumberFormat_bn_IN: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("bn-IN");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativeNumberFormat(), "-{n}");
@@ -3069,8 +3161,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativePercentageFormat_bn_IN: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("bn-IN");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativePercentageFormat(), "-{n}%");
@@ -3078,8 +3170,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeCurrencyFormat_bn_IN: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("bn-IN");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().commonNegative, "-{n}{s}");
@@ -3087,8 +3179,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetPrimaryGroupingDigits_bn_IN: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("bn-IN");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getPrimaryGroupingDigits(), 3);
@@ -3096,8 +3188,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetSecondaryGroupingDigits_bn_IN: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("bn-IN");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getSecondaryGroupingDigits(), 2);
@@ -3105,8 +3197,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoRoundingMode_bn_IN: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("bn-IN");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getRoundingMode(), "halfdown");
@@ -3115,16 +3207,16 @@ module.exports.testlocaleinfo = {
     //test cases for br-FR
     
     testLocaleInfoGetDecimalSeparatorfor_br_FR: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("br-FR");
+        test.expect(2);
         test.ok(info !== null);
         test.equal(info.getDecimalSeparator(), ",");
         test.done();
     },
     
     testLocaleInfoGetGroupingSeparatorfor_br_FR: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("br-FR");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getGroupingSeparator(), " ");
@@ -3132,8 +3224,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetPercentageFormat_br_FR: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("br-FR");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getPercentageFormat(), "{n} %");
@@ -3141,8 +3233,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetCurrencyFormat_br_FR: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("br-FR");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().common, "{n} {s}");
@@ -3150,8 +3242,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeNumberFormat_br_FR: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("br-FR");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativeNumberFormat(), "-{n}");
@@ -3159,8 +3251,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativePercentageFormat_br_FR: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("br-FR");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativePercentageFormat(), "-{n} %");
@@ -3168,8 +3260,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeCurrencyFormat_br_FR: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("br-FR");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().commonNegative, "-{n} {s}");
@@ -3177,8 +3269,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetPrimaryGroupingDigits_br_FR: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("br-FR");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getPrimaryGroupingDigits(), 3);
@@ -3186,8 +3278,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetSecondaryGroupingDigits_br_FR: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("br-FR");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getSecondaryGroupingDigits(), 0);
@@ -3195,8 +3287,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoRoundingMode_br_FR: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("br-FR");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getRoundingMode(), "halfdown");
@@ -3207,16 +3299,16 @@ module.exports.testlocaleinfo = {
     //test cases for bs-BA-Cyrl
     
     testLocaleInfoGetDecimalSeparatorfor_bs_Cyrl_BA: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("bs-BA-Cyrl");
+        test.expect(2);
         test.ok(info !== null);
         test.equal(info.getDecimalSeparator(), ",");
         test.done();
     },
     
     testLocaleInfoGetGroupingSeparatorfor_bs_Cyrl_BA: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("bs-BA-Cyrl");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getGroupingSeparator(), ".");
@@ -3224,8 +3316,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetPercentageFormat_bs_Cyrl_BA: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("bs-BA-Cyrl");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getPercentageFormat(), "{n}%");
@@ -3233,8 +3325,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetCurrencyFormat_bs_Cyrl_BA: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("bs-BA-Cyrl");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().common, "{n} {s}");
@@ -3242,8 +3334,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeNumberFormat_bs_Cyrl_BA: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("bs-BA-Cyrl");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativeNumberFormat(), "-{n}");
@@ -3251,8 +3343,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativePercentageFormat_bs_Cyrl_BA: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("bs-BA-Cyrl");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativePercentageFormat(), "-{n}%");
@@ -3260,8 +3352,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeCurrencyFormat_bs_Cyrl_BA: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("bs-BA-Cyrl");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().commonNegative, "-{n} {s}");
@@ -3269,8 +3361,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetPrimaryGroupingDigits_bs_Cyrl_BA: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("bs-BA-Cyrl");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getPrimaryGroupingDigits(), 3);
@@ -3278,8 +3370,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetSecondaryGroupingDigits_bs_Cyrl_BA: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("bs-BA-Cyrl");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getSecondaryGroupingDigits(), 0);
@@ -3287,8 +3379,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoRoundingMode_bs_Cyrl_BA: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("bs-BA-Cyrl");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getRoundingMode(), "halfdown");
@@ -3296,24 +3388,24 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetDecimalSeparatorfor_bs_BS: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("bs-BS");
+        test.expect(2);
         test.ok(info !== null);
         test.equal(info.getDecimalSeparator(), ",");
         test.done();
     },
     
     testLocaleInfoGetGroupingSeparatorfor_bs_BS: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("bs-BS");
+        test.expect(2);
         test.ok(info !== null);
         test.equal(info.getGroupingSeparator(), ".");
         test.done();
     },
     
     testLocaleInfoGetPercentageFormat_bs_BS: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("bs-BS");
+        test.expect(2);
         test.ok(info !== null);
         test.equal(info.getPercentageFormat(), "{n} %");
         test.done();
@@ -3321,8 +3413,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeNumberFormat_bs_BS: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("bs-BS");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativeNumberFormat(), "-{n}");
@@ -3330,8 +3422,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativePercentageFormat_bs_BS: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("bs-BS");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativePercentageFormat(), "-{n} %");
@@ -3339,8 +3431,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeCurrencyFormat_bs_BS: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("bs-BS");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().commonNegative, "-{n} {s}");
@@ -3348,26 +3440,26 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetPrimaryGroupingDigits_bs_BS: function(test) {
-        test.expect(2);
     
         var info = new LocaleInfo("bs-BS");
+        test.expect(2);
         test.ok(info !== null);
         test.equal(info.getPrimaryGroupingDigits(), 3);
         test.done();
     },
     
     testLocaleInfoGetSecondaryGroupingDigits_bs_BS: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("bs-BS");
+        test.expect(2);
         test.ok(info !== null);
         test.equal(info.getSecondaryGroupingDigits(), 0);
         test.done();
     },
     
     testLocaleInfoRoundingMode_bs_BS: function(test) {
-        test.expect(2);
     
         var info = new LocaleInfo("bs-BS");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getRoundingMode(), "halfdown");
@@ -3378,16 +3470,16 @@ module.exports.testlocaleinfo = {
     //test cases for bs-ME
     
     testLocaleInfoGetDecimalSeparatorfor_bs_ME: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("bs-ME");
+        test.expect(2);
         test.ok(info !== null);
         test.equal(info.getDecimalSeparator(), ",");
         test.done();
     },
     
     testLocaleInfoGetGroupingSeparatorfor_bs_ME: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("bs-ME");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getGroupingSeparator(), ".");
@@ -3395,8 +3487,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetPercentageFormat_bs_ME: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("bs-ME");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getPercentageFormat(), "{n} %");
@@ -3404,8 +3496,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetCurrencyFormat_bs_ME: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("bs-ME");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().common, "{n} {s}");
@@ -3413,8 +3505,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeNumberFormat_bs_ME: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("bs-ME");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativeNumberFormat(), "-{n}");
@@ -3422,8 +3514,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativePercentageFormat_bs_ME: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("bs-ME");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativePercentageFormat(), "-{n} %");
@@ -3431,16 +3523,16 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeCurrencyFormat_bs_ME: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("bs-ME");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().commonNegative, "-{n} {s}");
         test.done();
     },
     testLocaleInfoGetPrimaryGroupingDigits_bs_ME: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("bs-ME");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getPrimaryGroupingDigits(), 3);
@@ -3448,8 +3540,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetSecondaryGroupingDigits_bs_ME: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("bs-ME");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getSecondaryGroupingDigits(), 0);
@@ -3457,8 +3549,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoRoundingMode_bs_ME: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("bs-ME");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getRoundingMode(), "halfdown");
@@ -3467,16 +3559,16 @@ module.exports.testlocaleinfo = {
     //test cases for ca-FR
     
     testLocaleInfoGetDecimalSeparatorfor_ca_FR: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ca-FR");
+        test.expect(2);
         test.ok(info !== null);
         test.equal(info.getDecimalSeparator(), ",");
         test.done();
     },
     
     testLocaleInfoGetGroupingSeparatorfor_ca_FR: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ca-FR");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getGroupingSeparator(), ".");
@@ -3484,8 +3576,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetPercentageFormat_ca_FR: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ca-FR");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getPercentageFormat(), "{n}%");
@@ -3493,8 +3585,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetCurrencyFormat_ca_FR: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ca-FR");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().common, "{n} {s}");
@@ -3502,8 +3594,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeNumberFormat_ca_FR: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ca-FR");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativeNumberFormat(), "-{n}");
@@ -3511,8 +3603,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativePercentageFormat_ca_FR: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ca-FR");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativePercentageFormat(), "-{n}%");
@@ -3520,16 +3612,16 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeCurrencyFormat_ca_FR: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ca-FR");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().commonNegative, "-{n} {s}");
         test.done();
     },
     testLocaleInfoGetPrimaryGroupingDigits_ca_FR: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ca-FR");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getPrimaryGroupingDigits(), 3);
@@ -3537,8 +3629,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetSecondaryGroupingDigits_ca_FR: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ca-FR");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getSecondaryGroupingDigits(), 0);
@@ -3546,8 +3638,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoRoundingMode_ca_FR: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ca-FR");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getRoundingMode(), "halfdown");
@@ -3556,16 +3648,16 @@ module.exports.testlocaleinfo = {
     //test cases for de-AT
     
     testLocaleInfoGetDecimalSeparatorfor_de_AT: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("de-AT");
+        test.expect(2);
         test.ok(info !== null);
         test.equal(info.getDecimalSeparator(), ",");
         test.done();
     },
     
     testLocaleInfoGetGroupingSeparatorfor_de_AT: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("de-AT");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getGroupingSeparator(), " ");
@@ -3573,8 +3665,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetPercentageFormat_de_AT: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("de-AT");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getPercentageFormat(), "{n} %");
@@ -3582,8 +3674,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetCurrencyFormat_de_AT: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("de-AT");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().common, "{s} {n}");
@@ -3591,8 +3683,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeNumberFormat_de_AT: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("de-AT");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativeNumberFormat(), "-{n}");
@@ -3600,8 +3692,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativePercentageFormat_de_AT: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("de-AT");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativePercentageFormat(), "-{n} %");
@@ -3609,16 +3701,16 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeCurrencyFormat_de_AT: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("de-AT");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().commonNegative, "-{s} {n}");
         test.done();
     },
     testLocaleInfoGetPrimaryGroupingDigits_de_AT: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("de-AT");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getPrimaryGroupingDigits(), 3);
@@ -3626,8 +3718,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetSecondaryGroupingDigits_de_AT: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("de-AT");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getSecondaryGroupingDigits(), 0);
@@ -3635,8 +3727,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoRoundingMode_de_AT: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("de-AT");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getRoundingMode(), "halfdown");
@@ -3647,16 +3739,16 @@ module.exports.testlocaleinfo = {
     //test cases for fa
     
     testLocaleInfoGetDecimalSeparatorfor_fa: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("fa-IR");
+        test.expect(2);
         test.ok(info !== null);
         test.equal(info.getDecimalSeparator(), "٫");
         test.done();
     },
     
     testLocaleInfoGetGroupingSeparatorfor_fa: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("fa-IR");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getGroupingSeparator(), "٬");
@@ -3664,8 +3756,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetPercentageFormat_fa: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("fa-IR");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getPercentageFormat(), "‎٪ {n}");
@@ -3673,8 +3765,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetCurrencyFormat_fa: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("fa-IR");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().common, "{n} ؜{s}");
@@ -3682,8 +3774,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeNumberFormat_fa: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("fa-IR");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativeNumberFormat(), "‎−{n}");
@@ -3691,8 +3783,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativePercentageFormat_fa: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("fa-IR");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativePercentageFormat(), "‎٪ -{n}");
@@ -3700,16 +3792,16 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeCurrencyFormat_fa: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("fa-IR");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().commonNegative, "؜-{n} ؜{s}");
         test.done();
     },
     testLocaleInfoGetPrimaryGroupingDigits_fa: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("fa-IR");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getPrimaryGroupingDigits(), 3);
@@ -3717,8 +3809,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetSecondaryGroupingDigits_fa: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("fa-IR");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getSecondaryGroupingDigits(), 0);
@@ -3726,8 +3818,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoRoundingMode_fa: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("fa-IR");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getRoundingMode(), "halfdown");
@@ -3737,16 +3829,16 @@ module.exports.testlocaleinfo = {
     //test cases for fa-AF
     
     testLocaleInfoGetDecimalSeparatorfor_fa_AF: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("fa-AF");
+        test.expect(2);
         test.ok(info !== null);
         test.equal(info.getDecimalSeparator(), "٫");
         test.done();
     },
     
     testLocaleInfoGetGroupingSeparatorfor_fa_AF: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("fa-AF");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getGroupingSeparator(), "٬");
@@ -3754,8 +3846,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetPercentageFormat_fa_AF: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("fa-AF");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getPercentageFormat(), "‎٪ {n}");
@@ -3763,8 +3855,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetCurrencyFormat_fa_AF: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("fa-AF");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().common, "{s} {n}");
@@ -3772,8 +3864,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeNumberFormat_fa_AF: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("fa-AF");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativeNumberFormat(), "‎−{n}");
@@ -3781,8 +3873,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativePercentageFormat_fa_AF: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("fa-AF");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativePercentageFormat(), "‎٪ -{n}");
@@ -3790,8 +3882,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeCurrencyFormat_fa_AF: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("fa-AF");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().commonNegative, "‎−{s} {n}");
@@ -3799,8 +3891,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetPrimaryGroupingDigits_fa_AF: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("fa-AF");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getPrimaryGroupingDigits(), 3);
@@ -3808,8 +3900,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetSecondaryGroupingDigits_fa_AF: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("fa-AF");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getSecondaryGroupingDigits(), 0);
@@ -3817,8 +3909,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoRoundingMode_fa_AF: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("fa-AF");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getRoundingMode(), "halfdown");
@@ -3830,16 +3922,16 @@ module.exports.testlocaleinfo = {
     //test cases for ff-SN
     
     testLocaleInfoGetDecimalSeparatorfor_ff_SN: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ff-SN");
+        test.expect(2);
         test.ok(info !== null);
         test.equal(info.getDecimalSeparator(), ",");
         test.done();
     },
     
     testLocaleInfoGetGroupingSeparatorfor_ff_SN: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ff-SN");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getGroupingSeparator(), " ");
@@ -3847,8 +3939,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetPercentageFormat_ff_SN: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ff-SN");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getPercentageFormat(), "{n}%");
@@ -3856,16 +3948,16 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetCurrencyFormat_ff_SN: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ff-SN");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().common, "{n} {s}");
         test.done();
     },
     testLocaleInfoGetNegativeNumberFormat_ff_SN: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ff-SN");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativeNumberFormat(), "-{n}");
@@ -3873,8 +3965,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativePercentageFormat_ff_SN: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ff-SN");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativePercentageFormat(), "-{n}%");
@@ -3882,8 +3974,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeCurrencyFormat_ff_SN: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ff-SN");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().commonNegative, "-{n} {s}");
@@ -3892,8 +3984,8 @@ module.exports.testlocaleinfo = {
     
     
     testLocaleInfoGetPrimaryGroupingDigits_ff_SN: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ff-SN");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getPrimaryGroupingDigits(), 3);
@@ -3901,8 +3993,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetSecondaryGroupingDigits_ff_SN: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ff-SN");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getSecondaryGroupingDigits(), 0);
@@ -3910,8 +4002,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoRoundingMode_ff_SN: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ff-SN");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getRoundingMode(), "halfdown");
@@ -3922,16 +4014,16 @@ module.exports.testlocaleinfo = {
     //test cases for fj-FJ
     
     testLocaleInfoGetDecimalSeparatorfor_fj_FJ: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("fj-FJ");
+        test.expect(2);
         test.ok(info !== null);
         test.equal(info.getDecimalSeparator(), ".");
         test.done();
     },
     
     testLocaleInfoGetGroupingSeparatorfor_fj_FJ: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("fj-FJ");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getGroupingSeparator(), ",");
@@ -3939,8 +4031,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetPercentageFormat_fj_FJ: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("fj-FJ");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getPercentageFormat(), "{n}%");
@@ -3948,8 +4040,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetCurrencyFormat_fj_FJ: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("fj-FJ");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().common, "{s} {n}");
@@ -3957,8 +4049,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeNumberFormat_fj_FJ: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("fj-FJ");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativeNumberFormat(), "-{n}");
@@ -3966,8 +4058,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativePercentageFormat_fj_FJ: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("fj-FJ");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativePercentageFormat(), "-{n}%");
@@ -3975,8 +4067,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeCurrencyFormat_fj_FJ: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("fj-FJ");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().commonNegative, "-{s} {n}");
@@ -3984,8 +4076,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetPrimaryGroupingDigits_fj_FJ: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("fj-FJ");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getPrimaryGroupingDigits(), 3);
@@ -3993,8 +4085,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetSecondaryGroupingDigits_fj_FJ: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("fj-FJ");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getSecondaryGroupingDigits(), 0);
@@ -4002,8 +4094,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoRoundingMode_fj_FJsss: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("fj-FJ");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getRoundingMode(), "halfdown");
@@ -4013,16 +4105,16 @@ module.exports.testlocaleinfo = {
     //test cases for fo
     
     testLocaleInfoGetDecimalSeparatorfor_fo: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("fo");
+        test.expect(2);
         test.ok(info !== null);
         test.equal(info.getDecimalSeparator(), ",");
         test.done();
     },
     
     testLocaleInfoGetGroupingSeparatorfor_fo: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("fo");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getGroupingSeparator(), ".");
@@ -4030,8 +4122,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetPercentageFormat_fo: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("fo");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getPercentageFormat(), "{n} %");
@@ -4039,8 +4131,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetCurrencyFormat_fo: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("fo");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().common, "{n} {s}");
@@ -4048,8 +4140,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeNumberFormat_fo: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("fo");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativeNumberFormat(), "−{n}");
@@ -4057,8 +4149,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativePercentageFormat_fo: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("fo");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativePercentageFormat(), "−{n} %");
@@ -4066,8 +4158,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeCurrencyFormat_fo: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("fo");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().commonNegative, "−{n} {s}");
@@ -4075,8 +4167,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetPrimaryGroupingDigits_fo: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("fo");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getPrimaryGroupingDigits(), 3);
@@ -4084,8 +4176,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetSecondaryGroupingDigits_fo: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("fo");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getSecondaryGroupingDigits(), 0);
@@ -4093,8 +4185,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoRoundingMode_fo: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("fo");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getRoundingMode(), "halfdown");
@@ -4105,16 +4197,16 @@ module.exports.testlocaleinfo = {
     //test cases for fr-AD
     
     testLocaleInfoGetDecimalSeparatorfor_fr_AD: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("fr-AD");
+        test.expect(2);
         test.ok(info !== null);
         test.equal(info.getDecimalSeparator(), ",");
         test.done();
     },
     
     testLocaleInfoGetGroupingSeparatorfor_fr_AD: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("fr-AD");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getGroupingSeparator(), " ");
@@ -4122,8 +4214,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetPercentageFormat_fr_AD: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("fr-AD");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getPercentageFormat(), "{n} %");
@@ -4131,8 +4223,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetCurrencyFormat_fr_AD: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("fr-AD");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().common, "{n} {s}");
@@ -4140,8 +4232,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeNumberFormat_fr_AD: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("fr-AD");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativeNumberFormat(), "-{n}");
@@ -4149,8 +4241,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativePercentageFormat_fr_AD: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("fr-AD");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativePercentageFormat(), "-{n} %");
@@ -4158,8 +4250,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeCurrencyFormat_fr_AD: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("fr-AD");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().commonNegative, "-{n} {s}");
@@ -4167,8 +4259,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetPrimaryGroupingDigits_fr_AD: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("fr-AD");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getPrimaryGroupingDigits(), 3);
@@ -4176,8 +4268,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetSecondaryGroupingDigits_fr_AD: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("fr-AD");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getSecondaryGroupingDigits(), 0);
@@ -4185,8 +4277,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoRoundingMode_fr_AD: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("fr-AD");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getRoundingMode(), "halfdown");
@@ -4196,16 +4288,16 @@ module.exports.testlocaleinfo = {
     //test cases for fr-BE
     
     testLocaleInfoGetDecimalSeparatorfor_fr_BE: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("fr-BE");
+        test.expect(2);
         test.ok(info !== null);
         test.equal(info.getDecimalSeparator(), ",");
         test.done();
     },
     
     testLocaleInfoGetGroupingSeparatorfor_fr_BE: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("fr-BE");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getGroupingSeparator(), " ");
@@ -4213,8 +4305,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetPercentageFormat_fr_BE: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("fr-BE");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getPercentageFormat(), "{n} %");
@@ -4222,16 +4314,16 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetCurrencyFormat_fr_BE: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("fr-BE");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().common, "{n} {s}");
         test.done();
     },
     testLocaleInfoGetNegativeNumberFormat_fr_BE: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("fr-BE");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativeNumberFormat(), "-{n}");
@@ -4239,8 +4331,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativePercentageFormat_fr_BE: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("fr-BE");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativePercentageFormat(), "-{n} %");
@@ -4248,8 +4340,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeCurrencyFormat_fr_BE: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("fr-BE");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().commonNegative, "-{n} {s}");
@@ -4258,8 +4350,8 @@ module.exports.testlocaleinfo = {
     
     
     testLocaleInfoGetPrimaryGroupingDigits_fr_BE: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("fr-BE");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getPrimaryGroupingDigits(), 3);
@@ -4267,8 +4359,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetSecondaryGroupingDigits_fr_BE: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("fr-BE");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getSecondaryGroupingDigits(), 0);
@@ -4276,8 +4368,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoRoundingMode_fr_BE: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("fr-BE");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getRoundingMode(), "halfdown");
@@ -4287,16 +4379,16 @@ module.exports.testlocaleinfo = {
     //test cases for fr-CH
     
     testLocaleInfoGetDecimalSeparatorfor_fr_CH: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("fr-CH");
+        test.expect(2);
         test.ok(info !== null);
         test.equal(info.getDecimalSeparator(), ".");
         test.done();
     },
     
     testLocaleInfoGetGroupingSeparatorfor_fr_CH: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("fr-CH");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getGroupingSeparator(), " ");
@@ -4304,8 +4396,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeNumberFormat_fr_CH: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("fr-CH");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativeNumberFormat(), "-{n}");
@@ -4313,8 +4405,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativePercentageFormat_fr_CH: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("fr-CH");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativePercentageFormat(), "-{n}%");
@@ -4322,8 +4414,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeCurrencyFormat_fr_CH: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("fr-CH");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().commonNegative, "{s}-{n}");
@@ -4331,8 +4423,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetPercentageFormat_fr_CH: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("fr-CH");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getPercentageFormat(), "{n}%");
@@ -4340,8 +4432,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetCurrencyFormat_fr_CH: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("fr-CH");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().common, "{s} {n}");
@@ -4349,8 +4441,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetPrimaryGroupingDigits_fr_CH: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("fr-CH");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getPrimaryGroupingDigits(), 3);
@@ -4358,8 +4450,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetSecondaryGroupingDigits_fr_CH: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("fr-CH");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getSecondaryGroupingDigits(), 0);
@@ -4367,8 +4459,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoRoundingMode_fr_CH: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("fr-CH");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getRoundingMode(), "halfdown");
@@ -4378,16 +4470,16 @@ module.exports.testlocaleinfo = {
     //test cases for fr-DZ
     
     testLocaleInfoGetDecimalSeparatorfor_fr_DZ: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("fr-DZ");
+        test.expect(2);
         test.ok(info !== null);
         test.equal(info.getDecimalSeparator(), ",");
         test.done();
     },
     
     testLocaleInfoGetGroupingSeparatorfor_fr_DZ: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("fr-DZ");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getGroupingSeparator(), " ");
@@ -4395,8 +4487,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetPercentageFormat_fr_DZ: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("fr-DZ");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getPercentageFormat(), "{n} %");
@@ -4404,8 +4496,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetCurrencyFormat_fr_DZ: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("fr-DZ");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().common, "{n} {s}");
@@ -4413,8 +4505,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeNumberFormat_fr_DZ: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("fr-DZ");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativeNumberFormat(), "-{n}");
@@ -4422,8 +4514,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativePercentageFormat_fr_DZ: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("fr-DZ");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativePercentageFormat(), "-{n} %");
@@ -4431,8 +4523,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeCurrencyFormat_fr_DZ: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("fr-DZ");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().commonNegative, "-{n} {s}");
@@ -4440,8 +4532,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetPrimaryGroupingDigits_fr_DZ: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("fr-DZ");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getPrimaryGroupingDigits(), 3);
@@ -4449,8 +4541,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetSecondaryGroupingDigits_fr_DZ: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("fr-DZ");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getSecondaryGroupingDigits(), 0);
@@ -4458,8 +4550,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoRoundingMode_fr_DZ: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("fr-DZ");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getRoundingMode(), "halfdown");
@@ -4469,16 +4561,16 @@ module.exports.testlocaleinfo = {
     //test cases for fr-LU
     
     testLocaleInfoGetDecimalSeparatorfor_fr_LU: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("fr-LU");
+        test.expect(2);
         test.ok(info !== null);
         test.equal(info.getDecimalSeparator(), ",");
         test.done();
     },
     
     testLocaleInfoGetGroupingSeparatorfor_fr_LU: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("fr-LU");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getGroupingSeparator(), ".");
@@ -4486,8 +4578,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetPercentageFormat_fr_LU: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("fr-LU");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getPercentageFormat(), "{n} %");
@@ -4495,8 +4587,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetCurrencyFormat_fr_LU: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("fr-LU");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().common, "{n} {s}");
@@ -4504,8 +4596,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeNumberFormat_fr_LU: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("fr-LU");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativeNumberFormat(), "-{n}");
@@ -4513,8 +4605,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativePercentageFormat_fr_LU: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("fr-LU");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativePercentageFormat(), "-{n} %");
@@ -4522,8 +4614,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeCurrencyFormat_fr_LU: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("fr-LU");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().commonNegative, "-{n} {s}");
@@ -4531,8 +4623,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetPrimaryGroupingDigits_fr_LU: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("fr-LU");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getPrimaryGroupingDigits(), 3);
@@ -4540,8 +4632,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetSecondaryGroupingDigits_fr_LU: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("fr-LU");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getSecondaryGroupingDigits(), 0);
@@ -4549,8 +4641,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoRoundingMode_fr_LU: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("fr-LU");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getRoundingMode(), "halfdown");
@@ -4560,16 +4652,16 @@ module.exports.testlocaleinfo = {
     //test cases for fr-MG
     
     testLocaleInfoGetDecimalSeparatorfor_fr_MG: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("fr-MG");
+        test.expect(2);
         test.ok(info !== null);
         test.equal(info.getDecimalSeparator(), ",");
         test.done();
     },
     
     testLocaleInfoGetGroupingSeparatorfor_fr_MG: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("fr-MG");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getGroupingSeparator(), " ");
@@ -4577,8 +4669,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetPercentageFormat_fr_MG: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("fr-MG");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getPercentageFormat(), "{n} %");
@@ -4586,8 +4678,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetCurrencyFormat_fr_MG: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("fr-MG");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().common, "{n} {s}");
@@ -4595,8 +4687,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeNumberFormat_fr_MG: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("fr-MG");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativeNumberFormat(), "-{n}");
@@ -4604,8 +4696,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativePercentageFormat_fr_MG: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("fr-MG");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativePercentageFormat(), "-{n} %");
@@ -4613,8 +4705,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeCurrencyFormat_fr_MG: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("fr-MG");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().commonNegative, "-{n} {s}");
@@ -4622,8 +4714,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetPrimaryGroupingDigits_fr_MG: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("fr-MG");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getPrimaryGroupingDigits(), 3);
@@ -4631,8 +4723,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetSecondaryGroupingDigits_fr_MG: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("fr-MG");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getSecondaryGroupingDigits(), 0);
@@ -4640,8 +4732,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoRoundingMode_fr_MG: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("fr-MG");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getRoundingMode(), "halfdown");
@@ -4651,16 +4743,16 @@ module.exports.testlocaleinfo = {
     //test cases for fr-SN
     
     testLocaleInfoGetDecimalSeparatorfor_fr_SN: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("fr-SN");
+        test.expect(2);
         test.ok(info !== null);
         test.equal(info.getDecimalSeparator(), ",");
         test.done();
     },
     
     testLocaleInfoGetGroupingSeparatorfor_fr_SN: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("fr-SN");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getGroupingSeparator(), " ");
@@ -4668,8 +4760,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetPercentageFormat_fr_SN: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("fr-SN");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getPercentageFormat(), "{n} %");
@@ -4677,8 +4769,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetCurrencyFormat_fr_SN: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("fr-SN");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().common, "{n} {s}");
@@ -4686,8 +4778,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeNumberFormat_fr_SN: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("fr-SN");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativeNumberFormat(), "-{n}");
@@ -4695,8 +4787,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativePercentageFormat_fr_SN: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("fr-SN");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativePercentageFormat(), "-{n} %");
@@ -4704,8 +4796,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeCurrencyFormat_fr_SN: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("fr-SN");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().commonNegative, "-{n} {s}");
@@ -4713,8 +4805,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetPrimaryGroupingDigits_fr_SN: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("fr-SN");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getPrimaryGroupingDigits(), 3);
@@ -4722,8 +4814,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetSecondaryGroupingDigits_fr_SN: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("fr-SN");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getSecondaryGroupingDigits(), 0);
@@ -4731,8 +4823,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoRoundingMode_fr_SN: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("fr-SN");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getRoundingMode(), "halfdown");
@@ -4742,16 +4834,16 @@ module.exports.testlocaleinfo = {
     //test cases for fr-YT
     
     testLocaleInfoGetDecimalSeparatorfor_fr_YT: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("fr-YT");
+        test.expect(2);
         test.ok(info !== null);
         test.equal(info.getDecimalSeparator(), ",");
         test.done();
     },
     
     testLocaleInfoGetGroupingSeparatorfor_fr_YT: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("fr-YT");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getGroupingSeparator(), " ");
@@ -4759,8 +4851,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetPercentageFormat_fr_YT: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("fr-YT");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getPercentageFormat(), "{n} %");
@@ -4768,8 +4860,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetCurrencyFormat_fr_YT: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("fr-YT");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().common, "{n} {s}");
@@ -4777,8 +4869,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeNumberFormat_fr_YT: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("fr-YT");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativeNumberFormat(), "-{n}");
@@ -4786,8 +4878,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativePercentageFormat_fr_YT: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("fr-YT");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativePercentageFormat(), "-{n} %");
@@ -4795,8 +4887,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeCurrencyFormat_fr_YT: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("fr-YT");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().commonNegative, "-{n} {s}");
@@ -4804,8 +4896,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetPrimaryGroupingDigits_fr_YT: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("fr-YT");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getPrimaryGroupingDigits(), 3);
@@ -4813,8 +4905,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetSecondaryGroupingDigits_fr_YT: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("fr-YT");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getSecondaryGroupingDigits(), 0);
@@ -4822,8 +4914,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoRoundingMode_fr_YT: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("fr-YT");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getRoundingMode(), "halfdown");
@@ -4835,16 +4927,16 @@ module.exports.testlocaleinfo = {
     //test cases for ga-IE
     
     testLocaleInfoGetDecimalSeparatorfor_ga_IE: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ga-IE");
+        test.expect(2);
         test.ok(info !== null);
         test.equal(info.getDecimalSeparator(), ".");
         test.done();
     },
     
     testLocaleInfoGetGroupingSeparatorfor_ga_IE: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ga-IE");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getGroupingSeparator(), ",");
@@ -4852,8 +4944,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetPercentageFormat_ga_IE: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ga-IE");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getPercentageFormat(), "{n}%");
@@ -4861,8 +4953,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetCurrencyFormat_ga_IE: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ga-IE");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().common, "{s}{n}");
@@ -4870,8 +4962,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeNumberFormat_ga_IE: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ga-IE");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativeNumberFormat(), "-{n}");
@@ -4879,8 +4971,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativePercentageFormat_ga_IE: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ga-IE");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativePercentageFormat(), "-{n}%");
@@ -4888,8 +4980,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeCurrencyFormat_ga_IE: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ga-IE");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().commonNegative, "-{s}{n}");
@@ -4897,8 +4989,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetPrimaryGroupingDigits_ga_IE: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ga-IE");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getPrimaryGroupingDigits(), 3);
@@ -4906,8 +4998,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetSecondaryGroupingDigits_ga_IE: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ga-IE");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getSecondaryGroupingDigits(), 0);
@@ -4915,8 +5007,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoRoundingMode_ga_IE: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ga-IE");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getRoundingMode(), "halfdown");
@@ -4928,16 +5020,16 @@ module.exports.testlocaleinfo = {
     //test cases for gl-ES
     
     testLocaleInfoGetDecimalSeparatorfor_gl_ES: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("gl-ES");
+        test.expect(2);
         test.ok(info !== null);
         test.equal(info.getDecimalSeparator(), ",");
         test.done();
     },
     
     testLocaleInfoGetGroupingSeparatorfor_gl_ES: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("gl-ES");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getGroupingSeparator(), ".");
@@ -4945,8 +5037,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetPercentageFormat_gl_ES: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("gl-ES");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getPercentageFormat(), "{n} %");
@@ -4954,8 +5046,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetCurrencyFormat_gl_ES: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("gl-ES");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().common, "{n} {s}");
@@ -4963,8 +5055,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeNumberFormat_gl_ES: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("gl-ES");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativeNumberFormat(), "-{n}");
@@ -4972,8 +5064,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativePercentageFormat_gl_ES: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("gl-ES");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativePercentageFormat(), "-{n} %");
@@ -4981,8 +5073,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeCurrencyFormat_gl_ES: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("gl-ES");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().commonNegative, "-{n} {s}");
@@ -4990,8 +5082,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetPrimaryGroupingDigits_gl_ES: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("gl-ES");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getPrimaryGroupingDigits(), 3);
@@ -4999,8 +5091,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetSecondaryGroupingDigits_gl_ES: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("gl-ES");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getSecondaryGroupingDigits(), 0);
@@ -5008,8 +5100,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoRoundingMode_gl_ES: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("gl-ES");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getRoundingMode(), "halfdown");
@@ -5019,16 +5111,16 @@ module.exports.testlocaleinfo = {
     //test cases for ha-NG-Latn
     
     testLocaleInfoGetDecimalSeparatorfor_ha_NG_Latn: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ha-NG-Latn");
+        test.expect(2);
         test.ok(info !== null);
         test.equal(info.getDecimalSeparator(), ".");
         test.done();
     },
     
     testLocaleInfoGetGroupingSeparatorfor_ha_NG_Latn: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ha-NG-Latn");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getGroupingSeparator(), ",");
@@ -5036,8 +5128,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetPercentageFormat_ha_NG_Latn: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ha-NG-Latn");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getPercentageFormat(), "{n}%");
@@ -5045,8 +5137,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetCurrencyFormat_ha_NG_Latn: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ha-NG-Latn");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().common, "{s} {n}");
@@ -5054,8 +5146,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeNumberFormat_ha_NG_Latn: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ha-NG-Latn");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativeNumberFormat(), "-{n}");
@@ -5063,8 +5155,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativePercentageFormat_ha_NG_Latn: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ha-NG-Latn");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativePercentageFormat(), "-{n}%");
@@ -5072,8 +5164,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeCurrencyFormat_ha_NG_Latn: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ha-NG-Latn");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().commonNegative, "-{s} {n}");
@@ -5081,8 +5173,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetPrimaryGroupingDigits_ha_NG_Latn: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ha-NG-Latn");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getPrimaryGroupingDigits(), 3);
@@ -5090,8 +5182,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetSecondaryGroupingDigits_ha_NG_Latn: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ha-NG-Latn");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getSecondaryGroupingDigits(), 0);
@@ -5099,8 +5191,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoRoundingMode_ha_NG_Latn: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ha-NG-Latn");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getRoundingMode(), "halfdown");
@@ -5110,16 +5202,16 @@ module.exports.testlocaleinfo = {
     //test cases for he-IL
     
     testLocaleInfoGetDecimalSeparatorfor_he: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("he-IL");
+        test.expect(2);
         test.ok(info !== null);
         test.equal(info.getDecimalSeparator(), ".");
         test.done();
     },
     
     testLocaleInfoGetGroupingSeparatorfor_he: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("he-IL");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getGroupingSeparator(), ",");
@@ -5127,8 +5219,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetPercentageFormat_he: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("he-IL");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getPercentageFormat(), "{n}%");
@@ -5136,8 +5228,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetCurrencyFormat_he: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("he-IL");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().common, "‏{n} {s}");
@@ -5145,8 +5237,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeNumberFormat_he: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("he-IL");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativeNumberFormat(), "‎-{n}");
@@ -5154,8 +5246,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativePercentageFormat_he: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("he-IL");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativePercentageFormat(), "‎-{n}%");
@@ -5163,8 +5255,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeCurrencyFormat_he: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("he-IL");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().commonNegative, "‏-{n} {s}");
@@ -5172,8 +5264,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetPrimaryGroupingDigits_he: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("he-IL");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getPrimaryGroupingDigits(), 3);
@@ -5181,8 +5273,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetSecondaryGroupingDigits_he: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("he-IL");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getSecondaryGroupingDigits(), 0);
@@ -5190,8 +5282,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoRoundingMode_he: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("he-IL");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getRoundingMode(), "halfdown");
@@ -5202,16 +5294,16 @@ module.exports.testlocaleinfo = {
     //test cases for hi-IN
     
     testLocaleInfoGetDecimalSeparatorfor_hi_IN: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("hi-IN");
+        test.expect(2);
         test.ok(info !== null);
         test.equal(info.getDecimalSeparator(), ".");
         test.done();
     },
     
     testLocaleInfoGetGroupingSeparatorfor_hi_IN: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("hi-IN");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getGroupingSeparator(), ",");
@@ -5219,8 +5311,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetPercentageFormat_hi_IN: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("hi-IN");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getPercentageFormat(), "{n}%");
@@ -5228,8 +5320,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetCurrencyFormat_hi_IN: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("hi-IN");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().common, "{s}{n}");
@@ -5237,8 +5329,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeNumberFormat_hi_IN: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("hi-IN");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativeNumberFormat(), "-{n}");
@@ -5246,8 +5338,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativePercentageFormat_hi_IN: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("hi-IN");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativePercentageFormat(), "-{n}%");
@@ -5255,8 +5347,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeCurrencyFormat_hi_IN: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("hi-IN");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().commonNegative, "-{s}{n}");
@@ -5264,8 +5356,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetPrimaryGroupingDigits_hi_IN: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("hi-IN");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getPrimaryGroupingDigits(), 3);
@@ -5273,8 +5365,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetSecondaryGroupingDigits_hi_IN: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("hi-IN");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getSecondaryGroupingDigits(), 2);
@@ -5282,8 +5374,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoRoundingMode_hi_IN: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("hi-IN");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getRoundingMode(), "halfdown");
@@ -5294,16 +5386,16 @@ module.exports.testlocaleinfo = {
     //test cases for hr-HR
     
     testLocaleInfoGetDecimalSeparatorfor_hr_HR: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("hr-HR");
+        test.expect(2);
         test.ok(info !== null);
         test.equal(info.getDecimalSeparator(), ",");
         test.done();
     },
     
     testLocaleInfoGetGroupingSeparatorfor_hr_HR: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("hr-HR");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getGroupingSeparator(), ".");
@@ -5311,8 +5403,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetPercentageFormat_hr_HR: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("hr-HR");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getPercentageFormat(), "{n}%");
@@ -5320,8 +5412,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetCurrencyFormat_hr_HR: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("hr-HR");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().common, "{n} {s}");
@@ -5329,8 +5421,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeNumberFormat_hr_HR: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("hr-HR");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativeNumberFormat(), "-{n}");
@@ -5338,8 +5430,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativePercentageFormat_hr_HR: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("hr-HR");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativePercentageFormat(), "-{n}%");
@@ -5347,8 +5439,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeCurrencyFormat_hr_HR: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("hr-HR");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().commonNegative, "-{n} {s}");
@@ -5356,8 +5448,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetPrimaryGroupingDigits_hr_HR: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("hr-HR");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getPrimaryGroupingDigits(), 3);
@@ -5365,8 +5457,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetSecondaryGroupingDigits_hr_HR: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("hr-HR");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getSecondaryGroupingDigits(), 0);
@@ -5374,8 +5466,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoRoundingMode_hr_HR: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("hr-HR");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getRoundingMode(), "halfdown");
@@ -5386,16 +5478,16 @@ module.exports.testlocaleinfo = {
     //test cases for hy-AZ
     
     testLocaleInfoGetDecimalSeparatorfor_hy_AZ: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("hy-AZ");
+        test.expect(2);
         test.ok(info !== null);
         test.equal(info.getDecimalSeparator(), ",");
         test.done();
     },
     
     testLocaleInfoGetGroupingSeparatorfor_hy_AZ: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("hy-AZ");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getGroupingSeparator(), " ");
@@ -5403,8 +5495,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetPercentageFormat_hy_AZ: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("hy-AZ");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getPercentageFormat(), "{n}%");
@@ -5412,8 +5504,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetCurrencyFormat_hy_AZ: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("hy-AZ");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().common, "{s} {n}");
@@ -5421,8 +5513,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeNumberFormat_hy_AZ: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("hy-AZ");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativeNumberFormat(), "-{n}");
@@ -5430,8 +5522,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativePercentageFormat_hy_AZ: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("hy-AZ");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativePercentageFormat(), "-{n}%");
@@ -5439,8 +5531,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeCurrencyFormat_hy_AZ: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("hy-AZ");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().commonNegative, "-{s} {n}");
@@ -5448,8 +5540,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetPrimaryGroupingDigits_hy_AZ: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("hy-AZ");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getPrimaryGroupingDigits(), 3);
@@ -5457,8 +5549,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetSecondaryGroupingDigits_hy_AZ: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("hy-AZ");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getSecondaryGroupingDigits(), 0);
@@ -5466,8 +5558,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoRoundingMode_hy_AZ: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("hy-AZ");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getRoundingMode(), "halfdown");
@@ -5480,16 +5572,16 @@ module.exports.testlocaleinfo = {
     //test cases for id-MY
     
     testLocaleInfoGetDecimalSeparatorfor_id_MY: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("id-MY");
+        test.expect(2);
         test.ok(info !== null);
         test.equal(info.getDecimalSeparator(), ",");
         test.done();
     },
     
     testLocaleInfoGetGroupingSeparatorfor_id_MY: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("id-MY");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getGroupingSeparator(), ".");
@@ -5497,8 +5589,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetPercentageFormat_id_MY: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("id-MY");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getPercentageFormat(), "{n}%");
@@ -5506,8 +5598,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetCurrencyFormat_id_MY: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("id-MY");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().common, "{s}{n}");
@@ -5515,8 +5607,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeNumberFormat_id_MY: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("id-MY");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativeNumberFormat(), "-{n}");
@@ -5524,8 +5616,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativePercentageFormat_id_MY: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("id-MY");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativePercentageFormat(), "-{n}%");
@@ -5533,8 +5625,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeCurrencyFormat_id_MY: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("id-MY");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().commonNegative, "-{s}{n}");
@@ -5542,8 +5634,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetPrimaryGroupingDigits_id_MY: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("id-MY");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getPrimaryGroupingDigits(), 3);
@@ -5551,8 +5643,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetSecondaryGroupingDigits_id_MY: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("id-MY");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getSecondaryGroupingDigits(), 0);
@@ -5560,8 +5652,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoRoundingMode_id_MY: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("id-MY");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getRoundingMode(), "halfdown");
@@ -5571,16 +5663,16 @@ module.exports.testlocaleinfo = {
     //test cases for it-CH
     
     testLocaleInfoGetDecimalSeparatorfor_it_CH: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("it-CH");
+        test.expect(2);
         test.ok(info !== null);
         test.equal(info.getDecimalSeparator(), ".");
         test.done();
     },
     
     testLocaleInfoGetGroupingSeparatorfor_it_CH: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("it-CH");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getGroupingSeparator(), "'");
@@ -5588,8 +5680,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetPercentageFormat_it_CH: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("it-CH");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getPercentageFormat(), "{n}%");
@@ -5597,8 +5689,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetCurrencyFormat_it_CH: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("it-CH");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().common, "{s} {n}");
@@ -5606,8 +5698,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeNumberFormat_it_CH: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("it-CH");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativeNumberFormat(), "-{n}");
@@ -5615,8 +5707,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativePercentageFormat_it_CH: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("it-CH");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativePercentageFormat(), "-{n}%");
@@ -5624,8 +5716,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeCurrencyFormat_it_CH: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("it-CH");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().commonNegative, "{s}-{n}");
@@ -5633,8 +5725,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetPrimaryGroupingDigits_it_CH: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("it-CH");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getPrimaryGroupingDigits(), 3);
@@ -5642,8 +5734,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetSecondaryGroupingDigits_it_CH: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("it-CH");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getSecondaryGroupingDigits(), 0);
@@ -5651,8 +5743,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoRoundingMode_it_CH: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("it-CH");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getRoundingMode(), "halfdown");
@@ -5662,16 +5754,16 @@ module.exports.testlocaleinfo = {
     //test cases for it-SM
     
     testLocaleInfoGetDecimalSeparatorfor_it_SM: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("it-SM");
+        test.expect(2);
         test.ok(info !== null);
         test.equal(info.getDecimalSeparator(), ",");
         test.done();
     },
     
     testLocaleInfoGetGroupingSeparatorfor_it_SM: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("it-SM");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getGroupingSeparator(), ".");
@@ -5679,8 +5771,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetPercentageFormat_it_SM: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("it-SM");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getPercentageFormat(), "{n}%");
@@ -5688,8 +5780,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetCurrencyFormat_it_SM: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("it-SM");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().common, "{n} {s}");
@@ -5697,8 +5789,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeNumberFormat_it_SM: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("it-SM");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativeNumberFormat(), "-{n}");
@@ -5706,8 +5798,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativePercentageFormat_it_SM: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("it-SM");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativePercentageFormat(), "-{n}%");
@@ -5715,8 +5807,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeCurrencyFormat_it_SM: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("it-SM");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().commonNegative, "-{n} {s}");
@@ -5724,8 +5816,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetPrimaryGroupingDigits_it_SM: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("it-SM");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getPrimaryGroupingDigits(), 3);
@@ -5733,8 +5825,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetSecondaryGroupingDigits_it_SM: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("it-SM");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getSecondaryGroupingDigits(), 0);
@@ -5742,8 +5834,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoRoundingMode_it_SM: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("it-SM");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getRoundingMode(), "halfdown");
@@ -5754,16 +5846,16 @@ module.exports.testlocaleinfo = {
     //test cases for ka-IR
     
     testLocaleInfoGetDecimalSeparatorfor_ka_IR: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ka-IR");
+        test.expect(2);
         test.ok(info !== null);
         test.equal(info.getDecimalSeparator(), ",");
         test.done();
     },
     
     testLocaleInfoGetGroupingSeparatorfor_ka_IR: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ka-IR");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getGroupingSeparator(), " ");
@@ -5771,8 +5863,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetPercentageFormat_ka_IR: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ka-IR");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getPercentageFormat(), "{n} %");
@@ -5780,8 +5872,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetCurrencyFormat_ka_IR: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ka-IR");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().common, "{n} {s}");
@@ -5789,8 +5881,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeNumberFormat_ka_IR: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ka-IR");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativeNumberFormat(), "-{n}");
@@ -5798,8 +5890,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativePercentageFormat_ka_IR: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ka-IR");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativePercentageFormat(), "-{n} %");
@@ -5807,8 +5899,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeCurrencyFormat_ka_IR: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ka-IR");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().commonNegative, "-{n} {s}");
@@ -5816,8 +5908,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetPrimaryGroupingDigits_ka_IR: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ka-IR");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getPrimaryGroupingDigits(), 3);
@@ -5825,8 +5917,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetSecondaryGroupingDigits_ka_IR: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ka-IR");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getSecondaryGroupingDigits(), 0);
@@ -5834,8 +5926,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoRoundingMode_ka_IR: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ka-IR");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getRoundingMode(), "halfdown");
@@ -5846,16 +5938,16 @@ module.exports.testlocaleinfo = {
     //test cases for kk-KZ-Cyrl
     
     testLocaleInfoGetDecimalSeparatorfor_kk_KZ_Cyrl: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("kk-KZ-Cyrl");
+        test.expect(2);
         test.ok(info !== null);
         test.equal(info.getDecimalSeparator(), ",");
         test.done();
     },
     
     testLocaleInfoGetGroupingSeparatorfor_kk_KZ_Cyrl: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("kk-KZ-Cyrl");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getGroupingSeparator(), " ");
@@ -5863,8 +5955,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetPercentageFormat_kk_KZ_Cyrl: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("kk-KZ-Cyrl");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getPercentageFormat(), "{n}%");
@@ -5872,8 +5964,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetCurrencyFormat_kk_KZ_Cyrl: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("kk-KZ-Cyrl");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().common, "{n} {s}");
@@ -5881,8 +5973,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeNumberFormat_kk_KZ_Cyrl: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("kk-KZ-Cyrl");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativeNumberFormat(), "-{n}");
@@ -5890,8 +5982,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativePercentageFormat_kk_KZ_Cyrl: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("kk-KZ-Cyrl");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativePercentageFormat(), "-{n}%");
@@ -5899,8 +5991,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeCurrencyFormat_kk_KZ_Cyrl: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("kk-KZ-Cyrl");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().commonNegative, "-{n} {s}");
@@ -5908,8 +6000,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetPrimaryGroupingDigits_kk_KZ_Cyrl: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("kk-KZ-Cyrl");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getPrimaryGroupingDigits(), 3);
@@ -5917,8 +6009,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetSecondaryGroupingDigits_kk_KZ_Cyrl: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("kk-KZ-Cyrl");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getSecondaryGroupingDigits(), 0);
@@ -5926,8 +6018,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoRoundingMode_kk_KZ_Cyrl: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("kk-KZ-Cyrl");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getRoundingMode(), "halfdown");
@@ -5938,16 +6030,16 @@ module.exports.testlocaleinfo = {
     //test cases for ko-KR
     
     testLocaleInfoGetDecimalSeparatorfor_ko_KR: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ko-KR");
+        test.expect(2);
         test.ok(info !== null);
         test.equal(info.getDecimalSeparator(), ".");
         test.done();
     },
     
     testLocaleInfoGetGroupingSeparatorfor_ko_KR: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ko-KR");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getGroupingSeparator(), ",");
@@ -5955,8 +6047,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetPercentageFormat_ko_KR: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ko-KR");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getPercentageFormat(), "{n}%");
@@ -5964,8 +6056,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetCurrencyFormat_ko_KR: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ko-KR");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().common, "{s}{n}");
@@ -5973,8 +6065,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeNumberFormat_ko_KR: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ko-KR");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativeNumberFormat(), "-{n}");
@@ -5982,8 +6074,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativePercentageFormat_ko_KR: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ko-KR");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativePercentageFormat(), "-{n}%");
@@ -5991,8 +6083,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeCurrencyFormat_ko_KR: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ko-KR");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().commonNegative, "-{s}{n}");
@@ -6000,8 +6092,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetPrimaryGroupingDigits_ko_KR: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ko-KR");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getPrimaryGroupingDigits(), 3);
@@ -6009,8 +6101,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetSecondaryGroupingDigits_ko_KR: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ko-KR");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getSecondaryGroupingDigits(), 0);
@@ -6018,8 +6110,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoRoundingMode_ko_KR: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ko-KR");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getRoundingMode(), "halfdown");
@@ -6030,16 +6122,16 @@ module.exports.testlocaleinfo = {
     //test cases for ks-Arab-IN
     
     testLocaleInfoGetDecimalSeparatorfor_ks_Arab_IN: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ks-Arab-IN");
+        test.expect(2);
         test.ok(info !== null);
         test.equal(info.getDecimalSeparator(), "٫");
         test.done();
     },
     
     testLocaleInfoGetGroupingSeparatorfor_ks_Arab_IN: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ks-Arab-IN");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getGroupingSeparator(), "٬");
@@ -6047,8 +6139,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetPercentageFormat_ks_Arab_IN: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ks-Arab-IN");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getPercentageFormat(), "{n}٪");
@@ -6056,8 +6148,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetCurrencyFormat_ks_Arab_IN: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ks-Arab-IN");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().common, "{s} {n}");
@@ -6065,8 +6157,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeNumberFormat_ks_Arab_IN: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ks-Arab-IN");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativeNumberFormat(), "‎-‎{n}");
@@ -6074,8 +6166,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativePercentageFormat_ks_Arab_IN: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ks-Arab-IN");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativePercentageFormat(), "‎-‎{n}٪");
@@ -6083,8 +6175,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeCurrencyFormat_ks_Arab_IN: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ks-Arab-IN");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().commonNegative, "‎-‎{s} {n}");
@@ -6092,8 +6184,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetPrimaryGroupingDigits_ks_Arab_IN: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ks-Arab-IN");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getPrimaryGroupingDigits(), 3);
@@ -6101,8 +6193,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetSecondaryGroupingDigits_ks_Arab_IN: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ks-Arab-IN");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getSecondaryGroupingDigits(), 2);
@@ -6110,8 +6202,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoRoundingMode_ks_Arab_IN: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ks-Arab-IN");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getRoundingMode(), "halfdown");
@@ -6121,16 +6213,16 @@ module.exports.testlocaleinfo = {
     //test cases for ku-IQ
     
     testLocaleInfoGetDecimalSeparatorfor_ku: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ku-IQ");
+        test.expect(2);
         test.ok(info !== null);
         test.equal(info.getDecimalSeparator(), ".");
         test.done();
     },
     
     testLocaleInfoGetGroupingSeparatorfor_ku: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ku-IQ");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getGroupingSeparator(), ",");
@@ -6138,8 +6230,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetPercentageFormat_ku: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ku-IQ");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getPercentageFormat(), "{n}%");
@@ -6147,8 +6239,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetCurrencyFormat_ku: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ku-IQ");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().common, "{s} {n}");
@@ -6156,8 +6248,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeNumberFormat_ku: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ku-IQ");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativeNumberFormat(), "-{n}");
@@ -6165,8 +6257,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativePercentageFormat_ku: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ku-IQ");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativePercentageFormat(), "-{n}%");
@@ -6174,8 +6266,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeCurrencyFormat_ku: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ku-IQ");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().commonNegative, "-{s} {n}");
@@ -6183,8 +6275,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetPrimaryGroupingDigits_ku: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ku-IQ");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getPrimaryGroupingDigits(), 3);
@@ -6192,8 +6284,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetSecondaryGroupingDigits_ku: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ku-IQ");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getSecondaryGroupingDigits(), 0);
@@ -6201,8 +6293,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoRoundingMode_ku: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ku-IQ");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getRoundingMode(), "halfdown");
@@ -6212,16 +6304,16 @@ module.exports.testlocaleinfo = {
     //test cases for ku-IR
     
     testLocaleInfoGetDecimalSeparatorfor_ku_IR: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ku-IR");
+        test.expect(2);
         test.ok(info !== null);
         test.equal(info.getDecimalSeparator(), ".");
         test.done();
     },
     
     testLocaleInfoGetGroupingSeparatorfor_ku_IR: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ku-IR");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getGroupingSeparator(), ",");
@@ -6229,8 +6321,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetPercentageFormat_ku_IR: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ku-IR");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getPercentageFormat(), "{n}%");
@@ -6238,8 +6330,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetCurrencyFormat_ku_IR: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ku-IR");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().common, "{s} {n}");
@@ -6247,8 +6339,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeNumberFormat_ku_IR: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ku-IR");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativeNumberFormat(), "-{n}");
@@ -6256,8 +6348,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativePercentageFormat_ku_IR: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ku-IR");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativePercentageFormat(), "-{n}%");
@@ -6265,8 +6357,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeCurrencyFormat_ku_IR: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ku-IR");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().commonNegative, "-{s} {n}");
@@ -6274,8 +6366,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetPrimaryGroupingDigits_ku_IR: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ku-IR");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getPrimaryGroupingDigits(), 3);
@@ -6283,8 +6375,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetSecondaryGroupingDigits_ku_IR: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ku-IR");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getSecondaryGroupingDigits(), 0);
@@ -6292,8 +6384,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoRoundingMode_ku_IR: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ku-IR");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getRoundingMode(), "halfdown");
@@ -6304,16 +6396,16 @@ module.exports.testlocaleinfo = {
     //test cases for lg-UG
     
     testLocaleInfoGetDecimalSeparatorfor_lg_UG: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("lg-UG");
+        test.expect(2);
         test.ok(info !== null);
         test.equal(info.getDecimalSeparator(), ".");
         test.done();
     },
     
     testLocaleInfoGetGroupingSeparatorfor_lg_UG: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("lg-UG");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getGroupingSeparator(), ",");
@@ -6321,8 +6413,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetPercentageFormat_lg_UG: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("lg-UG");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getPercentageFormat(), "{n}%");
@@ -6330,8 +6422,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetCurrencyFormat_lg_UG: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("lg-UG");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().common, "{n}{s}");
@@ -6339,8 +6431,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeNumberFormat_lg_UG: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("lg-UG");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativeNumberFormat(), "-{n}");
@@ -6348,8 +6440,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativePercentageFormat_lg_UG: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("lg-UG");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativePercentageFormat(), "-{n}%");
@@ -6357,8 +6449,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeCurrencyFormat_lg_UG: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("lg-UG");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().commonNegative, "-{n}{s}");
@@ -6366,8 +6458,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetPrimaryGroupingDigits_lg_UG: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("lg-UG");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getPrimaryGroupingDigits(), 3);
@@ -6375,8 +6467,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetSecondaryGroupingDigits_lg_UG: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("lg-UG");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getSecondaryGroupingDigits(), 0);
@@ -6384,8 +6476,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoRoundingMode_lg_UG: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("lg-UG");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getRoundingMode(), "halfdown");
@@ -6395,16 +6487,16 @@ module.exports.testlocaleinfo = {
     //test cases for ln-CF
     
     testLocaleInfoGetDecimalSeparatorfor_ln_CF: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ln-CF");
+        test.expect(2);
         test.ok(info !== null);
         test.equal(info.getDecimalSeparator(), ",");
         test.done();
     },
     
     testLocaleInfoGetGroupingSeparatorfor_ln_CF: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ln-CF");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getGroupingSeparator(), ".");
@@ -6412,8 +6504,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetPercentageFormat_ln_CF: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ln-CF");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getPercentageFormat(), "{n}%");
@@ -6421,8 +6513,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetCurrencyFormat_ln_CF: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ln-CF");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().common, "{n} {s}");
@@ -6430,8 +6522,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeNumberFormat_ln_CF: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ln-CF");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativeNumberFormat(), "-{n}");
@@ -6439,8 +6531,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativePercentageFormat_ln_CF: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ln-CF");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativePercentageFormat(), "-{n}%");
@@ -6448,8 +6540,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeCurrencyFormat_ln_CF: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ln-CF");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().commonNegative, "-{n} {s}");
@@ -6457,8 +6549,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetPrimaryGroupingDigits_ln_CF: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ln-CF");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getPrimaryGroupingDigits(), 3);
@@ -6466,8 +6558,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetSecondaryGroupingDigits_ln_CF: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ln-CF");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getSecondaryGroupingDigits(), 0);
@@ -6475,8 +6567,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoRoundingMode_ln_CF: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ln-CF");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getRoundingMode(), "halfdown");
@@ -6487,16 +6579,16 @@ module.exports.testlocaleinfo = {
     //test cases for lt-LT
     
     testLocaleInfoGetDecimalSeparatorfor_lt: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("lt-LT");
+        test.expect(2);
         test.ok(info !== null);
         test.equal(info.getDecimalSeparator(), ",");
         test.done();
     },
     
     testLocaleInfoGetGroupingSeparatorfor_lt: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("lt-LT");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getGroupingSeparator(), " ");
@@ -6504,8 +6596,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetPercentageFormat_lt: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("lt-LT");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getPercentageFormat(), "{n} %");
@@ -6513,8 +6605,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetCurrencyFormat_lt: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("lt-LT");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().common, "{n} {s}");
@@ -6522,8 +6614,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeNumberFormat_lt: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("lt-LT");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativeNumberFormat(), "−{n}");
@@ -6531,8 +6623,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativePercentageFormat_lt: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("lt-LT");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativePercentageFormat(), "−{n} %");
@@ -6540,8 +6632,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeCurrencyFormat_lt: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("lt-LT");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().commonNegative, "−{n} {s}");
@@ -6549,8 +6641,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetPrimaryGroupingDigits_lt: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("lt-LT");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getPrimaryGroupingDigits(), 3);
@@ -6558,8 +6650,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetSecondaryGroupingDigits_lt: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("lt-LT");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getSecondaryGroupingDigits(), 0);
@@ -6567,8 +6659,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoRoundingMode_lt: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("lt-LT");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getRoundingMode(), "halfdown");
@@ -6579,16 +6671,16 @@ module.exports.testlocaleinfo = {
     //test cases for mi-CK
     
     testLocaleInfoGetDecimalSeparatorfor_mi_CK: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("mi-CK");
+        test.expect(2);
         test.ok(info !== null);
         test.equal(info.getDecimalSeparator(), ".");
         test.done();
     },
     
     testLocaleInfoGetGroupingSeparatorfor_mi_CK: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("mi-CK");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getGroupingSeparator(), ",");
@@ -6596,8 +6688,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetPercentageFormat_mi_CK: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("mi-CK");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getPercentageFormat(), "{n}%");
@@ -6605,8 +6697,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetCurrencyFormat_mi_CK: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("mi-CK");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().common, "{s} {n}");
@@ -6614,8 +6706,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeNumberFormat_mi_CK: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("mi-CK");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativeNumberFormat(), "-{n}");
@@ -6623,8 +6715,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativePercentageFormat_mi_CK: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("mi-CK");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativePercentageFormat(), "-{n}%");
@@ -6632,8 +6724,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeCurrencyFormat_mi_CK: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("mi-CK");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().commonNegative, "-{s} {n}");
@@ -6641,8 +6733,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetPrimaryGroupingDigits_mi_CK: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("mi-CK");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getPrimaryGroupingDigits(), 3);
@@ -6650,8 +6742,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetSecondaryGroupingDigits_mi_CK: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("mi-CK");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getSecondaryGroupingDigits(), 0);
@@ -6659,8 +6751,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoRoundingMode_mi_CK: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("mi-CK");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getRoundingMode(), "halfdown");
@@ -6670,16 +6762,16 @@ module.exports.testlocaleinfo = {
     //test cases for mk-MK
     
     testLocaleInfoGetDecimalSeparatorfor_mk: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("mk-MK");
+        test.expect(2);
         test.ok(info !== null);
         test.equal(info.getDecimalSeparator(), ",");
         test.done();
     },
     
     testLocaleInfoGetGroupingSeparatorfor_mk: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("mk-MK");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getGroupingSeparator(), ".");
@@ -6687,8 +6779,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetPercentageFormat_mk: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("mk-MK");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getPercentageFormat(), "{n}%");
@@ -6696,8 +6788,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetCurrencyFormat_mk: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("mk-MK");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().common, "{n} {s}");
@@ -6705,8 +6797,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeNumberFormat_mk: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("mk-MK");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativeNumberFormat(), "-{n}");
@@ -6714,8 +6806,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativePercentageFormat_mk: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("mk-MK");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativePercentageFormat(), "-{n}%");
@@ -6723,8 +6815,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeCurrencyFormat_mk: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("mk-MK");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().commonNegative, "-{n} {s}");
@@ -6732,8 +6824,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetPrimaryGroupingDigits_mk: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("mk-MK");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getPrimaryGroupingDigits(), 3);
@@ -6741,8 +6833,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetSecondaryGroupingDigits_mk: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("mk-MK");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getSecondaryGroupingDigits(), 0);
@@ -6750,8 +6842,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoRoundingMode_mk: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("mk-MK");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getRoundingMode(), "halfdown");
@@ -6762,16 +6854,16 @@ module.exports.testlocaleinfo = {
     //test cases for mn-CN
     
     testLocaleInfoGetDecimalSeparatorfor_mn_CN: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("mn-CN");
+        test.expect(2);
         test.ok(info !== null);
         test.equal(info.getDecimalSeparator(), ".");
         test.done();
     },
     
     testLocaleInfoGetGroupingSeparatorfor_mn_CN: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("mn-CN");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getGroupingSeparator(), ",");
@@ -6779,8 +6871,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetPercentageFormat_mn_CN: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("mn-CN");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getPercentageFormat(), "{n}%");
@@ -6788,8 +6880,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetCurrencyFormat_mn_CN: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("mn-CN");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().common, "{s} {n}");
@@ -6797,8 +6889,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeNumberFormat_mn_CN: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("mn-CN");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativeNumberFormat(), "-{n}");
@@ -6806,8 +6898,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativePercentageFormat_mn_CN: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("mn-CN");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativePercentageFormat(), "-{n}%");
@@ -6815,8 +6907,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeCurrencyFormat_mn_CN: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("mn-CN");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().commonNegative, "-{s} {n}");
@@ -6824,8 +6916,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetPrimaryGroupingDigits_mn_CN: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("mn-CN");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getPrimaryGroupingDigits(), 3);
@@ -6833,8 +6925,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetSecondaryGroupingDigits_mn_CN: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("mn-CN");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getSecondaryGroupingDigits(), 0);
@@ -6842,8 +6934,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoRoundingMode_mn_CN: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("mn-CN");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getRoundingMode(), "halfdown");
@@ -6853,16 +6945,16 @@ module.exports.testlocaleinfo = {
     //test cases for ms-MY
     
     testLocaleInfoGetDecimalSeparatorfor_ms: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ms-MY");
+        test.expect(2);
         test.ok(info !== null);
         test.equal(info.getDecimalSeparator(), ".");
         test.done();
     },
     
     testLocaleInfoGetGroupingSeparatorfor_ms: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ms-MY");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getGroupingSeparator(), ",");
@@ -6870,8 +6962,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetPercentageFormat_ms: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ms-MY");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getPercentageFormat(), "{n}%");
@@ -6879,8 +6971,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetCurrencyFormat_ms: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ms-MY");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().common, "{s}{n}");
@@ -6888,8 +6980,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeNumberFormat_ms: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ms-MY");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativeNumberFormat(), "-{n}");
@@ -6897,8 +6989,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativePercentageFormat_ms: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ms-MY");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativePercentageFormat(), "-{n}%");
@@ -6906,8 +6998,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeCurrencyFormat_ms: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ms-MY");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().commonNegative, "-{s}{n}");
@@ -6915,8 +7007,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetPrimaryGroupingDigits_ms: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ms-MY");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getPrimaryGroupingDigits(), 3);
@@ -6924,8 +7016,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetSecondaryGroupingDigits_ms: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ms-MY");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getSecondaryGroupingDigits(), 0);
@@ -6933,8 +7025,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoRoundingMode_ms: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ms-MY");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getRoundingMode(), "halfdown");
@@ -6944,16 +7036,16 @@ module.exports.testlocaleinfo = {
     //test cases for ms-BN
     
     testLocaleInfoGetDecimalSeparatorfor_ms_BN: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ms-BN");
+        test.expect(2);
         test.ok(info !== null);
         test.equal(info.getDecimalSeparator(), ",");
         test.done();
     },
     
     testLocaleInfoGetGroupingSeparatorfor_ms_BN: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ms-BN");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getGroupingSeparator(), ".");
@@ -6961,8 +7053,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetPercentageFormat_ms_BN: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ms-BN");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getPercentageFormat(), "{n}%");
@@ -6970,8 +7062,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetCurrencyFormat_ms_BN: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ms-BN");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().common, "{s} {n}");
@@ -6979,8 +7071,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeNumberFormat_ms_BN: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ms-BN");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativeNumberFormat(), "-{n}");
@@ -6988,8 +7080,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativePercentageFormat_ms_BN: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ms-BN");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativePercentageFormat(), "-{n}%");
@@ -6997,8 +7089,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeCurrencyFormat_ms_BN: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ms-BN");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().commonNegative, "-{s} {n}");
@@ -7006,8 +7098,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetPrimaryGroupingDigits_ms_BN: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ms-BN");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getPrimaryGroupingDigits(), 3);
@@ -7015,8 +7107,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetSecondaryGroupingDigits_ms_BN: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ms-BN");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getSecondaryGroupingDigits(), 0);
@@ -7024,8 +7116,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoRoundingMode_ms_BN: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ms-BN");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getRoundingMode(), "halfdown");
@@ -7035,16 +7127,16 @@ module.exports.testlocaleinfo = {
     //test cases for ne-IN
     
     testLocaleInfoGetDecimalSeparatorfor_ne_IN: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ne-IN");
+        test.expect(2);
         test.ok(info !== null);
         test.equal(info.getDecimalSeparator(), ".");
         test.done();
     },
     
     testLocaleInfoGetGroupingSeparatorfor_ne_IN: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ne-IN");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getGroupingSeparator(), ",");
@@ -7052,8 +7144,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetPercentageFormat_ne_IN: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ne-IN");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getPercentageFormat(), "{n}%");
@@ -7061,8 +7153,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetCurrencyFormat_ne_IN: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ne-IN");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().common, "{s} {n}");
@@ -7070,8 +7162,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeNumberFormat_ne_IN: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ne-IN");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativeNumberFormat(), "-{n}");
@@ -7079,8 +7171,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativePercentageFormat_ne_IN: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ne-IN");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativePercentageFormat(), "-{n}%");
@@ -7088,8 +7180,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeCurrencyFormat_ne_IN: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ne-IN");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().commonNegative, "-{s} {n}");
@@ -7097,8 +7189,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetPrimaryGroupingDigits_ne_IN: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ne-IN");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getPrimaryGroupingDigits(), 3);
@@ -7106,8 +7198,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetSecondaryGroupingDigits_ne_IN: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ne-IN");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getSecondaryGroupingDigits(), 0);
@@ -7115,8 +7207,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoRoundingMode_ne_IN: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ne-IN");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getRoundingMode(), "halfdown");
@@ -7126,16 +7218,16 @@ module.exports.testlocaleinfo = {
     //test cases for nl-BE
     
     testLocaleInfoGetDecimalSeparatorfor_nl_BE: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("nl-BE");
+        test.expect(2);
         test.ok(info !== null);
         test.equal(info.getDecimalSeparator(), ",");
         test.done();
     },
     
     testLocaleInfoGetGroupingSeparatorfor_nl_BE: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("nl-BE");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getGroupingSeparator(), ".");
@@ -7143,8 +7235,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetPercentageFormat_nl_BE: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("nl-BE");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getPercentageFormat(), "{n}%");
@@ -7152,8 +7244,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetCurrencyFormat_nl_BE: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("nl-BE");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().common, "{n} {s}");
@@ -7161,8 +7253,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeNumberFormat_nl_BE: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("nl-BE");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativeNumberFormat(), "-{n}");
@@ -7170,8 +7262,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativePercentageFormat_nl_BE: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("nl-BE");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativePercentageFormat(), "-{n}%");
@@ -7179,8 +7271,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeCurrencyFormat_nl_BE: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("nl-BE");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().commonNegative, "-{n} {s}");
@@ -7188,8 +7280,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetPrimaryGroupingDigits_nl_BE: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("nl-BE");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getPrimaryGroupingDigits(), 3);
@@ -7197,8 +7289,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetSecondaryGroupingDigits_nl_BE: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("nl-BE");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getSecondaryGroupingDigits(), 0);
@@ -7206,8 +7298,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoRoundingMode_nl_BE: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("nl-BE");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getRoundingMode(), "halfdown");
@@ -7217,16 +7309,16 @@ module.exports.testlocaleinfo = {
     //test cases for nl-CW
     
     testLocaleInfoGetDecimalSeparatorfor_nl_CW: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("nl-CW");
+        test.expect(2);
         test.ok(info !== null);
         test.equal(info.getDecimalSeparator(), ",");
         test.done();
     },
     
     testLocaleInfoGetGroupingSeparatorfor_nl_CW: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("nl-CW");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getGroupingSeparator(), ".");
@@ -7234,8 +7326,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetPercentageFormat_nl_CW: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("nl-CW");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getPercentageFormat(), "{n}%");
@@ -7243,8 +7335,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetCurrencyFormat_nl_CW: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("nl-CW");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().common, "{s} {n}");
@@ -7252,8 +7344,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeNumberFormat_nl_CW: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("nl-CW");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativeNumberFormat(), "-{n}");
@@ -7261,8 +7353,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativePercentageFormat_nl_CW: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("nl-CW");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativePercentageFormat(), "-{n}%");
@@ -7270,8 +7362,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeCurrencyFormat_nl_CW: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("nl-CW");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().commonNegative, "{s} -{n}");
@@ -7279,8 +7371,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetPrimaryGroupingDigits_nl_CW: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("nl-CW");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getPrimaryGroupingDigits(), 3);
@@ -7288,8 +7380,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetSecondaryGroupingDigits_nl_CW: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("nl-CW");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getSecondaryGroupingDigits(), 0);
@@ -7297,8 +7389,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoRoundingMode_nl_CW: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("nl-CW");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getRoundingMode(), "halfdown");
@@ -7308,16 +7400,16 @@ module.exports.testlocaleinfo = {
     //test cases for nl-GF
     
     testLocaleInfoGetDecimalSeparatorfor_nl_GF: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("nl-GF");
+        test.expect(2);
         test.ok(info !== null);
         test.equal(info.getDecimalSeparator(), ",");
         test.done();
     },
     
     testLocaleInfoGetGroupingSeparatorfor_nl_GF: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("nl-GF");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getGroupingSeparator(), ".");
@@ -7325,8 +7417,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetPercentageFormat_nl_GF: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("nl-GF");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getPercentageFormat(), "{n}%");
@@ -7334,8 +7426,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetCurrencyFormat_nl_GF: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("nl-GF");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().common, "{s} {n}");
@@ -7343,8 +7435,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeNumberFormat_nl_GF: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("nl-GF");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativeNumberFormat(), "-{n}");
@@ -7352,8 +7444,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativePercentageFormat_nl_GF: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("nl-GF");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativePercentageFormat(), "-{n}%");
@@ -7361,8 +7453,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeCurrencyFormat_nl_GF: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("nl-GF");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().commonNegative, "{s} -{n}");
@@ -7370,8 +7462,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetPrimaryGroupingDigits_nl_GF: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("nl-GF");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getPrimaryGroupingDigits(), 3);
@@ -7379,8 +7471,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetSecondaryGroupingDigits_nl_GF: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("nl-GF");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getSecondaryGroupingDigits(), 0);
@@ -7388,8 +7480,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoRoundingMode_nl_GF: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("nl-GF");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getRoundingMode(), "halfdown");
@@ -7399,16 +7491,16 @@ module.exports.testlocaleinfo = {
     //test cases for nl-SR
     
     testLocaleInfoGetDecimalSeparatorfor_nl_SR: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("nl-SR");
+        test.expect(2);
         test.ok(info !== null);
         test.equal(info.getDecimalSeparator(), ",");
         test.done();
     },
     
     testLocaleInfoGetGroupingSeparatorfor_nl_SR: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("nl-SR");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getGroupingSeparator(), ".");
@@ -7416,8 +7508,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetPercentageFormat_nl_SR: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("nl-SR");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getPercentageFormat(), "{n}%");
@@ -7425,8 +7517,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetCurrencyFormat_nl_SR: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("nl-SR");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().common, "{s} {n}");
@@ -7434,8 +7526,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeNumberFormat_nl_SR: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("nl-SR");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativeNumberFormat(), "-{n}");
@@ -7443,8 +7535,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativePercentageFormat_nl_SR: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("nl-SR");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativePercentageFormat(), "-{n}%");
@@ -7452,8 +7544,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeCurrencyFormat_nl_SR: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("nl-SR");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().commonNegative, "{s} -{n}");
@@ -7461,8 +7553,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetPrimaryGroupingDigits_nl_SR: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("nl-SR");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getPrimaryGroupingDigits(), 3);
@@ -7470,8 +7562,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetSecondaryGroupingDigits_nl_SR: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("nl-SR");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getSecondaryGroupingDigits(), 0);
@@ -7479,8 +7571,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoRoundingMode_nl_SR: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("nl-SR");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getRoundingMode(), "halfdown");
@@ -7492,16 +7584,16 @@ module.exports.testlocaleinfo = {
     //test cases for no-BV
     
     testLocaleInfoGetDecimalSeparatorfor_no_BV: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("no-BV");
+        test.expect(2);
         test.ok(info !== null);
         test.equal(info.getDecimalSeparator(), ".");
         test.done();
     },
     
     testLocaleInfoGetGroupingSeparatorfor_no_BV: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("no-BV");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getGroupingSeparator(), " ");
@@ -7509,8 +7601,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetPercentageFormat_no_BV: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("no-BV");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getPercentageFormat(), "{n} %");
@@ -7518,8 +7610,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetCurrencyFormat_no_BV: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("no-BV");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().common, "{s} {n}");
@@ -7527,8 +7619,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeNumberFormat_no_BV: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("no-BV");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativeNumberFormat(), "-{n}");
@@ -7536,8 +7628,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativePercentageFormat_no_BV: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("no-BV");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativePercentageFormat(), "-{n}%");
@@ -7545,8 +7637,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeCurrencyFormat_no_BV: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("no-BV");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().commonNegative, "-{s} {n}");
@@ -7554,8 +7646,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetPrimaryGroupingDigits_no_BV: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("no-BV");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getPrimaryGroupingDigits(), 3);
@@ -7563,8 +7655,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetSecondaryGroupingDigits_no_BV: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("no-BV");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getSecondaryGroupingDigits(), 0);
@@ -7572,8 +7664,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoRoundingMode_no_BV: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("no-BV");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getRoundingMode(), "halfdown");
@@ -7583,16 +7675,16 @@ module.exports.testlocaleinfo = {
     //test cases for no-SJ
     
     testLocaleInfoGetDecimalSeparatorfor_no_SJ: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("no-SJ");
+        test.expect(2);
         test.ok(info !== null);
         test.equal(info.getDecimalSeparator(), ".");
         test.done();
     },
     
     testLocaleInfoGetGroupingSeparatorfor_no_SJ: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("no-SJ");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getGroupingSeparator(), " ");
@@ -7600,8 +7692,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetPercentageFormat_no_SJ: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("no-SJ");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getPercentageFormat(), "{n} %");
@@ -7609,8 +7701,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetCurrencyFormat_no_SJ: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("no-SJ");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().common, "{s} {n}");
@@ -7618,8 +7710,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeNumberFormat_no_SJ: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("no-SJ");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativeNumberFormat(), "-{n}");
@@ -7627,8 +7719,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativePercentageFormat_no_SJ: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("no-SJ");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativePercentageFormat(), "-{n}%");
@@ -7636,8 +7728,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeCurrencyFormat_no_SJ: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("no-SJ");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().commonNegative, "-{s} {n}");
@@ -7645,8 +7737,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetPrimaryGroupingDigits_no_SJ: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("no-SJ");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getPrimaryGroupingDigits(), 3);
@@ -7654,8 +7746,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetSecondaryGroupingDigits_no_SJ: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("no-SJ");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getSecondaryGroupingDigits(), 0);
@@ -7663,8 +7755,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoRoundingMode_no_SJ: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("no-SJ");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getRoundingMode(), "halfdown");
@@ -7675,16 +7767,16 @@ module.exports.testlocaleinfo = {
     //test cases for om-ET
     
     testLocaleInfoGetDecimalSeparatorfor_om_ET: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("om-ET");
+        test.expect(2);
         test.ok(info !== null);
         test.equal(info.getDecimalSeparator(), ".");
         test.done();
     },
     
     testLocaleInfoGetGroupingSeparatorfor_om_ET: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("om-ET");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getGroupingSeparator(), ",");
@@ -7692,8 +7784,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeNumberFormat_om_ET: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("om-ET");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativeNumberFormat(), "-{n}");
@@ -7701,8 +7793,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativePercentageFormat_om_ET: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("om-ET");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativePercentageFormat(), "-{n}%");
@@ -7710,8 +7802,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeCurrencyFormat_om_ET: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("om-ET");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().commonNegative, "-{s}{n}");
@@ -7719,8 +7811,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetPercentageFormat_om_ET: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("om-ET");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getPercentageFormat(), "{n}%");
@@ -7728,8 +7820,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetCurrencyFormat_om_ET: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("om-ET");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().common, "{s}{n}");
@@ -7737,8 +7829,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetPrimaryGroupingDigits_om_ET: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("om-ET");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getPrimaryGroupingDigits(), 3);
@@ -7746,8 +7838,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetSecondaryGroupingDigits_om_ET: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("om-ET");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getSecondaryGroupingDigits(), 0);
@@ -7755,8 +7847,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoRoundingMode_om_ET: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("om-ET");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getRoundingMode(), "halfdown");
@@ -7767,16 +7859,16 @@ module.exports.testlocaleinfo = {
     //test cases for os-RU
     
     testLocaleInfoGetDecimalSeparatorfor_os_RU: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("os-RU");
+        test.expect(2);
         test.ok(info !== null);
         test.equal(info.getDecimalSeparator(), ",");
         test.done();
     },
     
     testLocaleInfoGetGroupingSeparatorfor_os_RU: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("os-RU");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getGroupingSeparator(), " ");
@@ -7784,8 +7876,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetPercentageFormat_os_RU: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("os-RU");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getPercentageFormat(), "{n}%");
@@ -7793,8 +7885,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetCurrencyFormat_os_RU: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("os-RU");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().common, "{s} {n}");
@@ -7802,8 +7894,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeNumberFormat_os_RU: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("os-RU");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativeNumberFormat(), "-{n}");
@@ -7811,8 +7903,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativePercentageFormat_os_RU: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("os-RU");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativePercentageFormat(), "-{n}%");
@@ -7820,8 +7912,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeCurrencyFormat_os_RU: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("os-RU");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().commonNegative, "-{s} {n}");
@@ -7829,8 +7921,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetPrimaryGroupingDigits_os_RU: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("os-RU");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getPrimaryGroupingDigits(), 3);
@@ -7838,8 +7930,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetSecondaryGroupingDigits_os_RU: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("os-RU");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getSecondaryGroupingDigits(), 0);
@@ -7847,8 +7939,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoRoundingMode_os_RU: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("os-RU");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getRoundingMode(), "halfdown");
@@ -7859,16 +7951,16 @@ module.exports.testlocaleinfo = {
     //test cases for pa-Arab-PK
     
     testLocaleInfoGetDecimalSeparatorfor_pa: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("pa-Arab-PK");
+        test.expect(2);
         test.ok(info !== null);
         test.equal(info.getDecimalSeparator(), "٫");
         test.done();
     },
     
     testLocaleInfoGetGroupingSeparatorfor_pa: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("pa-Arab-PK");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getGroupingSeparator(), "٬");
@@ -7876,8 +7968,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetPercentageFormat_pa: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("pa-Arab-PK");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getPercentageFormat(), "{n}٪");
@@ -7885,8 +7977,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetCurrencyFormat_pa: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("pa-Arab-PK");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().common, "{s} {n}");
@@ -7894,8 +7986,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeNumberFormat_pa: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("pa-Arab-PK");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativeNumberFormat(), "‎-‎{n}");
@@ -7903,8 +7995,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativePercentageFormat_pa: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("pa-Arab-PK");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativePercentageFormat(), "‎-‎{n}٪");
@@ -7912,8 +8004,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeCurrencyFormat_pa: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("pa-Arab-PK");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().commonNegative, "‎-‎{s} {n}");
@@ -7921,8 +8013,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetPrimaryGroupingDigits_pa: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("pa-Arab-PK");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getPrimaryGroupingDigits(), 3);
@@ -7930,8 +8022,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetSecondaryGroupingDigits_pa: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("pa-Arab-PK");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getSecondaryGroupingDigits(), 2);
@@ -7939,8 +8031,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoRoundingMode_pa: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("pa-Arab-PK");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getRoundingMode(), "halfdown");
@@ -7950,16 +8042,16 @@ module.exports.testlocaleinfo = {
     //test cases for pt-AO
     
     testLocaleInfoGetDecimalSeparatorfor_pt_AO: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("pt-AO");
+        test.expect(2);
         test.ok(info !== null);
         test.equal(info.getDecimalSeparator(), ",");
         test.done();
     },
     
     testLocaleInfoGetGroupingSeparatorfor_pt_AO: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("pt-AO");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getGroupingSeparator(), " ");
@@ -7967,8 +8059,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetPercentageFormat_pt_AO: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("pt-AO");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getPercentageFormat(), "{n}%");
@@ -7976,8 +8068,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetCurrencyFormat_pt_AO: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("pt-AO");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().common, "{n} {s}");
@@ -7985,8 +8077,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeNumberFormat_pt_AO: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("pt-AO");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativeNumberFormat(), "-{n}");
@@ -7994,8 +8086,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativePercentageFormat_pt_AO: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("pt-AO");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativePercentageFormat(), "-{n}%");
@@ -8003,8 +8095,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeCurrencyFormat_pt_AO: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("pt-AO");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().commonNegative, "-{n} {s}");
@@ -8012,8 +8104,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetPrimaryGroupingDigits_pt_AO: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("pt-AO");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getPrimaryGroupingDigits(), 3);
@@ -8021,8 +8113,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetSecondaryGroupingDigits_pt_AO: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("pt-AO");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getSecondaryGroupingDigits(), 0);
@@ -8030,8 +8122,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoRoundingMode_pt_AO: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("pt-AO");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getRoundingMode(), "halfdown");
@@ -8041,16 +8133,16 @@ module.exports.testlocaleinfo = {
     //test cases for pt-CV
     
     testLocaleInfoGetDecimalSeparatorfor_pt_CV: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("pt-CV");
+        test.expect(2);
         test.ok(info !== null);
         test.equal(info.getDecimalSeparator(), ",");
         test.done();
     },
     
     testLocaleInfoGetGroupingSeparatorfor_pt_CV: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("pt-CV");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getGroupingSeparator(), " ");
@@ -8058,8 +8150,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetPercentageFormat_pt_CV: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("pt-CV");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getPercentageFormat(), "{n}%");
@@ -8067,8 +8159,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetCurrencyFormat_pt_CV: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("pt-CV");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().common, "{n} {s}");
@@ -8076,8 +8168,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeNumberFormat_pt_CV: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("pt-CV");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativeNumberFormat(), "-{n}");
@@ -8085,8 +8177,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativePercentageFormat_pt_CV: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("pt-CV");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativePercentageFormat(), "-{n}%");
@@ -8094,8 +8186,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeCurrencyFormat_pt_CV: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("pt-CV");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().commonNegative, "-{n} {s}");
@@ -8103,8 +8195,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetPrimaryGroupingDigits_pt_CV: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("pt-CV");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getPrimaryGroupingDigits(), 3);
@@ -8112,8 +8204,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetSecondaryGroupingDigits_pt_CV: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("pt-CV");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getSecondaryGroupingDigits(), 0);
@@ -8121,8 +8213,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoRoundingMode_pt_CV: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("pt-CV");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getRoundingMode(), "halfdown");
@@ -8132,16 +8224,16 @@ module.exports.testlocaleinfo = {
     //test cases for pt-GW
     
     testLocaleInfoGetDecimalSeparatorfor_pt_GW: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("pt-GW");
+        test.expect(2);
         test.ok(info !== null);
         test.equal(info.getDecimalSeparator(), ",");
         test.done();
     },
     
     testLocaleInfoGetGroupingSeparatorfor_pt_GW: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("pt-GW");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getGroupingSeparator(), " ");
@@ -8149,8 +8241,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetPercentageFormat_pt_GW: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("pt-GW");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getPercentageFormat(), "{n}%");
@@ -8158,8 +8250,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetCurrencyFormat_pt_GW: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("pt-GW");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().common, "{n} {s}");
@@ -8167,8 +8259,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeNumberFormat_pt_GW: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("pt-GW");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativeNumberFormat(), "-{n}");
@@ -8176,8 +8268,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativePercentageFormat_pt_GW: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("pt-GW");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativePercentageFormat(), "-{n}%");
@@ -8185,8 +8277,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeCurrencyFormat_pt_GW: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("pt-GW");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().commonNegative, "-{n} {s}");
@@ -8194,8 +8286,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetPrimaryGroupingDigits_pt_GW: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("pt-GW");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getPrimaryGroupingDigits(), 3);
@@ -8203,8 +8295,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetSecondaryGroupingDigits_pt_GW: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("pt-GW");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getSecondaryGroupingDigits(), 0);
@@ -8212,8 +8304,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoRoundingMode_pt_GW: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("pt-GW");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getRoundingMode(), "halfdown");
@@ -8223,16 +8315,16 @@ module.exports.testlocaleinfo = {
     //test cases for pt-MO
     
     testLocaleInfoGetDecimalSeparatorfor_pt_MO: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("pt-MO");
+        test.expect(2);
         test.ok(info !== null);
         test.equal(info.getDecimalSeparator(), ",");
         test.done();
     },
     
     testLocaleInfoGetGroupingSeparatorfor_pt_MO: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("pt-MO");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getGroupingSeparator(), " ");
@@ -8240,8 +8332,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetPercentageFormat_pt_MO: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("pt-MO");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getPercentageFormat(), "{n}%");
@@ -8249,8 +8341,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetCurrencyFormat_pt_MO: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("pt-MO");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().common, "{n} {s}");
@@ -8258,8 +8350,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeNumberFormat_pt_MO: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("pt-MO");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativeNumberFormat(), "-{n}");
@@ -8267,8 +8359,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativePercentageFormat_pt_MO: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("pt-MO");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativePercentageFormat(), "-{n}%");
@@ -8276,8 +8368,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeCurrencyFormat_pt_MO: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("pt-MO");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().commonNegative, "-{n} {s}");
@@ -8285,8 +8377,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetPrimaryGroupingDigits_pt_MO: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("pt-MO");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getPrimaryGroupingDigits(), 3);
@@ -8294,8 +8386,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetSecondaryGroupingDigits_pt_MO: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("pt-MO");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getSecondaryGroupingDigits(), 0);
@@ -8303,8 +8395,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoRoundingMode_pt_MO: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("pt-MO");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getRoundingMode(), "halfdown");
@@ -8314,16 +8406,16 @@ module.exports.testlocaleinfo = {
     //test cases for pt-MZ
     
     testLocaleInfoGetDecimalSeparatorfor_pt_MZ: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("pt-MZ");
+        test.expect(2);
         test.ok(info !== null);
         test.equal(info.getDecimalSeparator(), ",");
         test.done();
     },
     
     testLocaleInfoGetGroupingSeparatorfor_pt_MZ: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("pt-MZ");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getGroupingSeparator(), " ");
@@ -8331,8 +8423,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetPercentageFormat_pt_MZ: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("pt-MZ");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getPercentageFormat(), "{n}%");
@@ -8340,8 +8432,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetCurrencyFormat_pt_MZ: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("pt-MZ");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().common, "{n} {s}");
@@ -8349,8 +8441,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeNumberFormat_pt_MZ: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("pt-MZ");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativeNumberFormat(), "-{n}");
@@ -8358,8 +8450,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativePercentageFormat_pt_MZ: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("pt-MZ");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativePercentageFormat(), "-{n}%");
@@ -8367,8 +8459,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeCurrencyFormat_pt_MZ: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("pt-MZ");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().commonNegative, "-{n} {s}");
@@ -8376,8 +8468,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetPrimaryGroupingDigits_pt_MZ: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("pt-MZ");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getPrimaryGroupingDigits(), 3);
@@ -8385,8 +8477,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetSecondaryGroupingDigits_pt_MZ: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("pt-MZ");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getSecondaryGroupingDigits(), 0);
@@ -8394,8 +8486,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoRoundingMode_pt_MZ: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("pt-MZ");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getRoundingMode(), "halfdown");
@@ -8405,16 +8497,16 @@ module.exports.testlocaleinfo = {
     //test cases for pt-PT
     
     testLocaleInfoGetDecimalSeparatorfor_pt_PT: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("pt-PT");
+        test.expect(2);
         test.ok(info !== null);
         test.equal(info.getDecimalSeparator(), ",");
         test.done();
     },
     
     testLocaleInfoGetGroupingSeparatorfor_pt_PT: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("pt-PT");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getGroupingSeparator(), " ");
@@ -8422,8 +8514,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetPercentageFormat_pt_PT: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("pt-PT");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getPercentageFormat(), "{n}%");
@@ -8431,8 +8523,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetCurrencyFormat_pt_PT: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("pt-PT");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().common, "{n} {s}");
@@ -8440,8 +8532,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeNumberFormat_pt_PT: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("pt-PT");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativeNumberFormat(), "-{n}");
@@ -8449,8 +8541,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativePercentageFormat_pt_PT: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("pt-PT");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativePercentageFormat(), "-{n}%");
@@ -8458,8 +8550,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeCurrencyFormat_pt_PT: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("pt-PT");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().commonNegative, "-{n} {s}");
@@ -8467,8 +8559,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetPrimaryGroupingDigits_pt_PT: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("pt-PT");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getPrimaryGroupingDigits(), 3);
@@ -8476,8 +8568,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetSecondaryGroupingDigits_pt_PT: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("pt-PT");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getSecondaryGroupingDigits(), 0);
@@ -8485,8 +8577,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoRoundingMode_pt_PT: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("pt-PT");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getRoundingMode(), "halfdown");
@@ -8496,16 +8588,16 @@ module.exports.testlocaleinfo = {
     //test cases for pt-ST
     
     testLocaleInfoGetDecimalSeparatorfor_pt_ST: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("pt-ST");
+        test.expect(2);
         test.ok(info !== null);
         test.equal(info.getDecimalSeparator(), ",");
         test.done();
     },
     
     testLocaleInfoGetGroupingSeparatorfor_pt_ST: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("pt-ST");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getGroupingSeparator(), " ");
@@ -8513,8 +8605,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetPercentageFormat_pt_ST: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("pt-ST");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getPercentageFormat(), "{n}%");
@@ -8522,8 +8614,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetCurrencyFormat_pt_ST: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("pt-ST");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().common, "{n} {s}");
@@ -8531,8 +8623,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeNumberFormat_pt_ST: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("pt-ST");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativeNumberFormat(), "-{n}");
@@ -8540,8 +8632,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativePercentageFormat_pt_ST: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("pt-ST");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativePercentageFormat(), "-{n}%");
@@ -8549,8 +8641,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeCurrencyFormat_pt_ST: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("pt-ST");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().commonNegative, "-{n} {s}");
@@ -8558,8 +8650,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetPrimaryGroupingDigits_pt_ST: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("pt-ST");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getPrimaryGroupingDigits(), 3);
@@ -8567,8 +8659,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetSecondaryGroupingDigits_pt_ST: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("pt-ST");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getSecondaryGroupingDigits(), 0);
@@ -8576,8 +8668,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoRoundingMode_pt_ST: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("pt-ST");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getRoundingMode(), "halfdown");
@@ -8587,16 +8679,16 @@ module.exports.testlocaleinfo = {
     //test cases for pt-TL
     
     testLocaleInfoGetDecimalSeparatorfor_pt_TL: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("pt-TL");
+        test.expect(2);
         test.ok(info !== null);
         test.equal(info.getDecimalSeparator(), ",");
         test.done();
     },
     
     testLocaleInfoGetGroupingSeparatorfor_pt_TL: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("pt-TL");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getGroupingSeparator(), " ");
@@ -8604,8 +8696,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetPercentageFormat_pt_TL: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("pt-TL");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getPercentageFormat(), "{n}%");
@@ -8613,8 +8705,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetCurrencyFormat_pt_TL: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("pt-TL");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().common, "{n} {s}");
@@ -8622,8 +8714,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeNumberFormat_pt_TL: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("pt-TL");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativeNumberFormat(), "-{n}");
@@ -8631,8 +8723,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativePercentageFormat_pt_TL: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("pt-TL");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativePercentageFormat(), "-{n}%");
@@ -8640,8 +8732,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeCurrencyFormat_pt_TL: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("pt-TL");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().commonNegative, "-{n} {s}");
@@ -8649,8 +8741,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetPrimaryGroupingDigits_pt_TL: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("pt-TL");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getPrimaryGroupingDigits(), 3);
@@ -8658,8 +8750,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetSecondaryGroupingDigits_pt_TL: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("pt-TL");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getSecondaryGroupingDigits(), 0);
@@ -8667,8 +8759,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoRoundingMode_pt_TL: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("pt-TL");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getRoundingMode(), "halfdown");
@@ -8680,16 +8772,16 @@ module.exports.testlocaleinfo = {
     //test cases for ro-RS
     
     testLocaleInfoGetDecimalSeparatorfor_ro_RS: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ro-RS");
+        test.expect(2);
         test.ok(info !== null);
         test.equal(info.getDecimalSeparator(), ",");
         test.done();
     },
     
     testLocaleInfoGetGroupingSeparatorfor_ro_RS: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ro-RS");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getGroupingSeparator(), ".");
@@ -8697,8 +8789,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetPercentageFormat_ro_RS: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ro-RS");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getPercentageFormat(), "{n} %");
@@ -8706,8 +8798,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetCurrencyFormat_ro_RS: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ro-RS");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().common, "{n} {s}");
@@ -8715,8 +8807,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeNumberFormat_ro_RS: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ro-RS");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativeNumberFormat(), "-{n}");
@@ -8724,8 +8816,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativePercentageFormat_ro_RS: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ro-RS");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativePercentageFormat(), "-{n} %");
@@ -8733,8 +8825,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeCurrencyFormat_ro_RS: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ro-RS");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().commonNegative, "-{n} {s}");
@@ -8742,8 +8834,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetPrimaryGroupingDigits_ro_RS: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ro-RS");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getPrimaryGroupingDigits(), 3);
@@ -8751,8 +8843,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetSecondaryGroupingDigits_ro_RS: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ro-RS");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getSecondaryGroupingDigits(), 0);
@@ -8760,8 +8852,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoRoundingMode_ro_RS: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ro-RS");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getRoundingMode(), "halfdown");
@@ -8772,16 +8864,16 @@ module.exports.testlocaleinfo = {
     //test cases for ru-KZ
     
     testLocaleInfoGetDecimalSeparatorfor_ru_KZ: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ru-KZ");
+        test.expect(2);
         test.ok(info !== null);
         test.equal(info.getDecimalSeparator(), ",");
         test.done();
     },
     
     testLocaleInfoGetGroupingSeparatorfor_ru_KZ: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ru-KZ");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getGroupingSeparator(), " ");
@@ -8789,8 +8881,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetPercentageFormat_ru_KZ: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ru-KZ");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getPercentageFormat(), "{n} %");
@@ -8798,8 +8890,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetCurrencyFormat_ru_KZ: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ru-KZ");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().common, "{n} {s}");
@@ -8807,8 +8899,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeNumberFormat_ru_KZ: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ru-KZ");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativeNumberFormat(), "-{n}");
@@ -8816,8 +8908,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativePercentageFormat_ru_KZ: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ru-KZ");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativePercentageFormat(), "-{n} %");
@@ -8825,8 +8917,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeCurrencyFormat_ru_KZ: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ru-KZ");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().commonNegative, "-{n} {s}");
@@ -8834,8 +8926,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetPrimaryGroupingDigits_ru_KZ: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ru-KZ");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getPrimaryGroupingDigits(), 3);
@@ -8843,8 +8935,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetSecondaryGroupingDigits_ru_KZ: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ru-KZ");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getSecondaryGroupingDigits(), 0);
@@ -8852,8 +8944,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoRoundingMode_ru_KZ: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ru-KZ");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getRoundingMode(), "halfdown");
@@ -8863,16 +8955,16 @@ module.exports.testlocaleinfo = {
     //test cases for ru-TM
     
     testLocaleInfoGetDecimalSeparatorfor_ru_TM: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ru-TM");
+        test.expect(2);
         test.ok(info !== null);
         test.equal(info.getDecimalSeparator(), ",");
         test.done();
     },
     
     testLocaleInfoGetGroupingSeparatorfor_ru_TM: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ru-TM");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getGroupingSeparator(), " ");
@@ -8880,8 +8972,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetPercentageFormat_ru_TM: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ru-TM");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getPercentageFormat(), "{n} %");
@@ -8889,8 +8981,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetCurrencyFormat_ru_TM: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ru-TM");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().common, "{n} {s}");
@@ -8898,8 +8990,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeNumberFormat_ru_TM: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ru-TM");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativeNumberFormat(), "-{n}");
@@ -8907,8 +8999,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativePercentageFormat_ru_TM: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ru-TM");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativePercentageFormat(), "-{n} %");
@@ -8916,8 +9008,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeCurrencyFormat_ru_TM: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ru-TM");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().commonNegative, "-{n} {s}");
@@ -8925,8 +9017,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetPrimaryGroupingDigits_ru_TM: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ru-TM");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getPrimaryGroupingDigits(), 3);
@@ -8934,8 +9026,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetSecondaryGroupingDigits_ru_TM: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ru-TM");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getSecondaryGroupingDigits(), 0);
@@ -8943,8 +9035,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoRoundingMode_ru_TM: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ru-TM");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getRoundingMode(), "halfdown");
@@ -8955,16 +9047,16 @@ module.exports.testlocaleinfo = {
     //test cases for shi-Tfng-MA
     
     testLocaleInfoGetDecimalSeparatorfor_shi_Tfng_MA: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("shi-Tfng-MA");
+        test.expect(2);
         test.ok(info !== null);
         test.equal(info.getDecimalSeparator(), ",");
         test.done();
     },
     
     testLocaleInfoGetGroupingSeparatorfor_shi_Tfng_MA: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("shi-MA-Tfng");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getGroupingSeparator(), " ");
@@ -8972,8 +9064,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetPercentageFormat_shi_Tfng_MA: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("shi-Tfng-MA");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getPercentageFormat(), "{n}%");
@@ -8981,8 +9073,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetCurrencyFormat_shi_Tfng_MA: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("shi-Tfng-MA");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().common, "{n}{s}");
@@ -8990,8 +9082,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeNumberFormat_shi_Tfng_MA: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("shi-Tfng-MA");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativeNumberFormat(), "-{n}");
@@ -8999,8 +9091,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativePercentageFormat_shi_Tfng_MA: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("shi-Tfng-MA");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativePercentageFormat(), "-{n}%");
@@ -9008,8 +9100,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeCurrencyFormat_shi_Tfng_MA: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("shi-Tfng-MA");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().commonNegative, "-{n}{s}");
@@ -9017,8 +9109,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetPrimaryGroupingDigits_shi_Tfng_MA: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("shi-Tfng-MA");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getPrimaryGroupingDigits(), 3);
@@ -9026,8 +9118,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetSecondaryGroupingDigits_shi_Tfng_MA: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("shi-Tfng-MA");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getSecondaryGroupingDigits(), 0);
@@ -9035,8 +9127,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoRoundingMode_shi_Tfng_MA: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("shi-Tfng-MA");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getRoundingMode(), "halfdown");
@@ -9046,16 +9138,16 @@ module.exports.testlocaleinfo = {
     //test cases for si
     
     testLocaleInfoGetDecimalSeparatorfor_si: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("si");
+        test.expect(2);
         test.ok(info !== null);
         test.equal(info.getDecimalSeparator(), ".");
         test.done();
     },
     
     testLocaleInfoGetGroupingSeparatorfor_si: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("si");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getGroupingSeparator(), ",");
@@ -9063,8 +9155,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetPercentageFormat_si: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("si");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getPercentageFormat(), "{n}%");
@@ -9072,8 +9164,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetCurrencyFormat_si: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("si");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().common, "{s}{n}");
@@ -9081,8 +9173,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeNumberFormat_si: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("si");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativeNumberFormat(), "-{n}");
@@ -9090,8 +9182,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativePercentageFormat_si: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("si");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativePercentageFormat(), "-{n}%");
@@ -9099,8 +9191,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeCurrencyFormat_si: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("si");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().commonNegative, "-{s}{n}");
@@ -9108,8 +9200,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetPrimaryGroupingDigits_si: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("si");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getPrimaryGroupingDigits(), 3);
@@ -9117,8 +9209,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetSecondaryGroupingDigits_si: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("si");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getSecondaryGroupingDigits(), 0);
@@ -9126,8 +9218,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoRoundingMode_si: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("si");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getRoundingMode(), "halfdown");
@@ -9138,16 +9230,16 @@ module.exports.testlocaleinfo = {
     //test cases for sk-SK
     
     testLocaleInfoGetDecimalSeparatorfor_sk_SK: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("sk-SK");
+        test.expect(2);
         test.ok(info !== null);
         test.equal(info.getDecimalSeparator(), ",");
         test.done();
     },
     
     testLocaleInfoGetGroupingSeparatorfor_sk_SK: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("sk-SK");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getGroupingSeparator(), " ");
@@ -9155,8 +9247,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetPercentageFormat_sk_SK: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("sk-SK");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getPercentageFormat(), "{n} %");
@@ -9164,8 +9256,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetCurrencyFormat_sk_SK: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("sk-SK");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().common, "{n} {s}");
@@ -9173,8 +9265,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeNumberFormat_sk_SK: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("sk-SK");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativeNumberFormat(), "-{n}");
@@ -9182,8 +9274,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativePercentageFormat_sk_SK: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("sk-SK");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativePercentageFormat(), "-{n} %");
@@ -9191,8 +9283,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeCurrencyFormat_sk_SK: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("sk-SK");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().commonNegative, "-{n} {s}");
@@ -9200,8 +9292,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetPrimaryGroupingDigits_sk_SK: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("sk-SK");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getPrimaryGroupingDigits(), 3);
@@ -9209,8 +9301,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetSecondaryGroupingDigits_sk_SK: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("sk-SK");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getSecondaryGroupingDigits(), 0);
@@ -9218,8 +9310,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoRoundingMode_sk_SK: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("sk-SK");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getRoundingMode(), "halfdown");
@@ -9229,16 +9321,16 @@ module.exports.testlocaleinfo = {
     //test cases for sl-SI
     
     testLocaleInfoGetDecimalSeparatorfor_sl: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("sl-SI");
+        test.expect(2);
         test.ok(info !== null);
         test.equal(info.getDecimalSeparator(), ",");
         test.done();
     },
     
     testLocaleInfoGetGroupingSeparatorfor_sl: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("sl-SI");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getGroupingSeparator(), ".");
@@ -9246,8 +9338,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetPercentageFormat_sl: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("sl-SI");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getPercentageFormat(), "{n} %");
@@ -9255,8 +9347,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetCurrencyFormat_sl: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("sl-SI");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().common, "{n} {s}");
@@ -9264,8 +9356,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeNumberFormat_sl: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("sl-SI");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativeNumberFormat(), "–{n}");
@@ -9273,8 +9365,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativePercentageFormat_sl: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("sl-SI");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativePercentageFormat(), "–{n} %");
@@ -9282,8 +9374,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeCurrencyFormat_sl: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("sl-SI");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().commonNegative, "–{n} {s}");
@@ -9291,8 +9383,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetPrimaryGroupingDigits_sl: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("sl-SI");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getPrimaryGroupingDigits(), 3);
@@ -9300,8 +9392,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetSecondaryGroupingDigits_sl: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("sl-SI");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getSecondaryGroupingDigits(), 0);
@@ -9309,8 +9401,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoRoundingMode_sl: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("sl-SI");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getRoundingMode(), "halfdown");
@@ -9318,8 +9410,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetGroupingSeparatorfor_so_ET: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("so-ET");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getGroupingSeparator(), ",");
@@ -9327,8 +9419,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetPercentageFormat_so_ET: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("so-ET");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getPercentageFormat(), "{n}%");
@@ -9336,8 +9428,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetCurrencyFormat_so_ET: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("so-ET");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().common, "{s}{n}");
@@ -9345,8 +9437,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeNumberFormat_so_ET: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("so-ET");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativeNumberFormat(), "-{n}");
@@ -9354,8 +9446,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativePercentageFormat_so_ET: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("so-ET");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativePercentageFormat(), "-{n}%");
@@ -9363,8 +9455,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeCurrencyFormat_so_ET: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("so-ET");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().commonNegative, "-{s}{n}");
@@ -9372,8 +9464,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetPrimaryGroupingDigits_so_ET: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("so-ET");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getPrimaryGroupingDigits(), 3);
@@ -9381,8 +9473,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetSecondaryGroupingDigits_so_ET: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("so-ET");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getSecondaryGroupingDigits(), 0);
@@ -9390,8 +9482,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoRoundingMode_so_ET: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("so-ET");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getRoundingMode(), "halfdown");
@@ -9401,16 +9493,16 @@ module.exports.testlocaleinfo = {
     //test cases for so-SO
     
     testLocaleInfoGetDecimalSeparatorfor_so_SO: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("so-SO");
+        test.expect(2);
         test.ok(info !== null);
         test.equal(info.getDecimalSeparator(), ".");
         test.done();
     },
     
     testLocaleInfoGetGroupingSeparatorfor_so_SO: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("so-SO");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getGroupingSeparator(), ",");
@@ -9418,8 +9510,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetPercentageFormat_so_SO: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("so-SO");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getPercentageFormat(), "{n}%");
@@ -9427,8 +9519,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetCurrencyFormat_so_SO: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("so-SO");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().common, "{s}{n}");
@@ -9436,8 +9528,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeNumberFormat_so_SO: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("so-SO");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativeNumberFormat(), "-{n}");
@@ -9445,8 +9537,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativePercentageFormat_so_SO: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("so-SO");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativePercentageFormat(), "-{n}%");
@@ -9454,8 +9546,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeCurrencyFormat_so_SO: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("so-SO");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().commonNegative, "-{s}{n}");
@@ -9463,8 +9555,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetPrimaryGroupingDigits_so_SO: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("so-SO");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getPrimaryGroupingDigits(), 3);
@@ -9472,8 +9564,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetSecondaryGroupingDigits_so_SO: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("so-SO");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getSecondaryGroupingDigits(), 0);
@@ -9481,8 +9573,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoRoundingMode_so_SO: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("so-SO");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getRoundingMode(), "halfdown");
@@ -9493,16 +9585,16 @@ module.exports.testlocaleinfo = {
     //test cases for sq-MK
     
     testLocaleInfoGetDecimalSeparatorfor_sq_MK: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("sq-MK");
+        test.expect(2);
         test.ok(info !== null);
         test.equal(info.getDecimalSeparator(), ",");
         test.done();
     },
     
     testLocaleInfoGetGroupingSeparatorfor_sq_MK: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("sq-MK");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getGroupingSeparator(), " ");
@@ -9510,8 +9602,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetPercentageFormat_sq_MK: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("sq-MK");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getPercentageFormat(), "{n}%");
@@ -9519,8 +9611,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetCurrencyFormat_sq_MK: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("sq-MK");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().common, "{n} {s}");
@@ -9528,8 +9620,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeNumberFormat_sq_MK: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("sq-MK");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativeNumberFormat(), "-{n}");
@@ -9537,8 +9629,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativePercentageFormat_sq_MK: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("sq-MK");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativePercentageFormat(), "-{n}%");
@@ -9546,8 +9638,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeCurrencyFormat_sq_MK: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("sq-MK");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().commonNegative, "-{n} {s}");
@@ -9555,8 +9647,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetPrimaryGroupingDigits_sq_MK: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("sq-MK");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getPrimaryGroupingDigits(), 3);
@@ -9564,8 +9656,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetSecondaryGroupingDigits_sq_MK: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("sq-MK");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getSecondaryGroupingDigits(), 0);
@@ -9573,8 +9665,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoRoundingMode_sq_MK: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("sq-MK");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getRoundingMode(), "halfdown");
@@ -9585,16 +9677,16 @@ module.exports.testlocaleinfo = {
     //test cases for sr-Cyrl-BA
     
     testLocaleInfoGetDecimalSeparatorfor_sr_Cyrl_BA: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("sr-Cyrl-BA");
+        test.expect(2);
         test.ok(info !== null);
         test.equal(info.getDecimalSeparator(), ",");
         test.done();
     },
     
     testLocaleInfoGetGroupingSeparatorfor_sr_Cyrl_BA: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("sr-Cyrl-BA");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getGroupingSeparator(), ".");
@@ -9602,8 +9694,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetPercentageFormat_sr_Cyrl_BA: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("sr-Cyrl-BA");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getPercentageFormat(), "{n}%");
@@ -9611,8 +9703,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetCurrencyFormat_sr_Cyrl_BA: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("sr-Cyrl-BA");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().common, "{n} {s}");
@@ -9620,8 +9712,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeNumberFormat_sr_Cyrl_BA: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("sr-Cyrl-BA");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativeNumberFormat(), "-{n}");
@@ -9629,8 +9721,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativePercentageFormat_sr_Cyrl_BA: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("sr-Cyrl-BA");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativePercentageFormat(), "-{n}%");
@@ -9638,8 +9730,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeCurrencyFormat_sr_Cyrl_BA: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("sr-Cyrl-BA");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().commonNegative, "-{n} {s}");
@@ -9647,8 +9739,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetPrimaryGroupingDigits_sr_Cyrl_BA: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("sr-Cyrl-BA");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getPrimaryGroupingDigits(), 3);
@@ -9656,8 +9748,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetSecondaryGroupingDigits_sr_Cyrl_BA: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("sr-Cyrl-BA");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getSecondaryGroupingDigits(), 0);
@@ -9665,8 +9757,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoRoundingMode_sr_Cyrl_BA: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("sr-Cyrl-BA");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getRoundingMode(), "halfdown");
@@ -9676,16 +9768,16 @@ module.exports.testlocaleinfo = {
     //test cases for sr-Latn-BA
     
     testLocaleInfoGetDecimalSeparatorfor_sr_Latn_BA: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("sr-Latn-BA");
+        test.expect(2);
         test.ok(info !== null);
         test.equal(info.getDecimalSeparator(), ",");
         test.done();
     },
     
     testLocaleInfoGetGroupingSeparatorfor_sr_Latn_BA: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("sr-Latn-BA");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getGroupingSeparator(), ".");
@@ -9693,8 +9785,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetPercentageFormat_sr_Latn_BA: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("sr-Latn-BA");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getPercentageFormat(), "{n}%");
@@ -9702,8 +9794,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetCurrencyFormat_sr_Latn_BA: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("sr-Latn-BA");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().common, "{n} {s}");
@@ -9711,8 +9803,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeNumberFormat_sr_Latn_BA: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("sr-Latn-BA");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativeNumberFormat(), "-{n}");
@@ -9720,8 +9812,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativePercentageFormat_sr_Latn_BA: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("sr-Latn-BA");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativePercentageFormat(), "-{n}%");
@@ -9729,8 +9821,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeCurrencyFormat_sr_Latn_BA: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("sr-Latn-BA");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().commonNegative, "-{n} {s}");
@@ -9738,8 +9830,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetPrimaryGroupingDigits_sr_Latn_BA: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("sr-Latn-BA");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getPrimaryGroupingDigits(), 3);
@@ -9747,8 +9839,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetSecondaryGroupingDigits_sr_Latn_BA: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("sr-Latn-BA");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getSecondaryGroupingDigits(), 0);
@@ -9756,8 +9848,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoRoundingMode_sr_Latn_BA: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("sr-Latn-BA");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getRoundingMode(), "halfdown");
@@ -9767,16 +9859,16 @@ module.exports.testlocaleinfo = {
     //test cases for sr-ME-Latn
     
     testLocaleInfoGetDecimalSeparatorfor_sr_Latn_ME: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("sr-Latn-ME");
+        test.expect(2);
         test.ok(info !== null);
         test.equal(info.getDecimalSeparator(), ",");
         test.done();
     },
     
     testLocaleInfoGetGroupingSeparatorfor_sr_Latn_ME: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("sr-Latn-ME");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getGroupingSeparator(), ".");
@@ -9784,8 +9876,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetPercentageFormat_sr_Latn_ME: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("sr-Latn-ME");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getPercentageFormat(), "{n}%");
@@ -9793,8 +9885,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetCurrencyFormat_sr_Latn_ME: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("sr-Latn-ME");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().common, "{n} {s}");
@@ -9802,8 +9894,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeNumberFormat_sr_Latn_ME: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("sr-Latn-ME");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativeNumberFormat(), "-{n}");
@@ -9811,8 +9903,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativePercentageFormat_sr_Latn_ME: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("sr-Latn-ME");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativePercentageFormat(), "-{n}%");
@@ -9820,8 +9912,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeCurrencyFormat_sr_Latn_ME: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("sr-Latn-ME");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().commonNegative, "-{n} {s}");
@@ -9829,8 +9921,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetPrimaryGroupingDigits_sr_Latn_ME: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("sr-Latn-ME");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getPrimaryGroupingDigits(), 3);
@@ -9838,8 +9930,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetSecondaryGroupingDigits_sr_Latn_ME: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("sr-Latn-ME");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getSecondaryGroupingDigits(), 0);
@@ -9847,8 +9939,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoRoundingMode_sr_Latn_ME: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("sr-Latn-ME");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getRoundingMode(), "halfdown");
@@ -9858,16 +9950,16 @@ module.exports.testlocaleinfo = {
     //test cases for sr-Latn-RS
     
     testLocaleInfoGetDecimalSeparatorfor_sr_Latn_RS: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("sr-Latn-RS");
+        test.expect(2);
         test.ok(info !== null);
         test.equal(info.getDecimalSeparator(), ",");
         test.done();
     },
     
     testLocaleInfoGetGroupingSeparatorfor_sr_Latn_RS: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("sr-Latn-RS");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getGroupingSeparator(), ".");
@@ -9875,8 +9967,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetPercentageFormat_sr_Latn_RS: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("sr-Latn-RS");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getPercentageFormat(), "{n}%");
@@ -9884,8 +9976,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetCurrencyFormat_sr_Latn_RS: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("sr-Latn-RS");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().common, "{n} {s}");
@@ -9893,8 +9985,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeNumberFormat_sr_Latn_RS: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("sr-Latn-RS");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativeNumberFormat(), "-{n}");
@@ -9902,8 +9994,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativePercentageFormat_sr_Latn_RS: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("sr-Latn-RS");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativePercentageFormat(), "-{n}%");
@@ -9911,8 +10003,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeCurrencyFormat_sr_Latn_RS: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("sr-Latn-RS");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().commonNegative, "-{n} {s}");
@@ -9920,8 +10012,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetPrimaryGroupingDigits_sr_Latn_RS: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("sr-Latn-RS");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getPrimaryGroupingDigits(), 3);
@@ -9929,8 +10021,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetSecondaryGroupingDigits_sr_Latn_RS: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("sr-Latn-RS");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getSecondaryGroupingDigits(), 0);
@@ -9938,8 +10030,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoRoundingMode_sr_Latn_RS: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("sr-Latn-RS");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getRoundingMode(), "halfdown");
@@ -9949,16 +10041,16 @@ module.exports.testlocaleinfo = {
     //test cases for sr-RS
     
     testLocaleInfoGetDecimalSeparatorfor_sr_RS: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("sr-RS");
+        test.expect(2);
         test.ok(info !== null);
         test.equal(info.getDecimalSeparator(), ",");
         test.done();
     },
     
     testLocaleInfoGetGroupingSeparatorfor_sr_RS: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("sr-RS");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getGroupingSeparator(), ".");
@@ -9966,8 +10058,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetPercentageFormat_sr_RS: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("sr-RS");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getPercentageFormat(), "{n}%");
@@ -9975,8 +10067,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetCurrencyFormat_sr_RS: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("sr-RS");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().common, "{n} {s}");
@@ -9984,8 +10076,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeNumberFormat_sr_RS: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("sr-RS");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativeNumberFormat(), "-{n}");
@@ -9993,8 +10085,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativePercentageFormat_sr_RS: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("sr-RS");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativePercentageFormat(), "-{n}%");
@@ -10002,8 +10094,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeCurrencyFormat_sr_RS: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("sr-RS");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().commonNegative, "-{n} {s}");
@@ -10011,8 +10103,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetPrimaryGroupingDigits_sr_RS: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("sr-RS");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getPrimaryGroupingDigits(), 3);
@@ -10020,8 +10112,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetSecondaryGroupingDigits_sr_RS: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("sr-RS");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getSecondaryGroupingDigits(), 0);
@@ -10029,8 +10121,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoRoundingMode_sr_RS: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("sr-RS");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getRoundingMode(), "halfdown");
@@ -10040,16 +10132,16 @@ module.exports.testlocaleinfo = {
     //test cases for ss-ZA
     
     testLocaleInfoGetDecimalSeparatorfor_ss_ZA: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ss-ZA");
+        test.expect(2);
         test.ok(info !== null);
         test.equal(info.getDecimalSeparator(), ",");
         test.done();
     },
     
     testLocaleInfoGetGroupingSeparatorfor_ss_ZA: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ss-ZA");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getGroupingSeparator(), " ");
@@ -10057,8 +10149,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetPercentageFormat_ss_ZA: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ss-ZA");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getPercentageFormat(), "{n}%");
@@ -10066,8 +10158,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetCurrencyFormat_ss_ZA: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ss-ZA");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().common, "{s}{n}");
@@ -10075,8 +10167,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeNumberFormat_ss_ZA: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ss-ZA");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativeNumberFormat(), "-{n}");
@@ -10084,8 +10176,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativePercentageFormat_ss_ZA: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ss-ZA");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativePercentageFormat(), "-{n}%");
@@ -10093,8 +10185,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeCurrencyFormat_ss_ZA: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ss-ZA");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().commonNegative, "-{s} {n}");
@@ -10102,8 +10194,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetPrimaryGroupingDigits_ss_ZA: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ss-ZA");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getPrimaryGroupingDigits(), 3);
@@ -10111,8 +10203,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetSecondaryGroupingDigits_ss_ZA: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ss-ZA");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getSecondaryGroupingDigits(), 0);
@@ -10120,8 +10212,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoRoundingMode_ss_ZA: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ss-ZA");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getRoundingMode(), "halfdown");
@@ -10132,16 +10224,16 @@ module.exports.testlocaleinfo = {
     //test cases for st-LS
     
     testLocaleInfoGetDecimalSeparatorfor_st_LS: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("st-LS");
+        test.expect(2);
         test.ok(info !== null);
         test.equal(info.getDecimalSeparator(), ".");
         test.done();
     },
     
     testLocaleInfoGetGroupingSeparatorfor_st_LS: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("st-LS");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getGroupingSeparator(), " ");
@@ -10149,8 +10241,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetPercentageFormat_st_LS: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("st-LS");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getPercentageFormat(), "{n}%");
@@ -10158,8 +10250,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetCurrencyFormat_st_LS: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("st-LS");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().common, "{s} {n}");
@@ -10167,8 +10259,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeNumberFormat_st_LS: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("st-LS");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativeNumberFormat(), "-{n}");
@@ -10176,8 +10268,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativePercentageFormat_st_LS: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("st-LS");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativePercentageFormat(), "-{n}%");
@@ -10185,8 +10277,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeCurrencyFormat_st_LS: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("st-LS");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().commonNegative, "-{s} {n}");
@@ -10194,8 +10286,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetPrimaryGroupingDigits_st_LS: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("st-LS");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getPrimaryGroupingDigits(), 3);
@@ -10203,8 +10295,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetSecondaryGroupingDigits_st_LS: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("st-LS");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getSecondaryGroupingDigits(), 0);
@@ -10212,8 +10304,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoRoundingMode_st_LS: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("st-LS");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getRoundingMode(), "halfdown");
@@ -10223,16 +10315,16 @@ module.exports.testlocaleinfo = {
     //test cases for sv-FI
     
     testLocaleInfoGetDecimalSeparatorfor_sv_FI: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("sv-FI");
+        test.expect(2);
         test.ok(info !== null);
         test.equal(info.getDecimalSeparator(), ",");
         test.done();
     },
     
     testLocaleInfoGetGroupingSeparatorfor_sv_FI: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("sv-FI");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getGroupingSeparator(), " ");
@@ -10240,8 +10332,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetPercentageFormat_sv_FI: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("sv-FI");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getPercentageFormat(), "{n} %");
@@ -10249,8 +10341,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetCurrencyFormat_sv_FI: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("sv-FI");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().common, "{n} {s}");
@@ -10258,8 +10350,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeNumberFormat_sv_FI: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("sv-FI");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativeNumberFormat(), "−{n}");
@@ -10267,8 +10359,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativePercentageFormat_sv_FI: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("sv-FI");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativePercentageFormat(), "−{n} %");
@@ -10276,8 +10368,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeCurrencyFormat_sv_FI: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("sv-FI");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().commonNegative, "−{n} {s}");
@@ -10285,8 +10377,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetPrimaryGroupingDigits_sv_FI: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("sv-FI");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getPrimaryGroupingDigits(), 3);
@@ -10294,8 +10386,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetSecondaryGroupingDigits_sv_FI: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("sv-FI");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getSecondaryGroupingDigits(), 0);
@@ -10303,8 +10395,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoRoundingMode_sv_FI: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("sv-FI");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getRoundingMode(), "halfdown");
@@ -10315,16 +10407,16 @@ module.exports.testlocaleinfo = {
     //test cases for sw-UG
     
     testLocaleInfoGetDecimalSeparatorfor_sw_UG: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("sw-UG");
+        test.expect(2);
         test.ok(info !== null);
         test.equal(info.getDecimalSeparator(), ".");
         test.done();
     },
     
     testLocaleInfoGetGroupingSeparatorfor_sw_UG: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("sw-UG");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getGroupingSeparator(), ",");
@@ -10332,8 +10424,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetPercentageFormat_sw_UG: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("sw-UG");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getPercentageFormat(), "{n}%");
@@ -10341,8 +10433,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetCurrencyFormat_sw_UG: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("sw-UG");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().common, "{s}{n}");
@@ -10350,8 +10442,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeNumberFormat_sw_UG: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("sw-UG");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativeNumberFormat(), "-{n}");
@@ -10359,8 +10451,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativePercentageFormat_sw_UG: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("sw-UG");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativePercentageFormat(), "-{n}%");
@@ -10368,8 +10460,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeCurrencyFormat_sw_UG: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("sw-UG");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().commonNegative, "-{s}{n}");
@@ -10377,8 +10469,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetPrimaryGroupingDigits_sw_UG: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("sw-UG");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getPrimaryGroupingDigits(), 3);
@@ -10386,8 +10478,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetSecondaryGroupingDigits_sw_UG: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("sw-UG");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getSecondaryGroupingDigits(), 0);
@@ -10395,8 +10487,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoRoundingMode_sw_UG: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("sw-UG");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getRoundingMode(), "halfdown");
@@ -10408,16 +10500,16 @@ module.exports.testlocaleinfo = {
     //test cases for ta-LK
     
     testLocaleInfoGetDecimalSeparatorfor_ta_LK: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ta-LK");
+        test.expect(2);
         test.ok(info !== null);
         test.equal(info.getDecimalSeparator(), ".");
         test.done();
     },
     
     testLocaleInfoGetGroupingSeparatorfor_ta_LK: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ta-LK");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getGroupingSeparator(), ",");
@@ -10425,8 +10517,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetPercentageFormat_ta_LK: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ta-LK");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getPercentageFormat(), "{n}%");
@@ -10434,8 +10526,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetCurrencyFormat_ta_LK: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ta-LK");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().common, "{s} {n}");
@@ -10443,8 +10535,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeNumberFormat_ta_LK: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ta-LK");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativeNumberFormat(), "-{n}");
@@ -10452,8 +10544,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativePercentageFormat_ta_LK: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ta-LK");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativePercentageFormat(), "-{n}%");
@@ -10461,8 +10553,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeCurrencyFormat_ta_LK: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ta-LK");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().commonNegative, "-{s} {n}");
@@ -10470,8 +10562,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetPrimaryGroupingDigits_ta_LK: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ta-LK");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getPrimaryGroupingDigits(), 3);
@@ -10479,8 +10571,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetSecondaryGroupingDigits_ta_LK: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ta-LK");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getSecondaryGroupingDigits(), 2);
@@ -10488,8 +10580,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoRoundingMode_ta_LK: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ta-LK");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getRoundingMode(), "halfdown");
@@ -10499,16 +10591,16 @@ module.exports.testlocaleinfo = {
     //test cases for ta-MY
     
     testLocaleInfoGetDecimalSeparatorfor_ta_MY: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ta-MY");
+        test.expect(2);
         test.ok(info !== null);
         test.equal(info.getDecimalSeparator(), ".");
         test.done();
     },
     
     testLocaleInfoGetGroupingSeparatorfor_ta_MY: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ta-MY");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getGroupingSeparator(), ",");
@@ -10516,8 +10608,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetPercentageFormat_ta_MY: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ta-MY");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getPercentageFormat(), "{n}%");
@@ -10525,8 +10617,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetCurrencyFormat_ta_MY: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ta-MY");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().common, "{s} {n}");
@@ -10534,8 +10626,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeNumberFormat_ta_MY: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ta-MY");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativeNumberFormat(), "-{n}");
@@ -10543,8 +10635,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativePercentageFormat_ta_MY: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ta-MY");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativePercentageFormat(), "-{n}%");
@@ -10552,8 +10644,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeCurrencyFormat_ta_MY: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ta-MY");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().commonNegative, "-{s} {n}");
@@ -10561,8 +10653,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetPrimaryGroupingDigits_ta_MY: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ta-MY");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getPrimaryGroupingDigits(), 3);
@@ -10570,8 +10662,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetSecondaryGroupingDigits_ta_MY: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ta-MY");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getSecondaryGroupingDigits(), 2);
@@ -10579,8 +10671,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoRoundingMode_ta_MY: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ta-MY");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getRoundingMode(), "halfdown");
@@ -10590,16 +10682,16 @@ module.exports.testlocaleinfo = {
     //test cases for ta-SG
     
     testLocaleInfoGetDecimalSeparatorfor_ta_SG: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ta-SG");
+        test.expect(2);
         test.ok(info !== null);
         test.equal(info.getDecimalSeparator(), ".");
         test.done();
     },
     
     testLocaleInfoGetGroupingSeparatorfor_ta_SG: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ta-SG");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getGroupingSeparator(), ",");
@@ -10607,8 +10699,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetPercentageFormat_ta_SG: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ta-SG");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getPercentageFormat(), "{n}%");
@@ -10616,8 +10708,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetCurrencyFormat_ta_SG: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ta-SG");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().common, "{s} {n}");
@@ -10625,8 +10717,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeNumberFormat_ta_SG: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ta-SG");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativeNumberFormat(), "-{n}");
@@ -10634,8 +10726,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativePercentageFormat_ta_SG: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ta-SG");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativePercentageFormat(), "-{n}%");
@@ -10643,8 +10735,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeCurrencyFormat_ta_SG: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ta-SG");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().commonNegative, "-{s} {n}");
@@ -10652,8 +10744,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetPrimaryGroupingDigits_ta_SG: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ta-SG");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getPrimaryGroupingDigits(), 3);
@@ -10661,8 +10753,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetSecondaryGroupingDigits_ta_SG: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ta-SG");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getSecondaryGroupingDigits(), 2);
@@ -10670,8 +10762,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoRoundingMode_ta_SG: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ta-SG");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getRoundingMode(), "halfdown");
@@ -10682,16 +10774,16 @@ module.exports.testlocaleinfo = {
     //test cases for th-TH
     
     testLocaleInfoGetDecimalSeparatorfor_th: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("th-TH");
+        test.expect(2);
         test.ok(info !== null);
         test.equal(info.getDecimalSeparator(), ".");
         test.done();
     },
     
     testLocaleInfoGetGroupingSeparatorfor_th: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("th-TH");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getGroupingSeparator(), ",");
@@ -10699,8 +10791,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetPercentageFormat_th: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("th-TH");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getPercentageFormat(), "{n}%");
@@ -10708,8 +10800,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetCurrencyFormat_th: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("th-TH");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().common, "{s}{n}");
@@ -10717,8 +10809,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeNumberFormat_th: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("th-TH");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativeNumberFormat(), "-{n}");
@@ -10726,8 +10818,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativePercentageFormat_th: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("th-TH");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativePercentageFormat(), "-{n}%");
@@ -10735,8 +10827,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeCurrencyFormat_th: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("th-TH");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().commonNegative, "-{s}{n}");
@@ -10744,8 +10836,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetPrimaryGroupingDigits_th: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("th-TH");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getPrimaryGroupingDigits(), 3);
@@ -10753,8 +10845,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetSecondaryGroupingDigits_th: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("th-TH");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getSecondaryGroupingDigits(), 0);
@@ -10762,8 +10854,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoRoundingMode_th: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("th-TH");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getRoundingMode(), "halfdown");
@@ -10774,16 +10866,16 @@ module.exports.testlocaleinfo = {
     //test cases for uk-UA
     
     testLocaleInfoGetDecimalSeparatorfor_uk_UA: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("uk-UA");
+        test.expect(2);
         test.ok(info !== null);
         test.equal(info.getDecimalSeparator(), ",");
         test.done();
     },
     
     testLocaleInfoGetGroupingSeparatorfor_uk_UA: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("uk-UA");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getGroupingSeparator(), " ");
@@ -10791,8 +10883,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetPercentageFormat_uk_UA: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("uk-UA");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getPercentageFormat(), "{n}%");
@@ -10800,8 +10892,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetCurrencyFormat_uk_UA: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("uk-UA");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().common, "{n} {s}");
@@ -10809,8 +10901,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeNumberFormat_uk_UA: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("uk-UA");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativeNumberFormat(), "-{n}");
@@ -10818,8 +10910,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativePercentageFormat_uk_UA: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("uk-UA");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativePercentageFormat(), "-{n}%");
@@ -10827,8 +10919,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeCurrencyFormat_uk_UA: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("uk-UA");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().commonNegative, "-{n} {s}");
@@ -10836,8 +10928,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetPrimaryGroupingDigits_uk_UA: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("uk-UA");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getPrimaryGroupingDigits(), 3);
@@ -10845,8 +10937,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetSecondaryGroupingDigits_uk_UA: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("uk-UA");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getSecondaryGroupingDigits(), 0);
@@ -10854,8 +10946,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoRoundingMode_uk_UA: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("uk-UA");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getRoundingMode(), "halfdown");
@@ -10865,16 +10957,16 @@ module.exports.testlocaleinfo = {
     //test cases for ur
     
     testLocaleInfoGetDecimalSeparatorfor_ur: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ur");
+        test.expect(2);
         test.ok(info !== null);
         test.equal(info.getDecimalSeparator(), ".");
         test.done();
     },
     
     testLocaleInfoGetGroupingSeparatorfor_ur: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ur");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getGroupingSeparator(), ",");
@@ -10882,8 +10974,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetPercentageFormat_ur: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ur");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getPercentageFormat(), "{n}%");
@@ -10891,8 +10983,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetCurrencyFormat_ur: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ur");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().common, "{s} {n}");
@@ -10900,8 +10992,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeNumberFormat_ur: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ur");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativeNumberFormat(), "‎-{n}");
@@ -10909,8 +11001,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativePercentageFormat_ur: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ur");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativePercentageFormat(), "‎-{n}%");
@@ -10918,8 +11010,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeCurrencyFormat_ur: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ur");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().commonNegative, "‎-{s} {n}");
@@ -10927,8 +11019,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetPrimaryGroupingDigits_ur: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ur");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getPrimaryGroupingDigits(), 3);
@@ -10936,8 +11028,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetSecondaryGroupingDigits_ur: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ur");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getSecondaryGroupingDigits(), 0);
@@ -10945,8 +11037,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoRoundingMode_ur: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ur");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getRoundingMode(), "halfdown");
@@ -10956,16 +11048,16 @@ module.exports.testlocaleinfo = {
     //test cases for ur-IN
     
     testLocaleInfoGetDecimalSeparatorfor_ur_IN: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ur-IN");
+        test.expect(2);
         test.ok(info !== null);
         test.equal(info.getDecimalSeparator(), ".");
         test.done();
     },
     
     testLocaleInfoGetGroupingSeparatorfor_ur_IN: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ur-IN");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getGroupingSeparator(), ",");
@@ -10973,8 +11065,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetPercentageFormat_ur_IN: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ur-IN");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getPercentageFormat(), "{n}%");
@@ -10982,8 +11074,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetCurrencyFormat_ur_IN: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ur-IN");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().common, "{s} {n}");
@@ -10991,8 +11083,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeNumberFormat_ur_IN: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ur-IN");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativeNumberFormat(), "‎-‎{n}");
@@ -11000,8 +11092,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativePercentageFormat_ur_IN: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ur-IN");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativePercentageFormat(), "‎-‎{n}%");
@@ -11009,8 +11101,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeCurrencyFormat_ur_IN: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ur-IN");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().commonNegative, "‎-‎{s} {n}");
@@ -11018,8 +11110,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetPrimaryGroupingDigits_ur_IN: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ur-IN");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getPrimaryGroupingDigits(), 3);
@@ -11027,8 +11119,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetSecondaryGroupingDigits_ur_IN: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ur-IN");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getSecondaryGroupingDigits(), 0);
@@ -11036,8 +11128,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoRoundingMode_ur_IN: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ur-IN");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getRoundingMode(), "halfdown");
@@ -11047,16 +11139,16 @@ module.exports.testlocaleinfo = {
     //test cases for ur-PK
     
     testLocaleInfoGetDecimalSeparatorfor_ur_PK: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ur-PK");
+        test.expect(2);
         test.ok(info !== null);
         test.equal(info.getDecimalSeparator(), ".");
         test.done();
     },
     
     testLocaleInfoGetGroupingSeparatorfor_ur_PK: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ur-PK");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getGroupingSeparator(), ",");
@@ -11064,8 +11156,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetPercentageFormat_ur_PK: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ur-PK");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getPercentageFormat(), "{n}%");
@@ -11073,8 +11165,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetCurrencyFormat_ur_PK: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ur-PK");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().common, "{s} {n}");
@@ -11082,8 +11174,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeNumberFormat_ur_PK: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ur-PK");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativeNumberFormat(), "‎-{n}");
@@ -11091,8 +11183,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativePercentageFormat_ur_PK: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ur-PK");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativePercentageFormat(), "‎-{n}%");
@@ -11100,8 +11192,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeCurrencyFormat_ur_PK: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ur-PK");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().commonNegative, "‎-{s} {n}");
@@ -11109,8 +11201,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetPrimaryGroupingDigits_ur_PK: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ur-PK");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getPrimaryGroupingDigits(), 3);
@@ -11118,8 +11210,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetSecondaryGroupingDigits_ur_PK: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ur-PK");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getSecondaryGroupingDigits(), 0);
@@ -11127,8 +11219,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoRoundingMode_ur_PK: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ur-PK");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getRoundingMode(), "halfdown");
@@ -11138,16 +11230,16 @@ module.exports.testlocaleinfo = {
     //test cases for uz-Arab-AF
     
     testLocaleInfoGetDecimalSeparatorfor_ur_Arab_AF: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("uz-Arab-AF");
+        test.expect(2);
         test.ok(info !== null);
         test.equal(info.getDecimalSeparator(), "٫");
         test.done();
     },
     
     testLocaleInfoGetGroupingSeparatorfor_ur_Arab_AF: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("uz-Arab-AF");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getGroupingSeparator(), "٬");
@@ -11155,8 +11247,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetPercentageFormat_ur_Arab_AF: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("uz-Arab-AF");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getPercentageFormat(), "{n}٪");
@@ -11164,8 +11256,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetCurrencyFormat_ur_Arab_AF: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("uz-Arab-AF");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().common, "{s} {n}");
@@ -11173,8 +11265,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeNumberFormat_ur_Arab_AF: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("uz-Arab-AF");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativeNumberFormat(), "‎-‎{n}");
@@ -11182,8 +11274,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativePercentageFormat_ur_Arab_AF: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("uz-Arab-AF");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativePercentageFormat(), "‎-‎{n}٪");
@@ -11191,8 +11283,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeCurrencyFormat_ur_Arab_AF: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("uz-Arab-AF");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().commonNegative, "‎-‎{s} {n}");
@@ -11200,8 +11292,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetPrimaryGroupingDigits_ur_Arab_AF: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("uz-Arab-AF");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getPrimaryGroupingDigits(), 3);
@@ -11209,8 +11301,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetSecondaryGroupingDigits_ur_Arab_AF: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("uz-Arab-AF");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getSecondaryGroupingDigits(), 0);
@@ -11218,8 +11310,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoRoundingMode_ur_Arab_AF: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("uz-Arab-AF");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getRoundingMode(), "halfdown");
@@ -11229,16 +11321,16 @@ module.exports.testlocaleinfo = {
     //test cases for uz-UZ
     
     testLocaleInfoGetDecimalSeparatorfor_uz_Latn_UZ: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("uz-Latn-UZ");
+        test.expect(2);
         test.ok(info !== null);
         test.equal(info.getDecimalSeparator(), ",");
         test.done();
     },
     
     testLocaleInfoGetGroupingSeparatorfor_uz_Latn_UZ: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("uz-Latn-UZ");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getGroupingSeparator(), " ");
@@ -11246,8 +11338,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetPercentageFormat_uz_Latn_UZ: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("uz-Latn-UZ");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getPercentageFormat(), "{n}%");
@@ -11255,8 +11347,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetCurrencyFormat_uz_Latn_UZ: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("uz-Latn-UZ");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().common, "{n} {s}");
@@ -11264,8 +11356,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeNumberFormat_uz_Latn_UZ: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("uz-Latn-UZ");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativeNumberFormat(), "-{n}");
@@ -11273,8 +11365,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativePercentageFormat_uz_Latn_UZ: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("uz-Latn-UZ");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativePercentageFormat(), "-{n}%");
@@ -11282,8 +11374,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeCurrencyFormat_uz_Latn_UZ: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("uz-Latn-UZ");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().commonNegative, "-{n} {s}");
@@ -11291,8 +11383,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetPrimaryGroupingDigits_uz_Latn_UZ: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("uz-Latn-UZ");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getPrimaryGroupingDigits(), 3);
@@ -11300,8 +11392,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetSecondaryGroupingDigits_uz_Latn_UZ: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("uz-Latn-UZ");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getSecondaryGroupingDigits(), 0);
@@ -11309,8 +11401,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoRoundingMode_uz_Latn_UZ: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("uz-Latn-UZ");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getRoundingMode(), "halfdown");
@@ -11321,16 +11413,16 @@ module.exports.testlocaleinfo = {
     //test cases for vai-Latn-LR
     
     testLocaleInfoGetDecimalSeparatorfor_vai_Latn_LR: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("vai-Latn-LR");
+        test.expect(2);
         test.ok(info !== null);
         test.equal(info.getDecimalSeparator(), ".");
         test.done();
     },
     
     testLocaleInfoGetGroupingSeparatorfor_vai_Latn_LR: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("vai-Latn-LR");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getGroupingSeparator(), ",");
@@ -11338,8 +11430,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetPercentageFormat_vai_Latn_LR: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("vai-Latn-LR");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getPercentageFormat(), "{n}%");
@@ -11347,8 +11439,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetCurrencyFormat_vai_Latn_LR: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("vai-Latn-LR");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().common, "{s}{n}");
@@ -11356,8 +11448,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeNumberFormat_vai_Latn_LR: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("vai-Latn-LR");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativeNumberFormat(), "-{n}");
@@ -11365,8 +11457,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativePercentageFormat_vai_Latn_LR: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("vai-Latn-LR");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativePercentageFormat(), "-{n}%");
@@ -11374,8 +11466,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeCurrencyFormat_vai_Latn_LR: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("vai-Latn-LR");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().commonNegative, "-{s}{n}");
@@ -11383,8 +11475,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetPrimaryGroupingDigits_vai_Latn_LR: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("vai-Latn-LR");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getPrimaryGroupingDigits(), 3);
@@ -11392,8 +11484,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetSecondaryGroupingDigits_vai_Latn_LR: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("vai-Latn-LR");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getSecondaryGroupingDigits(), 0);
@@ -11401,8 +11493,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoRoundingMode_vai_Latn_LR: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("vai-Latn-LR");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getRoundingMode(), "halfdown");
@@ -11413,16 +11505,16 @@ module.exports.testlocaleinfo = {
     //test cases for vi-VN
     
     testLocaleInfoGetDecimalSeparatorfor_vi: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("vi-VN");
+        test.expect(2);
         test.ok(info !== null);
         test.equal(info.getDecimalSeparator(), ",");
         test.done();
     },
     
     testLocaleInfoGetGroupingSeparatorfor_vi: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("vi-VN");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getGroupingSeparator(), ".");
@@ -11430,8 +11522,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetPercentageFormat_vi: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("vi-VN");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getPercentageFormat(), "{n}%");
@@ -11439,8 +11531,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetCurrencyFormat_vi: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("vi-VN");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().common, "{s} {n}");
@@ -11448,8 +11540,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeNumberFormat_vi: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("vi-VN");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativeNumberFormat(), "-{n}");
@@ -11457,8 +11549,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativePercentageFormat_vi: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("vi-VN");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativePercentageFormat(), "-{n}%");
@@ -11466,8 +11558,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeCurrencyFormat_vi: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("vi-VN");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().commonNegative, "-{s} {n}");
@@ -11475,8 +11567,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetPrimaryGroupingDigits_vi: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("vi-VN");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getPrimaryGroupingDigits(), 3);
@@ -11484,8 +11576,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetSecondaryGroupingDigits_vi: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("vi-VN");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getSecondaryGroupingDigits(), 0);
@@ -11493,8 +11585,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoRoundingMode_vi: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("vi-VN");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getRoundingMode(), "halfdown");
@@ -11505,16 +11597,16 @@ module.exports.testlocaleinfo = {
     //test cases for zh-Hans-SG
     
     testLocaleInfoGetDecimalSeparatorfor_zh_Hans_SG: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("zh-Hans-SG");
+        test.expect(2);
         test.ok(info !== null);
         test.equal(info.getDecimalSeparator(), ".");
         test.done();
     },
     
     testLocaleInfoGetGroupingSeparatorfor_zh_Hans_SG: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("zh-Hans-SG");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getGroupingSeparator(), ",");
@@ -11522,8 +11614,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetPercentageFormat_zh_Hans_SG: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("zh-Hans-SG");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getPercentageFormat(), "{n}%");
@@ -11531,8 +11623,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetCurrencyFormat_zh_Hans_SG: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("zh-Hans-SG");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().common, "{s}{n}");
@@ -11540,8 +11632,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeNumberFormat_zh_Hans_SG: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("zh-Hans-SG");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativeNumberFormat(), "-{n}");
@@ -11549,8 +11641,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativePercentageFormat_zh_Hans_SG: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("zh-Hans-SG");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativePercentageFormat(), "-{n}%");
@@ -11558,8 +11650,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeCurrencyFormat_zh_Hans_SG: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("zh-Hans-SG");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().commonNegative, "-{s}{n}");
@@ -11567,8 +11659,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetPrimaryGroupingDigits_zh_Hans_SG: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("zh-Hans-SG");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getPrimaryGroupingDigits(), 3);
@@ -11576,8 +11668,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetSecondaryGroupingDigits_zh_Hans_SG: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("zh-Hans-SG");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getSecondaryGroupingDigits(), 0);
@@ -11585,8 +11677,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoRoundingMode_zh_Hans_SG: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("zh-Hans-SG");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getRoundingMode(), "halfdown");
@@ -11596,16 +11688,16 @@ module.exports.testlocaleinfo = {
     //test cases for zh-Hant-MO
     
     testLocaleInfoGetDecimalSeparatorfor_zh_Hant_MO: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("zh-Hant-MO");
+        test.expect(2);
         test.ok(info !== null);
         test.equal(info.getDecimalSeparator(), ".");
         test.done();
     },
     
     testLocaleInfoGetGroupingSeparatorfor_zh_Hant_MO: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("zh-Hant-MO");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getGroupingSeparator(), ",");
@@ -11613,8 +11705,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetPercentageFormat_zh_Hant_MO: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("zh-Hant-MO");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getPercentageFormat(), "{n}%");
@@ -11622,8 +11714,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetCurrencyFormat_zh_Hant_MO: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("zh-Hant-MO");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().common, "{s}{n}");
@@ -11631,8 +11723,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeNumberFormat_zh_Hant_MO: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("zh-Hant-MO");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativeNumberFormat(), "-{n}");
@@ -11640,8 +11732,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativePercentageFormat_zh_Hant_MO: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("zh-Hant-MO");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativePercentageFormat(), "-{n}%");
@@ -11649,8 +11741,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeCurrencyFormat_zh_Hant_MO: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("zh-Hant-MO");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().commonNegative, "-{s}{n}");
@@ -11658,8 +11750,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetPrimaryGroupingDigits_zh_Hant_MO: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("zh-Hant-MO");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getPrimaryGroupingDigits(), 3);
@@ -11667,8 +11759,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetSecondaryGroupingDigits_zh_Hant_MO: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("zh-Hant-MO");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getSecondaryGroupingDigits(), 0);
@@ -11676,8 +11768,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoRoundingMode_zh_Hant_MO: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("zh-Hant-MO");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getRoundingMode(), "halfdown");
@@ -11687,16 +11779,16 @@ module.exports.testlocaleinfo = {
     //test cases for zh-Hant-US
     
     testLocaleInfoGetDecimalSeparatorfor_zh_Hant_US: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("zh-Hant-US");
+        test.expect(2);
         test.ok(info !== null);
         test.equal(info.getDecimalSeparator(), ".");
         test.done();
     },
     
     testLocaleInfoGetGroupingSeparatorfor_zh_Hant_US: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("zh-Hant-US");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getGroupingSeparator(), ",");
@@ -11704,8 +11796,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetPercentageFormat_zh_Hant_US: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("zh-Hant-US");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getPercentageFormat(), "{n}%");
@@ -11713,8 +11805,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetCurrencyFormat_zh_Hant_US: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("zh-Hant-US");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().common, "{s}{n}");
@@ -11722,8 +11814,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeNumberFormat_zh_Hant_US: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("zh-Hant-US");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativeNumberFormat(), "-{n}");
@@ -11731,8 +11823,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativePercentageFormat_zh_Hant_US: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("zh-Hant-US");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativePercentageFormat(), "-{n}%");
@@ -11740,8 +11832,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeCurrencyFormat_zh_Hant_US: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("zh-Hant-US");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().commonNegative, "-{s}{n}");
@@ -11749,8 +11841,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetPrimaryGroupingDigits_zh_Hant_US: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("zh-Hant-US");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getPrimaryGroupingDigits(), 3);
@@ -11758,8 +11850,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetSecondaryGroupingDigits_zh_Hant_US: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("zh-Hant-US");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getSecondaryGroupingDigits(), 0);
@@ -11767,8 +11859,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoRoundingMode_zh_Hant_US: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("zh-Hant-US");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getRoundingMode(), "halfdown");
@@ -11778,16 +11870,16 @@ module.exports.testlocaleinfo = {
     //test cases for zh-MY
     
     testLocaleInfoGetDecimalSeparatorfor_zh_MY: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("zh-MY");
+        test.expect(2);
         test.ok(info !== null);
         test.equal(info.getDecimalSeparator(), ".");
         test.done();
     },
     
     testLocaleInfoGetGroupingSeparatorfor_zh_MY: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("zh-MY");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getGroupingSeparator(), ",");
@@ -11795,8 +11887,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetPercentageFormat_zh_MY: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("zh-MY");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getPercentageFormat(), "{n}%");
@@ -11804,8 +11896,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetCurrencyFormat_zh_MY: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("zh-MY");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().common, "{s}{n}");
@@ -11813,8 +11905,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeNumberFormat_zh_MY: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("zh-MY");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativeNumberFormat(), "-{n}");
@@ -11822,8 +11914,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativePercentageFormat_zh_MY: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("zh-MY");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativePercentageFormat(), "-{n}%");
@@ -11831,8 +11923,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeCurrencyFormat_zh_MY: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("zh-MY");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().commonNegative, "-{s}{n}");
@@ -11840,8 +11932,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetPrimaryGroupingDigits_zh_MY: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("zh-MY");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getPrimaryGroupingDigits(), 3);
@@ -11849,8 +11941,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetSecondaryGroupingDigits_zh_MY: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("zh-MY");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getSecondaryGroupingDigits(), 0);
@@ -11858,8 +11950,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoRoundingMode_zh_MY: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("zh-MY");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getRoundingMode(), "halfdown");
@@ -11869,16 +11961,16 @@ module.exports.testlocaleinfo = {
     //test cases for az-Latn-AZ
     
     testLocaleInfoGetDecimalSeparatorfor_az_Latn_AZ: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("az-Latn-AZ");
+        test.expect(2);
         test.ok(info !== null);
         test.equal(info.getDecimalSeparator(), ",");
         test.done();
     },
     
     testLocaleInfoGetGroupingSeparatorfor_az_Latn_AZ: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("az-Latn-AZ");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getGroupingSeparator(), ".");
@@ -11886,8 +11978,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetPercentageFormat_az_Latn_AZ: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("az-Latn-AZ");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getPercentageFormat(), "{n}%");
@@ -11895,8 +11987,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetCurrencyFormat_az_Latn_AZ: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("az-Latn-AZ");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().common, "{s} {n}");
@@ -11904,8 +11996,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeNumberFormat_az_Latn_AZ: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("az-Latn-AZ");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativeNumberFormat(), "-{n}");
@@ -11913,8 +12005,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativePercentageFormat_az_Latn_AZ: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("az-Latn-AZ");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativePercentageFormat(), "-{n}%");
@@ -11922,8 +12014,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeCurrencyFormat_az_Latn_AZ: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("az-Latn-AZ");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().commonNegative, "-{s} {n}");
@@ -11931,8 +12023,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetPrimaryGroupingDigits_az_Latn_AZ: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("az-Latn-AZ");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getPrimaryGroupingDigits(), 3);
@@ -11940,8 +12032,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetSecondaryGroupingDigits_az_Latn_AZ: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("az-Latn-AZ");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getSecondaryGroupingDigits(), 0);
@@ -11949,8 +12041,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoRoundingMode_az_Latn_AZ: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("az-Latn-AZ");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getRoundingMode(), "halfdown");
@@ -11960,16 +12052,16 @@ module.exports.testlocaleinfo = {
     //test cases for km-KH
     
     testLocaleInfoGetDecimalSeparatorfor_km_KH: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("km-KH");
+        test.expect(2);
         test.ok(info !== null);
         test.equal(info.getDecimalSeparator(), ",");
         test.done();
     },
     
     testLocaleInfoGetGroupingSeparatorfor_km_KH: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("km-KH");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getGroupingSeparator(), ".");
@@ -11977,8 +12069,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetPercentageFormat_km_KH: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("km-KH");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getPercentageFormat(), "{n}%");
@@ -11986,8 +12078,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetCurrencyFormat_km_KH: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("km-KH");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().common, "{n}{s}");
@@ -11995,8 +12087,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeNumberFormat_km_KH: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("km-KH");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativeNumberFormat(), "-{n}");
@@ -12004,8 +12096,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativePercentageFormat_km_KH: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("km-KH");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativePercentageFormat(), "-{n}%");
@@ -12013,8 +12105,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeCurrencyFormat_km_KH: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("km-KH");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().commonNegative, "-{n}{s}");
@@ -12022,8 +12114,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetPrimaryGroupingDigits_km_KH: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("km-KH");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getPrimaryGroupingDigits(), 3);
@@ -12031,8 +12123,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetSecondaryGroupingDigits_km_KH: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("km-KH");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getSecondaryGroupingDigits(), 0);
@@ -12040,8 +12132,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoRoundingMode_km_KH: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("km-KH");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getRoundingMode(), "halfdown");
@@ -12051,16 +12143,16 @@ module.exports.testlocaleinfo = {
     //test cases for si-LK
     
     testLocaleInfoGetDecimalSeparatorfor_si_LK: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("si-LK");
+        test.expect(2);
         test.ok(info !== null);
         test.equal(info.getDecimalSeparator(), ".");
         test.done();
     },
     
     testLocaleInfoGetGroupingSeparatorfor_si_LK: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("si-LK");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getGroupingSeparator(), ",");
@@ -12068,8 +12160,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetPercentageFormat_si_LK: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("si-LK");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getPercentageFormat(), "{n}%");
@@ -12077,8 +12169,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetCurrencyFormat_si_LK: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("si-LK");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().common, "{s}{n}");
@@ -12086,8 +12178,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeNumberFormat_si_LK: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("si-LK");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativeNumberFormat(), "-{n}");
@@ -12095,8 +12187,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativePercentageFormat_si_LK: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("si-LK");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativePercentageFormat(), "-{n}%");
@@ -12104,8 +12196,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeCurrencyFormat_si_LK: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("si-LK");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().commonNegative, "-{s}{n}");
@@ -12113,8 +12205,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetPrimaryGroupingDigits_si_LK: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("si-LK");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getPrimaryGroupingDigits(), 3);
@@ -12122,8 +12214,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetSecondaryGroupingDigits_si_LK: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("si-LK");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getSecondaryGroupingDigits(), 0);
@@ -12131,8 +12223,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoRoundingMode_si_LK: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("si-LK");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getRoundingMode(), "halfdown");
@@ -12142,16 +12234,16 @@ module.exports.testlocaleinfo = {
     //test cases for sw-KE
     
     testLocaleInfoGetDecimalSeparatorfor_sw_KE: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("sw-Latn-KE");
+        test.expect(2);
         test.ok(info !== null);
         test.equal(info.getDecimalSeparator(), ".");
         test.done();
     },
     
     testLocaleInfoGetGroupingSeparatorfor_sw_KE: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("sw-Latn-KE");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getGroupingSeparator(), ",");
@@ -12159,8 +12251,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetPercentageFormat_sw_KE: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("sw-Latn-KE");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getPercentageFormat(), "{n}%");
@@ -12168,8 +12260,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetCurrencyFormat_sw_KE: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("sw-Latn-KE");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().common, "{s}{n}");
@@ -12177,8 +12269,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeNumberFormat_sw_KE: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("sw-Latn-KE");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativeNumberFormat(), "-{n}");
@@ -12186,8 +12278,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativePercentageFormat_sw_KE: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("sw-Latn-KE");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getNegativePercentageFormat(), "-{n}%");
@@ -12195,8 +12287,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetNegativeCurrencyFormat_sw_KE: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("sw-Latn-KE");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().commonNegative, "-{s}{n}");
@@ -12204,8 +12296,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetPrimaryGroupingDigits_sw_KE: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("sw-Latn-KE");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getPrimaryGroupingDigits(), 3);
@@ -12213,8 +12305,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetSecondaryGroupingDigits_sw_KE: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("sw-Latn-KE");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getSecondaryGroupingDigits(), 0);
@@ -12222,8 +12314,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoRoundingMode_sw_KE: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("sw-Latn-KE");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getRoundingMode(), "halfdown");
@@ -12234,16 +12326,16 @@ module.exports.testlocaleinfo = {
     /** Add negative format test cases (08-NOV-2016) **/
     
     testLocaleInfoGetGroupingSeparator1: function(test) {
-        test.expect(2);
         var info = new LocaleInfo();
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getGroupingSeparator(), ",");
         test.done();
     },
     testLocaleInfoGetGroupingSeparator2: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("de-DE");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getGroupingSeparator(), ".");
@@ -12251,8 +12343,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetGroupingSeparator3: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("fr-FR");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getGroupingSeparator(), " ");
@@ -12260,8 +12352,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetGroupingDigits1: function(test) {
-        test.expect(2);
         var info = new LocaleInfo();
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getPrimaryGroupingDigits(), 3);
@@ -12269,8 +12361,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetGroupingDigits2: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("de-DE");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getPrimaryGroupingDigits(), 3);
@@ -12278,8 +12370,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetGroupingDigits3: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("zh-Hans-CN");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getPrimaryGroupingDigits(), 3);
@@ -12287,8 +12379,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetPercentageFormat2: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("fr-FR");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getPercentageFormat(), "{n} %");
@@ -12296,8 +12388,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetPercentageFormat1: function(test) {
-        test.expect(2);
         var info = new LocaleInfo();
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getPercentageFormat(), "{n}%");
@@ -12305,8 +12397,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetPercentageSymbol1: function(test) {
-        test.expect(2);
         var info = new LocaleInfo();
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getPercentageSymbol(), "%");
@@ -12314,110 +12406,26 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetPercentageSymbol2: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("fr-FR");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getPercentageSymbol(), "%");
         test.done();
     },
     
-    function mockLoader(paths, sync, params, callback) {
-        var data = [];
-        // for the generic, shared stuff
-        data.push(ilib.data.localeinfo || {
-            "calendar": "gregorian",
-            "clock": "24",
-            "currency": "USD",
-            "firstDayOfWeek": 1,
-            "numfmt": {
-                "script": "Latn",
-                "decimalChar": ",",
-                "groupChar": ".",
-                "prigroupSize": 3,
-                "pctFmt": "{n}%",
-                "pctChar": "%",
-                "roundingMode": "halfdown",
-                "exponential": "e",
-                "currencyFormats": {
-                    "common": "{s}{n}",
-                    "commonNegative": "{s}-{n}"
-                }
-            },
-            "timezone": "Etc/UTC",
-            "units": "metric"
-        });
-        paths.shift();
-        paths.forEach(function (path) {
-            if (path.search("fr/localeinfo.json$") !== -1) {
-                data.push({
-                    "language.name": "French",
-                    "numfmt": {
-                        "groupChar": " ",
-                        "currencyFormats": {
-                            "common": "{n} {s}",
-                            "commonNegative": "({n} {s})"
-                        },
-                        "pctFmt": "{n} %"
-                    },
-                    "paperSizes": {
-                        "regular": "A4",
-                        "photo": "4x6"
-                    },
-                    "scripts": [
-                        "Latn"
-                    ],
-                    "locale": "fr"
-                });
-            } else if (path.search("FR/localeinfo.json$") !== -1) {
-                data.push({
-                    "currency": "EUR",
-                    "firstDayOfWeek": 1,
-                    "region.name": "France",
-                    "timezone": "Europe/Paris",
-                    "locale": "FR"
-                });
-            } else {
-                data.push((path.indexOf('zzz') === -1) ? undefined : {
-                    "clock": "24",
-                    "units": "metric",
-                    "calendar": "hebrew",
-                    "firstDayOfWeek": 4,
-                    "currency": "JPY",
-                    "timezone": "Asia/Tokyo",
-                    "numfmt": {
-                        "decimalChar": ".",
-                        "groupChar": ",",
-                        "groupSize": 4,
-                        "pctFmt": "{n} %",
-                        "pctChar": "%",
-                        "currencyFormats": {
-                            "common": "common {s} {n}",
-                            "iso": "iso {s} {n}"
-                        }
-                    },
-                    "locale": "zzz-ZZ"
-                });
-            }
-        });
-        if (typeof (callback) !== 'undefined') {
-            callback.call(this, data);
-        }
-        return data;
-        test.done();
-    },
-    
     testLocaleInfoLoadMissingDataAsynch: function(test) {
-        test.expect(5);
         if (ilib.isDynData()) {
             // don't need to test loading on the dynamic load version because we are testing
             // it via all the other tests already.
+        test.done();
             return;
         }
         ilib.setLoaderCallback(mockLoader);
         var info = new LocaleInfo("zzz-ZX", {
             sync: false,
             onLoad: function (li) {
+        test.expect(5);
                 test.ok(li !== null);
     
                 test.equal(li.getCurrencyFormats().iso, "iso {s} {n}");
@@ -12431,10 +12439,10 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoLoadMissingDataSync: function(test) {
-        test.expect(4);
         if (ilib.isDynData()) {
             // don't need to test loading on the dynamic load version because we are testing
             // it via all the other tests already.
+        test.done();
             return;
         }
         ilib.setLoaderCallback(mockLoader);
@@ -12442,6 +12450,7 @@ module.exports.testlocaleinfo = {
             sync: true
         });
     
+        test.expect(4);
         test.ok(info !== null);
     
         test.equal(info.getCurrencyFormats().iso, "iso {s} {n}");
@@ -12452,16 +12461,17 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoLoadMissingDataAsynchNoData: function(test) {
-        test.expect(5);
         if (ilib.isDynData()) {
             // don't need to test loading on the dynamic load version because we are testing
             // it via all the other tests already.
+        test.done();
             return;
         }
         ilib.setLoaderCallback(mockLoader);
         var info = new LocaleInfo("qq-QQ", {
             sync: false,
             onLoad: function (li) {
+        test.expect(5);
                 test.ok(typeof(li) !== "undefined");
                 // should return the shared data only
                 test.equal(li.getCurrencyFormats().common, "{s} {n}");
@@ -12475,13 +12485,13 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoMissingDataSynchNoDataNoLoader: function(test) {
-        test.expect(5);
         var temp = ilib._load;
     
         ilib._load = undefined;  // no loader
         var info = new LocaleInfo("xxx-QQ", {
             sync: true,
             onLoad: function (li) {
+        test.expect(5);
                 test.ok(typeof(li) !== "undefined");
                 // should return the shared data only
                 test.equal(li.getCurrencyFormats().common, "{s} {n}");
@@ -12498,10 +12508,10 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoLoadMissingDataSyncNoData: function(test) {
-        test.expect(4);
         if (ilib.isDynData()) {
             // don't need to test loading on the dynamic load version because we are testing
             // it via all the other tests already.
+        test.done();
             return;
         }
         ilib.setLoaderCallback(mockLoader);
@@ -12509,6 +12519,7 @@ module.exports.testlocaleinfo = {
             sync: true
         });
     
+        test.expect(4);
         test.ok(typeof(li) !== "undefined");
         // should return the shared data only
         test.equal(li.getCurrencyFormats().common, "{s} {n}");
@@ -12519,17 +12530,17 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoLoadPreassembledDataAsynch: function(test) {
-        test.expect(6);
-        test.expect(6);
         if (ilib.isDynData()) {
             // don't need to test loading on the dynamic load version because we are testing
             // it via all the other tests already.
+        test.done();
             return;
         }
         ilib.setLoaderCallback(mockLoader);
         var info = new LocaleInfo("fr-FR", {
             sync: false,
             onLoad: function (li) {
+        test.expect(6);
                 test.ok(typeof(li) !== "undefined");
                 // should return the shared data only
                 test.equal(li.getCurrency(), "EUR");
@@ -12538,26 +12549,19 @@ module.exports.testlocaleinfo = {
                 test.equal(li.getTimeZone(), "Europe/Paris");
             }
         });
-        test.done();
         test.ok(info !== null);
         test.done();
         ilib.setLoaderCallback(undefined);
     },
     
-    // locale with no script
-    ilib.data.localeinfo_fr_FR_overseas = {
-        "currency": "USD",
-        "locale": "fr-FR-overseas",
-        "timezone": "Pacific/Tahiti"
-    },
-    
     testLocaleInfoLoadMissingLocaleParts: function(test) {
-        test.expect(5);
         if (ilib.isDynData()) {
             // should not test mixed loading on the dynamic load version because it was not designed for it
+        test.done();
             return;
         }
         var li = new LocaleInfo("fr-FR-overseas");
+        test.expect(5);
         test.ok(typeof(li) !== "undefined");
         test.equal(li.getCurrency(), "USD");
         test.equal(li.getFirstDayOfWeek(), 1);
@@ -12567,192 +12571,192 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetAllScriptsSingle: function(test) {
-        test.expect(2);
         var li = new LocaleInfo("nl-NL");
+        test.expect(2);
         test.ok(typeof(li) !== "undefined");
         test.equalIgnoringOrder(li.getAllScripts(), ["Latn"]);
         test.done();
     },
     
     testLocaleInfoGetAllScriptsMultiple1: function(test) {
-        test.expect(2);
         var li = new LocaleInfo("de-DE");
+        test.expect(2);
         test.ok(typeof(li) !== "undefined");
-        test.equalIgnoringOrder("Runr"], li.getAllScripts(), ["Latn");
+        test.equalIgnoringOrder(li.getAllScripts(), ["Latn", "Runr"]);
         test.done();
     },
     
     testLocaleInfoGetAllScriptsMultiple2: function(test) {
-        test.expect(2);
         var li = new LocaleInfo("uz-UZ");
+        test.expect(2);
         test.ok(typeof(li) !== "undefined");
-        test.equalIgnoringOrder("Cyrl", "Latn"], li.getAllScripts(), ["Arab");
+        test.equalIgnoringOrder(li.getAllScripts(), ["Arab", "Cyrl", "Latn"]);
         test.done();
     },
     
     testLocaleInfoGetDefaultScriptSingle: function(test) {
-        test.expect(2);
         var li = new LocaleInfo("nl-NL");
+        test.expect(2);
         test.ok(typeof(li) !== "undefined");
         test.equal(li.getDefaultScript(), "Latn");
         test.done();
     },
     
     testLocaleInfoGetDefaultScriptMultiple: function(test) {
-        test.expect(2);
         var li = new LocaleInfo("uz-UZ");
+        test.expect(2);
         test.ok(typeof(li) !== "undefined");
         test.equal(li.getDefaultScript(), "Arab");
         test.done();
     },
     
     testLocaleInfoGetScriptSingle: function(test) {
-        test.expect(2);
         var li = new LocaleInfo("nl-NL");
+        test.expect(2);
         test.ok(typeof(li) !== "undefined");
         test.equal(li.getScript(), "Latn");
         test.done();
     },
     
     testLocaleInfoGetScriptMultiple: function(test) {
-        test.expect(2);
         var li = new LocaleInfo("uz-UZ");
+        test.expect(2);
         test.ok(typeof(li) !== "undefined");
         test.equal(li.getScript(), "Arab");
         test.done();
     },
     
     testLocaleInfoGetScriptMultipleLocaleOverride: function(test) {
-        test.expect(2);
         var li = new LocaleInfo("uz-Cyrl-UZ");
+        test.expect(2);
         test.ok(typeof(li) !== "undefined");
         test.equal(li.getScript(), "Cyrl");
         test.done();
     },
     
     testLocaleInfoGetLanguageName1: function(test) {
-        test.expect(2);
         var li = new LocaleInfo("he-IL");
+        test.expect(2);
         test.ok(typeof(li) !== "undefined");
         test.equal(li.getLanguageName(), "Hebrew");
         test.done();
     },
     
     testLocaleInfoGetLanguageName2: function(test) {
-        test.expect(2);
         var li = new LocaleInfo("es-MX");
+        test.expect(2);
         test.ok(typeof(li) !== "undefined");
         test.equal(li.getLanguageName(), "Spanish");
         test.done();
     },
     
     testLocaleInfoGetLanguageName3: function(test) {
-        test.expect(2);
         var li = new LocaleInfo("asa-TZ");
+        test.expect(2);
         test.ok(typeof(li) !== "undefined");
         test.equal(li.getLanguageName(), "Asu");
         test.done();
     },
     
     testLocaleInfoGetRegionName1: function(test) {
-        test.expect(2);
         var li = new LocaleInfo("he-IL");
+        test.expect(2);
         test.ok(typeof(li) !== "undefined");
         test.equal(li.getRegionName(), "Israel");
         test.done();
     },
     
     testLocaleInfoGetRegionName2: function(test) {
-        test.expect(2);
         var li = new LocaleInfo("es-MX");
+        test.expect(2);
         test.ok(typeof(li) !== "undefined");
         test.equal(li.getRegionName(), "Mexico");
         test.done();
     },
     
     testLocaleInfoGetRegionName3: function(test) {
-        test.expect(2);
         var li = new LocaleInfo("asa-TZ");
+        test.expect(2);
         test.ok(typeof(li) !== "undefined");
         test.equal(li.getRegionName(), "Tanzania");
         test.done();
     },
     
     testGetDigitsWestern: function(test) {
-        test.expect(2);
         var li = new LocaleInfo("en-US");
+        test.expect(2);
         test.ok(typeof(li) !== "undefined");
         test.ok(typeof(li.getDigits()) === "undefined");
         test.done();
     },
     
     testGetDigitsWesternNative: function(test) {
-        test.expect(2);
         var li = new LocaleInfo("en-US");
+        test.expect(2);
         test.ok(typeof(li) !== "undefined");
         test.ok(typeof(li.getDigits()) === "undefined");
         test.done();
     },
     
     testGetDigitsNonWesternOptional: function(test) {
-        test.expect(2);
         var li = new LocaleInfo("hi-IN");
+        test.expect(2);
         test.ok(typeof(li) !== "undefined");
         test.ok(typeof(li.getDigits()) === "undefined");
         test.done();
     },
     
     testGetDigitsNonWesternNative: function(test) {
-        test.expect(2);
         var li = new LocaleInfo("hi-IN");
+        test.expect(2);
         test.ok(typeof(li) !== "undefined");
         test.equal(li.getNativeDigits(), "०१२३४५६७८९");
         test.done();
     },
     
     testGetDigitsNonWesternUsual: function(test) {
-        test.expect(2);
         var li = new LocaleInfo("bn-IN");
+        test.expect(2);
         test.ok(typeof(li) !== "undefined");
         test.equal(li.getDigits(), "০১২৩৪৫৬৭৮৯");
         test.done();
     },
     
     testGetDigitsNonWesternUsualNative: function(test) {
-        test.expect(2);
         var li = new LocaleInfo("bn-IN");
+        test.expect(2);
         test.ok(typeof(li) !== "undefined");
         test.equal(li.getNativeDigits(), "০১২৩৪৫৬৭৮৯");
         test.done();
     },
     
     testGetDigitsStyleWestern: function(test) {
-        test.expect(2);
         var li = new LocaleInfo("en-US");
+        test.expect(2);
         test.ok(typeof(li) !== "undefined");
         test.equal(li.getDigitsStyle(), "western");
         test.done();
     },
     
     testGetDigitsStyleOptional: function(test) {
-        test.expect(2);
         var li = new LocaleInfo("hi-IN");
+        test.expect(2);
         test.ok(typeof(li) !== "undefined");
         test.equal(li.getDigitsStyle(), "optional");
         test.done();
     },
     
     testGetDigitsStyleNative: function(test) {
-        test.expect(2);
         var li = new LocaleInfo("bn-IN");
+        test.expect(2);
         test.ok(typeof(li) !== "undefined");
         test.equal(li.getDigitsStyle(), "native");
         test.done();
     },
     /*Get weekend Data*/
     testLocaleInfoGetWeekendUS: function(test) {
-        test.expect(3);
         var info = new LocaleInfo("en-US");
+        test.expect(3);
         test.ok(info !== null);
     
         test.equal(info.getWeekEndStart(), 6);
@@ -12761,8 +12765,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetWeekendDE: function(test) {
-        test.expect(3);
         var info = new LocaleInfo("de-DE");
+        test.expect(3);
         test.ok(info !== null);
     
         test.equal(info.getWeekEndStart(), 6);
@@ -12772,8 +12776,8 @@ module.exports.testlocaleinfo = {
     
     
     testLocaleInfoGetWeekendFR: function(test) {
-        test.expect(3);
         var info = new LocaleInfo("fr-FR");
+        test.expect(3);
         test.ok(info !== null);
     
         test.equal(info.getWeekEndStart(), 6);
@@ -12782,8 +12786,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetWeekendAE: function(test) {
-        test.expect(3);
         var info = new LocaleInfo("ar-AE");
+        test.expect(3);
         test.ok(info !== null);
     
         test.equal(info.getWeekEndStart(), 5);
@@ -12792,8 +12796,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetWeekendBH: function(test) {
-        test.expect(3);
         var info = new LocaleInfo("ar-BH");
+        test.expect(3);
         test.ok(info !== null);
     
         test.equal(info.getWeekEndStart(), 5);
@@ -12802,8 +12806,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetWeekendDZ: function(test) {
-        test.expect(3);
         var info = new LocaleInfo("ar-DZ");
+        test.expect(3);
         test.ok(info !== null);
     
         test.equal(info.getWeekEndStart(), 5);
@@ -12812,8 +12816,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetWeekendEG: function(test) {
-        test.expect(3);
         var info = new LocaleInfo("ar-EG");
+        test.expect(3);
         test.ok(info !== null);
     
         test.equal(info.getWeekEndStart(), 5);
@@ -12822,8 +12826,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetWeekendIL: function(test) {
-        test.expect(3);
         var info = new LocaleInfo("he-IL");
+        test.expect(3);
         test.ok(info !== null);
     
         test.equal(info.getWeekEndStart(), 5);
@@ -12832,8 +12836,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetWeekendIQ: function(test) {
-        test.expect(3);
         var info = new LocaleInfo("ar-IQ");
+        test.expect(3);
         test.ok(info !== null);
     
         test.equal(info.getWeekEndStart(), 5);
@@ -12842,8 +12846,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetWeekendJO: function(test) {
-        test.expect(3);
         var info = new LocaleInfo("ar-JO");
+        test.expect(3);
         test.ok(info !== null);
     
         test.equal(info.getWeekEndStart(), 5);
@@ -12852,8 +12856,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetWeekendKW: function(test) {
-        test.expect(3);
         var info = new LocaleInfo("ar-KW");
+        test.expect(3);
         test.ok(info !== null);
     
         test.equal(info.getWeekEndStart(), 5);
@@ -12862,8 +12866,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetWeekendLY: function(test) {
-        test.expect(3);
         var info = new LocaleInfo("ar-LY");
+        test.expect(3);
         test.ok(info !== null);
     
         test.equal(info.getWeekEndStart(), 5);
@@ -12872,8 +12876,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetWeekendMA: function(test) {
-        test.expect(3);
         var info = new LocaleInfo("ar-MA");
+        test.expect(3);
         test.ok(info !== null);
     
         test.equal(info.getWeekEndStart(), 5);
@@ -12882,8 +12886,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetWeekendOM: function(test) {
-        test.expect(3);
         var info = new LocaleInfo("ar-OM");
+        test.expect(3);
         test.ok(info !== null);
     
         test.equal(info.getWeekEndStart(), 5);
@@ -12892,8 +12896,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetWeekendQA: function(test) {
-        test.expect(3);
         var info = new LocaleInfo("ar-QA");
+        test.expect(3);
         test.ok(info !== null);
     
         test.equal(info.getWeekEndStart(), 5);
@@ -12902,8 +12906,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetWeekendSA: function(test) {
-        test.expect(3);
         var info = new LocaleInfo("ar-SA");
+        test.expect(3);
         test.ok(info !== null);
     
         test.equal(info.getWeekEndStart(), 5);
@@ -12912,8 +12916,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetWeekendSD: function(test) {
-        test.expect(3);
         var info = new LocaleInfo("ar-SD");
+        test.expect(3);
         test.ok(info !== null);
     
         test.equal(info.getWeekEndStart(), 5);
@@ -12922,8 +12926,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetWeekendSY: function(test) {
-        test.expect(3);
         var info = new LocaleInfo("ar-SY");
+        test.expect(3);
         test.ok(info !== null);
     
         test.equal(info.getWeekEndStart(), 5);
@@ -12932,8 +12936,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetWeekendTN: function(test) {
-        test.expect(3);
         var info = new LocaleInfo("ar-TN");
+        test.expect(3);
         test.ok(info !== null);
     
         test.equal(info.getWeekEndStart(), 5);
@@ -12942,8 +12946,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetWeekendYE: function(test) {
-        test.expect(3);
         var info = new LocaleInfo("ar-YE");
+        test.expect(3);
         test.ok(info !== null);
     
         test.equal(info.getWeekEndStart(), 5);
@@ -12952,8 +12956,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetWeekendAF: function(test) {
-        test.expect(3);
         var info = new LocaleInfo("ps-AF");
+        test.expect(3);
         test.ok(info !== null);
     
         test.equal(info.getWeekEndStart(), 4);
@@ -12962,8 +12966,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetWeekendIR: function(test) {
-        test.expect(3);
         var info = new LocaleInfo("fa-IR");
+        test.expect(3);
         test.ok(info !== null);
     
         test.equal(info.getWeekEndStart(), 5);
@@ -12971,8 +12975,8 @@ module.exports.testlocaleinfo = {
         test.done();
     },
     testLocaleInfoGetWeekendIN: function(test) {
-        test.expect(3);
         var info = new LocaleInfo("hi-IN");
+        test.expect(3);
         test.ok(info !== null);
     
         test.equal(info.getWeekEndStart(), 0);
@@ -12980,8 +12984,8 @@ module.exports.testlocaleinfo = {
         test.done();
     },
     testLocaleInfoGetWeekendIN: function(test) {
-        test.expect(3);
         var info = new LocaleInfo("az-Latn-AZ");
+        test.expect(3);
         test.ok(info !== null);
     
         test.equal(info.getWeekEndStart(), 6);
@@ -12990,32 +12994,32 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoGetMeridiemsStyleDefault: function(test) {
-        test.expect(2);
         var info = new LocaleInfo();
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getMeridiemsStyle(), "gregorian");
         test.done();
     },
     testLocaleInfoGetMeridiemsStyleUS: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("en-US");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getMeridiemsStyle(), "gregorian");
         test.done();
     },
     testLocaleInfoGetMeridiemsStyle_am_ET: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("am-ET");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getMeridiemsStyle(), "ethiopic");
         test.done();
     },
     testLocaleInfoGetMeridiemsStyle_zh_Hans_CN: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("zh-Hans-CN");
+        test.expect(2);
         test.ok(info !== null);
     
         // Even for the Chinese locales, the default is
@@ -13027,8 +13031,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoPaperSizeDefault: function(test) {
-        test.expect(2);
         var info = new LocaleInfo();
+        test.expect(2);
         test.ok(info !== null);
     
         // If locale is not specified, default locale would be return as "en-US".
@@ -13037,8 +13041,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoPaperSize_en_US: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("en-US");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getPaperSize(), "8x11");
@@ -13046,8 +13050,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoPaperSize_ko_KR: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("ko-KR");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getPaperSize(), "A4");
@@ -13055,8 +13059,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoPaperSize_es_MX: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("es-MX");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getPaperSize(), "8x11");
@@ -13064,8 +13068,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoPaperSize_es_SV: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("es-SV");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getPaperSize(), "8x11");
@@ -13073,8 +13077,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoPaperSize_es_PR: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("es-PR");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getPaperSize(), "8x11");
@@ -13082,8 +13086,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoPaperSize_es_VE: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("es-VE");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getPaperSize(), "8x11");
@@ -13091,8 +13095,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoPaperSize_fr_FR: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("fr-FR");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getPaperSize(), "A4");
@@ -13100,8 +13104,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoPaperSize_de_DE: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("de-DE");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getPaperSize(), "A4");
@@ -13109,8 +13113,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoPaperSize_it_IT: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("it-IT");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getPaperSize(), "A4");
@@ -13118,8 +13122,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoPaperSize_zh_CN: function(test) {
-        test.expect(2);
         var info = new LocaleInfo("zh-CN");
+        test.expect(2);
         test.ok(info !== null);
     
         test.equal(info.getPaperSize(), "A4");
@@ -13127,15 +13131,15 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoQuotation_en_US: function(test) {
-        test.expect(1);
         var info = new LocaleInfo("en-US");
+        test.expect(1);
         test.ok(info !== null);
         test.done();
     },
     
     testLocaleInfoQuotation_ko_KR: function(test) {
-        test.expect(3);
         var info = new LocaleInfo("ko-KR");
+        test.expect(3);
         test.ok(info !== null);
         
         test.equal(info.getDelimiterQuotationStart(), "“");
@@ -13144,8 +13148,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoQuotation_es_ES: function(test) {
-        test.expect(3);
         var info = new LocaleInfo("es-ES");
+        test.expect(3);
         test.ok(info !== null);
         
         test.equal(info.getDelimiterQuotationStart(), "«");
@@ -13154,8 +13158,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoQuotation_zh_CN: function(test) {
-        test.expect(3);
         var info = new LocaleInfo("zh-CN");
+        test.expect(3);
         test.ok(info !== null);
         
         test.equal(info.getDelimiterQuotationStart(), "“");
@@ -13164,8 +13168,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoQuotation_fa_IR: function(test) {
-        test.expect(3);
         var info = new LocaleInfo("fa-IR");
+        test.expect(3);
         test.ok(info !== null);
         
         test.equal(info.getDelimiterQuotationStart(), "«");
@@ -13174,8 +13178,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoQuotation_de_DE: function(test) {
-        test.expect(3);
         var info = new LocaleInfo("de-DE");
+        test.expect(3);
         test.ok(info !== null);
         
         test.equal(info.getDelimiterQuotationStart(), "„");
@@ -13184,8 +13188,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoQuotation_pt_BR: function(test) {
-        test.expect(3);
         var info = new LocaleInfo("pt-BR");
+        test.expect(3);
         test.ok(info !== null);
         
         test.equal(info.getDelimiterQuotationStart(), "“");
@@ -13194,8 +13198,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoQuotation_hy_AM: function(test) {
-        test.expect(3);
         var info = new LocaleInfo("hy-AM");
+        test.expect(3);
         test.ok(info !== null);
         
         test.equal(info.getDelimiterQuotationStart(), "«");
@@ -13204,8 +13208,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoQuotation_ur_IN: function(test) {
-        test.expect(3);
         var info = new LocaleInfo("ur-IN");
+        test.expect(3);
         test.ok(info !== null);
         
         test.equal(info.getDelimiterQuotationStart(), "”");
@@ -13214,8 +13218,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoQuotation_fr_CA: function(test) {
-        test.expect(3);
         var info = new LocaleInfo("fr-CA");
+        test.expect(3);
         test.ok(info !== null);
         
         test.equal(info.getDelimiterQuotationStart(), "«");
@@ -13224,8 +13228,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoQuotation_he_IL: function(test) {
-        test.expect(3);
         var info = new LocaleInfo("he-IL");
+        test.expect(3);
         test.ok(info !== null);
         
         test.equal(info.getDelimiterQuotationStart(), "”");
@@ -13234,8 +13238,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoQuotation_uz_Latn_UZ: function(test) {
-        test.expect(3);
         var info = new LocaleInfo("uz-Latn-UZ");
+        test.expect(3);
         test.ok(info !== null);
         
         test.equal(info.getDelimiterQuotationStart(), "“");
@@ -13244,8 +13248,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoQuotation_ro_RO: function(test) {
-        test.expect(3);
         var info = new LocaleInfo("ro-RO");
+        test.expect(3);
         test.ok(info !== null);
         
         test.equal(info.getDelimiterQuotationStart(), "„");
@@ -13254,8 +13258,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoQuotation_bs_BA: function(test) {
-        test.expect(3);
         var info = new LocaleInfo("bs-BA");
+        test.expect(3);
         test.ok(info !== null);
         
         test.equal(info.getDelimiterQuotationStart(), "„");
@@ -13264,8 +13268,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoQuotation_el_CY: function(test) {
-        test.expect(3);
         var info = new LocaleInfo("el-CY");
+        test.expect(3);
         test.ok(info !== null);
         
         test.equal(info.getDelimiterQuotationStart(), "«");
@@ -13274,8 +13278,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoQuotation_kk_KZ: function(test) {
-        test.expect(3);
         var info = new LocaleInfo("kk-KZ");
+        test.expect(3);
         test.ok(info !== null);
         
         test.equal(info.getDelimiterQuotationStart(), "«");
@@ -13284,8 +13288,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoQuotation_az_Latn_AZ: function(test) {
-        test.expect(3);
         var info = new LocaleInfo("az-Latn-AZ");
+        test.expect(3);
         test.ok(info !== null);
     
         test.equal(info.getDelimiterQuotationStart(), "“");
@@ -13294,8 +13298,8 @@ module.exports.testlocaleinfo = {
     },
     
     testLocaleInfoQuotation_de_CH: function(test) {
-        test.expect(3);
         var info = new LocaleInfo("de-CH");
+        test.expect(3);
         test.ok(info !== null);
     
         test.equal(info.getDelimiterQuotationStart(), "„");

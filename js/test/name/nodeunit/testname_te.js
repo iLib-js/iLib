@@ -34,8 +34,8 @@ module.exports.testname_te = {
     },
 
     testParseSimpleName_te_IN: function(test) {
-        test.expect(2);
         var parsed = new Name("రామ్ తేజ", {locale: 'te-IN'});
+        test.expect(2);
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {
@@ -48,8 +48,8 @@ module.exports.testname_te = {
     },
     
     testParseTitle_te_IN: function(test) {
-        test.expect(2);
         var parsed = new Name("రామ్ తేజ సీనియర్", {locale: 'te-IN'});
+        test.expect(2);
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {
@@ -63,8 +63,8 @@ module.exports.testname_te = {
     },
     
     testParseTitleWithFamilyOnly_te_IN: function(test) {
-        test.expect(2);
         var parsed = new Name("మిస్టర్ తేజ", {locale: 'te-IN'});
+        test.expect(2);
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {
@@ -77,8 +77,8 @@ module.exports.testname_te = {
     },
     
     testParseEverything_te_IN: function(test) {
-        test.expect(2);
         var parsed = new Name("మిస్టర్ మరియు మిస్ తేజ", {locale: 'te-IN'});
+        test.expect(2);
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {
@@ -91,8 +91,8 @@ module.exports.testname_te = {
     },
     
     testParseprefix_te_IN: function(test) {
-        test.expect(2);
         var parsed = new Name("మిస్టర్ రామ్ తేజ", {locale: 'te-IN'});
+        test.expect(2);
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {
@@ -109,7 +109,6 @@ module.exports.testname_te = {
      */
     
     testFormatSimpleNameShort_te_IN: function(test) {
-        test.expect(2);
         var name = new Name({
             givenName: "రామ్",
             familyName: "తేజ"
@@ -119,6 +118,7 @@ module.exports.testname_te = {
             locale: 'te-IN'
         });
         var formatted = fmt.format(name);
+        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "రామ్ తేజ";
@@ -128,7 +128,6 @@ module.exports.testname_te = {
     },
     
     testFormatSimpleNameMedium_te_IN: function(test) {
-        test.expect(2);
         var name = new Name({
             givenName: "రామ్",
             familyName: "తేజ"
@@ -138,6 +137,7 @@ module.exports.testname_te = {
             locale: 'te-IN'
         });
         var formatted = fmt.format(name);
+        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "రామ్ తేజ";
@@ -147,7 +147,6 @@ module.exports.testname_te = {
     },
     
     testFormatSimpleNameLong_te_IN: function(test) {
-        test.expect(2);
         var name = new Name({
             givenName: "రామ్",
             familyName: "తేజ"
@@ -157,6 +156,7 @@ module.exports.testname_te = {
             locale: 'te-IN'
         });
         var formatted = fmt.format(name);
+        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "రామ్ తేజ";
@@ -166,7 +166,6 @@ module.exports.testname_te = {
     },
     
     testFormatSurname_te_IN: function(test) {
-        test.expect(2);
         var name = new Name({
             prefix: "మిస్టర్ మరియు మిస్",
             familyName: "తేజ"
@@ -176,6 +175,7 @@ module.exports.testname_te = {
             locale: 'te-IN'
         });
         var formatted = fmt.format(name);
+        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "మిస్టర్ మరియు మిస్ తేజ";
@@ -185,7 +185,6 @@ module.exports.testname_te = {
     },
     
     testFormatSimpleNameFull_te_IN: function(test) {
-        test.expect(2);
         var name = new Name({
             prefix: "డాక్టర్",
             givenName: "రామ్",
@@ -197,6 +196,7 @@ module.exports.testname_te = {
             locale: 'te-IN'
         });
         var formatted = fmt.format(name);
+        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "డాక్టర్ రామ్ తేజ జూనియర్";
@@ -206,7 +206,6 @@ module.exports.testname_te = {
     },
     
     testFormatComplexNameShort_te_IN: function(test) {
-        test.expect(2);
         var name = new Name({
             prefix: "డాక్టర్",
             givenName: "రామ్",
@@ -217,6 +216,7 @@ module.exports.testname_te = {
             locale: 'te-IN'
         });
         var formatted = fmt.format(name);
+        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "రామ్ తేజ";
@@ -226,7 +226,6 @@ module.exports.testname_te = {
     },
     
     testFormatComplexNameMedium_te_IN: function(test) {
-        test.expect(2);
         var name = new Name({
             prefix: "డాక్టర్",
             givenName: "రామ్",
@@ -237,6 +236,7 @@ module.exports.testname_te = {
             locale: 'te-IN'
         });
         var formatted = fmt.format(name);
+        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "రామ్ తేజ";
@@ -246,7 +246,6 @@ module.exports.testname_te = {
     },
     
     testFormatComplexNameLong_te_IN: function(test) {
-        test.expect(2);
         var name = new Name({
             prefix: "డాక్టర్",
             givenName: "రామ్",
@@ -257,6 +256,7 @@ module.exports.testname_te = {
             locale: 'te-IN'
         });
         var formatted = fmt.format(name);
+        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "డాక్టర్ రామ్ తేజ";

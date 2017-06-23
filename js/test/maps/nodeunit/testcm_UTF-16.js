@@ -32,10 +32,10 @@ module.exports.testcm_UTF_16 = {
     },
 
     testCharmapUTF16LoadMap: function(test) {
-        test.expect(2);
         var cm = CharmapFactory({
             name: "UTF-16"
         });
+        test.expect(2);
         test.ok(typeof(cm) !== "undefined");
         test.equal(cm.getName(), "UTF-16LE");
         test.done();
@@ -59,10 +59,10 @@ module.exports.testcm_UTF_16 = {
     
     
     testCharmapUTF16MapToUnicodeExtended2: function(test) {
-        test.expect(2);
         var cm = CharmapFactory({
             name: "UTF-16"
         });
+        test.expect(2);
         test.ok(typeof(cm) !== "undefined");
         var input = new Uint8Array([
             0xC0, 0x00,
@@ -79,10 +79,10 @@ module.exports.testcm_UTF_16 = {
     },
     
     testCharmapUTF16MapToUnicodeExtended3: function(test) {
-        test.expect(2);
         var cm = CharmapFactory({
             name: "UTF-16"
         });
+        test.expect(2);
         test.ok(typeof(cm) !== "undefined");
         var input = new Uint8Array([
             0x00, 0x4E,
@@ -96,10 +96,10 @@ module.exports.testcm_UTF_16 = {
     },
     
     testCharmapUTF16MapToUnicodeExtended4: function(test) {
-        test.expect(2);
         var cm = CharmapFactory({
             name: "UTF-16"
         });
+        test.expect(2);
         test.ok(typeof(cm) !== "undefined");
         var input = new Uint8Array([
             0x41, 0xD8, 0x09, 0xDD,
@@ -222,10 +222,10 @@ module.exports.testcm_UTF_16 = {
     },
     
     testCharmapUTF16BEMapToUnicodeExtended2: function(test) {
-        test.expect(2);
         var cm = CharmapFactory({
             name: "UTF-16BE"
         });
+        test.expect(2);
         test.ok(typeof(cm) !== "undefined");
         var input = new Uint8Array([
             0x00, 0xC0,
@@ -242,10 +242,10 @@ module.exports.testcm_UTF_16 = {
     },
     
     testCharmapUTF16BEMapToUnicodeExtended3: function(test) {
-        test.expect(2);
         var cm = CharmapFactory({
             name: "UTF-16BE"
         });
+        test.expect(2);
         test.ok(typeof(cm) !== "undefined");
         var input = new Uint8Array([
             0x4E, 0x00,
@@ -259,10 +259,10 @@ module.exports.testcm_UTF_16 = {
     },
     
     testCharmapUTF16BEMapToUnicodeExtended4: function(test) {
-        test.expect(2);
         var cm = CharmapFactory({
             name: "UTF-16BE"
         });
+        test.expect(2);
         test.ok(typeof(cm) !== "undefined");
         var input = new Uint8Array([
             0xd8, 0x41, 0xdd, 0x09,

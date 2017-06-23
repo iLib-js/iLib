@@ -46,9 +46,9 @@ module.exports.testaddress_LK = {
     },
 
     testParseAddressLKNormal: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("Marvan Sangakkara 25/1, Cyril Jansz Mawatha\nPANADURA 12500\nSri Lanka", {locale: 'en-LK'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Marvan Sangakkara 25/1, Cyril Jansz Mawatha");
         test.equal(parsedAddress.locality, "PANADURA");
@@ -60,9 +60,9 @@ module.exports.testaddress_LK = {
     },
     
     testParseAddressLKNoZip: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("Marvan Sangakkara 25/1, Cyril Jansz Mawatha\nPANADURA\nSri Lanka", {locale: 'en-LK'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Marvan Sangakkara 25/1, Cyril Jansz Mawatha");
         test.equal(parsedAddress.locality, "PANADURA");
@@ -74,9 +74,9 @@ module.exports.testaddress_LK = {
     },
     
     testParseAddressLKNoCountry: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("Marvan Sangakkara 25/1, Cyril Jansz Mawatha\nPANADURA 12500", {locale: 'en-LK'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Marvan Sangakkara 25/1, Cyril Jansz Mawatha");
         test.equal(parsedAddress.locality, "PANADURA");
@@ -88,8 +88,8 @@ module.exports.testaddress_LK = {
     },
     
     testParseAddressLKManyLines: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("Marvan Sangakkara\n25/1\nCyril Jansz\nMawatha\nPANADURA\n12500\nSri Lanka\n\n\n", {locale: 'en-LK'});
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Marvan Sangakkara, 25/1, Cyril Jansz, Mawatha");
         test.equal(parsedAddress.locality, "PANADURA");
@@ -101,9 +101,9 @@ module.exports.testaddress_LK = {
     },
     
     testParseAddressLKOneLine: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("Marvan Sangakkara , 25/1 , Cyril Jansz , Mawatha ,  PANADURA , 12500 , Sri Lanka", {locale: 'en-LK'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Marvan Sangakkara, 25/1, Cyril Jansz, Mawatha");
         test.equal(parsedAddress.locality, "PANADURA");
@@ -115,9 +115,9 @@ module.exports.testaddress_LK = {
     },
     
     testParseAddressLKSuperfluousWhitespace: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("\t\t\tMarvan Sangakkara\n\t\t\t25/1,\t\t\t\r\r Cyril Jansz \n \r \tMawatha \n\t\nPANADURA\n\t 12500\t\nSri Lanka\n\n\n", {locale: 'en-LK'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Marvan Sangakkara, 25/1, Cyril Jansz, Mawatha");
         test.equal(parsedAddress.locality, "PANADURA");
@@ -129,9 +129,9 @@ module.exports.testaddress_LK = {
     },
     
     testParseAddressLKNoDelimiters: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("Marvan Sangakkara 25/1 Cyril Jansz Mawatha\nPANADURA 12500 Sri Lanka", {locale: 'en-LK'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Marvan Sangakkara 25/1 Cyril Jansz Mawatha");
         test.equal(parsedAddress.locality, "PANADURA");
@@ -143,11 +143,11 @@ module.exports.testaddress_LK = {
     },
     
     testParseAddressLKFromUS: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("Marvan Sangakkara 25/1, Cyril Jansz Mawatha\nPANADURA 56001\nSri Lanka", {locale: 'en-US'});
         
         
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Marvan Sangakkara 25/1, Cyril Jansz Mawatha");
         test.equal(parsedAddress.locality, "PANADURA");
@@ -159,7 +159,6 @@ module.exports.testaddress_LK = {
     },
     
     testFormatAddressLK: function(test) {
-        test.expect(1);
         var parsedAddress = new Address({
             streetAddress: "Marvan Sangakkara 25/1, Cyril Jansz Mawatha",
             locality: "PANADURA",
@@ -170,12 +169,12 @@ module.exports.testaddress_LK = {
         
         var expected = "Marvan Sangakkara 25/1, Cyril Jansz Mawatha\nPANADURA 56001\nSri Lanka";
         var formatter = new AddressFmt({locale: 'en-LK'});
+        test.expect(1);
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     },
     
     testFormatAddressLKFromUS: function(test) {
-        test.expect(1);
         var parsedAddress = new Address({
             streetAddress: "Marvan Sangakkara 25/1, Cyril Jansz Mawatha",
             locality: "PANADURA",
@@ -186,6 +185,7 @@ module.exports.testaddress_LK = {
         
         var expected = "Marvan Sangakkara 25/1, Cyril Jansz Mawatha\nPANADURA 56001\nSri Lanka";
         var formatter = new AddressFmt({locale: 'en-US'});
+        test.expect(1);
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     }

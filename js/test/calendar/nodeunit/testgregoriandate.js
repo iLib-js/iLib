@@ -69,21 +69,21 @@ module.exports.testgregoriandate = {
     },
 
     testGregDateConstructor: function(test) {
-        test.expect(1);
         var gd = new GregorianDate();
         
+        test.expect(1);
         test.ok(gd !== null);
         test.done();
     },
     
     /* julian date is rd 366 + epoch */
     testGregDateConstructorFromJD: function(test) {
-        test.expect(8);
         var gd = new GregorianDate({
             julianday: 1721790.75,
             timezone: "Etc/UTC"
         });
         
+        test.expect(8);
         test.equal(typeof(gd), 'object');
         test.equal(gd.getYears(), 2);
         test.equal(gd.getMonths(), 1);
@@ -96,9 +96,9 @@ module.exports.testgregoriandate = {
     },
     
     testGregDateAfterLeapYear: function(test) {
-        test.expect(8);
         var gd = new GregorianDate({julianday: 1723071.9, timezone: "Etc/UTC"});  // jul 5, 05, 9:36am
         
+        test.expect(8);
         test.equal(typeof(gd), 'object');
         test.equal(gd.getYears(), 5);
         test.equal(gd.getMonths(), 7);
@@ -111,9 +111,9 @@ module.exports.testgregoriandate = {
     },
     
     testGregDateJan31Midnight: function(test) {
-        test.expect(8);
         var gd = new GregorianDate({rd: 734533, timezone: "Etc/UTC"});  // Jan 31, 2012 12:00am
         
+        test.expect(8);
         test.equal(typeof(gd), 'object');
         test.equal(gd.getYears(), 2012);
         test.equal(gd.getMonths(), 1);
@@ -126,9 +126,9 @@ module.exports.testgregoriandate = {
     },
     
     testGregDateJan31Noon: function(test) {
-        test.expect(8);
         var gd = new GregorianDate({rd: 734533.5, timezone: "Etc/UTC"});  // Jan 31, 2012 12:00pm
         
+        test.expect(8);
         test.equal(typeof(gd), 'object');
         test.equal(gd.getYears(), 2012);
         test.equal(gd.getMonths(), 1);
@@ -141,9 +141,9 @@ module.exports.testgregoriandate = {
     },
     
     testGregDateFeb1: function(test) {
-        test.expect(8);
         var gd = new GregorianDate({rd: 734534.5, timezone: "Etc/UTC"});  // Feb 1, 2012 12:00pm
         
+        test.expect(8);
         test.equal(typeof(gd), 'object');
         test.equal(gd.getYears(), 2012);
         test.equal(gd.getMonths(), 2);
@@ -156,9 +156,9 @@ module.exports.testgregoriandate = {
     },
     
     testGregDateFeb28LeapYear: function(test) {
-        test.expect(8);
         var gd = new GregorianDate({rd: 734561.5, timezone: "Etc/UTC"});  // Feb 28, 2012 12:00pm
         
+        test.expect(8);
         test.equal(typeof(gd), 'object');
         test.equal(gd.getYears(), 2012);
         test.equal(gd.getMonths(), 2);
@@ -171,9 +171,9 @@ module.exports.testgregoriandate = {
     },
     
     testGregDateFeb29LeapYear: function(test) {
-        test.expect(8);
         var gd = new GregorianDate({rd: 734562.5, timezone: "Etc/UTC"});  // Feb 29, 2012 12:00pm
         
+        test.expect(8);
         test.equal(typeof(gd), 'object');
         test.equal(gd.getYears(), 2012);
         test.equal(gd.getMonths(), 2);
@@ -186,9 +186,9 @@ module.exports.testgregoriandate = {
     },
     
     testGregDateMar1LeapYear: function(test) {
-        test.expect(8);
         var gd = new GregorianDate({rd: 734563.5, timezone: "Etc/UTC"});  // Mar 1, 2012 12:00pm
         
+        test.expect(8);
         test.equal(typeof(gd), 'object');
         test.equal(gd.getYears(), 2012);
         test.equal(gd.getMonths(), 3);
@@ -201,9 +201,9 @@ module.exports.testgregoriandate = {
     },
     
     testGregDateMar31LeapYear: function(test) {
-        test.expect(8);
         var gd = new GregorianDate({rd: 734593.5, timezone: "Etc/UTC"});  // Mar 31, 2012 12:00pm
         
+        test.expect(8);
         test.equal(typeof(gd), 'object');
         test.equal(gd.getYears(), 2012);
         test.equal(gd.getMonths(), 3);
@@ -216,9 +216,9 @@ module.exports.testgregoriandate = {
     },
     
     testGregDateApr1LeapYear: function(test) {
-        test.expect(8);
         var gd = new GregorianDate({rd: 734594.5, timezone: "Etc/UTC"});  // Apr 1, 2012 12:00pm
         
+        test.expect(8);
         test.equal(typeof(gd), 'object');
         test.equal(gd.getYears(), 2012);
         test.equal(gd.getMonths(), 4);
@@ -231,9 +231,9 @@ module.exports.testgregoriandate = {
     },
     
     testGregDateDec31LeapYear: function(test) {
-        test.expect(8);
         var gd = new GregorianDate({rd: 734868.5, timezone: "Etc/UTC"});  // Dec 31, 2012 12:00pm
         
+        test.expect(8);
         test.equal(typeof(gd), 'object');
         test.equal(gd.getYears(), 2012);
         test.equal(gd.getMonths(), 12);
@@ -246,9 +246,9 @@ module.exports.testgregoriandate = {
     },
     
     testGregDateJan1NonLeapYear: function(test) {
-        test.expect(8);
         var gd = new GregorianDate({rd: 734869.5, timezone: "Etc/UTC"});  // Jan 1, 2013 12:00pm
         
+        test.expect(8);
         test.equal(typeof(gd), 'object');
         test.equal(gd.getYears(), 2013);
         test.equal(gd.getMonths(), 1);
@@ -261,9 +261,9 @@ module.exports.testgregoriandate = {
     },
     
     testGregDateFeb28NonLeapYear: function(test) {
-        test.expect(8);
         var gd = new GregorianDate({rd: 734927.5, timezone: "Etc/UTC"});  // Feb 28, 2013 12:00pm
         
+        test.expect(8);
         test.equal(typeof(gd), 'object');
         test.equal(gd.getYears(), 2013);
         test.equal(gd.getMonths(), 2);
@@ -276,9 +276,9 @@ module.exports.testgregoriandate = {
     },
     
     testGregDateMar1NonLeapYear: function(test) {
-        test.expect(8);
         var gd = new GregorianDate({rd: 734928.5, timezone: "Etc/UTC"});  // Mar 1, 2013 12:00pm
         
+        test.expect(8);
         test.equal(typeof(gd), 'object');
         test.equal(gd.getYears(), 2013);
         test.equal(gd.getMonths(), 3);
@@ -291,9 +291,9 @@ module.exports.testgregoriandate = {
     },
     
     testGregDateMar31NonLeapYear: function(test) {
-        test.expect(8);
         var gd = new GregorianDate({rd: 734958.5, timezone: "Etc/UTC"});  // Mar 31, 2013 12:00pm
         
+        test.expect(8);
         test.equal(typeof(gd), 'object');
         test.equal(gd.getYears(), 2013);
         test.equal(gd.getMonths(), 3);
@@ -306,9 +306,9 @@ module.exports.testgregoriandate = {
     },
     
     testGregDateApr1NonLeapYear: function(test) {
-        test.expect(8);
         var gd = new GregorianDate({rd: 734959.5, timezone: "Etc/UTC"});  // Apr 1, 2013 12:00pm
         
+        test.expect(8);
         test.equal(typeof(gd), 'object');
         test.equal(gd.getYears(), 2013);
         test.equal(gd.getMonths(), 4);
@@ -321,9 +321,9 @@ module.exports.testgregoriandate = {
     },
     
     testGregDateAfterCentury: function(test) {
-        test.expect(8);
         var gd = new GregorianDate({julianday: 1758231.8, timezone: "Etc/UTC"}); // Oct 10, 101, 7:12am
         
+        test.expect(8);
         test.equal(typeof(gd), 'object');
         test.equal(gd.getYears(), 101);
         test.equal(gd.getMonths(), 10);
@@ -336,9 +336,9 @@ module.exports.testgregoriandate = {
     },
     
     testGregDateAfterQuadCentury: function(test) {
-        test.expect(8);
         var gd = new GregorianDate({julianday: 1867706.833333333333, timezone: "Etc/UTC"}); // Jul 4, 401, 8:00pm
         
+        test.expect(8);
         test.equal(typeof(gd), 'object');
         test.equal(gd.getYears(), 401);
         test.equal(gd.getMonths(), 7);
@@ -351,9 +351,9 @@ module.exports.testgregoriandate = {
     },
     
     testGregDateEndOfYear: function(test) {
-        test.expect(8);
         var gd = new GregorianDate({julianday: 2455196.5, timezone: "Etc/UTC"});
         
+        test.expect(8);
         test.equal(typeof(gd), 'object');
         test.equal(gd.getYears(), 2009);
         test.equal(gd.getMonths(), 12);
@@ -366,9 +366,9 @@ module.exports.testgregoriandate = {
     },
     
     testGregDateBeginningOfYear: function(test) {
-        test.expect(8);
         var gd = new GregorianDate({julianday: 2455197.5, timezone: "Etc/UTC"});
         
+        test.expect(8);
         test.equal(typeof(gd), 'object');
         test.equal(gd.getYears(), 2010);
         test.equal(gd.getMonths(), 1);
@@ -381,9 +381,9 @@ module.exports.testgregoriandate = {
     },
     
     testGregDateEndOfYearLeapYear: function(test) {
-        test.expect(8);
         var gd = new GregorianDate({julianday: 2454831.5, timezone: "Etc/UTC"});
         
+        test.expect(8);
         test.equal(typeof(gd), 'object');
         test.equal(gd.getYears(), 2008);
         test.equal(gd.getMonths(), 12);
@@ -396,9 +396,9 @@ module.exports.testgregoriandate = {
     },
     
     testGregDateBeginningOfYearAfterLeapYear: function(test) {
-        test.expect(8);
         var gd = new GregorianDate({julianday: 2454832.5, timezone: "Etc/UTC"});
         
+        test.expect(8);
         test.equal(typeof(gd), 'object');
         test.equal(gd.getYears(), 2009);
         test.equal(gd.getMonths(), 1);
@@ -411,9 +411,9 @@ module.exports.testgregoriandate = {
     },
     
     testGregDateEndOfYear0RJd: function(test) {
-        test.expect(8);
         var gd = new GregorianDate({julianday: 1721424.5, timezone: "Etc/UTC"});
         
+        test.expect(8);
         test.equal(typeof(gd), 'object');
         test.equal(gd.getYears(), 0);
         test.equal(gd.getMonths(), 12);
@@ -426,9 +426,9 @@ module.exports.testgregoriandate = {
     },
     
     testGregDateEndOfYear0Rd: function(test) {
-        test.expect(8);
         var gd = new GregorianDate({rd: 0, timezone: "Etc/UTC"});
         
+        test.expect(8);
         test.equal(typeof(gd), 'object');
         test.equal(gd.getYears(), 0);
         test.equal(gd.getMonths(), 12);
@@ -441,9 +441,9 @@ module.exports.testgregoriandate = {
     },
     
     testGregDateBeginningOfYearRd: function(test) {
-        test.expect(8);
         var gd = new GregorianDate({rd: 1, timezone: "Etc/UTC"});
         
+        test.expect(8);
         test.equal(typeof(gd), 'object');
         test.equal(gd.getYears(), 1);
         test.equal(gd.getMonths(), 1);
@@ -456,9 +456,9 @@ module.exports.testgregoriandate = {
     },
     
     testGregDateAlmostEndOfYearRd: function(test) {
-        test.expect(8);
         var gd = new GregorianDate({rd: 364, timezone: "Etc/UTC"});
         
+        test.expect(8);
         test.equal(typeof(gd), 'object');
         test.equal(gd.getYears(), 1);
         test.equal(gd.getMonths(), 12);
@@ -471,9 +471,9 @@ module.exports.testgregoriandate = {
     },
     
     testGregDateEndOfYearRd: function(test) {
-        test.expect(8);
         var gd = new GregorianDate({rd: 365, timezone: "Etc/UTC"});
         
+        test.expect(8);
         test.equal(typeof(gd), 'object');
         test.equal(gd.getYears(), 1);
         test.equal(gd.getMonths(), 12);
@@ -486,9 +486,9 @@ module.exports.testgregoriandate = {
     },
     
     testGregDateBeginningOfYear2Rd: function(test) {
-        test.expect(8);
         var gd = new GregorianDate({rd: 366, timezone: "Etc/UTC"});
         
+        test.expect(8);
         test.equal(typeof(gd), 'object');
         test.equal(gd.getYears(), 2);
         test.equal(gd.getMonths(), 1);
@@ -506,7 +506,7 @@ module.exports.testgregoriandate = {
         for (var i = 0; i < testDatesGregorian.length; i++) {
             gd = new GregorianDate({julianday: testDatesGregorian[i][0], timezone: "Etc/UTC"});
         
-        console.log("testing jd=" + testDatesGregorian[i][0]);
+        // console.log("testing jd=" + testDatesGregorian[i][0]);
             
             test.equal(typeof(gd), 'object');
             test.equal(gd.getYears(), testDatesGregorian[i][1]);
@@ -522,7 +522,6 @@ module.exports.testgregoriandate = {
     },
     
     testGregDateConstructorFull: function(test) {
-        test.expect(8);
         var gd = new GregorianDate({
             year: 2011, 
             month: 9, 
@@ -533,6 +532,7 @@ module.exports.testgregoriandate = {
             millisecond: 123
         });
         
+        test.expect(8);
         test.ok(gd !== null);
         
         test.equal(gd.getYears(), 2011);
@@ -546,7 +546,6 @@ module.exports.testgregoriandate = {
     },
     
     testGregDateConstructorFullWithStrings: function(test) {
-        test.expect(8);
         // often you get strings from a UI element instead of numbers... 
         // this constructor should work with numbers or strings
         var gd = new GregorianDate({
@@ -559,6 +558,7 @@ module.exports.testgregoriandate = {
             millisecond: "123"
         });
         
+        test.expect(8);
         test.ok(gd !== null);
         
         test.equal(gd.getYears(), 2011);
@@ -572,7 +572,6 @@ module.exports.testgregoriandate = {
     },
     
     testGregDateConstructorCopy: function(test) {
-        test.expect(8);
         var gd2 = new GregorianDate({
             year: 2011, 
             month: 9, 
@@ -584,6 +583,7 @@ module.exports.testgregoriandate = {
         });
         var gd = new GregorianDate(gd2);
         
+        test.expect(8);
         test.ok(gd !== null);
         
         test.equal(gd.getYears(), 2011);
@@ -597,9 +597,9 @@ module.exports.testgregoriandate = {
     },
     
     testGregDateConstructorEmpty: function(test) {
-        test.expect(8);
         var gd = new GregorianDate();
         var now = new Date(gd.getTime()); // compare against the JS date
+        test.expect(8);
         test.ok(gd !== null);
         
         test.equal(now.getFullYear(), gd.getYears(), "year");
@@ -613,11 +613,11 @@ module.exports.testgregoriandate = {
     },
     
     testGregDateConstructorUnixTime: function(test) {
-        test.expect(8);
         var gd = new GregorianDate({
             unixtime: 61000, 
             timezone: "Etc/UTC"
         });
+        test.expect(8);
         test.ok(gd !== null);
         
         test.equal(1970, gd.getYears(), "year");
@@ -645,7 +645,7 @@ module.exports.testgregoriandate = {
                 timezone: "Etc/UTC"
             });
         
-        console.log("testing jd=" + testDatesGregorian[i][0]);
+        // console.log("testing jd=" + testDatesGregorian[i][0]);
             
             test.equal(typeof(gd), 'object');
             test.equal(gd.getJulianDay(), testDatesGregorian[i][0]);
@@ -655,9 +655,9 @@ module.exports.testgregoriandate = {
     },
     
     testGregDateSetYears: function(test) {
-        test.expect(2);
         var gd = new GregorianDate();
         
+        test.expect(2);
         test.ok(gd !== null);
         
         gd.setYears(123);
@@ -667,9 +667,9 @@ module.exports.testgregoriandate = {
     },
     
     testGregDateSetMonths: function(test) {
-        test.expect(2);
         var gd = new GregorianDate();
         
+        test.expect(2);
         test.ok(gd !== null);
         
         gd.setMonths(7);
@@ -679,9 +679,9 @@ module.exports.testgregoriandate = {
     },
     
     testGregDateSetDays: function(test) {
-        test.expect(2);
         var gd = new GregorianDate();
         
+        test.expect(2);
         test.ok(gd !== null);
         
         gd.setDays(12);
@@ -691,9 +691,9 @@ module.exports.testgregoriandate = {
     },
     
     testGregDateSetHours: function(test) {
-        test.expect(2);
         var gd = new GregorianDate();
         
+        test.expect(2);
         test.ok(gd !== null);
         
         gd.setHours(12);
@@ -703,9 +703,9 @@ module.exports.testgregoriandate = {
     },
     
     testGregDateSetMinutes: function(test) {
-        test.expect(2);
         var gd = new GregorianDate();
         
+        test.expect(2);
         test.ok(gd !== null);
         
         gd.setMinutes(13);
@@ -715,9 +715,9 @@ module.exports.testgregoriandate = {
     },
     
     testGregDateSetSeconds: function(test) {
-        test.expect(2);
         var gd = new GregorianDate();
         
+        test.expect(2);
         test.ok(gd !== null);
         
         gd.setSeconds(23);
@@ -727,9 +727,9 @@ module.exports.testgregoriandate = {
     },
     
     testGregDateSetMilliseconds: function(test) {
-        test.expect(2);
         var gd = new GregorianDate();
         
+        test.expect(2);
         test.ok(gd !== null);
         
         gd.setMilliseconds(123);
@@ -739,7 +739,6 @@ module.exports.testgregoriandate = {
     },
     
     testGetDayOfWeek1: function(test) {
-        test.expect(2);
         var gd = new GregorianDate({
             year: 2011, 
             month: 9, 
@@ -747,6 +746,7 @@ module.exports.testgregoriandate = {
             timezone: "Etc/UTC"
         });
         
+        test.expect(2);
         test.ok(gd !== null);
         
         test.equal(gd.getDayOfWeek(), 5);
@@ -754,7 +754,6 @@ module.exports.testgregoriandate = {
     },
     
     testGetDayOfWeekWithTime: function(test) {
-        test.expect(2);
         var gd = new GregorianDate({
             year: 2011, 
             month: 9, 
@@ -765,6 +764,7 @@ module.exports.testgregoriandate = {
             timezone: "Etc/UTC"
         });
         
+        test.expect(2);
         test.ok(gd !== null);
         
         test.equal(gd.getDayOfWeek(), 5);
@@ -772,7 +772,6 @@ module.exports.testgregoriandate = {
     },
     
     testGetDayOfWeek2: function(test) {
-        test.expect(2);
         var gd = new GregorianDate({
             year: 1648, 
             month: 6, 
@@ -780,6 +779,7 @@ module.exports.testgregoriandate = {
             timezone: "Etc/UTC"
         });
         
+        test.expect(2);
         test.ok(gd !== null);
         
         test.equal(gd.getDayOfWeek(), 3);
@@ -787,7 +787,6 @@ module.exports.testgregoriandate = {
     },
     
     testGetDayOfWeek3: function(test) {
-        test.expect(2);
         var gd = new GregorianDate({
             year: 1190, 
             month: 3, 
@@ -795,6 +794,7 @@ module.exports.testgregoriandate = {
             timezone: "Etc/UTC"
         });
         
+        test.expect(2);
         test.ok(gd !== null);
         
         test.equal(gd.getDayOfWeek(), 5);
@@ -802,7 +802,6 @@ module.exports.testgregoriandate = {
     },
     
     testGetDayOfWeek4: function(test) {
-        test.expect(2);
         var gd = new GregorianDate({
             year: -586, 
             month: 7, 
@@ -810,6 +809,7 @@ module.exports.testgregoriandate = {
             timezone: "Etc/UTC"
         });
         
+        test.expect(2);
         test.ok(gd !== null);
         
         test.equal(gd.getDayOfWeek(), 0);
@@ -817,7 +817,6 @@ module.exports.testgregoriandate = {
     },
     
     testGetDayOfWeekWithTimezoneWestern: function(test) {
-        test.expect(2);
         var gd = new GregorianDate({
             year: 2014, 
             month: 4,
@@ -827,6 +826,7 @@ module.exports.testgregoriandate = {
             timezone: "America/Los_Angeles"
         });
         
+        test.expect(2);
         test.ok(gd !== null);
         
         test.equal(gd.getDayOfWeek(), 5);
@@ -834,7 +834,6 @@ module.exports.testgregoriandate = {
     },
     
     testGetDayOfWeekWithTimezoneEastern: function(test) {
-        test.expect(2);
         var gd = new GregorianDate({
             year: 2014, 
             month: 4,
@@ -842,6 +841,7 @@ module.exports.testgregoriandate = {
             timezone: "Asia/Seoul"
         });
         
+        test.expect(2);
         test.ok(gd !== null);
         
         test.equal(gd.getDayOfWeek(), 5);
@@ -849,13 +849,13 @@ module.exports.testgregoriandate = {
     },
     
     testGregDateTestGetTimeZero: function(test) {
-        test.expect(2);
         var gd = new GregorianDate({
             year: 1970, 
             month: 1, 
             day: 1,
             timezone: "Etc/UTC"
         });
+        test.expect(2);
         test.ok(gd !== null);
         
         test.equal(gd.getTime(), 0);
@@ -863,13 +863,13 @@ module.exports.testgregoriandate = {
     },
     
     testGregDateTestGetTimeCalifornia: function(test) {
-        test.expect(2);
         var gd = new GregorianDate({
             year: 1970, 
             month: 1, 
             day: 1,
             timezone: "America/Los_Angeles"
         });
+        test.expect(2);
         test.ok(gd !== null);
         
         test.equal(gd.getTime(), 28800000);
@@ -877,7 +877,6 @@ module.exports.testgregoriandate = {
     },
     
     testGregDateTestGetTime: function(test) {
-        test.expect(2);
         var gd = new GregorianDate({
             year: 1970, 
             month: 1, 
@@ -886,6 +885,7 @@ module.exports.testgregoriandate = {
                minute: 30,
                timezone: "Etc/UTC"
         });
+        test.expect(2);
         test.ok(gd !== null);
         
         test.equal(gd.getTime(), 203400000);
@@ -893,13 +893,13 @@ module.exports.testgregoriandate = {
     },
     
     testGregDateTestGetTimeTooEarly: function(test) {
-        test.expect(2);
         var gd = new GregorianDate({
             year: 1969, 
             month: 12, 
             day: 31,
             timezone: "Etc/UTC"
         });
+        test.expect(2);
         test.ok(gd !== null);
         
         test.equal(gd.getTime(), -1);
@@ -907,13 +907,13 @@ module.exports.testgregoriandate = {
     },
     
     testGregDateTestGetTimeTooLate: function(test) {
-        test.expect(2);
         var gd = new GregorianDate({
             year: 2038, 
             month: 1, 
             day: 20,
             timezone: "Etc/UTC"
         });
+        test.expect(2);
         test.ok(gd !== null);
         
         test.equal(gd.getTime(), -1);
@@ -921,13 +921,13 @@ module.exports.testgregoriandate = {
     },
     
     testGregDateTestGetTimeExtendedZero: function(test) {
-        test.expect(2);
         var gd = new GregorianDate({
             year: 1970, 
             month: 1, 
             day: 1,
             timezone: "Etc/UTC"
         });
+        test.expect(2);
         test.ok(gd !== null);
         
         test.equal(gd.getTimeExtended(), 0);
@@ -935,13 +935,13 @@ module.exports.testgregoriandate = {
     },
     
     testGregDateTestGetTimeExtendedCalifornia: function(test) {
-        test.expect(2);
         var gd = new GregorianDate({
             year: 1970, 
             month: 1, 
             day: 1,
             timezone: "America/Los_Angeles"
         });
+        test.expect(2);
         test.ok(gd !== null);
         
         test.equal(gd.getTimeExtended(), 28800000);
@@ -949,7 +949,6 @@ module.exports.testgregoriandate = {
     },
     
     testGregDateTestGetTimeExtended: function(test) {
-        test.expect(2);
         var gd = new GregorianDate({
             year: 1970, 
             month: 1, 
@@ -958,6 +957,7 @@ module.exports.testgregoriandate = {
                minute: 30,
                timezone: "Etc/UTC"
         });
+        test.expect(2);
         test.ok(gd !== null);
         
         test.equal(gd.getTimeExtended(), 203400000);
@@ -965,13 +965,13 @@ module.exports.testgregoriandate = {
     },
     
     testGregDateTestGetTimeExtendedTooEarlyForRegularUnixTime: function(test) {
-        test.expect(2);
         var gd = new GregorianDate({
             year: 1969, 
             month: 12, 
             day: 31,
             timezone: "Etc/UTC"
         });
+        test.expect(2);
         test.ok(gd !== null);
         
         test.equal(gd.getTimeExtended(), -86400000);
@@ -979,13 +979,13 @@ module.exports.testgregoriandate = {
     },
     
     testGregDateTestGetTimeExtendedTooEarlyForExtendedUnixTime: function(test) {
-        test.expect(2);
         var gd = new GregorianDate({
             year: -271821, 
             month: 4, 
             day: 18,
             timezone: "Etc/UTC"
         });
+        test.expect(2);
         test.ok(gd !== null);
         
         test.ok(gd.getTimeExtended() === NaN);
@@ -993,13 +993,13 @@ module.exports.testgregoriandate = {
     },
     
     testGregDateTestGetTimeExtendedTooLateForRegularUnixTime: function(test) {
-        test.expect(2);
         var gd = new GregorianDate({
             year: 2038, 
             month: 1, 
             day: 20,
             timezone: "Etc/UTC"
         });
+        test.expect(2);
         test.ok(gd !== null);
         
         test.equal(gd.getTimeExtended(), 2147558400000);
@@ -1007,13 +1007,13 @@ module.exports.testgregoriandate = {
     },
     
     testGregDateTestGetTimeExtendedTooLateForExtendedUnixTime: function(test) {
-        test.expect(2);
         var gd = new GregorianDate({
             year: 275760, 
             month: 9, 
             day: 20,
             timezone: "Etc/UTC"
         });
+        test.expect(2);
         test.ok(gd !== null);
         
         test.ok(gd.getTimeExtended() === NaN);
@@ -1021,13 +1021,13 @@ module.exports.testgregoriandate = {
     },
     
     testGregDateTestSetTime1: function(test) {
-        test.expect(8);
         var gd = new GregorianDate({
             year: 1970, 
             month: 1, 
             day: 1,
             timezone: "Etc/UTC"
         });
+        test.expect(8);
         test.ok(gd !== null);
         test.equal(gd.getTime(), 0);
         
@@ -1044,7 +1044,6 @@ module.exports.testgregoriandate = {
     },
     
     testGregDateTestSetTimeZero: function(test) {
-        test.expect(7);
         var gd = new GregorianDate({
             year: -1, 
             month: 1,
@@ -1055,6 +1054,7 @@ module.exports.testgregoriandate = {
                millisecond: 1,
             timezone: "Etc/UTC"
         });
+        test.expect(7);
         test.ok(gd !== null);
         
         gd.setTime(0);
@@ -1070,13 +1070,13 @@ module.exports.testgregoriandate = {
     
     // test some of the helper functions to make sure they are producing the right thing
     testGregDateOnOrBeforeSun: function(test) {
-        test.expect(3);
         var gd = new GregorianDate({
             year: 2010, 
             month: 1, 
             day: 1,
             timezone: "Etc/UTC"
         });
+        test.expect(3);
         test.ok(gd !== null);
         
         test.equal(gd.getDayOfWeek(), 5); // Friday
@@ -1088,13 +1088,13 @@ module.exports.testgregoriandate = {
     },
     
     testGregDateOnOrBeforeMon: function(test) {
-        test.expect(3);
         var gd = new GregorianDate({
             year: 2010, 
             month: 1, 
             day: 1,
             timezone: "Etc/UTC"
         });
+        test.expect(3);
         test.ok(gd !== null);
         
         test.equal(gd.getDayOfWeek(), 5); // Friday
@@ -1105,13 +1105,13 @@ module.exports.testgregoriandate = {
     },
     
     testGregDateOnOrBeforeTue: function(test) {
-        test.expect(3);
         var gd = new GregorianDate({
             year: 2010, 
             month: 1, 
             day: 1,
             timezone: "Etc/UTC"
         });
+        test.expect(3);
         test.ok(gd !== null);
         
         test.equal(gd.getDayOfWeek(), 5); // Friday
@@ -1122,13 +1122,13 @@ module.exports.testgregoriandate = {
     },
     
     testGregDateOnOrBeforeWed: function(test) {
-        test.expect(3);
         var gd = new GregorianDate({
             year: 2010, 
             month: 1, 
             day: 1,
             timezone: "Etc/UTC"
         });
+        test.expect(3);
         test.ok(gd !== null);
         
         test.equal(gd.getDayOfWeek(), 5); // Friday
@@ -1139,13 +1139,13 @@ module.exports.testgregoriandate = {
     },
     
     testGregDateOnOrBeforeThu: function(test) {
-        test.expect(3);
         var gd = new GregorianDate({
             year: 2010, 
             month: 1, 
             day: 1,
             timezone: "Etc/UTC"
         });
+        test.expect(3);
         test.ok(gd !== null);
         
         test.equal(gd.getDayOfWeek(), 5); // Friday
@@ -1156,13 +1156,13 @@ module.exports.testgregoriandate = {
     },
     
     testGregDateOnOrBeforeFri: function(test) {
-        test.expect(3);
         var gd = new GregorianDate({
             year: 2010, 
             month: 1, 
             day: 1,
             timezone: "Etc/UTC"
         });
+        test.expect(3);
         test.ok(gd !== null);
         
         test.equal(gd.getDayOfWeek(), 5); // Friday
@@ -1173,13 +1173,13 @@ module.exports.testgregoriandate = {
     },
     
     testGregDateOnOrBeforeSat: function(test) {
-        test.expect(3);
         var gd = new GregorianDate({
             year: 2010, 
             month: 1, 
             day: 1,
             timezone: "Etc/UTC"
         });
+        test.expect(3);
         test.ok(gd !== null);
         
         test.equal(gd.getDayOfWeek(), 5); // Friday
@@ -1190,7 +1190,6 @@ module.exports.testgregoriandate = {
     },
     
     testGregDateOnOrBeforeSunWithTime: function(test) {
-        test.expect(3);
         var gd = new GregorianDate({
             year: 2010, 
             month: 1, 
@@ -1198,6 +1197,7 @@ module.exports.testgregoriandate = {
                hour: 8,
             timezone: "Etc/UTC"
         });
+        test.expect(3);
         test.ok(gd !== null);
         
         test.equal(gd.getDayOfWeek(), 5); // Friday
@@ -1210,7 +1210,6 @@ module.exports.testgregoriandate = {
     },
     
     testGregDateOnOrBeforeSunWithTimeZoneWestern1: function(test) {
-        test.expect(3);
         var gd = new GregorianDate({
             year: 2014, 
             month: 4,
@@ -1219,6 +1218,7 @@ module.exports.testgregoriandate = {
                minute: 59,
                timezone: "America/Los_Angeles"
         }); // this is Saturday in Los Angeles, but Sunday in UTC 
+        test.expect(3);
         test.ok(gd !== null);
         
         test.equal(gd.getDayOfWeek(), 6); // Saturday
@@ -1231,7 +1231,6 @@ module.exports.testgregoriandate = {
     },
     
     testGregDateOnOrBeforeSunWithTimeZoneWestern2: function(test) {
-        test.expect(3);
         var gd = new GregorianDate({
             year: 2014, 
             month: 4, 
@@ -1240,6 +1239,7 @@ module.exports.testgregoriandate = {
                minute: 0,
                timezone: "America/Los_Angeles"
         }); // this is Sunday in Los Angeles and in UTC 
+        test.expect(3);
         test.ok(gd !== null);
         
         test.equal(gd.getDayOfWeek(), 0); // Friday
@@ -1252,7 +1252,6 @@ module.exports.testgregoriandate = {
     },
     
     testGregDateOnOrBeforeSunWithTimeZoneEastern1: function(test) {
-        test.expect(3);
         var gd = new GregorianDate({
             year: 2014, 
             month: 4,
@@ -1261,6 +1260,7 @@ module.exports.testgregoriandate = {
                minute: 0,
                timezone: "Asia/Seoul"
         }); // this is Saturday in UTC, but Sunday in Seoul
+        test.expect(3);
         test.ok(gd !== null);
         
         test.equal(gd.getDayOfWeek(), 0); // Sunday
@@ -1273,7 +1273,6 @@ module.exports.testgregoriandate = {
     },
     
     testGregDateOnOrBeforeSunWithTimeZoneEastern2: function(test) {
-        test.expect(3);
         var gd = new GregorianDate({
             year: 2014, 
             month: 4, 
@@ -1282,6 +1281,7 @@ module.exports.testgregoriandate = {
                minute: 59,
                timezone: "Asia/Seoul"
         }); // this is Saturday in Seoul and in UTC 
+        test.expect(3);
         test.ok(gd !== null);
         
         test.equal(gd.getDayOfWeek(), 6); // Saturday
@@ -1294,13 +1294,13 @@ module.exports.testgregoriandate = {
     },
     
     testGregDateOnOrAfterSun: function(test) {
-        test.expect(3);
         var gd = new GregorianDate({
             year: 2010, 
             month: 1, 
             day: 1,
             timezone: "Etc/UTC"
         });
+        test.expect(3);
         test.ok(gd !== null);
         
         test.equal(gd.getDayOfWeek(), 5); // Friday
@@ -1312,13 +1312,13 @@ module.exports.testgregoriandate = {
     },
     
     testGregDateOnOrAfterSunDate: function(test) {
-        test.expect(5);
         var gd = new GregorianDate({
             year: 2010, 
             month: 1, 
             day: 1,
             timezone: "Etc/UTC"
         });
+        test.expect(5);
         test.ok(gd !== null);
         
         test.equal(gd.getDayOfWeek(), 5); // Friday
@@ -1332,13 +1332,13 @@ module.exports.testgregoriandate = {
     },
     
     testGregDateOnOrAfterMon: function(test) {
-        test.expect(3);
         var gd = new GregorianDate({
             year: 2010, 
             month: 1, 
             day: 1,
             timezone: "Etc/UTC"
         });
+        test.expect(3);
         test.ok(gd !== null);
         
         test.equal(gd.getDayOfWeek(), 5); // Friday
@@ -1349,13 +1349,13 @@ module.exports.testgregoriandate = {
     },
     
     testGregDateOnOrAfterMonDate: function(test) {
-        test.expect(5);
         var gd = new GregorianDate({
             year: 2010,
             month: 1,
             day: 1,
             timezone: "Etc/UTC"
         });
+        test.expect(5);
         test.ok(gd !== null);
         
         test.equal(gd.getDayOfWeek(), 5); // Friday
@@ -1368,13 +1368,13 @@ module.exports.testgregoriandate = {
     },
     
     testGregDateOnOrAfterTue: function(test) {
-        test.expect(3);
         var gd = new GregorianDate({
             year: 2010, 
             month: 1, 
             day: 1,
             timezone: "Etc/UTC"
         });
+        test.expect(3);
         test.ok(gd !== null);
         
         test.equal(gd.getDayOfWeek(), 5); // Friday
@@ -1385,13 +1385,13 @@ module.exports.testgregoriandate = {
     },
     
     testGregDateOnOrAfterWed: function(test) {
-        test.expect(3);
         var gd = new GregorianDate({
             year: 2010, 
             month: 1, 
             day: 1,
             timezone: "Etc/UTC"
         });
+        test.expect(3);
         test.ok(gd !== null);
         
         test.equal(gd.getDayOfWeek(), 5); // Friday
@@ -1402,13 +1402,13 @@ module.exports.testgregoriandate = {
     },
     
     testGregDateOnOrAfterThu: function(test) {
-        test.expect(3);
         var gd = new GregorianDate({
             year: 2010, 
             month: 1, 
             day: 1,
             timezone: "Etc/UTC"
         });
+        test.expect(3);
         test.ok(gd !== null);
         
         test.equal(gd.getDayOfWeek(), 5); // Friday
@@ -1419,13 +1419,13 @@ module.exports.testgregoriandate = {
     },
     
     testGregDateOnOrAfterThuDate: function(test) {
-        test.expect(5);
         var gd = new GregorianDate({
             year: 2010, 
             month: 1, 
             day: 1,
             timezone: "Etc/UTC"
         });
+        test.expect(5);
         test.ok(gd !== null);
         
         test.equal(gd.getDayOfWeek(), 5); // Friday
@@ -1438,13 +1438,13 @@ module.exports.testgregoriandate = {
     },
     
     testGregDateOnOrAfterFri: function(test) {
-        test.expect(3);
         var gd = new GregorianDate({
             year: 2010, 
             month: 1, 
             day: 1,
             timezone: "Etc/UTC"
         });
+        test.expect(3);
         test.ok(gd !== null);
         
         test.equal(gd.getDayOfWeek(), 5); // Friday
@@ -1455,13 +1455,13 @@ module.exports.testgregoriandate = {
     },
     
     testGregDateOnOrAfterFriDate: function(test) {
-        test.expect(5);
         var gd = new GregorianDate({
             year: 2010, 
             month: 1, 
             day: 1,
             timezone: "Etc/UTC"
         });
+        test.expect(5);
         test.ok(gd !== null);
         
         test.equal(gd.getDayOfWeek(), 5); // Friday
@@ -1474,13 +1474,13 @@ module.exports.testgregoriandate = {
     },
     
     testGregDateOnOrAfterSat: function(test) {
-        test.expect(3);
         var gd = new GregorianDate({
             year: 2010, 
             month: 1, 
             day: 1,
             timezone: "Etc/UTC"
         });
+        test.expect(3);
         test.ok(gd !== null);
         
         test.equal(gd.getDayOfWeek(), 5); // Friday
@@ -1491,13 +1491,13 @@ module.exports.testgregoriandate = {
     },
     
     testGregDateBeforeSun: function(test) {
-        test.expect(3);
         var gd = new GregorianDate({
             year: 2010, 
             month: 1, 
             day: 1,
             timezone: "Etc/UTC"
         });
+        test.expect(3);
         test.ok(gd !== null);
         
         test.equal(gd.getDayOfWeek(), 5); // Friday
@@ -1509,13 +1509,13 @@ module.exports.testgregoriandate = {
     },
     
     testGregDateBeforeSunDate: function(test) {
-        test.expect(5);
         var gd = new GregorianDate({
             year: 2010, 
             month: 1, 
             day: 1,
             timezone: "Etc/UTC"
         });
+        test.expect(5);
         test.ok(gd !== null);
         
         test.equal(gd.getDayOfWeek(), 5); // Friday
@@ -1529,13 +1529,13 @@ module.exports.testgregoriandate = {
     },
     
     testGregDateBeforeMon: function(test) {
-        test.expect(3);
         var gd = new GregorianDate({
             year: 2010, 
             month: 1, 
             day: 1,
             timezone: "Etc/UTC"
         });
+        test.expect(3);
         test.ok(gd !== null);
         
         test.equal(gd.getDayOfWeek(), 5); // Friday
@@ -1546,13 +1546,13 @@ module.exports.testgregoriandate = {
     },
     
     testGregDateBeforeTue: function(test) {
-        test.expect(3);
         var gd = new GregorianDate({
             year: 2010, 
             month: 1, 
             day: 1,
             timezone: "Etc/UTC"
         });
+        test.expect(3);
         test.ok(gd !== null);
         
         test.equal(gd.getDayOfWeek(), 5); // Friday
@@ -1563,13 +1563,13 @@ module.exports.testgregoriandate = {
     },
     
     testGregDateBeforeWed: function(test) {
-        test.expect(3);
         var gd = new GregorianDate({
             year: 2010, 
             month: 1, 
             day: 1,
             timezone: "Etc/UTC"
         });
+        test.expect(3);
         test.ok(gd !== null);
         
         test.equal(gd.getDayOfWeek(), 5); // Friday
@@ -1580,13 +1580,13 @@ module.exports.testgregoriandate = {
     },
     
     testGregDateBeforeThu: function(test) {
-        test.expect(3);
         var gd = new GregorianDate({
             year: 2010, 
             month: 1, 
             day: 1,
             timezone: "Etc/UTC"
         });
+        test.expect(3);
         test.ok(gd !== null);
         
         test.equal(gd.getDayOfWeek(), 5); // Friday
@@ -1597,13 +1597,13 @@ module.exports.testgregoriandate = {
     },
     
     testGregDateBeforeThuDate: function(test) {
-        test.expect(5);
         var gd = new GregorianDate({
             year: 2010, 
             month: 1, 
             day: 1,
             timezone: "Etc/UTC"
         });
+        test.expect(5);
         test.ok(gd !== null);
         
         test.equal(gd.getDayOfWeek(), 5); // Friday
@@ -1617,13 +1617,13 @@ module.exports.testgregoriandate = {
     },
     
     testGregDateBeforeFri: function(test) {
-        test.expect(3);
         var gd = new GregorianDate({
             year: 2010, 
             month: 1, 
             day: 1,
             timezone: "Etc/UTC"
         });
+        test.expect(3);
         test.ok(gd !== null);
         
         test.equal(gd.getDayOfWeek(), 5); // Friday
@@ -1634,13 +1634,13 @@ module.exports.testgregoriandate = {
     },
     
     testGregDateBeforeFriDate: function(test) {
-        test.expect(5);
         var gd = new GregorianDate({
             year: 2010, 
             month: 1, 
             day: 1,
             timezone: "Etc/UTC"
         });
+        test.expect(5);
         test.ok(gd !== null);
         
         test.equal(gd.getDayOfWeek(), 5); // Friday
@@ -1654,13 +1654,13 @@ module.exports.testgregoriandate = {
     },
     
     testGregDateBeforeSat: function(test) {
-        test.expect(3);
         var gd = new GregorianDate({
             year: 2010, 
             month: 1, 
             day: 1,
             timezone: "Etc/UTC"
         });
+        test.expect(3);
         test.ok(gd !== null);
         
         test.equal(gd.getDayOfWeek(), 5); // Friday
@@ -1671,13 +1671,13 @@ module.exports.testgregoriandate = {
     },
     
     testGregDateAfterSun: function(test) {
-        test.expect(3);
         var gd = new GregorianDate({
             year: 2010, 
             month: 1, 
             day: 1,
             timezone: "Etc/UTC"
         });
+        test.expect(3);
         test.ok(gd !== null);
         
         test.equal(gd.getDayOfWeek(), 5); // Friday
@@ -1689,13 +1689,13 @@ module.exports.testgregoriandate = {
     },
     
     testGregDateAfterSunDate: function(test) {
-        test.expect(5);
         var gd = new GregorianDate({
             year: 2010, 
             month: 1, 
             day: 1,
             timezone: "Etc/UTC"
         });
+        test.expect(5);
         test.ok(gd !== null);
         
         test.equal(gd.getDayOfWeek(), 5); // Friday
@@ -1709,13 +1709,13 @@ module.exports.testgregoriandate = {
     },
     
     testGregDateAfterMon: function(test) {
-        test.expect(3);
         var gd = new GregorianDate({
             year: 2010, 
             month: 1, 
             day: 1,
             timezone: "Etc/UTC"
         });
+        test.expect(3);
         test.ok(gd !== null);
         
         test.equal(gd.getDayOfWeek(), 5); // Friday
@@ -1726,13 +1726,13 @@ module.exports.testgregoriandate = {
     },
     
     testGregDateAfterTue: function(test) {
-        test.expect(3);
         var gd = new GregorianDate({
             year: 2010, 
             month: 1, 
             day: 1,
             timezone: "Etc/UTC"
         });
+        test.expect(3);
         test.ok(gd !== null);
         
         test.equal(gd.getDayOfWeek(), 5); // Friday
@@ -1743,13 +1743,13 @@ module.exports.testgregoriandate = {
     },
     
     testGregDateAfterWed: function(test) {
-        test.expect(3);
         var gd = new GregorianDate({
             year: 2010, 
             month: 1, 
             day: 1,
             timezone: "Etc/UTC"
         });
+        test.expect(3);
         test.ok(gd !== null);
         
         test.equal(gd.getDayOfWeek(), 5); // Friday
@@ -1760,13 +1760,13 @@ module.exports.testgregoriandate = {
     },
     
     testGregDateAfterThu: function(test) {
-        test.expect(3);
         var gd = new GregorianDate({
             year: 2010, 
             month: 1, 
             day: 1,
             timezone: "Etc/UTC"
         });
+        test.expect(3);
         test.ok(gd !== null);
         
         test.equal(gd.getDayOfWeek(), 5); // Friday
@@ -1777,13 +1777,13 @@ module.exports.testgregoriandate = {
     },
     
     testGregDateAfterFri: function(test) {
-        test.expect(3);
         var gd = new GregorianDate({
             year: 2010, 
             month: 1, 
             day: 1,
             timezone: "Etc/UTC"
         });
+        test.expect(3);
         test.ok(gd !== null);
         
         test.equal(gd.getDayOfWeek(), 5); // Friday
@@ -1794,13 +1794,13 @@ module.exports.testgregoriandate = {
     },
     
     testGregDateAfterFriDate: function(test) {
-        test.expect(5);
         var gd = new GregorianDate({
             year: 2010, 
             month: 1, 
             day: 1,
             timezone: "Etc/UTC"
         });
+        test.expect(5);
         test.ok(gd !== null);
         
         test.equal(gd.getDayOfWeek(), 5); // Friday
@@ -1814,13 +1814,13 @@ module.exports.testgregoriandate = {
     },
     
     testGregDateAfterSat: function(test) {
-        test.expect(3);
         var gd = new GregorianDate({
             year: 2010, 
             month: 1, 
             day: 1,
             timezone: "Etc/UTC"
         });
+        test.expect(3);
         test.ok(gd !== null);
         
         test.equal(gd.getDayOfWeek(), 5); // Friday
@@ -1831,13 +1831,13 @@ module.exports.testgregoriandate = {
     },
     
     testGregDateAfterSatDate: function(test) {
-        test.expect(5);
         var gd = new GregorianDate({
             year: 2010, 
             month: 1, 
             day: 1,
             timezone: "Etc/UTC"
         });
+        test.expect(5);
         test.ok(gd !== null);
         
         test.equal(gd.getDayOfWeek(), 5); // Friday
@@ -1851,13 +1851,13 @@ module.exports.testgregoriandate = {
     },
     
     testGregDateTestGetWeekOfYearThisYear: function(test) {
-        test.expect(2);
         var gd = new GregorianDate({
             year: 2011, 
             month: 1, 
             day: 7,
             timezone: "Etc/UTC"
         });
+        test.expect(2);
         test.ok(gd !== null);
         
         test.equal(gd.getWeekOfYear(), 1);
@@ -1865,13 +1865,13 @@ module.exports.testgregoriandate = {
     },
     
     testGregDateTestGetWeekOfYearThisYear2: function(test) {
-        test.expect(2);
         var gd = new GregorianDate({
             year: 2011, 
             month: 1, 
             day: 25,
             timezone: "Etc/UTC"
         });
+        test.expect(2);
         test.ok(gd !== null);
         
         test.equal(gd.getWeekOfYear(), 4);
@@ -1879,13 +1879,13 @@ module.exports.testgregoriandate = {
     },
     
     testGregDateTestGetWeekOfYearThisYear3: function(test) {
-        test.expect(2);
         var gd = new GregorianDate({
             year: 2011, 
             month: 10, 
             day: 19,
             timezone: "Etc/UTC"
         });
+        test.expect(2);
         test.ok(gd !== null);
         
         test.equal(gd.getWeekOfYear(), 42);
@@ -1893,7 +1893,6 @@ module.exports.testgregoriandate = {
     },
     
     testGregDateTestGetWeekOfYearThisYearWithTime: function(test) {
-        test.expect(2);
         var gd = new GregorianDate({
             year: -2011, 
             month: 10, 
@@ -1904,6 +1903,7 @@ module.exports.testgregoriandate = {
                millisecond: 232,
             timezone: "Etc/UTC"
         });
+        test.expect(2);
         test.ok(gd !== null);
         
         test.equal(gd.getWeekOfYear(), 42);
@@ -1911,13 +1911,13 @@ module.exports.testgregoriandate = {
     },
     
     testGregDateTestGetWeekOfYearPreviousYear: function(test) {
-        test.expect(2);
         var gd = new GregorianDate({
             year: 2011, 
             month: 1, 
             day: 1,
             timezone: "Etc/UTC"
         });
+        test.expect(2);
         test.ok(gd !== null);
         
         test.equal(gd.getWeekOfYear(), 52);
@@ -1925,13 +1925,13 @@ module.exports.testgregoriandate = {
     },
     
     testGregDateTestGetWeekOfYearLastWeekLeap: function(test) {
-        test.expect(2);
         var gd = new GregorianDate({
             year: 2009, 
             month: 12, 
             day: 31,
             timezone: "Etc/UTC"
         });
+        test.expect(2);
         test.ok(gd !== null);
         
         test.equal(gd.getWeekOfYear(), 53);
@@ -1939,13 +1939,13 @@ module.exports.testgregoriandate = {
     },
     
     testGregDateTestGetWeekOfYearLastWeekRegular1: function(test) {
-        test.expect(2);
         var gd = new GregorianDate({
             year: 2010, 
             month: 12, 
             day: 31,
             timezone: "Etc/UTC"
         });
+        test.expect(2);
         test.ok(gd !== null);
         
         test.equal(gd.getWeekOfYear(), 52);
@@ -1953,13 +1953,13 @@ module.exports.testgregoriandate = {
     },
     
     testGregDateTestGetWeekOfYearLastWeekRegular2: function(test) {
-        test.expect(2);
         var gd = new GregorianDate({
             year: 2008, 
             month: 12, 
             day: 31,
             timezone: "Etc/UTC"
         });
+        test.expect(2);
         test.ok(gd !== null);
         
         test.equal(gd.getWeekOfYear(), 1);
@@ -1967,13 +1967,13 @@ module.exports.testgregoriandate = {
     },
     
     testGregDateTestGetWeekOfYearLastWeekRegular3: function(test) {
-        test.expect(2);
         var gd = new GregorianDate({
             year: 2007, 
             month: 12, 
             day: 31,
             timezone: "Etc/UTC"
         });
+        test.expect(2);
         test.ok(gd !== null);
         
         test.equal(gd.getWeekOfYear(), 1);
@@ -1981,13 +1981,13 @@ module.exports.testgregoriandate = {
     },
     
     testGregDateTestGetWeekOfYearLastWeekRegular4: function(test) {
-        test.expect(2);
         var gd = new GregorianDate({
             year: 2006, 
             month: 12, 
             day: 31,
             timezone: "Etc/UTC"
         });
+        test.expect(2);
         test.ok(gd !== null);
         
         test.equal(gd.getWeekOfYear(), 1);
@@ -1995,13 +1995,13 @@ module.exports.testgregoriandate = {
     },
     
     testGregDateTestGetWeekOfYearLastWeekRegular5: function(test) {
-        test.expect(2);
         var gd = new GregorianDate({
             year: 2005, 
             month: 12, 
             day: 31,
             timezone: "Etc/UTC"
         });
+        test.expect(2);
         test.ok(gd !== null);
         
         test.equal(gd.getWeekOfYear(), 52);
@@ -2009,13 +2009,13 @@ module.exports.testgregoriandate = {
     },
     
     testGregDateTestGetWeekOfYearLastWeekRegular6: function(test) {
-        test.expect(2);
         var gd = new GregorianDate({
             year: 2011, 
             month: 12, 
             day: 31,
             timezone: "Etc/UTC"
         });
+        test.expect(2);
         test.ok(gd !== null);
         
         test.equal(gd.getWeekOfYear(), 52);
@@ -2023,13 +2023,13 @@ module.exports.testgregoriandate = {
     },
     
     testGregDateGetDayOfYearFirstDay: function(test) {
-        test.expect(2);
         var gd = new GregorianDate({
             year: 2011, 
             month: 1, 
             day: 1,
             timezone: "Etc/UTC"
         });
+        test.expect(2);
         test.ok(gd !== null);
         
         test.equal(gd.getDayOfYear(), 1);
@@ -2037,13 +2037,13 @@ module.exports.testgregoriandate = {
     },
     
     testGregDateGetDayOfYearPaddysDay: function(test) {
-        test.expect(2);
         var gd = new GregorianDate({
             year: 2011, 
             month: 3, 
             day: 17,
             timezone: "Etc/UTC"
         });
+        test.expect(2);
         test.ok(gd !== null);
         
         test.equal(gd.getDayOfYear(), 76);
@@ -2051,13 +2051,13 @@ module.exports.testgregoriandate = {
     },
     
     testGregDateGetDayOfYearPaddysDayLeapYear: function(test) {
-        test.expect(2);
         var gd = new GregorianDate({
             year: 2008, 
             month: 3, 
             day: 17,
             timezone: "Etc/UTC"
         });
+        test.expect(2);
         test.ok(gd !== null);
         
         test.equal(gd.getDayOfYear(), 77);
@@ -2065,13 +2065,13 @@ module.exports.testgregoriandate = {
     },
     
     testGregDateGetDayOfYearLastDay: function(test) {
-        test.expect(2);
         var gd = new GregorianDate({
             year: 2011, 
             month: 12, 
             day: 31,
             timezone: "Etc/UTC"
         });
+        test.expect(2);
         test.ok(gd !== null);
         
         test.equal(gd.getDayOfYear(), 365);
@@ -2079,13 +2079,13 @@ module.exports.testgregoriandate = {
     },
     
     testGregDateGetDayOfYearLastDayLeapYear: function(test) {
-        test.expect(2);
         var gd = new GregorianDate({
             year: 2008, 
             month: 12, 
             day: 31,
             timezone: "Etc/UTC"
         });
+        test.expect(2);
         test.ok(gd !== null);
         
         test.equal(gd.getDayOfYear(), 366);
@@ -2093,13 +2093,13 @@ module.exports.testgregoriandate = {
     },
     
     testGregDateGetWeekOfMonth0: function(test) {
-        test.expect(2);
         var gd = new GregorianDate({
             year: 2011, 
             month: 10, 
             day: 1,
             timezone: "Etc/UTC"
         });
+        test.expect(2);
         test.ok(gd !== null);
         
         test.equal(gd.getWeekOfMonth("en-US"), 0);
@@ -2107,13 +2107,13 @@ module.exports.testgregoriandate = {
     },
     
     testGregDateGetWeekOfMonth1: function(test) {
-        test.expect(2);
         var gd = new GregorianDate({
             year: 2011, 
             month: 10, 
             day: 2,
             timezone: "Etc/UTC"
         });
+        test.expect(2);
         test.ok(gd !== null);
         
         test.equal(gd.getWeekOfMonth("en-US"), 1);
@@ -2121,13 +2121,13 @@ module.exports.testgregoriandate = {
     },
     
     testGregDateGetWeekOfMonth2: function(test) {
-        test.expect(2);
         var gd = new GregorianDate({
             year: 2011, 
             month: 10, 
             day: 11,
             timezone: "Etc/UTC"
         });
+        test.expect(2);
         test.ok(gd !== null);
         
         test.equal(gd.getWeekOfMonth("en-US"), 2);
@@ -2135,13 +2135,13 @@ module.exports.testgregoriandate = {
     },
     
     testGregDateGetWeekOfMonth3: function(test) {
-        test.expect(2);
         var gd = new GregorianDate({
             year: 2011, 
             month: 10, 
             day: 20,
             timezone: "Etc/UTC"
         });
+        test.expect(2);
         test.ok(gd !== null);
         
         test.equal(gd.getWeekOfMonth("en-US"), 3);
@@ -2149,13 +2149,13 @@ module.exports.testgregoriandate = {
     },
     
     testGregDateGetWeekOfMonth4: function(test) {
-        test.expect(2);
         var gd = new GregorianDate({
             year: 2011, 
             month: 10, 
             day: 29,
             timezone: "Etc/UTC"
         });
+        test.expect(2);
         test.ok(gd !== null);
         
         test.equal(gd.getWeekOfMonth("en-US"), 4);
@@ -2163,13 +2163,13 @@ module.exports.testgregoriandate = {
     },
     
     testGregDateGetWeekOfMonth5: function(test) {
-        test.expect(2);
         var gd = new GregorianDate({
             year: 2011, 
             month: 10, 
             day: 30,
             timezone: "Etc/UTC"
         });
+        test.expect(2);
         test.ok(gd !== null);
         
         test.equal(gd.getWeekOfMonth("en-US"), 5);
@@ -2177,13 +2177,13 @@ module.exports.testgregoriandate = {
     },
     
     testGregDateGetWeekOfMonth6: function(test) {
-        test.expect(2);
         var gd = new GregorianDate({
             year: 2011, 
             month: 9, 
             day: 1,
             timezone: "Etc/UTC"
         });
+        test.expect(2);
         test.ok(gd !== null);
         
         test.equal(gd.getWeekOfMonth("en-US"), 0);
@@ -2191,13 +2191,13 @@ module.exports.testgregoriandate = {
     },
     
     testGregDateGetWeekOfMonth7: function(test) {
-        test.expect(2);
         var gd = new GregorianDate({
             year: 2011, 
             month: 8, 
             day: 1,
             timezone: "Etc/UTC"
         });
+        test.expect(2);
         test.ok(gd !== null);
         
         test.equal(gd.getWeekOfMonth("en-US"), 1);
@@ -2205,13 +2205,13 @@ module.exports.testgregoriandate = {
     },
     
     testGregDateGetWeekOfMonth8: function(test) {
-        test.expect(2);
         var gd = new GregorianDate({
             year: 2011, 
             month: 7, 
             day: 1,
             timezone: "Etc/UTC"
         });
+        test.expect(2);
         test.ok(gd !== null);
         
         test.equal(gd.getWeekOfMonth("en-US"), 0);
@@ -2219,13 +2219,13 @@ module.exports.testgregoriandate = {
     },
     
     testGregDateGetWeekOfMonth9: function(test) {
-        test.expect(2);
         var gd = new GregorianDate({
             year: 2011, 
             month: 6, 
             day: 1,
             timezone: "Etc/UTC"
         });
+        test.expect(2);
         test.ok(gd !== null);
         
         test.equal(gd.getWeekOfMonth("en-US"), 1);
@@ -2233,13 +2233,13 @@ module.exports.testgregoriandate = {
     },
     
     testGregDateGetWeekOfMonthUS: function(test) {
-        test.expect(2);
         var gd = new GregorianDate({
             year: 2011, 
             month: 5, 
             day: 1,
             timezone: "Etc/UTC"
         });
+        test.expect(2);
         test.ok(gd !== null);
         
         test.equal(gd.getWeekOfMonth("en-US"), 1);
@@ -2247,13 +2247,13 @@ module.exports.testgregoriandate = {
     },
     
     testGregDateGetWeekOfMonthDE: function(test) {
-        test.expect(2);
         var gd = new GregorianDate({
             year: 2011, 
             month: 5, 
             day: 1,
             timezone: "Etc/UTC"
         });
+        test.expect(2);
         test.ok(gd !== null);
         
         // weeks in Germany start on Monday, and May 1st is a Sunday, so it is at the 
@@ -2263,13 +2263,13 @@ module.exports.testgregoriandate = {
     },
     
     testGregDateGetEraCE: function(test) {
-        test.expect(2);
         var gd = new GregorianDate({
             year: 2011, 
             month: 5, 
             day: 1,
             timezone: "Etc/UTC"
         });
+        test.expect(2);
         test.ok(gd !== null);
         
         test.equal(gd.getEra(), 1);
@@ -2277,13 +2277,13 @@ module.exports.testgregoriandate = {
     },
     
     testGregDateGetEraBCE: function(test) {
-        test.expect(2);
         var gd = new GregorianDate({
             year: -46, 
             month: 5, 
             day: 1,
             timezone: "Etc/UTC"
         });
+        test.expect(2);
         test.ok(gd !== null);
         
         test.equal(gd.getEra(), -1);
@@ -2291,13 +2291,13 @@ module.exports.testgregoriandate = {
     },
     
     testGregDateGetEraCEYear1: function(test) {
-        test.expect(2);
         var gd = new GregorianDate({
             year: 1, 
             month: 1, 
             day: 1,
             timezone: "Etc/UTC"
         });
+        test.expect(2);
         test.ok(gd !== null);
         
         test.equal(gd.getEra(), 1);
@@ -2305,13 +2305,13 @@ module.exports.testgregoriandate = {
     },
     
     testGregDateGetEraCEYear0: function(test) {
-        test.expect(2);
         var gd = new GregorianDate({
             year: 0, 
             month: 12, 
             day: 31,
             timezone: "Etc/UTC"
         });
+        test.expect(2);
         test.ok(gd !== null);
         
         test.equal(gd.getEra(), -1);
@@ -2319,11 +2319,11 @@ module.exports.testgregoriandate = {
     },
     
     testGregDateJan1Midnight: function(test) {
-        test.expect(8);
         var gd = new GregorianDate({
             julianday: 2455197.5,
             timezone: "Etc/UTC"
         });
+        test.expect(8);
         test.ok(gd !== null);
         
         test.equal(gd.year, 2010);
@@ -2337,13 +2337,13 @@ module.exports.testgregoriandate = {
     },
     
     testGregDateGetRataDie: function(test) {
-        test.expect(2);
         var gd = new GregorianDate({
             year: 2011, 
             month: 3, 
             day: 8,
             timezone: "Etc/UTC"
         });
+        test.expect(2);
         test.ok(gd !== null);
         
         test.equal(gd.getRataDie(), 734204);
@@ -2351,13 +2351,13 @@ module.exports.testgregoriandate = {
     },
     
     testGregDateGetTimeZone: function(test) {
-        test.expect(2);
         var gd = new GregorianDate({
             year: 2011, 
             month: 3, 
             day: 8,
             timezone: "America/Los_Angeles"
         });
+        test.expect(2);
         test.ok(gd !== null);
         
         test.equal(gd.getTimeZone(), "America/Los_Angeles");
@@ -2365,12 +2365,12 @@ module.exports.testgregoriandate = {
     },
     
     testGregDateGetTimeZoneDefault: function(test) {
-        test.expect(2);
         var gd = new GregorianDate({
             year: 2011, 
             month: 3, 
             day: 8
         });
+        test.expect(2);
         test.ok(gd !== null);
         
         test.equal(gd.getTimeZone(), "local");
@@ -2378,13 +2378,13 @@ module.exports.testgregoriandate = {
     },
     
     testGregDateGetTimeZoneByLocale: function(test) {
-        test.expect(2);
         var gd = new GregorianDate({
             year: 2011, 
             month: 3, 
             day: 8,
             locale: "de-DE"
         });
+        test.expect(2);
         test.ok(gd !== null);
         
         test.equal(gd.getTimeZone(), "Europe/Berlin");
@@ -2392,13 +2392,13 @@ module.exports.testgregoriandate = {
     },
     
     testGregDateGetTimeZoneByLocaleBogus: function(test) {
-        test.expect(2);
         var gd = new GregorianDate({
             year: 2011, 
             month: 3, 
             day: 8,
             locale: "zz-ZZ"
         });
+        test.expect(2);
         test.ok(gd !== null);
         
         test.equal(gd.getTimeZone(), "Etc/UTC");
@@ -2406,11 +2406,11 @@ module.exports.testgregoriandate = {
     },
     
     testGregDateCurrentTimeWithTimeZone: function(test) {
-        test.expect(2);
         var gd = new GregorianDate({
             timezone: "America/Los_Angeles"
         });
         var d = new Date();
+        test.expect(2);
         test.ok(gd !== null);
         
         test.roughlyEqual(30, gd.getTime(), d.getTime());
@@ -2418,13 +2418,13 @@ module.exports.testgregoriandate = {
     },
     
     testGregDateSetTimeZone: function(test) {
-        test.expect(3);
         var gd = new GregorianDate({
             year: 2011, 
             month: 3, 
             day: 8,
             timezone: "America/Los_Angeles"
         });
+        test.expect(3);
         test.ok(gd !== null);
         
         test.equal(gd.getTimeZone(), "America/Los_Angeles");
@@ -2436,13 +2436,13 @@ module.exports.testgregoriandate = {
     },
     
     testGregDateSetTimeZoneNotString: function(test) {
-        test.expect(3);
         var gd = new GregorianDate({
             year: 2011, 
             month: 3, 
             day: 8,
             timezone: "America/Los_Angeles"
         });
+        test.expect(3);
         test.ok(gd !== null);
         
         test.equal(gd.getTimeZone(), "America/Los_Angeles");
@@ -2454,13 +2454,13 @@ module.exports.testgregoriandate = {
     },
     
     testGregDateSetTimeZoneUndefined: function(test) {
-        test.expect(3);
         var gd = new GregorianDate({
             year: 2011, 
             month: 3, 
             day: 8,
             timezone: "America/Los_Angeles"
         });
+        test.expect(3);
         test.ok(gd !== null);
         
         test.equal(gd.getTimeZone(), "America/Los_Angeles");
@@ -2473,13 +2473,13 @@ module.exports.testgregoriandate = {
     },
     
     testGregDateSetTimeZoneEmpty: function(test) {
-        test.expect(3);
         var gd = new GregorianDate({
             year: 2011, 
             month: 3, 
             day: 8,
             timezone: "America/Los_Angeles"
         });
+        test.expect(3);
         test.ok(gd !== null);
         
         test.equal(gd.getTimeZone(), "America/Los_Angeles");
@@ -2492,10 +2492,10 @@ module.exports.testgregoriandate = {
     },
     
     testGregDateInitWithUnixTimeRightTimeZone: function(test) {
-        test.expect(2);
         var gd = new GregorianDate({
             unixtime: 0
         });
+        test.expect(2);
         test.ok(gd !== null);
         
         test.equal(gd.getTimeZone(), "local");
@@ -2503,10 +2503,10 @@ module.exports.testgregoriandate = {
     },
     
     testGregDateInitWithJDRightTimeZone: function(test) {
-        test.expect(2);
         var gd = new GregorianDate({
             julianday: 0
         });
+        test.expect(2);
         test.ok(gd !== null);
         
         test.equal(gd.getTimeZone(), "local");
@@ -2514,10 +2514,10 @@ module.exports.testgregoriandate = {
     },
     
     testGregDateInitWithRDRightTimeZone: function(test) {
-        test.expect(2);
         var gd = new GregorianDate({
             rd: 0
         });
+        test.expect(2);
         test.ok(gd !== null);
         
         test.equal(gd.getTimeZone(), "local");
@@ -2526,7 +2526,6 @@ module.exports.testgregoriandate = {
     
     // for GF-33596
     testGregDateGetTimeWithUnixTime: function(test) {
-        test.expect(2);
         var d = new Date(2011, 2, 8, 0, 0, 0, 0);
         var gd = new GregorianDate({
             year: 2011,
@@ -2537,6 +2536,7 @@ module.exports.testgregoriandate = {
             second: 0,
             millisecond: 0
         });
+        test.expect(2);
         test.ok(gd !== null);
         
         test.equal(gd.getTime(), d.getTime());
@@ -2544,12 +2544,12 @@ module.exports.testgregoriandate = {
     },
     
     testGregDateGetTimeWithUTC: function(test) {
-        test.expect(2);
         var utc = Date.UTC(2013, 10, 1);
         var d = new Date(utc);
         var gd = new GregorianDate({
             unixtime: utc
         });
+        test.expect(2);
         test.ok(gd !== null);
         
         test.equal(gd.getTime(), d.getTime());
@@ -2557,10 +2557,10 @@ module.exports.testgregoriandate = {
     },
     
     testGregDateGetTimeWithDefaultTime: function(test) {
-        test.expect(2);
         var d = new Date();
         var gd = new GregorianDate();
         
+        test.expect(2);
         test.ok(gd !== null);
         
         test.roughlyEqual(100, gd.getTime(), d.getTime());
@@ -2568,13 +2568,13 @@ module.exports.testgregoriandate = {
     },
     
     testGregDateRoundTripConstruction: function(test) {
-        test.expect(8);
         var gd = new GregorianDate({
             year: 2014,
             month: 11,
             day: 3,
             timezone: "local"
         });
+        test.expect(8);
         test.ok(gd !== null);
         // console.log("gd is " + JSON.stringify(gd, undefined, 4));
         
@@ -2596,13 +2596,13 @@ module.exports.testgregoriandate = {
     },
     
     testGregDateRoundTripConstruction2: function(test) {
-        test.expect(8);
         var gd = new GregorianDate({
             year: 2014,
             month: 11,
             day: 3,
             timezone: "America/Los_Angeles"
         });
+        test.expect(8);
         test.ok(gd !== null);
         // console.log("gd is " + JSON.stringify(gd, undefined, 4));
         

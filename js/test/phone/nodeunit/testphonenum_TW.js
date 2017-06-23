@@ -31,8 +31,8 @@ module.exports.phonenum_TW = {
     },
 
     testParseTWFull: function(test) {
-        test.expect(2);
         var parsed = new PhoneNumber("(039)606-5378", {locale: "zh-TW"});
+        test.expect(2);
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = new PhoneNumber({
@@ -46,8 +46,8 @@ module.exports.phonenum_TW = {
     },
     
     testParseTWLocalNumber: function(test) {
-        test.expect(2);
         var parsed = new PhoneNumber("345-6789", {locale: "zh-TW"});
+        test.expect(2);
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = new PhoneNumber({
@@ -59,8 +59,8 @@ module.exports.phonenum_TW = {
     },
     
     testParseTWFullLongAreaCode: function(test) {
-        test.expect(2);
         var parsed = new PhoneNumber("0458-345-6789", {locale: "zh-TW"});
+        test.expect(2);
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = new PhoneNumber({
@@ -74,8 +74,8 @@ module.exports.phonenum_TW = {
     },
     
     testParseTWIgnoreFormatting: function(test) {
-        test.expect(2);
         var parsed = new PhoneNumber("039-1234-5678", {locale: "zh-TW"});
+        test.expect(2);
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = new PhoneNumber({
@@ -89,8 +89,8 @@ module.exports.phonenum_TW = {
     },
     
     testParseTWIgnoreCrap: function(test) {
-        test.expect(2);
         var parsed = new PhoneNumber("$039@1234&5678-", {locale: "zh-TW"});
+        test.expect(2);
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = new PhoneNumber({
@@ -104,8 +104,8 @@ module.exports.phonenum_TW = {
     },
     
     testParseTWNoAreaCode: function(test) {
-        test.expect(2);
         var parsed = new PhoneNumber("82345678", {locale: "zh-TW"});
+        test.expect(2);
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = new PhoneNumber({
@@ -117,9 +117,9 @@ module.exports.phonenum_TW = {
     },
     
     testParseTWInvalidLocalNumber: function(test) {
-        test.expect(2);
         // local number is too long
         var parsed = new PhoneNumber("23456788889123", {locale: "zh-TW"});
+        test.expect(2);
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = new PhoneNumber({
@@ -132,8 +132,8 @@ module.exports.phonenum_TW = {
     },
     
     testParseTWServiceCode: function(test) {
-        test.expect(2);
         var parsed = new PhoneNumber("0800-011-765", {locale: "zh-TW"});
+        test.expect(2);
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = new PhoneNumber({
@@ -147,8 +147,8 @@ module.exports.phonenum_TW = {
     },
     
     testParseTWMobileNumber: function(test) {
-        test.expect(2);
         var parsed = new PhoneNumber("0988-123-456", {locale: "zh-TW"});
+        test.expect(2);
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = new PhoneNumber({
@@ -162,8 +162,8 @@ module.exports.phonenum_TW = {
     },
     
     testParseTWPlusIDDToUS: function(test) {
-        test.expect(2);
         var parsed = new PhoneNumber("+12028675309", {locale: "zh-TW"});
+        test.expect(2);
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = new PhoneNumber({
@@ -178,8 +178,8 @@ module.exports.phonenum_TW = {
     },
     
     testParseTWZerosIDDToUS: function(test) {
-        test.expect(2);
         var parsed = new PhoneNumber("00212028675309", {locale: "zh-TW"});
+        test.expect(2);
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = new PhoneNumber({
@@ -194,10 +194,10 @@ module.exports.phonenum_TW = {
     },
     
     testParseTWLongAreaCodeNoTrunk: function(test) {
-        test.expect(2);
         // this number uses an area code to start it, but without the trunk, we should
         // not recognize it as an area code
         var parsed = new PhoneNumber("3912345678", {locale: "zh-TW"});
+        test.expect(2);
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = new PhoneNumber({
@@ -209,8 +209,8 @@ module.exports.phonenum_TW = {
     },
     
     testParseTWEmergencyNumber: function(test) {
-        test.expect(2);
         var parsed = new PhoneNumber("110", {locale: "zh-TW"});
+        test.expect(2);
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = new PhoneNumber({
@@ -221,8 +221,8 @@ module.exports.phonenum_TW = {
         test.done();
     },
     testParseTWEmergencyNumberPlus: function(test) {
-        test.expect(2);
         var parsed = new PhoneNumber("117171", {locale: "zh-TW"});
+        test.expect(2);
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = new PhoneNumber({
@@ -235,8 +235,8 @@ module.exports.phonenum_TW = {
     },
     
     testParseTWPartial1: function(test) {
-        test.expect(2);
         var parsed = new PhoneNumber("0", {locale: "zh-TW"});
+        test.expect(2);
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = new PhoneNumber({
@@ -248,8 +248,8 @@ module.exports.phonenum_TW = {
     },
     
     testParseTWPartial2: function(test) {
-        test.expect(2);
         var parsed = new PhoneNumber("03", {locale: "zh-TW"});
+        test.expect(2);
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = new PhoneNumber({
@@ -261,8 +261,8 @@ module.exports.phonenum_TW = {
         test.done();
     },
     testParseTWPartial3: function(test) {
-        test.expect(2);
         var parsed = new PhoneNumber("039", {locale: "zh-TW"});
+        test.expect(2);
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = new PhoneNumber({
@@ -274,8 +274,8 @@ module.exports.phonenum_TW = {
         test.done();
     },
     testParseTWPartial4: function(test) {
-        test.expect(2);
         var parsed = new PhoneNumber("0391", {locale: "zh-TW"});
+        test.expect(2);
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = new PhoneNumber({
@@ -288,8 +288,8 @@ module.exports.phonenum_TW = {
         test.done();
     },
     testParseTWPartial5: function(test) {
-        test.expect(2);
         var parsed = new PhoneNumber("03912", {locale: "zh-TW"});
+        test.expect(2);
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = new PhoneNumber({
@@ -302,8 +302,8 @@ module.exports.phonenum_TW = {
         test.done();
     },
     testParseTWPartial6: function(test) {
-        test.expect(2);
         var parsed = new PhoneNumber("039123", {locale: "zh-TW"});
+        test.expect(2);
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = new PhoneNumber({
@@ -316,8 +316,8 @@ module.exports.phonenum_TW = {
         test.done();
     },
     testParseTWPartial7: function(test) {
-        test.expect(2);
         var parsed = new PhoneNumber("0391234", {locale: "zh-TW"});
+        test.expect(2);
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = new PhoneNumber({
@@ -330,8 +330,8 @@ module.exports.phonenum_TW = {
         test.done();
     },
     testParseTWPartial8: function(test) {
-        test.expect(2);
         var parsed = new PhoneNumber("03912345", {locale: "zh-TW"});
+        test.expect(2);
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = new PhoneNumber({
@@ -344,8 +344,8 @@ module.exports.phonenum_TW = {
         test.done();
     },
     testParseTWPartial9: function(test) {
-        test.expect(2);
         var parsed = new PhoneNumber("039123456", {locale: "zh-TW"});
+        test.expect(2);
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = new PhoneNumber({
@@ -358,8 +358,8 @@ module.exports.phonenum_TW = {
         test.done();
     },
     testParseTWPartial10: function(test) {
-        test.expect(2);
         var parsed = new PhoneNumber("0391234567", {locale: "zh-TW"});
+        test.expect(2);
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = new PhoneNumber({
@@ -373,8 +373,8 @@ module.exports.phonenum_TW = {
     },
     
     testParseTWPartial11: function(test) {
-        test.expect(2);
         var parsed = new PhoneNumber("03912345678", {locale: "zh-TW"});
+        test.expect(2);
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = new PhoneNumber({
@@ -388,8 +388,8 @@ module.exports.phonenum_TW = {
     },
     
     testParseTWPartial12: function(test) {
-        test.expect(2);
         var parsed = new PhoneNumber("039123456789", {locale: "zh-TW"});
+        test.expect(2);
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = new PhoneNumber({
@@ -403,8 +403,8 @@ module.exports.phonenum_TW = {
     },
     
     testParseTWWithUSMCC: function(test) {
-        test.expect(2);
         var parsed = new PhoneNumber("6153222313", {locale: "zh-TW", mcc: "316"});
+        test.expect(2);
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = new PhoneNumber({
@@ -417,8 +417,8 @@ module.exports.phonenum_TW = {
     },
     
     testParseTWWithFRMCC: function(test) {
-        test.expect(2);
         var parsed = new PhoneNumber("6153222313", {locale: "zh-TW", mcc: "208"});
+        test.expect(2);
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = new PhoneNumber({
@@ -430,8 +430,8 @@ module.exports.phonenum_TW = {
     },
     
     testParseTWWithMXMCC: function(test) {
-        test.expect(2);
         var parsed = new PhoneNumber("6153222313", {locale: "zh-TW", mcc: "334"});
+        test.expect(2);
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = new PhoneNumber({
@@ -444,8 +444,8 @@ module.exports.phonenum_TW = {
     },
     
     testParseTWWithDEMCC: function(test) {
-        test.expect(2);
         var parsed = new PhoneNumber("6153222313", {locale: "zh-TW", mcc: "262"});
+        test.expect(2);
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = new PhoneNumber({
@@ -457,8 +457,8 @@ module.exports.phonenum_TW = {
     },
     
     testParseTWWithKRMCC: function(test) {
-        test.expect(2);
         var parsed = new PhoneNumber("6153222313", {locale: "zh-TW", mcc: "450"});
+        test.expect(2);
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = new PhoneNumber({
@@ -471,8 +471,8 @@ module.exports.phonenum_TW = {
     },
     
     testParseTWWithJPMCC: function(test) {
-        test.expect(2);
         var parsed = new PhoneNumber("6153222313", {locale: "zh-TW", mcc: "440"});
+        test.expect(2);
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = new PhoneNumber({
@@ -484,8 +484,8 @@ module.exports.phonenum_TW = {
     },
     
     testParseTWWithTWMCC: function(test) {
-        test.expect(2);
         var parsed = new PhoneNumber("6153222313", {locale: "zh-TW", mcc: "466"});
+        test.expect(2);
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = new PhoneNumber({

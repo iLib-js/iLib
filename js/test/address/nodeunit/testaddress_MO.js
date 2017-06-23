@@ -34,9 +34,9 @@ module.exports.testaddress_MO = {
     },
 
     testParseAddressMOLatinNormal: function(test) {
-        test.expect(6);
         var parsedAddress = new Address("Rua Cidade de Lisboa N.o 130\n Lisboa Gardens, Tower B3\n 14th Floor D,\n Macau 999078\n Macau", {locale: 'pt-MO'});
         
+        test.expect(6);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Rua Cidade de Lisboa N.o 130, Lisboa Gardens, Tower B3, 14th Floor D");
         test.equal(parsedAddress.region, "Macau");
@@ -47,9 +47,9 @@ module.exports.testaddress_MO = {
     },
     
     testParseAddressMOLatinNoZip: function(test) {
-        test.expect(6);
         var parsedAddress = new Address("Rua Cidade de Lisboa N.o 130\n Lisboa Gardens, Tower B3\n 14th Floor D,\n Macau \n Macau", {locale: 'pt-MO'});
         
+        test.expect(6);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Rua Cidade de Lisboa N.o 130, Lisboa Gardens, Tower B3, 14th Floor D");
         test.equal(parsedAddress.region, "Macau");
@@ -60,9 +60,9 @@ module.exports.testaddress_MO = {
     },
     
     testParseAddressMOLatinNoCountry: function(test) {
-        test.expect(6);
         var parsedAddress = new Address("Rua Cidade de Lisboa N.o 130\n Lisboa Gardens, Tower B3\n 14th Floor D,\n Macau 999078", {locale: 'pt-MO'});
     
+        test.expect(6);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Rua Cidade de Lisboa N.o 130, Lisboa Gardens, Tower B3, 14th Floor D");
         test.equal(parsedAddress.region, "Macau");
@@ -73,9 +73,9 @@ module.exports.testaddress_MO = {
     },
     
     testParseAddressMOAsianNormal: function(test) {
-        test.expect(5);
         var parsedAddress = new Address("澳門999078商業大馬路251A-301號\n這是一個友善博祚20樓\n行政中心", {locale: 'zh-MO'});
         
+        test.expect(5);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "商業大馬路251A-301號這是一個友善博祚20樓行政中心");
         test.equal(parsedAddress.country, "澳門");
@@ -85,9 +85,9 @@ module.exports.testaddress_MO = {
     },
     
     testParseAddressMOAsianNoZip: function(test) {
-        test.expect(5);
         var parsedAddress = new Address("澳門商業大馬路251A-301號\n這是一個友善博祚20樓\n行政中心", {locale: 'zh-MO'});
         
+        test.expect(5);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "商業大馬路251A-301號這是一個友善博祚20樓行政中心");
         test.equal(parsedAddress.country, "澳門");
@@ -97,9 +97,9 @@ module.exports.testaddress_MO = {
     },
     
     testParseAddressMOAsianNoCountry: function(test) {
-        test.expect(5);
         var parsedAddress = new Address("999078商業大馬路251A-301號\n這是一個友善博祚20樓\n行政中心", {locale: 'zh-MO'});
         
+        test.expect(5);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "商業大馬路251A-301號這是一個友善博祚20樓行政中心");
         test.ok(typeof(parsedAddress.country) === "undefined");
@@ -109,9 +109,9 @@ module.exports.testaddress_MO = {
     },
     
     testParseAddressMOManyLines: function(test) {
-        test.expect(6);
         var parsedAddress = new Address("Rua Cidade de Lisboa N.o 130\n\n Lisboa Gardens, Tower B3\n\n 14th Floor D,\n\n\n Macau 999078\n\n Macau", {locale: 'pt-MO'});
         
+        test.expect(6);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Rua Cidade de Lisboa N.o 130, Lisboa Gardens, Tower B3, 14th Floor D");
         test.equal(parsedAddress.region, "Macau");
@@ -122,9 +122,9 @@ module.exports.testaddress_MO = {
     },
     
     testParseAddressMOOneLine: function(test) {
-        test.expect(6);
         var parsedAddress = new Address("Rua Cidade de Lisboa N.o 130 Lisboa Gardens, Tower B3 14th Floor D, Macau 999078 Macau", {locale: 'pt-MO'});
         
+        test.expect(6);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Rua Cidade de Lisboa N.o 130 Lisboa Gardens, Tower B3 14th Floor D");
         test.equal(parsedAddress.region, "Macau");
@@ -135,9 +135,9 @@ module.exports.testaddress_MO = {
     },
     
     testParseAddressMOSuperfluousWhitespace: function(test) {
-        test.expect(6);
         var parsedAddress = new Address("\t\t\tRua Cidade de Lisboa N.o 130\r\t Lisboa Gardens,\r\t   \tTower B3 14th Floor D,\t\t\n\t Macau \r\t999078 \n\t\t\r\rMacau\t\n\n\n", {locale: 'pt-MO'});
         
+        test.expect(6);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Rua Cidade de Lisboa N.o 130 Lisboa Gardens, Tower B3 14th Floor D");
         test.equal(parsedAddress.region, "Macau");
@@ -148,9 +148,9 @@ module.exports.testaddress_MO = {
     },
     
     testParseAddressMONoDelimiters: function(test) {
-        test.expect(6);
         var parsedAddress = new Address("Rua Cidade de Lisboa N.o 130 Lisboa Gardens Tower B3 14th Floor D Macau 999078 Macau", {locale: 'pt-MO'});
         
+        test.expect(6);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Rua Cidade de Lisboa N.o 130 Lisboa Gardens Tower B3 14th Floor D");
         test.equal(parsedAddress.region, "Macau");
@@ -161,11 +161,11 @@ module.exports.testaddress_MO = {
     },
     
     testParseAddressMOFromUS: function(test) {
-        test.expect(6);
     
         var parsedAddress = new Address("Rua Cidade de Lisboa N.o 130\n Lisboa Gardens, Tower B3\n 14th Floor D,\n Macau 999078\n Macau", {locale: 'en-US'});
         // the country name is in English because this address is for a contact in a US database
         
+        test.expect(6);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Rua Cidade de Lisboa N.o 130, Lisboa Gardens, Tower B3, 14th Floor D");
         test.equal(parsedAddress.region, "Macau");
@@ -176,7 +176,6 @@ module.exports.testaddress_MO = {
     },
     
     testFormatAddressMOLatin: function(test) {
-        test.expect(1);
         var parsedAddress = new Address({
             streetAddress: "Rua Cidade de Lisboa N.o 130, Lisboa Gardens, Tower B3, 14th Floor D",
             region: "Macau",
@@ -188,12 +187,12 @@ module.exports.testaddress_MO = {
         
         var expected = "Rua Cidade de Lisboa N.o 130, Lisboa Gardens, Tower B3, 14th Floor D\nMacau 999078\nMacau";
         var formatter = new AddressFmt({locale: 'pt-MO'});
+        test.expect(1);
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     },
     
     testFormatAddressMOFromUS: function(test) {
-        test.expect(1);
         var parsedAddress = new Address({
             streetAddress: "Rua Cidade de Lisboa N.o 130, Lisboa Gardens, Tower B3, 14th Floor D",
             region: "Macau",
@@ -205,6 +204,7 @@ module.exports.testaddress_MO = {
         
         var expected = "Rua Cidade de Lisboa N.o 130, Lisboa Gardens, Tower B3, 14th Floor D\nMacau 999078\nMacau";
         var formatter = new AddressFmt({locale: 'en-US'});
+        test.expect(1);
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     }

@@ -34,7 +34,6 @@ module.exports.testcollation_zh_Hant = {
     },
 
     testJSCollatorQuatHanzi_zh_Hant_stroke: function(test) {
-        test.expect(48);
         var col = new Collator({
             locale: "zh-Hant-TW",
             useNative: false,
@@ -44,6 +43,7 @@ module.exports.testcollation_zh_Hant = {
     
         // Hanzi are all primary differences from each other
         
+        test.expect(48);
         test.ok(typeof(col) !== "undefined");
         
         test.ok("乁 < 丄", col.compare("乁", "丄") < 0);
@@ -97,7 +97,6 @@ module.exports.testcollation_zh_Hant = {
     },
     
     testJSCollatorTerHanzi_zh_Hant_stroke: function(test) {
-        test.expect(48);
         var col = new Collator({
             locale: "zh-Hant-TW",
             useNative: false,
@@ -107,6 +106,7 @@ module.exports.testcollation_zh_Hant = {
     
         // Hanzi are all primary differences from each other
         
+        test.expect(48);
         test.ok(typeof(col) !== "undefined");
         test.ok("乁 < 丄", col.compare("乁", "丄") < 0);
         test.ok("丄 < 下", col.compare("丄", "下") < 0);
@@ -159,7 +159,6 @@ module.exports.testcollation_zh_Hant = {
     },
     
     testJSCollatorSecHanzi_zh_Hant_stroke: function(test) {
-        test.expect(48);
         var col = new Collator({
             locale: "zh-Hant-TW",
             useNative: false,
@@ -169,6 +168,7 @@ module.exports.testcollation_zh_Hant = {
     
         // Hanzi are all primary differences from each other
         
+        test.expect(48);
         test.ok(typeof(col) !== "undefined");
         test.ok("乁 < 丄", col.compare("乁", "丄") < 0);
         test.ok("丄 < 下", col.compare("丄", "下") < 0);
@@ -221,7 +221,6 @@ module.exports.testcollation_zh_Hant = {
     },
     
     testJSCollatorPriHanzi_zh_Hant_stroke: function(test) {
-        test.expect(48);
         var col = new Collator({
             locale: "zh-Hant-TW",
             useNative: false,
@@ -231,6 +230,7 @@ module.exports.testcollation_zh_Hant = {
     
         // Hanzi are all primary differences from each other
         
+        test.expect(48);
         test.ok(typeof(col) !== "undefined");
         test.ok("乁 < 丄", col.compare("乁", "丄") < 0);
         test.ok("丄 < 下", col.compare("丄", "下") < 0);
@@ -283,7 +283,6 @@ module.exports.testcollation_zh_Hant = {
     },
     
     testJSCollatorQuatHanziVariants_zh_Hant_stroke: function(test) {
-        test.expect(10);
         var col = new Collator({
             locale: "zh-Hant-TW",
             useNative: false,
@@ -291,6 +290,7 @@ module.exports.testcollation_zh_Hant = {
             usage: "search"
         });
     
+        test.expect(10);
         test.ok(typeof(col) !== "undefined");
         
         // extra variants at the tertiary level
@@ -307,7 +307,6 @@ module.exports.testcollation_zh_Hant = {
     },
     
     testJSCollatorTerHanziVariants_zh_Hant_stroke: function(test) {
-        test.expect(10);
         var col = new Collator({
             locale: "zh-Hant-TW",
             useNative: false,
@@ -315,6 +314,7 @@ module.exports.testcollation_zh_Hant = {
             usage: "search"
         });
     
+        test.expect(10);
         test.ok(typeof(col) !== "undefined");
         
         // extra variants at the tertiary level
@@ -331,7 +331,6 @@ module.exports.testcollation_zh_Hant = {
     },
     
     testJSCollatorSecHanziVariants_zh_Hant_stroke: function(test) {
-        test.expect(10);
         var col = new Collator({
             locale: "zh-Hant-TW",
             useNative: false,
@@ -339,6 +338,7 @@ module.exports.testcollation_zh_Hant = {
             usage: "search"
         });
     
+        test.expect(10);
         test.ok(typeof(col) !== "undefined");
         
         // extra variants at the tertiary level
@@ -355,7 +355,6 @@ module.exports.testcollation_zh_Hant = {
     },
     
     testJSCollatorPriHanziVariants_zh_Hant_stroke: function(test) {
-        test.expect(10);
         var col = new Collator({
             locale: "zh-Hant-TW",
             useNative: false,
@@ -363,6 +362,7 @@ module.exports.testcollation_zh_Hant = {
             usage: "search"
         });
     
+        test.expect(10);
         test.ok(typeof(col) !== "undefined");
         
         // extra variants at the tertiary level
@@ -379,7 +379,6 @@ module.exports.testcollation_zh_Hant = {
     },
     
     testJSCollatorPinyinQuat_zh_Hant_stroke: function(test) {
-        test.expect(219);
         var col = new Collator({
             locale: "zh-Hant-TW",
             useNative: false,
@@ -389,6 +388,7 @@ module.exports.testcollation_zh_Hant = {
     
         // Hanzi are all primary differences from each other
         
+        test.expect(219);
         test.ok(typeof(col) !== "undefined");
         
         test.ok("bā < bá", col.compare("bā", "bá") < 0);
@@ -614,7 +614,6 @@ module.exports.testcollation_zh_Hant = {
     },
     
     testJSCollatorPinyinTer_zh_Hant_stroke: function(test) {
-        test.expect(219);
         var col = new Collator({
             locale: "zh-Hant-TW",
             useNative: false,
@@ -624,6 +623,7 @@ module.exports.testcollation_zh_Hant = {
     
         // Hanzi are all primary differences from each other
         
+        test.expect(219);
         test.ok(typeof(col) !== "undefined");
         
         test.ok("bā < bá", col.compare("bā", "bá") < 0);
@@ -849,7 +849,6 @@ module.exports.testcollation_zh_Hant = {
     },
     
     testJSCollatorPinyinSec_zh_Hant_stroke: function(test) {
-        test.expect(219);
         var col = new Collator({
             locale: "zh-Hant-TW",
             useNative: false,
@@ -859,6 +858,7 @@ module.exports.testcollation_zh_Hant = {
     
         // Hanzi are all primary differences from each other
         
+        test.expect(219);
         test.ok(typeof(col) !== "undefined");
         
         test.ok("bā < bá", col.compare("bā", "bá") < 0);
@@ -1084,7 +1084,6 @@ module.exports.testcollation_zh_Hant = {
     },
     
     testJSCollatorPinyinPri_zh_Hant_stroke: function(test) {
-        test.expect(219);
         var col = new Collator({
             locale: "zh-Hant-TW",
             useNative: false,
@@ -1094,6 +1093,7 @@ module.exports.testcollation_zh_Hant = {
     
         // Hanzi are all primary differences from each other
         
+        test.expect(219);
         test.ok(typeof(col) !== "undefined");
         
         test.ok("bā = bá", col.compare("bā", "bá") === 0);
@@ -1319,7 +1319,6 @@ module.exports.testcollation_zh_Hant = {
     },
     
     testJSCollatorBopomofoQuat_zh_Hant_stroke: function(test) {
-        test.expect(38);
         var col = new Collator({
             locale: "zh-Hant-TW",
             useNative: false,
@@ -1327,6 +1326,7 @@ module.exports.testcollation_zh_Hant = {
             usage: "search"
         });
     
+        test.expect(38);
         test.ok(typeof(col) !== "undefined");
         
         test.ok("ㄅ < ㄆ", col.compare("ㄅ", "ㄆ") < 0);
@@ -1370,7 +1370,6 @@ module.exports.testcollation_zh_Hant = {
     },
     
     testJSCollatorBopomofoTer_zh_Hant_stroke: function(test) {
-        test.expect(38);
         var col = new Collator({
             locale: "zh-Hant-TW",
             useNative: false,
@@ -1378,6 +1377,7 @@ module.exports.testcollation_zh_Hant = {
             usage: "search"
         });
     
+        test.expect(38);
         test.ok(typeof(col) !== "undefined");
         
         test.ok("ㄅ < ㄆ", col.compare("ㄅ", "ㄆ") < 0);
@@ -1421,7 +1421,6 @@ module.exports.testcollation_zh_Hant = {
     },
     
     testJSCollatorBopomofoSec_zh_Hant_stroke: function(test) {
-        test.expect(38);
         var col = new Collator({
             locale: "zh-Hant-TW",
             useNative: false,
@@ -1429,6 +1428,7 @@ module.exports.testcollation_zh_Hant = {
             usage: "search"
         });
     
+        test.expect(38);
         test.ok(typeof(col) !== "undefined");
         
         test.ok("ㄅ < ㄆ", col.compare("ㄅ", "ㄆ") < 0);
@@ -1472,7 +1472,6 @@ module.exports.testcollation_zh_Hant = {
     },
     
     testJSCollatorBopomofoPri_zh_Hant_stroke: function(test) {
-        test.expect(38);
         var col = new Collator({
             locale: "zh-Hant-TW",
             useNative: false,
@@ -1480,6 +1479,7 @@ module.exports.testcollation_zh_Hant = {
             usage: "search"
         });
     
+        test.expect(38);
         test.ok(typeof(col) !== "undefined");
         
         test.ok("ㄅ < ㄆ", col.compare("ㄅ", "ㄆ") < 0);
@@ -1523,13 +1523,13 @@ module.exports.testcollation_zh_Hant = {
     },
     
     testCollatorCase_zh_Hant_stroke: function(test) {
-        test.expect(2);
         var col = new Collator({
             locale: "zh-Hant-TW",
             useNative: false,
             sensitivity: "case",
             usage: "sort"
         });
+        test.expect(2);
         test.ok(typeof(col) !== "undefined");
         
         var input = [
@@ -1583,13 +1583,13 @@ module.exports.testcollation_zh_Hant = {
     },
     
     testCollatorPri_zh_Hant_stroke: function(test) {
-        test.expect(2);
         var col = new Collator({
             locale: "zh-Hant-TW",
             useNative: false,
             sensitivity: "primary",
             usage: "sort"
         });
+        test.expect(2);
         test.ok(typeof(col) !== "undefined");
         
         var input = [
@@ -1643,13 +1643,13 @@ module.exports.testcollation_zh_Hant = {
     },
     
     testCollatorCaseMixed_zh_Hant_stroke: function(test) {
-        test.expect(2);
         var col = new Collator({
             locale: "zh-Hant-TW",
             useNative: false,
             sensitivity: "case",
             usage: "sort"
         });
+        test.expect(2);
         test.ok(typeof(col) !== "undefined");
         
         var input = [
@@ -1719,13 +1719,13 @@ module.exports.testcollation_zh_Hant = {
     },
     
     testCollatorCaseMixedWithIndexMarkers_zh_Hant_stroke: function(test) {
-        test.expect(2);
         var col = new Collator({
             locale: "zh-Hant-TW",
             useNative: false,
             sensitivity: "case",
             usage: "sort"
         });
+        test.expect(2);
         test.ok(typeof(col) !== "undefined");
         
         var input = [
@@ -1823,7 +1823,6 @@ module.exports.testcollation_zh_Hant = {
     },
     
     testJSCollatorQuatHanzi_zh_Hant_zhuyin: function(test) {
-        test.expect(38);
         var col = new Collator({
             locale: "zh-Hant-TW",
             useNative: false,
@@ -1834,6 +1833,7 @@ module.exports.testcollation_zh_Hant = {
     
         // Hanzi are all primary differences from each other
         
+        test.expect(38);
         test.ok(typeof(col) !== "undefined");
         
         test.ok("八 < 豝", col.compare("八", "豝") < 0);
@@ -1877,7 +1877,6 @@ module.exports.testcollation_zh_Hant = {
     },
     
     testJSCollatorTerHanzi_zh_Hant_zhuyin: function(test) {
-        test.expect(38);
         var col = new Collator({
             locale: "zh-Hant-TW",
             useNative: false,
@@ -1888,6 +1887,7 @@ module.exports.testcollation_zh_Hant = {
     
         // Hanzi are all primary differences from each other
         
+        test.expect(38);
         test.ok(typeof(col) !== "undefined");
         test.ok("八 < 豝", col.compare("八", "豝") < 0);
         test.ok("豝 < 闁", col.compare("豝", "闁") < 0);
@@ -1930,7 +1930,6 @@ module.exports.testcollation_zh_Hant = {
     },
     
     testJSCollatorSecHanzi_zh_Hant_zhuyin: function(test) {
-        test.expect(38);
         var col = new Collator({
             locale: "zh-Hant-TW",
             useNative: false,
@@ -1941,6 +1940,7 @@ module.exports.testcollation_zh_Hant = {
     
         // Hanzi are all primary differences from each other
         
+        test.expect(38);
         test.ok(typeof(col) !== "undefined");
         test.ok("八 < 豝", col.compare("八", "豝") < 0);
         test.ok("豝 < 闁", col.compare("豝", "闁") < 0);
@@ -1983,7 +1983,6 @@ module.exports.testcollation_zh_Hant = {
     },
     
     testJSCollatorPriHanzi_zh_Hant_zhuyin: function(test) {
-        test.expect(38);
         var col = new Collator({
             locale: "zh-Hant-TW",
             useNative: false,
@@ -1994,6 +1993,7 @@ module.exports.testcollation_zh_Hant = {
     
         // Hanzi are all primary differences from each other
         
+        test.expect(38);
         test.ok(typeof(col) !== "undefined");
         test.ok("八 < 豝", col.compare("八", "豝") < 0);
         test.ok("豝 < 闁", col.compare("豝", "闁") < 0);
@@ -2036,7 +2036,6 @@ module.exports.testcollation_zh_Hant = {
     },
     
     testJSCollatorQuatHanziVariants_zh_Hant_zhuyin: function(test) {
-        test.expect(7);
         var col = new Collator({
             locale: "zh-Hant-TW",
             useNative: false,
@@ -2045,6 +2044,7 @@ module.exports.testcollation_zh_Hant = {
             usage: "search"
         });
     
+        test.expect(7);
         test.ok(typeof(col) !== "undefined");
         
         // extra variants at the tertiary level
@@ -2060,7 +2060,6 @@ module.exports.testcollation_zh_Hant = {
     },
     
     testJSCollatorTerHanziVariants_zh_Hant_zhuyin: function(test) {
-        test.expect(7);
         var col = new Collator({
             locale: "zh-Hant-TW",
             useNative: false,
@@ -2069,6 +2068,7 @@ module.exports.testcollation_zh_Hant = {
             usage: "search"
         });
     
+        test.expect(7);
         test.ok(typeof(col) !== "undefined");
         
         // extra variants at the tertiary level
@@ -2084,7 +2084,6 @@ module.exports.testcollation_zh_Hant = {
     },
     
     testJSCollatorSecHanziVariants_zh_Hant_zhuyin: function(test) {
-        test.expect(7);
         var col = new Collator({
             locale: "zh-Hant-TW",
             useNative: false,
@@ -2093,6 +2092,7 @@ module.exports.testcollation_zh_Hant = {
             usage: "search"
         });
     
+        test.expect(7);
         test.ok(typeof(col) !== "undefined");
         
         // extra variants at the tertiary level
@@ -2108,7 +2108,6 @@ module.exports.testcollation_zh_Hant = {
     },
     
     testJSCollatorPriHanziVariants_zh_Hant_zhuyin: function(test) {
-        test.expect(7);
         var col = new Collator({
             locale: "zh-Hant-TW",
             useNative: false,
@@ -2117,6 +2116,7 @@ module.exports.testcollation_zh_Hant = {
             usage: "search"
         });
     
+        test.expect(7);
         test.ok(typeof(col) !== "undefined");
         
         // extra variants at the tertiary level
@@ -2132,7 +2132,6 @@ module.exports.testcollation_zh_Hant = {
     },
     
     testJSCollatorPinyinQuat_zh_Hant_zhuyin: function(test) {
-        test.expect(219);
         var col = new Collator({
             locale: "zh-Hant-TW",
             useNative: false,
@@ -2143,6 +2142,7 @@ module.exports.testcollation_zh_Hant = {
     
         // Hanzi are all primary differences from each other
         
+        test.expect(219);
         test.ok(typeof(col) !== "undefined");
         
         test.ok("bā < bá", col.compare("bā", "bá") < 0);
@@ -2368,7 +2368,6 @@ module.exports.testcollation_zh_Hant = {
     },
     
     testJSCollatorPinyinTer_zh_Hant_zhuyin: function(test) {
-        test.expect(219);
         var col = new Collator({
             locale: "zh-Hant-TW",
             useNative: false,
@@ -2379,6 +2378,7 @@ module.exports.testcollation_zh_Hant = {
     
         // Hanzi are all primary differences from each other
         
+        test.expect(219);
         test.ok(typeof(col) !== "undefined");
         
         test.ok("bā < bá", col.compare("bā", "bá") < 0);
@@ -2604,7 +2604,6 @@ module.exports.testcollation_zh_Hant = {
     },
     
     testJSCollatorPinyinSec_zh_Hant_zhuyin: function(test) {
-        test.expect(219);
         var col = new Collator({
             locale: "zh-Hant-TW",
             useNative: false,
@@ -2615,6 +2614,7 @@ module.exports.testcollation_zh_Hant = {
     
         // Hanzi are all primary differences from each other
         
+        test.expect(219);
         test.ok(typeof(col) !== "undefined");
         
         test.ok("bā < bá", col.compare("bā", "bá") < 0);
@@ -2840,7 +2840,6 @@ module.exports.testcollation_zh_Hant = {
     },
     
     testJSCollatorPinyinPri_zh_Hant_zhuyin: function(test) {
-        test.expect(219);
         var col = new Collator({
             locale: "zh-Hant-TW",
             useNative: false,
@@ -2851,6 +2850,7 @@ module.exports.testcollation_zh_Hant = {
     
         // Hanzi are all primary differences from each other
         
+        test.expect(219);
         test.ok(typeof(col) !== "undefined");
         
         test.ok("bā = bá", col.compare("bā", "bá") === 0);
@@ -3076,7 +3076,6 @@ module.exports.testcollation_zh_Hant = {
     },
     
     testJSCollatorBopomofoQuat_zh_Hant_zhuyin: function(test) {
-        test.expect(38);
         var col = new Collator({
             locale: "zh-Hant-TW",
             useNative: false,
@@ -3085,6 +3084,7 @@ module.exports.testcollation_zh_Hant = {
             usage: "search"
         });
     
+        test.expect(38);
         test.ok(typeof(col) !== "undefined");
         
         test.ok("ㄅ < ㄆ", col.compare("ㄅ", "ㄆ") < 0);
@@ -3128,7 +3128,6 @@ module.exports.testcollation_zh_Hant = {
     },
     
     testJSCollatorBopomofoTer_zh_Hant_zhuyin: function(test) {
-        test.expect(38);
         var col = new Collator({
             locale: "zh-Hant-TW",
             useNative: false,
@@ -3137,6 +3136,7 @@ module.exports.testcollation_zh_Hant = {
             usage: "search"
         });
     
+        test.expect(38);
         test.ok(typeof(col) !== "undefined");
         
         test.ok("ㄅ < ㄆ", col.compare("ㄅ", "ㄆ") < 0);
@@ -3180,7 +3180,6 @@ module.exports.testcollation_zh_Hant = {
     },
     
     testJSCollatorBopomofoSec_zh_Hant_zhuyin: function(test) {
-        test.expect(38);
         var col = new Collator({
             locale: "zh-Hant-TW",
             useNative: false,
@@ -3189,6 +3188,7 @@ module.exports.testcollation_zh_Hant = {
             usage: "search"
         });
     
+        test.expect(38);
         test.ok(typeof(col) !== "undefined");
         
         test.ok("ㄅ < ㄆ", col.compare("ㄅ", "ㄆ") < 0);
@@ -3232,7 +3232,6 @@ module.exports.testcollation_zh_Hant = {
     },
     
     testJSCollatorBopomofoPri_zh_Hant_zhuyin: function(test) {
-        test.expect(38);
         var col = new Collator({
             locale: "zh-Hant-TW",
             useNative: false,
@@ -3241,6 +3240,7 @@ module.exports.testcollation_zh_Hant = {
             usage: "search"
         });
     
+        test.expect(38);
         test.ok(typeof(col) !== "undefined");
         
         test.ok("ㄅ < ㄆ", col.compare("ㄅ", "ㄆ") < 0);
@@ -3284,7 +3284,6 @@ module.exports.testcollation_zh_Hant = {
     },
     
     testCollatorCase_zh_Hant_zhuyin: function(test) {
-        test.expect(2);
         var col = new Collator({
             locale: "zh-Hant-TW",
             useNative: false,
@@ -3292,6 +3291,7 @@ module.exports.testcollation_zh_Hant = {
             sensitivity: "case",
             usage: "sort"
         });
+        test.expect(2);
         test.ok(typeof(col) !== "undefined");
         
         var input = [
@@ -3371,7 +3371,6 @@ module.exports.testcollation_zh_Hant = {
     },
     
     testCollatorPri_zh_Hant_zhuyin: function(test) {
-        test.expect(2);
         var col = new Collator({
             locale: "zh-Hant-TW",
             useNative: false,
@@ -3379,6 +3378,7 @@ module.exports.testcollation_zh_Hant = {
             sensitivity: "primary",
             usage: "sort"
         });
+        test.expect(2);
         test.ok(typeof(col) !== "undefined");
         
         var input = [
@@ -3458,7 +3458,6 @@ module.exports.testcollation_zh_Hant = {
     },
     
     testCollatorCaseMixed_zh_Hant_zhuyin: function(test) {
-        test.expect(2);
         var col = new Collator({
             locale: "zh-Hant-TW",
             useNative: false,
@@ -3466,6 +3465,7 @@ module.exports.testcollation_zh_Hant = {
             sensitivity: "case",
             usage: "sort"
         });
+        test.expect(2);
         test.ok(typeof(col) !== "undefined");
         
         var input = [
@@ -3609,7 +3609,6 @@ module.exports.testcollation_zh_Hant = {
     },
     
     testCollatorCaseMixedWithIndexMarkers_zh_Hant_zhuyin: function(test) {
-        test.expect(2);
         var col = new Collator({
             locale: "zh-Hant-TW",
             useNative: false,
@@ -3617,6 +3616,7 @@ module.exports.testcollation_zh_Hant = {
             sensitivity: "case",
             usage: "sort"
         });
+        test.expect(2);
         test.ok(typeof(col) !== "undefined");
         
         var input = [

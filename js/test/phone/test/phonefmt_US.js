@@ -20,6 +20,19 @@
 var ilib = require("./../lib/ilib.js");
 var PhoneNumber = require("./../lib/PhoneNumber.js");
 var PhoneFmt = require("./../lib/PhoneFmt.js");
+
+function mockLoader(paths, sync, params, callback) {
+	var data = [];
+	
+	data.push(ilib.data.phonefmt);
+	data.push(ilib.data.phonefmt_US);
+	
+	if (typeof(callback) !== 'undefined') {
+		callback.call(this, data);	
+	}
+	return data;
+}
+
 function testFormatUSNoLocale() { 
 	var formatted;
 	var parsed = new PhoneNumber({
@@ -2341,18 +2354,6 @@ function testGetStyleExample() {
 	assertEquals("1-650-555-1234", exampleDashes);
 	assertEquals("1.650.555.1234", exampleDots);
 };
-
-function mockLoader(paths, sync, params, callback) {
-	var data = [];
-	
-	data.push(ilib.data.phonefmt);
-	data.push(ilib.data.phonefmt_US);
-	
-	if (typeof(callback) !== 'undefined') {
-		callback.call(this, data);	
-	}
-	return data;
-}
 
 function testPhoneFmtUSLoadLocaleDataSynch() {
 	if (ilib.isDynData()) {

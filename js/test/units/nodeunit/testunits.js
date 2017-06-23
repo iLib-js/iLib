@@ -32,96 +32,96 @@ module.exports.testunits = {
     },
 
     testMeasurementLength1: function(test) {
-        test.expect(2);
         var measurement = MeasurementFactory({
             amount: 5,
             unit: "kilometers"
         });
     
+        test.expect(2);
         test.ok(measurement !== null);
         test.equal(measurement.getMeasure(), "length");
         test.done();
     },
     
     testMeasurementLength2: function(test) {
-        test.expect(2);
         var measurement = MeasurementFactory({
             amount: 5,
             unit: "miles"
         });
     
+        test.expect(2);
         test.ok(measurement !== null);
         test.equal(measurement.getMeasure(), "length");
         test.done();
     },
     
     testMeasurementSpeed1: function(test) {
-        test.expect(2);
         var measurement = MeasurementFactory({
             amount: 5,
             unit: "miles/hour"
         });
     
+        test.expect(2);
         test.ok(measurement !== null);
         test.equal(measurement.getMeasure(), "speed");
         test.done();
     },
     
     testMeasurementSpeed2: function(test) {
-        test.expect(2);
         var measurement = MeasurementFactory({
             amount: 5,
             unit: "meters/s"
         });
     
+        test.expect(2);
         test.ok(measurement !== null);
         test.equal(measurement.getMeasure(), "speed");
         test.done();
     },
     
     testMeasurementTemperature1: function(test) {
-        test.expect(2);
         var measurement = MeasurementFactory({
             amount: 5,
             unit: "C"
         });
     
+        test.expect(2);
         test.ok(measurement !== null);
         test.equal(measurement.getMeasure(), "temperature");
         test.done();
     },
     
     testMeasurementTemperature2: function(test) {
-        test.expect(2);
         var measurement = MeasurementFactory({
             amount: 5,
             unit: "F"
         });
     
+        test.expect(2);
         test.ok(measurement !== null);
         test.equal(measurement.getMeasure(), "temperature");
         test.done();
     },
     
     testMeasurementDigitalStorage1: function(test) {
-        test.expect(2);
         var measurement = MeasurementFactory({
             amount: 100,
             unit: "mb"
         });
     
+        test.expect(2);
         test.ok(measurement !== null);
         test.equal(measurement.getMeasure(), "digitalStorage");
         test.done();
     },
     
     testMeasurementDigitalStorage2: function(test) {
-        test.expect(2);
         var measurement = MeasurementFactory({
             amount: 1204,
             unit: "tB"
         });
     
+        test.expect(2);
         test.ok(measurement !== null);
         test.equal(measurement.getMeasure(), "digitalStorage");
         test.done();

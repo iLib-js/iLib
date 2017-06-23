@@ -34,9 +34,9 @@ module.exports.testaddress_CN = {
     },
 
     testParseAddressCNLatinNormal: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("L30, Unit 3007, Teemtower, Teemmall,\n208 Tianhe Road, Tianhe District,\nGuangzhou, Guangdong 510620\nChina", {locale: 'en-CN'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "L30, Unit 3007, Teemtower, Teemmall, 208 Tianhe Road, Tianhe District");
         test.equal(parsedAddress.locality, "Guangzhou");
@@ -48,9 +48,9 @@ module.exports.testaddress_CN = {
     },
     
     testParseAddressCNLatinNoZip: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("No. 1 Zhongguancun East Road\nHaidian District\nBeijing, China", {locale: 'en-CN'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "No. 1 Zhongguancun East Road, Haidian District");
         test.equal(parsedAddress.locality, "Beijing");
@@ -62,9 +62,9 @@ module.exports.testaddress_CN = {
     },
     
     testParseAddressCNLatinNoCountry: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("No.268 Xizang Zhong Road, Huangpu District\nShanghai, 200001", {locale: 'en-CN'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "No.268 Xizang Zhong Road, Huangpu District");
         test.equal(parsedAddress.locality, "Shanghai");
@@ -76,9 +76,9 @@ module.exports.testaddress_CN = {
     },
     
     testParseAddressCNAsianNormal: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("中国北京市朝阳区建国路112号 中国惠普大厦100022", {locale: 'zh-CN'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "建国路112号 中国惠普大厦");
         test.equal(parsedAddress.locality, "朝阳区");
@@ -90,9 +90,9 @@ module.exports.testaddress_CN = {
     },
     
     testParseAddressCNAsianNoZip: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("中国武汉市汉口建设大道568号新世界国贸大厦I座9楼910室", {locale: 'zh-CN'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "汉口建设大道568号新世界国贸大厦I座9楼910室");
         test.equal(parsedAddress.locality, "武汉市");
@@ -104,9 +104,9 @@ module.exports.testaddress_CN = {
     },
     
     testParseAddressCNAsianNoCountry: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("北京市朝阳区北四环中路 27号盘古大观 A 座 23层200001", {locale: 'zh-CN'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "北四环中路 27号盘古大观 A 座 23层");
         test.equal(parsedAddress.region, "北京市");
@@ -118,9 +118,9 @@ module.exports.testaddress_CN = {
     },
     
     testParseAddressCNAsianNOExplicitCityDistrict: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("中国四川成都领事馆路4号,邮编 610041", {locale: 'zh-CN'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "领事馆路4号邮编");
         test.equal(parsedAddress.region, "四川");
@@ -132,9 +132,9 @@ module.exports.testaddress_CN = {
     },
     
     testParseAddressCNAsianWithRegion: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("中国湖北省武汉市汉口建设大道568号新世界国贸大厦I座9楼910室430000", {locale: 'zh-CN'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "汉口建设大道568号新世界国贸大厦I座9楼910室");
         test.equal(parsedAddress.locality, "武汉市");
@@ -146,9 +146,9 @@ module.exports.testaddress_CN = {
     },
     
     testParseAddressCNManyLines: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("Tsinghua Science Park Bldg 6\nNo. 1 Zhongguancun East Road\nHaidian District\nBeijing 100084\nPRC\n\n", {locale: 'en-CN'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Tsinghua Science Park Bldg 6, No. 1 Zhongguancun East Road, Haidian District");
         test.equal(parsedAddress.locality, "Beijing");
@@ -160,9 +160,9 @@ module.exports.testaddress_CN = {
     },
     
     testParseAddressCNOneLine: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("No. 27, Central North Fourth Ring Road, Chaoyang District, Beijing 100101, PRC", {locale: 'en-CN'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "No. 27, Central North Fourth Ring Road, Chaoyang District");
         test.equal(parsedAddress.locality, "Beijing");
@@ -174,9 +174,9 @@ module.exports.testaddress_CN = {
     },
     
     testParseAddressCNSuperfluousWhitespace: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("\t\t\tNo. 27, Central North Fourth \r\t   \tRing Road\t\t\n\t, Chaoyang \r\tDistrict\n\t\rBeijing\t\r\n100101\n\t\t\r\rPRC\t\n\n\n", {locale: 'en-CN'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "No. 27, Central North Fourth Ring Road, Chaoyang District");
         test.equal(parsedAddress.locality, "Beijing");
@@ -188,9 +188,9 @@ module.exports.testaddress_CN = {
     },
     
     testParseAddressCNNoDelimiters: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("No. 27 Central North Fourth Ring Road Chaoyang District Beijing 100101 PRC", {locale: 'en-CN'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "No. 27 Central North Fourth Ring Road Chaoyang District");
         test.equal(parsedAddress.locality, "Beijing");
@@ -202,9 +202,9 @@ module.exports.testaddress_CN = {
     },
     
     testParseAddressCNSpecialChars: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("208 Tianhe Road, Tianhe District,\nGuǎngzhōu, Guǎngdōng 510620\nChina", {locale: 'en-CN'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "208 Tianhe Road, Tianhe District");
         test.equal(parsedAddress.locality, "Guǎngzhōu");
@@ -216,11 +216,11 @@ module.exports.testaddress_CN = {
     },
     
     testParseAddressCNFromUS: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("208 Tianhe Road, Tianhe District,\nGuǎngzhōu, Guǎngdōng 510620\nChina", {locale: 'en-US'});
         
         // the country name is in English because this address is for a contact in a US database
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "208 Tianhe Road, Tianhe District");
         test.equal(parsedAddress.locality, "Guǎngzhōu");
@@ -232,7 +232,6 @@ module.exports.testaddress_CN = {
     },
     
     testFormatAddressCNLatin: function(test) {
-        test.expect(1);
         var parsedAddress = new Address({
             streetAddress: "208 Tianhe Road, Tianhe District",
             locality: "Guǎngzhōu",
@@ -245,12 +244,12 @@ module.exports.testaddress_CN = {
         
         var expected = "208 Tianhe Road, Tianhe District\nGuǎngzhōu, Guǎngdōng 510620\nChina";
         var formatter = new AddressFmt({locale: 'en-CN'});
+        test.expect(1);
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     },
     
     testFormatAddressCNFromUS: function(test) {
-        test.expect(1);
         var parsedAddress = new Address({
             streetAddress: "208 Tianhe Road, Tianhe District",
             locality: "Guǎngzhōu",
@@ -263,6 +262,7 @@ module.exports.testaddress_CN = {
         
         var expected = "208 Tianhe Road, Tianhe District\nGuǎngzhōu, Guǎngdōng 510620\nChina";
         var formatter = new AddressFmt({locale: 'en-US'});
+        test.expect(1);
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     }

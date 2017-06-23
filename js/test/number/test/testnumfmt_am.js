@@ -294,7 +294,7 @@ function testNumFmtNumberETStyleNogroupingFloat() {
     assertEquals("123456789.345345", fmt.format(123456789.345345));
 }
 
-function GetUseNativeHasNativeButFalse() {
+function testNumFmtETGetUseNativeHasNativeButFalse() {
     var fmt = new NumFmt({
         locale: "am-ET"
     });

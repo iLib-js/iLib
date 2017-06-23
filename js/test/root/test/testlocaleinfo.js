@@ -17,8 +17,100 @@
  * limitations under the License.
  */
 
-var ilib = require("../lib/ilib.js")
+var ilib = require("./../lib/ilib.js")
 var LocaleInfo = require("./../lib/LocaleInfo.js");
+
+function mockLoader(paths, sync, params, callback) {
+    var data = [];
+    // for the generic, shared stuff
+    data.push(ilib.data.localeinfo || {
+        "calendar": "gregorian",
+        "clock": "24",
+        "currency": "USD",
+        "firstDayOfWeek": 1,
+        "numfmt": {
+            "script": "Latn",
+            "decimalChar": ",",
+            "groupChar": ".",
+            "prigroupSize": 3,
+            "pctFmt": "{n}%",
+            "pctChar": "%",
+            "roundingMode": "halfdown",
+            "exponential": "e",
+            "currencyFormats": {
+                "common": "{s}{n}",
+                "commonNegative": "{s}-{n}"
+            }
+        },
+        "timezone": "Etc/UTC",
+        "units": "metric"
+    });
+    paths.shift();
+    paths.forEach(function (path) {
+        if (path.search("fr/localeinfo.json$") !== -1) {
+            data.push({
+                "language.name": "French",
+                "numfmt": {
+                    "groupChar": " ",
+                    "currencyFormats": {
+                        "common": "{n} {s}",
+                        "commonNegative": "({n} {s})"
+                    },
+                    "pctFmt": "{n} %"
+                },
+                "paperSizes": {
+                    "regular": "A4",
+                    "photo": "4x6"
+                },
+                "scripts": [
+                    "Latn"
+                ],
+                "locale": "fr"
+            });
+        } else if (path.search("FR/localeinfo.json$") !== -1) {
+            data.push({
+                "currency": "EUR",
+                "firstDayOfWeek": 1,
+                "region.name": "France",
+                "timezone": "Europe/Paris",
+                "locale": "FR"
+            });
+        } else {
+            data.push((path.indexOf('zzz') === -1) ? undefined : {
+                "clock": "24",
+                "units": "metric",
+                "calendar": "hebrew",
+                "firstDayOfWeek": 4,
+                "currency": "JPY",
+                "timezone": "Asia/Tokyo",
+                "numfmt": {
+                    "decimalChar": ".",
+                    "groupChar": ",",
+                    "groupSize": 4,
+                    "pctFmt": "{n} %",
+                    "pctChar": "%",
+                    "currencyFormats": {
+                        "common": "common {s} {n}",
+                        "iso": "iso {s} {n}"
+                    }
+                },
+                "locale": "zzz-ZZ"
+            });
+        }
+    });
+    if (typeof (callback) !== 'undefined') {
+        callback.call(this, data);
+    }
+    return data;
+};
+
+// locale with no script
+ilib.data.localeinfo_fr_FR_overseas = {
+    "currency": "USD",
+    "locale": "fr-FR-overseas",
+    "timezone": "Pacific/Tahiti"
+};
+
 
 function testLocaleInfoConstructor() {
 	var loc = new LocaleInfo();
@@ -9618,90 +9710,6 @@ function testLocaleInfoGetPercentageSymbol2() {
     assertEquals("%", info.getPercentageSymbol());
 }
 
-function mockLoader(paths, sync, params, callback) {
-    var data = [];
-    // for the generic, shared stuff
-    data.push(ilib.data.localeinfo || {
-        "calendar": "gregorian",
-        "clock": "24",
-        "currency": "USD",
-        "firstDayOfWeek": 1,
-        "numfmt": {
-            "script": "Latn",
-            "decimalChar": ",",
-            "groupChar": ".",
-            "prigroupSize": 3,
-            "pctFmt": "{n}%",
-            "pctChar": "%",
-            "roundingMode": "halfdown",
-            "exponential": "e",
-            "currencyFormats": {
-                "common": "{s}{n}",
-                "commonNegative": "{s}-{n}"
-            }
-        },
-        "timezone": "Etc/UTC",
-        "units": "metric"
-    });
-    paths.shift();
-    paths.forEach(function (path) {
-        if (path.search("fr/localeinfo.json$") !== -1) {
-            data.push({
-                "language.name": "French",
-                "numfmt": {
-                    "groupChar": " ",
-                    "currencyFormats": {
-                        "common": "{n} {s}",
-                        "commonNegative": "({n} {s})"
-                    },
-                    "pctFmt": "{n} %"
-                },
-                "paperSizes": {
-                    "regular": "A4",
-                    "photo": "4x6"
-                },
-                "scripts": [
-                    "Latn"
-                ],
-                "locale": "fr"
-            });
-        } else if (path.search("FR/localeinfo.json$") !== -1) {
-            data.push({
-                "currency": "EUR",
-                "firstDayOfWeek": 1,
-                "region.name": "France",
-                "timezone": "Europe/Paris",
-                "locale": "FR"
-            });
-        } else {
-            data.push((path.indexOf('zzz') === -1) ? undefined : {
-                "clock": "24",
-                "units": "metric",
-                "calendar": "hebrew",
-                "firstDayOfWeek": 4,
-                "currency": "JPY",
-                "timezone": "Asia/Tokyo",
-                "numfmt": {
-                    "decimalChar": ".",
-                    "groupChar": ",",
-                    "groupSize": 4,
-                    "pctFmt": "{n} %",
-                    "pctChar": "%",
-                    "currencyFormats": {
-                        "common": "common {s} {n}",
-                        "iso": "iso {s} {n}"
-                    }
-                },
-                "locale": "zzz-ZZ"
-            });
-        }
-    });
-    if (typeof (callback) !== 'undefined') {
-        callback.call(this, data);
-    }
-    return data;
-};
-
 function testLocaleInfoLoadMissingDataAsynch() {
     if (ilib.isDynData()) {
         // don't need to test loading on the dynamic load version because we are testing
@@ -9824,13 +9832,6 @@ function testLocaleInfoLoadPreassembledDataAsynch() {
     assertNotNull(info);
     ilib.setLoaderCallback(undefined);
 }
-
-// locale with no script
-ilib.data.localeinfo_fr_FR_overseas = {
-    "currency": "USD",
-    "locale": "fr-FR-overseas",
-    "timezone": "Pacific/Tahiti"
-};
 
 function testLocaleInfoLoadMissingLocaleParts() {
     if (ilib.isDynData()) {

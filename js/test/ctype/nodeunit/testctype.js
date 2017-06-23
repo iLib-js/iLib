@@ -1622,162 +1622,162 @@ module.exports.testctype = {
     },
     
     testWithinRangeCopticnumber: function(test) {
-        test.expect(1);
         var str = IString.fromCodePoint(0x102e0);
+        test.expect(1);
         test.ok(CType.withinRange(str, "copticnumber"));
         test.done();
     },
     
     testWithinRangeOldpermic: function(test) {
-        test.expect(1);
         var str = IString.fromCodePoint(0x10350);
+        test.expect(1);
         test.ok(CType.withinRange(str, "oldpermic"));
         test.done();
     },
     
     testWithinRangeAlbanian: function(test) {
-        test.expect(1);
         var str = IString.fromCodePoint(0x10530);
+        test.expect(1);
         test.ok(CType.withinRange(str, "albanian"));
         test.done();
     },
     
     testWithinRangeLineara: function(test) {
-        test.expect(1);
         var str = IString.fromCodePoint(0x10600);
+        test.expect(1);
         test.ok(CType.withinRange(str, "lineara"));
         test.done();
     },
     
     testWithinRangeMeroitic: function(test) {
-        test.expect(1);
         var str = IString.fromCodePoint(0x109a0);
+        test.expect(1);
         test.ok(CType.withinRange(str, "meroitic"));
         test.done();
     },
     
     testWithinRangeLowsurrogates: function(test) {
-        test.expect(1);
         var str = IString.fromCodePoint(0xdc00);
+        test.expect(1);
         test.ok(CType.withinRange(str, "lowsurrogates"));
         test.done();
     },
     
     testWithinRangeOldhungarian: function(test) {
-        test.expect(1);
         var str = IString.fromCodePoint(0x10c80);
+        test.expect(1);
         test.ok(CType.withinRange(str, "oldhungarian"));
         test.done();
     },
     
     testWithinRangeSorasopeng: function(test) {
-        test.expect(1);
         var str = IString.fromCodePoint(0x110d0);
+        test.expect(1);
         test.ok(CType.withinRange(str, "sorasompeng"));
         test.done();
     },
     
     testWithinRangeWarangciti: function(test) {
-        test.expect(1);
         var str = IString.fromCodePoint(0x118a0);
+        test.expect(1);
         test.ok(CType.withinRange(str, "warangciti"));
         test.done();
     },
     
     testWithinRangePaucinhau: function(test) {
-        test.expect(1);
         var str = IString.fromCodePoint(0x11ac0);
+        test.expect(1);
         test.ok(CType.withinRange(str, "paucinhau"));
         test.done();
     },
     
     testWithinRangeBassavah: function(test) {
-        test.expect(1);
         var str = IString.fromCodePoint(0x16ad0);
+        test.expect(1);
         test.ok(CType.withinRange(str, "bassavah"));
         test.done();
     },
     
     testWithinRangePahawhhmong: function(test) {
-        test.expect(1);
         var str = IString.fromCodePoint(0x16b00);
+        test.expect(1);
         test.ok(CType.withinRange(str, "pahawhhmong"));
         test.done();
     },
     
     testWithinRangeShorthandformat: function(test) {
-        test.expect(1);
         var str = IString.fromCodePoint(0x1bca0);
+        test.expect(1);
         test.ok(CType.withinRange(str, "shorthandformat"));
         test.done();
     },
     
     testWithinRangeSurronsingwriting: function(test) {
-        test.expect(1);
         var str = IString.fromCodePoint(0x1d800);
+        test.expect(1);
         test.ok(CType.withinRange(str, "suttonsignwriting"));
         test.done();
     },
     
     testWithinRangePictographs1: function(test) {
-        test.expect(1);
         var str = IString.fromCodePoint(0x1f300);
+        test.expect(1);
         test.ok(CType.withinRange(str, "pictographs"));
         test.done();
     },
     
     testWithinRangePictographs2: function(test) {
-        test.expect(1);
         var str = IString.fromCodePoint(0x1f9ff);
+        test.expect(1);
         test.ok(CType.withinRange(str, "pictographs"));
         test.done();
     },
     
     testWithinRangeOrnamentaldingbats: function(test) {
-        test.expect(1);
         var str = IString.fromCodePoint(0x1f650);
+        test.expect(1);
         test.ok(CType.withinRange(str, "ornamentaldingbats"));
         test.done();
     },
     
     testWithinRangeCyrillic: function(test) {
-        test.expect(1);
         var str = IString.fromCodePoint(0x1c80);
+        test.expect(1);
         test.ok(CType.withinRange(str, "cyrillic"));
         test.done();
     },
     
     testWithinRangeMongolian: function(test) {
-        test.expect(1);
         var str = IString.fromCodePoint(0x11660);
+        test.expect(1);
         test.ok(CType.withinRange(str, "mongolian"));
         test.done();
     },
     
     testWithinRangeTangut1: function(test) {
-        test.expect(1);
         var str = IString.fromCodePoint(0x16fe0);
+        test.expect(1);
         test.ok(CType.withinRange(str, "tangut"));
         test.done();
     },
     
     testWithinRangeTangut2: function(test) {
-        test.expect(1);
         var str = IString.fromCodePoint(0x17000);
+        test.expect(1);
         test.ok(CType.withinRange(str, "tangut"));
         test.done();
     },
     
     testWithinRangeTangut3: function(test) {
-        test.expect(1);
         var str = IString.fromCodePoint(0x18800);
+        test.expect(1);
         test.ok(CType.withinRange(str, "tangut"));
         test.done();
     },
     
     testWithinRangeGlagolitic: function(test) {
-        test.expect(1);
         var str = IString.fromCodePoint(0x1e000);
+        test.expect(1);
         test.ok(CType.withinRange(str, "glagolitic"));
         test.done();
     },

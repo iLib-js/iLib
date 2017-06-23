@@ -34,8 +34,8 @@ module.exports.testname_hu = {
     },
 
     testParseSimpleName_hu_HU: function(test) {
-        test.expect(2);
         var parsed = new Name("Halász Dorottya", {locale: 'hu-HU'});
+        test.expect(2);
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {
@@ -50,8 +50,8 @@ module.exports.testname_hu = {
     
     
     testParseSimpleName_hu_HU1: function(test) {
-        test.expect(2);
         var parsed = new Name("úr. Halász Dorottya", {locale: 'hu-HU'});
+        test.expect(2);
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {
@@ -67,8 +67,8 @@ module.exports.testname_hu = {
     
     
     testParseSimpleNameWom_hu_HU: function(test) {
-        test.expect(2);
         var parsed = new Name("Kisasszony. Kovács Lajos", {locale: 'hu-HU'});
+        test.expect(2);
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {
@@ -85,8 +85,8 @@ module.exports.testname_hu = {
     
     
     testParseSingleNameWithPrefixAndAdjunct_hu_HU: function(test) {
-        test.expect(2);
         var parsed = new Name("Halász Dorottya jr.", {locale: 'hu-HU'});
+        test.expect(2);
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {
@@ -101,8 +101,8 @@ module.exports.testname_hu = {
     
     
     testParseTitle_hu_HU1: function(test) {
-        test.expect(2);
         var parsed = new Name("alelnöke Halász Dorottya", {locale: 'hu-HU'});
+        test.expect(2);
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {
@@ -117,8 +117,8 @@ module.exports.testname_hu = {
     
     
     testParseTitle_hu_HU_second: function(test) {
-        test.expect(2);
         var parsed = new Name("Úr. és Kisasszony. Halász", {locale: 'hu-HU'});
+        test.expect(2);
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {
@@ -132,7 +132,6 @@ module.exports.testname_hu = {
     
     
     testParseTitleWithFamilyOnlyAndAdjunct_hu_HU: function(test) {
-        test.expect(2);
     
         var name = new Name({
             prefix: "alelnöke",
@@ -146,6 +145,7 @@ module.exports.testname_hu = {
             locale: 'hu-HU'
         });
         var formatted = fmt.format(name);
+        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "alelnöke Halász Dorottya idősebb";
@@ -158,8 +158,8 @@ module.exports.testname_hu = {
     
     
     testParseCompoundHonorific_hu_HU: function(test) {
-        test.expect(2);
         var parsed = new Name("alelnöke Halász", {locale: 'hu-HU'});
+        test.expect(2);
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {
@@ -176,7 +176,6 @@ module.exports.testname_hu = {
      */
     
     testFormatSimpleNameShort_hu_HU: function(test) {
-        test.expect(2);
         var name = new Name({
             givenName: "Dorottya",
             familyName: "Halász"
@@ -186,6 +185,7 @@ module.exports.testname_hu = {
             locale: 'hu-HU'
         });
         var formatted = fmt.format(name);
+        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "Halász Dorottya";
@@ -195,7 +195,6 @@ module.exports.testname_hu = {
     },
     
     testFormatSimpleNameMedium_hu_HU: function(test) {
-        test.expect(2);
         var name = new Name({
             givenName: "Dorottya",
             familyName: "Halász"
@@ -205,6 +204,7 @@ module.exports.testname_hu = {
             locale: 'hu-HU'
         });
         var formatted = fmt.format(name);
+        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "Halász Dorottya";
@@ -214,7 +214,6 @@ module.exports.testname_hu = {
     },
     
     testFormatSimpleNameFull_hu_HU: function(test) {
-        test.expect(2);
         var name = new Name({
             givenName: "Dorottya",
             familyName: "Halász",
@@ -225,6 +224,7 @@ module.exports.testname_hu = {
             locale: 'hu-HU'
         });
         var formatted = fmt.format(name);
+        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "Halász Dorottya idősebb";
@@ -234,7 +234,6 @@ module.exports.testname_hu = {
     },
     
     testFormatComplexNameShort_hu_HU: function(test) {
-        test.expect(2);
         var name = new Name({
             suffix: "idősebb",
             givenName: "Dorottya",
@@ -245,6 +244,7 @@ module.exports.testname_hu = {
             locale: 'hu-HU'
         });
         var formatted = fmt.format(name);
+        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "Halász Dorottya";
@@ -255,7 +255,6 @@ module.exports.testname_hu = {
     
     
     testFormatAsianNameMedium_hu_HU: function(test) {
-        test.expect(2);
         var name = new Name({
             prefix: "小",
             givenName: "獸",
@@ -267,6 +266,7 @@ module.exports.testname_hu = {
             locale: 'hu-HU'
         });
         var formatted = fmt.format(name);
+        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "地獸";
@@ -276,7 +276,6 @@ module.exports.testname_hu = {
     },
     
     testFormatAsianNameLong_hu_HU: function(test) {
-        test.expect(2);
         var name = new Name({
             prefix: "小",
             givenName: "獸",
@@ -288,6 +287,7 @@ module.exports.testname_hu = {
             locale: 'hu-HU'
         });
         var formatted = fmt.format(name);
+        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "小地獸太太";

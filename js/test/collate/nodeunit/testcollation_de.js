@@ -32,7 +32,6 @@ module.exports.testcollation_de = {
     },
 
     testJSCollatorPhonebookQuatAE_de: function(test) {
-        test.expect(5);
         var col = new Collator({
             locale: "de-DE",
             useNative: false,
@@ -41,6 +40,7 @@ module.exports.testcollation_de = {
             usage: "search"
         });
     
+        test.expect(5);
         test.ok(typeof(col) !== "undefined");
     
         // aa ae äa äz af
@@ -52,7 +52,6 @@ module.exports.testcollation_de = {
     },
     
     testJSCollatorPhonebookQuatOE_de: function(test) {
-        test.expect(5);
         var col = new Collator({
             locale: "de-DE",
             useNative: false,
@@ -61,6 +60,7 @@ module.exports.testcollation_de = {
             usage: "search"
         });
     
+        test.expect(5);
         test.ok(typeof(col) !== "undefined");
     
         // oa oe öa öz of
@@ -72,7 +72,6 @@ module.exports.testcollation_de = {
     },
     
     testJSCollatorPhonebookQuatUE_de: function(test) {
-        test.expect(5);
         var col = new Collator({
             locale: "de-DE",
             useNative: false,
@@ -81,6 +80,7 @@ module.exports.testcollation_de = {
             usage: "search"
         });
     
+        test.expect(5);
         test.ok(typeof(col) !== "undefined");
     
         // ua ue üa üz uf
@@ -94,7 +94,6 @@ module.exports.testcollation_de = {
     // differences in umlauted characters should be primary differences
     
     testJSCollatorPhonebookPrimaryAE_de: function(test) {
-        test.expect(5);
         var col = new Collator({
             locale: "de-DE",
             useNative: false,
@@ -103,6 +102,7 @@ module.exports.testcollation_de = {
             usage: "search"
         });
     
+        test.expect(5);
         test.ok(typeof(col) !== "undefined");
     
         // aa ae äa äz af
@@ -114,7 +114,6 @@ module.exports.testcollation_de = {
     },
     
     testJSCollatorPhonebookPrimaryOE_de: function(test) {
-        test.expect(5);
         var col = new Collator({
             locale: "de-DE",
             useNative: false,
@@ -123,6 +122,7 @@ module.exports.testcollation_de = {
             usage: "search"
         });
     
+        test.expect(5);
         test.ok(typeof(col) !== "undefined");
     
         // oa oe öa öz of
@@ -134,7 +134,6 @@ module.exports.testcollation_de = {
     },
     
     testJSCollatorPhonebookPrimaryUE_de: function(test) {
-        test.expect(5);
         var col = new Collator({
             locale: "de-DE",
             useNative: false,
@@ -143,6 +142,7 @@ module.exports.testcollation_de = {
             usage: "search"
         });
     
+        test.expect(5);
         test.ok(typeof(col) !== "undefined");
     
         // ua ue üa üz uf
@@ -154,7 +154,6 @@ module.exports.testcollation_de = {
     },
     
     testCollatorPhonebookdeDECase: function(test) {
-        test.expect(2);
         var col = new Collator({
             locale: "de-DE",
             useNative: false,
@@ -162,6 +161,7 @@ module.exports.testcollation_de = {
             usage: "sort",
             style: "phonebook"
         });
+        test.expect(2);
         test.ok(typeof(col) !== "undefined");
     
         var input = [
@@ -211,7 +211,6 @@ module.exports.testcollation_de = {
     },
     
     testCollatorPhonebookdeDEVariant: function(test) {
-        test.expect(2);
         var col = new Collator({
             locale: "de-DE",
             useNative: false,
@@ -220,6 +219,7 @@ module.exports.testcollation_de = {
             usage: "sort",
             style: "phonebook"
         });
+        test.expect(2);
         test.ok(typeof(col) !== "undefined");
     
         var input = [
@@ -263,7 +263,6 @@ module.exports.testcollation_de = {
     },
     
     testJSCollatorDictionaryQuatAE_de: function(test) {
-        test.expect(7);
         var col = new Collator({
             locale: "de-DE",
             useNative: false,
@@ -272,6 +271,7 @@ module.exports.testcollation_de = {
             usage: "search"
         });
     
+        test.expect(7);
         test.ok(typeof(col) !== "undefined");
     
         // aa ae af az äa äz
@@ -285,7 +285,6 @@ module.exports.testcollation_de = {
     },
     
     testJSCollatorDictionaryQuatOE_de: function(test) {
-        test.expect(7);
         var col = new Collator({
             locale: "de-DE",
             useNative: false,
@@ -294,6 +293,7 @@ module.exports.testcollation_de = {
             usage: "search"
         });
     
+        test.expect(7);
         test.ok(typeof(col) !== "undefined");
     
         // oa oe of oz öa öz 
@@ -307,7 +307,6 @@ module.exports.testcollation_de = {
     },
     
     testJSCollatorDictionaryQuatUE_de: function(test) {
-        test.expect(7);
         var col = new Collator({
             locale: "de-DE",
             useNative: false,
@@ -316,6 +315,7 @@ module.exports.testcollation_de = {
             usage: "search"
         });
     
+        test.expect(7);
         test.ok(typeof(col) !== "undefined");
     
         // ua ue uf uz üa üz 
@@ -329,7 +329,6 @@ module.exports.testcollation_de = {
     },
     
     testJSCollatorDictionaryPrimaryAE_de: function(test) {
-        test.expect(7);
         var col = new Collator({
             locale: "de-DE",
             useNative: false,
@@ -338,6 +337,7 @@ module.exports.testcollation_de = {
             usage: "search"
         });
     
+        test.expect(7);
         test.ok(typeof(col) !== "undefined");
     
         // aa ae af az äa äz
@@ -351,7 +351,6 @@ module.exports.testcollation_de = {
     },
     
     testJSCollatorDictionaryPrimaryOE_de: function(test) {
-        test.expect(7);
         var col = new Collator({
             locale: "de-DE",
             useNative: false,
@@ -360,6 +359,7 @@ module.exports.testcollation_de = {
             usage: "search"
         });
     
+        test.expect(7);
         test.ok(typeof(col) !== "undefined");
     
         // oa oe of oz öa öz 
@@ -373,7 +373,6 @@ module.exports.testcollation_de = {
     },
     
     testJSCollatorDictionaryPrimaryUE_de: function(test) {
-        test.expect(7);
         var col = new Collator({
             locale: "de-DE",
             useNative: false,
@@ -382,6 +381,7 @@ module.exports.testcollation_de = {
             usage: "search"
         });
     
+        test.expect(7);
         test.ok(typeof(col) !== "undefined");
     
         // ua ue uf uz üa üz 
@@ -395,7 +395,6 @@ module.exports.testcollation_de = {
     },
     
     testCollatorDictionarydeDECase: function(test) {
-        test.expect(2);
         var col = new Collator({
             locale: "de-DE",
             useNative: false,
@@ -403,6 +402,7 @@ module.exports.testcollation_de = {
             usage: "sort",
             style: "dictionary"
         });
+        test.expect(2);
         test.ok(typeof(col) !== "undefined");
     
         var input = [
@@ -452,7 +452,6 @@ module.exports.testcollation_de = {
     },
     
     testCollatorDictionarydeDEPrimary: function(test) {
-        test.expect(2);
         var col = new Collator({
             locale: "de-DE",
             useNative: false,
@@ -461,6 +460,7 @@ module.exports.testcollation_de = {
             usage: "sort",
             style: "dictionary"
         });
+        test.expect(2);
         test.ok(typeof(col) !== "undefined");
     
         var input = [

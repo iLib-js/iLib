@@ -37,17 +37,17 @@ module.exports.testdatefmt_cop_EG = {
     },
 
     testDateFmtConstructorEmpty_cop_EG: function(test) {
-        test.expect(1);
         var fmt = new DateFmt({locale: "cop-EG"});
         
+        test.expect(1);
         test.ok(fmt !== null);
         test.done();
     },
     
     
     testDateFmtSimpleShort_cop_EG: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({locale: "cop-EG", length: "short"});
+        test.expect(2);
         test.ok(fmt !== null);
         
         var date = new CopticDate({
@@ -65,8 +65,8 @@ module.exports.testdatefmt_cop_EG = {
     },
     
     testDateFmtSimpleMedium_cop_EG: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({locale: "cop-EG", length: "medium"});
+        test.expect(2);
         test.ok(fmt !== null);
         
         var date = new CopticDate({
@@ -84,8 +84,8 @@ module.exports.testdatefmt_cop_EG = {
     },
     
     testDateFmtSimpleLong_cop_EG: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({locale: "cop-EG", length: "long"});
+        test.expect(2);
         test.ok(fmt !== null);
         
         var date = new CopticDate({
@@ -103,8 +103,8 @@ module.exports.testdatefmt_cop_EG = {
     },
     
     testDateFmtSimpleFull_cop_EG: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({locale: "cop-EG", length: "full"});
+        test.expect(2);
         test.ok(fmt !== null);
         
         var date = new CopticDate({
@@ -122,8 +122,8 @@ module.exports.testdatefmt_cop_EG = {
     },
     
     testDateFmtSimpleTimeShort_cop_EG: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({locale: "cop-EG", length: "short", type: "time"});
+        test.expect(2);
         test.ok(fmt !== null);
         
         var date = new CopticDate({
@@ -141,8 +141,8 @@ module.exports.testdatefmt_cop_EG = {
     },
     
     testDateFmtSimpleTimeMedium_cop_EG: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({locale: "cop-EG", length: "medium", type: "time"});
+        test.expect(2);
         test.ok(fmt !== null);
         
         var date = new CopticDate({
@@ -160,8 +160,8 @@ module.exports.testdatefmt_cop_EG = {
     },
     
     testDateFmtSimpleTimeLong_cop_EG: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({locale: "cop-EG", timelength: "long", type: "time"});
+        test.expect(2);
         test.ok(fmt !== null);
         
         var date = new CopticDate({
@@ -179,8 +179,8 @@ module.exports.testdatefmt_cop_EG = {
     },
     
     testDateFmtSimpleTimeFull_cop_EG: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({locale: "cop-EG", length: "full", type: "time"});
+        test.expect(2);
         test.ok(fmt !== null);
         
         var date = new CopticDate({
@@ -198,8 +198,8 @@ module.exports.testdatefmt_cop_EG = {
     },
     
     testDateFmtDateTimeSimpleShort_cop_EG: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({locale: "cop-EG", length: "short", type: "datetime"});
+        test.expect(2);
         test.ok(fmt !== null);
         
         var date = new CopticDate({
@@ -217,8 +217,8 @@ module.exports.testdatefmt_cop_EG = {
     },
     
     testDateFmtDateTimeSimpleMedium_cop_EG: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({locale: "cop-EG", length: "medium", type: "datetime"});
+        test.expect(2);
         test.ok(fmt !== null);
         
         var date = new CopticDate({
@@ -236,8 +236,8 @@ module.exports.testdatefmt_cop_EG = {
     },
     
     testDateFmtDateTimeSimpleLong_cop_EG: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({locale: "cop-EG", length: "long", type: "datetime"});
+        test.expect(2);
         test.ok(fmt !== null);
         
         var date = new CopticDate({
@@ -255,8 +255,8 @@ module.exports.testdatefmt_cop_EG = {
     },
     
     testDateFmtDateTimeSimpleFull_cop_EG: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({locale: "cop-EG", length: "full", type: "datetime"});
+        test.expect(2);
         test.ok(fmt !== null);
         
         var date = new CopticDate({
@@ -274,8 +274,8 @@ module.exports.testdatefmt_cop_EG = {
     },
     
     testDateFmtTemplateCalendar_cop_EG: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({locale: "cop-EG", calendar: "julian", template: "yyyy-MM-dd"});
+        test.expect(2);
         test.ok(fmt !== null);
         
         var date = new JulianDate({
@@ -294,8 +294,8 @@ module.exports.testdatefmt_cop_EG = {
     
     
     testDateFmtTemplateCalendarIncompatibleDateType_cop_EG: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({locale: "cop-EG", calendar: "julian", template: "yyyy-MM-dd HH:mm"});
+        test.expect(2);
         test.ok(fmt !== null);
         
         var date = new CopticDate({
@@ -314,8 +314,8 @@ module.exports.testdatefmt_cop_EG = {
     },
     
     testDateFmtTemplateClock12SwitchHH_cop_EG: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({locale: "cop-EG", clock: "12", template: "HH:mm"});
+        test.expect(2);
         test.ok(fmt !== null);
         
         var date = new CopticDate({
@@ -333,8 +333,8 @@ module.exports.testdatefmt_cop_EG = {
     },
     
     testDateFmtTemplateClock12Switchkk_cop_EG: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({locale: "cop-EG", clock: "12", template: "kk:mm"});
+        test.expect(2);
         test.ok(fmt !== null);
         
         var date = new CopticDate({
@@ -352,8 +352,8 @@ module.exports.testdatefmt_cop_EG = {
     },
     
     testDateFmtTemplateClock24Switchhh_cop_EG: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({locale: "cop-EG", clock: "24", template: "hh:mm"});
+        test.expect(2);
         test.ok(fmt !== null);
         
         var date = new CopticDate({
@@ -371,8 +371,8 @@ module.exports.testdatefmt_cop_EG = {
     },
     
     testDateFmtTemplateClock24SwitchKK_cop_EG: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({locale: "cop-EG", clock: "24", template: "KK:mm"});
+        test.expect(2);
         test.ok(fmt !== null);
         
         var date = new CopticDate({
@@ -390,8 +390,8 @@ module.exports.testdatefmt_cop_EG = {
     },
     
     testDateFmtTemplateNoClockDoNotFollowLocaleDefault12hh_cop_EG: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({locale: "cop-EG", template: "hh:mm"});
+        test.expect(2);
         test.ok(fmt !== null);
         
         var date = new CopticDate({
@@ -409,8 +409,8 @@ module.exports.testdatefmt_cop_EG = {
     },
     
     testDateFmtTemplateNoClockDoNotFollowLocaleDefault12KK_cop_EG: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({locale: "cop-EG", template: "KK:mm"});
+        test.expect(2);
         test.ok(fmt !== null);
         
         var date = new CopticDate({
@@ -428,8 +428,8 @@ module.exports.testdatefmt_cop_EG = {
     },
     
     testDateFmtTemplateNoClockDoNotFollowLocaleDefault24HH_cop_EG: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({locale: "cop-EG", template: "HH:mm"});
+        test.expect(2);
         test.ok(fmt !== null);
         
         var date = new CopticDate({
@@ -447,8 +447,8 @@ module.exports.testdatefmt_cop_EG = {
     },
     
     testDateFmtTemplateNoClockDoNotFollowLocaleDefault24kk_cop_EG: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({locale: "cop-EG", template: "kk:mm"});
+        test.expect(2);
         test.ok(fmt !== null);
         
         var date = new CopticDate({
@@ -467,8 +467,8 @@ module.exports.testdatefmt_cop_EG = {
     
     
     testDateFmtTypeDate_cop_EG: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({locale: "cop-EG", type: "date"});
+        test.expect(2);
         test.ok(fmt !== null);
         
         var date = new CopticDate({
@@ -486,8 +486,8 @@ module.exports.testdatefmt_cop_EG = {
     },
     
     testDateFmtTypeTime_cop_EG: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({locale: "cop-EG", type: "time"});
+        test.expect(2);
         test.ok(fmt !== null);
         
         var date = new CopticDate({
@@ -505,8 +505,8 @@ module.exports.testdatefmt_cop_EG = {
     },
     
     testDateFmtTypeDateTime_cop_EG: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({locale: "cop-EG", type: "datetime"});
+        test.expect(2);
         test.ok(fmt !== null);
         
         var date = new CopticDate({
@@ -525,8 +525,8 @@ module.exports.testdatefmt_cop_EG = {
     
     
     testDateFmtShortDateComponentsY_cop_EG: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({locale: "cop-EG", date: "y"});
+        test.expect(2);
         test.ok(fmt !== null);
         
         var date = new CopticDate({
@@ -544,8 +544,8 @@ module.exports.testdatefmt_cop_EG = {
     },
     
     testDateFmtShortDateComponentsM_cop_EG: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({locale: "cop-EG", date: "m"});
+        test.expect(2);
         test.ok(fmt !== null);
         
         var date = new CopticDate({
@@ -563,8 +563,8 @@ module.exports.testdatefmt_cop_EG = {
     },
     
     testDateFmtShortDateComponentsN_cop_EG: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({locale: "cop-EG", date: "n"});
+        test.expect(2);
         test.ok(fmt !== null);
         
         var date = new CopticDate({
@@ -582,8 +582,8 @@ module.exports.testdatefmt_cop_EG = {
     },
     
     testDateFmtShortDateComponentsD_cop_EG: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({locale: "cop-EG", date: "d"});
+        test.expect(2);
         test.ok(fmt !== null);
         
         var date = new CopticDate({
@@ -601,8 +601,8 @@ module.exports.testdatefmt_cop_EG = {
     },
     
     testDateFmtShortDateComponentsDM_cop_EG: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({locale: "cop-EG", date: "dm"});
+        test.expect(2);
         test.ok(fmt !== null);
         
         var date = new CopticDate({
@@ -620,8 +620,8 @@ module.exports.testdatefmt_cop_EG = {
     },
     
     testDateFmtShortDateComponentsMY_cop_EG: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({locale: "cop-EG", date: "my"});
+        test.expect(2);
         test.ok(fmt !== null);
         
         var date = new CopticDate({
@@ -639,8 +639,8 @@ module.exports.testdatefmt_cop_EG = {
     },
     
     testDateFmtShortDateComponentsDMY_cop_EG: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({locale: "cop-EG", date: "dmy"});
+        test.expect(2);
         test.ok(fmt !== null);
         
         var date = new CopticDate({
@@ -658,8 +658,8 @@ module.exports.testdatefmt_cop_EG = {
     },
     
     testDateFmtShortDateComponentsWDM_cop_EG: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({locale: "cop-EG", date: "wdm"});
+        test.expect(2);
         test.ok(fmt !== null);
         
         var date = new CopticDate({
@@ -677,8 +677,8 @@ module.exports.testdatefmt_cop_EG = {
     },
     
     testDateFmtShortDateComponentsWDMY_cop_EG: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({locale: "cop-EG", date: "wdmy"});
+        test.expect(2);
         test.ok(fmt !== null);
         
         var date = new CopticDate({
@@ -697,8 +697,8 @@ module.exports.testdatefmt_cop_EG = {
     
     
     testDateFmtFullDateComponentsY_cop_EG: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({locale: "cop-EG", length: "full", date: "y"});
+        test.expect(2);
         test.ok(fmt !== null);
         
         var date = new CopticDate({
@@ -716,8 +716,8 @@ module.exports.testdatefmt_cop_EG = {
     },
     
     testDateFmtFullDateComponentsM_cop_EG: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({locale: "cop-EG", length: "full", date: "m"});
+        test.expect(2);
         test.ok(fmt !== null);
         
         var date = new CopticDate({
@@ -735,8 +735,8 @@ module.exports.testdatefmt_cop_EG = {
     },
     
     testDateFmtFullDateComponentsD_cop_EG: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({locale: "cop-EG", length: "full", date: "d"});
+        test.expect(2);
         test.ok(fmt !== null);
         
         var date = new CopticDate({
@@ -754,8 +754,8 @@ module.exports.testdatefmt_cop_EG = {
     },
     
     testDateFmtFullDateComponentsDM_cop_EG: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({locale: "cop-EG", length: "full", date: "dm"});
+        test.expect(2);
         test.ok(fmt !== null);
         
         var date = new CopticDate({
@@ -773,8 +773,8 @@ module.exports.testdatefmt_cop_EG = {
     },
     
     testDateFmtFullDateComponentsMY_cop_EG: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({locale: "cop-EG", length: "full", date: "my"});
+        test.expect(2);
         test.ok(fmt !== null);
         
         var date = new CopticDate({
@@ -792,8 +792,8 @@ module.exports.testdatefmt_cop_EG = {
     },
     
     testDateFmtFullDateComponentsDMY_cop_EG: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({locale: "cop-EG", length: "full", date: "dmy"});
+        test.expect(2);
         test.ok(fmt !== null);
         
         var date = new CopticDate({
@@ -811,8 +811,8 @@ module.exports.testdatefmt_cop_EG = {
     },
     
     testDateFmtFullDateComponentsWDM_cop_EG: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({locale: "cop-EG", length: "full", date: "wdm"});
+        test.expect(2);
         test.ok(fmt !== null);
         
         var date = new CopticDate({
@@ -830,8 +830,8 @@ module.exports.testdatefmt_cop_EG = {
     },
     
     testDateFmtFullDateComponentsWDMY_cop_EG: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({locale: "cop-EG", length: "full", date: "wdmy"});
+        test.expect(2);
         test.ok(fmt !== null);
         
         var date = new CopticDate({
@@ -850,8 +850,8 @@ module.exports.testdatefmt_cop_EG = {
     
     
     testDateFmtShortTimeComponentsS_cop_EG: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({locale: "cop-EG", type: "time", time: "s"});
+        test.expect(2);
         test.ok(fmt !== null);
         
         var date = new CopticDate({
@@ -869,8 +869,8 @@ module.exports.testdatefmt_cop_EG = {
     },
     
     testDateFmtShortTimeComponentsM_cop_EG: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({locale: "cop-EG", type: "time", time: "m"});
+        test.expect(2);
         test.ok(fmt !== null);
         
         var date = new CopticDate({
@@ -888,8 +888,8 @@ module.exports.testdatefmt_cop_EG = {
     },
     
     testDateFmtShortTimeComponentsH_cop_EG: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({locale: "cop-EG", type: "time", time: "h"});
+        test.expect(2);
         test.ok(fmt !== null);
         
         var date = new CopticDate({
@@ -907,8 +907,8 @@ module.exports.testdatefmt_cop_EG = {
     },
     
     testDateFmtShortTimeComponentsMS_cop_EG: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({locale: "cop-EG", type: "time", time: "ms"});
+        test.expect(2);
         test.ok(fmt !== null);
         
         var date = new CopticDate({
@@ -926,8 +926,8 @@ module.exports.testdatefmt_cop_EG = {
     },
     
     testDateFmtShortTimeComponentsHM_cop_EG: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({locale: "cop-EG", type: "time", time: "hm"});
+        test.expect(2);
         test.ok(fmt !== null);
         
         var date = new CopticDate({
@@ -945,8 +945,8 @@ module.exports.testdatefmt_cop_EG = {
     },
     
     testDateFmtShortTimeComponentsHMS_cop_EG: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({locale: "cop-EG", type: "time", time: "hms"});
+        test.expect(2);
         test.ok(fmt !== null);
         
         var date = new CopticDate({
@@ -964,8 +964,8 @@ module.exports.testdatefmt_cop_EG = {
     },
     
     testDateFmtShortTimeComponentsHMA_cop_EG: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({locale: "cop-EG", type: "time", time: "hma"});
+        test.expect(2);
         test.ok(fmt !== null);
         
         var date = new CopticDate({
@@ -983,13 +983,13 @@ module.exports.testdatefmt_cop_EG = {
     },
     
     testDateFmtShortTimeComponentsHMZ_cop_EG: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({
             locale: "cop-EG", 
             type: "time", 
             time: "hmz", 
             timezone: "Africa/Cairo"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var date = new CopticDate({
@@ -1007,13 +1007,13 @@ module.exports.testdatefmt_cop_EG = {
     },
     
     testDateFmtShortTimeComponentsHMAZ_cop_EG: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({
             locale: "cop-EG", 
             type: "time", 
             time: "hmaz", 
             timezone: "Africa/Cairo"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var date = new CopticDate({
@@ -1031,8 +1031,8 @@ module.exports.testdatefmt_cop_EG = {
     },
     
     testDateFmtShortTimeComponentsHMSA_cop_EG: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({locale: "cop-EG", type: "time", time: "hmsa"});
+        test.expect(2);
         test.ok(fmt !== null);
         
         var date = new CopticDate({
@@ -1050,13 +1050,13 @@ module.exports.testdatefmt_cop_EG = {
     },
     
     testDateFmtShortTimeComponentsHMSZ_cop_EG: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({
             locale: "cop-EG", 
             type: "time", 
             time: "hmsz", 
             timezone: "Africa/Cairo"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var date = new CopticDate({
@@ -1074,13 +1074,13 @@ module.exports.testdatefmt_cop_EG = {
     },
     
     testDateFmtShortTimeComponentsHMSAZ_cop_EG: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({
             locale: "cop-EG", 
             type: "time", 
             time: "hmsaz", 
             timezone: "Africa/Cairo"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var date = new CopticDate({
@@ -1099,8 +1099,8 @@ module.exports.testdatefmt_cop_EG = {
     
     
     testDateFmtFullTimeComponentsS_cop_EG: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({locale: "cop-EG", type: "time", length: "full", time: "s"});
+        test.expect(2);
         test.ok(fmt !== null);
         
         var date = new CopticDate({
@@ -1118,8 +1118,8 @@ module.exports.testdatefmt_cop_EG = {
     },
     
     testDateFmtFullTimeComponentsM_cop_EG: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({locale: "cop-EG", type: "time", length: "full", time: "m"});
+        test.expect(2);
         test.ok(fmt !== null);
         
         var date = new CopticDate({
@@ -1137,8 +1137,8 @@ module.exports.testdatefmt_cop_EG = {
     },
     
     testDateFmtFullTimeComponentsH_cop_EG: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({locale: "cop-EG", type: "time", length: "full", time: "h"});
+        test.expect(2);
         test.ok(fmt !== null);
         
         var date = new CopticDate({
@@ -1156,8 +1156,8 @@ module.exports.testdatefmt_cop_EG = {
     },
     
     testDateFmtFullTimeComponentsMS_cop_EG: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({locale: "cop-EG", type: "time", length: "full", time: "ms"});
+        test.expect(2);
         test.ok(fmt !== null);
         
         var date = new CopticDate({
@@ -1175,8 +1175,8 @@ module.exports.testdatefmt_cop_EG = {
     },
     
     testDateFmtFullTimeComponentsHM_cop_EG: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({locale: "cop-EG", type: "time", length: "full", time: "hm"});
+        test.expect(2);
         test.ok(fmt !== null);
         
         var date = new CopticDate({
@@ -1194,8 +1194,8 @@ module.exports.testdatefmt_cop_EG = {
     },
     
     testDateFmtFullTimeComponentsHMS_cop_EG: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({locale: "cop-EG", type: "time", length: "full", time: "hms"});
+        test.expect(2);
         test.ok(fmt !== null);
         
         var date = new CopticDate({
@@ -1213,8 +1213,8 @@ module.exports.testdatefmt_cop_EG = {
     },
     
     testDateFmtFullTimeComponentsHMA_cop_EG: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({locale: "cop-EG", type: "time", length: "full", time: "hma"});
+        test.expect(2);
         test.ok(fmt !== null);
         
         var date = new CopticDate({
@@ -1232,7 +1232,6 @@ module.exports.testdatefmt_cop_EG = {
     },
     
     testDateFmtFullTimeComponentsHMZ_cop_EG: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({
             locale: "cop-EG", 
             type: "time", 
@@ -1240,6 +1239,7 @@ module.exports.testdatefmt_cop_EG = {
             time: "hmz", 
             timezone: "Africa/Cairo"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var date = new CopticDate({
@@ -1257,7 +1257,6 @@ module.exports.testdatefmt_cop_EG = {
     },
     
     testDateFmtFullTimeComponentsHMAZ_cop_EG: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({
             locale: "cop-EG", 
             type: "time", 
@@ -1265,6 +1264,7 @@ module.exports.testdatefmt_cop_EG = {
             time: "hmaz", 
             timezone: "Africa/Cairo"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var date = new CopticDate({
@@ -1282,8 +1282,8 @@ module.exports.testdatefmt_cop_EG = {
     },
     
     testDateFmtFullTimeComponentsHMSA_cop_EG: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({locale: "cop-EG", type: "time", length: "full", time: "hmsa"});
+        test.expect(2);
         test.ok(fmt !== null);
         
         var date = new CopticDate({
@@ -1301,7 +1301,6 @@ module.exports.testdatefmt_cop_EG = {
     },
     
     testDateFmtFullTimeComponentsHMSZ_cop_EG: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({
             locale: "cop-EG", 
             type: "time", 
@@ -1309,6 +1308,7 @@ module.exports.testdatefmt_cop_EG = {
             time: "hmsz", 
             timezone: "Africa/Cairo"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var date = new CopticDate({
@@ -1326,7 +1326,6 @@ module.exports.testdatefmt_cop_EG = {
     },
     
     testDateFmtFullTimeComponentsHMSAZ_cop_EG: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({
             locale: "cop-EG", 
             type: "time", 
@@ -1334,6 +1333,7 @@ module.exports.testdatefmt_cop_EG = {
             time: "hmsaz", 
             timezone: "Africa/Cairo"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var date = new CopticDate({
@@ -1351,7 +1351,6 @@ module.exports.testdatefmt_cop_EG = {
     },
     
     testDateFmtWithTimeZoneAndNoDST_cop_EG: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({
             locale: "cop-EG", 
             type: "time", 
@@ -1359,6 +1358,7 @@ module.exports.testdatefmt_cop_EG = {
             time: "hmsz", 
             timezone: "Africa/Cairo"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var date = new CopticDate({
@@ -1377,11 +1377,11 @@ module.exports.testdatefmt_cop_EG = {
     },
     
     testDateFmtFormatRelativeWithinMinuteAfter_cop_EG: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({
             locale: "cop-EG",
             length: "full"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var reference = new CopticDate({
@@ -1408,11 +1408,11 @@ module.exports.testdatefmt_cop_EG = {
         test.done();
     },
     testDateFmtFormatRelativeWithinMinuteBefore_cop_EG: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({
             locale: "cop-EG",
             length: "full"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var reference = new CopticDate({
@@ -1439,11 +1439,11 @@ module.exports.testdatefmt_cop_EG = {
         test.done();
     },
     testDateFmtFormatRelativeWithinHourAfter_cop_EG: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({
             locale: "cop-EG",
             length: "full"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var reference = new CopticDate({
@@ -1470,11 +1470,11 @@ module.exports.testdatefmt_cop_EG = {
         test.done();
     },
     testDateFmtFormatRelativeWithinHourBefore_cop_EG: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({
             locale: "cop-EG",
             length: "full"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var reference = new CopticDate({
@@ -1501,11 +1501,11 @@ module.exports.testdatefmt_cop_EG = {
         test.done();
     },
     testDateFmtFormatRelativeWithinDayAfter_cop_EG: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({
             locale: "cop-EG",
             length: "full"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var reference = new CopticDate({
@@ -1532,11 +1532,11 @@ module.exports.testdatefmt_cop_EG = {
         test.done();
     },
     testDateFmtFormatRelativeWithinDayBefore_cop_EG: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({
             locale: "cop-EG",
             length: "full"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var reference = new CopticDate({
@@ -1564,11 +1564,11 @@ module.exports.testdatefmt_cop_EG = {
     },
     
     testDateFmtFormatRelativeWithinFortnightAfter_cop_EG: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({
             locale: "cop-EG",
             length: "full"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var reference = new CopticDate({
@@ -1595,11 +1595,11 @@ module.exports.testdatefmt_cop_EG = {
         test.done();
     },
     testDateFmtFormatRelativeWithinFortnightBefore_cop_EG: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({
             locale: "cop-EG",
             length: "full"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var reference = new CopticDate({
@@ -1627,11 +1627,11 @@ module.exports.testdatefmt_cop_EG = {
     },
     
     testDateFmtFormatRelativeWithinQuarterAfter_cop_EG: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({
             locale: "cop-EG",
             length: "full"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var reference = new CopticDate({
@@ -1658,11 +1658,11 @@ module.exports.testdatefmt_cop_EG = {
         test.done();
     },
     testDateFmtFormatRelativeWithinQuarterBefore_cop_EG: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({
             locale: "cop-EG",
             length: "full"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var reference = new CopticDate({
@@ -1690,11 +1690,11 @@ module.exports.testdatefmt_cop_EG = {
     },
     
     testDateFmtFormatRelativeWithinTwoYearsAfter_cop_EG: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({
             locale: "cop-EG",
             length: "full"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var reference = new CopticDate({
@@ -1721,11 +1721,11 @@ module.exports.testdatefmt_cop_EG = {
         test.done();
     },
     testDateFmtFormatRelativeWithinTwoYearsBefore_cop_EG: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({
             locale: "cop-EG",
             length: "full"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var reference = new CopticDate({
@@ -1753,11 +1753,11 @@ module.exports.testdatefmt_cop_EG = {
     },
     
     testDateFmtFormatRelativeYearsAfter_cop_EG: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({
             locale: "cop-EG",
             length: "full"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var reference = new CopticDate({
@@ -1784,11 +1784,11 @@ module.exports.testdatefmt_cop_EG = {
         test.done();
     },
     testDateFmtFormatRelativeYearsBefore_cop_EG: function(test) {
-        test.expect(2);
         var fmt = new DateFmt({
             locale: "cop-EG",
             length: "full"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var reference = new CopticDate({

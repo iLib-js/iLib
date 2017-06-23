@@ -32,18 +32,17 @@ module.exports.testmass = {
     },
 
     testMassMassConstructor: function(test) {
-        test.expect(1);
         var m = new MassUnit({
             unit: "kg",
             amount: 2
         });
     
+        test.expect(1);
         test.ok(m !== null);
         test.done();
     },
     
     testMassMassConvertGramToKG: function(test) {
-        test.expect(3);
         var m1 = new MassUnit({
             unit: "g",
             amount: 3000
@@ -53,6 +52,7 @@ module.exports.testmass = {
             amount: m1
         });
     
+        test.expect(3);
         test.ok(m1 !== null);
         test.ok(m2 !== null);
     
@@ -61,55 +61,54 @@ module.exports.testmass = {
     },
     
     testMassStaticConvert1: function(test) {
-        test.expect(1);
         var m = MassUnit.convert("long ton", "kg", 10000);
     
+        test.expect(1);
         test.roughlyEqual(0.00001, m, 9.842065);
         test.done();
     },
     
     testMassStaticConvertWithString: function(test) {
-        test.expect(1);
         var m = MassUnit.convert("tonne", "pound", "1000");
     
+        test.expect(1);
         test.equal(m, 0.453592);
         test.done();
     },
     
     testMassStaticConvert2: function(test) {
-        test.expect(1);
         var m = MassUnit.convert("short ton", "ounce", 10000);
     
+        test.expect(1);
         test.equal(m, 0.3125);
         test.done();
     },
     
     testMassStaticConvert3: function(test) {
-        test.expect(1);
         var m = MassUnit.convert("st", "gram", 10000);
     
+        test.expect(1);
         test.equal(m, 1.57473);
         test.done();
     },
     
     testMassStaticConvert4: function(test) {
-        test.expect(1);
         var m = MassUnit.convert("kg", "mg", 1000000);
     
+        test.expect(1);
         test.equal(m, 1);
         test.done();
     },
     
     testMassStaticConvert5: function(test) {
-        test.expect(1);
         var m = MassUnit.convert("lb", "mcg", 1000000000);
     
+        test.expect(1);
         test.roughlyEqual(0.0001, m, 2.20462);
         test.done();
     },
     
     testMassScale1: function(test) {
-        test.expect(2);
         var m = new MassUnit({
             unit: "mcg",
             amount: 10000000
@@ -117,13 +116,13 @@ module.exports.testmass = {
     
         m = m.scale("metric");
     
+        test.expect(2);
         test.equal(m.amount, 10);
         test.equal(m.unit, "gram");
         test.done();
     },
     
     testMassScale2: function(test) {
-        test.expect(2);
         var m = new MassUnit({
             unit: "g",
             amount: 0.00001
@@ -131,13 +130,13 @@ module.exports.testmass = {
     
         m = m.scale("metric");
     
+        test.expect(2);
         test.equal(m.amount, 10);
         test.equal(m.unit, "microgram");
         test.done();
     },
     
     testMassScale3: function(test) {
-        test.expect(2);
         var m = new MassUnit({
             unit: "mg",
             amount: 1000000
@@ -145,13 +144,13 @@ module.exports.testmass = {
     
         m = m.scale("metric");
     
+        test.expect(2);
         test.equal(m.amount, 1);
         test.equal(m.unit, "kilogram");
         test.done();
     },
     
     testMassScale4: function(test) {
-        test.expect(2);
         var m = new MassUnit({
             unit: "t",
             amount: 0.0001
@@ -159,13 +158,13 @@ module.exports.testmass = {
     
         m = m.scale("metric");
     
+        test.expect(2);
         test.equal(m.amount, 100);
         test.equal(m.unit, "gram");
         test.done();
     },
     
     testMassScale5: function(test) {
-        test.expect(2);
         var m = new MassUnit({
             unit: "oz",
             amount: 1000
@@ -173,13 +172,13 @@ module.exports.testmass = {
     
         m = m.scale("imperial");
     
+        test.expect(2);
         test.roughlyEqual(0.00001, m.amount, 4.46429);
         test.equal(m.unit, "stone");
         test.done();
     },
     
     testMassScale6: function(test) {
-        test.expect(2);
         var m = new MassUnit({
             unit: "st",
             amount: 0.1
@@ -187,13 +186,13 @@ module.exports.testmass = {
     
         m = m.scale("imperial");
     
+        test.expect(2);
         test.roughlyEqual(0.01, m.amount, 1.4);
         test.equal(m.unit, "pound");
         test.done();
     },
     
     testMassScale7: function(test) {
-        test.expect(2);
         var m = new MassUnit({
             unit: "oz",
             amount: 500000
@@ -201,13 +200,13 @@ module.exports.testmass = {
     
         m = m.scale("imperial");
     
+        test.expect(2);
         test.roughlyEqual(0.001, m.amount, 13.9508929);
         test.equal(m.unit, "long ton");
         test.done();
     },
     
     testMassScale8: function(test) {
-        test.expect(2);
         var m = new MassUnit({
             unit: "lb",
             amount: 10
@@ -215,13 +214,13 @@ module.exports.testmass = {
     
         m = m.scale("imperial");
     
+        test.expect(2);
         test.equal(m.amount, 10);
         test.equal(m.unit, "pound");
         test.done();
     },
     
     testMassScale9: function(test) {
-        test.expect(2);
         var m = new MassUnit({
             unit: "oz",
             amount: 100000
@@ -229,13 +228,13 @@ module.exports.testmass = {
     
         m = m.scale("uscustomary");
     
+        test.expect(2);
         test.roughlyEqual(0.001, m.amount, 3.125);
         test.equal(m.unit, "short ton");
         test.done();
     },
     
     testMassScale10: function(test) {
-        test.expect(2);
         var m = new MassUnit({
             unit: "short ton",
             amount: 0.001
@@ -243,13 +242,13 @@ module.exports.testmass = {
     
         m = m.scale("uscustomary");
     
+        test.expect(2);
         test.roughlyEqual(0.001, m.amount, 2);
         test.equal(m.unit, "pound");
         test.done();
     },
     
     testMassLocalize1: function(test) {
-        test.expect(2);
         var m = new MassUnit({
             unit: "ounce",
             amount: 1000
@@ -257,13 +256,13 @@ module.exports.testmass = {
     
         m = m.localize("en-IN");
     
+        test.expect(2);
         test.roughlyEqual(0.01, m.amount, 28349.5);
         test.equal(m.unit, "gram");
         test.done();
     },
     
     testMassLocalize2: function(test) {
-        test.expect(2);
         var m = new MassUnit({
             unit: "gram",
             amount: 1000
@@ -271,13 +270,13 @@ module.exports.testmass = {
     
         m = m.localize("en-US");
     
+        test.expect(2);
         test.roughlyEqual(0.001, m.amount, 35.274);
         test.equal(m.unit, "ounce");
         test.done();
     },
     
     testMassLocalize3: function(test) {
-        test.expect(2);
         var m = new MassUnit({
             unit: "long ton",
             amount: 1000
@@ -285,13 +284,13 @@ module.exports.testmass = {
     
         m = m.localize("en-GB");
     
+        test.expect(2);
         test.equal(m.amount, 1120);
         test.equal(m.unit, "short ton");
         test.done();
     },
     
     testMassLocalize5: function(test) {
-        test.expect(2);
         var m = new MassUnit({
             unit: "metric ton",
             amount: 1000
@@ -299,13 +298,13 @@ module.exports.testmass = {
     
         m = m.localize("en-GB");
     
+        test.expect(2);
         test.roughlyEqual(0.001, m.amount, 1102.31);
         test.equal(m.unit, "short ton");
         test.done();
     },
     
     testMassGetMeasures: function(test) {
-        test.expect(1);
         var measures = MassUnit.getMeasures();
         var expected = [
             "microgram",
@@ -319,6 +318,7 @@ module.exports.testmass = {
             "metric ton",
             "long ton"
         ];
+        test.expect(1);
         test.equalIgnoringOrder(measures, expected);
         test.done();
     }

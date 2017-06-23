@@ -34,9 +34,9 @@ module.exports.testaddress_TZ = {
     },
 
     testParseAddressTZNormal: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("Mr. Abel H.H. Bilia P.O. Box 10084\nDAR ES SALAAM\nTanzania", {locale: 'en-TZ'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Mr. Abel H.H. Bilia P.O. Box 10084");
         test.equal(parsedAddress.locality, "DAR ES SALAAM");
@@ -48,9 +48,9 @@ module.exports.testaddress_TZ = {
     },
     
     testParseAddressTZNoZip: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("Mr. Abel H.H. Bilia P.O. Box 10084\nDAR ES SALAAM\nTanzania", {locale: 'en-TZ'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Mr. Abel H.H. Bilia P.O. Box 10084");
         test.equal(parsedAddress.locality, "DAR ES SALAAM");
@@ -62,9 +62,9 @@ module.exports.testaddress_TZ = {
     },
     
     testParseAddressTZNoCountry: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("Mr. Abel H.H. Bilia P.O. Box 10084\nDAR ES SALAAM", {locale: 'en-TZ'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Mr. Abel H.H. Bilia P.O. Box 10084");
         test.equal(parsedAddress.locality, "DAR ES SALAAM");
@@ -76,8 +76,8 @@ module.exports.testaddress_TZ = {
     },
     
     testParseAddressTZManyLines: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("Mr. Abel H.H. Bilia\nP.O. Box 10084\nDAR ES SALAAM\nTanzania\n\n\n", {locale: 'en-TZ'});
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Mr. Abel H.H. Bilia, P.O. Box 10084");
         test.equal(parsedAddress.locality, "DAR ES SALAAM");
@@ -89,9 +89,9 @@ module.exports.testaddress_TZ = {
     },
     
     testParseAddressTZOneLine: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("Mr. Abel H.H. Bilia , P.O. Box 10084 , DAR ES SALAAM , Tanzania", {locale: 'en-TZ'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Mr. Abel H.H. Bilia, P.O. Box 10084");
         test.equal(parsedAddress.locality, "DAR ES SALAAM");
@@ -103,9 +103,9 @@ module.exports.testaddress_TZ = {
     },
     
     testParseAddressTZSuperfluousWhitespace: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("\t\t\t\tMr. Abel H.H. Bilia\t\t\tP.O. Box\t\r\r10084\t\nDAR ES SALAAM\n\t Tanzania\n\n\n", {locale: 'en-TZ'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Mr. Abel H.H. Bilia P.O. Box 10084");
         test.equal(parsedAddress.locality, "DAR ES SALAAM");
@@ -117,9 +117,9 @@ module.exports.testaddress_TZ = {
     },
     
     testParseAddressTZNoDelimiters: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("Mr. Abel H.H. Bilia P.O. Box 10084 DAR ES SALAAM Tanzania", {locale: 'en-TZ'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Mr. Abel H.H. Bilia P.O. Box 10084");
         test.equal(parsedAddress.locality, "DAR ES SALAAM");
@@ -131,9 +131,9 @@ module.exports.testaddress_TZ = {
     },
     
     testParseAddressTZFromUS: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("Mr. Abel H.H. Bilia P.O. Box 10084\nDAR ES SALAAM\nTanzania", {locale: 'en-US'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Mr. Abel H.H. Bilia P.O. Box 10084");
         test.equal(parsedAddress.locality, "DAR ES SALAAM");
@@ -145,7 +145,6 @@ module.exports.testaddress_TZ = {
     },
     
     testFormatAddressTZ: function(test) {
-        test.expect(1);
         var parsedAddress = new Address({
             streetAddress: "Mr. Abel H.H. Bilia P.O. Box 10084",
             locality: "DAR ES SALAAM",
@@ -155,12 +154,12 @@ module.exports.testaddress_TZ = {
         
         var expected = "Mr. Abel H.H. Bilia P.O. Box 10084\nDAR ES SALAAM\nTanzania";
         var formatter = new AddressFmt({locale: 'en-TZ'});
+        test.expect(1);
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     },
     
     testFormatAddressTZFromUS: function(test) {
-        test.expect(1);
         var parsedAddress = new Address({
             streetAddress: "Mr. Abel H.H. Bilia P.O. Box 10084",
             locality: "DAR ES SALAAM",
@@ -170,6 +169,7 @@ module.exports.testaddress_TZ = {
         
         var expected = "Mr. Abel H.H. Bilia P.O. Box 10084\nDAR ES SALAAM\nTanzania";
         var formatter = new AddressFmt({locale: 'en-US'});
+        test.expect(1);
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     }

@@ -37,9 +37,9 @@ module.exports.testaddress_BE = {
     },
 
     testParseAddressBENormal: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("31, Place de Brouckere\n1000 Brussels\nBelgium", {locale: 'nl-BE'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "31, Place de Brouckere");
         test.equal(parsedAddress.locality, "Brussels");
@@ -51,9 +51,9 @@ module.exports.testaddress_BE = {
     },
     
     testParseAddressBEOtherNormal: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("31, Place de Brouckère\n1000 Bruxelles\nBelgium", {locale: 'fr-BE'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "31, Place de Brouckère");
         test.equal(parsedAddress.locality, "Bruxelles");
@@ -66,9 +66,9 @@ module.exports.testaddress_BE = {
     },
     
     testParseAddressBENoZip: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("31, Place de Brouckère\nBruxelles\nBelgium", {locale: 'fr-BE'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "31, Place de Brouckère");
         test.equal(parsedAddress.locality, "Bruxelles");
@@ -81,9 +81,9 @@ module.exports.testaddress_BE = {
     
     
     testParseAddressBEManyLines: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("31\nPlace\nde Brouckere\n1000\nBrussels\nBelgium", {locale: 'nl-BE'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "31, Place, de Brouckere");
         test.equal(parsedAddress.locality, "Brussels");
@@ -95,9 +95,9 @@ module.exports.testaddress_BE = {
     },
     
     testParseAddressBEOneLine: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("31, Place de Brouckere , 1000 Brussels , Belgium", {locale: 'nl-BE'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "31, Place de Brouckere");
         test.equal(parsedAddress.locality, "Brussels");
@@ -111,9 +111,9 @@ module.exports.testaddress_BE = {
     
     
     testParseAddressBENoDelimiters: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("31 Place de Brouckere 1000 Brussels Belgium", {locale: 'nl-BE'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "31 Place de Brouckere");
         test.equal(parsedAddress.locality, "Brussels");
@@ -127,11 +127,11 @@ module.exports.testaddress_BE = {
     
     
     testParseAddressBEFromUS: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("31, Place de Brouckere , 1000 Brussels , Belgium", {locale: 'en-US'});
         
         // the country name is in English because this address is for a contact in a US database
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "31, Place de Brouckere");
         test.equal(parsedAddress.locality, "Brussels");
@@ -143,7 +143,6 @@ module.exports.testaddress_BE = {
     },
     
     testFormatAddressBE: function(test) {
-        test.expect(1);
         var parsedAddress = new Address({
             streetAddress: "31, Place de Brouckere",
             locality: "Brussels",
@@ -154,12 +153,12 @@ module.exports.testaddress_BE = {
         
         var expected = "31, Place de Brouckere\n1000 Brussels\nBelgium";
         var formatter = new AddressFmt({locale: 'nl-BE'});
+        test.expect(1);
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     },
     
     testFormatAddressBEFromUS: function(test) {
-        test.expect(1);
         var parsedAddress = new Address({
             streetAddress: "31, Place de Brouckere",
             locality: "Brussels",
@@ -170,6 +169,7 @@ module.exports.testaddress_BE = {
         
         var expected = "31, Place de Brouckere\n1000 Brussels\nBelgium";
         var formatter = new AddressFmt({locale: 'en-US'});
+        test.expect(1);
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     }

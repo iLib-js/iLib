@@ -36,9 +36,9 @@ module.exports.testaddress_BG = {
     },
 
     testParseAddressBGNormal: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("Georg Popandov, Kukush Str. 2, fl.6, 1309 SOFIA, BULGARIA", {locale: 'bg-BG'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Georg Popandov, Kukush Str. 2, fl.6");
         test.ok(typeof(parsedAddress.region) === "undefined");
@@ -50,9 +50,9 @@ module.exports.testaddress_BG = {
     },
     
     testParseAddressBGNoZip: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("Georg Popandov, Kukush Str. 2, fl.6, 1309 SOFIA, BULGARIA", {locale: 'bg-BG'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Georg Popandov, Kukush Str. 2, fl.6");
         test.ok(typeof(parsedAddress.region) === "undefined");
@@ -64,9 +64,9 @@ module.exports.testaddress_BG = {
     },
     
     testParseAddressBGManyLines: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("Georg Popandov\nKukush Str. 2, fl.6\n1309 SOFIA\nBULGARIA", {locale: 'bg-BG'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Georg Popandov, Kukush Str. 2, fl.6");
         test.ok(typeof(parsedAddress.region) === "undefined");
@@ -78,9 +78,9 @@ module.exports.testaddress_BG = {
     },
     
     testParseAddressBGOneLine: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("Georg Popandov, Kukush Str. 2, fl.6, 1309 SOFIA, BULGARIA", {locale: 'bg-BG'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Georg Popandov, Kukush Str. 2, fl.6");
         test.ok(typeof(parsedAddress.region) === "undefined");
@@ -92,9 +92,9 @@ module.exports.testaddress_BG = {
     },
     
     testParseAddressBGSuperfluousWhitespace: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("Georg Popandov, Kukush Str. 2, fl.6  \n\t\n 1309 SOFIA\t\n\n BULGARIA  \n  \t\t\t", {locale: 'bg-BG'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Georg Popandov, Kukush Str. 2, fl.6");
         test.ok(typeof(parsedAddress.region) === "undefined");
@@ -106,9 +106,9 @@ module.exports.testaddress_BG = {
     },
     
     testParseAddressBGNoDelimiters: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("Georg Popandov Kukush Str. 2 fl.6 1309 SOFIA BULGARIA", {locale: 'bg-BG'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Georg Popandov Kukush Str. 2 fl.6");
         test.ok(typeof(parsedAddress.region) === "undefined");
@@ -120,9 +120,9 @@ module.exports.testaddress_BG = {
     },
     
     testParseAddressBGSpecialChars: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("Джордж Попандов, Ул. Кукуш. 2, ет.6, 1309 СОФИЯ, БЪЛГАРИЯ", {locale: 'bg-BG'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Джордж Попандов, Ул. Кукуш. 2, ет.6");
         test.ok(typeof(parsedAddress.region) === "undefined");
@@ -134,11 +134,11 @@ module.exports.testaddress_BG = {
     },
     
     testParseAddressBGFromUS: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("Georg Popandov, Kukush Str. 2, fl.6, 1309 SOFIA, BULGARIA", {locale: 'en-US'});
         
         // the country name is in English because this address is for a contact in a US database
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Georg Popandov, Kukush Str. 2, fl.6");
         test.ok(typeof(parsedAddress.region) === "undefined");
@@ -150,7 +150,6 @@ module.exports.testaddress_BG = {
     },
     
     testFormatAddressBG: function(test) {
-        test.expect(1);
         var parsedAddress = new Address({
             streetAddress: "Georg Popandov, Kukush Str. 2, fl.6",
             locality: "1309 SOFIA",
@@ -160,12 +159,12 @@ module.exports.testaddress_BG = {
         
         var expected = "Georg Popandov, Kukush Str. 2, fl.6\n1309 SOFIA\nBULGARIA";
         var formatter = new AddressFmt({locale: 'bg-BG'});
+        test.expect(1);
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     },
     
     testFormatAddressBGFromUS: function(test) {
-        test.expect(1);
         var parsedAddress = new Address({
             streetAddress: "Georg Popandov, Kukush Str. 2, fl.6",
             country: "BULGARIA",
@@ -175,6 +174,7 @@ module.exports.testaddress_BG = {
         
         var expected = "Georg Popandov, Kukush Str. 2, fl.6\n1309 SOFIA\nBULGARIA";
         var formatter = new AddressFmt({locale: 'en-US'});
+        test.expect(1);
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     }

@@ -34,7 +34,6 @@ module.exports.testcollation_ja = {
     },
 
     testJSCollatorQuatKanji_ja: function(test) {
-        test.expect(37);
         var col = new Collator({
             locale: "ja-JP",
             useNative: false,
@@ -44,6 +43,7 @@ module.exports.testcollation_ja = {
     
         // kanji are all primary differences from each other
     
+        test.expect(37);
         test.ok(typeof(col) !== "undefined");
         test.ok("鯵 < 允", col.compare("鯵", "允") < 0);
         test.ok("允 < 渦", col.compare("允", "渦") < 0);
@@ -85,7 +85,6 @@ module.exports.testcollation_ja = {
     },
     
     testJSCollatorTerKanji_ja: function(test) {
-        test.expect(37);
         var col = new Collator({
             locale: "ja-JP",
             useNative: false,
@@ -95,6 +94,7 @@ module.exports.testcollation_ja = {
     
         // kanji are all primary differences from each other
         
+        test.expect(37);
         test.ok(typeof(col) !== "undefined");
         test.ok("鯵 < 允", col.compare("鯵", "允") < 0);
         test.ok("允 < 渦", col.compare("允", "渦") < 0);
@@ -136,7 +136,6 @@ module.exports.testcollation_ja = {
     },
     
     testJSCollatorSecKanji_ja: function(test) {
-        test.expect(37);
         var col = new Collator({
             locale: "ja-JP",
             useNative: false,
@@ -146,6 +145,7 @@ module.exports.testcollation_ja = {
     
         // kanji are all primary differences from each other
         
+        test.expect(37);
         test.ok(typeof(col) !== "undefined");
         test.ok("鯵 < 允", col.compare("鯵", "允") < 0);
         test.ok("允 < 渦", col.compare("允", "渦") < 0);
@@ -187,7 +187,6 @@ module.exports.testcollation_ja = {
     },
     
     testJSCollatorPriKanji_ja: function(test) {
-        test.expect(37);
         var col = new Collator({
             locale: "ja-JP",
             useNative: false,
@@ -197,6 +196,7 @@ module.exports.testcollation_ja = {
     
         // kanji are all primary differences from each other
         
+        test.expect(37);
         test.ok(typeof(col) !== "undefined");
         test.ok("鯵 < 允", col.compare("鯵", "允") < 0);
         test.ok("允 < 渦", col.compare("允", "渦") < 0);
@@ -238,7 +238,6 @@ module.exports.testcollation_ja = {
     },
     
     testJSCollatorHiraganaQuat_ja: function(test) {
-        test.expect(100);
         var col = new Collator({
             locale: "ja-JP",
             useNative: false,
@@ -246,6 +245,7 @@ module.exports.testcollation_ja = {
             usage: "search"
         });
     
+        test.expect(100);
         test.ok(typeof(col) !== "undefined");
     
         // あ い う ゔ ゔ え お か が が き ぎ く ぐ ぐ け げ げ こ ご ご さ ざ ざ し じ じ す ず ず せ ぜ ぜ そ ぞ ぞ た だ だ ち ぢ ぢ つ づ づ て で で と ど ど な に ぬ ね の は ば ば ぱ ぱ ひ び び ぴ ぴ ふ ぶ ぶ ぷ ぷ へ べ べ ぺ ぺ ほ ぼ ぼ ぽ ぽ ま み む め も や ゆ よ ら り る れ ろ わ ゐ ゑ を ん
@@ -353,7 +353,6 @@ module.exports.testcollation_ja = {
     },
     
     testJSCollatorHiraganaTer_ja: function(test) {
-        test.expect(100);
         var col = new Collator({
             locale: "ja-JP",
             useNative: false,
@@ -361,6 +360,7 @@ module.exports.testcollation_ja = {
             usage: "search"
         });
     
+        test.expect(100);
         test.ok(typeof(col) !== "undefined");
     
         // あ い う ゔ ゔ え お か が が き ぎ ぎ く ぐ ぐ け げ げ こ ご ご さ ざ ざ し じ じ す ず ず せ ぜ ぜ そ ぞ ぞ た だ だ ち ぢ ぢ つ づ づ て で で と ど ど な に ぬ ね の は ば ば ぱ ぱ ひ び び ぴ ぴ ふ ぶ ぶ ぷ ぷ へ べ べ ぺ ぺ ほ ぼ ぼ ぽ ぽ ま み む め も や ゆ よ ら り る れ ろ わ ゐ ゑ を ん
@@ -468,7 +468,6 @@ module.exports.testcollation_ja = {
     },
     
     testJSCollatorHiraganaSec_ja: function(test) {
-        test.expect(100);
         var col = new Collator({
             locale: "ja-JP",
             useNative: false,
@@ -476,6 +475,7 @@ module.exports.testcollation_ja = {
             usage: "search"
         });
     
+        test.expect(100);
         test.ok(typeof(col) !== "undefined");
     
         // あ い う ゔ ゔ え お か が が き ぎ ぎ く ぐ ぐ け げ げ こ ご ご さ ざ ざ し じ じ す ず ず せ ぜ ぜ そ ぞ ぞ た だ だ ち ぢ ぢ つ づ づ て で で と ど ど な に ぬ ね の は ば ば ぱ ぱ ひ び び ぴ ぴ ふ ぶ ぶ ぷ ぷ へ べ べ ぺ ぺ ほ ぼ ぼ ぽ ぽ ま み む め も や ゆ よ ら り る れ ろ わ ゐ ゑ を ん
@@ -583,7 +583,6 @@ module.exports.testcollation_ja = {
     },
     
     testJSCollatorHiraganaPri_ja: function(test) {
-        test.expect(100);
         var col = new Collator({
             locale: "ja-JP",
             useNative: false,
@@ -591,6 +590,7 @@ module.exports.testcollation_ja = {
             usage: "search"
         });
     
+        test.expect(100);
         test.ok(typeof(col) !== "undefined");
     
         // あ い う ゔ ゔ え お か が が き ぎ ぎ く ぐ ぐ け げ げ こ ご ご さ ざ ざ し じ じ す ず ず せ ぜ ぜ そ ぞ ぞ た だ だ ち ぢ ぢ つ づ づ て で で と ど ど な に ぬ ね の は ば ば ぱ ぱ ひ び び ぴ ぴ ふ ぶ ぶ ぷ ぷ へ べ べ ぺ ぺ ほ ぼ ぼ ぽ ぽ ま み む め も や ゆ よ ら り る れ ろ わ ゐ ゑ を ん
@@ -698,7 +698,6 @@ module.exports.testcollation_ja = {
     },
     
     testJSCollatorHiraganaLengthMarksQuat_ja: function(test) {
-        test.expect(86);
         var col = new Collator({
             locale: "ja-JP",
             useNative: false,
@@ -706,6 +705,7 @@ module.exports.testcollation_ja = {
             usage: "search"
         });
     
+        test.expect(86);
         test.ok(typeof(col) !== "undefined");
     
         // あ い う ゔ ゔ え お か が が き ぎ く ぐ ぐ け げ げ こ ご ご さ ざ ざ し じ じ す ず ず せ ぜ ぜ そ ぞ ぞ た だ だ ち ぢ ぢ つ づ づ て で で と ど ど な に ぬ ね の は ば ば ぱ ぱ ひ び び ぴ ぴ ふ ぶ ぶ ぷ ぷ へ べ べ ぺ ぺ ほ ぼ ぼ ぽ ぽ ま み む め も や ゆ よ ら り る れ ろ わ ゐ ゑ を ん
@@ -803,7 +803,6 @@ module.exports.testcollation_ja = {
     },
     
     testJSCollatorHiraganaLengthMarksTer_ja: function(test) {
-        test.expect(86);
         var col = new Collator({
             locale: "ja-JP",
             useNative: false,
@@ -811,6 +810,7 @@ module.exports.testcollation_ja = {
             usage: "search"
         });
     
+        test.expect(86);
         test.ok(typeof(col) !== "undefined");
     
         // あ い う ゔ ゔ え お か が が き ぎ く ぐ ぐ け げ げ こ ご ご さ ざ ざ し じ じ す ず ず せ ぜ ぜ そ ぞ ぞ た だ だ ち ぢ ぢ つ づ づ て で で と ど ど な に ぬ ね の は ば ば ぱ ぱ ひ び び ぴ ぴ ふ ぶ ぶ ぷ ぷ へ べ べ ぺ ぺ ほ ぼ ぼ ぽ ぽ ま み む め も や ゆ よ ら り る れ ろ わ ゐ ゑ を ん
@@ -908,7 +908,6 @@ module.exports.testcollation_ja = {
     },
     
     testJSCollatorHiraganaLengthMarksSec_ja: function(test) {
-        test.expect(86);
         var col = new Collator({
             locale: "ja-JP",
             useNative: false,
@@ -916,6 +915,7 @@ module.exports.testcollation_ja = {
             usage: "search"
         });
     
+        test.expect(86);
         test.ok(typeof(col) !== "undefined");
     
         // あ い う ゔ ゔ え お か が が き ぎ く ぐ ぐ け げ げ こ ご ご さ ざ ざ し じ じ す ず ず せ ぜ ぜ そ ぞ ぞ た だ だ ち ぢ ぢ つ づ づ て で で と ど ど な に ぬ ね の は ば ば ぱ ぱ ひ び び ぴ ぴ ふ ぶ ぶ ぷ ぷ へ べ べ ぺ ぺ ほ ぼ ぼ ぽ ぽ ま み む め も や ゆ よ ら り る れ ろ わ ゐ ゑ を ん
@@ -1013,7 +1013,6 @@ module.exports.testcollation_ja = {
     },
     
     testJSCollatorHiraganaLengthMarksPri_ja: function(test) {
-        test.expect(86);
         var col = new Collator({
             locale: "ja-JP",
             useNative: false,
@@ -1021,6 +1020,7 @@ module.exports.testcollation_ja = {
             usage: "search"
         });
     
+        test.expect(86);
         test.ok(typeof(col) !== "undefined");
     
         // あ い う ゔ ゔ え お か が が き ぎ く ぐ ぐ け げ げ こ ご ご さ ざ ざ し じ じ す ず ず せ ぜ ぜ そ ぞ ぞ た だ だ ち ぢ ぢ つ づ づ て で で と ど ど な に ぬ ね の は ば ば ぱ ぱ ひ び び ぴ ぴ ふ ぶ ぶ ぷ ぷ へ べ べ ぺ ぺ ほ ぼ ぼ ぽ ぽ ま み む め も や ゆ よ ら り る れ ろ わ ゐ ゑ を ん
@@ -1118,7 +1118,6 @@ module.exports.testcollation_ja = {
     },
     
     testJSCollatorHiraganaIterationMarksQuat_ja: function(test) {
-        test.expect(139);
         var col = new Collator({
             locale: "ja-JP",
             useNative: false,
@@ -1126,6 +1125,7 @@ module.exports.testcollation_ja = {
             usage: "search"
         });
     
+        test.expect(139);
         test.ok(typeof(col) !== "undefined");
     
         // あ い う ゔ ゔ え お か が が き ぎ く ぐ ぐ け げ げ こ ご ご さ ざ ざ し じ じ す ず ず せ ぜ ぜ そ ぞ ぞ た だ だ ち ぢ ぢ つ づ づ て で で と ど ど な に ぬ ね の は ば ば ぱ ぱ ひ び び ぴ ぴ ふ ぶ ぶ ぷ ぷ へ べ べ ぺ ぺ ほ ぼ ぼ ぽ ぽ ま み む め も や ゆ よ ら り る れ ろ わ ゐ ゑ を ん
@@ -1282,7 +1282,6 @@ module.exports.testcollation_ja = {
     },
     
     testJSCollatorHiraganaIterationMarksTer_ja: function(test) {
-        test.expect(139);
         var col = new Collator({
             locale: "ja-JP",
             useNative: false,
@@ -1290,6 +1289,7 @@ module.exports.testcollation_ja = {
             usage: "search"
         });
     
+        test.expect(139);
         test.ok(typeof(col) !== "undefined");
     
         // あ い う ゔ ゔ え お か が が き ぎ く ぐ ぐ け げ げ こ ご ご さ ざ ざ し じ じ す ず ず せ ぜ ぜ そ ぞ ぞ た だ だ ち ぢ ぢ つ づ づ て で で と ど ど な に ぬ ね の は ば ば ぱ ぱ ひ び び ぴ ぴ ふ ぶ ぶ ぷ ぷ へ べ べ ぺ ぺ ほ ぼ ぼ ぽ ぽ ま み む め も や ゆ よ ら り る れ ろ わ ゐ ゑ を ん
@@ -1446,7 +1446,6 @@ module.exports.testcollation_ja = {
     },
     
     testJSCollatorHiraganaIterationMarksSec_ja: function(test) {
-        test.expect(139);
         var col = new Collator({
             locale: "ja-JP",
             useNative: false,
@@ -1454,6 +1453,7 @@ module.exports.testcollation_ja = {
             usage: "search"
         });
     
+        test.expect(139);
         test.ok(typeof(col) !== "undefined");
     
         // あ い う ゔ ゔ え お か が が き ぎ く ぐ ぐ け げ げ こ ご ご さ ざ ざ し じ じ す ず ず せ ぜ ぜ そ ぞ ぞ た だ だ ち ぢ ぢ つ づ づ て で で と ど ど な に ぬ ね の は ば ば ぱ ぱ ひ び び ぴ ぴ ふ ぶ ぶ ぷ ぷ へ べ べ ぺ ぺ ほ ぼ ぼ ぽ ぽ ま み む め も や ゆ よ ら り る れ ろ わ ゐ ゑ を ん
@@ -1610,7 +1610,6 @@ module.exports.testcollation_ja = {
     },
     
     testJSCollatorHiraganaIterationMarksPri_ja: function(test) {
-        test.expect(139);
         var col = new Collator({
             locale: "ja-JP",
             useNative: false,
@@ -1618,6 +1617,7 @@ module.exports.testcollation_ja = {
             usage: "search"
         });
     
+        test.expect(139);
         test.ok(typeof(col) !== "undefined");
     
         // あ い う ゔ ゔ え お か が が き ぎ く ぐ ぐ け げ げ こ ご ご さ ざ ざ し じ じ す ず ず せ ぜ ぜ そ ぞ ぞ た だ だ ち ぢ ぢ つ づ づ て で で と ど ど な に ぬ ね の は ば ば ぱ ぱ ひ び び ぴ ぴ ふ ぶ ぶ ぷ ぷ へ べ べ ぺ ぺ ほ ぼ ぼ ぽ ぽ ま み む め も や ゆ よ ら り る れ ろ わ ゐ ゑ を ん
@@ -1774,7 +1774,6 @@ module.exports.testcollation_ja = {
     },
     
     testJSCollatorKatakanaQuat_ja: function(test) {
-        test.expect(98);
         var col = new Collator({
             locale: "ja-JP",
             useNative: false,
@@ -1782,6 +1781,7 @@ module.exports.testcollation_ja = {
             usage: "search"
         });
     
+        test.expect(98);
         test.ok(typeof(col) !== "undefined");
     
         // ア イ ウ エ オ カ ガ ガ キ ギ ギ ク グ グ ケ ゲ ゲ コ ゴ ゴ サ ザ ザ シ ジ ジ ス ズ ズ セ ゼ ゼ ソ ゾ ゾ タ ダ ダ チ ヂ ヂ ツ ヅ ヅ テ デ デ ト ド ド ナ ニ ヌ ネ ノ ハ バ バ パ パ ヒ ビ ビ ピ ピ フ ブ ブ プ プ ヘ ベ ベ ペ ペ ホ ボ ボ ポ ポ マ ミ ム メ モ ヤ ユ ヨ ラ リ ル レ ロ ワ ヰ ヱ ヲ ン 
@@ -1887,7 +1887,6 @@ module.exports.testcollation_ja = {
     },
     
     testJSCollatorKatakanaTer_ja: function(test) {
-        test.expect(98);
         var col = new Collator({
             locale: "ja-JP",
             useNative: false,
@@ -1895,6 +1894,7 @@ module.exports.testcollation_ja = {
             usage: "search"
         });
     
+        test.expect(98);
         test.ok(typeof(col) !== "undefined");
     
         // ア イ ウ エ オ カ ガ ガ キ ギ ギ ク グ グ ケ ゲ ゲ コ ゴ ゴ サ ザ ザ シ ジ ジ ス ズ ズ セ ゼ ゼ ソ ゾ ゾ タ ダ ダ チ ヂ ヂ ツ ヅ ヅ テ デ デ ト ド ド ナ ニ ヌ ネ ノ ハ バ バ パ パ ヒ ビ ビ ピ ピ フ ブ ブ プ プ ヘ ベ ベ ペ ペ ホ ボ ボ ポ ポ マ ミ ム メ モ ヤ ユ ヨ ラ リ ル レ ロ ワ ヰ ヱ ヲ ン 
@@ -2000,7 +2000,6 @@ module.exports.testcollation_ja = {
     },
     
     testJSCollatorKatakanaSec_ja: function(test) {
-        test.expect(98);
         var col = new Collator({
             locale: "ja-JP",
             useNative: false,
@@ -2008,6 +2007,7 @@ module.exports.testcollation_ja = {
             usage: "search"
         });
     
+        test.expect(98);
         test.ok(typeof(col) !== "undefined");
     
         // ア イ ウ エ オ カ ガ ガ キ ギ ギ ク グ グ ケ ゲ ゲ コ ゴ ゴ サ ザ ザ シ ジ ジ ス ズ ズ セ ゼ ゼ ソ ゾ ゾ タ ダ ダ チ ヂ ヂ ツ ヅ ヅ テ デ デ ト ド ド ナ ニ ヌ ネ ノ ハ バ バ パ パ ヒ ビ ビ ピ ピ フ ブ ブ プ プ ヘ ベ ベ ペ ペ ホ ボ ボ ポ ポ マ ミ ム メ モ ヤ ユ ヨ ラ リ ル レ ロ ワ ヰ ヱ ヲ ン 
@@ -2113,7 +2113,6 @@ module.exports.testcollation_ja = {
     },
     
     testJSCollatorKatakanaPri_ja: function(test) {
-        test.expect(98);
         var col = new Collator({
             locale: "ja-JP",
             useNative: false,
@@ -2121,6 +2120,7 @@ module.exports.testcollation_ja = {
             usage: "search"
         });
     
+        test.expect(98);
         test.ok(typeof(col) !== "undefined");
     
         // ア イ ウ エ オ カ ガ ガ キ ギ ギ ク グ グ ケ ゲ ゲ コ ゴ ゴ サ ザ ザ シ ジ ジ ス ズ ズ セ ゼ ゼ ソ ゾ ゾ タ ダ ダ チ ヂ ヂ ツ ヅ ヅ テ デ デ ト ド ド ナ ニ ヌ ネ ノ ハ バ バ パ パ ヒ ビ ビ ピ ピ フ ブ ブ プ プ ヘ ベ ベ ペ ペ ホ ボ ボ ポ ポ マ ミ ム メ モ ヤ ユ ヨ ラ リ ル レ ロ ワ ヰ ヱ ヲ ン 
@@ -2226,7 +2226,6 @@ module.exports.testcollation_ja = {
     },
     
     testJSCollatorKatakanaLengthMarksQuat_ja: function(test) {
-        test.expect(189);
         var col = new Collator({
             locale: "ja-JP",
             useNative: false,
@@ -2234,6 +2233,7 @@ module.exports.testcollation_ja = {
             usage: "search"
         });
     
+        test.expect(189);
         test.ok(typeof(col) !== "undefined");
     
         // ア イ ウ エ オ カ ガ ガ キ ギ ギ ク グ グ ケ ゲ ゲ コ ゴ ゴ サ ザ ザ シ ジ ジ ス ズ ズ セ ゼ ゼ ソ ゾ ゾ タ ダ ダ チ ヂ ヂ ツ ヅ ヅ テ デ デ ト ド ド ナ ニ ヌ ネ ノ ハ バ バ パ パ ヒ ビ ビ ピ ピ フ ブ ブ プ プ ヘ ベ ベ ペ ペ ホ ボ ボ ポ ポ マ ミ ム メ モ ヤ ユ ヨ ラ リ ル レ ロ ワ ヰ ヱ ヲ ン 
@@ -2434,7 +2434,6 @@ module.exports.testcollation_ja = {
     },
     
     testJSCollatorKatakanaLengthMarksTer_ja: function(test) {
-        test.expect(189);
         var col = new Collator({
             locale: "ja-JP",
             useNative: false,
@@ -2442,6 +2441,7 @@ module.exports.testcollation_ja = {
             usage: "search"
         });
     
+        test.expect(189);
         test.ok(typeof(col) !== "undefined");
     
         // ア イ ウ エ オ カ ガ ガ キ ギ ギ ク グ グ ケ ゲ ゲ コ ゴ ゴ サ ザ ザ シ ジ ジ ス ズ ズ セ ゼ ゼ ソ ゾ ゾ タ ダ ダ チ ヂ ヂ ツ ヅ ヅ テ デ デ ト ド ド ナ ニ ヌ ネ ノ ハ バ バ パ パ ヒ ビ ビ ピ ピ フ ブ ブ プ プ ヘ ベ ベ ペ ペ ホ ボ ボ ポ ポ マ ミ ム メ モ ヤ ユ ヨ ラ リ ル レ ロ ワ ヰ ヱ ヲ ン 
@@ -2642,7 +2642,6 @@ module.exports.testcollation_ja = {
     },
     
     testJSCollatorKatakanaLengthMarksSec_ja: function(test) {
-        test.expect(189);
         var col = new Collator({
             locale: "ja-JP",
             useNative: false,
@@ -2650,6 +2649,7 @@ module.exports.testcollation_ja = {
             usage: "search"
         });
     
+        test.expect(189);
         test.ok(typeof(col) !== "undefined");
     
         // ア イ ウ エ オ カ ガ ガ キ ギ ギ ク グ グ ケ ゲ ゲ コ ゴ ゴ サ ザ ザ シ ジ ジ ス ズ ズ セ ゼ ゼ ソ ゾ ゾ タ ダ ダ チ ヂ ヂ ツ ヅ ヅ テ デ デ ト ド ド ナ ニ ヌ ネ ノ ハ バ バ パ パ ヒ ビ ビ ピ ピ フ ブ ブ プ プ ヘ ベ ベ ペ ペ ホ ボ ボ ポ ポ マ ミ ム メ モ ヤ ユ ヨ ラ リ ル レ ロ ワ ヰ ヱ ヲ ン 
@@ -2850,7 +2850,6 @@ module.exports.testcollation_ja = {
     },
     
     testJSCollatorKatakanaLengthMarksPri_ja: function(test) {
-        test.expect(189);
         var col = new Collator({
             locale: "ja-JP",
             useNative: false,
@@ -2858,6 +2857,7 @@ module.exports.testcollation_ja = {
             usage: "search"
         });
     
+        test.expect(189);
         test.ok(typeof(col) !== "undefined");
     
         // ア イ ウ エ オ カ ガ ガ キ ギ ギ ク グ グ ケ ゲ ゲ コ ゴ ゴ サ ザ ザ シ ジ ジ ス ズ ズ セ ゼ ゼ ソ ゾ ゾ タ ダ ダ チ ヂ ヂ ツ ヅ ヅ テ デ デ ト ド ド ナ ニ ヌ ネ ノ ハ バ バ パ パ ヒ ビ ビ ピ ピ フ ブ ブ プ プ ヘ ベ ベ ペ ペ ホ ボ ボ ポ ポ マ ミ ム メ モ ヤ ユ ヨ ラ リ ル レ ロ ワ ヰ ヱ ヲ ン 
@@ -3058,7 +3058,6 @@ module.exports.testcollation_ja = {
     },
     
     testJSCollatorKatakanaIterationMarksQuat_ja: function(test) {
-        test.expect(310);
         var col = new Collator({
             locale: "ja-JP",
             useNative: false,
@@ -3066,6 +3065,7 @@ module.exports.testcollation_ja = {
             usage: "search"
         });
     
+        test.expect(310);
         test.ok(typeof(col) !== "undefined");
     
         // ア イ ウ エ オ カ ガ ガ キ ギ ギ ク グ グ ケ ゲ ゲ コ ゴ ゴ サ ザ ザ シ ジ ジ ス ズ ズ セ ゼ ゼ ソ ゾ ゾ タ ダ ダ チ ヂ ヂ ツ ヅ ヅ テ デ デ ト ド ド ナ ニ ヌ ネ ノ ハ バ バ パ パ ヒ ビ ビ ピ ピ フ ブ ブ プ プ ヘ ベ ベ ペ ペ ホ ボ ボ ポ ポ マ ミ ム メ モ ヤ ユ ヨ ラ リ ル レ ロ ワ ヰ ヱ ヲ ン
@@ -3429,7 +3429,6 @@ module.exports.testcollation_ja = {
     },
     
     testJSCollatorKatakanaIterationMarksTer_ja: function(test) {
-        test.expect(310);
         var col = new Collator({
             locale: "ja-JP",
             useNative: false,
@@ -3437,6 +3436,7 @@ module.exports.testcollation_ja = {
             usage: "search"
         });
     
+        test.expect(310);
         test.ok(typeof(col) !== "undefined");
     
         // ア イ ウ エ オ カ ガ ガ キ ギ ギ ク グ グ ケ ゲ ゲ コ ゴ ゴ サ ザ ザ シ ジ ジ ス ズ ズ セ ゼ ゼ ソ ゾ ゾ タ ダ ダ チ ヂ ヂ ツ ヅ ヅ テ デ デ ト ド ド ナ ニ ヌ ネ ノ ハ バ バ パ パ ヒ ビ ビ ピ ピ フ ブ ブ プ プ ヘ ベ ベ ペ ペ ホ ボ ボ ポ ポ マ ミ ム メ モ ヤ ユ ヨ ラ リ ル レ ロ ワ ヰ ヱ ヲ ン
@@ -3800,7 +3800,6 @@ module.exports.testcollation_ja = {
     },
     
     testJSCollatorKatakanaIterationMarksSec_ja: function(test) {
-        test.expect(310);
         var col = new Collator({
             locale: "ja-JP",
             useNative: false,
@@ -3808,6 +3807,7 @@ module.exports.testcollation_ja = {
             usage: "search"
         });
     
+        test.expect(310);
         test.ok(typeof(col) !== "undefined");
     
         // ア イ ウ エ オ カ ガ ガ キ ギ ギ ク グ グ ケ ゲ ゲ コ ゴ ゴ サ ザ ザ シ ジ ジ ス ズ ズ セ ゼ ゼ ソ ゾ ゾ タ ダ ダ チ ヂ ヂ ツ ヅ ヅ テ デ デ ト ド ド ナ ニ ヌ ネ ノ ハ バ バ パ パ ヒ ビ ビ ピ ピ フ ブ ブ プ プ ヘ ベ ベ ペ ペ ホ ボ ボ ポ ポ マ ミ ム メ モ ヤ ユ ヨ ラ リ ル レ ロ ワ ヰ ヱ ヲ ン
@@ -4171,7 +4171,6 @@ module.exports.testcollation_ja = {
     },
     
     testJSCollatorKatakanaIterationMarksPri_ja: function(test) {
-        test.expect(310);
         var col = new Collator({
             locale: "ja-JP",
             useNative: false,
@@ -4179,6 +4178,7 @@ module.exports.testcollation_ja = {
             usage: "search"
         });
     
+        test.expect(310);
         test.ok(typeof(col) !== "undefined");
     
         // ア イ ウ エ オ カ ガ ガ キ ギ ギ ク グ グ ケ ゲ ゲ コ ゴ ゴ サ ザ ザ シ ジ ジ ス ズ ズ セ ゼ ゼ ソ ゾ ゾ タ ダ ダ チ ヂ ヂ ツ ヅ ヅ テ デ デ ト ド ド ナ ニ ヌ ネ ノ ハ バ バ パ パ ヒ ビ ビ ピ ピ フ ブ ブ プ プ ヘ ベ ベ ペ ペ ホ ボ ボ ポ ポ マ ミ ム メ モ ヤ ユ ヨ ラ リ ル レ ロ ワ ヰ ヱ ヲ ン
@@ -4542,7 +4542,6 @@ module.exports.testcollation_ja = {
     },
     
     testJSCollatorHiraBeforeKataQuat_ja: function(test) {
-        test.expect(99);
         var col = new Collator({
             locale: "ja-JP",
             useNative: false,
@@ -4550,6 +4549,7 @@ module.exports.testcollation_ja = {
             usage: "search"
         });
     
+        test.expect(99);
         test.ok(typeof(col) !== "undefined");
     
         // あ い う え お か が が き ぎ ぎ く ぐ ぐ け げ げ こ ご ご さ ざ ざ し じ じ す ず ず せ ぜ ぜ そ ぞ ぞ た だ だ ち ぢ ぢ つ づ づ て で で と ど ど な に ぬ ね の は ば ば ぱ ぱ ひ び び ぴ ぴ ふ ぶ ぶ ぷ ぷ へ べ べ ぺ ぺ ほ ぼ ぼ ぽ ぽ ま み む め も や ゆ よ ら り る れ ろ わ ゐ ゑ を ん
@@ -4657,7 +4657,6 @@ module.exports.testcollation_ja = {
     },
     
     testJSCollatorHiraBeforeKataTer_ja: function(test) {
-        test.expect(99);
         var col = new Collator({
             locale: "ja-JP",
             useNative: false,
@@ -4665,6 +4664,7 @@ module.exports.testcollation_ja = {
             usage: "search"
         });
     
+        test.expect(99);
         test.ok(typeof(col) !== "undefined");
     
         // あ い う え お か が が き ぎ ぎ く ぐ ぐ け げ げ こ ご ご さ ざ ざ し じ じ す ず ず せ ぜ ぜ そ ぞ ぞ た だ だ ち ぢ ぢ つ づ づ て で で と ど ど な に ぬ ね の は ば ば ぱ ぱ ひ び び ぴ ぴ ふ ぶ ぶ ぷ ぷ へ べ べ ぺ ぺ ほ ぼ ぼ ぽ ぽ ま み む め も や ゆ よ ら り る れ ろ わ ゐ ゑ を ん
@@ -4772,7 +4772,6 @@ module.exports.testcollation_ja = {
     },
     
     testJSCollatorHiraBeforeKataSec_ja: function(test) {
-        test.expect(99);
         var col = new Collator({
             locale: "ja-JP",
             useNative: false,
@@ -4780,6 +4779,7 @@ module.exports.testcollation_ja = {
             usage: "search"
         });
     
+        test.expect(99);
         test.ok(typeof(col) !== "undefined");
     
         // あ い う え お か が が き ぎ ぎ く ぐ ぐ け げ げ こ ご ご さ ざ ざ し じ じ す ず ず せ ぜ ぜ そ ぞ ぞ た だ だ ち ぢ ぢ つ づ づ て で で と ど ど な に ぬ ね の は ば ば ぱ ぱ ひ び び ぴ ぴ ふ ぶ ぶ ぷ ぷ へ べ べ ぺ ぺ ほ ぼ ぼ ぽ ぽ ま み む め も や ゆ よ ら り る れ ろ わ ゐ ゑ を ん
@@ -4887,7 +4887,6 @@ module.exports.testcollation_ja = {
     },
     
     testJSCollatorHiraBeforeKataPri_ja: function(test) {
-        test.expect(99);
         var col = new Collator({
             locale: "ja-JP",
             useNative: false,
@@ -4895,6 +4894,7 @@ module.exports.testcollation_ja = {
             usage: "search"
         });
     
+        test.expect(99);
         test.ok(typeof(col) !== "undefined");
     
         // あ い う え お か が が き ぎ ぎ く ぐ ぐ け げ げ こ ご ご さ ざ ざ し じ じ す ず ず せ ぜ ぜ そ ぞ ぞ た だ だ ち ぢ ぢ つ づ づ て で で と ど ど な に ぬ ね の は ば ば ぱ ぱ ひ び び ぴ ぴ ふ ぶ ぶ ぷ ぷ へ べ べ ぺ ぺ ほ ぼ ぼ ぽ ぽ ま み む め も や ゆ よ ら り る れ ろ わ ゐ ゑ を ん
@@ -5002,7 +5002,6 @@ module.exports.testcollation_ja = {
     },
     
     testJSCollatorKanaBeforeKanji_ja: function(test) {
-        test.expect(3);
         var col = new Collator({
             locale: "ja-JP",
             useNative: false,
@@ -5010,6 +5009,7 @@ module.exports.testcollation_ja = {
             usage: "search"
         });
     
+        test.expect(3);
         test.ok(typeof(col) !== "undefined");
     
         // あ い う え お か が が き ぎ ぎ く ぐ ぐ け げ げ こ ご ご さ ざ ざ し じ じ す ず ず せ ぜ ぜ そ ぞ ぞ た だ だ ち ぢ ぢ つ づ づ て で で と ど ど な に ぬ ね の は ば ば ぱ ぱ ひ び び ぴ ぴ ふ ぶ ぶ ぷ ぷ へ べ べ ぺ ぺ ほ ぼ ぼ ぽ ぽ ま み む め も や ゆ よ ら り る れ ろ わ ゐ ゑ を ん
@@ -5021,7 +5021,6 @@ module.exports.testcollation_ja = {
     },
     
     testJSCollatorSortQuat_ja: function(test) {
-        test.expect(50);
         var col = new Collator({
             locale: "ja-JP",
             useNative: false,
@@ -5029,6 +5028,7 @@ module.exports.testcollation_ja = {
             usage: "sort"
         });
     
+        test.expect(50);
         test.ok(typeof(col) !== "undefined");
     
         test.ok("鯵 < 允", col.compare("鯵", "允") < 0);
@@ -5090,7 +5090,6 @@ module.exports.testcollation_ja = {
     },
     
     testJSCollatorSortTer_ja: function(test) {
-        test.expect(50);
         var col = new Collator({
             locale: "ja-JP",
             useNative: false,
@@ -5100,6 +5099,7 @@ module.exports.testcollation_ja = {
     
         // with usage "sort" all of these should stay the same no matter the sensitivity
         
+        test.expect(50);
         test.ok(typeof(col) !== "undefined");
     
         test.ok("鯵 < 允", col.compare("鯵", "允") < 0);
@@ -5161,7 +5161,6 @@ module.exports.testcollation_ja = {
     },
     
     testJSCollatorSortSec_ja: function(test) {
-        test.expect(50);
         var col = new Collator({
             locale: "ja-JP",
             useNative: false,
@@ -5171,6 +5170,7 @@ module.exports.testcollation_ja = {
     
         // with usage "sort" all of these should stay the same no matter the sensitivity
         
+        test.expect(50);
         test.ok(typeof(col) !== "undefined");
     
         test.ok("鯵 < 允", col.compare("鯵", "允") < 0);
@@ -5232,7 +5232,6 @@ module.exports.testcollation_ja = {
     },
     
     testJSCollatorSortPri_ja: function(test) {
-        test.expect(50);
         var col = new Collator({
             locale: "ja-JP",
             useNative: false,
@@ -5242,6 +5241,7 @@ module.exports.testcollation_ja = {
     
         // with usage "sort" all of these should stay the same no matter the sensitivity
         
+        test.expect(50);
         test.ok(typeof(col) !== "undefined");
     
         test.ok("鯵 < 允", col.compare("鯵", "允") < 0);
@@ -5303,13 +5303,13 @@ module.exports.testcollation_ja = {
     },
     
     testCollatorCase_ja: function(test) {
-        test.expect(2);
         var col = new Collator({
             locale: "ja-JP",
             useNative: false,
             sensitivity: "case",
             usage: "sort"
         });
+        test.expect(2);
         test.ok(typeof(col) !== "undefined");
         
         var input = [
@@ -5430,13 +5430,13 @@ module.exports.testcollation_ja = {
     },
     
     testCollatorPrimary_ja: function(test) {
-        test.expect(2);
         var col = new Collator({
             locale: "ja-JP",
             useNative: false,
             sensitivity: "primary",
             usage: "sort"
         });
+        test.expect(2);
         test.ok(typeof(col) !== "undefined");
     
         var input = [
@@ -5557,7 +5557,6 @@ module.exports.testcollation_ja = {
     },
     
     testJSCollatorQuatLatin_ja: function(test) {
-        test.expect(18);
         var col = new Collator({
             locale: "ja-JP",
             useNative: false,
@@ -5565,6 +5564,7 @@ module.exports.testcollation_ja = {
             usage: "search"
         });
     
+        test.expect(18);
         test.ok(typeof(col) !== "undefined");
     
         // all latin letters
@@ -5589,13 +5589,13 @@ module.exports.testcollation_ja = {
     },
     
     testCollatorPrimaryMixed_ja: function(test) {
-        test.expect(2);
         var col = new Collator({
             locale: "ja-JP",
             useNative: false,
             sensitivity: "primary",
             usage: "sort"
         });
+        test.expect(2);
         test.ok(typeof(col) !== "undefined");
     
         var input = [

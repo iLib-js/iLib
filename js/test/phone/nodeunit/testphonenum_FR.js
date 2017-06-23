@@ -31,8 +31,8 @@ module.exports.phonenum_FR = {
     },
 
     testParseFRFull: function(test) {
-        test.expect(2);
         var parsed = new PhoneNumber("0112345678", {locale: "fr-FR"});
+        test.expect(2);
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = new PhoneNumber({
@@ -47,8 +47,8 @@ module.exports.phonenum_FR = {
     },
     
     testParseFRIgnoreFormatting: function(test) {
-        test.expect(2);
         var parsed = new PhoneNumber("(01) 12 34 56 78", {locale: "fr-FR"});
+        test.expect(2);
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = new PhoneNumber({
@@ -63,8 +63,8 @@ module.exports.phonenum_FR = {
     },
     
     testParseFRIgnoreCrap: function(test) {
-        test.expect(2);
         var parsed = new PhoneNumber("0@11$23%45&678", {locale: "fr-FR"});
+        test.expect(2);
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = new PhoneNumber({
@@ -79,8 +79,8 @@ module.exports.phonenum_FR = {
     },
     
     testParseFRNoAreaCode: function(test) {
-        test.expect(2);
         var parsed = new PhoneNumber("12 34 56 78", {locale: "fr-FR"});
+        test.expect(2);
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = new PhoneNumber({
@@ -93,8 +93,8 @@ module.exports.phonenum_FR = {
     },
     
     testParseFRPlusIDDToUS: function(test) {
-        test.expect(2);
         var parsed = new PhoneNumber("+12028675309", {locale: "fr-FR"});
+        test.expect(2);
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = new PhoneNumber({
@@ -110,8 +110,8 @@ module.exports.phonenum_FR = {
     },
     
     testParseFRIDDToIEMobile: function(test) {
-        test.expect(2);
         var parsed = new PhoneNumber("+353 86 8223689", {locale: "fr-FR"});
+        test.expect(2);
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = new PhoneNumber({
@@ -128,8 +128,8 @@ module.exports.phonenum_FR = {
     
     
     testParseFRZerosIDDToUS: function(test) {
-        test.expect(2);
         var parsed = new PhoneNumber("0012028675309", {locale: "fr-FR"});
+        test.expect(2);
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = new PhoneNumber({
@@ -145,10 +145,10 @@ module.exports.phonenum_FR = {
     },
     
     testParseFRLongAreaCodeNoTrunk: function(test) {
-        test.expect(2);
         // this number uses an area code to start it, but without the trunk, we should
         // not recognize it as an area code
         var parsed = new PhoneNumber("1 23 45 67 89 00", {locale: "fr-FR"});
+        test.expect(2);
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = new PhoneNumber({
@@ -161,10 +161,10 @@ module.exports.phonenum_FR = {
     },
     
     testParseFRLocalNumber: function(test) {
-        test.expect(2);
         // this number uses an area code to start it, but without the trunk, we should
         // not recognize it as an area code
         var parsed = new PhoneNumber("12345678", {locale: "fr-FR"});
+        test.expect(2);
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = new PhoneNumber({
@@ -177,8 +177,8 @@ module.exports.phonenum_FR = {
     },
     
     testParseFRPlusIDDToGB: function(test) {
-        test.expect(2);
         var parsed = new PhoneNumber("+442012345678", {locale: "fr-FR"});
+        test.expect(2);
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = new PhoneNumber({
@@ -194,8 +194,8 @@ module.exports.phonenum_FR = {
     },
     
     testParseFRZerosIDDToGB: function(test) {
-        test.expect(2);
         var parsed = new PhoneNumber("00442012345678", {locale: "fr-FR"});
+        test.expect(2);
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = new PhoneNumber({
@@ -211,8 +211,8 @@ module.exports.phonenum_FR = {
     },
     
     testParseFRDepartments: function(test) {
-        test.expect(2);
         var parsed = new PhoneNumber("0590 123 456", {locale: "fr-FR"});
+        test.expect(2);
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = new PhoneNumber({
@@ -227,8 +227,8 @@ module.exports.phonenum_FR = {
     },
     
     testParseFRInternationalToDepartments: function(test) {
-        test.expect(2);
         var parsed = new PhoneNumber("+33 590 123 456", {locale: "fr-FR"});
+        test.expect(2);
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = new PhoneNumber({
@@ -244,8 +244,8 @@ module.exports.phonenum_FR = {
     },
     
     testParseFRMobileNumber: function(test) {
-        test.expect(2);
         var parsed = new PhoneNumber("0712345678", {locale: "fr-FR"});
+        test.expect(2);
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = new PhoneNumber({
@@ -260,8 +260,8 @@ module.exports.phonenum_FR = {
     },
     
     testParseFRPartial1: function(test) {
-        test.expect(2);
         var parsed = new PhoneNumber("0", {locale: "fr-FR"});
+        test.expect(2);
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = new PhoneNumber({
@@ -274,8 +274,8 @@ module.exports.phonenum_FR = {
     },
     
     testParseFRPartial2: function(test) {
-        test.expect(2);
         var parsed = new PhoneNumber("05", {locale: "fr-FR"});
+        test.expect(2);
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = new PhoneNumber({
@@ -288,8 +288,8 @@ module.exports.phonenum_FR = {
         
     },
     testParseFRPartial3: function(test) {
-        test.expect(2);
         var parsed = new PhoneNumber("051", {locale: "fr-FR"});
+        test.expect(2);
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = new PhoneNumber({
@@ -303,8 +303,8 @@ module.exports.phonenum_FR = {
         
     },
     testParseFRPartial4: function(test) {
-        test.expect(2);
         var parsed = new PhoneNumber("0512", {locale: "fr-FR"});
+        test.expect(2);
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = new PhoneNumber({
@@ -318,8 +318,8 @@ module.exports.phonenum_FR = {
         
     },
     testParseFRPartial5: function(test) {
-        test.expect(2);
         var parsed = new PhoneNumber("05123", {locale: "fr-FR"});
+        test.expect(2);
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = new PhoneNumber({
@@ -333,8 +333,8 @@ module.exports.phonenum_FR = {
         
     },
     testParseFRPartial6: function(test) {
-        test.expect(2);
         var parsed = new PhoneNumber("051234", {locale: "fr-FR"});
+        test.expect(2);
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = new PhoneNumber({
@@ -348,8 +348,8 @@ module.exports.phonenum_FR = {
         
     },
     testParseFRPartial7: function(test) {
-        test.expect(2);
         var parsed = new PhoneNumber("0512345", {locale: "fr-FR"});
+        test.expect(2);
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = new PhoneNumber({
@@ -363,8 +363,8 @@ module.exports.phonenum_FR = {
         
     },
     testParseFRPartial8: function(test) {
-        test.expect(2);
         var parsed = new PhoneNumber("05123456", {locale: "fr-FR"});
+        test.expect(2);
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = new PhoneNumber({
@@ -378,8 +378,8 @@ module.exports.phonenum_FR = {
         
     },
     testParseFRPartial9: function(test) {
-        test.expect(2);
         var parsed = new PhoneNumber("051234567", {locale: "fr-FR"});
+        test.expect(2);
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = new PhoneNumber({
@@ -393,8 +393,8 @@ module.exports.phonenum_FR = {
         
     },
     testParseFRPartial10: function(test) {
-        test.expect(2);
         var parsed = new PhoneNumber("0512345678", {locale: "fr-FR"});
+        test.expect(2);
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = new PhoneNumber({
@@ -411,8 +411,8 @@ module.exports.phonenum_FR = {
     
     // for NOV-113777
     testParseFRLocalNumber: function(test) {
-        test.expect(2);
         var parsed = new PhoneNumber("41551735", {locale: "fr-FR"});
+        test.expect(2);
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = new PhoneNumber({

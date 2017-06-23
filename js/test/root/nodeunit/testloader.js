@@ -33,19 +33,19 @@ module.exports.testloader = {
     },
 
     testLoaderExists: function(test) {
-        test.expect(1);
         if (ilib.isDynData()) {
             var loader = ilib.getLoader();
             
+        test.expect(1);
             test.ok(typeof(loader) !== "undefined");
             test.done();
         }
     },
     
     testLoaderIsAvailable: function(test) {
-        test.expect(2);
         if (ilib.isDynData()) {
             var loader = ilib.getLoader();
+        test.expect(2);
             test.ok(typeof(loader) !== "undefined");
             
             test.ok(loader.isAvailable("dateformats.json"));
@@ -54,9 +54,9 @@ module.exports.testloader = {
     },
     
     testLoaderIsAvailableFalse: function(test) {
-        test.expect(2);
         if (ilib.isDynData()) {
             var loader = ilib.getLoader();
+        test.expect(2);
             test.ok(typeof(loader) !== "undefined");
             
             test.ok(!loader.isAvailable("notavailable.json"));
@@ -65,9 +65,9 @@ module.exports.testloader = {
     },
     
     testLoaderIsAvailableWithDirectory: function(test) {
-        test.expect(2);
         if (ilib.isDynData()) {
             var loader = ilib.getLoader();
+        test.expect(2);
             test.ok(typeof(loader) !== "undefined");
         
             test.ok(loader.isAvailable("am/dateformats.json"));
@@ -76,9 +76,9 @@ module.exports.testloader = {
     },
     
     testLoaderIsAvailableWithDirectories: function(test) {
-        test.expect(2);
         if (ilib.isDynData()) {
             var loader = ilib.getLoader();
+        test.expect(2);
             test.ok(typeof(loader) !== "undefined");
             
             test.ok(loader.isAvailable("und/US/localeinfo.json"));
@@ -87,9 +87,9 @@ module.exports.testloader = {
     },
     
     testLoaderListAvailableFilesNotEmpty: function(test) {
-        test.expect(2);
         if (ilib.isDynData()) {
             var loader = ilib.getLoader();
+        test.expect(2);
             test.ok(typeof(loader) !== "undefined");
             
             var files = loader.listAvailableFiles();
@@ -115,9 +115,9 @@ module.exports.testloader = {
     },
     
     testLoaderLoadFilesSingle: function(test) {
-        test.expect(3);
         if (ilib.isDynData()) {
             var loader = ilib.getLoader();
+        test.expect(3);
             test.ok(typeof(loader) !== "undefined");
         
             var files = loader.loadFiles(["und/US/localeinfo.json"], true, undefined, undefined);
@@ -129,9 +129,9 @@ module.exports.testloader = {
     },
     
     testLoaderLoadFilesSingleRightContents: function(test) {
-        test.expect(5);
         if (ilib.isDynData()) {
             var loader = ilib.getLoader();
+        test.expect(5);
             test.ok(typeof(loader) !== "undefined");
         
             var files = loader.loadFiles(["und/US/localeinfo.json"], true, undefined, undefined);
@@ -146,9 +146,9 @@ module.exports.testloader = {
     },
     
     testLoaderLoadFilesMultiple: function(test) {
-        test.expect(3);
         if (ilib.isDynData()) {
             var loader = ilib.getLoader();
+        test.expect(3);
             test.ok(typeof(loader) !== "undefined");
         
             var files = loader.loadFiles([
@@ -164,9 +164,9 @@ module.exports.testloader = {
     },
     
     testLoaderLoadFilesMultipleRightContents: function(test) {
-        test.expect(16);
         if (ilib.isDynData()) {
             var loader = ilib.getLoader();
+        test.expect(16);
             test.ok(typeof(loader) !== "undefined");
         
             var files = loader.loadFiles([
@@ -197,9 +197,9 @@ module.exports.testloader = {
     },
     
     testLoaderLoadFilesMultipleMissingFile: function(test) {
-        test.expect(3);
         if (ilib.isDynData()) {
             var loader = ilib.getLoader();
+        test.expect(3);
             test.ok(typeof(loader) !== "undefined");
         
             var files = loader.loadFiles([
@@ -216,9 +216,9 @@ module.exports.testloader = {
     },
     
     testLoaderLoadFilesMultipleMissingFileRightContents: function(test) {
-        test.expect(17);
         if (ilib.isDynData()) {
             var loader = ilib.getLoader();
+        test.expect(17);
             test.ok(typeof(loader) !== "undefined");
         
             var files = loader.loadFiles([

@@ -40,12 +40,12 @@ module.exports.testdatefmtrange_fa_IR = {
     },
 
     testDateRngFmtIRRangeinDayShort: function(test) {
-        test.expect(2);
         var fmt = new DateRngFmt({
             locale: "fa-IR", 
             calendar: "gregorian",
             length: "short"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var start = new GregorianDate({
@@ -70,12 +70,12 @@ module.exports.testdatefmtrange_fa_IR = {
         test.done();
     },
     testDateRngFmtIRRangeinDayMedium: function(test) {
-        test.expect(2);
         var fmt = new DateRngFmt({
             locale: "fa-IR", 
             calendar: "gregorian",
             length: "medium"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var start = new GregorianDate({
@@ -100,12 +100,12 @@ module.exports.testdatefmtrange_fa_IR = {
         test.done();
     },
     testDateRngFmtIRRangeinDayLong: function(test) {
-        test.expect(2);
         var fmt = new DateRngFmt({
             locale: "fa-IR", 
             calendar: "gregorian",
             length: "long"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var start = new GregorianDate({
@@ -130,12 +130,12 @@ module.exports.testdatefmtrange_fa_IR = {
         test.done();
     },
     testDateRngFmtIRRangeinDayFull: function(test) {
-        test.expect(2);
         var fmt = new DateRngFmt({
             locale: "fa-IR", 
             calendar: "gregorian",
             length: "full"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var start = new GregorianDate({
@@ -161,12 +161,12 @@ module.exports.testdatefmtrange_fa_IR = {
     },
     
     testDateRngFmtIRRangeNextDayShort: function(test) {
-        test.expect(2);
         var fmt = new DateRngFmt({
             locale: "fa-IR", 
             calendar: "gregorian",
             length: "short"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var start = new GregorianDate({
@@ -192,12 +192,12 @@ module.exports.testdatefmtrange_fa_IR = {
     
     },
     testDateRngFmtIRRangeNextDayMedium: function(test) {
-        test.expect(2);
         var fmt = new DateRngFmt({
             locale: "fa-IR", 
             calendar: "gregorian",
             length: "medium"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var start = new GregorianDate({
@@ -222,12 +222,12 @@ module.exports.testdatefmtrange_fa_IR = {
         test.done();
     },
     testDateRngFmtIRRangeNextDayLong: function(test) {
-        test.expect(2);
         var fmt = new DateRngFmt({
             locale: "fa-IR", 
             calendar: "gregorian",
             length: "long"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var start = new GregorianDate({
@@ -252,12 +252,12 @@ module.exports.testdatefmtrange_fa_IR = {
         test.done();
     },
     testDateRngFmtIRRangeNextDayFull: function(test) {
-        test.expect(2);
         var fmt = new DateRngFmt({
             locale: "fa-IR", 
             calendar: "gregorian",
             length: "full"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var start = new GregorianDate({
@@ -283,12 +283,12 @@ module.exports.testdatefmtrange_fa_IR = {
     },
     
     testDateRngFmtIRRangeMultiDayShort: function(test) {
-        test.expect(2);
         var fmt = new DateRngFmt({
             locale: "fa-IR", 
             calendar: "gregorian",
             length: "short"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var start = new GregorianDate({
@@ -313,12 +313,12 @@ module.exports.testdatefmtrange_fa_IR = {
         test.done();
     },
     testDateRngFmtIRRangeMultiDayMedium: function(test) {
-        test.expect(2);
         var fmt = new DateRngFmt({
             locale: "fa-IR", 
             calendar: "gregorian",
             length: "medium"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var start = new GregorianDate({
@@ -343,12 +343,12 @@ module.exports.testdatefmtrange_fa_IR = {
         test.done();
     },
     testDateRngFmtIRRangeMultiDayLong: function(test) {
-        test.expect(2);
         var fmt = new DateRngFmt({
             locale: "fa-IR", 
             calendar: "gregorian",
             length: "long"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var start = new GregorianDate({
@@ -373,12 +373,12 @@ module.exports.testdatefmtrange_fa_IR = {
         test.done();
     },
     testDateRngFmtIRRangeMultiDayFull: function(test) {
-        test.expect(2);
         var fmt = new DateRngFmt({
             locale: "fa-IR", 
             calendar: "gregorian",
             length: "full"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var start = new GregorianDate({
@@ -404,12 +404,12 @@ module.exports.testdatefmtrange_fa_IR = {
     },
     
     testDateRngFmtIRRangeNextMonthShort: function(test) {
-        test.expect(2);
         var fmt = new DateRngFmt({
             locale: "fa-IR", 
             calendar: "gregorian",
             length: "short"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var start = new GregorianDate({
@@ -434,12 +434,12 @@ module.exports.testdatefmtrange_fa_IR = {
         test.done();
     },
     testDateRngFmtIRRangeNextMonthMedium: function(test) {
-        test.expect(2);
         var fmt = new DateRngFmt({
             locale: "fa-IR", 
             calendar: "gregorian",
             length: "medium"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var start = new GregorianDate({
@@ -464,12 +464,12 @@ module.exports.testdatefmtrange_fa_IR = {
         test.done();
     },
     testDateRngFmtIRRangeNextMonthLong: function(test) {
-        test.expect(2);
         var fmt = new DateRngFmt({
             locale: "fa-IR", 
             calendar: "gregorian",
             length: "long"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var start = new GregorianDate({
@@ -494,12 +494,12 @@ module.exports.testdatefmtrange_fa_IR = {
         test.done();
     },
     testDateRngFmtIRRangeNextMonthFull: function(test) {
-        test.expect(2);
         var fmt = new DateRngFmt({
             locale: "fa-IR", 
             calendar: "gregorian",
             length: "full"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var start = new GregorianDate({
@@ -525,12 +525,12 @@ module.exports.testdatefmtrange_fa_IR = {
     },
     
     testDateRngFmtIRRangeNextYearShort: function(test) {
-        test.expect(2);
         var fmt = new DateRngFmt({
             locale: "fa-IR", 
             calendar: "gregorian",
             length: "short"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var start = new GregorianDate({
@@ -555,12 +555,12 @@ module.exports.testdatefmtrange_fa_IR = {
         test.done();
     },
     testDateRngFmtIRRangeNextYearMedium: function(test) {
-        test.expect(2);
         var fmt = new DateRngFmt({
             locale: "fa-IR", 
             calendar: "gregorian",
             length: "medium"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var start = new GregorianDate({
@@ -585,12 +585,12 @@ module.exports.testdatefmtrange_fa_IR = {
         test.done();
     },
     testDateRngFmtIRRangeNextYearLong: function(test) {
-        test.expect(2);
         var fmt = new DateRngFmt({
             locale: "fa-IR", 
             calendar: "gregorian",
             length: "long"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var start = new GregorianDate({
@@ -615,12 +615,12 @@ module.exports.testdatefmtrange_fa_IR = {
         test.done();
     },
     testDateRngFmtIRRangeNextYearFull: function(test) {
-        test.expect(2);
         var fmt = new DateRngFmt({
             locale: "fa-IR", 
             calendar: "gregorian",
             length: "full"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var start = new GregorianDate({
@@ -646,12 +646,12 @@ module.exports.testdatefmtrange_fa_IR = {
     },
     
     testDateRngFmtIRRangeMultiYearShort: function(test) {
-        test.expect(2);
         var fmt = new DateRngFmt({
             locale: "fa-IR", 
             calendar: "gregorian",
             length: "short"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var start = new GregorianDate({
@@ -676,12 +676,12 @@ module.exports.testdatefmtrange_fa_IR = {
         test.done();
     },
     testDateRngFmtIRRangeMultiYearMedium: function(test) {
-        test.expect(2);
         var fmt = new DateRngFmt({
             locale: "fa-IR", 
             calendar: "gregorian",
             length: "medium"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var start = new GregorianDate({
@@ -706,12 +706,12 @@ module.exports.testdatefmtrange_fa_IR = {
         test.done();
     },
     testDateRngFmtIRRangeMultiYearLong: function(test) {
-        test.expect(2);
         var fmt = new DateRngFmt({
             locale: "fa-IR", 
             calendar: "gregorian",
             length: "long"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var start = new GregorianDate({
@@ -736,12 +736,12 @@ module.exports.testdatefmtrange_fa_IR = {
         test.done();
     },
     testDateRngFmtIRRangeMultiYearFull: function(test) {
-        test.expect(2);
         var fmt = new DateRngFmt({
             locale: "fa-IR", 
             calendar: "gregorian",
             length: "full"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var start = new GregorianDate({
@@ -767,12 +767,12 @@ module.exports.testdatefmtrange_fa_IR = {
     
     },
     testDateRngFmtIRManyYearsFull: function(test) {
-        test.expect(2);
         var fmt = new DateRngFmt({
             locale: "fa-IR", 
             calendar: "gregorian",
             length: "full"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var start = new GregorianDate({
@@ -800,12 +800,12 @@ module.exports.testdatefmtrange_fa_IR = {
     /* Now the persian calendar tests. */
     
     testDateRngFmtPersRangeinDdfayShort_fa_IR: function(test) {
-        test.expect(2);
         var fmt = new DateRngFmt({
             locale: "fa-IR", 
             calendar: "persian",
             length: "short"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var start = new PersianDate({
@@ -830,12 +830,12 @@ module.exports.testdatefmtrange_fa_IR = {
         test.done();
     },
     testDateRngFmtPersRangeinDayMedium_fa_IR: function(test) {
-        test.expect(2);
         var fmt = new DateRngFmt({
             locale: "fa-IR", 
             calendar: "persian",
             length: "medium"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var start = new PersianDate({
@@ -860,12 +860,12 @@ module.exports.testdatefmtrange_fa_IR = {
         test.done();
     },
     testDateRngFmtPersRangeinDayLong_fa_IR: function(test) {
-        test.expect(2);
         var fmt = new DateRngFmt({
             locale: "fa-IR", 
             calendar: "persian",
             length: "long"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var start = new PersianDate({
@@ -890,12 +890,12 @@ module.exports.testdatefmtrange_fa_IR = {
         test.done();
     },
     testDateRngFmtPersRangeinDayFull_fa_IR: function(test) {
-        test.expect(2);
         var fmt = new DateRngFmt({
             locale: "fa-IR", 
             calendar: "persian",
             length: "full"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var start = new PersianDate({
@@ -921,12 +921,12 @@ module.exports.testdatefmtrange_fa_IR = {
     },
     
     testDateRngFmtPersRangeNextDayShort_fa_IR: function(test) {
-        test.expect(2);
         var fmt = new DateRngFmt({
             locale: "fa-IR", 
             calendar: "persian",
             length: "short"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var start = new PersianDate({
@@ -951,12 +951,12 @@ module.exports.testdatefmtrange_fa_IR = {
         test.done();
     },
     testDateRngFmtPersRangeNextDayMedium_fa_IR: function(test) {
-        test.expect(2);
         var fmt = new DateRngFmt({
             locale: "fa-IR", 
             calendar: "persian",
             length: "medium"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var start = new PersianDate({
@@ -981,12 +981,12 @@ module.exports.testdatefmtrange_fa_IR = {
         test.done();
     },
     testDateRngFmtPersRangeNextDayLong_fa_IR: function(test) {
-        test.expect(2);
         var fmt = new DateRngFmt({
             locale: "fa-IR", 
             calendar: "persian",
             length: "long"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var start = new PersianDate({
@@ -1011,12 +1011,12 @@ module.exports.testdatefmtrange_fa_IR = {
         test.done();
     },
     testDateRngFmtPersRangeNextDayFull_fa_IR: function(test) {
-        test.expect(2);
         var fmt = new DateRngFmt({
             locale: "fa-IR", 
             calendar: "persian",
             length: "full"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var start = new PersianDate({
@@ -1042,12 +1042,12 @@ module.exports.testdatefmtrange_fa_IR = {
     },
     
     testDateRngFmtPersRangeMultiDayShort_fa_IR: function(test) {
-        test.expect(2);
         var fmt = new DateRngFmt({
             locale: "fa-IR", 
             calendar: "persian",
             length: "short"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var start = new PersianDate({
@@ -1072,12 +1072,12 @@ module.exports.testdatefmtrange_fa_IR = {
         test.done();
     },
     testDateRngFmtPersRangeMultiDayMedium_fa_IR: function(test) {
-        test.expect(2);
         var fmt = new DateRngFmt({
             locale: "fa-IR", 
             calendar: "persian",
             length: "medium"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var start = new PersianDate({
@@ -1102,12 +1102,12 @@ module.exports.testdatefmtrange_fa_IR = {
         test.done();
     },
     testDateRngFmtPersRangeMultiDayLong_fa_IR: function(test) {
-        test.expect(2);
         var fmt = new DateRngFmt({
             locale: "fa-IR", 
             calendar: "persian",
             length: "long"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var start = new PersianDate({
@@ -1132,12 +1132,12 @@ module.exports.testdatefmtrange_fa_IR = {
         test.done();
     },
     testDateRngFmtPersRangeMultiDayFull_fa_IR: function(test) {
-        test.expect(2);
         var fmt = new DateRngFmt({
             locale: "fa-IR", 
             calendar: "persian",
             length: "full"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var start = new PersianDate({
@@ -1163,12 +1163,12 @@ module.exports.testdatefmtrange_fa_IR = {
     },
     
     testDateRngFmtPersRangeNextMonthShort_fa_IR: function(test) {
-        test.expect(2);
         var fmt = new DateRngFmt({
             locale: "fa-IR", 
             calendar: "persian",
             length: "short"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var start = new PersianDate({
@@ -1193,12 +1193,12 @@ module.exports.testdatefmtrange_fa_IR = {
         test.done();
     },
     testDateRngFmtPersRangeNextMonthMedium_fa_IR: function(test) {
-        test.expect(2);
         var fmt = new DateRngFmt({
             locale: "fa-IR", 
             calendar: "persian",
             length: "medium"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var start = new PersianDate({
@@ -1223,12 +1223,12 @@ module.exports.testdatefmtrange_fa_IR = {
         test.done();
     },
     testDateRngFmtPersRangeNextMonthLong_fa_IR: function(test) {
-        test.expect(2);
         var fmt = new DateRngFmt({
             locale: "fa-IR", 
             calendar: "persian",
             length: "long"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var start = new PersianDate({
@@ -1253,12 +1253,12 @@ module.exports.testdatefmtrange_fa_IR = {
         test.done();
     },
     testDateRngFmtPersRangeNextMonthFull_fa_IR: function(test) {
-        test.expect(2);
         var fmt = new DateRngFmt({
             locale: "fa-IR", 
             calendar: "persian",
             length: "full"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var start = new PersianDate({
@@ -1284,12 +1284,12 @@ module.exports.testdatefmtrange_fa_IR = {
     },
     
     testDateRngFmtPersRangeNextYearShort_fa_IR: function(test) {
-        test.expect(2);
         var fmt = new DateRngFmt({
             locale: "fa-IR", 
             calendar: "persian",
             length: "short"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var start = new PersianDate({
@@ -1314,12 +1314,12 @@ module.exports.testdatefmtrange_fa_IR = {
         test.done();
     },
     testDateRngFmtPersRangeNextYearMedium_fa_IR: function(test) {
-        test.expect(2);
         var fmt = new DateRngFmt({
             locale: "fa-IR", 
             calendar: "persian",
             length: "medium"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var start = new PersianDate({
@@ -1344,12 +1344,12 @@ module.exports.testdatefmtrange_fa_IR = {
         test.done();
     },
     testDateRngFmtPersRangeNextYearLong_fa_IR: function(test) {
-        test.expect(2);
         var fmt = new DateRngFmt({
             locale: "fa-IR", 
             calendar: "persian",
             length: "long"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var start = new PersianDate({
@@ -1374,12 +1374,12 @@ module.exports.testdatefmtrange_fa_IR = {
         test.done();
     },
     testDateRngFmtPersRangeNextYearFull_fa_IR: function(test) {
-        test.expect(2);
         var fmt = new DateRngFmt({
             locale: "fa-IR", 
             calendar: "persian",
             length: "full"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var start = new PersianDate({
@@ -1405,12 +1405,12 @@ module.exports.testdatefmtrange_fa_IR = {
     },
     
     testDateRngFmtPersRangeMultiYearShort_fa_IR: function(test) {
-        test.expect(2);
         var fmt = new DateRngFmt({
             locale: "fa-IR", 
             calendar: "persian",
             length: "short"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var start = new PersianDate({
@@ -1435,12 +1435,12 @@ module.exports.testdatefmtrange_fa_IR = {
         test.done();
     },
     testDateRngFmtPersRangeMultiYearMedium_fa_IR: function(test) {
-        test.expect(2);
         var fmt = new DateRngFmt({
             locale: "fa-IR", 
             calendar: "persian",
             length: "medium"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var start = new PersianDate({
@@ -1465,12 +1465,12 @@ module.exports.testdatefmtrange_fa_IR = {
         test.done();
     },
     testDateRngFmtPersRangeMultiYearLong_fa_IR: function(test) {
-        test.expect(2);
         var fmt = new DateRngFmt({
             locale: "fa-IR", 
             calendar: "persian",
             length: "long"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var start = new PersianDate({
@@ -1495,12 +1495,12 @@ module.exports.testdatefmtrange_fa_IR = {
         test.done();
     },
     testDateRngFmtPersRangeMultiYearFull_fa_IR: function(test) {
-        test.expect(2);
         var fmt = new DateRngFmt({
             locale: "fa-IR", 
             calendar: "persian",
             length: "full"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var start = new PersianDate({
@@ -1525,12 +1525,12 @@ module.exports.testdatefmtrange_fa_IR = {
         test.done();
     },
     testDateRngFmtPersManyYearsFull_fa_IR: function(test) {
-        test.expect(2);
         var fmt = new DateRngFmt({
             locale: "fa-IR", 
             calendar: "persian",
             length: "full"
         });
+        test.expect(2);
         test.ok(fmt !== null);
         
         var start = new PersianDate({

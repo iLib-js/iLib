@@ -34,9 +34,9 @@ module.exports.testaddress_NO = {
     },
 
     testParseAddressNONormal: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("Norwegian Post and Telecommunications Authority\nPostboks 447 Sentrum\n0104 Trondheim\nNORWAY", {locale: 'nb-NO'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Norwegian Post and Telecommunications Authority, Postboks 447 Sentrum");
         test.equal(parsedAddress.locality, "Trondheim");
@@ -48,9 +48,9 @@ module.exports.testaddress_NO = {
     },
     
     testParseAddressNONoZip: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("Norwegian Post and Telecommunications Authority\nBorgartun 34\nTrondheim", {locale: 'nb-NO'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Norwegian Post and Telecommunications Authority, Borgartun 34");
         test.equal(parsedAddress.locality, "Trondheim");
@@ -62,9 +62,9 @@ module.exports.testaddress_NO = {
     },
     
     testParseAddressNONoCountry: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("Storgata 6\nNO-7321 Trondheim", {locale: 'nb-NO'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Storgata 6");
         test.equal(parsedAddress.locality, "Trondheim");
@@ -76,9 +76,9 @@ module.exports.testaddress_NO = {
     },
     
     testParseAddressNOManyLines: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("Stine Hansendd\nLeilighet 425\nStorgata 6\nNO-7321 Trondheim\nNORWAY", {locale: 'nb-NO'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Stine Hansendd, Leilighet 425, Storgata 6");
         test.equal(parsedAddress.locality, "Trondheim");
@@ -90,9 +90,9 @@ module.exports.testaddress_NO = {
     },
     
     testParseAddressNOOneLine: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("Stine Hansendd, Leilighet 425, Storgata 634, NO-7321 Trondheim,NORWAY", {locale: 'nb-NO'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Stine Hansendd, Leilighet 425, Storgata 634");
         test.equal(parsedAddress.locality, "Trondheim");
@@ -104,9 +104,9 @@ module.exports.testaddress_NO = {
     },
     
     testParseAddressNOSuperfluousWhitespace: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("\t\t\tStine Hansendd\n\t\t\tLeilighet 425, \t\t\t\r\r Storgata 634, \n\t\nNO-7321 Trondheim\t\n\t \n\nNORWAY\n", {locale: 'nb-NO'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Stine Hansendd, Leilighet 425, Storgata 634");
         test.equal(parsedAddress.locality, "Trondheim");
@@ -118,9 +118,9 @@ module.exports.testaddress_NO = {
     },
     
     testParseAddressNONoDelimiters: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("Stine Hansendd Leilighet 425 Storgata 634 NO-7321 Trondheim NORWAY", {locale: 'nb-NO'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Stine Hansendd Leilighet 425 Storgata 634");
         test.equal(parsedAddress.locality, "Trondheim");
@@ -132,11 +132,11 @@ module.exports.testaddress_NO = {
     },
     
     testParseAddressNOFromUS: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("Norwegian Post and Telecommunications Authority\nBorgartun 34\n0104 Trondheim\nNorway", {locale: 'en-US'});
         
         // the country name is in English because this address is for a contact in a English database
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Norwegian Post and Telecommunications Authority, Borgartun 34");
         test.equal(parsedAddress.locality, "Trondheim");
@@ -148,7 +148,6 @@ module.exports.testaddress_NO = {
     },
     
     testFormatAddressNO: function(test) {
-        test.expect(1);
         var parsedAddress = new Address({
             streetAddress: "Norwegian Post and Telecommunications Authority, Borgartun 34",
             locality: "Trondheim",
@@ -159,12 +158,12 @@ module.exports.testaddress_NO = {
         
         var expected = "Norwegian Post and Telecommunications Authority, Borgartun 34\n0104 Trondheim\nNORWAY";
         var formatter = new AddressFmt({locale: 'nb-NO'});
+        test.expect(1);
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     },
     
     testFormatAddressNOFromUS: function(test) {
-        test.expect(1);
         var parsedAddress = new Address({
             streetAddress: "Norwegian Post and Telecommunications Authority, Borgartun 34",
             locality: "Trondheim",
@@ -175,6 +174,7 @@ module.exports.testaddress_NO = {
         
         var expected = "Norwegian Post and Telecommunications Authority, Borgartun 34\n0104 Trondheim\nNorway";
         var formatter = new AddressFmt({locale: 'en-US'});
+        test.expect(1);
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     }

@@ -34,8 +34,8 @@ module.exports.testname_uk = {
     },
 
     testParseSimpleName_uk_UA: function(test) {
-        test.expect(2);
         var parsed = new Name("Міла Куніс", {locale: 'uk-UA'});
+        test.expect(2);
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {
@@ -48,8 +48,8 @@ module.exports.testname_uk = {
     },
     
     testParseTitle_uk_UA: function(test) {
-        test.expect(2);
         var parsed = new Name("Міла Куніс відставку", {locale: 'uk-UA'});
+        test.expect(2);
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {
@@ -63,8 +63,8 @@ module.exports.testname_uk = {
     },
     
     testParseTitleWithFamilyOnly_uk_UA: function(test) {
-        test.expect(2);
         var parsed = new Name("г-н Куніс", {locale: 'uk-UA'});
+        test.expect(2);
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {
@@ -79,8 +79,8 @@ module.exports.testname_uk = {
     
     
     testParseEverything_uk_UA: function(test) {
-        test.expect(2);
         var parsed = new Name("г-н і г-жа Куніс", {locale: 'uk-UA'});
+        test.expect(2);
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {
@@ -93,8 +93,8 @@ module.exports.testname_uk = {
     },
     
     testParseprefix_uk_UA: function(test) {
-        test.expect(2);
         var parsed = new Name("г-н Міла Куніс", {locale: 'uk-UA'});
+        test.expect(2);
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {
@@ -108,8 +108,8 @@ module.exports.testname_uk = {
     },
     
     testParseprefixAndSuffix_uk_UA: function(test) {
-        test.expect(2);
         var parsed = new Name("міністр Міла Куніс відставку", {locale: 'uk-UA'});
+        test.expect(2);
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {
@@ -127,7 +127,6 @@ module.exports.testname_uk = {
      */
     
     testFormatSimpleNameShort_uk_UA: function(test) {
-        test.expect(2);
         var name = new Name({
             givenName: "Міла",
             familyName: "Куніс"
@@ -137,6 +136,7 @@ module.exports.testname_uk = {
             locale: 'uk-UA'
         });
         var formatted = fmt.format(name);
+        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "Міла Куніс";
@@ -146,7 +146,6 @@ module.exports.testname_uk = {
     },
     
     testFormatSimpleNameMedium_uk_UA: function(test) {
-        test.expect(2);
         var name = new Name({
             givenName: "Міла",
             familyName: "Куніс"
@@ -156,6 +155,7 @@ module.exports.testname_uk = {
             locale: 'uk-UA'
         });
         var formatted = fmt.format(name);
+        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "Міла Куніс";
@@ -165,7 +165,6 @@ module.exports.testname_uk = {
     },
     
     testFormatSimpleNameLong_uk_UA: function(test) {
-        test.expect(2);
         var name = new Name({
             givenName: "Міла",
             familyName: "Куніс",
@@ -176,6 +175,7 @@ module.exports.testname_uk = {
             locale: 'uk-UA'
         });
         var formatted = fmt.format(name);
+        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "Міла Куніс";
@@ -187,7 +187,6 @@ module.exports.testname_uk = {
     
     
     testFormatSurname_uk_UA: function(test) {
-        test.expect(2);
         var name = new Name({
             prefix: "г-н i г-жа",
             familyName: "Куніс"
@@ -197,6 +196,7 @@ module.exports.testname_uk = {
             locale: 'uk-UA'
         });
         var formatted = fmt.format(name);
+        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "г-н i г-жа Куніс";
@@ -206,7 +206,6 @@ module.exports.testname_uk = {
     },
     
     testFormatSimpleNameFull_uk_UA: function(test) {
-        test.expect(2);
         var name = new Name({
             prefix: "шеф-кухар",
             givenName: "Міла",
@@ -218,6 +217,7 @@ module.exports.testname_uk = {
             locale: 'uk-UA'
         });
         var formatted = fmt.format(name);
+        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "шеф-кухар Міла Куніс відставку";
@@ -227,7 +227,6 @@ module.exports.testname_uk = {
     },
     
     testFormatComplexNameShort_uk_UA: function(test) {
-        test.expect(2);
         var name = new Name({
             prefix: "шеф-кухар",
             givenName: "Міла",
@@ -238,6 +237,7 @@ module.exports.testname_uk = {
             locale: 'uk-UA'
         });
         var formatted = fmt.format(name);
+        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "Міла Куніс";
@@ -247,7 +247,6 @@ module.exports.testname_uk = {
     },
     
     testFormatComplexNameMedium_uk_UA: function(test) {
-        test.expect(2);
         var name = new Name({
             prefix: "шеф-кухар",
             givenName: "Міла",
@@ -258,6 +257,7 @@ module.exports.testname_uk = {
             locale: 'uk-UA'
         });
         var formatted = fmt.format(name);
+        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "Міла Куніс";
@@ -267,7 +267,6 @@ module.exports.testname_uk = {
     },
     
     testFormatComplexNameLong_uk_UA: function(test) {
-        test.expect(2);
         var name = new Name({
             prefix: "шеф-кухар",
             givenName: "Міла",
@@ -278,6 +277,7 @@ module.exports.testname_uk = {
             locale: 'uk-UA'
         });
         var formatted = fmt.format(name);
+        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "шеф-кухар Міла Куніс";

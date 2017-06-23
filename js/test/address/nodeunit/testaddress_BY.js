@@ -34,9 +34,9 @@ module.exports.testaddress_BY = {
     },
 
     testParseAddressBYNormal: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("Адамович 4-й пер. ЧЕРНЫШЕВСКОГО 8\n211388, Орша\nBelarus", {locale: 'ru-BY'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Адамович 4-й пер. ЧЕРНЫШЕВСКОГО 8");
         test.equal(parsedAddress.locality, "Орша");
@@ -48,9 +48,9 @@ module.exports.testaddress_BY = {
     },
     
     testParseAddressBYNoZip: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("Адамович 4-й пер. ЧЕРНЫШЕВСКОГО 8\nОрша\nBelarus", {locale: 'ru-BY'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Адамович 4-й пер. ЧЕРНЫШЕВСКОГО 8");
         test.equal(parsedAddress.locality, "Орша");
@@ -62,9 +62,9 @@ module.exports.testaddress_BY = {
     },
     
     testParseAddressBYNoCountry: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("Адамович 4-й пер. ЧЕРНЫШЕВСКОГО 8\nОрша\n211388", {locale: 'ru-BY'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Адамович 4-й пер. ЧЕРНЫШЕВСКОГО 8");
         test.equal(parsedAddress.locality, "Орша");
@@ -76,8 +76,8 @@ module.exports.testaddress_BY = {
     },
     
     testParseAddressBYManyLines: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("Адамович 4-й пер.\nЧЕРНЫШЕВСКОГО 8\n\n\n\n\nОрша\n\n211388\n\nBelarus\n\n\n", {locale: 'ru-BY'});
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Адамович 4-й пер., ЧЕРНЫШЕВСКОГО 8");
         test.equal(parsedAddress.locality, "Орша");
@@ -89,9 +89,9 @@ module.exports.testaddress_BY = {
     },
     
     testParseAddressBYOneLine: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("Адамович 4-й пер. , ЧЕРНЫШЕВСКОГО 8 , Орша , 211388 , Belarus", {locale: 'ru-BY'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Адамович 4-й пер., ЧЕРНЫШЕВСКОГО 8");
         test.equal(parsedAddress.locality, "Орша");
@@ -103,9 +103,9 @@ module.exports.testaddress_BY = {
     },
     
     testParseAddressBYSuperfluousWhitespace: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("\t\t\tАдамович 4-й пер.\t\t\rЧЕРНЫШЕВСКОГО 8\t\t\r\n\n\n\nОрша\n\t211388\n\nBelarus\n\n\n", {locale: 'ru-BY'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Адамович 4-й пер. ЧЕРНЫШЕВСКОГО 8");
         test.equal(parsedAddress.locality, "Орша");
@@ -117,9 +117,9 @@ module.exports.testaddress_BY = {
     },
     
     testParseAddressBYNoDelimiters: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("Адамович 4-й пер. ЧЕРНЫШЕВСКОГО 8 Орша\n211388 Belarus", {locale: 'ru-BY'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Адамович 4-й пер. ЧЕРНЫШЕВСКОГО 8");
         test.equal(parsedAddress.locality, "Орша");
@@ -131,11 +131,11 @@ module.exports.testaddress_BY = {
     },
     
     testParseAddressBYFromUS: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("Адамович 4-й пер. ЧЕРНЫШЕВСКОГО 8\nОрша\n211388\nBelarus", {locale: 'en-US'});
         
         // the country name is in German because this address is for a contact in a German database
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Адамович 4-й пер. ЧЕРНЫШЕВСКОГО 8");
         test.equal(parsedAddress.locality, "Орша");
@@ -147,7 +147,6 @@ module.exports.testaddress_BY = {
     },
     
     testFormatAddressBY: function(test) {
-        test.expect(1);
         var parsedAddress = new Address({
             streetAddress: "Адамович 4-й пер. ЧЕРНЫШЕВСКОГО 8",
             locality: "Орша",
@@ -158,12 +157,12 @@ module.exports.testaddress_BY = {
         
         var expected = "Адамович 4-й пер. ЧЕРНЫШЕВСКОГО 8\n211388, Орша\nBelarus";
         var formatter = new AddressFmt({locale: 'ru-BY'});
+        test.expect(1);
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     },
     
     testFormatAddressBYFromUS: function(test) {
-        test.expect(1);
         var parsedAddress = new Address({
             streetAddress: "Адамович 4-й пер. ЧЕРНЫШЕВСКОГО 8",
             locality: "Орша",
@@ -174,6 +173,7 @@ module.exports.testaddress_BY = {
         
         var expected = "Адамович 4-й пер. ЧЕРНЫШЕВСКОГО 8\n211388, Орша\nBelarus";
         var formatter = new AddressFmt({locale: 'en-US'});
+        test.expect(1);
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     }

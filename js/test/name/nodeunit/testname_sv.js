@@ -34,8 +34,8 @@ module.exports.testname_sv = {
     },
 
     testParseSimpleName_sv_SE: function(test) {
-        test.expect(2);
         var parsed = new Name("Maud Adams", {locale: 'sv-SE'});
+        test.expect(2);
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {
@@ -48,8 +48,8 @@ module.exports.testname_sv = {
     },
     
     testParseTitle_sv_SE: function(test) {
-        test.expect(2);
         var parsed = new Name("Maud Adams pension", {locale: 'sv-SE'});
+        test.expect(2);
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {
@@ -63,8 +63,8 @@ module.exports.testname_sv = {
     },
     
     testParseTitleWithFamilyOnly_sv_SE: function(test) {
-        test.expect(2);
         var parsed = new Name("herr Adams", {locale: 'sv-SE'});
+        test.expect(2);
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {
@@ -77,8 +77,8 @@ module.exports.testname_sv = {
     },
     
     testParseEverything_sv_SE: function(test) {
-        test.expect(2);
         var parsed = new Name("herr och fru Adams", {locale: 'sv-SE'});
+        test.expect(2);
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {
@@ -91,8 +91,8 @@ module.exports.testname_sv = {
     },
     
     testParseprefix_sv_SE: function(test) {
-        test.expect(2);
         var parsed = new Name("herr Maud Adams", {locale: 'sv-SE'});
+        test.expect(2);
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {
@@ -106,8 +106,8 @@ module.exports.testname_sv = {
     },
     
     testParseprefixAndSuffix_sv_SE: function(test) {
-        test.expect(2);
         var parsed = new Name("premiärminister Maud Adams pension", {locale: 'sv-SE'});
+        test.expect(2);
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {
@@ -126,7 +126,6 @@ module.exports.testname_sv = {
      */
     
     testFormatSimpleNameShort_sv_SE: function(test) {
-        test.expect(2);
         var name = new Name({
             givenName: "Maud",
             familyName: "Adams"
@@ -136,6 +135,7 @@ module.exports.testname_sv = {
             locale: 'sv-SE'
         });
         var formatted = fmt.format(name);
+        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "Maud Adams";
@@ -145,7 +145,6 @@ module.exports.testname_sv = {
     },
     
     testFormatSimpleNameMedium_sv_SE: function(test) {
-        test.expect(2);
         var name = new Name({
             givenName: "Maud",
             familyName: "Adams"
@@ -155,6 +154,7 @@ module.exports.testname_sv = {
             locale: 'sv-SE'
         });
         var formatted = fmt.format(name);
+        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "Maud Adams";
@@ -164,7 +164,6 @@ module.exports.testname_sv = {
     },
     
     testFormatSimpleNameLong_sv_SE: function(test) {
-        test.expect(2);
         var name = new Name({
             givenName: "Maud",
             familyName: "Adams",
@@ -175,6 +174,7 @@ module.exports.testname_sv = {
             locale: 'sv-SE'
         });
         var formatted = fmt.format(name);
+        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "Maud Adams";
@@ -184,7 +184,6 @@ module.exports.testname_sv = {
     },
     
     testFormatSurname_sv_SE: function(test) {
-        test.expect(2);
         var name = new Name({
             prefix: "herr och fru",
             familyName: "Adams"
@@ -194,6 +193,7 @@ module.exports.testname_sv = {
             locale: 'sv-SE'
         });
         var formatted = fmt.format(name);
+        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "herr och fru Adams";
@@ -203,7 +203,6 @@ module.exports.testname_sv = {
     },
     
     testFormatSimpleNameFull_sv_SE: function(test) {
-        test.expect(2);
         var name = new Name({
             prefix: "guvernör",
             givenName: "Maud",
@@ -215,6 +214,7 @@ module.exports.testname_sv = {
             locale: 'sv-SE'
         });
         var formatted = fmt.format(name);
+        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "guvernör Maud Adams pension";
@@ -224,7 +224,6 @@ module.exports.testname_sv = {
     },
     
     testFormatComplexNameShort_sv_SE: function(test) {
-        test.expect(2);
         var name = new Name({
             prefix: "guvernör",
             givenName: "Maud",
@@ -235,6 +234,7 @@ module.exports.testname_sv = {
             locale: 'sv-SE'
         });
         var formatted = fmt.format(name);
+        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "Maud Adams";
@@ -244,7 +244,6 @@ module.exports.testname_sv = {
     },
     
     testFormatComplexNameMedium_sv_SE: function(test) {
-        test.expect(2);
         var name = new Name({
             prefix: "guvernör",
             givenName: "Maud",
@@ -255,6 +254,7 @@ module.exports.testname_sv = {
             locale: 'sv-SE'
         });
         var formatted = fmt.format(name);
+        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "Maud Adams";
@@ -264,7 +264,6 @@ module.exports.testname_sv = {
     },
     
     testFormatComplexNameLong_sv_SE: function(test) {
-        test.expect(2);
         var name = new Name({
             prefix: "guvernör",
             givenName: "Maud",
@@ -275,6 +274,7 @@ module.exports.testname_sv = {
             locale: 'sv-SE'
         });
         var formatted = fmt.format(name);
+        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "guvernör Maud Adams";

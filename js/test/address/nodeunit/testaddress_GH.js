@@ -34,9 +34,9 @@ module.exports.testaddress_GH = {
     },
 
     testParseAddressGHNormal: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("Mr. John Mensah P.O. Box 1234\nACCRA\nGHANA", {locale: 'en-GH'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Mr. John Mensah P.O. Box 1234");
         test.equal(parsedAddress.locality, "ACCRA");
@@ -48,9 +48,9 @@ module.exports.testaddress_GH = {
     },
     
     testParseAddressGHNoZip: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("Mr. John Mensah P.O. Box 1234\nACCRA\nGHANA", {locale: 'en-GH'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Mr. John Mensah P.O. Box 1234");
         test.equal(parsedAddress.locality, "ACCRA");
@@ -62,9 +62,9 @@ module.exports.testaddress_GH = {
     },
     
     testParseAddressGHNoCountry: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("Mr. John Mensah P.O. Box 1234\nACCRA", {locale: 'en-GH'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Mr. John Mensah P.O. Box 1234");
         test.equal(parsedAddress.locality, "ACCRA");
@@ -76,9 +76,9 @@ module.exports.testaddress_GH = {
     },
     
     testParseAddressGHManyLines: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("Mr. John Mensah\nP.O. Box 1234\nACCRA\nGHANA", {locale: 'en-GH'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
           test.equal(parsedAddress.streetAddress, "Mr. John Mensah, P.O. Box 1234");
         test.equal(parsedAddress.locality, "ACCRA");
@@ -90,9 +90,9 @@ module.exports.testaddress_GH = {
     },
     
     testParseAddressGHOneLine: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("Mr. John Mensah , P.O. Box 1234 , ACCRA , GHANA", {locale: 'en-GH'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
           test.equal(parsedAddress.streetAddress, "Mr. John Mensah, P.O. Box 1234");
         test.equal(parsedAddress.locality, "ACCRA");
@@ -104,9 +104,9 @@ module.exports.testaddress_GH = {
     },
     
     testParseAddressGHSuperfluousWhitespace: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("Mr. John Mensah\n\n\t\r\t\t\rP.O. Box 1234\r\r\n\nACCRA\t\r\n\t\rGHANA", {locale: 'en-GH'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
           test.equal(parsedAddress.streetAddress, "Mr. John Mensah, P.O. Box 1234");
         test.equal(parsedAddress.locality, "ACCRA");
@@ -118,9 +118,9 @@ module.exports.testaddress_GH = {
     },
     
     testParseAddressGHNoDelimiters: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("Mr. John Mensah P.O. Box 1234 ACCRA GHANA", {locale: 'en-GH'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Mr. John Mensah P.O. Box 1234");
         test.equal(parsedAddress.locality, "ACCRA");
@@ -132,9 +132,9 @@ module.exports.testaddress_GH = {
     },
     
     testParseAddressGHFromUS: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("Mr. John Mensah P.O. Box 1234\nACCRA\nGHANA", {locale: 'en-GH'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Mr. John Mensah P.O. Box 1234");
         test.equal(parsedAddress.locality, "ACCRA");
@@ -146,7 +146,6 @@ module.exports.testaddress_GH = {
     },
     
     testFormatAddressGH: function(test) {
-        test.expect(1);
         var parsedAddress = new Address({
             streetAddress: "Mr. John Mensah P.O. Box 1234",
             locality: "ACCRA",
@@ -157,12 +156,12 @@ module.exports.testaddress_GH = {
         
         var expected = "Mr. John Mensah P.O. Box 1234\nACCRA\nGHANA";
         var formatter = new AddressFmt({locale: 'en-GH'});
+        test.expect(1);
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     },
     
     testFormatAddressGHFromUS: function(test) {
-        test.expect(1);
         var parsedAddress = new Address({
             streetAddress: "Mr. John Mensah P.O. Box 1234",
             locality: "ACCRA",
@@ -173,6 +172,7 @@ module.exports.testaddress_GH = {
         
         var expected = "Mr. John Mensah P.O. Box 1234\nACCRA\nGHANA";
         var formatter = new AddressFmt({locale: 'en-US'});
+        test.expect(1);
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     }

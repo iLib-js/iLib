@@ -24,6 +24,18 @@ if (typeof(NumberingPlan) === "undefined") {
     var NumberingPlan = require("../.././../lib/NumberingPlan.js");
 }
 
+function mockLoader(paths, sync, params, callback) {
+    var data = [];
+    
+    data.push(ilib.data.numplan); // for the generic, shared stuff
+    data.push(ilib.data.numplan_US);
+    
+    if (typeof(callback) !== 'undefined') {
+        callback.call(this, data);    
+    }
+    return data;
+}
+
 if (typeof(ilib) === "undefined") {
     var ilib = require("../../..");
 }
@@ -35,65 +47,64 @@ module.exports.numplan = {
     },
 
     testGet1: function(test) {
-        test.expect(2);
         var plan = new NumberingPlan({locale: "en-US"});
+        test.expect(2);
         test.ok(typeof(plan) !== "undefined");
         test.equal(plan.getName(), "US");
         test.done();
     },
     
     testGet2: function(test) {
-        test.expect(2);
         var plan = new NumberingPlan({locale: "de-DE"});
+        test.expect(2);
         test.ok(typeof(plan) !== "undefined");
         test.equal(plan.getName(), "DE");
         test.done();
     },
     
     testGetUnknown: function(test) {
-        test.expect(2);
         var plan = new NumberingPlan({locale: "unknown-unknown"});
+        test.expect(2);
         test.ok(typeof(plan) !== "undefined");
         test.equal(plan.getName(), "XX");
         test.done();
     },
     
     testGetUnrecognized: function(test) {
-        test.expect(2);
         var plan = new NumberingPlan({locale: "zu-ZZ"});
+        test.expect(2);
         test.ok(typeof(plan) !== "undefined");
         test.equal(plan.getName(), "XX");
         test.done();
     },
     
     testGetDefault: function(test) {
-        test.expect(2);
         var plan = new NumberingPlan({});
+        test.expect(2);
         test.ok(typeof(plan) !== "undefined");
         test.equal(plan.getName(), "US");
         test.done();
     },
     
     testGetContextFreeContent: function(test) {
-        test.expect(2);
         var plan = new NumberingPlan({locale: "en-GB"});
+        test.expect(2);
         test.ok(typeof(plan) !== "undefined");
         test.equal(plan.getContextFree(), false);
         test.done();
     },
     
     testGetContextFreeContent: function(test) {
-        test.expect(2);
         var plan = new NumberingPlan({locale: "en-US"});
+        test.expect(2);
         test.ok(typeof(plan) !== "undefined");
         test.equal(plan.getContextFree(), undefined);
         test.done();
     },
     
     testRightContents: function(test) {
-        test.expect(13);
-        test.expect(13);
         var plan = new NumberingPlan({locale: "en-US"});
+        test.expect(13);
         test.ok(typeof(plan) !== "undefined");
         test.equal(plan.getName(), "US");
         test.equal(plan.getTrunkCode(), "1");
@@ -106,28 +117,15 @@ module.exports.numplan = {
         test.equal(plan.getFieldLength('emergency'), 0);
         test.equal(plan.getFieldLength('vsc'), 0);
         test.equal(plan.getPlanStyle(), "closed");
-        test.done();
         test.equal(plan.getCommonFormatChars(), " ()-.");    
         test.done();
     },
     
-    function mockLoader(paths, sync, params, callback) {
-        var data = [];
-        
-        data.push(ilib.data.numplan); // for the generic, shared stuff
-        data.push(ilib.data.numplan_US);
-        
-        if (typeof(callback) !== 'undefined') {
-            callback.call(this, data);    
-        }
-        return data;
-    },
-    
     testNumPlanLoadLocaleDataSynch: function(test) {
-        test.expect(2);
         if (ilib.isDynData()) {
             // don't need to test loading on the dynamic load version because we are testing
             // it via all the other tests already.
+        test.done();
             return;
         }
         
@@ -137,6 +135,7 @@ module.exports.numplan = {
             locale: "en-US",
             sync: false,
             onLoad: function (plan) {
+        test.expect(2);
                 test.ok(plan !== null);
                 test.equal(plan.getName(), "US");                
                 test.done();
@@ -145,4 +144,5 @@ module.exports.numplan = {
     
         ilib.setLoaderCallback(undefined);
     }
+    
 };

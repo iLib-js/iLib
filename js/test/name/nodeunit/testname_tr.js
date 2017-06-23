@@ -34,8 +34,8 @@ module.exports.testname_tr = {
     },
 
     testParseSimpleName_tr_TR: function(test) {
-        test.expect(2);
         var parsed = new Name("Kemal Sunal", {locale: 'tr-TR'});
+        test.expect(2);
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {
@@ -48,8 +48,8 @@ module.exports.testname_tr = {
     },
     
     testParseTitle_tr_TR: function(test) {
-        test.expect(2);
         var parsed = new Name("Kemal Sunal kıdemli", {locale: 'tr-TR'});
+        test.expect(2);
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {
@@ -63,8 +63,8 @@ module.exports.testname_tr = {
     },
     
     testParseTitleWithFamilyOnly_tr_TR: function(test) {
-        test.expect(2);
         var parsed = new Name("Bay Sunal", {locale: 'tr-TR'});
+        test.expect(2);
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {
@@ -79,8 +79,8 @@ module.exports.testname_tr = {
     
     
     testParseEverything_tr_TR: function(test) {
-        test.expect(2);
         var parsed = new Name("Bay ve Bayan Sunal", {locale: 'tr-TR'});
+        test.expect(2);
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {
@@ -93,8 +93,8 @@ module.exports.testname_tr = {
     },
     
     testParseprefix_tr_TR: function(test) {
-        test.expect(2);
         var parsed = new Name("Bay Kemal Sunal", {locale: 'tr-TR'});
+        test.expect(2);
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {
@@ -108,8 +108,8 @@ module.exports.testname_tr = {
     },
     
     testParseprefixAndSuffix_tr_TR: function(test) {
-        test.expect(2);
         var parsed = new Name("belediye başkanı Kemal Sunal kıdemli", {locale: 'tr-TR'});
+        test.expect(2);
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {
@@ -127,7 +127,6 @@ module.exports.testname_tr = {
      */
     
     testFormatSimpleNameShort_tr_TR: function(test) {
-        test.expect(2);
         var name = new Name({
             givenName: "Kemal",
             familyName: "Sunal"
@@ -137,6 +136,7 @@ module.exports.testname_tr = {
             locale: 'tr-TR'
         });
         var formatted = fmt.format(name);
+        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "Kemal Sunal";
@@ -146,7 +146,6 @@ module.exports.testname_tr = {
     },
     
     testFormatSimpleNameMedium_tr_TR: function(test) {
-        test.expect(2);
         var name = new Name({
             givenName: "Kemal",
             familyName: "Sunal"
@@ -156,6 +155,7 @@ module.exports.testname_tr = {
             locale: 'tr-TR'
         });
         var formatted = fmt.format(name);
+        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "Kemal Sunal";
@@ -165,7 +165,6 @@ module.exports.testname_tr = {
     },
     
     testFormatSimpleNameLong_tr_TR: function(test) {
-        test.expect(2);
         var name = new Name({
             givenName: "Kemal",
             familyName: "Sunal",
@@ -176,6 +175,7 @@ module.exports.testname_tr = {
             locale: 'tr-TR'
         });
         var formatted = fmt.format(name);
+        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "Kemal Sunal";
@@ -185,7 +185,6 @@ module.exports.testname_tr = {
     },
     
     testFormatSurname_tr_TR: function(test) {
-        test.expect(2);
         var name = new Name({
             prefix: "Bay ve Bayan",
             familyName: "Sunal"
@@ -195,6 +194,7 @@ module.exports.testname_tr = {
             locale: 'tr-TR'
         });
         var formatted = fmt.format(name);
+        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "Bay ve Bayan Sunal";
@@ -204,7 +204,6 @@ module.exports.testname_tr = {
     },
     
     testFormatSimpleNameFull_tr_TR: function(test) {
-        test.expect(2);
         var name = new Name({
             prefix: "Bakan",
             givenName: "Kemal",
@@ -216,6 +215,7 @@ module.exports.testname_tr = {
             locale: 'tr-TR'
         });
         var formatted = fmt.format(name);
+        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "Bakan Kemal Sunal kıdemli";
@@ -225,7 +225,6 @@ module.exports.testname_tr = {
     },
     
     testFormatComplexNameShort_tr_TR: function(test) {
-        test.expect(2);
         var name = new Name({
             prefix: "Bakan",
             givenName: "Kemal",
@@ -236,6 +235,7 @@ module.exports.testname_tr = {
             locale: 'tr-TR'
         });
         var formatted = fmt.format(name);
+        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "Kemal Sunal";
@@ -245,7 +245,6 @@ module.exports.testname_tr = {
     },
     
     testFormatComplexNameMedium_tr_TR: function(test) {
-        test.expect(2);
         var name = new Name({
             prefix: "Bakan",
             givenName: "Kemal",
@@ -256,6 +255,7 @@ module.exports.testname_tr = {
             locale: 'tr-TR'
         });
         var formatted = fmt.format(name);
+        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "Kemal Sunal";
@@ -265,7 +265,6 @@ module.exports.testname_tr = {
     },
     
     testFormatComplexNameLong_tr_TR: function(test) {
-        test.expect(2);
         var name = new Name({
             prefix: "Bakan",
             givenName: "Kemal",
@@ -276,6 +275,7 @@ module.exports.testname_tr = {
             locale: 'tr-TR'
         });
         var formatted = fmt.format(name);
+        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "Bakan Kemal Sunal";

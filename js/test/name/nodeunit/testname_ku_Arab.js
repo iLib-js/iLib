@@ -34,8 +34,8 @@ module.exports.testname_ku_Arab = {
     },
 
     testParseSimpleName_ku_Arab: function(test) {
-        test.expect(2);
         var parsed = new Name("جەلال تاڵەبانی", {locale: 'ku-Arab-IQ'});
+        test.expect(2);
         test.ok(typeof(parsed) !== "undefined");
         
         var expected =   {
@@ -52,8 +52,8 @@ module.exports.testname_ku_Arab = {
     
     
     testParseSingleNameWithPrefixAndAdjunct_ku_Arab: function(test) {
-        test.expect(2);
         var parsed = new Name("بەڕێز و خاتوو تاڵەبانی", {locale: 'ku-Arab-IQ'});
+        test.expect(2);
         test.ok(typeof(parsed) !== "undefined");
         
         var expected =  {
@@ -67,8 +67,8 @@ module.exports.testname_ku_Arab = {
     
     
     testParseTitle_ku_Arab: function(test) {
-        test.expect(2);
         var parsed = new Name("جەلال تاڵەبانی کوڕ", {locale: 'ku-Arab-IQ'});
+        test.expect(2);
         test.ok(typeof(parsed) !== "undefined");
         
         var expected =    {
@@ -86,8 +86,8 @@ module.exports.testname_ku_Arab = {
     
     
     testParseEverything_ku_Arab: function(test) {
-        test.expect(2);
         var parsed = new Name("بەڕێز جەلال تاڵەبانی", {locale: 'ku-Arab-IQ'});
+        test.expect(2);
         test.ok(typeof(parsed) !== "undefined");
         
         var expected =    {
@@ -106,7 +106,6 @@ module.exports.testname_ku_Arab = {
      */
     
     testFormatSimpleNameShort_ku_Arab: function(test) {
-        test.expect(2);
         var name = new Name({
             givenName: "جەلال",
             familyName: "تاڵەبانی"
@@ -116,6 +115,7 @@ module.exports.testname_ku_Arab = {
             locale: 'ku-Arab-IQ'
         });
         var formatted = fmt.format(name);
+        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "جەلال تاڵەبانی";
@@ -125,7 +125,6 @@ module.exports.testname_ku_Arab = {
     },
     
     testFormatSimpleNameMedium_ku_Arab: function(test) {
-        test.expect(2);
         var name = new Name({
             givenName: "جەلال",
             familyName: "تاڵەبانی"
@@ -135,6 +134,7 @@ module.exports.testname_ku_Arab = {
             locale: 'ku-Arab-IQ'
         });
         var formatted = fmt.format(name);
+        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "جەلال تاڵەبانی";
@@ -144,7 +144,6 @@ module.exports.testname_ku_Arab = {
     },
     
     testFormatSimpleNameLong_ku_Arab: function(test) {
-        test.expect(2);
         var name = new Name({
             givenName: "جەلال",
             
@@ -156,6 +155,7 @@ module.exports.testname_ku_Arab = {
             locale: 'ku-Arab-IQ'
         });
         var formatted = fmt.format(name);
+        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "جەلال تاڵەبانی کوڕ";

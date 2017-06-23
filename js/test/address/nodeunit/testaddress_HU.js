@@ -36,9 +36,9 @@ module.exports.testaddress_HU = {
     },
 
     testParseAddressHUNormal: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("Budapest, Fiktív utca 82., IV. em./28. - or - Pf. 184, 2806, HUNGARY", {locale: 'hu-HU'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Fiktív utca 82., IV. em./28. - or - Pf. 184");
         test.ok(typeof(parsedAddress.region) === "undefined");
@@ -50,9 +50,9 @@ module.exports.testaddress_HU = {
     },
     
     testParseAddressHUNoZip: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("Budapest, Fiktív utca 82., IV. em./28. - or - Pf. 184, HUNGARY", {locale: 'hu-HU'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Fiktív utca 82., IV. em./28. - or - Pf. 184");
         test.ok(typeof(parsedAddress.region) === "undefined");
@@ -64,9 +64,9 @@ module.exports.testaddress_HU = {
     },
     
     testParseAddressHUManyLines: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("Budapest\nHonvéd utca 13-15\n1055\nHUNGARY", {locale: 'hu-HU'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Honvéd utca 13-15");
         test.ok(typeof(parsedAddress.region) === "undefined");
@@ -78,9 +78,9 @@ module.exports.testaddress_HU = {
     },
     
     testParseAddressHUOneLine: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("Budapest, Honvéd utca 13-15, 1055, HUNGARY", {locale: 'hu-HU'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Honvéd utca 13-15");
         test.ok(typeof(parsedAddress.region) === "undefined");
@@ -92,9 +92,9 @@ module.exports.testaddress_HU = {
     },
     
     testParseAddressHUSuperfluousWhitespace: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("Budapest   \n\t\n Honvéd utca 13-15\t\n\n 1055\n\nHUNGARY  \n  \t\t\t", {locale: 'hu-HU'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Honvéd utca 13-15");
         test.ok(typeof(parsedAddress.region) === "undefined");
@@ -106,9 +106,9 @@ module.exports.testaddress_HU = {
     },
     
     testParseAddressHUNoDelimiters: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("Budapest Honvéd utca 13-15 1055 HUNGARY", {locale: 'hu-HU'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Honvéd utca 13-15");
         test.ok(typeof(parsedAddress.region) === "undefined");
@@ -120,9 +120,9 @@ module.exports.testaddress_HU = {
     },
     
     testParseAddressHUSpecialChars: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("Győr, Arató utca 7 fsz. 2, 9028, HUNGARY", {locale: 'hu-HU'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Arató utca 7 fsz. 2");
         test.ok(typeof(parsedAddress.region) === "undefined");
@@ -133,11 +133,11 @@ module.exports.testaddress_HU = {
         test.done();
     },
     testParseAddressHUFromUS: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("Győr, Arató utca 7 fsz. 2, 9028, Hungary", {locale: 'en-US'});
         
         // the country name is in English because this address is for a contact in a US database
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Arató utca 7 fsz. 2");
         test.ok(typeof(parsedAddress.region) === "undefined");
@@ -149,7 +149,6 @@ module.exports.testaddress_HU = {
     },
     
     testFormatAddressHU: function(test) {
-        test.expect(1);
         var parsedAddress = new Address({
             streetAddress: "Fiktív utca 82., IV. em./28. - or - Pf. 184.",
             locality: "Budapest",
@@ -160,12 +159,12 @@ module.exports.testaddress_HU = {
         
         var expected = "Budapest\nFiktív utca 82., IV. em./28. - or - Pf. 184.\n2806\nHUNGARY";
         var formatter = new AddressFmt({locale: 'hu-HU'});
+        test.expect(1);
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     },
     
     testFormatAddressHUFromUS: function(test) {
-        test.expect(1);
         var parsedAddress = new Address({
             streetAddress: "Fiktív utca 82., IV. em./28. - or - Pf. 184.",
             locality: "Budapest",
@@ -176,6 +175,7 @@ module.exports.testaddress_HU = {
         
         var expected = "Budapest\nFiktív utca 82., IV. em./28. - or - Pf. 184.\n2806\nHungary";
         var formatter = new AddressFmt({locale: 'en-US'});
+        test.expect(1);
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     }

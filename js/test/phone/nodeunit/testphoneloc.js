@@ -24,6 +24,20 @@ if (typeof(PhoneLocale) === "undefined") {
     var PhoneLocale = require("../.././../lib/PhoneLocale.js");
 }
 
+function mockLoader(paths, sync, params, callback) {
+    var data = [];
+    
+    data.push(ilib.data.cc2reg); // for the generic, shared stuff
+    data.push(ilib.data.reg2cc);
+    data.push(ilib.data.mcc2reg);
+    data.push(ilib.data.area2reg);
+    
+    if (typeof(callback) !== 'undefined') {
+        callback.call(this, data);    
+    }
+    return data;
+}
+
 if (typeof(ilib) === "undefined") {
     var ilib = require("../../..");
 }
@@ -35,106 +49,90 @@ module.exports.phoneloc = {
     },
 
     testGetByMCCUS: function(test) {
-        test.expect(2);
         var loc = new PhoneLocale({mcc: "310"});
+        test.expect(2);
         test.ok(typeof(loc) !== "undefined");
         test.equal(loc.getRegion(), "US");
         test.done();
     },
     
     testGetByMCCDE: function(test) {
-        test.expect(2);
         var loc = new PhoneLocale({mcc: "262"});
+        test.expect(2);
         test.ok(typeof(loc) !== "undefined");
         test.equal(loc.getRegion(), "DE");
         test.done();
     },
     
     testGetByMCCUnknownMCC: function(test) {
-        test.expect(2);
         var loc = new PhoneLocale({mcc: "31"});
+        test.expect(2);
         test.ok(typeof(loc) !== "undefined");
         test.equal(loc.getRegion(), "XX");
         test.done();
     },
     
     testGetByCC1: function(test) {
-        test.expect(2);
         var loc = new PhoneLocale({countryCode: "1"});
+        test.expect(2);
         test.ok(typeof(loc) !== "undefined");
         test.equal(loc.getRegion(), "US");
         test.done();
     },
     
     testGetByCC1: function(test) {
-        test.expect(2);
         var loc = new PhoneLocale({countryCode: "44"});
+        test.expect(2);
         test.ok(typeof(loc) !== "undefined");
         test.equal(loc.getRegion(), "GB");    
         test.done();
     },
     
     testGetByCCUnknownCC: function(test) {
-        test.expect(2);
         var loc = new PhoneLocale({countryCode: "0"});
+        test.expect(2);
         test.ok(typeof(loc) !== "undefined");
         test.equal(loc.getRegion(), "XX");
         test.done();
     },
     
     testGetByLocaleUS: function(test) {
-        test.expect(2);
         var loc = new PhoneLocale({locale: "en-US"});
+        test.expect(2);
         test.ok(typeof(loc) !== "undefined");
         test.equal(loc.getRegion(), "US");
         test.done();
     },
     
     testGetByLocaleDE: function(test) {
-        test.expect(2);
         var loc = new PhoneLocale({locale: "de-DE"});
+        test.expect(2);
         test.ok(typeof(loc) !== "undefined");
         test.equal(loc.getRegion(), "DE");    
         test.done();
     },
     
     testGetDefault: function(test) {
-        test.expect(2);
         var loc = new PhoneLocale();
+        test.expect(2);
         test.ok(typeof(loc) !== "undefined");
         test.equal(loc.region, "US");    
         test.done();
     },
     
     testGetDefaultEmpty: function(test) {
-        test.expect(2);
-        test.expect(2);
         var loc = new PhoneLocale({});
+        test.expect(2);
         test.ok(typeof(loc) !== "undefined");
-        test.done();
         test.equal(loc.region, "US");
         test.done();
     },
     
-    function mockLoader(paths, sync, params, callback) {
-        var data = [];
-        
-        data.push(ilib.data.cc2reg); // for the generic, shared stuff
-        data.push(ilib.data.reg2cc);
-        data.push(ilib.data.mcc2reg);
-        data.push(ilib.data.area2reg);
-        
-        if (typeof(callback) !== 'undefined') {
-            callback.call(this, data);    
-        }
-        return data;
-    },
-    
     testPhoneLocLoadLocaleDataSynch: function(test) {
-        test.expect(2);
         if (ilib.isDynData()) {
             // don't need to test loading on the dynamic load version because we are testing
             // it via all the other tests already.
+        test.done();
             return;
         }
         
@@ -144,6 +142,7 @@ module.exports.phoneloc = {
             countryCode: "44",
             sync: false,
             onLoad: function (loc) {
+        test.expect(2);
                 test.ok(loc !== null);
                 test.equal(loc.getRegion(), "GB");                
                 test.done();
@@ -151,4 +150,5 @@ module.exports.phoneloc = {
         });
         ilib.setLoaderCallback(undefined);
     }
+    
 };

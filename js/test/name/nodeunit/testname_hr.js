@@ -34,8 +34,8 @@ module.exports.testname_hr = {
     },
 
     testParseSimpleName_hr_HR: function(test) {
-        test.expect(2);
         var parsed = new Name("Antonio Pavlović", {locale: 'hr-HR'});
+        test.expect(2);
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {
@@ -50,8 +50,8 @@ module.exports.testname_hr = {
     
     
     testParseSimpleName_hr_HR: function(test) {
-        test.expect(2);
         var parsed = new Name("G. Kertu Pavlović", {locale: 'hr-HR'});
+        test.expect(2);
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {
@@ -67,8 +67,8 @@ module.exports.testname_hr = {
     
     
     testParseSimpleName_hr_HR: function(test) {
-        test.expect(2);
         var parsed = new Name("Gospođa. Kertu Pavlović", {locale: 'hr-HR'});
+        test.expect(2);
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {
@@ -85,8 +85,8 @@ module.exports.testname_hr = {
     
     
     testParseSingleNameWithPrefixAndAdjunct_hr_HR: function(test) {
-        test.expect(2);
         var parsed = new Name("Antonio Vesna Pavlović mlađi", {locale: 'hr-HR'});
+        test.expect(2);
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {
@@ -102,8 +102,8 @@ module.exports.testname_hr = {
     
     
     testParseTitle_hr_HR1: function(test) {
-        test.expect(2);
         var parsed = new Name("predsjednik Antonio Vesna Pavlović", {locale: 'hr-HR'});
+        test.expect(2);
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {
@@ -119,8 +119,8 @@ module.exports.testname_hr = {
     
     
     testParseTitle_hr_HR_second: function(test) {
-        test.expect(2);
         var parsed = new Name("G. i Gospođa. Pavlović", {locale: 'hr-HR'});
+        test.expect(2);
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {
@@ -133,7 +133,6 @@ module.exports.testname_hr = {
     
     
     testParseTitleWithFamilyOnlyAndAdjunct_hr_HR: function(test) {
-        test.expect(2);
     
         var name = new Name({
             prefix: "predsjednik",
@@ -147,6 +146,7 @@ module.exports.testname_hr = {
             locale: 'hr-HR'
         });
         var formatted = fmt.format(name);
+        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "predsjednik Antonio Vesna Pavlović mirovini";
@@ -159,8 +159,8 @@ module.exports.testname_hr = {
     
     
     testParseCompoundHonorific_hr_HR: function(test) {
-        test.expect(2);
         var parsed = new Name("predsjednik Pavlović", {locale: 'hr-HR'});
+        test.expect(2);
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {
@@ -177,7 +177,6 @@ module.exports.testname_hr = {
      */
     
     testFormatSimpleNameShort_hr_HR: function(test) {
-        test.expect(2);
         var name = new Name({
             givenName: "Antonio",
             middleName : "Vesna",
@@ -188,6 +187,7 @@ module.exports.testname_hr = {
             locale: 'hr-HR'
         });
         var formatted = fmt.format(name);
+        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "Antonio Pavlović";
@@ -197,7 +197,6 @@ module.exports.testname_hr = {
     },
     
     testFormatSimpleNameMedium_hr_HR: function(test) {
-        test.expect(2);
         var name = new Name({
             givenName: "Antonio",
             middleName : "Vesna",
@@ -208,6 +207,7 @@ module.exports.testname_hr = {
             locale: 'hr-HR'
         });
         var formatted = fmt.format(name);
+        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "Antonio Vesna Pavlović";
@@ -217,7 +217,6 @@ module.exports.testname_hr = {
     },
     
     testFormatSimpleNameFull_hr_HR: function(test) {
-        test.expect(2);
         var name = new Name({
             
             givenName: "Antonio",
@@ -230,6 +229,7 @@ module.exports.testname_hr = {
             locale: 'hr-HR'
         });
         var formatted = fmt.format(name);
+        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "Antonio Vesna Pavlović mirovini";
@@ -239,7 +239,6 @@ module.exports.testname_hr = {
     },
     
     testFormatComplexNameShort_hr_HR: function(test) {
-        test.expect(2);
         var name = new Name({
             suffix: "mirovini",
             givenName: "Antonio",
@@ -251,6 +250,7 @@ module.exports.testname_hr = {
             locale: 'hr-HR'
         });
         var formatted = fmt.format(name);
+        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "Antonio Pavlović";
@@ -261,7 +261,6 @@ module.exports.testname_hr = {
     
     
     testFormatAsianNameMedium_hr_HR: function(test) {
-        test.expect(2);
         var name = new Name({
             prefix: "小",
             givenName: "獸",
@@ -273,6 +272,7 @@ module.exports.testname_hr = {
             locale: 'hr-HR'
         });
         var formatted = fmt.format(name);
+        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "地獸";
@@ -282,7 +282,6 @@ module.exports.testname_hr = {
     },
     
     testFormatAsianNameLong_hr_HR: function(test) {
-        test.expect(2);
         var name = new Name({
             prefix: "小",
             givenName: "獸",
@@ -294,6 +293,7 @@ module.exports.testname_hr = {
             locale: 'hr-HR'
         });
         var formatted = fmt.format(name);
+        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "小地獸太太";

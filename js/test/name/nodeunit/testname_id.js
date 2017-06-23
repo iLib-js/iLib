@@ -34,8 +34,8 @@ module.exports.testname_id = {
     },
 
     testParseSimpleName_id_ID: function(test) {
-        test.expect(2);
         var parsed = new Name("Mahyadi Panggabean", {locale: 'id-ID'});
+        test.expect(2);
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {
@@ -50,8 +50,8 @@ module.exports.testname_id = {
     
     
     testParseSimpleName_id_ID1: function(test) {
-        test.expect(2);
         var parsed = new Name("Bapak. Abdul Panggabean", {locale: 'id-ID'});
+        test.expect(2);
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {
@@ -66,8 +66,8 @@ module.exports.testname_id = {
     
     
     testParseSimpleName_id_ID2: function(test) {
-        test.expect(2);
         var parsed = new Name("Ibu. Mahyadi Panggabean", {locale: 'id-ID'});
+        test.expect(2);
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {
@@ -83,8 +83,8 @@ module.exports.testname_id = {
     
     
     testParseSingleNameWithPrefixAndAdjunct_id_ID: function(test) {
-        test.expect(2);
         var parsed = new Name("Mahyadi Krupuk muda", {locale: 'id-ID'});
+        test.expect(2);
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {
@@ -99,8 +99,8 @@ module.exports.testname_id = {
     
     
     testParseTitle_id_ID1: function(test) {
-        test.expect(2);
         var parsed = new Name("perdana menteri Mahyadi Krupuk", {locale: 'id-ID'});
+        test.expect(2);
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {
@@ -115,8 +115,8 @@ module.exports.testname_id = {
     
     
     testParseTitle_id_ID_second: function(test) {
-        test.expect(2);
         var parsed = new Name("Ibu. dan Bapak. Panggabean", {locale: 'id-ID'});
+        test.expect(2);
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {
@@ -130,7 +130,6 @@ module.exports.testname_id = {
     
     
     testParseTitleWithFamilyOnlyAndAdjunct_id_ID: function(test) {
-        test.expect(2);
     
         var name = new Name({
             prefix: "presiden",
@@ -143,6 +142,7 @@ module.exports.testname_id = {
             locale: 'id-ID'
         });
         var formatted = fmt.format(name);
+        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "presiden Mahyadi Krupuk mundur";
@@ -155,8 +155,8 @@ module.exports.testname_id = {
     
     
     testParseCompoundHonorific_id_ID: function(test) {
-        test.expect(2);
         var parsed = new Name("melayani Panggabean", {locale: 'id-ID'});
+        test.expect(2);
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {
@@ -173,7 +173,6 @@ module.exports.testname_id = {
      */
     
     testFormatSimpleNameShort_id_ID: function(test) {
-        test.expect(2);
         var name = new Name({
             givenName: "Mahyadi",
             middleName : "Krupuk"
@@ -183,6 +182,7 @@ module.exports.testname_id = {
             locale: 'id-ID'
         });
         var formatted = fmt.format(name);
+        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "Mahyadi";
@@ -192,7 +192,6 @@ module.exports.testname_id = {
     },
     
     testFormatSimpleNameMedium_id_ID: function(test) {
-        test.expect(2);
         var name = new Name({
             givenName: "Mahyadi",
             middleName : "Krupuk"
@@ -202,6 +201,7 @@ module.exports.testname_id = {
             locale: 'id-ID'
         });
         var formatted = fmt.format(name);
+        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "Mahyadi Krupuk";
@@ -212,7 +212,6 @@ module.exports.testname_id = {
     
     
     testFormatComplexNameShort_id_ID: function(test) {
-        test.expect(2);
         var name = new Name({
             suffix: "mirovini",
             givenName: "Mahyadi",
@@ -223,6 +222,7 @@ module.exports.testname_id = {
             locale: 'id-ID'
         });
         var formatted = fmt.format(name);
+        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "Mahyadi Panggabean";
@@ -233,7 +233,6 @@ module.exports.testname_id = {
     
     
     testFormatAsianNameMedium_id_ID: function(test) {
-        test.expect(2);
         var name = new Name({
             prefix: "小",
             givenName: "獸",
@@ -245,6 +244,7 @@ module.exports.testname_id = {
             locale: 'id-ID'
         });
         var formatted = fmt.format(name);
+        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "獸地";
@@ -254,7 +254,6 @@ module.exports.testname_id = {
     },
     
     testFormatAsianNameLong_id_ID: function(test) {
-        test.expect(2);
         var name = new Name({
             prefix: "小",
             givenName: "獸",
@@ -266,6 +265,7 @@ module.exports.testname_id = {
             locale: 'id-ID'
         });
         var formatted = fmt.format(name);
+        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "小獸地太太";

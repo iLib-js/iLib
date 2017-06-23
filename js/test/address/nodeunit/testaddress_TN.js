@@ -34,9 +34,9 @@ module.exports.testaddress_TN = {
     },
 
     testParseAddressTNNormal: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("ﻢﻴﻠﻴﻫ ﺭﺅﻮﻓ ﺲﻋﺍﺩ ﺏﻮﻴﺗ ﺏﺮﻴﻔﻳ ٧٢\n٨١٢٩ ﻊﻴﻧ ﺩﺭﺎﻬﻣ\nتونس", {locale: 'ar-TN'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "ﻢﻴﻠﻴﻫ ﺭﺅﻮﻓ ﺲﻋﺍﺩ ﺏﻮﻴﺗ ﺏﺮﻴﻔﻳ ٧٢");
         test.equal(parsedAddress.locality, "ﻊﻴﻧ ﺩﺭﺎﻬﻣ");
@@ -48,9 +48,9 @@ module.exports.testaddress_TN = {
     },
     
     testParseAddressTNNoZip: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("ﻢﻴﻠﻴﻫ ﺭﺅﻮﻓ ﺲﻋﺍﺩ ﺏﻮﻴﺗ ﺏﺮﻴﻔﻳ ٧٢\nﻊﻴﻧ ﺩﺭﺎﻬﻣ\nتونس", {locale: 'ar-TN'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "ﻢﻴﻠﻴﻫ ﺭﺅﻮﻓ ﺲﻋﺍﺩ ﺏﻮﻴﺗ ﺏﺮﻴﻔﻳ ٧٢");
         test.equal(parsedAddress.locality, "ﻊﻴﻧ ﺩﺭﺎﻬﻣ");
@@ -62,9 +62,9 @@ module.exports.testaddress_TN = {
     },
     
     testParseAddressTNNoCountry: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("ﻢﻴﻠﻴﻫ ﺭﺅﻮﻓ ﺲﻋﺍﺩ ﺏﻮﻴﺗ ﺏﺮﻴﻔﻳ ٧٢\n٨١٢٩ ﻊﻴﻧ ﺩﺭﺎﻬﻣ", {locale: 'ar-TN'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "ﻢﻴﻠﻴﻫ ﺭﺅﻮﻓ ﺲﻋﺍﺩ ﺏﻮﻴﺗ ﺏﺮﻴﻔﻳ ٧٢");
         test.equal(parsedAddress.locality, "ﻊﻴﻧ ﺩﺭﺎﻬﻣ");
@@ -76,8 +76,8 @@ module.exports.testaddress_TN = {
     },
     
     testParseAddressTNManyLines: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("ﺏﻮﻴﺗ ﺏﺮﻴﻔﻳ ٧٢\nﻢﻴﻠﻴﻫ ﺭﺅﻮﻓ ﺲﻋﺍﺩ\n٨١٢٩\nﻊﻴﻧ ﺩﺭﺎﻬﻣ\n\nتونس\n\n\n", {locale: 'ar-TN'});
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "ﺏﻮﻴﺗ ﺏﺮﻴﻔﻳ ٧٢, ﻢﻴﻠﻴﻫ ﺭﺅﻮﻓ ﺲﻋﺍﺩ");
         test.equal(parsedAddress.locality, "ﻊﻴﻧ ﺩﺭﺎﻬﻣ");
@@ -90,9 +90,9 @@ module.exports.testaddress_TN = {
     
     
     testParseAddressTNSuperfluousWhitespace: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("\t\t\tﺏﻮﻴﺗ ﺏﺮﻴﻔﻳ ٧٢\n\n\tﻢﻴﻠﻴﻫ ﺭﺅﻮﻓ ﺲﻋﺍﺩ\n\n\t٨١٢٩\n\n\tﻊﻴﻧ ﺩﺭﺎﻬﻣ\n\n\tتونس\n\n\n", {locale: 'ar-TN'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "ﺏﻮﻴﺗ ﺏﺮﻴﻔﻳ ٧٢, ﻢﻴﻠﻴﻫ ﺭﺅﻮﻓ ﺲﻋﺍﺩ");
         test.equal(parsedAddress.locality, "ﻊﻴﻧ ﺩﺭﺎﻬﻣ");
@@ -105,10 +105,10 @@ module.exports.testaddress_TN = {
     
     
     testParseAddressTNFromUS: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("ﻢﻴﻠﻴﻫ ﺭﺅﻮﻓ ﺲﻋﺍﺩ ﺏﻮﻴﺗ ﺏﺮﻴﻔﻳ ٧٢\n٨١٢٩\nﻊﻴﻧ ﺩﺭﺎﻬﻣ\nTunisia", {locale: 'en-US'});
         
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "ﻢﻴﻠﻴﻫ ﺭﺅﻮﻓ ﺲﻋﺍﺩ ﺏﻮﻴﺗ ﺏﺮﻴﻔﻳ ٧٢");
         test.equal(parsedAddress.locality, "ﻊﻴﻧ ﺩﺭﺎﻬﻣ");
@@ -120,7 +120,6 @@ module.exports.testaddress_TN = {
     },
     
     testFormatAddressTN: function(test) {
-        test.expect(1);
         var parsedAddress = new Address({
             streetAddress: "ﻢﻴﻠﻴﻫ ﺭﺅﻮﻓ ﺲﻋﺍﺩ ﺏﻮﻴﺗ ﺏﺮﻴﻔﻳ ٧٢",
             locality: "ﻊﻴﻧ ﺩﺭﺎﻬﻣ",
@@ -131,12 +130,12 @@ module.exports.testaddress_TN = {
         
         var expected = "ﻢﻴﻠﻴﻫ ﺭﺅﻮﻓ ﺲﻋﺍﺩ ﺏﻮﻴﺗ ﺏﺮﻴﻔﻳ ٧٢\n٨١٢٩ ﻊﻴﻧ ﺩﺭﺎﻬﻣ\nتونس";
         var formatter = new AddressFmt({locale: 'ar-TN'});
+        test.expect(1);
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     },
     
     testFormatAddressTNFromUS: function(test) {
-        test.expect(1);
         var parsedAddress = new Address({
             streetAddress: "ﻢﻴﻠﻴﻫ ﺭﺅﻮﻓ ﺲﻋﺍﺩ ﺏﻮﻴﺗ ﺏﺮﻴﻔﻳ ٧٢",
             locality: "ﻊﻴﻧ ﺩﺭﺎﻬﻣ",
@@ -147,6 +146,7 @@ module.exports.testaddress_TN = {
         
         var expected = "ﻢﻴﻠﻴﻫ ﺭﺅﻮﻓ ﺲﻋﺍﺩ ﺏﻮﻴﺗ ﺏﺮﻴﻔﻳ ٧٢\n٨١٢٩ ﻊﻴﻧ ﺩﺭﺎﻬﻣ\nTunisia";
         var formatter = new AddressFmt({locale: 'en-US'});
+        test.expect(1);
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     }

@@ -34,8 +34,8 @@ module.exports.testname_he = {
     },
 
     testParseSimpleName_he: function(test) {
-        test.expect(2);
         var parsed = new Name("נטלי פורטמן", {locale: 'he-IL'});
+        test.expect(2);
         test.ok(typeof(parsed) !== "undefined");
         
         var expected =   {
@@ -49,8 +49,8 @@ module.exports.testname_he = {
     
     
     testParseAdjunctNames_he: function(test) {
-        test.expect(2);
         var parsed = new Name("נטלי פורטמן", {locale: 'he-IL'});
+        test.expect(2);
         test.ok(typeof(parsed) !== "undefined");
         
         var expected =  {
@@ -65,8 +65,8 @@ module.exports.testname_he = {
     
     
     testParseSingleNameWithPrefixAndAdjunct_he: function(test) {
-        test.expect(2);
         var parsed = new Name("מר ו - גברת פורטמן", {locale: 'he-IL'});
+        test.expect(2);
         test.ok(typeof(parsed) !== "undefined");
         
         var expected =   {
@@ -80,8 +80,8 @@ module.exports.testname_he = {
     
     
     testParseTitle_he: function(test) {
-        test.expect(2);
         var parsed = new Name("נטלי פורטמן דוקטור", {locale: 'he-IL'});
+        test.expect(2);
         test.ok(typeof(parsed) !== "undefined");
         
         var expected =    {
@@ -97,8 +97,8 @@ module.exports.testname_he = {
     
     
     testParseTitleWithFamilyOnly_he: function(test) {
-        test.expect(2);
         var parsed = new Name("גברת פורטמן", {locale: 'he-IL'});
+        test.expect(2);
         test.ok(typeof(parsed) !== "undefined");
         
         var expected =   {
@@ -113,8 +113,8 @@ module.exports.testname_he = {
     
     
     testParseEverything_he: function(test) {
-        test.expect(2);
         var parsed = new Name("גברת נטלי פורטמן", {locale: 'he-IL'});
+        test.expect(2);
         test.ok(typeof(parsed) !== "undefined");
         
         var expected =    {
@@ -133,7 +133,6 @@ module.exports.testname_he = {
      */
     
     testFormatSimpleNameShort_he: function(test) {
-        test.expect(2);
         var name = new Name({
             givenName: "נטלי",
             familyName: "פורטמן"
@@ -143,6 +142,7 @@ module.exports.testname_he = {
             locale: 'he-IL'
         });
         var formatted = fmt.format(name);
+        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "נטלי פורטמן";
@@ -152,7 +152,6 @@ module.exports.testname_he = {
     },
     
     testFormatSimpleNameMedium_he: function(test) {
-        test.expect(2);
         var name = new Name({
             givenName: "נטלי",
             familyName: "פורטמן"
@@ -162,6 +161,7 @@ module.exports.testname_he = {
             locale: 'he-IL'
         });
         var formatted = fmt.format(name);
+        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "נטלי פורטמן";
@@ -171,7 +171,6 @@ module.exports.testname_he = {
     },
     
     testFormatSimpleNameLong_he: function(test) {
-        test.expect(2);
         var name = new Name({
             givenName: "נטלי",
             familyName: "פורטמן",
@@ -182,6 +181,7 @@ module.exports.testname_he = {
             locale: 'he-IL'
         });
         var formatted = fmt.format(name);
+        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "נטלי פורטמן";
@@ -191,7 +191,6 @@ module.exports.testname_he = {
     },
     
     testFormatSimpleNameFull_he: function(test) {
-        test.expect(2);
         var name = new Name({
             prefix: "ראש הממשלה",
             givenName: "נטלי",
@@ -204,6 +203,7 @@ module.exports.testname_he = {
             locale: 'he-IL'
         });
         var formatted = fmt.format(name);
+        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "ראש הממשלה נטלי פורטמן לשעבר";
@@ -213,7 +213,6 @@ module.exports.testname_he = {
     },
     
     testFormatComplexNameShort_he: function(test) {
-        test.expect(2);
         var name = new Name({
             prefix: "ראש הממשלה",
             givenName: "נטלי",
@@ -225,6 +224,7 @@ module.exports.testname_he = {
             locale: 'he-IL'
         });
         var formatted = fmt.format(name);
+        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "נטלי פורטמן";
@@ -234,7 +234,6 @@ module.exports.testname_he = {
     },
     
     testFormatComplexNameMedium_he: function(test) {
-        test.expect(2);
         var name = new Name({
             prefix: "ראש הממשלה",
             givenName: "נטלי",
@@ -246,6 +245,7 @@ module.exports.testname_he = {
             locale: 'he-IL'
         });
         var formatted = fmt.format(name);
+        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "נטלי פורטמן";
@@ -255,7 +255,6 @@ module.exports.testname_he = {
     },
     
     testFormatComplexNameLong_he: function(test) {
-        test.expect(2);
         var name = new Name({
             prefix: "ראש הממשלה",
             givenName: "נטלי",
@@ -267,6 +266,7 @@ module.exports.testname_he = {
             locale: 'he-IL'
         });
         var formatted = fmt.format(name);
+        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "ראש הממשלה נטלי פורטמן";
@@ -276,7 +276,6 @@ module.exports.testname_he = {
     },
     
     testFormatAsianNameShort_he: function(test) {
-        test.expect(2);
         var name = new Name({
             prefix: "小",
             givenName: "獸",
@@ -287,6 +286,7 @@ module.exports.testname_he = {
             locale: 'he-IL'
         });
         var formatted = fmt.format(name);
+        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "地獸";
@@ -296,7 +296,6 @@ module.exports.testname_he = {
     },
     
     testFormatAsianNameMedium_he: function(test) {
-        test.expect(2);
         var name = new Name({
             prefix: "小",
             givenName: "獸",
@@ -307,6 +306,7 @@ module.exports.testname_he = {
             locale: 'he-IL'
         });
         var formatted = fmt.format(name);
+        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "地獸";
@@ -316,7 +316,6 @@ module.exports.testname_he = {
     },
     
     testFormatAsianNameLong_he: function(test) {
-        test.expect(2);
         var name = new Name({
             prefix: "小",
             givenName: "獸",
@@ -327,6 +326,7 @@ module.exports.testname_he = {
             locale: 'he-IL'
         });
         var formatted = fmt.format(name);
+        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "小地獸";

@@ -31,11 +31,11 @@ module.exports.testdurfmt_az_Latn_AZ = {
     },
 
     testDurFmtAZFormatShortDefaultStyle: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "az-Latn-AZ",
             length: "short"
         });
+        test.expect(2);
         test.ok(fmt !== null);
     
         var duration = fmt.format({
@@ -52,12 +52,12 @@ module.exports.testdurfmt_az_Latn_AZ = {
     },
     
     testDurFmtAZFormatShortText: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "az-Latn-AZ",
             length: "short",
             style: "text"
         });
+        test.expect(2);
         test.ok(fmt !== null);
     
         var duration = fmt.format({
@@ -74,12 +74,12 @@ module.exports.testdurfmt_az_Latn_AZ = {
     },
     
     testDurFmtAZFormatShortClock: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "az-Latn-AZ",
             length: "short",
             style: "clock"
         });
+        test.expect(2);
         test.ok(fmt !== null);
     
         var duration = fmt.format({
@@ -96,11 +96,11 @@ module.exports.testdurfmt_az_Latn_AZ = {
     },
     
     testDurFmtAZFormatMedium: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "az-Latn-AZ",
             length: "medium"
         });
+        test.expect(2);
         test.ok(fmt !== null);
     
         var duration = fmt.format({
@@ -117,11 +117,11 @@ module.exports.testdurfmt_az_Latn_AZ = {
     },
     
     testDurFmtAZFormatLong: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "az-Latn-AZ",
             length: "long"
         });
+        test.expect(2);
         test.ok(fmt !== null);
     
         var duration = fmt.format({
@@ -138,11 +138,11 @@ module.exports.testdurfmt_az_Latn_AZ = {
     },
     
     testDurFmtAZFormatFull: function(test) {
-        test.expect(2);
         var fmt = new DurationFmt({
             locale: "az-Latn-AZ",
             length: "full"
         });
+        test.expect(2);
         test.ok(fmt !== null);
     
         var duration = fmt.format({
@@ -160,12 +160,12 @@ module.exports.testdurfmt_az_Latn_AZ = {
     
     
     testDurFmtAZAsyncWithLocale: function(test) {
-        test.expect(2);
         new DurationFmt({
             locale: "az-Latn-AZ",
             length: "full",
             sync: false,
             onLoad: function (fmt) {
+        test.expect(2);
                 test.ok(fmt !== null);
     
                 var duration = fmt.format({
@@ -184,13 +184,13 @@ module.exports.testdurfmt_az_Latn_AZ = {
     },
     
     testDurFmtAZFormatShortClockAsync: function(test) {
-        test.expect(2);
         new DurationFmt({
             locale: "az-Latn-AZ",
             length: "short",
             style: "clock",
             sync: false,
             onLoad: function (fmt) {
+        test.expect(2);
                 test.ok(fmt !== null);
     
                 var duration = fmt.format({

@@ -34,8 +34,8 @@ module.exports.testname_et = {
     },
 
     testParseSimpleName_et_EE: function(test) {
-        test.expect(2);
         var parsed = new Name("Kertu-Triin Sepp", {locale: 'et-EE'});
+        test.expect(2);
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {
@@ -50,8 +50,8 @@ module.exports.testname_et = {
     
     
     testParseSimpleName_et_EE: function(test) {
-        test.expect(2);
         var parsed = new Name("professor Kertu Sepp", {locale: 'et-EE'});
+        test.expect(2);
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {
@@ -68,8 +68,8 @@ module.exports.testname_et = {
     
     
     testParseSingleNameWithPrefixAndAdjunct_et_EE: function(test) {
-        test.expect(2);
         var parsed = new Name("Kertu-Triin Sepp jr.", {locale: 'et-EE'});
+        test.expect(2);
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {
@@ -84,8 +84,8 @@ module.exports.testname_et = {
     
     
     testParseTitle_et_EE1: function(test) {
-        test.expect(2);
         var parsed = new Name("Hr. Kertu-Triin Sepp", {locale: 'et-EE'});
+        test.expect(2);
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {
@@ -100,8 +100,8 @@ module.exports.testname_et = {
     
     
     testParseTitle_et_EE_second: function(test) {
-        test.expect(2);
         var parsed = new Name("Prl. Kertu-Triin Sepp", {locale: 'et-EE'});
+        test.expect(2);
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {
@@ -116,7 +116,6 @@ module.exports.testname_et = {
     
     
     testParseTitleWithFamilyOnlyAndAdjunct_et_EE: function(test) {
-        test.expect(2);
     
         var name = new Name({
             prefix: "Hr.",
@@ -129,6 +128,7 @@ module.exports.testname_et = {
             locale: 'et-EE'
         });
         var formatted = fmt.format(name);
+        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "Hr. Kertu-Triin Sepp pensionile";
@@ -140,8 +140,8 @@ module.exports.testname_et = {
     
     
     testParseTitleWithFamilyOnlyAndAdjunctex_et_EE: function(test) {
-        test.expect(2);
         var parsed = new Name("inspektor Kertu-Triin Sepp pensionile", {locale: 'et-EE'});
+        test.expect(2);
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {
@@ -157,8 +157,8 @@ module.exports.testname_et = {
     
     
     testParseCompoundHonorific_et_EE: function(test) {
-        test.expect(2);
         var parsed = new Name("Hr. Sepp", {locale: 'et-EE'});
+        test.expect(2);
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {
@@ -175,7 +175,6 @@ module.exports.testname_et = {
      */
     
     testFormatSimpleNameShort_et_EE: function(test) {
-        test.expect(2);
         var name = new Name({
             givenName: "Kertu-Triin",
             familyName: "Sepp"
@@ -185,6 +184,7 @@ module.exports.testname_et = {
             locale: 'et-EE'
         });
         var formatted = fmt.format(name);
+        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "Kertu-Triin Sepp";
@@ -194,7 +194,6 @@ module.exports.testname_et = {
     },
     
     testFormatSimpleNameMedium_et_EE: function(test) {
-        test.expect(2);
         var name = new Name({
             givenName: "Kertu-Triin",
             familyName: "Sepp"
@@ -204,6 +203,7 @@ module.exports.testname_et = {
             locale: 'et-EE'
         });
         var formatted = fmt.format(name);
+        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "Kertu-Triin Sepp";
@@ -213,7 +213,6 @@ module.exports.testname_et = {
     },
     
     testFormatSimpleNameFull_et_EE: function(test) {
-        test.expect(2);
         var name = new Name({
             
             givenName: "Kertu-Triin",
@@ -225,6 +224,7 @@ module.exports.testname_et = {
             locale: 'et-EE'
         });
         var formatted = fmt.format(name);
+        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "Kertu-Triin Sepp pensionile";
@@ -234,7 +234,6 @@ module.exports.testname_et = {
     },
     
     testFormatComplexNameShort_et_EE: function(test) {
-        test.expect(2);
         var name = new Name({
             suffix: "pensionile",
             givenName: "Kertu-Triin",
@@ -245,6 +244,7 @@ module.exports.testname_et = {
             locale: 'et-EE'
         });
         var formatted = fmt.format(name);
+        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "Kertu-Triin Sepp";
@@ -255,7 +255,6 @@ module.exports.testname_et = {
     
     
     testFormatAsianNameMedium_et_EE: function(test) {
-        test.expect(2);
         var name = new Name({
             prefix: "小",
             givenName: "獸",
@@ -267,6 +266,7 @@ module.exports.testname_et = {
             locale: 'et-EE'
         });
         var formatted = fmt.format(name);
+        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "地獸";
@@ -276,7 +276,6 @@ module.exports.testname_et = {
     },
     
     testFormatAsianNameLong_et_EE: function(test) {
-        test.expect(2);
         var name = new Name({
             prefix: "小",
             givenName: "獸",
@@ -288,6 +287,7 @@ module.exports.testname_et = {
             locale: 'et-EE'
         });
         var formatted = fmt.format(name);
+        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "小地獸太太";

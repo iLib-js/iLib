@@ -34,8 +34,8 @@ module.exports.testname_sq = {
     },
 
     testParseSimpleName_sq_Al: function(test) {
-        test.expect(2);
         var parsed = new Name("James Belushi", {locale: 'sq-Al'});
+        test.expect(2);
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {
@@ -52,8 +52,8 @@ module.exports.testname_sq = {
     
     
     testParseTitle_sq_Al: function(test) {
-        test.expect(2);
         var parsed = new Name("James Belushi njom", {locale: 'sq-Al'});
+        test.expect(2);
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {
@@ -69,8 +69,8 @@ module.exports.testname_sq = {
     
     
     testParseTitleWithFamilyOnly_sq_Al: function(test) {
-        test.expect(2);
         var parsed = new Name("Zoti. Belushi", {locale: 'sq-Al'});
+        test.expect(2);
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {
@@ -85,8 +85,8 @@ module.exports.testname_sq = {
     
     
     testParseEverything_sq_Al: function(test) {
-        test.expect(2);
         var parsed = new Name("Zoti. dhe Zonja. Belushi", {locale: 'sq-Al'});
+        test.expect(2);
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {
@@ -99,8 +99,8 @@ module.exports.testname_sq = {
     },
     
     testParseprefix_sq_Al: function(test) {
-        test.expect(2);
         var parsed = new Name("Zoti. James Belushi", {locale: 'sq-Al'});
+        test.expect(2);
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {
@@ -114,8 +114,8 @@ module.exports.testname_sq = {
     },
     
     testParseprefixAndSuffix_sq_Al: function(test) {
-        test.expect(2);
         var parsed = new Name("Zëvendëspresident James Belushi njom", {locale: 'sq-Al'});
+        test.expect(2);
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {
@@ -133,7 +133,6 @@ module.exports.testname_sq = {
      */
     
     testFormatSimpleNameShort_sq_Al: function(test) {
-        test.expect(2);
         var name = new Name({
             givenName: "James",
             familyName: "Belushi"
@@ -143,6 +142,7 @@ module.exports.testname_sq = {
             locale: 'sq-Al'
         });
         var formatted = fmt.format(name);
+        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "James Belushi";
@@ -152,7 +152,6 @@ module.exports.testname_sq = {
     },
     
     testFormatSimpleNameMedium_sq_Al: function(test) {
-        test.expect(2);
         var name = new Name({
             givenName: "James",
             familyName: "Belushi"
@@ -162,6 +161,7 @@ module.exports.testname_sq = {
             locale: 'sq-Al'
         });
         var formatted = fmt.format(name);
+        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "James Belushi";
@@ -171,7 +171,6 @@ module.exports.testname_sq = {
     },
     
     testFormatSimpleNameLong_sq_Al: function(test) {
-        test.expect(2);
         var name = new Name({
             givenName: "James",
             familyName: "Belushi",
@@ -182,6 +181,7 @@ module.exports.testname_sq = {
             locale: 'sq-Al'
         });
         var formatted = fmt.format(name);
+        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "James Belushi";
@@ -193,7 +193,6 @@ module.exports.testname_sq = {
     
     
     testFormatSurname_sq_Al: function(test) {
-        test.expect(2);
         var name = new Name({
             prefix: "Zoti. dhe Zonja.",
             familyName: "Belushi"
@@ -203,6 +202,7 @@ module.exports.testname_sq = {
             locale: 'sq-Al'
         });
         var formatted = fmt.format(name);
+        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "Zoti. dhe Zonja. Belushi";
@@ -212,7 +212,6 @@ module.exports.testname_sq = {
     },
     
     testFormatSimpleNameFull_sq_Al: function(test) {
-        test.expect(2);
         var name = new Name({
             prefix: "Guvernator",
             givenName: "James",
@@ -224,6 +223,7 @@ module.exports.testname_sq = {
             locale: 'sq-Al'
         });
         var formatted = fmt.format(name);
+        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "Guvernator James Belushi njom";
@@ -233,7 +233,6 @@ module.exports.testname_sq = {
     },
     
     testFormatComplexNameShort_sq_Al: function(test) {
-        test.expect(2);
         var name = new Name({
             prefix: "Guvernator",
             givenName: "James",
@@ -244,6 +243,7 @@ module.exports.testname_sq = {
             locale: 'sq-Al'
         });
         var formatted = fmt.format(name);
+        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "James Belushi";
@@ -253,7 +253,6 @@ module.exports.testname_sq = {
     },
     
     testFormatComplexNameMedium_sq_Al: function(test) {
-        test.expect(2);
         var name = new Name({
             prefix: "Guvernator",
             givenName: "James",
@@ -264,6 +263,7 @@ module.exports.testname_sq = {
             locale: 'sq-Al'
         });
         var formatted = fmt.format(name);
+        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "James Belushi";
@@ -273,7 +273,6 @@ module.exports.testname_sq = {
     },
     
     testFormatComplexNameLong_sq_Al: function(test) {
-        test.expect(2);
         var name = new Name({
             prefix: "Guvernator",
             givenName: "James",
@@ -284,6 +283,7 @@ module.exports.testname_sq = {
             locale: 'sq-Al'
         });
         var formatted = fmt.format(name);
+        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "Guvernator James Belushi";

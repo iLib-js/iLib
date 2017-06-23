@@ -34,7 +34,6 @@ module.exports.testcollation_tr = {
     },
 
     testJSCollatorQuat_tr: function(test) {
-        test.expect(51);
         var col = new Collator({
             locale: "tr-TR",
             useNative: false,
@@ -42,6 +41,7 @@ module.exports.testcollation_tr = {
             usage: "search"
         });
     
+        test.expect(51);
         test.ok(typeof(col) !== "undefined");
     
         // A B C Ç D E F G Ğ H I İ J K L M N O Ö P R S Ş T U Ü V Y Z
@@ -99,7 +99,6 @@ module.exports.testcollation_tr = {
     },
     
     testJSCollatorTer_tr: function(test) {
-        test.expect(51);
         var col = new Collator({
             locale: "tr-TR",
             useNative: false,
@@ -107,6 +106,7 @@ module.exports.testcollation_tr = {
             usage: "search"
         });
     
+        test.expect(51);
         test.ok(typeof(col) !== "undefined");
     
         // A B C Ç D E F G Ğ H I İ J K L M N O Ö P R S Ş T U Ü V Y Z
@@ -164,7 +164,6 @@ module.exports.testcollation_tr = {
     },
     
     testJSCollatorSec_tr: function(test) {
-        test.expect(51);
         var col = new Collator({
             locale: "tr-TR",
             useNative: false,
@@ -172,6 +171,7 @@ module.exports.testcollation_tr = {
             usage: "search"
         });
     
+        test.expect(51);
         test.ok(typeof(col) !== "undefined");
     
         // A B C Ç D E F G Ğ H I İ J K L M N O Ö P R S Ş T U Ü V Y Z
@@ -229,7 +229,6 @@ module.exports.testcollation_tr = {
     },
     
     testJSCollatorPri_tr: function(test) {
-        test.expect(51);
         var col = new Collator({
             locale: "tr-TR",
             useNative: false,
@@ -237,6 +236,7 @@ module.exports.testcollation_tr = {
             usage: "search"
         });
     
+        test.expect(51);
         test.ok(typeof(col) !== "undefined");
     
         // A B C Ç D E F G Ğ H I İ J K L M N O Ö P R S Ş T U Ü V Y Z
@@ -294,7 +294,6 @@ module.exports.testcollation_tr = {
     },
     
     testJSCollatorSortQuat_tr: function(test) {
-        test.expect(51);
         var col = new Collator({
             locale: "tr-TR",
             useNative: false,
@@ -302,6 +301,7 @@ module.exports.testcollation_tr = {
             usage: "sort"
         });
     
+        test.expect(51);
         test.ok(typeof(col) !== "undefined");
     
         // A B C Ç D E F G Ğ H I İ J K L M N O Ö P R S Ş T U Ü V Y Z
@@ -359,7 +359,6 @@ module.exports.testcollation_tr = {
     },
     
     testJSCollatorSortTer_tr: function(test) {
-        test.expect(51);
         var col = new Collator({
             locale: "tr-TR",
             useNative: false,
@@ -367,6 +366,7 @@ module.exports.testcollation_tr = {
             usage: "sort"
         });
     
+        test.expect(51);
         test.ok(typeof(col) !== "undefined");
     
         // A B C Ç D E F G Ğ H I İ J K L M N O Ö P R S Ş T U Ü V Y Z
@@ -424,7 +424,6 @@ module.exports.testcollation_tr = {
     },
     
     testJSCollatorSortSec_tr: function(test) {
-        test.expect(51);
         var col = new Collator({
             locale: "tr-TR",
             useNative: false,
@@ -432,6 +431,7 @@ module.exports.testcollation_tr = {
             usage: "sort"
         });
     
+        test.expect(51);
         test.ok(typeof(col) !== "undefined");
     
         // A B C Ç D E F G Ğ H I İ J K L M N O Ö P R S Ş T U Ü V Y Z
@@ -489,7 +489,6 @@ module.exports.testcollation_tr = {
     },
     
     testJSCollatorSortPri_tr: function(test) {
-        test.expect(51);
         var col = new Collator({
             locale: "tr-TR",
             useNative: false,
@@ -497,6 +496,7 @@ module.exports.testcollation_tr = {
             usage: "sort"
         });
     
+        test.expect(51);
         test.ok(typeof(col) !== "undefined");
     
         // A B C Ç D E F G Ğ H I İ J K L M N O Ö P R S Ş T U Ü V Y Z
@@ -554,13 +554,13 @@ module.exports.testcollation_tr = {
     },
     
     testCollatorWithSortCase_tr: function(test) {
-        test.expect(2);
         var col = new Collator({
             locale: "tr-TR",
             useNative: false,
             sensitivity: "case",
             usage: "sort"
         });
+        test.expect(2);
         test.ok(typeof(col) !== "undefined");
     
         var input = [
@@ -634,7 +634,6 @@ module.exports.testcollation_tr = {
     },
     
     testCollatorWithSortVariant_tr: function(test) {
-        test.expect(2);
         var col = new Collator({
             locale: "tr-TR",
             useNative: false,
@@ -642,6 +641,7 @@ module.exports.testcollation_tr = {
             upperFirst: true,
             usage: "sort"
         });
+        test.expect(2);
         test.ok(typeof(col) !== "undefined");
     
         var input = [

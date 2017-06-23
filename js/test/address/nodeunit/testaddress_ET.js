@@ -36,9 +36,9 @@ module.exports.testaddress_ET = {
     },
 
     testParseAddressETNormal: function(test) {
-        test.expect(6);
         var parsedAddress = new Address("Mr. Abebe Bekele, P.O. Box 1519, ADDIS ABABA, ETHIOPIA", {locale: 'en-ET'});
         
+        test.expect(6);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Mr. Abebe Bekele, P.O. Box 1519");
         test.ok(typeof(parsedAddress.region) === "undefined");
@@ -49,9 +49,9 @@ module.exports.testaddress_ET = {
     },
     
     testParseAddressETNoZip: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("Mr. Abebe Bekele, P.O. Box 1519, ADDIS ABABA, ETHIOPIA", {locale: 'en-ET'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Mr. Abebe Bekele, P.O. Box 1519");
         test.ok(typeof(parsedAddress.region) === "undefined");
@@ -63,9 +63,9 @@ module.exports.testaddress_ET = {
     },
     
     testParseAddressETManyLines: function(test) {
-        test.expect(6);
         var parsedAddress = new Address("Mr. Abebe Bekele\nP.O. Box 1519\nADDIS ABABA\nETHIOPIA", {locale: 'en-ET'});
         
+        test.expect(6);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Mr. Abebe Bekele, P.O. Box 1519");
         test.ok(typeof(parsedAddress.region) === "undefined");
@@ -76,9 +76,9 @@ module.exports.testaddress_ET = {
     },
     
     testParseAddressETOneLine: function(test) {
-        test.expect(6);
         var parsedAddress = new Address("Mr. Abebe Bekele, P.O. Box 1519, ADDIS ABABA, ETHIOPIA", {locale: 'en-ET'});
         
+        test.expect(6);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Mr. Abebe Bekele, P.O. Box 1519");
         test.ok(typeof(parsedAddress.region) === "undefined");
@@ -89,9 +89,9 @@ module.exports.testaddress_ET = {
     },
     
     testParseAddressETSuperfluousWhitespace: function(test) {
-        test.expect(6);
         var parsedAddress = new Address("Mr. Abebe Bekele\n\tP.O. Box 1519  \n\t\n ADDIS ABABA\t\n\n ETHIOPIA  \n  \t\t\t", {locale: 'en-ET'});
         
+        test.expect(6);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Mr. Abebe Bekele, P.O. Box 1519");
         test.ok(typeof(parsedAddress.region) === "undefined");
@@ -102,9 +102,9 @@ module.exports.testaddress_ET = {
     },
     
     testParseAddressETNoDelimiters: function(test) {
-        test.expect(6);
         var parsedAddress = new Address("Mr. Abebe Bekele P.O. Box 1519 ADDIS ABABA ETHIOPIA", {locale: 'en-ET'});
         
+        test.expect(6);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Mr. Abebe Bekele P.O. Box 1519");
         test.ok(typeof(parsedAddress.region) === "undefined");
@@ -115,9 +115,9 @@ module.exports.testaddress_ET = {
     },
     
     testParseAddressETSpecialChars: function(test) {
-        test.expect(6);
         var parsedAddress = new Address("Post Office Headquarters, P.O. Box 5555, ADDIS ABABA, ETHIOPIA", {locale: 'en-ET'});
         
+        test.expect(6);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Post Office Headquarters, P.O. Box 5555");
         test.ok(typeof(parsedAddress.region) === "undefined");
@@ -128,11 +128,11 @@ module.exports.testaddress_ET = {
     },
     
     testParseAddressETFromUS: function(test) {
-        test.expect(6);
         var parsedAddress = new Address("Mr. Abebe Bekele, P.O. Box 1519, ADDIS ABABA, ETHIOPIA", {locale: 'en-US'});
         
         // the country name is in English because this address is for a contact in a US database
         
+        test.expect(6);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Mr. Abebe Bekele, P.O. Box 1519");
         test.ok(typeof(parsedAddress.region) === "undefined");
@@ -143,7 +143,6 @@ module.exports.testaddress_ET = {
     },
     
     testFormatAddressET: function(test) {
-        test.expect(1);
         var parsedAddress = new Address({
             streetAddress: "Mr. Abebe Bekele\nP.O. Box 1519",
             locality: "ADDIS ABABA",
@@ -153,12 +152,12 @@ module.exports.testaddress_ET = {
         
         var expected = "Mr. Abebe Bekele\nP.O. Box 1519\nADDIS ABABA\nETHIOPIA";
         var formatter = new AddressFmt({locale: 'en-ET'});
+        test.expect(1);
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     },
     
     testFormatAddressETFromUS: function(test) {
-        test.expect(1);
         var parsedAddress = new Address({
             streetAddress: "Mr. Abebe Bekele\nP.O. Box 1519",
             locality: "ADDIS ABABA",
@@ -168,6 +167,7 @@ module.exports.testaddress_ET = {
         
         var expected = "Mr. Abebe Bekele\nP.O. Box 1519\nADDIS ABABA\nETHIOPIA";
         var formatter = new AddressFmt({locale: 'en-US'});
+        test.expect(1);
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     }

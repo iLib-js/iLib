@@ -34,8 +34,8 @@ module.exports.testname_ml = {
     },
 
     testParseSimpleName_ml_IN: function(test) {
-        test.expect(2);
         var parsed = new Name("മോഹന ലള", {locale: 'ml-IN'});
+        test.expect(2);
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {
@@ -50,8 +50,8 @@ module.exports.testname_ml = {
     
     
     testParseTitle_ml_IN: function(test) {
-        test.expect(2);
         var parsed = new Name("മോഹന ലള ജൂനിയര്‍", {locale: 'ml-IN'});
+        test.expect(2);
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {
@@ -67,8 +67,8 @@ module.exports.testname_ml = {
     
     
     testParseTitleWithFamilyOnly_ml_IN: function(test) {
-        test.expect(2);
         var parsed = new Name("മിസ്റ്റര്‍ ലള", {locale: 'ml-IN'});
+        test.expect(2);
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {
@@ -83,8 +83,8 @@ module.exports.testname_ml = {
     
     
     testParseEverything_ml_IN: function(test) {
-        test.expect(2);
         var parsed = new Name("മിസ്റ്റര്‍ ആന്‍ഡ് മാഡം ലള", {locale: 'ml-IN'});
+        test.expect(2);
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {
@@ -97,8 +97,8 @@ module.exports.testname_ml = {
     },
     
     testParseprefix_ml_IN: function(test) {
-        test.expect(2);
         var parsed = new Name("മിസ്റ്റര്‍ മോഹന ലള", {locale: 'ml-IN'});
+        test.expect(2);
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {
@@ -115,7 +115,6 @@ module.exports.testname_ml = {
      */
     
     testFormatSimpleNameShort_ml_IN: function(test) {
-        test.expect(2);
         var name = new Name({
             givenName: "മോഹന",
             familyName: "ലള"
@@ -125,6 +124,7 @@ module.exports.testname_ml = {
             locale: 'ml-IN'
         });
         var formatted = fmt.format(name);
+        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "മോഹന ലള";
@@ -134,7 +134,6 @@ module.exports.testname_ml = {
     },
     
     testFormatSimpleNameMedium_ml_IN: function(test) {
-        test.expect(2);
         var name = new Name({
             givenName: "മോഹന",
             familyName: "ലള"
@@ -144,6 +143,7 @@ module.exports.testname_ml = {
             locale: 'ml-IN'
         });
         var formatted = fmt.format(name);
+        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "മോഹന ലള";
@@ -153,7 +153,6 @@ module.exports.testname_ml = {
     },
     
     testFormatSimpleNameLong_ml_IN: function(test) {
-        test.expect(2);
         var name = new Name({
             givenName: "മോഹന",
             familyName: "ലള"
@@ -163,6 +162,7 @@ module.exports.testname_ml = {
             locale: 'ml-IN'
         });
         var formatted = fmt.format(name);
+        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "മോഹന ലള";
@@ -172,7 +172,6 @@ module.exports.testname_ml = {
     },
     
     testFormatSurname_ml_IN: function(test) {
-        test.expect(2);
         var name = new Name({
             prefix: "മിസ്റ്റര്‍ ആന്‍ഡ് മാഡം",
             familyName: "ലള"
@@ -182,6 +181,7 @@ module.exports.testname_ml = {
             locale: 'ml-IN'
         });
         var formatted = fmt.format(name);
+        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "മിസ്റ്റര്‍ ആന്‍ഡ് മാഡം ലള";
@@ -191,7 +191,6 @@ module.exports.testname_ml = {
     },
     
     testFormatSimpleNameFull_ml_IN: function(test) {
-        test.expect(2);
         var name = new Name({
             prefix: "ഡോക്ടര്‍",
             givenName: "മോഹന",
@@ -203,6 +202,7 @@ module.exports.testname_ml = {
             locale: 'ml-IN'
         });
         var formatted = fmt.format(name);
+        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "ഡോക്ടര്‍ മോഹന ലള ജൂനിയര്‍";
@@ -212,7 +212,6 @@ module.exports.testname_ml = {
     },
     
     testFormatComplexNameShort_ml_IN: function(test) {
-        test.expect(2);
         var name = new Name({
             prefix: "ഡോക്ടര്‍",
             givenName: "മോഹന",
@@ -223,6 +222,7 @@ module.exports.testname_ml = {
             locale: 'ml-IN'
         });
         var formatted = fmt.format(name);
+        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "മോഹന ലള";
@@ -232,7 +232,6 @@ module.exports.testname_ml = {
     },
     
     testFormatComplexNameMedium_ml_IN: function(test) {
-        test.expect(2);
         var name = new Name({
             prefix: "ഡോക്ടര്‍",
             givenName: "മോഹന",
@@ -243,6 +242,7 @@ module.exports.testname_ml = {
             locale: 'ml-IN'
         });
         var formatted = fmt.format(name);
+        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "മോഹന ലള";
@@ -252,7 +252,6 @@ module.exports.testname_ml = {
     },
     
     testFormatComplexNameLong_ml_IN: function(test) {
-        test.expect(2);
         var name = new Name({
             prefix: "ഡോക്ടര്‍",
             givenName: "മോഹന",
@@ -263,6 +262,7 @@ module.exports.testname_ml = {
             locale: 'ml-IN'
         });
         var formatted = fmt.format(name);
+        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "ഡോക്ടര്‍ മോഹന ലള";

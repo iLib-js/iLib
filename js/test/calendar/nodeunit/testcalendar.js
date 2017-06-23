@@ -32,15 +32,15 @@ module.exports.testcalendar = {
     },
 
     testCalendarFactoryDefault: function(test) {
-        test.expect(1);
         var cal = CalendarFactory();
+        test.expect(1);
         test.ok(typeof(cal) !== "undefined");
         test.done();
     },
     
     testCalendarFactoryDefaultRightType: function(test) {
-        test.expect(2);
         var cal = CalendarFactory();
+        test.expect(2);
         test.ok(typeof(cal) !== "undefined");
     
         test.equal(cal.getType(), "gregorian");
@@ -48,8 +48,8 @@ module.exports.testcalendar = {
     },
     
     testCalendarFactorySpecific: function(test) {
-        test.expect(2);
         var cal = CalendarFactory({type: "julian"});
+        test.expect(2);
         test.ok(typeof(cal) !== "undefined");
     
         test.equal(cal.getType(), "julian");
@@ -57,15 +57,15 @@ module.exports.testcalendar = {
     },
     
     testCalendarFactoryUnknown: function(test) {
-        test.expect(1);
         var cal = CalendarFactory({type: "asdf"});
+        test.expect(1);
         test.ok(typeof(cal) === "undefined");
         test.done();
     },
     
     testCalendarFactoryDefaultForLocale: function(test) {
-        test.expect(2);
         var cal = CalendarFactory({locale: "ar-AE"});
+        test.expect(2);
         test.ok(typeof(cal) !== "undefined");
     
         test.equal(cal.getType(), "gregorian");
@@ -73,8 +73,8 @@ module.exports.testcalendar = {
     },
     
     testCalendarFactoryDefaultForLocale_KH: function(test) {
-        test.expect(2);
         var cal = CalendarFactory({locale: "km-KH"});
+        test.expect(2);
         test.ok(typeof(cal) !== "undefined");
     
         test.equal(cal.getType(), "gregorian");
@@ -82,8 +82,8 @@ module.exports.testcalendar = {
     },
     
     testCalendarFactoryDefaultForLocale_AZ: function(test) {
-        test.expect(2);
         var cal = CalendarFactory({locale: "az-Latn-AZ"});
+        test.expect(2);
         test.ok(typeof(cal) !== "undefined");
     
         test.equal(cal.getType(), "gregorian");
@@ -91,8 +91,8 @@ module.exports.testcalendar = {
     },
     
     testCalendarFactoryDefaultForLocale_LK: function(test) {
-        test.expect(2);
         var cal = CalendarFactory({locale: "si-LK"});
+        test.expect(2);
         test.ok(typeof(cal) !== "undefined");
     
         test.equal(cal.getType(), "gregorian");
@@ -100,8 +100,8 @@ module.exports.testcalendar = {
     },
     
     testCalendarFactoryDefaultForLocale_KE: function(test) {
-        test.expect(2);
         var cal = CalendarFactory({locale: "sw-Latn-KE"});
+        test.expect(2);
         test.ok(typeof(cal) !== "undefined");
     
         test.equal(cal.getType(), "gregorian");
@@ -109,8 +109,8 @@ module.exports.testcalendar = {
     },
     
     testCalendarFactoryDefaultForLocaleOther: function(test) {
-        test.expect(2);
         var cal = CalendarFactory({locale: "th-TH"});
+        test.expect(2);
         test.ok(typeof(cal) !== "undefined");
     
         test.equal(cal.getType(), "thaisolar");
@@ -118,8 +118,8 @@ module.exports.testcalendar = {
     },
     
     testCalendarFactoryOverrideLocale: function(test) {
-        test.expect(2);
         var cal = CalendarFactory({locale: "ar-AE", type: "gregorian"});
+        test.expect(2);
         test.ok(typeof(cal) !== "undefined");
     
         test.equal(cal.getType(), "gregorian");
@@ -127,7 +127,6 @@ module.exports.testcalendar = {
     },
     
     testGetCalendars: function(test) {
-        test.expect(1);
         var expected = [
             "julian",
             "gregorian",
@@ -141,6 +140,7 @@ module.exports.testcalendar = {
             "coptic"
         ];
     
+        test.expect(1);
         test.equalIgnoringOrder(CalendarFactory.getCalendars(), expected);
         test.done();
     }

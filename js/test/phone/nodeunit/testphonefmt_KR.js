@@ -35,7 +35,6 @@ module.exports.phonefmt_KR = {
     },
 
     testFormatKRStyle0: function(test) {
-        test.expect(1);
         var formatted;
         var parsed = new PhoneNumber({
             trunkAccess: "0",
@@ -47,12 +46,12 @@ module.exports.phonefmt_KR = {
         var fmt = new PhoneFmt({locale: "ko-KR", style: "default"});
         formatted = fmt.format(parsed);
         
+        test.expect(1);
         test.equal(formatted, expected);
         test.done();
     },
     
     testFormatKRStyle1: function(test) {
-        test.expect(1);
         var formatted;
         var parsed = new PhoneNumber({
             trunkAccess: "0",
@@ -64,12 +63,12 @@ module.exports.phonefmt_KR = {
         var fmt = new PhoneFmt({locale: "ko-KR", style: "괄호"});
         formatted = fmt.format(parsed);
         
+        test.expect(1);
         test.equal(formatted, expected);
         test.done();
     },
     
     testFormatKRInternational: function(test) {
-        test.expect(1);
         var formatted;
         var parsed = new PhoneNumber({
             iddPrefix: "+",
@@ -82,13 +81,13 @@ module.exports.phonefmt_KR = {
         var fmt = new PhoneFmt({locale: "ko-KR", style: "default"});
         formatted = fmt.format(parsed);
         
+        test.expect(1);
         test.equal(formatted, expected);
         test.done();
     },
     
     
     testFormatKRInternational2: function(test) {
-        test.expect(1);
         var formatted;
         var parsed = new PhoneNumber("+61212345678", {locale:"ko-KR"});
         var expected = "+61 2 1234 5678";
@@ -96,12 +95,12 @@ module.exports.phonefmt_KR = {
         var fmt = new PhoneFmt({locale: "ko-KR", style: "default"});
         formatted = fmt.format(parsed);
         
+        test.expect(1);
         test.equal(formatted, expected);
         test.done();
     },
     
     testFormatKRInternationalAccessCode: function(test) {
-        test.expect(1);
         var formatted;
         var parsed = new PhoneNumber({
             iddPrefix: "002",
@@ -114,12 +113,12 @@ module.exports.phonefmt_KR = {
         var fmt = new PhoneFmt({locale: "ko-KR", style: "default"});
         formatted = fmt.format(parsed);
         
+        test.expect(1);
         test.equal(formatted, expected);
         test.done();
     },
     
     testFormatKRLongAreaCode: function(test) {
-        test.expect(1);
         var formatted;
         var parsed = new PhoneNumber({
             trunkAccess: "0",
@@ -131,13 +130,13 @@ module.exports.phonefmt_KR = {
         var fmt = new PhoneFmt({locale: "ko-KR", style: "default"});
         formatted = fmt.format(parsed);
         
+        test.expect(1);
         test.equal(formatted, expected);
         test.done();
     },
     
     
     testFormatKRMobile: function(test) {
-        test.expect(1);
         var formatted;
         var parsed = new PhoneNumber({
             trunkAccess: "0",
@@ -149,12 +148,12 @@ module.exports.phonefmt_KR = {
         var fmt = new PhoneFmt({locale: "ko-KR", style: "default"});
         formatted = fmt.format(parsed);
         
+        test.expect(1);
         test.equal(formatted, expected);
         test.done();
     },
     
     testFormatKRMobileInternational: function(test) {
-        test.expect(1);
         var formatted;
         var parsed = new PhoneNumber({
             iddPrefix: "+",
@@ -167,12 +166,12 @@ module.exports.phonefmt_KR = {
         var fmt = new PhoneFmt({locale: "ko-KR", style: "default"});
         formatted = fmt.format(parsed);
         
+        test.expect(1);
         test.equal(formatted, expected);
         test.done();
     },
     
     testFormatKRService: function(test) {
-        test.expect(1);
         var formatted;
         var parsed = new PhoneNumber({
             trunkAccess: "0",
@@ -184,12 +183,12 @@ module.exports.phonefmt_KR = {
         var fmt = new PhoneFmt({locale: "ko-KR", style: "default"});
         formatted = fmt.format(parsed);
         
+        test.expect(1);
         test.equal(formatted, expected);
         test.done();
     },
     
     testFormatKRIEIDD: function(test) {
-        test.expect(1);
         var formatted;
         var parsed = new PhoneNumber({
             iddPrefix: "+",
@@ -203,12 +202,12 @@ module.exports.phonefmt_KR = {
         var fmt = new PhoneFmt({locale: "ko-KR", style: "default"});
         formatted = fmt.format(parsed);
         
+        test.expect(1);
         test.equal(formatted, expected);
         test.done();
     },
     
     testFormatKRStyle0Partial0: function(test) {
-        test.expect(1);
         var formatted;
         var parsed = new PhoneNumber({
             trunkAccess: "0"
@@ -218,11 +217,11 @@ module.exports.phonefmt_KR = {
         var fmt = new PhoneFmt({locale: "ko-KR", style: "default"});
         formatted = fmt.format(parsed, {partial: true});
         
+        test.expect(1);
         test.equal(formatted, expected);
         test.done();
     },
     testFormatKRStyle0Partial1: function(test) {
-        test.expect(1);
         var formatted;
         var parsed = new PhoneNumber({
             trunkAccess: "0",
@@ -233,12 +232,12 @@ module.exports.phonefmt_KR = {
         var fmt = new PhoneFmt({locale: "ko-KR", style: "default"});
         formatted = fmt.format(parsed, {partial: true});
         
+        test.expect(1);
         test.equal(formatted, expected);
         test.done();
     },
     
     testFormatKRStyle0Partial2: function(test) {
-        test.expect(1);
         var formatted;
         var parsed = new PhoneNumber({
             trunkAccess: "0",
@@ -249,12 +248,12 @@ module.exports.phonefmt_KR = {
         var fmt = new PhoneFmt({locale: "ko-KR", style: "default"});
         formatted = fmt.format(parsed, {partial: true});
         
+        test.expect(1);
         test.equal(formatted, expected);
         test.done();
     },
     
     testFormatKRStyle0Partial3: function(test) {
-        test.expect(1);
         var formatted;
         var parsed = new PhoneNumber({
             trunkAccess: "0",
@@ -266,11 +265,11 @@ module.exports.phonefmt_KR = {
         var fmt = new PhoneFmt({locale: "ko-KR", style: "default"});
         formatted = fmt.format(parsed, {partial: true});
         
+        test.expect(1);
         test.equal(formatted, expected);
         test.done();
     },
     testFormatKRStyle0Partial4: function(test) {
-        test.expect(1);
         var formatted;
         var parsed = new PhoneNumber({
             trunkAccess: "0",
@@ -282,11 +281,11 @@ module.exports.phonefmt_KR = {
         var fmt = new PhoneFmt({locale: "ko-KR", style: "default"});
         formatted = fmt.format(parsed, {partial: true});
         
+        test.expect(1);
         test.equal(formatted, expected);
         test.done();
     },
     testFormatKRStyle0Partial5: function(test) {
-        test.expect(1);
         var formatted;
         var parsed = new PhoneNumber({
             trunkAccess: "0",
@@ -298,11 +297,11 @@ module.exports.phonefmt_KR = {
         var fmt = new PhoneFmt({locale: "ko-KR", style: "default"});
         formatted = fmt.format(parsed, {partial: true});
         
+        test.expect(1);
         test.equal(formatted, expected);
         test.done();
     },
     testFormatKRStyle0Partial6: function(test) {
-        test.expect(1);
         var formatted;
         var parsed = new PhoneNumber({
             trunkAccess: "0",
@@ -314,11 +313,11 @@ module.exports.phonefmt_KR = {
         var fmt = new PhoneFmt({locale: "ko-KR", style: "default"});
         formatted = fmt.format(parsed, {partial: true});
         
+        test.expect(1);
         test.equal(formatted, expected);
         test.done();
     },
     testFormatKRStyle0Partial7: function(test) {
-        test.expect(1);
         var formatted;
         var parsed = new PhoneNumber({
             trunkAccess: "0",
@@ -330,11 +329,11 @@ module.exports.phonefmt_KR = {
         var fmt = new PhoneFmt({locale: "ko-KR", style: "default"});
         formatted = fmt.format(parsed, {partial: true});
         
+        test.expect(1);
         test.equal(formatted, expected);
         test.done();
     },
     testFormatKRStyle0Partial8: function(test) {
-        test.expect(1);
         var formatted;
         var parsed = new PhoneNumber({
             trunkAccess: "0",
@@ -346,11 +345,11 @@ module.exports.phonefmt_KR = {
         var fmt = new PhoneFmt({locale: "ko-KR", style: "default"});
         formatted = fmt.format(parsed, {partial: true});
         
+        test.expect(1);
         test.equal(formatted, expected);
         test.done();
     },
     testFormatKRStyle0Partial9: function(test) {
-        test.expect(1);
         var formatted;
         var parsed = new PhoneNumber({
             trunkAccess: "0",
@@ -362,11 +361,11 @@ module.exports.phonefmt_KR = {
         var fmt = new PhoneFmt({locale: "ko-KR", style: "default"});
         formatted = fmt.format(parsed, {partial: true});
         
+        test.expect(1);
         test.equal(formatted, expected);
         test.done();
     },
     testFormatKRStyle0Partial10: function(test) {
-        test.expect(1);
         var formatted;
         var parsed = new PhoneNumber({
             trunkAccess: "0",
@@ -378,12 +377,12 @@ module.exports.phonefmt_KR = {
         var fmt = new PhoneFmt({locale: "ko-KR", style: "default"});
         formatted = fmt.format(parsed, {partial: true});
         
+        test.expect(1);
         test.equal(formatted, expected);
         test.done();
     },
     
     testFormatKRStyle0Partial10: function(test) {
-        test.expect(1);
         var formatted;
         var parsed = new PhoneNumber({
             trunkAccess: "0",
@@ -396,13 +395,13 @@ module.exports.phonefmt_KR = {
         var fmt = new PhoneFmt({locale: "ko-KR", style: "default"});
         formatted = fmt.format(parsed, {partial: true});
         
+        test.expect(1);
         test.equal(formatted, expected);
         test.done();
     },
     
     
     testFormatKRStyle0Whole0: function(test) {
-        test.expect(1);
         var formatted;
         var parsed = new PhoneNumber({
             trunkAccess: "0"
@@ -412,11 +411,11 @@ module.exports.phonefmt_KR = {
         var fmt = new PhoneFmt({locale: "ko-KR", style: "default"});
         formatted = fmt.format(parsed, {partial: false});
         
+        test.expect(1);
         test.equal(formatted, expected);
         test.done();
     },
     testFormatKRStyle0Whole1: function(test) {
-        test.expect(1);
         var formatted;
         var parsed = new PhoneNumber({
             trunkAccess: "0",
@@ -427,11 +426,11 @@ module.exports.phonefmt_KR = {
         var fmt = new PhoneFmt({locale: "ko-KR", style: "default"});
         formatted = fmt.format(parsed, {partial: false});
         
+        test.expect(1);
         test.equal(formatted, expected);
         test.done();
     },
     testFormatKRStyle0Whole2: function(test) {
-        test.expect(1);
         var formatted;
         var parsed = new PhoneNumber({
             trunkAccess: "0",
@@ -442,11 +441,11 @@ module.exports.phonefmt_KR = {
         var fmt = new PhoneFmt({locale: "ko-KR", style: "default"});
         formatted = fmt.format(parsed, {partial: false});
         
+        test.expect(1);
         test.equal(formatted, expected);
         test.done();
     },
     testFormatKRStyle0Whole3: function(test) {
-        test.expect(1);
         var formatted;
         var parsed = new PhoneNumber({
             trunkAccess: "0",
@@ -458,11 +457,11 @@ module.exports.phonefmt_KR = {
         var fmt = new PhoneFmt({locale: "ko-KR", style: "default"});
         formatted = fmt.format(parsed, {partial: false});
         
+        test.expect(1);
         test.equal(formatted, expected);
         test.done();
     },
     testFormatKRStyle0Whole4: function(test) {
-        test.expect(1);
         var formatted;
         var parsed = new PhoneNumber({
             trunkAccess: "0",
@@ -474,11 +473,11 @@ module.exports.phonefmt_KR = {
         var fmt = new PhoneFmt({locale: "ko-KR", style: "default"});
         formatted = fmt.format(parsed, {partial: false});
         
+        test.expect(1);
         test.equal(formatted, expected);
         test.done();
     },
     testFormatKRStyle0Whole5: function(test) {
-        test.expect(1);
         var formatted;
         var parsed = new PhoneNumber({
             trunkAccess: "0",
@@ -490,11 +489,11 @@ module.exports.phonefmt_KR = {
         var fmt = new PhoneFmt({locale: "ko-KR", style: "default"});
         formatted = fmt.format(parsed, {partial: false});
         
+        test.expect(1);
         test.equal(formatted, expected);
         test.done();
     },
     testFormatKRStyle0Whole6: function(test) {
-        test.expect(1);
         var formatted;
         var parsed = new PhoneNumber({
             trunkAccess: "0",
@@ -506,11 +505,11 @@ module.exports.phonefmt_KR = {
         var fmt = new PhoneFmt({locale: "ko-KR", style: "default"});
         formatted = fmt.format(parsed, {partial: false});
         
+        test.expect(1);
         test.equal(formatted, expected);
         test.done();
     },
     testFormatKRStyle0Whole7: function(test) {
-        test.expect(1);
         var formatted;
         var parsed = new PhoneNumber({
             trunkAccess: "0",
@@ -522,11 +521,11 @@ module.exports.phonefmt_KR = {
         var fmt = new PhoneFmt({locale: "ko-KR", style: "default"});
         formatted = fmt.format(parsed, {partial: false});
         
+        test.expect(1);
         test.equal(formatted, expected);
         test.done();
     },
     testFormatKRStyle0Whole8: function(test) {
-        test.expect(1);
         var formatted;
         var parsed = new PhoneNumber({
             trunkAccess: "0",
@@ -538,11 +537,11 @@ module.exports.phonefmt_KR = {
         var fmt = new PhoneFmt({locale: "ko-KR", style: "default"});
         formatted = fmt.format(parsed, {partial: false});
         
+        test.expect(1);
         test.equal(formatted, expected);
         test.done();
     },
     testFormatKRStyle0Whole9: function(test) {
-        test.expect(1);
         var formatted;
         var parsed = new PhoneNumber({
             trunkAccess: "0",
@@ -554,11 +553,11 @@ module.exports.phonefmt_KR = {
         var fmt = new PhoneFmt({locale: "ko-KR", style: "default"});
         formatted = fmt.format(parsed, {partial: false});
         
+        test.expect(1);
         test.equal(formatted, expected);
         test.done();
     },
     testFormatKRStyle0Whole10: function(test) {
-        test.expect(1);
         var formatted;
         var parsed = new PhoneNumber({
             trunkAccess: "0",
@@ -570,12 +569,12 @@ module.exports.phonefmt_KR = {
         var fmt = new PhoneFmt({locale: "ko-KR", style: "default"});
         formatted = fmt.format(parsed, {partial: false});
         
+        test.expect(1);
         test.equal(formatted, expected);
         test.done();
     },
     
     testFormatKRStyle1Partial0: function(test) {
-        test.expect(1);
         var formatted;
         var parsed = new PhoneNumber({
             trunkAccess: "0"
@@ -585,11 +584,11 @@ module.exports.phonefmt_KR = {
         var fmt = new PhoneFmt({locale: "ko-KR", style: "괄호"});
         formatted = fmt.format(parsed, {partial: true});
         
+        test.expect(1);
         test.equal(formatted, expected);
         test.done();
     },
     testFormatKRStyle1Partial1: function(test) {
-        test.expect(1);
         var formatted;
         var parsed = new PhoneNumber({
             trunkAccess: "0",
@@ -600,11 +599,11 @@ module.exports.phonefmt_KR = {
         var fmt = new PhoneFmt({locale: "ko-KR", style: "괄호"});
         formatted = fmt.format(parsed, {partial: true});
         
+        test.expect(1);
         test.equal(formatted, expected);
         test.done();
     },
     testFormatKRStyle1Partial2: function(test) {
-        test.expect(1);
         var formatted;
         var parsed = new PhoneNumber({
             trunkAccess: "0",
@@ -615,11 +614,11 @@ module.exports.phonefmt_KR = {
         var fmt = new PhoneFmt({locale: "ko-KR", style: "괄호"});
         formatted = fmt.format(parsed, {partial: true});
         
+        test.expect(1);
         test.equal(formatted, expected);
         test.done();
     },
     testFormatKRStyle1Partial3: function(test) {
-        test.expect(1);
         var formatted;
         var parsed = new PhoneNumber({
             trunkAccess: "0",
@@ -631,11 +630,11 @@ module.exports.phonefmt_KR = {
         var fmt = new PhoneFmt({locale: "ko-KR", style: "괄호"});
         formatted = fmt.format(parsed, {partial: true});
         
+        test.expect(1);
         test.equal(formatted, expected);
         test.done();
     },
     testFormatKRStyle1Partial4: function(test) {
-        test.expect(1);
         var formatted;
         var parsed = new PhoneNumber({
             trunkAccess: "0",
@@ -647,11 +646,11 @@ module.exports.phonefmt_KR = {
         var fmt = new PhoneFmt({locale: "ko-KR", style: "괄호"});
         formatted = fmt.format(parsed, {partial: true});
         
+        test.expect(1);
         test.equal(formatted, expected);
         test.done();
     },
     testFormatKRStyle1Partial5: function(test) {
-        test.expect(1);
         var formatted;
         var parsed = new PhoneNumber({
             trunkAccess: "0",
@@ -663,11 +662,11 @@ module.exports.phonefmt_KR = {
         var fmt = new PhoneFmt({locale: "ko-KR", style: "괄호"});
         formatted = fmt.format(parsed, {partial: true});
         
+        test.expect(1);
         test.equal(formatted, expected);
         test.done();
     },
     testFormatKRStyle1Partial6: function(test) {
-        test.expect(1);
         var formatted;
         var parsed = new PhoneNumber({
             trunkAccess: "0",
@@ -679,11 +678,11 @@ module.exports.phonefmt_KR = {
         var fmt = new PhoneFmt({locale: "ko-KR", style: "괄호"});
         formatted = fmt.format(parsed, {partial: true});
         
+        test.expect(1);
         test.equal(formatted, expected);
         test.done();
     },
     testFormatKRStyle1Partial7: function(test) {
-        test.expect(1);
         var formatted;
         var parsed = new PhoneNumber({
             trunkAccess: "0",
@@ -695,11 +694,11 @@ module.exports.phonefmt_KR = {
         var fmt = new PhoneFmt({locale: "ko-KR", style: "괄호"});
         formatted = fmt.format(parsed, {partial: true});
         
+        test.expect(1);
         test.equal(formatted, expected);
         test.done();
     },
     testFormatKRStyle1Partial8: function(test) {
-        test.expect(1);
         var formatted;
         var parsed = new PhoneNumber({
             trunkAccess: "0",
@@ -711,11 +710,11 @@ module.exports.phonefmt_KR = {
         var fmt = new PhoneFmt({locale: "ko-KR", style: "괄호"});
         formatted = fmt.format(parsed, {partial: true});
         
+        test.expect(1);
         test.equal(formatted, expected);
         test.done();
     },
     testFormatKRStyle1Partial9: function(test) {
-        test.expect(1);
         var formatted;
         var parsed = new PhoneNumber({
             trunkAccess: "0",
@@ -727,11 +726,11 @@ module.exports.phonefmt_KR = {
         var fmt = new PhoneFmt({locale: "ko-KR", style: "괄호"});
         formatted = fmt.format(parsed, {partial: true});
         
+        test.expect(1);
         test.equal(formatted, expected);
         test.done();
     },
     testFormatKRStyle1Partial10: function(test) {
-        test.expect(1);
         var formatted;
         var parsed = new PhoneNumber({
             trunkAccess: "0",
@@ -743,12 +742,12 @@ module.exports.phonefmt_KR = {
         var fmt = new PhoneFmt({locale: "ko-KR", style: "괄호"});
         formatted = fmt.format(parsed, {partial: true});
         
+        test.expect(1);
         test.equal(formatted, expected);
         test.done();
     },
     
     testFormatKRStyle0PartialLocal1: function(test) {
-        test.expect(1);
         var formatted;
         var parsed = new PhoneNumber({
             subscriberNumber: "4"
@@ -758,11 +757,11 @@ module.exports.phonefmt_KR = {
         var fmt = new PhoneFmt({locale: "ko-KR", style: "default"});
         formatted = fmt.format(parsed, {partial: true});
         
+        test.expect(1);
         test.equal(formatted, expected);
         test.done();
     },
     testFormatKRStyle0PartialLocal2: function(test) {
-        test.expect(1);
         var formatted;
         var parsed = new PhoneNumber({
             subscriberNumber: "45"
@@ -772,11 +771,11 @@ module.exports.phonefmt_KR = {
         var fmt = new PhoneFmt({locale: "ko-KR", style: "default"});
         formatted = fmt.format(parsed, {partial: true});
         
+        test.expect(1);
         test.equal(formatted, expected);
         test.done();
     },
     testFormatKRStyle0PartialLocal3: function(test) {
-        test.expect(1);
         var formatted;
         var parsed = new PhoneNumber({
             subscriberNumber: "456"
@@ -786,11 +785,11 @@ module.exports.phonefmt_KR = {
         var fmt = new PhoneFmt({locale: "ko-KR", style: "default"});
         formatted = fmt.format(parsed, {partial: true});
         
+        test.expect(1);
         test.equal(formatted, expected);
         test.done();
     },
     testFormatKRStyle0PartialLocal4: function(test) {
-        test.expect(1);
         var formatted;
         var parsed = new PhoneNumber({
             subscriberNumber: "4563"
@@ -800,11 +799,11 @@ module.exports.phonefmt_KR = {
         var fmt = new PhoneFmt({locale: "ko-KR", style: "default"});
         formatted = fmt.format(parsed, {partial: true});
         
+        test.expect(1);
         test.equal(formatted, expected);
         test.done();
     },
     testFormatKRStyle0PartialLocal5: function(test) {
-        test.expect(1);
         var formatted;
         var parsed = new PhoneNumber({
             subscriberNumber: "45634"
@@ -814,11 +813,11 @@ module.exports.phonefmt_KR = {
         var fmt = new PhoneFmt({locale: "ko-KR", style: "default"});
         formatted = fmt.format(parsed, {partial: true});
         
+        test.expect(1);
         test.equal(formatted, expected);
         test.done();
     },
     testFormatKRStyle0PartialLocal6: function(test) {
-        test.expect(1);
         var formatted;
         var parsed = new PhoneNumber({
             subscriberNumber: "456345"
@@ -828,11 +827,11 @@ module.exports.phonefmt_KR = {
         var fmt = new PhoneFmt({locale: "ko-KR", style: "default"});
         formatted = fmt.format(parsed, {partial: true});
         
+        test.expect(1);
         test.equal(formatted, expected);
         test.done();
     },
     testFormatKRStyle0PartialLocal7: function(test) {
-        test.expect(1);
         var formatted;
         var parsed = new PhoneNumber({
             subscriberNumber: "4563453"
@@ -842,11 +841,11 @@ module.exports.phonefmt_KR = {
         var fmt = new PhoneFmt({locale: "ko-KR", style: "default"});
         formatted = fmt.format(parsed, {partial: true});
         
+        test.expect(1);
         test.equal(formatted, expected);
         test.done();
     },
     testFormatKRStyle0PartialLocal8: function(test) {
-        test.expect(1);
         var formatted;
         var parsed = new PhoneNumber({
             subscriberNumber: "45634535"
@@ -856,11 +855,11 @@ module.exports.phonefmt_KR = {
         var fmt = new PhoneFmt({locale: "ko-KR", style: "default"});
         formatted = fmt.format(parsed, {partial: true});
         
+        test.expect(1);
         test.equal(formatted, expected);
         test.done();
     },
     testFormatKRStyle0PartialLocal9: function(test) {
-        test.expect(1);
         var formatted;
         var parsed = new PhoneNumber({
             subscriberNumber: "456345352"    // too long
@@ -870,12 +869,12 @@ module.exports.phonefmt_KR = {
         var fmt = new PhoneFmt({locale: "ko-KR", style: "default"});
         formatted = fmt.format(parsed, {partial: true});
         
+        test.expect(1);
         test.equal(formatted, expected);
         test.done();
     },
     
     testFormatKRStyle1PartialLocal1: function(test) {
-        test.expect(1);
         var formatted;
         var parsed = new PhoneNumber({
             subscriberNumber: "4"
@@ -885,11 +884,11 @@ module.exports.phonefmt_KR = {
         var fmt = new PhoneFmt({locale: "ko-KR", style: "점"});
         formatted = fmt.format(parsed, {partial: true});
         
+        test.expect(1);
         test.equal(formatted, expected);
         test.done();
     },
     testFormatKRStyle1PartialLocal2: function(test) {
-        test.expect(1);
         var formatted;
         var parsed = new PhoneNumber({
             subscriberNumber: "45"
@@ -899,11 +898,11 @@ module.exports.phonefmt_KR = {
         var fmt = new PhoneFmt({locale: "ko-KR", style: "점"});
         formatted = fmt.format(parsed, {partial: true});
         
+        test.expect(1);
         test.equal(formatted, expected);
         test.done();
     },
     testFormatKRStyle1PartialLocal3: function(test) {
-        test.expect(1);
         var formatted;
         var parsed = new PhoneNumber({
             subscriberNumber: "456"
@@ -913,11 +912,11 @@ module.exports.phonefmt_KR = {
         var fmt = new PhoneFmt({locale: "ko-KR", style: "점"});
         formatted = fmt.format(parsed, {partial: true});
         
+        test.expect(1);
         test.equal(formatted, expected);
         test.done();
     },
     testFormatKRStyle1PartialLocal4: function(test) {
-        test.expect(1);
         var formatted;
         var parsed = new PhoneNumber({
             subscriberNumber: "4563"
@@ -927,11 +926,11 @@ module.exports.phonefmt_KR = {
         var fmt = new PhoneFmt({locale: "ko-KR", style: "점"});
         formatted = fmt.format(parsed, {partial: true});
         
+        test.expect(1);
         test.equal(formatted, expected);
         test.done();
     },
     testFormatKRStyle1PartialLocal5: function(test) {
-        test.expect(1);
         var formatted;
         var parsed = new PhoneNumber({
             subscriberNumber: "45634"
@@ -941,11 +940,11 @@ module.exports.phonefmt_KR = {
         var fmt = new PhoneFmt({locale: "ko-KR", style: "점"});
         formatted = fmt.format(parsed, {partial: true});
         
+        test.expect(1);
         test.equal(formatted, expected);
         test.done();
     },
     testFormatKRStyle1PartialLocal6: function(test) {
-        test.expect(1);
         var formatted;
         var parsed = new PhoneNumber({
             subscriberNumber: "456345"
@@ -955,11 +954,11 @@ module.exports.phonefmt_KR = {
         var fmt = new PhoneFmt({locale: "ko-KR", style: "점"});
         formatted = fmt.format(parsed, {partial: true});
         
+        test.expect(1);
         test.equal(formatted, expected);
         test.done();
     },
     testFormatKRStyle1PartialLocal7: function(test) {
-        test.expect(1);
         var formatted;
         var parsed = new PhoneNumber({
             subscriberNumber: "4563453"
@@ -969,11 +968,11 @@ module.exports.phonefmt_KR = {
         var fmt = new PhoneFmt({locale: "ko-KR", style: "점"});
         formatted = fmt.format(parsed, {partial: true});
         
+        test.expect(1);
         test.equal(formatted, expected);
         test.done();
     },
     testFormatKRStyle1PartialLocal8: function(test) {
-        test.expect(1);
         var formatted;
         var parsed = new PhoneNumber({
             subscriberNumber: "45634534"
@@ -983,11 +982,11 @@ module.exports.phonefmt_KR = {
         var fmt = new PhoneFmt({locale: "ko-KR", style: "점"});
         formatted = fmt.format(parsed, {partial: true});
         
+        test.expect(1);
         test.equal(formatted, expected);
         test.done();
     },
     testFormatKRStyle1PartialLocal9: function(test) {
-        test.expect(1);
         var formatted;
         var parsed = new PhoneNumber({
             subscriberNumber: "456345345"    // too long
@@ -997,12 +996,12 @@ module.exports.phonefmt_KR = {
         var fmt = new PhoneFmt({locale: "ko-KR", style: "점"});
         formatted = fmt.format(parsed, {partial: true});
         
+        test.expect(1);
         test.equal(formatted, expected);
         test.done();
     },
     
     testFormatKREmergency1: function(test) {
-        test.expect(1);
         var formatted;
         var parsed = new PhoneNumber("111", {locale: "ko-KR"});
         var expected = "111";
@@ -1010,12 +1009,12 @@ module.exports.phonefmt_KR = {
         var fmt = new PhoneFmt({locale: "ko-KR", style: "default"});
         formatted = fmt.format(parsed);
         
+        test.expect(1);
         test.equal(formatted, expected);
         test.done();
     },
     
     testFormatKREmergency2: function(test) {
-        test.expect(1);
         var formatted;
         var parsed = new PhoneNumber("1355", {locale: "ko-KR"});
         var expected = "1355";
@@ -1023,12 +1022,12 @@ module.exports.phonefmt_KR = {
         var fmt = new PhoneFmt({locale: "ko-KR", style: "default"});
         formatted = fmt.format(parsed);
         
+        test.expect(1);
         test.equal(formatted, expected);
         test.done();
     },
     
     testFormatKRWithTrunkAccessNumber: function(test) {
-        test.expect(1);
         var formatted;
         var parsed = new PhoneNumber("00", {locale: "ko-KR"});
         var expected = "00";
@@ -1036,12 +1035,12 @@ module.exports.phonefmt_KR = {
         var fmt = new PhoneFmt({locale: "ko-KR", style: "default"});
         formatted = fmt.format(parsed);
         
+        test.expect(1);
         test.equal(formatted, expected);
         test.done();
     },
     
     testFormatKRStyle0WithMobilePrefix: function(test) {
-        test.expect(1);
         var formatted;
     
         var parsed = new PhoneNumber("010", {locale: "ko-KR"});
@@ -1051,12 +1050,12 @@ module.exports.phonefmt_KR = {
         var fmt = new PhoneFmt({locale: "ko-KR", style: "default"});
         formatted = fmt.format(parsed, {partial: true});
         
+        test.expect(1);
         test.equal(formatted, expected);
         test.done();
     },
     
     testFormatKRStyle0WithMobilePrefix2: function(test) {
-        test.expect(1);
         var formatted;
     
         var parsed = new PhoneNumber("0109", {locale: "ko-KR"});
@@ -1066,13 +1065,13 @@ module.exports.phonefmt_KR = {
         var fmt = new PhoneFmt({locale: "ko-KR", style: "default"});
         formatted = fmt.format(parsed, {partial: true});
         
+        test.expect(1);
         test.equal(formatted, expected);
         test.done();
     },
     
     
     testFormatKRStyle1WithAreaNumber: function(test) {
-        test.expect(1);
         var formatted;
         var parsed = new PhoneNumber("031", {locale: "ko-KR"});
         var expected = "031";
@@ -1080,12 +1079,12 @@ module.exports.phonefmt_KR = {
         var fmt = new PhoneFmt({locale: "ko-KR", style: "점"});
         formatted = fmt.format(parsed, {partial: true});
         
+        test.expect(1);
         test.equal(formatted, expected);
         test.done();
     },
     
     testFormatKRStyle1WithAreaNumber2: function(test) {
-        test.expect(1);
         var formatted;
         var parsed = new PhoneNumber("0317", {locale: "ko-KR"});
         var expected = "031.7";
@@ -1093,12 +1092,12 @@ module.exports.phonefmt_KR = {
         var fmt = new PhoneFmt({locale: "ko-KR", style: "점"});
         formatted = fmt.format(parsed, {partial: true});
         
+        test.expect(1);
         test.equal(formatted, expected);
         test.done();
     },
     
     testFormatKRStyle1WithServiceNumber: function(test) {
-        test.expect(1);
         var formatted;
         var parsed = new PhoneNumber("070", {locale: "ko-KR"});
         var expected = "070";
@@ -1106,12 +1105,12 @@ module.exports.phonefmt_KR = {
         var fmt = new PhoneFmt({locale: "ko-KR", style: "default"});
         formatted = fmt.format(parsed, {partial: true});
         
+        test.expect(1);
         test.equal(formatted, expected);
         test.done();
     },
     
     testFormatKRStyle1WithServiceNumber2: function(test) {
-        test.expect(1);
         var formatted;
         var parsed = new PhoneNumber("0701", {locale: "ko-KR"});
         var expected = "070-1";
@@ -1119,12 +1118,12 @@ module.exports.phonefmt_KR = {
         var fmt = new PhoneFmt({locale: "ko-KR", style: "default"});
         formatted = fmt.format(parsed, {partial: false});
         
+        test.expect(1);
         test.equal(formatted, expected);
         test.done();
     },
     
     testFormatKRStyle1WithServiceNumber3: function(test) {
-        test.expect(1);
         var formatted;
         var parsed = new PhoneNumber("03012345677", {locale: "ko-KR"});
         var expected = "030-1234-5677";
@@ -1132,13 +1131,13 @@ module.exports.phonefmt_KR = {
         var fmt = new PhoneFmt({locale: "ko-KR", style: "default"});
         formatted = fmt.format(parsed, {partial: false});
         
+        test.expect(1);
         test.equal(formatted, expected);
         test.done();
     },
     
     /*Add this phonenumber formatting template temporarily */
     testFormatKRStyle1WithlongSubscribeNumber0: function(test) {
-        test.expect(1);
         var formatted;
         var parsed = new PhoneNumber("031123456778", {locale: "ko-KR"});
         var expected = "031-1234-56778";
@@ -1146,12 +1145,12 @@ module.exports.phonefmt_KR = {
         var fmt = new PhoneFmt({locale: "ko-KR", style: "default"});
         formatted = fmt.format(parsed, {partial: false});
         
+        test.expect(1);
         test.equal(formatted, expected);
         test.done();
     },
     
     testFormatKRStyle1WithlongSubscribeNumber1: function(test) {
-        test.expect(1);
         var formatted;
         var parsed = new PhoneNumber("0311234567781", {locale: "ko-KR"});
         var expected = "031-1234-567781";
@@ -1159,12 +1158,12 @@ module.exports.phonefmt_KR = {
         var fmt = new PhoneFmt({locale: "ko-KR", style: "default"});
         formatted = fmt.format(parsed, {partial: false});
         
+        test.expect(1);
         test.equal(formatted, expected);
         test.done();
     },
     
     testFormatKRStyle1WithlongSubscribeNumber2: function(test) {
-        test.expect(1);
         var formatted;
         var parsed = new PhoneNumber("03112345677812", {locale: "ko-KR"});
         var expected = "031-1234-5677812";
@@ -1172,12 +1171,12 @@ module.exports.phonefmt_KR = {
         var fmt = new PhoneFmt({locale: "ko-KR", style: "default"});
         formatted = fmt.format(parsed, {partial: false});
         
+        test.expect(1);
         test.equal(formatted, expected);
         test.done();
     },
     
     testFormatKRStyle1WithlongSubscribeNumber3: function(test) {
-        test.expect(1);
         var formatted;
         var parsed = new PhoneNumber("031123456778123", {locale: "ko-KR"});
         var expected = "031-1234-56778123";
@@ -1185,12 +1184,12 @@ module.exports.phonefmt_KR = {
         var fmt = new PhoneFmt({locale: "ko-KR", style: "default"});
         formatted = fmt.format(parsed, {partial: false});
         
+        test.expect(1);
         test.equal(formatted, expected);
         test.done();
     },
     
     testFormatKRStyle0WithExtensionCharacter: function(test) {
-        test.expect(1);
         var formatted;
         var parsed = new PhoneNumber("5551212,1234", {locale: "ko-KR"});
         var expected = "555-1212,1234";
@@ -1198,12 +1197,12 @@ module.exports.phonefmt_KR = {
         var fmt = new PhoneFmt({locale: "ko-KR", style: "default"});
         formatted = fmt.format(parsed, {partial: true});
         
+        test.expect(1);
         test.equal(formatted, expected);
         test.done();
     },
     
     testFormatKRStyle1WithExtensionCharacter: function(test) {
-        test.expect(1);
         var formatted;
         var parsed = new PhoneNumber("5551212,1234", {locale: "ko-KR"});
         var expected = "555.1212,1234";
@@ -1211,12 +1210,12 @@ module.exports.phonefmt_KR = {
         var fmt = new PhoneFmt({locale: "ko-KR", style: "점"});
         formatted = fmt.format(parsed, {partial: true});
         
+        test.expect(1);
         test.equal(formatted, expected);
         test.done();
     },
     
     testFormatKRStyle2WithExtensionCharacter: function(test) {
-        test.expect(1);
         var formatted;
         var parsed = new PhoneNumber("5551212,1234", {locale: "ko-KR"});
         var expected = "555 1212,1234";
@@ -1224,12 +1223,12 @@ module.exports.phonefmt_KR = {
         var fmt = new PhoneFmt({locale: "ko-KR", style: "공간"});
         formatted = fmt.format(parsed, {partial: true});
         
+        test.expect(1);
         test.equal(formatted, expected);
         test.done();
     },
     
     testFormatKRStyle1WithExtensionCharacter2: function(test) {
-        test.expect(1);
         var formatted;
         var parsed = new PhoneNumber("35850950777;12345", {locale: "ko-KR"});
         var expected = "3585-0950777;12345";
@@ -1237,6 +1236,7 @@ module.exports.phonefmt_KR = {
         var fmt = new PhoneFmt({locale: "ko-KR", style: "default"});
         formatted = fmt.format(parsed, {partial: true});
         
+        test.expect(1);
         test.equal(formatted, expected);
         test.done();
     }

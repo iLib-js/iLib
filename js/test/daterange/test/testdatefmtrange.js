@@ -23,6 +23,27 @@ var GregorianDate = require("./../lib/GregorianDate.js");
 var DateRngFmt = require("./../lib/DateRngFmt.js");
 var DateFmt = require("./../lib/DateFmt.js");
 
+function mockLoader(paths, sync, params, callback) {
+	var data = [];
+	
+	if (paths[0].indexOf("localeinfo") !== -1) {
+		data.push(ilib.data.localeinfo); // for the generic, shared stuff
+		data.push(ilib.data.localeinfo_en);
+		data.push(ilib.data.localeinfo_US);
+		data.push(ilib.data.localeinfo_en_US);
+	} else {
+		data.push(ilib.data.dateformats); // for the generic, shared stuff
+		data.push(ilib.data.dateformats_en);
+		data.push(ilib.data.dateformats_US);
+		data.push(ilib.data.dateformats_en_US);
+	}
+
+	if (typeof(callback) !== 'undefined') {
+		callback.call(this, data);	
+	}
+	return data;
+}
+
 function testDateRngFmtConstructorEmpty() {
     var fmt = new DateRngFmt();
     
@@ -197,27 +218,6 @@ function testDateRngFmtGetDefaultFormat() {
     	second: 0
     });
     assertEquals("20/2/13 12:20 – 16:35", fmt.format(start, end));
-}
-
-function mockLoader(paths, sync, params, callback) {
-	var data = [];
-	
-	if (paths[0].indexOf("localeinfo") !== -1) {
-		data.push(ilib.data.localeinfo); // for the generic, shared stuff
-		data.push(ilib.data.localeinfo_en);
-		data.push(ilib.data.localeinfo_US);
-		data.push(ilib.data.localeinfo_en_US);
-	} else {
-		data.push(ilib.data.dateformats); // for the generic, shared stuff
-		data.push(ilib.data.dateformats_en);
-		data.push(ilib.data.dateformats_US);
-		data.push(ilib.data.dateformats_en_US);
-	}
-
-	if (typeof(callback) !== 'undefined') {
-		callback.call(this, data);	
-	}
-	return data;
 }
 
 function testDateRngFmtDynamicLoadSync() {

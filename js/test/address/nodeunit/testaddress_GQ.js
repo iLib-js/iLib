@@ -34,9 +34,9 @@ module.exports.testaddress_GQ = {
     },
 
     testParseAddressGQNormal: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("Mr. Ignacio Nguema Apartado 36\nMALABO\nGuinea Ecuatorial", {locale: 'es-GQ'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Mr. Ignacio Nguema Apartado 36");
         test.equal(parsedAddress.locality, "MALABO");
@@ -48,9 +48,9 @@ module.exports.testaddress_GQ = {
     },
     
     testParseAddressGQNormal: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("Mr. Ignacio Nguema Apartado 36\nMALABO\nGuinea Ecuatorial", {locale: 'es-GQ'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Mr. Ignacio Nguema Apartado 36");
         test.equal(parsedAddress.locality, "MALABO");
@@ -62,9 +62,9 @@ module.exports.testaddress_GQ = {
     },
     
     testParseAddressGQNoZip: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("Mr. Ignacio Nguema Apartado 36\nMALABO\nGuinea Ecuatorial", {locale: 'es-GQ'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Mr. Ignacio Nguema Apartado 36");
         test.equal(parsedAddress.locality, "MALABO");
@@ -76,9 +76,9 @@ module.exports.testaddress_GQ = {
     },
     
     testParseAddressGQNoCountry: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("Mr. Ignacio Nguema Apartado 36\nMALABO", {locale: 'es-GQ'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Mr. Ignacio Nguema Apartado 36");
         test.equal(parsedAddress.locality, "MALABO");
@@ -90,9 +90,9 @@ module.exports.testaddress_GQ = {
     },
     
     testParseAddressGQManyLines: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("Mr. Ignacio Nguema\nApartado 36\nMALABO\nGuinea Ecuatorial", {locale: 'es-GQ'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
           test.equal(parsedAddress.streetAddress, "Mr. Ignacio Nguema, Apartado 36");
         test.equal(parsedAddress.locality, "MALABO");
@@ -104,9 +104,9 @@ module.exports.testaddress_GQ = {
     },
     
     testParseAddressGQOneLine: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("Mr. Ignacio Nguema , Apartado 36 , MALABO , Guinea Ecuatorial", {locale: 'es-GQ'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
           test.equal(parsedAddress.streetAddress, "Mr. Ignacio Nguema, Apartado 36");
         test.equal(parsedAddress.locality, "MALABO");
@@ -118,9 +118,9 @@ module.exports.testaddress_GQ = {
     },
     
     testParseAddressGQSuperfluousWhitespace: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("Mr. Ignacio Nguema\n\n\t\r\t\t\rApartado 36\r\r\n\nMALABO\t\r\n\t\rGuinea Ecuatorial", {locale: 'es-GQ'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
           test.equal(parsedAddress.streetAddress, "Mr. Ignacio Nguema, Apartado 36");
         test.equal(parsedAddress.locality, "MALABO");
@@ -132,9 +132,9 @@ module.exports.testaddress_GQ = {
     },
     
     testParseAddressGQNoDelimiters: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("Mr. Ignacio Nguema Apartado 36 MALABO Guinea Ecuatorial", {locale: 'es-GQ'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Mr. Ignacio Nguema Apartado 36");
         test.equal(parsedAddress.locality, "MALABO");
@@ -146,9 +146,9 @@ module.exports.testaddress_GQ = {
     },
     
     testParseAddressGQFromUS: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("Mr. Ignacio Nguema Apartado 36\nMALABO\nGuinea Ecuatorial", {locale: 'es-GQ'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Mr. Ignacio Nguema Apartado 36");
         test.equal(parsedAddress.locality, "MALABO");
@@ -160,7 +160,6 @@ module.exports.testaddress_GQ = {
     },
     
     testFormatAddressGQ: function(test) {
-        test.expect(1);
         var parsedAddress = new Address({
             streetAddress: "Mr. Ignacio Nguema Apartado 36",
             locality: "MALABO",
@@ -171,12 +170,12 @@ module.exports.testaddress_GQ = {
         
         var expected = "Mr. Ignacio Nguema Apartado 36\nMALABO\nGuinea Ecuatorial";
         var formatter = new AddressFmt({locale: 'es-GQ'});
+        test.expect(1);
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     },
     
     testFormatAddressGQFromUS: function(test) {
-        test.expect(1);
         var parsedAddress = new Address({
             streetAddress: "Mr. Ignacio Nguema Apartado 36",
             locality: "MALABO",
@@ -187,15 +186,16 @@ module.exports.testaddress_GQ = {
         
         var expected = "Mr. Ignacio Nguema Apartado 36\nMALABO\nGuinea Ecuatorial";
         var formatter = new AddressFmt({locale: 'en-US'});
+        test.expect(1);
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     },
     
     
     testFRParseAddressNormal: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("Mr. Ignacio Nguema Apartado 36\nMALABO\nguinée équatoriale", {locale: 'fr-GQ'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Mr. Ignacio Nguema Apartado 36");
         test.equal(parsedAddress.locality, "MALABO");
@@ -207,9 +207,9 @@ module.exports.testaddress_GQ = {
     },
     
     testFRParseAddressNormal: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("Mr. Ignacio Nguema Apartado 36\nMALABO\nguinée équatoriale", {locale: 'fr-GQ'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Mr. Ignacio Nguema Apartado 36");
         test.equal(parsedAddress.locality, "MALABO");
@@ -221,9 +221,9 @@ module.exports.testaddress_GQ = {
     },
     
     testFRParseAddressNoZip: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("Mr. Ignacio Nguema Apartado 36\nMALABO\nguinée équatoriale", {locale: 'fr-GQ'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Mr. Ignacio Nguema Apartado 36");
         test.equal(parsedAddress.locality, "MALABO");
@@ -235,9 +235,9 @@ module.exports.testaddress_GQ = {
     },
     
     testFRParseAddressNoCountry: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("Mr. Ignacio Nguema Apartado 36\nMALABO", {locale: 'fr-GQ'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Mr. Ignacio Nguema Apartado 36");
         test.equal(parsedAddress.locality, "MALABO");
@@ -249,9 +249,9 @@ module.exports.testaddress_GQ = {
     },
     
     testFRParseAddressManyLines: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("Mr. Ignacio Nguema\nApartado 36\nMALABO\nguinée équatoriale", {locale: 'fr-GQ'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
           test.equal(parsedAddress.streetAddress, "Mr. Ignacio Nguema, Apartado 36");
         test.equal(parsedAddress.locality, "MALABO");
@@ -263,9 +263,9 @@ module.exports.testaddress_GQ = {
     },
     
     testFRParseAddressOneLine: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("Mr. Ignacio Nguema , Apartado 36 , MALABO , guinée équatoriale", {locale: 'fr-GQ'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
           test.equal(parsedAddress.streetAddress, "Mr. Ignacio Nguema, Apartado 36");
         test.equal(parsedAddress.locality, "MALABO");
@@ -277,9 +277,9 @@ module.exports.testaddress_GQ = {
     },
     
     testFRParseAddressSuperfluousWhitespace: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("Mr. Ignacio Nguema\n\n\t\r\t\t\rApartado 36\r\r\n\nMALABO\t\r\n\t\rguinée équatoriale", {locale: 'fr-GQ'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
           test.equal(parsedAddress.streetAddress, "Mr. Ignacio Nguema, Apartado 36");
         test.equal(parsedAddress.locality, "MALABO");
@@ -291,9 +291,9 @@ module.exports.testaddress_GQ = {
     },
     
     testFRParseAddressNoDelimiters: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("Mr. Ignacio Nguema Apartado 36 MALABO guinée équatoriale", {locale: 'fr-GQ'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Mr. Ignacio Nguema Apartado 36");
         test.equal(parsedAddress.locality, "MALABO");
@@ -305,9 +305,9 @@ module.exports.testaddress_GQ = {
     },
     
     testFRParseAddressFromUS: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("Mr. Ignacio Nguema Apartado 36\nMALABO\nguinée équatoriale", {locale: 'fr-GQ'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Mr. Ignacio Nguema Apartado 36");
         test.equal(parsedAddress.locality, "MALABO");
@@ -319,7 +319,6 @@ module.exports.testaddress_GQ = {
     },
     
     testFormatFRAddress: function(test) {
-        test.expect(1);
         var parsedAddress = new Address({
             streetAddress: "Mr. Ignacio Nguema Apartado 36",
             locality: "MALABO",
@@ -330,12 +329,12 @@ module.exports.testaddress_GQ = {
         
         var expected = "Mr. Ignacio Nguema Apartado 36\nMALABO\nguinée équatoriale";
         var formatter = new AddressFmt({locale: 'fr-GQ'});
+        test.expect(1);
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     },
     
     testFormatFRAddressFromUS: function(test) {
-        test.expect(1);
         var parsedAddress = new Address({
             streetAddress: "Mr. Ignacio Nguema Apartado 36",
             locality: "MALABO",
@@ -346,6 +345,7 @@ module.exports.testaddress_GQ = {
         
         var expected = "Mr. Ignacio Nguema Apartado 36\nMALABO\nguinée équatoriale";
         var formatter = new AddressFmt({locale: 'en-US'});
+        test.expect(1);
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     },
@@ -353,9 +353,9 @@ module.exports.testaddress_GQ = {
     
     
     testPTParseAddressNormal: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("Mr. Ignacio Nguema Apartado 36\nMALABO\nGuiné Equatorial", {locale: 'pt-GQ'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Mr. Ignacio Nguema Apartado 36");
         test.equal(parsedAddress.locality, "MALABO");
@@ -367,9 +367,9 @@ module.exports.testaddress_GQ = {
     },
     
     testPTParseAddressNormal: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("Mr. Ignacio Nguema Apartado 36\nMALABO\nGuiné Equatorial", {locale: 'pt-GQ'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Mr. Ignacio Nguema Apartado 36");
         test.equal(parsedAddress.locality, "MALABO");
@@ -381,9 +381,9 @@ module.exports.testaddress_GQ = {
     },
     
     testPTParseAddressNoZip: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("Mr. Ignacio Nguema Apartado 36\nMALABO\nGuiné Equatorial", {locale: 'pt-GQ'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Mr. Ignacio Nguema Apartado 36");
         test.equal(parsedAddress.locality, "MALABO");
@@ -395,9 +395,9 @@ module.exports.testaddress_GQ = {
     },
     
     testPTParseAddressNoCountry: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("Mr. Ignacio Nguema Apartado 36\nMALABO", {locale: 'pt-GQ'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Mr. Ignacio Nguema Apartado 36");
         test.equal(parsedAddress.locality, "MALABO");
@@ -409,9 +409,9 @@ module.exports.testaddress_GQ = {
     },
     
     testPTParseAddressManyLines: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("Mr. Ignacio Nguema\nApartado 36\nMALABO\nGuiné Equatorial", {locale: 'pt-GQ'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
           test.equal(parsedAddress.streetAddress, "Mr. Ignacio Nguema, Apartado 36");
         test.equal(parsedAddress.locality, "MALABO");
@@ -423,9 +423,9 @@ module.exports.testaddress_GQ = {
     },
     
     testPTParseAddressOneLine: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("Mr. Ignacio Nguema , Apartado 36 , MALABO , Guiné Equatorial", {locale: 'pt-GQ'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
           test.equal(parsedAddress.streetAddress, "Mr. Ignacio Nguema, Apartado 36");
         test.equal(parsedAddress.locality, "MALABO");
@@ -437,9 +437,9 @@ module.exports.testaddress_GQ = {
     },
     
     testPTParseAddressSuperfluousWhitespace: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("Mr. Ignacio Nguema\n\n\t\r\t\t\rApartado 36\r\r\n\nMALABO\t\r\n\t\rGuiné Equatorial", {locale: 'pt-GQ'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
           test.equal(parsedAddress.streetAddress, "Mr. Ignacio Nguema, Apartado 36");
         test.equal(parsedAddress.locality, "MALABO");
@@ -451,9 +451,9 @@ module.exports.testaddress_GQ = {
     },
     
     testPTParseAddressNoDelimiters: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("Mr. Ignacio Nguema Apartado 36 MALABO Guiné Equatorial", {locale: 'pt-GQ'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Mr. Ignacio Nguema Apartado 36");
         test.equal(parsedAddress.locality, "MALABO");
@@ -465,9 +465,9 @@ module.exports.testaddress_GQ = {
     },
     
     testPTParseAddressFromUS: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("Mr. Ignacio Nguema Apartado 36\nMALABO\nGuiné Equatorial", {locale: 'pt-GQ'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Mr. Ignacio Nguema Apartado 36");
         test.equal(parsedAddress.locality, "MALABO");
@@ -479,7 +479,6 @@ module.exports.testaddress_GQ = {
     },
     
     testFormatPTAddress: function(test) {
-        test.expect(1);
         var parsedAddress = new Address({
             streetAddress: "Mr. Ignacio Nguema Apartado 36",
             locality: "MALABO",
@@ -490,12 +489,12 @@ module.exports.testaddress_GQ = {
         
         var expected = "Mr. Ignacio Nguema Apartado 36\nMALABO\nGuiné Equatorial";
         var formatter = new AddressFmt({locale: 'pt-GQ'});
+        test.expect(1);
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     },
     
     testFormatPTAddressFromUS: function(test) {
-        test.expect(1);
         var parsedAddress = new Address({
             streetAddress: "Mr. Ignacio Nguema Apartado 36",
             locality: "MALABO",
@@ -506,6 +505,7 @@ module.exports.testaddress_GQ = {
         
         var expected = "Mr. Ignacio Nguema Apartado 36\nMALABO\nGuiné Equatorial";
         var formatter = new AddressFmt({locale: 'en-US'});
+        test.expect(1);
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     }

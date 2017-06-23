@@ -34,8 +34,8 @@ module.exports.testname_hi = {
     },
 
     testParseSimpleName_hi_IN: function(test) {
-        test.expect(2);
         var parsed = new Name("आदित्य मित्तल", {locale: 'hi-IN'});
+        test.expect(2);
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {
@@ -50,8 +50,8 @@ module.exports.testname_hi = {
     
     
     testParseTitle_hi_IN: function(test) {
-        test.expect(2);
         var parsed = new Name("आदित्य मित्तल जूनियर", {locale: 'hi-IN'});
+        test.expect(2);
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {
@@ -67,8 +67,8 @@ module.exports.testname_hi = {
     
     
     testParseTitleWithFamilyOnly_hi_IN: function(test) {
-        test.expect(2);
         var parsed = new Name("राज्यपाल मित्तल", {locale: 'hi-IN'});
+        test.expect(2);
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {
@@ -83,8 +83,8 @@ module.exports.testname_hi = {
     
     
     testParseEverything_hi_IN: function(test) {
-        test.expect(2);
         var parsed = new Name("श्री और श्रीमती मित्तल", {locale: 'hi-IN'});
+        test.expect(2);
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {
@@ -97,8 +97,8 @@ module.exports.testname_hi = {
     },
     
     testParseprefix_hi_IN: function(test) {
-        test.expect(2);
         var parsed = new Name("श्री आदित्य मित्तल", {locale: 'hi-IN'});
+        test.expect(2);
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {
@@ -115,7 +115,6 @@ module.exports.testname_hi = {
      */
     
     testFormatSimpleNameShort_hi_IN: function(test) {
-        test.expect(2);
         var name = new Name({
             givenName: "आदित्य",
             familyName: "मित्तल"
@@ -125,6 +124,7 @@ module.exports.testname_hi = {
             locale: 'hi-IN'
         });
         var formatted = fmt.format(name);
+        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "आदित्य मित्तल";
@@ -134,7 +134,6 @@ module.exports.testname_hi = {
     },
     
     testFormatSimpleNameMedium_hi_IN: function(test) {
-        test.expect(2);
         var name = new Name({
             givenName: "आदित्य",
             
@@ -145,6 +144,7 @@ module.exports.testname_hi = {
             locale: 'hi-IN'
         });
         var formatted = fmt.format(name);
+        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "आदित्य मित्तल";
@@ -154,7 +154,6 @@ module.exports.testname_hi = {
     },
     
     testFormatSimpleNameLong_hi_IN: function(test) {
-        test.expect(2);
         var name = new Name({
             givenName: "आदित्य",
             
@@ -166,6 +165,7 @@ module.exports.testname_hi = {
             locale: 'hi-IN'
         });
         var formatted = fmt.format(name);
+        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "आदित्य मित्तल";
@@ -175,7 +175,6 @@ module.exports.testname_hi = {
     },
     
     testFormatSurname_hi_IN: function(test) {
-        test.expect(2);
         var name = new Name({
             prefix: "श्री और श्रीमती",
             
@@ -186,6 +185,7 @@ module.exports.testname_hi = {
             locale: 'hi-IN'
         });
         var formatted = fmt.format(name);
+        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "श्री और श्रीमती मित्तल";
@@ -195,7 +195,6 @@ module.exports.testname_hi = {
     },
     
     testFormatSimpleNameFull_hi_IN: function(test) {
-        test.expect(2);
         var name = new Name({
             prefix: "प्रोफेसर",
             givenName: "आदित्य",
@@ -208,6 +207,7 @@ module.exports.testname_hi = {
             locale: 'hi-IN'
         });
         var formatted = fmt.format(name);
+        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "प्रोफेसर आदित्य मित्तल वरिष्ठ";
@@ -217,7 +217,6 @@ module.exports.testname_hi = {
     },
     
     testFormatComplexNameShort_hi_IN: function(test) {
-        test.expect(2);
         var name = new Name({
             prefix: "प्रोफेसर",
             givenName: "आदित्य",
@@ -228,6 +227,7 @@ module.exports.testname_hi = {
             locale: 'hi-IN'
         });
         var formatted = fmt.format(name);
+        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "आदित्य मित्तल";
@@ -237,7 +237,6 @@ module.exports.testname_hi = {
     },
     
     testFormatComplexNameMedium_hi_IN: function(test) {
-        test.expect(2);
         var name = new Name({
             prefix: "प्रोफेसर",
             givenName: "आदित्य",
@@ -248,6 +247,7 @@ module.exports.testname_hi = {
             locale: 'hi-IN'
         });
         var formatted = fmt.format(name);
+        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "आदित्य मित्तल";
@@ -257,7 +257,6 @@ module.exports.testname_hi = {
     },
     
     testFormatComplexNameLong_hi_IN: function(test) {
-        test.expect(2);
         var name = new Name({
             prefix: "प्रोफेसर",
             givenName: "आदित्य",
@@ -268,6 +267,7 @@ module.exports.testname_hi = {
             locale: 'hi-IN'
         });
         var formatted = fmt.format(name);
+        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "प्रोफेसर आदित्य मित्तल";

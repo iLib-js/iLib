@@ -34,9 +34,9 @@ module.exports.testaddress_UG = {
     },
 
     testParseAddressUGNormal: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("Ms. Olive Takubua P.O. Box 21310\nKAMPALA\nUganda", {locale: 'en-UG'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Ms. Olive Takubua P.O. Box 21310");
         test.equal(parsedAddress.locality, "KAMPALA");
@@ -48,9 +48,9 @@ module.exports.testaddress_UG = {
     },
     
     testParseAddressUGNoZip: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("Ms. Olive Takubua P.O. Box 21310\nKAMPALA\nUganda", {locale: 'en-UG'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Ms. Olive Takubua P.O. Box 21310");
         test.equal(parsedAddress.locality, "KAMPALA");
@@ -62,9 +62,9 @@ module.exports.testaddress_UG = {
     },
     
     testParseAddressUGNoCountry: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("Ms. Olive Takubua P.O. Box 21310\nKAMPALA", {locale: 'en-UG'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Ms. Olive Takubua P.O. Box 21310");
         test.equal(parsedAddress.locality, "KAMPALA");
@@ -76,8 +76,8 @@ module.exports.testaddress_UG = {
     },
     
     testParseAddressUGManyLines: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("Ms. Olive Takubua\nP.O. Box 21310\nKAMPALA\nUganda\n\n\n", {locale: 'en-UG'});
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Ms. Olive Takubua, P.O. Box 21310");
         test.equal(parsedAddress.locality, "KAMPALA");
@@ -89,9 +89,9 @@ module.exports.testaddress_UG = {
     },
     
     testParseAddressUGOneLine: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("Ms. Olive Takubua , P.O. Box 21310 , KAMPALA , Uganda", {locale: 'en-UG'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Ms. Olive Takubua, P.O. Box 21310");
         test.equal(parsedAddress.locality, "KAMPALA");
@@ -103,9 +103,9 @@ module.exports.testaddress_UG = {
     },
     
     testParseAddressUGSuperfluousWhitespace: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("\t\t\t\tMs. Olive Takubua\t\t\tP.O. Box\t\r\r21310\t\nKAMPALA\n\t Uganda\n\n\n", {locale: 'en-UG'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Ms. Olive Takubua P.O. Box 21310");
         test.equal(parsedAddress.locality, "KAMPALA");
@@ -117,9 +117,9 @@ module.exports.testaddress_UG = {
     },
     
     testParseAddressUGNoDelimiters: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("Ms. Olive Takubua P.O. Box 21310 KAMPALA Uganda", {locale: 'en-UG'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Ms. Olive Takubua P.O. Box 21310");
         test.equal(parsedAddress.locality, "KAMPALA");
@@ -131,11 +131,11 @@ module.exports.testaddress_UG = {
     },
     
     testParseAddressUGFromUS: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("Ms. Olive Takubua P.O. Box 21310\nKAMPALA\nUganda", {locale: 'en-US'});
         
         // the country name is in German because this address is for a contact in a German database
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Ms. Olive Takubua P.O. Box 21310");
         test.equal(parsedAddress.locality, "KAMPALA");
@@ -147,7 +147,6 @@ module.exports.testaddress_UG = {
     },
     
     testFormatAddressUG: function(test) {
-        test.expect(1);
         var parsedAddress = new Address({
             streetAddress: "Ms. Olive Takubua P.O. Box 21310",
             locality: "KAMPALA",
@@ -157,12 +156,12 @@ module.exports.testaddress_UG = {
         
         var expected = "Ms. Olive Takubua P.O. Box 21310\nKAMPALA\nUganda";
         var formatter = new AddressFmt({locale: 'en-UG'});
+        test.expect(1);
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     },
     
     testFormatAddressUGFromUS: function(test) {
-        test.expect(1);
         var parsedAddress = new Address({
             streetAddress: "Ms. Olive Takubua P.O. Box 21310",
             locality: "KAMPALA",
@@ -172,6 +171,7 @@ module.exports.testaddress_UG = {
         
         var expected = "Ms. Olive Takubua P.O. Box 21310\nKAMPALA\nUganda";
         var formatter = new AddressFmt({locale: 'en-US'});
+        test.expect(1);
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     }

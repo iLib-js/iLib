@@ -69,17 +69,17 @@ module.exports.testhebrewdate = {
     },
 
     testHebrewDateConstructor: function(test) {
-        test.expect(1);
         var hd = new HebrewDate();
         
+        test.expect(1);
         test.ok(hd !== null);
         test.done();
     },
     
     testHebrewDateConstructorFromRD: function(test) {
-        test.expect(9);
         var hd = new HebrewDate({rd: 357.25, timezone: "Etc/UTC"});
         
+        test.expect(9);
         test.equal(typeof(hd), 'object');
         test.equal(hd.getRataDie(), 357.25);
         test.equal(hd.getYears(), 2);
@@ -94,9 +94,9 @@ module.exports.testhebrewdate = {
     
     /* julian date is rd 357 + epoch */
     testHebrewDateConstructorFromJD: function(test) {
-        test.expect(9);
         var hd = new HebrewDate({julianday: 348354.5, timezone: "Etc/UTC"});
         
+        test.expect(9);
         test.equal(typeof(hd), 'object');
         test.equal(hd.getRataDie(), 357.25);
         test.equal(hd.getYears(), 2);
@@ -110,9 +110,9 @@ module.exports.testhebrewdate = {
     },
     
     testHebrewDateConstructorFromRDCusp: function(test) {
-        test.expect(9);
         var hd = new HebrewDate({rd: 355.25, timezone: "Etc/UTC"});
         
+        test.expect(9);
         test.equal(typeof(hd), 'object');
         test.equal(hd.getRataDie(), 355.25);
         test.equal(hd.getYears(), 2);
@@ -126,9 +126,9 @@ module.exports.testhebrewdate = {
     },
     
     testHebrewDateAfterLeapYear: function(test) {
-        test.expect(9);
         var hd = new HebrewDate({julianday: 349326.9, timezone: "Etc/UTC"});  // Siv 1, 0004, 9:36am
         
+        test.expect(9);
         test.equal(typeof(hd), 'object');
         test.roughlyEqual(0.001, hd.getRataDie(), 1329.65);
         test.equal(hd.getYears(), 4);
@@ -142,9 +142,9 @@ module.exports.testhebrewdate = {
     },
     
     testHebrewDateAfterNoon: function(test) {
-        test.expect(9);
         var hd = new HebrewDate({julianday: 349327.1, timezone: "Etc/UTC"});  // Siv 1, 0004, 2:24pm
         
+        test.expect(9);
         test.equal(typeof(hd), 'object');
         test.roughlyEqual(0.001, hd.getRataDie(), 1329.85);
         test.equal(hd.getYears(), 4);
@@ -162,7 +162,7 @@ module.exports.testhebrewdate = {
         for (var i = 0; i < testDatesHebrew.length; i++) {
             hd = new HebrewDate({julianday: testDatesHebrew[i][0], timezone: "Etc/UTC"});
         
-        console.log("testing jd=" + testDatesHebrew[i][0]);
+        // console.log("testing jd=" + testDatesHebrew[i][0]);
             
             test.equal(typeof(hd), 'object');
             test.equal((testDatesHebrew[i][0] - 347997.25), hd.getRataDie(), "testing rd for " + testDatesHebrew[i][0]);
@@ -179,7 +179,6 @@ module.exports.testhebrewdate = {
     },
     
     testHebrewDateConstructorFull: function(test) {
-        test.expect(8);
         var hd = new HebrewDate({
             year: 2011,
             month: 9,
@@ -191,6 +190,7 @@ module.exports.testhebrewdate = {
             timezone: "Etc/UTC"
         });
         
+        test.expect(8);
         test.ok(hd !== null);
         
         test.equal(hd.getYears(), 2011);
@@ -204,7 +204,6 @@ module.exports.testhebrewdate = {
     },
     
     testHebrewDateConstructorFullWithStrings: function(test) {
-        test.expect(8);
         var hd = new HebrewDate({
             year: "2011", 
             month: "9",
@@ -216,6 +215,7 @@ module.exports.testhebrewdate = {
             timezone: "Etc/UTC"
         });
         
+        test.expect(8);
         test.ok(hd !== null);
         
         test.equal(hd.getYears(), 2011);
@@ -229,7 +229,6 @@ module.exports.testhebrewdate = {
     },
     
     testHebrewDateConstructorCopy: function(test) {
-        test.expect(8);
         var hd = new HebrewDate({
             year: 2011, 
             month: 9, 
@@ -241,6 +240,7 @@ module.exports.testhebrewdate = {
             timezone: "Etc/UTC"
         });
         
+        test.expect(8);
         test.ok(hd !== null);
         
         test.equal(hd.getYears(), 2011);
@@ -268,7 +268,7 @@ module.exports.testhebrewdate = {
                 timezone: "Etc/UTC"            
             });
         
-        console.log("testing jd=" + testDatesHebrew[i][0]);
+        // console.log("testing jd=" + testDatesHebrew[i][0]);
             
             test.equal(typeof(hd), 'object');
             test.equal(hd.getJulianDay(), testDatesHebrew[i][0]);
@@ -278,9 +278,9 @@ module.exports.testhebrewdate = {
     },
     
     testHebrewDateSetYears: function(test) {
-        test.expect(2);
         var hd = new HebrewDate();
         
+        test.expect(2);
         test.ok(hd !== null);
         
         hd.setYears(123);
@@ -290,9 +290,9 @@ module.exports.testhebrewdate = {
     },
     
     testHebrewDateSetMonths: function(test) {
-        test.expect(2);
         var hd = new HebrewDate();
         
+        test.expect(2);
         test.ok(hd !== null);
         
         hd.setMonths(7);
@@ -302,9 +302,9 @@ module.exports.testhebrewdate = {
     },
     
     testHebrewDateSetDays: function(test) {
-        test.expect(2);
         var hd = new HebrewDate();
         
+        test.expect(2);
         test.ok(hd !== null);
         
         hd.setDays(12);
@@ -314,9 +314,9 @@ module.exports.testhebrewdate = {
     },
     
     testHebrewDateSetHours: function(test) {
-        test.expect(2);
         var hd = new HebrewDate();
         
+        test.expect(2);
         test.ok(hd !== null);
         
         hd.setHours(12);
@@ -326,9 +326,9 @@ module.exports.testhebrewdate = {
     },
     
     testHebrewDateSetMinutes: function(test) {
-        test.expect(2);
         var hd = new HebrewDate();
         
+        test.expect(2);
         test.ok(hd !== null);
         
         hd.setMinutes(13);
@@ -338,9 +338,9 @@ module.exports.testhebrewdate = {
     },
     
     testHebrewDateSetSeconds: function(test) {
-        test.expect(2);
         var hd = new HebrewDate();
         
+        test.expect(2);
         test.ok(hd !== null);
         
         hd.setSeconds(23);
@@ -350,9 +350,9 @@ module.exports.testhebrewdate = {
     },
     
     testHebrewDateSetMilliseconds: function(test) {
-        test.expect(2);
         var hd = new HebrewDate();
         
+        test.expect(2);
         test.ok(hd !== null);
         
         hd.setMilliseconds(123);
@@ -362,7 +362,6 @@ module.exports.testhebrewdate = {
     },
     
     testGetDayOfWeek1: function(test) {
-        test.expect(2);
         var hd = new HebrewDate({
             year: 5772,
             month: 7,
@@ -370,6 +369,7 @@ module.exports.testhebrewdate = {
             timezone: "Etc/UTC"
         });
         
+        test.expect(2);
         test.ok(hd !== null);
         
         test.equal(hd.getDayOfWeek(), 5);
@@ -377,7 +377,6 @@ module.exports.testhebrewdate = {
     },
     
     testGetDayOfWeekWithTime: function(test) {
-        test.expect(2);
         var hd = new HebrewDate({
             year: 5772,
             month: 7,
@@ -388,6 +387,7 @@ module.exports.testhebrewdate = {
             timezone: "Etc/UTC"
         });
         
+        test.expect(2);
         test.ok(hd !== null);
         
         test.equal(hd.getDayOfWeek(), 5);
@@ -395,7 +395,6 @@ module.exports.testhebrewdate = {
     },
     
     testHebrewDateTestGetTimeZero: function(test) {
-        test.expect(2);
         var hd = new HebrewDate({
             timezone: "Etc/UTC",
             year: 5730,
@@ -403,6 +402,7 @@ module.exports.testhebrewdate = {
             day: 23,
             timezone: "Etc/UTC"
         });
+        test.expect(2);
         test.ok(hd !== null);
         
         test.equal(hd.getTime(), 0);
@@ -410,8 +410,8 @@ module.exports.testhebrewdate = {
     },
     
     testHebrewDateTestGetTimeZeroJD: function(test) {
-        test.expect(2);
         var hd = new HebrewDate({julianday: 2440587.5, timezone: "Etc/UTC"});
+        test.expect(2);
         test.ok(hd !== null);
         
         test.equal(hd.getTime(), 0);
@@ -419,7 +419,6 @@ module.exports.testhebrewdate = {
     },
     
     testHebrewDateTestGetTime: function(test) {
-        test.expect(2);
         var hd = new HebrewDate({
             year: 5730,
             month: 10,
@@ -428,6 +427,7 @@ module.exports.testhebrewdate = {
             minute: 30,
             timezone: "Etc/UTC"
         });
+        test.expect(2);
         test.ok(hd !== null);
         
         test.equal(hd.getTime(), 117000000);
@@ -435,13 +435,13 @@ module.exports.testhebrewdate = {
     },
     
     testHebrewDateTestGetTimeTooEarly: function(test) {
-        test.expect(2);
         var hd = new HebrewDate({
             year: 5730,
             month: 10,
             day: 22,
             timezone: "Etc/UTC"
         });
+        test.expect(2);
         test.ok(hd !== null);
         
         test.equal(hd.getTime(), -1);
@@ -449,13 +449,13 @@ module.exports.testhebrewdate = {
     },
     
     testHebrewDateTestGetTimeTooLate: function(test) {
-        test.expect(2);
         var hd = new HebrewDate({
             year: 5798,
             month: 11,
             day: 14,
             timezone: "Etc/UTC"
         });
+        test.expect(2);
         test.ok(hd !== null);
         
         test.equal(hd.getTime(), -1);
@@ -464,13 +464,13 @@ module.exports.testhebrewdate = {
     
     // test some of the helper functions to make sure they are producing the right thing
     testHebrewDateOnOrBeforeSun: function(test) {
-        test.expect(3);
         var hd = new HebrewDate({
             year: 5771,
             month: 9,
             day: 12,
             timezone: "Etc/UTC"
         });
+        test.expect(3);
         test.ok(hd !== null);
         
         test.equal(hd.getDayOfWeek(), 5); // Friday
@@ -482,13 +482,13 @@ module.exports.testhebrewdate = {
     },
     
     testHebrewDateOnOrBeforeMon: function(test) {
-        test.expect(3);
         var hd = new HebrewDate({
             year: 5771,
             month: 9,
             day: 12,
             timezone: "Etc/UTC"
         });
+        test.expect(3);
         test.ok(hd !== null);
         
         test.equal(hd.getDayOfWeek(), 5); // Friday
@@ -499,13 +499,13 @@ module.exports.testhebrewdate = {
     },
     
     testHebrewDateOnOrBeforeTue: function(test) {
-        test.expect(3);
         var hd = new HebrewDate({
             year: 5771,
             month: 9,
             day: 12,
             timezone: "Etc/UTC"
         });
+        test.expect(3);
         test.ok(hd !== null);
         
         test.equal(hd.getDayOfWeek(), 5); // Friday
@@ -516,13 +516,13 @@ module.exports.testhebrewdate = {
     },
     
     testHebrewDateOnOrBeforeWed: function(test) {
-        test.expect(3);
         var hd = new HebrewDate({
             year: 5771,
             month: 9,
             day: 12,
             timezone: "Etc/UTC"
         });
+        test.expect(3);
         test.ok(hd !== null);
         
         test.equal(hd.getDayOfWeek(), 5); // Friday
@@ -533,13 +533,13 @@ module.exports.testhebrewdate = {
     },
     
     testHebrewDateOnOrBeforeThu: function(test) {
-        test.expect(3);
         var hd = new HebrewDate({
             year: 5771,
             month: 9,
             day: 12,
             timezone: "Etc/UTC"
         });
+        test.expect(3);
         test.ok(hd !== null);
         
         test.equal(hd.getDayOfWeek(), 5); // Friday
@@ -550,13 +550,13 @@ module.exports.testhebrewdate = {
     },
     
     testHebrewDateOnOrBeforeFri: function(test) {
-        test.expect(3);
         var hd = new HebrewDate({
             year: 5771,
             month: 9,
             day: 12,
             timezone: "Etc/UTC"
         });
+        test.expect(3);
         test.ok(hd !== null);
         
         test.equal(hd.getDayOfWeek(), 5); // Friday
@@ -567,13 +567,13 @@ module.exports.testhebrewdate = {
     },
     
     testHebrewDateOnOrBeforeSat: function(test) {
-        test.expect(3);
         var hd = new HebrewDate({
             year: 5771,
             month: 9,
             day: 12,
             timezone: "Etc/UTC"
         });
+        test.expect(3);
         test.ok(hd !== null);
         
         test.equal(hd.getDayOfWeek(), 5); // Friday
@@ -584,13 +584,13 @@ module.exports.testhebrewdate = {
     },
     
     testHebrewDateOnOrAfterSun: function(test) {
-        test.expect(3);
         var hd = new HebrewDate({
             year: 5771,
             month: 9,
             day: 12,
             timezone: "Etc/UTC"
         });
+        test.expect(3);
         test.ok(hd !== null);
         
         test.equal(hd.getDayOfWeek(), 5); // Friday
@@ -602,13 +602,13 @@ module.exports.testhebrewdate = {
     },
     
     testHebrewDateOnOrAfterMon: function(test) {
-        test.expect(3);
         var hd = new HebrewDate({
             year: 5771,
             month: 9,
             day: 12,
             timezone: "Etc/UTC"
         });
+        test.expect(3);
         test.ok(hd !== null);
         
         test.equal(hd.getDayOfWeek(), 5); // Friday
@@ -619,13 +619,13 @@ module.exports.testhebrewdate = {
     },
     
     testHebrewDateOnOrAfterTue: function(test) {
-        test.expect(3);
         var hd = new HebrewDate({
             year: 5771,
             month: 9,
             day: 12,
             timezone: "Etc/UTC"
         });
+        test.expect(3);
         test.ok(hd !== null);
         
         test.equal(hd.getDayOfWeek(), 5); // Friday
@@ -636,13 +636,13 @@ module.exports.testhebrewdate = {
     },
     
     testHebrewDateOnOrAfterWed: function(test) {
-        test.expect(3);
         var hd = new HebrewDate({
             year: 5771,
             month: 9,
             day: 12,
             timezone: "Etc/UTC"
         });
+        test.expect(3);
         test.ok(hd !== null);
         
         test.equal(hd.getDayOfWeek(), 5); // Friday
@@ -653,13 +653,13 @@ module.exports.testhebrewdate = {
     },
     
     testHebrewDateOnOrAfterThu: function(test) {
-        test.expect(3);
         var hd = new HebrewDate({
             year: 5771,
             month: 9,
             day: 12,
             timezone: "Etc/UTC"
         });
+        test.expect(3);
         test.ok(hd !== null);
         
         test.equal(hd.getDayOfWeek(), 5); // Friday
@@ -670,13 +670,13 @@ module.exports.testhebrewdate = {
     },
     
     testHebrewDateOnOrAfterFri: function(test) {
-        test.expect(3);
         var hd = new HebrewDate({
             year: 5771,
             month: 9,
             day: 12,
             timezone: "Etc/UTC"
         });
+        test.expect(3);
         test.ok(hd !== null);
         
         test.equal(hd.getDayOfWeek(), 5); // Friday
@@ -687,13 +687,13 @@ module.exports.testhebrewdate = {
     },
     
     testHebrewDateOnOrAfterSat: function(test) {
-        test.expect(3);
         var hd = new HebrewDate({
             year: 5771,
             month: 9,
             day: 12,
             timezone: "Etc/UTC"
         });
+        test.expect(3);
         test.ok(hd !== null);
         
         test.equal(hd.getDayOfWeek(), 5); // Friday
@@ -704,13 +704,13 @@ module.exports.testhebrewdate = {
     },
     
     testHebrewDateBeforeSun: function(test) {
-        test.expect(3);
         var hd = new HebrewDate({
             year: 5771,
             month: 9,
             day: 12,
             timezone: "Etc/UTC"
         });
+        test.expect(3);
         test.ok(hd !== null);
         
         test.equal(hd.getDayOfWeek(), 5); // Friday
@@ -722,13 +722,13 @@ module.exports.testhebrewdate = {
     },
     
     testHebrewDateBeforeMon: function(test) {
-        test.expect(3);
         var hd = new HebrewDate({
             year: 5771,
             month: 9,
             day: 12,
             timezone: "Etc/UTC"
         });
+        test.expect(3);
         test.ok(hd !== null);
         
         test.equal(hd.getDayOfWeek(), 5); // Friday
@@ -739,13 +739,13 @@ module.exports.testhebrewdate = {
     },
     
     testHebrewDateBeforeTue: function(test) {
-        test.expect(3);
         var hd = new HebrewDate({
             year: 5771,
             month: 9,
             day: 12,
             timezone: "Etc/UTC"
         });
+        test.expect(3);
         test.ok(hd !== null);
         
         test.equal(hd.getDayOfWeek(), 5); // Friday
@@ -756,13 +756,13 @@ module.exports.testhebrewdate = {
     },
     
     testHebrewDateBeforeWed: function(test) {
-        test.expect(3);
         var hd = new HebrewDate({
             year: 5771,
             month: 9,
             day: 12,
             timezone: "Etc/UTC"
         });
+        test.expect(3);
         test.ok(hd !== null);
         
         test.equal(hd.getDayOfWeek(), 5); // Friday
@@ -773,13 +773,13 @@ module.exports.testhebrewdate = {
     },
     
     testHebrewDateBeforeThu: function(test) {
-        test.expect(3);
         var hd = new HebrewDate({
             year: 5771,
             month: 9,
             day: 12,
             timezone: "Etc/UTC"
         });
+        test.expect(3);
         test.ok(hd !== null);
         
         test.equal(hd.getDayOfWeek(), 5); // Friday
@@ -790,13 +790,13 @@ module.exports.testhebrewdate = {
     },
     
     testHebrewDateBeforeFri: function(test) {
-        test.expect(3);
         var hd = new HebrewDate({
             year: 5771,
             month: 9,
             day: 12,
             timezone: "Etc/UTC"
         });
+        test.expect(3);
         test.ok(hd !== null);
         
         test.equal(hd.getDayOfWeek(), 5); // Friday
@@ -807,13 +807,13 @@ module.exports.testhebrewdate = {
     },
     
     testHebrewDateBeforeSat: function(test) {
-        test.expect(3);
         var hd = new HebrewDate({
             year: 5771,
             month: 9,
             day: 12,
             timezone: "Etc/UTC"
         });
+        test.expect(3);
         test.ok(hd !== null);
         
         test.equal(hd.getDayOfWeek(), 5); // Friday
@@ -824,13 +824,13 @@ module.exports.testhebrewdate = {
     },
     
     testHebrewDateAfterSun: function(test) {
-        test.expect(3);
         var hd = new HebrewDate({
             year: 5771,
             month: 9,
             day: 12,
             timezone: "Etc/UTC"
         });
+        test.expect(3);
         test.ok(hd !== null);
         
         test.equal(hd.getDayOfWeek(), 5); // Friday
@@ -842,13 +842,13 @@ module.exports.testhebrewdate = {
     },
     
     testHebrewDateAfterMon: function(test) {
-        test.expect(3);
         var hd = new HebrewDate({
             year: 5771,
             month: 9,
             day: 12,
             timezone: "Etc/UTC"
         });
+        test.expect(3);
         test.ok(hd !== null);
         
         test.equal(hd.getDayOfWeek(), 5); // Friday
@@ -859,13 +859,13 @@ module.exports.testhebrewdate = {
     },
     
     testHebrewDateAfterTue: function(test) {
-        test.expect(3);
         var hd = new HebrewDate({
             year: 5771,
             month: 9,
             day: 12,
             timezone: "Etc/UTC"
         });
+        test.expect(3);
         test.ok(hd !== null);
         
         test.equal(hd.getDayOfWeek(), 5); // Friday
@@ -876,13 +876,13 @@ module.exports.testhebrewdate = {
     },
     
     testHebrewDateAfterWed: function(test) {
-        test.expect(3);
         var hd = new HebrewDate({
             year: 5771,
             month: 9,
             day: 12,
             timezone: "Etc/UTC"
         });
+        test.expect(3);
         test.ok(hd !== null);
         
         test.equal(hd.getDayOfWeek(), 5); // Friday
@@ -893,13 +893,13 @@ module.exports.testhebrewdate = {
     },
     
     testHebrewDateAfterThu: function(test) {
-        test.expect(3);
         var hd = new HebrewDate({
             year: 5771,
             month: 9,
             day: 12,
             timezone: "Etc/UTC"
         });
+        test.expect(3);
         test.ok(hd !== null);
         
         test.equal(hd.getDayOfWeek(), 5); // Friday
@@ -910,13 +910,13 @@ module.exports.testhebrewdate = {
     },
     
     testHebrewDateAfterFri: function(test) {
-        test.expect(3);
         var hd = new HebrewDate({
             year: 5771,
             month: 9,
             day: 12,
             timezone: "Etc/UTC"
         });
+        test.expect(3);
         test.ok(hd !== null);
         
         test.equal(hd.getDayOfWeek(), 5); // Friday
@@ -927,13 +927,13 @@ module.exports.testhebrewdate = {
     },
     
     testHebrewDateAfterSat: function(test) {
-        test.expect(3);
         var hd = new HebrewDate({
             year: 5771,
             month: 9,
             day: 12,
             timezone: "Etc/UTC"
         });
+        test.expect(3);
         test.ok(hd !== null);
         
         test.equal(hd.getDayOfWeek(), 5); // Friday
@@ -944,13 +944,13 @@ module.exports.testhebrewdate = {
     },
     
     testHebrewDateTestGetWeekOfYearThisYear: function(test) {
-        test.expect(2);
         var hd = new HebrewDate({
             year: 5772,
             month: 8,
             day: 1,
             timezone: "Etc/UTC"
         });
+        test.expect(2);
         test.ok(hd !== null);
         
         test.equal(hd.getWeekOfYear(), 5);
@@ -958,13 +958,13 @@ module.exports.testhebrewdate = {
     },
     
     testHebrewDateTestGetWeekOfYearThisYear2: function(test) {
-        test.expect(2);
         var hd = new HebrewDate({
             year: 5772,
             month: 9,
             day: 19,
             timezone: "Etc/UTC"
         });
+        test.expect(2);
         test.ok(hd !== null);
         
         test.equal(hd.getWeekOfYear(), 12);
@@ -972,13 +972,13 @@ module.exports.testhebrewdate = {
     },
     
     testHebrewDateTestGetWeekOfYearThisYearRegular: function(test) {
-        test.expect(2);
         var hd = new HebrewDate({
             year: 5772,
             month: 1,
             day: 1,
             timezone: "Etc/UTC"
         });
+        test.expect(2);
         test.ok(hd !== null);
         
         test.equal(hd.getWeekOfYear(), 26);
@@ -986,13 +986,13 @@ module.exports.testhebrewdate = {
     },
     
     testHebrewDateTestGetWeekOfYearThisYearLeap: function(test) {
-        test.expect(2);
         var hd = new HebrewDate({
             year: 5771,
             month: 1,
             day: 1,
             timezone: "Etc/UTC"
         });
+        test.expect(2);
         test.ok(hd !== null);
         
         // the extra month pushes the week number later in leap years
@@ -1001,7 +1001,6 @@ module.exports.testhebrewdate = {
     },
     
     testHebrewDateTestGetWeekOfYearThisYearWithTime: function(test) {
-        test.expect(2);
         var hd = new HebrewDate({
             year: 5772,
             month: 6,
@@ -1012,6 +1011,7 @@ module.exports.testhebrewdate = {
             millisecond: 232,
             timezone: "Etc/UTC"
         });
+        test.expect(2);
         test.ok(hd !== null);
         
         test.equal(hd.getWeekOfYear(), 1);
@@ -1019,13 +1019,13 @@ module.exports.testhebrewdate = {
     },
     
     testHebrewDateTestGetWeekOfYearPreviousYear: function(test) {
-        test.expect(2);
         var hd = new HebrewDate({
             year: 5781,
             month: 7,
             day: 1,
             timezone: "Etc/UTC"
         });
+        test.expect(2);
         test.ok(hd !== null);
         
         test.equal(hd.getWeekOfYear(), 51);
@@ -1033,13 +1033,13 @@ module.exports.testhebrewdate = {
     },
     
     testHebrewDateTestGetWeekOfYearLastWeekLeap: function(test) {
-        test.expect(2);
         var hd = new HebrewDate({
             year: 5784,
             month: 6,
             day: 29,
             timezone: "Etc/UTC"
         });
+        test.expect(2);
         test.ok(hd !== null);
         
         test.equal(hd.getWeekOfYear(), 1);
@@ -1047,13 +1047,13 @@ module.exports.testhebrewdate = {
     },
     
     testHebrewDateTestGetWeekOfYearLastWeekRegular1: function(test) {
-        test.expect(2);
         var hd = new HebrewDate({
             year: 5781,
             month: 6,
             day: 29,
             timezone: "Etc/UTC"
         });
+        test.expect(2);
         test.ok(hd !== null);
         
         test.equal(hd.getWeekOfYear(), 1);
@@ -1061,13 +1061,13 @@ module.exports.testhebrewdate = {
     },
     
     testHebrewDateTestGetWeekOfYearLastWeekRegular2: function(test) {
-        test.expect(2);
         var hd = new HebrewDate({
             year: 5782,
             month: 6,
             day: 29,
             timezone: "Etc/UTC"
         });
+        test.expect(2);
         test.ok(hd !== null);
         
         test.equal(hd.getWeekOfYear(), 1);
@@ -1075,13 +1075,13 @@ module.exports.testhebrewdate = {
     },
     
     testHebrewDateTestGetWeekOfYearLastWeekRegular3: function(test) {
-        test.expect(2);
         var hd = new HebrewDate({
             year: 5783,
             month: 6,
             day: 29,
             timezone: "Etc/UTC"
         });
+        test.expect(2);
         test.ok(hd !== null);
         
         test.equal(hd.getWeekOfYear(), 51);
@@ -1089,13 +1089,13 @@ module.exports.testhebrewdate = {
     },
     
     testHebrewDateTestGetWeekOfYearLastWeekRegular4: function(test) {
-        test.expect(2);
         var hd = new HebrewDate({
             year: 5785,
             month: 6,
             day: 29,
             timezone: "Etc/UTC"
         });
+        test.expect(2);
         test.ok(hd !== null);
         
         test.equal(hd.getWeekOfYear(), 1);
@@ -1103,13 +1103,13 @@ module.exports.testhebrewdate = {
     },
     
     testHebrewDateTestGetWeekOfYearLastWeekRegular5: function(test) {
-        test.expect(2);
         var hd = new HebrewDate({
             year: 5786,
             month: 6,
             day: 29,
             timezone: "Etc/UTC"
         });
+        test.expect(2);
         test.ok(hd !== null);
         
         test.equal(hd.getWeekOfYear(), 51);
@@ -1117,13 +1117,13 @@ module.exports.testhebrewdate = {
     },
     
     testHebrewDateTestGetWeekOfYearLastWeekRegular6: function(test) {
-        test.expect(2);
         var hd = new HebrewDate({
             year: 5787,
             month: 6,
             day: 29,
             timezone: "Etc/UTC"
         });
+        test.expect(2);
         test.ok(hd !== null);
         
         test.equal(hd.getWeekOfYear(), 55);
@@ -1131,13 +1131,13 @@ module.exports.testhebrewdate = {
     },
     
     testHebrewDateGetDayOfYearFirstDay: function(test) {
-        test.expect(2);
         var hd = new HebrewDate({
             year: 5771,
             month: 7,
             day: 1,
             timezone: "Etc/UTC"
         });
+        test.expect(2);
         test.ok(hd !== null);
         
         test.equal(hd.getDayOfYear(), 1);
@@ -1145,13 +1145,13 @@ module.exports.testhebrewdate = {
     },
     
     testHebrewDateGetDayOfYearMidYear: function(test) {
-        test.expect(2);
         var hd = new HebrewDate({
             year: 5772,
             month: 1,
             day: 1,
             timezone: "Etc/UTC"
         });
+        test.expect(2);
         test.ok(hd !== null);
         
         test.equal(hd.getDayOfYear(), 178);
@@ -1159,13 +1159,13 @@ module.exports.testhebrewdate = {
     },
     
     testHebrewDateGetDayOfYearMidYearLeap: function(test) {
-        test.expect(2);
         var hd = new HebrewDate({
             year: 5774,
             month: 1,
             day: 1,
             timezone: "Etc/UTC"
         });
+        test.expect(2);
         test.ok(hd !== null);
         
         test.equal(hd.getDayOfYear(), 209);
@@ -1173,13 +1173,13 @@ module.exports.testhebrewdate = {
     },
     
     testHebrewDateGetDayOfYearLastDay: function(test) {
-        test.expect(2);
         var hd = new HebrewDate({
             year: 5772,
             month: 6,
             day: 29,
             timezone: "Etc/UTC"
         });
+        test.expect(2);
         test.ok(hd !== null);
         
         test.equal(hd.getDayOfYear(), 354);
@@ -1187,13 +1187,13 @@ module.exports.testhebrewdate = {
     },
     
     testHebrewDateGetDayOfYearLastDayLeapYear: function(test) {
-        test.expect(2);
         var hd = new HebrewDate({
             year: 5774,
             month: 6,
             day: 29,
             timezone: "Etc/UTC"
         });
+        test.expect(2);
         test.ok(hd !== null);
         
         test.equal(hd.getDayOfYear(), 385);
@@ -1201,13 +1201,13 @@ module.exports.testhebrewdate = {
     },
     
     testHebrewDateGetWeekOfMonth0: function(test) {
-        test.expect(2);
         var hd = new HebrewDate({
             year: 5772,
             month: 9,
             day: 1,
             timezone: "Etc/UTC"
         });
+        test.expect(2);
         test.ok(hd !== null);
         
         test.equal(hd.getWeekOfMonth("he-IL"), 1);
@@ -1215,13 +1215,13 @@ module.exports.testhebrewdate = {
     },
     
     testHebrewDateGetWeekOfMonth1: function(test) {
-        test.expect(2);
         var hd = new HebrewDate({
             year: 5772,
             month: 9,
             day: 2,
             timezone: "Etc/UTC"
         });
+        test.expect(2);
         test.ok(hd !== null);
         
         test.equal(hd.getWeekOfMonth("he-IL"), 1);
@@ -1229,13 +1229,13 @@ module.exports.testhebrewdate = {
     },
     
     testHebrewDateGetWeekOfMonth2: function(test) {
-        test.expect(2);
         var hd = new HebrewDate({
             year: 5772,
             month: 9,
             day: 11,
             timezone: "Etc/UTC"
         });
+        test.expect(2);
         test.ok(hd !== null);
         
         test.equal(hd.getWeekOfMonth("he-IL"), 2);
@@ -1243,13 +1243,13 @@ module.exports.testhebrewdate = {
     },
     
     testHebrewDateGetWeekOfMonth3: function(test) {
-        test.expect(2);
         var hd = new HebrewDate({
             year: 5772,
             month: 9,
             day: 20,
             timezone: "Etc/UTC"
         });
+        test.expect(2);
         test.ok(hd !== null);
         
         test.equal(hd.getWeekOfMonth("he-IL"), 3);
@@ -1257,13 +1257,13 @@ module.exports.testhebrewdate = {
     },
     
     testHebrewDateGetWeekOfMonth4: function(test) {
-        test.expect(2);
         var hd = new HebrewDate({
             year: 5772,
             month: 9,
             day: 29,
             timezone: "Etc/UTC"
         });
+        test.expect(2);
         test.ok(hd !== null);
         
         test.equal(hd.getWeekOfMonth("he-IL"), 5);
@@ -1271,13 +1271,13 @@ module.exports.testhebrewdate = {
     },
     
     testHebrewDateGetWeekOfMonth5: function(test) {
-        test.expect(2);
         var hd = new HebrewDate({
             year: 5772,
             month: 1,
             day: 30,
             timezone: "Etc/UTC"
         });
+        test.expect(2);
         test.ok(hd !== null);
         
         test.equal(hd.getWeekOfMonth("he-IL"), 5);
@@ -1285,13 +1285,13 @@ module.exports.testhebrewdate = {
     },
     
     testHebrewDateGetWeekOfMonth6: function(test) {
-        test.expect(2);
         var hd = new HebrewDate({
             year: 5772,
             month: 4,
             day: 1,
             timezone: "Etc/UTC"
         });
+        test.expect(2);
         test.ok(hd !== null);
         
         test.equal(hd.getWeekOfMonth("he-IL"), 0);
@@ -1299,13 +1299,13 @@ module.exports.testhebrewdate = {
     },
     
     testHebrewDateGetWeekOfMonth7: function(test) {
-        test.expect(2);
         var hd = new HebrewDate({
             year: 5772,
             month: 5,
             day: 1,
             timezone: "Etc/UTC"
         });
+        test.expect(2);
         test.ok(hd !== null);
         
         test.equal(hd.getWeekOfMonth("he-IL"), 0);
@@ -1313,13 +1313,13 @@ module.exports.testhebrewdate = {
     },
     
     testHebrewDateGetWeekOfMonth8: function(test) {
-        test.expect(2);
         var hd = new HebrewDate({
             year: 5772,
             month: 6,
             day: 1,
             timezone: "Etc/UTC"
         });
+        test.expect(2);
         test.ok(hd !== null);
         
         test.equal(hd.getWeekOfMonth("he-IL"), 1);
@@ -1327,13 +1327,13 @@ module.exports.testhebrewdate = {
     },
     
     testHebrewDateGetWeekOfMonth9: function(test) {
-        test.expect(2);
         var hd = new HebrewDate({
             year: 5772,
             month: 7,
             day: 1,
             timezone: "Etc/UTC"
         });
+        test.expect(2);
         test.ok(hd !== null);
         
         test.equal(hd.getWeekOfMonth("he-IL"), 0);
@@ -1341,13 +1341,13 @@ module.exports.testhebrewdate = {
     },
     
     testHebrewDateGetWeekOfMonth10: function(test) {
-        test.expect(2);
         var hd = new HebrewDate({
             year: 5772,
             month: 8,
             day: 1,
             timezone: "Etc/UTC"
         });
+        test.expect(2);
         test.ok(hd !== null);
         
         test.equal(hd.getWeekOfMonth("he-IL"), 0);
@@ -1355,13 +1355,13 @@ module.exports.testhebrewdate = {
     },
     
     testHebrewDateGetWeekOfMonthUS: function(test) {
-        test.expect(2);
         var hd = new HebrewDate({
             year: 5772,
             month: 8,
             day: 1,
             timezone: "Etc/UTC"
         });
+        test.expect(2);
         test.ok(hd !== null);
         
         test.equal(hd.getWeekOfMonth("en-US"), 0);
@@ -1369,13 +1369,13 @@ module.exports.testhebrewdate = {
     },
     
     testHebrewDateGetWeekOfMonthDE: function(test) {
-        test.expect(2);
         var hd = new HebrewDate({
             year: 5772,
             month: 8,
             day: 1,
             timezone: "Etc/UTC"
         });
+        test.expect(2);
         test.ok(hd !== null);
         
         // weeks in Germany start on Monday, and 8/1 is a Saturday, so it is at the 
@@ -1385,13 +1385,13 @@ module.exports.testhebrewdate = {
     },
     
     testHebrewDateGetEraAM: function(test) {
-        test.expect(2);
         var hd = new HebrewDate({
             year: 5772,
             month: 5,
             day: 1,
             timezone: "Etc/UTC"
         });
+        test.expect(2);
         test.ok(hd !== null);
         
         test.equal(hd.getEra(), 1);
@@ -1399,7 +1399,6 @@ module.exports.testhebrewdate = {
     },
     
     testHebrewDateGetEraBAM: function(test) {
-        test.expect(2);
         var hd = new HebrewDate({
             year: -46,
             month: 5,
@@ -1409,6 +1408,7 @@ module.exports.testhebrewdate = {
             second: 0,
             timezone: "Etc/UTC"
         });
+        test.expect(2);
         test.ok(hd !== null);
         
         test.equal(hd.getEra(), -1);
@@ -1416,13 +1416,13 @@ module.exports.testhebrewdate = {
     },
     
     testHebrewDateGetEraAMYear1: function(test) {
-        test.expect(2);
         var hd = new HebrewDate({
             year: 1,
             month: 1,
             day: 1,
             timezone: "Etc/UTC"
         });
+        test.expect(2);
         test.ok(hd !== null);
         
         test.equal(hd.getEra(), 1);
@@ -1430,13 +1430,13 @@ module.exports.testhebrewdate = {
     },
     
     testHebrewDateGetEraBAMYear0: function(test) {
-        test.expect(2);
         var hd = new HebrewDate({
             year: 0,
             month: 12,
             day: 29,
             timezone: "Etc/UTC"
         });
+        test.expect(2);
         test.ok(hd !== null);
         
         test.equal(hd.getEra(), -1);
@@ -1444,13 +1444,13 @@ module.exports.testhebrewdate = {
     },
     
     testHebrewDateSetTimeZone: function(test) {
-        test.expect(3);
         var gd = new HebrewDate({
             year: 5711, 
             month: 3, 
             day: 8,
             timezone: "America/Los_Angeles"
         });
+        test.expect(3);
         test.ok(gd !== null);
         
         test.equal(gd.getTimeZone(), "America/Los_Angeles");
@@ -1462,13 +1462,13 @@ module.exports.testhebrewdate = {
     },
     
     testHebrewDateSetTimeZoneNotString: function(test) {
-        test.expect(3);
         var gd = new HebrewDate({
             year: 5711, 
             month: 3, 
             day: 8,
             timezone: "America/Los_Angeles"
         });
+        test.expect(3);
         test.ok(gd !== null);
         
         test.equal(gd.getTimeZone(), "America/Los_Angeles");
@@ -1480,13 +1480,13 @@ module.exports.testhebrewdate = {
     },
     
     testHebrewDateSetTimeZoneUndefined: function(test) {
-        test.expect(3);
         var gd = new HebrewDate({
             year: 5711, 
             month: 3, 
             day: 8,
             timezone: "America/Los_Angeles"
         });
+        test.expect(3);
         test.ok(gd !== null);
         
         test.equal(gd.getTimeZone(), "America/Los_Angeles");
@@ -1499,13 +1499,13 @@ module.exports.testhebrewdate = {
     },
     
     testHebrewDateSetTimeZoneEmpty: function(test) {
-        test.expect(3);
         var gd = new HebrewDate({
             year: 5711, 
             month: 3, 
             day: 8,
             timezone: "America/Los_Angeles"
         });
+        test.expect(3);
         test.ok(gd !== null);
         
         test.equal(gd.getTimeZone(), "America/Los_Angeles");
@@ -1518,10 +1518,10 @@ module.exports.testhebrewdate = {
     },
     
     testHebrewDateInitWithUnixTimeRightTimeZone: function(test) {
-        test.expect(2);
         var gd = new HebrewDate({
             unixtime: 0
         });
+        test.expect(2);
         test.ok(gd !== null);
         
         test.equal(gd.getTimeZone(), "local");
@@ -1529,10 +1529,10 @@ module.exports.testhebrewdate = {
     },
     
     testHebrewDateInitWithJDRightTimeZone: function(test) {
-        test.expect(2);
         var gd = new HebrewDate({
             julianday: 0
         });
+        test.expect(2);
         test.ok(gd !== null);
         
         test.equal(gd.getTimeZone(), "local");
@@ -1540,10 +1540,10 @@ module.exports.testhebrewdate = {
     },
     
     testHebrewDateInitWithRDRightTimeZone: function(test) {
-        test.expect(2);
         var gd = new HebrewDate({
             rd: 0
         });
+        test.expect(2);
         test.ok(gd !== null);
         
         test.equal(gd.getTimeZone(), "local");
@@ -1551,13 +1551,13 @@ module.exports.testhebrewdate = {
     },
     
     testHebrewDateRoundTripConstruction: function(test) {
-        test.expect(8);
         var hd = new HebrewDate({
             year: 5775,
             month: 8,
             day: 10,
             timezone: "local"
         });
+        test.expect(8);
         test.ok(hd !== null);
         // console.log("hd is " + JSON.stringify(hd, undefined, 4));
         
@@ -1579,13 +1579,13 @@ module.exports.testhebrewdate = {
     },
     
     testHebrewDateRoundTripConstruction2: function(test) {
-        test.expect(8);
         var hd = new HebrewDate({
             year: 5775,
             month: 8,
             day: 10,
             timezone: "America/Los_Angeles"
         });
+        test.expect(8);
         test.ok(hd !== null);
         // console.log("hd is " + JSON.stringify(hd, undefined, 4));
         

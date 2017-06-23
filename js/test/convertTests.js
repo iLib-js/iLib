@@ -27,7 +27,8 @@ var reVar = /^var (\w*) = require\("([^)]*)"\);/;
 var reFunction = /^function\s+(test\w*)\s*\(\)\s*\{/;
 var reCopyright = /^ \* Copyright © (20..)(,20..)?(-20..)?(.*)/;
 var reLoops = /^\s*(for|while|\} catch|\w+\.forEach)\W/;
-
+var reReturn = /^(\s*)return;/;
+    
 var assertMappings = [
 	{re: /(\s*)assertEquals\((([^'",]|'(\\'|[^'])*?'|"(\\"|[^"])*?")*),\s*(([^'"]|'(\\'|[^'])*?'|"(\\"|[^"])*?")*)\)/, replace: "    $1test.equal($6, $2)"},
     {re: /(\s*)assertEquals\((([^'",]|'(\\'|[^'])*?'|"(\\"|[^"])*?")*),\s*(([^'",]|'(\\'|[^'])*?'|"(\\"|[^"])*?")*),\s*(([^'"]|'(\\'|[^'])*?'|"(\\"|[^"])*?")*)\)/, replace: "    $1test.equal($10, $6, $2)"},
@@ -44,13 +45,13 @@ var assertMappings = [
 	{re: /(\s*)assertNotNaN\((([^'"]|'(\\'|[^'])*?'|"(\\"|[^"])*?")*)\)/, replace: "    $1test.ok($2 !== NaN)"},
 	{re: /(\s*)assertObjectEquals\((([^'"]|'(\\'|[^'])*?'|"(\\"|[^"])*?")*),\s*(([^'"]|'(\\'|[^'])*?'|"(\\"|[^"])*?")*)\)/, replace: "    $1test.deepEqual($6, $2)"},
 	{re: /(\s*)assertContains\((([^'",]|'(\\'|[^'])*?'|"(\\"|[^"])*?")*),\s*(([^'"]|'(\\'|[^'])*?'|"(\\"|[^"])*?")*)\)/, replace: "    $1test.contains($6, $2)"},
-    {re: /(\s*)assertObjectContains\((([^'",]|'(\\'|[^'])*?'|"(\\"|[^"])*?")*),\s*(([^'"]|'(\\'|[^'])*?'|"(\\"|[^"])*?")*)\)/, replace: "    $1test.contains($6, $2)"},
+    {re: /(\s*)assertObjectContains\((([^'"]|'(\\'|[^'])*?'|"(\\"|[^"])*?")*),\s*(([^'"]|'(\\'|[^'])*?'|"(\\"|[^"])*?")*)\)/, replace: "    $1test.contains($6, $2)"},
     {re: /(\s*)assertRoughlyEquals\((([^'",]|'(\\'|[^'])*?'|"(\\"|[^"])*?")*),\s*(([^'"]|'(\\'|[^'])*?'|"(\\"|[^"])*?")*),\s*(([^'"]|'(\\'|[^'])*?'|"(\\"|[^"])*?")*),\s*(([^'",]|'(\\'|[^'])*?'|"(\\"|[^"])*?")*)\)/, replace: "    $1test.roughlyEqual($10, $6, $14, $2)"},
     {re: /(\s*)assertRoughlyEquals\((([^'",]|'(\\'|[^'])*?'|"(\\"|[^"])*?")*),\s*(([^'"]|'(\\'|[^'])*?'|"(\\"|[^"])*?")*),\s*(([^'",]|'(\\'|[^'])*?'|"(\\"|[^"])*?")*)\)/, replace: "    $1test.roughlyEqual($10, $6, $2)"},
     {re: /(\s*)assertArrayEquals\((([^'",]|'(\\'|[^'])*?'|"(\\"|[^"])*?")*),\s*(([^'"]|'(\\'|[^'])*?'|"(\\"|[^"])*?")*)\)/, replace: "    $1test.deepEqual($6, $2)"},
-	{re: /(\s*)assertArrayEqualsIgnoringOrder\((([^'",]|'(\\'|[^'])*?'|"(\\"|[^"])*?")*),\s*(([^'"]|'(\\'|[^'])*?'|"(\\"|[^"])*?")*)\)/, replace: "    $1test.equalIgnoringOrder($6, $2)"},
+	{re: /(\s*)assertArrayEqualsIgnoringOrder\((([^'"]|'(\\'|[^'])*?'|"(\\"|[^"])*?")*),\s*(([^'"]|'(\\'|[^'])*?'|"(\\"|[^"])*?")*)\)/, replace: "    $1test.equalIgnoringOrder($6, $2)"},
 	{re: /(\s*)fail\(\)./, replace: "        test.fail()"},
-	{re: /^(\s*)info\(/, replace: "$1console.log("},
+	{re: /^(\s*)info\(/, replace: "$1// console.log("}
 ];
 
 function convertFile(dir, fileName, outFileName) {
@@ -61,7 +62,7 @@ function convertFile(dir, fileName, outFileName) {
 	
 	var i = 0, j;
 	var match, firstFunction = true, foundLoops = false;
-	var numberOfTests, firstLineOfTest, lastAssertion;
+	var numberOfTests, firstLineOfTest, firstAssertion, lastAssertion;
 	
 	while (i < lines.length) {
         if (lines[i]) {
@@ -81,7 +82,7 @@ function convertFile(dir, fileName, outFileName) {
 				if (firstFunction) {
 					firstFunction = false;
 					
-					var baseName = path.basename(fileName, ".js").replace("-", "_");
+					var baseName = path.basename(fileName, ".js").replace(/-/g, "_");
 					
 					lines.splice(i, 1,
 					    'if (typeof(ilib) === "undefined") {',
@@ -105,6 +106,7 @@ function convertFile(dir, fileName, outFileName) {
                 firstLineOfTest = i;
 				foundLoops = false;
 				lastAssertion = -1;
+				firstAssertion = 0;
 			} else if (firstFunction) {
 			    match = reCopyright.exec(lines[i]);
 			    if (match !== null) {
@@ -144,7 +146,8 @@ function convertFile(dir, fileName, outFileName) {
                 i += 2;
                 
                 if (!foundLoops) {
-                    lines.splice(firstLineOfTest, 0, '        test.expect(' + numberOfTests + ');');
+                    var lineno = firstAssertion || firstLineOfTest;
+                    lines.splice(lineno, 0, '        test.expect(' + numberOfTests + ');');
                     i++;
                 }
 			} else {
@@ -157,8 +160,16 @@ function convertFile(dir, fileName, outFileName) {
 						numberOfTests++;
 						mapped = true;
 						lastAssertion = i;
+						if (!firstAssertion) {
+						    firstAssertion = i;
+						}
 						break;
 					}
+				}
+				
+				if ((match = reReturn.exec(lines[i])) !== null) {
+				    lines.splice(i, 0, match[1] + 'test.done();');
+				    i++;
 				}
 				
 				if (reLoops.exec(lines[i]) !== null) {
@@ -228,7 +239,7 @@ function generateSuiteJS(dir, tests) {
         '',
         'var nodeunit = require("nodeunit");',
         'var assert = require("../../test/assertSupplement.js");',
-        'var reporter = nodeunit.reporters.default;',
+        'var reporter = nodeunit.reporters.minimal;',
         'var modules = {};',
         'var suites = ['
     ];

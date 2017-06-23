@@ -34,8 +34,8 @@ module.exports.testname_pt = {
     },
 
     testParseSimpleName_pt_PT: function(test) {
-        test.expect(2);
         var parsed = new Name("Cristiano Ronaldo", {locale: 'pt-PT'});
+        test.expect(2);
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {
@@ -48,8 +48,8 @@ module.exports.testname_pt = {
     },
     
     testParseSimpleNameWithTwoFamilyName_pt_PT: function(test) {
-        test.expect(2);
         var parsed = new Name("José Eduardo Tavares Silva", {locale: 'pt-PT'});
+        test.expect(2);
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {
@@ -64,8 +64,8 @@ module.exports.testname_pt = {
     
     
     testParseTitle_pt_PT: function(test) {
-        test.expect(2);
         var parsed = new Name("Cristiano Ronaldo aposentados", {locale: 'pt-PT'});
+        test.expect(2);
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {
@@ -81,8 +81,8 @@ module.exports.testname_pt = {
     
     
     testParseTitleWithFamilyOnly_pt_PT: function(test) {
-        test.expect(2);
         var parsed = new Name("Senhor Ronaldo", {locale: 'pt-PT'});
+        test.expect(2);
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {
@@ -97,8 +97,8 @@ module.exports.testname_pt = {
     
     
     testParseEverything_pt_PT: function(test) {
-        test.expect(2);
         var parsed = new Name("Senhor e Senhora Ronaldo", {locale: 'pt-PT'});
+        test.expect(2);
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {
@@ -111,8 +111,8 @@ module.exports.testname_pt = {
     },
     
     testParseprefix_pt_PT: function(test) {
-        test.expect(2);
         var parsed = new Name("Senhor Cristiano Ronaldo", {locale: 'pt-PT'});
+        test.expect(2);
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {
@@ -129,7 +129,6 @@ module.exports.testname_pt = {
      */
     
     testFormatSimpleNameShort_pt_PT: function(test) {
-        test.expect(2);
         var name = new Name({
             givenName: "Cristiano",
             familyName: "Ronaldo"
@@ -139,6 +138,7 @@ module.exports.testname_pt = {
             locale: 'pt-PT'
         });
         var formatted = fmt.format(name);
+        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "Cristiano Ronaldo";
@@ -148,7 +148,6 @@ module.exports.testname_pt = {
     },
     
     testFormatSimpleNameMedium_pt_PT: function(test) {
-        test.expect(2);
         var name = new Name({
             givenName: "Cristiano",
             familyName: "Ronaldo"
@@ -158,6 +157,7 @@ module.exports.testname_pt = {
             locale: 'pt-PT'
         });
         var formatted = fmt.format(name);
+        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "Cristiano Ronaldo";
@@ -167,7 +167,6 @@ module.exports.testname_pt = {
     },
     
     testFormatSimpleNameLong_pt_PT: function(test) {
-        test.expect(2);
         var name = new Name({
             givenName: "Cristiano",
             familyName: "Ronaldo",
@@ -178,6 +177,7 @@ module.exports.testname_pt = {
             locale: 'pt-PT'
         });
         var formatted = fmt.format(name);
+        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "Cristiano Ronaldo";
@@ -189,7 +189,6 @@ module.exports.testname_pt = {
     
     
     testFormatSurname_pt_PT: function(test) {
-        test.expect(2);
         var name = new Name({
             prefix: "Senhor e Senhori",
             familyName: "Ronaldo"
@@ -199,6 +198,7 @@ module.exports.testname_pt = {
             locale: 'pt-PT'
         });
         var formatted = fmt.format(name);
+        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "Senhor e Senhori Ronaldo";
@@ -208,7 +208,6 @@ module.exports.testname_pt = {
     },
     
     testFormatSimpleNameFull_pt_PT: function(test) {
-        test.expect(2);
         var name = new Name({
             prefix: "presidente",
             givenName: "Cristiano",
@@ -220,6 +219,7 @@ module.exports.testname_pt = {
             locale: 'pt-PT'
         });
         var formatted = fmt.format(name);
+        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "presidente Cristiano Ronaldo aposentados";
@@ -229,7 +229,6 @@ module.exports.testname_pt = {
     },
     
     testFormatComplexNameShort_pt_PT: function(test) {
-        test.expect(2);
         var name = new Name({
             prefix: "presidente",
             givenName: "Cristiano",
@@ -240,6 +239,7 @@ module.exports.testname_pt = {
             locale: 'pt-PT'
         });
         var formatted = fmt.format(name);
+        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "Cristiano Ronaldo";
@@ -249,7 +249,6 @@ module.exports.testname_pt = {
     },
     
     testFormatComplexNameMedium_pt_PT: function(test) {
-        test.expect(2);
         var name = new Name({
             prefix: "presidente",
             givenName: "Cristiano",
@@ -260,6 +259,7 @@ module.exports.testname_pt = {
             locale: 'pt-PT'
         });
         var formatted = fmt.format(name);
+        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "Cristiano Ronaldo";
@@ -269,7 +269,6 @@ module.exports.testname_pt = {
     },
     
     testFormatComplexNameLong_pt_PT: function(test) {
-        test.expect(2);
         var name = new Name({
             prefix: "presidente",
             givenName: "Cristiano",
@@ -280,6 +279,7 @@ module.exports.testname_pt = {
             locale: 'pt-PT'
         });
         var formatted = fmt.format(name);
+        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "presidente Cristiano Ronaldo";

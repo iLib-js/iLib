@@ -35,8 +35,8 @@ module.exports.testglobal = {
     },
 
     testNoStubsInModular: function(test) {
-        test.expect(55);
         // make sure we don't have stubs defined in the modular tests
+        test.expect(55);
         test.ok(typeof(ilib.CType) === "undefined");
         test.ok(typeof(ilib._roundFnc) === "undefined");
         test.ok(typeof(ilib.Date) === "undefined");
@@ -140,21 +140,21 @@ module.exports.testglobal = {
     },
     
     testGetTimeZoneDefault: function(test) {
-        test.expect(1);
         ilib._platform = undefined;
         ilib.tz = undefined;
     
         if (ilib._getPlatform() === "browser") {
                 navigator.timezone = undefined;
             }
+        test.expect(1);
         test.equal(ilib.getTimeZone(), "local");
         test.done();
     },
     
     testSetTimeZone: function(test) {
-        test.expect(2);
         ilib._platform = undefined;
         ilib.tz = undefined;
+        test.expect(2);
         test.equal(ilib.getTimeZone(), "local");
         
         ilib.setTimeZone("America/Los_Angeles");
@@ -165,9 +165,9 @@ module.exports.testglobal = {
     },
     
     testSetTimeZoneEmpty: function(test) {
-        test.expect(2);
         ilib._platform = undefined;
         ilib.tz = undefined;
+        test.expect(2);
         test.equal(ilib.getTimeZone(), "local");
         
         ilib.setTimeZone();
@@ -177,7 +177,6 @@ module.exports.testglobal = {
     },
     
     testGetTimeZoneNodejs: function(test) {
-        test.expect(1);
         if (ilib._getPlatform() === "nodejs") {
             ilib._platform = undefined;
             ilib.tz = undefined;
@@ -189,6 +188,7 @@ module.exports.testglobal = {
             var tmp = process.env.TZ;
             process.env.TZ = "America/Phoenix";
             
+        test.expect(1);
             test.equal(ilib.getTimeZone(), "America/Phoenix");
             test.done();
             
@@ -197,9 +197,9 @@ module.exports.testglobal = {
     },
     
     testGetTimeZoneRhino: function(test) {
-        test.expect(1);
         if (ilib._getPlatform() !== "rhino") {
             // only test this in rhino
+        test.done();
             return;
         }
         ilib.tz = undefined;
@@ -212,27 +212,29 @@ module.exports.testglobal = {
             process.env.TZ = "America/New_York";
         }
     
+        test.expect(1);
         test.equal(ilib.getTimeZone(), "America/New_York");
         test.done();
     },
     
     testGetTimeZoneWebOS: function(test) {
-        test.expect(1);
         if (ilib._getPlatform() !== "webos") {
             // only test this in webos
+        test.done();
             return;
         }
         ilib.tz = undefined;
         PalmSystem.timezone = "Europe/London";
             
+        test.expect(1);
         test.equal(ilib.getTimeZone(), "Europe/London");
         test.done();
     },
     
     testGetLocaleNodejs1: function(test) {
-        test.expect(1);
         if (ilib._getPlatform() !== "nodejs") {
             // only test this in node
+        test.done();
             return;
         }
         
@@ -240,6 +242,7 @@ module.exports.testglobal = {
     
         process.env.LANG = "th-TH";
         
+        test.expect(1);
         test.equal(ilib.getLocale(), "th-TH");
         test.done();
         
@@ -248,9 +251,9 @@ module.exports.testglobal = {
     },
     
     testGetLocaleNodejs2: function(test) {
-        test.expect(1);
         if (ilib._getPlatform() !== "nodejs") {
             // only test this in node
+        test.done();
             return;
         }
         
@@ -258,6 +261,7 @@ module.exports.testglobal = {
     
         process.env.LC_ALL = "th-TH";
         
+        test.expect(1);
         test.equal(ilib.getLocale(), "th-TH");
         test.done();
         
@@ -266,9 +270,9 @@ module.exports.testglobal = {
     },
     
     testGetLocaleRhino: function(test) {
-        test.expect(1);
         if (ilib._getPlatform() !== "rhino") {
             // only test this in node
+        test.done();
             return;
         }
         
@@ -283,6 +287,7 @@ module.exports.testglobal = {
             process.env.LANG = "de_AT.UTF8";
         }
         
+        test.expect(1);
         test.equal(ilib.getLocale(), "de-AT");
         test.done();
         
@@ -296,9 +301,9 @@ module.exports.testglobal = {
     },
     
     testGetLocaleWebOS: function(test) {
-        test.expect(1);
         if (ilib._getPlatform() !== "webos") {
             // only test this in node
+        test.done();
             return;
         }
         
@@ -306,6 +311,7 @@ module.exports.testglobal = {
     
         PalmSystem.locale = "ru-RU";
         
+        test.expect(1);
         test.equal(ilib.getLocale(), "ru-RU");
         test.done();
         
@@ -313,38 +319,40 @@ module.exports.testglobal = {
     },
     
     testGetLocaleNotString: function(test) {
-        test.expect(1);
         if (ilib.isDynCode()) {
             // can't test this with dynamically loaded code because the global context
             // is different for each module and we cannot set global variables, so we 
             // cannot simulate the conditions where this code would work
+        test.done();
             return;
         }
         ilib._platform = undefined;
         ilib.locale = new Locale("it-IT");
         
         // should remove the locale object and make it into a string
+        test.expect(1);
         test.equal(ilib.getLocale(), "en-US");
         test.done();
     },
     
     testGetTimeZoneBrowser: function(test) {
-        test.expect(1);
         if (ilib._getPlatform() !== "browser") {
             // only test this in a real browser
+        test.done();
             return;
         }
         ilib.tz = undefined;
         navigator.timezone = 'America/Los_Angeles';             
         
+        test.expect(1);
         test.equal(ilib.getTimeZone(), "America/Los_Angeles");
         test.done();
     },
     
     testGetLocaleBrowser: function(test) {
-        test.expect(1);
         if (ilib._getPlatform() !== "browser") {
             // only test this in a real browser
+        test.done();
             return;
         }
         ilib.locale = undefined;
@@ -362,252 +370,253 @@ module.exports.testglobal = {
         if (loc === "en") {
             loc = "en-US";
         }
+        test.expect(1);
         test.equal(ilib.getLocale(), loc);
         test.done();
     },
     
     testIsArrayNewArrayObj: function(test) {
-        test.expect(1);
         var a = new Array();
+        test.expect(1);
         test.ok(ilib.isArray(a));
         test.done();
     },
     
     testIsArrayNewArrayBrackets: function(test) {
-        test.expect(1);
         var a = [];
+        test.expect(1);
         test.ok(ilib.isArray(a));
         test.done();
     },
     
     testIsArrayObject: function(test) {
-        test.expect(1);
         var a = {foo:234};
+        test.expect(1);
         test.ok(!ilib.isArray(a));
         test.done();
     },
     
     testIsArrayObjectWithNumericProperties: function(test) {
-        test.expect(1);
         var a = {"0": "d", "1": "c"};
+        test.expect(1);
         test.ok(!ilib.isArray(a));
         test.done();
     },
     
     testIsArrayNumber: function(test) {
-        test.expect(1);
         var a = 234;
+        test.expect(1);
         test.ok(!ilib.isArray(a));
         test.done();
     },
     
     testIsArrayString: function(test) {
-        test.expect(1);
         var a = "asdf";
+        test.expect(1);
         test.ok(!ilib.isArray(a));
         test.done();
     },
     
     testIsArrayNull: function(test) {
-        test.expect(1);
         var a = null;
+        test.expect(1);
         test.ok(!ilib.isArray(a));
         test.done();
     },
     
     testIsArrayUndefined: function(test) {
-        test.expect(1);
         var a = undefined;
+        test.expect(1);
         test.ok(!ilib.isArray(a));
         test.done();
     },
     
     testExtendSimple: function(test) {
-        test.expect(1);
         var object1 = {"a": "A", "b": "B"},
             object2 = {"c": "C", "d": "D"};
         
         ilib.extend(object1, object2);
+        test.expect(1);
         test.deepEqual(object1, {"a": "A", "b": "B", "c": "C", "d": "D"});
         test.done();
     },
     
     testExtendReturnObject1: function(test) {
-        test.expect(1);
         var object1 = {"a": "A", "b": "B"},
             object2 = {"c": "C", "d": "D"};
         
         var x = ilib.extend(object1, object2);
+        test.expect(1);
         test.equal(x, object1);
         test.done();
     },
     
     testExtendArrays: function(test) {
-        test.expect(1);
         var object1 = {"a": ["b", "c"]},
             object2 = {"a": ["d"]};
        
         ilib.extend(object1, object2);
+        test.expect(1);
         test.deepEqual(object1, {"a": ["b", "c", "d"]});
         test.done();
     },
     
     testExtendArraysDups: function(test) {
-        test.expect(1);
         var object1 = {"a": ["b", "c"]},
             object2 = {"a": ["c", "d"]};
         
         ilib.extend(object1, object2);
+        test.expect(1);
         test.deepEqual(object1, {"a": ["b", "c", "c", "d"]});
         test.done();
     },
     
     testExtendArraysEmptySource: function(test) {
-        test.expect(1);
         var object1 = {"a": []},
             object2 = {"a": ["d"]};
         
         ilib.extend(object1, object2);
+        test.expect(1);
         test.deepEqual(object1, {"a": ["d"]});
         test.done();
     },
     
     testExtendArraysEmptyTarget: function(test) {
-        test.expect(1);
         var object1 = {"a": ["b", "c"]},
             object2 = {"a": []};
         
         ilib.extend(object1, object2);
+        test.expect(1);
         test.deepEqual(object1, {"a": ["b", "c"]});
         test.done();
     },
     
     testExtendArraysIncongruentTypes1: function(test) {
-        test.expect(1);
         var object1 = {"a": ["b", "c"]},
             object2 = {"a": "d"};
         
         ilib.extend(object1, object2);
+        test.expect(1);
         test.deepEqual(object1, {"a": "d"});
         test.done();
     },
     
     testExtendArraysIncongruentTypes2: function(test) {
-        test.expect(1);
         var object1 = {"a": "b"},
             object2 = {"a": ["d"]};
         
         ilib.extend(object1, object2);
+        test.expect(1);
         test.deepEqual(object1, {"a": ["d"]});
         test.done();
     },
     
     testExtendSimpleProperty: function(test) {
-        test.expect(1);
         var object1 = {"a": "A", "b": "B"},
             object2 = {"b": "X"};
         
         ilib.extend(object1, object2);
+        test.expect(1);
         test.deepEqual(object1, {"a": "A", "b": "X"});
         test.done();
     },
     
     testExtendComplexProperty: function(test) {
-        test.expect(1);
         var object1 = {"a": "A", "b": {"x": "B"}},
             object2 = {"b": "X"};
         
         ilib.extend(object1, object2);
+        test.expect(1);
         test.deepEqual(object1, {"a": "A", "b": "X"});
         test.done();
     },
     
     testExtendSubobjects: function(test) {
-        test.expect(1);
         var object1 = {"b": {"x": "X", "y": "Y"}},
             object2 = {"b": {"x": "M", "y": "N"}};
         
         ilib.extend(object1, object2);
+        test.expect(1);
         test.deepEqual(object1, {"b": {"x": "M", "y": "N"}});
         test.done();
     },
     
     testExtendSubobjectsLeaveObj1PropsUntouched: function(test) {
-        test.expect(1);
         var object1 = {"a": "A", "b": {"x": "X", "y": "Y", "z": "Z"}},
             object2 = {"b": {"x": "M", "y": "N"}};
         
         ilib.extend(object1, object2);
+        test.expect(1);
         test.deepEqual(object1, {"a": "A", "b": {"x": "M", "y": "N", "z": "Z"}});
         test.done();
     },
     
     testExtendSubobjectsAddProps: function(test) {
-        test.expect(1);
         var object1 = {"a": "A", "b": {"x": "X", "y": "Y"}},
             object2 = {"b": {"x": "M", "y": "N", "z": "Z"}};
         
         ilib.extend(object1, object2);
+        test.expect(1);
         test.deepEqual(object1, {"a": "A", "b": {"x": "M", "y": "N", "z": "Z"}});
         test.done();
     },
     
     testExtendSubobjectsAddProps: function(test) {
-        test.expect(1);
         var object1 = {"a": "A", "b": {"x": "X", "y": "Y"}},
             object2 = {"b": {"x": "M", "y": "N", "z": "Z"}};
         
         ilib.extend(object1, object2);
+        test.expect(1);
         test.deepEqual(object1, {"a": "A", "b": {"x": "M", "y": "N", "z": "Z"}});
         test.done();
     },
     
     testExtendBooleans: function(test) {
-        test.expect(1);
         var object1 = {"a": true, "b": true},
             object2 = {"b": false};
         
         ilib.extend(object1, object2);
+        test.expect(1);
         test.deepEqual(object1, {"a": true, "b": false});
         test.done();
     },
     
     testExtendAddBooleans: function(test) {
-        test.expect(1);
         var object1 = {"a": true, "b": true},
             object2 = {"c": false};
         
         ilib.extend(object1, object2);
+        test.expect(1);
         test.deepEqual(object1, {"a": true, "b": true, "c": false});
         test.done();
     },
     
     testExtendNumbers: function(test) {
-        test.expect(1);
         var object1 = {"a": 1, "b": 2},
             object2 = {"b": 3};
         
         ilib.extend(object1, object2);
+        test.expect(1);
         test.deepEqual(object1, {"a": 1, "b": 3});
         test.done();
     },
     
     testExtendNumbersWithZero: function(test) {
-        test.expect(1);
         var object1 = {"a": 1, "b": 2},
             object2 = {"b": 0};
         
         ilib.extend(object1, object2);
+        test.expect(1);
         test.deepEqual(object1, {"a": 1, "b": 0});
         test.done();
     },
     
     testExtendNumbersAddZero: function(test) {
-        test.expect(1);
         var object1 = {"a": 1, "b": 2},
             object2 = {"c": 0};
         
         ilib.extend(object1, object2);
+        test.expect(1);
         test.deepEqual(object1, {"a": 1, "b": 2, "c": 0});
         test.done();
     },

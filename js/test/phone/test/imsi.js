@@ -20,6 +20,18 @@
 var ilib = require("./../lib/ilib.js");
 var PhoneNumber = require("./../lib/PhoneNumber.js");
 
+function mockLoader(paths, sync, params, callback) {
+	var data = [];
+	
+	data.push(ilib.data.mnc); // for the generic, shared stuff
+	
+	
+	if (typeof(callback) !== 'undefined') {
+		callback.call(this, data);	
+	}
+	return data;
+}
+
 function testRegularImsi3DigitMNC() {
 	var imsi = "31003014084567890"
 	var expected = {
@@ -96,18 +108,6 @@ function testTooShort() {
 function testUndefined() {
 	assertUndefined(PhoneNumber.parseImsi(undefined));
 };
-
-function mockLoader(paths, sync, params, callback) {
-	var data = [];
-	
-	data.push(ilib.data.mnc); // for the generic, shared stuff
-	
-	
-	if (typeof(callback) !== 'undefined') {
-		callback.call(this, data);	
-	}
-	return data;
-}
 
 function testIMSILoadLocaleDataSynch() {
 	if (ilib.isDynData()) {

@@ -36,9 +36,9 @@ module.exports.testaddress_AL = {
     },
 
     testParseALAddressNormal: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("Rr 'Aleksander Moisiu', P. 15, Sh. 1, 1001-TIRANE, ALBANIA", {locale: 'sq-AL'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Rr 'Aleksander Moisiu', P. 15, Sh. 1");
         test.ok(typeof(parsedAddress.region) === "undefined");
@@ -50,9 +50,9 @@ module.exports.testaddress_AL = {
     },
     
     testParseALAddressNoZip: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("Rr 'Aleksander Moisiu', P. 15, Sh. 1, TIRANE, ALBANIA", {locale: 'sq-AL'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Rr 'Aleksander Moisiu', P. 15, Sh. 1");
         test.ok(typeof(parsedAddress.region) === "undefined");
@@ -64,9 +64,9 @@ module.exports.testaddress_AL = {
     },
     
     testParseALAddressManyLines: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("Rr 'Aleksander Moisiu'\nP. 15, Sh. 1\n1001-TIRANE\nALBANIA", {locale: 'sq-AL'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Rr 'Aleksander Moisiu', P. 15, Sh. 1");
         test.ok(typeof(parsedAddress.region) === "undefined");
@@ -78,9 +78,9 @@ module.exports.testaddress_AL = {
     },
     
     testParseALAddressOneLine: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("Rr 'Aleksander Moisiu', P. 15, Sh. 1, 1001-TIRANE, ALBANIA", {locale: 'sq-AL'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Rr 'Aleksander Moisiu', P. 15, Sh. 1");
         test.ok(typeof(parsedAddress.region) === "undefined");
@@ -92,9 +92,9 @@ module.exports.testaddress_AL = {
     },
     
     testParseALAddressSuperfluousWhitespace: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("Rr 'Aleksander Moisiu', P. 15, Sh. 1  \n\t\n 1001-TIRANE\t\n\n ALBANIA  \n  \t\t\t", {locale: 'sq-AL'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Rr 'Aleksander Moisiu', P. 15, Sh. 1");
         test.ok(typeof(parsedAddress.region) === "undefined");
@@ -106,9 +106,9 @@ module.exports.testaddress_AL = {
     },
     
     testParseALAddressNoDelimiters: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("Rr 'Aleksander Moisiu' P. 15 Sh. 1 1001-TIRANE ALBANIA", {locale: 'sq-AL'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Rr 'Aleksander Moisiu' P. 15 Sh. 1");
         test.ok(typeof(parsedAddress.region) === "undefined");
@@ -120,9 +120,9 @@ module.exports.testaddress_AL = {
     },
     
     testParseALAddressSpecialChars: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("Rr 'Aleksander Moisiu', P. 15, Sh. 1, 1001-TIRANE, ALBANIA", {locale: 'sq-AL'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Rr 'Aleksander Moisiu', P. 15, Sh. 1");
         test.ok(typeof(parsedAddress.region) === "undefined");
@@ -134,11 +134,11 @@ module.exports.testaddress_AL = {
     },
     
     testParseALAddressFromUS: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("Rr 'Aleksander Moisiu', P. 15, Sh. 1, 1001-TIRANE, ALBANIA", {locale: 'en-US'});
         
         // the country name is in English because this address is for a contact in a US database
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Rr 'Aleksander Moisiu', P. 15, Sh. 1");
         test.ok(typeof(parsedAddress.region) === "undefined");
@@ -150,7 +150,6 @@ module.exports.testaddress_AL = {
     },
     
     testFormatAddressAL: function(test) {
-        test.expect(1);
         var parsedAddress = new Address({
             streetAddress: "Rr 'Aleksander Moisiu', P. 15, Sh. 1",
             locality: "TIRANE",
@@ -161,12 +160,12 @@ module.exports.testaddress_AL = {
         
         var expected = "Rr 'Aleksander Moisiu', P. 15, Sh. 1\n1001-TIRANE\nALBANIA";
         var formatter = new AddressFmt({locale: 'sq-AL'});
+        test.expect(1);
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     },
     
     testFormatAddressALFromUS: function(test) {
-        test.expect(1);
         var parsedAddress = new Address({
             streetAddress: "Rr 'Aleksander Moisiu', P. 15, Sh. 1",
             postalCode: "1001",
@@ -177,6 +176,7 @@ module.exports.testaddress_AL = {
         
         var expected = "Rr 'Aleksander Moisiu', P. 15, Sh. 1\n1001-TIRANE\nALBANIA";
         var formatter = new AddressFmt({locale: 'en-US'});
+        test.expect(1);
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     }

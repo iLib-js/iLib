@@ -34,9 +34,9 @@ module.exports.testaddress_UA = {
     },
 
     testParseAddressUANormal: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("Володимир Свідерський ВУЛ ДУБІНІНА Володя 5\nКИЇВ\n03127\nУКРАЇНА", {locale: 'uk-UA'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Володимир Свідерський ВУЛ ДУБІНІНА Володя 5");
         test.equal(parsedAddress.locality, "КИЇВ");
@@ -48,9 +48,9 @@ module.exports.testaddress_UA = {
     },
     
     testParseAddressUANoZip: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("Володимир Свідерський ВУЛ ДУБІНІНА Володя 5\nКИЇВ\nУКРАЇНА", {locale: 'uk-UA'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Володимир Свідерський ВУЛ ДУБІНІНА Володя 5");
         test.equal(parsedAddress.locality, "КИЇВ");
@@ -62,9 +62,9 @@ module.exports.testaddress_UA = {
     },
     
     testParseAddressUANoCountry: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("Володимир Свідерський ВУЛ ДУБІНІНА Володя 5\nКИЇВ\n03127", {locale: 'uk-UA'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Володимир Свідерський ВУЛ ДУБІНІНА Володя 5");
         test.equal(parsedAddress.locality, "КИЇВ");
@@ -76,8 +76,8 @@ module.exports.testaddress_UA = {
     },
     
     testParseAddressUAManyLines: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("Володимир Свідерський\nВУЛ ДУБІНІНА Володя 5\n\nКИЇВ\n\n03127\nУКРАЇНА\n\n\n", {locale: 'uk-UA'});
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Володимир Свідерський, ВУЛ ДУБІНІНА Володя 5");
         test.equal(parsedAddress.locality, "КИЇВ");
@@ -89,9 +89,9 @@ module.exports.testaddress_UA = {
     },
     
     testParseAddressUAOneLine: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("Володимир Свідерський , ВУЛ ДУБІНІНА Володя 5 , КИЇВ , 03127 , УКРАЇНА", {locale: 'uk-UA'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Володимир Свідерський, ВУЛ ДУБІНІНА Володя 5");
         test.equal(parsedAddress.locality, "КИЇВ");
@@ -103,9 +103,9 @@ module.exports.testaddress_UA = {
     },
     
     testParseAddressUASuperfluousWhitespace: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("\t\t\tВолодимир Свідерський\n\t\t\rВУЛ ДУБІНІНА\t\t\rВолодя\t\t5\n\n\nКИЇВ\n\n03127\n\t УКРАЇНА\n\n\n", {locale: 'uk-UA'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Володимир Свідерський, ВУЛ ДУБІНІНА Володя 5");
         test.equal(parsedAddress.locality, "КИЇВ");
@@ -117,9 +117,9 @@ module.exports.testaddress_UA = {
     },
     
     testParseAddressUANoDelimiters: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("Володимир Свідерський ВУЛ ДУБІНІНА Володя 5 КИЇВ 03127 УКРАЇНА", {locale: 'uk-UA'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Володимир Свідерський ВУЛ ДУБІНІНА Володя 5");
         test.equal(parsedAddress.locality, "КИЇВ");
@@ -131,11 +131,11 @@ module.exports.testaddress_UA = {
     },
     
     testParseAddressUAFromUS: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("Володимир Свідерський ВУЛ ДУБІНІНА Володя 5\nКИЇВ\n03127\nУКРАЇНА", {locale: 'en-US'});
         
         // the country name is in German because this address is for a contact in a German database
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Володимир Свідерський ВУЛ ДУБІНІНА Володя 5");
         test.equal(parsedAddress.locality, "КИЇВ");
@@ -147,7 +147,6 @@ module.exports.testaddress_UA = {
     },
     
     testFormatAddressUA: function(test) {
-        test.expect(1);
         var parsedAddress = new Address({
             streetAddress: "Володимир Свідерський ВУЛ ДУБІНІНА Володя 5",
             locality: "КИЇВ",
@@ -158,12 +157,12 @@ module.exports.testaddress_UA = {
         
         var expected = "Володимир Свідерський ВУЛ ДУБІНІНА Володя 5\nКИЇВ\n03127\nУКРАЇНА";
         var formatter = new AddressFmt({locale: 'uk-UA'});
+        test.expect(1);
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     },
     
     testFormatAddressUAFromUS: function(test) {
-        test.expect(1);
         var parsedAddress = new Address({
             streetAddress: "Володимир Свідерський ВУЛ ДУБІНІНА Володя 5",
             locality: "КИЇВ",
@@ -174,6 +173,7 @@ module.exports.testaddress_UA = {
         
         var expected = "Володимир Свідерський ВУЛ ДУБІНІНА Володя 5\nКИЇВ\n03127\nУКРАЇНА";
         var formatter = new AddressFmt({locale: 'en-US'});
+        test.expect(1);
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     }

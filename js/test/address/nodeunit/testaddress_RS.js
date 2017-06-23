@@ -34,9 +34,9 @@ module.exports.testaddress_RS = {
     },
 
     testParseAddressRSNormal: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("Boulevard arsenicum Carnojevica 56 Novi Belgradum\n11070 Belgradum\nCentral-Serbia\nSerbia", {locale: 'sr-Latn-RS'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Boulevard arsenicum Carnojevica 56 Novi Belgradum");
         test.equal(parsedAddress.locality, "Belgradum");
@@ -48,9 +48,9 @@ module.exports.testaddress_RS = {
     },
     
     testParseAddressRSNoZip: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("Boulevard arsenicum Carnojevica 56 Novi Belgradum\nBelgradum\nCentral-Serbia\nSerbia", {locale: 'sr-Latn-RS'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Boulevard arsenicum Carnojevica 56 Novi Belgradum");
         test.equal(parsedAddress.locality, "Belgradum");
@@ -63,9 +63,9 @@ module.exports.testaddress_RS = {
     
     
     testParseAddressRSNoCountry: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("Boulevard arsenicum Carnojevica 56 Novi Belgradum\n11070 Belgradum\nCentral-Serbia", {locale: 'sr-Latn-RS'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Boulevard arsenicum Carnojevica 56 Novi Belgradum");
         test.equal(parsedAddress.locality, "Belgradum");
@@ -77,9 +77,9 @@ module.exports.testaddress_RS = {
     },
     
     testParseAddressRSManyLines: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("Boulevard arsenicum Carnojevica\n56 Novi Belgradum\n11070 Belgradum\nCentral-Serbia\nSerbia", {locale: 'sr-Latn-RS'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
           test.equal(parsedAddress.streetAddress, "Boulevard arsenicum Carnojevica, 56 Novi Belgradum");
         test.equal(parsedAddress.locality, "Belgradum");
@@ -91,9 +91,9 @@ module.exports.testaddress_RS = {
     },
     
     testParseAddressRSOneLine: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("Boulevard arsenicum Carnojevica , 56 Novi Belgradum , 11070 , Belgradum , Central-Serbia , Serbia", {locale: 'sr-Latn-RS'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
           test.equal(parsedAddress.streetAddress, "Boulevard arsenicum Carnojevica, 56 Novi Belgradum");
         test.equal(parsedAddress.locality, "Belgradum");
@@ -105,9 +105,9 @@ module.exports.testaddress_RS = {
     },
     
     testParseAddressRSSuperfluousWhitespace: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("Boulevard arsenicum Чарнојевић\n\n\t56 Novi Belgradum\n\n\r11070\r\r\nBelgradum\t\t\rCentral-Serbia\t\t\rSerbia", {locale: 'sr-Latn-RS'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
           test.equal(parsedAddress.streetAddress, "Boulevard arsenicum Чарнојевић, 56 Novi Belgradum");
         test.equal(parsedAddress.locality, "Belgradum");
@@ -119,9 +119,9 @@ module.exports.testaddress_RS = {
     },
     
     testParseAddressRSNoDelimiters: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("Boulevard arsenicum Carnojevica 56 Novi Belgradum 11070 Belgradum Central-Serbia Serbia", {locale: 'sr-Latn-RS'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Boulevard arsenicum Carnojevica 56 Novi Belgradum");
         test.equal(parsedAddress.locality, "Belgradum");
@@ -133,9 +133,9 @@ module.exports.testaddress_RS = {
     },
     
     testParseAddressRSFromUS: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("Bulevar Arsenija Carnojevica 56 New Belgrade\n11070 Belgrade\nCentral-Serbia\nSerbia", {locale: 'sr-Latn-RS'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Bulevar Arsenija Carnojevica 56 New Belgrade");
         test.equal(parsedAddress.locality, "Belgrade");
@@ -147,7 +147,6 @@ module.exports.testaddress_RS = {
     },
     
     testFormatAddressRS: function(test) {
-        test.expect(1);
         var parsedAddress = new Address({
             streetAddress: "Boulevard arsenicum Carnojevica 56 Novi Belgradum",
             locality: "Belgradum",
@@ -159,12 +158,12 @@ module.exports.testaddress_RS = {
         
         var expected = "Boulevard arsenicum Carnojevica 56 Novi Belgradum\n11070 Belgradum\nCentral-Serbia\nSerbia";
         var formatter = new AddressFmt({locale: 'sr-Latn-RS'});
+        test.expect(1);
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     },
     
     testFormatAddressRSFromUS: function(test) {
-        test.expect(1);
         var parsedAddress = new Address({
             streetAddress: "Boulevard arsenicum Carnojevica 56 Novi Belgradum",
             locality: "Belgradum",
@@ -176,6 +175,7 @@ module.exports.testaddress_RS = {
         
         var expected = "Boulevard arsenicum Carnojevica 56 Novi Belgradum\n11070 Belgradum\nCentral-Serbia\nSerbia";
         var formatter = new AddressFmt({locale: 'en-US'});
+        test.expect(1);
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     }

@@ -25,37 +25,37 @@ if (typeof(ilib) === "undefined") {
     var ilib = require("../../..");
 }
 
-module.exports.testcm_ISO_8859-1 = {
+module.exports.testcm_ISO_8859_1 = {
     setUp: function(callback) {
         ilib.clearCache();
         callback();
     },
 
     testCharmap88591LoadMap: function(test) {
-        test.expect(2);
         var cm = CharmapFactory({
             name: "ISO-8859-1"
         });
+        test.expect(2);
         test.ok(typeof(cm) !== "undefined");
         test.equal(cm.getName(), "ISO-8859-1");
         test.done();
     },
     
     testCharmap88591UseAliases1: function(test) {
-        test.expect(2);
         var cm = CharmapFactory({
             name: "8859-1"
         });
+        test.expect(2);
         test.ok(typeof(cm) !== "undefined");
         test.equal(cm.getName(), "ISO-8859-1");
         test.done();
     },
     
     testCharmap88591UseAliases2: function(test) {
-        test.expect(2);
         var cm = CharmapFactory({
             name: "iso_8859_1"
         });
+        test.expect(2);
         test.ok(typeof(cm) !== "undefined");
         test.equal(cm.getName(), "ISO-8859-1");
         test.done();

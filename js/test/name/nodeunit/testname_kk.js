@@ -34,8 +34,8 @@ module.exports.testname_kk = {
     },
 
     testParseSimpleName_kk: function(test) {
-        test.expect(2);
         var parsed = new Name("Джордж Буш", {locale: 'kk-KZ'});
+        test.expect(2);
         test.ok(typeof(parsed) !== "undefined");
         
         var expected =   {
@@ -49,8 +49,8 @@ module.exports.testname_kk = {
     
     
     testParseSingleNameWithPrefixAndAdjunct_kk: function(test) {
-        test.expect(2);
         var parsed = new Name("үлкен Буш", {locale: 'kk-KZ'});
+        test.expect(2);
         test.ok(typeof(parsed) !== "undefined");
         
         var expected =   {
@@ -64,8 +64,8 @@ module.exports.testname_kk = {
     
     
     testParseTitle_kk: function(test) {
-        test.expect(2);
         var parsed = new Name("Джордж Буш 2-ші", {locale: 'kk-KZ'});
+        test.expect(2);
         test.ok(typeof(parsed) !== "undefined");
         
         var expected =    {
@@ -79,8 +79,8 @@ module.exports.testname_kk = {
     },
     
     testParseEverything_kk: function(test) {
-        test.expect(2);
         var parsed = new Name("үлкен Джордж Буш 2-ші", {locale: 'kk-KZ'});
+        test.expect(2);
         test.ok(typeof(parsed) !== "undefined");
         
         var expected =    {
@@ -100,7 +100,6 @@ module.exports.testname_kk = {
      */
     
     testFormatSimpleNameShort_kk: function(test) {
-        test.expect(2);
         var name = new Name({
             givenName: "Джордж",
             familyName: "Буш"
@@ -110,6 +109,7 @@ module.exports.testname_kk = {
             locale: 'kk-KZ'
         });
         var formatted = fmt.format(name);
+        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "Джордж Буш";
@@ -119,7 +119,6 @@ module.exports.testname_kk = {
     },
     
     testFormatSimpleNameMedium_kk: function(test) {
-        test.expect(2);
         var name = new Name({
             givenName: "Джордж",
             familyName: "Буш"
@@ -129,6 +128,7 @@ module.exports.testname_kk = {
             locale: 'kk-KZ'
         });
         var formatted = fmt.format(name);
+        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "Джордж Буш";
@@ -138,7 +138,6 @@ module.exports.testname_kk = {
     },
     
     testFormatSimpleNameLong_kk: function(test) {
-        test.expect(2);
         var name = new Name({
             givenName: "Джордж",
             familyName: "Буш",
@@ -149,6 +148,7 @@ module.exports.testname_kk = {
             locale: 'kk-KZ'
         });
         var formatted = fmt.format(name);
+        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "Джордж Буш";
@@ -158,7 +158,6 @@ module.exports.testname_kk = {
     },
     
     testFormatSimpleNameFull_kk: function(test) {
-        test.expect(2);
         var name = new Name({
             prefix: "үлкен",
             givenName: "Джордж",
@@ -170,6 +169,7 @@ module.exports.testname_kk = {
             locale: 'kk-KZ'
         });
         var formatted = fmt.format(name);
+        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "үлкен Джордж Буш 2-ші";

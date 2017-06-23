@@ -36,9 +36,9 @@ module.exports.testaddress_GR = {
     },
 
     testParseAddressGRNormal: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("18, Heracleous St., Kifissia, 145 64 Athens,GREECE", {locale: 'el-GR'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "18, Heracleous St., Kifissia");
         test.ok(typeof(parsedAddress.region) === "undefined");
@@ -50,9 +50,9 @@ module.exports.testaddress_GR = {
     },
     
     testParseAddressGRNoZip: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("18, Heracleous St., Kifissia, Athens,GREECE", {locale: 'el-GR'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "18, Heracleous St., Kifissia");
         test.ok(typeof(parsedAddress.region) === "undefined");
@@ -64,9 +64,9 @@ module.exports.testaddress_GR = {
     },
     
     testParseAddressGRManyLines: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("18, Heracleous St., Kifissia, 145 64 Athens,GREECE", {locale: 'el-GR'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "18, Heracleous St., Kifissia");
         test.ok(typeof(parsedAddress.region) === "undefined");
@@ -78,9 +78,9 @@ module.exports.testaddress_GR = {
     },
     
     testParseAddressGROneLine: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("18, Heracleous St., Kifissia, 145 64 Athens,GREECE", {locale: 'el-GR'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "18, Heracleous St., Kifissia");
         test.ok(typeof(parsedAddress.region) === "undefined");
@@ -92,9 +92,9 @@ module.exports.testaddress_GR = {
     },
     
     testParseAddressGRSuperfluousWhitespace: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("18, Heracleous St., Kifissia, 145 64 Athens,GREECE", {locale: 'el-GR'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "18, Heracleous St., Kifissia");
         test.ok(typeof(parsedAddress.region) === "undefined");
@@ -106,9 +106,9 @@ module.exports.testaddress_GR = {
     },
     
     testParseAddressGRNoDelimiters: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("18, Heracleous St., Kifissia, 145 64 Athens,GREECE", {locale: 'el-GR'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "18, Heracleous St., Kifissia");
         test.ok(typeof(parsedAddress.region) === "undefined");
@@ -121,9 +121,9 @@ module.exports.testaddress_GR = {
     
     /*
     testParseAddressGRSpecialChars: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("18, Heracleous St., Kifissia, 145 64 Athens,GREECE", {locale: 'el-GR'});
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Botanisk Centralbibliotek,Sølvgade 83, opg. S");
         test.ok(typeof(parsedAddress.region) === "undefined");
@@ -136,11 +136,11 @@ module.exports.testaddress_GR = {
     */
     
     testParseAddressGRFromUS: function(test) {
-        test.expect(7);
         var parsedAddress = new Address("18, Heracleous St., Kifissia, 145 64 Athens,GREECE", {locale: 'en-US'});
         
         // the country name is in English because this address is for a contact in a US database
         
+        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "18, Heracleous St., Kifissia");
         test.ok(typeof(parsedAddress.region) === "undefined");
@@ -152,7 +152,6 @@ module.exports.testaddress_GR = {
     },
     
     testFormatAddressGR: function(test) {
-        test.expect(1);
         var parsedAddress = new Address({
             streetAddress: "18, Heracleous St.,Kifissia",
             locality: "Athens",
@@ -163,12 +162,12 @@ module.exports.testaddress_GR = {
         
         var expected = "18, Heracleous St.,Kifissia\n145 64 Athens\nGREECE";
         var formatter = new AddressFmt({locale: 'el-GR'});
+        test.expect(1);
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     },
     
     testFormatAddressGRFromUS: function(test) {
-        test.expect(1);
         var parsedAddress = new Address({
             streetAddress: "18, Heracleous St.,Kifissia",
             postalCode: "145 64",
@@ -179,6 +178,7 @@ module.exports.testaddress_GR = {
         
         var expected = "18, Heracleous St.,Kifissia\n145 64 Athens\nGreece";
         var formatter = new AddressFmt({locale: 'en-US'});
+        test.expect(1);
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     }
