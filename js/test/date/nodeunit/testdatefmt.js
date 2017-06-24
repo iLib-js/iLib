@@ -35,6 +35,9 @@ if (typeof(HebrewDate) === "undefined") {
 if (typeof(GregorianDate) === "undefined") {
     var GregorianDate = require("../.././../lib/GregorianDate.js");
 }
+if (typeof(JulianDate) === "undefined") {
+    var JulianDate = require("../.././../lib/JulianDate.js");
+}
 if (typeof(DateFmt) === "undefined") {
     var DateFmt = require("../.././../lib/DateFmt.js");
 }

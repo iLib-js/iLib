@@ -23,6 +23,7 @@ var PersianDate = require("./../lib/PersianDate.js");
 var IslamicDate = require("./../lib/IslamicDate.js");
 var HebrewDate = require("./../lib/HebrewDate.js");
 var GregorianDate = require("./../lib/GregorianDate.js");
+var JulianDate = require("./../lib/JulianDate.js");
 var DateFmt = require("./../lib/DateFmt.js");
 var DateFactory = require("./../lib/DateFactory.js");
 
