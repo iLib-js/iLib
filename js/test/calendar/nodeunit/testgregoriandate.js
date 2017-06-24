@@ -988,7 +988,7 @@ module.exports.testgregoriandate = {
         test.expect(2);
         test.ok(gd !== null);
         
-        test.ok(gd.getTimeExtended() === NaN);
+        test.ok(isNaN(gd.getTimeExtended()));
         test.done();
     },
     
@@ -1016,7 +1016,7 @@ module.exports.testgregoriandate = {
         test.expect(2);
         test.ok(gd !== null);
         
-        test.ok(gd.getTimeExtended() === NaN);
+        test.ok(isNaN(gd.getTimeExtended()));
         test.done();
     },
     
