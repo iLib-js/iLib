@@ -23,7 +23,9 @@ if (typeof(ilib) === "undefined") {
 if (typeof(NormString) === "undefined") {
     var NormString = require("../../../lib/NormString.js");
 }
-var normtests = normtests || require("../test/strings-ext/test/normdata.js");
+if (typeof(normtests) === "undefined") {
+    var normtests = require("../../../test/strings-ext/test/normdata.js");
+}
 
 if (ilib.isDynData()) {
     NormString.init();

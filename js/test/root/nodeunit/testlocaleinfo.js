@@ -17,7 +17,9 @@
  * limitations under the License.
  */
 
-var ilib = require("./../lib/ilib.js")
+if (typeof(ilib) === "undefined") {
+    var ilib = require("../.././../lib/ilib.js");
+}
 if (typeof(LocaleInfo) === "undefined") {
     var LocaleInfo = require("../.././../lib/LocaleInfo.js");
 }

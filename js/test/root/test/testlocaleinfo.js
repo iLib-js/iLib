@@ -17,7 +17,7 @@
  * limitations under the License.
  */
 
-var ilib = require("./../lib/ilib.js")
+var ilib = require("./../lib/ilib.js");
 var LocaleInfo = require("./../lib/LocaleInfo.js");
 
 function mockLoader(paths, sync, params, callback) {
