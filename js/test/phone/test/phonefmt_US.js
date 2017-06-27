@@ -2362,6 +2362,7 @@ function testPhoneFmtUSLoadLocaleDataSynch() {
 		return;
 	}
 	
+    var oldLoader = ilib._load;
 	ilib.setLoaderCallback(mockLoader);
 
 	var phonefmt = new PhoneFmt({
@@ -2372,5 +2373,6 @@ function testPhoneFmtUSLoadLocaleDataSynch() {
     	}
 	});
 
+    ilib.setLoaderCallback(oldLoader);
 	assertEquals("1 (650) 555-1234", phonefmt.getStyleExample("default"));
 };

@@ -17,9 +17,6 @@
  * limitations under the License.
  */
 
-if (typeof(ilib) === "undefined") {
-    var ilib = require("../.././../lib/ilib.js");
-}
 if (typeof(ThaiSolarDate) === "undefined") {
     var ThaiSolarDate = require("../.././../lib/ThaiSolarDate.js");
 }
@@ -2974,12 +2971,13 @@ module.exports.testdatefmt = {
         test.done();
             return;
         }
+        var oldLoader = ilib._load;
         ilib.setLoaderCallback(mockLoader);
     
         var fmt = new DateFmt({locale: "zz-ZZ"});
         test.expect(4);
         test.ok(fmt !== null);
-        ilib.setLoaderCallback(undefined);
+        ilib.setLoaderCallback(oldLoader);
         
         test.equal(fmt.getLocale().toString(), "zz-ZZ");
         test.equal(fmt.getCalendar(), "gregorian");
@@ -2994,12 +2992,13 @@ module.exports.testdatefmt = {
         test.done();
             return;
         }
+        var oldLoader = ilib._load;
         ilib.setLoaderCallback(mockLoader);
     
         var fmt = new DateFmt({locale: "zz-ZZ"});
         test.expect(4);
         test.ok(fmt !== null);
-        ilib.setLoaderCallback(undefined);
+        ilib.setLoaderCallback(oldLoader);
         
         test.equal(fmt.getLocale().toString(), "zz-ZZ");
         test.equal(fmt.getCalendar(), "gregorian");
@@ -3014,13 +3013,14 @@ module.exports.testdatefmt = {
         test.done();
             return;
         }
+        var oldLoader = ilib._load;
         ilib.setLoaderCallback(mockLoader);
         
         new DateFmt({
             locale: "zz-ZZ",
             sync: false,
             onLoad: function (fmt) {
-                ilib.setLoaderCallback(undefined);
+                ilib.setLoaderCallback(oldLoader);
         test.expect(4);
                 test.ok(fmt !== null);
                 
@@ -3039,15 +3039,17 @@ module.exports.testdatefmt = {
         test.done();
             return;
         }
+        var oldLoader = ilib._load;
         ilib.setLoaderCallback(mockLoader);
         
         new DateFmt({
             locale: "zz-ZZ",
             sync: false,
             onLoad: function (fmt) {
+                ilib.setLoaderCallback(oldLoader);
+    
         test.expect(4);
                 test.ok(fmt !== null);
-                ilib.setLoaderCallback(undefined);
                 
                 test.equal(fmt.getLocale().toString(), "zz-ZZ");
                 test.equal(fmt.getCalendar(), "gregorian");

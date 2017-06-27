@@ -448,7 +448,7 @@ LocaleInfo.prototype = {
 	 * @returns {string} string that describes the style of digits used in this locale
 	 */
 	getDigitsStyle: function () {
-		if (this.info.numfmt.useNative) {
+		if (this.info.numfmt && this.info.numfmt.useNative) {
 			return "native";
 		}
 		if (typeof(this.info.native_numfmt) !== 'undefined') {

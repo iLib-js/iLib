@@ -9716,6 +9716,7 @@ function testLocaleInfoLoadMissingDataAsynch() {
         // it via all the other tests already.
         return;
     }
+    var oldLoader = ilib._load;
     ilib.setLoaderCallback(mockLoader);
     var info = new LocaleInfo("zzz-ZX", {
         sync: false,
@@ -9727,8 +9728,8 @@ function testLocaleInfoLoadMissingDataAsynch() {
             assertEquals("%", li.getPercentageSymbol());
         }
     });
+    ilib.setLoaderCallback(oldLoader);
     assertNotNull(info);
-    ilib.setLoaderCallback(undefined);
 }
 
 function testLocaleInfoLoadMissingDataSync() {
@@ -9737,6 +9738,7 @@ function testLocaleInfoLoadMissingDataSync() {
         // it via all the other tests already.
         return;
     }
+    var oldLoader = ilib._load;
     ilib.setLoaderCallback(mockLoader);
     var info = new LocaleInfo("zzz-ZX", {
         sync: true
@@ -9744,10 +9746,11 @@ function testLocaleInfoLoadMissingDataSync() {
 
     assertNotNull(info);
 
+    ilib.setLoaderCallback(oldLoader);
+
     assertEquals("iso {s} {n}", info.getCurrencyFormats().iso);
     assertEquals(4, info.getFirstDayOfWeek());
     assertEquals("%", info.getPercentageSymbol());
-    ilib.setLoaderCallback(undefined);
 }
 
 function testLocaleInfoLoadMissingDataAsynchNoData() {
@@ -9756,6 +9759,7 @@ function testLocaleInfoLoadMissingDataAsynchNoData() {
         // it via all the other tests already.
         return;
     }
+    var oldLoader = ilib._load;
     ilib.setLoaderCallback(mockLoader);
     var info = new LocaleInfo("qq-QQ", {
         sync: false,
@@ -9767,14 +9771,15 @@ function testLocaleInfoLoadMissingDataAsynchNoData() {
             assertEquals("%", li.getPercentageSymbol());
         }
     });
+    ilib.setLoaderCallback(oldLoader);
     assertNotNull(info);
-    ilib.setLoaderCallback(undefined);
 }
 
 function testLocaleInfoMissingDataSynchNoDataNoLoader() {
     var temp = ilib._load;
 
-    ilib._load = undefined;  // no loader
+    var oldLoader = ilib._load;
+    ilib.setLoaderCallback(undefined);
     var info = new LocaleInfo("xxx-QQ", {
         sync: true,
         onLoad: function (li) {
@@ -9785,11 +9790,11 @@ function testLocaleInfoMissingDataSynchNoDataNoLoader() {
             assertEquals("%", li.getPercentageSymbol());
         }
     });
-    assertNotNull(info);
 
     // clean up
-    ilib._load = undefined;  // no loader
-    ilib._load = temp;
+    ilib.setLoaderCallback(oldLoader);
+
+    assertNotNull(info);
 }
 
 function testLocaleInfoLoadMissingDataSyncNoData() {
@@ -9798,17 +9803,19 @@ function testLocaleInfoLoadMissingDataSyncNoData() {
         // it via all the other tests already.
         return;
     }
+    var oldLoader = ilib._load;
     ilib.setLoaderCallback(mockLoader);
     var li = new LocaleInfo("qq-QQ", {
         sync: true
     });
+
+    ilib.setLoaderCallback(oldLoader);
 
     assertNotUndefined(li);
     // should return the shared data only
     assertEquals("{s} {n}", li.getCurrencyFormats().common);
     assertEquals(1, li.getFirstDayOfWeek());
     assertEquals("%", li.getPercentageSymbol());
-    ilib.setLoaderCallback(undefined);
 }
 
 function testLocaleInfoLoadPreassembledDataAsynch() {
@@ -9817,6 +9824,7 @@ function testLocaleInfoLoadPreassembledDataAsynch() {
         // it via all the other tests already.
         return;
     }
+    var oldLoader = ilib._load;
     ilib.setLoaderCallback(mockLoader);
     var info = new LocaleInfo("fr-FR", {
         sync: false,
@@ -9829,8 +9837,8 @@ function testLocaleInfoLoadPreassembledDataAsynch() {
             assertEquals("Europe/Paris", li.getTimeZone());
         }
     });
+    ilib.setLoaderCallback(oldLoader);
     assertNotNull(info);
-    ilib.setLoaderCallback(undefined);
 }
 
 function testLocaleInfoLoadMissingLocaleParts() {

@@ -1308,6 +1308,7 @@ module.exports.testresources = {
             return;
         }
         var onloadcalled = false;
+        var oldLoader = ilib._load;
         ilib.setLoaderCallback(mockLoader);
         var rb = new ResBundle({
             locale: "de-DE-SAP",
@@ -1325,10 +1326,10 @@ module.exports.testresources = {
             }
         });
         
+        ilib.setLoaderCallback(oldLoader);
         test.ok(typeof(rb) !== "undefined");
         test.ok(onloadcalled);
         test.done();
-        ilib.setLoaderCallback(undefined);
     },
     
     testResBundleConstructSynchDynamic: function(test) {
@@ -1338,6 +1339,7 @@ module.exports.testresources = {
         test.done();
             return;
         }
+        var oldLoader = ilib._load;
         ilib.setLoaderCallback(mockLoader);
         var rb = new ResBundle({
             locale: "de-DE-SAP",
@@ -1347,11 +1349,12 @@ module.exports.testresources = {
         test.expect(4);
         test.ok(typeof(rb) !== "undefined");
         
+        ilib.setLoaderCallback(oldLoader);
+    
         test.equal(rb.getString("first string").toString(), "erste String");
         test.equal(rb.getString("second string").toString(), "zweite String");
         test.equal(rb.getString("third string").toString(), "dritte String");
         test.done();
-        ilib.setLoaderCallback(undefined);
     },
     
     testResBundleConstructAsynchDynamicDefaultName: function(test) {
@@ -1362,26 +1365,22 @@ module.exports.testresources = {
             return;
         }
         var onloadcalled = false;
+        var oldLoader = ilib._load;
         ilib.setLoaderCallback(mockLoader);
         var rb = new ResBundle({
             locale: "fr-CA-govt",
             sync: false,
             onLoad: function(rb) {
-        test.expect(6);
+                ilib.setLoaderCallback(oldLoader);
+        test.expect(4);
                 test.ok(typeof(rb) !== "undefined");
                 
                 test.equal(rb.getString("first string").toString(), "première corde");
                 test.equal(rb.getString("second string").toString(), "deuxième collier");
                 test.equal(rb.getString("third string").toString(), "troisième corde");
-                
-                onloadcalled = true;
+                test.done();
             }
         });
-        
-        test.ok(typeof(rb) !== "undefined");
-        test.ok(onloadcalled);
-        test.done();
-        ilib.setLoaderCallback(undefined);
     },
     
     testResBundleConstructSynchDynamicDefaultName: function(test) {
@@ -1391,6 +1390,7 @@ module.exports.testresources = {
         test.done();
             return;
         }
+        var oldLoader = ilib._load;
         ilib.setLoaderCallback(mockLoader);
         var rb = new ResBundle({
             locale: "fr-CA-govt"
@@ -1399,11 +1399,12 @@ module.exports.testresources = {
         test.expect(4);
         test.ok(typeof(rb) !== "undefined");
         
+        ilib.setLoaderCallback(oldLoader);
+    
         test.equal(rb.getString("first string").toString(), "première corde");
         test.equal(rb.getString("second string").toString(), "deuxième collier");
         test.equal(rb.getString("third string").toString(), "troisième corde");
         test.done();
-        ilib.setLoaderCallback(undefined);
     },
     
     testResBundleConstructAsynchDynamicNoStrings: function(test) {
@@ -1413,28 +1414,25 @@ module.exports.testresources = {
         test.done();
             return;
         }
-        var onloadcalled = false;
+        var oldLoader = ilib._load;
         ilib.setLoaderCallback(mockLoader);
         var rb = new ResBundle({
             locale: "de-DE-SAP",
             name: "asdf", // doesn't exist
             sync: false,
             onLoad: function(rb) {
-        test.expect(6);
+        test.expect(4);
                 test.ok(typeof(rb) !== "undefined");
-                
+                ilib.setLoaderCallback(oldLoader);
+    
                 test.equal(rb.getString("first string").toString(), "first string");
                 test.equal(rb.getString("second string").toString(), "second string");
                 test.equal(rb.getString("third string").toString(), "third string");
+                test.done();
                 
                 onloadcalled = true;
             }
         });
-        
-        test.ok(typeof(rb) !== "undefined");
-        test.ok(onloadcalled);
-        test.done();
-        ilib.setLoaderCallback(undefined);
     },
     
     testResBundleConstructSynchDynamicNoStrings: function(test) {
@@ -1444,6 +1442,7 @@ module.exports.testresources = {
         test.done();
             return;
         }
+        var oldLoader = ilib._load;
         ilib.setLoaderCallback(mockLoader);
         var rb = new ResBundle({
             locale: "de-DE-SAP",
@@ -1452,12 +1451,13 @@ module.exports.testresources = {
         
         test.expect(4);
         test.ok(typeof(rb) !== "undefined");
+    
+        ilib.setLoaderCallback(oldLoader);
         
         test.equal(rb.getString("first string").toString(), "first string");
         test.equal(rb.getString("second string").toString(), "second string");
         test.equal(rb.getString("third string").toString(), "third string");
         test.done();
-        ilib.setLoaderCallback(undefined);
     },
     
     

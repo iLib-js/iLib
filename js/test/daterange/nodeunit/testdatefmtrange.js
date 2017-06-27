@@ -286,6 +286,7 @@ module.exports.testdatefmtrange = {
         test.done();
             return;
         }
+        var oldLoader = ilib._load;
         ilib.setLoaderCallback(mockLoader);
         
         var fmt = new DateRngFmt({
@@ -312,9 +313,9 @@ module.exports.testdatefmtrange = {
             second: 0
         });
         
+        ilib.setLoaderCallback(oldLoader);
         test.equal(fmt.format(start, end), "2/20/13, 12:20 PM – 4:35 PM");
         test.done();
-        ilib.setLoaderCallback(undefined);
     },
     
     testDateRngFmtDynamicLoadSyncCached: function(test) {
@@ -324,6 +325,7 @@ module.exports.testdatefmtrange = {
         test.done();
             return;
         }
+        var oldLoader = ilib._load;
         ilib.setLoaderCallback(mockLoader);
         
         var fmt = new DateRngFmt({
@@ -350,9 +352,9 @@ module.exports.testdatefmtrange = {
             second: 0
         });
         
+        ilib.setLoaderCallback(oldLoader);
         test.equal(fmt.format(start, end), "2/20/13, 12:20 PM – 4:35 PM");
         test.done();
-        ilib.setLoaderCallback(undefined);
     },
     
     testDateRngFmtDynamicLoadAsync: function(test) {
@@ -362,6 +364,7 @@ module.exports.testdatefmtrange = {
         test.done();
             return;
         }
+        var oldLoader = ilib._load;
         ilib.setLoaderCallback(mockLoader);
     
         var start = new GregorianDate({
@@ -386,13 +389,13 @@ module.exports.testdatefmtrange = {
             locale: "yy-YY",
             sync: false,
             onLoad: function (fmt) {
+                ilib.setLoaderCallback(oldLoader);
         test.expect(2);
                 test.ok(fmt !== null);
                 test.equal(fmt.format(start, end), "2/20/13, 12:20 PM – 4:35 PM");
                 test.done();
             }
         });
-        ilib.setLoaderCallback(undefined);
     },
     
     testDateRngFmtDynamicLoadAsyncCached: function(test) {
@@ -402,6 +405,7 @@ module.exports.testdatefmtrange = {
         test.done();
             return;
         }
+        var oldLoader = ilib._load;
         ilib.setLoaderCallback(mockLoader);
     
         var start = new GregorianDate({
@@ -426,13 +430,13 @@ module.exports.testdatefmtrange = {
             locale: "yy-YY",
             sync: false,
             onLoad: function (fmt) {
+                ilib.setLoaderCallback(oldLoader);
         test.expect(2);
                 test.ok(fmt !== null);
                 test.equal(fmt.format(start, end), "2/20/13, 12:20 PM – 4:35 PM");
                 test.done();
             }
         });
-        ilib.setLoaderCallback(undefined);
     },
     
     

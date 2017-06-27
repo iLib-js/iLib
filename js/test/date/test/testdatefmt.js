@@ -2589,11 +2589,12 @@ function testDateFmtLoadLocaleDataSynch() {
 	if (!ilib.isDynData()) {
 		return;
 	}
+	var oldLoader = ilib._load;
 	ilib.setLoaderCallback(mockLoader);
 
 	var fmt = new DateFmt({locale: "zz-ZZ"});
     assertNotNull(fmt);
-    ilib.setLoaderCallback(undefined);
+    ilib.setLoaderCallback(oldLoader);
     
     assertEquals("zz-ZZ", fmt.getLocale().toString());
     assertEquals("gregorian", fmt.getCalendar());
@@ -2606,11 +2607,12 @@ function testDateFmtLoadLocaleDataSynchCached() {
 		// it via all the other tests already.
 		return;
 	}
-	ilib.setLoaderCallback(mockLoader);
+	var oldLoader = ilib._load;
+    ilib.setLoaderCallback(mockLoader);
 
 	var fmt = new DateFmt({locale: "zz-ZZ"});
     assertNotNull(fmt);
-    ilib.setLoaderCallback(undefined);
+    ilib.setLoaderCallback(oldLoader);
     
     assertEquals("zz-ZZ", fmt.getLocale().toString());
     assertEquals("gregorian", fmt.getCalendar());
@@ -2623,13 +2625,14 @@ function testDateFmtLoadLocaleDataAsynch() {
 		// it via all the other tests already.
 		return;
 	}
-	ilib.setLoaderCallback(mockLoader);
+	var oldLoader = ilib._load;
+    ilib.setLoaderCallback(mockLoader);
 	
 	new DateFmt({
 		locale: "zz-ZZ",
 		sync: false,
 		onLoad: function (fmt) {
-		    ilib.setLoaderCallback(undefined);
+            ilib.setLoaderCallback(oldLoader);
 		    assertNotNull(fmt);
 		    
 		    assertEquals("zz-ZZ", fmt.getLocale().toString());
@@ -2645,14 +2648,16 @@ function testDateFmtLoadLocaleDataAsynchCached() {
 		// it via all the other tests already.
 		return;
 	}
-	ilib.setLoaderCallback(mockLoader);
+	var oldLoader = ilib._load;
+    ilib.setLoaderCallback(mockLoader);
 	
 	new DateFmt({
 		locale: "zz-ZZ",
 		sync: false,
 		onLoad: function (fmt) {
-		    assertNotNull(fmt);
-		    ilib.setLoaderCallback(undefined);
+            ilib.setLoaderCallback(oldLoader);
+
+            assertNotNull(fmt);
 		    
 		    assertEquals("zz-ZZ", fmt.getLocale().toString());
 		    assertEquals("gregorian", fmt.getCalendar());

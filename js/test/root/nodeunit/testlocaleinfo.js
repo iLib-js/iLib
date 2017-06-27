@@ -12423,6 +12423,7 @@ module.exports.testlocaleinfo = {
         test.done();
             return;
         }
+        var oldLoader = ilib._load;
         ilib.setLoaderCallback(mockLoader);
         var info = new LocaleInfo("zzz-ZX", {
             sync: false,
@@ -12435,9 +12436,9 @@ module.exports.testlocaleinfo = {
                 test.equal(li.getPercentageSymbol(), "%");
             }
         });
+        ilib.setLoaderCallback(oldLoader);
         test.ok(info !== null);
         test.done();
-        ilib.setLoaderCallback(undefined);
     },
     
     testLocaleInfoLoadMissingDataSync: function(test) {
@@ -12447,6 +12448,7 @@ module.exports.testlocaleinfo = {
         test.done();
             return;
         }
+        var oldLoader = ilib._load;
         ilib.setLoaderCallback(mockLoader);
         var info = new LocaleInfo("zzz-ZX", {
             sync: true
@@ -12455,11 +12457,12 @@ module.exports.testlocaleinfo = {
         test.expect(4);
         test.ok(info !== null);
     
+        ilib.setLoaderCallback(oldLoader);
+    
         test.equal(info.getCurrencyFormats().iso, "iso {s} {n}");
         test.equal(info.getFirstDayOfWeek(), 4);
         test.equal(info.getPercentageSymbol(), "%");
         test.done();
-        ilib.setLoaderCallback(undefined);
     },
     
     testLocaleInfoLoadMissingDataAsynchNoData: function(test) {
@@ -12469,6 +12472,7 @@ module.exports.testlocaleinfo = {
         test.done();
             return;
         }
+        var oldLoader = ilib._load;
         ilib.setLoaderCallback(mockLoader);
         var info = new LocaleInfo("qq-QQ", {
             sync: false,
@@ -12481,15 +12485,16 @@ module.exports.testlocaleinfo = {
                 test.equal(li.getPercentageSymbol(), "%");
             }
         });
+        ilib.setLoaderCallback(oldLoader);
         test.ok(info !== null);
         test.done();
-        ilib.setLoaderCallback(undefined);
     },
     
     testLocaleInfoMissingDataSynchNoDataNoLoader: function(test) {
         var temp = ilib._load;
     
-        ilib._load = undefined;  // no loader
+        var oldLoader = ilib._load;
+        ilib.setLoaderCallback(undefined);
         var info = new LocaleInfo("xxx-QQ", {
             sync: true,
             onLoad: function (li) {
@@ -12501,12 +12506,12 @@ module.exports.testlocaleinfo = {
                 test.equal(li.getPercentageSymbol(), "%");
             }
         });
-        test.ok(info !== null);
-        test.done();
     
         // clean up
-        ilib._load = undefined;  // no loader
-        ilib._load = temp;
+        ilib.setLoaderCallback(oldLoader);
+    
+        test.ok(info !== null);
+        test.done();
     },
     
     testLocaleInfoLoadMissingDataSyncNoData: function(test) {
@@ -12516,10 +12521,13 @@ module.exports.testlocaleinfo = {
         test.done();
             return;
         }
+        var oldLoader = ilib._load;
         ilib.setLoaderCallback(mockLoader);
         var li = new LocaleInfo("qq-QQ", {
             sync: true
         });
+    
+        ilib.setLoaderCallback(oldLoader);
     
         test.expect(4);
         test.ok(typeof(li) !== "undefined");
@@ -12528,7 +12536,6 @@ module.exports.testlocaleinfo = {
         test.equal(li.getFirstDayOfWeek(), 1);
         test.equal(li.getPercentageSymbol(), "%");
         test.done();
-        ilib.setLoaderCallback(undefined);
     },
     
     testLocaleInfoLoadPreassembledDataAsynch: function(test) {
@@ -12538,6 +12545,7 @@ module.exports.testlocaleinfo = {
         test.done();
             return;
         }
+        var oldLoader = ilib._load;
         ilib.setLoaderCallback(mockLoader);
         var info = new LocaleInfo("fr-FR", {
             sync: false,
@@ -12551,9 +12559,9 @@ module.exports.testlocaleinfo = {
                 test.equal(li.getTimeZone(), "Europe/Paris");
             }
         });
+        ilib.setLoaderCallback(oldLoader);
         test.ok(info !== null);
         test.done();
-        ilib.setLoaderCallback(undefined);
     },
     
     testLocaleInfoLoadMissingLocaleParts: function(test) {

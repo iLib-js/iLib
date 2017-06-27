@@ -147,7 +147,8 @@ module.exports.imsi = {
             return;
         }
         
-        ilib.setLoaderCallback(mockLoader);
+       var oldLoader = ilib._load;
+       ilib.setLoaderCallback(mockLoader);
     
         var field = [];
         var imsi = "31003014084567890";
@@ -159,10 +160,11 @@ module.exports.imsi = {
         };
         
         fields = PhoneNumber.parseImsi(imsi)
-        test.expect(1);
+        test.expect(2);
         test.deepEqual(options), expected, PhoneNumber.parseImsi(imsi);
+        ilib.setLoaderCallback(oldLoader);
+        test.ok(true);
         test.done();
-        ilib.setLoaderCallback(undefined);
     }
     
 };

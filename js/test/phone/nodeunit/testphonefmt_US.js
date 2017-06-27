@@ -2709,6 +2709,7 @@ module.exports.phonefmt_US = {
             return;
         }
         
+        var oldLoader = ilib._load;
         ilib.setLoaderCallback(mockLoader);
     
         var phonefmt = new PhoneFmt({
@@ -2720,6 +2721,7 @@ module.exports.phonefmt_US = {
             }
         });
     
+        ilib.setLoaderCallback(oldLoader);
         test.equal(phonefmt.getStyleExample("default"), "1 (650) 555-1234");
         test.done();
     }

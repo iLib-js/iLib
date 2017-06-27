@@ -101,15 +101,16 @@ function testPhoneLocLoadLocaleDataSynch() {
 		return;
 	}
 	
+    var oldLoader = ilib._load;
 	ilib.setLoaderCallback(mockLoader);
 
 	new PhoneLocale({
 		countryCode: "44",
 		sync: false,
 		onLoad: function (loc) {
+            ilib.setLoaderCallback(oldLoader);
     		assertNotNull(loc);
     		assertEquals("GB", loc.getRegion());    			
     	}
 	});
-    ilib.setLoaderCallback(undefined);
 };

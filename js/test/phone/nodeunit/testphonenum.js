@@ -1222,6 +1222,7 @@ module.exports.phonenum = {
             return;
         }
         
+        var oldLoader = ilib._load;
         ilib.setLoaderCallback(mockLoader);
     
         var left = new PhoneNumber({
@@ -1237,11 +1238,12 @@ module.exports.phonenum = {
             subscriberNumber: "123456"
         }, {locale: "fr-FR", 
             sync: false});
+    
+        ilib.setLoaderCallback(oldLoader);
         
         test.expect(1);
         test.equal(left.compare(right), 100);
         test.done();
-        ilib.setLoaderCallback(undefined);
     },
     
     testPhoneNumLookaheadRoot: function(test) {

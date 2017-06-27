@@ -129,20 +129,20 @@ module.exports.numplan = {
             return;
         }
         
+        var oldLoader = ilib._load;
         ilib.setLoaderCallback(mockLoader);
     
         new NumberingPlan({
             locale: "en-US",
             sync: false,
             onLoad: function (plan) {
+                ilib.setLoaderCallback(oldLoader);
         test.expect(2);
                 test.ok(plan !== null);
                 test.equal(plan.getName(), "US");                
                 test.done();
             }
         });
-    
-        ilib.setLoaderCallback(undefined);
     }
     
 };

@@ -1440,24 +1440,22 @@ module.exports.testutils = {
         }
         var obj = {};
         
+        var oldLoader = ilib._load;
         ilib.setLoaderCallback(mockLoader);
-        try {
-            Utils.loadData({
-                name: "foo.json",
-                object: "obj",
-                locale: "en-US",
-                type: "json",
-                loadParams: {},
-                sync: true,
-                callback: function (results) {
+        Utils.loadData({
+            name: "foo.json",
+            object: "obj",
+            locale: "en-US",
+            type: "json",
+            loadParams: {},
+            sync: true,
+            callback: function (results) {
+                ilib.setLoaderCallback(oldLoader);
         test.expect(1);
-                    test.ok(typeof(results) === 'object');
-                    test.done();
-                }
-            });
-        } finally {
-            ilib.setLoaderCallback(undefined);
-        }
+                test.ok(typeof(results) === 'object');
+                test.done();
+            }
+        });
     },
     
     testLoadDataCorrectItems: function(test) {
@@ -1469,25 +1467,23 @@ module.exports.testutils = {
         }
         var obj = {};
         
+        var oldLoader = ilib._load;
         ilib.setLoaderCallback(mockLoader);
-        try {
-            Utils.loadData({
-                name: "foo.json",
-                object: "obj",
-                locale: "en-US",
-                type: "json",
-                loadParams: {},
-                sync: true,
-                callback: function (results) {
-                    var expected = {"a": "b", "c": "m", "e": "y"};
+        Utils.loadData({
+            name: "foo.json",
+            object: "obj",
+            locale: "en-US",
+            type: "json",
+            loadParams: {},
+            sync: true,
+            callback: function (results) {
+                ilib.setLoaderCallback(oldLoader);
+                var expected = {"a": "b", "c": "m", "e": "y"};
         test.expect(1);
-                    test.deepEqual(results, expected);
-                    test.done();
-                }
-            });
-        } finally {
-            ilib.setLoaderCallback(undefined);
-        }
+                test.deepEqual(results, expected);
+                test.done();
+            }
+        });
     },
     
     testLoadDataWithLocale: function(test) {
@@ -1499,25 +1495,23 @@ module.exports.testutils = {
         }
         var obj = {};
         
+        var oldLoader = ilib._load;
         ilib.setLoaderCallback(mockLoader);
-        try {
-            Utils.loadData({
-                name: "foo.json",
-                object: "obj",
-                locale: "de-DE",
-                type: "json",
-                loadParams: {},
-                sync: true,
-                callback: function (results) {
-                    var expected = {"a": "a1", "c": "de2", "e": "f"};
+        Utils.loadData({
+            name: "foo.json",
+            object: "obj",
+            locale: "de-DE",
+            type: "json",
+            loadParams: {},
+            sync: true,
+            callback: function (results) {
+                ilib.setLoaderCallback(oldLoader);
+                var expected = {"a": "a1", "c": "de2", "e": "f"};
         test.expect(1);
-                    test.deepEqual(results, expected);
-                    test.done();
-                }
-            });
-        } finally {
-            ilib.setLoaderCallback(undefined);
-        }
+                test.deepEqual(results, expected);
+                test.done();
+            }
+        });
     },
     
     testLoadDataWithLocaleMissingParts: function(test) {
@@ -1529,25 +1523,23 @@ module.exports.testutils = {
         }
         var obj = {};
         
+        var oldLoader = ilib._load;
         ilib.setLoaderCallback(mockLoader);
-        try {
-            Utils.loadData({
-                name: "foo.json",
-                object: "obj",
-                locale: "fr-Latn-FR",
-                type: "json",
-                loadParams: {},
-                sync: true,
-                callback: function (results) {
-                    var expected = {"a": "b", "c": "fr1", "e": "f"};
+        Utils.loadData({
+            name: "foo.json",
+            object: "obj",
+            locale: "fr-Latn-FR",
+            type: "json",
+            loadParams: {},
+            sync: true,
+            callback: function (results) {
+                ilib.setLoaderCallback(oldLoader);
+                var expected = {"a": "b", "c": "fr1", "e": "f"};
         test.expect(1);
-                    test.deepEqual(results, expected);
-                    test.done();
-                }
-            });
-        } finally {
-            ilib.setLoaderCallback(undefined);
-        }
+                test.deepEqual(results, expected);
+                test.done();
+            }
+        });
     },
     
     testLoadDataDefaultLocale: function(test) {
@@ -1560,23 +1552,20 @@ module.exports.testutils = {
         var obj = {};
         
         ilib.setLoaderCallback(mockLoader);
-        try {
-            Utils.loadData({
-                name: "foo.json",
-                object: "obj",
-                type: "json",
-                loadParams: {},
-                sync: true,
-                callback: function (results) {
-                    var expected = {"a": "b", "c": "m", "e": "y"};
+        Utils.loadData({
+            name: "foo.json",
+            object: "obj",
+            type: "json",
+            loadParams: {},
+            sync: true,
+            callback: function (results) {
+                ilib.setLoaderCallback(oldLoader);
+                var expected = {"a": "b", "c": "m", "e": "y"};
         test.expect(1);
-                    test.deepEqual(results, expected);
-                    test.done();
-                }
-            });
-        } finally {
-            ilib.setLoaderCallback(undefined);
-        }
+                test.deepEqual(results, expected);
+                test.done();
+            }
+        });
     },
     
     
@@ -1589,25 +1578,23 @@ module.exports.testutils = {
         }
         var obj = {};
         
+        var oldLoader = ilib._load;
         ilib.setLoaderCallback(mockLoader);
-        try {
-            Utils.loadData({
-                name: "foo.json",
-                object: "obj",
-                locale: "en-US",
-                type: "other",
-                loadParams: {},
-                sync: true,
-                callback: function (results) {
-                    var expected = {"e": "y"};
+        Utils.loadData({
+            name: "foo.json",
+            object: "obj",
+            locale: "en-US",
+            type: "other",
+            loadParams: {},
+            sync: true,
+            callback: function (results) {
+                ilib.setLoaderCallback(oldLoader);
+                var expected = {"e": "y"};
         test.expect(1);
-                    test.deepEqual(results, expected);
-                    test.done();
-                }
-            });
-        } finally {
-            ilib.setLoaderCallback(undefined);
-        }
+                test.deepEqual(results, expected);
+                test.done();
+            }
+        });
     },
     
     testLoadDataCached: function(test) {
@@ -1619,28 +1606,26 @@ module.exports.testutils = {
         }
         var obj = {};
         
+        var oldLoader = ilib._load;
         ilib.setLoaderCallback(mockLoader);
-        try {
-            Utils.loadData({
-                name: "foo.json",
-                object: "obj",
-                locale: "en-US",
-                type: "json",
-                loadParams: {},
-                sync: true,
-                callback: function (results) {
-                    var cache = ilib.data.cache.obj;
-                    for (var o in cache) {
-                        if (cache.hasOwnProperty(o)) {
-                            var expected = {"a": "b", "c": "m", "e": "y"};
-                            test.deepEqual(cache[o], expected);
-                        }
+        Utils.loadData({
+            name: "foo.json",
+            object: "obj",
+            locale: "en-US",
+            type: "json",
+            loadParams: {},
+            sync: true,
+            callback: function (results) {
+                var cache = ilib.data.cache.obj;
+                for (var o in cache) {
+                    if (cache.hasOwnProperty(o)) {
+                        ilib.setLoaderCallback(oldLoader);
+                        var expected = {"a": "b", "c": "m", "e": "y"};
+                        test.deepEqual(cache[o], expected);
                     }
                 }
-            });
-        } finally {
-            ilib.setLoaderCallback(undefined);
-        }
+            }
+        });
         test.done();
     },
     
@@ -1653,39 +1638,37 @@ module.exports.testutils = {
         }
         var obj = {};
         
+        var oldLoader = ilib._load;
         ilib.setLoaderCallback(mockLoader);
     
-        try {
-            Utils.loadData({
-                name: "foo.json",
-                object: "obj",
-                locale: "en-US",
-                type: "json",
-                loadParams: {},
-                sync: true,
-                callback: function (results) {
-                    var expected = {"a": "b", "c": "m", "e": "y"};
+        Utils.loadData({
+            name: "foo.json",
+            object: "obj",
+            locale: "en-US",
+            type: "json",
+            loadParams: {},
+            sync: true,
+            callback: function (results) {
+                var expected = {"a": "b", "c": "m", "e": "y"};
         test.expect(2);
-                    test.deepEqual(results, expected);
-                }
-            });
-        
-            Utils.loadData({
-                name: "bar.json",
-                object: "obj",
-                locale: "en-US",
-                type: "json",
-                loadParams: {},
-                sync: true,
-                callback: function (results) {
-                    var expected = {"a": "barb", "c": "barm", "e": "bary"};
-        test.deepEqual(results, expected);
-        test.done();
-                }
-            });
-        } finally {
-            ilib.setLoaderCallback(undefined);
-        }
+                test.deepEqual(results, expected);
+    
+                Utils.loadData({
+                    name: "bar.json",
+                    object: "obj",
+                    locale: "en-US",
+                    type: "json",
+                    loadParams: {},
+                    sync: true,
+                    callback: function (results) {
+                        ilib.setLoaderCallback(oldLoader);
+                        var expected = {"a": "barb", "c": "barm", "e": "bary"};
+                        test.deepEqual(results, expected);
+                        test.done();
+                    }
+                });
+            }
+        });
     },
     
     testLoadDataCachedWithLoadParamsMultipleFiles: function(test) {
@@ -1697,47 +1680,45 @@ module.exports.testutils = {
         }
         var obj = {};
         
+        var oldLoader = ilib._load;
         ilib.setLoaderCallback(mockLoader);
-        try {
-            Utils.loadData({
-                name: "foo.json",
-                object: "obj",
-                locale: "en-US",
-                type: "json",
-                loadParams: {},
-                sync: true,
-                callback: function (results) {
-                    test.ok(typeof(results) !== "undefined");
-                }
-            });
-        
-            Utils.loadData({
-                name: "foo.json",
-                object: "obj",
-                locale: "en-US",
-                type: "json",
-                loadParams: {
-                    // should cause it to load a different file
-                    root: "/usr/share/localization/myapp"
-                },
-                sync: true,
-                callback: function (results) {
-                    test.ok(typeof(results) !== "undefined");
-                }
-            });
-            
-            var count = 0;
-            var cache = ilib.data.cache.obj;
-            for (var o in cache) {
-                if (cache.hasOwnProperty(o)) {
-                    count++;
-                }
+        Utils.loadData({
+            name: "foo.json",
+            object: "obj",
+            locale: "en-US",
+            type: "json",
+            loadParams: {},
+            sync: true,
+            callback: function (results) {
+                test.ok(typeof(results) !== "undefined");
+    
+                Utils.loadData({
+                    name: "foo.json",
+                    object: "obj",
+                    locale: "en-US",
+                    type: "json",
+                    loadParams: {
+                        // should cause it to load a different file
+                        root: "/usr/share/localization/myapp"
+                    },
+                    sync: true,
+                    callback: function (results) {
+                        ilib.setLoaderCallback(oldLoader);
+                        test.ok(typeof(results) !== "undefined");
+    
+                        var count = 0;
+                        var cache = ilib.data.cache.obj;
+                        for (var o in cache) {
+                            if (cache.hasOwnProperty(o)) {
+                                count++;
+                            }
+                        }
+                        
+                        test.equal(count, 2);
+                    }
+                });
             }
-            
-            test.equal(count, 2);
-        } finally {
-            ilib.setLoaderCallback(undefined);
-        }
+        });
         test.done();
     },
     
@@ -1750,41 +1731,38 @@ module.exports.testutils = {
         }
         var obj = {};
         
+        var oldLoader = ilib._load;
         ilib.setLoaderCallback(mockLoader);
-        try {
-            Utils.loadData({
-                name: "foo.json",
-                object: "obj",
-                locale: "en-US",
-                type: "json",
-                loadParams: {},
-                sync: true,
-                callback: function (results) {
-                    var expected = {"a": "b", "c": "m", "e": "y"};
+        Utils.loadData({
+            name: "foo.json",
+            object: "obj",
+            locale: "en-US",
+            type: "json",
+            loadParams: {},
+            sync: true,
+            callback: function (results) {
+                var expected = {"a": "b", "c": "m", "e": "y"};
         test.expect(2);
-                    test.deepEqual(results, expected);
-                }
-            });
-        
-            Utils.loadData({
-                name: "foo.json",
-                object: "obj",
-                locale: "en-US",
-                type: "json",
-                loadParams: {
-                    // should cause it to load a different file
-                    root: "/usr/share/localization/myapp"
-                },
-                sync: true,
-                callback: function (results) {
-                    var expected = {"xxx": "yyy", "www": "xyz", "yyy": "vvv", "nnn": "mmm"};
-                    test.deepEqual(results, expected);
-                    test.done();
-                }
-            });
-        } finally {
-            ilib.setLoaderCallback(undefined);
-        }
+                test.deepEqual(results, expected);
+                Utils.loadData({
+                    name: "foo.json",
+                    object: "obj",
+                    locale: "en-US",
+                    type: "json",
+                    loadParams: {
+                        // should cause it to load a different file
+                        root: "/usr/share/localization/myapp"
+                    },
+                    sync: true,
+                    callback: function (results) {
+                        ilib.setLoaderCallback(oldLoader);
+                        var expected = {"xxx": "yyy", "www": "xyz", "yyy": "vvv", "nnn": "mmm"};
+                        test.deepEqual(results, expected);
+                        test.done();
+                    }
+                });
+            }
+        });
     },
     
     testLoadDataNoCache: function(test) {
@@ -1794,25 +1772,23 @@ module.exports.testutils = {
         test.done();
             return;
         }
+        var oldLoader = ilib._load;
         ilib.setLoaderCallback(mockLoader);
-        try {
-            Utils.loadData({
-                name: "foo.json",
-                locale: "en-US",
-                type: "json",
-                loadParams: {},
-                sync: true,
-                callback: function (results) {
-                    // should not crash
-                    var expected = {"a": "b", "c": "m", "e": "y"};
+        Utils.loadData({
+            name: "foo.json",
+            locale: "en-US",
+            type: "json",
+            loadParams: {},
+            sync: true,
+            callback: function (results) {
+                ilib.setLoaderCallback(oldLoader);
+                // should not crash
+                var expected = {"a": "b", "c": "m", "e": "y"};
         test.expect(1);
-                    test.deepEqual(results, expected);
-                    test.done();
-                }
-            });
-        } finally {
-            ilib.setLoaderCallback(undefined);
-        }
+                test.deepEqual(results, expected);
+                test.done();
+            }
+        });
     },
     
     testLoadDataNotCachedWithLoadParams: function(test) {
@@ -1823,39 +1799,37 @@ module.exports.testutils = {
             return;
         }
         
+        var oldLoader = ilib._load;
         ilib.setLoaderCallback(mockLoader);
-        try {
-            Utils.loadData({
-                name: "foo.json",
-                locale: "en-US",
-                type: "json",
-                loadParams: {},
-                sync: true,
-                callback: function (results) {
-                    var expected = {"a": "b", "c": "m", "e": "y"};
+        Utils.loadData({
+            name: "foo.json",
+            locale: "en-US",
+            type: "json",
+            loadParams: {},
+            sync: true,
+            callback: function (results) {
+                var expected = {"a": "b", "c": "m", "e": "y"};
         test.expect(2);
-                    test.deepEqual(results, expected);
-                }
-            });
-        
-            Utils.loadData({
-                name: "foo.json",
-                locale: "en-US",
-                type: "json",
-                loadParams: {
-                    // should cause it to load a different file
-                    root: "/usr/share/localization/myapp"
-                },
-                sync: true,
-                callback: function (results) {
-                    var expected = {"xxx": "yyy", "www": "xyz", "yyy": "vvv", "nnn": "mmm"};
-                    test.deepEqual(results, expected);
-                    test.done();
-                }
-            });
-        } finally {
-            ilib.setLoaderCallback(undefined);
-        }
+                test.deepEqual(results, expected);
+    
+                Utils.loadData({
+                    name: "foo.json",
+                    locale: "en-US",
+                    type: "json",
+                    loadParams: {
+                        // should cause it to load a different file
+                        root: "/usr/share/localization/myapp"
+                    },
+                    sync: true,
+                    callback: function (results) {
+                        ilib.setLoaderCallback(oldLoader);
+                        var expected = {"xxx": "yyy", "www": "xyz", "yyy": "vvv", "nnn": "mmm"};
+                        test.deepEqual(results, expected);
+                        test.done();
+                    }
+                });
+            }
+        });
     },
     
     testLoadDataAsynch: function(test) {
@@ -1868,24 +1842,21 @@ module.exports.testutils = {
         var obj = {};
         
         ilib.setLoaderCallback(mockLoader);
-        try {
-            Utils.loadData({
-                name: "foo.json",
-                object: "obj",
-                locale: "en-US",
-                type: "json",
-                loadParams: {},
-                sync: false,
-                callback: function (results) {
-                    var expected = {"a": "b", "c": "m", "e": "y"};
+        Utils.loadData({
+            name: "foo.json",
+            object: "obj",
+            locale: "en-US",
+            type: "json",
+            loadParams: {},
+            sync: false,
+            callback: function (results) {
+                ilib.setLoaderCallback(oldLoader);
+                var expected = {"a": "b", "c": "m", "e": "y"};
         test.expect(1);
-                    test.deepEqual(results, expected);
-                    test.done();
-                }
-            });
-        } finally {
-            ilib.setLoaderCallback(undefined);
-        }
+                test.deepEqual(results, expected);
+                test.done();
+            }
+        });
     },
     
     testLoadDataDefaults: function(test) {
@@ -1895,20 +1866,18 @@ module.exports.testutils = {
         test.done();
             return;
         }
+        var oldLoader = ilib._load;
         ilib.setLoaderCallback(mockLoader);
-        try {
-            Utils.loadData({
-                name: "foo.json",
-                callback: function (results) {
-                    var expected = {"a": "b", "c": "m", "e": "y"};
+        Utils.loadData({
+            name: "foo.json",
+            callback: function (results) {
+                ilib.setLoaderCallback(oldLoader);
+                var expected = {"a": "b", "c": "m", "e": "y"};
         test.expect(1);
-                    test.deepEqual(results, expected);
-                    test.done();
-                }
-            });
-        } finally {
-            ilib.setLoaderCallback(undefined);
-        }
+                test.deepEqual(results, expected);
+                test.done();
+            }
+        });
     },
     
     testLoadDataNonJson_en_US: function(test) {
@@ -1918,20 +1887,18 @@ module.exports.testutils = {
         test.done();
             return;
         }
+        var oldLoader = ilib._load;
         ilib.setLoaderCallback(mockLoader);
-        try {
-            Utils.loadData({
-                name: "foo.html",
-                type: "html",
-                callback: function (results) {
+        Utils.loadData({
+            name: "foo.html",
+            type: "html",
+            callback: function (results) {
+                ilib.setLoaderCallback(oldLoader);
         test.expect(1);
-                    test.deepEqual(results, "<html><body>This is the generic, shared foo.</body></html>");
-                    test.done();
-                }
-            });
-        } finally {
-            ilib.setLoaderCallback(undefined);
-        }
+                test.deepEqual(results, "<html><body>This is the generic, shared foo.</body></html>");
+                test.done();
+            }
+        });
     },
     
     testLoadDataNonJson_de: function(test) {
@@ -1941,21 +1908,19 @@ module.exports.testutils = {
         test.done();
             return;
         }
+        var oldLoader = ilib._load;
         ilib.setLoaderCallback(mockLoader);
-        try {
-            Utils.loadData({
-                name: "foo.html",
-                type: "html",
-                locale: "de",
-                callback: function (results) {
+        Utils.loadData({
+            name: "foo.html",
+            type: "html",
+            locale: "de",
+            callback: function (results) {
+                ilib.setLoaderCallback(oldLoader);
         test.expect(1);
-                    test.deepEqual(results, "<html><body>Diese ist Foo auf Deutsch.</body></html>");
-                    test.done();
-                }
-            });
-        } finally {
-            ilib.setLoaderCallback(undefined);
-        }
+                test.deepEqual(results, "<html><body>Diese ist Foo auf Deutsch.</body></html>");
+                test.done();
+            }
+        });
     },
     
     testLoadDataNonJson_de_DE: function(test) {
@@ -1966,20 +1931,17 @@ module.exports.testutils = {
             return;
         }
         ilib.setLoaderCallback(mockLoader);
-        try {
-            Utils.loadData({
-                name: "foo.html",
-                type: "html",
-                locale: "de-DE",
-                callback: function (results) {
+        Utils.loadData({
+            name: "foo.html",
+            type: "html",
+            locale: "de-DE",
+            callback: function (results) {
+                ilib.setLoaderCallback(oldLoader);
         test.expect(1);
-                    test.deepEqual(results, "<html><body>Diese ist Foo auf Deutsch fuer Deutschland.</body></html>");
-                    test.done();
-                }
-            });
-        } finally {
-            ilib.setLoaderCallback(undefined);
-        }
+                test.deepEqual(results, "<html><body>Diese ist Foo auf Deutsch fuer Deutschland.</body></html>");
+                test.done();
+            }
+        });
     },
     
     testLoadDataNonJson_DE: function(test) {
@@ -1989,21 +1951,19 @@ module.exports.testutils = {
         test.done();
             return;
         }
+        var oldLoader = ilib._load;
         ilib.setLoaderCallback(mockLoader);
-        try {
-            Utils.loadData({
-                name: "foo.html",
-                type: "html",
-                locale: "DE",
-                callback: function (results) {
+        Utils.loadData({
+            name: "foo.html",
+            type: "html",
+            locale: "DE",
+            callback: function (results) {
+                ilib.setLoaderCallback(oldLoader);
         test.expect(1);
-                    test.deepEqual(results, "<html><body>Diese ist Foo fuer Deutschland.</body></html>");
-                    test.done();
-                }
-            });
-        } finally {
-            ilib.setLoaderCallback(undefined);
-        }
+                test.deepEqual(results, "<html><body>Diese ist Foo fuer Deutschland.</body></html>");
+                test.done();
+            }
+        });
     },
     
     testLoadDataNonJsonWithFallbackToLanguage: function(test) {
@@ -2013,22 +1973,20 @@ module.exports.testutils = {
         test.done();
             return;
         }
+        var oldLoader = ilib._load;
         ilib.setLoaderCallback(mockLoader);
     
-        try {
-            Utils.loadData({
-                name: "foo.html",
-                type: "html",
-                locale: "fr-FR",
-                callback: function (results) {
+        Utils.loadData({
+            name: "foo.html",
+            type: "html",
+            locale: "fr-FR",
+            callback: function (results) {
+                ilib.setLoaderCallback(oldLoader);
         test.expect(1);
-                    test.deepEqual(results, "<html><body>Ceci est foo en francais.</body></html>");
-                    test.done();
-                }
-            });
-        } finally {
-            ilib.setLoaderCallback(undefined);
-        }
+                test.deepEqual(results, "<html><body>Ceci est foo en francais.</body></html>");
+                test.done();
+            }
+        });
     },
     
     testLoadDataNonJsonWithFallbackToRoot: function(test) {
@@ -2038,21 +1996,19 @@ module.exports.testutils = {
         test.done();
             return;
         }
+        var oldLoader = ilib._load;
         ilib.setLoaderCallback(mockLoader);
-        try {
-            Utils.loadData({
-                name: "foo.html",
-                type: "html",
-                locale: "es-ES",
-                callback: function (results) {
+        Utils.loadData({
+            name: "foo.html",
+            type: "html",
+            locale: "es-ES",
+            callback: function (results) {
+                ilib.setLoaderCallback(oldLoader);
         test.expect(1);
-                    test.deepEqual(results, "<html><body>This is the generic, shared foo.</body></html>");
-                    test.done();
-                }
-            });
-        } finally {
-            ilib.setLoaderCallback(undefined);
-        }
+                test.deepEqual(results, "<html><body>This is the generic, shared foo.</body></html>");
+                test.done();
+            }
+        });
     },
     
     testLoadDataNonJsonInferFileTypeFromExtension: function(test) {
@@ -2062,20 +2018,18 @@ module.exports.testutils = {
         test.done();
             return;
         }
+        var oldLoader = ilib._load;
         ilib.setLoaderCallback(mockLoader);
-        try {
-            Utils.loadData({
-                name: "foo.html",
-                locale: "de",
-                callback: function (results) {
+        Utils.loadData({
+            name: "foo.html",
+            locale: "de",
+            callback: function (results) {
+                ilib.setLoaderCallback(oldLoader);
         test.expect(1);
-                    test.deepEqual(results, "<html><body>Diese ist Foo auf Deutsch.</body></html>");
-                    test.done();
-                }
-            });
-        } finally {
-            ilib.setLoaderCallback(undefined);
-        }
+                test.deepEqual(results, "<html><body>Diese ist Foo auf Deutsch.</body></html>");
+                test.done();
+            }
+        });
     },
     
     testLoadDataJsonInferFileTypeFromExtension: function(test) {
@@ -2086,20 +2040,17 @@ module.exports.testutils = {
             return;
         }
         ilib.setLoaderCallback(mockLoader);
-        try {
-            Utils.loadData({
-                name: "foo.json",
-                locale: "de-DE",
-                callback: function (results) {
-                    var expected = {"a": "a1", "c": "de2", "e": "f"};
+        Utils.loadData({
+            name: "foo.json",
+            locale: "de-DE",
+            callback: function (results) {
+                ilib.setLoaderCallback(oldLoader);
+                var expected = {"a": "a1", "c": "de2", "e": "f"};
         test.expect(1);
-                    test.deepEqual(results, expected);
-                    test.done();
-                }
-            });
-        } finally {
-            ilib.setLoaderCallback(undefined);
-        }
+                test.deepEqual(results, expected);
+                test.done();
+            }
+        });
     },
     
     testMapStringDigits: function(test) {

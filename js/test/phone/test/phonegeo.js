@@ -1891,6 +1891,7 @@ function testPhoneGeoLoadLocaleDataSynch() {
 		}
 	};
 
+    var oldLoader = ilib._load;
 	ilib.setLoaderCallback(mockLoader);
 
 	var locator = new PhoneGeoLocator({locale: 'en-US',
@@ -1900,8 +1901,8 @@ function testPhoneGeoLoadLocaleDataSynch() {
     	}
 	});
 
+    ilib.setLoaderCallback(oldLoader);
     assertNotNull(locator);
 	var geoInfo = locator.locate(parsed);
     assertObjectEquals(expected, geoInfo);
-    ilib.setLoaderCallback(undefined);
 };

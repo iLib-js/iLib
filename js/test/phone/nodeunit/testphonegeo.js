@@ -2078,6 +2078,7 @@ module.exports.phonegeo = {
             }
         };
     
+        var oldLoader = ilib._load;
         ilib.setLoaderCallback(mockLoader);
     
         var locator = new PhoneGeoLocator({locale: 'en-US',
@@ -2088,11 +2089,11 @@ module.exports.phonegeo = {
             }
         });
     
+        ilib.setLoaderCallback(oldLoader);
         test.ok(locator !== null);
         var geoInfo = locator.locate(parsed);
         test.deepEqual(geoInfo, expected);
         test.done();
-        ilib.setLoaderCallback(undefined);
     }
     
 };

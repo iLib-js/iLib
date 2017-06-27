@@ -226,6 +226,7 @@ function testDateRngFmtDynamicLoadSync() {
 		// it via all the other tests already.
 		return;
 	}
+	var oldLoader = ilib._load;
 	ilib.setLoaderCallback(mockLoader);
 	
     var fmt = new DateRngFmt({
@@ -251,8 +252,8 @@ function testDateRngFmtDynamicLoadSync() {
     	second: 0
     });
     
+    ilib.setLoaderCallback(oldLoader);
     assertEquals("2/20/13, 12:20 PM – 4:35 PM", fmt.format(start, end));
-    ilib.setLoaderCallback(undefined);
 }
 
 function testDateRngFmtDynamicLoadSyncCached() {
@@ -261,6 +262,7 @@ function testDateRngFmtDynamicLoadSyncCached() {
 		// it via all the other tests already.
 		return;
 	}
+    var oldLoader = ilib._load;
 	ilib.setLoaderCallback(mockLoader);
 	
     var fmt = new DateRngFmt({
@@ -286,8 +288,8 @@ function testDateRngFmtDynamicLoadSyncCached() {
     	second: 0
     });
     
+    ilib.setLoaderCallback(oldLoader);
     assertEquals("2/20/13, 12:20 PM – 4:35 PM", fmt.format(start, end));
-    ilib.setLoaderCallback(undefined);
 }
 
 function testDateRngFmtDynamicLoadAsync() {
@@ -296,6 +298,7 @@ function testDateRngFmtDynamicLoadAsync() {
 		// it via all the other tests already.
 		return;
 	}
+    var oldLoader = ilib._load;
 	ilib.setLoaderCallback(mockLoader);
 
 	var start = new GregorianDate({
@@ -320,11 +323,11 @@ function testDateRngFmtDynamicLoadAsync() {
     	locale: "yy-YY",
     	sync: false,
     	onLoad: function (fmt) {
+    	    ilib.setLoaderCallback(oldLoader);
     		assertNotNull(fmt);
     	    assertEquals("2/20/13, 12:20 PM – 4:35 PM", fmt.format(start, end));
     	}
     });
-    ilib.setLoaderCallback(undefined);
 }
 
 function testDateRngFmtDynamicLoadAsyncCached() {
@@ -333,6 +336,7 @@ function testDateRngFmtDynamicLoadAsyncCached() {
 		// it via all the other tests already.
 		return;
 	}
+	var oldLoader = ilib._load;
 	ilib.setLoaderCallback(mockLoader);
 
 	var start = new GregorianDate({
@@ -357,11 +361,11 @@ function testDateRngFmtDynamicLoadAsyncCached() {
     	locale: "yy-YY",
     	sync: false,
     	onLoad: function (fmt) {
+    	    ilib.setLoaderCallback(oldLoader);
     		assertNotNull(fmt);
     	    assertEquals("2/20/13, 12:20 PM – 4:35 PM", fmt.format(start, end));
     	}
     });
-    ilib.setLoaderCallback(undefined);
 }
 
 

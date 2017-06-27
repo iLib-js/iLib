@@ -1131,6 +1131,7 @@ function testResBundleConstructAsynchDynamic() {
 		return;
 	}
 	var onloadcalled = false;
+    var oldLoader = ilib._load;
 	ilib.setLoaderCallback(mockLoader);
     var rb = new ResBundle({
     	locale: "de-DE-SAP",
@@ -1147,9 +1148,9 @@ function testResBundleConstructAsynchDynamic() {
     	}
     });
     
+    ilib.setLoaderCallback(oldLoader);
     assertNotUndefined(rb);
     assertTrue(onloadcalled);
-    ilib.setLoaderCallback(undefined);
 }
 
 function testResBundleConstructSynchDynamic() {
@@ -1158,6 +1159,7 @@ function testResBundleConstructSynchDynamic() {
 		// it via all the other tests already.
 		return;
 	}
+    var oldLoader = ilib._load;
 	ilib.setLoaderCallback(mockLoader);
     var rb = new ResBundle({
     	locale: "de-DE-SAP",
@@ -1166,10 +1168,11 @@ function testResBundleConstructSynchDynamic() {
     
 	assertNotUndefined(rb);
 	
+    ilib.setLoaderCallback(oldLoader);
+
     assertEquals("erste String", rb.getString("first string").toString());
     assertEquals("zweite String", rb.getString("second string").toString());
     assertEquals("dritte String", rb.getString("third string").toString());
-    ilib.setLoaderCallback(undefined);
 }
 
 function testResBundleConstructAsynchDynamicDefaultName() {
@@ -1179,24 +1182,20 @@ function testResBundleConstructAsynchDynamicDefaultName() {
 		return;
 	}
 	var onloadcalled = false;
+    var oldLoader = ilib._load;
 	ilib.setLoaderCallback(mockLoader);
     var rb = new ResBundle({
     	locale: "fr-CA-govt",
     	sync: false,
     	onLoad: function(rb) {
+    	    ilib.setLoaderCallback(oldLoader);
     		assertNotUndefined(rb);
     		
     	    assertEquals("première corde", rb.getString("first string").toString());
     	    assertEquals("deuxième collier", rb.getString("second string").toString());
     	    assertEquals("troisième corde", rb.getString("third string").toString());
-    	    
-    	    onloadcalled = true;
     	}
     });
-    
-    assertNotUndefined(rb);
-    assertTrue(onloadcalled);
-    ilib.setLoaderCallback(undefined);
 }
 
 function testResBundleConstructSynchDynamicDefaultName() {
@@ -1205,6 +1204,7 @@ function testResBundleConstructSynchDynamicDefaultName() {
 		// it via all the other tests already.
 		return;
 	}
+    var oldLoader = ilib._load;
 	ilib.setLoaderCallback(mockLoader);
     var rb = new ResBundle({
     	locale: "fr-CA-govt"
@@ -1212,10 +1212,11 @@ function testResBundleConstructSynchDynamicDefaultName() {
     
 	assertNotUndefined(rb);
 	
+    ilib.setLoaderCallback(oldLoader);
+
     assertEquals("première corde", rb.getString("first string").toString());
     assertEquals("deuxième collier", rb.getString("second string").toString());
     assertEquals("troisième corde", rb.getString("third string").toString());
-    ilib.setLoaderCallback(undefined);
 }
 
 function testResBundleConstructAsynchDynamicNoStrings() {
@@ -1224,7 +1225,7 @@ function testResBundleConstructAsynchDynamicNoStrings() {
 		// it via all the other tests already.
 		return;
 	}
-	var onloadcalled = false;
+	var oldLoader = ilib._load;
 	ilib.setLoaderCallback(mockLoader);
     var rb = new ResBundle({
     	locale: "de-DE-SAP",
@@ -1232,7 +1233,8 @@ function testResBundleConstructAsynchDynamicNoStrings() {
     	sync: false,
     	onLoad: function(rb) {
     		assertNotUndefined(rb);
-    		
+    		ilib.setLoaderCallback(oldLoader);
+
     	    assertEquals("first string", rb.getString("first string").toString());
     	    assertEquals("second string", rb.getString("second string").toString());
     	    assertEquals("third string", rb.getString("third string").toString());
@@ -1240,10 +1242,6 @@ function testResBundleConstructAsynchDynamicNoStrings() {
     	    onloadcalled = true;
     	}
     });
-    
-    assertNotUndefined(rb);
-    assertTrue(onloadcalled);
-    ilib.setLoaderCallback(undefined);
 }
 
 function testResBundleConstructSynchDynamicNoStrings() {
@@ -1252,6 +1250,7 @@ function testResBundleConstructSynchDynamicNoStrings() {
 		// it via all the other tests already.
 		return;
 	}
+    var oldLoader = ilib._load;
 	ilib.setLoaderCallback(mockLoader);
     var rb = new ResBundle({
     	locale: "de-DE-SAP",
@@ -1259,11 +1258,12 @@ function testResBundleConstructSynchDynamicNoStrings() {
     });
     
 	assertNotUndefined(rb);
+
+	ilib.setLoaderCallback(oldLoader);
 	
     assertEquals("first string", rb.getString("first string").toString());
     assertEquals("second string", rb.getString("second string").toString());
     assertEquals("third string", rb.getString("third string").toString());
-    ilib.setLoaderCallback(undefined);
 }
 
 

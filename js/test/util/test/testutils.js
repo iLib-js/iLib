@@ -1177,22 +1177,20 @@ function testLoadDataCorrectType() {
 	}
 	var obj = {};
 	
+    var oldLoader = ilib._load;
 	ilib.setLoaderCallback(mockLoader);
-	try {
-		Utils.loadData({
-			name: "foo.json",
-			object: "obj",
-			locale: "en-US",
-			type: "json",
-			loadParams: {},
-			sync: true,
-			callback: function (results) {
-				assertTrue(typeof(results) === 'object');
-			}
-		});
-	} finally {
-		ilib.setLoaderCallback(undefined);
-	}
+	Utils.loadData({
+		name: "foo.json",
+		object: "obj",
+		locale: "en-US",
+		type: "json",
+		loadParams: {},
+		sync: true,
+		callback: function (results) {
+	        ilib.setLoaderCallback(oldLoader);
+			assertTrue(typeof(results) === 'object');
+		}
+	});
 }
 
 function testLoadDataCorrectItems() {
@@ -1203,23 +1201,21 @@ function testLoadDataCorrectItems() {
 	}
 	var obj = {};
 	
+    var oldLoader = ilib._load;
 	ilib.setLoaderCallback(mockLoader);
-	try {
-		Utils.loadData({
-			name: "foo.json",
-			object: "obj",
-			locale: "en-US",
-			type: "json",
-			loadParams: {},
-			sync: true,
-			callback: function (results) {
-				var expected = {"a": "b", "c": "m", "e": "y"};
-				assertObjectEquals(expected, results);
-			}
-		});
-	} finally {
-		ilib.setLoaderCallback(undefined);
-	}
+	Utils.loadData({
+		name: "foo.json",
+		object: "obj",
+		locale: "en-US",
+		type: "json",
+		loadParams: {},
+		sync: true,
+		callback: function (results) {
+	        ilib.setLoaderCallback(oldLoader);
+			var expected = {"a": "b", "c": "m", "e": "y"};
+			assertObjectEquals(expected, results);
+		}
+	});
 }
 
 function testLoadDataWithLocale() {
@@ -1230,23 +1226,21 @@ function testLoadDataWithLocale() {
 	}
 	var obj = {};
 	
+    var oldLoader = ilib._load;
 	ilib.setLoaderCallback(mockLoader);
-	try {
-		Utils.loadData({
-			name: "foo.json",
-			object: "obj",
-			locale: "de-DE",
-			type: "json",
-			loadParams: {},
-			sync: true,
-			callback: function (results) {
-				var expected = {"a": "a1", "c": "de2", "e": "f"};
-				assertObjectEquals(expected, results);
-			}
-		});
-	} finally {
-		ilib.setLoaderCallback(undefined);
-	}
+	Utils.loadData({
+		name: "foo.json",
+		object: "obj",
+		locale: "de-DE",
+		type: "json",
+		loadParams: {},
+		sync: true,
+		callback: function (results) {
+	        ilib.setLoaderCallback(oldLoader);
+			var expected = {"a": "a1", "c": "de2", "e": "f"};
+			assertObjectEquals(expected, results);
+		}
+	});
 }
 
 function testLoadDataWithLocaleMissingParts() {
@@ -1257,23 +1251,21 @@ function testLoadDataWithLocaleMissingParts() {
 	}
 	var obj = {};
 	
+    var oldLoader = ilib._load;
 	ilib.setLoaderCallback(mockLoader);
-	try {
-		Utils.loadData({
-			name: "foo.json",
-			object: "obj",
-			locale: "fr-Latn-FR",
-			type: "json",
-			loadParams: {},
-			sync: true,
-			callback: function (results) {
-				var expected = {"a": "b", "c": "fr1", "e": "f"};
-				assertObjectEquals(expected, results);
-			}
-		});
-	} finally {
-		ilib.setLoaderCallback(undefined);
-	}
+	Utils.loadData({
+		name: "foo.json",
+		object: "obj",
+		locale: "fr-Latn-FR",
+		type: "json",
+		loadParams: {},
+		sync: true,
+		callback: function (results) {
+	        ilib.setLoaderCallback(oldLoader);
+			var expected = {"a": "b", "c": "fr1", "e": "f"};
+			assertObjectEquals(expected, results);
+		}
+	});
 }
 
 function testLoadDataDefaultLocale() {
@@ -1285,21 +1277,18 @@ function testLoadDataDefaultLocale() {
 	var obj = {};
 	
 	ilib.setLoaderCallback(mockLoader);
-	try {
-		Utils.loadData({
-			name: "foo.json",
-			object: "obj",
-			type: "json",
-			loadParams: {},
-			sync: true,
-			callback: function (results) {
-				var expected = {"a": "b", "c": "m", "e": "y"};
-				assertObjectEquals(expected, results);
-			}
-		});
-	} finally {
-		ilib.setLoaderCallback(undefined);
-	}
+	Utils.loadData({
+		name: "foo.json",
+		object: "obj",
+		type: "json",
+		loadParams: {},
+		sync: true,
+		callback: function (results) {
+	        ilib.setLoaderCallback(oldLoader);
+			var expected = {"a": "b", "c": "m", "e": "y"};
+			assertObjectEquals(expected, results);
+		}
+	});
 }
 
 
@@ -1311,23 +1300,21 @@ function testLoadDataNonJson() {
 	}
 	var obj = {};
 	
+    var oldLoader = ilib._load;
 	ilib.setLoaderCallback(mockLoader);
-	try {
-		Utils.loadData({
-			name: "foo.json",
-			object: "obj",
-			locale: "en-US",
-			type: "other",
-			loadParams: {},
-			sync: true,
-			callback: function (results) {
-				var expected = {"e": "y"};
-				assertObjectEquals(expected, results);
-			}
-		});
-	} finally {
-		ilib.setLoaderCallback(undefined);
-	}
+	Utils.loadData({
+		name: "foo.json",
+		object: "obj",
+		locale: "en-US",
+		type: "other",
+		loadParams: {},
+		sync: true,
+		callback: function (results) {
+	        ilib.setLoaderCallback(oldLoader);
+			var expected = {"e": "y"};
+			assertObjectEquals(expected, results);
+		}
+	});
 }
 
 function testLoadDataCached() {
@@ -1338,28 +1325,26 @@ function testLoadDataCached() {
 	}
 	var obj = {};
 	
+    var oldLoader = ilib._load;
 	ilib.setLoaderCallback(mockLoader);
-	try {
-		Utils.loadData({
-			name: "foo.json",
-			object: "obj",
-			locale: "en-US",
-			type: "json",
-			loadParams: {},
-			sync: true,
-			callback: function (results) {
-			    var cache = ilib.data.cache.obj;
-				for (var o in cache) {
-					if (cache.hasOwnProperty(o)) {
-						var expected = {"a": "b", "c": "m", "e": "y"};
-						assertObjectEquals(expected, cache[o]);
-					}
+	Utils.loadData({
+		name: "foo.json",
+		object: "obj",
+		locale: "en-US",
+		type: "json",
+		loadParams: {},
+		sync: true,
+		callback: function (results) {
+		    var cache = ilib.data.cache.obj;
+			for (var o in cache) {
+				if (cache.hasOwnProperty(o)) {
+			        ilib.setLoaderCallback(oldLoader);
+					var expected = {"a": "b", "c": "m", "e": "y"};
+					assertObjectEquals(expected, cache[o]);
 				}
 			}
-		});
-	} finally {
-		ilib.setLoaderCallback(undefined);
-	}
+		}
+	});
 }
 
 function testLoadDataCachedWithOtherName() {
@@ -1370,37 +1355,35 @@ function testLoadDataCachedWithOtherName() {
 	}
 	var obj = {};
 	
+    var oldLoader = ilib._load;
 	ilib.setLoaderCallback(mockLoader);
 
-	try {
-		Utils.loadData({
-			name: "foo.json",
-			object: "obj",
-			locale: "en-US",
-			type: "json",
-			loadParams: {},
-			sync: true,
-			callback: function (results) {
-				var expected = {"a": "b", "c": "m", "e": "y"};
-				assertObjectEquals(expected, results);
-			}
-		});
-	
-		Utils.loadData({
-			name: "bar.json",
-			object: "obj",
-			locale: "en-US",
-			type: "json",
-			loadParams: {},
-			sync: true,
-			callback: function (results) {
-				var expected = {"a": "barb", "c": "barm", "e": "bary"};
-    assertObjectEquals(expected, results);
-			}
-		});
-	} finally {
-		ilib.setLoaderCallback(undefined);
-	}
+	Utils.loadData({
+		name: "foo.json",
+		object: "obj",
+		locale: "en-US",
+		type: "json",
+		loadParams: {},
+		sync: true,
+		callback: function (results) {
+			var expected = {"a": "b", "c": "m", "e": "y"};
+			assertObjectEquals(expected, results);
+
+			Utils.loadData({
+		        name: "bar.json",
+		        object: "obj",
+		        locale: "en-US",
+		        type: "json",
+		        loadParams: {},
+		        sync: true,
+		        callback: function (results) {
+		            ilib.setLoaderCallback(oldLoader);
+		            var expected = {"a": "barb", "c": "barm", "e": "bary"};
+		            assertObjectEquals(expected, results);
+		        }
+		    });
+		}
+	});
 }
 
 function testLoadDataCachedWithLoadParamsMultipleFiles() {
@@ -1411,47 +1394,45 @@ function testLoadDataCachedWithLoadParamsMultipleFiles() {
 	}
 	var obj = {};
 	
+    var oldLoader = ilib._load;
 	ilib.setLoaderCallback(mockLoader);
-	try {
-		Utils.loadData({
-			name: "foo.json",
-			object: "obj",
-			locale: "en-US",
-			type: "json",
-			loadParams: {},
-			sync: true,
-			callback: function (results) {
-			    assertNotUndefined(results);
-			}
-		});
-	
-		Utils.loadData({
-			name: "foo.json",
-			object: "obj",
-			locale: "en-US",
-			type: "json",
-			loadParams: {
-				// should cause it to load a different file
-				root: "/usr/share/localization/myapp"
-			},
-			sync: true,
-			callback: function (results) {
-			    assertNotUndefined(results);
-			}
-		});
-		
-		var count = 0;
-		var cache = ilib.data.cache.obj;
-		for (var o in cache) {
-			if (cache.hasOwnProperty(o)) {
-				count++;
-			}
+	Utils.loadData({
+		name: "foo.json",
+		object: "obj",
+		locale: "en-US",
+		type: "json",
+		loadParams: {},
+		sync: true,
+		callback: function (results) {
+		    assertNotUndefined(results);
+
+		    Utils.loadData({
+	            name: "foo.json",
+	            object: "obj",
+	            locale: "en-US",
+	            type: "json",
+	            loadParams: {
+	                // should cause it to load a different file
+	                root: "/usr/share/localization/myapp"
+	            },
+	            sync: true,
+	            callback: function (results) {
+	                ilib.setLoaderCallback(oldLoader);
+	                assertNotUndefined(results);
+
+	                var count = 0;
+	                var cache = ilib.data.cache.obj;
+	                for (var o in cache) {
+	                    if (cache.hasOwnProperty(o)) {
+	                        count++;
+	                    }
+	                }
+	                
+	                assertEquals(2, count);
+	            }
+	        });
 		}
-		
-		assertEquals(2, count);
-	} finally {
-		ilib.setLoaderCallback(undefined);
-	}
+	});
 }
 
 function testLoadDataCachedWithLoadParams() {
@@ -1462,39 +1443,36 @@ function testLoadDataCachedWithLoadParams() {
 	}
 	var obj = {};
 	
+    var oldLoader = ilib._load;
 	ilib.setLoaderCallback(mockLoader);
-	try {
-		Utils.loadData({
-			name: "foo.json",
-			object: "obj",
-			locale: "en-US",
-			type: "json",
-			loadParams: {},
-			sync: true,
-			callback: function (results) {
-				var expected = {"a": "b", "c": "m", "e": "y"};
-				assertObjectEquals(expected, results);
-			}
-		});
-	
-		Utils.loadData({
-			name: "foo.json",
-			object: "obj",
-			locale: "en-US",
-			type: "json",
-			loadParams: {
-				// should cause it to load a different file
-				root: "/usr/share/localization/myapp"
-			},
-			sync: true,
-			callback: function (results) {
-				var expected = {"xxx": "yyy", "www": "xyz", "yyy": "vvv", "nnn": "mmm"};
-				assertObjectEquals(expected, results);
-			}
-		});
-	} finally {
-		ilib.setLoaderCallback(undefined);
-	}
+	Utils.loadData({
+		name: "foo.json",
+		object: "obj",
+		locale: "en-US",
+		type: "json",
+		loadParams: {},
+		sync: true,
+		callback: function (results) {
+			var expected = {"a": "b", "c": "m", "e": "y"};
+			assertObjectEquals(expected, results);
+	        Utils.loadData({
+	            name: "foo.json",
+	            object: "obj",
+	            locale: "en-US",
+	            type: "json",
+	            loadParams: {
+	                // should cause it to load a different file
+	                root: "/usr/share/localization/myapp"
+	            },
+	            sync: true,
+	            callback: function (results) {
+	                ilib.setLoaderCallback(oldLoader);
+	                var expected = {"xxx": "yyy", "www": "xyz", "yyy": "vvv", "nnn": "mmm"};
+	                assertObjectEquals(expected, results);
+	            }
+	        });
+		}
+	});
 }
 
 function testLoadDataNoCache() {
@@ -1503,23 +1481,21 @@ function testLoadDataNoCache() {
 		// it via all the other tests already.
 		return;
 	}
+    var oldLoader = ilib._load;
 	ilib.setLoaderCallback(mockLoader);
-	try {
-		Utils.loadData({
-			name: "foo.json",
-			locale: "en-US",
-			type: "json",
-			loadParams: {},
-			sync: true,
-			callback: function (results) {
-				// should not crash
-				var expected = {"a": "b", "c": "m", "e": "y"};
-				assertObjectEquals(expected, results);
-			}
-		});
-	} finally {
-		ilib.setLoaderCallback(undefined);
-	}
+	Utils.loadData({
+		name: "foo.json",
+		locale: "en-US",
+		type: "json",
+		loadParams: {},
+		sync: true,
+		callback: function (results) {
+	        ilib.setLoaderCallback(oldLoader);
+			// should not crash
+			var expected = {"a": "b", "c": "m", "e": "y"};
+			assertObjectEquals(expected, results);
+		}
+	});
 }
 
 function testLoadDataNotCachedWithLoadParams() {
@@ -1529,37 +1505,35 @@ function testLoadDataNotCachedWithLoadParams() {
 		return;
 	}
 	
+    var oldLoader = ilib._load;
 	ilib.setLoaderCallback(mockLoader);
-	try {
-		Utils.loadData({
-			name: "foo.json",
-			locale: "en-US",
-			type: "json",
-			loadParams: {},
-			sync: true,
-			callback: function (results) {
-				var expected = {"a": "b", "c": "m", "e": "y"};
-				assertObjectEquals(expected, results);
-			}
-		});
-	
-		Utils.loadData({
-			name: "foo.json",
-			locale: "en-US",
-			type: "json",
-			loadParams: {
-				// should cause it to load a different file
-				root: "/usr/share/localization/myapp"
-			},
-			sync: true,
-			callback: function (results) {
-				var expected = {"xxx": "yyy", "www": "xyz", "yyy": "vvv", "nnn": "mmm"};
-				assertObjectEquals(expected, results);
-			}
-		});
-	} finally {
-		ilib.setLoaderCallback(undefined);
-	}
+	Utils.loadData({
+		name: "foo.json",
+		locale: "en-US",
+		type: "json",
+		loadParams: {},
+		sync: true,
+		callback: function (results) {
+			var expected = {"a": "b", "c": "m", "e": "y"};
+			assertObjectEquals(expected, results);
+
+	        Utils.loadData({
+	            name: "foo.json",
+	            locale: "en-US",
+	            type: "json",
+	            loadParams: {
+	                // should cause it to load a different file
+	                root: "/usr/share/localization/myapp"
+	            },
+	            sync: true,
+	            callback: function (results) {
+	                ilib.setLoaderCallback(oldLoader);
+	                var expected = {"xxx": "yyy", "www": "xyz", "yyy": "vvv", "nnn": "mmm"};
+	                assertObjectEquals(expected, results);
+	            }
+	        });
+		}
+	});
 }
 
 function testLoadDataAsynch() {
@@ -1571,22 +1545,19 @@ function testLoadDataAsynch() {
 	var obj = {};
 	
 	ilib.setLoaderCallback(mockLoader);
-	try {
-		Utils.loadData({
-			name: "foo.json",
-			object: "obj",
-			locale: "en-US",
-			type: "json",
-			loadParams: {},
-			sync: false,
-			callback: function (results) {
-				var expected = {"a": "b", "c": "m", "e": "y"};
-				assertObjectEquals(expected, results);
-			}
-		});
-	} finally {
-		ilib.setLoaderCallback(undefined);
-	}
+	Utils.loadData({
+		name: "foo.json",
+		object: "obj",
+		locale: "en-US",
+		type: "json",
+		loadParams: {},
+		sync: false,
+		callback: function (results) {
+	        ilib.setLoaderCallback(oldLoader);
+			var expected = {"a": "b", "c": "m", "e": "y"};
+			assertObjectEquals(expected, results);
+		}
+	});
 }
 
 function testLoadDataDefaults() {
@@ -1595,18 +1566,16 @@ function testLoadDataDefaults() {
 		// it via all the other tests already.
 		return;
 	}
+    var oldLoader = ilib._load;
 	ilib.setLoaderCallback(mockLoader);
-	try {
-		Utils.loadData({
-			name: "foo.json",
-			callback: function (results) {
-				var expected = {"a": "b", "c": "m", "e": "y"};
-				assertObjectEquals(expected, results);
-			}
-		});
-	} finally {
-		ilib.setLoaderCallback(undefined);
-	}
+	Utils.loadData({
+		name: "foo.json",
+		callback: function (results) {
+	        ilib.setLoaderCallback(oldLoader);
+			var expected = {"a": "b", "c": "m", "e": "y"};
+			assertObjectEquals(expected, results);
+		}
+	});
 }
 
 function testLoadDataNonJson_en_US() {
@@ -1615,18 +1584,16 @@ function testLoadDataNonJson_en_US() {
 		// it via all the other tests already.
 		return;
 	}
+    var oldLoader = ilib._load;
 	ilib.setLoaderCallback(mockLoader);
-	try {
-		Utils.loadData({
-			name: "foo.html",
-			type: "html",
-			callback: function (results) {
-				assertObjectEquals("<html><body>This is the generic, shared foo.</body></html>", results);
-			}
-		});
-	} finally {
-		ilib.setLoaderCallback(undefined);
-	}
+	Utils.loadData({
+		name: "foo.html",
+		type: "html",
+		callback: function (results) {
+	        ilib.setLoaderCallback(oldLoader);
+			assertObjectEquals("<html><body>This is the generic, shared foo.</body></html>", results);
+		}
+	});
 }
 
 function testLoadDataNonJson_de() {
@@ -1635,19 +1602,17 @@ function testLoadDataNonJson_de() {
 		// it via all the other tests already.
 		return;
 	}
+    var oldLoader = ilib._load;
 	ilib.setLoaderCallback(mockLoader);
-	try {
-		Utils.loadData({
-			name: "foo.html",
-			type: "html",
-			locale: "de",
-			callback: function (results) {
-				assertObjectEquals("<html><body>Diese ist Foo auf Deutsch.</body></html>", results);
-			}
-		});
-	} finally {
-		ilib.setLoaderCallback(undefined);
-	}
+	Utils.loadData({
+		name: "foo.html",
+		type: "html",
+		locale: "de",
+		callback: function (results) {
+	        ilib.setLoaderCallback(oldLoader);
+			assertObjectEquals("<html><body>Diese ist Foo auf Deutsch.</body></html>", results);
+		}
+	});
 }
 
 function testLoadDataNonJson_de_DE() {
@@ -1657,18 +1622,15 @@ function testLoadDataNonJson_de_DE() {
 		return;
 	}
 	ilib.setLoaderCallback(mockLoader);
-	try {
-		Utils.loadData({
-			name: "foo.html",
-			type: "html",
-			locale: "de-DE",
-			callback: function (results) {
-				assertObjectEquals("<html><body>Diese ist Foo auf Deutsch fuer Deutschland.</body></html>", results);
-			}
-		});
-	} finally {
-		ilib.setLoaderCallback(undefined);
-	}
+	Utils.loadData({
+		name: "foo.html",
+		type: "html",
+		locale: "de-DE",
+		callback: function (results) {
+	        ilib.setLoaderCallback(oldLoader);
+			assertObjectEquals("<html><body>Diese ist Foo auf Deutsch fuer Deutschland.</body></html>", results);
+		}
+	});
 }
 
 function testLoadDataNonJson_DE() {
@@ -1677,19 +1639,17 @@ function testLoadDataNonJson_DE() {
 		// it via all the other tests already.
 		return;
 	}
+    var oldLoader = ilib._load;
 	ilib.setLoaderCallback(mockLoader);
-	try {
-		Utils.loadData({
-			name: "foo.html",
-			type: "html",
-			locale: "DE",
-			callback: function (results) {
-				assertObjectEquals("<html><body>Diese ist Foo fuer Deutschland.</body></html>", results);
-			}
-		});
-	} finally {
-		ilib.setLoaderCallback(undefined);
-	}
+	Utils.loadData({
+		name: "foo.html",
+		type: "html",
+		locale: "DE",
+		callback: function (results) {
+	        ilib.setLoaderCallback(oldLoader);
+			assertObjectEquals("<html><body>Diese ist Foo fuer Deutschland.</body></html>", results);
+		}
+	});
 }
 
 function testLoadDataNonJsonWithFallbackToLanguage() {
@@ -1698,20 +1658,18 @@ function testLoadDataNonJsonWithFallbackToLanguage() {
 		// it via all the other tests already.
 		return;
 	}
+    var oldLoader = ilib._load;
 	ilib.setLoaderCallback(mockLoader);
 
-	try {
-		Utils.loadData({
-			name: "foo.html",
-			type: "html",
-			locale: "fr-FR",
-			callback: function (results) {
-				assertObjectEquals("<html><body>Ceci est foo en francais.</body></html>", results);
-			}
-		});
-	} finally {
-		ilib.setLoaderCallback(undefined);
-	}
+	Utils.loadData({
+		name: "foo.html",
+		type: "html",
+		locale: "fr-FR",
+		callback: function (results) {
+	        ilib.setLoaderCallback(oldLoader);
+			assertObjectEquals("<html><body>Ceci est foo en francais.</body></html>", results);
+		}
+	});
 }
 
 function testLoadDataNonJsonWithFallbackToRoot() {
@@ -1720,19 +1678,17 @@ function testLoadDataNonJsonWithFallbackToRoot() {
 		// it via all the other tests already.
 		return;
 	}
+	var oldLoader = ilib._load;
 	ilib.setLoaderCallback(mockLoader);
-	try {
-		Utils.loadData({
-			name: "foo.html",
-			type: "html",
-			locale: "es-ES",
-			callback: function (results) {
-				assertObjectEquals("<html><body>This is the generic, shared foo.</body></html>", results);
-			}
-		});
-	} finally {
-		ilib.setLoaderCallback(undefined);
-	}
+	Utils.loadData({
+		name: "foo.html",
+		type: "html",
+		locale: "es-ES",
+		callback: function (results) {
+	        ilib.setLoaderCallback(oldLoader);
+			assertObjectEquals("<html><body>This is the generic, shared foo.</body></html>", results);
+		}
+	});
 }
 
 function testLoadDataNonJsonInferFileTypeFromExtension() {
@@ -1741,18 +1697,16 @@ function testLoadDataNonJsonInferFileTypeFromExtension() {
 		// it via all the other tests already.
 		return;
 	}
+	var oldLoader = ilib._load;
 	ilib.setLoaderCallback(mockLoader);
-	try {
-		Utils.loadData({
-			name: "foo.html",
-			locale: "de",
-			callback: function (results) {
-				assertObjectEquals("<html><body>Diese ist Foo auf Deutsch.</body></html>", results);
-			}
-		});
-	} finally {
-		ilib.setLoaderCallback(undefined);
-	}
+	Utils.loadData({
+		name: "foo.html",
+		locale: "de",
+		callback: function (results) {
+	        ilib.setLoaderCallback(oldLoader);
+			assertObjectEquals("<html><body>Diese ist Foo auf Deutsch.</body></html>", results);
+		}
+	});
 }
 
 function testLoadDataJsonInferFileTypeFromExtension() {
@@ -1762,18 +1716,15 @@ function testLoadDataJsonInferFileTypeFromExtension() {
         return;
     }
     ilib.setLoaderCallback(mockLoader);
-    try {
-        Utils.loadData({
-            name: "foo.json",
-            locale: "de-DE",
-            callback: function (results) {
-                var expected = {"a": "a1", "c": "de2", "e": "f"};
-                assertObjectEquals(expected, results);
-            }
-        });
-    } finally {
-        ilib.setLoaderCallback(undefined);
-    }
+    Utils.loadData({
+        name: "foo.json",
+        locale: "de-DE",
+        callback: function (results) {
+            ilib.setLoaderCallback(oldLoader);
+            var expected = {"a": "a1", "c": "de2", "e": "f"};
+            assertObjectEquals(expected, results);
+        }
+    });
 }
 
 function testMapStringDigits() {

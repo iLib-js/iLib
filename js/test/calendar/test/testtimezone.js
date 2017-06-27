@@ -898,6 +898,7 @@ function testTZGetAvailableIdsNoFilterContainsLocal() {
 
 function testGetAvailableTimeZonesWithLoader() {
 	var temp = ilib._load;
+	var oldLoader = ilib._load;
 	ilib.setLoaderCallback(new getAvailableMocker());
 	ilib.data.timezones = []; // clear the timezones cache
 	
@@ -908,7 +909,9 @@ function testGetAvailableTimeZonesWithLoader() {
 	} finally {
 		// clean up
 		ilib.data.timezones = []; // clear the timezones cache
-		ilib._load = temp;
+		
+		ilib.setLoaderCallback(oldLoader);
+		assertTrue(true);
 	}
 }
 
@@ -1409,9 +1412,8 @@ function testTZGetTimeZoneForLocaleUnknownWithLoader() {
 	ilib.setLoaderCallback(mockLoader);
 	var tz = new TimeZone({locale: "zz-YY"});
     assertNotNull(tz);
-    ilib.setLoaderCallback(undefined);
+    ilib.setLoaderCallback(temp);
     assertEquals("Asia/Tokyo", tz.getId());
-    ilib._load = temp;
 }
 
 function testTZGetTimeZoneForLocaleUnknownWithLoaderAsynch() {
@@ -1426,9 +1428,9 @@ function testTZGetTimeZoneForLocaleUnknownWithLoaderAsynch() {
     	locale: "zz-YY",
     	sync: false,
     	onLoad: function (tz) {
+            ilib.setLoaderCallback(temp);
     		assertNotNull(tz);
     	    assertEquals("Asia/Tokyo", tz.getId());
-    	    ilib.setLoaderCallback(temp);
     	}
     });
 }
@@ -1439,13 +1441,12 @@ function testTZGetTimeZoneForLocaleWithLoaderNoData() {
 		// it via all the other tests already.
 		return;
 	}
-	var temp = ilib._load;
+	var oldLoader = ilib._load;
 	ilib.setLoaderCallback(mockLoader);
 	var tz = new TimeZone({locale: "ww-WW"});
     assertNotNull(tz);
-    ilib.setLoaderCallback(undefined);
+    ilib.setLoaderCallback(oldLoader);
     assertEquals("Etc/UTC", tz.getId());
-    ilib._load = temp;
 }
 
 function testTZGetTimeZoneForLocaleWithLoaderNoDataAsynch() {
@@ -1454,15 +1455,15 @@ function testTZGetTimeZoneForLocaleWithLoaderNoDataAsynch() {
 		// it via all the other tests already.
 		return;
 	}
-	var temp = ilib._load;
+	var oldloader = ilib._load;
 	ilib.setLoaderCallback(mockLoader);
 	new TimeZone({
     	locale: "ww-WW",
     	sync: false,
     	onLoad: function (tz) {
+            ilib.setLoaderCallback(oldLoader);
     		assertNotNull(tz);
     	    assertEquals("Etc/UTC", tz.getId());
-    	    ilib.setLoaderCallback(temp);
     	}
     });
 }
@@ -1479,7 +1480,6 @@ function testTZGetTimeZoneWithLoaderAsynch() {
     	    assertObjectEquals("America/Los_Angeles", tz.getId());
     	}
     });
-    ilib.setLoaderCallback(oldloader);
 }
 
 function testTZGetTimeZoneWithLoaderJulianTransitionBeforeStart() {
@@ -1493,7 +1493,6 @@ function testTZGetTimeZoneWithLoaderJulianTransitionBeforeStart() {
 
     	    assertNotNull(tz);
     	    assertObjectEquals("America/Los_Angeles", tz.getId());
-    	    ilib.setLoaderCallback(oldloader);
     	    
     	    // before start
     	    var d = new DateFactory({
@@ -1515,7 +1514,6 @@ function testTZGetTimeZoneWithLoaderJulianTransitionAfterStart() {
 
     	    assertNotNull(tz);
     	    assertObjectEquals("America/Los_Angeles", tz.getId());
-    	    ilib.setLoaderCallback(oldloader);
     	    
     	    // after start
     	    var d = new DateFactory({
@@ -1544,7 +1542,6 @@ function testTZGetTimeZoneWithLoaderJulianTransitionBeforeEnd() {
     	    assertTrue(tz.inDaylightTime(d));
     	}
     });
-    ilib.setLoaderCallback(oldloader);
 }
 
 function testTZGetTimeZoneWithLoaderJulianTransitionAfterEnd() {
@@ -1558,7 +1555,6 @@ function testTZGetTimeZoneWithLoaderJulianTransitionAfterEnd() {
 
     	    assertNotNull(tz);
     	    assertObjectEquals("America/Los_Angeles", tz.getId());
-    	    ilib.setLoaderCallback(oldloader);
 
     	    // after end
     	    var d = new DateFactory({

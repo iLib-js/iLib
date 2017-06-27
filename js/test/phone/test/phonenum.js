@@ -1067,6 +1067,7 @@ function testPhoneNumLoadLocaleDataSynch() {
 		return;
 	}
 	
+	var oldLoader = ilib._load;
 	ilib.setLoaderCallback(mockLoader);
 
 	var left = new PhoneNumber({
@@ -1082,9 +1083,10 @@ function testPhoneNumLoadLocaleDataSynch() {
 		subscriberNumber: "123456"
 	}, {locale: "fr-FR", 
 		sync: false});
+
+	ilib.setLoaderCallback(oldLoader);
 	
 	assertEquals(100, left.compare(right));
-    ilib.setLoaderCallback(undefined);
 };
 
 function testPhoneNumLookaheadRoot() {

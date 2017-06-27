@@ -98,16 +98,16 @@ function testNumPlanLoadLocaleDataSynch() {
 		return;
 	}
 	
+	var oldLoader = ilib._load;
 	ilib.setLoaderCallback(mockLoader);
 
 	new NumberingPlan({
 		locale: "en-US",
 		sync: false,
 		onLoad: function (plan) {
+		    ilib.setLoaderCallback(oldLoader);
     		assertNotNull(plan);
     		assertEquals("US", plan.getName());    			
     	}
 	});
-
-    ilib.setLoaderCallback(undefined);
 };

@@ -116,7 +116,8 @@ function testIMSILoadLocaleDataSynch() {
 		return;
 	}
 	
-	ilib.setLoaderCallback(mockLoader);
+   var oldLoader = ilib._load;
+   ilib.setLoaderCallback(mockLoader);
 
 	var field = [];
 	var imsi = "31003014084567890";
@@ -129,5 +130,6 @@ function testIMSILoadLocaleDataSynch() {
 	
 	fields = PhoneNumber.parseImsi(imsi)
 	assertObjectEquals(expected, PhoneNumber.parseImsi(imsi, options));
-    ilib.setLoaderCallback(undefined);
+    ilib.setLoaderCallback(oldLoader);
+    assertTrue(true);
 };
