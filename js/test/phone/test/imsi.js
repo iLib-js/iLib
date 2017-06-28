@@ -20,6 +20,18 @@
 var ilib = require("./../lib/ilib.js");
 var PhoneNumber = require("./../lib/PhoneNumber.js");
 
+function mockLoader(paths, sync, params, callback) {
+	var data = [];
+	
+	data.push(ilib.data.mnc); // for the generic, shared stuff
+	
+	
+	if (typeof(callback) !== 'undefined') {
+		callback.call(this, data);	
+	}
+	return data;
+}
+
 function testRegularImsi3DigitMNC() {
 	var imsi = "31003014084567890"
 	var expected = {
@@ -97,18 +109,6 @@ function testUndefined() {
 	assertUndefined(PhoneNumber.parseImsi(undefined));
 };
 
-function mockLoader(paths, sync, params, callback) {
-	var data = [];
-	
-	data.push(ilib.data.mnc); // for the generic, shared stuff
-	
-	
-	if (typeof(callback) !== 'undefined') {
-		callback.call(this, data);	
-	}
-	return data;
-}
-
 function testIMSILoadLocaleDataSynch() {
 	if (ilib.isDynData()) {
 		// don't need to test loading on the dynamic load version because we are testing
@@ -116,8 +116,8 @@ function testIMSILoadLocaleDataSynch() {
 		return;
 	}
 	
-	PhoneNumber.cache = {};
-	ilib.setLoaderCallback(mockLoader);
+   var oldLoader = ilib._load;
+   ilib.setLoaderCallback(mockLoader);
 
 	var field = [];
 	var imsi = "31003014084567890";
@@ -130,5 +130,6 @@ function testIMSILoadLocaleDataSynch() {
 	
 	fields = PhoneNumber.parseImsi(imsi)
 	assertObjectEquals(expected, PhoneNumber.parseImsi(imsi, options));
-    ilib.setLoaderCallback(undefined);
+    ilib.setLoaderCallback(oldLoader);
+    assertTrue(true);
 };

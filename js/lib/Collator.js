@@ -410,13 +410,10 @@ var Collator = function(options) {
 		}
 	} else {
 		//console.log("implemented in pure JS");
-		if (!Collator.cache) {
-			Collator.cache = {};
-		}
-
+		
 		// else implement in pure Javascript
 		Utils.loadData({
-			object: Collator, 
+			object: "Collator", 
 			locale: this.locale, 
 			name: "collation.json",
 			sync: sync,
@@ -425,7 +422,7 @@ var Collator = function(options) {
 				if (!collation) {
 					collation = ilib.data.collation;
 					var spec = this.locale.getSpec().replace(/-/g, '_');
-					Collator.cache[spec] = collation;
+					ilib.data.cache.Collator[spec] = collation;
 				}
 				this._init(collation);
 				new LocaleInfo(this.locale, {

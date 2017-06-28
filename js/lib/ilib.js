@@ -1,7 +1,7 @@
 /*
  * ilib.js - define the ilib name space
  * 
- * Copyright © 2012-2015, JEDLSoft
+ * Copyright © 2012-2017, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -39,7 +39,7 @@ ilib._ver = function() {
  */
 ilib.getVersion = function () {
 	// TODO: need some way of getting the version number under dynamic load code
-    return ilib._ver() || "12.0"; 
+    return ilib._ver() || "13.0"; 
 };
 
 /**
@@ -67,7 +67,8 @@ ilib.data = {
     /** @type {null|Object.<string,Array.<Array.<number>>>} */ ctype_z: null,
     /** @type {null|Object.<string,Array.<Array.<number>>>} */ scriptToRange: null,
     /** @type {null|Object.<string,string|Object.<string|Object.<string,string>>>} */ dateformats: null,
-    /** @type {null|Array.<string>} */ timezones: []
+    /** @type {null|Array.<string>} */ timezones: [],
+    cache: {}
 };
 
 /*
@@ -226,6 +227,15 @@ ilib._global = function(name) {
  */
 ilib._isGlobal = function(name) {
 	return typeof(ilib._global(name)) !== 'undefined';
+};
+
+/**
+ * Clear the file load cache. This is mainly used by the unit tests,
+ * but could be used by regular callers if you want to free up memory
+ * for garbage collecting.
+ */
+ilib.clearCache = function() {
+	ilib.data.cache = {};
 };
 
 /**

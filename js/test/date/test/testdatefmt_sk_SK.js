@@ -317,7 +317,7 @@ function testDateFmtTemplateClock24SwitchKK_sk_SK() {
     assertEquals("13:45", fmt.format(date));
 }
 
-function testDateFmtTemplateNoClockŠNotFollowLocaleDefault12hh_sk_SK() {
+function testDateFmtTemplateNoClockNotFollowLocaleDefault12hh_sk_SK() {
     var fmt = new DateFmt({locale: "sk-SK", template: "hh:mm"});
     assertNotNull(fmt);
     
@@ -334,7 +334,7 @@ function testDateFmtTemplateNoClockŠNotFollowLocaleDefault12hh_sk_SK() {
     assertEquals("01:45", fmt.format(date));
 }
 
-function testDateFmtTemplateNoClockŠNotFollowLocaleDefault12KK_sk_SK() {
+function testDateFmtTemplateNoClockNotFollowLocaleDefault12KK_sk_SK() {
     var fmt = new DateFmt({locale: "sk-SK", template: "KK:mm"});
     assertNotNull(fmt);
     
@@ -351,7 +351,7 @@ function testDateFmtTemplateNoClockŠNotFollowLocaleDefault12KK_sk_SK() {
     assertEquals("01:45", fmt.format(date));
 }
 
-function testDateFmtTemplateNoClockŠNotFollowLocaleDefault24HH_sk_SK() {
+function testDateFmtTemplateNoClockNotFollowLocaleDefault24HH_sk_SK() {
     var fmt = new DateFmt({locale: "sk-SK", template: "HH:mm"});
     assertNotNull(fmt);
     
@@ -368,7 +368,7 @@ function testDateFmtTemplateNoClockŠNotFollowLocaleDefault24HH_sk_SK() {
     assertEquals("13:45", fmt.format(date));
 }
 
-function testDateFmtTemplateNoClockŠNotFollowLocaleDefault24kk_sk_SK() {
+function testDateFmtTemplateNoClockNotFollowLocaleDefault24kk_sk_SK() {
     var fmt = new DateFmt({locale: "sk-SK", template: "kk:mm"});
     assertNotNull(fmt);
     
@@ -1223,7 +1223,8 @@ function testDateFmtFormatRelativeWithinMinuteAfter_sk_SK() {
     assertEquals("o 30 sekúnd", fmt.formatRelative(reference, date));
 }
 
-/*function testDateFmtFormatRelativeWithinMinuteBefore_sk_SK() {
+/*
+function testDateFmtFormatRelativeWithinMinuteBefore_sk_SK() {
     var fmt = new DateFmt({locale: "sk-SK", length: "full"});
     assertNotNull(fmt);
     
@@ -1248,7 +1249,8 @@ function testDateFmtFormatRelativeWithinMinuteAfter_sk_SK() {
 		millisecond: 0
 	});
     assertEquals("y", fmt.formatRelative(reference, date));
-}*/
+}
+*/
 
 function testDateFmtFormatRelativeWithinHourAfter_sk_SK() {
     var fmt = new DateFmt({locale: "sk-SK", length: "full"});
@@ -1277,7 +1279,8 @@ function testDateFmtFormatRelativeWithinHourAfter_sk_SK() {
     assertEquals("o 10 minút", fmt.formatRelative(reference, date));
 }
 
-/*function testDateFmtFormatRelativeWithinHourBeforer_sk_SK() {
+/*
+function testDateFmtFormatRelativeWithinHourBeforer_sk_SK() {
     var fmt = new DateFmt({locale: "sk-SK", length: "full"});
     assertNotNull(fmt);
     
@@ -1302,7 +1305,8 @@ function testDateFmtFormatRelativeWithinHourAfter_sk_SK() {
 		millisecond: 0
 	});
     assertEquals("y", fmt.formatRelative(reference, date));
-}*/
+}
+*/
 
 
 
@@ -1334,7 +1338,8 @@ function testDateFmtFormatRelativeWithinDayAfter_sk_SK() {
 }
 
 
-/*function testDateFmtFormatRelativeWithinDayAfter_sk_SK() {
+/*
+function testDateFmtFormatRelativeWithinDayAfter_sk_SK() {
     var fmt = new DateFmt({locale: "sk-SK", length: "full"});
     assertNotNull(fmt);
     
@@ -1359,7 +1364,8 @@ function testDateFmtFormatRelativeWithinDayAfter_sk_SK() {
 		millisecond: 0
 	});
     assertEquals("y", fmt.formatRelative(reference, date));
-}*/
+}
+*/
 
 function testDateFmtFormatRelativeWithinFortnightAfter_sk_SK() {
     var fmt = new DateFmt({locale: "sk-SK", length: "full"});
@@ -1390,7 +1396,8 @@ function testDateFmtFormatRelativeWithinFortnightAfter_sk_SK() {
 
 
 
-/*function testDateFmtFormatRelativeWithinFortnightBefore_sk_SK() {
+/*
+function testDateFmtFormatRelativeWithinFortnightBefore_sk_SK() {
     var fmt = new DateFmt({locale: "sk-SK", length: "full"});
     assertNotNull(fmt);
     
@@ -1416,7 +1423,8 @@ function testDateFmtFormatRelativeWithinFortnightAfter_sk_SK() {
 		millisecond: 0
 	});
     assertEquals("y", fmt.formatRelative(reference, date));
-}*/
+}
+*/
 
 
 
@@ -1447,7 +1455,8 @@ function testDateFmtFormatRelativeWithinQuarterAfter_sk_SK() {
     assertEquals("o 9 týždňov", fmt.formatRelative(reference, date));
 }
 
-/*function testDateFmtFormatRelativeWithinQuarterBefore_sk_SK() {
+/*
+function testDateFmtFormatRelativeWithinQuarterBefore_sk_SK() {
     var fmt = new DateFmt({locale: "sk-SK", length: "full"});
     assertNotNull(fmt);
     
@@ -1472,7 +1481,8 @@ function testDateFmtFormatRelativeWithinQuarterAfter_sk_SK() {
 		millisecond: 0
 	});
     assertEquals("y", fmt.formatRelative(reference, date));
-}*/
+}
+*/
 
 
 
@@ -1529,7 +1539,8 @@ function testDateFmtFormatRelativeWithinTwoYearsAfter_sk_SK() {
 		millisecond: 0
 	});
     assertEquals("16 mesiacov", fmt.formatRelative(reference, date));
-}*/
+}
+*/
 
 function testDateFmtFormatRelativeYearsAfter_sk_SK() {
     var fmt = new DateFmt({locale: "sk-SK", length: "full"});
@@ -1558,7 +1569,8 @@ function testDateFmtFormatRelativeYearsAfter_sk_SK() {
     assertEquals("o 14 rokov", fmt.formatRelative(reference, date));
 }
 
-/*function testDateFmtFormatRelativeYearsBefore_sk_SK() {
+/*
+function testDateFmtFormatRelativeYearsBefore_sk_SK() {
     var fmt = new DateFmt({locale: "sk-SK", length: "full"});
     assertNotNull(fmt);
     
@@ -1583,5 +1595,6 @@ function testDateFmtFormatRelativeYearsAfter_sk_SK() {
 		millisecond: 0
 	});
     assertEquals("14 rokov", fmt.formatRelative(reference, date));
-}*/
+}
+*/
 

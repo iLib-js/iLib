@@ -136,7 +136,6 @@ function testDurFmtAZFormatFull() {
 
 
 function testDurFmtAZAsyncWithLocale() {
-    var callbackCalled = false;
     new DurationFmt({
         locale: "az-Latn-AZ",
         length: "full",
@@ -154,15 +153,11 @@ function testDurFmtAZAsyncWithLocale() {
                 second: 2
             });           
             assertEquals("2 il, 2 ay, 2 həftə, 2 gün, 2 saat, 2 dəqiqə, 2 saniyə", duration.toString());
-            callbackCalled = true;
         }
     });
-
-    assertTrue(callbackCalled);
 };
 
 function testDurFmtAZFormatShortClockAsync() {
-    var callbackCalled = false;
     new DurationFmt({
         locale: "az-Latn-AZ",
         length: "short",
@@ -181,8 +176,6 @@ function testDurFmtAZFormatShortClockAsync() {
                 second: 1
             });
             assertEquals("1 il, 1 ay, 1 hft, 1 gün, 01:01:01", duration.toString());
-            callbackCalled = true;
         }
     });
-    assertTrue(callbackCalled);
 };

@@ -91,7 +91,8 @@ function testParseAddressGMSuperfluousWhitespace() {
 	assertEquals("GM", parsedAddress.countryCode);
 };
 
-/*function testParseAddressGMNoDelimiters() {
+/*
+function testParseAddressGMNoDelimiters() {
 	var parsedAddress = new Address("Mr. A. Ceesay 21 Liberation Avenue BANJUL GAMBIA", {locale: 'en-GM'});
 	
 	assertNotUndefined(parsedAddress);
@@ -101,7 +102,8 @@ function testParseAddressGMSuperfluousWhitespace() {
 	assertUndefined(parsedAddress.postalCode);
 	assertEquals("GAMBIA", parsedAddress.country);
 	assertEquals("GM", parsedAddress.countryCode);
-};*/
+};
+*/
 
 function testParseAddressGMFromUS() {
 	var parsedAddress = new Address("Mr. A. Ceesay 21 Liberation Avenue\nBANJUL\nGAMBIA", {locale: 'en-GM'});

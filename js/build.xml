@@ -322,7 +322,7 @@ limitations under the License.
 			<srcfiles dir="${build.locale}" includes="**/*.json"/>
 		</uptodate>
 	</target>
-	<target name="assemble.unittest" depends="prepare,gen.manifest.locale,assemble.unittest.maps,testilibut" unless="ilib-ut.not.needed" description="assembles only the locales needed for the unit tests">
+	<target name="assemble.unittest" depends="prepare,gen.manifest.locale,update.package.json,assemble.unittest.maps,testilibut" unless="ilib-ut.not.needed" description="assembles only the locales needed for the unit tests">
 		<runassemble
 			tgtfilename="${build.output.js}/ilib-ut.js"
 			srcfilename="${build.lib}/ilib-ut-inc.js"
@@ -680,6 +680,72 @@ limitations under the License.
 			</fileset>
 		</tar>
 	</target>
+
+	<macrodef name="run-nodeunit">
+		<attribute name="suite"/>
+		<attribute name="failquit"/>
+		<sequential>
+			<exec osfamily="unix" executable="node" dir="${build.test}" failifexecutionfails="@{failquit}" failonerror="@{failquit}">
+				<arg line="@{suite}/nodeunit/testSuite.js"/>
+			</exec>
+			<exec osfamily="mac" executable="node" dir="${build.test}" failifexecutionfails="@{failquit}" failonerror="@{failquit}">
+				<arg line="@{suite}/nodeunit/testSuite.js"/>
+			</exec>
+			<exec osfamily="windows" executable="node.exe" dir="${build.test}" failifexecutionfails="@{failquit}"  failonerror="@{failquit}">
+				<arg line="@{suite}/nodeunit/testSuite.js"/>
+			</exec>
+		</sequential>
+	</macrodef>
+
+	<target depends="assemble.dyncode.unittest" name="test.address.nu">
+		<run-nodeunit suite="address" failquit="true"/>
+	</target>
+	
+	<target depends="assemble.dyncode.unittest" name="test.calendar.nu">
+		<run-nodeunit suite="calendar" failquit="true"/>
+	</target>
+	<target depends="assemble.dyncode.unittest" name="test.collate.nu">
+		<run-nodeunit suite="collate" failquit="true"/>
+	</target>
+	<target depends="assemble.dyncode.unittest" name="test.ctype.nu">
+		<run-nodeunit suite="ctype" failquit="true"/>
+	</target>
+	<target depends="assemble.dyncode.unittest" name="test.date.nu">
+		<run-nodeunit suite="date" failquit="true"/>
+	</target>
+	<target depends="assemble.dyncode.unittest" name="test.daterange.nu">
+		<run-nodeunit suite="daterange" failquit="true"/>
+	</target>
+	<target depends="assemble.dyncode.unittest" name="test.durfmt.nu">
+		<run-nodeunit suite="durfmt" failquit="true"/>
+	</target>
+	<target depends="assemble.dyncode.unittest" name="test.maps.nu">
+		<run-nodeunit suite="maps" failquit="true"/>
+	</target>
+	<target depends="assemble.dyncode.unittest" name="test.name.nu">
+		<run-nodeunit suite="name" failquit="true"/>
+	</target>
+	<target depends="assemble.dyncode.unittest" name="test.number.nu">
+		<run-nodeunit suite="number" failquit="true"/>
+	</target>
+	<target depends="assemble.dyncode.unittest" name="test.phone.nu">
+		<run-nodeunit suite="phone" failquit="true"/>
+	</target>
+	<target depends="assemble.dyncode.unittest" name="test.root.nu">
+		<run-nodeunit suite="root" failquit="true"/>
+	</target>
+	<target depends="assemble.dyncode.unittest" name="test.strings-ext.nu">
+		<run-nodeunit suite="strings-ext" failquit="true"/>
+	</target>
+	<target depends="assemble.dyncode.unittest" name="test.units.nu">
+		<run-nodeunit suite="units" failquit="true"/>
+	</target>
+	<target depends="assemble.dyncode.unittest" name="test.util.nu">
+		<run-nodeunit suite="util" failquit="true"/>
+	</target>
+	
+	<target name="test.all.nu" depends="test.address.nu,test.calendar.nu,test.collate.nu,test.ctype.nu,test.date.nu,test.daterange.nu,test.durfmt.nu,test.maps.nu,test.name.nu,test.number.nu,test.phone.nu,test.root.nu,test.strings-ext.nu,test.units.nu,test.util.nu" />
+	
 	<macrodef name="runtests">
         <attribute name="assembly"/>
         <attribute name="compilation"/>
@@ -728,6 +794,7 @@ limitations under the License.
 			</exec>
 		</sequential>
 	</macrodef>
+
 	<target depends="assemble.dyncode.unittest" name="test.util">
 		<runtests suite="util" assembly="dynamic" compilation="compiled" failquit="true"/>
 	</target>
@@ -871,7 +938,6 @@ limitations under the License.
 			<jvmarg value="-Djsdoc.dir=${JSDOCDIR}"/>
 			<jvmarg value="-Djsdoc.template.dir=${JSDOCDIR}/templates/jsdoc"/>
 			<jvmarg value="-Xmx1024m"/>
-			<jvmarg value="-XX:MaxPermSize=96m"/>
 			<arg value="${JSDOCDIR}/app/run.js"/>
 			<arg value="--directory=${build.jsdoc}"/>
 			<arg value="--recurse=100"/>
@@ -1135,6 +1201,8 @@ limitations under the License.
 	<target name="test.remote" depends="prepare,assemble.unittest" description="Run a remote server to test ilib in remote browsers">
 	    <exec osfamily="unix" resultproperty="uglify.result" errorproperty="uglify.error" executable="node" dir="${build.base}/.." failifexecutionfails="true">
 			<arg value="node_modules/http-server/bin/http-server"/>
+			<arg value="-p"/>
+			<arg value="9090"/>
 		</exec>
 		<exec osfamily="mac" resultproperty="uglify.result" errorproperty="uglify.error" executable="node" dir="${build.base}/.." failifexecutionfails="true">
 			<arg value="node_modules/http-server/bin/http-server"/>

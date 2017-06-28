@@ -349,7 +349,7 @@ function testUnitFormatArea4() {
         amount: 1000
     });
 
-    var uf = new UnitFmt({locale:"ko-KO",autoConvert:false});
+    var uf = new UnitFmt({locale:"ko-KR",autoConvert:false});
     var str = uf.format(m1);
     assertEquals("1,000제곱센티미터", str);
 }
@@ -415,7 +415,7 @@ function testUnitFormatArea9() {
         amount: 1000
     });
 
-    var uf = new UnitFmt({locale:"ko-KO",autoConvert:false});
+    var uf = new UnitFmt({locale:"ko-KR",autoConvert:false});
     var str = uf.format(m1);
     assertEquals("1,000제곱야드", str);
 }
@@ -461,7 +461,7 @@ function testUnitFormatDigitalStorage4() {
         amount: 1000
     });
 
-    var uf = new UnitFmt({locale:"ko-KO",autoConvert:false,autoScale:false});
+    var uf = new UnitFmt({locale:"ko-KR",autoConvert:false,autoScale:false});
     var str = uf.format(m1);
     assertEquals("1,000킬로바이트", str);
 }
@@ -527,7 +527,7 @@ function testUnitFormatDigitalStorage9() {
         amount: 1000
     });
 
-    var uf = new UnitFmt({locale:"ko-KO",autoConvert:false,autoScale:false});
+    var uf = new UnitFmt({locale:"ko-KR",autoConvert:false,autoScale:false});
     var str = uf.format(m1);
     assertEquals("1,000기가비트", str);
 }
@@ -583,7 +583,7 @@ function testUnitFormatEnergy4() {
         amount: 1000
     });
 
-    var uf = new UnitFmt({locale:"ko-KO",autoConvert:false,autoScale:true});
+    var uf = new UnitFmt({locale:"ko-KR",autoConvert:false,autoScale:true});
     var str = uf.format(m1);
     assertEquals("1킬로줄", str);
 }
@@ -638,7 +638,7 @@ function testUnitFormatEnergy9() {
         amount: 1000
     });
 
-    var uf = new UnitFmt({locale:"ko-KO",autoConvert:false,autoScale:false});
+    var uf = new UnitFmt({locale:"ko-KR",autoConvert:false,autoScale:false});
     var str = uf.format(m1);
     assertEquals("1,000기가비트", str);
 }
@@ -694,7 +694,7 @@ function testUnitFormatFuelConsumption4() {
         amount: 1000
     });
 
-    var uf = new UnitFmt({locale:"ko-KO",autoConvert:false,autoScale:true});
+    var uf = new UnitFmt({locale:"ko-KR",autoConvert:false,autoScale:true});
     var str = uf.format(m1);
     assertEquals("1,000 kilometers per liter", str);
 }
@@ -760,7 +760,7 @@ function testUnitFormatLength4() {
         amount: 1000
     });
 
-    var uf = new UnitFmt({locale:"ko-KO",autoConvert:false,autoScale:true});
+    var uf = new UnitFmt({locale:"ko-KR",autoConvert:false,autoScale:true});
     var str = uf.format(m1);
     assertEquals("1킬로미터", str);
 }
@@ -826,7 +826,7 @@ function testUnitFormatLength9() {
         amount: 1000
     });
 
-    var uf = new UnitFmt({locale:"ko-KO",autoConvert:false,autoScale:false});
+    var uf = new UnitFmt({locale:"ko-KR",autoConvert:false,autoScale:false});
     var str = uf.format(m1);
     assertEquals("1,000센티미터", str);
 }
@@ -881,7 +881,7 @@ function testUnitFormatMass4() {
         amount: 1000
     });
 
-    var uf = new UnitFmt({locale:"ko-KO",autoConvert:false,autoScale:true});
+    var uf = new UnitFmt({locale:"ko-KR",autoConvert:false,autoScale:true});
     var str = uf.format(m1);
     assertEquals("1밀리그램", str);
 }
@@ -958,7 +958,7 @@ function testUnitFormatMass9() {
         amount: 1000
     });
 
-    var uf = new UnitFmt({locale:"ko-KO",autoConvert:false,autoScale:false});
+    var uf = new UnitFmt({locale:"ko-KR",autoConvert:false,autoScale:false});
     var str = uf.format(m1);
     assertEquals("1,000메트릭 톤", str);
 }
@@ -1014,7 +1014,7 @@ function testUnitFormatSpeed4() {
         amount: 1000
     });
 
-    var uf = new UnitFmt({locale:"ko-KO",autoConvert:false,autoScale:false});
+    var uf = new UnitFmt({locale:"ko-KR",autoConvert:false,autoScale:false});
     var str = uf.format(m1);
     assertEquals("1,000 feet per second", str);
 }
@@ -1080,7 +1080,7 @@ function testUnitFormatSpeed9() {
         amount: 1000
     });
 
-    var uf = new UnitFmt({locale:"ko-KO",autoConvert:false,autoScale:false});
+    var uf = new UnitFmt({locale:"ko-KR",autoConvert:false,autoScale:false});
     var str = uf.format(m1);
     assertEquals("시속 1,000마일", str);
 }
@@ -1146,7 +1146,7 @@ function testUnitFormatTemperature4() {
         amount: 1000
     });
 
-    var uf = new UnitFmt({locale:"ko-KO",autoConvert:false,autoScale:false});
+    var uf = new UnitFmt({locale:"ko-KR",autoConvert:false,autoScale:false});
     var str = uf.format(m1);
     assertEquals("1,000켈빈", str);
 }
@@ -1202,7 +1202,7 @@ function testUnitFormatTemperature9() {
         amount: 1000
     });
 
-    var uf = new UnitFmt({locale:"ko-KO",autoConvert:false,autoScale:false});
+    var uf = new UnitFmt({locale:"ko-KR",autoConvert:false,autoScale:false});
     var str = uf.format(m1);
     assertEquals("화씨 1,000도", str);
 }
@@ -1257,7 +1257,7 @@ function testUnitFormatTime4() {
         amount: 1000
     });
 
-    var uf = new UnitFmt({locale:"ko-KO",autoConvert:false,autoScale:false});
+    var uf = new UnitFmt({locale:"ko-KR",autoConvert:false,autoScale:false});
     var str = uf.format(m1);
     assertEquals("1,000밀리초", str);
 }
@@ -1312,7 +1312,7 @@ function testUnitFormatTime9() {
         amount: 1000
     });
 
-    var uf = new UnitFmt({locale:"ko-KO",autoConvert:false,autoScale:false});
+    var uf = new UnitFmt({locale:"ko-KR",autoConvert:false,autoScale:false});
     var str = uf.format(m1);
     assertEquals("1,000분", str);
 }
@@ -1367,7 +1367,7 @@ function testUnitFormatVolume4() {
         amount: 1000
     });
 
-    var uf = new UnitFmt({locale:"ko-KO",autoConvert:false,autoScale:false});
+    var uf = new UnitFmt({locale:"ko-KR",autoConvert:false,autoScale:false});
     var str = uf.format(m1);
     assertEquals("1,000밀리초", str);
 }
@@ -1422,7 +1422,7 @@ function testUnitFormatVolume9() {
         amount: 1000
     });
 
-    var uf = new UnitFmt({locale:"ko-KO",autoConvert:false,autoScale:false});
+    var uf = new UnitFmt({locale:"ko-KR",autoConvert:false,autoScale:false});
     var str = uf.format(m1);
     assertEquals("1,000세제곱피트", str);
 }

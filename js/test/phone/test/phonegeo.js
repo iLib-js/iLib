@@ -23,6 +23,17 @@ var PhoneLocale = require("./../lib/PhoneLocale.js");
 var PhoneGeoLocator = require("./../lib/PhoneGeoLocator.js");
 var NumberingPlan = require("./../lib/NumberingPlan.js");
 
+function mockLoader(paths, sync, params, callback) {
+	var data = [];
+	
+	data.push(ilib.data.area_US); // for the generic, shared stuff
+	
+	if (typeof(callback) !== 'undefined') {
+		callback.call(this, data);	
+	}
+	return data;
+}
+
 function testNANP() {
 	var parsed = new PhoneNumber("+1 650 654 3210");
 	var expected = {
@@ -1859,17 +1870,6 @@ function testHKMobile() {
 	assertEquals(expected.country.sn, geoInfo.country.sn);
 };
 
-function mockLoader(paths, sync, params, callback) {
-	var data = [];
-	
-	data.push(ilib.data.area_US); // for the generic, shared stuff
-	
-	if (typeof(callback) !== 'undefined') {
-		callback.call(this, data);	
-	}
-	return data;
-}
-
 function testPhoneGeoLoadLocaleDataSynch() {
 	if (ilib.isDynData()) {
 		// don't need to test loading on the dynamic load version because we are testing
@@ -1891,7 +1891,7 @@ function testPhoneGeoLoadLocaleDataSynch() {
 		}
 	};
 
-	PhoneGeoLocator.cache = {};
+    var oldLoader = ilib._load;
 	ilib.setLoaderCallback(mockLoader);
 
 	var locator = new PhoneGeoLocator({locale: 'en-US',
@@ -1901,8 +1901,8 @@ function testPhoneGeoLoadLocaleDataSynch() {
     	}
 	});
 
+    ilib.setLoaderCallback(oldLoader);
     assertNotNull(locator);
 	var geoInfo = locator.locate(parsed);
     assertObjectEquals(expected, geoInfo);
-    ilib.setLoaderCallback(undefined);
 };

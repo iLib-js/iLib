@@ -136,7 +136,6 @@ function testDurFmtKHFormatFull() {
 
 
 function testDurFmtKHAsyncWithLocale() {
-    var callbackCalled = false;
     new DurationFmt({
         locale: "km-KH",
         length: "full",
@@ -154,15 +153,11 @@ function testDurFmtKHAsyncWithLocale() {
                 second: 2
             });
             assertEquals("2 ឆ្នាំ 2 ខែ 2 សប្ដាហ៍ 2 ថ្ងៃ 2 ម៉ោង 2 នាទី 2 វិនាទី", duration.toString());
-            callbackCalled = true;
         }
     });
-
-    assertTrue(callbackCalled);
 };
 
 function testDurFmtKHFormatShortClockAsync() {
-    var callbackCalled = false;
     new DurationFmt({
         locale: "km-KH",
         length: "short",
@@ -181,8 +176,6 @@ function testDurFmtKHFormatShortClockAsync() {
                 second: 1
             });
             assertEquals("1 ឆ្នាំ 1 ខែ 1 សប្ដាហ៍ 1 ថ្ងៃ 1:01:01", duration.toString());
-            callbackCalled = true;
         }
     });
-    assertTrue(callbackCalled);
 };

@@ -136,7 +136,6 @@ function testDurFmtHAFormatFull() {
 
 
 function testDurFmtHAAsyncWithLocale() {
-	var callbackCalled = false;
     new DurationFmt({
     	locale: "ha-Latn-NG",
     	length: "full",
@@ -154,15 +153,11 @@ function testDurFmtHAAsyncWithLocale() {
     	    	second: 2
     	    });
     	    assertEquals("2 y, 2 m, 2 w, 2 d, 2 h, 2 min, 2 s", duration.toString());
-    	    callbackCalled = true;
     	}
     });
-    
-    assertTrue(callbackCalled);
 };
 
 function testDurFmtHAFormatShortClockAsync() {
-	var callbackCalled = false;
     new DurationFmt({
     	locale: "ha-Latn-NG",
     	length: "short",
@@ -181,8 +176,6 @@ function testDurFmtHAFormatShortClockAsync() {
     	    	second: 1
     	    });
     	    assertEquals("1 y, 1 m, 1 w, 1 d, 01:01:01", duration.toString());
-    	    callbackCalled = true;
     	}
     });
-    assertTrue(callbackCalled);
 };

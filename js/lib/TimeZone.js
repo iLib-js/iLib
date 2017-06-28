@@ -233,7 +233,7 @@ TimeZone.prototype._loadtzdata = function () {
 	// console.log("zoneinfo is: " + JSON.stringify(ilib.data.zoneinfo[zoneName]));
 	if (!ilib.data.zoneinfo[zoneName] && typeof(this.offset) === 'undefined') {
 		Utils.loadData({
-			object: TimeZone, 
+			object: "TimeZone", 
 			nonlocale: true,	// locale independent 
 			name: "zoneinfo/" + this.id + ".json", 
 			sync: this.sync, 
@@ -295,7 +295,7 @@ TimeZone._marshallIds = function (country, sync, callback) {
 	} else {
 		if (!ilib.data.zoneinfo.zonetab) {
 			Utils.loadData({
-				object: TimeZone, 
+				object: "TimeZone", 
 				nonlocale: true,	// locale independent 
 				name: "zoneinfo/zonetab.json", 
 				sync: sync, 

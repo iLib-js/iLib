@@ -1,0 +1,1319 @@
+/*
+ * testdatefmt_or_IN.js - test the date formatter object in Oriya for India
+ * 
+ * Copyright © 2015,2017, JEDLSoft
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+if (typeof(JulianDate) === "undefined") {
+    var JulianDate = require("../.././../lib/JulianDate.js");
+}
+if (typeof(GregorianDate) === "undefined") {
+    var GregorianDate = require("../.././../lib/GregorianDate.js");
+}
+if (typeof(DateFmt) === "undefined") {
+    var DateFmt = require("../.././../lib/DateFmt.js");
+}
+if (typeof(ilib) === "undefined") {
+    var ilib = require("../../..");
+}
+
+module.exports.testdatefmt_or_IN = {
+    setUp: function(callback) {
+        ilib.clearCache();
+        callback();
+    },
+
+    testDateFmtINConstructorEmpty_or_IN: function(test) {
+        var fmt = new DateFmt({locale: "or-IN"});
+        
+        test.expect(1);
+        test.ok(typeof(fmt) !== "undefined");
+        test.done();
+    },
+    
+    
+    testDateFmtINSimpleShort_or_IN: function(test) {
+        var fmt = new DateFmt({locale: "or-IN", length: "short"});
+        test.expect(2);
+        test.ok(typeof(fmt) !== "undefined");
+        
+        var date = new GregorianDate({
+            locale: "or-IN",
+            year: 2011,
+            month: 9,
+            day: 29,
+            hour: 13,
+            minute: 45,
+            millisecond: 0
+        });
+        test.equal(fmt.format(date), "29-9-11");
+        test.done();
+    },
+    
+    testDateFmtINSimpleMedium_or_IN: function(test) {
+        var fmt = new DateFmt({locale: "or-IN", length: "medium"});
+        test.expect(2);
+        test.ok(typeof(fmt) !== "undefined");
+        
+        var date = new GregorianDate({
+            locale: "or-IN",
+            year: 2011,
+            month: 9,
+            day: 29,
+            hour: 13,
+            minute: 45,
+            second: 0,
+            millisecond: 0
+        });
+        test.equal(fmt.format(date), "29 ସେପ୍ଟେମ୍ବର 2011");
+        test.done();
+    },
+    
+    testDateFmtINSimpleLong_or_IN: function(test) {
+        var fmt = new DateFmt({locale: "or-IN", length: "long"});
+        test.expect(2);
+        test.ok(typeof(fmt) !== "undefined");
+        
+        var date = new GregorianDate({
+            locale: "or-IN",
+            year: 2011,
+            month: 9,
+            day: 29,
+            hour: 13,
+            minute: 45,
+            second: 0,
+            millisecond: 0
+        });
+        test.equal(fmt.format(date), "29 ସେପ୍ଟେମ୍ବର 2011");
+        test.done();
+    },
+    
+    testDateFmtINSimpleFull_or_IN: function(test) {
+        var fmt = new DateFmt({locale: "or-IN", length: "full"});
+        test.expect(2);
+        test.ok(typeof(fmt) !== "undefined");
+        
+        var date = new GregorianDate({
+            locale: "or-IN",
+            year: 2011,
+            month: 9,
+            day: 29,
+            hour: 13,
+            minute: 45,
+            second: 0,
+            millisecond: 0
+        });
+        test.equal(fmt.format(date), "29 ସେପ୍ଟେମ୍ବର 2011");
+        test.done();
+    },
+    
+    testDateFmtINSimpleTimeShort_or_IN: function(test) {
+        var fmt = new DateFmt({locale: "or-IN", length: "short", type: "time"});
+        test.expect(2);
+        test.ok(typeof(fmt) !== "undefined");
+        
+        var date = new GregorianDate({
+            locale: "or-IN",
+            year: 2011,
+            month: 9,
+            day: 29,
+            hour: 13,
+            minute: 45,
+            second: 0,
+            millisecond: 0
+        });
+        test.equal(fmt.format(date), "1:45 pm");
+        test.done();
+    },
+    
+    testDateFmtINSimpleTimeShort_or_IN1: function(test) {
+        var fmt = new DateFmt({locale: "or-IN", length: "short", type: "time"});
+        test.expect(2);
+        test.ok(typeof(fmt) !== "undefined");
+        
+        var date = new GregorianDate({
+            locale: "or-IN",
+            year: 2011,
+            month: 9,
+            day: 29,
+            hour: 13,
+            minute: 45,
+            second: 0,
+            millisecond: 0
+        });
+        test.equal(fmt.format(date), "1:45 pm");
+        test.done();
+    },
+    
+    testDateFmtINSimpleTimeMedium_or_IN: function(test) {
+        var fmt = new DateFmt({locale: "or-IN", length: "medium", type: "time"});
+        test.expect(2);
+        test.ok(typeof(fmt) !== "undefined");
+        
+        var date = new GregorianDate({
+            locale: "or-IN",
+            year: 2011,
+            month: 9,
+            day: 29,
+            hour: 13,
+            minute: 45,
+            second: 0,
+            millisecond: 0
+        });
+        test.equal(fmt.format(date), "1:45 pm");
+        test.done();
+    },
+    
+    testDateFmtINSimpleTimeLong_or_IN: function(test) {
+        var fmt = new DateFmt({locale: "or-IN", timelength: "long", type: "time"});
+        test.expect(2);
+        test.ok(typeof(fmt) !== "undefined");
+        
+        var date = new GregorianDate({
+            locale: "or-IN",
+            year: 2011,
+            month: 9,
+            day: 29,
+            hour: 13,
+            minute: 45,
+            second: 0,
+            millisecond: 0
+        });
+        test.equal(fmt.format(date), "1:45 pm");
+        test.done();
+    },
+    
+    testDateFmtINSimpleTimeFull_or_IN: function(test) {
+        var fmt = new DateFmt({locale: "or-IN", length: "full", type: "time"});
+        test.expect(2);
+        test.ok(typeof(fmt) !== "undefined");
+        
+        var date = new GregorianDate({
+            locale: "or-IN",
+            year: 2011,
+            month: 9,
+            day: 29,
+            hour: 13,
+            minute: 45,
+            second: 0,
+            millisecond: 0
+        });
+        test.equal(fmt.format(date), "1:45 pm");
+        test.done();
+    },
+    
+    testDateFmtINDateTimeSimpleShort_or_IN: function(test) {
+        var fmt = new DateFmt({locale: "or-IN", length: "short", type: "datetime"});
+        test.expect(2);
+        test.ok(typeof(fmt) !== "undefined");
+        
+        var date = new GregorianDate({
+            locale: "or-IN",
+            year: 2011,
+            month: 9,
+            day: 29,
+            hour: 13,
+            minute: 45,
+            second: 0,
+            millisecond: 0
+        });
+        test.equal(fmt.format(date), "29-9-11 1:45 pm");
+        test.done();
+    },
+    
+    testDateFmtINDateTimeSimpleMedium_or_IN: function(test) {
+        var fmt = new DateFmt({locale: "or-IN", length: "medium", type: "datetime"});
+        test.expect(2);
+        test.ok(typeof(fmt) !== "undefined");
+        
+        var date = new GregorianDate({
+            locale: "or-IN",
+            year: 2011,
+            month: 9,
+            day: 29,
+            hour: 13,
+            minute: 45,
+            second: 0,
+            millisecond: 0
+        });
+        test.equal(fmt.format(date), "29 ସେପ୍ଟେମ୍ବର 2011 1:45 pm");
+        test.done();
+    },
+    
+    testDateFmtINDateTimeSimpleLong_or_IN: function(test) {
+        var fmt = new DateFmt({locale: "or-IN", length: "long", type: "datetime"});
+        test.expect(2);
+        test.ok(typeof(fmt) !== "undefined");
+        
+        var date = new GregorianDate({
+            locale: "or-IN",
+            year: 2011,
+            month: 9,
+            day: 29,
+            hour: 13,
+            minute: 45,
+            second: 0,
+            millisecond: 0
+        });
+        test.equal(fmt.format(date), "29 ସେପ୍ଟେମ୍ବର 2011 1:45 pm");
+        test.done();
+    },
+    
+    testDateFmtINDateTimeSimpleFull_or_IN: function(test) {
+        var fmt = new DateFmt({locale: "or-IN", length: "full", type: "datetime"});
+        test.expect(2);
+        test.ok(typeof(fmt) !== "undefined");
+        
+        var date = new GregorianDate({
+            locale: "or-IN",
+            year: 2011,
+            month: 9,
+            day: 29,
+            hour: 13,
+            minute: 45,
+            second: 0,
+            millisecond: 0
+        });
+        test.equal(fmt.format(date), "29 ସେପ୍ଟେମ୍ବର 2011 1:45 pm");
+        test.done();
+    },
+    
+    
+    testDateFmtINTemplateCalendar_or_IN: function(test) {
+        var fmt = new DateFmt({locale: "or-IN", calendar: "julian", template: "yyyy-MM-dd"});
+        test.expect(2);
+        test.ok(typeof(fmt) !== "undefined");
+        
+        var date = new JulianDate({
+            year: 2011,
+            month: 9,
+            day: 29,
+            hour: 13,
+            minute: 45,
+            second: 0,
+            millisecond: 0
+        });
+        test.equal(fmt.format(date), "2011-09-29");
+        test.done();
+    },
+    
+    
+    
+    testDateFmtINTemplateClock12SwitchHH_or_IN: function(test) {
+        var fmt = new DateFmt({locale: "or-IN", clock: "12", template: "HH:mm"});
+        test.expect(2);
+        test.ok(typeof(fmt) !== "undefined");
+        
+        var date = new GregorianDate({
+            locale: "or-IN",
+            year: 2011,
+            month: 9,
+            day: 29,
+            hour: 13,
+            minute: 45,
+            second: 0,
+            millisecond: 0
+        });
+        test.equal(fmt.format(date), "01:45");
+        test.done();
+    },
+    
+    testDateFmtINTemplateClock12Switchkk_or_IN: function(test) {
+        var fmt = new DateFmt({locale: "or-IN", clock: "12", template: "kk:mm"});
+        test.expect(2);
+        test.ok(typeof(fmt) !== "undefined");
+        
+        var date = new GregorianDate({
+            locale: "or-IN",
+            year: 2011,
+            month: 9,
+            day: 29,
+            hour: 13,
+            minute: 45,
+            second: 0,
+            millisecond: 0
+        });
+        test.equal(fmt.format(date), "01:45");
+        test.done();
+    },
+    
+    testDateFmtINTemplateClock24Switchhh_or_IN: function(test) {
+        var fmt = new DateFmt({locale: "or-IN", clock: "24", template: "hh:mm"});
+        test.expect(2);
+        test.ok(typeof(fmt) !== "undefined");
+        
+        var date = new GregorianDate({
+            locale: "or-IN",
+            year: 2011,
+            month: 9,
+            day: 29,
+            hour: 13,
+            minute: 45,
+            second: 0,
+            millisecond: 0
+        });
+        test.equal(fmt.format(date), "13:45");
+        test.done();
+    },
+    
+    testDateFmtINTemplateClock24SwitchKK_or_IN: function(test) {
+        var fmt = new DateFmt({locale: "or-IN", clock: "24", template: "KK:mm"});
+        test.expect(2);
+        test.ok(typeof(fmt) !== "undefined");
+        
+        var date = new GregorianDate({
+            locale: "or-IN",
+            year: 2011,
+            month: 9,
+            day: 29,
+            hour: 13,
+            minute: 45,
+            second: 0,
+            millisecond: 0
+        });
+        test.equal(fmt.format(date), "13:45");
+        test.done();
+    },
+    
+    testDateFmtINTemplateNoClockDoNotFollowLocaleDefault12hh_or_IN: function(test) {
+        var fmt = new DateFmt({locale: "or-IN", template: "hh:mm"});
+        test.expect(2);
+        test.ok(typeof(fmt) !== "undefined");
+        
+        var date = new GregorianDate({
+            locale: "or-IN",
+            year: 2011,
+            month: 9,
+            day: 29,
+            hour: 13,
+            minute: 45,
+            second: 0,
+            millisecond: 0
+        });
+        test.equal(fmt.format(date), "01:45");
+        test.done();
+    },
+    
+    testDateFmtINTemplateNoClockDoNotFollowLocaleDefault12KK_or_IN: function(test) {
+        var fmt = new DateFmt({locale: "or-IN", template: "KK:mm"});
+        test.expect(2);
+        test.ok(typeof(fmt) !== "undefined");
+        
+        var date = new GregorianDate({
+            locale: "or-IN",
+            year: 2011,
+            month: 9,
+            day: 29,
+            hour: 13,
+            minute: 45,
+            second: 0,
+            millisecond: 0
+        });
+        test.equal(fmt.format(date), "01:45");
+        test.done();
+    },
+    
+    testDateFmtINTemplateNoClockDoNotFollowLocaleDefault24HH_or_IN: function(test) {
+        var fmt = new DateFmt({locale: "or-IN", template: "HH:mm"});
+        test.expect(2);
+        test.ok(typeof(fmt) !== "undefined");
+        
+        var date = new GregorianDate({
+            locale: "or-IN",
+            year: 2011,
+            month: 9,
+            day: 29,
+            hour: 13,
+            minute: 45,
+            second: 0,
+            millisecond: 0
+        });
+        test.equal(fmt.format(date), "13:45");
+        test.done();
+    },
+    
+    testDateFmtINTemplateNoClockDoNotFollowLocaleDefault24kk_or_IN: function(test) {
+        var fmt = new DateFmt({locale: "or-IN", template: "kk:mm"});
+        test.expect(2);
+        test.ok(typeof(fmt) !== "undefined");
+        
+        var date = new GregorianDate({
+            locale: "or-IN",
+            year: 2011,
+            month: 9,
+            day: 29,
+            hour: 13,
+            minute: 45,
+            second: 0,
+            millisecond: 0
+        });
+        test.equal(fmt.format(date), "13:45");
+        test.done();
+    },
+    
+    
+    testDateFmtINTypeDate_or_IN: function(test) {
+        var fmt = new DateFmt({locale: "or-IN", type: "date"});
+        test.expect(2);
+        test.ok(typeof(fmt) !== "undefined");
+        
+        var date = new GregorianDate({
+            locale: "or-IN",
+            year: 2011,
+            month: 9,
+            day: 29,
+            hour: 13,
+            minute: 45,
+            second: 0,
+            millisecond: 0
+        });
+        test.equal(fmt.format(date), "29-9-11");
+        test.done();
+    },
+    
+    testDateFmtINTypeTime_or_IN: function(test) {
+        var fmt = new DateFmt({locale: "or-IN", type: "time"});
+        test.expect(2);
+        test.ok(typeof(fmt) !== "undefined");
+        
+        var date = new GregorianDate({
+            locale: "or-IN",
+            year: 2011,
+            month: 9,
+            day: 29,
+            hour: 13,
+            minute: 45,
+            second: 0,
+            millisecond: 0
+        });
+        test.equal(fmt.format(date), "1:45 pm");
+        test.done();
+    },
+    
+    testDateFmtINTypeDateTime_or_IN: function(test) {
+        var fmt = new DateFmt({locale: "or-IN", type: "datetime"});
+        test.expect(2);
+        test.ok(typeof(fmt) !== "undefined");
+        
+        var date = new GregorianDate({
+            locale: "or-IN",
+            year: 2011,
+            month: 9,
+            day: 29,
+            hour: 13,
+            minute: 45,
+            second: 0,
+            millisecond: 0
+        });
+        test.equal(fmt.format(date), "29-9-11 1:45 pm");
+        test.done();
+    },
+    
+    
+    testDateFmtINShortDateComponentsY_or_IN: function(test) {
+        var fmt = new DateFmt({locale: "or-IN", date: "y"});
+        test.expect(2);
+        test.ok(typeof(fmt) !== "undefined");
+        
+        var date = new GregorianDate({
+            locale: "or-IN",
+            year: 2011,
+            month: 9,
+            day: 29,
+            hour: 13,
+            minute: 45,
+            second: 0,
+            millisecond: 0
+        });
+        test.equal(fmt.format(date), "11");
+        test.done();
+    },
+    
+    testDateFmtINShortDateComponentsM_or_IN: function(test) {
+        var fmt = new DateFmt({locale: "or-IN", date: "m"});
+        test.expect(2);
+        test.ok(typeof(fmt) !== "undefined");
+        
+        var date = new GregorianDate({
+            locale: "or-IN",
+            year: 2011,
+            month: 9,
+            day: 29,
+            hour: 13,
+            minute: 45,
+            second: 0,
+            millisecond: 0
+        });
+        test.equal(fmt.format(date), "9");
+        test.done();
+    },
+    
+    testDateFmtINShortDateComponentsN_or_IN: function(test) {
+        var fmt = new DateFmt({locale: "or-IN", date: "n"});
+        test.expect(2);
+        test.ok(typeof(fmt) !== "undefined");
+        
+        var date = new GregorianDate({
+            locale: "or-IN",
+            year: 2011,
+            month: 9,
+            day: 29,
+            hour: 13,
+            minute: 45,
+            second: 0,
+            millisecond: 0
+        });
+        test.equal(fmt.format(date), "ସ");
+        test.done();
+    },
+    
+    testDateFmtINShortDateComponentsD_or_IN: function(test) {
+        var fmt = new DateFmt({locale: "or-IN", date: "d"});
+        test.expect(2);
+        test.ok(typeof(fmt) !== "undefined");
+        
+        var date = new GregorianDate({
+            locale: "or-IN",
+            year: 2011,
+            month: 9,
+            day: 29,
+            hour: 13,
+            minute: 45,
+            second: 0,
+            millisecond: 0
+        });
+        test.equal(fmt.format(date), "29");
+        test.done();
+    },
+    
+    testDateFmtINShortDateComponentsDM_or_IN: function(test) {
+        var fmt = new DateFmt({locale: "or-IN", date: "dm"});
+        test.expect(2);
+        test.ok(typeof(fmt) !== "undefined");
+        
+        var date = new GregorianDate({
+            locale: "or-IN",
+            year: 2011,
+            month: 9,
+            day: 29,
+            hour: 13,
+            minute: 45,
+            second: 0,
+            millisecond: 0
+        });
+        test.equal(fmt.format(date), "29-9");
+        test.done();
+    },
+    
+    testDateFmtINShortDateComponentsMY_or_IN: function(test) {
+        var fmt = new DateFmt({locale: "or-IN", date: "my"});
+        test.expect(2);
+        test.ok(typeof(fmt) !== "undefined");
+        
+        var date = new GregorianDate({
+            locale: "or-IN",
+            year: 2011,
+            month: 9,
+            day: 29,
+            hour: 13,
+            minute: 45,
+            second: 0,
+            millisecond: 0
+        });
+        test.equal(fmt.format(date), "9-11");
+        test.done();
+    },
+    
+    testDateFmtINShortDateComponentsDMY_or_IN: function(test) {
+        var fmt = new DateFmt({locale: "or-IN", date: "dmy"});
+        test.expect(2);
+        test.ok(typeof(fmt) !== "undefined");
+        
+        var date = new GregorianDate({
+            locale: "or-IN",
+            year: 2011,
+            month: 9,
+            day: 29,
+            hour: 13,
+            minute: 45,
+            second: 0,
+            millisecond: 0
+        });
+        test.equal(fmt.format(date), "29-9-11");
+        test.done();
+    },
+    
+    testDateFmtINShortDateComponentsWDM_or_IN: function(test) {
+        var fmt = new DateFmt({locale: "or-IN", date: "wdm"});
+        test.expect(2);
+        test.ok(typeof(fmt) !== "undefined");
+        
+        var date = new GregorianDate({
+            locale: "or-IN",
+            year: 2011,
+            month: 9,
+            day: 29,
+            hour: 13,
+            minute: 45,
+            second: 0,
+            millisecond: 0
+        });
+        test.equal(fmt.format(date), "ଗୁ, 29-9");
+        test.done();
+    },
+    
+    testDateFmtINShortDateComponentsWDMY_or_IN: function(test) {
+        var fmt = new DateFmt({locale: "or-IN", date: "wdmy"});
+        test.expect(2);
+        test.ok(typeof(fmt) !== "undefined");
+        
+        var date = new GregorianDate({
+            locale: "or-IN",
+            year: 2011,
+            month: 9,
+            day: 29,
+            hour: 13,
+            minute: 45,
+            second: 0,
+            millisecond: 0
+        });
+        test.equal(fmt.format(date), "ଗୁ, 29-9-11");
+        test.done();
+    },
+    
+    
+    testDateFmtINFullDateComponentsY_or_IN: function(test) {
+        var fmt = new DateFmt({locale: "or-IN", length: "full", date: "y"});
+        test.expect(2);
+        test.ok(typeof(fmt) !== "undefined");
+        
+        var date = new GregorianDate({
+            locale: "or-IN",
+            year: 2011,
+            month: 9,
+            day: 29,
+            hour: 13,
+            minute: 45,
+            second: 0,
+            millisecond: 0
+        });
+        test.equal(fmt.format(date), "2011");
+        test.done();
+    },
+    
+    testDateFmtINFullDateComponentsM_or_IN: function(test) {
+        var fmt = new DateFmt({locale: "or-IN", length: "full", date: "m"});
+        test.expect(2);
+        test.ok(typeof(fmt) !== "undefined");
+        
+        var date = new GregorianDate({
+            locale: "or-IN",
+            year: 2011,
+            month: 9,
+            day: 29,
+            hour: 13,
+            minute: 45,
+            second: 0,
+            millisecond: 0
+        });
+        test.equal(fmt.format(date), "ସେପ୍ଟେମ୍ବର");
+        test.done();
+    },
+    
+    testDateFmtINFullDateComponentsD_or_IN: function(test) {
+        var fmt = new DateFmt({locale: "or-IN", length: "full", date: "d"});
+        test.expect(2);
+        test.ok(typeof(fmt) !== "undefined");
+        
+        var date = new GregorianDate({
+            locale: "or-IN",
+            year: 2011,
+            month: 9,
+            day: 29,
+            hour: 13,
+            minute: 45,
+            second: 0,
+            millisecond: 0
+        });
+        test.equal(fmt.format(date), "29");
+        test.done();
+    },
+    
+    testDateFmtINFullDateComponentsDM_or_IN: function(test) {
+        var fmt = new DateFmt({locale: "or-IN", length: "full", date: "dm"});
+        test.expect(2);
+        test.ok(typeof(fmt) !== "undefined");
+        
+        var date = new GregorianDate({
+            locale: "or-IN",
+            year: 2011,
+            month: 9,
+            day: 29,
+            hour: 13,
+            minute: 45,
+            second: 0,
+            millisecond: 0
+        });
+        test.equal(fmt.format(date), "29 ସେପ୍ଟେମ୍ବର");
+        test.done();
+    },
+    
+    testDateFmtINFullDateComponentsMY_or_IN: function(test) {
+        var fmt = new DateFmt({locale: "or-IN", length: "full", date: "my"});
+        test.expect(2);
+        test.ok(typeof(fmt) !== "undefined");
+        
+        var date = new GregorianDate({
+            locale: "or-IN",
+            year: 2011,
+            month: 9,
+            day: 29,
+            hour: 13,
+            minute: 45,
+            second: 0,
+            millisecond: 0
+        });
+        test.equal(fmt.format(date), "ସେପ୍ଟେମ୍ବର 2011");
+        test.done();
+    },
+    
+    testDateFmtINFullDateComponentsDMY_or_IN: function(test) {
+        var fmt = new DateFmt({locale: "or-IN", length: "full", date: "dmy"});
+        test.expect(2);
+        test.ok(typeof(fmt) !== "undefined");
+        
+        var date = new GregorianDate({
+            locale: "or-IN",
+            year: 2011,
+            month: 9,
+            day: 29,
+            hour: 13,
+            minute: 45,
+            second: 0,
+            millisecond: 0
+        });
+        test.equal(fmt.format(date), "29 ସେପ୍ଟେମ୍ବର 2011");
+        test.done();
+    },
+    
+    testDateFmtINFullDateComponentsWDM_or_IN: function(test) {
+        var fmt = new DateFmt({locale: "or-IN", length: "full", date: "wdm"});
+        test.expect(2);
+        test.ok(typeof(fmt) !== "undefined");
+        
+        var date = new GregorianDate({
+            locale: "or-IN",
+            year: 2011,
+            month: 9,
+            day: 29,
+            hour: 13,
+            minute: 45,
+            second: 0,
+            millisecond: 0
+        });
+        test.equal(fmt.format(date), "ଗୁରୁବାର, 29 ସେପ୍ଟେମ୍ବର");
+        test.done();
+    },
+    
+    testDateFmtINFullDateComponentsWDMY_or_IN: function(test) {
+        var fmt = new DateFmt({locale: "or-IN", length: "full", date: "wdmy"});
+        test.expect(2);
+        test.ok(typeof(fmt) !== "undefined");
+        
+        var date = new GregorianDate({
+            locale: "or-IN",
+            year: 2011,
+            month: 9,
+            day: 29,
+            hour: 13,
+            minute: 45,
+            second: 0,
+            millisecond: 0
+        });
+        test.equal(fmt.format(date), "ଗୁରୁବାର, 29 ସେପ୍ଟେମ୍ବର 2011");
+        test.done();
+    },
+    
+    
+    testDateFmtINShortTimeComponentsS_or_IN: function(test) {
+        var fmt = new DateFmt({locale: "or-IN", type: "time", time: "s"});
+        test.expect(2);
+        test.ok(typeof(fmt) !== "undefined");
+        
+        var date = new GregorianDate({
+            locale: "or-IN",
+            year: 2011,
+            month: 9,
+            day: 29,
+            hour: 13,
+            minute: 45,
+            second: 37,
+            millisecond: 0
+        });
+        test.equal(fmt.format(date), "37");
+        test.done();
+    },
+    
+    testDateFmtINShortTimeComponentsM_or_IN: function(test) {
+        var fmt = new DateFmt({locale: "or-IN", type: "time", time: "m"});
+        test.expect(2);
+        test.ok(typeof(fmt) !== "undefined");
+        
+        var date = new GregorianDate({
+            locale: "or-IN",
+            year: 2011,
+            month: 9,
+            day: 29,
+            hour: 13,
+            minute: 45,
+            second: 37,
+            millisecond: 0
+        });
+        test.equal(fmt.format(date), "45");
+        test.done();
+    },
+    
+    testDateFmtINShortTimeComponentsH_or_IN: function(test) {
+        var fmt = new DateFmt({locale: "or-IN", type: "time", time: "h"});
+        test.expect(2);
+        test.ok(typeof(fmt) !== "undefined");
+        
+        var date = new GregorianDate({
+            locale: "or-IN",
+            year: 2011,
+            month: 9,
+            day: 29,
+            hour: 13,
+            minute: 45,
+            second: 37,
+            millisecond: 0
+        });
+        test.equal(fmt.format(date), "1");
+        test.done();
+    },
+    
+    
+    testDateFmtINShortTimeComponentsHM_or_IN: function(test) {
+        var fmt = new DateFmt({locale: "or-IN", type: "time", time: "hm"});
+        test.expect(2);
+        test.ok(typeof(fmt) !== "undefined");
+        
+        var date = new GregorianDate({
+            locale: "or-IN",
+            year: 2011,
+            month: 9,
+            day: 29,
+            hour: 13,
+            minute: 45,
+            second: 37,
+            millisecond: 0
+        });
+        test.equal(fmt.format(date), "1:45");
+        test.done();
+    },
+    
+    testDateFmtINShortTimeComponentsHMS_or_IN: function(test) {
+        var fmt = new DateFmt({locale: "or-IN", type: "time", time: "hms"});
+        test.expect(2);
+        test.ok(typeof(fmt) !== "undefined");
+        
+        var date = new GregorianDate({
+            locale: "or-IN",
+            year: 2011,
+            month: 9,
+            day: 29,
+            hour: 13,
+            minute: 45,
+            second: 37,
+            millisecond: 0
+        });
+        test.equal(fmt.format(date), "1:45:37");
+        test.done();
+    },
+    
+    testDateFmtINShortTimeComponentsHMA_or_IN: function(test) {
+        var fmt = new DateFmt({locale: "or-IN", type: "time", time: "hma"});
+        test.expect(2);
+        test.ok(typeof(fmt) !== "undefined");
+        
+        var date = new GregorianDate({
+            locale: "or-IN",
+            year: 2011,
+            month: 9,
+            day: 29,
+            hour: 13,
+            minute: 45,
+            second: 37,
+            millisecond: 0
+        });
+        test.equal(fmt.format(date), "1:45 pm");
+        test.done();
+    },
+    
+    testDateFmtINShortTimeComponentsHMZ_or_IN: function(test) {
+        var fmt = new DateFmt({
+            locale: "or-IN", 
+            type: "time", 
+            time: "ahmsz"
+        });
+        test.expect(2);
+        test.ok(typeof(fmt) !== "undefined");
+        
+        var date = new GregorianDate({
+            locale: "or-IN",
+            year: 2011,
+            month: 9,
+            day: 29,
+            hour: 13,
+            minute: 45,
+            second: 37,
+            millisecond: 0
+        });
+        test.equal(fmt.format(date), "1:45:37 pm IST");
+        test.done();
+    },
+    
+    testDateFmtINShortTimeComponentsHMAZ_or_IN: function(test) {
+        var fmt = new DateFmt({
+            locale: "or-IN", 
+            type: "time", 
+            time: "ahmsz", 
+            timezone: "Asia/Kolkata"
+        });
+        test.expect(2);
+        test.ok(typeof(fmt) !== "undefined");
+        
+        var date = new GregorianDate({
+            locale: "or-IN",
+            year: 2011,
+            month: 9,
+            day: 29,
+            hour: 13,
+            minute: 45,
+            second: 37,
+            millisecond: 0
+        });
+        test.equal(fmt.format(date), "1:45:37 pm IST");
+        test.done();
+    },
+    
+    testDateFmtINShortTimeComponentsHMSA_or_IN: function(test) {
+        var fmt = new DateFmt({locale: "or-IN", type: "time", time: "hmsa"});
+        test.expect(2);
+        test.ok(typeof(fmt) !== "undefined");
+        
+        var date = new GregorianDate({
+            locale: "or-IN",
+            year: 2011,
+            month: 9,
+            day: 29,
+            hour: 13,
+            minute: 45,
+            second: 37,
+            millisecond: 0
+        });
+        test.equal(fmt.format(date), "1:45:37 pm");
+        test.done();
+    },
+    
+    testDateFmtINShortTimeComponentsHMSZ_or_IN: function(test) {
+        var fmt = new DateFmt({
+            locale: "or-IN", 
+            type: "time", 
+            time: "hmsaz", 
+            timezone: "Asia/Kolkata"
+        });
+        test.expect(2);
+        test.ok(typeof(fmt) !== "undefined");
+        
+        var date = new GregorianDate({
+            locale: "or-IN",
+            year: 2011,
+            month: 9,
+            day: 29,
+            hour: 13,
+            minute: 45,
+            second: 37,
+            millisecond: 0
+        });
+        test.equal(fmt.format(date), "1:45:37 pm IST");
+        test.done();
+    },
+    
+    testDateFmtINShortTimeComponentsHMSAZ_or_IN: function(test) {
+        var fmt = new DateFmt({
+            locale: "or-IN", 
+            type: "time", 
+            time: "hmsaz", 
+            timezone: "Asia/Kolkata"
+        });
+        test.expect(2);
+        test.ok(typeof(fmt) !== "undefined");
+        
+        var date = new GregorianDate({
+            locale: "or-IN",
+            year: 2011,
+            month: 9,
+            day: 29,
+            hour: 13,
+            minute: 45,
+            second: 37,
+            millisecond: 0
+        });
+        test.equal(fmt.format(date), "1:45:37 pm IST");
+        test.done();
+    },
+    
+    
+    testDateFmtINFullTimeComponentsS_or_IN: function(test) {
+        var fmt = new DateFmt({locale: "or-IN", type: "time", length: "full", time: "s"});
+        test.expect(2);
+        test.ok(typeof(fmt) !== "undefined");
+        
+        var date = new GregorianDate({
+            locale: "or-IN",
+            year: 2011,
+            month: 9,
+            day: 29,
+            hour: 13,
+            minute: 45,
+            second: 37,
+            millisecond: 0
+        });
+        test.equal(fmt.format(date), "37");
+        test.done();
+    },
+    
+    testDateFmtINFullTimeComponentsM_or_IN: function(test) {
+        var fmt = new DateFmt({locale: "or-IN", type: "time", length: "full", time: "m"});
+        test.expect(2);
+        test.ok(typeof(fmt) !== "undefined");
+        
+        var date = new GregorianDate({
+            locale: "or-IN",
+            year: 2011,
+            month: 9,
+            day: 29,
+            hour: 13,
+            minute: 45,
+            second: 37,
+            millisecond: 0
+        });
+        test.equal(fmt.format(date), "45");
+        test.done();
+    },
+    
+    testDateFmtINFullTimeComponentsH_or_IN: function(test) {
+        var fmt = new DateFmt({locale: "or-IN", type: "time", length: "full", time: "h"});
+        test.expect(2);
+        test.ok(typeof(fmt) !== "undefined");
+        
+        var date = new GregorianDate({
+            locale: "or-IN",
+            year: 2011,
+            month: 9,
+            day: 29,
+            hour: 13,
+            minute: 45,
+            second: 37,
+            millisecond: 0
+        });
+        test.equal(fmt.format(date), "1");
+        test.done();
+    },
+    
+    
+    
+    testDateFmtINFullTimeComponentsHM_or_IN: function(test) {
+        var fmt = new DateFmt({locale: "or-IN", type: "time", length: "full", time: "hma"});
+        test.expect(2);
+        test.ok(typeof(fmt) !== "undefined");
+        
+        var date = new GregorianDate({
+            locale: "or-IN",
+            year: 2011,
+            month: 9,
+            day: 29,
+            hour: 13,
+            minute: 45,
+            second: 37,
+            millisecond: 0
+        });
+        test.equal(fmt.format(date), "1:45 pm");
+        test.done();
+    },
+    
+    testDateFmtINFullTimeComponentsHMS_or_IN: function(test) {
+        var fmt = new DateFmt({locale: "or-IN", type: "time", length: "full", time: "hmsa"});
+        test.expect(2);
+        test.ok(typeof(fmt) !== "undefined");
+        
+        var date = new GregorianDate({
+            locale: "or-IN",
+            year: 2011,
+            month: 9,
+            day: 29,
+            hour: 13,
+            minute: 45,
+            second: 37,
+            millisecond: 0
+        });
+        test.equal(fmt.format(date), "1:45:37 pm");
+        test.done();
+    },
+    
+    testDateFmtINFullTimeComponentsHMA_or_IN: function(test) {
+        var fmt = new DateFmt({locale: "or-IN", type: "time", length: "full", time: "hma"});
+        test.expect(2);
+        test.ok(typeof(fmt) !== "undefined");
+        
+        var date = new GregorianDate({
+            locale: "or-IN",
+            year: 2011,
+            month: 9,
+            day: 29,
+            hour: 13,
+            minute: 45,
+            second: 37,
+            millisecond: 0
+        });
+        test.equal(fmt.format(date), "1:45 pm");
+        test.done();
+    },
+    
+    
+    
+    testDateFmtINFullTimeComponentsHMAZ_or_IN: function(test) {
+        var fmt = new DateFmt({
+            locale: "or-IN", 
+            type: "time", 
+            length: "full", 
+            time: "ahmsz", 
+            timezone: "Asia/Kolkata"
+        });
+        test.expect(2);
+        test.ok(typeof(fmt) !== "undefined");
+        
+        var date = new GregorianDate({
+            locale: "or-IN",
+            year: 2011,
+            month: 9,
+            day: 29,
+            hour: 13,
+            minute: 45,
+            second: 37,
+            millisecond: 0
+        });
+        test.equal(fmt.format(date), "1:45:37 pm IST");
+        test.done();
+    },
+    
+    testDateFmtINFullTimeComponentsHMSA_or_IN: function(test) {
+        var fmt = new DateFmt({locale: "or-IN", type: "time", length: "full", time: "hmsa"});
+        test.expect(2);
+        test.ok(typeof(fmt) !== "undefined");
+        
+        var date = new GregorianDate({
+            locale: "or-IN",
+            year: 2011,
+            month: 9,
+            day: 29,
+            hour: 13,
+            minute: 45,
+            second: 37,
+            millisecond: 0
+        });
+        test.equal(fmt.format(date), "1:45:37 pm");
+        test.done();
+    },
+    
+    testDateFmtINFullTimeComponentsHMSZ_or_IN: function(test) {
+        var fmt = new DateFmt({
+            locale: "or-IN", 
+            type: "time", 
+            length: "full", 
+            time: "hmsaz", 
+            timezone: "Asia/Kolkata"
+        });
+        test.expect(2);
+        test.ok(typeof(fmt) !== "undefined");
+        
+        var date = new GregorianDate({
+            locale: "or-IN",
+            year: 2011,
+            month: 9,
+            day: 29,
+            hour: 13,
+            minute: 45,
+            second: 37,
+            millisecond: 0
+        });
+        test.equal(fmt.format(date), "1:45:37 pm IST");
+        test.done();
+    },
+    
+    testDateFmtINFullTimeComponentsHMSAZ_or_IN: function(test) {
+        var fmt = new DateFmt({
+            locale: "or-IN", 
+            type: "time", 
+            length: "full", 
+            time: "hmsaz", 
+            timezone: "Asia/Kolkata"
+        });
+        test.expect(2);
+        test.ok(typeof(fmt) !== "undefined");
+        
+        var date = new GregorianDate({
+            locale: "or-IN",
+            year: 2011,
+            month: 9,
+            day: 29,
+            hour: 13,
+            minute: 45,
+            second: 37,
+            millisecond: 0
+        });
+        test.equal(fmt.format(date), "1:45:37 pm IST");
+        test.done();
+    },
+    
+    testDateFmtINWithTimeZoneAndNoDST_or_IN: function(test) {
+        var fmt = new DateFmt({
+            locale: "or-IN", 
+            type: "time", 
+            length: "full", 
+            time: "hmsaz", 
+            timezone: "Asia/Kolkata"
+        });
+        test.expect(2);
+        test.ok(typeof(fmt) !== "undefined");
+        
+        var date = new GregorianDate({
+            locale: "or-IN",
+            year: 2011,
+            month: 12,
+            day: 29,
+            hour: 13,
+            minute: 45,
+            second: 37,
+            millisecond: 0
+        });
+        test.equal(fmt.format(date), "1:45:37 pm IST");
+        test.done();
+    }
+    
+    
+};

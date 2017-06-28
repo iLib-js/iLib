@@ -20,6 +20,18 @@
 var ilib = require("./../lib/ilib.js");
 var NumberingPlan = require("./../lib/NumberingPlan.js");
 
+function mockLoader(paths, sync, params, callback) {
+	var data = [];
+	
+	data.push(ilib.data.numplan); // for the generic, shared stuff
+	data.push(ilib.data.numplan_US);
+	
+	if (typeof(callback) !== 'undefined') {
+		callback.call(this, data);	
+	}
+	return data;
+}
+
 function testGet1() {
 	var plan = new NumberingPlan({locale: "en-US"});
 	assertNotUndefined(plan);
@@ -79,18 +91,6 @@ function testRightContents() {
 	assertEquals(" ()-.", plan.getCommonFormatChars());	
 };
 
-function mockLoader(paths, sync, params, callback) {
-	var data = [];
-	
-	data.push(ilib.data.numplan); // for the generic, shared stuff
-	data.push(ilib.data.numplan_US);
-	
-	if (typeof(callback) !== 'undefined') {
-		callback.call(this, data);	
-	}
-	return data;
-}
-
 function testNumPlanLoadLocaleDataSynch() {
 	if (ilib.isDynData()) {
 		// don't need to test loading on the dynamic load version because we are testing
@@ -98,17 +98,16 @@ function testNumPlanLoadLocaleDataSynch() {
 		return;
 	}
 	
-	NumberingPlan.cache = {};
+	var oldLoader = ilib._load;
 	ilib.setLoaderCallback(mockLoader);
 
 	new NumberingPlan({
 		locale: "en-US",
 		sync: false,
 		onLoad: function (plan) {
+		    ilib.setLoaderCallback(oldLoader);
     		assertNotNull(plan);
     		assertEquals("US", plan.getName());    			
     	}
 	});
-
-    ilib.setLoaderCallback(undefined);
 };

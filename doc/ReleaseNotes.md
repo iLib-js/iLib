@@ -1,5 +1,30 @@
+Release Notes for Version 13.0
+=============================
+
+Build 000
+-------
+
+New Features:
+
+* Updated most classes to use locale data from CLDR 30.
+  * Updated scripts in the tools/cldr dir to read the new data
+  * Unit tests updated as well
+* Added Country class to contain information about a particular country, especially translations of its name
+* Added support for travis-ci builds for the development and master branches in github.
+* Support for the legacy way of calling ilib through the ilib namespace was deprecated in ilib 11 & 12, and is now removed in ilib 13
+  * That means that code that is upgrading to ilib 13 for example should use DateFmt instead of ilib.DateFmt to get the date formatter class
+  * The ilib-stubs.js file is still there and can map from the old ilib namespace to the CommonJS style classes, but it is no longer being maintained
+  * All legacy unit tests have been removed as well
+
+
 Release Notes for Version 12.0
 =============================
+
+Build 004
+-------
+
+Build 3 was mispublished on npm, so the version was updated to 12.0.4 without any actual changes from 12.0.3.
+
 
 Build 003
 -------
@@ -7,6 +32,43 @@ Build 003
 New Features:
 
 * Updated the number formatting to the CLDR 26.0.1 settings. This means that various formats for various locales have been changed and updated to better match the actual usage in those regions.
+* Added support for new and updated Unicode ranges in CType.withinRange. 
+  * latin - Latin-1 supplement, Latin Extended-E
+  * cyrillic - Cyrillic Supplement
+  * arabic -Arabic Mathematical Alphabetic Symbols
+  * myanmar - Myanmar Extended-B
+  * sundanese - Sundanese, Sundanese Supplement
+  * combining - Combining Diacritical Marks Extended
+  * numbers - Number forms
+  * supersub - Superscripts and Subscripts
+  * arrows - Supplemental Arrows-C
+  * geometric - Geometric shapes extended
+  * copticnumber - coptic epact numbers
+  * oldpermic - old permic
+  * albanian - albanian
+  * lineara - linear a
+  * meroitic - meroitic cursive
+  * oldnortharabian - old north arabian
+  * oldhungarian - Supplementary private use area-A
+  * sorasompeng - sora sompeng
+  * warangciti - warang citi
+  * paucinhau - pau cin hau
+  * bassavah - bassa vah
+  * pahawhhmong - pahawh hmong
+  * shorthandformat - shorthand format controls
+  * suttonsignwriting - sutton signwriting
+  * pictographs - miscellaneous symbols and pictographs, supplemental symbols and pictographs
+  * ornamentaldingbats - ornamental dingbats
+* For the DateFmt class, you can now pass ICU style skeletons in this option similar to the ones you get from <a href="http://icu-project.org/apiref/icu4c432/classDateTimePatternGenerator.html#aa30c251609c1eea5ad60c95fc497251e">DateTimePatternGenerator.getSkeleton()</a>. (Ex: "MMMMy")
+  * It will not extract the length from the skeleton so you still need to pass the length property, but it will extract the date components.
+* Plural formatting rules have been updated to CLDR 26
+* In the ResBundle class, add the "c" type of strings for strings extracted from the C programming language. This automatically 
+recognizes and skips the percent printf style replacement parameters when pseudo-localizing and in other situations. 
+(eg. "There are %d objects.") 
+
+Bug Fixes:
+
+* When formatting duration ranges in right-to-left languages like Arabic or Hebrew, the code now automatically inserts the Unicode right-to-left mark before the format so that formatted durations appear right-aligned in web browsers, no matter which characters appear the beginning of the string. Without it, strings that start with ASCII characters will appear left-aligned and strings that start with RTL characters will appear right-aligned, regardless of the other characters in the string. 
 
 Build 002
 -------

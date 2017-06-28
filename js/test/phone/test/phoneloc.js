@@ -20,6 +20,20 @@
 var ilib = require("./../lib/ilib.js");
 var PhoneLocale = require("./../lib/PhoneLocale.js");
 
+function mockLoader(paths, sync, params, callback) {
+	var data = [];
+	
+	data.push(ilib.data.cc2reg); // for the generic, shared stuff
+	data.push(ilib.data.reg2cc);
+	data.push(ilib.data.mcc2reg);
+	data.push(ilib.data.area2reg);
+	
+	if (typeof(callback) !== 'undefined') {
+		callback.call(this, data);	
+	}
+	return data;
+}
+
 function testGetByMCCUS() {
 	var loc = new PhoneLocale({mcc: "310"});
 	assertNotUndefined(loc);
@@ -80,20 +94,6 @@ function testGetDefaultEmpty() {
 	assertEquals("US", loc.region);
 };
 
-function mockLoader(paths, sync, params, callback) {
-	var data = [];
-	
-	data.push(ilib.data.cc2reg); // for the generic, shared stuff
-	data.push(ilib.data.reg2cc);
-	data.push(ilib.data.mcc2reg);
-	data.push(ilib.data.area2reg);
-	
-	if (typeof(callback) !== 'undefined') {
-		callback.call(this, data);	
-	}
-	return data;
-}
-
 function testPhoneLocLoadLocaleDataSynch() {
 	if (ilib.isDynData()) {
 		// don't need to test loading on the dynamic load version because we are testing
@@ -101,16 +101,16 @@ function testPhoneLocLoadLocaleDataSynch() {
 		return;
 	}
 	
-	PhoneLocale.cache = {};
+    var oldLoader = ilib._load;
 	ilib.setLoaderCallback(mockLoader);
 
 	new PhoneLocale({
 		countryCode: "44",
 		sync: false,
 		onLoad: function (loc) {
+            ilib.setLoaderCallback(oldLoader);
     		assertNotNull(loc);
     		assertEquals("GB", loc.getRegion());    			
     	}
 	});
-    ilib.setLoaderCallback(undefined);
 };
