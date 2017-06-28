@@ -17,6 +17,9 @@
  * limitations under the License.
  */
 
+if (typeof(ilib) === "undefined") {
+    var ilib = require("../.././../lib/ilib.js");
+}
 if (typeof(ThaiSolarDate) === "undefined") {
     var ThaiSolarDate = require("../.././../lib/ThaiSolarDate.js");
 }
