@@ -34,6 +34,7 @@ module.exports.testcollation_ru = {
     },
 
     testJSCollatorQuat_ru: function(test) {
+        test.expect(32);
         var col = new Collator({
             locale: "ru-RU",
             useNative: false,
@@ -41,7 +42,6 @@ module.exports.testcollation_ru = {
             usage: "search"
         });
     
-        test.expect(32);
         test.ok(typeof(col) !== "undefined");
     
         // А А́ а а́ Ӑ Ӑ ӑ ӑ Ӓ Ӓ ӓ ӓ Б б В в Г г Ґ ґ Ғ ғ Ӻ ӻ Ҕ ҕ Ӷ ӷ Ѓ Ѓ ѓ ѓ
@@ -80,6 +80,7 @@ module.exports.testcollation_ru = {
     },
     
     testJSCollatorTer_ru: function(test) {
+        test.expect(32);
         var col = new Collator({
             locale: "ru-RU",
             useNative: false,
@@ -87,7 +88,6 @@ module.exports.testcollation_ru = {
             usage: "search"
         });
     
-        test.expect(32);
         test.ok(typeof(col) !== "undefined");
     
         // А А́ а а́ Ӑ Ӑ ӑ ӑ Ӓ Ӓ ӓ ӓ Б б В в Г г Ґ ґ Ғ ғ Ӻ ӻ Ҕ ҕ Ӷ ӷ Ѓ Ѓ ѓ ѓ
@@ -126,6 +126,7 @@ module.exports.testcollation_ru = {
     },
     
     testJSCollatorSec_ru: function(test) {
+        test.expect(32);
         var col = new Collator({
             locale: "ru-RU",
             useNative: false,
@@ -133,7 +134,6 @@ module.exports.testcollation_ru = {
             usage: "search"
         });
     
-        test.expect(32);
         test.ok(typeof(col) !== "undefined");
     
         // А А́ а а́ Ӑ Ӑ ӑ ӑ Ӓ Ӓ ӓ ӓ Б б В в Г г Ґ ґ Ғ ғ Ӻ ӻ Ҕ ҕ Ӷ ӷ Ѓ Ѓ ѓ ѓ
@@ -172,6 +172,7 @@ module.exports.testcollation_ru = {
     },
     
     testJSCollatorPri_ru: function(test) {
+        test.expect(32);
         var col = new Collator({
             locale: "ru-RU",
             useNative: false,
@@ -179,7 +180,6 @@ module.exports.testcollation_ru = {
             usage: "search"
         });
     
-        test.expect(32);
         test.ok(typeof(col) !== "undefined");
     
         // А А́ а а́ Ӑ Ӑ ӑ ӑ Ӓ Ӓ ӓ ӓ Б б В в Г г Ґ ґ Ғ ғ Ӻ ӻ Ҕ ҕ Ӷ ӷ Ѓ Ѓ ѓ ѓ
@@ -218,6 +218,7 @@ module.exports.testcollation_ru = {
     },
     
     testJSCollatorQuatSort_ru: function(test) {
+        test.expect(32);
         var col = new Collator({
             locale: "ru-RU",
             useNative: false,
@@ -225,7 +226,6 @@ module.exports.testcollation_ru = {
             usage: "sort"
         });
     
-        test.expect(32);
         test.ok(typeof(col) !== "undefined");
     
         // А А́ а а́ Ӑ Ӑ ӑ ӑ Ӓ Ӓ ӓ ӓ Б б В в Г г Ґ ґ Ғ ғ Ӻ ӻ Ҕ ҕ Ӷ ӷ Ѓ Ѓ ѓ ѓ
@@ -264,6 +264,7 @@ module.exports.testcollation_ru = {
     },
     
     testJSCollatorTerSort_ru: function(test) {
+        test.expect(32);
         var col = new Collator({
             locale: "ru-RU",
             useNative: false,
@@ -271,7 +272,6 @@ module.exports.testcollation_ru = {
             usage: "sort"
         });
     
-        test.expect(32);
         test.ok(typeof(col) !== "undefined");
     
         // А А́ а а́ Ӑ Ӑ ӑ ӑ Ӓ Ӓ ӓ ӓ Б б В в Г г Ґ ґ Ғ ғ Ӻ ӻ Ҕ ҕ Ӷ ӷ Ѓ Ѓ ѓ ѓ
@@ -310,6 +310,7 @@ module.exports.testcollation_ru = {
     },
     
     testJSCollatorSecSort_ru: function(test) {
+        test.expect(32);
         var col = new Collator({
             locale: "ru-RU",
             useNative: false,
@@ -317,7 +318,6 @@ module.exports.testcollation_ru = {
             usage: "sort"
         });
     
-        test.expect(32);
         test.ok(typeof(col) !== "undefined");
     
         // А А́ а а́ Ӑ Ӑ ӑ ӑ Ӓ Ӓ ӓ ӓ Б б В в Г г Ґ ґ Ғ ғ Ӻ ӻ Ҕ ҕ Ӷ ӷ Ѓ Ѓ ѓ ѓ
@@ -356,6 +356,7 @@ module.exports.testcollation_ru = {
     },
     
     testJSCollatorPriSort_ru: function(test) {
+        test.expect(32);
         var col = new Collator({
             locale: "ru-RU",
             useNative: false,
@@ -363,7 +364,6 @@ module.exports.testcollation_ru = {
             usage: "sort"
         });
     
-        test.expect(32);
         test.ok(typeof(col) !== "undefined");
     
         // А А́ а а́ Ӑ Ӑ ӑ ӑ Ӓ Ӓ ӓ ӓ Б б В в Г г Ґ ґ Ғ ғ Ӻ ӻ Ҕ ҕ Ӷ ӷ Ѓ Ѓ ѓ ѓ
@@ -402,13 +402,13 @@ module.exports.testcollation_ru = {
     },
     
     testCollatorCase_ru: function(test) {
+        test.expect(2);
         var col = new Collator({
             locale: "ru-RU",
             useNative: false,
             sensitivity: "case",
             usage: "sort"
         });
-        test.expect(2);
         test.ok(typeof(col) !== "undefined");
     
         var input = [
@@ -458,13 +458,13 @@ module.exports.testcollation_ru = {
     },
     
     testCollatorPrimary_ru: function(test) {
+        test.expect(2);
         var col = new Collator({
             locale: "ru-RU",
             useNative: false,
             sensitivity: "primary",
             usage: "sort"
         });
-        test.expect(2);
         test.ok(typeof(col) !== "undefined");
     
         var input = [
@@ -514,13 +514,13 @@ module.exports.testcollation_ru = {
     },
     
     testCollatorIgnoreStressMarks_ru: function(test) {
+        test.expect(9);
         var col = new Collator({
             locale: "ru-RU",
             useNative: false,
             sensitivity: "case",
             usage: "search"
         });
-        test.expect(9);
         test.ok(typeof(col) !== "undefined");
     
         var comp = col.getComparator();
@@ -539,6 +539,7 @@ module.exports.testcollation_ru = {
     },
     
     testJSCollatorQuatLatin_ru: function(test) {
+        test.expect(18);
         var col = new Collator({
             locale: "ru-RU",
             useNative: false,
@@ -546,7 +547,6 @@ module.exports.testcollation_ru = {
             usage: "search"
         });
     
-        test.expect(18);
         test.ok(typeof(col) !== "undefined");
     
         // all latin letters
@@ -571,13 +571,13 @@ module.exports.testcollation_ru = {
     },
     
     testCollatorPrimaryMixed_ru: function(test) {
+        test.expect(2);
         var col = new Collator({
             locale: "ru-RU",
             useNative: false,
             sensitivity: "primary",
             usage: "sort"
         });
-        test.expect(2);
         test.ok(typeof(col) !== "undefined");
     
         var input = [

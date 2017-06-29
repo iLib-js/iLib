@@ -35,70 +35,71 @@ module.exports.testnamefmt = {
     },
 
     testNameFmtConstructor: function(test) {
+        test.expect(1);
         var fmt = new NameFmt();
         
-        test.expect(1);
         test.ok(typeof(fmt) !== "undefined");
         test.done();
     },
     
     testNameFmtGetLocaleDefault: function(test) {
+        test.expect(1);
         var fmt = new NameFmt();
         
-        test.expect(1);
         test.equal(fmt.getLocale().getSpec(), "en-US");
         test.done();
     },
     
     testNameFmtGetLocale: function(test) {
+        test.expect(1);
         var fmt = new NameFmt({
             locale: "nl-NL"
         });
         
-        test.expect(1);
         test.equal(fmt.getLocale().getSpec(), "nl-NL");
         test.done();
     },
     
     testNameFmtGetBogus: function(test) {
+        test.expect(1);
         var fmt = new NameFmt({
             locale: "ii-II"
         });
         
-        test.expect(1);
         test.equal(fmt.getLocale().getSpec(), "ii-II");
         test.done();
     },
     
     testNameFmtGetStyle: function(test) {
+        test.expect(1);
         var fmt = new NameFmt({
             style: "medium"
         });
         
-        test.expect(1);
         test.equal(fmt.getStyle(), "medium");
         test.done();
     },
     
     testNameFmtGetStyleDefault: function(test) {
+        test.expect(1);
         var fmt = new NameFmt();
         
-        test.expect(1);
         test.equal(fmt.getStyle(), "short");
         test.done();
     },
     
     testNameFmtGetStyleBogus: function(test) {
+        test.expect(1);
         var fmt = new NameFmt({
             style: "humungous"
         });
         
-        test.expect(1);
         test.equal(fmt.getStyle(), "short");
         test.done();
     },
     
     testNameFmtENShort: function(test) {
+        test.expect(1);
         var name = new Name({
             prefix: "Mr.",
             givenName: "John",
@@ -110,12 +111,12 @@ module.exports.testnamefmt = {
             style: "short"
         });
         
-        test.expect(1);
         test.equal(fmt.format(name), "John Smith");
         test.done();
     },
     
     testNameFmtENMedium: function(test) {
+        test.expect(1);
         var name = new Name({
             prefix: "Mr.",
             givenName: "John",
@@ -127,12 +128,12 @@ module.exports.testnamefmt = {
             style: "medium"
         });
         
-        test.expect(1);
         test.equal(fmt.format(name), "John Kevin Smith");
         test.done();
     },
     
     testNameFmtENLong: function(test) {
+        test.expect(1);
         var name = new Name({
             prefix: "Mr.",
             givenName: "John",
@@ -144,12 +145,12 @@ module.exports.testnamefmt = {
             style: "long"
         });
         
-        test.expect(1);
         test.equal(fmt.format(name), "Mr. John Kevin Smith");
         test.done();
     },
     
     testNameFmtENFull: function(test) {
+        test.expect(1);
         var name = new Name({
             prefix: "Mr.",
             givenName: "John",
@@ -161,12 +162,12 @@ module.exports.testnamefmt = {
             style: "full"
         });
         
-        test.expect(1);
         test.equal(fmt.format(name), "Mr. John Kevin Smith Phd.");
         test.done();
     },
     
     testNameFmtENWithCommaInSuffix: function(test) {
+        test.expect(1);
         var name = new Name({
             prefix: "Mr.",
             givenName: "John",
@@ -178,12 +179,12 @@ module.exports.testnamefmt = {
             style: "full"
         });
         
-        test.expect(1);
         test.equal(fmt.format(name), "Mr. John Kevin Smith, Phd.");
         test.done();
     },
     
     testNameFmtENComponentsP: function(test) {
+        test.expect(1);
         var name = new Name({
             prefix: "Mr.",
             givenName: "John",
@@ -195,12 +196,12 @@ module.exports.testnamefmt = {
             components: "p"
         });
         
-        test.expect(1);
         test.equal(fmt.format(name), "Mr.");
         test.done();
     },
     
     testNameFmtENComponentsPG: function(test) {
+        test.expect(1);
         var name = new Name({
             prefix: "Mr.",
             givenName: "John",
@@ -212,12 +213,12 @@ module.exports.testnamefmt = {
             components: "pg"
         });
         
-        test.expect(1);
         test.equal(fmt.format(name), "Mr. John");
         test.done();
     },
     
     testNameFmtENComponentsPF: function(test) {
+        test.expect(1);
         var name = new Name({
             prefix: "Mr.",
             givenName: "John",
@@ -229,12 +230,12 @@ module.exports.testnamefmt = {
             components: "pf"
         });
         
-        test.expect(1);
         test.equal(fmt.format(name), "Mr. Smith");
         test.done();
     },
     
     testNameFmtENComponentsPGF: function(test) {
+        test.expect(1);
         var name = new Name({
             prefix: "Mr.",
             givenName: "John",
@@ -246,12 +247,12 @@ module.exports.testnamefmt = {
             components: "pgf"
         });
         
-        test.expect(1);
         test.equal(fmt.format(name), "Mr. John Smith");
         test.done();
     },
     
     testNameFmtENComponentsPFS: function(test) {
+        test.expect(1);
         var name = new Name({
             prefix: "Mr.",
             givenName: "John",
@@ -263,12 +264,12 @@ module.exports.testnamefmt = {
             components: "pfs"
         });
         
-        test.expect(1);
         test.equal(fmt.format(name), "Mr. Smith Phd.");
         test.done();
     },
     
     testNameFmtENComponentsPGFScrambled: function(test) {
+        test.expect(1);
         var name = new Name({
             prefix: "Mr.",
             givenName: "John",
@@ -280,12 +281,12 @@ module.exports.testnamefmt = {
             components: "gfp"
         });
         
-        test.expect(1);
         test.equal(fmt.format(name), "Mr. John Smith");
         test.done();
     },
     
     testNameFmtENComponentsOverrideStyle: function(test) {
+        test.expect(1);
         var name = new Name({
             prefix: "Mr.",
             givenName: "John",
@@ -298,13 +299,13 @@ module.exports.testnamefmt = {
             components: "gfp"
         });
         
-        test.expect(1);
         test.equal(fmt.format(name), "Mr. John Smith");
         test.done();
     },
     
     
     testNameFmtDEShort: function(test) {
+        test.expect(1);
         var name = new Name({
             prefix: "Hr.",
             givenName: "Andreas",
@@ -319,12 +320,12 @@ module.exports.testnamefmt = {
             locale: "de-DE"
         });
         
-        test.expect(1);
         test.equal(fmt.format(name), "Andreas Schmidt");
         test.done();
     },
     
     testNameFmtDEMedium: function(test) {
+        test.expect(1);
         var name = new Name({
             prefix: "Hr.",
             givenName: "Andreas",
@@ -339,12 +340,12 @@ module.exports.testnamefmt = {
             locale: "de-DE"
         });
         
-        test.expect(1);
         test.equal(fmt.format(name), "Andreas Helmut Schmidt");
         test.done();
     },
     
     testNameFmtDELong: function(test) {
+        test.expect(1);
         var name = new Name({
             prefix: "Hr.",
             givenName: "Andreas",
@@ -359,12 +360,12 @@ module.exports.testnamefmt = {
             locale: "de-DE"
         });
         
-        test.expect(1);
         test.equal(fmt.format(name), "Hr. Andreas Helmut Schmidt");
         test.done();
     },
     
     testNameFmtDEFull: function(test) {
+        test.expect(1);
         var name = new Name({
             prefix: "Hr.",
             givenName: "Andreas",
@@ -379,12 +380,12 @@ module.exports.testnamefmt = {
             locale: "de-DE"
         });
         
-        test.expect(1);
         test.equal(fmt.format(name), "Hr. Andreas Helmut Schmidt MdB");
         test.done();
     },
     
     testNameFmtDEWithCommaInSuffix: function(test) {
+        test.expect(1);
         var name = new Name({
             prefix: "Hr.",
             givenName: "Andreas",
@@ -399,12 +400,12 @@ module.exports.testnamefmt = {
             locale: "de-DE"
         });
         
-        test.expect(1);
         test.equal(fmt.format(name), "Hr. Andreas Helmut Schmidt, MdB");
         test.done();
     },
     
     testNameFmtDEComponentsP: function(test) {
+        test.expect(1);
         var name = new Name({
             prefix: "Hr.",
             givenName: "Andreas",
@@ -419,12 +420,12 @@ module.exports.testnamefmt = {
             locale: "de-DE"
         });
         
-        test.expect(1);
         test.equal(fmt.format(name), "Hr.");
         test.done();
     },
     
     testNameFmtDEComponentsPG: function(test) {
+        test.expect(1);
         var name = new Name({
             prefix: "Hr.",
             givenName: "Andreas",
@@ -439,12 +440,12 @@ module.exports.testnamefmt = {
             locale: "de-DE"
         });
         
-        test.expect(1);
         test.equal(fmt.format(name), "Hr. Andreas");
         test.done();
     },
     
     testNameFmtDEComponentsPF: function(test) {
+        test.expect(1);
         var name = new Name({
             prefix: "Hr.",
             givenName: "Andreas",
@@ -459,12 +460,12 @@ module.exports.testnamefmt = {
             locale: "de-DE"
         });
         
-        test.expect(1);
         test.equal(fmt.format(name), "Hr. Schmidt");
         test.done();
     },
     
     testNameFmtDEComponentsPGF: function(test) {
+        test.expect(1);
         var name = new Name({
             prefix: "Hr.",
             givenName: "Andreas",
@@ -479,12 +480,12 @@ module.exports.testnamefmt = {
             locale: "de-DE"
         });
         
-        test.expect(1);
         test.equal(fmt.format(name), "Hr. Andreas Schmidt");
         test.done();
     },
     
     testNameFmtDEComponentsPFS: function(test) {
+        test.expect(1);
         var name = new Name({
             prefix: "Hr.",
             givenName: "Andreas",
@@ -499,12 +500,12 @@ module.exports.testnamefmt = {
             locale: "de-DE"
         });
         
-        test.expect(1);
         test.equal(fmt.format(name), "Hr. Schmidt MdB");
         test.done();
     },
     
     testNameFmtDEComponentsPGFScrambled: function(test) {
+        test.expect(1);
         var name = new Name({
             prefix: "Hr.",
             givenName: "Andreas",
@@ -519,12 +520,12 @@ module.exports.testnamefmt = {
             locale: "de-DE"
         });
         
-        test.expect(1);
         test.equal(fmt.format(name), "Hr. Andreas Schmidt");
         test.done();
     },
     
     testNameFmtDEComponentsOverrideStyle: function(test) {
+        test.expect(1);
         var name = new Name({
             prefix: "Hr.",
             givenName: "Andreas",
@@ -540,7 +541,6 @@ module.exports.testnamefmt = {
             locale: "de-DE"
         });
         
-        test.expect(1);
         test.equal(fmt.format(name), "Hr. Andreas Schmidt");
         test.done();
     }

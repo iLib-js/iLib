@@ -34,6 +34,7 @@ module.exports.phonefmt_JP = {
     },
 
     testFormatJPStyle0: function(test) {
+        test.expect(1);
         var formatted;
         var parsed = new PhoneNumber("0358412047", {locale:"ja-JP"});
         var expected = "03-5841-2047";
@@ -41,12 +42,12 @@ module.exports.phonefmt_JP = {
         var fmt = new PhoneFmt({locale: "ja-JP", style: "default"});
         formatted = fmt.format(parsed);
         
-        test.expect(1);
         test.equal(formatted, expected);
         test.done();
     },
     
     testFormatJPStyle1: function(test) {
+        test.expect(1);
         var formatted;
         var parsed = new PhoneNumber("0668795111", {locale: "ja-JP"});
         var expected = "06-6879-5111";
@@ -54,12 +55,12 @@ module.exports.phonefmt_JP = {
         var fmt = new PhoneFmt({locale: "ja-JP", style: "default"});
         formatted = fmt.format(parsed);
         
-        test.expect(1);
         test.equal(formatted, expected);
         test.done();
     },
     
     testFormatJPInternational: function(test) {
+        test.expect(1);
         var formatted;
         var parsed = new PhoneNumber("+8166877511", {locale: "ja-JP"});
         
@@ -68,12 +69,12 @@ module.exports.phonefmt_JP = {
         var fmt = new PhoneFmt({locale: "ja-JP", style: "default"});
         formatted = fmt.format(parsed);
         
-        test.expect(1);
         test.equal(formatted, expected);
         test.done();
     },
     
     testFormatJPInternationalAccessCode: function(test) {
+        test.expect(1);
         var formatted;
         var parsed = new PhoneNumber({
             iddPrefix: "010",
@@ -86,12 +87,12 @@ module.exports.phonefmt_JP = {
         var fmt = new PhoneFmt({locale: "ja-JP", style: "default"});
         formatted = fmt.format(parsed);
         
-        test.expect(1);
         test.equal(formatted, expected);
         test.done();
     },
     
     testFormatJPLongAreaCode: function(test) {
+        test.expect(1);
         var formatted;
         var parsed = new PhoneNumber("0152410670", {locale:"ja-JP"});
         var expected = "0152-41-0670";
@@ -99,12 +100,12 @@ module.exports.phonefmt_JP = {
         var fmt = new PhoneFmt({locale: "ja-JP", style: "default"});
         formatted = fmt.format(parsed);
         
-        test.expect(1);
         test.equal(formatted, expected);
         test.done();
     },
     
     testFormatJPMobile: function(test) {
+        test.expect(1);
         var formatted;
         var parsed = new PhoneNumber("09017901357", {locale: "ja-JP"});
         var expected = "090-1790-1357";
@@ -112,12 +113,12 @@ module.exports.phonefmt_JP = {
         var fmt = new PhoneFmt({locale: "ja-JP", style: "default"});
         formatted = fmt.format(parsed);
         
-        test.expect(1);
         test.equal(formatted, expected);
         test.done();
     },
     
     testFormatJPMobileInternational: function(test) {
+        test.expect(1);
         var formatted;
         var parsed = new PhoneNumber("+819012345678");
         var expected = "+81 90 1234 5678";
@@ -125,12 +126,12 @@ module.exports.phonefmt_JP = {
         var fmt = new PhoneFmt({locale: "ja-JP", style: "default"});
         formatted = fmt.format(parsed);
         
-        test.expect(1);
         test.equal(formatted, expected);
         test.done();
     },
     
     testFormatJPService: function(test) {
+        test.expect(1);
         var formatted;
         var parsed = new PhoneNumber("0301234567", {locale: "ja-JP"});
         var expected = "030-123-4567";
@@ -138,12 +139,12 @@ module.exports.phonefmt_JP = {
         var fmt = new PhoneFmt({locale: "ja-JP", style: "default"});
         formatted = fmt.format(parsed);
         
-        test.expect(1);
         test.equal(formatted, expected);
         test.done();
     },
     
     testFormatJPEmergency1: function(test) {
+        test.expect(1);
         var formatted;
         var parsed = new PhoneNumber("116", {locale: "ja-JP"});
         var expected = "116 ";
@@ -151,12 +152,12 @@ module.exports.phonefmt_JP = {
         var fmt = new PhoneFmt({locale: "ja-JP", style: "default"});
         formatted = fmt.format(parsed);
         
-        test.expect(1);
         test.equal(formatted, expected);
         test.done();
     },
     
     testFormatJPEmergency2: function(test) {
+        test.expect(1);
         var formatted;
         var parsed = new PhoneNumber("136", {locale: "ja-JP"});
         var expected = "136 ";
@@ -164,12 +165,12 @@ module.exports.phonefmt_JP = {
         var fmt = new PhoneFmt({locale: "ja-JP", style: "default"});
         formatted = fmt.format(parsed);
         
-        test.expect(1);
         test.equal(formatted, expected);
         test.done();
     },
     
     testFormatJPIEIDD: function(test) {
+        test.expect(1);
         var formatted;
         var parsed = new PhoneNumber("+35311234567", {locale: "ja-JP"});
         var expected = "+353 1 123 4567";
@@ -177,12 +178,12 @@ module.exports.phonefmt_JP = {
         var fmt = new PhoneFmt({locale: "ja-JP", style: "default"});
         formatted = fmt.format(parsed);
         
-        test.expect(1);
         test.equal(formatted, expected);
         test.done();
     },
     
     testFormatJPStyle0Partial0: function(test) {
+        test.expect(1);
         var formatted;
         var parsed = new PhoneNumber("0", {locale:"ja-JP"});
         
@@ -191,11 +192,11 @@ module.exports.phonefmt_JP = {
         var fmt = new PhoneFmt({locale: "ja-JP", style: "default"});
         formatted = fmt.format(parsed, {partial: true});
         
-        test.expect(1);
         test.equal(formatted, expected);
         test.done();
     },
     testFormatJPStyle0Partial1: function(test) {
+        test.expect(1);
         var formatted;
         var parsed = new PhoneNumber("04", {locale:"ja-JP"});
         var expected = "04-";
@@ -203,11 +204,11 @@ module.exports.phonefmt_JP = {
         var fmt = new PhoneFmt({locale: "ja-JP", style: "default"});
         formatted = fmt.format(parsed, {partial: true});
         
-        test.expect(1);
         test.equal(formatted, expected);
         test.done();
     },
     testFormatJPStyle0Partial2: function(test) {
+        test.expect(1);
         var formatted;
         var parsed = new PhoneNumber("047", {locale:"ja-JP"});
         var expected = "047-";
@@ -215,11 +216,11 @@ module.exports.phonefmt_JP = {
         var fmt = new PhoneFmt({locale: "ja-JP", style: "default"});
         formatted = fmt.format(parsed, {partial: true});
         
-        test.expect(1);
         test.equal(formatted, expected);
         test.done();
     },
     testFormatJPStyle0Partial3: function(test) {
+        test.expect(1);
         var formatted;
         var parsed = new PhoneNumber("0475", {locale:"ja-JP"});
         var expected = "0475-";
@@ -227,11 +228,11 @@ module.exports.phonefmt_JP = {
         var fmt = new PhoneFmt({locale: "ja-JP", style: "default"});
         formatted = fmt.format(parsed, {partial: true});
         
-        test.expect(1);
         test.equal(formatted, expected);
         test.done();
     },
     testFormatJPStyle0Partial4: function(test) {
+        test.expect(1);
         var formatted;
         var parsed = new PhoneNumber("047512", {locale: "ja-JP"});
         var expected = "0475-12";
@@ -239,11 +240,11 @@ module.exports.phonefmt_JP = {
         var fmt = new PhoneFmt({locale: "ja-JP", style: "default"});
         formatted = fmt.format(parsed, {partial: true});
         
-        test.expect(1);
         test.equal(formatted, expected);
         test.done();
     },
     testFormatJPStyle0Partial5: function(test) {
+        test.expect(1);
         var formatted;
         var parsed = new PhoneNumber("0475123", {locale: "ja-JP"});
         var expected = "0475-123";
@@ -251,11 +252,11 @@ module.exports.phonefmt_JP = {
         var fmt = new PhoneFmt({locale: "ja-JP", style: "default"});
         formatted = fmt.format(parsed, {partial: true});
         
-        test.expect(1);
         test.equal(formatted, expected);
         test.done();
     },
     testFormatJPStyle0Partial6: function(test) {
+        test.expect(1);
         var formatted;
         var parsed = new PhoneNumber("04751234", {locale: "ja-JP"});
         var expected = "0475-123-4";
@@ -263,11 +264,11 @@ module.exports.phonefmt_JP = {
         var fmt = new PhoneFmt({locale: "ja-JP", style: "default"});
         formatted = fmt.format(parsed, {partial: true});
         
-        test.expect(1);
         test.equal(formatted, expected);
         test.done();
     },
     testFormatJPStyle0Partial7: function(test) {
+        test.expect(1);
         var formatted;
         var parsed = new PhoneNumber("047512345", {locale: "ja-JP"});
         var expected = "0475-123-45";
@@ -275,11 +276,11 @@ module.exports.phonefmt_JP = {
         var fmt = new PhoneFmt({locale: "ja-JP", style: "default"});
         formatted = fmt.format(parsed, {partial: true});
         
-        test.expect(1);
         test.equal(formatted, expected);
         test.done();
     },
     testFormatJPStyle0Partial8: function(test) {
+        test.expect(1);
         var formatted;
         var parsed = new PhoneNumber("0475123456", {locale: "ja-JP"});
         var expected = "0475-123-456";
@@ -287,11 +288,11 @@ module.exports.phonefmt_JP = {
         var fmt = new PhoneFmt({locale: "ja-JP", style: "default"});
         formatted = fmt.format(parsed, {partial: true});
         
-        test.expect(1);
         test.equal(formatted, expected);
         test.done();
     },
     testFormatJPStyle0Partial9: function(test) {
+        test.expect(1);
         var formatted;
         var parsed = new PhoneNumber("04751234567", {locale: "ja-JP"});
         var expected = "0475-123-4567";
@@ -299,11 +300,11 @@ module.exports.phonefmt_JP = {
         var fmt = new PhoneFmt({locale: "ja-JP", style: "default"});
         formatted = fmt.format(parsed, {partial: true});
         
-        test.expect(1);
         test.equal(formatted, expected);
         test.done();
     },
     testFormatJPStyle0Partial10: function(test) {
+        test.expect(1);
         var formatted;
         var parsed = new PhoneNumber("047512345678", {locale: "ja-JP"});
         var expected = "0475-1234-5678";
@@ -311,12 +312,12 @@ module.exports.phonefmt_JP = {
         var fmt = new PhoneFmt({locale: "ja-JP", style: "default"});
         formatted = fmt.format(parsed, {partial: true});
         
-        test.expect(1);
         test.equal(formatted, expected);
         test.done();
     },
     
     testFormatJPStyle0Partial11: function(test) {
+        test.expect(1);
         var formatted;
         var parsed = new PhoneNumber("0475123456789", {locale: "ja-JP"});
         var expected = "0475123456789";
@@ -324,12 +325,12 @@ module.exports.phonefmt_JP = {
         var fmt = new PhoneFmt({locale: "ja-JP", style: "default"});
         formatted = fmt.format(parsed, {partial: true});
         
-        test.expect(1);
         test.equal(formatted, expected);
         test.done();
     },
     
     testFormatJPStyle0Whole0: function(test) {
+        test.expect(1);
         var formatted;
         var parsed = new PhoneNumber({
             trunkAccess: "0"
@@ -339,11 +340,11 @@ module.exports.phonefmt_JP = {
         var fmt = new PhoneFmt({locale: "ja-JP", style: "default"});
         formatted = fmt.format(parsed, {partial: false});
         
-        test.expect(1);
         test.equal(formatted, expected);
         test.done();
     },
     testFormatJPStyle0Whole1: function(test) {
+        test.expect(1);
         var formatted;
         var parsed = new PhoneNumber("04", {locale: "ja-JP"});
         var expected = "04-";
@@ -351,11 +352,11 @@ module.exports.phonefmt_JP = {
         var fmt = new PhoneFmt({locale: "ja-JP", style: "default"});
         formatted = fmt.format(parsed, {partial: false});
         
-        test.expect(1);
         test.equal(formatted, expected);
         test.done();
     },
     testFormatJPStyle0Whole2: function(test) {
+        test.expect(1);
         var formatted;
         var parsed = new PhoneNumber("075", {locale: "ja-JP"});
         var expected = "075-";
@@ -363,11 +364,11 @@ module.exports.phonefmt_JP = {
         var fmt = new PhoneFmt({locale: "ja-JP", style: "default"});
         formatted = fmt.format(parsed, {partial: false});
         
-        test.expect(1);
         test.equal(formatted, expected);
         test.done();
     },
     testFormatJPStyle0Whole3: function(test) {
+        test.expect(1);
         var formatted;
         var parsed = new PhoneNumber("0751", {locale: "ja-JP"});
         var expected = "075-1";
@@ -375,11 +376,11 @@ module.exports.phonefmt_JP = {
         var fmt = new PhoneFmt({locale: "ja-JP", style: "default"});
         formatted = fmt.format(parsed, {partial: false});
         
-        test.expect(1);
         test.equal(formatted, expected);
         test.done();
     },
     testFormatJPStyle0Whole4: function(test) {
+        test.expect(1);
         var formatted;
         var parsed = new PhoneNumber("07512", {locale: "ja-JP"});
             
@@ -388,11 +389,11 @@ module.exports.phonefmt_JP = {
         var fmt = new PhoneFmt({locale: "ja-JP", style: "default"});
         formatted = fmt.format(parsed, {partial: false});
         
-        test.expect(1);
         test.equal(formatted, expected);
         test.done();
     },
     testFormatJPStyle0Whole5: function(test) {
+        test.expect(1);
         var formatted;
         var parsed = new PhoneNumber("075123", {locale: "ja-JP"});
         var expected = "075-123";
@@ -400,11 +401,11 @@ module.exports.phonefmt_JP = {
         var fmt = new PhoneFmt({locale: "ja-JP", style: "default"});
         formatted = fmt.format(parsed, {partial: false});
         
-        test.expect(1);
         test.equal(formatted, expected);
         test.done();
     },
     testFormatJPStyle0Whole6: function(test) {
+        test.expect(1);
         var formatted;
         var parsed = new PhoneNumber("0751234", {locale: "ja-JP"});
         var expected = "075-1234";
@@ -412,11 +413,11 @@ module.exports.phonefmt_JP = {
         var fmt = new PhoneFmt({locale: "ja-JP", style: "default"});
         formatted = fmt.format(parsed, {partial: false});
         
-        test.expect(1);
         test.equal(formatted, expected);
         test.done();
     },
     testFormatJPStyle0Whole7: function(test) {
+        test.expect(1);
         var formatted;
         var parsed = new PhoneNumber("07512345", {locale: "ja-JP"});
         var expected = "075-12-345";
@@ -424,11 +425,11 @@ module.exports.phonefmt_JP = {
         var fmt = new PhoneFmt({locale: "ja-JP", style: "default"});
         formatted = fmt.format(parsed, {partial: false});
         
-        test.expect(1);
         test.equal(formatted, expected);
         test.done();
     },
     testFormatJPStyle0Whole8: function(test) {
+        test.expect(1);
         var formatted;
         var parsed = new PhoneNumber("075123456", {locale: "ja-JP"});
         var expected = "075-12-3456";
@@ -436,11 +437,11 @@ module.exports.phonefmt_JP = {
         var fmt = new PhoneFmt({locale: "ja-JP", style: "default"});
         formatted = fmt.format(parsed, {partial: false});
         
-        test.expect(1);
         test.equal(formatted, expected);
         test.done();
     },
     testFormatJPStyle0Whole9: function(test) {
+        test.expect(1);
         var formatted;
         var parsed = new PhoneNumber("0751234567", {locale: "ja-JP"});
         var expected = "075-123-4567";
@@ -448,11 +449,11 @@ module.exports.phonefmt_JP = {
         var fmt = new PhoneFmt({locale: "ja-JP", style: "default"});
         formatted = fmt.format(parsed, {partial: false});
         
-        test.expect(1);
         test.equal(formatted, expected);
         test.done();
     },
     testFormatJPStyle0Whole10: function(test) {
+        test.expect(1);
         var formatted;
         var parsed = new PhoneNumber("07512345678", {locale: "ja-JP"});
         var expected = "075-1234-5678";
@@ -460,12 +461,12 @@ module.exports.phonefmt_JP = {
         var fmt = new PhoneFmt({locale: "ja-JP", style: "default"});
         formatted = fmt.format(parsed, {partial: false});
         
-        test.expect(1);
         test.equal(formatted, expected);
         test.done();
     },
     
     testFormatJPStyle0Whole11: function(test) {
+        test.expect(1);
         var formatted;
         var parsed = new PhoneNumber("075123456789", {locale: "ja-JP"});
         var expected = "075123456789";
@@ -473,12 +474,12 @@ module.exports.phonefmt_JP = {
         var fmt = new PhoneFmt({locale: "ja-JP", style: "default"});
         formatted = fmt.format(parsed, {partial: false});
         
-        test.expect(1);
         test.equal(formatted, expected);
         test.done();
     },
     
     testFormatJPStyle1Partial0: function(test) {
+        test.expect(1);
         var formatted;
         var parsed = new PhoneNumber({
             trunkAccess: "0"
@@ -488,11 +489,11 @@ module.exports.phonefmt_JP = {
         var fmt = new PhoneFmt({locale: "ja-JP", style: "かっこ"});
         formatted = fmt.format(parsed, {partial: true});
         
-        test.expect(1);
         test.equal(formatted, expected);
         test.done();
     },
     testFormatJPStyle1Partial1: function(test) {
+        test.expect(1);
         var formatted;
         var parsed = new PhoneNumber("03", {locale: "ja-JP"});
         var expected = "(03) ";
@@ -500,11 +501,11 @@ module.exports.phonefmt_JP = {
         var fmt = new PhoneFmt({locale: "ja-JP", style: "かっこ"});
         formatted = fmt.format(parsed, {partial: true});
         
-        test.expect(1);
         test.equal(formatted, expected);
         test.done();
     },
     testFormatJPStyle1Partial2: function(test) {
+        test.expect(1);
         var formatted;
         var parsed = new PhoneNumber("075", {locale: "ja-JP"});
         var expected = "(075) ";
@@ -512,11 +513,11 @@ module.exports.phonefmt_JP = {
         var fmt = new PhoneFmt({locale: "ja-JP", style: "かっこ"});
         formatted = fmt.format(parsed, {partial: true});
         
-        test.expect(1);
         test.equal(formatted, expected);
         test.done();
     },
     testFormatJPStyle1Partial3: function(test) {
+        test.expect(1);
         var formatted;
         var parsed = new PhoneNumber("0751", {locale: "ja-JP"});
         var expected = "(075) 1";
@@ -524,11 +525,11 @@ module.exports.phonefmt_JP = {
         var fmt = new PhoneFmt({locale: "ja-JP", style: "かっこ"});
         formatted = fmt.format(parsed, {partial: true});
         
-        test.expect(1);
         test.equal(formatted, expected);
         test.done();
     },
     testFormatJPStyle1Partial4: function(test) {
+        test.expect(1);
         var formatted;
         var parsed = new PhoneNumber("07512", {locale: "ja-JP"});
         var expected = "(075) 12";
@@ -536,11 +537,11 @@ module.exports.phonefmt_JP = {
         var fmt = new PhoneFmt({locale: "ja-JP", style: "かっこ"});
         formatted = fmt.format(parsed, {partial: true});
         
-        test.expect(1);
         test.equal(formatted, expected);
         test.done();
     },
     testFormatJPStyle1Partial5: function(test) {
+        test.expect(1);
         var formatted;
         var parsed = new PhoneNumber("075123", {locale: "ja-JP"});
         var expected = "(075) 123";
@@ -548,11 +549,11 @@ module.exports.phonefmt_JP = {
         var fmt = new PhoneFmt({locale: "ja-JP", style: "かっこ"});
         formatted = fmt.format(parsed, {partial: true});
         
-        test.expect(1);
         test.equal(formatted, expected);
         test.done();
     },
     testFormatJPStyle1Partial6: function(test) {
+        test.expect(1);
         var formatted;
         var parsed = new PhoneNumber("0751234", {locale: "ja-JP"});
         var expected = "(075) 123-4";
@@ -560,11 +561,11 @@ module.exports.phonefmt_JP = {
         var fmt = new PhoneFmt({locale: "ja-JP", style: "かっこ"});
         formatted = fmt.format(parsed, {partial: true});
         
-        test.expect(1);
         test.equal(formatted, expected);
         test.done();
     },
     testFormatJPStyle1Partial7: function(test) {
+        test.expect(1);
         var formatted;
         var parsed = new PhoneNumber("07512345", {locale: "ja-JP"});
         var expected = "(075) 12-345";
@@ -572,11 +573,11 @@ module.exports.phonefmt_JP = {
         var fmt = new PhoneFmt({locale: "ja-JP", style: "かっこ"});
         formatted = fmt.format(parsed, {partial: true});
         
-        test.expect(1);
         test.equal(formatted, expected);
         test.done();
     },
     testFormatJPStyle1Partial8: function(test) {
+        test.expect(1);
         var formatted;
         var parsed = new PhoneNumber("075123456", {locale: "ja-JP"});
         var expected = "(075) 12-3456";
@@ -584,11 +585,11 @@ module.exports.phonefmt_JP = {
         var fmt = new PhoneFmt({locale: "ja-JP", style: "かっこ"});
         formatted = fmt.format(parsed, {partial: true});
         
-        test.expect(1);
         test.equal(formatted, expected);
         test.done();
     },
     testFormatJPStyle1Partial9: function(test) {
+        test.expect(1);
         var formatted;
         var parsed = new PhoneNumber("0751234567", {locale: "ja-JP"});
         var expected = "(075) 123-4567";
@@ -596,11 +597,11 @@ module.exports.phonefmt_JP = {
         var fmt = new PhoneFmt({locale: "ja-JP", style: "かっこ"});
         formatted = fmt.format(parsed, {partial: true});
         
-        test.expect(1);
         test.equal(formatted, expected);
         test.done();
     },
     testFormatJPStyle1Partial10: function(test) {
+        test.expect(1);
         var formatted;
         var parsed = new PhoneNumber("07512345678", {locale: "ja-JP"});
         var expected = "(075) 1234-5678";
@@ -608,12 +609,12 @@ module.exports.phonefmt_JP = {
         var fmt = new PhoneFmt({locale: "ja-JP", style: "かっこ"});
         formatted = fmt.format(parsed, {partial: true});
         
-        test.expect(1);
         test.equal(formatted, expected);
         test.done();
     },
     
     testFormatJPStyle0PartialLocal1: function(test) {
+        test.expect(1);
         var formatted;
         var parsed = new PhoneNumber("7", {locale: "ja-JP"});
         var expected = "7";
@@ -621,11 +622,11 @@ module.exports.phonefmt_JP = {
         var fmt = new PhoneFmt({locale: "ja-JP", style: "default"});
         formatted = fmt.format(parsed, {partial: true});
         
-        test.expect(1);
         test.equal(formatted, expected);
         test.done();
     },
     testFormatJPStyle0PartialLocal2: function(test) {
+        test.expect(1);
         var formatted;
         var parsed = new PhoneNumber("73", {locale: "ja-JP"});
         var expected = "73";
@@ -633,11 +634,11 @@ module.exports.phonefmt_JP = {
         var fmt = new PhoneFmt({locale: "ja-JP", style: "default"});
         formatted = fmt.format(parsed, {partial: true});
         
-        test.expect(1);
         test.equal(formatted, expected);
         test.done();
     },
     testFormatJPStyle0PartialLocal3: function(test) {
+        test.expect(1);
         var formatted;
         var parsed = new PhoneNumber("738", {locale: "ja-JP"});
         var expected = "738";
@@ -645,11 +646,11 @@ module.exports.phonefmt_JP = {
         var fmt = new PhoneFmt({locale: "ja-JP", style: "default"});
         formatted = fmt.format(parsed, {partial: true});
         
-        test.expect(1);
         test.equal(formatted, expected);
         test.done();
     },
     testFormatJPStyle0PartialLocal4: function(test) {
+        test.expect(1);
         var formatted;
         var parsed = new PhoneNumber("7380", {locale: "ja-JP"});
         var expected = "738-0";
@@ -657,11 +658,11 @@ module.exports.phonefmt_JP = {
         var fmt = new PhoneFmt({locale: "ja-JP", style: "default"});
         formatted = fmt.format(parsed, {partial: true});
         
-        test.expect(1);
         test.equal(formatted, expected);
         test.done();
     },
     testFormatJPStyle0PartialLocal5: function(test) {
+        test.expect(1);
         var formatted;
         var parsed = new PhoneNumber("73803", {locale: "ja-JP"});
         var expected = "738-03";
@@ -669,11 +670,11 @@ module.exports.phonefmt_JP = {
         var fmt = new PhoneFmt({locale: "ja-JP", style: "default"});
         formatted = fmt.format(parsed, {partial: true});
         
-        test.expect(1);
         test.equal(formatted, expected);
         test.done();
     },
     testFormatJPStyle0PartialLocal6: function(test) {
+        test.expect(1);
         var formatted;
         var parsed = new PhoneNumber("738034", {locale: "ja-JP"});
         var expected = "738-034";
@@ -681,11 +682,11 @@ module.exports.phonefmt_JP = {
         var fmt = new PhoneFmt({locale: "ja-JP", style: "default"});
         formatted = fmt.format(parsed, {partial: true});
         
-        test.expect(1);
         test.equal(formatted, expected);
         test.done();
     },
     testFormatJPStyle0PartialLocal7: function(test) {
+        test.expect(1);
         var formatted;
         var parsed = new PhoneNumber("7380343", {locale: "ja-JP"});
         var expected = "738-0343";
@@ -693,11 +694,11 @@ module.exports.phonefmt_JP = {
         var fmt = new PhoneFmt({locale: "ja-JP", style: "default"});
         formatted = fmt.format(parsed, {partial: true});
         
-        test.expect(1);
         test.equal(formatted, expected);
         test.done();
     },
     testFormatJPStyle0PartialLocal8: function(test) {
+        test.expect(1);
         var formatted;
         var parsed = new PhoneNumber("73553433", {locale: "ja-JP"});
         var expected = "7355-3433";
@@ -705,11 +706,11 @@ module.exports.phonefmt_JP = {
         var fmt = new PhoneFmt({locale: "ja-JP", style: "default"});
         formatted = fmt.format(parsed, {partial: true});
         
-        test.expect(1);
         test.equal(formatted, expected);
         test.done();
     },
     testFormatJPStyle0PartialLocal9: function(test) {
+        test.expect(1);
         var formatted;
         var parsed = new PhoneNumber("735534331", {locale: "ja-JP"});
         var expected = "735534331";    // use last resort rule
@@ -717,7 +718,6 @@ module.exports.phonefmt_JP = {
         var fmt = new PhoneFmt({locale: "ja-JP", style: "default"});
         formatted = fmt.format(parsed, {partial: true});
         
-        test.expect(1);
         test.equal(formatted, expected);
         test.done();
     }

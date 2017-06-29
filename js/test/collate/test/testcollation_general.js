@@ -18,7 +18,7 @@
  * limitations under the License.
  */
 
-var ilib = require("../lib/ilib.js");
+var ilib = require("../lib/ilib-node.js");
 var Collator = require("../lib/Collator.js");
 function testCollatorConstructorNative_it() {
 	var col = new Collator({useNative: false, locale: "it-IT"});

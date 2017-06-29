@@ -27,7 +27,7 @@ var reVar = /^var (\w*) = require\("([^)]*)"\);/;
 var reFunction = /^function\s+(test\w*)\s*\(\)\s*\{/;
 var reCopyright = /^ \* Copyright © (20..)(,20..)?(-20..)?(.*)/;
 var reLoops = /^\s*(for|while|\} catch|\w+\.forEach)\W/;
-var reReturn = /^(\s*)return;/;
+var reReturn = /^(\s*)return/;
     
 var assertMappings = [
 	{re: /(\s*)assertEquals\((([^'",]|'(\\'|[^'])*?'|"(\\"|[^"])*?")*),\s*(([^'"]|'(\\'|[^'])*?'|"(\\"|[^"])*?")*)\)/, replace: "    $1test.equal($6, $2)"},
@@ -62,7 +62,7 @@ function convertFile(dir, fileName, outFileName) {
 	
 	var i = 0, j;
 	var match, firstFunction = true, foundLoops = false;
-	var numberOfTests, firstLineOfTest, firstAssertion, lastAssertion;
+	var numberOfTests, firstLineOfTest, firstAssertion, lastAssertion, firstReturn;
 	
 	while (i < lines.length) {
         if (lines[i]) {
@@ -107,6 +107,7 @@ function convertFile(dir, fileName, outFileName) {
 				foundLoops = false;
 				lastAssertion = -1;
 				firstAssertion = 0;
+				firstReturn = lines.length;
 			} else if (firstFunction) {
 			    match = reCopyright.exec(lines[i]);
 			    if (match !== null) {
@@ -146,7 +147,7 @@ function convertFile(dir, fileName, outFileName) {
                 i += 2;
                 
                 if (!foundLoops) {
-                    var lineno = firstAssertion || firstLineOfTest;
+                    var lineno = (firstReturn < firstAssertion) ? firstAssertion : firstLineOfTest;
                     lines.splice(lineno, 0, '        test.expect(' + numberOfTests + ');');
                     i++;
                 }
@@ -168,8 +169,12 @@ function convertFile(dir, fileName, outFileName) {
 				}
 				
 				if ((match = reReturn.exec(lines[i])) !== null) {
-				    lines.splice(i, 0, match[1] + 'test.done();');
-				    i++;
+				    if (i < firstReturn) {
+				        firstReturn = i;
+				    }
+				    
+				    lines.splice(i, 0, '    ' + match[1] + 'test.done();');
+    				i++;
 				}
 				
 				if (reLoops.exec(lines[i]) !== null) {

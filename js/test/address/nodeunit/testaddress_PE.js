@@ -34,9 +34,9 @@ module.exports.testaddress_PE = {
     },
 
     testParseAddressPENormal: function(test) {
+        test.expect(7);
         var parsedAddress = new Address("Catalina Huanca 110 San Isidro\nLima 27\nPERU", {locale: 'es-PE'});
         
-        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Catalina Huanca 110 San Isidro");
         test.equal(parsedAddress.locality, "Lima 27");
@@ -48,9 +48,9 @@ module.exports.testaddress_PE = {
     },
     
     testParseAddressPENoZip: function(test) {
+        test.expect(7);
         var parsedAddress = new Address("Catalina Huanca 110 San Isidro\nLima 27\nPERU", {locale: 'es-PE'});
         
-        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Catalina Huanca 110 San Isidro");
         test.equal(parsedAddress.locality, "Lima 27");
@@ -62,9 +62,9 @@ module.exports.testaddress_PE = {
     },
     
     testParseAddressPENoCountry: function(test) {
+        test.expect(7);
         var parsedAddress = new Address("Catalina Huanca 110 San Isidro\nLima 27", {locale: 'es-PE'});
         
-        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Catalina Huanca 110 San Isidro");
         test.equal(parsedAddress.locality, "Lima 27");
@@ -76,9 +76,9 @@ module.exports.testaddress_PE = {
     },
     
     testParseAddressPEManyLines: function(test) {
+        test.expect(7);
         var parsedAddress = new Address("Catalina Huanca\n110 San Isidro\nLima 27\nPERU", {locale: 'es-PE'});
         
-        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
           test.equal(parsedAddress.streetAddress, "Catalina Huanca, 110 San Isidro");
         test.equal(parsedAddress.locality, "Lima 27");
@@ -90,9 +90,9 @@ module.exports.testaddress_PE = {
     },
     
     testParseAddressPEOneLine: function(test) {
+        test.expect(7);
         var parsedAddress = new Address("Catalina Huanca , 110 San Isidro , Lima 27 , PERU", {locale: 'es-PE'});
         
-        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
           test.equal(parsedAddress.streetAddress, "Catalina Huanca, 110 San Isidro");
         test.equal(parsedAddress.locality, "Lima 27");
@@ -104,9 +104,9 @@ module.exports.testaddress_PE = {
     },
     
     testParseAddressPESuperfluousWhitespace: function(test) {
+        test.expect(7);
         var parsedAddress = new Address("Catalina Huanca\n\n\t\r\t\t\r110 San Isidro\r\r\n\nLima 27\t\r\n\t\rPERU", {locale: 'es-PE'});
         
-        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
           test.equal(parsedAddress.streetAddress, "Catalina Huanca, 110 San Isidro");
         test.equal(parsedAddress.locality, "Lima 27");
@@ -118,9 +118,9 @@ module.exports.testaddress_PE = {
     },
     
     testParseAddressPENoDelimiters: function(test) {
+        test.expect(7);
         var parsedAddress = new Address("Catalina Huanca 110 San Isidro Lima 27 PERU", {locale: 'es-PE'});
         
-        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Catalina Huanca 110 San Isidro");
         test.equal(parsedAddress.locality, "Lima 27");
@@ -132,9 +132,9 @@ module.exports.testaddress_PE = {
     },
     
     testParseAddressPEFromUS: function(test) {
+        test.expect(7);
         var parsedAddress = new Address("Catalina Huanca 110 San Isidro\nLima 27\nPERU", {locale: 'es-PE'});
         
-        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Catalina Huanca 110 San Isidro");
         test.equal(parsedAddress.locality, "Lima 27");
@@ -146,6 +146,7 @@ module.exports.testaddress_PE = {
     },
     
     testFormatAddressPE: function(test) {
+        test.expect(1);
         var parsedAddress = new Address({
             streetAddress: "Catalina Huanca 110 San Isidro",
             locality: "Lima 27",
@@ -156,12 +157,12 @@ module.exports.testaddress_PE = {
         
         var expected = "Catalina Huanca 110 San Isidro\nLima 27\nPERU";
         var formatter = new AddressFmt({locale: 'es-PE'});
-        test.expect(1);
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     },
     
     testFormatAddressPEFromUS: function(test) {
+        test.expect(1);
         var parsedAddress = new Address({
             streetAddress: "Catalina Huanca 110 San Isidro",
             locality: "Lima 27",
@@ -172,7 +173,6 @@ module.exports.testaddress_PE = {
         
         var expected = "Catalina Huanca 110 San Isidro\nLima 27\nPERU";
         var formatter = new AddressFmt({locale: 'en-US'});
-        test.expect(1);
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     }

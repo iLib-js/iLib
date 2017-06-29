@@ -34,14 +34,15 @@ module.exports.testcollation_fi = {
     },
 
     testCollatorConstructorNative_fi: function(test) {
+        test.expect(1);
         var col = new Collator({useNative: false, locale: "fi-FI"});
     
-        test.expect(1);
         test.ok(typeof(col) !== "undefined");
         test.done();
     },
     
     testCollatorDefaultLowerPrimary_fi: function(test) {
+        test.expect(8);
         var col = new Collator({
             locale: "fi-FI",
             usage: "search",
@@ -49,7 +50,6 @@ module.exports.testcollation_fi = {
             sensitivity: "primary"
         });
     
-        test.expect(8);
         test.ok(typeof(col) !== "undefined");
     
         // The Finnish alphabet also has some extra letters, namely Å and Ä and Ö which appear
@@ -66,6 +66,7 @@ module.exports.testcollation_fi = {
     },
     
     testCollatorDefaultLowerAccentsPrimary_fi: function(test) {
+        test.expect(15);
         var col = new Collator({
             locale: "fi-FI",
             usage: "search",
@@ -73,7 +74,6 @@ module.exports.testcollation_fi = {
             sensitivity: "primary"
         });
     
-        test.expect(15);
         test.ok(typeof(col) !== "undefined");
     
         // some primary equivalences, mostly for foreign loanwords
@@ -98,6 +98,7 @@ module.exports.testcollation_fi = {
     },
     
     testCollatorDefaultCasePrimary_fi: function(test) {
+        test.expect(6);
         var col = new Collator({
             locale: "fi-FI",
             usage: "search",
@@ -105,7 +106,6 @@ module.exports.testcollation_fi = {
             sensitivity: "primary"
         });
     
-        test.expect(6);
         test.ok(typeof(col) !== "undefined");
     
         // case is a tertiary difference, so no difference here
@@ -118,6 +118,7 @@ module.exports.testcollation_fi = {
     },
     
     testCollatorDefaultVariantsPrimary_fi: function(test) {
+        test.expect(7);
         var col = new Collator({
             locale: "fi-FI",
             usage: "search",
@@ -125,7 +126,6 @@ module.exports.testcollation_fi = {
             sensitivity: "primary"
         });
     
-        test.expect(7);
         test.ok(typeof(col) !== "undefined");
     
         // variants are a quaternary difference, so no difference here
@@ -139,6 +139,7 @@ module.exports.testcollation_fi = {
     },
     
     testCollatorDefaultUpperPrimary_fi: function(test) {
+        test.expect(8);
         var col = new Collator({
             locale: "fi-FI",
             usage: "search",
@@ -146,7 +147,6 @@ module.exports.testcollation_fi = {
             sensitivity: "primary"
         });
     
-        test.expect(8);
         test.ok(typeof(col) !== "undefined");
     
         // The Finnish alphabet also has some extra letters, namely Å and Ä and Ö which appear
@@ -163,6 +163,7 @@ module.exports.testcollation_fi = {
     },
     
     testCollatorDefaultUpperAccentsPrimary_fi: function(test) {
+        test.expect(15);
         var col = new Collator({
             locale: "fi-FI",
             usage: "search",
@@ -170,7 +171,6 @@ module.exports.testcollation_fi = {
             sensitivity: "primary"
         });
     
-        test.expect(15);
         test.ok(typeof(col) !== "undefined");
     
         // some primary equivalences, mostly for foreign loanwords
@@ -195,6 +195,7 @@ module.exports.testcollation_fi = {
     },
     
     testCollatorDefaultLowerSecondary_fi: function(test) {
+        test.expect(8);
         var col = new Collator({
             locale: "fi-FI",
             usage: "search",
@@ -202,7 +203,6 @@ module.exports.testcollation_fi = {
             sensitivity: "secondary"
         });
     
-        test.expect(8);
         test.ok(typeof(col) !== "undefined");
     
         // the accents are primary differences, so this is the same order as
@@ -219,6 +219,7 @@ module.exports.testcollation_fi = {
     },
     
     testCollatorDefaultLowerAccentsSecondary_fi: function(test) {
+        test.expect(14);
         var col = new Collator({
             locale: "fi-FI",
             usage: "search",
@@ -226,7 +227,6 @@ module.exports.testcollation_fi = {
             sensitivity: "secondary"
         });
     
-        test.expect(14);
         test.ok(typeof(col) !== "undefined");
     
         // some secondary differences, mostly for foreign loanwords
@@ -250,6 +250,7 @@ module.exports.testcollation_fi = {
     },
     
     testCollatorDefaultCaseSecondary_fi: function(test) {
+        test.expect(6);
         var col = new Collator({
             locale: "fi-FI",
             usage: "search",
@@ -257,7 +258,6 @@ module.exports.testcollation_fi = {
             sensitivity: "secondary"
         });
     
-        test.expect(6);
         test.ok(typeof(col) !== "undefined");
     
         // case is a tertiary difference, so no difference here
@@ -270,6 +270,7 @@ module.exports.testcollation_fi = {
     },
     
     testCollatorDefaultVariantsSecondary_fi: function(test) {
+        test.expect(7);
         var col = new Collator({
             locale: "fi-FI",
             usage: "search",
@@ -277,7 +278,6 @@ module.exports.testcollation_fi = {
             sensitivity: "secondary"
         });
     
-        test.expect(7);
         test.ok(typeof(col) !== "undefined");
     
         // variants are a quaternary difference, so no difference here
@@ -291,6 +291,7 @@ module.exports.testcollation_fi = {
     },
     
     testCollatorDefaultUpperSecondary_fi: function(test) {
+        test.expect(8);
         var col = new Collator({
             locale: "fi-FI",
             usage: "search",
@@ -298,7 +299,6 @@ module.exports.testcollation_fi = {
             sensitivity: "secondary"
         });
     
-        test.expect(8);
         test.ok(typeof(col) !== "undefined");
     
         // the accents are primary differences, so this is the same order as
@@ -315,6 +315,7 @@ module.exports.testcollation_fi = {
     },
     
     testCollatorDefaultUpperAccentsSecondary_fi: function(test) {
+        test.expect(14);
         var col = new Collator({
             locale: "fi-FI",
             usage: "search",
@@ -322,7 +323,6 @@ module.exports.testcollation_fi = {
             sensitivity: "secondary"
         });
     
-        test.expect(14);
         test.ok(typeof(col) !== "undefined");
         
         // some secondary differences, mostly for foreign loanwords
@@ -346,6 +346,7 @@ module.exports.testcollation_fi = {
     },
     
     testCollatorDefaultLowerTertiary_fi: function(test) {
+        test.expect(13);
         var col = new Collator({
             locale: "fi-FI",
             usage: "search",
@@ -353,7 +354,6 @@ module.exports.testcollation_fi = {
             sensitivity: "tertiary"
         });
     
-        test.expect(13);
         test.ok(typeof(col) !== "undefined");
     
         // case is a tertiary difference, so now sort based on case
@@ -374,6 +374,7 @@ module.exports.testcollation_fi = {
     },
     
     testCollatorDefaultLowerAccentsTertiary_fi: function(test) {
+        test.expect(14);
         var col = new Collator({
             locale: "fi-FI",
             usage: "search",
@@ -381,7 +382,6 @@ module.exports.testcollation_fi = {
             sensitivity: "tertiary"
         });
     
-        test.expect(14);
         test.ok(typeof(col) !== "undefined");
     
         // some secondary differences, mostly for foreign loanwords
@@ -406,6 +406,7 @@ module.exports.testcollation_fi = {
     
     
     testCollatorDefaultVariantsTertiary_fi: function(test) {
+        test.expect(7);
         var col = new Collator({
             locale: "fi-FI",
             usage: "search",
@@ -413,7 +414,6 @@ module.exports.testcollation_fi = {
             sensitivity: "tertiary"
         });
     
-        test.expect(7);
         test.ok(typeof(col) !== "undefined");
     
         // variants are a quaternary difference, so no difference here
@@ -427,6 +427,7 @@ module.exports.testcollation_fi = {
     },
     
     testCollatorDefaultUpperTertiary_fi: function(test) {
+        test.expect(8);
         var col = new Collator({
             locale: "fi-FI",
             usage: "search",
@@ -434,7 +435,6 @@ module.exports.testcollation_fi = {
             sensitivity: "tertiary"
         });
     
-        test.expect(8);
         test.ok(typeof(col) !== "undefined");
     
         // the accents are primary differences, so this is the same order as
@@ -450,6 +450,7 @@ module.exports.testcollation_fi = {
     },
     
     testCollatorDefaultUpperAccentsTertiary_fi: function(test) {
+        test.expect(14);
         var col = new Collator({
             locale: "fi-FI",
             usage: "search",
@@ -457,7 +458,6 @@ module.exports.testcollation_fi = {
             sensitivity: "tertiary"
         });
     
-        test.expect(14);
         test.ok(typeof(col) !== "undefined");
         
         // some secondary differences, mostly for foreign loanwords
@@ -481,6 +481,7 @@ module.exports.testcollation_fi = {
     },
     
     testCollatorDefaultLowerQuaternary_fi: function(test) {
+        test.expect(13);
         var col = new Collator({
             locale: "fi-FI",
             usage: "search",
@@ -488,7 +489,6 @@ module.exports.testcollation_fi = {
             sensitivity: "quaternary"
         });
     
-        test.expect(13);
         test.ok(typeof(col) !== "undefined");
     
         // case is a tertiary difference, so now sort based on case
@@ -509,6 +509,7 @@ module.exports.testcollation_fi = {
     },
     
     testCollatorDefaultVariantsQuaternary_fi: function(test) {
+        test.expect(7);
         var col = new Collator({
             locale: "fi-FI",
             usage: "search",
@@ -516,7 +517,6 @@ module.exports.testcollation_fi = {
             sensitivity: "quaternary"
         });
     
-        test.expect(7);
         test.ok(typeof(col) !== "undefined");
     
         // variants are a quaternary difference, so now sort these variants properly
@@ -530,6 +530,7 @@ module.exports.testcollation_fi = {
     },
     
     testCollatorDefaultUpperQuaternary_fi: function(test) {
+        test.expect(8);
         var col = new Collator({
             locale: "fi-FI",
             usage: "search",
@@ -537,7 +538,6 @@ module.exports.testcollation_fi = {
             sensitivity: "quaternary"
         });
     
-        test.expect(8);
         test.ok(typeof(col) !== "undefined");
     
         test.ok("A < B", col.compare("A", "B") < 0);
@@ -551,24 +551,24 @@ module.exports.testcollation_fi = {
     },
     
     testCollatorGetSortKeySimpleUpper_fi: function(test) {
+        test.expect(2);
         var col = new Collator({
             locale: "fi-FI",
             useNative: false
         });
     
-        test.expect(2);
         test.ok(typeof(col) !== "undefined");
     
         test.equal(col.sortKey("ABCÅÄÖ"), "000020040320340360");
         test.done();
     },
     testCollatorGetSortKeySimpleLower_fi: function(test) {
+        test.expect(2);
         var col = new Collator({
             locale: "fi-FI",
             useNative: false
         });
     
-        test.expect(2);
         test.ok(typeof(col) !== "undefined");
     
         test.equal(col.sortKey("abcåäö"), "002022042322342362");
@@ -577,12 +577,12 @@ module.exports.testcollation_fi = {
     
     
     testCollatorWithSort_fi: function(test) {
+        test.expect(2);
         var col = new Collator({
             locale: "fi-FI",
             useNative: false,
             usage: "sort"
         });
-        test.expect(2);
         test.ok(typeof(col) !== "undefined");
     
         var input = [ "å", "p", "b", "w", "d", "h", "x", "ä", "j", "v", "z",
@@ -614,6 +614,7 @@ module.exports.testcollation_fi = {
     
     
     testJSCollatorNumeric_fi: function(test) {
+        test.expect(4);
         var col = new Collator({
             locale: "fi-FI",
             useNative: false,
@@ -621,7 +622,6 @@ module.exports.testcollation_fi = {
             numeric: true
         });
     
-        test.expect(4);
         test.ok(typeof(col) !== "undefined");
     
         // period is the thousands separator and comma is the decimal separator

@@ -31,8 +31,8 @@ module.exports.phonenum_IE = {
     },
 
     testParseIEFull: function(test) {
-        var parsed = new PhoneNumber("0112345678", {locale: "en-IE"});
         test.expect(2);
+        var parsed = new PhoneNumber("0112345678", {locale: "en-IE"});
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = new PhoneNumber({
@@ -47,8 +47,8 @@ module.exports.phonenum_IE = {
     },
     
     testParseIEFullLongAreaCode: function(test) {
-        var parsed = new PhoneNumber("040412345", {locale: "en-IE"});
         test.expect(2);
+        var parsed = new PhoneNumber("040412345", {locale: "en-IE"});
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = new PhoneNumber({
@@ -63,8 +63,8 @@ module.exports.phonenum_IE = {
     },
     
     testParseIEIgnoreFormatting: function(test) {
-        var parsed = new PhoneNumber("(0404) 12-345", {locale: "en-IE"});
         test.expect(2);
+        var parsed = new PhoneNumber("(0404) 12-345", {locale: "en-IE"});
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = new PhoneNumber({
@@ -79,8 +79,8 @@ module.exports.phonenum_IE = {
     },
     
     testParseIEIgnoreCrap: function(test) {
-        var parsed = new PhoneNumber("0@11$23%45&678", {locale: "en-IE"});
         test.expect(2);
+        var parsed = new PhoneNumber("0@11$23%45&678", {locale: "en-IE"});
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = new PhoneNumber({
@@ -95,8 +95,8 @@ module.exports.phonenum_IE = {
     },
     
     testParseIENoAreaCode: function(test) {
-        var parsed = new PhoneNumber("82345678", {locale: "en-IE"});
         test.expect(2);
+        var parsed = new PhoneNumber("82345678", {locale: "en-IE"});
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = new PhoneNumber({
@@ -109,8 +109,8 @@ module.exports.phonenum_IE = {
     },
     
     testParseIELocalInvalidNumber: function(test) {
-        var parsed = new PhoneNumber("12345678", {locale: "en-IE"});
         test.expect(2);
+        var parsed = new PhoneNumber("12345678", {locale: "en-IE"});
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = new PhoneNumber({
@@ -124,8 +124,8 @@ module.exports.phonenum_IE = {
     },
     
     testVSC: function(test) {
-        var parsed = new PhoneNumber("14282345678", {locale: "en-IE"});
         test.expect(2);
+        var parsed = new PhoneNumber("14282345678", {locale: "en-IE"});
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = new PhoneNumber({
@@ -139,8 +139,8 @@ module.exports.phonenum_IE = {
     },
     
     testParseIEPlusIDDToUS: function(test) {
-        var parsed = new PhoneNumber("+12028675309", {locale: "en-IE"});
         test.expect(2);
+        var parsed = new PhoneNumber("+12028675309", {locale: "en-IE"});
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = new PhoneNumber({
@@ -156,8 +156,8 @@ module.exports.phonenum_IE = {
     },
     
     testParseIEZerosIDDToUS: function(test) {
-        var parsed = new PhoneNumber("0012028675309", {locale: "en-IE"});
         test.expect(2);
+        var parsed = new PhoneNumber("0012028675309", {locale: "en-IE"});
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = new PhoneNumber({
@@ -173,10 +173,10 @@ module.exports.phonenum_IE = {
     },
     
     testParseIELongAreaCodeNoTrunk: function(test) {
+        test.expect(2);
         // this number uses an area code to start it, but without the trunk, we should
         // not recognize it as an area code
         var parsed = new PhoneNumber("404123456", {locale: "en-IE"});
-        test.expect(2);
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = new PhoneNumber({
@@ -189,10 +189,10 @@ module.exports.phonenum_IE = {
     },
     
     testParseIELocalNumber: function(test) {
+        test.expect(2);
         // this number uses an area code to start it, but without the trunk, we should
         // not recognize it as an area code
         var parsed = new PhoneNumber("82345678", {locale: "en-IE"});
-        test.expect(2);
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = new PhoneNumber({
@@ -205,8 +205,8 @@ module.exports.phonenum_IE = {
     },
     
     testParseIEPlusIDDToGB: function(test) {
-        var parsed = new PhoneNumber("+442012345678", {locale: "en-IE"});
         test.expect(2);
+        var parsed = new PhoneNumber("+442012345678", {locale: "en-IE"});
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = new PhoneNumber({
@@ -222,8 +222,8 @@ module.exports.phonenum_IE = {
     },
     
     testParseIEPlusIDDToIE: function(test) {
-        var parsed = new PhoneNumber("+353 86 822 3689", {locale: "en-IE"});
         test.expect(2);
+        var parsed = new PhoneNumber("+353 86 822 3689", {locale: "en-IE"});
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = new PhoneNumber({
@@ -239,8 +239,8 @@ module.exports.phonenum_IE = {
     },
     
     testParseIEZerosIDDToGB: function(test) {
-        var parsed = new PhoneNumber("00442012345678", {locale: "en-IE"});
         test.expect(2);
+        var parsed = new PhoneNumber("00442012345678", {locale: "en-IE"});
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = new PhoneNumber({
@@ -256,8 +256,8 @@ module.exports.phonenum_IE = {
     },
     
     testParseIEService: function(test) {
-        var parsed = new PhoneNumber("15308765432", {locale: "en-IE"});
         test.expect(2);
+        var parsed = new PhoneNumber("15308765432", {locale: "en-IE"});
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = new PhoneNumber({
@@ -271,8 +271,8 @@ module.exports.phonenum_IE = {
     },
     
     testParseIEMobileNumber: function(test) {
-        var parsed = new PhoneNumber("0871234567", {locale: "en-IE"});
         test.expect(2);
+        var parsed = new PhoneNumber("0871234567", {locale: "en-IE"});
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = new PhoneNumber({
@@ -287,8 +287,8 @@ module.exports.phonenum_IE = {
     },
     
     testParseIEPartial1: function(test) {
-        var parsed = new PhoneNumber("0", {locale: "en-IE"});
         test.expect(2);
+        var parsed = new PhoneNumber("0", {locale: "en-IE"});
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = new PhoneNumber({
@@ -301,8 +301,8 @@ module.exports.phonenum_IE = {
     },
     
     testParseIEPartial2: function(test) {
-        var parsed = new PhoneNumber("04", {locale: "en-IE"});
         test.expect(2);
+        var parsed = new PhoneNumber("04", {locale: "en-IE"});
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = new PhoneNumber({
@@ -315,8 +315,8 @@ module.exports.phonenum_IE = {
         
     },
     testParseIEPartial3: function(test) {
-        var parsed = new PhoneNumber("040", {locale: "en-IE"});
         test.expect(2);
+        var parsed = new PhoneNumber("040", {locale: "en-IE"});
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = new PhoneNumber({
@@ -329,8 +329,8 @@ module.exports.phonenum_IE = {
         
     },
     testParseIEPartial4: function(test) {
-        var parsed = new PhoneNumber("0404", {locale: "en-IE"});
         test.expect(2);
+        var parsed = new PhoneNumber("0404", {locale: "en-IE"});
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = new PhoneNumber({
@@ -343,8 +343,8 @@ module.exports.phonenum_IE = {
         
     },
     testParseIEPartial5: function(test) {
-        var parsed = new PhoneNumber("04041", {locale: "en-IE"});
         test.expect(2);
+        var parsed = new PhoneNumber("04041", {locale: "en-IE"});
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = new PhoneNumber({
@@ -358,8 +358,8 @@ module.exports.phonenum_IE = {
         
     },
     testParseIEPartial6: function(test) {
-        var parsed = new PhoneNumber("040412", {locale: "en-IE"});
         test.expect(2);
+        var parsed = new PhoneNumber("040412", {locale: "en-IE"});
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = new PhoneNumber({
@@ -373,8 +373,8 @@ module.exports.phonenum_IE = {
         
     },
     testParseIEPartial7: function(test) {
-        var parsed = new PhoneNumber("0404123", {locale: "en-IE"});
         test.expect(2);
+        var parsed = new PhoneNumber("0404123", {locale: "en-IE"});
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = new PhoneNumber({
@@ -388,8 +388,8 @@ module.exports.phonenum_IE = {
         
     },
     testParseIEPartial8: function(test) {
-        var parsed = new PhoneNumber("04041234", {locale: "en-IE"});
         test.expect(2);
+        var parsed = new PhoneNumber("04041234", {locale: "en-IE"});
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = new PhoneNumber({
@@ -403,8 +403,8 @@ module.exports.phonenum_IE = {
         
     },
     testParseIEPartial9: function(test) {
-        var parsed = new PhoneNumber("040412345", {locale: "en-IE"});
         test.expect(2);
+        var parsed = new PhoneNumber("040412345", {locale: "en-IE"});
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = new PhoneNumber({
@@ -420,8 +420,8 @@ module.exports.phonenum_IE = {
     
     // for CFISH-5426
     testParseIEEmergencyNumber: function(test) {
-        var parsed = new PhoneNumber("999", {locale: "en-IE"});
         test.expect(2);
+        var parsed = new PhoneNumber("999", {locale: "en-IE"});
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = new PhoneNumber({

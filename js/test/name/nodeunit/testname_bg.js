@@ -34,8 +34,8 @@ module.exports.testname_bg = {
     },
 
     testDEParseSimpleName_bg_BG: function(test) {
-        var parsed = new Name("Мария Георгиева", {locale: 'bg-BG'});
         test.expect(2);
+        var parsed = new Name("Мария Георгиева", {locale: 'bg-BG'});
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {
@@ -49,8 +49,8 @@ module.exports.testname_bg = {
     
     
     testDEParseAdjunctNames_bg_BG: function(test) {
-        var parsed = new Name("Стоян Драганов", {locale: 'bg-BG'});
         test.expect(2);
+        var parsed = new Name("Стоян Драганов", {locale: 'bg-BG'});
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {
@@ -65,8 +65,8 @@ module.exports.testname_bg = {
     
     
     testDEParseSingleNameWithPrefixAndAdjunct_bg_BG: function(test) {
-        var parsed = new Name("сестра Драганов", {locale: 'bg-BG'});
         test.expect(2);
+        var parsed = new Name("сестра Драганов", {locale: 'bg-BG'});
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {
@@ -80,8 +80,8 @@ module.exports.testname_bg = {
     
     
     testDEParseTitle_bg_BG: function(test) {
-        var parsed = new Name("Мария Георгиева младши", {locale: 'bg-BG'});
         test.expect(2);
+        var parsed = new Name("Мария Георгиева младши", {locale: 'bg-BG'});
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {
@@ -97,8 +97,8 @@ module.exports.testname_bg = {
     
     
     testDEParseTitleWithFamilyOnly_bg_BG: function(test) {
-        var parsed = new Name("сестра. Георгиева", {locale: 'bg-BG'});
         test.expect(2);
+        var parsed = new Name("сестра. Георгиева", {locale: 'bg-BG'});
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {
@@ -113,8 +113,8 @@ module.exports.testname_bg = {
     
     
     testDEParseEverything_bg_BG: function(test) {
-        var parsed = new Name("баба Мария Георгиева", {locale: 'bg-BG'});
         test.expect(2);
+        var parsed = new Name("баба Мария Георгиева", {locale: 'bg-BG'});
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {
@@ -133,6 +133,7 @@ module.exports.testname_bg = {
      */
     
     testDEFormatSimpleNameShort_bg_BG: function(test) {
+        test.expect(2);
         var name = new Name({
             givenName: "Мария",
             familyName: "Георгиева"
@@ -142,7 +143,6 @@ module.exports.testname_bg = {
             locale: 'bg-BG'
         });
         var formatted = fmt.format(name);
-        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "Мария Георгиева";
@@ -152,6 +152,7 @@ module.exports.testname_bg = {
     },
     
     testDEFormatSimpleNameMedium_bg_BG: function(test) {
+        test.expect(2);
         var name = new Name({
             givenName: "Мария",
             
@@ -162,7 +163,6 @@ module.exports.testname_bg = {
             locale: 'bg-BG'
         });
         var formatted = fmt.format(name);
-        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "Мария Георгиева";
@@ -172,6 +172,7 @@ module.exports.testname_bg = {
     },
     
     testDEFormatSimpleNameLong_bg_BG: function(test) {
+        test.expect(2);
         var name = new Name({
             givenName: "Мария",
             
@@ -183,7 +184,6 @@ module.exports.testname_bg = {
             locale: 'bg-BG'
         });
         var formatted = fmt.format(name);
-        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "Мария Георгиева";
@@ -193,6 +193,7 @@ module.exports.testname_bg = {
     },
     
     testDEFormatSimpleNameFull_bg_BG: function(test) {
+        test.expect(2);
         var name = new Name({
             prefix: "лекар",
             givenName: "Мария",
@@ -205,7 +206,6 @@ module.exports.testname_bg = {
             locale: 'bg-BG'
         });
         var formatted = fmt.format(name);
-        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "лекар Мария Георгиева MdB";
@@ -215,6 +215,7 @@ module.exports.testname_bg = {
     },
     
     testDEFormatComplexNameShort_bg_BG: function(test) {
+        test.expect(2);
         var name = new Name({
             prefix: "лекар",
             givenName: "Мария",
@@ -225,7 +226,6 @@ module.exports.testname_bg = {
             locale: 'bg-BG'
         });
         var formatted = fmt.format(name);
-        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "Мария Георгиева";
@@ -235,6 +235,7 @@ module.exports.testname_bg = {
     },
     
     testDEFormatComplexNameMedium_bg_BG: function(test) {
+        test.expect(2);
         var name = new Name({
             prefix: "лекар",
             givenName: "Мария",
@@ -245,7 +246,6 @@ module.exports.testname_bg = {
             locale: 'bg-BG'
         });
         var formatted = fmt.format(name);
-        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "Мария Георгиева";
@@ -255,6 +255,7 @@ module.exports.testname_bg = {
     },
     
     testDEFormatComplexNameLong_bg_BG: function(test) {
+        test.expect(2);
         var name = new Name({
             prefix: "лекар",
             givenName: "Мария",
@@ -265,7 +266,6 @@ module.exports.testname_bg = {
             locale: 'bg-BG'
         });
         var formatted = fmt.format(name);
-        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "лекар Мария Георгиева";
@@ -275,6 +275,7 @@ module.exports.testname_bg = {
     },
     
     testDEFormatAsianNameShort_bg_BG: function(test) {
+        test.expect(2);
         var name = new Name({
             prefix: "小",
             givenName: "獸",
@@ -285,7 +286,6 @@ module.exports.testname_bg = {
             locale: 'bg-BG'
         });
         var formatted = fmt.format(name);
-        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "地獸";
@@ -295,6 +295,7 @@ module.exports.testname_bg = {
     },
     
     testDEFormatAsianNameMedium_bg_BG: function(test) {
+        test.expect(2);
         var name = new Name({
             prefix: "小",
             givenName: "獸",
@@ -305,7 +306,6 @@ module.exports.testname_bg = {
             locale: 'bg-BG'
         });
         var formatted = fmt.format(name);
-        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "地獸";
@@ -315,6 +315,7 @@ module.exports.testname_bg = {
     },
     
     testDEFormatAsianNameLong_bg_BG: function(test) {
+        test.expect(2);
         var name = new Name({
             prefix: "小",
             givenName: "獸",
@@ -325,7 +326,6 @@ module.exports.testname_bg = {
             locale: 'bg-BG'
         });
         var formatted = fmt.format(name);
-        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "小地獸";
@@ -340,8 +340,8 @@ module.exports.testname_bg = {
     
     
     testDEParseSimpleName_cs_CZ: function(test) {
-        var parsed = new Name("Yana Synkova", {locale: 'cs-CZ'});
         test.expect(2);
+        var parsed = new Name("Yana Synkova", {locale: 'cs-CZ'});
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {
@@ -354,8 +354,8 @@ module.exports.testname_bg = {
     },
     
     testDEParseTripleName_cs_CZ: function(test) {
-        var parsed = new Name("Yana Synkova", {locale: 'cs-CZ'});
         test.expect(2);
+        var parsed = new Name("Yana Synkova", {locale: 'cs-CZ'});
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {
@@ -369,8 +369,8 @@ module.exports.testname_bg = {
     
     
     testDEParseSingleNameWithPrefixAndAdjunct_cs_CZ: function(test) {
-        var parsed = new Name("prezident Yana Synkova", {locale: 'cs-CZ'});
         test.expect(2);
+        var parsed = new Name("prezident Yana Synkova", {locale: 'cs-CZ'});
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {
@@ -384,8 +384,8 @@ module.exports.testname_bg = {
     },
     
     testDEParseHypenatedName_cs_CZ: function(test) {
-        var parsed = new Name("Yana Synkova", {locale: 'cs-CZ'});
         test.expect(2);
+        var parsed = new Name("Yana Synkova", {locale: 'cs-CZ'});
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {
@@ -400,8 +400,8 @@ module.exports.testname_bg = {
     
     
     testDEParseTitle_cs_CZ: function(test) {
-        var parsed = new Name("prezident Yana Synkova", {locale: 'cs-CZ'});
         test.expect(2);
+        var parsed = new Name("prezident Yana Synkova", {locale: 'cs-CZ'});
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {
@@ -416,8 +416,8 @@ module.exports.testname_bg = {
     
     
     testDEParseTitle_cs_CZ1: function(test) {
-        var parsed = new Name("předsedkyně Yana Synkova", {locale: 'cs-CZ'});
         test.expect(2);
+        var parsed = new Name("předsedkyně Yana Synkova", {locale: 'cs-CZ'});
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {
@@ -433,8 +433,8 @@ module.exports.testname_bg = {
     
     
     testDEParseTitleWithFamilyOnlyAndAdjunct_cs_CZ: function(test) {
-        var parsed = new Name("viceprezident Yana Synkova", {locale: 'cs-CZ'});
         test.expect(2);
+        var parsed = new Name("viceprezident Yana Synkova", {locale: 'cs-CZ'});
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {
@@ -450,8 +450,8 @@ module.exports.testname_bg = {
     
     
     testDEParseEverything_cs_CZ: function(test) {
-        var parsed = new Name("dáma Yana Synkova", {locale: 'cs-CZ'});
         test.expect(2);
+        var parsed = new Name("dáma Yana Synkova", {locale: 'cs-CZ'});
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {
@@ -466,8 +466,8 @@ module.exports.testname_bg = {
     
     
     testDEParseCompoundHonorific_cs_CZ: function(test) {
-        var parsed = new Name("šéfkuchař Synkova", {locale: 'cs-CZ'});
         test.expect(2);
+        var parsed = new Name("šéfkuchař Synkova", {locale: 'cs-CZ'});
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {
@@ -480,8 +480,8 @@ module.exports.testname_bg = {
     },
     
     testDEParseCompoundHonorific_cs_CZ1: function(test) {
-        var parsed = new Name("Dr. Synkova", {locale: 'cs-CZ'});
         test.expect(2);
+        var parsed = new Name("Dr. Synkova", {locale: 'cs-CZ'});
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {
@@ -497,6 +497,7 @@ module.exports.testname_bg = {
      */
     
     testDEFormatSimpleNameShort_cs_CZ: function(test) {
+        test.expect(2);
         var name = new Name({
             givenName: "Yana",
             familyName: "Synkova"
@@ -506,7 +507,6 @@ module.exports.testname_bg = {
             locale: 'cs-CZ'
         });
         var formatted = fmt.format(name);
-        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "Yana Synkova";
@@ -516,6 +516,7 @@ module.exports.testname_bg = {
     },
     
     testDEFormatSimpleNameMedium_cs_CZ: function(test) {
+        test.expect(2);
         var name = new Name({
             givenName: "Yana",
             familyName: "Synkova"
@@ -525,7 +526,6 @@ module.exports.testname_bg = {
             locale: 'cs-CZ'
         });
         var formatted = fmt.format(name);
-        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "Yana Synkova";
@@ -535,6 +535,7 @@ module.exports.testname_bg = {
     },
     
     testDEFormatSimpleNameLong_cs_CZ: function(test) {
+        test.expect(2);
         var name = new Name({
             givenName: "Yana",
             familyName: "Synkova",
@@ -545,7 +546,6 @@ module.exports.testname_bg = {
             locale: 'cs-CZ'
         });
         var formatted = fmt.format(name);
-        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "Yana Synkova";
@@ -555,6 +555,7 @@ module.exports.testname_bg = {
     },
     
     testDEFormatSimpleNameFull_cs_CZ: function(test) {
+        test.expect(2);
         var name = new Name({
             prefix: "prezidentí ministerský předseda",
             givenName: "Yana",
@@ -566,7 +567,6 @@ module.exports.testname_bg = {
             locale: 'cs-CZ'
         });
         var formatted = fmt.format(name);
-        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "prezidentí ministerský předseda Yana Synkova v důchodu";
@@ -576,6 +576,7 @@ module.exports.testname_bg = {
     },
     
     testDEFormatComplexNameShort_cs_CZ: function(test) {
+        test.expect(2);
         var name = new Name({
             prefix: "prezidentí ministerský",
             givenName: "Yana",
@@ -586,7 +587,6 @@ module.exports.testname_bg = {
             locale: 'cs-CZ'
         });
         var formatted = fmt.format(name);
-        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "Yana von Synkova";
@@ -596,6 +596,7 @@ module.exports.testname_bg = {
     },
     
     testDEFormatComplexNameMedium_cs_CZ: function(test) {
+        test.expect(2);
         var name = new Name({
             prefix: "prezidentí ministerský",
             givenName: "Yana",
@@ -606,7 +607,6 @@ module.exports.testname_bg = {
             locale: 'cs-CZ'
         });
         var formatted = fmt.format(name);
-        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "Yana von Synkova";
@@ -616,6 +616,7 @@ module.exports.testname_bg = {
     },
     
     testDEFormatComplexNameLong_cs_CZ: function(test) {
+        test.expect(2);
         var name = new Name({
             prefix: "prezidentí ministerský",
             givenName: "Yana",
@@ -626,7 +627,6 @@ module.exports.testname_bg = {
             locale: 'cs-CZ'
         });
         var formatted = fmt.format(name);
-        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "prezidentí ministerský Yana von Synkova";
@@ -636,6 +636,7 @@ module.exports.testname_bg = {
     },
     
     testDEFormatAsianNameShort_cs_CZ: function(test) {
+        test.expect(2);
         var name = new Name({
             prefix: "小",
             givenName: "獸",
@@ -647,7 +648,6 @@ module.exports.testname_bg = {
             locale: 'cs-CZ'
         });
         var formatted = fmt.format(name);
-        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "地獸";
@@ -657,6 +657,7 @@ module.exports.testname_bg = {
     },
     
     testDEFormatAsianNameMedium_cs_CZ: function(test) {
+        test.expect(2);
         var name = new Name({
             prefix: "小",
             givenName: "獸",
@@ -668,7 +669,6 @@ module.exports.testname_bg = {
             locale: 'cs-CZ'
         });
         var formatted = fmt.format(name);
-        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "地獸";
@@ -678,6 +678,7 @@ module.exports.testname_bg = {
     },
     
     testDEFormatAsianNameLong_cs_CZ: function(test) {
+        test.expect(2);
         var name = new Name({
             prefix: "小",
             givenName: "獸",
@@ -689,7 +690,6 @@ module.exports.testname_bg = {
             locale: 'cs-CZ'
         });
         var formatted = fmt.format(name);
-        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "小地獸太太";
@@ -702,8 +702,8 @@ module.exports.testname_bg = {
     
     
     testDEParseSimpleName_da_DK: function(test) {
-        var parsed = new Name("Raeburn van Buren", {locale: 'da-DK'});
         test.expect(2);
+        var parsed = new Name("Raeburn van Buren", {locale: 'da-DK'});
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {
@@ -717,8 +717,8 @@ module.exports.testname_bg = {
     
     
     testDEParseAdjunctNames_da_DK: function(test) {
-        var parsed = new Name("Humphrey Dallas Bogart", {locale: 'da-DK'});
         test.expect(2);
+        var parsed = new Name("Humphrey Dallas Bogart", {locale: 'da-DK'});
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {
@@ -732,8 +732,8 @@ module.exports.testname_bg = {
     },
     
     testDEParseSingleName_da_DK: function(test) {
-        var parsed = new Name("Armin", {locale: 'da-DK'});
         test.expect(2);
+        var parsed = new Name("Armin", {locale: 'da-DK'});
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {
@@ -747,8 +747,8 @@ module.exports.testname_bg = {
     
     
     testDEParseSingleNameWithPrefixAndAdjunct_da_DK: function(test) {
-        var parsed = new Name("meneer Raeburn van Buren", {locale: 'da-DK'});
         test.expect(2);
+        var parsed = new Name("meneer Raeburn van Buren", {locale: 'da-DK'});
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {
@@ -763,8 +763,8 @@ module.exports.testname_bg = {
     
     
     testDEParseHypenatedName_da_DK: function(test) {
-        var parsed = new Name("Raeburn van Buren", {locale: 'da-DK'});
         test.expect(2);
+        var parsed = new Name("Raeburn van Buren", {locale: 'da-DK'});
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {
@@ -777,8 +777,8 @@ module.exports.testname_bg = {
     },
     
     testDEParseQuadrupleName_da_DK: function(test) {
-        var parsed = new Name("Raeburn Jürgen van Buren", {locale: 'da-DK'});
         test.expect(2);
+        var parsed = new Name("Raeburn Jürgen van Buren", {locale: 'da-DK'});
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {
@@ -792,8 +792,8 @@ module.exports.testname_bg = {
     },
     
     testDEParseTitle_da_DK: function(test) {
-        var parsed = new Name("meneer Dr. Raeburn van Buren", {locale: 'da-DK'});
         test.expect(2);
+        var parsed = new Name("meneer Dr. Raeburn van Buren", {locale: 'da-DK'});
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {
@@ -807,8 +807,8 @@ module.exports.testname_bg = {
     },
     
     testDEParseTitle_da_DK: function(test) {
-        var parsed = new Name("meneer Dr. Raeburn van Buren", {locale: 'da-DK'});
         test.expect(2);
+        var parsed = new Name("meneer Dr. Raeburn van Buren", {locale: 'da-DK'});
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {
@@ -823,8 +823,8 @@ module.exports.testname_bg = {
     
     
     testDEParseTitleWithFamilyOnly_da_DK: function(test) {
-        var parsed = new Name("meneer van Buren", {locale: 'da-DK'});
         test.expect(2);
+        var parsed = new Name("meneer van Buren", {locale: 'da-DK'});
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {
@@ -838,8 +838,8 @@ module.exports.testname_bg = {
     
     
     testDEParseHonorific_da_DK: function(test) {
-        var parsed = new Name("Fr. Julia Maier", {locale: 'da-DK'});
         test.expect(2);
+        var parsed = new Name("Fr. Julia Maier", {locale: 'da-DK'});
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {
@@ -853,8 +853,8 @@ module.exports.testname_bg = {
     },
     
     testDEParseEverything_da_DK: function(test) {
-        var parsed = new Name("guvernør Raeburn Jürgen van Buren pensioneret", {locale: 'da-DK'});
         test.expect(2);
+        var parsed = new Name("guvernør Raeburn Jürgen van Buren pensioneret", {locale: 'da-DK'});
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {
@@ -870,8 +870,8 @@ module.exports.testname_bg = {
     },
     
     testDEParseCompoundHonorific_da_DK: function(test) {
-        var parsed = new Name("Mr. Buren", {locale: 'da-DK'});
         test.expect(2);
+        var parsed = new Name("Mr. Buren", {locale: 'da-DK'});
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {
@@ -888,6 +888,7 @@ module.exports.testname_bg = {
      */
     
     testDEFormatSimpleNameShort_da_DK: function(test) {
+        test.expect(2);
         var name = new Name({
             givenName: "Raeburn",
             middleName: "Michael",
@@ -898,7 +899,6 @@ module.exports.testname_bg = {
             locale: 'da-DK'
         });
         var formatted = fmt.format(name);
-        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "Raeburn van Buren";
@@ -908,6 +908,7 @@ module.exports.testname_bg = {
     },
     
     testDEFormatSimpleNameMedium_da_DK: function(test) {
+        test.expect(2);
         var name = new Name({
             givenName: "Raeburn",
             familyName: "van Buren"
@@ -917,7 +918,6 @@ module.exports.testname_bg = {
             locale: 'da-DK'
         });
         var formatted = fmt.format(name);
-        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "Raeburn van Buren";
@@ -927,6 +927,7 @@ module.exports.testname_bg = {
     },
     
     testDEFormatSimpleNameLong_da_DK: function(test) {
+        test.expect(2);
         var name = new Name({
             givenName: "Raeburn",
             familyName: "van Buren",
@@ -937,7 +938,6 @@ module.exports.testname_bg = {
             locale: 'da-DK'
         });
         var formatted = fmt.format(name);
-        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "Raeburn van Buren";
@@ -947,6 +947,7 @@ module.exports.testname_bg = {
     },
     
     testDEFormatSimpleNameFull_da_DK: function(test) {
+        test.expect(2);
         var name = new Name({
             prefix: "meneer Dr.",
             givenName: "Raeburn",
@@ -958,7 +959,6 @@ module.exports.testname_bg = {
             locale: 'da-DK'
         });
         var formatted = fmt.format(name);
-        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "meneer Dr. Raeburn van Buren pensioneret";
@@ -968,6 +968,7 @@ module.exports.testname_bg = {
     },
     
     testDEFormatComplexNameShort_da_DK: function(test) {
+        test.expect(2);
         var name = new Name({
             prefix: "meneer Dr.",
             givenName: "Raeburn",
@@ -980,7 +981,6 @@ module.exports.testname_bg = {
             locale: 'da-DK'
         });
         var formatted = fmt.format(name);
-        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "Raeburn von van Buren";
@@ -992,6 +992,7 @@ module.exports.testname_bg = {
     
     
     testDEFormatComplexNameLong_da_DK: function(test) {
+        test.expect(2);
         var name = new Name({
             prefix: "meneer Dr.",
             givenName: "Raeburn",
@@ -1004,7 +1005,6 @@ module.exports.testname_bg = {
             locale: 'da-DK'
         });
         var formatted = fmt.format(name);
-        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "meneer Dr. Raeburn Michael Uwe von van Buren pensioneret";
@@ -1014,6 +1014,7 @@ module.exports.testname_bg = {
     },
     
     testDEFormatAsianNameShort_da_DK: function(test) {
+        test.expect(2);
         var name = new Name({
             prefix: "小",
             givenName: "獸",
@@ -1025,7 +1026,6 @@ module.exports.testname_bg = {
             locale: 'da-DK'
         });
         var formatted = fmt.format(name);
-        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "地獸";
@@ -1035,6 +1035,7 @@ module.exports.testname_bg = {
     },
     
     testDEFormatAsianNameMedium_da_DK: function(test) {
+        test.expect(2);
         var name = new Name({
             prefix: "小",
             givenName: "獸",
@@ -1046,7 +1047,6 @@ module.exports.testname_bg = {
             locale: 'da-DK'
         });
         var formatted = fmt.format(name);
-        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "地獸";
@@ -1056,6 +1056,7 @@ module.exports.testname_bg = {
     },
     
     testDEFormatAsianNameLong_da_DK: function(test) {
+        test.expect(2);
         var name = new Name({
             prefix: "小",
             givenName: "獸",
@@ -1067,7 +1068,6 @@ module.exports.testname_bg = {
             locale: 'da-DK'
         });
         var formatted = fmt.format(name);
-        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "小地獸太太";

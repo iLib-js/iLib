@@ -17,7 +17,7 @@
  * limitations under the License.
  */
 
-var ilib = require("../lib/ilib.js");
+var ilib = require("../lib/ilib-node.js");
 var ElementIterator = require("../lib/ElementIterator.js");
 var Collator = require("../lib/Collator.js");
 var CodePointSource = require("../lib/CodePointSource.js");

@@ -20,7 +20,7 @@
 
 // !dependencies: false
 
-var ilib = require("./../lib/ilib.js");
+var ilib = require("./../lib/ilib-node.js");
 
 // make sure it thinks the current module's dir is the same as in the 
 // nodejs tests so these require tests will be operating in the same

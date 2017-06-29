@@ -34,8 +34,8 @@ module.exports.testname_it = {
     },
 
     testParseSimpleName_it_IT: function(test) {
-        var parsed = new Name("Leonardo DiCaprio", {locale: 'it-IT'});
         test.expect(2);
+        var parsed = new Name("Leonardo DiCaprio", {locale: 'it-IT'});
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {
@@ -50,8 +50,8 @@ module.exports.testname_it = {
     
     
     testParseTitle_it_IT: function(test) {
-        var parsed = new Name("Leonardo DiCaprio", {locale: 'it-IT'});
         test.expect(2);
+        var parsed = new Name("Leonardo DiCaprio", {locale: 'it-IT'});
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {
@@ -66,8 +66,8 @@ module.exports.testname_it = {
     
     
     testParseTitleWithFamilyOnly_it_IT: function(test) {
-        var parsed = new Name("ingegnere. DiCaprio", {locale: 'it-IT'});
         test.expect(2);
+        var parsed = new Name("ingegnere. DiCaprio", {locale: 'it-IT'});
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {
@@ -82,8 +82,8 @@ module.exports.testname_it = {
     
     
     testParseEverything_it_IT: function(test) {
-        var parsed = new Name("ingegnere Leonardo DiCaprio", {locale: 'it-IT'});
         test.expect(2);
+        var parsed = new Name("ingegnere Leonardo DiCaprio", {locale: 'it-IT'});
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {
@@ -102,6 +102,7 @@ module.exports.testname_it = {
      */
     
     testFormatSimpleNameShort_it_IT: function(test) {
+        test.expect(2);
         var name = new Name({
             givenName: "Leonardo",
             familyName: "DiCaprio"
@@ -111,7 +112,6 @@ module.exports.testname_it = {
             locale: 'it-IT'
         });
         var formatted = fmt.format(name);
-        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "Leonardo DiCaprio";
@@ -121,6 +121,7 @@ module.exports.testname_it = {
     },
     
     testFormatSimpleNameMedium_it_IT: function(test) {
+        test.expect(2);
         var name = new Name({
             givenName: "Leonardo",
             
@@ -131,7 +132,6 @@ module.exports.testname_it = {
             locale: 'it-IT'
         });
         var formatted = fmt.format(name);
-        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "Leonardo DiCaprio";
@@ -141,6 +141,7 @@ module.exports.testname_it = {
     },
     
     testFormatSimpleNameLong_it_IT: function(test) {
+        test.expect(2);
         var name = new Name({
             givenName: "Leonardo",
             
@@ -152,7 +153,6 @@ module.exports.testname_it = {
             locale: 'it-IT'
         });
         var formatted = fmt.format(name);
-        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "Leonardo DiCaprio";
@@ -162,6 +162,7 @@ module.exports.testname_it = {
     },
     
     testFormatSimpleNameFull_it_IT: function(test) {
+        test.expect(2);
         var name = new Name({
             prefix: "dottore",
             givenName: "Leonardo",
@@ -173,7 +174,6 @@ module.exports.testname_it = {
             locale: 'it-IT'
         });
         var formatted = fmt.format(name);
-        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "dottore Leonardo DiCaprio";
@@ -183,6 +183,7 @@ module.exports.testname_it = {
     },
     
     testFormatComplexNameShort_it_IT: function(test) {
+        test.expect(2);
         var name = new Name({
             prefix: "dottore",
             givenName: "Leonardo",
@@ -193,7 +194,6 @@ module.exports.testname_it = {
             locale: 'it-IT'
         });
         var formatted = fmt.format(name);
-        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "Leonardo DiCaprio";
@@ -203,6 +203,7 @@ module.exports.testname_it = {
     },
     
     testFormatComplexNameMedium_it_IT: function(test) {
+        test.expect(2);
         var name = new Name({
             prefix: "dottore",
             givenName: "Leonardo",
@@ -213,7 +214,6 @@ module.exports.testname_it = {
             locale: 'it-IT'
         });
         var formatted = fmt.format(name);
-        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "Leonardo DiCaprio";
@@ -223,6 +223,7 @@ module.exports.testname_it = {
     },
     
     testFormatComplexNameLong_it_IT: function(test) {
+        test.expect(2);
         var name = new Name({
             prefix: "dottore",
             givenName: "Leonardo",
@@ -233,7 +234,6 @@ module.exports.testname_it = {
             locale: 'it-IT'
         });
         var formatted = fmt.format(name);
-        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "dottore Leonardo DiCaprio";

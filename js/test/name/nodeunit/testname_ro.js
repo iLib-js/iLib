@@ -34,8 +34,8 @@ module.exports.testname_ro = {
     },
 
     testParseSimpleName_ro_RO: function(test) {
-        var parsed = new Name("Sebastian Stan", {locale: 'ro-RO'});
         test.expect(2);
+        var parsed = new Name("Sebastian Stan", {locale: 'ro-RO'});
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {
@@ -48,8 +48,8 @@ module.exports.testname_ro = {
     },
     
     testParseSimpleNameWithMiddleName_ro_RO: function(test) {
-        var parsed = new Name("Alexandra Maria Lara", {locale: 'ro-RO'});
         test.expect(2);
+        var parsed = new Name("Alexandra Maria Lara", {locale: 'ro-RO'});
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {
@@ -63,8 +63,8 @@ module.exports.testname_ro = {
     },
     
     testParseTitle_ro_RO: function(test) {
-        var parsed = new Name("Sebastian Stan doctorand", {locale: 'ro-RO'});
         test.expect(2);
+        var parsed = new Name("Sebastian Stan doctorand", {locale: 'ro-RO'});
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {
@@ -78,8 +78,8 @@ module.exports.testname_ro = {
     },
     
     testParseTitleWithFamilyOnly_ro_RO: function(test) {
-        var parsed = new Name("Dl. Stan", {locale: 'ro-RO'});
         test.expect(2);
+        var parsed = new Name("Dl. Stan", {locale: 'ro-RO'});
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {
@@ -94,8 +94,8 @@ module.exports.testname_ro = {
     
     
     testParseEverything_ro_RO: function(test) {
-        var parsed = new Name("Dl. și D-na. Stan", {locale: 'ro-RO'});
         test.expect(2);
+        var parsed = new Name("Dl. și D-na. Stan", {locale: 'ro-RO'});
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {
@@ -108,8 +108,8 @@ module.exports.testname_ro = {
     },
     
     testParseprefix_ro_RO: function(test) {
-        var parsed = new Name("Dl. Sebastian Stan", {locale: 'ro-RO'});
         test.expect(2);
+        var parsed = new Name("Dl. Sebastian Stan", {locale: 'ro-RO'});
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {
@@ -123,8 +123,8 @@ module.exports.testname_ro = {
     },
     
     testParseprefixAndSuffix_ro_RO: function(test) {
-        var parsed = new Name("Vice-presedinte Sebastian Stan retras", {locale: 'ro-RO'});
         test.expect(2);
+        var parsed = new Name("Vice-presedinte Sebastian Stan retras", {locale: 'ro-RO'});
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {
@@ -142,6 +142,7 @@ module.exports.testname_ro = {
      */
     
     testFormatSimpleNameShort_ro_RO: function(test) {
+        test.expect(2);
         var name = new Name({
             givenName: "Sebastian",
             familyName: "Stan"
@@ -151,7 +152,6 @@ module.exports.testname_ro = {
             locale: 'ro-RO'
         });
         var formatted = fmt.format(name);
-        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "Sebastian Stan";
@@ -161,6 +161,7 @@ module.exports.testname_ro = {
     },
     
     testFormatSimpleNameMedium_ro_RO: function(test) {
+        test.expect(2);
         var name = new Name({
             givenName: "Sebastian",
             
@@ -171,7 +172,6 @@ module.exports.testname_ro = {
             locale: 'ro-RO'
         });
         var formatted = fmt.format(name);
-        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "Sebastian Stan";
@@ -181,6 +181,7 @@ module.exports.testname_ro = {
     },
     
     testFormatSimpleNameLong_ro_RO: function(test) {
+        test.expect(2);
         var name = new Name({
             givenName: "Sebastian",
             
@@ -192,7 +193,6 @@ module.exports.testname_ro = {
             locale: 'ro-RO'
         });
         var formatted = fmt.format(name);
-        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "Sebastian Stan";
@@ -204,6 +204,7 @@ module.exports.testname_ro = {
     
     
     testFormatSurname_ro_RO: function(test) {
+        test.expect(2);
         var name = new Name({
             prefix: "Dl. i D-na.",
             
@@ -214,7 +215,6 @@ module.exports.testname_ro = {
             locale: 'ro-RO'
         });
         var formatted = fmt.format(name);
-        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "Dl. i D-na. Stan";
@@ -224,6 +224,7 @@ module.exports.testname_ro = {
     },
     
     testFormatSimpleNameFull_ro_RO: function(test) {
+        test.expect(2);
         var name = new Name({
             prefix: "Administrator",
             givenName: "Sebastian",
@@ -236,7 +237,6 @@ module.exports.testname_ro = {
             locale: 'ro-RO'
         });
         var formatted = fmt.format(name);
-        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "Administrator Sebastian Stan doctorand";
@@ -246,6 +246,7 @@ module.exports.testname_ro = {
     },
     
     testFormatComplexNameShort_ro_RO: function(test) {
+        test.expect(2);
         var name = new Name({
             prefix: "Administrator",
             givenName: "Sebastian",
@@ -256,7 +257,6 @@ module.exports.testname_ro = {
             locale: 'ro-RO'
         });
         var formatted = fmt.format(name);
-        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "Sebastian Stan";
@@ -266,6 +266,7 @@ module.exports.testname_ro = {
     },
     
     testFormatComplexNameMedium_ro_RO: function(test) {
+        test.expect(2);
         var name = new Name({
             prefix: "Administrator",
             givenName: "Sebastian",
@@ -276,7 +277,6 @@ module.exports.testname_ro = {
             locale: 'ro-RO'
         });
         var formatted = fmt.format(name);
-        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "Sebastian Stan";
@@ -286,6 +286,7 @@ module.exports.testname_ro = {
     },
     
     testFormatComplexNameLong_ro_RO: function(test) {
+        test.expect(2);
         var name = new Name({
             prefix: "Administrator",
             givenName: "Sebastian",
@@ -296,7 +297,6 @@ module.exports.testname_ro = {
             locale: 'ro-RO'
         });
         var formatted = fmt.format(name);
-        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "Administrator Sebastian Stan";

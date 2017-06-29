@@ -18,7 +18,7 @@
  */
 
 if (typeof(ilib) === "undefined") {
-    var ilib = require("../.././../lib/ilib.js");
+    var ilib = require("../.././../lib/ilib-node.js");
 }
 if (typeof(PhoneNumber) === "undefined") {
     var PhoneNumber = require("../.././../lib/PhoneNumber.js");
@@ -47,6 +47,7 @@ module.exports.imsi = {
     },
 
     testRegularImsi3DigitMNC: function(test) {
+        test.expect(1);
         var imsi = "31003014084567890"
         var expected = {
             mcc: "310",
@@ -54,12 +55,12 @@ module.exports.imsi = {
             msin: "14084567890"
         };
     
-        test.expect(1);
         test.deepEqual(PhoneNumber.parseImsi(imsi), expected);
         test.done();
     },
     
     testRegularImsi2DigitMNC: function(test) {
+        test.expect(1);
         var imsi = "26207201234567"
         var expected = {
             mcc: "262",
@@ -67,12 +68,12 @@ module.exports.imsi = {
             msin: "201234567"
         };
     
-        test.expect(1);
         test.deepEqual(PhoneNumber.parseImsi(imsi), expected);
         test.done();
     },
     
     testSpecialImsi1: function(test) {
+        test.expect(1);
         var imsi = "31000201234567"
         var expected = {
             mcc: "310",
@@ -80,12 +81,12 @@ module.exports.imsi = {
             msin: "201234567"
         };
         
-        test.expect(1);
         test.deepEqual(PhoneNumber.parseImsi(imsi), expected);
         test.done();
     },
     
     testSpecialImsi2: function(test) {
+        test.expect(1);
         var imsi = "310004201234567"
         var expected = {
             mcc: "310",
@@ -93,12 +94,12 @@ module.exports.imsi = {
             msin: "201234567"
         };
         
-        test.expect(1);
         test.deepEqual(PhoneNumber.parseImsi(imsi), expected);
         test.done();
     },
     
     testBrokenMCC: function(test) {
+        test.expect(1);
         var imsi = "32000414084567890"
         var expected = {
             mcc: "320",
@@ -107,12 +108,12 @@ module.exports.imsi = {
         };
         
         // should default to a 3 digit mnc
-        test.expect(1);
         test.deepEqual(PhoneNumber.parseImsi(imsi), expected);
         test.done();
     },
     
     testBrokenMNC: function(test) {
+        test.expect(1);
         var imsi = "31014114084567890"
         var expected = {
             mcc: "310",
@@ -121,14 +122,13 @@ module.exports.imsi = {
         };
         
         // should default to a 3 digit mnc
-        test.expect(1);
         test.deepEqual(PhoneNumber.parseImsi(imsi), expected);
         test.done();
     },
     
     testTooShort: function(test) {
-        var imsi = "31"
         test.expect(1);
+        var imsi = "31"
         test.deepEqual(PhoneNumber.parseImsi(imsi), undefined);
         test.done();
     },
@@ -143,7 +143,7 @@ module.exports.imsi = {
         if (ilib.isDynData()) {
             // don't need to test loading on the dynamic load version because we are testing
             // it via all the other tests already.
-        test.done();
+            test.done();
             return;
         }
         

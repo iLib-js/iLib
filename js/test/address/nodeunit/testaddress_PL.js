@@ -34,9 +34,9 @@ module.exports.testaddress_PL = {
     },
 
     testParseAddressPLNormal: function(test) {
+        test.expect(7);
         var parsedAddress = new Address("Adrian Kieślowski ul. Łączności 1\n82-300 ELBLAG\nPoland", {locale: 'pl-PL'});
         
-        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Adrian Kieślowski ul. Łączności 1");
         test.equal(parsedAddress.locality, "ELBLAG");
@@ -48,9 +48,9 @@ module.exports.testaddress_PL = {
     },
     
     testParseAddressPLNoZip: function(test) {
+        test.expect(7);
         var parsedAddress = new Address("Adrian Kieślowski ul. Łączności 1\nELBLAG\nPoland", {locale: 'pl-PL'});
         
-        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Adrian Kieślowski ul. Łączności 1");
         test.equal(parsedAddress.locality, "ELBLAG");
@@ -62,9 +62,9 @@ module.exports.testaddress_PL = {
     },
     
     testParseAddressPLNoCountry: function(test) {
+        test.expect(7);
         var parsedAddress = new Address("Adrian Kieślowski ul. Łączności 1\n82-300 ELBLAG", {locale: 'pl-PL'});
         
-        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Adrian Kieślowski ul. Łączności 1");
         test.equal(parsedAddress.locality, "ELBLAG");
@@ -76,8 +76,8 @@ module.exports.testaddress_PL = {
     },
     
     testParseAddressPLManyLines: function(test) {
-        var parsedAddress = new Address("Adrian Kieślowski\nul. Łączności 1\n\n82-300\nELBLAG\nPoland\n\n\n", {locale: 'pl-PL'});
         test.expect(7);
+        var parsedAddress = new Address("Adrian Kieślowski\nul. Łączności 1\n\n82-300\nELBLAG\nPoland\n\n\n", {locale: 'pl-PL'});
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Adrian Kieślowski, ul. Łączności 1");
         test.equal(parsedAddress.locality, "ELBLAG");
@@ -89,9 +89,9 @@ module.exports.testaddress_PL = {
     },
     
     testParseAddressPLOneLine: function(test) {
+        test.expect(7);
         var parsedAddress = new Address("Adrian Kieślowski , ul. Łączności 1 , 82-300 , ELBLAG , Poland", {locale: 'pl-PL'});
         
-        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Adrian Kieślowski, ul. Łączności 1");
         test.equal(parsedAddress.locality, "ELBLAG");
@@ -103,9 +103,9 @@ module.exports.testaddress_PL = {
     },
     
     testParseAddressPLSuperfluousWhitespace: function(test) {
+        test.expect(7);
         var parsedAddress = new Address("\t\t\tAdrian Kieślowski\n\t\t\tul. Łączności 1\n\t\n82-300\t\nELBLAG\n\t Poland\n\n\n", {locale: 'pl-PL'});
         
-        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Adrian Kieślowski, ul. Łączności 1");
         test.equal(parsedAddress.locality, "ELBLAG");
@@ -117,9 +117,9 @@ module.exports.testaddress_PL = {
     },
     
     testParseAddressPLNoDelimiters: function(test) {
+        test.expect(7);
         var parsedAddress = new Address("Adrian Kieślowski ul. Łączności 1 82-300 ELBLAG Poland", {locale: 'pl-PL'});
         
-        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Adrian Kieślowski ul. Łączności 1");
         test.equal(parsedAddress.locality, "ELBLAG");
@@ -131,11 +131,11 @@ module.exports.testaddress_PL = {
     },
     
     testParseAddressPLFromUS: function(test) {
+        test.expect(7);
         var parsedAddress = new Address("Adrian Kieślowski ul. Łączności 1\n82-300 ELBLAG\nPoland", {locale: 'en-US'});
         
         // the country name is in German because this address is for a contact in a German database
         
-        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Adrian Kieślowski ul. Łączności 1");
         test.equal(parsedAddress.locality, "ELBLAG");
@@ -147,6 +147,7 @@ module.exports.testaddress_PL = {
     },
     
     testFormatAddressPL: function(test) {
+        test.expect(1);
         var parsedAddress = new Address({
             streetAddress: "Adrian Kieślowski ul. Łączności 1",
             locality: "ELBLAG",
@@ -157,12 +158,12 @@ module.exports.testaddress_PL = {
         
         var expected = "Adrian Kieślowski ul. Łączności 1\n82-300 ELBLAG\nPoland";
         var formatter = new AddressFmt({locale: 'pl-PL'});
-        test.expect(1);
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     },
     
     testFormatAddressPLFromUS: function(test) {
+        test.expect(1);
         var parsedAddress = new Address({
             streetAddress: "Adrian Kieślowski ul. Łączności 1",
             locality: "ELBLAG",
@@ -173,7 +174,6 @@ module.exports.testaddress_PL = {
         
         var expected = "Adrian Kieślowski ul. Łączności 1\n82-300 ELBLAG\nPoland";
         var formatter = new AddressFmt({locale: 'en-US'});
-        test.expect(1);
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     }

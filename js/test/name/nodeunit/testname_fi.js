@@ -34,8 +34,8 @@ module.exports.testname_fi = {
     },
 
     testParseSimpleName_fi_FI: function(test) {
-        var parsed = new Name("Pihla Viitala Mikkeli", {locale: 'fi-FI'});
         test.expect(2);
+        var parsed = new Name("Pihla Viitala Mikkeli", {locale: 'fi-FI'});
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {
@@ -51,8 +51,8 @@ module.exports.testname_fi = {
     
     
     testParseSimpleName_fi_FI: function(test) {
-        var parsed = new Name("Herra Kertu Mikkeli", {locale: 'fi-FI'});
         test.expect(2);
+        var parsed = new Name("Herra Kertu Mikkeli", {locale: 'fi-FI'});
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {
@@ -68,8 +68,8 @@ module.exports.testname_fi = {
     
     
     testParseSingleNameWithPrefixAndAdjunct_fi_FI: function(test) {
-        var parsed = new Name("Pihla Viitala Mikkeli nuorempi", {locale: 'fi-FI'});
         test.expect(2);
+        var parsed = new Name("Pihla Viitala Mikkeli nuorempi", {locale: 'fi-FI'});
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {
@@ -85,8 +85,8 @@ module.exports.testname_fi = {
     
     
     testParseTitle_fi_FI1: function(test) {
-        var parsed = new Name("presidentti Pihla Viitala Mikkeli", {locale: 'fi-FI'});
         test.expect(2);
+        var parsed = new Name("presidentti Pihla Viitala Mikkeli", {locale: 'fi-FI'});
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {
@@ -102,8 +102,8 @@ module.exports.testname_fi = {
     
     
     testParseTitle_fi_FI_second: function(test) {
-        var parsed = new Name("Herra ja Neiti Mikkeli", {locale: 'fi-FI'});
         test.expect(2);
+        var parsed = new Name("Herra ja Neiti Mikkeli", {locale: 'fi-FI'});
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {
@@ -117,6 +117,7 @@ module.exports.testname_fi = {
     
     
     testParseTitleWithFamilyOnlyAndAdjunct_fi_FI: function(test) {
+        test.expect(2);
     
         var name = new Name({
             prefix: "presidentti",
@@ -130,7 +131,6 @@ module.exports.testname_fi = {
             locale: 'fi-FI'
         });
         var formatted = fmt.format(name);
-        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "presidentti Pihla Viitala Mikkeli vanhempi";
@@ -143,8 +143,8 @@ module.exports.testname_fi = {
     
     
     testParseCompoundHonorific_fi_FI: function(test) {
-        var parsed = new Name("presidentti Mikkeli", {locale: 'fi-FI'});
         test.expect(2);
+        var parsed = new Name("presidentti Mikkeli", {locale: 'fi-FI'});
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {
@@ -161,6 +161,7 @@ module.exports.testname_fi = {
      */
     
     testFormatSimpleNameShort_fi_FI: function(test) {
+        test.expect(2);
         var name = new Name({
             givenName: "Pihla",
             middleName : "Viitala",
@@ -171,7 +172,6 @@ module.exports.testname_fi = {
             locale: 'fi-FI'
         });
         var formatted = fmt.format(name);
-        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "Pihla Mikkeli";
@@ -181,6 +181,7 @@ module.exports.testname_fi = {
     },
     
     testFormatSimpleNameMedium_fi_FI: function(test) {
+        test.expect(2);
         var name = new Name({
             givenName: "Pihla",
             middleName : "Viitala",
@@ -191,7 +192,6 @@ module.exports.testname_fi = {
             locale: 'fi-FI'
         });
         var formatted = fmt.format(name);
-        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "Pihla Viitala Mikkeli";
@@ -201,6 +201,7 @@ module.exports.testname_fi = {
     },
     
     testFormatSimpleNameFull_fi_FI: function(test) {
+        test.expect(2);
         var name = new Name({
             
             givenName: "Pihla",
@@ -213,7 +214,6 @@ module.exports.testname_fi = {
             locale: 'fi-FI'
         });
         var formatted = fmt.format(name);
-        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "Pihla Viitala Mikkeli vanhempi";
@@ -223,6 +223,7 @@ module.exports.testname_fi = {
     },
     
     testFormatComplexNameShort_fi_FI: function(test) {
+        test.expect(2);
         var name = new Name({
             suffix: "vanhempi",
             givenName: "Pihla",
@@ -234,7 +235,6 @@ module.exports.testname_fi = {
             locale: 'fi-FI'
         });
         var formatted = fmt.format(name);
-        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "Pihla Mikkeli";
@@ -245,6 +245,7 @@ module.exports.testname_fi = {
     
     
     testFormatAsianNameMedium_fi_FI: function(test) {
+        test.expect(2);
         var name = new Name({
             prefix: "小",
             givenName: "獸",
@@ -256,7 +257,6 @@ module.exports.testname_fi = {
             locale: 'fi-FI'
         });
         var formatted = fmt.format(name);
-        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "地獸";
@@ -266,6 +266,7 @@ module.exports.testname_fi = {
     },
     
     testFormatAsianNameLong_fi_FI: function(test) {
+        test.expect(2);
         var name = new Name({
             prefix: "小",
             givenName: "獸",
@@ -277,7 +278,6 @@ module.exports.testname_fi = {
             locale: 'fi-FI'
         });
         var formatted = fmt.format(name);
-        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "小地獸太太";

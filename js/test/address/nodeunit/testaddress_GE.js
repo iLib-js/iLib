@@ -34,9 +34,9 @@ module.exports.testaddress_GE = {
     },
 
     testParseAddressGENormal: function(test) {
+        test.expect(7);
         var parsedAddress = new Address("Г-н Лали Хай Улица Казбеги 19\nТБИЛИСИ 0100\nГРУЗИЯ", {locale: 'ru-GE'});
         
-        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Г-н Лали Хай Улица Казбеги 19");
         test.equal(parsedAddress.locality, "ТБИЛИСИ");
@@ -48,9 +48,9 @@ module.exports.testaddress_GE = {
     },
     
     testParseAddressGENoZip: function(test) {
+        test.expect(7);
         var parsedAddress = new Address("Г-н Лали Хай Улица Казбеги 19\nТБИЛИСИ\nГРУЗИЯ", {locale: 'ru-GE'});
         
-        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Г-н Лали Хай Улица Казбеги 19");
         test.equal(parsedAddress.locality, "ТБИЛИСИ");
@@ -62,9 +62,9 @@ module.exports.testaddress_GE = {
     },
     
     testParseAddressGENoCountry: function(test) {
+        test.expect(7);
         var parsedAddress = new Address("Г-н Лали Хай Улица Казбеги 19\nТБИЛИСИ, 0100", {locale: 'ru-GE'});
         
-        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Г-н Лали Хай Улица Казбеги 19");
         test.equal(parsedAddress.locality, "ТБИЛИСИ");
@@ -76,8 +76,8 @@ module.exports.testaddress_GE = {
     },
     
     testParseAddressGEManyLines: function(test) {
-        var parsedAddress = new Address("Г-н Лали Хай \nУлица Казбеги 19\n\nТБИЛИСИ\n\n0100\nГРУЗИЯ\n\n\n", {locale: 'ru-GE'});
         test.expect(7);
+        var parsedAddress = new Address("Г-н Лали Хай \nУлица Казбеги 19\n\nТБИЛИСИ\n\n0100\nГРУЗИЯ\n\n\n", {locale: 'ru-GE'});
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Г-н Лали Хай, Улица Казбеги 19");
         test.equal(parsedAddress.locality, "ТБИЛИСИ");
@@ -89,9 +89,9 @@ module.exports.testaddress_GE = {
     },
     
     testParseAddressGEOneLine: function(test) {
+        test.expect(7);
         var parsedAddress = new Address("Г-н Лали Хай , Улица Казбеги 19 , ТБИЛИСИ , 0100 , ГРУЗИЯ", {locale: 'ru-GE'});
         
-        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Г-н Лали Хай, Улица Казбеги 19");
         test.equal(parsedAddress.locality, "ТБИЛИСИ");
@@ -103,9 +103,9 @@ module.exports.testaddress_GE = {
     },
     
     testParseAddressGESuperfluousWhitespace: function(test) {
+        test.expect(7);
         var parsedAddress = new Address("\t\t\tГ-н Лали Хай \n\t\tУлица Казбеги 19\n\n\nТБИЛИСИ\n\n0100\n\t ГРУЗИЯ\n\n\n", {locale: 'ru-GE'});
         
-        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Г-н Лали Хай, Улица Казбеги 19");
         test.equal(parsedAddress.locality, "ТБИЛИСИ");
@@ -117,9 +117,9 @@ module.exports.testaddress_GE = {
     },
     
     testParseAddressGENoDelimiters: function(test) {
+        test.expect(7);
         var parsedAddress = new Address("Г-н Лали Хай Улица Казбеги 19 ТБИЛИСИ 0100 ГРУЗИЯ", {locale: 'ru-GE'});
         
-        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Г-н Лали Хай Улица Казбеги 19");
         test.equal(parsedAddress.locality, "ТБИЛИСИ");
@@ -131,9 +131,9 @@ module.exports.testaddress_GE = {
     },
     
     testParseAddressGEFromUS: function(test) {
+        test.expect(7);
         var parsedAddress = new Address("Г-н Лали Хай Улица Казбеги 19\nТБИЛИСИ 0100\nGeorgia", {locale: 'en-US'});
         
-        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Г-н Лали Хай Улица Казбеги 19");
         test.equal(parsedAddress.locality, "ТБИЛИСИ");
@@ -145,6 +145,7 @@ module.exports.testaddress_GE = {
     },
     
     testFormatAddressGE: function(test) {
+        test.expect(1);
         var parsedAddress = new Address({
             streetAddress: "Г-н Лали Хай Улица Казбеги 19",
             locality: "ТБИЛИСИ",
@@ -155,12 +156,12 @@ module.exports.testaddress_GE = {
         
         var expected = "Г-н Лали Хай Улица Казбеги 19\nТБИЛИСИ 0100\nГРУЗИЯ";
         var formatter = new AddressFmt({locale: 'ru-GE'});
-        test.expect(1);
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     },
     
     testFormatAddressGEFromUS: function(test) {
+        test.expect(1);
         var parsedAddress = new Address({
             streetAddress: "Г-н Лали Хай Улица Казбеги 19",
             locality: "ТБИЛИСИ",
@@ -171,7 +172,6 @@ module.exports.testaddress_GE = {
         
         var expected = "Г-н Лали Хай Улица Казбеги 19\nТБИЛИСИ 0100\nGeorgia";
         var formatter = new AddressFmt({locale: 'en-US'});
-        test.expect(1);
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     }

@@ -31,11 +31,11 @@ module.exports.testdurfmt_km_KH = {
     },
 
     testDurFmtKHFormatShortDefaultStyle: function(test) {
+        test.expect(2);
         var fmt = new DurationFmt({
             locale: "km-KH",
             length: "short"
         });
-        test.expect(2);
         test.ok(fmt !== null);
     
         var duration = fmt.format({
@@ -52,12 +52,12 @@ module.exports.testdurfmt_km_KH = {
     },
     
     testDurFmtKHFormatShortText: function(test) {
+        test.expect(2);
         var fmt = new DurationFmt({
             locale: "km-KH",
             length: "short",
             style: "text"
         });
-        test.expect(2);
         test.ok(fmt !== null);
     
         var duration = fmt.format({
@@ -74,12 +74,12 @@ module.exports.testdurfmt_km_KH = {
     },
     
     testDurFmtKHFormatShortClock: function(test) {
+        test.expect(2);
         var fmt = new DurationFmt({
             locale: "km-KH",
             length: "short",
             style: "clock"
         });
-        test.expect(2);
         test.ok(fmt !== null);
     
         var duration = fmt.format({
@@ -96,11 +96,11 @@ module.exports.testdurfmt_km_KH = {
     },
     
     testDurFmtKHFormatMedium: function(test) {
+        test.expect(2);
         var fmt = new DurationFmt({
             locale: "km-KH",
             length: "medium"
         });
-        test.expect(2);
         test.ok(fmt !== null);
     
         var duration = fmt.format({
@@ -117,11 +117,11 @@ module.exports.testdurfmt_km_KH = {
     },
     
     testDurFmtKHFormatLong: function(test) {
+        test.expect(2);
         var fmt = new DurationFmt({
             locale: "km-KH",
             length: "long"
         });
-        test.expect(2);
         test.ok(fmt !== null);
     
         var duration = fmt.format({
@@ -138,11 +138,11 @@ module.exports.testdurfmt_km_KH = {
     },
     
     testDurFmtKHFormatFull: function(test) {
+        test.expect(2);
         var fmt = new DurationFmt({
             locale: "km-KH",
             length: "full"
         });
-        test.expect(2);
         test.ok(fmt !== null);
     
         var duration = fmt.format({
@@ -160,12 +160,12 @@ module.exports.testdurfmt_km_KH = {
     
     
     testDurFmtKHAsyncWithLocale: function(test) {
+        test.expect(2);
         new DurationFmt({
             locale: "km-KH",
             length: "full",
             sync: false,
             onLoad: function (fmt) {
-        test.expect(2);
                 test.ok(fmt !== null);
     
                 var duration = fmt.format({
@@ -184,13 +184,13 @@ module.exports.testdurfmt_km_KH = {
     },
     
     testDurFmtKHFormatShortClockAsync: function(test) {
+        test.expect(2);
         new DurationFmt({
             locale: "km-KH",
             length: "short",
             style: "clock",
             sync: false,
             onLoad: function (fmt) {
-        test.expect(2);
                 test.ok(fmt !== null);
     
                 var duration = fmt.format({

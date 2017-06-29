@@ -17,7 +17,7 @@
  * limitations under the License.
  */
 
-var ilib = require("./../lib/ilib.js");
+var ilib = require("./../lib/ilib-node.js");
 var TimeZone = require("./../lib/TimeZone.js");
 var LocaleInfo = require("./../lib/LocaleInfo.js");
 var IString = require("./../lib/IString.js");
@@ -91,7 +91,7 @@ function mockLoader2(paths, sync, params, callback) {
     return data;
 }
 
-
+var oldLoader = ilib._load;
 
 function testTZConstructorEmpty() {
     var tz = new TimeZone();
@@ -880,7 +880,6 @@ function testTZGetAvailableIdsRightValues() {
     var zones = TimeZone.getAvailableIds();
     assertNotNull(zones);
     
-    //util.print("timezones is " + JSON.stringify(ilib._load, undefined, 4) + "\n");
     assertContains("Europe/London", zones);
     assertContains("America/Los_Angeles", zones);
     assertContains("Australia/Sydney", zones);
@@ -896,8 +895,6 @@ function testTZGetAvailableIdsNoFilterContainsLocal() {
 }
 
 function testGetAvailableTimeZonesWithLoader() {
-	var temp = ilib._load;
-	var oldLoader = ilib._load;
 	ilib.setLoaderCallback(new getAvailableMocker());
 	ilib.data.timezones = []; // clear the timezones cache
 	
@@ -1407,11 +1404,10 @@ function testTZGetTimeZoneForLocaleUnknownWithLoader() {
 		// it via all the other tests already.
 		return;
 	}
-	var temp = ilib._load;
 	ilib.setLoaderCallback(mockLoader);
 	var tz = new TimeZone({locale: "zz-YY"});
     assertNotNull(tz);
-    ilib.setLoaderCallback(temp);
+    ilib.setLoaderCallback(oldLoader);
     assertEquals("Asia/Tokyo", tz.getId());
 }
 
@@ -1421,13 +1417,12 @@ function testTZGetTimeZoneForLocaleUnknownWithLoaderAsynch() {
 		// it via all the other tests already.
 		return;
 	}
-	var temp = ilib._load;
 	ilib.setLoaderCallback(mockLoader);
 	new TimeZone({
     	locale: "zz-YY",
     	sync: false,
     	onLoad: function (tz) {
-            ilib.setLoaderCallback(temp);
+            ilib.setLoaderCallback(oldLoader);
     		assertNotNull(tz);
     	    assertEquals("Asia/Tokyo", tz.getId());
     	}
@@ -1440,7 +1435,6 @@ function testTZGetTimeZoneForLocaleWithLoaderNoData() {
 		// it via all the other tests already.
 		return;
 	}
-	var oldLoader = ilib._load;
 	ilib.setLoaderCallback(mockLoader);
 	var tz = new TimeZone({locale: "ww-WW"});
     assertNotNull(tz);
@@ -1454,7 +1448,6 @@ function testTZGetTimeZoneForLocaleWithLoaderNoDataAsynch() {
 		// it via all the other tests already.
 		return;
 	}
-	var oldloader = ilib._load;
 	ilib.setLoaderCallback(mockLoader);
 	new TimeZone({
     	locale: "ww-WW",
@@ -1468,7 +1461,6 @@ function testTZGetTimeZoneForLocaleWithLoaderNoDataAsynch() {
 }
 
 function testTZGetTimeZoneWithLoaderAsynch() {
-	var oldloader = ilib._load;
 	ilib.setLoaderCallback(mockLoader2);
 	new TimeZone({
     	id: "America/Los_Angeles",
@@ -1482,7 +1474,6 @@ function testTZGetTimeZoneWithLoaderAsynch() {
 }
 
 function testTZGetTimeZoneWithLoaderJulianTransitionBeforeStart() {
-	var oldloader = ilib._load;
 	ilib.setLoaderCallback(mockLoader2);
 	new TimeZone({
     	id: "America/Los_Angeles",
@@ -1503,7 +1494,6 @@ function testTZGetTimeZoneWithLoaderJulianTransitionBeforeStart() {
 }
 
 function testTZGetTimeZoneWithLoaderJulianTransitionAfterStart() {
-	var oldloader = ilib._load;
 	ilib.setLoaderCallback(mockLoader2);
 	new TimeZone({
     	id: "America/Los_Angeles",
@@ -1524,7 +1514,6 @@ function testTZGetTimeZoneWithLoaderJulianTransitionAfterStart() {
 }
 
 function testTZGetTimeZoneWithLoaderJulianTransitionBeforeEnd() {
-	var oldloader = ilib._load;
 	ilib.setLoaderCallback(mockLoader2);
 	new TimeZone({
     	id: "America/Los_Angeles",
@@ -1544,7 +1533,6 @@ function testTZGetTimeZoneWithLoaderJulianTransitionBeforeEnd() {
 }
 
 function testTZGetTimeZoneWithLoaderJulianTransitionAfterEnd() {
-	var oldloader = ilib._load;
 	ilib.setLoaderCallback(mockLoader2);
 	new TimeZone({
     	id: "America/Los_Angeles",
@@ -1565,6 +1553,7 @@ function testTZGetTimeZoneWithLoaderJulianTransitionAfterEnd() {
 }
 
 function testTZGetCountry1() {
+    ilib.setLoaderCallback(oldloader);
     var tz = new TimeZone({id: "America/Los_Angeles"});
     assertNotNull(tz);
     

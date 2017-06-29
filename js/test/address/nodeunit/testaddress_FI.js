@@ -34,9 +34,9 @@ module.exports.testaddress_FI = {
     },
 
     testParseAddressFIFIfinnishNormal: function(test) {
+        test.expect(7);
         var parsedAddress = new Address("Eduskunta\nMatti Mallikainen\nMannerheimintie 30 as 5\nFI-00102 Eduskunta\nFinland", {locale: 'fi-FI'});
         
-        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Eduskunta, Matti Mallikainen, Mannerheimintie 30 as 5");
         test.equal(parsedAddress.locality, "Eduskunta");
@@ -48,9 +48,9 @@ module.exports.testaddress_FI = {
     },
     
     testParseAddressFIFIfinnishNoCountry: function(test) {
+        test.expect(7);
         var parsedAddress = new Address("Eduskunta, Matti Mallikainen\nMannerheimintie 30 as 5\nFI-00102 Eduskunta", {locale: 'fi-FI'});
         
-        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Eduskunta, Matti Mallikainen, Mannerheimintie 30 as 5");
         test.equal(parsedAddress.locality, "Eduskunta");
@@ -63,9 +63,9 @@ module.exports.testaddress_FI = {
     
     
     testParseAddressFIFIswedishNormal: function(test) {
+        test.expect(7);
         var parsedAddress = new Address("Kalevankatu 12, 1st floor, FI-60100 Seinäjoki,Finland", {locale: 'sv-FI'});
         
-        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Kalevankatu 12, 1st floor");
         test.equal(parsedAddress.locality, "Seinäjoki");
@@ -77,9 +77,9 @@ module.exports.testaddress_FI = {
     },
     
     testParseAddressFIFIswedishNoCountry: function(test) {
+        test.expect(7);
         var parsedAddress = new Address("Kalevankatu 12, 1st floor, FI-60100 Seinäjoki", {locale: 'sv-FI'});
         
-        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Kalevankatu 12, 1st floor");
         test.equal(parsedAddress.locality, "Seinäjoki");
@@ -93,9 +93,9 @@ module.exports.testaddress_FI = {
     
     
     testParseAddressFIFIOneLine: function(test) {
+        test.expect(7);
         var parsedAddress = new Address("Saga Matkat OY, Saga Tours Ltd, Albertinkatu 36 B, 00180 HELSINKI, Finland", {locale: 'fi-FI'});
         
-        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Saga Matkat OY, Saga Tours Ltd, Albertinkatu 36 B");
         test.equal(parsedAddress.locality, "HELSINKI");
@@ -107,9 +107,9 @@ module.exports.testaddress_FI = {
     },
     
     testParseAddressFIFISuperfluousWhitespace: function(test) {
+        test.expect(7);
         var parsedAddress = new Address("\t\t\tMs. Aulikki Laasko\n\t\nVesakkotic 1399\n \r\n\r\rFI-00630    HELSINKI\r\r\n    Finland\t\n\n\n", {locale: 'fi-FI'});
         
-        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Ms. Aulikki Laasko, Vesakkotic 1399");
         test.equal(parsedAddress.locality, "HELSINKI");
@@ -121,9 +121,9 @@ module.exports.testaddress_FI = {
     },
     
     testParseAddressFIFINoDelimiters: function(test) {
+        test.expect(7);
         var parsedAddress = new Address("Ms. Aulikki Laasko Vesakkotic 1399 HELSINKI Finland", {locale: 'fi-FI'});
         
-        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Ms. Aulikki Laasko Vesakkotic 1399");
         test.equal(parsedAddress.locality, "HELSINKI");
@@ -135,9 +135,9 @@ module.exports.testaddress_FI = {
     },
     
     testParseAddressFIFISpecialChars: function(test) {
+        test.expect(7);
         var parsedAddress = new Address("Työpajankatu 13,FI-00580 Helsinki, Finland", {locale: 'fi-FI'});
         
-        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Työpajankatu 13");
         test.equal(parsedAddress.locality, "Helsinki");
@@ -149,9 +149,9 @@ module.exports.testaddress_FI = {
     },
     
     testParseAddressFIFIFromUS: function(test) {
+        test.expect(7);
         var parsedAddress = new Address("Saga Matkat OY\nSaga Tours Ltd\nAlbertinkatu 36 B\nHELSINKI, Finland", {locale: 'en-US'});
         
-        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Saga Matkat OY, Saga Tours Ltd, Albertinkatu 36 B");
         test.equal(parsedAddress.locality, "HELSINKI");
@@ -163,6 +163,7 @@ module.exports.testaddress_FI = {
     },
     
     testFormatAddressFIFIfinnish: function(test) {
+        test.expect(1);
         var parsedAddress = new Address({
             streetAddress: "Saga Matkat OY, Saga Tours Ltd, Albertinkatu 36 B",
             locality: "HELSINKI",
@@ -172,12 +173,12 @@ module.exports.testaddress_FI = {
         
         var expected = "Saga Matkat OY, Saga Tours Ltd, Albertinkatu 36 B\nHELSINKI\nFinland";
         var formatter = new AddressFmt({locale: 'fi-FI'});
-        test.expect(1);
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     },
     
     testFormatAddressFIFIswedish: function(test) {
+        test.expect(1);
         var parsedAddress = new Address({
             streetAddress: "Työpajankatu 13",
             locality: "Helsinki",
@@ -187,12 +188,12 @@ module.exports.testaddress_FI = {
         
         var expected = "Työpajankatu 13\nHelsinki\nFinland";
         var formatter = new AddressFmt({locale: 'fi-FI'});
-        test.expect(1);
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     },
     
     testFormatAddressFIFIFromUS: function(test) {
+        test.expect(1);
         var parsedAddress = new Address({
             streetAddress: "Saga Matkat OY, Saga Tours Ltd, Albertinkatu 36 B",
             locality: "HELSINKI",
@@ -202,7 +203,6 @@ module.exports.testaddress_FI = {
         
         var expected = "Saga Matkat OY, Saga Tours Ltd, Albertinkatu 36 B\nHELSINKI\nFinland";
         var formatter = new AddressFmt({locale: 'en-US'});
-        test.expect(1);
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     }

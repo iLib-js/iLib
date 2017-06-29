@@ -17,7 +17,7 @@
  * limitations under the License.
  */
 
-var ilib = require("./../lib/ilib.js");
+var ilib = require("./../lib/ilib-node.js");
 var NumFmt = require("./../lib/NumFmt.js");
 ilib.data.plurals_en={one:{is:["n",1]}};
 ilib.data.plurals_de={one:{is:["n",1]}};

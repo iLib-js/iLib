@@ -34,9 +34,9 @@ module.exports.testaddress_MY = {
     },
 
     testParseAddressMYMYLatinNormal: function(test) {
+        test.expect(7);
         var parsedAddress = new Address("11 Jalan Budi 1\nTaman Budiman\n42700 BANTING\nSELANGOR\nMalaysia", {locale: 'en-MY'});
         
-        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "11 Jalan Budi 1, Taman Budiman");
         test.equal(parsedAddress.locality, "BANTING");
@@ -48,9 +48,9 @@ module.exports.testaddress_MY = {
     },
     
     testParseAddressMYMYLatinNoZip: function(test) {
+        test.expect(7);
         var parsedAddress = new Address("Capital Shipping Bhd, Lot 323, 1st Floor, Bintang Commercial Centre,29 Jalan Sekilau\nJOHOR BAHRU\nJohor\nMalaysia", {locale: 'en-MY'});
         
-        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Capital Shipping Bhd, Lot 323, 1st Floor, Bintang Commercial Centre, 29 Jalan Sekilau");
         test.equal(parsedAddress.locality, "JOHOR BAHRU");
@@ -62,9 +62,9 @@ module.exports.testaddress_MY = {
     },
     
     testParseAddressMYMYLatinNoCountry: function(test) {
+        test.expect(7);
         var parsedAddress = new Address("11 Jalan Budi 1\nTaman Budiman\n42700 BANTING\nSELANGOR", {locale: 'en-MY'});
         
-        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "11 Jalan Budi 1, Taman Budiman");
         test.equal(parsedAddress.locality, "BANTING");
@@ -77,9 +77,9 @@ module.exports.testaddress_MY = {
     
     /*
     testParseAddressMYMYAsianNormal: function(test) {
+        test.expect(7);
         var parsedAddress = new Address("新加坡共和國159088新加坡麟記路4＃06-07/08矽統科技大廈", {locale: 'zh-MY'});
         
-        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "麟記路4＃06-07/08矽統科技大廈");
         test.equal(parsedAddress.locality, "新加坡");
@@ -91,9 +91,9 @@ module.exports.testaddress_MY = {
     },
     
     testParseAddressMYMYAsianNoZip: function(test) {
+        test.expect(7);
         var parsedAddress = new Address("新加坡麟記路4＃06-07/08矽統科技大廈", {locale: 'zh-MY'});
         
-        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "麟記路4＃06-07/08矽統科技大廈");
         test.ok(typeof(parsedAddress.locality) === "undefined");
@@ -105,9 +105,9 @@ module.exports.testaddress_MY = {
     },
     
     testParseAddressMYMYAsianNoCountry: function(test) {
+        test.expect(7);
         var parsedAddress = new Address("159088新加坡麟記路4＃06-07/08矽統科技大廈", {locale: 'zh-MY'});
         
-        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "麟記路4＃06-07/08矽統科技大廈");
         test.equal(parsedAddress.locality, "新加坡");
@@ -120,9 +120,9 @@ module.exports.testaddress_MY = {
     */
     
     testParseAddressMYMYManyLines: function(test) {
+        test.expect(7);
         var parsedAddress = new Address("11 Jalan Budi 1\nTaman Budiman\n42700 BANTING\nSELANGOR\nMalaysia", {locale: 'en-MY'});
         
-        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "11 Jalan Budi 1, Taman Budiman");
         test.equal(parsedAddress.locality, "BANTING");
@@ -134,9 +134,9 @@ module.exports.testaddress_MY = {
     },
     
     testParseAddressMYMYOneLine: function(test) {
+        test.expect(7);
         var parsedAddress = new Address("Capital Shipping Bhd, Lot 323, 1st Floor, Bintang Commercial Centre,29 Jalan Sekilau,JOHOR BAHRU,Johor,Malaysia", {locale: 'en-MY'});
         
-        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Capital Shipping Bhd, Lot 323, 1st Floor, Bintang Commercial Centre, 29 Jalan Sekilau");
         test.equal(parsedAddress.locality, "JOHOR BAHRU");
@@ -148,9 +148,9 @@ module.exports.testaddress_MY = {
     },
     
     testParseAddressMYMYSuperfluousWhitespace: function(test) {
+        test.expect(7);
         var parsedAddress = new Address("\t\t\t11 Jalan Budi 1\t\t\r\n\t42700 BANTING\r\t SELANGOR\t\nMalaysia\r\t\n", {locale: 'en-MY'});
         
-        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "11 Jalan Budi 1");
         test.equal(parsedAddress.locality, "BANTING");
@@ -162,9 +162,9 @@ module.exports.testaddress_MY = {
     },
     
     testParseAddressMYMYNoDelimiters: function(test) {
+        test.expect(7);
         var parsedAddress = new Address("11 Jalan Budi 1 Taman Budiman 42700 BANTING SELANGOR Malaysia", {locale: 'en-MY'});
         
-        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "11 Jalan Budi 1 Taman Budiman");
         test.equal(parsedAddress.locality, "BANTING");
@@ -177,9 +177,9 @@ module.exports.testaddress_MY = {
     
     /*
     testParseAddressMYMYSpecialChars: function(test) {
+        test.expect(7);
         var parsedAddress = new Address("Lín Jì Lù 4\n# 06-07/08 Xì Tǒng Kējì Dàshà\nMalaysia 159088\n", {locale: 'en-MY'});
         
-        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Lín Jì Lù 4, # 06-07/08 Xì Tǒng Kējì Dàshà");
         test.equal(parsedAddress.locality, "Malaysia");
@@ -192,11 +192,11 @@ module.exports.testaddress_MY = {
     */
     
     testParseAddressMYMYFromUS: function(test) {
+        test.expect(7);
         var parsedAddress = new Address("11 Jalan Budi 1\nTaman Budiman\n42700 BANTING\nMalaysia", {locale: 'en-US'});
         
         // the country name is in English because this address is for a contact in a US database
         
-        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "11 Jalan Budi 1, Taman Budiman");
         test.equal(parsedAddress.locality, "BANTING");
@@ -208,6 +208,7 @@ module.exports.testaddress_MY = {
     },
     
     testFormatAddressMYLatin: function(test) {
+        test.expect(1);
         var parsedAddress = new Address({
             streetAddress: "11 Jalan Budi 1, Taman Budiman",
             locality: "BANTING",
@@ -219,13 +220,13 @@ module.exports.testaddress_MY = {
         
         var expected = "11 Jalan Budi 1, Taman Budiman\nBANTING 42700\nMalaysia";
         var formatter = new AddressFmt({locale: 'en-MY'});
-        test.expect(1);
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     },
     
     /*
     testFormatAddressMYAsian: function(test) {
+        test.expect(1);
         var parsedAddress = new Address({
             streetAddress: "麟記路4＃06-07/08矽統科技大廈",
             locality: "新加坡",
@@ -237,13 +238,13 @@ module.exports.testaddress_MY = {
         
         var expected = "新加坡共和國159088新加坡麟記路4＃06-07/08矽統科技大廈";
         var formatter = new AddressFmt({locale: 'zh-MY'});
-        test.expect(1);
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     },
     */
     
     testFormatAddressMYFromUS: function(test) {
+        test.expect(1);
         var parsedAddress = new Address({
             streetAddress: "11 Jalan Budi 1, Taman Budiman",
             locality: "BANTING",
@@ -255,7 +256,6 @@ module.exports.testaddress_MY = {
         
         var expected = "11 Jalan Budi 1, Taman Budiman\nBANTING 42700\nMalaysia";
         var formatter = new AddressFmt({locale: 'en-US'});
-        test.expect(1);
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     }

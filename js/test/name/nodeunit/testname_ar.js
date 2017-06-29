@@ -34,8 +34,8 @@ module.exports.testname_ar = {
     },
 
     testParseSimpleName_ar: function(test) {
-        var parsed = new Name("ابن سعود", {locale: 'ar-SA'});
         test.expect(2);
+        var parsed = new Name("ابن سعود", {locale: 'ar-SA'});
         test.ok(typeof(parsed) !== "undefined");
         
         var expected =   {
@@ -49,8 +49,8 @@ module.exports.testname_ar = {
     
     
     testParseAdjunctNames_ar: function(test) {
-        var parsed = new Name("ابن سعود", {locale: 'ar-SA'});
         test.expect(2);
+        var parsed = new Name("ابن سعود", {locale: 'ar-SA'});
         test.ok(typeof(parsed) !== "undefined");
         
         var expected =  {
@@ -65,8 +65,8 @@ module.exports.testname_ar = {
     
     
     testParseSingleNameWithPrefixAndAdjunct_ar: function(test) {
-        var parsed = new Name("السيد و السيدة سعود", {locale: 'ar-SA'});
         test.expect(2);
+        var parsed = new Name("السيد و السيدة سعود", {locale: 'ar-SA'});
         test.ok(typeof(parsed) !== "undefined");
         
         var expected =   {
@@ -80,8 +80,8 @@ module.exports.testname_ar = {
     
     
     testParseTitle_ar: function(test) {
-        var parsed = new Name("ابن سعود كبار", {locale: 'ar-SA'});
         test.expect(2);
+        var parsed = new Name("ابن سعود كبار", {locale: 'ar-SA'});
         test.ok(typeof(parsed) !== "undefined");
         
         var expected =    {
@@ -97,8 +97,8 @@ module.exports.testname_ar = {
     
     
     testParseTitleWithFamilyOnly_ar: function(test) {
-        var parsed = new Name("الملك سعود", {locale: 'ar-SA'});
         test.expect(2);
+        var parsed = new Name("الملك سعود", {locale: 'ar-SA'});
         test.ok(typeof(parsed) !== "undefined");
         
         var expected =   {
@@ -113,8 +113,8 @@ module.exports.testname_ar = {
     
     
     testParseEverything_ar: function(test) {
-        var parsed = new Name("الملك ابن سعود", {locale: 'ar-SA'});
         test.expect(2);
+        var parsed = new Name("الملك ابن سعود", {locale: 'ar-SA'});
         test.ok(typeof(parsed) !== "undefined");
         
         var expected =    {
@@ -133,6 +133,7 @@ module.exports.testname_ar = {
      */
     
     testFormatSimpleNameShort_ar: function(test) {
+        test.expect(2);
         var name = new Name({
             givenName: "ابن",
             familyName: "سعود"
@@ -142,7 +143,6 @@ module.exports.testname_ar = {
             locale: 'ar-SA'
         });
         var formatted = fmt.format(name);
-        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "ابن سعود";
@@ -152,6 +152,7 @@ module.exports.testname_ar = {
     },
     
     testFormatSimpleNameMedium_ar: function(test) {
+        test.expect(2);
         var name = new Name({
             givenName: "ابن",
             familyName: "سعود"
@@ -161,7 +162,6 @@ module.exports.testname_ar = {
             locale: 'ar-SA'
         });
         var formatted = fmt.format(name);
-        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "ابن سعود";
@@ -171,6 +171,7 @@ module.exports.testname_ar = {
     },
     
     testFormatSimpleNameLong_ar: function(test) {
+        test.expect(2);
         var name = new Name({
             givenName: "ابن",
             
@@ -182,7 +183,6 @@ module.exports.testname_ar = {
             locale: 'ar-SA'
         });
         var formatted = fmt.format(name);
-        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "ابن سعود";
@@ -192,6 +192,7 @@ module.exports.testname_ar = {
     },
     
     testFormatSimpleNameFull_ar: function(test) {
+        test.expect(2);
         var name = new Name({
             prefix: "الملك",
             givenName: "ابن",
@@ -203,7 +204,6 @@ module.exports.testname_ar = {
             locale: 'ar-SA'
         });
         var formatted = fmt.format(name);
-        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "الملك ابن سعود كبار";
@@ -213,6 +213,7 @@ module.exports.testname_ar = {
     },
     
     testFormatComplexNameShort_ar: function(test) {
+        test.expect(2);
         var name = new Name({
             prefix: "الملك",
             givenName: "ابن",
@@ -223,7 +224,6 @@ module.exports.testname_ar = {
             locale: 'ar-SA'
         });
         var formatted = fmt.format(name);
-        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "ابن سعود";
@@ -233,6 +233,7 @@ module.exports.testname_ar = {
     },
     
     testFormatComplexNameMedium_ar: function(test) {
+        test.expect(2);
         var name = new Name({
             prefix: "الملك",
             givenName: "ابن",
@@ -243,7 +244,6 @@ module.exports.testname_ar = {
             locale: 'ar-SA'
         });
         var formatted = fmt.format(name);
-        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "ابن سعود";
@@ -253,6 +253,7 @@ module.exports.testname_ar = {
     },
     
     testFormatComplexNameLong_ar: function(test) {
+        test.expect(2);
         var name = new Name({
             prefix: "الملك",
             givenName: "ابن",
@@ -263,7 +264,6 @@ module.exports.testname_ar = {
             locale: 'ar-SA'
         });
         var formatted = fmt.format(name);
-        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "الملك ابن سعود";
@@ -273,6 +273,7 @@ module.exports.testname_ar = {
     },
     
     testFormatAsianNameShort_ar: function(test) {
+        test.expect(2);
         var name = new Name({
             prefix: "小",
             givenName: "獸",
@@ -283,7 +284,6 @@ module.exports.testname_ar = {
             locale: 'ar-SA'
         });
         var formatted = fmt.format(name);
-        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "地獸";
@@ -293,6 +293,7 @@ module.exports.testname_ar = {
     },
     
     testFormatAsianNameMedium_ar: function(test) {
+        test.expect(2);
         var name = new Name({
             prefix: "小",
             givenName: "獸",
@@ -303,7 +304,6 @@ module.exports.testname_ar = {
             locale: 'ar-SA'
         });
         var formatted = fmt.format(name);
-        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "地獸";
@@ -313,6 +313,7 @@ module.exports.testname_ar = {
     },
     
     testFormatAsianNameLong_ar: function(test) {
+        test.expect(2);
         var name = new Name({
             prefix: "小",
             givenName: "獸",
@@ -323,7 +324,6 @@ module.exports.testname_ar = {
             locale: 'ar-SA'
         });
         var formatted = fmt.format(name);
-        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "小地獸";

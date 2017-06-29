@@ -34,8 +34,8 @@ module.exports.testname_gu = {
     },
 
     testParseSimpleName_gu_IN: function(test) {
-        var parsed = new Name("જેઠાલાલ મોદી", {locale: 'gu-IN'});
         test.expect(2);
+        var parsed = new Name("જેઠાલાલ મોદી", {locale: 'gu-IN'});
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {
@@ -50,8 +50,8 @@ module.exports.testname_gu = {
     
     
     testParseTitle_gu_IN: function(test) {
-        var parsed = new Name("જેઠાલાલ મોદી વરિષ્ઠ", {locale: 'gu-IN'});
         test.expect(2);
+        var parsed = new Name("જેઠાલાલ મોદી વરિષ્ઠ", {locale: 'gu-IN'});
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {
@@ -67,8 +67,8 @@ module.exports.testname_gu = {
     
     
     testParseEverything_gu_IN: function(test) {
-        var parsed = new Name("મિસ્ટર અને શ્રીમતી મોદી", {locale: 'gu-IN'});
         test.expect(2);
+        var parsed = new Name("મિસ્ટર અને શ્રીમતી મોદી", {locale: 'gu-IN'});
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {
@@ -81,8 +81,8 @@ module.exports.testname_gu = {
     },
     
     testParseprefix_gu_IN: function(test) {
-        var parsed = new Name("મિસ્ટર જેઠાલાલ મોદી", {locale: 'gu-IN'});
         test.expect(2);
+        var parsed = new Name("મિસ્ટર જેઠાલાલ મોદી", {locale: 'gu-IN'});
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {
@@ -99,6 +99,7 @@ module.exports.testname_gu = {
      */
     
     testFormatSimpleNameShort_gu_IN: function(test) {
+        test.expect(2);
         var name = new Name({
             givenName: "જેઠાલાલ",
             familyName: "મોદી"
@@ -108,7 +109,6 @@ module.exports.testname_gu = {
             locale: 'gu-IN'
         });
         var formatted = fmt.format(name);
-        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "જેઠાલાલ મોદી";
@@ -118,6 +118,7 @@ module.exports.testname_gu = {
     },
     
     testFormatSimpleNameMedium_gu_IN: function(test) {
+        test.expect(2);
         var name = new Name({
             givenName: "જેઠાલાલ",
             
@@ -128,7 +129,6 @@ module.exports.testname_gu = {
             locale: 'gu-IN'
         });
         var formatted = fmt.format(name);
-        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "જેઠાલાલ મોદી";
@@ -138,6 +138,7 @@ module.exports.testname_gu = {
     },
     
     testFormatSimpleNameLong_gu_IN: function(test) {
+        test.expect(2);
         var name = new Name({
             givenName: "જેઠાલાલ",
             
@@ -149,7 +150,6 @@ module.exports.testname_gu = {
             locale: 'gu-IN'
         });
         var formatted = fmt.format(name);
-        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "જેઠાલાલ મોદી";
@@ -159,6 +159,7 @@ module.exports.testname_gu = {
     },
     
     testFormatSurname_gu_IN: function(test) {
+        test.expect(2);
         var name = new Name({
             prefix: "મિસ્ટર અને શ્રીમતી",
             
@@ -169,7 +170,6 @@ module.exports.testname_gu = {
             locale: 'gu-IN'
         });
         var formatted = fmt.format(name);
-        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "મિસ્ટર અને શ્રીમતી મોદી";
@@ -179,6 +179,7 @@ module.exports.testname_gu = {
     },
     
     testFormatSimpleNameFull_gu_IN: function(test) {
+        test.expect(2);
         var name = new Name({
             prefix: "ગુમાવે છે",
             givenName: "જેઠાલાલ",
@@ -191,7 +192,6 @@ module.exports.testname_gu = {
             locale: 'gu-IN'
         });
         var formatted = fmt.format(name);
-        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "ગુમાવે છે જેઠાલાલ મોદી વરિષ્ઠ";
@@ -201,6 +201,7 @@ module.exports.testname_gu = {
     },
     
     testFormatComplexNameShort_gu_IN: function(test) {
+        test.expect(2);
         var name = new Name({
             prefix: "ગુમાવે છે",
             givenName: "જેઠાલાલ",
@@ -211,7 +212,6 @@ module.exports.testname_gu = {
             locale: 'gu-IN'
         });
         var formatted = fmt.format(name);
-        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "જેઠાલાલ મોદી";
@@ -221,6 +221,7 @@ module.exports.testname_gu = {
     },
     
     testFormatComplexNameMedium_gu_IN: function(test) {
+        test.expect(2);
         var name = new Name({
             prefix: "ગુમાવે છે",
             givenName: "જેઠાલાલ",
@@ -231,7 +232,6 @@ module.exports.testname_gu = {
             locale: 'gu-IN'
         });
         var formatted = fmt.format(name);
-        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "જેઠાલાલ મોદી";
@@ -241,6 +241,7 @@ module.exports.testname_gu = {
     },
     
     testFormatComplexNameLong_gu_IN: function(test) {
+        test.expect(2);
         var name = new Name({
             prefix: "ગુમાવે છે",
             givenName: "જેઠાલાલ",
@@ -251,7 +252,6 @@ module.exports.testname_gu = {
             locale: 'gu-IN'
         });
         var formatted = fmt.format(name);
-        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "ગુમાવે છે જેઠાલાલ મોદી";

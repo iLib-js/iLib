@@ -31,8 +31,8 @@ module.exports.phonenum_JP = {
     },
 
     testParseJPFull: function(test) {
-        var parsed = new PhoneNumber("03-5841-2047", {locale: "ja-JP"});
         test.expect(2);
+        var parsed = new PhoneNumber("03-5841-2047", {locale: "ja-JP"});
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = new PhoneNumber({
@@ -46,8 +46,8 @@ module.exports.phonenum_JP = {
     },
     
     testParseJPLocalNumber: function(test) {
-        var parsed = new PhoneNumber("345-6789", {locale: "ja-JP"});
         test.expect(2);
+        var parsed = new PhoneNumber("345-6789", {locale: "ja-JP"});
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = new PhoneNumber({
@@ -59,8 +59,8 @@ module.exports.phonenum_JP = {
     },
     
     testParseJPFullLongAreaCode: function(test) {
-        var parsed = new PhoneNumber("0152-41-0670", {locale: "ja-JP"});
         test.expect(2);
+        var parsed = new PhoneNumber("0152-41-0670", {locale: "ja-JP"});
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = new PhoneNumber({
@@ -74,8 +74,8 @@ module.exports.phonenum_JP = {
     },
     
     testParseJPIgnoreFormatting: function(test) {
-        var parsed = new PhoneNumber("(075) 1234-5678", {locale: "ja-JP"});
         test.expect(2);
+        var parsed = new PhoneNumber("(075) 1234-5678", {locale: "ja-JP"});
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = new PhoneNumber({
@@ -89,8 +89,8 @@ module.exports.phonenum_JP = {
     },
     
     testParseJPIgnoreCrap: function(test) {
-        var parsed = new PhoneNumber("$075@1234&5678-", {locale: "ja-JP"});
         test.expect(2);
+        var parsed = new PhoneNumber("$075@1234&5678-", {locale: "ja-JP"});
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = new PhoneNumber({
@@ -104,8 +104,8 @@ module.exports.phonenum_JP = {
     },
     
     testParseJPNoAreaCode: function(test) {
-        var parsed = new PhoneNumber("82345678", {locale: "ja-JP"});
         test.expect(2);
+        var parsed = new PhoneNumber("82345678", {locale: "ja-JP"});
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = new PhoneNumber({
@@ -117,9 +117,9 @@ module.exports.phonenum_JP = {
     },
     
     testParseJPInvalidLocalNumber: function(test) {
+        test.expect(2);
         // local number is too long
         var parsed = new PhoneNumber("23456788889123", {locale: "ja-JP"});
-        test.expect(2);
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = new PhoneNumber({
@@ -132,8 +132,8 @@ module.exports.phonenum_JP = {
     },
     
     testParseJPServiceCode: function(test) {
-        var parsed = new PhoneNumber("0130-12345678", {locale: "ja-JP"});
         test.expect(2);
+        var parsed = new PhoneNumber("0130-12345678", {locale: "ja-JP"});
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = new PhoneNumber({
@@ -149,8 +149,8 @@ module.exports.phonenum_JP = {
     /*
     no vsc in Japan? I can't find example of vsc.
     testParseJPWithVSC: function(test) {
-        var parsed = new PhoneNumber("14102012345678", {locale: "ja-JP"});
         test.expect(2);
+        var parsed = new PhoneNumber("14102012345678", {locale: "ja-JP"});
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = new PhoneNumber({
@@ -166,8 +166,8 @@ module.exports.phonenum_JP = {
     */
     
     testParseJPMobileNumber: function(test) {
-        var parsed = new PhoneNumber("070-53412345", {locale: "ja-JP"});
         test.expect(2);
+        var parsed = new PhoneNumber("070-53412345", {locale: "ja-JP"});
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = new PhoneNumber({
@@ -181,8 +181,8 @@ module.exports.phonenum_JP = {
     },
     
     testParseJPPlusIDDToUS: function(test) {
-        var parsed = new PhoneNumber("+12028675309", {locale: "ja-JP"});
         test.expect(2);
+        var parsed = new PhoneNumber("+12028675309", {locale: "ja-JP"});
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = new PhoneNumber({
@@ -197,8 +197,8 @@ module.exports.phonenum_JP = {
     },
     
     testParseJPZerosIDDToUS: function(test) {
-        var parsed = new PhoneNumber("01012028675309", {locale: "ja-JP"});
         test.expect(2);
+        var parsed = new PhoneNumber("01012028675309", {locale: "ja-JP"});
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = new PhoneNumber({
@@ -214,10 +214,10 @@ module.exports.phonenum_JP = {
     },
     
     testParseJPLongAreaCodeNoTrunk: function(test) {
+        test.expect(2);
         // this number uses an area code to start it, but without the trunk, we should
         // not recognize it as an area code
         var parsed = new PhoneNumber("13712345678", {locale: "ja-JP"});
-        test.expect(2);
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = new PhoneNumber({
@@ -229,8 +229,8 @@ module.exports.phonenum_JP = {
     },
     
     testParseJPEmergencyNumber: function(test) {
-        var parsed = new PhoneNumber("110", {locale: "ja-JP"});
         test.expect(2);
+        var parsed = new PhoneNumber("110", {locale: "ja-JP"});
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = new PhoneNumber({
@@ -241,8 +241,8 @@ module.exports.phonenum_JP = {
         test.done();
     },
     testParseJPEmergencyNumberPlus: function(test) {
-        var parsed = new PhoneNumber("171171", {locale: "ja-JP"});
         test.expect(2);
+        var parsed = new PhoneNumber("171171", {locale: "ja-JP"});
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = new PhoneNumber({
@@ -255,8 +255,8 @@ module.exports.phonenum_JP = {
     },
     
     testParseJPPartial1: function(test) {
-        var parsed = new PhoneNumber("0", {locale: "ja-JP"});
         test.expect(2);
+        var parsed = new PhoneNumber("0", {locale: "ja-JP"});
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = new PhoneNumber({
@@ -268,8 +268,8 @@ module.exports.phonenum_JP = {
     },
     
     testParseJPPartial2: function(test) {
-        var parsed = new PhoneNumber("04", {locale: "ja-JP"});
         test.expect(2);
+        var parsed = new PhoneNumber("04", {locale: "ja-JP"});
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = new PhoneNumber({
@@ -281,8 +281,8 @@ module.exports.phonenum_JP = {
         test.done();
     },
     testParseJPPartial3: function(test) {
-        var parsed = new PhoneNumber("047", {locale: "ja-JP"});
         test.expect(2);
+        var parsed = new PhoneNumber("047", {locale: "ja-JP"});
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = new PhoneNumber({
@@ -294,8 +294,8 @@ module.exports.phonenum_JP = {
         test.done();
     },
     testParseJPPartial4: function(test) {
-        var parsed = new PhoneNumber("0475", {locale: "ja-JP"});
         test.expect(2);
+        var parsed = new PhoneNumber("0475", {locale: "ja-JP"});
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = new PhoneNumber({
@@ -307,8 +307,8 @@ module.exports.phonenum_JP = {
         test.done();
     },
     testParseJPPartial5: function(test) {
-        var parsed = new PhoneNumber("04751", {locale: "ja-JP"});
         test.expect(2);
+        var parsed = new PhoneNumber("04751", {locale: "ja-JP"});
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = new PhoneNumber({
@@ -321,8 +321,8 @@ module.exports.phonenum_JP = {
         test.done();
     },
     testParseJPPartial6: function(test) {
-        var parsed = new PhoneNumber("047512", {locale: "ja-JP"});
         test.expect(2);
+        var parsed = new PhoneNumber("047512", {locale: "ja-JP"});
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = new PhoneNumber({
@@ -335,8 +335,8 @@ module.exports.phonenum_JP = {
         test.done();
     },
     testParseJPPartial7: function(test) {
-        var parsed = new PhoneNumber("0475123", {locale: "ja-JP"});
         test.expect(2);
+        var parsed = new PhoneNumber("0475123", {locale: "ja-JP"});
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = new PhoneNumber({
@@ -349,8 +349,8 @@ module.exports.phonenum_JP = {
         test.done();
     },
     testParseJPPartial8: function(test) {
-        var parsed = new PhoneNumber("04751234", {locale: "ja-JP"});
         test.expect(2);
+        var parsed = new PhoneNumber("04751234", {locale: "ja-JP"});
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = new PhoneNumber({
@@ -363,8 +363,8 @@ module.exports.phonenum_JP = {
         test.done();
     },
     testParseJPPartial9: function(test) {
-        var parsed = new PhoneNumber("047512345", {locale: "ja-JP"});
         test.expect(2);
+        var parsed = new PhoneNumber("047512345", {locale: "ja-JP"});
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = new PhoneNumber({
@@ -377,8 +377,8 @@ module.exports.phonenum_JP = {
         test.done();
     },
     testParseJPPartial10: function(test) {
-        var parsed = new PhoneNumber("0475123456", {locale: "ja-JP"});
         test.expect(2);
+        var parsed = new PhoneNumber("0475123456", {locale: "ja-JP"});
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = new PhoneNumber({
@@ -392,8 +392,8 @@ module.exports.phonenum_JP = {
     },
     
     testParseJPPartial11: function(test) {
-        var parsed = new PhoneNumber("04751234567", {locale: "ja-JP"});
         test.expect(2);
+        var parsed = new PhoneNumber("04751234567", {locale: "ja-JP"});
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = new PhoneNumber({
@@ -407,8 +407,8 @@ module.exports.phonenum_JP = {
     },
     
     testParseJPPartial12: function(test) {
-        var parsed = new PhoneNumber("047512345678", {locale: "ja-JP"});
         test.expect(2);
+        var parsed = new PhoneNumber("047512345678", {locale: "ja-JP"});
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = new PhoneNumber({
@@ -422,8 +422,8 @@ module.exports.phonenum_JP = {
     },
     
     testParseJPWithUSMCC: function(test) {
-        var parsed = new PhoneNumber("6153222313", {locale: "ja-JP", mcc: "316"});
         test.expect(2);
+        var parsed = new PhoneNumber("6153222313", {locale: "ja-JP", mcc: "316"});
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = new PhoneNumber({
@@ -436,8 +436,8 @@ module.exports.phonenum_JP = {
     },
     
     testParseJPWithFRMCC: function(test) {
-        var parsed = new PhoneNumber("6153222313", {locale: "ja-JP", mcc: "208"});
         test.expect(2);
+        var parsed = new PhoneNumber("6153222313", {locale: "ja-JP", mcc: "208"});
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = new PhoneNumber({
@@ -449,8 +449,8 @@ module.exports.phonenum_JP = {
     },
     
     testParseJPWithMXMCC: function(test) {
-        var parsed = new PhoneNumber("6153222313", {locale: "ja-JP", mcc: "334"});
         test.expect(2);
+        var parsed = new PhoneNumber("6153222313", {locale: "ja-JP", mcc: "334"});
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = new PhoneNumber({
@@ -463,8 +463,8 @@ module.exports.phonenum_JP = {
     },
     
     testParseJPWithDEMCC: function(test) {
-        var parsed = new PhoneNumber("6153222313", {locale: "ja-JP", mcc: "262"});
         test.expect(2);
+        var parsed = new PhoneNumber("6153222313", {locale: "ja-JP", mcc: "262"});
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = new PhoneNumber({
@@ -476,8 +476,8 @@ module.exports.phonenum_JP = {
     },
     
     testParseJPWithKRMCC: function(test) {
-        var parsed = new PhoneNumber("6153222313", {locale: "ja-JP", mcc: "450"});
         test.expect(2);
+        var parsed = new PhoneNumber("6153222313", {locale: "ja-JP", mcc: "450"});
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = new PhoneNumber({
@@ -490,8 +490,8 @@ module.exports.phonenum_JP = {
     },
     
     testParseJPWithJPMCC: function(test) {
-        var parsed = new PhoneNumber("6153222313", {locale: "ja-JP", mcc: "440"});
         test.expect(2);
+        var parsed = new PhoneNumber("6153222313", {locale: "ja-JP", mcc: "440"});
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = new PhoneNumber({

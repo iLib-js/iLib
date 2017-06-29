@@ -34,9 +34,9 @@ module.exports.testaddress_PY = {
     },
 
     testParseAddressPYNormal: function(test) {
+        test.expect(7);
         var parsedAddress = new Address("JOSÉ GONZÁLES WASMOSY INDEPENDENCIA NACIONAL811, PISO 9\n1321 ASUNCIÓN\nPARAGUAY", {locale: 'es-PY'});
         
-        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "JOSÉ GONZÁLES WASMOSY INDEPENDENCIA NACIONAL811, PISO 9");
         test.equal(parsedAddress.locality, "ASUNCIÓN");
@@ -48,9 +48,9 @@ module.exports.testaddress_PY = {
     },
     
     testParseAddressPYNoZip: function(test) {
+        test.expect(7);
         var parsedAddress = new Address("JOSÉ GONZÁLES WASMOSY INDEPENDENCIA NACIONAL811, PISO 9\nASUNCIÓN\nPARAGUAY", {locale: 'es-PY'});
         
-        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "JOSÉ GONZÁLES WASMOSY INDEPENDENCIA NACIONAL811, PISO 9");
         test.equal(parsedAddress.locality, "ASUNCIÓN");
@@ -62,9 +62,9 @@ module.exports.testaddress_PY = {
     },
     
     testParseAddressPYNoCountry: function(test) {
+        test.expect(7);
         var parsedAddress = new Address("JOSÉ GONZÁLES WASMOSY INDEPENDENCIA NACIONAL811, PISO 9\n1321 ASUNCIÓN", {locale: 'es-PY'});
         
-        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "JOSÉ GONZÁLES WASMOSY INDEPENDENCIA NACIONAL811, PISO 9");
         test.equal(parsedAddress.locality, "ASUNCIÓN");
@@ -76,8 +76,8 @@ module.exports.testaddress_PY = {
     },
     
     testParseAddressPYManyLines: function(test) {
-        var parsedAddress = new Address("JOSÉ GONZÁLES WASMOSY INDEPENDENCIA NACIONAL811\n PISO 9\n\n1321\nASUNCIÓN\nPARAGUAY\n\n\n", {locale: 'es-PY'});
         test.expect(7);
+        var parsedAddress = new Address("JOSÉ GONZÁLES WASMOSY INDEPENDENCIA NACIONAL811\n PISO 9\n\n1321\nASUNCIÓN\nPARAGUAY\n\n\n", {locale: 'es-PY'});
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "JOSÉ GONZÁLES WASMOSY INDEPENDENCIA NACIONAL811, PISO 9");
         test.equal(parsedAddress.locality, "ASUNCIÓN");
@@ -89,9 +89,9 @@ module.exports.testaddress_PY = {
     },
     
     testParseAddressPYOneLine: function(test) {
+        test.expect(7);
         var parsedAddress = new Address("JOSÉ GONZÁLES WASMOSY INDEPENDENCIA NACIONAL811 , PISO 9 , 1321 , ASUNCIÓN , PARAGUAY", {locale: 'es-PY'});
         
-        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "JOSÉ GONZÁLES WASMOSY INDEPENDENCIA NACIONAL811, PISO 9");
         test.equal(parsedAddress.locality, "ASUNCIÓN");
@@ -103,9 +103,9 @@ module.exports.testaddress_PY = {
     },
     
     testParseAddressPYSuperfluousWhitespace: function(test) {
+        test.expect(7);
         var parsedAddress = new Address("\t\t\tJOSÉ GONZÁLES WASMOSY INDEPENDENCIA NACIONAL811\n\t\t\t PISO 9\n\t\n1321\t\nASUNCIÓN\n\t PARAGUAY\n\n\n", {locale: 'es-PY'});
         
-        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "JOSÉ GONZÁLES WASMOSY INDEPENDENCIA NACIONAL811, PISO 9");
         test.equal(parsedAddress.locality, "ASUNCIÓN");
@@ -117,9 +117,9 @@ module.exports.testaddress_PY = {
     },
     
     testParseAddressPYNoDelimiters: function(test) {
+        test.expect(7);
         var parsedAddress = new Address("JOSÉ GONZÁLES WASMOSY INDEPENDENCIA NACIONAL811, PISO 9 1321 ASUNCIÓN PARAGUAY", {locale: 'es-PY'});
         
-        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "JOSÉ GONZÁLES WASMOSY INDEPENDENCIA NACIONAL811, PISO 9");
         test.equal(parsedAddress.locality, "ASUNCIÓN");
@@ -131,11 +131,11 @@ module.exports.testaddress_PY = {
     },
     
     testParseAddressPYFromUS: function(test) {
+        test.expect(7);
         var parsedAddress = new Address("JOSÉ GONZÁLES WASMOSY INDEPENDENCIA NACIONAL811, PISO 9\n1321 ASUNCIÓN\nPARAGUAY", {locale: 'en-US'});
         
         // the country name is in German because this address is for a contact in a German database
         
-        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "JOSÉ GONZÁLES WASMOSY INDEPENDENCIA NACIONAL811, PISO 9");
         test.equal(parsedAddress.locality, "ASUNCIÓN");
@@ -147,6 +147,7 @@ module.exports.testaddress_PY = {
     },
     
     testFormatAddressPY: function(test) {
+        test.expect(1);
         var parsedAddress = new Address({
             streetAddress: "JOSÉ GONZÁLES WASMOSY INDEPENDENCIA NACIONAL811, PISO 9",
             locality: "ASUNCIÓN",
@@ -157,12 +158,12 @@ module.exports.testaddress_PY = {
         
         var expected = "JOSÉ GONZÁLES WASMOSY INDEPENDENCIA NACIONAL811, PISO 9\n1321 ASUNCIÓN\nPARAGUAY";
         var formatter = new AddressFmt({locale: 'es-PY'});
-        test.expect(1);
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     },
     
     testFormatAddressPYFromUS: function(test) {
+        test.expect(1);
         var parsedAddress = new Address({
             streetAddress: "JOSÉ GONZÁLES WASMOSY INDEPENDENCIA NACIONAL811, PISO 9",
             locality: "ASUNCIÓN",
@@ -173,7 +174,6 @@ module.exports.testaddress_PY = {
         
         var expected = "JOSÉ GONZÁLES WASMOSY INDEPENDENCIA NACIONAL811, PISO 9\n1321 ASUNCIÓN\nPARAGUAY";
         var formatter = new AddressFmt({locale: 'en-US'});
-        test.expect(1);
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     }

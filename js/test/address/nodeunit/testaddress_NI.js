@@ -34,9 +34,9 @@ module.exports.testaddress_NI = {
     },
 
     testParseAddressNINormal: function(test) {
+        test.expect(7);
         var parsedAddress = new Address("Sr. Juan Manuel Nurinda Del Hotel Granada 1c. arriba 75 vrs. alsur. Reparto Santa Isabel\n050-008-4\nGRANADA, GRANADA\nNICARAGUA", {locale: 'es-NI'});
         
-        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Sr. Juan Manuel Nurinda Del Hotel Granada 1c. arriba 75 vrs. alsur. Reparto Santa Isabel");
         test.equal(parsedAddress.locality, "GRANADA");
@@ -48,9 +48,9 @@ module.exports.testaddress_NI = {
     },
     
     testParseAddressNINoZip: function(test) {
+        test.expect(7);
         var parsedAddress = new Address("Sr. Juan Manuel Nurinda Del Hotel Granada 1c. arriba 75 vrs. alsur. Reparto Santa Isabel\nGRANADA, GRANADA\nNICARAGUA", {locale: 'es-NI'});
         
-        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Sr. Juan Manuel Nurinda Del Hotel Granada 1c. arriba 75 vrs. alsur. Reparto Santa Isabel");
         test.equal(parsedAddress.locality, "GRANADA");
@@ -62,9 +62,9 @@ module.exports.testaddress_NI = {
     },
     
     testParseAddressNINoCountry: function(test) {
+        test.expect(7);
         var parsedAddress = new Address("Sr. Juan Manuel Nurinda    \nDel Hotel Granada 1c.\narriba 75\nvrs. alsur. Reparto\nSanta Isabel\n050-008-4\nGranada, Masaya", {locale: 'es-NI'});
         
-        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Sr. Juan Manuel Nurinda, Del Hotel Granada 1c., arriba 75, vrs. alsur. Reparto, Santa Isabel");
         test.equal(parsedAddress.locality, "Granada");
@@ -76,9 +76,9 @@ module.exports.testaddress_NI = {
     },
     
     testParseAddressNIManyLines: function(test) {
+        test.expect(7);
         var parsedAddress = new Address("Sr. Juan Manuel Nurinda\nDel Hotel Granada 1c.\narriba 75\nvrs. alsur. Reparto\nSanta Isabel\n050-008-4\nGRANADA, GRANADA\nNICARAGUA", {locale: 'es-NI'});
         
-        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Sr. Juan Manuel Nurinda, Del Hotel Granada 1c., arriba 75, vrs. alsur. Reparto, Santa Isabel");
         test.equal(parsedAddress.locality, "GRANADA");
@@ -90,9 +90,9 @@ module.exports.testaddress_NI = {
     },
     
     testParseAddressNIOneLine: function(test) {
+        test.expect(7);
         var parsedAddress = new Address("Sr. Juan Manuel Nurinda , Del Hotel Granada 1c. , arriba 75 , vrs. alsur. Reparto , Santa Isabel , 050-008-4 , GRANADA , GRANADA , NICARAGUA", {locale: 'es-NI'});
         
-        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Sr. Juan Manuel Nurinda, Del Hotel Granada 1c., arriba 75, vrs. alsur. Reparto, Santa Isabel");
         test.equal(parsedAddress.locality, "GRANADA");
@@ -104,9 +104,9 @@ module.exports.testaddress_NI = {
     },
     
     testParseAddressNISuperfluousWhitespace: function(test) {
+        test.expect(7);
         var parsedAddress = new Address("Sr. Juan Manuel Nurinda\n\n\t\rDel Hotel Granada 1c.\t\t\rarriba 75\r\r\rvrs. alsur. Reparto\t\t\rSanta Isabel\n\n\n050-008-4\t\t\rGRANADA\r\r\rGRANADA\t\t\rNICARAGUA", {locale: 'es-NI'});
         
-        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Sr. Juan Manuel Nurinda, Del Hotel Granada 1c. arriba 75 vrs. alsur. Reparto Santa Isabel");
         test.equal(parsedAddress.locality, "GRANADA");
@@ -118,9 +118,9 @@ module.exports.testaddress_NI = {
     },
     
     testParseAddressNINoDelimiters: function(test) {
+        test.expect(7);
         var parsedAddress = new Address("Sr. Juan Manuel Nurinda Del Hotel Granada 1c. arriba 75 vrs. alsur. Reparto Santa Isabel 050-008-4\nGRANADA, GRANADA NICARAGUA", {locale: 'es-NI'});
         
-        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Sr. Juan Manuel Nurinda Del Hotel Granada 1c. arriba 75 vrs. alsur. Reparto Santa Isabel");
         test.equal(parsedAddress.locality, "GRANADA");
@@ -132,9 +132,9 @@ module.exports.testaddress_NI = {
     },
     
     testParseAddressNIFromUS: function(test) {
+        test.expect(7);
         var parsedAddress = new Address("Mr. JOSE PEREZ AV. Del Hotel Granada 1c. arriba 75, vrs. alsur. Reparto Santa Isabel\n050-008-4\nGRANADA, GRANADA\nNICARAGUA", {locale: 'es-NI'});
         
-        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Mr. JOSE PEREZ AV. Del Hotel Granada 1c. arriba 75, vrs. alsur. Reparto Santa Isabel");
         test.equal(parsedAddress.locality, "GRANADA");
@@ -146,6 +146,7 @@ module.exports.testaddress_NI = {
     },
     
     testFormatAddressNI: function(test) {
+        test.expect(1);
         var parsedAddress = new Address({
             streetAddress: "Sr. Juan Manuel Nurinda Del Hotel Granada 1c. arriba 75 vrs. alsur. Reparto Santa Isabel",
             locality: "GRANADA",
@@ -157,12 +158,12 @@ module.exports.testaddress_NI = {
         
         var expected = "Sr. Juan Manuel Nurinda Del Hotel Granada 1c. arriba 75 vrs. alsur. Reparto Santa Isabel\n050-008-4\nGRANADA, GRANADA\nNICARAGUA";
         var formatter = new AddressFmt({locale: 'es-NI'});
-        test.expect(1);
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     },
     
     testFormatAddressNIFromUS: function(test) {
+        test.expect(1);
         var parsedAddress = new Address({
             streetAddress: "Mr. JOSE PEREZ AV. Del Hotel Granada 1c. arriba 75, vrs. alsur. Reparto Santa Isabel",
             locality: "GRANADA",
@@ -174,7 +175,6 @@ module.exports.testaddress_NI = {
         
         var expected = "Mr. JOSE PEREZ AV. Del Hotel Granada 1c. arriba 75, vrs. alsur. Reparto Santa Isabel\n050-008-4\nGRANADA, GRANADA\nNICARAGUA";
         var formatter = new AddressFmt({locale: 'en-US'});
-        test.expect(1);
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     }

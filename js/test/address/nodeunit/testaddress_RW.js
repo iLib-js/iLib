@@ -34,9 +34,9 @@ module.exports.testaddress_RW = {
     },
 
     testParseAddressRWNormal: function(test) {
+        test.expect(7);
         var parsedAddress = new Address("M. Pierre Simon B.P. 3425\nKIGALI\nRwanda", {locale: 'fr-RW'});
         
-        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "M. Pierre Simon B.P. 3425");
         test.equal(parsedAddress.locality, "KIGALI");
@@ -48,9 +48,9 @@ module.exports.testaddress_RW = {
     },
     
     testParseAddressRWNoZip: function(test) {
+        test.expect(7);
         var parsedAddress = new Address("M. Pierre Simon B.P. 3425\nKIGALI\nRwanda", {locale: 'fr-RW'});
         
-        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "M. Pierre Simon B.P. 3425");
         test.equal(parsedAddress.locality, "KIGALI");
@@ -62,9 +62,9 @@ module.exports.testaddress_RW = {
     },
     
     testParseAddressRWNoCountry: function(test) {
+        test.expect(7);
         var parsedAddress = new Address("M. Pierre Simon B.P. 3425\nKIGALI", {locale: 'fr-RW'});
         
-        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "M. Pierre Simon B.P. 3425");
         test.equal(parsedAddress.locality, "KIGALI");
@@ -76,8 +76,8 @@ module.exports.testaddress_RW = {
     },
     
     testParseAddressRWManyLines: function(test) {
-        var parsedAddress = new Address("M. Pierre Simon\nB.P. 3425\nKIGALI\nRwanda\n\n\n", {locale: 'fr-RW'});
         test.expect(7);
+        var parsedAddress = new Address("M. Pierre Simon\nB.P. 3425\nKIGALI\nRwanda\n\n\n", {locale: 'fr-RW'});
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "M. Pierre Simon, B.P. 3425");
         test.equal(parsedAddress.locality, "KIGALI");
@@ -89,9 +89,9 @@ module.exports.testaddress_RW = {
     },
     
     testParseAddressRWOneLine: function(test) {
+        test.expect(7);
         var parsedAddress = new Address("M. Pierre Simon , B.P. 3425 , KIGALI , Rwanda", {locale: 'fr-RW'});
         
-        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "M. Pierre Simon, B.P. 3425");
         test.equal(parsedAddress.locality, "KIGALI");
@@ -103,9 +103,9 @@ module.exports.testaddress_RW = {
     },
     
     testParseAddressRWSuperfluousWhitespace: function(test) {
+        test.expect(7);
         var parsedAddress = new Address("\t\t\t\tM. Pierre Simon\t\t\tB.P. 3425\n\t\nKIGALI\n\tRwanda\n\n\n", {locale: 'fr-RW'});
         
-        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "M. Pierre Simon B.P. 3425");
         test.equal(parsedAddress.locality, "KIGALI");
@@ -117,9 +117,9 @@ module.exports.testaddress_RW = {
     },
     
     testParseAddressRWNoDelimiters: function(test) {
+        test.expect(7);
         var parsedAddress = new Address("M. Pierre Simon B.P. 3425 KIGALI Rwanda", {locale: 'fr-RW'});
         
-        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "M. Pierre Simon B.P. 3425");
         test.equal(parsedAddress.locality, "KIGALI");
@@ -131,9 +131,9 @@ module.exports.testaddress_RW = {
     },
     
     testParseAddressRWFromUS: function(test) {
+        test.expect(7);
         var parsedAddress = new Address("M. Pierre Simon B.P. 3425\nKIGALI\nRwanda", {locale: 'en-US'});
         
-        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "M. Pierre Simon B.P. 3425");
         test.equal(parsedAddress.locality, "KIGALI");
@@ -145,6 +145,7 @@ module.exports.testaddress_RW = {
     },
     
     testFormatAddressRW: function(test) {
+        test.expect(1);
         var parsedAddress = new Address({
             streetAddress: "M. Pierre Simon B.P. 3425",
             locality: "KIGALI",
@@ -154,12 +155,12 @@ module.exports.testaddress_RW = {
         
         var expected = "M. Pierre Simon B.P. 3425\nKIGALI\nRwanda";
         var formatter = new AddressFmt({locale: 'fr-RW'});
-        test.expect(1);
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     },
     
     testFormatAddressRWFromUS: function(test) {
+        test.expect(1);
         var parsedAddress = new Address({
             streetAddress: "M. Pierre Simon B.P. 3425",
             locality: "KIGALI",
@@ -169,7 +170,6 @@ module.exports.testaddress_RW = {
         
         var expected = "M. Pierre Simon B.P. 3425\nKIGALI\nRwanda";
         var formatter = new AddressFmt({locale: 'en-US'});
-        test.expect(1);
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     }

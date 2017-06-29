@@ -32,17 +32,18 @@ module.exports.testtime = {
     },
 
     testTimeTimeConstructor: function(test) {
+        test.expect(1);
         var m = new TimeUnit({
             unit: "sec",
             amount: 2
         });
     
-        test.expect(1);
         test.ok(m !== null);
         test.done();
     },
     
     testTimeTimeConvertSecondToHour: function(test) {
+        test.expect(3);
         var m1 = new TimeUnit({
             unit: "sec",
             amount: 3600
@@ -52,7 +53,6 @@ module.exports.testtime = {
             amount: m1
         });
     
-        test.expect(3);
         test.ok(m1 !== null);
         test.ok(m2 !== null);
     
@@ -61,46 +61,47 @@ module.exports.testtime = {
     },
     
     testTimeStaticConvert1: function(test) {
+        test.expect(1);
         var m = TimeUnit.convert("second", "ns", 1000000000);
     
-        test.expect(1);
         test.equal(m, 1);
         test.done();
     },
     
     testTimeStaticConvertWithString: function(test) {
+        test.expect(1);
         var m = TimeUnit.convert("hour", "decade", "5");
     
-        test.expect(1);
         test.equal(m, 438290.5);
         test.done();
     },
     
     testTimeStaticConvert2: function(test) {
+        test.expect(1);
         var m = TimeUnit.convert("hour", "day", 10);
     
-        test.expect(1);
         test.equal(m, 240);
         test.done();
     },
     
     testTimeStaticConvert3: function(test) {
+        test.expect(1);
         var m = TimeUnit.convert("min", "month", 2);
     
-        test.expect(1);
         test.equal(m, 87658.2);
         test.done();
     },
     
     testTimeStaticConvert4: function(test) {
+        test.expect(1);
         var m = TimeUnit.convert("day", "week", 10);
     
-        test.expect(1);
         test.equal(m, 70);
         test.done();
     },
     
     testTimeScaling1: function(test) {
+        test.expect(2);
         var m = new TimeUnit({
             unit: "ns",
             amount: 1024
@@ -108,13 +109,13 @@ module.exports.testtime = {
     
         var m1 = m.scale();
     
-        test.expect(2);
         test.equal(m1.amount, 1.024);
         test.equal(m1.unit, "microsecond");
         test.done();
     },
     
     testTimeScaling2: function(test) {
+        test.expect(2);
         var m = new TimeUnit({
             unit: "ms",
             amount: 12000
@@ -122,13 +123,13 @@ module.exports.testtime = {
     
         m = m.scale();
     
-        test.expect(2);
         test.equal(m.amount, 12);
         test.equal(m.unit, "second");
         test.done();
     },
     
     testTimeScaling3: function(test) {
+        test.expect(2);
         var m = new TimeUnit({
             unit: "day",
             amount: 10485
@@ -136,13 +137,13 @@ module.exports.testtime = {
     
         m = m.scale();
     
-        test.expect(2);
         test.roughlyEqual(0.1, m.amount, 2.8706979);
         test.equal(m.unit, "decade");
         test.done();
     },
     
     testTimeScaling4: function(test) {
+        test.expect(2);
         var m = new TimeUnit({
             unit: "year",
             amount: 1000
@@ -150,13 +151,13 @@ module.exports.testtime = {
     
         m = m.scale();
     
-        test.expect(2);
         test.roughlyEqual(0.001, m.amount, 10);
         test.equal(m.unit, "century");
         test.done();
     },
     
     testTimeScaling5: function(test) {
+        test.expect(2);
         var m = new TimeUnit({
             unit: "h",
             amount: 120
@@ -164,13 +165,13 @@ module.exports.testtime = {
     
         m = m.scale();
     
-        test.expect(2);
         test.roughlyEqual(0.001, m.amount, 5);
         test.equal(m.unit, "day");
         test.done();
     },
     
     testTimeGetMeasures: function(test) {
+        test.expect(1);
         var measures = TimeUnit.getMeasures();
         var expected = [
             "nanosecond",
@@ -186,7 +187,6 @@ module.exports.testtime = {
             "decade",
             "century"
         ];
-        test.expect(1);
         test.equalIgnoringOrder(measures, expected);
         test.done();
     }

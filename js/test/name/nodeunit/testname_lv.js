@@ -34,8 +34,8 @@ module.exports.testname_lv = {
     },
 
     testParseSimpleName_lv_LV: function(test) {
-        var parsed = new Name("Mikhail Baryshnikov", {locale: 'lv-LV'});
         test.expect(2);
+        var parsed = new Name("Mikhail Baryshnikov", {locale: 'lv-LV'});
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {
@@ -48,8 +48,8 @@ module.exports.testname_lv = {
     },
     
     testParseSimpleWithMiddleName_lv_LV: function(test) {
-        var parsed = new Name("Sergei M. Eisenstein", {locale: 'lv-LV'});
         test.expect(2);
+        var parsed = new Name("Sergei M. Eisenstein", {locale: 'lv-LV'});
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {
@@ -65,8 +65,8 @@ module.exports.testname_lv = {
     
     
     testParseTitle_lv_LV: function(test) {
-        var parsed = new Name("Mikhail Baryshnikov vecākais", {locale: 'lv-LV'});
         test.expect(2);
+        var parsed = new Name("Mikhail Baryshnikov vecākais", {locale: 'lv-LV'});
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {
@@ -82,8 +82,8 @@ module.exports.testname_lv = {
     
     
     testParseTitleWithFamilyOnly_lv_LV: function(test) {
-        var parsed = new Name("priekšsēdētāja Baryshnikov", {locale: 'lv-LV'});
         test.expect(2);
+        var parsed = new Name("priekšsēdētāja Baryshnikov", {locale: 'lv-LV'});
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {
@@ -98,8 +98,8 @@ module.exports.testname_lv = {
     
     
     testParseEverything_lv_LV: function(test) {
-        var parsed = new Name("kungs un kundze Baryshnikov", {locale: 'lv-LV'});
         test.expect(2);
+        var parsed = new Name("kungs un kundze Baryshnikov", {locale: 'lv-LV'});
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {
@@ -112,8 +112,8 @@ module.exports.testname_lv = {
     },
     
     testParseprefix_lv_LV: function(test) {
-        var parsed = new Name("kungs Mikhail Baryshnikov", {locale: 'lv-LV'});
         test.expect(2);
+        var parsed = new Name("kungs Mikhail Baryshnikov", {locale: 'lv-LV'});
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {
@@ -130,6 +130,7 @@ module.exports.testname_lv = {
      */
     
     testFormatSimpleNameShort_lv_LV: function(test) {
+        test.expect(2);
         var name = new Name({
             givenName: "Mikhail",
             familyName: "Baryshnikov"
@@ -139,7 +140,6 @@ module.exports.testname_lv = {
             locale: 'lv-LV'
         });
         var formatted = fmt.format(name);
-        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "Mikhail Baryshnikov";
@@ -149,6 +149,7 @@ module.exports.testname_lv = {
     },
     
     testFormatSimpleNameMedium_lv_LV: function(test) {
+        test.expect(2);
         var name = new Name({
             givenName: "Mikhail",
             familyName: "Baryshnikov"
@@ -158,7 +159,6 @@ module.exports.testname_lv = {
             locale: 'lv-LV'
         });
         var formatted = fmt.format(name);
-        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "Mikhail Baryshnikov";
@@ -168,6 +168,7 @@ module.exports.testname_lv = {
     },
     
     testFormatSimpleNameLong_lv_LV: function(test) {
+        test.expect(2);
         var name = new Name({
             givenName: "Mikhail",
             familyName: "Baryshnikov",
@@ -178,7 +179,6 @@ module.exports.testname_lv = {
             locale: 'lv-LV'
         });
         var formatted = fmt.format(name);
-        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "Mikhail Baryshnikov";
@@ -188,6 +188,7 @@ module.exports.testname_lv = {
     },
     
     testFormatSimpleNameWithMiddleNameFull_lv_LV: function(test) {
+        test.expect(2);
         var name = new Name({
             givenName: "Sergei",
             middleName: "M.",
@@ -199,7 +200,6 @@ module.exports.testname_lv = {
             locale: 'lv-LV'
         });
         var formatted = fmt.format(name);
-        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "Sergei M. Eisenstein pūt";
@@ -209,6 +209,7 @@ module.exports.testname_lv = {
     },
     
     testFormatSurname_lv_LV: function(test) {
+        test.expect(2);
         var name = new Name({
             prefix: "kungs un kundze",
             familyName: "Baryshnikov"
@@ -218,7 +219,6 @@ module.exports.testname_lv = {
             locale: 'lv-LV'
         });
         var formatted = fmt.format(name);
-        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "kungs un kundze Baryshnikov";
@@ -228,6 +228,7 @@ module.exports.testname_lv = {
     },
     
     testFormatSimpleNameFull_lv_LV: function(test) {
+        test.expect(2);
         var name = new Name({
             prefix: "priekšsēdētājs",
             givenName: "Mikhail",
@@ -239,7 +240,6 @@ module.exports.testname_lv = {
             locale: 'lv-LV'
         });
         var formatted = fmt.format(name);
-        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "priekšsēdētājs Mikhail Baryshnikov jaunākais";
@@ -249,6 +249,7 @@ module.exports.testname_lv = {
     },
     
     testFormatComplexNameShort_lv_LV: function(test) {
+        test.expect(2);
         var name = new Name({
             prefix: "priekšsēdētājs",
             givenName: "Mikhail",
@@ -259,7 +260,6 @@ module.exports.testname_lv = {
             locale: 'lv-LV'
         });
         var formatted = fmt.format(name);
-        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "Mikhail Baryshnikov";
@@ -269,6 +269,7 @@ module.exports.testname_lv = {
     },
     
     testFormatComplexNameMedium_lv_LV: function(test) {
+        test.expect(2);
         var name = new Name({
             prefix: "priekšsēdētājs",
             givenName: "Mikhail",
@@ -279,7 +280,6 @@ module.exports.testname_lv = {
             locale: 'lv-LV'
         });
         var formatted = fmt.format(name);
-        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "Mikhail Baryshnikov";
@@ -289,6 +289,7 @@ module.exports.testname_lv = {
     },
     
     testFormatComplexNameLong_lv_LV: function(test) {
+        test.expect(2);
         var name = new Name({
             prefix: "priekšsēdētājs",
             givenName: "Mikhail",
@@ -299,7 +300,6 @@ module.exports.testname_lv = {
             locale: 'lv-LV'
         });
         var formatted = fmt.format(name);
-        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "priekšsēdētājs Mikhail Baryshnikov";

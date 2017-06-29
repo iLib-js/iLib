@@ -34,6 +34,7 @@ module.exports.phonegeo_BR = {
     },
 
     testBRLocalNumber1: function(test) {
+        test.expect(4);
         var parsed = new PhoneNumber("3111-1111",{locale: "pt-BR"});
         var expected = {
             country: {
@@ -46,7 +47,6 @@ module.exports.phonegeo_BR = {
         var locator = new PhoneGeoLocator({locale: 'pt-BR'});
         var geoInfo = locator.locate(parsed);
         
-        test.expect(4);
         test.ok(typeof(locator) !== "undefined");
         test.equal(geoInfo.country.code, expected.country.code);
         test.equal(geoInfo.country.sn, expected.country.sn);
@@ -55,6 +55,7 @@ module.exports.phonegeo_BR = {
     },
     
     testBRNumberWithAreaCode1: function(test) {
+        test.expect(5);
         var parsed = new PhoneNumber("0 31 85 2222 2222",{locale: "pt-BR"});
         var expected = {
             country: {
@@ -71,7 +72,6 @@ module.exports.phonegeo_BR = {
         var locator = new PhoneGeoLocator({locale: "pt-BR"});
         var geoInfo = locator.locate(parsed);
         
-        test.expect(5);
         test.equal(geoInfo.country.code, expected.country.code);
         test.equal(geoInfo.country.sn, expected.country.sn);
         test.equal(geoInfo.country.ln, expected.country.ln);
@@ -81,6 +81,7 @@ module.exports.phonegeo_BR = {
     },
     
     testBRNumberWithAreaCode2: function(test) {
+        test.expect(5);
         var parsed = new PhoneNumber("0-31-31-2222-2222",{locale: "pt-BR"});
         var expected = {
             country: {
@@ -97,7 +98,6 @@ module.exports.phonegeo_BR = {
         var locator = new PhoneGeoLocator({locale: 'pt-BR'});
         var geoInfo = locator.locate(parsed);
         
-        test.expect(5);
         test.equal(geoInfo.country.code, expected.country.code);
         test.equal(geoInfo.country.sn, expected.country.sn);
         test.equal(geoInfo.country.ln, expected.country.ln);
@@ -107,6 +107,7 @@ module.exports.phonegeo_BR = {
     },
     
     testBRNumberWithAreaCodeAndCountry1: function(test) {
+        test.expect(5);
         var parsed = new PhoneNumber("+55-31-2122-3456");
         var expected = {
             country: {
@@ -123,7 +124,6 @@ module.exports.phonegeo_BR = {
         var locator = new PhoneGeoLocator({locale: 'pt-BR'});
         var geoInfo = locator.locate(parsed);
         
-        test.expect(5);
         test.equal(geoInfo.country.code, expected.country.code);
         test.equal(geoInfo.country.sn, expected.country.sn);
         test.equal(geoInfo.country.ln, expected.country.ln);
@@ -133,6 +133,7 @@ module.exports.phonegeo_BR = {
     },
     
     testBRNumberWithAreaCodeAndCountry2: function(test) {
+        test.expect(5);
         var parsed = new PhoneNumber("+55-87-2122-3456");
         var expected = {
             country: {
@@ -149,7 +150,6 @@ module.exports.phonegeo_BR = {
         var locator = new PhoneGeoLocator({locale: 'en-US'});
         var geoInfo = locator.locate(parsed);
         
-        test.expect(5);
         test.equal(geoInfo.country.code, expected.country.code);
         test.equal(geoInfo.country.sn, expected.country.sn);
         test.equal(geoInfo.country.ln, expected.country.ln);
@@ -159,6 +159,7 @@ module.exports.phonegeo_BR = {
     },
     
     testBRNumberWithAreaCodeAndCountry3: function(test) {
+        test.expect(5);
         var parsed = new PhoneNumber("+55-71-2123-3456");
         var expected = {
             country: {
@@ -175,7 +176,6 @@ module.exports.phonegeo_BR = {
         var locator = new PhoneGeoLocator({locale: 'en-US'});
         var geoInfo = locator.locate(parsed);
         
-        test.expect(5);
         test.equal(geoInfo.country.code, expected.country.code);
         test.equal(geoInfo.country.sn, expected.country.sn);
         test.equal(geoInfo.country.ln, expected.country.ln);
@@ -185,6 +185,7 @@ module.exports.phonegeo_BR = {
     },
     
     testBRNumberCallFromUS: function(test) {
+        test.expect(5);
         var parsed = new PhoneNumber("011 55-71-2123-3456");
         var expected = {
             country: {
@@ -201,7 +202,6 @@ module.exports.phonegeo_BR = {
         var locator = new PhoneGeoLocator({locale: 'en-US'});
         var geoInfo = locator.locate(parsed);
         
-        test.expect(5);
         test.equal(geoInfo.country.code, expected.country.code);
         test.equal(geoInfo.country.sn, expected.country.sn);
         test.equal(geoInfo.country.ln, expected.country.ln);
@@ -211,6 +211,7 @@ module.exports.phonegeo_BR = {
     },
     
     testBRPolice: function(test) {
+        test.expect(6);
         var parsed = new PhoneNumber("197",{locale: "pt-BR"});
         var expected = {
             country: {
@@ -226,7 +227,6 @@ module.exports.phonegeo_BR = {
         var locator = new PhoneGeoLocator({locale: "pt-BR"});
         var geoInfo = locator.locate(parsed);
     
-        test.expect(6);
         test.ok(typeof(locator) !== "undefined");
         test.equal(geoInfo.country.code, expected.country.code);
         test.equal(geoInfo.country.sn, expected.country.sn);
@@ -237,6 +237,7 @@ module.exports.phonegeo_BR = {
     },
     
     testBRAmbulance: function(test) {
+        test.expect(6);
         var parsed = new PhoneNumber("192",{locale: "pt-BR"});
         var expected = {
             country: {
@@ -252,7 +253,6 @@ module.exports.phonegeo_BR = {
         var locator = new PhoneGeoLocator({locale: "pt-BR"});
         var geoInfo = locator.locate(parsed);
     
-        test.expect(6);
         test.ok(typeof(locator) !== "undefined");
         test.equal(geoInfo.country.code, expected.country.code);
         test.equal(geoInfo.country.sn, expected.country.sn);

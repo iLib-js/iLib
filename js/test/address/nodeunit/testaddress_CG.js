@@ -34,9 +34,9 @@ module.exports.testaddress_CG = {
     },
 
     testParseAddressCGNormal: function(test) {
+        test.expect(7);
         var parsedAddress = new Address("M. Joseph Mbemba 12, rue Kakamoueka\nBRAZZAVILLE\nCongo-Brazzaville", {locale: 'fr-CG'});
         
-        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "M. Joseph Mbemba 12, rue Kakamoueka");
         test.equal(parsedAddress.locality, "BRAZZAVILLE");
@@ -48,9 +48,9 @@ module.exports.testaddress_CG = {
     },
     
     testParseAddressCGNoZip: function(test) {
+        test.expect(7);
         var parsedAddress = new Address("M. Joseph Mbemba 12, rue Kakamoueka\nBRAZZAVILLE\nCongo-Brazzaville", {locale: 'fr-CG'});
         
-        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "M. Joseph Mbemba 12, rue Kakamoueka");
         test.equal(parsedAddress.locality, "BRAZZAVILLE");
@@ -62,9 +62,9 @@ module.exports.testaddress_CG = {
     },
     
     testParseAddressCGNoCountry: function(test) {
+        test.expect(7);
         var parsedAddress = new Address("M. Joseph Mbemba 12, rue Kakamoueka\nBRAZZAVILLE", {locale: 'fr-CG'});
         
-        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "M. Joseph Mbemba 12, rue Kakamoueka");
         test.equal(parsedAddress.locality, "BRAZZAVILLE");
@@ -76,8 +76,8 @@ module.exports.testaddress_CG = {
     },
     
     testParseAddressCGManyLines: function(test) {
-        var parsedAddress = new Address("M. Joseph Mbemba 12\nrue Kakamoueka\nBRAZZAVILLE\nCongo-Brazzaville\n\n\n", {locale: 'fr-CG'});
         test.expect(7);
+        var parsedAddress = new Address("M. Joseph Mbemba 12\nrue Kakamoueka\nBRAZZAVILLE\nCongo-Brazzaville\n\n\n", {locale: 'fr-CG'});
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "M. Joseph Mbemba 12, rue Kakamoueka");
         test.equal(parsedAddress.locality, "BRAZZAVILLE");
@@ -89,9 +89,9 @@ module.exports.testaddress_CG = {
     },
     
     testParseAddressCGOneLine: function(test) {
+        test.expect(7);
         var parsedAddress = new Address("M. Joseph Mbemba 12 , rue Kakamoueka , BRAZZAVILLE , Congo-Brazzaville", {locale: 'fr-CG'});
         
-        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "M. Joseph Mbemba 12, rue Kakamoueka");
         test.equal(parsedAddress.locality, "BRAZZAVILLE");
@@ -103,9 +103,9 @@ module.exports.testaddress_CG = {
     },
     
     testParseAddressCGSuperfluousWhitespace: function(test) {
+        test.expect(7);
         var parsedAddress = new Address("\t\t\t\tM. Joseph Mbemba 12\t\t\true Kakamoueka\n\t\nBRAZZAVILLE\n\tCongo-Brazzaville\n\n\n", {locale: 'fr-CG'});
         
-        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "M. Joseph Mbemba 12 rue Kakamoueka");
         test.equal(parsedAddress.locality, "BRAZZAVILLE");
@@ -117,9 +117,9 @@ module.exports.testaddress_CG = {
     },
     
     testParseAddressCGNoDelimiters: function(test) {
+        test.expect(7);
         var parsedAddress = new Address("M. Joseph Mbemba 12 rue Kakamoueka BRAZZAVILLE Congo-Brazzaville", {locale: 'fr-CG'});
         
-        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "M. Joseph Mbemba 12 rue Kakamoueka");
         test.equal(parsedAddress.locality, "BRAZZAVILLE");
@@ -131,9 +131,9 @@ module.exports.testaddress_CG = {
     },
     
     testParseAddressCGFromUS: function(test) {
+        test.expect(7);
         var parsedAddress = new Address("M. Joseph Mbemba 12, rue Kakamoueka\nBRAZZAVILLE\nCongo - Brazzaville", {locale: 'en-US'});
         
-        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "M. Joseph Mbemba 12, rue Kakamoueka");
         test.equal(parsedAddress.locality, "BRAZZAVILLE");
@@ -145,6 +145,7 @@ module.exports.testaddress_CG = {
     },
     
     testFormatAddressCG: function(test) {
+        test.expect(1);
         var parsedAddress = new Address({
             streetAddress: "M. Joseph Mbemba 12, rue Kakamoueka",
             locality: "BRAZZAVILLE",
@@ -154,12 +155,12 @@ module.exports.testaddress_CG = {
         
         var expected = "M. Joseph Mbemba 12, rue Kakamoueka\nBRAZZAVILLE\nCongo-Brazzaville";
         var formatter = new AddressFmt({locale: 'fr-CG'});
-        test.expect(1);
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     },
     
     testFormatAddressCGFromUS: function(test) {
+        test.expect(1);
         var parsedAddress = new Address({
             streetAddress: "M. Joseph Mbemba 12, rue Kakamoueka",
             locality: "BRAZZAVILLE",
@@ -169,7 +170,6 @@ module.exports.testaddress_CG = {
         
         var expected = "M. Joseph Mbemba 12, rue Kakamoueka\nBRAZZAVILLE\nCongo - Brazzaville";
         var formatter = new AddressFmt({locale: 'en-US'});
-        test.expect(1);
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     }

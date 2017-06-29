@@ -37,17 +37,17 @@ module.exports.testdatefmt_mk_MK = {
     },
 
     testDateFmtConstructorEmpty_mk_MK: function(test) {
+        test.expect(1);
         var fmt = new DateFmt({locale: "mk-MK"});
         
-        test.expect(1);
         test.ok(fmt !== null);
         test.done();
     },
     
     
     testDateFmtSimpleShort_mk_MK: function(test) {
-        var fmt = new DateFmt({locale: "mk-MK", length: "short"});
         test.expect(2);
+        var fmt = new DateFmt({locale: "mk-MK", length: "short"});
         test.ok(fmt !== null);
         
         var date = new GregorianDate({
@@ -65,8 +65,8 @@ module.exports.testdatefmt_mk_MK = {
     },
     
     testDateFmtSimpleMedium_mk_MK: function(test) {
-        var fmt = new DateFmt({locale: "mk-MK", length: "medium"});
         test.expect(2);
+        var fmt = new DateFmt({locale: "mk-MK", length: "medium"});
         test.ok(fmt !== null);
         
         var date = new GregorianDate({
@@ -84,8 +84,8 @@ module.exports.testdatefmt_mk_MK = {
     },
     
     testDateFmtSimpleLong_mk_MK: function(test) {
-        var fmt = new DateFmt({locale: "mk-MK", length: "long"});
         test.expect(2);
+        var fmt = new DateFmt({locale: "mk-MK", length: "long"});
         test.ok(fmt !== null);
         
         var date = new GregorianDate({
@@ -103,8 +103,8 @@ module.exports.testdatefmt_mk_MK = {
     },
     
     testDateFmtSimpleFull_mk_MK: function(test) {
-        var fmt = new DateFmt({locale: "mk-MK", length: "full"});
         test.expect(2);
+        var fmt = new DateFmt({locale: "mk-MK", length: "full"});
         test.ok(fmt !== null);
         
         var date = new GregorianDate({
@@ -122,8 +122,8 @@ module.exports.testdatefmt_mk_MK = {
     },
     
     testDateFmtSimpleTimeShort_mk_MK: function(test) {
-        var fmt = new DateFmt({locale: "mk-MK", length: "short", type: "time"});
         test.expect(2);
+        var fmt = new DateFmt({locale: "mk-MK", length: "short", type: "time"});
         test.ok(fmt !== null);
         
         var date = new GregorianDate({
@@ -141,8 +141,8 @@ module.exports.testdatefmt_mk_MK = {
     },
     
     testDateFmtSimpleTimeMedium_mk_MK: function(test) {
-        var fmt = new DateFmt({locale: "mk-MK", length: "medium", type: "time"});
         test.expect(2);
+        var fmt = new DateFmt({locale: "mk-MK", length: "medium", type: "time"});
         test.ok(fmt !== null);
         
         var date = new GregorianDate({
@@ -160,8 +160,8 @@ module.exports.testdatefmt_mk_MK = {
     },
     
     testDateFmtSimpleTimeLong_mk_MK: function(test) {
-        var fmt = new DateFmt({locale: "mk-MK", timelength: "long", type: "time"});
         test.expect(2);
+        var fmt = new DateFmt({locale: "mk-MK", timelength: "long", type: "time"});
         test.ok(fmt !== null);
         
         var date = new GregorianDate({
@@ -179,8 +179,8 @@ module.exports.testdatefmt_mk_MK = {
     },
     
     testDateFmtSimpleTimeFull_mk_MK: function(test) {
-        var fmt = new DateFmt({locale: "mk-MK", length: "full", type: "time"});
         test.expect(2);
+        var fmt = new DateFmt({locale: "mk-MK", length: "full", type: "time"});
         test.ok(fmt !== null);
         
         var date = new GregorianDate({
@@ -198,8 +198,8 @@ module.exports.testdatefmt_mk_MK = {
     },
     
     testDateFmtDateTimeSimpleShort_mk_MK: function(test) {
-        var fmt = new DateFmt({locale: "mk-MK", length: "short", type: "datetime"});
         test.expect(2);
+        var fmt = new DateFmt({locale: "mk-MK", length: "short", type: "datetime"});
         test.ok(fmt !== null);
         
         var date = new GregorianDate({
@@ -217,8 +217,8 @@ module.exports.testdatefmt_mk_MK = {
     },
     
     testDateFmtDateTimeSimpleMedium_mk_MK: function(test) {
-        var fmt = new DateFmt({locale: "mk-MK", length: "medium", type: "datetime"});
         test.expect(2);
+        var fmt = new DateFmt({locale: "mk-MK", length: "medium", type: "datetime"});
         test.ok(fmt !== null);
         
         var date = new GregorianDate({
@@ -236,8 +236,8 @@ module.exports.testdatefmt_mk_MK = {
     },
     
     testDateFmtDateTimeSimpleLong_mk_MK: function(test) {
-        var fmt = new DateFmt({locale: "mk-MK", length: "long", type: "datetime"});
         test.expect(2);
+        var fmt = new DateFmt({locale: "mk-MK", length: "long", type: "datetime"});
         test.ok(fmt !== null);
         
         var date = new GregorianDate({
@@ -255,8 +255,8 @@ module.exports.testdatefmt_mk_MK = {
     },
     
     testDateFmtDateTimeSimpleFull_mk_MK: function(test) {
-        var fmt = new DateFmt({locale: "mk-MK", length: "full", type: "datetime"});
         test.expect(2);
+        var fmt = new DateFmt({locale: "mk-MK", length: "full", type: "datetime"});
         test.ok(fmt !== null);
         
         var date = new GregorianDate({
@@ -275,8 +275,8 @@ module.exports.testdatefmt_mk_MK = {
     
     
     testDateFmtTemplateCalendar_mk_MK: function(test) {
-        var fmt = new DateFmt({locale: "mk-MK", calendar: "julian", template: "yyyy-MM-dd"});
         test.expect(2);
+        var fmt = new DateFmt({locale: "mk-MK", calendar: "julian", template: "yyyy-MM-dd"});
         test.ok(fmt !== null);
         
         var date = new JulianDate({
@@ -295,8 +295,8 @@ module.exports.testdatefmt_mk_MK = {
     
     
     testDateFmtTemplateClock12SwitchHH_mk_MK: function(test) {
-        var fmt = new DateFmt({locale: "mk-MK", clock: "12", template: "HH:mm"});
         test.expect(2);
+        var fmt = new DateFmt({locale: "mk-MK", clock: "12", template: "HH:mm"});
         test.ok(fmt !== null);
         
         var date = new GregorianDate({
@@ -314,8 +314,8 @@ module.exports.testdatefmt_mk_MK = {
     },
     
     testDateFmtTemplateClock12Switchkk_mk_MK: function(test) {
-        var fmt = new DateFmt({locale: "mk-MK", clock: "12", template: "kk:mm"});
         test.expect(2);
+        var fmt = new DateFmt({locale: "mk-MK", clock: "12", template: "kk:mm"});
         test.ok(fmt !== null);
         
         var date = new GregorianDate({
@@ -333,8 +333,8 @@ module.exports.testdatefmt_mk_MK = {
     },
     
     testDateFmtTemplateClock24Switchhh_mk_MK: function(test) {
-        var fmt = new DateFmt({locale: "mk-MK", clock: "24", template: "hh:mm"});
         test.expect(2);
+        var fmt = new DateFmt({locale: "mk-MK", clock: "24", template: "hh:mm"});
         test.ok(fmt !== null);
         
         var date = new GregorianDate({
@@ -352,8 +352,8 @@ module.exports.testdatefmt_mk_MK = {
     },
     
     testDateFmtTemplateClock24SwitchKK_mk_MK: function(test) {
-        var fmt = new DateFmt({locale: "mk-MK", clock: "24", template: "KK:mm"});
         test.expect(2);
+        var fmt = new DateFmt({locale: "mk-MK", clock: "24", template: "KK:mm"});
         test.ok(fmt !== null);
         
         var date = new GregorianDate({
@@ -371,8 +371,8 @@ module.exports.testdatefmt_mk_MK = {
     },
     
     testDateFmtTemplateNoClockDoNotFollowLocaleDefault12hh_mk_MK: function(test) {
-        var fmt = new DateFmt({locale: "mk-MK", template: "hh:mm"});
         test.expect(2);
+        var fmt = new DateFmt({locale: "mk-MK", template: "hh:mm"});
         test.ok(fmt !== null);
         
         var date = new GregorianDate({
@@ -390,8 +390,8 @@ module.exports.testdatefmt_mk_MK = {
     },
     
     testDateFmtTemplateNoClockDoNotFollowLocaleDefault12KK_mk_MK: function(test) {
-        var fmt = new DateFmt({locale: "mk-MK", template: "KK:mm"});
         test.expect(2);
+        var fmt = new DateFmt({locale: "mk-MK", template: "KK:mm"});
         test.ok(fmt !== null);
         
         var date = new GregorianDate({
@@ -409,8 +409,8 @@ module.exports.testdatefmt_mk_MK = {
     },
     
     testDateFmtTemplateNoClockDoNotFollowLocaleDefault24HH_mk_MK: function(test) {
-        var fmt = new DateFmt({locale: "mk-MK", template: "HH:mm"});
         test.expect(2);
+        var fmt = new DateFmt({locale: "mk-MK", template: "HH:mm"});
         test.ok(fmt !== null);
         
         var date = new GregorianDate({
@@ -428,8 +428,8 @@ module.exports.testdatefmt_mk_MK = {
     },
     
     testDateFmtTemplateNoClockDoNotFollowLocaleDefault24kk_mk_MK: function(test) {
-        var fmt = new DateFmt({locale: "mk-MK", template: "kk:mm"});
         test.expect(2);
+        var fmt = new DateFmt({locale: "mk-MK", template: "kk:mm"});
         test.ok(fmt !== null);
         
         var date = new GregorianDate({
@@ -451,8 +451,8 @@ module.exports.testdatefmt_mk_MK = {
     
     
     testDateFmtShortDateComponentsY_mk_MK: function(test) {
-        var fmt = new DateFmt({locale: "mk-MK", date: "y"});
         test.expect(2);
+        var fmt = new DateFmt({locale: "mk-MK", date: "y"});
         test.ok(fmt !== null);
         
         var date = new GregorianDate({
@@ -470,8 +470,8 @@ module.exports.testdatefmt_mk_MK = {
     },
     
     testDateFmtShortDateComponentsM_mk_MK: function(test) {
-        var fmt = new DateFmt({locale: "mk-MK", date: "m"});
         test.expect(2);
+        var fmt = new DateFmt({locale: "mk-MK", date: "m"});
         test.ok(fmt !== null);
         
         var date = new GregorianDate({
@@ -489,8 +489,8 @@ module.exports.testdatefmt_mk_MK = {
     },
     
     testDateFmtShortDateComponentsN_mk_MK: function(test) {
-        var fmt = new DateFmt({locale: "mk-MK", date: "n"});
         test.expect(2);
+        var fmt = new DateFmt({locale: "mk-MK", date: "n"});
         test.ok(fmt !== null);
         
         var date = new GregorianDate({
@@ -508,8 +508,8 @@ module.exports.testdatefmt_mk_MK = {
     },
     
     testDateFmtShortDateComponentsD_mk_MK: function(test) {
-        var fmt = new DateFmt({locale: "mk-MK", date: "d"});
         test.expect(2);
+        var fmt = new DateFmt({locale: "mk-MK", date: "d"});
         test.ok(fmt !== null);
         
         var date = new GregorianDate({
@@ -527,8 +527,8 @@ module.exports.testdatefmt_mk_MK = {
     },
     
     testDateFmtShortDateComponentsDM_mk_MK: function(test) {
-        var fmt = new DateFmt({locale: "mk-MK", date: "dm"});
         test.expect(2);
+        var fmt = new DateFmt({locale: "mk-MK", date: "dm"});
         test.ok(fmt !== null);
         
         var date = new GregorianDate({
@@ -546,8 +546,8 @@ module.exports.testdatefmt_mk_MK = {
     },
     
     testDateFmtShortDateComponentsMY_mk_MK: function(test) {
-        var fmt = new DateFmt({locale: "mk-MK", date: "my"});
         test.expect(2);
+        var fmt = new DateFmt({locale: "mk-MK", date: "my"});
         test.ok(fmt !== null);
         
         var date = new GregorianDate({
@@ -565,8 +565,8 @@ module.exports.testdatefmt_mk_MK = {
     },
     
     testDateFmtShortDateComponentsDMY_mk_MK: function(test) {
-        var fmt = new DateFmt({locale: "mk-MK", date: "dmy"});
         test.expect(2);
+        var fmt = new DateFmt({locale: "mk-MK", date: "dmy"});
         test.ok(fmt !== null);
         
         var date = new GregorianDate({
@@ -584,8 +584,8 @@ module.exports.testdatefmt_mk_MK = {
     },
     
     testDateFmtShortDateComponentsWDM_mk_MK: function(test) {
-        var fmt = new DateFmt({locale: "mk-MK", date: "wdm"});
         test.expect(2);
+        var fmt = new DateFmt({locale: "mk-MK", date: "wdm"});
         test.ok(fmt !== null);
         
         var date = new GregorianDate({
@@ -603,8 +603,8 @@ module.exports.testdatefmt_mk_MK = {
     },
     
     testDateFmtShortDateComponentsWDMY_mk_MK: function(test) {
-        var fmt = new DateFmt({locale: "mk-MK", date: "wdmy"});
         test.expect(2);
+        var fmt = new DateFmt({locale: "mk-MK", date: "wdmy"});
         test.ok(fmt !== null);
         
         var date = new GregorianDate({
@@ -623,8 +623,8 @@ module.exports.testdatefmt_mk_MK = {
     
     
     testDateFmtFullDateComponentsY_mk_MK: function(test) {
-        var fmt = new DateFmt({locale: "mk-MK", length: "full", date: "y"});
         test.expect(2);
+        var fmt = new DateFmt({locale: "mk-MK", length: "full", date: "y"});
         test.ok(fmt !== null);
         
         var date = new GregorianDate({
@@ -642,8 +642,8 @@ module.exports.testdatefmt_mk_MK = {
     },
     
     testDateFmtFullDateComponentsM_mk_MK: function(test) {
-        var fmt = new DateFmt({locale: "mk-MK", length: "full", date: "m"});
         test.expect(2);
+        var fmt = new DateFmt({locale: "mk-MK", length: "full", date: "m"});
         test.ok(fmt !== null);
         
         var date = new GregorianDate({
@@ -661,8 +661,8 @@ module.exports.testdatefmt_mk_MK = {
     },
     
     testDateFmtFullDateComponentsD_mk_MK: function(test) {
-        var fmt = new DateFmt({locale: "mk-MK", length: "full", date: "d"});
         test.expect(2);
+        var fmt = new DateFmt({locale: "mk-MK", length: "full", date: "d"});
         test.ok(fmt !== null);
         
         var date = new GregorianDate({
@@ -680,8 +680,8 @@ module.exports.testdatefmt_mk_MK = {
     },
     
     testDateFmtFullDateComponentsDM_mk_MK: function(test) {
-        var fmt = new DateFmt({locale: "mk-MK", length: "full", date: "dm"});
         test.expect(2);
+        var fmt = new DateFmt({locale: "mk-MK", length: "full", date: "dm"});
         test.ok(fmt !== null);
         
         var date = new GregorianDate({
@@ -699,8 +699,8 @@ module.exports.testdatefmt_mk_MK = {
     },
     
     testDateFmtFullDateComponentsMY_mk_MK: function(test) {
-        var fmt = new DateFmt({locale: "mk-MK", length: "full", date: "my"});
         test.expect(2);
+        var fmt = new DateFmt({locale: "mk-MK", length: "full", date: "my"});
         test.ok(fmt !== null);
         
         var date = new GregorianDate({
@@ -718,8 +718,8 @@ module.exports.testdatefmt_mk_MK = {
     },
     
     testDateFmtFullDateComponentsDMY_mk_MK: function(test) {
-        var fmt = new DateFmt({locale: "mk-MK", length: "full", date: "dmy"});
         test.expect(2);
+        var fmt = new DateFmt({locale: "mk-MK", length: "full", date: "dmy"});
         test.ok(fmt !== null);
         
         var date = new GregorianDate({
@@ -737,8 +737,8 @@ module.exports.testdatefmt_mk_MK = {
     },
     
     testDateFmtFullDateComponentsWDM_mk_MK: function(test) {
-        var fmt = new DateFmt({locale: "mk-MK", length: "full", date: "wdm"});
         test.expect(2);
+        var fmt = new DateFmt({locale: "mk-MK", length: "full", date: "wdm"});
         test.ok(fmt !== null);
         
         var date = new GregorianDate({
@@ -756,8 +756,8 @@ module.exports.testdatefmt_mk_MK = {
     },
     
     testDateFmtFullDateComponentsWDMY_mk_MK: function(test) {
-        var fmt = new DateFmt({locale: "mk-MK", length: "full", date: "wdmy"});
         test.expect(2);
+        var fmt = new DateFmt({locale: "mk-MK", length: "full", date: "wdmy"});
         test.ok(fmt !== null);
         
         var date = new GregorianDate({
@@ -776,8 +776,8 @@ module.exports.testdatefmt_mk_MK = {
     
     
     testDateFmtShortTimeComponentsS_mk_MK: function(test) {
-        var fmt = new DateFmt({locale: "mk-MK", type: "time", time: "s"});
         test.expect(2);
+        var fmt = new DateFmt({locale: "mk-MK", type: "time", time: "s"});
         test.ok(fmt !== null);
         
         var date = new GregorianDate({
@@ -795,8 +795,8 @@ module.exports.testdatefmt_mk_MK = {
     },
     
     testDateFmtShortTimeComponentsM_mk_MK: function(test) {
-        var fmt = new DateFmt({locale: "mk-MK", type: "time", time: "m"});
         test.expect(2);
+        var fmt = new DateFmt({locale: "mk-MK", type: "time", time: "m"});
         test.ok(fmt !== null);
         
         var date = new GregorianDate({
@@ -814,8 +814,8 @@ module.exports.testdatefmt_mk_MK = {
     },
     
     testDateFmtShortTimeComponentsH_mk_MK: function(test) {
-        var fmt = new DateFmt({locale: "mk-MK", type: "time", time: "h"});
         test.expect(2);
+        var fmt = new DateFmt({locale: "mk-MK", type: "time", time: "h"});
         test.ok(fmt !== null);
         
         var date = new GregorianDate({
@@ -834,8 +834,8 @@ module.exports.testdatefmt_mk_MK = {
     
     
     testDateFmtShortTimeComponentsHM_mk_MK: function(test) {
-        var fmt = new DateFmt({locale: "mk-MK", type: "time", time: "hm"});
         test.expect(2);
+        var fmt = new DateFmt({locale: "mk-MK", type: "time", time: "hm"});
         test.ok(fmt !== null);
         
         var date = new GregorianDate({
@@ -853,8 +853,8 @@ module.exports.testdatefmt_mk_MK = {
     },
     
     testDateFmtShortTimeComponentsHMS_mk_MK: function(test) {
-        var fmt = new DateFmt({locale: "mk-MK", type: "time", time: "hms"});
         test.expect(2);
+        var fmt = new DateFmt({locale: "mk-MK", type: "time", time: "hms"});
         test.ok(fmt !== null);
         
         var date = new GregorianDate({
@@ -872,8 +872,8 @@ module.exports.testdatefmt_mk_MK = {
     },
     
     testDateFmtShortTimeComponentsHMA_mk_MK: function(test) {
-        var fmt = new DateFmt({locale: "mk-MK", type: "time", time: "hma"});
         test.expect(2);
+        var fmt = new DateFmt({locale: "mk-MK", type: "time", time: "hma"});
         test.ok(fmt !== null);
         
         var date = new GregorianDate({
@@ -891,12 +891,12 @@ module.exports.testdatefmt_mk_MK = {
     },
     
     testDateFmtShortTimeComponentsHMZ_mk_MK: function(test) {
+        test.expect(2);
         var fmt = new DateFmt({
             locale: "mk-MK", 
             type: "time", 
             time: "hmz"
         });
-        test.expect(2);
         test.ok(fmt !== null);
         
         var date = new GregorianDate({
@@ -914,12 +914,12 @@ module.exports.testdatefmt_mk_MK = {
     },
     
     testDateFmtShortTimeComponentsHMAZ_mk_MK: function(test) {
+        test.expect(2);
         var fmt = new DateFmt({
             locale: "mk-MK", 
             type: "time", 
             time: "ahmsz"
         });
-        test.expect(2);
         test.ok(fmt !== null);
         
         var date = new GregorianDate({
@@ -937,8 +937,8 @@ module.exports.testdatefmt_mk_MK = {
     },
     
     testDateFmtShortTimeComponentsHMSA_mk_MK: function(test) {
-        var fmt = new DateFmt({locale: "mk-MK", type: "time", time: "hmsa"});
         test.expect(2);
+        var fmt = new DateFmt({locale: "mk-MK", type: "time", time: "hmsa"});
         test.ok(fmt !== null);
         
         var date = new GregorianDate({
@@ -956,12 +956,12 @@ module.exports.testdatefmt_mk_MK = {
     },
     
     testDateFmtShortTimeComponentsHMSZ_mk_MK: function(test) {
+        test.expect(2);
         var fmt = new DateFmt({
             locale: "mk-MK", 
             type: "time", 
             time: "hmsz"
         });
-        test.expect(2);
         test.ok(fmt !== null);
         
         var date = new GregorianDate({
@@ -979,12 +979,12 @@ module.exports.testdatefmt_mk_MK = {
     },
     
     testDateFmtShortTimeComponentsHMSAZ_mk_MK: function(test) {
+        test.expect(2);
         var fmt = new DateFmt({
             locale: "mk-MK", 
             type: "time", 
             time: "hmsaz"
         });
-        test.expect(2);
         test.ok(fmt !== null);
         
         var date = new GregorianDate({
@@ -1003,8 +1003,8 @@ module.exports.testdatefmt_mk_MK = {
     
     
     testDateFmtFullTimeComponentsS_mk_MK: function(test) {
-        var fmt = new DateFmt({locale: "mk-MK", type: "time", length: "full", time: "s"});
         test.expect(2);
+        var fmt = new DateFmt({locale: "mk-MK", type: "time", length: "full", time: "s"});
         test.ok(fmt !== null);
         
         var date = new GregorianDate({
@@ -1022,8 +1022,8 @@ module.exports.testdatefmt_mk_MK = {
     },
     
     testDateFmtFullTimeComponentsM_mk_MK: function(test) {
-        var fmt = new DateFmt({locale: "mk-MK", type: "time", length: "full", time: "m"});
         test.expect(2);
+        var fmt = new DateFmt({locale: "mk-MK", type: "time", length: "full", time: "m"});
         test.ok(fmt !== null);
         
         var date = new GregorianDate({
@@ -1041,8 +1041,8 @@ module.exports.testdatefmt_mk_MK = {
     },
     
     testDateFmtFullTimeComponentsH_mk_MK: function(test) {
-        var fmt = new DateFmt({locale: "mk-MK", type: "time", length: "full", time: "h"});
         test.expect(2);
+        var fmt = new DateFmt({locale: "mk-MK", type: "time", length: "full", time: "h"});
         test.ok(fmt !== null);
         
         var date = new GregorianDate({
@@ -1061,8 +1061,8 @@ module.exports.testdatefmt_mk_MK = {
     
     
     testDateFmtFullTimeComponentsHM_mk_MK: function(test) {
-        var fmt = new DateFmt({locale: "mk-MK", type: "time", length: "full", time: "hm"});
         test.expect(2);
+        var fmt = new DateFmt({locale: "mk-MK", type: "time", length: "full", time: "hm"});
         test.ok(fmt !== null);
         
         var date = new GregorianDate({
@@ -1080,8 +1080,8 @@ module.exports.testdatefmt_mk_MK = {
     },
     
     testDateFmtFullTimeComponentsHMS_mk_MK: function(test) {
-        var fmt = new DateFmt({locale: "mk-MK", type: "time", length: "full", time: "hms"});
         test.expect(2);
+        var fmt = new DateFmt({locale: "mk-MK", type: "time", length: "full", time: "hms"});
         test.ok(fmt !== null);
         
         var date = new GregorianDate({
@@ -1099,8 +1099,8 @@ module.exports.testdatefmt_mk_MK = {
     },
     
     testDateFmtFullTimeComponentsHMA_mk_MK: function(test) {
-        var fmt = new DateFmt({locale: "mk-MK", type: "time", length: "full", time: "hma"});
         test.expect(2);
+        var fmt = new DateFmt({locale: "mk-MK", type: "time", length: "full", time: "hma"});
         test.ok(fmt !== null);
         
         var date = new GregorianDate({
@@ -1118,13 +1118,13 @@ module.exports.testdatefmt_mk_MK = {
     },
     
     testDateFmtFullTimeComponentsHMZ_mk_MK: function(test) {
+        test.expect(2);
         var fmt = new DateFmt({
             locale: "mk-MK", 
             type: "time", 
             length: "full", 
             time: "hmz"
         });
-        test.expect(2);
         test.ok(fmt !== null);
         
         var date = new GregorianDate({
@@ -1143,8 +1143,8 @@ module.exports.testdatefmt_mk_MK = {
     
     
     testDateFmtFullTimeComponentsHMSA_mk_MK: function(test) {
-        var fmt = new DateFmt({locale: "mk-MK", type: "time", length: "full", time: "hmsa"});
         test.expect(2);
+        var fmt = new DateFmt({locale: "mk-MK", type: "time", length: "full", time: "hmsa"});
         test.ok(fmt !== null);
         
         var date = new GregorianDate({
@@ -1162,13 +1162,13 @@ module.exports.testdatefmt_mk_MK = {
     },
     
     testDateFmtFullTimeComponentsHMSZ_mk_MK: function(test) {
+        test.expect(2);
         var fmt = new DateFmt({
             locale: "mk-MK", 
             type: "time", 
             length: "full", 
             time: "hmsz"
         });
-        test.expect(2);
         test.ok(fmt !== null);
         
         var date = new GregorianDate({
@@ -1186,13 +1186,13 @@ module.exports.testdatefmt_mk_MK = {
     },
     
     testDateFmtFullTimeComponentsHMSAZ_mk_MK: function(test) {
+        test.expect(2);
         var fmt = new DateFmt({
             locale: "mk-MK", 
             type: "time", 
             length: "full", 
             time: "hmsaz"
         });
-        test.expect(2);
         test.ok(fmt !== null);
         
         var date = new GregorianDate({
@@ -1210,13 +1210,13 @@ module.exports.testdatefmt_mk_MK = {
     },
     
     testDateFmtWithTimeZoneAndNoDST_mk_MK: function(test) {
+        test.expect(2);
         var fmt = new DateFmt({
             locale: "mk-MK", 
             type: "time", 
             length: "full", 
             time: "hmsz"
         });
-        test.expect(2);
         test.ok(fmt !== null);
         
         var date = new GregorianDate({
@@ -1234,8 +1234,8 @@ module.exports.testdatefmt_mk_MK = {
     },
     
     testDateFmtFormatRelativeWithinMinuteAfter_mk_MK: function(test) {
-        var fmt = new DateFmt({locale: "mk-MK", length: "full"});
         test.expect(2);
+        var fmt = new DateFmt({locale: "mk-MK", length: "full"});
         test.ok(fmt !== null);
         
         var reference = new GregorianDate({
@@ -1262,8 +1262,8 @@ module.exports.testdatefmt_mk_MK = {
         test.done();
     },
     testDateFmtFormatRelativeWithinMinuteBefore_mk_MK: function(test) {
-        var fmt = new DateFmt({locale: "mk-MK", length: "full"});
         test.expect(2);
+        var fmt = new DateFmt({locale: "mk-MK", length: "full"});
         test.ok(fmt !== null);
         
         var reference = new GregorianDate({
@@ -1290,8 +1290,8 @@ module.exports.testdatefmt_mk_MK = {
         test.done();
     },
     testDateFmtFormatRelativeWithinHourAfter_mk_MK: function(test) {
-        var fmt = new DateFmt({locale: "mk-MK", length: "full"});
         test.expect(2);
+        var fmt = new DateFmt({locale: "mk-MK", length: "full"});
         test.ok(fmt !== null);
         
         var reference = new GregorianDate({
@@ -1318,8 +1318,8 @@ module.exports.testdatefmt_mk_MK = {
         test.done();
     },
     testDateFmtFormatRelativeWithinHourBefore_mk_MK: function(test) {
-        var fmt = new DateFmt({locale: "mk-MK", length: "full"});
         test.expect(2);
+        var fmt = new DateFmt({locale: "mk-MK", length: "full"});
         test.ok(fmt !== null);
         
         var reference = new GregorianDate({
@@ -1346,8 +1346,8 @@ module.exports.testdatefmt_mk_MK = {
         test.done();
     },
     testDateFmtFormatRelativeWithinDayAfter_mk_MK: function(test) {
-        var fmt = new DateFmt({locale: "mk-MK", length: "full"});
         test.expect(2);
+        var fmt = new DateFmt({locale: "mk-MK", length: "full"});
         test.ok(fmt !== null);
         
         var reference = new GregorianDate({
@@ -1374,8 +1374,8 @@ module.exports.testdatefmt_mk_MK = {
         test.done();
     },
     testDateFmtFormatRelativeWithinDayBefore_mk_MK: function(test) {
-        var fmt = new DateFmt({locale: "mk-MK", length: "full"});
         test.expect(2);
+        var fmt = new DateFmt({locale: "mk-MK", length: "full"});
         test.ok(fmt !== null);
         
         var reference = new GregorianDate({
@@ -1403,8 +1403,8 @@ module.exports.testdatefmt_mk_MK = {
     },
     
     testDateFmtFormatRelativeWithinFortnightAfter_mk_MK: function(test) {
-        var fmt = new DateFmt({locale: "mk-MK", length: "full"});
         test.expect(2);
+        var fmt = new DateFmt({locale: "mk-MK", length: "full"});
         test.ok(fmt !== null);
         
         var reference = new GregorianDate({
@@ -1431,8 +1431,8 @@ module.exports.testdatefmt_mk_MK = {
         test.done();
     },
     testDateFmtFormatRelativeWithinFortnightBefore_mk_MK: function(test) {
-        var fmt = new DateFmt({locale: "mk-MK", length: "full"});
         test.expect(2);
+        var fmt = new DateFmt({locale: "mk-MK", length: "full"});
         test.ok(fmt !== null);
         
         var reference = new GregorianDate({
@@ -1460,8 +1460,8 @@ module.exports.testdatefmt_mk_MK = {
     },
     
     testDateFmtFormatRelativeWithinQuarterAfter_mk_MK: function(test) {
-        var fmt = new DateFmt({locale: "mk-MK", length: "full"});
         test.expect(2);
+        var fmt = new DateFmt({locale: "mk-MK", length: "full"});
         test.ok(fmt !== null);
         
         var reference = new GregorianDate({
@@ -1488,8 +1488,8 @@ module.exports.testdatefmt_mk_MK = {
         test.done();
     },
     testDateFmtFormatRelativeWithinQuarterBefore_mk_MK: function(test) {
-        var fmt = new DateFmt({locale: "mk-MK", length: "full"});
         test.expect(2);
+        var fmt = new DateFmt({locale: "mk-MK", length: "full"});
         test.ok(fmt !== null);
         
         var reference = new GregorianDate({
@@ -1517,8 +1517,8 @@ module.exports.testdatefmt_mk_MK = {
     },
     
     testDateFmtFormatRelativeWithinTwoYearsAfter_mk_MK: function(test) {
-        var fmt = new DateFmt({locale: "mk-MK", length: "full"});
         test.expect(2);
+        var fmt = new DateFmt({locale: "mk-MK", length: "full"});
         test.ok(fmt !== null);
         
         var reference = new GregorianDate({
@@ -1545,8 +1545,8 @@ module.exports.testdatefmt_mk_MK = {
         test.done();
     },
     testDateFmtFormatRelativeWithinTwoYearsBefore_mk_MK: function(test) {
-        var fmt = new DateFmt({locale: "mk-MK", length: "full"});
         test.expect(2);
+        var fmt = new DateFmt({locale: "mk-MK", length: "full"});
         test.ok(fmt !== null);
         
         var reference = new GregorianDate({
@@ -1574,8 +1574,8 @@ module.exports.testdatefmt_mk_MK = {
     },
     
     testDateFmtFormatRelativeYearsAfter_mk_MK: function(test) {
-        var fmt = new DateFmt({locale: "mk-MK", length: "full"});
         test.expect(2);
+        var fmt = new DateFmt({locale: "mk-MK", length: "full"});
         test.ok(fmt !== null);
         
         var reference = new GregorianDate({
@@ -1602,8 +1602,8 @@ module.exports.testdatefmt_mk_MK = {
         test.done();
     },
     testDateFmtFormatRelativeYearsBefore_mk_MK: function(test) {
-        var fmt = new DateFmt({locale: "mk-MK", length: "full"});
         test.expect(2);
+        var fmt = new DateFmt({locale: "mk-MK", length: "full"});
         test.ok(fmt !== null);
         
         var reference = new GregorianDate({

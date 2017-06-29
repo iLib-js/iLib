@@ -32,10 +32,10 @@ module.exports.testcm_UTF_8 = {
     },
 
     testCharmapUTF8LoadMap: function(test) {
+        test.expect(2);
         var cm = CharmapFactory({
             name: "UTF-8"
         });
-        test.expect(2);
         test.ok(typeof(cm) !== "undefined");
         test.equal(cm.getName(), "UTF-8");
         test.done();
@@ -57,10 +57,10 @@ module.exports.testcm_UTF_8 = {
     },
     
     testCharmapUTF8MapToUnicodeUint8ArrayExtended2: function(test) {
+        test.expect(2);
         var cm = CharmapFactory({
             name: "UTF-8"
         });
-        test.expect(2);
         test.ok(typeof(cm) !== "undefined");
         var input = new Uint8Array([
             0xC3, 0x80,
@@ -77,10 +77,10 @@ module.exports.testcm_UTF_8 = {
     },
     
     testCharmapUTF8MapToUnicodeUint8ArrayExtended3: function(test) {
+        test.expect(2);
         var cm = CharmapFactory({
             name: "UTF-8"
         });
-        test.expect(2);
         test.ok(typeof(cm) !== "undefined");
         var input = new Uint8Array([
             0xe4, 0xb8,    0x80,
@@ -96,10 +96,10 @@ module.exports.testcm_UTF_8 = {
     },
     
     testCharmapUTF8MapToUnicodeUint8ArrayExtended4: function(test) {
+        test.expect(2);
         var cm = CharmapFactory({
             name: "UTF-8"
         });
-        test.expect(2);
         test.ok(typeof(cm) !== "undefined");
         var input = new Uint8Array([
             0xf0, 0xa0, 0x94, 0x89,
@@ -128,10 +128,10 @@ module.exports.testcm_UTF_8 = {
     },
     
     testCharmapUTF8MapToUnicodeNumberArrayExtended2: function(test) {
+        test.expect(2);
         var cm = CharmapFactory({
             name: "UTF-8"
         });
-        test.expect(2);
         test.ok(typeof(cm) !== "undefined");
         var input = [
             0xC3, 0x80,
@@ -148,10 +148,10 @@ module.exports.testcm_UTF_8 = {
     },
     
     testCharmapUTF8MapToUnicodeNumberArrayExtended3: function(test) {
+        test.expect(2);
         var cm = CharmapFactory({
             name: "UTF-8"
         });
-        test.expect(2);
         test.ok(typeof(cm) !== "undefined");
         var input = [
             0xe4, 0xb8,    0x80,
@@ -167,10 +167,10 @@ module.exports.testcm_UTF_8 = {
     },
     
     testCharmapUTF8MapToUnicodeNumberArrayExtended4: function(test) {
+        test.expect(2);
         var cm = CharmapFactory({
             name: "UTF-8"
         });
-        test.expect(2);
         test.ok(typeof(cm) !== "undefined");
         var input = [
             0xf0, 0xa0, 0x94, 0x89,

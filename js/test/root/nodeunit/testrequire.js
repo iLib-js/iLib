@@ -21,7 +21,7 @@
 // !dependencies: false
 
 if (typeof(ilib) === "undefined") {
-    var ilib = require("../.././../lib/ilib.js");
+    var ilib = require("../.././../lib/ilib-node.js");
 }
 
 // make sure it thinks the current module's dir is the same as in the 
@@ -54,7 +54,7 @@ module.exports.testrequire = {
         if (!ilib.isDynCode()) {
             // can't test the require function unless you're 
             // in dynamic code loading mode
-        test.done();
+            test.done();
             return;
         }
         var mod = require("./root/test/testfiles/datefmt2.js");
@@ -69,7 +69,7 @@ module.exports.testrequire = {
         if (!ilib.isDynCode()) {
             // can't test the require function unless you're 
             // in dynamic code loading mode
-        test.done();
+            test.done();
             return;
         }
         test.expect(4);
@@ -95,7 +95,7 @@ module.exports.testrequire = {
         if (!ilib.isDynCode()) {
             // can't test the require function unless you're 
             // in dynamic code loading mode
-        test.done();
+            test.done();
             return;
         }
         var Locale2 = require("./root/test/testfiles/locale2.js");
@@ -114,7 +114,7 @@ module.exports.testrequire = {
         if (!ilib.isDynCode()) {
             // can't test the require function unless you're 
             // in dynamic code loading mode
-        test.done();
+            test.done();
             return;
         }
         

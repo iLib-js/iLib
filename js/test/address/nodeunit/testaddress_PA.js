@@ -34,9 +34,9 @@ module.exports.testaddress_PA = {
     },
 
     testParseAddressPANormal: function(test) {
+        test.expect(7);
         var parsedAddress = new Address("Calle 52 y Ricardo Arias.\nArea Bancaria\nPanama City\nPanama", {locale: 'es-PA'});
         
-        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Calle 52 y Ricardo Arias.");
         test.equal(parsedAddress.locality, "Area Bancaria");
@@ -48,9 +48,9 @@ module.exports.testaddress_PA = {
     },
     
     testParseAddressPANoZip: function(test) {
+        test.expect(7);
         var parsedAddress = new Address("Calle 52 y Ricardo Arias.\nArea Bancaria\nPanama City\nPanama", {locale: 'es-PA'});
         
-        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Calle 52 y Ricardo Arias.");
         test.equal(parsedAddress.locality, "Area Bancaria");
@@ -62,9 +62,9 @@ module.exports.testaddress_PA = {
     },
     
     testParseAddressPANoCountry: function(test) {
+        test.expect(7);
         var parsedAddress = new Address("Calle 52 y Ricardo Arias.\nArea Bancaria\nPanama City", {locale: 'es-PA'});
         
-        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Calle 52 y Ricardo Arias.");
         test.equal(parsedAddress.locality, "Area Bancaria");
@@ -76,9 +76,9 @@ module.exports.testaddress_PA = {
     },
     
     testParseAddressPAManyLines: function(test) {
+        test.expect(7);
         var parsedAddress = new Address("Calle 52 y\nRicardo Arias.\nArea Bancaria\nPanama City\nPanama", {locale: 'es-PA'});
         
-        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
           test.equal(parsedAddress.streetAddress, "Calle 52 y, Ricardo Arias.");
         test.equal(parsedAddress.locality, "Area Bancaria");
@@ -90,9 +90,9 @@ module.exports.testaddress_PA = {
     },
     
     testParseAddressPAOneLine: function(test) {
+        test.expect(7);
         var parsedAddress = new Address("Calle 52 y , Ricardo Arias. , Area Bancaria , Panama City , Panama", {locale: 'es-PA'});
         
-        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
           test.equal(parsedAddress.streetAddress, "Calle 52 y, Ricardo Arias.");
         test.equal(parsedAddress.locality, "Area Bancaria");
@@ -104,9 +104,9 @@ module.exports.testaddress_PA = {
     },
     
     testParseAddressPASuperfluousWhitespace: function(test) {
+        test.expect(7);
         var parsedAddress = new Address("Calle 52 y\n\n\t\r\t\t\rRicardo Arias.\r\r\r\t\t\r\n\n\nArea Bancaria\t\r\r\rPanama City\t\t\rPanama", {locale: 'es-PA'});
         
-        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
           test.equal(parsedAddress.streetAddress, "Calle 52 y, Ricardo Arias.");
         test.equal(parsedAddress.locality, "Area Bancaria");
@@ -118,9 +118,9 @@ module.exports.testaddress_PA = {
     },
     
     testParseAddressPAFromUS: function(test) {
+        test.expect(7);
         var parsedAddress = new Address("Calle 52 y Ricardo Arias.\nArea Bancaria\nPanama City\nPanama", {locale: 'es-PA'});
         
-        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Calle 52 y Ricardo Arias.");
         test.equal(parsedAddress.locality, "Area Bancaria");
@@ -132,6 +132,7 @@ module.exports.testaddress_PA = {
     },
     
     testFormatAddressPA: function(test) {
+        test.expect(1);
         var parsedAddress = new Address({
             streetAddress: "Calle 52 y Ricardo Arias.",
             locality: "Area Bancaria",
@@ -143,12 +144,12 @@ module.exports.testaddress_PA = {
         
         var expected = "Calle 52 y Ricardo Arias.\nArea Bancaria\nPanama City\nPanama";
         var formatter = new AddressFmt({locale: 'es-PA'});
-        test.expect(1);
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     },
     
     testFormatAddressPAFromUS: function(test) {
+        test.expect(1);
         var parsedAddress = new Address({
             streetAddress: "Calle 52 y Ricardo Arias.",
             locality: "Area Bancaria",
@@ -160,15 +161,14 @@ module.exports.testaddress_PA = {
         
         var expected = "Calle 52 y Ricardo Arias.\nArea Bancaria\nPanama City\nPanama";
         var formatter = new AddressFmt({locale: 'en-US'});
-        test.expect(1);
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     },
     
     testParseAddressPANormal1: function(test) {
+        test.expect(7);
         var parsedAddress = new Address("MARTÍN GUTIERREZ,Via Israel 3,0424,VOLCÁN,Chiriquí,PANAMA", {locale: 'es-PA'});
         
-        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "MARTÍN GUTIERREZ, Via Israel 3, 0424");
         test.equal(parsedAddress.locality, "VOLCÁN");
@@ -180,9 +180,9 @@ module.exports.testaddress_PA = {
     },
     
     testParseAddressPANormal2: function(test) {
+        test.expect(7);
         var parsedAddress = new Address("Parque Industrial Milla 8,Ciudad de Panamá,Panamá,PANAMA", {locale: 'es-PA'});
         
-        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Parque Industrial Milla 8");
         test.equal(parsedAddress.locality, "Ciudad de Panamá");
@@ -194,9 +194,9 @@ module.exports.testaddress_PA = {
     },
     
     testParseAddressPANormal3: function(test) {
+        test.expect(7);
         var parsedAddress = new Address("Edificio Plaza Fidanque, Piso 2,P.O Box 0816-01349,Ciudad de Panamá,Panamá,PANAMA", {locale: 'es-PA'});
         
-        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Edificio Plaza Fidanque, Piso 2, P.O Box 0816-01349");
         test.equal(parsedAddress.locality, "Ciudad de Panamá");

@@ -18,7 +18,7 @@
  */
 
 if (typeof(ilib) === "undefined") {
-    var ilib = require("../../../lib/ilib.js");
+    var ilib = require("../../../lib/ilib-node.js");
 }
 if (typeof(Collator) === "undefined") {
     var Collator = require("../../../lib/Collator.js");
@@ -34,6 +34,7 @@ module.exports.testcollation_he = {
     },
 
     testJSCollatorQuat_he: function(test) {
+        test.expect(74);
         var col = new Collator({
             locale: "he-IL",
             useNative: false,
@@ -41,7 +42,6 @@ module.exports.testcollation_he = {
             usage: "search"
         });
     
-        test.expect(74);
         test.ok(typeof(col) !== "undefined");
     
         // א ﬡ אַ אָ אּ ﭏ ב בּ בֿ ג גּ ד ﬢ דּ ה ﬣ הּ ו וֹ וּ װ ױ ז זּ ח ט טּ י יִ יּ ײ ײַ כ ﬤ ך כּ ךּ כֿ ל ﬥ לּ מ ﬦ ם מּ נ ן נּ ס סּ ע ﬠ פ ף פּ ףּ פֿ צ ץ צּ ק קּ ר ﬧ רּ ש שׂ שׁ שּ שּׂ שּׁ ת ﬨ תּ
@@ -123,6 +123,7 @@ module.exports.testcollation_he = {
     },
     
     testJSCollatorTer_he: function(test) {
+        test.expect(74);
         var col = new Collator({
             locale: "he-IL",
             useNative: false,
@@ -130,7 +131,6 @@ module.exports.testcollation_he = {
             usage: "search"
         });
     
-        test.expect(74);
         test.ok(typeof(col) !== "undefined");
     
         // א ﬡ אַ אָ אּ ﭏ ב בּ בֿ ג גּ ד ﬢ דּ ה ﬣ הּ ו וֹ וּ װ ױ ז זּ ח ט טּ י יִ יּ ײ ײַ כ ﬤ ך כּ ךּ כֿ ל ﬥ לּ מ ﬦ ם מּ נ ן נּ ס סּ ע ﬠ פ ף פּ ףּ פֿ צ ץ צּ ק קּ ר ﬧ רּ ש שׂ שׁ שּ שּׂ שּׁ ת ﬨ תּ
@@ -212,6 +212,7 @@ module.exports.testcollation_he = {
     },
     
     testJSCollatorSec_he: function(test) {
+        test.expect(74);
         var col = new Collator({
             locale: "he-IL",
             useNative: false,
@@ -219,7 +220,6 @@ module.exports.testcollation_he = {
             usage: "search"
         });
     
-        test.expect(74);
         test.ok(typeof(col) !== "undefined");
     
         // א ﬡ אַ אָ אּ ﭏ ב בּ בֿ ג גּ ד ﬢ דּ ה ﬣ הּ ו וֹ וּ װ ױ ז זּ ח ט טּ י יִ יּ ײ ײַ כ ﬤ ך כּ ךּ כֿ ל ﬥ לּ מ ﬦ ם מּ נ ן נּ ס סּ ע ﬠ פ ף פּ ףּ פֿ צ ץ צּ ק קּ ר ﬧ רּ ש שׂ שׁ שּ שּׂ שּׁ ת ﬨ תּ
@@ -301,6 +301,7 @@ module.exports.testcollation_he = {
     },
     
     testJSCollatorPri_he: function(test) {
+        test.expect(74);
         var col = new Collator({
             locale: "he-IL",
             useNative: false,
@@ -308,7 +309,6 @@ module.exports.testcollation_he = {
             usage: "search"
         });
     
-        test.expect(74);
         test.ok(typeof(col) !== "undefined");
     
         // א ﬡ אַ אָ אּ ﭏ ב בּ בֿ ג גּ ד ﬢ דּ ה ﬣ הּ ו וֹ וּ װ ױ ז זּ ח ט טּ י יִ יּ ײ ײַ כ ﬤ ך כּ ךּ כֿ ל ﬥ לּ מ ﬦ ם מּ נ ן נּ ס סּ ע ﬠ פ ף פּ ףּ פֿ צ ץ צּ ק קּ ר ﬧ רּ ש שׂ שׁ שּ שּׂ שּׁ ת ﬨ תּ
@@ -390,6 +390,7 @@ module.exports.testcollation_he = {
     },
     
     testJSCollatorQuatSort_he: function(test) {
+        test.expect(74);
         var col = new Collator({
             locale: "he-IL",
             useNative: false,
@@ -397,7 +398,6 @@ module.exports.testcollation_he = {
             usage: "sort"
         });
     
-        test.expect(74);
         test.ok(typeof(col) !== "undefined");
     
         // א ﬡ אַ אָ אּ ﭏ ב בּ בֿ ג גּ ד ﬢ דּ ה ﬣ הּ ו וֹ וּ װ ױ ז זּ ח ט טּ י יִ יּ ײ ײַ כ ﬤ ך כּ ךּ כֿ ל ﬥ לּ מ ﬦ ם מּ נ ן נּ ס סּ ע ﬠ פ ף פּ ףּ פֿ צ ץ צּ ק קּ ר ﬧ רּ ש שׂ שׁ שּ שּׂ שּׁ ת ﬨ תּ
@@ -479,6 +479,7 @@ module.exports.testcollation_he = {
     },
     
     testJSCollatorTerSort_he: function(test) {
+        test.expect(74);
         var col = new Collator({
             locale: "he-IL",
             useNative: false,
@@ -486,7 +487,6 @@ module.exports.testcollation_he = {
             usage: "sort"
         });
     
-        test.expect(74);
         test.ok(typeof(col) !== "undefined");
     
         // א ﬡ אַ אָ אּ ﭏ ב בּ בֿ ג גּ ד ﬢ דּ ה ﬣ הּ ו וֹ וּ װ ױ ז זּ ח ט טּ י יִ יּ ײ ײַ כ ﬤ ך כּ ךּ כֿ ל ﬥ לּ מ ﬦ ם מּ נ ן נּ ס סּ ע ﬠ פ ף פּ ףּ פֿ צ ץ צּ ק קּ ר ﬧ רּ ש שׂ שׁ שּ שּׂ שּׁ ת ﬨ תּ
@@ -568,6 +568,7 @@ module.exports.testcollation_he = {
     },
     
     testJSCollatorSecSort_he: function(test) {
+        test.expect(74);
         var col = new Collator({
             locale: "he-IL",
             useNative: false,
@@ -575,7 +576,6 @@ module.exports.testcollation_he = {
             usage: "sort"
         });
     
-        test.expect(74);
         test.ok(typeof(col) !== "undefined");
     
         // א ﬡ אַ אָ אּ ﭏ ב בּ בֿ ג גּ ד ﬢ דּ ה ﬣ הּ ו וֹ וּ װ ױ ז זּ ח ט טּ י יִ יּ ײ ײַ כ ﬤ ך כּ ךּ כֿ ל ﬥ לּ מ ﬦ ם מּ נ ן נּ ס סּ ע ﬠ פ ף פּ ףּ פֿ צ ץ צּ ק קּ ר ﬧ רּ ש שׂ שׁ שּ שּׂ שּׁ ת ﬨ תּ
@@ -657,6 +657,7 @@ module.exports.testcollation_he = {
     },
     
     testJSCollatorPriSort_he: function(test) {
+        test.expect(74);
         var col = new Collator({
             locale: "he-IL",
             useNative: false,
@@ -664,7 +665,6 @@ module.exports.testcollation_he = {
             usage: "sort"
         });
     
-        test.expect(74);
         test.ok(typeof(col) !== "undefined");
     
         // א ﬡ אַ אָ אּ ﭏ ב בּ בֿ ג גּ ד ﬢ דּ ה ﬣ הּ ו וֹ וּ װ ױ ז זּ ח ט טּ י יִ יּ ײ ײַ כ ﬤ ך כּ ךּ כֿ ל ﬥ לּ מ ﬦ ם מּ נ ן נּ ס סּ ע ﬠ פ ף פּ ףּ פֿ צ ץ צּ ק קּ ר ﬧ רּ ש שׂ שׁ שּ שּׂ שּׁ ת ﬨ תּ
@@ -746,13 +746,13 @@ module.exports.testcollation_he = {
     },
     
     testCollatorVariant_he: function(test) {
+        test.expect(2);
         var col = new Collator({
             locale: "he-IL",
             useNative: false,
             sensitivity: "variant",
             usage: "sort"
         });
-        test.expect(2);
         test.ok(typeof(col) !== "undefined");
     
         var input = [
@@ -768,13 +768,13 @@ module.exports.testcollation_he = {
     },
     
     testCollatorPrimary_he: function(test) {
+        test.expect(2);
         var col = new Collator({
             locale: "he-IL",
             useNative: false,
             sensitivity: "primary",
             usage: "sort"
         });
-        test.expect(2);
         test.ok(typeof(col) !== "undefined");
     
         var input = [
@@ -814,6 +814,7 @@ module.exports.testcollation_he = {
     },
     
     testJSCollatorQuatLatin_he: function(test) {
+        test.expect(18);
         var col = new Collator({
             locale: "he-IL",
             useNative: false,
@@ -821,7 +822,6 @@ module.exports.testcollation_he = {
             usage: "search"
         });
     
-        test.expect(18);
         test.ok(typeof(col) !== "undefined");
     
         // all latin letters
@@ -846,13 +846,13 @@ module.exports.testcollation_he = {
     },
     
     testCollatorPrimaryMixed_he: function(test) {
+        test.expect(2);
         var col = new Collator({
             locale: "he-IL",
             useNative: false,
             sensitivity: "primary",
             usage: "sort"
         });
-        test.expect(2);
         test.ok(typeof(col) !== "undefined");
     
         var input = [

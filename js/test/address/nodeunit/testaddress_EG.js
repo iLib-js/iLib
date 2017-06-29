@@ -34,9 +34,9 @@ module.exports.testaddress_EG = {
     },
 
     testParseAddressEGNormal: function(test) {
+        test.expect(8);
         var parsedAddress = new Address("السيد محمد احمد محمود ٣٠, شارع احمد عرابى\nآل المهندسين\nالجيزة\n١٢٤١١\nمصر", {locale: 'ar-EG'});
         
-        test.expect(8);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.country, "مصر");
         test.equal(parsedAddress.streetAddress, "السيد محمد احمد محمود ٣٠, شارع احمد عرابى");
@@ -51,9 +51,9 @@ module.exports.testaddress_EG = {
     
     
     testParseAddressEGNoZip: function(test) {
+        test.expect(7);
         var parsedAddress = new Address("السيد محمد احمد محمود ٣٠, شارع احمد عرابى\nآل المهندسين\nالجيزة\nمصر", {locale: 'ar-EG'});
         
-        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "السيد محمد احمد محمود ٣٠, شارع احمد عرابى");
         test.equal(parsedAddress.locality, "آل المهندسين");
@@ -66,9 +66,9 @@ module.exports.testaddress_EG = {
     
     
     testParseAddressEGNoCountry: function(test) {
+        test.expect(7);
         var parsedAddress = new Address("السيد محمد احمد محمود ٣٠, شارع احمد عرابى\nآل المهندسين\nالجيزة\n ١٢٤١١", {locale: 'ar-EG'});
         
-        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "السيد محمد احمد محمود ٣٠, شارع احمد عرابى");
         test.equal(parsedAddress.locality, "آل المهندسين");
@@ -82,9 +82,9 @@ module.exports.testaddress_EG = {
     
     
     testParseAddressEGManyLines: function(test) {
+        test.expect(7);
         var parsedAddress = new Address("السيد محمد احمد محمود ٣٠\nشارع احمد عرابى\nآل المهندسين\nالجيزة\n١٢٤١١\nمصر\n\n", {locale: 'ar-EG'});
         
-        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "السيد محمد احمد محمود ٣٠, شارع احمد عرابى");
         test.equal(parsedAddress.locality, "آل المهندسين");
@@ -96,9 +96,9 @@ module.exports.testaddress_EG = {
     },
     
     testParseAddressEGOneLine: function(test) {
+        test.expect(7);
         var parsedAddress = new Address("السيد محمد احمد محمود ٣٠ , شارع احمد عرابى , آل المهندسين , الجيزة , ١٢٤١١ , مصر", {locale: 'ar-EG'});
         
-        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "السيد محمد احمد محمود ٣٠, شارع احمد عرابى");
         test.equal(parsedAddress.locality, "آل المهندسين");
@@ -112,9 +112,9 @@ module.exports.testaddress_EG = {
     //needs a more precise regular expression to handle spaces within localities
     /*
     testParseAddressEGNoDelimiters: function(test) {
+        test.expect(7);
         var parsedAddress = new Address("السيد محمد احمد محمود ٣٠, شارع احمد عرابى آل المهندسين\n الجيزة\n ١٢٤١١ مصر", {locale: 'ar-EG'});
         
-        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "السيد محمد احمد محمود ٣٠, شارع احمد عرابى");
         test.equal(parsedAddress.locality, "آل المهندسين");
@@ -127,9 +127,9 @@ module.exports.testaddress_EG = {
     */
     
     testParseAddressEGFromUS: function(test) {
+        test.expect(7);
         var parsedAddress = new Address("السيد محمد احمد محمود ٣٠, شارع احمد عرابى\nآل المهندسين\n الجيزة\n ١٢٤١١\nEgypt", {locale: 'en-US'});
         
-        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "السيد محمد احمد محمود ٣٠, شارع احمد عرابى");
         test.equal(parsedAddress.locality, "آل المهندسين");
@@ -142,6 +142,7 @@ module.exports.testaddress_EG = {
     
     
     testFormatAddressEGEG: function(test) {
+        test.expect(1);
         var parsedAddress = new Address({
             streetAddress: "السيد محمد احمد محمود ٣٠, شارع احمد عرابى",
             locality: "آل المهندسين",
@@ -153,13 +154,13 @@ module.exports.testaddress_EG = {
         
         var expected = "السيد محمد احمد محمود ٣٠, شارع احمد عرابى\nآل المهندسين\nالجيزة\n١٢٤١١\nمصر";
         var formatter = new AddressFmt({locale: 'ar-EG'});
-        test.expect(1);
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     },
     
     
     testFormatAddressEGFromUS: function(test) {
+        test.expect(1);
         var parsedAddress = new Address({
             streetAddress: "السيد محمد احمد محمود ٣٠, شارع احمد عرابى",
             locality: "آل المهندسين",
@@ -171,7 +172,6 @@ module.exports.testaddress_EG = {
         
         var expected = "السيد محمد احمد محمود ٣٠, شارع احمد عرابى\nآل المهندسين\nالجيزة\n١٢٤١١\nEgypt";
         var formatter = new AddressFmt({locale: 'en-US'});
-        test.expect(1);
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     }

@@ -18,7 +18,7 @@
  */
 
 if (typeof(ilib) === "undefined") {
-    var ilib = require("../.././../lib/ilib.js");
+    var ilib = require("../.././../lib/ilib-node.js");
 }
 if (typeof(NumberingPlan) === "undefined") {
     var NumberingPlan = require("../.././../lib/NumberingPlan.js");
@@ -47,64 +47,64 @@ module.exports.numplan = {
     },
 
     testGet1: function(test) {
-        var plan = new NumberingPlan({locale: "en-US"});
         test.expect(2);
+        var plan = new NumberingPlan({locale: "en-US"});
         test.ok(typeof(plan) !== "undefined");
         test.equal(plan.getName(), "US");
         test.done();
     },
     
     testGet2: function(test) {
-        var plan = new NumberingPlan({locale: "de-DE"});
         test.expect(2);
+        var plan = new NumberingPlan({locale: "de-DE"});
         test.ok(typeof(plan) !== "undefined");
         test.equal(plan.getName(), "DE");
         test.done();
     },
     
     testGetUnknown: function(test) {
-        var plan = new NumberingPlan({locale: "unknown-unknown"});
         test.expect(2);
+        var plan = new NumberingPlan({locale: "unknown-unknown"});
         test.ok(typeof(plan) !== "undefined");
         test.equal(plan.getName(), "XX");
         test.done();
     },
     
     testGetUnrecognized: function(test) {
-        var plan = new NumberingPlan({locale: "zu-ZZ"});
         test.expect(2);
+        var plan = new NumberingPlan({locale: "zu-ZZ"});
         test.ok(typeof(plan) !== "undefined");
         test.equal(plan.getName(), "XX");
         test.done();
     },
     
     testGetDefault: function(test) {
-        var plan = new NumberingPlan({});
         test.expect(2);
+        var plan = new NumberingPlan({});
         test.ok(typeof(plan) !== "undefined");
         test.equal(plan.getName(), "US");
         test.done();
     },
     
     testGetContextFreeContent: function(test) {
-        var plan = new NumberingPlan({locale: "en-GB"});
         test.expect(2);
+        var plan = new NumberingPlan({locale: "en-GB"});
         test.ok(typeof(plan) !== "undefined");
         test.equal(plan.getContextFree(), false);
         test.done();
     },
     
     testGetContextFreeContent: function(test) {
-        var plan = new NumberingPlan({locale: "en-US"});
         test.expect(2);
+        var plan = new NumberingPlan({locale: "en-US"});
         test.ok(typeof(plan) !== "undefined");
         test.equal(plan.getContextFree(), undefined);
         test.done();
     },
     
     testRightContents: function(test) {
-        var plan = new NumberingPlan({locale: "en-US"});
         test.expect(13);
+        var plan = new NumberingPlan({locale: "en-US"});
         test.ok(typeof(plan) !== "undefined");
         test.equal(plan.getName(), "US");
         test.equal(plan.getTrunkCode(), "1");
@@ -125,7 +125,7 @@ module.exports.numplan = {
         if (ilib.isDynData()) {
             // don't need to test loading on the dynamic load version because we are testing
             // it via all the other tests already.
-        test.done();
+            test.done();
             return;
         }
         

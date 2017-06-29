@@ -34,8 +34,8 @@ module.exports.testname_bn = {
     },
 
     testParseSimpleName_bn_IN: function(test) {
-        var parsed = new Name("শশী ব্যানার্জী", {locale: 'bn-IN'});
         test.expect(2);
+        var parsed = new Name("শশী ব্যানার্জী", {locale: 'bn-IN'});
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {
@@ -50,8 +50,8 @@ module.exports.testname_bn = {
     
     
     testParseTitle_bn_IN: function(test) {
-        var parsed = new Name("শশী ব্যানার্জী কনিষ্ঠ", {locale: 'bn-IN'});
         test.expect(2);
+        var parsed = new Name("শশী ব্যানার্জী কনিষ্ঠ", {locale: 'bn-IN'});
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {
@@ -67,8 +67,8 @@ module.exports.testname_bn = {
     
     
     testParseTitleWithFamilyOnly_bn_IN: function(test) {
-        var parsed = new Name("এমএস ব্যানার্জী", {locale: 'bn-IN'});
         test.expect(2);
+        var parsed = new Name("এমএস ব্যানার্জী", {locale: 'bn-IN'});
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {
@@ -83,8 +83,8 @@ module.exports.testname_bn = {
     
     
     testParseEverything_bn_IN: function(test) {
-        var parsed = new Name("মিঃ এবং মিসেস ব্যানার্জী", {locale: 'bn-IN'});
         test.expect(2);
+        var parsed = new Name("মিঃ এবং মিসেস ব্যানার্জী", {locale: 'bn-IN'});
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {
@@ -97,8 +97,8 @@ module.exports.testname_bn = {
     },
     
     testParseprefix_bn_IN: function(test) {
-        var parsed = new Name("মিঃ শশী ব্যানার্জী", {locale: 'bn-IN'});
         test.expect(2);
+        var parsed = new Name("মিঃ শশী ব্যানার্জী", {locale: 'bn-IN'});
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {
@@ -115,6 +115,7 @@ module.exports.testname_bn = {
      */
     
     testFormatSimpleNameShort_bn_IN: function(test) {
+        test.expect(2);
         var name = new Name({
             givenName: "শশী",
             familyName: "ব্যানার্জী"
@@ -124,7 +125,6 @@ module.exports.testname_bn = {
             locale: 'bn-IN'
         });
         var formatted = fmt.format(name);
-        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "শশী ব্যানার্জী";
@@ -134,6 +134,7 @@ module.exports.testname_bn = {
     },
     
     testFormatSimpleNameMedium_bn_IN: function(test) {
+        test.expect(2);
         var name = new Name({
             givenName: "শশী",
             
@@ -144,7 +145,6 @@ module.exports.testname_bn = {
             locale: 'bn-IN'
         });
         var formatted = fmt.format(name);
-        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "শশী ব্যানার্জী";
@@ -154,6 +154,7 @@ module.exports.testname_bn = {
     },
     
     testFormatSimpleNameLong_bn_IN: function(test) {
+        test.expect(2);
         var name = new Name({
             givenName: "শশী",
             
@@ -165,7 +166,6 @@ module.exports.testname_bn = {
             locale: 'bn-IN'
         });
         var formatted = fmt.format(name);
-        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "শশী ব্যানার্জী";
@@ -175,6 +175,7 @@ module.exports.testname_bn = {
     },
     
     testFormatSurname_bn_IN: function(test) {
+        test.expect(2);
         var name = new Name({
             prefix: "মিঃ এবং মিসেস",
             
@@ -185,7 +186,6 @@ module.exports.testname_bn = {
             locale: 'bn-IN'
         });
         var formatted = fmt.format(name);
-        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "মিঃ এবং মিসেস ব্যানার্জী";
@@ -195,6 +195,7 @@ module.exports.testname_bn = {
     },
     
     testFormatSimpleNameFull_bn_IN: function(test) {
+        test.expect(2);
         var name = new Name({
             prefix: "ডাক্তার",
             givenName: "শশী",
@@ -207,7 +208,6 @@ module.exports.testname_bn = {
             locale: 'bn-IN'
         });
         var formatted = fmt.format(name);
-        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "ডাক্তার শশী ব্যানার্জী वरिष्ठ";
@@ -217,6 +217,7 @@ module.exports.testname_bn = {
     },
     
     testFormatComplexNameShort_bn_IN: function(test) {
+        test.expect(2);
         var name = new Name({
             prefix: "ডাক্তার",
             givenName: "শশী",
@@ -227,7 +228,6 @@ module.exports.testname_bn = {
             locale: 'bn-IN'
         });
         var formatted = fmt.format(name);
-        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "শশী ব্যানার্জী";
@@ -237,6 +237,7 @@ module.exports.testname_bn = {
     },
     
     testFormatComplexNameMedium_bn_IN: function(test) {
+        test.expect(2);
         var name = new Name({
             prefix: "ডাক্তার",
             givenName: "শশী",
@@ -247,7 +248,6 @@ module.exports.testname_bn = {
             locale: 'bn-IN'
         });
         var formatted = fmt.format(name);
-        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "শশী ব্যানার্জী";
@@ -257,6 +257,7 @@ module.exports.testname_bn = {
     },
     
     testFormatComplexNameLong_bn_IN: function(test) {
+        test.expect(2);
         var name = new Name({
             prefix: "ডাক্তার",
             givenName: "শশী",
@@ -267,7 +268,6 @@ module.exports.testname_bn = {
             locale: 'bn-IN'
         });
         var formatted = fmt.format(name);
-        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "ডাক্তার শশী ব্যানার্জী";

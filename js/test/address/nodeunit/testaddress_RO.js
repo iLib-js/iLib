@@ -34,9 +34,9 @@ module.exports.testaddress_RO = {
     },
 
     testParseAddressRONormal: function(test) {
+        test.expect(7);
         var parsedAddress = new Address("Călina Enescu Stradă Măguricea 1, ap. 1\n014231 BUCUREŞTI\nRomania", {locale: 'ro-RO'});
         
-        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Călina Enescu Stradă Măguricea 1, ap. 1");
         test.equal(parsedAddress.locality, "BUCUREŞTI");
@@ -48,9 +48,9 @@ module.exports.testaddress_RO = {
     },
     
     testParseAddressRONoZip: function(test) {
+        test.expect(7);
         var parsedAddress = new Address("Călina Enescu Stradă Măguricea 1, ap. 1\nBUCUREŞTI\nRomania", {locale: 'ro-RO'});
         
-        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Călina Enescu Stradă Măguricea 1, ap. 1");
         test.equal(parsedAddress.locality, "BUCUREŞTI");
@@ -62,9 +62,9 @@ module.exports.testaddress_RO = {
     },
     
     testParseAddressRONoCountry: function(test) {
+        test.expect(7);
         var parsedAddress = new Address("Călina Enescu Stradă Măguricea 1, ap. 1\n014231 BUCUREŞTI", {locale: 'ro-RO'});
         
-        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Călina Enescu Stradă Măguricea 1, ap. 1");
         test.equal(parsedAddress.locality, "BUCUREŞTI");
@@ -76,8 +76,8 @@ module.exports.testaddress_RO = {
     },
     
     testParseAddressROManyLines: function(test) {
-        var parsedAddress = new Address("Călina Enescu Stradă\nMăguricea 1\nap. 1\n\n014231\nBUCUREŞTI\n\nRomania\n\n\n", {locale: 'ro-RO'});
         test.expect(7);
+        var parsedAddress = new Address("Călina Enescu Stradă\nMăguricea 1\nap. 1\n\n014231\nBUCUREŞTI\n\nRomania\n\n\n", {locale: 'ro-RO'});
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Călina Enescu Stradă, Măguricea 1, ap. 1");
         test.equal(parsedAddress.locality, "BUCUREŞTI");
@@ -89,9 +89,9 @@ module.exports.testaddress_RO = {
     },
     
     testParseAddressROOneLine: function(test) {
+        test.expect(7);
         var parsedAddress = new Address("Călina Enescu Stradă , Măguricea 1 , ap. 1 , 014231 , BUCUREŞTI , Romania", {locale: 'ro-RO'});
         
-        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Călina Enescu Stradă, Măguricea 1, ap. 1");
         test.equal(parsedAddress.locality, "BUCUREŞTI");
@@ -103,9 +103,9 @@ module.exports.testaddress_RO = {
     },
     
     testParseAddressROSuperfluousWhitespace: function(test) {
+        test.expect(7);
         var parsedAddress = new Address("\t\t\tCălina Enescu Stradă\t\t\rMăguricea 1\t\t\rap. 1\n\n014231\t\n\nBUCUREŞTI\n\t\nRomania\n\n\n", {locale: 'ro-RO'});
         
-        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Călina Enescu Stradă Măguricea 1 ap. 1");
         test.equal(parsedAddress.locality, "BUCUREŞTI");
@@ -117,9 +117,9 @@ module.exports.testaddress_RO = {
     },
     
     testParseAddressRONoDelimiters: function(test) {
+        test.expect(7);
         var parsedAddress = new Address("Călina Enescu Stradă Măguricea 1, ap. 1 014231 BUCUREŞTI Romania", {locale: 'ro-RO'});
         
-        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Călina Enescu Stradă Măguricea 1, ap. 1");
         test.equal(parsedAddress.locality, "BUCUREŞTI");
@@ -131,11 +131,11 @@ module.exports.testaddress_RO = {
     },
     
     testParseAddressROFromUS: function(test) {
+        test.expect(7);
         var parsedAddress = new Address("Călina Enescu Stradă Măguricea 1, ap. 1\n014231 BUCUREŞTI\nRomania", {locale: 'en-US'});
         
         // the country name is in German because this address is for a contact in a German database
         
-        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Călina Enescu Stradă Măguricea 1, ap. 1");
         test.equal(parsedAddress.locality, "BUCUREŞTI");
@@ -147,6 +147,7 @@ module.exports.testaddress_RO = {
     },
     
     testFormatAddressRO: function(test) {
+        test.expect(1);
         var parsedAddress = new Address({
             streetAddress: "Călina Enescu Stradă Măguricea 1, ap. 1",
             locality: "BUCUREŞTI",
@@ -157,12 +158,12 @@ module.exports.testaddress_RO = {
         
         var expected = "Călina Enescu Stradă Măguricea 1, ap. 1\n014231 BUCUREŞTI\nRomania";
         var formatter = new AddressFmt({locale: 'ro-RO'});
-        test.expect(1);
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     },
     
     testFormatAddressROFromUS: function(test) {
+        test.expect(1);
         var parsedAddress = new Address({
             streetAddress: "Călina Enescu Stradă Măguricea 1, ap. 1",
             locality: "BUCUREŞTI",
@@ -173,7 +174,6 @@ module.exports.testaddress_RO = {
         
         var expected = "Călina Enescu Stradă Măguricea 1, ap. 1\n014231 BUCUREŞTI\nRomania";
         var formatter = new AddressFmt({locale: 'en-US'});
-        test.expect(1);
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     }
