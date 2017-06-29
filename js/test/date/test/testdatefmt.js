@@ -17,7 +17,7 @@
  * limitations under the License.
  */
 
-var ilib = require("./../lib/ilib.js");
+var ilib = require("../lib/ilib-node.js");
 var ThaiSolarDate = require("./../lib/ThaiSolarDate.js");
 var PersianDate = require("./../lib/PersianDate.js");
 var IslamicDate = require("./../lib/IslamicDate.js");
@@ -43,6 +43,8 @@ function mockLoader(paths, sync, params, callback) {
     }
     return data;
 }
+
+var oldLoader = ilib._load;
 
 
 function testDateFmtConstructorEmpty() {
@@ -2589,16 +2591,14 @@ function testDateFmtLoadLocaleDataSynch() {
 	if (!ilib.isDynData()) {
 		return;
 	}
-	var oldLoader = ilib._load;
 	ilib.setLoaderCallback(mockLoader);
 
-	var fmt = new DateFmt({locale: "zz-ZZ"});
-    assertNotNull(fmt);
-    ilib.setLoaderCallback(oldLoader);
-    
-    assertEquals("zz-ZZ", fmt.getLocale().toString());
-    assertEquals("gregorian", fmt.getCalendar());
-    assertEquals("dd.MM.yy", fmt.getTemplate());
+    var fmt = new DateFmt({locale: "zz-ZZ"});
+	assertNotNull(fmt);
+	
+	assertEquals("zz-ZZ", fmt.getLocale().toString());
+	assertEquals("gregorian", fmt.getCalendar());
+	assertEquals("dd.MM.yy", fmt.getTemplate());
 };
 
 function testDateFmtLoadLocaleDataSynchCached() {
@@ -2607,12 +2607,10 @@ function testDateFmtLoadLocaleDataSynchCached() {
 		// it via all the other tests already.
 		return;
 	}
-	var oldLoader = ilib._load;
     ilib.setLoaderCallback(mockLoader);
 
 	var fmt = new DateFmt({locale: "zz-ZZ"});
     assertNotNull(fmt);
-    ilib.setLoaderCallback(oldLoader);
     
     assertEquals("zz-ZZ", fmt.getLocale().toString());
     assertEquals("gregorian", fmt.getCalendar());
@@ -2625,14 +2623,12 @@ function testDateFmtLoadLocaleDataAsynch() {
 		// it via all the other tests already.
 		return;
 	}
-	var oldLoader = ilib._load;
     ilib.setLoaderCallback(mockLoader);
 	
 	new DateFmt({
 		locale: "zz-ZZ",
 		sync: false,
 		onLoad: function (fmt) {
-            ilib.setLoaderCallback(oldLoader);
 		    assertNotNull(fmt);
 		    
 		    assertEquals("zz-ZZ", fmt.getLocale().toString());
@@ -2648,15 +2644,12 @@ function testDateFmtLoadLocaleDataAsynchCached() {
 		// it via all the other tests already.
 		return;
 	}
-	var oldLoader = ilib._load;
     ilib.setLoaderCallback(mockLoader);
 	
 	new DateFmt({
 		locale: "zz-ZZ",
 		sync: false,
 		onLoad: function (fmt) {
-            ilib.setLoaderCallback(oldLoader);
-
             assertNotNull(fmt);
 		    
 		    assertEquals("zz-ZZ", fmt.getLocale().toString());
@@ -2668,6 +2661,7 @@ function testDateFmtLoadLocaleDataAsynchCached() {
 
 
 function testDateFmtTransitionToDSTRightBefore() {
+    ilib.setLoaderCallback(oldLoader);
     var fmt = new DateFmt({
     	length: "full",
     	type: "time",

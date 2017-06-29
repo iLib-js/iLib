@@ -26,9 +26,6 @@ if (typeof(TimeZone) === "undefined") {
 if (typeof(LocaleInfo) === "undefined") {
     var LocaleInfo = require("../.././../lib/LocaleInfo.js");
 }
-if (typeof(Loader) === "undefined") {
-    var Loader = require("../.././../lib/Loader.js");
-}
 if (typeof(IString) === "undefined") {
     var IString = require("../.././../lib/IString.js");
 }

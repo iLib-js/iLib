@@ -18,7 +18,7 @@
  */
 
 if (typeof(ilib) === "undefined") {
-    var ilib = require("../.././../lib/ilib.js");
+    var ilib = require("../../../lib/ilib-node.js");
 }
 if (typeof(ThaiSolarDate) === "undefined") {
     var ThaiSolarDate = require("../.././../lib/ThaiSolarDate.js");
@@ -61,6 +61,8 @@ function mockLoader(paths, sync, params, callback) {
     }
     return data;
 }
+
+var oldLoader = ilib._load;
 
 
 if (typeof(ilib) === "undefined") {
@@ -2974,13 +2976,11 @@ module.exports.testdatefmt = {
         test.done();
             return;
         }
-        var oldLoader = ilib._load;
         ilib.setLoaderCallback(mockLoader);
     
         var fmt = new DateFmt({locale: "zz-ZZ"});
         test.expect(4);
         test.ok(fmt !== null);
-        ilib.setLoaderCallback(oldLoader);
         
         test.equal(fmt.getLocale().toString(), "zz-ZZ");
         test.equal(fmt.getCalendar(), "gregorian");
@@ -2995,13 +2995,11 @@ module.exports.testdatefmt = {
         test.done();
             return;
         }
-        var oldLoader = ilib._load;
         ilib.setLoaderCallback(mockLoader);
     
         var fmt = new DateFmt({locale: "zz-ZZ"});
         test.expect(4);
         test.ok(fmt !== null);
-        ilib.setLoaderCallback(oldLoader);
         
         test.equal(fmt.getLocale().toString(), "zz-ZZ");
         test.equal(fmt.getCalendar(), "gregorian");
@@ -3016,14 +3014,12 @@ module.exports.testdatefmt = {
         test.done();
             return;
         }
-        var oldLoader = ilib._load;
         ilib.setLoaderCallback(mockLoader);
         
         new DateFmt({
             locale: "zz-ZZ",
             sync: false,
             onLoad: function (fmt) {
-                ilib.setLoaderCallback(oldLoader);
         test.expect(4);
                 test.ok(fmt !== null);
                 
@@ -3042,15 +3038,12 @@ module.exports.testdatefmt = {
         test.done();
             return;
         }
-        var oldLoader = ilib._load;
         ilib.setLoaderCallback(mockLoader);
         
         new DateFmt({
             locale: "zz-ZZ",
             sync: false,
             onLoad: function (fmt) {
-                ilib.setLoaderCallback(oldLoader);
-    
         test.expect(4);
                 test.ok(fmt !== null);
                 
@@ -3064,6 +3057,7 @@ module.exports.testdatefmt = {
     
     
     testDateFmtTransitionToDSTRightBefore: function(test) {
+        ilib.setLoaderCallback(oldLoader);
         var fmt = new DateFmt({
             length: "full",
             type: "time",
