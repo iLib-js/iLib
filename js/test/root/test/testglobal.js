@@ -116,10 +116,14 @@ function testGetVersion() {
 function testGetTimeZoneDefault() {
 	ilib._platform = undefined;
 	ilib.tz = undefined;
+	
+	if (ilib._getPlatform() === "nodejs") {
+	    process.env.TZ = "";
+	}
 
 	if (ilib._getPlatform() === "browser") {
-            navigator.timezone = undefined;
-        }
+        navigator.timezone = undefined;
+    }
 	assertEquals("local", ilib.getTimeZone());
 }
 
@@ -132,6 +136,20 @@ function testSetTimeZone() {
     
     assertEquals("America/Los_Angeles", ilib.getTimeZone());
     delete ilib.tz; // clean up
+}
+
+function testGetTimeZoneBrowser() {
+    if (ilib._getPlatform() !== "browser") {
+        // only testable on a browser
+        return;
+    }
+    
+    ilib._platform = undefined;
+    ilib.tz = undefined;
+    navigator.timezone = "America/New_York";
+    
+    assertEquals("America/New_York", ilib.getTimeZone());
+    navigator.timezone = undefined;
 }
 
 function testSetTimeZoneEmpty() {

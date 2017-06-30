@@ -1064,7 +1064,8 @@ module.exports.teststrings = {
             n: []
         };
     
-        test.roughlyEqual(8.2), IString._fncs.getValue(rule, 0.01, 8.2);
+        var actual = IString._fncs.getValue(rule, 8.2);
+        test.roughlyEqual(0.01, actual, 8.2);
         test.done();
     },
     
@@ -1928,7 +1929,8 @@ module.exports.teststrings = {
             ]
         };
     
-        test.roughlyEqual(8.2), IString._fncs.getValue(rule, 0.01, 2.2);
+        var actual = IString._fncs.getValue(rule, 8.2);
+        test.roughlyEqual(0.01, actual, 2.2);
         test.done();
     },
     
@@ -1941,7 +1943,8 @@ module.exports.teststrings = {
             ]
         };
     
-        test.roughlyEqual(-11), IString._fncs.getValue(rule, 0.01, 1);
+        var actual = IString._fncs.getValue(rule, -11);
+        test.roughlyEqual(0.01, actual, 1);
         test.done();
     },
     

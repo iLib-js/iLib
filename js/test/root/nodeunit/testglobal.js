@@ -143,10 +143,14 @@ module.exports.testglobal = {
         test.expect(1);
         ilib._platform = undefined;
         ilib.tz = undefined;
+        
+        if (ilib._getPlatform() === "nodejs") {
+            process.env.TZ = "";
+        }
     
         if (ilib._getPlatform() === "browser") {
-                navigator.timezone = undefined;
-            }
+            navigator.timezone = undefined;
+        }
         test.equal(ilib.getTimeZone(), "local");
         test.done();
     },
@@ -162,6 +166,23 @@ module.exports.testglobal = {
         test.equal(ilib.getTimeZone(), "America/Los_Angeles");
         test.done();
         delete ilib.tz; // clean up
+    },
+    
+    testGetTimeZoneBrowser: function(test) {
+        if (ilib._getPlatform() !== "browser") {
+            // only testable on a browser
+            test.done();
+            return;
+        }
+        
+        ilib._platform = undefined;
+        ilib.tz = undefined;
+        navigator.timezone = "America/New_York";
+        
+        test.expect(1);
+        test.equal(ilib.getTimeZone(), "America/New_York");
+        test.done();
+        navigator.timezone = undefined;
     },
     
     testSetTimeZoneEmpty: function(test) {
