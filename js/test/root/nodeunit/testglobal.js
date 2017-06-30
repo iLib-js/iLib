@@ -189,6 +189,10 @@ module.exports.testglobal = {
         test.expect(2);
         ilib._platform = undefined;
         ilib.tz = undefined;
+        if (ilib._getPlatform() === "browser") {
+            navigator.timezone = undefined;
+        }
+        
         test.equal(ilib.getTimeZone(), "local");
         
         ilib.setTimeZone();
