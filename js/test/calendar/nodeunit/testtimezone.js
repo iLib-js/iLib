@@ -1070,6 +1070,7 @@ module.exports.testtimezone = {
         test.expect(3);
         ilib.setLoaderCallback(new getAvailableMocker());
         ilib.data.timezones = []; // clear the timezones cache
+        var ol = oldLoader;
         
         try {
             var zones = TimeZone.getAvailableIds();
@@ -1079,7 +1080,7 @@ module.exports.testtimezone = {
             // clean up
             ilib.data.timezones = []; // clear the timezones cache
             
-            ilib.setLoaderCallback(oldLoader);
+            ilib.setLoaderCallback(ol);
             test.ok(true);
             test.done();
         }
@@ -1679,12 +1680,13 @@ module.exports.testtimezone = {
             test.done();
             return;
         }
+        var ol = oldLoader;
         ilib.setLoaderCallback(mockLoader);
         new TimeZone({
             locale: "zz-YY",
             sync: false,
             onLoad: function (tz) {
-                ilib.setLoaderCallback(oldLoader);
+                ilib.setLoaderCallback(ol);
         test.expect(2);
                 test.ok(tz !== null);
                 test.equal(tz.getId(), "Asia/Tokyo");
@@ -1700,11 +1702,12 @@ module.exports.testtimezone = {
             test.done();
             return;
         }
+        var ol = oldLoader;
         ilib.setLoaderCallback(mockLoader);
         var tz = new TimeZone({locale: "ww-WW"});
         test.expect(2);
         test.ok(tz !== null);
-        ilib.setLoaderCallback(oldLoader);
+        ilib.setLoaderCallback(ol);
         test.equal(tz.getId(), "Etc/UTC");
         test.done();
     },
@@ -1716,12 +1719,13 @@ module.exports.testtimezone = {
             test.done();
             return;
         }
+        var ol = oldLoader;
         ilib.setLoaderCallback(mockLoader);
         new TimeZone({
             locale: "ww-WW",
             sync: false,
             onLoad: function (tz) {
-                ilib.setLoaderCallback(oldLoader);
+                ilib.setLoaderCallback(ol);
         test.expect(2);
                 test.ok(tz !== null);
                 test.equal(tz.getId(), "Etc/UTC");
@@ -1732,12 +1736,13 @@ module.exports.testtimezone = {
     
     testTZGetTimeZoneWithLoaderAsynch: function(test) {
         test.expect(2);
+        var ol = oldLoader;
         ilib.setLoaderCallback(mockLoader2);
         new TimeZone({
             id: "America/Los_Angeles",
             sync: false,
             onLoad: function (tz) {
-                ilib.setLoaderCallback(oldloader);
+                ilib.setLoaderCallback(ol);
                 test.ok(tz !== null);
                 test.deepEqual(tz.getId(), "America/Los_Angeles");
                 test.done();
@@ -1747,12 +1752,13 @@ module.exports.testtimezone = {
     
     testTZGetTimeZoneWithLoaderJulianTransitionBeforeStart: function(test) {
         test.expect(3);
+        var ol = oldLoader;
         ilib.setLoaderCallback(mockLoader2);
         new TimeZone({
             id: "America/Los_Angeles",
             sync: false,
             onLoad: function (tz) {
-                ilib.setLoaderCallback(oldloader);
+                ilib.setLoaderCallback(ol);
     
                 test.ok(tz !== null);
                 test.deepEqual(tz.getId(), "America/Los_Angeles");
@@ -1769,12 +1775,13 @@ module.exports.testtimezone = {
     
     testTZGetTimeZoneWithLoaderJulianTransitionAfterStart: function(test) {
         test.expect(3);
+        var ol = oldLoader;
         ilib.setLoaderCallback(mockLoader2);
         new TimeZone({
             id: "America/Los_Angeles",
             sync: false,
             onLoad: function (tz) {
-                ilib.setLoaderCallback(oldloader);
+                ilib.setLoaderCallback(ol);
     
                 test.ok(tz !== null);
                 test.deepEqual(tz.getId(), "America/Los_Angeles");
@@ -1791,6 +1798,7 @@ module.exports.testtimezone = {
     
     testTZGetTimeZoneWithLoaderJulianTransitionBeforeEnd: function(test) {
         test.expect(3);
+        var ol = oldLoader;
         ilib.setLoaderCallback(mockLoader2);
         new TimeZone({
             id: "America/Los_Angeles",
@@ -1798,7 +1806,7 @@ module.exports.testtimezone = {
             onLoad: function (tz) {
                 test.ok(tz !== null);
                 test.deepEqual(tz.getId(), "America/Los_Angeles");
-                ilib.setLoaderCallback(oldloader);
+                ilib.setLoaderCallback(ol);
                 
                 // before end
                 var d = new DateFactory({
@@ -1812,12 +1820,13 @@ module.exports.testtimezone = {
     
     testTZGetTimeZoneWithLoaderJulianTransitionAfterEnd: function(test) {
         test.expect(3);
+        var ol = oldLoader;
         ilib.setLoaderCallback(mockLoader2);
         new TimeZone({
             id: "America/Los_Angeles",
             sync: false,
             onLoad: function (tz) {
-                ilib.setLoaderCallback(oldloader);
+                ilib.setLoaderCallback(ol);
     
                 test.ok(tz !== null);
                 test.deepEqual(tz.getId(), "America/Los_Angeles");
@@ -1834,7 +1843,7 @@ module.exports.testtimezone = {
     
     testTZGetCountry1: function(test) {
         test.expect(2);
-        ilib.setLoaderCallback(oldloader);
+        ilib.setLoaderCallback(oldLoader);
         var tz = new TimeZone({id: "America/Los_Angeles"});
         test.ok(tz !== null);
         

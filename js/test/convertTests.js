@@ -243,7 +243,6 @@ function generateSuiteJS(dir, tests) {
         ' */',
         '',
         'var nodeunit = require("nodeunit");',
-        'var assert = require("../../test/assertSupplement.js");',
         'var reporter = nodeunit.reporters.minimal;',
         'var modules = {};',
         'var suites = ['

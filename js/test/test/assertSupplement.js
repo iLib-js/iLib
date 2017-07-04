@@ -18,7 +18,7 @@
  */
 
 if (typeof(assert) === "undefined") {
-    var assert = require("nodeunit/lib/assert.js");
+    var assert = require("assert");
 }
 
 /*

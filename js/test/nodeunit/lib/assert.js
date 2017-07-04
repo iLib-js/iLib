@@ -172,11 +172,16 @@ if (typeof require !== 'undefined' && typeof process !== 'undefined') {
 
 function _deepEqual(actual, expected) {
   // 7.1. All identical values are equivalent, as determined by ===.
-  if (actual === expected) {
+  if (actual === expected)
     return true;
+
+  // Convert to primitives, if supported
+  actual = actual.valueOf ? actual.valueOf() : actual;
+  expected = expected.valueOf ? expected.valueOf() : expected;
+
   // 7.2. If the expected value is a Date object, the actual value is
   // equivalent if it is also a Date object that refers to the same time.
-  } else if (actual instanceof Date && expected instanceof Date) {
+  if (actual instanceof Date && expected instanceof Date) {
     return actual.getTime() === expected.getTime();
 
   // 7.2.1 If the expcted value is a RegExp object, the actual value is
@@ -225,6 +230,7 @@ function isArguments (object) {
 function objEquiv (a, b) {
   if (isUndefinedOrNull(a) || isUndefinedOrNull(b))
     return false;
+
   // an identical "prototype" property.
   if (a.prototype !== b.prototype) return false;
   //~~~I've managed to break Object.keys through screwy arguments passing.
@@ -365,10 +371,10 @@ assert.ifError = function (err) { if (err) {throw err;}};
  * @returns True if every element of the expected array exists in the actual array.
  */
 function isEqualIgnoringOrder(actual, expected) {
-	var found = false;
+    var found = false;
     for (var i = 0; i < expected.length; i++) {
-    	var found = false;
-    	for (var j = 0; j < actual.length; j++) {
+        var found = false;
+        for (var j = 0; j < actual.length; j++) {
             try {
                 if (_deepEqual(actual[j], expected[i])) {
                     found = true;
@@ -378,7 +384,7 @@ function isEqualIgnoringOrder(actual, expected) {
             }
         }
         if (!found) {
-        	return false;
+            return false;
         }
     }
     return true;
@@ -405,14 +411,14 @@ function isArray(object) {
  * @throws AssertionError
  */
 assert.equalIgnoringOrder = function(actual, expected, message) {
-	if (!isArray(expected)) {
-    	fail("Invalid expected argument to equalIgnoringOrder.");
+    if (!isArray(expected)) {
+        fail("Invalid expected argument to equalIgnoringOrder.");
     } else if (isArray(actual)) {
-		if (isEqualIgnoringOrder(actual, expected) === false) {
-			fail(actual, expected, message, "equalIgnoringOrder", assert.equalIgnoringOrder);
-		}
-	} else {
-		fail(actual, expected, message, "equalIgnoringOrder", assert.equalIgnoringOrder);
+        if (isEqualIgnoringOrder(actual, expected) === false) {
+            fail(actual, expected, message, "equalIgnoringOrder", assert.equalIgnoringOrder);
+        }
+    } else {
+        fail(actual, expected, message, "equalIgnoringOrder", assert.equalIgnoringOrder);
     }
     return;
 };
@@ -432,10 +438,10 @@ assert.equalIgnoringOrder = function(actual, expected, message) {
  * @throws AssertionError
  */
 assert.roughlyEqual = function(actual, expected, tolerance, message) {
-	if (typeof(actual) !== "number" || typeof(expected) !== "number" || typeof(tolerance) !== "number") {
-    	fail("Invalid expected argument to roughlyEquals.");
-	} else if (Math.abs(expected - actual) >= tolerance) {
-		fail(actual, expected, message, "roughlyEquals", assert.roughlyEquals);
+    if (typeof(actual) !== "number" || typeof(expected) !== "number" || typeof(tolerance) !== "number") {
+        fail("Invalid expected argument to roughlyEquals.");
+    } else if (Math.abs(expected - actual) >= tolerance) {
+        fail(actual, expected, message, "roughlyEquals", assert.roughlyEquals);
     }
     return;
 };
@@ -456,6 +462,7 @@ assert.roughlyEqual = function(actual, expected, tolerance, message) {
  *
  * @param {Object} actual The actual value to test which may be an array or an object
  * @param {*} expected The name of the property that is expected to be within the object in the actual parameter
+ * @param {string} message message to print when the assertion fails
  * @throws ArgumentsError
  * @throws AssertionError
  */
@@ -511,3 +518,4 @@ assert.contains = function(actual, expected, message) {
     }
     return;
 };
+

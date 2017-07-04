@@ -445,6 +445,9 @@ module.exports.testdatefmt = {
         test.expect(2);
         ilib.tz = undefined;    // just in case
         var fmt = new DateFmt();
+        if (ilib._getPlatform() === "nodejs") {
+            process.env.timezone = "";
+        }
         
         test.ok(fmt !== null);
         

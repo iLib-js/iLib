@@ -341,6 +341,9 @@ function testDateFmtGetClockBogus() {
 function testDateFmtGetTimeZoneDefault() {
 	ilib.tz = undefined;	// just in case
     var fmt = new DateFmt();
+    if (ilib._getPlatform() === "nodejs") {
+        process.env.timezone = "";
+    }
     
     assertNotNull(fmt);
     
