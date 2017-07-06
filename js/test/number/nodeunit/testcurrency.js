@@ -91,7 +91,7 @@ module.exports.testcurrency = {
             var cur = new Currency({
                 code: "xxx"
             });
-        test.fail()
+            test.fail();
         } catch (e) {
             test.equal(e, "currency xxx is unknown");
         }

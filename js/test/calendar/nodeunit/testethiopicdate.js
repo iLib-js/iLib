@@ -553,7 +553,7 @@ module.exports.testethiopicdate = {
         var ed;
         
         for (var i = 0; i < testDatesEthiopic.length; i++) {
-        // console.log("testing jd=" + testDatesEthiopic[i][0] + " and date of " + JSON.stringify(ed));
+            // console.log("testing jd=" + testDatesEthiopic[i][0] + " and date of " + JSON.stringify(ed));
             
             ed = new EthiopicDate({
                 julianday: testDatesEthiopic[i][0], 
@@ -570,7 +570,7 @@ module.exports.testethiopicdate = {
         var ed;
         
         for (var i = 0; i < testDatesEthiopic.length; i++) {
-        // console.log("testing jd=" + testDatesEthiopic[i][0] + " and date of " + JSON.stringify(ed));
+            // console.log("testing jd=" + testDatesEthiopic[i][0] + " and date of " + JSON.stringify(ed));
             
             ed = new EthiopicDate({
                 julianday: testDatesEthiopic[i][0], 
@@ -587,7 +587,7 @@ module.exports.testethiopicdate = {
         var ed;
         
         for (var i = 0; i < testDatesEthiopic.length; i++) {
-        // console.log("testing jd=" + testDatesEthiopic[i][0] + " and date of " + JSON.stringify(ed));
+            // console.log("testing jd=" + testDatesEthiopic[i][0] + " and date of " + JSON.stringify(ed));
             ed = new EthiopicDate({
                 julianday: testDatesEthiopic[i][0], 
                 timezone: "Etc/UTC"
@@ -603,7 +603,7 @@ module.exports.testethiopicdate = {
         var ed;
         
         for (var i = 0; i < testDatesEthiopic.length; i++) {
-        // console.log("testing jd=" + testDatesEthiopic[i][0] + " and date of " + JSON.stringify(ed));
+            // console.log("testing jd=" + testDatesEthiopic[i][0] + " and date of " + JSON.stringify(ed));
             
             ed = new EthiopicDate({
                 julianday: testDatesEthiopic[i][0], 
@@ -620,7 +620,7 @@ module.exports.testethiopicdate = {
         var ed;
         
         for (var i = 0; i < testDatesEthiopic.length; i++) {
-        // console.log("testing jd=" + testDatesEthiopic[i][0] + " and date of " + JSON.stringify(ed));
+            // console.log("testing jd=" + testDatesEthiopic[i][0] + " and date of " + JSON.stringify(ed));
             
             ed = new EthiopicDate({
                 julianday: testDatesEthiopic[i][0], 
@@ -637,7 +637,7 @@ module.exports.testethiopicdate = {
         var ed;
         
         for (var i = 0; i < testDatesEthiopic.length; i++) {
-        // console.log("testing jd=" + testDatesEthiopic[i][0] + " and date of " + JSON.stringify(ed));
+            // console.log("testing jd=" + testDatesEthiopic[i][0] + " and date of " + JSON.stringify(ed));
             
             ed = new EthiopicDate({
                 julianday: testDatesEthiopic[i][0], 
@@ -731,7 +731,7 @@ module.exports.testethiopicdate = {
         var ed;
         
         for (var i = 0; i < testDatesEthiopic.length; i++) {
-        // console.log("testing jd=" + testDatesEthiopic[i][0] + " and date " + JSON.stringify(ed));
+            // console.log("testing jd=" + testDatesEthiopic[i][0] + " and date " + JSON.stringify(ed));
             
             ed = new EthiopicDate({
                 year: testDatesEthiopic[i][1], 
@@ -745,7 +745,7 @@ module.exports.testethiopicdate = {
             });
         
             test.equal(typeof(ed), 'object');
-        // console.log("calculated julian day is " + ed.getJulianDay());
+            // console.log("calculated julian day is " + ed.getJulianDay());
             test.equal(ed.getJulianDay(), testDatesEthiopic[i][0]);
             test.equal(ed.getDayOfWeek(), testDatesEthiopic[i][8]);
         }
@@ -1043,7 +1043,7 @@ module.exports.testethiopicdate = {
         var d = new Date();
         test.ok(ed !== null);
         
-        test.roughlyEqual(50, ed.getTime(), d.getTime());
+        test.roughlyEqual(ed.getTime(), d.getTime(), 50);
         test.done();
     },
     

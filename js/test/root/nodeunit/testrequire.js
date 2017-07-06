@@ -28,16 +28,16 @@ if (typeof(ilib) === "undefined") {
 // nodejs tests so these require tests will be operating in the same
 // environment and therefore will work properly
 if (ilib._getPlatform() === "browser") {
-    console.log("ilib getplatform is " + ilib._getPlatform());
-    console.log("process is ");
-    console.dir(process);
+    //console.log("ilib getplatform is " + ilib._getPlatform());
+    //console.log("process is ");
+    //console.dir(process);
     console.log("window is");
     console.dir(window);
     console.log("module is");
     console.dir(module);
     
-    var i = r.root.lastIndexOf('/');
-    r.root = r.root.substring(0, i) + "/test";
+    //var i = r.root.lastIndexOf('/');
+    //r.root = r.root.substring(0, i) + "/test";
 }
 
 if (typeof(ilib) === "undefined") {
@@ -54,10 +54,9 @@ module.exports.testrequire = {
         if (!ilib.isDynCode()) {
             // can't test the require function unless you're 
             // in dynamic code loading mode
-            test.done();
             return;
         }
-        var mod = require("./root/test/testfiles/datefmt2.js");
+        var mod = require("../test/testfiles/datefmt2.js");
         test.expect(2);
         test.ok(typeof(mod) !== "undefined");
         
@@ -69,13 +68,12 @@ module.exports.testrequire = {
         if (!ilib.isDynCode()) {
             // can't test the require function unless you're 
             // in dynamic code loading mode
-            test.done();
             return;
         }
         test.expect(4);
         test.ok(typeof(Qwerty) === "undefined");
     
-        var Qwerty = require("./root/test/testfiles/qwerty.js");
+        var Qwerty = require("../test/testfiles/qwerty.js");
         test.ok(typeof(Qwerty) !== "undefined");
         
         Qwerty.testproperty = "foo";
@@ -84,7 +82,7 @@ module.exports.testrequire = {
         
         // should not reload it again because it already loaded it previously
         // so the test property should be in the cache
-        Qwerty = require("./root/test/testfiles/qwerty.js");
+        Qwerty = require("../test/testfiles/qwerty.js");
         
         test.ok(typeof(Qwerty) !== "undefined");
         test.equal(Qwerty.testproperty, "foo");
@@ -95,10 +93,9 @@ module.exports.testrequire = {
         if (!ilib.isDynCode()) {
             // can't test the require function unless you're 
             // in dynamic code loading mode
-            test.done();
             return;
         }
-        var Locale2 = require("./root/test/testfiles/locale2.js");
+        var Locale2 = require("../test/testfiles/locale2.js");
         
         test.expect(3);
         test.ok(typeof(Locale2) !== "undefined");
@@ -114,15 +111,14 @@ module.exports.testrequire = {
         if (!ilib.isDynCode()) {
             // can't test the require function unless you're 
             // in dynamic code loading mode
-            test.done();
             return;
         }
         
-        var Locale2 = require("./root/test/testfiles/locale2.js");
+        var Locale2 = require("../test/testfiles/locale2.js");
         test.expect(4);
         test.ok(typeof(Locale2) !== "undefined");
         
-        var DateFmt2 = require("./root/test/testfiles/datefmt2.js");
+        var DateFmt2 = require("../test/testfiles/datefmt2.js");
         test.ok(typeof(DateFmt2) !== "undefined");
         var df = new DateFmt2({locale: "de-DE"});
         

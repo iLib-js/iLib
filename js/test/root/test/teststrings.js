@@ -687,6 +687,8 @@ function testForEachCodePointSimple() {
     str.forEachCodePoint(function(ch) {
         assertEquals(expected[i++], ch);
     });
+    
+    assertEquals(4, i);
 }
 
 function testForEachCodePointComplex() {
@@ -698,15 +700,20 @@ function testForEachCodePointComplex() {
     str.forEachCodePoint(function(ch) {
         assertEquals(expected[i++], ch);
     });
+    assertEquals(4, i);
 }
 
 function testForEachCodePointEmpty() {
     var str = new IString("");
-
+    var notcalled = true;
+    
     str.forEachCodePoint(function(ch) {
         // should never call this callback
+        notcalled = false;
         fail();
     });
+    
+    assertTrue(notcalled);
 }
 
 function testCharIteratorSimple() {
@@ -758,6 +765,8 @@ function testForEachSimple() {
     str.forEach(function(ch) {
         assertEquals(expected[i++], ch);
     });
+    
+    assertEquals(4, i);
 }
 
 function testForEachComplex() {
@@ -769,15 +778,21 @@ function testForEachComplex() {
     str.forEach(function(ch) {
         assertEquals(expected[i++], ch);
     });
+    
+    assertEquals(4, i)
 }
 
 function testForEachEmpty() {
     var str = new IString("");
-
+    var notcalled = true;
+    
     str.forEach(function(ch) {
         // should never call this callback
+        notcalled = false;
         fail();
     });
+    
+    assertTrue(notcalled);
 }
 
 function testCodePointLengthUCS2() {

@@ -57,14 +57,14 @@ module.exports.testFuelConsumption = {
         test.ok(m1 !== null);
         test.ok(m2 !== null);
     
-        test.roughlyEqual(0.1, m2.getAmount(), 0.02);
+        test.roughlyEqual(m2.getAmount(), 0.02, 0.1);
         test.done();
     },
     
     testFuelConsumptionStaticConvert1: function(test) {
         test.expect(1);
         var m = FuelConsumptionUnit.convert("mpg","km/liter", 2.0);
-        test.roughlyEqual(0.01, m, 4.70429);
+        test.roughlyEqual(m, 4.70429, 0.01);
         test.done();
     },
     
@@ -88,7 +88,7 @@ module.exports.testFuelConsumption = {
         test.expect(1);
         var m = FuelConsumptionUnit.convert("mpg", "liter/100km", 2.0);
     
-        test.roughlyEqual(0.01, m, 117.607);
+        test.roughlyEqual(m, 117.607, 0.01);
         test.done();
     },
     
@@ -104,7 +104,7 @@ module.exports.testFuelConsumption = {
         test.expect(1);
         var m = FuelConsumptionUnit.convert("mpg(imp)", "liter/100km", 2.0);
     
-        test.roughlyEqual(0.001, m, 141.241);
+        test.roughlyEqual(m, 141.241, 0.001);
         test.done();
     },
     
@@ -112,21 +112,21 @@ module.exports.testFuelConsumption = {
         test.expect(1);
         var m = FuelConsumptionUnit.convert( "mpg","mpg(imp)", 2.0);
     
-        test.roughlyEqual(0.001, m, 1.66535);
+        test.roughlyEqual(m, 1.66535, 0.001);
         test.done();
     },
     testFuelConsumptionStaticConvert7: function(test) {
         test.expect(1);
         var m = FuelConsumptionUnit.convert( "km/liter","mpg(imp)", 2.0);
     
-        test.roughlyEqual(0.01, m, 0.708012);
+        test.roughlyEqual(m, 0.708012, 0.01);
         test.done();
     },
     testFuelConsumptionStaticConvert8: function(test) {
         test.expect(1);
         var m = FuelConsumptionUnit.convert( "liter/100km","mpg(imp)", 2.0);
     
-        test.roughlyEqual(0.01, m, 141.241);
+        test.roughlyEqual(m, 141.241, 0.01);
         test.done();
     },
     
@@ -134,7 +134,7 @@ module.exports.testFuelConsumption = {
         test.expect(1);
         var m = FuelConsumptionUnit.convert("km/liter", "mpg",2.0);
     
-        test.roughlyEqual(0.001, m, 0.850287);
+        test.roughlyEqual(m, 0.850287, 0.001);
         test.done();
     },
     
@@ -143,7 +143,7 @@ module.exports.testFuelConsumption = {
         test.expect(1);
         var m = FuelConsumptionUnit.convert("mpg(imp)", "mpg",2.0);
     
-        test.roughlyEqual(0.001, m, 2.4019);
+        test.roughlyEqual(m, 2.4019, 0.001);
         test.done();
     },
     
@@ -151,7 +151,7 @@ module.exports.testFuelConsumption = {
         test.expect(1);
         var m = FuelConsumptionUnit.convert("liter/100km", "mpg",2.0);
     
-        test.roughlyEqual(0.001, m, 117.607);
+        test.roughlyEqual(m, 117.607, 0.001);
         test.done();
     
     },
@@ -179,7 +179,7 @@ module.exports.testFuelConsumption = {
     
         m = m.localize("en-IN");
     
-        test.roughlyEqual(0.01, m.amount, 1000);
+        test.roughlyEqual(m.amount, 1000, 0.01);
         test.equal(m.unit, "km/liter");
         test.done();
     },
@@ -193,7 +193,7 @@ module.exports.testFuelConsumption = {
     
         m = m.localize("en-US");
     
-        test.roughlyEqual(0.001, m.amount, 2352.15);
+        test.roughlyEqual(m.amount, 2352.15, 0.001);
         test.equal(m.unit, "mpg");
         test.done();
     },
@@ -221,7 +221,7 @@ module.exports.testFuelConsumption = {
     
         m = m.localize("en-GB");
     
-        test.roughlyEqual(0.001, m.amount, 2824.81);
+        test.roughlyEqual(m.amount, 2824.81, 0.001);
         test.equal(m.unit, "mpg(imp)");
         test.done();
     },

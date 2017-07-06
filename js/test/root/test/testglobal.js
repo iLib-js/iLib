@@ -156,7 +156,7 @@ function testSetTimeZoneEmpty() {
 	ilib._platform = undefined;
 	ilib.tz = undefined;
 	if (ilib._getPlatform() === "browser") {
-	    navigator.timezone = undefined;/T
+	    navigator.timezone = undefined;
 	}
 	
 	assertEquals("local", ilib.getTimeZone());

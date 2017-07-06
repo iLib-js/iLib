@@ -56,7 +56,7 @@ module.exports.testtime = {
         test.ok(m1 !== null);
         test.ok(m2 !== null);
     
-        test.roughlyEqual(0.1, m2.getAmount(), 1.0);
+        test.roughlyEqual(m2.getAmount(), 1.0, 0.1);
         test.done();
     },
     
@@ -137,7 +137,7 @@ module.exports.testtime = {
     
         m = m.scale();
     
-        test.roughlyEqual(0.1, m.amount, 2.8706979);
+        test.roughlyEqual(m.amount, 2.8706979, 0.1);
         test.equal(m.unit, "decade");
         test.done();
     },
@@ -151,7 +151,7 @@ module.exports.testtime = {
     
         m = m.scale();
     
-        test.roughlyEqual(0.001, m.amount, 10);
+        test.roughlyEqual(m.amount, 10, 0.001);
         test.equal(m.unit, "century");
         test.done();
     },
@@ -165,7 +165,7 @@ module.exports.testtime = {
     
         m = m.scale();
     
-        test.roughlyEqual(0.001, m.amount, 5);
+        test.roughlyEqual(m.amount, 5, 0.001);
         test.equal(m.unit, "day");
         test.done();
     },

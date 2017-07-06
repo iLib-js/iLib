@@ -538,7 +538,7 @@ module.exports.testmeasurement = {
                 unit: "celsius",
                 amount: m1
             });
-        test.fail()
+            test.fail();
         } catch (e) {
             test.equal(e, "Cannot convert unit meter to a temperature");
         }

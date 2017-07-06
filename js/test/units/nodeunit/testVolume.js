@@ -112,21 +112,21 @@ module.exports.testVolume = {
         test.expect(1);
         var m = VolumeUnit.convert("cubic meter", "gallon", 2.0);
     
-        test.roughlyEqual(0.0001, m, 0.00757082);
+        test.roughlyEqual(m, 0.00757082, 0.0001);
         test.done();
     },
     testVolumeStaticConvert8: function(test) {
         test.expect(1);
         var m = VolumeUnit.convert("liter", "gallon", 2.0);
     
-        test.roughlyEqual(0.0001, m, 7.57082);
+        test.roughlyEqual(m, 7.57082, 0.0001);
         test.done();
     },
     testVolumeStaticConvert9: function(test) {
         test.expect(1);
         var m = VolumeUnit.convert("milliliter", "gallon", 2.0);
     
-        test.roughlyEqual(0.01, m, 7570.82);
+        test.roughlyEqual(m, 7570.82, 0.01);
         test.done();
     },
     
@@ -134,28 +134,28 @@ module.exports.testVolume = {
         test.expect(1);
         var m = VolumeUnit.convert("imperial gallon", "gallon", 2.0);
     
-        test.roughlyEqual(0.0001, m, 1.66535);
+        test.roughlyEqual(m, 1.66535, 0.0001);
         test.done();
     },
     testVolumeStaticConvert11: function(test) {
         test.expect(1);
         var m = VolumeUnit.convert("imperial quart", "gallon", 2.0);
     
-        test.roughlyEqual(0.001, m, 6.66139);
+        test.roughlyEqual(m, 6.66139, 0.001);
         test.done();
     },
     testVolumeStaticConvert12: function(test) {
         test.expect(1);
         var m = VolumeUnit.convert("imperial pint", "gallon", 2.0);
     
-        test.roughlyEqual(0.001, m, 13.3228);
+        test.roughlyEqual(m, 13.3228, 0.001);
         test.done();
     },
     testVolumeStaticConvert13: function(test) {
         test.expect(1);
         var m = VolumeUnit.convert("imperial ounce", "gallon", 2.0);
     
-        test.roughlyEqual(0.01, m, 266.456);
+        test.roughlyEqual(m, 266.456, 0.01);
         test.done();
     },
     
@@ -163,21 +163,21 @@ module.exports.testVolume = {
         test.expect(1);
         var m = VolumeUnit.convert("imperial tbsp", "gallon", 2.0);
     
-        test.roughlyEqual(0.01, m, 426.329);
+        test.roughlyEqual(m, 426.329, 0.01);
         test.done();
     },
     testVolumeStaticConvert15: function(test) {
         test.expect(1);
         var m = VolumeUnit.convert("imperial tsp", "gallon", 2.0);
     
-        test.roughlyEqual(0.01, m, 1278.99);
+        test.roughlyEqual(m, 1278.99, 0.01);
         test.done();
     },
     testVolumeStaticConvert16: function(test) {
         test.expect(1);
         var m = VolumeUnit.convert("cubic foot", "gallon", 2.0);
     
-        test.roughlyEqual(0.0001, m, 0.267361);
+        test.roughlyEqual(m, 0.267361, 0.0001);
         test.done();
     },
     testVolumeStaticConvert17: function(test) {
@@ -247,21 +247,21 @@ module.exports.testVolume = {
         test.expect(1);
         var m = VolumeUnit.convert("cubic meter", "quart", 2.0);
     
-        test.roughlyEqual(0.0001, m, 0.00189271);
+        test.roughlyEqual(m, 0.00189271, 0.0001);
         test.done();
     },
     testVolumeStaticConvert26: function(test) {
         test.expect(1);
         var m = VolumeUnit.convert("liter", "quart", 2.0);
     
-        test.roughlyEqual(0.0001, m, 1.89271);
+        test.roughlyEqual(m, 1.89271, 0.0001);
         test.done();
     },
     testVolumeStaticConvert27: function(test) {
         test.expect(1);
         var m = VolumeUnit.convert("milliliter", "quart", 2.0);
     
-        test.roughlyEqual(0.01, m, 1892.71);
+        test.roughlyEqual(m, 1892.71, 0.01);
         test.done();
     },
     
@@ -269,28 +269,28 @@ module.exports.testVolume = {
         test.expect(1);
         var m = VolumeUnit.convert("imperial gallon", "quart", 2.0);
     
-        test.roughlyEqual(0.0001, m, 0.416337);
+        test.roughlyEqual(m, 0.416337, 0.0001);
         test.done();
     },
     testVolumeStaticConvert29: function(test) {
         test.expect(1);
         var m = VolumeUnit.convert("imperial quart", "quart", 2.0);
     
-        test.roughlyEqual(0.0001, m, 1.66535);
+        test.roughlyEqual(m, 1.66535, 0.0001);
         test.done();
     },
     testVolumeStaticConvert30: function(test) {
         test.expect(1);
         var m = VolumeUnit.convert("imperial pint", "quart", 2.0);
     
-        test.roughlyEqual(0.001, m, 3.3307);
+        test.roughlyEqual(m, 3.3307, 0.001);
         test.done();
     },
     testVolumeStaticConvert31: function(test) {
         test.expect(1);
         var m = VolumeUnit.convert("imperial ounce", "quart", 2.0);
     
-        test.roughlyEqual(0.001, m, 66.6139);
+        test.roughlyEqual(m, 66.6139, 0.001);
         test.done();
     },
     
@@ -298,35 +298,35 @@ module.exports.testVolume = {
         test.expect(1);
         var m = VolumeUnit.convert("imperial tbsp", "quart", 2.0);
     
-        test.roughlyEqual(0.01, m, 106.582);
+        test.roughlyEqual(m, 106.582, 0.01);
         test.done();
     },
     testVolumeStaticConvert33: function(test) {
         test.expect(1);
         var m = VolumeUnit.convert("imperial tsp", "quart", 2.0);
     
-        test.roughlyEqual(0.01, m, 319.747);
+        test.roughlyEqual(m, 319.747, 0.01);
         test.done();
     },
     testVolumeStaticConvert34: function(test) {
         test.expect(1);
         var m = VolumeUnit.convert("cubic foot", "quart", 2.0);
     
-        test.roughlyEqual(0.0001, m, 0.0668403);
+        test.roughlyEqual(m, 0.0668403, 0.0001);
         test.done();
     },
     testVolumeStaticConvert35: function(test) {
         test.expect(1);
         var m = VolumeUnit.convert("cubic inch", "quart", 2.0);
     
-        test.roughlyEqual(0.0001, m, 115.5);
+        test.roughlyEqual(m, 115.5, 0.0001);
         test.done();
     },
     testVolumeStaticConvert36: function(test) {
         test.expect(1);
         var m = VolumeUnit.convert("in^3", "quart", 2.0);
     
-        test.roughlyEqual(0.1, m, 115.5);
+        test.roughlyEqual(m, 115.5, 0.1);
         test.done();
     },
     
@@ -382,21 +382,21 @@ module.exports.testVolume = {
         test.expect(1);
         var m = VolumeUnit.convert("cubic meter", "pint", 2.0);
     
-        test.roughlyEqual(0.0001, m, 0.000946353);
+        test.roughlyEqual(m, 0.000946353, 0.0001);
         test.done();
     },
     testVolumeStaticConvert44: function(test) {
         test.expect(1);
         var m = VolumeUnit.convert("liter", "pint", 2.0);
     
-        test.roughlyEqual(0.0001, m, 0.946353);
+        test.roughlyEqual(m, 0.946353, 0.0001);
         test.done();
     },
     testVolumeStaticConvert45: function(test) {
         test.expect(1);
         var m = VolumeUnit.convert("milliliter", "pint", 2.0);
     
-        test.roughlyEqual(0.01, m, 946.353);
+        test.roughlyEqual(m, 946.353, 0.01);
         test.done();
     },
     
@@ -404,28 +404,28 @@ module.exports.testVolume = {
         test.expect(1);
         var m = VolumeUnit.convert("imperial gallon", "pint", 2.0);
     
-        test.roughlyEqual(0.0001, m, 0.208168);
+        test.roughlyEqual(m, 0.208168, 0.0001);
         test.done();
     },
     testVolumeStaticConvert47: function(test) {
         test.expect(1);
         var m = VolumeUnit.convert("imperial quart", "pint", 2.0);
     
-        test.roughlyEqual(0.0001, m, 0.832674);
+        test.roughlyEqual(m, 0.832674, 0.0001);
         test.done();
     },
     testVolumeStaticConvert48: function(test) {
         test.expect(1);
         var m = VolumeUnit.convert("imperial pint", "pint", 2.0);
     
-        test.roughlyEqual(0.001, m, 1.66535);
+        test.roughlyEqual(m, 1.66535, 0.001);
         test.done();
     },
     testVolumeStaticConvert49: function(test) {
         test.expect(1);
         var m = VolumeUnit.convert("imperial ounce", "pint", 2.0);
     
-        test.roughlyEqual(0.001, m, 33.307);
+        test.roughlyEqual(m, 33.307, 0.001);
         test.done();
     },
     
@@ -433,35 +433,35 @@ module.exports.testVolume = {
         test.expect(1);
         var m = VolumeUnit.convert("imperial tbsp", "pint", 2.0);
     
-        test.roughlyEqual(0.01, m, 53.2911);
+        test.roughlyEqual(m, 53.2911, 0.01);
         test.done();
     },
     testVolumeStaticConvert51: function(test) {
         test.expect(1);
         var m = VolumeUnit.convert("imperial tsp", "pint", 2.0);
     
-        test.roughlyEqual(0.01, m, 159.873);
+        test.roughlyEqual(m, 159.873, 0.01);
         test.done();
     },
     testVolumeStaticConvert52: function(test) {
         test.expect(1);
         var m = VolumeUnit.convert("cubic foot", "pint", 2.0);
     
-        test.roughlyEqual(0.0001, m, 0.0334201);
+        test.roughlyEqual(m, 0.0334201, 0.0001);
         test.done();
     },
     testVolumeStaticConvert53: function(test) {
         test.expect(1);
         var m = VolumeUnit.convert("cubic inch", "pint", 2.0);
     
-        test.roughlyEqual(0.0001, m, 57.75);
+        test.roughlyEqual(m, 57.75, 0.0001);
         test.done();
     },
     testVolumeStaticConvert54: function(test) {
         test.expect(1);
         var m = VolumeUnit.convert("in^3", "pint", 2.0);
     
-        test.roughlyEqual(0.1, m, 57.75);
+        test.roughlyEqual(m, 57.75, 0.1);
         test.done();
     },
     
@@ -469,28 +469,28 @@ module.exports.testVolume = {
         test.expect(1);
         var m = VolumeUnit.convert("gallon", "cup", 2.0);
     
-        test.roughlyEqual(0.01, m, 0.125);
+        test.roughlyEqual(m, 0.125, 0.01);
         test.done();
     },
     testVolumeStaticConvert62: function(test) {
         test.expect(1);
         var m = VolumeUnit.convert("cubic meter", "cup", 2.0);
     
-        test.roughlyEqual(0.0001, m, 0.000473176);
+        test.roughlyEqual(m, 0.000473176, 0.0001);
         test.done();
     },
     testVolumeStaticConvert63: function(test) {
         test.expect(1);
         var m = VolumeUnit.convert("imperial pint", "cup", 2.0);
     
-        test.roughlyEqual(0.0001, m, 0.832674);
+        test.roughlyEqual(m, 0.832674, 0.0001);
         test.done();
     },
     testVolumeStaticConvert64: function(test) {
         test.expect(1);
         var m = VolumeUnit.convert("in^3", "cup", 2.0);
     
-        test.roughlyEqual(0.1, m, 28.875);
+        test.roughlyEqual(m, 28.875, 0.1);
         test.done();
     },
     
@@ -498,7 +498,7 @@ module.exports.testVolume = {
         test.expect(1);
         var m = VolumeUnit.convert("cubic inch", "cup", 2.0);
     
-        test.roughlyEqual(0.1, m, 28.875);
+        test.roughlyEqual(m, 28.875, 0.1);
         test.done();
     },
     
@@ -506,28 +506,28 @@ module.exports.testVolume = {
         test.expect(1);
         var m = VolumeUnit.convert("gallon", "us ounce", 2.0);
     
-        test.roughlyEqual(0.01, m, 0.015625);
+        test.roughlyEqual(m, 0.015625, 0.01);
         test.done();
     },
     testVolumeStaticConvert92: function(test) {
         test.expect(1);
         var m = VolumeUnit.convert("cubic meter", "us ounce", 2.0);
     
-        test.roughlyEqual(0.0001, m, 5.9147e-5);
+        test.roughlyEqual(m, 5.9147e-5, 0.0001);
         test.done();
     },
     testVolumeStaticConvert93: function(test) {
         test.expect(1);
         var m = VolumeUnit.convert("imperial pint", "us ounce", 2.0);
     
-        test.roughlyEqual(0.0001, m, 0.104084);
+        test.roughlyEqual(m, 0.104084, 0.0001);
         test.done();
     },
     testVolumeStaticConvert94: function(test) {
         test.expect(1);
         var m = VolumeUnit.convert("in^3", "us ounce", 2.0);
     
-        test.roughlyEqual(0.1, m, 3.60938);
+        test.roughlyEqual(m, 3.60938, 0.1);
         test.done();
     },
     
@@ -535,7 +535,7 @@ module.exports.testVolume = {
         test.expect(1);
         var m = VolumeUnit.convert("cubic inch", "us ounce", 2.0);
     
-        test.roughlyEqual(0.1, m, 3.60938);
+        test.roughlyEqual(m, 3.60938, 0.1);
         test.done();
     },
     
@@ -543,28 +543,28 @@ module.exports.testVolume = {
         test.expect(1);
         var m = VolumeUnit.convert("gallon", "tbsp", 2.0);
     
-        test.roughlyEqual(0.01, m, 0.0078125);
+        test.roughlyEqual(m, 0.0078125, 0.01);
         test.done();
     },
     testVolumeStaticConvert122: function(test) {
         test.expect(1);
         var m = VolumeUnit.convert("cubic meter", "tbsp", 2.0);
     
-        test.roughlyEqual(0.0001, m, 2.9574e-5);
+        test.roughlyEqual(m, 2.9574e-5, 0.0001);
         test.done();
     },
     testVolumeStaticConvert123: function(test) {
         test.expect(1);
         var m = VolumeUnit.convert("imperial pint", "tbsp", 2.0);
     
-        test.roughlyEqual(0.0001, m, 0.0520421);
+        test.roughlyEqual(m, 0.0520421, 0.0001);
         test.done();
     },
     testVolumeStaticConvert124: function(test) {
         test.expect(1);
         var m = VolumeUnit.convert("in^3", "tbsp", 2.0);
     
-        test.roughlyEqual(0.1, m, 1.80469);
+        test.roughlyEqual(m, 1.80469, 0.1);
         test.done();
     },
     
@@ -572,7 +572,7 @@ module.exports.testVolume = {
         test.expect(1);
         var m = VolumeUnit.convert("cubic inch", "tbsp", 2.0);
     
-        test.roughlyEqual(0.1, m, 1.80469);
+        test.roughlyEqual(m, 1.80469, 0.1);
         test.done();
     },
     
@@ -580,28 +580,28 @@ module.exports.testVolume = {
         test.expect(1);
         var m = VolumeUnit.convert("gallon", "tsp", 2.0);
     
-        test.roughlyEqual(0.01, m, 0.00260417);
+        test.roughlyEqual(m, 0.00260417, 0.01);
         test.done();
     },
     testVolumeStaticConvert152: function(test) {
         test.expect(1);
         var m = VolumeUnit.convert("cubic meter", "tsp", 2.0);
     
-        test.roughlyEqual(0.0001, m, 9.8578e-6);
+        test.roughlyEqual(m, 9.8578e-6, 0.0001);
         test.done();
     },
     testVolumeStaticConvert153: function(test) {
         test.expect(1);
         var m = VolumeUnit.convert("imperial pint", "tsp", 2.0);
     
-        test.roughlyEqual(0.0001, m, 0.0173474);
+        test.roughlyEqual(m, 0.0173474, 0.0001);
         test.done();
     },
     testVolumeStaticConvert154: function(test) {
         test.expect(1);
         var m = VolumeUnit.convert("in^3", "tsp", 2.0);
     
-        test.roughlyEqual(0.1, m, 0.601563);
+        test.roughlyEqual(m, 0.601563, 0.1);
         test.done();
     },
     
@@ -609,7 +609,7 @@ module.exports.testVolume = {
         test.expect(1);
         var m = VolumeUnit.convert("cubic inch", "tsp", 2.0);
     
-        test.roughlyEqual(0.1, m, 0.601563);
+        test.roughlyEqual(m, 0.601563, 0.1);
         test.done();
     },
     
@@ -617,7 +617,7 @@ module.exports.testVolume = {
         test.expect(1);
         var m = VolumeUnit.convert("gallon", "cubic meter", 2.0);
     
-        test.roughlyEqual(0.01, m, 528.344);
+        test.roughlyEqual(m, 528.344, 0.01);
         test.done();
     },
     testVolumeStaticConvert182: function(test) {
@@ -632,14 +632,14 @@ module.exports.testVolume = {
         var m = VolumeUnit
             .convert("imperial pint", "cubic meter", 2.0);
     
-        test.roughlyEqual(0.1, m, 3519.51);
+        test.roughlyEqual(m, 3519.51, 0.1);
         test.done();
     },
     testVolumeStaticConvert184: function(test) {
         test.expect(1);
         var m = VolumeUnit.convert("in^3", "cubic meter", 2.0);
     
-        test.roughlyEqual(1, m, 122047);
+        test.roughlyEqual(m, 122047, 1);
         test.done();
     },
     
@@ -647,7 +647,7 @@ module.exports.testVolume = {
         test.expect(1);
         var m = VolumeUnit.convert("cubic inch", "cubic meter", 2.0);
     
-        test.roughlyEqual(1, m, 122047);
+        test.roughlyEqual(m, 122047, 1);
         test.done();
     },
     
@@ -655,28 +655,28 @@ module.exports.testVolume = {
         test.expect(1);
         var m = VolumeUnit.convert("gallon", "liter", 2.0);
     
-        test.roughlyEqual(0.01, m, 0.528344);
+        test.roughlyEqual(m, 0.528344, 0.01);
         test.done();
     },
     testVolumeStaticConvert202: function(test) {
         test.expect(1);
         var m = VolumeUnit.convert("cubic meter", "liter", 2.0);
     
-        test.roughlyEqual(0.0001, m, 0.002);
+        test.roughlyEqual(m, 0.002, 0.0001);
         test.done();
     },
     testVolumeStaticConvert203: function(test) {
         test.expect(1);
         var m = VolumeUnit.convert("imperial pint", "liter", 2.0);
     
-        test.roughlyEqual(0.0001, m, 3.51951);
+        test.roughlyEqual(m, 3.51951, 0.0001);
         test.done();
     },
     testVolumeStaticConvert204: function(test) {
         test.expect(1);
         var m = VolumeUnit.convert("in^3", "liter", 2.0);
     
-        test.roughlyEqual(0.1, m, 122.047);
+        test.roughlyEqual(m, 122.047, 0.1);
         test.done();
     },
     
@@ -684,7 +684,7 @@ module.exports.testVolume = {
         test.expect(1);
         var m = VolumeUnit.convert("cubic inch", "liter", 2.0);
     
-        test.roughlyEqual(0.1, m, 122.047);
+        test.roughlyEqual(m, 122.047, 0.1);
         test.done();
     },
     
@@ -692,7 +692,7 @@ module.exports.testVolume = {
         test.expect(1);
         var m = VolumeUnit.convert("gallon", "milliliter", 2.0);
     
-        test.roughlyEqual(0.01, m, 0.000528344);
+        test.roughlyEqual(m, 0.000528344, 0.01);
         test.done();
     },
     testVolumeStaticConvert232: function(test) {
@@ -706,14 +706,14 @@ module.exports.testVolume = {
         test.expect(1);
         var m = VolumeUnit.convert("imperial pint", "milliliter", 2.0);
     
-        test.roughlyEqual(0.0001, m, 0.00351951);
+        test.roughlyEqual(m, 0.00351951, 0.0001);
         test.done();
     },
     testVolumeStaticConvert234: function(test) {
         test.expect(1);
         var m = VolumeUnit.convert("in^3", "milliliter", 2.0);
     
-        test.roughlyEqual(0.1, m, 0.122047);
+        test.roughlyEqual(m, 0.122047, 0.1);
         test.done();
     },
     
@@ -721,7 +721,7 @@ module.exports.testVolume = {
         test.expect(1);
         var m = VolumeUnit.convert("cubic inch", "milliliter", 2.0);
     
-        test.roughlyEqual(0.1, m, 0.122047);
+        test.roughlyEqual(m, 0.122047, 0.1);
         test.done();
     },
     
@@ -729,7 +729,7 @@ module.exports.testVolume = {
         test.expect(1);
         var m = VolumeUnit.convert("gallon", "imperial gallon", 2.0);
     
-        test.roughlyEqual(0.01, m, 2.4019);
+        test.roughlyEqual(m, 2.4019, 0.01);
         test.done();
     },
     testVolumeStaticConvert262: function(test) {
@@ -737,7 +737,7 @@ module.exports.testVolume = {
         var m = VolumeUnit.convert("milliliter", "imperial gallon",
             2.0);
     
-        test.roughlyEqual(0.0001, m, 9092.18);
+        test.roughlyEqual(m, 9092.18, 0.0001);
         test.done();
     },
     testVolumeStaticConvert263: function(test) {
@@ -752,7 +752,7 @@ module.exports.testVolume = {
         test.expect(1);
         var m = VolumeUnit.convert("in^3", "imperial gallon", 2.0);
     
-        test.roughlyEqual(0.1, m, 554.839);
+        test.roughlyEqual(m, 554.839, 0.1);
         test.done();
     },
     
@@ -761,7 +761,7 @@ module.exports.testVolume = {
         var m = VolumeUnit.convert("cubic inch", "imperial gallon",
             2.0);
     
-        test.roughlyEqual(0.1, m, 554.839);
+        test.roughlyEqual(m, 554.839, 0.1);
         test.done();
     },
     
@@ -769,7 +769,7 @@ module.exports.testVolume = {
         test.expect(1);
         var m = VolumeUnit.convert("gallon", "imperial quart", 2.0);
     
-        test.roughlyEqual(0.01, m, 0.600475);
+        test.roughlyEqual(m, 0.600475, 0.01);
         test.done();
     },
     testVolumeStaticConvert292: function(test) {
@@ -777,7 +777,7 @@ module.exports.testVolume = {
         var m = VolumeUnit.convert("cubic meter", "imperial quart",
             2.0);
     
-        test.roughlyEqual(0.0001, m, 0.00227305);
+        test.roughlyEqual(m, 0.00227305, 0.0001);
         test.done();
     },
     testVolumeStaticConvert293: function(test) {
@@ -785,14 +785,14 @@ module.exports.testVolume = {
         var m = VolumeUnit.convert("imperial pint", "imperial quart",
             2.0);
     
-        test.roughlyEqual(0.0001, m, 4);
+        test.roughlyEqual(m, 4, 0.0001);
         test.done();
     },
     testVolumeStaticConvert294: function(test) {
         test.expect(1);
         var m = VolumeUnit.convert("in^3", "imperial quart", 2.0);
     
-        test.roughlyEqual(0.1, m, 138.71);
+        test.roughlyEqual(m, 138.71, 0.1);
         test.done();
     },
     
@@ -801,7 +801,7 @@ module.exports.testVolume = {
         var m = VolumeUnit
             .convert("cubic inch", "imperial quart", 2.0);
     
-        test.roughlyEqual(0.1, m, 138.71);
+        test.roughlyEqual(m, 138.71, 0.1);
         test.done();
     },
     
@@ -809,14 +809,14 @@ module.exports.testVolume = {
         test.expect(1);
         var m = VolumeUnit.convert("gallon", "imperial pint", 2.0);
     
-        test.roughlyEqual(0.01, m, 0.300238);
+        test.roughlyEqual(m, 0.300238, 0.01);
         test.done();
     },
     testVolumeStaticConvert312: function(test) {
         test.expect(1);
         var m = VolumeUnit.convert("milliliter", "imperial pint", 2.0);
     
-        test.roughlyEqual(0.01, m, 1136.52);
+        test.roughlyEqual(m, 1136.52, 0.01);
         test.done();
     },
     testVolumeStaticConvert313: function(test) {
@@ -831,7 +831,7 @@ module.exports.testVolume = {
         test.expect(1);
         var m = VolumeUnit.convert("in^3", "imperial pint", 2.0);
     
-        test.roughlyEqual(0.1, m, 69.3549);
+        test.roughlyEqual(m, 69.3549, 0.1);
         test.done();
     },
     
@@ -839,7 +839,7 @@ module.exports.testVolume = {
         test.expect(1);
         var m = VolumeUnit.convert("cubic inch", "imperial pint", 2.0);
     
-        test.roughlyEqual(0.1, m, 69.3549);
+        test.roughlyEqual(m, 69.3549, 0.1);
         test.done();
     },
     
@@ -847,7 +847,7 @@ module.exports.testVolume = {
         test.expect(1);
         var m = VolumeUnit.convert("gallon", "imperial ounce", 2.0);
     
-        test.roughlyEqual(0.01, m, 0.0150119);
+        test.roughlyEqual(m, 0.0150119, 0.01);
         test.done();
     },
     testVolumeStaticConvert332: function(test) {
@@ -855,7 +855,7 @@ module.exports.testVolume = {
         var m = VolumeUnit.convert("imperial pint", "imperial ounce",
             2.0);
     
-        test.roughlyEqual(0.1, m, 0.1);
+        test.roughlyEqual(m, 0.1, 0.1);
         test.done();
     },
     testVolumeStaticConvert333: function(test) {
@@ -863,14 +863,14 @@ module.exports.testVolume = {
         var m = VolumeUnit
             .convert("milliliter", "imperial ounce", 2.0);
     
-        test.roughlyEqual(0.001, m, 56.8261);
+        test.roughlyEqual(m, 56.8261, 0.001);
         test.done();
     },
     testVolumeStaticConvert334: function(test) {
         test.expect(1);
         var m = VolumeUnit.convert("in^3", "imperial ounce", 2.0);
     
-        test.roughlyEqual(0.1, m, 3.46774);
+        test.roughlyEqual(m, 3.46774, 0.1);
         test.done();
     },
     
@@ -879,7 +879,7 @@ module.exports.testVolume = {
         var m = VolumeUnit
             .convert("cubic inch", "imperial ounce", 2.0);
     
-        test.roughlyEqual(0.1, m, 3.46774);
+        test.roughlyEqual(m, 3.46774, 0.1);
         test.done();
     },
     
@@ -891,7 +891,7 @@ module.exports.testVolume = {
         });
         var m2 = m1.scale("uscustomary");
     
-        test.roughlyEqual(0.00001, m2.amount, 1.30208);
+        test.roughlyEqual(m2.amount, 1.30208, 0.00001);
         test.equal(m2.unit, "gallon");
         test.done();
     },
@@ -917,7 +917,7 @@ module.exports.testVolume = {
         });
         var m2 = m1.scale("imperial");
     
-        test.roughlyEqual(0.01, m2.amount, 9.375);
+        test.roughlyEqual(m2.amount, 9.375, 0.01);
         test.equal(m2.unit, "imperial gallon");
         test.done();
     },
@@ -930,7 +930,7 @@ module.exports.testVolume = {
         });
         var m2 = m1.scale("imperial");
     
-        test.roughlyEqual(0.01, m2.amount, 100);
+        test.roughlyEqual(m2.amount, 100, 0.01);
         test.equal(m2.unit, "imperial gallon");
         test.done();
     },
@@ -943,7 +943,7 @@ module.exports.testVolume = {
         });
         var m2 = m1.scale("uscustomary");
     
-        test.roughlyEqual(0.000001, m2.amount, 1.566569);
+        test.roughlyEqual(m2.amount, 1.566569, 0.000001);
         test.equal(m2.unit, "cubic foot");
         test.done();
     },
@@ -956,7 +956,7 @@ module.exports.testVolume = {
         });
         var m2 = m1.scale("metric");
     
-        test.roughlyEqual(0.01, m2.amount, 1.57);
+        test.roughlyEqual(m2.amount, 1.57, 0.01);
         test.equal(m2.unit, "cubic meter");
         test.done();
     },
@@ -970,7 +970,7 @@ module.exports.testVolume = {
     
         m = m.localize("en-IN");
     
-        test.roughlyEqual(0.01, m.amount, 4928.92);
+        test.roughlyEqual(m.amount, 4928.92, 0.01);
         test.equal(m.unit, "milliliter");
         test.done();
     },
@@ -984,7 +984,7 @@ module.exports.testVolume = {
     
         m = m.localize("en-US");
     
-        test.roughlyEqual(0.001, m.amount, 1056.69);
+        test.roughlyEqual(m.amount, 1056.69, 0.001);
         test.equal(m.unit, "quart");
         test.done();
     },
@@ -998,7 +998,7 @@ module.exports.testVolume = {
     
         m = m.localize("en-GB");
     
-        test.roughlyEqual(0.0001, m.amount, 879.877);
+        test.roughlyEqual(m.amount, 879.877, 0.0001);
         test.equal(m.unit, "imperial quart");
         test.done();
     },
@@ -1012,7 +1012,7 @@ module.exports.testVolume = {
     
         m = m.localize("en-GB");
     
-        test.roughlyEqual(0.001, m.amount, 1040.84);
+        test.roughlyEqual(m.amount, 1040.84, 0.001);
         test.equal(m.unit, "imperial ounce");
         test.done();
     },

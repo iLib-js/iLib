@@ -506,7 +506,7 @@ module.exports.testgregoriandate = {
         for (var i = 0; i < testDatesGregorian.length; i++) {
             gd = new GregorianDate({julianday: testDatesGregorian[i][0], timezone: "Etc/UTC"});
         
-        // console.log("testing jd=" + testDatesGregorian[i][0]);
+            // console.log("testing jd=" + testDatesGregorian[i][0]);
             
             test.equal(typeof(gd), 'object');
             test.equal(gd.getYears(), testDatesGregorian[i][1]);
@@ -645,7 +645,7 @@ module.exports.testgregoriandate = {
                 timezone: "Etc/UTC"
             });
         
-        // console.log("testing jd=" + testDatesGregorian[i][0]);
+            // console.log("testing jd=" + testDatesGregorian[i][0]);
             
             test.equal(typeof(gd), 'object');
             test.equal(gd.getJulianDay(), testDatesGregorian[i][0]);
@@ -2413,7 +2413,7 @@ module.exports.testgregoriandate = {
         var d = new Date();
         test.ok(gd !== null);
         
-        test.roughlyEqual(30, gd.getTime(), d.getTime());
+        test.roughlyEqual(gd.getTime(), d.getTime(), 30);
         test.done();
     },
     
@@ -2563,7 +2563,7 @@ module.exports.testgregoriandate = {
         
         test.ok(gd !== null);
         
-        test.roughlyEqual(100, gd.getTime(), d.getTime());
+        test.roughlyEqual(gd.getTime(), d.getTime(), 100);
         test.done();
     },
     

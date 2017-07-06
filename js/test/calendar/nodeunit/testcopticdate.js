@@ -557,7 +557,7 @@ module.exports.testcopticdate = {
         var cd;
         
         for (var i = 0; i < testDatesCoptic.length; i++) {
-        // console.log("testing jd=" + testDatesCoptic[i][0] + " and date of " + JSON.stringify(cd));
+            // console.log("testing jd=" + testDatesCoptic[i][0] + " and date of " + JSON.stringify(cd));
             
             cd = new CopticDate({
                 julianday: testDatesCoptic[i][0], 
@@ -574,7 +574,7 @@ module.exports.testcopticdate = {
         var cd;
         
         for (var i = 0; i < testDatesCoptic.length; i++) {
-        // console.log("testing jd=" + testDatesCoptic[i][0] + " and date of " + JSON.stringify(cd));
+            // console.log("testing jd=" + testDatesCoptic[i][0] + " and date of " + JSON.stringify(cd));
             
             cd = new CopticDate({
                 julianday: testDatesCoptic[i][0], 
@@ -591,7 +591,7 @@ module.exports.testcopticdate = {
         var cd;
         
         for (var i = 0; i < testDatesCoptic.length; i++) {
-        // console.log("testing jd=" + testDatesCoptic[i][0] + " and date of " + JSON.stringify(cd));
+            // console.log("testing jd=" + testDatesCoptic[i][0] + " and date of " + JSON.stringify(cd));
             cd = new CopticDate({
                 julianday: testDatesCoptic[i][0], 
                 timezone: "Etc/UTC"
@@ -607,7 +607,7 @@ module.exports.testcopticdate = {
         var cd;
         
         for (var i = 0; i < testDatesCoptic.length; i++) {
-        // console.log("testing jd=" + testDatesCoptic[i][0] + " and date of " + JSON.stringify(cd));
+            // console.log("testing jd=" + testDatesCoptic[i][0] + " and date of " + JSON.stringify(cd));
             
             cd = new CopticDate({
                 julianday: testDatesCoptic[i][0], 
@@ -624,7 +624,7 @@ module.exports.testcopticdate = {
         var cd;
         
         for (var i = 0; i < testDatesCoptic.length; i++) {
-        // console.log("testing jd=" + testDatesCoptic[i][0] + " and date of " + JSON.stringify(cd));
+            // console.log("testing jd=" + testDatesCoptic[i][0] + " and date of " + JSON.stringify(cd));
             
             cd = new CopticDate({
                 julianday: testDatesCoptic[i][0], 
@@ -641,7 +641,7 @@ module.exports.testcopticdate = {
         var cd;
         
         for (var i = 0; i < testDatesCoptic.length; i++) {
-        // console.log("testing jd=" + testDatesCoptic[i][0] + " and date of " + JSON.stringify(cd));
+            // console.log("testing jd=" + testDatesCoptic[i][0] + " and date of " + JSON.stringify(cd));
             
             cd = new CopticDate({
                 julianday: testDatesCoptic[i][0], 
@@ -735,7 +735,7 @@ module.exports.testcopticdate = {
         var cd;
         
         for (var i = 0; i < testDatesCoptic.length; i++) {
-        // console.log("testing jd=" + testDatesCoptic[i][0] + " and date " + JSON.stringify(cd));
+            // console.log("testing jd=" + testDatesCoptic[i][0] + " and date " + JSON.stringify(cd));
             
             cd = new CopticDate({
                 year: testDatesCoptic[i][1], 
@@ -749,7 +749,7 @@ module.exports.testcopticdate = {
             });
         
             test.equal(typeof(cd), 'object');
-        // console.log("calculated julian day is " + cd.getJulianDay());
+            // console.log("calculated julian day is " + cd.getJulianDay());
             test.equal(cd.getJulianDay(), testDatesCoptic[i][0]);
             test.equal(cd.getDayOfWeek(), testDatesCoptic[i][8]);
         }
@@ -1046,7 +1046,7 @@ module.exports.testcopticdate = {
         var d = new Date();
         test.ok(cd !== null);
         
-        test.roughlyEqual(50, cd.getTime(), d.getTime());
+        test.roughlyEqual(cd.getTime(), d.getTime(), 50);
         test.done();
     },
     

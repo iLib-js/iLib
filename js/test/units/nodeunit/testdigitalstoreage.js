@@ -57,7 +57,7 @@ module.exports.testdigitalstoreage = {
         test.ok(m1 !== null);
         test.ok(m2 !== null);
     
-        test.roughlyEqual(1e-7, m2.getAmount(), 100);
+        test.roughlyEqual(m2.getAmount(), 100, 1e-7);
         test.done();
     },
     
@@ -65,7 +65,7 @@ module.exports.testdigitalstoreage = {
         test.expect(1);
         var m = DigitalStorageUnit.convert("bit", "kilobits", 12024);
     
-        test.roughlyEqual(0.01, m, 12312576);
+        test.roughlyEqual(m, 12312576, 0.01);
         test.done();
     },
     
@@ -73,7 +73,7 @@ module.exports.testdigitalstoreage = {
         test.expect(1);
         var m = DigitalStorageUnit.convert("gigabyte", "petabyte", "1");
     
-        test.roughlyEqual(0.001, m, 1048576);
+        test.roughlyEqual(m, 1048576, 0.001);
         test.done();
     },
     
@@ -81,7 +81,7 @@ module.exports.testdigitalstoreage = {
         test.expect(1);
         var m = DigitalStorageUnit.convert("tB", "gB", 10240);
     
-        test.roughlyEqual(1e-8, m, 10);
+        test.roughlyEqual(m, 10, 1e-8);
         test.done();
     },
     
@@ -89,7 +89,7 @@ module.exports.testdigitalstoreage = {
         test.expect(1);
         var m = DigitalStorageUnit.convert("mb", "byte", 1048576);
     
-        test.roughlyEqual(1e-9, m, 8);
+        test.roughlyEqual(m, 8, 1e-9);
         test.done();
     },
     
@@ -97,7 +97,7 @@ module.exports.testdigitalstoreage = {
         test.expect(1);
         var m = DigitalStorageUnit.convert("Pb", "tb", 1024);
     
-        test.roughlyEqual(1e-9, m, 1);
+        test.roughlyEqual(m, 1, 1e-9);
         test.done();
     },
     
@@ -105,7 +105,7 @@ module.exports.testdigitalstoreage = {
         test.expect(1);
         var m = DigitalStorageUnit.convert("megabyte", "byte", 10);
     
-        test.roughlyEqual(1e-15, m, 9.536743164e-6);
+        test.roughlyEqual(m, 9.536743164e-6, 1e-15);
         test.done();
     },
     
@@ -148,7 +148,7 @@ module.exports.testdigitalstoreage = {
         m = m.scale();
     
         // stays in the bit system
-        test.roughlyEqual(0.1, m.amount, 1000);
+        test.roughlyEqual(m.amount, 1000, 0.1);
         test.equal(m.unit, "megabit");
         test.done();
     },
@@ -162,7 +162,7 @@ module.exports.testdigitalstoreage = {
     
         m = m.scale();
     
-        test.roughlyEqual(0.001, m.amount, 9.536743163);
+        test.roughlyEqual(m.amount, 9.536743163, 0.001);
         test.equal(m.unit, "gigabit");
         test.done();
     },
@@ -176,7 +176,7 @@ module.exports.testdigitalstoreage = {
     
         m = m.scale();
     
-        test.roughlyEqual(0.001, m.amount, 100);
+        test.roughlyEqual(m.amount, 100, 0.001);
         test.equal(m.unit, "megabyte");
         test.done();
     },
@@ -224,7 +224,7 @@ module.exports.testdigitalstoreage = {
     
         m = m.scale();
     
-        test.roughlyEqual(0.000000001, m.amount, 117.73756885528564);
+        test.roughlyEqual(m.amount, 117.73756885528564, 0.000000001);
         test.equal(m.unit, "megabyte");
         test.done();
     },
@@ -266,7 +266,7 @@ module.exports.testdigitalstoreage = {
     
         m = m.localize("en-IN");
     
-        test.roughlyEqual(0.01, m.amount, 1000);
+        test.roughlyEqual(m.amount, 1000, 0.01);
         test.equal(m.unit, "petabyte");
         test.done();
     },
@@ -280,7 +280,7 @@ module.exports.testdigitalstoreage = {
     
         m = m.localize("en-US");
     
-        test.roughlyEqual(0.001, m.amount, 1000);
+        test.roughlyEqual(m.amount, 1000, 0.001);
         test.equal(m.unit, "kilobit");
         test.done();
     },
@@ -294,7 +294,7 @@ module.exports.testdigitalstoreage = {
     
         m = m.localize("en-US");
     
-        test.roughlyEqual(0.001, m.amount, 1000);
+        test.roughlyEqual(m.amount, 1000, 0.001);
         test.equal(m.unit, "megabit");
         test.done();
     },

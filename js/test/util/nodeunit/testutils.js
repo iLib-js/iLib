@@ -119,6 +119,7 @@ function mockLoader(paths, sync, params, callback) {
     return data;
 }
 
+var oldLoader = ilib._load;
 
 if (typeof(ilib) === "undefined") {
     var ilib = require("../../..");
@@ -270,31 +271,28 @@ module.exports.testutils = {
     
     testBisectionSearchSimple: function(test) {
         var actual = SearchUtils.bisectionSearch(16, 0, 10, 1e-12, function linear(x) {
-            test.done();
             return 2 * x + 5;
         });
         test.expect(1);
-        test.roughlyEqual(1e-12, actual, 5.5);
+        test.roughlyEqual(actual, 5.5, 1e-12);
         test.done();
     },
     
     testBisectionSearchMoreComplex: function(test) {
         var actual = SearchUtils.bisectionSearch(16, 0, 10, 1e-12, function square(x) {
-            test.done();
             return x * x;
         });
         test.expect(1);
-        test.roughlyEqual(1e-12, actual, 4);
+        test.roughlyEqual(actual, 4, 1e-12);
         test.done();
     },
     
     testBisectionSearchTrig: function(test) {
         var actual = SearchUtils.bisectionSearch(0.5, 0, 90, 1e-11, function sinInDegrees(x) {
-            test.done();
             return Math.sin(x * Math.PI / 180);
         });
         test.expect(1);
-        test.roughlyEqual(1e-9, actual, 30);
+        test.roughlyEqual(actual, 30, 1e-9);
         test.done();
     },
     
@@ -307,102 +305,107 @@ module.exports.testutils = {
                 ret += coeff[i] * xpow;
                 xpow *= x;
             }
-            test.done();
             return ret;
         });
-        test.roughlyEqual(1e-13, actual, -0.66666666666666);
+        test.roughlyEqual(actual, -0.66666666666666, 1e-13);
         test.done();
     },
     
     testModSimple: function(test) {
         test.expect(1);
-        test.deepEqual(4), 2, MathUtils.mod(2);
+        test.equal(MathUtils.mod(2, 4), 2);
         test.done();
     },
     
     testModWrap: function(test) {
         test.expect(1);
-        test.deepEqual(4), 2, MathUtils.mod(6);
+        test.equal(MathUtils.mod(6, 4), 2);
         test.done();
     },
     
     testModWrapNeg: function(test) {
         test.expect(1);
-        test.deepEqual(4), 2, MathUtils.mod(-6);
+        test.equal(MathUtils.mod(-6, 4), 2);
         test.done();
     },
     
     testModZeroModulus: function(test) {
         test.expect(1);
-        test.deepEqual(0), 0, MathUtils.mod(6);
+        test.equal(MathUtils.mod(6, 0), 0);
         test.done();
     },
     
     testModZeroNum: function(test) {
         test.expect(1);
-        test.deepEqual(6), 0, MathUtils.mod(0);
+        test.equal(MathUtils.mod(0, 6), 0);
         test.done();
     },
     
     testModReal: function(test) {
         test.expect(1);
-        test.roughlyEqual(4), MathUtils.mod(2.234231, 0.0000001, 2.234231);
+        var actual = MathUtils.mod(2.234231, 4);
+        test.roughlyEqual(actual, 2.234231, 0.0000001);
         test.done();
     },
     testModRealWrap: function(test) {
         test.expect(1);
-        test.roughlyEqual(4), MathUtils.mod(6.234231, 0.0000001, 2.234231);
+        var actual = MathUtils.mod(6.234231, 4);
+        test.roughlyEqual(actual, 2.234231, 0.0000001);
         test.done();
     },
     testModRealNeg: function(test) {
         test.expect(1);
-        test.roughlyEqual(4), MathUtils.mod(-6.3, 0.0000001, 1.7);
+        var actual = MathUtils.mod(-6.3, 4);
+        test.roughlyEqual(actual, 1.7, 0.0000001);
         test.done();
     },
     
     testAmodSimple: function(test) {
         test.expect(1);
-        test.deepEqual(4), 2, MathUtils.amod(2);
+        test.equal(MathUtils.amod(2, 4), 2);
         test.done();
     },
     
     testAmodWrap: function(test) {
         test.expect(1);
-        test.deepEqual(4), 2, MathUtils.amod(6);
+        test.equal(MathUtils.amod(6, 4), 2);
         test.done();
     },
     
     testAmodWrapNeg: function(test) {
         test.expect(1);
-        test.deepEqual(4), 2, MathUtils.amod(-6);
+        test.equal(MathUtils.amod(-6, 4), 2);
         test.done();
     },
     
     testAmodZeroModulus: function(test) {
         test.expect(1);
-        test.deepEqual(0), 0, MathUtils.amod(6);
+        test.equal(MathUtils.amod(6, 0), 0);
         test.done();
     },
     
     testAmodZeroNum: function(test) {
         test.expect(1);
-        test.deepEqual(6), 6, MathUtils.amod(0);
+        test.equal(MathUtils.amod(0, 6), 6);
         test.done();
     },
     
     testAmodReal: function(test) {
         test.expect(1);
-        test.roughlyEqual(4), MathUtils.amod(2.234231, 0.0000001, 2.234231);
+        var actual = MathUtils.amod(2.234231, 4);
+        test.roughlyEqual(actual, 2.234231, 0.0000001);
         test.done();
     },
     testAmodRealWrap: function(test) {
         test.expect(1);
-        test.roughlyEqual(4), MathUtils.amod(6.234231, 0.0000001, 2.234231);
+        var actual = MathUtils.amod(6.234231, 4);
+        test.roughlyEqual(actual, 2.234231, 0.0000001);
         test.done();
     },
     testAmodRealNeg: function(test) {
         test.expect(1);
-        test.roughlyEqual(4), MathUtils.amod(-6.3, 0.0000001, 1.7);
+        var actual = MathUtils.amod(-6.3, 4);
+        test.roughlyEqual(actual, 1.7, 0.0000001);
         test.done();
     },
     
@@ -412,7 +415,8 @@ module.exports.testutils = {
             object2 = {"c": "C", "d": "D"};
         
         var expected = {"a": "A", "b": "B", "c": "C", "d": "D"};
-        test.deepEqual(object2), expected, JSUtils.merge(object1);
+        var actual = JSUtils.merge(object1, object2);
+        test.deepEqual(actual, expected);
         test.done();
     },
     
@@ -435,7 +439,8 @@ module.exports.testutils = {
             object2 = {"a": ["d"]};
     
         var expected = {"a": ["b", "c", "d"]};
-        test.deepEqual(object2), expected, JSUtils.merge(object1);
+        var actual = JSUtils.merge(object1, object2);
+        test.deepEqual(actual, expected);
         test.done();
     },
     
@@ -445,7 +450,8 @@ module.exports.testutils = {
             object2 = {"a": ["c", "d"]};
         
         var expected = {"a": ["b", "c", "c", "d"]};
-        test.deepEqual(object2), expected, JSUtils.merge(object1);
+        var actual = JSUtils.merge(object1, object2);
+        test.deepEqual(actual, expected);
         test.done();
     },
     
@@ -455,7 +461,8 @@ module.exports.testutils = {
             object2 = {"a": ["d"]};
         
         var expected = {"a": ["d"]};
-        test.deepEqual(object2), expected, JSUtils.merge(object1);
+        var actual = JSUtils.merge(object1, object2);
+        test.deepEqual(actual, expected);
         test.done();
     },
     
@@ -465,7 +472,8 @@ module.exports.testutils = {
             object2 = {"a": []};
         
         var expected = {"a": ["b", "c"]};
-        test.deepEqual(object2), expected, JSUtils.merge(object1);
+        var actual = JSUtils.merge(object1, object2);
+        test.deepEqual(actual, expected);
         test.done();
     },
     
@@ -475,7 +483,8 @@ module.exports.testutils = {
             object2 = {"a": "d"};
         
         var expected = {"a": "d"};
-        test.deepEqual(object2), expected, JSUtils.merge(object1);
+        var actual = JSUtils.merge(object1, object2);
+        test.deepEqual(actual, expected);
         test.done();
     },
     
@@ -485,7 +494,8 @@ module.exports.testutils = {
             object2 = {"a": ["d"]};
         
         var expected = {"a": ["d"]};
-        test.deepEqual(object2), expected, JSUtils.merge(object1);
+        var actual = JSUtils.merge(object1, object2);
+        test.deepEqual(actual, expected);
         test.done();
     },
     
@@ -495,7 +505,8 @@ module.exports.testutils = {
             object2 = {"b": "X"};
         
         var expected = {"a": "A", "b": "X"};
-        test.deepEqual(object2), expected, JSUtils.merge(object1);
+        var actual = JSUtils.merge(object1, object2);
+        test.deepEqual(actual, expected);
         test.done();
     },
     
@@ -505,7 +516,8 @@ module.exports.testutils = {
             object2 = {"b": "X"};
         
         var expected = {"a": "A", "b": "X"};
-        test.deepEqual(object2), expected, JSUtils.merge(object1);
+        var actual = JSUtils.merge(object1, object2);
+        test.deepEqual(actual, expected);
         test.done();
     },
     
@@ -515,7 +527,8 @@ module.exports.testutils = {
             object2 = {"b": {"x": "M", "y": "N"}};
         
         var expected = {"b": {"x": "M", "y": "N"}};
-        test.deepEqual(object2), expected, JSUtils.merge(object1);
+        var actual = JSUtils.merge(object1, object2);
+        test.deepEqual(actual, expected);
         test.done();
     },
     
@@ -525,7 +538,8 @@ module.exports.testutils = {
             object2 = {"b": {"x": "M", "y": "N"}};
         
         var expected = {"a": "A", "b": {"x": "M", "y": "N", "z": "Z"}};
-        test.deepEqual(object2), expected, JSUtils.merge(object1);
+        var actual = JSUtils.merge(object1, object2);
+        test.deepEqual(actual, expected);
         test.done();
     },
     
@@ -535,7 +549,8 @@ module.exports.testutils = {
             object2 = {"b": {"x": "M", "y": "N", "z": "Z"}};
         
         var expected = {"a": "A", "b": {"x": "M", "y": "N", "z": "Z"}};
-        test.deepEqual(object2), expected, JSUtils.merge(object1);
+        var actual = JSUtils.merge(object1, object2);
+        test.deepEqual(actual, expected);
         test.done();
     },
     
@@ -545,7 +560,8 @@ module.exports.testutils = {
             object2 = {"b": {"x": "M", "y": "N", "z": "Z"}};
         
         var expected = {"a": "A", "b": {"x": "M", "y": "N", "z": "Z"}};
-        test.deepEqual(object2), expected, JSUtils.merge(object1);
+        var actual = JSUtils.merge(object1, object2);
+        test.deepEqual(actual, expected);
         test.done();
     },
     
@@ -555,7 +571,8 @@ module.exports.testutils = {
             object2 = {"b": false};
         
         var expected = {"a": true, "b": false};
-        test.deepEqual(object2), expected, JSUtils.merge(object1);
+        var actual = JSUtils.merge(object1, object2);
+        test.deepEqual(actual, expected);
         test.done();
     },
     
@@ -565,7 +582,8 @@ module.exports.testutils = {
             object2 = {"c": false};
         
         var expected = {"a": true, "b": true, "c": false};
-        test.deepEqual(object2), expected, JSUtils.merge(object1);
+        var actual = JSUtils.merge(object1, object2);
+        test.deepEqual(actual, expected);
         test.done();
     },
     
@@ -575,7 +593,8 @@ module.exports.testutils = {
             object2 = {"b": 3};
         
         var expected = {"a": 1, "b": 3};
-        test.deepEqual(object2), expected, JSUtils.merge(object1);
+        var actual = JSUtils.merge(object1, object2);
+        test.deepEqual(actual, expected);
         test.done();
     },
     
@@ -585,7 +604,8 @@ module.exports.testutils = {
             object2 = {"b": 0};
         
         var expected = {"a": 1, "b": 0};
-        test.deepEqual(object2), expected, JSUtils.merge(object1);
+        var actual = JSUtils.merge(object1, object2);
+        test.deepEqual(actual, expected);
         test.done();
     },
     
@@ -595,7 +615,8 @@ module.exports.testutils = {
             object2 = {"c": 0};
         
         var expected = {"a": 1, "b": 2, "c": 0};
-        test.deepEqual(object2), expected, JSUtils.merge(object1);
+        var actual = JSUtils.merge(object1, object2);
+        test.deepEqual(actual, expected);
         test.done();
     },
     
@@ -702,7 +723,7 @@ module.exports.testutils = {
             JSUtils.shallowCopy(src, tgt);
             test.ok(typeof(tgt) === "undefined");
         } catch (e) {
-        test.fail()
+            test.fail();
         }
         test.done();
     },
@@ -1439,12 +1460,10 @@ module.exports.testutils = {
         if (ilib.isDynData()) {
             // don't need to test loading on the dynamic load version because we are testing
             // it via all the other tests already.
-            test.done();
             return;
         }
         var obj = {};
         
-        var oldLoader = ilib._load;
         ilib.setLoaderCallback(mockLoader);
         Utils.loadData({
             name: "foo.json",
@@ -1466,12 +1485,10 @@ module.exports.testutils = {
         if (ilib.isDynData()) {
             // don't need to test loading on the dynamic load version because we are testing
             // it via all the other tests already.
-            test.done();
             return;
         }
         var obj = {};
         
-        var oldLoader = ilib._load;
         ilib.setLoaderCallback(mockLoader);
         Utils.loadData({
             name: "foo.json",
@@ -1494,12 +1511,10 @@ module.exports.testutils = {
         if (ilib.isDynData()) {
             // don't need to test loading on the dynamic load version because we are testing
             // it via all the other tests already.
-            test.done();
             return;
         }
         var obj = {};
         
-        var oldLoader = ilib._load;
         ilib.setLoaderCallback(mockLoader);
         Utils.loadData({
             name: "foo.json",
@@ -1522,12 +1537,10 @@ module.exports.testutils = {
         if (ilib.isDynData()) {
             // don't need to test loading on the dynamic load version because we are testing
             // it via all the other tests already.
-            test.done();
             return;
         }
         var obj = {};
         
-        var oldLoader = ilib._load;
         ilib.setLoaderCallback(mockLoader);
         Utils.loadData({
             name: "foo.json",
@@ -1550,7 +1563,6 @@ module.exports.testutils = {
         if (ilib.isDynData()) {
             // don't need to test loading on the dynamic load version because we are testing
             // it via all the other tests already.
-            test.done();
             return;
         }
         var obj = {};
@@ -1577,12 +1589,10 @@ module.exports.testutils = {
         if (ilib.isDynData()) {
             // don't need to test loading on the dynamic load version because we are testing
             // it via all the other tests already.
-            test.done();
             return;
         }
         var obj = {};
         
-        var oldLoader = ilib._load;
         ilib.setLoaderCallback(mockLoader);
         Utils.loadData({
             name: "foo.json",
@@ -1605,12 +1615,10 @@ module.exports.testutils = {
         if (ilib.isDynData()) {
             // don't need to test loading on the dynamic load version because we are testing
             // it via all the other tests already.
-            test.done();
             return;
         }
         var obj = {};
         
-        var oldLoader = ilib._load;
         ilib.setLoaderCallback(mockLoader);
         Utils.loadData({
             name: "foo.json",
@@ -1637,12 +1645,10 @@ module.exports.testutils = {
         if (ilib.isDynData()) {
             // don't need to test loading on the dynamic load version because we are testing
             // it via all the other tests already.
-            test.done();
             return;
         }
         var obj = {};
         
-        var oldLoader = ilib._load;
         ilib.setLoaderCallback(mockLoader);
     
         Utils.loadData({
@@ -1679,12 +1685,10 @@ module.exports.testutils = {
         if (ilib.isDynData()) {
             // don't need to test loading on the dynamic load version because we are testing
             // it via all the other tests already.
-            test.done();
             return;
         }
         var obj = {};
         
-        var oldLoader = ilib._load;
         ilib.setLoaderCallback(mockLoader);
         Utils.loadData({
             name: "foo.json",
@@ -1730,12 +1734,10 @@ module.exports.testutils = {
         if (ilib.isDynData()) {
             // don't need to test loading on the dynamic load version because we are testing
             // it via all the other tests already.
-            test.done();
             return;
         }
         var obj = {};
         
-        var oldLoader = ilib._load;
         ilib.setLoaderCallback(mockLoader);
         Utils.loadData({
             name: "foo.json",
@@ -1773,10 +1775,8 @@ module.exports.testutils = {
         if (ilib.isDynData()) {
             // don't need to test loading on the dynamic load version because we are testing
             // it via all the other tests already.
-            test.done();
             return;
         }
-        var oldLoader = ilib._load;
         ilib.setLoaderCallback(mockLoader);
         Utils.loadData({
             name: "foo.json",
@@ -1799,11 +1799,9 @@ module.exports.testutils = {
         if (ilib.isDynData()) {
             // don't need to test loading on the dynamic load version because we are testing
             // it via all the other tests already.
-            test.done();
             return;
         }
         
-        var oldLoader = ilib._load;
         ilib.setLoaderCallback(mockLoader);
         Utils.loadData({
             name: "foo.json",
@@ -1840,7 +1838,6 @@ module.exports.testutils = {
         if (ilib.isDynData()) {
             // don't need to test loading on the dynamic load version because we are testing
             // it via all the other tests already.
-            test.done();
             return;
         }
         var obj = {};
@@ -1867,10 +1864,8 @@ module.exports.testutils = {
         if (ilib.isDynData()) {
             // don't need to test loading on the dynamic load version because we are testing
             // it via all the other tests already.
-            test.done();
             return;
         }
-        var oldLoader = ilib._load;
         ilib.setLoaderCallback(mockLoader);
         Utils.loadData({
             name: "foo.json",
@@ -1888,10 +1883,8 @@ module.exports.testutils = {
         if (ilib.isDynData()) {
             // don't need to test loading on the dynamic load version because we are testing
             // it via all the other tests already.
-            test.done();
             return;
         }
-        var oldLoader = ilib._load;
         ilib.setLoaderCallback(mockLoader);
         Utils.loadData({
             name: "foo.html",
@@ -1909,10 +1902,8 @@ module.exports.testutils = {
         if (ilib.isDynData()) {
             // don't need to test loading on the dynamic load version because we are testing
             // it via all the other tests already.
-            test.done();
             return;
         }
-        var oldLoader = ilib._load;
         ilib.setLoaderCallback(mockLoader);
         Utils.loadData({
             name: "foo.html",
@@ -1931,7 +1922,6 @@ module.exports.testutils = {
         if (ilib.isDynData()) {
             // don't need to test loading on the dynamic load version because we are testing
             // it via all the other tests already.
-            test.done();
             return;
         }
         ilib.setLoaderCallback(mockLoader);
@@ -1952,10 +1942,8 @@ module.exports.testutils = {
         if (ilib.isDynData()) {
             // don't need to test loading on the dynamic load version because we are testing
             // it via all the other tests already.
-            test.done();
             return;
         }
-        var oldLoader = ilib._load;
         ilib.setLoaderCallback(mockLoader);
         Utils.loadData({
             name: "foo.html",
@@ -1974,10 +1962,8 @@ module.exports.testutils = {
         if (ilib.isDynData()) {
             // don't need to test loading on the dynamic load version because we are testing
             // it via all the other tests already.
-            test.done();
             return;
         }
-        var oldLoader = ilib._load;
         ilib.setLoaderCallback(mockLoader);
     
         Utils.loadData({
@@ -1997,10 +1983,8 @@ module.exports.testutils = {
         if (ilib.isDynData()) {
             // don't need to test loading on the dynamic load version because we are testing
             // it via all the other tests already.
-            test.done();
             return;
         }
-        var oldLoader = ilib._load;
         ilib.setLoaderCallback(mockLoader);
         Utils.loadData({
             name: "foo.html",
@@ -2019,10 +2003,8 @@ module.exports.testutils = {
         if (ilib.isDynData()) {
             // don't need to test loading on the dynamic load version because we are testing
             // it via all the other tests already.
-            test.done();
             return;
         }
-        var oldLoader = ilib._load;
         ilib.setLoaderCallback(mockLoader);
         Utils.loadData({
             name: "foo.html",
@@ -2040,7 +2022,6 @@ module.exports.testutils = {
         if (ilib.isDynData()) {
             // don't need to test loading on the dynamic load version because we are testing
             // it via all the other tests already.
-            test.done();
             return;
         }
         ilib.setLoaderCallback(mockLoader);

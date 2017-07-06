@@ -456,7 +456,7 @@ module.exports.testjuliandate = {
         var jul;
         
         for (var i = 0; i < testDatesJulian.length; i++) {
-        // console.log("testing jd=" + testDatesJulian[i][0] + " and date of " + JSON.stringify(jul));
+            // console.log("testing jd=" + testDatesJulian[i][0] + " and date of " + JSON.stringify(jul));
             
             jul = new JulianDate({
                 julianday: testDatesJulian[i][0], 
@@ -554,7 +554,7 @@ module.exports.testjuliandate = {
         var jul;
         
         for (var i = 0; i < testDatesJulian.length; i++) {
-        // console.log("testing jd=" + testDatesJulian[i][0] + " and date " + JSON.stringify(jul));
+            // console.log("testing jd=" + testDatesJulian[i][0] + " and date " + JSON.stringify(jul));
             
             jul = new JulianDate({
                 year: testDatesJulian[i][1], 
@@ -568,7 +568,7 @@ module.exports.testjuliandate = {
             });
         
             test.equal(typeof(jul), 'object');
-        // console.log("calculated julian day is " + jul.getJulianDay());
+            // console.log("calculated julian day is " + jul.getJulianDay());
             test.equal(jul.getJulianDay(), testDatesJulian[i][0]);
             test.equal(jul.getDayOfWeek(), testDatesJulian[i][8]);
         }
@@ -842,7 +842,7 @@ module.exports.testjuliandate = {
         var d = new Date();
         test.ok(jul !== null);
         
-        test.roughlyEqual(50, jul.getTime(), d.getTime());
+        test.roughlyEqual(jul.getTime(), d.getTime(), 50);
         test.done();
     },
     

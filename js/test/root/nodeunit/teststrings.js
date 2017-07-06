@@ -853,7 +853,6 @@ module.exports.teststrings = {
     },
     
     testForEachCodePointSimple: function(test) {
-        test.expect(1);
         var str = new IString("abcd");
     
         var expected = [0x0061, 0x0062, 0x0063, 0x0064];
@@ -861,12 +860,13 @@ module.exports.teststrings = {
     
         str.forEachCodePoint(function(ch) {
             test.equal(ch, expected[i++]);
-            test.done();
         });
+        
+        test.equal(i, 4);
+        test.done();
     },
     
     testForEachCodePointComplex: function(test) {
-        test.expect(1);
         var str = new IString("a\uD800\uDF02b\uD800\uDC00");
     
         var expected = [0x0061, 0x10302, 0x0062, 0x10000];
@@ -874,19 +874,23 @@ module.exports.teststrings = {
     
         str.forEachCodePoint(function(ch) {
             test.equal(ch, expected[i++]);
-            test.done();
         });
+        test.equal(i, 4);
+        test.done();
     },
     
     testForEachCodePointEmpty: function(test) {
-        test.expect(1);
         var str = new IString("");
-    
+        var notcalled = true;
+        
         str.forEachCodePoint(function(ch) {
             // should never call this callback
-        test.fail()
-        test.done();
+            notcalled = false;
+            test.fail();
         });
+        
+        test.ok(notcalled);
+        test.done();
     },
     
     testCharIteratorSimple: function(test) {
@@ -944,6 +948,8 @@ module.exports.teststrings = {
         str.forEach(function(ch) {
             test.equal(ch, expected[i++]);
         });
+        
+        test.equal(i, 4);
         test.done();
     },
     
@@ -956,16 +962,22 @@ module.exports.teststrings = {
         str.forEach(function(ch) {
             test.equal(ch, expected[i++]);
         });
+        
+        test.equal(i, 4)
         test.done();
     },
     
     testForEachEmpty: function(test) {
         var str = new IString("");
-    
+        var notcalled = true;
+        
         str.forEach(function(ch) {
             // should never call this callback
-        test.fail()
+            notcalled = false;
+            test.fail();
         });
+        
+        test.ok(notcalled);
         test.done();
     },
     
@@ -1065,7 +1077,7 @@ module.exports.teststrings = {
         };
     
         var actual = IString._fncs.getValue(rule, 8.2);
-        test.roughlyEqual(0.01, actual, 8.2);
+        test.roughlyEqual(actual, 8.2, 0.01);
         test.done();
     },
     
@@ -1930,7 +1942,7 @@ module.exports.teststrings = {
         };
     
         var actual = IString._fncs.getValue(rule, 8.2);
-        test.roughlyEqual(0.01, actual, 2.2);
+        test.roughlyEqual(actual, 2.2, 0.01);
         test.done();
     },
     
@@ -1944,7 +1956,7 @@ module.exports.teststrings = {
         };
     
         var actual = IString._fncs.getValue(rule, -11);
-        test.roughlyEqual(0.01, actual, 1);
+        test.roughlyEqual(actual, 1, 0.01);
         test.done();
     },
     

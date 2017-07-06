@@ -130,7 +130,7 @@ module.exports.testhebrewdate = {
         var hd = new HebrewDate({julianday: 349326.9, timezone: "Etc/UTC"});  // Siv 1, 0004, 9:36am
         
         test.equal(typeof(hd), 'object');
-        test.roughlyEqual(0.001, hd.getRataDie(), 1329.65);
+        test.roughlyEqual(hd.getRataDie(), 1329.65, 0.001);
         test.equal(hd.getYears(), 4);
         test.equal(hd.getMonths(), 3);
         test.equal(hd.getDays(), 1);
@@ -146,7 +146,7 @@ module.exports.testhebrewdate = {
         var hd = new HebrewDate({julianday: 349327.1, timezone: "Etc/UTC"});  // Siv 1, 0004, 2:24pm
         
         test.equal(typeof(hd), 'object');
-        test.roughlyEqual(0.001, hd.getRataDie(), 1329.85);
+        test.roughlyEqual(hd.getRataDie(), 1329.85, 0.001);
         test.equal(hd.getYears(), 4);
         test.equal(hd.getMonths(), 3);
         test.equal(hd.getDays(), 1);
@@ -162,7 +162,7 @@ module.exports.testhebrewdate = {
         for (var i = 0; i < testDatesHebrew.length; i++) {
             hd = new HebrewDate({julianday: testDatesHebrew[i][0], timezone: "Etc/UTC"});
         
-        // console.log("testing jd=" + testDatesHebrew[i][0]);
+            // console.log("testing jd=" + testDatesHebrew[i][0]);
             
             test.equal(typeof(hd), 'object');
             test.equal((testDatesHebrew[i][0] - 347997.25), hd.getRataDie(), "testing rd for " + testDatesHebrew[i][0]);
@@ -268,7 +268,7 @@ module.exports.testhebrewdate = {
                 timezone: "Etc/UTC"            
             });
         
-        // console.log("testing jd=" + testDatesHebrew[i][0]);
+            // console.log("testing jd=" + testDatesHebrew[i][0]);
             
             test.equal(typeof(hd), 'object');
             test.equal(hd.getJulianDay(), testDatesHebrew[i][0]);

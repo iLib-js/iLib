@@ -80,7 +80,7 @@ module.exports.testspeeds = {
         test.expect(1);
         var m = VelocityUnit.convert("meters/sec", "km/hour", 720);
     
-        test.roughlyEqual(0.00001, m, 200.00016);
+        test.roughlyEqual(m, 200.00016, 0.00001);
         test.done();
     },
     
@@ -88,7 +88,7 @@ module.exports.testspeeds = {
         test.expect(1);
         var m = VelocityUnit.convert("mile/hour", "knot", 200);
     
-        test.roughlyEqual(0.001, m, 230.156);
+        test.roughlyEqual(m, 230.156, 0.001);
         test.done();
     },
     
@@ -96,7 +96,7 @@ module.exports.testspeeds = {
         test.expect(1);
         var m = VelocityUnit.convert("kn", "feet/sec", 200.0);
     
-        test.roughlyEqual(0.0001, m, 118.4968);
+        test.roughlyEqual(m, 118.4968, 0.0001);
         test.done();
     },
     
@@ -109,7 +109,7 @@ module.exports.testspeeds = {
     
         m = m.scale("metric");
     
-        test.roughlyEqual(0.1, m.amount, 1);
+        test.roughlyEqual(m.amount, 1, 0.1);
         test.equal(m.unit, "kilometer/hour");
         test.done();
     },
@@ -123,7 +123,7 @@ module.exports.testspeeds = {
     
         m = m.scale("imperial");
     
-        test.roughlyEqual(0.0001, m.amount, 35.54904);
+        test.roughlyEqual(m.amount, 35.54904, 0.0001);
         test.equal(m.unit, "knot");
         test.done();
     },
@@ -137,7 +137,7 @@ module.exports.testspeeds = {
     
         m = m.scale("imperial");
     
-        test.roughlyEqual(0.001, m.amount, 592.484);
+        test.roughlyEqual(m.amount, 592.484, 0.001);
         test.equal(m.unit, "knot");
         test.done();
     },
@@ -151,7 +151,7 @@ module.exports.testspeeds = {
     
         m = m.scale("imperial");
     
-        test.roughlyEqual(0.001, m.amount, 592.484);
+        test.roughlyEqual(m.amount, 592.484, 0.001);
         test.equal(m.unit, "knot");
         test.done();
     },
@@ -165,7 +165,7 @@ module.exports.testspeeds = {
     
         m = m.localize("en-IN");
     
-        test.roughlyEqual(0.01, m.amount, 1609.34);
+        test.roughlyEqual(m.amount, 1609.34, 0.01);
         test.equal(m.unit, "kilometer/hour");
         test.done();
     },
@@ -179,7 +179,7 @@ module.exports.testspeeds = {
     
         m = m.localize("en-US");
     
-        test.roughlyEqual(0.001, m.amount, 621.371);
+        test.roughlyEqual(m.amount, 621.371, 0.001);
         test.equal(m.unit, "miles/hour");
         test.done();
     },

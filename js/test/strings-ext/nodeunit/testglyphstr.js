@@ -168,7 +168,7 @@ module.exports.testglyphstr = {
     
         s.forEach(function(ch) {
             // should never call this callback
-        test.fail()
+            test.fail();
         });
         test.done();
     },

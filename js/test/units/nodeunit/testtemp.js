@@ -56,7 +56,7 @@ module.exports.testtemp = {
         test.ok(m1 !== null);
         test.ok(m2 !== null);
     
-        test.roughlyEqual(0.001, m2.getAmount(), 32);
+        test.roughlyEqual(m2.getAmount(), 32, 0.001);
         test.done();
     },
     
@@ -74,7 +74,7 @@ module.exports.testtemp = {
         test.ok(m1 !== null);
         test.ok(m2 !== null);
     
-        test.roughlyEqual(0.001, m2.getAmount(), 212);
+        test.roughlyEqual(m2.getAmount(), 212, 0.001);
         test.done();
     },
     
@@ -92,7 +92,7 @@ module.exports.testtemp = {
         test.ok(m1 !== null);
         test.ok(m2 !== null);
     
-        test.roughlyEqual(0.001, m2.getAmount(), 86);
+        test.roughlyEqual(m2.getAmount(), 86, 0.001);
         test.done();
     },
     
@@ -110,7 +110,7 @@ module.exports.testtemp = {
         test.ok(m1 !== null);
         test.ok(m2 !== null);
     
-        test.roughlyEqual(0.001, m2.getAmount(), 10);
+        test.roughlyEqual(m2.getAmount(), 10, 0.001);
         test.done();
     },
     
@@ -128,7 +128,7 @@ module.exports.testtemp = {
         test.ok(m1 !== null);
         test.ok(m2 !== null);
     
-        test.roughlyEqual(0.001, m2.getAmount(), 37.778);
+        test.roughlyEqual(m2.getAmount(), 37.778, 0.001);
         test.done();
     },
     
@@ -146,7 +146,7 @@ module.exports.testtemp = {
         test.ok(m1 !== null);
         test.ok(m2 !== null);
     
-        test.roughlyEqual(0.001, m2.getAmount(), 273.15);
+        test.roughlyEqual(m2.getAmount(), 273.15, 0.001);
         test.done();
     },
     
@@ -164,7 +164,7 @@ module.exports.testtemp = {
         test.ok(m1 !== null);
         test.ok(m2 !== null);
     
-        test.roughlyEqual(0.001, m2.getAmount(), 373.15);
+        test.roughlyEqual(m2.getAmount(), 373.15, 0.001);
         test.done();
     },
     
@@ -182,7 +182,7 @@ module.exports.testtemp = {
         test.ok(m1 !== null);
         test.ok(m2 !== null);
     
-        test.roughlyEqual(0.001, m2.getAmount(),  -273.15);
+        test.roughlyEqual(m2.getAmount(),  -273.15, 0.001);
         test.done();
     },
     
@@ -200,7 +200,7 @@ module.exports.testtemp = {
         test.ok(m1 !== null);
         test.ok(m2 !== null);
     
-        test.roughlyEqual(0.001, m2.getAmount(), 12.15);
+        test.roughlyEqual(m2.getAmount(), 12.15, 0.001);
         test.done();
     },
     
@@ -218,7 +218,7 @@ module.exports.testtemp = {
         test.ok(m1 !== null);
         test.ok(m2 !== null);
     
-        test.roughlyEqual(0.001, m2.getAmount(), 255.372);
+        test.roughlyEqual(m2.getAmount(), 255.372, 0.001);
         test.done();
     },
     
@@ -236,7 +236,7 @@ module.exports.testtemp = {
         test.ok(m1 !== null);
         test.ok(m2 !== null);
     
-        test.roughlyEqual(0.001, m2.getAmount(), 310.928);
+        test.roughlyEqual(m2.getAmount(), 310.928, 0.001);
         test.done();
     },
     
@@ -254,7 +254,7 @@ module.exports.testtemp = {
         test.ok(m1 !== null);
         test.ok(m2 !== null);
     
-        test.roughlyEqual(0.001, m2.getAmount(),  -459.67);
+        test.roughlyEqual(m2.getAmount(),  -459.67, 0.001);
         test.done();
     },
     
@@ -272,7 +272,7 @@ module.exports.testtemp = {
         test.ok(m1 !== null);
         test.ok(m2 !== null);
     
-        test.roughlyEqual(0.001, m2.getAmount(), 53.87);
+        test.roughlyEqual(m2.getAmount(), 53.87, 0.001);
         test.done();
     },
     

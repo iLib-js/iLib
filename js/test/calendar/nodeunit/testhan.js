@@ -191,11 +191,11 @@ module.exports.testhan = {
         Astro.initAstro(true, undefined, undefined);
         for (var i = 0; i < testDatesChineseAstro1.length; i++) {
         
-        // console.log("testing jd=" + testDatesChineseAstro1[i][0]);
+            // console.log("testing jd=" + testDatesChineseAstro1[i][0]);
             //try {
             var jd = testDatesChineseAstro1[i][0];
             var deg = Astro._universalFromLocal(jd, HanCal._chineseTZ(jd)) - RataDie.gregorianEpoch;
-            test.roughlyEqual(deg, testDatesChineseAstro1[i][1], 1e-9, "testing current major solar term for " + testDatesChineseAstro1[i][0]);
+            test.roughlyEqual(testDatesChineseAstro1[i][1], "testing current major solar term for " + testDatesChineseAstro1[i][0], deg, 1e-9);
             //} catch (e) {
             //    console.log("fail: " + e.comment + " " + e.jsUnitMessage + " difference: " + (l - testDatesAstro[i][1]));
             //}
@@ -208,11 +208,11 @@ module.exports.testhan = {
         Astro.initAstro(true, undefined, undefined);
         for (var i = 0; i < testDatesChineseAstro1.length; i++) {
         
-        // console.log("testing jd=" + testDatesChineseAstro1[i][0]);
+            // console.log("testing jd=" + testDatesChineseAstro1[i][0]);
             //try {
             var jd = testDatesChineseAstro1[i][0];
             l = HanCal._currentMajorST(jd);
-            test.roughlyEqual(l, testDatesChineseAstro1[i][2], 1e-9, "testing current major solar term for " + testDatesChineseAstro1[i][0]);
+            test.roughlyEqual(testDatesChineseAstro1[i][2], "testing current major solar term for " + testDatesChineseAstro1[i][0], l, 1e-9);
             //} catch (e) {
             //    console.log("fail: " + e.comment + " " + e.jsUnitMessage + " difference: " + (l - testDatesAstro[i][1]));
             //}
@@ -225,11 +225,11 @@ module.exports.testhan = {
         Astro.initAstro(true, undefined, undefined);
         for (var i = 0; i < testDatesChineseAstro1.length; i++) {
         
-        // console.log("testing jd=" + testDatesChineseAstro1[i][0]);
+            // console.log("testing jd=" + testDatesChineseAstro1[i][0]);
             //try {
             var jd = testDatesChineseAstro1[i][0];
             l = HanCal._hanNextSolarLongitude(jd, 30.0) - RataDie.gregorianEpoch;
-            test.roughlyEqual(l, testDatesChineseAstro1[i][3], 1e-5, "testing next solar longitude for " + testDatesChineseAstro1[i][0]);
+            test.roughlyEqual(testDatesChineseAstro1[i][3], "testing next solar longitude for " + testDatesChineseAstro1[i][0], l, 1e-5);
             //} catch (e) {
             //    console.log("fail: " + e.comment + " " + e.jsUnitMessage + " difference: " + (l - testDatesAstro[i][1]));
             //}
@@ -242,11 +242,11 @@ module.exports.testhan = {
         Astro.initAstro(true, undefined, undefined);
         for (var i = 0; i < testDatesChineseAstro2.length; i++) {
         
-        // console.log("testing jd=" + testDatesChineseAstro2[i][0]);
+            // console.log("testing jd=" + testDatesChineseAstro2[i][0]);
             //try {
             var jd = testDatesChineseAstro2[i][0];
             l = HanCal._newMoonBefore(jd) - RataDie.gregorianEpoch;
-            test.roughlyEqual(l, testDatesChineseAstro2[i][1], 1e-5, "testing new moon before " + testDatesChineseAstro2[i][0]);
+            test.roughlyEqual(testDatesChineseAstro2[i][1], "testing new moon before " + testDatesChineseAstro2[i][0], l, 1e-5);
             //} catch (e) {
             //    console.log("fail: " + e.comment + " " + e.jsUnitMessage + " difference: " + (l - testDatesAstro[i][1]));
             //}
@@ -259,11 +259,11 @@ module.exports.testhan = {
         Astro.initAstro(true, undefined, undefined);
         for (var i = 0; i < testDatesChineseAstro2.length; i++) {
         
-        // console.log("testing jd=" + testDatesChineseAstro2[i][0]);
+            // console.log("testing jd=" + testDatesChineseAstro2[i][0]);
             //try {
             var jd = testDatesChineseAstro2[i][0];
             l = HanCal._newMoonOnOrAfter(jd) - RataDie.gregorianEpoch;
-            test.roughlyEqual(l, testDatesChineseAstro2[i][2], 1e-5, "testing new moon on or after " + testDatesChineseAstro2[i][0]);
+            test.roughlyEqual(testDatesChineseAstro2[i][2], "testing new moon on or after " + testDatesChineseAstro2[i][0], l, 1e-5);
             //} catch (e) {
             //    console.log("fail: " + e.comment + " " + e.jsUnitMessage + " difference: " + (l - testDatesAstro[i][1]));
             //}
@@ -276,7 +276,7 @@ module.exports.testhan = {
         Astro.initAstro(true, undefined, undefined);
         for (var i = 0; i < testDatesChineseAstro2.length; i++) {
         
-        // console.log("testing jd=" + testDatesChineseAstro2[i][0]);
+            // console.log("testing jd=" + testDatesChineseAstro2[i][0]);
             //try {
             var jd = testDatesChineseAstro2[i][0];
             l = HanCal._noMajorST(jd);
@@ -293,11 +293,11 @@ module.exports.testhan = {
         Astro.initAstro(true, undefined, undefined);
         for (var i = 0; i < testDatesChineseAstro2.length; i++) {
         
-        // console.log("testing jd=" + testDatesChineseAstro2[i][0]);
+            // console.log("testing jd=" + testDatesChineseAstro2[i][0]);
             //try {
             var jd = testDatesChineseAstro2[i][0];
             l = HanCal._majorSTOnOrAfter(jd) - RataDie.gregorianEpoch;
-            test.roughlyEqual(l, testDatesChineseAstro2[i][4], 1e-5, "testing major solar term on or after for " + testDatesChineseAstro2[i][0]);
+            test.roughlyEqual(testDatesChineseAstro2[i][4], "testing major solar term on or after for " + testDatesChineseAstro2[i][0], l, 1e-5);
             //} catch (e) {
             //    console.log("fail: " + e.comment + " " + e.jsUnitMessage + " difference: " + (l - testDatesAstro[i][1]));
             //}

@@ -64,7 +64,7 @@ module.exports.testmass = {
         test.expect(1);
         var m = MassUnit.convert("long ton", "kg", 10000);
     
-        test.roughlyEqual(0.00001, m, 9.842065);
+        test.roughlyEqual(m, 9.842065, 0.00001);
         test.done();
     },
     
@@ -104,7 +104,7 @@ module.exports.testmass = {
         test.expect(1);
         var m = MassUnit.convert("lb", "mcg", 1000000000);
     
-        test.roughlyEqual(0.0001, m, 2.20462);
+        test.roughlyEqual(m, 2.20462, 0.0001);
         test.done();
     },
     
@@ -173,7 +173,7 @@ module.exports.testmass = {
     
         m = m.scale("imperial");
     
-        test.roughlyEqual(0.00001, m.amount, 4.46429);
+        test.roughlyEqual(m.amount, 4.46429, 0.00001);
         test.equal(m.unit, "stone");
         test.done();
     },
@@ -187,7 +187,7 @@ module.exports.testmass = {
     
         m = m.scale("imperial");
     
-        test.roughlyEqual(0.01, m.amount, 1.4);
+        test.roughlyEqual(m.amount, 1.4, 0.01);
         test.equal(m.unit, "pound");
         test.done();
     },
@@ -201,7 +201,7 @@ module.exports.testmass = {
     
         m = m.scale("imperial");
     
-        test.roughlyEqual(0.001, m.amount, 13.9508929);
+        test.roughlyEqual(m.amount, 13.9508929, 0.001);
         test.equal(m.unit, "long ton");
         test.done();
     },
@@ -229,7 +229,7 @@ module.exports.testmass = {
     
         m = m.scale("uscustomary");
     
-        test.roughlyEqual(0.001, m.amount, 3.125);
+        test.roughlyEqual(m.amount, 3.125, 0.001);
         test.equal(m.unit, "short ton");
         test.done();
     },
@@ -243,7 +243,7 @@ module.exports.testmass = {
     
         m = m.scale("uscustomary");
     
-        test.roughlyEqual(0.001, m.amount, 2);
+        test.roughlyEqual(m.amount, 2, 0.001);
         test.equal(m.unit, "pound");
         test.done();
     },
@@ -257,7 +257,7 @@ module.exports.testmass = {
     
         m = m.localize("en-IN");
     
-        test.roughlyEqual(0.01, m.amount, 28349.5);
+        test.roughlyEqual(m.amount, 28349.5, 0.01);
         test.equal(m.unit, "gram");
         test.done();
     },
@@ -271,7 +271,7 @@ module.exports.testmass = {
     
         m = m.localize("en-US");
     
-        test.roughlyEqual(0.001, m.amount, 35.274);
+        test.roughlyEqual(m.amount, 35.274, 0.001);
         test.equal(m.unit, "ounce");
         test.done();
     },
@@ -299,7 +299,7 @@ module.exports.testmass = {
     
         m = m.localize("en-GB");
     
-        test.roughlyEqual(0.001, m.amount, 1102.31);
+        test.roughlyEqual(m.amount, 1102.31, 0.001);
         test.equal(m.unit, "short ton");
         test.done();
     },

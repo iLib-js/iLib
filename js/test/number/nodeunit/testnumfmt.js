@@ -1644,7 +1644,7 @@ module.exports.testnumfmt = {
                 locale: "ja-JP"
             });
     
-        test.fail()
+            test.fail();
         } catch (e) {
             test.ok(typeof(fmt) === "undefined");
             test.equal(e, "A currency property is required in the options to the number formatter constructor when the type property is set to currency.");

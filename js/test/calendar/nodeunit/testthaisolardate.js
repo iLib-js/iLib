@@ -584,7 +584,7 @@ module.exports.testthaisolardate = {
         for (var i = 0; i < testDates.length; i++) {
             td = new ThaiSolarDate({julianday: testDates[i][0], timezone: "Etc/UTC"});
         
-        // console.log("testing jd=" + testDates[i][0]);
+            // console.log("testing jd=" + testDates[i][0]);
             
             test.equal(typeof(td), 'object');
             test.equal(td.getYears(), testDates[i][1]);
@@ -726,7 +726,7 @@ module.exports.testthaisolardate = {
                 timezone: "Etc/UTC"
             });
         
-        // console.log("testing jd=" + testDates[i][0]);
+            // console.log("testing jd=" + testDates[i][0]);
             
             test.equal(typeof(td), 'object');
             test.equal(td.getJulianDay(), testDates[i][0]);
@@ -2471,7 +2471,7 @@ module.exports.testthaisolardate = {
         var d = new Date();
         test.ok(td !== null);
         
-        test.roughlyEqual(30, td.getTime(), d.getTime());
+        test.roughlyEqual(td.getTime(), d.getTime(), 30);
         test.done();
     },
     

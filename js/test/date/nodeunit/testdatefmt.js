@@ -132,7 +132,7 @@ module.exports.testdatefmt = {
     testDateFmtGetCalendarNotInThisLocale: function(test) {
         try {
             new DateFmt({calendar: "arabic", locale: 'en-US'});
-        test.fail()
+            test.fail();
         } catch (str) {
             test.equal(typeof(str), "string");
             test.equal(str, "No formats available for calendar arabic in locale en-US");
@@ -2125,7 +2125,7 @@ module.exports.testdatefmt = {
                 day: 31,
                 hour: 9
             });
-        test.fail()
+            test.fail();
         } catch (e) {
             test.equal(e, "Wrong date type passed to DateFmt.format()");
         }
@@ -2976,7 +2976,6 @@ module.exports.testdatefmt = {
         // don't need to test loading on the dynamic load version because we are testing
         // it via all the other tests already.
         if (!ilib.isDynData()) {
-            test.done();
             return;
         }
         ilib.setLoaderCallback(mockLoader);
@@ -2995,7 +2994,6 @@ module.exports.testdatefmt = {
         if (ilib.isDynData()) {
             // don't need to test loading on the dynamic load version because we are testing
             // it via all the other tests already.
-            test.done();
             return;
         }
         ilib.setLoaderCallback(mockLoader);
@@ -3014,7 +3012,6 @@ module.exports.testdatefmt = {
         if (ilib.isDynData()) {
             // don't need to test loading on the dynamic load version because we are testing
             // it via all the other tests already.
-            test.done();
             return;
         }
         ilib.setLoaderCallback(mockLoader);
@@ -3038,7 +3035,6 @@ module.exports.testdatefmt = {
         if (ilib.isDynData()) {
             // don't need to test loading on the dynamic load version because we are testing
             // it via all the other tests already.
-            test.done();
             return;
         }
         ilib.setLoaderCallback(mockLoader);

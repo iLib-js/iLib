@@ -129,7 +129,7 @@ module.exports.testgregratadie = {
         for (var i = 0; i < testDatesGregRD.length; i++) {
             rd = new GregRataDie({julianday: testDatesGregRD[i][0]});
         
-        // console.log("testing jd=" + testDatesGregRD[i][0]);
+            // console.log("testing jd=" + testDatesGregRD[i][0]);
             
             test.equal(rd.getRataDie(), testDatesGregRD[i][0] - rd.epoch);
         }
@@ -233,7 +233,7 @@ module.exports.testgregratadie = {
                 millisecond: testDatesGregRD[i][7]
             });
         
-        // console.log("testing jd=" + testDatesGregRD[i][0]);
+            // console.log("testing jd=" + testDatesGregRD[i][0]);
             
             test.equal(typeof(rd), 'object');
             test.equal(rd.getJulianDay(), testDatesGregRD[i][0]);
@@ -800,7 +800,7 @@ module.exports.testgregratadie = {
         
         test.ok(rd !== null);
         
-        test.roughlyEqual(100, rd.getTime(), d.getTime());
+        test.roughlyEqual(rd.getTime(), d.getTime(), 100);
         test.done();
     },
     

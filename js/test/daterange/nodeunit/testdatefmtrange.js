@@ -121,7 +121,7 @@ module.exports.testdatefmtrange = {
     testDateRngFmtGetCalendarNotInThisLocale: function(test) {
         try {
             var fmt = new DateRngFmt({calendar: "arabic", locale: 'en-US'});
-        test.fail()
+            test.fail();
         } catch (str) {
             test.equal(typeof(str), "string");
             test.equal(str, "No formats available for calendar arabic in locale en-US");
@@ -283,7 +283,6 @@ module.exports.testdatefmtrange = {
         if (ilib.isDynData()) {
             // don't need to test loading on the dynamic load version because we are testing
             // it via all the other tests already.
-            test.done();
             return;
         }
         var oldLoader = ilib._load;
@@ -322,7 +321,6 @@ module.exports.testdatefmtrange = {
         if (ilib.isDynData()) {
             // don't need to test loading on the dynamic load version because we are testing
             // it via all the other tests already.
-            test.done();
             return;
         }
         var oldLoader = ilib._load;
@@ -361,7 +359,6 @@ module.exports.testdatefmtrange = {
         if (ilib.isDynData()) {
             // don't need to test loading on the dynamic load version because we are testing
             // it via all the other tests already.
-            test.done();
             return;
         }
         var oldLoader = ilib._load;
@@ -402,7 +399,6 @@ module.exports.testdatefmtrange = {
         if (ilib.isDynData()) {
             // don't need to test loading on the dynamic load version because we are testing
             // it via all the other tests already.
-            test.done();
             return;
         }
         var oldLoader = ilib._load;

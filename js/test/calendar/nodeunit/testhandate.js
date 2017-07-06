@@ -688,7 +688,7 @@ module.exports.testhandate = {
         for (var i = 0; i < testDatesHan.length; i++) {
             hd = new HanDate({julianday: testDatesHan[i][0], timezone: "Etc/UTC"});
         
-        // console.log("testing jd=" + testDatesHan[i][0]);
+            // console.log("testing jd=" + testDatesHan[i][0]);
             
             test.equal(typeof(hd), 'object');
             test.equal((testDatesHan[i][0] - 1721424.5), hd.getRataDie(), "testing rd for " + testDatesHan[i][0]);
@@ -716,7 +716,7 @@ module.exports.testhandate = {
                 timezone: "Etc/UTC"
             });
         
-        // console.log("testing jd=" + testDatesHan[i][0]);
+            // console.log("testing jd=" + testDatesHan[i][0]);
             
             test.equal(typeof(hd), 'object');
             test.equal(testDatesHan[i][0], hd.getJulianDay(), "testing row " + testDatesHan[i][0]);

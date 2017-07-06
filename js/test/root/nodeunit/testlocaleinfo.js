@@ -12420,7 +12420,6 @@ module.exports.testlocaleinfo = {
         if (ilib.isDynData()) {
             // don't need to test loading on the dynamic load version because we are testing
             // it via all the other tests already.
-            test.done();
             return;
         }
         var oldLoader = ilib._load;
@@ -12445,7 +12444,6 @@ module.exports.testlocaleinfo = {
         if (ilib.isDynData()) {
             // don't need to test loading on the dynamic load version because we are testing
             // it via all the other tests already.
-            test.done();
             return;
         }
         var oldLoader = ilib._load;
@@ -12469,7 +12467,6 @@ module.exports.testlocaleinfo = {
         if (ilib.isDynData()) {
             // don't need to test loading on the dynamic load version because we are testing
             // it via all the other tests already.
-            test.done();
             return;
         }
         var oldLoader = ilib._load;
@@ -12518,7 +12515,6 @@ module.exports.testlocaleinfo = {
         if (ilib.isDynData()) {
             // don't need to test loading on the dynamic load version because we are testing
             // it via all the other tests already.
-            test.done();
             return;
         }
         var oldLoader = ilib._load;
@@ -12542,7 +12538,6 @@ module.exports.testlocaleinfo = {
         if (ilib.isDynData()) {
             // don't need to test loading on the dynamic load version because we are testing
             // it via all the other tests already.
-            test.done();
             return;
         }
         var oldLoader = ilib._load;
@@ -12567,7 +12562,6 @@ module.exports.testlocaleinfo = {
     testLocaleInfoLoadMissingLocaleParts: function(test) {
         if (ilib.isDynData()) {
             // should not test mixed loading on the dynamic load version because it was not designed for it
-            test.done();
             return;
         }
         var li = new LocaleInfo("fr-FR-overseas");

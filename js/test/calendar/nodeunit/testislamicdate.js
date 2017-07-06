@@ -115,7 +115,7 @@ module.exports.testislamicdate = {
         for (var i = 0; i < testDatesIslamic.length; i++) {
             id = new IslamicDate({julianday: testDatesIslamic[i][0], timezone: "Etc/UTC"});
         
-        // console.log("testing jd=" + testDatesIslamic[i][0]);
+            // console.log("testing jd=" + testDatesIslamic[i][0]);
             
             test.equal(typeof(id), 'object');
             test.equal((testDatesIslamic[i][0] - 1948439.5), id.getRataDie(), "testing rd for " + testDatesIslamic[i][0]);
@@ -220,7 +220,7 @@ module.exports.testislamicdate = {
                 timezone: "Etc/UTC"
             });
         
-        // console.log("testing jd=" + testDatesIslamic[i][0]);
+            // console.log("testing jd=" + testDatesIslamic[i][0]);
             
             test.equal(typeof(id), 'object');
             test.equal(testDatesIslamic[i][0], id.getJulianDay(), "testing row " + testDatesIslamic[i][0]);

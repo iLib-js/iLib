@@ -57,7 +57,7 @@ module.exports.testarea = {
         test.ok(m1 !== null);
         test.ok(m2 !== null);
     
-        test.roughlyEqual(0.1, m2.getAmount(), 1930.511);
+        test.roughlyEqual(m2.getAmount(), 1930.511, 0.1);
         test.done();
     },
     
@@ -119,7 +119,7 @@ module.exports.testarea = {
         test.expect(1);
         var m = AreaUnit.convert( "square foot","square km", 2.0);
     
-        test.roughlyEqual(1e+7, m, 2.153e+7);
+        test.roughlyEqual(m, 2.153e+7, 1e+7);
         test.done();
     },
     testAreaStaticConvert8: function(test) {
@@ -134,7 +134,7 @@ module.exports.testarea = {
         test.expect(1);
         var m = AreaUnit.convert("square mile","hectare", 2.0);
     
-        test.roughlyEqual(0.001, m, 0.00772204);
+        test.roughlyEqual(m, 0.00772204, 0.001);
         test.done();
     },
     
@@ -167,7 +167,7 @@ module.exports.testarea = {
         test.expect(1);
         var m = AreaUnit.convert( "square yard","square inch", 2.0);
     
-        test.roughlyEqual(00000001, m, 0.00154321);
+        test.roughlyEqual(m, 0.00154321, 00000001);
         test.done();
     },
     testAreaStaticConvert14: function(test) {
@@ -181,14 +181,14 @@ module.exports.testarea = {
         test.expect(1);
         var m = AreaUnit.convert( "square foot","square mile", 2.0);
     
-        test.roughlyEqual(1e+7, m, 5.576e+7);
+        test.roughlyEqual(m, 5.576e+7, 1e+7);
         test.done();
     },
     testAreaStaticConvert16: function(test) {
         test.expect(1);
         var m = AreaUnit.convert( "square inch","acre", 2.0);
     
-        test.roughlyEqual(1e+7, m, 1.255e+7);
+        test.roughlyEqual(m, 1.255e+7, 1e+7);
         test.done();
     },
     
@@ -272,7 +272,7 @@ module.exports.testarea = {
             amount: 30000000
         });
         var m2 = m1.scale("uscustomary");
-        test.roughlyEqual(0.0001, m2.amount, 1.0761);
+        test.roughlyEqual(m2.amount, 1.0761, 0.0001);
         test.equal(m2.unit, "square mile");
         test.done();
     },
@@ -297,7 +297,7 @@ module.exports.testarea = {
             amount: 0.01
         });
         var m2 = m1.scale("uscustomary");
-        test.roughlyEqual(0.01, m2.amount, 6.4);
+        test.roughlyEqual(m2.amount, 6.4, 0.01);
         test.equal(m2.unit, "acre");
         test.done();
     },
@@ -311,7 +311,7 @@ module.exports.testarea = {
     
         m = m.localize("en-IN");
     
-        test.roughlyEqual(0.01, m.amount, 2589.99);
+        test.roughlyEqual(m.amount, 2589.99, 0.01);
         test.equal(m.unit, "square km");
         test.done();
     },
@@ -325,7 +325,7 @@ module.exports.testarea = {
     
         m = m.localize("en-US");
     
-        test.roughlyEqual(0.001, m.amount, 386.102);
+        test.roughlyEqual(m.amount, 386.102, 0.001);
         test.equal(m.unit, "square mile");
         test.done();
     },

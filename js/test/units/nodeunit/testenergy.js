@@ -64,7 +64,7 @@ module.exports.testenergy = {
         test.expect(1);
         var m = EnergyUnit.convert("gWh", "Cal", 1e+8);
     
-        test.roughlyEqual(0.0001, m, 0.1163);
+        test.roughlyEqual(m, 0.1163, 0.0001);
         test.done();
     },
     
@@ -88,7 +88,7 @@ module.exports.testenergy = {
         test.expect(1);
         var m = EnergyUnit.convert("MWh", "kJ", 5e+6);
     
-        test.roughlyEqual(0.00001, m, 1.38889);
+        test.roughlyEqual(m, 1.38889, 0.00001);
         test.done();
     },
     
@@ -96,7 +96,7 @@ module.exports.testenergy = {
         test.expect(1);
         var m = EnergyUnit.convert("cal", "btu", 200);
     
-        test.roughlyEqual(0.001, m, 50.399);
+        test.roughlyEqual(m, 50.399, 0.001);
         test.done();
     },
     
@@ -104,7 +104,7 @@ module.exports.testenergy = {
         test.expect(1);
         var m = EnergyUnit.convert("joule", "btu", 200);
     
-        test.roughlyEqual(0.01, m, 211011.18);
+        test.roughlyEqual(m, 211011.18, 0.01);
         test.done();
     },
     
@@ -150,7 +150,7 @@ module.exports.testenergy = {
         });
         var m2 = m1.scale("metric");
     
-        test.roughlyEqual(0.000001, m2.amount, 5.254578);
+        test.roughlyEqual(m2.amount, 5.254578, 0.000001);
         test.equal(m2.unit, "kilojoule");
         test.done();
     },

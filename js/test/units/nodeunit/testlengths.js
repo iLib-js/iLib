@@ -105,7 +105,7 @@ module.exports.testlengths = {
         test.expect(1);
         var m = LengthUnit.convert("inch", "micrometer", 200000);
     
-        test.roughlyEqual(0.00001, m, 7.87402)
+        test.roughlyEqual(m, 7.87402, 0.00001)
         test.done();
     },
     
@@ -121,7 +121,7 @@ module.exports.testlengths = {
         test.expect(1);
         var m = LengthUnit.convert("mile", "decimeter", 100000);
     
-        test.roughlyEqual(0.00001, m, 6.21373);
+        test.roughlyEqual(m, 6.21373, 0.00001);
         test.done();
     },
     
@@ -145,7 +145,7 @@ module.exports.testlengths = {
         test.expect(1);
         var m = LengthUnit.convert("nauticalmile", "feet", 100000);
     
-        test.roughlyEqual(0.0001, m, 16.4579);
+        test.roughlyEqual(m, 16.4579, 0.0001);
         test.done();
     },
     
@@ -153,7 +153,7 @@ module.exports.testlengths = {
         test.expect(1);
         var m = LengthUnit.convert("mm", "feet", 500);
     
-        test.roughlyEqual(0.1, m, 152400);
+        test.roughlyEqual(m, 152400, 0.1);
         test.done();
     },
     
@@ -194,7 +194,7 @@ module.exports.testlengths = {
     
         m = m.scale("imperial");
     
-        test.roughlyEqual(0.00001, m.amount, 55.55556);
+        test.roughlyEqual(m.amount, 55.55556, 0.00001);
         test.equal(m.unit, "yard");
         test.done();
     },
@@ -222,7 +222,7 @@ module.exports.testlengths = {
     
         m = m.scale("uscustomary");
     
-        test.roughlyEqual(0.001, m.amount, 2.743)
+        test.roughlyEqual(m.amount, 2.743, 0.001)
         test.equal(m.unit, "nauticalmile");
         test.done();
     },
@@ -236,7 +236,7 @@ module.exports.testlengths = {
     
         m = m.scale("uscustomary");
     
-        test.roughlyEqual(0.000001, m.amount, 1.458268)
+        test.roughlyEqual(m.amount, 1.458268, 0.000001)
         test.equal(m.unit, "inch");
         test.done();
     },
@@ -292,7 +292,7 @@ module.exports.testlengths = {
     
         m = m.scale();
     
-        test.roughlyEqual(0.001, m.amount, 2.743)
+        test.roughlyEqual(m.amount, 2.743, 0.001)
         test.equal(m.unit, "nauticalmile");
         test.done();
     },
@@ -306,7 +306,7 @@ module.exports.testlengths = {
     
         m = m.scale();
     
-        test.roughlyEqual(0.000001, m.amount, 1.458268)
+        test.roughlyEqual(m.amount, 1.458268, 0.000001)
         test.equal(m.unit, "inch");
         test.done();
     },
@@ -320,7 +320,7 @@ module.exports.testlengths = {
     
         m = m.localize("en-IN");
     
-        test.roughlyEqual(0.01, m.amount, 1609.34);
+        test.roughlyEqual(m.amount, 1609.34, 0.01);
         test.equal(m.unit, "kilometer");
         test.done();
     },
@@ -334,7 +334,7 @@ module.exports.testlengths = {
     
         m = m.localize("en-US");
     
-        test.roughlyEqual(0.01, m.amount, 621.371);
+        test.roughlyEqual(m.amount, 621.371, 0.01);
         test.equal(m.unit, "mile");
         test.done();
     },
