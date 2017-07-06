@@ -25,13 +25,25 @@ var suites = [
     "testglyphstr.js",
     "testlistfmt.js",
     "testlistfmt_ar.js",
+    "testlistfmt_bs.js",
+    "testlistfmt_de.js",
     "testlistfmt_en.js",
+    "testlistfmt_el.js",
     "testlistfmt_es.js",
     "testlistfmt_fa.js",
-    "testlistfmt_fr_FR.js",
+    "testlistfmt_fr.js",
+    "testlistfmt_hr.js",
+    "testlistfmt_it.js",
+    "testlistfmt_ms.js",
+    "testlistfmt_nl.js",
     "testlistfmt_ja_JP.js",
+    "testlistfmt_pt.js",
+    "testlistfmt_ru.js",
+    "testlistfmt_sv.js",
+    "testlistfmt_sq.js",
+    "testlistfmt_tr.js",
     "testlistfmt_zh.js",
-    "testnorm.js",
+    "testnorm.js"
 ];
 
 suites.forEach(function (path) {

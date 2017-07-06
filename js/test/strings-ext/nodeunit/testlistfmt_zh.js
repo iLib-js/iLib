@@ -152,7 +152,8 @@ module.exports.testlistfmt_zh = {
     testListFmtUnitStylezhHansCNNumberFormatOneFull: function(test) {
         var fmt = new ListFmt({
             locale: "zh-Hans-CN",
-            style:"unit"
+            style:"unit",
+            length: "full"
         });
     
         test.expect(2);
@@ -164,7 +165,8 @@ module.exports.testlistfmt_zh = {
     testListFmtUnitStylezhHansCNNumberFormatTwoFull: function(test) {
         var fmt = new ListFmt({
             locale: "zh-Hans-CN",
-            style:"unit"
+            style:"unit",
+            length: "full"
         });
     
         test.expect(2);
@@ -176,7 +178,8 @@ module.exports.testlistfmt_zh = {
     testListFmtUnitStylezhHansCNNumberFormatThreeFull: function(test) {
         var fmt = new ListFmt({
             locale: "zh-Hans-CN",
-            style:"unit"
+            style:"unit",
+            length: "full"
         });
     
         test.expect(2);
@@ -188,7 +191,9 @@ module.exports.testlistfmt_zh = {
     testListFmtUnitStylezhHansCNNumberFormatFourFull: function(test) {
         var fmt = new ListFmt({
             locale: "zh-Hans-CN",
-            style:"unit"
+            style:"unit",
+            length: "full"
+
         });
     
         test.expect(2);
@@ -200,7 +205,8 @@ module.exports.testlistfmt_zh = {
     testListFmtUnitStylezhHansCNNumberFormatFiveFull: function(test) {
         var fmt = new ListFmt({
             locale: "zh-Hans-CN",
-            style:"unit"
+            style:"unit",
+            length: "full"
         });
     
         test.expect(2);
@@ -606,7 +612,6 @@ module.exports.testlistfmt_zh = {
         test.done();
     },
     
-    
     //// zh-Hant-TW
     
     testListFmtzhHantTWNumberFormatOneShort: function(test) {
@@ -1000,6 +1005,381 @@ module.exports.testlistfmt_zh = {
         test.expect(2);
         test.ok(fmt !== null);
         test.equal(fmt.format(["一", "二", "三", "四"]), "一 二 三 四");
+        test.done();
+    },
+
+    //zh-Hans-SG
+
+    testListFmtzhHansSGNumberFormatOne: function(test) {
+        var fmt = new ListFmt({
+            locale: "zh-Hans-SG"
+        });
+    
+        test.expect(2);
+        test.ok(fmt !== null);
+        test.equal(fmt.format(["一"]), "一");
+        test.done();
+    },
+    
+    testListFmtzhHansSGNumberFormatTwo: function(test) {
+        var fmt = new ListFmt({
+            locale: "zh-Hans-SG"
+        });
+    
+        test.expect(2);
+        test.ok(fmt !== null);
+        test.equal(fmt.format(["一", "二"]), "一和二");
+        test.done();
+    },
+    
+    testListFmtzhHansSGNumberFormatThree: function(test) {
+        var fmt = new ListFmt({
+            locale: "zh-Hans-SG"
+        });
+    
+        test.expect(2);
+        test.ok(fmt !== null);
+        test.equal(fmt.format(["一", "二", "三"]), "一、二和三");
+        test.done();
+    },
+    
+    testListFmtzhHansSGNumberFormatFour: function(test) {
+        var fmt = new ListFmt({
+            locale: "zh-Hans-SG"
+        });
+    
+        test.expect(2);
+        test.ok(fmt !== null);
+        test.equal(fmt.format(["一", "二", "三", "四"]), "一、二、三和四");
+        test.done();
+    },
+    
+    testListFmtzhHansSGNumberFormatFive: function(test) {
+        var fmt = new ListFmt({
+            locale: "zh-Hans-SG"
+        });
+    
+        test.expect(2);
+        test.ok(fmt !== null);
+        test.equal(fmt.format(["一", "二", "三", "四", "五"]), "一、二、三、四和五");
+        test.done();
+    },
+    
+    // zh-Hans-SG: unit style
+    
+    testListFmtUnitStylezhHansSGNumberFormatOne: function(test) {
+        var fmt = new ListFmt({
+            locale: "zh-Hans-SG",
+            style:"unit"
+        });
+    
+        test.expect(2);
+        test.ok(fmt !== null);
+        test.equal(fmt.format(["一"]), "一");
+        test.done();
+    },
+    
+    testListFmtUnitStylezhHansSGNumberFormatTwo: function(test) {
+        var fmt = new ListFmt({
+            locale: "zh-Hans-SG",
+            style:"unit"
+        });
+    
+        test.expect(2);
+        test.ok(fmt !== null);
+        test.equal(fmt.format(["一", "二"]), "一二");
+        test.done();
+    },
+    
+    testListFmtUnitStylezhHansSGNumberFormatThree: function(test) {
+        var fmt = new ListFmt({
+            locale: "zh-Hans-SG",
+            style:"unit"
+        });
+    
+        test.expect(2);
+        test.ok(fmt !== null);
+        test.equal(fmt.format(["一", "二", "三"]), "一二三");
+        test.done();
+    },
+    
+    testListFmtUnitStylezhHansSGNumberFormatFour: function(test) {
+        var fmt = new ListFmt({
+            locale: "zh-Hans-SG",
+            style:"unit"
+        });
+    
+        test.expect(2);
+        test.ok(fmt !== null);
+        test.equal(fmt.format(["一", "二", "三", "四"]), "一二三四");
+        test.done();
+    },
+    
+    testListFmtUnitStylezhHansSGNumberFormatFive: function(test) {
+        var fmt = new ListFmt({
+            locale: "zh-Hans-SG",
+            style:"unit"
+        });
+    
+        test.expect(2);
+        test.ok(fmt !== null);
+        test.equal(fmt.format(["一", "二", "三", "四", "五"]), "一二三四五");
+        test.done();
+    },
+    
+    testListFmtUnitStylezhHansSGNumberFormatOneFull: function(test) {
+        var fmt = new ListFmt({
+            locale: "zh-Hans-SG",
+            style:"unit",
+            length: "full"
+        });
+    
+        test.expect(2);
+        test.ok(fmt !== null);
+        test.equal(fmt.format(["一"]), "一");
+        test.done();
+    },
+    
+    testListFmtUnitStylezhHansSGNumberFormatTwoFull: function(test) {
+        var fmt = new ListFmt({
+            locale: "zh-Hans-SG",
+            style:"unit",
+            length: "full"
+        });
+    
+        test.expect(2);
+        test.ok(fmt !== null);
+        test.equal(fmt.format(["一", "二"]), "一二");
+        test.done();
+    },
+    
+    testListFmtUnitStylezhHansSGNumberFormatThreeFull: function(test) {
+        var fmt = new ListFmt({
+            locale: "zh-Hans-SG",
+            style:"unit",
+            length: "full"
+        });
+    
+        test.expect(2);
+        test.ok(fmt !== null);
+        test.equal(fmt.format(["一", "二", "三"]), "一二三");
+        test.done();
+    },
+    
+    testListFmtUnitStylezhHansSGNumberFormatFourFull: function(test) {
+        var fmt = new ListFmt({
+            locale: "zh-Hans-SG",
+            style:"unit",
+            length: "full"
+            
+        });
+    
+        test.expect(2);
+        test.ok(fmt !== null);
+        test.equal(fmt.format(["一", "二", "三", "四"]), "一二三四");
+        test.done();
+    },
+    
+    testListFmtUnitStylezhHansSGNumberFormatFiveFull: function(test) {
+        var fmt = new ListFmt({
+            locale: "zh-Hans-SG",
+            style:"unit",
+            length: "full"
+        });
+    
+        test.expect(2);
+        test.ok(fmt !== null);
+        test.equal(fmt.format(["一", "二", "三", "四", "五"]), "一二三四五");
+        test.done();
+    },
+
+    //zh-Hans-MY
+
+    testListFmtzhHansMYNumberFormatOne: function(test) {
+        var fmt = new ListFmt({
+            locale: "zh-Hans-MY"
+        });
+    
+        test.expect(2);
+        test.ok(fmt !== null);
+        test.equal(fmt.format(["一"]), "一");
+        test.done();
+    },
+    
+    testListFmtzhHansMYNumberFormatTwo: function(test) {
+        var fmt = new ListFmt({
+            locale: "zh-Hans-MY"
+        });
+    
+        test.expect(2);
+        test.ok(fmt !== null);
+        test.equal(fmt.format(["一", "二"]), "一和二");
+        test.done();
+    },
+    
+    testListFmtzhHansMYNumberFormatThree: function(test) {
+        var fmt = new ListFmt({
+            locale: "zh-Hans-MY"
+        });
+    
+        test.expect(2);
+        test.ok(fmt !== null);
+        test.equal(fmt.format(["一", "二", "三"]), "一、二和三");
+        test.done();
+    },
+    
+    testListFmtzhHansMYNumberFormatFour: function(test) {
+        var fmt = new ListFmt({
+            locale: "zh-Hans-MY"
+        });
+    
+        test.expect(2);
+        test.ok(fmt !== null);
+        test.equal(fmt.format(["一", "二", "三", "四"]), "一、二、三和四");
+        test.done();
+    },
+    
+    testListFmtzhHansMYNumberFormatFive: function(test) {
+        var fmt = new ListFmt({
+            locale: "zh-Hans-MY"
+        });
+    
+        test.expect(2);
+        test.ok(fmt !== null);
+        test.equal(fmt.format(["一", "二", "三", "四", "五"]), "一、二、三、四和五");
+        test.done();
+    },
+    
+    // zh-Hans-MY: unit style
+    
+    testListFmtUnitStylezhHansMYNumberFormatOneMedium: function(test) {
+        var fmt = new ListFmt({
+            locale: "zh-Hans-MY",
+            style:"unit",
+            length: "medium"
+        });
+    
+        test.expect(2);
+        test.ok(fmt !== null);
+        test.equal(fmt.format(["一"]), "一");
+        test.done();
+    },
+    
+    testListFmtUnitStylezhHansMYNumberFormatTwoMedium: function(test) {
+        var fmt = new ListFmt({
+            locale: "zh-Hans-MY",
+            style:"unit",
+            length: "medium"
+        });
+    
+        test.expect(2);
+        test.ok(fmt !== null);
+        test.equal(fmt.format(["一", "二"]), "一二");
+        test.done();
+    },
+    
+    testListFmtUnitStylezhHansMYNumberFormatThreeMedium: function(test) {
+        var fmt = new ListFmt({
+            locale: "zh-Hans-MY",
+            style:"unit",
+            length: "medium"
+        });
+    
+        test.expect(2);
+        test.ok(fmt !== null);
+        test.equal(fmt.format(["一", "二", "三"]), "一二三");
+        test.done();
+    },
+    
+    testListFmtUnitStylezhHansMYNumberFormatFourMedium: function(test) {
+        var fmt = new ListFmt({
+            locale: "zh-Hans-MY",
+            style:"unit",
+            length: "medium"
+        });
+    
+        test.expect(2);
+        test.ok(fmt !== null);
+        test.equal(fmt.format(["一", "二", "三", "四"]), "一二三四");
+        test.done();
+    },
+    
+    testListFmtUnitStylezhHansMYNumberFormatFiveMedium: function(test) {
+        var fmt = new ListFmt({
+            locale: "zh-Hans-MY",
+            style:"unit",
+            length: "medium"
+        });
+    
+        test.expect(2);
+        test.ok(fmt !== null);
+        test.equal(fmt.format(["一", "二", "三", "四", "五"]), "一二三四五");
+        test.done();
+    },
+    
+    testListFmtUnitStylezhHansMYNumberFormatOneLong: function(test) {
+        var fmt = new ListFmt({
+            locale: "zh-Hans-MY",
+            style:"unit",
+            length: "long"
+        });
+    
+        test.expect(2);
+        test.ok(fmt !== null);
+        test.equal(fmt.format(["一"]), "一");
+        test.done();
+    },
+    
+    testListFmtUnitStylezhHansMYNumberFormatTwoLong: function(test) {
+        var fmt = new ListFmt({
+            locale: "zh-Hans-MY",
+            style:"unit",
+            length: "long"
+        });
+    
+        test.expect(2);
+        test.ok(fmt !== null);
+        test.equal(fmt.format(["一", "二"]), "一二");
+        test.done();
+    },
+    
+    testListFmtUnitStylezhHansMYNumberFormatThreeLong: function(test) {
+        var fmt = new ListFmt({
+            locale: "zh-Hans-MY",
+            style:"unit",
+            length: "long"
+        });
+    
+        test.expect(2);
+        test.ok(fmt !== null);
+        test.equal(fmt.format(["一", "二", "三"]), "一二三");
+        test.done();
+    },
+    
+    testListFmtUnitStylezhHansMYNumberFormatFourLong: function(test) {
+        var fmt = new ListFmt({
+            locale: "zh-Hans-MY",
+            style:"unit",
+            length: "long"
+            
+        });
+    
+        test.expect(2);
+        test.ok(fmt !== null);
+        test.equal(fmt.format(["一", "二", "三", "四"]), "一二三四");
+        test.done();
+    },
+    
+    testListFmtUnitStylezhHansMYNumberFormatFiveLong: function(test) {
+        var fmt = new ListFmt({
+            locale: "zh-Hans-MY",
+            style:"unit",
+            length: "long"
+        });
+    
+        test.expect(2);
+        test.ok(fmt !== null);
+        test.equal(fmt.format(["一", "二", "三", "四", "五"]), "一二三四五");
         test.done();
     }
 };

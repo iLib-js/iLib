@@ -426,6 +426,224 @@ module.exports.testlistfmt_ar = {
         test.ok(fmt !== null);
         test.equal(fmt.format(["واحد", "اثنان", "ثلاثة", "أربعة"]), "واحد، واثنان، وثلاثة، وأربعة");
         test.done();
-    }
+    },
+
+    // ar-IQ
+    testListFmtarIQNumberFormatOneLong: function(test) {
+        var fmt = new ListFmt({
+            locale: "ar-IQ",
+            length: "medium"
+        });
     
+        test.expect(2);
+        test.ok(fmt !== null);
+        test.equal(fmt.format(["واحد"]), "واحد");
+        test.done();
+    },
+
+    testListFmtarIQNumberFormatThreeLong: function(test) {
+        var fmt = new ListFmt({
+            locale: "ar-IQ",
+            length: "medium"
+        });
+        test.expect(2);
+        test.ok(fmt !== null);
+        test.equal(fmt.format(["واحد", "اثنان", "ثلاثة"]), "واحد، واثنان، وثلاثة");
+        test.done();
+    },
+
+    testListFmtarIQNumberFormatFourLong: function(test) {
+        var fmt = new ListFmt({
+            locale: "ar-IQ",
+            length: "medium"
+        });
+        test.expect(2);
+        test.ok(fmt !== null);
+        test.equal(fmt.format(["واحد", "اثنان", "ثلاثة", "أربعة"]), "واحد، واثنان، وثلاثة، وأربعة");
+        test.done();
+    },
+
+    testListFmtarIQNumberFormatOneFull: function(test) {
+        var fmt = new ListFmt({
+            locale: "ar-IQ",
+            length: "full"
+        });
+        test.expect(2);
+        test.ok(fmt !== null);
+        test.equal(fmt.format(["واحد"]), "واحد");
+        test.done();
+    },
+
+    testListFmtarIQNumberFormatTwoFull: function(test) {
+        var fmt = new ListFmt({
+            locale: "ar-IQ",
+            length: "full"
+        });
+        test.expect(2);
+        test.ok(fmt !== null);
+        test.equal(fmt.format(["واحد", "اثنان"]), "واحد واثنان");
+        test.done();
+    },
+
+    testListFmtarIQNumberFormatThreeFull: function(test) {
+        var fmt = new ListFmt({
+            locale: "ar-IQ",
+            length: "full"
+        });
+        test.expect(2);
+        test.ok(fmt !== null);
+                                                         
+        test.equal(fmt.format(["ﻭﺎﺣﺩ", "ﺎﺜﻧﺎﻧ", "ﺙﻼﺛﺓ"]), "ﻭﺎﺣﺩ، ﺎﺜﻧﺎﻧ، وﺙﻼﺛﺓ");
+        test.done();
+    },
+
+    testListFmtarIQNumberFormatFourFull: function(test) {
+        var fmt = new ListFmt({
+            locale: "ar-IQ",
+            length: "full"
+        });
+        test.expect(2);
+        test.ok(fmt !== null);                                      
+        test.equal(fmt.format(["واحد", "اثنان", "ثلاثة", "أربعة"]), "واحد، اثنان، ثلاثة، وأربعة");
+        test.done();
+    },
+
+    //// ar-MA
+
+    testListFmtarMANumberFormatOneMedium: function(test) {
+        var fmt = new ListFmt({
+            locale: "ar-MA",
+            length: "medium"
+        });
+        test.expect(2);
+        test.ok(fmt !== null);
+        test.equal(fmt.format(["واحد"]), "واحد");
+        test.done();
+    },
+
+    testListFmtarMANumberFormatTwoMedium: function(test) {
+        var fmt = new ListFmt({
+            locale: "ar-MA",
+            length: "medium"
+        });
+        test.expect(2);
+        test.ok(fmt !== null);
+        test.equal(fmt.format(["واحد", "اثنان"]), "واحد واثنان");
+        test.done();
+    },
+
+    testListFmtarMANumberFormatThreeMedium: function(test) {
+        var fmt = new ListFmt({
+            locale: "ar-MA",
+            length: "medium"
+        });
+        test.expect(2);
+        test.ok(fmt !== null);
+        test.equal(fmt.format(["واحد", "اثنان", "ثلاثة"]), "واحد، واثنان، وثلاثة");
+        test.done();
+    },
+
+    testListFmtarMANumberFormatFourMedium: function(test) {
+        var fmt = new ListFmt({
+            locale: "ar-MA",
+            length: "medium"
+        });
+        test.expect(2);
+        test.ok(fmt !== null);
+        test.equal(fmt.format(["واحد", "اثنان", "ثلاثة", "أربعة"]), "واحد، واثنان، وثلاثة، وأربعة");
+        test.done();
+    },
+
+    testListFmtUnitStylearMANumberFormatOne: function(test) {
+        var fmt = new ListFmt({
+            locale: "ar-MA",
+            style: "unit"
+        });
+        test.expect(2);
+        test.ok(fmt !== null);
+        test.equal(fmt.format(["واحد"]), "واحد");
+        test.done();
+    },
+
+    testListFmtUnitStylearMANumberFormatTwo: function(test) {
+        var fmt = new ListFmt({
+            locale: "ar-MA",
+            style: "unit"
+        });
+        test.expect(2);
+        test.ok(fmt !== null);
+        test.equal(fmt.format(["واحد", "اثنان"]), "واحد، اثنان");
+        test.done();
+    },
+
+    testListFmtUnitStylearMANumberFormatThree: function(test) {
+        var fmt = new ListFmt({
+            locale: "ar-MA",
+            style: "unit"
+        });
+        test.expect(2);
+        test.ok(fmt !== null);
+        test.equal(fmt.format(["واحد", "اثنان", "ثلاثة"]), "واحد، اثنان، ثلاثة");
+        test.done();
+    },
+
+    testListFmtUnitStylearMANumberFormatFour: function(test) {
+        var fmt = new ListFmt({
+            locale: "ar-MA",
+            style: "unit"
+        });
+        test.expect(2);
+        test.ok(fmt !== null);
+        test.equal(fmt.format(["واحد", "اثنان", "ثلاثة", "أربعة"]), "واحد، اثنان، ثلاثة، أربعة");
+        test.done();
+    },
+
+    testListFmtUnitStylearMANumberFormatOneFull: function(test) {
+        var fmt = new ListFmt({
+            locale: "ar-MA",
+            style: "unit",
+            length: "full"
+        });
+        test.expect(2);
+        test.ok(fmt !== null);
+        test.equal(fmt.format(["واحد"]), "واحد");
+        test.done();
+    },
+
+    testListFmtUnitStylearMANumberFormatTwoFull: function(test) {
+        var fmt = new ListFmt({
+            locale: "ar-MA",
+            style: "unit",
+            length: "full"
+        });
+        test.expect(2);
+        test.ok(fmt !== null);
+        test.equal(fmt.format(["واحد", "اثنان"]), "واحد واثنان");
+        test.done();
+    },
+
+    testListFmtUnitStylearMANumberFormatThreeFull: function(test) {
+        var fmt = new ListFmt({
+            locale: "ar-MA",
+            style: "unit",
+            length: "full"
+        });
+        test.expect(2);
+        test.ok(fmt !== null);
+        test.equal(fmt.format(["واحد", "اثنان", "ثلاثة"]), "واحد، واثنان، وثلاثة");
+        test.done();
+    },
+
+    testListFmtUnitStylearMANumberFormatFourFull: function(test) {
+        var fmt = new ListFmt({
+            locale: "ar-MA",
+            style: "unit",
+            length: "full"
+        });
+        test.expect(2);
+        test.ok(fmt !== null);
+        test.equal(fmt.format(["واحد", "اثنان", "ثلاثة", "أربعة"]), "واحد، واثنان، وثلاثة، وأربعة");
+        test.done();
+    }
+
 };
