@@ -1460,6 +1460,7 @@ module.exports.testutils = {
         if (ilib.isDynData()) {
             // don't need to test loading on the dynamic load version because we are testing
             // it via all the other tests already.
+            test.done();
             return;
         }
         var obj = {};
@@ -1485,6 +1486,7 @@ module.exports.testutils = {
         if (ilib.isDynData()) {
             // don't need to test loading on the dynamic load version because we are testing
             // it via all the other tests already.
+            test.done();
             return;
         }
         var obj = {};
@@ -1511,6 +1513,7 @@ module.exports.testutils = {
         if (ilib.isDynData()) {
             // don't need to test loading on the dynamic load version because we are testing
             // it via all the other tests already.
+            test.done();
             return;
         }
         var obj = {};
@@ -1537,6 +1540,7 @@ module.exports.testutils = {
         if (ilib.isDynData()) {
             // don't need to test loading on the dynamic load version because we are testing
             // it via all the other tests already.
+            test.done();
             return;
         }
         var obj = {};
@@ -1563,6 +1567,7 @@ module.exports.testutils = {
         if (ilib.isDynData()) {
             // don't need to test loading on the dynamic load version because we are testing
             // it via all the other tests already.
+            test.done();
             return;
         }
         var obj = {};
@@ -1589,6 +1594,7 @@ module.exports.testutils = {
         if (ilib.isDynData()) {
             // don't need to test loading on the dynamic load version because we are testing
             // it via all the other tests already.
+            test.done();
             return;
         }
         var obj = {};
@@ -1615,6 +1621,7 @@ module.exports.testutils = {
         if (ilib.isDynData()) {
             // don't need to test loading on the dynamic load version because we are testing
             // it via all the other tests already.
+            test.done();
             return;
         }
         var obj = {};
@@ -1645,6 +1652,7 @@ module.exports.testutils = {
         if (ilib.isDynData()) {
             // don't need to test loading on the dynamic load version because we are testing
             // it via all the other tests already.
+            test.done();
             return;
         }
         var obj = {};
@@ -1685,6 +1693,7 @@ module.exports.testutils = {
         if (ilib.isDynData()) {
             // don't need to test loading on the dynamic load version because we are testing
             // it via all the other tests already.
+            test.done();
             return;
         }
         var obj = {};
@@ -1734,6 +1743,7 @@ module.exports.testutils = {
         if (ilib.isDynData()) {
             // don't need to test loading on the dynamic load version because we are testing
             // it via all the other tests already.
+            test.done();
             return;
         }
         var obj = {};
@@ -1775,6 +1785,7 @@ module.exports.testutils = {
         if (ilib.isDynData()) {
             // don't need to test loading on the dynamic load version because we are testing
             // it via all the other tests already.
+            test.done();
             return;
         }
         ilib.setLoaderCallback(mockLoader);
@@ -1799,6 +1810,7 @@ module.exports.testutils = {
         if (ilib.isDynData()) {
             // don't need to test loading on the dynamic load version because we are testing
             // it via all the other tests already.
+            test.done();
             return;
         }
         
@@ -1838,6 +1850,7 @@ module.exports.testutils = {
         if (ilib.isDynData()) {
             // don't need to test loading on the dynamic load version because we are testing
             // it via all the other tests already.
+            test.done();
             return;
         }
         var obj = {};
@@ -1864,6 +1877,7 @@ module.exports.testutils = {
         if (ilib.isDynData()) {
             // don't need to test loading on the dynamic load version because we are testing
             // it via all the other tests already.
+            test.done();
             return;
         }
         ilib.setLoaderCallback(mockLoader);
@@ -1883,6 +1897,7 @@ module.exports.testutils = {
         if (ilib.isDynData()) {
             // don't need to test loading on the dynamic load version because we are testing
             // it via all the other tests already.
+            test.done();
             return;
         }
         ilib.setLoaderCallback(mockLoader);
@@ -1902,6 +1917,7 @@ module.exports.testutils = {
         if (ilib.isDynData()) {
             // don't need to test loading on the dynamic load version because we are testing
             // it via all the other tests already.
+            test.done();
             return;
         }
         ilib.setLoaderCallback(mockLoader);
@@ -1922,6 +1938,7 @@ module.exports.testutils = {
         if (ilib.isDynData()) {
             // don't need to test loading on the dynamic load version because we are testing
             // it via all the other tests already.
+            test.done();
             return;
         }
         ilib.setLoaderCallback(mockLoader);
@@ -1942,6 +1959,7 @@ module.exports.testutils = {
         if (ilib.isDynData()) {
             // don't need to test loading on the dynamic load version because we are testing
             // it via all the other tests already.
+            test.done();
             return;
         }
         ilib.setLoaderCallback(mockLoader);
@@ -1962,6 +1980,7 @@ module.exports.testutils = {
         if (ilib.isDynData()) {
             // don't need to test loading on the dynamic load version because we are testing
             // it via all the other tests already.
+            test.done();
             return;
         }
         ilib.setLoaderCallback(mockLoader);
@@ -1983,6 +2002,7 @@ module.exports.testutils = {
         if (ilib.isDynData()) {
             // don't need to test loading on the dynamic load version because we are testing
             // it via all the other tests already.
+            test.done();
             return;
         }
         ilib.setLoaderCallback(mockLoader);
@@ -2003,6 +2023,7 @@ module.exports.testutils = {
         if (ilib.isDynData()) {
             // don't need to test loading on the dynamic load version because we are testing
             // it via all the other tests already.
+            test.done();
             return;
         }
         ilib.setLoaderCallback(mockLoader);
@@ -2022,6 +2043,7 @@ module.exports.testutils = {
         if (ilib.isDynData()) {
             // don't need to test loading on the dynamic load version because we are testing
             // it via all the other tests already.
+            test.done();
             return;
         }
         ilib.setLoaderCallback(mockLoader);

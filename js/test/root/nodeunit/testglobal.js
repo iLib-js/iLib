@@ -348,6 +348,7 @@ module.exports.testglobal = {
             // can't test this with dynamically loaded code because the global context
             // is different for each module and we cannot set global variables, so we 
             // cannot simulate the conditions where this code would work
+            test.done();
             return;
         }
         ilib._platform = undefined;

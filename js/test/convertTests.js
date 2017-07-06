@@ -28,7 +28,7 @@ var reFunction = /^function\s+(test\w*)\s*\(\)\s*\{/;
 var reCopyright = /^ \* Copyright © (20..)(,20..)?(-20..)?(.*)/;
 var reLoops = /^\s*(for |while |\} catch |\w+\.forEach|bisectionSearch)/;
 var reReturn = /^(\s*)return/;
-var reGetPlatform = /ilib\._getPlatform\(\)/;
+var reGetPlatform = /(ilib\._getPlatform\(\)|isDynData\(\)|isDynCode\(\))/;
     
 var assertMappings = [
 	{re: /(\s*)assertEquals\((([^'",]|'(\\'|[^'])*?'|"(\\"|[^"])*?")*),\s*(([^'"]|'(\\'|[^'])*?'|"(\\"|[^"])*?")*)\)/, replace: "    $1test.equal($6, $2)"},
@@ -47,8 +47,8 @@ var assertMappings = [
 	{re: /(\s*)assertObjectEquals\((([^'"]|'(\\'|[^'])*?'|"(\\"|[^"])*?")*),\s*(([^'"]|'(\\'|[^'])*?'|"(\\"|[^"])*?")*)\)/, replace: "    $1test.deepEqual($6, $2)"},
 	{re: /(\s*)assertContains\((([^'",]|'(\\'|[^'])*?'|"(\\"|[^"])*?")*),\s*(([^'"]|'(\\'|[^'])*?'|"(\\"|[^"])*?")*)\)/, replace: "    $1test.contains($6, $2)"},
     {re: /(\s*)assertObjectContains\((([^'"]|'(\\'|[^'])*?'|"(\\"|[^"])*?")*),\s*(([^'"]|'(\\'|[^'])*?'|"(\\"|[^"])*?")*)\)/, replace: "    $1test.contains($6, $2)"},
-    {re: /(\s*)assertRoughlyEquals\((([^'",]|'(\\'|[^'])*?'|"(\\"|[^"])*?")*),\s*(([^'"]|'(\\'|[^'])*?'|"(\\"|[^"])*?")*),\s*(([^'"]|'(\\'|[^'])*?'|"(\\"|[^"])*?")*),\s*(([^'",]|'(\\'|[^'])*?'|"(\\"|[^"])*?")*)\)/, replace: "    $1test.roughlyEqual($6, $2, $10, $14)"},
-    {re: /(\s*)assertRoughlyEquals\((([^'",]|'(\\'|[^'])*?'|"(\\"|[^"])*?")*),\s*(([^'"]|'(\\'|[^'])*?'|"(\\"|[^"])*?")*),\s*(([^'",]|'(\\'|[^'])*?'|"(\\"|[^"])*?")*)\)/, replace: "    $1test.roughlyEqual($6, $2, $10)"},
+    {re: /(\s*)assertRoughlyEquals\((([^'",]|'(\\'|[^'])*?'|"(\\"|[^"])*?")*),\s*(([^'",]|'(\\'|[^'])*?'|"(\\"|[^"])*?")*),\s*(([^'",]|'(\\'|[^'])*?'|"(\\"|[^"])*?")*),\s*(([^'"]|'(\\'|[^'])*?'|"(\\"|[^"])*?")*)\)/, replace: "    $1test.roughlyEqual($10, $6, $14, $2)"},
+    {re: /(\s*)assertRoughlyEquals\((([^'",]|'(\\'|[^'])*?'|"(\\"|[^"])*?")*),\s*(([^'",]|'(\\'|[^'])*?'|"(\\"|[^"])*?")*),\s*(([^'"]|'(\\'|[^'])*?'|"(\\"|[^"])*?")*)\)/, replace: "    $1test.roughlyEqual($6, $2, $10)"},
     {re: /(\s*)assertArrayEquals\((([^'",]|'(\\'|[^'])*?'|"(\\"|[^"])*?")*),\s*(([^'"]|'(\\'|[^'])*?'|"(\\"|[^"])*?")*)\)/, replace: "    $1test.deepEqual($6, $2)"},
 	{re: /(\s*)assertArrayEqualsIgnoringOrder\((([^'"]|'(\\'|[^'])*?'|"(\\"|[^"])*?")*),\s*(([^'"]|'(\\'|[^'])*?'|"(\\"|[^"])*?")*)\)/, replace: "    $1test.equalIgnoringOrder($6, $2)"}
 ];

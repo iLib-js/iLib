@@ -54,6 +54,7 @@ module.exports.testrequire = {
         if (!ilib.isDynCode()) {
             // can't test the require function unless you're 
             // in dynamic code loading mode
+            test.done();
             return;
         }
         var mod = require("../test/testfiles/datefmt2.js");
@@ -68,6 +69,7 @@ module.exports.testrequire = {
         if (!ilib.isDynCode()) {
             // can't test the require function unless you're 
             // in dynamic code loading mode
+            test.done();
             return;
         }
         test.expect(4);
@@ -93,6 +95,7 @@ module.exports.testrequire = {
         if (!ilib.isDynCode()) {
             // can't test the require function unless you're 
             // in dynamic code loading mode
+            test.done();
             return;
         }
         var Locale2 = require("../test/testfiles/locale2.js");
@@ -111,6 +114,7 @@ module.exports.testrequire = {
         if (!ilib.isDynCode()) {
             // can't test the require function unless you're 
             // in dynamic code loading mode
+            test.done();
             return;
         }
         
