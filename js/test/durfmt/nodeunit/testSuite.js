@@ -30,7 +30,6 @@ var suites = [
     "testdurfmt_or_IN.js",
     "testdurfmt_si_LK.js",
     "testdurfmt_sw_KE.js",
-    "testdurfmtasync.js",
 ];
 
 suites.forEach(function (path) {

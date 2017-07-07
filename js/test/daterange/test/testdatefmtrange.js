@@ -174,6 +174,10 @@ function testDateRngFmtGetClockBogus() {
 
 function testDateRngFmtGetTimeZoneDefault() {
 	ilib.tz = undefined;	// just in case
+	if (ilib._getPlatform() === "nodejs") {
+	    process.env.TZ = ""; // just in case
+	}
+	
     var fmt = new DateRngFmt();
     assertNotNull(fmt);
     

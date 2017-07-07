@@ -226,6 +226,10 @@ module.exports.testdatefmtrange = {
     testDateRngFmtGetTimeZoneDefault: function(test) {
         test.expect(2);
         ilib.tz = undefined;    // just in case
+        if (ilib._getPlatform() === "nodejs") {
+            process.env.TZ = ""; // just in case
+        }
+        
         var fmt = new DateRngFmt();
         test.ok(fmt !== null);
         

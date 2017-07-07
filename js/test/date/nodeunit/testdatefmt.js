@@ -446,7 +446,7 @@ module.exports.testdatefmt = {
         ilib.tz = undefined;    // just in case
         var fmt = new DateFmt();
         if (ilib._getPlatform() === "nodejs") {
-            process.env.timezone = "";
+            process.env.TZ = "";
         }
         
         test.ok(fmt !== null);
@@ -872,24 +872,26 @@ module.exports.testdatefmt = {
     },
     
     testDateFmtFormatJSDateRightTimeZone4: function(test) {
-        test.expect(2);
         var d = new Date();
         // test only works in north america
-        if (d.getTimezoneOffset() > 180) {
-            var fmt = new DateFmt({
-                type: "date",
-                length: "full",
-                date: "w",
-                timezone: "local"
-            });
-            test.ok(fmt !== null);
-            
-            // test formatting a javascript date. It should be converted to 
-            // an ilib date object automatically and then formatted
-            var datMyBday = new Date('2014-05-13T03:17:48.674Z');
-            test.equal(fmt.format(datMyBday), "Monday");
+        if (ilib._getPlatform() !== "unknown" && d.getTimezoneOffset() < 180) {
             test.done();
+            return;
         }
+        var fmt = new DateFmt({
+            type: "date",
+            length: "full",
+            date: "w",
+            timezone: "local"
+        });
+        test.expect(2);
+        test.ok(fmt !== null);
+        
+        // test formatting a javascript date. It should be converted to 
+        // an ilib date object automatically and then formatted
+        var datMyBday = new Date('2014-05-13T03:17:48.674Z');
+        test.equal(fmt.format(datMyBday), "Monday");
+        test.done();
     },
     
     testDateFmtFormatJSDate2: function(test) {
@@ -908,23 +910,25 @@ module.exports.testdatefmt = {
     },
     
     testDateFmtFormatJSDateRightTimeZone5: function(test) {
-        test.expect(2);
         var d = new Date();
         // test only works in north america
-        if (d.getTimezoneOffset() > 180) {
-            var fmt = new DateFmt({
-                type: "date",
-                length: "full",
-                date: "w",
-                timezone: "local"
-            });
-            test.ok(fmt !== null);
-            
-            // test formatting a javascript date. It should be converted to 
-            // an ilib date object automatically and then formatted
-            test.equal(fmt.format(1399951068674), "Monday");
+        if (ilib._getPlatform() !== "unknown" && d.getTimezoneOffset() < 180) {
             test.done();
+            return;
         }
+        var fmt = new DateFmt({
+            type: "date",
+            length: "full",
+            date: "w",
+            timezone: "local"
+        });
+        test.expect(2);
+        test.ok(fmt !== null);
+        
+        // test formatting a javascript date. It should be converted to 
+        // an ilib date object automatically and then formatted
+        test.equal(fmt.format(1399951068674), "Monday");
+        test.done();
     },
     
     testDateFmtFormatJSDate3: function(test) {
@@ -943,23 +947,25 @@ module.exports.testdatefmt = {
     },
     
     testDateFmtFormatJSDateRightTimeZone6: function(test) {
-        test.expect(2);
         var d = new Date();
         // test only works in north america
-        if (d.getTimezoneOffset() > 180) {
-            var fmt = new DateFmt({
-                type: "date",
-                length: "full",
-                date: "w",
-                timezone: "local"
-            });
-            test.ok(fmt !== null);
-            
-            // test formatting a javascript date. It should be converted to 
-            // an ilib date object automatically and then formatted
-            test.equal(fmt.format("Wed May 14 2014 23:37:35 GMT-0700"), "Wednesday");
+        if (ilib._getPlatform() !== "unknown" && d.getTimezoneOffset() < 180) {
             test.done();
+            return;
         }
+        var fmt = new DateFmt({
+            type: "date",
+            length: "full",
+            date: "w",
+            timezone: "local"
+        });
+        test.expect(2);
+        test.ok(fmt !== null);
+        
+        // test formatting a javascript date. It should be converted to 
+        // an ilib date object automatically and then formatted
+        test.equal(fmt.format("Wed May 14 2014 23:37:35 GMT-0700"), "Wednesday");
+        test.done();
     },
     
     testDateFmtGetMonthsOfYear1: function(test) {
