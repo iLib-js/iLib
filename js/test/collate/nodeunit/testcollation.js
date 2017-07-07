@@ -516,7 +516,7 @@ module.exports.testcollation = {
     },
     
     testCollatorDefaultCase: function(test) {
-        test.expect(9);
+        test.expect(5);
         var col = new Collator();
     
         test.ok(typeof(col) !== "undefined");
@@ -540,8 +540,8 @@ module.exports.testcollation = {
             test.ok("B < b", col.compare("B", "b") < 0);
             test.ok("a < Z", col.compare("a", "Z") < 0);
             test.ok("Á < a", col.compare("A", "a") < 0); // accent is more important than case
-            test.done();
         }
+        test.done();
     },
     
     testCollatorGetComparator: function(test) {
@@ -575,7 +575,7 @@ module.exports.testcollation = {
     },
     
     testCollatorGetComparatorWorksWithCase: function(test) {
-        test.expect(10);
+        test.expect(6);
         var col = new Collator();
     
         test.ok(typeof(col) !== "undefined");
@@ -601,8 +601,8 @@ module.exports.testcollation = {
             test.ok("B < b", func("B", "b") < 0);
             test.ok("a < Z", func("a", "Z") < 0);
             test.ok("Á < a", func("A", "a") < 0); // accent is more important than case
-            test.done();
         }
+        test.done();
     },
     
     

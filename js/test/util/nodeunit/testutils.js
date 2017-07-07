@@ -1373,7 +1373,7 @@ module.exports.testutils = {
     },
     
     testHashCodeEqualFunctionDifferentSpacing: function(test) {
-        test.expect(2);
+        test.expect(1);
         var plat = ilib._getPlatform(); 
         if (plat === "qt" || plat === "rhino" || plat === "trireme") {
             // the qt javascript engine doesn't allow you to see the code of a function, so all 
@@ -1386,12 +1386,12 @@ module.exports.testutils = {
         } else {
             var expected = JSUtils.hashCode(function a () { return "a"; });
             test.notEqual(JSUtils.hashCode(function a(){return "a";}), expected);
-            test.done();
         }
+        test.done();
     },
     
     testHashCodeNotEqualFunctionDifferentNames: function(test) {
-        test.expect(2);
+        test.expect(1);
         if (ilib._getPlatform() === "qt") {
             // the qt javascript engine doesn't allow you to see the code of a function, so all 
             // functions should have the same hash
@@ -1400,11 +1400,11 @@ module.exports.testutils = {
         } else {
             var expected = JSUtils.hashCode(function a() { return "a"; });
             test.notEqual(JSUtils.hashCode(function b() { return "a"; }), expected);
-            test.done();
         }
+        test.done();
     },
     testHashCodeNotEqualFunctionDifferentContents: function(test) {
-        test.expect(2);
+        test.expect(1);
         if (ilib._getPlatform() === "qt") {
             // the qt javascript engine doesn't allow you to see the code of a function, so all 
             // functions should have the same hash
@@ -1413,8 +1413,8 @@ module.exports.testutils = {
         } else {
             var expected = JSUtils.hashCode(function a() { return "a"; });
             test.notEqual(JSUtils.hashCode(function a() { return "b"; }), expected);
-            test.done();
         }
+        test.done();
     },
     
     testHashCodeEqualObjects: function(test) {
