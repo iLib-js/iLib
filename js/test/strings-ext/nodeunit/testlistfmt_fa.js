@@ -344,6 +344,381 @@ module.exports.testlistfmt_fa = {
         test.ok(fmt !== null);
         test.equal(fmt.format(["یکی", "دو", "سه", "چهار", "پنج"]), "یکی،‏ دو،‏ سه،‏ چهار، و پنج");
         test.done();
+    },
+
+    // fa-AF
+    testListFmtfaAFNumberFormatOne: function(test) {
+        var fmt = new ListFmt({
+            locale: "fa-AF"
+        });
+    
+        test.expect(2);
+        test.ok(fmt !== null);
+        test.equal(fmt.format(["یکی"]), "یکی");
+        test.done();
+    },
+    
+    testListFmtfaAFNumberFormatTwo: function(test) {
+        var fmt = new ListFmt({
+            locale: "fa-AF"
+        });
+    
+        test.expect(2);
+        test.ok(fmt !== null);
+        test.equal(fmt.format(["یکی", "دو"]), "یکی و دو");
+        test.done();
+    },
+    
+    testListFmtfaAFNumberFormatThree: function(test) {
+        var fmt = new ListFmt({
+            locale: "fa-AF"
+        });
+    
+        test.expect(2);
+        test.ok(fmt !== null);
+        test.equal(fmt.format(["یکی", "دو", "سه"]), "یکی،‏ دو، و سه");
+        test.done();
+    },
+    
+    testListFmtfaAFNumberFormatFour: function(test) {
+        var fmt = new ListFmt({
+            locale: "fa-AF"
+        });
+    
+        test.expect(2);
+        test.ok(fmt !== null);
+        test.equal(fmt.format(["یکی", "دو", "سه", "چهار"]), "یکی،‏ دو،‏ سه، و چهار");
+        test.done();
+    },
+    
+    testListFmtfaAFNumberFormatFive: function(test) {
+        var fmt = new ListFmt({
+            locale: "fa-AF"
+        });
+    
+        test.expect(2);
+        test.ok(fmt !== null);
+        test.equal(fmt.format(["یکی", "دو", "سه", "چهار", "پنج"]), "یکی،‏ دو،‏ سه،‏ چهار، و پنج");
+        test.done();
+    },
+
+    testListFmtfaAFNumberFormatOneFull: function(test) {
+        var fmt = new ListFmt({
+            locale: "fa-AF",
+            length: "full"
+        });
+    
+        test.expect(2);
+        test.ok(fmt !== null);
+        test.equal(fmt.format(["یکی"]), "یکی");
+        test.done();
+    },
+    
+    testListFmtfaAFNumberFormatTwoFull: function(test) {
+        var fmt = new ListFmt({
+            locale: "fa-AF",
+            length: "full"
+        });
+    
+        test.expect(2);
+        test.ok(fmt !== null);
+        test.equal(fmt.format(["یکی", "دو"]), "یکی و دو");
+        test.done();
+    },
+    
+    testListFmtfaAFNumberFormatThreeFull: function(test) {
+        var fmt = new ListFmt({
+            locale: "fa-AF",
+            length: "full"
+        });
+    
+        test.expect(2);
+        test.ok(fmt !== null);
+        test.equal(fmt.format(["یکی", "دو", "سه"]), "یکی،‏ دو، و سه");
+        test.done();
+    },
+    
+    testListFmtfaAFNumberFormatFourFull: function(test) {
+        var fmt = new ListFmt({
+            locale: "fa-AF",
+            length: "full"
+        });
+    
+        test.expect(2);
+        test.ok(fmt !== null);
+        test.equal(fmt.format(["یکی", "دو", "سه", "چهار"]), "یکی،‏ دو،‏ سه، و چهار");
+        test.done();
+    },
+    
+    testListFmtfaAFNumberFormatFiveFull: function(test) {
+        var fmt = new ListFmt({
+            locale: "fa-AF",
+            length: "full"
+        });
+    
+        test.expect(2);
+        test.ok(fmt !== null);
+        test.equal(fmt.format(["یکی", "دو", "سه", "چهار", "پنج"]), "یکی،‏ دو،‏ سه،‏ چهار، و پنج");
+        test.done();
+    },
+    testListFmtUnitStylefaAFNumberFormatOneShort: function(test) {
+        var fmt = new ListFmt({
+            locale: "fa-AF",
+            style: "unit",
+            length: "short"
+        });
+    
+        test.expect(2);
+        test.ok(fmt !== null);
+        test.equal(fmt.format(["یکی"]), "یکی");
+        test.done();
+    },
+    
+    testListFmtUnitStylefaAFNumberFormatTwoShort: function(test) {
+        var fmt = new ListFmt({
+            locale: "fa-AF",
+            style: "unit",
+            length: "short"
+        });
+    
+        test.expect(2);
+        test.ok(fmt !== null);
+        test.equal(fmt.format(["یکی", "دو"]), "یکی دو");
+        test.done();
+    },
+    
+    testListFmtUnitStylefaAFNumberFormatThreeShort: function(test) {
+        var fmt = new ListFmt({
+            locale: "fa-AF",
+            style: "unit",
+            length: "short"
+        });
+    
+        test.expect(2);
+        test.ok(fmt !== null);
+        test.equal(fmt.format(["یکی", "دو", "سه"]), "یکی دو سه");
+        test.done();
+    },
+    
+    testListFmtUnitStylefaAFNumberFormatFourShort: function(test) {
+        var fmt = new ListFmt({
+            locale: "fa-AF",
+            style: "unit",
+            length: "short"
+        });
+    
+        test.expect(2);
+        test.ok(fmt !== null);
+        test.equal(fmt.format(["یکی", "دو", "سه", "چهار"]), "یکی دو سه چهار");
+        test.done();
+    },
+    
+    testListFmtUnitStylefaAFNumberFormatFiveShort: function(test) {
+        var fmt = new ListFmt({
+            locale: "fa-AF",
+            style: "unit",
+            length: "short"
+        });
+    
+        test.expect(2);
+        test.ok(fmt !== null);
+        test.equal(fmt.format(["یکی", "دو", "سه", "چهار", "پنج"]), "یکی دو سه چهار پنج");
+        test.done();
+    },
+    
+    testListFmtUnitStylefaAFNumberFormatOneMedium: function(test) {
+        var fmt = new ListFmt({
+            locale: "fa-AF",
+            style: "unit",
+            length: "medium"
+        });
+    
+        test.expect(2);
+        test.ok(fmt !== null);
+        test.equal(fmt.format(["یکی"]), "یکی");
+        test.done();
+    },
+    
+    testListFmtUnitStylefaAFNumberFormatTwoMedium: function(test) {
+        var fmt = new ListFmt({
+            locale: "fa-AF",
+            style: "unit",
+            length: "medium"
+        });
+    
+        test.expect(2);
+        test.ok(fmt !== null);
+        test.equal(fmt.format(["یکی", "دو"]), "یکی،‏ دو");
+        test.done();
+    },
+    
+    testListFmtUnitStylefaAFNumberFormatThreeMedium: function(test) {
+        var fmt = new ListFmt({
+            locale: "fa-AF",
+            style: "unit",
+            length: "medium"
+        });
+    
+        test.expect(2);
+        test.ok(fmt !== null);
+        test.equal(fmt.format(["یکی", "دو", "سه"]), "یکی،‏ دو،‏ سه");
+        test.done();
+    },
+    
+    testListFmtUnitStylefaAFNumberFormatFourMedium: function(test) {
+        var fmt = new ListFmt({
+            locale: "fa-AF",
+            style: "unit",
+            length: "medium"
+        });
+    
+        test.expect(2);
+        test.ok(fmt !== null);
+        test.equal(fmt.format(["یکی", "دو", "سه", "چهار"]), "یکی،‏ دو،‏ سه،‏ چهار");
+        test.done();
+    },
+    
+    testListFmtUnitStylefaAFNumberFormatFiveMedium: function(test) {
+        var fmt = new ListFmt({
+            locale: "fa-AF",
+            style: "unit",
+            length: "medium"
+        });
+    
+        test.expect(2);
+        test.ok(fmt !== null);
+        test.equal(fmt.format(["یکی", "دو", "سه", "چهار", "پنج"]), "یکی،‏ دو،‏ سه،‏ چهار،‏ پنج");
+        test.done();
+    },
+    
+    testListFmtUnitStylefaAFNumberFormatOneLong: function(test) {
+        var fmt = new ListFmt({
+            locale: "fa-AF",
+            style: "unit",
+            length: "long"
+        });
+    
+        test.expect(2);
+        test.ok(fmt !== null);
+        test.equal(fmt.format(["یکی"]), "یکی");
+        test.done();
+    },
+    
+    testListFmtUnitStylefaAFNumberFormatTwoLong: function(test) {
+        var fmt = new ListFmt({
+            locale: "fa-AF",
+            style: "unit",
+            length: "long"
+        });
+    
+        test.expect(2);
+        test.ok(fmt !== null);
+        test.equal(fmt.format(["یکی", "دو"]), "یکی و دو");
+        test.done();
+    },
+    
+    testListFmtUnitStylefaAFNumberFormatThreeLong: function(test) {
+        var fmt = new ListFmt({
+            locale: "fa-AF",
+            style: "unit",
+            length: "long"
+        });
+    
+        test.expect(2);
+        test.ok(fmt !== null);
+        test.equal(fmt.format(["یکی", "دو", "سه"]), "یکی،‏ دو، و سه");
+        test.done();
+    },
+    
+    testListFmtUnitStylefaAFNumberFormatFourLong: function(test) {
+        var fmt = new ListFmt({
+            locale: "fa-AF",
+            style: "unit",
+            length: "long"
+        });
+    
+        test.expect(2);
+        test.ok(fmt !== null);
+        test.equal(fmt.format(["یکی", "دو", "سه", "چهار"]), "یکی،‏ دو،‏ سه، و چهار");
+        test.done();
+    },
+    
+    testListFmtUnitStylefaAFNumberFormatFiveLong: function(test) {
+        var fmt = new ListFmt({
+            locale: "fa-AF",
+            style: "unit",
+            length: "long"
+        });
+    
+        test.expect(2);
+        test.ok(fmt !== null);
+        test.equal(fmt.format(["یکی", "دو", "سه", "چهار", "پنج"]), "یکی،‏ دو،‏ سه،‏ چهار، و پنج");
+        test.done();
+    },
+    
+    testListFmtUnitStylefaAFNumberFormatOneFull: function(test) {
+        var fmt = new ListFmt({
+            locale: "fa-AF",
+            style: "unit",
+            length: "full"
+        });
+    
+        test.expect(2);
+        test.ok(fmt !== null);
+        test.equal(fmt.format(["یکی"]), "یکی");
+        test.done();
+    },
+    
+    testListFmtUnitStylefaAFNumberFormatTwoFull: function(test) {
+        var fmt = new ListFmt({
+            locale: "fa-AF",
+            style: "unit",
+            length: "full"
+        });
+    
+        test.expect(2);
+        test.ok(fmt !== null);
+        test.equal(fmt.format(["یکی", "دو"]), "یکی و دو");
+        test.done();
+    },
+    
+    testListFmtUnitStylefaAFNumberFormatThreeFull: function(test) {
+        var fmt = new ListFmt({
+            locale: "fa-AF",
+            style: "unit",
+            length: "full"
+        });
+    
+        test.expect(2);
+        test.ok(fmt !== null);
+        test.equal(fmt.format(["یکی", "دو", "سه"]), "یکی،‏ دو، و سه");
+        test.done();
+    },
+    
+    testListFmtUnitStylefaAFNumberFormatFourFull: function(test) {
+        var fmt = new ListFmt({
+            locale: "fa-AF",
+            style: "unit",
+            length: "full"
+        });
+    
+        test.expect(2);
+        test.ok(fmt !== null);
+        test.equal(fmt.format(["یکی", "دو", "سه", "چهار"]), "یکی،‏ دو،‏ سه، و چهار");
+        test.done();
+    },
+    
+    testListFmtUnitStylefaAFNumberFormatFiveFull: function(test) {
+        var fmt = new ListFmt({
+            locale: "fa-AF",
+            style: "unit",
+            length: "full"
+        });
+    
+        test.expect(2);
+        test.ok(fmt !== null);
+        test.equal(fmt.format(["یکی", "دو", "سه", "چهار", "پنج"]), "یکی،‏ دو،‏ سه،‏ چهار، و پنج");
+        test.done();
     }
     
 };

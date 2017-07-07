@@ -164,6 +164,48 @@ module.exports.testlistfmt = {
         test.equal(fmt.format(["one", "two", "three", "four"]), "one, two, three, and four");
         test.done();
     },
+    // af-ZA
+
+    testListFmtafZAMonthOne: function(test) {
+        var fmt = new ListFmt({
+            locale: "af-ZA"
+        });
+    
+        test.expect(2);
+        test.ok(fmt !== null);
+        test.equal(fmt.format(["een"]), "een");
+        test.done();
+    },
+    testListFmtafZAMonthTwo: function(test) {
+        var fmt = new ListFmt({
+            locale: "af-ZA"
+        });
+    
+        test.expect(2);
+        test.ok(fmt !== null);
+        test.equal(fmt.format(["een", "twee"]), "een en twee");
+        test.done();
+    },
+    testListFmtafZAMonthThree: function(test) {
+        var fmt = new ListFmt({
+            locale: "af-ZA"
+        });
+    
+        test.expect(2);
+        test.ok(fmt !== null);
+        test.equal(fmt.format(["een", "twee", "drie"]), "een, twee en drie");
+        test.done();
+    },
+    testListFmtafZAMonthFour: function(test) {
+        var fmt = new ListFmt({
+            locale: "af-ZA"
+        });
+    
+        test.expect(2);
+        test.ok(fmt !== null);
+        test.equal(fmt.format(["een", "twee", "drie", "vier"]), "een, twee, drie en vier");
+        test.done();
+    },
 
     // as-IN
     testListFmtasINMonthOne: function(test) {
@@ -935,8 +977,6 @@ module.exports.testlistfmt = {
         test.done();
     },
 
-
-
     // fi-FI
     testListFmtfiFINumberFormatOne: function(test) {
         var fmt = new ListFmt({
@@ -979,7 +1019,6 @@ module.exports.testlistfmt = {
         test.done();
     },
 
-    // fi-FI
     testListFmtUnitStylefiFINumberFormatOne: function(test) {
         var fmt = new ListFmt({
             locale: "fi-FI",
@@ -1025,14 +1064,678 @@ module.exports.testlistfmt = {
         test.done();
     },
 
+    // ga-IE
+    testListFmtgaIENumberFormatOne: function(test) {
+        var fmt = new ListFmt({
+            locale: "ga-IE"
+        });
+    
+        test.expect(2);
+        test.ok(fmt !== null);
+        test.equal(fmt.format(["ceann"]), "ceann");
+        test.done();
+    },
+    testListFmtgaIENumberFormatTwo: function(test) {
+        var fmt = new ListFmt({
+            locale: "ga-IE"
+        });
+    
+        test.expect(2);
+        test.ok(fmt !== null);
+        test.equal(fmt.format(["ceann", "dhá"]), "ceann agus dhá");
+        test.done();
+    },
+    testListFmtgaIENumberFormatThree: function(test) {
+        var fmt = new ListFmt({
+            locale: "ga-IE"
+        });
+    
+        test.expect(2);
+        test.ok(fmt !== null);
+        test.equal(fmt.format(["ceann", "dhá", "trí"]), "ceann, dhá, agus trí");
+        test.done();
+    },
+    testListFmtgaIENumberFormatFour: function(test) {
+        var fmt = new ListFmt({
+            locale: "ga-IE"
+        });
+    
+        test.expect(2);
+        test.ok(fmt !== null);
+        test.equal(fmt.format(["ceann", "dhá", "trí", "ceithre"]), "ceann, dhá, trí, agus ceithre");
+        test.done();
+    },
+
+    // ga-IE
+    testListFmtgaIENumberFormatOne: function(test) {
+        var fmt = new ListFmt({
+            locale: "ga-IE",
+            style: "unit"
+        });
+    
+        test.expect(2);
+        test.ok(fmt !== null);
+        test.equal(fmt.format(["ceann"]), "ceann");
+        test.done();
+    },
+    testListFmtgaIENumberFormatTwo: function(test) {
+        var fmt = new ListFmt({
+            locale: "ga-IE",
+            style: "unit"
+        });
+    
+        test.expect(2);
+        test.ok(fmt !== null);
+        test.equal(fmt.format(["ceann", "dhá"]), "ceann dhá");
+        test.done();
+    },
+    testListFmtgaIENumberFormatThree: function(test) {
+        var fmt = new ListFmt({
+            locale: "ga-IE",
+            style: "unit"
+        });
+    
+        test.expect(2);
+        test.ok(fmt !== null);
+        test.equal(fmt.format(["ceann", "dhá", "trí"]), "ceann dhá trí");
+        test.done();
+    },
+    testListFmtgaIENumberFormatFour: function(test) {
+        var fmt = new ListFmt({
+            locale: "ga-IE",
+            style: "unit"
+        });
+    
+        test.expect(2);
+        test.ok(fmt !== null);
+        test.equal(fmt.format(["ceann", "dhá", "trí", "ceithre"]), "ceann dhá trí ceithre");
+        test.done();
+    },
+
+    testListFmtUnitStylegaIENumberFormatOneFull: function(test) {
+        var fmt = new ListFmt({
+            locale: "ga-IE",
+            style: "unit",
+            length: "full"
+        });
+    
+        test.expect(2);
+        test.ok(fmt !== null);
+        test.equal(fmt.format(["ceann"]), "ceann");
+        test.done();
+    },
+    testListFmtUnitStylegaIENumberFormatTwoFull: function(test) {
+        var fmt = new ListFmt({
+            locale: "ga-IE",
+            style: "unit",
+            length: "full"
+        });
+    
+        test.expect(2);
+        test.ok(fmt !== null);
+        test.equal(fmt.format(["ceann", "dhá"]), "ceann agus dhá");
+        test.done();
+    },
+    testListFmtUnitStylegaIENumberFormatThreeFull: function(test) {
+        var fmt = new ListFmt({
+            locale: "ga-IE",
+            style: "unit",
+            length: "full"
+        });
+    
+        test.expect(2);
+        test.ok(fmt !== null);
+        test.equal(fmt.format(["ceann", "dhá", "trí"]), "ceann, dhá, agus trí");
+        test.done();
+    },
+    testListFmtUnitStylegaIENumberFormatFourFull: function(test) {
+        var fmt = new ListFmt({
+            locale: "ga-IE",
+            style: "unit",
+            length: "full"
+        });
+    
+        test.expect(2);
+        test.ok(fmt !== null);
+        test.equal(fmt.format(["ceann", "dhá", "trí", "ceithre"]), "ceann, dhá, trí, agus ceithre");
+        test.done();
+    },
+
+    // hu-HU
+    testListFmthuHUNumberFormatOne: function(test) {
+        var fmt = new ListFmt({
+            locale: "hu-HU"
+        });
+    
+        test.expect(2);
+        test.ok(fmt !== null);
+        test.equal(fmt.format(["egy"]), "egy");
+        test.done();
+    },
+    testListFmthuHUNumberFormatTwo: function(test) {
+        var fmt = new ListFmt({
+            locale: "hu-HU"
+        });
+    
+        test.expect(2);
+        test.ok(fmt !== null);
+        test.equal(fmt.format(["egy", "kettő"]), "egy és kettő");
+        test.done();
+    },
+    testListFmthuHUNumberFormatThree: function(test) {
+        var fmt = new ListFmt({
+            locale: "hu-HU"
+        });
+    
+        test.expect(2);
+        test.ok(fmt !== null);
+        test.equal(fmt.format(["egy", "kettő", "három"]), "egy, kettő és három");
+        test.done();
+    },
+    testListFmthuHUNumberFormatFour: function(test) {
+        var fmt = new ListFmt({
+            locale: "hu-HU"
+        });
+    
+        test.expect(2);
+        test.ok(fmt !== null);
+        test.equal(fmt.format(["egy", "kettő", "három", "négy"]), "egy, kettő, három és négy");
+        test.done();
+    },
+
+    testListFmthuHUNumberFormatOne: function(test) {
+        var fmt = new ListFmt({
+            locale: "hu-HU",
+            style: "unit"
+        });
+    
+        test.expect(2);
+        test.ok(fmt !== null);
+        test.equal(fmt.format(["egy"]), "egy");
+        test.done();
+    },
+    testListFmthuHUNumberFormatTwo: function(test) {
+        var fmt = new ListFmt({
+            locale: "hu-HU",
+            style: "unit"
+        });
+    
+        test.expect(2);
+        test.ok(fmt !== null);
+        test.equal(fmt.format(["egy", "kettő"]), "egy és kettő");
+        test.done();
+    },
+    testListFmthuHUNumberFormatThree: function(test) {
+        var fmt = new ListFmt({
+            locale: "hu-HU",
+            style: "unit"
+        });
+    
+        test.expect(2);
+        test.ok(fmt !== null);
+        test.equal(fmt.format(["egy", "kettő", "három"]), "egy, kettő és három");
+        test.done();
+    },
+    testListFmthuHUNumberFormatFour: function(test) {
+        var fmt = new ListFmt({
+            locale: "hu-HU",
+            style: "unit"
+        });
+    
+        test.expect(2);
+        test.ok(fmt !== null);
+        test.equal(fmt.format(["egy", "kettő", "három", "négy"]), "egy, kettő, három és négy");
+        test.done();
+    },
+
+    // lv-LV
+    testListFmtlvLVNumberFormatOne: function(test) {
+        var fmt = new ListFmt({
+            locale: "lv-LV"
+        });
+    
+        test.expect(2);
+        test.ok(fmt !== null);
+        test.equal(fmt.format(["Vienu"]), "Vienu");
+        test.done();
+    },
+    testListFmtlvLVNumberFormatTwo: function(test) {
+        var fmt = new ListFmt({
+            locale: "lv-LV"
+        });
+    
+        test.expect(2);
+        test.ok(fmt !== null);
+        test.equal(fmt.format(["Vienu", "Divi"]), "Vienu un Divi");
+        test.done();
+    },
+    testListFmtlvLVNumberFormatThree: function(test) {
+        var fmt = new ListFmt({
+            locale: "lv-LV"
+        });
+    
+        test.expect(2);
+        test.ok(fmt !== null);
+        test.equal(fmt.format(["Vienu", "Divi", "Trīs"]), "Vienu, Divi un Trīs");
+        test.done();
+    },
+    testListFmtlvLVNumberFormatFour: function(test) {
+        var fmt = new ListFmt({
+            locale: "lv-LV"
+        });
+    
+        test.expect(2);
+        test.ok(fmt !== null);
+        test.equal(fmt.format(["Vienu", "Divi", "Trīs", "Četri"]), "Vienu, Divi, Trīs un Četri");
+        test.done();
+    },
+
+    testListFmtUnitStylelvLVNumberFormatOne: function(test) {
+        var fmt = new ListFmt({
+            locale: "lv-LV",
+            style: "unit"
+        });
+    
+        test.expect(2);
+        test.ok(fmt !== null);
+        test.equal(fmt.format(["Vienu"]), "Vienu");
+        test.done();
+    },
+    testListFmtUnitStylelvLVNumberFormatTwo: function(test) {
+        var fmt = new ListFmt({
+            locale: "lv-LV",
+            style: "unit"
+        });
+    
+        test.expect(2);
+        test.ok(fmt !== null);
+        test.equal(fmt.format(["Vienu", "Divi"]), "Vienu Divi");
+        test.done();
+    },
+    testListFmtUnitStylelvLVNumberFormatThree: function(test) {
+        var fmt = new ListFmt({
+            locale: "lv-LV",
+            style: "unit"
+        });
+    
+        test.expect(2);
+        test.ok(fmt !== null);
+        test.equal(fmt.format(["Vienu", "Divi", "Trīs"]), "Vienu Divi Trīs");
+        test.done();
+    },
+    testListFmtUnitStylelvLVNumberFormatFour: function(test) {
+        var fmt = new ListFmt({
+            locale: "lv-LV",
+            style: "unit"
+        });
+    
+        test.expect(2);
+        test.ok(fmt !== null);
+        test.equal(fmt.format(["Vienu", "Divi", "Trīs", "Četri"]), "Vienu Divi Trīs Četri");
+        test.done();
+    },
+    testListFmtUnitStylelvLVNumberFormatOneLong: function(test) {
+        var fmt = new ListFmt({
+            locale: "lv-LV",
+            style: "unit",
+            length: "long"
+        });
+    
+        test.expect(2);
+        test.ok(fmt !== null);
+        test.equal(fmt.format(["Vienu"]), "Vienu");
+        test.done();
+    },
+    testListFmtUnitStylelvLVNumberFormatTwoLong: function(test) {
+        var fmt = new ListFmt({
+            locale: "lv-LV",
+            style: "unit",
+            length: "long"
+        });
+    
+        test.expect(2);
+        test.ok(fmt !== null);
+        test.equal(fmt.format(["Vienu", "Divi"]), "Vienu un Divi");
+        test.done();
+    },
+    testListFmtUnitStylelvLVNumberFormatThreeLong: function(test) {
+        var fmt = new ListFmt({
+            locale: "lv-LV",
+            style: "unit",
+            length: "long"
+        });
+    
+        test.expect(2);
+        test.ok(fmt !== null);
+        test.equal(fmt.format(["Vienu", "Divi", "Trīs"]), "Vienu, Divi un Trīs");
+        test.done();
+    },
+    testListFmtUnitStylelvLVNumberFormatFourLong: function(test) {
+        var fmt = new ListFmt({
+            locale: "lv-LV",
+            style: "unit",
+            length: "long"
+        });
+    
+        test.expect(2);
+        test.ok(fmt !== null);
+        test.equal(fmt.format(["Vienu", "Divi", "Trīs", "Četri"]), "Vienu, Divi, Trīs un Četri");
+        test.done();
+    },
 
 
+    // lt-LT
+    testListFmtltLTNumberFormatOne: function(test) {
+        var fmt = new ListFmt({
+            locale: "lt-LT"
+        });
+    
+        test.expect(2);
+        test.ok(fmt !== null);
+        test.equal(fmt.format(["Vienas"]), "Vienas");
+        test.done();
+    },
+    testListFmtltLTNumberFormatTwo: function(test) {
+        var fmt = new ListFmt({
+            locale: "lt-LT"
+        });
+    
+        test.expect(2);
+        test.ok(fmt !== null);
+        test.equal(fmt.format(["Vienas", "Du"]), "Vienas ir Du");
+        test.done();
+    },
+    testListFmtltLTNumberFormatThree: function(test) {
+        var fmt = new ListFmt({
+            locale: "lt-LT"
+        });
+    
+        test.expect(2);
+        test.ok(fmt !== null);
+        test.equal(fmt.format(["Vienas", "Du", "Trys"]), "Vienas, Du ir Trys");
+        test.done();
+    },
+    testListFmtltLTNumberFormatFour: function(test) {
+        var fmt = new ListFmt({
+            locale: "lt-LT"
+        });
+    
+        test.expect(2);
+        test.ok(fmt !== null);
+        test.equal(fmt.format(["Vienas", "Du", "Trys", "Keturi"]), "Vienas, Du, Trys ir Keturi");
+        test.done();
+    },
 
+    // lt-LT
+    testListFmtUnitStyleltLTNumberFormatOne: function(test) {
+        var fmt = new ListFmt({
+            locale: "lt-LT",
+            style: "unit"
+        });
+    
+        test.expect(2);
+        test.ok(fmt !== null);
+        test.equal(fmt.format(["Vienas"]), "Vienas");
+        test.done();
+    },
+    testListFmtUnitStyleltLTNumberFormatTwo: function(test) {
+        var fmt = new ListFmt({
+            locale: "lt-LT",
+            style: "unit"
+        });
+    
+        test.expect(2);
+        test.ok(fmt !== null);
+        test.equal(fmt.format(["Vienas", "Du"]), "Vienas Du");
+        test.done();
+    },
+    testListFmtUnitStyleltLTNumberFormatThree: function(test) {
+        var fmt = new ListFmt({
+            locale: "lt-LT",
+            style: "unit"
+        });
+    
+        test.expect(2);
+        test.ok(fmt !== null);
+        test.equal(fmt.format(["Vienas", "Du", "Trys"]), "Vienas Du Trys");
+        test.done();
+    },
+    testListFmtUnitStyleltLTNumberFormatFour: function(test) {
+        var fmt = new ListFmt({
+            locale: "lt-LT",
+            style: "unit"
+        });
+    
+        test.expect(2);
+        test.ok(fmt !== null);
+        test.equal(fmt.format(["Vienas", "Du", "Trys", "Keturi"]), "Vienas Du Trys Keturi");
+        test.done();
+    },
 
+    // mk-MK
+    testListFmtmkMKNumberFormatOne: function(test) {
+        var fmt = new ListFmt({
+            locale: "mk-MK"
+        });
+    
+        test.expect(2);
+        test.ok(fmt !== null);
+        test.equal(fmt.format(["Еден"]), "Еден");
+        test.done();
+    },
+    testListFmtmkMKNumberFormatTwo: function(test) {
+        var fmt = new ListFmt({
+            locale: "mk-MK"
+        });
+    
+        test.expect(2);
+        test.ok(fmt !== null);
+        test.equal(fmt.format(["Еден", "Два"]), "Еден и Два");
+        test.done();
+    },
+    testListFmtmkMKNumberFormatThree: function(test) {
+        var fmt = new ListFmt({
+            locale: "mk-MK"
+        });
+    
+        test.expect(2);
+        test.ok(fmt !== null);
+        test.equal(fmt.format(["Еден", "Два", "Три"]), "Еден, Два и Три");
+        test.done();
+    },
+    testListFmtmkMKNumberFormatFour: function(test) {
+        var fmt = new ListFmt({
+            locale: "mk-MK"
+        });
+    
+        test.expect(2);
+        test.ok(fmt !== null);
+        test.equal(fmt.format(["Еден", "Два", "Три", "Четири"]), "Еден, Два, Три и Четири");
+        test.done();
+    },
+    // kk-KZ    
+    testListFmtkkKZNumberFormatOne: function(test) {
+        var fmt = new ListFmt({
+            locale: "kk-KZ"
+        });
+    
+        test.expect(2);
+        test.ok(fmt !== null);
+        test.equal(fmt.format(["бір"]), "бір");
+        test.done();
+    },
+    
+    testListFmtkkKZNumberFormatTwo: function(test) {
+        var fmt = new ListFmt({
+            locale: "kk-KZ"
+        });
+    
+        test.expect(2);
+        test.ok(fmt !== null);
+        test.equal(fmt.format(["бір", "Екі"]), "бір Төртеуі Екі");
+        test.done();
+    },
+    
+    testListFmtkkKZNumberFormatThree: function(test) {
+        var fmt = new ListFmt({
+            locale: "kk-KZ"
+        });
+    
+        test.expect(2);
+        test.ok(fmt !== null);
+        test.equal(fmt.format(["бір", "Екі", "Үшеуі"]), "бір, Екі Төртеуі Үшеуі");
+        test.done();
+    },
+    
+    testListFmtkkKZNumberFormatFour: function(test) {
+        var fmt = new ListFmt({
+            locale: "kk-KZ"
+        });
+    
+        test.expect(2);
+        test.ok(fmt !== null);
+        test.equal(fmt.format(["бір", "Екі", "Үшеуі", "Төртеуі"]), "бір, Екі, Үшеуі Төртеуі Төртеуі");
+        test.done();
+    },
 
-
-
-
+    testListFmtkkKZNumberFormatOne: function(test) {
+        var fmt = new ListFmt({
+            locale: "kk-KZ",
+            style: "unit"
+        });
+    
+        test.expect(2);
+        test.ok(fmt !== null);
+        test.equal(fmt.format(["бір"]), "бір");
+        test.done();
+    },
+    
+    testListFmtkkKZNumberFormatTwo: function(test) {
+        var fmt = new ListFmt({
+            locale: "kk-KZ",
+            style: "unit"
+        });
+    
+        test.expect(2);
+        test.ok(fmt !== null);
+        test.equal(fmt.format(["бір", "Екі"]), "бір Екі");
+        test.done();
+    },
+    
+    testListFmtkkKZNumberFormatThree: function(test) {
+        var fmt = new ListFmt({
+            locale: "kk-KZ",
+            style: "unit"
+        });
+    
+        test.expect(2);
+        test.ok(fmt !== null);
+        test.equal(fmt.format(["бір", "Екі", "Үшеуі"]), "бір Екі Үшеуі");
+        test.done();
+    },
+    
+    testListFmtkkKZNumberFormatFour: function(test) {
+        var fmt = new ListFmt({
+            locale: "kk-KZ",
+            style: "unit"
+        });
+    
+        test.expect(2);
+        test.ok(fmt !== null);
+        test.equal(fmt.format(["бір", "Екі", "Үшеуі", "Төртеуі"]), "бір Екі Үшеуі Төртеуі");
+        test.done();
+    },
+    // km-KH
+    testListFmtkmKHNumberFormatOne: function(test) {
+        var fmt = new ListFmt({
+            locale: "km-KH"
+        });
+    
+        test.expect(2);
+        test.ok(fmt !== null);
+        test.equal(fmt.format(["មួយ"]), "មួយ");
+        test.done();
+    },
+    
+    testListFmtkmKHNumberFormatTwo: function(test) {
+        var fmt = new ListFmt({
+            locale: "km-KH"
+        });
+    
+        test.expect(2);
+        test.ok(fmt !== null);
+        test.equal(fmt.format(["មួយ", "ពីរ"]), "មួយ និង​ពីរ");
+        test.done();
+    },
+    
+    testListFmtkmKHNumberFormatThree: function(test) {
+        var fmt = new ListFmt({
+            locale: "km-KH"
+        });
+    
+        test.expect(2);
+        test.ok(fmt !== null);
+        test.equal(fmt.format(["មួយ", "ពីរ", "បី"]), "មួយ, ពីរ និង បី");
+        test.done();
+    },
+    
+    testListFmtkmKHNumberFormatFour: function(test) {
+        var fmt = new ListFmt({
+            locale: "km-KH"
+        });
+    
+        test.expect(2);
+        test.ok(fmt !== null);
+        test.equal(fmt.format(["មួយ", "ពីរ", "បី", "បួននាក់"]), "មួយ, ពីរ, បី និង បួននាក់");
+        test.done();
+    },
+    testListFmtUnitStylekmKHNumberFormatOne: function(test) {
+        var fmt = new ListFmt({
+            locale: "km-KH",
+            style: "unit"
+        });
+    
+        test.expect(2);
+        test.ok(fmt !== null);
+        test.equal(fmt.format(["មួយ"]), "មួយ");
+        test.done();
+    },
+    
+    testListFmtUnitStylekmKHNumberFormatTwo: function(test) {
+        var fmt = new ListFmt({
+            locale: "km-KH",
+            style: "unit"
+        });
+    
+        test.expect(2);
+        test.ok(fmt !== null);
+        test.equal(fmt.format(["មួយ", "ពីរ"]), "មួយ ពីរ");
+        test.done();
+    },
+    
+    testListFmtUnitStylekmKHNumberFormatThree: function(test) {
+        var fmt = new ListFmt({
+            locale: "km-KH",
+            style: "unit"
+        });
+    
+        test.expect(2);
+        test.ok(fmt !== null);
+        test.equal(fmt.format(["មួយ", "ពីរ", "បី"]), "មួយ ពីរ បី");
+        test.done();
+    },
+    
+    testListFmtUnitStylekmKHNumberFormatFour: function(test) {
+        var fmt = new ListFmt({
+            locale: "km-KH",
+            style: "unit"
+        });
+    
+        test.expect(2);
+        test.ok(fmt !== null);
+        test.equal(fmt.format(["មួយ", "ពីរ", "បី", "បួននាក់"]), "មួយ ពីរ បី បួននាក់");
+        test.done();
+    },
 
 
     // ko-KR
@@ -1052,7 +1755,7 @@ module.exports.testlistfmt = {
         var fmt = new ListFmt({
             locale: "ko-KR"
         });
-    5
+    
         test.expect(2);
         test.ok(fmt !== null);
         test.equal(fmt.format(["하나", "둘"]), "하나 및 둘");
@@ -1281,13 +1984,574 @@ module.exports.testlistfmt = {
         test.equal(fmt.format(["satu", "dua", "tiga", "empat", "lima"]), "satu, dua, tiga, empat, lima");
         test.done();
     },    
-    
-    
-    // vi-VI
-    
-    testListFmttrTRNumberFormatOne: function(test) {
+    // pl-PL
+    testListFmtplPLNumberFormatOne: function(test) {
         var fmt = new ListFmt({
-            locale: "vi-VI"
+            locale: "pl-PL"
+        });
+    
+        test.expect(2);
+        test.ok(fmt !== null);
+        test.equal(fmt.format(["jeden"]), "jeden");
+        test.done();
+    },
+    
+    testListFmtplPLNumberFormatTwo: function(test) {
+        var fmt = new ListFmt({
+            locale: "pl-PL"
+        });
+    
+        test.expect(2);
+        test.ok(fmt !== null);
+        test.equal(fmt.format(["jeden", "dwa"]), "jeden i dwa");
+        test.done();
+    },
+    
+    testListFmtplPLNumberFormatThree: function(test) {
+        var fmt = new ListFmt({
+            locale: "pl-PL"
+        });
+    
+        test.expect(2);
+        test.ok(fmt !== null);
+        test.equal(fmt.format(["jeden", "dwa", "trzy"]), "jeden, dwa i trzy");
+        test.done();
+    },
+    
+    testListFmtplPLNumberFormatFour: function(test) {
+        var fmt = new ListFmt({
+            locale: "pl-PL"
+        });
+    
+        test.expect(2);
+        test.ok(fmt !== null);
+        test.equal(fmt.format(["jeden", "dwa", "trzy", "cztery"]), "jeden, dwa, trzy i cztery");
+        test.done();
+    },
+
+    testListFmtUnitStyleplPLNumberFormatOne: function(test) {
+        var fmt = new ListFmt({
+            locale: "pl-PL",
+            style: "unit"
+        });
+    
+        test.expect(2);
+        test.ok(fmt !== null);
+        test.equal(fmt.format(["jeden"]), "jeden");
+        test.done();
+    },
+    
+    testListFmtUnitStyleplPLNumberFormatTwo: function(test) {
+        var fmt = new ListFmt({
+            locale: "pl-PL",
+            style: "unit"
+        });
+    
+        test.expect(2);
+        test.ok(fmt !== null);
+        test.equal(fmt.format(["jeden", "dwa"]), "jeden i dwa");
+        test.done();
+    },
+    
+    testListFmtUnitStyleplPLNumberFormatThree: function(test) {
+        var fmt = new ListFmt({
+            locale: "pl-PL",
+            style: "unit"
+        });
+    
+        test.expect(2);
+        test.ok(fmt !== null);
+        test.equal(fmt.format(["jeden", "dwa", "trzy"]), "jeden, dwa i trzy");
+        test.done();
+    },
+    
+    testListFmtUnitStyleplPLNumberFormatFour: function(test) {
+        var fmt = new ListFmt({
+            locale: "pl-PL",
+            style: "unit"
+        });
+    
+        test.expect(2);
+        test.ok(fmt !== null);
+        test.equal(fmt.format(["jeden", "dwa", "trzy", "cztery"]), "jeden, dwa, trzy i cztery");
+        test.done();
+    },
+
+
+    // ro-RO
+    testListFmtroRONumberFormatOne: function(test) {
+        var fmt = new ListFmt({
+            locale: "ro-RO"
+        });
+    
+        test.expect(2);
+        test.ok(fmt !== null);
+        test.equal(fmt.format(["unu"]), "unu");
+        test.done();
+    },
+    
+    testListFmtroRONumberFormatTwo: function(test) {
+        var fmt = new ListFmt({
+            locale: "ro-RO"
+        });
+    
+        test.expect(2);
+        test.ok(fmt !== null);
+        test.equal(fmt.format(["unu", "Două"]), "unu și Două");
+        test.done();
+    },
+    
+    testListFmtroRONumberFormatThree: function(test) {
+        var fmt = new ListFmt({
+            locale: "ro-RO"
+        });
+    
+        test.expect(2);
+        test.ok(fmt !== null);
+        test.equal(fmt.format(["unu", "Două", "Trei"]), "unu, Două și Trei");
+        test.done();
+    },
+    
+    testListFmtroRONumberFormatFour: function(test) {
+        var fmt = new ListFmt({
+            locale: "ro-RO"
+        });
+    
+        test.expect(2);
+        test.ok(fmt !== null);
+        test.equal(fmt.format(["unu", "Două", "Trei", "patru"]), "unu, Două, Trei și patru");
+        test.done();
+    },
+
+    testListFmtUnitStyleroRONumberFormatOne: function(test) {
+        var fmt = new ListFmt({
+            locale: "ro-RO",
+            style: "unit"
+        });
+    
+        test.expect(2);
+        test.ok(fmt !== null);
+        test.equal(fmt.format(["unu"]), "unu");
+        test.done();
+    },
+    
+    testListFmtUnitStyleroRONumberFormatTwo: function(test) {
+        var fmt = new ListFmt({
+            locale: "ro-RO",
+            style: "unit"
+        });
+    
+        test.expect(2);
+        test.ok(fmt !== null);
+        test.equal(fmt.format(["unu", "Două"]), "unu, Două");
+        test.done();
+    },
+    
+    testListFmtUnitStyleroRONumberFormatThree: function(test) {
+        var fmt = new ListFmt({
+            locale: "ro-RO",
+            style: "unit"
+        });
+    
+        test.expect(2);
+        test.ok(fmt !== null);
+        test.equal(fmt.format(["unu", "Două", "Trei"]), "unu, Două, Trei");
+        test.done();
+    },
+    
+    testListFmtUnitStyleroRONumberFormatFour: function(test) {
+        var fmt = new ListFmt({
+            locale: "ro-RO",
+            style: "unit"
+        });
+    
+        test.expect(2);
+        test.ok(fmt !== null);
+        test.equal(fmt.format(["unu", "Două", "Trei", "patru"]), "unu, Două, Trei, patru");
+        test.done();
+    },
+
+    testListFmtUnitStyleroRONumberFormatOneFull: function(test) {
+        var fmt = new ListFmt({
+            locale: "ro-RO",
+            style: "unit",
+            length: "full"
+        });
+    
+        test.expect(2);
+        test.ok(fmt !== null);
+        test.equal(fmt.format(["unu"]), "unu");
+        test.done();
+    },
+    
+    testListFmtUnitStyleroRONumberFormatTwoFull: function(test) {
+        var fmt = new ListFmt({
+            locale: "ro-RO",
+            style: "unit",
+            length: "full"
+        });
+    
+        test.expect(2);
+        test.ok(fmt !== null);
+        test.equal(fmt.format(["unu", "Două"]), "unu și Două");
+        test.done();
+    },
+    
+    testListFmtUnitStyleroRONumberFormatThreeFull: function(test) {
+        var fmt = new ListFmt({
+            locale: "ro-RO",
+            style: "unit",
+            length: "full"
+        });
+    
+        test.expect(2);
+        test.ok(fmt !== null);
+        test.equal(fmt.format(["unu", "Două", "Trei"]), "unu, Două, Trei");
+        test.done();
+    },
+    
+    testListFmtUnitStyleroRONumberFormatFourFull: function(test) {
+        var fmt = new ListFmt({
+            locale: "ro-RO",
+            style: "unit",
+            length: "full"
+        });
+    
+        test.expect(2);
+        test.ok(fmt !== null);
+        test.equal(fmt.format(["unu", "Două", "Trei", "patru"]), "unu, Două, Trei, patru");
+        test.done();
+    },
+
+    // sk-SK
+    testListFmtskSKNumberFormatOne: function(test) {
+        var fmt = new ListFmt({
+            locale: "sk-SK"
+        });
+    
+        test.expect(2);
+        test.ok(fmt !== null);
+        test.equal(fmt.format(["jeden"]), "jeden");
+        test.done();
+    },
+    
+    testListFmtskSKNumberFormatTwo: function(test) {
+        var fmt = new ListFmt({
+            locale: "sk-SK"
+        });
+    
+        test.expect(2);
+        test.ok(fmt !== null);                    
+        test.equal(fmt.format(["jeden", "dva"]), "jeden a dva");
+        test.done();
+    },
+    
+    testListFmtskSKNumberFormatThree: function(test) {
+        var fmt = new ListFmt({
+            locale: "sk-SK"
+        });
+    
+        test.expect(2);
+        test.ok(fmt !== null);
+        test.equal(fmt.format(["jeden", "dva", "tri"]), "jeden, dva a tri");
+        test.done();
+    },
+    
+    testListFmtskSKNumberFormatFour: function(test) {
+        var fmt = new ListFmt({
+            locale: "sk-SK"
+        });
+    
+        test.expect(2);
+        test.ok(fmt !== null);
+        test.equal(fmt.format(["jeden", "dva", "tri", "štyri"]), "jeden, dva, tri a štyri");
+        test.done();
+    },
+
+    // sl-SI
+    testListFmtslSINumberFormatOne: function(test) {
+        var fmt = new ListFmt({
+            locale: "sl-SI"
+        });
+    
+        test.expect(2);
+        test.ok(fmt !== null);
+        test.equal(fmt.format(["Eno"]), "Eno");
+        test.done();
+    },
+    
+    testListFmtslSINumberFormatTwo: function(test) {
+        var fmt = new ListFmt({
+            locale: "sl-SI"
+        });
+    
+        test.expect(2);
+        test.ok(fmt !== null);
+        test.equal(fmt.format(["Eno", "Dva"]), "Eno in Dva");
+        test.done();
+    },
+    
+    testListFmtslSINumberFormatThree: function(test) {
+        var fmt = new ListFmt({
+            locale: "sl-SI"
+        });
+    
+        test.expect(2);
+        test.ok(fmt !== null);
+        test.equal(fmt.format(["Eno", "Dva", "Tri"]), "Eno, Dva in Tri");
+        test.done();
+    },
+    
+    testListFmtslSINumberFormatFour: function(test) {
+        var fmt = new ListFmt({
+            locale: "sl-SI"
+        });
+    
+        test.expect(2);
+        test.ok(fmt !== null);
+        test.equal(fmt.format(["Eno", "Dva", "Tri", "Štiri"]), "Eno, Dva, Tri in Štiri");
+        test.done();
+    },
+
+    testListFmtUnitStyleslSINumberFormatOne: function(test) {
+        var fmt = new ListFmt({
+            locale: "sl-SI",
+            style: "unit"
+        });
+    
+        test.expect(2);
+        test.ok(fmt !== null);
+        test.equal(fmt.format(["Eno"]), "Eno");
+        test.done();
+    },
+    
+    testListFmtUnitStyleslSINumberFormatTwo: function(test) {
+        var fmt = new ListFmt({
+            locale: "sl-SI",
+            style: "unit"
+        });
+    
+        test.expect(2);
+        test.ok(fmt !== null);
+        test.equal(fmt.format(["Eno", "Dva"]), "Eno in Dva");
+        test.done();
+    },
+    
+    testListFmtUnitStyleslSINumberFormatThree: function(test) {
+        var fmt = new ListFmt({
+            locale: "sl-SI",
+            style: "unit"
+        });
+    
+        test.expect(2);
+        test.ok(fmt !== null);
+        test.equal(fmt.format(["Eno", "Dva", "Tri"]), "Eno, Dva in Tri");
+        test.done();
+    },
+    
+    testListFmtUnitStyleslSINumberFormatFour: function(test) {
+        var fmt = new ListFmt({
+            locale: "sl-SI",
+            style: "unit"
+        });
+    
+        test.expect(2);
+        test.ok(fmt !== null);
+        test.equal(fmt.format(["Eno", "Dva", "Tri", "Štiri"]), "Eno, Dva, Tri in Štiri");
+        test.done();
+    },
+
+    // sw-Latn-KE
+    testListFmtswLatnKENumberFormatOne: function(test) {
+        var fmt = new ListFmt({
+            locale: "sw-Latn-KE"
+        });
+    
+        test.expect(2);
+        test.ok(fmt !== null);
+        test.equal(fmt.format(["Moja"]), "Moja");
+        test.done();
+    },
+    
+    testListFmtswLatnKENumberFormatTwo: function(test) {
+        var fmt = new ListFmt({
+            locale: "sw-Latn-KE"
+        });
+    
+        test.expect(2);
+        test.ok(fmt !== null);
+        test.equal(fmt.format(["Moja", "Mbili"]), "Moja na Mbili");
+        test.done();
+    },
+    
+    testListFmtswLatnKENumberFormatThree: function(test) {
+        var fmt = new ListFmt({
+            locale: "sw-Latn-KE"
+        });
+    
+        test.expect(2);
+        test.ok(fmt !== null);
+        test.equal(fmt.format(["Moja", "Mbili", "Tatu"]), "Moja, Mbili na Tatu");
+        test.done();
+    },
+    
+    testListFmtswLatnKENumberFormatFour: function(test) {
+        var fmt = new ListFmt({
+            locale: "sw-Latn-KE"
+        });
+    
+        test.expect(2);
+        test.ok(fmt !== null);
+        test.equal(fmt.format(["Moja", "Mbili", "Tatu", "Fou"]), "Moja, Mbili, Tatu na Fou");
+        test.done();
+    },
+    
+    testListFmtUnitStyleswLatnKEumberFormatOne: function(test) {
+        var fmt = new ListFmt({
+            locale: "sw-Latn-KE",
+            style: "unit"
+        });
+    
+        test.expect(2);
+        test.ok(fmt !== null);
+        test.equal(fmt.format(["Moja"]), "Moja");
+        test.done();
+    },
+    
+    testListFmtUnitStyleswLatnKENumberFormatTwo: function(test) {
+        var fmt = new ListFmt({
+            locale: "sw-Latn-KE",
+            style: "unit"
+        });
+    
+        test.expect(2);
+        test.ok(fmt !== null);
+        test.equal(fmt.format(["Moja", "Mbili"]), "Moja na Mbili");
+        test.done();
+    },
+    
+    testListFmtUnitStyleswLatnKENumberFormatThree: function(test) {
+        var fmt = new ListFmt({
+            locale: "sw-Latn-KE",
+            style: "unit"
+        });
+    
+        test.expect(2);
+        test.ok(fmt !== null);
+        test.equal(fmt.format(["Moja", "Mbili", "Tatu"]), "Moja, Mbili na Tatu");
+        test.done();
+    },
+    
+    testListFmtUnitStyleswLatnKENumberFormatFour: function(test) {
+        var fmt = new ListFmt({
+            locale: "sw-Latn-KE",
+            style: "unit"
+        });
+    
+        test.expect(2);
+        test.ok(fmt !== null);
+        test.equal(fmt.format(["Moja", "Mbili", "Tatu", "Fou"]), "Moja, Mbili, Tatu na Fou");
+        test.done();
+    },
+
+    //uz-Latn-UZ
+
+    testListFmtuzLatnUZNumberFormatOne: function(test) {
+        var fmt = new ListFmt({
+            locale: "uz-Latn-UZ"
+        });
+    
+        test.expect(2);
+        test.ok(fmt !== null);
+        test.equal(fmt.format(["Biri"]), "Biri");
+        test.done();
+    },
+    
+    testListFmtuzLatnUZNumberFormatTwo: function(test) {
+        var fmt = new ListFmt({
+            locale: "uz-Latn-UZ"
+        });
+    
+        test.expect(2);
+        test.ok(fmt !== null);
+        test.equal(fmt.format(["Biri", "Ikkita"]), "Biri va Ikkita");
+        test.done();
+    },
+    
+    testListFmtuzLatnUZNumberFormatThree: function(test) {
+        var fmt = new ListFmt({
+            locale: "uz-Latn-UZ"
+        });
+    
+        test.expect(2);
+        test.ok(fmt !== null);
+        test.equal(fmt.format(["Biri", "Ikkita", "Uchta"]), "Biri, Ikkita va Uchta");
+        test.done();
+    },
+    
+    testListFmtuzLatnUZNumberFormatFour: function(test) {
+        var fmt = new ListFmt({
+            locale: "uz-Latn-UZ"
+        });
+    
+        test.expect(2);
+        test.ok(fmt !== null);
+        test.equal(fmt.format(["Biri", "Ikkita", "Uchta", "To'rtta"]), "Biri, Ikkita, Uchta va To'rtta");
+        test.done();
+    },
+    
+    testListFmtUnitStyleuzLatnUZNumberFormatOne: function(test) {
+        var fmt = new ListFmt({
+            locale: "uz-Latn-UZ",
+            style: "unit"
+        });
+    
+        test.expect(2);
+        test.ok(fmt !== null);
+        test.equal(fmt.format(["Biri"]), "Biri");
+        test.done();
+    },
+    
+    testListFmtUnitStyleuzLatnUZNumberFormatTwo: function(test) {
+        var fmt = new ListFmt({
+            locale: "uz-Latn-UZ",
+            style: "unit"
+        });
+    
+        test.expect(2);
+        test.ok(fmt !== null);
+        test.equal(fmt.format(["Biri", "Ikkita"]), "Biri Ikkita");
+        test.done();
+    },
+    
+    testListFmtUnitStyleuzLatnUZNumberFormatThree: function(test) {
+        var fmt = new ListFmt({
+            locale: "uz-Latn-UZ",
+            style: "unit"
+        });
+    
+        test.expect(2);
+        test.ok(fmt !== null);
+        test.equal(fmt.format(["Biri", "Ikkita", "Uchta"]), "Biri Ikkita Uchta");
+        test.done();
+    },
+    
+    testListFmtUnitStyleuzLatnUZNumberFormatFour: function(test) {
+        var fmt = new ListFmt({
+            locale: "uz-Latn-UZ",
+            style: "unit"
+        });
+    
+        test.expect(2);
+        test.ok(fmt !== null);
+        test.equal(fmt.format(["Biri", "Ikkita", "Uchta", "To'rtta"]), "Biri Ikkita Uchta To'rtta");
+        test.done();
+    },
+    
+    // vi-VN
+    testListFmtviVNNumberFormatOne: function(test) {
+        var fmt = new ListFmt({
+            locale: "vi-VN"
         });
     
         test.expect(2);
@@ -1296,9 +2560,9 @@ module.exports.testlistfmt = {
         test.done();
     },
     
-    testListFmttrTRNumberFormatTwo: function(test) {
+    testListFmtviVNNumberFormatTwo: function(test) {
         var fmt = new ListFmt({
-            locale: "vi-VI"
+            locale: "vi-VN"
         });
     
         test.expect(2);
@@ -1307,9 +2571,9 @@ module.exports.testlistfmt = {
         test.done();
     },
     
-    testListFmttrTRNumberFormatThree: function(test) {
+    testListFmtviVNNumberFormatThree: function(test) {
         var fmt = new ListFmt({
-            locale: "vi-VI"
+            locale: "vi-VN"
         });
     
         test.expect(2);
@@ -1318,9 +2582,9 @@ module.exports.testlistfmt = {
         test.done();
     },
     
-    testListFmttrTRNumberFormatFour: function(test) {
+    testListFmtviVNNumberFormatFour: function(test) {
         var fmt = new ListFmt({
-            locale: "vi-VI"
+            locale: "vi-VN"
         });
     
         test.expect(2);
@@ -1329,9 +2593,9 @@ module.exports.testlistfmt = {
         test.done();
     },
     
-    testListFmtUnitStyletrTRNumberFormatOne: function(test) {
+    testListFmtUnitStyleviVNNumberFormatOne: function(test) {
         var fmt = new ListFmt({
-            locale: "vi-VI",
+            locale: "vi-VN",
             style: "unit"
         });
     
@@ -1341,9 +2605,9 @@ module.exports.testlistfmt = {
         test.done();
     },
     
-    testListFmtUnitStyletrTRNumberFormatTwo: function(test) {
+    testListFmtUnitStyleviVNNumberFormatTwo: function(test) {
         var fmt = new ListFmt({
-            locale: "vi-VI",
+            locale: "vi-VN",
             style: "unit"
         });
     
@@ -1353,9 +2617,9 @@ module.exports.testlistfmt = {
         test.done();
     },
     
-    testListFmtUnitStyletrTRNumberFormatThree: function(test) {
+    testListFmtUnitStyleviVNNumberFormatThree: function(test) {
         var fmt = new ListFmt({
-            locale: "vi-VI",
+            locale: "vi-VN",
             style: "unit"
         });
     
@@ -1365,9 +2629,9 @@ module.exports.testlistfmt = {
         test.done();
     },
     
-    testListFmtUnitStyletrTRNumberFormatFour: function(test) {
+    testListFmtUnitStyleviVNNumberFormatFour: function(test) {
         var fmt = new ListFmt({
-            locale: "vi-VI",
+            locale: "vi-VN",
             style: "unit"
         });
     
@@ -1377,9 +2641,9 @@ module.exports.testlistfmt = {
         test.done();
     },
     
-    testListFmtUnitStyletrTRNumberFormatFive: function(test) {
+    testListFmtUnitStyleviVNNumberFormatFive: function(test) {
         var fmt = new ListFmt({
-            locale: "vi-VI",
+            locale: "vi-VN",
             style: "unit"
         });
     
@@ -1389,9 +2653,9 @@ module.exports.testlistfmt = {
         test.done();
     },
     
-    testListFmtUnitStyletrTRNumberFormatOneFull: function(test) {
+    testListFmtUnitStyleviVNNumberFormatOneFull: function(test) {
         var fmt = new ListFmt({
-            locale: "vi-VI",
+            locale: "vi-VN",
             style: "unit",
             length: "full"
         });
@@ -1402,9 +2666,9 @@ module.exports.testlistfmt = {
         test.done();
     },
     
-    testListFmtUnitStyletrTRNumberFormatTwoFull: function(test) {
+    testListFmtUnitStyleviVNNumberFormatTwoFull: function(test) {
         var fmt = new ListFmt({
-            locale: "vi-VI",
+            locale: "vi-VN",
             style: "unit",
             length: "full"
         });
@@ -1415,9 +2679,9 @@ module.exports.testlistfmt = {
         test.done();
     },
     
-    testListFmtUnitStyletrTRNumberFormatThreeFull: function(test) {
+    testListFmtUnitStyleviVNNumberFormatThreeFull: function(test) {
         var fmt = new ListFmt({
-            locale: "vi-VI",
+            locale: "vi-VN",
             style: "unit",
             length: "full"
         });
@@ -1428,9 +2692,9 @@ module.exports.testlistfmt = {
         test.done();
     },
     
-    testListFmtUnitStyletrTRNumberFormatFourFull: function(test) {
+    testListFmtUnitStyleviVNNumberFormatFourFull: function(test) {
         var fmt = new ListFmt({
-            locale: "vi-VI",
+            locale: "vi-VN",
             style: "unit",
             length: "full"
         });
@@ -1441,9 +2705,9 @@ module.exports.testlistfmt = {
         test.done();
     },
     
-    testListFmtUnitStyletrTRNumberFormatFiveFull: function(test) {
+    testListFmtUnitStyleviVNNumberFormatFiveFull: function(test) {
         var fmt = new ListFmt({
-            locale: "vi-VI",
+            locale: "vi-VN",
             style: "unit",
             length: "full"
         });
