@@ -187,8 +187,8 @@ function testCollatorNativefrCACase() {
 }
 
 function testCollatorNativefrCAVariant() {
-	// only test on platforms that support the new Intl class natively
-	if (typeof(Intl) === 'undefined') {
+	// only test on platforms that support the new Intl class natively and the French sorting rules
+	if (typeof(Intl) === 'undefined' || Intl.Collator.supportedLocalesOf(["fr"]).indexOf("fr") === -1) {
 	    return;
 	}
 	var col = new Collator({

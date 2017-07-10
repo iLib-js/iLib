@@ -210,8 +210,8 @@ module.exports.testcollation_fr = {
     },
     
     testCollatorNativefrCAVariant: function(test) {
-        // only test on platforms that support the new Intl class natively
-        if (typeof(Intl) === 'undefined') {
+        // only test on platforms that support the new Intl class natively and the French sorting rules
+        if (typeof(Intl) === 'undefined' || Intl.Collator.supportedLocalesOf(["fr"]).indexOf("fr") === -1) {
             test.done();
             return;
         }
