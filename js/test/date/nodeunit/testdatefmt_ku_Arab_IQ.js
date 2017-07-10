@@ -756,6 +756,7 @@ module.exports.testdatefmt_ku_Arab_IQ = {
         test.ok(fmt !== null);
         
         var date = new GregorianDate({
+            locale: "ku-Arab-IQ",
             year: 2011,
             month: 9,
             day: 29,

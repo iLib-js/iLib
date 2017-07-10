@@ -202,16 +202,18 @@ module.exports.testcollation_general = {
     
     
     testCollatorGetSortKeyNative_it: function(test) {
-        test.expect(2);
-        if (typeof(Intl) !== 'undefined' && Intl) {
-            var col = new Collator({locale: "it-IT"});
-    
-            test.ok(typeof(col) !== "undefined");
-    
-            // no sort key available when using native...
-            test.equal(col.sortKey("string"), "string");
+        if (typeof(Intl) === 'undefined' && Intl) {
             test.done();
+            return;
         }
+        var col = new Collator({locale: "it-IT"});
+    
+        test.expect(2);
+        test.ok(typeof(col) !== "undefined");
+    
+        // no sort key available when using native...
+        test.equal(col.sortKey("string"), "string");
+        test.done();
     },
     
     testCollatorGetSortKeySimpleUpper_it: function(test) {
@@ -431,83 +433,93 @@ module.exports.testcollation_general = {
     },
     
     testCollatorDefaultExtendedChars_it: function(test) {
-        test.expect(3);
         // only test on platforms that support the new Intl class natively
-        if (typeof(Intl) !== 'undefined') {
-            var col = new Collator({locale: "it-IT"});
-    
-            test.ok(typeof(col) !== "undefined");
-    
-            // should compare in English
-            test.ok("e < ë", col.compare("e", "ë") < 0);
-            test.ok("o < ø", col.compare("o", "ø") < 0);
+        if (typeof(Intl) === 'undefined') {
             test.done();
+            return;
         }
+        var col = new Collator({locale: "it-IT"});
+    
+        test.expect(3);
+        test.ok(typeof(col) !== "undefined");
+    
+        // should compare in English
+        test.ok("e < ë", col.compare("e", "ë") < 0);
+        test.ok("o < ø", col.compare("o", "ø") < 0);
+        test.done();
     },
     
     testCollatorPrimaryExtendedChars_it: function(test) {
-        test.expect(3);
         // only test on platforms that support the new Intl class natively
-        if (typeof(Intl) !== 'undefined') {
-            var col = new Collator({
-                locale: "it-IT",
-                sensitivity: "primary",
-                usage: "search"
-            });
-    
-            test.ok(typeof(col) !== "undefined");
-    
-            // should compare in English
-            test.equal(0, col.compare("e", "ë"), "e = ë");
-            test.equal(0, col.compare("o", "ø"), "o = ø");
+        if (typeof(Intl) === 'undefined') {
             test.done();
+            return;
         }
+        var col = new Collator({
+            locale: "it-IT",
+            sensitivity: "primary",
+            usage: "search"
+        });
+    
+        test.expect(3);
+        test.ok(typeof(col) !== "undefined");
+    
+        // should compare in English
+        test.equal(0, col.compare("e", "ë"), "e = ë");
+        test.equal(0, col.compare("o", "ø"), "o = ø");
+        test.done();
     },
     
     testCollatorDefaultExtendedCharsJS_it: function(test) {
-        test.expect(3);
         // only test on platforms that support the new Intl class natively
-        if (typeof(Intl) !== 'undefined') {
-            var col = new Collator({useNative: false});
-    
-            test.ok(typeof(col) !== "undefined");
-    
-            // should compare in English
-            test.ok("e < ë", col.compare("e", "ë") < 0);
-            test.ok("o < ø", col.compare("o", "ø") < 0);
+        if (typeof(Intl) === 'undefined') {
             test.done();
+            return;
         }
+        var col = new Collator({useNative: false});
+    
+        test.expect(3);
+        test.ok(typeof(col) !== "undefined");
+    
+        // should compare in English
+        test.ok("e < ë", col.compare("e", "ë") < 0);
+        test.ok("o < ø", col.compare("o", "ø") < 0);
+        test.done();
     },
     
     testCollatorPrimaryExtendedCharsJS_it: function(test) {
-        test.expect(3);
         // only test on platforms that support the new Intl class natively
-        if (typeof(Intl) !== 'undefined') {
-            var col = new Collator({
-            locale: "it-IT",
-                sensitivity: "primary",
-                usage: "search",
-                useNative: false
-            });
-    
-            test.ok(typeof(col) !== "undefined");
-    
-            // should compare in English
-            test.equal(0, col.compare("e", "ë"), "e = ë");
-            test.equal(0, col.compare("o", "ø"), "o = ø");
+        if (typeof(Intl) === 'undefined') {
             test.done();
+            return;
         }
+        var col = new Collator({
+        locale: "it-IT",
+            sensitivity: "primary",
+            usage: "search",
+            useNative: false
+        });
+    
+        test.expect(3);
+        test.ok(typeof(col) !== "undefined");
+    
+        // should compare in English
+        test.equal(0, col.compare("e", "ë"), "e = ë");
+        test.equal(0, col.compare("o", "ø"), "o = ø");
+        test.done();
     },
     
     testCollatorNativeIsNative_it: function(test) {
-        test.expect(2);
         // only test on platforms that support the new Intl class natively
-        if (typeof(Intl) !== 'undefined') {
-            var col = new Collator({locale: "it-IT"});
-            test.ok(typeof(col) !== "undefined");
-            test.ok(typeof(col.collator) !== "undefined");
+        if (typeof(Intl) === 'undefined') {
             test.done();
+            return;
         }
+        var col = new Collator({locale: "it-IT"});
+        test.expect(2);
+        test.ok(typeof(col) !== "undefined");
+        test.ok(typeof(col.collator) !== "undefined");
+        test.done();
     },
     
     testJSCollatorPrimaryEqual_it: function(test) {

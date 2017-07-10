@@ -34,229 +34,238 @@ module.exports.testcollation_fr = {
     },
 
     testCollatorNativefrFRCase: function(test) {
-        test.expect(2);
         // only test on platforms that support the new Intl class natively
-        if (typeof(Intl) !== 'undefined') {
-            var col = new Collator({
-                locale: "fr-FR",
-                sensitivity: "case"
-            });
-            test.ok(typeof(col) !== "undefined");
-    
-            var input = [
-                "déjà",
-                "Meme",
-                "deja",
-                "même",
-                "dejà",
-                "bpef",
-                "bœg",
-                "Boef",
-                "Mémé",
-                "boef",
-                "bnef",
-                "pêche",
-                "pèché",
-                "pêché",
-                "pêche",
-                "pêché"
-            ];
-    
-            input.sort(col.getComparator());
-    
-            var expected = [
-                "bnef",
-                "Boef",
-                "boef",
-                "bœg",
-                "bpef",
-                "déjà",
-                "deja",
-                "dejà",
-                "Meme",
-                "Mémé",
-                "même",
-                "pêche",
-                "pèché",
-                "pêché",
-                "pêche",
-                "pêché"
-            ];
-    
-            test.deepEqual(input, expected);
+        if (typeof(Intl) === 'undefined') {
             test.done();
+            return;
         }
+        var col = new Collator({
+            locale: "fr-FR",
+            sensitivity: "case"
+        });
+        test.expect(2);
+        test.ok(typeof(col) !== "undefined");
+    
+        var input = [
+            "déjà",
+            "Meme",
+            "deja",
+            "même",
+            "dejà",
+            "bpef",
+            "bœg",
+            "Boef",
+            "Mémé",
+            "boef",
+            "bnef",
+            "pêche",
+            "pèché",
+            "pêché",
+            "pêche",
+            "pêché"
+        ];
+    
+        input.sort(col.getComparator());
+    
+        var expected = [
+            "bnef",
+            "Boef",
+            "boef",
+            "bœg",
+            "bpef",
+            "déjà",
+            "deja",
+            "dejà",
+            "Meme",
+            "Mémé",
+            "même",
+            "pêche",
+            "pèché",
+            "pêché",
+            "pêche",
+            "pêché"
+        ];
+    
+        test.deepEqual(input, expected);
+        test.done();
     },
     
     testCollatorNativefrFRVariant: function(test) {
-        test.expect(2);
         // only test on platforms that support the new Intl class natively
-        if (typeof(Intl) !== 'undefined') {
-            var col = new Collator({
-                locale: "fr-FR",
-                sensitivity: "variant",
-                frenchAccents: true
-            });
-            test.ok(typeof(col) !== "undefined");
-    
-            var input = [
-                "déjà",
-                "Meme",
-                "pèche",
-                "deja",
-                "même",
-                "dejà",
-                "pêche",
-                "bpef",
-                "bœg",
-                "pèché",
-                "Boef",
-                "Mémé",
-                "bœf",
-                "pêchê",
-                "boef",
-                "bnef",
-                "pêché"
-            ];
-    
-            input.sort(col.getComparator());
-    
-            // does not deal with french accents properly yet
-            var expected = [
-                "bnef",
-                "Boef",
-                "boef",
-                "bœf",
-                "bœg",
-                "bpef",
-                "deja",
-                "dejà",
-                "déjà",
-                "Meme",
-                "Mémé",
-                "même",
-                "pèche",
-                "pèché",
-                "pêche",
-                "pêché",
-                "pêchê"
-            ];
-    
-            test.deepEqual(input, expected);
+        if (typeof(Intl) === 'undefined') {
             test.done();
+            return;
         }
+        
+        var col = new Collator({
+            locale: "fr-FR",
+            sensitivity: "variant",
+            frenchAccents: true
+        });
+        test.expect(2);
+        test.ok(typeof(col) !== "undefined");
+    
+        var input = [
+            "déjà",
+            "Meme",
+            "pèche",
+            "deja",
+            "même",
+            "dejà",
+            "pêche",
+            "bpef",
+            "bœg",
+            "pèché",
+            "Boef",
+            "Mémé",
+            "bœf",
+            "pêchê",
+            "boef",
+            "bnef",
+            "pêché"
+        ];
+    
+        input.sort(col.getComparator());
+    
+        // does not deal with french accents properly yet
+        var expected = [
+            "bnef",
+            "Boef",
+            "boef",
+            "bœf",
+            "bœg",
+            "bpef",
+            "deja",
+            "dejà",
+            "déjà",
+            "Meme",
+            "Mémé",
+            "même",
+            "pèche",
+            "pèché",
+            "pêche",
+            "pêché",
+            "pêchê"
+        ];
+    
+        test.deepEqual(input, expected);
+        test.done();
     },
     
     testCollatorNativefrCACase: function(test) {
-        test.expect(2);
         // only test on platforms that support the new Intl class natively
-        if (typeof(Intl) !== 'undefined') {
-            var col = new Collator({
-                locale: "fr-CA",
-                sensitivity: "case"
-            });
-            test.ok(typeof(col) !== "undefined");
-    
-            var input = [
-                "déjà",
-                "Meme",
-                "deja",
-                "même",
-                "dejà",
-                "bpef",
-                "bœg",
-                "Boef",
-                "Mémé",
-                "boef",
-                "bnef",
-                "pêche",
-                "pèché",
-                "pêché",
-                "pêche",
-                "pêché"
-            ];
-    
-            input.sort(col.getComparator());
-    
-            var expected = [
-                "bnef",
-                "Boef",
-                "boef",
-                "bœg",
-                "bpef",
-                "déjà",
-                "deja",
-                "dejà",
-                "Meme",
-                "Mémé",
-                "même",
-                "pêche",
-                "pèché",
-                "pêché",
-                "pêche",
-                "pêché"
-            ];
-    
-            test.deepEqual(input, expected);
+        if (typeof(Intl) === 'undefined') {
             test.done();
+            return;
         }
+        var col = new Collator({
+            locale: "fr-CA",
+            sensitivity: "case"
+        });
+        test.expect(2);
+        test.ok(typeof(col) !== "undefined");
+    
+        var input = [
+            "déjà",
+            "Meme",
+            "deja",
+            "même",
+            "dejà",
+            "bpef",
+            "bœg",
+            "Boef",
+            "Mémé",
+            "boef",
+            "bnef",
+            "pêche",
+            "pèché",
+            "pêché",
+            "pêche",
+            "pêché"
+        ];
+    
+        input.sort(col.getComparator());
+    
+        var expected = [
+            "bnef",
+            "Boef",
+            "boef",
+            "bœg",
+            "bpef",
+            "déjà",
+            "deja",
+            "dejà",
+            "Meme",
+            "Mémé",
+            "même",
+            "pêche",
+            "pèché",
+            "pêché",
+            "pêche",
+            "pêché"
+        ];
+    
+        test.deepEqual(input, expected);
+        test.done();
     },
     
     testCollatorNativefrCAVariant: function(test) {
-        test.expect(2);
         // only test on platforms that support the new Intl class natively
-        if (typeof(Intl) !== 'undefined') {
-            var col = new Collator({
-                locale: "fr-CA",
-                sensitivity: "variant"
-            });
-            test.ok(typeof(col) !== "undefined");
-    
-            var input = [
-                "déjà",
-                "Meme",
-                "deja",
-                "même",
-                "dejà",
-                "bpef",
-                "bœg",
-                "Boef",
-                "Mémé",
-                "bœf",
-                "boef",
-                "bnef",
-                "pêche",
-                "pèché",
-                "pêché",
-                "pêche",
-                "pêché"
-            ];
-    
-            input.sort(col.getComparator());
-    
-            var expected = [
-                "bnef",
-                "Boef",
-                "boef",
-                "bœf",
-                "bœg",
-                "bpef",
-                "deja",
-                "dejà",
-                "déjà",
-                "Meme",
-                "même",
-                "Mémé",
-                "pêche",
-                "pêche",
-                "pèché",
-                "pêché",
-                "pêché"
-            ];
-    
-            test.deepEqual(input, expected);
+        if (typeof(Intl) === 'undefined') {
             test.done();
+            return;
         }
+        var col = new Collator({
+            locale: "fr-CA",
+            sensitivity: "variant"
+        });
+        test.expect(2);
+        test.ok(typeof(col) !== "undefined");
+    
+        var input = [
+            "déjà",
+            "Meme",
+            "deja",
+            "même",
+            "dejà",
+            "bpef",
+            "bœg",
+            "Boef",
+            "Mémé",
+            "bœf",
+            "boef",
+            "bnef",
+            "pêche",
+            "pèché",
+            "pêché",
+            "pêche",
+            "pêché"
+        ];
+    
+        input.sort(col.getComparator());
+    
+        var expected = [
+            "bnef",
+            "Boef",
+            "boef",
+            "bœf",
+            "bœg",
+            "bpef",
+            "deja",
+            "dejà",
+            "déjà",
+            "Meme",
+            "même",
+            "Mémé",
+            "pêche",
+            "pêche",
+            "pèché",
+            "pêché",
+            "pêché"
+        ];
+    
+        test.deepEqual(input, expected);
+        test.done();
     }
     
     

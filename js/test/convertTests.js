@@ -28,7 +28,7 @@ var reFunction = /^function\s+(test\w*)\s*\(\)\s*\{/;
 var reCopyright = /^ \* Copyright © (20..)(,20..)?(-20..)?(.*)/;
 var reLoops = /^\s*(for |while |\} catch |\w+\.forEach|bisectionSearch)/;
 var reReturn = /^(\s*)return/;
-var reGetPlatform = /(ilib\._getPlatform\(\)|isDynData\(\)|isDynCode\(\))/;
+var reGetPlatform = /(ilib\._getPlatform\(\)|isDynData\(\)|isDynCode\(\)|typeof\(Intl\))/;
     
 var assertMappings = [
 	{re: /(\s*)assertEquals\((([^'",]|'(\\'|[^'])*?'|"(\\"|[^"])*?")*),\s*(([^'"]|'(\\'|[^'])*?'|"(\\"|[^"])*?")*)\)/, replace: "    $1test.equal($6, $2)"},
