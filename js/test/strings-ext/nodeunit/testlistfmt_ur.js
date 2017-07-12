@@ -293,8 +293,8 @@ module.exports.testlistfmt_ur = {
         test.ok(fmt !== null);                    
         test.equal(fmt.format(["ایک کو", "دو"]), "دو، ایک کو");
         test.done();
-    }
-    /*
+    },
+    
     testListFmtUnitStyleurArabINNumberFormatThreeFull: function(test) {
         var fmt = new ListFmt({
             locale: "ur-Arab-IN",
@@ -304,7 +304,7 @@ module.exports.testlistfmt_ur = {
     
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["ایک کو", "دو", "تین"]), "تین، دو، ایک کو");
+        test.equal(fmt.format(["ایک کو", "دو", "تین"]), "ایک کو, تین، دو");
         test.done();
     },
     
@@ -317,7 +317,7 @@ module.exports.testlistfmt_ur = {
     
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["ایک کو", "دو", "تین", "چار"]), "چار، تین، دو، ایک کو");
+        test.equal(fmt.format(["ایک کو", "دو", "تین", "چار"]), "ایک کو, دو, چار، تین");
         test.done();
-    }*/
+    }
 };
