@@ -583,7 +583,11 @@ ResBundle.prototype = {
 	 * if the translation is not found and the source is undefined
 	 */
 	getStringJS: function(source, key, escapeMode) {
-		return this.getString(source, key, escapeMode).toString();
+		if (typeof(source) === 'undefined' && typeof(key) === 'undefined') {
+			return undefined;
+		}
+		var s = this.getString(source, key, escapeMode); 
+		return s ? s.toString() : undefined;
 	},
 	
 	/**
