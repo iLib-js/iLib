@@ -841,14 +841,14 @@ module.exports.testutils = {
             a: "e"
         };
         ilib.data.foobar_de_DE = {
-               c: "f"
-           };
+            c: "f"
+        };
         ilib.data.foobar_de_Latn_DE = {
             g: "h"
         };
         ilib.data.foobar_de_Latn_DE_SAP = {
-               g: "i"
-           };
+            g: "i"
+        };
     
         var locale = new Locale("de-DE-Latn-SAP");
         var m = Utils.mergeLocData("foobar", locale);
@@ -868,14 +868,14 @@ module.exports.testutils = {
             a: "e"
         };
         ilib.data.foobar_de_DE = {
-               c: "f"
-           };
+            c: "f"
+        };
         ilib.data.foobar_de_Latn_DE = {
             g: "h"
         };
         ilib.data.foobar_de_Latn_DE_SAP = {
-               g: "i"
-           };
+            g: "i"
+        };
     
         var locale = new Locale("-");
         var m = Utils.mergeLocData("foobar", locale);
@@ -895,14 +895,14 @@ module.exports.testutils = {
             a: "e"
         };
         ilib.data.foobar_de_DE = {
-               c: "f"
-           };
+            c: "f"
+        };
         ilib.data.foobar_de_Latn_DE = {
             g: "h"
         };
         ilib.data.foobar_de_Latn_DE_SAP = {
-               g: "i"
-           };
+            g: "i"
+        };
     
         var locale = new Locale("de-DE");
         var m = Utils.mergeLocData("foobar", locale);
@@ -922,14 +922,14 @@ module.exports.testutils = {
             a: "e"
         };
         ilib.data.foobar_de_DE = {
-               c: "f"
-           };
+            c: "f"
+        };
         ilib.data.foobar_de_Latn_DE = {
             g: "h"
         };
         ilib.data.foobar_de_Latn_DE_SAP = {
-               g: "i"
-           };
+           g: "i"
+        };
     
         var locale = new Locale("de-DE-Latn-SAP");
         var m = Utils.mergeLocData("asdf", locale);
@@ -947,14 +947,14 @@ module.exports.testutils = {
             a: "e"
         };
         ilib.data.foobar_de_DE = {
-               c: "f"
-           };
+            c: "f"
+        };
         ilib.data.foobar_de_Latn_DE = {
             g: "h"
         };
         ilib.data.foobar_de_Latn_DE_SAP = {
-               g: "i"
-           };
+            g: "i"
+        };
     
         var locale = new Locale("de-DE-Latn-SAP");
         var m = Utils.mergeLocData(undefined, locale);
@@ -972,14 +972,14 @@ module.exports.testutils = {
             a: "e"
         };
         ilib.data.foobar_en_US = {
-               c: "f"
-           };
+            c: "f"
+        };
         ilib.data.foobar_en_Latn_US = {
             g: "h"
         };
         ilib.data.foobar_en_Latn_US_SAP = {
-               g: "i"
-           };
+            g: "i"
+        };
     
         var m = Utils.mergeLocData("foobar"); // use the current locale -- en-US
         test.ok(typeof(m) !== "undefined");
@@ -1000,14 +1000,14 @@ module.exports.testutils = {
             a: "e"
         };
         ilib.data.foobar_de_DE = {
-               c: "f"
-           };
+            c: "f"
+        };
         ilib.data.foobar_de_Latn_DE = {
             g: "h"
         };
         ilib.data.foobar_de_Latn_DE_SAP = {
-               g: "i"
-           };
+            g: "i"
+        };
     
         var locale = new Locale("de-DE-Latn-SAP");
         var m = Utils.mergeLocData("foobar", locale);
@@ -1024,14 +1024,14 @@ module.exports.testutils = {
             a: "e"
         };
         ilib.data.asdf_de_DE = {
-               c: "f"
-           };
+            c: "f"
+        };
         ilib.data.asdf_de_Latn_DE = {
             g: "h"
         };
         ilib.data.asdf_de_Latn_DE_SAP = {
-               g: "i"
-           };
+            g: "i"
+        };
     
         var locale = new Locale("de-DE-Latn-SAP");
         var m = Utils.mergeLocData("asdf", locale);
@@ -1053,8 +1053,8 @@ module.exports.testutils = {
             a: "e"
         };
         ilib.data.foobar_de_Latn = {
-               g: "i"
-           };
+            g: "i"
+        };
     
         var locale = new Locale("de-Latn");
         var m = Utils.mergeLocData("foobar", locale);
@@ -1474,7 +1474,7 @@ module.exports.testutils = {
             sync: true,
             callback: function (results) {
                 ilib.setLoaderCallback(oldLoader);
-        test.expect(1);
+                test.expect(1);
                 test.ok(typeof(results) === 'object');
                 test.done();
             }
@@ -1500,7 +1500,7 @@ module.exports.testutils = {
             callback: function (results) {
                 ilib.setLoaderCallback(oldLoader);
                 var expected = {"a": "b", "c": "m", "e": "y"};
-        test.expect(1);
+                test.expect(1);
                 test.deepEqual(results, expected);
                 test.done();
             }
@@ -1526,7 +1526,7 @@ module.exports.testutils = {
             callback: function (results) {
                 ilib.setLoaderCallback(oldLoader);
                 var expected = {"a": "a1", "c": "de2", "e": "f"};
-        test.expect(1);
+                test.expect(1);
                 test.deepEqual(results, expected);
                 test.done();
             }
@@ -1552,7 +1552,7 @@ module.exports.testutils = {
             callback: function (results) {
                 ilib.setLoaderCallback(oldLoader);
                 var expected = {"a": "b", "c": "fr1", "e": "f"};
-        test.expect(1);
+                test.expect(1);
                 test.deepEqual(results, expected);
                 test.done();
             }
@@ -1577,7 +1577,7 @@ module.exports.testutils = {
             callback: function (results) {
                 ilib.setLoaderCallback(oldLoader);
                 var expected = {"a": "b", "c": "m", "e": "y"};
-        test.expect(1);
+                test.expect(1);
                 test.deepEqual(results, expected);
                 test.done();
             }
@@ -1604,7 +1604,7 @@ module.exports.testutils = {
             callback: function (results) {
                 ilib.setLoaderCallback(oldLoader);
                 var expected = {"e": "y"};
-        test.expect(1);
+                test.expect(1);
                 test.deepEqual(results, expected);
                 test.done();
             }
@@ -1660,7 +1660,7 @@ module.exports.testutils = {
             sync: true,
             callback: function (results) {
                 var expected = {"a": "b", "c": "m", "e": "y"};
-        test.expect(2);
+                test.expect(2);
                 test.deepEqual(results, expected);
     
                 Utils.loadData({
@@ -1748,7 +1748,7 @@ module.exports.testutils = {
             sync: true,
             callback: function (results) {
                 var expected = {"a": "b", "c": "m", "e": "y"};
-        test.expect(2);
+                test.expect(2);
                 test.deepEqual(results, expected);
                 Utils.loadData({
                     name: "foo.json",
@@ -1789,7 +1789,7 @@ module.exports.testutils = {
                 ilib.setLoaderCallback(oldLoader);
                 // should not crash
                 var expected = {"a": "b", "c": "m", "e": "y"};
-        test.expect(1);
+                test.expect(1);
                 test.deepEqual(results, expected);
                 test.done();
             }
@@ -1813,7 +1813,7 @@ module.exports.testutils = {
             sync: true,
             callback: function (results) {
                 var expected = {"a": "b", "c": "m", "e": "y"};
-        test.expect(2);
+                test.expect(2);
                 test.deepEqual(results, expected);
     
                 Utils.loadData({
@@ -1855,7 +1855,7 @@ module.exports.testutils = {
             callback: function (results) {
                 ilib.setLoaderCallback(oldLoader);
                 var expected = {"a": "b", "c": "m", "e": "y"};
-        test.expect(1);
+                test.expect(1);
                 test.deepEqual(results, expected);
                 test.done();
             }
@@ -1875,7 +1875,7 @@ module.exports.testutils = {
             callback: function (results) {
                 ilib.setLoaderCallback(oldLoader);
                 var expected = {"a": "b", "c": "m", "e": "y"};
-        test.expect(1);
+                test.expect(1);
                 test.deepEqual(results, expected);
                 test.done();
             }
@@ -1895,7 +1895,7 @@ module.exports.testutils = {
             type: "html",
             callback: function (results) {
                 ilib.setLoaderCallback(oldLoader);
-        test.expect(1);
+                test.expect(1);
                 test.deepEqual(results, "<html><body>This is the generic, shared foo.</body></html>");
                 test.done();
             }
@@ -1916,7 +1916,7 @@ module.exports.testutils = {
             locale: "de",
             callback: function (results) {
                 ilib.setLoaderCallback(oldLoader);
-        test.expect(1);
+                test.expect(1);
                 test.deepEqual(results, "<html><body>Diese ist Foo auf Deutsch.</body></html>");
                 test.done();
             }
@@ -1937,7 +1937,7 @@ module.exports.testutils = {
             locale: "de-DE",
             callback: function (results) {
                 ilib.setLoaderCallback(oldLoader);
-        test.expect(1);
+                test.expect(1);
                 test.deepEqual(results, "<html><body>Diese ist Foo auf Deutsch fuer Deutschland.</body></html>");
                 test.done();
             }
@@ -1958,7 +1958,7 @@ module.exports.testutils = {
             locale: "DE",
             callback: function (results) {
                 ilib.setLoaderCallback(oldLoader);
-        test.expect(1);
+                test.expect(1);
                 test.deepEqual(results, "<html><body>Diese ist Foo fuer Deutschland.</body></html>");
                 test.done();
             }
@@ -1980,7 +1980,7 @@ module.exports.testutils = {
             locale: "fr-FR",
             callback: function (results) {
                 ilib.setLoaderCallback(oldLoader);
-        test.expect(1);
+                test.expect(1);
                 test.deepEqual(results, "<html><body>Ceci est foo en francais.</body></html>");
                 test.done();
             }
@@ -2001,7 +2001,7 @@ module.exports.testutils = {
             locale: "es-ES",
             callback: function (results) {
                 ilib.setLoaderCallback(oldLoader);
-        test.expect(1);
+                test.expect(1);
                 test.deepEqual(results, "<html><body>This is the generic, shared foo.</body></html>");
                 test.done();
             }
@@ -2021,7 +2021,7 @@ module.exports.testutils = {
             locale: "de",
             callback: function (results) {
                 ilib.setLoaderCallback(oldLoader);
-        test.expect(1);
+                test.expect(1);
                 test.deepEqual(results, "<html><body>Diese ist Foo auf Deutsch.</body></html>");
                 test.done();
             }
@@ -2042,7 +2042,7 @@ module.exports.testutils = {
             callback: function (results) {
                 ilib.setLoaderCallback(oldLoader);
                 var expected = {"a": "a1", "c": "de2", "e": "f"};
-        test.expect(1);
+                test.expect(1);
                 test.deepEqual(results, expected);
                 test.done();
             }
@@ -2068,9 +2068,9 @@ module.exports.testutils = {
     testMapStringHash: function(test) {
         test.expect(1);
         var map = {
-                "a": "x",
-                "b": "y",
-                "c": "z"
+            "a": "x",
+            "b": "y",
+            "c": "z"
         };
     
         test.equal(JSUtils.mapString("abccb", map), "xyzzy");
@@ -2080,9 +2080,9 @@ module.exports.testutils = {
     testMapStringUndefined: function(test) {
         test.expect(1);
         var map = {
-                "a": "x",
-                "b": "y",
-                "c": "z"
+            "a": "x",
+            "b": "y",
+            "c": "z"
         };
     
         test.ok(typeof(JSUtils.mapString(undefined, map)) === "undefined");
@@ -2098,9 +2098,9 @@ module.exports.testutils = {
     testMapStringHashUnknown: function(test) {
         test.expect(1);
         var map = {
-                "a": "x",
-                "b": "y",
-                "c": "z"
+            "a": "x",
+            "b": "y",
+            "c": "z"
         };
     
         test.equal(JSUtils.mapString("abcdefabc", map), "xyzdefxyz");
@@ -2110,9 +2110,9 @@ module.exports.testutils = {
     testMapStringHashMulti: function(test) {
         test.expect(1);
         var map = {
-                "a": "xm",
-                "b": "yn",
-                "c": "zo"
+            "a": "xm",
+            "b": "yn",
+            "c": "zo"
         };
     
         test.equal(JSUtils.mapString("abcabc", map), "xmynzoxmynzo");
