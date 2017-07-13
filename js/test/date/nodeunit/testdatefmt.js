@@ -3666,6 +3666,14 @@ module.exports.testdatefmt = {
         // if locale is specified wrong value, DateFmt takes default locale.
         test.ok("getMeridiemsRange should return length value greater than 0", mdRange.length > 0);
         test.done();
-    }
+    },
     
+    testDateFmtTimeTemplate_mms: function(test) {
+        test.expect(2);
+        var fmt = new DateFmt({clock: "24", template: "mm:s"});
+        test.ok(fmt !== null);
+    
+        test.equal(fmt.format({minute: 0, second: 9}).toString(), "00:9");
+        test.done();
+    }
 };

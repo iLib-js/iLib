@@ -883,7 +883,7 @@ module.exports.testdatefmt_ko_KR = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "45");
+        test.equal(fmt.format(date), "37");
         test.done();
     },
     
@@ -1132,7 +1132,7 @@ module.exports.testdatefmt_ko_KR = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "45");
+        test.equal(fmt.format(date), "37");
         test.done();
     },
     
