@@ -3160,3 +3160,10 @@ function testDateFmtGetMeridiemsRange_with_wrong_locale() {
     // if locale is specified wrong value, DateFmt takes default locale.
     assertTrue("getMeridiemsRange should return length value greater than 0", mdRange.length > 0);
 };
+
+function testDateFmtTimeTemplate_mms() {
+    var fmt = new DateFmt({clock: "24", template: "mm:s"});
+    assertNotNull(fmt);
+
+    assertEquals("00:9", fmt.format({minute: 0, second: 9}).toString());
+};

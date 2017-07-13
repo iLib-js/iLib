@@ -187,6 +187,14 @@ function testResBundleGetStringJS() {
     assertEquals("third", rb.getStringJS("third string"));
 }
 
+function testResBundleGetStringJSUndefinedSource() {
+    var rb = new ResBundle(); // default locale
+    
+    assertNotNull(rb);
+    
+    assertUndefined(rb.getStringJS(undefined));
+}
+
 function testResBundleGetStringEmpty() {
     var rb = new ResBundle(); // default locale
     
