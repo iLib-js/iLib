@@ -1463,7 +1463,6 @@ module.exports.testutils = {
             test.done();
             return;
         }
-        var obj = {};
         
         ilib.setLoaderCallback(mockLoader);
         Utils.loadData({
@@ -1489,7 +1488,6 @@ module.exports.testutils = {
             test.done();
             return;
         }
-        var obj = {};
         
         ilib.setLoaderCallback(mockLoader);
         Utils.loadData({
@@ -1516,7 +1514,6 @@ module.exports.testutils = {
             test.done();
             return;
         }
-        var obj = {};
         
         ilib.setLoaderCallback(mockLoader);
         Utils.loadData({
@@ -1543,7 +1540,6 @@ module.exports.testutils = {
             test.done();
             return;
         }
-        var obj = {};
         
         ilib.setLoaderCallback(mockLoader);
         Utils.loadData({
@@ -1570,7 +1566,6 @@ module.exports.testutils = {
             test.done();
             return;
         }
-        var obj = {};
         
         ilib.setLoaderCallback(mockLoader);
         Utils.loadData({
@@ -1597,7 +1592,6 @@ module.exports.testutils = {
             test.done();
             return;
         }
-        var obj = {};
         
         ilib.setLoaderCallback(mockLoader);
         Utils.loadData({
@@ -1624,7 +1618,6 @@ module.exports.testutils = {
             test.done();
             return;
         }
-        var obj = {};
         
         ilib.setLoaderCallback(mockLoader);
         Utils.loadData({
@@ -1655,7 +1648,6 @@ module.exports.testutils = {
             test.done();
             return;
         }
-        var obj = {};
         
         ilib.setLoaderCallback(mockLoader);
     
@@ -1696,7 +1688,6 @@ module.exports.testutils = {
             test.done();
             return;
         }
-        var obj = {};
         
         ilib.setLoaderCallback(mockLoader);
         Utils.loadData({
@@ -1746,7 +1737,6 @@ module.exports.testutils = {
             test.done();
             return;
         }
-        var obj = {};
         
         ilib.setLoaderCallback(mockLoader);
         Utils.loadData({
@@ -1853,7 +1843,6 @@ module.exports.testutils = {
             test.done();
             return;
         }
-        var obj = {};
         
         ilib.setLoaderCallback(mockLoader);
         Utils.loadData({

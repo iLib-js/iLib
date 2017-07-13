@@ -217,6 +217,16 @@ module.exports.testresources = {
         test.done();
     },
     
+    testResBundleGetStringJSUndefinedSource: function(test) {
+        test.expect(2);
+        var rb = new ResBundle(); // default locale
+        
+        test.ok(rb !== null);
+        
+        test.ok(typeof(rb.getStringJS(undefined)) === "undefined");
+        test.done();
+    },
+    
     testResBundleGetStringEmpty: function(test) {
         test.expect(2);
         var rb = new ResBundle(); // default locale

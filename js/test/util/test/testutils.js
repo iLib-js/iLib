@@ -1200,7 +1200,7 @@ function testLoadDataCorrectType() {
 		// it via all the other tests already.
 		return;
 	}
-	var obj = {};
+	ilib.clearCache();
 	
     ilib.setLoaderCallback(mockLoader);
 	Utils.loadData({
@@ -1223,7 +1223,7 @@ function testLoadDataCorrectItems() {
 		// it via all the other tests already.
 		return;
 	}
-	var obj = {};
+	ilib.clearCache();
 	
     ilib.setLoaderCallback(mockLoader);
 	Utils.loadData({
@@ -1247,7 +1247,7 @@ function testLoadDataWithLocale() {
 		// it via all the other tests already.
 		return;
 	}
-	var obj = {};
+	ilib.clearCache();
 	
     ilib.setLoaderCallback(mockLoader);
 	Utils.loadData({
@@ -1271,7 +1271,7 @@ function testLoadDataWithLocaleMissingParts() {
 		// it via all the other tests already.
 		return;
 	}
-	var obj = {};
+	ilib.clearCache();
 	
     ilib.setLoaderCallback(mockLoader);
 	Utils.loadData({
@@ -1295,7 +1295,7 @@ function testLoadDataDefaultLocale() {
 		// it via all the other tests already.
 		return;
 	}
-	var obj = {};
+	ilib.clearCache();
 	
 	ilib.setLoaderCallback(mockLoader);
 	Utils.loadData({
@@ -1319,7 +1319,7 @@ function testLoadDataNonJson() {
 		// it via all the other tests already.
 		return;
 	}
-	var obj = {};
+	ilib.clearCache();
 	
     ilib.setLoaderCallback(mockLoader);
 	Utils.loadData({
@@ -1343,7 +1343,7 @@ function testLoadDataCached() {
 		// it via all the other tests already.
 		return;
 	}
-	var obj = {};
+	ilib.clearCache();
 	
     ilib.setLoaderCallback(mockLoader);
 	Utils.loadData({
@@ -1372,7 +1372,7 @@ function testLoadDataCachedWithOtherName() {
 		// it via all the other tests already.
 		return;
 	}
-	var obj = {};
+	ilib.clearCache();
 	
     ilib.setLoaderCallback(mockLoader);
 
@@ -1410,7 +1410,7 @@ function testLoadDataCachedWithLoadParamsMultipleFiles() {
 		// it via all the other tests already.
 		return;
 	}
-	var obj = {};
+	ilib.clearCache();
 	
     ilib.setLoaderCallback(mockLoader);
 	Utils.loadData({
@@ -1458,7 +1458,7 @@ function testLoadDataCachedWithLoadParams() {
 		// it via all the other tests already.
 		return;
 	}
-	var obj = {};
+	ilib.clearCache();
 	
     ilib.setLoaderCallback(mockLoader);
 	Utils.loadData({
@@ -1556,7 +1556,7 @@ function testLoadDataAsynch() {
 		// it via all the other tests already.
 		return;
 	}
-	var obj = {};
+	ilib.clearCache();
 	
 	ilib.setLoaderCallback(mockLoader);
 	Utils.loadData({
@@ -1580,6 +1580,8 @@ function testLoadDataDefaults() {
 		// it via all the other tests already.
 		return;
 	}
+	ilib.clearCache();
+	
     ilib.setLoaderCallback(mockLoader);
 	Utils.loadData({
 		name: "foo.json",
@@ -1597,6 +1599,8 @@ function testLoadDataNonJson_en_US() {
 		// it via all the other tests already.
 		return;
 	}
+	ilib.clearCache();
+	
     ilib.setLoaderCallback(mockLoader);
 	Utils.loadData({
 		name: "foo.html",
@@ -1614,6 +1618,8 @@ function testLoadDataNonJson_de() {
 		// it via all the other tests already.
 		return;
 	}
+	ilib.clearCache();
+	
     ilib.setLoaderCallback(mockLoader);
 	Utils.loadData({
 		name: "foo.html",
@@ -1632,6 +1638,8 @@ function testLoadDataNonJson_de_DE() {
 		// it via all the other tests already.
 		return;
 	}
+	ilib.clearCache();
+    
 	ilib.setLoaderCallback(mockLoader);
 	Utils.loadData({
 		name: "foo.html",
@@ -1650,7 +1658,9 @@ function testLoadDataNonJson_DE() {
 		// it via all the other tests already.
 		return;
 	}
-    ilib.setLoaderCallback(mockLoader);
+	ilib.clearCache();
+    
+	ilib.setLoaderCallback(mockLoader);
 	Utils.loadData({
 		name: "foo.html",
 		type: "html",
@@ -1668,7 +1678,9 @@ function testLoadDataNonJsonWithFallbackToLanguage() {
 		// it via all the other tests already.
 		return;
 	}
-    ilib.setLoaderCallback(mockLoader);
+	ilib.clearCache();
+    
+	ilib.setLoaderCallback(mockLoader);
 
 	Utils.loadData({
 		name: "foo.html",
@@ -1687,6 +1699,8 @@ function testLoadDataNonJsonWithFallbackToRoot() {
 		// it via all the other tests already.
 		return;
 	}
+	ilib.clearCache();
+    
 	ilib.setLoaderCallback(mockLoader);
 	Utils.loadData({
 		name: "foo.html",
@@ -1705,6 +1719,8 @@ function testLoadDataNonJsonInferFileTypeFromExtension() {
 		// it via all the other tests already.
 		return;
 	}
+	ilib.clearCache();
+    
 	ilib.setLoaderCallback(mockLoader);
 	Utils.loadData({
 		name: "foo.html",
@@ -1722,6 +1738,8 @@ function testLoadDataJsonInferFileTypeFromExtension() {
         // it via all the other tests already.
         return;
     }
+    ilib.clearCache();
+    
     ilib.setLoaderCallback(mockLoader);
     Utils.loadData({
         name: "foo.json",
