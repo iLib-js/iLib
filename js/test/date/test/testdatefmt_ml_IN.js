@@ -93,7 +93,8 @@ function testDateFmtINSimpleFull_ml_IN() {
     assertEquals("2011, സെപ്റ്റംബർ 29", fmt.format(date));
 }
 //needs to have translations for a.m.-p.m.
-/*function testDateFmtINSimpleTimeShort_ml_IN() {
+/*
+function testDateFmtINSimpleTimeShort_ml_IN() {
     var fmt = new DateFmt({locale: "ml-IN", length: "short", type: "time"});
     assertNotUndefined(fmt);
     
@@ -419,7 +420,8 @@ function testDateFmtINTypeDate_ml_IN() {
     assertEquals("29/9/11", fmt.format(date));
 }
 
-/*function testDateFmtINTypeTime_ml_IN() {
+/*
+function testDateFmtINTypeTime_ml_IN() {
     var fmt = new DateFmt({locale: "ml-IN", type: "time"});
     assertNotUndefined(fmt);
     
@@ -451,7 +453,8 @@ function testDateFmtINTypeDateTime_ml_IN() {
 		millisecond: 0
 	});
     assertEquals("1:45 अपराह्न 29/9/11", fmt.format(date));
-}*/
+}
+*/
 
 
 function testDateFmtINShortDateComponentsY_ml_IN() {
@@ -797,7 +800,8 @@ function testDateFmtINShortTimeComponentsH_ml_IN() {
 }
 
 
-/*function testDateFmtINShortTimeComponentsHM_ml_IN() {
+/*
+function testDateFmtINShortTimeComponentsHM_ml_IN() {
     var fmt = new DateFmt({locale: "ml-IN", type: "time", time: "hm"});
     assertNotUndefined(fmt);
     
@@ -950,7 +954,8 @@ function testDateFmtINShortTimeComponentsHMSAZ_ml_IN() {
 		millisecond: 0
 	});
     assertEquals("1:45:37 अपराह्न IST", fmt.format(date));
-}*/
+}
+*/
 
 
 function testDateFmtINFullTimeComponentsS_ml_IN() {
@@ -1006,7 +1011,8 @@ function testDateFmtINFullTimeComponentsH_ml_IN() {
 
 
 
-/*function testDateFmtINFullTimeComponentsHM_ml_IN() {
+/*
+function testDateFmtINFullTimeComponentsHM_ml_IN() {
     var fmt = new DateFmt({locale: "ml-IN", type: "time", length: "full", time: "hma"});
     assertNotUndefined(fmt);
     
@@ -1166,9 +1172,11 @@ function testDateFmtINWithTimeZoneAndNoDST_ml_IN() {
 		millisecond: 0
 	});
     assertEquals("1:45:37 अपराह्न IST", fmt.format(date));
-}*/
+}
+*/
 //needs to have translations for after
-/*function testDateFmtFormatRelativeWithinMinuteAfter_ml_IN() {
+/*
+function testDateFmtFormatRelativeWithinMinuteAfter_ml_IN() {
     var fmt = new DateFmt({locale: "ml-IN", length: "full"});
     assertNotNull(fmt);
     
@@ -1193,7 +1201,8 @@ function testDateFmtINWithTimeZoneAndNoDST_ml_IN() {
 		millisecond: 0
 	});
     assertEquals("30 സെക്കന്റ് में", fmt.formatRelative(reference, date));
-}*/
+}
+*/
 function testDateFmtFormatRelativeWithinMinuteBefore_ml_IN() {
     var fmt = new DateFmt({locale: "ml-IN", length: "full"});
     assertNotNull(fmt);
@@ -1220,7 +1229,8 @@ function testDateFmtFormatRelativeWithinMinuteBefore_ml_IN() {
 	});
     assertEquals("30 സെക്കൻഡ് മുമ്പ്", fmt.formatRelative(reference, date));
 }
-/*function testDateFmtFormatRelativeWithinHourAfter_ml_IN() {
+/*
+function testDateFmtFormatRelativeWithinHourAfter_ml_IN() {
     var fmt = new DateFmt({locale: "ml-IN", length: "full"});
     assertNotNull(fmt);
     
@@ -1245,7 +1255,8 @@ function testDateFmtFormatRelativeWithinMinuteBefore_ml_IN() {
 		millisecond: 0
 	});
     assertEquals("10 മിനിട്ട് में", fmt.formatRelative(reference, date));
-}*/
+}
+*/
 function testDateFmtFormatRelativeWithinHourBefore_ml_IN() {
     var fmt = new DateFmt({locale: "ml-IN", length: "full"});
     assertNotNull(fmt);
@@ -1272,7 +1283,8 @@ function testDateFmtFormatRelativeWithinHourBefore_ml_IN() {
 	});
     assertEquals("10 മിനിറ്റ് മുമ്പ്", fmt.formatRelative(reference, date));
 }
-/*function testDateFmtFormatRelativeWithinDayAfter_ml_IN() {
+/*
+function testDateFmtFormatRelativeWithinDayAfter_ml_IN() {
     var fmt = new DateFmt({locale: "ml-IN", length: "full"});
     assertNotNull(fmt);
     
@@ -1297,7 +1309,8 @@ function testDateFmtFormatRelativeWithinHourBefore_ml_IN() {
 		millisecond: 0
 	});
     assertEquals("4 മണിക്കൂ में", fmt.formatRelative(reference, date));
-}*/
+}
+*/
 function testDateFmtFormatRelativeWithinDayBefore_ml_IN() {
     var fmt = new DateFmt({locale: "ml-IN", length: "full"});
     assertNotNull(fmt);
@@ -1325,7 +1338,8 @@ function testDateFmtFormatRelativeWithinDayBefore_ml_IN() {
     assertEquals("4 മണിക്കൂർ മുമ്പ്", fmt.formatRelative(reference, date));
 }
 
-/*function testDateFmtFormatRelativeWithinFortnightAfter_ml_IN() {
+/*
+function testDateFmtFormatRelativeWithinFortnightAfter_ml_IN() {
     var fmt = new DateFmt({locale: "ml-IN", length: "full"});
     assertNotNull(fmt);
     
@@ -1350,7 +1364,8 @@ function testDateFmtFormatRelativeWithinDayBefore_ml_IN() {
 		millisecond: 0
 	});
     assertEquals("4 ദിവസം में", fmt.formatRelative(reference, date));
-}*/
+}
+*/
 function testDateFmtFormatRelativeWithinFortnightBefore_ml_IN() {
     var fmt = new DateFmt({locale: "ml-IN", length: "full"});
     assertNotNull(fmt);
@@ -1378,7 +1393,8 @@ function testDateFmtFormatRelativeWithinFortnightBefore_ml_IN() {
     assertEquals("4 ദിവസം മുമ്പ്", fmt.formatRelative(reference, date));
 }
 
-/*function testDateFmtFormatRelativeWithinQuarterAfter_ml_IN() {
+/*
+function testDateFmtFormatRelativeWithinQuarterAfter_ml_IN() {
     var fmt = new DateFmt({locale: "ml-IN", length: "full"});
     assertNotNull(fmt);
     
@@ -1403,7 +1419,8 @@ function testDateFmtFormatRelativeWithinFortnightBefore_ml_IN() {
 		millisecond: 0
 	});
     assertEquals("9 ആഴ്ച में", fmt.formatRelative(reference, date));
-}*/
+}
+*/
 function testDateFmtFormatRelativeWithinQuarterBefore_ml_IN() {
     var fmt = new DateFmt({locale: "ml-IN", length: "full"});
     assertNotNull(fmt);
@@ -1431,7 +1448,8 @@ function testDateFmtFormatRelativeWithinQuarterBefore_ml_IN() {
     assertEquals("9 ആഴ്ച മുമ്പ്", fmt.formatRelative(reference, date));
 }
 
-/*function testDateFmtFormatRelativeWithinTwoYearsAfter_ml_IN() {
+/*
+function testDateFmtFormatRelativeWithinTwoYearsAfter_ml_IN() {
     var fmt = new DateFmt({locale: "ml-IN", length: "full"});
     assertNotNull(fmt);
     
@@ -1456,7 +1474,8 @@ function testDateFmtFormatRelativeWithinQuarterBefore_ml_IN() {
 		millisecond: 0
 	});
     assertEquals("16 മാസം में", fmt.formatRelative(reference, date));
-}*/
+}
+*/
 function testDateFmtFormatRelativeWithinTwoYearsBefore_ml_IN() {
     var fmt = new DateFmt({locale: "ml-IN", length: "full"});
     assertNotNull(fmt);
@@ -1484,7 +1503,8 @@ function testDateFmtFormatRelativeWithinTwoYearsBefore_ml_IN() {
     assertEquals("14 മാസം മുമ്പ്", fmt.formatRelative(reference, date));
 }
 
-/*function testDateFmtFormatRelativeYearsAfter_ml_IN() {
+/*
+function testDateFmtFormatRelativeYearsAfter_ml_IN() {
     var fmt = new DateFmt({locale: "ml-IN", length: "full"});
     assertNotNull(fmt);
     
@@ -1509,7 +1529,8 @@ function testDateFmtFormatRelativeWithinTwoYearsBefore_ml_IN() {
 		millisecond: 0
 	});
     assertEquals("14 വർഷംमें", fmt.formatRelative(reference, date));
-}*/
+}
+*/
 function testDateFmtFormatRelativeYearsBefore_ml_IN() {
     var fmt = new DateFmt({locale: "ml-IN", length: "full"});
     assertNotNull(fmt);

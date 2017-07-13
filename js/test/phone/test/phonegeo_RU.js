@@ -128,7 +128,8 @@ function testRUNumberWithAreaCodeAndCountry1() {
 	assertEquals(expected.area.sn, geoInfo.area.sn);
 	assertEquals(expected.area.ln, geoInfo.area.ln);
 };
- function testRUNumberWithAreaCodeAndCountry2() {
+
+function testRUNumberWithAreaCodeAndCountry2() {
 	var parsed = new PhoneNumber("+7-8552-32-456-1");
 	var expected = {
 		country: {

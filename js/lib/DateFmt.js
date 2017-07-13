@@ -447,11 +447,7 @@ var DateFmt = function(options) {
 		loadParams = options.loadParams;
 	}
 
-	if (!DateFmt.cache) {
-		DateFmt.cache = {};
-	}
-
-	new LocaleInfo(this.locale, {
+		new LocaleInfo(this.locale, {
 		sync: sync,
 		loadParams: loadParams, 
 		onLoad: ilib.bind(this, function (li) {
@@ -498,7 +494,7 @@ var DateFmt = function(options) {
 					
 					if (!this.template) {
 						Utils.loadData({
-							object: DateFmt, 
+							object: "DateFmt", 
 							locale: this.locale, 
 							name: "dateformats.json", 
 							sync: sync, 
@@ -507,7 +503,7 @@ var DateFmt = function(options) {
 								var spec = this.locale.getSpec().replace(/-/g, '_');
 								if (!formats) {
 									formats = ilib.data.dateformats || DateFmt.defaultFmt;
-									DateFmt.cache[spec] = formats;
+									ilib.data.cache.DateFmt[spec] = formats;
 								}
 /*
 								if (!ilib.data.dateformats) {

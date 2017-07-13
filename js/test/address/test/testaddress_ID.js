@@ -93,7 +93,8 @@ function testParseAddressIDNoDelimiters() {
 	assertEquals("ID", parsedAddress.countryCode);
 };
 
-/*function testParseAddressIDSpecialChars() {
+/*
+function testParseAddressIDSpecialChars() {
 	var parsedAddress = new Address("Botanisk Centralbibliotek,Sølvgade 83, opg. S,ID-1307 København K.,INDONESIA", {locale: 'id-ID'});
 	
 	assertNotUndefined(parsedAddress);
@@ -103,7 +104,8 @@ function testParseAddressIDNoDelimiters() {
 	assertEquals("ID-1307", parsedAddress.postalCode);
 	assertEquals("INDONESIA", parsedAddress.country);
 	assertEquals("ID", parsedAddress.countryCode);
-};*/
+};
+*/
 
 function testParseAddressIDFromUS() {
 	var parsedAddress = new Address("Gedung Balaikota DKI Jakarta,Jalan Medan Merdeka Selatan No. xx,Jakarta Selatan 10110,INDONESIA", {locale: 'en-US'});

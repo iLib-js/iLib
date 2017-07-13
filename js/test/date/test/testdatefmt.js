@@ -17,14 +17,35 @@
  * limitations under the License.
  */
 
-var ilib = require("./../lib/ilib.js");
+var ilib = require("../lib/ilib-node.js");
 var ThaiSolarDate = require("./../lib/ThaiSolarDate.js");
 var PersianDate = require("./../lib/PersianDate.js");
 var IslamicDate = require("./../lib/IslamicDate.js");
 var HebrewDate = require("./../lib/HebrewDate.js");
 var GregorianDate = require("./../lib/GregorianDate.js");
+var JulianDate = require("./../lib/JulianDate.js");
 var DateFmt = require("./../lib/DateFmt.js");
 var DateFactory = require("./../lib/DateFactory.js");
+
+function mockLoader(paths, sync, params, callback) {
+    var data = [];
+    
+    if (paths[0].indexOf("localeinfo") !== -1) {
+        data.push(ilib.data.localeinfo); // for the generic, shared stuff
+        data.push(ilib.data.localeinfo_de);
+    } else {
+        data.push(ilib.data.dateformats); // for the generic, shared stuff
+        data.push(ilib.data.dateformats_de);
+    }
+
+    if (typeof(callback) !== 'undefined') {
+        callback.call(this, data);  
+    }
+    return data;
+}
+
+var oldLoader = ilib._load;
+
 
 function testDateFmtConstructorEmpty() {
 	var fmt = new DateFmt();
@@ -320,6 +341,9 @@ function testDateFmtGetClockBogus() {
 function testDateFmtGetTimeZoneDefault() {
 	ilib.tz = undefined;	// just in case
     var fmt = new DateFmt();
+    if (ilib._getPlatform() === "nodejs") {
+        process.env.TZ = "";
+    }
     
     assertNotNull(fmt);
     
@@ -673,20 +697,21 @@ function testDateFmtFormatJSDateRightTimeZone3() {
 function testDateFmtFormatJSDateRightTimeZone4() {
 	var d = new Date();
 	// test only works in north america
-	if (d.getTimezoneOffset() > 180) {
-	    var fmt = new DateFmt({
-	    	type: "date",
-	    	length: "full",
-	    	date: "w",
-	    	timezone: "local"
-	    });
-	    assertNotNull(fmt);
-	    
-	    // test formatting a javascript date. It should be converted to 
-	    // an ilib date object automatically and then formatted
-	    var datMyBday = new Date('2014-05-13T03:17:48.674Z');
-	    assertEquals("Monday", fmt.format(datMyBday));
+	if (ilib._getPlatform() !== "unknown" && d.getTimezoneOffset() < 180) {
+	    return;
 	}
+    var fmt = new DateFmt({
+    	type: "date",
+    	length: "full",
+    	date: "w",
+    	timezone: "local"
+    });
+    assertNotNull(fmt);
+    
+    // test formatting a javascript date. It should be converted to 
+    // an ilib date object automatically and then formatted
+    var datMyBday = new Date('2014-05-13T03:17:48.674Z');
+    assertEquals("Monday", fmt.format(datMyBday));
 };
 
 function testDateFmtFormatJSDate2() {
@@ -705,19 +730,20 @@ function testDateFmtFormatJSDate2() {
 function testDateFmtFormatJSDateRightTimeZone5() {
 	var d = new Date();
 	// test only works in north america
-	if (d.getTimezoneOffset() > 180) {
-	    var fmt = new DateFmt({
-	    	type: "date",
-	    	length: "full",
-	    	date: "w",
-	    	timezone: "local"
-	    });
-	    assertNotNull(fmt);
-	    
-	    // test formatting a javascript date. It should be converted to 
-	    // an ilib date object automatically and then formatted
-	    assertEquals("Monday", fmt.format(1399951068674));
+	if (ilib._getPlatform() !== "unknown" && d.getTimezoneOffset() < 180) {
+	    return;
 	}
+    var fmt = new DateFmt({
+    	type: "date",
+    	length: "full",
+    	date: "w",
+    	timezone: "local"
+    });
+    assertNotNull(fmt);
+    
+    // test formatting a javascript date. It should be converted to 
+    // an ilib date object automatically and then formatted
+    assertEquals("Monday", fmt.format(1399951068674));
 };
 
 function testDateFmtFormatJSDate3() {
@@ -736,19 +762,20 @@ function testDateFmtFormatJSDate3() {
 function testDateFmtFormatJSDateRightTimeZone6() {
 	var d = new Date();
 	// test only works in north america
-	if (d.getTimezoneOffset() > 180) {
-	    var fmt = new DateFmt({
-	    	type: "date",
-	    	length: "full",
-	    	date: "w",
-	    	timezone: "local"
-	    });
-	    assertNotNull(fmt);
-	    
-	    // test formatting a javascript date. It should be converted to 
-	    // an ilib date object automatically and then formatted
-	    assertEquals("Wednesday", fmt.format("Wed May 14 2014 23:37:35 GMT-0700"));
+	if (ilib._getPlatform() !== "unknown" && d.getTimezoneOffset() < 180) {
+	    return;
 	}
+    var fmt = new DateFmt({
+    	type: "date",
+    	length: "full",
+    	date: "w",
+    	timezone: "local"
+    });
+    assertNotNull(fmt);
+    
+    // test formatting a javascript date. It should be converted to 
+    // an ilib date object automatically and then formatted
+    assertEquals("Wednesday", fmt.format("Wed May 14 2014 23:37:35 GMT-0700"));
 };
 
 function testDateFmtGetMonthsOfYear1() {
@@ -756,7 +783,8 @@ function testDateFmtGetMonthsOfYear1() {
     assertNotNull(fmt);
     
     var arrMonths = fmt.getMonthsOfYear();
-    assertArrayEquals([undefined, "J", "F", "M", "A", "M", "J", "J", "A", "S", "O", "N", "D"], arrMonths);
+    var expected = [undefined, "J", "F", "M", "A", "M", "J", "J", "A", "S", "O", "N", "D"];
+    assertArrayEquals(expected, arrMonths);
 }
 
 function testDateFmtGetMonthsOfYear2() {
@@ -764,7 +792,8 @@ function testDateFmtGetMonthsOfYear2() {
     assertNotNull(fmt);
     
     var arrMonths = fmt.getMonthsOfYear({length: "long"});
-    assertArrayEquals([undefined, "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"], arrMonths);
+    var expected = [undefined, "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+    assertArrayEquals(expected, arrMonths);
 }
 
 function testDateFmtGetMonthsOfYearThai() {
@@ -774,7 +803,8 @@ function testDateFmtGetMonthsOfYearThai() {
     
     var arrMonths = fmt.getMonthsOfYear({length: "long"});
     
-    assertArrayEquals([undefined, "ม.ค.", "ก.พ.", "มี.ค.", "เม.ย.", "พ.ค.", "มิ.ย.", "ก.ค.", "ส.ค.", "ก.ย.", "ต.ค.", "พ.ย.", "ธ.ค."], arrMonths);
+    var expected = [undefined, "ม.ค.", "ก.พ.", "มี.ค.", "เม.ย.", "พ.ค.", "มิ.ย.", "ก.ค.", "ส.ค.", "ก.ย.", "ต.ค.", "พ.ย.", "ธ.ค."];
+    assertArrayEquals(expected, arrMonths);
 }
 
 function testDateFmtGetMonthsOfYearLeapYear() {
@@ -784,7 +814,8 @@ function testDateFmtGetMonthsOfYearLeapYear() {
     
     var arrMonths = fmt.getMonthsOfYear({length: "long", date: d});
 
-    assertArrayEquals([undefined, "Nis", "Iyy", "Siv", "Tam", "Av", "Elu", "Tis", "Ḥes", "Kis", "Tev", "She", "Ada", "Ad2"], arrMonths);
+    var expected = [undefined, "Nis", "Iyy", "Siv", "Tam", "Av", "Elu", "Tis", "Ḥes", "Kis", "Tev", "She", "Ada", "Ad2"];
+    assertArrayEquals(expected, arrMonths);
 }
 
 function testDateFmtGetMonthsOfYearNonLeapYear() {
@@ -794,7 +825,8 @@ function testDateFmtGetMonthsOfYearNonLeapYear() {
     
     var arrMonths = fmt.getMonthsOfYear({length: "long", date: d});
 
-    assertArrayEquals([undefined, "Nis", "Iyy", "Siv", "Tam", "Av", "Elu", "Tis", "Ḥes", "Kis", "Tev", "She", "Ada"], arrMonths);
+    var expected = [undefined, "Nis", "Iyy", "Siv", "Tam", "Av", "Elu", "Tis", "Ḥes", "Kis", "Tev", "She", "Ada"];
+    assertArrayEquals(expected, arrMonths);
 }
 
 function testDateFmtGetDaysOfWeek1() {
@@ -802,7 +834,9 @@ function testDateFmtGetDaysOfWeek1() {
     assertNotNull(fmt);
     
     var arrDays = fmt.getDaysOfWeek();
-    assertArrayEquals(["S", "M", "T", "W", "T", "F", "S"], arrDays);
+    
+    var expected = ["S", "M", "T", "W", "T", "F", "S"];
+    assertArrayEquals(expected, arrDays);
 }
 
 function testDateFmtGetDaysOfWeek2() {
@@ -810,7 +844,8 @@ function testDateFmtGetDaysOfWeek2() {
     assertNotNull(fmt);
     
     var arrDays = fmt.getDaysOfWeek({length: 'long'});
-    assertArrayEquals(["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"], arrDays);
+    var expected = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+    assertArrayEquals(expected, arrDays);
 }
 
 function testDateFmtGetDaysOfWeekOtherCalendar() {
@@ -819,7 +854,8 @@ function testDateFmtGetDaysOfWeekOtherCalendar() {
     
     var arrDays = fmt.getDaysOfWeek({length: 'long'});
 
-    assertArrayEquals(["ris", "she", "shl", "rvi", "ḥam", "shi", "sha"], arrDays);
+    var expected = ["ris", "she", "shl", "rvi", "ḥam", "shi", "sha"];
+    assertArrayEquals(expected, arrDays);
 }
 
 function testDateFmtGetDaysOfWeekThai() {
@@ -828,7 +864,8 @@ function testDateFmtGetDaysOfWeekThai() {
     
     var arrDays = fmt.getDaysOfWeek({length: 'long'});
 
-    assertArrayEquals(["อา.", "จ.", "อ.", "พ.", "พฤ.", "ศ.", "ส."], arrDays);
+    var expected = ["อา.", "จ.", "อ.", "พ.", "พฤ.", "ศ.", "ส."];
+    assertArrayEquals(expected, arrDays);
 }
 
 function testDateFmtGetDaysOfWeekThaiInEnglish() {
@@ -837,7 +874,8 @@ function testDateFmtGetDaysOfWeekThaiInEnglish() {
     
     var arrDays = fmt.getDaysOfWeek({length: 'long'});
 	
-    assertArrayEquals(["ath", "cha", "ang", "phu", "phr", "suk", "sao"], arrDays);
+    var expected = ["ath", "cha", "ang", "phu", "phr", "suk", "sao"];
+    assertArrayEquals(expected, arrDays);
 }
 
 
@@ -2545,8 +2583,7 @@ function testDateFmttrDA() {
 };
 
 function testDateFmtGetDefault() {
-	DateFmt.cache = undefined;
-    var fmt = new DateFmt({locale: "zz-ZZ"});
+	var fmt = new DateFmt({locale: "zz-ZZ"});
     assertNotNull(fmt);
     
     assertEquals("zz-ZZ", fmt.getLocale().toString());
@@ -2554,39 +2591,20 @@ function testDateFmtGetDefault() {
     assertEquals("d/M/yy", fmt.getTemplate());
 };
 
-function mockLoader(paths, sync, params, callback) {
-	var data = [];
-	
-	if (paths[0].indexOf("localeinfo") !== -1) {
-		data.push(ilib.data.localeinfo); // for the generic, shared stuff
-		data.push(ilib.data.localeinfo_de);
-	} else {
-		data.push(ilib.data.dateformats); // for the generic, shared stuff
-		data.push(ilib.data.dateformats_de);
-	}
-
-	if (typeof(callback) !== 'undefined') {
-		callback.call(this, data);	
-	}
-	return data;
-}
-
 function testDateFmtLoadLocaleDataSynch() {
+    // don't need to test loading on the dynamic load version because we are testing
+    // it via all the other tests already.
 	if (ilib.isDynData()) {
-		// don't need to test loading on the dynamic load version because we are testing
-		// it via all the other tests already.
 		return;
 	}
-	DateFmt.cache = {};
 	ilib.setLoaderCallback(mockLoader);
 
-	var fmt = new DateFmt({locale: "zz-ZZ"});
-    assertNotNull(fmt);
-    
-    assertEquals("zz-ZZ", fmt.getLocale().toString());
-    assertEquals("gregorian", fmt.getCalendar());
-    assertEquals("dd.MM.yy", fmt.getTemplate());
-    ilib.setLoaderCallback(undefined);
+    var fmt = new DateFmt({locale: "zz-ZZ"});
+	assertNotNull(fmt);
+	
+	assertEquals("zz-ZZ", fmt.getLocale().toString());
+	assertEquals("gregorian", fmt.getCalendar());
+	assertEquals("dd.MM.yy", fmt.getTemplate());
 };
 
 function testDateFmtLoadLocaleDataSynchCached() {
@@ -2595,7 +2613,7 @@ function testDateFmtLoadLocaleDataSynchCached() {
 		// it via all the other tests already.
 		return;
 	}
-	ilib.setLoaderCallback(mockLoader);
+    ilib.setLoaderCallback(mockLoader);
 
 	var fmt = new DateFmt({locale: "zz-ZZ"});
     assertNotNull(fmt);
@@ -2603,7 +2621,6 @@ function testDateFmtLoadLocaleDataSynchCached() {
     assertEquals("zz-ZZ", fmt.getLocale().toString());
     assertEquals("gregorian", fmt.getCalendar());
     assertEquals("dd.MM.yy", fmt.getTemplate());
-    ilib.setLoaderCallback(undefined);
 };
 
 function testDateFmtLoadLocaleDataAsynch() {
@@ -2612,9 +2629,7 @@ function testDateFmtLoadLocaleDataAsynch() {
 		// it via all the other tests already.
 		return;
 	}
-	DateFmt.cache = {};
-	ilib.setLoaderCallback(mockLoader);
-	var callbackCalled = false;
+    ilib.setLoaderCallback(mockLoader);
 	
 	new DateFmt({
 		locale: "zz-ZZ",
@@ -2625,13 +2640,8 @@ function testDateFmtLoadLocaleDataAsynch() {
 		    assertEquals("zz-ZZ", fmt.getLocale().toString());
 		    assertEquals("gregorian", fmt.getCalendar());
 		    assertEquals("dd.MM.yy", fmt.getTemplate());
-		    
-		    callbackCalled = true;
 		}
 	});
-	
-	assertTrue(callbackCalled);
-    ilib.setLoaderCallback(undefined);
 };
 
 function testDateFmtLoadLocaleDataAsynchCached() {
@@ -2640,29 +2650,24 @@ function testDateFmtLoadLocaleDataAsynchCached() {
 		// it via all the other tests already.
 		return;
 	}
-	ilib.setLoaderCallback(mockLoader);
-	var callbackCalled = false;
+    ilib.setLoaderCallback(mockLoader);
 	
 	new DateFmt({
 		locale: "zz-ZZ",
 		sync: false,
 		onLoad: function (fmt) {
-		    assertNotNull(fmt);
+            assertNotNull(fmt);
 		    
 		    assertEquals("zz-ZZ", fmt.getLocale().toString());
 		    assertEquals("gregorian", fmt.getCalendar());
 		    assertEquals("dd.MM.yy", fmt.getTemplate());
-		    
-		    callbackCalled = true;
 		}
 	});
-	
-	assertTrue(callbackCalled);
-    ilib.setLoaderCallback(undefined);
 };
 
 
 function testDateFmtTransitionToDSTRightBefore() {
+    ilib.setLoaderCallback(oldLoader);
     var fmt = new DateFmt({
     	length: "full",
     	type: "time",

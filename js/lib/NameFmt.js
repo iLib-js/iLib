@@ -178,15 +178,11 @@ var NameFmt = function(options) {
 			break;
 	}
 
-	if (!Name.cache) {
-		Name.cache = {};
-	}
-
 	this.locale = this.locale || new Locale();
 	
 	isPunct._init(sync, this.loadParams, ilib.bind(this, function() {
 		Utils.loadData({
-			object: Name, 
+			object: "Name", 
 			locale: this.locale, 
 			name: "name.json", 
 			sync: sync, 
@@ -195,7 +191,7 @@ var NameFmt = function(options) {
 				if (!info) {
 					info = Name.defaultInfo;
 					var spec = this.locale.getSpec().replace(/-/g, "_");
-					Name.cache[spec] = info;
+					ilib.data.cache.Name[spec] = info;
 				}
 				this.info = info;
 				this._init();

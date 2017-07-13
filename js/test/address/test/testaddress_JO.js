@@ -80,7 +80,8 @@ function testParseAddressJOSuperfluousWhitespace() {
 };
 
 //needs a precise regular expression top deal with no delimiters for locality
-/*function testParseAddressJONoDelimiters() {
+/*
+function testParseAddressJONoDelimiters() {
 	var parsedAddress = new Address("رويل ٥ آل الحلب  ٢ شارع الاستقلال عمان ١١٩٣٧  الأردن", {locale: 'ar-JO'});
 	
 	assertNotUndefined(parsedAddress);
@@ -90,7 +91,8 @@ function testParseAddressJOSuperfluousWhitespace() {
 	assertEquals("١١٩٣٧", parsedAddress.postalCode);
 	assertEquals("الأردن", parsedAddress.country);
 	assertEquals("JO", parsedAddress.countryCode);
-};*/
+};
+*/
 
 function testParseAddressJOSpecialChars() {
 	var parsedAddress = new Address("رويل ٥, آل الحلب,عمان ١١٩٣٧, الأردن", {locale: 'ar-JO'});

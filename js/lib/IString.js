@@ -157,13 +157,13 @@ IString.loadPlurals = function (sync, locale, loadParams, onLoad) {
 	if (!ilib.data["plurals_" + spec]) {
 		Utils.loadData({
 			name: "plurals.json",
-			object: IString,
+			object: "IString",
 			locale: loc,
 			sync: sync,
 			loadParams: loadParams,
 			callback: ilib.bind(this, function(plurals) {
 				if (!plurals) {
-					IString.cache[spec] = {};
+					ilib.data.cache.IString[spec] = {};
 				}
 				ilib.data["plurals_" + spec] = plurals || {};
 				if (onLoad && typeof(onLoad) === 'function') {

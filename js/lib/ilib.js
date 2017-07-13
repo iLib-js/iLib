@@ -67,7 +67,8 @@ ilib.data = {
     /** @type {null|Object.<string,Array.<Array.<number>>>} */ ctype_z: null,
     /** @type {null|Object.<string,Array.<Array.<number>>>} */ scriptToRange: null,
     /** @type {null|Object.<string,string|Object.<string|Object.<string,string>>>} */ dateformats: null,
-    /** @type {null|Array.<string>} */ timezones: []
+    /** @type {null|Array.<string>} */ timezones: [],
+    cache: {}
 };
 
 /*
@@ -226,6 +227,15 @@ ilib._global = function(name) {
  */
 ilib._isGlobal = function(name) {
 	return typeof(ilib._global(name)) !== 'undefined';
+};
+
+/**
+ * Clear the file load cache. This is mainly used by the unit tests,
+ * but could be used by regular callers if you want to free up memory
+ * for garbage collecting.
+ */
+ilib.clearCache = function() {
+	ilib.data.cache = {};
 };
 
 /**

@@ -1,7 +1,7 @@
 /*
  * testcharmap.js - Test the charset mapping routines
  * 
- * Copyright © 20142015, JEDLSoft
+ * Copyright © 2014-2015, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.

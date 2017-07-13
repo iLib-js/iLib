@@ -166,7 +166,8 @@ function testConstructorWithNumericElementsContainsRightStuff() {
 function testAsArray() {
 	var s = new ISet(["foo", "bar", "asdf"]);
 	
-	assertObjectEquals(["foo", "bar", "asdf"], s.asArray());
+	var expected = ["foo", "bar", "asdf"];
+	assertObjectEquals(expected, s.asArray());
 };
 
 function testAsArrayNumericAfterAddingStrings() {
@@ -176,13 +177,15 @@ function testAsArrayNumericAfterAddingStrings() {
 	s.add("bar");
 	s.add("asdf");
 	
-	assertObjectEquals(["foo", "bar", "asdf"], s.asArray());
+	var expected = ["foo", "bar", "asdf"];
+	assertObjectEquals(expected, s.asArray());
 };
 
 function testAsArrayNumeric() {
 	var s = new ISet([1, 2, 3, 4]);
 	
-	assertObjectEquals([1, 2, 3, 4], s.asArray());
+    var expected = [1, 2, 3, 4];
+    assertObjectEquals(expected, s.asArray());
 };
 
 function testAsArrayNumericAfterAddingNumbers() {
@@ -193,7 +196,8 @@ function testAsArrayNumericAfterAddingNumbers() {
 	s.add(3);
 	s.add(4);
 	
-	assertObjectEquals([1, 2, 3, 4], s.asArray());
+    var expected = [1, 2, 3, 4];
+	assertObjectEquals(expected, s.asArray());
 };
 
 function testAsArrayEmpty() {
@@ -244,12 +248,14 @@ function testRemoveNumeric() {
 
 function testRemoveNumericAsArray() {
 	var s = new ISet([1, 2, 3, 4]);
-	
-	assertObjectEquals([1, 2, 3, 4], s.asArray());
+
+    var expected = [1, 2, 3, 4];
+	assertObjectEquals(expected, s.asArray());
 
 	s.remove(3);
 	
-	assertObjectEquals([1, 2, 4], s.asArray());
+	var expected = [1, 2, 4];
+	assertObjectEquals(expected, s.asArray());
 };
 
 function testClear() {

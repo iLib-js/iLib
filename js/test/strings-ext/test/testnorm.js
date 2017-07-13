@@ -17,9 +17,9 @@
  * limitations under the License.
  */
 
-var ilib = require("../lib/ilib.js");
+var ilib = require("../lib/ilib-node.js");
 var NormString = require("../lib/NormString.js");
-var normtests = normtests || require("../test/strings-ext/test/normdata.js");
+var normtests = require("../test/strings-ext/test/normdata.js");
 
 if (ilib.isDynData()) {
 	NormString.init();

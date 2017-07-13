@@ -118,7 +118,7 @@ var Currency = function (options) {
 	if (typeof(ilib.data.currency) === 'undefined') {
 		Utils.loadData({
 			name: "currency.json",
-			object: Currency, 
+			object: "Currency", 
 			locale: "-",
 			sync: this.sync, 
 			loadParams: this.loadParams, 

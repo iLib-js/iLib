@@ -1224,7 +1224,8 @@ function testDateFmtFormatRelativeWithinMinuteAfter_sl_SI() {
 	});
     assertEquals("čez 30 sekund", fmt.formatRelative(reference, date));
 }
-/*function testDateFmtFormatRelativeWithinMinuteBefore_sl_SI() {
+/*
+function testDateFmtFormatRelativeWithinMinuteBefore_sl_SI() {
     var fmt = new DateFmt({locale: "sl-SI", calendar: "gregorian", length: "full"});
     assertNotNull(fmt);
     
@@ -1276,7 +1277,8 @@ function testDateFmtFormatRelativeWithinHourAfter_sl_SI() {
 	});
     assertEquals("čez 10 minut", fmt.formatRelative(reference, date));
 }
-/*function testDateFmtFormatRelativeWithinHourBefore_sl_SI() {
+/*
+function testDateFmtFormatRelativeWithinHourBefore_sl_SI() {
     var fmt = new DateFmt({locale: "sl-SI", calendar: "gregorian", length: "full"});
     assertNotNull(fmt);
     
@@ -1328,7 +1330,8 @@ function testDateFmtFormatRelativeWithinDayAfter_sl_SI() {
 	});
     assertEquals("čez 4 ure", fmt.formatRelative(reference, date));
 }
-/*function testDateFmtFormatRelativeWithinDayBefore_sl_SI() {
+/*
+function testDateFmtFormatRelativeWithinDayBefore_sl_SI() {
     var fmt = new DateFmt({locale: "sl-SI", calendar: "gregorian", length: "full"});
     assertNotNull(fmt);
     
@@ -1381,7 +1384,8 @@ function testDateFmtFormatRelativeWithinFortnightAfter_sl_SI() {
 	});
     assertEquals("čez 4 dni", fmt.formatRelative(reference, date));
 }
-/*function testDateFmtFormatRelativeWithinFortnightBefore_sl_SI() {
+/*
+function testDateFmtFormatRelativeWithinFortnightBefore_sl_SI() {
     var fmt = new DateFmt({locale: "sl-SI", calendar: "gregorian", length: "full"});
     assertNotNull(fmt);
     
@@ -1434,7 +1438,8 @@ function testDateFmtFormatRelativeWithinQuarterAfter_sl_SI() {
 	});
     assertEquals("čez 9 tednov", fmt.formatRelative(reference, date));
 }
-/*function testDateFmtFormatRelativeWithinQuarterBefore_sl_SI() {
+/*
+function testDateFmtFormatRelativeWithinQuarterBefore_sl_SI() {
     var fmt = new DateFmt({locale: "sl-SI", calendar: "gregorian", length: "full"});
     assertNotNull(fmt);
     
@@ -1487,7 +1492,8 @@ function testDateFmtFormatRelativeWithinTwoYearsAfter_sl_SI() {
 	});
     assertEquals("čez 16 mesecev", fmt.formatRelative(reference, date));
 }
-/*function testDateFmtFormatRelativeWithinTwoYearsBefore_sl_SI() {
+/*
+function testDateFmtFormatRelativeWithinTwoYearsBefore_sl_SI() {
     var fmt = new DateFmt({locale: "sl-SI", calendar: "gregorian", length: "full"});
     assertNotNull(fmt);
     
@@ -1540,7 +1546,8 @@ function testDateFmtFormatRelativeYearsAfter_sl_SI() {
 	});
     assertEquals("čez 14 let", fmt.formatRelative(reference, date));
 }
-/*function testDateFmtFormatRelativeYearsBefore_sl_SI() {
+/*
+function testDateFmtFormatRelativeYearsBefore_sl_SI() {
     var fmt = new DateFmt({locale: "sl-SI", calendar: "gregorian", length: "full"});
     assertNotNull(fmt);
     
@@ -1565,5 +1572,6 @@ function testDateFmtFormatRelativeYearsAfter_sl_SI() {
 		millisecond: 0
 	});
     assertEquals("pred 21 let", fmt.formatRelative(reference, date));
-}*/
+}
+*/
 

@@ -23,7 +23,6 @@ function testJulianDayConstructor() {
     var jd = new JulianDay(1721791.25);  // jan 2, 2, 6:00pm
 
     assertNotNull(jd);
-    debug(JSON.stringify(jd));
 }
 
 /* julian date is 366 + epoch */
@@ -36,7 +35,6 @@ function testJulianDayGetDate() {
 function testJulianDayGetDays() {
     var jd = new JulianDay(1721791.25);  // jan 2, 2, 6:00pm
 
-    debug(typeof(jd.getDays));
     assertEquals(1721791, jd.getDays());
 }
 

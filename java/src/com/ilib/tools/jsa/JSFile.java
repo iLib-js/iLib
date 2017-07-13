@@ -69,7 +69,7 @@ public class JSFile
         
         deletePatterns.add(Pattern.compile("var\\s[^;]*=[^;]*require[^;]*;\\n"));
         deletePatterns.add(Pattern.compile("if \\(!ilib[^;]*require[^;]*;"));
-        deletePatterns.add(Pattern.compile("module.exports = [^;]*;"));
+        deletePatterns.add(Pattern.compile("^module.exports = [^;]*;"));
     }
     
     /**
