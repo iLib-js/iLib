@@ -48,12 +48,17 @@ var isPunct = require("./isPunct.js");
  * <li><i>style</i> - Format the name with the given style. The value of this property
  * should be one of the following strings: 
  *   <ul>
- *     <li><i>short</i> - Format a short name with just the given and family names.
- *     <li><i>medium</i> - Format a medium-length name with the given, middle, and family names.
+ *     <li><i>short</i> - Format a short name with just the given and family names. eg. "John Smith"
+ *     <li><i>medium</i> - Format a medium-length name with the given, middle, and family names. 
+ *     eg. "John James Smith"
  *     <li><i>long</i> - Format a long name with all names available in the given name object, including
- *     prefixes.
+ *     prefixes. eg. "Mr. John James Smith"
  *     <li><i>full</i> - Format a long name with all names available in the given name object, including
- *     prefixes and suffixes.
+ *     prefixes and suffixes. eg. "Mr. John James Smith, Jr."
+ *     <li><i>formal_short</i> - Format a name with the honorific or prefix/suffix and the family 
+ *     name. eg. "Mr. Smith"
+ *     <li><i>formal_long</i> - Format a name with the honorific or prefix/suffix and the 
+ *     given and family name. eg. "Mr. John Smith"
  *   </ul>
  * <li><i>components</i> - Format the name with the given components in the correct
  * order for those components. Components are encoded as a string of letters representing
@@ -64,6 +69,7 @@ var isPunct = require("./isPunct.js");
  *     <li><i>m</i> - middle names
  *     <li><i>f</i> - family name
  *     <li><i>s</i> - suffixes
+ *     <li><i>h</i> - honorifics (selects the prefix or suffix as required by the locale)
  *   </ul>
  * <p>
  * 
@@ -176,6 +182,14 @@ var NameFmt = function(options) {
 		case "full":
 			this.style = "full";
 			break;
+		case "fs":
+		case "formal_short":
+			this.style = "formal_short";
+			break;
+		case "fl":
+		case "formal_long":
+			this.style = "formal_long";
+			break;
 	}
 
 	this.locale = this.locale || new Locale();
@@ -208,8 +222,11 @@ NameFmt.prototype = {
 	 * @protected
 	 */
 	_init: function() {
+		var arr;
+		this.comps = {};
+		
 		if (this.components) {
-			var valids = {"p":1,"g":1,"m":1,"f":1,"s":1},
+			var valids = {"p":1,"g":1,"m":1,"f":1,"s":1,"h":1},
 				arr = this.components.split("");
 			this.comps = {};
 			for (var i = 0; i < arr.length; i++) {
@@ -218,7 +235,14 @@ NameFmt.prototype = {
 				}
 			}
 		} else {
-			this.comps = this.info.components[this.style];
+			var comps = this.info.components[this.style];
+			if (typeof(comps) === "string") {
+				comps.split("").forEach(ilib.bind(this, function(c) {
+					this.comps[c] = true;
+				}));
+			} else {
+				this.comps = comps;
+			}
 		}
 
 		this.template = new IString(this.info.format);
@@ -346,9 +370,6 @@ NameFmt.prototype = {
 		} else {
 			isAsianName = true;
 			modified = name;
-			if (modified.suffix && currentLanguage === "ko" && this.info.honorifics.indexOf(name.suffix) == -1) {
-				modified.suffix = ' ' + modified.suffix; 
-			}
 		}
 		
 		if (!this.template || isAsianName !== this.isAsianLocale) {
@@ -357,6 +378,19 @@ NameFmt.prototype = {
 			temp = this.template;
 		}
 		
+		// use the honorific as the prefix or the suffix as appropriate for the order of the name
+		if (modified.honorific) {
+			if ((this.order === 'fg' || isAsianName) && currentLanguage !== "ko") {
+				if (!modified.suffix) {
+					modified.suffix = modified.honorific
+				}
+			} else {
+				if (!modified.prefix) {
+					modified.prefix = modified.honorific
+				}
+			}
+		}
+
 		var parts = {
 			prefix: this.comps["p"] && modified.prefix || "",
 			givenName: this.comps["g"] && modified.givenName || "",

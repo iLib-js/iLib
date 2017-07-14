@@ -359,7 +359,7 @@ function testFormatSimpleNameLong_ko_KR() {
 	var formatted = fmt.format(name);
 	assertNotUndefined(formatted);
 	
-	var expected = "미스터김동경";
+	var expected = "미스터 김동경";
 	
 	assertEquals(expected, formatted);
 };
@@ -378,7 +378,7 @@ function testFormatSimpleNameFull_ko_KR() {
 	var formatted = fmt.format(name);
 	assertNotUndefined(formatted);
 	
-	var expected = "미스터김동경 , 박사";
+	var expected = "미스터 김동경 , 박사";
 	
 	assertEquals(expected, formatted);
 };
@@ -426,7 +426,7 @@ function testFormatComplexNameLong_ko_KR() {
 	var formatted = fmt.format(name);
 	assertNotUndefined(formatted);
 	
-	var expected = "미스터남궁동경";
+	var expected = "미스터 남궁동경";
 	
 	assertEquals(expected, formatted);
 };
@@ -442,7 +442,7 @@ function testFormatComplexNameFull_ko_KR() {
 	var formatted = fmt.format(name);
 	assertNotUndefined(formatted);
 	
-	var expected = "미스터남궁동경씨";
+	var expected = "미스터 남궁동경 씨";
 	
 	assertEquals(expected, formatted);
 };
@@ -458,7 +458,7 @@ function testFormatCommasInSuffix_ko_KR() {
 	var formatted = fmt.format(name);
 	assertNotUndefined(formatted);
 	
-	var expected = "미스터남궁동경씨";
+	var expected = "미스터 남궁동경 씨";
 	
 	assertEquals(expected, formatted);
 };
@@ -503,7 +503,7 @@ function testFormatWithHonorifix_ko_KR() {
 	var formatted = fmt.format(parsed);
 	assertNotUndefined(formatted);
 	
-	var expected = "정훈교씨";
+	var expected = "정훈교 씨";
 	
 	assertEquals(expected, formatted);
 };

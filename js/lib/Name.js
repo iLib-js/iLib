@@ -88,18 +88,34 @@ var isSpace = require("./isSpace.js");
  * may contain any property/value pairs as long as the calling code is in
  * agreement with the loader callback function as to what those parameters mean.
  * </ul>
+ * 
+ * Additionally, a name instance can be constructed by giving the explicit 
+ * already-parsed fields or by using another name instance as the parameter. (That is,
+ * it becomes a copy constructor.) The name fields can be any of the following:
+ * 
+ * <ul>
+ * <li><i>prefix</i> - the prefix prepended to the name
+ * <li><i>givenName</i> - the person's given or "first" name
+ * <li><i>middleName</i> - one or more middle names, separated by spaces even if the
+ * language doesn't use usually use spaces. The spaces are merely separators.
+ * <li><i>familyName</i> - one or more family or "last" names, separated by spaces 
+ * even if the language doesn't use usually use spaces. The spaces are merely separators.
+ * <li><i>suffix</i> - the suffix appended to the name
+ * <li><i>honorific</i> - the honorific title of the name. This could be formatted
+ * as a prefix or a suffix, depending on the customs of the particular locale. You
+ * should only give either an honorific or a prefix/suffix, but not both.
+ * </ul>
  *
- * When the parser has completed its parsing, it fills in the fields listed below.<p>
+ * When the parser has completed its parsing, it fills in the same fields as listed 
+ * above.<p>
  *
  * For names that include auxilliary words, such as the family name "van der Heijden", all
  * of the auxilliary words ("van der") will be included in the field.<p>
  *
- * For names in Spanish locales, it is assumed that the family name is doubled. That is,
+ * For names in some Spanish locales, it is assumed that the family name is doubled. That is,
  * a person may have a paternal family name followed by a maternal family name. All
  * family names will be listed in the familyName field as normal, separated by spaces.
- * When formatting the short version of such names, only the paternal family name will
- * be used.
- *
+ * When formatting the short version of such names, only the paternal family name is used.
  *
  * @constructor
  * @param {string|Name=} name the name to parse
@@ -184,6 +200,12 @@ var Name = function (name, options) {
 							     * @type {string|Array.<string>}
 							     */
 							    this.suffix = name.suffix;
+							    /**
+							     * The honorific title for this name. This honorific will be used as the prefix
+							     * or suffix as dictated by the locale
+							     * @type {string|Array.<string>}
+							     */
+							    this.honorific = name.honorific;
 
 							    // private properties
 							    this.locale = name.locale;
@@ -220,28 +242,12 @@ var Name = function (name, options) {
 
 Name.defaultInfo = ilib.data.name ||  {
 	"components": {
-		"short": {
-			"g": 1,
-			"f": 1
-		},
-		"medium": {
-			"g": 1,
-			"m": 1,
-			"f": 1
-		},
-		"long": {
-			"p": 1,
-			"g": 1,
-			"m": 1,
-			"f": 1
-		},
-		"full": {
-			"p": 1,
-			"g": 1,
-			"m": 1,
-			"f": 1,
-			"s": 1
-		}
+		"short": "gf",
+		"medium": "gmf",
+		"long": "pgmf",
+		"full": "pgmfs",
+		"formal_short": "hf",
+		"formal_long": "hgf"
 	},
 	"format": "{prefix} {givenName} {middleName} {familyName}{suffix}",
 	"sortByHeadWord": false,

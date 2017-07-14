@@ -46,11 +46,12 @@ module.exports.testname = {
             givenName: "b",
             middleName: "c",
             familyName: "d",
-            suffix: "e"
+            suffix: "e",
+            honorific: "x"
         });
         test.ok(typeof(name) !== "undefined");
         
-        test.contains(name, { prefix: "a", givenName: "b", middleName: "c", familyName: "d", suffix: "e" });
+        test.contains(name, { prefix: "a", givenName: "b", middleName: "c", familyName: "d", suffix: "e", honorific: "x"});
         test.done();
     },
     

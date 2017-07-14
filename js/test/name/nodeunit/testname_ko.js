@@ -426,7 +426,7 @@ module.exports.testname_ko = {
         var formatted = fmt.format(name);
         test.ok(typeof(formatted) !== "undefined");
         
-        var expected = "미스터김동경";
+        var expected = "미스터 김동경";
         
         test.equal(formatted, expected);
         test.done();
@@ -447,7 +447,7 @@ module.exports.testname_ko = {
         var formatted = fmt.format(name);
         test.ok(typeof(formatted) !== "undefined");
         
-        var expected = "미스터김동경 , 박사";
+        var expected = "미스터 김동경 , 박사";
         
         test.equal(formatted, expected);
         test.done();
@@ -501,7 +501,7 @@ module.exports.testname_ko = {
         var formatted = fmt.format(name);
         test.ok(typeof(formatted) !== "undefined");
         
-        var expected = "미스터남궁동경";
+        var expected = "미스터 남궁동경";
         
         test.equal(formatted, expected);
         test.done();
@@ -519,7 +519,7 @@ module.exports.testname_ko = {
         var formatted = fmt.format(name);
         test.ok(typeof(formatted) !== "undefined");
         
-        var expected = "미스터남궁동경씨";
+        var expected = "미스터 남궁동경 씨";
         
         test.equal(formatted, expected);
         test.done();
@@ -537,7 +537,7 @@ module.exports.testname_ko = {
         var formatted = fmt.format(name);
         test.ok(typeof(formatted) !== "undefined");
         
-        var expected = "미스터남궁동경씨";
+        var expected = "미스터 남궁동경 씨";
         
         test.equal(formatted, expected);
         test.done();
@@ -588,7 +588,7 @@ module.exports.testname_ko = {
         var formatted = fmt.format(parsed);
         test.ok(typeof(formatted) !== "undefined");
         
-        var expected = "정훈교씨";
+        var expected = "정훈교 씨";
         
         test.equal(formatted, expected);
         test.done();
