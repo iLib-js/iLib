@@ -10,7 +10,7 @@ Hello, and welcome to the iLib project!
 # Documentation #
 
 * [Getting Started](GettingStarted.md)
-* [Tutorial](tutorial/iLib1.0JSTutorial.pdf)
+* [Old Tutorial](tutorial/iLib1.0JSTutorial.pdf)
     * [Handling Phone Numbers in iLib](tutorial/phone.md)
     * [Name Parsing and Formatting](tutorial/name.md)
     * [Glyphs, Characters, and Character Normalization](tutorial/characters.md)
@@ -23,20 +23,22 @@ Hello, and welcome to the iLib project!
     * [Updating the time zone information](tutorial/timezone.md)
 * API Reference: 
     * [10.0](http://www.translationcircle.com/ilib/doc/10.0/jsdoc/)
-    * [11.0](http://www.translationcircle.com/ilib/doc/11.0/jsdoc/) (latest stable)
+    * [11.0](http://www.translationcircle.com/ilib/doc/11.0/jsdoc/)
+    * [12.0](http://www.translationcircle.com/ilib/doc/jsdoc/) (latest stable)
     * [latest](http://www.translationcircle.com/ilib/doc/jsdoc/) (latest development release)
 * Javadocs:
     * [10.0](http://www.translationcircle.com/ilib/doc/10.0/javadoc/)
-    * [11.0](http://www.translationcircle.com/ilib/doc/11.0/javadoc/) (latest stable)
+    * [11.0](http://www.translationcircle.com/ilib/doc/11.0/javadoc/)
+    * [12.0](http://www.translationcircle.com/ilib/doc/javadoc/) (latest stable)
     * [latest](http://www.translationcircle.com/ilib/doc/javadoc/) (latest development release)
 * [FAQ](FAQ.md)
 * [Demo](http://www.translationcircle.com/ilib/demo/)
 
 # Download #
 
-* [All Release Notes for previous versions](ReleaseNotes.md)
-* [Latest Stable Release](builds/11.0/) is version 11.0 - [Release Notes](../Version 11.0 Release Notes)
-* [Latest Development Release](builds) is version 12.0 - [Release Notes](../Version 12.0 Release Notes).
+* [All Release Notes](ReleaseNotes.md)
+* [Latest Stable Release](https://github.com/iLib-js/iLib/releases/tag/v12.0.4) is version 12.0.4
+* [Latest Development Release](https://github.com/iLib-js/iLib/releases/) is version 13.0
 
 # Project Management #
 
@@ -44,4 +46,4 @@ Hello, and welcome to the iLib project!
 * [Bugs](https://github.com/iLib-js/iLib/issues)
 
 
-Please see the [tutorial](iLib1.0JSTutorial.pdf) that explains how to use iLib.
+Please see the [tutorial](iLib1.0JSTutorial.pdf) that explains the basics of how to use iLib.

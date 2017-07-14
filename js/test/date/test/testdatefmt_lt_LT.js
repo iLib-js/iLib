@@ -1135,7 +1135,8 @@ function testDateFmtFullTimeComponentsHMSA_lt_LT() {
 }
 
 
-/*function testDateFmtFormatRelativeWithinMinuteAfter_lt_LT() {
+/*
+function testDateFmtFormatRelativeWithinMinuteAfter_lt_LT() {
     var fmt = new DateFmt({locale: "lt-LT", calendar: "gregorian", length: "full"});
     assertNotNull(fmt);
     
@@ -1502,5 +1503,6 @@ function testDateFmtFormatRelativeYearsBefore_lt_LT() {
 		millisecond: 0
 	});
     assertEquals("y", fmt.formatRelative(reference, date));
-}*/
+}
+*/
 

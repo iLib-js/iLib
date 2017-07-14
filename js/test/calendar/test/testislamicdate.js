@@ -19,41 +19,6 @@
 
 var IslamicDate = require("./../lib/IslamicDate.js");
 
-function testIslamicDateConstructor() {
-    var id = new IslamicDate();
-    
-    assertNotNull(id);
-}
-
-/* julian date id rd 355 + epoch */
-function testIslamicDateConstructorFromJD() {
-    var id = new IslamicDate({julianday: 1948793.5, timezone: "Etc/UTC"});
-    
-    assertEquals('object', typeof(id));
-    assertEquals(354, id.getRataDie());
-    assertEquals(2, id.getYears());
-    assertEquals(1, id.getMonths());
-    assertEquals(1, id.getDays());
-    assertEquals(0, id.getHours());
-    assertEquals(0, id.getMinutes());
-    assertEquals(0, id.getSeconds());
-    assertEquals(0, id.getMilliseconds());
-}
-
-function testIslamicDateAfterLeapYear() {
-    var id = new IslamicDate({julianday: 1949148.9, timezone: "Etc/UTC"});  // Muh 1, 0003 AH, 9:36am
-    
-    assertEquals('object', typeof(id));
-    assertEquals(709.4, id.getRataDie());
-    assertEquals(3, id.getYears());
-    assertEquals(1, id.getMonths());
-    assertEquals(1, id.getDays());
-    assertEquals(9, id.getHours());
-    assertEquals(36, id.getMinutes());
-    assertEquals(0, id.getSeconds());
-    assertEquals(0, id.getMilliseconds());
-}
-
 var testDatesIslamic = [
 //   jd         year   month  day  hour  minute  second  millisecond  dayofweek
     [1507231.5, -1245, 12,    9,   0,    0,      0,      0,           0],
@@ -90,6 +55,41 @@ var testDatesIslamic = [
     [2465737.5, 1460,  10,    12,  0,    0,      0,      0,           3],
     [2486076.5, 1518,  3,     5,   0,    0,      0,      0,           0]
 ];
+
+function testIslamicDateConstructor() {
+    var id = new IslamicDate();
+    
+    assertNotNull(id);
+}
+
+/* julian date id rd 355 + epoch */
+function testIslamicDateConstructorFromJD() {
+    var id = new IslamicDate({julianday: 1948793.5, timezone: "Etc/UTC"});
+    
+    assertEquals('object', typeof(id));
+    assertEquals(354, id.getRataDie());
+    assertEquals(2, id.getYears());
+    assertEquals(1, id.getMonths());
+    assertEquals(1, id.getDays());
+    assertEquals(0, id.getHours());
+    assertEquals(0, id.getMinutes());
+    assertEquals(0, id.getSeconds());
+    assertEquals(0, id.getMilliseconds());
+}
+
+function testIslamicDateAfterLeapYear() {
+    var id = new IslamicDate({julianday: 1949148.9, timezone: "Etc/UTC"});  // Muh 1, 0003 AH, 9:36am
+    
+    assertEquals('object', typeof(id));
+    assertEquals(709.4, id.getRataDie());
+    assertEquals(3, id.getYears());
+    assertEquals(1, id.getMonths());
+    assertEquals(1, id.getDays());
+    assertEquals(9, id.getHours());
+    assertEquals(36, id.getMinutes());
+    assertEquals(0, id.getSeconds());
+    assertEquals(0, id.getMilliseconds());
+}
 
 function testIslamicDateConvert() {
     var id;

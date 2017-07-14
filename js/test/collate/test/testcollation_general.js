@@ -18,7 +18,7 @@
  * limitations under the License.
  */
 
-var ilib = require("../lib/ilib.js");
+var ilib = require("../lib/ilib-node.js");
 var Collator = require("../lib/Collator.js");
 function testCollatorConstructorNative_it() {
 	var col = new Collator({useNative: false, locale: "it-IT"});
@@ -164,14 +164,15 @@ function testCollatorGetComparatorWorksWithCaseJS_it() {
 
 
 function testCollatorGetSortKeyNative_it() {
-	if (typeof(Intl) !== 'undefined' && Intl) {
-		var col = new Collator({locale: "it-IT"});
-
-		assertNotUndefined(col);
-
-		// no sort key available when using native...
-		assertEquals("string", col.sortKey("string"));
+	if (typeof(Intl) === 'undefined' && Intl) {
+	    return;
 	}
+	var col = new Collator({locale: "it-IT"});
+
+	assertNotUndefined(col);
+
+	// no sort key available when using native...
+	assertEquals("string", col.sortKey("string"));
 }
 
 function testCollatorGetSortKeySimpleUpper_it() {
@@ -358,72 +359,77 @@ function testCollatorGetAvailableStyles_it() {
 
 function testCollatorDefaultExtendedChars_it() {
 	// only test on platforms that support the new Intl class natively
-	if (typeof(Intl) !== 'undefined') {
-		var col = new Collator({locale: "it-IT"});
-
-		assertNotUndefined(col);
-
-		// should compare in English
-		assertTrue("e < ë", col.compare("e", "ë") < 0);
-		assertTrue("o < ø", col.compare("o", "ø") < 0);
+	if (typeof(Intl) === 'undefined') {
+	    return;
 	}
+	var col = new Collator({locale: "it-IT"});
+
+	assertNotUndefined(col);
+
+	// should compare in English
+	assertTrue("e < ë", col.compare("e", "ë") < 0);
+	assertTrue("o < ø", col.compare("o", "ø") < 0);
 }
 
 function testCollatorPrimaryExtendedChars_it() {
 	// only test on platforms that support the new Intl class natively
-	if (typeof(Intl) !== 'undefined') {
-		var col = new Collator({
-			locale: "it-IT",
-			sensitivity: "primary",
-			usage: "search"
-		});
-
-		assertNotUndefined(col);
-
-		// should compare in English
-		assertEquals("e = ë", 0, col.compare("e", "ë"));
-		assertEquals("o = ø", 0, col.compare("o", "ø"));
+	if (typeof(Intl) === 'undefined') {
+	    return;
 	}
+	var col = new Collator({
+		locale: "it-IT",
+		sensitivity: "primary",
+		usage: "search"
+	});
+
+	assertNotUndefined(col);
+
+	// should compare in English
+	assertEquals("e = ë", 0, col.compare("e", "ë"));
+	assertEquals("o = ø", 0, col.compare("o", "ø"));
 }
 
 function testCollatorDefaultExtendedCharsJS_it() {
 	// only test on platforms that support the new Intl class natively
-	if (typeof(Intl) !== 'undefined') {
-		var col = new Collator({useNative: false});
-
-		assertNotUndefined(col);
-
-		// should compare in English
-		assertTrue("e < ë", col.compare("e", "ë") < 0);
-		assertTrue("o < ø", col.compare("o", "ø") < 0);
+	if (typeof(Intl) === 'undefined') {
+	    return;
 	}
+	var col = new Collator({useNative: false});
+
+	assertNotUndefined(col);
+
+	// should compare in English
+	assertTrue("e < ë", col.compare("e", "ë") < 0);
+	assertTrue("o < ø", col.compare("o", "ø") < 0);
 }
 
 function testCollatorPrimaryExtendedCharsJS_it() {
 	// only test on platforms that support the new Intl class natively
-	if (typeof(Intl) !== 'undefined') {
-		var col = new Collator({
-		locale: "it-IT",
-			sensitivity: "primary",
-			usage: "search",
-			useNative: false
-		});
-
-		assertNotUndefined(col);
-
-		// should compare in English
-		assertEquals("e = ë", 0, col.compare("e", "ë"));
-		assertEquals("o = ø", 0, col.compare("o", "ø"));
+	if (typeof(Intl) === 'undefined') {
+	    return;
 	}
+	var col = new Collator({
+	locale: "it-IT",
+		sensitivity: "primary",
+		usage: "search",
+		useNative: false
+	});
+
+	assertNotUndefined(col);
+
+	// should compare in English
+	assertEquals("e = ë", 0, col.compare("e", "ë"));
+	assertEquals("o = ø", 0, col.compare("o", "ø"));
 }
 
 function testCollatorNativeIsNative_it() {
 	// only test on platforms that support the new Intl class natively
-	if (typeof(Intl) !== 'undefined') {
-		var col = new Collator({locale: "it-IT"});
-		assertNotUndefined(col);
-		assertNotUndefined(col.collator);
+	if (typeof(Intl) === 'undefined') {
+	    return;
 	}
+	var col = new Collator({locale: "it-IT"});
+	assertNotUndefined(col);
+	assertNotUndefined(col.collator);
 }
 
 function testJSCollatorPrimaryEqual_it() {

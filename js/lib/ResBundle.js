@@ -258,14 +258,15 @@ var ResBundle = function (options) {
 	
 	this.map = {};
 
-	if (!ResBundle[this.baseName]) {
-		ResBundle[this.baseName] = {};
-	}
-
+	if (!ilib.data.cache.ResBundle) {
+        ilib.data.cache.ResBundle = {};
+    }
+	
 	lookupLocale = this.locale.isPseudo() ? new Locale("en-US") : this.locale;
+	var object = "ResBundle-" + this.baseName; 
 
 	Utils.loadData({
-		object: ResBundle[this.baseName], 
+		object: object,
 		locale: lookupLocale, 
 		name: this.baseName + ".json", 
 		sync: this.sync, 
@@ -274,18 +275,18 @@ var ResBundle = function (options) {
 			if (!map) {
 				map = ilib.data[this.baseName] || {};
 				spec = lookupLocale.getSpec().replace(/-/g, '_');
-				ResBundle[this.baseName].cache[spec] = map;
+				ilib.data.cache[object][spec] = map;
 			}
 			this.map = map;
 			if (this.locale.isPseudo()) {
-				if (!ResBundle.pseudomap) {
-					ResBundle.pseudomap = {};
+				if (!ilib.data.cache.ResBundle.pseudomap) {
+				    ilib.data.cache.ResBundle.pseudomap = {};
 				}
 	
 				this._loadPseudo(this.locale, options.onLoad);
 			} else if (this.missing === "pseudo") {
-				if (!ResBundle.pseudomap) {
-					ResBundle.pseudomap = {};
+				if (!ilib.data.cache.ResBundle.pseudomap) {
+				    ilib.data.cache.ResBundle.pseudomap = {};
 				}
 	
 				new LocaleInfo(this.locale, {
@@ -331,7 +332,7 @@ ResBundle.prototype = {
      */
     _loadPseudo: function (pseudoLocale, onLoad) {
 		Utils.loadData({
-			object: ResBundle.pseudomap, 
+			object: "ResBundle", 
 			locale: pseudoLocale, 
 			name: "pseudomap.json", 
 			sync: this.sync, 
@@ -340,7 +341,7 @@ ResBundle.prototype = {
 				if (!map || JSUtils.isEmpty(map)) {
 					map = ResBundle.defaultPseudo;
 					var spec = pseudoLocale.getSpec().replace(/-/g, '_');
-					ResBundle.pseudomap.cache[spec] = map;
+					ilib.data.cache.ResBundle.pseudomap[spec] = map;
 				}
 				this.pseudomap = map;
 				if (typeof(onLoad) === 'function') {
@@ -583,7 +584,11 @@ ResBundle.prototype = {
 	 * if the translation is not found and the source is undefined
 	 */
 	getStringJS: function(source, key, escapeMode) {
-		return this.getString(source, key, escapeMode).toString();
+		if (typeof(source) === 'undefined' && typeof(key) === 'undefined') {
+			return undefined;
+		}
+		var s = this.getString(source, key, escapeMode); 
+		return s ? s.toString() : undefined;
 	},
 	
 	/**

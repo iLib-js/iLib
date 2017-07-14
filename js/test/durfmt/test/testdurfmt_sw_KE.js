@@ -136,7 +136,6 @@ function testDurFmtKEFormatFull() {
 
 
 function testDurFmtKEAsyncWithLocale() {
-    var callbackCalled = false;
     new DurationFmt({
         locale: "sw-Latn-KE",
         length: "full",
@@ -154,15 +153,11 @@ function testDurFmtKEAsyncWithLocale() {
                 second: 2
             });
             assertEquals("miaka 2, miezi 2, wiki 2, siku 2, saa 2, dakika 2 na sekunde 2", duration.toString());
-            callbackCalled = true;
         }
     });
-
-    assertTrue(callbackCalled);
 };
 
 function testDurFmtKEFormatShortClockAsync() {
-    var callbackCalled = false;
     new DurationFmt({
         locale: "sw-Latn-KE",
         length: "short",
@@ -181,8 +176,6 @@ function testDurFmtKEFormatShortClockAsync() {
                 second: 1
             });
             assertEquals("mwaka 1, mwezi 1, wiki 1, siku 1, 01:01:01", duration.toString());
-            callbackCalled = true;
         }
     });
-    assertTrue(callbackCalled);
 };

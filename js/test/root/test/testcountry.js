@@ -114,7 +114,6 @@ function testCountryGetByNameUnknown() {
 }
 
 function testCountryAsync() {
-    var callbackCalled = false;
     new Country({
         locale: "ja-JP",
         sync: false,
@@ -125,10 +124,6 @@ function testCountryAsync() {
             assertEquals("JP", ctry.getCode("日本"));
             var locale = ctry.getLocale();
             assertEquals("ja-JP", locale.toString());
-
-            callbackCalled = true;
         }
     });
-
-    assertTrue(callbackCalled);
 }

@@ -136,18 +136,14 @@ var Name = function (name, options) {
         }
     }
 
-    if (!Name.cache) {
-        Name.cache = {};
-    }
-
-	this.locale = this.locale || new Locale();
+    this.locale = this.locale || new Locale();
 	
 	isAlpha._init(sync, this.loadParams, ilib.bind(this, function() {
 		isIdeo._init(sync, this.loadParams, ilib.bind(this, function() {
 			isPunct._init(sync, this.loadParams, ilib.bind(this, function() {
 				isSpace._init(sync, this.loadParams, ilib.bind(this, function() {
 					Utils.loadData({
-						object: Name, 
+						object: "Name", 
 						locale: this.locale, 
 						name: "name.json", 
 						sync: sync, 
@@ -156,7 +152,7 @@ var Name = function (name, options) {
 							if (!info) {
 								info = Name.defaultInfo;
 								var spec = this.locale.getSpec().replace(/-/g, "_");
-								Name.cache[spec] = info;
+								ilib.data.cache.Name[spec] = info;
 							}
                             if (typeof (name) === 'object') {
     							// copy constructor

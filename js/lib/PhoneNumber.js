@@ -334,7 +334,7 @@ var PhoneNumber = function(number, options) {
 					}
 					Utils.loadData({
 						name: "states.json",
-						object: PhoneNumber,
+						object: "PhoneNumber",
 						locale: this.locale,
 						sync: this.sync,
 						loadParams: JSUtils.merge(this.loadParams, {
@@ -429,7 +429,7 @@ PhoneNumber.parseImsi = function(imsi, options) {
 	} else {
 		Utils.loadData({
 			name: "mnc.json", 
-			object: PhoneNumber, 
+			object: "PhoneNumber", 
 			nonlocale: true, 
 			sync: sync, 
 			loadParams: loadParams, 
@@ -707,7 +707,7 @@ PhoneNumber.prototype = {
 
 				Utils.loadData({
 					name: "states.json",
-					object: PhoneNumber,
+					object: "PhoneNumber",
 					locale: this.destinationLocale,
 					sync: this.sync,
 					loadParams: JSUtils.merge(this.loadParams, {
@@ -841,7 +841,7 @@ PhoneNumber.prototype = {
 						} else if (result.table !== undefined) {
 							Utils.loadData({
 								name: result.table + ".json",
-								object: PhoneNumber,
+								object: "PhoneNumber",
 								nonlocale: true,
 								sync: this.sync,
 								loadParams: this.loadParams,

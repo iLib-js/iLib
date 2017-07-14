@@ -649,7 +649,7 @@ function testDateRngFmtSGRangeShortWithinDay() {
 		millisecond: 0
 	});
 
-    assertEquals("2:34PM – 5:00PM 11/18/2011");    
+    assertEquals("2:34PM – 5:00PM 11/18/2011", fmt.format(date1, date2));
 }
 
 function testDateRngFmtSGRangeShortWithinMonth() {
@@ -675,7 +675,7 @@ function testDateRngFmtSGRangeShortWithinMonth() {
 		millisecond: 0
 	});
 
-    assertEquals("11/2-19, 2011");    
+    assertEquals("11/2-19, 2011", fmt.format(date1, date2));    
 }
 
 function testDateRngFmtSGRangeShortConsecutiveDays() {
@@ -701,7 +701,7 @@ function testDateRngFmtSGRangeShortConsecutiveDays() {
 		millisecond: 0
 	});
 
-    assertEquals("2:00PM 11/18 – 8:00am 11/19, 2011");    
+    assertEquals("2:00PM 11/18 – 8:00am 11/19, 2011", fmt.format(date1, date2));    
 }
 
 function testDateRngFmtSGRangeShortWithinYear() {
@@ -727,7 +727,7 @@ function testDateRngFmtSGRangeShortWithinYear() {
 		millisecond: 0
 	});
 
-    assertEquals("5/2 – 11/19, 2011");    
+    assertEquals("5/2 – 11/19, 2011", fmt.format(date1, date2));    
 }
 
 function testDateRngFmtSGRangeShortWithinDecade() {
@@ -753,7 +753,7 @@ function testDateRngFmtSGRangeShortWithinDecade() {
 		millisecond: 0
 	});
 
-    assertEquals("9/2001 – 12/2010");
+    assertEquals("9/2001 – 12/2010", fmt.format(date1, date2));
 }
 
 function testDateRngFmtSGRangeShortLongTime() {
@@ -779,7 +779,7 @@ function testDateRngFmtSGRangeShortLongTime() {
 		millisecond: 0
 	});
 
-    assertEquals("1776 – 2008");
+    assertEquals("1776 – 2008", fmt.format(date1, date2));
 }
 
 function testDateRngFmtSGRangeLongWithinDay() {
@@ -807,7 +807,7 @@ function testDateRngFmtSGRangeLongWithinDay() {
 		millisecond: 0
 	});
 
-    assertEquals("2:34PM – 5:00PM Nov 18, 2011");    
+    assertEquals("2:34PM – 5:00PM Nov 18, 2011", fmt.format(date1, date2));    
 }
 
 function testDateRngFmtSGRangeLongConsecutiveDays() {
@@ -835,7 +835,7 @@ function testDateRngFmtSGRangeLongConsecutiveDays() {
 		millisecond: 0
 	});
 
-    assertEquals("2:00PM Nov 18 – 8:00am Nov 19, 2011");    
+    assertEquals("2:00PM Nov 18 – 8:00am Nov 19, 2011", fmt.format(date1, date2));    
 }
 
 function testDateRngFmtRangeLongWithinMonth() {
@@ -863,7 +863,7 @@ function testDateRngFmtRangeLongWithinMonth() {
 		millisecond: 0
 	});
 
-    assertEquals("Nov 2-19, 2011");    
+    assertEquals("Nov 2-19, 2011", fmt.format(date1, date2));    
 }
 
 function testDateRngFmtRangeLongWithinYear() {
@@ -891,7 +891,7 @@ function testDateRngFmtRangeLongWithinYear() {
 		millisecond: 0
 	});
 
-    assertEquals("May 2 – Nov 19, 2011");    
+    assertEquals("May 2 – Nov 19, 2011", fmt.format(date1, date2));    
 }
 
 function testDateRngFmtRangeLongWithinDecade() {
@@ -919,7 +919,7 @@ function testDateRngFmtRangeLongWithinDecade() {
 		millisecond: 0
 	});
 
-    assertEquals("Sep 2001 – Dec 2010");
+    assertEquals("Sep 2001 – Dec 2010", fmt.format(date1, date2));
 }
 
 function testDateRngFmtRangeLongLongTime() {
@@ -947,7 +947,7 @@ function testDateRngFmtRangeLongLongTime() {
 		millisecond: 0
 	});
 
-    assertEquals("1776 – 2008");
+    assertEquals("1776 – 2008", fmt.format(date1, date2));
 }
 
 function testDateRngFmtRangeFullWithinDay() {
@@ -975,7 +975,7 @@ function testDateRngFmtRangeFullWithinDay() {
 		millisecond: 0
 	});
 
-    assertEquals("2:34PM – 5:00PM November 18, 2011");    
+    assertEquals("2:34PM – 5:00PM November 18, 2011", fmt.format(date1, date2));    
 }
 
 function testDateRngFmtRangeFullConsecutiveDays() {
@@ -1003,7 +1003,7 @@ function testDateRngFmtRangeFullConsecutiveDays() {
 		millisecond: 0
 	});
 
-    assertEquals("2:00PM November 18 – 8:00am November 19, 2011");    
+    assertEquals("2:00PM November 18 – 8:00am November 19, 2011", fmt.format(date1, date2));    
 }
 
 function testDateRngFmtRangeFullWithinMonth() {
@@ -1031,7 +1031,7 @@ function testDateRngFmtRangeFullWithinMonth() {
 		millisecond: 0
 	});
 
-    assertEquals("November 2-19, 2011");    
+    assertEquals("November 2-19, 2011", fmt.format(date1, date2));    
 }
 
 function testDateRngFmtRangeFullWithinYear() {
@@ -1059,7 +1059,7 @@ function testDateRngFmtRangeFullWithinYear() {
 		millisecond: 0
 	});
 
-    assertEquals("May 2 – November 19, 2011");    
+    assertEquals("May 2 – November 19, 2011", fmt.format(date1, date2));    
 }
 
 function testDateRngFmtRangeFullWithinDecade() {
@@ -1087,7 +1087,7 @@ function testDateRngFmtRangeFullWithinDecade() {
 		millisecond: 0
 	});
 
-    assertEquals("September 2001 – December 2010");
+    assertEquals("September 2001 – December 2010", fmt.format(date1, date2));
 }
 
 function testDateRngFmtRangeFullLongTime() {
@@ -1115,7 +1115,7 @@ function testDateRngFmtRangeFullLongTime() {
 		millisecond: 0
 	});
 
-    assertEquals("1776 – 2008");
+    assertEquals("1776 – 2008", fmt.format(date1, date2));
 }
 */
 

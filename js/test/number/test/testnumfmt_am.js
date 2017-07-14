@@ -19,7 +19,7 @@
 
 
 var NumFmt = require("./../lib/NumFmt.js");
-function testNumFmtNumberETFormatNoFractionalLimit() {
+function testNumFmtNumberETFormatNoFractionalLimit() {
 
     var fmt = new NumFmt({
         locale: "am-ET"
@@ -32,7 +32,7 @@ function testNumFmtNumberETFormatNoFractionalLimit() {
     assertEquals("1.012345678901234", fmt.format(1.012345678901234));
 }
 
-function testNumFmtNumberETFormatNoIntegralLimit() {
+function testNumFmtNumberETFormatNoIntegralLimit() {
     var fmt = new NumFmt({
         locale: "am-ET"
     });
@@ -45,7 +45,7 @@ function testNumFmtNumberETFormatNoIntegralLimit() {
     assertEquals("12,345,678,901,234", fmt.format(12345678901234.0));
 }
 
-function testNumFmtNumberETFormatWithMaxFracDigits() {
+function testNumFmtNumberETFormatWithMaxFracDigits() {
     var fmt = new NumFmt({
         locale: "am-ET",
         maxFractionDigits: 2
@@ -56,7 +56,7 @@ function testNumFmtNumberETFormatWithMaxFracDigits() {
     assertEquals("1.75", fmt.format(1.7453));
 }
 
-function testNumFmtNumberETFormatWithMinFracDigits() {
+function testNumFmtNumberETFormatWithMinFracDigits() {
     var fmt = new NumFmt({
         locale: "am-ET",
         minFractionDigits: 4
@@ -67,7 +67,7 @@ function testNumFmtNumberETFormatWithMinFracDigits() {
     assertEquals("1.7500", fmt.format(1.75));
 }
 
-function testNumFmtNumberETFormatWithMinFracDigitsTooSmall() {
+function testNumFmtNumberETFormatWithMinFracDigitsTooSmall() {
     var fmt = new NumFmt({
         locale: "am-ET",
         minFractionDigits: -5
@@ -79,7 +79,7 @@ function testNumFmtNumberETFormatWithMinFracDigitsTooSmall() {
     assertEquals("1.75", fmt.format(1.75));
 }
 
-function testNumFmtNumberETFormatWithMinFracDigitsTooSmallNoDigits() {
+function testNumFmtNumberETFormatWithMinFracDigitsTooSmallNoDigits() {
     var fmt = new NumFmt({
         locale: "am-ET",
         minFractionDigits: -5
@@ -91,7 +91,7 @@ function testNumFmtNumberETFormatWithMinFracDigitsTooSmallNoDigits() {
     assertEquals("17,500", fmt.format(17500));
 }
 
-function testNumFmtNumberETFormatWithMinFracDigitsTooBig() {
+function testNumFmtNumberETFormatWithMinFracDigitsTooBig() {
     var fmt = new NumFmt({
         locale: "am-ET",
         minFractionDigits: 25
@@ -103,7 +103,7 @@ function testNumFmtNumberETFormatWithMinFracDigitsTooBig() {
     assertEquals("1.01234567890123460000", fmt.format(1.012345678901234567890123456789));
 }
 
-function testNumFmtNumberETFormatWithMinAndMaxFracDigitsTooSmall() {
+function testNumFmtNumberETFormatWithMinAndMaxFracDigitsTooSmall() {
     var fmt = new NumFmt({
         locale: "am-ET",
         minFractionDigits: 3,
@@ -115,7 +115,7 @@ function testNumFmtNumberETFormatWithMinAndMaxFracDigitsTooSmall() {
     assertEquals("1.700", fmt.format(1.7));
 }
 
-function testNumFmtNumberETFormatWithMinAndMaxFracDigitsTooBig() {
+function testNumFmtNumberETFormatWithMinAndMaxFracDigitsTooBig() {
     var fmt = new NumFmt({
         locale: "am-ET",
         minFractionDigits: 3,
@@ -127,7 +127,7 @@ function testNumFmtNumberETFormatWithMinAndMaxFracDigitsTooBig() {
     assertEquals("1.765433", fmt.format(1.76543298765));
 }
 
-function testNumFmtNumberETFormatWithMinAndMaxFracDigitsJustRight() {
+function testNumFmtNumberETFormatWithMinAndMaxFracDigitsJustRight() {
     var fmt = new NumFmt({
         minFractionDigits: 3,
         maxFractionDigits: 6
@@ -138,7 +138,7 @@ function testNumFmtNumberETFormatWithMinAndMaxFracDigitsJustRight() {
     assertEquals("1.76543", fmt.format(1.76543));
 }
 
-function testNumFmtNumberETStyleStandard() {
+function testNumFmtNumberETStyleStandard() {
     var fmt = new NumFmt({
         locale: "am-ET",
         style: "standard"
@@ -149,7 +149,7 @@ function testNumFmtNumberETStyleStandard() {
     assertEquals("2,345,678,901,234,567", fmt.format(2345678901234567.0));
 }
 
-function testNumFmtNumberETFormatStandardWithMultiGroups() {
+function testNumFmtNumberETFormatStandardWithMultiGroups() {
     var fmt = new NumFmt({
         locale: "am-ET",
     	style: "standard"
@@ -160,7 +160,7 @@ function testNumFmtNumberETFormatStandardWithMultiGroups() {
     assertEquals("123,456,789.4", fmt.format(123456789.4));
 }
 
-function testNumFmtNumberETFormatWithMultiGroupsNegative() {
+function testNumFmtNumberETFormatWithMultiGroupsNegative() {
     var fmt = new NumFmt({
         locale: "am-ET",
     	style: "standard"
@@ -171,7 +171,7 @@ function testNumFmtNumberETFormatWithMultiGroupsNegative() {
     assertEquals("-123,456,789.4", fmt.format(-123456789.4));
 }
 
-function testNumFmtNumberETStyleScientific() {
+function testNumFmtNumberETStyleScientific() {
     var fmt = new NumFmt({
         locale: "am-ET",
         style: "scientific"
@@ -182,7 +182,7 @@ function testNumFmtNumberETStyleScientific() {
     assertEquals("1.2345678901234568E+28", fmt.format(12345678901234567890123456789.0));
 }
 
-function testNumFmtNumberETStyleScientificSmall() {
+function testNumFmtNumberETStyleScientificSmall() {
     var fmt = new NumFmt({
         locale: "am-ET",
         style: "scientific"
@@ -194,7 +194,7 @@ function testNumFmtNumberETStyleScientificSmall() {
 }
 
 
-function testNumFmtNumberETStyleScientificWithMinFractionDigits() {
+function testNumFmtNumberETStyleScientificWithMinFractionDigits() {
     var fmt = new NumFmt({
         locale: "am-ET",
         style: "scientific",
@@ -206,7 +206,7 @@ function testNumFmtNumberETStyleScientificWithMinFractionDigits() {
     assertEquals("1.23400E+28", fmt.format(12340000000000000000000000000.0));
 }
 
-function testNumFmtNumberETStyleScientificWithMinFractionDigits() {
+function testNumFmtNumberETStyleScientificWithMinFractionDigits() {
     var fmt = new NumFmt({
         locale: "am-ET",
         style: "scientific",
@@ -219,7 +219,7 @@ function testNumFmtNumberETStyleScientificWithMinFractionDigits() {
     assertEquals("1.23456789E+28", fmt.format(12345678900000000000000000000.0));
 }
 
-function testNumFmtNumberETStyleScientificWithMinFractionDigitsTooSmall() {
+function testNumFmtNumberETStyleScientificWithMinFractionDigitsTooSmall() {
     var fmt = new NumFmt({
         locale: "am-ET",
         style: "scientific",
@@ -231,7 +231,7 @@ function testNumFmtNumberETStyleScientificWithMinFractionDigitsTooSmall() {
     assertEquals("1.234E+20", fmt.format(123400000000000000000.0));
 }
 
-function testNumFmtNumberETStyleScientificWithMinFractionDigitsTooSmallNoDigits() {
+function testNumFmtNumberETStyleScientificWithMinFractionDigitsTooSmallNoDigits() {
     var fmt = new NumFmt({
         style: "scientific",
 	locale: "am-ET",
@@ -243,7 +243,7 @@ function testNumFmtNumberETStyleScientificWithMinFractionDigitsTooSmallNoDigits
     assertEquals("1E+28", fmt.format(10000000000000000000000000000.0));
 }
 
-function testNumFmtNumberETStyleScientificWithMinFractionDigitsTooBig() {
+function testNumFmtNumberETStyleScientificWithMinFractionDigitsTooBig() {
     var fmt = new NumFmt({
 	locale: "am-ET",
         style: "scientific",
@@ -256,7 +256,7 @@ function testNumFmtNumberETStyleScientificWithMinFractionDigitsTooBig() {
     assertEquals("1.23400000000000000000E+28", fmt.format(12340000000000000000000000000.0));
 }
 
-function testNumFmtNumberETStyleScientificWithMaxAndRoundUp() {
+function testNumFmtNumberETStyleScientificWithMaxAndRoundUp() {
     var fmt = new NumFmt({
         style: "scientific",
 	locale: "am-ET",
@@ -272,7 +272,7 @@ function testNumFmtNumberETStyleScientificWithMaxAndRoundUp() {
 
 
 
-function testNumFmtNumberETStyleNogroupingInteger() {
+function testNumFmtNumberETStyleNogroupingInteger() {
     var fmt = new NumFmt({
 	locale:"am-ET",
         style: "nogrouping"
@@ -283,7 +283,7 @@ function testNumFmtNumberETStyleNogroupingInteger() {
     assertEquals("123456789", fmt.format(123456789));
 }
 
-function testNumFmtNumberETStyleNogroupingFloat() {
+function testNumFmtNumberETStyleNogroupingFloat() {
     var fmt = new NumFmt({
 	locale:"am-ET",
         style: "nogrouping"
@@ -294,7 +294,7 @@ function testNumFmtNumberETStyleNogroupingFloat() {
     assertEquals("123456789.345345", fmt.format(123456789.345345));
 }
 
-function GetUseNativeHasNativeButFalse() {
+function testNumFmtETGetUseNativeHasNativeButFalse() {
     var fmt = new NumFmt({
         locale: "am-ET"
     });
@@ -305,7 +305,7 @@ function GetUseNativeHasNativeButFalse() {
     assertFalse(fmt.getUseNative());
 }
 
-function testNumFmtGetUseNativeOverrideTrue() {
+function testNumFmtGetUseNativeOverrideTrue() {
     var fmt = new NumFmt({
         locale: "am-ET",
         useNative: true
@@ -316,7 +316,7 @@ function testNumFmtGetUseNativeOverrideTrue() {
     assertTrue(fmt.getUseNative());
 }
 
-function testNumFmtGetUseNativeExplicitTrue() {
+function testNumFmtGetUseNativeExplicitTrue() {
     var fmt = new NumFmt({
         locale: "am-ET",
         useNative: true
@@ -327,7 +327,7 @@ function testNumFmtGetUseNativeExplicitTrue() {
     assertTrue(fmt.getUseNative());
 }
 
-function testNumFmtGetUseNativeExplicitFalse() {
+function testNumFmtGetUseNativeExplicitFalse() {
     var fmt = new NumFmt({
         locale: "am-ET",
         useNative: false
@@ -338,7 +338,7 @@ function testNumFmtGetUseNativeExplicitFalse() {
     assertFalse(fmt.getUseNative());
 }
 
-function testNumFmtGetUseNativeOverrideFalse() {
+function testNumFmtGetUseNativeOverrideFalse() {
     var fmt = new NumFmt({
         locale: "am-ET",
         useNative: false
@@ -351,7 +351,7 @@ function testNumFmtGetUseNativeOverrideFalse() {
 
 
 
-function testNumFmtPercentageFormatRegular() {
+function testNumFmtPercentageFormatRegular() {
     var fmt = new NumFmt({
         locale: "am-ET",	
         type: "percentage"
@@ -362,7 +362,7 @@ function testNumFmtPercentageFormatRegular() {
     assertEquals("57%", fmt.format(57.0));
 }
 
-function testNumFmtPercentageGetType() {
+function testNumFmtPercentageGetType() {
     var fmt = new NumFmt({
         locale: "am-ET",
         type: "percentage"
@@ -373,7 +373,7 @@ function testNumFmtPercentageGetType() {
     assertEquals("percentage", fmt.getType());
 }
 
-function testNumFmtPercentageFormatWithDecimal() {
+function testNumFmtPercentageFormatWithDecimal() {
     var fmt = new NumFmt({
         locale: "am-ET",
         type: "percentage"

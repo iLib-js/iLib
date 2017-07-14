@@ -136,7 +136,6 @@ function testDurFmtLKFormatFull() {
 
 
 function testDurFmtLKAsyncWithLocale() {
-    var callbackCalled = false;
     new DurationFmt({
         locale: "si-LK",
         length: "full",
@@ -154,15 +153,11 @@ function testDurFmtLKAsyncWithLocale() {
                 second: 2
             });
             assertEquals("වසර 2, මාස 2, සති 2, දින 2, පැය 2, මිනිත්තු 2, සහ තත්පර 2", duration.toString());
-            callbackCalled = true;
         }
     });
-
-    assertTrue(callbackCalled);
 };
 
 function testDurFmtLKFormatShortClockAsync() {
-    var callbackCalled = false;
     new DurationFmt({
         locale: "si-LK",
         length: "short",
@@ -181,8 +176,6 @@ function testDurFmtLKFormatShortClockAsync() {
                 second: 1
             });
             assertEquals("ව 1, මා 1, ස 1, දි 1, 01.01.01", duration.toString());
-            callbackCalled = true;
         }
     });
-    assertTrue(callbackCalled);
 };

@@ -93,7 +93,8 @@ function testParseAddressGRNoDelimiters() {
 	assertEquals("GR", parsedAddress.countryCode);
 };
 
-/*function testParseAddressGRSpecialChars() {
+/*
+function testParseAddressGRSpecialChars() {
 	var parsedAddress = new Address("18, Heracleous St., Kifissia, 145 64 Athens,GREECE", {locale: 'el-GR'});
 	
 	assertNotUndefined(parsedAddress);
@@ -103,7 +104,8 @@ function testParseAddressGRNoDelimiters() {
 	assertEquals("GR-1307", parsedAddress.postalCode);
 	assertEquals("GREECE", parsedAddress.country);
 	assertEquals("GR", parsedAddress.countryCode);
-};*/
+};
+*/
 
 function testParseAddressGRFromUS() {
 	var parsedAddress = new Address("18, Heracleous St., Kifissia, 145 64 Athens,GREECE", {locale: 'en-US'});

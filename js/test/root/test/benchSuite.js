@@ -18,7 +18,7 @@
  */
 
 var TestSuite = require("./TestSuiteModule.js");
-var ilib = require("./../lib/ilib.js");
+var ilib = require("./../lib/ilib-node.js");
 var util = require("util");
 
 function newSuite(path, include) {
