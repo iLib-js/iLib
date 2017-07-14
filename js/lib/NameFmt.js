@@ -226,8 +226,8 @@ NameFmt.prototype = {
 		this.comps = {};
 		
 		if (this.components) {
-			var valids = {"p":1,"g":1,"m":1,"f":1,"s":1,"h":1},
-				arr = this.components.split("");
+			var valids = {"p":1,"g":1,"m":1,"f":1,"s":1,"h":1};
+			arr = this.components.split("");
 			this.comps = {};
 			for (var i = 0; i < arr.length; i++) {
 				if (valids[arr[i].toLowerCase()]) {
