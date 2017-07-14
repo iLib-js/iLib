@@ -34,8 +34,8 @@ module.exports.testname_sl = {
     },
 
     testParseSimpleName_sl_SI: function(test) {
-        var parsed = new Name("Melania Trump", {locale: 'sl-SI'});
         test.expect(2);
+        var parsed = new Name("Melania Trump", {locale: 'sl-SI'});
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {
@@ -48,8 +48,8 @@ module.exports.testname_sl = {
     },
     
     testParseTitle_sl_SI: function(test) {
-        var parsed = new Name("Melania Trump upokojil", {locale: 'sl-SI'});
         test.expect(2);
+        var parsed = new Name("Melania Trump upokojil", {locale: 'sl-SI'});
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {
@@ -63,8 +63,8 @@ module.exports.testname_sl = {
     },
     
     testParseTitleWithFamilyOnly_sl_SI: function(test) {
-        var parsed = new Name("G. Trump", {locale: 'sl-SI'});
         test.expect(2);
+        var parsed = new Name("G. Trump", {locale: 'sl-SI'});
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {
@@ -77,8 +77,8 @@ module.exports.testname_sl = {
     },
     
     testParseEverything_sl_SI: function(test) {
-        var parsed = new Name("G. in Ga. Trump", {locale: 'sl-SI'});
         test.expect(2);
+        var parsed = new Name("G. in Ga. Trump", {locale: 'sl-SI'});
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {
@@ -91,8 +91,8 @@ module.exports.testname_sl = {
     },
     
     testParseprefix_sl_SI: function(test) {
-        var parsed = new Name("Ga. Melania Trump", {locale: 'sl-SI'});
         test.expect(2);
+        var parsed = new Name("Ga. Melania Trump", {locale: 'sl-SI'});
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {
@@ -106,8 +106,8 @@ module.exports.testname_sl = {
     },
     
     testParseprefixAndSuffix_sl_SI: function(test) {
-        var parsed = new Name("Predsednik Melania Trump upokojil", {locale: 'sl-SI'});
         test.expect(2);
+        var parsed = new Name("Predsednik Melania Trump upokojil", {locale: 'sl-SI'});
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {
@@ -125,6 +125,7 @@ module.exports.testname_sl = {
      */
     
     testFormatSimpleNameShort_sl_SI: function(test) {
+        test.expect(2);
         var name = new Name({
             givenName: "Melania",
             familyName: "Trump"
@@ -134,7 +135,6 @@ module.exports.testname_sl = {
             locale: 'sl-SI'
         });
         var formatted = fmt.format(name);
-        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "Melania Trump";
@@ -144,6 +144,7 @@ module.exports.testname_sl = {
     },
     
     testFormatSimpleNameMedium_sl_SI: function(test) {
+        test.expect(2);
         var name = new Name({
             givenName: "Melania",
             familyName: "Trump"
@@ -153,7 +154,6 @@ module.exports.testname_sl = {
             locale: 'sl-SI'
         });
         var formatted = fmt.format(name);
-        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "Melania Trump";
@@ -163,6 +163,7 @@ module.exports.testname_sl = {
     },
     
     testFormatSimpleNameLong_sl_SI: function(test) {
+        test.expect(2);
         var name = new Name({
             givenName: "Melania",
             familyName: "Trump",
@@ -173,7 +174,6 @@ module.exports.testname_sl = {
             locale: 'sl-SI'
         });
         var formatted = fmt.format(name);
-        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "Melania Trump";
@@ -185,6 +185,7 @@ module.exports.testname_sl = {
     
     
     testFormatSurname_sl_SI: function(test) {
+        test.expect(2);
         var name = new Name({
             prefix: "G. in Ga.",
             familyName: "Trump"
@@ -194,7 +195,6 @@ module.exports.testname_sl = {
             locale: 'sl-SI'
         });
         var formatted = fmt.format(name);
-        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "G. in Ga. Trump";
@@ -204,6 +204,7 @@ module.exports.testname_sl = {
     },
     
     testFormatSimpleNameFull_sl_SI: function(test) {
+        test.expect(2);
         var name = new Name({
             prefix: "Princeska",
             givenName: "Melania",
@@ -215,7 +216,6 @@ module.exports.testname_sl = {
             locale: 'sl-SI'
         });
         var formatted = fmt.format(name);
-        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "Princeska Melania Trump upokojil";
@@ -225,6 +225,7 @@ module.exports.testname_sl = {
     },
     
     testFormatComplexNameShort_sl_SI: function(test) {
+        test.expect(2);
         var name = new Name({
             prefix: "Princeska",
             givenName: "Melania",
@@ -235,7 +236,6 @@ module.exports.testname_sl = {
             locale: 'sl-SI'
         });
         var formatted = fmt.format(name);
-        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "Melania Trump";
@@ -245,6 +245,7 @@ module.exports.testname_sl = {
     },
     
     testFormatComplexNameMedium_sl_SI: function(test) {
+        test.expect(2);
         var name = new Name({
             prefix: "Princeska",
             givenName: "Melania",
@@ -255,7 +256,6 @@ module.exports.testname_sl = {
             locale: 'sl-SI'
         });
         var formatted = fmt.format(name);
-        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "Melania Trump";
@@ -265,6 +265,7 @@ module.exports.testname_sl = {
     },
     
     testFormatComplexNameLong_sl_SI: function(test) {
+        test.expect(2);
         var name = new Name({
             prefix: "Princeska",
             givenName: "Melania",
@@ -275,7 +276,6 @@ module.exports.testname_sl = {
             locale: 'sl-SI'
         });
         var formatted = fmt.format(name);
-        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "Princeska Melania Trump";

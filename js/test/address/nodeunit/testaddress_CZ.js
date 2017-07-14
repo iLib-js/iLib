@@ -34,9 +34,9 @@ module.exports.testaddress_CZ = {
     },
 
     testParseAddressCZNormal: function(test) {
+        test.expect(7);
         var parsedAddress = new Address("Prujezdna 320/62, 100 00 PRAHA 10, česká republika", {locale: 'cs-CZ'});
         
-        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Prujezdna 320/62");
         test.equal(parsedAddress.locality, "PRAHA 10");
@@ -48,9 +48,9 @@ module.exports.testaddress_CZ = {
     },
     
     testParseAddressCZNoZip: function(test) {
+        test.expect(8);
         var parsedAddress = new Address("Prujezdna 320/62, PRAHA, česká republika", {locale: 'cs-CZ'});
         
-        test.expect(8);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Prujezdna 320/62");
         test.equal(parsedAddress.locality, "PRAHA");
@@ -63,9 +63,9 @@ module.exports.testaddress_CZ = {
     },
     
     testParseAddressCZManyLines: function(test) {
+        test.expect(7);
         var parsedAddress = new Address("Jaromir Jagr\nPrujezdna 320/62\n100 00 Praha 10\nčeská republika", {locale: 'cs-CZ'});
         
-        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Jaromir Jagr, Prujezdna 320/62");
         test.equal(parsedAddress.locality, "Praha 10");
@@ -77,9 +77,9 @@ module.exports.testaddress_CZ = {
     },
     
     testParseAddressCZOneLine: function(test) {
+        test.expect(7);
         var parsedAddress = new Address("Prujezdna 320/62 100 00 PRAHA 10 česká republika", {locale: 'cs-CZ'});
         
-        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Prujezdna 320/62");
         test.equal(parsedAddress.locality, "PRAHA 10");
@@ -91,9 +91,9 @@ module.exports.testaddress_CZ = {
     },
     
     testParseAddressCZSuperfluousWhitespace: function(test) {
+        test.expect(7);
         var parsedAddress = new Address("\n\t\t\rPrujezdna 320/62\t   \t\n   \r100 00 Praha 10    \t\n \n\n    česká republika              \t\t", {locale: 'cs-CZ'});
         
-        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Prujezdna 320/62");
         test.equal(parsedAddress.locality, "Praha 10");
@@ -105,9 +105,9 @@ module.exports.testaddress_CZ = {
     },
     
     testParseAddressCZSpecialChars: function(test) {
+        test.expect(7);
         var parsedAddress = new Address("Tyršova 1000, 592 31 Nové Město na Moravě 1000, Česká republika", {locale: 'cs-CZ'});
         
-        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Tyršova 1000");
         test.equal(parsedAddress.locality, "Nové Město na Moravě 1000");
@@ -119,11 +119,11 @@ module.exports.testaddress_CZ = {
     },
     
     testParseAddressCZFromUS: function(test) {
+        test.expect(7);
         var parsedAddress = new Address("Tyršova 1000, 592 31 Nové Město na Moravě 1000, Czech Republic", {locale: 'en-US'});
         
         // the country name is in English because this address is for a contact in a US database
         
-        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Tyršova 1000");
         test.equal(parsedAddress.locality, "Nové Město na Moravě 1000");
@@ -135,6 +135,7 @@ module.exports.testaddress_CZ = {
     },
     
     testFormatAddressCZ: function(test) {
+        test.expect(1);
         var parsedAddress = new Address({
             streetAddress: "Kostel svatého Šimona a Judy, Dušní",
              locality: "Praha 1",
@@ -145,12 +146,12 @@ module.exports.testaddress_CZ = {
         
         var expected = "Kostel svatého Šimona a Judy, Dušní\n110 00 Praha 1\nČeská republika";
         var formatter = new AddressFmt({locale: 'cs-CZ'});
-        test.expect(1);
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     },
     
     testFormatAddressCZFromUS: function(test) {
+        test.expect(1);
         var parsedAddress = new Address({
             streetAddress: "Kostel svatého Šimona a Judy, Dušní",
              locality: "Praha 1",
@@ -161,7 +162,6 @@ module.exports.testaddress_CZ = {
         
         var expected = "Kostel svatého Šimona a Judy, Dušní\n110 00 Praha 1\nCzech Republic";
         var formatter = new AddressFmt({locale: 'en-US'});
-        test.expect(1);
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     }

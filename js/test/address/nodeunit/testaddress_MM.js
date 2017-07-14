@@ -34,9 +34,9 @@ module.exports.testaddress_MM = {
     },
 
     testParseAddressMMNormal: function(test) {
+        test.expect(7);
         var parsedAddress = new Address("Posts and Telecommunications No 43 Bo Aung Gyaw Street\nYANGON, 11181\n\nMyanmar", {locale: 'en-MM'});
         
-        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Posts and Telecommunications No 43 Bo Aung Gyaw Street");
         test.equal(parsedAddress.locality, "YANGON");
@@ -48,9 +48,9 @@ module.exports.testaddress_MM = {
     },
     
     testParseAddressMMNoZip: function(test) {
+        test.expect(7);
         var parsedAddress = new Address("Posts and Telecommunications No 43 Bo Aung Gyaw Street\nYANGON\nMyanmar", {locale: 'en-MM'});
         
-        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Posts and Telecommunications No 43 Bo Aung Gyaw Street");
         test.equal(parsedAddress.locality, "YANGON");
@@ -62,9 +62,9 @@ module.exports.testaddress_MM = {
     },
     
     testParseAddressMMNoCountry: function(test) {
+        test.expect(7);
         var parsedAddress = new Address("Posts and Telecommunications No 43 Bo Aung Gyaw Street\nYANGON, 11181", {locale: 'en-MM'});
         
-        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Posts and Telecommunications No 43 Bo Aung Gyaw Street");
         test.equal(parsedAddress.locality, "YANGON");
@@ -76,8 +76,8 @@ module.exports.testaddress_MM = {
     },
     
     testParseAddressMMManyLines: function(test) {
-        var parsedAddress = new Address("Posts and Telecommunications\nNo 43 Bo Aung Gyaw Street\n\nYANGON\n\n11181\nMyanmar\n\n\n", {locale: 'en-MM'});
         test.expect(7);
+        var parsedAddress = new Address("Posts and Telecommunications\nNo 43 Bo Aung Gyaw Street\n\nYANGON\n\n11181\nMyanmar\n\n\n", {locale: 'en-MM'});
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Posts and Telecommunications, No 43 Bo Aung Gyaw Street");
         test.equal(parsedAddress.locality, "YANGON");
@@ -89,9 +89,9 @@ module.exports.testaddress_MM = {
     },
     
     testParseAddressMMOneLine: function(test) {
+        test.expect(7);
         var parsedAddress = new Address("Posts and Telecommunications , No 43 Bo Aung Gyaw Street , YANGON , 11181 , Myanmar", {locale: 'en-MM'});
         
-        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Posts and Telecommunications, No 43 Bo Aung Gyaw Street");
         test.equal(parsedAddress.locality, "YANGON");
@@ -103,9 +103,9 @@ module.exports.testaddress_MM = {
     },
     
     testParseAddressMMSuperfluousWhitespace: function(test) {
+        test.expect(7);
         var parsedAddress = new Address("\t\t\tPosts and Telecommunications\n\t\t\rNo 43 Bo\t\t\rAung Gyaw Street\t\n\n\nYANGON\n\n11181\n\t Myanmar\n\n\n", {locale: 'en-MM'});
         
-        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Posts and Telecommunications, No 43 Bo Aung Gyaw Street");
         test.equal(parsedAddress.locality, "YANGON");
@@ -117,9 +117,9 @@ module.exports.testaddress_MM = {
     },
     
     testParseAddressMMNoDelimiters: function(test) {
+        test.expect(7);
         var parsedAddress = new Address("Posts and Telecommunications No 43 Bo Aung Gyaw Street YANGON, 11181 Myanmar", {locale: 'en-MM'});
         
-        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Posts and Telecommunications No 43 Bo Aung Gyaw Street");
         test.equal(parsedAddress.locality, "YANGON");
@@ -131,11 +131,11 @@ module.exports.testaddress_MM = {
     },
     
     testParseAddressMMFromUS: function(test) {
+        test.expect(7);
         var parsedAddress = new Address("Posts and Telecommunications No 43 Bo Aung Gyaw Street\nYANGON, 11181\nMyanmar", {locale: 'en-US'});
         
         // the country name is in German because this address is for a contact in a German database
         
-        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Posts and Telecommunications No 43 Bo Aung Gyaw Street");
         test.equal(parsedAddress.locality, "YANGON");
@@ -147,6 +147,7 @@ module.exports.testaddress_MM = {
     },
     
     testFormatAddressMM: function(test) {
+        test.expect(1);
         var parsedAddress = new Address({
             streetAddress: "Posts and Telecommunications No 43 Bo Aung Gyaw Street",
             locality: "YANGON",
@@ -157,12 +158,12 @@ module.exports.testaddress_MM = {
         
         var expected = "Posts and Telecommunications No 43 Bo Aung Gyaw Street\nYANGON, 11181\nMyanmar";
         var formatter = new AddressFmt({locale: 'en-MM'});
-        test.expect(1);
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     },
     
     testFormatAddressMMFromUS: function(test) {
+        test.expect(1);
         var parsedAddress = new Address({
             streetAddress: "Posts and Telecommunications No 43 Bo Aung Gyaw Street",
             locality: "YANGON",
@@ -173,7 +174,6 @@ module.exports.testaddress_MM = {
         
         var expected = "Posts and Telecommunications No 43 Bo Aung Gyaw Street\nYANGON, 11181\nMyanmar";
         var formatter = new AddressFmt({locale: 'en-US'});
-        test.expect(1);
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     }

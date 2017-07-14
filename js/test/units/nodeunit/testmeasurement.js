@@ -32,19 +32,19 @@ module.exports.testmeasurement = {
     },
 
     testMeasurementConstructor: function(test) {
+        test.expect(1);
         var m = MeasurementFactory();
         
-        test.expect(1);
         test.ok(m !== null);
         test.done();
     },
     
     testMeasurementNoAmount: function(test) {
+        test.expect(3);
         var m = MeasurementFactory({
             unit: "meter"
         });
         
-        test.expect(3);
         test.ok(m !== null);
         
         test.equal(m.getUnit(), "meter");
@@ -53,12 +53,12 @@ module.exports.testmeasurement = {
     },
     
     testMeasurementRightMeasureType: function(test) {
+        test.expect(2);
         var m = MeasurementFactory({
             unit: "meter",
             amount: 2
         });
         
-        test.expect(2);
         test.ok(m !== null);
         
         test.equal(m.getMeasure(), "length");
@@ -66,12 +66,12 @@ module.exports.testmeasurement = {
     },
     
     testMeasurementUnknownUnitPreserved: function(test) {
+        test.expect(3);
         var m = MeasurementFactory({
             unit: "krunghoonfoop",
             amount: 2
         });
         
-        test.expect(3);
         test.ok(m !== null);
     
         test.equal(m.getUnit(), "krunghoonfoop");
@@ -80,12 +80,12 @@ module.exports.testmeasurement = {
     },
     
     testMeasurementUnknownUnitUnknownMeasureType: function(test) {
+        test.expect(2);
         var m = MeasurementFactory({
             unit: "krunghoonfoop",
             amount: 2
         });
         
-        test.expect(2);
         test.ok(m !== null);
     
         test.equal(m.getMeasure(), "unknown");
@@ -93,12 +93,12 @@ module.exports.testmeasurement = {
     },
     
     testMeasurementMetricScaleMicro: function(test) {
+        test.expect(3);
         var m = MeasurementFactory({
             unit: "micrometer",
             amount: 2
         });
         
-        test.expect(3);
         test.ok(m !== null);
     
         test.equal(m.getUnit(), "micrometer");
@@ -107,12 +107,12 @@ module.exports.testmeasurement = {
     },
     
     testMeasurementMetricScaleMilli: function(test) {
+        test.expect(3);
         var m = MeasurementFactory({
             unit: "millimeter",
             amount: 2
         });
         
-        test.expect(3);
         test.ok(m !== null);
     
         test.equal(m.getUnit(), "millimeter");
@@ -121,12 +121,12 @@ module.exports.testmeasurement = {
     },
     
     testMeasurementMetricScaleCenti: function(test) {
+        test.expect(3);
         var m = MeasurementFactory({
             unit: "centimeter",
             amount: 2
         });
         
-        test.expect(3);
         test.ok(m !== null);
     
         test.equal(m.getUnit(), "centimeter");
@@ -135,12 +135,12 @@ module.exports.testmeasurement = {
     },
     
     testMeasurementMetricScaleDeca: function(test) {
+        test.expect(3);
         var m = MeasurementFactory({
             unit: "decameter",
             amount: 2
         });
         
-        test.expect(3);
         test.ok(m !== null);
     
         test.equal(m.getUnit(), "decameter");
@@ -149,12 +149,12 @@ module.exports.testmeasurement = {
     },
     
     testMeasurementMetricScaleHecto: function(test) {
+        test.expect(3);
         var m = MeasurementFactory({
             unit: "hectometer",
             amount: 2
         });
         
-        test.expect(3);
         test.ok(m !== null);
     
         test.equal(m.getUnit(), "hectometer");
@@ -163,12 +163,12 @@ module.exports.testmeasurement = {
     },
     
     testMeasurementMetricScaleKilo: function(test) {
+        test.expect(3);
         var m = MeasurementFactory({
             unit: "kilometer",
             amount: 2
         });
         
-        test.expect(3);
         test.ok(m !== null);
     
         test.equal(m.getUnit(), "kilometer");
@@ -177,12 +177,12 @@ module.exports.testmeasurement = {
     },
     
     testMeasurementMetricScaleMega: function(test) {
+        test.expect(3);
         var m = MeasurementFactory({
             unit: "megameter",
             amount: 2
         });
         
-        test.expect(3);
         test.ok(m !== null);
     
         test.equal(m.getUnit(), "megameter");
@@ -191,12 +191,12 @@ module.exports.testmeasurement = {
     },
     
     testMeasurementMetricScaleGiga: function(test) {
+        test.expect(3);
         var m = MeasurementFactory({
             unit: "gigameter",
             amount: 2
         });
         
-        test.expect(3);
         test.ok(m !== null);
     
         test.equal(m.getUnit(), "gigameter");
@@ -205,12 +205,12 @@ module.exports.testmeasurement = {
     },
     
     testMeasurementMetricScaleSymbolMicro: function(test) {
+        test.expect(3);
         var m = MeasurementFactory({
             unit: "µm",
             amount: 2
         });
         
-        test.expect(3);
         test.ok(m !== null);
     
         test.equal(m.getUnit(), "micrometer");
@@ -219,12 +219,12 @@ module.exports.testmeasurement = {
     },
     
     testMeasurementMetricScaleSymbolMilli: function(test) {
+        test.expect(3);
         var m = MeasurementFactory({
             unit: "mm",
             amount: 2
         });
         
-        test.expect(3);
         test.ok(m !== null);
     
         test.equal(m.getUnit(), "millimeter");
@@ -233,12 +233,12 @@ module.exports.testmeasurement = {
     },
     
     testMeasurementMetricScaleSymbolCenti: function(test) {
+        test.expect(3);
         var m = MeasurementFactory({
             unit: "cm",
             amount: 2
         });
         
-        test.expect(3);
         test.ok(m !== null);
     
         test.equal(m.getUnit(), "centimeter");
@@ -247,12 +247,12 @@ module.exports.testmeasurement = {
     },
     
     testMeasurementMetricScaleSymbolNone: function(test) {
+        test.expect(3);
         var m = MeasurementFactory({
             unit: "m",
             amount: 2
         });
         
-        test.expect(3);
         test.ok(m !== null);
     
         test.equal(m.getUnit(), "meter");
@@ -261,12 +261,12 @@ module.exports.testmeasurement = {
     },
     
     testMeasurementMetricScaleSymbolDeca: function(test) {
+        test.expect(3);
         var m = MeasurementFactory({
             unit: "dam",
             amount: 2
         });
         
-        test.expect(3);
         test.ok(m !== null);
     
         test.equal(m.getUnit(), "decameter");
@@ -275,12 +275,12 @@ module.exports.testmeasurement = {
     },
     
     testMeasurementMetricScaleSymbolHecto: function(test) {
+        test.expect(3);
         var m = MeasurementFactory({
             unit: "hm",
             amount: 2
         });
         
-        test.expect(3);
         test.ok(m !== null);
     
         test.equal(m.getUnit(), "hectometer");
@@ -289,12 +289,12 @@ module.exports.testmeasurement = {
     },
     
     testMeasurementMetricScaleSymbolKilo: function(test) {
+        test.expect(3);
         var m = MeasurementFactory({
             unit: "km",
             amount: 2
         });
         
-        test.expect(3);
         test.ok(m !== null);
     
         test.equal(m.getUnit(), "kilometer");
@@ -303,12 +303,12 @@ module.exports.testmeasurement = {
     },
     
     testMeasurementMetricScaleSymbolMega: function(test) {
+        test.expect(3);
         var m = MeasurementFactory({
             unit: "Mm",
             amount: 2
         });
         
-        test.expect(3);
         test.ok(m !== null);
     
         test.equal(m.getUnit(), "megameter");
@@ -317,12 +317,12 @@ module.exports.testmeasurement = {
     },
     
     testMeasurementMetricScaleSymbolGiga: function(test) {
+        test.expect(3);
         var m = MeasurementFactory({
             unit: "Gm",
             amount: 2
         });
         
-        test.expect(3);
         test.ok(m !== null);
     
         test.equal(m.getUnit(), "gigameter");
@@ -331,12 +331,12 @@ module.exports.testmeasurement = {
     },
     
     testMeasurementMetricScaleOriginalUnit: function(test) {
+        test.expect(2);
         var m = MeasurementFactory({
             unit: "kilometer",
             amount: 2
         });
         
-        test.expect(2);
         test.ok(m !== null);
     
         test.equal(m.getOriginalUnit(), "kilometer");
@@ -344,12 +344,12 @@ module.exports.testmeasurement = {
     },
     
     testMeasurementAliases1: function(test) {
+        test.expect(3);
         var m = MeasurementFactory({
             unit: "miles",
             amount: 2
         });
         
-        test.expect(3);
         test.ok(m !== null);
     
         test.equal(m.getUnit(), "mile");
@@ -358,12 +358,12 @@ module.exports.testmeasurement = {
     },
     
     testMeasurementAliases1OriginalUnit: function(test) {
+        test.expect(2);
         var m = MeasurementFactory({
             unit: "meters",
             amount: 2
         });
         
-        test.expect(2);
         test.ok(m !== null);
     
         test.equal(m.getOriginalUnit(), "meters");
@@ -415,6 +415,7 @@ module.exports.testmeasurement = {
     },
     
     testMeasurementConvert: function(test) {
+        test.expect(4);
         var m1 = MeasurementFactory({
             unit: "mile",
             amount: 2
@@ -424,7 +425,6 @@ module.exports.testmeasurement = {
             amount: m1
         });
         
-        test.expect(4);
         test.ok(m1 !== null);
         test.ok(m2 !== null);
     
@@ -434,6 +434,7 @@ module.exports.testmeasurement = {
     },
     
     testMeasurementConvertToMetricScale: function(test) {
+        test.expect(4);
         var m1 = MeasurementFactory({
             unit: "mile",
             amount: 2
@@ -443,7 +444,6 @@ module.exports.testmeasurement = {
             amount: m1
         });
         
-        test.expect(4);
         test.ok(m1 !== null);
         test.ok(m2 !== null);
     
@@ -453,6 +453,7 @@ module.exports.testmeasurement = {
     },
     
     testMeasurementConvertToMetricScaleWithAlias: function(test) {
+        test.expect(4);
         var m1 = MeasurementFactory({
             unit: "mile",
             amount: 2
@@ -462,7 +463,6 @@ module.exports.testmeasurement = {
             amount: m1
         });
         
-        test.expect(4);
         test.ok(m1 !== null);
         test.ok(m2 !== null);
     
@@ -472,6 +472,7 @@ module.exports.testmeasurement = {
     },
     
     testMeasurementConvertFromMetric: function(test) {
+        test.expect(4);
         var m1 = MeasurementFactory({
             unit: "meter",
             amount: 2000
@@ -481,7 +482,6 @@ module.exports.testmeasurement = {
             amount: m1
         });
         
-        test.expect(4);
         test.ok(m1 !== null);
         test.ok(m2 !== null);
     
@@ -491,6 +491,7 @@ module.exports.testmeasurement = {
     },
     
     testMeasurementConvertFromMetricWithScale: function(test) {
+        test.expect(4);
         var m1 = MeasurementFactory({
             unit: "kilometer",
             amount: 2
@@ -500,7 +501,6 @@ module.exports.testmeasurement = {
             amount: m1
         });
         
-        test.expect(4);
         test.ok(m1 !== null);
         test.ok(m2 !== null);
     
@@ -510,6 +510,7 @@ module.exports.testmeasurement = {
     },
     
     testMeasurementConvertFromMetricWithScaleAndAlias: function(test) {
+        test.expect(4);
         var m1 = MeasurementFactory({
             unit: "km",
             amount: 2
@@ -519,7 +520,6 @@ module.exports.testmeasurement = {
             amount: m1
         });
         
-        test.expect(4);
         test.ok(m1 !== null);
         test.ok(m2 !== null);
     
@@ -538,7 +538,7 @@ module.exports.testmeasurement = {
                 unit: "celsius",
                 amount: m1
             });
-        test.fail()
+            test.fail();
         } catch (e) {
             test.equal(e, "Cannot convert unit meter to a temperature");
         }

@@ -31,8 +31,8 @@ module.exports.phonenum_HK = {
     },
 
     testHKLocalNumber: function(test) {
-        var parsed = new PhoneNumber("23897077", {locale: "en-HK"});
         test.expect(2);
+        var parsed = new PhoneNumber("23897077", {locale: "en-HK"});
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = new PhoneNumber({
@@ -44,8 +44,8 @@ module.exports.phonenum_HK = {
         
     },
     testHKFromIntl: function(test) {
-        var parsed = new PhoneNumber("+85223897077", {locale: "en-HK"});
         test.expect(2);
+        var parsed = new PhoneNumber("+85223897077", {locale: "en-HK"});
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = new PhoneNumber({
@@ -59,8 +59,8 @@ module.exports.phonenum_HK = {
         
     },
     testHKMobile: function(test) {
-        var parsed = new PhoneNumber("93897077", {locale: "en-HK"});
         test.expect(2);
+        var parsed = new PhoneNumber("93897077", {locale: "en-HK"});
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = new PhoneNumber({
@@ -73,8 +73,8 @@ module.exports.phonenum_HK = {
         
     },
     testHKFromIntlToMobile: function(test) {
-        var parsed = new PhoneNumber("+85293897077", {locale: "en-HK"});
         test.expect(2);
+        var parsed = new PhoneNumber("+85293897077", {locale: "en-HK"});
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = new PhoneNumber({
@@ -90,8 +90,8 @@ module.exports.phonenum_HK = {
     },
     
     testHKLocalNumberWithMCC: function(test) {
-        var parsed = new PhoneNumber("23897077", {locale: "en-US", mcc: "454"});
         test.expect(2);
+        var parsed = new PhoneNumber("23897077", {locale: "en-US", mcc: "454"});
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = new PhoneNumber({
@@ -104,8 +104,8 @@ module.exports.phonenum_HK = {
     },
     
     testParseHKLocalNumber: function(test) {
-        var parsed = new PhoneNumber("2123 4567", {locale: "en-HK"});
         test.expect(2);
+        var parsed = new PhoneNumber("2123 4567", {locale: "en-HK"});
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = new PhoneNumber({
@@ -118,8 +118,8 @@ module.exports.phonenum_HK = {
     },
     
     testParseHKIgnoreFormatting: function(test) {
-        var parsed = new PhoneNumber("22-34-56-78", {locale: "en-HK"});
         test.expect(2);
+        var parsed = new PhoneNumber("22-34-56-78", {locale: "en-HK"});
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = new PhoneNumber({
@@ -132,8 +132,8 @@ module.exports.phonenum_HK = {
     },
     
     testParseHKIgnoreCrap: function(test) {
-        var parsed = new PhoneNumber("2!1@2$3-^4&5(6)7", {locale: "en-HK"});
         test.expect(2);
+        var parsed = new PhoneNumber("2!1@2$3-^4&5(6)7", {locale: "en-HK"});
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = new PhoneNumber({
@@ -146,8 +146,8 @@ module.exports.phonenum_HK = {
     },
     
     testParseHKServiceCode: function(test) {
-        var parsed = new PhoneNumber("18501", {locale: "en-HK"});
         test.expect(2);
+        var parsed = new PhoneNumber("18501", {locale: "en-HK"});
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = new PhoneNumber({
@@ -161,8 +161,8 @@ module.exports.phonenum_HK = {
     },
     
     testParseHKMobileNumber: function(test) {
-        var parsed = new PhoneNumber("51234567", {locale: "en-HK"});
         test.expect(2);
+        var parsed = new PhoneNumber("51234567", {locale: "en-HK"});
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = new PhoneNumber({
@@ -176,8 +176,8 @@ module.exports.phonenum_HK = {
     },
     
     testParseHKPlusIDDToUS: function(test) {
-        var parsed = new PhoneNumber("+12028675309", {locale: "en-HK"});
         test.expect(2);
+        var parsed = new PhoneNumber("+12028675309", {locale: "en-HK"});
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = new PhoneNumber({
@@ -193,8 +193,8 @@ module.exports.phonenum_HK = {
     },
     
     testParseHKZerosIDDToUS: function(test) {
-        var parsed = new PhoneNumber("00112028675309", {locale: "en-HK"});
         test.expect(2);
+        var parsed = new PhoneNumber("00112028675309", {locale: "en-HK"});
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = new PhoneNumber({
@@ -210,8 +210,8 @@ module.exports.phonenum_HK = {
     },
     
     testParseHKEmergencyNumber: function(test) {
-        var parsed = new PhoneNumber("999", {locale: "en-HK"});
         test.expect(2);
+        var parsed = new PhoneNumber("999", {locale: "en-HK"});
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = new PhoneNumber({
@@ -224,8 +224,8 @@ module.exports.phonenum_HK = {
     },
     
     testParseHKEmergencyNumberGSM: function(test) {
-        var parsed = new PhoneNumber("112", {locale: "en-HK"});
         test.expect(2);
+        var parsed = new PhoneNumber("112", {locale: "en-HK"});
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = new PhoneNumber({
@@ -238,8 +238,8 @@ module.exports.phonenum_HK = {
     },
     
     testParseHKPartial1: function(test) {
-        var parsed = new PhoneNumber("2", {locale: "en-HK"});
         test.expect(2);
+        var parsed = new PhoneNumber("2", {locale: "en-HK"});
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = new PhoneNumber({
@@ -252,8 +252,8 @@ module.exports.phonenum_HK = {
     },
     
     testParseHKPartial2: function(test) {
-        var parsed = new PhoneNumber("21", {locale: "en-HK"});
         test.expect(2);
+        var parsed = new PhoneNumber("21", {locale: "en-HK"});
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = new PhoneNumber({
@@ -265,8 +265,8 @@ module.exports.phonenum_HK = {
         
     },
     testParseHKPartial3: function(test) {
-        var parsed = new PhoneNumber("212", {locale: "en-HK"});
         test.expect(2);
+        var parsed = new PhoneNumber("212", {locale: "en-HK"});
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = new PhoneNumber({
@@ -278,8 +278,8 @@ module.exports.phonenum_HK = {
         
     },
     testParseHKPartial4: function(test) {
-        var parsed = new PhoneNumber("2123", {locale: "en-HK"});
         test.expect(2);
+        var parsed = new PhoneNumber("2123", {locale: "en-HK"});
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = new PhoneNumber({
@@ -291,8 +291,8 @@ module.exports.phonenum_HK = {
         
     },
     testParseHKPartial5: function(test) {
-        var parsed = new PhoneNumber("2123 4", {locale: "en-HK"});
         test.expect(2);
+        var parsed = new PhoneNumber("2123 4", {locale: "en-HK"});
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = new PhoneNumber({
@@ -304,8 +304,8 @@ module.exports.phonenum_HK = {
         
     },
     testParseHKPartial6: function(test) {
-        var parsed = new PhoneNumber("2123 45", {locale: "en-HK"});
         test.expect(2);
+        var parsed = new PhoneNumber("2123 45", {locale: "en-HK"});
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = new PhoneNumber({
@@ -317,8 +317,8 @@ module.exports.phonenum_HK = {
         
     },
     testParseHKPartial7: function(test) {
-        var parsed = new PhoneNumber("2123 456", {locale: "en-HK"});
         test.expect(2);
+        var parsed = new PhoneNumber("2123 456", {locale: "en-HK"});
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = new PhoneNumber({
@@ -330,8 +330,8 @@ module.exports.phonenum_HK = {
         
     },
     testParseHKPartial8: function(test) {
-        var parsed = new PhoneNumber("2123 4567", {locale: "en-HK"});
         test.expect(2);
+        var parsed = new PhoneNumber("2123 4567", {locale: "en-HK"});
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = new PhoneNumber({
@@ -343,8 +343,8 @@ module.exports.phonenum_HK = {
         
     },
     testParseHKPartial9: function(test) {
-        var parsed = new PhoneNumber("2123 4567 8", {locale: "en-HK"});
         test.expect(2);
+        var parsed = new PhoneNumber("2123 4567 8", {locale: "en-HK"});
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = new PhoneNumber({
@@ -358,8 +358,8 @@ module.exports.phonenum_HK = {
     },
     
     testParseHKWithUSMCC: function(test) {
-        var parsed = new PhoneNumber("6153222313", {locale: "en-HK", mcc: "316"});
         test.expect(2);
+        var parsed = new PhoneNumber("6153222313", {locale: "en-HK", mcc: "316"});
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = new PhoneNumber({
@@ -373,8 +373,8 @@ module.exports.phonenum_HK = {
     },
     
     testParseHKWithFRMCC: function(test) {
-        var parsed = new PhoneNumber("6153222313", {locale: "en-HK", mcc: "208"});
         test.expect(2);
+        var parsed = new PhoneNumber("6153222313", {locale: "en-HK", mcc: "208"});
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = new PhoneNumber({
@@ -387,8 +387,8 @@ module.exports.phonenum_HK = {
     },
     
     testParseHKWithMXMCC: function(test) {
-        var parsed = new PhoneNumber("6153222313", {locale: "en-HK", mcc: "334"});
         test.expect(2);
+        var parsed = new PhoneNumber("6153222313", {locale: "en-HK", mcc: "334"});
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = new PhoneNumber({
@@ -402,8 +402,8 @@ module.exports.phonenum_HK = {
     },
     
     testParseHKWithDEMCC: function(test) {
-        var parsed = new PhoneNumber("6153222313", {locale: "en-HK", mcc: "262"});
         test.expect(2);
+        var parsed = new PhoneNumber("6153222313", {locale: "en-HK", mcc: "262"});
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = new PhoneNumber({
@@ -416,8 +416,8 @@ module.exports.phonenum_HK = {
     },
     
     testParseHKWithGBMCC: function(test) {
-        var parsed = new PhoneNumber("6153222313", {locale: "en-HK", mcc: "235"});
         test.expect(2);
+        var parsed = new PhoneNumber("6153222313", {locale: "en-HK", mcc: "235"});
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = new PhoneNumber({

@@ -36,9 +36,9 @@ module.exports.testaddress_AO = {
     },
 
     testParseAOAddressNormal: function(test) {
+        test.expect(7);
         var parsedAddress = new Address("Sr. Jõao Pembele, Rua Frederik Engels 92 – 7 o, LUANDA, ANGOLA", {locale: 'pt-AO'});
         
-        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Sr. Jõao Pembele, Rua Frederik Engels 92 – 7 o");
         test.ok(typeof(parsedAddress.region) === "undefined");
@@ -50,9 +50,9 @@ module.exports.testaddress_AO = {
     },
     
     testParseAOAddressNoZip: function(test) {
+        test.expect(7);
         var parsedAddress = new Address("Sr. Jõao Pembele, Rua Frederik Engels 92 – 7 o, LUANDA, ANGOLA", {locale: 'pt-AO'});
         
-        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Sr. Jõao Pembele, Rua Frederik Engels 92 – 7 o");
         test.ok(typeof(parsedAddress.region) === "undefined");
@@ -64,9 +64,9 @@ module.exports.testaddress_AO = {
     },
     
     testParseAOAddressManyLines: function(test) {
+        test.expect(7);
         var parsedAddress = new Address("Sr. Jõao Pembele\nRua Frederik Engels 92 – 7 o\nLUANDA\nANGOLA", {locale: 'pt-AO'});
         
-        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Sr. Jõao Pembele, Rua Frederik Engels 92 – 7 o");
         test.ok(typeof(parsedAddress.region) === "undefined");
@@ -78,9 +78,9 @@ module.exports.testaddress_AO = {
     },
     
     testParseAOAddressOneLine: function(test) {
+        test.expect(7);
         var parsedAddress = new Address("Sr. Jõao Pembele, Rua Frederik Engels 92 – 7 o, LUANDA, ANGOLA", {locale: 'pt-AO'});
         
-        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Sr. Jõao Pembele, Rua Frederik Engels 92 – 7 o");
         test.ok(typeof(parsedAddress.region) === "undefined");
@@ -92,9 +92,9 @@ module.exports.testaddress_AO = {
     },
     
     testParseAOAddressSuperfluousWhitespace: function(test) {
+        test.expect(7);
         var parsedAddress = new Address("Sr. Jõao Pembele, Rua Frederik Engels 92 – 7 o  \n\t\n LUANDA\t\n\n ANGOLA  \n  \t\t\t", {locale: 'pt-AO'});
         
-        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Sr. Jõao Pembele, Rua Frederik Engels 92 – 7 o");
         test.ok(typeof(parsedAddress.region) === "undefined");
@@ -106,9 +106,9 @@ module.exports.testaddress_AO = {
     },
     
     testParseAOAddressNoDelimiters: function(test) {
+        test.expect(7);
         var parsedAddress = new Address("Sr. Jõao Pembele P. 15 Sh. 1 LUANDA ANGOLA", {locale: 'pt-AO'});
         
-        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Sr. Jõao Pembele P. 15 Sh. 1");
         test.ok(typeof(parsedAddress.region) === "undefined");
@@ -120,9 +120,9 @@ module.exports.testaddress_AO = {
     },
     
     testParseAOAddressSpeciAOChars: function(test) {
+        test.expect(7);
         var parsedAddress = new Address("Sr. Jõao Pembele, Rua Frederik Engels 92 – 7 o, LUANDA, ANGOLA", {locale: 'pt-AO'});
         
-        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Sr. Jõao Pembele, Rua Frederik Engels 92 – 7 o");
         test.ok(typeof(parsedAddress.region) === "undefined");
@@ -134,11 +134,11 @@ module.exports.testaddress_AO = {
     },
     
     testParseAOAddressFromUS: function(test) {
+        test.expect(7);
         var parsedAddress = new Address("Sr. Jõao Pembele, Rua Frederik Engels 92 – 7 o, LUANDA, ANGOLA", {locale: 'en-US'});
         
         // the country name is in English because this address is for a contact in a US database
         
-        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Sr. Jõao Pembele, Rua Frederik Engels 92 – 7 o");
         test.ok(typeof(parsedAddress.region) === "undefined");
@@ -150,6 +150,7 @@ module.exports.testaddress_AO = {
     },
     
     testFormatAddressAO: function(test) {
+        test.expect(1);
         var parsedAddress = new Address({
             streetAddress: "Sr. Jõao Pembele, Rua Frederik Engels 92 – 7 o",
             locality: "LUANDA",
@@ -159,12 +160,12 @@ module.exports.testaddress_AO = {
         
         var expected = "Sr. Jõao Pembele, Rua Frederik Engels 92 – 7 o\nLUANDA\nANGOLA";
         var formatter = new AddressFmt({locale: 'pt-AO'});
-        test.expect(1);
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     },
     
     testFormatAddressAOFromUS: function(test) {
+        test.expect(1);
         var parsedAddress = new Address({
             streetAddress: "Sr. Jõao Pembele, Rua Frederik Engels 92 – 7 o",
             locality: "LUANDA",
@@ -174,7 +175,6 @@ module.exports.testaddress_AO = {
         
         var expected = "Sr. Jõao Pembele, Rua Frederik Engels 92 – 7 o\nLUANDA\nANGOLA";
         var formatter = new AddressFmt({locale: 'en-US'});
-        test.expect(1);
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     }

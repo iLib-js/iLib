@@ -18,7 +18,7 @@
  */
 
 if (typeof(ilib) === "undefined") {
-    var ilib = require("../.././../lib/ilib.js");
+    var ilib = require("../.././../lib/ilib-node.js");
 }
 if (typeof(CopticRataDie) === "undefined") {
     var CopticRataDie = require("../.././../lib/CopticRataDie.js");
@@ -75,14 +75,15 @@ module.exports.testcopticdate = {
     },
 
     testCopticRataDieConstructor: function(test) {
+        test.expect(1);
         var crd = new CopticRataDie();
         
-        test.expect(1);
         test.ok(crd !== null);
         test.done();
     },
     
     testCopticRataDieConstructorComponents: function(test) {
+        test.expect(2);
         var crd = new CopticRataDie({
             year: 1,
             month: 1,
@@ -94,7 +95,6 @@ module.exports.testcopticdate = {
             timezone: "Etc/UTC"
         });
         
-        test.expect(2);
         test.ok(crd !== null);
         
         test.equal(crd.getRataDie(), 1);
@@ -102,6 +102,7 @@ module.exports.testcopticdate = {
     },
     
     testCopticRataDieConstructorComponentsBig: function(test) {
+        test.expect(2);
         var crd = new CopticRataDie({
             year: 1731,
             month: 2,
@@ -113,7 +114,6 @@ module.exports.testcopticdate = {
             timezone: "Etc/UTC"
         });
         
-        test.expect(2);
         test.ok(crd !== null);
         
         test.equal(crd.getRataDie(), 631931.5209722222);
@@ -121,11 +121,11 @@ module.exports.testcopticdate = {
     },
     
     testCopticRataDieConstructorRD: function(test) {
+        test.expect(2);
         var crd = new CopticRataDie({
             rd: 732323.2342345
         });
         
-        test.expect(2);
         test.ok(crd !== null);
         
         test.equal(crd.getRataDie(), 732323.2342345);
@@ -133,11 +133,11 @@ module.exports.testcopticdate = {
     },
     
     testCopticRataDieConstructorUnixtime: function(test) {
+        test.expect(2);
         var crd = new CopticRataDie({
             unixtime: 0
         });
         
-        test.expect(2);
         test.ok(crd !== null);
         
         test.equal(crd.getRataDie(), 615559);
@@ -145,11 +145,11 @@ module.exports.testcopticdate = {
     },
     
     testCopticRataDieConstructorJD: function(test) {
+        test.expect(2);
         var crd = new CopticRataDie({
             julianday: 1825028.5 + 734564 
         });
         
-        test.expect(2);
         test.ok(crd !== null);
         
         test.equal(crd.getRataDie(), 734564);
@@ -157,11 +157,11 @@ module.exports.testcopticdate = {
     },
     
     testCopticRataDieGetJulianDay1: function(test) {
+        test.expect(2);
         var crd = new CopticRataDie({
             julianday: 1825028.5 + 734564 
         });
         
-        test.expect(2);
         test.ok(crd !== null);
         
         test.equal(crd.getJulianDay(), 1825028.5 + 734564);
@@ -169,11 +169,11 @@ module.exports.testcopticdate = {
     },
     
     testCopticRataDieGetJulianDay2: function(test) {
+        test.expect(2);
         var crd = new CopticRataDie({
             unixtime: 0 
         });
         
-        test.expect(2);
         test.ok(crd !== null);
         
         test.equal(crd.getJulianDay(), 2440587.5);
@@ -181,11 +181,11 @@ module.exports.testcopticdate = {
     },
     
     testCopticRataDieGetJulianDay3: function(test) {
+        test.expect(2);
         var crd = new CopticRataDie({
             rd: 0 
         });
         
-        test.expect(2);
         test.ok(crd !== null);
         
         test.equal(crd.getJulianDay(), 1825028.5);
@@ -193,11 +193,11 @@ module.exports.testcopticdate = {
     },
     
     testCopticRataDieGetTime1: function(test) {
+        test.expect(2);
         var crd = new CopticRataDie({
             unixtime: 0 
         });
         
-        test.expect(2);
         test.ok(crd !== null);
         
         test.equal(crd.getTime(), 0);
@@ -205,11 +205,11 @@ module.exports.testcopticdate = {
     },
     
     testCopticRataDieGetTime2: function(test) {
+        test.expect(2);
         var crd = new CopticRataDie({
             julianday: 2440587.5
         });
         
-        test.expect(2);
         test.ok(crd !== null);
         
         test.equal(crd.getTime(), 0);
@@ -217,11 +217,11 @@ module.exports.testcopticdate = {
     },
     
     testCopticRataDieGetTimeTooSmall: function(test) {
+        test.expect(2);
         var crd = new CopticRataDie({
             julianday: 2440586.5
         });
         
-        test.expect(2);
         test.ok(crd !== null);
         
         test.equal(crd.getTime(), -1);
@@ -229,11 +229,11 @@ module.exports.testcopticdate = {
     },
     
     testCopticRataDieGetTimeTooBig: function(test) {
+        test.expect(2);
         var crd = new CopticRataDie({
             julianday: 2465443.634803241
         });
         
-        test.expect(2);
         test.ok(crd !== null);
         
         test.equal(crd.getTime(), -1);
@@ -241,11 +241,11 @@ module.exports.testcopticdate = {
     },
     
     testCopticRataDieGetTimeExtended1: function(test) {
+        test.expect(2);
         var crd = new CopticRataDie({
             unixtime: 0 
         });
         
-        test.expect(2);
         test.ok(crd !== null);
         
         test.equal(crd.getTimeExtended(), 0);
@@ -253,11 +253,11 @@ module.exports.testcopticdate = {
     },
     
     testCopticRataDieGetTimeExtended2: function(test) {
+        test.expect(2);
         var crd = new CopticRataDie({
             julianday: 2440587.5
         });
         
-        test.expect(2);
         test.ok(crd !== null);
         
         test.equal(crd.getTimeExtended(), 0);
@@ -265,11 +265,11 @@ module.exports.testcopticdate = {
     },
     
     testCopticRataDieGetTimeExtendedTooSmallForRegularGetTime: function(test) {
+        test.expect(2);
         var crd = new CopticRataDie({
             julianday: 2440586.5
         });
         
-        test.expect(2);
         test.ok(crd !== null);
         
         test.equal(crd.getTimeExtended(), -86400000);
@@ -277,11 +277,11 @@ module.exports.testcopticdate = {
     },
     
     testCopticRataDieGetTimeExtendedTooBigForRegularGetTime: function(test) {
+        test.expect(2);
         var crd = new CopticRataDie({
             julianday: 2465443.634803241
         });
         
-        test.expect(2);
         test.ok(crd !== null);
         
         test.equal(crd.getTimeExtended(), 2147570047000);
@@ -290,22 +290,22 @@ module.exports.testcopticdate = {
     
     
     testCopticDateConstructor: function(test) {
+        test.expect(1);
         var cd = new CopticDate();
         
-        test.expect(1);
         test.ok(cd !== null);
         test.done();
     },
     
     /* Coptic date is rd 367 + epoch */
     testCopticDateConstructorFromJD: function(test) {
+        test.expect(8);
         var cd = new CopticDate({
             julianday: 1825395.5,
             timezone: "Etc/UTC"
         });
         
         //console.log("testCopticDateConstructorFromJD: " + JSON.stringify(cd, undefined, 4));
-        test.expect(8);
         test.equal(typeof(cd), 'object');
         test.equal(cd.getYears(), 2);
         test.equal(cd.getMonths(), 1);
@@ -318,11 +318,11 @@ module.exports.testcopticdate = {
     },
     
     testCopticDateConstructorUnixTime: function(test) {
+        test.expect(8);
         var cd = new CopticDate({
             unixtime: 0,
             timezone: "Etc/UTC"
         });
-        test.expect(8);
         test.ok(cd !== null);
         
         test.equal(1686, cd.getYears(), "year");
@@ -336,13 +336,13 @@ module.exports.testcopticdate = {
     },
     
     testCopticDateAfterLeapYear: function(test) {
+        test.expect(8);
         // year 3 of every 4 year cycle is a leap year in the Coptic calendar
         var cd = new CopticDate({
             julianday: 1826125.5, // Coptic epoch + 1 + 2 * 365 + 366
             timezone: "Etc/UTC"
         });
         
-        test.expect(8);
         test.equal(typeof(cd), 'object');
         test.equal(cd.getYears(), 4);
         test.equal(cd.getMonths(), 1);
@@ -356,9 +356,9 @@ module.exports.testcopticdate = {
     
     // next two test the transition between months at 6am
     testCopticDateFirstMonthEndRightBeforeDateChange: function(test) {
+        test.expect(8);
         var cd = new CopticDate({rd: 632263.9583333333, timezone: "Etc/UTC"});
         
-        test.expect(8);
         test.equal(typeof(cd), 'object');
         test.equal(cd.getYears(), 1732); // 2015 Gregorian
         test.equal(cd.getMonths(), 1);   // Sept
@@ -371,9 +371,9 @@ module.exports.testcopticdate = {
     },
     
     testCopticDateSecondMonthStartNoonAfterDateChange: function(test) {
+        test.expect(8);
         var cd = new CopticDate({rd: 632265.2083333333, timezone: "Etc/UTC"});
         
-        test.expect(8);
         test.equal(typeof(cd), 'object');
         test.equal(cd.getYears(), 1732); // 2015 Gregorian
         test.equal(cd.getMonths(), 1);   // Sept
@@ -387,9 +387,9 @@ module.exports.testcopticdate = {
     
     // next two test the year transition from a leap year to a regular year
     testCopticDateLastMonthLeapYear: function(test) {
+        test.expect(8);
         var cd = new CopticDate({rd: 632245, timezone: "Etc/UTC"});
         
-        test.expect(8);
         test.equal(typeof(cd), 'object');
         test.equal(cd.getYears(), 1731);
         test.equal(cd.getMonths(), 13);
@@ -402,9 +402,9 @@ module.exports.testcopticdate = {
     },
     
     testCopticDateFirstMonthAfterLeapYear: function(test) {
+        test.expect(8);
         var cd = new CopticDate({rd: 632246, timezone: "Etc/UTC"});
         
-        test.expect(8);
         test.equal(typeof(cd), 'object');
         test.equal(cd.getYears(), 1731);
         test.equal(cd.getMonths(), 13);
@@ -418,9 +418,9 @@ module.exports.testcopticdate = {
     
     // next two test a regular month transition
     testCopticDateThirdMonthEnd: function(test) {
+        test.expect(8);
         var cd = new CopticDate({rd: 632335, timezone: "Etc/UTC"});
         
-        test.expect(8);
         test.equal(typeof(cd), 'object');
         test.equal(cd.getYears(), 1732);
         test.equal(cd.getMonths(), 3);
@@ -433,9 +433,9 @@ module.exports.testcopticdate = {
     },
     
     testCopticDateFourthMonthStart: function(test) {
+        test.expect(8);
         var cd = new CopticDate({rd: 632336, timezone: "Etc/UTC"});
         
-        test.expect(8);
         test.equal(typeof(cd), 'object');
         test.equal(cd.getYears(), 1732);
         test.equal(cd.getMonths(), 3);
@@ -449,9 +449,9 @@ module.exports.testcopticdate = {
     
     // next two test a transition from a non-leap year to a non-leap year
     testCopticDateLastMonthEndNonLeapYear: function(test) {
+        test.expect(8);
         var cd = new CopticDate({rd: 632610, timezone: "Etc/UTC"});
         
-        test.expect(8);
         test.equal(typeof(cd), 'object');
         test.equal(cd.getYears(), 1732);
         test.equal(cd.getMonths(), 13);
@@ -464,9 +464,9 @@ module.exports.testcopticdate = {
     },
     
     testCopticDateFirstMonthStartNonLeapYear: function(test) {
+        test.expect(8);
         var cd = new CopticDate({rd: 632611, timezone: "Etc/UTC"});
         
-        test.expect(8);
         test.equal(typeof(cd), 'object');
         test.equal(cd.getYears(), 1732);
         test.equal(cd.getMonths(), 13);
@@ -479,9 +479,9 @@ module.exports.testcopticdate = {
     },
     
     testCopticDateEndOfYearZeroRd: function(test) {
+        test.expect(8);
         var cd = new CopticDate({rd: 0, timezone: "Etc/UTC"});
         
-        test.expect(8);
         test.equal(typeof(cd), 'object');
         test.equal(cd.getYears(), 0);
         test.equal(cd.getMonths(), 13);
@@ -494,9 +494,9 @@ module.exports.testcopticdate = {
     },
     
     testCopticDateBeginningOfYearOneRd: function(test) {
+        test.expect(8);
         var cd = new CopticDate({rd: 1, timezone: "Etc/UTC"});
         
-        test.expect(8);
         test.equal(typeof(cd), 'object');
         test.equal(cd.getYears(), 1);
         test.equal(cd.getMonths(), 1);
@@ -509,9 +509,9 @@ module.exports.testcopticdate = {
     },
     
     testCopticDateAlmostEndOfYearOneRd: function(test) {
+        test.expect(8);
         var cd = new CopticDate({rd: 364, timezone: "Etc/UTC"});
         
-        test.expect(8);
         test.equal(typeof(cd), 'object');
         test.equal(cd.getYears(), 1);
         test.equal(cd.getMonths(), 13);
@@ -524,9 +524,9 @@ module.exports.testcopticdate = {
     },
     
     testCopticDateEndOfYearOneRd: function(test) {
+        test.expect(8);
         var cd = new CopticDate({rd: 365, timezone: "Etc/UTC"});
         
-        test.expect(8);
         test.equal(typeof(cd), 'object');
         test.equal(cd.getYears(), 1);
         test.equal(cd.getMonths(), 13);
@@ -539,9 +539,9 @@ module.exports.testcopticdate = {
     },
     
     testCopticDateBeginningOfYear2Rd: function(test) {
+        test.expect(8);
         var cd = new CopticDate({rd: 366, timezone: "Etc/UTC"});
         
-        test.expect(8);
         test.equal(typeof(cd), 'object');
         test.equal(cd.getYears(), 2);
         test.equal(cd.getMonths(), 1);
@@ -557,7 +557,7 @@ module.exports.testcopticdate = {
         var cd;
         
         for (var i = 0; i < testDatesCoptic.length; i++) {
-        // console.log("testing jd=" + testDatesCoptic[i][0] + " and date of " + JSON.stringify(cd));
+            // console.log("testing jd=" + testDatesCoptic[i][0] + " and date of " + JSON.stringify(cd));
             
             cd = new CopticDate({
                 julianday: testDatesCoptic[i][0], 
@@ -574,7 +574,7 @@ module.exports.testcopticdate = {
         var cd;
         
         for (var i = 0; i < testDatesCoptic.length; i++) {
-        // console.log("testing jd=" + testDatesCoptic[i][0] + " and date of " + JSON.stringify(cd));
+            // console.log("testing jd=" + testDatesCoptic[i][0] + " and date of " + JSON.stringify(cd));
             
             cd = new CopticDate({
                 julianday: testDatesCoptic[i][0], 
@@ -591,7 +591,7 @@ module.exports.testcopticdate = {
         var cd;
         
         for (var i = 0; i < testDatesCoptic.length; i++) {
-        // console.log("testing jd=" + testDatesCoptic[i][0] + " and date of " + JSON.stringify(cd));
+            // console.log("testing jd=" + testDatesCoptic[i][0] + " and date of " + JSON.stringify(cd));
             cd = new CopticDate({
                 julianday: testDatesCoptic[i][0], 
                 timezone: "Etc/UTC"
@@ -607,7 +607,7 @@ module.exports.testcopticdate = {
         var cd;
         
         for (var i = 0; i < testDatesCoptic.length; i++) {
-        // console.log("testing jd=" + testDatesCoptic[i][0] + " and date of " + JSON.stringify(cd));
+            // console.log("testing jd=" + testDatesCoptic[i][0] + " and date of " + JSON.stringify(cd));
             
             cd = new CopticDate({
                 julianday: testDatesCoptic[i][0], 
@@ -624,7 +624,7 @@ module.exports.testcopticdate = {
         var cd;
         
         for (var i = 0; i < testDatesCoptic.length; i++) {
-        // console.log("testing jd=" + testDatesCoptic[i][0] + " and date of " + JSON.stringify(cd));
+            // console.log("testing jd=" + testDatesCoptic[i][0] + " and date of " + JSON.stringify(cd));
             
             cd = new CopticDate({
                 julianday: testDatesCoptic[i][0], 
@@ -641,7 +641,7 @@ module.exports.testcopticdate = {
         var cd;
         
         for (var i = 0; i < testDatesCoptic.length; i++) {
-        // console.log("testing jd=" + testDatesCoptic[i][0] + " and date of " + JSON.stringify(cd));
+            // console.log("testing jd=" + testDatesCoptic[i][0] + " and date of " + JSON.stringify(cd));
             
             cd = new CopticDate({
                 julianday: testDatesCoptic[i][0], 
@@ -657,6 +657,7 @@ module.exports.testcopticdate = {
     },
     
     testCopticDateConstructorFull: function(test) {
+        test.expect(8);
         var cd = new CopticDate({
             year: 1735,
             month: 9,
@@ -668,7 +669,6 @@ module.exports.testcopticdate = {
             timezone: "Etc/UTC"
         });
         
-        test.expect(8);
         test.ok(cd !== null);
         
         test.equal(cd.getYears(), 1735);
@@ -682,6 +682,7 @@ module.exports.testcopticdate = {
     },
     
     testCopticDateConstructorFullWithStrings: function(test) {
+        test.expect(8);
         var cd = new CopticDate({
             year: "1735", 
             month: "9",
@@ -693,7 +694,6 @@ module.exports.testcopticdate = {
             timezone: "Etc/UTC"
         });
         
-        test.expect(8);
         test.ok(cd !== null);
         
         test.equal(cd.getYears(), 1735);
@@ -707,6 +707,7 @@ module.exports.testcopticdate = {
     },
     
     testCopticDateConstructorCopy: function(test) {
+        test.expect(8);
         var cd = new CopticDate({
             year: 1735, 
             month: 9, 
@@ -718,7 +719,6 @@ module.exports.testcopticdate = {
             timezone: "Etc/UTC"
         });
         
-        test.expect(8);
         test.ok(cd !== null);
         
         test.equal(cd.getYears(), 1735);
@@ -735,7 +735,7 @@ module.exports.testcopticdate = {
         var cd;
         
         for (var i = 0; i < testDatesCoptic.length; i++) {
-        // console.log("testing jd=" + testDatesCoptic[i][0] + " and date " + JSON.stringify(cd));
+            // console.log("testing jd=" + testDatesCoptic[i][0] + " and date " + JSON.stringify(cd));
             
             cd = new CopticDate({
                 year: testDatesCoptic[i][1], 
@@ -749,7 +749,7 @@ module.exports.testcopticdate = {
             });
         
             test.equal(typeof(cd), 'object');
-        // console.log("calculated julian day is " + cd.getJulianDay());
+            // console.log("calculated julian day is " + cd.getJulianDay());
             test.equal(cd.getJulianDay(), testDatesCoptic[i][0]);
             test.equal(cd.getDayOfWeek(), testDatesCoptic[i][8]);
         }
@@ -757,9 +757,9 @@ module.exports.testcopticdate = {
     },
     
     testCopticDateSetYears: function(test) {
+        test.expect(2);
         var cd = new CopticDate();
         
-        test.expect(2);
         test.ok(cd !== null);
         
         cd.setYears(123);
@@ -769,9 +769,9 @@ module.exports.testcopticdate = {
     },
     
     testCopticDateSetMonths: function(test) {
+        test.expect(2);
         var cd = new CopticDate();
         
-        test.expect(2);
         test.ok(cd !== null);
         
         cd.setMonths(7);
@@ -781,9 +781,9 @@ module.exports.testcopticdate = {
     },
     
     testCopticDateSetDays: function(test) {
+        test.expect(2);
         var cd = new CopticDate();
         
-        test.expect(2);
         test.ok(cd !== null);
         
         cd.setDays(12);
@@ -793,9 +793,9 @@ module.exports.testcopticdate = {
     },
     
     testCopticDateSetHours: function(test) {
+        test.expect(2);
         var cd = new CopticDate();
         
-        test.expect(2);
         test.ok(cd !== null);
         
         cd.setHours(12);
@@ -805,9 +805,9 @@ module.exports.testcopticdate = {
     },
     
     testCopticDateSetMinutes: function(test) {
+        test.expect(2);
         var cd = new CopticDate();
         
-        test.expect(2);
         test.ok(cd !== null);
         
         cd.setMinutes(13);
@@ -817,9 +817,9 @@ module.exports.testcopticdate = {
     },
     
     testCopticDateSetSeconds: function(test) {
+        test.expect(2);
         var cd = new CopticDate();
         
-        test.expect(2);
         test.ok(cd !== null);
         
         cd.setSeconds(23);
@@ -829,9 +829,9 @@ module.exports.testcopticdate = {
     },
     
     testCopticDateSetMilliseconds: function(test) {
+        test.expect(2);
         var cd = new CopticDate();
         
-        test.expect(2);
         test.ok(cd !== null);
         
         cd.setMilliseconds(123);
@@ -841,6 +841,7 @@ module.exports.testcopticdate = {
     },
     
     testCopticDateTestGetTimeZero: function(test) {
+        test.expect(2);
         var cd = new CopticDate({
             year: 1686,
             month: 4,
@@ -848,7 +849,6 @@ module.exports.testcopticdate = {
             hour: 0,
             timezone: "Etc/UTC"
         });
-        test.expect(2);
         test.ok(cd !== null);
      
         test.equal(cd.getTime(), 0);
@@ -856,6 +856,7 @@ module.exports.testcopticdate = {
     },
     
     testCopticDateTestGetTime: function(test) {
+        test.expect(2);
         var cd = new CopticDate({
             year: 1686,
             month: 4,
@@ -864,7 +865,6 @@ module.exports.testcopticdate = {
             minute: 30,
             timezone: "Etc/UTC"
         });
-        test.expect(2);
         test.ok(cd !== null);
         
         test.equal(cd.getTime(), 12600000);
@@ -872,6 +872,7 @@ module.exports.testcopticdate = {
     },
     
     testCopticDateTestGetTimeTooEarly: function(test) {
+        test.expect(2);
         var cd = new CopticDate({
             year: 1686,
             month: 4,
@@ -879,7 +880,6 @@ module.exports.testcopticdate = {
             hour: 23,
             timezone: "Etc/UTC"
         });
-        test.expect(2);
         test.ok(cd !== null);
         
         test.equal(cd.getTime(), -1);
@@ -887,6 +887,7 @@ module.exports.testcopticdate = {
     },
     
     testCopticDateTestGetTimeTooLate: function(test) {
+        test.expect(2);
         // 1 second too late for regular unix time. This is Jan 19, 2038 Gregorian at 3:14:08am UTC
         var cd = new CopticDate({
             year: 1754,
@@ -897,7 +898,6 @@ module.exports.testcopticdate = {
             second: 8,
             timezone: "Etc/UTC"
         });
-        test.expect(2);
         test.ok(cd !== null);
         
         test.equal(cd.getTime(), -1);
@@ -905,6 +905,7 @@ module.exports.testcopticdate = {
     },
     
     testCopticDateTestGetTimeExtendedNotTooLate: function(test) {
+        test.expect(2);
         // 1 second too late for regular unix time, but not for extended time. This is Jan 19, 2038 Gregorian at 3:14:08am UTC
         var cd = new CopticDate({
             year: 1754,
@@ -915,7 +916,6 @@ module.exports.testcopticdate = {
             second: 8,
             timezone: "Etc/UTC"
         });
-        test.expect(2);
         test.ok(cd !== null);
         
         test.equal(cd.getTimeExtended(), 2147483648000);
@@ -923,6 +923,7 @@ module.exports.testcopticdate = {
     },
     
     testCopticDateTestSetTime1: function(test) {
+        test.expect(7);
         var cd = new CopticDate({
             year: 1686,
             month: 1,
@@ -930,7 +931,6 @@ module.exports.testcopticdate = {
             hour: 0,
             timezone: "Etc/UTC"
         });
-        test.expect(7);
         test.ok(cd !== null);
         
         cd.setTime(86400000*3 + 3600000*8 + 60000*30 + 3000);
@@ -945,6 +945,7 @@ module.exports.testcopticdate = {
     },
     
     testCopticDateTestSetTimeZero: function(test) {
+        test.expect(7);
         var cd = new CopticDate({
             timezone: "Etc/UTC",
             year: 0, 
@@ -955,7 +956,6 @@ module.exports.testcopticdate = {
                second: 1,
                millisecond: 1
         });
-        test.expect(7);
         test.ok(cd !== null);
         
         cd.setTime(0);
@@ -970,13 +970,13 @@ module.exports.testcopticdate = {
     },
     
     testCopticDateGetTimeZone: function(test) {
+        test.expect(2);
         var cd = new CopticDate({
             year: 1735, 
             month: 3, 
             day: 8,
             timezone: "America/Los_Angeles"
         });
-        test.expect(2);
         test.ok(cd !== null);
         
         test.equal(cd.getTimeZone(), "America/Los_Angeles");
@@ -984,12 +984,12 @@ module.exports.testcopticdate = {
     },
     
     testCopticDateGetTimeZoneDefault: function(test) {
+        test.expect(2);
         var cd = new CopticDate({
             year: 1735, 
             month: 3, 
             day: 8
         });
-        test.expect(2);
         test.ok(cd !== null);
         
         test.equal(cd.getTimeZone(), "local");
@@ -997,13 +997,13 @@ module.exports.testcopticdate = {
     },
     
     testCopticDateGetTimeZoneByLocaleDE: function(test) {
+        test.expect(2);
         var cd = new CopticDate({
             year: 1735, 
             month: 3, 
             day: 8,
             locale: "de-DE"
         });
-        test.expect(2);
         test.ok(cd !== null);
         
         test.equal(cd.getTimeZone(), "Europe/Berlin");
@@ -1011,13 +1011,13 @@ module.exports.testcopticdate = {
     },
     
     testCopticDateGetTimeZoneByLocaleJP: function(test) {
+        test.expect(2);
         var cd = new CopticDate({
             year: 1735, 
             month: 3, 
             day: 8,
             locale: "ja-JP"
         });
-        test.expect(2);
         test.ok(cd !== null);
         
         test.equal(cd.getTimeZone(), "Asia/Tokyo");
@@ -1025,13 +1025,13 @@ module.exports.testcopticdate = {
     },
     
     testCopticDateGetTimeZoneByLocaleBogus: function(test) {
+        test.expect(2);
         var cd = new CopticDate({
             year: 1735, 
             month: 3, 
             day: 8,
             locale: "zz-ZZ"
         });
-        test.expect(2);
         test.ok(cd !== null);
         
         test.equal(cd.getTimeZone(), "Etc/UTC");
@@ -1039,25 +1039,25 @@ module.exports.testcopticdate = {
     },
     
     testCopticDateCurrentTimeWithTimeZone: function(test) {
+        test.expect(2);
         var cd = new CopticDate({
             timezone: "America/Los_Angeles"
         });
         var d = new Date();
-        test.expect(2);
         test.ok(cd !== null);
         
-        test.roughlyEqual(50, cd.getTime(), d.getTime());
+        test.roughlyEqual(cd.getTime(), d.getTime(), 50);
         test.done();
     },
     
     testCopticDateSetTimeZone: function(test) {
+        test.expect(3);
         var cd = new CopticDate({
             year: 1735, 
             month: 3, 
             day: 8,
             timezone: "America/Los_Angeles"
         });
-        test.expect(3);
         test.ok(cd !== null);
         
         test.equal(cd.getTimeZone(), "America/Los_Angeles");
@@ -1069,13 +1069,13 @@ module.exports.testcopticdate = {
     },
     
     testCopticDateSetTimeZoneNotString: function(test) {
+        test.expect(3);
         var cd = new CopticDate({
             year: 1735, 
             month: 3, 
             day: 8,
             timezone: "America/Los_Angeles"
         });
-        test.expect(3);
         test.ok(cd !== null);
         
         test.equal(cd.getTimeZone(), "America/Los_Angeles");
@@ -1087,13 +1087,13 @@ module.exports.testcopticdate = {
     },
     
     testCopticDateSetTimeZoneUndefined: function(test) {
+        test.expect(3);
         var cd = new CopticDate({
             year: 1735, 
             month: 3, 
             day: 8,
             timezone: "America/Los_Angeles"
         });
-        test.expect(3);
         test.ok(cd !== null);
         
         test.equal(cd.getTimeZone(), "America/Los_Angeles");
@@ -1106,13 +1106,13 @@ module.exports.testcopticdate = {
     },
     
     testCopticDateSetTimeZoneEmpty: function(test) {
+        test.expect(3);
         var cd = new CopticDate({
             year: 1735, 
             month: 3, 
             day: 8,
             timezone: "America/Los_Angeles"
         });
-        test.expect(3);
         test.ok(cd !== null);
         
         test.equal(cd.getTimeZone(), "America/Los_Angeles");
@@ -1125,10 +1125,10 @@ module.exports.testcopticdate = {
     },
     
     testCopticDateInitWithUnixTimeRightTimeZone: function(test) {
+        test.expect(2);
         var cd = new CopticDate({
             unixtime: 0
         });
-        test.expect(2);
         test.ok(cd !== null);
         
         test.equal(cd.getTimeZone(), "local");
@@ -1136,10 +1136,10 @@ module.exports.testcopticdate = {
     },
     
     testCopticDateInitWithJDRightTimeZone: function(test) {
+        test.expect(2);
         var cd = new CopticDate({
             julianday: 0
         });
-        test.expect(2);
         test.ok(cd !== null);
         
         test.equal(cd.getTimeZone(), "local");
@@ -1147,10 +1147,10 @@ module.exports.testcopticdate = {
     },
     
     testCopticDateInitWithRDRightTimeZone: function(test) {
+        test.expect(2);
         var cd = new CopticDate({
             rd: 0
         });
-        test.expect(2);
         test.ok(cd !== null);
         
         test.equal(cd.getTimeZone(), "local");
@@ -1158,13 +1158,13 @@ module.exports.testcopticdate = {
     },
     
     testCopticDateRoundTripConstruction: function(test) {
+        test.expect(8);
         var jd = new CopticDate({
             year: 1738,
             month: 10,
             day: 20,
             timezone: "local"
         });
-        test.expect(8);
         test.ok(jd !== null);
         // console.log("jd is " + JSON.stringify(jd, undefined, 4));
         
@@ -1186,13 +1186,13 @@ module.exports.testcopticdate = {
     },
     
     testCopticDateRoundTripConstruction2: function(test) {
+        test.expect(8);
         var jd = new CopticDate({
             year: 1738,
             month: 10,
             day: 20,
             timezone: "America/Los_Angeles"
         });
-        test.expect(8);
         test.ok(jd !== null);
         // console.log("jd is " + JSON.stringify(jd, undefined, 4));
         

@@ -37,17 +37,17 @@ module.exports.testdatefmt_th_TH = {
     },
 
     testDateFmtConstructorEmpty_th_TH: function(test) {
+        test.expect(1);
         var fmt = new DateFmt({locale: "th-TH"});
         
-        test.expect(1);
         test.ok(fmt !== null);
         test.done();
     },
     
     
     testDateFmtSimpleShort_th_TH: function(test) {
-        var fmt = new DateFmt({locale: "th-TH", calendar: "thaisolar", length: "short"});
         test.expect(2);
+        var fmt = new DateFmt({locale: "th-TH", calendar: "thaisolar", length: "short"});
         test.ok(fmt !== null);
         
         var date = new ThaiSolarDate({
@@ -65,8 +65,8 @@ module.exports.testdatefmt_th_TH = {
     },
     
     testDateFmtSimpleMedium_th_TH: function(test) {
-        var fmt = new DateFmt({locale: "th-TH", calendar: "thaisolar", length: "medium"});
         test.expect(2);
+        var fmt = new DateFmt({locale: "th-TH", calendar: "thaisolar", length: "medium"});
         test.ok(fmt !== null);
         
         var date = new ThaiSolarDate({
@@ -84,8 +84,8 @@ module.exports.testdatefmt_th_TH = {
     },
     
     testDateFmtSimpleLong_th_TH: function(test) {
-        var fmt = new DateFmt({locale: "th-TH", calendar: "thaisolar", length: "long"});
         test.expect(2);
+        var fmt = new DateFmt({locale: "th-TH", calendar: "thaisolar", length: "long"});
         test.ok(fmt !== null);
         
         var date = new ThaiSolarDate({
@@ -103,8 +103,8 @@ module.exports.testdatefmt_th_TH = {
     },
     
     testDateFmtSimpleFull_th_TH: function(test) {
-        var fmt = new DateFmt({locale: "th-TH", calendar: "thaisolar", length: "full"});
         test.expect(2);
+        var fmt = new DateFmt({locale: "th-TH", calendar: "thaisolar", length: "full"});
         test.ok(fmt !== null);
         
         var date = new ThaiSolarDate({
@@ -122,8 +122,8 @@ module.exports.testdatefmt_th_TH = {
     },
     
     testDateFmtSimpleTimeShort_th_TH: function(test) {
-        var fmt = new DateFmt({locale: "th-TH", calendar: "thaisolar", length: "short", type: "time"});
         test.expect(2);
+        var fmt = new DateFmt({locale: "th-TH", calendar: "thaisolar", length: "short", type: "time"});
         test.ok(fmt !== null);
         
         var date = new ThaiSolarDate({
@@ -141,8 +141,8 @@ module.exports.testdatefmt_th_TH = {
     },
     
     testDateFmtSimpleTimeMedium_th_TH: function(test) {
-        var fmt = new DateFmt({locale: "th-TH", calendar: "thaisolar", length: "medium", type: "time"});
         test.expect(2);
+        var fmt = new DateFmt({locale: "th-TH", calendar: "thaisolar", length: "medium", type: "time"});
         test.ok(fmt !== null);
         
         var date = new ThaiSolarDate({
@@ -160,8 +160,8 @@ module.exports.testdatefmt_th_TH = {
     },
     
     testDateFmtSimpleTimeLong_th_TH: function(test) {
-        var fmt = new DateFmt({locale: "th-TH", calendar: "thaisolar", timelength: "long", type: "time"});
         test.expect(2);
+        var fmt = new DateFmt({locale: "th-TH", calendar: "thaisolar", timelength: "long", type: "time"});
         test.ok(fmt !== null);
         
         var date = new ThaiSolarDate({
@@ -179,8 +179,8 @@ module.exports.testdatefmt_th_TH = {
     },
     
     testDateFmtSimpleTimeFull_th_TH: function(test) {
-        var fmt = new DateFmt({locale: "th-TH", calendar: "thaisolar", length: "full", type: "time"});
         test.expect(2);
+        var fmt = new DateFmt({locale: "th-TH", calendar: "thaisolar", length: "full", type: "time"});
         test.ok(fmt !== null);
         
         var date = new ThaiSolarDate({
@@ -198,8 +198,8 @@ module.exports.testdatefmt_th_TH = {
     },
     
     testDateFmtDateTimeSimpleShort_th_TH: function(test) {
-        var fmt = new DateFmt({locale: "th-TH", calendar: "thaisolar", length: "short", type: "datetime"});
         test.expect(2);
+        var fmt = new DateFmt({locale: "th-TH", calendar: "thaisolar", length: "short", type: "datetime"});
         test.ok(fmt !== null);
         
         var date = new ThaiSolarDate({
@@ -217,8 +217,8 @@ module.exports.testdatefmt_th_TH = {
     },
     
     testDateFmtDateTimeSimpleMedium_th_TH: function(test) {
-        var fmt = new DateFmt({locale: "th-TH", calendar: "thaisolar", length: "medium", type: "datetime"});
         test.expect(2);
+        var fmt = new DateFmt({locale: "th-TH", calendar: "thaisolar", length: "medium", type: "datetime"});
         test.ok(fmt !== null);
         
         var date = new ThaiSolarDate({
@@ -236,8 +236,8 @@ module.exports.testdatefmt_th_TH = {
     },
     
     testDateFmtDateTimeSimpleLong_th_TH: function(test) {
-        var fmt = new DateFmt({locale: "th-TH", calendar: "thaisolar", length: "long", type: "datetime"});
         test.expect(2);
+        var fmt = new DateFmt({locale: "th-TH", calendar: "thaisolar", length: "long", type: "datetime"});
         test.ok(fmt !== null);
         
         var date = new ThaiSolarDate({
@@ -255,8 +255,8 @@ module.exports.testdatefmt_th_TH = {
     },
     
     testDateFmtDateTimeSimpleFull_th_TH: function(test) {
-        var fmt = new DateFmt({locale: "th-TH", calendar: "thaisolar", length: "full", type: "datetime"});
         test.expect(2);
+        var fmt = new DateFmt({locale: "th-TH", calendar: "thaisolar", length: "full", type: "datetime"});
         test.ok(fmt !== null);
         
         var date = new ThaiSolarDate({
@@ -275,8 +275,8 @@ module.exports.testdatefmt_th_TH = {
     
     
     testDateFmtTemplateCalendar_th_TH: function(test) {
-        var fmt = new DateFmt({locale: "th-TH", calendar: "thaisolar", calendar: "julian", template: "yyyy-MM-dd"});
         test.expect(2);
+        var fmt = new DateFmt({locale: "th-TH", calendar: "thaisolar", calendar: "julian", template: "yyyy-MM-dd"});
         test.ok(fmt !== null);
         
         var date = new JulianDate({
@@ -296,8 +296,8 @@ module.exports.testdatefmt_th_TH = {
     
     
     testDateFmtTemplateClock12SwitchHH_th_TH: function(test) {
-        var fmt = new DateFmt({locale: "th-TH", calendar: "thaisolar", clock: "12", template: "HH:mm"});
         test.expect(2);
+        var fmt = new DateFmt({locale: "th-TH", calendar: "thaisolar", clock: "12", template: "HH:mm"});
         test.ok(fmt !== null);
         
         var date = new ThaiSolarDate({
@@ -315,8 +315,8 @@ module.exports.testdatefmt_th_TH = {
     },
     
     testDateFmtTemplateClock12Switchkk_th_TH: function(test) {
-        var fmt = new DateFmt({locale: "th-TH", calendar: "thaisolar", clock: "12", template: "kk:mm"});
         test.expect(2);
+        var fmt = new DateFmt({locale: "th-TH", calendar: "thaisolar", clock: "12", template: "kk:mm"});
         test.ok(fmt !== null);
         
         var date = new ThaiSolarDate({
@@ -334,8 +334,8 @@ module.exports.testdatefmt_th_TH = {
     },
     
     testDateFmtTemplateClock24Switchhh_th_TH: function(test) {
-        var fmt = new DateFmt({locale: "th-TH", calendar: "thaisolar", clock: "24", template: "hh:mm"});
         test.expect(2);
+        var fmt = new DateFmt({locale: "th-TH", calendar: "thaisolar", clock: "24", template: "hh:mm"});
         test.ok(fmt !== null);
         
         var date = new ThaiSolarDate({
@@ -353,8 +353,8 @@ module.exports.testdatefmt_th_TH = {
     },
     
     testDateFmtTemplateClock24SwitchKK_th_TH: function(test) {
-        var fmt = new DateFmt({locale: "th-TH", calendar: "thaisolar", clock: "24", template: "KK:mm"});
         test.expect(2);
+        var fmt = new DateFmt({locale: "th-TH", calendar: "thaisolar", clock: "24", template: "KK:mm"});
         test.ok(fmt !== null);
         
         var date = new ThaiSolarDate({
@@ -372,8 +372,8 @@ module.exports.testdatefmt_th_TH = {
     },
     
     testDateFmtTemplateNoClockNotFollowLocaleDefault12hh_th_TH: function(test) {
-        var fmt = new DateFmt({locale: "th-TH", calendar: "thaisolar", template: "hh:mm"});
         test.expect(2);
+        var fmt = new DateFmt({locale: "th-TH", calendar: "thaisolar", template: "hh:mm"});
         test.ok(fmt !== null);
         
         var date = new ThaiSolarDate({
@@ -391,8 +391,8 @@ module.exports.testdatefmt_th_TH = {
     },
     
     testDateFmtTemplateNoClockNotFollowLocaleDefault12KK_th_TH: function(test) {
-        var fmt = new DateFmt({locale: "th-TH", calendar: "thaisolar", template: "KK:mm"});
         test.expect(2);
+        var fmt = new DateFmt({locale: "th-TH", calendar: "thaisolar", template: "KK:mm"});
         test.ok(fmt !== null);
         
         var date = new ThaiSolarDate({
@@ -410,8 +410,8 @@ module.exports.testdatefmt_th_TH = {
     },
     
     testDateFmtTemplateNoClockNotFollowLocaleDefault24HH_th_TH: function(test) {
-        var fmt = new DateFmt({locale: "th-TH", calendar: "thaisolar", template: "HH:mm"});
         test.expect(2);
+        var fmt = new DateFmt({locale: "th-TH", calendar: "thaisolar", template: "HH:mm"});
         test.ok(fmt !== null);
         
         var date = new ThaiSolarDate({
@@ -429,8 +429,8 @@ module.exports.testdatefmt_th_TH = {
     },
     
     testDateFmtTemplateNoClockNotFollowLocaleDefault24kk_th_TH: function(test) {
-        var fmt = new DateFmt({locale: "th-TH", calendar: "thaisolar", template: "kk:mm"});
         test.expect(2);
+        var fmt = new DateFmt({locale: "th-TH", calendar: "thaisolar", template: "kk:mm"});
         test.ok(fmt !== null);
         
         var date = new ThaiSolarDate({
@@ -449,8 +449,8 @@ module.exports.testdatefmt_th_TH = {
     
     
     testDateFmtTypeDate_th_TH: function(test) {
-        var fmt = new DateFmt({locale: "th-TH", calendar: "thaisolar", type: "date"});
         test.expect(2);
+        var fmt = new DateFmt({locale: "th-TH", calendar: "thaisolar", type: "date"});
         test.ok(fmt !== null);
         
         var date = new ThaiSolarDate({
@@ -468,8 +468,8 @@ module.exports.testdatefmt_th_TH = {
     },
     
     testDateFmtTypeTime_th_TH: function(test) {
-        var fmt = new DateFmt({locale: "th-TH", calendar: "thaisolar", type: "time"});
         test.expect(2);
+        var fmt = new DateFmt({locale: "th-TH", calendar: "thaisolar", type: "time"});
         test.ok(fmt !== null);
         
         var date = new ThaiSolarDate({
@@ -487,8 +487,8 @@ module.exports.testdatefmt_th_TH = {
     },
     
     testDateFmtTypeDateTime_th_TH: function(test) {
-        var fmt = new DateFmt({locale: "th-TH", calendar: "thaisolar", type: "datetime"});
         test.expect(2);
+        var fmt = new DateFmt({locale: "th-TH", calendar: "thaisolar", type: "datetime"});
         test.ok(fmt !== null);
         
         var date = new ThaiSolarDate({
@@ -507,8 +507,8 @@ module.exports.testdatefmt_th_TH = {
     
     
     testDateFmtShortDateComponentsY_th_TH: function(test) {
-        var fmt = new DateFmt({locale: "th-TH", calendar: "thaisolar", date: "y"});
         test.expect(2);
+        var fmt = new DateFmt({locale: "th-TH", calendar: "thaisolar", date: "y"});
         test.ok(fmt !== null);
         
         var date = new ThaiSolarDate({
@@ -526,8 +526,8 @@ module.exports.testdatefmt_th_TH = {
     },
     
     testDateFmtShortDateComponentsM_th_TH: function(test) {
-        var fmt = new DateFmt({locale: "th-TH", calendar: "thaisolar", date: "m"});
         test.expect(2);
+        var fmt = new DateFmt({locale: "th-TH", calendar: "thaisolar", date: "m"});
         test.ok(fmt !== null);
         
         var date = new ThaiSolarDate({
@@ -545,8 +545,8 @@ module.exports.testdatefmt_th_TH = {
     },
     
     testDateFmtShortDateComponentsN_th_TH: function(test) {
-        var fmt = new DateFmt({locale: "th-TH", calendar: "thaisolar", date: "m", length:"full"});
         test.expect(2);
+        var fmt = new DateFmt({locale: "th-TH", calendar: "thaisolar", date: "m", length:"full"});
         test.ok(fmt !== null);
         
         var date = new ThaiSolarDate({
@@ -564,8 +564,8 @@ module.exports.testdatefmt_th_TH = {
     },
     
     testDateFmtShortDateComponentsD_th_TH: function(test) {
-        var fmt = new DateFmt({locale: "th-TH", calendar: "thaisolar", date: "d"});
         test.expect(2);
+        var fmt = new DateFmt({locale: "th-TH", calendar: "thaisolar", date: "d"});
         test.ok(fmt !== null);
         
         var date = new ThaiSolarDate({
@@ -583,8 +583,8 @@ module.exports.testdatefmt_th_TH = {
     },
     
     testDateFmtShortDateComponentsDM_th_TH: function(test) {
-        var fmt = new DateFmt({locale: "th-TH", calendar: "thaisolar", date: "dm"});
         test.expect(2);
+        var fmt = new DateFmt({locale: "th-TH", calendar: "thaisolar", date: "dm"});
         test.ok(fmt !== null);
         
         var date = new ThaiSolarDate({
@@ -602,8 +602,8 @@ module.exports.testdatefmt_th_TH = {
     },
     
     testDateFmtShortDateComponentsMY_th_TH: function(test) {
-        var fmt = new DateFmt({locale: "th-TH", calendar: "thaisolar", date: "my"});
         test.expect(2);
+        var fmt = new DateFmt({locale: "th-TH", calendar: "thaisolar", date: "my"});
         test.ok(fmt !== null);
         
         var date = new ThaiSolarDate({
@@ -621,8 +621,8 @@ module.exports.testdatefmt_th_TH = {
     },
     
     testDateFmtShortDateComponentsDMY_th_TH: function(test) {
-        var fmt = new DateFmt({locale: "th-TH", calendar: "thaisolar", date: "dmy"});
         test.expect(2);
+        var fmt = new DateFmt({locale: "th-TH", calendar: "thaisolar", date: "dmy"});
         test.ok(fmt !== null);
         
         var date = new ThaiSolarDate({
@@ -640,8 +640,8 @@ module.exports.testdatefmt_th_TH = {
     },
     
     testDateFmtShortDateComponentsWDM_th_TH: function(test) {
-        var fmt = new DateFmt({locale: "th-TH", calendar: "thaisolar", date: "wdm"});
         test.expect(2);
+        var fmt = new DateFmt({locale: "th-TH", calendar: "thaisolar", date: "wdm"});
         test.ok(fmt !== null);
         
         var date = new ThaiSolarDate({
@@ -659,8 +659,8 @@ module.exports.testdatefmt_th_TH = {
     },
     
     testDateFmtShortDateComponentsWDMY_th_TH: function(test) {
-        var fmt = new DateFmt({locale: "th-TH", calendar: "thaisolar", date: "wdmy"});
         test.expect(2);
+        var fmt = new DateFmt({locale: "th-TH", calendar: "thaisolar", date: "wdmy"});
         test.ok(fmt !== null);
         
         var date = new ThaiSolarDate({
@@ -679,8 +679,8 @@ module.exports.testdatefmt_th_TH = {
     
     
     testDateFmtFullDateComponentsY_th_TH: function(test) {
-        var fmt = new DateFmt({locale: "th-TH", calendar: "thaisolar", length: "full", date: "y"});
         test.expect(2);
+        var fmt = new DateFmt({locale: "th-TH", calendar: "thaisolar", length: "full", date: "y"});
         test.ok(fmt !== null);
         
         var date = new ThaiSolarDate({
@@ -698,8 +698,8 @@ module.exports.testdatefmt_th_TH = {
     },
     
     testDateFmtFullDateComponentsM_th_TH: function(test) {
-        var fmt = new DateFmt({locale: "th-TH", calendar: "thaisolar", length: "full", date: "m"});
         test.expect(2);
+        var fmt = new DateFmt({locale: "th-TH", calendar: "thaisolar", length: "full", date: "m"});
         test.ok(fmt !== null);
         
         var date = new ThaiSolarDate({
@@ -717,8 +717,8 @@ module.exports.testdatefmt_th_TH = {
     },
     
     testDateFmtFullDateComponentsD_th_TH: function(test) {
-        var fmt = new DateFmt({locale: "th-TH", calendar: "thaisolar", length: "full", date: "d"});
         test.expect(2);
+        var fmt = new DateFmt({locale: "th-TH", calendar: "thaisolar", length: "full", date: "d"});
         test.ok(fmt !== null);
         
         var date = new ThaiSolarDate({
@@ -736,8 +736,8 @@ module.exports.testdatefmt_th_TH = {
     },
     
     testDateFmtFullDateComponentsDM_th_TH: function(test) {
-        var fmt = new DateFmt({locale: "th-TH", calendar: "thaisolar", length: "full", date: "dm"});
         test.expect(2);
+        var fmt = new DateFmt({locale: "th-TH", calendar: "thaisolar", length: "full", date: "dm"});
         test.ok(fmt !== null);
         
         var date = new ThaiSolarDate({
@@ -755,8 +755,8 @@ module.exports.testdatefmt_th_TH = {
     },
     
     testDateFmtFullDateComponentsMY_th_TH: function(test) {
-        var fmt = new DateFmt({locale: "th-TH", calendar: "thaisolar", length: "full", date: "my"});
         test.expect(2);
+        var fmt = new DateFmt({locale: "th-TH", calendar: "thaisolar", length: "full", date: "my"});
         test.ok(fmt !== null);
         
         var date = new ThaiSolarDate({
@@ -774,8 +774,8 @@ module.exports.testdatefmt_th_TH = {
     },
     
     testDateFmtFullDateComponentsDMY_th_TH: function(test) {
-        var fmt = new DateFmt({locale: "th-TH", calendar: "thaisolar", length: "full", date: "dmy"});
         test.expect(2);
+        var fmt = new DateFmt({locale: "th-TH", calendar: "thaisolar", length: "full", date: "dmy"});
         test.ok(fmt !== null);
         
         var date = new ThaiSolarDate({
@@ -793,8 +793,8 @@ module.exports.testdatefmt_th_TH = {
     },
     
     testDateFmtFullDateComponentsWDM_th_TH: function(test) {
-        var fmt = new DateFmt({locale: "th-TH", calendar: "thaisolar", length: "full", date: "wdm"});
         test.expect(2);
+        var fmt = new DateFmt({locale: "th-TH", calendar: "thaisolar", length: "full", date: "wdm"});
         test.ok(fmt !== null);
         
         var date = new ThaiSolarDate({
@@ -812,8 +812,8 @@ module.exports.testdatefmt_th_TH = {
     },
     
     testDateFmtFullDateComponentsWDMY_th_TH: function(test) {
-        var fmt = new DateFmt({locale: "th-TH", calendar: "thaisolar", length: "full", date: "wdmy"});
         test.expect(2);
+        var fmt = new DateFmt({locale: "th-TH", calendar: "thaisolar", length: "full", date: "wdmy"});
         test.ok(fmt !== null);
         
         var date = new ThaiSolarDate({
@@ -832,8 +832,8 @@ module.exports.testdatefmt_th_TH = {
     
     
     testDateFmtShortTimeComponentsS_th_TH: function(test) {
-        var fmt = new DateFmt({locale: "th-TH", calendar: "thaisolar", type: "time", time: "s"});
         test.expect(2);
+        var fmt = new DateFmt({locale: "th-TH", calendar: "thaisolar", type: "time", time: "s"});
         test.ok(fmt !== null);
         
         var date = new ThaiSolarDate({
@@ -851,8 +851,8 @@ module.exports.testdatefmt_th_TH = {
     },
     
     testDateFmtShortTimeComponentsM_th_TH: function(test) {
-        var fmt = new DateFmt({locale: "th-TH", calendar: "thaisolar", type: "time", time: "m"});
         test.expect(2);
+        var fmt = new DateFmt({locale: "th-TH", calendar: "thaisolar", type: "time", time: "m"});
         test.ok(fmt !== null);
         
         var date = new ThaiSolarDate({
@@ -870,8 +870,8 @@ module.exports.testdatefmt_th_TH = {
     },
     
     testDateFmtShortTimeComponentsH_th_TH: function(test) {
-        var fmt = new DateFmt({locale: "th-TH", calendar: "thaisolar", type: "time", time: "h"});
         test.expect(2);
+        var fmt = new DateFmt({locale: "th-TH", calendar: "thaisolar", type: "time", time: "h"});
         test.ok(fmt !== null);
         
         var date = new ThaiSolarDate({
@@ -889,8 +889,8 @@ module.exports.testdatefmt_th_TH = {
     },
     
     testDateFmtShortTimeComponentsMS_th_TH: function(test) {
-        var fmt = new DateFmt({locale: "th-TH", calendar: "thaisolar", type: "time", time: "ms"});
         test.expect(2);
+        var fmt = new DateFmt({locale: "th-TH", calendar: "thaisolar", type: "time", time: "ms"});
         test.ok(fmt !== null);
         
         var date = new ThaiSolarDate({
@@ -908,8 +908,8 @@ module.exports.testdatefmt_th_TH = {
     },
     
     testDateFmtShortTimeComponentsHM_th_TH: function(test) {
-        var fmt = new DateFmt({locale: "th-TH", calendar: "thaisolar", type: "time", time: "hm"});
         test.expect(2);
+        var fmt = new DateFmt({locale: "th-TH", calendar: "thaisolar", type: "time", time: "hm"});
         test.ok(fmt !== null);
         
         var date = new ThaiSolarDate({
@@ -927,8 +927,8 @@ module.exports.testdatefmt_th_TH = {
     },
     
     testDateFmtShortTimeComponentsHMS_th_TH: function(test) {
-        var fmt = new DateFmt({locale: "th-TH", calendar: "thaisolar", type: "time", time: "hms"});
         test.expect(2);
+        var fmt = new DateFmt({locale: "th-TH", calendar: "thaisolar", type: "time", time: "hms"});
         test.ok(fmt !== null);
         
         var date = new ThaiSolarDate({
@@ -946,8 +946,8 @@ module.exports.testdatefmt_th_TH = {
     },
     
     testDateFmtShortTimeComponentsHMA_th_TH: function(test) {
-        var fmt = new DateFmt({locale: "th-TH", calendar: "thaisolar", type: "time", time: "hma"});
         test.expect(2);
+        var fmt = new DateFmt({locale: "th-TH", calendar: "thaisolar", type: "time", time: "hma"});
         test.ok(fmt !== null);
         
         var date = new ThaiSolarDate({
@@ -965,12 +965,12 @@ module.exports.testdatefmt_th_TH = {
     },
     
     testDateFmtShortTimeComponentsHMZ_th_TH: function(test) {
+        test.expect(2);
         var fmt = new DateFmt({
             locale: "th-TH", calendar: "thaisolar", 
             type: "time", 
             time: "hmz"
         });
-        test.expect(2);
         test.ok(fmt !== null);
         
         var date = new ThaiSolarDate({
@@ -988,12 +988,12 @@ module.exports.testdatefmt_th_TH = {
     },
     
     testDateFmtShortTimeComponentsHMAZ_th_TH: function(test) {
+        test.expect(2);
         var fmt = new DateFmt({
             locale: "th-TH", calendar: "thaisolar", 
             type: "time", 
             time: "hmaz"
         });
-        test.expect(2);
         test.ok(fmt !== null);
         
         var date = new ThaiSolarDate({
@@ -1011,8 +1011,8 @@ module.exports.testdatefmt_th_TH = {
     },
     
     testDateFmtShortTimeComponentsHMSA_th_TH: function(test) {
-        var fmt = new DateFmt({locale: "th-TH", calendar: "thaisolar", type: "time", time: "hmsa"});
         test.expect(2);
+        var fmt = new DateFmt({locale: "th-TH", calendar: "thaisolar", type: "time", time: "hmsa"});
         test.ok(fmt !== null);
         
         var date = new ThaiSolarDate({
@@ -1030,12 +1030,12 @@ module.exports.testdatefmt_th_TH = {
     },
     
     testDateFmtShortTimeComponentsHMSZ_th_TH: function(test) {
+        test.expect(2);
         var fmt = new DateFmt({
             locale: "th-TH", calendar: "thaisolar", 
             type: "time", 
             time: "hmsz"
         });
-        test.expect(2);
         test.ok(fmt !== null);
         
         var date = new ThaiSolarDate({
@@ -1053,12 +1053,12 @@ module.exports.testdatefmt_th_TH = {
     },
     
     testDateFmtShortTimeComponentsHMSAZ_th_TH: function(test) {
+        test.expect(2);
         var fmt = new DateFmt({
             locale: "th-TH", calendar: "thaisolar", 
             type: "time", 
             time: "hmsaz"
         });
-        test.expect(2);
         test.ok(fmt !== null);
         
         var date = new ThaiSolarDate({
@@ -1077,8 +1077,8 @@ module.exports.testdatefmt_th_TH = {
     
     
     testDateFmtFullTimeComponentsS_th_TH: function(test) {
-        var fmt = new DateFmt({locale: "th-TH", calendar: "thaisolar", type: "time", length: "full", time: "s"});
         test.expect(2);
+        var fmt = new DateFmt({locale: "th-TH", calendar: "thaisolar", type: "time", length: "full", time: "s"});
         test.ok(fmt !== null);
         
         var date = new ThaiSolarDate({
@@ -1096,8 +1096,8 @@ module.exports.testdatefmt_th_TH = {
     },
     
     testDateFmtFullTimeComponentsM_th_TH: function(test) {
-        var fmt = new DateFmt({locale: "th-TH", calendar: "thaisolar", type: "time", length: "full", time: "m"});
         test.expect(2);
+        var fmt = new DateFmt({locale: "th-TH", calendar: "thaisolar", type: "time", length: "full", time: "m"});
         test.ok(fmt !== null);
         
         var date = new ThaiSolarDate({
@@ -1115,8 +1115,8 @@ module.exports.testdatefmt_th_TH = {
     },
     
     testDateFmtFullTimeComponentsH_th_TH: function(test) {
-        var fmt = new DateFmt({locale: "th-TH", calendar: "thaisolar", type: "time", length: "full", time: "h"});
         test.expect(2);
+        var fmt = new DateFmt({locale: "th-TH", calendar: "thaisolar", type: "time", length: "full", time: "h"});
         test.ok(fmt !== null);
         
         var date = new ThaiSolarDate({
@@ -1134,8 +1134,8 @@ module.exports.testdatefmt_th_TH = {
     },
     
     testDateFmtFullTimeComponentsMS_th_TH: function(test) {
-        var fmt = new DateFmt({locale: "th-TH", calendar: "thaisolar", type: "time", length: "full", time: "ms"});
         test.expect(2);
+        var fmt = new DateFmt({locale: "th-TH", calendar: "thaisolar", type: "time", length: "full", time: "ms"});
         test.ok(fmt !== null);
         
         var date = new ThaiSolarDate({
@@ -1153,8 +1153,8 @@ module.exports.testdatefmt_th_TH = {
     },
     
     testDateFmtFullTimeComponentsHM_th_TH: function(test) {
-        var fmt = new DateFmt({locale: "th-TH", calendar: "thaisolar", type: "time", length: "full", time: "hm"});
         test.expect(2);
+        var fmt = new DateFmt({locale: "th-TH", calendar: "thaisolar", type: "time", length: "full", time: "hm"});
         test.ok(fmt !== null);
         
         var date = new ThaiSolarDate({
@@ -1172,8 +1172,8 @@ module.exports.testdatefmt_th_TH = {
     },
     
     testDateFmtFullTimeComponentsHMS_th_TH: function(test) {
-        var fmt = new DateFmt({locale: "th-TH", calendar: "thaisolar", type: "time", length: "full", time: "hms"});
         test.expect(2);
+        var fmt = new DateFmt({locale: "th-TH", calendar: "thaisolar", type: "time", length: "full", time: "hms"});
         test.ok(fmt !== null);
         
         var date = new ThaiSolarDate({
@@ -1191,8 +1191,8 @@ module.exports.testdatefmt_th_TH = {
     },
     
     testDateFmtFullTimeComponentsHMA_th_TH: function(test) {
-        var fmt = new DateFmt({locale: "th-TH", calendar: "thaisolar", type: "time", length: "full", time: "hma"});
         test.expect(2);
+        var fmt = new DateFmt({locale: "th-TH", calendar: "thaisolar", type: "time", length: "full", time: "hma"});
         test.ok(fmt !== null);
         
         var date = new ThaiSolarDate({
@@ -1210,13 +1210,13 @@ module.exports.testdatefmt_th_TH = {
     },
     
     testDateFmtFullTimeComponentsHMZ_th_TH: function(test) {
+        test.expect(2);
         var fmt = new DateFmt({
             locale: "th-TH", calendar: "thaisolar", 
             type: "time", 
             length: "full", 
             time: "hmz"
         });
-        test.expect(2);
         test.ok(fmt !== null);
         
         var date = new ThaiSolarDate({
@@ -1234,13 +1234,13 @@ module.exports.testdatefmt_th_TH = {
     },
     
     testDateFmtFullTimeComponentsHMAZ_th_TH: function(test) {
+        test.expect(2);
         var fmt = new DateFmt({
             locale: "th-TH", calendar: "thaisolar", 
             type: "time", 
             length: "full", 
             time: "hmaz"
         });
-        test.expect(2);
         test.ok(fmt !== null);
         
         var date = new ThaiSolarDate({
@@ -1258,8 +1258,8 @@ module.exports.testdatefmt_th_TH = {
     },
     
     testDateFmtFullTimeComponentsHMSA_th_TH: function(test) {
-        var fmt = new DateFmt({locale: "th-TH", calendar: "thaisolar", type: "time", length: "full", time: "hmsa"});
         test.expect(2);
+        var fmt = new DateFmt({locale: "th-TH", calendar: "thaisolar", type: "time", length: "full", time: "hmsa"});
         test.ok(fmt !== null);
         
         var date = new ThaiSolarDate({
@@ -1277,13 +1277,13 @@ module.exports.testdatefmt_th_TH = {
     },
     
     testDateFmtFullTimeComponentsHMSZ_th_TH: function(test) {
+        test.expect(2);
         var fmt = new DateFmt({
             locale: "th-TH", calendar: "thaisolar", 
             type: "time", 
             length: "full", 
             time: "hmsz"
         });
-        test.expect(2);
         test.ok(fmt !== null);
         
         var date = new ThaiSolarDate({
@@ -1301,13 +1301,13 @@ module.exports.testdatefmt_th_TH = {
     },
     
     testDateFmtFullTimeComponentsHMSAZ_th_TH: function(test) {
+        test.expect(2);
         var fmt = new DateFmt({
             locale: "th-TH", calendar: "thaisolar", 
             type: "time", 
             length: "full", 
             time: "hmsaz"
         });
-        test.expect(2);
         test.ok(fmt !== null);
         
         var date = new ThaiSolarDate({
@@ -1325,13 +1325,13 @@ module.exports.testdatefmt_th_TH = {
     },
     
     testDateFmtWithTimeZoneAndNoDST_th_TH: function(test) {
+        test.expect(2);
         var fmt = new DateFmt({
             locale: "th-TH", calendar: "thaisolar", 
             type: "time", 
             length: "full", 
             time: "hmsz"
         });
-        test.expect(2);
         test.ok(fmt !== null);
         
         var date = new ThaiSolarDate({
@@ -1349,8 +1349,8 @@ module.exports.testdatefmt_th_TH = {
     },
     
     testDateFmtFormatRelativeWithinMinuteAfter_th_TH: function(test) {
-        var fmt = new DateFmt({locale: "th-TH", calendar: "thaisolar", length: "full"});
         test.expect(2);
+        var fmt = new DateFmt({locale: "th-TH", calendar: "thaisolar", length: "full"});
         test.ok(fmt !== null);
         
         var reference = new ThaiSolarDate({
@@ -1377,8 +1377,8 @@ module.exports.testdatefmt_th_TH = {
         test.done();
     },
     testDateFmtFormatRelativeWithinMinuteBefore_th_TH: function(test) {
-        var fmt = new DateFmt({locale: "th-TH", calendar: "thaisolar", length: "full"});
         test.expect(2);
+        var fmt = new DateFmt({locale: "th-TH", calendar: "thaisolar", length: "full"});
         test.ok(fmt !== null);
         
         var reference = new ThaiSolarDate({
@@ -1405,8 +1405,8 @@ module.exports.testdatefmt_th_TH = {
         test.done();
     },
     testDateFmtFormatRelativeWithinHourAfter_th_TH: function(test) {
-        var fmt = new DateFmt({locale: "th-TH", calendar: "thaisolar", length: "full"});
         test.expect(2);
+        var fmt = new DateFmt({locale: "th-TH", calendar: "thaisolar", length: "full"});
         test.ok(fmt !== null);
         
         var reference = new ThaiSolarDate({
@@ -1433,8 +1433,8 @@ module.exports.testdatefmt_th_TH = {
         test.done();
     },
     testDateFmtFormatRelativeWithinHourBefore_th_TH: function(test) {
-        var fmt = new DateFmt({locale: "th-TH", calendar: "thaisolar", length: "full"});
         test.expect(2);
+        var fmt = new DateFmt({locale: "th-TH", calendar: "thaisolar", length: "full"});
         test.ok(fmt !== null);
         
         var reference = new ThaiSolarDate({
@@ -1461,8 +1461,8 @@ module.exports.testdatefmt_th_TH = {
         test.done();
     },
     testDateFmtFormatRelativeWithinDayAfter_th_TH: function(test) {
-        var fmt = new DateFmt({locale: "th-TH", calendar: "thaisolar", length: "full"});
         test.expect(2);
+        var fmt = new DateFmt({locale: "th-TH", calendar: "thaisolar", length: "full"});
         test.ok(fmt !== null);
         
         var reference = new ThaiSolarDate({
@@ -1489,8 +1489,8 @@ module.exports.testdatefmt_th_TH = {
         test.done();
     },
     testDateFmtFormatRelativeWithinDayBefore_th_TH: function(test) {
-        var fmt = new DateFmt({locale: "th-TH", calendar: "thaisolar", length: "full"});
         test.expect(2);
+        var fmt = new DateFmt({locale: "th-TH", calendar: "thaisolar", length: "full"});
         test.ok(fmt !== null);
         
         var reference = new ThaiSolarDate({
@@ -1518,8 +1518,8 @@ module.exports.testdatefmt_th_TH = {
     },
     
     testDateFmtFormatRelativeWithinFortnightAfter_th_TH: function(test) {
-        var fmt = new DateFmt({locale: "th-TH", calendar: "thaisolar", length: "full"});
         test.expect(2);
+        var fmt = new DateFmt({locale: "th-TH", calendar: "thaisolar", length: "full"});
         test.ok(fmt !== null);
         
         var reference = new ThaiSolarDate({
@@ -1546,8 +1546,8 @@ module.exports.testdatefmt_th_TH = {
         test.done();
     },
     testDateFmtFormatRelativeWithinFortnightBefore_th_TH: function(test) {
-        var fmt = new DateFmt({locale: "th-TH", calendar: "thaisolar", length: "full"});
         test.expect(2);
+        var fmt = new DateFmt({locale: "th-TH", calendar: "thaisolar", length: "full"});
         test.ok(fmt !== null);
         
         var reference = new ThaiSolarDate({
@@ -1575,8 +1575,8 @@ module.exports.testdatefmt_th_TH = {
     },
     
     testDateFmtFormatRelativeWithinQuarterAfter_th_TH: function(test) {
-        var fmt = new DateFmt({locale: "th-TH", calendar: "thaisolar", length: "full"});
         test.expect(2);
+        var fmt = new DateFmt({locale: "th-TH", calendar: "thaisolar", length: "full"});
         test.ok(fmt !== null);
         
         var reference = new ThaiSolarDate({
@@ -1603,8 +1603,8 @@ module.exports.testdatefmt_th_TH = {
         test.done();
     },
     testDateFmtFormatRelativeWithinQuarterBefore_th_TH: function(test) {
-        var fmt = new DateFmt({locale: "th-TH", calendar: "thaisolar", length: "full"});
         test.expect(2);
+        var fmt = new DateFmt({locale: "th-TH", calendar: "thaisolar", length: "full"});
         test.ok(fmt !== null);
         
         var reference = new ThaiSolarDate({
@@ -1632,8 +1632,8 @@ module.exports.testdatefmt_th_TH = {
     },
     
     testDateFmtFormatRelativeWithinTwoYearsAfter_th_TH: function(test) {
-        var fmt = new DateFmt({locale: "th-TH", calendar: "thaisolar", length: "full"});
         test.expect(2);
+        var fmt = new DateFmt({locale: "th-TH", calendar: "thaisolar", length: "full"});
         test.ok(fmt !== null);
         
         var reference = new ThaiSolarDate({
@@ -1660,8 +1660,8 @@ module.exports.testdatefmt_th_TH = {
         test.done();
     },
     testDateFmtFormatRelativeWithinTwoYearsBefore_th_TH: function(test) {
-        var fmt = new DateFmt({locale: "th-TH", calendar: "thaisolar", length: "full"});
         test.expect(2);
+        var fmt = new DateFmt({locale: "th-TH", calendar: "thaisolar", length: "full"});
         test.ok(fmt !== null);
         
         var reference = new ThaiSolarDate({
@@ -1689,8 +1689,8 @@ module.exports.testdatefmt_th_TH = {
     },
     
     testDateFmtFormatRelativeYearsAfter_th_TH: function(test) {
-        var fmt = new DateFmt({locale: "th-TH", calendar: "thaisolar", length: "full"});
         test.expect(2);
+        var fmt = new DateFmt({locale: "th-TH", calendar: "thaisolar", length: "full"});
         test.ok(fmt !== null);
         
         var reference = new ThaiSolarDate({
@@ -1717,8 +1717,8 @@ module.exports.testdatefmt_th_TH = {
         test.done();
     },
     testDateFmtFormatRelativeYearsBefore_th_TH: function(test) {
-        var fmt = new DateFmt({locale: "th-TH", calendar: "thaisolar", length: "full"});
         test.expect(2);
+        var fmt = new DateFmt({locale: "th-TH", calendar: "thaisolar", length: "full"});
         test.ok(fmt !== null);
         
         var reference = new ThaiSolarDate({
@@ -1747,8 +1747,8 @@ module.exports.testdatefmt_th_TH = {
     
     
     testDateFmtShortDMWY_th_TH: function(test) {
-        var fmt = new DateFmt({locale: "th-TH", calendar: "thaisolar", length: "short", date: "dmwy"});
         test.expect(2);
+        var fmt = new DateFmt({locale: "th-TH", calendar: "thaisolar", length: "short", date: "dmwy"});
         test.ok(fmt !== null);
         
         var date = new ThaiSolarDate({
@@ -1766,8 +1766,8 @@ module.exports.testdatefmt_th_TH = {
     },
     
     testDateFmtMediumDMWY_th_TH: function(test) {
-        var fmt = new DateFmt({locale: "th-TH", calendar: "thaisolar", length: "medium", date: "dmwy"});
         test.expect(2);
+        var fmt = new DateFmt({locale: "th-TH", calendar: "thaisolar", length: "medium", date: "dmwy"});
         test.ok(fmt !== null);
         
         var date = new ThaiSolarDate({
@@ -1785,8 +1785,8 @@ module.exports.testdatefmt_th_TH = {
     },
     
     testDateFmtLongDMWY_th_TH: function(test) {
-        var fmt = new DateFmt({locale: "th-TH", calendar: "thaisolar", length: "long", date: "dmwy"});
         test.expect(2);
+        var fmt = new DateFmt({locale: "th-TH", calendar: "thaisolar", length: "long", date: "dmwy"});
         test.ok(fmt !== null);
         
         var date = new ThaiSolarDate({
@@ -1804,8 +1804,8 @@ module.exports.testdatefmt_th_TH = {
     },
     
     testDateFmtFullDMWY_th_TH: function(test) {
-        var fmt = new DateFmt({locale: "th-TH", calendar: "thaisolar", length: "full", date: "dmwy"});
         test.expect(2);
+        var fmt = new DateFmt({locale: "th-TH", calendar: "thaisolar", length: "full", date: "dmwy"});
         test.ok(fmt !== null);
         
         var date = new ThaiSolarDate({
@@ -1823,8 +1823,8 @@ module.exports.testdatefmt_th_TH = {
     },
     
     testDateFmtShortDMY_th_TH: function(test) {
-        var fmt = new DateFmt({locale: "th-TH", calendar: "thaisolar", length: "short", date: "dmy"});
         test.expect(2);
+        var fmt = new DateFmt({locale: "th-TH", calendar: "thaisolar", length: "short", date: "dmy"});
         test.ok(fmt !== null);
         
         var date = new ThaiSolarDate({
@@ -1842,8 +1842,8 @@ module.exports.testdatefmt_th_TH = {
     },
     
     testDateFmtMediumDMY_th_TH: function(test) {
-        var fmt = new DateFmt({locale: "th-TH", calendar: "thaisolar", length: "medium", date: "dmy"});
         test.expect(2);
+        var fmt = new DateFmt({locale: "th-TH", calendar: "thaisolar", length: "medium", date: "dmy"});
         test.ok(fmt !== null);
         
         var date = new ThaiSolarDate({
@@ -1861,8 +1861,8 @@ module.exports.testdatefmt_th_TH = {
     },
     
     testDateFmtLongDMY_th_TH: function(test) {
-        var fmt = new DateFmt({locale: "th-TH", calendar: "thaisolar", length: "long", date: "dmy"});
         test.expect(2);
+        var fmt = new DateFmt({locale: "th-TH", calendar: "thaisolar", length: "long", date: "dmy"});
         test.ok(fmt !== null);
         
         var date = new ThaiSolarDate({
@@ -1880,8 +1880,8 @@ module.exports.testdatefmt_th_TH = {
     },
     
     testDateFmtFullDMY_th_TH: function(test) {
-        var fmt = new DateFmt({locale: "th-TH", calendar: "thaisolar", length: "full", date: "dmy"});
         test.expect(2);
+        var fmt = new DateFmt({locale: "th-TH", calendar: "thaisolar", length: "full", date: "dmy"});
         test.ok(fmt !== null);
         
         var date = new ThaiSolarDate({
@@ -1899,8 +1899,8 @@ module.exports.testdatefmt_th_TH = {
     },
     
     testDateFmtShortDMW_th_TH: function(test) {
-        var fmt = new DateFmt({locale: "th-TH", calendar: "thaisolar", length: "short", date: "dmw"});
         test.expect(2);
+        var fmt = new DateFmt({locale: "th-TH", calendar: "thaisolar", length: "short", date: "dmw"});
         test.ok(fmt !== null);
         
         var date = new ThaiSolarDate({
@@ -1918,8 +1918,8 @@ module.exports.testdatefmt_th_TH = {
     },
     
     testDateFmtMediumDMW_th_TH: function(test) {
-        var fmt = new DateFmt({locale: "th-TH", calendar: "thaisolar", length: "medium", date: "dmw"});
         test.expect(2);
+        var fmt = new DateFmt({locale: "th-TH", calendar: "thaisolar", length: "medium", date: "dmw"});
         test.ok(fmt !== null);
         
         var date = new ThaiSolarDate({
@@ -1937,8 +1937,8 @@ module.exports.testdatefmt_th_TH = {
     },
     
     testDateFmtLongDMW_th_TH: function(test) {
-        var fmt = new DateFmt({locale: "th-TH", calendar: "thaisolar", length: "long", date: "dmw"});
         test.expect(2);
+        var fmt = new DateFmt({locale: "th-TH", calendar: "thaisolar", length: "long", date: "dmw"});
         test.ok(fmt !== null);
         
         var date = new ThaiSolarDate({
@@ -1956,8 +1956,8 @@ module.exports.testdatefmt_th_TH = {
     },
     
     testDateFmtFullDMW_th_TH: function(test) {
-        var fmt = new DateFmt({locale: "th-TH", calendar: "thaisolar", length: "full", date: "dmw"});
         test.expect(2);
+        var fmt = new DateFmt({locale: "th-TH", calendar: "thaisolar", length: "full", date: "dmw"});
         test.ok(fmt !== null);
         
         var date = new ThaiSolarDate({
@@ -1975,8 +1975,8 @@ module.exports.testdatefmt_th_TH = {
     },
     
     testDateFmtShortDMW_th_TH: function(test) {
-        var fmt = new DateFmt({locale: "th-TH", calendar: "thaisolar", length: "short", date: "dm"});
         test.expect(2);
+        var fmt = new DateFmt({locale: "th-TH", calendar: "thaisolar", length: "short", date: "dm"});
         test.ok(fmt !== null);
         
         var date = new ThaiSolarDate({
@@ -1994,8 +1994,8 @@ module.exports.testdatefmt_th_TH = {
     },
     
     testDateFmtMediumDM_th_TH: function(test) {
-        var fmt = new DateFmt({locale: "th-TH", calendar: "thaisolar", length: "medium", date: "dm"});
         test.expect(2);
+        var fmt = new DateFmt({locale: "th-TH", calendar: "thaisolar", length: "medium", date: "dm"});
         test.ok(fmt !== null);
         
         var date = new ThaiSolarDate({
@@ -2013,8 +2013,8 @@ module.exports.testdatefmt_th_TH = {
     },
     
     testDateFmtLongDM_th_TH: function(test) {
-        var fmt = new DateFmt({locale: "th-TH", calendar: "thaisolar", length: "long", date: "dm"});
         test.expect(2);
+        var fmt = new DateFmt({locale: "th-TH", calendar: "thaisolar", length: "long", date: "dm"});
         test.ok(fmt !== null);
         
         var date = new ThaiSolarDate({
@@ -2032,8 +2032,8 @@ module.exports.testdatefmt_th_TH = {
     },
     
     testDateFmtFullDM_th_TH: function(test) {
-        var fmt = new DateFmt({locale: "th-TH", calendar: "thaisolar", length: "full", date: "dm"});
         test.expect(2);
+        var fmt = new DateFmt({locale: "th-TH", calendar: "thaisolar", length: "full", date: "dm"});
         test.ok(fmt !== null);
         
         var date = new ThaiSolarDate({
@@ -2051,8 +2051,8 @@ module.exports.testdatefmt_th_TH = {
     },
     
     testDateFmtShortMY_th_TH: function(test) {
-        var fmt = new DateFmt({locale: "th-TH", calendar: "thaisolar", length: "short", date: "my"});
         test.expect(2);
+        var fmt = new DateFmt({locale: "th-TH", calendar: "thaisolar", length: "short", date: "my"});
         test.ok(fmt !== null);
         
         var date = new ThaiSolarDate({
@@ -2070,8 +2070,8 @@ module.exports.testdatefmt_th_TH = {
     },
     
     testDateFmtMediumMY_th_TH: function(test) {
-        var fmt = new DateFmt({locale: "th-TH", calendar: "thaisolar", length: "medium", date: "my"});
         test.expect(2);
+        var fmt = new DateFmt({locale: "th-TH", calendar: "thaisolar", length: "medium", date: "my"});
         test.ok(fmt !== null);
         
         var date = new ThaiSolarDate({
@@ -2089,8 +2089,8 @@ module.exports.testdatefmt_th_TH = {
     },
     
     testDateFmtLongMY_th_TH: function(test) {
-        var fmt = new DateFmt({locale: "th-TH", calendar: "thaisolar", length: "long", date: "my"});
         test.expect(2);
+        var fmt = new DateFmt({locale: "th-TH", calendar: "thaisolar", length: "long", date: "my"});
         test.ok(fmt !== null);
         
         var date = new ThaiSolarDate({
@@ -2108,8 +2108,8 @@ module.exports.testdatefmt_th_TH = {
     },
     
     testDateFmtFullMY_th_TH: function(test) {
-        var fmt = new DateFmt({locale: "th-TH", calendar: "thaisolar", length: "full", date: "my"});
         test.expect(2);
+        var fmt = new DateFmt({locale: "th-TH", calendar: "thaisolar", length: "full", date: "my"});
         test.ok(fmt !== null);
         
         var date = new ThaiSolarDate({
@@ -2127,8 +2127,8 @@ module.exports.testdatefmt_th_TH = {
     },
     
     testDateFmtShortDW_th_TH: function(test) {
-        var fmt = new DateFmt({locale: "th-TH", calendar: "thaisolar", length: "short", date: "dw"});
         test.expect(2);
+        var fmt = new DateFmt({locale: "th-TH", calendar: "thaisolar", length: "short", date: "dw"});
         test.ok(fmt !== null);
         
         var date = new ThaiSolarDate({
@@ -2146,8 +2146,8 @@ module.exports.testdatefmt_th_TH = {
     },
     
     testDateFmtMediumDW_th_TH: function(test) {
-        var fmt = new DateFmt({locale: "th-TH", calendar: "thaisolar", length: "medium", date: "dw"});
         test.expect(2);
+        var fmt = new DateFmt({locale: "th-TH", calendar: "thaisolar", length: "medium", date: "dw"});
         test.ok(fmt !== null);
         
         var date = new ThaiSolarDate({
@@ -2165,8 +2165,8 @@ module.exports.testdatefmt_th_TH = {
     },
     
     testDateFmtLongDW_th_TH: function(test) {
-        var fmt = new DateFmt({locale: "th-TH", calendar: "thaisolar", length: "long", date: "dw"});
         test.expect(2);
+        var fmt = new DateFmt({locale: "th-TH", calendar: "thaisolar", length: "long", date: "dw"});
         test.ok(fmt !== null);
         
         var date = new ThaiSolarDate({
@@ -2184,8 +2184,8 @@ module.exports.testdatefmt_th_TH = {
     },
     
     testDateFmtFullDW_th_TH: function(test) {
-        var fmt = new DateFmt({locale: "th-TH", calendar: "thaisolar", length: "full", date: "dw"});
         test.expect(2);
+        var fmt = new DateFmt({locale: "th-TH", calendar: "thaisolar", length: "full", date: "dw"});
         test.ok(fmt !== null);
         
         var date = new ThaiSolarDate({

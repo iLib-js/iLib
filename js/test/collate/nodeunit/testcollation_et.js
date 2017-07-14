@@ -32,13 +32,13 @@ module.exports.testcollation_et = {
     },
 
     testJSCollatorQuatS_et: function(test) {
+        test.expect(3);
         var col = new Collator({
             locale: "et-EE",
             useNative: false,
             sensitivity: "quaternary"
         });
     
-        test.expect(3);
         test.ok(typeof(col) !== "undefined");
     
         // S Š Z Ž T U V W Õ Ä Ö Ü X Y
@@ -48,13 +48,13 @@ module.exports.testcollation_et = {
     },
     
     testJSCollatorQuatZ_et: function(test) {
+        test.expect(3);
         var col = new Collator({
             locale: "et-EE",
             useNative: false,
             sensitivity: "quaternary"
         });
     
-        test.expect(3);
         test.ok(typeof(col) !== "undefined");
     
         // S Š Z Ž T U V W Õ Ä Ö Ü X Y
@@ -64,13 +64,13 @@ module.exports.testcollation_et = {
     },
     
     testJSCollatorQuatOAOU_et: function(test) {
+        test.expect(7);
         var col = new Collator({
             locale: "et-EE",
             useNative: false,
             sensitivity: "quaternary"
         });
     
-        test.expect(7);
         test.ok(typeof(col) !== "undefined");
     
         // S Š Z Ž T U V W Õ Ä Ö Ü X Y
@@ -84,6 +84,7 @@ module.exports.testcollation_et = {
     },
     
     testJSCollatorPrimaryS_et: function(test) {
+        test.expect(3);
         var col = new Collator({
             locale: "et-EE",
             useNative: false,
@@ -91,7 +92,6 @@ module.exports.testcollation_et = {
             usage: "search"
         });
     
-        test.expect(3);
         test.ok(typeof(col) !== "undefined");
     
         // S Š Z Ž T U V W Õ Ä Ö Ü X Y
@@ -101,6 +101,7 @@ module.exports.testcollation_et = {
     },
     
     testJSCollatorPrimaryZ_et: function(test) {
+        test.expect(3);
         var col = new Collator({
             locale: "et-EE",
             useNative: false,
@@ -108,7 +109,6 @@ module.exports.testcollation_et = {
             usage: "search"
         });
     
-        test.expect(3);
         test.ok(typeof(col) !== "undefined");
     
         // S Š Z Ž T U V W Õ Ä Ö Ü X Y
@@ -118,6 +118,7 @@ module.exports.testcollation_et = {
     },
     
     testJSCollatorPrimaryOAOU_et: function(test) {
+        test.expect(7);
         var col = new Collator({
             locale: "et-EE",
             useNative: false,
@@ -125,7 +126,6 @@ module.exports.testcollation_et = {
             usage: "search"
         });
     
-        test.expect(7);
         test.ok(typeof(col) !== "undefined");
     
         // S Š Z Ž T U V W Õ Ä Ö Ü X Y
@@ -139,13 +139,13 @@ module.exports.testcollation_et = {
     },
     
     testJSCollatorQuatLowerS_et: function(test) {
+        test.expect(3);
         var col = new Collator({
             locale: "et-EE",
             useNative: false,
             sensitivity: "quaternary"
         });
     
-        test.expect(3);
         test.ok(typeof(col) !== "undefined");
     
         // s š z ž t u v w õ ä ö ü x y
@@ -155,13 +155,13 @@ module.exports.testcollation_et = {
     },
     
     testJSCollatorQuatLowerZ_et: function(test) {
+        test.expect(3);
         var col = new Collator({
             locale: "et-EE",
             useNative: false,
             sensitivity: "quaternary"
         });
     
-        test.expect(3);
         test.ok(typeof(col) !== "undefined");
     
         // s š z ž t u v w õ ä ö ü x y
@@ -171,13 +171,13 @@ module.exports.testcollation_et = {
     },
     
     testJSCollatorQuatoLowerOAOU_et: function(test) {
+        test.expect(7);
         var col = new Collator({
             locale: "et-EE",
             useNative: false,
             sensitivity: "quaternary"
         });
     
-        test.expect(7);
         test.ok(typeof(col) !== "undefined");
     
         // s š z ž t u v w õ ä ö ü x y
@@ -191,13 +191,13 @@ module.exports.testcollation_et = {
     },
     
     testJSCollatorPrimaryLowerS_et: function(test) {
+        test.expect(3);
         var col = new Collator({
             locale: "et-EE",
             useNative: false,
             sensitivity: "primary"
         });
     
-        test.expect(3);
         test.ok(typeof(col) !== "undefined");
     
         // s š z ž t u v w õ ä ö ü x y
@@ -207,6 +207,7 @@ module.exports.testcollation_et = {
     },
     
     testJSCollatorPrimaryLowerZ_et: function(test) {
+        test.expect(3);
         var col = new Collator({
             locale: "et-EE",
             useNative: false,
@@ -214,7 +215,6 @@ module.exports.testcollation_et = {
             usage: "search"
         });
     
-        test.expect(3);
         test.ok(typeof(col) !== "undefined");
     
         // s š z ž t u v w õ ä ö ü x y
@@ -224,6 +224,7 @@ module.exports.testcollation_et = {
     },
     
     testJSCollatorPrimaryLowerOAOU_et: function(test) {
+        test.expect(7);
         var col = new Collator({
             locale: "et-EE",
             useNative: false,
@@ -231,7 +232,6 @@ module.exports.testcollation_et = {
             usage: "search"
         });
     
-        test.expect(7);
         test.ok(typeof(col) !== "undefined");
     
         // s š z ž t u v w õ ä ö ü x y
@@ -245,13 +245,13 @@ module.exports.testcollation_et = {
     },
     
     testCollatorNativeCase_et: function(test) {
+        test.expect(2);
         var col = new Collator({
             locale: "et-EE",
             useNative: false,
             sensitivity: "case",
             usage: "sort"
         });
-        test.expect(2);
         test.ok(typeof(col) !== "undefined");
     
         var input = [
@@ -299,6 +299,7 @@ module.exports.testcollation_et = {
     },
     
     testCollatorNativeVariant_et: function(test) {
+        test.expect(2);
         var col = new Collator({
             locale: "et-EE",
             useNative: false,
@@ -306,7 +307,6 @@ module.exports.testcollation_et = {
             upperFirst: true,
             usage: "sort"
         });
-        test.expect(2);
         test.ok(typeof(col) !== "undefined");
     
         var input = [

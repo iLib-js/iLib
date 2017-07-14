@@ -34,9 +34,9 @@ module.exports.testaddress_HN = {
     },
 
     testParseAddressHNNormal: function(test) {
+        test.expect(7);
         var parsedAddress = new Address("Sr. Juan C. Martel\nCM1102 LAS LAJAS, Comayagua\nHONDURAS", {locale: 'es-HN'});
         
-        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Sr. Juan C. Martel");
         test.equal(parsedAddress.locality, "LAS LAJAS");
@@ -48,9 +48,9 @@ module.exports.testaddress_HN = {
     },
     
     testParseAddressHNNoZip: function(test) {
+        test.expect(7);
         var parsedAddress = new Address("Sr. Juan C. Martel\nLAS LAJAS, Comayagua\nHONDURAS", {locale: 'es-HN'});
         
-        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Sr. Juan C. Martel");
         test.equal(parsedAddress.locality, "LAS LAJAS");
@@ -62,9 +62,9 @@ module.exports.testaddress_HN = {
     },
     
     testParseAddressHNNoCountry: function(test) {
+        test.expect(7);
         var parsedAddress = new Address("Sr. Juan C. Martel\nCM1102 LAS LAJAS, Comayagua", {locale: 'es-HN'});
         
-        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Sr. Juan C. Martel");
         test.equal(parsedAddress.locality, "LAS LAJAS");
@@ -76,9 +76,9 @@ module.exports.testaddress_HN = {
     },
     
     testParseAddressHNManyLines: function(test) {
+        test.expect(7);
         var parsedAddress = new Address("Sr. Juan C. Martel\nCM1102 LAS LAJAS, Comayagua\nHONDURAS", {locale: 'es-HN'});
         
-        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
           test.equal(parsedAddress.streetAddress, "Sr. Juan C. Martel");
         test.equal(parsedAddress.locality, "LAS LAJAS");
@@ -90,9 +90,9 @@ module.exports.testaddress_HN = {
     },
     
     testParseAddressHNOneLine: function(test) {
+        test.expect(7);
         var parsedAddress = new Address("Sr. Juan C. Martel , CM1102 , LAS LAJAS , Comayagua , HONDURAS", {locale: 'es-HN'});
         
-        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
           test.equal(parsedAddress.streetAddress, "Sr. Juan C. Martel");
         test.equal(parsedAddress.locality, "LAS LAJAS");
@@ -104,9 +104,9 @@ module.exports.testaddress_HN = {
     },
     
     testParseAddressHNSuperfluousWhitespace: function(test) {
+        test.expect(7);
         var parsedAddress = new Address("Sr. Juan C. Martel\n\n\n\rCM1102\r\nLAS LAJAS\r\r\rComayagua\t\t\rHONDURAS", {locale: 'es-HN'});
         
-        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
             test.equal(parsedAddress.streetAddress, "Sr. Juan C. Martel");
         test.equal(parsedAddress.locality, "LAS LAJAS");
@@ -118,9 +118,9 @@ module.exports.testaddress_HN = {
     },
     
     testParseAddressHNNoDelimiters: function(test) {
+        test.expect(7);
         var parsedAddress = new Address("Sr. Juan C. Martel CM1102 LAS LAJAS Comayagua HONDURAS", {locale: 'es-HN'});
         
-        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Sr. Juan C. Martel");
         test.equal(parsedAddress.locality, "LAS LAJAS");
@@ -132,9 +132,9 @@ module.exports.testaddress_HN = {
     },
     
     testParseAddressHNFromUS: function(test) {
+        test.expect(7);
         var parsedAddress = new Address("Sr. Juan C. Martel\nCM1102 LAS LAJAS, Comayagua\nHONDURAS", {locale: 'es-HN'});
         
-        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Sr. Juan C. Martel");
         test.equal(parsedAddress.locality, "LAS LAJAS");
@@ -146,6 +146,7 @@ module.exports.testaddress_HN = {
     },
     
     testFormatAddressHN: function(test) {
+        test.expect(1);
         var parsedAddress = new Address({
             streetAddress: "Sr. Juan C. Martel",
             locality: "LAS LAJAS",
@@ -157,12 +158,12 @@ module.exports.testaddress_HN = {
         
         var expected = "Sr. Juan C. Martel\nCM1102 LAS LAJAS, Comayagua\nHONDURAS";
         var formatter = new AddressFmt({locale: 'es-HN'});
-        test.expect(1);
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     },
     
     testFormatAddressHNFromUS: function(test) {
+        test.expect(1);
         var parsedAddress = new Address({
             streetAddress: "Sr. Juan C. Martel",
             locality: "LAS LAJAS",
@@ -174,7 +175,6 @@ module.exports.testaddress_HN = {
         
         var expected = "Sr. Juan C. Martel\nCM1102 LAS LAJAS, Comayagua\nHONDURAS";
         var formatter = new AddressFmt({locale: 'en-US'});
-        test.expect(1);
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     }

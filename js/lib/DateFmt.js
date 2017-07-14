@@ -1257,7 +1257,7 @@ DateFmt.prototype = {
 					str += JSUtils.pad(date.minute || "0", 2);
 					break;
 				case 's':
-					str += (date.minute || "0");
+					str += (date.second || "0");
 					break;
 				case 'ss':
 					str += JSUtils.pad(date.second || "0", 2);

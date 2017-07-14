@@ -34,9 +34,9 @@ module.exports.testaddress_IT = {
     },
 
     testParseAddressITNormal: function(test) {
+        test.expect(7);
         var parsedAddress = new Address("Corso Europa 2\n20122 Milan\nItalia", {locale: 'it-IT'});
         
-        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Corso Europa 2");
         test.equal(parsedAddress.locality, "Milan");
@@ -48,9 +48,9 @@ module.exports.testaddress_IT = {
     },
     
     testParseAddressITNoZip: function(test) {
+        test.expect(7);
         var parsedAddress = new Address("C.so Trapani 16\nTorino\nItalia", {locale: 'it-IT'});
         
-        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "C.so Trapani 16");
         test.equal(parsedAddress.locality, "Torino");
@@ -62,9 +62,9 @@ module.exports.testaddress_IT = {
     },
     
     testParseAddressITNoCountry: function(test) {
+        test.expect(7);
         var parsedAddress = new Address("Corso Europa 2\n20122 Milan", {locale: 'it-IT'});
         
-        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Corso Europa 2");
         test.equal(parsedAddress.locality, "Milan");
@@ -76,9 +76,9 @@ module.exports.testaddress_IT = {
     },
     
     testParseAddressITWithRegion: function(test) {
+        test.expect(7);
         var parsedAddress = new Address("via Paná, 56\n35027 Noventa Padovana (PD)", {locale: 'it-IT'});
         
-        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "via Paná, 56");
         test.equal(parsedAddress.locality, "Noventa Padovana");
@@ -90,9 +90,9 @@ module.exports.testaddress_IT = {
     },
     
     testParseAddressITWithRegion2: function(test) {
+        test.expect(7);
         var parsedAddress = new Address("via Napoli 45\n96017 Noto (SR)\nItalia", {locale: 'it-IT'});
         
-        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "via Napoli 45");
         test.equal(parsedAddress.locality, "Noto");
@@ -104,9 +104,9 @@ module.exports.testaddress_IT = {
     },
     
     testParseAddressITManyLines: function(test) {
+        test.expect(7);
         var parsedAddress = new Address("Centro Direzionale\nFab. 1 G/7\n80143\nNapoli\nItalia\n", {locale: 'it-IT'});
         
-        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Centro Direzionale, Fab. 1 G/7");
         test.equal(parsedAddress.locality, "Napoli");
@@ -118,9 +118,9 @@ module.exports.testaddress_IT = {
     },
     
     testParseAddressITOneLine: function(test) {
+        test.expect(7);
         var parsedAddress = new Address("Via Achille Campanile 85, 00144 ROMA, Italia", {locale: 'it-IT'});
         
-        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Via Achille Campanile 85");
         test.equal(parsedAddress.locality, "ROMA");
@@ -132,9 +132,9 @@ module.exports.testaddress_IT = {
     },
     
     testParseAddressITSuperfluousWhitespace: function(test) {
+        test.expect(7);
         var parsedAddress = new Address("\t\t\tVia Achille   \t\t\t Campanile 85,\n\n\t\r\t00144\t\t\t\n ROMA\t\t\n\r\r Italia\n\n\n", {locale: 'it-IT'});
         
-        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Via Achille Campanile 85");
         test.equal(parsedAddress.locality, "ROMA");
@@ -146,9 +146,9 @@ module.exports.testaddress_IT = {
     },
     
     testParseAddressITNoDelimiters: function(test) {
+        test.expect(7);
         var parsedAddress = new Address("Via Achille Campanile 85 00144 ROMA Italia", {locale: 'it-IT'});
         
-        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Via Achille Campanile 85");
         test.equal(parsedAddress.locality, "ROMA");
@@ -160,11 +160,11 @@ module.exports.testaddress_IT = {
     },
     
     testParseAddressITFromUS: function(test) {
+        test.expect(7);
         var parsedAddress = new Address("Via Achille Campanile 85\n00144 ROMA\nItaly", {locale: 'en-US'});
         
         // the country name is in English because this address is for a contact in a US database
         
-        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Via Achille Campanile 85");
         test.equal(parsedAddress.locality, "ROMA");
@@ -176,6 +176,7 @@ module.exports.testaddress_IT = {
     },
     
     testFormatAddressIT: function(test) {
+        test.expect(1);
         var parsedAddress = new Address({
             streetAddress: "Corso Europa 2",
             locality: "Milan",
@@ -186,12 +187,12 @@ module.exports.testaddress_IT = {
         
         var expected = "Corso Europa 2\n20122 Milan\nItalia";
         var formatter = new AddressFmt({locale: 'it-IT'});
-        test.expect(1);
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     },
     
     testFormatAddressITFromUS: function(test) {
+        test.expect(1);
         var parsedAddress = new Address({
             streetAddress: "Corso Europa 2",
             locality: "Milan",
@@ -202,7 +203,6 @@ module.exports.testaddress_IT = {
         
         var expected = "Corso Europa 2\n20122 Milan\nItalia";
         var formatter = new AddressFmt({locale: 'en-US'});
-        test.expect(1);
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     }

@@ -34,8 +34,8 @@ module.exports.testdatefmtrange_th_TH = {
     },
 
     testDateRngFmtTHRangeInDayShort: function(test) {
-        var fmt = new DateRngFmt({locale: "th-TH", calendar: "thaisolar", length: "short"});
         test.expect(2);
+        var fmt = new DateRngFmt({locale: "th-TH", calendar: "thaisolar", length: "short"});
         test.ok(fmt !== null);
         
         var start = new ThaiSolarDate({
@@ -60,8 +60,8 @@ module.exports.testdatefmtrange_th_TH = {
         test.done();
     },
     testDateRngFmtTHRangeInDayMedium: function(test) {
-        var fmt = new DateRngFmt({locale: "th-TH", calendar: "thaisolar", length: "medium"});
         test.expect(2);
+        var fmt = new DateRngFmt({locale: "th-TH", calendar: "thaisolar", length: "medium"});
         test.ok(fmt !== null);
         
         var start = new ThaiSolarDate({
@@ -86,8 +86,8 @@ module.exports.testdatefmtrange_th_TH = {
         test.done();
     },
     testDateRngFmtTHRangeInDayLong: function(test) {
-        var fmt = new DateRngFmt({locale: "th-TH", calendar: "thaisolar", length: "long"});
         test.expect(2);
+        var fmt = new DateRngFmt({locale: "th-TH", calendar: "thaisolar", length: "long"});
         test.ok(fmt !== null);
         
         var start = new ThaiSolarDate({
@@ -112,8 +112,8 @@ module.exports.testdatefmtrange_th_TH = {
         test.done();
     },
     testDateRngFmtTHRangeInDayFull: function(test) {
-        var fmt = new DateRngFmt({locale: "th-TH", calendar: "thaisolar", length: "full"});
         test.expect(2);
+        var fmt = new DateRngFmt({locale: "th-TH", calendar: "thaisolar", length: "full"});
         test.ok(fmt !== null);
         
         var start = new ThaiSolarDate({
@@ -139,8 +139,8 @@ module.exports.testdatefmtrange_th_TH = {
     },
     
     testDateRngFmtTHRangeNextDayShort: function(test) {
-        var fmt = new DateRngFmt({locale: "th-TH", calendar: "thaisolar", length: "short"});
         test.expect(2);
+        var fmt = new DateRngFmt({locale: "th-TH", calendar: "thaisolar", length: "short"});
         test.ok(fmt !== null);
         
         var start = new ThaiSolarDate({
@@ -165,8 +165,8 @@ module.exports.testdatefmtrange_th_TH = {
         test.done();
     },
     testDateRngFmtTHRangeNextDayMedium: function(test) {
-        var fmt = new DateRngFmt({locale: "th-TH", calendar: "thaisolar", length: "medium"});
         test.expect(2);
+        var fmt = new DateRngFmt({locale: "th-TH", calendar: "thaisolar", length: "medium"});
         test.ok(fmt !== null);
         
         var start = new ThaiSolarDate({
@@ -191,8 +191,8 @@ module.exports.testdatefmtrange_th_TH = {
         test.done();
     },
     testDateRngFmtTHRangeNextDayLong: function(test) {
-        var fmt = new DateRngFmt({locale: "th-TH", calendar: "thaisolar", length: "long"});
         test.expect(2);
+        var fmt = new DateRngFmt({locale: "th-TH", calendar: "thaisolar", length: "long"});
         test.ok(fmt !== null);
         
         var start = new ThaiSolarDate({
@@ -217,8 +217,8 @@ module.exports.testdatefmtrange_th_TH = {
         test.done();
     },
     testDateRngFmtTHRangeNextDayFull: function(test) {
-        var fmt = new DateRngFmt({locale: "th-TH", calendar: "thaisolar", length: "full"});
         test.expect(2);
+        var fmt = new DateRngFmt({locale: "th-TH", calendar: "thaisolar", length: "full"});
         test.ok(fmt !== null);
         
         var start = new ThaiSolarDate({
@@ -244,8 +244,8 @@ module.exports.testdatefmtrange_th_TH = {
     },
     
     testDateRngFmtTHRangeMultiDayShort: function(test) {
-        var fmt = new DateRngFmt({locale: "th-TH", calendar: "thaisolar", length: "short"});
         test.expect(2);
+        var fmt = new DateRngFmt({locale: "th-TH", calendar: "thaisolar", length: "short"});
         test.ok(fmt !== null);
         
         var start = new ThaiSolarDate({
@@ -270,8 +270,8 @@ module.exports.testdatefmtrange_th_TH = {
         test.done();
     },
     testDateRngFmtTHRangeMultiDayMedium: function(test) {
-        var fmt = new DateRngFmt({locale: "th-TH", calendar: "thaisolar", length: "medium"});
         test.expect(2);
+        var fmt = new DateRngFmt({locale: "th-TH", calendar: "thaisolar", length: "medium"});
         test.ok(fmt !== null);
         
         var start = new ThaiSolarDate({
@@ -296,8 +296,8 @@ module.exports.testdatefmtrange_th_TH = {
         test.done();
     },
     testDateRngFmtTHRangeMultiDayLong: function(test) {
-        var fmt = new DateRngFmt({locale: "th-TH", calendar: "thaisolar", length: "long"});
         test.expect(2);
+        var fmt = new DateRngFmt({locale: "th-TH", calendar: "thaisolar", length: "long"});
         test.ok(fmt !== null);
         
         var start = new ThaiSolarDate({
@@ -322,8 +322,8 @@ module.exports.testdatefmtrange_th_TH = {
         test.done();
     },
     testDateRngFmtTHRangeMultiDayFull: function(test) {
-        var fmt = new DateRngFmt({locale: "th-TH", calendar: "thaisolar", length: "full"});
         test.expect(2);
+        var fmt = new DateRngFmt({locale: "th-TH", calendar: "thaisolar", length: "full"});
         test.ok(fmt !== null);
         
         var start = new ThaiSolarDate({
@@ -349,8 +349,8 @@ module.exports.testdatefmtrange_th_TH = {
     },
     
     testDateRngFmtTHRangeNextMonthShort: function(test) {
-        var fmt = new DateRngFmt({locale: "th-TH", calendar: "thaisolar", length: "short"});
         test.expect(2);
+        var fmt = new DateRngFmt({locale: "th-TH", calendar: "thaisolar", length: "short"});
         test.ok(fmt !== null);
         
         var start = new ThaiSolarDate({
@@ -375,8 +375,8 @@ module.exports.testdatefmtrange_th_TH = {
         test.done();
     },
     testDateRngFmtTHRangeNextMonthMedium: function(test) {
-        var fmt = new DateRngFmt({locale: "th-TH", calendar: "thaisolar", length: "medium"});
         test.expect(2);
+        var fmt = new DateRngFmt({locale: "th-TH", calendar: "thaisolar", length: "medium"});
         test.ok(fmt !== null);
         
         var start = new ThaiSolarDate({
@@ -401,8 +401,8 @@ module.exports.testdatefmtrange_th_TH = {
         test.done();
     },
     testDateRngFmtTHRangeNextMonthLong: function(test) {
-        var fmt = new DateRngFmt({locale: "th-TH", calendar: "thaisolar", length: "long"});
         test.expect(2);
+        var fmt = new DateRngFmt({locale: "th-TH", calendar: "thaisolar", length: "long"});
         test.ok(fmt !== null);
         
         var start = new ThaiSolarDate({
@@ -427,8 +427,8 @@ module.exports.testdatefmtrange_th_TH = {
         test.done();
     },
     testDateRngFmtTHRangeNextMonthFull: function(test) {
-        var fmt = new DateRngFmt({locale: "th-TH", calendar: "thaisolar", length: "full"});
         test.expect(2);
+        var fmt = new DateRngFmt({locale: "th-TH", calendar: "thaisolar", length: "full"});
         test.ok(fmt !== null);
         
         var start = new ThaiSolarDate({
@@ -454,8 +454,8 @@ module.exports.testdatefmtrange_th_TH = {
     },
     
     testDateRngFmtTHRangeNextYearShort: function(test) {
-        var fmt = new DateRngFmt({locale: "th-TH", calendar: "thaisolar", length: "short"});
         test.expect(2);
+        var fmt = new DateRngFmt({locale: "th-TH", calendar: "thaisolar", length: "short"});
         test.ok(fmt !== null);
         
         var start = new ThaiSolarDate({
@@ -480,8 +480,8 @@ module.exports.testdatefmtrange_th_TH = {
         test.done();
     },
     testDateRngFmtTHRangeNextYearMedium: function(test) {
-        var fmt = new DateRngFmt({locale: "th-TH", calendar: "thaisolar", length: "medium"});
         test.expect(2);
+        var fmt = new DateRngFmt({locale: "th-TH", calendar: "thaisolar", length: "medium"});
         test.ok(fmt !== null);
         
         var start = new ThaiSolarDate({
@@ -506,8 +506,8 @@ module.exports.testdatefmtrange_th_TH = {
         test.done();
     },
     testDateRngFmtTHRangeNextYearLong: function(test) {
-        var fmt = new DateRngFmt({locale: "th-TH", calendar: "thaisolar", length: "long"});
         test.expect(2);
+        var fmt = new DateRngFmt({locale: "th-TH", calendar: "thaisolar", length: "long"});
         test.ok(fmt !== null);
         
         var start = new ThaiSolarDate({
@@ -532,8 +532,8 @@ module.exports.testdatefmtrange_th_TH = {
         test.done();
     },
     testDateRngFmtTHRangeNextYearFull: function(test) {
-        var fmt = new DateRngFmt({locale: "th-TH", calendar: "thaisolar", length: "full"});
         test.expect(2);
+        var fmt = new DateRngFmt({locale: "th-TH", calendar: "thaisolar", length: "full"});
         test.ok(fmt !== null);
         
         var start = new ThaiSolarDate({
@@ -559,8 +559,8 @@ module.exports.testdatefmtrange_th_TH = {
     },
     
     testDateRngFmtTHRangeMultiYearShort: function(test) {
-        var fmt = new DateRngFmt({locale: "th-TH", calendar: "thaisolar", length: "short"});
         test.expect(2);
+        var fmt = new DateRngFmt({locale: "th-TH", calendar: "thaisolar", length: "short"});
         test.ok(fmt !== null);
         
         var start = new ThaiSolarDate({
@@ -585,8 +585,8 @@ module.exports.testdatefmtrange_th_TH = {
         test.done();
     },
     testDateRngFmtTHRangeMultiYearMedium: function(test) {
-        var fmt = new DateRngFmt({locale: "th-TH", calendar: "thaisolar", length: "medium"});
         test.expect(2);
+        var fmt = new DateRngFmt({locale: "th-TH", calendar: "thaisolar", length: "medium"});
         test.ok(fmt !== null);
         
         var start = new ThaiSolarDate({
@@ -611,8 +611,8 @@ module.exports.testdatefmtrange_th_TH = {
         test.done();
     },
     testDateRngFmtTHRangeMultiYearLong: function(test) {
-        var fmt = new DateRngFmt({locale: "th-TH", calendar: "thaisolar", length: "long"});
         test.expect(2);
+        var fmt = new DateRngFmt({locale: "th-TH", calendar: "thaisolar", length: "long"});
         test.ok(fmt !== null);
         
         var start = new ThaiSolarDate({
@@ -637,8 +637,8 @@ module.exports.testdatefmtrange_th_TH = {
         test.done();
     },
     testDateRngFmtTHRangeMultiYearFull: function(test) {
-        var fmt = new DateRngFmt({locale: "th-TH", calendar: "thaisolar", length: "full"});
         test.expect(2);
+        var fmt = new DateRngFmt({locale: "th-TH", calendar: "thaisolar", length: "full"});
         test.ok(fmt !== null);
         
         var start = new ThaiSolarDate({
@@ -663,8 +663,8 @@ module.exports.testdatefmtrange_th_TH = {
         test.done();
     },
     testDateRngFmtTHManyYearsFull: function(test) {
-        var fmt = new DateRngFmt({locale: "th-TH", calendar: "thaisolar", length: "full"});
         test.expect(2);
+        var fmt = new DateRngFmt({locale: "th-TH", calendar: "thaisolar", length: "full"});
         test.ok(fmt !== null);
         
         var start = new ThaiSolarDate({

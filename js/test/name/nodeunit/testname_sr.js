@@ -34,8 +34,8 @@ module.exports.testname_sr = {
     },
 
     testParseSimpleName_sr_Cyrl_RS: function(test) {
-        var parsed = new Name("Александар Дероко", {locale: 'sr-Cyrl-RS'});
         test.expect(2);
+        var parsed = new Name("Александар Дероко", {locale: 'sr-Cyrl-RS'});
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {
@@ -48,8 +48,8 @@ module.exports.testname_sr = {
     },
     
     testParseTitle_sr_Cyrl_RS: function(test) {
-        var parsed = new Name("Александар Дероко млађи", {locale: 'sr-Cyrl-RS'});
         test.expect(2);
+        var parsed = new Name("Александар Дероко млађи", {locale: 'sr-Cyrl-RS'});
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {
@@ -63,8 +63,8 @@ module.exports.testname_sr = {
     },
     
     testParseTitleWithFamilyOnly_sr_Cyrl_RS: function(test) {
-        var parsed = new Name("господин. Дероко", {locale: 'sr-Cyrl-RS'});
         test.expect(2);
+        var parsed = new Name("господин. Дероко", {locale: 'sr-Cyrl-RS'});
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {
@@ -77,8 +77,8 @@ module.exports.testname_sr = {
     },
     
     testParseEverything_sr_Cyrl_RS: function(test) {
-        var parsed = new Name("господин. и госпођа. Дероко", {locale: 'sr-Cyrl-RS'});
         test.expect(2);
+        var parsed = new Name("господин. и госпођа. Дероко", {locale: 'sr-Cyrl-RS'});
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {
@@ -91,8 +91,8 @@ module.exports.testname_sr = {
     },
     
     testParseprefix_sr_Cyrl_RS: function(test) {
-        var parsed = new Name("господин. Александар Дероко", {locale: 'sr-Cyrl-RS'});
         test.expect(2);
+        var parsed = new Name("господин. Александар Дероко", {locale: 'sr-Cyrl-RS'});
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {
@@ -106,8 +106,8 @@ module.exports.testname_sr = {
     },
     
     testParseprefixAndSuffix_sr_Cyrl_RS: function(test) {
-        var parsed = new Name("заменик председника Александар Дероко млађи", {locale: 'sr-Cyrl-RS'});
         test.expect(2);
+        var parsed = new Name("заменик председника Александар Дероко млађи", {locale: 'sr-Cyrl-RS'});
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {
@@ -125,6 +125,7 @@ module.exports.testname_sr = {
      */
     
     testFormatSimpleNameShort_sr_Cyrl_RS: function(test) {
+        test.expect(2);
         var name = new Name({
             givenName: "Александар",
             familyName: "Дероко"
@@ -134,7 +135,6 @@ module.exports.testname_sr = {
             locale: 'sr-Cyrl-RS'
         });
         var formatted = fmt.format(name);
-        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "Александар Дероко";
@@ -144,6 +144,7 @@ module.exports.testname_sr = {
     },
     
     testFormatSimpleNameMedium_sr_Cyrl_RS: function(test) {
+        test.expect(2);
         var name = new Name({
             givenName: "Александар",
             familyName: "Дероко"
@@ -153,7 +154,6 @@ module.exports.testname_sr = {
             locale: 'sr-Cyrl-RS'
         });
         var formatted = fmt.format(name);
-        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "Александар Дероко";
@@ -163,6 +163,7 @@ module.exports.testname_sr = {
     },
     
     testFormatSimpleNameLong_sr_Cyrl_RS: function(test) {
+        test.expect(2);
         var name = new Name({
             givenName: "Александар",
             familyName: "Дероко",
@@ -173,7 +174,6 @@ module.exports.testname_sr = {
             locale: 'sr-Cyrl-RS'
         });
         var formatted = fmt.format(name);
-        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "Александар Дероко";
@@ -185,6 +185,7 @@ module.exports.testname_sr = {
     
     
     testFormatSurname_sr_Cyrl_RS: function(test) {
+        test.expect(2);
         var name = new Name({
             prefix: "господин. и госпођа.",
             familyName: "Дероко"
@@ -194,7 +195,6 @@ module.exports.testname_sr = {
             locale: 'sr-Cyrl-RS'
         });
         var formatted = fmt.format(name);
-        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "господин. и госпођа. Дероко";
@@ -204,6 +204,7 @@ module.exports.testname_sr = {
     },
     
     testFormatSimpleNameFull_sr_Cyrl_RS: function(test) {
+        test.expect(2);
         var name = new Name({
             prefix: "председавајућа",
             givenName: "Александар",
@@ -215,7 +216,6 @@ module.exports.testname_sr = {
             locale: 'sr-Cyrl-RS'
         });
         var formatted = fmt.format(name);
-        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "председавајућа Александар Дероко млађи";
@@ -225,6 +225,7 @@ module.exports.testname_sr = {
     },
     
     testFormatComplexNameShort_sr_Cyrl_RS: function(test) {
+        test.expect(2);
         var name = new Name({
             prefix: "председавајућа",
             givenName: "Александар",
@@ -235,7 +236,6 @@ module.exports.testname_sr = {
             locale: 'sr-Cyrl-RS'
         });
         var formatted = fmt.format(name);
-        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "Александар Дероко";
@@ -245,6 +245,7 @@ module.exports.testname_sr = {
     },
     
     testFormatComplexNameMedium_sr_Cyrl_RS: function(test) {
+        test.expect(2);
         var name = new Name({
             prefix: "председавајућа",
             givenName: "Александар",
@@ -255,7 +256,6 @@ module.exports.testname_sr = {
             locale: 'sr-Cyrl-RS'
         });
         var formatted = fmt.format(name);
-        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "Александар Дероко";
@@ -265,6 +265,7 @@ module.exports.testname_sr = {
     },
     
     testFormatComplexNameLong_sr_Cyrl_RS: function(test) {
+        test.expect(2);
         var name = new Name({
             prefix: "председавајућа",
             givenName: "Александар",
@@ -275,7 +276,6 @@ module.exports.testname_sr = {
             locale: 'sr-Cyrl-RS'
         });
         var formatted = fmt.format(name);
-        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "председавајућа Александар Дероко";

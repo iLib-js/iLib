@@ -34,22 +34,22 @@ module.exports.testset = {
     },
 
     testConstructor: function(test) {
-        var s = new ISet();
         test.expect(1);
+        var s = new ISet();
         test.ok(s.isEmpty());
         test.done();
     },
     
     testConstructorIsEmpty: function(test) {
-        var s = new ISet();
         test.expect(1);
+        var s = new ISet();
         test.ok(s.isEmpty());
         test.done();
     },
     
     testContainsEmpty: function(test) {
-        var s = new ISet();
         test.expect(2);
+        var s = new ISet();
         test.ok(s.isEmpty());
         
         test.ok(!s.contains("foo"));
@@ -57,8 +57,8 @@ module.exports.testset = {
     },
     
     testAdd: function(test) {
-        var s = new ISet();
         test.expect(2);
+        var s = new ISet();
         test.ok(s.isEmpty());
         
         s.add("foo");
@@ -68,8 +68,8 @@ module.exports.testset = {
     },
     
     testAddAlreadyThere: function(test) {
-        var s = new ISet();
         test.expect(3);
+        var s = new ISet();
         test.ok(s.isEmpty());
         
         s.add("foo");
@@ -83,8 +83,8 @@ module.exports.testset = {
     },
     
     testAddMultiple: function(test) {
-        var s = new ISet();
         test.expect(5);
+        var s = new ISet();
         test.ok(s.isEmpty());
         
         s.add("foo");
@@ -100,8 +100,8 @@ module.exports.testset = {
     },
     
     testAddArray: function(test) {
-        var s = new ISet();
         test.expect(5);
+        var s = new ISet();
         test.ok(s.isEmpty());
         
         s.add(["foo","bar","asdf"]);
@@ -115,16 +115,16 @@ module.exports.testset = {
     },
     
     testConstructorWithElementsIsNotEmpty: function(test) {
-        var s = new ISet(["foo", "bar", "asdf"]);
         test.expect(1);
+        var s = new ISet(["foo", "bar", "asdf"]);
         test.ok(!s.isEmpty());
         test.done();
     },
     
     testConstructorWithElementsContainsElements: function(test) {
+        test.expect(3);
         var s = new ISet(["foo", "bar", "asdf"]);
         
-        test.expect(3);
         test.ok(s.contains("foo"));
         test.ok(s.contains("bar"));
         test.ok(s.contains("asdf"));
@@ -132,33 +132,33 @@ module.exports.testset = {
     },
     
     testConstructorWithElementsDoesNotContainBogusElements: function(test) {
+        test.expect(1);
         var s = new ISet(["foo", "bar", "asdf"]);
         
-        test.expect(1);
         test.ok(!s.contains("qwerty"));
         test.done();
     },
     
     testWithNumericElements: function(test) {
+        test.expect(1);
         var s = new ISet();
         
         s.add(234);
         s.add(43);
         s.add(3433);
         
-        test.expect(1);
         test.ok(!s.isEmpty());
         test.done();
     },
     
     testWithNumericElementsContainsRightStuff: function(test) {
+        test.expect(3);
         var s = new ISet();
         
         s.add(234);
         s.add(43);
         s.add(3433);
         
-        test.expect(3);
         test.ok(s.contains(234));
         test.ok(s.contains(43));
         test.ok(s.contains(3433));
@@ -166,13 +166,13 @@ module.exports.testset = {
     },
     
     testWithNumericElementsDoesNotContainsBogusStuff: function(test) {
+        test.expect(3);
         var s = new ISet();
         
         s.add(234);
         s.add(43);
         s.add(3433);
         
-        test.expect(3);
         test.ok(!s.contains(1));
         test.ok(!s.contains(23233));
         test.ok(!s.contains(true));
@@ -180,11 +180,11 @@ module.exports.testset = {
     },
     
     testWithNumericArrayContainsRightStuff: function(test) {
+        test.expect(3);
         var s = new ISet();
         
         s.add([234,43,3433]);
         
-        test.expect(3);
         test.ok(s.contains(234));
         test.ok(s.contains(43));
         test.ok(s.contains(3433));
@@ -192,15 +192,15 @@ module.exports.testset = {
     },
     
     testConstructorWithNumericElements: function(test) {
-        var s = new ISet([1, 5, 9]);
         test.expect(1);
+        var s = new ISet([1, 5, 9]);
         test.ok(!s.isEmpty());
         test.done();
     },
     
     testConstructorWithNumericElementsContainsRightStuff: function(test) {
-        var s = new ISet([1, 5, 9]);
         test.expect(3);
+        var s = new ISet([1, 5, 9]);
         test.ok(s.contains(1));
         test.ok(s.contains(5));
         test.ok(s.contains(9));
@@ -208,15 +208,16 @@ module.exports.testset = {
     },
     
     testAsArray: function(test) {
+        test.expect(1);
         var s = new ISet(["foo", "bar", "asdf"]);
         
         var expected = ["foo", "bar", "asdf"];
-        test.expect(1);
         test.deepEqual(s.asArray(), expected);
         test.done();
     },
     
     testAsArrayNumericAfterAddingStrings: function(test) {
+        test.expect(1);
         var s = new ISet();
         
         s.add("foo");
@@ -224,21 +225,21 @@ module.exports.testset = {
         s.add("asdf");
         
         var expected = ["foo", "bar", "asdf"];
-        test.expect(1);
         test.deepEqual(s.asArray(), expected);
         test.done();
     },
     
     testAsArrayNumeric: function(test) {
+        test.expect(1);
         var s = new ISet([1, 2, 3, 4]);
         
         var expected = [1, 2, 3, 4];
-        test.expect(1);
         test.deepEqual(s.asArray(), expected);
         test.done();
     },
     
     testAsArrayNumericAfterAddingNumbers: function(test) {
+        test.expect(1);
         var s = new ISet();
         
         s.add(1);
@@ -247,23 +248,22 @@ module.exports.testset = {
         s.add(4);
         
         var expected = [1, 2, 3, 4];
-        test.expect(1);
         test.deepEqual(s.asArray(), expected);
         test.done();
     },
     
     testAsArrayEmpty: function(test) {
+        test.expect(1);
         var s = new ISet();
         
-        test.expect(1);
         test.deepEqual(s.asArray(), []);
         test.done();
     },
     
     testRemove: function(test) {
+        test.expect(2);
         var s = new ISet(["foo", "bar", "asdf"]);
         
-        test.expect(2);
         test.ok(s.contains("bar"));
         
         s.remove("bar");
@@ -273,9 +273,9 @@ module.exports.testset = {
     },
     
     testRemoveLastElement: function(test) {
+        test.expect(2);
         var s = new ISet(["bar"]);
         
-        test.expect(2);
         test.ok(s.contains("bar"));
         
         s.remove("bar");
@@ -285,9 +285,9 @@ module.exports.testset = {
     },
     
     testRemoveLastElementNowEmpty: function(test) {
+        test.expect(2);
         var s = new ISet(["bar"]);
         
-        test.expect(2);
         test.ok(!s.isEmpty());
         
         s.remove("bar");
@@ -297,9 +297,9 @@ module.exports.testset = {
     },
     
     testRemoveNumeric: function(test) {
+        test.expect(2);
         var s = new ISet([1, 2, 3, 4]);
         
-        test.expect(2);
         test.ok(s.contains(3));
         
         s.remove(3);
@@ -309,10 +309,10 @@ module.exports.testset = {
     },
     
     testRemoveNumericAsArray: function(test) {
+        test.expect(2);
         var s = new ISet([1, 2, 3, 4]);
     
         var expected = [1, 2, 3, 4];
-        test.expect(2);
         test.deepEqual(s.asArray(), expected);
     
         s.remove(3);
@@ -323,9 +323,9 @@ module.exports.testset = {
     },
     
     testClear: function(test) {
+        test.expect(2);
         var s = new ISet(["foo", "bar", "asdf"]);
         
-        test.expect(2);
         test.ok(s.contains("bar"));
         
         s.clear();
@@ -335,9 +335,9 @@ module.exports.testset = {
     },
     
     testClearNowEmpty: function(test) {
+        test.expect(2);
         var s = new ISet(["foo", "bar", "asdf"]);
         
-        test.expect(2);
         test.ok(!s.isEmpty());
         
         s.clear();
@@ -347,25 +347,25 @@ module.exports.testset = {
     },
     
     testToJsonString: function(test) {
+        test.expect(1);
         var s = new ISet(["foo", "bar", "asdf"]);
         
-        test.expect(1);
         test.deepEqual(s.toJson(), '["foo","bar","asdf"]');
         test.done();
     },
     
     testToJsonNumeric: function(test) {
+        test.expect(1);
         var s = new ISet([1, 2, 3, 4]);
         
-        test.expect(1);
         test.deepEqual(s.toJson(), "[1,2,3,4]");
         test.done();
     },
     
     testToJsonEmpty: function(test) {
+        test.expect(1);
         var s = new ISet();
         
-        test.expect(1);
         test.deepEqual(s.toJson(), '[]');
         test.done();
     }

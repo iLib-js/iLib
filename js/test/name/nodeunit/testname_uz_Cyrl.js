@@ -34,8 +34,8 @@ module.exports.testname_uz_Cyrl = {
     },
 
     testParseSimpleName_uz_Cyrl: function(test) {
-        var parsed = new Name("Бобур Мирзаев", {locale: 'uz-Cyrl-UZ'});
         test.expect(2);
+        var parsed = new Name("Бобур Мирзаев", {locale: 'uz-Cyrl-UZ'});
         test.ok(typeof(parsed) !== "undefined");
         
         var expected =   {
@@ -48,8 +48,8 @@ module.exports.testname_uz_Cyrl = {
     },
     
     testParseSingleNameWithPrefixAndAdjunct_uz_Cyrl: function(test) {
-        var parsed = new Name("жаноб ва хоним Мирзаев", {locale: 'uz-Cyrl-UZ'});
         test.expect(2);
+        var parsed = new Name("жаноб ва хоним Мирзаев", {locale: 'uz-Cyrl-UZ'});
         test.ok(typeof(parsed) !== "undefined");
         
         var expected =   {
@@ -62,8 +62,8 @@ module.exports.testname_uz_Cyrl = {
     },
     
     testParseTitle_uz_Cyrl: function(test) {
-        var parsed = new Name("Бобур Мирзаев кичик", {locale: 'uz-Cyrl-UZ'});
         test.expect(2);
+        var parsed = new Name("Бобур Мирзаев кичик", {locale: 'uz-Cyrl-UZ'});
         test.ok(typeof(parsed) !== "undefined");
         
         var expected =    {
@@ -77,8 +77,8 @@ module.exports.testname_uz_Cyrl = {
     },
     
     testParseTitleWithFamilyOnly_uz_Cyrl: function(test) {
-        var parsed = new Name("доктор Мирзаев", {locale: 'uz-Cyrl-UZ'});
         test.expect(2);
+        var parsed = new Name("доктор Мирзаев", {locale: 'uz-Cyrl-UZ'});
         test.ok(typeof(parsed) !== "undefined");
         
         var expected =   {
@@ -91,8 +91,8 @@ module.exports.testname_uz_Cyrl = {
     },
     
     testParseEverything_uz_Cyrl: function(test) {
-        var parsed = new Name("доктор Бобур Мирзаев", {locale: 'uz-Cyrl-UZ'});
         test.expect(2);
+        var parsed = new Name("доктор Бобур Мирзаев", {locale: 'uz-Cyrl-UZ'});
         test.ok(typeof(parsed) !== "undefined");
         
         var expected =    {
@@ -110,6 +110,7 @@ module.exports.testname_uz_Cyrl = {
      */
     
     testFormatSimpleNameShort_uz_Cyrl: function(test) {
+        test.expect(2);
         var name = new Name({
             givenName: "Бобур",
             familyName: "Мирзаев"
@@ -119,7 +120,6 @@ module.exports.testname_uz_Cyrl = {
             locale: 'uz-Cyrl-UZ'
         });
         var formatted = fmt.format(name);
-        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "Бобур Мирзаев";
@@ -129,6 +129,7 @@ module.exports.testname_uz_Cyrl = {
     },
     
     testFormatSimpleNameMedium_uz_Cyrl: function(test) {
+        test.expect(2);
         var name = new Name({
             givenName: "Бобур",
             familyName: "Мирзаев"
@@ -138,7 +139,6 @@ module.exports.testname_uz_Cyrl = {
             locale: 'uz-Cyrl-UZ'
         });
         var formatted = fmt.format(name);
-        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "Бобур Мирзаев";
@@ -150,6 +150,7 @@ module.exports.testname_uz_Cyrl = {
     
     
     testFormatSimpleNameFull_uz_Cyrl: function(test) {
+        test.expect(2);
         var name = new Name({
             prefix: "доктор",
             givenName: "Бобур",
@@ -161,7 +162,6 @@ module.exports.testname_uz_Cyrl = {
             locale: 'uz-Cyrl-UZ'
         });
         var formatted = fmt.format(name);
-        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "доктор Бобур Мирзаев 2-чи";

@@ -34,6 +34,7 @@ module.exports.phonefmt_HK = {
     },
 
     testFormatHKStyle0: function(test) {
+        test.expect(1);
         var formatted;
         var parsed = new PhoneNumber({
             subscriberNumber: "34523434"
@@ -43,7 +44,6 @@ module.exports.phonefmt_HK = {
         var fmt = new PhoneFmt({locale: "en-HK", style: "default"});
         formatted = fmt.format(parsed);
         
-        test.expect(1);
         test.equal(formatted, expected);
         test.done();
         
@@ -51,6 +51,7 @@ module.exports.phonefmt_HK = {
     },
     
     testFormatHKInternational: function(test) {
+        test.expect(1);
         var formatted;
         var parsed = new PhoneNumber({
                 iddPrefix: "+",
@@ -63,7 +64,6 @@ module.exports.phonefmt_HK = {
         var fmt = new PhoneFmt({locale: "en-HK", style: "default"});
         formatted = fmt.format(parsed);
         
-        test.expect(1);
         test.equal(formatted, expected);
         test.done();
         
@@ -71,6 +71,7 @@ module.exports.phonefmt_HK = {
     },
     
     testFormatHKInternationalAccessCode: function(test) {
+        test.expect(1);
         var formatted;
         var parsed = new PhoneNumber({
                 iddPrefix: "001",
@@ -83,7 +84,6 @@ module.exports.phonefmt_HK = {
         var fmt = new PhoneFmt({locale: "en-HK", style: "default"});
         formatted = fmt.format(parsed);
         
-        test.expect(1);
         test.equal(formatted, expected);
         test.done();
         
@@ -91,6 +91,7 @@ module.exports.phonefmt_HK = {
     },
     
     testFormatHKMobile: function(test) {
+        test.expect(1);
         var formatted;
         var parsed = new PhoneNumber({
             subscriberNumber: "61234567"
@@ -100,7 +101,6 @@ module.exports.phonefmt_HK = {
         var fmt = new PhoneFmt({locale: "en-HK", style: "default"});
         formatted = fmt.format(parsed);
         
-        test.expect(1);
         test.equal(formatted, expected);
         test.done();
         
@@ -108,6 +108,7 @@ module.exports.phonefmt_HK = {
     },
     
     testFormatHKMobileInternational: function(test) {
+        test.expect(1);
         var formatted;
         var parsed = new PhoneNumber({
                 iddPrefix: "+",
@@ -119,7 +120,6 @@ module.exports.phonefmt_HK = {
         var fmt = new PhoneFmt({locale: "en-HK", style: "default"});
         formatted = fmt.format(parsed);
         
-        test.expect(1);
         test.equal(formatted, expected);
         test.done();
         
@@ -127,6 +127,7 @@ module.exports.phonefmt_HK = {
     },
     
     testFormatHKService: function(test) {
+        test.expect(1);
         var formatted;
         var parsed = new PhoneNumber({
             serviceCode: "1",
@@ -137,7 +138,6 @@ module.exports.phonefmt_HK = {
         var fmt = new PhoneFmt({locale: "en-HK", style: "default"});
         formatted = fmt.format(parsed);
         
-        test.expect(1);
         test.equal(formatted, expected);
         test.done();
         
@@ -145,6 +145,7 @@ module.exports.phonefmt_HK = {
     },
     
     testFormatHKIEIDD: function(test) {
+        test.expect(1);
         var formatted;
         var parsed = new PhoneNumber({
                 iddPrefix: "+",
@@ -158,7 +159,6 @@ module.exports.phonefmt_HK = {
         var fmt = new PhoneFmt({locale: "en-HK", style: "default"});
         formatted = fmt.format(parsed);
         
-        test.expect(1);
         test.equal(formatted, expected);
         test.done();
         
@@ -166,6 +166,7 @@ module.exports.phonefmt_HK = {
     },
     
     testFormatHKStyle0Partial0: function(test) {
+        test.expect(1);
         var formatted;
         var parsed = new PhoneNumber({
                 subscriberNumber: "6"
@@ -175,13 +176,13 @@ module.exports.phonefmt_HK = {
         var fmt = new PhoneFmt({locale: "en-HK"});
         formatted = fmt.format(parsed, {partial: true});
         
-        test.expect(1);
         test.equal(formatted, expected);
         test.done();
         
         
     },
     testFormatHKStyle0Partial1: function(test) {
+        test.expect(1);
         var formatted;
         var parsed = new PhoneNumber({
                 subscriberNumber: "61"
@@ -191,13 +192,13 @@ module.exports.phonefmt_HK = {
         var fmt = new PhoneFmt({locale: "en-HK"});
         formatted = fmt.format(parsed, {partial: true});
         
-        test.expect(1);
         test.equal(formatted, expected);
         test.done();
         
         
     },
     testFormatHKStyle0Partial2: function(test) {
+        test.expect(1);
         var formatted;
         var parsed = new PhoneNumber({
                 subscriberNumber: "612"
@@ -207,13 +208,13 @@ module.exports.phonefmt_HK = {
         var fmt = new PhoneFmt({locale: "en-HK"});
         formatted = fmt.format(parsed, {partial: true});
         
-        test.expect(1);
         test.equal(formatted, expected);
         test.done();
         
         
     },
     testFormatHKStyle0Partial3: function(test) {
+        test.expect(1);
         var formatted;
         var parsed = new PhoneNumber({
                 subscriberNumber: "6123"
@@ -223,13 +224,13 @@ module.exports.phonefmt_HK = {
         var fmt = new PhoneFmt({locale: "en-HK"});
         formatted = fmt.format(parsed, {partial: true});
         
-        test.expect(1);
         test.equal(formatted, expected);
         test.done();
         
         
     },
     testFormatHKStyle0Partial4: function(test) {
+        test.expect(1);
         var formatted;
         var parsed = new PhoneNumber({
                 subscriberNumber: "61234"
@@ -239,13 +240,13 @@ module.exports.phonefmt_HK = {
         var fmt = new PhoneFmt({locale: "en-HK"});
         formatted = fmt.format(parsed, {partial: true});
         
-        test.expect(1);
         test.equal(formatted, expected);
         test.done();
         
         
     },
     testFormatHKStyle0Partial5: function(test) {
+        test.expect(1);
         var formatted;
         var parsed = new PhoneNumber({
                 subscriberNumber: "612345"
@@ -255,13 +256,13 @@ module.exports.phonefmt_HK = {
         var fmt = new PhoneFmt({locale: "en-HK"});
         formatted = fmt.format(parsed, {partial: true});
         
-        test.expect(1);
         test.equal(formatted, expected);
         test.done();
         
         
     },
     testFormatHKStyle0Partial6: function(test) {
+        test.expect(1);
         var formatted;
         var parsed = new PhoneNumber({
                 subscriberNumber: "6123456"
@@ -271,13 +272,13 @@ module.exports.phonefmt_HK = {
         var fmt = new PhoneFmt({locale: "en-HK"});
         formatted = fmt.format(parsed, {partial: true});
         
-        test.expect(1);
         test.equal(formatted, expected);
         test.done();
         
         
     },
     testFormatHKStyle0Partial7: function(test) {
+        test.expect(1);
         var formatted;
         var parsed = new PhoneNumber({
                 subscriberNumber: "61234567"
@@ -287,13 +288,13 @@ module.exports.phonefmt_HK = {
         var fmt = new PhoneFmt({locale: "en-HK"});
         formatted = fmt.format(parsed, {partial: true});
         
-        test.expect(1);
         test.equal(formatted, expected);
         test.done();
         
         
     },
     testFormatHKStyle0Partial8: function(test) {
+        test.expect(1);
         var formatted;
         var parsed = new PhoneNumber({
                 subscriberNumber: "612345678"    // too long
@@ -303,7 +304,6 @@ module.exports.phonefmt_HK = {
         var fmt = new PhoneFmt({locale: "en-HK"});
         formatted = fmt.format(parsed, {partial: true});
         
-        test.expect(1);
         test.equal(formatted, expected);
         test.done();
         

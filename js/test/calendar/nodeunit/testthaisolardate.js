@@ -69,90 +69,90 @@ module.exports.testthaisolardate = {
     },
 
     testThaiSolarDateConstructor: function(test) {
+        test.expect(1);
         var td = new ThaiSolarDate();
         
-        test.expect(1);
         test.ok(td !== null);
         test.done();
     },
     
     testThaiSolarDateConstructorFromRd: function(test) {
+        test.expect(2);
         var td = new ThaiSolarDate({rd: 0});
         
-        test.expect(2);
         test.equal(td.getRataDie(), 0);
         test.equal(td.getJulianDay(), 1523097.5);
         test.done();
     },
     
     testThaiSolarDateConstructorFromRd1: function(test) {
+        test.expect(2);
         var td = new ThaiSolarDate({rd: 1});
         
-        test.expect(2);
         test.equal(td.getRataDie(), 1);
         test.equal(td.getJulianDay(), 1523098.5);
         test.done();
     },
     
     testThaiSolarDateConstructorFromRd2: function(test) {
+        test.expect(2);
         var td = new ThaiSolarDate({rd: 2});
         
-        test.expect(2);
         test.equal(td.getRataDie(), 2);
         test.equal(td.getJulianDay(), 1523099.5);
         test.done();
     },
     
     testThaiSolarDateConstructorFromJD: function(test) {
+        test.expect(2);
         var td = new ThaiSolarDate({julianday: 1523096.5});
         
-        test.expect(2);
         test.equal(td.getRataDie(), -1);
         test.equal(td.getJulianDay(), 1523096.5);
         test.done();
     },
     
     testThaiSolarDateConstructorFromJD1: function(test) {
+        test.expect(2);
         var td = new ThaiSolarDate({julianday: 1523097.5});
         
-        test.expect(2);
         test.equal(td.getRataDie(), 0);
         test.equal(td.getJulianDay(), 1523097.5);
         test.done();
     },
     
     testThaiSolarDateConstructorFromJD2: function(test) {
+        test.expect(2);
         var td = new ThaiSolarDate({julianday: 1523098.5});
         
-        test.expect(2);
         test.equal(td.getRataDie(), 1);
         test.equal(td.getJulianDay(), 1523098.5);
         test.done();
     },
     
     testThaiSolarDateConstructorFromRdComplex1: function(test) {
+        test.expect(1);
         // start of the gregorian calendar
         var td = new ThaiSolarDate({rd: 198327}); 
         
-        test.expect(1);
         test.equal(td.getRataDie(), 198327);
         test.done();
     },
     
     testThaiSolarDateConstructorFromRdComplex2: function(test) {
+        test.expect(1);
         // start of the gregorian calendar
         var td = new ThaiSolarDate({rd: 198327}); 
         
-        test.expect(1);
         test.equal(td.getJulianDay(), 1721424.5);
         test.done();
     },
     
     testThaiSolarDateConstructorFromRdComplex3: function(test) {
+        test.expect(7);
         // start of the gregorian calendar
         var td = new ThaiSolarDate({rd: 198327, timezone: "Etc/UTC"}); 
         
-        test.expect(7);
         test.equal(td.getYears(), 543);
         test.equal(td.getMonths(), 12);
         test.equal(td.getDays(), 31);
@@ -165,18 +165,18 @@ module.exports.testthaisolardate = {
     
     /* julian date is rd 366 + epoch */
     testThaiSolarDateConstructorFromJDRightRd: function(test) {
+        test.expect(1);
         var td = new ThaiSolarDate({julianday: 1721790.75});
         
-        test.expect(1);
         test.equal(td.getRataDie(), 366.25 + 198327);
         test.done();
     },
     
     /* julian date is rd 366 + epoch */
     testThaiSolarDateConstructorFromJDYear2: function(test) {
+        test.expect(8);
         var td = new ThaiSolarDate({julianday: 1721790.75, timezone: "Etc/UTC"});
         
-        test.expect(8);
         test.equal(typeof(td), 'object');
         test.equal(td.getYears(), 545);
         test.equal(td.getMonths(), 1);
@@ -189,9 +189,9 @@ module.exports.testthaisolardate = {
     },
     
     testThaiSolarDateAfterLeapYear: function(test) {
+        test.expect(8);
         var td = new ThaiSolarDate({julianday: 1723071.9, timezone: "Etc/UTC"});  // jul 5, 05, 9:36am
         
-        test.expect(8);
         test.equal(typeof(td), 'object');
         test.equal(td.getYears(), 548);
         test.equal(td.getMonths(), 7);
@@ -204,9 +204,9 @@ module.exports.testthaisolardate = {
     },
     
     testThaiSolarDateJan31Midnight: function(test) {
+        test.expect(8);
         var td = new ThaiSolarDate({rd: 932860, timezone: "Etc/UTC"});  // Jan 31, 2555 12:00am
         
-        test.expect(8);
         test.equal(typeof(td), 'object');
         test.equal(td.getYears(), 2555);
         test.equal(td.getMonths(), 1);
@@ -219,9 +219,9 @@ module.exports.testthaisolardate = {
     },
     
     testThaiSolarDateJan31Noon: function(test) {
+        test.expect(8);
         var td = new ThaiSolarDate({rd: 932860.5, timezone: "Etc/UTC"});  // Jan 31, 2555 12:00pm
         
-        test.expect(8);
         test.equal(typeof(td), 'object');
         test.equal(td.getYears(), 2555);
         test.equal(td.getMonths(), 1);
@@ -234,9 +234,9 @@ module.exports.testthaisolardate = {
     },
     
     testThaiSolarDateFeb1: function(test) {
+        test.expect(8);
         var td = new ThaiSolarDate({rd: 932861.5, timezone: "Etc/UTC"});  // Feb 1, 2555 12:00pm
         
-        test.expect(8);
         test.equal(typeof(td), 'object');
         test.equal(td.getYears(), 2555);
         test.equal(td.getMonths(), 2);
@@ -249,9 +249,9 @@ module.exports.testthaisolardate = {
     },
     
     testThaiSolarDateFeb28LeapYear: function(test) {
+        test.expect(8);
         var td = new ThaiSolarDate({rd: 932888.5, timezone: "Etc/UTC"});  // Feb 28, 2555 12:00pm
         
-        test.expect(8);
         test.equal(typeof(td), 'object');
         test.equal(td.getYears(), 2555);
         test.equal(td.getMonths(), 2);
@@ -264,9 +264,9 @@ module.exports.testthaisolardate = {
     },
     
     testThaiSolarDateFeb29LeapYear: function(test) {
+        test.expect(8);
         var td = new ThaiSolarDate({rd: 932889.5, timezone: "Etc/UTC"});  // Feb 29, 2555 12:00pm
         
-        test.expect(8);
         test.equal(typeof(td), 'object');
         test.equal(td.getYears(), 2555);
         test.equal(td.getMonths(), 2);
@@ -279,9 +279,9 @@ module.exports.testthaisolardate = {
     },
     
     testThaiSolarDateMar1LeapYear: function(test) {
+        test.expect(8);
         var td = new ThaiSolarDate({rd: 932890.5, timezone: "Etc/UTC"});  // Mar 1, 2555 12:00pm
         
-        test.expect(8);
         test.equal(typeof(td), 'object');
         test.equal(td.getYears(), 2555);
         test.equal(td.getMonths(), 3);
@@ -294,9 +294,9 @@ module.exports.testthaisolardate = {
     },
     
     testThaiSolarDateMar31LeapYear: function(test) {
+        test.expect(8);
         var td = new ThaiSolarDate({rd: 932920.5, timezone: "Etc/UTC"});  // Mar 31, 2555 12:00pm
         
-        test.expect(8);
         test.equal(typeof(td), 'object');
         test.equal(td.getYears(), 2555);
         test.equal(td.getMonths(), 3);
@@ -309,9 +309,9 @@ module.exports.testthaisolardate = {
     },
     
     testThaiSolarDateApr1LeapYear: function(test) {
+        test.expect(8);
         var td = new ThaiSolarDate({rd: 932921.5, timezone: "Etc/UTC"});  // Apr 1, 2555 12:00pm
         
-        test.expect(8);
         test.equal(typeof(td), 'object');
         test.equal(td.getYears(), 2555);
         test.equal(td.getMonths(), 4);
@@ -324,9 +324,9 @@ module.exports.testthaisolardate = {
     },
     
     testThaiSolarDateDec31LeapYear: function(test) {
+        test.expect(8);
         var td = new ThaiSolarDate({rd: 933195.5, timezone: "Etc/UTC"});  // Dec 31, 2555 12:00pm
         
-        test.expect(8);
         test.equal(typeof(td), 'object');
         test.equal(td.getYears(), 2555);
         test.equal(td.getMonths(), 12);
@@ -339,9 +339,9 @@ module.exports.testthaisolardate = {
     },
     
     testThaiSolarDateJan1NonLeapYear: function(test) {
+        test.expect(8);
         var td = new ThaiSolarDate({rd: 933196.5, timezone: "Etc/UTC"});  // Jan 1, 2556 12:00pm
         
-        test.expect(8);
         test.equal(typeof(td), 'object');
         test.equal(td.getYears(), 2556);
         test.equal(td.getMonths(), 1);
@@ -354,9 +354,9 @@ module.exports.testthaisolardate = {
     },
     
     testThaiSolarDateFeb28NonLeapYear: function(test) {
+        test.expect(8);
         var td = new ThaiSolarDate({rd: 933254.5, timezone: "Etc/UTC"});  // Feb 28, 2556 12:00pm
         
-        test.expect(8);
         test.equal(typeof(td), 'object');
         test.equal(td.getYears(), 2556);
         test.equal(td.getMonths(), 2);
@@ -369,9 +369,9 @@ module.exports.testthaisolardate = {
     },
     
     testThaiSolarDateMar1NonLeapYear: function(test) {
+        test.expect(8);
         var td = new ThaiSolarDate({rd: 933255.5, timezone: "Etc/UTC"});  // Mar 1, 2556 12:00pm
         
-        test.expect(8);
         test.equal(typeof(td), 'object');
         test.equal(td.getYears(), 2556);
         test.equal(td.getMonths(), 3);
@@ -384,9 +384,9 @@ module.exports.testthaisolardate = {
     },
     
     testThaiSolarDateMar31NonLeapYear: function(test) {
+        test.expect(8);
         var td = new ThaiSolarDate({rd: 933285.5, timezone: "Etc/UTC"});  // Mar 31, 2556 12:00pm
         
-        test.expect(8);
         test.equal(typeof(td), 'object');
         test.equal(td.getYears(), 2556);
         test.equal(td.getMonths(), 3);
@@ -399,9 +399,9 @@ module.exports.testthaisolardate = {
     },
     
     testThaiSolarDateApr1NonLeapYear: function(test) {
+        test.expect(8);
         var td = new ThaiSolarDate({rd: 933286.5, timezone: "Etc/UTC"});  // Apr 1, 2556 12:00pm
         
-        test.expect(8);
         test.equal(typeof(td), 'object');
         test.equal(td.getYears(), 2556);
         test.equal(td.getMonths(), 4);
@@ -414,9 +414,9 @@ module.exports.testthaisolardate = {
     },
     
     testThaiSolarDateAfterCentury: function(test) {
+        test.expect(8);
         var td = new ThaiSolarDate({julianday: 1758231.8, timezone: "Etc/UTC"}); // Oct 10, 101, 7:12am
         
-        test.expect(8);
         test.equal(typeof(td), 'object');
         test.equal(td.getYears(), 644);
         test.equal(td.getMonths(), 10);
@@ -429,9 +429,9 @@ module.exports.testthaisolardate = {
     },
     
     testThaiSolarDateAfterQuadCentury: function(test) {
+        test.expect(8);
         var td = new ThaiSolarDate({julianday: 1867706.833333333333, timezone: "Etc/UTC"}); // Jul 4, 401, 8:00pm
         
-        test.expect(8);
         test.equal(typeof(td), 'object');
         test.equal(td.getYears(), 944);
         test.equal(td.getMonths(), 7);
@@ -444,9 +444,9 @@ module.exports.testthaisolardate = {
     },
     
     testThaiSolarDateEndOfYear: function(test) {
+        test.expect(8);
         var td = new ThaiSolarDate({julianday: 2455196.5, timezone: "Etc/UTC"});
         
-        test.expect(8);
         test.equal(typeof(td), 'object');
         test.equal(td.getYears(), 2552);
         test.equal(td.getMonths(), 12);
@@ -459,9 +459,9 @@ module.exports.testthaisolardate = {
     },
     
     testThaiSolarDateBeginningOfYear: function(test) {
+        test.expect(8);
         var td = new ThaiSolarDate({julianday: 2455197.5, timezone: "Etc/UTC"});
         
-        test.expect(8);
         test.equal(typeof(td), 'object');
         test.equal(td.getYears(), 2553);
         test.equal(td.getMonths(), 1);
@@ -474,9 +474,9 @@ module.exports.testthaisolardate = {
     },
     
     testThaiSolarDateEndOfYearLeapYear: function(test) {
+        test.expect(8);
         var td = new ThaiSolarDate({julianday: 2454831.5, timezone: "Etc/UTC"});
         
-        test.expect(8);
         test.equal(typeof(td), 'object');
         test.equal(td.getYears(), 2551);
         test.equal(td.getMonths(), 12);
@@ -489,9 +489,9 @@ module.exports.testthaisolardate = {
     },
     
     testThaiSolarDateBeginningOfYearAfterLeapYear: function(test) {
+        test.expect(8);
         var td = new ThaiSolarDate({julianday: 2454832.5, timezone: "Etc/UTC"});
         
-        test.expect(8);
         test.equal(typeof(td), 'object');
         test.equal(td.getYears(), 2552);
         test.equal(td.getMonths(), 1);
@@ -504,9 +504,9 @@ module.exports.testthaisolardate = {
     },
     
     testThaiSolarDateEndOfYear0Rd: function(test) {
+        test.expect(8);
         var td = new ThaiSolarDate({rd: 0, timezone: "Etc/UTC"});
         
-        test.expect(8);
         test.equal(typeof(td), 'object');
         test.equal(td.getYears(), 0);
         test.equal(td.getMonths(), 12);
@@ -519,9 +519,9 @@ module.exports.testthaisolardate = {
     },
     
     testThaiSolarDateBeginningOfYearRd: function(test) {
+        test.expect(8);
         var td = new ThaiSolarDate({rd: 1, timezone: "Etc/UTC"});
         
-        test.expect(8);
         test.equal(typeof(td), 'object');
         test.equal(td.getYears(), 1);
         test.equal(td.getMonths(), 1);
@@ -534,9 +534,9 @@ module.exports.testthaisolardate = {
     },
     
     testThaiSolarDateAlmostEndOfYearRd: function(test) {
+        test.expect(8);
         var td = new ThaiSolarDate({rd: 364, timezone: "Etc/UTC"});
         
-        test.expect(8);
         test.equal(typeof(td), 'object');
         test.equal(td.getYears(), 1);
         test.equal(td.getMonths(), 12);
@@ -549,9 +549,9 @@ module.exports.testthaisolardate = {
     },
     
     testThaiSolarDateEndOfYearRd: function(test) {
+        test.expect(8);
         var td = new ThaiSolarDate({rd: 365, timezone: "Etc/UTC"});
         
-        test.expect(8);
         test.equal(typeof(td), 'object');
         test.equal(td.getYears(), 1);
         test.equal(td.getMonths(), 12);
@@ -564,9 +564,9 @@ module.exports.testthaisolardate = {
     },
     
     testThaiSolarDateBeginningOfYear2Rd: function(test) {
+        test.expect(8);
         var td = new ThaiSolarDate({rd: 366, timezone: "Etc/UTC"});
         
-        test.expect(8);
         test.equal(typeof(td), 'object');
         test.equal(td.getYears(), 2);
         test.equal(td.getMonths(), 1);
@@ -584,7 +584,7 @@ module.exports.testthaisolardate = {
         for (var i = 0; i < testDates.length; i++) {
             td = new ThaiSolarDate({julianday: testDates[i][0], timezone: "Etc/UTC"});
         
-        // console.log("testing jd=" + testDates[i][0]);
+            // console.log("testing jd=" + testDates[i][0]);
             
             test.equal(typeof(td), 'object');
             test.equal(td.getYears(), testDates[i][1]);
@@ -600,6 +600,7 @@ module.exports.testthaisolardate = {
     },
     
     testThaiSolarDateConstructorFull: function(test) {
+        test.expect(8);
         var td = new ThaiSolarDate({
             year: 2553, 
             month: 9, 
@@ -611,7 +612,6 @@ module.exports.testthaisolardate = {
             timezone: "Etc/UTC"
         });
         
-        test.expect(8);
         test.ok(td !== null);
         
         test.equal(td.getYears(), 2553);
@@ -625,6 +625,7 @@ module.exports.testthaisolardate = {
     },
     
     testThaiSolarDateConstructorFullWithStrings: function(test) {
+        test.expect(8);
         // often you get strings from a UI element instead of numbers... 
         // this constructor should work with numbers or strings
         var td = new ThaiSolarDate({
@@ -638,7 +639,6 @@ module.exports.testthaisolardate = {
             timezone: "Etc/UTC"
         });
         
-        test.expect(8);
         test.ok(td !== null);
         
         test.equal(td.getYears(), 2553);
@@ -652,6 +652,7 @@ module.exports.testthaisolardate = {
     },
     
     testThaiSolarDateConstructorCopy: function(test) {
+        test.expect(8);
         var td2 = new ThaiSolarDate({
             year: 2553, 
             month: 9, 
@@ -664,7 +665,6 @@ module.exports.testthaisolardate = {
         });
         var td = new ThaiSolarDate(td2);
         
-        test.expect(8);
         test.ok(td !== null);
         
         test.equal(td.getYears(), 2553);
@@ -678,9 +678,9 @@ module.exports.testthaisolardate = {
     },
     
     testThaiSolarDateConstructorEmpty: function(test) {
+        test.expect(8);
         var td = new ThaiSolarDate();
         var now = new Date(td.getTime()); // compare against the JS date
-        test.expect(8);
         test.ok(td !== null);
         
         test.equal(now.getFullYear()+543, td.getYears(), "year");
@@ -694,11 +694,11 @@ module.exports.testthaisolardate = {
     },
     
     testThaiSolarDateConstructorUnixTime: function(test) {
+        test.expect(8);
         var td = new ThaiSolarDate({
             unixtime: 61000, 
             timezone: "Etc/UTC"
         });
-        test.expect(8);
         test.ok(td !== null);
         
         test.equal(2513, td.getYears(), "year");
@@ -726,7 +726,7 @@ module.exports.testthaisolardate = {
                 timezone: "Etc/UTC"
             });
         
-        // console.log("testing jd=" + testDates[i][0]);
+            // console.log("testing jd=" + testDates[i][0]);
             
             test.equal(typeof(td), 'object');
             test.equal(td.getJulianDay(), testDates[i][0]);
@@ -736,9 +736,9 @@ module.exports.testthaisolardate = {
     },
     
     testThaiSolarDateSetYears: function(test) {
+        test.expect(2);
         var td = new ThaiSolarDate();
         
-        test.expect(2);
         test.ok(td !== null);
         
         td.setYears(123);
@@ -748,9 +748,9 @@ module.exports.testthaisolardate = {
     },
     
     testThaiSolarDateSetMonths: function(test) {
+        test.expect(2);
         var td = new ThaiSolarDate();
         
-        test.expect(2);
         test.ok(td !== null);
         
         td.setMonths(7);
@@ -760,9 +760,9 @@ module.exports.testthaisolardate = {
     },
     
     testThaiSolarDateSetDays: function(test) {
+        test.expect(2);
         var td = new ThaiSolarDate();
         
-        test.expect(2);
         test.ok(td !== null);
         
         td.setDays(12);
@@ -772,9 +772,9 @@ module.exports.testthaisolardate = {
     },
     
     testThaiSolarDateSetHours: function(test) {
+        test.expect(2);
         var td = new ThaiSolarDate();
         
-        test.expect(2);
         test.ok(td !== null);
         
         td.setHours(12);
@@ -784,9 +784,9 @@ module.exports.testthaisolardate = {
     },
     
     testThaiSolarDateSetMinutes: function(test) {
+        test.expect(2);
         var td = new ThaiSolarDate();
         
-        test.expect(2);
         test.ok(td !== null);
         
         td.setMinutes(13);
@@ -796,9 +796,9 @@ module.exports.testthaisolardate = {
     },
     
     testThaiSolarDateSetSeconds: function(test) {
+        test.expect(2);
         var td = new ThaiSolarDate();
         
-        test.expect(2);
         test.ok(td !== null);
         
         td.setSeconds(23);
@@ -808,9 +808,9 @@ module.exports.testthaisolardate = {
     },
     
     testThaiSolarDateSetMilliseconds: function(test) {
+        test.expect(2);
         var td = new ThaiSolarDate();
         
-        test.expect(2);
         test.ok(td !== null);
         
         td.setMilliseconds(123);
@@ -820,6 +820,7 @@ module.exports.testthaisolardate = {
     },
     
     testThaiSolarDateGetDayOfWeekWithTZ: function(test) {
+        test.expect(2);
         // often you get strings from a UI element instead of numbers... 
         // this constructor should work with numbers or strings
         var td = new ThaiSolarDate({
@@ -833,7 +834,6 @@ module.exports.testthaisolardate = {
             timezone: "America/Los_Angeles"
         });
         
-        test.expect(2);
         test.ok(td !== null);
         
         test.equal(td.getDayOfWeek(), 4);
@@ -841,6 +841,7 @@ module.exports.testthaisolardate = {
     },
     
     testGetDayOfWeekSimple1: function(test) {
+        test.expect(2);
         var td = new ThaiSolarDate({
             timezone: "Etc/UTC",
             year: 1, 
@@ -849,7 +850,6 @@ module.exports.testthaisolardate = {
             timezone: "Etc/UTC"
         });
         
-        test.expect(2);
         test.ok(td !== null);
         
         test.equal(td.getDayOfWeek(), 5);
@@ -857,6 +857,7 @@ module.exports.testthaisolardate = {
     },
     
     testGetDayOfWeekGregorianDay1: function(test) {
+        test.expect(2);
         var td = new ThaiSolarDate({
             timezone: "Etc/UTC",
             year: 544,
@@ -865,7 +866,6 @@ module.exports.testthaisolardate = {
             timezone: "Etc/UTC"
         });
         
-        test.expect(2);
         test.ok(td !== null);
         
         test.equal(td.getDayOfWeek(), 1);
@@ -873,12 +873,12 @@ module.exports.testthaisolardate = {
     },
     
     testGetDayOfWeekGregorianDay1ByJD: function(test) {
+        test.expect(2);
         var td = new ThaiSolarDate({
             timezone: "Etc/UTC",
             julianday: 1721424.5
         });
         
-        test.expect(2);
         test.ok(td !== null);
         
         test.equal(td.getDayOfWeek(), 0);
@@ -886,6 +886,7 @@ module.exports.testthaisolardate = {
     },
     
     testGetDayOfWeekSimple2: function(test) {
+        test.expect(2);
         var td = new ThaiSolarDate({
             timezone: "Etc/UTC",
             year: 0,
@@ -894,7 +895,6 @@ module.exports.testthaisolardate = {
             timezone: "Etc/UTC"
         });
         
-        test.expect(2);
         test.ok(td !== null);
         
         test.equal(td.getDayOfWeek(), 4);
@@ -902,6 +902,7 @@ module.exports.testthaisolardate = {
     },
     
     testGetDayOfWeekSimple3: function(test) {
+        test.expect(2);
         var td = new ThaiSolarDate({
             timezone: "Etc/UTC",
             year: 1,
@@ -910,7 +911,6 @@ module.exports.testthaisolardate = {
             timezone: "Etc/UTC"
         });
         
-        test.expect(2);
         test.ok(td !== null);
         
         test.equal(td.getDayOfWeek(), 6);
@@ -918,6 +918,7 @@ module.exports.testthaisolardate = {
     },
     
     testGetDayOfWeekSimple4: function(test) {
+        test.expect(2);
         var td = new ThaiSolarDate({
             timezone: "Etc/UTC",
             year: 1,
@@ -926,7 +927,6 @@ module.exports.testthaisolardate = {
             timezone: "Etc/UTC"
         });
         
-        test.expect(2);
         test.ok(td !== null);
         
         test.equal(td.getDayOfWeek(), 0);
@@ -934,6 +934,7 @@ module.exports.testthaisolardate = {
     },
     
     testGetDayOfWeekSimple5: function(test) {
+        test.expect(2);
         var td = new ThaiSolarDate({
             timezone: "Etc/UTC",
             year: 1,
@@ -942,7 +943,6 @@ module.exports.testthaisolardate = {
             timezone: "Etc/UTC"
         });
         
-        test.expect(2);
         test.ok(td !== null);
         
         test.equal(td.getDayOfWeek(), 1);
@@ -950,6 +950,7 @@ module.exports.testthaisolardate = {
     },
     
     testGetDayOfWeek1: function(test) {
+        test.expect(2);
         var td = new ThaiSolarDate({
             timezone: "Etc/UTC",
             year: 2554, 
@@ -958,7 +959,6 @@ module.exports.testthaisolardate = {
             timezone: "Etc/UTC"
         });
         
-        test.expect(2);
         test.ok(td !== null);
         
         test.equal(td.getDayOfWeek(), 5);
@@ -966,6 +966,7 @@ module.exports.testthaisolardate = {
     },
     
     testGetDayOfWeekWithTime: function(test) {
+        test.expect(2);
         var td = new ThaiSolarDate({
             timezone: "Etc/UTC",
             year: 2554, 
@@ -977,7 +978,6 @@ module.exports.testthaisolardate = {
             timezone: "Etc/UTC"
         });
         
-        test.expect(2);
         test.ok(td !== null);
         
         test.equal(td.getDayOfWeek(), 5);
@@ -985,6 +985,7 @@ module.exports.testthaisolardate = {
     },
     
     testGetDayOfWeek2: function(test) {
+        test.expect(2);
         var td = new ThaiSolarDate({
             timezone: "Etc/UTC",
             year: 2191, 
@@ -993,7 +994,6 @@ module.exports.testthaisolardate = {
             timezone: "Etc/UTC"
         });
         
-        test.expect(2);
         test.ok(td !== null);
         
         test.equal(td.getDayOfWeek(), 3);
@@ -1001,6 +1001,7 @@ module.exports.testthaisolardate = {
     },
     
     testGetDayOfWeek3: function(test) {
+        test.expect(2);
         var td = new ThaiSolarDate({
             timezone: "Etc/UTC",
             year: 1733, 
@@ -1009,7 +1010,6 @@ module.exports.testthaisolardate = {
             timezone: "Etc/UTC"
         });
         
-        test.expect(2);
         test.ok(td !== null);
         
         test.equal(td.getDayOfWeek(), 5);
@@ -1017,6 +1017,7 @@ module.exports.testthaisolardate = {
     },
     
     testGetDayOfWeek4: function(test) {
+        test.expect(2);
         var td = new ThaiSolarDate({
             timezone: "Etc/UTC",
             year: -43, 
@@ -1025,7 +1026,6 @@ module.exports.testthaisolardate = {
             timezone: "Etc/UTC"
         });
         
-        test.expect(2);
         test.ok(td !== null);
         
         test.equal(td.getDayOfWeek(), 0);
@@ -1033,13 +1033,13 @@ module.exports.testthaisolardate = {
     },
     
     testThaiSolarDateTestGetTimeZero: function(test) {
+        test.expect(2);
         var td = new ThaiSolarDate({
             year: 2513, 
             month: 1, 
             day: 1,
             timezone: "Etc/UTC"
         });
-        test.expect(2);
         test.ok(td !== null);
         
         test.equal(td.getTime(), 0);
@@ -1047,6 +1047,7 @@ module.exports.testthaisolardate = {
     },
     
     testThaiSolarDateTestGetTime: function(test) {
+        test.expect(2);
         var td = new ThaiSolarDate({
             year: 2513, 
             month: 1, 
@@ -1055,7 +1056,6 @@ module.exports.testthaisolardate = {
                minute: 30,
             timezone: "Etc/UTC"
         });
-        test.expect(2);
         test.ok(td !== null);
         
         test.equal(td.getTime(), 203400000);
@@ -1063,13 +1063,13 @@ module.exports.testthaisolardate = {
     },
     
     testThaiSolarDateTestGetTimeTooEarly: function(test) {
+        test.expect(2);
         var td = new ThaiSolarDate({
             year: 2512, 
             month: 12, 
             day: 31,
             timezone: "Etc/UTC"
         });
-        test.expect(2);
         test.ok(td !== null);
         
         test.equal(td.getTime(), -1);
@@ -1077,13 +1077,13 @@ module.exports.testthaisolardate = {
     },
     
     testThaiSolarDateTestGetTimeTooLate: function(test) {
+        test.expect(2);
         var td = new ThaiSolarDate({
             year: 2581, 
             month: 1, 
             day: 20,
             timezone: "Etc/UTC"
         });
-        test.expect(2);
         test.ok(td !== null);
         
         test.equal(td.getTime(), -1);
@@ -1091,13 +1091,13 @@ module.exports.testthaisolardate = {
     },
     
     testThaiSolarDateTestSetTime1: function(test) {
+        test.expect(8);
         var td = new ThaiSolarDate({
             year: 2513, 
             month: 1, 
             day: 1,
             timezone: "Etc/UTC"
         });
-        test.expect(8);
         test.ok(td !== null);
         test.equal(td.getTime(), 0);
         
@@ -1114,6 +1114,7 @@ module.exports.testthaisolardate = {
     },
     
     testThaiSolarDateTestSetTimeZero: function(test) {
+        test.expect(7);
         var td = new ThaiSolarDate({
             year: -1, 
             month: 1, 
@@ -1124,7 +1125,6 @@ module.exports.testthaisolardate = {
                millisecond: 1,
                timezone: "Etc/UTC"
         });
-        test.expect(7);
         test.ok(td !== null);
         
         td.setTime(0);
@@ -1140,6 +1140,7 @@ module.exports.testthaisolardate = {
     
     // test some of the helper functions to make sure they are producing the right thing
     testThaiSolarDateOnOrBeforeSun: function(test) {
+        test.expect(3);
         var td = new ThaiSolarDate({
             timezone: "Etc/UTC",
             year: 2553, 
@@ -1147,7 +1148,6 @@ module.exports.testthaisolardate = {
             day: 1,
             timezone: "Etc/UTC"
         });
-        test.expect(3);
         test.ok(td !== null);
         
         test.equal(td.getDayOfWeek(), 5); // Friday
@@ -1159,6 +1159,7 @@ module.exports.testthaisolardate = {
     },
     
     testThaiSolarDateOnOrBeforeMon: function(test) {
+        test.expect(3);
         var td = new ThaiSolarDate({
             timezone: "Etc/UTC",
             year: 2553, 
@@ -1166,7 +1167,6 @@ module.exports.testthaisolardate = {
             day: 1,
             timezone: "Etc/UTC"
         });
-        test.expect(3);
         test.ok(td !== null);
         
         test.equal(td.getDayOfWeek(), 5); // Friday
@@ -1177,6 +1177,7 @@ module.exports.testthaisolardate = {
     },
     
     testThaiSolarDateOnOrBeforeTue: function(test) {
+        test.expect(3);
         var td = new ThaiSolarDate({
             timezone: "Etc/UTC",
             year: 2553, 
@@ -1184,7 +1185,6 @@ module.exports.testthaisolardate = {
             day: 1,
             timezone: "Etc/UTC"
         });
-        test.expect(3);
         test.ok(td !== null);
         
         test.equal(td.getDayOfWeek(), 5); // Friday
@@ -1195,6 +1195,7 @@ module.exports.testthaisolardate = {
     },
     
     testThaiSolarDateOnOrBeforeWed: function(test) {
+        test.expect(3);
         var td = new ThaiSolarDate({
             timezone: "Etc/UTC",
             year: 2553, 
@@ -1202,7 +1203,6 @@ module.exports.testthaisolardate = {
             day: 1,
             timezone: "Etc/UTC"
         });
-        test.expect(3);
         test.ok(td !== null);
         
         test.equal(td.getDayOfWeek(), 5); // Friday
@@ -1213,6 +1213,7 @@ module.exports.testthaisolardate = {
     },
     
     testThaiSolarDateOnOrBeforeThu: function(test) {
+        test.expect(3);
         var td = new ThaiSolarDate({
             timezone: "Etc/UTC",
             year: 2553, 
@@ -1220,7 +1221,6 @@ module.exports.testthaisolardate = {
             day: 1,
             timezone: "Etc/UTC"
         });
-        test.expect(3);
         test.ok(td !== null);
         
         test.equal(td.getDayOfWeek(), 5); // Friday
@@ -1231,6 +1231,7 @@ module.exports.testthaisolardate = {
     },
     
     testThaiSolarDateOnOrBeforeFri: function(test) {
+        test.expect(3);
         var td = new ThaiSolarDate({
             timezone: "Etc/UTC",
             year: 2553, 
@@ -1238,7 +1239,6 @@ module.exports.testthaisolardate = {
             day: 1,
             timezone: "Etc/UTC"
         });
-        test.expect(3);
         test.ok(td !== null);
         
         test.equal(td.getDayOfWeek(), 5); // Friday
@@ -1249,6 +1249,7 @@ module.exports.testthaisolardate = {
     },
     
     testThaiSolarDateOnOrBeforeSat: function(test) {
+        test.expect(3);
         var td = new ThaiSolarDate({
             timezone: "Etc/UTC",
             year: 2553, 
@@ -1256,7 +1257,6 @@ module.exports.testthaisolardate = {
             day: 1,
             timezone: "Etc/UTC"
         });
-        test.expect(3);
         test.ok(td !== null);
         
         test.equal(td.getDayOfWeek(), 5); // Friday
@@ -1267,6 +1267,7 @@ module.exports.testthaisolardate = {
     },
     
     testThaiSolarDateOnOrBeforeSunWithTime: function(test) {
+        test.expect(3);
         var td = new ThaiSolarDate({
             timezone: "Etc/UTC",
             year: 2553, 
@@ -1275,7 +1276,6 @@ module.exports.testthaisolardate = {
                hour: 8,
             timezone: "Etc/UTC"
         });
-        test.expect(3);
         test.ok(td !== null);
         
         test.equal(td.getDayOfWeek(), 5); // Friday
@@ -1288,6 +1288,7 @@ module.exports.testthaisolardate = {
     },
     
     testThaiSolarDateOnOrAfterSun: function(test) {
+        test.expect(3);
         var td = new ThaiSolarDate({
             timezone: "Etc/UTC",
             year: 2553, 
@@ -1295,7 +1296,6 @@ module.exports.testthaisolardate = {
             day: 1,
             timezone: "Etc/UTC"
         });
-        test.expect(3);
         test.ok(td !== null);
         
         test.equal(td.getDayOfWeek(), 5); // Friday
@@ -1307,6 +1307,7 @@ module.exports.testthaisolardate = {
     },
     
     testThaiSolarDateOnOrAfterSunDate: function(test) {
+        test.expect(5);
         var td = new ThaiSolarDate({
             timezone: "Etc/UTC",
             year: 2553, 
@@ -1314,7 +1315,6 @@ module.exports.testthaisolardate = {
             day: 1,
             timezone: "Etc/UTC"
         });
-        test.expect(5);
         test.ok(td !== null);
         
         test.equal(td.getDayOfWeek(), 5); // Friday
@@ -1328,6 +1328,7 @@ module.exports.testthaisolardate = {
     },
     
     testThaiSolarDateOnOrAfterMon: function(test) {
+        test.expect(3);
         var td = new ThaiSolarDate({
             timezone: "Etc/UTC",
             year: 2553, 
@@ -1335,7 +1336,6 @@ module.exports.testthaisolardate = {
             day: 1,
             timezone: "Etc/UTC"
         });
-        test.expect(3);
         test.ok(td !== null);
         
         test.equal(td.getDayOfWeek(), 5); // Friday
@@ -1346,6 +1346,7 @@ module.exports.testthaisolardate = {
     },
     
     testThaiSolarDateOnOrAfterMonDate: function(test) {
+        test.expect(5);
         var td = new ThaiSolarDate({
             timezone: "Etc/UTC",
             year: 2553,
@@ -1353,7 +1354,6 @@ module.exports.testthaisolardate = {
             day: 1,
             timezone: "Etc/UTC"
         });
-        test.expect(5);
         test.ok(td !== null);
         
         test.equal(td.getDayOfWeek(), 5); // Friday
@@ -1366,6 +1366,7 @@ module.exports.testthaisolardate = {
     },
     
     testThaiSolarDateOnOrAfterTue: function(test) {
+        test.expect(3);
         var td = new ThaiSolarDate({
             timezone: "Etc/UTC",
             year: 2553, 
@@ -1373,7 +1374,6 @@ module.exports.testthaisolardate = {
             day: 1,
             timezone: "Etc/UTC"
         });
-        test.expect(3);
         test.ok(td !== null);
         
         test.equal(td.getDayOfWeek(), 5); // Friday
@@ -1384,6 +1384,7 @@ module.exports.testthaisolardate = {
     },
     
     testThaiSolarDateOnOrAfterWed: function(test) {
+        test.expect(3);
         var td = new ThaiSolarDate({
             timezone: "Etc/UTC",
             year: 2553, 
@@ -1391,7 +1392,6 @@ module.exports.testthaisolardate = {
             day: 1,
             timezone: "Etc/UTC"
         });
-        test.expect(3);
         test.ok(td !== null);
         
         test.equal(td.getDayOfWeek(), 5); // Friday
@@ -1402,6 +1402,7 @@ module.exports.testthaisolardate = {
     },
     
     testThaiSolarDateOnOrAfterThu: function(test) {
+        test.expect(3);
         var td = new ThaiSolarDate({
             timezone: "Etc/UTC",
             year: 2553, 
@@ -1409,7 +1410,6 @@ module.exports.testthaisolardate = {
             day: 1,
             timezone: "Etc/UTC"
         });
-        test.expect(3);
         test.ok(td !== null);
         
         test.equal(td.getDayOfWeek(), 5); // Friday
@@ -1420,6 +1420,7 @@ module.exports.testthaisolardate = {
     },
     
     testThaiSolarDateOnOrAfterThuDate: function(test) {
+        test.expect(5);
         var td = new ThaiSolarDate({
             timezone: "Etc/UTC",
             year: 2553, 
@@ -1427,7 +1428,6 @@ module.exports.testthaisolardate = {
             day: 1,
             timezone: "Etc/UTC"
         });
-        test.expect(5);
         test.ok(td !== null);
         
         test.equal(td.getDayOfWeek(), 5); // Friday
@@ -1440,6 +1440,7 @@ module.exports.testthaisolardate = {
     },
     
     testThaiSolarDateOnOrAfterFri: function(test) {
+        test.expect(3);
         var td = new ThaiSolarDate({
             timezone: "Etc/UTC",
             year: 2553, 
@@ -1447,7 +1448,6 @@ module.exports.testthaisolardate = {
             day: 1,
             timezone: "Etc/UTC"
         });
-        test.expect(3);
         test.ok(td !== null);
         
         test.equal(td.getDayOfWeek(), 5); // Friday
@@ -1458,6 +1458,7 @@ module.exports.testthaisolardate = {
     },
     
     testThaiSolarDateOnOrAfterFriDate: function(test) {
+        test.expect(5);
         var td = new ThaiSolarDate({
             timezone: "Etc/UTC",
             year: 2553, 
@@ -1465,7 +1466,6 @@ module.exports.testthaisolardate = {
             day: 1,
             timezone: "Etc/UTC"
         });
-        test.expect(5);
         test.ok(td !== null);
         
         test.equal(td.getDayOfWeek(), 5); // Friday
@@ -1478,6 +1478,7 @@ module.exports.testthaisolardate = {
     },
     
     testThaiSolarDateOnOrAfterSat: function(test) {
+        test.expect(3);
         var td = new ThaiSolarDate({
             timezone: "Etc/UTC",
             year: 2553, 
@@ -1485,7 +1486,6 @@ module.exports.testthaisolardate = {
             day: 1,
             timezone: "Etc/UTC"
         });
-        test.expect(3);
         test.ok(td !== null);
         
         test.equal(td.getDayOfWeek(), 5); // Friday
@@ -1496,6 +1496,7 @@ module.exports.testthaisolardate = {
     },
     
     testThaiSolarDateBeforeSun: function(test) {
+        test.expect(3);
         var td = new ThaiSolarDate({
             timezone: "Etc/UTC",
             year: 2553, 
@@ -1503,7 +1504,6 @@ module.exports.testthaisolardate = {
             day: 1,
             timezone: "Etc/UTC"
         });
-        test.expect(3);
         test.ok(td !== null);
         
         test.equal(td.getDayOfWeek(), 5); // Friday
@@ -1515,6 +1515,7 @@ module.exports.testthaisolardate = {
     },
     
     testThaiSolarDateBeforeSunDate: function(test) {
+        test.expect(5);
         var td = new ThaiSolarDate({
             timezone: "Etc/UTC",
             year: 2553, 
@@ -1522,7 +1523,6 @@ module.exports.testthaisolardate = {
             day: 1,
             timezone: "Etc/UTC"
         });
-        test.expect(5);
         test.ok(td !== null);
         
         test.equal(td.getDayOfWeek(), 5); // Friday
@@ -1536,6 +1536,7 @@ module.exports.testthaisolardate = {
     },
     
     testThaiSolarDateBeforeMon: function(test) {
+        test.expect(3);
         var td = new ThaiSolarDate({
             timezone: "Etc/UTC",
             year: 2553, 
@@ -1543,7 +1544,6 @@ module.exports.testthaisolardate = {
             day: 1,
             timezone: "Etc/UTC"
         });
-        test.expect(3);
         test.ok(td !== null);
         
         test.equal(td.getDayOfWeek(), 5); // Friday
@@ -1554,6 +1554,7 @@ module.exports.testthaisolardate = {
     },
     
     testThaiSolarDateBeforeTue: function(test) {
+        test.expect(3);
         var td = new ThaiSolarDate({
             timezone: "Etc/UTC",
             year: 2553, 
@@ -1561,7 +1562,6 @@ module.exports.testthaisolardate = {
             day: 1,
             timezone: "Etc/UTC"
         });
-        test.expect(3);
         test.ok(td !== null);
         
         test.equal(td.getDayOfWeek(), 5); // Friday
@@ -1572,6 +1572,7 @@ module.exports.testthaisolardate = {
     },
     
     testThaiSolarDateBeforeWed: function(test) {
+        test.expect(3);
         var td = new ThaiSolarDate({
             timezone: "Etc/UTC",
             year: 2553, 
@@ -1579,7 +1580,6 @@ module.exports.testthaisolardate = {
             day: 1,
             timezone: "Etc/UTC"
         });
-        test.expect(3);
         test.ok(td !== null);
         
         test.equal(td.getDayOfWeek(), 5); // Friday
@@ -1590,6 +1590,7 @@ module.exports.testthaisolardate = {
     },
     
     testThaiSolarDateBeforeThu: function(test) {
+        test.expect(3);
         var td = new ThaiSolarDate({
             timezone: "Etc/UTC",
             year: 2553, 
@@ -1597,7 +1598,6 @@ module.exports.testthaisolardate = {
             day: 1,
             timezone: "Etc/UTC"
         });
-        test.expect(3);
         test.ok(td !== null);
         
         test.equal(td.getDayOfWeek(), 5); // Friday
@@ -1608,6 +1608,7 @@ module.exports.testthaisolardate = {
     },
     
     testThaiSolarDateBeforeThuDate: function(test) {
+        test.expect(5);
         var td = new ThaiSolarDate({
             timezone: "Etc/UTC",
             year: 2553, 
@@ -1615,7 +1616,6 @@ module.exports.testthaisolardate = {
             day: 1,
             timezone: "Etc/UTC"
         });
-        test.expect(5);
         test.ok(td !== null);
         
         test.equal(td.getDayOfWeek(), 5); // Friday
@@ -1629,6 +1629,7 @@ module.exports.testthaisolardate = {
     },
     
     testThaiSolarDateBeforeFri: function(test) {
+        test.expect(3);
         var td = new ThaiSolarDate({
             timezone: "Etc/UTC",
             year: 2553, 
@@ -1636,7 +1637,6 @@ module.exports.testthaisolardate = {
             day: 1,
             timezone: "Etc/UTC"
         });
-        test.expect(3);
         test.ok(td !== null);
         
         test.equal(td.getDayOfWeek(), 5); // Friday
@@ -1647,6 +1647,7 @@ module.exports.testthaisolardate = {
     },
     
     testThaiSolarDateBeforeFriDate: function(test) {
+        test.expect(5);
         var td = new ThaiSolarDate({
             timezone: "Etc/UTC",
             year: 2553, 
@@ -1654,7 +1655,6 @@ module.exports.testthaisolardate = {
             day: 1,
             timezone: "Etc/UTC"
         });
-        test.expect(5);
         test.ok(td !== null);
         
         test.equal(td.getDayOfWeek(), 5); // Friday
@@ -1668,6 +1668,7 @@ module.exports.testthaisolardate = {
     },
     
     testThaiSolarDateBeforeSat: function(test) {
+        test.expect(3);
         var td = new ThaiSolarDate({
             timezone: "Etc/UTC",
             year: 2553, 
@@ -1675,7 +1676,6 @@ module.exports.testthaisolardate = {
             day: 1,
             timezone: "Etc/UTC"
         });
-        test.expect(3);
         test.ok(td !== null);
         
         test.equal(td.getDayOfWeek(), 5); // Friday
@@ -1686,6 +1686,7 @@ module.exports.testthaisolardate = {
     },
     
     testThaiSolarDateAfterSun: function(test) {
+        test.expect(3);
         var td = new ThaiSolarDate({
             timezone: "Etc/UTC",
             year: 2553, 
@@ -1693,7 +1694,6 @@ module.exports.testthaisolardate = {
             day: 1,
             timezone: "Etc/UTC"
         });
-        test.expect(3);
         test.ok(td !== null);
         
         test.equal(td.getDayOfWeek(), 5); // Friday
@@ -1705,6 +1705,7 @@ module.exports.testthaisolardate = {
     },
     
     testThaiSolarDateAfterSunDate: function(test) {
+        test.expect(5);
         var td = new ThaiSolarDate({
             timezone: "Etc/UTC",
             year: 2553, 
@@ -1712,7 +1713,6 @@ module.exports.testthaisolardate = {
             day: 1,
             timezone: "Etc/UTC"
         });
-        test.expect(5);
         test.ok(td !== null);
         
         test.equal(td.getDayOfWeek(), 5); // Friday
@@ -1726,6 +1726,7 @@ module.exports.testthaisolardate = {
     },
     
     testThaiSolarDateAfterMon: function(test) {
+        test.expect(3);
         var td = new ThaiSolarDate({
             timezone: "Etc/UTC",
             year: 2553, 
@@ -1733,7 +1734,6 @@ module.exports.testthaisolardate = {
             day: 1,
             timezone: "Etc/UTC"
         });
-        test.expect(3);
         test.ok(td !== null);
         
         test.equal(td.getDayOfWeek(), 5); // Friday
@@ -1744,6 +1744,7 @@ module.exports.testthaisolardate = {
     },
     
     testThaiSolarDateAfterTue: function(test) {
+        test.expect(3);
         var td = new ThaiSolarDate({
             timezone: "Etc/UTC",
             year: 2553, 
@@ -1751,7 +1752,6 @@ module.exports.testthaisolardate = {
             day: 1,
             timezone: "Etc/UTC"
         });
-        test.expect(3);
         test.ok(td !== null);
         
         test.equal(td.getDayOfWeek(), 5); // Friday
@@ -1762,6 +1762,7 @@ module.exports.testthaisolardate = {
     },
     
     testThaiSolarDateAfterWed: function(test) {
+        test.expect(3);
         var td = new ThaiSolarDate({
             timezone: "Etc/UTC",
             year: 2553, 
@@ -1769,7 +1770,6 @@ module.exports.testthaisolardate = {
             day: 1,
             timezone: "Etc/UTC"
         });
-        test.expect(3);
         test.ok(td !== null);
         
         test.equal(td.getDayOfWeek(), 5); // Friday
@@ -1780,6 +1780,7 @@ module.exports.testthaisolardate = {
     },
     
     testThaiSolarDateAfterThu: function(test) {
+        test.expect(3);
         var td = new ThaiSolarDate({
             timezone: "Etc/UTC",
             year: 2553, 
@@ -1787,7 +1788,6 @@ module.exports.testthaisolardate = {
             day: 1,
             timezone: "Etc/UTC"
         });
-        test.expect(3);
         test.ok(td !== null);
         
         test.equal(td.getDayOfWeek(), 5); // Friday
@@ -1798,6 +1798,7 @@ module.exports.testthaisolardate = {
     },
     
     testThaiSolarDateAfterFri: function(test) {
+        test.expect(3);
         var td = new ThaiSolarDate({
             timezone: "Etc/UTC",
             year: 2553, 
@@ -1805,7 +1806,6 @@ module.exports.testthaisolardate = {
             day: 1,
             timezone: "Etc/UTC"
         });
-        test.expect(3);
         test.ok(td !== null);
         
         test.equal(td.getDayOfWeek(), 5); // Friday
@@ -1816,6 +1816,7 @@ module.exports.testthaisolardate = {
     },
     
     testThaiSolarDateAfterFriDate: function(test) {
+        test.expect(5);
         var td = new ThaiSolarDate({
             timezone: "Etc/UTC",
             year: 2553, 
@@ -1823,7 +1824,6 @@ module.exports.testthaisolardate = {
             day: 1,
             timezone: "Etc/UTC"
         });
-        test.expect(5);
         test.ok(td !== null);
         
         test.equal(td.getDayOfWeek(), 5); // Friday
@@ -1837,6 +1837,7 @@ module.exports.testthaisolardate = {
     },
     
     testThaiSolarDateAfterSat: function(test) {
+        test.expect(3);
         var td = new ThaiSolarDate({
             timezone: "Etc/UTC",
             year: 2553, 
@@ -1844,7 +1845,6 @@ module.exports.testthaisolardate = {
             day: 1,
             timezone: "Etc/UTC"
         });
-        test.expect(3);
         test.ok(td !== null);
         
         test.equal(td.getDayOfWeek(), 5); // Friday
@@ -1855,6 +1855,7 @@ module.exports.testthaisolardate = {
     },
     
     testThaiSolarDateAfterSatDate: function(test) {
+        test.expect(5);
         var td = new ThaiSolarDate({
             timezone: "Etc/UTC",
             year: 2553, 
@@ -1862,7 +1863,6 @@ module.exports.testthaisolardate = {
             day: 1,
             timezone: "Etc/UTC"
         });
-        test.expect(5);
         test.ok(td !== null);
         
         test.equal(td.getDayOfWeek(), 5); // Friday
@@ -1876,6 +1876,7 @@ module.exports.testthaisolardate = {
     },
     
     testThaiSolarDateTestGetWeekOfYearThisYear: function(test) {
+        test.expect(2);
         var td = new ThaiSolarDate({
             timezone: "Etc/UTC",
             year: 2553, 
@@ -1883,7 +1884,6 @@ module.exports.testthaisolardate = {
             day: 7,
             timezone: "Etc/UTC"
         });
-        test.expect(2);
         test.ok(td !== null);
         
         test.equal(td.getWeekOfYear(), 1);
@@ -1891,6 +1891,7 @@ module.exports.testthaisolardate = {
     },
     
     testThaiSolarDateTestGetWeekOfYearThisYear2: function(test) {
+        test.expect(2);
         var td = new ThaiSolarDate({
             timezone: "Etc/UTC",
             year: 2553, 
@@ -1898,7 +1899,6 @@ module.exports.testthaisolardate = {
             day: 25,
             timezone: "Etc/UTC"
         });
-        test.expect(2);
         test.ok(td !== null);
         
         test.equal(td.getWeekOfYear(), 4);
@@ -1906,6 +1906,7 @@ module.exports.testthaisolardate = {
     },
     
     testThaiSolarDateTestGetWeekOfYearThisYear3: function(test) {
+        test.expect(2);
         var td = new ThaiSolarDate({
             timezone: "Etc/UTC",
             year: 2553, 
@@ -1913,7 +1914,6 @@ module.exports.testthaisolardate = {
             day: 19,
             timezone: "Etc/UTC"
         });
-        test.expect(2);
         test.ok(td !== null);
         
         test.equal(td.getWeekOfYear(), 42);
@@ -1921,6 +1921,7 @@ module.exports.testthaisolardate = {
     },
     
     testThaiSolarDateTestGetWeekOfYearThisYearWithTime: function(test) {
+        test.expect(2);
         var td = new ThaiSolarDate({
             timezone: "Etc/UTC",
             year: -1468, 
@@ -1932,7 +1933,6 @@ module.exports.testthaisolardate = {
                millisecond: 232,
             timezone: "Etc/UTC"
         });
-        test.expect(2);
         test.ok(td !== null);
         
         test.equal(td.getWeekOfYear(), 42);
@@ -1940,6 +1940,7 @@ module.exports.testthaisolardate = {
     },
     
     testThaiSolarDateTestGetWeekOfYearPreviousYear: function(test) {
+        test.expect(2);
         var td = new ThaiSolarDate({
             timezone: "Etc/UTC",
             year: 2554, 
@@ -1947,7 +1948,6 @@ module.exports.testthaisolardate = {
             day: 1,
             timezone: "Etc/UTC"
         });
-        test.expect(2);
         test.ok(td !== null);
         
         test.equal(td.getWeekOfYear(), 52);
@@ -1955,6 +1955,7 @@ module.exports.testthaisolardate = {
     },
     
     testThaiSolarDateTestGetWeekOfYearLastWeekLeap: function(test) {
+        test.expect(2);
         var td = new ThaiSolarDate({
             timezone: "Etc/UTC",
             year: 2552, 
@@ -1962,7 +1963,6 @@ module.exports.testthaisolardate = {
             day: 31,
             timezone: "Etc/UTC"
         });
-        test.expect(2);
         test.ok(td !== null);
         
         test.equal(td.getWeekOfYear(), 53);
@@ -1970,6 +1970,7 @@ module.exports.testthaisolardate = {
     },
     
     testThaiSolarDateTestGetWeekOfYearLastWeekRegular1: function(test) {
+        test.expect(2);
         var td = new ThaiSolarDate({
             timezone: "Etc/UTC",
             year: 2553, 
@@ -1977,7 +1978,6 @@ module.exports.testthaisolardate = {
             day: 31,
             timezone: "Etc/UTC"
         });
-        test.expect(2);
         test.ok(td !== null);
         
         test.equal(td.getWeekOfYear(), 52);
@@ -1985,6 +1985,7 @@ module.exports.testthaisolardate = {
     },
     
     testThaiSolarDateTestGetWeekOfYearLastWeekRegular2: function(test) {
+        test.expect(2);
         var td = new ThaiSolarDate({
             timezone: "Etc/UTC",
             year: 2551, 
@@ -1992,7 +1993,6 @@ module.exports.testthaisolardate = {
             day: 31,
             timezone: "Etc/UTC"
         });
-        test.expect(2);
         test.ok(td !== null);
         
         test.equal(td.getWeekOfYear(), 1);
@@ -2000,6 +2000,7 @@ module.exports.testthaisolardate = {
     },
     
     testThaiSolarDateTestGetWeekOfYearLastWeekRegular3: function(test) {
+        test.expect(2);
         var td = new ThaiSolarDate({
             timezone: "Etc/UTC",
             year: 2550, 
@@ -2007,7 +2008,6 @@ module.exports.testthaisolardate = {
             day: 31,
             timezone: "Etc/UTC"
         });
-        test.expect(2);
         test.ok(td !== null);
         
         test.equal(td.getWeekOfYear(), 1);
@@ -2015,6 +2015,7 @@ module.exports.testthaisolardate = {
     },
     
     testThaiSolarDateTestGetWeekOfYearLastWeekRegular4: function(test) {
+        test.expect(2);
         var td = new ThaiSolarDate({
             timezone: "Etc/UTC",
             year: 2549, 
@@ -2022,7 +2023,6 @@ module.exports.testthaisolardate = {
             day: 31,
             timezone: "Etc/UTC"
         });
-        test.expect(2);
         test.ok(td !== null);
         
         test.equal(td.getWeekOfYear(), 1);
@@ -2030,6 +2030,7 @@ module.exports.testthaisolardate = {
     },
     
     testThaiSolarDateTestGetWeekOfYearLastWeekRegular5: function(test) {
+        test.expect(2);
         var td = new ThaiSolarDate({
             timezone: "Etc/UTC",
             year: 2548, 
@@ -2037,7 +2038,6 @@ module.exports.testthaisolardate = {
             day: 31,
             timezone: "Etc/UTC"
         });
-        test.expect(2);
         test.ok(td !== null);
         
         test.equal(td.getWeekOfYear(), 52);
@@ -2045,6 +2045,7 @@ module.exports.testthaisolardate = {
     },
     
     testThaiSolarDateTestGetWeekOfYearLastWeekRegular6: function(test) {
+        test.expect(2);
         var td = new ThaiSolarDate({
             timezone: "Etc/UTC",
             year: 2554, 
@@ -2052,7 +2053,6 @@ module.exports.testthaisolardate = {
             day: 31,
             timezone: "Etc/UTC"
         });
-        test.expect(2);
         test.ok(td !== null);
         
         test.equal(td.getWeekOfYear(), 52);
@@ -2060,6 +2060,7 @@ module.exports.testthaisolardate = {
     },
     
     testThaiSolarDateGetDayOfYearFirstDay: function(test) {
+        test.expect(2);
         var td = new ThaiSolarDate({
             timezone: "Etc/UTC",
             year: 2554, 
@@ -2067,7 +2068,6 @@ module.exports.testthaisolardate = {
             day: 1,
             timezone: "Etc/UTC"
         });
-        test.expect(2);
         test.ok(td !== null);
         
         test.equal(td.getDayOfYear(), 1);
@@ -2075,6 +2075,7 @@ module.exports.testthaisolardate = {
     },
     
     testThaiSolarDateGetDayOfYearPaddysDay: function(test) {
+        test.expect(2);
         var td = new ThaiSolarDate({
             timezone: "Etc/UTC",
             year: 2554, 
@@ -2082,7 +2083,6 @@ module.exports.testthaisolardate = {
             day: 17,
             timezone: "Etc/UTC"
         });
-        test.expect(2);
         test.ok(td !== null);
         
         test.equal(td.getDayOfYear(), 76);
@@ -2090,6 +2090,7 @@ module.exports.testthaisolardate = {
     },
     
     testThaiSolarDateGetDayOfYearPaddysDayLeapYear: function(test) {
+        test.expect(2);
         var td = new ThaiSolarDate({
             timezone: "Etc/UTC",
             year: 2551, 
@@ -2097,7 +2098,6 @@ module.exports.testthaisolardate = {
             day: 17,
             timezone: "Etc/UTC"
         });
-        test.expect(2);
         test.ok(td !== null);
         
         test.equal(td.getDayOfYear(), 77);
@@ -2105,6 +2105,7 @@ module.exports.testthaisolardate = {
     },
     
     testThaiSolarDateGetDayOfYearLastDay: function(test) {
+        test.expect(2);
         var td = new ThaiSolarDate({
             timezone: "Etc/UTC",
             year: 2554, 
@@ -2112,7 +2113,6 @@ module.exports.testthaisolardate = {
             day: 31,
             timezone: "Etc/UTC"
         });
-        test.expect(2);
         test.ok(td !== null);
         
         test.equal(td.getDayOfYear(), 365);
@@ -2120,6 +2120,7 @@ module.exports.testthaisolardate = {
     },
     
     testThaiSolarDateGetDayOfYearLastDayLeapYear: function(test) {
+        test.expect(2);
         var td = new ThaiSolarDate({
             timezone: "Etc/UTC",
             year: 2551, 
@@ -2127,7 +2128,6 @@ module.exports.testthaisolardate = {
             day: 31,
             timezone: "Etc/UTC"
         });
-        test.expect(2);
         test.ok(td !== null);
         
         test.equal(td.getDayOfYear(), 366);
@@ -2135,6 +2135,7 @@ module.exports.testthaisolardate = {
     },
     
     testThaiSolarDateGetWeekOfMonth0: function(test) {
+        test.expect(2);
         var td = new ThaiSolarDate({
             timezone: "Etc/UTC",
             year: 2554, 
@@ -2142,7 +2143,6 @@ module.exports.testthaisolardate = {
             day: 1,
             timezone: "Etc/UTC"
         });
-        test.expect(2);
         test.ok(td !== null);
         
         test.equal(td.getWeekOfMonth("en-US"), 0);
@@ -2150,6 +2150,7 @@ module.exports.testthaisolardate = {
     },
     
     testThaiSolarDateGetWeekOfMonth1: function(test) {
+        test.expect(2);
         var td = new ThaiSolarDate({
             timezone: "Etc/UTC",
             year: 2554, 
@@ -2157,7 +2158,6 @@ module.exports.testthaisolardate = {
             day: 2,
             timezone: "Etc/UTC"
         });
-        test.expect(2);
         test.ok(td !== null);
         
         test.equal(td.getWeekOfMonth("en-US"), 1);
@@ -2165,6 +2165,7 @@ module.exports.testthaisolardate = {
     },
     
     testThaiSolarDateGetWeekOfMonth2: function(test) {
+        test.expect(2);
         var td = new ThaiSolarDate({
             timezone: "Etc/UTC",
             year: 2554, 
@@ -2172,7 +2173,6 @@ module.exports.testthaisolardate = {
             day: 11,
             timezone: "Etc/UTC"
         });
-        test.expect(2);
         test.ok(td !== null);
         
         test.equal(td.getWeekOfMonth("en-US"), 2);
@@ -2180,6 +2180,7 @@ module.exports.testthaisolardate = {
     },
     
     testThaiSolarDateGetWeekOfMonth3: function(test) {
+        test.expect(2);
         var td = new ThaiSolarDate({
             timezone: "Etc/UTC",
             year: 2554, 
@@ -2187,7 +2188,6 @@ module.exports.testthaisolardate = {
             day: 20,
             timezone: "Etc/UTC"
         });
-        test.expect(2);
         test.ok(td !== null);
         
         test.equal(td.getWeekOfMonth("en-US"), 3);
@@ -2195,6 +2195,7 @@ module.exports.testthaisolardate = {
     },
     
     testThaiSolarDateGetWeekOfMonth4: function(test) {
+        test.expect(2);
         var td = new ThaiSolarDate({
             timezone: "Etc/UTC",
             year: 2554, 
@@ -2202,7 +2203,6 @@ module.exports.testthaisolardate = {
             day: 29,
             timezone: "Etc/UTC"
         });
-        test.expect(2);
         test.ok(td !== null);
         
         test.equal(td.getWeekOfMonth("en-US"), 4);
@@ -2210,6 +2210,7 @@ module.exports.testthaisolardate = {
     },
     
     testThaiSolarDateGetWeekOfMonth5: function(test) {
+        test.expect(2);
         var td = new ThaiSolarDate({
             timezone: "Etc/UTC",
             year: 2554, 
@@ -2217,7 +2218,6 @@ module.exports.testthaisolardate = {
             day: 30,
             timezone: "Etc/UTC"
         });
-        test.expect(2);
         test.ok(td !== null);
         
         test.equal(td.getWeekOfMonth("en-US"), 5);
@@ -2225,6 +2225,7 @@ module.exports.testthaisolardate = {
     },
     
     testThaiSolarDateGetWeekOfMonth6: function(test) {
+        test.expect(2);
         var td = new ThaiSolarDate({
             timezone: "Etc/UTC",
             year: 2554, 
@@ -2232,7 +2233,6 @@ module.exports.testthaisolardate = {
             day: 1,
             timezone: "Etc/UTC"
         });
-        test.expect(2);
         test.ok(td !== null);
         
         test.equal(td.getWeekOfMonth("en-US"), 0);
@@ -2240,6 +2240,7 @@ module.exports.testthaisolardate = {
     },
     
     testThaiSolarDateGetWeekOfMonth7: function(test) {
+        test.expect(2);
         var td = new ThaiSolarDate({
             timezone: "Etc/UTC",
             year: 2554, 
@@ -2247,7 +2248,6 @@ module.exports.testthaisolardate = {
             day: 1,
             timezone: "Etc/UTC"
         });
-        test.expect(2);
         test.ok(td !== null);
         
         test.equal(td.getWeekOfMonth("en-US"), 1);
@@ -2255,6 +2255,7 @@ module.exports.testthaisolardate = {
     },
     
     testThaiSolarDateGetWeekOfMonth8: function(test) {
+        test.expect(2);
         var td = new ThaiSolarDate({
             timezone: "Etc/UTC",
             year: 2554, 
@@ -2262,7 +2263,6 @@ module.exports.testthaisolardate = {
             day: 1,
             timezone: "Etc/UTC"
         });
-        test.expect(2);
         test.ok(td !== null);
         
         test.equal(td.getWeekOfMonth("en-US"), 0);
@@ -2270,6 +2270,7 @@ module.exports.testthaisolardate = {
     },
     
     testThaiSolarDateGetWeekOfMonth9: function(test) {
+        test.expect(2);
         var td = new ThaiSolarDate({
             timezone: "Etc/UTC",
             year: 2554, 
@@ -2277,7 +2278,6 @@ module.exports.testthaisolardate = {
             day: 1,
             timezone: "Etc/UTC"
         });
-        test.expect(2);
         test.ok(td !== null);
         
         test.equal(td.getWeekOfMonth("en-US"), 1);
@@ -2285,6 +2285,7 @@ module.exports.testthaisolardate = {
     },
     
     testThaiSolarDateGetWeekOfMonthUS: function(test) {
+        test.expect(2);
         var td = new ThaiSolarDate({
             timezone: "Etc/UTC",
             year: 2554, 
@@ -2292,7 +2293,6 @@ module.exports.testthaisolardate = {
             day: 1,
             timezone: "Etc/UTC"
         });
-        test.expect(2);
         test.ok(td !== null);
         
         test.equal(td.getWeekOfMonth("en-US"), 1);
@@ -2300,6 +2300,7 @@ module.exports.testthaisolardate = {
     },
     
     testThaiSolarDateGetWeekOfMonthDE: function(test) {
+        test.expect(2);
         var td = new ThaiSolarDate({
             timezone: "Etc/UTC",
             year: 2554, 
@@ -2307,7 +2308,6 @@ module.exports.testthaisolardate = {
             day: 1,
             timezone: "Etc/UTC"
         });
-        test.expect(2);
         test.ok(td !== null);
         
         // weeks in Germany start on Monday, and May 1st is a Sunday, so it is at the 
@@ -2317,6 +2317,7 @@ module.exports.testthaisolardate = {
     },
     
     testThaiSolarDateGetEraCE: function(test) {
+        test.expect(2);
         var td = new ThaiSolarDate({
             timezone: "Etc/UTC",
             year: 2554, 
@@ -2324,7 +2325,6 @@ module.exports.testthaisolardate = {
             day: 1,
             timezone: "Etc/UTC"
         });
-        test.expect(2);
         test.ok(td !== null);
         
         test.equal(td.getEra(), 1);
@@ -2332,6 +2332,7 @@ module.exports.testthaisolardate = {
     },
     
     testThaiSolarDateGetEraBCE: function(test) {
+        test.expect(2);
         var td = new ThaiSolarDate({
             timezone: "Etc/UTC",
             year: -46, 
@@ -2339,7 +2340,6 @@ module.exports.testthaisolardate = {
             day: 1,
             timezone: "Etc/UTC"
         });
-        test.expect(2);
         test.ok(td !== null);
         
         test.equal(td.getEra(), -1);
@@ -2347,6 +2347,7 @@ module.exports.testthaisolardate = {
     },
     
     testThaiSolarDateGetEraCEYear1: function(test) {
+        test.expect(2);
         var td = new ThaiSolarDate({
             timezone: "Etc/UTC",
             year: 1, 
@@ -2354,7 +2355,6 @@ module.exports.testthaisolardate = {
             day: 1,
             timezone: "Etc/UTC"
         });
-        test.expect(2);
         test.ok(td !== null);
         
         test.equal(td.getEra(), 1);
@@ -2362,6 +2362,7 @@ module.exports.testthaisolardate = {
     },
     
     testThaiSolarDateGetEraCEYear0: function(test) {
+        test.expect(2);
         var td = new ThaiSolarDate({
             timezone: "Etc/UTC",
             year: 0, 
@@ -2369,7 +2370,6 @@ module.exports.testthaisolardate = {
             day: 31,
             timezone: "Etc/UTC"
         });
-        test.expect(2);
         test.ok(td !== null);
         
         test.equal(td.getEra(), -1);
@@ -2377,11 +2377,11 @@ module.exports.testthaisolardate = {
     },
     
     testThaiSolarDateJan1Midnight: function(test) {
+        test.expect(8);
         var td = new ThaiSolarDate({
             julianday: 2455197.5,
                timezone: "Etc/UTC"
         });
-        test.expect(8);
         test.ok(td !== null);
         
         test.equal(td.year, 2553);
@@ -2395,13 +2395,13 @@ module.exports.testthaisolardate = {
     },
     
     testThaiSolarDateGetRataDie: function(test) {
+        test.expect(2);
         var td = new ThaiSolarDate({
             year: 2554, 
             month: 3, 
             day: 8,
                timezone: "Etc/UTC"
         });
-        test.expect(2);
         test.ok(td !== null);
         
         test.equal(td.getRataDie(), 932531);
@@ -2409,13 +2409,13 @@ module.exports.testthaisolardate = {
     },
     
     testThaiSolarDateGetTimeZone: function(test) {
+        test.expect(2);
         var td = new ThaiSolarDate({
             year: 2554, 
             month: 3, 
             day: 8,
             timezone: "America/Los_Angeles"
         });
-        test.expect(2);
         test.ok(td !== null);
         
         test.equal(td.getTimeZone(), "America/Los_Angeles");
@@ -2423,12 +2423,12 @@ module.exports.testthaisolardate = {
     },
     
     testThaiSolarDateGetTimeZoneDefault: function(test) {
+        test.expect(2);
         var td = new ThaiSolarDate({
             year: 2554, 
             month: 3, 
             day: 8
         });
-        test.expect(2);
         test.ok(td !== null);
         
         test.equal(td.getTimeZone(), "local");
@@ -2436,13 +2436,13 @@ module.exports.testthaisolardate = {
     },
     
     testThaiSolarDateGetTimeZoneByLocale: function(test) {
+        test.expect(2);
         var td = new ThaiSolarDate({
             year: 2554, 
             month: 3, 
             day: 8,
             locale: "de-DE"
         });
-        test.expect(2);
         test.ok(td !== null);
         
         test.equal(td.getTimeZone(), "Europe/Berlin");
@@ -2450,13 +2450,13 @@ module.exports.testthaisolardate = {
     },
     
     testThaiSolarDateGetTimeZoneByLocaleBogus: function(test) {
+        test.expect(2);
         var td = new ThaiSolarDate({
             year: 2554, 
             month: 3, 
             day: 8,
             locale: "zz-ZZ"
         });
-        test.expect(2);
         test.ok(td !== null);
         
         test.equal(td.getTimeZone(), "Etc/UTC");
@@ -2464,25 +2464,25 @@ module.exports.testthaisolardate = {
     },
     
     testThaiSolarDateCurrentTimeWithTimeZone: function(test) {
+        test.expect(2);
         var td = new ThaiSolarDate({
             timezone: "America/Los_Angeles"
         });
         var d = new Date();
-        test.expect(2);
         test.ok(td !== null);
         
-        test.roughlyEqual(30, td.getTime(), d.getTime());
+        test.roughlyEqual(td.getTime(), d.getTime(), 30);
         test.done();
     },
     
     testThaiSolarDateSetTimeZone: function(test) {
+        test.expect(3);
         var td = new ThaiSolarDate({
             year: 2554, 
             month: 3, 
             day: 8,
             timezone: "America/Los_Angeles"
         });
-        test.expect(3);
         test.ok(td !== null);
         
         test.equal(td.getTimeZone(), "America/Los_Angeles");
@@ -2494,13 +2494,13 @@ module.exports.testthaisolardate = {
     },
     
     testThaiSolarDateSetTimeZoneNotString: function(test) {
+        test.expect(3);
         var td = new ThaiSolarDate({
             year: 2554, 
             month: 3, 
             day: 8,
             timezone: "America/Los_Angeles"
         });
-        test.expect(3);
         test.ok(td !== null);
         
         test.equal(td.getTimeZone(), "America/Los_Angeles");
@@ -2512,13 +2512,13 @@ module.exports.testthaisolardate = {
     },
     
     testThaiSolarDateSetTimeZoneUndefined: function(test) {
+        test.expect(3);
         var td = new ThaiSolarDate({
             year: 2554, 
             month: 3, 
             day: 8,
             timezone: "America/Los_Angeles"
         });
-        test.expect(3);
         test.ok(td !== null);
         
         test.equal(td.getTimeZone(), "America/Los_Angeles");
@@ -2531,13 +2531,13 @@ module.exports.testthaisolardate = {
     },
     
     testThaiSolarDateSetTimeZoneEmpty: function(test) {
+        test.expect(3);
         var td = new ThaiSolarDate({
             year: 2554, 
             month: 3, 
             day: 8,
             timezone: "America/Los_Angeles"
         });
-        test.expect(3);
         test.ok(td !== null);
         
         test.equal(td.getTimeZone(), "America/Los_Angeles");
@@ -2550,10 +2550,10 @@ module.exports.testthaisolardate = {
     },
     
     testThaiSolarDateInitWithUnixTimeRightTimeZone: function(test) {
+        test.expect(2);
         var td = new ThaiSolarDate({
             unixtime: 0
         });
-        test.expect(2);
         test.ok(td !== null);
         
         test.equal(td.getTimeZone(), "local");
@@ -2561,10 +2561,10 @@ module.exports.testthaisolardate = {
     },
     
     testThaiSolarDateInitWithJDRightTimeZone: function(test) {
+        test.expect(2);
         var td = new ThaiSolarDate({
             julianday: 0
         });
-        test.expect(2);
         test.ok(td !== null);
         
         test.equal(td.getTimeZone(), "local");
@@ -2572,10 +2572,10 @@ module.exports.testthaisolardate = {
     },
     
     testThaiSolarDateInitWithRDRightTimeZone: function(test) {
+        test.expect(2);
         var td = new ThaiSolarDate({
             rd: 0
         });
-        test.expect(2);
         test.ok(td !== null);
         
         test.equal(td.getTimeZone(), "local");
@@ -2583,13 +2583,13 @@ module.exports.testthaisolardate = {
     },
     
     testThaiSolarDateRoundTripConstruction: function(test) {
+        test.expect(8);
         var td = new ThaiSolarDate({
             year: 2557,
             month: 11,
             day: 3,
             timezone: "local"
         });
-        test.expect(8);
         test.ok(td !== null);
         // console.log("td is " + JSON.stringify(td, undefined, 4));
         
@@ -2611,13 +2611,13 @@ module.exports.testthaisolardate = {
     },
     
     testThaiSolarDateRoundTripConstruction2: function(test) {
+        test.expect(8);
         var td = new ThaiSolarDate({
             year: 2557,
             month: 11,
             day: 3,
             timezone: "America/Los_Angeles"
         });
-        test.expect(8);
         test.ok(td !== null);
         // console.log("td is " + JSON.stringify(td, undefined, 4));
         

@@ -34,9 +34,9 @@ module.exports.testaddress_TG = {
     },
 
     testParseAddressTGNormal: function(test) {
+        test.expect(7);
         var parsedAddress = new Address("M. Nicolas Ayi Patatu B.P. 526\nLome\nTogo", {locale: 'fr-TG'});
         
-        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "M. Nicolas Ayi Patatu B.P. 526");
         test.equal(parsedAddress.locality, "Lome");
@@ -49,9 +49,9 @@ module.exports.testaddress_TG = {
     
     
     testParseAddressTGNoCountry: function(test) {
+        test.expect(7);
         var parsedAddress = new Address("M. Nicolas Ayi Patatu B.P. 526\nLome", {locale: 'fr-TG'});
         
-        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "M. Nicolas Ayi Patatu B.P. 526");
         test.equal(parsedAddress.locality, "Lome");
@@ -63,8 +63,8 @@ module.exports.testaddress_TG = {
     },
     
     testParseAddressTGManyLines: function(test) {
-        var parsedAddress = new Address("M. Nicolas Ayi Patatu\nB.P. 526\nLome\nTogo\n\n\n", {locale: 'fr-TG'});
         test.expect(7);
+        var parsedAddress = new Address("M. Nicolas Ayi Patatu\nB.P. 526\nLome\nTogo\n\n\n", {locale: 'fr-TG'});
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "M. Nicolas Ayi Patatu, B.P. 526");
         test.equal(parsedAddress.locality, "Lome");
@@ -76,9 +76,9 @@ module.exports.testaddress_TG = {
     },
     
     testParseAddressTGOneLine: function(test) {
+        test.expect(7);
         var parsedAddress = new Address("M. Nicolas Ayi Patatu , B.P. 526 , Lome , Togo", {locale: 'fr-TG'});
         
-        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "M. Nicolas Ayi Patatu, B.P. 526");
         test.equal(parsedAddress.locality, "Lome");
@@ -90,9 +90,9 @@ module.exports.testaddress_TG = {
     },
     
     testParseAddressTGSuperfluousWhitespace: function(test) {
+        test.expect(7);
         var parsedAddress = new Address("\t\t\t\tM. Nicolas Ayi Patatu\t\t\tB.P.\t\r\r526\t\nLome\n\tTogo\n\n\n", {locale: 'fr-TG'});
         
-        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "M. Nicolas Ayi Patatu B.P. 526");
         test.equal(parsedAddress.locality, "Lome");
@@ -104,9 +104,9 @@ module.exports.testaddress_TG = {
     },
     
     testParseAddressTGNoDelimiters: function(test) {
+        test.expect(7);
         var parsedAddress = new Address("M. Nicolas Ayi Patatu B.P. 526 Lome Togo", {locale: 'fr-TG'});
         
-        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "M. Nicolas Ayi Patatu B.P. 526");
         test.equal(parsedAddress.locality, "Lome");
@@ -118,9 +118,9 @@ module.exports.testaddress_TG = {
     },
     
     testParseAddressTGFromUS: function(test) {
+        test.expect(7);
         var parsedAddress = new Address("M. Nicolas Ayi Patatu B.P. 526\nLome\nTogo", {locale: 'en-US'});
         
-        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "M. Nicolas Ayi Patatu B.P. 526");
         test.equal(parsedAddress.locality, "Lome");
@@ -132,6 +132,7 @@ module.exports.testaddress_TG = {
     },
     
     testFormatAddressTG: function(test) {
+        test.expect(1);
         var parsedAddress = new Address({
             streetAddress: "M. Nicolas Ayi Patatu B.P. 526",
             locality: "Lome",
@@ -141,12 +142,12 @@ module.exports.testaddress_TG = {
         
         var expected = "M. Nicolas Ayi Patatu B.P. 526\nLome\nTogo";
         var formatter = new AddressFmt({locale: 'fr-TG'});
-        test.expect(1);
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     },
     
     testFormatAddressTGFromUS: function(test) {
+        test.expect(1);
         var parsedAddress = new Address({
             streetAddress: "M. Nicolas Ayi Patatu B.P. 526",
             locality: "Lome",
@@ -156,7 +157,6 @@ module.exports.testaddress_TG = {
         
         var expected = "M. Nicolas Ayi Patatu B.P. 526\nLome\nTogo";
         var formatter = new AddressFmt({locale: 'en-US'});
-        test.expect(1);
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     }

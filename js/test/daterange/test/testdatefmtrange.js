@@ -17,7 +17,7 @@
  * limitations under the License.
  */
 
-var ilib = require("./../lib/ilib.js");
+var ilib = require("./../lib/ilib-node.js");
 var LocaleInfo = require("./../lib/LocaleInfo.js");
 var GregorianDate = require("./../lib/GregorianDate.js");
 var DateRngFmt = require("./../lib/DateRngFmt.js");
@@ -174,6 +174,10 @@ function testDateRngFmtGetClockBogus() {
 
 function testDateRngFmtGetTimeZoneDefault() {
 	ilib.tz = undefined;	// just in case
+	if (ilib._getPlatform() === "nodejs") {
+	    process.env.TZ = ""; // just in case
+	}
+	
     var fmt = new DateRngFmt();
     assertNotNull(fmt);
     

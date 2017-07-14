@@ -35,9 +35,9 @@ module.exports.testaddress_CH = {
     },
 
     testParseAddressCHNormal: function(test) {
+        test.expect(7);
         var parsedAddress = new Address("Herr Hans Katze Tastentanzenstrasse 5/16\n1234 Zuerich\nSWITZERLAND", {locale: 'de-CH'});
         
-        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Herr Hans Katze Tastentanzenstrasse 5/16");
         test.equal(parsedAddress.locality, "Zuerich");
@@ -49,9 +49,9 @@ module.exports.testaddress_CH = {
     },
     
     testParseAddressCHNormalWithAccents: function(test) {
+        test.expect(7);
         var parsedAddress = new Address("Herr Hans Katze Tastentanzenstrasse 5/16\n1234 Zürich\nSWITZERLAND", {locale: 'de-CH'});
         
-        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Herr Hans Katze Tastentanzenstrasse 5/16");
         test.equal(parsedAddress.locality, "Zürich");
@@ -63,9 +63,9 @@ module.exports.testaddress_CH = {
     },
     
     testParseAddressCHNormalforItaly: function(test) {
+        test.expect(7);
         var parsedAddress = new Address("Mr. Hans gatto Tastentanz Via 5/16\n1234 Zurich\nSVIZZERA", {locale: 'it-CH'});
         
-        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Mr. Hans gatto Tastentanz Via 5/16");
         test.equal(parsedAddress.locality, "Zurich");
@@ -78,9 +78,9 @@ module.exports.testaddress_CH = {
     
     
     testParseAddressCHNormalforFrance: function(test) {
+        test.expect(7);
         var parsedAddress = new Address("M. Hans chat Tastentanz rue 5/16\n1234 Zurich\nSUISSE", {locale: 'fr-CH'});
         
-        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "M. Hans chat Tastentanz rue 5/16");
         test.equal(parsedAddress.locality, "Zurich");
@@ -93,9 +93,9 @@ module.exports.testaddress_CH = {
     
     
     testParseAddressCHNoZip: function(test) {
+        test.expect(7);
         var parsedAddress = new Address("Herr Hans Katze Tastentanzenstrasse 5/16\nZuerich\nSWITZERLAND", {locale: 'de-CH'});
         
-        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Herr Hans Katze Tastentanzenstrasse 5/16");
         test.equal(parsedAddress.locality, "Zuerich");
@@ -107,9 +107,9 @@ module.exports.testaddress_CH = {
     },
     
     testParseAddressCHNoCountry: function(test) {
+        test.expect(7);
         var parsedAddress = new Address("Herr Hans Katze Tastentanzenstrasse 5/16\n1234 Zuerich", {locale: 'de-CH'});
         
-        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Herr Hans Katze Tastentanzenstrasse 5/16");
         test.equal(parsedAddress.locality, "Zuerich");
@@ -121,9 +121,9 @@ module.exports.testaddress_CH = {
     },
     
     testParseAddressCHManyLines: function(test) {
+        test.expect(7);
         var parsedAddress = new Address("Herr Hans Katze\nTastentanzenstrasse\n5/16\n1234\nZuerich\nSWITZERLAND\n\n", {locale: 'de-CH'});
         
-        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Herr Hans Katze, Tastentanzenstrasse, 5/16");
         test.equal(parsedAddress.locality, "Zuerich");
@@ -135,8 +135,8 @@ module.exports.testaddress_CH = {
     },
     
     testParseAddressCHOneLine: function(test) {
-        var parsedAddress = new Address("Herr Hans Katze , Tastentanzenstrasse , 5/16 , 1234 , Zuerich , SWITZERLAND", {locale: 'de-CH'});
         test.expect(7);
+        var parsedAddress = new Address("Herr Hans Katze , Tastentanzenstrasse , 5/16 , 1234 , Zuerich , SWITZERLAND", {locale: 'de-CH'});
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Herr Hans Katze, Tastentanzenstrasse, 5/16");
         test.equal(parsedAddress.locality, "Zuerich");
@@ -148,9 +148,9 @@ module.exports.testaddress_CH = {
     },
     
     testParseAddressCHSuperfluousWhitespace: function(test) {
+        test.expect(7);
         var parsedAddress = new Address("\t\t\t\Herr Hans Katze\nTastentanzenstrasse\n5/16\n\t1234\n\t\tZuerich\n\t\tSWITZERLAND\t\t", {locale: 'de-CH'});
         
-        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Herr Hans Katze, Tastentanzenstrasse, 5/16");
         test.equal(parsedAddress.locality, "Zuerich");
@@ -162,9 +162,9 @@ module.exports.testaddress_CH = {
     },
     
     testParseAddressCHNoDelimiters: function(test) {
+        test.expect(7);
         var parsedAddress = new Address("Herr Hans Katze Tastentanzenstrasse 5/16 1234 Zuerich SWITZERLAND", {locale: 'de-CH'});
         
-        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Herr Hans Katze Tastentanzenstrasse 5/16");
         test.equal(parsedAddress.locality, "Zuerich");
@@ -176,11 +176,11 @@ module.exports.testaddress_CH = {
     },
     
     testParseAddressCHFromUS: function(test) {
+        test.expect(7);
         var parsedAddress = new Address("Herr Hans Katze Tastentanzenstrasse 5/16\n1234 Zuerich\nSWITZERLAND", {locale: 'en-US'});
         
         // the country name is in English because this address is for a contact in a US database
         
-        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Herr Hans Katze Tastentanzenstrasse 5/16");
         test.equal(parsedAddress.locality, "Zuerich");
@@ -192,6 +192,7 @@ module.exports.testaddress_CH = {
     },
     
     testFormatAddressCH: function(test) {
+        test.expect(1);
         var parsedAddress = new Address({
             streetAddress: "Herr Hans Katze Tastentanzenstrasse 5/16",
             locality: "Zuerich",
@@ -202,12 +203,12 @@ module.exports.testaddress_CH = {
         
         var expected = "Herr Hans Katze Tastentanzenstrasse 5/16\n1234 Zuerich\nSWITZERLAND";
         var formatter = new AddressFmt({locale: 'de-CH'});
-        test.expect(1);
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     },
     
     testFormatAddressCHFromUS: function(test) {
+        test.expect(1);
         var parsedAddress = new Address({
             streetAddress: "Herr Hans Katze Tastentanzenstrasse 5/16",
             locality: "Zuerich",
@@ -218,7 +219,6 @@ module.exports.testaddress_CH = {
         
         var expected = "Herr Hans Katze Tastentanzenstrasse 5/16\n1234 Zuerich\nSWITZERLAND";
         var formatter = new AddressFmt({locale: 'en-US'});
-        test.expect(1);
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     }

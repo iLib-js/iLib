@@ -34,9 +34,9 @@ module.exports.testaddress_CA = {
     },
 
     testParseAddressCASimpleCA: function(test) {
+        test.expect(7);
         var parsedAddress = new Address("5150 Spectrum Way\nMississauga, ON\nL4W 5G1\nCanada", {locale: 'en-CA'});
         
-        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "5150 Spectrum Way");
         test.equal(parsedAddress.locality, "Mississauga");
@@ -49,9 +49,9 @@ module.exports.testaddress_CA = {
     
     // to verify NOV-111026
     testParseAddressCAWithAccents: function(test) {
+        test.expect(7);
         var parsedAddress = new Address("1253 McGill College\nSuite 250\nMontréal, QC, H2B 2Y5", {locale: 'en-CA'});
         
-        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "1253 McGill College, Suite 250");
         test.equal(parsedAddress.locality, "Montréal");
@@ -63,9 +63,9 @@ module.exports.testaddress_CA = {
     },
     
     testParseAddressCASpelledOutProvince: function(test) {
+        test.expect(7);
         var parsedAddress = new Address("340 Hagey Blvd\n2nd Floor\nWaterloo, Ontario, N2L 6R6", {locale: 'en-CA'});
         
-        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "340 Hagey Blvd, 2nd Floor");
         test.equal(parsedAddress.locality, "Waterloo");
@@ -77,9 +77,9 @@ module.exports.testaddress_CA = {
     },
     
     testParseAddressCASpelledOutProvinceWithSpaces: function(test) {
+        test.expect(7);
         var parsedAddress = new Address("20 Main St.\nMyTown, Prince Edward Island A1B 2C3\nCanada", {locale: 'en-CA'});
         
-        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "20 Main St.");
         test.equal(parsedAddress.locality, "MyTown");
@@ -91,9 +91,9 @@ module.exports.testaddress_CA = {
     },
     
     testParseAddressCANoZip: function(test) {
+        test.expect(7);
         var parsedAddress = new Address("20 Main St.\nMyTown, AB\nCanada", {locale: 'en-CA'});
         
-        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "20 Main St.");
         test.equal(parsedAddress.locality, "MyTown");
@@ -105,9 +105,9 @@ module.exports.testaddress_CA = {
     },
     
     testParseAddressCAManyLines: function(test) {
+        test.expect(7);
         var parsedAddress = new Address("950 W 21st Ave\nApt 45\nCambridge\nON\nA4C 5N4", {locale: 'en-CA'});
         
-        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "950 W 21st Ave, Apt 45");
         test.equal(parsedAddress.locality, "Cambridge");
@@ -119,9 +119,9 @@ module.exports.testaddress_CA = {
     },
     
     testParseAddressCAOneLine: function(test) {
+        test.expect(7);
         var parsedAddress = new Address("5150 Spectrum Way, Mississauga, ON, L4W 5G1, Canada", {locale: 'en-CA'});
         
-        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "5150 Spectrum Way");
         test.equal(parsedAddress.locality, "Mississauga");
@@ -133,9 +133,9 @@ module.exports.testaddress_CA = {
     },
     
     testParseAddressCASuperfluousWhitespace: function(test) {
+        test.expect(7);
         var parsedAddress = new Address("5150 Spectrum Way\n  \t \t Mississauga, \n   \t ON, \n, \n\n L4W 5G1   \n  Canada\n\n   \n\n", {locale: 'en-CA'});
         
-        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "5150 Spectrum Way");
         test.equal(parsedAddress.locality, "Mississauga");
@@ -147,9 +147,9 @@ module.exports.testaddress_CA = {
     },
     
     testParseAddressCANoDelimiters: function(test) {
+        test.expect(7);
         var parsedAddress = new Address("5150 Spectrum Way Mississauga ON L4W 5G1 Canada", {locale: 'en-CA'});
         
-        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "5150 Spectrum Way");
         test.equal(parsedAddress.locality, "Mississauga");
@@ -161,9 +161,9 @@ module.exports.testaddress_CA = {
     },
     
     testParseAddressCAPOBox: function(test) {
+        test.expect(7);
         var parsedAddress = new Address("P.O. Box 350\nToronto ON Y5T 5T5", {locale: 'en-CA'});
         
-        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "P.O. Box 350");
         test.equal(parsedAddress.locality, "Toronto");
@@ -175,9 +175,9 @@ module.exports.testaddress_CA = {
     },
     
     testParseAddressCAFrench: function(test) {
+        test.expect(7);
         var parsedAddress = new Address("20 Montée Lavalle\nÉparnay, Nouveau-Brunswick Y7Y 7Y7", {locale: 'en-CA'});
         
-        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "20 Montée Lavalle");
         test.equal(parsedAddress.locality, "Éparnay");
@@ -189,9 +189,9 @@ module.exports.testaddress_CA = {
     },
     
     testParseAddressCAForeign: function(test) {
+        test.expect(7);
         var parsedAddress = new Address("Achterberglaan 23, 2345 GD Uithoorn, Netherlands", {locale: 'en-CA'});
         
-        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Achterberglaan 23");
         test.equal(parsedAddress.locality, "Uithoorn");
@@ -203,6 +203,7 @@ module.exports.testaddress_CA = {
     },
         
     testFormatAddressCA: function(test) {
+        test.expect(1);
         var parsedAddress = new Address({
             streetAddress: "5150 Spectrum Way",
             locality: "Mississauga",
@@ -214,12 +215,12 @@ module.exports.testaddress_CA = {
         
         var expected = "5150 Spectrum Way\nMississauga, Ontario L4W 5G1\nCanada";
         var formatter = new AddressFmt({locale: 'en-CA'});
-        test.expect(1);
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     },
     
     testFormatAddressCADomestic: function(test) {
+        test.expect(1);
         var parsedAddress = new Address({
             streetAddress: "5150 Spectrum Way",
             locality: "Mississauga",
@@ -231,7 +232,6 @@ module.exports.testaddress_CA = {
         
         var expected = "5150 Spectrum Way\nMississauga, Ontario L4W 5G1";
         var formatter = new AddressFmt({locale: 'en-CA', style: 'nocountry'});
-        test.expect(1);
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     }

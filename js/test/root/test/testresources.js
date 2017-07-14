@@ -17,7 +17,7 @@
  * limitations under the License.
  */
 
-var ilib = require("./../lib/ilib.js");
+var ilib = require("./../lib/ilib-node.js");
 var ResBundle = require("./../lib/ResBundle.js");
 var Locale = require("./../lib/Locale.js");
 
@@ -185,6 +185,14 @@ function testResBundleGetStringJS() {
     assertEquals("first", rb.getStringJS("first string"));
     assertEquals("second", rb.getStringJS("second string"));
     assertEquals("third", rb.getStringJS("third string"));
+}
+
+function testResBundleGetStringJSUndefinedSource() {
+    var rb = new ResBundle(); // default locale
+    
+    assertNotNull(rb);
+    
+    assertUndefined(rb.getStringJS(undefined));
 }
 
 function testResBundleGetStringEmpty() {

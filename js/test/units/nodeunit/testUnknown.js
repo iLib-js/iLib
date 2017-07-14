@@ -32,20 +32,20 @@ module.exports.testUnknown = {
     },
 
     testMeasurementUnknownEmpty: function(test) {
+        test.expect(1);
         var m = new UnknownUnit();
     
-        test.expect(1);
         test.ok(m !== null);
         test.done();
     },
     
     testMeasurementUnknownUnitPreserved: function(test) {
+        test.expect(3);
         var m = new UnknownUnit({
             unit: "krunghoonfoop",
             amount: 2
         });
     
-        test.expect(3);
         test.ok(m !== null);
     
         test.equal(m.getUnit(), "krunghoonfoop");
@@ -54,12 +54,12 @@ module.exports.testUnknown = {
     },
     
     testMeasurementUnknownUnitUnknownMeasureType: function(test) {
+        test.expect(2);
         var m = new UnknownUnit({
             unit: "krunghoonfoop",
             amount: 2
         });
     
-        test.expect(2);
         test.ok(m !== null);
     
         test.equal(m.getMeasure(), "unknown");

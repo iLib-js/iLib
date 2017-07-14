@@ -34,9 +34,9 @@ module.exports.testaddress_LR = {
     },
 
     testParseAddressLRNormal: function(test) {
+        test.expect(7);
         var parsedAddress = new Address("Ministry of Posts and Telecommunications Postal Operations GPO\n1000 MONROVIA 10\nLiberia", {locale: 'en-LR'});
         
-        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Ministry of Posts and Telecommunications Postal Operations GPO");
         test.equal(parsedAddress.locality, "MONROVIA 10");
@@ -48,9 +48,9 @@ module.exports.testaddress_LR = {
     },
     
     testParseAddressLRNoZip: function(test) {
+        test.expect(7);
         var parsedAddress = new Address("Ministry of Posts and Telecommunications Postal Operations GPO\nMONROVIA 10\nLiberia", {locale: 'en-LR'});
         
-        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Ministry of Posts and Telecommunications Postal Operations GPO");
         test.equal(parsedAddress.locality, "MONROVIA 10");
@@ -62,9 +62,9 @@ module.exports.testaddress_LR = {
     },
     
     testParseAddressLRNoCountry: function(test) {
+        test.expect(7);
         var parsedAddress = new Address("Ministry of Posts and Telecommunications Postal Operations GPO\n1000 MONROVIA 10", {locale: 'en-LR'});
         
-        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Ministry of Posts and Telecommunications Postal Operations GPO");
         test.equal(parsedAddress.locality, "MONROVIA 10");
@@ -76,8 +76,8 @@ module.exports.testaddress_LR = {
     },
     
     testParseAddressLRManyLines: function(test) {
-        var parsedAddress = new Address("Ministry of Posts and Telecommunications\nPostal Operations\nGPO\n\n1000\n\nMONROVIA 10\n\n\nLiberia\n\n\n", {locale: 'en-LR'});
         test.expect(7);
+        var parsedAddress = new Address("Ministry of Posts and Telecommunications\nPostal Operations\nGPO\n\n1000\n\nMONROVIA 10\n\n\nLiberia\n\n\n", {locale: 'en-LR'});
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Ministry of Posts and Telecommunications, Postal Operations, GPO");
         test.equal(parsedAddress.locality, "MONROVIA 10");
@@ -89,9 +89,9 @@ module.exports.testaddress_LR = {
     },
     
     testParseAddressLROneLine: function(test) {
+        test.expect(7);
         var parsedAddress = new Address("Ministry of Posts and Telecommunications , Postal Operations , GPO , 1000 , MONROVIA 10 , Liberia", {locale: 'en-LR'});
         
-        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Ministry of Posts and Telecommunications, Postal Operations, GPO");
         test.equal(parsedAddress.locality, "MONROVIA 10");
@@ -103,9 +103,9 @@ module.exports.testaddress_LR = {
     },
     
     testParseAddressLRSuperfluousWhitespace: function(test) {
+        test.expect(7);
         var parsedAddress = new Address("\t\t\tMinistry of Posts and Telecommunications\t\t\rPostal Operations\t\t\rGPO\n\n1000\n\nMONROVIA 10\n\t Liberia\n\n\n", {locale: 'en-LR'});
         
-        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Ministry of Posts and Telecommunications Postal Operations GPO");
         test.equal(parsedAddress.locality, "MONROVIA 10");
@@ -117,9 +117,9 @@ module.exports.testaddress_LR = {
     },
     
     testParseAddressLRNoDelimiters: function(test) {
+        test.expect(7);
         var parsedAddress = new Address("Ministry of Posts and Telecommunications Postal Operations GPO 1000 MONROVIA 10 Liberia", {locale: 'en-LR'});
         
-        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Ministry of Posts and Telecommunications Postal Operations GPO");
         test.equal(parsedAddress.locality, "MONROVIA 10");
@@ -131,11 +131,11 @@ module.exports.testaddress_LR = {
     },
     
     testParseAddressLRFromUS: function(test) {
+        test.expect(7);
         var parsedAddress = new Address("Ministry of Posts and Telecommunications Postal Operations GPO\n1000 MONROVIA 10\nLiberia", {locale: 'en-US'});
         
         // the country name is in German because this address is for a contact in a German database
         
-        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Ministry of Posts and Telecommunications Postal Operations GPO");
         test.equal(parsedAddress.locality, "MONROVIA 10");
@@ -147,6 +147,7 @@ module.exports.testaddress_LR = {
     },
     
     testFormatAddressLR: function(test) {
+        test.expect(1);
         var parsedAddress = new Address({
             streetAddress: "Ministry of Posts and Telecommunications Postal Operations GPO",
             locality: "MONROVIA 10",
@@ -157,12 +158,12 @@ module.exports.testaddress_LR = {
         
         var expected = "Ministry of Posts and Telecommunications Postal Operations GPO\n1000 MONROVIA 10\nLiberia";
         var formatter = new AddressFmt({locale: 'en-LR'});
-        test.expect(1);
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     },
     
     testFormatAddressLRFromUS: function(test) {
+        test.expect(1);
         var parsedAddress = new Address({
             streetAddress: "Ministry of Posts and Telecommunications Postal Operations GPO",
             locality: "MONROVIA 10",
@@ -173,7 +174,6 @@ module.exports.testaddress_LR = {
         
         var expected = "Ministry of Posts and Telecommunications Postal Operations GPO\n1000 MONROVIA 10\nLiberia";
         var formatter = new AddressFmt({locale: 'en-US'});
-        test.expect(1);
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     }

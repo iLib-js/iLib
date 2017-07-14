@@ -18,7 +18,7 @@
  */
 
 if (typeof(ilib) === "undefined") {
-    var ilib = require("../../../lib/ilib.js");
+    var ilib = require("../../../lib/ilib-node.js");
 }
 if (typeof(Collator) === "undefined") {
     var Collator = require("../../../lib/Collator.js");
@@ -34,13 +34,13 @@ module.exports.testcollation_ko = {
     },
 
     testJSCollatorPriL_ko: function(test) {
+        test.expect(5);
         var col = new Collator({
             locale: "ko-KR",
             useNative: false,
             sensitivity: "primary"
         });
     
-        test.expect(5);
         test.ok(typeof(col) !== "undefined");
     
         // 가까나다따
@@ -52,13 +52,13 @@ module.exports.testcollation_ko = {
     },
     
     testJSCollatorPriV_ko: function(test) {
+        test.expect(5);
         var col = new Collator({
             locale: "ko-KR",
             useNative: false,
             sensitivity: "primary"
         });
     
-        test.expect(5);
         test.ok(typeof(col) !== "undefined");
     
         // 가개갸걔거
@@ -70,13 +70,13 @@ module.exports.testcollation_ko = {
     },
     
     testJSCollatorPriT_ko: function(test) {
+        test.expect(5);
         var col = new Collator({
             locale: "ko-KR",
             useNative: false,
             sensitivity: "primary"
         });
     
-        test.expect(5);
         test.ok(typeof(col) !== "undefined");
     
         // 가각갂갃간
@@ -88,13 +88,13 @@ module.exports.testcollation_ko = {
     },
     
     testJSCollatorSecL_ko: function(test) {
+        test.expect(5);
         var col = new Collator({
             locale: "ko-KR",
             useNative: false,
             sensitivity: "secondary"
         });
     
-        test.expect(5);
         test.ok(typeof(col) !== "undefined");
     
         // 가까나다따
@@ -106,13 +106,13 @@ module.exports.testcollation_ko = {
     },
     
     testJSCollatorSecV_ko: function(test) {
+        test.expect(5);
         var col = new Collator({
             locale: "ko-KR",
             useNative: false,
             sensitivity: "secondary"
         });
     
-        test.expect(5);
         test.ok(typeof(col) !== "undefined");
     
         // 가개갸걔거
@@ -124,13 +124,13 @@ module.exports.testcollation_ko = {
     },
     
     testJSCollatorSecT_ko: function(test) {
+        test.expect(5);
         var col = new Collator({
             locale: "ko-KR",
             useNative: false,
             sensitivity: "secondary"
         });
     
-        test.expect(5);
         test.ok(typeof(col) !== "undefined");
     
         // 가각갂갃간
@@ -142,13 +142,13 @@ module.exports.testcollation_ko = {
     },
     
     testJSCollatorTerL_ko: function(test) {
+        test.expect(5);
         var col = new Collator({
             locale: "ko-KR",
             useNative: false,
             sensitivity: "tertiary"
         });
     
-        test.expect(5);
         test.ok(typeof(col) !== "undefined");
     
         // 가까나다따
@@ -160,13 +160,13 @@ module.exports.testcollation_ko = {
     },
     
     testJSCollatorTerV_ko: function(test) {
+        test.expect(5);
         var col = new Collator({
             locale: "ko-KR",
             useNative: false,
             sensitivity: "tertiary"
         });
     
-        test.expect(5);
         test.ok(typeof(col) !== "undefined");
     
         // 가개갸걔거
@@ -178,13 +178,13 @@ module.exports.testcollation_ko = {
     },
     
     testJSCollatorTerT_ko: function(test) {
+        test.expect(5);
         var col = new Collator({
             locale: "ko-KR",
             useNative: false,
             sensitivity: "tertiary"
         });
     
-        test.expect(5);
         test.ok(typeof(col) !== "undefined");
     
         // 가각갂갃간
@@ -196,13 +196,13 @@ module.exports.testcollation_ko = {
     },
     
     testJSCollatorQuatL_ko: function(test) {
+        test.expect(5);
         var col = new Collator({
             locale: "ko-KR",
             useNative: false,
             sensitivity: "quaternary"
         });
     
-        test.expect(5);
         test.ok(typeof(col) !== "undefined");
     
         // 가까나다따
@@ -214,13 +214,13 @@ module.exports.testcollation_ko = {
     },
     
     testJSCollatorQuatV_ko: function(test) {
+        test.expect(5);
         var col = new Collator({
             locale: "ko-KR",
             useNative: false,
             sensitivity: "quaternary"
         });
     
-        test.expect(5);
         test.ok(typeof(col) !== "undefined");
     
         // 가개갸걔거
@@ -232,13 +232,13 @@ module.exports.testcollation_ko = {
     },
     
     testJSCollatorQuatT_ko: function(test) {
+        test.expect(5);
         var col = new Collator({
             locale: "ko-KR",
             useNative: false,
             sensitivity: "quaternary"
         });
     
-        test.expect(5);
         test.ok(typeof(col) !== "undefined");
     
         // 가각갂갃간
@@ -250,13 +250,13 @@ module.exports.testcollation_ko = {
     },
     
     testJSCollatorJamoL_ko: function(test) {
+        test.expect(19);
         var col = new Collator({
             locale: "ko-KR",
             useNative: false,
             sensitivity: "quaternary"
         });
     
-        test.expect(19);
         test.ok(typeof(col) !== "undefined");
     
         // initial consonants ㄱ ㄲ ㄴ ㄷ ㄸ ㄹ ㅁ ㅂ ㅃ ㅅ ㅆ ㅇ ㅈ ㅉ ㅊ ㅋ ㅌ ㅍ ㅎ
@@ -282,13 +282,13 @@ module.exports.testcollation_ko = {
     },
     
     testJSCollatorJamoV_ko: function(test) {
+        test.expect(21);
         var col = new Collator({
             locale: "ko-KR",
             useNative: false,
             sensitivity: "quaternary"
         });
     
-        test.expect(21);
         test.ok(typeof(col) !== "undefined");
     
         // middle vowels ㅏ ㅐ ㅑ ㅒ ㅓ ㅔ ㅕ ㅖ ㅗ ㅘ ㅙ ㅚ ㅛ ㅜ ㅝ ㅞ ㅟ ㅠ ㅡ ㅢ ㅣ
@@ -316,13 +316,13 @@ module.exports.testcollation_ko = {
     },
     
     testJSCollatorJamoT_ko: function(test) {
+        test.expect(27);
         var col = new Collator({
             locale: "ko-KR",
             useNative: false,
             sensitivity: "quaternary"
         });
     
-        test.expect(27);
         test.ok(typeof(col) !== "undefined");
     
         // optional final consonants ㄱ ㄲ ㄳ ㄴ ㄵ ㄶ ㄷ ㄹ ㄺ ㄻ ㄼ ㄽ ㄾ ㄿ ㅀ ㅁ ㅂ ㅄ ㅅ ㅆ ㅇ ㅈ ㅊ ㅋ ㅌ ㅍ ㅎ
@@ -357,6 +357,7 @@ module.exports.testcollation_ko = {
     },
     
     testJSCollatorJamoLHalfwidthPri_ko: function(test) {
+        test.expect(104);
         var col = new Collator({
             locale: "ko-KR",
             useNative: false,
@@ -364,7 +365,6 @@ module.exports.testcollation_ko = {
             usage: "search"
         });
     
-        test.expect(104);
         test.ok(typeof(col) !== "undefined");
     
         test.equal(0, col.compare("ᄀ", "ﾡ"), "ᄀ = ﾡ");
@@ -475,6 +475,7 @@ module.exports.testcollation_ko = {
         test.done();
     },
     testJSCollatorJamoLHalfwidthSec_ko: function(test) {
+        test.expect(104);
         var col = new Collator({
             locale: "ko-KR",
             useNative: false,
@@ -482,7 +483,6 @@ module.exports.testcollation_ko = {
             usage: "search"
         });
     
-        test.expect(104);
         test.ok(typeof(col) !== "undefined");
     
         test.equal(0, col.compare("ᄀ", "ﾡ"), "ᄀ = ﾡ");
@@ -594,6 +594,7 @@ module.exports.testcollation_ko = {
     },
     
     testJSCollatorJamoLHalfwidthTer_ko: function(test) {
+        test.expect(104);
         var col = new Collator({
             locale: "ko-KR",
             useNative: false,
@@ -601,7 +602,6 @@ module.exports.testcollation_ko = {
             usage: "search"
         });
     
-        test.expect(104);
         test.ok(typeof(col) !== "undefined");
     
         test.equal(0, col.compare("ᄀ", "ﾡ"), "ᄀ = ﾡ");
@@ -713,6 +713,7 @@ module.exports.testcollation_ko = {
     },
     
     testJSCollatorJamoLHalfwidthTer_ko: function(test) {
+        test.expect(104);
         var col = new Collator({
             locale: "ko-KR",
             useNative: false,
@@ -720,7 +721,6 @@ module.exports.testcollation_ko = {
             usage: "search"
         });
     
-        test.expect(104);
         test.ok(typeof(col) !== "undefined");
     
         test.ok("ᄀ < ﾡ", col.compare("ᄀ", "ﾡ") < 0);
@@ -832,13 +832,13 @@ module.exports.testcollation_ko = {
     },
     
     testCollatorPri_ko: function(test) {
+        test.expect(2);
         var col = new Collator({
             locale: "ko-KR",
             useNative: false,
             sensitivity: "primary",
             usage: "sort"
         });
-        test.expect(2);
         test.ok(typeof(col) !== "undefined");
     
         var input = [

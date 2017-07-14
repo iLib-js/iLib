@@ -17,7 +17,7 @@
  * limitations under the License.
  */
 
-var ilib = require("./../lib/ilib.js");
+var ilib = require("./../lib/ilib-node.js");
 var NormString = require("./../lib/NormString.js");
 var Locale = require("./../lib/Locale.js");
 var IString = require("./../lib/IString.js");
@@ -687,6 +687,8 @@ function testForEachCodePointSimple() {
     str.forEachCodePoint(function(ch) {
         assertEquals(expected[i++], ch);
     });
+    
+    assertEquals(4, i);
 }
 
 function testForEachCodePointComplex() {
@@ -698,15 +700,20 @@ function testForEachCodePointComplex() {
     str.forEachCodePoint(function(ch) {
         assertEquals(expected[i++], ch);
     });
+    assertEquals(4, i);
 }
 
 function testForEachCodePointEmpty() {
     var str = new IString("");
-
+    var notcalled = true;
+    
     str.forEachCodePoint(function(ch) {
         // should never call this callback
+        notcalled = false;
         fail();
     });
+    
+    assertTrue(notcalled);
 }
 
 function testCharIteratorSimple() {
@@ -758,6 +765,8 @@ function testForEachSimple() {
     str.forEach(function(ch) {
         assertEquals(expected[i++], ch);
     });
+    
+    assertEquals(4, i);
 }
 
 function testForEachComplex() {
@@ -769,15 +778,21 @@ function testForEachComplex() {
     str.forEach(function(ch) {
         assertEquals(expected[i++], ch);
     });
+    
+    assertEquals(4, i)
 }
 
 function testForEachEmpty() {
     var str = new IString("");
-
+    var notcalled = true;
+    
     str.forEach(function(ch) {
         // should never call this callback
+        notcalled = false;
         fail();
     });
+    
+    assertTrue(notcalled);
 }
 
 function testCodePointLengthUCS2() {
@@ -854,7 +869,8 @@ function testRuleGetValueN() {
         n: []
     };
 
-    assertRoughlyEquals(8.2, IString._fncs.getValue(rule, 8.2), 0.01);
+    var actual = IString._fncs.getValue(rule, 8.2);
+    assertRoughlyEquals(8.2, actual, 0.01);
 }
 
 function testRuleGetValueIsTrue() {
@@ -1586,7 +1602,8 @@ function testRuleGetValueModNonInteger() {
         ]
     };
 
-    assertRoughlyEquals(2.2, IString._fncs.getValue(rule, 8.2), 0.01);
+    var actual = IString._fncs.getValue(rule, 8.2);
+    assertRoughlyEquals(2.2, actual, 0.01);
 }
 
 function testRuleGetValueModNegative() {
@@ -1597,7 +1614,8 @@ function testRuleGetValueModNegative() {
         ]
     };
 
-    assertRoughlyEquals(1, IString._fncs.getValue(rule, -11), 0.01);
+    var actual = IString._fncs.getValue(rule, -11);
+    assertRoughlyEquals(1, actual, 0.01);
 }
 
 function testRuleGetValueOrFalseFalse() {

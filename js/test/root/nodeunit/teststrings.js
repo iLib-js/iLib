@@ -18,7 +18,7 @@
  */
 
 if (typeof(ilib) === "undefined") {
-    var ilib = require("../.././../lib/ilib.js");
+    var ilib = require("../.././../lib/ilib-node.js");
 }
 if (typeof(NormString) === "undefined") {
     var NormString = require("../.././../lib/NormString.js");
@@ -45,17 +45,17 @@ module.exports.teststrings = {
     },
 
     testStringConstructor: function(test) {
+        test.expect(1);
         var str = new IString();
     
-        test.expect(1);
         test.ok(str !== null);
         test.done();
     },
     
     testStringConstructorEmpty: function(test) {
+        test.expect(3);
         var str = new IString();
     
-        test.expect(3);
         test.ok(str !== null);
     
         test.equal(str.length, 0);
@@ -64,9 +64,9 @@ module.exports.teststrings = {
     },
     
     testStringConstructorFull: function(test) {
+        test.expect(3);
         var str = new IString("test test test");
     
-        test.expect(3);
         test.ok(str !== null);
     
         test.equal(str.length, 14);
@@ -75,9 +75,9 @@ module.exports.teststrings = {
     },
     
     testStringConstructorWithStringObj: function(test) {
+        test.expect(3);
         var str = new IString(new String("test test test"));
     
-        test.expect(3);
         test.ok(str !== null);
     
         test.equal(str.length, 14);
@@ -86,9 +86,9 @@ module.exports.teststrings = {
     },
     
     testStringConstructorWithIlibStringObj: function(test) {
+        test.expect(3);
         var str = new IString(new IString("test test test"));
     
-        test.expect(3);
         test.ok(str !== null);
     
         test.equal(str.length, 14);
@@ -97,9 +97,9 @@ module.exports.teststrings = {
     },
     
     testStringConstructorWithIlibNormStringObj: function(test) {
+        test.expect(3);
         var str = new IString(new NormString("test test test"));
     
-        test.expect(3);
         test.ok(str !== null);
     
         test.equal(str.length, 14);
@@ -108,9 +108,9 @@ module.exports.teststrings = {
     },
     
     testStringFormatNoArgs: function(test) {
+        test.expect(2);
         var str = new IString("Format this string.");
     
-        test.expect(2);
         test.ok(str !== null);
     
         test.equal(str.format(), "Format this string.");
@@ -118,9 +118,9 @@ module.exports.teststrings = {
     },
     
     testStringFormatEmpty: function(test) {
+        test.expect(2);
         var str = new IString();
     
-        test.expect(2);
         test.ok(str !== null);
     
         test.equal(str.format(), "");
@@ -128,9 +128,9 @@ module.exports.teststrings = {
     },
     
     testStringFormatEmptyWithArgs: function(test) {
+        test.expect(2);
         var str = new IString();
     
-        test.expect(2);
         test.ok(str !== null);
     
         test.equal(str.format({test: "Foo"}), "");
@@ -138,9 +138,9 @@ module.exports.teststrings = {
     },
     
     testStringFormatWithArg: function(test) {
+        test.expect(2);
         var str = new IString("Format {size} string.");
     
-        test.expect(2);
         test.ok(str !== null);
     
         test.equal(str.format({size: "medium"}), "Format medium string.");
@@ -148,9 +148,9 @@ module.exports.teststrings = {
     },
     
     testStringFormatWithMultipleArgs: function(test) {
+        test.expect(2);
         var str = new IString("Format {size} {object}.");
     
-        test.expect(2);
         test.ok(str !== null);
     
         test.equal(str.format({ size: "medium", object: "string" }), "Format medium string.");
@@ -158,9 +158,9 @@ module.exports.teststrings = {
     },
     
     testStringFormatWithSameArgMultipleTimes: function(test) {
+        test.expect(2);
         var str = new IString("Format {size} when {size} is at least {size} big.");
     
-        test.expect(2);
         test.ok(str !== null);
     
         test.equal(str.format({ size: "medium" }), "Format medium when medium is at least medium big.");
@@ -168,9 +168,9 @@ module.exports.teststrings = {
     },
     
     testStringFormatWithMissingArgs: function(test) {
+        test.expect(2);
         var str = new IString("Format {size} {object}.");
     
-        test.expect(2);
         test.ok(str !== null);
     
         test.equal(str.format({ object: "string" }), "Format {size} string.");
@@ -178,9 +178,9 @@ module.exports.teststrings = {
     },
     
     testStringFormatWithEmptyArg: function(test) {
+        test.expect(2);
         var str = new IString("Format {size} string.");
     
-        test.expect(2);
         test.ok(str !== null);
     
         test.equal(str.format({size: ""}), "Format  string.");
@@ -188,9 +188,9 @@ module.exports.teststrings = {
     },
     
     testStringFormatHandleNonAsciiParam: function(test) {
+        test.expect(2);
         var str = new IString("Format {size} string.");
     
-        test.expect(2);
         test.ok(str !== null);
     
         test.equal(str.format({size: "médïûm"}), "Format médïûm string.");
@@ -198,9 +198,9 @@ module.exports.teststrings = {
     },
     
     testStringFormatHandleNonAsciiReplacement: function(test) {
+        test.expect(2);
         var str = new IString("Format {sïzé} string.");
     
-        test.expect(2);
         test.ok(str !== null);
     
         test.equal(str.format({"sïzé": "medium"}), "Format medium string.");
@@ -208,9 +208,9 @@ module.exports.teststrings = {
     },
     
     testStringFormatMultipleReplacements: function(test) {
+        test.expect(2);
         var str = new IString("User {user} has {num} objects in their {container}.");
     
-        test.expect(2);
         test.ok(str !== null);
     
         test.equal(str.format({ user: "edwin", num: 2, container: "locker" }), "User edwin has 2 objects in their locker.");
@@ -219,9 +219,9 @@ module.exports.teststrings = {
     
     
     testStringFormatChoiceSimple1: function(test) {
+        test.expect(2);
         var str = new IString("1#first string|2#second string");
     
-        test.expect(2);
         test.ok(str !== null);
     
         test.equal(str.formatChoice(1), "first string");
@@ -229,9 +229,9 @@ module.exports.teststrings = {
     },
     
     testStringFormatChoiceSimple2: function(test) {
+        test.expect(2);
         var str = new IString("1#first string|2#second string");
     
-        test.expect(2);
         test.ok(str !== null);
     
         test.equal(str.formatChoice(2), "second string");
@@ -239,9 +239,9 @@ module.exports.teststrings = {
     },
     
     testStringFormatChoiceOnlyOneChoicePositive: function(test) {
+        test.expect(2);
         var str = new IString("1#first string");
     
-        test.expect(2);
         test.ok(str !== null);
     
         test.equal(str.formatChoice(1), "first string");
@@ -249,9 +249,9 @@ module.exports.teststrings = {
     },
     
     testStringFormatChoiceOnlyOneChoiceNegative: function(test) {
+        test.expect(2);
         var str = new IString("1#first string");
     
-        test.expect(2);
         test.ok(str !== null);
     
         test.equal(str.formatChoice(2), "");
@@ -259,9 +259,9 @@ module.exports.teststrings = {
     },
     
     testStringFormatChoiceNoString: function(test) {
+        test.expect(2);
         var str = new IString("");
     
-        test.expect(2);
         test.ok(str !== null);
     
         test.equal(str.formatChoice(2), "");
@@ -269,9 +269,9 @@ module.exports.teststrings = {
     },
     
     testStringFormatChoiceSimpleNoMatch: function(test) {
+        test.expect(2);
         var str = new IString("1#first string|2#second string");
     
-        test.expect(2);
         test.ok(str !== null);
     
         test.equal(str.formatChoice(3), "");
@@ -279,9 +279,9 @@ module.exports.teststrings = {
     },
     
     testStringFormatChoiceSimpleDefault: function(test) {
+        test.expect(2);
         var str = new IString("1#first string|2#second string|#other string");
     
-        test.expect(2);
         test.ok(str !== null);
     
         test.equal(str.formatChoice(3), "other string");
@@ -289,9 +289,9 @@ module.exports.teststrings = {
     },
     
     testStringFormatChoiceLessThanOrEqualPositive: function(test) {
+        test.expect(2);
         var str = new IString("<=2#first string|3#second string|#other string");
     
-        test.expect(2);
         test.ok(str !== null);
     
         test.equal(str.formatChoice(1), "first string");
@@ -299,9 +299,9 @@ module.exports.teststrings = {
     },
     
     testStringFormatChoiceLessThanOrEqualEqual: function(test) {
+        test.expect(2);
         var str = new IString("<=2#first string|3#second string|#other string");
     
-        test.expect(2);
         test.ok(str !== null);
     
         test.equal(str.formatChoice(2), "first string");
@@ -309,9 +309,9 @@ module.exports.teststrings = {
     },
     
     testStringFormatChoiceLessThanOrEqualNotLessThan: function(test) {
+        test.expect(2);
         var str = new IString("<=2#first string|3#second string|#other string");
     
-        test.expect(2);
         test.ok(str !== null);
     
         test.equal(str.formatChoice(3), "second string");
@@ -319,9 +319,9 @@ module.exports.teststrings = {
     },
     
     testStringFormatChoiceGreaterThanOrEqualPositive: function(test) {
+        test.expect(2);
         var str = new IString(">=2#first string|1#second string|#other string");
     
-        test.expect(2);
         test.ok(str !== null);
     
         test.equal(str.formatChoice(4), "first string");
@@ -329,9 +329,9 @@ module.exports.teststrings = {
     },
     
     testStringFormatChoiceGreaterThanOrEqualEqual: function(test) {
+        test.expect(2);
         var str = new IString(">=2#first string|1#second string|#other string");
     
-        test.expect(2);
         test.ok(str !== null);
     
         test.equal(str.formatChoice(2), "first string");
@@ -339,9 +339,9 @@ module.exports.teststrings = {
     },
     
     testStringFormatChoiceGreaterThanOrEqualNotLessThan: function(test) {
+        test.expect(2);
         var str = new IString(">=2#first string|1#second string|#other string");
     
-        test.expect(2);
         test.ok(str !== null);
     
         test.equal(str.formatChoice(1), "second string");
@@ -349,9 +349,9 @@ module.exports.teststrings = {
     },
     
     testStringFormatChoiceLessThanPositive: function(test) {
+        test.expect(2);
         var str = new IString("<2#first string|3#second string|#other string");
     
-        test.expect(2);
         test.ok(str !== null);
     
         test.equal(str.formatChoice(1), "first string");
@@ -359,9 +359,9 @@ module.exports.teststrings = {
     },
     
     testStringFormatChoiceLessThanEqual: function(test) {
+        test.expect(2);
         var str = new IString("<2#first string|3#second string|#other string");
     
-        test.expect(2);
         test.ok(str !== null);
     
         test.equal(str.formatChoice(2), "other string");
@@ -369,9 +369,9 @@ module.exports.teststrings = {
     },
     
     testStringFormatChoiceLessThanNotLessThan: function(test) {
+        test.expect(2);
         var str = new IString("<2#first string|3#second string|#other string");
     
-        test.expect(2);
         test.ok(str !== null);
     
         test.equal(str.formatChoice(3), "second string");
@@ -379,9 +379,9 @@ module.exports.teststrings = {
     },
     
     testStringFormatChoiceGreaterThanPositive: function(test) {
+        test.expect(2);
         var str = new IString(">2#first string|1#second string|#other string");
     
-        test.expect(2);
         test.ok(str !== null);
     
         test.equal(str.formatChoice(4), "first string");
@@ -389,9 +389,9 @@ module.exports.teststrings = {
     },
     
     testStringFormatChoiceGreaterThanEqual: function(test) {
+        test.expect(2);
         var str = new IString(">2#first string|1#second string|#other string");
     
-        test.expect(2);
         test.ok(str !== null);
     
         test.equal(str.formatChoice(2), "other string");
@@ -399,9 +399,9 @@ module.exports.teststrings = {
     },
     
     testStringFormatChoiceGreaterThanNotLessThan: function(test) {
+        test.expect(2);
         var str = new IString(">2#first string|1#second string|#other string");
     
-        test.expect(2);
         test.ok(str !== null);
     
         test.equal(str.formatChoice(1), "second string");
@@ -409,9 +409,9 @@ module.exports.teststrings = {
     },
     
     testStringFormatRange1: function(test) {
+        test.expect(2);
         var str = new IString("0-2#first string {num}|3-5#second string {num}|#other string {num}");
     
-        test.expect(2);
         test.ok(str !== null);
     
         test.equal(str.formatChoice(1, {num: 1}), "first string 1");
@@ -419,9 +419,9 @@ module.exports.teststrings = {
     },
     
     testStringFormatRange4: function(test) {
+        test.expect(2);
         var str = new IString("0-2#first string {num}|3-5#second string {num}|#other string {num}");
     
-        test.expect(2);
         test.ok(str !== null);
     
         test.equal(str.formatChoice(4, {num: 4}), "second string 4");
@@ -429,9 +429,9 @@ module.exports.teststrings = {
     },
     
     testStringFormatRange7: function(test) {
+        test.expect(2);
         var str = new IString("0-2#first string {num}|3-5#second string {num}|#other string {num}");
     
-        test.expect(2);
         test.ok(str !== null);
     
         test.equal(str.formatChoice(7, {num: 7}), "other string 7");
@@ -439,9 +439,9 @@ module.exports.teststrings = {
     },
     
     testStringFormatChoiceBooleanTrue: function(test) {
+        test.expect(2);
         var str = new IString("true#first string|false#second string");
     
-        test.expect(2);
         test.ok(str !== null);
     
         test.equal(str.formatChoice(true), "first string");
@@ -449,9 +449,9 @@ module.exports.teststrings = {
     },
     
     testStringFormatChoiceBooleanFalse: function(test) {
+        test.expect(2);
         var str = new IString("true#first string|false#second string");
     
-        test.expect(2);
         test.ok(str !== null);
     
         test.equal(str.formatChoice(false), "second string");
@@ -459,9 +459,9 @@ module.exports.teststrings = {
     },
     
     testStringFormatChoiceBooleanMissing: function(test) {
+        test.expect(2);
         var str = new IString("true#first string");
     
-        test.expect(2);
         test.ok(str !== null);
     
         test.equal(str.formatChoice(false), "");
@@ -469,9 +469,9 @@ module.exports.teststrings = {
     },
     
     testStringFormatChoiceStringStaticA: function(test) {
+        test.expect(2);
         var str = new IString("a#first string|b#second string|c#third string");
     
-        test.expect(2);
         test.ok(str !== null);
     
         test.equal(str.formatChoice("a"), "first string");
@@ -479,9 +479,9 @@ module.exports.teststrings = {
     },
     
     testStringFormatChoiceStringStaticB: function(test) {
+        test.expect(2);
         var str = new IString("a#first string|b#second string|c#third string");
     
-        test.expect(2);
         test.ok(str !== null);
     
         test.equal(str.formatChoice("b"), "second string");
@@ -489,9 +489,9 @@ module.exports.teststrings = {
     },
     
     testStringFormatChoiceStringStaticC: function(test) {
+        test.expect(2);
         var str = new IString("a#first string|b#second string|c#third string");
     
-        test.expect(2);
         test.ok(str !== null);
     
         test.equal(str.formatChoice("c"), "third string");
@@ -499,9 +499,9 @@ module.exports.teststrings = {
     },
     
     testStringFormatChoiceStringIgnoreCase: function(test) {
+        test.expect(2);
         var str = new IString("a#first string|b#second string|c#third string");
     
-        test.expect(2);
         test.ok(str !== null);
     
         test.equal(str.formatChoice("B"), "second string");
@@ -509,9 +509,9 @@ module.exports.teststrings = {
     },
     
     testStringFormatChoiceRegExpA: function(test) {
+        test.expect(2);
         var str = new IString("a.*b#first string|b.*c#second string|c+d#third string");
     
-        test.expect(2);
         test.ok(str !== null);
     
         test.equal(str.formatChoice("acccb"), "first string");
@@ -519,9 +519,9 @@ module.exports.teststrings = {
     },
     
     testStringFormatChoiceRegExpB: function(test) {
+        test.expect(2);
         var str = new IString("a.*b#first string|b.*c#second string|c+d#third string");
     
-        test.expect(2);
         test.ok(str !== null);
     
         test.equal(str.formatChoice("bbccc"), "second string");
@@ -529,9 +529,9 @@ module.exports.teststrings = {
     },
     
     testStringFormatChoiceRegExpC: function(test) {
+        test.expect(2);
         var str = new IString("a.*b#first string|b.*c#second string|c+d#third string");
     
-        test.expect(2);
         test.ok(str !== null);
     
         test.equal(str.formatChoice("ccccd"), "third string");
@@ -539,9 +539,9 @@ module.exports.teststrings = {
     },
     
     testStringFormatChoiceRegExpDefault: function(test) {
+        test.expect(2);
         var str = new IString("a.*b#first string|b.*c#second string|#third string");
     
-        test.expect(2);
         test.ok(str !== null);
     
         test.equal(str.formatChoice("ccccd"), "third string");
@@ -549,9 +549,9 @@ module.exports.teststrings = {
     },
     
     testStringFormatChoiceRegExpMissing: function(test) {
+        test.expect(2);
         var str = new IString("a.*b#first string|b.*c#second string|c+d#third string");
     
-        test.expect(2);
         test.ok(str !== null);
     
         test.equal(str.formatChoice("efff"), "");
@@ -559,9 +559,9 @@ module.exports.teststrings = {
     },
     
     testStringFormatChoiceWithReplacement0: function(test) {
+        test.expect(2);
         var str = new IString("0#There are no strings.|1#There is one string.|#There are {num} strings.");
     
-        test.expect(2);
         test.ok(str !== null);
     
         test.equal(str.formatChoice(0, {num: 0}), "There are no strings.");
@@ -569,9 +569,9 @@ module.exports.teststrings = {
     },
     
     testStringFormatChoiceWithReplacement1: function(test) {
+        test.expect(2);
         var str = new IString("0#There are no strings.|1#There is one string.|#There are {num} strings.");
     
-        test.expect(2);
         test.ok(str !== null);
     
         test.equal(str.formatChoice(1, {num: 1}), "There is one string.");
@@ -579,9 +579,9 @@ module.exports.teststrings = {
     },
     
     testStringFormatChoiceWithReplacement2: function(test) {
+        test.expect(2);
         var str = new IString("0#There are no strings.|1#There is one string.|#There are {num} strings.");
     
-        test.expect(2);
         test.ok(str !== null);
     
         test.equal(str.formatChoice(2, {num: 2}), "There are 2 strings.");
@@ -589,9 +589,9 @@ module.exports.teststrings = {
     },
     
     testStringFormatChoiceWithMultipleReplacement0: function(test) {
+        test.expect(2);
         var str = new IString("0#User {name} has no items.|1#User {name} has {num} item.|#User {name} has {num} items.");
     
-        test.expect(2);
         test.ok(str !== null);
     
         test.equal(str.formatChoice(0, { name: "johndoe", num: 0 }), "User johndoe has no items.");
@@ -599,9 +599,9 @@ module.exports.teststrings = {
     },
     
     testStringFormatChoiceWithMultipleReplacement1: function(test) {
+        test.expect(2);
         var str = new IString("0#User {name} has no items.|1#User {name} has {num} item.|#User {name} has {num} items.");
     
-        test.expect(2);
         test.ok(str !== null);
     
         test.equal(str.formatChoice(1, { name: "johndoe", num: 1 }), "User johndoe has 1 item.");
@@ -609,9 +609,9 @@ module.exports.teststrings = {
     },
     
     testStringFormatChoiceWithMultipleReplacement2: function(test) {
+        test.expect(2);
         var str = new IString("0#User {name} has no items.|1#User {name} has {num} item.|#User {name} has {num} items.");
     
-        test.expect(2);
         test.ok(str !== null);
     
         test.equal(str.formatChoice(2, { name: "johndoe", num: 2 }), "User johndoe has 2 items.");
@@ -619,9 +619,9 @@ module.exports.teststrings = {
     },
     
     testStringDelegateCharAt: function(test) {
+        test.expect(2);
         var str = new IString("0#User {name} has no items.|1#User {name} has {num} item.|#User {name} has {num} items.");
     
-        test.expect(2);
         test.ok(str !== null);
     
         test.equal(str.charAt(7).toString(), "{");
@@ -629,9 +629,9 @@ module.exports.teststrings = {
     },
     
     testStringDelegateCharCodeAt: function(test) {
+        test.expect(2);
         var str = new IString("0#User {name} has no items.|1#User {name} has {num} item.|#User {name} has {num} items.");
     
-        test.expect(2);
         test.ok(str !== null);
     
         test.equal(str.charCodeAt(7), 123);
@@ -639,9 +639,9 @@ module.exports.teststrings = {
     },
     
     testStringDelegateConcat: function(test) {
+        test.expect(2);
         var str = new IString("abc");
     
-        test.expect(2);
         test.ok(str !== null);
     
         test.equal(str.concat("def").toString(), "abcdef");
@@ -649,9 +649,9 @@ module.exports.teststrings = {
     },
     
     testStringDelegateIndexOf: function(test) {
+        test.expect(2);
         var str = new IString("abcdefghijklmnopqrstuvwxyz");
     
-        test.expect(2);
         test.ok(str !== null);
     
         test.equal(str.indexOf("lmno"), 11);
@@ -659,9 +659,9 @@ module.exports.teststrings = {
     },
     
     testStringDelegateIndexOf: function(test) {
+        test.expect(2);
         var str = new IString("abcdefghijklmnopqrstuvwxyzlmnopqrstuv");
     
-        test.expect(2);
         test.ok(str !== null);
     
         test.equal(str.lastIndexOf("lmno"), 26);
@@ -669,9 +669,9 @@ module.exports.teststrings = {
     },
     
     testStringDelegateMatch: function(test) {
+        test.expect(4);
         var str = new IString("abcdefghijklmnopqrstuvwxyzlmnopqrstuv");
     
-        test.expect(4);
         test.ok(str !== null);
     
         var m = str.match(/lmno/g);
@@ -682,9 +682,9 @@ module.exports.teststrings = {
     },
     
     testStringDelegateReplace: function(test) {
+        test.expect(2);
         var str = new IString("abcdefghijklmnopqrstuvwxyzlmnopqrstuv");
     
-        test.expect(2);
         test.ok(str !== null);
     
         test.equal(str.replace(/lmno/, "xxx").toString(), "abcdefghijkxxxpqrstuvwxyzlmnopqrstuv");
@@ -692,9 +692,9 @@ module.exports.teststrings = {
     },
     
     testStringDelegateSearch: function(test) {
+        test.expect(2);
         var str = new IString("abcdefghijklmnopqrstuvwxyzlmnopqrstuv");
     
-        test.expect(2);
         test.ok(str !== null);
     
         test.equal(str.search(/lmno/), 11);
@@ -702,9 +702,9 @@ module.exports.teststrings = {
     },
     
     testStringDelegateSplit: function(test) {
+        test.expect(8);
         var str = new IString("abcdefghijklmnopqrstuvwxyz");
     
-        test.expect(8);
         test.ok(str !== null);
     
         var consonants = str.split(/[aeiou]/);
@@ -719,9 +719,9 @@ module.exports.teststrings = {
     },
     
     testStringDelegateSubstr: function(test) {
+        test.expect(2);
         var str = new IString("abcdefghijklmnopqrstuvwxyzlmnopqrstuv");
     
-        test.expect(2);
         test.ok(str !== null);
     
         test.equal(str.substr(26).toString(), "lmnopqrstuv");
@@ -729,9 +729,9 @@ module.exports.teststrings = {
     },
     
     testStringDelegateSubstring: function(test) {
+        test.expect(2);
         var str = new IString("abcdefghijklmnopqrstuvwxyzlmnopqrstuv");
     
-        test.expect(2);
         test.ok(str !== null);
     
         test.equal(str.substring(1,5), "bcde");
@@ -739,9 +739,9 @@ module.exports.teststrings = {
     },
     
     testStringDelegateToLowerCase: function(test) {
+        test.expect(2);
         var str = new IString("ABCDEF");
     
-        test.expect(2);
         test.ok(str !== null);
     
         test.equal(str.toLowerCase(), "abcdef");
@@ -749,9 +749,9 @@ module.exports.teststrings = {
     },
     
     testStringDelegateToLowerCase: function(test) {
+        test.expect(2);
         var str = new IString("abcdef");
     
-        test.expect(2);
         test.ok(str !== null);
     
         test.equal(str.toUpperCase(), "ABCDEF");
@@ -759,9 +759,9 @@ module.exports.teststrings = {
     },
     
     testCodePointToUTF: function(test) {
+        test.expect(3);
         var str = IString.fromCodePoint(0x10302);
     
-        test.expect(3);
         test.equal(str.length, 2);
         test.equal(str.charCodeAt(0), 0xD800);
         test.equal(str.charCodeAt(1), 0xDF02);
@@ -769,9 +769,9 @@ module.exports.teststrings = {
     },
     
     testCodePointToUTFLast: function(test) {
+        test.expect(3);
         var str = IString.fromCodePoint(0x10FFFD);
     
-        test.expect(3);
         test.equal(str.length, 2);
         test.equal(str.charCodeAt(0), 0xDBFF);
         test.equal(str.charCodeAt(1), 0xDFFD);
@@ -779,9 +779,9 @@ module.exports.teststrings = {
     },
     
     testCodePointToUTFFirst: function(test) {
+        test.expect(3);
         var str = IString.fromCodePoint(0x10000);
     
-        test.expect(3);
         test.equal(str.length, 2);
         test.equal(str.charCodeAt(0), 0xD800);
         test.equal(str.charCodeAt(1), 0xDC00);
@@ -789,28 +789,28 @@ module.exports.teststrings = {
     },
     
     testCodePointToUTFBeforeFirst: function(test) {
+        test.expect(2);
         var str = IString.fromCodePoint(0xFFFF);
     
-        test.expect(2);
         test.equal(str.length, 1);
         test.equal(str.charCodeAt(0), 0xFFFF);
         test.done();
     },
     
     testCodePointToUTFNotSupplementary: function(test) {
+        test.expect(2);
         var str = IString.fromCodePoint(0x0302);
     
-        test.expect(2);
         test.equal(str.length, 1);
         test.equal(str.charCodeAt(0), 0x0302);
         test.done();
     },
     
     testIteratorSimple: function(test) {
+        test.expect(10);
         var str = new IString("abcd");
     
         var it = str.iterator();
-        test.expect(10);
         test.ok(it.hasNext());
         test.equal(it.next(), 0x0061);
         test.ok(it.hasNext());
@@ -825,10 +825,10 @@ module.exports.teststrings = {
     },
     
     testIteratorComplex: function(test) {
+        test.expect(10);
         var str = new IString("a\uD800\uDF02b\uD800\uDC00");
     
         var it = str.iterator();
-        test.expect(10);
         test.ok(it.hasNext());
         test.equal(it.next(), 0x0061);
         test.ok(it.hasNext());
@@ -843,10 +843,10 @@ module.exports.teststrings = {
     },
     
     testIteratorEmpty: function(test) {
+        test.expect(2);
         var str = new IString("");
     
         var it = str.iterator();
-        test.expect(2);
         test.ok(!it.hasNext());
         test.equal(it.next(), -1);
         test.done();
@@ -859,10 +859,11 @@ module.exports.teststrings = {
         var i = 0;
     
         str.forEachCodePoint(function(ch) {
-        test.expect(1);
             test.equal(ch, expected[i++]);
-            test.done();
         });
+        
+        test.equal(i, 4);
+        test.done();
     },
     
     testForEachCodePointComplex: function(test) {
@@ -872,28 +873,31 @@ module.exports.teststrings = {
         var i = 0;
     
         str.forEachCodePoint(function(ch) {
-        test.expect(1);
             test.equal(ch, expected[i++]);
-            test.done();
         });
+        test.equal(i, 4);
+        test.done();
     },
     
     testForEachCodePointEmpty: function(test) {
         var str = new IString("");
-    
+        var notcalled = true;
+        
         str.forEachCodePoint(function(ch) {
             // should never call this callback
-        test.expect(1);
-        test.fail()
-        test.done();
+            notcalled = false;
+            test.fail();
         });
+        
+        test.ok(notcalled);
+        test.done();
     },
     
     testCharIteratorSimple: function(test) {
+        test.expect(10);
         var str = new IString("abcd");
     
         var it = str.charIterator();
-        test.expect(10);
         test.ok(it.hasNext());
         test.equal(it.next(), "a");
         test.ok(it.hasNext());
@@ -908,10 +912,10 @@ module.exports.teststrings = {
     },
     
     testCharIteratorComplex: function(test) {
+        test.expect(10);
         var str = new IString("a\uD800\uDF02b\uD800\uDC00");
     
         var it = str.charIterator();
-        test.expect(10);
         test.ok(it.hasNext());
         test.equal(it.next(), "a");
         test.ok(it.hasNext());
@@ -926,10 +930,10 @@ module.exports.teststrings = {
     },
     
     testCharIteratorEmpty: function(test) {
+        test.expect(2);
         var str = new IString("");
     
         var it = str.charIterator();
-        test.expect(2);
         test.ok(!it.hasNext());
         test.equal(it.next(), undefined);
         test.done();
@@ -944,6 +948,8 @@ module.exports.teststrings = {
         str.forEach(function(ch) {
             test.equal(ch, expected[i++]);
         });
+        
+        test.equal(i, 4);
         test.done();
     },
     
@@ -956,50 +962,56 @@ module.exports.teststrings = {
         str.forEach(function(ch) {
             test.equal(ch, expected[i++]);
         });
+        
+        test.equal(i, 4)
         test.done();
     },
     
     testForEachEmpty: function(test) {
         var str = new IString("");
-    
+        var notcalled = true;
+        
         str.forEach(function(ch) {
             // should never call this callback
-        test.fail()
+            notcalled = false;
+            test.fail();
         });
+        
+        test.ok(notcalled);
         test.done();
     },
     
     testCodePointLengthUCS2: function(test) {
+        test.expect(2);
         var str = new IString("abcd");
     
-        test.expect(2);
         test.equal(str.codePointLength(), 4);
         test.equal(str.length, 4);
         test.done();
     },
     
     testCodePointLengthWithSurrogates: function(test) {
+        test.expect(2);
         var str = new IString("a\uD800\uDF02b\uD800\uDC00");
     
-        test.expect(2);
         test.equal(str.codePointLength(), 4);
         test.equal(str.length, 6);
         test.done();
     },
     
     testCodePointLengthEmpty: function(test) {
+        test.expect(2);
         var str = new IString("");
     
-        test.expect(2);
         test.equal(str.codePointLength(), 0);
         test.equal(str.length, 0);
         test.done();
     },
     
     testCodePointAtUCS2: function(test) {
+        test.expect(4);
         var str = new IString("abcd");
     
-        test.expect(4);
         test.equal(str.codePointAt(0), 0x61);
         test.equal(str.codePointAt(1), 0x62);
         test.equal(str.codePointAt(2), 0x63);
@@ -1008,9 +1020,9 @@ module.exports.teststrings = {
     },
     
     testCodePointAtWithSurrogates: function(test) {
+        test.expect(4);
         var str = new IString("a\uD800\uDF02b\uD800\uDC00");
     
-        test.expect(4);
         test.equal(str.codePointAt(0), 0x61);
         test.equal(str.codePointAt(1), 0x10302);
         test.equal(str.codePointAt(2), 0x62);
@@ -1019,56 +1031,58 @@ module.exports.teststrings = {
     },
     
     testCodePointAtEmpty: function(test) {
+        test.expect(1);
         var str = new IString("");
     
-        test.expect(1);
         test.equal(str.codePointAt(0), -1);
         test.done();
     },
     
     testCodePointAtPastEndUCS2: function(test) {
+        test.expect(1);
         var str = new IString("abcd");
     
-        test.expect(1);
         test.equal(str.codePointAt(4), -1);
         test.done();
     },
     
     testCodePointAtNegUCS2: function(test) {
+        test.expect(1);
         var str = new IString("abcd");
     
-        test.expect(1);
         test.equal(str.codePointAt(-234), -1);
         test.done();
     },
     
     testCodePointAtPastEndWithSurrogates: function(test) {
+        test.expect(1);
         var str = new IString("a\uD800\uDF02b\uD800\uDC00");
     
-        test.expect(1);
         test.equal(str.codePointAt(4), -1);
         test.done();
     },
     
     testCodePointAtNegWithSurrogates: function(test) {
+        test.expect(1);
         var str = new IString("a\uD800\uDF02b\uD800\uDC00");
     
-        test.expect(1);
         test.equal(str.codePointAt(-234), -1);
         test.done();
     },
     
     testRuleGetValueN: function(test) {
+        test.expect(1);
         var rule = {
             n: []
         };
     
-        test.expect(1);
-        test.roughlyEqual(8.2), IString._fncs.getValue(rule, 0.01, 8.2);
+        var actual = IString._fncs.getValue(rule, 8.2);
+        test.roughlyEqual(actual, 8.2, 0.01);
         test.done();
     },
     
     testRuleGetValueIsTrue: function(test) {
+        test.expect(1);
         var rule = {
             is: [
                 "n",
@@ -1076,12 +1090,12 @@ module.exports.teststrings = {
             ]
         };
     
-        test.expect(1);
         test.ok(IString._fncs.getValue(rule, 2));
         test.done();
     },
     
     testRuleGetValueIsFalse: function(test) {
+        test.expect(1);
         var rule = {
             is: [
                 "n",
@@ -1089,12 +1103,12 @@ module.exports.teststrings = {
             ]
         };
     
-        test.expect(1);
         test.ok(!IString._fncs.getValue(rule, 3));
         test.done();
     },
     
     testRuleGetValueIsNotTrue: function(test) {
+        test.expect(1);
         var rule = {
             isnot: [
                 "n",
@@ -1102,12 +1116,12 @@ module.exports.teststrings = {
             ]
         };
     
-        test.expect(1);
         test.ok(IString._fncs.getValue(rule, 3));
         test.done();
     },
     
     testRuleGetValueIsNotFalse: function(test) {
+        test.expect(1);
         var rule = {
             isnot: [
                 "n",
@@ -1115,12 +1129,12 @@ module.exports.teststrings = {
             ]
         };
     
-        test.expect(1);
         test.ok(!IString._fncs.getValue(rule, 2));
         test.done();
     },
     
     testRuleGetValueInRangeTrueStart: function(test) {
+        test.expect(1);
         var rule = {
             inrange: [
                 "n",
@@ -1128,12 +1142,12 @@ module.exports.teststrings = {
             ]
         };
     
-        test.expect(1);
         test.ok(IString._fncs.getValue(rule, 0));
         test.done();
     },
     
     testRuleGetValueInRangeTrueEnd: function(test) {
+        test.expect(1);
         var rule = {
             inrange: [
                 "n",
@@ -1141,12 +1155,12 @@ module.exports.teststrings = {
             ]
         };
     
-        test.expect(1);
         test.ok(IString._fncs.getValue(rule, 2));
         test.done();
     },
     
     testRuleGetValueInRangeTrueBetween: function(test) {
+        test.expect(1);
         var rule = {
             inrange: [
                 "n",
@@ -1154,12 +1168,12 @@ module.exports.teststrings = {
             ]
         };
     
-        test.expect(1);
         test.ok(IString._fncs.getValue(rule, 1));
         test.done();
     },
     
     testRuleGetValueInRangeFalse: function(test) {
+        test.expect(1);
         var rule = {
             inrange: [
                 "n",
@@ -1167,12 +1181,12 @@ module.exports.teststrings = {
             ]
         };
     
-        test.expect(1);
         test.ok(!IString._fncs.getValue(rule, 3));
         test.done();
     },
     
     testRuleGetValueInRangeFalseNotInteger: function(test) {
+        test.expect(1);
         var rule = {
             inrange: [
                 "n",
@@ -1180,13 +1194,13 @@ module.exports.teststrings = {
             ]
         };
     
-        test.expect(1);
         test.ok(IString._fncs.getValue(rule, 0.5));
         test.done();
     },
     
     
     testRuleGetValueInRangeFalseIntegersAfter: function(test) {
+        test.expect(1);
         var rule = {
             inrange: [
                 "n",
@@ -1194,12 +1208,12 @@ module.exports.teststrings = {
             ]
         };
     
-        test.expect(1);
         test.ok(!IString._fncs.getValue(rule, 4));
         test.done();
     },
     
     testRuleGetValueInRangeFalseIntegersBefore: function(test) {
+        test.expect(1);
         var rule = {
             inrange: [
                 "n",
@@ -1207,12 +1221,12 @@ module.exports.teststrings = {
             ]
         };
     
-        test.expect(1);
         test.ok(!IString._fncs.getValue(rule, 0));
         test.done();
     },
     
     testRuleGetValueInRangeFalseIntegersBetween: function(test) {
+        test.expect(1);
         var rule = {
             inrange: [
                 "n",
@@ -1220,12 +1234,12 @@ module.exports.teststrings = {
             ]
         };
     
-        test.expect(1);
         test.ok(IString._fncs.getValue(rule, 1));
         test.done();
     },
     
     testRuleGetValueInRangeIntegersTrue: function(test) {
+        test.expect(1);
         var rule = {
             inrange: [
                 "n",
@@ -1233,12 +1247,12 @@ module.exports.teststrings = {
             ]
         };
     
-        test.expect(1);
         test.ok(IString._fncs.getValue(rule, 2));
         test.done();
     },
     
     testRuleGetValueInRangeIntegersTrueNotInteger: function(test) {
+        test.expect(1);
         var rule = {
             inrange: [
                 "n",
@@ -1246,12 +1260,12 @@ module.exports.teststrings = {
             ]
         };
     
-        test.expect(1);
         test.ok(IString._fncs.getValue(rule, 0.5));
         test.done();
     },
     
     testRuleGetValueInRangeIntegersTrueMany: function(test) {
+        test.expect(1);
         var rule = {
             inrange: [
                 "n",
@@ -1259,13 +1273,13 @@ module.exports.teststrings = {
             ]
         };
     
-        test.expect(1);
         test.ok(IString._fncs.getValue(rule, 6));
         test.done();
     },
     
     
     testRuleGetValueInRangeComplexTrue1: function(test) {
+        test.expect(1);
         var rule = {
             inrange: [
                 "n",
@@ -1273,12 +1287,12 @@ module.exports.teststrings = {
             ]
         };
     
-        test.expect(1);
         test.ok(IString._fncs.getValue(rule, 0));
         test.done();
     },
     
     testRuleGetValueInRangeComplexTrue2: function(test) {
+        test.expect(1);
         var rule = {
             inrange: [
                 "n",
@@ -1286,12 +1300,12 @@ module.exports.teststrings = {
             ]
         };
     
-        test.expect(1);
         test.ok(IString._fncs.getValue(rule, 2));
         test.done();
     },
     
     testRuleGetValueInRangeComplexTrue3: function(test) {
+        test.expect(1);
         var rule = {
             inrange: [
                 "n",
@@ -1299,12 +1313,12 @@ module.exports.teststrings = {
             ]
         };
     
-        test.expect(1);
         test.ok(IString._fncs.getValue(rule, 3));
         test.done();
     },
     
     testRuleGetValueInRangeComplexTrue4: function(test) {
+        test.expect(1);
         var rule = {
             inrange: [
                 "n",
@@ -1312,12 +1326,12 @@ module.exports.teststrings = {
             ]
         };
     
-        test.expect(1);
         test.ok(IString._fncs.getValue(rule, 4));
         test.done();
     },
     
     testRuleGetValueInRangeComplexTrue5: function(test) {
+        test.expect(1);
         var rule = {
             inrange: [
                 "n",
@@ -1325,12 +1339,12 @@ module.exports.teststrings = {
             ]
         };
     
-        test.expect(1);
         test.ok(IString._fncs.getValue(rule, 8));
         test.done();
     },
     
     testRuleGetValueInRangeComplexTrue6: function(test) {
+        test.expect(1);
         var rule = {
             inrange: [
                 "n",
@@ -1338,12 +1352,12 @@ module.exports.teststrings = {
             ]
         };
     
-        test.expect(1);
         test.ok(IString._fncs.getValue(rule, 9));
         test.done();
     },
     
     testRuleGetValueInRangeComplexFalse1: function(test) {
+        test.expect(1);
         var rule = {
             inrange: [
                 "n",
@@ -1351,12 +1365,12 @@ module.exports.teststrings = {
             ]
         };
     
-        test.expect(1);
         test.ok(!IString._fncs.getValue(rule, 1));
         test.done();
     },
     
     testRuleGetValueInRangeComplexFalse2: function(test) {
+        test.expect(1);
         var rule = {
             inrange: [
                 "n",
@@ -1364,12 +1378,12 @@ module.exports.teststrings = {
             ]
         };
     
-        test.expect(1);
         test.ok(!IString._fncs.getValue(rule, 5));
         test.done();
     },
     
     testRuleGetValueInRangeComplexFalse3: function(test) {
+        test.expect(1);
         var rule = {
             inrange: [
                 "n",
@@ -1377,12 +1391,12 @@ module.exports.teststrings = {
             ]
         };
     
-        test.expect(1);
         test.ok(!IString._fncs.getValue(rule, 10));
         test.done();
     },
     
     testRuleGetValueNotInRangeTrueStart: function(test) {
+        test.expect(1);
         var rule = {
             notin: [
                 "n",
@@ -1390,12 +1404,12 @@ module.exports.teststrings = {
             ]
         };
     
-        test.expect(1);
         test.ok(!IString._fncs.getValue(rule, 0));
         test.done();
     },
     
     testRuleGetValueNotInRangeTrueEnd: function(test) {
+        test.expect(1);
         var rule = {
             notin: [
                 "n",
@@ -1403,12 +1417,12 @@ module.exports.teststrings = {
             ]
         };
     
-        test.expect(1);
         test.ok(!IString._fncs.getValue(rule, 2));
         test.done();
     },
     
     testRuleGetValueNotInRangeTrueBetween: function(test) {
+        test.expect(1);
         var rule = {
             notin: [
                 "n",
@@ -1416,12 +1430,12 @@ module.exports.teststrings = {
             ]
         };
     
-        test.expect(1);
         test.ok(!IString._fncs.getValue(rule, 1));
         test.done();
     },
     
     testRuleGetValueNotInRangeFalse: function(test) {
+        test.expect(1);
         var rule = {
             notin: [
                 "n",
@@ -1429,12 +1443,12 @@ module.exports.teststrings = {
             ]
         };
     
-        test.expect(1);
         test.ok(IString._fncs.getValue(rule, 3));
         test.done();
     },
     
     testRuleGetValueNotInRangeFalseNotInteger: function(test) {
+        test.expect(1);
         var rule = {
             notin: [
                 "n",
@@ -1442,13 +1456,13 @@ module.exports.teststrings = {
             ]
         };
     
-        test.expect(1);
         test.ok(!IString._fncs.getValue(rule, 0.5));
         test.done();
     },
     
     
     testRuleGetValueNotInRangeFalseIntegersAfter: function(test) {
+        test.expect(1);
         var rule = {
             notin: [
                 "n",
@@ -1456,12 +1470,12 @@ module.exports.teststrings = {
             ]
         };
     
-        test.expect(1);
         test.ok(IString._fncs.getValue(rule, 4));
         test.done();
     },
     
     testRuleGetValueNotInRangeFalseIntegersBefore: function(test) {
+        test.expect(1);
         var rule = {
             notin: [
                 "n",
@@ -1469,12 +1483,12 @@ module.exports.teststrings = {
             ]
         };
     
-        test.expect(1);
         test.ok(IString._fncs.getValue(rule, 0));
         test.done();
     },
     
     testRuleGetValueNotInRangeFalseIntegersBetween: function(test) {
+        test.expect(1);
         var rule = {
             notin: [
                 "n",
@@ -1482,12 +1496,12 @@ module.exports.teststrings = {
             ]
         };
     
-        test.expect(1);
         test.ok(!IString._fncs.getValue(rule, 1));
         test.done();
     },
     
     testRuleGetValueNotInRangeIntegersTrue: function(test) {
+        test.expect(1);
         var rule = {
             notin: [
                 "n",
@@ -1495,12 +1509,12 @@ module.exports.teststrings = {
             ]
         };
     
-        test.expect(1);
         test.ok(!IString._fncs.getValue(rule, 2));
         test.done();
     },
     
     testRuleGetValueNotInRangeIntegersFalseNotInteger: function(test) {
+        test.expect(1);
         var rule = {
             notin: [
                 "n",
@@ -1508,12 +1522,12 @@ module.exports.teststrings = {
             ]
         };
     
-        test.expect(1);
         test.ok(!IString._fncs.getValue(rule, 0.5));
         test.done();
     },
     
     testRuleGetValueNotInRangeIntegersTrueMany: function(test) {
+        test.expect(1);
         var rule = {
             notin: [
                 "n",
@@ -1521,13 +1535,13 @@ module.exports.teststrings = {
             ]
         };
     
-        test.expect(1);
         test.ok(!IString._fncs.getValue(rule, 6));
         test.done();
     },
     
     
     testRuleGetValueNotInRangeComplexTrue1: function(test) {
+        test.expect(1);
         var rule = {
             notin: [
                 "n",
@@ -1535,12 +1549,12 @@ module.exports.teststrings = {
             ]
         };
     
-        test.expect(1);
         test.ok(!IString._fncs.getValue(rule, 0));
         test.done();
     },
     
     testRuleGetValueNotInRangeComplexTrue2: function(test) {
+        test.expect(1);
         var rule = {
             notin: [
                 "n",
@@ -1548,12 +1562,12 @@ module.exports.teststrings = {
             ]
         };
     
-        test.expect(1);
         test.ok(!IString._fncs.getValue(rule, 2));
         test.done();
     },
     
     testRuleGetValueNotInRangeComplexTrue3: function(test) {
+        test.expect(1);
         var rule = {
             notin: [
                 "n",
@@ -1561,12 +1575,12 @@ module.exports.teststrings = {
             ]
         };
     
-        test.expect(1);
         test.ok(!IString._fncs.getValue(rule, 3));
         test.done();
     },
     
     testRuleGetValueNotInRangeComplexTrue4: function(test) {
+        test.expect(1);
         var rule = {
             notin: [
                 "n",
@@ -1574,12 +1588,12 @@ module.exports.teststrings = {
             ]
         };
     
-        test.expect(1);
         test.ok(!IString._fncs.getValue(rule, 4));
         test.done();
     },
     
     testRuleGetValueNotInRangeComplexTrue5: function(test) {
+        test.expect(1);
         var rule = {
             notin: [
                 "n",
@@ -1587,12 +1601,12 @@ module.exports.teststrings = {
             ]
         };
     
-        test.expect(1);
         test.ok(!IString._fncs.getValue(rule, 8));
         test.done();
     },
     
     testRuleGetValueNotInRangeComplexTrue6: function(test) {
+        test.expect(1);
         var rule = {
             notin: [
                 "n",
@@ -1600,12 +1614,12 @@ module.exports.teststrings = {
             ]
         };
     
-        test.expect(1);
         test.ok(!IString._fncs.getValue(rule, 9));
         test.done();
     },
     
     testRuleGetValueNotInRangeComplexFalse1: function(test) {
+        test.expect(1);
         var rule = {
             notin: [
                 "n",
@@ -1613,12 +1627,12 @@ module.exports.teststrings = {
             ]
         };
     
-        test.expect(1);
         test.ok(IString._fncs.getValue(rule, 1));
         test.done();
     },
     
     testRuleGetValueNotInRangeComplexFalse2: function(test) {
+        test.expect(1);
         var rule = {
             notin: [
                 "n",
@@ -1626,12 +1640,12 @@ module.exports.teststrings = {
             ]
         };
     
-        test.expect(1);
         test.ok(IString._fncs.getValue(rule, 5));
         test.done();
     },
     
     testRuleGetValueNotInRangeComplexFalse3: function(test) {
+        test.expect(1);
         var rule = {
             notin: [
                 "n",
@@ -1639,12 +1653,12 @@ module.exports.teststrings = {
             ]
         };
     
-        test.expect(1);
         test.ok(IString._fncs.getValue(rule, 10));
         test.done();
     },
     
     testRuleGetValueWithinTrueStart: function(test) {
+        test.expect(1);
         var rule = {
             within: [
                 "n",
@@ -1652,12 +1666,12 @@ module.exports.teststrings = {
             ]
         };
     
-        test.expect(1);
         test.ok(IString._fncs.getValue(rule, 0));
         test.done();
     },
     
     testRuleGetValueWithinTrueEnd: function(test) {
+        test.expect(1);
         var rule = {
             within: [
                 "n",
@@ -1665,12 +1679,12 @@ module.exports.teststrings = {
             ]
         };
     
-        test.expect(1);
         test.ok(IString._fncs.getValue(rule, 2));
         test.done();
     },
     
     testRuleGetValueWithinTrueBetween: function(test) {
+        test.expect(1);
         var rule = {
             within: [
                 "n",
@@ -1678,12 +1692,12 @@ module.exports.teststrings = {
             ]
         };
     
-        test.expect(1);
         test.ok(IString._fncs.getValue(rule, 1));
         test.done();
     },
     
     testRuleGetValueWithinFalse: function(test) {
+        test.expect(1);
         var rule = {
             within: [
                 "n",
@@ -1691,12 +1705,12 @@ module.exports.teststrings = {
             ]
         };
     
-        test.expect(1);
         test.ok(!IString._fncs.getValue(rule, 3));
         test.done();
     },
     
     testRuleGetValueWithinTrueNotInteger: function(test) {
+        test.expect(1);
         var rule = {
             within: [
                 "n",
@@ -1704,13 +1718,13 @@ module.exports.teststrings = {
             ]
         };
     
-        test.expect(1);
         test.ok(IString._fncs.getValue(rule, 0.5));
         test.done();
     },
     
     
     testRuleGetValueWithinFalseAfter: function(test) {
+        test.expect(1);
         var rule = {
             within: [
                 "n",
@@ -1718,12 +1732,12 @@ module.exports.teststrings = {
             ]
         };
     
-        test.expect(1);
         test.ok(!IString._fncs.getValue(rule, 2.1));
         test.done();
     },
     
     testRuleGetValueWithinFalseBefore: function(test) {
+        test.expect(1);
         var rule = {
             within: [
                 "n",
@@ -1731,12 +1745,12 @@ module.exports.teststrings = {
             ]
         };
     
-        test.expect(1);
         test.ok(!IString._fncs.getValue(rule, 0.9));
         test.done();
     },
     
     testRuleGetValueWithinFalseBetween: function(test) {
+        test.expect(1);
         var rule = {
             within: [
                 "n",
@@ -1744,12 +1758,12 @@ module.exports.teststrings = {
             ]
         };
     
-        test.expect(1);
         test.ok(IString._fncs.getValue(rule, 1.876));
         test.done();
     },
     
     testRuleGetValueWithinITrue: function(test) {
+        test.expect(1);
         var rule = {
             within: [
                 "n",
@@ -1757,12 +1771,12 @@ module.exports.teststrings = {
             ]
         };
     
-        test.expect(1);
         test.ok(IString._fncs.getValue(rule, 2));
         test.done();
     },
     
     testRuleGetValueWithinIntegersTrueNotInteger: function(test) {
+        test.expect(1);
         var rule = {
             within: [
                 "n",
@@ -1770,12 +1784,12 @@ module.exports.teststrings = {
             ]
         };
     
-        test.expect(1);
         test.ok(IString._fncs.getValue(rule, 0.5));
         test.done();
     },
     
     testRuleGetValueWithinIntegersTrueMany: function(test) {
+        test.expect(1);
         var rule = {
             within: [
                 "n",
@@ -1783,13 +1797,13 @@ module.exports.teststrings = {
             ]
         };
     
-        test.expect(1);
         test.ok(IString._fncs.getValue(rule, 6));
         test.done();
     },
     
     
     testRuleGetValueWithinComplexTrue1: function(test) {
+        test.expect(1);
         var rule = {
             within: [
                 "n",
@@ -1797,12 +1811,12 @@ module.exports.teststrings = {
             ]
         };
     
-        test.expect(1);
         test.ok(IString._fncs.getValue(rule, 0));
         test.done();
     },
     
     testRuleGetValueWithinComplexTrue2: function(test) {
+        test.expect(1);
         var rule = {
             within: [
                 "n",
@@ -1810,12 +1824,12 @@ module.exports.teststrings = {
             ]
         };
     
-        test.expect(1);
         test.ok(IString._fncs.getValue(rule, 2.8));
         test.done();
     },
     
     testRuleGetValueWithinComplexTrue3: function(test) {
+        test.expect(1);
         var rule = {
             within: [
                 "n",
@@ -1823,12 +1837,12 @@ module.exports.teststrings = {
             ]
         };
     
-        test.expect(1);
         test.ok(IString._fncs.getValue(rule, 3));
         test.done();
     },
     
     testRuleGetValueWithinComplexTrue4: function(test) {
+        test.expect(1);
         var rule = {
             within: [
                 "n",
@@ -1836,12 +1850,12 @@ module.exports.teststrings = {
             ]
         };
     
-        test.expect(1);
         test.ok(IString._fncs.getValue(rule, 4));
         test.done();
     },
     
     testRuleGetValueWithinComplexTrue5: function(test) {
+        test.expect(1);
         var rule = {
             within: [
                 "n",
@@ -1849,12 +1863,12 @@ module.exports.teststrings = {
             ]
         };
     
-        test.expect(1);
         test.ok(IString._fncs.getValue(rule, 8));
         test.done();
     },
     
     testRuleGetValueWithinComplexTrue6: function(test) {
+        test.expect(1);
         var rule = {
             within: [
                 "n",
@@ -1862,12 +1876,12 @@ module.exports.teststrings = {
             ]
         };
     
-        test.expect(1);
         test.ok(IString._fncs.getValue(rule, 9));
         test.done();
     },
     
     testRuleGetValueWithinComplexFalse1: function(test) {
+        test.expect(1);
         var rule = {
             within: [
                 "n",
@@ -1875,12 +1889,12 @@ module.exports.teststrings = {
             ]
         };
     
-        test.expect(1);
         test.ok(!IString._fncs.getValue(rule, 1));
         test.done();
     },
     
     testRuleGetValueWithinComplexFalse2: function(test) {
+        test.expect(1);
         var rule = {
             within: [
                 "n",
@@ -1888,12 +1902,12 @@ module.exports.teststrings = {
             ]
         };
     
-        test.expect(1);
         test.ok(!IString._fncs.getValue(rule, 5));
         test.done();
     },
     
     testRuleGetValueWithinComplexFalse3: function(test) {
+        test.expect(1);
         var rule = {
             within: [
                 "n",
@@ -1901,12 +1915,12 @@ module.exports.teststrings = {
             ]
         };
     
-        test.expect(1);
         test.ok(!IString._fncs.getValue(rule, 10));
         test.done();
     },
     
     testRuleGetValueMod: function(test) {
+        test.expect(1);
         var rule = {
             mod: [
                 "n",
@@ -1914,12 +1928,12 @@ module.exports.teststrings = {
             ]
         };
     
-        test.expect(1);
         test.equal(IString._fncs.getValue(rule, 10), 4);
         test.done();
     },
     
     testRuleGetValueModNonInteger: function(test) {
+        test.expect(1);
         var rule = {
             mod: [
                 "n",
@@ -1927,12 +1941,13 @@ module.exports.teststrings = {
             ]
         };
     
-        test.expect(1);
-        test.roughlyEqual(8.2), IString._fncs.getValue(rule, 0.01, 2.2);
+        var actual = IString._fncs.getValue(rule, 8.2);
+        test.roughlyEqual(actual, 2.2, 0.01);
         test.done();
     },
     
     testRuleGetValueModNegative: function(test) {
+        test.expect(1);
         var rule = {
             mod: [
                 "n",
@@ -1940,12 +1955,13 @@ module.exports.teststrings = {
             ]
         };
     
-        test.expect(1);
-        test.roughlyEqual(-11), IString._fncs.getValue(rule, 0.01, 1);
+        var actual = IString._fncs.getValue(rule, -11);
+        test.roughlyEqual(actual, 1, 0.01);
         test.done();
     },
     
     testRuleGetValueOrFalseFalse: function(test) {
+        test.expect(1);
         var rule = {
             or: [
                 false,
@@ -1953,12 +1969,12 @@ module.exports.teststrings = {
             ]
         };
     
-        test.expect(1);
         test.ok(!IString._fncs.getValue(rule, 11));
         test.done();
     },
     
     testRuleGetValueOrFalseTrue: function(test) {
+        test.expect(1);
         var rule = {
             or: [
                 false,
@@ -1966,12 +1982,12 @@ module.exports.teststrings = {
             ]
         };
     
-        test.expect(1);
         test.ok(IString._fncs.getValue(rule, 11));
         test.done();
     },
     
     testRuleGetValueOrTrueFalse: function(test) {
+        test.expect(1);
         var rule = {
             or: [
                 true,
@@ -1979,12 +1995,12 @@ module.exports.teststrings = {
             ]
         };
     
-        test.expect(1);
         test.ok(IString._fncs.getValue(rule, 11));
         test.done();
     },
     
     testRuleGetValueOrTrueTrue: function(test) {
+        test.expect(1);
         var rule = {
             or: [
                 true,
@@ -1992,12 +2008,12 @@ module.exports.teststrings = {
             ]
         };
     
-        test.expect(1);
         test.ok(IString._fncs.getValue(rule, 11));
         test.done();
     },
     
     testRuleGetValueAndFalseFalse: function(test) {
+        test.expect(1);
         var rule = {
             and: [
                 false,
@@ -2005,12 +2021,12 @@ module.exports.teststrings = {
             ]
         };
     
-        test.expect(1);
         test.ok(!IString._fncs.getValue(rule, 11));
         test.done();
     },
     
     testRuleGetValueAndFalseTrue: function(test) {
+        test.expect(1);
         var rule = {
             and: [
                 false,
@@ -2018,12 +2034,12 @@ module.exports.teststrings = {
             ]
         };
     
-        test.expect(1);
         test.ok(!IString._fncs.getValue(rule, 11));
         test.done();
     },
     
     testRuleGetValueAndTrueFalse: function(test) {
+        test.expect(1);
         var rule = {
             and: [
                 true,
@@ -2031,12 +2047,12 @@ module.exports.teststrings = {
             ]
         };
     
-        test.expect(1);
         test.ok(!IString._fncs.getValue(rule, 11));
         test.done();
     },
     
     testRuleGetValueAndTrueTrue: function(test) {
+        test.expect(1);
         var rule = {
             and: [
                 true,
@@ -2044,12 +2060,12 @@ module.exports.teststrings = {
             ]
         };
     
-        test.expect(1);
         test.ok(IString._fncs.getValue(rule, 11));
         test.done();
     },
     
     testRuleComplex1: function(test) {
+        test.expect(6);
         var rule = {
             "and": [
                 {
@@ -2077,7 +2093,6 @@ module.exports.teststrings = {
             ]
         };
     
-        test.expect(6);
         test.ok(IString._fncs.getValue(rule, 3));
         test.ok(!IString._fncs.getValue(rule, 13));
         test.ok(IString._fncs.getValue(rule, 23));
@@ -2088,6 +2103,7 @@ module.exports.teststrings = {
     },
     
     testRuleComplex2: function(test) {
+        test.expect(6);
         var rule = {
             "and": [
                 {
@@ -2115,7 +2131,6 @@ module.exports.teststrings = {
             ]
         };
     
-        test.expect(6);
         test.ok(!IString._fncs.getValue(rule, 1));
         test.ok(!IString._fncs.getValue(rule, 11));
         test.ok(!IString._fncs.getValue(rule, 21));
@@ -2126,6 +2141,7 @@ module.exports.teststrings = {
     },
     
     testRuleComplex3: function(test) {
+        test.expect(6);
         var rule = {
             "and": [
                 {
@@ -2153,7 +2169,6 @@ module.exports.teststrings = {
             ]
         };
     
-        test.expect(6);
         test.ok(!IString._fncs.getValue(rule, 5));
         test.ok(!IString._fncs.getValue(rule, 15));
         test.ok(!IString._fncs.getValue(rule, 25));
@@ -2164,6 +2179,7 @@ module.exports.teststrings = {
     },
     
     testRuleComplex4: function(test) {
+        test.expect(6);
         var rule = {
             "and": [
                 {
@@ -2191,7 +2207,6 @@ module.exports.teststrings = {
             ]
         };
     
-        test.expect(6);
         test.ok(IString._fncs.getValue(rule, 3.5));
         test.ok(!IString._fncs.getValue(rule, 13.5));
         test.ok(IString._fncs.getValue(rule, 23.5));
@@ -2202,9 +2217,9 @@ module.exports.teststrings = {
     },
     
     testStringGetLocaleDefault: function(test) {
+        test.expect(2);
         var str = new IString("foo");
     
-        test.expect(2);
         test.ok(str !== null);
     
         test.equal(str.getLocale(), "en-US");
@@ -2212,10 +2227,10 @@ module.exports.teststrings = {
     },
     
     testStringGetLocaleWithLocaleObj: function(test) {
+        test.expect(2);
         var str = new IString("foo");
         str.setLocale(new Locale("ja-JP"));
     
-        test.expect(2);
         test.ok(str !== null);
     
         test.equal(str.getLocale(), "ja-JP");
@@ -2223,10 +2238,10 @@ module.exports.teststrings = {
     },
     
     testStringGetLocaleWithLocaleSpec: function(test) {
+        test.expect(2);
         var str = new IString("foo");
         str.setLocale("ja-JP");
     
-        test.expect(2);
         test.ok(str !== null);
     
         test.equal(str.getLocale(), "ja-JP");
@@ -2234,10 +2249,10 @@ module.exports.teststrings = {
     },
     
     testStringSetLocaleUndefined: function(test) {
+        test.expect(2);
         var str = new IString("foo");
         str.setLocale(undefined);
     
-        test.expect(2);
         test.ok(str !== null);
     
         test.equal(str.getLocale(), "en-US");
@@ -2245,10 +2260,10 @@ module.exports.teststrings = {
     },
     
     testStringFormatChoiceCharClasses1: function(test) {
+        test.expect(2);
         var str = new IString("0#There are no items.|one#The items end in one.|two#The items end in two|few#The items is few|#Default items");
         str.setLocale("sl-SL");
     
-        test.expect(2);
         test.ok(str !== null);
     
         test.equal(str.formatChoice(0), "There are no items.");
@@ -2256,10 +2271,10 @@ module.exports.teststrings = {
     },
     
     testStringFormatChoiceCharClasses2: function(test) {
+        test.expect(2);
         var str = new IString("0#There are no items.|one#The items end in one|two#The items end in two|few#The items is few|#Default items");
         str.setLocale("sl-SL");
     
-        test.expect(2);
         test.ok(str !== null);
     
         test.equal(str.formatChoice(1), "The items end in one");
@@ -2267,10 +2282,10 @@ module.exports.teststrings = {
     },
     
     testStringFormatChoiceCharClasses3: function(test) {
+        test.expect(2);
         var str = new IString("0#There are no items.|one#The items end in one|two#The items end in two|few#The items is few|#Default items");
         str.setLocale("sl-SL");
     
-        test.expect(2);
         test.ok(str !== null);
     
         test.equal(str.formatChoice(11), "Default items");
@@ -2278,10 +2293,10 @@ module.exports.teststrings = {
     },
     
     testStringFormatChoiceCharClasses4: function(test) {
+        test.expect(2);
         var str = new IString("0#There are no items.|one#The items end in one|two#The items end in two|few#The items is few|#Default items");
         str.setLocale("sl-SL");
     
-        test.expect(2);
         test.ok(str !== null);
     
         test.equal(str.formatChoice(101), "The items end in one");
@@ -2289,10 +2304,10 @@ module.exports.teststrings = {
     },
     
     testStringFormatChoiceCharClasses5: function(test) {
+        test.expect(2);
         var str = new IString("0#There are no items.|one#The items end in one|two#The items end in two|few#The items is few|#Default items");
         str.setLocale("sl-SL");
     
-        test.expect(2);
         test.ok(str !== null);
     
         test.equal(str.formatChoice(2), "The items end in two");
@@ -2300,10 +2315,10 @@ module.exports.teststrings = {
     },
     
     testStringFormatChoiceCharClasses6: function(test) {
+        test.expect(2);
         var str = new IString("0#There are no items.|one#The items end in one|two#The items end in two|few#The items is few|#Default items");
         str.setLocale("sl-SL");
     
-        test.expect(2);
         test.ok(str !== null);
     
         test.equal(str.formatChoice(102), "The items end in two");
@@ -2311,10 +2326,10 @@ module.exports.teststrings = {
     },
     
     testStringFormatChoiceCharClasses7: function(test) {
+        test.expect(2);
         var str = new IString("0#There are no items.|one#The items end in one|two#The items end in two|few#The items is few|#Default items");
         str.setLocale("sl-SL");
     
-        test.expect(2);
         test.ok(str !== null);
     
         test.equal(str.formatChoice(12), "Default items");
@@ -2322,10 +2337,10 @@ module.exports.teststrings = {
     },
     
     testStringFormatChoiceCharClasses8: function(test) {
+        test.expect(2);
         var str = new IString("0#There are no items.|one#The items end in one|two#The items end in two|few#The items is few|#Default items");
         str.setLocale("sl-SL");
     
-        test.expect(2);
         test.ok(str !== null);
     
         test.equal(str.formatChoice(3), "The items is few");
@@ -2333,10 +2348,10 @@ module.exports.teststrings = {
     },
     
     testStringFormatChoiceCharClasses9: function(test) {
+        test.expect(2);
         var str = new IString("0#There are no items.|one#The items end in one|two#The items end in two|few#The items is few|#Default items");
         str.setLocale("sl-SL");
     
-        test.expect(2);
         test.ok(str !== null);
     
         test.equal(str.formatChoice(103), "The items is few");
@@ -2344,10 +2359,10 @@ module.exports.teststrings = {
     },
     
     testStringFormatChoiceCharClasses10: function(test) {
+        test.expect(2);
         var str = new IString("0#There are no items.|one#The items end in one|two#The items end in two|few#The items is few|#Default items");
         str.setLocale("sl-SL");
     
-        test.expect(2);
         test.ok(str !== null);
     
         test.equal(str.formatChoice(4), "The items is few");
@@ -2355,10 +2370,10 @@ module.exports.teststrings = {
     },
     
     testStringFormatChoiceCharClasses11: function(test) {
+        test.expect(2);
         var str = new IString("0#There are no items.|one#The items end in one|two#The items end in two|few#The items is few|#Default items");
         str.setLocale("sl-SL");
     
-        test.expect(2);
         test.ok(str !== null);
     
         test.equal(str.formatChoice(104), "The items is few");
@@ -2366,10 +2381,10 @@ module.exports.teststrings = {
     },
     
     testStringFormatChoiceCharClasses12: function(test) {
+        test.expect(2);
         var str = new IString("0#There are no items.|one#The items end in one|two#The items end in two|few#The items is few|#Default items");
         str.setLocale("sl-SL");
     
-        test.expect(2);
         test.ok(str !== null);
     
         test.equal(str.formatChoice(5), "Default items");
@@ -2377,10 +2392,10 @@ module.exports.teststrings = {
     },
     
     testStringFormatChoiceCharClasses13: function(test) {
+        test.expect(2);
         var str = new IString("0#There are no items.|one#There items are one|few#The items are few|many#The items are many|#Default items");
         str.setLocale("ar-SA");
     
-        test.expect(2);
         test.ok(str !== null);
     
         test.equal(str.formatChoice(30), "The items are many");
@@ -2388,10 +2403,10 @@ module.exports.teststrings = {
     },
     
     testStringFormatChoiceCharClasses14: function(test) {
+        test.expect(2);
         var str = new IString("0#There are no items.|one#There items are one|few#The items are few|many#The items are many|#Default items");
         str.setLocale("az-Latn-AZ");
     
-        test.expect(2);
         test.ok(str !== null);
     
         test.equal(str.formatChoice(30), "Default items");
@@ -2399,10 +2414,10 @@ module.exports.teststrings = {
     },
     
     testStringFormatChoiceCharClasses15: function(test) {
+        test.expect(2);
         var str = new IString("0#There are no items.|one#There items are one|few#The items are few|many#The items are many|#Default items");
         str.setLocale("az-Latn-AZ");
     
-        test.expect(2);
         test.ok(str !== null);
     
         test.equal(str.formatChoice(1), "There items are one");
@@ -2410,10 +2425,10 @@ module.exports.teststrings = {
     },
     
     testStringFormatChoiceCharClassesComplex1: function(test) {
+        test.expect(2);
         var str = new IString("0#There are no items.|one#There items are one|few#The items are few|many#The items are many|#Default items");
         str.setLocale("pl-PL");
     
-        test.expect(2);
         test.ok(str !== null);
     
         test.equal(str.formatChoice(1), "There items are one");
@@ -2421,10 +2436,10 @@ module.exports.teststrings = {
     },
     
     testStringFormatChoiceCharClassesComplex2: function(test) {
+        test.expect(2);
         var str = new IString("0#There are no items.|one#There items are one|few#The items are few|many#The items are many|#Default items");
         str.setLocale("pl-PL");
     
-        test.expect(2);
         test.ok(str !== null);
     
         test.equal(str.formatChoice(2), "The items are few");
@@ -2432,10 +2447,10 @@ module.exports.teststrings = {
     },
     
     testStringFormatChoiceCharClassesComplex3: function(test) {
+        test.expect(2);
         var str = new IString("0#There are no items.|one#There items are one|few#The items are few|many#The items are many|#Default items");
         str.setLocale("pl-PL");
     
-        test.expect(2);
         test.ok(str !== null);
     
         test.equal(str.formatChoice(12), "The items are many");
@@ -2443,10 +2458,10 @@ module.exports.teststrings = {
     },
     
     testStringFormatChoiceCharClassesComplex4: function(test) {
+        test.expect(2);
         var str = new IString("0#There are no items.|one#There items are one|few#The items are few|many#The items are many|#Default items");
         str.setLocale("pl-PL");
     
-        test.expect(2);
         test.ok(str !== null);
     
         test.equal(str.formatChoice(22), "The items are few");
@@ -2454,10 +2469,10 @@ module.exports.teststrings = {
     },
     
     testStringFormatChoiceCharClassesComplex5: function(test) {
+        test.expect(2);
         var str = new IString("0#There are no items.|one#There items are one|few#The items are few|many#The items are many|#Default items");
         str.setLocale("pl-PL");
     
-        test.expect(2);
         test.ok(str !== null);
     
         test.equal(str.formatChoice(102), "The items are few");
@@ -2465,10 +2480,10 @@ module.exports.teststrings = {
     },
     
     testStringFormatChoiceCharClassesComplex6: function(test) {
+        test.expect(2);
         var str = new IString("0#There are no items.|one#There items are one|few#The items are few|many#The items are many|#Default items");
         str.setLocale("pl-PL");
     
-        test.expect(2);
         test.ok(str !== null);
     
         test.equal(str.formatChoice(112), "The items are many");
@@ -2476,10 +2491,10 @@ module.exports.teststrings = {
     },
     
     testStringFormatChoiceCharClassesComplex7: function(test) {
+        test.expect(2);
         var str = new IString("0#There are no items.|one#There items are one|few#The items are few|many#The items are many|#Default items");
         str.setLocale("pl-PL");
     
-        test.expect(2);
         test.ok(str !== null);
     
         test.equal(str.formatChoice(122), "The items are few");
@@ -2487,10 +2502,10 @@ module.exports.teststrings = {
     },
     
     testStringFormatChoiceCharClassesComplex8: function(test) {
+        test.expect(2);
         var str = new IString("0#There are no items.|one#There items are one|few#The items are few|many#The items are many|#Default items");
         str.setLocale("pl-PL");
     
-        test.expect(2);
         test.ok(str !== null);
     
         test.equal(str.formatChoice(5), "The items are many");
@@ -2498,10 +2513,10 @@ module.exports.teststrings = {
     },
     
     testStringFormatChoiceCharClassesComplex9: function(test) {
+        test.expect(2);
         var str = new IString("0#There are no items.|one#There items are one|few#The items are few|many#The items are many|#Default items");
         str.setLocale("pl-PL");
     
-        test.expect(2);
         test.ok(str !== null);
     
         test.equal(str.formatChoice(112), "The items are many");
@@ -2509,10 +2524,10 @@ module.exports.teststrings = {
     },
     
     testStringFormatChoiceCharClassesComplex10: function(test) {
+        test.expect(2);
         var str = new IString("0#There are no items.|one#There items are one|few#The items are few|many#The items are many|#Default items");
         str.setLocale("pl-PL");
     
-        test.expect(2);
         test.ok(str !== null);
     
         test.equal(str.formatChoice(10), "The items are many");
@@ -2520,10 +2535,10 @@ module.exports.teststrings = {
     },
     
     testStringFormatChoiceCharClassesComplex11: function(test) {
+        test.expect(2);
         var str = new IString("0#There are no items.|one#There items are one|few#The items are few|many#The items are many|#Default items");
         str.setLocale("az-Latn-AZ");
     
-        test.expect(2);
         test.ok(str !== null);
     
         test.equal(str.formatChoice(10), "Default items");
@@ -2531,10 +2546,10 @@ module.exports.teststrings = {
     },
     
     testStringFormatChoiceDecimal1: function(test) {
+        test.expect(2);
         var str = new IString("0#There are no items.|one#There items are one|few#The items are few|many#The items are many|#Default items");
         str.setLocale("ar-EG");
     
-        test.expect(2);
         test.ok(str !== null);
     
         test.equal(str.formatChoice(8.0), "The items are few");
@@ -2542,10 +2557,10 @@ module.exports.teststrings = {
     },
     
     testStringFormatChoiceDecimal2: function(test) {
+        test.expect(2);
         var str = new IString("0#There are no items.|one#There items are one|few#The items are few|many#The items are many|#Default items");
         str.setLocale("hy-AM");
     
-        test.expect(2);
         test.ok(str !== null);
     
         test.equal(str.formatChoice(3.5), "Default items");
@@ -2553,10 +2568,10 @@ module.exports.teststrings = {
     },
     
     testStringFormatChoiceDecimal3: function(test) {
+        test.expect(2);
         var str = new IString("0#There are no items.|one#There items are one|few#The items are few|many#The items are many|#Default items");
         str.setLocale("hr-HR");
     
-        test.expect(2);
         test.ok(str !== null);
     
         test.equal(str.formatChoice(2.3), "The items are few");
@@ -2564,10 +2579,10 @@ module.exports.teststrings = {
     },
     
     testStringFormatChoiceDecimal4: function(test) {
+        test.expect(2);
         var str = new IString("0#There are no items.|one#There items are one|few#The items are few|many#The items are many|#Default items");
         str.setLocale("hr-HR");
     
-        test.expect(2);
         test.ok(str !== null);
     
         test.equal(str.formatChoice(10.1), "There items are one");
@@ -2575,10 +2590,10 @@ module.exports.teststrings = {
     },
     
     testStringFormatChoiceDecimal5: function(test) {
+        test.expect(2);
         var str = new IString("0#There are no items.|one#There items are one|few#The items are few|many#The items are many|#Default items");
         str.setLocale("hr-HR");
     
-        test.expect(2);
         test.ok(str !== null);
     
         test.equal(str.formatChoice(2.5), "Default items");
@@ -2586,10 +2601,10 @@ module.exports.teststrings = {
     },
     
     testStringFormatChoiceDecimal6: function(test) {
+        test.expect(2);
         var str = new IString("0#There are no items.|one#There items are one|few#The items are few|many#The items are many|#Default items");
         str.setLocale("he-IL");
     
-        test.expect(2);
         test.ok(str !== null);
     
         test.equal(str.formatChoice(10.0), "Default items");
@@ -2597,10 +2612,10 @@ module.exports.teststrings = {
     },
     
     testStringFormatChoiceDecimal7: function(test) {
+        test.expect(2);
         var str = new IString("0#There are no items.|one#There items are one|few#The items are few|many#The items are many|#Default items");
         str.setLocale("ga-IE");
     
-        test.expect(2);
         test.ok(str !== null);
     
         test.equal(str.formatChoice(1.6), "Default items");
@@ -2608,10 +2623,10 @@ module.exports.teststrings = {
     },
     
     testStringFormatChoiceDecimal8: function(test) {
+        test.expect(2);
         var str = new IString("0#There are no items.|one#There items are one|few#The items are few|many#The items are many|#Default items");
         str.setLocale("ga-IE");
     
-        test.expect(2);
         test.ok(str !== null);
     
         test.equal(str.formatChoice(5.2), "The items are few");
@@ -2619,10 +2634,10 @@ module.exports.teststrings = {
     },
     
     testStringFormatChoiceDecimal9: function(test) {
+        test.expect(2);
         var str = new IString("0#There are no items.|one#There items are one|few#The items are few|many#The items are many|#Default items");
         str.setLocale("lv-LV");
     
-        test.expect(2);
         test.ok(str !== null);
     
         test.equal(str.formatChoice(1.9), "Default items");
@@ -2630,10 +2645,10 @@ module.exports.teststrings = {
     },
     
     testStringFormatChoiceDecimal10: function(test) {
+        test.expect(2);
         var str = new IString("0#There are no items.|one#There items are one|few#The items are few|many#The items are many|#Default items");
         str.setLocale("lv-LV");
     
-        test.expect(2);
         test.ok(str !== null);
     
         test.equal(str.formatChoice(1.1), "There items are one");
@@ -2641,10 +2656,10 @@ module.exports.teststrings = {
     },
     
     testStringFormatChoiceDecimal11: function(test) {
+        test.expect(2);
         var str = new IString("0#There are no items.|one#There items are one|few#The items are few|many#The items are many|#Default items");
         str.setLocale("lt-LT");
     
-        test.expect(2);
         test.ok(str !== null);
     
         test.equal(str.formatChoice(1.7), "The items are many");
@@ -2652,10 +2667,10 @@ module.exports.teststrings = {
     },
     
     testStringFormatChoiceDecimal12: function(test) {
+        test.expect(2);
         var str = new IString("0#There are no items.|one#There items are one|few#The items are few|many#The items are many|#Default items");
         str.setLocale("fa-IR");
     
-        test.expect(2);
         test.ok(str !== null);
     
         test.equal(str.formatChoice(2.6), "Default items");
@@ -2663,10 +2678,10 @@ module.exports.teststrings = {
     },
     
     testStringFormatChoiceDecimal13: function(test) {
+        test.expect(2);
         var str = new IString("0#There are no items.|one#There items are one|few#The items are few|many#The items are many|#Default items");
         str.setLocale("fa-IR");
     
-        test.expect(2);
         test.ok(str !== null);
     
         test.equal(str.formatChoice(0.04), "There items are one");
@@ -2674,10 +2689,10 @@ module.exports.teststrings = {
     },
     
     testStringFormatChoiceDecimal14: function(test) {
+        test.expect(2);
         var str = new IString("0#There are no items.|one#There items are one|few#The items are few|many#The items are many|#Default items");
         str.setLocale("sk-KS");
     
-        test.expect(2);
         test.ok(str !== null);
     
         test.equal(str.formatChoice(1.5), "The items are many");
@@ -2686,10 +2701,10 @@ module.exports.teststrings = {
     
     
     testStringFormatChoiceDecimal15: function(test) {
+        test.expect(2);
         var str = new IString("0#There are no items.|one#There items are one|few#The items are few|many#The items are many|#Default items");
         str.setLocale("az-Latn-AZ");
     
-        test.expect(2);
         test.ok(str !== null);
     
         test.equal(str.formatChoice(1.5), "Default items");

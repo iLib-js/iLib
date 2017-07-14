@@ -36,9 +36,9 @@ module.exports.testaddress_CF = {
     },
 
     testParseAddressCFNormal: function(test) {
+        test.expect(7);
         var parsedAddress = new Address("Evangelical Church Elim Bangui – M'Poko, BP 729, BANGUI, CENTRAL AFRICAN REPUBLIC", {locale: 'fr-CF'});
         
-        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Evangelical Church Elim Bangui – M'Poko, BP 729");
         test.ok(typeof(parsedAddress.region) === "undefined");
@@ -50,9 +50,9 @@ module.exports.testaddress_CF = {
     },
     
     testParseAddressCFNoZip: function(test) {
+        test.expect(7);
         var parsedAddress = new Address("Evangelical Church Elim Bangui – M'Poko, BP 729, BANGUI, CENTRAL AFRICAN REPUBLIC", {locale: 'fr-CF'});
         
-        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Evangelical Church Elim Bangui – M'Poko, BP 729");
         test.ok(typeof(parsedAddress.region) === "undefined");
@@ -64,9 +64,9 @@ module.exports.testaddress_CF = {
     },
     
     testParseAddressCFManyLines: function(test) {
+        test.expect(7);
         var parsedAddress = new Address("Evangelical Church Elim Bangui – M'Poko\nBP 729, BANGUI\nCENTRAL AFRICAN REPUBLIC", {locale: 'fr-CF'});
         
-        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Evangelical Church Elim Bangui – M'Poko, BP 729");
         test.ok(typeof(parsedAddress.region) === "undefined");
@@ -78,9 +78,9 @@ module.exports.testaddress_CF = {
     },
     
     testParseAddressCFOneLine: function(test) {
+        test.expect(7);
         var parsedAddress = new Address("Evangelical Church Elim Bangui – M'Poko, BP 729, BANGUI, CENTRAL AFRICAN REPUBLIC", {locale: 'fr-CF'});
         
-        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Evangelical Church Elim Bangui – M'Poko, BP 729");
         test.ok(typeof(parsedAddress.region) === "undefined");
@@ -92,9 +92,9 @@ module.exports.testaddress_CF = {
     },
     
     testParseAddressCFSuperfluousWhitespace: function(test) {
+        test.expect(7);
         var parsedAddress = new Address("Evangelical Church Elim Bangui – M'Poko  \n\t\n BP 729\nBANGUI\t\n\n CENTRAL AFRICAN REPUBLIC  \n  \t\t\t", {locale: 'fr-CF'});
         
-        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Evangelical Church Elim Bangui – M'Poko, BP 729");
         test.ok(typeof(parsedAddress.region) === "undefined");
@@ -106,9 +106,9 @@ module.exports.testaddress_CF = {
     },
     
     testParseAddressCFNoDelimiters: function(test) {
+        test.expect(7);
         var parsedAddress = new Address("Evangelical Church Elim Bangui – M'Poko BP 729 BANGUI CENTRAL AFRICAN REPUBLIC", {locale: 'fr-CF'});
         
-        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Evangelical Church Elim Bangui – M'Poko BP 729");
         test.ok(typeof(parsedAddress.region) === "undefined");
@@ -120,9 +120,9 @@ module.exports.testaddress_CF = {
     },
     
     testParseAddressCFSpecialChars: function(test) {
+        test.expect(7);
         var parsedAddress = new Address("Avenue des Martyrs Boîte postale 344, BANGUI, République centrafricaine", {locale: 'fr-CF'});
         
-        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Avenue des Martyrs Boîte postale 344");
         test.ok(typeof(parsedAddress.region) === "undefined");
@@ -134,11 +134,11 @@ module.exports.testaddress_CF = {
     },
     
     testParseAddressCFFromUS: function(test) {
+        test.expect(7);
         var parsedAddress = new Address("Evangelical Church Elim Bangui – M'Poko, BP 729, BANGUI, CENTRAL AFRICAN REPUBLIC", {locale: 'en-US'});
         
         // the country name is in English because this address is for a contact in a US database
         
-        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Evangelical Church Elim Bangui – M'Poko, BP 729");
         test.ok(typeof(parsedAddress.region) === "undefined");
@@ -150,6 +150,7 @@ module.exports.testaddress_CF = {
     },
     
     testFormatAddressCF: function(test) {
+        test.expect(1);
         var parsedAddress = new Address({
             streetAddress: "Evangelical Church Elim Bangui – M'Poko\nBP 729",
             locality: "BANGUI",
@@ -159,12 +160,12 @@ module.exports.testaddress_CF = {
         
         var expected = "Evangelical Church Elim Bangui – M'Poko\nBP 729\nBANGUI\nCENTRAL AFRICAN REPUBLIC";
         var formatter = new AddressFmt({locale: 'fr-CF'});
-        test.expect(1);
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     },
     
     testFormatAddressCFFromUS: function(test) {
+        test.expect(1);
         var parsedAddress = new Address({
             streetAddress: "Evangelical Church Elim Bangui – M'Poko\nBP 729",
             country: "CENTRAL AFRICAN REPUBLIC",
@@ -174,7 +175,6 @@ module.exports.testaddress_CF = {
         
         var expected = "Evangelical Church Elim Bangui – M'Poko\nBP 729\nBANGUI\nCENTRAL AFRICAN REPUBLIC";
         var formatter = new AddressFmt({locale: 'en-US'});
-        test.expect(1);
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     }

@@ -17,6 +17,7 @@
  * limitations under the License.
  */
 
+var ilib = require("../lib/ilib-node.js");
 var DurationFmt = require("./../lib/DurationFmt.js");
 
 function testDurFmtAsync() {

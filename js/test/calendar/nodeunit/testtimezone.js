@@ -18,16 +18,13 @@
  */
 
 if (typeof(ilib) === "undefined") {
-    var ilib = require("../.././../lib/ilib.js");
+    var ilib = require("../.././../lib/ilib-node.js");
 }
 if (typeof(TimeZone) === "undefined") {
     var TimeZone = require("../.././../lib/TimeZone.js");
 }
 if (typeof(LocaleInfo) === "undefined") {
     var LocaleInfo = require("../.././../lib/LocaleInfo.js");
-}
-if (typeof(Loader) === "undefined") {
-    var Loader = require("../.././../lib/Loader.js");
 }
 if (typeof(IString) === "undefined") {
     var IString = require("../.././../lib/IString.js");
@@ -106,7 +103,7 @@ function mockLoader2(paths, sync, params, callback) {
     return data;
 }
 
-
+var oldLoader = ilib._load;
 
 if (typeof(ilib) === "undefined") {
     var ilib = require("../../..");
@@ -119,29 +116,29 @@ module.exports.testtimezone = {
     },
 
     testTZConstructorEmpty: function(test) {
-        var tz = new TimeZone();
         test.expect(1);
+        var tz = new TimeZone();
         test.ok(tz !== null);
         test.done();
     },
     
     testTZConstructor: function(test) {
-        var tz = new TimeZone({id: "America/Los_Angeles"});
         test.expect(1);
+        var tz = new TimeZone({id: "America/Los_Angeles"});
         test.ok(tz !== null);
         test.done();
     },
     
     testTZConstructorWithIlibString: function(test) {
-        var tz = new TimeZone({id: new IString("America/Los_Angeles")});
         test.expect(1);
+        var tz = new TimeZone({id: new IString("America/Los_Angeles")});
         test.ok(tz !== null);
         test.done();
     },
     
     testTZConstructorLocalWithIlibString: function(test) {
-        var tz = new TimeZone({id: new IString("local")});
         test.expect(2);
+        var tz = new TimeZone({id: new IString("local")});
         test.ok(tz !== null);
         
         test.ok(tz.isLocal);
@@ -149,8 +146,8 @@ module.exports.testtimezone = {
     },
     
     testTZGet: function(test) {
-        var tz = new TimeZone({id: "America/Los_Angeles"});
         test.expect(3);
+        var tz = new TimeZone({id: "America/Los_Angeles"});
         test.ok(tz !== null);
         
         test.deepEqual(tz.getRawOffset(), {h: -8});
@@ -159,8 +156,8 @@ module.exports.testtimezone = {
     },
     
     testTZGetWithIlibString: function(test) {
-        var tz = new TimeZone({id: new IString("America/Los_Angeles")});
         test.expect(3);
+        var tz = new TimeZone({id: new IString("America/Los_Angeles")});
         test.ok(tz !== null);
         
         test.deepEqual(tz.getRawOffset(), {h: -8});
@@ -169,8 +166,8 @@ module.exports.testtimezone = {
     },
     
     testTZGetStr: function(test) {
-        var tz = new TimeZone({id: "America/Los_Angeles"});
         test.expect(3);
+        var tz = new TimeZone({id: "America/Los_Angeles"});
         test.ok(tz !== null);
         
         test.equal(tz.getRawOffsetStr(), "-8:0");
@@ -179,8 +176,8 @@ module.exports.testtimezone = {
     },
     
     testTZGetEmpty: function(test) {
-        var tz = new TimeZone();
         test.expect(4);
+        var tz = new TimeZone();
         test.ok(tz !== null);
         
         // should have the default time zone for the US locale
@@ -191,8 +188,8 @@ module.exports.testtimezone = {
     },
     
     testTZGetEmptyStr: function(test) {
-        var tz = new TimeZone();
         test.expect(4);
+        var tz = new TimeZone();
         test.ok(tz !== null);
         
         // should have the default time zone for the US locale
@@ -203,8 +200,8 @@ module.exports.testtimezone = {
     },
     
     testTZGetDefaultForLocale: function(test) {
-        var tz = new TimeZone({locale: "nl-NL"});
         test.expect(4);
+        var tz = new TimeZone({locale: "nl-NL"});
         test.ok(tz !== null);
         
         // should have the default time zone for the US locale
@@ -215,8 +212,8 @@ module.exports.testtimezone = {
     },
     
     testTZGetDefaultForLocaleStr: function(test) {
-        var tz = new TimeZone({locale: "nl-NL"});
         test.expect(4);
+        var tz = new TimeZone({locale: "nl-NL"});
         test.ok(tz !== null);
         
         // should have the default time zone for the US locale
@@ -227,8 +224,8 @@ module.exports.testtimezone = {
     },
     
     testTZGetUnknown: function(test) {
-        var tz = new TimeZone({id: "America/asdfasdfasdf"});
         test.expect(4);
+        var tz = new TimeZone({id: "America/asdfasdfasdf"});
         test.ok(tz !== null);
         
         test.equal(tz.getId(), "Etc/UTC");
@@ -238,8 +235,8 @@ module.exports.testtimezone = {
     },
     
     testTZGetUnknownStr: function(test) {
-        var tz = new TimeZone({id: "America/asdfasdfasdf"});
         test.expect(4);
+        var tz = new TimeZone({id: "America/asdfasdfasdf"});
         test.ok(tz !== null);
         
         test.equal(tz.getId(), "Etc/UTC");
@@ -249,8 +246,8 @@ module.exports.testtimezone = {
     },
     
     testTZDisplayNameDSTStandardStyle: function(test) {
-        var tz = new TimeZone({id: "America/Los_Angeles"});
         test.expect(2);
+        var tz = new TimeZone({id: "America/Los_Angeles"});
         test.ok(tz !== null);
         
         var gd = new GregorianDate({
@@ -263,8 +260,8 @@ module.exports.testtimezone = {
     },
     
     testTZDisplayNameDSTDefaultStyle: function(test) {
-        var tz = new TimeZone({id: "America/Los_Angeles"});
         test.expect(2);
+        var tz = new TimeZone({id: "America/Los_Angeles"});
         test.ok(tz !== null);
         
         var gd = new GregorianDate({
@@ -277,8 +274,8 @@ module.exports.testtimezone = {
     },
     
     testTZDisplayNameDSTStyleRFC: function(test) {
-        var tz = new TimeZone({id: "America/Los_Angeles"});
         test.expect(2);
+        var tz = new TimeZone({id: "America/Los_Angeles"});
         test.ok(tz !== null);
         
         var gd = new GregorianDate({
@@ -291,8 +288,8 @@ module.exports.testtimezone = {
     },
     
     testTZDisplayNameDSTDaylightStandardStyle: function(test) {
-        var tz = new TimeZone({id: "America/Los_Angeles"});
         test.expect(2);
+        var tz = new TimeZone({id: "America/Los_Angeles"});
         test.ok(tz !== null);
         
         var gd = new GregorianDate({
@@ -305,8 +302,8 @@ module.exports.testtimezone = {
     },
     
     testTZDisplayNameDSTDaylightLongStyle: function(test) {
-        var tz = new TimeZone({id: "America/Los_Angeles"});
         test.expect(2);
+        var tz = new TimeZone({id: "America/Los_Angeles"});
         test.ok(tz !== null);
         
         var gd = new GregorianDate({
@@ -319,8 +316,8 @@ module.exports.testtimezone = {
     },
     
     testTZDisplayNameStandardTime: function(test) {
-        var tz = new TimeZone({id: "America/Los_Angeles"});
         test.expect(2);
+        var tz = new TimeZone({id: "America/Los_Angeles"});
         test.ok(tz !== null);
         
         var gd = new GregorianDate({
@@ -333,8 +330,8 @@ module.exports.testtimezone = {
     },
     
     testTZDisplayNameStandardTimeAmbiguous: function(test) {
-        var tz = new TimeZone({id: "America/Los_Angeles"});
         test.expect(2);
+        var tz = new TimeZone({id: "America/Los_Angeles"});
         test.ok(tz !== null);
         
         // this is in the magic overlap hour at the end of DST
@@ -352,8 +349,8 @@ module.exports.testtimezone = {
     },
     
     testTZDisplayNameDaylightTimeAmbiguous: function(test) {
-        var tz = new TimeZone({id: "America/Los_Angeles"});
         test.expect(2);
+        var tz = new TimeZone({id: "America/Los_Angeles"});
         test.ok(tz !== null);
         
         // this is in the magic overlap hour at the end of DST
@@ -371,8 +368,8 @@ module.exports.testtimezone = {
     },
     
     testTZDisplayNameStandardTimeRFC: function(test) {
-        var tz = new TimeZone({id: "America/Los_Angeles"});
         test.expect(2);
+        var tz = new TimeZone({id: "America/Los_Angeles"});
         test.ok(tz !== null);
         
         var gd = new GregorianDate({
@@ -385,8 +382,8 @@ module.exports.testtimezone = {
     },
     
     testTZDisplayNameStandardTimeLong: function(test) {
-        var tz = new TimeZone({id: "America/Los_Angeles"});
         test.expect(2);
+        var tz = new TimeZone({id: "America/Los_Angeles"});
         test.ok(tz !== null);
         
         var gd = new GregorianDate({
@@ -399,8 +396,8 @@ module.exports.testtimezone = {
     },
     
     testTZDisplayNameStandardTimeESWithNoDST: function(test) {
-        var tz = new TimeZone({id: "Europe/Madrid"});
         test.expect(2);
+        var tz = new TimeZone({id: "Europe/Madrid"});
         test.ok(tz !== null);
         
         var gd = new GregorianDate({
@@ -412,8 +409,8 @@ module.exports.testtimezone = {
         test.done();
     },
     testTZDisplayNameStandardTimeESWithDST: function(test) {
-        var tz = new TimeZone({id: "Europe/Madrid"});
         test.expect(2);
+        var tz = new TimeZone({id: "Europe/Madrid"});
         test.ok(tz !== null);
         
         var gd = new GregorianDate({
@@ -426,8 +423,8 @@ module.exports.testtimezone = {
     },
     
     testTZDisplayNameNoDST1: function(test) {
-        var tz = new TimeZone({id: "America/Phoenix"});
         test.expect(2);
+        var tz = new TimeZone({id: "America/Phoenix"});
         test.ok(tz !== null);
         
         var gd = new GregorianDate({
@@ -439,8 +436,8 @@ module.exports.testtimezone = {
         test.done();
     },
     testTZDisplayNameNoDST2: function(test) {
-        var tz = new TimeZone({id: "America/Phoenix"});
         test.expect(2);
+        var tz = new TimeZone({id: "America/Phoenix"});
         test.ok(tz !== null);
         
         var gd = new GregorianDate({
@@ -453,8 +450,8 @@ module.exports.testtimezone = {
     },
     
     testTZDisplayNameEasternRFCWithDST: function(test) {
-        var tz = new TimeZone({id: "Australia/Broken_Hill"});
         test.expect(2);
+        var tz = new TimeZone({id: "Australia/Broken_Hill"});
         test.ok(tz !== null);
         
         var gd = new GregorianDate({
@@ -466,8 +463,8 @@ module.exports.testtimezone = {
         test.done();
     },
     testTZDisplayNameEasternRFCWithoutDST: function(test) {
-        var tz = new TimeZone({id: "Australia/Broken_Hill"});
         test.expect(2);
+        var tz = new TimeZone({id: "Australia/Broken_Hill"});
         test.ok(tz !== null);
         
         var gd = new GregorianDate({
@@ -480,8 +477,8 @@ module.exports.testtimezone = {
     },
     
     testTZDisplayNameNoLetterForDST: function(test) {
-        var tz = new TimeZone({id: "Europe/Berlin"});
         test.expect(2);
+        var tz = new TimeZone({id: "Europe/Berlin"});
         test.ok(tz !== null);
         
         var gd = new GregorianDate({
@@ -497,8 +494,8 @@ module.exports.testtimezone = {
     },
     
     testTZGetOffsetDST: function(test) {
-        var tz = new TimeZone({id: "America/Los_Angeles"});
         test.expect(2);
+        var tz = new TimeZone({id: "America/Los_Angeles"});
         test.ok(tz !== null);
         
         var gd = new GregorianDate({
@@ -511,8 +508,8 @@ module.exports.testtimezone = {
     },
     
     testTZGetOffsetRightBeforeDSTStart: function(test) {
-        var tz = new TimeZone({id: "America/Los_Angeles"});
         test.expect(2);
+        var tz = new TimeZone({id: "America/Los_Angeles"});
         test.ok(tz !== null);
     
         var date = new GregorianDate({
@@ -525,8 +522,8 @@ module.exports.testtimezone = {
     },
     
     testTZGetOffsetRightAfterDSTStart: function(test) {
-        var tz = new TimeZone({id: "America/Los_Angeles"});
         test.expect(2);
+        var tz = new TimeZone({id: "America/Los_Angeles"});
         test.ok(tz !== null);
     
         var date = new GregorianDate({
@@ -540,8 +537,8 @@ module.exports.testtimezone = {
     },
     
     testTZGetOffsetRightBeforeDSTEnd: function(test) {
-        var tz = new TimeZone({id: "America/Los_Angeles"});
         test.expect(2);
+        var tz = new TimeZone({id: "America/Los_Angeles"});
         test.ok(tz !== null);
     
         var date = new GregorianDate({
@@ -554,8 +551,8 @@ module.exports.testtimezone = {
     },
     
     testTZGetOffsetRightAfterDSTEnd: function(test) {
-        var tz = new TimeZone({id: "America/Los_Angeles"});
         test.expect(2);
+        var tz = new TimeZone({id: "America/Los_Angeles"});
         test.ok(tz !== null);
     
         var date = new GregorianDate({
@@ -569,8 +566,8 @@ module.exports.testtimezone = {
     },
     
     testTZGetOffsetRightAfterDST: function(test) {
-        var tz = new TimeZone({id: "America/Los_Angeles"});
         test.expect(2);
+        var tz = new TimeZone({id: "America/Los_Angeles"});
         test.ok(tz !== null);
         
         var gd = new GregorianDate({
@@ -586,8 +583,8 @@ module.exports.testtimezone = {
     },
     
     testTZGetOffsetDSTStr: function(test) {
-        var tz = new TimeZone({id: "America/Los_Angeles"});
         test.expect(2);
+        var tz = new TimeZone({id: "America/Los_Angeles"});
         test.ok(tz !== null);
         
         var gd = new GregorianDate({
@@ -600,8 +597,8 @@ module.exports.testtimezone = {
     },
     
     testTZGetOffsetNoDST: function(test) {
-        var tz = new TimeZone({id: "America/Los_Angeles"});
         test.expect(2);
+        var tz = new TimeZone({id: "America/Los_Angeles"});
         test.ok(tz !== null);
         
         var gd = new GregorianDate({
@@ -613,8 +610,8 @@ module.exports.testtimezone = {
         test.done();
     },
     testTZGetOffsetNoDSTStr: function(test) {
-        var tz = new TimeZone({id: "America/Los_Angeles"});
         test.expect(2);
+        var tz = new TimeZone({id: "America/Los_Angeles"});
         test.ok(tz !== null);
         
         var gd = new GregorianDate({
@@ -627,8 +624,8 @@ module.exports.testtimezone = {
     },
     
     testTZGetOffsetNonDSTZone1: function(test) {
-        var tz = new TimeZone({id: "America/Phoenix"});
         test.expect(2);
+        var tz = new TimeZone({id: "America/Phoenix"});
         test.ok(tz !== null);
         
         var gd = new GregorianDate({
@@ -640,8 +637,8 @@ module.exports.testtimezone = {
         test.done();
     },
     testTZGetOffsetNonDSTZone1Str: function(test) {
-        var tz = new TimeZone({id: "America/Phoenix"});
         test.expect(2);
+        var tz = new TimeZone({id: "America/Phoenix"});
         test.ok(tz !== null);
         
         var gd = new GregorianDate({
@@ -654,8 +651,8 @@ module.exports.testtimezone = {
     },
     
     testTZGetOffsetNonDSTZone2: function(test) {
-        var tz = new TimeZone({id: "America/Phoenix"});
         test.expect(2);
+        var tz = new TimeZone({id: "America/Phoenix"});
         test.ok(tz !== null);
         
         var gd = new GregorianDate({
@@ -667,8 +664,8 @@ module.exports.testtimezone = {
         test.done();
     },
     testTZGetOffsetNonDSTZone2Str: function(test) {
-        var tz = new TimeZone({id: "America/Phoenix"});
         test.expect(2);
+        var tz = new TimeZone({id: "America/Phoenix"});
         test.ok(tz !== null);
         
         var gd = new GregorianDate({
@@ -681,16 +678,16 @@ module.exports.testtimezone = {
     },
     
     testTZGetRawOffsetDST: function(test) {
-        var tz = new TimeZone({id: "America/Los_Angeles"});
         test.expect(2);
+        var tz = new TimeZone({id: "America/Los_Angeles"});
         test.ok(tz !== null);
         
         test.deepEqual(tz.getRawOffset(), {h:-8});
         test.done();
     },
     testTZGetRawOffsetDSTStr: function(test) {
-        var tz = new TimeZone({id: "America/Los_Angeles"});
         test.expect(2);
+        var tz = new TimeZone({id: "America/Los_Angeles"});
         test.ok(tz !== null);
         
         test.equal(tz.getRawOffsetStr(), "-8:0");
@@ -698,16 +695,16 @@ module.exports.testtimezone = {
     },
     
     testTZGetRawOffsetNonDSTZone: function(test) {
-        var tz = new TimeZone({id: "America/Phoenix"});
         test.expect(2);
+        var tz = new TimeZone({id: "America/Phoenix"});
         test.ok(tz !== null);
         
         test.deepEqual(tz.getRawOffset(), {h:-7});
         test.done();
     },
     testTZGetRawOffsetNonDSTZoneStr: function(test) {
-        var tz = new TimeZone({id: "America/Phoenix"});
         test.expect(2);
+        var tz = new TimeZone({id: "America/Phoenix"});
         test.ok(tz !== null);
         
         test.equal(tz.getRawOffsetStr(), "-7:0");
@@ -715,16 +712,16 @@ module.exports.testtimezone = {
     },
     
     testTZGetDSTSavingsDSTZone: function(test) {
-        var tz = new TimeZone({id: "America/Los_Angeles"});
         test.expect(2);
+        var tz = new TimeZone({id: "America/Los_Angeles"});
         test.ok(tz !== null);
         
         test.deepEqual(tz.getDSTSavings(), {h:1});
         test.done();
     },
     testTZGetDSTSavingsDSTZoneStr: function(test) {
-        var tz = new TimeZone({id: "America/Los_Angeles"});
         test.expect(2);
+        var tz = new TimeZone({id: "America/Los_Angeles"});
         test.ok(tz !== null);
         
         test.equal(tz.getDSTSavingsStr(), "1:0");
@@ -732,16 +729,16 @@ module.exports.testtimezone = {
     },
     
     testTZGetDSTSavingsDSTZoneOdd: function(test) {
-        var tz = new TimeZone({id: "Australia/Lord_Howe"});
         test.expect(2);
+        var tz = new TimeZone({id: "Australia/Lord_Howe"});
         test.ok(tz !== null);
         
         test.deepEqual(tz.getDSTSavings(), {h:0,m:30});
         test.done();
     },
     testTZGetDSTSavingsDSTZoneOddStr: function(test) {
-        var tz = new TimeZone({id: "Australia/Lord_Howe"});
         test.expect(2);
+        var tz = new TimeZone({id: "Australia/Lord_Howe"});
         test.ok(tz !== null);
         
         test.equal(tz.getDSTSavingsStr(), "0:30");
@@ -749,16 +746,16 @@ module.exports.testtimezone = {
     },
     
     testTZGetDSTSavingsNonDSTZone: function(test) {
-        var tz = new TimeZone({id: "America/Phoenix"});
         test.expect(2);
+        var tz = new TimeZone({id: "America/Phoenix"});
         test.ok(tz !== null);
         
         test.deepEqual(tz.getDSTSavings(), {h:0});
         test.done();
     },
     testTZGetDSTSavingsNonDSTZoneStr: function(test) {
-        var tz = new TimeZone({id: "America/Phoenix"});
         test.expect(2);
+        var tz = new TimeZone({id: "America/Phoenix"});
         test.ok(tz !== null);
         
         test.equal(tz.getDSTSavingsStr(), "0:0");
@@ -766,8 +763,8 @@ module.exports.testtimezone = {
     },
     
     testTZGetDSTSavingsUnknown: function(test) {
-        var tz = new TimeZone({id: "x/y"});
         test.expect(2);
+        var tz = new TimeZone({id: "x/y"});
         test.ok(tz !== null);
         
         // should default to Etc/UTC
@@ -775,8 +772,8 @@ module.exports.testtimezone = {
         test.done();
     },
     testTZGetDSTSavingsUnknownStr: function(test) {
-        var tz = new TimeZone({id: "x/y"});
         test.expect(2);
+        var tz = new TimeZone({id: "x/y"});
         test.ok(tz !== null);
         
         // should default to Etc/UTC
@@ -785,8 +782,8 @@ module.exports.testtimezone = {
     },
     
     testTZInDaylightTimeTrue: function(test) {
-        var tz = new TimeZone({id: "America/Los_Angeles"});
         test.expect(2);
+        var tz = new TimeZone({id: "America/Los_Angeles"});
         test.ok(tz !== null);
         
         var gd = new GregorianDate({
@@ -799,8 +796,8 @@ module.exports.testtimezone = {
         test.done();
     },
     testTZInDaylightTimeFalse: function(test) {
-        var tz = new TimeZone({id: "America/Los_Angeles"});
         test.expect(2);
+        var tz = new TimeZone({id: "America/Los_Angeles"});
         test.ok(tz !== null);
         
         var gd = new GregorianDate({
@@ -814,12 +811,12 @@ module.exports.testtimezone = {
     },
     
     testTZInDaylightTimeLocalTrue: function(test) {
+        test.expect(2);
         var summer = new Date(2014, 6, 1);
         var winter = new Date(2014, 0, 1);
         // only perform this test if we are in a zone where there is DST
         if (summer.getTimezoneOffset() !== winter.getTimezoneOffset()) {
             var tz = new TimeZone({id: "local"});
-        test.expect(2);
             test.ok(tz !== null);
             
             var gd = new GregorianDate({
@@ -833,12 +830,12 @@ module.exports.testtimezone = {
         }
     },
     testTZInDaylightTimeLocalFalse: function(test) {
+        test.expect(2);
         var summer = new Date(2014, 6, 1);
         var winter = new Date(2014, 0, 1);
         // only perform this test if we are in a zone where there is DST
         if (summer.getTimezoneOffset() !== winter.getTimezoneOffset()) {
             var tz = new TimeZone({id: "local"});
-        test.expect(2);
             test.ok(tz !== null);
             
             var gd = new GregorianDate({
@@ -853,8 +850,8 @@ module.exports.testtimezone = {
     },
     
     testTZInDaylightTimeNonDSTZone: function(test) {
-        var tz = new TimeZone({id: "America/Phoenix"});
         test.expect(2);
+        var tz = new TimeZone({id: "America/Phoenix"});
         test.ok(tz !== null);
         
         var gd = new GregorianDate({
@@ -867,8 +864,8 @@ module.exports.testtimezone = {
         test.done();
     },
     testTZInDaylightTimeUnknown: function(test) {
-        var tz = new TimeZone({id: "x/y"});
         test.expect(2);
+        var tz = new TimeZone({id: "x/y"});
         test.ok(tz !== null);
         
         // defaults to Etc/UTC
@@ -882,8 +879,8 @@ module.exports.testtimezone = {
     },
     
     testTZInDaylightTimeJustBeforeStart: function(test) {
-        var tz = new TimeZone({id: "America/Los_Angeles"});
         test.expect(2);
+        var tz = new TimeZone({id: "America/Los_Angeles"});
         test.ok(tz !== null);
         
         var gd = new GregorianDate({
@@ -899,8 +896,8 @@ module.exports.testtimezone = {
         test.done();
     },
     testTZInDaylightTimeJustAfterStart: function(test) {
-        var tz = new TimeZone({id: "America/Los_Angeles"});
         test.expect(2);
+        var tz = new TimeZone({id: "America/Los_Angeles"});
         test.ok(tz !== null);
         
         var gd = new GregorianDate({
@@ -914,8 +911,8 @@ module.exports.testtimezone = {
         test.done();
     },
     testTZInDaylightTimeJustBeforeEnd: function(test) {
-        var tz = new TimeZone({id: "America/Los_Angeles"});
         test.expect(2);
+        var tz = new TimeZone({id: "America/Los_Angeles"});
         test.ok(tz !== null);
         
         var gd = new GregorianDate({
@@ -931,8 +928,8 @@ module.exports.testtimezone = {
         test.done();
     },
     testTZInDaylightTimeJustAfterEnd: function(test) {
-        var tz = new TimeZone({id: "America/Los_Angeles"});
         test.expect(2);
+        var tz = new TimeZone({id: "America/Los_Angeles"});
         test.ok(tz !== null);
         
         var gd = new GregorianDate({
@@ -947,8 +944,8 @@ module.exports.testtimezone = {
     },
     
     testTZInDaylightTimeJustBeforeStartDownUnder: function(test) {
-        var tz = new TimeZone({id: "Australia/Sydney"});
         test.expect(2);
+        var tz = new TimeZone({id: "Australia/Sydney"});
         test.ok(tz !== null);
         
         var gd = new GregorianDate({
@@ -965,8 +962,8 @@ module.exports.testtimezone = {
     },
     
     testTZInDaylightTimeJustAfterStartDownUnder: function(test) {
-        var tz = new TimeZone({id: "Australia/Sydney"});
         test.expect(2);
+        var tz = new TimeZone({id: "Australia/Sydney"});
         test.ok(tz !== null);
         
         var gd = new GregorianDate({
@@ -980,8 +977,8 @@ module.exports.testtimezone = {
         test.done();
     },
     testTZInDaylightTimeJustBeforeEndDownUnder: function(test) {
-        var tz = new TimeZone({id: "Australia/Sydney"});
         test.expect(2);
+        var tz = new TimeZone({id: "Australia/Sydney"});
         test.ok(tz !== null);
         
         var gd = new GregorianDate({
@@ -997,8 +994,8 @@ module.exports.testtimezone = {
         test.done();
     },
     testTZInDaylightTimeJustAfterEndDownUnder: function(test) {
-        var tz = new TimeZone({id: "Australia/Sydney"});
         test.expect(2);
+        var tz = new TimeZone({id: "Australia/Sydney"});
         test.ok(tz !== null);
         
         var gd = new GregorianDate({
@@ -1014,24 +1011,24 @@ module.exports.testtimezone = {
     
     
     testTZUseDaylightTime: function(test) {
-        var tz = new TimeZone({id: "America/Los_Angeles"});
         test.expect(2);
+        var tz = new TimeZone({id: "America/Los_Angeles"});
         test.ok(tz !== null);
         
         test.ok(tz.useDaylightTime());
         test.done();
     },
     testTZUseDaylightTimeNonDST: function(test) {
-        var tz = new TimeZone({id: "America/Phoenix"});
         test.expect(2);
+        var tz = new TimeZone({id: "America/Phoenix"});
         test.ok(tz !== null);
         
         test.ok(!tz.useDaylightTime());
         test.done();
     },
     testTZUseDaylightTimeUnknown: function(test) {
-        var tz = new TimeZone({id: "x/y"});
         test.expect(2);
+        var tz = new TimeZone({id: "x/y"});
         test.ok(tz !== null);
         
         test.ok(!tz.useDaylightTime());
@@ -1039,8 +1036,8 @@ module.exports.testtimezone = {
     },
     
     testTZGetAvailableIds: function(test) {
-        var zones = TimeZone.getAvailableIds();
         test.expect(2);
+        var zones = TimeZone.getAvailableIds();
         test.ok(zones !== null);
         
         test.ok(zones.length > 0);
@@ -1048,11 +1045,10 @@ module.exports.testtimezone = {
     },
     
     testTZGetAvailableIdsRightValues: function(test) {
-        var zones = TimeZone.getAvailableIds();
         test.expect(6);
+        var zones = TimeZone.getAvailableIds();
         test.ok(zones !== null);
         
-        //util.print("timezones is " + JSON.stringify(ilib._load, undefined, 4) + "\n");
         test.contains(zones, "Europe/London");
         test.contains(zones, "America/Los_Angeles");
         test.contains(zones, "Australia/Sydney");
@@ -1062,8 +1058,8 @@ module.exports.testtimezone = {
     },
     
     testTZGetAvailableIdsNoFilterContainsLocal: function(test) {
-        var zones = TimeZone.getAvailableIds();
         test.expect(2);
+        var zones = TimeZone.getAvailableIds();
         test.ok(zones !== null);
         
         test.ok(zones.indexOf("local") != -1);
@@ -1071,29 +1067,28 @@ module.exports.testtimezone = {
     },
     
     testGetAvailableTimeZonesWithLoader: function(test) {
-        var temp = ilib._load;
-        var oldLoader = ilib._load;
+        test.expect(3);
         ilib.setLoaderCallback(new getAvailableMocker());
         ilib.data.timezones = []; // clear the timezones cache
+        var ol = oldLoader;
         
         try {
             var zones = TimeZone.getAvailableIds();
-        test.expect(3);
             test.equal(zones.length, 1);
             test.contains(zones, "local");
         } finally {
             // clean up
             ilib.data.timezones = []; // clear the timezones cache
             
-            ilib.setLoaderCallback(oldLoader);
+            ilib.setLoaderCallback(ol);
             test.ok(true);
             test.done();
         }
     },
     
     testTZGetAvailableIdsByCountryRightLength: function(test) {
-        var zones = TimeZone.getAvailableIds("US");
         test.expect(2);
+        var zones = TimeZone.getAvailableIds("US");
         test.ok(zones !== null);
         
         test.equal(zones.length, 48);
@@ -1101,8 +1096,8 @@ module.exports.testtimezone = {
     },
     
     testTZGetAvailableIdsWithFilterContainsNoLocal: function(test) {
-        var zones = TimeZone.getAvailableIds("US");
         test.expect(2);
+        var zones = TimeZone.getAvailableIds("US");
         test.ok(zones !== null);
         
         test.ok(zones.indexOf("local") == -1);
@@ -1110,8 +1105,8 @@ module.exports.testtimezone = {
     },
     
     testTZGetAvailableIdsByCountryRightContents: function(test) {
-        var zones = TimeZone.getAvailableIds("US");
         test.expect(2);
+        var zones = TimeZone.getAvailableIds("US");
         test.ok(zones !== null);
         
         var expected = [
@@ -1170,8 +1165,8 @@ module.exports.testtimezone = {
     },
     
     testTZGetAvailableIdsByCountry2RightLength: function(test) {
-        var zones = TimeZone.getAvailableIds("SG");
         test.expect(2);
+        var zones = TimeZone.getAvailableIds("SG");
         test.ok(zones !== null);
         
         test.equal(zones.length, 2);
@@ -1179,8 +1174,8 @@ module.exports.testtimezone = {
     },
     
     testTZGetAvailableIdsByCountry2RightContents: function(test) {
-        var zones = TimeZone.getAvailableIds("SG");
         test.expect(2);
+        var zones = TimeZone.getAvailableIds("SG");
         test.ok(zones !== null);
         
         var expected = [
@@ -1193,8 +1188,8 @@ module.exports.testtimezone = {
     },
     
     testTZGetAvailableIdsByCountry3RightLength: function(test) {
-        var zones = TimeZone.getAvailableIds("IN");
         test.expect(2);
+        var zones = TimeZone.getAvailableIds("IN");
         test.ok(zones !== null);
         
         test.equal(zones.length, 2);
@@ -1202,8 +1197,8 @@ module.exports.testtimezone = {
     },
     
     testTZGetAvailableIdsByCountry3RightContents: function(test) {
-        var zones = TimeZone.getAvailableIds("IN");
         test.expect(2);
+        var zones = TimeZone.getAvailableIds("IN");
         test.ok(zones !== null);
         
         var expected = [
@@ -1216,8 +1211,8 @@ module.exports.testtimezone = {
     },
     
     testTZUseDaylightTimeID: function(test) {
-        var tz = new TimeZone({id: "Asia/Jakarta"});
         test.expect(2);
+        var tz = new TimeZone({id: "Asia/Jakarta"});
         test.ok(tz !== null);
         
         test.ok(!tz.useDaylightTime());
@@ -1225,8 +1220,8 @@ module.exports.testtimezone = {
     },
     
     testTZDisplayNameStandardID: function(test) {
-        var tz = new TimeZone({id: "Asia/Jakarta"});
         test.expect(2);
+        var tz = new TimeZone({id: "Asia/Jakarta"});
         test.ok(tz !== null);
         
         var gd = new GregorianDate({
@@ -1242,8 +1237,8 @@ module.exports.testtimezone = {
     },
     
     testTZDisplayNameLongID: function(test) {
-        var tz = new TimeZone({id: "Asia/Jakarta"});
         test.expect(2);
+        var tz = new TimeZone({id: "Asia/Jakarta"});
         test.ok(tz !== null);
         
         var gd = new GregorianDate({
@@ -1259,15 +1254,15 @@ module.exports.testtimezone = {
     },
     
     testTZConstructUsingOffset: function(test) {
-       var tz = new TimeZone({offset: 420});
         test.expect(1);
+       var tz = new TimeZone({offset: 420});
        test.ok(tz !== null);
        test.done();
     },
     
     testTZOffsetGetRawOffset: function(test) {
-       var tz = new TimeZone({offset: 420});
         test.expect(4);
+       var tz = new TimeZone({offset: 420});
        test.ok(tz !== null);
        
        var offset = tz.getRawOffset();
@@ -1278,8 +1273,8 @@ module.exports.testtimezone = {
     },
     
     testTZOffsetGetRawOffsetNegative: function(test) {
-       var tz = new TimeZone({offset: -450});
         test.expect(4);
+       var tz = new TimeZone({offset: -450});
        test.ok(tz !== null);
        
        var offset = tz.getRawOffset();
@@ -1291,8 +1286,8 @@ module.exports.testtimezone = {
     },
     
     testTZOffsetGetRawOffsetStr: function(test) {
-       var tz = new TimeZone({offset: 420});
         test.expect(2);
+       var tz = new TimeZone({offset: 420});
        test.ok(tz !== null);
        
        test.equal(tz.getRawOffsetStr(), "7:0");
@@ -1300,8 +1295,8 @@ module.exports.testtimezone = {
     },
     
     testTZOffsetGetOffsetWinter: function(test) {
-       var tz = new TimeZone({offset: 450});
         test.expect(4);
+       var tz = new TimeZone({offset: 450});
        test.ok(tz !== null);
        
        var date = DateFactory({
@@ -1319,8 +1314,8 @@ module.exports.testtimezone = {
     },
     
     testTZOffsetGetOffsetSummer: function(test) {
-       var tz = new TimeZone({offset: 450});
         test.expect(4);
+       var tz = new TimeZone({offset: 450});
        test.ok(tz !== null);
        
        var date = DateFactory({
@@ -1339,8 +1334,8 @@ module.exports.testtimezone = {
     },
     
     testTZOffsetGetDisplayNameStandard: function(test) {
-       var tz = new TimeZone({offset: 450});
         test.expect(2);
+       var tz = new TimeZone({offset: 450});
        test.ok(tz !== null);
        
        var date = DateFactory({
@@ -1355,8 +1350,8 @@ module.exports.testtimezone = {
     },
     
     testTZOffsetGetDisplayNameRFC: function(test) {
-       var tz = new TimeZone({offset: 450});
         test.expect(2);
+       var tz = new TimeZone({offset: 450});
        test.ok(tz !== null);
        
        var date = DateFactory({
@@ -1370,8 +1365,8 @@ module.exports.testtimezone = {
     },
     
     testTZOffsetGetDisplayNameRFCNegative: function(test) {
-       var tz = new TimeZone({offset: -510});
         test.expect(2);
+       var tz = new TimeZone({offset: -510});
        test.ok(tz !== null);
        
        var date = DateFactory({
@@ -1385,8 +1380,8 @@ module.exports.testtimezone = {
     },
     
     testTZOffsetGetId: function(test) {
-       var tz = new TimeZone({offset: 450});
         test.expect(2);
+       var tz = new TimeZone({offset: 450});
        test.ok(tz !== null);
        
        // should give the same as the rfc style display name because we don't know the name of the time zone 
@@ -1395,8 +1390,8 @@ module.exports.testtimezone = {
     },
     
     testTZOffsetGetDSTSavings: function(test) {
-       var tz = new TimeZone({offset: 450});
         test.expect(3);
+       var tz = new TimeZone({offset: 450});
        test.ok(tz !== null);
        
        test.ok(typeof(tz.getDSTSavings()) !== "undefined");
@@ -1405,8 +1400,8 @@ module.exports.testtimezone = {
     },
     
     testTZOffsetGetDSTSavingsStr: function(test) {
-       var tz = new TimeZone({offset: 450});
         test.expect(3);
+       var tz = new TimeZone({offset: 450});
        test.ok(tz !== null);
        
        test.ok(typeof(tz.getDSTSavingsStr()) !== "undefined");
@@ -1415,8 +1410,8 @@ module.exports.testtimezone = {
     },
     
     testTZOffsetGetUseDaylightTime: function(test) {
-       var tz = new TimeZone({offset: 450});
         test.expect(2);
+       var tz = new TimeZone({offset: 450});
        test.ok(tz !== null);
        
        test.ok(!tz.useDaylightTime());
@@ -1424,8 +1419,8 @@ module.exports.testtimezone = {
     },
     
     testTZOffsetInDaylightTimeWinter: function(test) {
-       var tz = new TimeZone({offset: 450});
         test.expect(2);
+       var tz = new TimeZone({offset: 450});
        test.ok(tz !== null);
        
        var date = DateFactory({
@@ -1439,8 +1434,8 @@ module.exports.testtimezone = {
     },
     
     testTZOffsetInDaylightTimeSummer: function(test) {
-       var tz = new TimeZone({offset: 450});
         test.expect(2);
+       var tz = new TimeZone({offset: 450});
        test.ok(tz !== null);
        
        var date = DateFactory({
@@ -1455,8 +1450,8 @@ module.exports.testtimezone = {
     },
     
     testTZConstructUsingLocalID: function(test) {
-       var tz = new TimeZone({id: "local"});
         test.expect(1);
+       var tz = new TimeZone({id: "local"});
        test.ok(tz !== null);
        test.done();
     },
@@ -1464,8 +1459,8 @@ module.exports.testtimezone = {
     // difficult to test the id: 'local' stuff further, because it will depend on the user's test environment...
     
     testTZGetOffsetMillisDST: function(test) {
-        var tz = new TimeZone({id: "America/Los_Angeles"});
         test.expect(2);
+        var tz = new TimeZone({id: "America/Los_Angeles"});
         test.ok(tz !== null);
         
         var gd = new GregorianDate({
@@ -1478,8 +1473,8 @@ module.exports.testtimezone = {
     },
     
     testTZGetOffsetMillisNoDST: function(test) {
-        var tz = new TimeZone({id: "America/Los_Angeles"});
         test.expect(2);
+        var tz = new TimeZone({id: "America/Los_Angeles"});
         test.ok(tz !== null);
         
         var gd = new GregorianDate({
@@ -1492,8 +1487,8 @@ module.exports.testtimezone = {
     },
     
     testTZGetOffsetMillisDSTSouthern: function(test) {
-        var tz = new TimeZone({id: "Australia/Sydney"});
         test.expect(2);
+        var tz = new TimeZone({id: "Australia/Sydney"});
         test.ok(tz !== null);
         
         var gd = new GregorianDate({
@@ -1506,8 +1501,8 @@ module.exports.testtimezone = {
     },
     
     testTZGetOffsetMillisNoDSTSouthern: function(test) {
-        var tz = new TimeZone({id: "Australia/Sydney"});
         test.expect(2);
+        var tz = new TimeZone({id: "Australia/Sydney"});
         test.ok(tz !== null);
         
         var gd = new GregorianDate({
@@ -1520,8 +1515,8 @@ module.exports.testtimezone = {
     },
     
     testTZGetOffsetMillisNonDSTZone1: function(test) {
-        var tz = new TimeZone({id: "America/Phoenix"});
         test.expect(2);
+        var tz = new TimeZone({id: "America/Phoenix"});
         test.ok(tz !== null);
         
         var gd = new GregorianDate({
@@ -1534,8 +1529,8 @@ module.exports.testtimezone = {
     },
     
     testTZGetOffsetMillisNonDSTZone2: function(test) {
-        var tz = new TimeZone({id: "America/Phoenix"});
         test.expect(2);
+        var tz = new TimeZone({id: "America/Phoenix"});
         test.ok(tz !== null);
         
         var gd = new GregorianDate({
@@ -1548,8 +1543,8 @@ module.exports.testtimezone = {
     },
     
     testTZGetOffsetMillisRightBeforeDSTStart: function(test) {
-        var tz = new TimeZone({id: "America/Los_Angeles"});
         test.expect(2);
+        var tz = new TimeZone({id: "America/Los_Angeles"});
         test.ok(tz !== null);
     
         var date = new GregorianDate({
@@ -1562,8 +1557,8 @@ module.exports.testtimezone = {
     },
     
     testTZGetOffsetMillisRightAfterDSTStart: function(test) {
-        var tz = new TimeZone({id: "America/Los_Angeles"});
         test.expect(2);
+        var tz = new TimeZone({id: "America/Los_Angeles"});
         test.ok(tz !== null);
     
         var date = new GregorianDate({
@@ -1577,8 +1572,8 @@ module.exports.testtimezone = {
     },
     
     testTZGetOffsetMillisRightBeforeDSTEnd: function(test) {
-        var tz = new TimeZone({id: "America/Los_Angeles"});
         test.expect(2);
+        var tz = new TimeZone({id: "America/Los_Angeles"});
         test.ok(tz !== null);
     
         var date = new GregorianDate({
@@ -1591,8 +1586,8 @@ module.exports.testtimezone = {
     },
     
     testTZGetOffsetMillisRightAfterDSTEnd: function(test) {
-        var tz = new TimeZone({id: "America/Los_Angeles"});
         test.expect(2);
+        var tz = new TimeZone({id: "America/Los_Angeles"});
         test.ok(tz !== null);
     
         var date = new GregorianDate({
@@ -1606,8 +1601,8 @@ module.exports.testtimezone = {
     },
     
     testTZGetRawOffsetMillisDST: function(test) {
-        var tz = new TimeZone({id: "America/Los_Angeles"});
         test.expect(2);
+        var tz = new TimeZone({id: "America/Los_Angeles"});
         test.ok(tz !== null);
         
         test.equal(tz.getRawOffsetMillis(), -28800000);
@@ -1615,8 +1610,8 @@ module.exports.testtimezone = {
     },
     
     testTZGetRawOffsetMillisDSTEastern: function(test) {
-        var tz = new TimeZone({id: "Asia/Shanghai"});
         test.expect(2);
+        var tz = new TimeZone({id: "Asia/Shanghai"});
         test.ok(tz !== null);
         
         test.equal(tz.getRawOffsetMillis(), 28800000);
@@ -1624,8 +1619,8 @@ module.exports.testtimezone = {
     },
     
     testTZGetRawOffsetMillisNonDSTZone: function(test) {
-        var tz = new TimeZone({id: "America/Phoenix"});
         test.expect(2);
+        var tz = new TimeZone({id: "America/Phoenix"});
         test.ok(tz !== null);
         
         test.equal(tz.getRawOffsetMillis(), -25200000);
@@ -1633,9 +1628,9 @@ module.exports.testtimezone = {
     },
     
     testTZGetRawOffsetMillisLocal: function(test) {
+        test.expect(2);
         // this should work in any time zone that this test is run in
         var tz = new TimeZone({id: "local"});
-        test.expect(2);
         test.ok(tz !== null);
         
         var expected = new Date(2014,0,1).getTimezoneOffset() * 60 * -1000;
@@ -1645,8 +1640,8 @@ module.exports.testtimezone = {
     },
     
     testTZGetTimeZoneForLocale: function(test) {
-        var tz = new TimeZone({locale: "nl-NL"});
         test.expect(2);
+        var tz = new TimeZone({locale: "nl-NL"});
         test.ok(tz !== null);
         
         test.equal(tz.getId(), "Europe/Amsterdam");
@@ -1654,8 +1649,8 @@ module.exports.testtimezone = {
     },
     
     testTZGetTimeZoneForLocaleUnknown: function(test) {
-        var tz = new TimeZone({locale: "zz-YY"});
         test.expect(2);
+        var tz = new TimeZone({locale: "zz-YY"});
         test.ok(tz !== null);
         
         test.equal(tz.getId(), "Etc/UTC");
@@ -1666,15 +1661,14 @@ module.exports.testtimezone = {
         if (ilib.isDynData()) {
             // don't need to test loading on the dynamic load version because we are testing
             // it via all the other tests already.
-        test.done();
+            test.done();
             return;
         }
-        var temp = ilib._load;
         ilib.setLoaderCallback(mockLoader);
         var tz = new TimeZone({locale: "zz-YY"});
         test.expect(2);
         test.ok(tz !== null);
-        ilib.setLoaderCallback(temp);
+        ilib.setLoaderCallback(oldLoader);
         test.equal(tz.getId(), "Asia/Tokyo");
         test.done();
     },
@@ -1683,16 +1677,16 @@ module.exports.testtimezone = {
         if (ilib.isDynData()) {
             // don't need to test loading on the dynamic load version because we are testing
             // it via all the other tests already.
-        test.done();
+            test.done();
             return;
         }
-        var temp = ilib._load;
+        var ol = oldLoader;
         ilib.setLoaderCallback(mockLoader);
         new TimeZone({
             locale: "zz-YY",
             sync: false,
             onLoad: function (tz) {
-                ilib.setLoaderCallback(temp);
+                ilib.setLoaderCallback(ol);
         test.expect(2);
                 test.ok(tz !== null);
                 test.equal(tz.getId(), "Asia/Tokyo");
@@ -1705,15 +1699,15 @@ module.exports.testtimezone = {
         if (ilib.isDynData()) {
             // don't need to test loading on the dynamic load version because we are testing
             // it via all the other tests already.
-        test.done();
+            test.done();
             return;
         }
-        var oldLoader = ilib._load;
+        var ol = oldLoader;
         ilib.setLoaderCallback(mockLoader);
         var tz = new TimeZone({locale: "ww-WW"});
         test.expect(2);
         test.ok(tz !== null);
-        ilib.setLoaderCallback(oldLoader);
+        ilib.setLoaderCallback(ol);
         test.equal(tz.getId(), "Etc/UTC");
         test.done();
     },
@@ -1722,16 +1716,16 @@ module.exports.testtimezone = {
         if (ilib.isDynData()) {
             // don't need to test loading on the dynamic load version because we are testing
             // it via all the other tests already.
-        test.done();
+            test.done();
             return;
         }
-        var oldloader = ilib._load;
+        var ol = oldLoader;
         ilib.setLoaderCallback(mockLoader);
         new TimeZone({
             locale: "ww-WW",
             sync: false,
             onLoad: function (tz) {
-                ilib.setLoaderCallback(oldLoader);
+                ilib.setLoaderCallback(ol);
         test.expect(2);
                 test.ok(tz !== null);
                 test.equal(tz.getId(), "Etc/UTC");
@@ -1741,14 +1735,14 @@ module.exports.testtimezone = {
     },
     
     testTZGetTimeZoneWithLoaderAsynch: function(test) {
-        var oldloader = ilib._load;
+        test.expect(2);
+        var ol = oldLoader;
         ilib.setLoaderCallback(mockLoader2);
         new TimeZone({
             id: "America/Los_Angeles",
             sync: false,
             onLoad: function (tz) {
-                ilib.setLoaderCallback(oldloader);
-        test.expect(2);
+                ilib.setLoaderCallback(ol);
                 test.ok(tz !== null);
                 test.deepEqual(tz.getId(), "America/Los_Angeles");
                 test.done();
@@ -1757,15 +1751,15 @@ module.exports.testtimezone = {
     },
     
     testTZGetTimeZoneWithLoaderJulianTransitionBeforeStart: function(test) {
-        var oldloader = ilib._load;
+        test.expect(3);
+        var ol = oldLoader;
         ilib.setLoaderCallback(mockLoader2);
         new TimeZone({
             id: "America/Los_Angeles",
             sync: false,
             onLoad: function (tz) {
-                ilib.setLoaderCallback(oldloader);
+                ilib.setLoaderCallback(ol);
     
-        test.expect(3);
                 test.ok(tz !== null);
                 test.deepEqual(tz.getId(), "America/Los_Angeles");
                 
@@ -1780,15 +1774,15 @@ module.exports.testtimezone = {
     },
     
     testTZGetTimeZoneWithLoaderJulianTransitionAfterStart: function(test) {
-        var oldloader = ilib._load;
+        test.expect(3);
+        var ol = oldLoader;
         ilib.setLoaderCallback(mockLoader2);
         new TimeZone({
             id: "America/Los_Angeles",
             sync: false,
             onLoad: function (tz) {
-                ilib.setLoaderCallback(oldloader);
+                ilib.setLoaderCallback(ol);
     
-        test.expect(3);
                 test.ok(tz !== null);
                 test.deepEqual(tz.getId(), "America/Los_Angeles");
                 
@@ -1803,16 +1797,16 @@ module.exports.testtimezone = {
     },
     
     testTZGetTimeZoneWithLoaderJulianTransitionBeforeEnd: function(test) {
-        var oldloader = ilib._load;
+        test.expect(3);
+        var ol = oldLoader;
         ilib.setLoaderCallback(mockLoader2);
         new TimeZone({
             id: "America/Los_Angeles",
             sync: false,
             onLoad: function (tz) {
-        test.expect(3);
                 test.ok(tz !== null);
                 test.deepEqual(tz.getId(), "America/Los_Angeles");
-                ilib.setLoaderCallback(oldloader);
+                ilib.setLoaderCallback(ol);
                 
                 // before end
                 var d = new DateFactory({
@@ -1825,15 +1819,15 @@ module.exports.testtimezone = {
     },
     
     testTZGetTimeZoneWithLoaderJulianTransitionAfterEnd: function(test) {
-        var oldloader = ilib._load;
+        test.expect(3);
+        var ol = oldLoader;
         ilib.setLoaderCallback(mockLoader2);
         new TimeZone({
             id: "America/Los_Angeles",
             sync: false,
             onLoad: function (tz) {
-                ilib.setLoaderCallback(oldloader);
+                ilib.setLoaderCallback(ol);
     
-        test.expect(3);
                 test.ok(tz !== null);
                 test.deepEqual(tz.getId(), "America/Los_Angeles");
     
@@ -1848,8 +1842,9 @@ module.exports.testtimezone = {
     },
     
     testTZGetCountry1: function(test) {
-        var tz = new TimeZone({id: "America/Los_Angeles"});
         test.expect(2);
+        ilib.setLoaderCallback(oldLoader);
+        var tz = new TimeZone({id: "America/Los_Angeles"});
         test.ok(tz !== null);
         
         test.equal(tz.getCountry(), "US");
@@ -1857,8 +1852,8 @@ module.exports.testtimezone = {
     },
     
     testTZGetCountry2: function(test) {
-        var tz = new TimeZone({id: "Europe/Berlin"});
         test.expect(2);
+        var tz = new TimeZone({id: "Europe/Berlin"});
         test.ok(tz !== null);
         
         test.equal(tz.getCountry(), "DE");
@@ -1866,8 +1861,8 @@ module.exports.testtimezone = {
     },
     
     testTZGetCountry3: function(test) {
-        var tz = new TimeZone({id: "Europe/Kiev"});
         test.expect(2);
+        var tz = new TimeZone({id: "Europe/Kiev"});
         test.ok(tz !== null);
         
         test.equal(tz.getCountry(), "UA");
@@ -1875,8 +1870,8 @@ module.exports.testtimezone = {
     },
     
     testTZLinkedZonesUseDST: function(test) {
-        var tz = new TimeZone({id: "Europe/Zagreb"});
         test.expect(2);
+        var tz = new TimeZone({id: "Europe/Zagreb"});
         test.ok(tz !== null);
     
         test.ok(tz.useDaylightTime());
@@ -1884,8 +1879,8 @@ module.exports.testtimezone = {
     },
     
     testTZLinkedZonesInDST: function(test) {
-        var tz = new TimeZone({id: "Europe/Zagreb"});
         test.expect(3);
+        var tz = new TimeZone({id: "Europe/Zagreb"});
         test.ok(tz !== null);
     
         var jan1 = DateFactory({year: 2014, month: 1, day: 1, timezone: "Etc/UTC"});
@@ -1896,8 +1891,8 @@ module.exports.testtimezone = {
     },
     
     testTZLinkedZonesRightOffset: function(test) {
-        var tz = new TimeZone({id: "Europe/Zagreb"});
         test.expect(3);
+        var tz = new TimeZone({id: "Europe/Zagreb"});
         test.ok(tz !== null);
     
         var jan1 = DateFactory({year: 2014, month: 1, day: 1, timezone: "Etc/UTC"});
@@ -1908,8 +1903,8 @@ module.exports.testtimezone = {
     },
     
     testTZLinkedZonesUseDST2: function(test) {
-        var tz = new TimeZone({id: "Europe/Bratislava"});
         test.expect(2);
+        var tz = new TimeZone({id: "Europe/Bratislava"});
         test.ok(tz !== null);
     
         test.ok(tz.useDaylightTime());
@@ -1917,8 +1912,8 @@ module.exports.testtimezone = {
     },
     
     testTZLinkedZonesInDST2: function(test) {
-        var tz = new TimeZone({id: "Europe/Bratislava"});
         test.expect(3);
+        var tz = new TimeZone({id: "Europe/Bratislava"});
         test.ok(tz !== null);
     
         var jan1 = DateFactory({year: 2014, month: 1, day: 1, timezone: "Etc/UTC"});
@@ -1929,8 +1924,8 @@ module.exports.testtimezone = {
     },
     
     testTZLinkedZonesRightOffset2: function(test) {
-        var tz = new TimeZone({id: "Europe/Bratislava"});
         test.expect(3);
+        var tz = new TimeZone({id: "Europe/Bratislava"});
         test.ok(tz !== null);
     
         var jan1 = DateFactory({year: 2014, month: 1, day: 1, timezone: "Etc/UTC"});

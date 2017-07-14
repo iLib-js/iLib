@@ -18,7 +18,7 @@
  */
 
 if (typeof(ilib) === "undefined") {
-    var ilib = require("../.././../lib/ilib.js");
+    var ilib = require("../.././../lib/ilib-node.js");
 }
 if (typeof(PhoneLocale) === "undefined") {
     var PhoneLocale = require("../.././../lib/PhoneLocale.js");
@@ -49,80 +49,80 @@ module.exports.phoneloc = {
     },
 
     testGetByMCCUS: function(test) {
-        var loc = new PhoneLocale({mcc: "310"});
         test.expect(2);
+        var loc = new PhoneLocale({mcc: "310"});
         test.ok(typeof(loc) !== "undefined");
         test.equal(loc.getRegion(), "US");
         test.done();
     },
     
     testGetByMCCDE: function(test) {
-        var loc = new PhoneLocale({mcc: "262"});
         test.expect(2);
+        var loc = new PhoneLocale({mcc: "262"});
         test.ok(typeof(loc) !== "undefined");
         test.equal(loc.getRegion(), "DE");
         test.done();
     },
     
     testGetByMCCUnknownMCC: function(test) {
-        var loc = new PhoneLocale({mcc: "31"});
         test.expect(2);
+        var loc = new PhoneLocale({mcc: "31"});
         test.ok(typeof(loc) !== "undefined");
         test.equal(loc.getRegion(), "XX");
         test.done();
     },
     
     testGetByCC1: function(test) {
-        var loc = new PhoneLocale({countryCode: "1"});
         test.expect(2);
+        var loc = new PhoneLocale({countryCode: "1"});
         test.ok(typeof(loc) !== "undefined");
         test.equal(loc.getRegion(), "US");
         test.done();
     },
     
     testGetByCC1: function(test) {
-        var loc = new PhoneLocale({countryCode: "44"});
         test.expect(2);
+        var loc = new PhoneLocale({countryCode: "44"});
         test.ok(typeof(loc) !== "undefined");
         test.equal(loc.getRegion(), "GB");    
         test.done();
     },
     
     testGetByCCUnknownCC: function(test) {
-        var loc = new PhoneLocale({countryCode: "0"});
         test.expect(2);
+        var loc = new PhoneLocale({countryCode: "0"});
         test.ok(typeof(loc) !== "undefined");
         test.equal(loc.getRegion(), "XX");
         test.done();
     },
     
     testGetByLocaleUS: function(test) {
-        var loc = new PhoneLocale({locale: "en-US"});
         test.expect(2);
+        var loc = new PhoneLocale({locale: "en-US"});
         test.ok(typeof(loc) !== "undefined");
         test.equal(loc.getRegion(), "US");
         test.done();
     },
     
     testGetByLocaleDE: function(test) {
-        var loc = new PhoneLocale({locale: "de-DE"});
         test.expect(2);
+        var loc = new PhoneLocale({locale: "de-DE"});
         test.ok(typeof(loc) !== "undefined");
         test.equal(loc.getRegion(), "DE");    
         test.done();
     },
     
     testGetDefault: function(test) {
-        var loc = new PhoneLocale();
         test.expect(2);
+        var loc = new PhoneLocale();
         test.ok(typeof(loc) !== "undefined");
         test.equal(loc.region, "US");    
         test.done();
     },
     
     testGetDefaultEmpty: function(test) {
-        var loc = new PhoneLocale({});
         test.expect(2);
+        var loc = new PhoneLocale({});
         test.ok(typeof(loc) !== "undefined");
         test.equal(loc.region, "US");
         test.done();
@@ -132,7 +132,7 @@ module.exports.phoneloc = {
         if (ilib.isDynData()) {
             // don't need to test loading on the dynamic load version because we are testing
             // it via all the other tests already.
-        test.done();
+            test.done();
             return;
         }
         

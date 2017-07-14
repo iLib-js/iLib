@@ -34,8 +34,8 @@ module.exports.testname_el = {
     },
 
     testParseSimpleName_el_GR: function(test) {
-        var parsed = new Name("Νικόλαος Αλεξόπουλος", {locale: 'el-GR'});
         test.expect(2);
+        var parsed = new Name("Νικόλαος Αλεξόπουλος", {locale: 'el-GR'});
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {
@@ -50,8 +50,8 @@ module.exports.testname_el = {
     
     
     testParseSimpleName_el_GR: function(test) {
-        var parsed = new Name("Νικόλαος Αλεξόπουλος", {locale: 'el-GR'});
         test.expect(2);
+        var parsed = new Name("Νικόλαος Αλεξόπουλος", {locale: 'el-GR'});
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {
@@ -67,8 +67,8 @@ module.exports.testname_el = {
     
     
     testParseSingleNameWithPrefixAndAdjunct_el_GR: function(test) {
-        var parsed = new Name("Νικόλαος Αλεξόπουλος κατώτερος", {locale: 'el-GR'});
         test.expect(2);
+        var parsed = new Name("Νικόλαος Αλεξόπουλος κατώτερος", {locale: 'el-GR'});
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {
@@ -83,8 +83,8 @@ module.exports.testname_el = {
     
     
     testParseTitle_el_GR1: function(test) {
-        var parsed = new Name("Ο κ. Νικόλαος Αλεξόπουλος", {locale: 'el-GR'});
         test.expect(2);
+        var parsed = new Name("Ο κ. Νικόλαος Αλεξόπουλος", {locale: 'el-GR'});
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {
@@ -99,8 +99,8 @@ module.exports.testname_el = {
     
     
     testParseTitle_el_GR_second: function(test) {
-        var parsed = new Name("Κυρία. Νικόλαος Αλεξόπουλος", {locale: 'el-GR'});
         test.expect(2);
+        var parsed = new Name("Κυρία. Νικόλαος Αλεξόπουλος", {locale: 'el-GR'});
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {
@@ -115,6 +115,7 @@ module.exports.testname_el = {
     
     
     testParseTitleWithFamilyOnlyAndAdjunct_el_GR: function(test) {
+        test.expect(2);
     
         var name = new Name({
             prefix: "Ο κ.",
@@ -127,7 +128,6 @@ module.exports.testname_el = {
             locale: 'el-GR'
         });
         var formatted = fmt.format(name);
-        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "Ο κ. Νικόλαος Αλεξόπουλος μουσκεύω";
@@ -139,8 +139,8 @@ module.exports.testname_el = {
     
     
     testParseTitleWithFamilyOnlyAndAdjunctex_el_GR: function(test) {
-        var parsed = new Name("αντιπρόεδρος Νικόλαος Αλεξόπουλος μουσκεύω", {locale: 'el-GR'});
         test.expect(2);
+        var parsed = new Name("αντιπρόεδρος Νικόλαος Αλεξόπουλος μουσκεύω", {locale: 'el-GR'});
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {
@@ -156,8 +156,8 @@ module.exports.testname_el = {
     
     
     testParseCompoundHonorific_el_GR: function(test) {
-        var parsed = new Name("Ο κ. Αλεξόπουλος", {locale: 'el-GR'});
         test.expect(2);
+        var parsed = new Name("Ο κ. Αλεξόπουλος", {locale: 'el-GR'});
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {
@@ -174,6 +174,7 @@ module.exports.testname_el = {
      */
     
     testFormatSimpleNameShort_el_GR: function(test) {
+        test.expect(2);
         var name = new Name({
             givenName: "Νικόλαος",
             familyName: "Αλεξόπουλος"
@@ -183,7 +184,6 @@ module.exports.testname_el = {
             locale: 'el-GR'
         });
         var formatted = fmt.format(name);
-        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "Νικόλαος Αλεξόπουλος";
@@ -193,6 +193,7 @@ module.exports.testname_el = {
     },
     
     testFormatSimpleNameMedium_el_GR: function(test) {
+        test.expect(2);
         var name = new Name({
             givenName: "Νικόλαος",
             familyName: "Αλεξόπουλος"
@@ -202,7 +203,6 @@ module.exports.testname_el = {
             locale: 'el-GR'
         });
         var formatted = fmt.format(name);
-        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "Νικόλαος Αλεξόπουλος";
@@ -212,6 +212,7 @@ module.exports.testname_el = {
     },
     
     testFormatSimpleNameFull_el_GR: function(test) {
+        test.expect(2);
         var name = new Name({
             
             givenName: "Νικόλαος",
@@ -223,7 +224,6 @@ module.exports.testname_el = {
             locale: 'el-GR'
         });
         var formatted = fmt.format(name);
-        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "Νικόλαος Αλεξόπουλος μουσκεύω";
@@ -233,6 +233,7 @@ module.exports.testname_el = {
     },
     
     testFormatComplexNameShort_el_GR: function(test) {
+        test.expect(2);
         var name = new Name({
             suffix: "μουσκεύω",
             givenName: "Νικόλαος",
@@ -243,7 +244,6 @@ module.exports.testname_el = {
             locale: 'el-GR'
         });
         var formatted = fmt.format(name);
-        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "Νικόλαος Αλεξόπουλος";
@@ -254,6 +254,7 @@ module.exports.testname_el = {
     
     
     testFormatAsianNameMedium_el_GR: function(test) {
+        test.expect(2);
         var name = new Name({
             prefix: "小",
             givenName: "獸",
@@ -265,7 +266,6 @@ module.exports.testname_el = {
             locale: 'el-GR'
         });
         var formatted = fmt.format(name);
-        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "地獸";
@@ -275,6 +275,7 @@ module.exports.testname_el = {
     },
     
     testFormatAsianNameLong_el_GR: function(test) {
+        test.expect(2);
         var name = new Name({
             prefix: "小",
             givenName: "獸",
@@ -286,7 +287,6 @@ module.exports.testname_el = {
             locale: 'el-GR'
         });
         var formatted = fmt.format(name);
-        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "小地獸太太";

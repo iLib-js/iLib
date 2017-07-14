@@ -34,9 +34,9 @@ module.exports.testaddress_SI = {
     },
 
     testParseAddressSINormal: function(test) {
+        test.expect(7);
         var parsedAddress = new Address("Marija Borisek Prvomajska ulica 20\n1270 LITIJA\nSLOVENIA", {locale: 'sl-SI'});
         
-        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Marija Borisek Prvomajska ulica 20");
         test.equal(parsedAddress.locality, "LITIJA");
@@ -48,9 +48,9 @@ module.exports.testaddress_SI = {
     },
     
     testParseAddressSINoZip: function(test) {
+        test.expect(7);
         var parsedAddress = new Address("Prešernova 31\n1000 Ljubljana\nSlovenia", {locale: 'sl-SI'});
         
-        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Prešernova 31");
         test.equal(parsedAddress.locality, "Ljubljana");
@@ -62,9 +62,9 @@ module.exports.testaddress_SI = {
     },
     
     testParseAddressSINoCountry: function(test) {
+        test.expect(7);
         var parsedAddress = new Address("Marija Borisek , Prvomajska , ulica 20 , 1270 LITIJA", {locale: 'sl-SI'});
         
-        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Marija Borisek, Prvomajska, ulica 20");
         test.equal(parsedAddress.locality, "LITIJA");
@@ -76,9 +76,9 @@ module.exports.testaddress_SI = {
     },
     
     testParseAddressSIManyLines: function(test) {
+        test.expect(7);
         var parsedAddress = new Address("Marija Borisek\nPrvomajska ulica 20\n1270 LITIJA\nSLOVENIA", {locale: 'sl-SI'});
         
-        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Marija Borisek, Prvomajska ulica 20");
         test.equal(parsedAddress.locality, "LITIJA");
@@ -90,9 +90,9 @@ module.exports.testaddress_SI = {
     },
     
     testParseAddressSIOneLine: function(test) {
+        test.expect(7);
         var parsedAddress = new Address("Marija Borisek , Prvomajska ulica 20 , 1270 , LITIJA , SLOVENIA", {locale: 'sl-SI'});
         
-        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Marija Borisek, Prvomajska ulica 20");
         test.equal(parsedAddress.locality, "LITIJA");
@@ -106,9 +106,9 @@ module.exports.testaddress_SI = {
     
     
     testParseAddressSINoDelimiters: function(test) {
+        test.expect(7);
         var parsedAddress = new Address("Marija Borisek Prvomajska ulica 20 1270 LITIJA SLOVENIA", {locale: 'sl-SI'});
         
-        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Marija Borisek Prvomajska ulica 20");
         test.equal(parsedAddress.locality, "LITIJA");
@@ -121,11 +121,11 @@ module.exports.testaddress_SI = {
     
     
     testParseAddressSIFromUS: function(test) {
+        test.expect(7);
         var parsedAddress = new Address("Marija Borisek Prvomajska ulica 20\nLITIJA 1270\nSLOVENIA", {locale: 'en-US'});
         
         // the country name is in English because this address is for a contact in a US database
         
-        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Marija Borisek Prvomajska ulica 20");
         test.equal(parsedAddress.locality, "LITIJA");
@@ -137,6 +137,7 @@ module.exports.testaddress_SI = {
     },
     
     testFormatAddressSI: function(test) {
+        test.expect(1);
         var parsedAddress = new Address({
             streetAddress: "Marija Borisek Prvomajska ulica 20",
             locality: "LITIJA",
@@ -148,12 +149,12 @@ module.exports.testaddress_SI = {
         
         var expected = "Marija Borisek Prvomajska ulica 20\n1270 LITIJA\nSLOVENIA";
         var formatter = new AddressFmt({locale: 'sl-SI'});
-        test.expect(1);
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     },
     
     testFormatAddressSIFromUS: function(test) {
+        test.expect(1);
         var parsedAddress = new Address({
             streetAddress: "Marija Borisek Prvomajska ulica 20",
             locality: "LITIJA",
@@ -165,7 +166,6 @@ module.exports.testaddress_SI = {
         
         var expected = "Marija Borisek Prvomajska ulica 20\n1270 LITIJA\nSLOVENIA";
         var formatter = new AddressFmt({locale: 'en-US'});
-        test.expect(1);
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     }

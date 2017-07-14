@@ -34,8 +34,8 @@ module.exports.testname_pl = {
     },
 
     testParseSimpleName_pl_PL: function(test) {
-        var parsed = new Name("Szymon Askenazy", {locale: 'pl-PL'});
         test.expect(2);
+        var parsed = new Name("Szymon Askenazy", {locale: 'pl-PL'});
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {
@@ -51,8 +51,8 @@ module.exports.testname_pl = {
     
     
     testParseTitle_pl_PL: function(test) {
-        var parsed = new Name("Szymon Askenazy emeryturę", {locale: 'pl-PL'});
         test.expect(2);
+        var parsed = new Name("Szymon Askenazy emeryturę", {locale: 'pl-PL'});
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {
@@ -68,8 +68,8 @@ module.exports.testname_pl = {
     
     
     testParseTitleWithFamilyOnly_pl_PL: function(test) {
-        var parsed = new Name("Pan. Askenazy", {locale: 'pl-PL'});
         test.expect(2);
+        var parsed = new Name("Pan. Askenazy", {locale: 'pl-PL'});
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {
@@ -84,8 +84,8 @@ module.exports.testname_pl = {
     
     
     testParseEverything_pl_PL: function(test) {
-        var parsed = new Name("Pan. i Pani. Askenazy", {locale: 'pl-PL'});
         test.expect(2);
+        var parsed = new Name("Pan. i Pani. Askenazy", {locale: 'pl-PL'});
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {
@@ -98,8 +98,8 @@ module.exports.testname_pl = {
     },
     
     testParseprefix_pl_PL: function(test) {
-        var parsed = new Name("Pan. Szymon Askenazy", {locale: 'pl-PL'});
         test.expect(2);
+        var parsed = new Name("Pan. Szymon Askenazy", {locale: 'pl-PL'});
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {
@@ -116,6 +116,7 @@ module.exports.testname_pl = {
      */
     
     testFormatSimpleNameShort_pl_PL: function(test) {
+        test.expect(2);
         var name = new Name({
             givenName: "Szymon",
             familyName: "Askenazy"
@@ -125,7 +126,6 @@ module.exports.testname_pl = {
             locale: 'pl-PL'
         });
         var formatted = fmt.format(name);
-        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "Szymon Askenazy";
@@ -135,6 +135,7 @@ module.exports.testname_pl = {
     },
     
     testFormatSimpleNameMedium_pl_PL: function(test) {
+        test.expect(2);
         var name = new Name({
             givenName: "Szymon",
             familyName: "Askenazy"
@@ -144,7 +145,6 @@ module.exports.testname_pl = {
             locale: 'pl-PL'
         });
         var formatted = fmt.format(name);
-        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "Szymon Askenazy";
@@ -154,6 +154,7 @@ module.exports.testname_pl = {
     },
     
     testFormatSimpleNameLong_pl_PL: function(test) {
+        test.expect(2);
         var name = new Name({
             givenName: "Szymon",
             familyName: "Askenazy",
@@ -164,7 +165,6 @@ module.exports.testname_pl = {
             locale: 'pl-PL'
         });
         var formatted = fmt.format(name);
-        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "Szymon Askenazy";
@@ -176,6 +176,7 @@ module.exports.testname_pl = {
     
     
     testFormatSurname_pl_PL: function(test) {
+        test.expect(2);
         var name = new Name({
             prefix: "Pan. i Pani.",
             familyName: "Askenazy"
@@ -185,7 +186,6 @@ module.exports.testname_pl = {
             locale: 'pl-PL'
         });
         var formatted = fmt.format(name);
-        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "Pan. i Pani. Askenazy";
@@ -195,6 +195,7 @@ module.exports.testname_pl = {
     },
     
     testFormatSimpleNameFull_pl_PL: function(test) {
+        test.expect(2);
         var name = new Name({
             prefix: "prezydent",
             givenName: "Szymon",
@@ -206,7 +207,6 @@ module.exports.testname_pl = {
             locale: 'pl-PL'
         });
         var formatted = fmt.format(name);
-        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "prezydent Szymon Askenazy emeryturę";
@@ -216,6 +216,7 @@ module.exports.testname_pl = {
     },
     
     testFormatComplexNameShort_pl_PL: function(test) {
+        test.expect(2);
         var name = new Name({
             prefix: "prezydent",
             givenName: "Szymon",
@@ -226,7 +227,6 @@ module.exports.testname_pl = {
             locale: 'pl-PL'
         });
         var formatted = fmt.format(name);
-        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "Szymon Askenazy";
@@ -236,6 +236,7 @@ module.exports.testname_pl = {
     },
     
     testFormatComplexNameMedium_pl_PL: function(test) {
+        test.expect(2);
         var name = new Name({
             prefix: "prezydent",
             givenName: "Szymon",
@@ -246,7 +247,6 @@ module.exports.testname_pl = {
             locale: 'pl-PL'
         });
         var formatted = fmt.format(name);
-        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "Szymon Askenazy";
@@ -256,6 +256,7 @@ module.exports.testname_pl = {
     },
     
     testFormatComplexNameLong_pl_PL: function(test) {
+        test.expect(2);
         var name = new Name({
             prefix: "prezydent",
             givenName: "Szymon",
@@ -266,7 +267,6 @@ module.exports.testname_pl = {
             locale: 'pl-PL'
         });
         var formatted = fmt.format(name);
-        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "prezydent Szymon Askenazy";

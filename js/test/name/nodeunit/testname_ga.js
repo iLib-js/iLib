@@ -34,8 +34,8 @@ module.exports.testname_ga = {
     },
 
     testParseSimpleName_ga_IE: function(test) {
-        var parsed = new Name("Daniel O'Reilly", {locale: 'ga-IE'});
         test.expect(2);
+        var parsed = new Name("Daniel O'Reilly", {locale: 'ga-IE'});
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {
@@ -50,8 +50,8 @@ module.exports.testname_ga = {
     
     
     testParseSimpleName_ga_IE: function(test) {
-        var parsed = new Name("An tUasal. Kertu O'Reilly", {locale: 'ga-IE'});
         test.expect(2);
+        var parsed = new Name("An tUasal. Kertu O'Reilly", {locale: 'ga-IE'});
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {
@@ -68,8 +68,8 @@ module.exports.testname_ga = {
     
     
     testParseSingleNameWithPrefixAndAdjunct_ga_IE: function(test) {
-        var parsed = new Name("Daniel O'Reilly sóisearach", {locale: 'ga-IE'});
         test.expect(2);
+        var parsed = new Name("Daniel O'Reilly sóisearach", {locale: 'ga-IE'});
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {
@@ -84,8 +84,8 @@ module.exports.testname_ga = {
     
     
     testParseTitle_ga_IE1: function(test) {
-        var parsed = new Name("príomh-aire Daniel O'Reilly", {locale: 'ga-IE'});
         test.expect(2);
+        var parsed = new Name("príomh-aire Daniel O'Reilly", {locale: 'ga-IE'});
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {
@@ -100,8 +100,8 @@ module.exports.testname_ga = {
     
     
     testParseTitle_ga_IE_second: function(test) {
-        var parsed = new Name("An tUasal. agus Mrs. O'Reilly", {locale: 'ga-IE'});
         test.expect(2);
+        var parsed = new Name("An tUasal. agus Mrs. O'Reilly", {locale: 'ga-IE'});
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {
@@ -115,6 +115,7 @@ module.exports.testname_ga = {
     
     
     testParseTitleWithFamilyOnlyAndAdjunct_ga_IE: function(test) {
+        test.expect(2);
     
         var name = new Name({
             prefix: "príomh-aire",
@@ -127,7 +128,6 @@ module.exports.testname_ga = {
             locale: 'ga-IE'
         });
         var formatted = fmt.format(name);
-        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "príomh-aire Daniel O'Reilly scor";
@@ -140,8 +140,8 @@ module.exports.testname_ga = {
     
     
     testParseCompoundHonorific_ga_IE: function(test) {
-        var parsed = new Name("príomh-aire O'Reilly", {locale: 'ga-IE'});
         test.expect(2);
+        var parsed = new Name("príomh-aire O'Reilly", {locale: 'ga-IE'});
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {
@@ -158,6 +158,7 @@ module.exports.testname_ga = {
      */
     
     testFormatSimpleNameShort_ga_IE: function(test) {
+        test.expect(2);
         var name = new Name({
             givenName: "Daniel",
             familyName: "O'Reilly"
@@ -167,7 +168,6 @@ module.exports.testname_ga = {
             locale: 'ga-IE'
         });
         var formatted = fmt.format(name);
-        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "Daniel O'Reilly";
@@ -177,6 +177,7 @@ module.exports.testname_ga = {
     },
     
     testFormatSimpleNameMedium_ga_IE: function(test) {
+        test.expect(2);
         var name = new Name({
             givenName: "Daniel",
             familyName: "O'Reilly"
@@ -186,7 +187,6 @@ module.exports.testname_ga = {
             locale: 'ga-IE'
         });
         var formatted = fmt.format(name);
-        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "Daniel O'Reilly";
@@ -196,6 +196,7 @@ module.exports.testname_ga = {
     },
     
     testFormatSimpleNameFull_ga_IE: function(test) {
+        test.expect(2);
         var name = new Name({
             
             givenName: "Daniel",
@@ -207,7 +208,6 @@ module.exports.testname_ga = {
             locale: 'ga-IE'
         });
         var formatted = fmt.format(name);
-        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "Daniel O'Reilly scor";
@@ -217,6 +217,7 @@ module.exports.testname_ga = {
     },
     
     testFormatComplexNameShort_ga_IE: function(test) {
+        test.expect(2);
         var name = new Name({
             suffix: "scor",
             givenName: "Daniel",
@@ -227,7 +228,6 @@ module.exports.testname_ga = {
             locale: 'ga-IE'
         });
         var formatted = fmt.format(name);
-        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "Daniel O'Reilly";
@@ -238,6 +238,7 @@ module.exports.testname_ga = {
     
     
     testFormatAsianNameMedium_ga_IE: function(test) {
+        test.expect(2);
         var name = new Name({
             prefix: "小",
             givenName: "獸",
@@ -249,7 +250,6 @@ module.exports.testname_ga = {
             locale: 'ga-IE'
         });
         var formatted = fmt.format(name);
-        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "地獸";
@@ -259,6 +259,7 @@ module.exports.testname_ga = {
     },
     
     testFormatAsianNameLong_ga_IE: function(test) {
+        test.expect(2);
         var name = new Name({
             prefix: "小",
             givenName: "獸",
@@ -270,7 +271,6 @@ module.exports.testname_ga = {
             locale: 'ga-IE'
         });
         var formatted = fmt.format(name);
-        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "小地獸太太";

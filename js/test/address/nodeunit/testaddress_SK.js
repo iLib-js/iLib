@@ -34,9 +34,9 @@ module.exports.testaddress_SK = {
     },
 
     testParseAddressSKNormal: function(test) {
+        test.expect(7);
         
         var parsedAddress = new Address("Pawel Opatovský Gazdova 4\n010 01 ŽILINA 1\nSLOVAKIA", {locale: 'sk-SK'});
-        test.expect(7);
             test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Pawel Opatovský Gazdova 4");
         test.equal(parsedAddress.locality, "ŽILINA 1");
@@ -49,9 +49,9 @@ module.exports.testaddress_SK = {
     },
     
     testParseAddressSKOtherName: function(test) {
+        test.expect(7);
         
     var parsedAddress = new Address("Slovenská Pošta, š.p. Partizánska Cesta 9\n975 99 BANSKÁ BYSTRICA 1\nSLOVAKIA", {locale: 'sk-SK'});
-        test.expect(7);
             test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Slovenská Pošta, š.p. Partizánska Cesta 9");
         test.equal(parsedAddress.locality, "BANSKÁ BYSTRICA 1");
@@ -64,8 +64,8 @@ module.exports.testaddress_SK = {
     },
     
     testParseAddressSKNoZip: function(test) {
-        var parsedAddress = new Address("Pawel Opatovský Gazdova 4\nŽILINA 1\nSLOVAKIA", {locale: 'sk-SK'});
         test.expect(7);
+        var parsedAddress = new Address("Pawel Opatovský Gazdova 4\nŽILINA 1\nSLOVAKIA", {locale: 'sk-SK'});
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Pawel Opatovský Gazdova 4");
         test.equal(parsedAddress.locality, "ŽILINA 1");
@@ -77,9 +77,9 @@ module.exports.testaddress_SK = {
     },
     
     testParseAddressSKNoCountry: function(test) {
+        test.expect(7);
         var parsedAddress = new Address("Pawel Opatovský Gazdova 4\n010 01 ŽILINA 1", {locale: 'sk-SK'});
         
-        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Pawel Opatovský Gazdova 4");
         test.equal(parsedAddress.locality, "ŽILINA 1");
@@ -92,9 +92,9 @@ module.exports.testaddress_SK = {
     },
     
     testParseAddressSKManyLines: function(test) {
+        test.expect(7);
         var parsedAddress = new Address("Pawel Opatovský\nGazdova 4\n010 01\nŽILINA 1\nSLOVAKIA", {locale: 'sk-SK'});
         
-        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Pawel Opatovský, Gazdova 4");
         test.equal(parsedAddress.locality, "ŽILINA 1");
@@ -106,9 +106,9 @@ module.exports.testaddress_SK = {
     },
     
     testParseAddressSKNoDelimiters: function(test) {
+        test.expect(7);
         var parsedAddress = new Address("Pawel Opatovský Gazdova 4 010 01 ŽILINA 1 SLOVAKIA", {locale: 'sk-SK'});
         
-        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Pawel Opatovský Gazdova 4");
         test.equal(parsedAddress.locality, "ŽILINA 1");
@@ -121,11 +121,11 @@ module.exports.testaddress_SK = {
     
     
     testParseAddressSKFromUS: function(test) {
+        test.expect(7);
         var parsedAddress = new Address("Pawel Opatovský Gazdova 4\n010 01 ŽILINA 1\nSLOVAKIA", {locale: 'en-US'});
         
         // the country name is in English because this address is for a contact in a US database
         
-        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Pawel Opatovský Gazdova 4");
         test.equal(parsedAddress.locality, "ŽILINA 1");
@@ -137,6 +137,7 @@ module.exports.testaddress_SK = {
     },
     
     testFormatAddressSK: function(test) {
+        test.expect(1);
         var parsedAddress = new Address({
             streetAddress: "Pawel Opatovský Gazdova 4",
             locality: "ŽILINA 1",
@@ -148,12 +149,12 @@ module.exports.testaddress_SK = {
         
         var expected = "Pawel Opatovský Gazdova 4\n010 01 ŽILINA 1\nSLOVAKIA";
         var formatter = new AddressFmt({locale: 'sk-SK'});
-        test.expect(1);
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     },
     
     testFormatAddressSKFromUS: function(test) {
+        test.expect(1);
         var parsedAddress = new Address({
             streetAddress: "Pawel Opatovský Gazdova 4",
             locality: "ŽILINA 1",
@@ -165,7 +166,6 @@ module.exports.testaddress_SK = {
         
         var expected = "Pawel Opatovský Gazdova 4\n010 01 ŽILINA 1\nSLOVAKIA";
         var formatter = new AddressFmt({locale: 'en-US'});
-        test.expect(1);
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     }

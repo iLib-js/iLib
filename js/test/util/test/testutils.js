@@ -107,6 +107,7 @@ function mockLoader(paths, sync, params, callback) {
     return data;
 }
 
+var oldLoader = ilib._load;
 
 function testBsearch() {
     var array = [1, 3, 5, 7, 9, 11, 13, 15, 17, 19];
@@ -256,63 +257,69 @@ function testBisectionSearchVeryComplex() {
 }
 
 function testModSimple() {
-    assertObjectEquals(2, MathUtils.mod(2, 4));
+    assertEquals(2, MathUtils.mod(2, 4));
 }
 
 function testModWrap() {
-    assertObjectEquals(2, MathUtils.mod(6, 4));
+    assertEquals(2, MathUtils.mod(6, 4));
 }
 
 function testModWrapNeg() {
-    assertObjectEquals(2, MathUtils.mod(-6, 4));
+    assertEquals(2, MathUtils.mod(-6, 4));
 }
 
 function testModZeroModulus() {
-    assertObjectEquals(0, MathUtils.mod(6, 0));
+    assertEquals(0, MathUtils.mod(6, 0));
 }
 
 function testModZeroNum() {
-    assertObjectEquals(0, MathUtils.mod(0, 6));
+    assertEquals(0, MathUtils.mod(0, 6));
 }
 
 function testModReal() {
-    assertRoughlyEquals(2.234231, MathUtils.mod(2.234231, 4), 0.0000001);
+    var actual = MathUtils.mod(2.234231, 4);
+    assertRoughlyEquals(2.234231, actual, 0.0000001);
 }
 function testModRealWrap() {
-    assertRoughlyEquals(2.234231, MathUtils.mod(6.234231, 4), 0.0000001);
+    var actual = MathUtils.mod(6.234231, 4);
+    assertRoughlyEquals(2.234231, actual, 0.0000001);
 }
 function testModRealNeg() {
-    assertRoughlyEquals(1.7, MathUtils.mod(-6.3, 4), 0.0000001);
+    var actual = MathUtils.mod(-6.3, 4);
+    assertRoughlyEquals(1.7, actual, 0.0000001);
 }
 
 function testAmodSimple() {
-    assertObjectEquals(2, MathUtils.amod(2, 4));
+    assertEquals(2, MathUtils.amod(2, 4));
 }
 
 function testAmodWrap() {
-    assertObjectEquals(2, MathUtils.amod(6, 4));
+    assertEquals(2, MathUtils.amod(6, 4));
 }
 
 function testAmodWrapNeg() {
-    assertObjectEquals(2, MathUtils.amod(-6, 4));
+    assertEquals(2, MathUtils.amod(-6, 4));
 }
 
 function testAmodZeroModulus() {
-    assertObjectEquals(0, MathUtils.amod(6, 0));
+    assertEquals(0, MathUtils.amod(6, 0));
 }
 
 function testAmodZeroNum() {
-    assertObjectEquals(6, MathUtils.amod(0, 6));
+    assertEquals(6, MathUtils.amod(0, 6));
 }
 
 function testAmodReal() {
-    assertRoughlyEquals(2.234231, MathUtils.amod(2.234231, 4), 0.0000001);
+    var actual = MathUtils.amod(2.234231, 4);
+    assertRoughlyEquals(2.234231, actual, 0.0000001);
 }
 function testAmodRealWrap() {
-    assertRoughlyEquals(2.234231, MathUtils.amod(6.234231, 4), 0.0000001);
+    var actual = MathUtils.amod(6.234231, 4);
+    assertRoughlyEquals(2.234231, actual, 0.0000001);
 }
 function testAmodRealNeg() {
-    assertRoughlyEquals(1.7, MathUtils.amod(-6.3, 4), 0.0000001);
+    var actual = MathUtils.amod(-6.3, 4);
+    assertRoughlyEquals(1.7, actual, 0.0000001);
 }
 
 function testMergeSimple() {
@@ -320,7 +327,8 @@ function testMergeSimple() {
         object2 = {"c": "C", "d": "D"};
     
     var expected = {"a": "A", "b": "B", "c": "C", "d": "D"};
-    assertObjectEquals(expected, JSUtils.merge(object1, object2));
+    var actual = JSUtils.merge(object1, object2);
+    assertObjectEquals(expected, actual);
 }
 
 function testMergeSimpleNoSideEffects() {
@@ -339,7 +347,8 @@ function testMergeArrays() {
         object2 = {"a": ["d"]};
 
     var expected = {"a": ["b", "c", "d"]};
-    assertObjectEquals(expected, JSUtils.merge(object1, object2));
+    var actual = JSUtils.merge(object1, object2);
+    assertObjectEquals(expected, actual);
 }
 
 function testMergeArraysDups() {
@@ -347,7 +356,8 @@ function testMergeArraysDups() {
         object2 = {"a": ["c", "d"]};
     
     var expected = {"a": ["b", "c", "c", "d"]};
-    assertObjectEquals(expected, JSUtils.merge(object1, object2));
+    var actual = JSUtils.merge(object1, object2);
+    assertObjectEquals(expected, actual);
 }
 
 function testMergeArraysEmptySource() {
@@ -355,7 +365,8 @@ function testMergeArraysEmptySource() {
         object2 = {"a": ["d"]};
     
     var expected = {"a": ["d"]};
-    assertObjectEquals(expected, JSUtils.merge(object1, object2));
+    var actual = JSUtils.merge(object1, object2);
+    assertObjectEquals(expected, actual);
 }
 
 function testMergeArraysEmptyTarget() {
@@ -363,7 +374,8 @@ function testMergeArraysEmptyTarget() {
         object2 = {"a": []};
     
     var expected = {"a": ["b", "c"]};
-    assertObjectEquals(expected, JSUtils.merge(object1, object2));
+    var actual = JSUtils.merge(object1, object2);
+    assertObjectEquals(expected, actual);
 }
 
 function testMergeArraysIncongruentTypes1() {
@@ -371,7 +383,8 @@ function testMergeArraysIncongruentTypes1() {
         object2 = {"a": "d"};
     
     var expected = {"a": "d"};
-    assertObjectEquals(expected, JSUtils.merge(object1, object2));
+    var actual = JSUtils.merge(object1, object2);
+    assertObjectEquals(expected, actual);
 }
 
 function testMergeArraysIncongruentTypes2() {
@@ -379,7 +392,8 @@ function testMergeArraysIncongruentTypes2() {
         object2 = {"a": ["d"]};
     
     var expected = {"a": ["d"]};
-    assertObjectEquals(expected, JSUtils.merge(object1, object2));
+    var actual = JSUtils.merge(object1, object2);
+    assertObjectEquals(expected, actual);
 }
 
 function testMergeSimpleProperty() {
@@ -387,7 +401,8 @@ function testMergeSimpleProperty() {
         object2 = {"b": "X"};
     
     var expected = {"a": "A", "b": "X"};
-    assertObjectEquals(expected, JSUtils.merge(object1, object2));
+    var actual = JSUtils.merge(object1, object2);
+    assertObjectEquals(expected, actual);
 }
 
 function testMergeComplexProperty() {
@@ -395,7 +410,8 @@ function testMergeComplexProperty() {
         object2 = {"b": "X"};
     
     var expected = {"a": "A", "b": "X"};
-    assertObjectEquals(expected, JSUtils.merge(object1, object2));
+    var actual = JSUtils.merge(object1, object2);
+    assertObjectEquals(expected, actual);
 }
 
 function testMergeSubobjects() {
@@ -403,7 +419,8 @@ function testMergeSubobjects() {
         object2 = {"b": {"x": "M", "y": "N"}};
     
     var expected = {"b": {"x": "M", "y": "N"}};
-    assertObjectEquals(expected, JSUtils.merge(object1, object2));
+    var actual = JSUtils.merge(object1, object2);
+    assertObjectEquals(expected, actual);
 }
 
 function testMergeSubobjectsLeaveObj1PropsUntouched() {
@@ -411,7 +428,8 @@ function testMergeSubobjectsLeaveObj1PropsUntouched() {
         object2 = {"b": {"x": "M", "y": "N"}};
     
     var expected = {"a": "A", "b": {"x": "M", "y": "N", "z": "Z"}};
-    assertObjectEquals(expected, JSUtils.merge(object1, object2));
+    var actual = JSUtils.merge(object1, object2);
+    assertObjectEquals(expected, actual);
 }
 
 function testMergeSubobjectsAddProps() {
@@ -419,7 +437,8 @@ function testMergeSubobjectsAddProps() {
         object2 = {"b": {"x": "M", "y": "N", "z": "Z"}};
     
     var expected = {"a": "A", "b": {"x": "M", "y": "N", "z": "Z"}};
-    assertObjectEquals(expected, JSUtils.merge(object1, object2));
+    var actual = JSUtils.merge(object1, object2);
+    assertObjectEquals(expected, actual);
 }
 
 function testMergeSubobjectsAddProps() {
@@ -427,7 +446,8 @@ function testMergeSubobjectsAddProps() {
         object2 = {"b": {"x": "M", "y": "N", "z": "Z"}};
     
     var expected = {"a": "A", "b": {"x": "M", "y": "N", "z": "Z"}};
-    assertObjectEquals(expected, JSUtils.merge(object1, object2));
+    var actual = JSUtils.merge(object1, object2);
+    assertObjectEquals(expected, actual);
 }
 
 function testMergeBooleans() {
@@ -435,7 +455,8 @@ function testMergeBooleans() {
         object2 = {"b": false};
     
     var expected = {"a": true, "b": false};
-    assertObjectEquals(expected, JSUtils.merge(object1, object2));
+    var actual = JSUtils.merge(object1, object2);
+    assertObjectEquals(expected, actual);
 }
 
 function testMergeAddBooleans() {
@@ -443,7 +464,8 @@ function testMergeAddBooleans() {
         object2 = {"c": false};
     
     var expected = {"a": true, "b": true, "c": false};
-    assertObjectEquals(expected, JSUtils.merge(object1, object2));
+    var actual = JSUtils.merge(object1, object2);
+    assertObjectEquals(expected, actual);
 }
 
 function testMergeNumbers() {
@@ -451,7 +473,8 @@ function testMergeNumbers() {
         object2 = {"b": 3};
     
     var expected = {"a": 1, "b": 3};
-    assertObjectEquals(expected, JSUtils.merge(object1, object2));
+    var actual = JSUtils.merge(object1, object2);
+    assertObjectEquals(expected, actual);
 }
 
 function testMergeNumbersWithZero() {
@@ -459,7 +482,8 @@ function testMergeNumbersWithZero() {
         object2 = {"b": 0};
     
     var expected = {"a": 1, "b": 0};
-    assertObjectEquals(expected, JSUtils.merge(object1, object2));
+    var actual = JSUtils.merge(object1, object2);
+    assertObjectEquals(expected, actual);
 }
 
 function testMergeNumbersAddZero() {
@@ -467,7 +491,8 @@ function testMergeNumbersAddZero() {
         object2 = {"c": 0};
     
     var expected = {"a": 1, "b": 2, "c": 0};
-    assertObjectEquals(expected, JSUtils.merge(object1, object2));
+    var actual = JSUtils.merge(object1, object2);
+    assertObjectEquals(expected, actual);
 }
 
 function testIsEmptyFalse() {
@@ -1175,10 +1200,9 @@ function testLoadDataCorrectType() {
 		// it via all the other tests already.
 		return;
 	}
-	var obj = {};
+	ilib.clearCache();
 	
-    var oldLoader = ilib._load;
-	ilib.setLoaderCallback(mockLoader);
+    ilib.setLoaderCallback(mockLoader);
 	Utils.loadData({
 		name: "foo.json",
 		object: "obj",
@@ -1199,10 +1223,9 @@ function testLoadDataCorrectItems() {
 		// it via all the other tests already.
 		return;
 	}
-	var obj = {};
+	ilib.clearCache();
 	
-    var oldLoader = ilib._load;
-	ilib.setLoaderCallback(mockLoader);
+    ilib.setLoaderCallback(mockLoader);
 	Utils.loadData({
 		name: "foo.json",
 		object: "obj",
@@ -1224,10 +1247,9 @@ function testLoadDataWithLocale() {
 		// it via all the other tests already.
 		return;
 	}
-	var obj = {};
+	ilib.clearCache();
 	
-    var oldLoader = ilib._load;
-	ilib.setLoaderCallback(mockLoader);
+    ilib.setLoaderCallback(mockLoader);
 	Utils.loadData({
 		name: "foo.json",
 		object: "obj",
@@ -1249,10 +1271,9 @@ function testLoadDataWithLocaleMissingParts() {
 		// it via all the other tests already.
 		return;
 	}
-	var obj = {};
+	ilib.clearCache();
 	
-    var oldLoader = ilib._load;
-	ilib.setLoaderCallback(mockLoader);
+    ilib.setLoaderCallback(mockLoader);
 	Utils.loadData({
 		name: "foo.json",
 		object: "obj",
@@ -1274,7 +1295,7 @@ function testLoadDataDefaultLocale() {
 		// it via all the other tests already.
 		return;
 	}
-	var obj = {};
+	ilib.clearCache();
 	
 	ilib.setLoaderCallback(mockLoader);
 	Utils.loadData({
@@ -1298,10 +1319,9 @@ function testLoadDataNonJson() {
 		// it via all the other tests already.
 		return;
 	}
-	var obj = {};
+	ilib.clearCache();
 	
-    var oldLoader = ilib._load;
-	ilib.setLoaderCallback(mockLoader);
+    ilib.setLoaderCallback(mockLoader);
 	Utils.loadData({
 		name: "foo.json",
 		object: "obj",
@@ -1323,10 +1343,9 @@ function testLoadDataCached() {
 		// it via all the other tests already.
 		return;
 	}
-	var obj = {};
+	ilib.clearCache();
 	
-    var oldLoader = ilib._load;
-	ilib.setLoaderCallback(mockLoader);
+    ilib.setLoaderCallback(mockLoader);
 	Utils.loadData({
 		name: "foo.json",
 		object: "obj",
@@ -1353,10 +1372,9 @@ function testLoadDataCachedWithOtherName() {
 		// it via all the other tests already.
 		return;
 	}
-	var obj = {};
+	ilib.clearCache();
 	
-    var oldLoader = ilib._load;
-	ilib.setLoaderCallback(mockLoader);
+    ilib.setLoaderCallback(mockLoader);
 
 	Utils.loadData({
 		name: "foo.json",
@@ -1392,10 +1410,9 @@ function testLoadDataCachedWithLoadParamsMultipleFiles() {
 		// it via all the other tests already.
 		return;
 	}
-	var obj = {};
+	ilib.clearCache();
 	
-    var oldLoader = ilib._load;
-	ilib.setLoaderCallback(mockLoader);
+    ilib.setLoaderCallback(mockLoader);
 	Utils.loadData({
 		name: "foo.json",
 		object: "obj",
@@ -1441,10 +1458,9 @@ function testLoadDataCachedWithLoadParams() {
 		// it via all the other tests already.
 		return;
 	}
-	var obj = {};
+	ilib.clearCache();
 	
-    var oldLoader = ilib._load;
-	ilib.setLoaderCallback(mockLoader);
+    ilib.setLoaderCallback(mockLoader);
 	Utils.loadData({
 		name: "foo.json",
 		object: "obj",
@@ -1481,8 +1497,7 @@ function testLoadDataNoCache() {
 		// it via all the other tests already.
 		return;
 	}
-    var oldLoader = ilib._load;
-	ilib.setLoaderCallback(mockLoader);
+    ilib.setLoaderCallback(mockLoader);
 	Utils.loadData({
 		name: "foo.json",
 		locale: "en-US",
@@ -1505,8 +1520,7 @@ function testLoadDataNotCachedWithLoadParams() {
 		return;
 	}
 	
-    var oldLoader = ilib._load;
-	ilib.setLoaderCallback(mockLoader);
+    ilib.setLoaderCallback(mockLoader);
 	Utils.loadData({
 		name: "foo.json",
 		locale: "en-US",
@@ -1542,7 +1556,7 @@ function testLoadDataAsynch() {
 		// it via all the other tests already.
 		return;
 	}
-	var obj = {};
+	ilib.clearCache();
 	
 	ilib.setLoaderCallback(mockLoader);
 	Utils.loadData({
@@ -1566,8 +1580,9 @@ function testLoadDataDefaults() {
 		// it via all the other tests already.
 		return;
 	}
-    var oldLoader = ilib._load;
-	ilib.setLoaderCallback(mockLoader);
+	ilib.clearCache();
+	
+    ilib.setLoaderCallback(mockLoader);
 	Utils.loadData({
 		name: "foo.json",
 		callback: function (results) {
@@ -1584,8 +1599,9 @@ function testLoadDataNonJson_en_US() {
 		// it via all the other tests already.
 		return;
 	}
-    var oldLoader = ilib._load;
-	ilib.setLoaderCallback(mockLoader);
+	ilib.clearCache();
+	
+    ilib.setLoaderCallback(mockLoader);
 	Utils.loadData({
 		name: "foo.html",
 		type: "html",
@@ -1602,8 +1618,9 @@ function testLoadDataNonJson_de() {
 		// it via all the other tests already.
 		return;
 	}
-    var oldLoader = ilib._load;
-	ilib.setLoaderCallback(mockLoader);
+	ilib.clearCache();
+	
+    ilib.setLoaderCallback(mockLoader);
 	Utils.loadData({
 		name: "foo.html",
 		type: "html",
@@ -1621,6 +1638,8 @@ function testLoadDataNonJson_de_DE() {
 		// it via all the other tests already.
 		return;
 	}
+	ilib.clearCache();
+    
 	ilib.setLoaderCallback(mockLoader);
 	Utils.loadData({
 		name: "foo.html",
@@ -1639,7 +1658,8 @@ function testLoadDataNonJson_DE() {
 		// it via all the other tests already.
 		return;
 	}
-    var oldLoader = ilib._load;
+	ilib.clearCache();
+    
 	ilib.setLoaderCallback(mockLoader);
 	Utils.loadData({
 		name: "foo.html",
@@ -1658,7 +1678,8 @@ function testLoadDataNonJsonWithFallbackToLanguage() {
 		// it via all the other tests already.
 		return;
 	}
-    var oldLoader = ilib._load;
+	ilib.clearCache();
+    
 	ilib.setLoaderCallback(mockLoader);
 
 	Utils.loadData({
@@ -1678,7 +1699,8 @@ function testLoadDataNonJsonWithFallbackToRoot() {
 		// it via all the other tests already.
 		return;
 	}
-	var oldLoader = ilib._load;
+	ilib.clearCache();
+    
 	ilib.setLoaderCallback(mockLoader);
 	Utils.loadData({
 		name: "foo.html",
@@ -1697,7 +1719,8 @@ function testLoadDataNonJsonInferFileTypeFromExtension() {
 		// it via all the other tests already.
 		return;
 	}
-	var oldLoader = ilib._load;
+	ilib.clearCache();
+    
 	ilib.setLoaderCallback(mockLoader);
 	Utils.loadData({
 		name: "foo.html",
@@ -1715,6 +1738,8 @@ function testLoadDataJsonInferFileTypeFromExtension() {
         // it via all the other tests already.
         return;
     }
+    ilib.clearCache();
+    
     ilib.setLoaderCallback(mockLoader);
     Utils.loadData({
         name: "foo.json",

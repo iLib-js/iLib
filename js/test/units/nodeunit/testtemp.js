@@ -32,17 +32,18 @@ module.exports.testtemp = {
     },
 
     testTemperatureConstructor: function(test) {
+        test.expect(1);
         var m = new TemperatureUnit({
             unit: "celsius",
             amount: 2
         });
     
-        test.expect(1);
         test.ok(m !== null);
         test.done();
     },
     
     testTemperatureConvertCelciusToFahrenheit1: function(test) {
+        test.expect(3);
         var m1 = new TemperatureUnit({
             unit: "celsius",
             amount: 0
@@ -52,15 +53,15 @@ module.exports.testtemp = {
             amount: m1
         });
     
-        test.expect(3);
         test.ok(m1 !== null);
         test.ok(m2 !== null);
     
-        test.roughlyEqual(0.001, m2.getAmount(), 32);
+        test.roughlyEqual(m2.getAmount(), 32, 0.001);
         test.done();
     },
     
     testTemperatureConvertCelciusToFahrenheit2: function(test) {
+        test.expect(3);
         var m1 = new TemperatureUnit({
             unit: "celsius",
             amount: 100
@@ -70,15 +71,15 @@ module.exports.testtemp = {
             amount: m1
         });
     
-        test.expect(3);
         test.ok(m1 !== null);
         test.ok(m2 !== null);
     
-        test.roughlyEqual(0.001, m2.getAmount(), 212);
+        test.roughlyEqual(m2.getAmount(), 212, 0.001);
         test.done();
     },
     
     testTemperatureConvertCelciusToFahrenheit3: function(test) {
+        test.expect(3);
         var m1 = new TemperatureUnit({
             unit: "celsius",
             amount: 30
@@ -88,15 +89,15 @@ module.exports.testtemp = {
             amount: m1
         });
     
-        test.expect(3);
         test.ok(m1 !== null);
         test.ok(m2 !== null);
     
-        test.roughlyEqual(0.001, m2.getAmount(), 86);
+        test.roughlyEqual(m2.getAmount(), 86, 0.001);
         test.done();
     },
     
     testTemperatureConvertFahrenheitToCelcius1: function(test) {
+        test.expect(3);
         var m1 = new TemperatureUnit({
             unit: "fahrenheit",
             amount: 50
@@ -106,15 +107,15 @@ module.exports.testtemp = {
             amount: m1
         });
     
-        test.expect(3);
         test.ok(m1 !== null);
         test.ok(m2 !== null);
     
-        test.roughlyEqual(0.001, m2.getAmount(), 10);
+        test.roughlyEqual(m2.getAmount(), 10, 0.001);
         test.done();
     },
     
     testTemperatureConvertFahrenheitToCelcius2: function(test) {
+        test.expect(3);
         var m1 = new TemperatureUnit({
             unit: "fahrenheit",
             amount: 100
@@ -124,15 +125,15 @@ module.exports.testtemp = {
             amount: m1
         });
     
-        test.expect(3);
         test.ok(m1 !== null);
         test.ok(m2 !== null);
     
-        test.roughlyEqual(0.001, m2.getAmount(), 37.778);
+        test.roughlyEqual(m2.getAmount(), 37.778, 0.001);
         test.done();
     },
     
     testTemperatureConvertCelciusToKelvin1: function(test) {
+        test.expect(3);
         var m1 = new TemperatureUnit({
             unit: "celsius",
             amount: 0
@@ -142,15 +143,15 @@ module.exports.testtemp = {
             amount: m1
         });
     
-        test.expect(3);
         test.ok(m1 !== null);
         test.ok(m2 !== null);
     
-        test.roughlyEqual(0.001, m2.getAmount(), 273.15);
+        test.roughlyEqual(m2.getAmount(), 273.15, 0.001);
         test.done();
     },
     
     testTemperatureConvertCelciusToKelvin2: function(test) {
+        test.expect(3);
         var m1 = new TemperatureUnit({
             unit: "celsius",
             amount: 100
@@ -160,15 +161,15 @@ module.exports.testtemp = {
             amount: m1
         });
     
-        test.expect(3);
         test.ok(m1 !== null);
         test.ok(m2 !== null);
     
-        test.roughlyEqual(0.001, m2.getAmount(), 373.15);
+        test.roughlyEqual(m2.getAmount(), 373.15, 0.001);
         test.done();
     },
     
     testTemperatureConvertKelvinToCelcius1: function(test) {
+        test.expect(3);
         var m1 = new TemperatureUnit({
             unit: "kelvin",
             amount: 0
@@ -178,15 +179,15 @@ module.exports.testtemp = {
             amount: m1
         });
     
-        test.expect(3);
         test.ok(m1 !== null);
         test.ok(m2 !== null);
     
-        test.roughlyEqual(0.001, m2.getAmount(),  -273.15);
+        test.roughlyEqual(m2.getAmount(),  -273.15, 0.001);
         test.done();
     },
     
     testTemperatureConvertKelvinToCelcius2: function(test) {
+        test.expect(3);
         var m1 = new TemperatureUnit({
             unit: "kelvin",
             amount: 285.3
@@ -196,15 +197,15 @@ module.exports.testtemp = {
             amount: m1
         });
     
-        test.expect(3);
         test.ok(m1 !== null);
         test.ok(m2 !== null);
     
-        test.roughlyEqual(0.001, m2.getAmount(), 12.15);
+        test.roughlyEqual(m2.getAmount(), 12.15, 0.001);
         test.done();
     },
     
     testTemperatureConvertFahrenheitToKelvin1: function(test) {
+        test.expect(3);
         var m1 = new TemperatureUnit({
             unit: "fahrenheit",
             amount: 0
@@ -214,15 +215,15 @@ module.exports.testtemp = {
             amount: m1
         });
     
-        test.expect(3);
         test.ok(m1 !== null);
         test.ok(m2 !== null);
     
-        test.roughlyEqual(0.001, m2.getAmount(), 255.372);
+        test.roughlyEqual(m2.getAmount(), 255.372, 0.001);
         test.done();
     },
     
     testTemperatureConvertFahrenheitToKelvin2: function(test) {
+        test.expect(3);
         var m1 = new TemperatureUnit({
             unit: "fahrenheit",
             amount: 100
@@ -232,15 +233,15 @@ module.exports.testtemp = {
             amount: m1
         });
     
-        test.expect(3);
         test.ok(m1 !== null);
         test.ok(m2 !== null);
     
-        test.roughlyEqual(0.001, m2.getAmount(), 310.928);
+        test.roughlyEqual(m2.getAmount(), 310.928, 0.001);
         test.done();
     },
     
     testTemperatureConvertKelvinToFahrenheit1: function(test) {
+        test.expect(3);
         var m1 = new TemperatureUnit({
             unit: "kelvin",
             amount: 0
@@ -250,15 +251,15 @@ module.exports.testtemp = {
             amount: m1
         });
     
-        test.expect(3);
         test.ok(m1 !== null);
         test.ok(m2 !== null);
     
-        test.roughlyEqual(0.001, m2.getAmount(),  -459.67);
+        test.roughlyEqual(m2.getAmount(),  -459.67, 0.001);
         test.done();
     },
     
     testTemperatureConvertKelvinToFahrenheit2: function(test) {
+        test.expect(3);
         var m1 = new TemperatureUnit({
             unit: "kelvin",
             amount: 285.3
@@ -268,21 +269,20 @@ module.exports.testtemp = {
             amount: m1
         });
     
-        test.expect(3);
         test.ok(m1 !== null);
         test.ok(m2 !== null);
     
-        test.roughlyEqual(0.001, m2.getAmount(), 53.87);
+        test.roughlyEqual(m2.getAmount(), 53.87, 0.001);
         test.done();
     },
     
     testTemperatureAliasCelcius1: function(test) {
+        test.expect(2);
         var m = new TemperatureUnit({
             unit: "Celsius",
             amount: 0
         });
     
-        test.expect(2);
         test.ok(m !== null);
     
         test.equal(m.getUnit(), "celsius");
@@ -290,12 +290,12 @@ module.exports.testtemp = {
     },
     
     testTemperatureAliasCelcius2: function(test) {
+        test.expect(2);
         var m = new TemperatureUnit({
             unit: "°C",
             amount: 0
         });
     
-        test.expect(2);
         test.ok(m !== null);
     
         test.equal(m.getUnit(), "celsius");
@@ -303,12 +303,12 @@ module.exports.testtemp = {
     },
     
     testTemperatureAliasCelcius3: function(test) {
+        test.expect(2);
         var m = new TemperatureUnit({
             unit: "℃",
             amount: 0
         });
     
-        test.expect(2);
         test.ok(m !== null);
     
         test.equal(m.getUnit(), "celsius");
@@ -316,12 +316,12 @@ module.exports.testtemp = {
     },
     
     testTemperatureAliasCelcius4: function(test) {
+        test.expect(2);
         var m = new TemperatureUnit({
             unit: "C",
             amount: 0
         });
     
-        test.expect(2);
         test.ok(m !== null);
     
         test.equal(m.getUnit(), "celsius");
@@ -329,12 +329,12 @@ module.exports.testtemp = {
     },
     
     testTemperatureAliasFahrenheit1: function(test) {
+        test.expect(2);
         var m = new TemperatureUnit({
             unit: "Fahrenheit",
             amount: 0
         });
     
-        test.expect(2);
         test.ok(m !== null);
     
         test.equal(m.getUnit(), "fahrenheit");
@@ -342,12 +342,12 @@ module.exports.testtemp = {
     },
     
     testTemperatureAliasFahrenheit2: function(test) {
+        test.expect(2);
         var m = new TemperatureUnit({
             unit: "°F",
             amount: 0
         });
     
-        test.expect(2);
         test.ok(m !== null);
     
         test.equal(m.getUnit(), "fahrenheit");
@@ -355,12 +355,12 @@ module.exports.testtemp = {
     },
     
     testTemperatureAliasFahrenheit3: function(test) {
+        test.expect(2);
         var m = new TemperatureUnit({
             unit: "℉",
             amount: 0
         });
     
-        test.expect(2);
         test.ok(m !== null);
     
         test.equal(m.getUnit(), "fahrenheit");
@@ -368,12 +368,12 @@ module.exports.testtemp = {
     },
     
     testTemperatureAliasFahrenheit4: function(test) {
+        test.expect(2);
         var m = new TemperatureUnit({
             unit: "F",
             amount: 0
         });
     
-        test.expect(2);
         test.ok(m !== null);
     
         test.equal(m.getUnit(), "fahrenheit");
@@ -381,12 +381,12 @@ module.exports.testtemp = {
     },
     
     testTemperatureAliasKelvin1: function(test) {
+        test.expect(2);
         var m = new TemperatureUnit({
             unit: "Kelvin",
             amount: 0
         });
     
-        test.expect(2);
         test.ok(m !== null);
     
         test.equal(m.getUnit(), "kelvin");
@@ -394,12 +394,12 @@ module.exports.testtemp = {
     },
     
     testTemperatureAliasKelvin2: function(test) {
+        test.expect(2);
         var m = new TemperatureUnit({
             unit: "K",
             amount: 0
         });
     
-        test.expect(2);
         test.ok(m !== null);
     
         test.equal(m.getUnit(), "kelvin");
@@ -407,13 +407,13 @@ module.exports.testtemp = {
     },
     
     testGetMeasures: function(test) {
+        test.expect(1);
         var measures = TemperatureUnit.getMeasures();
         var expected = [
             "celsius",
             "fahrenheit",
             "kelvin"
         ];
-        test.expect(1);
         test.equalIgnoringOrder(measures, expected);
         test.done();
     }

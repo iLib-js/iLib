@@ -34,9 +34,9 @@ module.exports.testaddress_NL = {
     },
 
     testParseAddressNLNormal: function(test) {
+        test.expect(7);
         var parsedAddress = new Address("Achterberglaan 23, 2345 GD Uithoorn, Nederland", {locale: 'nl-NL'});
         
-        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Achterberglaan 23");
         test.equal(parsedAddress.locality, "Uithoorn");
@@ -48,9 +48,9 @@ module.exports.testaddress_NL = {
     },
     
     testParseAddressNLNoZip: function(test) {
+        test.expect(7);
         var parsedAddress = new Address("Achterberglaan 23, Uithoorn, Nederland", {locale: 'nl-NL'});
         
-        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Achterberglaan 23");
         test.equal(parsedAddress.locality, "Uithoorn");
@@ -62,9 +62,9 @@ module.exports.testaddress_NL = {
     },
     
     testParseAddressNLManyLines: function(test) {
+        test.expect(7);
         var parsedAddress = new Address("Claude Debussylaan 34\nVinoly Mahler 4\nToren B\n15th Floor\n1082 MD\nAmsterdam\nNederland", {locale: 'nl-NL'});
         
-        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Claude Debussylaan 34, Vinoly Mahler 4, Toren B, 15th Floor");
         test.equal(parsedAddress.locality, "Amsterdam");
@@ -76,9 +76,9 @@ module.exports.testaddress_NL = {
     },
     
     testParseAddressNLOneLine: function(test) {
+        test.expect(7);
         var parsedAddress = new Address("Startbaan 16, 1187 XR Amstelveen, Nederland", {locale: 'nl-NL'});
         
-        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Startbaan 16");
         test.equal(parsedAddress.locality, "Amstelveen");
@@ -90,9 +90,9 @@ module.exports.testaddress_NL = {
     },
     
     testParseAddressNLSuperfluousWhitespace: function(test) {
+        test.expect(7);
         var parsedAddress = new Address("Startbaan 16,   \n\t\n 1187 XR \t\t Amstelveen,\n\n\n Nederland  \n  \t\t\t", {locale: 'nl-NL'});
         
-        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Startbaan 16");
         test.equal(parsedAddress.locality, "Amstelveen");
@@ -104,9 +104,9 @@ module.exports.testaddress_NL = {
     },
     
     testParseAddressNLNoDelimiters: function(test) {
+        test.expect(7);
         var parsedAddress = new Address("Startbaan 16 1187 XR Amstelveen Nederland", {locale: 'nl-NL'});
         
-        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Startbaan 16");
         test.equal(parsedAddress.locality, "Amstelveen");
@@ -118,9 +118,9 @@ module.exports.testaddress_NL = {
     },
     
     testParseAddressNLSpecialChars: function(test) {
+        test.expect(7);
         var parsedAddress = new Address("Óók 16, 1187 XR s'Hertogen-bósch, Nederland", {locale: 'nl-NL'});
         
-        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Óók 16");
         test.equal(parsedAddress.locality, "s'Hertogen-bósch");
@@ -132,11 +132,11 @@ module.exports.testaddress_NL = {
     },
     
     testParseAddressNLFromUS: function(test) {
+        test.expect(7);
         var parsedAddress = new Address("Achterberglaan 23, 2345 GD Uithoorn, Netherlands", {locale: 'en-US'});
         
         // the country name is in English because this address is for a contact in a US database
         
-        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Achterberglaan 23");
         test.equal(parsedAddress.locality, "Uithoorn");
@@ -148,6 +148,7 @@ module.exports.testaddress_NL = {
     },
     
     testFormatAddressNL: function(test) {
+        test.expect(1);
         var parsedAddress = new Address({
             streetAddress: "Achterberglaan 23",
             locality: "Uithoorn",
@@ -158,12 +159,12 @@ module.exports.testaddress_NL = {
         
         var expected = "Achterberglaan 23\n2345 GD Uithoorn\nNederland";
         var formatter = new AddressFmt({locale: 'nl-NL'});
-        test.expect(1);
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     },
     
     testFormatAddressNLFromUS: function(test) {
+        test.expect(1);
         var parsedAddress = new Address({
             streetAddress: "Achterberglaan 23",
             locality: "Uithoorn",
@@ -174,7 +175,6 @@ module.exports.testaddress_NL = {
         
         var expected = "Achterberglaan 23\n2345 GD Uithoorn\nNetherlands";
         var formatter = new AddressFmt({locale: 'en-US'});
-        test.expect(1);
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     }

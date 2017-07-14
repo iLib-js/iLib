@@ -18,7 +18,7 @@
  */
 
 if (typeof(ilib) === "undefined") {
-    var ilib = require("../.././../lib/ilib.js");
+    var ilib = require("../.././../lib/ilib-node.js");
 }
 if (typeof(Locale) === "undefined") {
     var Locale = require("../.././../lib/Locale.js");
@@ -35,14 +35,15 @@ module.exports.testlocale = {
     },
 
     testLocaleConstructor: function(test) {
+        test.expect(1);
         var loc = new Locale();
         
-        test.expect(1);
         test.ok(loc !== null);
         test.done();
     },
     
     testLocaleConstructorCurrent: function(test) {
+        test.expect(4);
         if (ilib._getPlatform() === "browser") {
             // make sure it picks it up from the right place
             navigator.language = "en-US";
@@ -50,7 +51,6 @@ module.exports.testlocale = {
         
         var loc = new Locale(); // gives locale of the host JS engine
         
-        test.expect(4);
         test.ok(loc !== null);
     
         test.equal(loc.getLanguage(), "en");
@@ -60,11 +60,11 @@ module.exports.testlocale = {
     },
     
     testLocaleConstructorDefault: function(test) {
+        test.expect(4);
         ilib.setLocale("it-IT");
         
         var loc = new Locale();
         
-        test.expect(4);
         test.ok(loc !== null);
     
         test.equal(loc.getLanguage(), "it");
@@ -76,10 +76,10 @@ module.exports.testlocale = {
     },
     
     testLocaleCopyConstructor: function(test) {
+        test.expect(4);
         var loc2 = new Locale("de", "DE");
         var loc = new Locale(loc2);
         
-        test.expect(4);
         test.ok(loc !== null);
         
         test.equal(loc.getLanguage(), "de");
@@ -89,9 +89,9 @@ module.exports.testlocale = {
     },
     
     testLocaleConstructorFull: function(test) {
+        test.expect(4);
         var loc = new Locale("en", "US", "Midwest");
         
-        test.expect(4);
         test.ok(loc !== null);
         
         test.equal(loc.getLanguage(), "en");
@@ -101,9 +101,9 @@ module.exports.testlocale = {
     },
     
     testLocaleConstructorSpecWithVariant: function(test) {
+        test.expect(5);
         var loc = new Locale("en-US-Midwest");
         
-        test.expect(5);
         test.ok(loc !== null);
         
         test.equal(loc.getLanguage(), "en");
@@ -114,9 +114,9 @@ module.exports.testlocale = {
     },
     
     testLocaleConstructorSpecWithScript: function(test) {
+        test.expect(5);
         var loc = new Locale("en-US-Latn");
         
-        test.expect(5);
         test.ok(loc !== null);
         
         test.equal(loc.getLanguage(), "en");
@@ -127,9 +127,9 @@ module.exports.testlocale = {
     },
     
     testLocaleConstructorPartial: function(test) {
+        test.expect(4);
         var loc = new Locale("en", "US");
         
-        test.expect(4);
         test.ok(loc !== null);
         
         test.equal(loc.getLanguage(), "en");
@@ -139,9 +139,9 @@ module.exports.testlocale = {
     },
     
     testLocaleConstructorSpecPartial: function(test) {
+        test.expect(4);
         var loc = new Locale("en-US");
         
-        test.expect(4);
         test.ok(loc !== null);
         
         test.equal(loc.getLanguage(), "en");
@@ -151,9 +151,9 @@ module.exports.testlocale = {
     },
     
     testLocaleConstructorShort: function(test) {
+        test.expect(4);
         var loc = new Locale("en");
         
-        test.expect(4);
         test.ok(loc !== null);
         
         test.equal(loc.getLanguage(), "en");
@@ -163,9 +163,9 @@ module.exports.testlocale = {
     },
     
     testLocaleConstructorUpperCaseLanguage: function(test) {
+        test.expect(4);
         var loc = new Locale("EN", "US");
         
-        test.expect(4);
         test.ok(loc !== null);
         
         test.equal(loc.getLanguage(), "en");
@@ -175,9 +175,9 @@ module.exports.testlocale = {
     },
     
     testLocaleConstructorLowerCaseRegion: function(test) {
+        test.expect(4);
         var loc = new Locale("en", "us");
         
-        test.expect(4);
         test.ok(loc !== null);
         
         test.equal(loc.getLanguage(), "en");
@@ -187,9 +187,9 @@ module.exports.testlocale = {
     },
     
     testLocaleConstructorSpecMissingRegion: function(test) {
+        test.expect(5);
         var loc = new Locale("en--Midwest");
         
-        test.expect(5);
         test.ok(loc !== null);
         
         test.equal(loc.getLanguage(), "en");
@@ -200,9 +200,9 @@ module.exports.testlocale = {
     },
     
     testLocaleConstructorSpecMissingLanguage: function(test) {
+        test.expect(5);
         var loc = new Locale("-US-Midwest");
         
-        test.expect(5);
         test.ok(loc !== null);
         
         test.ok(typeof(loc.getLanguage()) === "undefined");
@@ -213,9 +213,9 @@ module.exports.testlocale = {
     },
     
     testLocaleConstructorSpecMissingLanguageAndVariant: function(test) {
+        test.expect(5);
         var loc = new Locale("-US");
         
-        test.expect(5);
         test.ok(loc !== null);
         
         test.ok(typeof(loc.getLanguage()) === "undefined");
@@ -226,10 +226,10 @@ module.exports.testlocale = {
     },
     
     testLocaleEqualsTrue: function(test) {
+        test.expect(3);
         var loc1 = new Locale("en-US"),
             loc2 = new Locale("en", "US");
         
-        test.expect(3);
         test.ok(loc1 !== null);
         test.ok(loc2 !== null);
         
@@ -238,10 +238,10 @@ module.exports.testlocale = {
     },
     
     testLocaleEqualsFalse: function(test) {
+        test.expect(3);
         var loc1 = new Locale("en-US"),
             loc2 = new Locale("en", "CA");
         
-        test.expect(3);
         test.ok(loc1 !== null);
         test.ok(loc2 !== null);
         
@@ -250,10 +250,10 @@ module.exports.testlocale = {
     },
     
     testLocaleEqualsMissing: function(test) {
+        test.expect(3);
         var loc1 = new Locale("en-US"),
             loc2 = new Locale("en", "US", "govt");
         
-        test.expect(3);
         test.ok(loc1 !== null);
         test.ok(loc2 !== null);
         
@@ -262,10 +262,10 @@ module.exports.testlocale = {
     },
     
     testLocaleEqualsTrueFull: function(test) {
+        test.expect(3);
         var loc1 = new Locale("en-US-govt"),
             loc2 = new Locale("en", "US", "govt");
         
-        test.expect(3);
         test.ok(loc1 !== null);
         test.ok(loc2 !== null);
         
@@ -274,10 +274,10 @@ module.exports.testlocale = {
     },
     
     testLocaleEqualsTrueShort: function(test) {
+        test.expect(3);
         var loc1 = new Locale("en"),
             loc2 = new Locale("en");
         
-        test.expect(3);
         test.ok(loc1 !== null);
         test.ok(loc2 !== null);
         
@@ -286,9 +286,9 @@ module.exports.testlocale = {
     },
     
     testLocaleIsPseudoTrue: function(test) {
+        test.expect(2);
         var loc = new Locale("zxx-XX");
         
-        test.expect(2);
         test.ok(loc !== null);
         
         test.ok(loc.isPseudo(loc));
@@ -296,9 +296,9 @@ module.exports.testlocale = {
     },
     
     testLocaleIsPseudoFalse: function(test) {
+        test.expect(2);
         var loc = new Locale("en-US");
         
-        test.expect(2);
         test.ok(loc !== null);
         
         test.ok(!loc.isPseudo(loc));
@@ -306,9 +306,9 @@ module.exports.testlocale = {
     },
     
     testLocaleIsPseudoFalseButClosLang: function(test) {
+        test.expect(2);
         var loc = new Locale("zxx-US");
         
-        test.expect(2);
         test.ok(loc !== null);
         
         test.ok(!loc.isPseudo(loc));
@@ -316,9 +316,9 @@ module.exports.testlocale = {
     },
     
     testLocaleIsPseudoFalse: function(test) {
+        test.expect(2);
         var loc = new Locale("en-XX");
         
-        test.expect(2);
         test.ok(loc !== null);
         
         test.ok(!loc.isPseudo(loc));
@@ -327,9 +327,9 @@ module.exports.testlocale = {
     
     
     testLocaleGetSpecLangOnly: function(test) {
+        test.expect(2);
         var loc = new Locale("en");
         
-        test.expect(2);
         test.ok(loc !== null);
         
         test.equal(loc.getSpec(), "en");
@@ -337,9 +337,9 @@ module.exports.testlocale = {
     },
     
     testLocaleGetSpecRegionOnly: function(test) {
+        test.expect(2);
         var loc = new Locale("CA");
         
-        test.expect(2);
         test.ok(loc !== null);
         
         test.equal(loc.getSpec(), "CA");
@@ -347,9 +347,9 @@ module.exports.testlocale = {
     },
     
     testLocaleGetSpecScriptOnly: function(test) {
+        test.expect(2);
         var loc = new Locale("Latn");
         
-        test.expect(2);
         test.ok(loc !== null);
         
         test.equal(loc.getSpec(), "Latn");
@@ -357,9 +357,9 @@ module.exports.testlocale = {
     },
     
     testLocaleGetSpecVariantOnly: function(test) {
+        test.expect(2);
         var loc = new Locale("asdfasdf");
         
-        test.expect(2);
         test.ok(loc !== null);
         
         test.equal(loc.getSpec(), "asdfasdf");
@@ -367,9 +367,9 @@ module.exports.testlocale = {
     },
     
     testLocaleGetSpecLangAndScript: function(test) {
+        test.expect(2);
         var loc = new Locale("Latn-en");
         
-        test.expect(2);
         test.ok(loc !== null);
         
         test.equal(loc.getSpec(), "en-Latn");
@@ -377,9 +377,9 @@ module.exports.testlocale = {
     },
     
     testLocaleGetSpecLangAndRegion: function(test) {
+        test.expect(2);
         var loc = new Locale("CA-en");
         
-        test.expect(2);
         test.ok(loc !== null);
         
         test.equal(loc.getSpec(), "en-CA");
@@ -387,9 +387,9 @@ module.exports.testlocale = {
     },
     
     testLocaleGetSpecLangAndVariant: function(test) {
+        test.expect(2);
         var loc = new Locale("asdf-en");
         
-        test.expect(2);
         test.ok(loc !== null);
         
         test.equal(loc.getSpec(), "en-asdf");
@@ -397,9 +397,9 @@ module.exports.testlocale = {
     },
     
     testLocaleGetSpecScriptAndRegion: function(test) {
+        test.expect(2);
         var loc = new Locale("CA-Latn");
         
-        test.expect(2);
         test.ok(loc !== null);
         
         test.equal(loc.getSpec(), "Latn-CA");
@@ -407,9 +407,9 @@ module.exports.testlocale = {
     },
     
     testLocaleGetSpecScriptAndVariant: function(test) {
+        test.expect(2);
         var loc = new Locale("asdf-Latn");
         
-        test.expect(2);
         test.ok(loc !== null);
         
         test.equal(loc.getSpec(), "Latn-asdf");
@@ -417,9 +417,9 @@ module.exports.testlocale = {
     },
     
     testLocaleGetSpecRegionAndVariant: function(test) {
+        test.expect(2);
         var loc = new Locale("asdf-CA");
         
-        test.expect(2);
         test.ok(loc !== null);
         
         test.equal(loc.getSpec(), "CA-asdf");
@@ -427,9 +427,9 @@ module.exports.testlocale = {
     },
     
     testLocaleGetSpecLangScriptRegion: function(test) {
+        test.expect(2);
         var loc = new Locale("CA-en-Latn");
         
-        test.expect(2);
         test.ok(loc !== null);
         
         test.equal(loc.getSpec(), "en-Latn-CA");
@@ -437,9 +437,9 @@ module.exports.testlocale = {
     },
     
     testLocaleGetSpecScriptRegionVariant: function(test) {
+        test.expect(2);
         var loc = new Locale("CA-asdf-Latn");
         
-        test.expect(2);
         test.ok(loc !== null);
         
         test.equal(loc.getSpec(), "Latn-CA-asdf");
@@ -447,9 +447,9 @@ module.exports.testlocale = {
     },
     
     testLocaleGetSpecLangScriptVariant: function(test) {
+        test.expect(2);
         var loc = new Locale("asdf-Latn-en");
         
-        test.expect(2);
         test.ok(loc !== null);
         
         test.equal(loc.getSpec(), "en-Latn-asdf");
@@ -457,9 +457,9 @@ module.exports.testlocale = {
     },
     
     testLocaleGetSpecLangRegionVariant: function(test) {
+        test.expect(2);
         var loc = new Locale("asdf-CA-en");
         
-        test.expect(2);
         test.ok(loc !== null);
         
         test.equal(loc.getSpec(), "en-CA-asdf");
@@ -467,9 +467,9 @@ module.exports.testlocale = {
     },
     
     testLocaleGetSpecAll: function(test) {
+        test.expect(2);
         var loc = new Locale("asdf-CA-Latn-en");
         
-        test.expect(2);
         test.ok(loc !== null);
         
         test.equal(loc.getSpec(), "en-Latn-CA-asdf");
@@ -477,9 +477,9 @@ module.exports.testlocale = {
     },
     
     testLocaleM49RegionCodeGetParts: function(test) {
+        test.expect(4);
         var loc = new Locale("en-001");
         
-        test.expect(4);
         test.ok(loc !== null);
         
         test.equal(loc.getLanguage(), "en");
@@ -489,9 +489,9 @@ module.exports.testlocale = {
     },
     
     testLocaleM49RegionCodeGetParts2: function(test) {
+        test.expect(4);
         var loc = new Locale("en-150");
         
-        test.expect(4);
         test.ok(loc !== null);
         
         test.equal(loc.getLanguage(), "en");
@@ -501,9 +501,9 @@ module.exports.testlocale = {
     },
     
     testLocaleM49RegionCodeGetSpec: function(test) {
+        test.expect(2);
         var loc = new Locale("en-001");
         
-        test.expect(2);
         test.ok(loc !== null);
         
         test.equal(loc.getSpec(), "en-001");
@@ -511,9 +511,9 @@ module.exports.testlocale = {
     },
     
     testLocaleNoLocale: function(test) {
+        test.expect(6);
         var loc = new Locale("-");
         
-        test.expect(6);
         test.ok(loc !== null);
         
         test.equal(loc.getSpec(), "");
@@ -610,9 +610,9 @@ module.exports.testlocale = {
     },
     
     testLocaleGetLanguageAlpha3_1: function(test) {
+        test.expect(2);
         var loc = new Locale("en-US");
         
-        test.expect(2);
         test.ok(loc !== null);
         
         test.equal(loc.getLanguageAlpha3(), "eng");
@@ -620,9 +620,9 @@ module.exports.testlocale = {
     },
     
     testLocaleGetLanguageAlpha3_2: function(test) {
+        test.expect(2);
         var loc = new Locale("ru-RU");
         
-        test.expect(2);
         test.ok(loc !== null);
         
         test.equal(loc.getLanguageAlpha3(), "rus");
@@ -630,9 +630,9 @@ module.exports.testlocale = {
     },
     
     testLocaleGetLanguageAlpha3_3: function(test) {
+        test.expect(2);
         var loc = new Locale("gv-GB");
         
-        test.expect(2);
         test.ok(loc !== null);
         
         test.equal(loc.getLanguageAlpha3(), "glv");
@@ -640,9 +640,9 @@ module.exports.testlocale = {
     },
     
     testLocaleGetLanguageAlpha3NoLanguage: function(test) {
+        test.expect(2);
         var loc = new Locale("GB");
         
-        test.expect(2);
         test.ok(loc !== null);
         
         test.ok(typeof(loc.getLanguageAlpha3()) === "undefined");
@@ -650,9 +650,9 @@ module.exports.testlocale = {
     },
     
     testLocaleGetRegionAlpha3_1: function(test) {
+        test.expect(2);
         var loc = new Locale("en-US");
         
-        test.expect(2);
         test.ok(loc !== null);
         
         test.equal(loc.getRegionAlpha3(), "USA");
@@ -660,9 +660,9 @@ module.exports.testlocale = {
     },
     
     testLocaleGetRegionAlpha3_2: function(test) {
+        test.expect(2);
         var loc = new Locale("ru-RU");
         
-        test.expect(2);
         test.ok(loc !== null);
         
         test.equal(loc.getRegionAlpha3(), "RUS");
@@ -670,9 +670,9 @@ module.exports.testlocale = {
     },
     
     testLocaleGetRegionAlpha3_3: function(test) {
+        test.expect(2);
         var loc = new Locale("gv-GB");
         
-        test.expect(2);
         test.ok(loc !== null);
         
         test.equal(loc.getRegionAlpha3(), "GBR");
@@ -680,9 +680,9 @@ module.exports.testlocale = {
     },
     
     testLocaleGetRegionAlpha3NoRegion: function(test) {
+        test.expect(2);
         var loc = new Locale("en");
         
-        test.expect(2);
         test.ok(loc !== null);
         
         test.ok(typeof(loc.getRegionAlpha3()) === "undefined");
@@ -690,16 +690,16 @@ module.exports.testlocale = {
     },
     
     testLocaleGetAvailableLocalesDefault: function(test) {
-        var locales = Locale.getAvailableLocales();
         test.expect(2);
+        var locales = Locale.getAvailableLocales();
         test.ok(typeof(locales) !== "undefined");
         test.ok(locales.length > 0);
         test.done();
     },
     
     testLocaleGetAvailableLocalesCallback: function(test) {
-        Locale.getAvailableLocales(true, function(locales) {
         test.expect(2);
+        Locale.getAvailableLocales(true, function(locales) {
             test.ok(typeof(locales) !== "undefined");
             test.ok(locales.length > 0);
             test.done();

@@ -34,8 +34,8 @@ module.exports.testname_fr = {
     },
 
     testFRParseSimpleName: function(test) {
-        var parsed = new Name("Isabelle Antena", {locale: 'fr-FR'});
         test.expect(2);
+        var parsed = new Name("Isabelle Antena", {locale: 'fr-FR'});
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {
@@ -48,8 +48,8 @@ module.exports.testname_fr = {
     },
     
     testFRParseTripleName: function(test) {
-        var parsed = new Name("Jean-Louis Aubert", {locale: 'fr-FR'});
         test.expect(2);
+        var parsed = new Name("Jean-Louis Aubert", {locale: 'fr-FR'});
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {
@@ -63,8 +63,8 @@ module.exports.testname_fr = {
     },
     
     testFRParseAdjunctNames: function(test) {
-        var parsed = new Name("Jean-Marie Le Pen", {locale: 'fr-FR'});
         test.expect(2);
+        var parsed = new Name("Jean-Marie Le Pen", {locale: 'fr-FR'});
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {
@@ -78,9 +78,9 @@ module.exports.testname_fr = {
     },
     
     testFRParseSingleName: function(test) {
-        var parsed = new Name("Jean-Louis", {locale: 'fr-FR'});
         test.expect(4);
         test.expect(2);
+        var parsed = new Name("Jean-Louis", {locale: 'fr-FR'});
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {
@@ -105,8 +105,8 @@ module.exports.testname_fr = {
     },
     
     testFRParseSingleNameWithPrefixAndAdjunct: function(test) {
-        var parsed = new Name("Monsieur von Beethoven", {locale: 'fr-FR'});
         test.expect(2);
+        var parsed = new Name("Monsieur von Beethoven", {locale: 'fr-FR'});
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {
@@ -119,8 +119,8 @@ module.exports.testname_fr = {
     },
     
     testFRParseMultiAdjunctNames: function(test) {
-        var parsed = new Name("Ludwig von frn Wiesthal", {locale: 'fr-FR'});
         test.expect(2);
+        var parsed = new Name("Ludwig von frn Wiesthal", {locale: 'fr-FR'});
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {
@@ -133,8 +133,8 @@ module.exports.testname_fr = {
     },
     
     testFRParseHypenatedName: function(test) {
-        var parsed = new Name("Jean-Marie Le Pen", {locale: 'fr-FR'});
         test.expect(2);
+        var parsed = new Name("Jean-Marie Le Pen", {locale: 'fr-FR'});
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {
@@ -148,8 +148,8 @@ module.exports.testname_fr = {
     },
     
     testFRParseQuadrupleName: function(test) {
-        var parsed = new Name("Emil Michael David Vallefois", {locale: 'fr-FR'});
         test.expect(2);
+        var parsed = new Name("Emil Michael David Vallefois", {locale: 'fr-FR'});
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {
@@ -163,8 +163,8 @@ module.exports.testname_fr = {
     },
     
     testFRParseTitle: function(test) {
-        var parsed = new Name("Monsieur Dr. Jean-Louis Aubert", {locale: 'fr-FR'});
         test.expect(2);
+        var parsed = new Name("Monsieur Dr. Jean-Louis Aubert", {locale: 'fr-FR'});
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {
@@ -178,8 +178,8 @@ module.exports.testname_fr = {
     },
     
     testFRParseTitleWithFamilyOnly: function(test) {
-        var parsed = new Name("Monsieur Jean-Louis", {locale: 'fr-FR'});
         test.expect(2);
+        var parsed = new Name("Monsieur Jean-Louis", {locale: 'fr-FR'});
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {
@@ -192,8 +192,8 @@ module.exports.testname_fr = {
     },
     
     testFRParseTitleWithFamilyOnlyAndAdjunct: function(test) {
-        var parsed = new Name("Monsieur Aubert", {locale: 'fr-FR'});
         test.expect(2);
+        var parsed = new Name("Monsieur Aubert", {locale: 'fr-FR'});
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {
@@ -206,8 +206,8 @@ module.exports.testname_fr = {
     },
     
     testFRParseHonorific: function(test) {
-        var parsed = new Name("Madame Isabelle Antena", {locale: 'fr-FR'});
         test.expect(2);
+        var parsed = new Name("Madame Isabelle Antena", {locale: 'fr-FR'});
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {
@@ -221,8 +221,8 @@ module.exports.testname_fr = {
     },
     
     testFRParseEverything: function(test) {
-        var parsed = new Name("Monsieur Président Jean-Louis Aubert", {locale: 'fr-FR'});
         test.expect(2);
+        var parsed = new Name("Monsieur Président Jean-Louis Aubert", {locale: 'fr-FR'});
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {
@@ -238,8 +238,8 @@ module.exports.testname_fr = {
     },
     
     testFRParseFamilyWithAuxillary: function(test) {
-        var parsed = new Name("George Le Pen", {locale: 'fr-FR'});
         test.expect(2);
+        var parsed = new Name("George Le Pen", {locale: 'fr-FR'});
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {
@@ -252,8 +252,8 @@ module.exports.testname_fr = {
     },
     
     testFRParseCompoundHonorific: function(test) {
-        var parsed = new Name("Monsieur et Madame Maier", {locale: 'fr-FR'});
         test.expect(2);
+        var parsed = new Name("Monsieur et Madame Maier", {locale: 'fr-FR'});
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {
@@ -270,6 +270,7 @@ module.exports.testname_fr = {
      */
     
     testFRFormatSimpleNameShort: function(test) {
+        test.expect(2);
         var name = new Name({
             givenName: "Emil",
             //middleName: "Michael",
@@ -280,7 +281,6 @@ module.exports.testname_fr = {
             locale: 'fr-FR'
         });
         var formatted = fmt.format(name);
-        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "Emil Schmidt";
@@ -290,6 +290,7 @@ module.exports.testname_fr = {
     },
     
     testFRFormatSimpleNameMedium: function(test) {
+        test.expect(2);
         var name = new Name({
             givenName: "Emil",
             middleName: "Michael",
@@ -300,7 +301,6 @@ module.exports.testname_fr = {
             locale: 'fr-FR'
         });
         var formatted = fmt.format(name);
-        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "Emil Michael Schmidt";
@@ -310,6 +310,7 @@ module.exports.testname_fr = {
     },
     
     testFRFormatSimpleNameLong: function(test) {
+        test.expect(2);
         var name = new Name({
             givenName: "Emil",
             middleName: "Michael",
@@ -321,7 +322,6 @@ module.exports.testname_fr = {
             locale: 'fr-FR'
         });
         var formatted = fmt.format(name);
-        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "Emil Michael Schmidt";
@@ -331,6 +331,7 @@ module.exports.testname_fr = {
     },
     
     testFRFormatSimpleNameFull: function(test) {
+        test.expect(2);
         var name = new Name({
             prefix: "Monsieur Docteur",
             givenName: "Emil",
@@ -343,7 +344,6 @@ module.exports.testname_fr = {
             locale: 'fr-FR'
         });
         var formatted = fmt.format(name);
-        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "Monsieur Docteur Emil Michael Schmidt dem";
@@ -353,6 +353,7 @@ module.exports.testname_fr = {
     },
     
     testFRFormatComplexNameShort: function(test) {
+        test.expect(2);
         var name = new Name({
             prefix: "Monsieur Docteur",
             givenName: "Emil",
@@ -365,7 +366,6 @@ module.exports.testname_fr = {
             locale: 'fr-FR'
         });
         var formatted = fmt.format(name);
-        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "Emil de Rigeur";
@@ -375,6 +375,7 @@ module.exports.testname_fr = {
     },
     
     testFRFormatComplexNameMedium: function(test) {
+        test.expect(2);
         var name = new Name({
             prefix: "Monsieur Docteur",
             givenName: "Emil",
@@ -387,7 +388,6 @@ module.exports.testname_fr = {
             locale: 'fr-FR'
         });
         var formatted = fmt.format(name);
-        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "Emil Michael Francois de Rigeur";
@@ -397,6 +397,7 @@ module.exports.testname_fr = {
     },
     
     testFRFormatComplexNameLong: function(test) {
+        test.expect(2);
         var name = new Name({
             prefix: "Monsieur Docteur",
             givenName: "Emil",
@@ -409,7 +410,6 @@ module.exports.testname_fr = {
             locale: 'fr-FR'
         });
         var formatted = fmt.format(name);
-        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "Monsieur Docteur Emil Michael Francois de Rigeur III";
@@ -419,6 +419,7 @@ module.exports.testname_fr = {
     },
     
     testFRFormatAsianNameShort: function(test) {
+        test.expect(2);
         var name = new Name({
             prefix: "小",
             givenName: "獸",
@@ -430,7 +431,6 @@ module.exports.testname_fr = {
             locale: 'fr-FR'
         });
         var formatted = fmt.format(name);
-        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "地獸";
@@ -440,6 +440,7 @@ module.exports.testname_fr = {
     },
     
     testFRFormatAsianNameMedium: function(test) {
+        test.expect(2);
         var name = new Name({
             prefix: "小",
             givenName: "獸",
@@ -451,7 +452,6 @@ module.exports.testname_fr = {
             locale: 'fr-FR'
         });
         var formatted = fmt.format(name);
-        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "地獸";
@@ -461,6 +461,7 @@ module.exports.testname_fr = {
     },
     
     testFRFormatAsianNameLong: function(test) {
+        test.expect(2);
         var name = new Name({
             prefix: "小",
             givenName: "獸",
@@ -472,7 +473,6 @@ module.exports.testname_fr = {
             locale: 'fr-FR'
         });
         var formatted = fmt.format(name);
-        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "小地獸太太";

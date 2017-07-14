@@ -34,8 +34,8 @@ module.exports.testdatefmtrange_am_ET = {
     },
 
     testDateRngFmtAMRangeInDayShort: function(test) {
-        var fmt = new DateRngFmt({locale: "am-ET", length: "short"});
         test.expect(2);
+        var fmt = new DateRngFmt({locale: "am-ET", length: "short"});
         test.ok(fmt !== null);
         
         var start = new EthiopicDate({
@@ -60,8 +60,8 @@ module.exports.testdatefmtrange_am_ET = {
         test.done();
     },
     testDateRngFmtAMRangeInDayMedium: function(test) {
-        var fmt = new DateRngFmt({locale: "am-ET", length: "medium"});
         test.expect(2);
+        var fmt = new DateRngFmt({locale: "am-ET", length: "medium"});
         test.ok(fmt !== null);
         
         var start = new EthiopicDate({
@@ -86,8 +86,8 @@ module.exports.testdatefmtrange_am_ET = {
         test.done();
     },
     testDateRngFmtAMRangeInDayLong: function(test) {
-        var fmt = new DateRngFmt({locale: "am-ET", length: "long"});
         test.expect(2);
+        var fmt = new DateRngFmt({locale: "am-ET", length: "long"});
         test.ok(fmt !== null);
         
         var start = new EthiopicDate({
@@ -112,8 +112,8 @@ module.exports.testdatefmtrange_am_ET = {
         test.done();
     },
     testDateRngFmtAMRangeInDayFull: function(test) {
-        var fmt = new DateRngFmt({locale: "am-ET", length: "full"});
         test.expect(2);
+        var fmt = new DateRngFmt({locale: "am-ET", length: "full"});
         test.ok(fmt !== null);
         
         var start = new EthiopicDate({
@@ -139,8 +139,8 @@ module.exports.testdatefmtrange_am_ET = {
     },
     
     testDateRngFmtAMRangeNextDayShort: function(test) {
-        var fmt = new DateRngFmt({locale: "am-ET", length: "short"});
         test.expect(2);
+        var fmt = new DateRngFmt({locale: "am-ET", length: "short"});
         test.ok(fmt !== null);
         
         var start = new EthiopicDate({
@@ -165,8 +165,8 @@ module.exports.testdatefmtrange_am_ET = {
         test.done();
     },
     testDateRngFmtAMRangeNextDayMedium: function(test) {
-        var fmt = new DateRngFmt({locale: "am-ET", length: "medium"});
         test.expect(2);
+        var fmt = new DateRngFmt({locale: "am-ET", length: "medium"});
         test.ok(fmt !== null);
         
         var start = new EthiopicDate({
@@ -191,8 +191,8 @@ module.exports.testdatefmtrange_am_ET = {
         test.done();
     },
     testDateRngFmtAMRangeNextDayLong: function(test) {
-        var fmt = new DateRngFmt({locale: "am-ET", length: "long"});
         test.expect(2);
+        var fmt = new DateRngFmt({locale: "am-ET", length: "long"});
         test.ok(fmt !== null);
         
         var start = new EthiopicDate({
@@ -217,8 +217,8 @@ module.exports.testdatefmtrange_am_ET = {
         test.done();
     },
     testDateRngFmtAMRangeNextDayFull: function(test) {
-        var fmt = new DateRngFmt({locale: "am-ET", length: "full"});
         test.expect(2);
+        var fmt = new DateRngFmt({locale: "am-ET", length: "full"});
         test.ok(fmt !== null);
         
         var start = new EthiopicDate({
@@ -244,8 +244,8 @@ module.exports.testdatefmtrange_am_ET = {
     },
     
     testDateRngFmtAMRangeMultiDayShort: function(test) {
-        var fmt = new DateRngFmt({locale: "am-ET", length: "short"});
         test.expect(2);
+        var fmt = new DateRngFmt({locale: "am-ET", length: "short"});
         test.ok(fmt !== null);
         
         var start = new EthiopicDate({
@@ -270,8 +270,8 @@ module.exports.testdatefmtrange_am_ET = {
         test.done();
     },
     testDateRngFmtAMRangeMultiDayMedium: function(test) {
-        var fmt = new DateRngFmt({locale: "am-ET", length: "medium"});
         test.expect(2);
+        var fmt = new DateRngFmt({locale: "am-ET", length: "medium"});
         test.ok(fmt !== null);
         
         var start = new EthiopicDate({
@@ -296,8 +296,8 @@ module.exports.testdatefmtrange_am_ET = {
         test.done();
     },
     testDateRngFmtAMRangeMultiDayLong: function(test) {
-        var fmt = new DateRngFmt({locale: "am-ET", length: "long"});
         test.expect(2);
+        var fmt = new DateRngFmt({locale: "am-ET", length: "long"});
         test.ok(fmt !== null);
         
         var start = new EthiopicDate({
@@ -322,8 +322,8 @@ module.exports.testdatefmtrange_am_ET = {
         test.done();
     },
     testDateRngFmtAMRangeMultiDayFull: function(test) {
-        var fmt = new DateRngFmt({locale: "am-ET", length: "full"});
         test.expect(2);
+        var fmt = new DateRngFmt({locale: "am-ET", length: "full"});
         test.ok(fmt !== null);
         
         var start = new EthiopicDate({
@@ -349,8 +349,8 @@ module.exports.testdatefmtrange_am_ET = {
     },
     
     testDateRngFmtAMRangeNextMonthShort: function(test) {
-        var fmt = new DateRngFmt({locale: "am-ET", length: "short"});
         test.expect(2);
+        var fmt = new DateRngFmt({locale: "am-ET", length: "short"});
         test.ok(fmt !== null);
         
         var start = new EthiopicDate({
@@ -375,8 +375,8 @@ module.exports.testdatefmtrange_am_ET = {
         test.done();
     },
     testDateRngFmtAMRangeNextMonthMedium: function(test) {
-        var fmt = new DateRngFmt({locale: "am-ET", length: "medium"});
         test.expect(2);
+        var fmt = new DateRngFmt({locale: "am-ET", length: "medium"});
         test.ok(fmt !== null);
         
         var start = new EthiopicDate({
@@ -401,8 +401,8 @@ module.exports.testdatefmtrange_am_ET = {
         test.done();
     },
     testDateRngFmtAMRangeNextMonthLong: function(test) {
-        var fmt = new DateRngFmt({locale: "am-ET", length: "long"});
         test.expect(2);
+        var fmt = new DateRngFmt({locale: "am-ET", length: "long"});
         test.ok(fmt !== null);
         
         var start = new EthiopicDate({
@@ -427,8 +427,8 @@ module.exports.testdatefmtrange_am_ET = {
         test.done();
     },
     testDateRngFmtAMRangeNextMonthFull: function(test) {
-        var fmt = new DateRngFmt({locale: "am-ET", length: "full"});
         test.expect(2);
+        var fmt = new DateRngFmt({locale: "am-ET", length: "full"});
         test.ok(fmt !== null);
         
         var start = new EthiopicDate({
@@ -454,8 +454,8 @@ module.exports.testdatefmtrange_am_ET = {
     },
     
     testDateRngFmtAMRangeNextYearShort: function(test) {
-        var fmt = new DateRngFmt({locale: "am-ET", length: "short"});
         test.expect(2);
+        var fmt = new DateRngFmt({locale: "am-ET", length: "short"});
         test.ok(fmt !== null);
         
         var start = new EthiopicDate({
@@ -480,8 +480,8 @@ module.exports.testdatefmtrange_am_ET = {
         test.done();
     },
     testDateRngFmtAMRangeNextYearMedium: function(test) {
-        var fmt = new DateRngFmt({locale: "am-ET", length: "medium"});
         test.expect(2);
+        var fmt = new DateRngFmt({locale: "am-ET", length: "medium"});
         test.ok(fmt !== null);
         
         var start = new EthiopicDate({
@@ -506,8 +506,8 @@ module.exports.testdatefmtrange_am_ET = {
         test.done();
     },
     testDateRngFmtAMRangeNextYearLong: function(test) {
-        var fmt = new DateRngFmt({locale: "am-ET", length: "long"});
         test.expect(2);
+        var fmt = new DateRngFmt({locale: "am-ET", length: "long"});
         test.ok(fmt !== null);
         
         var start = new EthiopicDate({
@@ -532,8 +532,8 @@ module.exports.testdatefmtrange_am_ET = {
         test.done();
     },
     testDateRngFmtAMRangeNextYearFull: function(test) {
-        var fmt = new DateRngFmt({locale: "am-ET", length: "full"});
         test.expect(2);
+        var fmt = new DateRngFmt({locale: "am-ET", length: "full"});
         test.ok(fmt !== null);
         
         var start = new EthiopicDate({
@@ -559,8 +559,8 @@ module.exports.testdatefmtrange_am_ET = {
     },
     
     testDateRngFmtAMRangeMultiYearShort: function(test) {
-        var fmt = new DateRngFmt({locale: "am-ET", length: "short"});
         test.expect(2);
+        var fmt = new DateRngFmt({locale: "am-ET", length: "short"});
         test.ok(fmt !== null);
         
         var start = new EthiopicDate({
@@ -585,8 +585,8 @@ module.exports.testdatefmtrange_am_ET = {
         test.done();
     },
     testDateRngFmtAMRangeMultiYearMedium: function(test) {
-        var fmt = new DateRngFmt({locale: "am-ET", length: "medium"});
         test.expect(2);
+        var fmt = new DateRngFmt({locale: "am-ET", length: "medium"});
         test.ok(fmt !== null);
         
         var start = new EthiopicDate({
@@ -611,8 +611,8 @@ module.exports.testdatefmtrange_am_ET = {
         test.done();
     },
     testDateRngFmtAMRangeMultiYearLong: function(test) {
-        var fmt = new DateRngFmt({locale: "am-ET", length: "long"});
         test.expect(2);
+        var fmt = new DateRngFmt({locale: "am-ET", length: "long"});
         test.ok(fmt !== null);
         
         var start = new EthiopicDate({
@@ -637,8 +637,8 @@ module.exports.testdatefmtrange_am_ET = {
         test.done();
     },
     testDateRngFmtAMRangeMultiYearFull: function(test) {
-        var fmt = new DateRngFmt({locale: "am-ET", length: "full"});
         test.expect(2);
+        var fmt = new DateRngFmt({locale: "am-ET", length: "full"});
         test.ok(fmt !== null);
         
         var start = new EthiopicDate({
@@ -663,8 +663,8 @@ module.exports.testdatefmtrange_am_ET = {
         test.done();
     },
     testDateRngFmtAMManyYearsFull: function(test) {
-        var fmt = new DateRngFmt({locale: "am-ET", length: "full"});
         test.expect(2);
+        var fmt = new DateRngFmt({locale: "am-ET", length: "full"});
         test.ok(fmt !== null);
         
         var start = new EthiopicDate({
@@ -692,8 +692,8 @@ module.exports.testdatefmtrange_am_ET = {
     //// Testcase for en-ET //////////////////
     
     testDateRngFmtenETinDayShort: function(test) {
-        var fmt = new DateRngFmt({locale: "en-ET", length: "short"});
         test.expect(2);
+        var fmt = new DateRngFmt({locale: "en-ET", length: "short"});
         test.ok(fmt !== null);
         
         var start = new EthiopicDate({
@@ -719,8 +719,8 @@ module.exports.testdatefmtrange_am_ET = {
     },
     
     testDateRngFmtenETinDayMedium: function(test) {
-        var fmt = new DateRngFmt({locale: "en-ET", length: "medium"});
         test.expect(2);
+        var fmt = new DateRngFmt({locale: "en-ET", length: "medium"});
         test.ok(fmt !== null);
         
         var start = new EthiopicDate({
@@ -746,8 +746,8 @@ module.exports.testdatefmtrange_am_ET = {
     },
     
     testDateRngFmtenETinDayLong: function(test) {
-        var fmt = new DateRngFmt({locale: "en-ET", length: "long"});
         test.expect(2);
+        var fmt = new DateRngFmt({locale: "en-ET", length: "long"});
         test.ok(fmt !== null);
         
         var start = new EthiopicDate({
@@ -773,8 +773,8 @@ module.exports.testdatefmtrange_am_ET = {
     },
     
     testDateRngFmtenETinDayFull: function(test) {
-        var fmt = new DateRngFmt({locale: "en-ET", length: "full"});
         test.expect(2);
+        var fmt = new DateRngFmt({locale: "en-ET", length: "full"});
         test.ok(fmt !== null);
         
         var start = new EthiopicDate({

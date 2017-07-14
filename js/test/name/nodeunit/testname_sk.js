@@ -34,8 +34,8 @@ module.exports.testname_sk = {
     },
 
     testParseSimpleName_sk_SK: function(test) {
-        var parsed = new Name("Iveta Stan", {locale: 'sk-SK'});
         test.expect(2);
+        var parsed = new Name("Iveta Stan", {locale: 'sk-SK'});
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {
@@ -48,8 +48,8 @@ module.exports.testname_sk = {
     },
     
     testParseTitle_sk_SK: function(test) {
-        var parsed = new Name("Iveta Stan dôchodku", {locale: 'sk-SK'});
         test.expect(2);
+        var parsed = new Name("Iveta Stan dôchodku", {locale: 'sk-SK'});
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {
@@ -64,8 +64,8 @@ module.exports.testname_sk = {
     
     
     testParseTitleWithFamilyOnly_sk_SK: function(test) {
-        var parsed = new Name("Pán. Stan", {locale: 'sk-SK'});
         test.expect(2);
+        var parsed = new Name("Pán. Stan", {locale: 'sk-SK'});
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {
@@ -78,8 +78,8 @@ module.exports.testname_sk = {
     },
     
     testParseEverything_sk_SK: function(test) {
-        var parsed = new Name("Pán. a pani. Stan", {locale: 'sk-SK'});
         test.expect(2);
+        var parsed = new Name("Pán. a pani. Stan", {locale: 'sk-SK'});
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {
@@ -92,8 +92,8 @@ module.exports.testname_sk = {
     },
     
     testParseprefix_sk_SK: function(test) {
-        var parsed = new Name("Pán. Iveta Stan", {locale: 'sk-SK'});
         test.expect(2);
+        var parsed = new Name("Pán. Iveta Stan", {locale: 'sk-SK'});
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {
@@ -107,8 +107,8 @@ module.exports.testname_sk = {
     },
     
     testParseprefixAndSuffix_sk_SK: function(test) {
-        var parsed = new Name("Viceprezident Iveta Stan dôchodku", {locale: 'sk-SK'});
         test.expect(2);
+        var parsed = new Name("Viceprezident Iveta Stan dôchodku", {locale: 'sk-SK'});
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {
@@ -126,6 +126,7 @@ module.exports.testname_sk = {
      */
     
     testFormatSimpleNameShort_sk_SK: function(test) {
+        test.expect(2);
         var name = new Name({
             givenName: "Iveta",
             familyName: "Stan"
@@ -135,7 +136,6 @@ module.exports.testname_sk = {
             locale: 'sk-SK'
         });
         var formatted = fmt.format(name);
-        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "Iveta Stan";
@@ -145,6 +145,7 @@ module.exports.testname_sk = {
     },
     
     testFormatSimpleNameMedium_sk_SK: function(test) {
+        test.expect(2);
         var name = new Name({
             givenName: "Iveta",
             familyName: "Stan"
@@ -154,7 +155,6 @@ module.exports.testname_sk = {
             locale: 'sk-SK'
         });
         var formatted = fmt.format(name);
-        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "Iveta Stan";
@@ -164,6 +164,7 @@ module.exports.testname_sk = {
     },
     
     testFormatSimpleNameLong_sk_SK: function(test) {
+        test.expect(2);
         var name = new Name({
             givenName: "Iveta",
             familyName: "Stan",
@@ -174,7 +175,6 @@ module.exports.testname_sk = {
             locale: 'sk-SK'
         });
         var formatted = fmt.format(name);
-        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "Iveta Stan";
@@ -186,6 +186,7 @@ module.exports.testname_sk = {
     
     
     testFormatSurname_sk_SK: function(test) {
+        test.expect(2);
         var name = new Name({
             prefix: "Pán. a pani.",
             familyName: "Stan"
@@ -195,7 +196,6 @@ module.exports.testname_sk = {
             locale: 'sk-SK'
         });
         var formatted = fmt.format(name);
-        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "Pán. a pani. Stan";
@@ -205,6 +205,7 @@ module.exports.testname_sk = {
     },
     
     testFormatSimpleNameFull_sk_SK: function(test) {
+        test.expect(2);
         var name = new Name({
             prefix: "princezná",
             givenName: "Iveta",
@@ -216,7 +217,6 @@ module.exports.testname_sk = {
             locale: 'sk-SK'
         });
         var formatted = fmt.format(name);
-        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "princezná Iveta Stan dôchodku";
@@ -226,6 +226,7 @@ module.exports.testname_sk = {
     },
     
     testFormatComplexNameShort_sk_SK: function(test) {
+        test.expect(2);
         var name = new Name({
             prefix: "princezná",
             givenName: "Iveta",
@@ -236,7 +237,6 @@ module.exports.testname_sk = {
             locale: 'sk-SK'
         });
         var formatted = fmt.format(name);
-        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "Iveta Stan";
@@ -246,6 +246,7 @@ module.exports.testname_sk = {
     },
     
     testFormatComplexNameMedium_sk_SK: function(test) {
+        test.expect(2);
         var name = new Name({
             prefix: "princezná",
             givenName: "Iveta",
@@ -256,7 +257,6 @@ module.exports.testname_sk = {
             locale: 'sk-SK'
         });
         var formatted = fmt.format(name);
-        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "Iveta Stan";
@@ -266,6 +266,7 @@ module.exports.testname_sk = {
     },
     
     testFormatComplexNameLong_sk_SK: function(test) {
+        test.expect(2);
         var name = new Name({
             prefix: "princezná",
             givenName: "Iveta",
@@ -276,7 +277,6 @@ module.exports.testname_sk = {
             locale: 'sk-SK'
         });
         var formatted = fmt.format(name);
-        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "princezná Iveta Stan";

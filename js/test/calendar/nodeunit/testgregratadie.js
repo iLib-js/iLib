@@ -18,7 +18,7 @@
  */
 
 if (typeof(ilib) === "undefined") {
-    var ilib = require("../.././../lib/ilib.js");
+    var ilib = require("../.././../lib/ilib-node.js");
 }
 if (typeof(GregRataDie) === "undefined") {
     var GregRataDie = require("../.././../lib/GregRataDie.js");
@@ -75,49 +75,49 @@ module.exports.testgregratadie = {
     },
 
     testGregRataDieConstructor: function(test) {
+        test.expect(1);
         var rd = new GregRataDie();
         
-        test.expect(1);
         test.ok(rd !== null);
         test.done();
     },
     
     /* julian date is rd 366.25 + epoch */
     testGregRataDieConstructorFromJD: function(test) {
+        test.expect(2);
         var rd = new GregRataDie({julianday: 1721790.75});
         
-        test.expect(2);
         test.equal(typeof(rd), 'object');
         test.equal(rd.getRataDie(), 366.25);
         test.done();
     },
     
     testGregRataDieConstructorFromRD: function(test) {
+        test.expect(2);
         var rd = new GregRataDie({rd: 234323});
         
-        test.expect(2);
         test.equal(typeof(rd), 'object');
         test.equal(rd.getRataDie(), 234323);
         test.done();
     },
     
     testGregRataDieConstructorFromUnixtime: function(test) {
+        test.expect(2);
         var rd = new GregRataDie({unixtime: 0});
         
-        test.expect(2);
         test.equal(typeof(rd), 'object');
         test.equal(rd.getRataDie(), 719163);
         test.done();
     },
     
     testGregRataDieConstructorFromComponents: function(test) {
+        test.expect(2);
         var rd = new GregRataDie({
             year: 1970,
             month: 1,
             day: 1
         });
         
-        test.expect(2);
         test.equal(typeof(rd), 'object');
         test.equal(rd.getRataDie(), 719163);
         test.done();
@@ -129,7 +129,7 @@ module.exports.testgregratadie = {
         for (var i = 0; i < testDatesGregRD.length; i++) {
             rd = new GregRataDie({julianday: testDatesGregRD[i][0]});
         
-        // console.log("testing jd=" + testDatesGregRD[i][0]);
+            // console.log("testing jd=" + testDatesGregRD[i][0]);
             
             test.equal(rd.getRataDie(), testDatesGregRD[i][0] - rd.epoch);
         }
@@ -137,6 +137,7 @@ module.exports.testgregratadie = {
     },
     
     testGregRataDieConstructorFull: function(test) {
+        test.expect(2);
         var rd = new GregRataDie({
             year: 2011,
             month: 9, 
@@ -147,7 +148,6 @@ module.exports.testgregratadie = {
             millisecond: 123
         });
         
-        test.expect(2);
         test.ok(rd !== null);
         
         test.equal(rd.getRataDie(), 734403.6716680903);
@@ -155,6 +155,7 @@ module.exports.testgregratadie = {
     },
     
     testGregRataDieConstructorFullWithStrings: function(test) {
+        test.expect(2);
         // often you get strings from a UI element instead of numbers... 
         // this constructor should work with numbers or strings
         var rd = new GregRataDie({
@@ -167,7 +168,6 @@ module.exports.testgregratadie = {
             millisecond: "123"
         });
         
-        test.expect(2);
         test.ok(rd !== null);
         
         test.equal(rd.getRataDie(), 734403.6716680903);
@@ -175,6 +175,7 @@ module.exports.testgregratadie = {
     },
     
     testGregRataDieConstructorCopy: function(test) {
+        test.expect(2);
         var rd2 = new GregRataDie({
             year: 2011, 
             month: 9, 
@@ -186,7 +187,6 @@ module.exports.testgregratadie = {
         });
         var rd = new GregRataDie(rd2);
         
-        test.expect(2);
         test.ok(rd !== null);
         
         test.equal(rd.getRataDie(), 734403.6716680903);
@@ -194,10 +194,10 @@ module.exports.testgregratadie = {
     },
     
     testGregRataDieConstructorUnixTime: function(test) {
+        test.expect(2);
         var rd = new GregRataDie({
             unixtime: 61000
         });
-        test.expect(2);
         test.ok(rd !== null);
         
         // rounded to 8 decimal points
@@ -206,10 +206,10 @@ module.exports.testgregratadie = {
     },
     
     testGregRataDieConstructorUnixTimeTestRounding: function(test) {
+        test.expect(3);
         var rd = new GregRataDie({
             unixtime: 61000
         });
-        test.expect(3);
         test.ok(rd !== null);
         
         // rounded to 10 decimal points
@@ -233,7 +233,7 @@ module.exports.testgregratadie = {
                 millisecond: testDatesGregRD[i][7]
             });
         
-        // console.log("testing jd=" + testDatesGregRD[i][0]);
+            // console.log("testing jd=" + testDatesGregRD[i][0]);
             
             test.equal(typeof(rd), 'object');
             test.equal(rd.getJulianDay(), testDatesGregRD[i][0]);
@@ -242,12 +242,12 @@ module.exports.testgregratadie = {
     },
     
     testGregRataDieTestGetTimeZero: function(test) {
+        test.expect(2);
         var rd = new GregRataDie({
             year: 1970, 
             month: 1, 
             day: 1
         });
-        test.expect(2);
         test.ok(rd !== null);
         
         test.equal(rd.getTime(), 0);
@@ -255,6 +255,7 @@ module.exports.testgregratadie = {
     },
     
     testGregRataDieTestGetTime: function(test) {
+        test.expect(2);
         var rd = new GregRataDie({
             year: 1970, 
             month: 1, 
@@ -262,7 +263,6 @@ module.exports.testgregratadie = {
                hour: 8,
                minute: 30
         });
-        test.expect(2);
         test.ok(rd !== null);
         
         test.equal(rd.getTime(), 203400000);
@@ -270,12 +270,12 @@ module.exports.testgregratadie = {
     },
     
     testGregRataDieTestGetTimeTooEarly: function(test) {
+        test.expect(2);
         var rd = new GregRataDie({
             year: 1969, 
             month: 12, 
             day: 31
         });
-        test.expect(2);
         test.ok(rd !== null);
         
         test.equal(rd.getTime(), -1);
@@ -283,12 +283,12 @@ module.exports.testgregratadie = {
     },
     
     testGregRataDieTestGetTimeTooLate: function(test) {
+        test.expect(2);
         var rd = new GregRataDie({
             year: 2038, 
             month: 1, 
             day: 20
         });
-        test.expect(2);
         test.ok(rd !== null);
         
         test.equal(rd.getTime(), -1);
@@ -297,12 +297,12 @@ module.exports.testgregratadie = {
     
     // test some of the helper functions to make sure they are producing the right thing
     testGregRataDieOnOrBeforeSun: function(test) {
+        test.expect(2);
         var rd = new GregRataDie({
             year: 2010, 
             month: 1, 
             day: 1
         });
-        test.expect(2);
         test.ok(rd !== null);
         
         var rdn = rd.getRataDie();
@@ -313,12 +313,12 @@ module.exports.testgregratadie = {
     },
     
     testGregRataDieOnOrBeforeMon: function(test) {
+        test.expect(2);
         var rd = new GregRataDie({
             year: 2010, 
             month: 1, 
             day: 1
         });
-        test.expect(2);
         test.ok(rd !== null);
         
         var rdn = rd.getRataDie();
@@ -328,12 +328,12 @@ module.exports.testgregratadie = {
     },
     
     testGregRataDieOnOrBeforeTue: function(test) {
+        test.expect(2);
         var rd = new GregRataDie({
             year: 2010, 
             month: 1, 
             day: 1
         });
-        test.expect(2);
         test.ok(rd !== null);
         
         var rdn = rd.getRataDie();
@@ -343,12 +343,12 @@ module.exports.testgregratadie = {
     },
     
     testGregRataDieOnOrBeforeWed: function(test) {
+        test.expect(2);
         var rd = new GregRataDie({
             year: 2010, 
             month: 1, 
             day: 1
         });
-        test.expect(2);
         test.ok(rd !== null);
         
         var rdn = rd.getRataDie();
@@ -358,12 +358,12 @@ module.exports.testgregratadie = {
     },
     
     testGregRataDieOnOrBeforeThu: function(test) {
+        test.expect(2);
         var rd = new GregRataDie({
             year: 2010, 
             month: 1, 
             day: 1
         });
-        test.expect(2);
         test.ok(rd !== null);
         
         var rdn = rd.getRataDie();
@@ -373,12 +373,12 @@ module.exports.testgregratadie = {
     },
     
     testGregRataDieOnOrBeforeFri: function(test) {
+        test.expect(2);
         var rd = new GregRataDie({
             year: 2010, 
             month: 1, 
             day: 1
         });
-        test.expect(2);
         test.ok(rd !== null);
         
         var rdn = rd.getRataDie();
@@ -388,12 +388,12 @@ module.exports.testgregratadie = {
     },
     
     testGregRataDieOnOrBeforeSat: function(test) {
+        test.expect(2);
         var rd = new GregRataDie({
             year: 2010, 
             month: 1, 
             day: 1
         });
-        test.expect(2);
         test.ok(rd !== null);
         
         var rdn = rd.getRataDie();
@@ -403,13 +403,13 @@ module.exports.testgregratadie = {
     },
     
     testGregRataDieOnOrBeforeSunWithTime: function(test) {
+        test.expect(2);
         var rd = new GregRataDie({
             year: 2010, 
             month: 1, 
             day: 1,
                hour: 8
         });
-        test.expect(2);
         test.ok(rd !== null);
         
         var rdn = rd.getRataDie(); // contains fractional time for the 8:00am part
@@ -421,12 +421,12 @@ module.exports.testgregratadie = {
     },
     
     testGregRataDieOnOrAfterSun: function(test) {
+        test.expect(2);
         var rd = new GregRataDie({
             year: 2010, 
             month: 1, 
             day: 1
         });
-        test.expect(2);
         test.ok(rd !== null);
         
         var rdn = rd.getRataDie();
@@ -437,12 +437,12 @@ module.exports.testgregratadie = {
     },
     
     testGregRataDieOnOrAfterMon: function(test) {
+        test.expect(2);
         var rd = new GregRataDie({
             year: 2010, 
             month: 1, 
             day: 1
         });
-        test.expect(2);
         test.ok(rd !== null);
         
         var rdn = rd.getRataDie();
@@ -452,12 +452,12 @@ module.exports.testgregratadie = {
     },
     
     testGregRataDieOnOrAfterTue: function(test) {
+        test.expect(2);
         var rd = new GregRataDie({
             year: 2010, 
             month: 1, 
             day: 1
         });
-        test.expect(2);
         test.ok(rd !== null);
         
         var rdn = rd.getRataDie();
@@ -467,12 +467,12 @@ module.exports.testgregratadie = {
     },
     
     testGregRataDieOnOrAfterWed: function(test) {
+        test.expect(2);
         var rd = new GregRataDie({
             year: 2010, 
             month: 1, 
             day: 1
         });
-        test.expect(2);
         test.ok(rd !== null);
         
         var rdn = rd.getRataDie();
@@ -482,12 +482,12 @@ module.exports.testgregratadie = {
     },
     
     testGregRataDieOnOrAfterThu: function(test) {
+        test.expect(2);
         var rd = new GregRataDie({
             year: 2010, 
             month: 1, 
             day: 1
         });
-        test.expect(2);
         test.ok(rd !== null);
         
         var rdn = rd.getRataDie();
@@ -497,12 +497,12 @@ module.exports.testgregratadie = {
     },
     
     testGregRataDieOnOrAfterFri: function(test) {
+        test.expect(2);
         var rd = new GregRataDie({
             year: 2010, 
             month: 1, 
             day: 1
         });
-        test.expect(2);
         test.ok(rd !== null);
         
         var rdn = rd.getRataDie();
@@ -512,12 +512,12 @@ module.exports.testgregratadie = {
     },
     
     testGregRataDieOnOrAfterSat: function(test) {
+        test.expect(2);
         var rd = new GregRataDie({
             year: 2010, 
             month: 1, 
             day: 1
         });
-        test.expect(2);
         test.ok(rd !== null);
         
         var rdn = rd.getRataDie();
@@ -527,12 +527,12 @@ module.exports.testgregratadie = {
     },
     
     testGregRataDieBeforeSun: function(test) {
+        test.expect(2);
         var rd = new GregRataDie({
             year: 2010, 
             month: 1, 
             day: 1
         });
-        test.expect(2);
         test.ok(rd !== null);
         
         var rdn = rd.getRataDie();
@@ -543,12 +543,12 @@ module.exports.testgregratadie = {
     },
     
     testGregRataDieBeforeMon: function(test) {
+        test.expect(2);
         var rd = new GregRataDie({
             year: 2010, 
             month: 1, 
             day: 1
         });
-        test.expect(2);
         test.ok(rd !== null);
         
         var rdn = rd.getRataDie();
@@ -558,12 +558,12 @@ module.exports.testgregratadie = {
     },
     
     testGregRataDieBeforeTue: function(test) {
+        test.expect(2);
         var rd = new GregRataDie({
             year: 2010, 
             month: 1, 
             day: 1
         });
-        test.expect(2);
         test.ok(rd !== null);
         
         var rdn = rd.getRataDie();
@@ -573,12 +573,12 @@ module.exports.testgregratadie = {
     },
     
     testGregRataDieBeforeWed: function(test) {
+        test.expect(2);
         var rd = new GregRataDie({
             year: 2010, 
             month: 1, 
             day: 1
         });
-        test.expect(2);
         test.ok(rd !== null);
         
         var rdn = rd.getRataDie();
@@ -588,12 +588,12 @@ module.exports.testgregratadie = {
     },
     
     testGregRataDieBeforeThu: function(test) {
+        test.expect(2);
         var rd = new GregRataDie({
             year: 2010, 
             month: 1, 
             day: 1
         });
-        test.expect(2);
         test.ok(rd !== null);
         
         var rdn = rd.getRataDie();
@@ -603,12 +603,12 @@ module.exports.testgregratadie = {
     },
     
     testGregRataDieBeforeFri: function(test) {
+        test.expect(2);
         var rd = new GregRataDie({
             year: 2010, 
             month: 1, 
             day: 1
         });
-        test.expect(2);
         test.ok(rd !== null);
         
         var rdn = rd.getRataDie();
@@ -618,12 +618,12 @@ module.exports.testgregratadie = {
     },
     
     testGregRataDieBeforeSat: function(test) {
+        test.expect(2);
         var rd = new GregRataDie({
             year: 2010, 
             month: 1, 
             day: 1
         });
-        test.expect(2);
         test.ok(rd !== null);
         
         var rdn = rd.getRataDie();
@@ -633,12 +633,12 @@ module.exports.testgregratadie = {
     },
     
     testGregRataDieAfterSun: function(test) {
+        test.expect(2);
         var rd = new GregRataDie({
             year: 2010, 
             month: 1, 
             day: 1
         });
-        test.expect(2);
         test.ok(rd !== null);
         
         var rdn = rd.getRataDie();
@@ -649,12 +649,12 @@ module.exports.testgregratadie = {
     },
     
     testGregRataDieAfterMon: function(test) {
+        test.expect(2);
         var rd = new GregRataDie({
             year: 2010, 
             month: 1, 
             day: 1
         });
-        test.expect(2);
         test.ok(rd !== null);
         
         var rdn = rd.getRataDie();
@@ -664,12 +664,12 @@ module.exports.testgregratadie = {
     },
     
     testGregRataDieAfterTue: function(test) {
+        test.expect(2);
         var rd = new GregRataDie({
             year: 2010, 
             month: 1, 
             day: 1
         });
-        test.expect(2);
         test.ok(rd !== null);
         
         var rdn = rd.getRataDie();
@@ -679,12 +679,12 @@ module.exports.testgregratadie = {
     },
     
     testGregRataDieAfterWed: function(test) {
+        test.expect(2);
         var rd = new GregRataDie({
             year: 2010, 
             month: 1, 
             day: 1
         });
-        test.expect(2);
         test.ok(rd !== null);
         
         var rdn = rd.getRataDie();
@@ -694,12 +694,12 @@ module.exports.testgregratadie = {
     },
     
     testGregRataDieAfterThu: function(test) {
+        test.expect(2);
         var rd = new GregRataDie({
             year: 2010, 
             month: 1, 
             day: 1
         });
-        test.expect(2);
         test.ok(rd !== null);
         
         var rdn = rd.getRataDie();
@@ -709,12 +709,12 @@ module.exports.testgregratadie = {
     },
     
     testGregRataDieAfterFri: function(test) {
+        test.expect(2);
         var rd = new GregRataDie({
             year: 2010, 
             month: 1, 
             day: 1
         });
-        test.expect(2);
         test.ok(rd !== null);
         
         var rdn = rd.getRataDie();
@@ -724,12 +724,12 @@ module.exports.testgregratadie = {
     },
     
     testGregRataDieAfterSat: function(test) {
+        test.expect(2);
         var rd = new GregRataDie({
             year: 2010, 
             month: 1, 
             day: 1
         });
-        test.expect(2);
         test.ok(rd !== null);
         
         var rdn = rd.getRataDie();
@@ -739,8 +739,8 @@ module.exports.testgregratadie = {
     },
     
     testGregRataDieJan1Midnight: function(test) {
-        var rd = new GregRataDie({julianday: 2455197.5});
         test.expect(2);
+        var rd = new GregRataDie({julianday: 2455197.5});
         test.ok(rd !== null);
         
         test.equal(rd.getRataDie(), 733773);
@@ -748,12 +748,12 @@ module.exports.testgregratadie = {
     },
     
     testGregRataDieGetRataDie: function(test) {
+        test.expect(2);
         var rd = new GregRataDie({
             year: 2011, 
             month: 3, 
             day: 8
         });
-        test.expect(2);
         test.ok(rd !== null);
         
         test.equal(rd.getRataDie(), 734204);
@@ -763,6 +763,7 @@ module.exports.testgregratadie = {
     
     // for GF-33596
     testGregRataDieGetTimeWithUnixTime: function(test) {
+        test.expect(2);
         var d = new Date(Date.UTC(2011, 2, 8, 0, 0, 0, 0));
         var rd = new GregRataDie({
             year: 2011,
@@ -773,7 +774,6 @@ module.exports.testgregratadie = {
             second: 0,
             millisecond: 0
         });
-        test.expect(2);
         test.ok(rd !== null);
         
         test.equal(rd.getTime(), d.getTime());
@@ -781,12 +781,12 @@ module.exports.testgregratadie = {
     },
     
     testGregRataDieGetTimeWithUTC: function(test) {
+        test.expect(2);
         var utc = Date.UTC(2013, 10, 1);
         var d = new Date(utc);
         var rd = new GregRataDie({
             unixtime: utc
         });
-        test.expect(2);
         test.ok(rd !== null);
         
         test.equal(rd.getTime(), d.getTime());
@@ -794,17 +794,18 @@ module.exports.testgregratadie = {
     },
     
     testGregRataDieGetTimeWithDefaultTime: function(test) {
+        test.expect(2);
         var d = new Date();
         var rd = new GregRataDie();
         
-        test.expect(2);
         test.ok(rd !== null);
         
-        test.roughlyEqual(100, rd.getTime(), d.getTime());
+        test.roughlyEqual(rd.getTime(), d.getTime(), 100);
         test.done();
     },
     
     testGregRataDieOnOrBeforeWithOffset1: function(test) {
+        test.expect(2);
         var rd = new GregRataDie({
             year: 2014,
             month: 4,
@@ -812,7 +813,6 @@ module.exports.testgregratadie = {
             hour: 23
         }); // this is a Saturday in California, but Sunday in UTC
         
-        test.expect(2);
         test.ok(rd !== null);
         
         // the Sunday before should be the previous Sunday, not today
@@ -821,6 +821,7 @@ module.exports.testgregratadie = {
     },
     
     testGregRataDieOnOrBeforeWithOffset2: function(test) {
+        test.expect(2);
         var rd = new GregRataDie({
             year: 2014,
             month: 4,
@@ -828,7 +829,6 @@ module.exports.testgregratadie = {
             hour: 8
         }); // this is a Sunday in California and Sunday in UTC
         
-        test.expect(2);
         test.ok(rd !== null);
         
         // the Sunday before should be today, not a week ago
@@ -837,6 +837,7 @@ module.exports.testgregratadie = {
     },
     
     testGregRataDieOnOrAfterWithOffset1: function(test) {
+        test.expect(2);
         var rd = new GregRataDie({
             year: 2014,
             month: 4,
@@ -844,7 +845,6 @@ module.exports.testgregratadie = {
             hour: 23
         }); // this is a Saturday in California, but Sunday in UTC
         
-        test.expect(2);
         test.ok(rd !== null);
         
         // the Sunday before should be the next day
@@ -853,6 +853,7 @@ module.exports.testgregratadie = {
     },
     
     testGregRataDieOnOrAfterWithOffset2: function(test) {
+        test.expect(2);
         var rd = new GregRataDie({
             year: 2014,
             month: 4,
@@ -860,7 +861,6 @@ module.exports.testgregratadie = {
             hour: 8
         }); // this is a Sunday in California and Sunday in UTC
         
-        test.expect(2);
         test.ok(rd !== null);
         
         // the Sunday before should be today
@@ -869,6 +869,7 @@ module.exports.testgregratadie = {
     },
     
     testGregRataDieBeforeWithOffset1: function(test) {
+        test.expect(2);
         var rd = new GregRataDie({
             year: 2014,
             month: 4,
@@ -876,7 +877,6 @@ module.exports.testgregratadie = {
             hour: 23
         }); // this is a Sunday in California, but Monday in UTC
         
-        test.expect(2);
         test.ok(rd !== null);
         
         // the Sunday before should be the previous week, not today
@@ -885,6 +885,7 @@ module.exports.testgregratadie = {
     },
     
     testGregRataDieBeforeWithOffset2: function(test) {
+        test.expect(2);
         var rd = new GregRataDie({
             year: 2014,
             month: 4,
@@ -892,7 +893,6 @@ module.exports.testgregratadie = {
             hour: 8
         }); // this is a Monday in California and in UTC
         
-        test.expect(2);
         test.ok(rd !== null);
         
         // the Sunday before should be the previous day
@@ -901,6 +901,7 @@ module.exports.testgregratadie = {
     },
     
     testGregRataDieAfterWithOffset1: function(test) {
+        test.expect(2);
         var rd = new GregRataDie({
             year: 2014,
             month: 4,
@@ -908,7 +909,6 @@ module.exports.testgregratadie = {
             hour: 23
         }); // this is a Saturday in California, but Sunday in UTC
         
-        test.expect(2);
         test.ok(rd !== null);
         
         // the Sunday after should be the next day, not in a week
@@ -917,6 +917,7 @@ module.exports.testgregratadie = {
     },
     
     testGregRataDieAfterWithOffset2: function(test) {
+        test.expect(2);
         var rd = new GregRataDie({
             year: 2014,
             month: 4,
@@ -924,7 +925,6 @@ module.exports.testgregratadie = {
             hour: 8
         }); // this is a Sunday in California and Sunday in UTC
         
-        test.expect(2);
         test.ok(rd !== null);
         
         // the Sunday after should be in one week, not today

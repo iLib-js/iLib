@@ -34,8 +34,8 @@ module.exports.testname_uz_Latn = {
     },
 
     testParseSimpleName_uz_Latn: function(test) {
-        var parsed = new Name("Anastasia Gimazetdinova", {locale: 'uz-Latn-UZ'});
         test.expect(2);
+        var parsed = new Name("Anastasia Gimazetdinova", {locale: 'uz-Latn-UZ'});
         test.ok(typeof(parsed) !== "undefined");
         
         var expected =   {
@@ -48,8 +48,8 @@ module.exports.testname_uz_Latn = {
     },
     
     testParseAdjunctNames_uz_Latn: function(test) {
-        var parsed = new Name("Anastasia Gimazetdinova", {locale: 'uz-Latn-UZ'});
         test.expect(2);
+        var parsed = new Name("Anastasia Gimazetdinova", {locale: 'uz-Latn-UZ'});
         test.ok(typeof(parsed) !== "undefined");
         
         var expected =  {
@@ -62,8 +62,8 @@ module.exports.testname_uz_Latn = {
     },
     
     testParseSingleNameWithPrefixAndAdjunct_uz_Latn: function(test) {
-        var parsed = new Name("Janob va xonim Gimazetdinova", {locale: 'uz-Latn-UZ'});
         test.expect(2);
+        var parsed = new Name("Janob va xonim Gimazetdinova", {locale: 'uz-Latn-UZ'});
         test.ok(typeof(parsed) !== "undefined");
         
         var expected =   {
@@ -76,8 +76,8 @@ module.exports.testname_uz_Latn = {
     },
     
     testParseTitle_uz_Latn: function(test) {
-        var parsed = new Name("Anastasia Gimazetdinova katta", {locale: 'uz-Latn-UZ'});
         test.expect(2);
+        var parsed = new Name("Anastasia Gimazetdinova katta", {locale: 'uz-Latn-UZ'});
         test.ok(typeof(parsed) !== "undefined");
         
         var expected =    {
@@ -91,8 +91,8 @@ module.exports.testname_uz_Latn = {
     },
     
     testParseTitleWithFamilyOnly_uz_Latn: function(test) {
-        var parsed = new Name("janob Gimazetdinova", {locale: 'uz-Latn-UZ'});
         test.expect(2);
+        var parsed = new Name("janob Gimazetdinova", {locale: 'uz-Latn-UZ'});
         test.ok(typeof(parsed) !== "undefined");
         
         var expected =   {
@@ -105,8 +105,8 @@ module.exports.testname_uz_Latn = {
     },
     
     testParseEverything_uz_Latn: function(test) {
-        var parsed = new Name("janob Anastasia Gimazetdinova", {locale: 'uz-Latn-UZ'});
         test.expect(2);
+        var parsed = new Name("janob Anastasia Gimazetdinova", {locale: 'uz-Latn-UZ'});
         test.ok(typeof(parsed) !== "undefined");
         
         var expected =    {
@@ -124,6 +124,7 @@ module.exports.testname_uz_Latn = {
      */
     
     testFormatSimpleNameShort_uz_Latn: function(test) {
+        test.expect(2);
         var name = new Name({
             givenName: "Anastasia",
             familyName: "Gimazetdinova"
@@ -133,7 +134,6 @@ module.exports.testname_uz_Latn = {
             locale: 'uz-Latn-UZ'
         });
         var formatted = fmt.format(name);
-        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "Anastasia Gimazetdinova";
@@ -143,6 +143,7 @@ module.exports.testname_uz_Latn = {
     },
     
     testFormatSimpleNameMedium_uz_Latn: function(test) {
+        test.expect(2);
         var name = new Name({
             givenName: "Anastasia",
             familyName: "Gimazetdinova"
@@ -152,7 +153,6 @@ module.exports.testname_uz_Latn = {
             locale: 'uz-Latn-UZ'
         });
         var formatted = fmt.format(name);
-        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "Anastasia Gimazetdinova";
@@ -162,6 +162,7 @@ module.exports.testname_uz_Latn = {
     },
     
     testFormatSimpleNameLong_uz_Latn: function(test) {
+        test.expect(2);
         var name = new Name({
             givenName: "Anastasia",
             familyName: "Gimazetdinova",
@@ -172,7 +173,6 @@ module.exports.testname_uz_Latn = {
             locale: 'uz-Latn-UZ'
         });
         var formatted = fmt.format(name);
-        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "Anastasia Gimazetdinova";
@@ -182,6 +182,7 @@ module.exports.testname_uz_Latn = {
     },
     
     testFormatSimpleNameFull_uz_Latn: function(test) {
+        test.expect(2);
         var name = new Name({
             prefix: "xonim",
             givenName: "Anastasia",
@@ -193,7 +194,6 @@ module.exports.testname_uz_Latn = {
             locale: 'uz-Latn-UZ'
         });
         var formatted = fmt.format(name);
-        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "xonim Anastasia Gimazetdinova kichik";

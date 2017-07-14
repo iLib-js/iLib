@@ -32,15 +32,15 @@ module.exports.testscriptinfo = {
     },
 
     testScriptConstructor: function(test) {
-        var si = new ScriptInfo();
         test.expect(1);
+        var si = new ScriptInfo();
         test.ok(si !== null);
         test.done();
     },
     
     testScriptGet1: function(test) {
-        var si = new ScriptInfo("Latn");
         test.expect(8);
+        var si = new ScriptInfo("Latn");
         test.ok(si !== null);
         
         test.equal(si.getCode(), "Latn");
@@ -54,8 +54,8 @@ module.exports.testscriptinfo = {
     },
     
     testScriptGet2: function(test) {
-        var si = new ScriptInfo("Phag");
         test.expect(8);
+        var si = new ScriptInfo("Phag");
         test.ok(si !== null);
         
         test.equal(si.getCode(), "Phag");
@@ -69,8 +69,8 @@ module.exports.testscriptinfo = {
     },
     
     testScriptGet3: function(test) {
-        var si = new ScriptInfo("Hebr");
         test.expect(8);
+        var si = new ScriptInfo("Hebr");
         test.ok(si !== null);
         
         test.equal(si.getCode(), "Hebr");
@@ -84,8 +84,8 @@ module.exports.testscriptinfo = {
     },
     
     testScriptGet4: function(test) {
-        var si = new ScriptInfo("Hans");
         test.expect(8);
+        var si = new ScriptInfo("Hans");
         test.ok(si !== null);
         
         test.equal(si.getCode(), "Hans");
@@ -99,8 +99,8 @@ module.exports.testscriptinfo = {
     },
     
     testScriptGetDefaultLongCode: function(test) {
-        var si = new ScriptInfo("Sara");
         test.expect(5);
+        var si = new ScriptInfo("Sara");
         test.ok(si !== null);
         
         test.equal(si.getCode(), "Sara");
@@ -111,8 +111,8 @@ module.exports.testscriptinfo = {
     },
     
     testScriptGetDefaultLongCodeOrya: function(test) {
-        var si = new ScriptInfo("Orya");
         test.expect(8);
+        var si = new ScriptInfo("Orya");
         test.ok(si !== null);
         
         test.equal(si.getCode(), "Orya");
@@ -126,8 +126,8 @@ module.exports.testscriptinfo = {
     },
     
     testScriptGetDefaultLongCodeAmharic: function(test) {
-        var si = new ScriptInfo("Ethi");
         test.expect(8);
+        var si = new ScriptInfo("Ethi");
         test.ok(si !== null);
         
         test.equal(si.getCode(), "Ethi");
@@ -140,8 +140,8 @@ module.exports.testscriptinfo = {
         test.done();
     },
     testScriptGetDefaultLongCodeWithSpaces: function(test) {
-        var si = new ScriptInfo("Kore");
         test.expect(8);
+        var si = new ScriptInfo("Kore");
         test.ok(si !== null);
         
         test.equal(si.getCode(), "Kore");
@@ -155,8 +155,8 @@ module.exports.testscriptinfo = {
     },
     
     testScriptGetDefaultLongCodeArab: function(test) {
-        var si = new ScriptInfo("Arab");
         test.expect(8);
+        var si = new ScriptInfo("Arab");
         test.ok(si !== null);
         
         test.equal(si.getCode(), "Arab");
@@ -169,8 +169,8 @@ module.exports.testscriptinfo = {
         test.done();
     },
     testScriptGetUnknown: function(test) {
-        var si = new ScriptInfo("Fooo");
         test.expect(5);
+        var si = new ScriptInfo("Fooo");
         test.ok(si !== null);
         
         test.equal(si.getCode(), undefined);
@@ -181,8 +181,8 @@ module.exports.testscriptinfo = {
     },
     
     testScriptGetAllScripts: function(test) {
-        var scripts = ScriptInfo.getAllScripts();
         test.expect(7);
+        var scripts = ScriptInfo.getAllScripts();
         test.ok(scripts !== null);
         
         test.equal(scripts.length, 189);
@@ -196,8 +196,8 @@ module.exports.testscriptinfo = {
     },
     
     testScriptGetDefaultLongCodeKits: function(test) {
-        var si = new ScriptInfo("Kits");
         test.expect(8);
+        var si = new ScriptInfo("Kits");
         test.ok(si !== null);
         
         test.equal(si.getCode(), "Kits");
@@ -211,8 +211,8 @@ module.exports.testscriptinfo = {
     },
     
     testScriptGetDefaultLongCodePauc: function(test) {
-        var si = new ScriptInfo("Pauc");
         test.expect(8);
+        var si = new ScriptInfo("Pauc");
         test.ok(si !== null);
         
         test.equal(si.getCode(), "Pauc");
@@ -226,8 +226,8 @@ module.exports.testscriptinfo = {
     },
     
     testScriptGetDefaultLongCodeMend: function(test) {
-        var si = new ScriptInfo("Mend");
         test.expect(8);
+        var si = new ScriptInfo("Mend");
         test.ok(si !== null);
         
         test.equal(si.getCode(), "Mend");

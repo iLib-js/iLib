@@ -18,7 +18,7 @@
  */
 
 if (typeof(ilib) === "undefined") {
-    var ilib = require("../.././../lib/ilib.js");
+    var ilib = require("../.././../lib/ilib-node.js");
 }
 if (typeof(RataDie) === "undefined") {
     var RataDie = require("../.././../lib/RataDie.js");
@@ -191,7 +191,7 @@ module.exports.testhan = {
         Astro.initAstro(true, undefined, undefined);
         for (var i = 0; i < testDatesChineseAstro1.length; i++) {
         
-        // console.log("testing jd=" + testDatesChineseAstro1[i][0]);
+            // console.log("testing jd=" + testDatesChineseAstro1[i][0]);
             //try {
             var jd = testDatesChineseAstro1[i][0];
             var deg = Astro._universalFromLocal(jd, HanCal._chineseTZ(jd)) - RataDie.gregorianEpoch;
@@ -208,7 +208,7 @@ module.exports.testhan = {
         Astro.initAstro(true, undefined, undefined);
         for (var i = 0; i < testDatesChineseAstro1.length; i++) {
         
-        // console.log("testing jd=" + testDatesChineseAstro1[i][0]);
+            // console.log("testing jd=" + testDatesChineseAstro1[i][0]);
             //try {
             var jd = testDatesChineseAstro1[i][0];
             l = HanCal._currentMajorST(jd);
@@ -225,7 +225,7 @@ module.exports.testhan = {
         Astro.initAstro(true, undefined, undefined);
         for (var i = 0; i < testDatesChineseAstro1.length; i++) {
         
-        // console.log("testing jd=" + testDatesChineseAstro1[i][0]);
+            // console.log("testing jd=" + testDatesChineseAstro1[i][0]);
             //try {
             var jd = testDatesChineseAstro1[i][0];
             l = HanCal._hanNextSolarLongitude(jd, 30.0) - RataDie.gregorianEpoch;
@@ -242,7 +242,7 @@ module.exports.testhan = {
         Astro.initAstro(true, undefined, undefined);
         for (var i = 0; i < testDatesChineseAstro2.length; i++) {
         
-        // console.log("testing jd=" + testDatesChineseAstro2[i][0]);
+            // console.log("testing jd=" + testDatesChineseAstro2[i][0]);
             //try {
             var jd = testDatesChineseAstro2[i][0];
             l = HanCal._newMoonBefore(jd) - RataDie.gregorianEpoch;
@@ -259,7 +259,7 @@ module.exports.testhan = {
         Astro.initAstro(true, undefined, undefined);
         for (var i = 0; i < testDatesChineseAstro2.length; i++) {
         
-        // console.log("testing jd=" + testDatesChineseAstro2[i][0]);
+            // console.log("testing jd=" + testDatesChineseAstro2[i][0]);
             //try {
             var jd = testDatesChineseAstro2[i][0];
             l = HanCal._newMoonOnOrAfter(jd) - RataDie.gregorianEpoch;
@@ -276,7 +276,7 @@ module.exports.testhan = {
         Astro.initAstro(true, undefined, undefined);
         for (var i = 0; i < testDatesChineseAstro2.length; i++) {
         
-        // console.log("testing jd=" + testDatesChineseAstro2[i][0]);
+            // console.log("testing jd=" + testDatesChineseAstro2[i][0]);
             //try {
             var jd = testDatesChineseAstro2[i][0];
             l = HanCal._noMajorST(jd);
@@ -293,7 +293,7 @@ module.exports.testhan = {
         Astro.initAstro(true, undefined, undefined);
         for (var i = 0; i < testDatesChineseAstro2.length; i++) {
         
-        // console.log("testing jd=" + testDatesChineseAstro2[i][0]);
+            // console.log("testing jd=" + testDatesChineseAstro2[i][0]);
             //try {
             var jd = testDatesChineseAstro2[i][0];
             l = HanCal._majorSTOnOrAfter(jd) - RataDie.gregorianEpoch;
@@ -306,113 +306,113 @@ module.exports.testhan = {
     },
     
     testHanGetNumMonths4687: function(test) {
+        test.expect(1);
         var cal = new HanCal();
         
-        test.expect(1);
         test.equal(cal.getNumMonths(4687), 13);
         test.done();
     },
     
     testHanGetMonLength1: function(test) {
+        test.expect(1);
         var cal = new HanCal();
         
-        test.expect(1);
         test.equal(cal.getMonLength(1, 4687), 29);
         test.done();
     },
     
     testHanGetMonLength2: function(test) {
+        test.expect(1);
         var cal = new HanCal();
         
-        test.expect(1);
         test.equal(cal.getMonLength(2, 4687), 30);
         test.done();
     },
     
     testHanGetMonLength3: function(test) {
+        test.expect(1);
         var cal = new HanCal();
         
-        test.expect(1);
         test.equal(cal.getMonLength(3, 4687), 29);
         test.done();
     },
     
     testHanGetMonLength4: function(test) {
+        test.expect(1);
         var cal = new HanCal();
         
-        test.expect(1);
         test.equal(cal.getMonLength(4, 4687), 29);
         test.done();
     },
     
     testHanGetMonLength5: function(test) {
+        test.expect(1);
         var cal = new HanCal();
         
-        test.expect(1);
         test.equal(cal.getMonLength(5, 4687), 30);
         test.done();
     },
     
     testHanGetMonLength6: function(test) {
+        test.expect(1);
         var cal = new HanCal();
         
-        test.expect(1);
         test.equal(cal.getMonLength(6, 4687), 29);
         test.done();
     },
     
     testHanGetMonLength7: function(test) {
+        test.expect(1);
         var cal = new HanCal();
         
-        test.expect(1);
         test.equal(cal.getMonLength(7, 4687), 29);
         test.done();
     },
     
     testHanGetMonLength8: function(test) {
+        test.expect(1);
         var cal = new HanCal();
         
-        test.expect(1);
         test.equal(cal.getMonLength(8, 4687), 30);
         test.done();
     },
     
     testHanGetMonLength9: function(test) {
+        test.expect(1);
         var cal = new HanCal();
         
-        test.expect(1);
         test.equal(cal.getMonLength(9, 4687), 29);
         test.done();
     },
     
     testHanGetMonLength10: function(test) {
+        test.expect(1);
         var cal = new HanCal();
         
-        test.expect(1);
         test.equal(cal.getMonLength(10, 4687), 30);
         test.done();
     },
     
     testHanGetMonLength11: function(test) {
+        test.expect(1);
         var cal = new HanCal();
         
-        test.expect(1);
         test.equal(cal.getMonLength(11, 4687), 30);
         test.done();
     },
     
     testHanGetMonLength12: function(test) {
+        test.expect(1);
         var cal = new HanCal();
         
-        test.expect(1);
         test.equal(cal.getMonLength(12, 4687), 30);
         test.done();
     },
     
     testHanGetMonLength13: function(test) {
+        test.expect(1);
         var cal = new HanCal();
         
-        test.expect(1);
         test.equal(cal.getMonLength(13, 4687), 30);
         test.done();
     },
@@ -458,6 +458,7 @@ module.exports.testhan = {
     },
     
     testHanNewDateInstance: function(test) {
+        test.expect(2);
         var cal = new HanCal();
         var d = cal.newDateInstance({
             year: 4681,
@@ -465,7 +466,6 @@ module.exports.testhan = {
             day: 1
         });
         
-        test.expect(2);
         test.ok(typeof(d) !== "undefined");
         test.equal(d.cal.type, "han");
         test.done();

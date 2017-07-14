@@ -36,9 +36,9 @@ module.exports.testaddress_LU = {
     },
 
     testParseAddressLUNormal: function(test) {
+        test.expect(7);
         var parsedAddress = new Address("M. Andrée TROMMER BP 501\nL-1050 Luxembourg\nLUXEMBOURG", {locale: 'fr-LU'});
         
-        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "M. Andrée TROMMER BP 501");
         test.equal(parsedAddress.locality, "Luxembourg");
@@ -51,9 +51,9 @@ module.exports.testaddress_LU = {
     
     
     testParseAddressLUotherNormal: function(test) {
+        test.expect(7);
         var parsedAddress = new Address("M. Jacques Muller 71, route de Longwy\nL-4750 PETANGE\nLUXEMBOURG", {locale: 'fr-LU'});
         
-        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "M. Jacques Muller 71, route de Longwy");
         test.equal(parsedAddress.locality, "PETANGE");
@@ -66,9 +66,9 @@ module.exports.testaddress_LU = {
     
     
     testParseAddressLUNoZip: function(test) {
+        test.expect(7);
         var parsedAddress = new Address("M. Andrée TROMMER BP 5019\nLuxembourg\nLUXEMBOURG", {locale: 'fr-LU'});
         
-        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "M. Andrée TROMMER BP 5019");
         test.equal(parsedAddress.locality, "Luxembourg");
@@ -80,9 +80,9 @@ module.exports.testaddress_LU = {
     },
     
     testParseAddressLUManyLines: function(test) {
+        test.expect(7);
         var parsedAddress = new Address("M. Jacques Muller 71\nroute\nde\nLongwy\nL-4750\nPETANGE\nLUXEMBOURG\n\n\n", {locale: 'fr-LU'});
         
-        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "M. Jacques Muller 71, route, de, Longwy");
         test.equal(parsedAddress.locality, "PETANGE");
@@ -94,9 +94,9 @@ module.exports.testaddress_LU = {
     },
     
     testParseAddressLUOneLine: function(test) {
+        test.expect(7);
         var parsedAddress = new Address("M. Jacques Muller 71, route, de, Longwy, L-4750, PETANGE, LUXEMBOURG", {locale: 'fr-LU'});
         
-        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "M. Jacques Muller 71, route, de, Longwy");
         test.equal(parsedAddress.locality, "PETANGE");
@@ -108,9 +108,9 @@ module.exports.testaddress_LU = {
     },
     
     testParseAddressLUSuperfluousWhitespace: function(test) {
+        test.expect(7);
         var parsedAddress = new Address("M. Jacques Muller 71\n\troute\n\tde\tLongwy\t\nL-4750\n\tPETANGE\n\tLUXEMBOURG\n\t", {locale: 'fr-LU'});
         
-        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "M. Jacques Muller 71, route, de Longwy");
         test.equal(parsedAddress.locality, "PETANGE");
@@ -122,9 +122,9 @@ module.exports.testaddress_LU = {
     },
     
     testParseAddressLUNoDelimiters: function(test) {
+        test.expect(7);
         var parsedAddress = new Address("M. Andrée TROMMER BP 5019 L-1050 Luxembourg LUXEMBOURG", {locale: 'fr-LU'});
         
-        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "M. Andrée TROMMER BP 5019");
         test.equal(parsedAddress.locality, "Luxembourg");
@@ -137,11 +137,11 @@ module.exports.testaddress_LU = {
     
     
     testParseAddressLUFromUS: function(test) {
+        test.expect(7);
         var parsedAddress = new Address("M. Andrée TROMMER BP 501\nL-1050 Luxembourg\nLUXEMBOURG", {locale: 'en-US'});
         
         // the country name is in English because this address is for a contact in a US database
         
-        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "M. Andrée TROMMER BP 501");
         test.equal(parsedAddress.locality, "Luxembourg");
@@ -153,6 +153,7 @@ module.exports.testaddress_LU = {
     },
     
     testFormatAddressLU: function(test) {
+        test.expect(1);
         var parsedAddress = new Address({
             streetAddress: "M. Andrée TROMMER BP 5019",
             locality: "Luxembourg",
@@ -163,12 +164,12 @@ module.exports.testaddress_LU = {
         
         var expected = "M. Andrée TROMMER BP 5019\nL-1050 Luxembourg\nLUXEMBOURG";
         var formatter = new AddressFmt({locale: 'fr-LU'});
-        test.expect(1);
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     },
     
     testFormatAddressLUFromUS: function(test) {
+        test.expect(1);
         var parsedAddress = new Address({
             streetAddress: "M. Andrée TROMMER BP 5019",
             locality: "Luxembourg",
@@ -179,7 +180,6 @@ module.exports.testaddress_LU = {
         
         var expected = "M. Andrée TROMMER BP 5019\nL-1050 Luxembourg\nLUXEMBOURG";
         var formatter = new AddressFmt({locale: 'en-US'});
-        test.expect(1);
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     }

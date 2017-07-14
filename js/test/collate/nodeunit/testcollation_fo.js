@@ -18,7 +18,7 @@
  */
 
 if (typeof(ilib) === "undefined") {
-    var ilib = require("../../../lib/ilib.js");
+    var ilib = require("../../../lib/ilib-node.js");
 }
 if (typeof(Collator) === "undefined") {
     var Collator = require("../../../lib/Collator.js");
@@ -34,14 +34,15 @@ module.exports.testcollation_fo = {
     },
 
     testCollatorConstructorNative_fo: function(test) {
+        test.expect(1);
         var col = new Collator({useNative: false, locale: "fo-FO"});
     
-        test.expect(1);
         test.ok(typeof(col) !== "undefined");
         test.done();
     },
     
     testCollatorDefaultLowerPrimary_fo: function(test) {
+        test.expect(21);
         var col = new Collator({
             locale: "fo-FO",
             usage: "search",
@@ -49,7 +50,6 @@ module.exports.testcollation_fo = {
             sensitivity: "primary"
         });
     
-        test.expect(21);
         test.ok(typeof(col) !== "undefined");
     
         // The Faroese alphabet also has some of the Danish, Norwegian, and Swedish 
@@ -83,6 +83,7 @@ module.exports.testcollation_fo = {
     },
     
     testCollatorDefaultUpperPrimary_fo: function(test) {
+        test.expect(21);
         var col = new Collator({
             locale: "fo-FO",
             usage: "search",
@@ -90,7 +91,6 @@ module.exports.testcollation_fo = {
             sensitivity: "primary"
         });
     
-        test.expect(21);
         test.ok(typeof(col) !== "undefined");
     
         // The Faroese alphabet also has some of the Danish, Norwegian, and Swedish 
@@ -124,6 +124,7 @@ module.exports.testcollation_fo = {
     },
     
     testCollatorDefaultLowerSecondary_fo: function(test) {
+        test.expect(21);
         var col = new Collator({
             locale: "fo-FO",
             usage: "search",
@@ -131,7 +132,6 @@ module.exports.testcollation_fo = {
             sensitivity: "secondary"
         });
     
-        test.expect(21);
         test.ok(typeof(col) !== "undefined");
     
         // the accents are primary differences, so this is the same order as
@@ -161,6 +161,7 @@ module.exports.testcollation_fo = {
     },
     
     testCollatorDefaultCaseSecondary_fo: function(test) {
+        test.expect(10);
         var col = new Collator({
             locale: "fo-FO",
             usage: "search",
@@ -168,7 +169,6 @@ module.exports.testcollation_fo = {
             sensitivity: "secondary"
         });
     
-        test.expect(10);
         test.ok(typeof(col) !== "undefined");
     
         // the accents are primary differences, so this is the same order as
@@ -189,6 +189,7 @@ module.exports.testcollation_fo = {
     },
     
     testCollatorDefaultVariantsSecondary_fo: function(test) {
+        test.expect(11);
         var col = new Collator({
             locale: "fo-FO",
             usage: "search",
@@ -196,7 +197,6 @@ module.exports.testcollation_fo = {
             sensitivity: "secondary"
         });
     
-        test.expect(11);
         test.ok(typeof(col) !== "undefined");
     
         // the accents are primary differences, so this is the same order as
@@ -218,6 +218,7 @@ module.exports.testcollation_fo = {
     },
     
     testCollatorDefaultUpperSecondary_fo: function(test) {
+        test.expect(21);
         var col = new Collator({
             locale: "fo-FO",
             usage: "search",
@@ -225,7 +226,6 @@ module.exports.testcollation_fo = {
             sensitivity: "secondary"
         });
     
-        test.expect(21);
         test.ok(typeof(col) !== "undefined");
     
         // the accents are primary differences, so this is the same order as
@@ -255,6 +255,7 @@ module.exports.testcollation_fo = {
     },
     
     testCollatorDefaultLowerTertiary_fo: function(test) {
+        test.expect(25);
         var col = new Collator({
             locale: "fo-FO",
             usage: "search",
@@ -262,7 +263,6 @@ module.exports.testcollation_fo = {
             sensitivity: "tertiary"
         });
     
-        test.expect(25);
         test.ok(typeof(col) !== "undefined");
     
         // a á b [c] d ð e f g h i í j k l m n o ó p [q] r s t u ú v [w] [x] y ý [z] æ ø
@@ -295,6 +295,7 @@ module.exports.testcollation_fo = {
     },
     
     testCollatorDefaultVariantsTertiary_fo: function(test) {
+        test.expect(11);
         var col = new Collator({
             locale: "fo-FO",
             usage: "search",
@@ -302,7 +303,6 @@ module.exports.testcollation_fo = {
             sensitivity: "tertiary"
         });
     
-        test.expect(11);
         test.ok(typeof(col) !== "undefined");
     
         // the accents are primary differences, so this is the same order as
@@ -324,6 +324,7 @@ module.exports.testcollation_fo = {
     },
     
     testCollatorDefaultUpperTertiary_fo: function(test) {
+        test.expect(21);
         var col = new Collator({
             locale: "fo-FO",
             usage: "search",
@@ -331,7 +332,6 @@ module.exports.testcollation_fo = {
             sensitivity: "tertiary"
         });
     
-        test.expect(21);
         test.ok(typeof(col) !== "undefined");
     
         // the accents are primary differences, so this is the same order as
@@ -361,6 +361,7 @@ module.exports.testcollation_fo = {
     },
     
     testCollatorDefaultLowerQuaternary_fo: function(test) {
+        test.expect(25);
         var col = new Collator({
             locale: "fo-FO",
             usage: "search",
@@ -368,7 +369,6 @@ module.exports.testcollation_fo = {
             sensitivity: "quaternary"
         });
     
-        test.expect(25);
         test.ok(typeof(col) !== "undefined");
     
         // a á b [c] d ð e f g h i í j k l m n o ó p [q] r s t u ú v [w] [x] y ý [z] æ ø
@@ -401,6 +401,7 @@ module.exports.testcollation_fo = {
     },
     
     testCollatorDefaultVariantsQuaternary_fo: function(test) {
+        test.expect(11);
         var col = new Collator({
             locale: "fo-FO",
             usage: "search",
@@ -408,7 +409,6 @@ module.exports.testcollation_fo = {
             sensitivity: "quaternary"
         });
     
-        test.expect(11);
         test.ok(typeof(col) !== "undefined");
     
         // the accents are primary differences, so this is the same order as
@@ -430,6 +430,7 @@ module.exports.testcollation_fo = {
     },
     
     testCollatorDefaultUpperQuaternary_fo: function(test) {
+        test.expect(21);
         var col = new Collator({
             locale: "fo-FO",
             usage: "search",
@@ -437,7 +438,6 @@ module.exports.testcollation_fo = {
             sensitivity: "quaternary"
         });
     
-        test.expect(21);
         test.ok(typeof(col) !== "undefined");
     
         // the accents are primary differences, so this is the same order as
@@ -467,24 +467,24 @@ module.exports.testcollation_fo = {
     },
     
     testCollatorGetSortKeySimpleUpper_fo: function(test) {
+        test.expect(2);
         var col = new Collator({
             locale: "fo-FO",
             useNative: false
         });
     
-        test.expect(2);
         test.ok(typeof(col) !== "undefined");
     
         test.equal(col.sortKey("AÁBCDÐE"), "0000200400600800a00c0");
         test.done();
     },
     testCollatorGetSortKeySimpleLower_fo: function(test) {
+        test.expect(2);
         var col = new Collator({
             locale: "fo-FO",
             useNative: false
         });
     
-        test.expect(2);
         test.ok(typeof(col) !== "undefined");
     
         test.equal(col.sortKey("aábcdðe"), "0020220420620820a20c2");
@@ -493,12 +493,12 @@ module.exports.testcollation_fo = {
     
     
     testCollatorWithSort_fo: function(test) {
+        test.expect(2);
         var col = new Collator({
             locale: "fo-FO",
             useNative: false,
             usage: "sort"
         });
-        test.expect(2);
         test.ok(typeof(col) !== "undefined");
     
         var input = [ "æ", "p", "b", "w", "d", "ý", "h", "ú", "x", "ø", "í", "j",
@@ -531,6 +531,7 @@ module.exports.testcollation_fo = {
     
     
     testJSCollatorNumeric_fo: function(test) {
+        test.expect(4);
         var col = new Collator({
             locale: "fo-FO",
             useNative: false,
@@ -538,7 +539,6 @@ module.exports.testcollation_fo = {
             numeric: true
         });
     
-        test.expect(4);
         test.ok(typeof(col) !== "undefined");
     
         // period is the thousands separator and comma is the decimal separator

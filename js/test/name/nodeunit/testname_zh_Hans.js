@@ -34,8 +34,8 @@ module.exports.testname_zh_Hans = {
     },
 
     testParseSimpleName_zh_Hans: function(test) {
-        var parsed = new Name("蔡良", {locale: 'zh-Hans-CN'});
         test.expect(2);
+        var parsed = new Name("蔡良", {locale: 'zh-Hans-CN'});
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {
@@ -48,8 +48,8 @@ module.exports.testname_zh_Hans = {
     },
     
     testParseOnePlusTwo_zh_Hans: function(test) {
-        var parsed = new Name("王良会", {locale: 'zh-Hans-CN'});
         test.expect(2);
+        var parsed = new Name("王良会", {locale: 'zh-Hans-CN'});
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {
@@ -62,8 +62,8 @@ module.exports.testname_zh_Hans = {
     },
     
     testParseTwoPlusOne_zh_Hans: function(test) {
-        var parsed = new Name("歐陽良", {locale: 'zh-Hans-CN'});
         test.expect(2);
+        var parsed = new Name("歐陽良", {locale: 'zh-Hans-CN'});
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {
@@ -76,8 +76,8 @@ module.exports.testname_zh_Hans = {
     },
     
     testParseTwoPlusTwo_zh_Hans: function(test) {
-        var parsed = new Name("司徒良会", {locale: 'zh-Hans-CN'});
         test.expect(2);
+        var parsed = new Name("司徒良会", {locale: 'zh-Hans-CN'});
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {
@@ -90,8 +90,8 @@ module.exports.testname_zh_Hans = {
     },
     
     testParseMaidenPlusMarriedName_zh_Hans: function(test) {
-        var parsed = new Name("錢林慧君", {locale: 'zh-Hans-CN'});
         test.expect(2);
+        var parsed = new Name("錢林慧君", {locale: 'zh-Hans-CN'});
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {
@@ -104,8 +104,8 @@ module.exports.testname_zh_Hans = {
     },
     
     testParseTitle_zh_Hans: function(test) {
-        var parsed = new Name("老錢慧君", {locale: 'zh-Hans-CN'});
         test.expect(2);
+        var parsed = new Name("老錢慧君", {locale: 'zh-Hans-CN'});
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {
@@ -119,8 +119,8 @@ module.exports.testname_zh_Hans = {
     },
     
     testParseMultipleTitles_zh_Hans: function(test) {
-        var parsed = new Name("錢總理先生", {locale: 'zh-Hans-CN'});
         test.expect(2);
+        var parsed = new Name("錢總理先生", {locale: 'zh-Hans-CN'});
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {
@@ -133,8 +133,8 @@ module.exports.testname_zh_Hans = {
     },
     
     testParseEuroName_zh_Hans: function(test) {
-        var parsed = new Name("Johan Schmidt", {locale: 'zh-Hans-CN'});
         test.expect(2);
+        var parsed = new Name("Johan Schmidt", {locale: 'zh-Hans-CN'});
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {
@@ -147,8 +147,8 @@ module.exports.testname_zh_Hans = {
     },
     
     testParseSuffix_zh_Hans: function(test) {
-        var parsed = new Name("王媽媽", {locale: 'zh-Hans-CN'});
         test.expect(2);
+        var parsed = new Name("王媽媽", {locale: 'zh-Hans-CN'});
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {
@@ -161,8 +161,8 @@ module.exports.testname_zh_Hans = {
     },
     
     testParseTitleSuffix_zh_Hans: function(test) {
-        var parsed = new Name("李老師", {locale: 'zh-Hans-CN'});
         test.expect(2);
+        var parsed = new Name("李老師", {locale: 'zh-Hans-CN'});
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {
@@ -175,8 +175,8 @@ module.exports.testname_zh_Hans = {
     },
     
     testParseEverything_zh_Hans: function(test) {
-        var parsed = new Name("老錢林慧君外公", {locale: 'zh-Hans-CN'});
         test.expect(2);
+        var parsed = new Name("老錢林慧君外公", {locale: 'zh-Hans-CN'});
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {
@@ -195,6 +195,7 @@ module.exports.testname_zh_Hans = {
      */
     
     testFormatNameShort_zh_Hans: function(test) {
+        test.expect(2);
         var name = new Name({
             prefix: "小",
             givenName: "獸",
@@ -203,7 +204,6 @@ module.exports.testname_zh_Hans = {
         });
         var fmt = new NameFmt({style: "short", locale: 'zh-Hans-CN'});
         var formatted = fmt.format(name);
-        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "地獸";
@@ -213,6 +213,7 @@ module.exports.testname_zh_Hans = {
     },
     
     testFormatNameMedium_zh_Hans: function(test) {
+        test.expect(2);
         var name = new Name({
             prefix: "小",
             givenName: "獸",
@@ -221,7 +222,6 @@ module.exports.testname_zh_Hans = {
         });
         var fmt = new NameFmt({style: "medium", locale: 'zh-Hans-CN'});
         var formatted = fmt.format(name);
-        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "地獸";
@@ -231,6 +231,7 @@ module.exports.testname_zh_Hans = {
     },
     
     testFormatNameLong_zh_Hans: function(test) {
+        test.expect(2);
         var name = new Name({
             prefix: "小",
             givenName: "獸",
@@ -239,7 +240,6 @@ module.exports.testname_zh_Hans = {
         });
         var fmt = new NameFmt({style: "long", locale: 'zh-Hans-CN'});
         var formatted = fmt.format(name);
-        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "小地獸";
@@ -249,6 +249,7 @@ module.exports.testname_zh_Hans = {
     },
     
     testFormatNameFull_zh_Hans: function(test) {
+        test.expect(2);
         var name = new Name({
             prefix: "小",
             givenName: "獸",
@@ -257,7 +258,6 @@ module.exports.testname_zh_Hans = {
         });
         var fmt = new NameFmt({style: "full", locale: 'zh-Hans-CN'});
         var formatted = fmt.format(name);
-        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "小地獸太太";
@@ -267,6 +267,7 @@ module.exports.testname_zh_Hans = {
     },
     
     testFormatEuroNameShort_zh_Hans: function(test) {
+        test.expect(2);
         var name = new Name({
             prefix: "Dr.",
             givenName: "John",
@@ -276,7 +277,6 @@ module.exports.testname_zh_Hans = {
         }, {locale: 'zh-Hans-CN'});
         var fmt = new NameFmt({style: "short", locale: 'zh-Hans-CN'});
         var formatted = fmt.format(name);
-        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "John Goffin";
@@ -286,10 +286,10 @@ module.exports.testname_zh_Hans = {
     },
     
     testFormatEuroNameWithStringShort_zh_Hans: function(test) {
+        test.expect(2);
         var name = new Name("Dr. John Robert Goffin Jr.", {locale: 'zh-Hans-CN'});
         var fmt = new NameFmt({style: "short", locale: 'zh-Hans-CN'});
         var formatted = fmt.format(name);
-        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "John Goffin";
@@ -299,6 +299,7 @@ module.exports.testname_zh_Hans = {
     },
     
     testFormatEuroNameMedium_zh_Hans: function(test) {
+        test.expect(2);
         var name = new Name({
             prefix: "Dr.",
             givenName: "John",
@@ -308,7 +309,6 @@ module.exports.testname_zh_Hans = {
         }, {locale: 'zh-Hans-CN'});
         var fmt = new NameFmt({style: "medium", locale: 'zh-Hans-CN'});
         var formatted = fmt.format(name);
-        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "John Robert Goffin";
@@ -318,10 +318,10 @@ module.exports.testname_zh_Hans = {
     },
     
     testFormatEuroNameWithStringMedium_zh_Hans: function(test) {
+        test.expect(2);
         var name = new Name("Dr. John Robert Goffin Jr.", {locale: 'zh-Hans-CN'});
         var fmt = new NameFmt({style: "medium", locale: 'zh-Hans-CN'});
         var formatted = fmt.format(name);
-        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "John Robert Goffin";
@@ -331,6 +331,7 @@ module.exports.testname_zh_Hans = {
     },
     
     testFormatEuroNameLong_zh_Hans: function(test) {
+        test.expect(2);
         var name = new Name({
             prefix: "Dr.",
             givenName: "John",
@@ -340,7 +341,6 @@ module.exports.testname_zh_Hans = {
         }, {locale: 'zh-Hans-CN'});
         var fmt = new NameFmt({style: "long", locale: 'zh-Hans-CN'});
         var formatted = fmt.format(name);
-        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "Dr. John Robert Goffin";
@@ -350,6 +350,7 @@ module.exports.testname_zh_Hans = {
     },
     
     testFormatEuroNameFull_zh_Hans: function(test) {
+        test.expect(2);
         var name = new Name({
             prefix: "Dr.",
             givenName: "John",
@@ -359,7 +360,6 @@ module.exports.testname_zh_Hans = {
         }, {locale: 'zh-Hans-CN'});
         var fmt = new NameFmt({style: "full", locale: 'zh-Hans-CN'});
         var formatted = fmt.format(name);
-        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "Dr. John Robert Goffin Jr.";
@@ -369,10 +369,10 @@ module.exports.testname_zh_Hans = {
     },
     
     testFormatEuroNameWithStringLong_zh_Hans: function(test) {
+        test.expect(2);
         var name = new Name("Dr. John Robert Goffin Jr.", {locale: 'zh-Hans-CN'});
         var fmt = new NameFmt({style: "long", locale: 'zh-Hans-CN'});
         var formatted = fmt.format(name);
-        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "Dr. John Robert Goffin";
@@ -382,10 +382,10 @@ module.exports.testname_zh_Hans = {
     },
     
     testFormatEuroNameWithStringFull_zh_Hans: function(test) {
+        test.expect(2);
         var name = new Name("Dr. John Robert Goffin Jr.", {locale: 'zh-Hans-CN'});
         var fmt = new NameFmt({style: "full", locale: 'zh-Hans-CN'});
         var formatted = fmt.format(name);
-        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "Dr. John Robert Goffin Jr.";
@@ -395,8 +395,8 @@ module.exports.testname_zh_Hans = {
     },
     
     testParseParenSuffixName_zh_Hans: function(test) {
-        var parsed = new Name("王永慶(Division A)", {locale: 'zh-Hans-CN'});
         test.expect(2);
+        var parsed = new Name("王永慶(Division A)", {locale: 'zh-Hans-CN'});
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {
@@ -409,8 +409,8 @@ module.exports.testname_zh_Hans = {
         test.done();
     },
     testParseParenSuffixName2_zh_Hans: function(test) {
-        var parsed = new Name("王永慶 (Division A)", {locale: 'zh-Hans-CN'});
         test.expect(2);
+        var parsed = new Name("王永慶 (Division A)", {locale: 'zh-Hans-CN'});
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {
@@ -424,8 +424,8 @@ module.exports.testname_zh_Hans = {
     },
     
     testParseParenSuffixNameWithOtherSuffix_zh_Hans: function(test) {
-        var parsed = new Name("王永慶外公(Division A)", {locale: 'zh-Hans-CN'});
         test.expect(2);
+        var parsed = new Name("王永慶外公(Division A)", {locale: 'zh-Hans-CN'});
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {
@@ -438,8 +438,8 @@ module.exports.testname_zh_Hans = {
         test.done();
     },
     testParseParenSuffixNameWithOtherSuffix2_zh_Hans: function(test) {
-        var parsed = new Name("王永慶外公 (Division A)", {locale: 'zh-Hans-CN'});
         test.expect(2);
+        var parsed = new Name("王永慶外公 (Division A)", {locale: 'zh-Hans-CN'});
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {
@@ -452,6 +452,7 @@ module.exports.testname_zh_Hans = {
         test.done();
     },
     testFormatParenSuffixNameShort_zh_Hans: function(test) {
+        test.expect(2);
         var name = new Name({
             prefix: null,
             givenName: "永慶",
@@ -462,7 +463,6 @@ module.exports.testname_zh_Hans = {
         
         var fmt = new NameFmt({style: "short", locale: 'zh-Hans-CN'});
         var formatted = fmt.format(name);
-        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "王永慶";
@@ -471,6 +471,7 @@ module.exports.testname_zh_Hans = {
         test.done();
     },
     testFormatParenSuffixNameLong_zh_Hans: function(test) {
+        test.expect(2);
         var name = new Name({
             prefix: null,
             givenName: "永慶",
@@ -481,7 +482,6 @@ module.exports.testname_zh_Hans = {
         
         var fmt = new NameFmt({style: "long", locale: 'zh-Hans-CN'});
         var formatted = fmt.format(name);
-        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "王永慶";
@@ -491,6 +491,7 @@ module.exports.testname_zh_Hans = {
     },
     
     testFormatParenSuffixNameFull_zh_Hans: function(test) {
+        test.expect(2);
         var name = new Name({
             prefix: null,
             givenName: "永慶",
@@ -501,7 +502,6 @@ module.exports.testname_zh_Hans = {
         
         var fmt = new NameFmt({style: "full", locale: 'zh-Hans-CN'});
         var formatted = fmt.format(name);
-        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "王永慶(Division A)";
@@ -511,6 +511,7 @@ module.exports.testname_zh_Hans = {
     },
     
     testFormatParenSuffixNameLong2_zh_Hans: function(test) {
+        test.expect(2);
         var name = new Name({
             prefix: null,
             givenName: "永慶",
@@ -521,7 +522,6 @@ module.exports.testname_zh_Hans = {
         
         var fmt = new NameFmt({style: "long", locale: 'zh-Hans-CN'});
         var formatted = fmt.format(name);
-        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "王永慶";
@@ -531,6 +531,7 @@ module.exports.testname_zh_Hans = {
     },
     
     testFormatParenSuffixNameFull2_zh_Hans: function(test) {
+        test.expect(2);
         var name = new Name({
             prefix: null,
             givenName: "永慶",
@@ -541,7 +542,6 @@ module.exports.testname_zh_Hans = {
         
         var fmt = new NameFmt({style: "full", locale: 'zh-Hans-CN'});
         var formatted = fmt.format(name);
-        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "王永慶 (Division A)";
@@ -551,6 +551,7 @@ module.exports.testname_zh_Hans = {
     },
     
     testFormatParenSuffixNameShortMultiple_zh_Hans: function(test) {
+        test.expect(2);
         var name = new Name({
             prefix: null,
             givenName: "永慶",
@@ -561,7 +562,6 @@ module.exports.testname_zh_Hans = {
         
         var fmt = new NameFmt({style: "short", locale: 'zh-Hans-CN'});
         var formatted = fmt.format(name);
-        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "王永慶";
@@ -570,6 +570,7 @@ module.exports.testname_zh_Hans = {
         test.done();
     },
     testFormatParenSuffixNameLongMultiple_zh_Hans: function(test) {
+        test.expect(2);
         var name = new Name({
             prefix: null,
             givenName: "永慶",
@@ -580,7 +581,6 @@ module.exports.testname_zh_Hans = {
         
         var fmt = new NameFmt({style: "full", locale: 'zh-Hans-CN'});
         var formatted = fmt.format(name);
-        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "王永慶外公(Division A)";
@@ -590,8 +590,8 @@ module.exports.testname_zh_Hans = {
     },
     
     testParseParenSuffixNameWithSpace_zh_Hans: function(test) {
-        var parsed = new Name("徐小凤 (Division A)", {locale: 'zh-Hans-CN'});
         test.expect(2);
+        var parsed = new Name("徐小凤 (Division A)", {locale: 'zh-Hans-CN'});
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {
@@ -605,8 +605,8 @@ module.exports.testname_zh_Hans = {
     },
     
     testParseCompoundFamilyName3_zh_Hans: function(test) {
-        var parsed = new Name("司马小凤", {locale: 'zh-Hans-CN'});
         test.expect(2);
+        var parsed = new Name("司马小凤", {locale: 'zh-Hans-CN'});
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {
@@ -618,8 +618,8 @@ module.exports.testname_zh_Hans = {
         test.done();
     },
     testParseCompoundFamilyName4_zh_Hans: function(test) {
-        var parsed = new Name("段干小凤", {locale: 'zh-Hans-CN'});
         test.expect(2);
+        var parsed = new Name("段干小凤", {locale: 'zh-Hans-CN'});
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {
@@ -633,8 +633,8 @@ module.exports.testname_zh_Hans = {
     
     
     testParseAmbiguousLengthFamilyName1_zh_Hans: function(test) {
-        var parsed = new Name("鍾小凤", {locale: 'zh-Hans-CN'});
         test.expect(2);
+        var parsed = new Name("鍾小凤", {locale: 'zh-Hans-CN'});
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {
@@ -647,8 +647,8 @@ module.exports.testname_zh_Hans = {
     },
     
     testParseAmbiguousLengthFamilyName2_zh_Hans: function(test) {
-        var parsed = new Name("鐘離小凤", {locale: 'zh-Hans-CN'});
         test.expect(2);
+        var parsed = new Name("鐘離小凤", {locale: 'zh-Hans-CN'});
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {
@@ -661,8 +661,8 @@ module.exports.testname_zh_Hans = {
     },
     
     testParseMissingNames1_zh_Hans: function(test) {
-        var parsed = new Name("曲小凤", {locale: 'zh-Hans-CN'});
         test.expect(2);
+        var parsed = new Name("曲小凤", {locale: 'zh-Hans-CN'});
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {
@@ -674,8 +674,8 @@ module.exports.testname_zh_Hans = {
         test.done();
     },
     testParseMissingNames2_zh_Hans: function(test) {
-        var parsed = new Name("揭小凤", {locale: 'zh-Hans-CN'});
         test.expect(2);
+        var parsed = new Name("揭小凤", {locale: 'zh-Hans-CN'});
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {
@@ -687,8 +687,8 @@ module.exports.testname_zh_Hans = {
         test.done();
     },
     testParseMissingNames3_zh_Hans: function(test) {
-        var parsed = new Name("关小凤", {locale: 'zh-Hans-CN'});
         test.expect(2);
+        var parsed = new Name("关小凤", {locale: 'zh-Hans-CN'});
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {

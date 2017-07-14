@@ -34,8 +34,8 @@ module.exports.testname_mn_Cyrl = {
     },
 
     testParseSimpleName_mn_Cyrl: function(test) {
-        var parsed = new Name("Цахиагийн Элбэгдорж", {locale: 'mn-Cyrl-MN'});
         test.expect(2);
+        var parsed = new Name("Цахиагийн Элбэгдорж", {locale: 'mn-Cyrl-MN'});
         test.ok(typeof(parsed) !== "undefined");
         
         var expected =   {
@@ -49,8 +49,8 @@ module.exports.testname_mn_Cyrl = {
     
     
     testParseAdjunctNames_mn_Cyrl: function(test) {
-        var parsed = new Name("Ноён ба Хатагтай Элбэгдорж", {locale: 'mn-Cyrl-MN'});
         test.expect(2);
+        var parsed = new Name("Ноён ба Хатагтай Элбэгдорж", {locale: 'mn-Cyrl-MN'});
         test.ok(typeof(parsed) !== "undefined");
         
         var expected =  {
@@ -63,8 +63,8 @@ module.exports.testname_mn_Cyrl = {
     },
     
     testParseSingleNameWithPrefixAndAdjunct_mn_Cyrl: function(test) {
-        var parsed = new Name("хатагтай Элбэгдорж", {locale: 'mn-Cyrl-MN'});
         test.expect(2);
+        var parsed = new Name("хатагтай Элбэгдорж", {locale: 'mn-Cyrl-MN'});
         test.ok(typeof(parsed) !== "undefined");
         
         var expected =   {
@@ -77,8 +77,8 @@ module.exports.testname_mn_Cyrl = {
     },
     
     testParseTitle_mn_Cyrl: function(test) {
-        var parsed = new Name("Цахиагийн Элбэгдорж 9-р", {locale: 'mn-Cyrl-MN'});
         test.expect(2);
+        var parsed = new Name("Цахиагийн Элбэгдорж 9-р", {locale: 'mn-Cyrl-MN'});
         test.ok(typeof(parsed) !== "undefined");
         
         var expected =    {
@@ -92,8 +92,8 @@ module.exports.testname_mn_Cyrl = {
     },
     
     testParseEverything_mn_Cyrl: function(test) {
-        var parsed = new Name("ц.э Цахиагийн Элбэгдорж ерөнхийлөгч", {locale: 'mn-Cyrl-MN'});
         test.expect(2);
+        var parsed = new Name("ц.э Цахиагийн Элбэгдорж ерөнхийлөгч", {locale: 'mn-Cyrl-MN'});
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {
@@ -112,6 +112,7 @@ module.exports.testname_mn_Cyrl = {
      */
     
     testFormatSimpleNameFull_mn_Cyrl: function(test) {
+        test.expect(2);
         var name = new Name({
             prefix: "mонгол Улсын Ерөнхийлөгч",
             givenName: "Цахиагийн",
@@ -123,7 +124,6 @@ module.exports.testname_mn_Cyrl = {
             locale: 'mn-Cyrl-MN'
         });
         var formatted = fmt.format(name);
-        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "mонгол Улсын Ерөнхийлөгч Цахиагийн Элбэгдорж 9-р";
@@ -133,6 +133,7 @@ module.exports.testname_mn_Cyrl = {
     },
     
     testFormatComplexNameShort_mn_Cyrl: function(test) {
+        test.expect(2);
         var name = new Name({
             prefix: "mонгол Улсын Ерөнхийлөгч",
             givenName: "Цахиагийн",
@@ -143,7 +144,6 @@ module.exports.testname_mn_Cyrl = {
             locale: 'mn-Cyrl-MN'
         });
         var formatted = fmt.format(name);
-        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "Цахиагийн Элбэгдорж";
@@ -153,6 +153,7 @@ module.exports.testname_mn_Cyrl = {
     },
     
     testFormatComplexNameMedium_mn_Cyrl: function(test) {
+        test.expect(2);
         var name = new Name({
             prefix: "mонгол Улсын Ерөнхийлөгч",
             givenName: "Цахиагийн",
@@ -163,7 +164,6 @@ module.exports.testname_mn_Cyrl = {
             locale: 'mn-Cyrl-MN'
         });
         var formatted = fmt.format(name);
-        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "Цахиагийн Элбэгдорж";
@@ -173,6 +173,7 @@ module.exports.testname_mn_Cyrl = {
     },
     
     testFormatComplexNameLong_mn_Cyrl: function(test) {
+        test.expect(2);
         var name = new Name({
             prefix: "mонгол Улсын Ерөнхийлөгч",
             givenName: "Цахиагийн",
@@ -183,7 +184,6 @@ module.exports.testname_mn_Cyrl = {
             locale: 'mn-Cyrl-MN'
         });
         var formatted = fmt.format(name);
-        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "mонгол Улсын Ерөнхийлөгч Цахиагийн Элбэгдорж";
@@ -193,6 +193,7 @@ module.exports.testname_mn_Cyrl = {
     },
     
     testFormatAsianNameShort_mn_Cyrl: function(test) {
+        test.expect(2);
         var name = new Name({
             prefix: "小",
             givenName: "獸",
@@ -203,7 +204,6 @@ module.exports.testname_mn_Cyrl = {
             locale: 'mn-Cyrl-MN'
         });
         var formatted = fmt.format(name);
-        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "地獸";
@@ -213,6 +213,7 @@ module.exports.testname_mn_Cyrl = {
     },
     
     testFormatAsianNameMedium_mn_Cyrl: function(test) {
+        test.expect(2);
         var name = new Name({
             prefix: "小",
             givenName: "獸",
@@ -223,7 +224,6 @@ module.exports.testname_mn_Cyrl = {
             locale: 'mn-Cyrl-MN'
         });
         var formatted = fmt.format(name);
-        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "地獸";
@@ -233,6 +233,7 @@ module.exports.testname_mn_Cyrl = {
     },
     
     testFormatAsianNameLong_mn_Cyrl: function(test) {
+        test.expect(2);
         var name = new Name({
             prefix: "小",
             givenName: "獸",
@@ -243,7 +244,6 @@ module.exports.testname_mn_Cyrl = {
             locale: 'mn-Cyrl-MN'
         });
         var formatted = fmt.format(name);
-        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "小地獸";

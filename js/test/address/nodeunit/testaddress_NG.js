@@ -34,9 +34,9 @@ module.exports.testaddress_NG = {
     },
 
     testParseAddressNGNormal: function(test) {
+        test.expect(7);
         var parsedAddress = new Address("Mr. Ben Tal 1234 Bauchu Road, Yelwa\nJOS 930283\nPLATEAU\nNIGERIA", {locale: 'en-NG'});
         
-        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Mr. Ben Tal 1234 Bauchu Road, Yelwa");
         test.equal(parsedAddress.locality, "JOS");
@@ -48,9 +48,9 @@ module.exports.testaddress_NG = {
     },
     
     testParseAddressNGNoZip: function(test) {
+        test.expect(7);
         var parsedAddress = new Address("Mr. Ben Tal 1234 Bauchu Road, Yelwa\nJOS PLATEAU\nNIGERIA", {locale: 'en-NG'});
         
-        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Mr. Ben Tal 1234 Bauchu Road, Yelwa");
         test.equal(parsedAddress.locality, "JOS");
@@ -62,9 +62,9 @@ module.exports.testaddress_NG = {
     },
     
     testParseAddressNGNoCountry: function(test) {
+        test.expect(7);
         var parsedAddress = new Address("Mr. Ben Tal 1234 Bauchu Road, Yelwa\nJOS 930283\nPLATEAU", {locale: 'en-NG'});
         
-        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Mr. Ben Tal 1234 Bauchu Road, Yelwa");
         test.equal(parsedAddress.locality, "JOS");
@@ -76,9 +76,9 @@ module.exports.testaddress_NG = {
     },
     
     testParseAddressNGManyLines: function(test) {
+        test.expect(7);
         var parsedAddress = new Address("Mr. Ben Tal\n1234 Bauchu Road\nYelwa\nJOS 930283\nPLATEAU\nNIGERIA", {locale: 'en-NG'});
         
-        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
           test.equal(parsedAddress.streetAddress, "Mr. Ben Tal, 1234 Bauchu Road, Yelwa");
         test.equal(parsedAddress.locality, "JOS");
@@ -90,9 +90,9 @@ module.exports.testaddress_NG = {
     },
     
     testParseAddressNGOneLine: function(test) {
+        test.expect(7);
         var parsedAddress = new Address("Mr. Ben Tal , 1234 Bauchu Road , Yelwa , JOS , 930283 , PLATEAU , NIGERIA", {locale: 'en-NG'});
         
-        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
           test.equal(parsedAddress.streetAddress, "Mr. Ben Tal, 1234 Bauchu Road, Yelwa");
         test.equal(parsedAddress.locality, "JOS");
@@ -104,9 +104,9 @@ module.exports.testaddress_NG = {
     },
     
     testParseAddressNGSuperfluousWhitespace: function(test) {
+        test.expect(7);
         var parsedAddress = new Address("Mr. Ben Tal\n\n\t1234 Bauchu RoadS\n\n\nYelwa\n\t\nJOS\t\t\r930283\r\r\n\rPLATEAU\t\t\rNIGERIA", {locale: 'en-NG'});
         
-        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
           test.equal(parsedAddress.streetAddress, "Mr. Ben Tal, 1234 Bauchu RoadS, Yelwa");
         test.equal(parsedAddress.locality, "JOS");
@@ -118,9 +118,9 @@ module.exports.testaddress_NG = {
     },
     
     testParseAddressNGNoDelimiters: function(test) {
+        test.expect(7);
         var parsedAddress = new Address("Mr. Ben Tal 1234 Bauchu Road, Yelwa JOS 930283\nPLATEAU NIGERIA", {locale: 'en-NG'});
         
-        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Mr. Ben Tal 1234 Bauchu Road, Yelwa");
         test.equal(parsedAddress.locality, "JOS");
@@ -132,9 +132,9 @@ module.exports.testaddress_NG = {
     },
     
     testParseAddressNGFromUS: function(test) {
+        test.expect(7);
         var parsedAddress = new Address("Mr. Ben Tal 1234 Bauchu Road, Yelwa\nJOS 930283\nPLATEAU\nNIGERIA", {locale: 'en-NG'});
         
-        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Mr. Ben Tal 1234 Bauchu Road, Yelwa");
         test.equal(parsedAddress.locality, "JOS");
@@ -146,6 +146,7 @@ module.exports.testaddress_NG = {
     },
     
     testFormatAddressNG: function(test) {
+        test.expect(1);
         var parsedAddress = new Address({
             streetAddress: "Mr. Ben Tal 1234 Bauchu Road, Yelwa",
             locality: "JOS",
@@ -157,12 +158,12 @@ module.exports.testaddress_NG = {
         
         var expected = "Mr. Ben Tal 1234 Bauchu Road, Yelwa\nJOS 930283\nPLATEAU\nNIGERIA";
         var formatter = new AddressFmt({locale: 'en-NG'});
-        test.expect(1);
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     },
     
     testFormatAddressNGFromUS: function(test) {
+        test.expect(1);
         var parsedAddress = new Address({
             streetAddress: "Mr. Ben Tal 1234 Bauchu Road, Yelwa",
             locality: "JOS",
@@ -174,7 +175,6 @@ module.exports.testaddress_NG = {
         
         var expected = "Mr. Ben Tal 1234 Bauchu Road, Yelwa\nJOS 930283\nPLATEAU\nNIGERIA";
         var formatter = new AddressFmt({locale: 'en-US'});
-        test.expect(1);
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     }

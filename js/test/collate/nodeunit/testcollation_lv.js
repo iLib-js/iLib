@@ -32,13 +32,13 @@ module.exports.testcollation_lv = {
     },
 
     testJSCollatorQuatUpper_lv: function(test) {
+        test.expect(33);
         var col = new Collator({
             locale: "lv-LV",
             useNative: false,
             sensitivity: "quaternary"
         });
     
-        test.expect(33);
         test.ok(typeof(col) !== "undefined");
     
         // AĀBCČDEĒFGĢHIYĪJKĶLĻMNŅO..RŖSŠTUŪVZŽ
@@ -80,13 +80,13 @@ module.exports.testcollation_lv = {
     },
     
     testJSCollatorQuatLower_lv: function(test) {
+        test.expect(33);
         var col = new Collator({
             locale: "lv-LV",
             useNative: false,
             sensitivity: "quaternary"
         });
     
-        test.expect(33);
         test.ok(typeof(col) !== "undefined");
     
         // AĀBCČDEĒFGĢHIYĪJKĶLĻMNŅO..RŖSŠTUŪVZŽ
@@ -130,6 +130,7 @@ module.exports.testcollation_lv = {
     // differences in umlauted characters should be primary differences
     
     testJSCollatorPrimaryUpper_lv: function(test) {
+        test.expect(33);
         var col = new Collator({
             locale: "lv-LV",
             useNative: false,
@@ -137,7 +138,6 @@ module.exports.testcollation_lv = {
             usage: "search"
         });
     
-        test.expect(33);
         test.ok(typeof(col) !== "undefined");
     
         test.ok("A < Ā",  col.compare("A", "Ā") < 0);
@@ -176,6 +176,7 @@ module.exports.testcollation_lv = {
     },
     
     testJSCollatorPrimaryOE_lv: function(test) {
+        test.expect(33);
         var col = new Collator({
             locale: "lv-LV",
             useNative: false,
@@ -183,7 +184,6 @@ module.exports.testcollation_lv = {
             usage: "search"
         });
     
-        test.expect(33);
         test.ok(typeof(col) !== "undefined");
     
         test.ok("a < ā",  col.compare("a", "ā") < 0);
@@ -222,13 +222,13 @@ module.exports.testcollation_lv = {
     },
     
     testCollatorNativeCase_lv: function(test) {
+        test.expect(2);
         var col = new Collator({
             locale: "lv-LV",
             useNative: false,
             sensitivity: "case",
             usage: "sort"
         });
-        test.expect(2);
         test.ok(typeof(col) !== "undefined");
     
         var input = [
@@ -383,6 +383,7 @@ module.exports.testcollation_lv = {
     },
     
     testCollatorNativeVariant_lv: function(test) {
+        test.expect(2);
         var col = new Collator({
             locale: "lv-LV",
             useNative: false,
@@ -390,7 +391,6 @@ module.exports.testcollation_lv = {
             upperFirst: true,
             usage: "sort"
         });
-        test.expect(2);
         test.ok(typeof(col) !== "undefined");
     
         var input = [

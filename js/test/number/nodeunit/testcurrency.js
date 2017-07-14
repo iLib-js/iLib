@@ -32,16 +32,16 @@ module.exports.testcurrency = {
     },
 
     testCurrencyConstructorEmpty: function(test) {
+        test.expect(1);
         var cur = new Currency();
     
-        test.expect(1);
         test.ok(cur !== null);
         test.done();
     },
     
     testCurrencyDefaults: function(test) {
-        var cur = new Currency();
         test.expect(7);
+        var cur = new Currency();
         test.ok(cur !== null);
     
         test.equal(cur.getCode(), "USD");
@@ -55,10 +55,10 @@ module.exports.testcurrency = {
     },
     
     testCurrencyGetByCode1: function(test) {
+        test.expect(6);
         var cur = new Currency({
             code: "EUR"
         });
-        test.expect(6);
         test.ok(cur !== null);
     
         test.equal(cur.getCode(), "EUR");
@@ -71,10 +71,10 @@ module.exports.testcurrency = {
     },
     
     testCurrencyGetByCode2: function(test) {
+        test.expect(6);
         var cur = new Currency({
             code: "JPY"
         });
-        test.expect(6);
         test.ok(cur !== null);
     
         test.equal(cur.getCode(), "JPY");
@@ -91,7 +91,7 @@ module.exports.testcurrency = {
             var cur = new Currency({
                 code: "xxx"
             });
-        test.fail()
+            test.fail();
         } catch (e) {
             test.equal(e, "currency xxx is unknown");
         }
@@ -99,10 +99,10 @@ module.exports.testcurrency = {
     },
     
     testCurrencyGetBySignUnambiguous: function(test) {
+        test.expect(6);
         var cur = new Currency({
             sign: "€"
         });
-        test.expect(6);
         test.ok(cur !== null);
     
         test.equal(cur.getCode(), "EUR");
@@ -115,11 +115,11 @@ module.exports.testcurrency = {
     },
     
     testCurrencyGetBySignAmbiguousCurrentLocale: function(test) {
+        test.expect(6);
         var cur = new Currency({
             locale: "en-CA",
             sign: "$"
         });
-        test.expect(6);
         test.ok(cur !== null);
     
         test.equal(cur.getCode(), "CAD");
@@ -132,11 +132,11 @@ module.exports.testcurrency = {
     },
     
     testCurrencyGetBySignAmbiguousNotCurrentLocale: function(test) {
+        test.expect(6);
         var cur = new Currency({
             locale: "en-GB",
             sign: "$"
         });
-        test.expect(6);
         test.ok(cur !== null);
     
         test.equal(cur.getCode(), "USD");
@@ -149,12 +149,12 @@ module.exports.testcurrency = {
     },
     
     testCurrencyAsync: function(test) {
+        test.expect(6);
         new Currency({
             locale: "en-GB",
             sign: "$",
             sync: false,
             onLoad: function (cur) {
-        test.expect(6);
                 test.ok(cur !== null);
     
                 test.equal(cur.getCode(), "USD");

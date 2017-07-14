@@ -32,41 +32,41 @@ module.exports.testjulianday = {
     },
 
     testJulianDayConstructor: function(test) {
+        test.expect(1);
         var jd = new JulianDay(1721791.25);  // jan 2, 2, 6:00pm
     
-        test.expect(1);
         test.ok(jd !== null);
         test.done();
     },
     
     /* julian date is 366 + epoch */
     testJulianDayGetDate: function(test) {
+        test.expect(1);
         var jd = new JulianDay(1721791.25);  // jan 2, 2, 6:00pm
     
-        test.expect(1);
         test.equal(jd.getDate(), 1721791.25);
         test.done();
     },
     
     testJulianDayGetDays: function(test) {
+        test.expect(1);
         var jd = new JulianDay(1721791.25);  // jan 2, 2, 6:00pm
     
-        test.expect(1);
         test.equal(jd.getDays(), 1721791);
         test.done();
     },
     
     testJulianDayGetDayFraction: function(test) {
+        test.expect(1);
         var jd = new JulianDay(1721791.25);  // jan 2, 2, 6:00pm
     
-        test.expect(1);
         test.equal(jd.getDayFraction(), 0.25);
         test.done();
     },
     
     testJulianDayAddDate: function(test) {
-        var jd = new JulianDay(1.25);
         test.expect(2);
+        var jd = new JulianDay(1.25);
         test.equal(jd.getDate(), 1.25);
         
         jd.addDate(83.2);
@@ -76,8 +76,8 @@ module.exports.testjulianday = {
     },
     
     testJulianDaySetDays: function(test) {
-        var jd = new JulianDay(1721791.25);  // jan 2, 2, 6:00pm
         test.expect(3);
+        var jd = new JulianDay(1721791.25);  // jan 2, 2, 6:00pm
         test.equal(jd.getDate(), 1721791.25);
         
         jd.setDays(2);
@@ -88,8 +88,8 @@ module.exports.testjulianday = {
     },
     
     testJulianDaySetDaysIgnoreFraction: function(test) {
-        var jd = new JulianDay(1721791.25);  // jan 2, 2, 6:00pm
         test.expect(3);
+        var jd = new JulianDay(1721791.25);  // jan 2, 2, 6:00pm
         test.equal(jd.getDate(), 1721791.25);
         
         jd.setDays(2.9);
@@ -100,8 +100,8 @@ module.exports.testjulianday = {
     },
     
     testJulianDaySetDayFraction: function(test) {
-        var jd = new JulianDay(1721791.25);  // jan 2, 2, 6:00pm
         test.expect(3);
+        var jd = new JulianDay(1721791.25);  // jan 2, 2, 6:00pm
         test.equal(jd.getDate(), 1721791.25);
         
         jd.setDayFraction(0.33);
@@ -112,8 +112,8 @@ module.exports.testjulianday = {
     },
     
     testJulianDaySetDayFractionWithWholeNumber: function(test) {
-        var jd = new JulianDay(1721791.25);  // jan 2, 2, 6:00pm
         test.expect(3);
+        var jd = new JulianDay(1721791.25);  // jan 2, 2, 6:00pm
         test.equal(jd.getDate(), 1721791.25);
         
         jd.setDayFraction(2.33);
@@ -124,8 +124,8 @@ module.exports.testjulianday = {
     },
     
     testJulianDaySetDate: function(test) {
-        var jd = new JulianDay(1721791.25);
         test.expect(2);
+        var jd = new JulianDay(1721791.25);
         test.equal(jd.getDate(), 1721791.25);
         
         jd.setDate(123.456);

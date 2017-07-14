@@ -34,9 +34,9 @@ module.exports.testaddress_IL = {
     },
 
     testParseAddressILNormal: function(test) {
+        test.expect(7);
         var parsedAddress = new Address("Yisrael Yisraeli\nHaDoar 1\nJerusalem 12345\nIsrael", {locale: 'he-IL'});
         
-        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Yisrael Yisraeli, HaDoar 1");
         test.equal(parsedAddress.locality, "Jerusalem");
@@ -48,9 +48,9 @@ module.exports.testaddress_IL = {
     },
     
     testParseAddressILNoCountry: function(test) {
+        test.expect(7);
         var parsedAddress = new Address("Yisrael Yisraeli, HaDoar 1\nJerusalem 12345", {locale: 'he-IL'});
         
-        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Yisrael Yisraeli, HaDoar 1");
         test.equal(parsedAddress.locality, "Jerusalem");
@@ -64,9 +64,9 @@ module.exports.testaddress_IL = {
     
     
     testParseAddressILOneLine: function(test) {
+        test.expect(7);
         var parsedAddress = new Address("R.O.Y. International , PO Box 13056, TEL-AVIV ISL-61130, Israel", {locale: 'he-IL'});
         
-        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "R.O.Y. International, PO Box 13056");
         test.equal(parsedAddress.locality, "TEL-AVIV");
@@ -78,9 +78,9 @@ module.exports.testaddress_IL = {
     },
     
     testParseAddressILSuperfluousWhitespace: function(test) {
+        test.expect(7);
         var parsedAddress = new Address("\t\t\tR.O.Y. International\n\t\nPO Box 13056\n \r\n\r\rTEL-AVIV    ISL-61130\r\r\n    Israel\t\n\n\n", {locale: 'he-IL'});
         
-        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "R.O.Y. International, PO Box 13056");
         test.equal(parsedAddress.locality, "TEL-AVIV");
@@ -92,9 +92,9 @@ module.exports.testaddress_IL = {
     },
     
     testParseAddressILNoDelimiters: function(test) {
+        test.expect(7);
         var parsedAddress = new Address("R.O.Y. International PO Box 13056 TEL-AVIV ISL-61130 Israel", {locale: 'he-IL'});
         
-        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "R.O.Y. International PO Box 13056");
         test.equal(parsedAddress.locality, "TEL-AVIV");
@@ -107,9 +107,9 @@ module.exports.testaddress_IL = {
     
     /*
     testParseAddressILSpecialChars: function(test) {
+        test.expect(7);
         var parsedAddress = new Address("Työpajankatu 13,IL-00580 Helsinki, Israel", {locale: 'he-IL'});
         
-        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Työpajankatu 13");
         test.equal(parsedAddress.locality, "Helsinki");
@@ -122,9 +122,9 @@ module.exports.testaddress_IL = {
     */
     
     testParseAddressILFromUS: function(test) {
+        test.expect(7);
         var parsedAddress = new Address("R.O.Y. International\nPO Box 13056\nTEL-AVIV, Israel", {locale: 'en-US'});
         
-        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "R.O.Y. International, PO Box 13056");
         test.equal(parsedAddress.locality, "TEL-AVIV");
@@ -136,6 +136,7 @@ module.exports.testaddress_IL = {
     },
     
     testFormatAddressIL: function(test) {
+        test.expect(1);
         var parsedAddress = new Address({
             streetAddress: "R.O.Y. International, PO Box 13056",
             locality: "TEL-AVIV",
@@ -145,7 +146,6 @@ module.exports.testaddress_IL = {
         
         var expected = "R.O.Y. International, PO Box 13056\nTEL-AVIV\nIsrael";
         var formatter = new AddressFmt({locale: 'he-IL'});
-        test.expect(1);
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     },
@@ -153,6 +153,7 @@ module.exports.testaddress_IL = {
     
     
     testFormatAddressILFromUS: function(test) {
+        test.expect(1);
         var parsedAddress = new Address({
             streetAddress: "R.O.Y. International, PO Box 13056, Albertinkatu 36 B",
             locality: "TEL-AVIV",
@@ -162,7 +163,6 @@ module.exports.testaddress_IL = {
         
         var expected = "R.O.Y. International, PO Box 13056, Albertinkatu 36 B\nTEL-AVIV\nIsrael";
         var formatter = new AddressFmt({locale: 'en-US'});
-        test.expect(1);
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     }

@@ -34,6 +34,7 @@ module.exports.phonefmt_BR = {
     },
 
     testFormatBRStyle0: function(test) {
+        test.expect(1);
         var formatted;
         var parsed = new PhoneNumber("0211123456789", {locale:"pt-BR"});
         var expected = "0 21 11 2345-6789";
@@ -41,12 +42,12 @@ module.exports.phonefmt_BR = {
         var fmt = new PhoneFmt({locale: "pt-BR", style: "default"});
         formatted = fmt.format(parsed);
         
-        test.expect(1);
         test.equal(formatted, expected);
         test.done();
     },
     
     testFormatBRStyle1: function(test) {
+        test.expect(1);
         var formatted;
         var parsed = new PhoneNumber("06687954567", {locale: "pt-BR"});
         var expected = "066 8795-4567";
@@ -54,12 +55,12 @@ module.exports.phonefmt_BR = {
         var fmt = new PhoneFmt({locale: "pt-BR", style: "default"});
         formatted = fmt.format(parsed);
         
-        test.expect(1);
         test.equal(formatted, expected);
         test.done();
     },
     
     testFormatBRInternational: function(test) {
+        test.expect(1);
         var formatted;
         var parsed = new PhoneNumber("+556123456789", {locale: "pt-BR"});
         
@@ -68,12 +69,12 @@ module.exports.phonefmt_BR = {
         var fmt = new PhoneFmt({locale: "pt-BR", style: "default"});
         formatted = fmt.format(parsed);
         
-        test.expect(1);
         test.equal(formatted, expected);
         test.done();
     },
     
     testFormatBRInternational: function(test) {
+        test.expect(1);
         var formatted;
         var parsed = new PhoneNumber("004114084567890", {locale: "pt-BR"});
         
@@ -82,12 +83,12 @@ module.exports.phonefmt_BR = {
         var fmt = new PhoneFmt({locale: "pt-BR", style: "default"});
         formatted = fmt.format(parsed);
         
-        test.expect(1);
         test.equal(formatted, expected);
         test.done();
     },
     
     testFormatBRInternationalAccessCode: function(test) {
+        test.expect(1);
         var formatted;
         var parsed = new PhoneNumber({
             iddPrefix: "0041",
@@ -100,12 +101,12 @@ module.exports.phonefmt_BR = {
         var fmt = new PhoneFmt({locale: "pt-BR", style: "default"});
         formatted = fmt.format(parsed);
         
-        test.expect(1);
         test.equal(formatted, expected);
         test.done();
     },
     
     testFormatBRLongAreaCode: function(test) {
+        test.expect(1);
         var formatted;
         var parsed = new PhoneNumber("0211123456789", {locale:"pt-BR"});
         var expected = "0 21 11 2345-6789";
@@ -113,12 +114,12 @@ module.exports.phonefmt_BR = {
         var fmt = new PhoneFmt({locale: "pt-BR", style: "default"});
         formatted = fmt.format(parsed);
         
-        test.expect(1);
         test.equal(formatted, expected);
         test.done();
     },
     
     testFormatBRMobile: function(test) {
+        test.expect(1);
         var formatted;
         var parsed = new PhoneNumber("923456789", {locale: "pt-BR"});
         var expected = "92345-6789";
@@ -126,12 +127,12 @@ module.exports.phonefmt_BR = {
         var fmt = new PhoneFmt({locale: "pt-BR", style: "default"});
         formatted = fmt.format(parsed);
         
-        test.expect(1);
         test.equal(formatted, expected);
         test.done();
     },
     
     testFormatBRMobileInternational: function(test) {
+        test.expect(1);
         var formatted;
         var parsed = new PhoneNumber("+5511901456789");
         var expected = "+55 11 90145-6789";
@@ -139,12 +140,12 @@ module.exports.phonefmt_BR = {
         var fmt = new PhoneFmt({locale: "pt-BR", style: "default"});
         formatted = fmt.format(parsed);
         
-        test.expect(1);
         test.equal(formatted, expected);
         test.done();
     },
     
     testFormatBRService: function(test) {
+        test.expect(1);
         var formatted;
         var parsed = new PhoneNumber("03002345678", {locale: "pt-BR"});
         var expected = "0300-234-5678";
@@ -152,12 +153,12 @@ module.exports.phonefmt_BR = {
         var fmt = new PhoneFmt({locale: "pt-BR", style: "default"});
         formatted = fmt.format(parsed);
         
-        test.expect(1);
         test.equal(formatted, expected);
         test.done();
     },
     
     testFormatBREmergency1: function(test) {
+        test.expect(1);
         var formatted;
         var parsed = new PhoneNumber("192", {locale: "pt-BR"});
         var expected = "192";
@@ -165,12 +166,12 @@ module.exports.phonefmt_BR = {
         var fmt = new PhoneFmt({locale: "pt-BR", style: "default"});
         formatted = fmt.format(parsed);
         
-        test.expect(1);
         test.equal(formatted, expected);
         test.done();
     },
     
     testFormatBREmergency2: function(test) {
+        test.expect(1);
         var formatted;
         var parsed = new PhoneNumber("198", {locale: "pt-BR"});
         var expected = "198";
@@ -178,12 +179,12 @@ module.exports.phonefmt_BR = {
         var fmt = new PhoneFmt({locale: "pt-BR", style: "default"});
         formatted = fmt.format(parsed);
         
-        test.expect(1);
         test.equal(formatted, expected);
         test.done();
     },
     
     testFormatBRIEIDD: function(test) {
+        test.expect(1);
         var formatted;
         var parsed = new PhoneNumber("+35311234567", {locale: "pt-BR"});
         var expected = "+353 1 123 4567";
@@ -191,12 +192,12 @@ module.exports.phonefmt_BR = {
         var fmt = new PhoneFmt({locale: "pt-BR", style: "default"});
         formatted = fmt.format(parsed);
         
-        test.expect(1);
         test.equal(formatted, expected);
         test.done();
     },
     
     testFormatBRStyle0Partial0: function(test) {
+        test.expect(1);
         var formatted;
         var parsed = new PhoneNumber("0", {locale:"pt-BR"});
         
@@ -205,12 +206,12 @@ module.exports.phonefmt_BR = {
         var fmt = new PhoneFmt({locale: "pt-BR", style: "default"});
         formatted = fmt.format(parsed, {partial: true});
         
-        test.expect(1);
         test.equal(formatted, expected);
         test.done();
     },
     
     testFormatBRStyle0Partial1: function(test) {
+        test.expect(1);
         var formatted;
         var parsed = new PhoneNumber("02", {locale:"pt-BR"});
         var expected = "02";
@@ -218,12 +219,12 @@ module.exports.phonefmt_BR = {
         var fmt = new PhoneFmt({locale: "pt-BR", style: "default"});
         formatted = fmt.format(parsed, {partial: true});
         
-        test.expect(1);
         test.equal(formatted, expected);
         test.done();
     },
     
     testFormatBRStyle0Partial2: function(test) {
+        test.expect(1);
         var formatted;
         var parsed = new PhoneNumber("021", {locale:"pt-BR"});
         var expected = "0 21 ";
@@ -231,12 +232,12 @@ module.exports.phonefmt_BR = {
         var fmt = new PhoneFmt({locale: "pt-BR", style: "default"});
         formatted = fmt.format(parsed, {partial: true});
         
-        test.expect(1);
         test.equal(formatted, expected);
         test.done();
     },
     
     testFormatBRStyle0Partial3: function(test) {
+        test.expect(1);
         var formatted;
         var parsed = new PhoneNumber("0211", {locale:"pt-BR"});
         var expected = "0 21 1";
@@ -244,12 +245,12 @@ module.exports.phonefmt_BR = {
         var fmt = new PhoneFmt({locale: "pt-BR", style: "default"});
         formatted = fmt.format(parsed, {partial: true});
         
-        test.expect(1);
         test.equal(formatted, expected);
         test.done();
     },
     
     testFormatBRStyle0Partial4: function(test) {
+        test.expect(1);
         var formatted;
         var parsed = new PhoneNumber("02111", {locale: "pt-BR"});
         var expected = "0 21 11";
@@ -257,12 +258,12 @@ module.exports.phonefmt_BR = {
         var fmt = new PhoneFmt({locale: "pt-BR", style: "default"});
         formatted = fmt.format(parsed, {partial: true});
         
-        test.expect(1);
         test.equal(formatted, expected);
         test.done();
     },
     
     testFormatBRStyle0Partial5: function(test) {
+        test.expect(1);
         var formatted;
         var parsed = new PhoneNumber("02111", {locale: "pt-BR"});
         var expected = "0 21 11";
@@ -270,12 +271,12 @@ module.exports.phonefmt_BR = {
         var fmt = new PhoneFmt({locale: "pt-BR", style: "default"});
         formatted = fmt.format(parsed, {partial: true});
         
-        test.expect(1);
         test.equal(formatted, expected);
         test.done();
     },
     
     testFormatBRStyle0Partial6: function(test) {
+        test.expect(1);
         var formatted;
         var parsed = new PhoneNumber("021112", {locale: "pt-BR"});
         var expected = "0 21 112";
@@ -283,12 +284,12 @@ module.exports.phonefmt_BR = {
         var fmt = new PhoneFmt({locale: "pt-BR", style: "default"});
         formatted = fmt.format(parsed, {partial: true});
         
-        test.expect(1);
         test.equal(formatted, expected);
         test.done();
     },
     
     testFormatBRStyle0Partial7: function(test) {
+        test.expect(1);
         var formatted;
         var parsed = new PhoneNumber("0211123", {locale: "pt-BR"});
         var expected = "0 21 112-3";
@@ -296,12 +297,12 @@ module.exports.phonefmt_BR = {
         var fmt = new PhoneFmt({locale: "pt-BR", style: "default"});
         formatted = fmt.format(parsed, {partial: true});
         
-        test.expect(1);
         test.equal(formatted, expected);
         test.done();
     },
     
     testFormatBRStyle0Partial8: function(test) {
+        test.expect(1);
         var formatted;
         var parsed = new PhoneNumber("02111234", {locale: "pt-BR"});
         var expected = "0 21 112-34";
@@ -309,12 +310,12 @@ module.exports.phonefmt_BR = {
         var fmt = new PhoneFmt({locale: "pt-BR", style: "default"});
         formatted = fmt.format(parsed, {partial: true});
         
-        test.expect(1);
         test.equal(formatted, expected);
         test.done();
     },
     
     testFormatBRStyle0Partial9: function(test) {
+        test.expect(1);
         var formatted;
         var parsed = new PhoneNumber("021112345", {locale: "pt-BR"});
         var expected = "0 21 112-345";
@@ -322,12 +323,12 @@ module.exports.phonefmt_BR = {
         var fmt = new PhoneFmt({locale: "pt-BR", style: "default"});
         formatted = fmt.format(parsed, {partial: true});
         
-        test.expect(1);
         test.equal(formatted, expected);
         test.done();
     },
     
     testFormatBRStyle0Partial10: function(test) {
+        test.expect(1);
         var formatted;
         var parsed = new PhoneNumber("0211123456", {locale: "pt-BR"});
         var expected = "0 21 112-3456";
@@ -335,12 +336,12 @@ module.exports.phonefmt_BR = {
         var fmt = new PhoneFmt({locale: "pt-BR", style: "default"});
         formatted = fmt.format(parsed, {partial: true});
         
-        test.expect(1);
         test.equal(formatted, expected);
         test.done();
     },
     
     testFormatBRStyle0Partial11: function(test) {
+        test.expect(1);
         var formatted;
         var parsed = new PhoneNumber("02111234567", {locale: "pt-BR"});
         var expected = "0 21 1123-4567";
@@ -348,12 +349,12 @@ module.exports.phonefmt_BR = {
         var fmt = new PhoneFmt({locale: "pt-BR", style: "default"});
         formatted = fmt.format(parsed, {partial: true});
         
-        test.expect(1);
         test.equal(formatted, expected);
         test.done();
     },
     
     testFormatBRStyle0Partial12: function(test) {
+        test.expect(1);
         var formatted;
         var parsed = new PhoneNumber("021112345678", {locale: "pt-BR"});
         var expected = "0 21 11 234-5678";
@@ -361,12 +362,12 @@ module.exports.phonefmt_BR = {
         var fmt = new PhoneFmt({locale: "pt-BR", style: "default"});
         formatted = fmt.format(parsed, {partial: true});
         
-        test.expect(1);
         test.equal(formatted, expected);
         test.done();
     },
     
     testFormatBRStyle0Partial13: function(test) {
+        test.expect(1);
         var formatted;
         var parsed = new PhoneNumber("0211123456789", {locale: "pt-BR"});
         var expected = "0 21 11 2345-6789";
@@ -374,12 +375,12 @@ module.exports.phonefmt_BR = {
         var fmt = new PhoneFmt({locale: "pt-BR", style: "default"});
         formatted = fmt.format(parsed, {partial: true});
         
-        test.expect(1);
         test.equal(formatted, expected);
         test.done();
     },
     
     testFormatBRStyle0Whole0: function(test) {
+        test.expect(1);
         var formatted;
         var parsed = new PhoneNumber({
             trunkAccess: "0"
@@ -389,12 +390,12 @@ module.exports.phonefmt_BR = {
         var fmt = new PhoneFmt({locale: "pt-BR", style: "default"});
         formatted = fmt.format(parsed, {partial: false});
         
-        test.expect(1);
         test.equal(formatted, expected);
         test.done();
     },
     
     testFormatBRStyle0Whole1: function(test) {
+        test.expect(1);
         var formatted;
         var parsed = new PhoneNumber("02", {locale: "pt-BR"});
         var expected = "02";
@@ -402,12 +403,12 @@ module.exports.phonefmt_BR = {
         var fmt = new PhoneFmt({locale: "pt-BR", style: "default"});
         formatted = fmt.format(parsed, {partial: false});
         
-        test.expect(1);
         test.equal(formatted, expected);
         test.done();
     },
     
     testFormatBRStyle0Whole2: function(test) {
+        test.expect(1);
         var formatted;
         var parsed = new PhoneNumber("021", {locale: "pt-BR"});
         var expected = "0 21 ";
@@ -415,12 +416,12 @@ module.exports.phonefmt_BR = {
         var fmt = new PhoneFmt({locale: "pt-BR", style: "default"});
         formatted = fmt.format(parsed, {partial: false});
         
-        test.expect(1);
         test.equal(formatted, expected);
         test.done();
     },
     
     testFormatBRStyle0Whole3: function(test) {
+        test.expect(1);
         var formatted;
         var parsed = new PhoneNumber("0211", {locale: "pt-BR"});
         var expected = "0 21 1";
@@ -428,12 +429,12 @@ module.exports.phonefmt_BR = {
         var fmt = new PhoneFmt({locale: "pt-BR", style: "default"});
         formatted = fmt.format(parsed, {partial: false});
         
-        test.expect(1);
         test.equal(formatted, expected);
         test.done();
     },
     
     testFormatBRStyle0Whole4: function(test) {
+        test.expect(1);
         var formatted;
         var parsed = new PhoneNumber("02111", {locale: "pt-BR"});
             
@@ -442,12 +443,12 @@ module.exports.phonefmt_BR = {
         var fmt = new PhoneFmt({locale: "pt-BR", style: "default"});
         formatted = fmt.format(parsed, {partial: false});
         
-        test.expect(1);
         test.equal(formatted, expected);
         test.done();
     },
     
     testFormatBRStyle0Whole5: function(test) {
+        test.expect(1);
         var formatted;
         var parsed = new PhoneNumber("021112", {locale: "pt-BR"});
         var expected = "0 21 112";
@@ -455,12 +456,12 @@ module.exports.phonefmt_BR = {
         var fmt = new PhoneFmt({locale: "pt-BR", style: "default"});
         formatted = fmt.format(parsed, {partial: false});
         
-        test.expect(1);
         test.equal(formatted, expected);
         test.done();
     },
     
     testFormatBRStyle0Whole6: function(test) {
+        test.expect(1);
         var formatted;
         var parsed = new PhoneNumber("0211123", {locale: "pt-BR"});
         var expected = "0 21 1123";
@@ -468,12 +469,12 @@ module.exports.phonefmt_BR = {
         var fmt = new PhoneFmt({locale: "pt-BR", style: "default"});
         formatted = fmt.format(parsed, {partial: false});
         
-        test.expect(1);
         test.equal(formatted, expected);
         test.done();
     },
     
     testFormatBRStyle0Whole7: function(test) {
+        test.expect(1);
         var formatted;
         var parsed = new PhoneNumber("02111234", {locale: "pt-BR"});
         var expected = "0 21 11-234";
@@ -481,12 +482,12 @@ module.exports.phonefmt_BR = {
         var fmt = new PhoneFmt({locale: "pt-BR", style: "default"});
         formatted = fmt.format(parsed, {partial: false});
         
-        test.expect(1);
         test.equal(formatted, expected);
         test.done();
     },
     
     testFormatBRStyle0Whole8: function(test) {
+        test.expect(1);
         var formatted;
         var parsed = new PhoneNumber("021112345", {locale: "pt-BR"});
         var expected = "0 21 112-345";
@@ -494,12 +495,12 @@ module.exports.phonefmt_BR = {
         var fmt = new PhoneFmt({locale: "pt-BR", style: "default"});
         formatted = fmt.format(parsed, {partial: false});
         
-        test.expect(1);
         test.equal(formatted, expected);
         test.done();
     },
     
     testFormatBRStyle0Whole9: function(test) {
+        test.expect(1);
         var formatted;
         var parsed = new PhoneNumber("0211123456", {locale: "pt-BR"});
         var expected = "0 21 112-3456";
@@ -507,11 +508,11 @@ module.exports.phonefmt_BR = {
         var fmt = new PhoneFmt({locale: "pt-BR", style: "default"});
         formatted = fmt.format(parsed, {partial: false});
         
-        test.expect(1);
         test.equal(formatted, expected);
         test.done();
     },
     testFormatBRStyle0Whole10: function(test) {
+        test.expect(1);
         var formatted;
         var parsed = new PhoneNumber("02111234567", {locale: "pt-BR"});
         var expected = "0 21 1123-4567";
@@ -519,12 +520,12 @@ module.exports.phonefmt_BR = {
         var fmt = new PhoneFmt({locale: "pt-BR", style: "default"});
         formatted = fmt.format(parsed, {partial: false});
         
-        test.expect(1);
         test.equal(formatted, expected);
         test.done();
     },
     
     testFormatBRStyle0Whole11: function(test) {
+        test.expect(1);
         var formatted;
         var parsed = new PhoneNumber("021112345678", {locale: "pt-BR"});
         var expected = "0 21 11 234-5678";
@@ -532,12 +533,12 @@ module.exports.phonefmt_BR = {
         var fmt = new PhoneFmt({locale: "pt-BR", style: "default"});
         formatted = fmt.format(parsed, {partial: false});
         
-        test.expect(1);
         test.equal(formatted, expected);
         test.done();
     },
     
     testFormatBRStyle0Whole12: function(test) {
+        test.expect(1);
         var formatted;
         var parsed = new PhoneNumber("0211123456789", {locale: "pt-BR"});
         var expected = "0 21 11 2345-6789";
@@ -545,12 +546,12 @@ module.exports.phonefmt_BR = {
         var fmt = new PhoneFmt({locale: "pt-BR", style: "default"});
         formatted = fmt.format(parsed, {partial: false});
         
-        test.expect(1);
         test.equal(formatted, expected);
         test.done();
     },
     
     testFormatBRStyle0Whole13: function(test) {
+        test.expect(1);
         var formatted;
         var parsed = new PhoneNumber("0211123456789766", {locale: "pt-BR"});
         var expected = "0211123456789766";
@@ -558,12 +559,12 @@ module.exports.phonefmt_BR = {
         var fmt = new PhoneFmt({locale: "pt-BR", style: "default"});
         formatted = fmt.format(parsed, {partial: false});
         
-        test.expect(1);
         test.equal(formatted, expected);
         test.done();
     },
     
     testFormatBRStyle0PartialLocal1: function(test) {
+        test.expect(1);
         var formatted;
         var parsed = new PhoneNumber("2", {locale: "pt-BR"});
         var expected = "2";
@@ -571,11 +572,11 @@ module.exports.phonefmt_BR = {
         var fmt = new PhoneFmt({locale: "pt-BR", style: "default"});
         formatted = fmt.format(parsed, {partial: true});
         
-        test.expect(1);
         test.equal(formatted, expected);
         test.done();
     },
     testFormatBRStyle0PartialLocal2: function(test) {
+        test.expect(1);
         var formatted;
         var parsed = new PhoneNumber("23", {locale: "pt-BR"});
         var expected = "23";
@@ -583,11 +584,11 @@ module.exports.phonefmt_BR = {
         var fmt = new PhoneFmt({locale: "pt-BR", style: "default"});
         formatted = fmt.format(parsed, {partial: true});
         
-        test.expect(1);
         test.equal(formatted, expected);
         test.done();
     },
     testFormatBRStyle0PartialLocal3: function(test) {
+        test.expect(1);
         var formatted;
         var parsed = new PhoneNumber("234", {locale: "pt-BR"});
         var expected = "234";
@@ -595,11 +596,11 @@ module.exports.phonefmt_BR = {
         var fmt = new PhoneFmt({locale: "pt-BR", style: "default"});
         formatted = fmt.format(parsed, {partial: true});
         
-        test.expect(1);
         test.equal(formatted, expected);
         test.done();
     },
     testFormatBRStyle0PartialLocal4: function(test) {
+        test.expect(1);
         var formatted;
         var parsed = new PhoneNumber("2345", {locale: "pt-BR"});
         var expected = "234-5";
@@ -607,11 +608,11 @@ module.exports.phonefmt_BR = {
         var fmt = new PhoneFmt({locale: "pt-BR", style: "default"});
         formatted = fmt.format(parsed, {partial: true});
         
-        test.expect(1);
         test.equal(formatted, expected);
         test.done();
     },
     testFormatBRStyle0PartialLocal5: function(test) {
+        test.expect(1);
         var formatted;
         var parsed = new PhoneNumber("23456", {locale: "pt-BR"});
         var expected = "234-56";
@@ -619,11 +620,11 @@ module.exports.phonefmt_BR = {
         var fmt = new PhoneFmt({locale: "pt-BR", style: "default"});
         formatted = fmt.format(parsed, {partial: true});
         
-        test.expect(1);
         test.equal(formatted, expected);
         test.done();
     },
     testFormatBRStyle0PartialLocal6: function(test) {
+        test.expect(1);
         var formatted;
         var parsed = new PhoneNumber("234567", {locale: "pt-BR"});
         var expected = "234-567";
@@ -631,11 +632,11 @@ module.exports.phonefmt_BR = {
         var fmt = new PhoneFmt({locale: "pt-BR", style: "default"});
         formatted = fmt.format(parsed, {partial: true});
         
-        test.expect(1);
         test.equal(formatted, expected);
         test.done();
     },
     testFormatBRStyle0PartialLocal7: function(test) {
+        test.expect(1);
         var formatted;
         var parsed = new PhoneNumber("2345678", {locale: "pt-BR"});
         var expected = "234-5678";
@@ -643,11 +644,11 @@ module.exports.phonefmt_BR = {
         var fmt = new PhoneFmt({locale: "pt-BR", style: "default"});
         formatted = fmt.format(parsed, {partial: true});
         
-        test.expect(1);
         test.equal(formatted, expected);
         test.done();
     },
     testFormatBRStyle0PartialLocal8: function(test) {
+        test.expect(1);
         var formatted;
         var parsed = new PhoneNumber("23456789", {locale: "pt-BR"});
         var expected = "2345-6789";
@@ -655,12 +656,12 @@ module.exports.phonefmt_BR = {
         var fmt = new PhoneFmt({locale: "pt-BR", style: "default"});
         formatted = fmt.format(parsed, {partial: true});
         
-        test.expect(1);
         test.equal(formatted, expected);
         test.done();
     },
     
     testFormatBRStyle0PartialLocal9: function(test) {
+        test.expect(1);
         var formatted;
         var parsed = new PhoneNumber("234567898", {locale: "pt-BR"});
         var expected = "234567898";    // use last resort rule
@@ -668,7 +669,6 @@ module.exports.phonefmt_BR = {
         var fmt = new PhoneFmt({locale: "pt-BR", style: "default"});
         formatted = fmt.format(parsed, {partial: true});
         
-        test.expect(1);
         test.equal(formatted, expected);
         test.done();
     }

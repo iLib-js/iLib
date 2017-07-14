@@ -18,7 +18,7 @@
  */
 
 if (typeof(ilib) === "undefined") {
-    var ilib = require("../.././../lib/ilib.js");
+    var ilib = require("../.././../lib/ilib-node.js");
 }
 if (typeof(RataDie) === "undefined") {
     var RataDie = require("../.././../lib/RataDie.js");
@@ -115,7 +115,7 @@ module.exports.testastro = {
         var l;
         Astro.initAstro(true, undefined, undefined);
         for (var i = 0; i < testDatesAstro1.length; i++) {
-        // console.log("testing jd=" + testDatesAstro1[i][0]);
+            // console.log("testing jd=" + testDatesAstro1[i][0]);
             l = Astro._ephemerisCorrection(testDatesAstro1[i][0]);
             test.roughlyEqual(l, testDatesAstro1[i][1], 1e-14, "testing ephemeris correction for " + testDatesAstro1[i][0]);
         } 
@@ -126,7 +126,7 @@ module.exports.testastro = {
         var l;
         Astro.initAstro(true, undefined, undefined);
         for (var i = 0; i < testDatesAstro1.length; i++) {
-        // console.log("testing jd=" + testDatesAstro1[i][0]);
+            // console.log("testing jd=" + testDatesAstro1[i][0]);
             l = Astro._julianCenturies(testDatesAstro1[i][0]);
             test.roughlyEqual(l, testDatesAstro1[i][2], 1e-14, "testing julian centuries for " + testDatesAstro1[i][0]);
         } 
@@ -137,7 +137,7 @@ module.exports.testastro = {
         var c, l;
         Astro.initAstro(true, undefined, undefined);
         for (var i = 0; i < testDatesAstro1.length; i++) {
-        // console.log("testing jd=" + testDatesAstro1[i][0]);
+            // console.log("testing jd=" + testDatesAstro1[i][0]);
             c = Astro._julianCenturies(testDatesAstro1[i][0]);
             l = Astro._nutation2(c);
             test.roughlyEqual(l, testDatesAstro1[i][3], 1e-14, "testing nutation for " + testDatesAstro1[i][0]);
@@ -149,7 +149,7 @@ module.exports.testastro = {
         var c, l;
         Astro.initAstro(true, undefined, undefined);
         for (var i = 0; i < testDatesAstro1.length; i++) {
-        // console.log("testing jd=" + testDatesAstro1[i][0]);
+            // console.log("testing jd=" + testDatesAstro1[i][0]);
             c = Astro._julianCenturies(testDatesAstro1[i][0]);
             l = Astro._aberration(c);
             test.roughlyEqual(l, testDatesAstro1[i][4], 1e-14, "testing abberation for " + testDatesAstro1[i][0]);
@@ -162,7 +162,7 @@ module.exports.testastro = {
         Astro.initAstro(true, undefined, undefined);
         for (var i = 0; i < testDatesAstro1.length; i++) {
         
-        // console.log("testing jd=" + testDatesAstro1[i][0]);
+            // console.log("testing jd=" + testDatesAstro1[i][0]);
             //try {
             l = Astro._solarLongitude(testDatesAstro1[i][0]);
             test.roughlyEqual(l, testDatesAstro1[i][5], 1e-9, "testing solar longitude for " + testDatesAstro1[i][0]);
@@ -179,7 +179,7 @@ module.exports.testastro = {
         Astro.initAstro(true, undefined, undefined);
         for (var i = 0; i < testDatesAstro1.length; i++) {
         
-        // console.log("testing jd=" + testDatesAstro1[i][0]);
+            // console.log("testing jd=" + testDatesAstro1[i][0]);
             //try {
             l = Astro._nextSolarLongitude(testDatesAstro1[i][0], 90.0) - RataDie.gregorianEpoch;
             test.roughlyEqual(l, testDatesAstro1[i][6], 1e-5, "testing next solar longitude for " + testDatesAstro1[i][0]);
@@ -196,7 +196,7 @@ module.exports.testastro = {
         Astro.initAstro(true, undefined, undefined);
         for (var i = 0; i < testDatesAstro2.length; i++) {
         
-        // console.log("testing jd=" + testDatesAstro2[i][0]);
+            // console.log("testing jd=" + testDatesAstro2[i][0]);
             //try {
             var jd = testDatesAstro2[i][0]
             var rd = jd - RataDie.gregorianEpoch;
@@ -214,7 +214,7 @@ module.exports.testastro = {
         Astro.initAstro(true, undefined, undefined);
         for (var i = 0; i < testDatesAstro2.length; i++) {
         
-        // console.log("testing jd=" + testDatesAstro2[i][0]);
+            // console.log("testing jd=" + testDatesAstro2[i][0]);
             //try {
             l = Astro._newMoonTime(i) - RataDie.gregorianEpoch;
             test.roughlyEqual(l, testDatesAstro2[i][2], 1e-5, "testing new moon time for " + testDatesAstro2[i][0]);
@@ -230,7 +230,7 @@ module.exports.testastro = {
         Astro.initAstro(true, undefined, undefined);
         for (var i = 0; i < testDatesAstro2.length; i++) {
         
-        // console.log("testing jd=" + testDatesAstro2[i][0]);
+            // console.log("testing jd=" + testDatesAstro2[i][0]);
             //try {
             var jd = testDatesAstro2[i][0]
             var rd = jd - RataDie.gregorianEpoch;
@@ -248,7 +248,7 @@ module.exports.testastro = {
         Astro.initAstro(true, undefined, undefined);
         for (var i = 0; i < testDatesAstro2.length; i++) {
         
-        // console.log("testing jd=" + testDatesAstro2[i][0]);
+            // console.log("testing jd=" + testDatesAstro2[i][0]);
             //try {
             var jd = testDatesAstro2[i][0]
             var rd = jd - RataDie.gregorianEpoch;

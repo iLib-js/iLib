@@ -34,8 +34,8 @@ module.exports.testname_lt = {
     },
 
     testParseSimpleName_lt_LT: function(test) {
-        var parsed = new Name("Gediminas Baravykas", {locale: 'lt-LT'});
         test.expect(2);
+        var parsed = new Name("Gediminas Baravykas", {locale: 'lt-LT'});
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {
@@ -50,8 +50,8 @@ module.exports.testname_lt = {
     
     
     testParseTitle_lt_LT: function(test) {
-        var parsed = new Name("Gediminas Baravykas jaunesnysis", {locale: 'lt-LT'});
         test.expect(2);
+        var parsed = new Name("Gediminas Baravykas jaunesnysis", {locale: 'lt-LT'});
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {
@@ -67,8 +67,8 @@ module.exports.testname_lt = {
     
     
     testParseTitleWithFamilyOnly_lt_LT: function(test) {
-        var parsed = new Name("inspektorius Baravykas", {locale: 'lt-LT'});
         test.expect(2);
+        var parsed = new Name("inspektorius Baravykas", {locale: 'lt-LT'});
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {
@@ -83,8 +83,8 @@ module.exports.testname_lt = {
     
     
     testParseEverything_lt_LT: function(test) {
-        var parsed = new Name("ponas ir ponia Baravykas", {locale: 'lt-LT'});
         test.expect(2);
+        var parsed = new Name("ponas ir ponia Baravykas", {locale: 'lt-LT'});
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {
@@ -97,8 +97,8 @@ module.exports.testname_lt = {
     },
     
     testParseprefix_lt_LT: function(test) {
-        var parsed = new Name("ponas Gediminas Baravykas", {locale: 'lt-LT'});
         test.expect(2);
+        var parsed = new Name("ponas Gediminas Baravykas", {locale: 'lt-LT'});
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {
@@ -115,6 +115,7 @@ module.exports.testname_lt = {
      */
     
     testFormatSimpleNameShort_lt_LT: function(test) {
+        test.expect(2);
         var name = new Name({
             givenName: "Gediminas",
             familyName: "Baravykas"
@@ -124,7 +125,6 @@ module.exports.testname_lt = {
             locale: 'lt-LT'
         });
         var formatted = fmt.format(name);
-        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "Gediminas Baravykas";
@@ -134,6 +134,7 @@ module.exports.testname_lt = {
     },
     
     testFormatSimpleNameMedium_lt_LT: function(test) {
+        test.expect(2);
         var name = new Name({
             givenName: "Gediminas",
             familyName: "Baravykas"
@@ -143,7 +144,6 @@ module.exports.testname_lt = {
             locale: 'lt-LT'
         });
         var formatted = fmt.format(name);
-        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "Gediminas Baravykas";
@@ -153,6 +153,7 @@ module.exports.testname_lt = {
     },
     
     testFormatSimpleNameLong_lt_LT: function(test) {
+        test.expect(2);
         var name = new Name({
             givenName: "Gediminas",
             familyName: "Baravykas",
@@ -163,7 +164,6 @@ module.exports.testname_lt = {
             locale: 'lt-LT'
         });
         var formatted = fmt.format(name);
-        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "Gediminas Baravykas";
@@ -173,6 +173,7 @@ module.exports.testname_lt = {
     },
     
     testFormatSurname_lt_LT: function(test) {
+        test.expect(2);
         var name = new Name({
             prefix: "ponas ir ponia",
             familyName: "Baravykas"
@@ -182,7 +183,6 @@ module.exports.testname_lt = {
             locale: 'lt-LT'
         });
         var formatted = fmt.format(name);
-        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "ponas ir ponia Baravykas";
@@ -192,6 +192,7 @@ module.exports.testname_lt = {
     },
     
     testFormatSimpleNameFull_lt_LT: function(test) {
+        test.expect(2);
         var name = new Name({
             prefix: "profesorius",
             givenName: "Gediminas",
@@ -203,7 +204,6 @@ module.exports.testname_lt = {
             locale: 'lt-LT'
         });
         var formatted = fmt.format(name);
-        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "profesorius Gediminas Baravykas daktaro";
@@ -213,6 +213,7 @@ module.exports.testname_lt = {
     },
     
     testFormatComplexNameShort_lt_LT: function(test) {
+        test.expect(2);
         var name = new Name({
             prefix: "profesorius",
             givenName: "Gediminas",
@@ -223,7 +224,6 @@ module.exports.testname_lt = {
             locale: 'lt-LT'
         });
         var formatted = fmt.format(name);
-        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "Gediminas Baravykas";
@@ -233,6 +233,7 @@ module.exports.testname_lt = {
     },
     
     testFormatComplexNameMedium_lt_LT: function(test) {
+        test.expect(2);
         var name = new Name({
             prefix: "profesorius",
             givenName: "Gediminas",
@@ -243,7 +244,6 @@ module.exports.testname_lt = {
             locale: 'lt-LT'
         });
         var formatted = fmt.format(name);
-        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "Gediminas Baravykas";
@@ -253,6 +253,7 @@ module.exports.testname_lt = {
     },
     
     testFormatComplexNameLong_lt_LT: function(test) {
+        test.expect(2);
         var name = new Name({
             prefix: "profesorius",
             givenName: "Gediminas",
@@ -263,7 +264,6 @@ module.exports.testname_lt = {
             locale: 'lt-LT'
         });
         var formatted = fmt.format(name);
-        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "profesorius Gediminas Baravykas";

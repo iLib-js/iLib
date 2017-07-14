@@ -32,6 +32,7 @@ module.exports.testcollation_es = {
     },
 
     testJSCollatorTraditionalQuatCH_es: function(test) {
+        test.expect(6);
         var col = new Collator({
             locale: "es-ES",
             useNative: false,
@@ -39,7 +40,6 @@ module.exports.testcollation_es = {
             style: "traditional"
         });
     
-        test.expect(6);
         test.ok(typeof(col) !== "undefined");
     
         // a b c ch d
@@ -52,6 +52,7 @@ module.exports.testcollation_es = {
     },
     
     testJSCollatorTraditionalQuatLL_es: function(test) {
+        test.expect(6);
         var col = new Collator({
             locale: "es-ES",
             useNative: false,
@@ -59,7 +60,6 @@ module.exports.testcollation_es = {
             style: "traditional"
         });
     
-        test.expect(6);
         test.ok(typeof(col) !== "undefined");
     
         // k l ll m
@@ -72,6 +72,7 @@ module.exports.testcollation_es = {
     },
     
     testJSCollatorTraditionalQuatEnye_es: function(test) {
+        test.expect(6);
         var col = new Collator({
             locale: "es-ES",
             useNative: false,
@@ -79,7 +80,6 @@ module.exports.testcollation_es = {
             style: "traditional"
         });
     
-        test.expect(6);
         test.ok(typeof(col) !== "undefined");
     
         // m n ñ o
@@ -94,6 +94,7 @@ module.exports.testcollation_es = {
     // differences in ch rr ll and ñ should be primary differences
     
     testJSCollatorTraditionalPrimaryCH_es: function(test) {
+        test.expect(6);
         var col = new Collator({
             locale: "es-ES",
             useNative: false,
@@ -102,7 +103,6 @@ module.exports.testcollation_es = {
             usage: "search"
         });
     
-        test.expect(6);
         test.ok(typeof(col) !== "undefined");
     
         // a b c ch d
@@ -115,6 +115,7 @@ module.exports.testcollation_es = {
     },
     
     testJSCollatorTraditionalPrimaryLL_es: function(test) {
+        test.expect(6);
         var col = new Collator({
             locale: "es-ES",
             useNative: false,
@@ -123,7 +124,6 @@ module.exports.testcollation_es = {
             usage: "search"
         });
     
-        test.expect(6);
         test.ok(typeof(col) !== "undefined");
     
         // k l ll m
@@ -136,6 +136,7 @@ module.exports.testcollation_es = {
     },
     
     testJSCollatorTraditionalPrimaryEnye_es: function(test) {
+        test.expect(5);
         var col = new Collator({
             locale: "es-ES",
             useNative: false,
@@ -144,7 +145,6 @@ module.exports.testcollation_es = {
             usage: "search"
         });
     
-        test.expect(5);
         test.ok(typeof(col) !== "undefined");
     
         // m n ñ o
@@ -156,6 +156,7 @@ module.exports.testcollation_es = {
     },
     
     testCollatorSortWithCase_es: function(test) {
+        test.expect(2);
         var col = new Collator({
             locale: "es-ES",
             sensitivity: "tertiary",
@@ -163,7 +164,6 @@ module.exports.testcollation_es = {
             style: "traditional",
             useNative: false
         });
-        test.expect(2);
         test.ok(typeof(col) !== "undefined");
     
         var input = [
@@ -211,6 +211,7 @@ module.exports.testcollation_es = {
     },
     
     testCollatorWithVariants_es: function(test) {
+        test.expect(2);
         var col = new Collator({
             locale: "es-ES",
             sensitivity: "tertiary",
@@ -218,7 +219,6 @@ module.exports.testcollation_es = {
             style: "traditional",
             useNative: false
         });
-        test.expect(2);
         test.ok(typeof(col) !== "undefined");
     
         var input = [

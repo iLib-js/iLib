@@ -34,9 +34,9 @@ module.exports.testaddress_MX = {
     },
 
     testParseAddressMXNormal: function(test) {
+        test.expect(7);
         var parsedAddress = new Address("Paseo de la Reforma #115, Piso 22\nCol. Lomas de Chapultepec\n11000 México D.F.\nMéxico", {locale: 'es-MX'});
         
-        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Paseo de la Reforma #115, Piso 22, Col. Lomas de Chapultepec");
         test.equal(parsedAddress.locality, "México");
@@ -48,9 +48,9 @@ module.exports.testaddress_MX = {
     },
     
     testParseAddressMXNoZip: function(test) {
+        test.expect(7);
         var parsedAddress = new Address("20 de Noviembre 855 Sur\nObispado\nMonterrey, NL\nMéxico", {locale: 'es-MX'});
         
-        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "20 de Noviembre 855 Sur, Obispado");
         test.equal(parsedAddress.locality, "Monterrey");
@@ -62,9 +62,9 @@ module.exports.testaddress_MX = {
     },
     
     testParseAddressMXNoCountry: function(test) {
+        test.expect(7);
         var parsedAddress = new Address("AV RIO MIXCOAC N° 125 , INSURGENTES MIXCOAC , C.P 03920 , BENITO JUAREZ , DF", {locale: 'es-MX'});
         
-        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "AV RIO MIXCOAC N° 125, INSURGENTES MIXCOAC");
         test.equal(parsedAddress.locality, "BENITO JUAREZ");
@@ -76,9 +76,9 @@ module.exports.testaddress_MX = {
     },
     
     testParseAddressMXManyLines: function(test) {
+        test.expect(7);
         var parsedAddress = new Address("Colegio Niños de México\nQueretaro 151\nRoma\nC.P 06700\nCuauhtemoc\nDF\nMéxico", {locale: 'es-MX'});
         
-        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Colegio Niños de México, Queretaro 151, Roma");
         test.equal(parsedAddress.locality, "Cuauhtemoc");
@@ -90,9 +90,9 @@ module.exports.testaddress_MX = {
     },
     
     testParseAddressMXOneLine: function(test) {
+        test.expect(7);
         var parsedAddress = new Address("Vicente Guerrero S/N , Centro , C.P 23450 , Cabo San Lucas , BCS , México", {locale: 'es-MX'});
         
-        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Vicente Guerrero S/N, Centro");
         test.equal(parsedAddress.locality, "Cabo San Lucas");
@@ -104,9 +104,9 @@ module.exports.testaddress_MX = {
     },
     
     testParseAddressMXSuperfluousWhitespace: function(test) {
+        test.expect(7);
         var parsedAddress = new Address("\t\t\tVicente     Guerrero \tS/N\n\t\tCentro\t\n C.P\t\r 23450\n\t\t\r Cabo   \t\r San Lucas\n\n\n\tBCS\r\t\nMéxico\n\n\n", {locale: 'es-MX'});
         
-        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Vicente Guerrero S/N, Centro");
         test.equal(parsedAddress.locality, "Cabo San Lucas");
@@ -118,9 +118,9 @@ module.exports.testaddress_MX = {
     },
     
     testParseAddressMXNoDelimiters: function(test) {
+        test.expect(7);
         var parsedAddress = new Address("Vicente Guerrero S/N Centro C.P 23450 Cabo San Lucas BCS México", {locale: 'es-MX'});
         
-        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Vicente Guerrero S/N Centro");
         test.equal(parsedAddress.locality, "Cabo San Lucas");
@@ -132,9 +132,9 @@ module.exports.testaddress_MX = {
     },
     
     testParseAddressMXSpecialChars: function(test) {
+        test.expect(7);
         var parsedAddress = new Address("Calle Yucatán No. 45\nC.P 97751 Chichén Itzá, Yucatán\nMéxico", {locale: 'es-MX'});
         
-        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Calle Yucatán No. 45");
         test.equal(parsedAddress.locality, "Chichén Itzá");
@@ -146,11 +146,11 @@ module.exports.testaddress_MX = {
     },
     
     testParseAddressMXFromUS: function(test) {
+        test.expect(7);
         var parsedAddress = new Address("Vicente Guerrero S/N , Centro\nC.P 23450 Cabo San Lucas, BCS\nMexico", {locale: 'en-US'});
         
         // the country name is in English because this address is for a contact in a US database
         
-        test.expect(7);
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "Vicente Guerrero S/N, Centro");
         test.equal(parsedAddress.locality, "Cabo San Lucas");
@@ -162,6 +162,7 @@ module.exports.testaddress_MX = {
     },
     
     testFormatAddressMX: function(test) {
+        test.expect(1);
         var parsedAddress = new Address({
             streetAddress: "Vicente Guerrero S/N, Centro",
             locality: "Cabo San Lucas",
@@ -173,12 +174,12 @@ module.exports.testaddress_MX = {
         
         var expected = "Vicente Guerrero S/N, Centro\nC.P 23450 Cabo San Lucas, BCS\nMéxico";
         var formatter = new AddressFmt({locale: 'es-MX'});
-        test.expect(1);
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     },
     
     testFormatAddressMXFromUS: function(test) {
+        test.expect(1);
         var parsedAddress = new Address({
             streetAddress: "Vicente Guerrero S/N, Centro",
             locality: "Cabo San Lucas",
@@ -190,7 +191,6 @@ module.exports.testaddress_MX = {
         
         var expected = "Vicente Guerrero S/N, Centro\nC.P 23450 Cabo San Lucas, BCS\nMexico";
         var formatter = new AddressFmt({locale: 'en-US'});
-        test.expect(1);
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     }

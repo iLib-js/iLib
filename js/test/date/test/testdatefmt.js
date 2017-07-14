@@ -17,7 +17,7 @@
  * limitations under the License.
  */
 
-var ilib = require("./../lib/ilib.js");
+var ilib = require("../lib/ilib-node.js");
 var ThaiSolarDate = require("./../lib/ThaiSolarDate.js");
 var PersianDate = require("./../lib/PersianDate.js");
 var IslamicDate = require("./../lib/IslamicDate.js");
@@ -43,6 +43,8 @@ function mockLoader(paths, sync, params, callback) {
     }
     return data;
 }
+
+var oldLoader = ilib._load;
 
 
 function testDateFmtConstructorEmpty() {
@@ -339,6 +341,9 @@ function testDateFmtGetClockBogus() {
 function testDateFmtGetTimeZoneDefault() {
 	ilib.tz = undefined;	// just in case
     var fmt = new DateFmt();
+    if (ilib._getPlatform() === "nodejs") {
+        process.env.TZ = "";
+    }
     
     assertNotNull(fmt);
     
@@ -692,20 +697,21 @@ function testDateFmtFormatJSDateRightTimeZone3() {
 function testDateFmtFormatJSDateRightTimeZone4() {
 	var d = new Date();
 	// test only works in north america
-	if (d.getTimezoneOffset() > 180) {
-	    var fmt = new DateFmt({
-	    	type: "date",
-	    	length: "full",
-	    	date: "w",
-	    	timezone: "local"
-	    });
-	    assertNotNull(fmt);
-	    
-	    // test formatting a javascript date. It should be converted to 
-	    // an ilib date object automatically and then formatted
-	    var datMyBday = new Date('2014-05-13T03:17:48.674Z');
-	    assertEquals("Monday", fmt.format(datMyBday));
+	if (ilib._getPlatform() !== "unknown" && d.getTimezoneOffset() < 180) {
+	    return;
 	}
+    var fmt = new DateFmt({
+    	type: "date",
+    	length: "full",
+    	date: "w",
+    	timezone: "local"
+    });
+    assertNotNull(fmt);
+    
+    // test formatting a javascript date. It should be converted to 
+    // an ilib date object automatically and then formatted
+    var datMyBday = new Date('2014-05-13T03:17:48.674Z');
+    assertEquals("Monday", fmt.format(datMyBday));
 };
 
 function testDateFmtFormatJSDate2() {
@@ -724,19 +730,20 @@ function testDateFmtFormatJSDate2() {
 function testDateFmtFormatJSDateRightTimeZone5() {
 	var d = new Date();
 	// test only works in north america
-	if (d.getTimezoneOffset() > 180) {
-	    var fmt = new DateFmt({
-	    	type: "date",
-	    	length: "full",
-	    	date: "w",
-	    	timezone: "local"
-	    });
-	    assertNotNull(fmt);
-	    
-	    // test formatting a javascript date. It should be converted to 
-	    // an ilib date object automatically and then formatted
-	    assertEquals("Monday", fmt.format(1399951068674));
+	if (ilib._getPlatform() !== "unknown" && d.getTimezoneOffset() < 180) {
+	    return;
 	}
+    var fmt = new DateFmt({
+    	type: "date",
+    	length: "full",
+    	date: "w",
+    	timezone: "local"
+    });
+    assertNotNull(fmt);
+    
+    // test formatting a javascript date. It should be converted to 
+    // an ilib date object automatically and then formatted
+    assertEquals("Monday", fmt.format(1399951068674));
 };
 
 function testDateFmtFormatJSDate3() {
@@ -755,19 +762,20 @@ function testDateFmtFormatJSDate3() {
 function testDateFmtFormatJSDateRightTimeZone6() {
 	var d = new Date();
 	// test only works in north america
-	if (d.getTimezoneOffset() > 180) {
-	    var fmt = new DateFmt({
-	    	type: "date",
-	    	length: "full",
-	    	date: "w",
-	    	timezone: "local"
-	    });
-	    assertNotNull(fmt);
-	    
-	    // test formatting a javascript date. It should be converted to 
-	    // an ilib date object automatically and then formatted
-	    assertEquals("Wednesday", fmt.format("Wed May 14 2014 23:37:35 GMT-0700"));
+	if (ilib._getPlatform() !== "unknown" && d.getTimezoneOffset() < 180) {
+	    return;
 	}
+    var fmt = new DateFmt({
+    	type: "date",
+    	length: "full",
+    	date: "w",
+    	timezone: "local"
+    });
+    assertNotNull(fmt);
+    
+    // test formatting a javascript date. It should be converted to 
+    // an ilib date object automatically and then formatted
+    assertEquals("Wednesday", fmt.format("Wed May 14 2014 23:37:35 GMT-0700"));
 };
 
 function testDateFmtGetMonthsOfYear1() {
@@ -2586,19 +2594,17 @@ function testDateFmtGetDefault() {
 function testDateFmtLoadLocaleDataSynch() {
     // don't need to test loading on the dynamic load version because we are testing
     // it via all the other tests already.
-	if (!ilib.isDynData()) {
+	if (ilib.isDynData()) {
 		return;
 	}
-	var oldLoader = ilib._load;
 	ilib.setLoaderCallback(mockLoader);
 
-	var fmt = new DateFmt({locale: "zz-ZZ"});
-    assertNotNull(fmt);
-    ilib.setLoaderCallback(oldLoader);
-    
-    assertEquals("zz-ZZ", fmt.getLocale().toString());
-    assertEquals("gregorian", fmt.getCalendar());
-    assertEquals("dd.MM.yy", fmt.getTemplate());
+    var fmt = new DateFmt({locale: "zz-ZZ"});
+	assertNotNull(fmt);
+	
+	assertEquals("zz-ZZ", fmt.getLocale().toString());
+	assertEquals("gregorian", fmt.getCalendar());
+	assertEquals("dd.MM.yy", fmt.getTemplate());
 };
 
 function testDateFmtLoadLocaleDataSynchCached() {
@@ -2607,12 +2613,10 @@ function testDateFmtLoadLocaleDataSynchCached() {
 		// it via all the other tests already.
 		return;
 	}
-	var oldLoader = ilib._load;
     ilib.setLoaderCallback(mockLoader);
 
 	var fmt = new DateFmt({locale: "zz-ZZ"});
     assertNotNull(fmt);
-    ilib.setLoaderCallback(oldLoader);
     
     assertEquals("zz-ZZ", fmt.getLocale().toString());
     assertEquals("gregorian", fmt.getCalendar());
@@ -2625,14 +2629,12 @@ function testDateFmtLoadLocaleDataAsynch() {
 		// it via all the other tests already.
 		return;
 	}
-	var oldLoader = ilib._load;
     ilib.setLoaderCallback(mockLoader);
 	
 	new DateFmt({
 		locale: "zz-ZZ",
 		sync: false,
 		onLoad: function (fmt) {
-            ilib.setLoaderCallback(oldLoader);
 		    assertNotNull(fmt);
 		    
 		    assertEquals("zz-ZZ", fmt.getLocale().toString());
@@ -2648,15 +2650,12 @@ function testDateFmtLoadLocaleDataAsynchCached() {
 		// it via all the other tests already.
 		return;
 	}
-	var oldLoader = ilib._load;
     ilib.setLoaderCallback(mockLoader);
 	
 	new DateFmt({
 		locale: "zz-ZZ",
 		sync: false,
 		onLoad: function (fmt) {
-            ilib.setLoaderCallback(oldLoader);
-
             assertNotNull(fmt);
 		    
 		    assertEquals("zz-ZZ", fmt.getLocale().toString());
@@ -2668,6 +2667,7 @@ function testDateFmtLoadLocaleDataAsynchCached() {
 
 
 function testDateFmtTransitionToDSTRightBefore() {
+    ilib.setLoaderCallback(oldLoader);
     var fmt = new DateFmt({
     	length: "full",
     	type: "time",
@@ -3159,4 +3159,11 @@ function testDateFmtGetMeridiemsRange_with_wrong_locale() {
     var mdRange = fmt.getMeridiemsRange();
     // if locale is specified wrong value, DateFmt takes default locale.
     assertTrue("getMeridiemsRange should return length value greater than 0", mdRange.length > 0);
+};
+
+function testDateFmtTimeTemplate_mms() {
+    var fmt = new DateFmt({clock: "24", template: "mm:s"});
+    assertNotNull(fmt);
+
+    assertEquals("00:9", fmt.format({minute: 0, second: 9}).toString());
 };

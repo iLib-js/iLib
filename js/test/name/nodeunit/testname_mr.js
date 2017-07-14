@@ -34,8 +34,8 @@ module.exports.testname_mr = {
     },
 
     testParseSimpleName_mr_IN: function(test) {
-        var parsed = new Name("सचिन तेंडुलकर", {locale: 'mr-IN'});
         test.expect(2);
+        var parsed = new Name("सचिन तेंडुलकर", {locale: 'mr-IN'});
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {
@@ -50,8 +50,8 @@ module.exports.testname_mr = {
     
     
     testParseTitle_mr_IN: function(test) {
-        var parsed = new Name("सचिन तेंडुलकर ज्येष्ठ", {locale: 'mr-IN'});
         test.expect(2);
+        var parsed = new Name("सचिन तेंडुलकर ज्येष्ठ", {locale: 'mr-IN'});
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {
@@ -67,8 +67,8 @@ module.exports.testname_mr = {
     
     
     testParseTitleWithFamilyOnly_mr_IN: function(test) {
-        var parsed = new Name("श्रीयुत तेंडुलकर", {locale: 'mr-IN'});
         test.expect(2);
+        var parsed = new Name("श्रीयुत तेंडुलकर", {locale: 'mr-IN'});
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {
@@ -83,8 +83,8 @@ module.exports.testname_mr = {
     
     
     testParseEverything_mr_IN: function(test) {
-        var parsed = new Name("श्रीयुत आणि मिसेस तेंडुलकर", {locale: 'mr-IN'});
         test.expect(2);
+        var parsed = new Name("श्रीयुत आणि मिसेस तेंडुलकर", {locale: 'mr-IN'});
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {
@@ -97,8 +97,8 @@ module.exports.testname_mr = {
     },
     
     testParseprefix_mr_IN: function(test) {
-        var parsed = new Name("श्रीयुत सचिन तेंडुलकर", {locale: 'mr-IN'});
         test.expect(2);
+        var parsed = new Name("श्रीयुत सचिन तेंडुलकर", {locale: 'mr-IN'});
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {
@@ -115,6 +115,7 @@ module.exports.testname_mr = {
      */
     
     testFormatSimpleNameShort_mr_IN: function(test) {
+        test.expect(2);
         var name = new Name({
             givenName: "सचिन",
             familyName: "तेंडुलकर"
@@ -124,7 +125,6 @@ module.exports.testname_mr = {
             locale: 'mr-IN'
         });
         var formatted = fmt.format(name);
-        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "सचिन तेंडुलकर";
@@ -134,6 +134,7 @@ module.exports.testname_mr = {
     },
     
     testFormatSimpleNameMedium_mr_IN: function(test) {
+        test.expect(2);
         var name = new Name({
             givenName: "सचिन",
             familyName: "तेंडुलकर"
@@ -143,7 +144,6 @@ module.exports.testname_mr = {
             locale: 'mr-IN'
         });
         var formatted = fmt.format(name);
-        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "सचिन तेंडुलकर";
@@ -153,6 +153,7 @@ module.exports.testname_mr = {
     },
     
     testFormatSimpleNameLong_mr_IN: function(test) {
+        test.expect(2);
         var name = new Name({
             givenName: "सचिन",
             familyName: "तेंडुलकर"
@@ -162,7 +163,6 @@ module.exports.testname_mr = {
             locale: 'mr-IN'
         });
         var formatted = fmt.format(name);
-        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "सचिन तेंडुलकर";
@@ -172,6 +172,7 @@ module.exports.testname_mr = {
     },
     
     testFormatSurname_mr_IN: function(test) {
+        test.expect(2);
         var name = new Name({
             prefix: "श्रीयुत आणि मिसेस",
             familyName: "तेंडुलकर"
@@ -181,7 +182,6 @@ module.exports.testname_mr = {
             locale: 'mr-IN'
         });
         var formatted = fmt.format(name);
-        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "श्रीयुत आणि मिसेस तेंडुलकर";
@@ -191,6 +191,7 @@ module.exports.testname_mr = {
     },
     
     testFormatSimpleNameFull_mr_IN: function(test) {
+        test.expect(2);
         var name = new Name({
             prefix: "डॉक्टर",
             givenName: "सचिन",
@@ -202,7 +203,6 @@ module.exports.testname_mr = {
             locale: 'mr-IN'
         });
         var formatted = fmt.format(name);
-        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "डॉक्टर सचिन तेंडुलकर वरिष्ठ";
@@ -212,6 +212,7 @@ module.exports.testname_mr = {
     },
     
     testFormatComplexNameShort_mr_IN: function(test) {
+        test.expect(2);
         var name = new Name({
             prefix: "डॉक्टर",
             givenName: "सचिन",
@@ -222,7 +223,6 @@ module.exports.testname_mr = {
             locale: 'mr-IN'
         });
         var formatted = fmt.format(name);
-        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "सचिन तेंडुलकर";
@@ -232,6 +232,7 @@ module.exports.testname_mr = {
     },
     
     testFormatComplexNameMedium_mr_IN: function(test) {
+        test.expect(2);
         var name = new Name({
             prefix: "डॉक्टर",
             givenName: "सचिन",
@@ -242,7 +243,6 @@ module.exports.testname_mr = {
             locale: 'mr-IN'
         });
         var formatted = fmt.format(name);
-        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "सचिन तेंडुलकर";
@@ -252,6 +252,7 @@ module.exports.testname_mr = {
     },
     
     testFormatComplexNameLong_mr_IN: function(test) {
+        test.expect(2);
         var name = new Name({
             prefix: "डॉक्टर",
             givenName: "सचिन",
@@ -262,7 +263,6 @@ module.exports.testname_mr = {
             locale: 'mr-IN'
         });
         var formatted = fmt.format(name);
-        test.expect(2);
         test.ok(typeof(formatted) !== "undefined");
         
         var expected = "डॉक्टर सचिन तेंडुलकर";

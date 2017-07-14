@@ -32,16 +32,16 @@ module.exports.testcountry = {
     },
 
     testCountryConstructorEmpty: function(test) {
+        test.expect(1);
         var ctry = new Country();
     
-        test.expect(1);
         test.ok(ctry !== null);
         test.done();
     },
     
     testCountryDefaultLocale: function(test) {
-        var ctry = new Country();
         test.expect(3);
+        var ctry = new Country();
         test.ok(ctry !== null);
     
         var locale = ctry.getLocale();
@@ -51,10 +51,10 @@ module.exports.testcountry = {
     },
     
     testCountryWrongLocale: function(test) {
+        test.expect(5);
         var ctry = new Country({
             locale: "abc-YZ"
         });
-        test.expect(5);
         test.ok(ctry !== null);
     
         test.equal(ctry.getName("CD"), "Congo - Kinshasa");
@@ -66,10 +66,10 @@ module.exports.testcountry = {
     },
     
     testCountryLocale1: function(test) {
+        test.expect(4);
         var ctry = new Country({
             locale: "ko-KR"
         });
-        test.expect(4);
         test.ok(ctry !== null);
     
         test.equal(ctry.getName("CD"), "콩고-킨샤사");
@@ -80,10 +80,10 @@ module.exports.testcountry = {
     },
     
     testCountryLocale2: function(test) {
+        test.expect(4);
         var ctry = new Country({
             locale: "en-US"
         });
-        test.expect(4);
         test.ok(ctry !== null);
     
         test.equal(ctry.getName("CD"), "Congo - Kinshasa");
@@ -94,10 +94,10 @@ module.exports.testcountry = {
     },
     
     testCountryLocale3: function(test) {
+        test.expect(4);
         var ctry = new Country({
             locale: "zh-Hans-CN"
         });
-        test.expect(4);
         test.ok(ctry !== null);
     
         test.equal(ctry.getName("CD"), "刚果（金）");
@@ -108,10 +108,10 @@ module.exports.testcountry = {
     },
     
     testCountryLocale4: function(test) {
+        test.expect(4);
         var ctry = new Country({
             locale: "ja-JP"
         });
-        test.expect(4);
         test.ok(ctry !== null);
     
         test.equal(ctry.getName("CD"), "コンゴ民主共和国(キンシャサ)");
@@ -142,11 +142,11 @@ module.exports.testcountry = {
     },
     
     testCountryAsync: function(test) {
+        test.expect(4);
         new Country({
             locale: "ja-JP",
             sync: false,
             onLoad: function (ctry) {
-        test.expect(4);
                 test.ok(ctry !== null);
     
                 test.equal(ctry.getName("JP"), "日本");

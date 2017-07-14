@@ -18,7 +18,7 @@
  */
 
 if (typeof(ilib) === "undefined") {
-    var ilib = require("../.././../lib/ilib.js");
+    var ilib = require("../.././../lib/ilib-node.js");
 }
 if (typeof(LocaleInfo) === "undefined") {
     var LocaleInfo = require("../.././../lib/LocaleInfo.js");
@@ -65,17 +65,17 @@ module.exports.testdatefmtrange = {
     },
 
     testDateRngFmtConstructorEmpty: function(test) {
+        test.expect(1);
         var fmt = new DateRngFmt();
         
-        test.expect(1);
         test.ok(fmt !== null);
         test.done();
     },
     
     testDateRngFmtConstructorDefaultLocale: function(test) {
+        test.expect(2);
         var fmt = new DateRngFmt();
         
-        test.expect(2);
         test.ok(fmt !== null);
         
         test.equal(fmt.getLocale().toString(), "en-US");
@@ -83,9 +83,9 @@ module.exports.testdatefmtrange = {
     },
     
     testDateRngFmtGetCalendarDefault: function(test) {
+        test.expect(3);
         var fmt = new DateRngFmt();
         
-        test.expect(3);
         test.ok(fmt !== null);
         var cal = fmt.getCalendar();
         test.ok(cal !== null);
@@ -95,9 +95,9 @@ module.exports.testdatefmtrange = {
     },
     
     testDateRngFmtGetCalendarExplicit: function(test) {
+        test.expect(3);
         var fmt = new DateRngFmt({calendar: "julian"});
         
-        test.expect(3);
         test.ok(fmt !== null);
         var cal = fmt.getCalendar();
         test.ok(cal !== null);
@@ -107,9 +107,9 @@ module.exports.testdatefmtrange = {
     },
     
     testDateRngFmtGetCalendarExplicitDefault: function(test) {
+        test.expect(3);
         var fmt = new DateRngFmt({calendar: "gregorian"});
         
-        test.expect(3);
         test.ok(fmt !== null);
         var cal = fmt.getCalendar();
         test.ok(cal !== null);
@@ -121,7 +121,7 @@ module.exports.testdatefmtrange = {
     testDateRngFmtGetCalendarNotInThisLocale: function(test) {
         try {
             var fmt = new DateRngFmt({calendar: "arabic", locale: 'en-US'});
-        test.fail()
+            test.fail();
         } catch (str) {
             test.equal(typeof(str), "string");
             test.equal(str, "No formats available for calendar arabic in locale en-US");
@@ -130,8 +130,8 @@ module.exports.testdatefmtrange = {
     },
     
     testDateRngFmtGetLength: function(test) {
-        var fmt = new DateRngFmt({length: "full"});
         test.expect(2);
+        var fmt = new DateRngFmt({length: "full"});
         test.ok(fmt !== null);
         
         test.equal(fmt.getLength(), "full");
@@ -139,8 +139,8 @@ module.exports.testdatefmtrange = {
     },
     
     testDateRngFmtGetLengthDefault: function(test) {
-        var fmt = new DateRngFmt();
         test.expect(2);
+        var fmt = new DateRngFmt();
         test.ok(fmt !== null);
         
         test.equal(fmt.getLength(), "short");
@@ -148,8 +148,8 @@ module.exports.testdatefmtrange = {
     },
     
     testDateRngFmtGetLengthBogus: function(test) {
-        var fmt = new DateRngFmt({length: "asdf"});
         test.expect(2);
+        var fmt = new DateRngFmt({length: "asdf"});
         test.ok(fmt !== null);
         
         test.equal(fmt.getLength(), "short");
@@ -157,8 +157,8 @@ module.exports.testdatefmtrange = {
     },
     
     testDateRngFmtGetLocale: function(test) {
-        var fmt = new DateRngFmt({locale: "de-DE"});
         test.expect(2);
+        var fmt = new DateRngFmt({locale: "de-DE"});
         test.ok(fmt !== null);
         
         test.equal(fmt.getLocale().toString(), "de-DE");
@@ -166,8 +166,8 @@ module.exports.testdatefmtrange = {
     },
     
     testDateRngFmtGetLocaleDefault: function(test) {
-        var fmt = new DateRngFmt();
         test.expect(2);
+        var fmt = new DateRngFmt();
         test.ok(fmt !== null);
         
         test.equal(fmt.getLocale().toString(), "en-US");
@@ -175,8 +175,8 @@ module.exports.testdatefmtrange = {
     },
     
     testDateRngFmtGetLocaleBogus: function(test) {
-        var fmt = new DateRngFmt({locale: "zyy-XX"});
         test.expect(2);
+        var fmt = new DateRngFmt({locale: "zyy-XX"});
         test.ok(fmt !== null);
         
         test.equal(fmt.getLocale().toString(), "zyy-XX");
@@ -184,8 +184,8 @@ module.exports.testdatefmtrange = {
     },
     
     testDateRngFmtGetClockDefaultUS: function(test) {
-        var fmt = new DateRngFmt({locale: "en-US"});
         test.expect(2);
+        var fmt = new DateRngFmt({locale: "en-US"});
         test.ok(fmt !== null);
         
         // use the default
@@ -194,8 +194,8 @@ module.exports.testdatefmtrange = {
     },
     
     testDateRngFmtGetClockDefaultDE: function(test) {
-        var fmt = new DateRngFmt({locale: "de-DE"});
         test.expect(2);
+        var fmt = new DateRngFmt({locale: "de-DE"});
         test.ok(fmt !== null);
         
         // use the default
@@ -204,8 +204,8 @@ module.exports.testdatefmtrange = {
     },
     
     testDateRngFmtGetClock: function(test) {
-        var fmt = new DateRngFmt({locale: "en-US", clock: "24"});
         test.expect(2);
+        var fmt = new DateRngFmt({locale: "en-US", clock: "24"});
         test.ok(fmt !== null);
         
         // use the default
@@ -214,8 +214,8 @@ module.exports.testdatefmtrange = {
     },
     
     testDateRngFmtGetClockBogus: function(test) {
-        var fmt = new DateRngFmt({locale: "en-US", clock: "asdf"});
         test.expect(2);
+        var fmt = new DateRngFmt({locale: "en-US", clock: "asdf"});
         test.ok(fmt !== null);
         
         // use the default
@@ -224,9 +224,13 @@ module.exports.testdatefmtrange = {
     },
     
     testDateRngFmtGetTimeZoneDefault: function(test) {
-        ilib.tz = undefined;    // just in case
-        var fmt = new DateRngFmt();
         test.expect(2);
+        ilib.tz = undefined;    // just in case
+        if (ilib._getPlatform() === "nodejs") {
+            process.env.TZ = ""; // just in case
+        }
+        
+        var fmt = new DateRngFmt();
         test.ok(fmt !== null);
         
         var tz = fmt.getTimeZone();
@@ -235,8 +239,8 @@ module.exports.testdatefmtrange = {
     },
     
     testDateRngFmtGetTimeZone: function(test) {
-        var fmt = new DateRngFmt({timezone: "Europe/Paris"});
         test.expect(2);
+        var fmt = new DateRngFmt({timezone: "Europe/Paris"});
         test.ok(fmt !== null);
         
         var tz = fmt.getTimeZone();
@@ -245,8 +249,8 @@ module.exports.testdatefmtrange = {
     },
     
     testDateRngFmtGetDefaultLocale: function(test) {
-        var fmt = new DateRngFmt({locale: "yy-YY"});
         test.expect(2);
+        var fmt = new DateRngFmt({locale: "yy-YY"});
         test.ok(fmt !== null);
         
         test.equal(fmt.getLocale().toString(), "yy-YY");
@@ -254,8 +258,8 @@ module.exports.testdatefmtrange = {
     },
     
     testDateRngFmtGetDefaultFormat: function(test) {
-        var fmt = new DateRngFmt({locale: "yy-YY"});
         test.expect(2);
+        var fmt = new DateRngFmt({locale: "yy-YY"});
         test.ok(fmt !== null);
         
         var start = new GregorianDate({
@@ -283,7 +287,7 @@ module.exports.testdatefmtrange = {
         if (ilib.isDynData()) {
             // don't need to test loading on the dynamic load version because we are testing
             // it via all the other tests already.
-        test.done();
+            test.done();
             return;
         }
         var oldLoader = ilib._load;
@@ -322,7 +326,7 @@ module.exports.testdatefmtrange = {
         if (ilib.isDynData()) {
             // don't need to test loading on the dynamic load version because we are testing
             // it via all the other tests already.
-        test.done();
+            test.done();
             return;
         }
         var oldLoader = ilib._load;
@@ -361,7 +365,7 @@ module.exports.testdatefmtrange = {
         if (ilib.isDynData()) {
             // don't need to test loading on the dynamic load version because we are testing
             // it via all the other tests already.
-        test.done();
+            test.done();
             return;
         }
         var oldLoader = ilib._load;
@@ -402,7 +406,7 @@ module.exports.testdatefmtrange = {
         if (ilib.isDynData()) {
             // don't need to test loading on the dynamic load version because we are testing
             // it via all the other tests already.
-        test.done();
+            test.done();
             return;
         }
         var oldLoader = ilib._load;
@@ -443,8 +447,8 @@ module.exports.testdatefmtrange = {
     //Miscellaneous UnitTest
     
     testDateRngFmtesPAMultiDayMedium: function(test) {
-        var fmt = new DateRngFmt({locale: "es-PA", length: "medium"});
         test.expect(2);
+        var fmt = new DateRngFmt({locale: "es-PA", length: "medium"});
         test.ok(fmt !== null);
         
         var start = new GregorianDate({
@@ -470,8 +474,8 @@ module.exports.testdatefmtrange = {
     },
     
     testDateRngFmtesPANextMonthMedium: function(test) {
-        var fmt = new DateRngFmt({locale: "es-PA", length: "medium"});
         test.expect(2);
+        var fmt = new DateRngFmt({locale: "es-PA", length: "medium"});
         test.ok(fmt !== null);
         
         var start = new GregorianDate({
@@ -497,8 +501,8 @@ module.exports.testdatefmtrange = {
     },
     
     testDateRngFmtesPRMultiDayMedium: function(test) {
-        var fmt = new DateRngFmt({locale: "es-PR", length: "medium"});
         test.expect(2);
+        var fmt = new DateRngFmt({locale: "es-PR", length: "medium"});
         test.ok(fmt !== null);
         
         var start = new GregorianDate({
@@ -524,8 +528,8 @@ module.exports.testdatefmtrange = {
     },
     
     testDateRngFmtesPRNextMonthMedium: function(test) {
-        var fmt = new DateRngFmt({locale: "es-PR", length: "medium"});
         test.expect(2);
+        var fmt = new DateRngFmt({locale: "es-PR", length: "medium"});
         test.ok(fmt !== null);
         
         var start = new GregorianDate({
@@ -551,8 +555,8 @@ module.exports.testdatefmtrange = {
     },
     
     testDateRngFmtptGQNextDayFull: function(test) {
-        var fmt = new DateRngFmt({locale: "pt-GQ", length: "medium"});
         test.expect(2);
+        var fmt = new DateRngFmt({locale: "pt-GQ", length: "medium"});
         test.ok(fmt !== null);
         
         var start = new GregorianDate({
@@ -578,8 +582,8 @@ module.exports.testdatefmtrange = {
     },
     
     testDateRngFmtptGQNextDayLong: function(test) {
-        var fmt = new DateRngFmt({locale: "pt-GQ", length: "long"});
         test.expect(2);
+        var fmt = new DateRngFmt({locale: "pt-GQ", length: "long"});
         test.ok(fmt !== null);
         
         var start = new GregorianDate({
@@ -605,8 +609,8 @@ module.exports.testdatefmtrange = {
     },
     
     testDateRngFmtptGQNextDayMedium: function(test) {
-        var fmt = new DateRngFmt({locale: "pt-GQ", length: "medium"});
         test.expect(2);
+        var fmt = new DateRngFmt({locale: "pt-GQ", length: "medium"});
         test.ok(fmt !== null);
         
         var start = new GregorianDate({
@@ -632,8 +636,8 @@ module.exports.testdatefmtrange = {
     },
     
     testDateRngFmtptGQNextDayShort: function(test) {
-        var fmt = new DateRngFmt({locale: "pt-GQ", length: "short"});
         test.expect(2);
+        var fmt = new DateRngFmt({locale: "pt-GQ", length: "short"});
         test.ok(fmt !== null);
         
         var start = new GregorianDate({
@@ -660,8 +664,8 @@ module.exports.testdatefmtrange = {
     
     
     testDateRngFmtenCAinDayShort: function(test) {
-        var fmt = new DateRngFmt({locale: "en-CA", length: "short"});
         test.expect(2);
+        var fmt = new DateRngFmt({locale: "en-CA", length: "short"});
         test.ok(fmt !== null);
         
         var start = new GregorianDate({
@@ -687,8 +691,8 @@ module.exports.testdatefmtrange = {
     },
     
     testDateRngFmtenCAMultitDayShort: function(test) {
-        var fmt = new DateRngFmt({locale: "en-CA", length: "short"});
         test.expect(2);
+        var fmt = new DateRngFmt({locale: "en-CA", length: "short"});
         test.ok(fmt !== null);
         
         var start = new GregorianDate({
@@ -714,8 +718,8 @@ module.exports.testdatefmtrange = {
     },
     
     testDateRngFmtenCANextMonthShort: function(test) {
-        var fmt = new DateRngFmt({locale: "en-CA", length: "short"});
         test.expect(2);
+        var fmt = new DateRngFmt({locale: "en-CA", length: "short"});
         test.ok(fmt !== null);
         
         var start = new GregorianDate({
@@ -741,8 +745,8 @@ module.exports.testdatefmtrange = {
     },
     
     testDateRngFmtenCANextYearShort: function(test) {
-        var fmt = new DateRngFmt({locale: "en-CA", length: "short"});
         test.expect(2);
+        var fmt = new DateRngFmt({locale: "en-CA", length: "short"});
         test.ok(fmt !== null);
         
         var start = new GregorianDate({

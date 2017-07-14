@@ -19,7 +19,7 @@
  */
 
 if (typeof(ilib) === "undefined") {
-    var ilib = require("../../../lib/ilib.js");
+    var ilib = require("../../../lib/ilib-node.js");
 }
 if (typeof(Collator) === "undefined") {
     var Collator = require("../../../lib/Collator.js");
@@ -35,17 +35,17 @@ module.exports.testcollation_general = {
     },
 
     testCollatorConstructorNative_it: function(test) {
+        test.expect(1);
         var col = new Collator({useNative: false, locale: "it-IT"});
     
-        test.expect(1);
         test.ok(typeof(col) !== "undefined");
         test.done();
     },
     
     testCollatorDefaultNative_it: function(test) {
+        test.expect(5);
         var col = new Collator({useNative: false, locale: "it-IT"});
     
-        test.expect(5);
         test.ok(typeof(col) !== "undefined");
     
         // should compare in English
@@ -57,9 +57,9 @@ module.exports.testcollation_general = {
     },
     
     testCollatorDefaultCase_it: function(test) {
+        test.expect(5);
         var col = new Collator({useNative: false, locale: "it-IT"});
     
-        test.expect(5);
         test.ok(typeof(col) !== "undefined");
     
         // should compare upper-case first within a base character
@@ -71,9 +71,9 @@ module.exports.testcollation_general = {
     },
     
     testCollatorGetComparator_it: function(test) {
+        test.expect(3);
         var col = new Collator({useNative: false, locale: "it-IT"});
     
-        test.expect(3);
         test.ok(typeof(col) !== "undefined");
     
         // should compare in English
@@ -84,9 +84,9 @@ module.exports.testcollation_general = {
     },
     
     testCollatorGetComparatorWorks_it: function(test) {
+        test.expect(6);
         var col = new Collator({useNative: false, locale: "it-IT"});
     
-        test.expect(6);
         test.ok(typeof(col) !== "undefined");
     
         var func = col.getComparator();
@@ -100,9 +100,9 @@ module.exports.testcollation_general = {
     },
     
     testCollatorGetComparatorWorksWithCase_it: function(test) {
+        test.expect(6);
         var col = new Collator({useNative: false, locale: "it-IT"});
     
-        test.expect(6);
         test.ok(typeof(col) !== "undefined");
     
         var func = col.getComparator();
@@ -118,17 +118,17 @@ module.exports.testcollation_general = {
     
     
     testCollatorConstructorJS_it: function(test) {
+        test.expect(1);
         var col = new Collator({useNative: false});
     
-        test.expect(1);
         test.ok(typeof(col) !== "undefined");
         test.done();
     },
     
     testCollatorDefaultJS_it: function(test) {
+        test.expect(5);
         var col = new Collator({useNative: false});
     
-        test.expect(5);
         test.ok(typeof(col) !== "undefined");
     
         // should compare in English
@@ -140,9 +140,9 @@ module.exports.testcollation_general = {
     },
     
     testCollatorDefaultCaseJS_it: function(test) {
+        test.expect(5);
         var col = new Collator({useNative: false});
     
-        test.expect(5);
         test.ok(typeof(col) !== "undefined");
     
         // should compare upper-case first within a base character
@@ -154,9 +154,9 @@ module.exports.testcollation_general = {
     },
     
     testCollatorGetComparatorJS_it: function(test) {
+        test.expect(3);
         var col = new Collator({useNative: false});
     
-        test.expect(3);
         test.ok(typeof(col) !== "undefined");
     
         // should compare in English
@@ -167,9 +167,9 @@ module.exports.testcollation_general = {
     },
     
     testCollatorGetComparatorWorksJS_it: function(test) {
+        test.expect(6);
         var col = new Collator({useNative: false});
     
-        test.expect(6);
         test.ok(typeof(col) !== "undefined");
     
         var func = col.getComparator();
@@ -184,9 +184,9 @@ module.exports.testcollation_general = {
     },
     
     testCollatorGetComparatorWorksWithCaseJS_it: function(test) {
+        test.expect(6);
         var col = new Collator({useNative: false});
     
-        test.expect(6);
         test.ok(typeof(col) !== "undefined");
     
         var func = col.getComparator();
@@ -202,31 +202,33 @@ module.exports.testcollation_general = {
     
     
     testCollatorGetSortKeyNative_it: function(test) {
-        if (typeof(Intl) !== 'undefined' && Intl) {
-            var col = new Collator({locale: "it-IT"});
+        if (typeof(Intl) === 'undefined' && Intl) {
+            test.done();
+            return;
+        }
+        var col = new Collator({locale: "it-IT"});
     
         test.expect(2);
-            test.ok(typeof(col) !== "undefined");
+        test.ok(typeof(col) !== "undefined");
     
-            // no sort key available when using native...
-            test.equal(col.sortKey("string"), "string");
-            test.done();
-        }
+        // no sort key available when using native...
+        test.equal(col.sortKey("string"), "string");
+        test.done();
     },
     
     testCollatorGetSortKeySimpleUpper_it: function(test) {
+        test.expect(2);
         var col = new Collator({useNative: false});
     
-        test.expect(2);
         test.ok(typeof(col) !== "undefined");
     
         test.equal(col.sortKey("ABCDEF"), "4204404604804a04c0");
         test.done();
     },
     testCollatorGetSortKeySimpleLower_it: function(test) {
+        test.expect(2);
         var col = new Collator({useNative: false});
     
-        test.expect(2);
         test.ok(typeof(col) !== "undefined");
     
         test.equal(col.sortKey("abcdef"), "4224424624824a24c2");
@@ -234,9 +236,9 @@ module.exports.testcollation_general = {
     },
     
     testCollatorGetSortKeyMixed_it: function(test) {
+        test.expect(2);
         var col = new Collator({useNative: false});
     
-        test.expect(2);
         test.ok(typeof(col) !== "undefined");
     
         test.equal(col.sortKey("String"), "6606826425225c24e2");
@@ -244,9 +246,9 @@ module.exports.testcollation_general = {
     },
     
     testCollatorGetSortKeyWithExpansion_it: function(test) {
+        test.expect(2);
         var col = new Collator({useNative: false});
     
-        test.expect(2);
         test.ok(typeof(col) !== "undefined");
     
         // has 2 collation elements for "a" and "e"
@@ -255,9 +257,9 @@ module.exports.testcollation_general = {
     },
     
     testCollatorGetSortKeyWithContraction_it: function(test) {
+        test.expect(2);
         var col = new Collator({useNative: false});
     
-        test.expect(2);
         test.ok(typeof(col) !== "undefined");
     
         // The à is actually an "a" with a second combining grave 
@@ -269,9 +271,9 @@ module.exports.testcollation_general = {
     },
     
     testCollatorGetSortKeyEmpty_it: function(test) {
+        test.expect(2);
         var col = new Collator({useNative: false});
     
-        test.expect(2);
         test.ok(typeof(col) !== "undefined");
     
         test.equal(col.sortKey(""), "");
@@ -279,9 +281,9 @@ module.exports.testcollation_general = {
     },
     
     testCollatorGetSortKeyUndefined_it: function(test) {
+        test.expect(2);
         var col = new Collator({useNative: false});
     
-        test.expect(2);
         test.ok(typeof(col) !== "undefined");
     
         test.equal(col.sortKey(undefined), "");
@@ -289,9 +291,9 @@ module.exports.testcollation_general = {
     },
     
     testCollatorGetSortKeyDeterministic_it: function(test) {
+        test.expect(2);
         var col = new Collator({useNative: false});
     
-        test.expect(2);
         test.ok(typeof(col) !== "undefined");
     
         // should be equal always
@@ -299,9 +301,9 @@ module.exports.testcollation_general = {
         test.done();
     },
     testCollatorGetSortKeyWorks_it: function(test) {
+        test.expect(4);
         var col = new Collator({useNative: false});
     
-        test.expect(4);
         test.ok(typeof(col) !== "undefined");
     
         // should compare in English
@@ -313,8 +315,8 @@ module.exports.testcollation_general = {
     
     
     testCollatorWithSort_it: function(test) {
-        var col = new Collator({useNative: false});
         test.expect(2);
+        var col = new Collator({useNative: false});
         test.ok(typeof(col) !== "undefined");
     
         var input = ["q", "w", "e", "r", "t", "y", "u", "i", "o", "p"];
@@ -328,12 +330,12 @@ module.exports.testcollation_general = {
     },
     
     testCollatorWithSortUpperFirst_it: function(test) {
+        test.expect(2);
         var col = new Collator({
             locale: "it-IT",
             upperFirst: true, 
             useNative: false
         });
-        test.expect(2);
         test.ok(typeof(col) !== "undefined");
     
         var input = ["q", "I", "e", "r", "T", "U", "i", "E", "o", "p"];
@@ -347,12 +349,12 @@ module.exports.testcollation_general = {
     },
     
     testCollatorWithSortUpperNotFirst_it: function(test) {
+        test.expect(2);
         var col = new Collator({
             locale: "it-IT",
             upperFirst: false, 
             useNative: false
         });
-        test.expect(2);
         test.ok(typeof(col) !== "undefined");
     
         var input = ["q", "I", "e", "r", "T", "U", "i", "E", "o", "p"];
@@ -366,8 +368,8 @@ module.exports.testcollation_general = {
     },
     
     testCollatorWithSortJS_it: function(test) {
-        var col = new Collator({useNative: false});
         test.expect(2);
+        var col = new Collator({useNative: false});
         test.ok(typeof(col) !== "undefined");
     
         var input = ["q", "w", "e", "r", "t", "y", "u", "i", "o", "p"];
@@ -381,12 +383,12 @@ module.exports.testcollation_general = {
     },
     
     testCollatorWithSortUpperFirstJS_it: function(test) {
+        test.expect(2);
         var col = new Collator({
             locale: "it-IT",
             upperFirst: true,
             useNative: false
         });
-        test.expect(2);
         test.ok(typeof(col) !== "undefined");
     
         var input = ["q", "I", "e", "r", "T", "U", "i", "E", "o", "p"];
@@ -400,12 +402,12 @@ module.exports.testcollation_general = {
     },
     
     testCollatorWithSortUpperNotFirstJS_it: function(test) {
+        test.expect(2);
         var col = new Collator({
             locale: "it-IT",
             upperFirst: false,
             useNative: false
         });
-        test.expect(2);
         test.ok(typeof(col) !== "undefined");
     
         var input = ["q", "I", "e", "r", "T", "U", "i", "E", "o", "p"];
@@ -432,92 +434,102 @@ module.exports.testcollation_general = {
     
     testCollatorDefaultExtendedChars_it: function(test) {
         // only test on platforms that support the new Intl class natively
-        if (typeof(Intl) !== 'undefined') {
-            var col = new Collator({locale: "it-IT"});
+        if (typeof(Intl) === 'undefined') {
+            test.done();
+            return;
+        }
+        var col = new Collator({locale: "it-IT"});
     
         test.expect(3);
-            test.ok(typeof(col) !== "undefined");
+        test.ok(typeof(col) !== "undefined");
     
-            // should compare in English
-            test.ok("e < ë", col.compare("e", "ë") < 0);
-            test.ok("o < ø", col.compare("o", "ø") < 0);
-            test.done();
-        }
+        // should compare in English
+        test.ok("e < ë", col.compare("e", "ë") < 0);
+        test.ok("o < ø", col.compare("o", "ø") < 0);
+        test.done();
     },
     
     testCollatorPrimaryExtendedChars_it: function(test) {
         // only test on platforms that support the new Intl class natively
-        if (typeof(Intl) !== 'undefined') {
-            var col = new Collator({
-                locale: "it-IT",
-                sensitivity: "primary",
-                usage: "search"
-            });
+        if (typeof(Intl) === 'undefined') {
+            test.done();
+            return;
+        }
+        var col = new Collator({
+            locale: "it-IT",
+            sensitivity: "primary",
+            usage: "search"
+        });
     
         test.expect(3);
-            test.ok(typeof(col) !== "undefined");
+        test.ok(typeof(col) !== "undefined");
     
-            // should compare in English
-            test.equal(0, col.compare("e", "ë"), "e = ë");
-            test.equal(0, col.compare("o", "ø"), "o = ø");
-            test.done();
-        }
+        // should compare in English
+        test.equal(0, col.compare("e", "ë"), "e = ë");
+        test.equal(0, col.compare("o", "ø"), "o = ø");
+        test.done();
     },
     
     testCollatorDefaultExtendedCharsJS_it: function(test) {
         // only test on platforms that support the new Intl class natively
-        if (typeof(Intl) !== 'undefined') {
-            var col = new Collator({useNative: false});
+        if (typeof(Intl) === 'undefined') {
+            test.done();
+            return;
+        }
+        var col = new Collator({useNative: false});
     
         test.expect(3);
-            test.ok(typeof(col) !== "undefined");
+        test.ok(typeof(col) !== "undefined");
     
-            // should compare in English
-            test.ok("e < ë", col.compare("e", "ë") < 0);
-            test.ok("o < ø", col.compare("o", "ø") < 0);
-            test.done();
-        }
+        // should compare in English
+        test.ok("e < ë", col.compare("e", "ë") < 0);
+        test.ok("o < ø", col.compare("o", "ø") < 0);
+        test.done();
     },
     
     testCollatorPrimaryExtendedCharsJS_it: function(test) {
         // only test on platforms that support the new Intl class natively
-        if (typeof(Intl) !== 'undefined') {
-            var col = new Collator({
-            locale: "it-IT",
-                sensitivity: "primary",
-                usage: "search",
-                useNative: false
-            });
+        if (typeof(Intl) === 'undefined') {
+            test.done();
+            return;
+        }
+        var col = new Collator({
+        locale: "it-IT",
+            sensitivity: "primary",
+            usage: "search",
+            useNative: false
+        });
     
         test.expect(3);
-            test.ok(typeof(col) !== "undefined");
+        test.ok(typeof(col) !== "undefined");
     
-            // should compare in English
-            test.equal(0, col.compare("e", "ë"), "e = ë");
-            test.equal(0, col.compare("o", "ø"), "o = ø");
-            test.done();
-        }
+        // should compare in English
+        test.equal(0, col.compare("e", "ë"), "e = ë");
+        test.equal(0, col.compare("o", "ø"), "o = ø");
+        test.done();
     },
     
     testCollatorNativeIsNative_it: function(test) {
         // only test on platforms that support the new Intl class natively
-        if (typeof(Intl) !== 'undefined') {
-            var col = new Collator({locale: "it-IT"});
-        test.expect(2);
-            test.ok(typeof(col) !== "undefined");
-            test.ok(typeof(col.collator) !== "undefined");
+        if (typeof(Intl) === 'undefined') {
             test.done();
+            return;
         }
+        var col = new Collator({locale: "it-IT"});
+        test.expect(2);
+        test.ok(typeof(col) !== "undefined");
+        test.ok(typeof(col.collator) !== "undefined");
+        test.done();
     },
     
     testJSCollatorPrimaryEqual_it: function(test) {
+        test.expect(6);
         var col = new Collator({
             locale: "it-IT",
             useNative: false,
             sensitivity: "primary"
         });
     
-        test.expect(6);
         test.ok(typeof(col) !== "undefined");
     
         // should compare base first
@@ -530,13 +542,13 @@ module.exports.testcollation_general = {
     },
     
     testJSCollatorPrimaryBase_it: function(test) {
+        test.expect(17);
         var col = new Collator({
             locale: "it-IT",
             useNative: false,
             sensitivity: "primary"
         });
     
-        test.expect(17);
         test.ok(typeof(col) !== "undefined");
     
         // should compare base first
@@ -564,13 +576,13 @@ module.exports.testcollation_general = {
     },
     
     testJSCollatorPrimaryAccent_it: function(test) {
+        test.expect(4);
         var col = new Collator({
             locale: "it-IT",
             useNative: false,
             sensitivity: "primary"
         });
     
-        test.expect(4);
         test.ok(typeof(col) !== "undefined");
     
         // should compare base, then accent, then case, then variant
@@ -584,13 +596,13 @@ module.exports.testcollation_general = {
     },
     
     testJSCollatorPrimaryCase_it: function(test) {
+        test.expect(12);
         var col = new Collator({
             locale: "it-IT",
             useNative: false,
             sensitivity: "primary"
         });
     
-        test.expect(12);
         test.ok(typeof(col) !== "undefined");
     
         // should compare base, then accent, then case, then variant
@@ -611,13 +623,13 @@ module.exports.testcollation_general = {
     },
     
     testJSCollatorGetComparatorPrimary_it: function(test) {
+        test.expect(3);
         var col = new Collator({
             locale: "it-IT",
             useNative: false,
             sensitivity: "primary"
         });
     
-        test.expect(3);
         test.ok(typeof(col) !== "undefined");
     
         var func = col.getComparator();
@@ -627,13 +639,13 @@ module.exports.testcollation_general = {
     },
     
     testJSCollatorGetComparatorPrimaryWorks_it: function(test) {
+        test.expect(2);
         var col = new Collator({
             locale: "it-IT",
             useNative: false,
             sensitivity: "primary"
         });
     
-        test.expect(2);
         test.ok(typeof(col) !== "undefined");
     
         var func = col.getComparator();
@@ -643,13 +655,13 @@ module.exports.testcollation_general = {
     },
     
     testJSCollatorGetComparatorPrimaryWorksWithCase_it: function(test) {
+        test.expect(13);
         var col = new Collator({
             locale: "it-IT",
             useNative: false,
             sensitivity: "primary"
         });
     
-        test.expect(13);
         test.ok(typeof(col) !== "undefined");
     
         var func = col.getComparator();
@@ -672,13 +684,13 @@ module.exports.testcollation_general = {
     },
     
     testJSCollatorGetSortKeyPrimary_it: function(test) {
+        test.expect(2);
         var col = new Collator({
             locale: "it-IT",
             useNative: false,
             sensitivity: "primary"
         });
     
-        test.expect(2);
         test.ok(typeof(col) !== "undefined");
     
         test.equal(col.sortKey("string"), "6626826425225c24e2");
@@ -686,13 +698,13 @@ module.exports.testcollation_general = {
     },
     
     testJSCollatorGetSortKeyPrimaryWithAccentsAndCase_it: function(test) {
+        test.expect(2);
         var col = new Collator({
             locale: "it-IT",
             useNative: false,
             sensitivity: "primary"
         });
     
-        test.expect(2);
         test.ok(typeof(col) !== "undefined");
     
         test.equal(col.sortKey("Strïng"), "6606826425335c24e2");
@@ -700,13 +712,13 @@ module.exports.testcollation_general = {
     },
     
     testJSCollatorGetSortKeyPrimaryWorks_it: function(test) {
+        test.expect(13);
         var col = new Collator({
             locale: "it-IT",
             useNative: false,
             sensitivity: "primary"
         });
     
-        test.expect(13);
         test.ok(typeof(col) !== "undefined");
     
         test.equal(col.sortKey("string"), col.sortKey("string"), "string");
@@ -727,13 +739,13 @@ module.exports.testcollation_general = {
     
     
     testJSCollatorSecondaryEqual_it: function(test) {
+        test.expect(6);
         var col = new Collator({
             locale: "it-IT",
             useNative: false,
             sensitivity: "secondary"
         });
     
-        test.expect(6);
         test.ok(typeof(col) !== "undefined");
     
         // should compare base first
@@ -746,13 +758,13 @@ module.exports.testcollation_general = {
     },
     
     testJSCollatorSecondaryBase_it: function(test) {
+        test.expect(17);
         var col = new Collator({
             locale: "it-IT",
             useNative: false,
             sensitivity: "secondary"
         });
     
-        test.expect(17);
         test.ok(typeof(col) !== "undefined");
     
         // should compare base first
@@ -780,13 +792,13 @@ module.exports.testcollation_general = {
     },
     
     testJSCollatorSecondaryAccent_it: function(test) {
+        test.expect(4);
         var col = new Collator({
             locale: "it-IT",
             useNative: false,
             sensitivity: "secondary"
         });
     
-        test.expect(4);
         test.ok(typeof(col) !== "undefined");
     
         // should compare base, then accent, then case, then variant
@@ -799,13 +811,13 @@ module.exports.testcollation_general = {
     },
     
     testJSCollatorSecondaryCase_it: function(test) {
+        test.expect(12);
         var col = new Collator({
             locale: "it-IT",
             useNative: false,
             sensitivity: "secondary"
         });
     
-        test.expect(12);
         test.ok(typeof(col) !== "undefined");
     
         // should compare base, then case, then accent, then variant
@@ -825,13 +837,13 @@ module.exports.testcollation_general = {
     },
     
     testJSCollatorGetComparatorSecondary_it: function(test) {
+        test.expect(3);
         var col = new Collator({
             locale: "it-IT",
             useNative: false,
             sensitivity: "secondary"
         });
     
-        test.expect(3);
         test.ok(typeof(col) !== "undefined");
     
         var func = col.getComparator();
@@ -841,13 +853,13 @@ module.exports.testcollation_general = {
     },
     
     testJSCollatorGetComparatorSecondaryWorks_it: function(test) {
+        test.expect(2);
         var col = new Collator({
             locale: "it-IT",
             useNative: false,
             sensitivity: "secondary"
         });
     
-        test.expect(2);
         test.ok(typeof(col) !== "undefined");
     
         var func = col.getComparator();
@@ -857,13 +869,13 @@ module.exports.testcollation_general = {
     },
     
     testJSCollatorGetComparatorSecondaryWorksWithCase_it: function(test) {
+        test.expect(13);
         var col = new Collator({
             locale: "it-IT",
             useNative: false,
             sensitivity: "secondary"
         });
     
-        test.expect(13);
         test.ok(typeof(col) !== "undefined");
     
         var func = col.getComparator();
@@ -885,13 +897,13 @@ module.exports.testcollation_general = {
     },
     
     testJSCollatorGetSortKeySecondary_it: function(test) {
+        test.expect(2);
         var col = new Collator({
             locale: "it-IT",
             useNative: false,
             sensitivity: "secondary"
         });
     
-        test.expect(2);
         test.ok(typeof(col) !== "undefined");
     
         test.equal(col.sortKey("string"), "6626826425225c24e2");
@@ -899,13 +911,13 @@ module.exports.testcollation_general = {
     },
     
     testJSCollatorGetSortKeySecondaryWithAccentsAndCase_it: function(test) {
+        test.expect(2);
         var col = new Collator({
             locale: "it-IT",
             useNative: false,
             sensitivity: "secondary"
         });
     
-        test.expect(2);
         test.ok(typeof(col) !== "undefined");
     
         test.equal(col.sortKey("Strïng"), "6606826425335c24e2");
@@ -913,13 +925,13 @@ module.exports.testcollation_general = {
     },
     
     testJSCollatorGetSortKeySecondaryWorks_it: function(test) {
+        test.expect(13);
         var col = new Collator({
             locale: "it-IT",
             useNative: false,
             sensitivity: "secondary"
         });
     
-        test.expect(13);
         test.ok(typeof(col) !== "undefined");
     
         test.equal(col.sortKey("string"), col.sortKey("string"), "string");
@@ -940,13 +952,13 @@ module.exports.testcollation_general = {
     
     
     testJSCollatorTertiaryEqual_it: function(test) {
+        test.expect(6);
         var col = new Collator({
             locale: "it-IT",
             useNative: false,
             sensitivity: "tertiary"
         });
     
-        test.expect(6);
         test.ok(typeof(col) !== "undefined");
     
         // should compare base first
@@ -959,13 +971,13 @@ module.exports.testcollation_general = {
     },
     
     testJSCollatorTertiaryBase_it: function(test) {
+        test.expect(17);
         var col = new Collator({
             locale: "it-IT",
             useNative: false,
             sensitivity: "tertiary"
         });
     
-        test.expect(17);
         test.ok(typeof(col) !== "undefined");
     
         // should compare base first
@@ -993,13 +1005,13 @@ module.exports.testcollation_general = {
     },
     
     testJSCollatorTertiaryAccent_it: function(test) {
+        test.expect(4);
         var col = new Collator({
             locale: "it-IT",
             useNative: false,
             sensitivity: "tertiary"
         });
     
-        test.expect(4);
         test.ok(typeof(col) !== "undefined");
     
         // should compare base, then accent
@@ -1011,13 +1023,13 @@ module.exports.testcollation_general = {
     },
     
     testJSCollatorTertiaryCase_it: function(test) {
+        test.expect(12);
         var col = new Collator({
             locale: "it-IT",
             useNative: false,
             sensitivity: "tertiary"
         });
     
-        test.expect(12);
         test.ok(typeof(col) !== "undefined");
     
         // should compare base, then case, then accent, then variant
@@ -1037,13 +1049,13 @@ module.exports.testcollation_general = {
     },
     
     testJSCollatorGetComparatorTertiary_it: function(test) {
+        test.expect(3);
         var col = new Collator({
             locale: "it-IT",
             useNative: false,
             sensitivity: "tertiary"
         });
     
-        test.expect(3);
         test.ok(typeof(col) !== "undefined");
     
         var func = col.getComparator();
@@ -1053,13 +1065,13 @@ module.exports.testcollation_general = {
     },
     
     testJSCollatorGetComparatorTertiaryWorks_it: function(test) {
+        test.expect(2);
         var col = new Collator({
             locale: "it-IT",
             useNative: false,
             sensitivity: "tertiary"
         });
     
-        test.expect(2);
         test.ok(typeof(col) !== "undefined");
     
         var func = col.getComparator();
@@ -1069,13 +1081,13 @@ module.exports.testcollation_general = {
     },
     
     testJSCollatorGetComparatorTertiaryWorksWithCase_it: function(test) {
+        test.expect(13);
         var col = new Collator({
             locale: "it-IT",
             useNative: false,
             sensitivity: "tertiary"
         });
     
-        test.expect(13);
         test.ok(typeof(col) !== "undefined");
     
         var func = col.getComparator();
@@ -1097,13 +1109,13 @@ module.exports.testcollation_general = {
     },
     
     testJSCollatorGetSortKeyTertiary_it: function(test) {
+        test.expect(2);
         var col = new Collator({
             locale: "it-IT",
             useNative: false,
             sensitivity: "tertiary"
         });
     
-        test.expect(2);
         test.ok(typeof(col) !== "undefined");
     
         test.equal(col.sortKey("string"), "6626826425225c24e2");
@@ -1111,13 +1123,13 @@ module.exports.testcollation_general = {
     },
     
     testJSCollatorGetSortKeyTertiaryWithAccentsAndCase_it: function(test) {
+        test.expect(2);
         var col = new Collator({
             locale: "it-IT",
             useNative: false,
             sensitivity: "tertiary"
         });
     
-        test.expect(2);
         test.ok(typeof(col) !== "undefined");
     
         test.equal(col.sortKey("Strïng"), "6606826425335c24e2");
@@ -1125,13 +1137,13 @@ module.exports.testcollation_general = {
     },
     
     testJSCollatorGetSortKeyTertiaryWorks_it: function(test) {
+        test.expect(13);
         var col = new Collator({
             locale: "it-IT",
             useNative: false,
             sensitivity: "tertiary"
         });
     
-        test.expect(13);
         test.ok(typeof(col) !== "undefined");
     
         test.equal(col.sortKey("string"), col.sortKey("string"), "string");
@@ -1152,6 +1164,7 @@ module.exports.testcollation_general = {
     
     
     testJSCollatorSearchPrimaryEqual_it: function(test) {
+        test.expect(6);
         var col = new Collator({
             locale: "it-IT",
             useNative: false,
@@ -1159,7 +1172,6 @@ module.exports.testcollation_general = {
             usage: "search"
         });
     
-        test.expect(6);
         test.ok(typeof(col) !== "undefined");
     
         // should compare base first
@@ -1172,6 +1184,7 @@ module.exports.testcollation_general = {
     },
     
     testJSCollatorSearchPrimaryBase_it: function(test) {
+        test.expect(17);
         var col = new Collator({
             locale: "it-IT",
             useNative: false,
@@ -1179,7 +1192,6 @@ module.exports.testcollation_general = {
             usage: "search"
         });
     
-        test.expect(17);
         test.ok(typeof(col) !== "undefined");
     
         // should compare base first
@@ -1207,6 +1219,7 @@ module.exports.testcollation_general = {
     },
     
     testJSCollatorSearchPrimaryAccent_it: function(test) {
+        test.expect(4);
         var col = new Collator({
             locale: "it-IT",
             useNative: false,
@@ -1214,7 +1227,6 @@ module.exports.testcollation_general = {
             usage: "search"
         });
     
-        test.expect(4);
         test.ok(typeof(col) !== "undefined");
     
         // should compare base, then accent, then case, then variant
@@ -1227,6 +1239,7 @@ module.exports.testcollation_general = {
     },
     
     testJSCollatorSearchPrimaryCase_it: function(test) {
+        test.expect(12);
         var col = new Collator({
             locale: "it-IT",
             useNative: false,
@@ -1234,7 +1247,6 @@ module.exports.testcollation_general = {
             usage: "search"
         });
     
-        test.expect(12);
         test.ok(typeof(col) !== "undefined");
     
         // should compare base, then accent, then case, then variant
@@ -1255,6 +1267,7 @@ module.exports.testcollation_general = {
     },
     
     testJSCollatorSearchGetComparatorPrimary_it: function(test) {
+        test.expect(3);
         var col = new Collator({
             locale: "it-IT",
             useNative: false,
@@ -1262,7 +1275,6 @@ module.exports.testcollation_general = {
             usage: "search"
         });
     
-        test.expect(3);
         test.ok(typeof(col) !== "undefined");
     
         var func = col.getComparator();
@@ -1272,6 +1284,7 @@ module.exports.testcollation_general = {
     },
     
     testJSCollatorSearchGetComparatorPrimaryWorks_it: function(test) {
+        test.expect(2);
         var col = new Collator({
             locale: "it-IT",
             useNative: false,
@@ -1279,7 +1292,6 @@ module.exports.testcollation_general = {
             usage: "search"
         });
     
-        test.expect(2);
         test.ok(typeof(col) !== "undefined");
     
         var func = col.getComparator();
@@ -1289,6 +1301,7 @@ module.exports.testcollation_general = {
     },
     
     testJSCollatorSearchGetComparatorPrimaryWorksWithCase_it: function(test) {
+        test.expect(13);
         var col = new Collator({
             locale: "it-IT",
             useNative: false,
@@ -1296,7 +1309,6 @@ module.exports.testcollation_general = {
             usage: "search"
         });
     
-        test.expect(13);
         test.ok(typeof(col) !== "undefined");
     
         var func = col.getComparator();
@@ -1319,6 +1331,7 @@ module.exports.testcollation_general = {
     },
     
     testJSCollatorSearchGetSortKeyPrimary_it: function(test) {
+        test.expect(2);
         var col = new Collator({
             locale: "it-IT",
             useNative: false,
@@ -1326,7 +1339,6 @@ module.exports.testcollation_general = {
             usage: "search"
         });
     
-        test.expect(2);
         test.ok(typeof(col) !== "undefined");
     
         test.equal(col.sortKey("string"), "333432292e27");
@@ -1334,6 +1346,7 @@ module.exports.testcollation_general = {
     },
     
     testJSCollatorSearchGetSortKeyPrimaryWithAccentsAndCase_it: function(test) {
+        test.expect(2);
         var col = new Collator({
             locale: "it-IT",
             useNative: false,
@@ -1341,7 +1354,6 @@ module.exports.testcollation_general = {
             usage: "search"
         });
     
-        test.expect(2);
         test.ok(typeof(col) !== "undefined");
     
         test.equal(col.sortKey("Strïng"), "333432292e27");
@@ -1349,6 +1361,7 @@ module.exports.testcollation_general = {
     },
     
     testJSCollatorSearchGetSortKeyPrimaryWorks_it: function(test) {
+        test.expect(13);
         var col = new Collator({
             locale: "it-IT",
             useNative: false,
@@ -1356,7 +1369,6 @@ module.exports.testcollation_general = {
             usage: "search"
         });
     
-        test.expect(13);
         test.ok(typeof(col) !== "undefined");
     
         test.equal(col.sortKey("string"), col.sortKey("string"), "string");
@@ -1377,6 +1389,7 @@ module.exports.testcollation_general = {
     
     
     testJSCollatorSearchSecondaryEqual_it: function(test) {
+        test.expect(6);
         var col = new Collator({
             locale: "it-IT",
             useNative: false,
@@ -1384,7 +1397,6 @@ module.exports.testcollation_general = {
             usage: "search"
         });
     
-        test.expect(6);
         test.ok(typeof(col) !== "undefined");
     
         // should compare base first
@@ -1397,6 +1409,7 @@ module.exports.testcollation_general = {
     },
     
     testJSCollatorSearchSecondaryBase_it: function(test) {
+        test.expect(17);
         var col = new Collator({
             locale: "it-IT",
             useNative: false,
@@ -1404,7 +1417,6 @@ module.exports.testcollation_general = {
             usage: "search"
         });
     
-        test.expect(17);
         test.ok(typeof(col) !== "undefined");
     
         // should compare base first, then case
@@ -1432,6 +1444,7 @@ module.exports.testcollation_general = {
     },
     
     testJSCollatorSearchSecondaryAccent_it: function(test) {
+        test.expect(4);
         var col = new Collator({
             locale: "it-IT",
             useNative: false,
@@ -1439,7 +1452,6 @@ module.exports.testcollation_general = {
             usage: "search"
         });
     
-        test.expect(4);
         test.ok(typeof(col) !== "undefined");
     
         // should compare base, then case
@@ -1452,6 +1464,7 @@ module.exports.testcollation_general = {
     },
     
     testJSCollatorSearchSecondaryCase_it: function(test) {
+        test.expect(12);
         var col = new Collator({
             locale: "it-IT",
             useNative: false,
@@ -1459,7 +1472,6 @@ module.exports.testcollation_general = {
             usage: "search"
         });
     
-        test.expect(12);
         test.ok(typeof(col) !== "undefined");
     
         // should compare base, then case
@@ -1480,6 +1492,7 @@ module.exports.testcollation_general = {
     },
     
     testJSCollatorSearchGetComparatorSecondary_it: function(test) {
+        test.expect(3);
         var col = new Collator({
             locale: "it-IT",
             useNative: false,
@@ -1487,7 +1500,6 @@ module.exports.testcollation_general = {
             usage: "search"
         });
     
-        test.expect(3);
         test.ok(typeof(col) !== "undefined");
     
         var func = col.getComparator();
@@ -1497,6 +1509,7 @@ module.exports.testcollation_general = {
     },
     
     testJSCollatorSearchGetComparatorSecondaryWorks_it: function(test) {
+        test.expect(2);
         var col = new Collator({
             locale: "it-IT",
             useNative: false,
@@ -1504,7 +1517,6 @@ module.exports.testcollation_general = {
             usage: "search"
         });
     
-        test.expect(2);
         test.ok(typeof(col) !== "undefined");
     
         var func = col.getComparator();
@@ -1514,6 +1526,7 @@ module.exports.testcollation_general = {
     },
     
     testJSCollatorSearchGetComparatorSecondaryWorksWithCase_it: function(test) {
+        test.expect(13);
         var col = new Collator({
             locale: "it-IT",
             useNative: false,
@@ -1521,7 +1534,6 @@ module.exports.testcollation_general = {
             usage: "search"
         });
     
-        test.expect(13);
         test.ok(typeof(col) !== "undefined");
     
         var func = col.getComparator();
@@ -1545,6 +1557,7 @@ module.exports.testcollation_general = {
     },
     
     testJSCollatorSearchGetSortKeySecondary_it: function(test) {
+        test.expect(2);
         var col = new Collator({
             locale: "it-IT",
             useNative: false,
@@ -1552,7 +1565,6 @@ module.exports.testcollation_general = {
             usage: "search"
         });
     
-        test.expect(2);
         test.ok(typeof(col) !== "undefined");
     
         test.equal(col.sortKey("string"), "1981a0190148170138");
@@ -1560,6 +1572,7 @@ module.exports.testcollation_general = {
     },
     
     testJSCollatorSearchGetSortKeySecondaryWithAccentsAndCase_it: function(test) {
+        test.expect(2);
         var col = new Collator({
             locale: "it-IT",
             useNative: false,
@@ -1567,7 +1580,6 @@ module.exports.testcollation_general = {
             usage: "search"
         });
     
-        test.expect(2);
         test.ok(typeof(col) !== "undefined");
     
         test.equal(col.sortKey("Strïng"), "1981a019014c170138");
@@ -1575,6 +1587,7 @@ module.exports.testcollation_general = {
     },
     
     testJSCollatorSearchGetSortKeySecondaryWorks_it: function(test) {
+        test.expect(13);
         var col = new Collator({
             locale: "it-IT",
             useNative: false,
@@ -1582,7 +1595,6 @@ module.exports.testcollation_general = {
             usage: "search"
         });
     
-        test.expect(13);
         test.ok(typeof(col) !== "undefined");
     
         test.equal(col.sortKey("string"), col.sortKey("string"), "string");
@@ -1603,6 +1615,7 @@ module.exports.testcollation_general = {
     
     
     testJSCollatorSearchTertiaryEqual_it: function(test) {
+        test.expect(6);
         var col = new Collator({
             locale: "it-IT",
             useNative: false,
@@ -1610,7 +1623,6 @@ module.exports.testcollation_general = {
             usage: "search"
         });
     
-        test.expect(6);
         test.ok(typeof(col) !== "undefined");
     
         // should compare base first
@@ -1623,6 +1635,7 @@ module.exports.testcollation_general = {
     },
     
     testJSCollatorSearchTertiaryBase_it: function(test) {
+        test.expect(17);
         var col = new Collator({
             locale: "it-IT",
             useNative: false,
@@ -1630,7 +1643,6 @@ module.exports.testcollation_general = {
             usage: "search"
         });
     
-        test.expect(17);
         test.ok(typeof(col) !== "undefined");
     
         // should compare base first
@@ -1658,6 +1670,7 @@ module.exports.testcollation_general = {
     },
     
     testJSCollatorSearchTertiaryAccent_it: function(test) {
+        test.expect(4);
         var col = new Collator({
             locale: "it-IT",
             useNative: false,
@@ -1665,7 +1678,6 @@ module.exports.testcollation_general = {
             usage: "search"
         });
     
-        test.expect(4);
         test.ok(typeof(col) !== "undefined");
     
         // should compare base, then accent
@@ -1678,6 +1690,7 @@ module.exports.testcollation_general = {
     },
     
     testJSCollatorSearchTertiaryCase_it: function(test) {
+        test.expect(12);
         var col = new Collator({
             locale: "it-IT",
             useNative: false,
@@ -1685,7 +1698,6 @@ module.exports.testcollation_general = {
             usage: "search"
         });
     
-        test.expect(12);
         test.ok(typeof(col) !== "undefined");
     
         // should compare base, then case, then accent
@@ -1706,6 +1718,7 @@ module.exports.testcollation_general = {
     },
     
     testJSCollatorSearchGetComparatorTertiary_it: function(test) {
+        test.expect(3);
         var col = new Collator({
             locale: "it-IT",
             useNative: false,
@@ -1713,7 +1726,6 @@ module.exports.testcollation_general = {
             usage: "search"
         });
     
-        test.expect(3);
         test.ok(typeof(col) !== "undefined");
     
         var func = col.getComparator();
@@ -1723,6 +1735,7 @@ module.exports.testcollation_general = {
     },
     
     testJSCollatorSearchGetComparatorTertiaryWorks_it: function(test) {
+        test.expect(2);
         var col = new Collator({
             locale: "it-IT",
             useNative: false,
@@ -1730,7 +1743,6 @@ module.exports.testcollation_general = {
             usage: "search"
         });
     
-        test.expect(2);
         test.ok(typeof(col) !== "undefined");
     
         var func = col.getComparator();
@@ -1740,6 +1752,7 @@ module.exports.testcollation_general = {
     },
     
     testJSCollatorSearchGetComparatorTertiaryWorksWithCase_it: function(test) {
+        test.expect(13);
         var col = new Collator({
             locale: "it-IT",
             useNative: false,
@@ -1747,7 +1760,6 @@ module.exports.testcollation_general = {
             usage: "search"
         });
     
-        test.expect(13);
         test.ok(typeof(col) !== "undefined");
     
         var func = col.getComparator();
@@ -1771,6 +1783,7 @@ module.exports.testcollation_general = {
     },
     
     testJSCollatorSearchGetSortKeyTertiary_it: function(test) {
+        test.expect(2);
         var col = new Collator({
             locale: "it-IT",
             useNative: false,
@@ -1778,7 +1791,6 @@ module.exports.testcollation_general = {
             usage: "search"
         });
     
-        test.expect(2);
         test.ok(typeof(col) !== "undefined");
     
         test.equal(col.sortKey("string"), "3313413212912e1271");
@@ -1786,6 +1798,7 @@ module.exports.testcollation_general = {
     },
     
     testJSCollatorSearchGetSortKeyTertiaryWithAccentsAndCase_it: function(test) {
+        test.expect(2);
         var col = new Collator({
             locale: "it-IT",
             useNative: false,
@@ -1793,7 +1806,6 @@ module.exports.testcollation_general = {
             usage: "search"
         });
     
-        test.expect(2);
         test.ok(typeof(col) !== "undefined");
     
         test.equal(col.sortKey("Strïng"), "3303413212992e1271");
@@ -1801,6 +1813,7 @@ module.exports.testcollation_general = {
     },
     
     testJSCollatorSearchGetSortKeyTertiaryWorks_it: function(test) {
+        test.expect(13);
         var col = new Collator({
             locale: "it-IT",
             useNative: false,
@@ -1808,7 +1821,6 @@ module.exports.testcollation_general = {
             usage: "search"
         });
     
-        test.expect(13);
         test.ok(typeof(col) !== "undefined");
     
         test.equal(col.sortKey("string"), col.sortKey("string"), "string");
@@ -1829,6 +1841,7 @@ module.exports.testcollation_general = {
     
     
     testJSCollatorSearchQuaternaryEqual_it: function(test) {
+        test.expect(6);
         var col = new Collator({
             locale: "it-IT",
             useNative: false,
@@ -1836,7 +1849,6 @@ module.exports.testcollation_general = {
             usage: "search"
         });
     
-        test.expect(6);
         test.ok(typeof(col) !== "undefined");
     
         // should compare base first
@@ -1849,6 +1861,7 @@ module.exports.testcollation_general = {
     },
     
     testJSCollatorSearchQuaternaryBase_it: function(test) {
+        test.expect(17);
         var col = new Collator({
             locale: "it-IT",
             useNative: false,
@@ -1856,7 +1869,6 @@ module.exports.testcollation_general = {
             usage: "search"
         });
     
-        test.expect(17);
         test.ok(typeof(col) !== "undefined");
     
         // should compare base first
@@ -1884,6 +1896,7 @@ module.exports.testcollation_general = {
     },
     
     testJSCollatorSearchQuaternaryAccent_it: function(test) {
+        test.expect(4);
         var col = new Collator({
             locale: "it-IT",
             useNative: false,
@@ -1891,7 +1904,6 @@ module.exports.testcollation_general = {
             usage: "search"
         });
     
-        test.expect(4);
         test.ok(typeof(col) !== "undefined");
     
         // should compare base, then accent
@@ -1904,6 +1916,7 @@ module.exports.testcollation_general = {
     },
     
     testJSCollatorSearchQuaternaryCase_it: function(test) {
+        test.expect(12);
         var col = new Collator({
             locale: "it-IT",
             useNative: false,
@@ -1911,7 +1924,6 @@ module.exports.testcollation_general = {
             usage: "search"
         });
     
-        test.expect(12);
         test.ok(typeof(col) !== "undefined");
     
         // should compare base, then case, then accent
@@ -1932,6 +1944,7 @@ module.exports.testcollation_general = {
     },
     
     testJSCollatorSearchGetComparatorQuaternary_it: function(test) {
+        test.expect(3);
         var col = new Collator({
             locale: "it-IT",
             useNative: false,
@@ -1939,7 +1952,6 @@ module.exports.testcollation_general = {
             usage: "search"
         });
     
-        test.expect(3);
         test.ok(typeof(col) !== "undefined");
     
         var func = col.getComparator();
@@ -1949,6 +1961,7 @@ module.exports.testcollation_general = {
     },
     
     testJSCollatorSearchGetComparatorQuaternaryWorks_it: function(test) {
+        test.expect(2);
         var col = new Collator({
             locale: "it-IT",
             useNative: false,
@@ -1956,7 +1969,6 @@ module.exports.testcollation_general = {
             usage: "search"
         });
     
-        test.expect(2);
         test.ok(typeof(col) !== "undefined");
     
         var func = col.getComparator();
@@ -1966,6 +1978,7 @@ module.exports.testcollation_general = {
     },
     
     testJSCollatorSearchGetComparatorQuaternaryWorksWithCase_it: function(test) {
+        test.expect(13);
         var col = new Collator({
             locale: "it-IT",
             useNative: false,
@@ -1973,7 +1986,6 @@ module.exports.testcollation_general = {
             usage: "search"
         });
     
-        test.expect(13);
         test.ok(typeof(col) !== "undefined");
     
         var func = col.getComparator();
@@ -1997,6 +2009,7 @@ module.exports.testcollation_general = {
     },
     
     testJSCollatorSearchGetSortKeyQuaternary_it: function(test) {
+        test.expect(2);
         var col = new Collator({
             locale: "it-IT",
             useNative: false,
@@ -2004,7 +2017,6 @@ module.exports.testcollation_general = {
             usage: "search"
         });
     
-        test.expect(2);
         test.ok(typeof(col) !== "undefined");
     
         test.equal(col.sortKey("string"), "6626826425225c24e2");
@@ -2012,6 +2024,7 @@ module.exports.testcollation_general = {
     },
     
     testJSCollatorSearchGetSortKeyQuaternaryWithAccentsAndCase_it: function(test) {
+        test.expect(2);
         var col = new Collator({
             locale: "it-IT",
             useNative: false,
@@ -2019,7 +2032,6 @@ module.exports.testcollation_general = {
             usage: "search"
         });
     
-        test.expect(2);
         test.ok(typeof(col) !== "undefined");
     
         test.equal(col.sortKey("Strïng"), "6606826425335c24e2");
@@ -2027,6 +2039,7 @@ module.exports.testcollation_general = {
     },
     
     testJSCollatorSearchGetSortKeyQuaternaryWorks_it: function(test) {
+        test.expect(13);
         var col = new Collator({
             locale: "it-IT",
             useNative: false,
@@ -2034,7 +2047,6 @@ module.exports.testcollation_general = {
             usage: "search"
         });
     
-        test.expect(13);
         test.ok(typeof(col) !== "undefined");
     
         test.equal(col.sortKey("string"), col.sortKey("string"), "string");
@@ -2055,12 +2067,12 @@ module.exports.testcollation_general = {
     
     
     testCollatorJSWithSortPrimary_it: function(test) {
+        test.expect(2);
         var col = new Collator({
             locale: "it-IT",
             useNative: false,
             sensitivity: "primary"
         });
-        test.expect(2);
         test.ok(typeof(col) !== "undefined");
     
         var input = ["Strïng", "strïng", "String", "StrinG", "Strïng", "string", "str", "strïng", "strïnG"];
@@ -2074,12 +2086,12 @@ module.exports.testcollation_general = {
     },
     
     testCollatorJSWithSortPrimaryStable_it: function(test) {
+        test.expect(2);
         var col = new Collator({
             locale: "it-IT",
             useNative: false,
             sensitivity: "primary"
         });
-        test.expect(2);
         test.ok(typeof(col) !== "undefined");
     
         // input array order should not matter
@@ -2094,13 +2106,13 @@ module.exports.testcollation_general = {
     },
     
     testCollatorJSWithSortPrimaryLowerFirst_it: function(test) {
+        test.expect(2);
         var col = new Collator({
             locale: "it-IT",
             useNative: false,
             sensitivity: "primary",
             upperFirst: false
         });
-        test.expect(2);
         test.ok(typeof(col) !== "undefined");
     
         var input = ["Strïng", "strïng", "String", "StrinG", "Strïng", "string", "str", "strïng", "strïnG"];
@@ -2114,13 +2126,13 @@ module.exports.testcollation_general = {
     },
     
     testCollatorJSWithSortPrimaryReverse_it: function(test) {
+        test.expect(2);
         var col = new Collator({
             locale: "it-IT",
             useNative: false,
             sensitivity: "primary",
             reverse: true
         });
-        test.expect(2);
         test.ok(typeof(col) !== "undefined");
     
         var input = ["Strïng", "strïng", "String", "StrinG", "Strïng", "string", "str", "strïng", "strïnG"];
@@ -2134,6 +2146,7 @@ module.exports.testcollation_general = {
     },
     
     testCollatorJSWithSortPrimaryReverseLowerFirst_it: function(test) {
+        test.expect(2);
         var col = new Collator({
             locale: "it-IT",
             useNative: false,
@@ -2141,7 +2154,6 @@ module.exports.testcollation_general = {
             reverse: true,
             upperFirst: false
         });
-        test.expect(2);
         test.ok(typeof(col) !== "undefined");
     
         var input = ["Strïng", "strïng", "String", "StrinG", "Strïng", "string", "str", "strïng", "strïnG"];
@@ -2155,12 +2167,12 @@ module.exports.testcollation_general = {
     },
     
     testCollatorJSWithSortSecondary_it: function(test) {
+        test.expect(2);
         var col = new Collator({
             locale: "it-IT",
             useNative: false,
             sensitivity: "secondary"
         });
-        test.expect(2);
         test.ok(typeof(col) !== "undefined");
     
         var input = ["Strïng", "strïng", "String", "StrinG", "Strïng", "string", "str", "strïng", "strïnG"];
@@ -2175,12 +2187,12 @@ module.exports.testcollation_general = {
     },
     
     testCollatorJSWithSortTertiary_it: function(test) {
+        test.expect(2);
         var col = new Collator({
             locale: "it-IT",
             useNative: false,
             sensitivity: "tertiary"
         });
-        test.expect(2);
         test.ok(typeof(col) !== "undefined");
     
         var input = ["Strïng", "strïng", "String", "StrinG", "Strïng", "string", "str", "strïng", "strïnG"];
@@ -2196,12 +2208,12 @@ module.exports.testcollation_general = {
     
     
     testCollatorJSWithSortWithSortKeys_it: function(test) {
+        test.expect(2);
         var col = new Collator({
             locale: "it-IT",
             useNative: false,
             sensitivity: "primary"
         });
-        test.expect(2);
         test.ok(typeof(col) !== "undefined");
     
         var input = [
@@ -2235,12 +2247,12 @@ module.exports.testcollation_general = {
     },
     
     testCollatorJSWithSortUpperFirst_it: function(test) {
+        test.expect(2);
         var col = new Collator({
             locale: "it-IT",
             useNative: false,
             upperFirst: true
         });
-        test.expect(2);
         test.ok(typeof(col) !== "undefined");
     
         var input = ["q", "I", "e", "r", "T", "U", "i", "E", "o", "p"];
@@ -2254,12 +2266,12 @@ module.exports.testcollation_general = {
     },
     
     testCollatorJSWithSortUpperNotFirst_it: function(test) {
+        test.expect(2);
         var col = new Collator({
             locale: "it-IT",
             useNative: false,
             upperFirst: false
         });
-        test.expect(2);
         test.ok(typeof(col) !== "undefined");
     
         var input = ["q", "I", "e", "r", "T", "U", "i", "E", "o", "p"];
@@ -2273,6 +2285,7 @@ module.exports.testcollation_general = {
     },
     
     testJSCollatorSortGetSortKeyReversePrimary_it: function(test) {
+        test.expect(2);
         var col = new Collator({
             locale: "it-IT",
             useNative: false,
@@ -2281,7 +2294,6 @@ module.exports.testcollation_general = {
             sensitivity: "primary"
         });
     
-        test.expect(2);
         test.ok(typeof(col) !== "undefined");
     
         test.equal(col.sortKey("string"), "cdccced7d2d9");
@@ -2289,6 +2301,7 @@ module.exports.testcollation_general = {
     },
     
     testJSCollatorSortGetSortKeyReverseQuaternary_it: function(test) {
+        test.expect(2);
         var col = new Collator({
             locale: "it-IT",
             useNative: false,
@@ -2297,7 +2310,6 @@ module.exports.testcollation_general = {
             sensitivity: "quaternary"
         });
     
-        test.expect(2);
         test.ok(typeof(col) !== "undefined");
     
         test.equal(col.sortKey("string"), "99e97e9beadea3eb1e");
@@ -2305,13 +2317,13 @@ module.exports.testcollation_general = {
     },
     
     testCollatorJSWithSortWithSortKeysReverse_it: function(test) {
+        test.expect(2);
         var col = new Collator({
             locale: "it-IT",
             useNative: false,
             sensitivity: "primary",
             reverse: true
         });
-        test.expect(2);
         test.ok(typeof(col) !== "undefined");
     
         var input = [
@@ -2346,6 +2358,7 @@ module.exports.testcollation_general = {
     
     
     testJSCollatorIgnorePunctuation_it: function(test) {
+        test.expect(2);
         var col = new Collator({
             locale: "it-IT",
             useNative: false,
@@ -2353,7 +2366,6 @@ module.exports.testcollation_general = {
             ignorePunctuation: true
         });
     
-        test.expect(2);
         test.ok(typeof(col) !== "undefined");
     
         test.equal(col.compare("string", "'st,ri-ng"), 0);
@@ -2361,6 +2373,7 @@ module.exports.testcollation_general = {
     },
     
     testJSCollatorIgnorePunctuationNoPunct_it: function(test) {
+        test.expect(2);
         var col = new Collator({
             locale: "it-IT",
             useNative: false,
@@ -2368,7 +2381,6 @@ module.exports.testcollation_general = {
             ignorePunctuation: true
         });
     
-        test.expect(2);
         test.ok(typeof(col) !== "undefined");
     
         test.equal(col.compare("string", "string"), 0);
@@ -2376,6 +2388,7 @@ module.exports.testcollation_general = {
     },
     
     testJSCollatorIgnorePunctuationSortKey_it: function(test) {
+        test.expect(2);
         var col = new Collator({
             locale: "it-IT",
             useNative: false,
@@ -2383,7 +2396,6 @@ module.exports.testcollation_general = {
             ignorePunctuation: true
         });
     
-        test.expect(2);
         test.ok(typeof(col) !== "undefined");
     
         test.equal(col.sortKey("-@#%St-ring-#@%"), "6606826425225c24e2");
@@ -2391,6 +2403,7 @@ module.exports.testcollation_general = {
     },
     
     testJSCollatorNumeric_it: function(test) {
+        test.expect(2);
         var col = new Collator({
             locale: "it-IT",
             useNative: false,
@@ -2398,7 +2411,6 @@ module.exports.testcollation_general = {
             numeric: true
         });
     
-        test.expect(2);
         test.ok(typeof(col) !== "undefined");
     
         test.equal(col.compare("00123.4", "123.4"), 0);
@@ -2406,6 +2418,7 @@ module.exports.testcollation_general = {
     },
     
     testJSCollatorNumericNoNumbers_it: function(test) {
+        test.expect(2);
         var col = new Collator({
             locale: "it-IT",
             useNative: false,
@@ -2413,7 +2426,6 @@ module.exports.testcollation_general = {
             numeric: true
         });
     
-        test.expect(2);
         test.ok(typeof(col) !== "undefined");
     
         test.ok(col.compare("asdf", "fooo") < 0);
@@ -2421,6 +2433,7 @@ module.exports.testcollation_general = {
     },
     
     testJSCollatorNumericLeftNumber_it: function(test) {
+        test.expect(2);
         var col = new Collator({
             locale: "it-IT",
             useNative: false,
@@ -2428,7 +2441,6 @@ module.exports.testcollation_general = {
             numeric: true
         });
     
-        test.expect(2);
         test.ok(typeof(col) !== "undefined");
     
         test.ok(col.compare("1", "fooo") < 0);
@@ -2436,6 +2448,7 @@ module.exports.testcollation_general = {
     },
     
     testJSCollatorNumericRightNumber_it: function(test) {
+        test.expect(2);
         var col = new Collator({
             locale: "it-IT",
             useNative: false,
@@ -2443,7 +2456,6 @@ module.exports.testcollation_general = {
             numeric: true
         });
     
-        test.expect(2);
         test.ok(typeof(col) !== "undefined");
     
         test.ok(col.compare("asdf", "231234") > 0);
@@ -2451,6 +2463,7 @@ module.exports.testcollation_general = {
     },
     
     testJSCollatorWithThousandsSeparator_it: function(test) {
+        test.expect(2);
         var col = new Collator({
             locale: "it-IT",
             useNative: false,
@@ -2458,7 +2471,6 @@ module.exports.testcollation_general = {
             numeric: true
         });
     
-        test.expect(2);
         test.ok(typeof(col) !== "undefined");
     
         test.equal(col.compare("12.454.454,4", "0.012.454.454,4"), 0);
@@ -2466,6 +2478,7 @@ module.exports.testcollation_general = {
     },
     
     testJSCollatorNumeric1_it: function(test) {
+        test.expect(2);
         var col = new Collator({
             locale: "it-IT",
             useNative: false,
@@ -2473,7 +2486,6 @@ module.exports.testcollation_general = {
             numeric: true
         });
     
-        test.expect(2);
         test.ok(typeof(col) !== "undefined");
     
         test.ok(col.compare("10", "1") > 0);
@@ -2481,6 +2493,7 @@ module.exports.testcollation_general = {
     },
     
     testJSCollatorNumeric2_it: function(test) {
+        test.expect(2);
         var col = new Collator({
             locale: "it-IT",
             useNative: false,
@@ -2488,7 +2501,6 @@ module.exports.testcollation_general = {
             numeric: true
         });
     
-        test.expect(2);
         test.ok(typeof(col) !== "undefined");
     
         test.ok(col.compare("100", "10") > 0);
@@ -2496,6 +2508,7 @@ module.exports.testcollation_general = {
     },
     
     testJSCollatorNumeric3_it: function(test) {
+        test.expect(2);
         var col = new Collator({
             locale: "it-IT",
             useNative: false,
@@ -2503,7 +2516,6 @@ module.exports.testcollation_general = {
             numeric: true
         });
     
-        test.expect(2);
         test.ok(typeof(col) !== "undefined");
     
         test.ok(col.compare("100", "99") > 0);
@@ -2511,6 +2523,7 @@ module.exports.testcollation_general = {
     },
     
     testJSCollatorNumeric4_it: function(test) {
+        test.expect(2);
         var col = new Collator({
             locale: "it-IT",
             useNative: false,
@@ -2518,7 +2531,6 @@ module.exports.testcollation_general = {
             numeric: true
         });
     
-        test.expect(2);
         test.ok(typeof(col) !== "undefined");
     
         test.ok(col.compare("100", "99,9") > 0);
@@ -2526,6 +2538,7 @@ module.exports.testcollation_general = {
     },
     
     testJSCollatorNumericWithText_it: function(test) {
+        test.expect(2);
         var col = new Collator({
             locale: "it-IT",
             useNative: false,
@@ -2533,7 +2546,6 @@ module.exports.testcollation_general = {
             numeric: true
         });
     
-        test.expect(2);
         test.ok(typeof(col) !== "undefined");
     
         test.ok(col.compare("1 box", "2 boxes") < 0);
@@ -2541,6 +2553,7 @@ module.exports.testcollation_general = {
     },
     
     testJSCollatorNumericWithText_it: function(test) {
+        test.expect(2);
         var col = new Collator({
             locale: "it-IT",
             useNative: false,
@@ -2548,7 +2561,6 @@ module.exports.testcollation_general = {
             numeric: true
         });
     
-        test.expect(2);
         test.ok(typeof(col) !== "undefined");
     
         test.ok(col.compare("20 boxes", "2 boxes") > 0);
@@ -2556,6 +2568,7 @@ module.exports.testcollation_general = {
     },
     
     testJSCollatorNumericWithText2_it: function(test) {
+        test.expect(2);
         var col = new Collator({
             locale: "it-IT",
             useNative: false,
@@ -2563,7 +2576,6 @@ module.exports.testcollation_general = {
             numeric: true
         });
     
-        test.expect(2);
         test.ok(typeof(col) !== "undefined");
     
         test.ok(col.compare("20,1 boxes", "201 boxes") < 0);
@@ -2571,6 +2583,7 @@ module.exports.testcollation_general = {
     },
     
     testJSCollatorNumericSortKey1_it: function(test) {
+        test.expect(2);
         var col = new Collator({
             locale: "it-IT",
             useNative: false,
@@ -2578,7 +2591,6 @@ module.exports.testcollation_general = {
             numeric: true
         });
     
-        test.expect(2);
         test.ok(typeof(col) !== "undefined");
     
         test.equal(col.sortKey("1"), "0000000000000001");
@@ -2586,6 +2598,7 @@ module.exports.testcollation_general = {
     },
     
     testJSCollatorNumericSortKey255_it: function(test) {
+        test.expect(2);
         var col = new Collator({
             locale: "it-IT",
             useNative: false,
@@ -2593,7 +2606,6 @@ module.exports.testcollation_general = {
             numeric: true
         });
     
-        test.expect(2);
         test.ok(typeof(col) !== "undefined");
     
         test.equal(col.sortKey("255"), "00000000000000ff");
@@ -2601,6 +2613,7 @@ module.exports.testcollation_general = {
     },
     
     testJSCollatorNumericSortKeyBig_it: function(test) {
+        test.expect(2);
         var col = new Collator({
             locale: "it-IT",
             useNative: false,
@@ -2608,7 +2621,6 @@ module.exports.testcollation_general = {
             numeric: true
         });
     
-        test.expect(2);
         test.ok(typeof(col) !== "undefined");
     
         test.equal(col.sortKey("17238562365345"), "00000fadaa62dfa1");
@@ -2617,12 +2629,12 @@ module.exports.testcollation_general = {
     
     
     testCollatorJSWithSortPrimary_af: function(test) {
+        test.expect(2);
         var col = new Collator({
             locale: "af-ZA",
             useNative: false,
             sensitivity: "primary"
         });
-        test.expect(2);
         test.ok(typeof(col) !== "undefined");
     
         var input = ["Strïng", "strïng", "String", "StrinG", "Strïng", "string", "str", "strïng", "strïnG"];
@@ -2636,12 +2648,12 @@ module.exports.testcollation_general = {
     },
     
     testCollatorJSWithSortPrimaryStable_af: function(test) {
+        test.expect(2);
         var col = new Collator({
             locale: "af-ZA",
             useNative: false,
             sensitivity: "primary"
         });
-        test.expect(2);
         test.ok(typeof(col) !== "undefined");
     
         // input array order should not matter
@@ -2656,13 +2668,13 @@ module.exports.testcollation_general = {
     },
     
     testCollatorJSWithSortPrimaryLowerFirst_af: function(test) {
+        test.expect(2);
         var col = new Collator({
             locale: "af-ZA",
             useNative: false,
             sensitivity: "primary",
             upperFirst: false
         });
-        test.expect(2);
         test.ok(typeof(col) !== "undefined");
     
         var input = ["Strïng", "strïng", "String", "StrinG", "Strïng", "string", "str", "strïng", "strïnG"];
@@ -2676,13 +2688,13 @@ module.exports.testcollation_general = {
     },
     
     testCollatorJSWithSortPrimaryReverse_af: function(test) {
+        test.expect(2);
         var col = new Collator({
             locale: "af-ZA",
             useNative: false,
             sensitivity: "primary",
             reverse: true
         });
-        test.expect(2);
         test.ok(typeof(col) !== "undefined");
     
         var input = ["Strïng", "strïng", "String", "StrinG", "Strïng", "string", "str", "strïng", "strïnG"];
@@ -2696,6 +2708,7 @@ module.exports.testcollation_general = {
     },
     
     testCollatorJSWithSortPrimaryReverseLowerFirst_af: function(test) {
+        test.expect(2);
         var col = new Collator({
             locale: "af-ZA",
             useNative: false,
@@ -2703,7 +2716,6 @@ module.exports.testcollation_general = {
             reverse: true,
             upperFirst: false
         });
-        test.expect(2);
         test.ok(typeof(col) !== "undefined");
     
         var input = ["Strïng", "strïng", "String", "StrinG", "Strïng", "string", "str", "strïng", "strïnG"];
@@ -2717,12 +2729,12 @@ module.exports.testcollation_general = {
     },
     
     testCollatorJSWithSortSecondary_af: function(test) {
+        test.expect(2);
         var col = new Collator({
             locale: "af-ZA",
             useNative: false,
             sensitivity: "secondary"
         });
-        test.expect(2);
         test.ok(typeof(col) !== "undefined");
     
         var input = ["Strïng", "strïng", "String", "StrinG", "Strïng", "string", "str", "strïng", "strïnG"];
@@ -2737,12 +2749,12 @@ module.exports.testcollation_general = {
     },
     
     testCollatorJSWithSortTertiary_af: function(test) {
+        test.expect(2);
         var col = new Collator({
             locale: "af-ZA",
             useNative: false,
             sensitivity: "tertiary"
         });
-        test.expect(2);
         test.ok(typeof(col) !== "undefined");
     
         var input = ["Strïng", "strïng", "String", "StrinG", "Strïng", "string", "str", "strïng", "strïnG"];
@@ -2758,12 +2770,12 @@ module.exports.testcollation_general = {
     
     
     testCollatorJSWithSortPrimary_eu: function(test) {
+        test.expect(2);
         var col = new Collator({
             locale: "eu-ES",
             useNative: false,
             sensitivity: "primary"
         });
-        test.expect(2);
         test.ok(typeof(col) !== "undefined");
     
         var input = ["Strïng", "strïng", "String", "StrinG", "Strïng", "string", "str", "strïng", "strïnG"];
@@ -2777,12 +2789,12 @@ module.exports.testcollation_general = {
     },
     
     testCollatorJSWithSortPrimaryStable_eu: function(test) {
+        test.expect(2);
         var col = new Collator({
             locale: "eu-ES",
             useNative: false,
             sensitivity: "primary"
         });
-        test.expect(2);
         test.ok(typeof(col) !== "undefined");
     
         // input array order should not matter
@@ -2797,13 +2809,13 @@ module.exports.testcollation_general = {
     },
     
     testCollatorJSWithSortPrimaryLowerFirst_eu: function(test) {
+        test.expect(2);
         var col = new Collator({
             locale: "eu-ES",
             useNative: false,
             sensitivity: "primary",
             upperFirst: false
         });
-        test.expect(2);
         test.ok(typeof(col) !== "undefined");
     
         var input = ["Strïng", "strïng", "String", "StrinG", "Strïng", "string", "str", "strïng", "strïnG"];
@@ -2817,13 +2829,13 @@ module.exports.testcollation_general = {
     },
     
     testCollatorJSWithSortPrimaryReverse_eu: function(test) {
+        test.expect(2);
         var col = new Collator({
             locale: "eu-ES",
             useNative: false,
             sensitivity: "primary",
             reverse: true
         });
-        test.expect(2);
         test.ok(typeof(col) !== "undefined");
     
         var input = ["Strïng", "strïng", "String", "StrinG", "Strïng", "string", "str", "strïng", "strïnG"];
@@ -2837,6 +2849,7 @@ module.exports.testcollation_general = {
     },
     
     testCollatorJSWithSortPrimaryReverseLowerFirst_eu: function(test) {
+        test.expect(2);
         var col = new Collator({
             locale: "eu-ES",
             useNative: false,
@@ -2844,7 +2857,6 @@ module.exports.testcollation_general = {
             reverse: true,
             upperFirst: false
         });
-        test.expect(2);
         test.ok(typeof(col) !== "undefined");
     
         var input = ["Strïng", "strïng", "String", "StrinG", "Strïng", "string", "str", "strïng", "strïnG"];
@@ -2858,12 +2870,12 @@ module.exports.testcollation_general = {
     },
     
     testCollatorJSWithSortSecondary_eu: function(test) {
+        test.expect(2);
         var col = new Collator({
             locale: "eu-ES",
             useNative: false,
             sensitivity: "secondary"
         });
-        test.expect(2);
         test.ok(typeof(col) !== "undefined");
     
         var input = ["Strïng", "strïng", "String", "StrinG", "Strïng", "string", "str", "strïng", "strïnG"];
@@ -2878,12 +2890,12 @@ module.exports.testcollation_general = {
     },
     
     testCollatorJSWithSortTertiary_eu: function(test) {
+        test.expect(2);
         var col = new Collator({
             locale: "eu-ES",
             useNative: false,
             sensitivity: "tertiary"
         });
-        test.expect(2);
         test.ok(typeof(col) !== "undefined");
     
         var input = ["Strïng", "strïng", "String", "StrinG", "Strïng", "string", "str", "strïng", "strïnG"];
@@ -2899,12 +2911,12 @@ module.exports.testcollation_general = {
     
     
     testCollatorJSWithSortPrimary_ca: function(test) {
+        test.expect(2);
         var col = new Collator({
             locale: "ca-ES",
             useNative: false,
             sensitivity: "primary"
         });
-        test.expect(2);
         test.ok(typeof(col) !== "undefined");
     
         var input = ["Strïng", "strïng", "String", "StrinG", "Strïng", "string", "str", "strïng", "strïnG"];
@@ -2918,12 +2930,12 @@ module.exports.testcollation_general = {
     },
     
     testCollatorJSWithSortPrimaryStable_ca: function(test) {
+        test.expect(2);
         var col = new Collator({
             locale: "ca-ES",
             useNative: false,
             sensitivity: "primary"
         });
-        test.expect(2);
         test.ok(typeof(col) !== "undefined");
     
         // input array order should not matter
@@ -2938,13 +2950,13 @@ module.exports.testcollation_general = {
     },
     
     testCollatorJSWithSortPrimaryLowerFirst_ca: function(test) {
+        test.expect(2);
         var col = new Collator({
             locale: "ca-ES",
             useNative: false,
             sensitivity: "primary",
             upperFirst: false
         });
-        test.expect(2);
         test.ok(typeof(col) !== "undefined");
     
         var input = ["Strïng", "strïng", "String", "StrinG", "Strïng", "string", "str", "strïng", "strïnG"];
@@ -2958,13 +2970,13 @@ module.exports.testcollation_general = {
     },
     
     testCollatorJSWithSortPrimaryReverse_ca: function(test) {
+        test.expect(2);
         var col = new Collator({
             locale: "ca-ES",
             useNative: false,
             sensitivity: "primary",
             reverse: true
         });
-        test.expect(2);
         test.ok(typeof(col) !== "undefined");
     
         var input = ["Strïng", "strïng", "String", "StrinG", "Strïng", "string", "str", "strïng", "strïnG"];
@@ -2978,6 +2990,7 @@ module.exports.testcollation_general = {
     },
     
     testCollatorJSWithSortPrimaryReverseLowerFirst_ca: function(test) {
+        test.expect(2);
         var col = new Collator({
             locale: "ca-ES",
             useNative: false,
@@ -2985,7 +2998,6 @@ module.exports.testcollation_general = {
             reverse: true,
             upperFirst: false
         });
-        test.expect(2);
         test.ok(typeof(col) !== "undefined");
     
         var input = ["Strïng", "strïng", "String", "StrinG", "Strïng", "string", "str", "strïng", "strïnG"];
@@ -2999,12 +3011,12 @@ module.exports.testcollation_general = {
     },
     
     testCollatorJSWithSortSecondary_ca: function(test) {
+        test.expect(2);
         var col = new Collator({
             locale: "ca-ES",
             useNative: false,
             sensitivity: "secondary"
         });
-        test.expect(2);
         test.ok(typeof(col) !== "undefined");
     
         var input = ["Strïng", "strïng", "String", "StrinG", "Strïng", "string", "str", "strïng", "strïnG"];
@@ -3019,12 +3031,12 @@ module.exports.testcollation_general = {
     },
     
     testCollatorJSWithSortTertiary_ca: function(test) {
+        test.expect(2);
         var col = new Collator({
             locale: "ca-ES",
             useNative: false,
             sensitivity: "tertiary"
         });
-        test.expect(2);
         test.ok(typeof(col) !== "undefined");
     
         var input = ["Strïng", "strïng", "String", "StrinG", "Strïng", "string", "str", "strïng", "strïnG"];
@@ -3040,12 +3052,12 @@ module.exports.testcollation_general = {
     
     
     testCollatorJSWithSortPrimary_nl: function(test) {
+        test.expect(2);
         var col = new Collator({
             locale: "nl-NL",
             useNative: false,
             sensitivity: "primary"
         });
-        test.expect(2);
         test.ok(typeof(col) !== "undefined");
     
         var input = ["Strïng", "strïng", "String", "StrinG", "Strïng", "string", "str", "strïng", "strïnG"];
@@ -3059,12 +3071,12 @@ module.exports.testcollation_general = {
     },
     
     testCollatorJSWithSortPrimaryStable_nl: function(test) {
+        test.expect(2);
         var col = new Collator({
             locale: "nl-NL",
             useNative: false,
             sensitivity: "primary"
         });
-        test.expect(2);
         test.ok(typeof(col) !== "undefined");
     
         // input array order should not matter
@@ -3079,13 +3091,13 @@ module.exports.testcollation_general = {
     },
     
     testCollatorJSWithSortPrimaryLowerFirst_nl: function(test) {
+        test.expect(2);
         var col = new Collator({
             locale: "nl-NL",
             useNative: false,
             sensitivity: "primary",
             upperFirst: false
         });
-        test.expect(2);
         test.ok(typeof(col) !== "undefined");
     
         var input = ["Strïng", "strïng", "String", "StrinG", "Strïng", "string", "str", "strïng", "strïnG"];
@@ -3099,13 +3111,13 @@ module.exports.testcollation_general = {
     },
     
     testCollatorJSWithSortPrimaryReverse_nl: function(test) {
+        test.expect(2);
         var col = new Collator({
             locale: "nl-NL",
             useNative: false,
             sensitivity: "primary",
             reverse: true
         });
-        test.expect(2);
         test.ok(typeof(col) !== "undefined");
     
         var input = ["Strïng", "strïng", "String", "StrinG", "Strïng", "string", "str", "strïng", "strïnG"];
@@ -3119,6 +3131,7 @@ module.exports.testcollation_general = {
     },
     
     testCollatorJSWithSortPrimaryReverseLowerFirst_nl: function(test) {
+        test.expect(2);
         var col = new Collator({
             locale: "nl-NL",
             useNative: false,
@@ -3126,7 +3139,6 @@ module.exports.testcollation_general = {
             reverse: true,
             upperFirst: false
         });
-        test.expect(2);
         test.ok(typeof(col) !== "undefined");
     
         var input = ["Strïng", "strïng", "String", "StrinG", "Strïng", "string", "str", "strïng", "strïnG"];
@@ -3140,12 +3152,12 @@ module.exports.testcollation_general = {
     },
     
     testCollatorJSWithSortSecondary_nl: function(test) {
+        test.expect(2);
         var col = new Collator({
             locale: "nl-NL",
             useNative: false,
             sensitivity: "secondary"
         });
-        test.expect(2);
         test.ok(typeof(col) !== "undefined");
     
         var input = ["Strïng", "strïng", "String", "StrinG", "Strïng", "string", "str", "strïng", "strïnG"];
@@ -3160,12 +3172,12 @@ module.exports.testcollation_general = {
     },
     
     testCollatorJSWithSortTertiary_nl: function(test) {
+        test.expect(2);
         var col = new Collator({
             locale: "nl-NL",
             useNative: false,
             sensitivity: "tertiary"
         });
-        test.expect(2);
         test.ok(typeof(col) !== "undefined");
     
         var input = ["Strïng", "strïng", "String", "StrinG", "Strïng", "string", "str", "strïng", "strïnG"];
@@ -3181,12 +3193,12 @@ module.exports.testcollation_general = {
     
     
     testCollatorJSWithSortPrimary_gl: function(test) {
+        test.expect(2);
         var col = new Collator({
             locale: "gl-ES",
             useNative: false,
             sensitivity: "primary"
         });
-        test.expect(2);
         test.ok(typeof(col) !== "undefined");
     
         var input = ["Strïng", "strïng", "String", "StrinG", "Strïng", "string", "str", "strïng", "strïnG"];
@@ -3200,12 +3212,12 @@ module.exports.testcollation_general = {
     },
     
     testCollatorJSWithSortPrimaryStable_gl: function(test) {
+        test.expect(2);
         var col = new Collator({
             locale: "gl-ES",
             useNative: false,
             sensitivity: "primary"
         });
-        test.expect(2);
         test.ok(typeof(col) !== "undefined");
     
         // input array order should not matter
@@ -3220,13 +3232,13 @@ module.exports.testcollation_general = {
     },
     
     testCollatorJSWithSortPrimaryLowerFirst_gl: function(test) {
+        test.expect(2);
         var col = new Collator({
             locale: "gl-ES",
             useNative: false,
             sensitivity: "primary",
             upperFirst: false
         });
-        test.expect(2);
         test.ok(typeof(col) !== "undefined");
     
         var input = ["Strïng", "strïng", "String", "StrinG", "Strïng", "string", "str", "strïng", "strïnG"];
@@ -3240,13 +3252,13 @@ module.exports.testcollation_general = {
     },
     
     testCollatorJSWithSortPrimaryReverse_gl: function(test) {
+        test.expect(2);
         var col = new Collator({
             locale: "gl-ES",
             useNative: false,
             sensitivity: "primary",
             reverse: true
         });
-        test.expect(2);
         test.ok(typeof(col) !== "undefined");
     
         var input = ["Strïng", "strïng", "String", "StrinG", "Strïng", "string", "str", "strïng", "strïnG"];
@@ -3260,6 +3272,7 @@ module.exports.testcollation_general = {
     },
     
     testCollatorJSWithSortPrimaryReverseLowerFirst_gl: function(test) {
+        test.expect(2);
         var col = new Collator({
             locale: "gl-ES",
             useNative: false,
@@ -3267,7 +3280,6 @@ module.exports.testcollation_general = {
             reverse: true,
             upperFirst: false
         });
-        test.expect(2);
         test.ok(typeof(col) !== "undefined");
     
         var input = ["Strïng", "strïng", "String", "StrinG", "Strïng", "string", "str", "strïng", "strïnG"];
@@ -3281,12 +3293,12 @@ module.exports.testcollation_general = {
     },
     
     testCollatorJSWithSortSecondary_gl: function(test) {
+        test.expect(2);
         var col = new Collator({
             locale: "gl-ES",
             useNative: false,
             sensitivity: "secondary"
         });
-        test.expect(2);
         test.ok(typeof(col) !== "undefined");
     
         var input = ["Strïng", "strïng", "String", "StrinG", "Strïng", "string", "str", "strïng", "strïnG"];
@@ -3301,12 +3313,12 @@ module.exports.testcollation_general = {
     },
     
     testCollatorJSWithSortTertiary_gl: function(test) {
+        test.expect(2);
         var col = new Collator({
             locale: "gl-ES",
             useNative: false,
             sensitivity: "tertiary"
         });
-        test.expect(2);
         test.ok(typeof(col) !== "undefined");
     
         var input = ["Strïng", "strïng", "String", "StrinG", "Strïng", "string", "str", "strïng", "strïnG"];
@@ -3322,12 +3334,12 @@ module.exports.testcollation_general = {
     
     
     testCollatorJSWithSortPrimary_id: function(test) {
+        test.expect(2);
         var col = new Collator({
             locale: "id-ID",
             useNative: false,
             sensitivity: "primary"
         });
-        test.expect(2);
         test.ok(typeof(col) !== "undefined");
     
         var input = ["Strïng", "strïng", "String", "StrinG", "Strïng", "string", "str", "strïng", "strïnG"];
@@ -3341,12 +3353,12 @@ module.exports.testcollation_general = {
     },
     
     testCollatorJSWithSortPrimaryStable_id: function(test) {
+        test.expect(2);
         var col = new Collator({
             locale: "id-ID",
             useNative: false,
             sensitivity: "primary"
         });
-        test.expect(2);
         test.ok(typeof(col) !== "undefined");
     
         // input array order should not matter
@@ -3361,13 +3373,13 @@ module.exports.testcollation_general = {
     },
     
     testCollatorJSWithSortPrimaryLowerFirst_id: function(test) {
+        test.expect(2);
         var col = new Collator({
             locale: "id-ID",
             useNative: false,
             sensitivity: "primary",
             upperFirst: false
         });
-        test.expect(2);
         test.ok(typeof(col) !== "undefined");
     
         var input = ["Strïng", "strïng", "String", "StrinG", "Strïng", "string", "str", "strïng", "strïnG"];
@@ -3381,13 +3393,13 @@ module.exports.testcollation_general = {
     },
     
     testCollatorJSWithSortPrimaryReverse_id: function(test) {
+        test.expect(2);
         var col = new Collator({
             locale: "id-ID",
             useNative: false,
             sensitivity: "primary",
             reverse: true
         });
-        test.expect(2);
         test.ok(typeof(col) !== "undefined");
     
         var input = ["Strïng", "strïng", "String", "StrinG", "Strïng", "string", "str", "strïng", "strïnG"];
@@ -3401,6 +3413,7 @@ module.exports.testcollation_general = {
     },
     
     testCollatorJSWithSortPrimaryReverseLowerFirst_id: function(test) {
+        test.expect(2);
         var col = new Collator({
             locale: "id-ID",
             useNative: false,
@@ -3408,7 +3421,6 @@ module.exports.testcollation_general = {
             reverse: true,
             upperFirst: false
         });
-        test.expect(2);
         test.ok(typeof(col) !== "undefined");
     
         var input = ["Strïng", "strïng", "String", "StrinG", "Strïng", "string", "str", "strïng", "strïnG"];
@@ -3422,12 +3434,12 @@ module.exports.testcollation_general = {
     },
     
     testCollatorJSWithSortSecondary_id: function(test) {
+        test.expect(2);
         var col = new Collator({
             locale: "id-ID",
             useNative: false,
             sensitivity: "secondary"
         });
-        test.expect(2);
         test.ok(typeof(col) !== "undefined");
     
         var input = ["Strïng", "strïng", "String", "StrinG", "Strïng", "string", "str", "strïng", "strïnG"];
@@ -3442,12 +3454,12 @@ module.exports.testcollation_general = {
     },
     
     testCollatorJSWithSortTertiary_id: function(test) {
+        test.expect(2);
         var col = new Collator({
             locale: "id-ID",
             useNative: false,
             sensitivity: "tertiary"
         });
-        test.expect(2);
         test.ok(typeof(col) !== "undefined");
     
         var input = ["Strïng", "strïng", "String", "StrinG", "Strïng", "string", "str", "strïng", "strïnG"];
@@ -3463,12 +3475,12 @@ module.exports.testcollation_general = {
     
     
     testCollatorJSWithSortPrimary_ms: function(test) {
+        test.expect(2);
         var col = new Collator({
             locale: "ms-MY",
             useNative: false,
             sensitivity: "primary"
         });
-        test.expect(2);
         test.ok(typeof(col) !== "undefined");
     
         var input = ["Strïng", "strïng", "String", "StrinG", "Strïng", "string", "str", "strïng", "strïnG"];
@@ -3482,12 +3494,12 @@ module.exports.testcollation_general = {
     },
     
     testCollatorJSWithSortPrimaryStable_ms: function(test) {
+        test.expect(2);
         var col = new Collator({
             locale: "ms-MY",
             useNative: false,
             sensitivity: "primary"
         });
-        test.expect(2);
         test.ok(typeof(col) !== "undefined");
     
         // input array order should not matter
@@ -3502,13 +3514,13 @@ module.exports.testcollation_general = {
     },
     
     testCollatorJSWithSortPrimaryLowerFirst_ms: function(test) {
+        test.expect(2);
         var col = new Collator({
             locale: "ms-MY",
             useNative: false,
             sensitivity: "primary",
             upperFirst: false
         });
-        test.expect(2);
         test.ok(typeof(col) !== "undefined");
     
         var input = ["Strïng", "strïng", "String", "StrinG", "Strïng", "string", "str", "strïng", "strïnG"];
@@ -3522,13 +3534,13 @@ module.exports.testcollation_general = {
     },
     
     testCollatorJSWithSortPrimaryReverse_ms: function(test) {
+        test.expect(2);
         var col = new Collator({
             locale: "ms-MY",
             useNative: false,
             sensitivity: "primary",
             reverse: true
         });
-        test.expect(2);
         test.ok(typeof(col) !== "undefined");
     
         var input = ["Strïng", "strïng", "String", "StrinG", "Strïng", "string", "str", "strïng", "strïnG"];
@@ -3542,6 +3554,7 @@ module.exports.testcollation_general = {
     },
     
     testCollatorJSWithSortPrimaryReverseLowerFirst_ms: function(test) {
+        test.expect(2);
         var col = new Collator({
             locale: "ms-MY",
             useNative: false,
@@ -3549,7 +3562,6 @@ module.exports.testcollation_general = {
             reverse: true,
             upperFirst: false
         });
-        test.expect(2);
         test.ok(typeof(col) !== "undefined");
     
         var input = ["Strïng", "strïng", "String", "StrinG", "Strïng", "string", "str", "strïng", "strïnG"];
@@ -3563,12 +3575,12 @@ module.exports.testcollation_general = {
     },
     
     testCollatorJSWithSortSecondary_ms: function(test) {
+        test.expect(2);
         var col = new Collator({
             locale: "ms-MY",
             useNative: false,
             sensitivity: "secondary"
         });
-        test.expect(2);
         test.ok(typeof(col) !== "undefined");
     
         var input = ["Strïng", "strïng", "String", "StrinG", "Strïng", "string", "str", "strïng", "strïnG"];
@@ -3583,12 +3595,12 @@ module.exports.testcollation_general = {
     },
     
     testCollatorJSWithSortTertiary_ms: function(test) {
+        test.expect(2);
         var col = new Collator({
             locale: "ms-MY",
             useNative: false,
             sensitivity: "tertiary"
         });
-        test.expect(2);
         test.ok(typeof(col) !== "undefined");
     
         var input = ["Strïng", "strïng", "String", "StrinG", "Strïng", "string", "str", "strïng", "strïnG"];
@@ -3604,12 +3616,12 @@ module.exports.testcollation_general = {
     
     
     testCollatorJSWithSortPrimary_pt: function(test) {
+        test.expect(2);
         var col = new Collator({
             locale: "pt-BR",
             useNative: false,
             sensitivity: "primary"
         });
-        test.expect(2);
         test.ok(typeof(col) !== "undefined");
     
         var input = ["Strïng", "strïng", "String", "StrinG", "Strïng", "string", "str", "strïng", "strïnG"];
@@ -3623,12 +3635,12 @@ module.exports.testcollation_general = {
     },
     
     testCollatorJSWithSortPrimaryStable_pt: function(test) {
+        test.expect(2);
         var col = new Collator({
             locale: "pt-BR",
             useNative: false,
             sensitivity: "primary"
         });
-        test.expect(2);
         test.ok(typeof(col) !== "undefined");
     
         // input array order should not matter
@@ -3643,13 +3655,13 @@ module.exports.testcollation_general = {
     },
     
     testCollatorJSWithSortPrimaryLowerFirst_pt: function(test) {
+        test.expect(2);
         var col = new Collator({
             locale: "pt-BR",
             useNative: false,
             sensitivity: "primary",
             upperFirst: false
         });
-        test.expect(2);
         test.ok(typeof(col) !== "undefined");
     
         var input = ["Strïng", "strïng", "String", "StrinG", "Strïng", "string", "str", "strïng", "strïnG"];
@@ -3663,13 +3675,13 @@ module.exports.testcollation_general = {
     },
     
     testCollatorJSWithSortPrimaryReverse_pt: function(test) {
+        test.expect(2);
         var col = new Collator({
             locale: "pt-BR",
             useNative: false,
             sensitivity: "primary",
             reverse: true
         });
-        test.expect(2);
         test.ok(typeof(col) !== "undefined");
     
         var input = ["Strïng", "strïng", "String", "StrinG", "Strïng", "string", "str", "strïng", "strïnG"];
@@ -3683,6 +3695,7 @@ module.exports.testcollation_general = {
     },
     
     testCollatorJSWithSortPrimaryReverseLowerFirst_pt: function(test) {
+        test.expect(2);
         var col = new Collator({
             locale: "pt-BR",
             useNative: false,
@@ -3690,7 +3703,6 @@ module.exports.testcollation_general = {
             reverse: true,
             upperFirst: false
         });
-        test.expect(2);
         test.ok(typeof(col) !== "undefined");
     
         var input = ["Strïng", "strïng", "String", "StrinG", "Strïng", "string", "str", "strïng", "strïnG"];
@@ -3704,12 +3716,12 @@ module.exports.testcollation_general = {
     },
     
     testCollatorJSWithSortSecondary_pt: function(test) {
+        test.expect(2);
         var col = new Collator({
             locale: "pt-BR",
             useNative: false,
             sensitivity: "secondary"
         });
-        test.expect(2);
         test.ok(typeof(col) !== "undefined");
     
         var input = ["Strïng", "strïng", "String", "StrinG", "Strïng", "string", "str", "strïng", "strïnG"];
@@ -3724,12 +3736,12 @@ module.exports.testcollation_general = {
     },
     
     testCollatorJSWithSortTertiary_pt: function(test) {
+        test.expect(2);
         var col = new Collator({
             locale: "pt-BR",
             useNative: false,
             sensitivity: "tertiary"
         });
-        test.expect(2);
         test.ok(typeof(col) !== "undefined");
     
         var input = ["Strïng", "strïng", "String", "StrinG", "Strïng", "string", "str", "strïng", "strïnG"];
@@ -3745,12 +3757,12 @@ module.exports.testcollation_general = {
     
     
     testCollatorJSWithSortPrimary_sw: function(test) {
+        test.expect(2);
         var col = new Collator({
             locale: "sw-TZ",
             useNative: false,
             sensitivity: "primary"
         });
-        test.expect(2);
         test.ok(typeof(col) !== "undefined");
     
         var input = ["Strïng", "strïng", "String", "StrinG", "Strïng", "string", "str", "strïng", "strïnG"];
@@ -3764,12 +3776,12 @@ module.exports.testcollation_general = {
     },
     
     testCollatorJSWithSortPrimaryStable_sw: function(test) {
+        test.expect(2);
         var col = new Collator({
             locale: "sw-TZ",
             useNative: false,
             sensitivity: "primary"
         });
-        test.expect(2);
         test.ok(typeof(col) !== "undefined");
     
         // input array order should not matter
@@ -3784,13 +3796,13 @@ module.exports.testcollation_general = {
     },
     
     testCollatorJSWithSortPrimaryLowerFirst_sw: function(test) {
+        test.expect(2);
         var col = new Collator({
             locale: "sw-TZ",
             useNative: false,
             sensitivity: "primary",
             upperFirst: false
         });
-        test.expect(2);
         test.ok(typeof(col) !== "undefined");
     
         var input = ["Strïng", "strïng", "String", "StrinG", "Strïng", "string", "str", "strïng", "strïnG"];
@@ -3804,13 +3816,13 @@ module.exports.testcollation_general = {
     },
     
     testCollatorJSWithSortPrimaryReverse_sw: function(test) {
+        test.expect(2);
         var col = new Collator({
             locale: "sw-TZ",
             useNative: false,
             sensitivity: "primary",
             reverse: true
         });
-        test.expect(2);
         test.ok(typeof(col) !== "undefined");
     
         var input = ["Strïng", "strïng", "String", "StrinG", "Strïng", "string", "str", "strïng", "strïnG"];
@@ -3824,6 +3836,7 @@ module.exports.testcollation_general = {
     },
     
     testCollatorJSWithSortPrimaryReverseLowerFirst_sw: function(test) {
+        test.expect(2);
         var col = new Collator({
             locale: "sw-TZ",
             useNative: false,
@@ -3831,7 +3844,6 @@ module.exports.testcollation_general = {
             reverse: true,
             upperFirst: false
         });
-        test.expect(2);
         test.ok(typeof(col) !== "undefined");
     
         var input = ["Strïng", "strïng", "String", "StrinG", "Strïng", "string", "str", "strïng", "strïnG"];
@@ -3845,12 +3857,12 @@ module.exports.testcollation_general = {
     },
     
     testCollatorJSWithSortSecondary_sw: function(test) {
+        test.expect(2);
         var col = new Collator({
             locale: "sw-TZ",
             useNative: false,
             sensitivity: "secondary"
         });
-        test.expect(2);
         test.ok(typeof(col) !== "undefined");
     
         var input = ["Strïng", "strïng", "String", "StrinG", "Strïng", "string", "str", "strïng", "strïnG"];
@@ -3865,12 +3877,12 @@ module.exports.testcollation_general = {
     },
     
     testCollatorJSWithSortTertiary_sw: function(test) {
+        test.expect(2);
         var col = new Collator({
             locale: "sw-TZ",
             useNative: false,
             sensitivity: "tertiary"
         });
-        test.expect(2);
         test.ok(typeof(col) !== "undefined");
     
         var input = ["Strïng", "strïng", "String", "StrinG", "Strïng", "string", "str", "strïng", "strïnG"];
