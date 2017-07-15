@@ -46,6 +46,8 @@ if (typeof(ilib) === "undefined") {
 
 module.exports.testrequire = {
     setUp: function(callback) {
+console.log("cwd is " + process.cwd());
+
         ilib.clearCache();
         callback();
     },
