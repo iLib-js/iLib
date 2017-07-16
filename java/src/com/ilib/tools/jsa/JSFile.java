@@ -69,7 +69,7 @@ public class JSFile
         
         deletePatterns.add(Pattern.compile("var\\s[^;]*=[^;]*require[^;]*;\\n"));
         deletePatterns.add(Pattern.compile("if \\(!ilib[^;]*require[^;]*;"));
-        deletePatterns.add(Pattern.compile("^module.exports = [^;]*;"));
+        deletePatterns.add(Pattern.compile("^module.exports = [^;]*;", Pattern.MULTILINE));
     }
     
     /**
@@ -584,7 +584,7 @@ public class JSFile
         		matcher = deletePatterns.get(p).matcher(str);
                 while ( matcher.find() ) {
 	        		str = str.replace(matcher.start(), matcher.end(), "");
-				matcher.reset();
+	        		matcher.reset();
 	        	}
         	}
         	
