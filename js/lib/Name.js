@@ -118,7 +118,7 @@ var isSpace = require("./isSpace.js");
  * When formatting the short version of such names, only the paternal family name is used.
  *
  * @constructor
- * @param {string|Name=} name the name to parse
+ * @param {string|Name|Object=} name the name to parse
  * @param {Object=} options Options governing the construction of this name instance
  */
 var Name = function (name, options) {

@@ -24,7 +24,6 @@ IString.js
 Name.js
 isPunct.js
 Utils.js
-JSUtils.js
 */
 
 // !data name
@@ -38,7 +37,6 @@ var IString = require("./IString.js");
 var Name = require("./Name.js");
 var CType = require("./CType.js");
 var isPunct = require("./isPunct.js");
-var JSUtils = require("./JSUtils.js");
 
 /**
  * @class
@@ -342,7 +340,7 @@ NameFmt.prototype = {
 		}
 		if (!(name instanceof Name)) {
 			// if the object is not a name, implicitly convert to a name so that the code below works
-			name = new Name(JSUtils.merge(name, {locale: this.locale}));
+			name = new Name(name, {locale: this.locale});
 		}
 		
 		if ((typeof(name.isAsianName) === 'boolean' && !name.isAsianName) ||
