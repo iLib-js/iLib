@@ -24,6 +24,7 @@ IString.js
 Name.js
 isPunct.js
 Utils.js
+JSUtils.js
 */
 
 // !data name
@@ -37,6 +38,7 @@ var IString = require("./IString.js");
 var Name = require("./Name.js");
 var CType = require("./CType.js");
 var isPunct = require("./isPunct.js");
+var JSUtils = require("./JSUtils.js");
 
 /**
  * @class
@@ -328,7 +330,7 @@ NameFmt.prototype = {
 	 * This means it is always safe to format any name with a formatter for any locale. You should
 	 * always get something at least reasonable as output.<p>
 	 * 
-	 * @param {Name} name the name to format
+	 * @param {Name|Object} name the name instance to format, or an object containing name parts to format
 	 * @return {string|undefined} the name formatted according to the style of this formatter instance
 	 */
 	format: function(name) {
@@ -337,6 +339,10 @@ NameFmt.prototype = {
 		 
 		if (!name || typeof(name) !== 'object') {
 			return undefined;
+		}
+		if (!(name instanceof Name)) {
+			// if the object is not a name, implicitly convert to a name so that the code below works
+			name = new Name(JSUtils.merge(name, {locale: this.locale}));
 		}
 		
 		if ((typeof(name.isAsianName) === 'boolean' && !name.isAsianName) ||

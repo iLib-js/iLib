@@ -692,5 +692,37 @@ module.exports.testnamefmt = {
         
         test.equal(fmt.format(name), "닥터 박은성");
         test.done();
+    },
+    
+    testNameFmtENWithImplicitConversionOfArgToName: function(test) {
+        test.expect(1);
+        var fmt = new NameFmt({
+            style: "full",
+            locale: "en-US"
+        });
+        
+        test.equal(fmt.format({
+            honorific: "Dr.",
+            givenName: "Andreas",
+            middleName: "Helmut",
+            familyName: "Schmidt"
+        }), "Dr. Andreas Helmut Schmidt");
+        test.done();
+    },
+    
+    testNameFmtENImplicitConversionTakesOnLocaleOfFormatter: function(test) {
+        test.expect(1);
+        var fmt = new NameFmt({
+            style: "full",
+            locale: "hu-MG"
+        });
+        
+        test.equal(fmt.format({
+            honorific: "Dr.",
+            givenName: "Andreas",
+            middleName: "Helmut",
+            familyName: "Schmidt"
+        }), "Dr. Schmidt Andreas Helmut");
+        test.done();
     }
 };
