@@ -122,7 +122,6 @@ module.exports.testrequire = {
             return;
         }
         
-        console.log("cwd is " + module.filename);
         var dir = path.dirname(module.filename);
         var Locale2 = require(path.join(dir, "../test/testfiles/locale2.js"));
         test.expect(4);

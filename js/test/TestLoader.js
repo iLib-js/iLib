@@ -57,9 +57,9 @@ module.exports = function init(dir, assembly, compilation) {
         break;
     }
 
-    suites = suites.concat(require("./" + path.join(dir, "nodeunit/testSuiteFiles.js")).files.map(function(file) {
+    suites = require("./" + path.join(dir, "nodeunit/testSuiteFiles.js")).files.map(function(file) {
         return path.join(dir, "nodeunit", file);
-    }));
+    });
 
     console.log("Running test files: " + JSON.stringify(suites));
     
