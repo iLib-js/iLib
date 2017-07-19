@@ -115,6 +115,7 @@ if (process.argv.length > 2) {
 console.log("Running " + compilation + " " + assembly + " suites: " + JSON.stringify(suite));
 
 var fileName = "../output/js/ilib-ut" + ((assembly === "dynamicdata") ? "-dyn" : "") + ((compilation === "compiled") ? "-compiled" : "") + ".js";
+console.log("loading in " + fileName);
 var script = fs.readFileSync(fileName, "utf-8");
 eval(script);
 
@@ -151,7 +152,5 @@ for (var i = 0; i < suite.length; i++) {
         modules[suite[i]] = test;
     });
 }
-
-console.log("Running suites: " + JSON.stringify(Object.keys(modules)));
 
 reporter.run(modules);
