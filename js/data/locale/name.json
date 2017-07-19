@@ -1,27 +1,11 @@
 {
 	"components": {
-		"short": {
-			"g": 1,
-			"f": 1
-		},
-		"medium": {
-			"g": 1,
-			"m": 1,
-			"f": 1
-		},
-		"long": {
-			"p": 1,
-			"g": 1,
-			"m": 1,
-			"f": 1
-		},
-		"full": {
-			"p": 1,
-			"g": 1,
-			"m": 1,
-			"f": 1,
-			"s": 1
-		}
+		"short": "gf",
+		"medium": "gmf",
+		"long": "pgmf",
+		"full": "pgmfs",
+		"formal_short": "pf",
+		"formal_long": "pgf"
 	},
 	"format": "{prefix} {givenName} {middleName} {familyName}{suffix}",
 	"sortByHeadWord": false,
@@ -48,7 +32,6 @@
 		"van": 1,
 		"van der": 1,
         "van de": 1,
-        "van der": 1,
         "van den": 1,
         "de": 1,
         "den": 1,
@@ -56,7 +39,6 @@
         "vander": 1,
         
         "di": 1,
-	    "de": 1,
 	    "da": 1,
 	    "della": 1,
 		"dalla": 1,
@@ -71,7 +53,6 @@
 		"du": 1,
 
         "de la": 1,
-        "del": 1,
         "de los": 1,
         "de las": 1,
 
