@@ -681,6 +681,29 @@ limitations under the License.
 		</tar>
 	</target>
 
+	<macrodef name="run-nodeunit-all">
+		<attribute name="assembly"/>
+		<attribute name="compilation"/>
+		<attribute name="failquit"/>
+		<sequential>
+			<exec osfamily="unix" executable="node" dir="${build.test}" failifexecutionfails="@{failquit}" failonerror="@{failquit}">
+				<arg line="testRunner.js"/>
+				<arg line="@{assembly}"/>
+				<arg line="@{compilation}"/>
+			</exec>
+			<exec osfamily="mac" executable="node" dir="${build.test}" failifexecutionfails="@{failquit}" failonerror="@{failquit}">
+				<arg line="testRunner.js"/>
+				<arg line="@{assembly}"/>
+				<arg line="@{compilation}"/>
+			</exec>
+			<exec osfamily="windows" executable="node.exe" dir="${build.test}" failifexecutionfails="@{failquit}"  failonerror="@{failquit}">
+				<arg line="testRunner.js"/>
+				<arg line="@{assembly}"/>
+				<arg line="@{compilation}"/>
+			</exec>
+		</sequential>
+	</macrodef>
+	
 	<macrodef name="run-nodeunit">
 		<attribute name="suite"/>
 		<attribute name="failquit"/>
@@ -744,7 +767,26 @@ limitations under the License.
 		<run-nodeunit suite="util" failquit="true"/>
 	</target>
 	
-	<target name="test.all.nu" depends="test.address.nu,test.calendar.nu,test.collate.nu,test.ctype.nu,test.date.nu,test.daterange.nu,test.durfmt.nu,test.maps.nu,test.name.nu,test.number.nu,test.phone.nu,test.root.nu,test.strings-ext.nu,test.units.nu,test.util.nu" />
+	<target name="test.dynamic.uncompiled.nu">
+	    <run-nodeunit-all assembly="dynamic" compilation="uncompiled" failquit="true"/>
+	</target>
+	<target name="test.dynamic.compiled.nu">
+	    <run-nodeunit-all assembly="dynamic" compilation="compiled" failquit="true"/>
+	</target>
+	<target name="test.assembled.uncompiled.nu">
+	    <run-nodeunit-all assembly="assembled" compilation="uncompiled" failquit="true"/>
+	</target>
+	<target name="test.assembled.compiled.nu">
+	    <run-nodeunit-all assembly="assembled" compilation="compiled" failquit="true"/>
+	</target>
+	<target name="test.dyndata.uncompiled.nu">
+	    <run-nodeunit-all assembly="dynamicdata" compilation="uncompiled" failquit="true"/>
+	</target>
+	<target name="test.dyndata.compiled.nu">
+	    <run-nodeunit-all assembly="dynamicdata" compilation="compiled" failquit="true"/>
+	</target>
+				
+	<target name="test.all.nu" depends="test.dynamic.uncompiled.nu,test.dynamic.compiled.nu,test.assembled.uncompiled.nu,test.assembled.compiled.nu,test.dyndata.uncompiled.nu,test.dyndata.compiled.nu" />
 	
 	<macrodef name="runtests">
         <attribute name="assembly"/>

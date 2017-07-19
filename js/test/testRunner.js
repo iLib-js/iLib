@@ -114,32 +114,32 @@ if (process.argv.length > 2) {
 
 console.log("Running " + compilation + " " + assembly + " suites: " + JSON.stringify(suite));
 
-var fileName = "../output/js/ilib-ut" + ((assembly === "dynamicdata") ? "-dyn" : "") + ((compilation === "compiled") ? "-compiled" : "") + ".js";
-console.log("loading in " + fileName);
-var script = fs.readFileSync(fileName, "utf-8");
-eval(script);
+if (assembly === "dynamic") {
+    console.log("requiring ../lib/ilib.js");
+    var ilib = require("../lib/ilib.js");
 
-switch (assembly) {
-default:
-case "dynamic":
     ilib.setLoaderCallback(NodeLoader(ilib));
 
     ilib._dyncode = true; // indicate that we are using dynamically loaded code
     ilib._dyndata = true;
-    break;
-case "dynamicdata": 
-    ilib.setLoaderCallback(NodeLoader(ilib));
+} else {
+    var fileName = "../output/js/ilib-ut" + ((assembly === "dynamicdata") ? "-dyn" : "") + ((compilation === "compiled") ? "-compiled" : "") + ".js";
+    console.log("loading in " + fileName);
+    var script = fs.readFileSync(fileName, "utf-8");
+    eval(script);
 
-    ilib._dyncode = false;
-    ilib._dyndata = true;
-    break;
-case "assembled":
-    CType._init(true);
-    NormString.init();
-
-    ilib._dyncode = false;
-    ilib._dyndata = false;
-    break;
+    if (assembly === "dynamicdata") {
+        ilib.setLoaderCallback(NodeLoader(ilib));
+    
+        ilib._dyncode = false;
+        ilib._dyndata = true;
+    } else {
+        CType._init(true);
+        NormString.init();
+    
+        ilib._dyncode = false;
+        ilib._dyndata = false;
+    }
 }
 
 var suites;
