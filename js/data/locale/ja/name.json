@@ -1,4 +1,8 @@
 {
+	"components": {
+		"formal_short": "sf",
+		"formal_long": "sgf"
+	},
     "format": "{prefix}{familyName}{middleName}{givenName}{suffix}",
     "nameStyle": "asian",
     "conjunctions": {
