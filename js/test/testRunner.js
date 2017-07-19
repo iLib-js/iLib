@@ -145,7 +145,7 @@ var suites;
 var modules = {};
 
 for (var i = 0; i < suite.length; i++) {
-    console.log("Running suite: " + suite[i]);
+    console.log("Adding suite: " + suite[i]);
     suites = require("./" + path.join(suite[i], "nodeunit/testSuiteFiles.js")).files.forEach(function(file) {
         var test = require("./" + path.join(suite[i], "nodeunit", file));
         modules[suite[i]] = test;

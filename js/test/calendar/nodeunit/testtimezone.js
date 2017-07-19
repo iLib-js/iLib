@@ -816,6 +816,7 @@ module.exports.testtimezone = {
         // only perform this test if we are in a zone where there is DST
         if (summer.getTimezoneOffset() === winter.getTimezoneOffset()) {
             test.done();
+            return;
         }
 
         test.expect(2);
@@ -837,6 +838,7 @@ module.exports.testtimezone = {
         // only perform this test if we are in a zone where there is DST
         if (summer.getTimezoneOffset() === winter.getTimezoneOffset()) {
             test.done();
+            return;
         }
         
         test.expect(2);
