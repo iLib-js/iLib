@@ -811,42 +811,46 @@ module.exports.testtimezone = {
     },
     
     testTZInDaylightTimeLocalTrue: function(test) {
-        test.expect(2);
         var summer = new Date(2014, 6, 1);
         var winter = new Date(2014, 0, 1);
         // only perform this test if we are in a zone where there is DST
-        if (summer.getTimezoneOffset() !== winter.getTimezoneOffset()) {
-            var tz = new TimeZone({id: "local"});
-            test.ok(tz !== null);
-            
-            var gd = new GregorianDate({
-                timezone: "local",
-                year: 2011,
-                month: 7,
-                day: 1
-            });
-            test.ok(tz.inDaylightTime(gd));
+        if (summer.getTimezoneOffset() === winter.getTimezoneOffset()) {
             test.done();
         }
+
+        test.expect(2);
+        var tz = new TimeZone({id: "local"});
+        test.ok(tz !== null);
+        
+        var gd = new GregorianDate({
+            timezone: "local",
+            year: 2011,
+            month: 7,
+            day: 1
+        });
+        test.ok(tz.inDaylightTime(gd));
+        test.done();
     },
     testTZInDaylightTimeLocalFalse: function(test) {
-        test.expect(2);
         var summer = new Date(2014, 6, 1);
         var winter = new Date(2014, 0, 1);
         // only perform this test if we are in a zone where there is DST
-        if (summer.getTimezoneOffset() !== winter.getTimezoneOffset()) {
-            var tz = new TimeZone({id: "local"});
-            test.ok(tz !== null);
-            
-            var gd = new GregorianDate({
-                timezone: "local",
-                year: 2011,
-                month: 12,
-                day: 1
-            });
-            test.ok(!tz.inDaylightTime(gd));
+        if (summer.getTimezoneOffset() === winter.getTimezoneOffset()) {
             test.done();
         }
+        
+        test.expect(2);
+        var tz = new TimeZone({id: "local"});
+        test.ok(tz !== null);
+        
+        var gd = new GregorianDate({
+            timezone: "local",
+            year: 2011,
+            month: 12,
+            day: 1
+        });
+        test.ok(!tz.inDaylightTime(gd));
+        test.done();
     },
     
     testTZInDaylightTimeNonDSTZone: function(test) {

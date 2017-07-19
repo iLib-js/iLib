@@ -18,8 +18,14 @@
  */
 
 var util = require("util");
+var fs = require("fs");
+
 var path = require("../lib/Path.js");
 var TestLoader = require("./TestLoader.js");
+var NodeLoader = require("../lib/NodeLoader.js");
+
+var nodeunit = require("nodeunit");
+var reporter = nodeunit.reporters.minimal;
 
 var suiteDefinitions = {
 	"core": [
@@ -108,6 +114,44 @@ if (process.argv.length > 2) {
 
 console.log("Running " + compilation + " " + assembly + " suites: " + JSON.stringify(suite));
 
-for (var i = 0; i < suite.length; i++) {
-	TestLoader(suite[i], assembly, compilation);
+var fileName = "../output/js/ilib-ut" + ((assembly === "dynamicdata") ? "-dyn" : "") + ((compilation === "compiled") ? "-compiled" : "") + ".js";
+var script = fs.readFileSync(fileName, "utf-8");
+eval(script);
+
+switch (assembly) {
+default:
+case "dynamic":
+    ilib.setLoaderCallback(NodeLoader(ilib));
+
+    ilib._dyncode = true; // indicate that we are using dynamically loaded code
+    ilib._dyndata = true;
+    break;
+case "dynamicdata": 
+    ilib.setLoaderCallback(NodeLoader(ilib));
+
+    ilib._dyncode = false;
+    ilib._dyndata = true;
+    break;
+case "assembled":
+    CType._init(true);
+    NormString.init();
+
+    ilib._dyncode = false;
+    ilib._dyndata = false;
+    break;
 }
+
+var suites;
+var modules = {};
+
+for (var i = 0; i < suite.length; i++) {
+    console.log("Running suite: " + suite[i]);
+    suites = require("./" + path.join(suite[i], "nodeunit/testSuiteFiles.js")).files.forEach(function(file) {
+        var test = require("./" + path.join(suite[i], "nodeunit", file));
+        modules[suite[i]] = test;
+    });
+}
+
+console.log("Running suites: " + JSON.stringify(Object.keys(modules)));
+
+reporter.run(modules);
