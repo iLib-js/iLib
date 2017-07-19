@@ -15,6 +15,19 @@ New Features:
   * That means that code that is upgrading to ilib 13 for example should use DateFmt instead of ilib.DateFmt to get the date formatter class
   * The ilib-stubs.js file is still there and can map from the old ilib namespace to the CommonJS style classes, but it is no longer being maintained
   * All legacy unit tests have been removed as well
+* Added a new list formatter class, ListFmt
+  * Allows you to format an arbitrary length array of items as a list with proper grammar for the locale.
+* Added "honorific" field to the Name class
+  * This way, honorifics can be formatted as a prefix or a suffix depending on the customs of the locale
+* Added "formal_short" and "formal_long" formatting styles to the NameFmt class
+  * formal_short formats a name with an honorific and family name. eg. Mrs. Smith or Dr. Smith
+  * formal_long formats a name with the honorific, given, and family names. eg. Mrs. Jane Smith or Dr. Jane Smith
+* The NameFmt.format() method now accepts an object parameter with the name fields as well as a full Name instance
+
+Bug Fixes:
+
+* Fixed a bug where using the letter "s" in a date format template (instead of "ss") resulted in minutes being formatted instead of seconds
+* Fixed a bug where calling ResBundle.getString() with an undefined parameter resulted in an exception. Now it just returns undefined itself.
 
 
 Release Notes for Version 12.0
