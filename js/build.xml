@@ -720,10 +720,31 @@ limitations under the License.
 		</sequential>
 	</macrodef>
 
+	<macrodef name="debug-nodeunit">
+		<attribute name="suite"/>
+		<attribute name="failquit"/>
+		<sequential>
+			<exec osfamily="unix" executable="node" dir="${build.test}" failifexecutionfails="@{failquit}" failonerror="@{failquit}">
+				<arg line="--inspect"/>
+				<arg line="--debug-brk"/>
+				<arg line="@{suite}/nodeunit/testSuite.js"/>
+			</exec>
+			<exec osfamily="mac" executable="node" dir="${build.test}" failifexecutionfails="@{failquit}" failonerror="@{failquit}">
+				<arg line="--inspect"/>
+				<arg line="--debug-brk"/>
+				<arg line="@{suite}/nodeunit/testSuite.js"/>
+			</exec>
+			<exec osfamily="windows" executable="node.exe" dir="${build.test}" failifexecutionfails="@{failquit}"  failonerror="@{failquit}">
+				<arg line="--inspect"/>
+				<arg line="--debug-brk"/>
+				<arg line="@{suite}/nodeunit/testSuite.js"/>
+			</exec>
+		</sequential>
+	</macrodef>
+
 	<target depends="assemble.dyncode.unittest,update.package.json" name="test.address.nu">
 		<run-nodeunit suite="address" failquit="true"/>
-	</target>
-	
+	</target>	
 	<target depends="assemble.dyncode.unittest,update.package.json" name="test.calendar.nu">
 		<run-nodeunit suite="calendar" failquit="true"/>
 	</target>
@@ -766,23 +787,69 @@ limitations under the License.
 	<target depends="assemble.dyncode.unittest,update.package.json" name="test.util.nu">
 		<run-nodeunit suite="util" failquit="true"/>
 	</target>
-	
-	<target name="test.dynamic.uncompiled.nu">
+
+	<target depends="assemble.dyncode.unittest,update.package.json" name="debug.address.nu">
+		<debug-nodeunit suite="address" failquit="true"/>
+	</target>	
+	<target depends="assemble.dyncode.unittest,update.package.json" name="debug.calendar.nu">
+		<debug-nodeunit suite="calendar" failquit="true"/>
+	</target>
+	<target depends="assemble.dyncode.unittest,update.package.json" name="debug.collate.nu">
+		<debug-nodeunit suite="collate" failquit="true"/>
+	</target>
+	<target depends="assemble.dyncode.unittest,update.package.json" name="debug.ctype.nu">
+		<debug-nodeunit suite="ctype" failquit="true"/>
+	</target>
+	<target depends="assemble.dyncode.unittest,update.package.json" name="debug.date.nu">
+		<debug-nodeunit suite="date" failquit="true"/>
+	</target>
+	<target depends="assemble.dyncode.unittest,update.package.json" name="debug.daterange.nu">
+		<debug-nodeunit suite="daterange" failquit="true"/>
+	</target>
+	<target depends="assemble.dyncode.unittest,update.package.json" name="debug.durfmt.nu">
+		<debug-nodeunit suite="durfmt" failquit="true"/>
+	</target>
+	<target depends="assemble.dyncode.unittest,update.package.json" name="debug.maps.nu">
+		<debug-nodeunit suite="maps" failquit="true"/>
+	</target>
+	<target depends="assemble.dyncode.unittest,update.package.json" name="debug.name.nu">
+		<debug-nodeunit suite="name" failquit="true"/>
+	</target>
+	<target depends="assemble.dyncode.unittest,update.package.json" name="debug.number.nu">
+		<debug-nodeunit suite="number" failquit="true"/>
+	</target>
+	<target depends="assemble.dyncode.unittest,update.package.json" name="debug.phone.nu">
+		<debug-nodeunit suite="phone" failquit="true"/>
+	</target>
+	<target depends="assemble.dyncode.unittest,update.package.json" name="debug.root.nu">
+		<debug-nodeunit suite="root" failquit="true"/>
+	</target>
+	<target depends="assemble.dyncode.unittest,update.package.json" name="debug.strings-ext.nu">
+		<debug-nodeunit suite="strings-ext" failquit="true"/>
+	</target>
+	<target depends="assemble.dyncode.unittest,update.package.json" name="debug.units.nu">
+		<debug-nodeunit suite="units" failquit="true"/>
+	</target>
+	<target depends="assemble.dyncode.unittest,update.package.json" name="debug.util.nu">
+		<debug-nodeunit suite="util" failquit="true"/>
+	</target>
+
+	<target name="test.dynamic.uncompiled.nu" depends="update.package.json">
 	    <run-nodeunit-all assembly="dynamic" compilation="uncompiled" failquit="true"/>
 	</target>
-	<target name="test.dynamic.compiled.nu">
+	<target name="test.dynamic.compiled.nu" depends="update.package.json">
 	    <run-nodeunit-all assembly="dynamic" compilation="compiled" failquit="true"/>
 	</target>
-	<target name="test.assembled.uncompiled.nu">
+	<target name="test.assembled.uncompiled.nu" depends="update.package.json,assemble.unittest">
 	    <run-nodeunit-all assembly="assembled" compilation="uncompiled" failquit="true"/>
 	</target>
-	<target name="test.assembled.compiled.nu">
+	<target name="test.assembled.compiled.nu" depends="update.package.json,assemble.unittest">
 	    <run-nodeunit-all assembly="assembled" compilation="compiled" failquit="true"/>
 	</target>
-	<target name="test.dyndata.uncompiled.nu">
+	<target name="test.dyndata.uncompiled.nu" depends="assemble.dyndata.unittest,update.package.json">
 	    <run-nodeunit-all assembly="dynamicdata" compilation="uncompiled" failquit="true"/>
 	</target>
-	<target name="test.dyndata.compiled.nu">
+	<target name="test.dyndata.compiled.nu" depends="assemble.dyndata.unittest,update.package.json">
 	    <run-nodeunit-all assembly="dynamicdata" compilation="compiled" failquit="true"/>
 	</target>
 				
@@ -957,7 +1024,7 @@ limitations under the License.
 		<mkdir dir="${build.output.reports}/junit"/>
 	</target>
 	<!-- target name="test" depends="test.core"/ -->
-	<target name="test.only" depends="test.core" description="Run all tests"/>
+	<target name="test.only" depends="test.all.nu" description="Run all tests"/>
 	<target name="reports.only" depends="core.junit.report" description="Generate reports on previously run tests"/>
 	<target name="reports" depends="test.only,reports.only" description="Run all tests, then generate reports on the results"/>
 	<target name="test" depends="reports" description="Run all tests and build all reports"/>
