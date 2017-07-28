@@ -675,6 +675,35 @@ module.exports.testname_zh_Hant = {
         
         test.contains(parsed, expected);
         test.done();
-    }
+    },
     
+    testParseDentistName_zh_Hans: function(test) {
+        test.expect(2);
+        var parsed = new Name("关小凤牙科醫生", {locale: 'zh-Hant-HK'});
+        test.ok(typeof(parsed) !== "undefined");
+        
+        var expected = {
+            givenName: "小凤",
+            familyName: "关",
+            suffix: "牙科醫生"
+        };
+        
+        test.contains(parsed, expected);
+        test.done();
+    },
+    
+    testParseDentalHygienistName_zh_Hans: function(test) {
+        test.expect(2);
+        var parsed = new Name("关小凤牙齒衛生員", {locale: 'zh-Hant-HK'});
+        test.ok(typeof(parsed) !== "undefined");
+        
+        var expected = {
+            givenName: "小凤",
+            familyName: "关",
+            suffix: "牙齒衛生員"
+        };
+        
+        test.contains(parsed, expected);
+        test.done();
+    } 
 };
