@@ -64,7 +64,6 @@ function mockLoaderDF(paths, sync, params, callback) {
 
 var oldLoader = ilib._load;
 
-
 if (typeof(ilib) === "undefined") {
     var ilib = require("../../..");
 }
@@ -76,7 +75,7 @@ module.exports.testdatefmt = {
     },
 
     tearDown: function(callback) {
-        ilib._load = undefined;
+        ilib._load = oldLoader;
         callback();
     },
 
@@ -2993,6 +2992,7 @@ module.exports.testdatefmt = {
         ilib.setLoaderCallback(mockLoaderDF);
     
         var fmt = new DateFmt({locale: "zz-ZZ"});
+        ilib.setLoaderCallback(oldLoader);
         test.expect(4);
         test.ok(fmt !== null);
         
@@ -3012,6 +3012,7 @@ module.exports.testdatefmt = {
         ilib.setLoaderCallback(mockLoaderDF);
     
         var fmt = new DateFmt({locale: "zz-ZZ"});
+        ilib.setLoaderCallback(oldLoader);
         test.expect(4);
         test.ok(fmt !== null);
         
@@ -3034,7 +3035,8 @@ module.exports.testdatefmt = {
             locale: "zz-ZZ",
             sync: false,
             onLoad: function (fmt) {
-        test.expect(4);
+                ilib.setLoaderCallback(oldLoader);
+                test.expect(4);
                 test.ok(fmt !== null);
                 
                 test.equal(fmt.getLocale().toString(), "zz-ZZ");
@@ -3059,6 +3061,7 @@ module.exports.testdatefmt = {
             locale: "zz-ZZ",
             sync: false,
             onLoad: function (fmt) {
+                ilib.setLoaderCallback(oldLoader);
                 test.ok(fmt !== null);
                 
                 test.equal(fmt.getLocale().toString(), "zz-ZZ");
@@ -3072,7 +3075,6 @@ module.exports.testdatefmt = {
     
     testDateFmtTransitionToDSTRightBefore: function(test) {
         test.expect(2);
-        ilib.setLoaderCallback(oldLoader);
         var fmt = new DateFmt({
             length: "full",
             type: "time",

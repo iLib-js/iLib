@@ -40,6 +40,8 @@ if (typeof(ilib) === "undefined") {
     var ilib = require("../../..");
 }
 
+var oldLoader = ilib._load;
+
 module.exports.numplan = {
     setUp: function(callback) {
         ilib.clearCache();
@@ -47,7 +49,7 @@ module.exports.numplan = {
     },
     
     tearDown: function(callback) {
-        ilib._load = undefined;
+        ilib._load = oldLoader;
         callback();
     },
 

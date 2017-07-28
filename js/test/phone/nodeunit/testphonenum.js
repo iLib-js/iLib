@@ -116,6 +116,8 @@ if (typeof(ilib) === "undefined") {
     var ilib = require("../../..");
 }
 
+var oldLoader = ilib._load;
+
 module.exports.phonenum = {
     setUp: function(callback) {
         ilib.clearCache();
@@ -123,7 +125,7 @@ module.exports.phonenum = {
     },
     
     tearDown: function(callback) {
-        ilib._load = undefined;
+        ilib._load = oldLoader;
         callback();
     },
 

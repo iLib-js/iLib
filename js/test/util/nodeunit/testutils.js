@@ -119,11 +119,11 @@ function mockLoaderUtil(paths, sync, params, callback) {
     return data;
 }
 
-var oldLoaderUtils = ilib._load;
-
 if (typeof(ilib) === "undefined") {
     var ilib = require("../../..");
 }
+
+var oldLoader = ilib._load;
 
 module.exports.testutils = {
     setUp: function(callback) {
@@ -132,7 +132,7 @@ module.exports.testutils = {
     },
     
     tearDown: function(callback) {
-        ilib._load = undefined;
+        ilib._load = oldLoader;
         callback();
     },
 
@@ -1478,7 +1478,7 @@ module.exports.testutils = {
             loadParams: {},
             sync: true,
             callback: function (results) {
-                ilib.setLoaderCallback(oldLoaderUtils);
+                ilib.setLoaderCallback(oldLoader);
                 test.expect(1);
                 test.ok(typeof(results) === 'object');
                 test.done();
@@ -1503,7 +1503,7 @@ module.exports.testutils = {
             loadParams: {},
             sync: true,
             callback: function (results) {
-                ilib.setLoaderCallback(oldLoaderUtils);
+                ilib.setLoaderCallback(oldLoader);
                 var expected = {"a": "b", "c": "m", "e": "y"};
                 test.expect(1);
                 test.deepEqual(results, expected);
@@ -1529,7 +1529,7 @@ module.exports.testutils = {
             loadParams: {},
             sync: true,
             callback: function (results) {
-                ilib.setLoaderCallback(oldLoaderUtils);
+                ilib.setLoaderCallback(oldLoader);
                 var expected = {"a": "a1", "c": "de2", "e": "f"};
                 test.expect(1);
                 test.deepEqual(results, expected);
@@ -1555,7 +1555,7 @@ module.exports.testutils = {
             loadParams: {},
             sync: true,
             callback: function (results) {
-                ilib.setLoaderCallback(oldLoaderUtils);
+                ilib.setLoaderCallback(oldLoader);
                 var expected = {"a": "b", "c": "fr1", "e": "f"};
                 test.expect(1);
                 test.deepEqual(results, expected);
@@ -1580,7 +1580,7 @@ module.exports.testutils = {
             loadParams: {},
             sync: true,
             callback: function (results) {
-                ilib.setLoaderCallback(oldLoaderUtils);
+                ilib.setLoaderCallback(oldLoader);
                 var expected = {"a": "b", "c": "m", "e": "y"};
                 test.expect(1);
                 test.deepEqual(results, expected);
@@ -1607,7 +1607,7 @@ module.exports.testutils = {
             loadParams: {},
             sync: true,
             callback: function (results) {
-                ilib.setLoaderCallback(oldLoaderUtils);
+                ilib.setLoaderCallback(oldLoader);
                 var expected = {"e": "y"};
                 test.expect(1);
                 test.deepEqual(results, expected);
@@ -1636,7 +1636,7 @@ module.exports.testutils = {
                 var cache = ilib.data.cache.obj;
                 for (var o in cache) {
                     if (cache.hasOwnProperty(o)) {
-                        ilib.setLoaderCallback(oldLoaderUtils);
+                        ilib.setLoaderCallback(oldLoader);
                         var expected = {"a": "b", "c": "m", "e": "y"};
                         test.deepEqual(cache[o], expected);
                     }
@@ -1676,7 +1676,7 @@ module.exports.testutils = {
                     loadParams: {},
                     sync: true,
                     callback: function (results) {
-                        ilib.setLoaderCallback(oldLoaderUtils);
+                        ilib.setLoaderCallback(oldLoader);
                         var expected = {"a": "barb", "c": "barm", "e": "bary"};
                         test.deepEqual(results, expected);
                         test.done();
@@ -1716,7 +1716,7 @@ module.exports.testutils = {
                     },
                     sync: true,
                     callback: function (results) {
-                        ilib.setLoaderCallback(oldLoaderUtils);
+                        ilib.setLoaderCallback(oldLoader);
                         test.ok(typeof(results) !== "undefined");
     
                         var count = 0;
@@ -1766,7 +1766,7 @@ module.exports.testutils = {
                     },
                     sync: true,
                     callback: function (results) {
-                        ilib.setLoaderCallback(oldLoaderUtils);
+                        ilib.setLoaderCallback(oldLoader);
                         var expected = {"xxx": "yyy", "www": "xyz", "yyy": "vvv", "nnn": "mmm"};
                         test.deepEqual(results, expected);
                         test.done();
@@ -1791,7 +1791,7 @@ module.exports.testutils = {
             loadParams: {},
             sync: true,
             callback: function (results) {
-                ilib.setLoaderCallback(oldLoaderUtils);
+                ilib.setLoaderCallback(oldLoader);
                 // should not crash
                 var expected = {"a": "b", "c": "m", "e": "y"};
                 test.expect(1);
@@ -1831,7 +1831,7 @@ module.exports.testutils = {
                     },
                     sync: true,
                     callback: function (results) {
-                        ilib.setLoaderCallback(oldLoaderUtils);
+                        ilib.setLoaderCallback(oldLoader);
                         var expected = {"xxx": "yyy", "www": "xyz", "yyy": "vvv", "nnn": "mmm"};
                         test.deepEqual(results, expected);
                         test.done();
@@ -1858,7 +1858,7 @@ module.exports.testutils = {
             loadParams: {},
             sync: false,
             callback: function (results) {
-                ilib.setLoaderCallback(oldLoaderUtils);
+                ilib.setLoaderCallback(oldLoader);
                 var expected = {"a": "b", "c": "m", "e": "y"};
                 test.expect(1);
                 test.deepEqual(results, expected);
@@ -1878,7 +1878,7 @@ module.exports.testutils = {
         Utils.loadData({
             name: "foo.json",
             callback: function (results) {
-                ilib.setLoaderCallback(oldLoaderUtils);
+                ilib.setLoaderCallback(oldLoader);
                 var expected = {"a": "b", "c": "m", "e": "y"};
                 test.expect(1);
                 test.deepEqual(results, expected);
@@ -1899,7 +1899,7 @@ module.exports.testutils = {
             name: "foo.html",
             type: "html",
             callback: function (results) {
-                ilib.setLoaderCallback(oldLoaderUtils);
+                ilib.setLoaderCallback(oldLoader);
                 test.expect(1);
                 test.deepEqual(results, "<html><body>This is the generic, shared foo.</body></html>");
                 test.done();
@@ -1920,7 +1920,7 @@ module.exports.testutils = {
             type: "html",
             locale: "de",
             callback: function (results) {
-                ilib.setLoaderCallback(oldLoaderUtils);
+                ilib.setLoaderCallback(oldLoader);
                 test.expect(1);
                 test.deepEqual(results, "<html><body>Diese ist Foo auf Deutsch.</body></html>");
                 test.done();
@@ -1941,7 +1941,7 @@ module.exports.testutils = {
             type: "html",
             locale: "de-DE",
             callback: function (results) {
-                ilib.setLoaderCallback(oldLoaderUtils);
+                ilib.setLoaderCallback(oldLoader);
                 test.expect(1);
                 test.deepEqual(results, "<html><body>Diese ist Foo auf Deutsch fuer Deutschland.</body></html>");
                 test.done();
@@ -1962,7 +1962,7 @@ module.exports.testutils = {
             type: "html",
             locale: "DE",
             callback: function (results) {
-                ilib.setLoaderCallback(oldLoaderUtils);
+                ilib.setLoaderCallback(oldLoader);
                 test.expect(1);
                 test.deepEqual(results, "<html><body>Diese ist Foo fuer Deutschland.</body></html>");
                 test.done();
@@ -1984,7 +1984,7 @@ module.exports.testutils = {
             type: "html",
             locale: "fr-FR",
             callback: function (results) {
-                ilib.setLoaderCallback(oldLoaderUtils);
+                ilib.setLoaderCallback(oldLoader);
                 test.expect(1);
                 test.deepEqual(results, "<html><body>Ceci est foo en francais.</body></html>");
                 test.done();
@@ -2005,7 +2005,7 @@ module.exports.testutils = {
             type: "html",
             locale: "es-ES",
             callback: function (results) {
-                ilib.setLoaderCallback(oldLoaderUtils);
+                ilib.setLoaderCallback(oldLoader);
                 test.expect(1);
                 test.deepEqual(results, "<html><body>This is the generic, shared foo.</body></html>");
                 test.done();
@@ -2025,7 +2025,7 @@ module.exports.testutils = {
             name: "foo.html",
             locale: "de",
             callback: function (results) {
-                ilib.setLoaderCallback(oldLoaderUtils);
+                ilib.setLoaderCallback(oldLoader);
                 test.expect(1);
                 test.deepEqual(results, "<html><body>Diese ist Foo auf Deutsch.</body></html>");
                 test.done();
@@ -2045,7 +2045,7 @@ module.exports.testutils = {
             name: "foo.json",
             locale: "de-DE",
             callback: function (results) {
-                ilib.setLoaderCallback(oldLoaderUtils);
+                ilib.setLoaderCallback(oldLoader);
                 var expected = {"a": "a1", "c": "de2", "e": "f"};
                 test.expect(1);
                 test.deepEqual(results, expected);

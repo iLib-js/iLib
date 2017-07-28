@@ -21,7 +21,6 @@ var util = require("util");
 var fs = require("fs");
 
 var path = require("../lib/Path.js");
-var TestLoader = require("./TestLoader.js");
 var NodeLoader = require("../lib/NodeLoader.js");
 
 var nodeunit = require("nodeunit");

@@ -58,6 +58,8 @@ if (typeof(ilib) === "undefined") {
     var ilib = require("../../..");
 }
 
+var oldLoader = ilib._load;
+
 module.exports.testdatefmtrange = {
     setUp: function(callback) {
         ilib.clearCache();
@@ -65,7 +67,7 @@ module.exports.testdatefmtrange = {
     },
     
     tearDown: function(callback) {
-        ilib._load = undefined;
+        ilib._load = oldLoader;
         callback();
     },
 
@@ -295,7 +297,6 @@ module.exports.testdatefmtrange = {
             test.done();
             return;
         }
-        var oldLoader = ilib._load;
         ilib.setLoaderCallback(mockLoaderDRF);
         
         var fmt = new DateRngFmt({
@@ -334,8 +335,7 @@ module.exports.testdatefmtrange = {
             test.done();
             return;
         }
-        var oldLoader = ilib._load;
-        ilib.setLoaderCallback(mockLoaderDRF);
+         ilib.setLoaderCallback(mockLoaderDRF);
         
         var fmt = new DateRngFmt({
             locale: "yy-YY"
@@ -373,8 +373,7 @@ module.exports.testdatefmtrange = {
             test.done();
             return;
         }
-        var oldLoader = ilib._load;
-        ilib.setLoaderCallback(mockLoaderDRF);
+         ilib.setLoaderCallback(mockLoaderDRF);
     
         var start = new GregorianDate({
             year: 2013,
@@ -414,8 +413,7 @@ module.exports.testdatefmtrange = {
             test.done();
             return;
         }
-        var oldLoader = ilib._load;
-        ilib.setLoaderCallback(mockLoaderDRF);
+         ilib.setLoaderCallback(mockLoaderDRF);
     
         var start = new GregorianDate({
             year: 2013,

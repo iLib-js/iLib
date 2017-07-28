@@ -48,6 +48,8 @@ if (typeof(ilib) === "undefined") {
     var ilib = require("../../..");
 }
 
+var oldLoader = ilib._load;
+
 module.exports.phonegeo = {
     setUp: function(callback) {
         ilib.clearCache();
@@ -55,7 +57,7 @@ module.exports.phonegeo = {
     },
     
     tearDown: function(callback) {
-        ilib._load = undefined;
+        ilib._load = oldLoader;
         callback();
     },
 
