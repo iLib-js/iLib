@@ -24,7 +24,7 @@ if (typeof(PhoneNumber) === "undefined") {
     var PhoneNumber = require("../.././../lib/PhoneNumber.js");
 }
 
-function mockLoader(paths, sync, params, callback) {
+function mockLoaderImsi(paths, sync, params, callback) {
     var data = [];
     
     data.push(ilib.data.mnc); // for the generic, shared stuff
@@ -43,6 +43,11 @@ if (typeof(ilib) === "undefined") {
 module.exports.imsi = {
     setUp: function(callback) {
         ilib.clearCache();
+        callback();
+    },
+    
+    tearDown: function(callback) {
+        ilib._load = undefined;
         callback();
     },
 
@@ -140,15 +145,14 @@ module.exports.imsi = {
     },
     
     testIMSILoadLocaleDataSynch: function(test) {
-        if (ilib.isDynData()) {
-            // don't need to test loading on the dynamic load version because we are testing
-            // it via all the other tests already.
+        if (!ilib.isDynData()) {
+            // can't test loading if this is not dynamic data
             test.done();
             return;
         }
         
        var oldLoader = ilib._load;
-       ilib.setLoaderCallback(mockLoader);
+       ilib.setLoaderCallback(mockLoaderImsi);
     
         var field = [];
         var imsi = "31003014084567890";

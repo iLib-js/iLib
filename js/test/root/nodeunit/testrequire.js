@@ -40,7 +40,7 @@ if (ilib._getPlatform() === "browser") {
     //r.root = r.root.substring(0, i) + "/test";
 }
 
-if (ilib.isDynCode()) {
+if (ilib.isDynCode() && typeof(path) === "undefined") {
     var path = require("path");
 }
 

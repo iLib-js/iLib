@@ -202,8 +202,8 @@ module.exports.testglobal = {
     },
     
     testGetTimeZoneNodejs: function(test) {
-        test.expect(1);
         if (ilib._getPlatform() === "nodejs") {
+            test.expect(1);
             ilib._platform = undefined;
             ilib.tz = undefined;
             if (typeof(process) === 'undefined') {
@@ -215,10 +215,10 @@ module.exports.testglobal = {
             process.env.TZ = "America/Phoenix";
             
             test.equal(ilib.getTimeZone(), "America/Phoenix");
-            test.done();
             
             process.env.TZ = tmp;
         }
+        test.done();
     },
     
     testGetTimeZoneRhino: function(test) {
@@ -644,7 +644,7 @@ module.exports.testglobal = {
         ilib.extend(object1, object2);
         test.deepEqual(object1, {"a": 1, "b": 2, "c": 0});
         test.done();
-    },
+    }
     
     
     /*

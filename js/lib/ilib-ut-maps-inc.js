@@ -41,4 +41,4 @@ charmaps/Hant.js
 charmaps/general.js
 */
 
-/* The charmaps/* files are other include files that conveniently allow you to include all the charmaps and charsets need for a particular script. */
+/* The charmaps files are other include files that conveniently allow you to include all the charmaps and charsets need for a particular script. */

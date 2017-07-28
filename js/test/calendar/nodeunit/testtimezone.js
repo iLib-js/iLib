@@ -48,7 +48,7 @@ getAvailableMocker.prototype.listAvailableFiles = function(sync, cb) {
     return ret;
 };
 
-function mockLoader (paths, sync, params, callback) {
+function mockLoaderTZ (paths, sync, params, callback) {
     var data = [];
     
     data.push(ilib.data.localeinfo); // for the generic, shared stuff
@@ -81,7 +81,7 @@ function mockLoader (paths, sync, params, callback) {
     return data;
 }
 
-function mockLoader2(paths, sync, params, callback) {
+function mockLoaderTZ2(paths, sync, params, callback) {
     var data = [];
     
     data.push({
@@ -112,6 +112,11 @@ if (typeof(ilib) === "undefined") {
 module.exports.testtimezone = {
     setUp: function(callback) {
         ilib.clearCache();
+        callback();
+    },
+
+    tearDown: function(callback) {
+        ilib._load = undefined;
         callback();
     },
 
@@ -1670,7 +1675,7 @@ module.exports.testtimezone = {
             test.done();
             return;
         }
-        ilib.setLoaderCallback(mockLoader);
+        ilib.setLoaderCallback(mockLoaderTZ);
         var tz = new TimeZone({locale: "zz-YY"});
         test.expect(2);
         test.ok(tz !== null);
@@ -1687,7 +1692,7 @@ module.exports.testtimezone = {
             return;
         }
         var ol = oldLoader;
-        ilib.setLoaderCallback(mockLoader);
+        ilib.setLoaderCallback(mockLoaderTZ);
         new TimeZone({
             locale: "zz-YY",
             sync: false,
@@ -1709,7 +1714,7 @@ module.exports.testtimezone = {
             return;
         }
         var ol = oldLoader;
-        ilib.setLoaderCallback(mockLoader);
+        ilib.setLoaderCallback(mockLoaderTZ);
         var tz = new TimeZone({locale: "ww-WW"});
         test.expect(2);
         test.ok(tz !== null);
@@ -1726,7 +1731,7 @@ module.exports.testtimezone = {
             return;
         }
         var ol = oldLoader;
-        ilib.setLoaderCallback(mockLoader);
+        ilib.setLoaderCallback(mockLoaderTZ);
         new TimeZone({
             locale: "ww-WW",
             sync: false,
@@ -1743,7 +1748,7 @@ module.exports.testtimezone = {
     testTZGetTimeZoneWithLoaderAsynch: function(test) {
         test.expect(2);
         var ol = oldLoader;
-        ilib.setLoaderCallback(mockLoader2);
+        ilib.setLoaderCallback(mockLoaderTZ2);
         new TimeZone({
             id: "America/Los_Angeles",
             sync: false,
@@ -1759,7 +1764,7 @@ module.exports.testtimezone = {
     testTZGetTimeZoneWithLoaderJulianTransitionBeforeStart: function(test) {
         test.expect(3);
         var ol = oldLoader;
-        ilib.setLoaderCallback(mockLoader2);
+        ilib.setLoaderCallback(mockLoaderTZ2);
         new TimeZone({
             id: "America/Los_Angeles",
             sync: false,
@@ -1782,7 +1787,7 @@ module.exports.testtimezone = {
     testTZGetTimeZoneWithLoaderJulianTransitionAfterStart: function(test) {
         test.expect(3);
         var ol = oldLoader;
-        ilib.setLoaderCallback(mockLoader2);
+        ilib.setLoaderCallback(mockLoaderTZ2);
         new TimeZone({
             id: "America/Los_Angeles",
             sync: false,
@@ -1805,7 +1810,7 @@ module.exports.testtimezone = {
     testTZGetTimeZoneWithLoaderJulianTransitionBeforeEnd: function(test) {
         test.expect(3);
         var ol = oldLoader;
-        ilib.setLoaderCallback(mockLoader2);
+        ilib.setLoaderCallback(mockLoaderTZ2);
         new TimeZone({
             id: "America/Los_Angeles",
             sync: false,
@@ -1827,7 +1832,7 @@ module.exports.testtimezone = {
     testTZGetTimeZoneWithLoaderJulianTransitionAfterEnd: function(test) {
         test.expect(3);
         var ol = oldLoader;
-        ilib.setLoaderCallback(mockLoader2);
+        ilib.setLoaderCallback(mockLoaderTZ2);
         new TimeZone({
             id: "America/Los_Angeles",
             sync: false,

@@ -24,7 +24,7 @@ if (typeof(LocaleInfo) === "undefined") {
     var LocaleInfo = require("../.././../lib/LocaleInfo.js");
 }
 
-function mockLoader(paths, sync, params, callback) {
+function mockLoaderLI(paths, sync, params, callback) {
     var data = [];
     // for the generic, shared stuff
     data.push(ilib.data.localeinfo || {
@@ -123,6 +123,11 @@ if (typeof(ilib) === "undefined") {
 module.exports.testlocaleinfo = {
     setUp: function(callback) {
         ilib.clearCache();
+        callback();
+    },
+    
+    tearDown: function(callback) {
+        ilib._load = undefined;
         callback();
     },
 
@@ -12424,7 +12429,7 @@ module.exports.testlocaleinfo = {
             return;
         }
         var oldLoader = ilib._load;
-        ilib.setLoaderCallback(mockLoader);
+        ilib.setLoaderCallback(mockLoaderLI);
         var info = new LocaleInfo("zzz-ZX", {
             sync: false,
             onLoad: function (li) {
@@ -12449,7 +12454,7 @@ module.exports.testlocaleinfo = {
             return;
         }
         var oldLoader = ilib._load;
-        ilib.setLoaderCallback(mockLoader);
+        ilib.setLoaderCallback(mockLoaderLI);
         var info = new LocaleInfo("zzz-ZX", {
             sync: true
         });
@@ -12473,7 +12478,7 @@ module.exports.testlocaleinfo = {
             return;
         }
         var oldLoader = ilib._load;
-        ilib.setLoaderCallback(mockLoader);
+        ilib.setLoaderCallback(mockLoaderLI);
         var info = new LocaleInfo("qq-QQ", {
             sync: false,
             onLoad: function (li) {
@@ -12522,7 +12527,7 @@ module.exports.testlocaleinfo = {
             return;
         }
         var oldLoader = ilib._load;
-        ilib.setLoaderCallback(mockLoader);
+        ilib.setLoaderCallback(mockLoaderLI);
         var li = new LocaleInfo("qq-QQ", {
             sync: true
         });
@@ -12546,7 +12551,7 @@ module.exports.testlocaleinfo = {
             return;
         }
         var oldLoader = ilib._load;
-        ilib.setLoaderCallback(mockLoader);
+        ilib.setLoaderCallback(mockLoaderLI);
         var info = new LocaleInfo("fr-FR", {
             sync: false,
             onLoad: function (li) {

@@ -102,7 +102,7 @@ ilib.data.tester2_de = {
 ilib.data.mock_foobar = ilib.data.strings;
 ilib.data.mock_foobar_de = ilib.data.strings_de;
 
-function mockLoader(paths, sync, params, callback) {
+function mockLoaderRes(paths, sync, params, callback) {
     var data = [];
     
     function getResName(path) {
@@ -136,6 +136,11 @@ if (typeof(ilib) === "undefined") {
 module.exports.testresources = {
     setUp: function(callback) {
         ilib.clearCache();
+        callback();
+    },
+    
+    tearDown: function(callback) {
+        ilib._load = undefined;
         callback();
     },
 
@@ -1319,7 +1324,7 @@ module.exports.testresources = {
         }
         var onloadcalled = false;
         var oldLoader = ilib._load;
-        ilib.setLoaderCallback(mockLoader);
+        ilib.setLoaderCallback(mockLoaderRes);
         var rb = new ResBundle({
             locale: "de-DE-SAP",
             name: "foobar",
@@ -1350,7 +1355,7 @@ module.exports.testresources = {
             return;
         }
         var oldLoader = ilib._load;
-        ilib.setLoaderCallback(mockLoader);
+        ilib.setLoaderCallback(mockLoaderRes);
         var rb = new ResBundle({
             locale: "de-DE-SAP",
             name: "foobar"
@@ -1376,7 +1381,7 @@ module.exports.testresources = {
         }
         var onloadcalled = false;
         var oldLoader = ilib._load;
-        ilib.setLoaderCallback(mockLoader);
+        ilib.setLoaderCallback(mockLoaderRes);
         var rb = new ResBundle({
             locale: "fr-CA-govt",
             sync: false,
@@ -1401,7 +1406,7 @@ module.exports.testresources = {
             return;
         }
         var oldLoader = ilib._load;
-        ilib.setLoaderCallback(mockLoader);
+        ilib.setLoaderCallback(mockLoaderRes);
         var rb = new ResBundle({
             locale: "fr-CA-govt"
         });
@@ -1425,7 +1430,7 @@ module.exports.testresources = {
             return;
         }
         var oldLoader = ilib._load;
-        ilib.setLoaderCallback(mockLoader);
+        ilib.setLoaderCallback(mockLoaderRes);
         var rb = new ResBundle({
             locale: "de-DE-SAP",
             name: "asdf", // doesn't exist
@@ -1453,7 +1458,7 @@ module.exports.testresources = {
             return;
         }
         var oldLoader = ilib._load;
-        ilib.setLoaderCallback(mockLoader);
+        ilib.setLoaderCallback(mockLoaderRes);
         var rb = new ResBundle({
             locale: "de-DE-SAP",
             name: "asdf" // doesn't exist

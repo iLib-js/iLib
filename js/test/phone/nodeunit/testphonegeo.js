@@ -33,7 +33,7 @@ if (typeof(NumberingPlan) === "undefined") {
     var NumberingPlan = require("../.././../lib/NumberingPlan.js");
 }
 
-function mockLoader(paths, sync, params, callback) {
+function mockLoaderGeo(paths, sync, params, callback) {
     var data = [];
     
     data.push(ilib.data.area_US); // for the generic, shared stuff
@@ -51,6 +51,11 @@ if (typeof(ilib) === "undefined") {
 module.exports.phonegeo = {
     setUp: function(callback) {
         ilib.clearCache();
+        callback();
+    },
+    
+    tearDown: function(callback) {
+        ilib._load = undefined;
         callback();
     },
 
@@ -2079,7 +2084,7 @@ module.exports.phonegeo = {
         };
     
         var oldLoader = ilib._load;
-        ilib.setLoaderCallback(mockLoader);
+        ilib.setLoaderCallback(mockLoaderGeo);
     
         var locator = new PhoneGeoLocator({locale: 'en-US',
             sync: false,
