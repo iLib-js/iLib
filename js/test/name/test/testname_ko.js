@@ -359,7 +359,7 @@ function testFormatSimpleNameLong_ko_KR() {
 	var formatted = fmt.format(name);
 	assertNotUndefined(formatted);
 	
-	var expected = "미스터김동경";
+	var expected = "미스터 김동경";
 	
 	assertEquals(expected, formatted);
 };
@@ -378,7 +378,7 @@ function testFormatSimpleNameFull_ko_KR() {
 	var formatted = fmt.format(name);
 	assertNotUndefined(formatted);
 	
-	var expected = "미스터김동경 , 박사";
+	var expected = "미스터 김동경 , 박사";
 	
 	assertEquals(expected, formatted);
 };
@@ -426,7 +426,7 @@ function testFormatComplexNameLong_ko_KR() {
 	var formatted = fmt.format(name);
 	assertNotUndefined(formatted);
 	
-	var expected = "미스터남궁동경";
+	var expected = "미스터 남궁동경";
 	
 	assertEquals(expected, formatted);
 };
@@ -442,7 +442,7 @@ function testFormatComplexNameFull_ko_KR() {
 	var formatted = fmt.format(name);
 	assertNotUndefined(formatted);
 	
-	var expected = "미스터남궁동경씨";
+	var expected = "미스터 남궁동경 씨";
 	
 	assertEquals(expected, formatted);
 };
@@ -458,7 +458,7 @@ function testFormatCommasInSuffix_ko_KR() {
 	var formatted = fmt.format(name);
 	assertNotUndefined(formatted);
 	
-	var expected = "미스터남궁동경씨";
+	var expected = "미스터 남궁동경 씨";
 	
 	assertEquals(expected, formatted);
 };
@@ -503,7 +503,7 @@ function testFormatWithHonorifix_ko_KR() {
 	var formatted = fmt.format(parsed);
 	assertNotUndefined(formatted);
 	
-	var expected = "정훈교씨";
+	var expected = "정훈교 씨";
 	
 	assertEquals(expected, formatted);
 };
@@ -585,7 +585,7 @@ function testFormatWithSuffix4_ko_KR() {
 
 	var expected = "홍길동 선임 연구원";
 	
-	assertObjectContains(expected, expected);
+	assertEquals(expected, formatted);
 };
 
 function testFormatWithCopyConstructor_ko_KR() {
@@ -652,7 +652,7 @@ function testFormatWithfourLength1_ko_KR() {
 
 	var expected = "가나다라";
 	
-	assertObjectContains(expected, formatted);
+	assertEquals(expected, formatted);
 };
 
 function testFormatWithfourLength2_ko_KR() {
@@ -665,7 +665,7 @@ function testFormatWithfourLength2_ko_KR() {
 
 	var expected = "김빛나리";
 
-	assertObjectContains(expected, formatted);
+	assertEquals(expected, formatted);
 };
 
 function testFormatLongCharacters1_ko_KR() {
@@ -678,7 +678,7 @@ function testFormatLongCharacters1_ko_KR() {
 
 	var expected = "가나다라마바사";
 
-	assertObjectContains(expected, formatted);
+	assertEquals(expected, formatted);
 };
 
 function testFormatWithSpace1_ko_KR() {
@@ -691,7 +691,7 @@ function testFormatWithSpace1_ko_KR() {
 
 	var expected = "김빛 나리";
 
-	assertObjectContains(expected, formatted);
+	assertEquals(expected, formatted);
 };
 
 function testFormatWithSpace2_ko_KR() {
@@ -703,7 +703,7 @@ function testFormatWithSpace2_ko_KR() {
 	assertNotUndefined(formatted);
 	
 	var expected = "김빛나리 입니다";
-	assertObjectContains(expected, formatted);
+	assertEquals(expected, formatted);
 };
 
 function testFormatWithSpace3_ko_KR() {
@@ -717,7 +717,7 @@ function testFormatWithSpace3_ko_KR() {
 
 	var expected = "김 빛나리 입니다";
 	
-	assertObjectContains(expected, formatted);
+	assertEquals(expected, formatted);
 };
 
 function testFormatWithSpace4_ko_KR() {
@@ -729,7 +729,7 @@ function testFormatWithSpace4_ko_KR() {
 	assertNotUndefined(formatted);
 
 	var expected = "가나 다라 마바사";
-	assertObjectContains(expected, formatted);
+	assertEquals(expected, formatted);
 };
 
 function testFormatWithSpace5_ko_KR() {
@@ -742,5 +742,5 @@ function testFormatWithSpace5_ko_KR() {
 
 	var expected = "가나 다라 마 바사";
 
-	assertObjectContains(expected, formatted);
+	assertEquals(expected, formatted);
 };

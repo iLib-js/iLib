@@ -91,7 +91,8 @@ function testParseAddressRUSuperfluousWhitespace() {
 	assertEquals("RU", parsedAddress.countryCode);
 };
 
-/*function testParseAddressRUNoDelimiters() {
+/*
+function testParseAddressRUNoDelimiters() {
 	var parsedAddress = new Address("Петров Иван Сергеевич ул. Лесная D. 5 поз. Лесной АЛЕКСЕЕВСКИЙ R-N Воронежская область 247112 Россия", {locale: 'ru-RU'});
 	
 	assertNotUndefined(parsedAddress);
@@ -101,7 +102,8 @@ function testParseAddressRUSuperfluousWhitespace() {
 	assertEquals("247112", parsedAddress.postalCode);
 	assertEquals("Россия", parsedAddress.country);
 	assertEquals("RU", parsedAddress.countryCode);
-};*/
+};
+*/
 
 function testParseAddressRUFromUS() {
 	var parsedAddress = new Address("Петров Иван Сергеевич ул. Лесная D. 5 поз. Лесной\nАЛЕКСЕЕВСКИЙ R-N\nВоронежская область\nРоссия\n247112", {locale: 'ru-RU'});

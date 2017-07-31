@@ -60,18 +60,6 @@ var aliasesKR = {
     ]
 };
 
-function testCharmapKRTestAliases() {
-	for (var charset in aliasesKR) {
-		for (var i = 0; i < aliasesKR[charset].length; i++) {
-			var cs = new Charset({
-				name: aliasesKR[charset][i]
-			});
-		    assertNotUndefined(cs);
-		    assertEquals(charset, cs.getName());
-		}
-	}
-}
-
 var testDataKR = {
 	"EUC-KR": {
 	    "This is a test": [
@@ -329,6 +317,18 @@ var testDataKR = {
         ]
     }
 };
+
+function testCharmapKRTestAliases() {
+    for (var charset in aliasesKR) {
+        for (var i = 0; i < aliasesKR[charset].length; i++) {
+            var cs = new Charset({
+                name: aliasesKR[charset][i]
+            });
+            assertNotUndefined(cs);
+            assertEquals(charset, cs.getName());
+        }
+    }
+}
 
 function testCharmapKRMapToUnicode() {
 	for (var charset in testDataKR) {

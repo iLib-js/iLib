@@ -483,7 +483,6 @@ function testDurFmtAMFormatFull11() {
 };
 
 function testDurFmtAMAsync1() {
-	var callbackCalled = false;
     new DurationFmt({
     	locale: "am-ET",
     	length: "full",
@@ -501,15 +500,11 @@ function testDurFmtAMAsync1() {
     	    	second: 1
     	    });
     	    assertEquals("1 ዓመት፣ 1 ወር፣ 1 ሳምንት፣ 1 ቀናት፣ 1 ሰዓት፣ 1 ደቂቃ, እና 1 ሰከንድ", duration.toString());
-    	    callbackCalled = true;
     	}
     });
-    
-    assertTrue(callbackCalled);
 };
 
 function testDurFmtAMAsyncWithLocale1() {
-	var callbackCalled = false;
     new DurationFmt({
     	locale: "am-ET",
     	length: "full",
@@ -527,15 +522,11 @@ function testDurFmtAMAsyncWithLocale1() {
     	    	second: 1
     	    });          
     	    assertEquals("1 ዓመት፣ 1 ወር፣ 1 ሳምንት፣ 1 ቀናት፣ 1 ሰዓት፣ 1 ደቂቃ, እና 1 ሰከንድ", duration.toString());
-    	    callbackCalled = true;
     	}
     });
-    
-    assertTrue(callbackCalled);
 };
 
 function testDurFmtAMAsync2() {
-	var callbackCalled = false;
     new DurationFmt({
     	locale: "am-ET",
     	length: "full",
@@ -553,15 +544,11 @@ function testDurFmtAMAsync2() {
     	    	second: 2
     	    });
     	    assertEquals("2 ዓመታት፣ 2 ወራት፣ 2 ሳምንታት፣ 2 ቀናት፣ 2 ሰዓቶች፣ 2 ደቂቃዎች፣ እና 2 ሰከንዶች", duration.toString());
-    	    callbackCalled = true;
     	}
     });
-    
-    assertTrue(callbackCalled);
 };
 
 function testDurFmtAMAsyncWithLocale2() {
-	var callbackCalled = false;
     new DurationFmt({
     	locale: "am-ET",
     	length: "full",
@@ -579,15 +566,11 @@ function testDurFmtAMAsyncWithLocale2() {
     	    	second: 2
     	    });
     	    assertEquals("2 ዓመታት፣ 2 ወራት፣ 2 ሳምንታት፣ 2 ቀናት፣ 2 ሰዓቶች፣ 2 ደቂቃዎች፣ እና 2 ሰከንዶች", duration.toString());
-    	    callbackCalled = true;
     	}
     });
-    
-    assertTrue(callbackCalled);
 };
 
 function testDurFmtAMAsync3() {
-	var callbackCalled = false;
     new DurationFmt({
     	locale: "am-ET",
     	length: "full",
@@ -605,15 +588,11 @@ function testDurFmtAMAsync3() {
     	    	second: 3
     	    });
     	    assertEquals("3 ዓመታት፣ 3 ወራት፣ 3 ሳምንታት፣ 3 ቀናት፣ 3 ሰዓቶች፣ 3 ደቂቃዎች, እና 3 ሰከንዶች", duration.toString());
-    	    callbackCalled = true;
     	}
     });
-    
-    assertTrue(callbackCalled);
 };
 
 function testDurFmtAMAsyncWithLocale3() {
-	var callbackCalled = false;
     new DurationFmt({
     	locale: "am-ET",
     	length: "full",
@@ -631,15 +610,11 @@ function testDurFmtAMAsyncWithLocale3() {
     	    	second: 3
     	    });
     	    assertEquals("3 ዓመታት፣ 3 ወራት፣ 3 ሳምንታት፣ 3 ቀናት፣ 3 ሰዓቶች፣ 3 ደቂቃዎች, እና 3 ሰከንዶች", duration.toString());
-    	    callbackCalled = true;
     	}
     });
-    
-    assertTrue(callbackCalled);
 };
 
 function testDurFmtAMAsync11() {
-	var callbackCalled = false;
     new DurationFmt({
     	locale: "am-ET",
     	length: "full",
@@ -657,15 +632,11 @@ function testDurFmtAMAsync11() {
     	    	second: 11
     	    });
     	    assertEquals("11 ዓመታት፣ 11 ወራት፣ 11 ሳምንታት፣ 11 ቀናት፣ 11 ሰዓቶች፣ 11 ደቂቃዎች, እና 11 ሰከንዶች", duration.toString());
-    	    callbackCalled = true;
     	}
     });
-    
-    assertTrue(callbackCalled);
 };
 
 function testDurFmtAMAsyncWithLocale11() {
-	var callbackCalled = false;
     new DurationFmt({
     	locale: "am-ET",
     	length: "full",
@@ -683,15 +654,11 @@ function testDurFmtAMAsyncWithLocale11() {
     	    	second: 11
     	    });
     	    assertEquals("11 ዓመታት፣ 11 ወራት፣ 11 ሳምንታት፣ 11 ቀናት፣ 11 ሰዓቶች፣ 11 ደቂቃዎች, እና 11 ሰከንዶች", duration.toString());
-    	    callbackCalled = true;
     	}
     });
-    
-    assertTrue(callbackCalled);
 };
 
 function testDurFmtAMFormatShortClockAsync1() {
-	var callbackCalled = false;
     new DurationFmt({
     	locale: "am-ET",
     	length: "short",
@@ -710,14 +677,11 @@ function testDurFmtAMFormatShortClockAsync1() {
     	    	second: 1
     	    });
     	    assertEquals("1 ዓመት፣ 1 ወር፣ 1 ሳምንት፣ 1 ቀ፣ 1:01:01", duration.toString());
-    	    callbackCalled = true;
     	}
     });
-    assertTrue(callbackCalled);
 };
 
 function testDurFmtAMAsync2() {
-	var callbackCalled = false;
     new DurationFmt({
     	locale: "am-ET",
     	length: "full",
@@ -736,15 +700,12 @@ function testDurFmtAMAsync2() {
     	    	second: 2
     	    });
     	    assertEquals("2 ዓመታት፣ 2 ወራት፣ 2 ሳምንታት፣ 2 ቀናት፣ 2 ሰዓቶች፣ 2 ደቂቃዎች, እና 2 ሰከንዶች", duration.toString());
-    	    callbackCalled = true;
     	}
     });
     
-    assertTrue(callbackCalled);
 };
 
 function testDurFmtAMAsyncWithLocale2() {
-	var callbackCalled = false;
     new DurationFmt({
     	locale: "am-ET",
     	length: "full",
@@ -763,15 +724,12 @@ function testDurFmtAMAsyncWithLocale2() {
     	    	second: 2
     	    });
     	    assertEquals("2 ዓመታት፣ 2 ወራት፣ 2 ሳምንታት፣ 2 ቀናት፣ 2 ሰዓቶች፣ 2 ደቂቃዎች, እና 2 ሰከንዶች", duration.toString());
-    	    callbackCalled = true;
     	}
     });
     
-    assertTrue(callbackCalled);
 };
 
 function testDurFmtAMFormatWesternShortClockAsync1() {
-	var callbackCalled = false;
     new DurationFmt({
     	locale: "am-ET",
     	length: "short",
@@ -791,8 +749,6 @@ function testDurFmtAMFormatWesternShortClockAsync1() {
     	    	second: 1
     	    });
     	    assertEquals("1 ዓመት፣ 1 ወር፣ 1 ሳምንት፣ 1 ቀ፣ 1:01:01", duration.toString());
-    	    callbackCalled = true;
     	}
     });
-    assertTrue(callbackCalled);
 };

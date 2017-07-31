@@ -1095,7 +1095,8 @@ function testDateFmtWithTimeZoneAndNoDST_et_EE() {
     assertEquals("13:45:37 EET", fmt.format(date));
 }
 
-/*function testDateFmtFormatRelativeWithinMinuteAfter_et_EE() {
+/*
+function testDateFmtFormatRelativeWithinMinuteAfter_et_EE() {
     var fmt = new DateFmt({locale: "et-EE", length: "full"});
     assertNotNull(fmt);
     
@@ -1462,4 +1463,5 @@ function testDateFmtFormatRelativeYearsBefore_et_EE() {
 		millisecond: 0
 	});
     assertEquals("y", fmt.formatRelative(reference, date));
-}*/
+}
+*/
