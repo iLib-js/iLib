@@ -91,7 +91,7 @@ module.exports.testname_zh_Hans = {
     
     testParseMaidenPlusMarriedName_zh_Hans: function(test) {
         test.expect(2);
-        var parsed = new Name("錢林慧君", {locale: 'zh-Hans-CN'});
+        var parsed = new Name("錢林慧君", {locale: 'zh-Hans-CN', compoundFamilyName: true});
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {
@@ -176,7 +176,7 @@ module.exports.testname_zh_Hans = {
     
     testParseEverything_zh_Hans: function(test) {
         test.expect(2);
-        var parsed = new Name("老錢林慧君外公", {locale: 'zh-Hans-CN'});
+        var parsed = new Name("老錢林慧君外公", {locale: 'zh-Hans-CN', compoundFamilyName: true});
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {

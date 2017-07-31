@@ -5,6 +5,7 @@
 	},
 	"format": "{prefix}{familyName}{middleName}{givenName}{suffix}",
 	"nameStyle": "asian",
+	"noCompoundFamilyNames": true,
 	"conjunctions": {
 		"and1": "与",
 		"and2": "与",
