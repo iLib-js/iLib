@@ -668,7 +668,7 @@ module.exports.testname_en = {
             suffix: null
         });
         
-        var fmt = new NameFmt({style: "medium", locale: 'en-HK'});
+        var fmt = new NameFmt({style: "short", locale: 'en-HK'});
         var formatted = fmt.format(name);
         test.ok(typeof(formatted) !== "undefined");
         
