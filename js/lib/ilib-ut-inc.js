@@ -107,6 +107,19 @@ Charset.js
 ListFmt.js
 Country.js
 ListFmt.js
+CaseMapper.js
+Charset.js
+Charmap.js
+CharmapFactory.js
+CharmapTable.js
+UTF8.js
+UTF16BE.js
+UTF16LE.js
+charmaps/Jpan.js
+charmaps/Kore.js
+charmaps/Hans.js
+charmaps/Hant.js
+charmaps/general.js
 */
 
 /* !data

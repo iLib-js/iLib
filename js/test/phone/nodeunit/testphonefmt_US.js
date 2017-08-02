@@ -27,7 +27,7 @@ if (typeof(PhoneFmt) === "undefined") {
     var PhoneFmt = require("../.././../lib/PhoneFmt.js");
 }
 
-function mockLoader(paths, sync, params, callback) {
+function mockLoaderFmtUS(paths, sync, params, callback) {
     var data = [];
     
     data.push(ilib.data.phonefmt);
@@ -43,9 +43,16 @@ if (typeof(ilib) === "undefined") {
     var ilib = require("../../..");
 }
 
+var oldLoader = ilib._load;
+
 module.exports.phonefmt_US = {
     setUp: function(callback) {
         ilib.clearCache();
+        callback();
+    },
+    
+    tearDown: function(callback) {
+        ilib._load = oldLoader;
         callback();
     },
 
@@ -2710,7 +2717,7 @@ module.exports.phonefmt_US = {
         }
         
         var oldLoader = ilib._load;
-        ilib.setLoaderCallback(mockLoader);
+        ilib.setLoaderCallback(mockLoaderFmtUS);
     
         var phonefmt = new PhoneFmt({
             locale: "en-US",

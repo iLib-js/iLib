@@ -1,5 +1,5 @@
 /*
- * testSuite.js - test suite for this directory
+ * testSuiteFiles.js - list the test files in this directory
  * 
  * Copyright © 2017, JEDLSoft
  *
@@ -17,10 +17,7 @@
  * limitations under the License.
  */
 
-var nodeunit = require("nodeunit");
-var reporter = nodeunit.reporters.minimal;
-var modules = {};
-var suites = [
+module.exports.files = [
     "testdate.js",
     "testdatefmt.js",
     "testdatefmt_af_NA.js",
@@ -98,12 +95,3 @@ var suites = [
     "testdatefmt_zh_Hant_HK.js",
     "testdatefmt_zh_Hant_TW.js",
 ];
-
-suites.forEach(function (path) {
-    var test = require("./" + path);
-    for (var suite in test) {
-        modules[suite] = test[suite];
-    }
-});
-
-reporter.run(modules);

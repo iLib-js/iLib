@@ -45,7 +45,7 @@ if (typeof(DateFactory) === "undefined") {
     var DateFactory = require("../.././../lib/DateFactory.js");
 }
 
-function mockLoader(paths, sync, params, callback) {
+function mockLoaderDF(paths, sync, params, callback) {
     var data = [];
     
     if (paths[0].indexOf("localeinfo") !== -1) {
@@ -64,7 +64,6 @@ function mockLoader(paths, sync, params, callback) {
 
 var oldLoader = ilib._load;
 
-
 if (typeof(ilib) === "undefined") {
     var ilib = require("../../..");
 }
@@ -72,6 +71,11 @@ if (typeof(ilib) === "undefined") {
 module.exports.testdatefmt = {
     setUp: function(callback) {
         ilib.clearCache();
+        callback();
+    },
+
+    tearDown: function(callback) {
+        ilib._load = oldLoader;
         callback();
     },
 
@@ -775,9 +779,9 @@ module.exports.testdatefmt = {
     },
     
     testDateFmtAlternateInputs1: function(test) {
-        test.expect(2);
         // toUTCString doesn't work properly on qt, so we can't do this test
         if (ilib._getPlatform() !== "qt") {
+            test.expect(2);
             var fmt = new DateFmt({
                 timezone: "Etc/UTC", 
                 template: "EEE, d MMM yyyy kk:mm:ss z"
@@ -800,8 +804,8 @@ module.exports.testdatefmt = {
             strFormattedDate2 = strFormattedDate2.replace(/ \w{3}$/, '');
         
             test.equal(strFormattedDate2, strFormattedDate1);
-            test.done();
         }
+        test.done();
     },
     
     testDateFmtFormatJSDate1: function(test) {
@@ -2985,9 +2989,10 @@ module.exports.testdatefmt = {
             test.done();
             return;
         }
-        ilib.setLoaderCallback(mockLoader);
+        ilib.setLoaderCallback(mockLoaderDF);
     
         var fmt = new DateFmt({locale: "zz-ZZ"});
+        ilib.setLoaderCallback(oldLoader);
         test.expect(4);
         test.ok(fmt !== null);
         
@@ -3004,9 +3009,10 @@ module.exports.testdatefmt = {
             test.done();
             return;
         }
-        ilib.setLoaderCallback(mockLoader);
+        ilib.setLoaderCallback(mockLoaderDF);
     
         var fmt = new DateFmt({locale: "zz-ZZ"});
+        ilib.setLoaderCallback(oldLoader);
         test.expect(4);
         test.ok(fmt !== null);
         
@@ -3023,13 +3029,14 @@ module.exports.testdatefmt = {
             test.done();
             return;
         }
-        ilib.setLoaderCallback(mockLoader);
+        ilib.setLoaderCallback(mockLoaderDF);
         
         new DateFmt({
             locale: "zz-ZZ",
             sync: false,
             onLoad: function (fmt) {
-        test.expect(4);
+                ilib.setLoaderCallback(oldLoader);
+                test.expect(4);
                 test.ok(fmt !== null);
                 
                 test.equal(fmt.getLocale().toString(), "zz-ZZ");
@@ -3047,13 +3054,14 @@ module.exports.testdatefmt = {
             test.done();
             return;
         }
-        ilib.setLoaderCallback(mockLoader);
+        ilib.setLoaderCallback(mockLoaderDF);
         
+        test.expect(4);
         new DateFmt({
             locale: "zz-ZZ",
             sync: false,
             onLoad: function (fmt) {
-        test.expect(4);
+                ilib.setLoaderCallback(oldLoader);
                 test.ok(fmt !== null);
                 
                 test.equal(fmt.getLocale().toString(), "zz-ZZ");
@@ -3067,7 +3075,6 @@ module.exports.testdatefmt = {
     
     testDateFmtTransitionToDSTRightBefore: function(test) {
         test.expect(2);
-        ilib.setLoaderCallback(oldLoader);
         var fmt = new DateFmt({
             length: "full",
             type: "time",

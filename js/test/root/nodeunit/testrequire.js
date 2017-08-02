@@ -40,6 +40,10 @@ if (ilib._getPlatform() === "browser") {
     //r.root = r.root.substring(0, i) + "/test";
 }
 
+if (ilib.isDynCode() && typeof(path) === "undefined") {
+    var path = require("path");
+}
+
 if (typeof(ilib) === "undefined") {
     var ilib = require("../../..");
 }
@@ -118,11 +122,12 @@ module.exports.testrequire = {
             return;
         }
         
-        var Locale2 = require("../test/testfiles/locale2.js");
+        var dir = path.dirname(module.filename);
+        var Locale2 = require(path.join(dir, "../test/testfiles/locale2.js"));
         test.expect(4);
         test.ok(typeof(Locale2) !== "undefined");
         
-        var DateFmt2 = require("../test/testfiles/datefmt2.js");
+        var DateFmt2 = require(path.join(dir, "../test/testfiles/datefmt2.js"));
         test.ok(typeof(DateFmt2) !== "undefined");
         var df = new DateFmt2({locale: "de-DE"});
         
