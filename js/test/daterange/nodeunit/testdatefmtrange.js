@@ -772,6 +772,28 @@ module.exports.testdatefmtrange = {
         });
         test.equal(fmt.format(start, end), "2011-06-20 – 2012-05-26");
         test.done();
-    }
+    },
     
+    testDateRngFmtAcceptJSIntrisicDates: function(test) {
+        test.expect(2);
+        var fmt = new DateRngFmt({locale: "en-US", length: "short"});
+        test.ok(fmt !== null);
+        
+        var start = new Date(2011, 5, 20, 13, 45, 0);
+        var end = new Date(2012, 4, 26, 16, 30, 0);
+        test.equal(fmt.format(start, end), "6/20/11 – 5/26/12");
+        test.done();
+    },
+
+    testDateRngFmtAcceptUnixTimes: function(test) {
+        test.expect(2);
+        var fmt = new DateRngFmt({locale: "en-US", length: "short"});
+        test.ok(fmt !== null);
+        
+        var start = 1308602700000;
+        var end = 1338075000000;
+        test.equal(fmt.format(start, end), "6/20/11 – 5/26/12");
+        test.done();
+    }
+
 };

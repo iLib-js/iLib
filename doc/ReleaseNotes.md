@@ -23,6 +23,11 @@ New Features:
   * formal_short formats a name with an honorific and family name. eg. Mrs. Smith or Dr. Smith
   * formal_long formats a name with the honorific, given, and family names. eg. Mrs. Jane Smith or Dr. Jane Smith
 * The NameFmt.format() method now accepts an object parameter with the name fields as well as a full Name instance
+* The DateRngFmt.format() method now accepts any date-like start and end parameters to make it easier to use, instead of only accepting ilib IDate parameters
+  * IDate - still supported, but must be in the same calendar as the formatter itself
+  * Date - javascript intrinsic dates
+  * number - a unixtime for the requested date
+  * string - a date string that is parseable by the javascript intrinsic Date class
 
 Bug Fixes:
 
