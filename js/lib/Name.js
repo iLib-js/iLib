@@ -174,7 +174,7 @@ var Name = function (name, options) {
 						loadParams: this.loadParams, 
 						callback: ilib.bind(this, function (info) {
 							if (!info) {
-								info = Name.defaultInfo;
+								info = Name.defaultInfo[this.style || "western"];
 								var spec = this.locale.getSpec().replace(/-/g, "_");
 								ilib.data.cache.Name[spec] = info;
 							}
@@ -248,75 +248,96 @@ var Name = function (name, options) {
 	}));
 };
 
-Name.defaultInfo = ilib.data.name ||  {
-	"components": {
-		"short": "gf",
-		"medium": "gmf",
-		"long": "pgmf",
-		"full": "pgmfs",
-		"formal_short": "hf",
-		"formal_long": "hgf"
+Name.defaultInfo = {
+	"western": ilib.data.name || {
+		"components": {
+			"short": "gf",
+			"medium": "gmf",
+			"long": "pgmf",
+			"full": "pgmfs",
+			"formal_short": "hf",
+			"formal_long": "hgf"
+		},
+		"format": "{prefix} {givenName} {middleName} {familyName}{suffix}",
+		"sortByHeadWord": false,
+		"nameStyle": "western",
+		"conjunctions": {
+			"and1": "and",
+			"and2": "and",
+			"or1": "or",
+			"or2": "or"
+		},
+		"auxillaries": {
+			"von": 1,
+			"von der": 1,
+			"von den": 1,
+			"van": 1,
+			"van der": 1,
+			"van de": 1,
+			"van den": 1,
+			"de": 1,
+			"di": 1,
+			"la": 1,
+			"lo": 1,
+			"des": 1,
+			"le": 1,
+			"les": 1,
+			"du": 1,
+			"de la": 1,
+			"del": 1,
+			"de los": 1,
+			"de las": 1
+		},
+		"prefixes": [
+	        "doctor",
+	        "dr",
+	        "mr",
+	        "mrs",
+	        "ms",
+	        "mister",
+	        "madame",
+	        "madamoiselle",
+	        "miss",
+	        "monsieur",
+	        "señor",
+	        "señora",
+	        "señorita"
+		],
+		"suffixes": [
+	        ",",
+	        "junior",
+	        "jr",
+	        "senior",
+	        "sr",
+	        "i",
+	        "ii",
+	        "iii",
+	        "esq",
+	        "phd",
+	        "md"
+		],
+	    "patronymicName":[ ],
+	    "familyNames":[ ]
 	},
-	"format": "{prefix} {givenName} {middleName} {familyName}{suffix}",
-	"sortByHeadWord": false,
-	"nameStyle": "western",
-	"conjunctions": {
-		"and1": "and",
-		"and2": "and",
-		"or1": "or",
-		"or2": "or"
-	},
-	"auxillaries": {
-		"von": 1,
-		"von der": 1,
-		"von den": 1,
-		"van": 1,
-		"van der": 1,
-		"van de": 1,
-		"van den": 1,
-		"de": 1,
-		"di": 1,
-		"la": 1,
-		"lo": 1,
-		"des": 1,
-		"le": 1,
-		"les": 1,
-		"du": 1,
-		"de la": 1,
-		"del": 1,
-		"de los": 1,
-		"de las": 1
-	},
-	"prefixes": [
-        "doctor",
-        "dr",
-        "mr",
-        "mrs",
-        "ms",
-        "mister",
-        "madame",
-        "madamoiselle",
-        "miss",
-        "monsieur",
-        "señor",
-        "señora",
-        "señorita"
-	],
-	"suffixes": [
-        ",",
-        "junior",
-        "jr",
-        "senior",
-        "sr",
-        "i",
-        "ii",
-        "iii",
-        "esq",
-        "phd",
-        "md"
-	],
-    "patronymicName":[ ],
-    "familyNames":[ ]
+	"asian": {
+		"components": {
+			"short": "gf",
+			"medium": "gmf",
+			"long": "hgmf",
+			"full": "hgmf",
+			"formal_short": "hf",
+			"formal_long": "hgf"
+		},
+		"format": "{prefix}{familyName}{middleName}{givenName}{suffix}",
+		"nameStyle": "asian",
+		"sortByHeadWord": false,
+		"conjunctions": {},
+		"auxillaries": {},
+		"prefixes": [],
+		"suffixes": [],
+	    "patronymicName":[],
+	    "familyNames":[]
+	}
 };
 
 /**
@@ -418,10 +439,10 @@ Name.prototype = {
             }
 
             this.isAsianName = Name._isAsianName(name, currentLanguage);
-            if (this.info.nameStyle === "asian" || this.info.order === "fmg" || this.info.order === "fgm") {
-                info = this.isAsianName ? this.info : ilib.data.name;
+            if (this.info.nameStyle === "asian") {
+                info = this.isAsianName ? this.info : Name.defaultInfo.western;
             } else {
-                info = this.isAsianName ? ilib.data.name : this.info;
+                info = this.isAsianName ? Name.defaultInfo.asian : this.info;
             }
 
             if (this.isAsianName) {
@@ -990,7 +1011,7 @@ Name.prototype = {
                     if (conjunctionIndex + 2 < parts.length - 1) {
                         this.middleName = parts.slice(conjunctionIndex + 2, parts.length - conjunctionIndex - 3);
                     }
-                } else if (this.order == "fgm") {
+                } else if (this.info.order == "fgm") {
                     this.familyName = parts.slice(0, conjunctionIndex + 2);
                     if (conjunctionIndex + 1 < parts.length - 1) {
                         this.middleName = parts.splice(parts.length - 1, 1);
@@ -999,11 +1020,13 @@ Name.prototype = {
                         }
                     }
                 }
+            } else if (this.info.order === "fgm") {
+                this.givenName = parts[1];
+                this.middleName = parts.slice(2);
+                this.familyName = parts[0];
             } else {
                 this.givenName = parts[0];
-
                 this.middleName = parts.slice(1, parts.length - 1);
-
                 this.familyName = parts[parts.length - 1];
             }
         }

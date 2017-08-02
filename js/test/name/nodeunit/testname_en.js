@@ -351,7 +351,40 @@ module.exports.testname_en = {
         test.contains(parsed, expected);
         test.done();
     },
-    
+
+    testENHKNormal: function(test) {
+        test.expect(2);
+        var parsed = new Name("Chan Ho Yun", {locale: 'en-HK'});
+        test.ok(typeof(parsed) !== "undefined");
+        
+        // name in English in Hong Kong are written with Asian order, much like Hungarian
+        var expected = {
+            givenName: "Ho",
+            middleName: "Yun",
+            familyName: "Chan"
+        };
+        
+        test.contains(parsed, expected);
+        test.done();
+    },
+
+    testENHKWithPrefix: function(test) {
+        test.expect(2);
+        var parsed = new Name("Dr Chan Ho Yun", {locale: 'en-HK'});
+        test.ok(typeof(parsed) !== "undefined");
+        
+        // name in English in Hong Kong are written with Asian order, much like Hungarian
+        var expected = {
+        	prefix: "Dr",
+            givenName: "Ho",
+            middleName: "Yun",
+            familyName: "Chan"
+        };
+        
+        test.contains(parsed, expected);
+        test.done();
+    },
+
     /*
      * Format tests
      */
@@ -623,6 +656,66 @@ module.exports.testname_en = {
         
         test.equal(formatted, expected);
         test.done();
+    },
+
+    testENHKRegular: function(test) {
+        test.expect(2);
+        var name = new Name({
+            honorific: "Dr",
+            givenName: "Min Kee",
+            middleName: "John",
+            familyName: "Fan",
+            suffix: null
+        });
+        
+        var fmt = new NameFmt({style: "short", locale: 'en-HK'});
+        var formatted = fmt.format(name);
+        test.ok(typeof(formatted) !== "undefined");
+        
+        // English names in Hong Kong are formatted with family name first, much like Hungarian
+        var expected = "Fan Min Kee";
+        
+        test.equal(formatted, expected);
+        test.done();
+    },
+
+    testENHKFormatFormalShort: function(test) {
+        test.expect(2);
+        var name = new Name({
+            honorific: "Dr",
+            givenName: "Min Kee",
+            middleName: "John",
+            familyName: "Fan",
+            suffix: null
+        });
+        
+        var fmt = new NameFmt({style: "formal_short", locale: 'en-HK'});
+        var formatted = fmt.format(name);
+        test.ok(typeof(formatted) !== "undefined");
+        
+        var expected = "Dr Fan";
+        
+        test.equal(formatted, expected);
+        test.done();
+    },
+
+    testENHKFormatFormalLong: function(test) {
+        test.expect(2);
+        var name = new Name({
+            honorific: "Dr",
+            givenName: "Min Kee",
+            middleName: "John",
+            familyName: "Fan",
+            suffix: null
+        });
+        
+        var fmt = new NameFmt({style: "formal_long", locale: 'en-HK'});
+        var formatted = fmt.format(name);
+        test.ok(typeof(formatted) !== "undefined");
+        
+        var expected = "Dr Fan Min Kee";
+        
+        test.equal(formatted, expected);
+        test.done();
     }
-    
 };
