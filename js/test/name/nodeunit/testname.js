@@ -291,7 +291,7 @@ module.exports.testname = {
     
     testNameZHMarriedName: function(test) {
         test.expect(2);
-        var name = new Name("王杨凭平", {locale: "zh-CN"});
+        var name = new Name("王杨凭平", {locale: "zh-CN", compoundFamilyName: true});
         test.ok(typeof(name) !== "undefined");
         
         test.contains(name, { givenName: "凭平", familyName: "王杨" });

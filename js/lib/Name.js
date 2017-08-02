@@ -70,6 +70,10 @@ var isSpace = require("./isSpace.js");
  * default order for the locale. Valid values are "gf" (given-family) or "fg" (family-given).
  * <li><i>useSpaces</i> - explicitly specifies whether to use spaces or not between the given name , middle name
  * and family name.
+ * <li><i>compoundFamilyName</i> - for Asian and some other types of names, search for compound
+ * family names. If this parameter is not specified, the default is to use the setting that is
+ * most common for the locale. If it is specified, the locale default is 
+ * overridden with this flag.
  * <li>onLoad - a callback function to call when the name info is fully
  * loaded and the name has been parsed. When the onLoad option is given, the name object
  * will attempt to load any missing locale data using the ilib loader callback.
@@ -149,6 +153,10 @@ var Name = function (name, options) {
 
         if (typeof (options.loadParams) !== 'undefined') {
             this.loadParams = options.loadParams;
+        }
+        
+        if (typeof(options.compoundFamilyName) !== 'undefined') {
+        	this.singleFamilyName = !options.compoundFamilyName; 
         }
     }
 
@@ -725,7 +733,7 @@ Name.prototype = {
      * @protected
      */
     _parseAsianName: function (parts, language) {
-        var familyNameArray = this._findPrefix(parts, this.info.knownFamilyNames, true, this.info.noCompoundFamilyNames);
+        var familyNameArray = this._findPrefix(parts, this.info.knownFamilyNames, true, typeof(this.singleFamilyName) !== 'undefined' ? this.singleFamilyName : this.info.noCompoundFamilyNames);
         var tempFullName = parts.join('');
 
         if (familyNameArray && familyNameArray.length > 0) {

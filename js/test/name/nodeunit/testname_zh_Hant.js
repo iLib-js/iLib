@@ -35,11 +35,11 @@ module.exports.testname_zh_Hant = {
 
     testParseSimpleName_zh_Hant: function(test) {
         test.expect(2);
-        var parsed = new Name("仇鬆鴉", {locale: 'zh-Hant-TW'});
+        var parsed = new Name("仇潔雲", {locale: 'zh-Hant-TW'});
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {
-            givenName: "鬆鴉",
+            givenName: "潔雲",
             familyName: "仇"
         };
         
@@ -63,12 +63,12 @@ module.exports.testname_zh_Hant = {
     
     testParseTwoPlusOne_zh_Hant: function(test) {
         test.expect(2);
-        var parsed = new Name("褚师迪", {locale: 'zh-Hant-TW'});
+        var parsed = new Name("褚師迪", {locale: 'zh-Hant-TW'});
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {
             givenName: "迪",
-            familyName: "褚师"
+            familyName: "褚師"
         };
         
         test.contains(parsed, expected);
@@ -77,12 +77,12 @@ module.exports.testname_zh_Hant = {
     
     testParseTwoPlusTwo_zh_Hant: function(test) {
         test.expect(2);
-        var parsed = new Name("褚师鬆鴉", {locale: 'zh-Hant-TW'});
+        var parsed = new Name("申屠凱瑩", {locale: 'zh-Hant-TW'});
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {
-            givenName: "鬆鴉",
-            familyName: "褚师"
+            givenName: "凱瑩",
+            familyName: "申屠"
         };
         
         test.contains(parsed, expected);
@@ -91,7 +91,7 @@ module.exports.testname_zh_Hant = {
     
     testParseMaidenPlusMarriedName_zh_Hant: function(test) {
         test.expect(2);
-        var parsed = new Name("錢林慧君", {locale: 'zh-Hant-TW'});
+        var parsed = new Name("錢林慧君", {locale: 'zh-Hant-TW', compoundFamilyName: true});
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {
@@ -176,7 +176,7 @@ module.exports.testname_zh_Hant = {
     
     testParseEverything_zh_Hant: function(test) {
         test.expect(2);
-        var parsed = new Name("老錢林慧君外公", {locale: 'zh-Hant-TW'});
+        var parsed = new Name("老錢林慧君外公", {locale: 'zh-Hant-TW', compoundFamilyName: true});
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = {
@@ -675,6 +675,80 @@ module.exports.testname_zh_Hant = {
         
         test.contains(parsed, expected);
         test.done();
-    }
+    },
     
+    testParseDentistName_zh_Hant: function(test) {
+        test.expect(2);
+        var parsed = new Name("关小凤牙科醫生", {locale: 'zh-Hant-HK'});
+        test.ok(typeof(parsed) !== "undefined");
+        
+        var expected = {
+            givenName: "小凤",
+            familyName: "关",
+            suffix: "牙科醫生"
+        };
+        
+        test.contains(parsed, expected);
+        test.done();
+    },
+    
+    testParseDentalHygienistName_zh_Hant: function(test) {
+        test.expect(2);
+        var parsed = new Name("关小凤牙齒衛生員", {locale: 'zh-Hant-HK'});
+        test.ok(typeof(parsed) !== "undefined");
+        
+        var expected = {
+            givenName: "小凤",
+            familyName: "关",
+            suffix: "牙齒衛生員"
+        };
+        
+        test.contains(parsed, expected);
+        test.done();
+    },
+    
+    testParseHongKongName_zh_Hant_HK1: function(test) {
+        test.expect(2);
+        var parsed = new Name("温小凤", {locale: 'zh-Hant-HK'});
+        test.ok(typeof(parsed) !== "undefined");
+        
+        // 温 is different than the Taiwanese traditional char for
+        // the family name Wen which is 溫
+        var expected = {
+            givenName: "小凤",
+            familyName: "温"
+        };
+        
+        test.contains(parsed, expected);
+        test.done();
+    },
+    
+    testParseHongKongName_zh_Hant_HK2: function(test) {
+        test.expect(2);
+        var parsed = new Name("區小凤", {locale: 'zh-Hant-HK'});
+        test.ok(typeof(parsed) !== "undefined");
+        
+        var expected = {
+            givenName: "小凤",
+            familyName: "區"
+        };
+        
+        test.contains(parsed, expected);
+        test.done();
+    },
+
+    testParseHongKongName_zh_Hant_HK3: function(test) {
+        test.expect(2);
+        var parsed = new Name("趙文權", {locale: 'zh-Hant-HK'});
+        test.ok(typeof(parsed) !== "undefined");
+        
+        var expected = {
+            givenName: "文權",
+            familyName: "趙"
+        };
+        
+        test.contains(parsed, expected);
+        test.done();
+    }
+
 };

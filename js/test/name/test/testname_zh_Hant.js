@@ -68,7 +68,7 @@ function testParseTwoPlusTwo_zh_Hant() {
 };
 
 function testParseMaidenPlusMarriedName_zh_Hant() {
-	var parsed = new Name("錢林慧君", {locale: 'zh-Hant-TW'});
+	var parsed = new Name("錢林慧君", {locale: 'zh-Hant-TW', compoundFamilyName: true});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -141,7 +141,7 @@ function testParseTitleSuffix_zh_Hant() {
 };
 
 function testParseEverything_zh_Hant() {
-	var parsed = new Name("老錢林慧君外公", {locale: 'zh-Hant-TW'});
+	var parsed = new Name("老錢林慧君外公", {locale: 'zh-Hant-TW', compoundFamilyName: true});
 	assertNotUndefined(parsed);
 	
 	var expected = {

@@ -28,6 +28,7 @@ Bug Fixes:
 
 * Fixed a bug where using the letter "s" in a date format template (instead of "ss") resulted in minutes being formatted instead of seconds
 * Fixed a bug where calling ResBundle.getString() with an undefined parameter resulted in an exception. Now it just returns undefined itself.
+* The list of honorific suffixes for both Chinese Simplified and Traditional was missing "Dentist" and "Dental Hygienist" which are now added.
 
 
 Release Notes for Version 12.0
