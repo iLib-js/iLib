@@ -2,7 +2,7 @@
  * genlikelyloc.js - ilib tool to generate the likelylocales.json files from 
  * the CLDR data files
  * 
- * Copyright © 2013 - 2015, JEDLSoft
+ * Copyright © 2013-2017, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -23,13 +23,12 @@
  */
 
 var fs = require('fs');
-var util = require('util');
 var common = require('./common');
 var Locale = common.Locale;
 
 function usage() {
-	util.print("Usage: genlikelyloc [-h] CLDR_json_dir locale_data_dir\n" +
-			"Generate likely locale information file.\n\n" +
+	console.log("Usage: genlikelyloc [-h] CLDR_json_dir locale_data_dir\n" +
+			"Generate likely locale information file.\n" +
 			"-h or --help\n" +
 			"  this help\n" +
 			"CLDR_json_dir\n" +
@@ -49,59 +48,58 @@ process.argv.forEach(function (val, index, array) {
 });
 
 if (process.argv.length < 4) {
-	util.error('Error: not enough arguments');
+	console.error('Error: not enough arguments');
 	usage();
 }
 
-cldrDirName = process.argv[2];
+cldrDirName = process.argv[2] +"cldr-core";
 localeDirName = process.argv[3];
 
-util.print("gendatefmts - generate date formats information files.\n" +
-		"Copyright (c) 2013-2015 JEDLSoft\n");
+console.log("gendatefmts - generate date formats information files.\n" +
+		"Copyright (c) 2013-2017 JEDLSoft");
 
-util.print("CLDR dir: " + cldrDirName + "\n");
-util.print("locale dir: " + localeDirName + "\n");
+console.log("CLDR dir: " + cldrDirName);
+console.log("locale dir: " + localeDirName);
 
-fs.exists(cldrDirName, function (exists) {
-	if (!exists) {
-		util.error("Could not access CLDR dir " + cldrDirName);
-		usage();
-	}
-});
+if (!fs.existsSync(cldrDirName)) {
+	console.error("Could not access CLDR dir " + cldrDirName);
+	usage();
+}
 
-fs.exists(localeDirName, function (exists) {
-	if (!exists) {
-		util.error("Could not access locale data directory " + localeDirName);
-		usage();
-	}
-});
+if (!fs.existsSync(localeDirName)) {
+	console.error("Could not access locale data directory " + localeDirName);
+	usage();
+}
 
-var likelySubtags, filename, json;
+var likelySubtags, likelySubtagsData, filename, json;
 
-util.print("Reading supplemental/likelySubtags.json\n");
+
 
 try {
 	filename = cldrDirName + "/supplemental/likelySubtags.json";
+	console.log("Reading " + filename);
 	json = fs.readFileSync(filename, "utf-8");
 	likelySubtags = JSON.parse(json);
 } catch (e) {
-	util.print("Error: Could not load file " + filename + "\n");
+	console.log("Error: Could not load file " + filename);
 	process.exist(2);
 }
 
 var likelylocales = {};
-var likeySubtagsList = likelySubtags.supplemental.likelySubtags;
+likelySubtagsData = likelySubtags.supplemental;
 
-for (var partial in likeySubtagsList) {
-	if (partial && likeySubtagsList[partial]
-		 && partial.search(/[0-9]/) === -1) { // eleminate locale style with number (i.e und-002, und-005 etc. )
-		var partloc = new Locale(partial.replace(/^und-/g, ""));
-		var full = new Locale(likeySubtagsList[partial]);
+for (var partial in likelySubtagsData.likelySubtags) {
+	if (partial.search(/[0-9]/g) == -1) {
+		if (partial && likelySubtagsData.likelySubtags[partial]) {
+		var partloc = new Locale(partial.replace(/und-/g, ""));
+		var full = new Locale(likelySubtagsData.likelySubtags[partial]);
 		likelylocales[partloc.getSpec()] = full.getSpec(); 
+		}
 	}
 }
 
-util.print("Writing likelylocales.json...\n");
+console.log("Writing likelylocales.json...");
+
 // now write out the system resources
 
 var filename = localeDirName + "/likelylocales.json";
@@ -112,4 +110,4 @@ fs.writeFile(filename, JSON.stringify(likelylocales, true, 4), function (err) {
 	}
 });
 
-util.print("Done.\n");
+console.log("Done.");

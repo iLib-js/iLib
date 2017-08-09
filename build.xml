@@ -63,7 +63,7 @@ limitations under the License.
 		<delete dir="${build.export}"/>
 	</target>
 
-	<target name="dist" description="Build the distribution package.">
+	<target name="dist" depends="all" description="Build the distribution package.">
 		<mkdir dir="${build.dist}" description="Dir to contain all the distribution outputs"/>
 		<iterate target="export"/>
 		<zip destfile="${build.dist}/ilib-${version}.zip"

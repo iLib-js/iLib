@@ -17,7 +17,7 @@
  * limitations under the License.
  */
 
-var ilib = require("./../lib/ilib.js");
+var ilib = require("./../lib/ilib-node.js");
 var Locale = require("./../lib/Locale.js");
 
 function testLocaleConstructor() {
@@ -552,11 +552,8 @@ function testLocaleGetAvailableLocalesDefault() {
 }
 
 function testLocaleGetAvailableLocalesCallback() {
-	var callbackcalled = false;
 	Locale.getAvailableLocales(true, function(locales) {
-		callbackcalled = true;
 		assertNotUndefined(locales);
 		assertTrue(locales.length > 0);
 	});
-	assertTrue(callbackcalled);
 }

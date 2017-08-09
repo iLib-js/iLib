@@ -3,7 +3,7 @@
 iLib
 ==== 
 
-iLib is an internationalization library written in pure ES4 Javascript. It does not require any other libraries to function,
+iLib is an internationalization library written in pure ES5 Javascript. It does not require any other libraries to function,
 and can run equally well in various older and newer browsers, on various OS's (including mobile), nodejs, webOS, Qt/QML, 
 RingoJS, React/Enact, or rhino.
 
@@ -119,7 +119,7 @@ rp install ilib
 ~~~~~
 
 ILib is also available on github at https://github.com/iLib-js/iLib
-or official iLib builds in tar balls at http://sourceforge.net/projects/i18nlib/files/
+or official iLib builds in tar balls at https://github.com/iLib-js/iLib/releases
 
 If you want to create your own version of ilib with a smaller set of classes than the big list above, you'll have to
 get the source and build it yourself. This will require that you install java 1.7 or later, plus ant and nodejs.
@@ -154,4 +154,5 @@ Please point your browser to the following places to get more documentation:
 
 - JSDocs: http://www.translationcircle.com/ilib/jsdoc/
 - Github: git clone git@github.com:iLib-js/iLib.git
-- Builds: http://sourceforge.net/projects/i18nlib/files/
+- Builds: https://github.com/iLib-js/iLib/releases
+- Wiki: https://github.com/iLib-js/iLib/wiki

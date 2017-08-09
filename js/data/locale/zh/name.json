@@ -1,6 +1,11 @@
 {
+	"components": {
+		"formal_short": "sf",
+		"formal_long": "sgf"
+	},
 	"format": "{prefix}{familyName}{middleName}{givenName}{suffix}",
 	"nameStyle": "asian",
+	"noCompoundFamilyNames": true,
 	"conjunctions": {
 		"and1": "与",
 		"and2": "与",
@@ -75,6 +80,8 @@
 	    "首席財務官",
 	    "首席技術官",
 	    "首席營運官",
+		"牙齿卫生员",
+		"牙科医生",
 		"总工程师",
 	    "總工程師",
 	    "高級督察",
@@ -642,6 +649,7 @@
 		"屈": "Qū2",
 		"璩": "Qú3",
 		"麴": "Qú4",
+		"区": "Qū",
 		"全": "Quán1",
 		"權": "Quán2",
 		"闕": "Quē",

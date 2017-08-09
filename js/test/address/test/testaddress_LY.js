@@ -80,7 +80,8 @@ function testParseAddressLYARSuperfluousWhitespace() {
 	assertEquals("LY", parsedAddress.countryCode);
 };
 //needs a precise regular expression to handle locality with and without spaces in no delimiter case
-/*function testParseAddressLYARNoDelimiters() {
+/*
+function testParseAddressLYARNoDelimiters() {
 	var parsedAddress = new Address("السيد محمد علي خليفة الغزالي ١٢  ٢ شارع الاستقلال طرابلس  ليبيا", {locale: 'ar-LY'});
 	
 	assertNotUndefined(parsedAddress);
@@ -90,7 +91,8 @@ function testParseAddressLYARSuperfluousWhitespace() {
 	assertUndefined(parsedAddress.postalCode);
 	assertEquals("ليبيا", parsedAddress.country);
 	assertEquals("LY", parsedAddress.countryCode);
-};*/
+};
+*/
 
 
 function testParseAddressLYARSpecialChars() {

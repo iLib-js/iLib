@@ -48,4 +48,5 @@ LocaleInfo.js
 DateRngFmt.js
 ScriptInfo.js
 CaseMapper.js
+ListFmt.js
 */

@@ -17,7 +17,7 @@
  * limitations under the License.
  */
 
-var ilib = require("../lib/ilib.js");
+var ilib = require("../lib/ilib-node.js");
 var ElementIterator = require("../lib/ElementIterator.js");
 var Collator = require("../lib/Collator.js");
 var CodePointSource = require("../lib/CodePointSource.js");
@@ -436,10 +436,14 @@ function testCollatorDefaultCase() {
 
 	assertNotUndefined(col);
 
-	// netscape and ie do not work properly
+
+	// netscape and ie do not work properly on some platforms
 	var browser = ilib._getBrowser();
-	if (browser === "firefox" || browser === "ie" || 
-	    browser === "Edge" || browser === "iOS") {
+	if ((browser === "firefox" && 
+			navigator && 
+			navigator.userAgent && 
+			navigator.userAgent.indexOf("Android")) || 
+	    browser === "ie" || browser === "Edge" || browser === "iOS") {
 		// should compare lower-case first within a base character
 		assertTrue("a < A", col.compare("a", "A") < 0);
 		assertTrue("b < B", col.compare("b", "B") < 0);
@@ -490,8 +494,11 @@ function testCollatorGetComparatorWorksWithCase() {
 
 	// netscape and ie do not work properly
 	var browser = ilib._getBrowser();
-	if (browser === "firefox" || browser === "ie" ||
-	    browser === "Edge" || browser === "iOS") {
+	if ((browser === "firefox" && 
+			navigator && 
+			navigator.userAgent && 
+			navigator.userAgent.indexOf("Android")) || 
+	    browser === "ie" || browser === "Edge" || browser === "iOS") {
 		// should compare lower-case first within a base character
 		assertTrue("a < A", func("a", "A") < 0);
 		assertTrue("b < B", func("b", "B") < 0);
@@ -580,14 +587,15 @@ function testCollatorGetComparatorWorksWithCaseJS() {
 
 
 function testCollatorGetSortKeyNative() {
-	if (typeof(Intl) !== 'undefined' && Intl) {
-		var col = new Collator();
-
-		assertNotUndefined(col);
-
-		// no sort key available when using native...
-		assertEquals("string", col.sortKey("string"));
+	if (typeof(Intl) === 'undefined' && Intl) {
+	    return;
 	}
+	var col = new Collator();
+
+	assertNotUndefined(col);
+
+	// no sort key available when using native...
+	assertEquals("string", col.sortKey("string"));
 }
 
 function testCollatorGetSortKeySimpleUpper() {
@@ -775,70 +783,75 @@ function testCollatorGetAvailableStyles() {
 
 function testCollatorDefaultExtendedChars() {
 	// only test on platforms that support the new Intl class natively
-	if (typeof(Intl) !== 'undefined') {
-		var col = new Collator();
-
-		assertNotUndefined(col);
-
-		// should compare in English
-		assertTrue("e < ë", col.compare("e", "ë") < 0);
-		assertTrue("o < ø", col.compare("o", "ø") < 0);
+	if (typeof(Intl) === 'undefined') {
+	    return;
 	}
+	var col = new Collator();
+
+	assertNotUndefined(col);
+
+	// should compare in English
+	assertTrue("e < ë", col.compare("e", "ë") < 0);
+	assertTrue("o < ø", col.compare("o", "ø") < 0);
 }
 
 function testCollatorPrimaryExtendedChars() {
 	// only test on platforms that support the new Intl class natively
-	if (typeof(Intl) !== 'undefined') {
-		var col = new Collator({
-			sensitivity: "primary",
-			usage: "search"
-		});
-
-		assertNotUndefined(col);
-
-		// should compare in English
-		assertEquals("e = ë", 0, col.compare("e", "ë"));
-		assertEquals("o = ø", 0, col.compare("o", "ø"));
+	if (typeof(Intl) === 'undefined') {
+	    return;
 	}
+	var col = new Collator({
+		sensitivity: "primary",
+		usage: "search"
+	});
+
+	assertNotUndefined(col);
+
+	// should compare in English
+	assertEquals("e = ë", 0, col.compare("e", "ë"));
+	assertEquals("o = ø", 0, col.compare("o", "ø"));
 }
 
 function testCollatorDefaultExtendedCharsJS() {
 	// only test on platforms that support the new Intl class natively
-	if (typeof(Intl) !== 'undefined') {
-		var col = new Collator({useNative: false});
-
-		assertNotUndefined(col);
-
-		// should compare in English
-		assertTrue("e < ë", col.compare("e", "ë") < 0);
-		assertTrue("o < ø", col.compare("o", "ø") < 0);
+	if (typeof(Intl) === 'undefined') {
+	    return;
 	}
+	var col = new Collator({useNative: false});
+
+	assertNotUndefined(col);
+
+	// should compare in English
+	assertTrue("e < ë", col.compare("e", "ë") < 0);
+	assertTrue("o < ø", col.compare("o", "ø") < 0);
 }
 
 function testCollatorPrimaryExtendedCharsJS() {
 	// only test on platforms that support the new Intl class natively
-	if (typeof(Intl) !== 'undefined') {
-		var col = new Collator({
-			sensitivity: "primary",
-			usage: "search",
-			useNative: false
-		});
-
-		assertNotUndefined(col);
-
-		// should compare in English
-		assertEquals("e = ë", 0, col.compare("e", "ë"));
-		assertEquals("o = ø", 0, col.compare("o", "ø"));
+	if (typeof(Intl) === 'undefined') {
+	    return;
 	}
+	var col = new Collator({
+		sensitivity: "primary",
+		usage: "search",
+		useNative: false
+	});
+
+	assertNotUndefined(col);
+
+	// should compare in English
+	assertEquals("e = ë", 0, col.compare("e", "ë"));
+	assertEquals("o = ø", 0, col.compare("o", "ø"));
 }
 
 function testCollatorNativeIsNative() {
 	// only test on platforms that support the new Intl class natively
-	if (typeof(Intl) !== 'undefined') {
-		var col = new Collator();
-		assertNotUndefined(col);
-		assertNotUndefined(col.collator);
+	if (typeof(Intl) === 'undefined') {
+	    return;
 	}
+	var col = new Collator();
+	assertNotUndefined(col);
+	assertNotUndefined(col.collator);
 }
 
 function testJSCollatorPrimaryEqual() {

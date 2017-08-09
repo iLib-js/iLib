@@ -1,5 +1,49 @@
+Release Notes for Version 13.0
+=============================
+
+Build 000
+-------
+
+New Features:
+
+* Updated most classes to use locale data from CLDR 30.
+  * Updated scripts in the tools/cldr dir to read the new data
+  * Unit tests updated as well
+* Added Country class to contain information about a particular country, especially translations of its name
+* Added support for travis-ci builds for the development and master branches in github.
+* Support for the legacy way of calling ilib through the ilib namespace was deprecated in ilib 11 & 12, and is now removed in ilib 13
+  * That means that code that is upgrading to ilib 13 for example should use DateFmt instead of ilib.DateFmt to get the date formatter class
+  * The ilib-stubs.js file is still there and can map from the old ilib namespace to the CommonJS style classes, but it is no longer being maintained
+  * All legacy unit tests have been removed as well
+* Added a new list formatter class, ListFmt
+  * Allows you to format an arbitrary length array of items as a list with proper grammar for the locale.
+* Added "honorific" field to the Name class
+  * This way, honorifics can be formatted as a prefix or a suffix depending on the customs of the locale
+* Added "formal_short" and "formal_long" formatting styles to the NameFmt class
+  * formal_short formats a name with an honorific and family name. eg. Mrs. Smith or Dr. Smith
+  * formal_long formats a name with the honorific, given, and family names. eg. Mrs. Jane Smith or Dr. Jane Smith
+* The NameFmt.format() method now accepts an object parameter with the name fields as well as a full Name instance
+* The DateRngFmt.format() method now accepts any date-like start and end parameters to make it easier to use, instead of only accepting ilib IDate parameters
+  * IDate - still supported, but must be in the same calendar as the formatter itself
+  * Date - javascript intrinsic dates
+  * number - a unixtime for the requested date
+  * string - a date string that is parseable by the javascript intrinsic Date class
+
+Bug Fixes:
+
+* Fixed a bug where using the letter "s" in a date format template (instead of "ss") resulted in minutes being formatted instead of seconds
+* Fixed a bug where calling ResBundle.getString() with an undefined parameter resulted in an exception. Now it just returns undefined itself.
+* The list of honorific suffixes for both Chinese Simplified and Traditional was missing "Dentist" and "Dental Hygienist" which are now added.
+
+
 Release Notes for Version 12.0
 =============================
+
+Build 004
+-------
+
+Build 3 was mispublished on npm, so the version was updated to 12.0.4 without any actual changes from 12.0.3.
+
 
 Build 003
 -------
@@ -7,6 +51,43 @@ Build 003
 New Features:
 
 * Updated the number formatting to the CLDR 26.0.1 settings. This means that various formats for various locales have been changed and updated to better match the actual usage in those regions.
+* Added support for new and updated Unicode ranges in CType.withinRange. 
+  * latin - Latin-1 supplement, Latin Extended-E
+  * cyrillic - Cyrillic Supplement
+  * arabic -Arabic Mathematical Alphabetic Symbols
+  * myanmar - Myanmar Extended-B
+  * sundanese - Sundanese, Sundanese Supplement
+  * combining - Combining Diacritical Marks Extended
+  * numbers - Number forms
+  * supersub - Superscripts and Subscripts
+  * arrows - Supplemental Arrows-C
+  * geometric - Geometric shapes extended
+  * copticnumber - coptic epact numbers
+  * oldpermic - old permic
+  * albanian - albanian
+  * lineara - linear a
+  * meroitic - meroitic cursive
+  * oldnortharabian - old north arabian
+  * oldhungarian - Supplementary private use area-A
+  * sorasompeng - sora sompeng
+  * warangciti - warang citi
+  * paucinhau - pau cin hau
+  * bassavah - bassa vah
+  * pahawhhmong - pahawh hmong
+  * shorthandformat - shorthand format controls
+  * suttonsignwriting - sutton signwriting
+  * pictographs - miscellaneous symbols and pictographs, supplemental symbols and pictographs
+  * ornamentaldingbats - ornamental dingbats
+* For the DateFmt class, you can now pass ICU style skeletons in this option similar to the ones you get from <a href="http://icu-project.org/apiref/icu4c432/classDateTimePatternGenerator.html#aa30c251609c1eea5ad60c95fc497251e">DateTimePatternGenerator.getSkeleton()</a>. (Ex: "MMMMy")
+  * It will not extract the length from the skeleton so you still need to pass the length property, but it will extract the date components.
+* Plural formatting rules have been updated to CLDR 26
+* In the ResBundle class, add the "c" type of strings for strings extracted from the C programming language. This automatically 
+recognizes and skips the percent printf style replacement parameters when pseudo-localizing and in other situations. 
+(eg. "There are %d objects.") 
+
+Bug Fixes:
+
+* When formatting duration ranges in right-to-left languages like Arabic or Hebrew, the code now automatically inserts the Unicode right-to-left mark before the format so that formatted durations appear right-aligned in web browsers, no matter which characters appear the beginning of the string. Without it, strings that start with ASCII characters will appear left-aligned and strings that start with RTL characters will appear right-aligned, regardless of the other characters in the string. 
 
 Build 002
 -------

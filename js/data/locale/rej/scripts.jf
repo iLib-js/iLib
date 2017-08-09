@@ -1,5 +1,6 @@
 {
     "scripts": [
+        "Latn",
         "Rjng"
     ],
     "generated": true

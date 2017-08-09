@@ -68,7 +68,7 @@ function testParseTwoPlusTwo_zh_Hans() {
 };
 
 function testParseMaidenPlusMarriedName_zh_Hans() {
-	var parsed = new Name("錢林慧君", {locale: 'zh-Hans-CN'});
+	var parsed = new Name("錢林慧君", {locale: 'zh-Hans-CN', compoundFamilyName: true});
 	assertNotUndefined(parsed);
 	
 	var expected = {
@@ -141,7 +141,7 @@ function testParseTitleSuffix_zh_Hans() {
 };
 
 function testParseEverything_zh_Hans() {
-	var parsed = new Name("老錢林慧君外公", {locale: 'zh-Hans-CN'});
+	var parsed = new Name("老錢林慧君外公", {locale: 'zh-Hans-CN', compoundFamilyName: true});
 	assertNotUndefined(parsed);
 	
 	var expected = {

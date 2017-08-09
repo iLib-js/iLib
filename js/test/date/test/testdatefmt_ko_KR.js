@@ -778,7 +778,7 @@ function testDateFmtShortTimeComponentsS_ko_KR() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("45", fmt.format(date));
+    assertEquals("37", fmt.format(date));
 }
 
 function testDateFmtShortTimeComponentsM_ko_KR() {
@@ -1003,7 +1003,7 @@ function testDateFmtFullTimeComponentsS_ko_KR() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("45", fmt.format(date));
+    assertEquals("37", fmt.format(date));
 }
 
 function testDateFmtFullTimeComponentsM_ko_KR() {

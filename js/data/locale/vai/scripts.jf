@@ -1,7 +1,7 @@
 {
     "scripts": [
-        "Vaii",
-        "Latn"
+        "Latn",
+        "Vaii"
     ],
     "generated": true
 }

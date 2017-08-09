@@ -1,7 +1,7 @@
 /*
  * genscripts.js - ilib tool to generate the json data about ISO 15924 scripts
  *
- * Copyright © 2013, JEDLSoft
+ * Copyright © 2013 - 2017, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,15 +20,14 @@
  * This code is intended to be run under node.js
  */
 var fs = require('fs');
-var util = require('util');
 var unifile = require('./unifile.js');
 var common = require('./common.js');
 var UnicodeFile = unifile.UnicodeFile;
 var coelesce = common.coelesce;
 
 function usage() {
-	util.print("Usage: genlangscripts [-h] CLDR_dir [toDir]\n" +
-		"Generate the script.jf files for each language.\n\n" +
+	console.log("Usage: genlangscripts [-h] CLDR_dir [toDir]\n" +
+		"Generate the script.jf files for each language.\n" +
 		"-h or --help\n" +
 		"  this help\n" +
 		"CLDR_dir\n" +
@@ -48,58 +47,73 @@ process.argv.forEach(function (val, index, array) {
 });
 
 if (process.argv.length < 3) {
-	util.error('Error: not enough arguments');
+	console.error('Error: not enough arguments');
 	usage();
 }
 
-cldrDir = process.argv[2];
+cldrDir = process.argv[2] + "cldr-core";
 if (process.argv.length > 3) {
 	toDir = process.argv[3];
 }
 
-util.print("genlangscripts - generate the localeinfo script.jf files.\n" +
-	"Copyright (c) 2013 JEDLSoft\n");
+console.log("genlangscripts - generate the localeinfo script.jf files.\n" +
+	"Copyright (c) 2013 - 2017 JEDLSoft\n");
 
-util.print("CLDR dir: " + cldrDir + "\n");
-util.print("output dir: " + toDir + "\n");
+console.log("CLDR dir: " + cldrDir);
+console.log("output dir: " + toDir);
 
-languageDataFileName = cldrDir + "/supplemental/supplementalData.json";
+languageDataFileName = cldrDir + "/supplemental/languageData.json";
 
-fs.exists(languageDataFileName, function (exists) {
-	if (!exists) {
-		util.error("Could not access file " + languageDataFileName);
-		usage();
-	}
-});
-
-fs.exists(toDir, function (exists) {
-	if (!exists) {
-		util.error("Could not access target directory " + toDir);
-		usage();
-	}
-});
+if (!fs.existsSync(languageDataFileName)) {
+	console.error("Could not access CLDR dir " + languageDataFileName);
+	usage();
+}
+if (!fs.existsSync(toDir)) {
+	console.error("Could not access locale data directory " + toDir);
+	usage();
+}
 
 var languageDataString = fs.readFileSync(languageDataFileName, "utf-8");
 var supplementalData = JSON.parse(languageDataString);
 
 var scripts = {};
 var scripts_name = {};
-var languageData = supplementalData.languageData;
+var languageData = supplementalData.supplemental.languageData;
+
+function anyProperties(data) {
+	var count = 0;
+	for (var prop in data) {
+		if (prop && data[prop]) {
+			count++;
+		}
+		if (count >= 1) {
+			return true;
+		}
+	}
+	return false;
+}
 
 for (var locale in languageData) {
 	if (locale && languageData[locale]) {
-		if (typeof (languageData[locale]["@scripts"]) === 'string') {
+		if (typeof (languageData[locale]["_scripts"]) === 'object') {
 			var language = (locale.length <= 3) ? locale : locale.split(/-/)[0];
 			if (typeof (scripts[language]) === 'undefined') {
 				scripts[language] = [];
 			}
-			var newLangs = languageData[locale]["@scripts"].split(/ /g);
+			var newLangs = languageData[locale]["_scripts"];
+
 			if (locale.length <= 3) {
 				console.log("language " + language + " prepending " + JSON.stringify(newLangs));
-				scripts[language] = newLangs.concat(scripts[language]);
+				scripts[language] = newLangs;
 			} else {
 				console.log("language " + language + " appending " + JSON.stringify(newLangs));
-				scripts[language] = scripts[language].concat(newLangs);
+				if (anyProperties(scripts[language])) {
+					for (i=0; i < newLangs.length; i++) {
+						scripts[language].push(newLangs[i]);
+					}
+				} else {
+					scripts[language] = newLangs;
+				}
 			}
 		}
 	}

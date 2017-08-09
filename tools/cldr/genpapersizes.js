@@ -1,7 +1,7 @@
 /*
  * genpapersizes.js - ilib tool to generate the json data about paper sizes
  *
- * Copyright © 2013 - 2015, JEDLSoft
+ * Copyright © 2013 - 2017, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,7 +20,6 @@
  * This code is intended to be run under node.js
  */
 var fs = require('fs');
-var util = require('util');
 var unifile = require('./unifile.js');
 var common = require('./common.js');
 var UnicodeFile = unifile.UnicodeFile;
@@ -28,8 +27,8 @@ var coelesce = common.coelesce;
 var mkdirs = common.makeDirs;
 
 function usage() {
-	util.print("Usage: genpapersize [-h] CLDR_dir [toDir]\n" +
-		"Generate the papersizes.jf files for each locale.\n\n" +
+	console.log("Usage: genpapersize [-h] CLDR_dir [toDir]\n" +
+		"Generate the papersizes.jf files for each locale.\n" +
 		"-h or --help\n" +
 		"  this help\n" +
 		"CLDR_dir\n" +
@@ -49,28 +48,28 @@ process.argv.forEach(function (val, index, array) {
 });
 
 if (process.argv.length < 3) {
-	util.error('Error: not enough arguments');
+	console.error('Error: not enough arguments');
 	usage();
 }
 
-cldrDirName = process.argv[2];
+cldrDirName = process.argv[2]+"cldr-core";
 if (process.argv.length > 3) {
 	toDir = process.argv[3];
 }
 
-util.print("genpapersizes - generate the localeinfo papersize.jf files.\n" +
-	"Copyright (c) 2013-2015 JEDLSoft\n");
+console.log("genpapersizes - generate the localeinfo papersize.jf files.\n" +
+	"Copyright (c) 2013-2017 JEDLSoft");
 
-util.print("CLDR dir: " + cldrDirName + "\n");
-util.print("output dir: " + toDir + "\n");
+console.log("CLDR dir: " + cldrDirName);
+console.log("output dir: " + toDir);
 
 if (!fs.existsSync(cldrDirName)) {
-	util.error("Could not access CLDR dir " + cldrDirName);
+	console.error("Could not access CLDR dir " + cldrDirName);
 	usage();
 }
 
 if (!fs.existsSync(toDir)) {
-	util.error("Could not access target directory " + toDir);
+	console.error("Could not access target directory " + toDir);
 	usage();
 }
 
@@ -81,7 +80,7 @@ try {
 
 	measurementData = suppData.supplemental.measurementData;
 } catch (e) {
-	util.print("Error: Could not load file " + filename + "\n");
+	console.log("Error: Could not load file " + filename);
 	process.exit(2);
 }
 
@@ -95,12 +94,12 @@ for (var territories in paperSizeData) {
 		directory, filename;
 	if (paperSizeData[territories] === "US-Letter") {
 		filename = toDir + 'und/' + territories;
-		//util.print(filename + "\n");
+		//console.log(filename + "\n");
 		paperSizes["regular"] = "8x11";
 
 		if (!fs.existsSync(filename)) {
 			mkdirs(filename);
-			//util.print(territories + "\n");
+			//console.log(territories + "\n");
 		}
 		papersize["paperSizes"] = paperSizes;
 		papersize.generated = true;
@@ -112,7 +111,7 @@ for (var territories in paperSizeData) {
 			throw err;
 			}
 		});
-		util.print(filename + "/papersizes.jf\n");
+		console.log(filename + "/papersizes.jf");
 	}
 	else {
 		// deal with "001": "A4". - code 001 indicates World.
@@ -130,6 +129,6 @@ for (var territories in paperSizeData) {
 			throw err;
 			}
 		});
-		util.print(filename + "papersizes.jf\n");
+		console.log(filename + "papersizes.jf");
 	}
 }

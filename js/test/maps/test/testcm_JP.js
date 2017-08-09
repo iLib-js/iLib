@@ -64,18 +64,6 @@ var aliasesJP = {
 	]
 };
 
-function testCharmapJPTestAliases() {
-	for (var charset in aliasesJP) {
-		for (var i = 0; i < aliasesJP[charset].length; i++) {
-			var cs = new Charset({
-				name: aliasesJP[charset][i]
-			});
-		    assertNotUndefined(cs);
-		    assertEquals(charset, cs.getName());
-		}
-	}
-}
-
 var testDataJP = {
 	"EUC-JP": {
 	    "This is a test": [
@@ -415,6 +403,18 @@ var testDataJP = {
 		]
 	} */
 };
+
+function testCharmapJPTestAliases() {
+    for (var charset in aliasesJP) {
+        for (var i = 0; i < aliasesJP[charset].length; i++) {
+            var cs = new Charset({
+                name: aliasesJP[charset][i]
+            });
+            assertNotUndefined(cs);
+            assertEquals(charset, cs.getName());
+        }
+    }
+}
 
 function testCharmapJPMapToUnicode() {
 	for (var charset in testDataJP) {
