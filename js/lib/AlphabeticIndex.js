@@ -114,7 +114,7 @@ var Collator = require("./Collator.js");
  * <li><i>sync</i> - tell whether to load any missing locale data synchronously or 
  * asynchronously. If this option is given as "false", then the "onLoad"
  * callback must be given, as the instance returned from this constructor will
- * not be usable for a while. 
+ * not be usable for a while.
  *
  * <li><i>loadParams</i> - an object containing parameters to pass to the 
  * loader callback function when locale data is missing. The parameters are not
