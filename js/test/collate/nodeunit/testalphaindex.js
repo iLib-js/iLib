@@ -1,6 +1,6 @@
 /*
  * testalphaindex.js - test the Alphabetic Index class
- * 
+ *
  * Copyright © 2017, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -33,65 +33,134 @@ module.exports.testalphaindex = {
         testAlphaIndexConstructor: function(test) {
             test.expect(1);
             var ai = new AlphabeticIndex();
-        
+
             test.ok(ai);
-            
+
             test.done();
         },
-        
+
         testAlphaIndexConstructorWithParams: function(test) {
             test.expect(1);
             var ai = new AlphabeticIndex({
                 locale: "de-DE",
                 caseSensitive: false
             });
-        
+
             assert.ok(ai);
-            
+
             test.done();
         },
-        
-        testAlphaIndexENUSAddElementRightBucket: function(test) {
+
+        testAlphaIndexENUSGetBucketBaseLetter: function(test) {
             test.expect(2);
-            
+
             var ai = new AlphabeticIndex({
                 locale: "en-US"
             });
-        
+
+            test.ok(ai);
+
+            test.equal("A", ai.getBucket("abacus"));
+
+            test.done();
+        },
+
+        testAlphaIndexENUSGetBucketCaseInsensitive: function(test) {
+            test.expect(3);
+
+            var ai = new AlphabeticIndex({
+                locale: "en-US"
+            });
+
+            test.ok(ai);
+
+            test.equal("B", ai.getBucket("belarus"));
+            test.equal("B", ai.getBucket("Belarus");
+
+            test.done();
+        },
+
+        testAlphaIndexENUSGetBucketAccentInsensitive: function(test) {
+            test.expect(3);
+
+            var ai = new AlphabeticIndex({
+                locale: "en-US"
+            });
+
+            test.ok(ai);
+
+            test.equal("E", ai.getBucket("Élan"));
+            test.equal("E", ai.getBucket("ëieasdf");
+
+            test.done();
+        },
+
+        testAlphaIndexENUSAddElementRightBucket: function(test) {
+            test.expect(2);
+
+            var ai = new AlphabeticIndex({
+                locale: "en-US"
+            });
+
             test.ok(ai);
 
             test.equal("A", ai.addElement("abacus"));
-            
+
             test.done();
         },
-        
-        testAlphaIndexENUSAddElementRightBucketCaseInsensitive: function(test) {
-            test.expect(3);
-        
+
+        testAlphaIndexENUSAddElementActuallyAdded: function(test) {
+            test.expect(6);
+
             var ai = new AlphabeticIndex({
                 locale: "en-US"
             });
-        
+
+            test.ok(ai);
+
+            test.equal("A", ai.addElement("abacus"));
+
+            var buckets = ai.getAllBuckets();
+
+            test.ok(buckets);
+            test.ok(buckets.A);
+
+            var a = buckets.A;
+
+            test.equal(a.length, 1);
+
+            test.equal(a[0], "abacus");
+
+            test.done();
+        },
+
+        testAlphaIndexENUSAddElementRightBucketCaseInsensitive: function(test) {
+            test.expect(3);
+
+            var ai = new AlphabeticIndex({
+                locale: "en-US"
+            });
+
             test.ok(ai);
 
             test.equal("B", ai.addElement("belarus"));
             test.equal("B", ai.addElement("Belarus");
-            
+
             test.done();
         },
-        
+
         testAlphaIndexENUSAddElementRightBucketAccentInsensitive: function(test) {
             test.expect(3);
-        
+
             var ai = new AlphabeticIndex({
                 locale: "en-US"
             });
-        
+
             test.ok(ai);
 
             test.equal("E", ai.addElement("Élan"));
             test.equal("E", ai.addElement("ëieasdf");
-            
+
             test.done();
         }
 };
