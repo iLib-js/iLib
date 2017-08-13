@@ -270,6 +270,8 @@ AlphabeticIndex.prototype.getBucketCount = function() {
 
 /**
  * Return the bucket labels for this index in order. This
+ * method only returns the index labels for buckets that
+ * actually contain elements. This
  * will include the under-, in-, and overflow labels if
  * they are used in this index.
  * 
@@ -277,6 +279,17 @@ AlphabeticIndex.prototype.getBucketCount = function() {
  * for this index in collation order
  */
 AlphabeticIndex.prototype.getBucketLabels = function() {
+};
+
+/**
+ * Return the all the bucket labels typically used in the
+ * locale. This includes all bucket labels, even if those
+ * buckets do not contain any elements.
+ * 
+ * @returns {Array.<String>} the array of bucket labels
+ * for this index in collation order
+ */
+AlphabeticIndex.prototype.getAllBucketLabels = function() {
 };
 
 /**
