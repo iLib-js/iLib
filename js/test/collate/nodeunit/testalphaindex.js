@@ -51,6 +51,51 @@ module.exports.testalphaindex = {
             test.done();
         },
 
+        testAlphaIndexENUSGetBucketBaseLetter: function(test) {
+            test.expect(2);
+
+            var ai = new AlphabeticIndex({
+                locale: "en-US"
+            });
+
+            test.ok(ai);
+
+            test.equal("A", ai.getBucket("abacus"));
+
+            test.done();
+        },
+
+        testAlphaIndexENUSGetBucketCaseInsensitive: function(test) {
+            test.expect(3);
+
+            var ai = new AlphabeticIndex({
+                locale: "en-US"
+            });
+
+            test.ok(ai);
+
+            test.equal("B", ai.getBucket("belarus"));
+            test.equal("B", ai.getBucket("Belarus");
+
+            test.done();
+        },
+
+        testAlphaIndexENUSGetBucketAccentInsensitive: function(test) {
+            test.expect(3);
+
+            var ai = new AlphabeticIndex({
+                locale: "en-US"
+            });
+
+            test.ok(ai);
+
+            test.equal("E", ai.getBucket("Élan"));
+            test.equal("E", ai.getBucket("ëieasdf");
+
+            test.done();
+        },
+
+
         testAlphaIndexENUSAddElementRightBucket: function(test) {
             test.expect(2);
 
@@ -64,6 +109,32 @@ module.exports.testalphaindex = {
 
             test.done();
         },
+
+        testAlphaIndexENUSAddElementActuallyAdded: function(test) {
+            test.expect(6);
+
+            var ai = new AlphabeticIndex({
+                locale: "en-US"
+            });
+
+            test.ok(ai);
+
+            test.equal("A", ai.addElement("abacus"));
+
+            var buckets = ai.getAllBuckets();
+
+            test.ok(buckets);
+            test.ok(buckets.A);
+
+            var a = buckets.A;
+
+            test.equal(a.length, 1);
+
+            test.equal(a[0], "abacus");
+
+            test.done();
+        },
+
 
         testAlphaIndexENUSAddElementRightBucketCaseInsensitive: function(test) {
             test.expect(3);
