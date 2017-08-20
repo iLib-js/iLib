@@ -51,6 +51,17 @@ module.exports.testalphaindex = {
             test.done();
         },
 
+    testAlphaIndexConstructorWithUnknownLocale: function(test) {
+        test.expect(1);
+        var ai = new AlphabeticIndex({
+            locale: "qq-QQ"
+        });
+
+        assert.ok(ai);
+
+        test.done();
+    },
+
         testAlphaIndexENUSGetBucketBaseLetter: function(test) {
             test.expect(2);
 
@@ -259,35 +270,509 @@ module.exports.testalphaindex = {
             test.done();
         },
 
-        testAlphaIndexENUSGetBucketCount: function(test) {
-            test.expect(2);
+    testAlphaIndexENUSGetBucketCount2: function(test) {
+        test.expect(2);
 
-            var ai = new AlphabeticIndex({
-                locale: "en-US"
-            });
+        var ai = new AlphabeticIndex({
+            locale: "en-US"
+        });
 
-            test.ok(ai);
+        test.ok(ai);
 
-            var items = [
-                "omicron",
-                "beta",
-                "echo",
-                "nu",
-                "iota",
-                "delta",
-                "alpha",
-                "zeta",
-                "bravo",
-                "epsilon",
-                "eta",
-                "india",
-                "mu",
-                "gamma"
-            ];
+        var items = [
+            "omicron",
+            "beta",
+            "echo",
+            "nu",
+            "iota",
+            "delta",
+            "alpha",
+            "lambda",
+            "alpha", // doubled
+            "theta",
+            "kappa",
+            "chi",
+            "phi",
+            "zeta",
+            "bravo",
+            "epsilon",
+            "eta",
+            "india",
+            "mu",
+            "gamma"
+        ];
 
-            test.objectEquals(ai.getBucketCount(), 10);
+        test.objectEquals(ai.getBucketCount(), 14);
 
-            test.done();
-        },
+        test.done();
+    },
 
+    testAlphaIndexENUSGetBucketLabels: function(test) {
+        test.expect(2);
+
+        var ai = new AlphabeticIndex({
+            locale: "en-US"
+        });
+
+        test.ok(ai);
+
+        var items = [
+            "omicron",
+            "beta",
+            "echo",
+            "nu",
+            "iota",
+            "delta",
+            "alpha",
+            "lambda",
+            "alpha", // doubled
+            "theta",
+            "kappa",
+            "chi",
+            "phi",
+            "zeta",
+            "bravo",
+            "epsilon",
+            "eta",
+            "india",
+            "mu",
+            "gamma"
+        ];
+
+        var expected = [
+            "A",
+            "B",
+            "C",
+            "D",
+            "E",
+            "G",
+            "I",
+            "K",
+            "L",
+            "M",
+            "N",
+            "O",
+            "P",
+            "T",
+            "Z"
+        ];
+
+        test.objectEquals(ai.getBucketLabels(), expected);
+
+        test.done();
+    },
+
+    testAlphaIndexENUSGetBucketLabelsEmpty: function(test) {
+        test.expect(2);
+
+        var ai = new AlphabeticIndex({
+            locale: "en-US"
+        });
+
+        test.ok(ai);
+
+        test.objectEquals(ai.getBucketLabels(), []);
+
+        test.done();
+    },
+
+    testAlphaIndexENUSGetAllBucketLabels: function(test) {
+        test.expect(2);
+
+        var ai = new AlphabeticIndex({
+            locale: "en-US"
+        });
+
+        test.ok(ai);
+
+        var items = [
+            "omicron",
+            "beta",
+            "echo",
+            "nu",
+            "iota",
+            "delta",
+            "alpha",
+            "lambda",
+            "alpha", // doubled
+            "theta",
+            "kappa",
+            "chi",
+            "phi",
+            "zeta",
+            "bravo",
+            "epsilon",
+            "eta",
+            "india",
+            "mu",
+            "gamma"
+        ];
+
+        var expected = [
+            "*",
+            "A",
+            "B",
+            "C",
+            "D",
+            "E",
+            "F",
+            "G",
+            "H",
+            "I",
+            "J",
+            "K",
+            "L",
+            "M",
+            "N",
+            "O",
+            "P",
+            "Q",
+            "R",
+            "S",
+            "T",
+            "U",
+            "V",
+            "W",
+            "X",
+            "Y",
+            "Z",
+            "#"
+        ];
+
+        test.objectEquals(ai.getAllBucketLabels(), expected);
+
+        test.done();
+    },
+
+    testAlphaIndexENUSGetAllBucketLabelsEmpty: function(test) {
+        test.expect(2);
+
+        var ai = new AlphabeticIndex({
+            locale: "en-US"
+        });
+
+        test.ok(ai);
+
+        var expected = [
+            "#",
+            "A",
+            "B",
+            "C",
+            "D",
+            "E",
+            "F",
+            "G",
+            "H",
+            "I",
+            "J",
+            "K",
+            "L",
+            "M",
+            "N",
+            "O",
+            "P",
+            "Q",
+            "R",
+            "S",
+            "T",
+            "U",
+            "V",
+            "W",
+            "X",
+            "Y",
+            "Z",
+            "#"
+        ];
+
+        test.objectEquals(ai.getAllBucketLabels(), exptected);
+
+        test.done();
+    },
+
+    testAlphaIndexENUSGetBucketOverflow: function(test) {
+        test.expect(3);
+
+        var ai = new AlphabeticIndex({
+            locale: "en-US"
+        });
+
+        test.ok(ai);
+
+        test.equal("#", ai.getBucket("300"));
+        test.equal("#", ai.getBucket("1024");
+
+        test.done();
+    },
+
+    testAlphaIndexENUSGetAllBucketsOverflow: function(test) {
+        test.expect(2);
+
+        var ai = new AlphabeticIndex({
+            locale: "en-US"
+        });
+
+        test.ok(ai);
+
+        var items = [
+            "omicron",
+            "beta",
+            "echo",
+            "nu",
+            "iota",
+            "delta",
+            "300",
+            "alpha",
+            "zeta",
+            "bravo",
+            "epsilon",
+            "69",
+            "eta",
+            "india",
+            "mu",
+            "gamma"
+        ];
+
+        items.forEach(function(item) {
+            ai.addElement(item);
+        });
+
+        var expected = {
+            "A": ["alpha"],
+            "B": ["beta", "bravo"]
+            "E": ["echo", "epsilon", "eta"],
+            "O": ["omicron"],
+            "N": ["nu"],
+            "I": ["india", "iota"],
+            "D": ["delta"],
+            "Z": ["zeta"],
+            "M": ["mu"],
+            "G": ["gamma"],
+            "#": ["300", "69"]
+        };
+
+        test.objectEquals(ai.getAllBuckets(), expected);
+
+        test.done();
+    },
+
+    testAlphaIndexENUSGetBucketUnderflow: function(test) {
+        test.expect(3);
+
+        var ai = new AlphabeticIndex({
+            locale: "en-US"
+        });
+
+        test.ok(ai);
+
+        test.equal("*", ai.getBucket("* See below"));
+        test.equal("*", ai.getBucket("@TheRealDonaldDuck");
+
+        test.done();
+    },
+
+    testAlphaIndexENUSGetAllBucketsUnderflow: function(test) {
+        test.expect(2);
+
+        var ai = new AlphabeticIndex({
+            locale: "en-US"
+        });
+
+        test.ok(ai);
+
+        var items = [
+            "omicron",
+            "beta",
+            "echo",
+            "nu",
+            "iota",
+            "delta",
+            "* See below",
+            "alpha",
+            "zeta",
+            "bravo",
+            "epsilon",
+            "@TheRealDonaldDuck",
+            "eta",
+            "india",
+            "mu",
+            "gamma"
+        ];
+
+        items.forEach(function(item) {
+            ai.addElement(item);
+        });
+
+        var expected = {
+            "*": ["* See below", "@TheRealDonaldDuck"],
+            "A": ["alpha"],
+            "B": ["beta", "bravo"]
+            "E": ["echo", "epsilon", "eta"],
+            "O": ["omicron"],
+            "N": ["nu"],
+            "I": ["india", "iota"],
+            "D": ["delta"],
+            "Z": ["zeta"],
+            "M": ["mu"],
+            "G": ["gamma"],
+        };
+
+        test.objectEquals(ai.getAllBuckets(), expected);
+
+        test.done();
+    },
+
+    testAlphaIndexConstructorAsync: function(test) {
+        test.expect(1);
+        var ai = new AlphabeticIndex({
+            locale: "de-DE",
+            caseSensitive: false,
+            onLoad: function(ai) {
+                assert.ok(ai);
+
+                test.done();
+            }
+        });
+    },
+
+    testAlphaIndexUnknowLocaleActsLikeEnglish: function(test) {
+        test.expect(2);
+
+        var ai = new AlphabeticIndex({
+            locale: "qq-QQ"
+        });
+
+        test.ok(ai);
+
+        var items = [
+            "omicron",
+            "beta",
+            "echo",
+            "nu",
+            "iota",
+            "delta",
+            "alpha",
+            "zeta",
+            "bravo",
+            "epsilon",
+            "eta",
+            "india",
+            "mu",
+            "gamma"
+        ];
+
+        items.forEach(function(item) {
+            ai.addElement(item);
+        });
+
+        var expected = {
+            "A": ["alpha"],
+            "B": ["beta", "bravo"]
+            "E": ["echo", "epsilon", "eta"],
+            "O": ["omicron"],
+            "N": ["nu"],
+            "I": ["india", "iota"],
+            "D": ["delta"],
+            "Z": ["zeta"],
+            "M": ["mu"],
+            "G": ["gamma"]
+        };
+
+        test.objectEquals(ai.getAllBuckets(), expected);
+
+        test.done();
+    },
+
+    testAlphaIndexDEDEStandardStyle: function(test) {
+        test.expect(2);
+
+        var ai = new AlphabeticIndex({
+            locale: "de-DE",
+            style: "standard"
+        });
+
+        test.ok(ai);
+
+        var items = [
+            "Jürgen",
+            "Georg",
+            "Matthias",
+            "Heinz",
+            "Fritz",
+            "Hermann",
+            "Josef",
+            "Karl",
+            "Heinrich",
+            "Ulrich"
+        ];
+
+        items.forEach(function(item) {
+            ai.addElement(item);
+        });
+
+        var expected = {
+            "J": ["Jürgen"],
+            "G": ["Georg"]
+            "M": ["Matthias"],
+            "H": ["Heinrich", "Heinz", "Hermann"],
+            "F": ["Fritz"],
+            "J": ["Josef"],
+            "K": ["Karl"],
+            "U": ["Ulrich"]
+        };
+
+        test.objectEquals(ai.getAllBuckets(), expected);
+
+        test.done();
+    },
+
+    testAlphaIndexDEDEPhonebookStyle: function(test) {
+        test.expect(2);
+
+        var ai = new AlphabeticIndex({
+            locale: "de-DE",
+            style: "standard"
+        });
+
+        test.ok(ai);
+
+        var items = [
+            "Jürgen",
+            "Georg",
+            "Matthias",
+            "Heinz",
+            "Uelrich",
+            "Fritz",
+            "Hermann",
+            "Josef",
+            "Karl",
+            "Heinrich",
+            "Ülrich",
+            "Ulrich"
+            "Julia",
+            "Juan",
+            "Udrich",
+            "Juergen",
+            "Ualrich",
+            "Judrich"
+        ];
+
+        items.forEach(function(item) {
+            ai.addElement(item);
+        });
+
+        var expected = {
+            "J": ["Juan", "Juergen", "Jürgen", "Judrich"],
+            "G": ["Georg"]
+            "M": ["Matthias"],
+            "H": ["Heinrich", "Heinz", "Hermann"],
+            "F": ["Fritz"],
+            "J": ["Josef"],
+            "K": ["Karl"],
+            "U": ["Ualrich", "Ülrich", "Uelrich", "Udrich", "Ulrich"]
+        };
+
+        test.objectEquals(ai.getAllBuckets(), expected);
+
+        test.done();
+    }
 };
