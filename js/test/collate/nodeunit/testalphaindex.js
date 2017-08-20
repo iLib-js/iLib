@@ -25,31 +25,31 @@ if (typeof(AlphabeticIndex) === "undefined") {
 }
 
 module.exports.testalphaindex = {
-        setUp: function(callback) {
-            ilib.clearCache();
-            callback();
-        },
+    setUp: function(callback) {
+        ilib.clearCache();
+        callback();
+    },
 
-        testAlphaIndexConstructor: function(test) {
-            test.expect(1);
-            var ai = new AlphabeticIndex();
+    testAlphaIndexConstructor: function(test) {
+        test.expect(1);
+        var ai = new AlphabeticIndex();
 
-            test.ok(ai);
+        test.ok(ai);
 
-            test.done();
-        },
+        test.done();
+    },
 
-        testAlphaIndexConstructorWithParams: function(test) {
-            test.expect(1);
-            var ai = new AlphabeticIndex({
-                locale: "de-DE",
-                caseSensitive: false
-            });
+    testAlphaIndexConstructorWithParams: function(test) {
+        test.expect(1);
+        var ai = new AlphabeticIndex({
+            locale: "de-DE",
+            caseSensitive: false
+        });
 
-            assert.ok(ai);
+        assert.ok(ai);
 
-            test.done();
-        },
+        test.done();
+    },
 
     testAlphaIndexConstructorWithUnknownLocale: function(test) {
         test.expect(1);
@@ -62,213 +62,213 @@ module.exports.testalphaindex = {
         test.done();
     },
 
-        testAlphaIndexENUSGetBucketBaseLetter: function(test) {
-            test.expect(2);
+    testAlphaIndexENUSGetBucketBaseLetter: function(test) {
+        test.expect(2);
 
-            var ai = new AlphabeticIndex({
-                locale: "en-US"
-            });
+        var ai = new AlphabeticIndex({
+            locale: "en-US"
+        });
 
-            test.ok(ai);
+        test.ok(ai);
 
-            test.equal("A", ai.getBucket("abacus"));
+        test.equal("A", ai.getBucket("abacus"));
 
-            test.done();
-        },
+        test.done();
+    },
 
-        testAlphaIndexENUSGetBucketCaseInsensitive: function(test) {
-            test.expect(3);
+    testAlphaIndexENUSGetBucketCaseInsensitive: function(test) {
+        test.expect(3);
 
-            var ai = new AlphabeticIndex({
-                locale: "en-US"
-            });
+        var ai = new AlphabeticIndex({
+            locale: "en-US"
+        });
 
-            test.ok(ai);
+        test.ok(ai);
 
-            test.equal("B", ai.getBucket("belarus"));
-            test.equal("B", ai.getBucket("Belarus");
+        test.equal("B", ai.getBucket("belarus"));
+        test.equal("B", ai.getBucket("Belarus");
 
-            test.done();
-        },
+        test.done();
+    },
 
-        testAlphaIndexENUSGetBucketAccentInsensitive: function(test) {
-            test.expect(3);
+    testAlphaIndexENUSGetBucketAccentInsensitive: function(test) {
+        test.expect(3);
 
-            var ai = new AlphabeticIndex({
-                locale: "en-US"
-            });
+        var ai = new AlphabeticIndex({
+            locale: "en-US"
+        });
 
-            test.ok(ai);
+        test.ok(ai);
 
-            test.equal("E", ai.getBucket("Élan"));
-            test.equal("E", ai.getBucket("ëieasdf");
+        test.equal("E", ai.getBucket("Élan"));
+        test.equal("E", ai.getBucket("ëieasdf");
 
-            test.done();
-        },
-
-
-        testAlphaIndexENUSAddElementRightBucket: function(test) {
-            test.expect(2);
-
-            var ai = new AlphabeticIndex({
-                locale: "en-US"
-            });
-
-            test.ok(ai);
-
-            test.equal("A", ai.addElement("abacus"));
-
-            test.done();
-        },
-
-        testAlphaIndexENUSAddElementActuallyAdded: function(test) {
-            test.expect(6);
-
-            var ai = new AlphabeticIndex({
-                locale: "en-US"
-            });
-
-            test.ok(ai);
-
-            test.equal("A", ai.addElement("abacus"));
-
-            var buckets = ai.getAllBuckets();
-
-            test.ok(buckets);
-            test.ok(buckets.A);
-
-            var a = buckets.A;
-
-            test.equal(a.length, 1);
-
-            test.equal(a[0], "abacus");
-
-            test.done();
-        },
+        test.done();
+    },
 
 
-        testAlphaIndexENUSAddElementRightBucketCaseInsensitive: function(test) {
-            test.expect(3);
+    testAlphaIndexENUSAddElementRightBucket: function(test) {
+        test.expect(2);
 
-            var ai = new AlphabeticIndex({
-                locale: "en-US"
-            });
+        var ai = new AlphabeticIndex({
+            locale: "en-US"
+        });
 
-            test.ok(ai);
+        test.ok(ai);
 
-            test.equal("B", ai.addElement("belarus"));
-            test.equal("B", ai.addElement("Belarus");
+        test.equal("A", ai.addElement("abacus"));
 
-            test.done();
-        },
+        test.done();
+    },
 
-        testAlphaIndexENUSAddElementRightBucketAccentInsensitive: function(test) {
-            test.expect(3);
+    testAlphaIndexENUSAddElementActuallyAdded: function(test) {
+        test.expect(6);
 
-            var ai = new AlphabeticIndex({
-                locale: "en-US"
-            });
+        var ai = new AlphabeticIndex({
+            locale: "en-US"
+        });
 
-            test.ok(ai);
+        test.ok(ai);
 
-            test.equal("E", ai.addElement("Élan"));
-            test.equal("E", ai.addElement("ëieasdf");
+        test.equal("A", ai.addElement("abacus"));
 
-            test.done();
-        },
+        var buckets = ai.getAllBuckets();
 
-        testAlphaIndexENUSGetAllBuckets: function(test) {
-            test.expect(2);
+        test.ok(buckets);
+        test.ok(buckets.A);
 
-            var ai = new AlphabeticIndex({
-                locale: "en-US"
-            });
+        var a = buckets.A;
 
-            test.ok(ai);
+        test.equal(a.length, 1);
 
-            var items = [
-                "omicron",
-                "beta",
-                "echo",
-                "nu",
-                "iota",
-                "delta",
-                "alpha",
-                "zeta",
-                "bravo",
-                "epsilon",
-                "eta",
-                "india",
-                "mu",
-                "gamma"
-            ];
+        test.equal(a[0], "abacus");
 
-            items.forEach(function(item) {
-                ai.addElement(item);
-            });
+        test.done();
+    },
 
-            var expected = {
-                "A": ["alpha"],
-                "B": ["beta", "bravo"]
-                "E": ["echo", "epsilon", "eta"],
-                "O": ["omicron"],
-                "N": ["nu"],
-                "I": ["india", "iota"],
-                "D": ["delta"],
-                "Z": ["zeta"],
-                "M": ["mu"],
-                "G": ["gamma"]
-            };
 
-            test.objectEquals(ai.getAllBuckets(), expected);
+    testAlphaIndexENUSAddElementRightBucketCaseInsensitive: function(test) {
+        test.expect(3);
 
-            test.done();
-        },
+        var ai = new AlphabeticIndex({
+            locale: "en-US"
+        });
 
-        testAlphaIndexENUSGetBucketCountEmpty: function(test) {
-            test.expect(2);
+        test.ok(ai);
 
-            var ai = new AlphabeticIndex({
-                locale: "en-US"
-            });
+        test.equal("B", ai.addElement("belarus"));
+        test.equal("B", ai.addElement("Belarus");
 
-            test.ok(ai);
+        test.done();
+    },
 
-            test.equal(ai.getBucketCount(), 0);
+    testAlphaIndexENUSAddElementRightBucketAccentInsensitive: function(test) {
+        test.expect(3);
 
-            test.done();
-        },
+        var ai = new AlphabeticIndex({
+            locale: "en-US"
+        });
 
-        testAlphaIndexENUSGetBucketCount: function(test) {
-            test.expect(2);
+        test.ok(ai);
 
-            var ai = new AlphabeticIndex({
-                locale: "en-US"
-            });
+        test.equal("E", ai.addElement("Élan"));
+        test.equal("E", ai.addElement("ëieasdf");
 
-            test.ok(ai);
+        test.done();
+    },
 
-            var items = [
-                "omicron",
-                "beta",
-                "echo",
-                "nu",
-                "iota",
-                "delta",
-                "alpha",
-                "zeta",
-                "bravo",
-                "epsilon",
-                "eta",
-                "india",
-                "mu",
-                "gamma"
-            ];
+    testAlphaIndexENUSGetAllBuckets: function(test) {
+        test.expect(2);
 
-            test.objectEquals(ai.getBucketCount(), 10);
+        var ai = new AlphabeticIndex({
+            locale: "en-US"
+        });
 
-            test.done();
-        },
+        test.ok(ai);
+
+        var items = [
+            "omicron",
+            "beta",
+            "echo",
+            "nu",
+            "iota",
+            "delta",
+            "alpha",
+            "zeta",
+            "bravo",
+            "epsilon",
+            "eta",
+            "india",
+            "mu",
+            "gamma"
+        ];
+
+        items.forEach(function(item) {
+            ai.addElement(item);
+        });
+
+        var expected = {
+            "A": ["alpha"],
+            "B": ["beta", "bravo"]
+            "E": ["echo", "epsilon", "eta"],
+            "O": ["omicron"],
+            "N": ["nu"],
+            "I": ["india", "iota"],
+            "D": ["delta"],
+            "Z": ["zeta"],
+            "M": ["mu"],
+            "G": ["gamma"]
+        };
+
+        test.objectEquals(ai.getAllBuckets(), expected);
+
+        test.done();
+    },
+
+    testAlphaIndexENUSGetBucketCountEmpty: function(test) {
+        test.expect(2);
+
+        var ai = new AlphabeticIndex({
+            locale: "en-US"
+        });
+
+        test.ok(ai);
+
+        test.equal(ai.getBucketCount(), 0);
+
+        test.done();
+    },
+
+    testAlphaIndexENUSGetBucketCount: function(test) {
+        test.expect(2);
+
+        var ai = new AlphabeticIndex({
+            locale: "en-US"
+        });
+
+        test.ok(ai);
+
+        var items = [
+            "omicron",
+            "beta",
+            "echo",
+            "nu",
+            "iota",
+            "delta",
+            "alpha",
+            "zeta",
+            "bravo",
+            "epsilon",
+            "eta",
+            "india",
+            "mu",
+            "gamma"
+        ];
+
+        test.objectEquals(ai.getBucketCount(), 10);
+
+        test.done();
+    },
 
     testAlphaIndexENUSGetBucketCount2: function(test) {
         test.expect(2);
