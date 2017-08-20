@@ -196,6 +196,14 @@ var AlphabeticIndex = function (options) {
 };
 
 /**
+ * Return the locale used with this instance.
+ * @return {Locale} the Locale instance for this index
+ */
+AlphabeticIndex.prototype.getLocale = function() {
+	return this.locale;
+};
+
+/**
  * Add an element to the index. The element is added to the
  * appropriate bucket and sorted within that bucket according
  * to the collation for the locale set up within this index.
