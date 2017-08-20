@@ -225,6 +225,55 @@ module.exports.testalphaindex = {
         test.done();
     },
 
+    testAlphaIndexENUSGetElementCount: function(test) {
+        test.expect(2);
+
+        var ai = new AlphabeticIndex({
+            locale: "en-US"
+        });
+
+        test.ok(ai);
+
+        var items = [
+            "omicron",
+            "beta",
+            "echo",
+            "nu",
+            "iota",
+            "delta",
+            "alpha",
+            "zeta",
+            "bravo",
+            "epsilon",
+            "eta",
+            "india",
+            "mu",
+            "gamma"
+        ];
+
+        items.forEach(function(item) {
+            ai.addElement(item);
+        });
+
+        test.objectEquals(ai.getElementCount(), 14);
+
+        test.done();
+    },
+
+    testAlphaIndexENUSGetElementCountEmpty: function(test) {
+        test.expect(2);
+
+        var ai = new AlphabeticIndex({
+            locale: "en-US"
+        });
+
+        test.ok(ai);
+
+        test.objectEquals(ai.getElementCount(), 0);
+
+        test.done();
+    },
+
     testAlphaIndexENUSGetBucketCountEmpty: function(test) {
         test.expect(2);
 
@@ -489,6 +538,66 @@ module.exports.testalphaindex = {
         test.done();
     },
 
+    testAlphaIndexLVLVGetAllBucketLabels: function(test) {
+        test.expect(2);
+
+        var ai = new AlphabeticIndex({
+            locale: "lv-LV"
+        });
+
+        test.ok(ai);
+
+        // example of an alphabet in Latin that is a different order than
+        // English and where the accents matter at a primary level
+        var expected = [
+            "#",
+            "A",
+            "Ā",
+            "B",
+            "C",
+            "Č",
+            "D",
+            "E",
+            "Ē",
+            "F",
+            "G",
+            "Ģ",
+            "H",
+            "I",
+            "Y",
+            "Ī",
+            "J",
+            "K",
+            "Ķ",
+            "L",
+            "Ļ",
+            "M",
+            "N",
+            "Ņ",
+            "O",
+            "Ō",
+            "P",
+            "Q",
+            "R",
+            "Ŗ",
+            "S",
+            "Š",
+            "T",
+            "U",
+            "Ū",
+            "V",
+            "Z",
+            "Ž",
+            "W",
+            "X",
+            "#"
+        ];
+
+        test.objectEquals(ai.getAllBucketLabels(), exptected);
+
+        test.done();
+    },
+
     testAlphaIndexENUSGetBucketOverflow: function(test) {
         test.expect(3);
 
@@ -730,7 +839,7 @@ module.exports.testalphaindex = {
 
         var ai = new AlphabeticIndex({
             locale: "de-DE",
-            style: "standard"
+            style: "phonebook"
         });
 
         test.ok(ai);
@@ -774,5 +883,57 @@ module.exports.testalphaindex = {
         test.objectEquals(ai.getAllBuckets(), expected);
 
         test.done();
+    },
+
+    testAlphaIndexDEDEDictionaryStyle: function(test) {
+        test.expect(2);
+
+        var ai = new AlphabeticIndex({
+            locale: "de-DE",
+            style: "dictionary"
+        });
+
+        test.ok(ai);
+
+        var items = [
+            "Jürgen",
+            "Georg",
+            "Matthias",
+            "Heinz",
+            "Uelrich",
+            "Fritz",
+            "Hermann",
+            "Josef",
+            "Karl",
+            "Heinrich",
+            "Ülrich",
+            "Ulrich"
+            "Julia",
+            "Juan",
+            "Udrich",
+            "Juergen",
+            "Ualrich",
+            "Judrich"
+        ];
+
+        items.forEach(function(item) {
+            ai.addElement(item);
+        });
+
+        var expected = {
+            "J": ["Juan", "Juergen", "Judrich", "Jürgen"],
+            "G": ["Georg"]
+            "M": ["Matthias"],
+            "H": ["Heinrich", "Heinz", "Hermann"],
+            "F": ["Fritz"],
+            "J": ["Josef"],
+            "K": ["Karl"],
+            "U": ["Ualrich", "Uelrich", "Udrich", "Ulrich", "Ülrich"]
+        };
+
+        test.objectEquals(ai.getAllBuckets(), expected);
+
+        test.done();
     }
+
 };
