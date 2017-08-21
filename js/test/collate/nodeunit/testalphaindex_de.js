@@ -67,7 +67,7 @@ module.exports.testalphaindex_de = {
         test.ok(ai);
 
         test.equal("B", ai.getBucket("belarus"));
-        test.equal("B", ai.getBucket("Belarus");
+        test.equal("B", ai.getBucket("Belarus"));
 
         test.done();
     },
@@ -82,12 +82,12 @@ module.exports.testalphaindex_de = {
         test.ok(ai);
 
         test.equal("U", ai.getBucket("über"));
-        test.equal("A", ai.getBucket("änderen");
-        test.equal("O", ai.getBucket("öffenen");
+        test.equal("A", ai.getBucket("änderen"));
+        test.equal("O", ai.getBucket("öffenen"));
         
         test.equal("U", ai.getBucket("Über"));
-        test.equal("A", ai.getBucket("Änderen");
-        test.equal("O", ai.getBucket("Öffenen");
+        test.equal("A", ai.getBucket("Änderen"));
+        test.equal("O", ai.getBucket("Öffenen"));
 
         test.done();
     },
@@ -140,7 +140,7 @@ module.exports.testalphaindex_de = {
 
         var expected = {
             "A": ["alpha"],
-            "B": ["beta", "bravo"]
+            "B": ["beta", "bravo"],
             "E": ["echo", "epsilon", "eta"],
             "O": ["omicron"],
             "N": ["nu"],
@@ -156,20 +156,7 @@ module.exports.testalphaindex_de = {
         test.done();
     },
 
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+        
     testAlphaIndexENUSGetElementCount: function(test) {
         test.expect(2);
 
@@ -553,7 +540,7 @@ module.exports.testalphaindex_de = {
         test.ok(ai);
 
         test.equal("#", ai.getBucket("300"));
-        test.equal("#", ai.getBucket("1024");
+        test.equal("#", ai.getBucket("1024"));
 
         test.done();
     },
@@ -592,7 +579,7 @@ module.exports.testalphaindex_de = {
 
         var expected = {
             "A": ["alpha"],
-            "B": ["beta", "bravo"]
+            "B": ["beta", "bravo"],
             "E": ["echo", "epsilon", "eta"],
             "O": ["omicron"],
             "N": ["nu"],
@@ -619,7 +606,7 @@ module.exports.testalphaindex_de = {
         test.ok(ai);
 
         test.equal("*", ai.getBucket("* See below"));
-        test.equal("*", ai.getBucket("@TheRealDonaldDuck");
+        test.equal("*", ai.getBucket("@TheRealDonaldDuck"));
 
         test.done();
     },
@@ -659,7 +646,7 @@ module.exports.testalphaindex_de = {
         var expected = {
             "*": ["* See below", "@TheRealDonaldDuck"],
             "A": ["alpha"],
-            "B": ["beta", "bravo"]
+            "B": ["beta", "bravo"],
             "E": ["echo", "epsilon", "eta"],
             "O": ["omicron"],
             "N": ["nu"],
@@ -720,7 +707,7 @@ module.exports.testalphaindex_de = {
 
         var expected = {
             "A": ["alpha"],
-            "B": ["beta", "bravo"]
+            "B": ["beta", "bravo"],
             "E": ["echo", "epsilon", "eta"],
             "O": ["omicron"],
             "N": ["nu"],
@@ -765,7 +752,7 @@ module.exports.testalphaindex_de = {
 
         var expected = {
             "J": ["Jürgen"],
-            "G": ["Georg"]
+            "G": ["Georg"],
             "M": ["Matthias"],
             "H": ["Heinrich", "Heinz", "Hermann"],
             "F": ["Fritz"],
@@ -801,7 +788,7 @@ module.exports.testalphaindex_de = {
             "Karl",
             "Heinrich",
             "Ülrich",
-            "Ulrich"
+            "Ulrich",
             "Julia",
             "Juan",
             "Udrich",
@@ -816,7 +803,7 @@ module.exports.testalphaindex_de = {
 
         var expected = {
             "J": ["Juan", "Juergen", "Jürgen", "Judrich"],
-            "G": ["Georg"]
+            "G": ["Georg"],
             "M": ["Matthias"],
             "H": ["Heinrich", "Heinz", "Hermann"],
             "F": ["Fritz"],
@@ -852,7 +839,7 @@ module.exports.testalphaindex_de = {
             "Karl",
             "Heinrich",
             "Ülrich",
-            "Ulrich"
+            "Ulrich",
             "Julia",
             "Juan",
             "Udrich",
@@ -867,7 +854,7 @@ module.exports.testalphaindex_de = {
 
         var expected = {
             "J": ["Juan", "Juergen", "Judrich", "Jürgen"],
-            "G": ["Georg"]
+            "G": ["Georg"],
             "M": ["Matthias"],
             "H": ["Heinrich", "Heinz", "Hermann"],
             "F": ["Fritz"],

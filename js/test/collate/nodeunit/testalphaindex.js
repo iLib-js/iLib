@@ -21,7 +21,7 @@ if (typeof(ilib) === "undefined") {
     var ilib = require("../../../lib/ilib-node.js");
 }
 if (typeof(AlphabeticIndex) === "undefined") {
-    var AlphabeticIndex = require("../lib/AlphabeticIndex.js");
+    var AlphabeticIndex = require("../../../lib/AlphabeticIndex.js");
 }
 
 module.exports.testalphaindex = {
@@ -86,7 +86,7 @@ module.exports.testalphaindex = {
         test.ok(ai);
 
         test.equal("B", ai.getBucket("belarus"));
-        test.equal("B", ai.getBucket("Belarus");
+        test.equal("B", ai.getBucket("Belarus"));
 
         test.done();
     },
@@ -101,7 +101,7 @@ module.exports.testalphaindex = {
         test.ok(ai);
 
         test.equal("E", ai.getBucket("Élan"));
-        test.equal("E", ai.getBucket("ëieasdf");
+        test.equal("E", ai.getBucket("ëieasdf"));
 
         test.done();
     },
@@ -157,7 +157,7 @@ module.exports.testalphaindex = {
         test.ok(ai);
 
         test.equal("B", ai.addElement("belarus"));
-        test.equal("B", ai.addElement("Belarus");
+        test.equal("B", ai.addElement("Belarus"));
 
         test.done();
     },
@@ -172,7 +172,7 @@ module.exports.testalphaindex = {
         test.ok(ai);
 
         test.equal("E", ai.addElement("Élan"));
-        test.equal("E", ai.addElement("ëieasdf");
+        test.equal("E", ai.addElement("ëieasdf"));
 
         test.done();
     },
@@ -208,16 +208,16 @@ module.exports.testalphaindex = {
         });
 
         var expected = {
-            "A": ["alpha"],
-            "B": ["beta", "bravo"]
-            "E": ["echo", "epsilon", "eta"],
-            "O": ["omicron"],
-            "N": ["nu"],
-            "I": ["india", "iota"],
-            "D": ["delta"],
-            "Z": ["zeta"],
-            "M": ["mu"],
-            "G": ["gamma"]
+                "A": ["alpha"],
+                "B": ["beta", "bravo"],
+                "D": ["delta"],
+                "E": ["echo", "epsilon", "eta"],
+                "G": ["gamma"],
+                "I": ["india", "iota"],
+                "M": ["mu"],
+                "N": ["nu"],
+                "O": ["omicron"],
+                "Z": ["zeta"]
         };
 
         test.objectEquals(ai.getAllBuckets(), expected);
@@ -608,7 +608,7 @@ module.exports.testalphaindex = {
         test.ok(ai);
 
         test.equal("#", ai.getBucket("300"));
-        test.equal("#", ai.getBucket("1024");
+        test.equal("#", ai.getBucket("1024"));
 
         test.done();
     },
@@ -647,7 +647,7 @@ module.exports.testalphaindex = {
 
         var expected = {
             "A": ["alpha"],
-            "B": ["beta", "bravo"]
+            "B": ["beta", "bravo"],
             "E": ["echo", "epsilon", "eta"],
             "O": ["omicron"],
             "N": ["nu"],
@@ -674,7 +674,7 @@ module.exports.testalphaindex = {
         test.ok(ai);
 
         test.equal("*", ai.getBucket("* See below"));
-        test.equal("*", ai.getBucket("@TheRealDonaldDuck");
+        test.equal("*", ai.getBucket("@TheRealDonaldDuck"));
 
         test.done();
     },
@@ -714,7 +714,7 @@ module.exports.testalphaindex = {
         var expected = {
             "*": ["* See below", "@TheRealDonaldDuck"],
             "A": ["alpha"],
-            "B": ["beta", "bravo"]
+            "B": ["beta", "bravo"],
             "E": ["echo", "epsilon", "eta"],
             "O": ["omicron"],
             "N": ["nu"],
@@ -775,7 +775,7 @@ module.exports.testalphaindex = {
 
         var expected = {
             "A": ["alpha"],
-            "B": ["beta", "bravo"]
+            "B": ["beta", "bravo"],
             "E": ["echo", "epsilon", "eta"],
             "O": ["omicron"],
             "N": ["nu"],
@@ -820,7 +820,7 @@ module.exports.testalphaindex = {
 
         var expected = {
             "J": ["Jürgen"],
-            "G": ["Georg"]
+            "G": ["Georg"],
             "M": ["Matthias"],
             "H": ["Heinrich", "Heinz", "Hermann"],
             "F": ["Fritz"],
@@ -856,7 +856,7 @@ module.exports.testalphaindex = {
             "Karl",
             "Heinrich",
             "Ülrich",
-            "Ulrich"
+            "Ulrich",
             "Julia",
             "Juan",
             "Udrich",
@@ -871,7 +871,7 @@ module.exports.testalphaindex = {
 
         var expected = {
             "J": ["Juan", "Juergen", "Jürgen", "Judrich"],
-            "G": ["Georg"]
+            "G": ["Georg"],
             "M": ["Matthias"],
             "H": ["Heinrich", "Heinz", "Hermann"],
             "F": ["Fritz"],
@@ -907,7 +907,7 @@ module.exports.testalphaindex = {
             "Karl",
             "Heinrich",
             "Ülrich",
-            "Ulrich"
+            "Ulrich",
             "Julia",
             "Juan",
             "Udrich",
@@ -922,7 +922,7 @@ module.exports.testalphaindex = {
 
         var expected = {
             "J": ["Juan", "Juergen", "Judrich", "Jürgen"],
-            "G": ["Georg"]
+            "G": ["Georg"],
             "M": ["Matthias"],
             "H": ["Heinrich", "Heinz", "Hermann"],
             "F": ["Fritz"],
