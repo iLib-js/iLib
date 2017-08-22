@@ -57,7 +57,7 @@ module.exports.testalphaindex = {
             locale: "qq-QQ"
         });
 
-        assert.ok(ai);
+        test.ok(ai);
 
         test.done();
     },
@@ -220,7 +220,7 @@ module.exports.testalphaindex = {
                 "Z": ["zeta"]
         };
 
-        test.objectEquals(ai.getAllBuckets(), expected);
+        test.deepEqual(ai.getAllBuckets(), expected);
 
         test.done();
     },
@@ -255,7 +255,7 @@ module.exports.testalphaindex = {
             ai.addElement(item);
         });
 
-        test.objectEquals(ai.getElementCount(), 14);
+        test.equal(ai.getElementCount(), 14);
 
         test.done();
     },
@@ -269,7 +269,7 @@ module.exports.testalphaindex = {
 
         test.ok(ai);
 
-        test.objectEquals(ai.getElementCount(), 0);
+        test.equal(ai.getElementCount(), 0);
 
         test.done();
     },
@@ -314,7 +314,11 @@ module.exports.testalphaindex = {
             "gamma"
         ];
 
-        test.objectEquals(ai.getBucketCount(), 10);
+        items.forEach(function(item) {
+            ai.addElement(item);
+        });
+
+        test.equal(ai.getBucketCount(), 10);
 
         test.done();
     },
@@ -351,8 +355,12 @@ module.exports.testalphaindex = {
             "gamma"
         ];
 
-        test.objectEquals(ai.getBucketCount(), 14);
+        items.forEach(function(item) {
+            ai.addElement(item);
+        });
 
+        test.equal(ai.getBucketCount(), 15); 
+        // A,B,C,D,E,G,I,K,L,M,N,O,P,T,Z
         test.done();
     },
 
@@ -388,6 +396,10 @@ module.exports.testalphaindex = {
             "gamma"
         ];
 
+        items.forEach(function(item) {
+            ai.addElement(item);
+        });
+
         var expected = [
             "A",
             "B",
@@ -406,7 +418,7 @@ module.exports.testalphaindex = {
             "Z"
         ];
 
-        test.objectEquals(ai.getBucketLabels(), expected);
+        test.deepEqual(ai.getBucketLabels(), expected);
 
         test.done();
     },
@@ -419,9 +431,7 @@ module.exports.testalphaindex = {
         });
 
         test.ok(ai);
-
-        test.objectEquals(ai.getBucketLabels(), []);
-
+        test.deepEqual(ai.getBucketLabels(), []);
         test.done();
     },
 
@@ -457,6 +467,10 @@ module.exports.testalphaindex = {
             "gamma"
         ];
 
+        items.forEach(function(item) {
+            ai.addElement(item);
+        });
+
         var expected = [
             "*",
             "A",
@@ -489,7 +503,6 @@ module.exports.testalphaindex = {
         ];
 
         test.objectEquals(ai.getAllBucketLabels(), expected);
-
         test.done();
     },
 

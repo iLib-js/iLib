@@ -151,7 +151,7 @@ module.exports.testalphaindex_de = {
             "G": ["gamma"]
         };
 
-        test.objectEquals(ai.getAllBuckets(), expected);
+        test.deepEqual(ai.getAllBuckets(), expected);
 
         test.done();
     },
@@ -761,7 +761,7 @@ module.exports.testalphaindex_de = {
             "U": ["Ulrich"]
         };
 
-        test.objectEquals(ai.getAllBuckets(), expected);
+        test.deepEqual(ai.getAllBuckets(), expected);
 
         test.done();
     },
@@ -812,7 +812,7 @@ module.exports.testalphaindex_de = {
             "U": ["Ualrich", "Ülrich", "Uelrich", "Udrich", "Ulrich"]
         };
 
-        test.objectEquals(ai.getAllBuckets(), expected);
+        test.deepEqual(ai.getAllBuckets(), expected);
 
         test.done();
     },
@@ -863,7 +863,7 @@ module.exports.testalphaindex_de = {
             "U": ["Ualrich", "Uelrich", "Udrich", "Ulrich", "Ülrich"]
         };
 
-        test.objectEquals(ai.getAllBuckets(), expected);
+        test.deepEqual(ai.getAllBuckets(), expected);
 
         test.done();
     }

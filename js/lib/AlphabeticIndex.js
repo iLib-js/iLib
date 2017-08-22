@@ -141,8 +141,9 @@ var AlphabeticIndex = function (options) {
 	this.caseSensitive = false;
 	this.accentSensitive = false;
 	this.overflowLabel = "#";
-	this.inflowLabel = "#";
-	this.underflowLabel = "#";
+	this.inflowLabel = "-";
+	this.underflowLabel = "*";
+	this.style = "latin"
 	this.index = {};
 
 	if (options) {
@@ -152,6 +153,10 @@ var AlphabeticIndex = function (options) {
 
 		if (typeof(options.caseSensitive) !== 'undefined') {
 			this.caseSensitive = options.caseSensitive;
+		}
+
+		if (typeof(options.style) !== 'undefined') {
+			this.style = options.style;
 		}
 
 		if (typeof(options.accentSensitive) !== 'undefined') {
@@ -246,17 +251,18 @@ AlphabeticIndex.prototype._isEquivalent = function(a,b) {
     }
     return true;
 };
+
 /**
  * 
  * 
  */
-AlphabeticIndex.prototype._getKeyByValue = function(value, sortStyle) {
-	var collator = this.collation[sortStyle].map;
+AlphabeticIndex.prototype._getKeyByValue = function(value) {
+	var collator = this.collation[this.style].map;
 
 	for (var prop in collator) {
 		if (collator.hasOwnProperty(prop)) {
 			if (this._isEquivalent(collator[prop], value)) {
-				return prop
+				return prop;
 			}
 		}
 	}
@@ -285,7 +291,9 @@ AlphabeticIndex.prototype.addElement = function(element) {
 	if (this.index[label] == undefined) {
 		this.index[label] = [element];
 	} else {
-		this.index[label].push(element);
+		if (this.index[label].indexOf(element) == -1 ) {
+			this.index[label].push(element);
+		}
 		this.index[label].sort();
 	}
 
@@ -360,21 +368,19 @@ AlphabeticIndex.prototype.getAllBuckets = function() {
 AlphabeticIndex.prototype.getBucket = function(element) {
 	var label;
 	var firstChar;
-	var baseCharacter, collationValue;
+	var collationValue;
 	var baseValue = [];
+	var collator = this.collation[this.style].map;
 
 	if (element == undefined ) {
 		return;
 	}
-
-	var sortStyle = this.collation["default"];
-	var collator = this.collation[sortStyle].map;
 	
 	firstChar = element.charAt(0);
-	collationValue = this.collation[sortStyle].map[firstChar];
+	collationValue = collator[firstChar];
 	
 	baseValue[0] = collationValue[0];
-	label = this._getKeyByValue(baseValue, sortStyle);
+	label = this._getKeyByValue(baseValue);
 
 	return label;	
 };
@@ -384,7 +390,7 @@ AlphabeticIndex.prototype.getBucket = function(element) {
  * 
  * 
  */
-AlphabeticIndex.prototype.getDefaultSort = function() {
+AlphabeticIndex.prototype.getDefaultSortStyle = function() {
 	return this.collation["default"];
 };
 
@@ -409,6 +415,16 @@ AlphabeticIndex.prototype.getBucketCount = function() {
  * for this index in collation order
  */
 AlphabeticIndex.prototype.getBucketLabels = function() {
+	var buckets = this.index;
+	var label = new Array();
+
+	for (var prop in buckets) {
+		if (buckets.hasOwnProperty(prop)) {
+			label.push(prop);
+		}
+	}
+	label.sort();
+	return label;
 };
 
 /**
@@ -438,7 +454,9 @@ AlphabeticIndex.prototype.getCollator = function() {
  *
  * @returns {String} the label for the inflow buckets
  */
-AlphabeticIndex.prototype.getInflowLabel = function() {};
+AlphabeticIndex.prototype.getInflowLabel = function() {
+
+};
 
 /**
  * Get the default label used in the for overflow bucket.
@@ -454,7 +472,17 @@ AlphabeticIndex.prototype.getOverflowLabel = function() {};
  *
  * @returns {number} The number of elements in the index
  */
-AlphabeticIndex.prototype.getElementCount = function() {};
+AlphabeticIndex.prototype.getElementCount = function() {
+	var buckets = this.index;
+	var count = 0;
+
+	for (var prop in buckets) {
+		if (buckets.hasOwnProperty(prop)) {
+			count += buckets[prop].length;
+		}
+	}
+	return count;
+};
 
 /**
  * Get the default label used in underflow,
