@@ -23,17 +23,19 @@
 ilib.js
 Locale.js
 IString.js
+LocaleInfo.js
 Collator.js
 */
 
 // !data collation
 
 var ilib = require("./ilib.js");
-// var Utils = require("./Utils.js");
+var Utils = require("./Utils.js");
 //var JSUtils = require("./JSUtils.js");
 var Locale = require("./Locale.js");
 // var CType = require("./CType.js");
 var IString = require("./IString.js");
+var LocaleInfo = require("./LocaleInfo.js");
 
 // index uses the same data as the collator
 var Collator = require("./Collator.js");
@@ -164,18 +166,18 @@ var AlphabeticIndex = function (options) {
 		object: Collator,
 		locale: this.locale,
 		name: "collation.json",
-		sync: sync,
-		loadParams: loadParams,
+		sync: this.sync,
+		loadParams: this.loadParams,
 		callback: ilib.bind(this, function (collation) {
 			if (!collation) {
 				collation = ilib.data.collation;
 				var spec = this.locale.getSpec().replace(/-/g, '_');
 				Collator.cache[spec] = collation;
 			}
-			this._init(collation);
+			//this._init(collation);
 			new LocaleInfo(this.locale, {
-				sync: sync,
-				loadParams: loadParams,
+				sync: this.sync,
+				loadParams: this.loadParams,
 				onLoad: ilib.bind(this, function(li) {
 					this.li = li;
 					if (this.ignorePunctuation) {

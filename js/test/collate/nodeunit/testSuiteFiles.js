@@ -18,6 +18,8 @@
  */
 
 module.exports.files = [
+    "testalphaindex.js",
+    "testalphaindex_de.js",
     "testcollation.js",
     "testcollation_cs.js",
     "testcollation_da.js",
@@ -41,5 +43,5 @@ module.exports.files = [
     "testcollation_sv.js",
     "testcollation_tr.js",
     "testcollation_zh-Hans.js",
-    "testcollation_zh-Hant.js",
+    "testcollation_zh-Hant.js"
 ];

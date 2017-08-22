@@ -21,7 +21,7 @@ if (typeof(ilib) === "undefined") {
     var ilib = require("../../../lib/ilib-node.js");
 }
 if (typeof(AlphabeticIndex) === "undefined") {
-    var AlphabeticIndex = require("../lib/AlphabeticIndex.js");
+    var AlphabeticIndex = require("../../../lib/AlphabeticIndex.js");
 }
 
 module.exports.testalphaindex = {
@@ -86,7 +86,7 @@ module.exports.testalphaindex = {
         test.ok(ai);
 
         test.equal("B", ai.getBucket("belarus"));
-        test.equal("B", ai.getBucket("Belarus");
+        test.equal("B", ai.getBucket("Belarus"));
 
         test.done();
     },
@@ -101,7 +101,7 @@ module.exports.testalphaindex = {
         test.ok(ai);
 
         test.equal("E", ai.getBucket("Élan"));
-        test.equal("E", ai.getBucket("ëieasdf");
+        test.equal("E", ai.getBucket("ëieasdf"));
 
         test.done();
     },
@@ -157,7 +157,7 @@ module.exports.testalphaindex = {
         test.ok(ai);
 
         test.equal("B", ai.addElement("belarus"));
-        test.equal("B", ai.addElement("Belarus");
+        test.equal("B", ai.addElement("Belarus"));
 
         test.done();
     },
@@ -172,7 +172,7 @@ module.exports.testalphaindex = {
         test.ok(ai);
 
         test.equal("E", ai.addElement("Élan"));
-        test.equal("E", ai.addElement("ëieasdf");
+        test.equal("E", ai.addElement("ëieasdf"));
 
         test.done();
     },
@@ -209,7 +209,7 @@ module.exports.testalphaindex = {
 
         var expected = {
             "A": ["alpha"],
-            "B": ["beta", "bravo"]
+            "B": ["beta", "bravo"],
             "E": ["echo", "epsilon", "eta"],
             "O": ["omicron"],
             "N": ["nu"],
@@ -220,7 +220,7 @@ module.exports.testalphaindex = {
             "G": ["gamma"]
         };
 
-        test.objectEquals(ai.getAllBuckets(), expected);
+        test.deepEqual(ai.getAllBuckets(), expected);
 
         test.done();
     },
@@ -255,7 +255,7 @@ module.exports.testalphaindex = {
             ai.addElement(item);
         });
 
-        test.objectEquals(ai.getElementCount(), 14);
+        test.deepEqual(ai.getElementCount(), 14);
 
         test.done();
     },
@@ -269,7 +269,7 @@ module.exports.testalphaindex = {
 
         test.ok(ai);
 
-        test.objectEquals(ai.getElementCount(), 0);
+        test.deepEqual(ai.getElementCount(), 0);
 
         test.done();
     },
@@ -314,7 +314,7 @@ module.exports.testalphaindex = {
             "gamma"
         ];
 
-        test.objectEquals(ai.getBucketCount(), 10);
+        test.deepEqual(ai.getBucketCount(), 10);
 
         test.done();
     },
@@ -351,7 +351,7 @@ module.exports.testalphaindex = {
             "gamma"
         ];
 
-        test.objectEquals(ai.getBucketCount(), 14);
+        test.deepEqual(ai.getBucketCount(), 14);
 
         test.done();
     },
@@ -406,7 +406,7 @@ module.exports.testalphaindex = {
             "Z"
         ];
 
-        test.objectEquals(ai.getBucketLabels(), expected);
+        test.deepEqual(ai.getBucketLabels(), expected);
 
         test.done();
     },
@@ -420,7 +420,7 @@ module.exports.testalphaindex = {
 
         test.ok(ai);
 
-        test.objectEquals(ai.getBucketLabels(), []);
+        test.deepEqual(ai.getBucketLabels(), []);
 
         test.done();
     },
@@ -488,7 +488,7 @@ module.exports.testalphaindex = {
             "#"
         ];
 
-        test.objectEquals(ai.getAllBucketLabels(), expected);
+        test.deepEqual(ai.getAllBucketLabels(), expected);
 
         test.done();
     },
@@ -533,7 +533,7 @@ module.exports.testalphaindex = {
             "#"
         ];
 
-        test.objectEquals(ai.getAllBucketLabels(), exptected);
+        test.deepEqual(ai.getAllBucketLabels(), exptected);
 
         test.done();
     },
@@ -593,7 +593,7 @@ module.exports.testalphaindex = {
             "#"
         ];
 
-        test.objectEquals(ai.getAllBucketLabels(), exptected);
+        test.deepEqual(ai.getAllBucketLabels(), exptected);
 
         test.done();
     },
@@ -608,7 +608,7 @@ module.exports.testalphaindex = {
         test.ok(ai);
 
         test.equal("#", ai.getBucket("300"));
-        test.equal("#", ai.getBucket("1024");
+        test.equal("#", ai.getBucket("1024"));
 
         test.done();
     },
@@ -647,7 +647,7 @@ module.exports.testalphaindex = {
 
         var expected = {
             "A": ["alpha"],
-            "B": ["beta", "bravo"]
+            "B": ["beta", "bravo"],
             "E": ["echo", "epsilon", "eta"],
             "O": ["omicron"],
             "N": ["nu"],
@@ -659,7 +659,7 @@ module.exports.testalphaindex = {
             "#": ["300", "69"]
         };
 
-        test.objectEquals(ai.getAllBuckets(), expected);
+        test.deepEqual(ai.getAllBuckets(), expected);
 
         test.done();
     },
@@ -674,7 +674,7 @@ module.exports.testalphaindex = {
         test.ok(ai);
 
         test.equal("*", ai.getBucket("* See below"));
-        test.equal("*", ai.getBucket("@TheRealDonaldDuck");
+        test.equal("*", ai.getBucket("@TheRealDonaldDuck"));
 
         test.done();
     },
@@ -714,7 +714,7 @@ module.exports.testalphaindex = {
         var expected = {
             "*": ["* See below", "@TheRealDonaldDuck"],
             "A": ["alpha"],
-            "B": ["beta", "bravo"]
+            "B": ["beta", "bravo"],
             "E": ["echo", "epsilon", "eta"],
             "O": ["omicron"],
             "N": ["nu"],
@@ -725,7 +725,7 @@ module.exports.testalphaindex = {
             "G": ["gamma"],
         };
 
-        test.objectEquals(ai.getAllBuckets(), expected);
+        test.deepEqual(ai.getAllBuckets(), expected);
 
         test.done();
     },
@@ -775,7 +775,7 @@ module.exports.testalphaindex = {
 
         var expected = {
             "A": ["alpha"],
-            "B": ["beta", "bravo"]
+            "B": ["beta", "bravo"],
             "E": ["echo", "epsilon", "eta"],
             "O": ["omicron"],
             "N": ["nu"],
@@ -786,7 +786,7 @@ module.exports.testalphaindex = {
             "G": ["gamma"]
         };
 
-        test.objectEquals(ai.getAllBuckets(), expected);
+        test.deepEqual(ai.getAllBuckets(), expected);
 
         test.done();
     },
@@ -820,7 +820,7 @@ module.exports.testalphaindex = {
 
         var expected = {
             "J": ["Jürgen"],
-            "G": ["Georg"]
+            "G": ["Georg"],
             "M": ["Matthias"],
             "H": ["Heinrich", "Heinz", "Hermann"],
             "F": ["Fritz"],
@@ -829,7 +829,7 @@ module.exports.testalphaindex = {
             "U": ["Ulrich"]
         };
 
-        test.objectEquals(ai.getAllBuckets(), expected);
+        test.deepEqual(ai.getAllBuckets(), expected);
 
         test.done();
     },
@@ -856,7 +856,7 @@ module.exports.testalphaindex = {
             "Karl",
             "Heinrich",
             "Ülrich",
-            "Ulrich"
+            "Ulrich",
             "Julia",
             "Juan",
             "Udrich",
@@ -871,7 +871,7 @@ module.exports.testalphaindex = {
 
         var expected = {
             "J": ["Juan", "Juergen", "Jürgen", "Judrich"],
-            "G": ["Georg"]
+            "G": ["Georg"],
             "M": ["Matthias"],
             "H": ["Heinrich", "Heinz", "Hermann"],
             "F": ["Fritz"],
@@ -880,7 +880,7 @@ module.exports.testalphaindex = {
             "U": ["Ualrich", "Ülrich", "Uelrich", "Udrich", "Ulrich"]
         };
 
-        test.objectEquals(ai.getAllBuckets(), expected);
+        test.deepEqual(ai.getAllBuckets(), expected);
 
         test.done();
     },
@@ -907,7 +907,7 @@ module.exports.testalphaindex = {
             "Karl",
             "Heinrich",
             "Ülrich",
-            "Ulrich"
+            "Ulrich",
             "Julia",
             "Juan",
             "Udrich",
@@ -922,7 +922,7 @@ module.exports.testalphaindex = {
 
         var expected = {
             "J": ["Juan", "Juergen", "Judrich", "Jürgen"],
-            "G": ["Georg"]
+            "G": ["Georg"],
             "M": ["Matthias"],
             "H": ["Heinrich", "Heinz", "Hermann"],
             "F": ["Fritz"],
@@ -931,7 +931,7 @@ module.exports.testalphaindex = {
             "U": ["Ualrich", "Uelrich", "Udrich", "Ulrich", "Ülrich"]
         };
 
-        test.objectEquals(ai.getAllBuckets(), expected);
+        test.deepEqual(ai.getAllBuckets(), expected);
 
         test.done();
     }
