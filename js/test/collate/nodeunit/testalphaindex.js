@@ -57,7 +57,7 @@ module.exports.testalphaindex = {
             locale: "qq-QQ"
         });
 
-        assert.ok(ai);
+        test.ok(ai);
 
         test.done();
     },
@@ -314,6 +314,10 @@ module.exports.testalphaindex = {
             "gamma"
         ];
 
+        items.forEach(function(item) {
+            ai.addElement(item);
+        });
+
         test.deepEqual(ai.getBucketCount(), 10);
 
         test.done();
@@ -351,8 +355,12 @@ module.exports.testalphaindex = {
             "gamma"
         ];
 
-        test.deepEqual(ai.getBucketCount(), 14);
+        items.forEach(function(item) {
+            ai.addElement(item);
+        });
 
+        test.deepEqual(ai.getBucketCount(), 14);
+        // A,B,C,D,E,G,I,K,L,M,N,O,P,T,Z
         test.done();
     },
 
@@ -387,6 +395,10 @@ module.exports.testalphaindex = {
             "mu",
             "gamma"
         ];
+
+        items.forEach(function(item) {
+            ai.addElement(item);
+        });
 
         var expected = [
             "A",
@@ -456,6 +468,10 @@ module.exports.testalphaindex = {
             "mu",
             "gamma"
         ];
+
+        items.forEach(function(item) {
+            ai.addElement(item);
+        });
 
         var expected = [
             "*",

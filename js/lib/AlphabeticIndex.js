@@ -140,12 +140,43 @@ var Collator = require("./Collator.js");
 var AlphabeticIndex = function (options) {
 	this.sync = true;
 	this.loadParams = {};
+	this.caseSensitive = false;
+	this.accentSensitive = false;
+	this.overflowLabel = "#";
+	this.inflowLabel = "-";
+	this.underflowLabel = "*";
+	this.style = "latin"
+	this.index = {};
 
 	if (options) {
 		if (options.locale) {
 			this.locale = (typeof(options.locale) === 'string') ? new Locale(options.locale) : options.locale;
 		}
 
+		if (typeof(options.caseSensitive) !== 'undefined') {
+			this.caseSensitive = options.caseSensitive;
+		}
+
+		if (typeof(options.style) !== 'undefined') {
+			this.style = options.style;
+		}
+
+		if (typeof(options.accentSensitive) !== 'undefined') {
+			this.accentSensitive = options.accentSensitive;
+		}
+
+		if (typeof(options.overflowLabel) !== 'undefined') {
+			this.overflowLabel = options.overflowLabel;
+		}
+
+		if (typeof(options.inflowLabel) !== 'undefined') {
+			this.inflowLabel = options.inflowLabel;
+		}
+
+		if (typeof(options.underflowLabel) !== 'undefined') {
+			this.underflowLabel = options.underflowLabel;
+		}
+		
 		if (typeof(options.sync) !== 'undefined') {
 			this.sync = (options.sync == true);
 		}
@@ -167,17 +198,17 @@ var AlphabeticIndex = function (options) {
 		locale: this.locale,
 		name: "collation.json",
 		sync: this.sync,
-		loadParams: this.loadParams,
+		loadParams: this.loadParams, 
 		callback: ilib.bind(this, function (collation) {
 			if (!collation) {
 				collation = ilib.data.collation;
 				var spec = this.locale.getSpec().replace(/-/g, '_');
 				Collator.cache[spec] = collation;
 			}
-			//this._init(collation);
+			this.collation = collation;
 			new LocaleInfo(this.locale, {
-				sync: this.sync,
-				loadParams: this.loadParams,
+				sync: sync,
+				loadParams: loadParams,
 				onLoad: ilib.bind(this, function(li) {
 					this.li = li;
 					if (this.ignorePunctuation) {
@@ -195,6 +226,48 @@ var AlphabeticIndex = function (options) {
 			});
 		})
 	});
+};
+
+
+/**
+ * 
+ * 
+ *
+ */
+AlphabeticIndex.prototype._isEquivalent = function(a,b) {
+	var aProps = Object.getOwnPropertyNames(a);
+    var bProps = Object.getOwnPropertyNames(b);
+
+    if (aProps.length != bProps.length) {
+        return false;
+    }
+
+    for (var i = 0; i < aProps.length; i++) {
+        var propName = aProps[i];
+
+        // If values of same property are not equal,
+        // objects are not equivalent
+        if (a[propName] !== b[propName]) {
+            return false;
+        }
+    }
+    return true;
+};
+
+/**
+ * 
+ * 
+ */
+AlphabeticIndex.prototype._getKeyByValue = function(value) {
+	var collator = this.collation[this.style].map;
+
+	for (var prop in collator) {
+		if (collator.hasOwnProperty(prop)) {
+			if (this._isEquivalent(collator[prop], value)) {
+				return prop;
+			}
+		}
+	}
 };
 
 /**
@@ -215,6 +288,18 @@ AlphabeticIndex.prototype.getLocale = function() {
  * this element was added
  */
 AlphabeticIndex.prototype.addElement = function(element) {
+	
+	var label = this.getBucket(element);
+	if (this.index[label] == undefined) {
+		this.index[label] = [element];
+	} else {
+		if (this.index[label].indexOf(element) == -1 ) {
+			this.index[label].push(element);
+		}
+		this.index[label].sort();
+	}
+
+	return label;
 };
 
 /**
@@ -240,6 +325,11 @@ AlphabeticIndex.prototype.addLabels = function(labels, start) {
  * first.
  */
 AlphabeticIndex.prototype.clear = function() {
+	for (var prop in this.index) {
+		if (this.index.hasOwnProperty(prop)){
+			this.index[prop] = "";
+		}
+	}
 };
 
 /**
@@ -264,6 +354,7 @@ AlphabeticIndex.prototype.clear = function() {
  * as per the description above.
  */
 AlphabeticIndex.prototype.getAllBuckets = function() {
+	return this.index;
 };
 
 /**
@@ -277,6 +368,32 @@ AlphabeticIndex.prototype.getAllBuckets = function() {
  * @returns {String} the label for the bucket for this element
  */
 AlphabeticIndex.prototype.getBucket = function(element) {
+	var label;
+	var firstChar;
+	var collationValue;
+	var baseValue = [];
+	var collator = this.collation[this.style].map;
+
+	if (element == undefined ) {
+		return;
+	}
+	
+	firstChar = element.charAt(0);
+	collationValue = collator[firstChar];
+	
+	baseValue[0] = collationValue[0];
+	label = this._getKeyByValue(baseValue);
+
+	return label;	
+};
+
+
+/**
+ * 
+ * 
+ */
+AlphabeticIndex.prototype.getDefaultSortStyle = function() {
+	return this.collation["default"];
 };
 
 /**
@@ -285,6 +402,8 @@ AlphabeticIndex.prototype.getBucket = function(element) {
  * @returns {number} the number of buckets in this index
  */
 AlphabeticIndex.prototype.getBucketCount = function() {
+	var count = Object.keys(this.index).length;
+	return count;
 };
 
 /**
@@ -298,6 +417,16 @@ AlphabeticIndex.prototype.getBucketCount = function() {
  * for this index in collation order
  */
 AlphabeticIndex.prototype.getBucketLabels = function() {
+	var buckets = this.index;
+	var label = new Array();
+
+	for (var prop in buckets) {
+		if (buckets.hasOwnProperty(prop)) {
+			label.push(prop);
+		}
+	}
+	label.sort();
+	return label;
 };
 
 /**
@@ -327,7 +456,9 @@ AlphabeticIndex.prototype.getCollator = function() {
  *
  * @returns {String} the label for the inflow buckets
  */
-AlphabeticIndex.prototype.getInflowLabel = function() {};
+AlphabeticIndex.prototype.getInflowLabel = function() {
+
+};
 
 /**
  * Get the default label used in the for overflow bucket.
@@ -343,7 +474,17 @@ AlphabeticIndex.prototype.getOverflowLabel = function() {};
  *
  * @returns {number} The number of elements in the index
  */
-AlphabeticIndex.prototype.getElementCount = function() {};
+AlphabeticIndex.prototype.getElementCount = function() {
+	var buckets = this.index;
+	var count = 0;
+
+	for (var prop in buckets) {
+		if (buckets.hasOwnProperty(prop)) {
+			count += buckets[prop].length;
+		}
+	}
+	return count;
+};
 
 /**
  * Get the default label used in underflow,
