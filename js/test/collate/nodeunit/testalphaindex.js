@@ -359,7 +359,7 @@ module.exports.testalphaindex = {
             ai.addElement(item);
         });
 
-        test.deepEqual(ai.getBucketCount(), 14);
+        test.deepEqual(ai.getBucketCount(), 15);
         // A,B,C,D,E,G,I,K,L,M,N,O,P,T,Z
         test.done();
     },
@@ -519,7 +519,7 @@ module.exports.testalphaindex = {
         test.ok(ai);
 
         var expected = [
-            "#",
+            "*",
             "A",
             "B",
             "C",
@@ -549,7 +549,7 @@ module.exports.testalphaindex = {
             "#"
         ];
 
-        test.deepEqual(ai.getAllBucketLabels(), exptected);
+        test.deepEqual(ai.getAllBucketLabels(), expected);
 
         test.done();
     },
@@ -566,7 +566,7 @@ module.exports.testalphaindex = {
         // example of an alphabet in Latin that is a different order than
         // English and where the accents matter at a primary level
         var expected = [
-            "#",
+            "*",
             "A",
             "Ā",
             "B",
@@ -609,7 +609,7 @@ module.exports.testalphaindex = {
             "#"
         ];
 
-        test.deepEqual(ai.getAllBucketLabels(), exptected);
+        test.deepEqual(ai.getAllBucketLabels(), expected);
 
         test.done();
     },
@@ -623,8 +623,8 @@ module.exports.testalphaindex = {
 
         test.ok(ai);
 
-        test.equal("#", ai.getBucket("300"));
-        test.equal("#", ai.getBucket("1024"));
+        test.equal("*", ai.getBucket("300"));
+        test.equal("*", ai.getBucket("1024"));
 
         test.done();
     },
@@ -662,6 +662,7 @@ module.exports.testalphaindex = {
         });
 
         var expected = {
+            "*": ["300", "69"],
             "A": ["alpha"],
             "B": ["beta", "bravo"],
             "E": ["echo", "epsilon", "eta"],
@@ -671,8 +672,7 @@ module.exports.testalphaindex = {
             "D": ["delta"],
             "Z": ["zeta"],
             "M": ["mu"],
-            "G": ["gamma"],
-            "#": ["300", "69"]
+            "G": ["gamma"]
         };
 
         test.deepEqual(ai.getAllBuckets(), expected);

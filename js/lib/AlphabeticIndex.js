@@ -145,7 +145,7 @@ var AlphabeticIndex = function (options) {
 	this.overflowLabel = "#";
 	this.inflowLabel = "-";
 	this.underflowLabel = "*";
-	this.style = "latin"
+	this.style = "standard"
 	this.index = {};
 
 	if (options) {
@@ -206,13 +206,14 @@ var AlphabeticIndex = function (options) {
 				Collator.cache[spec] = collation;
 			}
 			this.collation = collation;
+			this._init(collation);
 			new LocaleInfo(this.locale, {
-				sync: sync,
-				loadParams: loadParams,
+				sync: this.sync,
+				loadParams: this.loadParams,
 				onLoad: ilib.bind(this, function(li) {
 					this.li = li;
 					if (this.ignorePunctuation) {
-		    			isPunct._init(sync, loadParams, ilib.bind(this, function() {
+		    			isPunct._init(this.sync, this.loadParams, ilib.bind(this, function() {
 							if (options && typeof(options.onLoad) === 'function') {
 								options.onLoad(this);
 							}
@@ -228,6 +229,21 @@ var AlphabeticIndex = function (options) {
 	});
 };
 
+
+/**
+ * 
+ * 
+ *
+ */
+AlphabeticIndex.prototype._init = function(collation) {
+	this.boundary = new Array();
+	if (this.style === 'standard') {
+		this.style = this.collation["default"];
+	}
+	
+	this.collationMap = collation[this.style].map;
+	this.boundary = this.collation[this.style].boundary;
+}
 
 /**
  * 
@@ -259,11 +275,9 @@ AlphabeticIndex.prototype._isEquivalent = function(a,b) {
  * 
  */
 AlphabeticIndex.prototype._getKeyByValue = function(value) {
-	var collator = this.collation[this.style].map;
-
-	for (var prop in collator) {
-		if (collator.hasOwnProperty(prop)) {
-			if (this._isEquivalent(collator[prop], value)) {
+	for (var prop in this.collationMap) {
+		if (this.collationMap.hasOwnProperty(prop)) {
+			if (this._isEquivalent(this.collationMap[prop], value)) {
 				return prop;
 			}
 		}
@@ -372,17 +386,23 @@ AlphabeticIndex.prototype.getBucket = function(element) {
 	var firstChar;
 	var collationValue;
 	var baseValue = [];
-	var collator = this.collation[this.style].map;
-
+	
 	if (element == undefined ) {
 		return;
 	}
 	
 	firstChar = element.charAt(0);
-	collationValue = collator[firstChar];
+	collationValue = this.collationMap[firstChar];
 	
 	baseValue[0] = collationValue[0];
-	label = this._getKeyByValue(baseValue);
+	
+	if (baseValue[0] < this.boundary[0]) {
+		label = this.underflowLabel;
+	} else if (baseValue[0] > this.boundary[1]){
+		label = this.overflowLabel;
+	} else {
+		label = this._getKeyByValue(baseValue);	
+	}
 
 	return label;	
 };
@@ -438,6 +458,19 @@ AlphabeticIndex.prototype.getBucketLabels = function() {
  * for this index in collation order
  */
 AlphabeticIndex.prototype.getAllBucketLabels = function() {
+	var label, i;
+
+	var allBucketLabels = new Array();	
+	allBucketLabels.push(this.underflowLabel);
+
+	for (i = this.boundary[0]; i <= this.boundary[1]; i++) {
+		label = this._getKeyByValue([i]);
+		allBucketLabels.push(label);
+	}
+
+	allBucketLabels.push(this.overflowLabel);
+
+	return allBucketLabels
 };
 
 /**
