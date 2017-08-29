@@ -580,7 +580,6 @@ module.exports.testalphaindex = {
             "Ģ",
             "H",
             "I",
-            "Y",
             "Ī",
             "J",
             "K",
@@ -591,7 +590,6 @@ module.exports.testalphaindex = {
             "N",
             "Ņ",
             "O",
-            "Ō",
             "P",
             "Q",
             "R",
@@ -750,10 +748,10 @@ module.exports.testalphaindex = {
         test.expect(1);
         var ai = new AlphabeticIndex({
             locale: "de-DE",
-            caseSensitive: false,
+            sync: false,
+            //caseSensitive: false,
             onLoad: function(ai) {
-                assert.ok(ai);
-
+                test.ok(ai);
                 test.done();
             }
         });
@@ -812,7 +810,7 @@ module.exports.testalphaindex = {
 
         var ai = new AlphabeticIndex({
             locale: "de-DE",
-            style: "standard"
+            style: "standard" //"latin"
         });
 
         test.ok(ai);
@@ -835,18 +833,16 @@ module.exports.testalphaindex = {
         });
 
         var expected = {
-            "J": ["Jürgen"],
-            "G": ["Georg"],
-            "M": ["Matthias"],
-            "H": ["Heinrich", "Heinz", "Hermann"],
             "F": ["Fritz"],
-            "J": ["Josef"],
+            "G": ["Georg"],
+            "H": ["Heinrich", "Heinz", "Hermann"],
+            "J": ["Josef","Jürgen"],
             "K": ["Karl"],
-            "U": ["Ulrich"]
+            "M": ["Matthias"],
+            "U": ["Ulrich"]            
         };
 
         test.deepEqual(ai.getAllBuckets(), expected);
-
         test.done();
     },
 
@@ -886,14 +882,14 @@ module.exports.testalphaindex = {
         });
 
         var expected = {
-            "J": ["Juan", "Juergen", "Jürgen", "Judrich"],
-            "G": ["Georg"],
-            "M": ["Matthias"],
-            "H": ["Heinrich", "Heinz", "Hermann"],
             "F": ["Fritz"],
-            "J": ["Josef"],
+            "G": ["Georg"],
+            "H": ["Heinrich", "Heinz", "Hermann"],
+            "J": ["Josef", "Juan", "Judrich", "Juergen", "Julia", "Jürgen"],
             "K": ["Karl"],
-            "U": ["Ualrich", "Ülrich", "Uelrich", "Udrich", "Ulrich"]
+            "M": ["Matthias"],
+            "U": ["Ualrich", "Udrich", "Uelrich",  "Ulrich"],
+            "Ü": ["Ülrich"]
         };
 
         test.deepEqual(ai.getAllBuckets(), expected);

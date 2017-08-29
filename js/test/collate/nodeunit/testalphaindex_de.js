@@ -187,6 +187,10 @@ module.exports.testalphaindex_de = {
             "gamma"
         ];
 
+        items.forEach(function(item) {
+            ai.addElement(item);
+        });
+
         var expected = [
             "A",
             "B",
@@ -314,14 +318,14 @@ module.exports.testalphaindex_de = {
         });
 
         var expected = {
-            "J": ["Juan", "Juergen", "Jürgen", "Judrich"],
-            "G": ["Georg"],
-            "M": ["Matthias"],
-            "H": ["Heinrich", "Heinz", "Hermann"],
             "F": ["Fritz"],
-            "J": ["Josef"],
+            "G": ["Georg"],
+            "H": ["Heinrich", "Heinz", "Hermann"],
+            "J": ["Josef", "Juan", "Judrich", "Juergen", "Julia", "Jürgen"],
             "K": ["Karl"],
-            "U": ["Ualrich", "Ülrich", "Uelrich", "Udrich", "Ulrich"]
+            "M": ["Matthias"],
+            "U": ["Ualrich", "Udrich", "Uelrich", "Ulrich"],
+            "Ü": ["Ülrich"]
         };
 
         test.deepEqual(ai.getAllBuckets(), expected);

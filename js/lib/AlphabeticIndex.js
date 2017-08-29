@@ -90,11 +90,22 @@ var Collator = require("./Collator.js");
  * <li><i>locale</i> - locale or localeSpec to use to parse the address. If not
  * specified, this function will use the current ilib locale
  *
- * <li><i>caseSensitive</i> - set to true if you want this index to be
- * case-sensitive. Default: false
- *
- * <li><i>accentSensitive</i> - set to true if you want this index to be
- * case- and accent-sensitive. (Both must be together.) Default: false
+ * <li><i>sensitivity</i> - String. Sensitivity or strength of collator. This is one of 
+ * "primary", "base", "secondary", "accent", "tertiary", "case", "quaternary", or 
+ * "variant". Default: "primary"
+ * <ol>
+ * <li>base or primary - Only the primary distinctions between characters are significant.
+ * Another way of saying that is that the collator will be case-, accent-, and 
+ * variation-insensitive, and only distinguish between the base characters
+ * <li>case or secondary - Both the primary and secondary distinctions between characters
+ * are significant. That is, the collator will be accent- and variation-insensitive
+ * and will distinguish between base characters and character case.
+ * <li>accent or tertiary - The prispmary, secondary, and tertiary distinctions between
+ * characters are all significant. That is, the collator will be 
+ * variation-insensitive, but accent-, case-, and base-character-sensitive. 
+ * <li>variant or quaternary - All distinctions between characters are significant. That is,
+ * the algorithm is base character-, case-, accent-, and variation-sensitive.
+ * </ol>
  *
  * <i><i>style</i> - the style of collation to use for this index.
  * For some locales, there are different styles of collating strings depending
@@ -145,7 +156,9 @@ var AlphabeticIndex = function (options) {
 	this.overflowLabel = "#";
 	this.inflowLabel = "-";
 	this.underflowLabel = "*";
-	this.style = "standard"
+	this.style = "standard";
+	this.sensitivity = 'base';
+
 	this.index = {};
 
 	if (options) {
@@ -153,16 +166,33 @@ var AlphabeticIndex = function (options) {
 			this.locale = (typeof(options.locale) === 'string') ? new Locale(options.locale) : options.locale;
 		}
 
-		if (typeof(options.caseSensitive) !== 'undefined') {
-			this.caseSensitive = options.caseSensitive;
+		if (options.sensitivity) {
+			switch (options.sensitivity) {
+				case 'primary':
+				case 'base':
+					this.sensitivity = "base";
+					this.level = 1;
+					break;
+				case 'secondary':
+				case 'accent':
+					this.sensitivity = "accent";
+					this.level = 2;
+					break;
+				case 'tertiary':
+				case 'case':
+					this.sensitivity = "case";
+					this.level = 3;
+					break;
+				case 'quaternary':
+				case 'variant':
+					this.sensitivity = "variant";
+					this.level = 4;
+					break;
+			}
 		}
 
 		if (typeof(options.style) !== 'undefined') {
 			this.style = options.style;
-		}
-
-		if (typeof(options.accentSensitive) !== 'undefined') {
-			this.accentSensitive = options.accentSensitive;
 		}
 
 		if (typeof(options.overflowLabel) !== 'undefined') {
@@ -275,6 +305,7 @@ AlphabeticIndex.prototype._isEquivalent = function(a,b) {
  * 
  */
 AlphabeticIndex.prototype._getKeyByValue = function(value) {
+
 	for (var prop in this.collationMap) {
 		if (this.collationMap.hasOwnProperty(prop)) {
 			if (this._isEquivalent(this.collationMap[prop], value)) {
@@ -390,20 +421,24 @@ AlphabeticIndex.prototype.getBucket = function(element) {
 	if (element == undefined ) {
 		return;
 	}
-	
+
 	firstChar = element.charAt(0);
+
 	collationValue = this.collationMap[firstChar];
 	
-	baseValue[0] = collationValue[0];
 	
-	if (baseValue[0] < this.boundary[0]) {
-		label = this.underflowLabel;
-	} else if (baseValue[0] > this.boundary[1]){
-		label = this.overflowLabel;
-	} else {
-		label = this._getKeyByValue(baseValue);	
+	if (typeof collationValue[0] === 'number') {
+		baseValue[0] = collationValue[0];
+		if (baseValue[0] < this.boundary[0]) {
+			label = this.underflowLabel;
+		} else if (baseValue[0] > this.boundary[1]){
+			label = this.overflowLabel;
+		} else {
+			label = this._getKeyByValue(baseValue);	
+		}	
+	} else if (typeof collationValue[0] === 'object') {
+		label = this._getKeyByValue(collationValue);
 	}
-
 	return label;	
 };
 
