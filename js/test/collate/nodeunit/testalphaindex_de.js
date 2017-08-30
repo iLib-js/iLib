@@ -73,7 +73,7 @@ module.exports.testalphaindex_de = {
     },
 
     testAlphaIndexGetBucketAccentInsensitive_deDE: function(test) {
-        test.expect(3);
+        test.expect(7);
 
         var ai = new AlphabeticIndex({
             locale: "de-DE"
@@ -84,7 +84,7 @@ module.exports.testalphaindex_de = {
         test.equal("U", ai.getBucket("über"));
         test.equal("A", ai.getBucket("änderen"));
         test.equal("O", ai.getBucket("öffenen"));
-        
+          
         test.equal("U", ai.getBucket("Über"));
         test.equal("A", ai.getBucket("Änderen"));
         test.equal("O", ai.getBucket("Öffenen"));
