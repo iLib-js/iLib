@@ -5,7 +5,7 @@
 		"scripts": ["Latn"],
 		"bits": [5,3,1,1],
 		"keysize": [8,8,12,12],
-		"boundary":[0,25],
+		"flowBoundaries":[0,25],
 		"map": {
 			"A":[0],
 			"B":[1],

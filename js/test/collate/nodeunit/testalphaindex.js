@@ -35,19 +35,29 @@ module.exports.testalphaindex = {
         var ai = new AlphabeticIndex();
 
         test.ok(ai);
-
         test.done();
     },
 
     testAlphaIndexConstructorWithParams: function(test) {
         test.expect(1);
         var ai = new AlphabeticIndex({
-            locale: "de-DE",
+            locale: "en-US",
             caseSensitive: false
         });
 
         test.ok(ai);
 
+        test.done();
+    },
+
+    testAlphaIndexgetDefaultIndexStyle: function(test) {
+        test.expect(2);
+        var ai = new AlphabeticIndex({
+            locale: "en-US"
+        });
+
+        test.ok(ai);
+        test.equal("latin", ai.getDefaultIndexStyle());
         test.done();
     },
 
@@ -58,7 +68,6 @@ module.exports.testalphaindex = {
         });
 
         test.ok(ai);
-
         test.done();
     },
 
@@ -70,9 +79,7 @@ module.exports.testalphaindex = {
         });
 
         test.ok(ai);
-
         test.equal("A", ai.getBucket("abacus"));
-
         test.done();
     },
 
@@ -84,7 +91,6 @@ module.exports.testalphaindex = {
         });
 
         test.ok(ai);
-
         test.equal("B", ai.getBucket("belarus"));
         test.equal("B", ai.getBucket("Belarus"));
 
@@ -115,9 +121,7 @@ module.exports.testalphaindex = {
         });
 
         test.ok(ai);
-
         test.equal("A", ai.addElement("abacus"));
-
         test.done();
     },
 
@@ -129,7 +133,6 @@ module.exports.testalphaindex = {
         });
 
         test.ok(ai);
-
         test.equal("A", ai.addElement("abacus"));
 
         var buckets = ai.getAllBuckets();
@@ -140,12 +143,9 @@ module.exports.testalphaindex = {
         var a = buckets.A;
 
         test.equal(a.length, 1);
-
         test.equal(a[0], "abacus");
-
         test.done();
     },
-
 
     testAlphaIndexENUSAddElementRightBucketCaseInsensitive: function(test) {
         test.expect(3);
@@ -155,7 +155,6 @@ module.exports.testalphaindex = {
         });
 
         test.ok(ai);
-
         test.equal("B", ai.addElement("belarus"));
         test.equal("B", ai.addElement("Belarus"));
 
@@ -170,7 +169,6 @@ module.exports.testalphaindex = {
         });
 
         test.ok(ai);
-
         test.equal("E", ai.addElement("Élan"));
         test.equal("E", ai.addElement("ëieasdf"));
 
@@ -268,9 +266,7 @@ module.exports.testalphaindex = {
         });
 
         test.ok(ai);
-
         test.deepEqual(ai.getElementCount(), 0);
-
         test.done();
     },
 
@@ -282,9 +278,7 @@ module.exports.testalphaindex = {
         });
 
         test.ok(ai);
-
         test.equal(ai.getBucketCount(), 0);
-
         test.done();
     },
 
@@ -360,7 +354,6 @@ module.exports.testalphaindex = {
         });
 
         test.deepEqual(ai.getBucketCount(), 15);
-        // A,B,C,D,E,G,I,K,L,M,N,O,P,T,Z
         test.done();
     },
 
@@ -419,7 +412,6 @@ module.exports.testalphaindex = {
         ];
 
         test.deepEqual(ai.getBucketLabels(), expected);
-
         test.done();
     },
 
@@ -747,7 +739,7 @@ module.exports.testalphaindex = {
     testAlphaIndexConstructorAsync: function(test) {
         test.expect(1);
         var ai = new AlphabeticIndex({
-            locale: "de-DE",
+            locale: "en-US",
             sync: false,
             //caseSensitive: false,
             onLoad: function(ai) {
@@ -804,148 +796,148 @@ module.exports.testalphaindex = {
 
         test.done();
     },
-
-    testAlphaIndexDEDEStandardStyle: function(test) {
-        test.expect(2);
+    testAlphaIndexENUSgetflowLebels: function(test) {
+        test.expect(4);
 
         var ai = new AlphabeticIndex({
-            locale: "de-DE",
-            style: "standard" //"latin"
+            locale: "en-US"
         });
 
         test.ok(ai);
 
-        var items = [
-            "Jürgen",
-            "Georg",
-            "Matthias",
-            "Heinz",
-            "Fritz",
-            "Hermann",
-            "Josef",
-            "Karl",
-            "Heinrich",
-            "Ulrich"
-        ];
-
-        items.forEach(function(item) {
-            ai.addElement(item);
-        });
-
-        var expected = {
-            "F": ["Fritz"],
-            "G": ["Georg"],
-            "H": ["Heinrich", "Heinz", "Hermann"],
-            "J": ["Josef","Jürgen"],
-            "K": ["Karl"],
-            "M": ["Matthias"],
-            "U": ["Ulrich"]            
-        };
-
-        test.deepEqual(ai.getAllBuckets(), expected);
+        test.equal("-", ai.getInflowLabel());
+        test.equal("#", ai.getOverflowLabel());
+        test.equal("*", ai.getUnderflowLabel());
+        
         test.done();
     },
 
-    testAlphaIndexDEDEPhonebookStyle: function(test) {
-        test.expect(2);
+    testAlphaIndexENUSsetflowLebels: function(test) {
+        test.expect(4);
 
         var ai = new AlphabeticIndex({
-            locale: "de-DE",
-            style: "phonebook"
+            locale: "en-US"
         });
 
         test.ok(ai);
 
-        var items = [
-            "Jürgen",
-            "Georg",
-            "Matthias",
-            "Heinz",
-            "Uelrich",
-            "Fritz",
-            "Hermann",
-            "Josef",
-            "Karl",
-            "Heinrich",
-            "Ülrich",
-            "Ulrich",
-            "Julia",
-            "Juan",
-            "Udrich",
-            "Juergen",
-            "Ualrich",
-            "Judrich"
-        ];
+        ai.setInflowLabel("$");
+        ai.setOverflowLabel("@");
+        ai.setUnderflowLabel("^");
 
-        items.forEach(function(item) {
-            ai.addElement(item);
-        });
+        test.equal("$", ai.getInflowLabel());
+        test.equal("@", ai.getOverflowLabel());
+        test.equal("^", ai.getUnderflowLabel());
 
-        var expected = {
-            "F": ["Fritz"],
-            "G": ["Georg"],
-            "H": ["Heinrich", "Heinz", "Hermann"],
-            "J": ["Josef", "Juan", "Judrich", "Juergen", "Julia", "Jürgen"],
-            "K": ["Karl"],
-            "M": ["Matthias"],
-            "U": ["Ualrich", "Udrich", "Uelrich",  "Ulrich"],
-            "Ü": ["Ülrich"]
-        };
-
-        test.deepEqual(ai.getAllBuckets(), expected);
-
+        
         test.done();
     },
 
-    testAlphaIndexDEDEDictionaryStyle: function(test) {
+    testAlphaIndexENUSgetCollator: function(test) {
         test.expect(2);
 
         var ai = new AlphabeticIndex({
-            locale: "de-DE",
-            style: "dictionary"
+            locale: "en-US"
+        });
+
+        test.ok(ai);
+        test.ok(ai.getCollator());
+        
+        test.done();
+    },
+
+    testAlphaIndexENUSaddLabels: function(test) {
+        test.expect(2);
+
+        var ai = new AlphabeticIndex({
+            locale: "en-US"
         });
 
         test.ok(ai);
 
-        var items = [
-            "Jürgen",
-            "Georg",
-            "Matthias",
-            "Heinz",
-            "Uelrich",
-            "Fritz",
-            "Hermann",
-            "Josef",
-            "Karl",
-            "Heinrich",
-            "Ülrich",
-            "Ulrich",
-            "Julia",
-            "Juan",
-            "Udrich",
-            "Juergen",
-            "Ualrich",
-            "Judrich"
+        var expected = [
+            "*",
+            "A",
+            "B",
+            "C",
+            "D",
+            "E",
+            "F",
+            "G",
+            "H",
+            "I",
+            "J",
+            "K",
+            "L",
+            "M",
+            "N",
+            "O",
+            "P",
+            "Q",
+            "R",
+            "S",
+            "T",
+            "U",
+            "V",
+            "W",
+            "X",
+            "Y",
+            "Z",
+            "#",
+            "@@",
+            "$$$"
         ];
+        
+        ai.addLabels(["@@","$$$"]);
+        test.deepEqual(ai.getAllBucketLabels(), expected);
+        test.done();
+    },
+    testAlphaIndexENUSaddLabelswithPosition: function(test) {
+        test.expect(2);
 
-        items.forEach(function(item) {
-            ai.addElement(item);
+        var ai = new AlphabeticIndex({
+            locale: "en-US"
         });
 
-        var expected = {
-            "J": ["Juan", "Juergen", "Judrich", "Jürgen"],
-            "G": ["Georg"],
-            "M": ["Matthias"],
-            "H": ["Heinrich", "Heinz", "Hermann"],
-            "F": ["Fritz"],
-            "J": ["Josef"],
-            "K": ["Karl"],
-            "U": ["Ualrich", "Uelrich", "Udrich", "Ulrich", "Ülrich"]
-        };
+        test.ok(ai);
 
-        test.deepEqual(ai.getAllBuckets(), expected);
-
+        var expected = [
+            "*",
+            "A",
+            "B",
+            "C",
+            "@@",
+            "$$$",
+            "D",
+            "E",
+            "F",
+            "G",
+            "H",
+            "I",
+            "J",
+            "K",
+            "L",
+            "M",
+            "N",
+            "O",
+            "P",
+            "Q",
+            "R",
+            "S",
+            "T",
+            "U",
+            "V",
+            "W",
+            "X",
+            "Y",
+            "Z",
+            "#"
+        ];
+        
+        ai.addLabels(["@@","$$$"],3);
+        test.deepEqual(ai.getAllBucketLabels(), expected);
         test.done();
     }
+
 
 };

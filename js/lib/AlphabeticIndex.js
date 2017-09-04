@@ -165,7 +165,7 @@ var AlphabeticIndex = function (options) {
 		if (options.locale) {
 			this.locale = (typeof(options.locale) === 'string') ? new Locale(options.locale) : options.locale;
 		}
-
+		/*
 		if (options.sensitivity) {
 			switch (options.sensitivity) {
 				case 'primary':
@@ -190,6 +190,7 @@ var AlphabeticIndex = function (options) {
 					break;
 			}
 		}
+		*/
 
 		if (typeof(options.style) !== 'undefined') {
 			this.style = options.style;
@@ -237,6 +238,7 @@ var AlphabeticIndex = function (options) {
 			}
 			this.collation = collation;
 			this._init(collation);
+
 			new LocaleInfo(this.locale, {
 				sync: this.sync,
 				loadParams: this.loadParams,
@@ -266,13 +268,23 @@ var AlphabeticIndex = function (options) {
  *
  */
 AlphabeticIndex.prototype._init = function(collation) {
-	this.boundary = new Array();
+	this.flowBoundaries = new Array();
+	
 	if (this.style === 'standard') {
 		this.style = this.collation["default"];
 	}
 	
 	this.collationMap = collation[this.style].map;
-	this.boundary = this.collation[this.style].boundary;
+	this.flowBoundaries = this.collation[this.style].flowBoundaries;
+
+	if (this.collationMap === undefined && 
+		typeof(collation[this.style]) === 'string') {
+
+		this.style = collation[this.style];
+		this.collation = collation[this.style];
+		this.collationMap = collation[this.style].map;
+		this.flowBoundaries = this.collation.flowBoundaries;
+	}	
 }
 
 /**
@@ -343,7 +355,6 @@ AlphabeticIndex.prototype.addElement = function(element) {
 		}
 		this.index[label].sort();
 	}
-
 	return label;
 };
 
@@ -362,6 +373,19 @@ AlphabeticIndex.prototype.addElement = function(element) {
  * labels list to add these new labels
  */
 AlphabeticIndex.prototype.addLabels = function(labels, start) {
+	this.getAllBucketLabels();
+
+	if (start === undefined ||
+		start < this.flowBoundaries[0] ||
+		start > this.flowBoundaries[1] ) {
+
+		for (var i=0; i < labels.length; i++) {
+		   this.allBucketLabels.push(labels[i]);
+		}
+
+	} else {
+
+	}
 };
 
 /**
@@ -423,21 +447,20 @@ AlphabeticIndex.prototype.getBucket = function(element) {
 	}
 
 	firstChar = element.charAt(0);
-
 	collationValue = this.collationMap[firstChar];
-	
 	
 	if (typeof collationValue[0] === 'number') {
 		baseValue[0] = collationValue[0];
-		if (baseValue[0] < this.boundary[0]) {
+		if (baseValue[0] < this.flowBoundaries[0]) {
 			label = this.underflowLabel;
-		} else if (baseValue[0] > this.boundary[1]){
+		} else if (baseValue[0] > this.flowBoundaries[1]){
 			label = this.overflowLabel;
 		} else {
 			label = this._getKeyByValue(baseValue);	
 		}	
 	} else if (typeof collationValue[0] === 'object') {
-		label = this._getKeyByValue(collationValue);
+		baseValue[0] = collationValue[0][0];
+		label = this._getKeyByValue(baseValue);
 	}
 	return label;	
 };
@@ -447,7 +470,7 @@ AlphabeticIndex.prototype.getBucket = function(element) {
  * 
  * 
  */
-AlphabeticIndex.prototype.getDefaultSortStyle = function() {
+AlphabeticIndex.prototype.getDefaultIndexStyle = function() {
 	return this.collation["default"];
 };
 
@@ -495,17 +518,21 @@ AlphabeticIndex.prototype.getBucketLabels = function() {
 AlphabeticIndex.prototype.getAllBucketLabels = function() {
 	var label, i;
 
-	var allBucketLabels = new Array();	
-	allBucketLabels.push(this.underflowLabel);
-
-	for (i = this.boundary[0]; i <= this.boundary[1]; i++) {
-		label = this._getKeyByValue([i]);
-		allBucketLabels.push(label);
+	if (this.allBucketLabels) {
+		return this.allBucketLabels;
 	}
 
-	allBucketLabels.push(this.overflowLabel);
+	this.allBucketLabels = new Array();	
+	this.allBucketLabels.push(this.underflowLabel);
 
-	return allBucketLabels
+	for (i = this.flowBoundaries[0]; i <= this.flowBoundaries[1]; i++) {
+		label = this._getKeyByValue([i]);
+		this.allBucketLabels.push(label);
+	}
+
+	this.allBucketLabels.push(this.overflowLabel);
+
+	return this.allBucketLabels;
 };
 
 /**
@@ -516,6 +543,7 @@ AlphabeticIndex.prototype.getAllBucketLabels = function() {
  * in this index
  */
 AlphabeticIndex.prototype.getCollator = function() {
+	return this.collation;
 };
 
 /**
@@ -525,7 +553,7 @@ AlphabeticIndex.prototype.getCollator = function() {
  * @returns {String} the label for the inflow buckets
  */
 AlphabeticIndex.prototype.getInflowLabel = function() {
-
+	return this.inflowLabel;
 };
 
 /**
@@ -534,7 +562,10 @@ AlphabeticIndex.prototype.getInflowLabel = function() {
  *
  * @return {String} the overflow bucket label
  */
-AlphabeticIndex.prototype.getOverflowLabel = function() {};
+AlphabeticIndex.prototype.getOverflowLabel = function() {
+	return this.overflowLabel;
+};
+
 
 /**
  * Return the total number of elements in the index. This includes
@@ -561,14 +592,18 @@ AlphabeticIndex.prototype.getElementCount = function() {
  *
  * @returns {String} the label used for underflow elements
  */
-AlphabeticIndex.prototype.getUnderflowLabel = function() {};
+AlphabeticIndex.prototype.getUnderflowLabel = function() {
+	return this.underflowLabel;
+};
 
 /**
  * Set the inflow bucket label.
  *
  * @param {String} inflowLabel the label to use for the inflow buckets
  */
-AlphabeticIndex.prototype.setInflowLabel = function(inflowLabel) {};
+AlphabeticIndex.prototype.setInflowLabel = function(inflowLabel) {
+	this.inflowLabel = inflowLabel;
+};
 
 
 /**
@@ -576,7 +611,9 @@ AlphabeticIndex.prototype.setInflowLabel = function(inflowLabel) {};
  *
  * @param {String} overflowLabel the label to use for the overflow buckets
  */
-AlphabeticIndex.prototype.setOverflowLabel = function(overflowLabel) {};
+AlphabeticIndex.prototype.setOverflowLabel = function(overflowLabel) {
+	this.overflowLabel = overflowLabel;
+};
 
 
 /**
@@ -584,6 +621,8 @@ AlphabeticIndex.prototype.setOverflowLabel = function(overflowLabel) {};
  *
  * @param {String} underflowLabel the label to use for the underflow buckets
  */
-AlphabeticIndex.prototype.setUnderflowLabel = function(underflowLabel) {};
+AlphabeticIndex.prototype.setUnderflowLabel = function(underflowLabel) {
+	this.underflowLabel = underflowLabel;
+};
 
 module.exports = AlphabeticIndex;

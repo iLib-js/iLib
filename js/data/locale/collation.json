@@ -77,7 +77,7 @@
 		"scripts": ["Latn"],
 		"bits": [7,3,1,1],
 		"keysize":[8,12,12,12],
-                "boundary":[33,58],
+                "flowBoundaries":[33,58],
 		"map": {
 			"\t": [0],
 			"\n": [0,1],
