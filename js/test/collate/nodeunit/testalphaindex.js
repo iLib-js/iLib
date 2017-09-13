@@ -905,9 +905,9 @@ module.exports.testalphaindex = {
             "*",
             "A",
             "B",
-            "C",
             "@@",
             "$$$",
+            "C",
             "D",
             "E",
             "F",
@@ -934,7 +934,7 @@ module.exports.testalphaindex = {
             "#"
         ];
         
-        ai.addLabels(["@@","$$$"],3);
+        ai.addLabels(["@@","$$$"], 3);
         test.deepEqual(ai.getAllBucketLabels(), expected);
         test.done();
     }

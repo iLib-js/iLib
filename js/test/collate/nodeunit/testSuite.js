@@ -23,6 +23,7 @@ var modules = {};
 var suites = [
     "testalphaindex.js",
     "testalphaindex_de.js",
+    "testalphaindex_ko.js",
     "testcollation.js",
     "testcollation_cs.js",
     "testcollation_da.js",
