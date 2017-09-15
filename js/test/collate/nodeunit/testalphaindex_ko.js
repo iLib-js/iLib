@@ -48,7 +48,7 @@ module.exports.testalphaindex_ko = {
         });
 
         test.ok(ai);
-        test.equal("korean", ai.getDefaultIndexStyle());
+        test.equal("korean", ai.getIndexStyle());
         test.done();
     },
 
@@ -64,7 +64,7 @@ module.exports.testalphaindex_ko = {
         test.done();
     },
 
-    testAlphaIndexKOKRGetBucketCaseInsensitive: function(test) {
+    testAlphaIndexKOKRGetBucket: function(test) {
         test.expect(3);
 
         var ai = new AlphabeticIndex({
@@ -196,7 +196,6 @@ module.exports.testalphaindex_ko = {
             "나무"
         ];
 
-
         items.forEach(function(item) {
             ai.addElement(item);
         });
@@ -281,7 +280,7 @@ module.exports.testalphaindex_ko = {
             "딸기",
             "고구마",
             "도라지",
-	  "고구마",
+            "고구마",
             "컵",
             "자석",
             "고무",
@@ -326,7 +325,6 @@ module.exports.testalphaindex_ko = {
             "병",
             "커피"
         ];
-
 
         items.forEach(function(item) {
             ai.addElement(item);
@@ -459,7 +457,6 @@ module.exports.testalphaindex_ko = {
         ];
 
         test.deepEqual(ai.getAllBucketLabels(), expected);
-
         test.done();
     },
 
@@ -557,8 +554,8 @@ module.exports.testalphaindex_ko = {
         test.ok(ai);
 
         var items = [
-          "Apple",
-          "Banana",  
+            "Apple",
+            "Banana",  
             "김철수",
             "김영희",
             "송현경",
@@ -578,8 +575,7 @@ module.exports.testalphaindex_ko = {
             "장은경",
             "임민성",
             "주광수",
-            "박세진",
-          "￦300"
+            "박세진"
         ];
 
         items.forEach(function(item) {
@@ -587,17 +583,15 @@ module.exports.testalphaindex_ko = {
         });
 
         var expected = {
-             "*": ["Apple", "Banana"],
-              "ㄱ": ["강성진","김영희","김철수"],
-              "ㅁ": ["민예은"],
-              "ㅂ": ["박세진"],
-              "ㅅ": ["서수빈", "송현경", "성수민"],
-              "ㅇ": ["예지원","이영자", "임민성"],
-              "ㅈ": ["장은경","정경자", "정미경", "주광수","진현주"],
-              "ㅊ": ["최준호", "정미경"],
-              "ㅎ": ["하춘자"],
-              "#": ["￦300"]
-
+            "*": ["Apple", "Banana"],
+            "ㄱ": ["강성진","김영희","김철수"],
+            "ㅁ": ["민예은"],
+            "ㅂ": ["박세진"],
+            "ㅅ": ["서수빈", "성수민", "송현경"],
+            "ㅇ": ["예지원","이영자", "임민성", "임성훈"],
+            "ㅈ": ["장유진", "장은경","정경자", "정미경", "주광수","진현주"],
+            "ㅊ": ["최준호"],
+            "ㅎ": ["하춘자"]
         };
 
         test.deepEqual(ai.getAllBuckets(), expected);
@@ -609,7 +603,6 @@ module.exports.testalphaindex_ko = {
         var ai = new AlphabeticIndex({
             locale: "ko-KR",
             sync: false,
-            //caseSensitive: false,
             onLoad: function(ai) {
                 test.ok(ai);
                 test.done();
@@ -665,7 +658,7 @@ module.exports.testalphaindex_ko = {
         test.done();
     },
     testAlphaIndexKOKRgetflowLebels: function(test) {
-        test.expect(4);
+        test.expect(3);
 
         var ai = new AlphabeticIndex({
             locale: "ko-KR"
@@ -673,7 +666,6 @@ module.exports.testalphaindex_ko = {
 
         test.ok(ai);
 
-        test.equal("-", ai.getInflowLabel());
         test.equal("#", ai.getOverflowLabel());
         test.equal("*", ai.getUnderflowLabel());
         
@@ -681,7 +673,7 @@ module.exports.testalphaindex_ko = {
     },
 
     testAlphaIndexKOKRsetflowLebels: function(test) {
-        test.expect(4);
+        test.expect(3);
 
         var ai = new AlphabeticIndex({
             locale: "ko-KR"
@@ -689,15 +681,12 @@ module.exports.testalphaindex_ko = {
 
         test.ok(ai);
 
-        ai.setInflowLabel("$");
         ai.setOverflowLabel("@");
         ai.setUnderflowLabel("^");
 
-        test.equal("$", ai.getInflowLabel());
         test.equal("@", ai.getOverflowLabel());
         test.equal("^", ai.getUnderflowLabel());
 
-        
         test.done();
     },
 
@@ -724,7 +713,7 @@ module.exports.testalphaindex_ko = {
         test.ok(ai);
 
         var expected = [
-          "*",
+            "*",
             "ㄱ",
             "ㄲ",
             "ㄴ",
@@ -744,9 +733,9 @@ module.exports.testalphaindex_ko = {
             "ㅌ",
             "ㅍ",
             "ㅎ",
-          "#",
-          "@@",
-          "$$$"
+            "#",
+            "@@",
+            "$$$"
         ];
         
         ai.addLabels(["@@","$$$"]);
@@ -766,8 +755,8 @@ module.exports.testalphaindex_ko = {
            "*",
             "ㄱ",
             "ㄲ",
-          "@@",
-          "$$$", 
+            "@@",
+            "$$$", 
             "ㄴ",
             "ㄷ",
             "ㄸ",
@@ -785,13 +774,11 @@ module.exports.testalphaindex_ko = {
             "ㅌ",
             "ㅍ",
             "ㅎ",
-          "#"
+            "#"
         ];
         
         ai.addLabels(["@@","$$$"], 3);
         test.deepEqual(ai.getAllBucketLabels(), expected);
         test.done();
     }
-
-
 };

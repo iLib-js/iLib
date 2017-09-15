@@ -46,8 +46,7 @@ module.exports.testalphaindex_de = {
     testAlphaIndexConstructorWithParams_deDE: function(test) {
         test.expect(1);
         var ai = new AlphabeticIndex({
-            locale: "de-DE",
-            caseSensitive: false
+            locale: "de-DE"
         });
 
         test.ok(ai);
@@ -59,12 +58,22 @@ module.exports.testalphaindex_de = {
         var ai = new AlphabeticIndex({
             locale: "de-DE",
             sync: false,
-            //caseSensitive: false,
             onLoad: function(ai) {
                 test.ok(ai);
                 test.done();
             }
         });
+    },
+    
+    testAlphaIndexgetDefaultIndexStyle_deDE: function(test) {
+        test.expect(2);
+        var ai = new AlphabeticIndex({
+            locale: "de-DE"
+        });
+
+        test.ok(ai);
+        test.equal("latin", ai.getIndexStyle());
+        test.done();
     },
 
     testAlphaIndexENUSGetBucketBaseLetter_deDE: function(test) {
@@ -79,7 +88,7 @@ module.exports.testalphaindex_de = {
         test.done();
     },
 
-    testAlphaIndexGetBucketCaseInsensitive_deDE: function(test) {
+    testAlphaIndexGetBucket_deDE: function(test) {
         test.expect(3);
 
         var ai = new AlphabeticIndex({
@@ -93,7 +102,7 @@ module.exports.testalphaindex_de = {
         test.done();
     },
 
-    testAlphaIndexGetBucketAccentInsensitive_deDE: function(test) {
+    testAlphaIndexGetBucket_deDE2: function(test) {
         test.expect(7);
 
         var ai = new AlphabeticIndex({

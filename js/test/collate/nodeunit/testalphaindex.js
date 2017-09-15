@@ -42,7 +42,6 @@ module.exports.testalphaindex = {
         test.expect(1);
         var ai = new AlphabeticIndex({
             locale: "en-US",
-            caseSensitive: false
         });
 
         test.ok(ai);
@@ -57,7 +56,7 @@ module.exports.testalphaindex = {
         });
 
         test.ok(ai);
-        test.equal("latin", ai.getDefaultIndexStyle());
+        test.equal("latin", ai.getIndexStyle());
         test.done();
     },
 
@@ -83,7 +82,7 @@ module.exports.testalphaindex = {
         test.done();
     },
 
-    testAlphaIndexENUSGetBucketCaseInsensitive: function(test) {
+    testAlphaIndexENUSGetBucket: function(test) {
         test.expect(3);
 
         var ai = new AlphabeticIndex({
@@ -97,7 +96,7 @@ module.exports.testalphaindex = {
         test.done();
     },
 
-    testAlphaIndexENUSGetBucketAccentInsensitive: function(test) {
+    testAlphaIndexENUSGetBucket2: function(test) {
         test.expect(3);
 
         var ai = new AlphabeticIndex({
@@ -109,19 +108,6 @@ module.exports.testalphaindex = {
         test.equal("E", ai.getBucket("Élan"));
         test.equal("E", ai.getBucket("ëieasdf"));
 
-        test.done();
-    },
-
-
-    testAlphaIndexENUSAddElementRightBucket: function(test) {
-        test.expect(2);
-
-        var ai = new AlphabeticIndex({
-            locale: "en-US"
-        });
-
-        test.ok(ai);
-        test.equal("A", ai.addElement("abacus"));
         test.done();
     },
 
@@ -147,7 +133,19 @@ module.exports.testalphaindex = {
         test.done();
     },
 
-    testAlphaIndexENUSAddElementRightBucketCaseInsensitive: function(test) {
+    testAlphaIndexENUSAddElementRightBucket: function(test) {
+        test.expect(2);
+
+        var ai = new AlphabeticIndex({
+            locale: "en-US"
+        });
+
+        test.ok(ai);
+        test.equal("A", ai.addElement("abacus"));
+        test.done();
+    },
+
+    testAlphaIndexENUSAddElementRightBucket2: function(test) {
         test.expect(3);
 
         var ai = new AlphabeticIndex({
@@ -161,7 +159,7 @@ module.exports.testalphaindex = {
         test.done();
     },
 
-    testAlphaIndexENUSAddElementRightBucketAccentInsensitive: function(test) {
+    testAlphaIndexENUSAddElementRightBucket3: function(test) {
         test.expect(3);
 
         var ai = new AlphabeticIndex({
@@ -423,9 +421,7 @@ module.exports.testalphaindex = {
         });
 
         test.ok(ai);
-
         test.deepEqual(ai.getBucketLabels(), []);
-
         test.done();
     },
 
@@ -497,7 +493,6 @@ module.exports.testalphaindex = {
         ];
 
         test.deepEqual(ai.getAllBucketLabels(), expected);
-
         test.done();
     },
 
@@ -542,7 +537,6 @@ module.exports.testalphaindex = {
         ];
 
         test.deepEqual(ai.getAllBucketLabels(), expected);
-
         test.done();
     },
 
@@ -600,7 +594,6 @@ module.exports.testalphaindex = {
         ];
 
         test.deepEqual(ai.getAllBucketLabels(), expected);
-
         test.done();
     },
 
@@ -741,7 +734,6 @@ module.exports.testalphaindex = {
         var ai = new AlphabeticIndex({
             locale: "en-US",
             sync: false,
-            //caseSensitive: false,
             onLoad: function(ai) {
                 test.ok(ai);
                 test.done();
@@ -793,11 +785,10 @@ module.exports.testalphaindex = {
         };
 
         test.deepEqual(ai.getAllBuckets(), expected);
-
         test.done();
     },
     testAlphaIndexENUSgetflowLebels: function(test) {
-        test.expect(4);
+        test.expect(3);
 
         var ai = new AlphabeticIndex({
             locale: "en-US"
@@ -805,7 +796,6 @@ module.exports.testalphaindex = {
 
         test.ok(ai);
 
-        test.equal("-", ai.getInflowLabel());
         test.equal("#", ai.getOverflowLabel());
         test.equal("*", ai.getUnderflowLabel());
         
@@ -813,7 +803,7 @@ module.exports.testalphaindex = {
     },
 
     testAlphaIndexENUSsetflowLebels: function(test) {
-        test.expect(4);
+        test.expect(3);
 
         var ai = new AlphabeticIndex({
             locale: "en-US"
@@ -821,14 +811,11 @@ module.exports.testalphaindex = {
 
         test.ok(ai);
 
-        ai.setInflowLabel("$");
         ai.setOverflowLabel("@");
         ai.setUnderflowLabel("^");
 
-        test.equal("$", ai.getInflowLabel());
         test.equal("@", ai.getOverflowLabel());
         test.equal("^", ai.getUnderflowLabel());
-
         
         test.done();
     },
@@ -892,6 +879,7 @@ module.exports.testalphaindex = {
         test.deepEqual(ai.getAllBucketLabels(), expected);
         test.done();
     },
+
     testAlphaIndexENUSaddLabelswithPosition: function(test) {
         test.expect(2);
 
@@ -938,6 +926,4 @@ module.exports.testalphaindex = {
         test.deepEqual(ai.getAllBucketLabels(), expected);
         test.done();
     }
-
-
 };

@@ -68,16 +68,8 @@ var NormString = require("./NormString.js");
  * label so that you can display the correctly sorted elements. This depends
  * on the {@link Collator} class to perform the sorting/collation.<p>
  *
- * The class also supports having buckets for strings before the first (underflow),
- * after the last (overflow), and between scripts (inflow). For example, if the
- * index is constructed with labels for Russian and English, Greek characters
- * would fall into an inflow bucket between the other two scripts. <p>
- *
- * The buckets can be case-sensitive or insensitive, and accent-insensitive or
- * sensitive. The default is to be case- and accent-insensitive. For example
- * in English, both "a" and "A" will be put into the same "A" bucket. If
- * the options are given to be case-sensitive, then the list of bucket labels
- * will include both "A" and "a".<p>
+ * The class also supports having buckets for strings before the first (underflow)
+ * and after the last (overflow). <p>
  *
  * If you have a lot of characters that are not commonly used in the current
  * locale, you can add more labels for those characters as well. Elements will
@@ -90,23 +82,6 @@ var NormString = require("./NormString.js");
  * <li><i>locale</i> - locale or localeSpec to use to parse the address. If not
  * specified, this function will use the current ilib locale
  *
- * <li><i>sensitivity</i> - String. Sensitivity or strength of collator. This is one of 
- * "primary", "base", "secondary", "accent", "tertiary", "case", "quaternary", or 
- * "variant". Default: "primary"
- * <ol>
- * <li>base or primary - Only the primary distinctions between characters are significant.
- * Another way of saying that is that the collator will be case-, accent-, and 
- * variation-insensitive, and only distinguish between the base characters
- * <li>case or secondary - Both the primary and secondary distinctions between characters
- * are significant. That is, the collator will be accent- and variation-insensitive
- * and will distinguish between base characters and character case.
- * <li>accent or tertiary - The prispmary, secondary, and tertiary distinctions between
- * characters are all significant. That is, the collator will be 
- * variation-insensitive, but accent-, case-, and base-character-sensitive. 
- * <li>variant or quaternary - All distinctions between characters are significant. That is,
- * the algorithm is base character-, case-, accent-, and variation-sensitive.
- * </ol>
- *
  * <i><i>style</i> - the style of collation to use for this index.
  * For some locales, there are different styles of collating strings depending
  * on what kind of strings are being collated or what the preference of the user
@@ -118,9 +93,6 @@ var NormString = require("./NormString.js");
  *
  * <li><i>overflowLabel</i> - the label to use for the overflow bucket.
  * Default: "#"
- *
- * <li><i>inflowLabel</i> - the label to use for the inflow bucket.
- * Default: "-"
  *
  * <li><i>underflowLabel</i> - the label to use for the underflow bucket.
  * Default: "*"
@@ -154,54 +126,22 @@ var AlphabeticIndex = function (options) {
 	this.caseSensitive = false;
 	this.accentSensitive = false;
 	this.overflowLabel = "#";
-	this.inflowLabel = "-";
 	this.underflowLabel = "*";
 	this.style = "standard";
-	this.sensitivity = 'base';
-
+	
 	this.index = {};
 
 	if (options) {
 		if (options.locale) {
 			this.locale = (typeof(options.locale) === 'string') ? new Locale(options.locale) : options.locale;
 		}
-		/*
-		if (options.sensitivity) {
-			switch (options.sensitivity) {
-				case 'primary':
-				case 'base':
-					this.sensitivity = "base";
-					this.level = 1;
-					break;
-				case 'secondary':
-				case 'accent':
-					this.sensitivity = "accent";
-					this.level = 2;
-					break;
-				case 'tertiary':
-				case 'case':
-					this.sensitivity = "case";
-					this.level = 3;
-					break;
-				case 'quaternary':
-				case 'variant':
-					this.sensitivity = "variant";
-					this.level = 4;
-					break;
-			}
-		}
-		*/
-
+		
 		if (typeof(options.style) !== 'undefined') {
 			this.style = options.style;
 		}
 
 		if (typeof(options.overflowLabel) !== 'undefined') {
 			this.overflowLabel = options.overflowLabel;
-		}
-
-		if (typeof(options.inflowLabel) !== 'undefined') {
-			this.inflowLabel = options.inflowLabel;
 		}
 
 		if (typeof(options.underflowLabel) !== 'undefined') {
@@ -248,11 +188,13 @@ var AlphabeticIndex = function (options) {
 
 
 /**
- * 
- * 
- *
+ * @private
  */
 AlphabeticIndex.prototype._init = function(collation) {
+	if (!collation) {
+		return;
+	}
+
 	this.flowBoundaries = new Array();
 	this.currentLanguage = this.locale.getLanguage();
 	
@@ -260,8 +202,9 @@ AlphabeticIndex.prototype._init = function(collation) {
 		this.style = this.collation["default"];
 	}
 	
-	this.collationMap = collation[this.style].map;
+	this.collationMap = this.collation[this.style].map;
 	this.flowBoundaries = this.collation[this.style].flowBoundaries;
+	this.indexUnits = this.collation[this.style].indexUnits;
 
 	if (this.collationMap === undefined && 
 		typeof(collation[this.style]) === 'string') {
@@ -270,62 +213,38 @@ AlphabeticIndex.prototype._init = function(collation) {
 		this.collation = collation[this.style];
 		this.collationMap = collation[this.style].map;
 		this.flowBoundaries = this.collation.flowBoundaries;
+		this.indexUnits = this.collation.indexUnits;
 	}
 }
 
 /**
- * 
- * 
- */
-AlphabeticIndex.prototype._isEquivalent = function(a,b) {
-	var aProps = Object.getOwnPropertyNames(a);
-    var bProps = Object.getOwnPropertyNames(b);
-
-    if (aProps.length != bProps.length) {
-        return false;
-    }
-
-    for (var i = 0; i < aProps.length; i++) {
-        var propName = aProps[i];
-
-        // If values of same property are not equal,
-        // objects are not equivalent
-        if (a[propName] !== b[propName]) {
-            return false;
-        }
-    }
-    return true;
-};
-
-/**
- * 
- * 
+ * @private
  */
 AlphabeticIndex.prototype._getKeyByValue = function(value) {
+	var i,label;
 
-	for (var prop in this.collationMap) {
-
-		if (this.collationMap.hasOwnProperty(prop)) {
-
-			if (this.currentLanguage === 'ko') {
-				if (this._isEquivalent(this.collationMap[prop], [value[0],0,0,2])) {
-					return prop;
-				}	
-			} else {
-				if (this._isEquivalent(this.collationMap[prop], value)) {
-					return prop;
-				}	
-			}
-			
-		} 
+	if (!value || (!ilib.isArray(value))) {
+		return "";
 	}
+
+	for (i=0; i < this.indexUnits.length; i++) {
+		if (this.collationMap[this.indexUnits[i]][0]
+			=== value[0]) {
+			label = this.indexUnits[i];
+			break;
+		}
+		
+	}
+	return label;
 };
 
 /**
- * Return the locale used with this instance.
- * @return {string} the normalized string for Jamo
+ * @private
  */
 AlphabeticIndex.prototype._normalizeHangul = function(value) {
+	if (!value) {
+		return "";
+	}
 	var source = new NormString(value);
 	var normString = source.normalize("nfkd");
 	var firstJamo;
@@ -353,7 +272,10 @@ AlphabeticIndex.prototype.getLocale = function() {
  * this element was added
  */
 AlphabeticIndex.prototype.addElement = function(element) {
-	
+	if (typeof(element) !== 'string') {
+		return;
+	}
+
 	var label = this.getBucket(element);
 	
 	if (this.index[label] == undefined) {
@@ -383,6 +305,10 @@ AlphabeticIndex.prototype.addElement = function(element) {
  */
 AlphabeticIndex.prototype.addLabels = function(labels, start) {
 	var allBucketLabels = [];
+
+	if (!labels && !ilib.isArray(labels)) {
+		return;
+	}
 
 	allBucketLabels = this.getAllBucketLabels();
 
@@ -457,9 +383,8 @@ AlphabeticIndex.prototype.getBucket = function(element) {
 	var label;
 	var firstChar;
 	var collationValue;
-	var baseValue = [];
 	
-	if (element == undefined ) {
+	if (!element && !typeof(element) === 'string') {
 		return;
 	}
 
@@ -472,33 +397,30 @@ AlphabeticIndex.prototype.getBucket = function(element) {
 	collationValue = this.collationMap[firstChar];
 
 	if (typeof collationValue[0] === 'number') {
-		baseValue[0] = collationValue[0];
-		if (baseValue[0] < this.flowBoundaries[0]) {
+		if (collationValue[0] < this.flowBoundaries[0]) {
 			label = this.underflowLabel;
-		} else if (baseValue[0] > this.flowBoundaries[1]){
+		} else if (collationValue[0] > this.flowBoundaries[1]){
 			label = this.overflowLabel;
 		} else {
-			label = this._getKeyByValue(baseValue);	
+			label = this._getKeyByValue(collationValue);
 		}	
 	} else if (typeof collationValue[0] === 'object') {
-		baseValue[0] = collationValue[0][0];
-		label = this._getKeyByValue(baseValue);
+		label = this._getKeyByValue(collationValue[0]);
 	}
-	return label;	
+	return label;
 };
 
 
 /**
- * 
- * 
+ * Return default indexing style in the current locale.
+ * @returns {string} the default indexing style for this locale.
  */
-AlphabeticIndex.prototype.getDefaultIndexStyle = function() {
+AlphabeticIndex.prototype.getIndexStyle = function() {
 	return this.collation["default"];
 };
 
 /**
  * Return the total number of buckets in this index.
- *
  * @returns {number} the number of buckets in this index
  */
 AlphabeticIndex.prototype.getBucketCount = function() {
@@ -525,6 +447,7 @@ AlphabeticIndex.prototype.getBucketLabels = function() {
 			label.push(prop);
 		}
 	}
+
 	label.sort();
 	return label;
 };
@@ -547,9 +470,8 @@ AlphabeticIndex.prototype.getAllBucketLabels = function() {
 	this.allBucketLabels = new Array();	
 	this.allBucketLabels.push(this.underflowLabel);
 
-	for (i = this.flowBoundaries[0]; i <= this.flowBoundaries[1]; i++) {
-		label = this._getKeyByValue([i]);
-		this.allBucketLabels.push(label);
+	for (i=0; i < this.indexUnits.length; i++) {
+		this.allBucketLabels.push(this.indexUnits[i]);
 	}
 
 	this.allBucketLabels.push(this.overflowLabel);
@@ -568,15 +490,6 @@ AlphabeticIndex.prototype.getCollator = function() {
 	return this.collation;
 };
 
-/**
- * Get the default label used for abbreviated buckets
- * between other labels.
- *
- * @returns {String} the label for the inflow buckets
- */
-AlphabeticIndex.prototype.getInflowLabel = function() {
-	return this.inflowLabel;
-};
 
 /**
  * Get the default label used in the for overflow bucket.
@@ -617,16 +530,6 @@ AlphabeticIndex.prototype.getElementCount = function() {
 AlphabeticIndex.prototype.getUnderflowLabel = function() {
 	return this.underflowLabel;
 };
-
-/**
- * Set the inflow bucket label.
- *
- * @param {String} inflowLabel the label to use for the inflow buckets
- */
-AlphabeticIndex.prototype.setInflowLabel = function(inflowLabel) {
-	this.inflowLabel = inflowLabel;
-};
-
 
 /**
  * Set the overflow bucket label.
