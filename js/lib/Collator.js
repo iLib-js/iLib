@@ -531,7 +531,7 @@ Collator.prototype = {
     	for (var r in rules.map) {
     		if (r) {
     			this.map[r] = this._packRule(rules.map[r], start);
-    			p = typeof(rules.map[r][0]) === 'number' ? rules.map[r][0] : rules.map[r][0][0]; 
+    			p = typeof(rules.map[r][0]) === 'number' ? rules.map[r][0] : rules.map[r][0][0];
     			this.lastMap = Math.max(p + start, this.lastMap);
     		}
     	}
@@ -561,8 +561,10 @@ Collator.prototype = {
     	while (typeof(rule) === 'string') {
     		rule = rules[rule];
     	}
+
     	if (!rule) {
     		rule = "default";
+    		
         	while (typeof(rule) === 'string') {
         		rule = rules[rule];
         	}
@@ -583,6 +585,9 @@ Collator.prototype = {
     	
     	if (typeof(this.collation.inherit) !== 'undefined') {
     		for (var i = 0; i < this.collation.inherit.length; i++) {
+    			if (this.collation.inherit === 'this') {
+    				continue;
+    			}
     			var col = this.collation.inherit[i];
     			rule = typeof(col) === 'object' ? col.name : col;
     			if (rules[rule]) {
@@ -779,5 +784,6 @@ Collator.getAvailableStyles = function (locale) {
 Collator.getAvailableScripts = function () {
 	return [ "Latn" ];
 };
+
 
 module.exports = Collator;
