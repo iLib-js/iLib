@@ -713,7 +713,7 @@ module.exports.testname_en = {
         var formatted = fmt.format(name);
         test.ok(typeof(formatted) !== "undefined");
         
-        var expected = "Dr Fan Min Kee";
+        var expected = "Dr Fan Min Kee John";
         
         test.equal(formatted, expected);
         test.done();
