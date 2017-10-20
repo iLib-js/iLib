@@ -1491,7 +1491,7 @@ function testTZGetTimeZoneWithLoaderJulianTransitionBeforeStart() {
     	    assertObjectEquals("America/Los_Angeles", tz.getId());
     	    
     	    // before start
-    	    var d = new DateFactory({
+    	    var d = DateFactory({
     	    	julianday: 2456725.916666
     	    });
     	    assertFalse(tz.inDaylightTime(d));
@@ -1512,7 +1512,7 @@ function testTZGetTimeZoneWithLoaderJulianTransitionAfterStart() {
     	    assertObjectEquals("America/Los_Angeles", tz.getId());
     	    
     	    // after start
-    	    var d = new DateFactory({
+    	    var d = DateFactory({
     	    	julianday: 2456725.91666669
     	    });
     	    assertTrue(tz.inDaylightTime(d));
@@ -1532,7 +1532,7 @@ function testTZGetTimeZoneWithLoaderJulianTransitionBeforeEnd() {
     	    ilib.setLoaderCallback(ol);
     	    
     	    // before end
-    	    var d = new DateFactory({
+    	    var d = DateFactory({
     	    	julianday: 2456963.8749999
     	    });
     	    assertTrue(tz.inDaylightTime(d));
@@ -1553,7 +1553,7 @@ function testTZGetTimeZoneWithLoaderJulianTransitionAfterEnd() {
     	    assertObjectEquals("America/Los_Angeles", tz.getId());
 
     	    // after end
-    	    var d = new DateFactory({
+    	    var d = DateFactory({
     	    	julianday: 2456963.8750001
     	    });
     	    assertFalse(tz.inDaylightTime(d));

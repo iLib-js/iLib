@@ -39,7 +39,7 @@ module.exports.testdate = {
 
     testDateConstructor: function(test) {
         test.expect(1);
-        var gd = new DateFactory();
+        var gd = DateFactory();
         
         test.ok(gd !== null);
         test.done();
@@ -47,7 +47,7 @@ module.exports.testdate = {
     
     testDateConstructorFull: function(test) {
         test.expect(8);
-        var gd = new DateFactory({
+        var gd = DateFactory({
             year: 2011, 
             month: 9, 
             day: 23, 
@@ -71,7 +71,7 @@ module.exports.testdate = {
     
     testDateSetYears: function(test) {
         test.expect(2);
-        var gd = new DateFactory();
+        var gd = DateFactory();
         
         test.ok(gd !== null);
         
@@ -83,7 +83,7 @@ module.exports.testdate = {
     
     testDateSetMonths: function(test) {
         test.expect(2);
-        var gd = new DateFactory();
+        var gd = DateFactory();
         
         test.ok(gd !== null);
         
@@ -95,7 +95,7 @@ module.exports.testdate = {
     
     testDateSetDays: function(test) {
         test.expect(2);
-        var gd = new DateFactory();
+        var gd = DateFactory();
         
         test.ok(gd !== null);
         
@@ -107,7 +107,7 @@ module.exports.testdate = {
     
     testDateSetHours: function(test) {
         test.expect(2);
-        var gd = new DateFactory();
+        var gd = DateFactory();
         
         test.ok(gd !== null);
         
@@ -119,7 +119,7 @@ module.exports.testdate = {
     
     testDateSetMinutes: function(test) {
         test.expect(2);
-        var gd = new DateFactory();
+        var gd = DateFactory();
         
         test.ok(gd !== null);
         
@@ -131,7 +131,7 @@ module.exports.testdate = {
     
     testDateSetSeconds: function(test) {
         test.expect(2);
-        var gd = new DateFactory();
+        var gd = DateFactory();
         
         test.ok(gd !== null);
         
@@ -143,7 +143,7 @@ module.exports.testdate = {
     
     testDateSetMilliseconds: function(test) {
         test.expect(2);
-        var gd = new DateFactory();
+        var gd = DateFactory();
         
         test.ok(gd !== null);
         
