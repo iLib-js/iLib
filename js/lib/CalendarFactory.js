@@ -104,7 +104,7 @@ var CalendarFactory = function (options) {
 		new LocaleInfo(locale, {
 			sync: sync,
 			loadParams: options && options.loadParams,
-			onLoad: ilib.bind(this, function(info) {
+			onLoad: function(info) {
 				type = info.getCalendar();
 				
 				instance = CalendarFactory._init(type, options);
@@ -112,7 +112,7 @@ var CalendarFactory = function (options) {
 				if (options && typeof(options.onLoad) === 'function') {
 					options.onLoad(instance);
 				}
-			})
+			}
 		});
 	} else {
 		instance = CalendarFactory._init(type, options);
