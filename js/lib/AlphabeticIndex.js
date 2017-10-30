@@ -23,7 +23,6 @@
 ilib.js
 Locale.js
 LocaleInfo.js
-Collator.js
 NormString.js
 */
 
@@ -32,12 +31,11 @@ NormString.js
 var ilib = require("./ilib.js");
 var Utils = require("./Utils.js");
 var Locale = require("./Locale.js");
-// var CType = require("./CType.js");
 
 var LocaleInfo = require("./LocaleInfo.js");
-// index uses the same data as the collator
-var Collator = require("./Collator.js");
+var CType = require("./CType.js");
 var NormString = require("./NormString.js");
+var IString = require("./IString.js");
 
 
 /**
@@ -158,14 +156,9 @@ var AlphabeticIndex = function (options) {
 	}
 
 	this.locale = this.locale || new Locale();
-
-	//console.log("implemented in pure JS");
-	if (!Collator.cache) {
-		Collator.cache = {};
-	}
-
+	
 	Utils.loadData({
-		object: Collator,
+		object: "AlphabeticIndex",
 		locale: this.locale,
 		name: "collation.json",
 		sync: this.sync,
@@ -186,6 +179,17 @@ var AlphabeticIndex = function (options) {
 	});
 };
 
+/**
+ * @private
+ */
+AlphabeticIndex.prototype._updateCollationMap = function(style) {
+	this.collationMap = this.collation[style].map;
+	this.flowBoundaries = this.collation[style].flowBoundaries;
+	this.indexUnits = this.collation[style].indexUnits;
+	if (this.collation[style].inherit) {
+		this.inherit = this.collation[style].inherit;
+	}
+}
 
 /**
  * @private
@@ -197,23 +201,22 @@ AlphabeticIndex.prototype._init = function(collation) {
 
 	this.flowBoundaries = new Array();
 	this.currentLanguage = this.locale.getLanguage();
+
 	
 	if (this.style === 'standard') {
 		this.style = this.collation["default"];
 	}
 	
-	this.collationMap = this.collation[this.style].map;
-	this.flowBoundaries = this.collation[this.style].flowBoundaries;
-	this.indexUnits = this.collation[this.style].indexUnits;
-
-	if (this.collationMap === undefined && 
+	this.collationMap = collation[this.style].map;
+	this.flowBoundaries = collation[this.style].flowBoundaries;
+	this.indexUnits = collation[this.style].indexUnits;
+	if (collation[this.style].inherit) {
+		this.inherit = collation[this.style].inherit;	
+	}
+	
+	if (this.collationMap === undefined &&
 		typeof(collation[this.style]) === 'string') {
-
-		this.style = collation[this.style];
-		this.collation = collation[this.style];
-		this.collationMap = collation[this.style].map;
-		this.flowBoundaries = this.collation.flowBoundaries;
-		this.indexUnits = this.collation.indexUnits;
+		this._updateCollationMap(collation[this.style]);
 	}
 }
 
@@ -225,6 +228,10 @@ AlphabeticIndex.prototype._getKeyByValue = function(value) {
 
 	if (!value || (!ilib.isArray(value))) {
 		return "";
+	}
+
+	if (this.inheritStyle) {
+		this.collationMap = this.collation[this.inheritStyle].map;
 	}
 
 	for (i=0; i < this.indexUnits.length; i++) {
@@ -383,30 +390,63 @@ AlphabeticIndex.prototype.getBucket = function(element) {
 	var label;
 	var firstChar;
 	var collationValue;
+	var charNum, firstBoundaryChar, endBoundaryChar, firstCharNum, endCharNum;
 	
 	if (!element && !typeof(element) === 'string') {
 		return;
 	}
 
 	firstChar = element.charAt(0);
-	
-	if (this.currentLanguage == "ko") {
+
+	if (CType.withinRange(firstChar, "hangul")) {
 		firstChar = this._normalizeHangul(firstChar);
 	}
 
 	collationValue = this.collationMap[firstChar];
 
-	if (typeof collationValue[0] === 'number') {
-		if (collationValue[0] < this.flowBoundaries[0]) {
-			label = this.underflowLabel;
-		} else if (collationValue[0] > this.flowBoundaries[1]){
-			label = this.overflowLabel;
-		} else {
-			label = this._getKeyByValue(collationValue);
-		}	
-	} else if (typeof collationValue[0] === 'object') {
-		label = this._getKeyByValue(collationValue[0]);
+
+	if (!collationValue && this.inherit) {
+		for (var i = 0; i < this.inherit.length; i++) {
+			if (this.inherit[i] === 'this') {
+				this.inherit[i] = this.style;
+    		}
+
+    		if (this.collation[this.inherit[i]].map[firstChar]) {
+    			collationValue = this.collation[this.inherit[i]].map[firstChar];
+    			this.inheritStyle = this.inherit[i];
+    			this._updateCollationMap(this.inheritStyle);
+    		}
+		}
 	}
+
+	if (collationValue) {
+		if (typeof collationValue[0] === 'number') {
+			if (collationValue[0] < this.flowBoundaries[0]) {
+				label = this.underflowLabel;
+			} else if (collationValue[0] > this.flowBoundaries[1]){
+				label = this.overflowLabel;
+			} else {
+				label = this._getKeyByValue(collationValue);
+			}	
+		} else if (typeof collationValue[0] === 'object') {
+			label = this._getKeyByValue(collationValue[0]);
+
+		} 
+	} else {
+		charNum = IString.toCodePoint(firstChar);
+		firstBoundaryChar = this._getKeyByValue([this.flowBoundaries[0]]);
+		endBoundaryChar = this._getKeyByValue([this.flowBoundaries[1]]);
+
+		firstCharNum = IString.toCodePoint(firstBoundaryChar);
+		endCharNum = IString.toCodePoint(endBoundaryChar);
+
+		if (charNum < firstCharNum) {
+			label = this.underflowLabel;
+		} else if (charNum > endCharNum) {
+			label = this.overflowLabel;
+		} 
+	}
+
 	return label;
 };
 

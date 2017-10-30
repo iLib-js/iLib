@@ -12,11 +12,10 @@
         ],
         "keysize":[12,12,16,16],
         "inherit":[
-			"symbol",
+            "symbols",
             "this",
-			"latin"
+            "latin"
         ],
-        "scriptOrder":["Hang","Latn"],
         "indexUnits":["ㄱ","ㄲ","ㄴ","ㄷ","ㄸ","ㄹ","ㅁ","ㅂ","ㅃ","ㅅ","ㅆ","ㅇ","ㅈ","ㅉ","ㅊ","ㅋ","ㅌ","ㅍ","ㅎ"],
         "flowBoundaries":[27,45],
         "map": {

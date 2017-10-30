@@ -24,6 +24,10 @@ if (typeof(AlphabeticIndex) === "undefined") {
     var AlphabeticIndex = require("../../../lib/AlphabeticIndex.js");
 }
 
+if (typeof(isScript) === "undefined") {
+    var isScript = require("../.././../lib/isScript.js");
+}
+
 module.exports.testalphaindex_ko = {
     setUp: function(callback) {
         ilib.clearCache();
@@ -469,8 +473,8 @@ module.exports.testalphaindex_ko = {
 
         test.ok(ai);
 
-        test.equal("*", ai.getBucket("Apple"));
-        test.equal("*", ai.getBucket("Banana"));
+        test.equal("A", ai.getBucket("Apple"));
+        test.equal("B", ai.getBucket("Banana"));
 
         test.done();
     },
@@ -514,15 +518,16 @@ module.exports.testalphaindex_ko = {
         });
 
         var expected = {
-            "*": ["Apple", "Banana"],
-              "ㄱ": ["강성진","김영희","김철수"],
-              "ㅁ": ["민예은"],
-              "ㅂ": ["박세진"],
-              "ㅅ": ["서수빈", "성수민", "송현경"],
-              "ㅇ": ["예지원","이영자", "임민성","임성훈"],
-              "ㅈ": ["장유진","장은경","정경자", "정미경", "주광수","진현주"],
-              "ㅊ": ["최준호"],
-              "ㅎ": ["하춘자"]
+            "ㄱ": ["강성진","김영희","김철수"],
+            "ㅁ": ["민예은"],
+            "ㅂ": ["박세진"],
+            "ㅅ": ["서수빈", "성수민", "송현경"],
+            "ㅇ": ["예지원","이영자", "임민성","임성훈"],
+            "ㅈ": ["장유진","장은경","정경자", "정미경", "주광수","진현주"],
+            "ㅊ": ["최준호"],
+            "ㅎ": ["하춘자"],
+            "A": ["Apple"],
+            "B": ["Banana"]
         };
 
         test.deepEqual(ai.getAllBuckets(), expected);
@@ -538,8 +543,8 @@ module.exports.testalphaindex_ko = {
 
         test.ok(ai);
 
-        test.equal("*", ai.getBucket("See below"));
-        test.equal("*", ai.getBucket("TheRealDonaldDuck"));
+        test.equal("S", ai.getBucket("See below"));
+        test.equal("T", ai.getBucket("TheRealDonaldDuck"));
 
         test.done();
     },
@@ -583,7 +588,6 @@ module.exports.testalphaindex_ko = {
         });
 
         var expected = {
-            "*": ["Apple", "Banana"],
             "ㄱ": ["강성진","김영희","김철수"],
             "ㅁ": ["민예은"],
             "ㅂ": ["박세진"],
@@ -591,7 +595,9 @@ module.exports.testalphaindex_ko = {
             "ㅇ": ["예지원","이영자", "임민성", "임성훈"],
             "ㅈ": ["장유진", "장은경","정경자", "정미경", "주광수","진현주"],
             "ㅊ": ["최준호"],
-            "ㅎ": ["하춘자"]
+            "ㅎ": ["하춘자"],
+            "A": ["Apple"],
+            "B": ["Banana"]
         };
 
         test.deepEqual(ai.getAllBuckets(), expected);
@@ -779,6 +785,160 @@ module.exports.testalphaindex_ko = {
         
         ai.addLabels(["@@","$$$"], 3);
         test.deepEqual(ai.getAllBucketLabels(), expected);
+        test.done();
+    },
+
+    testAlphaIndexKOKRMixedScriptTest1: function(test) {
+        test.expect(2);
+
+        var ai = new AlphabeticIndex({
+            locale: "ko-KR"
+        });
+
+        test.ok(ai);
+
+        var items = [
+            "Apple",
+            "Banana",  
+            "김철수",
+            "김영희",
+            "송현경",
+            "이영자",
+            "정경자",
+            "정미경",
+            "서수빈",
+            "최준호",
+            "진현주",
+            "예지원",
+            "장유진",
+            "성수민",
+            "민예은",
+            "하춘자",
+            "강성진",
+            "임성훈",
+            "장은경",
+            "임민성",
+            "주광수",
+            "박세진"
+        ];
+
+        items.forEach(function(item) {
+            ai.addElement(item);
+        });
+
+        var expected = {
+            "ㄱ": ["강성진","김영희","김철수"],
+            "ㅁ": ["민예은"],
+            "ㅂ": ["박세진"],
+            "ㅅ": ["서수빈", "성수민", "송현경"],
+            "ㅇ": ["예지원","이영자", "임민성", "임성훈"],
+            "ㅈ": ["장유진", "장은경","정경자", "정미경", "주광수","진현주"],
+            "ㅊ": ["최준호"],
+            "ㅎ": ["하춘자"],
+            "A" : ["Apple"],
+            "B" : ["Banana"],
+        };
+        
+        test.deepEqual(ai.getAllBuckets(), expected);
+        test.done();
+    },
+
+    testAlphaIndexKOKRMixedScriptTest2: function(test) {
+        test.expect(2);
+
+        var ai = new AlphabeticIndex({
+            locale: "ko-KR"
+        });
+
+        test.ok(ai);
+
+        var items = [
+            "Apple",
+            "Banana",
+            "김철수",
+            "りんご",
+            "서수빈",
+            "최준호",
+            "예지원",
+            "장유진",
+            "성수민",
+            "민예은",
+            "하춘자",
+            "강성진",
+            "장은경",
+            "임민성",
+            "박세진"
+        ];
+
+        items.forEach(function(item) {
+            ai.addElement(item);
+        });
+
+        var expected = {
+            "*" : ["りんご"],
+            "ㄱ": ["강성진", "김철수"],
+            "ㅁ": ["민예은"],
+            "ㅂ": ["박세진"],
+            "ㅅ": ["서수빈", "성수민"],
+            "ㅇ": ["예지원", "임민성"],
+            "ㅈ": ["장유진", "장은경"],
+            "ㅊ": ["최준호"],
+            "ㅎ": ["하춘자"],
+            "A" : ["Apple"],
+            "B" : ["Banana"]
+        };
+        
+        test.deepEqual(ai.getAllBuckets(), expected);
+        test.done();
+    },
+
+    testAlphaIndexKOKRMixedScriptTest3: function(test) {
+        test.expect(2);
+
+        var ai = new AlphabeticIndex({
+            locale: "ko-KR"
+        });
+
+        test.ok(ai);
+
+        var items = [
+            "Apple",
+            "Banana",
+            "김철수",
+            "りんご",
+            "서수빈",
+            "최준호",
+            /*"香蕉",
+            "芒果",*/
+            "성수민",
+            "민예은",
+            "하춘자",
+            "강성진",
+            "장은경",
+            "임민성",
+            "박세진"
+        ];
+
+        items.forEach(function(item) {
+            ai.addElement(item);
+        });
+
+        var expected = {
+            "*" : ["りんご"],
+            "ㄱ": ["강성진", "김철수"],
+            "ㅁ": ["민예은"],
+            "ㅂ": ["박세진"],
+            "ㅅ": ["서수빈", "성수민"],
+            "ㅇ": ["임민성"],
+            "ㅈ": ["장은경"],
+            "ㅊ": ["최준호"],
+            "ㅎ": ["하춘자"],
+            "A" : ["Apple"],
+            "B" : ["Banana"]
+            //"#" : ["香蕉", "芒果"]
+        };
+        
+        test.deepEqual(ai.getAllBuckets(), expected);
         test.done();
     }
 };
