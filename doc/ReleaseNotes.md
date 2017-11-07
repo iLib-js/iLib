@@ -28,6 +28,7 @@ New Features:
   * Date - javascript intrinsic dates
   * number - a unixtime for the requested date
   * string - a date string that is parseable by the javascript intrinsic Date class
+* Updated time zone info to 2017c
 
 Bug Fixes:
 
