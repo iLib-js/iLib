@@ -1138,8 +1138,8 @@ limitations under the License.
 		<uptodate
                 property="package.json.not.needed"
                 targetfile="${build.base}/package.json">
-			<srcfiles dir="${build.base}" file="package.json.template" />
-			<srcfiles dir="${build.base}/.." file="build.properties" />
+			<srcfiles dir="${build.base}" includes="package.json.template" />
+			<srcfiles dir="${build.base}/.." includes="build.properties" />
 		</uptodate>
 	</target>
 	<target name="update.package.json" depends="testpackagejson" unless="package.json.not.needed"
