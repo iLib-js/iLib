@@ -24,6 +24,13 @@ var ilib = require("./ilib.js");
 var Utils = require("./Utils.js");
 var Locale = require("./Locale.js");
 
+var componentWeights = [
+	0.5,   // language 
+	0.2,   // script
+	0.25,  // region
+	0.05   // variant
+];
+
 /**
  * @class
  * Create a new locale matcher instance. This is used
@@ -33,7 +40,7 @@ var Locale = require("./Locale.js");
  * The options object may contain any of the following properties:
  * 
  * <ul>
- * <li><i>locale</i> - the locale to match
+ * <li><i>locale</i> - the locale instance or locale spec to match
  * 
  * <li><i>onLoad</i> - a callback function to call when the locale matcher object is fully 
  * loaded. When the onLoad option is given, the locale matcher object will attempt to
@@ -82,7 +89,7 @@ var LocaleMatcher = function(options) {
 		Utils.loadData({
 			object: "LocaleMatcher", 
 			locale: "-", 
-			name: "likelylocales.json", 
+			name: "localematch.json", 
 			sync: sync, 
 			loadParams: loadParams, 
 			callback: ilib.bind(this, function (info) {
@@ -128,11 +135,163 @@ LocaleMatcher.prototype = {
 	 * to the constructor of this locale matcher instance
 	 */
 	getLikelyLocale: function () {
-		if (typeof(this.info[this.locale.getSpec()]) === 'undefined') {
+		if (typeof(this.info.likelyLocales[this.locale.getSpec()]) === 'undefined') {
 			return this.locale;
 		}
 		
-		return new Locale(this.info[this.locale.getSpec()]);
+		return new Locale(this.info.likelyLocales[this.locale.getSpec()]);
+	},
+	
+	/**
+	 * Return the degree that the given locale matches the current locale of this 
+	 * matcher. This method returns an integer from 0 to 100. A value of 100 is 
+	 * a 100% match, meaning that the two locales are exactly equivalent to each 
+	 * other. (eg. "ja-JP" and "ja-JP") A value of 0 means that there 0% match or 
+	 * that the two locales have nothing in common. (eg. "en-US" and "ja-JP") <p>
+	 * 
+	 * Locale matching is not the same as equivalence, as the degree of matching
+	 * is returned. (See Locale.equals for equivalence.)<p>
+	 * 
+	 * The match score is calculated based on matching the 4 locale components,
+	 * weighted by importance:
+	 * 
+	 * <ul>
+	 * <li> language - this accounts for 50% of the match score
+	 * <li> region - accounts for 25% of the match score
+	 * <li> script - accounts for 20% of the match score
+	 * <li> variant - accounts for 5% of the match score
+	 * </ul>
+	 * 
+	 * The score is affected by the following things:
+	 * 
+	 * <ul>
+	 * <li> A large language score is given when the language components of the locales 
+	 * match exactly.
+	 * <li> Higher language scores are given when the languages are linguistically
+	 * close to each other, such as dialects. 
+	 * <li> A small score is given when two languages are in the same 
+	 * linguistic family, but one is not a dialect of the other, such as German 
+	 * and Dutch.
+	 * <li> A large region score is given when two locales share the same region.
+	 * <li> A smaller region score is given when one region is contained within
+	 * another. For example, Hong Kong is part of China, so a moderate score is
+	 * given instead of a full score.
+	 * <li> A small score is given if two regions are geographically close to
+	 * each other or are tied by history. For example, Ireland and Great Britain
+	 * are both adjacent and tied by history, so they receive a moderate score.
+	 * <li> A high script score is given if the two locales share the same script. 
+	 * The legibility of a common script means that there is some small kinship of the 
+	 * different languages.
+	 * <li> A high variant score is given if the two locales share the same 
+	 * variant. Full score is given when both locales have no variant at all.
+	 * <li> Locale components that are unspecified in both locales are given high
+	 * scores.
+	 * <li> Locales where a particular locale component is missing in only one
+	 * locale can still match when the default for that locale component matches 
+	 * the component in the other locale. The
+	 * default value for the missing component is determined using the likely locales
+	 * data. (See getLikelyLocale()) For example, "en-US" and "en-Latn-US" receive 
+	 * a high script score because the default script for "en" is "Latn".
+	 * </ul>
+	 * 
+	 * The intention of this method is that it can be used to determine
+	 * compatibility of locales. For example, when a user signs up for an 
+	 * account on a web site, the locales that the web site supports and 
+	 * the locale of the user's browser may differ, and the site needs to
+	 * pick the best locale to show the user. Let's say the
+	 * web site supports a selection of European languages such as "it-IT", 
+	 * "fr-FR", "de-DE", and "en-GB". The user's
+	 * browser may be set to "it-CH". The web site code can then match "it-CH"
+	 * against each of the supported locales to find the one with the 
+	 * highest score. In
+	 * this case, the best match would be "it-IT" because it shares a 
+	 * language and script in common with "it-CH" and differs only in the region
+	 * component. It is not a 100% match, but it is pretty good. The web site
+	 * may decide if the match scores all fall
+	 * below a chosen threshold (perhaps 50%?), it should show the user the
+	 * default language "en-GB", because that is probably a better choice
+	 * than any other supported locale.<p>
+	 * 
+	 * @param {Locale} locale the other locale to match against the current one
+	 * @return {number} an integer from 0 to 100 that indicates the degree to
+	 * which these locales match each other
+	 */
+	match: function(locale) {
+		var other = new Locale(locale);
+		var scores = [0, 0, 0, 0];
+		
+		if (this.locale.language === other.language) {
+			scores[0] = 100;
+		} else {
+			if (!this.locale.language || !other.language) {
+				// check for default language
+				var thisfull = this.getLikelyLocale();
+				var otherfull = new Locale(this.info.likelyLocales[other.getSpec()] || other.getSpec());
+				if (thisfull.language === otherfull.language) {
+					scores[0] = 100;
+				}
+			} else {
+				// check for macro languages
+				var mlthis = this.info.macroLanguagesReverse[this.locale.language] || this.locale.language;
+				var mlother = this.info.macroLanguagesReverse[other.language] || other.language;
+				if (mlthis === mlother) {
+					scores[0] = 90;
+				} else {
+					// check for mutual intelligibility
+					var pair = this.locale.language + "-" + other.language;
+					scores[0] = this.info.mutualIntelligibility[pair] || 0;
+				}
+			}
+		}
+
+		if (this.locale.script === other.script) {
+			scores[1] = 100;
+		} else {
+			if (!this.locale.script || !other.script) {
+				// check for default script
+				var thisfull = this.locale.script ? this.locale : new Locale(this.info.likelyLocales[this.locale.language]);
+				var otherfull = other.script ? other : new Locale(this.info.likelyLocales[other.language]);
+				if (thisfull.script === otherfull.script) {
+					scores[1] = 100;
+				}
+			}
+		}
+		
+		if (this.locale.region === other.region) {
+			scores[2] = 100;
+		} else {
+			if (!this.locale.region || !other.region) {
+				// check for default region
+				var thisfull = this.getLikelyLocale();
+				var otherfull = new Locale(this.info.likelyLocales[other.getSpec()] || other.getSpec());
+				if (thisfull.region === otherfull.region) {
+					scores[2] = 100;
+				}
+			} else {
+				// check for containment
+				var containers = this.info.territoryContainmentReverse[this.locale.region] || [];
+				// start at 1 to skip "001" which is "the whole world"
+				for (var i = 1; i < containers.length; i++) {
+					var container = this.info.territoryContainment[containers[i]];
+					if (container.indexOf(other.region) > -1) {
+						scores[2] = (i * 100 / containers.length);
+						break;
+					}
+				}
+			}
+		}
+
+		if (this.locale.variant === other.variant) {
+			scores[3] = 100;
+		}
+
+		var total = 0;
+		
+		for (var i = 0; i < 4; i++) {
+			total += scores[i] * componentWeights[i];
+		}
+		
+		return Math.round(total);
 	}
 };
 

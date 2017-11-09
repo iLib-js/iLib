@@ -349,6 +349,150 @@ module.exports.testlocalematch = {
         test.ok(typeof(locale) !== "undefined");
         test.equal(locale.getSpec(), "ha-GH");
         test.done();
-    }
+    },
+
+    testLocaleMatcherMatchExactFullLocale: function(test) {
+        test.expect(2);
+        var lm = new LocaleMatcher({
+            locale: "zh-Hans-CN"
+        });
+        test.ok(typeof(lm) !== "undefined");
+        
+        test.equal(lm.match("zh-Hans-CN"), 100);
+        
+        test.done();
+    },
+
+    testLocaleMatcherMatchExactLangRegion: function(test) {
+        test.expect(2);
+        var lm = new LocaleMatcher({
+            locale: "en-US"
+        });
+        test.ok(typeof(lm) !== "undefined");
+        
+        test.equal(lm.match("en-US"), 100);
+        
+        test.done();
+    },
+
+    testLocaleMatcherMatchExactLang: function(test) {
+        test.expect(2);
+        var lm = new LocaleMatcher({
+            locale: "en"
+        });
+        test.ok(typeof(lm) !== "undefined");
+        
+        test.equal(lm.match("en"), 100);
+        
+        test.done();
+    },
+
+    testLocaleMatcherMatchExactLangScript: function(test) {
+        test.expect(2);
+        var lm = new LocaleMatcher({
+            locale: "zh-Hans"
+        });
+        test.ok(typeof(lm) !== "undefined");
+        
+        test.equal(lm.match("zh-Hans"), 100);
+        
+        test.done();
+    },
+
+    testLocaleMatcherMatchExactRegion: function(test) {
+        test.expect(2);
+        var lm = new LocaleMatcher({
+            locale: "US"
+        });
+        test.ok(typeof(lm) !== "undefined");
+        
+        test.equal(lm.match("US"), 100);
+        
+        test.done();
+    },
     
+    testLocaleMatcherMatchExactDefaultScript: function(test) {
+        test.expect(2);
+        var lm = new LocaleMatcher({
+            locale: "zh-Hans-CN"
+        });
+        test.ok(typeof(lm) !== "undefined");
+        
+        test.equal(lm.match("zh-CN"), 100);
+        
+        test.done();
+    },
+
+    testLocaleMatcherMatchExactDefaultScript: function(test) {
+        test.expect(2);
+        var lm = new LocaleMatcher({
+            locale: "en-Latn-US"
+        });
+        test.ok(typeof(lm) !== "undefined");
+        
+        test.equal(lm.match("en-US"), 100);
+        
+        test.done();
+    },
+
+    testLocaleMatcherMatchExactDefaultRegion: function(test) {
+        test.expect(2);
+        var lm = new LocaleMatcher({
+            locale: "ja-JP"
+        });
+        test.ok(typeof(lm) !== "undefined");
+        
+        test.equal(lm.match("ja"), 100);
+        
+        test.done();
+    },
+
+    testLocaleMatcherMatchFullLocaleDifferentRegion: function(test) {
+        test.expect(2);
+        var lm = new LocaleMatcher({
+            locale: "zh-Hans-CN"
+        });
+        test.ok(typeof(lm) !== "undefined");
+        
+        test.equal(lm.match("zh-Hans-SG"), 75);
+        
+        test.done();
+    },
+
+    testLocaleMatcherMatchFullLocaleDifferentScript: function(test) {
+        test.expect(2);
+        var lm = new LocaleMatcher({
+            locale: "zh-Hans-HK"
+        });
+        test.ok(typeof(lm) !== "undefined");
+        
+        test.equal(lm.match("zh-Hant-HK"), 80);
+        
+        test.done();
+    },
+
+    testLocaleMatcherMatchFullLocaleDifferentLanguage: function(test) {
+        test.expect(2);
+        var lm = new LocaleMatcher({
+            locale: "en-Latn-US"
+        });
+        test.ok(typeof(lm) !== "undefined");
+        
+        test.equal(lm.match("de-Latn-US"), 50);
+        
+        test.done();
+    },
+
+    testLocaleMatcherMatchFullLocaleDifferentVariant: function(test) {
+        test.expect(2);
+        var lm = new LocaleMatcher({
+            locale: "en-US-VARIANT"
+        });
+        test.ok(typeof(lm) !== "undefined");
+        
+        test.equal(lm.match("en-US"), 95);
+        
+        test.done();
+    },
+
 };
