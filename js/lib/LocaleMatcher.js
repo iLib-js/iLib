@@ -270,11 +270,12 @@ LocaleMatcher.prototype = {
 			} else {
 				// check for containment
 				var containers = this.info.territoryContainmentReverse[this.locale.region] || [];
-				// start at 1 to skip "001" which is "the whole world"
-				for (var i = 1; i < containers.length; i++) {
+				// end at 1 because 0 is "001" which is "the whole world" -- which is not useful
+				for (var i = containers.length-1; i > 0; i--) {
 					var container = this.info.territoryContainment[containers[i]];
-					if (container.indexOf(other.region) > -1) {
-						scores[2] = (i * 100 / containers.length);
+					if (container && container.indexOf(other.region) > -1) {
+						// same area only accounts for 20% of the region score
+						scores[2] = (i * 100 / containers.length) * 0.2;
 						break;
 					}
 				}

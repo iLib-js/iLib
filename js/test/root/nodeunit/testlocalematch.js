@@ -447,6 +447,18 @@ module.exports.testlocalematch = {
         test.done();
     },
 
+    testLocaleMatcherMatchExactDefaultRegionReverse: function(test) {
+        test.expect(2);
+        var lm = new LocaleMatcher({
+            locale: "ja"
+        });
+        test.ok(typeof(lm) !== "undefined");
+        
+        test.equal(lm.match("ja-JP"), 100);
+        
+        test.done();
+    },
+
     testLocaleMatcherMatchFullLocaleDifferentRegion: function(test) {
         test.expect(2);
         var lm = new LocaleMatcher({
@@ -491,6 +503,30 @@ module.exports.testlocalematch = {
         test.ok(typeof(lm) !== "undefined");
         
         test.equal(lm.match("en-US"), 95);
+        
+        test.done();
+    },
+
+    testLocaleMatcherMatchMutuallyIntelligibleLanguages: function(test) {
+        test.expect(2);
+        var lm = new LocaleMatcher({
+            locale: "da-DK"
+        });
+        test.ok(typeof(lm) !== "undefined");
+        
+        test.equal(lm.match("no-NO"), 50);
+        
+        test.done();
+    },
+
+    testLocaleMatcherMatchMutuallyIntelligibleLanguagesAsymetric: function(test) {
+        test.expect(2);
+        var lm = new LocaleMatcher({
+            locale: "no-NO"
+        });
+        test.ok(typeof(lm) !== "undefined");
+        
+        test.equal(lm.match("da-DK"), 61);
         
         test.done();
     },
