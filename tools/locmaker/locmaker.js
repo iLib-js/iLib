@@ -31,14 +31,11 @@ var path = require('path');
 var ilib = require("ilib");
 var Locale = require("ilib/lib/Locale");
 
-var DateFmt = require("ilib/lib/DateFmt");
-var NumFmt = require("ilib/lib/NumFmt");
-
 var common = require('../cldr/common.js');
 
 var thisDir = path.dirname(module.filename);
 var localeDir = path.join(thisDir, "../../js/locale");
-var toDir = ".";
+var toDir = "localedata";
 
 function usage() {
     console.log("Usage: locmaker [-h] [toDir]\n" +
@@ -57,10 +54,17 @@ if (!fs.existsSync(localeDir)) {
 	usage();
 }
 
+if (!fs.existsSync(toDir)) {
+	console.log("Error: directory " + toDir +  ' is missing. so Create the directory.\n');
+
+	fs.mkdir('localedata', function(err) {
+		console.log("fail to create " + toDir + "directory");
+    });
+}
+
 console.log("locmaker - generate js files containing ilib data for particular locales.\n" +
 	"Copyright (c) 2017 JEDLSoft\n");
 
-util.print("output dir: " + toDir + "\n");
 
 var reDataSlashSlash = /\/\/ !data (.*)/;
 var reDataSlashDot = /\/\*\s*!data\s*([^\*]*)\*\//m;
@@ -118,37 +122,36 @@ function getLocaleList(locale) {
 }
 
 var classList = [
-	"DateRngFmt",	
-	"IDate",	
-	"DateFactory",
-	"GregorianCal",	
-	"GregorianDate",
-	"TimeZone",
-	"INumber",
-	"NumFmt",
-	"JulianDay",
 	"DateFmt",
-	"Calendar",
-	"CalendarFactory",
-	"Utils",
-	"Locale",
+	"DateFactory",
 	"IString",
+	"NumFmt",
 	"DurationFmt",
-	"ResBundle",
-	"LocaleInfo",
 	"DateRngFmt",
-	"ScriptInfo",
-	"CaseMapper",
-	// "Collator",
-	"GlyphString",
-	"isIdeo",
-	"isAlnum",
-	"isSpace",
-	"Measurement",
-	"MeasurementFactory",
-	"UnitFmt"
+	"LocaleInfo",
+	"ResBundle",
+	"Locale"
 ];
-var localeList = ["en-US", "zh-Hans-CN", "es-US", "es-ES", "zh-Hant-HK"];
+
+var localeList = ["ar-AE","ar-BH","ar-DJ","ar-DZ","ar-EG","ar-IQ","ar-JO","ar-KW","ar-LB","ar-LY",
+"ar-MA","ar-MR","ar-OM","ar-QA","ar-SA","ar-SD","ar-SY","ar-TN","ar-YE","as-IN","az-Latn-AZ","bg-BG","bn-IN",
+"bs-Latn-BA","bs-Latn-ME","cs-CZ","da-DK","de-AT","de-CH","de-DE","de-LU","et-EE","el-CY","el-GR","en-AM","en-AU",
+"en-AZ","en-CA","en-ET","en-GB","en-GH","en-GM","en-HK","en-IE","en-IN","en-IS","en-JP","en-KE","en-KR",
+"en-LK","en-LR","en-MM","en-MW","en-MY","en-NG","en-NZ","en-PH","en-PK","en-PR","en-RW","en-SD","en-SG",
+"en-SL","en-TW","en-TZ","en-UG","en-US","en-ZA","en-ZM","es-AR","es-BO","es-CL","es-CO","es-CR","es-DO",
+"es-EC","es-ES","es-GQ","es-GT","es-HN","es-MX","es-NI","es-PA","es-PE","es-PH","es-PR","es-PY","es-SV",
+"es-US","es-UY","es-VE","fa-AF","fa-IR","fi-FI","fr-BE","fr-BF","fr-BJ","fr-CA","fr-CD","fr-CF","fr-CG",
+"fr-CH","fr-CI","fr-CM","fr-GQ","fr-DJ","fr-DZ","fr-FR","fr-GA","fr-GN","fr-LB","fr-LU","fr-ML","fr-RW","fr-SN",
+"fr-TG","ga-IE","gu-IN","he-IL","hi-IN","hi-SG","hr-HR","hr-ME","hu-HU","id-ID","it-CH","it-IT","ja-JP",
+"kk-Cyrl-KZ","km-KH","kn-IN","ko-KR","ku-Arab-IQ","lt-LT","lv-LV","mk-MK","ml-IN", "mn-Cyrl-MN","mr-IN","ms-MY",
+"ms-SG","nb-NO","nl-BE","nl-NL","pa-IN","pa-PK","pl-PL","pt-AO","pt-BR","pt-GQ","pt-CV","pt-PT","ro-RO",
+"ru-BY","ru-GE","ru-KG","ru-KZ","ru-RU","ru-UA","si-LK","sk-SK","sl-SI","sq-AL","sq-ME","sr-Latn-ME","sr-Latn-RS",
+"sv-FI","sv-SE","sw-KE","ta-IN","ta-SG","te-IN","th-TH","tr-AM","tr-AZ","tr-CY","tr-TR","uk-UA","ur-IN",
+"ur-PK","uz-Cyrl-UZ","uz-Latn-UZ","vi-VN","zh-Hans-CN","zh-Hans-SG","zh-Hant-HK","zh-Hans-MY","zh-Hant-TW",
+"af-ZA","am-ET","ha-Latn-NG","or-IN","en-GE","en-CN","en-MX","en-TW","es-CA"];
+
+console.log("locaneList Num : " + localeList.length);
+
 var fullLocales = {};
 var fullDeps = new Set();
 var fullLocales = {};
@@ -173,7 +176,7 @@ localeList.forEach(function(locale) {
 });
 
 localeList.forEach(function(locale) {
-	var output = "import * as ilib from 'ilib/lib/ilib';\n\n";
+	var output = "window.ilibData = window.ilibData || {};\n\n";
 	
 	fullDeps.forEach(function(dep) {
 		getLocaleList(locale).forEach(function(sublocale) {
@@ -182,7 +185,7 @@ localeList.forEach(function(locale) {
 			if (fs.existsSync(filename)) {
 				var data = fs.readFileSync(filename);
 				var key = (sublocale === ".") ? dep : dep + "_" + sublocale.replace(/\//g, "_");
-				output += "ilib.data." + key + " = " + data + "\n";
+				output += "ilibData." + key + " = " + data + "\n";
 			}
 		});
 	});
