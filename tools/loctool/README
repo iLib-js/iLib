@@ -1,0 +1,5 @@
+The contents of this loctool directory have been moved
+to their own repo so that they can be forked/developed
+independently of ilib.
+
+git clone git@github.com:iLib-js/loctool.git
