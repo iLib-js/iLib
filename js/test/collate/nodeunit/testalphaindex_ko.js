@@ -159,17 +159,44 @@ module.exports.testalphaindex_ko = {
             ai.addElement(item);
         });
 
-        var expected = {
-            "ㄱ": ["고구마", "고무", "김영희", "김철수"],
-            "ㄴ": ["나무"],
-            "ㄷ": ["대한민국", "도라지"],
-            "ㄸ": ["딸기"],
-            "ㅂ": ["병원"],
-            "ㅅ": ["사과"],
-            "ㅇ": ["오이"],
-            "ㅈ": ["자석"],
-            "ㅋ": ["컵"]
-        };
+        var expected = [
+            {
+                label: "ㄱ",
+                elements: ["고구마", "고무", "김영희", "김철수"]
+            },
+            {
+                label: "ㄴ",
+                elements:  ["나무"]
+            },
+            {
+                label: "ㄷ",
+                elements: ["대한민국", "도라지"]
+            },
+            {
+                label: "ㄸ",
+                elements: ["딸기"]
+            },
+            {
+                label: "ㅂ",
+                elements: ["병원"]
+            },
+            {
+                label: "ㅅ",
+                elements: ["사과"]
+            },
+            {
+                label: "ㅇ",
+                elements: ["오이"]
+            },
+            {
+                label: "ㅈ",
+                elements: ["자석"]
+            },
+            {
+                label: "ㅋ",
+                elements: ["컵"]
+            }
+        ]
 
         test.deepEqual(ai.getAllBuckets(), expected);
         test.done();
@@ -516,19 +543,49 @@ module.exports.testalphaindex_ko = {
         items.forEach(function(item) {
             ai.addElement(item);
         });
-
-        var expected = {
-            "ㄱ": ["강성진","김영희","김철수"],
-            "ㅁ": ["민예은"],
-            "ㅂ": ["박세진"],
-            "ㅅ": ["서수빈", "성수민", "송현경"],
-            "ㅇ": ["예지원","이영자", "임민성","임성훈"],
-            "ㅈ": ["장유진","장은경","정경자", "정미경", "주광수","진현주"],
-            "ㅊ": ["최준호"],
-            "ㅎ": ["하춘자"],
-            "A": ["Apple"],
-            "B": ["Banana"]
-        };
+       
+        var expected = [
+            {
+                label: "ㄱ",
+                elements: ["강성진","김영희","김철수"]
+            },
+            {
+                label: "ㅁ",
+                elements: ["민예은"]
+            },
+            {
+                label: "ㅂ",
+                elements: ["박세진"]
+            },
+            {
+                label: "ㅅ",
+                elements: ["서수빈", "성수민", "송현경"]
+            },
+            {
+                label: "ㅇ",
+                elements: ["예지원","이영자", "임민성","임성훈"]
+            },
+            {
+                label: "ㅈ",
+                elements: ["장유진","장은경","정경자", "정미경", "주광수","진현주"]
+            },
+            {
+                label: "ㅊ",
+                elements: ["최준호"]
+            },
+            {
+                label: "ㅎ",
+                elements: ["하춘자"]
+            },
+            {
+                label: "A",
+                elements: ["Apple"]
+            },
+            {
+                label: "B",
+                elements: ["Banana"]
+            }
+        ]
 
         test.deepEqual(ai.getAllBuckets(), expected);
         test.done();
@@ -587,18 +644,52 @@ module.exports.testalphaindex_ko = {
             ai.addElement(item);
         });
 
-        var expected = {
-            "ㄱ": ["강성진","김영희","김철수"],
-            "ㅁ": ["민예은"],
-            "ㅂ": ["박세진"],
-            "ㅅ": ["서수빈", "성수민", "송현경"],
-            "ㅇ": ["예지원","이영자", "임민성", "임성훈"],
-            "ㅈ": ["장유진", "장은경","정경자", "정미경", "주광수","진현주"],
-            "ㅊ": ["최준호"],
-            "ㅎ": ["하춘자"],
-            "A": ["Apple"],
-            "B": ["Banana"]
-        };
+        var expected = [
+            {
+                label: "#",
+                elements: [""]
+            },
+            {
+                label: "ㄱ",
+                elements: ["강성진","김영희","김철수"]
+            },
+            {
+                label: "ㅁ",
+                elements: ["민예은"]
+            },
+            {
+                label: "ㅂ",
+                elements: ["박세진"]
+            },
+            {
+                label: "ㅅ",
+                elements: ["서수빈", "성수민", "송현경"]
+            },
+            {
+                label: "ㅇ",
+                elements: ["예지원","이영자", "임민성","임성훈"]
+            },
+            {
+                label: "ㅈ",
+                elements: ["장유진","장은경","정경자", "정미경", "주광수","진현주"]
+            },
+            {
+                label: "ㅊ",
+                elements: ["최준호"]
+            },
+            {
+                label: "ㅎ",
+                elements: ["하춘자"]
+            },
+            {
+                label: "A",
+                elements: ["Apple"]
+            },
+            {
+                label: "B",
+                elements: ["Banana"]
+            }
+        ]
 
         test.deepEqual(ai.getAllBuckets(), expected);
         test.done();
@@ -646,18 +737,48 @@ module.exports.testalphaindex_ko = {
             ai.addElement(item);
         });
 
-        var expected = {
-            "A": ["alpha"],
-            "B": ["beta", "bravo"],
-            "E": ["echo", "epsilon", "eta"],
-            "O": ["omicron"],
-            "N": ["nu"],
-            "I": ["india", "iota"],
-            "D": ["delta"],
-            "Z": ["zeta"],
-            "M": ["mu"],
-            "G": ["gamma"]
-        };
+        var expected = [
+            {
+                label: "A",
+                elements: ["alpha"]
+            },
+            {
+                label: "B",
+                elements: ["beta", "bravo"]
+            },
+            {
+                label: "D",
+                elements: ["delta"]
+            },
+            {
+                label: "E",
+                elements: ["echo", "epsilon", "eta"]
+            },
+            {
+                label: "G",
+                elements: ["gamma"]
+            },
+            {
+                label: "I",
+                elements: ["india", "iota"],
+            },
+            {
+                label: "M",
+                elements: ["mu"]
+            },
+            {
+                label: "N",
+                elements: ["nu"]
+            },
+            {
+                label: "O",
+                elements: ["omicron"]
+            },
+            {
+                label: "Z",
+                elements: ["zeta"]
+            }
+        ]
 
         test.deepEqual(ai.getAllBuckets(), expected);
 
@@ -826,18 +947,48 @@ module.exports.testalphaindex_ko = {
             ai.addElement(item);
         });
 
-        var expected = {
-            "ㄱ": ["강성진","김영희","김철수"],
-            "ㅁ": ["민예은"],
-            "ㅂ": ["박세진"],
-            "ㅅ": ["서수빈", "성수민", "송현경"],
-            "ㅇ": ["예지원","이영자", "임민성", "임성훈"],
-            "ㅈ": ["장유진", "장은경","정경자", "정미경", "주광수","진현주"],
-            "ㅊ": ["최준호"],
-            "ㅎ": ["하춘자"],
-            "A" : ["Apple"],
-            "B" : ["Banana"],
-        };
+        var expected = [
+            {
+                label: "ㄱ",
+                elements: ["강성진","김영희","김철수"]
+            },
+            {
+                label: "ㅁ",
+                elements: ["민예은"]
+            },
+            {
+                label: "ㅂ",
+                elements: ["박세진"]
+            },
+            {
+                label: "ㅅ",
+                elements: ["서수빈", "성수민", "송현경"]
+            },
+            {
+                label: "ㅇ",
+                elements: ["예지원","이영자", "임민성", "임성훈"]
+            },
+            {
+                label: "ㅈ",
+                elements: ["장유진", "장은경","정경자", "정미경", "주광수","진현주"]
+            },
+            {
+                label: "ㅊ",
+                elements: ["최준호"]
+            },
+            {
+                label: "ㅎ",
+                elements: ["하춘자"]
+            },
+            {
+                label: "A",
+                elements: ["Apple"]
+            },
+            {
+                label: "B",
+                elements: ["Banana"]
+            }
+        ]
         
         test.deepEqual(ai.getAllBuckets(), expected);
         test.done();
@@ -874,20 +1025,53 @@ module.exports.testalphaindex_ko = {
             ai.addElement(item);
         });
 
-        var expected = {
-            "*" : ["りんご"],
-            "ㄱ": ["강성진", "김철수"],
-            "ㅁ": ["민예은"],
-            "ㅂ": ["박세진"],
-            "ㅅ": ["서수빈", "성수민"],
-            "ㅇ": ["예지원", "임민성"],
-            "ㅈ": ["장유진", "장은경"],
-            "ㅊ": ["최준호"],
-            "ㅎ": ["하춘자"],
-            "A" : ["Apple"],
-            "B" : ["Banana"]
-        };
-        
+        var expected = [
+            {
+                label: "*",
+                elements: ["りんご"]
+            },
+            {
+                label: "ㄱ",
+                elements: ["강성진", "김철수"]
+            },
+            {
+                label: "ㅁ",
+                elements: ["민예은"]
+            },
+            {
+                label: "ㅂ",
+                elements: ["박세진"]
+            },
+            {
+                label: "ㅅ",
+                elements: ["서수빈", "성수민"]
+            },
+            {
+                label: "ㅇ",
+                elements: ["예지원", "임민성"]
+            },
+            {
+                label: "ㅈ",
+                elements: ["장유진", "장은경"]
+            },
+            {
+                label: "ㅊ",
+                elements: ["최준호"]
+            },
+            {
+                label: "ㅎ",
+                elements: ["하춘자"]
+            },
+            {
+                label: "A",
+                elements: ["Apple"]
+            },
+            {
+                label: "B",
+                elements: ["Banana"]
+            }
+        ];
+
         test.deepEqual(ai.getAllBuckets(), expected);
         test.done();
     },
@@ -908,8 +1092,8 @@ module.exports.testalphaindex_ko = {
             "りんご",
             "서수빈",
             "최준호",
-            /*"香蕉",
-            "芒果",*/
+            "香蕉",
+            "芒果",
             "성수민",
             "민예은",
             "하춘자",
@@ -923,21 +1107,135 @@ module.exports.testalphaindex_ko = {
             ai.addElement(item);
         });
 
-        var expected = {
-            "*" : ["りんご"],
-            "ㄱ": ["강성진", "김철수"],
-            "ㅁ": ["민예은"],
-            "ㅂ": ["박세진"],
-            "ㅅ": ["서수빈", "성수민"],
-            "ㅇ": ["임민성"],
-            "ㅈ": ["장은경"],
-            "ㅊ": ["최준호"],
-            "ㅎ": ["하춘자"],
-            "A" : ["Apple"],
-            "B" : ["Banana"]
-            //"#" : ["香蕉", "芒果"]
-        };
+        var expected = [
+            {
+                label: "*",
+                elements: ["りんご"]
+            },
+            {
+                label: "ㄱ",
+                elements: ["강성진", "김철수"]
+            },
+            {
+                label: "ㅁ",
+                elements: ["민예은"]
+            },
+            {
+                label: "ㅂ",
+                elements: ["박세진"]
+            },
+            {
+                label: "ㅅ",
+                elements: ["서수빈", "성수민"]
+            },
+            {
+                label: "ㅇ",
+                elements: ["임민성"]
+            },
+            {
+                label: "ㅈ",
+                elements: ["장은경"]
+            },
+            {
+                label: "ㅊ",
+                elements: ["최준호"]
+            },
+            {
+                label: "ㅎ",
+                elements: ["하춘자"]
+            },
+            {
+                label: "A",
+                elements: ["Apple"]
+            },
+            {
+                label: "B",
+                elements: ["Banana"]
+            }
+        ];
         
+        test.deepEqual(ai.getAllBuckets(), expected);
+        test.done();
+    },
+
+    testAlphaIndexKOKRMixedScriptTest4: function(test) {
+        test.expect(2);
+
+        var ai = new AlphabeticIndex({
+            locale: "ko-KR"
+        });
+
+        test.ok(ai);
+
+        var items = [
+            "omicron",
+            "beta",
+            "echo",
+            "nu",
+            "eta",
+            "india",
+            "mu",
+            "gamma",
+            "ürgen",
+            "Ötish",
+            "김철수",
+            "연구소",
+            "четверг",
+            "مخزن",
+            "ßabcd"
+        ];
+
+        items.forEach(function(item) {
+            ai.addElement(item);
+        });
+
+        var expected = [
+            {
+                label: "*",
+                elements: ["четверг", "مخزن"]
+            },
+            {
+                label: "ㄱ",
+                elements: ["김철수"]
+            },
+            {
+                label: "ㅇ",
+                elements: ["연구소"]
+            },
+            {
+                label: "B",
+                elements: ["beta"]
+            },
+            {
+                label: "E",
+                elements: ["echo", "eta"]
+            },
+            {
+                label: "G",
+                elements: ["gamma"]
+            },
+            {
+                label: "I",
+                elements: ["india"]
+            },
+            {
+                label: "M",
+                elements: ["mu"]
+            },
+            {
+                label: "N",
+                elements: ["nu"]
+            },
+            {
+                label: "O",
+                elements: ["omicron", "Ötish"]
+            },
+            {
+                label: "U",
+                elements: ["ürgen"]
+            }
+        ];
+
         test.deepEqual(ai.getAllBuckets(), expected);
         test.done();
     }

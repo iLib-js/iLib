@@ -185,14 +185,14 @@ module.exports.testalphaindex = {
         var items = [
             "omicron",
             "beta",
+            "epsilon",
             "echo",
             "nu",
             "iota",
             "delta",
             "alpha",
             "zeta",
-            "bravo",
-            "epsilon",
+            "Bravo",
             "eta",
             "india",
             "mu",
@@ -203,18 +203,48 @@ module.exports.testalphaindex = {
             ai.addElement(item);
         });
 
-        var expected = {
-            "A": ["alpha"],
-            "B": ["beta", "bravo"],
-            "E": ["echo", "epsilon", "eta"],
-            "O": ["omicron"],
-            "N": ["nu"],
-            "I": ["india", "iota"],
-            "D": ["delta"],
-            "Z": ["zeta"],
-            "M": ["mu"],
-            "G": ["gamma"]
-        };
+        var expected = [
+            {
+                label: "A",
+                elements: ["alpha"]
+            },
+            {
+                label: "B",
+                elements: ["Bravo", "beta"]
+            },
+            {
+                label: "D",
+                elements: ["delta"]
+            },
+            {
+                label: "E",
+                elements: ["echo", "epsilon", "eta"]
+            },
+            {
+                label: "G",
+                elements: ["gamma"]
+            },
+            {
+                label: "I",
+                elements: ["india", "iota"]
+            },
+            {
+                label: "M",
+                elements: ["mu"]
+            },
+            {
+                label: "N",
+                elements: ["nu"]
+            },
+            {
+                label: "O",
+                elements: ["omicron"]
+            },
+            {
+                label: "Z",
+                elements: ["zeta"]
+            }
+        ]
 
         test.deepEqual(ai.getAllBuckets(), expected);
 
@@ -644,19 +674,52 @@ module.exports.testalphaindex = {
             ai.addElement(item);
         });
 
-        var expected = {
-            "*": ["300", "69"],
-            "A": ["alpha"],
-            "B": ["beta", "bravo"],
-            "E": ["echo", "epsilon", "eta"],
-            "O": ["omicron"],
-            "N": ["nu"],
-            "I": ["india", "iota"],
-            "D": ["delta"],
-            "Z": ["zeta"],
-            "M": ["mu"],
-            "G": ["gamma"]
-        };
+        var expected = [
+            {
+                label: "*",
+                elements: ["300", "69"]
+            },
+            {
+                label: "A",
+                elements: ["alpha"]
+            },
+            {
+                label: "B",
+                elements: ["beta", "bravo"]
+            },
+            {
+                label: "D",
+                elements: ["delta"]
+            },
+            {
+                label: "E",
+                elements: ["echo", "epsilon", "eta"]
+            },
+            {
+                label: "G",
+                elements: ["gamma"]
+            },
+            {
+                label: "I",
+                elements: ["india", "iota"]
+            },
+            {
+                label: "M",
+                elements: ["mu"]
+            },
+            {
+                label: "N",
+                elements: ["nu"]
+            },
+            {
+                label: "O",
+                elements: ["omicron"]
+            },
+            {
+                label: "Z",
+                elements: ["zeta"]
+            }
+        ]
 
         test.deepEqual(ai.getAllBuckets(), expected);
 
@@ -710,22 +773,54 @@ module.exports.testalphaindex = {
             ai.addElement(item);
         });
 
-        var expected = {
-            "*": ["* See below", "@TheRealDonaldDuck"],
-            "A": ["alpha"],
-            "B": ["beta", "bravo"],
-            "E": ["echo", "epsilon", "eta"],
-            "O": ["omicron"],
-            "N": ["nu"],
-            "I": ["india", "iota"],
-            "D": ["delta"],
-            "Z": ["zeta"],
-            "M": ["mu"],
-            "G": ["gamma"],
-        };
+        var expected = [
+            {
+                label: "*",
+                elements: ["* See below", "@TheRealDonaldDuck"]
+            },
+            {
+                label: "A",
+                elements: ["alpha"]
+            },
+            {
+                label: "B",
+                elements: ["beta", "bravo"]
+            },
+            {
+                label: "D",
+                elements: ["delta"]
+            },
+            {
+                label: "E",
+                elements: ["echo", "epsilon", "eta"]
+            },
+            {
+                label: "G",
+                elements: ["gamma"]
+            },
+            {
+                label: "I",
+                elements: ["india", "iota"]
+            },
+            {
+                label: "M",
+                elements: ["mu"]
+            },
+            {
+                label: "N",
+                elements: ["nu"]
+            },
+            {
+                label: "O",
+                elements: ["omicron"]
+            },
+            {
+                label: "Z",
+                elements: ["zeta"]
+            }
+        ]
 
         test.deepEqual(ai.getAllBuckets(), expected);
-
         test.done();
     },
 
@@ -764,25 +859,60 @@ module.exports.testalphaindex = {
             "eta",
             "india",
             "mu",
-            "gamma"
+            "gamma",
+            "ürgen"
         ];
 
         items.forEach(function(item) {
             ai.addElement(item);
         });
 
-        var expected = {
-            "A": ["alpha"],
-            "B": ["beta", "bravo"],
-            "E": ["echo", "epsilon", "eta"],
-            "O": ["omicron"],
-            "N": ["nu"],
-            "I": ["india", "iota"],
-            "D": ["delta"],
-            "Z": ["zeta"],
-            "M": ["mu"],
-            "G": ["gamma"]
-        };
+        var expected = [
+            {
+                label: "A",
+                elements: ["alpha"]
+            },
+            {
+                label: "B",
+                elements:["beta", "bravo"]
+            },
+            {
+                label: "D",
+                elements: ["delta"]
+            },
+            {
+                label: "E",
+                elements: ["echo", "epsilon", "eta"]
+            },
+            {
+                label: "G",
+                elements: ["gamma"]
+            },
+            {
+                label: "I",
+                elements: ["india", "iota"]
+            },
+            {
+                label: "M",
+                elements: ["mu"]
+            },
+            {
+                label: "N",
+                elements: ["nu"]
+            },
+            {
+                label: "O",
+                elements: ["omicron"]
+            },
+            {
+                label: "U",
+                elements: ["ürgen"]
+            },
+            {
+                label: "Z",
+                elements: ["zeta"]
+            }
+        ]
 
         test.deepEqual(ai.getAllBuckets(), expected);
         test.done();
@@ -924,6 +1054,84 @@ module.exports.testalphaindex = {
         
         ai.addLabels(["@@","$$$"], 3);
         test.deepEqual(ai.getAllBucketLabels(), expected);
+        test.done();
+    },
+
+    testAlphaIndexENUSMixedScriptTest1: function(test) {
+        test.expect(2);
+
+        var ai = new AlphabeticIndex({
+            locale: "en-US"
+        });
+
+        test.ok(ai);
+
+        var items = [
+            "omicron",
+            "beta",
+            "echo",
+            "nu",
+            "eta",
+            "india",
+            "mu",
+            "gamma",
+            "ürgen",
+            "Ötish",
+            "김철수",
+            "연구소",
+            "четверг",
+            "مخزن",
+            "ßabcd"
+        ];
+
+        items.forEach(function(item) {
+            ai.addElement(item);
+        });
+
+        var expected = [
+            {
+                label: "*",
+                elements: ["четверг", "مخزن"]
+            },
+            {
+                label: "B",
+                elements:["beta"]
+            },
+            {
+                label: "E",
+                elements: ["echo", "eta"]
+            },
+            {
+                label: "G",
+                elements: ["gamma"]
+            },
+            {
+                label: "I",
+                elements: ["india"]
+            },
+            {
+                label: "M",
+                elements: ["mu"]
+            },
+            {
+                label: "N",
+                elements: ["nu"]
+            },
+            {
+                label: "O",
+                elements: ["omicron", "Ötish"]
+            },
+            {
+                label: "S",
+                elements: ["ßabcd"]
+            },
+            {
+                label: "U",
+                elements: ["ürgen"]
+            }
+        ]
+
+        test.deepEqual(ai.getAllBuckets(), expected);
         test.done();
     }
 };

@@ -178,6 +178,49 @@ module.exports.testalphaindex_de = {
             "G": ["gamma"]
         };
 
+        var expected = [
+            {
+                label: "A",
+                elements: ["alpha"]
+            },
+            {
+                label: "B",
+                elements: ["beta", "bravo"]
+            },
+            {
+                label: "D",
+                elements: ["delta"]
+            },
+            {
+                label: "E",
+                elements: ["echo", "epsilon", "eta"]
+            },
+            {
+                label: "G",
+                elements: ["gamma"]
+            },
+            {
+                label: "I",
+                elements: ["india", "iota"]
+            },
+            {
+                label: "M",
+                elements: ["mu"]
+            },
+            {
+                label: "N",
+                elements: ["nu"]
+            },
+            {
+                label: "O",
+                elements: ["omicron"]
+            },
+            {
+                label: "Z",
+                elements: ["zeta"]
+            }
+        ];
+
         test.deepEqual(ai.getAllBuckets(), expected);
         test.done();
     },
@@ -334,15 +377,36 @@ module.exports.testalphaindex_de = {
             ai.addElement(item);
         });
 
-        var expected = {
-            "F": ["Fritz"],
-            "G": ["Georg"],
-            "H": ["Heinrich", "Heinz", "Hermann"],
-            "J": ["Josef","Jürgen"],
-            "K": ["Karl"],
-            "M": ["Matthias"],
-            "U": ["Ulrich"]            
-        };
+        var expected = [
+            {
+                label: "F",
+                elements: ["Fritz"]
+            },
+            {
+                label: "G",
+                elements: ["Georg"]
+            },
+            {
+                label: "H",
+                elements: ["Heinrich", "Heinz", "Hermann"]
+            },
+            {
+                label: "J",
+                elements: ["Josef", "Jürgen"]
+            },
+            {
+                label: "K",
+                elements: ["Karl"]
+            },
+            {
+                label: "M",
+                elements: ["Matthias"]
+            },
+            {
+                label: "U",
+                elements: ["Ulrich"]
+            }
+        ];
 
         test.deepEqual(ai.getAllBuckets(), expected);
         test.done();
@@ -383,15 +447,36 @@ module.exports.testalphaindex_de = {
             ai.addElement(item);
         });
 
-        var expected = {
-            "F": ["Fritz"],
-            "G": ["Georg"],
-            "H": ["Heinrich", "Heinz", "Hermann"],
-            "J": ["Josef", "Juan", "Judrich", "Juergen", "Julia", "Jürgen"],
-            "K": ["Karl"],
-            "M": ["Matthias"],
-            "U": ["Ualrich", "Udrich", "Uelrich", "Ulrich", "Ülrich"]
-        };
+        var expected = [
+            {
+                label: "F",
+                elements: ["Fritz"]
+            },
+            {
+                label: "G",
+                elements: ["Georg"]
+            },
+            {
+                label: "H",
+                elements: ["Heinrich", "Heinz", "Hermann"]
+            },
+            {
+                label: "J",
+                elements: ["Josef", "Juan", "Judrich", "Juergen", "Julia", "Jürgen"]
+            },
+            {
+                label: "K",
+                elements: ["Karl"]
+            },
+            {
+                label: "M",
+                elements: ["Matthias"]
+            },
+            {
+                label: "U",
+                elements: ["Ualrich", "Udrich", "Uelrich", "Ulrich", "Ülrich"]
+            }
+        ];
 
         test.deepEqual(ai.getAllBuckets(), expected);
         test.done();
@@ -432,15 +517,160 @@ module.exports.testalphaindex_de = {
             ai.addElement(item);
         });
 
-        var expected = {
-            "F": ["Fritz"],
-            "G": ["Georg"],
-            "H": ["Heinrich", "Heinz", "Hermann"],
-            "J": ["Josef", "Juan", "Judrich", "Juergen", "Julia","Jürgen"],
-            "K": ["Karl"],
-            "M": ["Matthias"],
-            "U": ["Ualrich", "Udrich", "Uelrich", "Ulrich", "Ülrich"]
-        };
+        var expected = [
+            {
+                label: "F",
+                elements: ["Fritz"]
+            },
+            {
+                label: "G",
+                elements: ["Georg"]
+            },
+            {
+                label: "H",
+                elements: ["Heinrich", "Heinz", "Hermann"]
+            },
+            {
+                label: "J",
+                elements: ["Josef", "Juan", "Judrich", "Juergen", "Julia","Jürgen"]
+            },
+            {
+                label: "K",
+                elements: ["Karl"]
+            },
+            {
+                label: "M",
+                elements: ["Matthias"]
+            },
+            {
+                label: "U",
+                elements: ["Ualrich", "Udrich", "Uelrich", "Ulrich", "Ülrich"]
+            },
+        ];
+
+        test.deepEqual(ai.getAllBuckets(), expected);
+        test.done();
+    },
+
+    testAlphaIndexDEDEMixedScriptTest1: function(test) {
+        test.expect(2);
+
+        var ai = new AlphabeticIndex({
+            locale: "de-DE",
+            style:"phonebook"
+        });
+
+        test.ok(ai);
+
+        var items = [
+            "Jürgen",
+            "Georg",
+            "Matthias",
+            "Heinz",
+            "Uelrich",
+            "مخزن",
+            "ßabcd",
+            "четверг",
+            "연구소",
+            "김철수"
+        ];
+
+        items.forEach(function(item) {
+            ai.addElement(item);
+        });
+
+        var expected = [
+            {
+                label: "#",
+                elements: ["четверг", "مخزن", "김철수", "연구소"]
+            },
+            {
+                label: "G",
+                elements: ["Georg"]
+            },
+            {
+                label: "H",
+                elements: ["Heinz"]
+            },
+            {
+                label: "J",
+                elements: ["Jürgen"]
+            },
+            {
+                label: "M",
+                elements: ["Matthias"]
+            },
+            {
+                label: "S",
+                elements: ["ßabcd"]
+            },
+            {
+                label: "U",
+                elements: ["Uelrich"]
+            }
+        ];
+
+        test.deepEqual(ai.getAllBuckets(), expected);
+        test.done();
+    },
+
+    testAlphaIndexDEDEMixedScriptTest2: function(test) {
+        test.expect(2);
+
+        var ai = new AlphabeticIndex({
+            locale: "de-DE",
+            style:"dictionary"
+        });
+
+        test.ok(ai);
+
+        var items = [
+            "Jürgen",
+            "Georg",
+            "Matthias",
+            "Heinz",
+            "Uelrich",
+            "مخزن",
+            "ßabcd",
+            "четверг",
+            "연구소",
+            "김철수"
+        ];
+
+        items.forEach(function(item) {
+            ai.addElement(item);
+        });
+
+        var expected = [
+            {
+                label: "#",
+                elements: ["четверг", "مخزن", "김철수", "연구소"]
+            },
+            {
+                label: "G",
+                elements: ["Georg"]
+            },
+            {
+                label: "H",
+                elements: ["Heinz"]
+            },
+            {
+                label: "J",
+                elements: ["Jürgen"]
+            },
+            {
+                label: "M",
+                elements: ["Matthias"]
+            },
+            {
+                label: "S",
+                elements: ["ßabcd"]
+            },
+            {
+                label: "U",
+                elements: ["Uelrich"]
+            }
+        ];
 
         test.deepEqual(ai.getAllBuckets(), expected);
         test.done();

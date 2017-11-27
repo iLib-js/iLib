@@ -127,7 +127,7 @@ var AlphabeticIndex = function (options) {
 	this.underflowLabel = "*";
 	this.style = "standard";
 	
-	this.index = {};
+	this.index = [];
 
 	if (options) {
 		if (options.locale) {
@@ -284,15 +284,27 @@ AlphabeticIndex.prototype.addElement = function(element) {
 	}
 
 	var label = this.getBucket(element);
-	
-	if (this.index[label] == undefined) {
-		this.index[label] = [element];
-	} else {
-		if (this.index[label].indexOf(element) == -1 ) {
-			this.index[label].push(element);
+	var i;
+	var newItem = true;
+	var itemSet = {};
+
+	itemSet.label = label;
+	itemSet.elements = [];
+
+	for (i = 0; i < this.index.length; i++) {
+		if (this.index[i].label === label) {
+			this.index[i].elements.push(element);
+			this.index[i].elements.sort();
+			newItem = false;
+			break;
 		}
-		this.index[label].sort();
 	}
+
+	if (newItem) {
+		itemSet.elements.push(element);
+		this.index[this.index.length] = itemSet;
+	}
+
 	return label;
 };
 
@@ -358,12 +370,22 @@ AlphabeticIndex.prototype.clear = function() {
  * Example:
  *
  * <code>
- * {
- *   "A": ["Adams", "Albers", "Alvarez],
- *   "B": ["Baker", "Banerjee", "Brunshteyn"],
- *   ...
- *   "#": ["3par.com", "@handle"]
- * }
+ *
+ * [
+ *     {
+ *         label: "A",
+ *         elements:  [ "A", "Aachen", "Adams", ... ]
+ *     },
+ *     {
+ *         label: "B",
+ *         elements: ["B", "Baaa", "Boo"]
+ *     },
+ *     ...
+ *     {
+ *         label: "#",
+ *         elements: ["3par.com", "@handle"]
+ *     }
+ * ]
  * </code>
  *
  * All elements within a bucket are sorted per the collation
@@ -373,6 +395,37 @@ AlphabeticIndex.prototype.clear = function() {
  * as per the description above.
  */
 AlphabeticIndex.prototype.getAllBuckets = function() {
+	var orderdIndex = [];
+	var i;
+	var underflowIndex = -1, overflowIndex = -1;
+	var flowLabelIndexNum;
+	var labelCount = this.index.length;
+
+	this.index.sort(function(a,b){
+		if (a.label < b.label) {
+			return -1;
+		} else {
+			return 1;
+		}
+	});
+
+	for (i=0; i < labelCount; i++) {
+		if (this.index[i].label == this.underflowLabel) {
+			underflowIndex = i
+		}
+		if (this.index[i].label == this.overflowLabel) {
+			overflowIndex = i
+		}
+	}
+
+	if (underflowIndex > 0) {
+		this.index.splice(0,0,this.splice(i,1)[0])
+	}
+
+	if (overflowIndex > -1) {
+		this.index.splice(labelCount,0,this.splice(i,1)[0])
+	}
+
 	return this.index;
 };
 
@@ -481,14 +534,13 @@ AlphabeticIndex.prototype.getBucketCount = function() {
 AlphabeticIndex.prototype.getBucketLabels = function() {
 	var buckets = this.index;
 	var label = new Array();
+	var i;
 
-	for (var prop in buckets) {
-		if (buckets.hasOwnProperty(prop)) {
-			label.push(prop);
-		}
+	for (i=0; i < buckets.length; i++) {
+		label.push(buckets[i].label);
 	}
-
 	label.sort();
+
 	return label;
 };
 
@@ -550,13 +602,12 @@ AlphabeticIndex.prototype.getOverflowLabel = function() {
  */
 AlphabeticIndex.prototype.getElementCount = function() {
 	var buckets = this.index;
-	var count = 0;
+	var i, count = 0;
 
-	for (var prop in buckets) {
-		if (buckets.hasOwnProperty(prop)) {
-			count += buckets[prop].length;
-		}
+	for (i=0; i < buckets.length; i++) {
+		count += buckets[i].elements.length;
 	}
+
 	return count;
 };
 
@@ -588,6 +639,16 @@ AlphabeticIndex.prototype.setOverflowLabel = function(overflowLabel) {
  */
 AlphabeticIndex.prototype.setUnderflowLabel = function(underflowLabel) {
 	this.underflowLabel = underflowLabel;
+};
+
+
+/**
+ * Get the item Index
+ *
+ * @
+ */
+AlphabeticIndex.prototype.getItemIndex = function() {
+	return;
 };
 
 module.exports = AlphabeticIndex;
