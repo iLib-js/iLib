@@ -581,10 +581,6 @@ module.exports.testalphaindex_de = {
 
         var expected = [
             {
-                label: "#",
-                elements: ["четверг", "مخزن", "김철수", "연구소"]
-            },
-            {
                 label: "G",
                 elements: ["Georg"]
             },
@@ -607,6 +603,10 @@ module.exports.testalphaindex_de = {
             {
                 label: "U",
                 elements: ["Uelrich"]
+            },
+            {
+                label: "#",
+                elements: ["четверг", "مخزن", "김철수", "연구소"]
             }
         ];
 
@@ -643,10 +643,6 @@ module.exports.testalphaindex_de = {
 
         var expected = [
             {
-                label: "#",
-                elements: ["четверг", "مخزن", "김철수", "연구소"]
-            },
-            {
                 label: "G",
                 elements: ["Georg"]
             },
@@ -669,6 +665,10 @@ module.exports.testalphaindex_de = {
             {
                 label: "U",
                 elements: ["Uelrich"]
+            },
+            {
+                label: "#",
+                elements: ["четверг", "مخزن", "김철수", "연구소"]
             }
         ];
 

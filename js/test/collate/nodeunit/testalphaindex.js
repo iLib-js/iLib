@@ -124,12 +124,12 @@ module.exports.testalphaindex = {
         var buckets = ai.getAllBuckets();
 
         test.ok(buckets);
-        test.ok(buckets.A);
+        test.ok(buckets[0]);
 
-        var a = buckets.A;
+        var a = buckets[0];
 
-        test.equal(a.length, 1);
-        test.equal(a[0], "abacus");
+        test.equal(a.label, "A");
+        test.equal(a.elements, "abacus");
         test.done();
     },
 
@@ -1090,10 +1090,6 @@ module.exports.testalphaindex = {
 
         var expected = [
             {
-                label: "*",
-                elements: ["четверг", "مخزن"]
-            },
-            {
                 label: "B",
                 elements:["beta"]
             },
@@ -1128,6 +1124,10 @@ module.exports.testalphaindex = {
             {
                 label: "U",
                 elements: ["ürgen"]
+            },
+            {
+                label: "#",
+                elements: ["четверг", "مخزن", "김철수", "연구소"]
             }
         ]
 

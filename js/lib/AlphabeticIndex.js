@@ -395,11 +395,13 @@ AlphabeticIndex.prototype.clear = function() {
  * as per the description above.
  */
 AlphabeticIndex.prototype.getAllBuckets = function() {
-	var orderdIndex = [];
-	var i;
 	var underflowIndex = -1, overflowIndex = -1;
-	var flowLabelIndexNum;
-	var labelCount = this.index.length;
+	var mixedScriptEndIndex = -1;
+	var count = 0;
+	var temp;
+	var i;
+
+	this._updateCollationMap(this.collation.default);
 
 	this.index.sort(function(a,b){
 		if (a.label < b.label) {
@@ -409,21 +411,42 @@ AlphabeticIndex.prototype.getAllBuckets = function() {
 		}
 	});
 
-	for (i=0; i < labelCount; i++) {
+	for (i=0; i < this.index.length; i++) {
+		if (this.inherit &&
+			this.indexUnits.indexOf(this.index[i].label) == -1) {
+			mixedScriptEndIndex = i;
+			count++;
+		}
+	}
+
+	if (this.inherit && count > 0) {
+		temp = this.index.splice((mixedScriptEndIndex - count) +1 , count);
+		this.index = this.index.concat(temp);
+	}
+
+	for (i=0; i < this.index.length; i++) {
 		if (this.index[i].label == this.underflowLabel) {
 			underflowIndex = i
-		}
-		if (this.index[i].label == this.overflowLabel) {
-			overflowIndex = i
+			break;
 		}
 	}
 
 	if (underflowIndex > 0) {
-		this.index.splice(0,0,this.splice(i,1)[0])
+		temp = this.index.splice(underflowIndex,1)[0];
+		this.index.unshift(temp);
+	}
+
+
+	for (i=0; i < this.index.length; i++) {
+		if (this.index[i].label == this.overflowLabel) {
+			overflowIndex = i
+			break;
+		}
 	}
 
 	if (overflowIndex > -1) {
-		this.index.splice(labelCount,0,this.splice(i,1)[0])
+		temp = this.index.splice(overflowIndex,1)[0];
+		this.index[this.index.length] = temp;
 	}
 
 	return this.index;
@@ -641,14 +664,5 @@ AlphabeticIndex.prototype.setUnderflowLabel = function(underflowLabel) {
 	this.underflowLabel = underflowLabel;
 };
 
-
-/**
- * Get the item Index
- *
- * @
- */
-AlphabeticIndex.prototype.getItemIndex = function() {
-	return;
-};
 
 module.exports = AlphabeticIndex;

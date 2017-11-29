@@ -107,12 +107,12 @@ module.exports.testalphaindex_ko = {
         var buckets = ai.getAllBuckets();
 
         test.ok(buckets);
-        test.ok(buckets.ㄷ);
+        test.ok(buckets[0]);
 
-        var a = buckets.ㄷ;
+        var a = buckets[0];
 
-        test.equal(a.length, 1);
-        test.equal(a[0], "대한민국");
+        test.equal(a.label, "ㄷ");
+        test.equal(a.elements, "대한민국");
         test.done();
     },
 
@@ -637,7 +637,11 @@ module.exports.testalphaindex_ko = {
             "장은경",
             "임민성",
             "주광수",
-            "박세진"
+            "박세진",
+            "μήλο",
+            "فاحة",
+            "úll"
+
         ];
 
         items.forEach(function(item) {
@@ -646,8 +650,8 @@ module.exports.testalphaindex_ko = {
 
         var expected = [
             {
-                label: "#",
-                elements: [""]
+                label: "*",
+                elements: ["μήλο", "فاحة"]
             },
             {
                 label: "ㄱ",
@@ -688,6 +692,10 @@ module.exports.testalphaindex_ko = {
             {
                 label: "B",
                 elements: ["Banana"]
+            },
+            {
+                label: "U",
+                elements: ["úll"]
             }
         ]
 
@@ -1151,7 +1159,12 @@ module.exports.testalphaindex_ko = {
             {
                 label: "B",
                 elements: ["Banana"]
+            },
+            {
+                label: "#",
+                elements: ["芒果", "香蕉"]
             }
+
         ];
         
         test.deepEqual(ai.getAllBuckets(), expected);
@@ -1231,6 +1244,10 @@ module.exports.testalphaindex_ko = {
                 elements: ["omicron", "Ötish"]
             },
             {
+                label: "S",
+                elements: ["ßabcd"]
+            },
+            {
                 label: "U",
                 elements: ["ürgen"]
             }
@@ -1240,3 +1257,4 @@ module.exports.testalphaindex_ko = {
         test.done();
     }
 };
+
