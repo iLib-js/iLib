@@ -38,7 +38,7 @@ Given all the above, the humble Javascript programmer needs a little help to par
 Parsing Names with iLib
 =============================
 
-Parsing names is a simple matter of creating an instance of the ilib.Name class. Here is an example:
+Parsing names is a simple matter of creating an instance of the Name class. Here is an example:
 ~~~~~~
 {
     prefix: "Dr.",
@@ -54,7 +54,9 @@ Parsing in Other Languages
 =============================
 Just like other iLib classes, you can pass in options to the constructor to control how the parsing proceeds. For example, let's say you want to parse the name in Korean instead:
 ~~~~~~
-var name = new ilib.Name("김인환", {locale: "ko-KR"});
+var Name = require("ilib/lib/Name.js");
+
+var name = new Name("김인환", {locale: "ko-KR"});
 ~~~~~~
 Now the properties are:
 ~~~~~~
@@ -71,7 +73,9 @@ It is typical in a contact list of a person who speaks an Asian language to have
 
 That means the following will still work properly:
 ~~~~~~
-var name = new ilib.Name("Dr. John James Smith, Jr.", {locale: "ko-KR"});
+var Name = require("ilib/lib/Name.js");
+
+var name = new Name("Dr. John James Smith, Jr.", {locale: "ko-KR"});
 ~~~~~~
 Now, the "name" variable should contain the following properties:
 ~~~~~~
@@ -102,18 +106,21 @@ In some contacts services, such as Google Contacts, names are given as whole nam
 
 Other services, such as Outlook/Exchange, give you names that are broken down by field. This is much less ambiguous and makes it easy to sort by a particular name, but it presents a problem if you want to display that name on the screen. What order do you use? What if you don't want to present all the parts of the name and you just want the short version?
 
-There is where you would use the class ilib.NameFmt to reassemble the parts into a single string. Here is an example:
+There is where you would use the class NameFmt to reassemble the parts into a single string. Here is an example:
 
 ~~~~~~
+var Name = require("ilib/lib/Name.js");
+var NameFmt = require("ilib/lib/NameFmt.js");
+
 // presumably, these parts came from Outlook or some such service
-var name = new ilib.Name({
+var name = new Name({
     prefix: "Dr.",
     givenName: "John",
     middleName: "James",
     familyName: "Smith",
     suffix: ", Jr."
 });
-var nf = new ilib.NameFmt();
+var nf = new NameFmt();
 var formatted = nf.format(name);
 ~~~~~~
 Now the name in the "formatted" variable will appear as the string:
@@ -124,15 +131,18 @@ Now the name in the "formatted" variable will appear as the string:
 
 Let's say you wanted the full name instead where all the parts are assembled in the correct order. In this case, the formatter also takes options to its constructor:
 ~~~~~~
+var Name = require("ilib/lib/Name.js");
+var NameFmt = require("ilib/lib/NameFmt.js");
+
 // presumably, these parts came from Outlook or some such service
-var name = new ilib.Name({
+var name = new Name({
     prefix: "Dr.",
     givenName: "John",
     middleName: "James",
     familyName: "Smith",
     suffix: ", Jr."
 });
-var nf = new ilib.NameFmt({style: "full"});
+var nf = new NameFmt({style: "full"});
 var formatted = nf.format(name)
 ~~~~~~
 
@@ -145,11 +155,13 @@ Collating Family Names
 =============================
 As mentioned in a previous section, German groups the auxiliary words along with the family name for display, but not for collation sorting. In the case of sorting, you have to get the head word of the name. Dutch also follows these rules, by the way.
 
-There are two methods of the ilib.Name class you can use.
+There are two methods of the Name class you can use.
 
 First, you can get the head word directly:
 ~~~~~~
-var name = new ilib.Name("Ludwig von Beethoven", {locale: "de-AT"});
+var Name = require("ilib/lib/Name.js");
+
+var name = new Name("Ludwig von Beethoven", {locale: "de-AT"});
 var headname = name.getHeadFamilyName();
 ~~~~~~
 
@@ -160,11 +172,12 @@ Now the variable "headname" will contain:
 Alternately, you can use the method "getSortFamilyName" to get a re-ordered version of the family name that you can use directly for sorting.
 
 ~~~~~~
-var name = new ilib.Name("Pieter van der Veen", {locale: "nl-NL"});
+var Name = require("ilib/lib/Name.js");
+
+var name = new Name("Pieter van der Veen", {locale: "nl-NL"});
 var sortname = name.getSortFamilyName();
 ~~~~~~
 
 Now the variable "sortname" will contain this string with the head word first, followed by a comma, followed by all the auxiliaries:
-
 
 > Veen, van der
