@@ -29,6 +29,8 @@ New Features:
   * number - a unixtime for the requested date
   * string - a date string that is parseable by the javascript intrinsic Date class
 * Updated time zone info to 2017c
+* Removed deprecated APIs - newDateInstance() in every Calendar feature.
+  * CoptiCal, EthiopicCal, GregorianCal, HanCal, HebrewCal, IslamicCal, JulianCal, PersianAlgoCal, PersianCal and ThaiSolarCal
 
 Bug Fixes:
 
