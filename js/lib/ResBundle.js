@@ -493,8 +493,63 @@ ResBundle.prototype = {
 		return (this.type === "xml" || this.type === "html") ? this._unescapeXml(key) : key;
 	},
 	
+    /**
+     * @private
+     */
+	_getStringSingle: function(source, key, escapeMode) {
+        if (!source && !key) return new IString("");
+
+        var trans;
+        if (this.locale.isPseudo()) {
+            var str = source ? source : this.map[key];
+            trans = this._pseudo(str || key);
+        } else {
+            var keyName = key || this._makeKey(source);
+            if (typeof(this.map[keyName]) !== 'undefined') {
+                trans = this.map[keyName];
+            } else if (this.missing === "pseudo") {
+                trans = this._pseudo(source || key);
+            } else if (this.missing === "empty") {
+                trans = "";
+            } else {
+                trans = source;
+            }
+        }
+
+        if (escapeMode && escapeMode !== "none") {
+            if (escapeMode == "default") {
+                escapeMode = this.type;
+            }
+            if (escapeMode === "xml" || escapeMode === "html") {
+                trans = this._escapeXml(trans);
+            } else if (escapeMode == "js" || escapeMode === "attribute") {
+                trans = trans.replace(/'/g, "\\\'").replace(/"/g, "\\\"");
+            }
+        }
+        if (trans === undefined) {
+            return undefined;
+        } else {
+            var ret = new IString(trans);
+            ret.setLocale(this.locale.getSpec(), true, this.loadParams); // no callback
+            return ret;
+        }
+	}, 
+	    
 	/**
-	 * Return a localized string. If the string is not found in the loaded set of
+	 * Return a localized string, array, or object. This method can localize individual
+	 * strings, arrays of strings, or objects with string values in them.<p>
+	 * 
+	 * If the source parameter is a string, the translation of that string is looked
+	 * up and returned. If the source parameter is an array of strings, then the translation 
+	 * of each of the elements of that array is looked up, and an array of translated strings
+	 * is returned. If the source parameter is an object, then the object is cloned
+	 * and certain property values within that object are translated. A object source
+	 * parameter requires that a json schema must be passed along with it so that this
+	 * method knows which property values to localize and which to leave untouched. In
+	 * the description below, a "string" refers to any individual string, any element
+	 * of an array of strings, or any property value that is localizable.<p>
+	 * 
+	 * If any string is not found in the loaded set of
 	 * resources, the original source string is returned. If the key is not given,
 	 * then the source string itself is used as the key. In the case where the 
 	 * source string is used as the key, the whitespace is compressed down to 1 space
@@ -526,48 +581,24 @@ ResBundle.prototype = {
 	 * be "js" so that the output string can be used in Javascript without causing syntax
 	 * errors.
 	 * 
-	 * @param {?string=} source the source string to translate
-	 * @param {?string=} key optional name of the key, if any
+	 * @param {?string|Array.<string>|Object=} source the source string to translate
+	 * @param {?string|Array.<string>=} key optional name of the key, if any
 	 * @param {?string=} escapeMode escape mode, if any
-	 * @return {IString|undefined} the translation of the given source/key or undefined 
+	 * @param {?Object=} schema the json schema of the source parameter, if it is an object
+	 * @return {IString|Array.<IString>|undefined} the translation of the given source/key or undefined 
 	 * if the translation is not found and the source is undefined 
 	 */
-	getString: function (source, key, escapeMode) {
+	getString: function (source, key, escapeMode, schema) {
 		if (!source && !key) return new IString("");
-
-		var trans;
-		if (this.locale.isPseudo()) {
-			var str = source ? source : this.map[key];
-			trans = this._pseudo(str || key);
+		
+		if (typeof(source) === "object") {
+            // TODO localize objects
+        } else if (ilib.isArray(source)) {
+		    return source.map(ilib.bind(this, function(str) {
+		       return this._getStringSingle(str, key, escapeMode);
+		    }));
 		} else {
-			var keyName = key || this._makeKey(source);
-			if (typeof(this.map[keyName]) !== 'undefined') {
-				trans = this.map[keyName];
-			} else if (this.missing === "pseudo") {
-				trans = this._pseudo(source || key);
-			} else if (this.missing === "empty") {
-				trans = "";
-			} else {
-				trans = source;
-			}
-		}
-
-		if (escapeMode && escapeMode !== "none") {
-			if (escapeMode == "default") {
-				escapeMode = this.type;
-			}
-			if (escapeMode === "xml" || escapeMode === "html") {
-				trans = this._escapeXml(trans);
-			} else if (escapeMode == "js" || escapeMode === "attribute") {
-				trans = trans.replace(/'/g, "\\\'").replace(/"/g, "\\\"");
-			}
-		}
-		if (trans === undefined) {
-			return undefined;
-		} else {
-			var ret = new IString(trans);
-			ret.setLocale(this.locale.getSpec(), true, this.loadParams); // no callback
-			return ret;
+            return this._getStringSingle(source, key, escapeMode);
 		}
 	},
 	
@@ -583,12 +614,20 @@ ResBundle.prototype = {
 	 * @return {string|undefined} the translation of the given source/key or undefined 
 	 * if the translation is not found and the source is undefined
 	 */
-	getStringJS: function(source, key, escapeMode) {
+	getStringJS: function(source, key, escapeMode, schema) {
 		if (typeof(source) === 'undefined' && typeof(key) === 'undefined') {
 			return undefined;
 		}
-		var s = this.getString(source, key, escapeMode); 
-		return s ? s.toString() : undefined;
+		if (typeof(source) === "object") {
+		    // TODO localize objects
+		} else if (ilib.isArray(source)) {
+		    return this.getString(source, key, escapeMode).map(function(str) {
+		       return str ? str.toString() : undefined;
+		    });
+		} else {
+            var s = this.getString(source, key, escapeMode); 
+            return s ? s.toString() : undefined;
+		}
 	},
 	
 	/**

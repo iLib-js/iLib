@@ -1959,5 +1959,75 @@ module.exports.testresources = {
         test.done();
         
         ilib.setLocale(tmp);
+    },
+    
+    testResBundleLocalizeArray: function(test) {
+        test.expect(1);
+        var rb = new ResBundle({locale: "de-DE"});
+        
+        test.deepEqual(rb.getStringJS([
+            "first string",
+            "second string", 
+            "third string"
+        ]), [
+            "erste String",
+            "zweite String",
+            "dritte String"
+        ]);
+        
+        test.done();
+    },
+    
+    testResBundleLocalizeArrayUntranslatedElements: function(test) {
+        test.expect(1);
+        var rb = new ResBundle({locale: "de-DE"});
+        
+        test.deepEqual(rb.getStringJS([
+            "first string",
+            "second string",
+            "third string",
+            "fourth string"
+        ]), [
+            "erste String",
+            "zweite String",
+            "dritte String",
+            "fourth string"
+        ]);
+        
+        test.done();
+    },
+    
+    testResBundleLocalizeArrayUndefinedElements: function(test) {
+        test.expect(1);
+        var rb = new ResBundle({locale: "de-DE"});
+        
+        test.deepEqual(rb.getStringJS([
+            "first string",
+            undefined,
+            "third string"
+        ]), [
+            "erste String",
+            undefined,
+            "dritte String"
+        ]);
+        
+        test.done();
+    },
+
+    testResBundleLocalizeArrayEmptyString: function(test) {
+        test.expect(1);
+        var rb = new ResBundle({locale: "de-DE"});
+        
+        test.deepEqual(rb.getStringJS([
+            "first string", 
+            "", 
+            "third string"
+        ]), [
+            "erste String",
+            "",
+            "dritte String"
+        ]);
+        
+        test.done();
     }
 };
