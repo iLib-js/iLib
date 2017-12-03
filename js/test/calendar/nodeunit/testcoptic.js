@@ -277,20 +277,5 @@ module.exports.testcoptic = {
         
         test.ok(cal.isLeapYear(2003));
         test.done();
-    },
-    
-    testCopticNewDateInstance: function(test) {
-        test.expect(2);
-        var cal = new CopticCal();
-        var d = cal.newDateInstance({
-            year: 20,
-            month: 6,
-            day: 1
-        });
-        
-        test.ok(typeof(d) !== "undefined");
-        test.equal(d.cal.type, "coptic");
-        test.done();
     }
-    
 };

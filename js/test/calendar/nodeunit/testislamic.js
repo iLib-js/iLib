@@ -364,21 +364,5 @@ module.exports.testislamic = {
         
         test.ok(!cal.isLeapYear(30));
         test.done();
-    },
-    
-    testIslamicNewDateInstance: function(test) {
-        test.expect(3);
-        var cal = new IslamicCal();
-        var d = cal.newDateInstance({
-            year: 20,
-            month: 6,
-            day: 1
-        });
-        
-        test.ok(typeof(d) !== "undefined");
-        test.ok(typeof(d.cal) !== "undefined");
-        test.equal(d.cal.type, "islamic");
-        test.done();
     }
-    
 };
