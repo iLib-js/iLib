@@ -148,7 +148,10 @@ for (var i = 0; i < suite.length; i++) {
     console.log("Adding suite: " + suite[i]);
     suites = require("./" + path.join(suite[i], "nodeunit/testSuiteFiles.js")).files.forEach(function(file) {
         var test = require("./" + path.join(suite[i], "nodeunit", file));
-        modules[suite[i]] = test;
+        if (!modules[suite[i]]) modules[suite[i]] = {};
+        for (var t in test) {
+            modules[suite[i]][t] = test[t];
+        }
     });
 }
 
