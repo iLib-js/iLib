@@ -190,22 +190,5 @@ module.exports.testgregorian = {
         
         test.ok(cal.isLeapYear(2000));
         test.done();
-    },
-    
-    testGregorianNewDateInstance: function(test) {
-        test.expect(3);
-        var cal = new GregorianCal();
-        var d = cal.newDateInstance({
-            year: 2012,
-            month: 6,
-            day: 1
-        });
-        
-        test.ok(typeof(d) !== "undefined");
-        test.ok(typeof(d.cal) !== "undefined");
-        test.equal(d.cal.type, "gregorian");
-        test.done();
     }
-    
-    
 };

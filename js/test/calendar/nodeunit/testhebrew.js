@@ -478,21 +478,7 @@ module.exports.testhebrew = {
         test.ok(cal.isLeapYear(30));
         test.done();
     },
-    
-    testHebrewNewDateInstance: function(test) {
-        test.expect(2);
-        var cal = new HebrewCal();
-        var d = cal.newDateInstance({
-            year: 20,
-            month: 6,
-            day: 1
-        });
         
-        test.ok(typeof(d) !== "undefined");
-        test.equal(d.cal.type, "hebrew");
-        test.done();
-    },
-    
     testHebrewGetNumMonths1: function(test) {
         test.expect(1);
         var cal = new HebrewCal();

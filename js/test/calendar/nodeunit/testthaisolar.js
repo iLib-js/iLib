@@ -189,21 +189,5 @@ module.exports.testthaisolar = {
         
         test.ok(cal.isLeapYear(2543));
         test.done();
-    },
-    
-    testThaiSolarNewDateInstance: function(test) {
-        test.expect(2);
-        var cal = new ThaiSolarCal();
-        var d = cal.newDateInstance({
-            year: 2555,
-            month: 6,
-            day: 1
-        });
-        
-        test.ok(typeof(d) !== "undefined");
-        test.equal(d.cal.type, "thaisolar");
-        test.done();
     }
-    
-    
 };
