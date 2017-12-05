@@ -450,7 +450,6 @@ module.exports.testalphaindex_ko = {
         ];
 
         test.deepEqual(ai.getAllBucketLabels(), expected);
-
         test.done();
     },
 
@@ -1257,4 +1256,3 @@ module.exports.testalphaindex_ko = {
         test.done();
     }
 };
-

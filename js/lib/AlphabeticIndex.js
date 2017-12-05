@@ -167,7 +167,7 @@ var AlphabeticIndex = function (options) {
 			if (!collation) {
 				collation = ilib.data.collation;
 				var spec = this.locale.getSpec().replace(/-/g, '_');
-				Collator.cache[spec] = collation;
+				ilib.data.cache.Collator[spec] = collation;
 			}
 			this.collation = collation;
 			this._init(collation);
@@ -200,8 +200,6 @@ AlphabeticIndex.prototype._init = function(collation) {
 	}
 
 	this.flowBoundaries = new Array();
-	this.currentLanguage = this.locale.getLanguage();
-
 	
 	if (this.style === 'standard') {
 		this.style = this.collation["default"];
@@ -240,8 +238,8 @@ AlphabeticIndex.prototype._getKeyByValue = function(value) {
 			label = this.indexUnits[i];
 			break;
 		}
-		
 	}
+
 	return label;
 };
 
@@ -275,16 +273,16 @@ AlphabeticIndex.prototype.getLocale = function() {
  * to the collation for the locale set up within this index.
  *
  * @param {String} element the element to add
- * @returns {String} the label of the bucket into which
+ * @returns {String|undefined} the label of the bucket into which
  * this element was added
  */
 AlphabeticIndex.prototype.addElement = function(element) {
 	if (typeof(element) !== 'string') {
-		return;
+		return undefined;
 	}
 
-	var label = this.getBucket(element);
 	var i;
+	var label = this.getBucket(element);
 	var newItem = true;
 	var itemSet = {};
 
@@ -332,7 +330,7 @@ AlphabeticIndex.prototype.addLabels = function(labels, start) {
 	allBucketLabels = this.getAllBucketLabels();
 
 	if (!start ||
-		start > allBucketLabels.length ) {
+		start > allBucketLabels.length) {
 		for (var i=0; i < labels.length; i++) {
 		   allBucketLabels.push(labels[i]);
 		}
@@ -340,14 +338,14 @@ AlphabeticIndex.prototype.addLabels = function(labels, start) {
 		if (typeof labels === 'string') {
 			allBucketLabels.splice(start, 0, labels);
 		} else if (typeof labels === 'object') {
-			var j = labels.length -1;
-			for (var i=0; i < labels.length; i++) {
+			var j = labels.length-1;
+			for (var i = 0; i < labels.length; i++) {
 				allBucketLabels.splice(start, 0, labels[j]);
-				j--
+				j--;
 			}
 		}
 	}
-	this.allBucketLabels = allBucketLabels
+	this.allBucketLabels = allBucketLabels;
 };
 
 /**
@@ -436,7 +434,6 @@ AlphabeticIndex.prototype.getAllBuckets = function() {
 		this.index.unshift(temp);
 	}
 
-
 	for (i=0; i < this.index.length; i++) {
 		if (this.index[i].label == this.overflowLabel) {
 			overflowIndex = i
@@ -460,7 +457,7 @@ AlphabeticIndex.prototype.getAllBuckets = function() {
  * the index, however. (See addElement for that.)
  *
  * @param {String} element the element to check
- * @returns {String} the label for the bucket for this element
+ * @returns {String|undefined} the label for the bucket for this element
  */
 AlphabeticIndex.prototype.getBucket = function(element) {
 	var label;
@@ -469,7 +466,7 @@ AlphabeticIndex.prototype.getBucket = function(element) {
 	var charNum, firstBoundaryChar, endBoundaryChar, firstCharNum, endCharNum;
 	
 	if (!element && !typeof(element) === 'string') {
-		return;
+		return undefined;
 	}
 
 	firstChar = element.charAt(0);
@@ -479,7 +476,6 @@ AlphabeticIndex.prototype.getBucket = function(element) {
 	}
 
 	collationValue = this.collationMap[firstChar];
-
 
 	if (!collationValue && this.inherit) {
 		for (var i = 0; i < this.inherit.length; i++) {
@@ -506,15 +502,14 @@ AlphabeticIndex.prototype.getBucket = function(element) {
 			}	
 		} else if (typeof collationValue[0] === 'object') {
 			label = this._getKeyByValue(collationValue[0]);
-
 		} 
 	} else {
-		charNum = IString.toCodePoint(firstChar);
+		charNum = IString.toCodePoint(firstChar, 0);
 		firstBoundaryChar = this._getKeyByValue([this.flowBoundaries[0]]);
 		endBoundaryChar = this._getKeyByValue([this.flowBoundaries[1]]);
 
-		firstCharNum = IString.toCodePoint(firstBoundaryChar);
-		endCharNum = IString.toCodePoint(endBoundaryChar);
+		firstCharNum = IString.toCodePoint(firstBoundaryChar, 0);
+		endCharNum = IString.toCodePoint(endBoundaryChar, 0);
 
 		if (charNum < firstCharNum) {
 			label = this.underflowLabel;
@@ -548,22 +543,20 @@ AlphabeticIndex.prototype.getBucketCount = function() {
  * Return the bucket labels for this index in order. This
  * method only returns the index labels for buckets that
  * actually contain elements. This
- * will include the under-, in-, and overflow labels if
+ * will include the under- and overflow labels if
  * they are used in this index.
  *
  * @returns {Array.<String>} the array of bucket labels
  * for this index in collation order
  */
 AlphabeticIndex.prototype.getBucketLabels = function() {
-	var buckets = this.index;
+	var buckets = this.getAllBuckets();
 	var label = new Array();
 	var i;
 
 	for (i=0; i < buckets.length; i++) {
 		label.push(buckets[i].label);
 	}
-	label.sort();
-
 	return label;
 };
 
@@ -590,7 +583,6 @@ AlphabeticIndex.prototype.getAllBucketLabels = function() {
 	}
 
 	this.allBucketLabels.push(this.overflowLabel);
-
 	return this.allBucketLabels;
 };
 

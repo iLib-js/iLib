@@ -545,7 +545,7 @@ module.exports.testalphaindex_de = {
             {
                 label: "U",
                 elements: ["Ualrich", "Udrich", "Uelrich", "Ulrich", "Ülrich"]
-            },
+            }
         ];
 
         test.deepEqual(ai.getAllBuckets(), expected);

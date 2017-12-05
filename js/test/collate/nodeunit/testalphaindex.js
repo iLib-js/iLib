@@ -247,7 +247,6 @@ module.exports.testalphaindex = {
         ]
 
         test.deepEqual(ai.getAllBuckets(), expected);
-
         test.done();
     },
 
@@ -282,7 +281,6 @@ module.exports.testalphaindex = {
         });
 
         test.deepEqual(ai.getElementCount(), 14);
-
         test.done();
     },
 
@@ -722,7 +720,6 @@ module.exports.testalphaindex = {
         ]
 
         test.deepEqual(ai.getAllBuckets(), expected);
-
         test.done();
     },
 
