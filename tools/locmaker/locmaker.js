@@ -130,7 +130,8 @@ var classList = [
 	"DateRngFmt",
 	"LocaleInfo",
 	"ResBundle",
-	"Locale"
+	"Locale",
+	"ScriptInfo"
 ];
 
 var localeList = ["ar-AE","ar-BH","ar-DJ","ar-DZ","ar-EG","ar-IQ","ar-JO","ar-KW","ar-LB","ar-LY",
