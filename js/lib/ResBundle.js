@@ -542,12 +542,7 @@ ResBundle.prototype = {
 	 * If the source parameter is a string, the translation of that string is looked
 	 * up and returned. If the source parameter is an array of strings, then the translation 
 	 * of each of the elements of that array is looked up, and an array of translated strings
-	 * is returned. If the source parameter is an object, then the object is cloned
-	 * and certain property values within that object are translated. A object source
-	 * parameter requires that a json schema must be passed along with it so that this
-	 * method knows which property values to localize and which to leave untouched. In
-	 * the description below, a "string" refers to any individual string, any element
-	 * of an array of strings, or any property value that is localizable.<p>
+	 * is returned. <p>
 	 * 
 	 * If any string is not found in the loaded set of
 	 * resources, the original source string is returned. If the key is not given,
@@ -584,18 +579,19 @@ ResBundle.prototype = {
 	 * @param {?string|Array.<string>|Object=} source the source string to translate
 	 * @param {?string|Array.<string>=} key optional name of the key, if any
 	 * @param {?string=} escapeMode escape mode, if any
-	 * @param {?Object=} schema the json schema of the source parameter, if it is an object
 	 * @return {IString|Array.<IString>|undefined} the translation of the given source/key or undefined 
 	 * if the translation is not found and the source is undefined 
 	 */
-	getString: function (source, key, escapeMode, schema) {
+	getString: function (source, key, escapeMode) {
 		if (!source && !key) return new IString("");
 		
-		if (typeof(source) === "object") {
+		//if (typeof(source) === "object") {
             // TODO localize objects
-        } else if (ilib.isArray(source)) {
+        //} else
+		
+        if (ilib.isArray(source)) {
 		    return source.map(ilib.bind(this, function(str) {
-		       return this._getStringSingle(str, key, escapeMode);
+		       return typeof(str) === "string" ? this._getStringSingle(str, key, escapeMode) : str;
 		    }));
 		} else {
             return this._getStringSingle(source, key, escapeMode);
@@ -614,15 +610,17 @@ ResBundle.prototype = {
 	 * @return {string|undefined} the translation of the given source/key or undefined 
 	 * if the translation is not found and the source is undefined
 	 */
-	getStringJS: function(source, key, escapeMode, schema) {
+	getStringJS: function(source, key, escapeMode) {
 		if (typeof(source) === 'undefined' && typeof(key) === 'undefined') {
 			return undefined;
 		}
-		if (typeof(source) === "object") {
+		//if (typeof(source) === "object") {
 		    // TODO localize objects
-		} else if (ilib.isArray(source)) {
+		//} else 
+		
+		if (ilib.isArray(source)) {
 		    return this.getString(source, key, escapeMode).map(function(str) {
-		       return str ? str.toString() : undefined;
+		       return (str && str instanceof IString) ? str.toString() : str;
 		    });
 		} else {
             var s = this.getString(source, key, escapeMode); 
