@@ -1769,7 +1769,7 @@ module.exports.testtimezone = {
                 test.deepEqual(tz.getId(), "America/Los_Angeles");
                 
                 // before start
-                var d = new DateFactory({
+                var d = DateFactory({
                     julianday: 2456725.916666
                 });
                 test.ok(!tz.inDaylightTime(d));
@@ -1791,7 +1791,7 @@ module.exports.testtimezone = {
                 test.deepEqual(tz.getId(), "America/Los_Angeles");
                 
                 // after start
-                var d = new DateFactory({
+                var d = DateFactory({
                     julianday: 2456725.91666669
                 });
                 test.ok(tz.inDaylightTime(d));
@@ -1812,7 +1812,7 @@ module.exports.testtimezone = {
                 ilib.setLoaderCallback(oldLoader);
                 
                 // before end
-                var d = new DateFactory({
+                var d = DateFactory({
                     julianday: 2456963.8749999
                 });
                 test.ok(tz.inDaylightTime(d));
@@ -1834,7 +1834,7 @@ module.exports.testtimezone = {
                 test.deepEqual(tz.getId(), "America/Los_Angeles");
     
                 // after end
-                var d = new DateFactory({
+                var d = DateFactory({
                     julianday: 2456963.8750001
                 });
                 test.ok(!tz.inDaylightTime(d));

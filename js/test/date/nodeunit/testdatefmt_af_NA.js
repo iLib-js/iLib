@@ -1225,7 +1225,7 @@ module.exports.testdatefmt_af_NA = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "13:45 WAST");
+        test.equal(fmt.format(date), "13:45 CAT");
         test.done();
     },
     
@@ -1249,7 +1249,7 @@ module.exports.testdatefmt_af_NA = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "13:45 WAST");
+        test.equal(fmt.format(date), "13:45 CAT");
         test.done();
     },
     
@@ -1292,7 +1292,7 @@ module.exports.testdatefmt_af_NA = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "13:45:37 WAST");
+        test.equal(fmt.format(date), "13:45:37 CAT");
         test.done();
     },
     
@@ -1316,7 +1316,7 @@ module.exports.testdatefmt_af_NA = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "13:45:37 WAST");
+        test.equal(fmt.format(date), "13:45:37 CAT");
         test.done();
     },
     
@@ -1474,7 +1474,7 @@ module.exports.testdatefmt_af_NA = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "13:45 WAST");
+        test.equal(fmt.format(date), "13:45 CAT");
         test.done();
     },
     
@@ -1498,7 +1498,7 @@ module.exports.testdatefmt_af_NA = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "13:45 WAST");
+        test.equal(fmt.format(date), "13:45 CAT");
         test.done();
     },
     
@@ -1542,7 +1542,7 @@ module.exports.testdatefmt_af_NA = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "13:45:37 WAST");
+        test.equal(fmt.format(date), "13:45:37 CAT");
         test.done();
     },
     
@@ -1566,7 +1566,7 @@ module.exports.testdatefmt_af_NA = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "13:45:37 WAST");
+        test.equal(fmt.format(date), "13:45:37 CAT");
         test.done();
     },
     
@@ -1590,7 +1590,7 @@ module.exports.testdatefmt_af_NA = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "13:45:37 WAST");
+        test.equal(fmt.format(date), "13:45:37 CAT");
         test.done();
     },
     

@@ -125,8 +125,7 @@ var AlphabeticIndex = function (options) {
 	this.accentSensitive = false;
 	this.overflowLabel = "#";
 	this.underflowLabel = "*";
-	this.style = "standard";
-	
+	this.style = "standard";	
 	this.index = [];
 
 	if (options) {
@@ -149,7 +148,6 @@ var AlphabeticIndex = function (options) {
 		if (typeof(options.sync) !== 'undefined') {
 			this.sync = (options.sync == true);
 		}
-
 		if (options.loadParams) {
 			this.loadParams = options.loadParams;
 		}
@@ -163,6 +161,7 @@ var AlphabeticIndex = function (options) {
 		name: "collation.json",
 		sync: this.sync,
 		loadParams: this.loadParams, 
+
 		callback: ilib.bind(this, function (collation) {
 			if (!collation) {
 				collation = ilib.data.collation;
@@ -597,7 +596,6 @@ AlphabeticIndex.prototype.getCollator = function() {
 	return this.collation;
 };
 
-
 /**
  * Get the default label used in the for overflow bucket.
  * This is the first item in a list. eg. ... A B C
@@ -607,7 +605,6 @@ AlphabeticIndex.prototype.getCollator = function() {
 AlphabeticIndex.prototype.getOverflowLabel = function() {
 	return this.overflowLabel;
 };
-
 
 /**
  * Return the total number of elements in the index. This includes
@@ -646,7 +643,6 @@ AlphabeticIndex.prototype.setOverflowLabel = function(overflowLabel) {
 	this.overflowLabel = overflowLabel;
 };
 
-
 /**
  * Set the underflow bucket label.
  *
@@ -655,6 +651,5 @@ AlphabeticIndex.prototype.setOverflowLabel = function(overflowLabel) {
 AlphabeticIndex.prototype.setUnderflowLabel = function(underflowLabel) {
 	this.underflowLabel = underflowLabel;
 };
-
 
 module.exports = AlphabeticIndex;

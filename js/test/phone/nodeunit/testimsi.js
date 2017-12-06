@@ -167,7 +167,7 @@ module.exports.imsi = {
         
         fields = PhoneNumber.parseImsi(imsi)
         test.expect(2);
-        test.deepEqual(options), expected, PhoneNumber.parseImsi(imsi);
+        test.deepEqual(PhoneNumber.parseImsi(imsi, options), expected);
         ilib.setLoaderCallback(oldLoader);
         test.ok(true);
         test.done();
