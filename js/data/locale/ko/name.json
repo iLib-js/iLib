@@ -1,6 +1,10 @@
 {
+	"components": {
+		"formal_short": "pgf",
+		"formal_long": "pgf"
+	},
 	"useSpaces": false,
-	"format": "{prefix}{familyName}{middleName}{givenName}{suffix}",
+	"format": "{prefix} {familyName}{middleName}{givenName} {suffix}",
 	"nameStyle": "asian",
 	"sortByHeadWord": false,
 	"noCompoundFamilyNames": true,
@@ -17,7 +21,8 @@
         "씨",
 		"군",
 		"양",
-		"님"
+		"님",
+		"닥터"
     ],
 	"suffixes": [
 		"씨",
@@ -259,7 +264,6 @@
 		"양": "Yang",
 		"량": "Ryang",
 		"홍": "Hong",
-		"임": "Im",
 		"림": "Rim",
 		"안": "An",
 		"송": "Song",

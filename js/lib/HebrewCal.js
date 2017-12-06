@@ -218,18 +218,6 @@ HebrewCal.prototype.getType = function() {
 	return this.type;
 };
 
-/**
- * Return a date instance for this calendar type using the given
- * options.
- * @param {Object} options options controlling the construction of 
- * the date instance
- * @returns {HebrewDate} a date appropriate for this calendar type
- * @deprecated Since 11.0.5. Use DateFactory({calendar: cal.getType(), ...}) instead
- */
-HebrewCal.prototype.newDateInstance = function (options) {
-	var HebrewDate = require("./HebrewDate.js");
-	return new HebrewDate(options);
-};
 
 /*register this calendar for the factory method */
 Calendar._constructors["hebrew"] = HebrewCal;

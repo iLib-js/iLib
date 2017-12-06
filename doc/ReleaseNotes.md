@@ -15,7 +15,39 @@ New Features:
   * That means that code that is upgrading to ilib 13 for example should use DateFmt instead of ilib.DateFmt to get the date formatter class
   * The ilib-stubs.js file is still there and can map from the old ilib namespace to the CommonJS style classes, but it is no longer being maintained
   * All legacy unit tests have been removed as well
+* Added a new list formatter class, ListFmt
+  * Allows you to format an arbitrary length array of items as a list with proper grammar for the locale.
+  * Example: (en-US) A, B and C  (German) A, B, und C
+* Added "honorific" field to the Name class
+  * This way, honorifics can be formatted as a prefix or a suffix depending on the customs of the locale
+* Added "formal_short" and "formal_long" formatting styles to the NameFmt class
+  * formal_short formats a name with an honorific and family name. eg. Mrs. Smith or Dr. Smith
+  * formal_long formats a name with the honorific, given, and family names. eg. Mrs. Jane Smith or Dr. Jane Smith
+* The NameFmt.format() method now accepts an object parameter with the name fields as well as a full Name instance
+* The DateRngFmt.format() method now accepts any date-like start and end parameters to make it easier to use, instead of only accepting ilib IDate parameters
+  * IDate - still supported, but must be in the same calendar as the formatter itself
+  * Date - javascript intrinsic dates
+  * number - a unixtime for the requested date
+  * string - a date string that is parseable by the javascript intrinsic Date class
+* Updated time zone info to 2017c
+* Removed deprecated APIs - newDateInstance() in every Calendar feature.
+  * CoptiCal, EthiopicCal, GregorianCal, HanCal, HebrewCal, IslamicCal, JulianCal, PersianAlgoCal, PersianCal and ThaiSolarCal
+* Updated the name parsing/formatting data for English for Hong Kong where it is common to write names with the family name first followed by the given name.
+* Added the missing support for Kosovo (XK) and the Republic of Congo (CG)
+* Added information about the medical emergency phone numbers around the world
+* Added support for nodeunit as the unit testing framework, which allows for async testing as well as easier in-browser testing
+* Compound family names are not common in Chinese. Compound family names are now optional in the Name class. By default, they are not turned on and are not parsed. You must pass in the compoundFamilyName option and set its value to true in order for ilib to even attempt to parse compound names.
+* The NameFmt class now accepts plain JS objects as arguments. Previously, it only took instances of the Name class, but now you can pass in a simple object when you have the name parts already. eg. fmt.format({given: "George", family: "Papadopolous"});  instead of fmt.format(new Name({given: "George", family: "Papadopolous"}));
 
+Bug Fixes:
+
+* Fixed a bug where using the letter "s" in a date format template (instead of "ss") resulted in minutes being formatted instead of seconds
+* Fixed a bug where calling ResBundle.getStringJS() with an undefined parameter resulted in an exception. Now it just returns undefined itself.
+* The list of honorific suffixes for both Chinese Simplified and Traditional was missing "Dentist" and "Dental Hygienist" which are now added.
+* The list of common family names in traditional Chinese was written with many simplified characters. These have been correctly rewritten with traditional Chinese characters. Name parsing in traditional Chinese should work better now.
+
+
+Also, the fledgling localization tool (tools/loctool) is now moved into its own repository. See https://github.com/iLib-js/loctool for the new project.
 
 Release Notes for Version 12.0
 =============================

@@ -524,7 +524,8 @@ function testDateFmtShortDateComponentsDM_bg_BG() {
     assertEquals("29.09", fmt.format(date));
 }
 
-/*function testDateFmtShortDateComponentsMY_bg_BG() {
+/*
+function testDateFmtShortDateComponentsMY_bg_BG() {
     var fmt = new DateFmt({locale: "bg-BG", date: "my"});
     assertNotNull(fmt);
     
@@ -539,7 +540,8 @@ function testDateFmtShortDateComponentsDM_bg_BG() {
 		millisecond: 0
 	});
     assertEquals("9.11 г.", fmt.format(date));
-}*/
+}
+*/
 
 function testDateFmtShortDateComponentsDMY_bg_BG() {
     var fmt = new DateFmt({locale: "bg-BG", date: "dmy"});
@@ -575,7 +577,8 @@ function testDateFmtShortDateComponentsWDM_bg_BG() {
     assertEquals("ч, 29.09", fmt.format(date));
 }
 
-/*function testDateFmtShortDateComponentsWDMY_bg_BG() {
+/*
+function testDateFmtShortDateComponentsWDMY_bg_BG() {
     var fmt = new DateFmt({locale: "bg-BG", date: "wdmy"});
     assertNotNull(fmt);
     
@@ -712,7 +715,8 @@ function testDateFmtFullDateComponentsWDM_bg_BG() {
     assertEquals("четвъртък, 29 септември", fmt.format(date));
 }
 
-/*function testDateFmtFullDateComponentsWDMY_bg_BG() {
+/*
+function testDateFmtFullDateComponentsWDMY_bg_BG() {
     var fmt = new DateFmt({locale: "bg-BG", length: "full", date: "wdmy"});
     assertNotNull(fmt);
     
@@ -1207,7 +1211,8 @@ function testDateFmtWithTimeZoneAndNoDST_bg_BG() {
     assertEquals("13:45:37 EET", fmt.format(date));
 }
 
-/*function testDateFmtFormatRelativeWithinMinuteAfter_bg_BG() {
+/*
+function testDateFmtFormatRelativeWithinMinuteAfter_bg_BG() {
     var fmt = new DateFmt({locale: "bg-BG", length: "full"});
     assertNotNull(fmt);
     
@@ -1232,7 +1237,9 @@ function testDateFmtWithTimeZoneAndNoDST_bg_BG() {
 		millisecond: 0
 	});
     assertEquals("y", fmt.formatRelative(reference, date));
-}*/
+}
+*/
+
 function testDateFmtFormatRelativeWithinMinuteBefore_bg_BG() {
     var fmt = new DateFmt({locale: "bg-BG", length: "full"});
     assertNotNull(fmt);
@@ -1259,7 +1266,8 @@ function testDateFmtFormatRelativeWithinMinuteBefore_bg_BG() {
 	});
     assertEquals("преди 30 секунди", fmt.formatRelative(reference, date));
 }
-/*function testDateFmtFormatRelativeWithinHourAfter_bg_BG() {
+/*
+function testDateFmtFormatRelativeWithinHourAfter_bg_BG() {
     var fmt = new DateFmt({locale: "bg-BG", length: "full"});
     assertNotNull(fmt);
     
@@ -1284,7 +1292,9 @@ function testDateFmtFormatRelativeWithinMinuteBefore_bg_BG() {
 		millisecond: 0
 	});
     assertEquals("y", fmt.formatRelative(reference, date));
-}*/
+}
+*/
+
 function testDateFmtFormatRelativeWithinHourBefore_bg_BG() {
     var fmt = new DateFmt({locale: "bg-BG", length: "full"});
     assertNotNull(fmt);
@@ -1311,7 +1321,8 @@ function testDateFmtFormatRelativeWithinHourBefore_bg_BG() {
 	});
     assertEquals("преди 10 минути", fmt.formatRelative(reference, date));
 }
-/*function testDateFmtFormatRelativeWithinDayAfter_bg_BG() {
+/*
+function testDateFmtFormatRelativeWithinDayAfter_bg_BG() {
     var fmt = new DateFmt({locale: "bg-BG", length: "full"});
     assertNotNull(fmt);
     
@@ -1336,7 +1347,8 @@ function testDateFmtFormatRelativeWithinHourBefore_bg_BG() {
 		millisecond: 0
 	});
     assertEquals("y", fmt.formatRelative(reference, date));
-}*/
+}
+*/
 function testDateFmtFormatRelativeWithinDayBefore_bg_BG() {
     var fmt = new DateFmt({locale: "bg-BG", length: "full"});
     assertNotNull(fmt);
@@ -1364,7 +1376,8 @@ function testDateFmtFormatRelativeWithinDayBefore_bg_BG() {
     assertEquals("преди 4 часа", fmt.formatRelative(reference, date));
 }
 
-/*function testDateFmtFormatRelativeWithinFortnightAfter_bg_BG() {
+/*
+function testDateFmtFormatRelativeWithinFortnightAfter_bg_BG() {
     var fmt = new DateFmt({locale: "bg-BG", length: "full"});
     assertNotNull(fmt);
     
@@ -1389,7 +1402,8 @@ function testDateFmtFormatRelativeWithinDayBefore_bg_BG() {
 		millisecond: 0
 	});
     assertEquals("y", fmt.formatRelative(reference, date));
-}*/
+}
+*/
 function testDateFmtFormatRelativeWithinFortnightBefore_bg_BG() {
     var fmt = new DateFmt({locale: "bg-BG", length: "full"});
     assertNotNull(fmt);
@@ -1417,7 +1431,8 @@ function testDateFmtFormatRelativeWithinFortnightBefore_bg_BG() {
     assertEquals("преди 4 дни", fmt.formatRelative(reference, date));
 }
 
-/*function testDateFmtFormatRelativeWithinQuarterAfter_bg_BG() {
+/*
+function testDateFmtFormatRelativeWithinQuarterAfter_bg_BG() {
     var fmt = new DateFmt({locale: "bg-BG", length: "full"});
     assertNotNull(fmt);
     
@@ -1442,7 +1457,8 @@ function testDateFmtFormatRelativeWithinFortnightBefore_bg_BG() {
 		millisecond: 0
 	});
     assertEquals("y", fmt.formatRelative(reference, date));
-}*/
+}
+*/
 function testDateFmtFormatRelativeWithinQuarterBefore_bg_BG() {
     var fmt = new DateFmt({locale: "bg-BG", length: "full"});
     assertNotNull(fmt);
@@ -1470,7 +1486,8 @@ function testDateFmtFormatRelativeWithinQuarterBefore_bg_BG() {
     assertEquals("преди 9 седмици", fmt.formatRelative(reference, date));
 }
 
-/*function testDateFmtFormatRelativeWithinTwoYearsAfter_bg_BG() {
+/*
+function testDateFmtFormatRelativeWithinTwoYearsAfter_bg_BG() {
     var fmt = new DateFmt({locale: "bg-BG", length: "full"});
     assertNotNull(fmt);
     
@@ -1495,7 +1512,8 @@ function testDateFmtFormatRelativeWithinQuarterBefore_bg_BG() {
 		millisecond: 0
 	});
     assertEquals("y", fmt.formatRelative(reference, date));
-}*/
+}
+*/
 function testDateFmtFormatRelativeWithinTwoYearsBefore_bg_BG() {
     var fmt = new DateFmt({locale: "bg-BG", length: "full"});
     assertNotNull(fmt);
@@ -1523,7 +1541,8 @@ function testDateFmtFormatRelativeWithinTwoYearsBefore_bg_BG() {
     assertEquals("преди 14 месеца", fmt.formatRelative(reference, date));
 }
 
-/*function testDateFmtFormatRelativeYearsAfter_bg_BG() {
+/*
+function testDateFmtFormatRelativeYearsAfter_bg_BG() {
     var fmt = new DateFmt({locale: "bg-BG", length: "full"});
     assertNotNull(fmt);
     
@@ -1548,7 +1567,8 @@ function testDateFmtFormatRelativeWithinTwoYearsBefore_bg_BG() {
 		millisecond: 0
 	});
     assertEquals("След 14 година", fmt.formatRelative(reference, date));
-}*/
+}
+*/
 function testDateFmtFormatRelativeYearsBefore_bg_BG() {
     var fmt = new DateFmt({locale: "bg-BG", length: "full"});
     assertNotNull(fmt);

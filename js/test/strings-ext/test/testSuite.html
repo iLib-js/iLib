@@ -1,7 +1,7 @@
 <!--
 testSuite.html - Test Suite runs all the tests at once.
 
-Copyright © 2012-2015, JEDLSoft
+Copyright © 2012-2017, JEDLSoft
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -31,9 +31,11 @@ function suite() {
     
     s.addTestPage(dir + "testGlyphStr.html");
     s.addTestPage(dir + "testNorm.html");
+    s.addTestPage(dir + "testListFmt.html");
 
     s.addTestPage(dir + "testGlyphStrCompiled.html");
     s.addTestPage(dir + "testNormCompiled.html");
+    s.addTestPage(dir + "testListFmtCompiled.html");
 
     return s;
 }

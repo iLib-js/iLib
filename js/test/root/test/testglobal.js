@@ -17,7 +17,7 @@
  * limitations under the License.
  */
 
-var ilib = require("./../lib/ilib.js");
+var ilib = require("./../lib/ilib-node.js");
 var Locale = require("./../lib/Locale.js");
 
 function testNoStubsInModular() {
@@ -116,10 +116,14 @@ function testGetVersion() {
 function testGetTimeZoneDefault() {
 	ilib._platform = undefined;
 	ilib.tz = undefined;
+	
+	if (ilib._getPlatform() === "nodejs") {
+	    process.env.TZ = "";
+	}
 
 	if (ilib._getPlatform() === "browser") {
-            navigator.timezone = undefined;
-        }
+        navigator.timezone = undefined;
+    }
 	assertEquals("local", ilib.getTimeZone());
 }
 
@@ -134,9 +138,27 @@ function testSetTimeZone() {
     delete ilib.tz; // clean up
 }
 
+function testGetTimeZoneBrowser() {
+    if (ilib._getPlatform() !== "browser") {
+        // only testable on a browser
+        return;
+    }
+    
+    ilib._platform = undefined;
+    ilib.tz = undefined;
+    navigator.timezone = "America/New_York";
+    
+    assertEquals("America/New_York", ilib.getTimeZone());
+    navigator.timezone = undefined;
+}
+
 function testSetTimeZoneEmpty() {
 	ilib._platform = undefined;
 	ilib.tz = undefined;
+	if (ilib._getPlatform() === "browser") {
+	    navigator.timezone = undefined;
+	}
+	
 	assertEquals("local", ilib.getTimeZone());
     
     ilib.setTimeZone();

@@ -5708,7 +5708,6 @@ function testNumFmt_it_IT() {
 }
 
 function testNumFmtAsyncDefaults() {
-    var callbackCalled = false;
     new NumFmt({
         sync: false,
         onLoad: function (fmt) {
@@ -5720,30 +5719,21 @@ function testNumFmtAsyncDefaults() {
             assertTrue(fmt.isGroupingUsed());
             assertEquals("halfdown", fmt.getRoundingMode());
             assertUndefined(fmt.getCurrency());
-
-            callbackCalled = true;
         }
     });
-
-    assertTrue(callbackCalled);
 }
 
 function testNumFmtAsync() {
-    var callbackCalled = false;
     new NumFmt({
         sync: false,
         onLoad: function (fmt) {
             assertNotNull(fmt);
             assertEquals("12,345,678,901,234", fmt.format(12345678901234.0));
-            callbackCalled = true;
         }
     });
-
-    assertTrue(callbackCalled);
 }
 
 function testNumFmtAsyncWithLocale() {
-    var callbackCalled = false;
     new NumFmt({
         locale: "it-IT",
         maxFractionDigits: 2,
@@ -5751,8 +5741,6 @@ function testNumFmtAsyncWithLocale() {
         onLoad: function (fmt) {
             assertNotNull(fmt);
             assertEquals("-123.456,78", fmt.format(-123456.785));
-            callbackCalled = true;
         }
     });
-    assertTrue(callbackCalled);
 }

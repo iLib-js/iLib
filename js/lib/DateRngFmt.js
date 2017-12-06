@@ -30,6 +30,7 @@ DateFmt.js
 GregorianCal.js
 JSUtils.js
 Utils.js
+DateFactory.js
 */
 
 // !data dateformats sysres
@@ -48,6 +49,8 @@ var DateFmt = require("./DateFmt.js");
 var IString = require("./IString.js");
 var TimeZone = require("./TimeZone.js");
 var GregorianCal = require("./GregorianCal.js");
+
+var DateFactory = require("./DateFactory.js");
 
 /**
  * @class
@@ -287,16 +290,22 @@ DateRngFmt.prototype = {
 	 * were displaying the length of a movie that is 198 minutes long, the minutes
 	 * component of a duration could be 198.<p>
 	 * 
-	 * @param {IDate} start the starting date/time of the range. This must be of 
-	 * the same calendar type as the formatter itself. 
-	 * @param {IDate} end the ending date/time of the range. This must be of the 
-	 * same calendar type as the formatter itself.
+	 * @param {IDate|Date|number|string} startDateLike the starting date/time of the range. The
+	 * date may be given as an ilib IDate object, a javascript intrinsic Date object, a
+	 * unix time, or a date string parsable by the javscript Date.
+	 * @param {IDate|Date|number|string} endDateLike the ending date/time of the range. The
+	 * date may be given as an ilib IDate object, a javascript intrinsic Date object, a
+	 * unix time, or a date string parsable by the javscript Date.
 	 * @throws "Wrong calendar type" when the start or end dates are not the same
 	 * calendar type as the formatter itself
 	 * @return {string} a date range formatted for the locale
 	 */
-	format: function (start, end) {
+	format: function (startDateLike, endDateLike) {
 		var startRd, endRd, fmt = "", yearTemplate, monthTemplate, dayTemplate, formats;
+		var thisZoneName = this.dateFmt.tz && this.dateFmt.tz.getId() || "local";
+
+		var start = DateFactory._dateToIlib(startDateLike, thisZoneName, this.locale);
+		var end = DateFactory._dateToIlib(endDateLike, thisZoneName, this.locale);
 		
 		if (typeof(start) !== 'object' || !start.getCalendar || start.getCalendar() !== this.calName ||
 			typeof(end) !== 'object' || !end.getCalendar || end.getCalendar() !== this.calName) {

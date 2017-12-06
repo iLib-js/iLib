@@ -1,4 +1,4 @@
-/*
+
  * testdate.js - test the date object
  * 
  * Copyright © 2012-2015, JEDLSoft
@@ -22,13 +22,13 @@ var DateFmt = require("./../lib/DateFmt.js");
 var DateFactory = require("./../lib/DateFactory.js");
 
 function testDateConstructor() {
-    var gd = new DateFactory();
+    var gd = DateFactory();
     
     assertNotNull(gd);
 };
 
 function testDateConstructorFull() {
-    var gd = new DateFactory({
+    var gd = DateFactory({
     	year: 2011, 
     	month: 9, 
     	day: 23, 
@@ -50,7 +50,7 @@ function testDateConstructorFull() {
 };
 
 function testDateSetYears() {
-    var gd = new DateFactory();
+    var gd = DateFactory();
     
     assertNotNull(gd);
     
@@ -60,7 +60,7 @@ function testDateSetYears() {
 };
 
 function testDateSetMonths() {
-    var gd = new DateFactory();
+    var gd = DateFactory();
     
     assertNotNull(gd);
     
@@ -70,7 +70,7 @@ function testDateSetMonths() {
 };
 
 function testDateSetDays() {
-    var gd = new DateFactory();
+    var gd = DateFactory();
     
     assertNotNull(gd);
     
@@ -80,7 +80,7 @@ function testDateSetDays() {
 };
 
 function testDateSetHours() {
-    var gd = new DateFactory();
+    var gd = DateFactory();
     
     assertNotNull(gd);
     
@@ -90,7 +90,7 @@ function testDateSetHours() {
 };
 
 function testDateSetMinutes() {
-    var gd = new DateFactory();
+    var gd = DateFactory();
     
     assertNotNull(gd);
     
@@ -100,7 +100,7 @@ function testDateSetMinutes() {
 };
 
 function testDateSetSeconds() {
-    var gd = new DateFactory();
+    var gd = DateFactory();
     
     assertNotNull(gd);
     
@@ -110,7 +110,7 @@ function testDateSetSeconds() {
 };
 
 function testDateSetMilliseconds() {
-    var gd = new DateFactory();
+    var gd = DateFactory();
     
     assertNotNull(gd);
     

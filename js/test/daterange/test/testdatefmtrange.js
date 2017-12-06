@@ -17,11 +17,32 @@
  * limitations under the License.
  */
 
-var ilib = require("./../lib/ilib.js");
+var ilib = require("./../lib/ilib-node.js");
 var LocaleInfo = require("./../lib/LocaleInfo.js");
 var GregorianDate = require("./../lib/GregorianDate.js");
 var DateRngFmt = require("./../lib/DateRngFmt.js");
 var DateFmt = require("./../lib/DateFmt.js");
+
+function mockLoader(paths, sync, params, callback) {
+	var data = [];
+	
+	if (paths[0].indexOf("localeinfo") !== -1) {
+		data.push(ilib.data.localeinfo); // for the generic, shared stuff
+		data.push(ilib.data.localeinfo_en);
+		data.push(ilib.data.localeinfo_US);
+		data.push(ilib.data.localeinfo_en_US);
+	} else {
+		data.push(ilib.data.dateformats); // for the generic, shared stuff
+		data.push(ilib.data.dateformats_en);
+		data.push(ilib.data.dateformats_US);
+		data.push(ilib.data.dateformats_en_US);
+	}
+
+	if (typeof(callback) !== 'undefined') {
+		callback.call(this, data);	
+	}
+	return data;
+}
 
 function testDateRngFmtConstructorEmpty() {
     var fmt = new DateRngFmt();
@@ -153,6 +174,10 @@ function testDateRngFmtGetClockBogus() {
 
 function testDateRngFmtGetTimeZoneDefault() {
 	ilib.tz = undefined;	// just in case
+	if (ilib._getPlatform() === "nodejs") {
+	    process.env.TZ = ""; // just in case
+	}
+	
     var fmt = new DateRngFmt();
     assertNotNull(fmt);
     
@@ -176,8 +201,6 @@ function testDateRngFmtGetDefaultLocale() {
 }
 
 function testDateRngFmtGetDefaultFormat() {
-	DateFmt.cache = {};
-	LocaleInfo.cache = {};
 	var fmt = new DateRngFmt({locale: "yy-YY"});
     assertNotNull(fmt);
     
@@ -201,35 +224,13 @@ function testDateRngFmtGetDefaultFormat() {
     assertEquals("20/2/13 12:20 – 16:35", fmt.format(start, end));
 }
 
-function mockLoader(paths, sync, params, callback) {
-	var data = [];
-	
-	if (paths[0].indexOf("localeinfo") !== -1) {
-		data.push(ilib.data.localeinfo); // for the generic, shared stuff
-		data.push(ilib.data.localeinfo_en);
-		data.push(ilib.data.localeinfo_US);
-		data.push(ilib.data.localeinfo_en_US);
-	} else {
-		data.push(ilib.data.dateformats); // for the generic, shared stuff
-		data.push(ilib.data.dateformats_en);
-		data.push(ilib.data.dateformats_US);
-		data.push(ilib.data.dateformats_en_US);
-	}
-
-	if (typeof(callback) !== 'undefined') {
-		callback.call(this, data);	
-	}
-	return data;
-}
-
 function testDateRngFmtDynamicLoadSync() {
 	if (ilib.isDynData()) {
 		// don't need to test loading on the dynamic load version because we are testing
 		// it via all the other tests already.
 		return;
 	}
-	DateFmt.cache = {};
-	LocaleInfo.cache = {};
+	var oldLoader = ilib._load;
 	ilib.setLoaderCallback(mockLoader);
 	
     var fmt = new DateRngFmt({
@@ -255,8 +256,8 @@ function testDateRngFmtDynamicLoadSync() {
     	second: 0
     });
     
+    ilib.setLoaderCallback(oldLoader);
     assertEquals("2/20/13, 12:20 PM – 4:35 PM", fmt.format(start, end));
-    ilib.setLoaderCallback(undefined);
 }
 
 function testDateRngFmtDynamicLoadSyncCached() {
@@ -265,6 +266,7 @@ function testDateRngFmtDynamicLoadSyncCached() {
 		// it via all the other tests already.
 		return;
 	}
+    var oldLoader = ilib._load;
 	ilib.setLoaderCallback(mockLoader);
 	
     var fmt = new DateRngFmt({
@@ -290,8 +292,8 @@ function testDateRngFmtDynamicLoadSyncCached() {
     	second: 0
     });
     
+    ilib.setLoaderCallback(oldLoader);
     assertEquals("2/20/13, 12:20 PM – 4:35 PM", fmt.format(start, end));
-    ilib.setLoaderCallback(undefined);
 }
 
 function testDateRngFmtDynamicLoadAsync() {
@@ -300,8 +302,7 @@ function testDateRngFmtDynamicLoadAsync() {
 		// it via all the other tests already.
 		return;
 	}
-	DateFmt.cache = {};
-	LocaleInfo.cache = {};
+    var oldLoader = ilib._load;
 	ilib.setLoaderCallback(mockLoader);
 
 	var start = new GregorianDate({
@@ -326,11 +327,11 @@ function testDateRngFmtDynamicLoadAsync() {
     	locale: "yy-YY",
     	sync: false,
     	onLoad: function (fmt) {
+    	    ilib.setLoaderCallback(oldLoader);
     		assertNotNull(fmt);
     	    assertEquals("2/20/13, 12:20 PM – 4:35 PM", fmt.format(start, end));
     	}
     });
-    ilib.setLoaderCallback(undefined);
 }
 
 function testDateRngFmtDynamicLoadAsyncCached() {
@@ -339,6 +340,7 @@ function testDateRngFmtDynamicLoadAsyncCached() {
 		// it via all the other tests already.
 		return;
 	}
+	var oldLoader = ilib._load;
 	ilib.setLoaderCallback(mockLoader);
 
 	var start = new GregorianDate({
@@ -363,11 +365,11 @@ function testDateRngFmtDynamicLoadAsyncCached() {
     	locale: "yy-YY",
     	sync: false,
     	onLoad: function (fmt) {
+    	    ilib.setLoaderCallback(oldLoader);
     		assertNotNull(fmt);
     	    assertEquals("2/20/13, 12:20 PM – 4:35 PM", fmt.format(start, end));
     	}
     });
-    ilib.setLoaderCallback(undefined);
 }
 
 

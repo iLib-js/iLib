@@ -122,7 +122,6 @@ function testCurrencyGetBySignAmbiguousNotCurrentLocale() {
 }
 
 function testCurrencyAsync() {
-    var callbackCalled = false;
     new Currency({
         locale: "en-GB",
         sign: "$",
@@ -136,10 +135,6 @@ function testCurrencyAsync() {
             assertEquals("US Dollar", cur.getName());
             var locale = cur.getLocale();
             assertEquals("en-GB", locale.toString());
-
-            callbackCalled = true;
         }
     });
-
-    assertTrue(callbackCalled);
 }

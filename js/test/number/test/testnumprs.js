@@ -485,7 +485,6 @@ function testNumberZHDecimal() {
 
 
 function testNumberParseAsync() {
-    var callbackCalled = false;
     new INumber("-0,4342", {
         locale: "de-DE",
         sync: false,
@@ -493,14 +492,11 @@ function testNumberParseAsync() {
             assertNotNull(num);
 
             assertEquals(-0.4342, num.valueOf());
-            callbackCalled = true;
         }
     });
-    assertTrue(callbackCalled);
 }
 
 function testNumberParseAsyncCurrency() {
-    var callbackCalled = false;
     new INumber("5,84 EUR", {
         locale: "de-DE",
         type: "currency",
@@ -511,10 +507,8 @@ function testNumberParseAsyncCurrency() {
             var cur = num.getCurrency();
             assertNotUndefined(cur);
             assertEquals("EUR", cur.getCode());
-            callbackCalled = true;
         }
     });
-    assertTrue(callbackCalled);
 }
 
 /*Test cases for Afrikaans*/

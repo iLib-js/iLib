@@ -665,7 +665,8 @@ function testDateFmtFullDateComponentsDMY_ku_Arab_IQ() {
     assertNotNull(fmt);
     
     var date = new GregorianDate({
-		year: 2011,
+        locale: "ku-Arab-IQ",
+        year: 2011,
 		month: 9,
 		day: 29,
 		hour: 13,

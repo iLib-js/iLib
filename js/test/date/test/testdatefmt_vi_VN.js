@@ -384,7 +384,7 @@ function testDateFmtTemplateClock24SwitchKK_vi_VN() {
     assertEquals("13:45", fmt.format(date));
 }
 
-function testDateFmtTemplateNoClockŠNotFollowLocaleDefault12hh_vi_VN() {
+function testDateFmtTemplateNoClockNotFollowLocaleDefault12hh_vi_VN() {
     var fmt = new DateFmt({locale: "vi-VN", template: "hh:mm"});
     assertNotNull(fmt);
     
@@ -401,7 +401,7 @@ function testDateFmtTemplateNoClockŠNotFollowLocaleDefault12hh_vi_VN() {
     assertEquals("01:45", fmt.format(date));
 }
 
-function testDateFmtTemplateNoClockŠNotFollowLocaleDefault12KK_vi_VN() {
+function testDateFmtTemplateNoClockNotFollowLocaleDefault12KK_vi_VN() {
     var fmt = new DateFmt({locale: "vi-VN", template: "KK:mm"});
     assertNotNull(fmt);
     
@@ -418,7 +418,7 @@ function testDateFmtTemplateNoClockŠNotFollowLocaleDefault12KK_vi_VN() {
     assertEquals("01:45", fmt.format(date));
 }
 
-function testDateFmtTemplateNoClockŠNotFollowLocaleDefault24HH_vi_VN() {
+function testDateFmtTemplateNoClockNotFollowLocaleDefault24HH_vi_VN() {
     var fmt = new DateFmt({locale: "vi-VN", template: "HH:mm"});
     assertNotNull(fmt);
     
@@ -435,7 +435,7 @@ function testDateFmtTemplateNoClockŠNotFollowLocaleDefault24HH_vi_VN() {
     assertEquals("13:45", fmt.format(date));
 }
 
-function testDateFmtTemplateNoClockŠNotFollowLocaleDefault24kk_vi_VN() {
+function testDateFmtTemplateNoClockNotFollowLocaleDefault24kk_vi_VN() {
     var fmt = new DateFmt({locale: "vi-VN", template: "kk:mm"});
     assertNotNull(fmt);
     

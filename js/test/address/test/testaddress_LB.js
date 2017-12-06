@@ -207,7 +207,8 @@ function testParseAddressLBARSuperfluousWhitespace() {
 	assertEquals("LB", parsedAddress.countryCode);
 };
 
-/*function testParseAddressLBARNoDelimiters() {
+/*
+function testParseAddressLBARNoDelimiters() {
 	var parsedAddress = new Address("مركز الفرز بيروت, مطار بيروت الدولي  ٢ شارع الاستقلال  بيروت ١٠٠٠  لبنان", {locale: 'ar-LB'});
 	
 	assertNotUndefined(parsedAddress);
@@ -217,7 +218,8 @@ function testParseAddressLBARSuperfluousWhitespace() {
 	assertEquals("١٠٠٠", parsedAddress.postalCode);
 	assertEquals("لبنان", parsedAddress.country);
 	assertEquals("LB", parsedAddress.countryCode);
-};*/
+};
+*/
 
 function testParseAddressLBARSpecialChars() {
 	var parsedAddress = new Address("مركز الفرز بيروت, مطار بيروت الدولي,بيروت ١٠٠٠, لبنان", {locale: 'ar-LB'});

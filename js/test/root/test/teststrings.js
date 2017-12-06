@@ -17,7 +17,7 @@
  * limitations under the License.
  */
 
-var ilib = require("./../lib/ilib.js");
+var ilib = require("./../lib/ilib-node.js");
 var NormString = require("./../lib/NormString.js");
 var Locale = require("./../lib/Locale.js");
 var IString = require("./../lib/IString.js");
@@ -114,10 +114,7 @@ function testStringFormatWithMultipleArgs() {
 
     assertNotNull(str);
 
-    assertEquals("Format medium string.", str.format({
-        size: "medium",
-        object: "string"
-    }));
+    assertEquals("Format medium string.", str.format({ size: "medium", object: "string" }));
 }
 
 function testStringFormatWithSameArgMultipleTimes() {
@@ -125,9 +122,7 @@ function testStringFormatWithSameArgMultipleTimes() {
 
     assertNotNull(str);
 
-    assertEquals("Format medium when medium is at least medium big.", str.format({
-        size: "medium"
-    }));
+    assertEquals("Format medium when medium is at least medium big.", str.format({ size: "medium" }));
 }
 
 function testStringFormatWithMissingArgs() {
@@ -135,9 +130,7 @@ function testStringFormatWithMissingArgs() {
 
     assertNotNull(str);
 
-    assertEquals("Format {size} string.", str.format({
-        object: "string"
-    }));
+    assertEquals("Format {size} string.", str.format({ object: "string" }));
 }
 
 function testStringFormatWithEmptyArg() {
@@ -169,11 +162,7 @@ function testStringFormatMultipleReplacements() {
 
     assertNotNull(str);
 
-    assertEquals("User edwin has 2 objects in their locker.", str.format({
-        user: "edwin",
-        num: 2,
-        container: "locker"
-    }));
+    assertEquals("User edwin has 2 objects in their locker.", str.format({ user: "edwin", num: 2, container: "locker" }));
 }
 
 
@@ -478,10 +467,7 @@ function testStringFormatChoiceWithMultipleReplacement0() {
 
     assertNotNull(str);
 
-    assertEquals("User johndoe has no items.", str.formatChoice(0, {
-        name: "johndoe",
-        num: 0
-    }));
+    assertEquals("User johndoe has no items.", str.formatChoice(0, { name: "johndoe", num: 0 }));
 }
 
 function testStringFormatChoiceWithMultipleReplacement1() {
@@ -489,10 +475,7 @@ function testStringFormatChoiceWithMultipleReplacement1() {
 
     assertNotNull(str);
 
-    assertEquals("User johndoe has 1 item.", str.formatChoice(1, {
-        name: "johndoe",
-        num: 1
-    }));
+    assertEquals("User johndoe has 1 item.", str.formatChoice(1, { name: "johndoe", num: 1 }));
 }
 
 function testStringFormatChoiceWithMultipleReplacement2() {
@@ -500,10 +483,7 @@ function testStringFormatChoiceWithMultipleReplacement2() {
 
     assertNotNull(str);
 
-    assertEquals("User johndoe has 2 items.", str.formatChoice(2, {
-        name: "johndoe",
-        num: 2
-    }));
+    assertEquals("User johndoe has 2 items.", str.formatChoice(2, { name: "johndoe", num: 2 }));
 }
 
 function testStringDelegateCharAt() {
@@ -707,6 +687,8 @@ function testForEachCodePointSimple() {
     str.forEachCodePoint(function(ch) {
         assertEquals(expected[i++], ch);
     });
+    
+    assertEquals(4, i);
 }
 
 function testForEachCodePointComplex() {
@@ -718,15 +700,20 @@ function testForEachCodePointComplex() {
     str.forEachCodePoint(function(ch) {
         assertEquals(expected[i++], ch);
     });
+    assertEquals(4, i);
 }
 
 function testForEachCodePointEmpty() {
     var str = new IString("");
-
+    var notcalled = true;
+    
     str.forEachCodePoint(function(ch) {
         // should never call this callback
+        notcalled = false;
         fail();
     });
+    
+    assertTrue(notcalled);
 }
 
 function testCharIteratorSimple() {
@@ -778,6 +765,8 @@ function testForEachSimple() {
     str.forEach(function(ch) {
         assertEquals(expected[i++], ch);
     });
+    
+    assertEquals(4, i);
 }
 
 function testForEachComplex() {
@@ -789,15 +778,21 @@ function testForEachComplex() {
     str.forEach(function(ch) {
         assertEquals(expected[i++], ch);
     });
+    
+    assertEquals(4, i)
 }
 
 function testForEachEmpty() {
     var str = new IString("");
-
+    var notcalled = true;
+    
     str.forEach(function(ch) {
         // should never call this callback
+        notcalled = false;
         fail();
     });
+    
+    assertTrue(notcalled);
 }
 
 function testCodePointLengthUCS2() {
@@ -874,7 +869,8 @@ function testRuleGetValueN() {
         n: []
     };
 
-    assertRoughlyEquals(8.2, IString._fncs.getValue(rule, 8.2), 0.01);
+    var actual = IString._fncs.getValue(rule, 8.2);
+    assertRoughlyEquals(8.2, actual, 0.01);
 }
 
 function testRuleGetValueIsTrue() {
@@ -1606,7 +1602,8 @@ function testRuleGetValueModNonInteger() {
         ]
     };
 
-    assertRoughlyEquals(2.2, IString._fncs.getValue(rule, 8.2), 0.01);
+    var actual = IString._fncs.getValue(rule, 8.2);
+    assertRoughlyEquals(2.2, actual, 0.01);
 }
 
 function testRuleGetValueModNegative() {
@@ -1617,7 +1614,8 @@ function testRuleGetValueModNegative() {
         ]
     };
 
-    assertRoughlyEquals(1, IString._fncs.getValue(rule, -11), 0.01);
+    var actual = IString._fncs.getValue(rule, -11);
+    assertRoughlyEquals(1, actual, 0.01);
 }
 
 function testRuleGetValueOrFalseFalse() {
