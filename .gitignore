@@ -1,1 +1,10 @@
 /classes/
+build.properties
+/export/
+/java/classes/
+/java/data/
+/java/output/
+/js/locale/
+/js/output/
+/js/package.json
+**/localeinfo.json
