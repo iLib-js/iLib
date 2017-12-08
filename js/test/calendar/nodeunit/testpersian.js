@@ -182,20 +182,5 @@ module.exports.testpersian = {
         
         test.ok(cal.isLeapYear(1395));
         test.done();
-    },
-    
-    testPersianAlgoNewDateInstance: function(test) {
-        test.expect(2);
-        var cal = new PersianAlgoCal();
-        var d = cal.newDateInstance({
-            year: 1392,
-            month: 6,
-            day: 1
-        });
-        
-        test.ok(typeof(d) !== "undefined");
-        test.equal(d.cal.type, "persian-algo");
-        test.done();
     }
-    
 };
