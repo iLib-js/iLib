@@ -95,4 +95,9 @@ TestSuite.prototype = {
 	}
 };
 
+if (!module) {
+	var module = {
+		exports: {}
+	};
+}
 module.exports = TestSuite;
