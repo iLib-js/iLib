@@ -699,6 +699,13 @@ DateFmt.prototype = {
 					this.template = this._getFormat(this.formats.time[this.clock], this.timeComponents, this.length);
 					break;
 			}
+			
+			// calculate what order the components appear in for this locale
+			this.componentOrder = this._getFormat(this.formats.date, "dmy", "l").
+			    replace(/[^dMy]/g, "").
+			    replace(/y+/, "y").
+			    replace(/d+/, "d").
+			    replace(/M+/, "m");
 		} else {
 			throw "No formats available for calendar " + this.calName + " in locale " + this.locale.toString();
 		}
@@ -923,7 +930,7 @@ DateFmt.prototype = {
 	 * @return {String} a string giving the date component order
 	 */
 	getDateComponentOrder: function() {
-		
+	    return this.componentOrder;
 	},
 	
 	/**
