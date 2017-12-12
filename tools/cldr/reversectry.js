@@ -22,7 +22,7 @@
  */
 var fs = require('fs');
 var util = require('util');
-var path = require('../../lib/Path.js');
+var path = require('../../js/lib/Path.js');
 
 function usage() {
 	console.log("Usage: reversectry.js [-h] [source_dir]\n" +
