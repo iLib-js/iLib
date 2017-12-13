@@ -791,7 +791,7 @@ module.exports.testalphaindex_ko = {
 
         test.done();
     },
-    testAlphaIndexKOKRgetflowLebels: function(test) {
+    testAlphaIndexKOKRgetflowLabels: function(test) {
         test.expect(3);
 
         var ai = new AlphabeticIndex({
@@ -806,7 +806,7 @@ module.exports.testalphaindex_ko = {
         test.done();
     },
 
-    testAlphaIndexKOKRsetflowLebels: function(test) {
+    testAlphaIndexKOKRsetflowLabels: function(test) {
         test.expect(3);
 
         var ai = new AlphabeticIndex({

@@ -914,7 +914,7 @@ module.exports.testalphaindex = {
         test.deepEqual(ai.getAllBuckets(), expected);
         test.done();
     },
-    testAlphaIndexENUSgetflowLebels: function(test) {
+    testAlphaIndexENUSgetflowLabels: function(test) {
         test.expect(3);
 
         var ai = new AlphabeticIndex({
@@ -929,7 +929,7 @@ module.exports.testalphaindex = {
         test.done();
     },
 
-    testAlphaIndexENUSsetflowLebels: function(test) {
+    testAlphaIndexENUSsetflowLabels: function(test) {
         test.expect(3);
 
         var ai = new AlphabeticIndex({
