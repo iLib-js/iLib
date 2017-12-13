@@ -11,7 +11,7 @@ QtObject {
 		
 		var suiteDefinitions = {
 			"full": {
-				"util": "util/test/testSuite.js",
+				"util": "util/nodeunit/testSuite.js",
                 //".": "test/testSuite.js",
                 // "calendar": "calendar/test/testSuite.js",
                 //"date1": "date/test/testSuite.js",
