@@ -99,9 +99,9 @@ function _runAllTests(path, results) {
 
 function runTests(path, root, includes, results) {
 	var subSuite;
-	
 	if (path) {
-		Qt.include(root + "/tools/jsunit/app/jsUnitCore.js");
+		//Qt.include(root + "/tools/jsunit/app/jsUnitCore.js");
+		//Qt.include(root + "/js/test/nodeunit/nodeunit.js");
 		//console.log("JsUnit.AssertionArgumentError is " + typeof(JsUnit.AssertionArgumentError)); // JSON.stringify(JsUnit.Util, undefined, 4)); // 
 		includes.forEach(function (inc) {
 			//console.log("TestRunner.runTests: now including file " + root + "/js/test/" + inc);

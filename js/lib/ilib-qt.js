@@ -69,6 +69,8 @@ requireClass.prototype.require = function(parent, pathname) {
 	} else if (pathname === "./TestSuiteModule.js") {
 		// special case to redirect to qt instead
 		pathname = this.root + "/../../qt/UnitTest/TestSuiteModule.js";
+	} else if (pathname === "nodeunit") {
+		pathname = this.root + "/../../js/test/nodeunit/nodeunit.js";
 	} else {
 		
 		if (parent && parent.charAt(0) !== '/') {
@@ -123,8 +125,8 @@ requireClass.prototype.require = function(parent, pathname) {
 		this.cache[pathname] = module.exports;
 		return module.exports;
 	}
-	
 	console.log("exception was " + JSON.stringify(s.status, undefined, 4));
+
 	console.log("Failed loading " + pathname);
 	console.trace();
 	return undefined;
