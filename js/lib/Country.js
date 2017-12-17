@@ -80,9 +80,15 @@ var Country = function (options) {
 	}
 
 	this.locale = this.locale || new Locale();
-	localeinfo = new LocaleInfo(this.locale);
+	new LocaleInfo(this.locale, {
+		sync: sync,
+		loadParams: loadParams,
+		onLoad: ilib.bind(this, function (li) {
+			this.locinfo = li;
+		})
+	});
 
-	if (localeinfo.getRegionName() === undefined) {
+	if (this.locinfo.getRegionName() === undefined) {
 		locale = 'en-US';
 	} else {
 		locale = this.locale;
@@ -97,11 +103,17 @@ var Country = function (options) {
 			loadParams: loadParams,
 			callback: ilib.bind(this, function(countries) {
 				this.codeToCountry = countries;
-				this._loadLocinfo(options && options.onLoad);
+				this._calculateCountryToCode();
+				if (options && typeof(options.onLoad) === 'function') {
+					options.onLoad(this);
+				}
 			})
 		});
 	} else {
-		this._loadLocinfo(options && options.onLoad);
+		this._calculateCountryToCode();
+		if (options && typeof(options.onLoad) === 'function') {
+			options.onLoad(this);
+		}
 	}
 };
 
@@ -113,19 +125,11 @@ var Country = function (options) {
  * @return {Object} an object of country code that this copy of ilib knows about.
  */
 Country.getAvailableCode = function() {
-	var ret = [],
-		code,
-		countries = new ResBundle({
+	var countries = new ResBundle({
 			name: "ctryreverse"
 		}).getResObj();
 
-	for (code in countries) {
-		if (code && countries[code]) {
-			ret.push(code);
-		}
-	}
-
-	return ret;
+	return Object.keys(countries);
 };
 
 /**
@@ -154,26 +158,17 @@ Country.prototype = {
 	/**
 	 * @private
 	 */
-	_loadLocinfo: function(onLoad) {
-		new LocaleInfo(this.locale, {
-			onLoad: ilib.bind(this, function (li) {
-				var temp = this.codeToCountry,
-				    code;
+	_calculateCountryToCode: function() {
+		var temp = this.codeToCountry,
+				code;
 
-				this.countryToCode = {};
-				this.locinfo = li;
+		this.countryToCode = {};
 
-				for (code in temp) {
-					if (code && temp[code]) {
-						this.countryToCode[temp[code]] = code;
-					}
-				}
-
-				if (typeof(onLoad) === 'function') {
-					onLoad(this);
-				}
-			})
-		});
+		for (code in temp) {
+			if (code && temp[code]) {
+				this.countryToCode[temp[code]] = code;
+			}
+		}
 	},
 
 	/**
