@@ -3690,7 +3690,7 @@ module.exports.testdatefmt = {
     	var fmt = new DateFmt({locale: "en"})
         test.ok(fmt !== null);
     
-        test.equal(fmt.getDateComponentOrder(), "dmy");
+        test.equal(fmt.getDateComponentOrder(), "mdy");
         test.done();
     },
     
