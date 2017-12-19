@@ -67,7 +67,7 @@ var IString = require("./IString.js");
  * on the {@link Collator} class to perform the sorting/collation.<p>
  *
  * The class also supports having buckets for strings before the first (underflow)
- * and after the last (overflow). <p>
+ * and after the last (overflow) bucket. <p>
  *
  * If you have a lot of characters that are not commonly used in the current
  * locale, you can add more labels for those characters as well. Elements will
@@ -96,8 +96,8 @@ var IString = require("./IString.js");
  * Default: "*"
  *
  * <li><i>onLoad</i> - a callback function to call when the address info for the
- * locale is fully loaded and the address has been parsed. When the onLoad
- * option is given, the address object
+ * locale is fully loaded and the index is ready to be used. When the onLoad
+ * option is given, the alphabetic index object
  * will attempt to load any missing locale data using the ilib loader callback.
  * When the constructor is done (even if the data is already preassembled), the
  * onLoad function is called with the current instance as a parameter, so this
