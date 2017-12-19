@@ -1,5 +1,13 @@
-Release Notes for Version 13.0
+Release Notes for Version 13.1
 =============================
+
+Build 001
+-------
+
+New Features:
+
+* Added DateFmt.getDateComponentOrder() to aid date input selector widget developers in determining what order the date input
+selectors for year, month, and date should appear in to be correct for the given locale.
 
 Build 000
 -------
