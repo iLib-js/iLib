@@ -119,143 +119,143 @@ var IString = require("./IString.js");
  * @param {Object} options options to the parser
  */
 var AlphabeticIndex = function (options) {
-	this.sync = true;
-	this.loadParams = {};
-	this.caseSensitive = false;
-	this.accentSensitive = false;
-	this.overflowLabel = "#";
-	this.underflowLabel = "*";
-	this.style = "standard";	
-	this.index = [];
+    this.sync = true;
+    this.loadParams = {};
+    this.caseSensitive = false;
+    this.accentSensitive = false;
+    this.overflowLabel = "#";
+    this.underflowLabel = "*";
+    this.style = "standard";    
+    this.index = [];
 
-	if (options) {
-		if (options.locale) {
-			this.locale = (typeof(options.locale) === 'string') ? new Locale(options.locale) : options.locale;
-		}
-		
-		if (typeof(options.style) !== 'undefined') {
-			this.style = options.style;
-		}
+    if (options) {
+        if (options.locale) {
+            this.locale = (typeof(options.locale) === 'string') ? new Locale(options.locale) : options.locale;
+        }
+        
+        if (typeof(options.style) !== 'undefined') {
+            this.style = options.style;
+        }
 
-		if (typeof(options.overflowLabel) !== 'undefined') {
-			this.overflowLabel = options.overflowLabel;
-		}
+        if (typeof(options.overflowLabel) !== 'undefined') {
+            this.overflowLabel = options.overflowLabel;
+        }
 
-		if (typeof(options.underflowLabel) !== 'undefined') {
-			this.underflowLabel = options.underflowLabel;
-		}
-		
-		if (typeof(options.sync) !== 'undefined') {
-			this.sync = (options.sync == true);
-		}
-		if (options.loadParams) {
-			this.loadParams = options.loadParams;
-		}
-	}
+        if (typeof(options.underflowLabel) !== 'undefined') {
+            this.underflowLabel = options.underflowLabel;
+        }
+        
+        if (typeof(options.sync) !== 'undefined') {
+            this.sync = (options.sync == true);
+        }
+        if (options.loadParams) {
+            this.loadParams = options.loadParams;
+        }
+    }
 
-	this.locale = this.locale || new Locale();
-	
-	Utils.loadData({
-		object: "AlphabeticIndex",
-		locale: this.locale,
-		name: "collation.json",
-		sync: this.sync,
-		loadParams: this.loadParams, 
+    this.locale = this.locale || new Locale();
+    
+    Utils.loadData({
+        object: "AlphabeticIndex",
+        locale: this.locale,
+        name: "collation.json",
+        sync: this.sync,
+        loadParams: this.loadParams, 
 
-		callback: ilib.bind(this, function (collation) {
-			if (!collation) {
-				collation = ilib.data.collation;
-				var spec = this.locale.getSpec().replace(/-/g, '_');
-				ilib.data.cache.Collator[spec] = collation;
-			}
-			this.collation = collation;
-			this._init(collation);
+        callback: ilib.bind(this, function (collation) {
+            if (!collation) {
+                collation = ilib.data.collation;
+                var spec = this.locale.getSpec().replace(/-/g, '_');
+                ilib.data.cache.Collator[spec] = collation;
+            }
+            this.collation = collation;
+            this._init(collation);
 
-			if (options && typeof(options.onLoad) === 'function') {
-				options.onLoad(this);
-			}
-		})
-	});
+            if (options && typeof(options.onLoad) === 'function') {
+                options.onLoad(this);
+            }
+        })
+    });
 };
 
 /**
  * @private
  */
 AlphabeticIndex.prototype._updateCollationMap = function(style) {
-	this.collationMap = this.collation[style].map;
-	this.flowBoundaries = this.collation[style].flowBoundaries;
-	this.indexUnits = this.collation[style].indexUnits;
-	if (this.collation[style].inherit) {
-		this.inherit = this.collation[style].inherit;
-	}
+    this.collationMap = this.collation[style].map;
+    this.flowBoundaries = this.collation[style].flowBoundaries;
+    this.indexUnits = this.collation[style].indexUnits;
+    if (this.collation[style].inherit) {
+        this.inherit = this.collation[style].inherit;
+    }
 }
 
 /**
  * @private
  */
 AlphabeticIndex.prototype._init = function(collation) {
-	if (!collation) {
-		return;
-	}
+    if (!collation) {
+        return;
+    }
 
-	this.flowBoundaries = new Array();
-	
-	if (this.style === 'standard') {
-		this.style = this.collation["default"];
-	}
-	
-	this.collationMap = collation[this.style].map;
-	this.flowBoundaries = collation[this.style].flowBoundaries;
-	this.indexUnits = collation[this.style].indexUnits;
-	if (collation[this.style].inherit) {
-		this.inherit = collation[this.style].inherit;	
-	}
-	
-	if (this.collationMap === undefined &&
-		typeof(collation[this.style]) === 'string') {
-		this._updateCollationMap(collation[this.style]);
-	}
+    this.flowBoundaries = new Array();
+    
+    if (this.style === 'standard') {
+        this.style = this.collation["default"];
+    }
+    
+    this.collationMap = collation[this.style].map;
+    this.flowBoundaries = collation[this.style].flowBoundaries;
+    this.indexUnits = collation[this.style].indexUnits;
+    if (collation[this.style].inherit) {
+        this.inherit = collation[this.style].inherit;   
+    }
+    
+    if (this.collationMap === undefined &&
+        typeof(collation[this.style]) === 'string') {
+        this._updateCollationMap(collation[this.style]);
+    }
 }
 
 /**
  * @private
  */
 AlphabeticIndex.prototype._getKeyByValue = function(value) {
-	var i,label;
+    var i,label;
 
-	if (!value || (!ilib.isArray(value))) {
-		return "";
-	}
+    if (!value || (!ilib.isArray(value))) {
+        return "";
+    }
 
-	if (this.inheritStyle) {
-		this.collationMap = this.collation[this.inheritStyle].map;
-	}
+    if (this.inheritStyle) {
+        this.collationMap = this.collation[this.inheritStyle].map;
+    }
 
-	for (i=0; i < this.indexUnits.length; i++) {
-		if (this.collationMap[this.indexUnits[i]][0]
-			=== value[0]) {
-			label = this.indexUnits[i];
-			break;
-		}
-	}
+    for (i=0; i < this.indexUnits.length; i++) {
+        if (this.collationMap[this.indexUnits[i]][0]
+            === value[0]) {
+            label = this.indexUnits[i];
+            break;
+        }
+    }
 
-	return label;
+    return label;
 };
 
 /**
  * @private
  */
 AlphabeticIndex.prototype._normalizeHangul = function(value) {
-	if (!value) {
-		return "";
-	}
-	var source = new NormString(value);
-	var normString = source.normalize("nfkd");
-	var firstJamo;
-	var it = normString.charIterator();
+    if (!value) {
+        return "";
+    }
+    var source = new NormString(value);
+    var normString = source.normalize("nfkd");
+    var firstJamo;
+    var it = normString.charIterator();
 
-	firstJamo = it.next();
-	return firstJamo;
+    firstJamo = it.next();
+    return firstJamo;
 };
 
 /**
@@ -263,7 +263,7 @@ AlphabeticIndex.prototype._normalizeHangul = function(value) {
  * @return {Locale} the Locale instance for this index
  */
 AlphabeticIndex.prototype.getLocale = function() {
-	return this.locale;
+    return this.locale;
 };
 
 /**
@@ -276,33 +276,33 @@ AlphabeticIndex.prototype.getLocale = function() {
  * this element was added
  */
 AlphabeticIndex.prototype.addElement = function(element) {
-	if (typeof(element) !== 'string') {
-		return undefined;
-	}
+    if (typeof(element) !== 'string') {
+        return undefined;
+    }
 
-	var i;
-	var label = this.getBucket(element);
-	var newItem = true;
-	var itemSet = {};
+    var i;
+    var label = this.getBucket(element);
+    var newItem = true;
+    var itemSet = {};
 
-	itemSet.label = label;
-	itemSet.elements = [];
+    itemSet.label = label;
+    itemSet.elements = [];
 
-	for (i = 0; i < this.index.length; i++) {
-		if (this.index[i].label === label) {
-			this.index[i].elements.push(element);
-			this.index[i].elements.sort();
-			newItem = false;
-			break;
-		}
-	}
+    for (i = 0; i < this.index.length; i++) {
+        if (this.index[i].label === label) {
+            this.index[i].elements.push(element);
+            this.index[i].elements.sort();
+            newItem = false;
+            break;
+        }
+    }
 
-	if (newItem) {
-		itemSet.elements.push(element);
-		this.index[this.index.length] = itemSet;
-	}
+    if (newItem) {
+        itemSet.elements.push(element);
+        this.index[this.index.length] = itemSet;
+    }
 
-	return label;
+    return label;
 };
 
 /**
@@ -320,31 +320,31 @@ AlphabeticIndex.prototype.addElement = function(element) {
  * labels list to add these new labels
  */
 AlphabeticIndex.prototype.addLabels = function(labels, start) {
-	var allBucketLabels = [];
+    var allBucketLabels = [];
 
-	if (!labels && !ilib.isArray(labels)) {
-		return;
-	}
+    if (!labels && !ilib.isArray(labels)) {
+        return;
+    }
 
-	allBucketLabels = this.getAllBucketLabels();
+    allBucketLabels = this.getAllBucketLabels();
 
-	if (!start ||
-		start > allBucketLabels.length) {
-		for (var i=0; i < labels.length; i++) {
-		   allBucketLabels.push(labels[i]);
-		}
-	} else {
-		if (typeof labels === 'string') {
-			allBucketLabels.splice(start, 0, labels);
-		} else if (typeof labels === 'object') {
-			var j = labels.length-1;
-			for (var i = 0; i < labels.length; i++) {
-				allBucketLabels.splice(start, 0, labels[j]);
-				j--;
-			}
-		}
-	}
-	this.allBucketLabels = allBucketLabels;
+    if (!start ||
+        start > allBucketLabels.length) {
+        for (var i=0; i < labels.length; i++) {
+           allBucketLabels.push(labels[i]);
+        }
+    } else {
+        if (typeof labels === 'string') {
+            allBucketLabels.splice(start, 0, labels);
+        } else if (typeof labels === 'object') {
+            var j = labels.length-1;
+            for (var i = 0; i < labels.length; i++) {
+                allBucketLabels.splice(start, 0, labels[j]);
+                j--;
+            }
+        }
+    }
+    this.allBucketLabels = allBucketLabels;
 };
 
 /**
@@ -353,11 +353,11 @@ AlphabeticIndex.prototype.addLabels = function(labels, start) {
  * first.
  */
 AlphabeticIndex.prototype.clear = function() {
-	for (var prop in this.index) {
-		if (this.index.hasOwnProperty(prop)){
-			this.index[prop] = "";
-		}
-	}
+    for (var prop in this.index) {
+        if (this.index.hasOwnProperty(prop)){
+            this.index[prop] = "";
+        }
+    }
 };
 
 /**
@@ -392,60 +392,60 @@ AlphabeticIndex.prototype.clear = function() {
  * as per the description above.
  */
 AlphabeticIndex.prototype.getAllBuckets = function() {
-	var underflowIndex = -1, overflowIndex = -1;
-	var mixedScriptEndIndex = -1;
-	var count = 0;
-	var temp;
-	var i;
+    var underflowIndex = -1, overflowIndex = -1;
+    var mixedScriptEndIndex = -1;
+    var count = 0;
+    var temp;
+    var i;
 
-	this._updateCollationMap(this.collation.default);
+    this._updateCollationMap(this.collation.default);
 
-	this.index.sort(function(a,b){
-		if (a.label < b.label) {
-			return -1;
-		} else {
-			return 1;
-		}
-	});
+    this.index.sort(function(a,b){
+        if (a.label < b.label) {
+            return -1;
+        } else {
+            return 1;
+        }
+    });
 
-	for (i=0; i < this.index.length; i++) {
-		if (this.inherit &&
-			this.indexUnits.indexOf(this.index[i].label) == -1) {
-			mixedScriptEndIndex = i;
-			count++;
-		}
-	}
+    for (i=0; i < this.index.length; i++) {
+        if (this.inherit &&
+            this.indexUnits.indexOf(this.index[i].label) == -1) {
+            mixedScriptEndIndex = i;
+            count++;
+        }
+    }
 
-	if (this.inherit && count > 0) {
-		temp = this.index.splice((mixedScriptEndIndex - count) +1 , count);
-		this.index = this.index.concat(temp);
-	}
+    if (this.inherit && count > 0) {
+        temp = this.index.splice((mixedScriptEndIndex - count) +1 , count);
+        this.index = this.index.concat(temp);
+    }
 
-	for (i=0; i < this.index.length; i++) {
-		if (this.index[i].label == this.underflowLabel) {
-			underflowIndex = i
-			break;
-		}
-	}
+    for (i=0; i < this.index.length; i++) {
+        if (this.index[i].label == this.underflowLabel) {
+            underflowIndex = i
+            break;
+        }
+    }
 
-	if (underflowIndex > 0) {
-		temp = this.index.splice(underflowIndex,1)[0];
-		this.index.unshift(temp);
-	}
+    if (underflowIndex > 0) {
+        temp = this.index.splice(underflowIndex,1)[0];
+        this.index.unshift(temp);
+    }
 
-	for (i=0; i < this.index.length; i++) {
-		if (this.index[i].label == this.overflowLabel) {
-			overflowIndex = i
-			break;
-		}
-	}
+    for (i=0; i < this.index.length; i++) {
+        if (this.index[i].label == this.overflowLabel) {
+            overflowIndex = i
+            break;
+        }
+    }
 
-	if (overflowIndex > -1) {
-		temp = this.index.splice(overflowIndex,1)[0];
-		this.index[this.index.length] = temp;
-	}
+    if (overflowIndex > -1) {
+        temp = this.index.splice(overflowIndex,1)[0];
+        this.index[this.index.length] = temp;
+    }
 
-	return this.index;
+    return this.index;
 };
 
 /**
@@ -459,65 +459,65 @@ AlphabeticIndex.prototype.getAllBuckets = function() {
  * @returns {String|undefined} the label for the bucket for this element
  */
 AlphabeticIndex.prototype.getBucket = function(element) {
-	var label;
-	var firstChar;
-	var collationValue;
-	var charNum, firstBoundaryChar, endBoundaryChar, firstCharNum, endCharNum;
-	
-	if (!element && !typeof(element) === 'string') {
-		return undefined;
-	}
+    var label;
+    var firstChar;
+    var collationValue;
+    var charNum, firstBoundaryChar, endBoundaryChar, firstCharNum, endCharNum;
+    
+    if (!element && !typeof(element) === 'string') {
+        return undefined;
+    }
 
-	firstChar = element.charAt(0);
+    firstChar = element.charAt(0);
 
-	if (CType.withinRange(firstChar, "hangul")) {
-		firstChar = this._normalizeHangul(firstChar);
-	}
+    if (CType.withinRange(firstChar, "hangul")) {
+        firstChar = this._normalizeHangul(firstChar);
+    }
 
-	collationValue = this.collationMap[firstChar];
+    collationValue = this.collationMap[firstChar];
 
-	if (!collationValue && this.inherit) {
-		for (var i = 0; i < this.inherit.length; i++) {
-			if (this.inherit[i] === 'this') {
-				this.inherit[i] = this.style;
-    		}
+    if (!collationValue && this.inherit) {
+        for (var i = 0; i < this.inherit.length; i++) {
+            if (this.inherit[i] === 'this') {
+                this.inherit[i] = this.style;
+            }
 
-    		if (this.collation[this.inherit[i]].map[firstChar]) {
-    			collationValue = this.collation[this.inherit[i]].map[firstChar];
-    			this.inheritStyle = this.inherit[i];
-    			this._updateCollationMap(this.inheritStyle);
-    		}
-		}
-	}
+            if (this.collation[this.inherit[i]].map[firstChar]) {
+                collationValue = this.collation[this.inherit[i]].map[firstChar];
+                this.inheritStyle = this.inherit[i];
+                this._updateCollationMap(this.inheritStyle);
+            }
+        }
+    }
 
-	if (collationValue) {
-		if (typeof collationValue[0] === 'number') {
-			if (collationValue[0] < this.flowBoundaries[0]) {
-				label = this.underflowLabel;
-			} else if (collationValue[0] > this.flowBoundaries[1]){
-				label = this.overflowLabel;
-			} else {
-				label = this._getKeyByValue(collationValue);
-			}	
-		} else if (typeof collationValue[0] === 'object') {
-			label = this._getKeyByValue(collationValue[0]);
-		} 
-	} else {
-		charNum = IString.toCodePoint(firstChar, 0);
-		firstBoundaryChar = this._getKeyByValue([this.flowBoundaries[0]]);
-		endBoundaryChar = this._getKeyByValue([this.flowBoundaries[1]]);
+    if (collationValue) {
+        if (typeof collationValue[0] === 'number') {
+            if (collationValue[0] < this.flowBoundaries[0]) {
+                label = this.underflowLabel;
+            } else if (collationValue[0] > this.flowBoundaries[1]){
+                label = this.overflowLabel;
+            } else {
+                label = this._getKeyByValue(collationValue);
+            }   
+        } else if (typeof collationValue[0] === 'object') {
+            label = this._getKeyByValue(collationValue[0]);
+        } 
+    } else {
+        charNum = IString.toCodePoint(firstChar, 0);
+        firstBoundaryChar = this._getKeyByValue([this.flowBoundaries[0]]);
+        endBoundaryChar = this._getKeyByValue([this.flowBoundaries[1]]);
 
-		firstCharNum = IString.toCodePoint(firstBoundaryChar, 0);
-		endCharNum = IString.toCodePoint(endBoundaryChar, 0);
+        firstCharNum = IString.toCodePoint(firstBoundaryChar, 0);
+        endCharNum = IString.toCodePoint(endBoundaryChar, 0);
 
-		if (charNum < firstCharNum) {
-			label = this.underflowLabel;
-		} else if (charNum > endCharNum) {
-			label = this.overflowLabel;
-		} 
-	}
+        if (charNum < firstCharNum) {
+            label = this.underflowLabel;
+        } else if (charNum > endCharNum) {
+            label = this.overflowLabel;
+        } 
+    }
 
-	return label;
+    return label;
 };
 
 
@@ -526,7 +526,7 @@ AlphabeticIndex.prototype.getBucket = function(element) {
  * @returns {string} the default indexing style for this locale.
  */
 AlphabeticIndex.prototype.getIndexStyle = function() {
-	return this.collation["default"];
+    return this.collation["default"];
 };
 
 /**
@@ -534,8 +534,8 @@ AlphabeticIndex.prototype.getIndexStyle = function() {
  * @returns {number} the number of buckets in this index
  */
 AlphabeticIndex.prototype.getBucketCount = function() {
-	var count = Object.keys(this.index).length;
-	return count;
+    var count = Object.keys(this.index).length;
+    return count;
 };
 
 /**
@@ -549,14 +549,14 @@ AlphabeticIndex.prototype.getBucketCount = function() {
  * for this index in collation order
  */
 AlphabeticIndex.prototype.getBucketLabels = function() {
-	var buckets = this.getAllBuckets();
-	var label = new Array();
-	var i;
+    var buckets = this.getAllBuckets();
+    var label = new Array();
+    var i;
 
-	for (i=0; i < buckets.length; i++) {
-		label.push(buckets[i].label);
-	}
-	return label;
+    for (i=0; i < buckets.length; i++) {
+        label.push(buckets[i].label);
+    }
+    return label;
 };
 
 /**
@@ -568,21 +568,21 @@ AlphabeticIndex.prototype.getBucketLabels = function() {
  * for this index in collation order
  */
 AlphabeticIndex.prototype.getAllBucketLabels = function() {
-	var label, i;
+    var label, i;
 
-	if (this.allBucketLabels) {
-		return this.allBucketLabels;
-	}
+    if (this.allBucketLabels) {
+        return this.allBucketLabels;
+    }
 
-	this.allBucketLabels = new Array();	
-	this.allBucketLabels.push(this.underflowLabel);
+    this.allBucketLabels = new Array(); 
+    this.allBucketLabels.push(this.underflowLabel);
 
-	for (i=0; i < this.indexUnits.length; i++) {
-		this.allBucketLabels.push(this.indexUnits[i]);
-	}
+    for (i=0; i < this.indexUnits.length; i++) {
+        this.allBucketLabels.push(this.indexUnits[i]);
+    }
 
-	this.allBucketLabels.push(this.overflowLabel);
-	return this.allBucketLabels;
+    this.allBucketLabels.push(this.overflowLabel);
+    return this.allBucketLabels;
 };
 
 /**
@@ -593,7 +593,7 @@ AlphabeticIndex.prototype.getAllBucketLabels = function() {
  * in this index
  */
 AlphabeticIndex.prototype.getCollator = function() {
-	return this.collation;
+    return this.collation;
 };
 
 /**
@@ -603,7 +603,7 @@ AlphabeticIndex.prototype.getCollator = function() {
  * @return {String} the overflow bucket label
  */
 AlphabeticIndex.prototype.getOverflowLabel = function() {
-	return this.overflowLabel;
+    return this.overflowLabel;
 };
 
 /**
@@ -613,14 +613,14 @@ AlphabeticIndex.prototype.getOverflowLabel = function() {
  * @returns {number} The number of elements in the index
  */
 AlphabeticIndex.prototype.getElementCount = function() {
-	var buckets = this.index;
-	var i, count = 0;
+    var buckets = this.index;
+    var i, count = 0;
 
-	for (i=0; i < buckets.length; i++) {
-		count += buckets[i].elements.length;
-	}
+    for (i=0; i < buckets.length; i++) {
+        count += buckets[i].elements.length;
+    }
 
-	return count;
+    return count;
 };
 
 /**
@@ -631,7 +631,7 @@ AlphabeticIndex.prototype.getElementCount = function() {
  * @returns {String} the label used for underflow elements
  */
 AlphabeticIndex.prototype.getUnderflowLabel = function() {
-	return this.underflowLabel;
+    return this.underflowLabel;
 };
 
 /**
@@ -640,7 +640,7 @@ AlphabeticIndex.prototype.getUnderflowLabel = function() {
  * @param {String} overflowLabel the label to use for the overflow buckets
  */
 AlphabeticIndex.prototype.setOverflowLabel = function(overflowLabel) {
-	this.overflowLabel = overflowLabel;
+    this.overflowLabel = overflowLabel;
 };
 
 /**
@@ -649,7 +649,7 @@ AlphabeticIndex.prototype.setOverflowLabel = function(overflowLabel) {
  * @param {String} underflowLabel the label to use for the underflow buckets
  */
 AlphabeticIndex.prototype.setUnderflowLabel = function(underflowLabel) {
-	this.underflowLabel = underflowLabel;
+    this.underflowLabel = underflowLabel;
 };
 
 module.exports = AlphabeticIndex;
