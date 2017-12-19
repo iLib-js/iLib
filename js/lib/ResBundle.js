@@ -537,7 +537,7 @@ ResBundle.prototype = {
 	    
 	/**
 	 * Return a localized string, array, or object. This method can localize individual
-	 * strings, arrays of strings, or objects with string values in them.<p>
+	 * strings or arrays of strings.<p>
 	 * 
 	 * If the source parameter is a string, the translation of that string is looked
 	 * up and returned. If the source parameter is an array of strings, then the translation 
@@ -576,7 +576,7 @@ ResBundle.prototype = {
 	 * be "js" so that the output string can be used in Javascript without causing syntax
 	 * errors.
 	 * 
-	 * @param {?string|Array.<string>|Object=} source the source string to translate
+	 * @param {?string|Array.<string>=} source the source string or strings to translate
 	 * @param {?string|Array.<string>=} key optional name of the key, if any
 	 * @param {?string=} escapeMode escape mode, if any
 	 * @return {IString|Array.<IString>|undefined} the translation of the given source/key or undefined 
@@ -599,7 +599,7 @@ ResBundle.prototype = {
 	},
 	
 	/**
-	 * Return a localized string as a Javascript object. This does the same thing as
+	 * Return a localized string as an intrinsic Javascript String object. This does the same thing as
 	 * the getString() method, but it returns a regular Javascript string instead of
 	 * and IString instance. This means it cannot be formatted with the format()
 	 * method without being wrapped in an IString instance first.
