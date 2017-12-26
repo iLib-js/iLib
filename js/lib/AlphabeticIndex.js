@@ -36,7 +36,9 @@ var LocaleInfo = require("./LocaleInfo.js");
 var CType = require("./CType.js");
 var NormString = require("./NormString.js");
 var IString = require("./IString.js");
-
+var isIdeo = require("./isIdeo.js");
+var isAscii = require("./isAscii.js");
+var isDigit = require("./isDigit.js");
 
 /**
  * @class Create a new alphabetic index instance.
@@ -155,27 +157,28 @@ var AlphabeticIndex = function (options) {
 
     this.locale = this.locale || new Locale();
     
-    Utils.loadData({
-        object: "AlphabeticIndex",
-        locale: this.locale,
-        name: "collation.json",
-        sync: this.sync,
-        loadParams: this.loadParams, 
-
-        callback: ilib.bind(this, function (collation) {
-            if (!collation) {
-                collation = ilib.data.collation;
-                var spec = this.locale.getSpec().replace(/-/g, '_');
-                ilib.data.cache.Collator[spec] = collation;
-            }
-            this.collation = collation;
-            this._init(collation);
-
-            if (options && typeof(options.onLoad) === 'function') {
-                options.onLoad(this);
-            }
-        })
-    });
+    isAscii._init(this.sync, this.loadParams, ilib.bind(this, function() {
+        isIdeo._init(this.sync, this.loadParams, ilib.bind(this, function(){
+            isDigit._init(this.sync, this.loadParams, ilib.bind(this, function(){
+                new Collator ({
+                    locale: this.locale,
+                    useNative: false,
+                    sensivitiy: "primary",
+                    usage: "sort",
+                    sync: this.sync,
+                    loadParam : this.loadParams,
+                    onLoad: ilib.bind(this, function(collation){
+                        this.collationObj = collation;
+                        //this.collation = collation;
+                        this._init();
+                        if (options && typeof(options.onLoad) === 'function') {
+                            options.onLoad(this);
+                        }
+                    })
+                });
+            }));
+        }));
+    }));
 };
 
 /**
@@ -193,28 +196,25 @@ AlphabeticIndex.prototype._updateCollationMap = function(style) {
 /**
  * @private
  */
-AlphabeticIndex.prototype._init = function(collation) {
-    if (!collation) {
-        return;
-    }
+AlphabeticIndex.prototype._init = function() {
 
     this.flowBoundaries = new Array();
     
     if (this.style === 'standard') {
-        this.style = this.collation["default"];
+        this.style = this.collationObj.defaultRule;
     }
     
-    this.collationMap = collation[this.style].map;
-    this.flowBoundaries = collation[this.style].flowBoundaries;
-    this.indexUnits = collation[this.style].indexUnits;
-    if (collation[this.style].inherit) {
+    this.collationMap = this.collationObj.collation.map;
+    this.flowBoundaries = this.collationObj.collation.flowBoundaries;
+    this.indexUnits = this.collationObj.collation.indexUnits;
+    /*if (collation[this.style].inherit) {
         this.inherit = collation[this.style].inherit;   
     }
     
     if (this.collationMap === undefined &&
         typeof(collation[this.style]) === 'string') {
         this._updateCollationMap(collation[this.style]);
-    }
+    }*/
 }
 
 /**
@@ -258,6 +258,27 @@ AlphabeticIndex.prototype._normalizeHangul = function(value) {
     return firstJamo;
 };
 
+
+/**
+ * @private
+ */
+AlphabeticIndex.prototype._getLabelIndex = function(label) {
+    if (!label) {
+        return undefined;
+    }
+
+    var i;
+    var indexNum;
+
+    for (i=0; i < this.index.length; i++) {
+        if (this.index[i].label === label) {
+            indexNum = i;
+            break;
+        }
+    }
+    return indexNum;
+};
+
 /**
  * Return the locale used with this instance.
  * @return {Locale} the Locale instance for this index
@@ -271,8 +292,8 @@ AlphabeticIndex.prototype.getLocale = function() {
  * appropriate bucket and sorted within that bucket according
  * to the collation for the locale set up within this index.
  *
- * @param {String} element the element to add
- * @returns {String|undefined} the label of the bucket into which
+ * @param {string|undefined} element the element to add
+ * @returns {string|undefined} the label of the bucket into which
  * this element was added
  */
 AlphabeticIndex.prototype.addElement = function(element) {
@@ -291,7 +312,6 @@ AlphabeticIndex.prototype.addElement = function(element) {
     for (i = 0; i < this.index.length; i++) {
         if (this.index[i].label === label) {
             this.index[i].elements.push(element);
-            this.index[i].elements.sort();
             newItem = false;
             break;
         }
@@ -299,7 +319,7 @@ AlphabeticIndex.prototype.addElement = function(element) {
 
     if (newItem) {
         itemSet.elements.push(element);
-        this.index[this.index.length] = itemSet;
+        this.index.push(itemSet);
     }
 
     return label;
@@ -330,18 +350,16 @@ AlphabeticIndex.prototype.addLabels = function(labels, start) {
 
     if (!start ||
         start > allBucketLabels.length) {
-        for (var i=0; i < labels.length; i++) {
-           allBucketLabels.push(labels[i]);
-        }
+        allBucketLabels = allBucketLabels.concat(labels);
+
     } else {
         if (typeof labels === 'string') {
             allBucketLabels.splice(start, 0, labels);
         } else if (typeof labels === 'object') {
-            var j = labels.length-1;
-            for (var i = 0; i < labels.length; i++) {
+            for (var j = labels.length-1; j >= 0; j--) {
                 allBucketLabels.splice(start, 0, labels[j]);
-                j--;
             }
+
         }
     }
     this.allBucketLabels = allBucketLabels;
@@ -398,15 +416,31 @@ AlphabeticIndex.prototype.getAllBuckets = function() {
     var temp;
     var i;
 
-    this._updateCollationMap(this.collation.default);
+    //this._updateCollationMap(this.collation.default);
 
-    this.index.sort(function(a,b){
-        if (a.label < b.label) {
-            return -1;
-        } else {
-            return 1;
-        }
-    });
+    var tempArr = [];
+    var tempIndex = [];
+    var tempBucket = {};
+    var itemIndex;
+
+    for (i=0; i < this.index.length; i++) {
+        tempArr.push(this.index[i].label);
+    }
+
+    tempArr.sort(this.collationObj.compare());
+
+    for (i=0; i < tempArr.length; i++) {
+        tempBucket={};
+        tempBucket.label = tempArr[i];
+        itemIndex = this._getLabelIndex(tempArr[i]);
+
+        this.index[itemIndex].elements.sort(this.collationObj.compare());
+        tempBucket.elements = this.index[itemIndex].elements;
+        tempIndex[i] = tempBucket;
+        tempBucket={};
+    }
+
+    this.index = tempIndex;
 
     for (i=0; i < this.index.length; i++) {
         if (this.inherit &&
@@ -455,20 +489,22 @@ AlphabeticIndex.prototype.getAllBuckets = function() {
  * were added to this index. The element is not added to
  * the index, however. (See addElement for that.)
  *
- * @param {String} element the element to check
- * @returns {String|undefined} the label for the bucket for this element
+ * @param {string|undefined} element the element to check
+ * @returns {string|undefined} the label for the bucket for this element
  */
 AlphabeticIndex.prototype.getBucket = function(element) {
     var label;
     var firstChar;
     var collationValue;
     var charNum, firstBoundaryChar, endBoundaryChar, firstCharNum, endCharNum;
+    var source;
     
-    if (!element && !typeof(element) === 'string') {
+    if (!element) {
         return undefined;
     }
 
-    firstChar = element.charAt(0);
+    source = new NormString(element);
+    firstChar = source.str[0];
 
     if (CType.withinRange(firstChar, "hangul")) {
         firstChar = this._normalizeHangul(firstChar);
@@ -526,7 +562,7 @@ AlphabeticIndex.prototype.getBucket = function(element) {
  * @returns {string} the default indexing style for this locale.
  */
 AlphabeticIndex.prototype.getIndexStyle = function() {
-    return this.collation["default"];
+    return this.style;
 };
 
 /**
@@ -549,14 +585,9 @@ AlphabeticIndex.prototype.getBucketCount = function() {
  * for this index in collation order
  */
 AlphabeticIndex.prototype.getBucketLabels = function() {
-    var buckets = this.getAllBuckets();
-    var label = new Array();
-    var i;
-
-    for (i=0; i < buckets.length; i++) {
-        label.push(buckets[i].label);
-    }
-    return label;
+    return this.getAllBuckets().map(function(bucket){
+        return bucket.label;
+    })
 };
 
 /**
@@ -575,13 +606,7 @@ AlphabeticIndex.prototype.getAllBucketLabels = function() {
     }
 
     this.allBucketLabels = new Array(); 
-    this.allBucketLabels.push(this.underflowLabel);
-
-    for (i=0; i < this.indexUnits.length; i++) {
-        this.allBucketLabels.push(this.indexUnits[i]);
-    }
-
-    this.allBucketLabels.push(this.overflowLabel);
+    this.allBucketLabels = [this.underflowLabel].concat(this.indexUnits, this.overflowLabel);
     return this.allBucketLabels;
 };
 
@@ -593,14 +618,14 @@ AlphabeticIndex.prototype.getAllBucketLabels = function() {
  * in this index
  */
 AlphabeticIndex.prototype.getCollator = function() {
-    return this.collation;
+    return this.collationObj;
 };
 
 /**
  * Get the default label used in the for overflow bucket.
  * This is the first item in a list. eg. ... A B C
  *
- * @return {String} the overflow bucket label
+ * @return {string} the overflow bucket label
  */
 AlphabeticIndex.prototype.getOverflowLabel = function() {
     return this.overflowLabel;
@@ -628,7 +653,7 @@ AlphabeticIndex.prototype.getElementCount = function() {
  * This is the last item in a list. eg. the last
  * item in: X Y Z #
  *
- * @returns {String} the label used for underflow elements
+ * @returns {string} the label used for underflow elements
  */
 AlphabeticIndex.prototype.getUnderflowLabel = function() {
     return this.underflowLabel;
@@ -637,7 +662,7 @@ AlphabeticIndex.prototype.getUnderflowLabel = function() {
 /**
  * Set the overflow bucket label.
  *
- * @param {String} overflowLabel the label to use for the overflow buckets
+ * @param {string} overflowLabel the label to use for the overflow buckets
  */
 AlphabeticIndex.prototype.setOverflowLabel = function(overflowLabel) {
     this.overflowLabel = overflowLabel;
@@ -646,7 +671,7 @@ AlphabeticIndex.prototype.setOverflowLabel = function(overflowLabel) {
 /**
  * Set the underflow bucket label.
  *
- * @param {String} underflowLabel the label to use for the underflow buckets
+ * @param {string} underflowLabel the label to use for the underflow buckets
  */
 AlphabeticIndex.prototype.setUnderflowLabel = function(underflowLabel) {
     this.underflowLabel = underflowLabel;
