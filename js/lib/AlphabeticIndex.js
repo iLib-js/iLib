@@ -31,7 +31,7 @@ NormString.js
 var ilib = require("./ilib.js");
 var Utils = require("./Utils.js");
 var Locale = require("./Locale.js");
-
+var Collator = require("./Collator.js");
 var LocaleInfo = require("./LocaleInfo.js");
 var CType = require("./CType.js");
 var NormString = require("./NormString.js");
@@ -169,7 +169,6 @@ var AlphabeticIndex = function (options) {
                     loadParam : this.loadParams,
                     onLoad: ilib.bind(this, function(collation){
                         this.collationObj = collation;
-                        //this.collation = collation;
                         this._init();
                         if (options && typeof(options.onLoad) === 'function') {
                             options.onLoad(this);
@@ -181,18 +180,32 @@ var AlphabeticIndex = function (options) {
     }));
 };
 
+
 /**
  * @private
  */
-AlphabeticIndex.prototype._updateCollationMap = function(style) {
-    this.collationMap = this.collation[style].map;
-    this.flowBoundaries = this.collation[style].flowBoundaries;
-    this.indexUnits = this.collation[style].indexUnits;
-    if (this.collation[style].inherit) {
-        this.inherit = this.collation[style].inherit;
+AlphabeticIndex.prototype._updateCollationMap = function() {
+    this.mixedCollationMap = new Array();
+    var collationData = {};
+
+    for (var i=0; i < this.inherit.length; i++) {
+        collationData = {};
+
+        if (this.inherit[i] === "this") {
+            collationData.style = this.style;
+            collationData.flowBoundaries = this.flowBoundaries;
+            collationData.indexUnits = this.indexUnits
+            collationData.map = this.collationMap;
+            this.mixedCollationMap.push(collationData);
+        } else {
+            collationData.style = this.inherit[i];
+            collationData.flowBoundaries = ilib.data.collation[this.inherit[i]].flowBoundaries;
+            collationData.indexUnits = ilib.data.collation[this.inherit[i]].indexUnits;
+            collationData.map = ilib.data.collation[this.inherit[i]].map;
+            this.mixedCollationMap.push(collationData);
+        }
     }
 }
-
 /**
  * @private
  */
@@ -207,28 +220,29 @@ AlphabeticIndex.prototype._init = function() {
     this.collationMap = this.collationObj.collation.map;
     this.flowBoundaries = this.collationObj.collation.flowBoundaries;
     this.indexUnits = this.collationObj.collation.indexUnits;
-    /*if (collation[this.style].inherit) {
-        this.inherit = collation[this.style].inherit;   
+
+    this.inherit = this.collationObj.collation.inherit;
+
+    if (this.inherit !== undefined) {
+        this._updateCollationMap();
     }
-    
-    if (this.collationMap === undefined &&
-        typeof(collation[this.style]) === 'string') {
-        this._updateCollationMap(collation[this.style]);
-    }*/
 }
 
 /**
  * @private
  */
-AlphabeticIndex.prototype._getKeyByValue = function(value) {
+AlphabeticIndex.prototype._getKeyByValue = function(value, validMapNum) {
     var i,label;
 
     if (!value || (!ilib.isArray(value))) {
         return "";
     }
 
-    if (this.inheritStyle) {
-        this.collationMap = this.collation[this.inheritStyle].map;
+    if (this.inherit) {
+        if (validMapNum > -1) {
+            this.collationMap = this.mixedCollationMap[validMapNum].map;
+            this.indexUnits = this.mixedCollationMap[validMapNum].indexUnits;
+        }
     }
 
     for (i=0; i < this.indexUnits.length; i++) {
@@ -267,8 +281,7 @@ AlphabeticIndex.prototype._getLabelIndex = function(label) {
         return undefined;
     }
 
-    var i;
-    var indexNum;
+    var i, indexNum;
 
     for (i=0; i < this.index.length; i++) {
         if (this.index[i].label === label) {
@@ -311,7 +324,9 @@ AlphabeticIndex.prototype.addElement = function(element) {
 
     for (i = 0; i < this.index.length; i++) {
         if (this.index[i].label === label) {
-            this.index[i].elements.push(element);
+            if (this.index[i].elements.indexOf(element) == -1) {
+                this.index[i].elements.push(element);
+            }
             newItem = false;
             break;
         }
@@ -416,8 +431,6 @@ AlphabeticIndex.prototype.getAllBuckets = function() {
     var temp;
     var i;
 
-    //this._updateCollationMap(this.collation.default);
-
     var tempArr = [];
     var tempIndex = [];
     var tempBucket = {};
@@ -444,7 +457,7 @@ AlphabeticIndex.prototype.getAllBuckets = function() {
 
     for (i=0; i < this.index.length; i++) {
         if (this.inherit &&
-            this.indexUnits.indexOf(this.index[i].label) == -1) {
+            this.mixedCollationMap[0].indexUnits.indexOf(this.index[i].label) == -1) {
             mixedScriptEndIndex = i;
             count++;
         }
@@ -476,7 +489,7 @@ AlphabeticIndex.prototype.getAllBuckets = function() {
 
     if (overflowIndex > -1) {
         temp = this.index.splice(overflowIndex,1)[0];
-        this.index[this.index.length] = temp;
+        this.index.push(temp);
     }
 
     return this.index;
@@ -498,6 +511,7 @@ AlphabeticIndex.prototype.getBucket = function(element) {
     var collationValue;
     var charNum, firstBoundaryChar, endBoundaryChar, firstCharNum, endCharNum;
     var source;
+    var validMapNum = -1;
     
     if (!element) {
         return undefined;
@@ -510,20 +524,18 @@ AlphabeticIndex.prototype.getBucket = function(element) {
         firstChar = this._normalizeHangul(firstChar);
     }
 
-    collationValue = this.collationMap[firstChar];
-
-    if (!collationValue && this.inherit) {
-        for (var i = 0; i < this.inherit.length; i++) {
-            if (this.inherit[i] === 'this') {
-                this.inherit[i] = this.style;
-            }
-
-            if (this.collation[this.inherit[i]].map[firstChar]) {
-                collationValue = this.collation[this.inherit[i]].map[firstChar];
-                this.inheritStyle = this.inherit[i];
-                this._updateCollationMap(this.inheritStyle);
+    if (this.inherit) {
+        for (var i = 0; i < this.mixedCollationMap.length; i++) {
+            if (this.mixedCollationMap[i].map[firstChar]) {
+                collationValue = this.mixedCollationMap[i].map[firstChar];
+                validMapNum = i;
+                this.flowBoundaries = this.mixedCollationMap[validMapNum].flowBoundaries;
+                this.indexUnits = this.mixedCollationMap[validMapNum].indexUnits;
+                break;
             }
         }
+    } else {
+        collationValue = this.collationMap[firstChar];
     }
 
     if (collationValue) {
@@ -533,29 +545,44 @@ AlphabeticIndex.prototype.getBucket = function(element) {
             } else if (collationValue[0] > this.flowBoundaries[1]){
                 label = this.overflowLabel;
             } else {
-                label = this._getKeyByValue(collationValue);
-            }   
+                label = this._getKeyByValue(collationValue, validMapNum);
+            }
         } else if (typeof collationValue[0] === 'object') {
-            label = this._getKeyByValue(collationValue[0]);
-        } 
+            label = this._getKeyByValue(collationValue[0], validMapNum);
+        }
     } else {
         charNum = IString.toCodePoint(firstChar, 0);
-        firstBoundaryChar = this._getKeyByValue([this.flowBoundaries[0]]);
-        endBoundaryChar = this._getKeyByValue([this.flowBoundaries[1]]);
 
-        firstCharNum = IString.toCodePoint(firstBoundaryChar, 0);
-        endCharNum = IString.toCodePoint(endBoundaryChar, 0);
+        if (this.inherit) {
+            for (var i=0; i < this.inherit.length; i++) {
+                firstBoundaryChar = this._getKeyByValue([this.mixedCollationMap[i].flowBoundaries[0]], i);
+                firstCharNum = IString.toCodePoint(firstBoundaryChar, 0);
 
-        if (charNum < firstCharNum) {
-            label = this.underflowLabel;
-        } else if (charNum > endCharNum) {
-            label = this.overflowLabel;
-        } 
+                if (charNum < firstCharNum) {
+                    continue;
+                } else {
+                    break;
+                }
+            }
+            label = ((i === this.inherit.length)? this.underflowLabel: this.overflowLabel)
+        } else {
+            firstBoundaryChar = this._getKeyByValue([this.flowBoundaries[0]], 0);
+            endBoundaryChar = this._getKeyByValue([this.flowBoundaries[1]], 0);
+
+            firstCharNum = IString.toCodePoint(firstBoundaryChar, 0);
+            endCharNum = IString.toCodePoint(endBoundaryChar, 0);
+
+            if (charNum < firstCharNum) {
+                label = this.underflowLabel;
+            } else if (charNum > endCharNum) {
+                label = this.overflowLabel;
+            } else {
+                label = this.overflowLabel;
+            }
+        }
     }
-
     return label;
 };
-
 
 /**
  * Return default indexing style in the current locale.
@@ -599,7 +626,7 @@ AlphabeticIndex.prototype.getBucketLabels = function() {
  * for this index in collation order
  */
 AlphabeticIndex.prototype.getAllBucketLabels = function() {
-    var label, i;
+    var label;
 
     if (this.allBucketLabels) {
         return this.allBucketLabels;

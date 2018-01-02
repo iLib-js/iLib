@@ -616,7 +616,8 @@ module.exports.testalphaindex_ko = {
 
         var items = [
             "Apple",
-            "Banana",  
+            "Banana",
+            "μήλο",
             "김철수",
             "김영희",
             "송현경",
@@ -648,10 +649,6 @@ module.exports.testalphaindex_ko = {
         });
 
         var expected = [
-            {
-                label: "*",
-                elements: ["μήλο", "فاحة"]
-            },
             {
                 label: "ㄱ",
                 elements: ["강성진","김영희","김철수"]
@@ -695,6 +692,10 @@ module.exports.testalphaindex_ko = {
             {
                 label: "U",
                 elements: ["úll"]
+            },
+            {
+                label: "#",
+                elements: ["μήλο", "فاحة"]
             }
         ]
 
@@ -1034,10 +1035,6 @@ module.exports.testalphaindex_ko = {
 
         var expected = [
             {
-                label: "*",
-                elements: ["りんご"]
-            },
-            {
                 label: "ㄱ",
                 elements: ["강성진", "김철수"]
             },
@@ -1076,6 +1073,10 @@ module.exports.testalphaindex_ko = {
             {
                 label: "B",
                 elements: ["Banana"]
+            },
+            {
+                label: "#",
+                elements: ["りんご"]
             }
         ];
 
@@ -1115,10 +1116,6 @@ module.exports.testalphaindex_ko = {
         });
 
         var expected = [
-            {
-                label: "*",
-                elements: ["りんご"]
-            },
             {
                 label: "ㄱ",
                 elements: ["강성진", "김철수"]
@@ -1161,7 +1158,7 @@ module.exports.testalphaindex_ko = {
             },
             {
                 label: "#",
-                elements: ["芒果", "香蕉"]
+                elements: ["りんご", "芒果", "香蕉"]
             }
 
         ];
@@ -1202,10 +1199,6 @@ module.exports.testalphaindex_ko = {
         });
 
         var expected = [
-            {
-                label: "*",
-                elements: ["четверг", "مخزن"]
-            },
             {
                 label: "ㄱ",
                 elements: ["김철수"]
@@ -1249,6 +1242,10 @@ module.exports.testalphaindex_ko = {
             {
                 label: "U",
                 elements: ["ürgen"]
+            },
+            {
+                label: "#",
+                elements: ["четверг", "مخزن"]
             }
         ];
 
