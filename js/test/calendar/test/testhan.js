@@ -399,15 +399,3 @@ function testHanNewYears() {
     	assertEquals(hanLeapYears[i][1], cal.newYears(n));
     }
 }
-
-function testHanNewDateInstance() {
-    var cal = new HanCal();
-    var d = cal.newDateInstance({
-    	year: 4681,
-    	month: 6,
-    	day: 1
-    });
-    
-    assertNotUndefined(d);
-    assertEquals("han", d.cal.type);
-}
