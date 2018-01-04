@@ -6,6 +6,8 @@ Build 001
 
 New Features:
 
+* Added DateFmt.getDateComponentOrder() to aid date input selector widget developers in determining what order the date input
+selectors for year, month, and date should appear in to be correct for the given locale.
 * The getString and getStringJS methods of the ResBundle class both now take either a string or an array parameter
 to translate. When an array is given, every string in the array is translated.
 
