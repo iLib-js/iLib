@@ -125,7 +125,6 @@ requireClass.prototype.require = function(parent, pathname) {
 	}
 	
 	console.log("exception was " + JSON.stringify(s.status, undefined, 4));
-
 	console.log("Failed loading " + pathname);
 	console.trace();
 	return undefined;

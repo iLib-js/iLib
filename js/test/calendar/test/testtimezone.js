@@ -17,9 +17,10 @@
  * limitations under the License.
  */
 
-var ilib = require("./../lib/ilib-node.js");
+var ilib = require("./../lib/ilib.js");
 var TimeZone = require("./../lib/TimeZone.js");
 var LocaleInfo = require("./../lib/LocaleInfo.js");
+var Loader = require("./../lib/Loader.js");
 var IString = require("./../lib/IString.js");
 var GregorianDate = require("./../lib/GregorianDate.js");
 var DateFactory = require("./../lib/DateFactory.js");
