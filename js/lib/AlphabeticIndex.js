@@ -17,28 +17,33 @@
  * limitations under the License.
  */
 
-/*globals console RegExp */
-
 /* !depends
 ilib.js
+Utils.js
 Locale.js
 LocaleInfo.js
 NormString.js
+CType.js
+IString.js
+isIdeo.js
+isAscii.js
+isDigit.js
+Collator.js
+NormString.js
 */
-
-// !data collation
 
 var ilib = require("./ilib.js");
 var Utils = require("./Utils.js");
 var Locale = require("./Locale.js");
-var Collator = require("./Collator.js");
 var LocaleInfo = require("./LocaleInfo.js");
 var CType = require("./CType.js");
-var NormString = require("./NormString.js");
 var IString = require("./IString.js");
 var isIdeo = require("./isIdeo.js");
 var isAscii = require("./isAscii.js");
 var isDigit = require("./isDigit.js");
+var Collator = require("./Collator.js");
+var NormString = require("./NormString.js");
+
 
 /**
  * @class Create a new alphabetic index instance.
@@ -163,12 +168,13 @@ var AlphabeticIndex = function (options) {
                 new Collator ({
                     locale: this.locale,
                     useNative: false,
-                    sensivitiy: "primary",
+                    sensitivity: "primary",
                     usage: "sort",
                     sync: this.sync,
                     loadParam : this.loadParams,
                     onLoad: ilib.bind(this, function(collation){
                         this.collationObj = collation;
+                        NormString.init();
                         this._init();
                         if (options && typeof(options.onLoad) === 'function') {
                             options.onLoad(this);
@@ -179,7 +185,6 @@ var AlphabeticIndex = function (options) {
         }));
     }));
 };
-
 
 /**
  * @private
@@ -259,19 +264,24 @@ AlphabeticIndex.prototype._getKeyByValue = function(value, validMapNum) {
 /**
  * @private
  */
-AlphabeticIndex.prototype._normalizeHangul = function(value) {
-    if (!value) {
+AlphabeticIndex.prototype._getFirstChar = function(element) {
+    if (!element) {
         return "";
     }
-    var source = new NormString(value);
-    var normString = source.normalize("nfkd");
-    var firstJamo;
-    var it = normString.charIterator();
+    var firstChar, normString, it;
+    var source = new NormString(element);
 
-    firstJamo = it.next();
-    return firstJamo;
+    normString = source.normalize("nfc");
+    it = normString.charIterator();
+    firstChar = it.next();
+
+    if (CType.withinRange(firstChar, "hangul")) {
+        normString = source.normalize("nfkd");
+        it = normString.charIterator();
+        firstChar = it.next();
+    }
+    return firstChar;
 };
-
 
 /**
  * @private
@@ -517,12 +527,7 @@ AlphabeticIndex.prototype.getBucket = function(element) {
         return undefined;
     }
 
-    source = new NormString(element);
-    firstChar = source.str[0];
-
-    if (CType.withinRange(firstChar, "hangul")) {
-        firstChar = this._normalizeHangul(firstChar);
-    }
+    firstChar = this._getFirstChar(element);
 
     if (this.inherit) {
         for (var i = 0; i < this.mixedCollationMap.length; i++) {
