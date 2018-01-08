@@ -105,7 +105,7 @@ NormString.init = function(options) {
         Utils.loadData({
             object: "NormString",
             name: "normdata.json",
-            loadl: "-",
+            locale: "-",
             nonlocale: true,
             sync: sync,
             loadParams: loadParams,
