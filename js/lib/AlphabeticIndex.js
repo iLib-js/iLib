@@ -165,22 +165,27 @@ var AlphabeticIndex = function (options) {
     isAscii._init(this.sync, this.loadParams, ilib.bind(this, function() {
         isIdeo._init(this.sync, this.loadParams, ilib.bind(this, function(){
             isDigit._init(this.sync, this.loadParams, ilib.bind(this, function(){
-                new Collator ({
-                    locale: this.locale,
-                    useNative: false,
-                    sensitivity: "primary",
-                    usage: "sort",
+                NormString.init({
                     sync: this.sync,
-                    loadParam : this.loadParams,
-                    onLoad: ilib.bind(this, function(collation){
-                        this.collationObj = collation;
-                        NormString.init();
-                        this._init();
-                        if (options && typeof(options.onLoad) === 'function') {
-                            options.onLoad(this);
-                        }
+                    loadParam: this.loadParams,
+                    onLoad: ilib.bind(this, function(){
+                        new Collator ({
+                            locale: this.locale,
+                            useNative: false,
+                            sensitivity: "primary",
+                            usage: "sort",
+                            sync: this.sync,
+                            loadParam : this.loadParams,
+                            onLoad: ilib.bind(this, function(collation){
+                            this.collationObj = collation;
+                            this._init();
+                            if (options && typeof(options.onLoad) === 'function') {
+                                options.onLoad(this);
+                            }
+                        })
+                    });
                     })
-                });
+                })
             }));
         }));
     }));
