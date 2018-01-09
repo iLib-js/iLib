@@ -21,6 +21,9 @@ var nodeunit = require("nodeunit");
 var reporter = nodeunit.reporters.minimal;
 var modules = {};
 var suites = [
+    "testalphaindex.js",
+    "testalphaindex_de.js",
+    "testalphaindex_ko.js",
     "testcollation.js",
     "testcollation_cs.js",
     "testcollation_da.js",
@@ -44,7 +47,7 @@ var suites = [
     "testcollation_sv.js",
     "testcollation_tr.js",
     "testcollation_zh-Hans.js",
-    "testcollation_zh-Hant.js",
+    "testcollation_zh-Hant.js"
 ];
 
 suites.forEach(function (path) {
