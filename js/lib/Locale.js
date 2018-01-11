@@ -798,7 +798,24 @@ Locale.prototype = {
 	 * @return {string} the locale specifier
 	 */
 	getSpec: function() {
+	    if (!this.spec) this._genSpec();
 		return this.spec;
+	},
+	
+	/**
+	 * Return the language locale specifier. This includes the
+	 * language and optionally the script. This can be
+	 * used to see whether the written language of locales
+	 * match each other regardless of region or variant.
+	 * 
+	 * @return {string} the language locale specifier
+	 */
+	getLangSpec: function() {
+	    var spec = this.language;
+	    if (this.script) {
+	        spec += "-" + this.script;
+	    }
+	    return spec;
 	},
 	
 	/**
