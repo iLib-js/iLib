@@ -10,6 +10,8 @@ New Features:
 selectors for year, month, and date should appear in to be correct for the given locale.
 * The getString and getStringJS methods of the ResBundle class both now take either a string or an array parameter
 to translate. When an array is given, every string in the array is translated.
+* Added locale.getLangSpec() method to return the language and the optional script of the locale which will give you what the
+written language is of the locale regardless of region or variant
 
 Build 000
 -------
