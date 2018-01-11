@@ -455,20 +455,5 @@ module.exports.testhan = {
             test.equal(cal.newYears(n), hanLeapYears[i][1]);
         }
         test.done();
-    },
-    
-    testHanNewDateInstance: function(test) {
-        test.expect(2);
-        var cal = new HanCal();
-        var d = cal.newDateInstance({
-            year: 4681,
-            month: 6,
-            day: 1
-        });
-        
-        test.ok(typeof(d) !== "undefined");
-        test.equal(d.cal.type, "han");
-        test.done();
     }
-    
 };

@@ -317,20 +317,5 @@ module.exports.testethiopic = {
         
         test.ok(cal.isLeapYear(2003));
         test.done();
-    },
-    
-    testEthiopicNewDateInstance: function(test) {
-        test.expect(2);
-        var cal = new EthiopicCal();
-        var d = cal.newDateInstance({
-            year: 20,
-            month: 6,
-            day: 1
-        });
-        
-        test.ok(typeof(d) !== "undefined");
-        test.equal(d.cal.type, "ethiopic");
-        test.done();
     }
-    
 };

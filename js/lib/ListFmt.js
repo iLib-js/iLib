@@ -128,7 +128,7 @@ var ListFmt = function(options) {
  * 
  * @param {Array.<String>} items an array of strings to format in
  * order that you would like them to appear
- * @returns {String} a string containing the list of items that
+ * @returns {string} a string containing the list of items that
  * is grammatically correct for the locale of this formatter
  */
 
@@ -176,7 +176,7 @@ ListFmt.prototype.format = function(items) {
 /**
  * Return the locale of this formatter.
  * 
- * @returns {String} the locale of this formatter
+ * @returns {string} the locale of this formatter
  */
 ListFmt.prototype.getLocale = function() {
 	return this.locale.getSpec();

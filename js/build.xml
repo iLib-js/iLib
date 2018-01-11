@@ -1138,8 +1138,8 @@ limitations under the License.
 		<uptodate
                 property="package.json.not.needed"
                 targetfile="${build.base}/package.json">
-			<srcfiles dir="${build.base}" file="package.json.template" />
-			<srcfiles dir="${build.base}/.." file="build.properties" />
+			<srcfiles dir="${build.base}" includes="package.json.template" />
+			<srcfiles dir="${build.base}/.." includes="build.properties" />
 		</uptodate>
 	</target>
 	<target name="update.package.json" depends="testpackagejson" unless="package.json.not.needed"
@@ -1308,15 +1308,15 @@ limitations under the License.
 	</target>
 	
 	<target name="test.remote" depends="prepare,assemble.unittest" description="Run a remote server to test ilib in remote browsers">
-	    <exec osfamily="unix" resultproperty="uglify.result" errorproperty="uglify.error" executable="node" dir="${build.base}/.." failifexecutionfails="true">
+	    <exec osfamily="unix" resultproperty="uglify.result" errorproperty="uglify.error" executable="node" dir="${build.base}" failifexecutionfails="true">
 			<arg value="node_modules/http-server/bin/http-server"/>
 			<arg value="-p"/>
 			<arg value="9090"/>
 		</exec>
-		<exec osfamily="mac" resultproperty="uglify.result" errorproperty="uglify.error" executable="node" dir="${build.base}/.." failifexecutionfails="true">
+		<exec osfamily="mac" resultproperty="uglify.result" errorproperty="uglify.error" executable="node" dir="${build.base}" failifexecutionfails="true">
 			<arg value="node_modules/http-server/bin/http-server"/>
 		</exec>
-		<exec osfamily="windows" resultproperty="uglify.result" errorproperty="uglify.error" executable="node.exe" dir="${build.base}/.." failifexecutionfails="true">
+		<exec osfamily="windows" resultproperty="uglify.result" errorproperty="uglify.error" executable="node.exe" dir="${build.base}" failifexecutionfails="true">
 			<arg value="node_modules/http-server/bin/http-server"/>
 		</exec>
 	</target>

@@ -77,6 +77,8 @@
 		"scripts": ["Latn"],
 		"bits": [7,3,1,1],
 		"keysize":[8,12,12,12],
+		"indexUnits":["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"],
+		"flowBoundaries":[33,58],
 		"map": {
 			"\t": [0],
 			"\n": [0,1],

@@ -36,7 +36,10 @@ ilib.data.strings = {
 ilib.data.strings_de = {
     "first string": "erste String",
     "second string": "zweite String",
-    "third string": "dritte String"
+    "third string": "dritte String",
+    "first string {n}": "erste String {n}",
+    "second string {n}": "zweite String {n}",
+    "third string {n}": "dritte String {n}"
 };
 
 ilib.data.strings_fr = {
@@ -1959,5 +1962,120 @@ module.exports.testresources = {
         test.done();
         
         ilib.setLocale(tmp);
+    },
+    
+    testResBundleLocalizeArray: function(test) {
+        test.expect(1);
+        var rb = new ResBundle({locale: "de-DE"});
+        
+        test.deepEqual(rb.getStringJS([
+            "first string",
+            "second string",
+            "third string"
+        ]), [
+            "erste String",
+            "zweite String",
+            "dritte String"
+        ]);
+        
+        test.done();
+    },
+    
+    testResBundleLocalizeArrayUntranslatedElements: function(test) {
+        test.expect(1);
+        var rb = new ResBundle({locale: "de-DE"});
+        
+        test.deepEqual(rb.getStringJS([
+            "first string",
+            "second string",
+            "third string",
+            "fourth string"
+        ]), [
+            "erste String",
+            "zweite String",
+            "dritte String",
+            "fourth string"
+        ]);
+        
+        test.done();
+    },
+    
+    testResBundleLocalizeArrayUndefinedElements: function(test) {
+        test.expect(1);
+        var rb = new ResBundle({locale: "de-DE"});
+        
+        test.deepEqual(rb.getStringJS([
+            "first string",
+            undefined,
+            "third string"
+        ]), [
+            "erste String",
+            undefined,
+            "dritte String"
+        ]);
+        
+        test.done();
+    },
+
+    testResBundleLocalizeArrayEmptyString: function(test) {
+        test.expect(1);
+        var rb = new ResBundle({locale: "de-DE"});
+        
+        test.deepEqual(rb.getStringJS([
+            "first string", 
+            "",
+            "third string"
+        ]), [
+            "erste String",
+            "",
+            "dritte String"
+        ]);
+        
+        test.done();
+    },
+  
+
+    testResBundleLocalizeArraySkipNonStrings: function(test) {
+        test.expect(1);
+        var rb = new ResBundle({locale: "de-DE"});
+        
+        test.deepEqual(rb.getStringJS([
+            "first string", 
+            2,
+            "second string",
+            { "asdf": "an object element"},
+            [ "this", "is", "an", "array", "element"],
+            true,
+            "third string"
+        ]), [
+            "erste String",
+            2,
+            "zweite String",
+            { "asdf": "an object element"},
+            [ "this", "is", "an", "array", "element"],
+            true,
+            "dritte String"
+        ]);
+        
+        test.done();
+    },
+
+    testResBundleLocalizeArrayWithFormat: function(test) {
+        test.expect(1);
+        var rb = new ResBundle({locale: "de-DE"});
+        
+        test.deepEqual(rb.getString([
+            "first string {n}",
+            "second string {n}",
+            "third string {n}"
+        ]).map(function(str) {
+            return str.format({n: 2})
+        }), [
+            "erste String 2",
+            "zweite String 2",
+            "dritte String 2"
+        ]);
+        
+        test.done();
     }
 };
