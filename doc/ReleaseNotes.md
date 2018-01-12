@@ -10,6 +10,17 @@ New Features:
 selectors for year, month, and date should appear in to be correct for the given locale.
 * The getString and getStringJS methods of the ResBundle class both now take either a string or an array parameter
 to translate. When an array is given, every string in the array is translated.
+* LocaleMatcher class updates
+  * Added LocaleMatcher.match() which returns an estimated percentage match between two locales which can be used to compare
+    with other match scores to determine a best match. For example, let's say your web site has translations for English, German, Danish, 
+    and Dutch, and a user comes to your site from Norway. Which translation would be best to show her? The highest match score between
+    Norwegian and the languages your web site supports is with Danish, so you should show her the Danish site by default, and allow
+    her to choose another language manually if she is more comfortable with one of the other languages.
+  * Added LocaleMatcher.getMacroLanguage() which returns the ISO macro language code that encompasses the given language, if any
+  * Added LocaleMatcher.getRegionContainment() which returns the list of regions that the current locale is contained within. For example,
+    Germany is located in the regions Western Europe, the EU, Europe, and the World.
+  * Added LocaleMatcher.smallestCommonRegion() to determine which region is the smallest one that contains both the current region
+    and the given other region
 
 Build 000
 -------
