@@ -283,7 +283,7 @@ LocaleMatcher.prototype = {
 					var container = this.info.territoryContainment[containers[i]];
 					if (container && container.indexOf(other.region) > -1) {
 						// same area only accounts for 20% of the region score
-						scores[2] = (i * 100 / containers.length) * 0.2;
+						scores[2] = ((i+1) * 100 / containers.length) * 0.2;
 						break;
 					}
 				}
@@ -303,59 +303,68 @@ LocaleMatcher.prototype = {
 		return Math.round(total);
 	},
 
-	/**
-	 * Return the macrolanguage associated with this locale. If the
-	 * locale's language is not part of a macro-language, then the
-	 * locale's language is returned as-is.
-	 *
-	 * @returns {string} the ISO code for the macrolanguage associated
-	 * with this locale, or language of the locale
-	 */
-	getMacroLanguage: function() {
-	    return this.info.macroLanguagesReverse[this.locale.language] || this.locale.language;
-	},
+    /**
+     * Return the macrolanguage associated with this locale. If the
+     * locale's language is not part of a macro-language, then the
+     * locale's language is returned as-is.
+     *
+     * @returns {string} the ISO code for the macrolanguage associated
+     * with this locale, or language of the locale
+     */
+    getMacroLanguage: function() {
+        return this.info.macroLanguagesReverse[this.locale.language] || this.locale.language;
+    },
 
-	/**
-	 * @private
-	 * Return the containment array for the given region code.
-	 */
-	_getRegionContainment: function(region) {
-	    return this.info.territoryContainmentReverse[region] || []
-	},
+    /**
+     * @private
+     * Return the containment array for the given region code.
+     */
+    _getRegionContainment: function(region) {
+        return this.info.territoryContainmentReverse[region] || []
+    },
 
-	/**
-	 * Return the list of regions that this locale is contained within. Regions are
-	 * nested, so locales can be in multiple regions. (eg. US is in Northern North
-	 * America, North America, the Americas, the World.) Most regions are specified
-	 * using UN.49 region numbers, though some, like "EU", are letters.
-	 *
-	 * @returns {Array.<string>} an array of region specifiers that this locale is within
-	 */
-	getRegionContainment: function() {
-	    var region = this.locale.region || this.getLikelyLocale().region;
+    /**
+     * Return the list of regions that this locale is contained within. Regions are
+     * nested, so locales can be in multiple regions. (eg. US is in Northern North
+     * America, North America, the Americas, the World.) Most regions are specified
+     * using UN.49 region numbers, though some, like "EU", are letters. If the
+     * locale is underspecified, this method will use the most likely locale method
+     * to get the region first. For example, the locale "ja" (Japanese) is most
+     * likely "ja-JP" (Japanese for Japan), and the region containment info for Japan
+     * is returned.
+     *
+     * @returns {Array.<string>} an array of region specifiers that this locale is within
+     */
+    getRegionContainment: function() {
+        var region = this.locale.region || this.getLikelyLocale().region;
         return this._getRegionContainment(region);
-	},
+    },
 
-	/**
-	 * Find the smallest region that contains both the current locale and the other locale.
-	 *
-	 * @param {String|Locale} otherLocale a locale specifier or a Locale instance to
-	 * compare against
-	 * @returns {string} the region specifier of the smallest region containing both the
-	 * current locale and other locale
-	 */
-	smallestCommonRegion: function(otherLocale) {
-	    if (typeof(otherLocale) === "undefined") return "001";
+    /**
+     * Find the smallest region that contains both the current locale and the other locale.
+     * If the current or other locales are underspecified, this method will use the most
+     * likely locale method
+     * to get their regions first. For example, the locale "ja" (Japanese) is most
+     * likely "ja-JP" (Japanese for Japan), and the region containment info for Japan
+     * is checked against the other locale's region containment info.
+     *
+     * @param {String|Locale} otherLocale a locale specifier or a Locale instance to
+     * compare against
+     * @returns {string} the region specifier of the smallest region containing both the
+     * current locale and other locale
+     */
+    smallestCommonRegion: function(otherLocale) {
+        if (typeof(otherLocale) === "undefined") return "001";
 
-	    var thisRegion = this.locale.region || this.getLikelyLocale().region;
-	    var otherLoc = typeof(otherLocale) === "string" ? new Locale(otherLocale) : otherLocale;
-	    var otherRegion = this._getLikelyLocale(otherLoc).region;
+        var thisRegion = this.locale.region || this.getLikelyLocale().region;
+        var otherLoc = typeof(otherLocale) === "string" ? new Locale(otherLocale) : otherLocale;
+        var otherRegion = this._getLikelyLocale(otherLoc).region;
 
-	    var thisRegions = this._getRegionContainment(thisRegion);
-	    var otherRegions = this._getRegionContainment(otherRegion);
+        var thisRegions = this._getRegionContainment(thisRegion);
+        var otherRegions = this._getRegionContainment(otherRegion);
 
-	    // region containment arrays are arranged from largest to smallest, so start
-	    // at the end of the array
+        // region containment arrays are arranged from largest to smallest, so start
+        // at the end of the array
         for (var i = thisRegions.length-1; i > 0; i--) {
             if (otherRegions.indexOf(thisRegions[i]) > -1) {
                 return thisRegions[i];
@@ -364,7 +373,7 @@ LocaleMatcher.prototype = {
 
         // this default should never be reached because the world should be common to all regions
         return "001";
-	}
+    }
 };
 
 module.exports = LocaleMatcher;

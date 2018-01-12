@@ -514,7 +514,7 @@ module.exports.testlocalematch = {
         });
         test.ok(typeof(lm) !== "undefined");
 
-        test.equal(lm.match("no-NO"), 50);
+        test.equal(lm.match("no-NO"), 53);
 
         test.done();
     },
@@ -526,7 +526,7 @@ module.exports.testlocalematch = {
         });
         test.ok(typeof(lm) !== "undefined");
 
-        test.equal(lm.match("da-DK"), 61);
+        test.equal(lm.match("da-DK"), 63);
 
         test.done();
     },
@@ -654,7 +654,7 @@ module.exports.testlocalematch = {
         test.done();
     },
 
-    testLocaleMatcherGetRegionContainmentDA: function(test) {
+    testLocaleMatcherGetRegionContainmentUS: function(test) {
         test.expect(2);
         var lm = new LocaleMatcher({
             locale: "en-US"
@@ -663,6 +663,19 @@ module.exports.testlocalematch = {
 
         // northern north america, north america, world
         test.equalIgnoringOrder(lm.getRegionContainment(), ["021", "019", "003", "001"]);
+
+        test.done();
+    },
+
+    testLocaleMatcherGetRegionContainmentUsingMostLikelyRegion: function(test) {
+        test.expect(2);
+        var lm = new LocaleMatcher({
+            locale: "ja"  // most likely region is "JP" for Japan
+        });
+        test.ok(typeof(lm) !== "undefined");
+
+        // western asia, asia, world
+        test.equalIgnoringOrder(lm.getRegionContainment(), ["001","030","142"]);
 
         test.done();
     },
@@ -688,7 +701,7 @@ module.exports.testlocalematch = {
         test.ok(typeof(lm) !== "undefined");
 
         // north america
-        test.equal(lm.smallestCommonRegion("JM"), "019");
+        test.equal(lm.smallestCommonRegion("JM"), "003");
 
         test.done();
     },
@@ -728,6 +741,32 @@ module.exports.testlocalematch = {
 
         // world
         test.equal(lm.smallestCommonRegion(undefined), "001");
+
+        test.done();
+    },
+
+    testLocaleMatcherSmallestCommonRegionWithMostLikelyRegions: function(test) {
+        test.expect(2);
+        var lm = new LocaleMatcher({
+            locale: "ja"
+        });
+        test.ok(typeof(lm) !== "undefined");
+
+        // eastern asia
+        test.equal(lm.smallestCommonRegion("zh"), "030");
+
+        test.done();
+    },
+
+    testLocaleMatcherSmallestCommonRegionWithMostLikelyRegions2: function(test) {
+        test.expect(2);
+        var lm = new LocaleMatcher({
+            locale: "hi"
+        });
+        test.ok(typeof(lm) !== "undefined");
+
+        // asia
+        test.equal(lm.smallestCommonRegion("ja"), "142");
 
         test.done();
     }
