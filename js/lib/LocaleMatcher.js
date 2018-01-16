@@ -125,7 +125,29 @@ LocaleMatcher.prototype = {
 	 * Do the work
 	 */
 	_getLikelyLocale: function(locale) {
+	    // already full specified
+	    if (locale.language && locale.script && locale.region) return locale;
+	    
         if (typeof(this.info.likelyLocales[locale.getSpec()]) === 'undefined') {
+            // try various partials before giving up
+            var partial = this.info.likelyLocales[new Locale(locale.language, undefined, locale.region).getSpec()];
+            if (typeof(partial) !== 'undefined') return new Locale(partial);
+
+            var partial = this.info.likelyLocales[new Locale(locale.language, locale.script, undefined).getSpec()];
+            if (typeof(partial) !== 'undefined') return new Locale(partial);
+
+            var partial = this.info.likelyLocales[new Locale(locale.language, undefined, undefined).getSpec()];
+            if (typeof(partial) !== 'undefined') return new Locale(partial);
+
+            var partial = this.info.likelyLocales[new Locale(undefined, locale.script, locale.region).getSpec()];
+            if (typeof(partial) !== 'undefined') return new Locale(partial);
+
+            var partial = this.info.likelyLocales[new Locale(undefined, undefined, locale.region).getSpec()];
+            if (typeof(partial) !== 'undefined') return new Locale(partial);
+
+            var partial = this.info.likelyLocales[new Locale(undefined, locale.script, undefined).getSpec()];
+            if (typeof(partial) !== 'undefined') return new Locale(partial);
+
             return locale;
         }
 

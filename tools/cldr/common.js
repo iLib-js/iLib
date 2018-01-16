@@ -408,7 +408,7 @@ exports.getLocale = function () {
  * @param {string=} variant the name of the variant of this locale, if any
  */
 exports.Locale = function(language, script, region, variant) {
-	if (typeof(region) === 'undefined') {
+	if (typeof(script) === 'undefined' && typeof(region) === 'undefined' && typeof(variant) === 'undefined') {
 		var spec = language || exports.getLocale();
 		var parts = spec.split('-');
         for ( var i = 0; i < parts.length; i++ ) {
