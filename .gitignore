@@ -8,3 +8,4 @@ build.properties
 /js/output/
 /js/package.json
 **/localeinfo.json
+**/*.stamp
