@@ -1485,9 +1485,9 @@ DateFmt.prototype = {
 	formatRelative: function(reference, date) {
 		reference = DateFactory._dateToIlib(reference);
 		date = DateFactory._dateToIlib(date);
-		
-		var referenceRd, dateRd, fmt, time, diff, num;
-		
+
+		var referenceRd, dateRd, fmt, time, diff, absDiff, num;
+
 		if (typeof(reference) !== 'object' || !reference.getCalendar || reference.getCalendar() !== this.calName ||
 			typeof(date) !== 'object' || !date.getCalendar || date.getCalendar() !== this.calName) {
 			throw "Wrong calendar type";
@@ -1495,136 +1495,132 @@ DateFmt.prototype = {
 		
 		referenceRd = reference.getRataDie();
 		dateRd = date.getRataDie();
-		
-		if (dateRd < referenceRd) {
-			diff = referenceRd - dateRd;
-			fmt = this.sysres.getString("{duration} ago");
-		} else {
-			diff = dateRd - referenceRd;
-			fmt = this.sysres.getString("in {duration}");
-		}
-		
-		if (diff < 0.000694444) {
-			num = Math.round(diff * 86400);
+
+		diff = referenceRd - dateRd;
+		absDiff = Math.abs(diff);
+		fmt = this.sysres.getString("in {relativeTime}");
+
+		if (absDiff < 0.000694444) {
+			num = Math.round(absDiff * 86400);
 			switch (this.length) {
 				case 's':
-					time = this.sysres.getString("#{num}s");
+					time = diff > 0 ? this.sysres.getString("#-{num}s") : this.sysres.getString("#+{num}s");
 					break;
 				case 'm':
-					time = this.sysres.getString("1#1 se|#{num} sec");
+					time = diff > 0 ? this.sysres.getString("1#-1 se|#-{num} sec") : this.sysres.getString("1#+1 se|#+{num} sec");
 					break;
 				case 'l':
-					time = this.sysres.getString("1#1 sec|#{num} sec");
+					time = diff > 0 ? this.sysres.getString("1#-1 sec|#-{num} sec") : this.sysres.getString("1#+1 sec|#+{num} sec");
 					break;
 				default:
 				case 'f':
-					time = this.sysres.getString("1#1 second|#{num} seconds");
+					time = diff > 0 ? this.sysres.getString("1#-1 second|#-{num} seconds") : this.sysres.getString("1#+1 second|#+{num} seconds");
 					break;
 			}
-		} else if (diff < 0.041666667) {
-			num = Math.round(diff * 1440);
+		} else if (absDiff < 0.041666667) {
+			num = Math.round(absDiff * 1440);
 			switch (this.length) {
 				case 's':
-					time = this.sysres.getString("#{num}m", "durationShortMinutes");
+					time = diff > 0 ? this.sysres.getString("#-{num}m", "durationShortMinutes") : this.sysres.getString("#+{num}m", "+durationShortMinutes");
 					break;
 				case 'm':
-					time = this.sysres.getString("1#1 mi|#{num} min");
+					time = diff > 0 ? this.sysres.getString("1#-1 mi|#-{num} min") :  this.sysres.getString("1#+1 mi|#+{num} min");
 					break;
 				case 'l':
-					time = this.sysres.getString("1#1 min|#{num} min");
+					time = diff > 0 ? this.sysres.getString("1#-1 min|#-{num} min") : this.sysres.getString("1#+1 min|#+{num} min");
 					break;
 				default:
 				case 'f':
-					time = this.sysres.getString("1#1 minute|#{num} minutes");
+					time = diff > 0 ? this.sysres.getString("1#-1 minute|#-{num} minutes") : this.sysres.getString("1#+1 minute|#+{num} minutes");
 					break;
 			}
-		} else if (diff < 1) {
-			num = Math.round(diff * 24);
+		} else if (absDiff < 1) {
+			num = Math.round(absDiff * 24);
 			switch (this.length) {
 				case 's':
-					time = this.sysres.getString("#{num}h");
+					time = diff > 0 ? this.sysres.getString("#-{num}h") : this.sysres.getString("#+{num}h");
 					break;
 				case 'm':
-					time = this.sysres.getString("1#1 hr|#{num} hrs", "durationMediumHours");
+					time = diff > 0 ? this.sysres.getString("1#-1 hr|#-{num} hrs", "-durationMediumHours") : this.sysres.getString("1#+1 hr|#+{num} hrs", "+durationMediumHours");
 					break;
 				case 'l':
-					time = this.sysres.getString("1#1 hr|#{num} hrs");
+					time = diff > 0 ? this.sysres.getString("1#-1 hr|#-{num} hrs") : this.sysres.getString("1#+1 hr|#+{num} hrs");
 					break;
 				default:
 				case 'f':
-					time = this.sysres.getString("1#1 hour|#{num} hours");
+					time = diff > 0 ? this.sysres.getString("1#-1 hour|#-{num} hours") : this.sysres.getString("1#+1 hour|#+{num} hours");
 					break;
 			}
-		} else if (diff < 14) {
-			num = Math.round(diff);
+		} else if (absDiff < 14) {
+			num = Math.round(absDiff);
 			switch (this.length) {
 				case 's':
-					time = this.sysres.getString("#{num}d");
+					time = diff > 0 ? this.sysres.getString("#-{num}d") : this.sysres.getString("#+{num}d");
 					break;
 				case 'm':
-					time = this.sysres.getString("1#1 dy|#{num} dys");
+					time = diff > 0 ? this.sysres.getString("1#-1 dy|#-{num} dys") : this.sysres.getString("1#+1 dy|#+{num} dys");
 					break;
 				case 'l':
-					time = this.sysres.getString("1#1 day|#{num} days", "durationLongDays");
+					time = diff > 0 ? this.sysres.getString("1#-1 day|#-{num} days", "-durationLongDays") : this.sysres.getString("1#+1 day|#+{num} days", "+durationLongDays");
 					break;
 				default:
 				case 'f':
-					time = this.sysres.getString("1#1 day|#{num} days");
+					time = diff > 0 ? this.sysres.getString("1#-1 day|#-{num} days") : this.sysres.getString("1#+1 day|#+{num} days");
 					break;
 			}
-		} else if (diff < 84) {
-			num = Math.round(diff/7);
+		} else if (absDiff < 84) {
+			num = Math.round(absDiff/7);
 			switch (this.length) {
 				case 's':
-					time = this.sysres.getString("#{num}w");
+					time = diff > 0 ? this.sysres.getString("#-{num}w") : this.sysres.getString("#+{num}w");
 					break;
 				case 'm':
-					time = this.sysres.getString("1#1 wk|#{num} wks", "durationMediumWeeks");
+					time = diff > 0 ? this.sysres.getString("1#-1 wk|#-{num} wks", "-durationMediumWeeks") : this.sysres.getString("1#+1 wk|#+{num} wks", "+durationMediumWeeks");
 					break;
 				case 'l':
-					time = this.sysres.getString("1#1 wk|#{num} wks");
+					time = diff > 0 ? this.sysres.getString("1#-1 wk|#-{num} wks") : this.sysres.getString("1#+1 wk|#+{num} wks");
 					break;
 				default:
 				case 'f':
-					time = this.sysres.getString("1#1 week|#{num} weeks");
+					time = diff > 0 ? this.sysres.getString("1#-1 week|#-{num} weeks") : this.sysres.getString("1#+1 week|#+{num} weeks");
 					break;
 			}
-		} else if (diff < 730) {
-			num = Math.round(diff/30.4);
+		} else if (absDiff < 730) {
+			num = Math.round(absDiff/30.4);
 			switch (this.length) {
 				case 's':
-					time = this.sysres.getString("#{num}m", "durationShortMonths");
+					time = diff > 0 ? this.sysres.getString("#-{num}m", "-durationShortMonths") : this.sysres.getString("#+{num}m", "+durationShortMonths");
 					break;
 				case 'm':
-					time = this.sysres.getString("1#1 mo|#{num} mos");
+					time = diff > 0 ? this.sysres.getString("1#-1 mo|#-{num} mos") : this.sysres.getString("1#+1 mo|#+{num} mos");
 					break;
 				case 'l':
-					time = this.sysres.getString("1#1 mon|#{num} mons");
+					time = diff > 0 ? this.sysres.getString("1#-1 mon|#-{num} mons") : this.sysres.getString("1#+1 mon|#+{num} mons");
 					break;
 				default:
 				case 'f':
-					time = this.sysres.getString("1#1 month|#{num} months");
+					time = diff > 0 ? this.sysres.getString("1#-1 month|#-{num} months") : this.sysres.getString("1#+1 month|#+{num} months");
 					break;
 			}
 		} else {
-			num = Math.round(diff/365);
+			num = Math.round(absDiff/365);
 			switch (this.length) {
 				case 's':
-					time = this.sysres.getString("#{num}y");
+					time = diff > 0 ? this.sysres.getString("#-{num}y") : this.sysres.getString("#+{num}y");
 					break;
 				case 'm':
-					time = this.sysres.getString("1#1 yr|#{num} yrs", "durationMediumYears");
+					time = diff > 0 ? this.sysres.getString("1#-1 yr|#-{num} yrs", "-durationMediumYears") : this.sysres.getString("1#+1 yr|#+{num} yrs", "+durationMediumYears");
 					break;
 				case 'l':
-					time = this.sysres.getString("1#1 yr|#{num} yrs");
+					time = diff > 0 ? this.sysres.getString("1#-1 yr|#-{num} yrs") : this.sysres.getString("1#+1 yr|#+{num} yrs");
 					break;
 				default:
 				case 'f':
-					time = this.sysres.getString("1#1 year|#{num} years");
+					time = diff > 0 ? this.sysres.getString("1#-1 year|#-{num} years") : this.sysres.getString("1#+1 year|#+{num} years");
 					break;
 			}
 		}
-		return fmt.format({duration: time.formatChoice(num, {num: num})});
+		return fmt.format({relativeTime: time.formatChoice(num, {num: num})});
 	}
 };
 
