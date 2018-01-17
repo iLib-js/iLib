@@ -1,6 +1,8 @@
 /**
+ * ilib-standard-webpack.js - metafile that includes a reasonable set of other js files
+ * 
  * @license
- * Copyright © 2017, JEDLSoft
+ * Copyright © 2017-2018, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,6 +22,7 @@
  * ilib-standard-webpack.js - metafile that includes a reasonable set of other js files
  */
 
+/*
 require.ensure([
 	"./DateRngFmt.js",
 	"./IDate.js",
@@ -44,19 +47,13 @@ require.ensure([
 ], function(require) {
 	console.log("foo");
 }, "ilib");
+*/
 
-/*
 var DateRngFmt = require("./DateRngFmt.js");
 var IDate = require("./IDate.js");
 var DateFactory = require("./DateFactory.js");
 var GregorianCal = require("./GregorianCal.js");
 var GregorianDate = require("./GregorianDate.js");
-var ThaiSolarCal = require("./ThaiSolarCal.js");
-var ThaiSolarDate = require("./ThaiSolarDate.js");
-var PersianCal = require("./PersianCal.js");
-var PersianDate = require("./PersianDate.js");
-var EthiopicCal = require("./EthiopicCal.js");
-var EthiopicDate = require("./EthiopicDate.js");
 var INumber = require("./INumber.js");
 var NumFmt = require("./NumFmt.js");
 var JulianDay = require("./JulianDay.js");
@@ -72,4 +69,3 @@ var LocaleInfo = require("./LocaleInfo.js");
 var DateRngFmt = require("./DateRngFmt.js");
 var ScriptInfo = require("./ScriptInfo.js");
 var CaseMapper = require("./CaseMapper.js");
-*/
