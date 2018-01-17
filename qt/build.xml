@@ -63,7 +63,7 @@ limitations under the License.
 	<!-- =================================================================== -->
 	<target name="all" depends="export,doc" description="Build everything. This is the target that the build should run."/>
 
-	<target name="clean" description="Remove all generated files to start from scratch">
+	<target name="clean" depends="run.qmake" description="Remove all generated files to start from scratch">
 		<delete dir="${build.output.qt}"/>
 		<delete dir="${build.output}"/>
 		<delete dir="${build.export}/qt"/>
@@ -79,6 +79,21 @@ limitations under the License.
 			</exec>
 		</sequential>
 	</target>
+	
+	<target name="test.qmake" description="test whether or not we need to run qmake to update the Makefile">
+		<uptodate property="qmake.not.needed" targetfile="${build.filereader}/debug">
+			<srcfiles dir="${build.filereader}" includes="Makefile*" />
+		</uptodate>
+	</target>
+	
+	<target name="run.qmake" depends="test.qmake" unless="qmake.not.needed">
+		<exec osfamily="unix" executable="qmake" dir="${build.filereader}" failifexecutionfails="true" failonerror="true">
+		</exec>
+		<exec osfamily="mac" executable="qmake" dir="${build.filereader}" failifexecutionfails="true" failonerror="true">
+		</exec>
+		<exec osfamily="windows" executable="qmake.exe" dir="${build.filereader}" failifexecutionfails="true"  failonerror="true">
+		</exec>
+	</target>
 
 	<target name="prepare" description="Prepare all directories that are needed before the project can be built">
 		<mkdir dir="${build.output.qt}"/>
@@ -87,14 +102,7 @@ limitations under the License.
 	<!-- =================================================================== -->
 	<!-- Create the core jar file                                            -->
 	<!-- =================================================================== -->
-	<target name="filereader" depends="prepare" description="Build the file reader plugin">
-		<exec osfamily="unix" executable="qmake" dir="${build.filereader}" failifexecutionfails="true" failonerror="true">
-		</exec>
-		<exec osfamily="mac" executable="qmake" dir="${build.filereader}" failifexecutionfails="true" failonerror="true">
-		</exec>
-		<exec osfamily="windows" executable="qmake.exe" dir="${build.filereader}" failifexecutionfails="true"  failonerror="true">
-		</exec>
-
+	<target name="filereader" depends="prepare,run.qmake" description="Build the file reader plugin">
 		<exec osfamily="unix" executable="make" dir="${build.filereader}" failifexecutionfails="true" failonerror="true">
 		</exec>
 		<exec osfamily="mac" executable="make" dir="${build.filereader}" failifexecutionfails="true" failonerror="true">
@@ -122,7 +130,7 @@ limitations under the License.
 		</copy>
 	</target>
 	
-	<target name="test.qt" depends="" description="Run the unit tests in the qt test framework. Make sure you have Qt 5.4 or later, and it is the first Qt in your path.">
+	<target name="test.qt" depends="filereader" description="Run the unit tests in the qt test framework. Make sure you have Qt 5.4 or later, and it is the first Qt in your path.">
 		<sequential>
 			<exec osfamily="unix" executable="${QTBIN}/qmlscene" dir="${build.base}/UnitTest" failifexecutionfails="true" failonerror="true">
 				<env key="QML2_IMPORT_PATH" value="../FileReader/imports"/>
@@ -141,7 +149,7 @@ limitations under the License.
 		
 	<!-- Should not run the tests from an automated build, because qmlscene doesn't exit at the end. They should
 	     only be run by hand. -->
-	<target name="test" depends="" description="Run all tests and build all reports" />
+	<target name="test" description="Run all tests and build all reports" />
 
 	<target name="doc" />
 	

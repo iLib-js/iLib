@@ -55,18 +55,6 @@ ThaiSolarCal.prototype.isLeapYear = function(year) {
 	return (MathUtils.mod(y, 4) === 0 && centuries !== 100 && centuries !== 200 && centuries !== 300);
 };
 
-/**
- * Return a date instance for this calendar type using the given
- * options.
- * @param {Object} options options controlling the construction of
- * the date instance
- * @return {IDate} a date appropriate for this calendar type
- * @deprecated Since 11.0.5. Use DateFactory({calendar: cal.getType(), ...}) instead
- */
-ThaiSolarCal.prototype.newDateInstance = function (options) {
-	var ThaiSolarDate = require("./ThaiSolarDate.js");
-	return new ThaiSolarDate(options);
-};
 
 /* register this calendar for the factory method */
 Calendar._constructors["thaisolar"] = ThaiSolarCal;

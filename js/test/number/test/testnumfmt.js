@@ -5512,6 +5512,100 @@ function testNumFmtNegativeCurrencyFormatForLocale_km_KH() {
     assertEquals("-100.110,57៛", fmt.format(-100110.57));
 }
 
+// test case for si-LK
+function testNumFmt_si_LK() {
+    var fmt = new NumFmt({
+        locale: "si-LK",
+        maxFractionDigits: 2
+    });
+
+    assertNotNull(fmt);
+
+    assertEquals("-123,456.78", fmt.format(-123456.785));
+}
+
+function testNumFmtCurrencyFormatCorrectCurrencyForLocale_si_LK() {
+    var fmt = new NumFmt({
+        type: "currency",
+        locale: "si-LK",
+        currency: "LKR",
+        maxFractionDigits: 2
+    });
+
+    assertNotNull(fmt);
+
+    assertEquals("Rs100,110.57", fmt.format(100110.57));
+}
+function testNumFmtPercentageFormatRegular_si_LK() {
+    var fmt = new NumFmt({
+    locale: "si-LK",
+        type: "percentage"
+    });
+
+    assertNotNull(fmt);
+
+    assertEquals("57%", fmt.format(57.0));
+}
+
+function testNumFmtNegativeCurrencyFormatForLocale_si_LK() {
+    var fmt = new NumFmt({
+        type: "currency",
+        locale: "si-LK",
+        currency: "LKR"
+    });
+
+    assertNotNull(fmt);
+
+    assertEquals("-Rs100,110.57", fmt.format(-100110.57));
+}
+
+// test case for sw-Latn-KE
+function testNumFmt_sw_KE() {
+    var fmt = new NumFmt({
+        locale: "sw-Latn-KE",
+        maxFractionDigits: 2
+    });
+
+    assertNotNull(fmt);
+
+    assertEquals("-123,456.78", fmt.format(-123456.785));
+}
+
+function testNumFmtCurrencyFormatCorrectCurrencyForLocale_sw_KE() {
+    var fmt = new NumFmt({
+        type: "currency",
+        locale: "sw-Latn-KE",
+        currency: "KES",
+        maxFractionDigits: 2
+    });
+
+    assertNotNull(fmt);
+
+    assertEquals("Sh100,110.57", fmt.format(100110.57));
+}
+function testNumFmtPercentageFormatRegular_sw_KE() {
+    var fmt = new NumFmt({
+    locale: "sw-Latn-KE",
+        type: "percentage"
+    });
+
+    assertNotNull(fmt);
+
+    assertEquals("57%", fmt.format(57.0));
+}
+
+function testNumFmtNegativeCurrencyFormatForLocale_sw_KE() {
+    var fmt = new NumFmt({
+        type: "currency",
+        locale: "sw-Latn-KE",
+        currency: "KES"
+    });
+
+    assertNotNull(fmt);
+
+    assertEquals("-Sh100,110.57", fmt.format(-100110.57));
+}
+
 /******************************** End of test cases****************************************************/
 function testNumFmt_en_GB() {
     var fmt = new NumFmt({
@@ -5614,7 +5708,6 @@ function testNumFmt_it_IT() {
 }
 
 function testNumFmtAsyncDefaults() {
-    var callbackCalled = false;
     new NumFmt({
         sync: false,
         onLoad: function (fmt) {
@@ -5626,30 +5719,21 @@ function testNumFmtAsyncDefaults() {
             assertTrue(fmt.isGroupingUsed());
             assertEquals("halfdown", fmt.getRoundingMode());
             assertUndefined(fmt.getCurrency());
-
-            callbackCalled = true;
         }
     });
-
-    assertTrue(callbackCalled);
 }
 
 function testNumFmtAsync() {
-    var callbackCalled = false;
     new NumFmt({
         sync: false,
         onLoad: function (fmt) {
             assertNotNull(fmt);
             assertEquals("12,345,678,901,234", fmt.format(12345678901234.0));
-            callbackCalled = true;
         }
     });
-
-    assertTrue(callbackCalled);
 }
 
 function testNumFmtAsyncWithLocale() {
-    var callbackCalled = false;
     new NumFmt({
         locale: "it-IT",
         maxFractionDigits: 2,
@@ -5657,8 +5741,6 @@ function testNumFmtAsyncWithLocale() {
         onLoad: function (fmt) {
             assertNotNull(fmt);
             assertEquals("-123.456,78", fmt.format(-123456.785));
-            callbackCalled = true;
         }
     });
-    assertTrue(callbackCalled);
 }

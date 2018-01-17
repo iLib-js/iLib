@@ -27,6 +27,7 @@ ResBundle.js
 LocaleInfo.js
 JSUtils.js
 Utils.js
+ScriptInfo.js
 */
 
 // !data dateformats sysres

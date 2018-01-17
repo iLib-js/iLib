@@ -1168,8 +1168,9 @@ function testDateFmtINWithTimeZoneAndNoDST_pa_IN() {
 	});
     assertEquals("1:45:37 ਬਾ.ਦੁ. IST", fmt.format(date));
 }
-//should be uncommented after getting the transalations for punjabi
-/*function testDateFmtFormatRelativeWithinMinuteAfter_pa_IN() {
+//should be uncommented after getting the translations for punjabi
+/*
+function testDateFmtFormatRelativeWithinMinuteAfter_pa_IN() {
     var fmt = new DateFmt({locale: "pa-IN", length: "full"});
     assertNotNull(fmt);
     
@@ -1536,6 +1537,7 @@ function testDateFmtFormatRelativeYearsBefore_pa_IN() {
 		millisecond: 0
 	});
     assertEquals("21 साल पहले", fmt.formatRelative(reference, date));
-}*/
+}
+*/
 
 

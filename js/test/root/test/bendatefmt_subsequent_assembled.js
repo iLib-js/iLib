@@ -17,7 +17,7 @@
  * limitations under the License.
  */
 
-var ilib = require("./../lib/ilib.js");
+var ilib = require("./../lib/ilib-node.js");
 var DateFmt = require("./../lib/DateFmt.js");
 var DateFactory = require("./../lib/DateFactory.js");
 ilib.data.timezones = {

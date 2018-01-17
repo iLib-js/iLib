@@ -55,18 +55,6 @@ var aliasesCN = {
     ]
 };
 
-function testCharmapCNTestAliases() {
-	for (var charset in aliasesCN) {
-		for (var i = 0; i < aliasesCN[charset].length; i++) {
-			var cs = new Charset({
-				name: aliasesCN[charset][i]
-			});
-		    assertNotUndefined(cs);
-		    assertEquals(charset, cs.getName());
-		}
-	}
-}
-
 var testDataCN = {
 	"Big5": {
 		// ASCII
@@ -236,6 +224,18 @@ var testDataCN = {
 	    ]
 	}
 };
+
+function testCharmapCNTestAliases() {
+    for (var charset in aliasesCN) {
+        for (var i = 0; i < aliasesCN[charset].length; i++) {
+            var cs = new Charset({
+                name: aliasesCN[charset][i]
+            });
+            assertNotUndefined(cs);
+            assertEquals(charset, cs.getName());
+        }
+    }
+}
 
 function testCharmapCNMapToUnicode() {
 	for (var charset in testDataCN) {

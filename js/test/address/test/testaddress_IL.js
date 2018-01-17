@@ -75,13 +75,14 @@ function testParseAddressILNoDelimiters() {
 	assertNotUndefined(parsedAddress);
 	assertEquals("R.O.Y. International PO Box 13056", parsedAddress.streetAddress);
 	assertEquals("TEL-AVIV", parsedAddress.locality);
-	assertEquals(parsedAddress.region);
+	assertUndefined(parsedAddress.region);
 	assertEquals("ISL-61130",parsedAddress.postalCode);
 	assertEquals("Israel", parsedAddress.country);
 	assertEquals("IL", parsedAddress.countryCode);
 };
 
-/*function testParseAddressILSpecialChars() {
+/*
+function testParseAddressILSpecialChars() {
 	var parsedAddress = new Address("Työpajankatu 13,IL-00580 Helsinki, Israel", {locale: 'he-IL'});
 	
 	assertNotUndefined(parsedAddress);
@@ -91,7 +92,8 @@ function testParseAddressILNoDelimiters() {
 	assertEquals("IL-00580",parsedAddress.postalCode);
 	assertEquals("Israel", parsedAddress.country);
 	assertEquals("IL", parsedAddress.countryCode);
-};*/
+};
+*/
 
 function testParseAddressILFromUS() {
 	var parsedAddress = new Address("R.O.Y. International\nPO Box 13056\nTEL-AVIV, Israel", {locale: 'en-US'});

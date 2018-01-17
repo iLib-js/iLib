@@ -136,7 +136,6 @@ function testDurFmtORFormatFull() {
 
 
 function testDurFmtORAsyncWithLocale() {
-	var callbackCalled = false;
     new DurationFmt({
     	locale: "or-IN",
     	length: "full",
@@ -154,15 +153,11 @@ function testDurFmtORAsyncWithLocale() {
     	    	second: 2
     	    });
     	    assertEquals("2 y, 2 m, 2 w, 2 d, 2 h, 2 min, 2 s", duration.toString());
-    	    callbackCalled = true;
     	}
     });
-    
-    assertTrue(callbackCalled);
 };
 
 function testDurFmtORFormatShortClockAsync() {
-	var callbackCalled = false;
     new DurationFmt({
     	locale: "or-IN",
     	length: "short",
@@ -181,8 +176,6 @@ function testDurFmtORFormatShortClockAsync() {
     	    	second: 1
     	    });
     	    assertEquals("1 y, 1 m, 1 w, 1 d, 1:01:01", duration.toString());
-    	    callbackCalled = true;
     	}
     });
-    assertTrue(callbackCalled);
 };

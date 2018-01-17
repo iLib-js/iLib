@@ -447,11 +447,7 @@ var DateFmt = function(options) {
 		loadParams = options.loadParams;
 	}
 
-	if (!DateFmt.cache) {
-		DateFmt.cache = {};
-	}
-
-	new LocaleInfo(this.locale, {
+		new LocaleInfo(this.locale, {
 		sync: sync,
 		loadParams: loadParams, 
 		onLoad: ilib.bind(this, function (li) {
@@ -498,7 +494,7 @@ var DateFmt = function(options) {
 					
 					if (!this.template) {
 						Utils.loadData({
-							object: DateFmt, 
+							object: "DateFmt", 
 							locale: this.locale, 
 							name: "dateformats.json", 
 							sync: sync, 
@@ -507,7 +503,7 @@ var DateFmt = function(options) {
 								var spec = this.locale.getSpec().replace(/-/g, '_');
 								if (!formats) {
 									formats = ilib.data.dateformats || DateFmt.defaultFmt;
-									DateFmt.cache[spec] = formats;
+									ilib.data.cache.DateFmt[spec] = formats;
 								}
 /*
 								if (!ilib.data.dateformats) {
@@ -703,6 +699,13 @@ DateFmt.prototype = {
 					this.template = this._getFormat(this.formats.time[this.clock], this.timeComponents, this.length);
 					break;
 			}
+			
+			// calculate what order the components appear in for this locale
+			this.componentOrder = this._getFormat(this.formats.date, "dmy", "l").
+			    replace(/[^dMy]/g, "").
+			    replace(/y+/, "y").
+			    replace(/d+/, "d").
+			    replace(/M+/, "m");
 		} else {
 			throw "No formats available for calendar " + this.calName + " in locale " + this.locale.toString();
 		}
@@ -904,6 +907,30 @@ DateFmt.prototype = {
 	 */
 	getTemplate: function() {
 		return this.template;
+	},
+	
+	/**
+	 * Return the order of the year, month, and date components for the current locale.<p>
+	 * 
+	 * When implementing a date input widget in a UI, it would be useful to know what
+	 * order to put the year, month, and date input fields so that it conforms to the
+	 * user expectations for the locale. This method gives that order by returning a
+	 * string that has a single "y", "m", and "d" character in it in the correct
+	 * order.<p>
+	 * 
+	 * For example, the return value "ymd" means that this locale formats the year first,
+	 * the month second, and the date third, and "mdy" means that the month is first,
+	 * the date is second, and the year is third. Four of the 6 possible permutations
+	 * of the three letters have at least one locale that uses that ordering, though some
+	 * combinations are far more likely than others. The ones that are not used by any 
+	 * locales are "dym" and "myd", though new locales are still being added to 
+	 * CLDR frequently, and possible orderings cannot be predicted. Your code should 
+	 * support all 6 possibilities, just in case.
+	 * 
+	 * @return {String} a string giving the date component order
+	 */
+	getDateComponentOrder: function() {
+	    return this.componentOrder;
 	},
 	
 	/**
@@ -1261,7 +1288,7 @@ DateFmt.prototype = {
 					str += JSUtils.pad(date.minute || "0", 2);
 					break;
 				case 's':
-					str += (date.minute || "0");
+					str += (date.second || "0");
 					break;
 				case 'ss':
 					str += JSUtils.pad(date.second || "0", 2);

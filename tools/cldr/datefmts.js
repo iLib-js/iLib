@@ -409,7 +409,7 @@ module.exports = {
         }
         
         for (var comp in group) {
-            if (comp && comp !== "data") {
+            if (comp && comp !== "data" && group[comp]) {
                 module.exports.mergeFormats(formats, group[comp], localeComponents.concat([comp]));
             }
         }

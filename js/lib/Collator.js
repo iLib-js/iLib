@@ -410,13 +410,10 @@ var Collator = function(options) {
 		}
 	} else {
 		//console.log("implemented in pure JS");
-		if (!Collator.cache) {
-			Collator.cache = {};
-		}
-
+		
 		// else implement in pure Javascript
 		Utils.loadData({
-			object: Collator, 
+			object: "Collator", 
 			locale: this.locale, 
 			name: "collation.json",
 			sync: sync,
@@ -425,7 +422,7 @@ var Collator = function(options) {
 				if (!collation) {
 					collation = ilib.data.collation;
 					var spec = this.locale.getSpec().replace(/-/g, '_');
-					Collator.cache[spec] = collation;
+					ilib.data.cache.Collator[spec] = collation;
 				}
 				this._init(collation);
 				new LocaleInfo(this.locale, {
@@ -534,7 +531,7 @@ Collator.prototype = {
     	for (var r in rules.map) {
     		if (r) {
     			this.map[r] = this._packRule(rules.map[r], start);
-    			p = typeof(rules.map[r][0]) === 'number' ? rules.map[r][0] : rules.map[r][0][0]; 
+    			p = typeof(rules.map[r][0]) === 'number' ? rules.map[r][0] : rules.map[r][0][0];
     			this.lastMap = Math.max(p + start, this.lastMap);
     		}
     	}
@@ -564,8 +561,10 @@ Collator.prototype = {
     	while (typeof(rule) === 'string') {
     		rule = rules[rule];
     	}
+
     	if (!rule) {
     		rule = "default";
+    		
         	while (typeof(rule) === 'string') {
         		rule = rules[rule];
         	}
@@ -583,9 +582,13 @@ Collator.prototype = {
     	this.map = {};
     	this.lastMap = -1;
     	this.keysize = this.collation.keysize[this.level-1];
+    	this.defaultRule = rules.default;
     	
     	if (typeof(this.collation.inherit) !== 'undefined') {
     		for (var i = 0; i < this.collation.inherit.length; i++) {
+    			if (this.collation.inherit === 'this') {
+    				continue;
+    			}
     			var col = this.collation.inherit[i];
     			rule = typeof(col) === 'object' ? col.name : col;
     			if (rules[rule]) {
@@ -781,6 +784,15 @@ Collator.getAvailableStyles = function (locale) {
  */
 Collator.getAvailableScripts = function () {
 	return [ "Latn" ];
+};
+
+
+/**
+ * Return a default collation style
+ *  
+ * @returns {string} default collation style such as 'latin', 'korean' etc */
+Collator.getDefaultCollatorStyle = function () {
+	return this.defaultRule;
 };
 
 module.exports = Collator;

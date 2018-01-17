@@ -38,7 +38,7 @@ var GlyphString = require("./GlyphString.js");
  * @param {string|IString=} str initialize this instance with this string 
  */
 var NormString = function (str) {
-	GlyphString.call(this, str);
+    GlyphString.call(this, str);
 };
 
 NormString.prototype = new GlyphString("", {noinstance:true});
@@ -67,53 +67,78 @@ NormString.prototype.constructor = NormString;
  * @param {Object} options an object containing properties that govern 
  * how to initialize the data
  */
+
 NormString.init = function(options) {
-	if (!ilib._load || (typeof(ilib._load) !== 'function' && typeof(ilib._load.loadFiles) !== 'function')) {
-		// can't do anything
-		return;
-	}
-	var form = "nfkc";
-	var script = "all";
-	var sync = true;
-	var onLoad = undefined;
-	var loadParams = undefined;
-	if (options) {
-		form = options.form || "nfkc";
-		script = options.script || "all";
-		sync = typeof(options.sync) !== 'undefined' ? options.sync : true;
-		onLoad = typeof(options.onLoad) === 'function' ? options.onLoad : undefined;
-		if (options.loadParams) {
-			loadParams = options.loadParams;
-		}
-	}
-	var formDependencies = {
-		"nfd": ["nfd"],
-		"nfc": ["nfd"],
-		"nfkd": ["nfkd", "nfd"],
-		"nfkc": ["nfkd", "nfd"]
-	};
-	var files = ["normdata.json"];
-	var forms = formDependencies[form];
-	for (var f in forms) {
-		files.push(forms[f] + "/" + script + ".json");
-	}
-	
-	if (JSUtils.isEmpty(ilib.data.norm.ccc) || JSUtils.isEmpty(ilib.data.norm.nfd) || JSUtils.isEmpty(ilib.data.norm.nfkd)) {
-		//console.log("loading files " + JSON.stringify(files));
-		Utils._callLoadData(files, sync, loadParams, function(arr) {
-			ilib.extend(ilib.data.norm, arr[0]);
-			for (var i = 1; i < arr.length; i++) {
-				if (typeof(arr[i]) !== 'undefined') {
-					ilib.extend(ilib.data.norm[forms[i-1]], arr[i]);
-				}
-			}
-			
-			if (onLoad) {
-				onLoad(arr);
-			}
-		});
-	}
-};
+    var form = "nfkc";
+    var script = "all";
+    var sync = true;
+    var loadParams = undefined;
+
+    if (options) {
+        if (options.form) {
+            form = options.form;
+        }
+        if (options.script) {
+            script = options.script;
+        }
+        if (options.loadParams) {
+            loadParams = options.loadParams;
+        }
+        if (typeof(options.sync) === 'boolean') {
+            sync = options.sync;
+        }
+    }
+
+    var formDependencies = {
+        "nfd": ["nfd"],
+        "nfc": ["nfd"],
+        "nfkd": ["nfkd", "nfd"],
+        "nfkc": ["nfkd", "nfd"]
+    };
+    var files = ["normdata.json"];
+    var forms = formDependencies[form];
+    for (var f in forms) {
+        files.push(forms[f] + "/" + script + ".json");
+    }
+
+    if (!ilib.data.norm || JSUtils.isEmpty(ilib.data.norm.ccc)) {
+        Utils.loadData({
+            object: "NormString",
+            name: "normdata.json",
+            locale: "-",
+            nonlocale: true,
+            sync: sync,
+            loadParams: loadParams,
+            callback: ilib.bind(this, function(normdata){
+                if (!normdata) {
+                    ilib.data.cache.normdata = normdata;
+                }
+    
+                if (JSUtils.isEmpty(ilib.data.norm.ccc) || JSUtils.isEmpty(ilib.data.norm.nfd) || JSUtils.isEmpty(ilib.data.norm.nfkd)) {
+                    //console.log("loading files " + JSON.stringify(files));
+                    Utils._callLoadData(files, sync, loadParams, function(arr) {
+                        ilib.extend(ilib.data.norm, arr[0]);
+                        for (var i = 1; i < arr.length; i++) {
+                            if (typeof(arr[i]) !== 'undefined') {
+                                ilib.extend(ilib.data.norm[forms[i-1]], arr[i]);
+                            }
+                        }
+                        if (options && typeof(options.onLoad) === 'function') {
+                           options.onLoad(this);
+                        }
+                    });
+                }
+                if (options && typeof(options.onLoad) === 'function') {
+                    options.onLoad(this);
+                }
+            })
+        })
+    } else {
+        if (options && typeof(options.onLoad) === 'function') {
+                options.onLoad(this);
+        }
+    }
+}
 
 /**
  * Algorithmically decompose a precomposed Korean syllabic Hangul 
@@ -126,14 +151,14 @@ NormString.init = function(options) {
  * @return {string} the decomposed string of Jamo characters
  */
 NormString._decomposeHangul = function (cp) {
-	var sindex = cp - 0xAC00;
-	var result = String.fromCharCode(0x1100 + sindex / 588) + 
-			String.fromCharCode(0x1161 + (sindex % 588) / 28);
-	var t = sindex % 28;
-	if (t !== 0) {
-		result += String.fromCharCode(0x11A7 + t);
-	}
-	return result;
+    var sindex = cp - 0xAC00;
+    var result = String.fromCharCode(0x1100 + sindex / 588) + 
+            String.fromCharCode(0x1161 + (sindex % 588) / 28);
+    var t = sindex % 28;
+    if (t !== 0) {
+        result += String.fromCharCode(0x11A7 + t);
+    }
+    return result;
 };
 
 /**
@@ -149,25 +174,25 @@ NormString._decomposeHangul = function (cp) {
  * @return {string} the mapped character
  */
 NormString._expand = function (ch, canon, compat) {
-	var i, 
-		expansion = "",
-		n = ch.charCodeAt(0);
-	if (GlyphString._isHangul(n)) {
-		expansion = NormString._decomposeHangul(n);
-	} else {
-		var result = canon[ch];
-		if (!result && compat) {
-			result = compat[ch];
-		}
-		if (result && result !== ch) {
-			for (i = 0; i < result.length; i++) {
-				expansion += NormString._expand(result[i], canon, compat);
-			}
-		} else {
-			expansion = ch;
-		}
-	}
-	return expansion;
+    var i, 
+        expansion = "",
+        n = ch.charCodeAt(0);
+    if (GlyphString._isHangul(n)) {
+        expansion = NormString._decomposeHangul(n);
+    } else {
+        var result = canon[ch];
+        if (!result && compat) {
+            result = compat[ch];
+        }
+        if (result && result !== ch) {
+            for (i = 0; i < result.length; i++) {
+                expansion += NormString._expand(result[i], canon, compat);
+            }
+        } else {
+            expansion = ch;
+        }
+    }
+    return expansion;
 };
 
 /**
@@ -313,164 +338,164 @@ NormString._expand = function (ch, canon, compat) {
  * according to the requested form. The current instance is not modified.
  */
 NormString.prototype.normalize = function (form) {
-	var i;
-	
-	if (typeof(form) !== 'string' || this.str.length === 0) {
-		return new IString(this.str);
-	}
-	
-	var nfc = false,
-		nfkd = false;
-	
-	switch (form) {
-	default:
-		break;
-		
-	case "nfc":
-		nfc = true;
-		break;
-		
-	case "nfkd":
-		nfkd = true;
-		break;
-		
-	case "nfkc":
-		nfkd = true;
-		nfc = true;
-		break;
-	}
+    var i;
+    
+    if (typeof(form) !== 'string' || this.str.length === 0) {
+        return new IString(this.str);
+    }
+    
+    var nfc = false,
+        nfkd = false;
+    
+    switch (form) {
+    default:
+        break;
+        
+    case "nfc":
+        nfc = true;
+        break;
+        
+    case "nfkd":
+        nfkd = true;
+        break;
+        
+    case "nfkc":
+        nfkd = true;
+        nfc = true;
+        break;
+    }
 
-	// decompose
-	var decomp = "";
-	
-	if (nfkd) {
-		var ch, it = IString.prototype.charIterator.call(this);
-		while (it.hasNext()) {
-			ch = it.next();
-			decomp += NormString._expand(ch, ilib.data.norm.nfd, ilib.data.norm.nfkd);
-		}
-	} else {
-		var ch, it = IString.prototype.charIterator.call(this);
-		while (it.hasNext()) {
-			ch = it.next();
-			decomp += NormString._expand(ch, ilib.data.norm.nfd);
-		}
-	}
+    // decompose
+    var decomp = "";
+    
+    if (nfkd) {
+        var ch, it = IString.prototype.charIterator.call(this);
+        while (it.hasNext()) {
+            ch = it.next();
+            decomp += NormString._expand(ch, ilib.data.norm.nfd, ilib.data.norm.nfkd);
+        }
+    } else {
+        var ch, it = IString.prototype.charIterator.call(this);
+        while (it.hasNext()) {
+            ch = it.next();
+            decomp += NormString._expand(ch, ilib.data.norm.nfd);
+        }
+    }
 
-	// now put the combining marks in a fixed order by 
-	// sorting on the combining class
-	function compareByCCC(left, right) {
-		return ilib.data.norm.ccc[left] - ilib.data.norm.ccc[right]; 
-	}
-	
-	function ccc(c) {
-		return ilib.data.norm.ccc[c] || 0;
-	}
+    // now put the combining marks in a fixed order by 
+    // sorting on the combining class
+    function compareByCCC(left, right) {
+        return ilib.data.norm.ccc[left] - ilib.data.norm.ccc[right]; 
+    }
+    
+    function ccc(c) {
+        return ilib.data.norm.ccc[c] || 0;
+    }
 
-	function sortChars(arr, comp) {
-		// qt/qml's Javascript engine re-arranges entries that are equal to
-		// each other. Technically, that is a correct behaviour, but it is
-		// not desirable. All the other engines leave equivalent entries
-		// where they are. This bubblesort emulates what the other engines
-		// do. Fortunately, the arrays we are sorting are a max of 5 or 6
-		// entries, so performance is not a big deal here.
-		if (ilib._getPlatform() === "qt") {
-			var tmp;
-			for (var i = arr.length-1; i > 0; i--) {
-				for (var j = 0; j < i; j++) {
-					if (comp(arr[j], arr[j+1]) > 0) {
-						tmp = arr[j];
-						arr[j] = arr[j+1];
-						arr[j+1] = tmp;
-					}
-				}
-			}
-			return arr;
-		} else {
-			return arr.sort(comp);
-		}
-	}
-		
-	var dstr = new IString(decomp);
-	var it = dstr.charIterator();
-	var cpArray = [];
+    function sortChars(arr, comp) {
+        // qt/qml's Javascript engine re-arranges entries that are equal to
+        // each other. Technically, that is a correct behaviour, but it is
+        // not desirable. All the other engines leave equivalent entries
+        // where they are. This bubblesort emulates what the other engines
+        // do. Fortunately, the arrays we are sorting are a max of 5 or 6
+        // entries, so performance is not a big deal here.
+        if (ilib._getPlatform() === "qt") {
+            var tmp;
+            for (var i = arr.length-1; i > 0; i--) {
+                for (var j = 0; j < i; j++) {
+                    if (comp(arr[j], arr[j+1]) > 0) {
+                        tmp = arr[j];
+                        arr[j] = arr[j+1];
+                        arr[j+1] = tmp;
+                    }
+                }
+            }
+            return arr;
+        } else {
+            return arr.sort(comp);
+        }
+    }
+        
+    var dstr = new IString(decomp);
+    var it = dstr.charIterator();
+    var cpArray = [];
 
-	// easier to deal with as an array of chars
-	while (it.hasNext()) {
-		cpArray.push(it.next());
-	}
-	
-	i = 0;
-	while (i < cpArray.length) {
-		if (typeof(ilib.data.norm.ccc[cpArray[i]]) !== 'undefined' && ccc(cpArray[i]) !== 0) {
-			// found a non-starter... rearrange all the non-starters until the next starter
-			var end = i+1;
-			while (end < cpArray.length &&
-					typeof(ilib.data.norm.ccc[cpArray[end]]) !== 'undefined' && 
-					ccc(cpArray[end]) !== 0) {
-				end++;
-			}
-			
-			// simple sort of the non-starter chars
-			if (end - i > 1) {
-				cpArray = cpArray.slice(0,i).concat(sortChars(cpArray.slice(i, end), compareByCCC), cpArray.slice(end));
-			}
-		}
-		i++;
-	}
-	
-	if (nfc) {
-		i = 0;
-		while (i < cpArray.length) {
-			if (typeof(ilib.data.norm.ccc[cpArray[i]]) === 'undefined' || ilib.data.norm.ccc[cpArray[i]] === 0) {
-				// found a starter... find all the non-starters until the next starter. Must include
-				// the next starter because under some odd circumstances, two starters sometimes recompose 
-				// together to form another character
-				var end = i+1;
-				var notdone = true;
-				while (end < cpArray.length && notdone) {
-					if (typeof(ilib.data.norm.ccc[cpArray[end]]) !== 'undefined' && 
-						ilib.data.norm.ccc[cpArray[end]] !== 0) {
-						if (ccc(cpArray[end-1]) < ccc(cpArray[end])) { 
-							// not blocked 
-							var testChar = GlyphString._compose(cpArray[i], cpArray[end]);
-							if (typeof(testChar) !== 'undefined') {
-								cpArray[i] = testChar;
-								
-								// delete the combining char
-								cpArray.splice(end,1);	
-								
-								// restart the iteration, just in case there is more to recompose with the new char
-								end = i;
-							}
-						}
-						end++;
-					} else {
-						// found the next starter. See if this can be composed with the previous starter
-						var testChar = GlyphString._compose(cpArray[i], cpArray[end]);
-						if (ccc(cpArray[end-1]) === 0 && typeof(testChar) !== 'undefined') { 
-							// not blocked and there is a mapping 
-							cpArray[i] = testChar;
-							
-							// delete the combining char
-							cpArray.splice(end,1);
-							
-							// restart the iteration, just in case there is more to recompose with the new char
-							end = i+1;
-						} else {
-							// finished iterating 
-							notdone = false;
-						}
-					}
-				}
-			}
-			i++;
-		}
-	}
-	
-	return new IString(cpArray.length > 0 ? cpArray.join("") : "");
+    // easier to deal with as an array of chars
+    while (it.hasNext()) {
+        cpArray.push(it.next());
+    }
+    
+    i = 0;
+    while (i < cpArray.length) {
+        if (typeof(ilib.data.norm.ccc[cpArray[i]]) !== 'undefined' && ccc(cpArray[i]) !== 0) {
+            // found a non-starter... rearrange all the non-starters until the next starter
+            var end = i+1;
+            while (end < cpArray.length &&
+                    typeof(ilib.data.norm.ccc[cpArray[end]]) !== 'undefined' && 
+                    ccc(cpArray[end]) !== 0) {
+                end++;
+            }
+            
+            // simple sort of the non-starter chars
+            if (end - i > 1) {
+                cpArray = cpArray.slice(0,i).concat(sortChars(cpArray.slice(i, end), compareByCCC), cpArray.slice(end));
+            }
+        }
+        i++;
+    }
+    
+    if (nfc) {
+        i = 0;
+        while (i < cpArray.length) {
+            if (typeof(ilib.data.norm.ccc[cpArray[i]]) === 'undefined' || ilib.data.norm.ccc[cpArray[i]] === 0) {
+                // found a starter... find all the non-starters until the next starter. Must include
+                // the next starter because under some odd circumstances, two starters sometimes recompose 
+                // together to form another character
+                var end = i+1;
+                var notdone = true;
+                while (end < cpArray.length && notdone) {
+                    if (typeof(ilib.data.norm.ccc[cpArray[end]]) !== 'undefined' && 
+                        ilib.data.norm.ccc[cpArray[end]] !== 0) {
+                        if (ccc(cpArray[end-1]) < ccc(cpArray[end])) { 
+                            // not blocked 
+                            var testChar = GlyphString._compose(cpArray[i], cpArray[end]);
+                            if (typeof(testChar) !== 'undefined') {
+                                cpArray[i] = testChar;
+                                
+                                // delete the combining char
+                                cpArray.splice(end,1);
+                                
+                                // restart the iteration, just in case there is more to recompose with the new char
+                                end = i;
+                            }
+                        }
+                        end++;
+                    } else {
+                        // found the next starter. See if this can be composed with the previous starter
+                        var testChar = GlyphString._compose(cpArray[i], cpArray[end]);
+                        if (ccc(cpArray[end-1]) === 0 && typeof(testChar) !== 'undefined') { 
+                            // not blocked and there is a mapping 
+                            cpArray[i] = testChar;
+                            
+                            // delete the combining char
+                            cpArray.splice(end,1);
+                            
+                            // restart the iteration, just in case there is more to recompose with the new char
+                            end = i+1;
+                        } else {
+                            // finished iterating 
+                            notdone = false;
+                        }
+                    }
+                }
+            }
+            i++;
+        }
+    }
+    
+    return new IString(cpArray.length > 0 ? cpArray.join("") : "");
 };
-	
+    
 /**
  * @override
  * Return an iterator that will step through all of the characters
@@ -500,63 +525,63 @@ NormString.prototype.normalize = function (form) {
  * that iterates through all the characters in the string
  */
 NormString.prototype.charIterator = function() {
-	var it = IString.prototype.charIterator.call(this);
-	
-	/**
-	 * @constructor
-	 */
-	function _chiterator (istring) {
-		/**
-		 * @private
-		 */
-		var ccc = function(c) {
-			return ilib.data.norm.ccc[c] || 0;
-		};
+    var it = IString.prototype.charIterator.call(this);
+    
+    /**
+     * @constructor
+     */
+    function _chiterator (istring) {
+        /**
+         * @private
+         */
+        var ccc = function(c) {
+            return ilib.data.norm.ccc[c] || 0;
+        };
 
-		this.index = 0;
-		this.hasNext = function () {
-			return !!this.nextChar || it.hasNext();
-		};
-		this.next = function () {
-			var ch = this.nextChar || it.next(),
-				prevCcc = ccc(ch),
-				nextCcc,
-				composed = ch;
-			
-			this.nextChar = undefined;
-			
-			if (ilib.data.norm.ccc && 
-					(typeof(ilib.data.norm.ccc[ch]) === 'undefined' || ccc(ch) === 0)) {
-				// found a starter... find all the non-starters until the next starter. Must include
-				// the next starter because under some odd circumstances, two starters sometimes recompose 
-				// together to form another character
-				var notdone = true;
-				while (it.hasNext() && notdone) {
-					this.nextChar = it.next();
-					nextCcc = ccc(this.nextChar);
-					if (typeof(ilib.data.norm.ccc[this.nextChar]) !== 'undefined' && nextCcc !== 0) {
-						ch += this.nextChar;
-						this.nextChar = undefined;
-					} else {
-						// found the next starter. See if this can be composed with the previous starter
-						var testChar = GlyphString._compose(composed, this.nextChar);
-						if (prevCcc === 0 && typeof(testChar) !== 'undefined') { 
-							// not blocked and there is a mapping 
-							composed = testChar;
-							ch += this.nextChar;
-							this.nextChar = undefined;
-						} else {
-							// finished iterating, leave this.nextChar for the next next() call 
-							notdone = false;
-						}
-					}
-					prevCcc = nextCcc;
-				}
-			}
-			return ch;
-		};
-	};
-	return new _chiterator(this);
+        this.index = 0;
+        this.hasNext = function () {
+            return !!this.nextChar || it.hasNext();
+        };
+        this.next = function () {
+            var ch = this.nextChar || it.next(),
+                prevCcc = ccc(ch),
+                nextCcc,
+                composed = ch;
+            
+            this.nextChar = undefined;
+            
+            if (ilib.data.norm.ccc && 
+                    (typeof(ilib.data.norm.ccc[ch]) === 'undefined' || ccc(ch) === 0)) {
+                // found a starter... find all the non-starters until the next starter. Must include
+                // the next starter because under some odd circumstances, two starters sometimes recompose 
+                // together to form another character
+                var notdone = true;
+                while (it.hasNext() && notdone) {
+                    this.nextChar = it.next();
+                    nextCcc = ccc(this.nextChar);
+                    if (typeof(ilib.data.norm.ccc[this.nextChar]) !== 'undefined' && nextCcc !== 0) {
+                        ch += this.nextChar;
+                        this.nextChar = undefined;
+                    } else {
+                        // found the next starter. See if this can be composed with the previous starter
+                        var testChar = GlyphString._compose(composed, this.nextChar);
+                        if (prevCcc === 0 && typeof(testChar) !== 'undefined') { 
+                            // not blocked and there is a mapping 
+                            composed = testChar;
+                            ch += this.nextChar;
+                            this.nextChar = undefined;
+                        } else {
+                            // finished iterating, leave this.nextChar for the next next() call 
+                            notdone = false;
+                        }
+                    }
+                    prevCcc = nextCcc;
+                }
+            }
+            return ch;
+        };
+    };
+    return new _chiterator(this);
 };
 
 module.exports = NormString;
