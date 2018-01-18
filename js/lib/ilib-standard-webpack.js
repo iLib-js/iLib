@@ -69,3 +69,4 @@ var LocaleInfo = require("./LocaleInfo.js");
 var DateRngFmt = require("./DateRngFmt.js");
 var ScriptInfo = require("./ScriptInfo.js");
 var CaseMapper = require("./CaseMapper.js");
+var ListFmt = require("./ListFmt.js");

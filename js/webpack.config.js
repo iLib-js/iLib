@@ -26,13 +26,23 @@ module.exports = {
         path: path.resolve(__dirname, 'output/js')
     },
     module: {
-        /*
         rules: [{
             test: /\.js$/, // Run the loader on all .js files
             exclude: /node_modules/, // ignore all files in the node_modules folder
-            use: path.resolve('lib/ilib-data-loader');
+            use: {
+                loader: path.resolve('./lib/ilibdata-webpack-loader.js'),
+                options: {
+                    locales: [
+                        "en-AU", "en-CA", "en-GB", "en-IN", "en-NG", "en-PH",
+                        "en-PK", "en-US", "en-ZA", "de-DE", "fr-CA", "fr-FR",
+                        "es-AR", "es-ES", "es-MX", "id-ID", "it-IT", "ja-JP",
+                        "ko-KR", "pt-BR", "ru-RU", "tr-TR", "vi-VN", "zxx-XX",
+                        "zh-Hans-CN", "zh-Hant-HK", "zh-Hant-TW", "zh-Hans-SG"
+                    ],
+                    presets: ['es2015']
+                }
+            }
         }]
-        */
     }
 /*
         plugins: [
