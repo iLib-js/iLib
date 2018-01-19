@@ -19,10 +19,11 @@
  * limitations under the License.
  */
 
-import { getOptions } from 'loader-utils'
-import validateOptions from 'schema-utils'
+const getOptions = require('loader-utils').getOptions;
+// import validateOptions from 'schema-utils';
 
 var path = require('path');
+var fs = require('fs');
 var Locale = require('./Locale.js');
 
 const schema = {
@@ -48,15 +49,7 @@ let macroPatternQuoted = /["']!macro\s*(\S*)["']/g;
  */
 function findLocaleData(datafiles, locales) {
     var output = "";
-
-    datafiles.forEach(function(filename) {
-        locales.forEach(function(locale) {
-            var pathname = path.join("data/locale", locale, filename + ".json");
-            if (fs.existsSync(pathname)) {
-                output += "ilib.data." + filename + "_" + locale.replace(/\//g, "_") + " = require('" + pathname + "');\n";
-            }
-        });
-    });
+    
 
     return output;
 }
@@ -69,13 +62,13 @@ function toArray(set) {
     return ret;
 }
 
-export default function loader(source) {
+var ilibDataLoader = function(source) {
     const options = getOptions(this);
     var match;
     var partial = source;
     var output = "";
 
-    validateOptions(schema, options, 'Ilib data loader');
+    // validateOptions(schema, options, 'Ilib data loader');
 
     // first find all the locale parts we need to search
     var locales = options.locales;
@@ -102,10 +95,26 @@ export default function loader(source) {
     // the locale data files they list there for the given locales
     dataPatternSlashStar.lastIndex = 0;
     while ((match = dataPatternSlashStar.exec(partial)) !== null) {
+        // console.log(">>>>>>>>>> found a match");
         var datafiles = match[1].split(/\s+/g);
         output += partial.substring(0, match.index);
-        output += findLocaleData(datafiles, locales);
-        partial = partial.substring(match.index + match.length);
+        datafiles.forEach(function(filename) {
+            locales.forEach(function(locale) {
+                var pathname = path.join("../data/locale", locale, filename + ".json");
+                if (fs.existsSync(pathname)) {
+                    var line = "ilib.data." + filename;
+                    if (locale !== ".") {
+                        line += "_" + locale.replace(/\//g, "_");
+                    } 
+                    line += " = require('" + pathname + "');\n";
+                    // console.log(">>>>>>>>>>>>> Adding line: " + line);
+                    output += line;
+                    this.addDependency(filename)
+                }
+            }.bind(this));
+        }.bind(this));
+
+        partial = partial.substring(match.index + match[0].length);
         dataPatternSlashStar.lastIndex = 0;
     }
 
@@ -114,14 +123,32 @@ export default function loader(source) {
 
     dataPatternSlashSlash.lastIndex = 0;
     while ((match = dataPatternSlashSlash.exec(partial)) !== null) {
+        // console.log(">>>>>>>>>> found a match2: " + JSON.stringify(match));
         var datafiles = match[1].split(/\s+/g);
         output += partial.substring(0, match.index);
-        output += findLocaleData(datafiles, locales);
-        partial = partial.substring(match.index + match.length);
+        datafiles.forEach(function(filename) {
+            locales.forEach(function(locale) {
+                var pathname = path.resolve(path.join("data/locale", locale, filename + ".json"));
+                if (fs.existsSync(pathname)) {
+                    var line = "ilib.data." + filename;
+                    if (locale !== ".") {
+                        line += "_" + locale.replace(/\//g, "_");
+                    } 
+                    line += " = require('" + pathname + "');\n";
+                    // console.log(">>>>>>>>>> Adding line: " + line);
+                    output += line;
+                    this.addDependency(filename)
+                }
+            }.bind(this));
+        }.bind(this));
+        partial = partial.substring(match.index + match[0].length);
         dataPatternSlashStar.lastIndex = 0;
     }
 
     output += partial;
 
+    // console.log("****************************************\nTransformed file to:\n" + output);
     return output;
 };
+
+module.exports = ilibDataLoader;
