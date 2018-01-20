@@ -126,6 +126,7 @@ var ilibDataLoader = function(source) {
         // console.log(">>>>>>>>>> found a match2: " + JSON.stringify(match));
         var datafiles = match[1].split(/\s+/g);
         output += partial.substring(0, match.index);
+        output += 'var ilib = require("./ilib.js");\n';
         datafiles.forEach(function(filename) {
             locales.forEach(function(locale) {
                 var pathname = path.resolve(path.join("data/locale", locale, filename + ".json"));

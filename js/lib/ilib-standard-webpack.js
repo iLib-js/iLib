@@ -18,55 +18,27 @@
  * limitations under the License.
  */
 
-/*
- * ilib-standard-webpack.js - metafile that includes a reasonable set of other js files
- */
+var ilib = require("./ilib.js");
+ilib.DateRngFmt = require("./DateRngFmt.js");
+ilib.IDate = require("./IDate.js");
+ilib.DateFactory = require("./DateFactory.js");
+ilib.GregorianCal = require("./GregorianCal.js");
+ilib.GregorianDate = require("./GregorianDate.js");
+ilib.INumber = require("./INumber.js");
+ilib.NumFmt = require("./NumFmt.js");
+ilib.JulianDay = require("./JulianDay.js");
+ilib.DateFmt = require("./DateFmt.js");
+ilib.Calendar = require("./Calendar.js");
+ilib.CalendarFactory = require("./CalendarFactory.js");
+ilib.Utils = require("./Utils.js");
+ilib.Locale = require("./Locale.js");
+ilib.IString = require("./IString.js");
+ilib.DurationFmt = require("./DurationFmt.js");
+ilib.ResBundle = require("./ResBundle.js");
+ilib.LocaleInfo = require("./LocaleInfo.js");
+ilib.DateRngFmt = require("./DateRngFmt.js");
+ilib.ScriptInfo = require("./ScriptInfo.js");
+ilib.CaseMapper = require("./CaseMapper.js");
+ilib.ListFmt = require("./ListFmt.js");
 
-/*
-require.ensure([
-	"./DateRngFmt.js",
-	"./IDate.js",
-	"./DateFactory.js",
-	"./GregorianCal.js",
-	"./GregorianDate.js",
-	"./INumber.js",
-	"./NumFmt.js",
-	"./JulianDay.js",
-	"./DateFmt.js",
-	"./Calendar.js",
-	"./CalendarFactory.js",
-	"./Utils.js",
-	"./Locale.js",
-	"./IString.js",
-	"./DurationFmt.js",
-	"./ResBundle.js",
-	"./LocaleInfo.js",
-	"./DateRngFmt.js",
-	"./ScriptInfo.js",
-	"./CaseMapper.js"
-], function(require) {
-	console.log("foo");
-}, "ilib");
-*/
-
-var DateRngFmt = require("./DateRngFmt.js");
-var IDate = require("./IDate.js");
-var DateFactory = require("./DateFactory.js");
-var GregorianCal = require("./GregorianCal.js");
-var GregorianDate = require("./GregorianDate.js");
-var INumber = require("./INumber.js");
-var NumFmt = require("./NumFmt.js");
-var JulianDay = require("./JulianDay.js");
-var DateFmt = require("./DateFmt.js");
-var Calendar = require("./Calendar.js");
-var CalendarFactory = require("./CalendarFactory.js");
-var Utils = require("./Utils.js");
-var Locale = require("./Locale.js");
-var IString = require("./IString.js");
-var DurationFmt = require("./DurationFmt.js");
-var ResBundle = require("./ResBundle.js");
-var LocaleInfo = require("./LocaleInfo.js");
-var DateRngFmt = require("./DateRngFmt.js");
-var ScriptInfo = require("./ScriptInfo.js");
-var CaseMapper = require("./CaseMapper.js");
-var ListFmt = require("./ListFmt.js");
+module.exports = ilib;
