@@ -1,7 +1,7 @@
 /*
- * webpack.config.js - configuration script for webpack
+ * webpack.config.js - webpack configuration script for ilib
  * 
- * Copyright © 2017, JEDLSoft
+ * Copyright © 2018, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,37 +18,77 @@
  */
 var webpack = require('webpack');
 var path = require('path');
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
-module.exports = {
-    entry: './lib/ilib-standard-webpack.js',
-    output: {
-        filename: 'ilib-standard.js',
-        path: path.resolve(__dirname, 'output/js')
-    },
-    module: {
-        rules: [{
+module.exports = function(env, args) {
+    var size, assembly, compilation, locales;
+    
+    if (size !== "core" && size !== "standard" && size !== "full") {
+        size = "standard";
+    }
+
+    if (assembly !== "dyn" && assembly !== "assembled") {
+        assembly = "assembled";
+    }
+    
+    if (compilation !== "compiled" && compilation !== "uncompiled") {
+        compilation = "uncompiled";
+    }
+    
+    var ret = {
+        entry: './lib/ilib-' + size + '-webpack.js',
+        output: {
+            filename: 'ilib-standard.js',
+            path: path.resolve(__dirname, 'output/js'),
+            library: 'ilib',
+            libraryTarget: 'umd'
+        },
+        module: {
+        }
+    };
+    
+    ret.output.filename = "ilib-" + size;
+    if (assembly === "dyn") {
+        ret.output.filename += "-dyn";
+    }
+    if (compilation === "compiled") {
+        ret.output.filename += "-compiled";
+    }
+    ret.output.filename += ".js";
+
+    if (!locales) {
+        // default locales: the top 20 locales by traffic on the Internet
+        locales = [
+            "en-AU", "en-CA", "en-GB", "en-IN", "en-NG", "en-PH",
+            "en-PK", "en-US", "en-ZA", "de-DE", "fr-CA", "fr-FR",
+            "es-AR", "es-ES", "es-MX", "id-ID", "it-IT", "ja-JP",
+            "ko-KR", "pt-BR", "ru-RU", "tr-TR", "vi-VN", "zxx-XX",
+            "zh-Hans-CN", "zh-Hant-HK", "zh-Hant-TW", "zh-Hans-SG"
+        ];
+    }
+    
+    if (assembly !== "dyn") {
+        // not dynamic -- then include all the locale data
+        ret.module.rules = [{
             test: /\.js$/, // Run the loader on all .js files
-            exclude: /node_modules/, // ignore all files in the node_modules folder
+            exclude: /(node_modules|webpack)/, // ignore all files in the node_modules or webpack folders
             use: {
                 loader: path.resolve('./lib/ilibdata-webpack-loader.js'),
                 options: {
-                    locales: [
-                        "en-AU", "en-CA", "en-GB", "en-IN", "en-NG", "en-PH",
-                        "en-PK", "en-US", "en-ZA", "de-DE", "fr-CA", "fr-FR",
-                        "es-AR", "es-ES", "es-MX", "id-ID", "it-IT", "ja-JP",
-                        "ko-KR", "pt-BR", "ru-RU", "tr-TR", "vi-VN", "zxx-XX",
-                        "zh-Hans-CN", "zh-Hant-HK", "zh-Hant-TW", "zh-Hans-SG"
-                    ],
-                    presets: ['es2015']
+                    locales: locales
                 }
             }
-        }]
+        }];
     }
-/*
-        plugins: [
-            new webpack.optimize.CommonsChunkPlugin({
-                name: 'ilib'
+    
+    if (compilation === "compiled") {
+        ret.module.plugins = [
+            new UglifyJsPlugin({
+                compress: true
             })
-        ]
-*/
+        ];
+    }
+    
+    //console.log("config is " + JSON.stringify(ret, undefined, 4));
+    return ret;
 };
