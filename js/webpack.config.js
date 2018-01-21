@@ -21,7 +21,11 @@ var path = require('path');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
 module.exports = function(env, args) {
-    var size, assembly, compilation, locales;
+    var size = args.env.size || "standard", 
+        assembly = args.env.assembly || "assembled", 
+        compilation = args.env.compilation || "uncompiled", 
+        locales;
+    
     
     if (size !== "core" && size !== "standard" && size !== "full") {
         size = "standard";
@@ -82,7 +86,7 @@ module.exports = function(env, args) {
     }
     
     if (compilation === "compiled") {
-        ret.module.plugins = [
+        ret.plugins = [
             new UglifyJsPlugin({
                 compress: true
             })
