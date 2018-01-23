@@ -53,7 +53,6 @@ Calendar.js
 CalendarFactory.js
 Utils.js
 Locale.js
-nfkc/all.js
 IString.js
 DurationFmt.js
 ResBundle.js

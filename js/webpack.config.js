@@ -24,19 +24,32 @@ module.exports = function(env, args) {
     var size = args.env.size || "standard", 
         assembly = args.env.assembly || "assembled", 
         compilation = args.env.compilation || "uncompiled", 
-        locales;
+        locales = args.env.locales;
     
-    
-    if (size !== "core" && size !== "standard" && size !== "full") {
+    // "ut" is unit tests
+    if (size !== "core" && size !== "standard" && size !== "full" && size !== "ut") {
         size = "standard";
     }
 
-    if (assembly !== "dyn" && assembly !== "assembled") {
+    if (assembly !== "dynamic" && assembly !== "assembled") {
         assembly = "assembled";
     }
     
     if (compilation !== "compiled" && compilation !== "uncompiled") {
         compilation = "uncompiled";
+    }
+
+    if (locales) {
+        locales = locales.split(",");
+    } else {
+        // default locales: the top 20 locales by traffic on the Internet
+        locales = [
+            "en-AU", "en-CA", "en-GB", "en-IN", "en-NG", "en-PH",
+            "en-PK", "en-US", "en-ZA", "de-DE", "fr-CA", "fr-FR",
+            "es-AR", "es-ES", "es-MX", "id-ID", "it-IT", "ja-JP",
+            "ko-KR", "pt-BR", "ru-RU", "tr-TR", "vi-VN", "zxx-XX",
+            "zh-Hans-CN", "zh-Hant-HK", "zh-Hant-TW", "zh-Hans-SG"
+        ];
     }
     
     var ret = {
@@ -52,7 +65,7 @@ module.exports = function(env, args) {
     };
     
     ret.output.filename = "ilib-" + size;
-    if (assembly === "dyn") {
+    if (assembly === "dynamic") {
         ret.output.filename += "-dyn";
     }
     if (compilation === "compiled") {
@@ -60,18 +73,7 @@ module.exports = function(env, args) {
     }
     ret.output.filename += ".js";
 
-    if (!locales) {
-        // default locales: the top 20 locales by traffic on the Internet
-        locales = [
-            "en-AU", "en-CA", "en-GB", "en-IN", "en-NG", "en-PH",
-            "en-PK", "en-US", "en-ZA", "de-DE", "fr-CA", "fr-FR",
-            "es-AR", "es-ES", "es-MX", "id-ID", "it-IT", "ja-JP",
-            "ko-KR", "pt-BR", "ru-RU", "tr-TR", "vi-VN", "zxx-XX",
-            "zh-Hans-CN", "zh-Hant-HK", "zh-Hant-TW", "zh-Hans-SG"
-        ];
-    }
-    
-    if (assembly !== "dyn") {
+    if (assembly !== "dynamic") {
         // not dynamic -- then include all the locale data
         ret.module.rules = [{
             test: /\.js$/, // Run the loader on all .js files
