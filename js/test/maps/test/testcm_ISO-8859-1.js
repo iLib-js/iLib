@@ -17,7 +17,7 @@
  * limitations under the License.
  */
 
-var CharmapFactory = require("./../lib/CharmapFactory.js");
+var CharmapFactory = require("../lib/CharmapFactory.js");
 
 function testCharmap88591LoadMap() {
 	var cm = CharmapFactory({

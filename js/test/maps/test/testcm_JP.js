@@ -18,8 +18,8 @@
  * limitations under the License.
  */
 
-var Charset = require("./../lib/Charset.js");
-var CharmapFactory = require("./../lib/CharmapFactory.js");
+var Charset = require("../lib/Charset.js");
+var CharmapFactory = require("../lib/CharmapFactory.js");
 
 var aliasesJP = {
     "Shift_JIS": [

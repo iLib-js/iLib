@@ -18,11 +18,11 @@
  */
 
 if (typeof(NumFmt) === "undefined") {
-    var NumFmt = require("../.././../lib/NumFmt.js");
+    var NumFmt = require("../../../lib/NumFmt.js");
 }
 
 if (typeof(ilib) === "undefined") {
-    var ilib = require("../../..");
+    var ilib = require("../../../lib/ilib.js");
 }
 
 module.exports.testnumfmt = {

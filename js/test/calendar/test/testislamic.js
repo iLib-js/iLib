@@ -17,7 +17,7 @@
  * limitations under the License.
  */
 
-var IslamicCal = require("./../lib/IslamicCal.js");
+var IslamicCal = require("../lib/IslamicCal.js");
 
 function testIslamicGetNumMonths() {
     var cal = new IslamicCal();

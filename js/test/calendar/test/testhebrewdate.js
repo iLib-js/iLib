@@ -17,7 +17,7 @@
  * limitations under the License.
  */
 
-var HebrewDate = require("./../lib/HebrewDate.js");
+var HebrewDate = require("../lib/HebrewDate.js");
 
 var testDatesHebrew = [
 //   jd         year   month  day  hour  minute  second  millisecond  dayofweek

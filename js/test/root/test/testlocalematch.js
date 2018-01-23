@@ -17,7 +17,7 @@
  * limitations under the License.
  */
 
-var LocaleMatcher = require("./../lib/LocaleMatcher.js");
+var LocaleMatcher = require("../lib/LocaleMatcher.js");
 
 function testLocaleMatcherConstructor() {
 	var loc = new LocaleMatcher();

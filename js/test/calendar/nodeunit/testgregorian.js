@@ -19,11 +19,11 @@
 
 
 if (typeof(GregorianCal) === "undefined") {
-    var GregorianCal = require("../.././../lib/GregorianCal.js");
+    var GregorianCal = require("../../../lib/GregorianCal.js");
 }
 
 if (typeof(ilib) === "undefined") {
-    var ilib = require("../../..");
+    var ilib = require("../../../lib/ilib.js");
 }
 
 module.exports.testgregorian = {

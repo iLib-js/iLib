@@ -17,7 +17,7 @@
  * limitations under the License.
  */
 
-var JulianDate = require("./../lib/JulianDate.js");
+var JulianDate = require("../lib/JulianDate.js");
 
 var testDatesJulian = [
 //   jd         year   month  day  hour  minute  second  millisecond  dayofweek

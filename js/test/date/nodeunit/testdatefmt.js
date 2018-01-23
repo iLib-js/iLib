@@ -18,31 +18,31 @@
  */
 
 if (typeof(ilib) === "undefined") {
-    var ilib = require("../../../lib/ilib-node.js");
+    var ilib = require("../../../lib/ilib.js");
 }
 if (typeof(ThaiSolarDate) === "undefined") {
-    var ThaiSolarDate = require("../.././../lib/ThaiSolarDate.js");
+    var ThaiSolarDate = require("../../../lib/ThaiSolarDate.js");
 }
 if (typeof(PersianDate) === "undefined") {
-    var PersianDate = require("../.././../lib/PersianDate.js");
+    var PersianDate = require("../../../lib/PersianDate.js");
 }
 if (typeof(IslamicDate) === "undefined") {
-    var IslamicDate = require("../.././../lib/IslamicDate.js");
+    var IslamicDate = require("../../../lib/IslamicDate.js");
 }
 if (typeof(HebrewDate) === "undefined") {
-    var HebrewDate = require("../.././../lib/HebrewDate.js");
+    var HebrewDate = require("../../../lib/HebrewDate.js");
 }
 if (typeof(GregorianDate) === "undefined") {
-    var GregorianDate = require("../.././../lib/GregorianDate.js");
+    var GregorianDate = require("../../../lib/GregorianDate.js");
 }
 if (typeof(JulianDate) === "undefined") {
-    var JulianDate = require("../.././../lib/JulianDate.js");
+    var JulianDate = require("../../../lib/JulianDate.js");
 }
 if (typeof(DateFmt) === "undefined") {
-    var DateFmt = require("../.././../lib/DateFmt.js");
+    var DateFmt = require("../../../lib/DateFmt.js");
 }
 if (typeof(DateFactory) === "undefined") {
-    var DateFactory = require("../.././../lib/DateFactory.js");
+    var DateFactory = require("../../../lib/DateFactory.js");
 }
 
 function mockLoaderDF(paths, sync, params, callback) {
@@ -63,10 +63,6 @@ function mockLoaderDF(paths, sync, params, callback) {
 }
 
 var oldLoader = ilib._load;
-
-if (typeof(ilib) === "undefined") {
-    var ilib = require("../../..");
-}
 
 module.exports.testdatefmt = {
     setUp: function(callback) {

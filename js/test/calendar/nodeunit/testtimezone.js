@@ -18,22 +18,22 @@
  */
 
 if (typeof(ilib) === "undefined") {
-    var ilib = require("../.././../lib/ilib-node.js");
+    var ilib = require("../../../lib/ilib.js");
 }
 if (typeof(TimeZone) === "undefined") {
-    var TimeZone = require("../.././../lib/TimeZone.js");
+    var TimeZone = require("../../../lib/TimeZone.js");
 }
 if (typeof(LocaleInfo) === "undefined") {
-    var LocaleInfo = require("../.././../lib/LocaleInfo.js");
+    var LocaleInfo = require("../../../lib/LocaleInfo.js");
 }
 if (typeof(IString) === "undefined") {
-    var IString = require("../.././../lib/IString.js");
+    var IString = require("../../../lib/IString.js");
 }
 if (typeof(GregorianDate) === "undefined") {
-    var GregorianDate = require("../.././../lib/GregorianDate.js");
+    var GregorianDate = require("../../../lib/GregorianDate.js");
 }
 if (typeof(DateFactory) === "undefined") {
-    var DateFactory = require("../.././../lib/DateFactory.js");
+    var DateFactory = require("../../../lib/DateFactory.js");
 }
 
 function getAvailableMocker(paths, sync, params, callback) {
@@ -104,10 +104,6 @@ function mockLoaderTZ2(paths, sync, params, callback) {
 }
 
 var oldLoader = ilib._load;
-
-if (typeof(ilib) === "undefined") {
-    var ilib = require("../../..");
-}
 
 module.exports.testtimezone = {
     setUp: function(callback) {

@@ -18,13 +18,13 @@
  */
 
 if (typeof(GregorianDate) === "undefined") {
-    var GregorianDate = require("../.././../lib/GregorianDate.js");
+    var GregorianDate = require("../../../lib/GregorianDate.js");
 }
 if (typeof(DateRngFmt) === "undefined") {
-    var DateRngFmt = require("../.././../lib/DateRngFmt.js");
+    var DateRngFmt = require("../../../lib/DateRngFmt.js");
 }
 if (typeof(ilib) === "undefined") {
-    var ilib = require("../../..");
+    var ilib = require("../../../lib/ilib.js");
 }
 
 module.exports.testdatefmtrange_sw_KE = {

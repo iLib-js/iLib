@@ -18,8 +18,8 @@
  * limitations under the License.
  */
 
-var Charset = require("./../lib/Charset.js");
-var CharmapFactory = require("./../lib/CharmapFactory.js");
+var Charset = require("../lib/Charset.js");
+var CharmapFactory = require("../lib/CharmapFactory.js");
 
 var aliasesCN = {
     "ISO-2022-CN-EXT": [

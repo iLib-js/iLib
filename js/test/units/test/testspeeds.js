@@ -17,7 +17,7 @@
  * limitations under the License.
  */
 
-var VelocityUnit = require("./../lib/VelocityUnit.js");
+var VelocityUnit = require("../lib/VelocityUnit.js");
 
 function testSpeedSpeedConstructor() {
 	var m = new VelocityUnit({

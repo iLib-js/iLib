@@ -18,21 +18,21 @@
  */
 
 if (typeof(PersianDate) === "undefined") {
-    var PersianDate = require("../.././../lib/PersianDate.js");
+    var PersianDate = require("../../../lib/PersianDate.js");
 }
 if (typeof(JulianDate) === "undefined") {
-    var JulianDate = require("../.././../lib/JulianDate.js");
+    var JulianDate = require("../../../lib/JulianDate.js");
 }
 if (typeof(GregorianDate) === "undefined") {
-    var GregorianDate = require("../.././../lib/GregorianDate.js");
+    var GregorianDate = require("../../../lib/GregorianDate.js");
 }
 if (typeof(DateFmt) === "undefined") {
-    var DateFmt = require("../.././../lib/DateFmt.js");
+    var DateFmt = require("../../../lib/DateFmt.js");
 }
 /* First, Gregorian. See the bottom for the Persian calendar tests */
 
 if (typeof(ilib) === "undefined") {
-    var ilib = require("../../..");
+    var ilib = require("../../../lib/ilib.js");
 }
 
 module.exports.testdatefmt_fa_IR = {

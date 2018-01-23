@@ -18,7 +18,7 @@
  */
 
 if (typeof(HebrewDate) === "undefined") {
-    var HebrewDate = require("../.././../lib/HebrewDate.js");
+    var HebrewDate = require("../../../lib/HebrewDate.js");
 }
 
 var testDatesHebrew = [
@@ -59,7 +59,7 @@ var testDatesHebrew = [
 ];
 
 if (typeof(ilib) === "undefined") {
-    var ilib = require("../../..");
+    var ilib = require("../../../lib/ilib.js");
 }
 
 module.exports.testhebrewdate = {

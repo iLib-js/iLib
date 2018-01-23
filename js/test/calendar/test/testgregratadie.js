@@ -17,9 +17,15 @@
  * limitations under the License.
  */
 
-var ilib = require("./../lib/ilib-node.js");
-var GregRataDie = require("./../lib/GregRataDie.js");
-var DateFactory = require("./../lib/DateFactory.js");
+if (typeof(ilib) === "undefined") {
+    var ilib = require("../lib/ilib.js");
+}
+if (typeof(GregRataDie) === "undefined") {
+    var GregRataDie = require("../lib/GregRataDie.js");
+}
+if (typeof(DateFactory) === "undefined") {
+    var DateFactory = require("../lib/DateFactory.js");
+}
 
 var testDatesGregRD = [
 //   jd         year   month  day  hour  minute  second  millisecond  dayofweek

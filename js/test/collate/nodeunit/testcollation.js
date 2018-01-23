@@ -18,7 +18,7 @@
  */
 
 if (typeof(ilib) === "undefined") {
-    var ilib = require("../../../lib/ilib-node.js");
+    var ilib = require("../../../lib/ilib.js");
 }
 if (typeof(ElementIterator) === "undefined") {
     var ElementIterator = require("../../../lib/ElementIterator.js");
@@ -28,10 +28,6 @@ if (typeof(Collator) === "undefined") {
 }
 if (typeof(CodePointSource) === "undefined") {
     var CodePointSource = require("../../../lib/CodePointSource.js");
-}
-
-if (typeof(ilib) === "undefined") {
-    var ilib = require("../../..");
 }
 
 module.exports.testcollation = {

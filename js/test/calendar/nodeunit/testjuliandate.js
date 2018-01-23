@@ -18,7 +18,7 @@
  */
 
 if (typeof(JulianDate) === "undefined") {
-    var JulianDate = require("../.././../lib/JulianDate.js");
+    var JulianDate = require("../../../lib/JulianDate.js");
 }
 
 var testDatesJulian = [
@@ -59,7 +59,7 @@ var testDatesJulian = [
 ];
 
 if (typeof(ilib) === "undefined") {
-    var ilib = require("../../..");
+    var ilib = require("../../../lib/ilib.js");
 }
 
 module.exports.testjuliandate = {

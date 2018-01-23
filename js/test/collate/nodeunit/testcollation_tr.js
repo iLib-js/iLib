@@ -18,13 +18,10 @@
  */
 
 if (typeof(ilib) === "undefined") {
-    var ilib = require("../../../lib/ilib-node.js");
+    var ilib = require("../../../lib/ilib.js");
 }
 if (typeof(Collator) === "undefined") {
     var Collator = require("../../../lib/Collator.js");
-}
-if (typeof(ilib) === "undefined") {
-    var ilib = require("../../..");
 }
 
 module.exports.testcollation_tr = {

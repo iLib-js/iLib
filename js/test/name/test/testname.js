@@ -17,7 +17,7 @@
  * limitations under the License.
  */
 
-var Name = require("./../lib/Name.js");
+var Name = require("../lib/Name.js");
 
 function testNameEmptyConstructor() {
     var name = new Name();

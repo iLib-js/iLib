@@ -17,8 +17,8 @@
  * limitations under the License.
  */
 
-var NameFmt = require("./../lib/NameFmt.js");
-var Name = require("./../lib/Name.js");
+var NameFmt = require("../lib/NameFmt.js");
+var Name = require("../lib/Name.js");
 function testParseSimpleNameEuro_ja_JP() {
 	var parsed = new Name("Takuya Kimura", {locale: 'ja-JP'});
 	assertNotUndefined(parsed);

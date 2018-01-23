@@ -18,8 +18,8 @@
  * limitations under the License.
  */
 
-var GregorianDate = require("./../lib/GregorianDate.js");
-var DateRngFmt = require("./../lib/DateRngFmt.js");
+var GregorianDate = require("../lib/GregorianDate.js");
+var DateRngFmt = require("../lib/DateRngFmt.js");
 function testDateRngFmtRangeinDayShort_bn_IN() {
     var fmt = new DateRngFmt({locale: "bn-IN", length: "short"});
     assertNotNull(fmt);

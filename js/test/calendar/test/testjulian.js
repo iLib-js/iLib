@@ -17,7 +17,7 @@
  * limitations under the License.
  */
 
-var JulianCal = require("./../lib/JulianCal.js");
+var JulianCal = require("../lib/JulianCal.js");
 
 function testJulianGetNumMonths() {
     var cal = new JulianCal();

@@ -17,8 +17,8 @@
  * limitations under the License.
  */
 
-var NameFmt = require("./../lib/NameFmt.js");
-var Name = require("./../lib/Name.js");
+var NameFmt = require("../lib/NameFmt.js");
+var Name = require("../lib/Name.js");
 function testDEParseSimpleName_bg_BG() {
 	var parsed = new Name("Мария Георгиева", {locale: 'bg-BG'});
 	assertNotUndefined(parsed);

@@ -17,9 +17,9 @@
  * limitations under the License.
  */
 
-var JulianDate = require("./../lib/JulianDate.js");
-var GregorianDate = require("./../lib/GregorianDate.js");
-var DateFmt = require("./../lib/DateFmt.js");
+var JulianDate = require("../lib/JulianDate.js");
+var GregorianDate = require("../lib/GregorianDate.js");
+var DateFmt = require("../lib/DateFmt.js");
 
 function testDateFmtConstructorEmpty_bs_Latn_BA() {
     var fmt = new DateFmt({locale: "bs-Latn-BA"});

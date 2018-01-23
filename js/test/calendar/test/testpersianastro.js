@@ -17,7 +17,7 @@
  * limitations under the License.
  */
 
-var PersianCal = require("./../lib/PersianCal.js");
+var PersianCal = require("../lib/PersianCal.js");
 
 function testPersianGetNumMonths() {
     var cal = new PersianCal();

@@ -17,7 +17,7 @@
  * limitations under the License.
  */
 
-var CopticCal = require("./../lib/CopticCal.js");
+var CopticCal = require("../lib/CopticCal.js");
 
 function testCopticGetNumMonths() {
 	var cal = new CopticCal();

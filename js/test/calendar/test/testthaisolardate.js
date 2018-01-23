@@ -17,7 +17,7 @@
  * limitations under the License.
  */
 
-var ThaiSolarDate = require("./../lib/ThaiSolarDate.js");
+var ThaiSolarDate = require("../lib/ThaiSolarDate.js");
 
 var testDates = [
 //   jd         year   month  day  hour  minute  second  millisecond  dayofweek

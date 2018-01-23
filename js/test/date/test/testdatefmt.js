@@ -17,15 +17,15 @@
  * limitations under the License.
  */
 
-var ilib = require("../lib/ilib-node.js");
-var ThaiSolarDate = require("./../lib/ThaiSolarDate.js");
-var PersianDate = require("./../lib/PersianDate.js");
-var IslamicDate = require("./../lib/IslamicDate.js");
-var HebrewDate = require("./../lib/HebrewDate.js");
-var GregorianDate = require("./../lib/GregorianDate.js");
-var JulianDate = require("./../lib/JulianDate.js");
-var DateFmt = require("./../lib/DateFmt.js");
-var DateFactory = require("./../lib/DateFactory.js");
+var ilib = require("../lib/ilib.js");
+var ThaiSolarDate = require("../lib/ThaiSolarDate.js");
+var PersianDate = require("../lib/PersianDate.js");
+var IslamicDate = require("../lib/IslamicDate.js");
+var HebrewDate = require("../lib/HebrewDate.js");
+var GregorianDate = require("../lib/GregorianDate.js");
+var JulianDate = require("../lib/JulianDate.js");
+var DateFmt = require("../lib/DateFmt.js");
+var DateFactory = require("../lib/DateFactory.js");
 
 function mockLoader(paths, sync, params, callback) {
     var data = [];

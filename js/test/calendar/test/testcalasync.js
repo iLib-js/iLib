@@ -17,7 +17,7 @@
  * limitations under the License.
  */
 
-var TimeZone = require("./../lib/TimeZone.js");
+var TimeZone = require("../lib/TimeZone.js");
 
 function testTZAsyncGetAvailableIds() {
     TimeZone.getAvailableIds(undefined, false, function(zones) {

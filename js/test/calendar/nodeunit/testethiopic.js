@@ -18,11 +18,11 @@
  */
 
 if (typeof(EthiopicCal) === "undefined") {
-    var EthiopicCal = require("../.././../lib/EthiopicCal.js");
+    var EthiopicCal = require("../../../lib/EthiopicCal.js");
 }
 
 if (typeof(ilib) === "undefined") {
-    var ilib = require("../../..");
+    var ilib = require("../../../lib/ilib.js");
 }
 
 module.exports.testethiopic = {

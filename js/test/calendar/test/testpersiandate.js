@@ -17,8 +17,8 @@
  * limitations under the License.
  */
 
-var PersianAlgoDate = require("./../lib/PersianAlgoDate.js");
-var PersAlgoRataDie = require("./../lib/PersAlgoRataDie.js");
+var PersianAlgoDate = require("../lib/PersianAlgoDate.js");
+var PersAlgoRataDie = require("../lib/PersAlgoRataDie.js");
 
 var testDatesPersAlgoPersian = [
 //   jd         year   month  day  hour  minute  second  millisecond  dayofweek

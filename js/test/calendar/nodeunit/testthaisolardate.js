@@ -18,7 +18,7 @@
  */
 
 if (typeof(ThaiSolarDate) === "undefined") {
-    var ThaiSolarDate = require("../.././../lib/ThaiSolarDate.js");
+    var ThaiSolarDate = require("../../../lib/ThaiSolarDate.js");
 }
 
 var testDates = [
@@ -59,7 +59,7 @@ var testDates = [
 ];
 
 if (typeof(ilib) === "undefined") {
-    var ilib = require("../../..");
+    var ilib = require("../../../lib/ilib.js");
 }
 
 module.exports.testthaisolardate = {

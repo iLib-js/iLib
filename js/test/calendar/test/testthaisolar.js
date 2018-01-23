@@ -17,7 +17,7 @@
  * limitations under the License.
  */
 
-var ThaiSolarCal = require("./../lib/ThaiSolarCal.js");
+var ThaiSolarCal = require("../lib/ThaiSolarCal.js");
 
 function testThaiSolarGetNumMonths() {
     var cal = new ThaiSolarCal();

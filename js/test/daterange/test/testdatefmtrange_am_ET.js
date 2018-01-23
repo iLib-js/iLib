@@ -17,8 +17,8 @@
  * limitations under the License.
  */
 
-var EthiopicDate = require("./../lib/EthiopicDate.js");
-var DateRngFmt = require("./../lib/DateRngFmt.js");
+var EthiopicDate = require("../lib/EthiopicDate.js");
+var DateRngFmt = require("../lib/DateRngFmt.js");
 function testDateRngFmtAMRangeInDayShort() {
     var fmt = new DateRngFmt({locale: "am-ET", length: "short"});
     assertNotNull(fmt);

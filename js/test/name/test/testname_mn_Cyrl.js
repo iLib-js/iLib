@@ -17,8 +17,8 @@
  * limitations under the License.
  */
 
-var NameFmt = require("./../lib/NameFmt.js");
-var Name = require("./../lib/Name.js");
+var NameFmt = require("../lib/NameFmt.js");
+var Name = require("../lib/Name.js");
 function testParseSimpleName_mn_Cyrl() {
 	var parsed = new Name("Цахиагийн Элбэгдорж", {locale: 'mn-Cyrl-MN'});
 	assertNotUndefined(parsed);

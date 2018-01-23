@@ -18,11 +18,11 @@
  */
 
 if (typeof(TimeZone) === "undefined") {
-    var TimeZone = require("../.././../lib/TimeZone.js");
+    var TimeZone = require("../../../lib/TimeZone.js");
 }
 
 if (typeof(ilib) === "undefined") {
-    var ilib = require("../../..");
+    var ilib = require("../../../lib/ilib.js");
 }
 
 module.exports.testcalasync = {

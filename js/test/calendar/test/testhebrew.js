@@ -17,7 +17,7 @@
  * limitations under the License.
  */
 
-var HebrewCal = require("./../lib/HebrewCal.js");
+var HebrewCal = require("../lib/HebrewCal.js");
 
 function testHebrewGetNumMonths() {
     var cal = new HebrewCal();

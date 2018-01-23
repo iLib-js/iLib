@@ -17,7 +17,7 @@
  * limitations under the License.
  */
 
-var JulianDay = require("./../lib/JulianDay.js");
+var JulianDay = require("../lib/JulianDay.js");
 
 function testJulianDayConstructor() {
     var jd = new JulianDay(1721791.25);  // jan 2, 2, 6:00pm

@@ -18,24 +18,20 @@
  */
 
 if (typeof(ilib) === "undefined") {
-    var ilib = require("../.././../lib/ilib-node.js");
+    var ilib = require("../../../lib/ilib.js");
 }
 if (typeof(NormString) === "undefined") {
-    var NormString = require("../.././../lib/NormString.js");
+    var NormString = require("../../../lib/NormString.js");
 }
 if (typeof(Locale) === "undefined") {
-    var Locale = require("../.././../lib/Locale.js");
+    var Locale = require("../../../lib/Locale.js");
 }
 if (typeof(IString) === "undefined") {
-    var IString = require("../.././../lib/IString.js");
+    var IString = require("../../../lib/IString.js");
 }
 
 function setUp() {
     ilib.locale = undefined;
-}
-
-if (typeof(ilib) === "undefined") {
-    var ilib = require("../../..");
 }
 
 module.exports.teststrings = {

@@ -18,10 +18,10 @@
  */
 
 if (typeof(HanRataDie) === "undefined") {
-    var HanRataDie = require("../.././../lib/HanRataDie.js");
+    var HanRataDie = require("../../../lib/HanRataDie.js");
 }
 if (typeof(HanDate) === "undefined") {
-    var HanDate = require("../.././../lib/HanDate.js");
+    var HanDate = require("../../../lib/HanDate.js");
 }
 
 var testDatesHan = [
@@ -62,7 +62,7 @@ var testDatesHan = [
 ];
 
 if (typeof(ilib) === "undefined") {
-    var ilib = require("../../..");
+    var ilib = require("../../../lib/ilib.js");
 }
 
 module.exports.testhandate = {

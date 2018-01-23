@@ -18,10 +18,10 @@
  */
 
 if (typeof(DurationFmt) === "undefined") {
-    var DurationFmt = require("../.././../lib/DurationFmt.js");
+    var DurationFmt = require("../../../lib/DurationFmt.js");
 }
 if (typeof(ilib) === "undefined") {
-    var ilib = require("../../..");
+    var ilib = require("../../../lib/ilib.js");
 }
 
 module.exports.testdurfmt_am_ET = {

@@ -18,11 +18,11 @@
  */
 
 if (typeof(INumber) === "undefined") {
-    var INumber = require("../.././../lib/INumber.js");
+    var INumber = require("../../../lib/INumber.js");
 }
 
 if (typeof(ilib) === "undefined") {
-    var ilib = require("../../..");
+    var ilib = require("../../../lib/ilib.js");
 }
 
 module.exports.testnumprs = {

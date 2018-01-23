@@ -18,11 +18,11 @@
  */
 
 if (typeof(JulianDay) === "undefined") {
-    var JulianDay = require("../.././../lib/JulianDay.js");
+    var JulianDay = require("../../../lib/JulianDay.js");
 }
 
 if (typeof(ilib) === "undefined") {
-    var ilib = require("../../..");
+    var ilib = require("../../../lib/ilib.js");
 }
 
 module.exports.testjulianday = {

@@ -17,11 +17,11 @@
  * limitations under the License.
  */
 
-var ilib = require("./../lib/ilib-node.js");
-var LocaleInfo = require("./../lib/LocaleInfo.js");
-var GregorianDate = require("./../lib/GregorianDate.js");
-var DateRngFmt = require("./../lib/DateRngFmt.js");
-var DateFmt = require("./../lib/DateFmt.js");
+var ilib = require("../lib/ilib.js");
+var LocaleInfo = require("../lib/LocaleInfo.js");
+var GregorianDate = require("../lib/GregorianDate.js");
+var DateRngFmt = require("../lib/DateRngFmt.js");
+var DateFmt = require("../lib/DateFmt.js");
 
 function mockLoader(paths, sync, params, callback) {
 	var data = [];

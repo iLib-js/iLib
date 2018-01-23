@@ -18,11 +18,11 @@
  */
 
 if (typeof(Country) === "undefined") {
-    var Country = require("../.././../lib/Country.js");
+    var Country = require("../../../lib/Country.js");
 }
 
 if (typeof(ilib) === "undefined") {
-    var ilib = require("../../..");
+    var ilib = require("../../../lib/ilib.js");
 }
 
 module.exports.testcountry = {

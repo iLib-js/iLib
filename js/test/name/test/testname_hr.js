@@ -17,8 +17,8 @@
  * limitations under the License.
  */
 
-var NameFmt = require("./../lib/NameFmt.js");
-var Name = require("./../lib/Name.js");
+var NameFmt = require("../lib/NameFmt.js");
+var Name = require("../lib/Name.js");
 function testParseSimpleName_hr_HR() {
 	var parsed = new Name("Antonio Pavlović", {locale: 'hr-HR'});
 	assertNotUndefined(parsed);

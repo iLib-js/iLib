@@ -18,11 +18,11 @@
  */
 
 if (typeof(IslamicCal) === "undefined") {
-    var IslamicCal = require("../.././../lib/IslamicCal.js");
+    var IslamicCal = require("../../../lib/IslamicCal.js");
 }
 
 if (typeof(ilib) === "undefined") {
-    var ilib = require("../../..");
+    var ilib = require("../../../lib/ilib.js");
 }
 
 module.exports.testislamic = {

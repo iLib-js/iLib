@@ -17,8 +17,8 @@
  * limitations under the License.
  */
 
-var ilib = require("./../lib/ilib-node.js");
-var Charset = require("./../lib/Charset.js");
+var ilib = require("../lib/ilib.js");
+var Charset = require("../lib/Charset.js");
 
 function testCharsetConstructor() {
 	var cs = new Charset();

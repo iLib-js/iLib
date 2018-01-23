@@ -17,8 +17,8 @@
  * limitations under the License.
  */
 
-var NameFmt = require("./../lib/NameFmt.js");
-var Name = require("./../lib/Name.js");
+var NameFmt = require("../lib/NameFmt.js");
+var Name = require("../lib/Name.js");
 function testParseSimpleName_ko_KR() {
 	var parsed = new Name("정훈교", {locale: 'ko-KR', order:"fmg"});
 	assertNotUndefined(parsed);

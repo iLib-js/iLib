@@ -17,8 +17,8 @@
  * limitations under the License.
  */
 
-var NameFmt = require("./../lib/NameFmt.js");
-var Name = require("./../lib/Name.js");
+var NameFmt = require("../lib/NameFmt.js");
+var Name = require("../lib/Name.js");
 function testParseSimpleName_bn_IN() {
 	var parsed = new Name("শশী ব্যানার্জী", {locale: 'bn-IN'});
 	assertNotUndefined(parsed);

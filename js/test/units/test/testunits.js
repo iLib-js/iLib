@@ -17,7 +17,7 @@
  * limitations under the License.
  */
 
-var MeasurementFactory = require("./../lib/MeasurementFactory.js");
+var MeasurementFactory = require("../lib/MeasurementFactory.js");
 
 function testMeasurementLength1() {
 	var measurement = MeasurementFactory({

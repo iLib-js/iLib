@@ -18,10 +18,10 @@
  */
 
 if (typeof(PersianDate) === "undefined") {
-    var PersianDate = require("../.././../lib/PersianDate.js");
+    var PersianDate = require("../../../lib/PersianDate.js");
 }
 if (typeof(PersRataDie) === "undefined") {
-    var PersRataDie = require("../.././../lib/PersRataDie.js");
+    var PersRataDie = require("../../../lib/PersRataDie.js");
 }
 
 var testDatesPersianPersianAstro = [
@@ -62,7 +62,7 @@ var testDatesPersianPersianAstro = [
 ];
 
 if (typeof(ilib) === "undefined") {
-    var ilib = require("../../..");
+    var ilib = require("../../../lib/ilib.js");
 }
 
 module.exports.testpersiandateastro = {

@@ -17,7 +17,7 @@
  * limitations under the License.
  */
 
-var ScriptInfo = require("./../lib/ScriptInfo.js");
+var ScriptInfo = require("../lib/ScriptInfo.js");
 function testScriptInfoConstructorEmptySubsequent(results) {
     new ScriptInfo();
 

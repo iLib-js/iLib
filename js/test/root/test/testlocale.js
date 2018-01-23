@@ -17,8 +17,8 @@
  * limitations under the License.
  */
 
-var ilib = require("./../lib/ilib-node.js");
-var Locale = require("./../lib/Locale.js");
+var ilib = require("../lib/ilib.js");
+var Locale = require("../lib/Locale.js");
 
 function testLocaleConstructor() {
     var loc = new Locale();

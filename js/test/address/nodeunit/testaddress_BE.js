@@ -27,7 +27,7 @@ if (typeof(AddressFmt) === "undefined") {
 // TODO: fill in Belgian addresses here
 
 if (typeof(ilib) === "undefined") {
-    var ilib = require("../../..");
+    var ilib = require("../../../lib/ilib.js");
 }
 
 module.exports.testaddress_BE = {

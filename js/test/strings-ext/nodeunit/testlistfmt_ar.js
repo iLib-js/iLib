@@ -18,14 +18,14 @@
  */
 
 if (typeof(ListFmt) === "undefined") {
-    var ListFmt = require("../.././../lib/ListFmt.js");
+    var ListFmt = require("../../../lib/ListFmt.js");
 }
 
 
 //// ar-EG
 
 if (typeof(ilib) === "undefined") {
-    var ilib = require("../../..");
+    var ilib = require("../../../lib/ilib.js");
 }
 
 module.exports.testlistfmt_ar = {

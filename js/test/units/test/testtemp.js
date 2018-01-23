@@ -17,7 +17,7 @@
  * limitations under the License.
  */
 
-var TemperatureUnit = require("./../lib/TemperatureUnit.js");
+var TemperatureUnit = require("../lib/TemperatureUnit.js");
 
 function testTemperatureConstructor() {
 	var m = new TemperatureUnit({

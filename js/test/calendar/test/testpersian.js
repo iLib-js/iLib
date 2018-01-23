@@ -17,7 +17,7 @@
  * limitations under the License.
  */
 
-var PersianAlgoCal = require("./../lib/PersianAlgoCal.js");
+var PersianAlgoCal = require("../lib/PersianAlgoCal.js");
 
 function testPersianAlgoGetNumMonths() {
     var cal = new PersianAlgoCal();

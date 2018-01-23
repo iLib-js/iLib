@@ -21,7 +21,7 @@
 // !dependencies: false
 
 if (typeof(ilib) === "undefined") {
-    var ilib = require("../.././../lib/ilib-node.js");
+    var ilib = require("../../../lib/ilib.js");
 }
 
 // make sure it thinks the current module's dir is the same as in the 
@@ -42,10 +42,6 @@ if (ilib._getPlatform() === "browser") {
 
 if (ilib.isDynCode() && typeof(path) === "undefined") {
     var path = require("path");
-}
-
-if (typeof(ilib) === "undefined") {
-    var ilib = require("../../..");
 }
 
 module.exports.testrequire = {

@@ -18,11 +18,11 @@
  */
 
 if (typeof(LocaleMatcher) === "undefined") {
-    var LocaleMatcher = require("../.././../lib/LocaleMatcher.js");
+    var LocaleMatcher = require("../../../lib/LocaleMatcher.js");
 }
 
 if (typeof(ilib) === "undefined") {
-    var ilib = require("../../..");
+    var ilib = require("../../../lib/ilib.js");
 }
 
 module.exports.testlocalematch = {

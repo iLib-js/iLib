@@ -17,8 +17,8 @@
  * limitations under the License.
  */
 
-var PhoneNumber = require("./../lib/PhoneNumber.js");
-var PhoneGeoLocator = require("./../lib/PhoneGeoLocator.js");
+var PhoneNumber = require("../lib/PhoneNumber.js");
+var PhoneGeoLocator = require("../lib/PhoneGeoLocator.js");
 function testRULocalNumber1() {
 	var parsed = new PhoneNumber("3456123",{locale: "ru-RU"});
 	var expected = {

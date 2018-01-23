@@ -17,12 +17,12 @@
  * limitations under the License.
  */
 
-var ilib = require("./../lib/ilib.js");
-var Utils = require("./../lib/Utils.js");
-var SearchUtils = require("./../lib/SearchUtils.js");
-var MathUtils = require("./../lib/MathUtils.js");
-var Locale = require("./../lib/Locale.js");
-var JSUtils = require("./../lib/JSUtils.js");
+var ilib = require("../lib/ilib.js");
+var Utils = require("../lib/Utils.js");
+var SearchUtils = require("../lib/SearchUtils.js");
+var MathUtils = require("../lib/MathUtils.js");
+var Locale = require("../lib/Locale.js");
+var JSUtils = require("../lib/JSUtils.js");
 
 function strcmp(left, right) {
     return left.localeCompare(right);

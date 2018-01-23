@@ -17,7 +17,7 @@
  * limitations under the License.
  */
 
-var Currency = require("./../lib/Currency.js");
+var Currency = require("../lib/Currency.js");
 function testCurrencyConstructorEmptyInitial(results) {
 	var tt = new TimedTest({
 		name: "Currency-dynamic-empty-initial",

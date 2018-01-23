@@ -17,7 +17,7 @@
  * limitations under the License.
  */
 
-var PhoneNumber = require("./../lib/PhoneNumber.js");
+var PhoneNumber = require("../lib/PhoneNumber.js");
 // for bug NOV-118901
 function testSGLocalNumber(){
 	var parsed = new PhoneNumber("93897077", {locale: "en-SG"});

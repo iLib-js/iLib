@@ -17,8 +17,8 @@
  * limitations unsr-Latnr the License.
  */
 
-var GregorianDate = require("./../lib/GregorianDate.js");
-var DateRngFmt = require("./../lib/DateRngFmt.js");
+var GregorianDate = require("../lib/GregorianDate.js");
+var DateRngFmt = require("../lib/DateRngFmt.js");
 
 function testDateRngFmtRSRangeInDayShort() {
     var fmt = new DateRngFmt({locale: "sr-Latn-RS", length: "short"});

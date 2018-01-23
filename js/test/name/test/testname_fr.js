@@ -17,8 +17,8 @@
  * limitations unfrr the License.
  */
 
-var NameFmt = require("./../lib/NameFmt.js");
-var Name = require("./../lib/Name.js");
+var NameFmt = require("../lib/NameFmt.js");
+var Name = require("../lib/Name.js");
 function testFRParseSimpleName() {
 	var parsed = new Name("Isabelle Antena", {locale: 'fr-FR'});
 	assertNotUndefined(parsed);

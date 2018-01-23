@@ -23,9 +23,6 @@ if (typeof(ilib) === "undefined") {
 if (typeof(Collator) === "undefined") {
     var Collator = require("../../../lib/Collator.js");
 }
-if (typeof(ilib) === "undefined") {
-    var ilib = require("../../..");
-}
 
 module.exports.testcollation_fi = {
     setUp: function(callback) {

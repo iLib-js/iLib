@@ -16,8 +16,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-var PhoneNumber = require("./../lib/PhoneNumber.js");
-var PhoneGeoLocator = require("./../lib/PhoneGeoLocator.js");
+var PhoneNumber = require("../lib/PhoneNumber.js");
+var PhoneGeoLocator = require("../lib/PhoneGeoLocator.js");
 /* Calling from US*/
 function testNANPUStoTaiwan() {
 	var parsed = new PhoneNumber("011 886 2 3210 3210");

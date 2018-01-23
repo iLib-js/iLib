@@ -17,7 +17,7 @@
  * limitations under the License.
  */
 
-var GregorianDate = require("./../lib/GregorianDate.js");
+var GregorianDate = require("../lib/GregorianDate.js");
 
 var testDatesGregorian = [
 //   jd         year   month  day  hour  minute  second  millisecond  dayofweek

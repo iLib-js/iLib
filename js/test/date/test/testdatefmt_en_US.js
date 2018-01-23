@@ -17,11 +17,11 @@
  * limitations under the License.
  */
 
-var JulianDate = require("./../lib/JulianDate.js");
-var IslamicDate = require("./../lib/IslamicDate.js");
-var HebrewDate = require("./../lib/HebrewDate.js");
-var GregorianDate = require("./../lib/GregorianDate.js");
-var DateFmt = require("./../lib/DateFmt.js");
+var JulianDate = require("../lib/JulianDate.js");
+var IslamicDate = require("../lib/IslamicDate.js");
+var HebrewDate = require("../lib/HebrewDate.js");
+var GregorianDate = require("../lib/GregorianDate.js");
+var DateFmt = require("../lib/DateFmt.js");
 function testDateFmtUSConstructorEmpty() {
     var fmt = new DateFmt();
     

@@ -17,8 +17,8 @@
  * limitations unuzr the License.
  */
 
-var GregorianDate = require("./../lib/GregorianDate.js");
-var DateRngFmt = require("./../lib/DateRngFmt.js");
+var GregorianDate = require("../lib/GregorianDate.js");
+var DateRngFmt = require("../lib/DateRngFmt.js");
 /*
  * testdatefmtrange_uz_Cyrl_UZ.js - test the date range formatter object in German/Germany
  * 

@@ -17,25 +17,27 @@
  * limitations under the License.
  */
 
-var isXdigit = require("./../lib/isXdigit.js");
-var isUpper = require("./../lib/isUpper.js");
-var isSpace = require("./../lib/isSpace.js");
-var isScript = require("./../lib/isScript.js");
-var isPunct = require("./../lib/isPunct.js");
-var isPrint = require("./../lib/isPrint.js");
-var isLower = require("./../lib/isLower.js");
-var isIdeo = require("./../lib/isIdeo.js");
-var isGraph = require("./../lib/isGraph.js");
-var isDigit = require("./../lib/isDigit.js");
-var isCntrl = require("./../lib/isCntrl.js");
-var isBlank = require("./../lib/isBlank.js");
-var isAscii = require("./../lib/isAscii.js");
-var isAlpha = require("./../lib/isAlpha.js");
-var isAlnum = require("./../lib/isAlnum.js");
-var ilib = require("./../lib/ilib-node.js");
-var Currency = require("./../lib/Currency.js");
-var CType = require("./../lib/CType.js");
-var IString = require("./../lib/IString.js");
+if (typeof(ilib) === "undefined") {
+    var isXdigit = require("../lib/isXdigit.js");
+    var isUpper = require("../lib/isUpper.js");
+    var isSpace = require("../lib/isSpace.js");
+    var isScript = require("../lib/isScript.js");
+    var isPunct = require("../lib/isPunct.js");
+    var isPrint = require("../lib/isPrint.js");
+    var isLower = require("../lib/isLower.js");
+    var isIdeo = require("../lib/isIdeo.js");
+    var isGraph = require("../lib/isGraph.js");
+    var isDigit = require("../lib/isDigit.js");
+    var isCntrl = require("../lib/isCntrl.js");
+    var isBlank = require("../lib/isBlank.js");
+    var isAscii = require("../lib/isAscii.js");
+    var isAlpha = require("../lib/isAlpha.js");
+    var isAlnum = require("../lib/isAlnum.js");
+    var ilib = require("../lib/ilib.js");
+    var Currency = require("../lib/Currency.js");
+    var CType = require("../lib/CType.js");
+    var IString = require("../lib/IString.js");
+}
 
 if (ilib.isDynData()) {
 	// now load the data

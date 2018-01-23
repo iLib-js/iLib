@@ -18,11 +18,11 @@
  */
 
 if (typeof(UnknownUnit) === "undefined") {
-    var UnknownUnit = require("../.././../lib/UnknownUnit.js");
+    var UnknownUnit = require("../../../lib/UnknownUnit.js");
 }
 
 if (typeof(ilib) === "undefined") {
-    var ilib = require("../../..");
+    var ilib = require("../../../lib/ilib.js");
 }
 
 module.exports.testUnknown = {

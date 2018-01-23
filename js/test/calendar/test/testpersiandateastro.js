@@ -17,8 +17,8 @@
  * limitations under the License.
  */
 
-var PersianDate = require("./../lib/PersianDate.js");
-var PersRataDie = require("./../lib/PersRataDie.js");
+var PersianDate = require("../lib/PersianDate.js");
+var PersRataDie = require("../lib/PersRataDie.js");
 
 var testDatesPersianPersianAstro = [
 //   jd         year   month  day  hour  minute  second  millisecond  dayofweek

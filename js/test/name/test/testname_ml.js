@@ -17,8 +17,8 @@
  * limitations under the License.
  */
 
-var NameFmt = require("./../lib/NameFmt.js");
-var Name = require("./../lib/Name.js");
+var NameFmt = require("../lib/NameFmt.js");
+var Name = require("../lib/Name.js");
 function testParseSimpleName_ml_IN() {
 	var parsed = new Name("മോഹന ലള", {locale: 'ml-IN'});
 	assertNotUndefined(parsed);

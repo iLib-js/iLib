@@ -17,8 +17,8 @@
  * limitations under the License.
  */
 
-var EthiopicRataDie = require("./../lib/EthiopicRataDie.js");
-var EthiopicDate = require("./../lib/EthiopicDate.js");
+var EthiopicRataDie = require("../lib/EthiopicRataDie.js");
+var EthiopicDate = require("../lib/EthiopicDate.js");
 
 var testDatesEthiopic = [
 //   jd         year   month  day  hour  minute  second  millisecond  dayofweek

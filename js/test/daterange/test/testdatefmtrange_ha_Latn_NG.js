@@ -19,8 +19,8 @@
 
 
 
-var GregorianDate = require("./../lib/GregorianDate.js");
-var DateRngFmt = require("./../lib/DateRngFmt.js");
+var GregorianDate = require("../lib/GregorianDate.js");
+var DateRngFmt = require("../lib/DateRngFmt.js");
 function testDateRngFmt_ha_Latn_NG_RangeInDayShort() {
     var fmt = new DateRngFmt({locale: "ha-Latn-NG", length: "short"});
     assertNotNull(fmt);

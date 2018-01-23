@@ -17,8 +17,8 @@
  * limitations under the License.
  */
 
-var NameFmt = require("./../lib/NameFmt.js");
-var Name = require("./../lib/Name.js");
+var NameFmt = require("../lib/NameFmt.js");
+var Name = require("../lib/Name.js");
 function testParseSimpleName_sk_SK() {
 	var parsed = new Name("Iveta Stan", {locale: 'sk-SK'});
 	assertNotUndefined(parsed);

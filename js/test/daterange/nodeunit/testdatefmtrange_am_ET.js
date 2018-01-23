@@ -18,13 +18,13 @@
  */
 
 if (typeof(EthiopicDate) === "undefined") {
-    var EthiopicDate = require("../.././../lib/EthiopicDate.js");
+    var EthiopicDate = require("../../../lib/EthiopicDate.js");
 }
 if (typeof(DateRngFmt) === "undefined") {
-    var DateRngFmt = require("../.././../lib/DateRngFmt.js");
+    var DateRngFmt = require("../../../lib/DateRngFmt.js");
 }
 if (typeof(ilib) === "undefined") {
-    var ilib = require("../../..");
+    var ilib = require("../../../lib/ilib.js");
 }
 
 module.exports.testdatefmtrange_am_ET = {

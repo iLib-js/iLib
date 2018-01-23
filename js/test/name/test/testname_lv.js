@@ -17,8 +17,8 @@
  * limitations under the License.
  */
 
-var NameFmt = require("./../lib/NameFmt.js");
-var Name = require("./../lib/Name.js");
+var NameFmt = require("../lib/NameFmt.js");
+var Name = require("../lib/Name.js");
 function testParseSimpleName_lv_LV() {
 	var parsed = new Name("Mikhail Baryshnikov", {locale: 'lv-LV'});
 	assertNotUndefined(parsed);

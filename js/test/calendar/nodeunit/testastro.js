@@ -18,13 +18,13 @@
  */
 
 if (typeof(ilib) === "undefined") {
-    var ilib = require("../.././../lib/ilib-node.js");
+    var ilib = require("../../../lib/ilib.js");
 }
 if (typeof(RataDie) === "undefined") {
-    var RataDie = require("../.././../lib/RataDie.js");
+    var RataDie = require("../../../lib/RataDie.js");
 }
 if (typeof(Astro) === "undefined") {
-    var Astro = require("../.././../lib/Astro.js");
+    var Astro = require("../../../lib/Astro.js");
 }
 
 var testDatesAstro1 = [
@@ -100,10 +100,6 @@ var testDatesAstro2 = [
     [ 2465737.5,    26.691871873059757,    926.9909681931562,    744300.1606587535,    744329.5731689292],
     [ 2486076.5,    175.5004873603607,    956.4193104167667,    764646.5662724614,    764676.191299815],
 ];
-
-if (typeof(ilib) === "undefined") {
-    var ilib = require("../../..");
-}
 
 module.exports.testastro = {
     setUp: function(callback) {

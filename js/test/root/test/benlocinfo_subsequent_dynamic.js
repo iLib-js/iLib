@@ -17,7 +17,7 @@
  * limitations under the License.
  */
 
-var LocaleInfo = require("./../lib/LocaleInfo.js");
+var LocaleInfo = require("../lib/LocaleInfo.js");
 function testLocaleInfoConstructorEmptySubsequent(results) {
     new LocaleInfo();	    
 

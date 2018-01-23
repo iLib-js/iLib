@@ -17,9 +17,15 @@
  * limitations under the License.
  */
 
-var ilib = require("./../lib/ilib-node.js");
-var CopticRataDie = require("./../lib/CopticRataDie.js");
-var CopticDate = require("./../lib/CopticDate.js");
+if (typeof(ilib) === "undefined") {
+    var ilib = require("../lib/ilib.js");
+}
+if (typeof(CopticRataDie) === "undefined") {
+    var CopticRataDie = require("../lib/CopticRataDie.js");
+}
+if (typeof(CopticDate) === "undefined") {
+    var CopticDate = require("../lib/CopticDate.js");
+}
 
 var testDatesCoptic = [
 //   jd         year   month  day  hour  minute  second  millisecond  dayofweek

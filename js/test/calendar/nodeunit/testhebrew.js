@@ -18,11 +18,11 @@
  */
 
 if (typeof(HebrewCal) === "undefined") {
-    var HebrewCal = require("../.././../lib/HebrewCal.js");
+    var HebrewCal = require("../../../lib/HebrewCal.js");
 }
 
 if (typeof(ilib) === "undefined") {
-    var ilib = require("../../..");
+    var ilib = require("../../../lib/ilib.js");
 }
 
 module.exports.testhebrew = {

@@ -18,11 +18,11 @@
  */
 
 if (typeof(CaseMapper) === "undefined") {
-    var CaseMapper = require("../.././../lib/CaseMapper.js");
+    var CaseMapper = require("../../../lib/CaseMapper.js");
 }
 
 if (typeof(ilib) === "undefined") {
-    var ilib = require("../../..");
+    var ilib = require("../../../lib/ilib.js");
 }
 
 module.exports.testtoupper = {

@@ -17,8 +17,8 @@
  * limitations under the License.
  */
 
-var NameFmt = require("./../lib/NameFmt.js");
-var Name = require("./../lib/Name.js");
+var NameFmt = require("../lib/NameFmt.js");
+var Name = require("../lib/Name.js");
 function testParseSimpleName_ga_IE() {
 	var parsed = new Name("Daniel O'Reilly", {locale: 'ga-IE'});
 	assertNotUndefined(parsed);

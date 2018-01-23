@@ -18,11 +18,11 @@
  */
 
 if (typeof(DigitalStorageUnit) === "undefined") {
-    var DigitalStorageUnit = require("../.././../lib/DigitalStorageUnit.js");
+    var DigitalStorageUnit = require("../../../lib/DigitalStorageUnit.js");
 }
 
 if (typeof(ilib) === "undefined") {
-    var ilib = require("../../..");
+    var ilib = require("../../../lib/ilib.js");
 }
 
 module.exports.testdigitalstoreage = {

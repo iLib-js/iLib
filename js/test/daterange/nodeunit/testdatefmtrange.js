@@ -18,19 +18,19 @@
  */
 
 if (typeof(ilib) === "undefined") {
-    var ilib = require("../.././../lib/ilib-node.js");
+    var ilib = require("../../../lib/ilib.js");
 }
 if (typeof(LocaleInfo) === "undefined") {
-    var LocaleInfo = require("../.././../lib/LocaleInfo.js");
+    var LocaleInfo = require("../../../lib/LocaleInfo.js");
 }
 if (typeof(GregorianDate) === "undefined") {
-    var GregorianDate = require("../.././../lib/GregorianDate.js");
+    var GregorianDate = require("../../../lib/GregorianDate.js");
 }
 if (typeof(DateRngFmt) === "undefined") {
-    var DateRngFmt = require("../.././../lib/DateRngFmt.js");
+    var DateRngFmt = require("../../../lib/DateRngFmt.js");
 }
 if (typeof(DateFmt) === "undefined") {
-    var DateFmt = require("../.././../lib/DateFmt.js");
+    var DateFmt = require("../../../lib/DateFmt.js");
 }
 
 function mockLoaderDRF(paths, sync, params, callback) {
@@ -52,10 +52,6 @@ function mockLoaderDRF(paths, sync, params, callback) {
         callback.call(this, data);    
     }
     return data;
-}
-
-if (typeof(ilib) === "undefined") {
-    var ilib = require("../../..");
 }
 
 var oldLoader = ilib._load;

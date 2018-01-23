@@ -17,7 +17,7 @@
  * limitations under the License.
  */
 
-var EnergyUnit = require("./../lib/EnergyUnit.js");
+var EnergyUnit = require("../lib/EnergyUnit.js");
 
 function testEnergyEnergyConstructor() {
 	var m = new EnergyUnit({

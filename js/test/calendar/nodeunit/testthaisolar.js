@@ -18,11 +18,11 @@
  */
 
 if (typeof(ThaiSolarCal) === "undefined") {
-    var ThaiSolarCal = require("../.././../lib/ThaiSolarCal.js");
+    var ThaiSolarCal = require("../../../lib/ThaiSolarCal.js");
 }
 
 if (typeof(ilib) === "undefined") {
-    var ilib = require("../../..");
+    var ilib = require("../../../lib/ilib.js");
 }
 
 module.exports.testthaisolar = {

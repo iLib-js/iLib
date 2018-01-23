@@ -18,11 +18,11 @@
  */
 
 if (typeof(CharmapFactory) === "undefined") {
-    var CharmapFactory = require("../.././../lib/CharmapFactory.js");
+    var CharmapFactory = require("../../../lib/CharmapFactory.js");
 }
 
 if (typeof(ilib) === "undefined") {
-    var ilib = require("../../..");
+    var ilib = require("../../../lib/ilib.js");
 }
 
 module.exports.testcm_UTF_16 = {

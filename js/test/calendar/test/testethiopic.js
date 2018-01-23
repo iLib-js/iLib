@@ -17,7 +17,7 @@
  * limitations under the License.
  */
 
-var EthiopicCal = require("./../lib/EthiopicCal.js");
+var EthiopicCal = require("../lib/EthiopicCal.js");
 
 function testEthiopicGetNumMonths() {
 	var cal = new EthiopicCal();

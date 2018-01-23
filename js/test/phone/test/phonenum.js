@@ -17,9 +17,9 @@
  * limitations under the License.
  */
 
-var ilib = require("./../lib/ilib-node.js");
-var PhoneNumber = require("./../lib/PhoneNumber.js");
-var PhoneHandlerFactory = require("./../lib/PhoneHandlerFactory.js");
+var ilib = require("../lib/ilib.js");
+var PhoneNumber = require("../lib/PhoneNumber.js");
+var PhoneHandlerFactory = require("../lib/PhoneHandlerFactory.js");
 function mockLoader(paths, sync, params, callback) {
 	var data = [];
 	

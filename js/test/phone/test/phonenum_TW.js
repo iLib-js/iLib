@@ -17,7 +17,7 @@
  * limitations under the License.
  */
 
-var PhoneNumber = require("./../lib/PhoneNumber.js");
+var PhoneNumber = require("../lib/PhoneNumber.js");
 function testParseTWFull(){
 	var parsed = new PhoneNumber("(039)606-5378", {locale: "zh-TW"});
 	assertNotUndefined(parsed);

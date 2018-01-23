@@ -18,11 +18,11 @@
  */
 
 if (typeof(JulianCal) === "undefined") {
-    var JulianCal = require("../.././../lib/JulianCal.js");
+    var JulianCal = require("../../../lib/JulianCal.js");
 }
 
 if (typeof(ilib) === "undefined") {
-    var ilib = require("../../..");
+    var ilib = require("../../../lib/ilib.js");
 }
 
 module.exports.testjulian = {

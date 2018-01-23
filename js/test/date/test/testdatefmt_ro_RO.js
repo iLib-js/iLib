@@ -20,9 +20,9 @@
 
 
 
-var JulianDate = require("./../lib/JulianDate.js");
-var GregorianDate = require("./../lib/GregorianDate.js");
-var DateFmt = require("./../lib/DateFmt.js");
+var JulianDate = require("../lib/JulianDate.js");
+var GregorianDate = require("../lib/GregorianDate.js");
+var DateFmt = require("../lib/DateFmt.js");
 function testDateFmtConstructorEmpty_ro_RO() {
     var fmt = new DateFmt({locale: "ro-RO"});
     

@@ -17,7 +17,7 @@
  * limitations under the License.
  */
 
-var CalendarFactory = require("./../lib/CalendarFactory.js");
+var CalendarFactory = require("../lib/CalendarFactory.js");
 
 function testCalendarFactoryDefault() {
     var cal = CalendarFactory();

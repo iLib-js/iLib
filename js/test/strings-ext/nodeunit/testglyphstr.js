@@ -18,11 +18,11 @@
  */
 
 if (typeof(GlyphString) === "undefined") {
-    var GlyphString = require("../.././../lib/GlyphString.js");
+    var GlyphString = require("../../../lib/GlyphString.js");
 }
 
 if (typeof(ilib) === "undefined") {
-    var ilib = require("../../..");
+    var ilib = require("../../../lib/ilib.js");
 }
 
 module.exports.testglyphstr = {

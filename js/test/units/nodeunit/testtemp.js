@@ -18,11 +18,11 @@
  */
 
 if (typeof(TemperatureUnit) === "undefined") {
-    var TemperatureUnit = require("../.././../lib/TemperatureUnit.js");
+    var TemperatureUnit = require("../../../lib/TemperatureUnit.js");
 }
 
 if (typeof(ilib) === "undefined") {
-    var ilib = require("../../..");
+    var ilib = require("../../../lib/ilib.js");
 }
 
 module.exports.testtemp = {

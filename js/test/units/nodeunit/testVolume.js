@@ -18,11 +18,11 @@
  */
 
 if (typeof(VolumeUnit) === "undefined") {
-    var VolumeUnit = require("../.././../lib/VolumeUnit.js");
+    var VolumeUnit = require("../../../lib/VolumeUnit.js");
 }
 
 if (typeof(ilib) === "undefined") {
-    var ilib = require("../../..");
+    var ilib = require("../../../lib/ilib.js");
 }
 
 module.exports.testVolume = {

@@ -18,7 +18,7 @@
  */
 
 
-var NumFmt = require("./../lib/NumFmt.js");
+var NumFmt = require("../lib/NumFmt.js");
 function testNumFmtNumberZAFormatNoFractionalLimit() {
 
     var fmt = new NumFmt({

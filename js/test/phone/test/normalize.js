@@ -17,9 +17,9 @@
  * limitations under the License.
  */
 
-var PhoneNumber = require("./../lib/PhoneNumber.js");
-var PhoneLocale = require("./../lib/PhoneLocale.js");
-var NumberingPlan = require("./../lib/NumberingPlan.js");
+var PhoneNumber = require("../lib/PhoneNumber.js");
+var PhoneLocale = require("../lib/PhoneLocale.js");
+var NumberingPlan = require("../lib/NumberingPlan.js");
 
 function testIDDPrefix() {
 	var parsed = new PhoneNumber("011 31 456 3453434", {locale: 'en-US'});

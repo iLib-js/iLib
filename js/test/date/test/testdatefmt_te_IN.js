@@ -16,9 +16,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-var JulianDate = require("./../lib/JulianDate.js");
-var GregorianDate = require("./../lib/GregorianDate.js");
-var DateFmt = require("./../lib/DateFmt.js");
+var JulianDate = require("../lib/JulianDate.js");
+var GregorianDate = require("../lib/GregorianDate.js");
+var DateFmt = require("../lib/DateFmt.js");
 function testDateFmtINConstructorEmpty_te_IN() {
     var fmt = new DateFmt({locale: "te-IN"});
     

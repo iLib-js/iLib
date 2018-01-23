@@ -17,8 +17,8 @@
  * limitations under the License.
  */
  
-var PhoneNumber = require("./../lib/PhoneNumber.js");
-var PhoneFmt = require("./../lib/PhoneFmt.js");
+var PhoneNumber = require("../lib/PhoneNumber.js");
+var PhoneFmt = require("../lib/PhoneFmt.js");
 function testFormatESStyle0(){
 	var formatted;
 	var parsed = new PhoneNumber({

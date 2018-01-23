@@ -17,10 +17,10 @@
  * limitations under the License.
  */
 
-var PersianDate = require("./../lib/PersianDate.js");
-var JulianDate = require("./../lib/JulianDate.js");
-var GregorianDate = require("./../lib/GregorianDate.js");
-var DateFmt = require("./../lib/DateFmt.js");
+var PersianDate = require("../lib/PersianDate.js");
+var JulianDate = require("../lib/JulianDate.js");
+var GregorianDate = require("../lib/GregorianDate.js");
+var DateFmt = require("../lib/DateFmt.js");
 /* First, Gregorian. See the bottom for the Persian calendar tests */
 
 function testDateFmtSimpleShort_fa_IR() {

@@ -17,8 +17,8 @@
  * limitations under the License.
  */
 
-var ilib = require("./../lib/ilib-node.js");
-var LocaleInfo = require("./../lib/LocaleInfo.js");
+var ilib = require("../lib/ilib.js");
+var LocaleInfo = require("../lib/LocaleInfo.js");
 ilib.data.plurals_en={one:{is:["n",1]}};
 ilib.data.plurals_de={one:{is:["n",1]}};
 ilib.data.plurals_fr={one:{and:[{within:["n",[[0,2]]]},{isnot:["n",2]}]}};

@@ -17,7 +17,7 @@
  * limitations under the License.
  */
 
-var Currency = require("./../lib/Currency.js");
+var Currency = require("../lib/Currency.js");
 function testCurrencyConstructorEmptySubsequent(results) {
     new Currency();
 

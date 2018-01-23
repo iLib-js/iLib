@@ -17,7 +17,7 @@
  * limitations under the License.
  */
 
-var IslamicDate = require("./../lib/IslamicDate.js");
+var IslamicDate = require("../lib/IslamicDate.js");
 
 var testDatesIslamic = [
 //   jd         year   month  day  hour  minute  second  millisecond  dayofweek

@@ -18,22 +18,22 @@
  */
 
 if (typeof(ilib) === "undefined") {
-    var ilib = require("../.././../lib/ilib.js");
+    var ilib = require("../../../lib/ilib.js");
 }
 if (typeof(Utils) === "undefined") {
-    var Utils = require("../.././../lib/Utils.js");
+    var Utils = require("../../../lib/Utils.js");
 }
 if (typeof(SearchUtils) === "undefined") {
-    var SearchUtils = require("../.././../lib/SearchUtils.js");
+    var SearchUtils = require("../../../lib/SearchUtils.js");
 }
 if (typeof(MathUtils) === "undefined") {
-    var MathUtils = require("../.././../lib/MathUtils.js");
+    var MathUtils = require("../../../lib/MathUtils.js");
 }
 if (typeof(Locale) === "undefined") {
-    var Locale = require("../.././../lib/Locale.js");
+    var Locale = require("../../../lib/Locale.js");
 }
 if (typeof(JSUtils) === "undefined") {
-    var JSUtils = require("../.././../lib/JSUtils.js");
+    var JSUtils = require("../../../lib/JSUtils.js");
 }
 
 function strcmp(left, right) {
@@ -117,10 +117,6 @@ function mockLoaderUtil(paths, sync, params, callback) {
     }
     
     return data;
-}
-
-if (typeof(ilib) === "undefined") {
-    var ilib = require("../../..");
 }
 
 var oldLoader = ilib._load;

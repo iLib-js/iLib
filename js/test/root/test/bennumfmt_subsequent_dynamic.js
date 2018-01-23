@@ -17,7 +17,7 @@
  * limitations under the License.
  */
 
-var NumFmt = require("./../lib/NumFmt.js");
+var NumFmt = require("../lib/NumFmt.js");
 function testNumFmtConstructorEmptySubsequent(results) {
     new NumFmt();
 

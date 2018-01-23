@@ -17,10 +17,18 @@
  * limitations under the License.
  */
 
-var ilib = require("./../lib/ilib-node.js");
-var RataDie = require("./../lib/RataDie.js");
-var HanCal = require("./../lib/HanCal.js");
-var Astro = require("./../lib/Astro.js");
+if (typeof(ilib) === "undefined") {
+    var ilib = require("../lib/ilib.js");
+}
+if (typeof(RataDie) === "undefined") {
+    var RataDie = require("../lib/RataDie.js");
+}
+if (typeof(HanCal) === "undefined") {
+    var HanCal = require("../lib/HanCal.js");
+}
+if (typeof(Astro) === "undefined") {
+    var Astro = require("../lib/Astro.js");
+}
 
 var testDatesChineseAstro1 = [
   	// jd			deg					current major ST	han next solar long.	current minor ST	minor ST on or aft

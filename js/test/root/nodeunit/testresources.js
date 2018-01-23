@@ -18,13 +18,13 @@
  */
 
 if (typeof(ilib) === "undefined") {
-    var ilib = require("../.././../lib/ilib-node.js");
+    var ilib = require("../../../lib/ilib.js");
 }
 if (typeof(ResBundle) === "undefined") {
-    var ResBundle = require("../.././../lib/ResBundle.js");
+    var ResBundle = require("../../../lib/ResBundle.js");
 }
 if (typeof(Locale) === "undefined") {
-    var Locale = require("../.././../lib/Locale.js");
+    var Locale = require("../../../lib/Locale.js");
 }
 
 ilib.data.strings = {
@@ -130,11 +130,6 @@ function mockLoaderRes(paths, sync, params, callback) {
     }
     return data;
 };
-
-
-if (typeof(ilib) === "undefined") {
-    var ilib = require("../../..");
-}
 
 var oldLoader = ilib._load;
 

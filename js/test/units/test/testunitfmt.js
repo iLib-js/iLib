@@ -17,8 +17,8 @@
  * limitations under the License.
  */
 
-var UnitFmt = require("./../lib/UnitFmt.js");
-var MeasurementFactory = require("./../lib/MeasurementFactory.js");
+var UnitFmt = require("../lib/UnitFmt.js");
+var MeasurementFactory = require("../lib/MeasurementFactory.js");
 
 function testUnitFormat1() {
 	var m = MeasurementFactory({

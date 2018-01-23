@@ -17,7 +17,7 @@
  * limitations under the License.
  */
 
-var PhoneNumber = require("./../lib/PhoneNumber.js");
+var PhoneNumber = require("../lib/PhoneNumber.js");
 
 function testKRIDDPrefix() {
 	var parsed = new PhoneNumber("001 31 456 3453434", {locale: 'ko-KR'});

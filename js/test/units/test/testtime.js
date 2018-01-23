@@ -17,7 +17,7 @@
  * limitations under the License.
  */
 
-var TimeUnit = require("./../lib/TimeUnit.js");
+var TimeUnit = require("../lib/TimeUnit.js");
 
 function testTimeTimeConstructor() {
 	var m = new TimeUnit({

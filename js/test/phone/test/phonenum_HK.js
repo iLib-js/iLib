@@ -17,7 +17,7 @@
  * limitations under the License.
  */
 
-var PhoneNumber = require("./../lib/PhoneNumber.js");
+var PhoneNumber = require("../lib/PhoneNumber.js");
 function testHKLocalNumber(){
 	var parsed = new PhoneNumber("23897077", {locale: "en-HK"});
 	assertNotUndefined(parsed);

@@ -17,10 +17,10 @@
  * limitations under the License.
  */
 
-var isSpace = require("./../lib/isSpace.js");
-var isDigit = require("./../lib/isDigit.js");
-var isAlpha = require("./../lib/isAlpha.js");
-var CType = require("./../lib/CType.js");
+var isSpace = require("../lib/isSpace.js");
+var isDigit = require("../lib/isDigit.js");
+var isAlpha = require("../lib/isAlpha.js");
+var CType = require("../lib/CType.js");
 function testCTypeLoaderL(results) {
 	CType._load("ctype_l", true);
 	

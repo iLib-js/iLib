@@ -18,11 +18,11 @@
  */
 
 if (typeof(FuelConsumptionUnit) === "undefined") {
-    var FuelConsumptionUnit = require("../.././../lib/FuelConsumptionUnit.js");
+    var FuelConsumptionUnit = require("../../../lib/FuelConsumptionUnit.js");
 }
 
 if (typeof(ilib) === "undefined") {
-    var ilib = require("../../..");
+    var ilib = require("../../../lib/ilib.js");
 }
 
 module.exports.testFuelConsumption = {

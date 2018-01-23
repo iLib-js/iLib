@@ -17,7 +17,7 @@
  * limitations under the License.
  */
 
-var GlyphString = require("./../lib/GlyphString.js");
+var GlyphString = require("../lib/GlyphString.js");
 
 function testCharIteratorNormal() {
 	var s = new GlyphString("aba");

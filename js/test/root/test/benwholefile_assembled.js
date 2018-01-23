@@ -17,7 +17,7 @@
  * limitations under the License.
  */
 
-var ilib = require("./../lib/ilib-node.js");
+var ilib = require("../lib/ilib.js");
 function testLoadWholeFileAssembledCore(results) {
 	var tt = new TimedTest({
 		name: "WholeFile-assembled-core",

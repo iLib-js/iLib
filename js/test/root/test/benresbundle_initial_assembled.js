@@ -17,8 +17,8 @@
  * limitations under the License.
  */
 
-var ilib = require("./../lib/ilib-node.js");
-var ResBundle = require("./../lib/ResBundle.js");
+var ilib = require("../lib/ilib.js");
+var ResBundle = require("../lib/ResBundle.js");
 ilib.data.strings = {
     "first string": "first",
     "second string": "second",

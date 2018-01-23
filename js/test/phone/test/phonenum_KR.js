@@ -17,7 +17,7 @@
  * limitations under the License.
  */
 
-var PhoneNumber = require("./../lib/PhoneNumber.js");
+var PhoneNumber = require("../lib/PhoneNumber.js");
 function testParseKRFull(){
 	var parsed = new PhoneNumber("02-1234-5678", {locale: "ko-KR"});
 	assertNotUndefined(parsed);

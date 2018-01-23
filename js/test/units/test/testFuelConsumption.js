@@ -17,7 +17,7 @@
  * limitations under the License.
  */
 
-var FuelConsumptionUnit = require("./../lib/FuelConsumptionUnit.js");
+var FuelConsumptionUnit = require("../lib/FuelConsumptionUnit.js");
 
 function testFuelConsumptionFuelConsumptionConstructor() {
 

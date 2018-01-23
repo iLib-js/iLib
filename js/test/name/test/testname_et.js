@@ -17,8 +17,8 @@
  * limitations under the License.
  */
 
-var NameFmt = require("./../lib/NameFmt.js");
-var Name = require("./../lib/Name.js");
+var NameFmt = require("../lib/NameFmt.js");
+var Name = require("../lib/Name.js");
 function testParseSimpleName_et_EE() {
 	var parsed = new Name("Kertu-Triin Sepp", {locale: 'et-EE'});
 	assertNotUndefined(parsed);

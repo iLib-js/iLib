@@ -17,8 +17,8 @@
  * limitations under the License.
  */
 
-var ThaiSolarDate = require("./../lib/ThaiSolarDate.js");
-var DateRngFmt = require("./../lib/DateRngFmt.js");
+var ThaiSolarDate = require("../lib/ThaiSolarDate.js");
+var DateRngFmt = require("../lib/DateRngFmt.js");
 function testDateRngFmtTHRangeInDayShort() {
     var fmt = new DateRngFmt({locale: "th-TH", calendar: "thaisolar", length: "short"});
     assertNotNull(fmt);

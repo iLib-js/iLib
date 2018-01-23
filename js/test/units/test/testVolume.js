@@ -17,7 +17,7 @@
  * limitations under the License.
  */
 
-var VolumeUnit = require("./../lib/VolumeUnit.js");
+var VolumeUnit = require("../lib/VolumeUnit.js");
 
 function testVolumeVolumeConstructor() {
 	var m = new VolumeUnit({

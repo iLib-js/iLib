@@ -17,8 +17,8 @@
  * limitations under the License.
  */
 
-var NameFmt = require("./../lib/NameFmt.js");
-var Name = require("./../lib/Name.js");
+var NameFmt = require("../lib/NameFmt.js");
+var Name = require("../lib/Name.js");
 function testESParseSimpleName() {
 	var parsed = new Name("Joaquin Cebolla", {locale: 'es-ES'});
 	assertNotUndefined(parsed);

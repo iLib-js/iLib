@@ -17,8 +17,8 @@
  * limitations under the License.
  */
 
-var PhoneNumber = require("./../lib/PhoneNumber.js");
-var PhoneGeoLocator = require("./../lib/PhoneGeoLocator.js");
+var PhoneNumber = require("../lib/PhoneNumber.js");
+var PhoneGeoLocator = require("../lib/PhoneGeoLocator.js");
 function testBRLocalNumber1() {
 	var parsed = new PhoneNumber("3111-1111",{locale: "pt-BR"});
 	var expected = {

@@ -17,9 +17,15 @@
  * limitations under the License.
  */
 
-var ilib = require("./../lib/ilib-node.js");
-var RataDie = require("./../lib/RataDie.js");
-var Astro = require("./../lib/Astro.js");
+if (typeof(ilib) === "undefined") {
+    var ilib = require("../lib/ilib.js");
+}
+if (typeof(RataDie) === "undefined") {
+    var RataDie = require("../lib/RataDie.js");
+}
+if (typeof(Astro) === "undefined") {
+    var Astro = require("../lib/Astro.js");
+}
 
 var testDatesAstro1 = [
    	// jd			ephemeris corr.			julian cent			nutation				aberration				solar long.

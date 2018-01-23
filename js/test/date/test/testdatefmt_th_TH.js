@@ -17,9 +17,9 @@
  * limitations under the License.
  */
 
-var ThaiSolarDate = require("./../lib/ThaiSolarDate.js");
-var JulianDate = require("./../lib/JulianDate.js");
-var DateFmt = require("./../lib/DateFmt.js");
+var ThaiSolarDate = require("../lib/ThaiSolarDate.js");
+var JulianDate = require("../lib/JulianDate.js");
+var DateFmt = require("../lib/DateFmt.js");
 function testDateFmtConstructorEmpty_th_TH() {
     var fmt = new DateFmt({locale: "th-TH"});
     

@@ -18,11 +18,11 @@
  */
 
 if (typeof(LengthUnit) === "undefined") {
-    var LengthUnit = require("../.././../lib/LengthUnit.js");
+    var LengthUnit = require("../../../lib/LengthUnit.js");
 }
 
 if (typeof(ilib) === "undefined") {
-    var ilib = require("../../..");
+    var ilib = require("../../../lib/ilib.js");
 }
 
 module.exports.testlengths = {

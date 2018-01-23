@@ -17,7 +17,7 @@
  * limitations under the License.
  */
 
-var ResBundle = require("./../lib/ResBundle.js");
+var ResBundle = require("../lib/ResBundle.js");
 function testResBundleConstructorRootInitial(results) {
 	var tt = new TimedTest({
 		name: "ResBundle-dynamic-root-initial",

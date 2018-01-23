@@ -17,8 +17,8 @@
  * limitations under the License.
  */
 
-var HanRataDie = require("./../lib/HanRataDie.js");
-var HanDate = require("./../lib/HanDate.js");
+var HanRataDie = require("../lib/HanRataDie.js");
+var HanDate = require("../lib/HanDate.js");
 
 var testDatesHan = [
 	// jd			cycle	year	month	day	isLeapYear	isLeapMonth	day of week

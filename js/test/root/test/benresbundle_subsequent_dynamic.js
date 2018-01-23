@@ -17,7 +17,7 @@
  * limitations under the License.
  */
 
-var ResBundle = require("./../lib/ResBundle.js");
+var ResBundle = require("../lib/ResBundle.js");
 function testResBundleConstructorRootSubsequent(results) {
 	new ResBundle({
 		name: "sysres"

@@ -18,11 +18,11 @@
  */
 
 if (typeof(MeasurementFactory) === "undefined") {
-    var MeasurementFactory = require("../.././../lib/MeasurementFactory.js");
+    var MeasurementFactory = require("../../../lib/MeasurementFactory.js");
 }
 
 if (typeof(ilib) === "undefined") {
-    var ilib = require("../../..");
+    var ilib = require("../../../lib/ilib.js");
 }
 
 module.exports.testunits = {

@@ -17,9 +17,9 @@
  * limitations under the License.
  */
 
-var PersianDate = require("./../lib/PersianDate.js");
-var GregorianDate = require("./../lib/GregorianDate.js");
-var DateRngFmt = require("./../lib/DateRngFmt.js");
+var PersianDate = require("../lib/PersianDate.js");
+var GregorianDate = require("../lib/GregorianDate.js");
+var DateRngFmt = require("../lib/DateRngFmt.js");
 /* These are the gregorian tests. For Persian calendar tests, see about
  * half way down the file. */
 

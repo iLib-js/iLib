@@ -18,11 +18,11 @@
  */
 
 if (typeof(Currency) === "undefined") {
-    var Currency = require("../.././../lib/Currency.js");
+    var Currency = require("../../../lib/Currency.js");
 }
 
 if (typeof(ilib) === "undefined") {
-    var ilib = require("../../..");
+    var ilib = require("../../../lib/ilib.js");
 }
 
 module.exports.testcurrency = {

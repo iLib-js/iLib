@@ -17,7 +17,7 @@
  * limitations under the License.
  */
 
-var PhoneNumber = require("./../lib/PhoneNumber.js");
+var PhoneNumber = require("../lib/PhoneNumber.js");
 
 function testJPIDDPrefix() {
 	var parsed = new PhoneNumber("010 31 456 3453434", {locale: 'ja-JP'});

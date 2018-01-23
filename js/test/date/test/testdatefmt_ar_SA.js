@@ -18,9 +18,9 @@
  */
 
 
-var JulianDate = require("./../lib/JulianDate.js");
-var GregorianDate = require("./../lib/GregorianDate.js");
-var DateFmt = require("./../lib/DateFmt.js");
+var JulianDate = require("../lib/JulianDate.js");
+var GregorianDate = require("../lib/GregorianDate.js");
+var DateFmt = require("../lib/DateFmt.js");
 function testDateFmtSimpleShort_ar_SA() {
     var fmt = new DateFmt({locale: "ar-SA", length: "short"});
     assertNotNull(fmt);

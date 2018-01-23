@@ -18,8 +18,8 @@
  */
 
 
-var NameFmt = require("./../lib/NameFmt.js");
-var Name = require("./../lib/Name.js");
+var NameFmt = require("../lib/NameFmt.js");
+var Name = require("../lib/Name.js");
 function testParseSimpleName_cs_CZ() {
 	var parsed = new Name("Yana Synkova", {locale: 'cs-CZ'});
 	assertNotUndefined(parsed);

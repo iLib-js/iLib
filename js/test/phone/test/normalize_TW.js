@@ -17,7 +17,7 @@
  * limitations under the License.
  */
 
-var PhoneNumber = require("./../lib/PhoneNumber.js");
+var PhoneNumber = require("../lib/PhoneNumber.js");
 
 function testTWIDDPrefix() {
 	var parsed = new PhoneNumber("002 31 456 3453434", {locale: 'zh-TW'});

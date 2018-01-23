@@ -17,7 +17,7 @@
  * limitations under the License.
  */
 
-var CaseMapper = require("./../lib/CaseMapper.js");
+var CaseMapper = require("../lib/CaseMapper.js");
 
 function testToLowerFromLower_default() {
 	var mapper = new CaseMapper({

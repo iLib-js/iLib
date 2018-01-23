@@ -17,7 +17,7 @@
  * limitations under the License.
  */
 
-var DurationFmt = require("./../lib/DurationFmt.js");
+var DurationFmt = require("../lib/DurationFmt.js");
 function testDurFmtAZFormatShortDefaultStyle() {
     var fmt = new DurationFmt({
         locale: "az-Latn-AZ",

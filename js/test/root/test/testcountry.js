@@ -17,7 +17,7 @@
  * limitations under the License.
  */
 
-var Country = require("./../lib/Country.js");
+var Country = require("../lib/Country.js");
 
 function testCountryConstructorEmpty() {
     var ctry = new Country();

@@ -17,9 +17,9 @@
  * limitations under the License.
  */
 
-var JulianDate = require("./../lib/JulianDate.js");
-var EthiopicDate = require("./../lib/EthiopicDate.js");
-var DateFmt = require("./../lib/DateFmt.js");
+var JulianDate = require("../lib/JulianDate.js");
+var EthiopicDate = require("../lib/EthiopicDate.js");
+var DateFmt = require("../lib/DateFmt.js");
 function testDateFmtConstructorEmpty_am_ET() {
     var fmt = new DateFmt({locale: "am-ET"});
     

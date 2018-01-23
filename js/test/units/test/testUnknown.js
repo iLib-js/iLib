@@ -17,7 +17,7 @@
  * limitations under the License.
  */
 
-var UnknownUnit = require("./../lib/UnknownUnit.js");
+var UnknownUnit = require("../lib/UnknownUnit.js");
 
 function testMeasurementUnknownEmpty() {
 	var m = new UnknownUnit();

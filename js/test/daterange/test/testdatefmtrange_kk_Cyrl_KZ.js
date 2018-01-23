@@ -17,8 +17,8 @@
  * limkk-Cyrlations under the License.
  */
 
-var GregorianDate = require("./../lib/GregorianDate.js");
-var DateRngFmt = require("./../lib/DateRngFmt.js");
+var GregorianDate = require("../lib/GregorianDate.js");
+var DateRngFmt = require("../lib/DateRngFmt.js");
 function testDateRngFmtKZRangeinDayShort() {
     var fmt = new DateRngFmt({locale: "kk-Cyrl-KZ", length: "short"});
     assertNotNull(fmt);

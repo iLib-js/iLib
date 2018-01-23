@@ -17,7 +17,7 @@
  * limitations under the License.
  */
 
-var NumFmt = require("./../lib/NumFmt.js");
+var NumFmt = require("../lib/NumFmt.js");
 function testNumFmtConstructorEmptyInitial(results) {
 	var tt = new TimedTest({
 		name: "NumFmt-dynamic-empty-initial",

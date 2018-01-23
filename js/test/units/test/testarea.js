@@ -17,7 +17,7 @@
  * limitations under the License.
  */
 
-var AreaUnit = require("./../lib/AreaUnit.js");
+var AreaUnit = require("../lib/AreaUnit.js");
 
 function testAreaAreaConstructor() {
 

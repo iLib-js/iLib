@@ -17,8 +17,8 @@
  * limitations under the License.
  */
 
-var NameFmt = require("./../lib/NameFmt.js");
-var Name = require("./../lib/Name.js");
+var NameFmt = require("../lib/NameFmt.js");
+var Name = require("../lib/Name.js");
 function testParseSimpleName_sl_SI() {
 	var parsed = new Name("Melania Trump", {locale: 'sl-SI'});
 	assertNotUndefined(parsed);

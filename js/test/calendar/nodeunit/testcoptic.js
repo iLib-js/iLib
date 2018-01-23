@@ -18,11 +18,11 @@
  */
 
 if (typeof(CopticCal) === "undefined") {
-    var CopticCal = require("../.././../lib/CopticCal.js");
+    var CopticCal = require("../../../lib/CopticCal.js");
 }
 
 if (typeof(ilib) === "undefined") {
-    var ilib = require("../../..");
+    var ilib = require("../../../lib/ilib.js");
 }
 
 module.exports.testcoptic = {

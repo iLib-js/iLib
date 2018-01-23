@@ -17,8 +17,8 @@
  * limitations under the License.
  */
 
-var NameFmt = require("./../lib/NameFmt.js");
-var Name = require("./../lib/Name.js");
+var NameFmt = require("../lib/NameFmt.js");
+var Name = require("../lib/Name.js");
 function testParseSimpleName_sr_Cyrl_RS() {
 	var parsed = new Name("Александар Дероко", {locale: 'sr-Cyrl-RS'});
 	assertNotUndefined(parsed);

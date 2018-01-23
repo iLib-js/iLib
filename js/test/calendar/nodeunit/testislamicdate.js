@@ -18,7 +18,7 @@
  */
 
 if (typeof(IslamicDate) === "undefined") {
-    var IslamicDate = require("../.././../lib/IslamicDate.js");
+    var IslamicDate = require("../../../lib/IslamicDate.js");
 }
 
 var testDatesIslamic = [
@@ -59,7 +59,7 @@ var testDatesIslamic = [
 ];
 
 if (typeof(ilib) === "undefined") {
-    var ilib = require("../../..");
+    var ilib = require("../../../lib/ilib.js");
 }
 
 module.exports.testislamicdate = {

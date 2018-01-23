@@ -18,17 +18,17 @@
  */
 
 if (typeof(PhoneNumber) === "undefined") {
-    var PhoneNumber = require("../.././../lib/PhoneNumber.js");
+    var PhoneNumber = require("../../../lib/PhoneNumber.js");
 }
 if (typeof(PhoneLocale) === "undefined") {
-    var PhoneLocale = require("../.././../lib/PhoneLocale.js");
+    var PhoneLocale = require("../../../lib/PhoneLocale.js");
 }
 if (typeof(NumberingPlan) === "undefined") {
-    var NumberingPlan = require("../.././../lib/NumberingPlan.js");
+    var NumberingPlan = require("../../../lib/NumberingPlan.js");
 }
 
 if (typeof(ilib) === "undefined") {
-    var ilib = require("../../..");
+    var ilib = require("../../../lib/ilib.js");
 }
 
 module.exports.normalize = {

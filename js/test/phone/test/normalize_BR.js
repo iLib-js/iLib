@@ -17,7 +17,7 @@
  * limitations under the License.
  */
 
-var PhoneNumber = require("./../lib/PhoneNumber.js");
+var PhoneNumber = require("../lib/PhoneNumber.js");
 
 function testBRIDDPrefix() {
 	var parsed = new PhoneNumber("00 14 31 55 345 343", {locale: 'pt-BR'});

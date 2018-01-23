@@ -17,8 +17,8 @@
  * limitations under the License.
  */
 
-var NameFmt = require("./../lib/NameFmt.js");
-var Name = require("./../lib/Name.js");
+var NameFmt = require("../lib/NameFmt.js");
+var Name = require("../lib/Name.js");
 function testParseSimpleName_el_GR() {
 	var parsed = new Name("Νικόλαος Αλεξόπουλος", {locale: 'el-GR'});
 	assertNotUndefined(parsed);

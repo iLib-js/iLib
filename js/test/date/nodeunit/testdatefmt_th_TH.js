@@ -18,16 +18,16 @@
  */
 
 if (typeof(ThaiSolarDate) === "undefined") {
-    var ThaiSolarDate = require("../.././../lib/ThaiSolarDate.js");
+    var ThaiSolarDate = require("../../../lib/ThaiSolarDate.js");
 }
 if (typeof(JulianDate) === "undefined") {
-    var JulianDate = require("../.././../lib/JulianDate.js");
+    var JulianDate = require("../../../lib/JulianDate.js");
 }
 if (typeof(DateFmt) === "undefined") {
-    var DateFmt = require("../.././../lib/DateFmt.js");
+    var DateFmt = require("../../../lib/DateFmt.js");
 }
 if (typeof(ilib) === "undefined") {
-    var ilib = require("../../..");
+    var ilib = require("../../../lib/ilib.js");
 }
 
 module.exports.testdatefmt_th_TH = {

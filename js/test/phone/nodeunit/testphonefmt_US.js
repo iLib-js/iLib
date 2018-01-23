@@ -18,13 +18,13 @@
  */
 
 if (typeof(ilib) === "undefined") {
-    var ilib = require("../.././../lib/ilib-node.js");
+    var ilib = require("../../../lib/ilib.js");
 }
 if (typeof(PhoneNumber) === "undefined") {
-    var PhoneNumber = require("../.././../lib/PhoneNumber.js");
+    var PhoneNumber = require("../../../lib/PhoneNumber.js");
 }
 if (typeof(PhoneFmt) === "undefined") {
-    var PhoneFmt = require("../.././../lib/PhoneFmt.js");
+    var PhoneFmt = require("../../../lib/PhoneFmt.js");
 }
 
 function mockLoaderFmtUS(paths, sync, params, callback) {
@@ -37,10 +37,6 @@ function mockLoaderFmtUS(paths, sync, params, callback) {
         callback.call(this, data);    
     }
     return data;
-}
-
-if (typeof(ilib) === "undefined") {
-    var ilib = require("../../..");
 }
 
 var oldLoader = ilib._load;

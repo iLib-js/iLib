@@ -18,11 +18,11 @@
  */
 
 if (typeof(CalendarFactory) === "undefined") {
-    var CalendarFactory = require("../.././../lib/CalendarFactory.js");
+    var CalendarFactory = require("../../../lib/CalendarFactory.js");
 }
 
 if (typeof(ilib) === "undefined") {
-    var ilib = require("../../..");
+    var ilib = require("../../../lib/ilib.js");
 }
 
 module.exports.testcalendar = {

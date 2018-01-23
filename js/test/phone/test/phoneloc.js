@@ -17,8 +17,8 @@
  * limitations under the License.
  */
 
-var ilib = require("./../lib/ilib-node.js");
-var PhoneLocale = require("./../lib/PhoneLocale.js");
+var ilib = require("../lib/ilib.js");
+var PhoneLocale = require("../lib/PhoneLocale.js");
 
 function mockLoader(paths, sync, params, callback) {
 	var data = [];

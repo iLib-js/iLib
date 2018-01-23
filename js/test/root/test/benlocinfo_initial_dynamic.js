@@ -18,7 +18,7 @@
  */
 
 
-var LocaleInfo = require("./../lib/LocaleInfo.js");
+var LocaleInfo = require("../lib/LocaleInfo.js");
 function testLocaleInfoConstructorEmptyInitial(results) {
 	var tt = new TimedTest({
 		name: "LocaleInfo-dynamic-empty-initial",

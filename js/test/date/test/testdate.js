@@ -17,9 +17,9 @@
  * limitations under the License.
  */
 
-var GregorianDate = require("./../lib/GregorianDate.js");
-var DateFmt = require("./../lib/DateFmt.js");
-var DateFactory = require("./../lib/DateFactory.js");
+var GregorianDate = require("../lib/GregorianDate.js");
+var DateFmt = require("../lib/DateFmt.js");
+var DateFactory = require("../lib/DateFactory.js");
 
 function testDateConstructor() {
     var gd = DateFactory();

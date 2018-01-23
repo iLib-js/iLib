@@ -17,7 +17,7 @@
  * limitations under the License.
  */
 
-var DateFmt = require("./../lib/DateFmt.js");
+var DateFmt = require("../lib/DateFmt.js");
 function testDateFmtConstructorEmptyInitial(results) {
 	var tt = new TimedTest({
 		name: "DateFmt-dynamic-empty-initial",

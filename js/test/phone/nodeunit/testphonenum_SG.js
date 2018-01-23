@@ -18,11 +18,11 @@
  */
 
 if (typeof(PhoneNumber) === "undefined") {
-    var PhoneNumber = require("../.././../lib/PhoneNumber.js");
+    var PhoneNumber = require("../../../lib/PhoneNumber.js");
 }
 // for bug NOV-118901
 if (typeof(ilib) === "undefined") {
-    var ilib = require("../../..");
+    var ilib = require("../../../lib/ilib.js");
 }
 
 module.exports.phonenum_SG = {

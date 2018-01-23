@@ -18,10 +18,10 @@
  */
 
 if (typeof(ilib) === "undefined") {
-    var ilib = require("../.././../lib/ilib-node.js");
+    var ilib = require("../../../lib/ilib.js");
 }
 if (typeof(LocaleInfo) === "undefined") {
-    var LocaleInfo = require("../.././../lib/LocaleInfo.js");
+    var LocaleInfo = require("../../../lib/LocaleInfo.js");
 }
 
 function mockLoaderLI(paths, sync, params, callback) {
@@ -114,11 +114,6 @@ ilib.data.localeinfo_fr_FR_overseas = {
     "locale": "fr-FR-overseas",
     "timezone": "Pacific/Tahiti"
 };
-
-
-if (typeof(ilib) === "undefined") {
-    var ilib = require("../../..");
-}
 
 var oldLoader = ilib._load;
 

@@ -17,8 +17,8 @@
  * limitations under the License.
  */
 
-var NameFmt = require("./../lib/NameFmt.js");
-var Name = require("./../lib/Name.js");
+var NameFmt = require("../lib/NameFmt.js");
+var Name = require("../lib/Name.js");
 function testParseSimpleName_ta_IN() {
 	var parsed = new Name("மஹிலா ஜெயவர்த்தனே", {locale: 'ta-IN'});
 	assertNotUndefined(parsed);

@@ -18,8 +18,8 @@
  */
 
 
-var GregorianDate = require("./../lib/GregorianDate.js");
-var DateRngFmt = require("./../lib/DateRngFmt.js");
+var GregorianDate = require("../lib/GregorianDate.js");
+var DateRngFmt = require("../lib/DateRngFmt.js");
 function testDateRngFmtRORangeInDayShort() {
     var fmt = new DateRngFmt({locale: "ro-RO", length: "short"});
     assertNotNull(fmt);

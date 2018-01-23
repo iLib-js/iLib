@@ -18,11 +18,11 @@
  */
 
 if (typeof(VelocityUnit) === "undefined") {
-    var VelocityUnit = require("../.././../lib/VelocityUnit.js");
+    var VelocityUnit = require("../../../lib/VelocityUnit.js");
 }
 
 if (typeof(ilib) === "undefined") {
-    var ilib = require("../../..");
+    var ilib = require("../../../lib/ilib.js");
 }
 
 module.exports.testspeeds = {

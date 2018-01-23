@@ -18,10 +18,10 @@
  */
 
 if (typeof(ilib) === "undefined") {
-    var ilib = require("../.././../lib/ilib-node.js");
+    var ilib = require("../../../lib/ilib.js");
 }
 if (typeof(NumberingPlan) === "undefined") {
-    var NumberingPlan = require("../.././../lib/NumberingPlan.js");
+    var NumberingPlan = require("../../../lib/NumberingPlan.js");
 }
 
 function mockLoaderNP(paths, sync, params, callback) {
@@ -34,10 +34,6 @@ function mockLoaderNP(paths, sync, params, callback) {
         callback.call(this, data);    
     }
     return data;
-}
-
-if (typeof(ilib) === "undefined") {
-    var ilib = require("../../..");
 }
 
 var oldLoader = ilib._load;

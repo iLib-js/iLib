@@ -17,9 +17,9 @@
  * limitations under the License.
  */
 
-var ISet = require("./../lib/ISet.js");
+var ISet = require("../lib/ISet.js");
 
-// var inspect = require("../../../webapp/WEB-INF/app/core/inspect.js");
+// var inspect = require(".../../webapp/WEB-INF/app/core/inspect.js");
 
 function testConstructor() {
 	var s = new ISet();

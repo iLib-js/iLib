@@ -17,9 +17,9 @@
  * limitations under the License.
  */
 
-var JulianDate = require("./../lib/JulianDate.js");
-var DateFmt = require("./../lib/DateFmt.js");
-var CopticDate = require("./../lib/CopticDate.js");
+var JulianDate = require("../lib/JulianDate.js");
+var DateFmt = require("../lib/DateFmt.js");
+var CopticDate = require("../lib/CopticDate.js");
 function testDateFmtConstructorEmpty_cop_EG() {
     var fmt = new DateFmt({locale: "cop-EG"});
     

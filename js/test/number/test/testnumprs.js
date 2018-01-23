@@ -17,7 +17,7 @@
  * limitations under the License.
  */
 
-var INumber = require("./../lib/INumber.js");
+var INumber = require("../lib/INumber.js");
 
 function testNumberConstructorDefault() {
     var num = new INumber("3.4");

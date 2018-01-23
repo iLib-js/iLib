@@ -17,7 +17,7 @@
  * limitations under the License.
  */
 
-var ListFmt = require("./../lib/ListFmt.js");
+var ListFmt = require("../lib/ListFmt.js");
 
 function testListFmtjaJPNumberFormatOne() {
     var fmt = new ListFmt({

@@ -18,11 +18,11 @@
  */
 
 if (typeof(EnergyUnit) === "undefined") {
-    var EnergyUnit = require("../.././../lib/EnergyUnit.js");
+    var EnergyUnit = require("../../../lib/EnergyUnit.js");
 }
 
 if (typeof(ilib) === "undefined") {
-    var ilib = require("../../..");
+    var ilib = require("../../../lib/ilib.js");
 }
 
 module.exports.testenergy = {

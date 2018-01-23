@@ -17,12 +17,12 @@
  * limitations under the License.
  */
 
-var isSpace = require("./../lib/isSpace.js");
-var isSpace = require("./../lib/isSpace.js");
-var isDigit = require("./../lib/isDigit.js");
-var isAlpha = require("./../lib/isAlpha.js");
-var ilib = require("./../lib/ilib-node.js");
-var CType = require("./../lib/CType.js");
+var isSpace = require("../lib/isSpace.js");
+var isSpace = require("../lib/isSpace.js");
+var isDigit = require("../lib/isDigit.js");
+var isAlpha = require("../lib/isAlpha.js");
+var ilib = require("../lib/ilib.js");
+var CType = require("../lib/CType.js");
 ilib.data.plurals_en={one:{is:["n",1]}};
 ilib.data.plurals_de={one:{is:["n",1]}};
 ilib.data.plurals_fr={one:{and:[{within:["n",[[0,2]]]},{isnot:["n",2]}]}};

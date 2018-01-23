@@ -18,14 +18,14 @@
  */
 
 if (typeof(ilib) === "undefined") {
-    var ilib = require("../../../lib/ilib-node.js");
+    var ilib = require("../../../lib/ilib.js");
 }
 if (typeof(AlphabeticIndex) === "undefined") {
     var AlphabeticIndex = require("../../../lib/AlphabeticIndex.js");
 }
 
 if (typeof(isScript) === "undefined") {
-    var isScript = require("../.././../lib/isScript.js");
+    var isScript = require("../../../lib/isScript.js");
 }
 
 module.exports.testalphaindex_ko = {

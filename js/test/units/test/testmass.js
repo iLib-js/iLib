@@ -17,7 +17,7 @@
  * limitations under the License.
  */
 
-var MassUnit = require("./../lib/MassUnit.js");
+var MassUnit = require("../lib/MassUnit.js");
 
 function testMassMassConstructor() {
 	var m = new MassUnit({

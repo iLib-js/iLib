@@ -17,8 +17,8 @@
  * limitations under the License.
  */
 
-var NameFmt = require("./../lib/NameFmt.js");
-var Name = require("./../lib/Name.js");
+var NameFmt = require("../lib/NameFmt.js");
+var Name = require("../lib/Name.js");
 function testParseSimpleName_uk_UA() {
 	var parsed = new Name("Міла Куніс", {locale: 'uk-UA'});
 	assertNotUndefined(parsed);

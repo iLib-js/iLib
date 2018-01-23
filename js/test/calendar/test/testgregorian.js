@@ -18,7 +18,7 @@
  */
 
 
-var GregorianCal = require("./../lib/GregorianCal.js");
+var GregorianCal = require("../lib/GregorianCal.js");
 
 function testGregorianGetNumMonths() {
     var cal = new GregorianCal();

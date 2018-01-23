@@ -19,10 +19,10 @@
  */
 
 if (typeof(Charset) === "undefined") {
-    var Charset = require("../.././../lib/Charset.js");
+    var Charset = require("../../../lib/Charset.js");
 }
 if (typeof(CharmapFactory) === "undefined") {
-    var CharmapFactory = require("../.././../lib/CharmapFactory.js");
+    var CharmapFactory = require("../../../lib/CharmapFactory.js");
 }
 
 var aliasesKR = {
@@ -323,7 +323,7 @@ var testDataKR = {
 };
 
 if (typeof(ilib) === "undefined") {
-    var ilib = require("../../..");
+    var ilib = require("../../../lib/ilib.js");
 }
 
 module.exports.testcm_KR = {

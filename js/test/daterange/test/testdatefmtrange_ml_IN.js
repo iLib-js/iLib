@@ -20,8 +20,8 @@
 
 
 
-var GregorianDate = require("./../lib/GregorianDate.js");
-var DateRngFmt = require("./../lib/DateRngFmt.js");
+var GregorianDate = require("../lib/GregorianDate.js");
+var DateRngFmt = require("../lib/DateRngFmt.js");
 //needs translation for a.m.-p.m.
 function testDateRngFmtRangeinDayShort_ml_IN() {
     var fmt = new DateRngFmt({locale: "ml-IN", length: "short"});

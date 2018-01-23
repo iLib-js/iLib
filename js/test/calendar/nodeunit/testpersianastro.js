@@ -18,11 +18,11 @@
  */
 
 if (typeof(PersianCal) === "undefined") {
-    var PersianCal = require("../.././../lib/PersianCal.js");
+    var PersianCal = require("../../../lib/PersianCal.js");
 }
 
 if (typeof(ilib) === "undefined") {
-    var ilib = require("../../..");
+    var ilib = require("../../../lib/ilib.js");
 }
 
 module.exports.testpersianastro = {

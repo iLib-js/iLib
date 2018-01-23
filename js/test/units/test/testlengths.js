@@ -17,7 +17,7 @@
  * limitations under the License.
  */
 
-var LengthUnit = require("./../lib/LengthUnit.js");
+var LengthUnit = require("../lib/LengthUnit.js");
 
 function testLengthLengthConstructor() {
 

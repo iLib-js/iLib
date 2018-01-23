@@ -17,8 +17,8 @@
  * limitations under the License.
  */
 
-var NameFmt = require("./../lib/NameFmt.js");
-var Name = require("./../lib/Name.js");
+var NameFmt = require("../lib/NameFmt.js");
+var Name = require("../lib/Name.js");
 function testParseSimpleName_sq_Al() {
 	var parsed = new Name("James Belushi", {locale: 'sq-Al'});
 	assertNotUndefined(parsed);

@@ -17,7 +17,7 @@
  * limitations under the License.
  */
 
-var PhoneNumber = require("./../lib/PhoneNumber.js");
+var PhoneNumber = require("../lib/PhoneNumber.js");
 
 function testRUIDDPrefix() {
 	var parsed = new PhoneNumber("8 10 31 456 3453434", {locale: 'ru-RU'});

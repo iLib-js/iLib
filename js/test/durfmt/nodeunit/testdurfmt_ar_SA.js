@@ -18,12 +18,12 @@
  */
 
 if (typeof(DurationFmt) === "undefined") {
-    var DurationFmt = require("../.././../lib/DurationFmt.js");
+    var DurationFmt = require("../../../lib/DurationFmt.js");
 }
 //test cases for ar-SA
 
 if (typeof(ilib) === "undefined") {
-    var ilib = require("../../..");
+    var ilib = require("../../../lib/ilib.js");
 }
 
 module.exports.testdurfmt_ar_SA = {
