@@ -276,8 +276,7 @@ IString._fncs = {
 		var parts = [];
 		var numberDigits =  {};
 		var operandSymbol =  {};
-		var integerPart, decimalPartLength, decimalPart;
-
+		
 		if (numberToString.indexOf('.') !== -1) { //decimal
 			parts = numberToString.split('.', 2);
 			numberDigits.integerPart = parseInt(parts[0], 10);
@@ -711,10 +710,8 @@ IString.prototype = {
 		var i;
 		var parts;
 		var limit;
-		var arg;
 		var result = undefined;
 		var defaultCase = "";
-		var	numberDigits = {};
 		var operandValue = {};
 	
 		if (this.str.length === 0) {

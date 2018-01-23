@@ -27,6 +27,10 @@ var JSUtils = require("./JSUtils.js");
 var Charset = require("./Charset.js");
 var Charmap = require("./Charmap.js");
 
+function circumventWebpackCharmap(x) {
+    return "./" + x + ".js";
+}
+
 /**
  * Factory method to create a new instance of a character set mapping (charmap) 
  * subclass that is appropriate for the requested charset. Charmap instances map strings to 
@@ -150,7 +154,7 @@ var CharmapFactory = function(options) {
 			if (!Charmap._algorithms[name] && ilib.isDynCode()) {
 				// console.log("CharmapFactory: isDynCode. Doing require");
 				var entry = CharmapFactory._dynMap[name] || "CharmapTable";
-				cons = Charmap._algorithms[name] = require("./" + entry + ".js");
+				cons = Charmap._algorithms[name] = require(circumventWebpackCharmap(entry));
 			}
 			
 			if (!cons) {

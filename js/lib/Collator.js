@@ -582,7 +582,7 @@ Collator.prototype = {
     	this.map = {};
     	this.lastMap = -1;
     	this.keysize = this.collation.keysize[this.level-1];
-    	this.defaultRule = rules.default;
+    	this.defaultRule = rules["default"];
     	
     	if (typeof(this.collation.inherit) !== 'undefined') {
     		for (var i = 0; i < this.collation.inherit.length; i++) {

@@ -339,7 +339,7 @@ AlphabeticIndex.prototype.addElement = function(element) {
 
     for (i = 0; i < this.index.length; i++) {
         if (this.index[i].label === label) {
-            if (this.index[i].elements.indexOf(element) == -1) {
+            if (this.index[i].elements.indexOf(element) === -1) {
                 this.index[i].elements.push(element);
             }
             newItem = false;
@@ -472,7 +472,7 @@ AlphabeticIndex.prototype.getAllBuckets = function() {
 
     for (i=0; i < this.index.length; i++) {
         if (this.inherit &&
-            this.mixedCollationMap[0].indexUnits.indexOf(this.index[i].label) == -1) {
+            this.mixedCollationMap[0].indexUnits.indexOf(this.index[i].label) === -1) {
             mixedScriptEndIndex = i;
             count++;
         }
@@ -484,7 +484,7 @@ AlphabeticIndex.prototype.getAllBuckets = function() {
     }
 
     for (i=0; i < this.index.length; i++) {
-        if (this.index[i].label == this.underflowLabel) {
+        if (this.index[i].label === this.underflowLabel) {
             underflowIndex = i
             break;
         }
@@ -496,7 +496,7 @@ AlphabeticIndex.prototype.getAllBuckets = function() {
     }
 
     for (i=0; i < this.index.length; i++) {
-        if (this.index[i].label == this.overflowLabel) {
+        if (this.index[i].label === this.overflowLabel) {
             overflowIndex = i
             break;
         }
@@ -525,7 +525,6 @@ AlphabeticIndex.prototype.getBucket = function(element) {
     var firstChar;
     var collationValue;
     var charNum, firstBoundaryChar, endBoundaryChar, firstCharNum, endCharNum;
-    var source;
     var validMapNum = -1;
     
     if (!element) {
@@ -636,8 +635,6 @@ AlphabeticIndex.prototype.getBucketLabels = function() {
  * for this index in collation order
  */
 AlphabeticIndex.prototype.getAllBucketLabels = function() {
-    var label;
-
     if (this.allBucketLabels) {
         return this.allBucketLabels;
     }
