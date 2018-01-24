@@ -26,6 +26,7 @@ var Path = {
 	 * @return {string} the parent dir of the given pathname
 	 */
 	dirname: function(pathname) {
+	    if (!pathname) return pathname;
 		pathname = pathname.replace(/\\/g, "/");
 		var i = pathname.lastIndexOf("/");
 		return i !== -1 ? pathname.substring(0,i) : pathname;
