@@ -24,6 +24,10 @@ if (typeof(ilib) === "undefined") {
     var ilib = require("../../../lib/ilib.js");
 }
 
+if (typeof(Path) === "undefined") {
+    var Path = require("../../../lib/Path.js");
+}
+
 // make sure it thinks the current module's dir is the same as in the 
 // nodejs tests so these require tests will be operating in the same
 // environment and therefore will work properly
@@ -38,10 +42,6 @@ if (ilib._getPlatform() === "browser") {
     
     //var i = r.root.lastIndexOf('/');
     //r.root = r.root.substring(0, i) + "/test";
-}
-
-if (ilib.isDynCode() && typeof(path) === "undefined") {
-    var path = require("path");
 }
 
 module.exports.testrequire = {
@@ -118,12 +118,12 @@ module.exports.testrequire = {
             return;
         }
         
-        var dir = path.dirname(module.filename);
-        var Locale2 = require(path.join(dir, "../test/testfiles/locale2.js"));
+        var dir = Path.dirname(module.filename);
+        var Locale2 = require(Path.join(dir, "../test/testfiles/locale2.js"));
         test.expect(4);
         test.ok(typeof(Locale2) !== "undefined");
         
-        var DateFmt2 = require(path.join(dir, "../test/testfiles/datefmt2.js"));
+        var DateFmt2 = require(Path.join(dir, "../test/testfiles/datefmt2.js"));
         test.ok(typeof(DateFmt2) !== "undefined");
         var df = new DateFmt2({locale: "de-DE"});
         

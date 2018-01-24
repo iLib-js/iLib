@@ -24,6 +24,8 @@ var suites = [
     "testctype.js",
 ];
 
+var ilib = require("../../../lib/ilib-node.js");
+
 suites.forEach(function (path) {
     var test = require("./" + path);
     for (var suite in test) {
