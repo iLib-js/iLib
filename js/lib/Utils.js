@@ -73,7 +73,7 @@ Utils.mergeLocData = function (prefix, locale, replaceArrays, returnOne) {
 	}
 	
 	if (loc.getRegion()) {
-		property = prefix + '_' + loc.getRegion();
+		property = prefix + '_und_' + loc.getRegion();
 		if (ilib.data[property]) {
 			foundLocaleData = true;
 			data = JSUtils.merge(data, ilib.data[property], replaceArrays);
