@@ -61,7 +61,12 @@ module.exports = function(env, args) {
             libraryTarget: 'umd'
         },
         module: {
-        }
+        },
+        plugins: [
+            new webpack.DefinePlugin({
+                __VERSION__: JSON.stringify(require("./package.json").version)
+            })
+        ]
     };
     
     ret.output.filename = "ilib-" + size;
@@ -87,17 +92,16 @@ module.exports = function(env, args) {
         }];
     }
     
+    
     if (compilation === "compiled") {
-        ret.plugins = [
-            new UglifyJsPlugin({
-                cache: true,
-                parallel: 4,
-                uglifyOptions: {
-                    compress: true,
-                    warnings: true
-                }
-            })
-        ];
+        ret.plugins.push(new UglifyJsPlugin({
+            cache: true,
+            parallel: 4,
+            uglifyOptions: {
+                compress: true,
+                warnings: true
+            }
+        }));
     }
     
     //console.log("config is " + JSON.stringify(ret, undefined, 4));
