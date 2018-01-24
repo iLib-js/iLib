@@ -27,7 +27,7 @@ module.exports = function(env, args) {
         locales = args.env.locales;
     
     // "ut" is unit tests
-    if (size !== "core" && size !== "standard" && size !== "full" && size !== "ut") {
+    if (size !== "core" && size !== "standard" && size !== "full" && size !== "ut" && size !== "demo") {
         size = "standard";
     }
 
@@ -90,7 +90,12 @@ module.exports = function(env, args) {
     if (compilation === "compiled") {
         ret.plugins = [
             new UglifyJsPlugin({
-                compress: true
+                cache: true,
+                parallel: 4,
+                uglifyOptions: {
+                    compress: true,
+                    warnings: true
+                }
             })
         ];
     }
