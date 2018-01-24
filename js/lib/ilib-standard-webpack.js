@@ -40,5 +40,6 @@ ilib.DateRngFmt = require("./DateRngFmt.js");
 ilib.ScriptInfo = require("./ScriptInfo.js");
 ilib.CaseMapper = require("./CaseMapper.js");
 ilib.ListFmt = require("./ListFmt.js");
+ilib.TimeZone = require("./TimeZone.js");
 
 module.exports = ilib;

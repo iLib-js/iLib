@@ -110,5 +110,7 @@ ilib.UTF16LE = require("./UTF16LE.js");
 ilib.Country = require("./Country.js");
 ilib.ListFmt = require("./ListFmt.js");
 ilib.AlphabeticIndex = require("./AlphabeticIndex.js");
+ilib.TimeZone = require("./TimeZone.js");
+ilib.Currency = require("./Currency.js");
 
 module.exports = ilib;
