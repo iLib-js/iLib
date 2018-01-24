@@ -89,7 +89,7 @@ var ilibDataLoader = function(source) {
             parts.add("und/" + locale.region);
         }
     });
-    locales = toArray(parts);
+    var localeDirs = toArray(parts);
     
     var resourceToCwd = path.relative(path.dirname(this.resource), process.cwd());
     // console.log("__dirname is " + __dirname + " base is " + base + " pathToLib is " + pathToLib);
@@ -97,7 +97,10 @@ var ilibDataLoader = function(source) {
     // now find all of the !data comments in the files and load in
     // the locale data files they list there for the given locales
     
-    var processFile = function (re) {
+    var processFile = function (re, text) {
+        var partial = text;
+        var output = "";
+        
         re.lastIndex = 0;
         while ((match = re.exec(partial)) !== null) {
             // console.log(">>>>>>>>>> found a match");
@@ -109,7 +112,7 @@ var ilibDataLoader = function(source) {
             // remove any other instances so there is no conflict
             partial = partial.replace(/var ilib = require\(['"][\./]*ilib\.js['"]\);/g, "");
             datafiles.forEach(function(filename) {
-                locales.forEach(function(locale) {
+                localeDirs.forEach(function(locale) {
                     try {
                         var cwdToData = path.join("data/locale", locale, filename + ".json");
                         var resourceToData = path.join(resourceToCwd, cwdToData);
@@ -120,7 +123,7 @@ var ilibDataLoader = function(source) {
                             var line = "ilib.data." + filename.replace(/\//g, "_").replace(/-/g, "_");
                             if (locale !== ".") {
                                 line += "_" + locale.replace(/\//g, "_");
-                            } 
+                            }
                             line += " = require('" + resourceToData + "');\n";
                             // console.log(">>>>>>>>>>>>> Adding line: " + line);
                             output += line;
@@ -134,51 +137,44 @@ var ilibDataLoader = function(source) {
     
             partial = partial.substring(match.index + match[0].length);
             re.lastIndex = 0;
-        }    
+        }
+        
+        return output + partial;
     }.bind(this);
 
-    processFile(dataPatternSlashStar);
-    
-    partial = output + partial;
-    output = "";
-
-    processFile(dataPatternSlashSlash);
-    
-    output += partial;
-    
-    var processMacros = function (re) {
+    var processMacros = function (re, text) {
+        var partial = text;
+        var output = "";
+        
         re.lastIndex = 0;
         while ((match = re.exec(partial)) !== null) {
             // console.log(">>>>>>>>>> found a match");
-            var datafiles = match[1].split(/\s+/g);
+            var macroName = match[1];
             output += partial.substring(0, match.index);
-            output += 'var ilib = require("' + pathToLib + '/ilib.js");\n';
-            // remove any other instances so there is no conflict
-            partial = partial.replace(/var ilib = require\(['"]\.\/ilib\.js['"]\);/g, "");
-            datafiles.forEach(function(filename) {
-                locales.forEach(function(locale) {
-                    try {
-                        var pathname = path.join(pathToLib, "data/locale", locale, filename + ".json");
-                        if (fs.existsSync(pathname)) {
-                            var line = "ilib.data." + filename.replace(/\//g, "_").replace(/-/g, "_");
-                            if (locale !== ".") {
-                                line += "_" + locale.replace(/\//g, "_");
-                            } 
-                            line += " = require('" + pathname + "');\n";
-                            // console.log(">>>>>>>>>>>>> Adding line: " + line);
-                            output += line;
-                            this.addDependency(filename)
-                        }
-                    } catch (e) {
-                        console.log("Error: " + e);
-                    }
-                }.bind(this));
-            }.bind(this));
-    
+
+            if (macroName) {
+                if (macroName.toLowerCase() === "localelist") {
+                    output += locales.map(function(locale) {
+                        return '"' + locale + '"';
+                    }).join(", ");
+                } else if (macroName.toLowerCase() === "ilibversion") {
+                    // the DefinePlugin in the config will replace this with the 
+                    // actual version number from the project.json file
+                    output += "__VERSION__"; 
+                }
+            }
+
             partial = partial.substring(match.index + match[0].length);
-            dataPatternSlashStar.lastIndex = 0;
-        }    
+            re.lastIndex = 0;
+        }
+        
+        return output + partial;
     }.bind(this);
+
+    partial = processFile(dataPatternSlashStar, partial);
+    partial = processFile(dataPatternSlashSlash, partial);
+    partial = processMacros(macroPatternSlashSlash, partial);
+    output  = processMacros(macroPatternQuoted, partial);
 
     // console.log("****************************************\nTransformed file to:\n" + output);
     return output;
