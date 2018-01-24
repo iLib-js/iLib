@@ -61,12 +61,12 @@
         "trireme": ">= 0.9.0",
         "uglify-js": ">= 3.3.0",
         "webpack": ">= 3.10.0",
-        "uglifyjs-webpack-plugin": "^3.0.0"
+        "uglifyjs-webpack-plugin": "^1.0.0"
     },
     "scripts": {
         "test": "ant test",
         "build.web": "webpack -p",
         "watch": "webpack --watch",
-		"babel": "babel --presets es2015 lib/ilibdata-webpack-loader.js -o output/js/ilibdata-webpack-loader.bundle.js"
+        "babel": "babel --presets es2015 lib/ilibdata-webpack-loader.js -o output/js/ilibdata-webpack-loader.bundle.js"
     }
 }
