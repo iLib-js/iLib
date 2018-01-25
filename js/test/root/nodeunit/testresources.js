@@ -1329,7 +1329,7 @@ module.exports.testresources = {
             name: "foobar",
             sync: false,
             onLoad: function(rb) {
-        test.expect(6);
+                test.expect(6);
                 test.ok(typeof(rb) !== "undefined");
                 
                 test.equal(rb.getString("first string").toString(), "erste String");

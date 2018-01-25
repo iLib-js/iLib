@@ -100,7 +100,7 @@ limitations under the License.
 		<delete file="${build.base}/package.json"/>
 		<delete dir="${build.locale}"/>
 	</target>
-	<target name="prepare" description="Prepare all directories that are needed before the project can be built">
+	<target name="prepare" depends="update.package.json" description="Prepare all directories that are needed before the project can be built">
 		<mkdir dir="${build.output.reports}"/>
 		<mkdir dir="${build.output.js}"/>
 		<mkdir dir="${build.output.dyncode}"/>
@@ -151,20 +151,20 @@ limitations under the License.
 			assembly="assembled"
 			size="core"
 			compilation="uncompiled"
-			locales="en-AU,en-CA,en-GB,en-IN,en-NG,en-PH,en-PK,en-US,en-ZA,de-DE,fr-CA,fr-FR,es-AR,es-ES,es-MX,id-ID,it-IT,ja-JP,ko-KR,pt-BR,ru-RU,tr-TR,vi-VN,zxx-XX,zh-CN,zh-HK,zh-TW,zh-SG"/>
+			locales="en-AU,en-CA,en-GB,en-IN,en-NG,en-PH,en-PK,en-SG,en-US,en-ZA,de-DE,fr-CA,fr-FR,es-AR,es-ES,es-MX,id-ID,it-IT,ja-JP,ko-KR,pt-BR,ru-RU,tr-TR,vi-VN,zxx-XX,zh-Hans-CN,zh-Hant-HK,zh-Hant-TW,zh-Hans-SG"/>
 		<runassemble
 			assembly="assembled"
 			size="core"
 			compilation="compiled"
-			locales="en-AU,en-CA,en-GB,en-IN,en-NG,en-PH,en-PK,en-US,en-ZA,de-DE,fr-CA,fr-FR,es-AR,es-ES,es-MX,id-ID,it-IT,ja-JP,ko-KR,pt-BR,ru-RU,tr-TR,vi-VN,zxx-XX,zh-CN,zh-HK,zh-TW,zh-SG"/>
-			</target>
+			locales="en-AU,en-CA,en-GB,en-IN,en-NG,en-PH,en-PK,en-SG,en-US,en-ZA,de-DE,fr-CA,fr-FR,es-AR,es-ES,es-MX,id-ID,it-IT,ja-JP,ko-KR,pt-BR,ru-RU,tr-TR,vi-VN,zxx-XX,zh-Hans-CN,zh-Hant-HK,zh-Hant-TW,zh-Hans-SG"/>
+	</target>
 
-	<target name="closure.core">
+	<target name="closure">
 		<jscomp compilationlevel="simple"
 			warning="verbose"
 			debug="true"
 			output="${build.output.js}/ilib-core-closure.js"
-			description="Use the google closure compiler to compress code"
+			description="Use the google closure compiler to check for code problems"
 			encoding="utf-8">
 			<externs dir="${build.lib}">
 				<file name="externs.js"/>
@@ -187,13 +187,13 @@ limitations under the License.
 			assembly="assembled"
 			size="standard"
 			compilation="uncompiled"
-			locales="en-AU,en-CA,en-GB,en-IN,en-NG,en-PH,en-PK,en-US,en-ZA,de-DE,fr-CA,fr-FR,es-AR,es-ES,es-MX,id-ID,it-IT,ja-JP,ko-KR,pt-BR,ru-RU,tr-TR,vi-VN,zxx-XX,zh-CN,zh-HK,zh-TW,zh-SG"/>
+			locales="en-AU,en-CA,en-GB,en-IN,en-NG,en-PH,en-PK,en-SG,en-US,en-ZA,de-DE,fr-CA,fr-FR,es-AR,es-ES,es-MX,id-ID,it-IT,ja-JP,ko-KR,pt-BR,ru-RU,tr-TR,vi-VN,zxx-XX,zh-Hans-CN,zh-Hant-HK,zh-Hant-TW,zh-Hans-SG"/>
 		<runassemble
 			assembly="assembled"
 			size="standard"
 			compilation="compiled"
-			locales="en-AU,en-CA,en-GB,en-IN,en-NG,en-PH,en-PK,en-US,en-ZA,de-DE,fr-CA,fr-FR,es-AR,es-ES,es-MX,id-ID,it-IT,ja-JP,ko-KR,pt-BR,ru-RU,tr-TR,vi-VN,zxx-XX,zh-CN,zh-HK,zh-TW,zh-SG"/>
-			</target>
+			locales="en-AU,en-CA,en-GB,en-IN,en-NG,en-PH,en-PK,en-SG,en-US,en-ZA,de-DE,fr-CA,fr-FR,es-AR,es-ES,es-MX,id-ID,it-IT,ja-JP,ko-KR,pt-BR,ru-RU,tr-TR,vi-VN,zxx-XX,zh-Hans-CN,zh-Hant-HK,zh-Hant-TW,zh-Hans-SG"/>
+	</target>
 	<target name="testilib.full" description="test whether or not the ilib-full single file needs to be rebuilt">
 		<uptodate property="core.ilib.full.not.needed" targetfile="${build.output.js}/ilib-full-compiled.js">
 			<srcfiles dir="${build.lib}" includes="**/*.js" excludes="ilib-*.js,**/test/**,runner.js,*Loader.js" />
@@ -206,13 +206,13 @@ limitations under the License.
 			assembly="assembled"
 			size="full"
 			compilation="uncompiled"
-			locales="en-AU,en-CA,en-GB,en-IN,en-NG,en-PH,en-PK,en-US,en-ZA,de-DE,fr-CA,fr-FR,es-AR,es-ES,es-MX,id-ID,it-IT,ja-JP,ko-KR,pt-BR,ru-RU,tr-TR,vi-VN,zxx-XX,zh-CN,zh-HK,zh-TW,zh-SG"/>
+			locales="en-AU,en-CA,en-GB,en-IN,en-NG,en-PH,en-PK,en-SG,en-US,en-ZA,de-DE,fr-CA,fr-FR,es-AR,es-ES,es-MX,id-ID,it-IT,ja-JP,ko-KR,pt-BR,ru-RU,tr-TR,vi-VN,zxx-XX,zh-Hans-CN,zh-Hant-HK,zh-Hant-TW,zh-Hans-SG"/>
 		<runassemble
 			assembly="assembled"
 			size="full"
 			compilation="compiled"
-			locales="en-AU,en-CA,en-GB,en-IN,en-NG,en-PH,en-PK,en-US,en-ZA,de-DE,fr-CA,fr-FR,es-AR,es-ES,es-MX,id-ID,it-IT,ja-JP,ko-KR,pt-BR,ru-RU,tr-TR,vi-VN,zxx-XX,zh-CN,zh-HK,zh-TW,zh-SG"/>
-			</target>
+			locales="en-AU,en-CA,en-GB,en-IN,en-NG,en-PH,en-PK,en-SG,en-US,en-ZA,de-DE,fr-CA,fr-FR,es-AR,es-ES,es-MX,id-ID,it-IT,ja-JP,ko-KR,pt-BR,ru-RU,tr-TR,vi-VN,zxx-XX,zh-Hans-CN,zh-Hant-HK,zh-Hant-TW,zh-Hans-SG"/>
+	</target>
 	<target name="testilibut" description="test whether or not the ilib-ut single file needs to be rebuilt">
 		<uptodate property="ilib-ut.not.needed" targetfile="${build.output.js}/ilib-ut-compiled.js">
 			<srcfiles dir="${build.lib}" includes="**/*.js" excludes="ilib-*.js,**/test/**,runner.js,*Loader.js" />
@@ -225,124 +225,31 @@ limitations under the License.
 			assembly="assembled"
 			size="ut"
 			compilation="uncompiled"
-			locales="aa-DJ,af-NA,agq-CM,ak-GH,am-ET,ar-AE,ar-BH,ar-DJ,ar-DZ,ar-EG,ar-IQ,ar-JO,ar-KW,ar-LB,ar-LY,ar-MA,ar-MR,ar-OM,ar-QA,ar-SA,ar-SD,ar-SY,ar-TN,ar-YE,asa-TZ,as-IN,az-Latn-AZ,bas-CM,be-BY,bem-ZM,bg-BG,bh-IN,bm-ML,bn-IN,br-FR,bs-BS,bs-Cyrl-BA,bs-Latn-BA,bs-ME,ca-FR,cop-EG,cs-CZ,da-DK,de-AT,de-DE,el-GR,en-AM,en-AU,en-CA,en-CA-Latn,en-ET,en-GB,en-GH,en-GM,en-HK,en-IE,en-IN,en-IS,en-KE,en-LK,en-LR,en-MW,en-MY,en-NG,en-NZ,en-PA,en-PH,en-PK,en-PR,en-RW,en-SD,en-SG,en-SL,en-TZ,en-UG,en-US,en-ZA,en-ZM,es-AR,es-BO,es-CL,es-CO,es-CR,es-DO,es-EC,es-ES,es-GQ,es-GT,es-HN,es-MX,es-NI,es-PA,es-PE,es-PR,es-PY,es-SV,es-UY,es-VE,et-EE,fa-AF,fa-IR,ff-SN,fi-FI,fj-FJ,fo-FO,fr-AD,fr-BE,fr-BF,fr-BJ,fr-CA,fr-CD,fr-CF,fr-CG,fr-CH,fr-CI,fr-CM,fr-DJ,fr-DZ,fr-FR,fr-GA,fr-GN,fr-LB,fr-LU,fr-MG,fr-ML,fr-RW,fr-SN,fr-TG,fr-YT,ga-IE,gl-ES,gu-IN,ha-Latn-NG,he-IL,hi-IN,hr-HR,hr-ME,hu-HU,hy-AZ,hy-AM,id-ID,id-MY,it-CH,it-IT,it-SM,ja-JP,ka-IR,kk-Cyrl-KZ,kk-KZ-Cyrl,km-KH,kn-IN,ko-KR,ks-IN-Arab,ku-Arab-IQ,ku-Arab-IR,ku-IR,lg-UG,ln-CF,lt-LT,lv-LV,fr-Latn-MA,mi-CK,mk-MK,ml-IN,mm-MM,mn-CN,mn-Cyrl-MN,mr-IN,ms-BN,ms-MY,ne-NP,nl-BE,nl-NL,nb-NO,nn-NO,no-NO,no-SJ,om-ET,or-IN,os-RU,pa-Arab,pa-IN,pa-PK-Arab,pl-PL,ps-AF,pt-AO,pt-BR,pt-CV,pt-GW,pt-GQ,pt-MO,pt-MZ,pt-PT,pt-ST,pt-TL,ro-RO,ro-RS,ru-GE,ru-KG,ru-KZ,ru-RU,ru-TM,shi-MA-Tfng,si-LK,sk-SK,sl-SI,sl-SL,so-ET,so-SO,sq-AL,sq-ME,sq-MK,sr-BA-Cyrl,sr-BA-Latn,sr-Latn-RS,sr-ME-Latn,sr-RS,sr-RS-Latn,ss-ZA,st-LS,sv-FI,sv-SE,sw-KE,sw-UG,ta-IN,ta-LK,ta-MY,ta-SG,te-IN,th-TH,tr-TR,uk-UA,ur-IN,ur-PK,uz-AF,uz-AF-Arab,uz-Cyrl-UZ,uz-Latn-UZ,uz-UZ,uz-UZ-Latn,vai-LR-Latn,vi-VN,zh-CN,zh-CN-Hans,zh-Hant-HK,zh-Hans-MY,zh-Hant-TW,zh-HK,zh-HK-Hans,zh-Hans-MO,zh-Hant-MO,zh-MY,zh-SG,zh-SG-Hans,zh-TW,zh-TW-Hant,zh-US-Hant,zu-ZA,zxx-Cyrl-XX,zxx-Hans-XX,zxx-Hebr-XX,zxx-XX"/>
+			locales="aa-DJ,af-NA,agq-CM,ak-GH,am-ET,ar-AE,ar-BH,ar-DJ,ar-DZ,ar-EG,ar-IQ,ar-JO,ar-KW,ar-LB,ar-LY,ar-MA,ar-MR,ar-OM,ar-QA,ar-SA,ar-SD,ar-SY,ar-TN,ar-YE,asa-TZ,as-IN,az-Latn-AZ,bas-CM,be-BY,bem-ZM,bg-BG,bh-IN,bm-ML,bn-IN,br-FR,bs-BS,bs-Cyrl-BA,bs-Latn-BA,bs-ME,ca-FR,cop-EG,cs-CZ,da-DK,de-AT,de-DE,el-GR,en-AM,en-AU,en-CA,en-ET,en-GB,en-GH,en-GM,en-HK,en-IE,en-IN,en-IS,en-KE,en-LK,en-LR,en-MW,en-MY,en-NG,en-NZ,en-PA,en-PH,en-PK,en-PR,en-RW,en-SD,en-SG,en-SL,en-TZ,en-UG,en-US,en-ZA,en-ZM,es-AR,es-BO,es-CL,es-CO,es-CR,es-DO,es-EC,es-ES,es-GQ,es-GT,es-HN,es-MX,es-NI,es-PA,es-PE,es-PR,es-PY,es-SV,es-UY,es-VE,et-EE,fa-AF,fa-IR,ff-SN,fi-FI,fj-FJ,fo-FO,fr-AD,fr-BE,fr-BF,fr-BJ,fr-CA,fr-CD,fr-CF,fr-CG,fr-CH,fr-CI,fr-CM,fr-DJ,fr-DZ,fr-FR,fr-GA,fr-GN,fr-LB,fr-LU,fr-MG,fr-ML,fr-RW,fr-SN,fr-TG,fr-YT,ga-IE,gl-ES,gu-IN,ha-Latn-NG,he-IL,hi-IN,hr-HR,hr-ME,hu-HU,hy-AZ,hy-AM,id-ID,id-MY,it-CH,it-IT,it-SM,ja-JP,ka-IR,kk-Cyrl-KZ,km-KH,kn-IN,ko-KR,ks-Arab-IN,ku-Arab-IQ,ku-Arab-IR,ku-IR,lg-UG,ln-CF,lt-LT,lv-LV,fr-Latn-MA,mi-CK,mk-MK,ml-IN,mm-MM,mn-CN,mn-Cyrl-MN,mr-IN,ms-BN,ms-MY,ne-NP,nl-BE,nl-NL,nb-NO,nn-NO,no-NO,no-SJ,om-ET,or-IN,os-RU,pa-Arab,pa-IN,pa-Arab-PK,pl-PL,ps-AF,pt-AO,pt-BR,pt-CV,pt-GW,pt-GQ,pt-MO,pt-MZ,pt-PT,pt-ST,pt-TL,ro-RO,ro-RS,ru-GE,ru-KG,ru-KZ,ru-RU,ru-TM,shi-Tfng-MA,si-LK,sk-SK,sl-SI,sl-SL,so-ET,so-SO,sq-AL,sq-ME,sq-MK,sr-Cyrl-BA,sr-Latn-BA,sr-Latn-RS,sr-Latn-ME,sr-RS,sr-Latn-RS,ss-ZA,st-LS,sv-FI,sv-SE,sw-KE,sw-UG,ta-IN,ta-LK,ta-MY,ta-SG,te-IN,th-TH,tr-TR,uk-UA,ur-IN,ur-PK,uz-AF,uz-Arab-AF,uz-Cyrl-UZ,uz-Latn-UZ,uz-UZ,vai-Latn-LR,vi-VN,zh-Hans-CN,zh-Hant-HK,zh-Hans-MY,zh-Hant-TW,zh-Hans-MO,zh-Hant-MO,zh-Hans-SG,zh-Hant-US,zu-ZA,zxx-Cyrl-XX,zxx-Hans-XX,zxx-Hebr-XX,zxx-XX"/>
 		<runassemble
 			assembly="assembled"
 			size="ut"
 			compilation="compiled"
-			locales="aa-DJ,af-NA,agq-CM,ak-GH,am-ET,ar-AE,ar-BH,ar-DJ,ar-DZ,ar-EG,ar-IQ,ar-JO,ar-KW,ar-LB,ar-LY,ar-MA,ar-MR,ar-OM,ar-QA,ar-SA,ar-SD,ar-SY,ar-TN,ar-YE,asa-TZ,as-IN,az-Latn-AZ,bas-CM,be-BY,bem-ZM,bg-BG,bh-IN,bm-ML,bn-IN,br-FR,bs-BS,bs-Cyrl-BA,bs-Latn-BA,bs-ME,ca-FR,cop-EG,cs-CZ,da-DK,de-AT,de-DE,el-GR,en-AM,en-AU,en-CA,en-CA-Latn,en-ET,en-GB,en-GH,en-GM,en-HK,en-IE,en-IN,en-IS,en-KE,en-LK,en-LR,en-MW,en-MY,en-NG,en-NZ,en-PA,en-PH,en-PK,en-PR,en-RW,en-SD,en-SG,en-SL,en-TZ,en-UG,en-US,en-ZA,en-ZM,es-AR,es-BO,es-CL,es-CO,es-CR,es-DO,es-EC,es-ES,es-GQ,es-GT,es-HN,es-MX,es-NI,es-PA,es-PE,es-PR,es-PY,es-SV,es-UY,es-VE,et-EE,fa-AF,fa-IR,ff-SN,fi-FI,fj-FJ,fo-FO,fr-AD,fr-BE,fr-BF,fr-BJ,fr-CA,fr-CD,fr-CF,fr-CG,fr-CH,fr-CI,fr-CM,fr-DJ,fr-DZ,fr-FR,fr-GA,fr-GN,fr-LB,fr-LU,fr-MG,fr-ML,fr-RW,fr-SN,fr-TG,fr-YT,ga-IE,gl-ES,gu-IN,ha-Latn-NG,he-IL,hi-IN,hr-HR,hr-ME,hu-HU,hy-AZ,hy-AM,id-ID,id-MY,it-CH,it-IT,it-SM,ja-JP,ka-IR,kk-Cyrl-KZ,kk-KZ-Cyrl,km-KH,kn-IN,ko-KR,ks-IN-Arab,ku-Arab-IQ,ku-Arab-IR,ku-IR,lg-UG,ln-CF,lt-LT,lv-LV,fr-Latn-MA,mi-CK,mk-MK,ml-IN,mm-MM,mn-CN,mn-Cyrl-MN,mr-IN,ms-BN,ms-MY,ne-NP,nl-BE,nl-NL,nb-NO,nn-NO,no-NO,no-SJ,om-ET,or-IN,os-RU,pa-Arab,pa-IN,pa-PK-Arab,pl-PL,ps-AF,pt-AO,pt-BR,pt-CV,pt-GW,pt-GQ,pt-MO,pt-MZ,pt-PT,pt-ST,pt-TL,ro-RO,ro-RS,ru-GE,ru-KG,ru-KZ,ru-RU,ru-TM,shi-MA-Tfng,si-LK,sk-SK,sl-SI,sl-SL,so-ET,so-SO,sq-AL,sq-ME,sq-MK,sr-BA-Cyrl,sr-BA-Latn,sr-Latn-RS,sr-ME-Latn,sr-RS,sr-RS-Latn,ss-ZA,st-LS,sv-FI,sv-SE,sw-KE,sw-UG,ta-IN,ta-LK,ta-MY,ta-SG,te-IN,th-TH,tr-TR,uk-UA,ur-IN,ur-PK,uz-AF,uz-AF-Arab,uz-Cyrl-UZ,uz-Latn-UZ,uz-UZ,uz-UZ-Latn,vai-LR-Latn,vi-VN,zh-CN,zh-CN-Hans,zh-Hant-HK,zh-Hans-MY,zh-Hant-TW,zh-HK,zh-HK-Hans,zh-Hans-MO,zh-Hant-MO,zh-MY,zh-SG,zh-SG-Hans,zh-TW,zh-TW-Hant,zh-US-Hant,zu-ZA,zxx-Cyrl-XX,zxx-Hans-XX,zxx-Hebr-XX,zxx-XX"/>
+			locales="aa-DJ,af-NA,agq-CM,ak-GH,am-ET,ar-AE,ar-BH,ar-DJ,ar-DZ,ar-EG,ar-IQ,ar-JO,ar-KW,ar-LB,ar-LY,ar-MA,ar-MR,ar-OM,ar-QA,ar-SA,ar-SD,ar-SY,ar-TN,ar-YE,asa-TZ,as-IN,az-Latn-AZ,bas-CM,be-BY,bem-ZM,bg-BG,bh-IN,bm-ML,bn-IN,br-FR,bs-BS,bs-Cyrl-BA,bs-Latn-BA,bs-ME,ca-FR,cop-EG,cs-CZ,da-DK,de-AT,de-DE,el-GR,en-AM,en-AU,en-CA,en-ET,en-GB,en-GH,en-GM,en-HK,en-IE,en-IN,en-IS,en-KE,en-LK,en-LR,en-MW,en-MY,en-NG,en-NZ,en-PA,en-PH,en-PK,en-PR,en-RW,en-SD,en-SG,en-SL,en-TZ,en-UG,en-US,en-ZA,en-ZM,es-AR,es-BO,es-CL,es-CO,es-CR,es-DO,es-EC,es-ES,es-GQ,es-GT,es-HN,es-MX,es-NI,es-PA,es-PE,es-PR,es-PY,es-SV,es-UY,es-VE,et-EE,fa-AF,fa-IR,ff-SN,fi-FI,fj-FJ,fo-FO,fr-AD,fr-BE,fr-BF,fr-BJ,fr-CA,fr-CD,fr-CF,fr-CG,fr-CH,fr-CI,fr-CM,fr-DJ,fr-DZ,fr-FR,fr-GA,fr-GN,fr-LB,fr-LU,fr-MG,fr-ML,fr-RW,fr-SN,fr-TG,fr-YT,ga-IE,gl-ES,gu-IN,ha-Latn-NG,he-IL,hi-IN,hr-HR,hr-ME,hu-HU,hy-AZ,hy-AM,id-ID,id-MY,it-CH,it-IT,it-SM,ja-JP,ka-IR,kk-Cyrl-KZ,km-KH,kn-IN,ko-KR,ks-Arab-IN,ku-Arab-IQ,ku-Arab-IR,ku-IR,lg-UG,ln-CF,lt-LT,lv-LV,fr-Latn-MA,mi-CK,mk-MK,ml-IN,mm-MM,mn-CN,mn-Cyrl-MN,mr-IN,ms-BN,ms-MY,ne-NP,nl-BE,nl-NL,nb-NO,nn-NO,no-NO,no-SJ,om-ET,or-IN,os-RU,pa-Arab,pa-IN,pa-Arab-PK,pl-PL,ps-AF,pt-AO,pt-BR,pt-CV,pt-GW,pt-GQ,pt-MO,pt-MZ,pt-PT,pt-ST,pt-TL,ro-RO,ro-RS,ru-GE,ru-KG,ru-KZ,ru-RU,ru-TM,shi-Tfng-MA,si-LK,sk-SK,sl-SI,sl-SL,so-ET,so-SO,sq-AL,sq-ME,sq-MK,sr-Cyrl-BA,sr-Latn-BA,sr-Latn-RS,sr-Latn-ME,sr-RS,sr-Latn-RS,ss-ZA,st-LS,sv-FI,sv-SE,sw-KE,sw-UG,ta-IN,ta-LK,ta-MY,ta-SG,te-IN,th-TH,tr-TR,uk-UA,ur-IN,ur-PK,uz-AF,uz-Arab-AF,uz-Cyrl-UZ,uz-Latn-UZ,uz-UZ,vai-Latn-LR,vi-VN,zh-Hans-CN,zh-Hant-HK,zh-Hans-MY,zh-Hant-TW,zh-Hans-MO,zh-Hant-MO,zh-Hans-SG,zh-Hant-US,zu-ZA,zxx-Cyrl-XX,zxx-Hans-XX,zxx-Hebr-XX,zxx-XX"/>
 	</target>
-	
-	<target name="testilib.dyn.ut" description="test whether or not the ilib-dyn-ut single file needs to be rebuilt">
-		<uptodate property="ilib-dyn-ut.not.needed" targetfile="${build.output.js}/ilib-ut-dyn.js">
-			<srcfiles dir="${build.lib}" includes="**/*.js" excludes="ilib-*.js,**/test/**,runner.js,*Loader.js"/>
-			<srcfiles dir="${build.lib}" includes="ilib-ut-webpack.js"/>
-			<srcfiles dir="${build.locale}" includes="**/*.json"/>
-		</uptodate>
-	</target>
-	<target name="assemble.dyndata.unittest" depends="prepare,gen.manifest.locale,testilib.dyn.ut" unless="ilib-dyn-ut.not.needed" description="assembles only the locales needed for the unit tests">
-		<runassemble
-			assembly="dynamic"
-			size="ut"
-			compilation="uncompiled"
-			locales=""/>
-		<runassemble
-			assembly="dynamic"
-			size="ut"
-			compilation="compiled"
-			locales=""/>
-			</target>
-	<target name="assemble.dyncode.unittest" depends="prepare,gen.manifest.locale" description="prepares dynamic load code for the unit tests"/>
-	
 	<target name="testilibdemo" description="test whether or not the ilib-demo file needs to be rebuilt">
 		<uptodate property="ilib-demo.not.needed" targetfile="${build.output.js}/ilib-demo-compiled.js">
 			<srcfiles dir="${build.lib}" includes="**/*.js" excludes="ilib-*.js,**/test/**,runner.js,*Loader.js"/>
-			<srcfiles dir="${build.lib}" includes="**/ilib-full-webpack.js"/>
+			<srcfiles dir="${build.lib}" includes="**/ilib-demo-webpack.js"/>
 			<srcfiles dir="${build.locale}" includes="**/*.json"/>
 		</uptodate>
 	</target>
 	<target name="assemble.demo" depends="prepare,gen.manifest.locale,testilibdemo" unless="ilib-demo.not.needed" description="assembles the js files into a single file for the demo">
 		<runassemble
 			assembly="assembled"
-			size="full"
+			size="demo"
 			compilation="uncompiled"
-			locales="aa-DJ,af-NA,af-ZA,agq-CM,ak-GH,am-ET,ar-AE,ar-BH,ar-DJ,ar-DZ,ar-EG,ar-IQ,ar-JO,ar-KW,ar-LB,ar-LY,ar-MA,ar-MR,ar-OM,ar-QA,ar-SA,ar-SD,ar-SY,ar-TN,ar-YE,asa-TZ,as-IN,az-AZ,bas-CM,be-BY,bem-ZM,bg-BG,bh-IN,bm-ML,bn-IN,br-FR,bs-Cyrl-BA,bs-Latn-BA,bs-ME,ca-FR,cop-EG,cs-CZ,da-DK,de-AT,de-CH,de-DE,el-GR,en-AU,en-CA,en-CA-Latn,en-ET,en-GB,en-GH,en-GM,en-HK,en-IE,en-IN,en-KE,en-LK,en-LR,en-MW,en-MY,en-NG,en-NZ,en-PH,en-PK,en-PR,en-RW,en-SG,en-SL,en-TZ,en-UG,en-US,en-ZA,en-ZM,es-AR,es-CO,es-CR,es-DO,es-EC,es-ES,es-GQ,es-GT,es-HN,es-MX,es-SV,es-UY,es-VE,et-EE,fa-AF,fa-IR,ff-SN,fi-FI,fj-FJ,fr-AD,fr-BE,fr-BF,fr-BJ,fr-CA,fr-CD,fr-CF,fr-CG,fr-CH,fr-CI,fr-CM,fr-DJ,fr-DZ,fr-FR,fr-GA,fr-GN,fr-LB,fr-LU,fr-MG,fr-ML,fr-RW,fr-SN,fr-TG,fr-YT,ga-IE,gl-ES,gu-IN,ha-Latn-NG,he-IL,hi-IN,hr-HR,hr-ME,hu-HU,hy-AM,hy-AZ,id-ID,id-MY,it-CH,it-IT,it-SM,ja-JP,ka-IR,kk-KZ-Cyrl,km-KH,kn-IN,ko-KR,ks-IN-Arab,ku-IR,lg-UG,ln-CF,lt-LT,lv-LV,mi-CK,mk-MK,ml-IN,mn-CN,mr-IN,ms-BN,ms-MY,nb-NO,ne-IN,nl-BE,nl-CW,nl-GF,nl-NL,nl-SR,no-BV,no-NO,no-SJ,om-ET,or-IN,os-RU,pa-PK-Arab,pl-PL,pt-AO,pt-BR,pt-CV,pt-GW,pt-MO,pt-MZ,pt-PT,pt-ST,pt-TL,ro-RO,ro-RS,ru-KG,ru-KZ,ru-RU,ru-TM,si-LK,sk-SK,sl-SI,so-ET,so-SO,sq-AL,sq-ME,sq-MK,sr-BA-Cyrl,sr-BA-Latn,sr-ME-Latn,sr-RS,sr-RS-Latn,ss-ZA,st-LS,sv-FI,sv-SE,sw-UG,ta-LK,ta-MY,ta-SG,te-IN,th-TH,tr-TR,uk-UA,ur-IN,ur-PK,uz-AF,uz-AF-Arab,uz-Cyrl-UZ,uz-Latn-UZ,vai-LR-Latn,vi-VN,zh-Hans-CN,zh-Hans-MY,zh-Hant-HK,zh-Hans-MO,zh-Hans-SG,zh-Hant-TW,zh-Hant-US,zu-ZA,zxx-Cyrl-XX,zxx-Hans-XX,zxx-Hebr-XX,zxx-XX"/>
+			locales="aa-DJ,af-NA,af-ZA,agq-CM,ak-GH,am-ET,ar-AE,ar-BH,ar-DJ,ar-DZ,ar-EG,ar-IQ,ar-JO,ar-KW,ar-LB,ar-LY,ar-MA,ar-MR,ar-OM,ar-QA,ar-SA,ar-SD,ar-SY,ar-TN,ar-YE,as-IN,asa-TZ,az-AZ,bas-CM,be-BY,bem-ZM,bg-BG,bh-IN,bm-ML,bn-IN,br-FR,bs-Cyrl-BA,bs-Latn-BA,bs-ME,ca-FR,cop-EG,cs-CZ,da-DK,de-AT,de-CH,de-DE,el-GR,en-AU,en-CA,en-ET,en-GB,en-GH,en-GM,en-HK,en-IE,en-IN,en-KE,en-LK,en-LR,en-MW,en-MY,en-NG,en-NZ,en-PH,en-PK,en-PR,en-RW,en-SG,en-SL,en-TZ,en-UG,en-US,en-ZA,en-ZM,es-AR,es-CO,es-CR,es-DO,es-EC,es-ES,es-GQ,es-GT,es-HN,es-MX,es-SV,es-UY,es-VE,et-EE,fa-AF,fa-IR,ff-SN,fi-FI,fj-FJ,fr-AD,fr-BE,fr-BF,fr-BJ,fr-CA,fr-CD,fr-CF,fr-CG,fr-CH,fr-CI,fr-CM,fr-DJ,fr-DZ,fr-FR,fr-GA,fr-GN,fr-LB,fr-LU,fr-MG,fr-ML,fr-RW,fr-SN,fr-TG,fr-YT,ga-IE,gl-ES,gu-IN,ha-Latn-NG,he-IL,hi-IN,hr-HR,hr-ME,hu-HU,hy-AM,hy-AZ,id-ID,id-MY,it-CH,it-IT,it-SM,ja-JP,ka-IR,kk-Cyrl-KZ,km-KH,kn-IN,ko-KR,ks-Arab-IN,ku-IR,lg-UG,ln-CF,lt-LT,lv-LV,mi-CK,mk-MK,ml-IN,mn-CN,mr-IN,ms-BN,ms-MY,nb-NO,ne-IN,nl-BE,nl-CW,nl-GF,nl-NL,nl-SR,no-BV,no-NO,no-SJ,om-ET,or-IN,os-RU,pa-Arab-PK,pl-PL,pt-AO,pt-BR,pt-CV,pt-GW,pt-MO,pt-MZ,pt-PT,pt-ST,pt-TL,ro-RO,ro-RS,ru-KG,ru-KZ,ru-RU,ru-TM,si-LK,sk-SK,sl-SI,so-ET,so-SO,sq-AL,sq-ME,sq-MK,sr-Cyrl-BA,sr-Latn-BA,sr-Latn-ME,sr-Latn-RS,sr-RS,ss-ZA,st-LS,sv-FI,sv-SE,sw-UG,ta-LK,ta-MY,ta-SG,te-IN,th-TH,tr-TR,uk-UA,ur-IN,ur-PK,uz-AF,uz-Arab-AF,uz-Cyrl-UZ,uz-Latn-UZ,vai-Latn-LR,vi-VN,zh-Hans-CN,zh-Hans-MO,zh-Hans-MY,zh-Hans-SG,zh-Hant-HK,zh-Hant-TW,zh-Hant-US,zu-ZA,zxx-Cyrl-XX,zxx-Hans-XX,zxx-Hebr-XX,zxx-XX"/>
 		<runassemble
 			assembly="assembled"
-			size="full"
+			size="demo"
 			compilation="compiled"
-			locales="aa-DJ,af-NA,af-ZA,agq-CM,ak-GH,am-ET,ar-AE,ar-BH,ar-DJ,ar-DZ,ar-EG,ar-IQ,ar-JO,ar-KW,ar-LB,ar-LY,ar-MA,ar-MR,ar-OM,ar-QA,ar-SA,ar-SD,ar-SY,ar-TN,ar-YE,asa-TZ,as-IN,az-AZ,bas-CM,be-BY,bem-ZM,bg-BG,bh-IN,bm-ML,bn-IN,br-FR,bs-Cyrl-BA,bs-Latn-BA,bs-ME,ca-FR,cop-EG,cs-CZ,da-DK,de-AT,de-CH,de-DE,el-GR,en-AU,en-CA,en-CA-Latn,en-ET,en-GB,en-GH,en-GM,en-HK,en-IE,en-IN,en-KE,en-LK,en-LR,en-MW,en-MY,en-NG,en-NZ,en-PH,en-PK,en-PR,en-RW,en-SG,en-SL,en-TZ,en-UG,en-US,en-ZA,en-ZM,es-AR,es-CO,es-CR,es-DO,es-EC,es-ES,es-GQ,es-GT,es-HN,es-MX,es-SV,es-UY,es-VE,et-EE,fa-AF,fa-IR,ff-SN,fi-FI,fj-FJ,fr-AD,fr-BE,fr-BF,fr-BJ,fr-CA,fr-CD,fr-CF,fr-CG,fr-CH,fr-CI,fr-CM,fr-DJ,fr-DZ,fr-FR,fr-GA,fr-GN,fr-LB,fr-LU,fr-MG,fr-ML,fr-RW,fr-SN,fr-TG,fr-YT,ga-IE,gl-ES,gu-IN,ha-Latn-NG,he-IL,hi-IN,hr-HR,hr-ME,hu-HU,hy-AM,hy-AZ,id-ID,id-MY,it-CH,it-IT,it-SM,ja-JP,ka-IR,kk-KZ-Cyrl,km-KH,kn-IN,ko-KR,ks-IN-Arab,ku-IR,lg-UG,ln-CF,lt-LT,lv-LV,mi-CK,mk-MK,ml-IN,mn-CN,mr-IN,ms-BN,ms-MY,nb-NO,ne-IN,nl-BE,nl-CW,nl-GF,nl-NL,nl-SR,no-BV,no-NO,no-SJ,om-ET,or-IN,os-RU,pa-PK-Arab,pl-PL,pt-AO,pt-BR,pt-CV,pt-GW,pt-MO,pt-MZ,pt-PT,pt-ST,pt-TL,ro-RO,ro-RS,ru-KG,ru-KZ,ru-RU,ru-TM,si-LK,sk-SK,sl-SI,so-ET,so-SO,sq-AL,sq-ME,sq-MK,sr-BA-Cyrl,sr-BA-Latn,sr-ME-Latn,sr-RS,sr-RS-Latn,ss-ZA,st-LS,sv-FI,sv-SE,sw-UG,ta-LK,ta-MY,ta-SG,te-IN,th-TH,tr-TR,uk-UA,ur-IN,ur-PK,uz-AF,uz-AF-Arab,uz-Cyrl-UZ,uz-Latn-UZ,vai-LR-Latn,vi-VN,zh-Hans-CN,zh-Hans-MY,zh-Hant-HK,zh-Hans-MO,zh-Hans-SG,zh-Hant-TW,zh-Hant-US,zu-ZA,zxx-Cyrl-XX,zxx-Hans-XX,zxx-Hebr-XX,zxx-XX"/>
-			</target>
-	<target name="testilib.dyn.standard" description="test whether or not the standard-sized ilib file needs to be rebuilt">
-		<uptodate property="ilib.dyn.standard.not.needed" targetfile="${build.output.js}/ilib-standard-dyn-compiled.js">
-			<srcfiles dir="${build.lib}" includes="**/*.js" excludes="ilib-*.js,**/test/**,runner.js,*Loader.js"/>
-			<srcfiles dir="${build.lib}" includes="ilib-standard-webpack.js"/>
-			<srcfiles dir="${build.locale}" includes="**/*.json"/>
-		</uptodate>
-	</target>
-	<target name="assemble.dyndata.standard" depends="prepare,gen.manifest.locale,testilib.dyn.standard" unless="ilib.dyn.standard.not.needed" description="assembles the js files into a single file for use with dynamic locale data loading">
-		<runassemble
-			assembly="dynamic"
-			size="standard"
-			compilation="uncompiled"
-			locales=""/>
-		<runassemble
-			assembly="dynamic"
-			size="standard"
-			compilation="compiled"
-			locales=""/>
-	</target>
-	<target name="testilib.dyn.core" description="test whether or not the ilib-core file needs to be rebuilt">
-		<uptodate property="ilib.dyn.core.not.needed" targetfile="${build.output.js}/ilib-core-dyn-compiled.js">
-			<srcfiles dir="${build.lib}" includes="**/*.js" excludes="ilib-*.js,**/test/**,runner.js,*Loader.js"/>
-			<srcfiles dir="${build.lib}" includes="ilib-core-webpack.js"/>
-			<srcfiles dir="${build.locale}" includes="**/*.json"/>
-		</uptodate>
-	</target>
-	<target name="assemble.dyndata.core" depends="prepare,gen.manifest.locale,testilib.dyn.core" unless="ilib.dyn.core.not.needed" description="assembles the core set of the js files into a single file">
-		<runassemble
-			tgtfilename="${build.output.js}/ilib-core-dyn.js"
-			srcfilename="${build.lib}/ilib-core-inc.js"
-			locales=" "/>
-		<jscomp compilationlevel="simple"
-			warning="verbose"
-			debug="true"
-			output="${build.output.js}/ilib-core-dyn-compiled.js"
-			description="Use the google closure compiler to compress code"
-			encoding="utf-8">
-			<externs dir="${build.lib}">
-				<file name="externs.js"/>
-			</externs>
-			<sources dir="${build.output.js}">
-				<file name="ilib-core-dyn.js"/>
-			</sources>
-		</jscomp>
-	</target>
-	<target name="testilib.dyn.full" description="test whether or not the ilib-full file needs to be rebuilt">
-		<uptodate property="ilib.dyn.full.not.needed" targetfile="${build.output.js}/ilib-full-dyn-compiled.js">
-			<srcfiles dir="${build.lib}" includes="**/*.js" excludes="ilib-*.js,**/test/**,runner.js,*Loader.js"/>
-			<srcfiles dir="${build.lib}" includes="ilib-full-webpack.js"/>
-			<srcfiles dir="${build.locale}" includes="**/*.json"/>
-		</uptodate>
-	</target>
-	<target name="assemble.dyndata.full" depends="prepare,gen.manifest.locale,testilib.dyn.full" unless="ilib.dyn.full.not.needed" description="assembles the full set of the js files into a single file">
-		<runassemble
-			tgtfilename="${build.output.js}/ilib-full-dyn.js"
-			srcfilename="${build.lib}/ilib-full-inc.js"
-			locales=" "/>
-		<jscomp compilationlevel="simple"
-			warning="verbose"
-			debug="true"
-			output="${build.output.js}/ilib-full-dyn-compiled.js"
-			description="Use the google closure compiler to compress code"
-			encoding="utf-8">
-			<externs dir="${build.lib}">
-				<file name="externs.js"/>
-			</externs>
-			<sources dir="${build.output.js}">
-				<file name="ilib-full-dyn.js"/>
-			</sources>
-		</jscomp>
+			locales="aa-DJ,af-NA,af-ZA,agq-CM,ak-GH,am-ET,ar-AE,ar-BH,ar-DJ,ar-DZ,ar-EG,ar-IQ,ar-JO,ar-KW,ar-LB,ar-LY,ar-MA,ar-MR,ar-OM,ar-QA,ar-SA,ar-SD,ar-SY,ar-TN,ar-YE,as-IN,asa-TZ,az-AZ,bas-CM,be-BY,bem-ZM,bg-BG,bh-IN,bm-ML,bn-IN,br-FR,bs-Cyrl-BA,bs-Latn-BA,bs-ME,ca-FR,cop-EG,cs-CZ,da-DK,de-AT,de-CH,de-DE,el-GR,en-AU,en-CA,en-ET,en-GB,en-GH,en-GM,en-HK,en-IE,en-IN,en-KE,en-LK,en-LR,en-MW,en-MY,en-NG,en-NZ,en-PH,en-PK,en-PR,en-RW,en-SG,en-SL,en-TZ,en-UG,en-US,en-ZA,en-ZM,es-AR,es-CO,es-CR,es-DO,es-EC,es-ES,es-GQ,es-GT,es-HN,es-MX,es-SV,es-UY,es-VE,et-EE,fa-AF,fa-IR,ff-SN,fi-FI,fj-FJ,fr-AD,fr-BE,fr-BF,fr-BJ,fr-CA,fr-CD,fr-CF,fr-CG,fr-CH,fr-CI,fr-CM,fr-DJ,fr-DZ,fr-FR,fr-GA,fr-GN,fr-LB,fr-LU,fr-MG,fr-ML,fr-RW,fr-SN,fr-TG,fr-YT,ga-IE,gl-ES,gu-IN,ha-Latn-NG,he-IL,hi-IN,hr-HR,hr-ME,hu-HU,hy-AM,hy-AZ,id-ID,id-MY,it-CH,it-IT,it-SM,ja-JP,ka-IR,kk-Cyrl-KZ,km-KH,kn-IN,ko-KR,ks-Arab-IN,ku-IR,lg-UG,ln-CF,lt-LT,lv-LV,mi-CK,mk-MK,ml-IN,mn-CN,mr-IN,ms-BN,ms-MY,nb-NO,ne-IN,nl-BE,nl-CW,nl-GF,nl-NL,nl-SR,no-BV,no-NO,no-SJ,om-ET,or-IN,os-RU,pa-Arab-PK,pl-PL,pt-AO,pt-BR,pt-CV,pt-GW,pt-MO,pt-MZ,pt-PT,pt-ST,pt-TL,ro-RO,ro-RS,ru-KG,ru-KZ,ru-RU,ru-TM,si-LK,sk-SK,sl-SI,so-ET,so-SO,sq-AL,sq-ME,sq-MK,sr-Cyrl-BA,sr-Latn-BA,sr-Latn-ME,sr-Latn-RS,sr-RS,ss-ZA,st-LS,sv-FI,sv-SE,sw-UG,ta-LK,ta-MY,ta-SG,te-IN,th-TH,tr-TR,uk-UA,ur-IN,ur-PK,uz-AF,uz-Arab-AF,uz-Cyrl-UZ,uz-Latn-UZ,vai-Latn-LR,vi-VN,zh-Hans-CN,zh-Hans-MO,zh-Hans-MY,zh-Hans-SG,zh-Hant-HK,zh-Hant-TW,zh-Hant-US,zu-ZA,zxx-Cyrl-XX,zxx-Hans-XX,zxx-Hebr-XX,zxx-XX"/>
 	</target>
 	<target name="assemble.dynamic" depends="prepare,gen.manifest.locale,install.uglify" description="compresses/minifies the dynamic load code files">
 		<!-- handle ilib.js as a special case so we can replace the version number in it -->
@@ -458,7 +365,7 @@ limitations under the License.
 		</copy>
 	</target>
 	
-	<target name="dist" depends="assemble.core,assemble.standard,assemble.full,assemble.dyndata.core,assemble.dyndata.standard,assemble.dyndata.full,assemble.dynamic,doc,demo,update.package.json" description="Create all distribution objects and exports them to the top level dir for packaging">
+	<target name="dist" depends="assemble.core,assemble.standard,assemble.full,assemble.dynamic,doc,demo,update.package.json" description="Create all distribution objects and exports them to the top level dir for packaging">
 		<mkdir dir="${build.export}/js/assembled"/>
 		<copy todir="${build.export}/js/assembled">
 			<fileset dir="${build.output.js}">
@@ -560,7 +467,6 @@ limitations under the License.
 		<attribute name="failquit"/>
 		<sequential>
 			<exec osfamily="unix" executable="node" dir="${build.test}" failifexecutionfails="@{failquit}" failonerror="@{failquit}">
-				<arg value="--inspect-brk"/>
 				<arg line="testRunner.js"/>
 				<arg line="@{assembly}"/>
 				<arg line="@{compilation}"/>
@@ -616,102 +522,102 @@ limitations under the License.
 		</sequential>
 	</macrodef>
 
-	<target depends="assemble.dyncode.unittest,update.package.json" name="test.address.nu">
+	<target depends="update.package.json" name="test.address.nu">
 		<run-nodeunit suite="address" failquit="true"/>
 	</target>	
-	<target depends="assemble.dyncode.unittest,update.package.json" name="test.calendar.nu">
+	<target depends="update.package.json" name="test.calendar.nu">
 		<run-nodeunit suite="calendar" failquit="true"/>
 	</target>
-	<target depends="assemble.dyncode.unittest,update.package.json" name="test.collate.nu">
+	<target depends="update.package.json" name="test.collate.nu">
 		<run-nodeunit suite="collate" failquit="true"/>
 	</target>
-	<target depends="assemble.dyncode.unittest,update.package.json" name="test.ctype.nu">
+	<target depends="update.package.json" name="test.ctype.nu">
 		<run-nodeunit suite="ctype" failquit="true"/>
 	</target>
-	<target depends="assemble.dyncode.unittest,update.package.json" name="test.date.nu">
+	<target depends="update.package.json" name="test.date.nu">
 		<run-nodeunit suite="date" failquit="true"/>
 	</target>
-	<target depends="assemble.dyncode.unittest,update.package.json" name="test.daterange.nu">
+	<target depends="update.package.json" name="test.daterange.nu">
 		<run-nodeunit suite="daterange" failquit="true"/>
 	</target>
-	<target depends="assemble.dyncode.unittest,update.package.json" name="test.durfmt.nu">
+	<target depends="update.package.json" name="test.durfmt.nu">
 		<run-nodeunit suite="durfmt" failquit="true"/>
 	</target>
-	<target depends="assemble.dyncode.unittest,update.package.json" name="test.maps.nu">
+	<target depends="update.package.json" name="test.maps.nu">
 		<run-nodeunit suite="maps" failquit="true"/>
 	</target>
-	<target depends="assemble.dyncode.unittest,update.package.json" name="test.name.nu">
+	<target depends="update.package.json" name="test.name.nu">
 		<run-nodeunit suite="name" failquit="true"/>
 	</target>
-	<target depends="assemble.dyncode.unittest,update.package.json" name="test.number.nu">
+	<target depends="update.package.json" name="test.number.nu">
 		<run-nodeunit suite="number" failquit="true"/>
 	</target>
-	<target depends="assemble.dyncode.unittest,update.package.json" name="test.phone.nu">
+	<target depends="update.package.json" name="test.phone.nu">
 		<run-nodeunit suite="phone" failquit="true"/>
 	</target>
-	<target depends="assemble.dyncode.unittest,update.package.json" name="test.root.nu">
+	<target depends="update.package.json" name="test.root.nu">
 		<run-nodeunit suite="root" failquit="true"/>
 	</target>
-	<target depends="assemble.dyncode.unittest,update.package.json" name="test.strings-ext.nu">
+	<target depends="update.package.json" name="test.strings-ext.nu">
 		<run-nodeunit suite="strings-ext" failquit="true"/>
 	</target>
-	<target depends="assemble.dyncode.unittest,update.package.json" name="test.units.nu">
+	<target depends="update.package.json" name="test.units.nu">
 		<run-nodeunit suite="units" failquit="true"/>
 	</target>
-	<target depends="assemble.dyncode.unittest,update.package.json" name="test.util.nu">
+	<target depends="update.package.json" name="test.util.nu">
 		<run-nodeunit suite="util" failquit="true"/>
 	</target>
 
-	<target depends="assemble.dyncode.unittest,update.package.json" name="debug.address.nu">
+	<target depends="update.package.json" name="debug.address.nu">
 		<debug-nodeunit suite="address" failquit="true"/>
 	</target>	
-	<target depends="assemble.dyncode.unittest,update.package.json" name="debug.calendar.nu">
+	<target depends="update.package.json" name="debug.calendar.nu">
 		<debug-nodeunit suite="calendar" failquit="true"/>
 	</target>
-	<target depends="assemble.dyncode.unittest,update.package.json" name="debug.collate.nu">
+	<target depends="update.package.json" name="debug.collate.nu">
 		<debug-nodeunit suite="collate" failquit="true"/>
 	</target>
-	<target depends="assemble.dyncode.unittest,update.package.json" name="debug.ctype.nu">
+	<target depends="update.package.json" name="debug.ctype.nu">
 		<debug-nodeunit suite="ctype" failquit="true"/>
 	</target>
-	<target depends="assemble.dyncode.unittest,update.package.json" name="debug.date.nu">
+	<target depends="update.package.json" name="debug.date.nu">
 		<debug-nodeunit suite="date" failquit="true"/>
 	</target>
-	<target depends="assemble.dyncode.unittest,update.package.json" name="debug.daterange.nu">
+	<target depends="update.package.json" name="debug.daterange.nu">
 		<debug-nodeunit suite="daterange" failquit="true"/>
 	</target>
-	<target depends="assemble.dyncode.unittest,update.package.json" name="debug.durfmt.nu">
+	<target depends="update.package.json" name="debug.durfmt.nu">
 		<debug-nodeunit suite="durfmt" failquit="true"/>
 	</target>
-	<target depends="assemble.dyncode.unittest,update.package.json" name="debug.maps.nu">
+	<target depends="update.package.json" name="debug.maps.nu">
 		<debug-nodeunit suite="maps" failquit="true"/>
 	</target>
-	<target depends="assemble.dyncode.unittest,update.package.json" name="debug.name.nu">
+	<target depends="update.package.json" name="debug.name.nu">
 		<debug-nodeunit suite="name" failquit="true"/>
 	</target>
-	<target depends="assemble.dyncode.unittest,update.package.json" name="debug.number.nu">
+	<target depends="update.package.json" name="debug.number.nu">
 		<debug-nodeunit suite="number" failquit="true"/>
 	</target>
-	<target depends="assemble.dyncode.unittest,update.package.json" name="debug.phone.nu">
+	<target depends="update.package.json" name="debug.phone.nu">
 		<debug-nodeunit suite="phone" failquit="true"/>
 	</target>
-	<target depends="assemble.dyncode.unittest,update.package.json" name="debug.root.nu">
+	<target depends="update.package.json" name="debug.root.nu">
 		<debug-nodeunit suite="root" failquit="true"/>
 	</target>
-	<target depends="assemble.dyncode.unittest,update.package.json" name="debug.strings-ext.nu">
+	<target depends="update.package.json" name="debug.strings-ext.nu">
 		<debug-nodeunit suite="strings-ext" failquit="true"/>
 	</target>
-	<target depends="assemble.dyncode.unittest,update.package.json" name="debug.units.nu">
+	<target depends="update.package.json" name="debug.units.nu">
 		<debug-nodeunit suite="units" failquit="true"/>
 	</target>
-	<target depends="assemble.dyncode.unittest,update.package.json" name="debug.util.nu">
+	<target depends="update.package.json" name="debug.util.nu">
 		<debug-nodeunit suite="util" failquit="true"/>
 	</target>
 
-	<target name="test.dynamic.uncompiled.nu" depends="update.package.json">
+	<target name="test.uncompiled.nu" depends="update.package.json">
 	    <run-nodeunit-all assembly="dynamic" compilation="uncompiled" failquit="true"/>
 	</target>
-	<target name="test.dynamic.compiled.nu" depends="update.package.json">
+	<target name="test.compiled.nu" depends="update.package.json">
 	    <run-nodeunit-all assembly="dynamic" compilation="compiled" failquit="true"/>
 	</target>
 	<target name="test.assembled.uncompiled.nu" depends="update.package.json,assemble.unittest">
@@ -720,41 +626,9 @@ limitations under the License.
 	<target name="test.assembled.compiled.nu" depends="update.package.json,assemble.unittest">
 	    <run-nodeunit-all assembly="assembled" compilation="compiled" failquit="true"/>
 	</target>
-	<target name="test.dyndata.uncompiled.nu" depends="assemble.dyndata.unittest,update.package.json">
-	    <run-nodeunit-all assembly="dynamicdata" compilation="uncompiled" failquit="true"/>
-	</target>
-	<target name="test.dyndata.compiled.nu" depends="assemble.dyndata.unittest,update.package.json">
-	    <run-nodeunit-all assembly="dynamicdata" compilation="compiled" failquit="true"/>
-	</target>
 				
-	<target name="test.all.nu" depends="test.dynamic.uncompiled.nu,test.dynamic.compiled.nu,test.assembled.uncompiled.nu,test.assembled.compiled.nu,test.dyndata.uncompiled.nu,test.dyndata.compiled.nu" />
+	<target name="test.all.nu" depends="test.uncompiled.nu,test.compiled.nu,test.assembled.uncompiled.nu,test.assembled.compiled.nu" />
 	
-	<macrodef name="runtests">
-        <attribute name="assembly"/>
-        <attribute name="compilation"/>
-        <attribute name="suite"/>
-		<attribute name="failquit"/>
-		<sequential>
-			<exec osfamily="unix" executable="node" dir="${build.test}" failifexecutionfails="@{failquit}" failonerror="@{failquit}">
-				<arg line="testSuite.js"/>
-				<arg line="@{assembly}"/>
-				<arg line="@{compilation}"/>
-				<arg line="@{suite}"/>
-			</exec>
-			<exec osfamily="mac" executable="node" dir="${build.test}" failifexecutionfails="@{failquit}" failonerror="@{failquit}">
-				<arg value="testSuite.js"/>
-				<arg line="@{assembly}"/>
-				<arg line="@{compilation}"/>
-				<arg line="@{suite}"/>
-			</exec>
-			<exec osfamily="windows" executable="node.exe" dir="${build.test}" failifexecutionfails="@{failquit}"  failonerror="@{failquit}">
-				<arg line="testSuite.js"/>
-				<arg line="@{assembly}"/>
-				<arg line="@{compilation}"/>
-				<arg line="@{suite}"/>
-			</exec>
-		</sequential>
-	</macrodef>
 	<macrodef name="run">
         <attribute name="script"/>
         <attribute name="args"/>
@@ -778,120 +652,7 @@ limitations under the License.
 		</sequential>
 	</macrodef>
 
-	<target depends="assemble.dyncode.unittest" name="test.util">
-		<runtests suite="util" assembly="dynamic" compilation="compiled" failquit="true"/>
-	</target>
-	<target depends="assemble.dyncode.unittest" name="test.root">
-		<runtests suite="." assembly="dynamic" compilation="compiled" failquit="true"/>
-	</target>
-	<target depends="assemble.dyncode.unittest" name="test.calendar">
-		<runtests suite="calendar" assembly="dynamic" compilation="compiled" failquit="true"/>
-	</target>
-	<target depends="assemble.dyncode.unittest" name="test.date">
-		<runtests suite="date1" assembly="dynamic" compilation="compiled" failquit="false"/>
-		<runtests suite="date2" assembly="dynamic" compilation="compiled" failquit="false"/>
-		<runtests suite="date3" assembly="dynamic" compilation="compiled" failquit="true"/>
-	</target>
-	<target depends="assemble.dyncode.unittest" name="test.daterange">
-		<runtests suite="daterange1" assembly="dynamic" compilation="compiled" failquit="false"/>
-		<runtests suite="daterange3" assembly="dynamic" compilation="compiled" failquit="false"/>
-		<runtests suite="daterange2" assembly="dynamic" compilation="compiled" failquit="true"/>
-	</target>
-	<target depends="assemble.dyncode.unittest" name="test.durfmt">
-		<runtests suite="durfmt" assembly="dynamic" compilation="compiled" failquit="true"/>
-	</target>
-	<target depends="assemble.dyncode.unittest,assemble.dyndata.unittest,assemble.unittest" name="test.number">
-		<runtests suite="number" assembly="dynamic" compilation="compiled" failquit="true"/>
-        <runtests suite="number" assembly="dynamicdata" compilation="compiled" failquit="true"/>
-        <runtests suite="number" assembly="assembled" compilation="compiled" failquit="true"/>
-        <runtests suite="number" assembly="dynamic" compilation="uncompiled" failquit="true"/>
-        <runtests suite="number" assembly="dynamicdata" compilation="uncompiled" failquit="true"/>
-        <runtests suite="number" assembly="assembled" compilation="uncompiled" failquit="true"/>
-	</target>
-	<target depends="assemble.dyncode.unittest" name="test.maps">
-		<runtests suite="maps" assembly="dynamic" compilation="compiled" failquit="true"/>
-	</target>
-	<target depends="assemble.dyncode.unittest" name="test.ctype">
-		<runtests suite="ctype" assembly="dynamic" compilation="compiled" failquit="true"/>
-	</target>
-	<target depends="assemble.dyncode.unittest" name="test.strings-ext">
-		<runtests suite="strings-ext" assembly="dynamic" compilation="compiled" failquit="false"/>
-	</target>
-	<target depends="assemble.dyncode.unittest" name="test.phone">
-		<runtests suite="phone1" assembly="dynamic" compilation="compiled" failquit="false"/>
-		<runtests suite="phone2" assembly="dynamic" compilation="compiled" failquit="false"/>
-		<runtests suite="phone3" assembly="dynamic" compilation="compiled" failquit="true"/>
-	</target>
-	<target depends="assemble.dyncode.unittest" name="test.units">
-		<runtests suite="units" assembly="dynamic" compilation="compiled" failquit="true"/>
-	</target>
-	<target depends="assemble.dyncode.unittest" name="test.name">
-		<runtests suite="name" assembly="dynamic" compilation="compiled" failquit="true"/>
-	</target>
-	<target depends="assemble.dyncode.unittest" name="test.address">
-		<runtests suite="address1" assembly="dynamic" compilation="compiled" failquit="false"/>
-		<runtests suite="address2" assembly="dynamic" compilation="compiled" failquit="false"/>
-		<runtests suite="address3" assembly="dynamic" compilation="compiled" failquit="false"/>
-	</target>
-	<target depends="assemble.dyncode.unittest" name="test.collate">
-		<runtests suite="collate" assembly="dynamic" compilation="compiled" failquit="true"/>
-	</target>
-	<macrodef name="runallsuites">
-        <attribute name="assembly"/>
-        <attribute name="compilation"/>
-        <attribute name="failquit"/>
-		<sequential>
-			<runtests suite="util" assembly="@{assembly}" compilation="@{compilation}" failquit="@{failquit}"/>
-			<runtests suite="." assembly="@{assembly}" compilation="@{compilation}" failquit="@{failquit}"/>
-			<runtests suite="calendar" assembly="@{assembly}" compilation="@{compilation}" failquit="@{failquit}"/>
-			<runtests suite="date1" assembly="@{assembly}" compilation="@{compilation}" failquit="@{failquit}"/>
-			<runtests suite="date2" assembly="@{assembly}" compilation="@{compilation}" failquit="@{failquit}"/>
-			<runtests suite="date3" assembly="@{assembly}" compilation="@{compilation}" failquit="@{failquit}"/>
-			<runtests suite="daterange1" assembly="@{assembly}" compilation="@{compilation}" failquit="@{failquit}"/>
-			<runtests suite="daterange2" assembly="@{assembly}" compilation="@{compilation}" failquit="@{failquit}"/>
-			<runtests suite="daterange3" assembly="@{assembly}" compilation="@{compilation}" failquit="@{failquit}"/>
-			<runtests suite="durfmt" assembly="@{assembly}" compilation="@{compilation}" failquit="@{failquit}"/>
-			<runtests suite="number" assembly="@{assembly}" compilation="@{compilation}" failquit="@{failquit}"/>
-			<runtests suite="maps" assembly="@{assembly}" compilation="@{compilation}" failquit="@{failquit}"/>
-			<runtests suite="ctype" assembly="@{assembly}" compilation="@{compilation}" failquit="@{failquit}"/>
-			<runtests suite="strings-ext" assembly="@{assembly}" compilation="@{compilation}" failquit="@{failquit}"/>
-			<runtests suite="phone1" assembly="@{assembly}" compilation="@{compilation}" failquit="@{failquit}"/>
-			<runtests suite="phone2" assembly="@{assembly}" compilation="@{compilation}" failquit="@{failquit}"/>
-			<runtests suite="phone3" assembly="@{assembly}" compilation="@{compilation}" failquit="@{failquit}"/>
-			<runtests suite="units" assembly="@{assembly}" compilation="@{compilation}" failquit="@{failquit}"/>
-			<runtests suite="name" assembly="@{assembly}" compilation="@{compilation}" failquit="@{failquit}"/>
-			<runtests suite="address1" assembly="@{assembly}" compilation="@{compilation}" failquit="@{failquit}"/>
-			<runtests suite="address2" assembly="@{assembly}" compilation="@{compilation}" failquit="@{failquit}"/>
-			<runtests suite="address3" assembly="@{assembly}" compilation="@{compilation}" failquit="@{failquit}"/>
-			<runtests suite="collate" assembly="@{assembly}" compilation="@{compilation}" failquit="@{failquit}"/>
-		</sequential>
-	</macrodef>
-	<target depends="assemble.unittest" name="test.assembled.compiled">
-		<runallsuites assembly="assembled" compilation="compiled" failquit="true"/>
-	</target>
-	<target depends="assemble.unittest" name="test.assembled.uncompiled">
-		<runallsuites assembly="assembled" compilation="uncompiled" failquit="true"/>
-	</target>
-	<target name="test.dynamic.uncompiled">
-		<runallsuites assembly="dynamic" compilation="uncompiled" failquit="true"/>
-	</target>
-	<target name="test.dynamic.compiled">
-		<runallsuites assembly="dynamic" compilation="compiled" failquit="false"/>
-	</target>
-	<target depends="assemble.dyndata.unittest" name="test.dynamicdata.compiled">
-		<runallsuites assembly="dynamicdata" compilation="compiled" failquit="true"/>
-	</target>
-	<target depends="assemble.dyndata.unittest" name="test.dynamicdata.uncompiled">
-		<runallsuites assembly="dynamicdata" compilation="uncompiled" failquit="true"/>
-	</target>
-	<target name="bench.core" depends="assemble.unittest,assemble.dyndata.unittest"
-			description="run the benchmarking tests">
-		<echo>Benchmarking the code</echo>
-		<exec executable="node" dir="${build.lib}" failifexecutionfails="true" failonerror="true">
-			<arg line="benchSuite.js"/>
-		</exec>
-	</target>
-	<target name="test.core" depends="test.assembled.compiled,test.assembled.uncompiled,test.dynamicdata.compiled,test.dynamicdata.uncompiled,test.dynamic.compiled,test.dynamic.uncompiled"
+	<target name="test.core" depends="test.compiled.nu,test.uncompiled.nu"
 			description="run the tests">
 	</target>
 	<target name="core.junit.report" description="Generate a report on the junit tests">
@@ -902,7 +663,6 @@ limitations under the License.
 	<target name="reports.only" depends="core.junit.report" description="Generate reports on previously run tests"/>
 	<target name="reports" depends="test.only,reports.only" description="Run all tests, then generate reports on the results"/>
 	<target name="test" depends="reports" description="Run all tests and build all reports"/>
-	<target name="bench" depends="bench.core" description="Run all benchmark tests and build all benchmark reports"/>
 	<target name="testjsdoc" description="test whether or not the jsdocs need to be rebuilt">
 		<uptodate
                 property="core.jsdoc.not.needed"
@@ -911,7 +671,7 @@ limitations under the License.
 		</uptodate>
 	</target>
 	<target name="doc"
-            depends="assemble.dyndata.full,testjsdoc"
+            depends="assemble.full,testjsdoc"
             description="creates jsdoc for all local java files in this project"
             unless="core.jsdoc.not.needed">
 		<delete dir="${build.jsdoc}"/>
@@ -925,7 +685,7 @@ limitations under the License.
 			<arg value="--directory=${build.jsdoc}"/>
 			<arg value="--recurse=100"/>
 			<arg value="--encoding=utf-8"/>
-			<arg value="${build.output.js}/ilib-full-dyn.js"/>
+			<arg value="${build.output.js}/ilib-full.js"/>
 		</java>
 	</target>
 	<target name="testinfo" description="test whether or not the localeinfo.json files need to rebuilt">
@@ -992,21 +752,6 @@ limitations under the License.
 		<exec osfamily="windows" executable="node.exe" dir="${build.locale}">
 			<arg value="${build.tools.build}/mkmf.js"/>
 		</exec>
-	</target>
-	<target name="teststubs" description="test whether or not the ilib-stubs.js file needs to be rebuilt">
-		<uptodate
-                property="stubs.not.needed"
-                targetfile="${build.lib}/ilib-stubs.js">
-			<srcfiles dir="${build.lib}" includes="**/*.js" excludes="output/**,ilib-*.js,**/test/**,runner.js" />
-		</uptodate>
-	</target>
-	<target name="gen.stubs"
-			depends="teststubs,assemble.dyndata.full"
-			description="Generate the ilib function and class stubs file"
-			unless="stubs.not.needed">
-		<run dir="${build.lib}"
-			script="${build.tools.build}/mkstubs.js"
-			args="${build.output.js}/ilib-full-dyn.js"/>
 	</target>
 	<target name="testpackagejson" description="test whether or not the package.json file needs to be rebuilt">
 		<uptodate
@@ -1166,19 +911,13 @@ limitations under the License.
 	<target name="test.dynamic.compiled.rhino" depends="location.trireme,prepare,gen.manifest.locale">
 		<runallsuites.rhino assembly="dynamic" compilation="compiled" failquit="true"/>
 	</target>
-	<target name="test.dynamicdata.compiled.rhino" depends="assemble.dyndata.unittest,location.trireme">
-		<runallsuites.rhino assembly="dynamicdata" compilation="compiled" failquit="true"/>
-	</target>
-	<target name="test.dynamicdata.uncompiled.rhino" depends="assemble.dyndata.unittest,location.trireme">
-		<runallsuites.rhino assembly="dynamicdata" compilation="uncompiled" failquit="true"/>
-	</target>
 	<target name="test.calendar.rhino" depends="location.trireme,gen.manifest.locale">
 		<runtests.rhino suite="calendar" assembly="dynamic" compilation="uncompiled" failquit="true"/>
 	</target>
 	<target name="test.units.rhino" depends="location.trireme,gen.manifest.locale">
 		<runtests.rhino suite="units" assembly="dynamic" compilation="uncompiled" failquit="true"/>
 	</target>
-	<target name="test.rhino" depends="test.assembled.compiled.rhino,test.assembled.uncompiled.rhino,test.dynamic.uncompiled.rhino,test.dynamic.compiled.rhino,test.dynamicdata.compiled.rhino,test.dynamicdata.uncompiled.rhino">
+	<target name="test.rhino" depends="test.assembled.compiled.rhino,test.assembled.uncompiled.rhino,test.dynamic.uncompiled.rhino,test.dynamic.compiled.rhino">
 	</target>
 	
 	<target name="test.remote" depends="prepare,assemble.unittest" description="Run a remote server to test ilib in remote browsers">

@@ -1,6 +1,6 @@
 /*
  * webpack.config.js - webpack configuration script for ilib
- * 
+ *
  * Copyright © 2018, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -21,11 +21,11 @@ var path = require('path');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
 module.exports = function(env, args) {
-    var size = args.env.size || "standard", 
-        assembly = args.env.assembly || "assembled", 
-        compilation = args.env.compilation || "uncompiled", 
+    var size = args.env.size || "standard",
+        assembly = args.env.assembly || "assembled",
+        compilation = args.env.compilation || "uncompiled",
         locales = args.env.locales;
-    
+
     // "ut" is unit tests
     if (size !== "core" && size !== "standard" && size !== "full" && size !== "ut" && size !== "demo") {
         size = "standard";
@@ -34,7 +34,7 @@ module.exports = function(env, args) {
     if (assembly !== "dynamic" && assembly !== "assembled") {
         assembly = "assembled";
     }
-    
+
     if (compilation !== "compiled" && compilation !== "uncompiled") {
         compilation = "uncompiled";
     }
@@ -51,7 +51,7 @@ module.exports = function(env, args) {
             "zh-Hans-CN", "zh-Hant-HK", "zh-Hant-TW", "zh-Hans-SG"
         ];
     }
-    
+
     var ret = {
         entry: './lib/ilib-' + size + '-webpack.js',
         output: {
@@ -68,7 +68,7 @@ module.exports = function(env, args) {
             })
         ]
     };
-    
+
     ret.output.filename = "ilib-" + size;
     if (assembly === "dynamic") {
         ret.output.filename += "-dyn";
@@ -91,8 +91,7 @@ module.exports = function(env, args) {
             }
         }];
     }
-    
-    
+
     if (compilation === "compiled") {
         ret.plugins.push(new UglifyJsPlugin({
             cache: true,
@@ -103,7 +102,7 @@ module.exports = function(env, args) {
             }
         }));
     }
-    
+
     //console.log("config is " + JSON.stringify(ret, undefined, 4));
     return ret;
 };

@@ -113,24 +113,41 @@ if (process.argv.length > 2) {
 
 console.log("Running " + compilation + " " + assembly + " suites: " + JSON.stringify(suite));
 
+var suites, ilib;
+var modules = {};
+
 if (assembly === "dynamic") {
     console.log("requiring ../lib/ilib.js");
-    var ilib = require("../lib/ilib.js");
+    ilib = require("../lib/ilib.js");
 
     ilib.setLoaderCallback(NodeLoader(ilib));
 
     ilib._dyncode = true; // indicate that we are using dynamically loaded code
     ilib._dyndata = true;
+
+    for (var i = 0; i < suite.length; i++) {
+        console.log("Adding suite: " + suite[i]);
+        suites = require("./" + path.join(suite[i], "nodeunit/testSuiteFiles.js")).files.forEach(function(file) {
+            var test = require("./" + path.join(suite[i], "nodeunit", file));
+            if (!modules[suite[i]]) modules[suite[i]] = {};
+            for (var t in test) {
+                modules[suite[i]][t] = test[t];
+            }
+        });
+    }
 } else {
+    var geval = eval; // execute in the global scope
+    
     var fileName = "../output/js/ilib-ut" + ((assembly === "dynamicdata") ? "-dyn" : "") + ((compilation === "compiled") ? "-compiled" : "") + ".js";
     console.log("loading in " + fileName);
     var script = fs.readFileSync(fileName, "utf-8");
-    eval(script);
-    var ilib = module.exports;
+    geval(script);
+    
+    ilib = global["ilib"];
     
     console.log("loading in shim file ilib-unpack.js");
     script = fs.readFileSync("../lib/ilib-unpack.js", "utf-8");
-    eval(script);
+    geval(script);
 
     if (assembly === "dynamicdata") {
         ilib.setLoaderCallback(NodeLoader(ilib));
@@ -144,20 +161,31 @@ if (assembly === "dynamic") {
         ilib._dyncode = false;
         ilib._dyndata = false;
     }
-}
+    
+    global["require"] = function(pathname) {
+        console.log("Attempt to load " + pathname);
+        throw "Require not available in assembled tests.";
+    };
+    
+    global["normtests"] = require("../test/strings-ext/test/normdata.js")
 
-var suites;
-var modules = {};
-
-for (var i = 0; i < suite.length; i++) {
-    console.log("Adding suite: " + suite[i]);
-    suites = require("./" + path.join(suite[i], "nodeunit/testSuiteFiles.js")).files.forEach(function(file) {
-        var test = require("./" + path.join(suite[i], "nodeunit", file));
-        if (!modules[suite[i]]) modules[suite[i]] = {};
-        for (var t in test) {
-            modules[suite[i]][t] = test[t];
+    for (var i = 0; i < suite.length; i++) {
+        console.log("Adding suite: " + suite[i]);
+        suites = require("./" + path.join(suite[i], "nodeunit/testSuiteFiles.js")).files;
+        for (var j = 0; j < suites.length; j++) {
+            var pathname = "./" + path.join(suite[i], "nodeunit", suites[j]);
+            // console.log("Loading test file " + pathname);   
+            var script = fs.readFileSync(pathname, "utf-8");
+            global["module"] = {exports: {}};
+            geval(script);
+            var test = global["module"].exports;
+            if (!modules[suite[i]]) modules[suite[i]] = {};
+            for (var t in test) {
+                // console.log("Adding test group " + t);
+                modules[suite[i]][t] = test[t];
+            }
         }
-    });
+    }
 }
 
 reporter.run(modules);

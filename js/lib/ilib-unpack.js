@@ -1,7 +1,7 @@
 /**
- * ilib-unpack.js - Unpack a set of ilib routines webpacked into a 
+ * ilib-unpack.js - Unpack a set of ilib routines webpacked into a
  * single file back into the global space.
- * 
+ *
  * @license
  * Copyright © 2018, JEDLSoft
  *
@@ -24,7 +24,7 @@
 
 if (typeof(ilib) !== 'undefined') {
     var top = ilib._top();
-    
+
     if (top) {
         var exportClasses = [
             "DateRngFmt",
@@ -115,10 +115,33 @@ if (typeof(ilib) !== 'undefined') {
             "UTF16LE",
             "Country",
             "ListFmt",
-            "AlphabeticIndex"
+            "AlphabeticIndex",
+            "TimeZone",
+            "Currency",
+
+            "ISet",
+            "SearchUtils",
+            "MathUtils",
+            "JSUtils",
+            "Path",
+            "Astro",
+            "Utils",
+            "CodePointSource",
+            "CopticRataDie",
+            "ElementIterator",
+            "EthiopicRataDie",
+            "GregRataDie",
+            "HanRataDie",
+            "NumberingPlan",
+            "PersAlgoRataDie",
+            "PersRataDie",
+            "PhoneHandlerFactory",
+            "PhoneLocale",
+            "RataDie"
         ];
-        
+
         exportClasses.forEach(function(className) {
+            console.log("Defining " + className);
             if (typeof(ilib[className]) !== 'undefined') {
                 top[className] = ilib[className];
             }

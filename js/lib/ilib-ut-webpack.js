@@ -170,7 +170,4 @@ ilib.PhoneHandlerFactory = require("./PhoneHandlerFactory.js");
 ilib.PhoneLocale = require("./PhoneLocale.js");
 ilib.RataDie = require("./RataDie.js");
 
-// special case for the normalization tests because they are so huge
-ilib.normtests = require("../test/strings-ext/test/normdata.js")
-
 module.exports = ilib;
