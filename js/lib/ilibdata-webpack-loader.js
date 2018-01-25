@@ -92,8 +92,7 @@ var ilibDataLoader = function(source) {
     var localeDirs = toArray(parts);
     
     var resourceToCwd = path.relative(path.dirname(this.resource), process.cwd());
-    // console.log("__dirname is " + __dirname + " base is " + base + " pathToLib is " + pathToLib);
-
+    
     // now find all of the !data comments in the files and load in
     // the locale data files they list there for the given locales
     
@@ -112,27 +111,91 @@ var ilibDataLoader = function(source) {
             // remove any other instances so there is no conflict
             partial = partial.replace(/var ilib = require\(['"][\./]*ilib\.js['"]\);/g, "");
             datafiles.forEach(function(filename) {
-                localeDirs.forEach(function(locale) {
-                    try {
-                        var cwdToData = path.join("data/locale", locale, filename + ".json");
+                // time zone data in the zoneinfo files are a special case because they are non-locale data
+                if (filename === "zoneinfo") {
+                    // console.log(">>>>>>>>>>>>> processing zoneinfo. cwd is " + process.cwd());
+                    var cwdToData = "./data/locale/zoneinfo/zonetab.json";
+                    var resourceToData = path.join(resourceToCwd, cwdToData);
+                    console.log("resourceToData is " + resourceToData);
+                    var data = fs.readFileSync(cwdToData, "utf-8");
+                    var zonetab = JSON.parse(data);
+                    // console.log(">>>>>>>>>>>>> got zone tab.");
+                    output += 'ilib.data.zonetab = require("' + resourceToData + '");\n';
+                    this.addDependency(cwdToData);
+                    var regionSet = new Set();
+                    locales.forEach(function(locale) {
+                        regionSet.add(new Locale(locale).region);
+                    });
+                    var zoneSet = new Set();
+                    regionSet.forEach(function(region) {
+                        if (zonetab[region]) {
+                            zonetab[region].forEach(function(zone) {
+                                zoneSet.add(zone); 
+                            });
+                        }
+                    });
+                    zoneSet.forEach(function(zone) {
+                        try {
+                            var cwdToData = path.join("data/locale/zoneinfo", zone + ".json");
+                            var resourceToData = path.join(resourceToCwd, cwdToData);
+                            if (resourceToData[0] !== ".") {
+                                resourceToData = "./" + resourceToData; // make it relative for require()
+                            }
+                            if (fs.existsSync(cwdToData)) {
+                                var line = 'ilib.data.zoneinfo["' + zone.replace(/-/g, "m").replace(/\+/g, "p") + '"] = require("' + resourceToData + '");\n';
+                               // console.log(">>>>>>>>>>>>> Adding zone: " + line);
+                                this.addDependency(cwdToData);
+                                output += line;
+                            }
+                        } catch (e) {
+                            console.log("Error: " + e);
+                        }
+                    }.bind(this));
+                    
+                    // now add the generic zones
+                    var list = fs.readdirSync("data/locale/zoneinfo");
+                    list = list.concat(fs.readdirSync("data/locale/zoneinfo/Etc").map(function(zone) {
+                        return "Etc/" + zone;
+                    }));
+                    
+                    list.filter(function(pathname) {
+                        return pathname.endsWith(".json") && pathname !== "zonetab.json";
+                    }).forEach(function (file) {
+                        var zone = path.basename(file, ".json");
+                        var cwdToData = path.join("data/locale/zoneinfo", file);
                         var resourceToData = path.join(resourceToCwd, cwdToData);
                         if (resourceToData[0] !== ".") {
                             resourceToData = "./" + resourceToData; // make it relative for require()
                         }
-                        if (fs.existsSync(cwdToData)) {
-                            var line = "ilib.data." + filename.replace(/\//g, "_").replace(/-/g, "_");
-                            if (locale !== ".") {
-                                line += "_" + locale.replace(/\//g, "_");
+                        
+                        var line = 'ilib.data.zoneinfo["' + zone.replace(/-/g, "m").replace(/\+/g, "p") + '"] = require("' + resourceToData + '");\n';
+                        // console.log(">>>>>>>>>>>>> Adding generic zone: " + line);
+                        this.addDependency(cwdToData);
+                        output += line;
+                    }.bind(this));
+                } else {
+                    localeDirs.forEach(function(locale) {
+                        try {
+                            var cwdToData = path.join("data/locale", locale, filename + ".json");
+                            var resourceToData = path.join(resourceToCwd, cwdToData);
+                            if (resourceToData[0] !== ".") {
+                                resourceToData = "./" + resourceToData; // make it relative for require()
                             }
-                            line += " = require('" + resourceToData + "');\n";
-                            // console.log(">>>>>>>>>>>>> Adding line: " + line);
-                            output += line;
-                            this.addDependency(filename)
+                            if (fs.existsSync(cwdToData)) {
+                                var line = "ilib.data." + filename.replace(/\//g, "_").replace(/-/g, "_");
+                                if (locale !== ".") {
+                                    line += "_" + locale.replace(/\//g, "_");
+                                }
+                                line += " = require('" + resourceToData + "');\n";
+                                // console.log(">>>>>>>>>>>>> Adding line: " + line);
+                                output += line;
+                                this.addDependency(cwdToData);
+                            }
+                        } catch (e) {
+                            console.log("Error: " + e);
                         }
-                    } catch (e) {
-                        console.log("Error: " + e);
-                    }
-                }.bind(this));
+                    }.bind(this));
+                }
             }.bind(this));
     
             partial = partial.substring(match.index + match[0].length);
