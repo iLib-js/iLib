@@ -111,7 +111,7 @@ var ilibDataLoader = function(source) {
             
             datafiles.forEach(function(filename) {
                 dataSet.add(filename);
-            }
+            });
         }
     };
     
