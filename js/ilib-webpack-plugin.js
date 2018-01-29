@@ -29,8 +29,18 @@ function toArray(set) {
     return ret;
 }
 
+function Asset(content) {
+    this.content = content || "";
+}
+Asset.prototype.source = function() {
+    return this.content;
+};
+Asset.prototype.size = function() {
+    return this.content.length;
+};
+
 function IlibWebpackPlugin(options) {
-    // Setup the plugin instance with options...
+    this.locales = (options && options.locales) || ["en-US"];
 }
 
 IlibWebpackPlugin.prototype.apply = function(compiler) {
@@ -39,7 +49,15 @@ IlibWebpackPlugin.prototype.apply = function(compiler) {
         var outputFileName, output;
         
         if (localeData) {
-            var locales = ["en-US"];
+            var locales = ["en-US"], 
+                plugins = this.options.plugins;
+            
+            for (var i = 0; i < plugins.length; i++) {
+                if (plugins[i] instanceof IlibWebpackPlugin && plugins[i].locales) {
+                    locales = plugins[i].locales;
+                    break;
+                }
+            }
             
             var parts = new Set();
             parts.add("."); // always search the root!
@@ -60,7 +78,7 @@ IlibWebpackPlugin.prototype.apply = function(compiler) {
             var localeDirs = toArray(parts);
 
             locales.forEach(function(locale) {
-                outputFileName = path.join("output/js/generated", locale + ".js");
+                outputFileName = locale + ".js";
                 
                 output = 
                     "/*\n" + 
@@ -77,8 +95,8 @@ IlibWebpackPlugin.prototype.apply = function(compiler) {
                         var data = fs.readFileSync(cwdToData, "utf-8");
                         var zonetab = JSON.parse(data);
                         // console.log(">>>>>>>>>>>>> got zone tab.");
-                        output += 'ilib.data.zonetab = ' + JSON.stringify(zonetab) + ';\n';
-                        compiler.addDependency(cwdToData);
+                        output += 'ilib.data.zonetab = ' + data + ';\n';
+                        // compiler.addDependency(cwdToData);
                         
                         var regionSet = new Set();
                         locales.forEach(function(locale) {
@@ -97,9 +115,9 @@ IlibWebpackPlugin.prototype.apply = function(compiler) {
                                 var cwdToData = path.join("data/locale/zoneinfo", zone + ".json");
                                 if (fs.existsSync(cwdToData)) {
                                     data = fs.readFileSync(cwdToData, "utf-8");
-                                    var line = 'ilib.data.zoneinfo["' + zone.replace(/-/g, "m").replace(/\+/g, "p") + '"] = ' + JSON.stringify(data) + ';\n';
+                                    var line = 'ilib.data.zoneinfo["' + zone.replace(/-/g, "m").replace(/\+/g, "p") + '"] = ' + data + ';\n';
                                     // console.log(">>>>>>>>>>>>> Adding zone: " + line);
-                                    compiler.addDependency(cwdToData);
+                                    // compiler.addDependency(cwdToData);
                                     output += line;
                                 }
                             } catch (e) {
@@ -121,7 +139,7 @@ IlibWebpackPlugin.prototype.apply = function(compiler) {
                             data = fs.readFileSync(cwdToData, "utf-8");
                             var line = 'ilib.data.zoneinfo["' + zone.replace(/-/g, "m").replace(/\+/g, "p") + '"] = ' + data + ';\n';
                             // console.log(">>>>>>>>>>>>> Adding generic zone: " + line);
-                            compiler.addDependency(cwdToData);
+                            // compiler.addDependency(cwdToData);
                             output += line;
                         }.bind(this));
                     } else {
@@ -152,10 +170,10 @@ IlibWebpackPlugin.prototype.apply = function(compiler) {
                                         line += "_" + localeDir.replace(/\//g, "_");
                                     }
                                     data = fs.readFileSync(cwdToData, "utf-8");
-                                    line += " = " + JSON.stringify(data) + ";\n";
+                                    line += " = " + data + ";\n";
                                     // console.log(">>>>>>>>>>>>> Adding line: " + line);
                                     output += line;
-                                    compiler.addDependency(cwdToData);
+                                    // compiler.addDependency(cwdToData);
                                 }
                             } catch (e) {
                                 console.log("Error: " + e);
@@ -165,8 +183,8 @@ IlibWebpackPlugin.prototype.apply = function(compiler) {
                 });
                 
                 output += "module.exports = ilib;\n";
-            
-                compilation.assets[locale + ".js"] = output;
+                
+                compilation.assets[outputFileName] = new Asset(output);
             }.bind(this));
         } else {
             console.log("No data to include");

@@ -67,7 +67,9 @@ module.exports = function(env, args) {
             new webpack.DefinePlugin({
                 __VERSION__: JSON.stringify(require("./package.json").version)
             }),
-            new IlibWebpackPlugin()
+            new IlibWebpackPlugin({
+                locales: locales
+            })
         ]
     };
 
