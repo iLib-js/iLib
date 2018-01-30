@@ -61,25 +61,25 @@ var ilibDataLoader = function(source) {
         this._compilation.localeDataSet = new Set();
     }
     var dataSet = this._compilation.localeDataSet;
-    
+
     var searchFile = function (re, text) {
         var output = "";
-        
+
         re.lastIndex = 0;
         while ((match = re.exec(text)) !== null) {
             // console.log(">>>>>>>>>> found a match");
             var datafiles = match[1].split(/\s+/g);
-            
+
             datafiles.forEach(function(filename) {
                 dataSet.add(filename);
             });
         }
     };
-        
+
     var processMacros = function (re, text) {
         var partial = text;
         var output = "";
-        
+
         re.lastIndex = 0;
         while ((match = re.exec(partial)) !== null) {
             // console.log(">>>>>>>>>> found a match");
@@ -92,22 +92,22 @@ var ilibDataLoader = function(source) {
                         return '"' + locale + '"';
                     }).join(", ");
                 } else if (macroName.toLowerCase() === "ilibversion") {
-                    // the DefinePlugin in the config will replace this with the 
+                    // the DefinePlugin in the config will replace this with the
                     // actual version number from the project.json file
-                    output += "__VERSION__"; 
+                    output += "__VERSION__";
                 }
             }
 
             partial = partial.substring(match.index + match[0].length);
             re.lastIndex = 0;
         }
-        
+
         return output + partial;
     }.bind(this);
-    
+
     searchFile(dataPatternSlashStar, partial);
     searchFile(dataPatternSlashSlash, partial);
-    
+
     partial = processMacros(macroPatternSlashSlash, partial);
     output  = processMacros(macroPatternQuoted, partial);
 

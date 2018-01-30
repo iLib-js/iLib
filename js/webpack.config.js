@@ -24,8 +24,9 @@ const IlibWebpackPlugin = require("./ilib-webpack-plugin.js");
 module.exports = function(env, args) {
     var size = args.env.size || "standard",
         assembly = args.env.assembly || "assembled",
-        compilation = args.env.compilation || "uncompiled",
-        locales = args.env.locales;
+        compilationType = args.env.compilation || "uncompiled",
+        locales = args.env.locales,
+        outputPath;
 
     // "ut" is unit tests
     if (size !== "core" && size !== "standard" && size !== "full" && size !== "ut" && size !== "demo") {
@@ -36,8 +37,8 @@ module.exports = function(env, args) {
         assembly = "assembled";
     }
 
-    if (compilation !== "compiled" && compilation !== "uncompiled") {
-        compilation = "uncompiled";
+    if (compilationType !== "compiled" && compilationType !== "uncompiled") {
+        compilationType = "uncompiled";
     }
 
     if (locales) {
@@ -52,23 +53,40 @@ module.exports = function(env, args) {
             "zh-Hans-CN", "zh-Hant-HK", "zh-Hant-TW", "zh-Hans-SG"
         ];
     }
-
+    
+    outputPath = (assembly === "assembled") ? 
+        path.resolve(__dirname, 'output/js', size, assembly) :
+        path.resolve(__dirname, 'output/js', size, assembly, compilationType);
+    
     var ret = {
         entry: './lib/ilib-' + size + '-webpack.js',
         output: {
             filename: 'ilib-standard.js',
-            path: path.resolve(__dirname, 'output/js'),
+            path: outputPath,
             library: 'ilib',
             libraryTarget: 'umd'
         },
         module: {
+            rules: [{
+                test: /\.js$/, // Run the loader on all .js files
+                exclude: /(node_modules|webpack)/, // ignore all files in the node_modules or webpack folders
+                use: {
+                    loader: path.resolve('./lib/ilibdata-webpack-loader.js'),
+                    options: {
+                        locales: locales
+                    }
+                }
+            }]
         },
         plugins: [
             new webpack.DefinePlugin({
                 __VERSION__: JSON.stringify(require("./package.json").version)
             }),
             new IlibWebpackPlugin({
-                locales: locales
+                locales: locales,
+                assembly: assembly,
+                compilation: compilationType,
+                size: size
             })
         ]
     };
@@ -77,27 +95,13 @@ module.exports = function(env, args) {
     if (assembly === "dynamic") {
         ret.output.filename += "-dyn";
     }
-    if (compilation === "compiled") {
+    if (compilationType === "compiled") {
         ret.output.filename += "-compiled";
     }
     ret.output.filename += ".js";
 
-    if (assembly !== "dynamic") {
-        // not dynamic -- then include all the locale data
-        ret.module.rules = [{
-            test: /\.js$/, // Run the loader on all .js files
-            exclude: /(node_modules|webpack)/, // ignore all files in the node_modules or webpack folders
-            use: {
-                loader: path.resolve('./lib/ilibdata-webpack-loader.js'),
-                options: {
-                    locales: locales
-                }
-            }
-        }];
-    }
-
-    if (compilation === "compiled") {
-        ret.plugins.push(new UglifyJsPlugin({
+    if (compilationType === "compiled") {
+        ret.plugins.splice(0, 0, new UglifyJsPlugin({
             cache: true,
             parallel: 4,
             uglifyOptions: {
