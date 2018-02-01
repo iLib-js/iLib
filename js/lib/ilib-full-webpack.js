@@ -78,7 +78,6 @@ ilib.NameFmt = require("./NameFmt.js");
 ilib.Address = require("./Address.js");
 ilib.AddressFmt = require("./AddressFmt.js");
 ilib.Collator = require("./Collator.js");
-ilib.data.nfkc = require("./nfkc/all.js");
 ilib.LocaleMatcher = require("./LocaleMatcher.js");
 ilib.NormString = require("./NormString.js");
 ilib.CaseMapper = require("./CaseMapper.js");

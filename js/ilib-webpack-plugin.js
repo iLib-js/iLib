@@ -17,6 +17,7 @@
  * limitations under the License.
  */
 var webpack = require('webpack');
+var CommonJsRequireDependency = require('webpack/lib/dependencies/CommonJsRequireDependency');
 var path = require('path');
 var Locale = require("./lib/Locale.js");
 var fs = require("fs");
@@ -48,7 +49,58 @@ function IlibWebpackPlugin(options) {
 }
 
 IlibWebpackPlugin.prototype.apply = function(compiler) {
+    /*
+    compiler.plugin('compilation', function(compilation) {
+        console.log("Event: compilation");
+        compilation.plugin("succeed-module", function(module) {
+            // this will be called for every successfully built module, but before it's parsed and
+            // its dependencies are built. The built source is available as module._source.source()
+            // and you can add additional dependencies like so:
+            // module.dependencies.push(new CommonJsRequireDependency("my-dependency", null))
+            console.log("Event: succeed-module");
+            /*
+            if (module.rawRequest.endsWith("/ilib.js")) {
+                var outputFileName, _this;
+
+                var locales = ["en-US"],
+                    plugins = this.options.plugins;
+
+                for (var i = 0; i < plugins.length; i++) {
+                    if (plugins[i] instanceof IlibWebpackPlugin && plugins[i].locales) {
+                        _this = plugins[i];
+                        locales = plugins[i].locales;
+                        break;
+                    }
+                }
+
+                var set = new Set();
+
+                locales.forEach(function(l) {
+                    set.add(".");
+                    set.add(l.language);
+                    if (l.script) {
+                        set.add(l.language + "-" + l.script);
+                        if (l.region) {
+                            set.add(l.language + "-" + l.script + "-" + l.region);
+                        }
+                    }
+                    if (l.region) {
+                        set.add(l.language + "-" + l.region);
+                        set.add("und/" + l.region);
+                    }
+                });
+                
+                set.forEach(function(locale) {
+                    module.dependencies.push(new CommonJsRequireDependency("./" + locale + ".js", null));
+                });
+            }
+        });
+    });
+    */
+    
     compiler.plugin('emit', function(compilation, callback) {
+        // console.log("Event: emit");
+
         var localeData = compilation.localeDataSet;
         var outputFileName, output, _this;
 
@@ -201,26 +253,26 @@ IlibWebpackPlugin.prototype.apply = function(compiler) {
                 }
 
                 output += "module.exports = ilib;\n";
-                console.log("Emitting " + outputFileName + " size " + output.length);
+                // console.log("Emitting " + outputFileName + " size " + output.length);
                 if (_this.compilationType === "compiled") {
                     try {
                         var result = UglifyJS.minify(output, {fromString: true});
                         if (!result.error) {
                             output = result.code;
-                            console.log("After compression: " + output.length);
-                        } else {
-                            console.log("Error compressing " + outputFileName + ": " + result.error);
+                            //console.log("After compression: " + output.length);
+                        //} else {
+                            //console.log("Error compressing " + outputFileName + ": " + result.error);
                         }
                     } catch (e) {
                         console.log("Error while parsing " + filename);
                         console.log(e);
                     }
                 }
-                
+
                 compilation.assets[outputFileName] = new Asset(output);
             }
 
-            console.log("Done emitting locale data.");
+            // console.log("Done emitting locale data.");
         } else {
             console.log("No data to include");
         }

@@ -51,6 +51,8 @@ var ilibDataLoader = function(source) {
 
     // validateOptions(schema, options, 'Ilib data loader');
 
+    // console.log("ilibdata-loader: processing file ");
+    
     // first find all the locale parts we need to search
     var locales = options.locales;
 
@@ -110,6 +112,35 @@ var ilibDataLoader = function(source) {
 
     partial = processMacros(macroPatternSlashSlash, partial);
     output  = processMacros(macroPatternQuoted, partial);
+    
+    /*
+    if (this.resource.endsWith("/ilib.js")) {
+        var set = new Set();
+    
+        locales.forEach(function(l) {
+            set.add("root");
+            set.add(l.language);
+            if (l.script) {
+                set.add(l.language + "-" + l.script);
+                if (l.region) {
+                    set.add(l.language + "-" + l.script + "-" + l.region);
+                }
+            }
+            if (l.region) {
+                set.add(l.language + "-" + l.region);
+                set.add("und/" + l.region);
+            }
+        });
+        
+        var reqs = "";
+        
+        set.forEach(function(locale) {
+            reqs += "require('./" + locale + ".js');\n";
+        });
+        
+        output = reqs + output;
+    }
+    */
 
     // console.log("****************************************\nTransformed file to:\n" + output);
     return output;
