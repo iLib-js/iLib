@@ -133,19 +133,19 @@ LocaleMatcher.prototype = {
             var partial = this.info.likelyLocales[new Locale(locale.language, undefined, locale.region).getSpec()];
             if (typeof(partial) !== 'undefined') return new Locale(partial);
 
-            var partial = this.info.likelyLocales[new Locale(locale.language, locale.script, undefined).getSpec()];
+            partial = this.info.likelyLocales[new Locale(locale.language, locale.script, undefined).getSpec()];
             if (typeof(partial) !== 'undefined') return new Locale(partial);
 
-            var partial = this.info.likelyLocales[new Locale(locale.language, undefined, undefined).getSpec()];
+            partial = this.info.likelyLocales[new Locale(locale.language, undefined, undefined).getSpec()];
             if (typeof(partial) !== 'undefined') return new Locale(partial);
 
-            var partial = this.info.likelyLocales[new Locale(undefined, locale.script, locale.region).getSpec()];
+            partial = this.info.likelyLocales[new Locale(undefined, locale.script, locale.region).getSpec()];
             if (typeof(partial) !== 'undefined') return new Locale(partial);
 
-            var partial = this.info.likelyLocales[new Locale(undefined, undefined, locale.region).getSpec()];
+            partial = this.info.likelyLocales[new Locale(undefined, undefined, locale.region).getSpec()];
             if (typeof(partial) !== 'undefined') return new Locale(partial);
 
-            var partial = this.info.likelyLocales[new Locale(undefined, locale.script, undefined).getSpec()];
+            partial = this.info.likelyLocales[new Locale(undefined, locale.script, undefined).getSpec()];
             if (typeof(partial) !== 'undefined') return new Locale(partial);
 
             return locale;
