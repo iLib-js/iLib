@@ -13,6 +13,11 @@ to translate. When an array is given, every string in the array is translated.
 * Added locale.getLangSpec() method to return the language and the optional script of the locale which will give you what the
 written language is of the locale regardless of region or variant
 
+Bug Fixes:
+
+* Fixed number parsing (INumber) and CType functions when no locale data is available. Previously, they would just not
+work at all. Now, they default to US English/ASCII behaviours.
+
 Build 000
 -------
 
