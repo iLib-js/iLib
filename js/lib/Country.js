@@ -85,36 +85,35 @@ var Country = function (options) {
 		loadParams: loadParams,
 		onLoad: ilib.bind(this, function (li) {
 			this.locinfo = li;
-		})
-	});
+			if (this.locinfo.getRegionName() === undefined) {
+				locale = 'en-US';
+			} else {
+				locale = this.locale;
+			}
 
-	if (this.locinfo.getRegionName() === undefined) {
-		locale = 'en-US';
-	} else {
-		locale = this.locale;
-	}
-
-	if (!this.codeToCountry) {
-		Utils.loadData({
-			name: "ctryreverse.json",
-			object: Country,
-			locale: locale,
-			sync: sync,
-			loadParams: loadParams,
-			callback: ilib.bind(this, function(countries) {
-				this.codeToCountry = countries;
+			if (!this.codeToCountry) {
+				Utils.loadData({
+					name: "ctryreverse.json",
+					object: Country,
+					locale: locale,
+					sync: sync,
+					loadParams: loadParams,
+					callback: ilib.bind(this, function(countries) {
+						this.codeToCountry = countries;
+						this._calculateCountryToCode();
+						if (options && typeof(options.onLoad) === 'function') {
+							options.onLoad(this);
+						}
+					})
+				});
+			} else {
 				this._calculateCountryToCode();
 				if (options && typeof(options.onLoad) === 'function') {
 					options.onLoad(this);
 				}
-			})
-		});
-	} else {
-		this._calculateCountryToCode();
-		if (options && typeof(options.onLoad) === 'function') {
-			options.onLoad(this);
-		}
-	}
+			}
+		})
+	});
 };
 
 /**
