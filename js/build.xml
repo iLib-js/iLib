@@ -866,7 +866,7 @@ limitations under the License.
 	<target name="test.rhino" depends="test.assembled.compiled.rhino,test.assembled.uncompiled.rhino,test.dynamic.uncompiled.rhino,test.dynamic.compiled.rhino">
 	</target>
 	
-	<target name="test.remote" depends="prepare,assemble.unittest" description="Run a remote server to test ilib in remote browsers">
+	<target name="test.remote" depends="prepare" description="Run a remote server to test ilib in remote browsers">
 	    <exec osfamily="unix" resultproperty="uglify.result" errorproperty="uglify.error" executable="node" dir="${build.base}" failifexecutionfails="true">
 			<arg value="node_modules/http-server/bin/http-server"/>
 			<arg value="-p"/>
