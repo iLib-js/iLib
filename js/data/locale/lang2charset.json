@@ -1,0 +1,648 @@
+{
+    "ar": [
+        "ASMO_449",
+        "IBM864",
+        "ISIRI-3342",
+        "ISO-8859-6",
+        "windows-1256"
+    ],
+    "az": [
+        "ASMO_449",
+        "IBM864",
+        "ISO-8859-6",
+        "windows-1256"
+    ],
+    "ba": [
+        "ECMA-cyrillic",
+        "ISO-8859-5",
+        "KOI-8",
+        "windows-1251"
+    ],
+    "be": [
+        "ECMA-cyrillic",
+        "ISO-8859-5",
+        "KOI-8",
+        "KOI8-R",
+        "KOI8-RU",
+        "KOI8-T",
+        "KOI8-U",
+        "mac-cyrillic",
+        "windows-1251"
+    ],
+    "bg": [
+        "ECMA-cyrillic",
+        "ISO-8859-5",
+        "KOI-8",
+        "KOI8-R",
+        "KOI8-RU",
+        "KOI8-T",
+        "KOI8-U",
+        "mac-cyrillic",
+        "windows-1251"
+    ],
+    "ca": [
+        "IBM00858",
+        "IBM437",
+        "IBM850",
+        "IBM860",
+        "ISO-8859-1",
+        "ISO-8859-15",
+        "Mac-Roman",
+        "windows-1252"
+    ],
+    "cv": [
+        "ECMA-cyrillic",
+        "ISO-8859-5",
+        "KOI-8",
+        "windows-1251"
+    ],
+    "cz": [
+        "IBM852",
+        "ISO-8859-2",
+        "windows-1250"
+    ],
+    "da": [
+        "EBCDIC-DK-NO-A",
+        "EBCDIC-DK-NO",
+        "IBM00858",
+        "IBM01142",
+        "IBM437",
+        "IBM850",
+        "IBM860",
+        "ISO-8859-1",
+        "ISO-8859-15",
+        "Mac-Roman",
+        "windows-1252"
+    ],
+    "de": [
+        "EBCDIC-AT-DE-A",
+        "EBCDIC-AT-DE",
+        "IBM00858",
+        "IBM01141",
+        "IBM437",
+        "IBM850",
+        "IBM860",
+        "ISO-8859-1",
+        "ISO-8859-15",
+        "Mac-Roman",
+        "windows-1252"
+    ],
+    "el": [
+        "IBM869",
+        "ISO-8859-7",
+        "Latin-greek-1",
+        "greek-ccitt",
+        "greek7-old",
+        "greek7",
+        "latin-greek",
+        "windows-1253"
+    ],
+    "en": [
+        "ANSI_X3.110-1983",
+        "IBM00858",
+        "IBM437",
+        "IBM850",
+        "IBM860",
+        "ISO-8859-1",
+        "ISO-8859-15",
+        "Mac-Roman",
+        "windows-1252"
+    ],
+    "es": [
+        "EBCDIC-ES-A",
+        "EBCDIC-ES-S",
+        "EBCDIC-ES",
+        "ES",
+        "ES2",
+        "IBM00858",
+        "IBM01145",
+        "IBM437",
+        "IBM850",
+        "IBM860",
+        "ISO-8859-1",
+        "ISO-8859-15",
+        "Mac-Roman",
+        "windows-1252"
+    ],
+    "et": [
+        "IBM852",
+        "IBM922",
+        "ISO-8859-13",
+        "ISO-8859-2",
+        "ISO-8859-4",
+        "windows-1250",
+        "windows-1257"
+    ],
+    "eu": [
+        "IBM00858",
+        "IBM437",
+        "IBM850",
+        "IBM860",
+        "ISO-8859-1",
+        "ISO-8859-15",
+        "Mac-Roman",
+        "windows-1252"
+    ],
+    "fa": [
+        "ASMO_449",
+        "IBM864",
+        "ISO-8859-6",
+        "windows-1256"
+    ],
+    "fi": [
+        "EBCDIC-FI-SE-A",
+        "EBCDIC-FI-SE",
+        "IBM00858",
+        "IBM01143",
+        "IBM437",
+        "IBM850",
+        "IBM860",
+        "ISO-8859-1",
+        "ISO-8859-15",
+        "Mac-Roman",
+        "windows-1252"
+    ],
+    "fr": [
+        "EBCDIC-CA-FR",
+        "EBCDIC-FR",
+        "IBM00858",
+        "IBM01147",
+        "IBM437",
+        "IBM850",
+        "IBM860",
+        "ISO-8859-1",
+        "ISO-8859-15",
+        "Mac-Roman",
+        "windows-1252"
+    ],
+    "ga": [
+        "IBM00858",
+        "IBM437",
+        "IBM850",
+        "IBM860",
+        "ISO-8859-1",
+        "ISO-8859-15",
+        "Mac-Roman",
+        "windows-1252"
+    ],
+    "gl": [
+        "IBM00858",
+        "IBM437",
+        "IBM850",
+        "IBM860",
+        "ISO-8859-1",
+        "ISO-8859-15",
+        "Mac-Roman",
+        "windows-1252"
+    ],
+    "ha": [
+        "ASMO_449",
+        "IBM864",
+        "ISO-8859-6",
+        "windows-1256"
+    ],
+    "he": [
+        "IBM737",
+        "IBM875",
+        "ISO-8859-8",
+        "windows-1255"
+    ],
+    "hr": [
+        "IBM852",
+        "ISO-8859-2",
+        "windows-1250"
+    ],
+    "hu": [
+        "IBM852",
+        "ISO-8859-2",
+        "windows-1250"
+    ],
+    "hy": [
+        "ARMSCII-8"
+    ],
+    "is": [
+        "EBCDIC-IS-FRISS",
+        "IBM01149",
+        "mac-is"
+    ],
+    "it": [
+        "EBCDIC-IT",
+        "IBM00858",
+        "IBM01144",
+        "IBM437",
+        "IBM850",
+        "IBM860",
+        "ISO-8859-1",
+        "ISO-8859-15",
+        "IT",
+        "Mac-Roman",
+        "windows-1252"
+    ],
+    "ja": [
+        "CP50220",
+        "CP51932",
+        "EUC-JIS_X0213",
+        "EUC-JP-MS",
+        "EUC-JP",
+        "Extended_UNIX_Code_Fixed_Width_for_Japanese",
+        "ISO-2022-JP-1",
+        "ISO-2022-JP-2",
+        "ISO-2022-JP-2004",
+        "ISO-2022-JP-3",
+        "ISO-2022-JP",
+        "JIS_C6229-1984-a",
+        "JIS_C6229-1984-b-add",
+        "JIS_C6229-1984-b",
+        "JIS_C6229-1984-hand-add",
+        "JIS_C6229-1984-hand",
+        "JIS_C6229-1984-kana",
+        "JIS_Encoding",
+        "JIS_X0201-1969-ro",
+        "JIS_X0201-1969",
+        "JIS_X0201",
+        "JIS_X0208-1978",
+        "JIS_X0208-1983",
+        "JIS_X0208-1990",
+        "JIS_X0212-1990",
+        "JIS_X0213-2004",
+        "Shift_JIS",
+        "Shift_JIS_X0213",
+        "windows-31J"
+    ],
+    "kk": [
+        "ASMO_449",
+        "ECMA-cyrillic",
+        "IBM864",
+        "ISO-8859-5",
+        "ISO-8859-6",
+        "KOI-8",
+        "windows-1251",
+        "windows-1256"
+    ],
+    "ko": [
+        "EUC-KR",
+        "IBM949",
+        "Johab",
+        "KSC5636",
+        "KS_C_5601-1987"
+    ],
+    "ks": [
+        "ASMO_449",
+        "IBM864",
+        "ISO-8859-6",
+        "windows-1256"
+    ],
+    "ku": [
+        "ASMO_449",
+        "IBM864",
+        "ISO-8859-6",
+        "windows-1256"
+    ],
+    "ky": [
+        "ASMO_449",
+        "IBM864",
+        "ISO-8859-6",
+        "windows-1256"
+    ],
+    "lo": [
+        "IBM1132",
+        "IBM1133"
+    ],
+    "lt": [
+        "IBM852",
+        "ISO-8859-13",
+        "ISO-8859-2",
+        "ISO-8859-4",
+        "windows-1250",
+        "windows-1257"
+    ],
+    "lv": [
+        "IBM852",
+        "ISO-8859-13",
+        "ISO-8859-2",
+        "ISO-8859-4",
+        "windows-1250",
+        "windows-1257"
+    ],
+    "mk": [
+        "ECMA-cyrillic",
+        "ISO-8859-5",
+        "KOI-8",
+        "KOI8-R",
+        "KOI8-RU",
+        "KOI8-T",
+        "KOI8-U",
+        "MIK",
+        "mac-cyrillic",
+        "windows-1251"
+    ],
+    "mn": [
+        "ECMA-cyrillic",
+        "ISO-8859-5",
+        "KOI-8",
+        "PTCP154",
+        "windows-1251"
+    ],
+    "ms": [
+        "ASMO_449",
+        "IBM864",
+        "ISO-8859-6",
+        "windows-1256"
+    ],
+    "nb": [
+        "EBCDIC-DK-NO-A",
+        "EBCDIC-DK-NO",
+        "IBM00858",
+        "IBM01142",
+        "IBM437",
+        "IBM850",
+        "IBM860",
+        "ISO-8859-1",
+        "ISO-8859-15",
+        "Mac-Roman",
+        "windows-1252"
+    ],
+    "nl": [
+        "IBM00858",
+        "IBM1164",
+        "IBM437",
+        "IBM850",
+        "IBM860",
+        "ISO-8859-1",
+        "ISO-8859-15",
+        "Mac-Roman",
+        "windows-1252"
+    ],
+    "nn": [
+        "IBM00858",
+        "IBM437",
+        "IBM850",
+        "IBM860",
+        "ISO-8859-1",
+        "ISO-8859-15",
+        "Mac-Roman",
+        "windows-1252"
+    ],
+    "no": [
+        "IBM00858",
+        "IBM437",
+        "IBM850",
+        "IBM860",
+        "ISO-8859-1",
+        "ISO-8859-15",
+        "Mac-Roman",
+        "windows-1252"
+    ],
+    "os": [
+        "ECMA-cyrillic",
+        "ISO-8859-5",
+        "KOI-8",
+        "windows-1251"
+    ],
+    "pa": [
+        "ASMO_449",
+        "IBM864",
+        "ISO-8859-6",
+        "windows-1256"
+    ],
+    "pl": [
+        "IBM852",
+        "ISO-8859-2",
+        "windows-1250"
+    ],
+    "ps": [
+        "ASMO_449",
+        "IBM864",
+        "ISO-8859-6",
+        "windows-1256"
+    ],
+    "pt": [
+        "EBCDIC-PT",
+        "IBM00858",
+        "IBM437",
+        "IBM850",
+        "IBM860",
+        "ISO-8859-1",
+        "ISO-8859-15",
+        "Mac-Roman",
+        "PT",
+        "PT2",
+        "windows-1252"
+    ],
+    "ro": [
+        "ECMA-cyrillic",
+        "IBM00858",
+        "IBM437",
+        "IBM850",
+        "IBM852",
+        "IBM860",
+        "ISO-8859-1",
+        "ISO-8859-15",
+        "ISO-8859-2",
+        "ISO-8859-5",
+        "KOI-8",
+        "Mac-Roman",
+        "windows-1250",
+        "windows-1251",
+        "windows-1252"
+    ],
+    "roa": [
+        "IBM00858",
+        "IBM437",
+        "IBM850",
+        "IBM860",
+        "ISO-8859-1",
+        "ISO-8859-15",
+        "Mac-Roman",
+        "windows-1252"
+    ],
+    "ru": [
+        "ECMA-cyrillic",
+        "GOST_19768-74",
+        "ISO-8859-5",
+        "KOI-8",
+        "KOI8-R",
+        "KOI8-RU",
+        "KOI8-T",
+        "KOI8-U",
+        "KZ-1048",
+        "PTCP154",
+        "mac-cyrillic",
+        "windows-1251"
+    ],
+    "sd": [
+        "ASMO_449",
+        "IBM864",
+        "ISO-8859-6",
+        "windows-1256"
+    ],
+    "se": [
+        "ECMA-cyrillic",
+        "ISO-8859-5",
+        "KOI-8",
+        "Sami-WS2",
+        "Sami",
+        "mac-sami",
+        "windows-1251"
+    ],
+    "sk": [
+        "IBM852",
+        "ISO-8859-2",
+        "windows-1250"
+    ],
+    "sl": [
+        "IBM852",
+        "ISO-8859-2",
+        "windows-1250"
+    ],
+    "so": [
+        "ASMO_449",
+        "IBM864",
+        "ISO-8859-6",
+        "windows-1256"
+    ],
+    "sr": [
+        "ECMA-cyrillic",
+        "ISO-8859-5",
+        "KOI-8",
+        "KOI8-R",
+        "KOI8-RU",
+        "KOI8-T",
+        "KOI8-U",
+        "mac-cyrillic",
+        "windows-1251"
+    ],
+    "sv": [
+        "EBCDIC-FI-SE-A",
+        "EBCDIC-FI-SE",
+        "IBM00858",
+        "IBM01143",
+        "IBM437",
+        "IBM850",
+        "IBM860",
+        "ISO-8859-1",
+        "ISO-8859-15",
+        "Mac-Roman",
+        "SEN_850200_B",
+        "SEN_850200_C",
+        "windows-1252"
+    ],
+    "ta": [
+        "TSCII"
+    ],
+    "tg": [
+        "ASMO_449",
+        "ECMA-cyrillic",
+        "IBM864",
+        "ISO-8859-5",
+        "ISO-8859-6",
+        "KOI-8",
+        "windows-1251",
+        "windows-1256"
+    ],
+    "th": [
+        "IBM-Thai",
+        "IBM1160",
+        "IBM1162",
+        "IBM874",
+        "TIS-620",
+        "hp-thai8",
+        "windows-874"
+    ],
+    "tk": [
+        "ASMO_449",
+        "ECMA-cyrillic",
+        "IBM864",
+        "ISO-8859-5",
+        "ISO-8859-6",
+        "KOI-8",
+        "windows-1251",
+        "windows-1256"
+    ],
+    "tr": [
+        "IBM1026",
+        "ISO-8859-9",
+        "PC8-Turkish",
+        "windows-1254"
+    ],
+    "tt": [
+        "ECMA-cyrillic",
+        "ISO-8859-5",
+        "KOI-8",
+        "windows-1251"
+    ],
+    "ug": [
+        "ASMO_449",
+        "ECMA-cyrillic",
+        "IBM864",
+        "ISO-8859-5",
+        "ISO-8859-6",
+        "KOI-8",
+        "windows-1251",
+        "windows-1256"
+    ],
+    "uk": [
+        "ECMA-cyrillic",
+        "IBM1124",
+        "ISO-8859-5",
+        "KOI-8",
+        "KOI8-R",
+        "KOI8-RU",
+        "KOI8-T",
+        "KOI8-U",
+        "mac-cyrillic",
+        "mac-uk",
+        "windows-1251"
+    ],
+    "ur": [
+        "ASMO_449",
+        "IBM864",
+        "ISO-8859-6",
+        "windows-1256"
+    ],
+    "uz": [
+        "ASMO_449",
+        "ECMA-cyrillic",
+        "IBM864",
+        "ISO-8859-5",
+        "ISO-8859-6",
+        "KOI-8",
+        "PTCP154",
+        "windows-1251",
+        "windows-1256"
+    ],
+    "vi": [
+        "IBM1163",
+        "IBM256",
+        "TCVN-5712-1",
+        "VIQR",
+        "VISCII",
+        "windows-1258"
+    ],
+    "wo": [
+        "ASMO_449",
+        "IBM864",
+        "ISO-8859-6",
+        "windows-1256"
+    ],
+    "zh-Hans": [
+        "GB18030",
+        "GB2312",
+        "GBK",
+        "GB_1988-80",
+        "GB_2312-80",
+        "HZ-GB-2312",
+        "ISO-2022-CN-EXT",
+        "ISO-2022-CN"
+    ],
+    "zh-Hant": [
+        "Big5-HKSCS",
+        "Big5"
+    ],
+    "*": [
+        "UTF-8",
+        "UTF-16",
+        "UTF-16BE",
+        "UTF-16LE"
+    ]
+}
