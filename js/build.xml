@@ -28,7 +28,7 @@ limitations under the License.
 	<property name="build.base"						value="${basedir}"/>
 	<property name="build.dist"						value="${build.base}/../dist"/>
 	<property name="build.export"					value="${build.base}/../export"/>
-	<property name="build.demo"						value="${build.base}/../doc/demo"/>
+	<property name="build.demo"						value="${build.base}/../docs/demo"/>
 	<property name="build.tools"					value="${build.base}/../tools"/>
 	<property name="build.tools.build"				value="${build.base}/../tools/build"/>
 	<property name="build.bin"						value="${build.base}/bin"/>
@@ -380,8 +380,8 @@ limitations under the License.
 				<include name="**/*.js"/>
 			</fileset>
 		</copy>
-		<mkdir dir="${build.export}/doc/jsdoc"/>
-		<copy todir="${build.export}/doc/jsdoc">
+		<mkdir dir="${build.export}/docs/jsdoc"/>
+		<copy todir="${build.export}/docs/jsdoc">
 			<fileset dir="${build.jsdoc}">
 				<include name="**/*"/>
 			</fileset>

@@ -1,6 +1,6 @@
 /*
  * isDigit.js - Character type is digit
- * 
+ *
  * Copyright © 2012-2015, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -28,11 +28,11 @@ var IString = require("./IString.js");
 /**
  * Return whether or not the first character is a digit character in the
  * Latin script.<p>
- * 
+ *
  * @static
  * @param {string|IString|number} ch character or code point to examine
  * @return {boolean} true if the first character is a digit character in the
- * Latin script. 
+ * Latin script.
  */
 var isDigit = function (ch) {
 	var num;
@@ -49,7 +49,7 @@ var isDigit = function (ch) {
 			num = ch._toCodePoint(0);
 			break;
 	}
-	return CType._inRange(num, 'digit', ilib.data.ctype);
+	return ilib.data.ctype ? CType._inRange(num, 'digit', ilib.data.ctype) : (num >= 0x30 && num <= 0x39);
 };
 
 /**

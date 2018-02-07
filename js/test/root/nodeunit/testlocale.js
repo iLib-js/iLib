@@ -700,6 +700,65 @@ module.exports.testlocale = {
             test.ok(locales.length > 0);
             test.done();
         });
-    }
+    },
+       
+    testLocaleGetLanguageSpecSimple: function(test) {
+        test.expect(2);
+        
+        test.ok(loc !== null);
+        
+        var loc = new Locale("en");
+        test.equal(loc.getLangSpec(), "en");
+        test.done();
+    },
     
+    testLocaleGetLanguageSpecLeaveOutRegionAndVariant: function(test) {
+        test.expect(2);
+        
+        test.ok(loc !== null);
+        
+        var loc = new Locale("en-US-MILITARY");
+        test.equal(loc.getLangSpec(), "en");
+        test.done();
+    },
+
+    testLocaleGetLanguageSpecIncludeScript: function(test) {
+        test.expect(2);
+        
+        test.ok(loc !== null);
+        
+        var loc = new Locale("zh-Hans");
+        test.equal(loc.getLangSpec(), "zh-Hans");
+        test.done();
+    },
+
+    testLocaleGetLanguageSpecIncludeScriptButNotOthers: function(test) {
+        test.expect(2);
+        
+        test.ok(loc !== null);
+        
+        var loc = new Locale("zh-Hans-CN-GOVT");
+        test.equal(loc.getLangSpec(), "zh-Hans");
+        test.done();
+    },
+
+    testLocaleGetLanguageSpecLanguageAndScriptMissing: function(test) {
+        test.expect(2);
+        
+        test.ok(loc !== null);
+        
+        var loc = new Locale("CN");
+        test.equal(loc.getLangSpec(), "");
+        test.done();
+    },
+
+    testLocaleGetLanguageSpecNoScriptWithoutLanguage: function(test) {
+        test.expect(2);
+        
+        test.ok(loc !== null);
+        
+        var loc = new Locale("Hans-CN");
+        test.equal(loc.getLangSpec(), "");
+        test.done();
+    }
 };
