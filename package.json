@@ -4,11 +4,11 @@
     "main": "js/lib/ilib-node.js",
     "description": "iLib is a cross-engine library of internationalization (i18n) classes written in pure JS",
     "keywords": [
-        "internationalization", 
-        "i18n", 
-        "localization", 
-        "l10n", 
-        "globalization", 
+        "internationalization",
+        "i18n",
+        "localization",
+        "l10n",
+        "globalization",
         "g11n",
         "date",
         "time",
@@ -28,7 +28,7 @@
     "contributors": [
         {
             "name": "Edwin Hoogerbeets",
-            "email": "ehoogerbeets@gmail.com" 
+            "email": "ehoogerbeets@gmail.com"
         },
         {
             "name": "Goun Lee",
@@ -53,6 +53,15 @@
         "nodejs": ">= 0.10"
     },
     "scripts": {
-       "test": "ant test"
+        "test": "ant test"
+    },
+    "devDependencies": {
+        "cldr-data": "^32.0.0",
+        "ejs": "^2.5.2",
+        "nodeunit": "0.12.0",
+        "should": ">=11.1.0",
+        "tap": "^10.0.2",
+        "trireme": "^0.9.0",
+        "uglify-js": "^3.3.0"
     }
 }
