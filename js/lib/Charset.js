@@ -18,7 +18,7 @@
  */
 
 // !depends ilib.js Utils.js
-// !data charsetaliases charset/ISO-8859-1 charset/ISO-8859-15 charset/UTF-8
+// !data charset charsetaliases charset/ISO-8859-1 charset/ISO-8859-15 charset/UTF-8
 
 var ilib = require("./ilib.js");
 var Utils = require("./Utils.js");

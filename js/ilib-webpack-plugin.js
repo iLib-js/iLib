@@ -89,7 +89,7 @@ IlibWebpackPlugin.prototype.apply = function(compiler) {
                         set.add("und/" + l.region);
                     }
                 });
-                
+
                 set.forEach(function(locale) {
                     module.dependencies.push(new CommonJsRequireDependency("./" + locale + ".js", null));
                 });
@@ -97,7 +97,7 @@ IlibWebpackPlugin.prototype.apply = function(compiler) {
         });
     });
     */
-    
+
     compiler.plugin('emit', function(compilation, callback) {
         // console.log("Event: emit");
 
@@ -116,12 +116,38 @@ IlibWebpackPlugin.prototype.apply = function(compiler) {
                 }
             }
 
+            var charsets = new Set();
+            var charmaps = new Set();
+            var lang2charset;
             var outputSet = {};
 
             locales.forEach(function(locale) {
                 localeData.forEach(function(filename) {
-                    // time zone data in the zoneinfo files are a special case because they are non-locale data
-                    if (filename === "zoneinfo") {
+                    if (filename === "charset" || filename === "charmaps") {
+                        // charmaps and charset info are special cases because they are non-locale data.
+                        // If they just use the generic "charset" or "charmaps" data, then
+                        // we figure out which charsets are appropriate for the locale
+                        if (!lang2charset) {
+                            lang2charset = require("./data/locale/lang2charset.json");
+                        }
+
+                        var l = new Locale(locale);
+                        var spec = l.getLanguage() + (l.getScript() ? ("-" + l.getScript()) : ""); // TODO: should use l.getLangScript()
+                        if (lang2charset[spec]) {
+                            // always add the charset, even when charmaps are requested, because the
+                            // charmaps need the charset for the charmap
+                            lang2charset[spec].forEach(function(charsetName) {
+                                charsets.add(charsetName);
+                            });
+
+                            if (filename === "charmaps") {
+                                lang2charset[spec].forEach(function(charsetName) {
+                                    charmaps.add(charsetName);
+                                });
+                            }
+                        }
+                    } else if (filename === "zoneinfo") {
+                        // time zone data in the zoneinfo files are a special case because they are non-locale data
                         // console.log(">>>>>>>>>>>>> processing zoneinfo. cwd is " + process.cwd());
                         var cwdToData = "./data/locale/zoneinfo/zonetab.json";
                         var data = fs.readFileSync(cwdToData, "utf-8");
@@ -225,6 +251,36 @@ IlibWebpackPlugin.prototype.apply = function(compiler) {
                 });
             }.bind(this));
 
+            if (charsets.size > 0) {
+                if (!outputSet.root) {
+                    outputSet.root = {};
+                }
+                var data, cwdToData ="data/locale/charsetaliases.json";
+                if (!outputSet.root.charsetaliases && fs.existsSync(cwdToData)) {
+                    data = fs.readFileSync(cwdToData, "utf-8");
+                    var line = "ilib.data.charsetaliases = " + data + ";\n";
+                    outputSet.root.charsetaliases = line;
+                }
+
+                charsets.forEach(function(charset) {
+                    var data, cwdToData = path.join("data/locale/charset", charset + ".json");
+                    if (!outputSet.root[filename] && fs.existsSync(cwdToData)) {
+                        data = fs.readFileSync(cwdToData, "utf-8");
+                        var line = "ilib.data.charset['" + charset + "'] = " + data + ";\n";
+                        outputSet.root[charset] = line;
+                    }
+                });
+
+                charmaps.forEach(function(charset) {
+                    var data, cwdToData = path.join("data/locale/charmaps", charset + ".json");
+                    if (!outputSet.root[filename] && fs.existsSync(cwdToData)) {
+                        data = fs.readFileSync(cwdToData, "utf-8");
+                        var line = "ilib.data.charmaps['" + charset + "'] = " + data + ";\n";
+                        outputSet.root[charset] = line;
+                    }
+                });
+            }
+
             var ilibFileName = "ilib";
             if (_this.size) {
                 ilibFileName += "-" + _this.size;
@@ -249,7 +305,7 @@ IlibWebpackPlugin.prototype.apply = function(compiler) {
                     " * /\n";
                 output += 'var ilib=require("./' + ilibFileName + '");\n';
                 */
-                
+
                 for (var dataFile in dataFiles) {
                     output += dataFiles[dataFile];
                 }
