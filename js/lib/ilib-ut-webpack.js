@@ -136,19 +136,6 @@ ilib.charmaps_Hans = require("./charmaps/Hans.js");
 ilib.charmaps_Hant = require("./charmaps/Hant.js");
 ilib.charmaps_general = require("./charmaps/general.js");
 
-/*
-!data
-charset/ISO-10646-UCS-2
-charset/UTF-16BE
-charset/UTF-16
-charset/UTF-16LE
-charset/UTF-8
-charset/ISO-8859-1
-charset/EUC-JP
-charset/Shift_JIS
-charset/ISO-8859-15
-*/
-
 /* private classes used in the tests */
 ilib.ISet = require("./ISet.js");
 ilib.SearchUtils = require("./SearchUtils.js");
@@ -169,5 +156,12 @@ ilib.PersRataDie = require("./PersRataDie.js");
 ilib.PhoneHandlerFactory = require("./PhoneHandlerFactory.js");
 ilib.PhoneLocale = require("./PhoneLocale.js");
 ilib.RataDie = require("./RataDie.js");
+
+ilib.WebpackLoader = require("./WebpackLoader.js");
+
+ilib.setLoaderCallback(ilib.WebpackLoader(ilib));
+
+ilib._dyncode = false;
+ilib._dyndata = true;
 
 module.exports = ilib;
