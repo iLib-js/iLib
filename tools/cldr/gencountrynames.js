@@ -1,8 +1,8 @@
 /*
- * gencountrynames.js - ilib tool to generate the ctrynames.json files from 
+ * gencountrynames.js - ilib tool to generate the ctrynames.json files from
  * the CLDR data files
- * 
- * Copyright © 2013-2016, JEDLSoft
+ *
+ * Copyright © 2013-2017, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,11 +19,10 @@
  */
 
 /*
- * This code is intended to be run under node.js 
+ * This code is intended to be run under node.js
  */
 
 var fs = require('fs');
-var util = require('util');
 var path = require('path');
 var common = require('./common');
 var merge = common.merge;
@@ -53,7 +52,7 @@ process.argv.forEach(function (val, index, array) {
 });
 
 if (process.argv.length < 4) {
-    util.error('Error: not enough arguments');
+    console.error('Error: not enough arguments');
     usage();
 }
 
@@ -61,33 +60,28 @@ cldrDirName = process.argv[2];
 localeDirName = process.argv[3];
 
 console.log("gencountrynames - generate localized country names from the CLDR data.\n" +
-        "Copyright (c) 2016 JEDLSoft\n");
+        "Copyright (c) 2017 JEDLSoft");
+console.log("CLDR dir: " + cldrDirName);
+console.log("locale dir: " + localeDirName);
 
-console.log("CLDR dir: " + cldrDirName + "\n");
-console.log("locale dir: " + localeDirName + "\n");
+if (!fs.existsSync(cldrDirName)) {
+    console.error("Could not access CLDR dir " + cldrDirName);
+    usage();
+}
 
-fs.exists(cldrDirName, function (exists) {
-    if (!exists) {
-        util.error("Could not access CLDR dir " + cldrDirName);
-        usage();
-    }
-});
-
-fs.exists(localeDirName, function (exists) {
-    if (!exists) {
-        util.error("Could not access locale data directory " + localeDirName);
-        usage();
-    }
-});
+if (!fs.existsSync(localeDirName)) {
+    console.error("Could not access locale data directory " + localeDirName);
+    usage();
+}
 
 function loadFile(pathname) {
     var ret = undefined;
-    
+
     if (fs.existsSync(pathname)) {
         json = fs.readFileSync(pathname, "utf-8");
         ret = JSON.parse(json);
     }
-    
+
     return ret;
 }
 
@@ -99,7 +93,6 @@ function filterRegions(regions, territories) {
             }
         }
     }
-    
     return regions;
 }
 
@@ -108,13 +101,13 @@ function getRegionNames(localeData, pathname, locale) {
         var language = locale.getLanguage(),
             script = locale.getScript(),
             region = locale.getRegion();
-    
+
         var filename = path.join(cldrDirName, "cldr-localenames-full/main", pathname, "territories.json");
         var data = loadFile(filename);
-        
+
         var destfile = calcLocalePath(language, script, region, "ctrynames.json");
         var destdata = loadFile(destfile);
-        
+
         // If the existing file is there and done by hand, just merge these things into that file rather
         // than overwriting it. If the file is previously generated, start from a blank slate.
         if (!destdata || typeof(destdata.generated) === 'undefined' || destdata.generated !== false) {
@@ -122,9 +115,9 @@ function getRegionNames(localeData, pathname, locale) {
         } else {
             console.log("Merging into existing by-hand file\n");
         }
-        
+
         if (script) {
-            
+
             if (!localeData[language]) {
                 localeData[language] = {};
             }
@@ -159,7 +152,7 @@ function getRegionNames(localeData, pathname, locale) {
     } catch (e) {
         return undefined;
     }
-    
+
     return data;
 }
 
@@ -211,28 +204,36 @@ function anyProperties(data) {
 
 function writeCountryNameResources(language, script, region, data) {
     var pathname = calcLocalePath(language, script, region, "");
+    var reverse = {};
 
     if (anyProperties(data)) {
-        console.log("Writing " + pathname + "\n");
+        console.log("Writing " + pathname);
         makeDirs(pathname);
         //data = sortObject(data);
         fs.writeFileSync(path.join(pathname, "ctrynames.json"), JSON.stringify(data, true, 4), "utf-8");
+
+        for (var ctry in data) {
+            if (ctry && data[ctry]) {
+                reverse[data[ctry]] = ctry;
+            }
+        }
+
+        fs.writeFileSync(path.join(pathname, "ctryreverse.json"), JSON.stringify(reverse, true, 4), "utf-8");
     } else {
-        console.log("Skipping empty " + pathname + "\n");
+        console.log("Skipping empty " + pathname);
     }
 }
 
 function sortObject(obj) {
     // sort data with value
-    
     var keys = Object.keys(obj);
     var sortedInfoObj = {};
     var key;
 
     keys.sort(function(a, b){return obj[a] < obj[b] ? -1 : obj[a] > obj[b] ? 1 : 0;});
-    
+
     for(var i = 0; i < keys.length; i++) {
-        key = keys[i]; 
+        key = keys[i];
         sortedInfoObj[key] = obj[key];
     }
     return sortedInfoObj;
@@ -243,29 +244,27 @@ var localeDirs, localeData = {};
 try {
     localeDirs = fs.readdirSync(path.join(cldrDirName, "cldr-localenames-full/main"));
 } catch (e) {
-    console.log("Error: Could not load file " + filename + "\n");
+    console.log("Error: Could not load file " + filename);
     process.exit(2);
 }
 
-console.log("Loading locale data...\n");
+console.log("Loading locale data...");
 
 // get the information about scripts if necessary
 for (var i = 0; i < localeDirs.length; i++) {
 // for (var i = 0; i < 6; i++) {
-    var localeSpec = localeDirs[i];    
+    var localeSpec = localeDirs[i];
     var locale = new Locale(localeSpec);
-    
+
     if (localeSpec !== "root") {
         getRegionNames(localeData, localeSpec, locale);
     }
 }
 
 //find the system resources
-console.log("Merging and pruning locale data...\n");
-
+console.log("Merging and pruning locale data...");
 mergeAndPrune(localeData);
-
-console.log("\nWriting country name resources...\n");
+console.log("Writing country name resources...");
 
 // now write out the system resources
 
@@ -278,10 +277,10 @@ for (language in localeData) {
                     for (region in localeData[language][script]) {
                         if (region && localeData[language][script][region] && region !== 'data' && region !== 'merged') {
                             writeCountryNameResources(language, script, region, localeData[language][script][region].data);
-                        }           
+                        }
                     }
                     writeCountryNameResources(language, script, undefined, localeData[language][script].data);
-                } else { 
+                } else {
                     writeCountryNameResources(language, undefined, subpart, localeData[language][subpart].data);
                 }
             }
@@ -289,5 +288,4 @@ for (language in localeData) {
         writeCountryNameResources(language, undefined, undefined, localeData[language].data);
     }
 }
-
 writeCountryNameResources(undefined, undefined, undefined, localeData.data);

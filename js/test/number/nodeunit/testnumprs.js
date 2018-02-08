@@ -215,6 +215,32 @@ module.exports.testnumprs = {
         test.done();
     },
 
+    testNumberFloatLargerNumber: function(test) {
+        test.expect(2);
+        var num = new INumber('23224234.23423');
+        test.ok(num !== null);
+
+        test.equal(num.valueOf(), 23224234.23423);
+        test.done();
+    },
+
+    testNumberFloatNoLocaleData: function(test) {
+        test.expect(2);
+        var temp = ilib._load;
+        ilib._load = undefined;
+        var ctypedata = ilib.data.ctype;
+        ilib.data.ctype = undefined;
+
+        var num = new INumber('23224234.23423', {locale: "ru-RU"});
+        test.ok(num !== null);
+
+        test.equal(num.valueOf(), 23224234.23423);
+
+        ilib._load = temp;
+        ilib.data.ctype = ctypedata;
+
+        test.done();
+    },
 
     testNumberInt: function(test) {
         test.expect(2);
