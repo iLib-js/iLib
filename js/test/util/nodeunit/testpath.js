@@ -1,6 +1,6 @@
 /*
  * testpath.js - test the Path polyfill class
- * 
+ *
  * Copyright © 2018, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -54,7 +54,7 @@ module.exports.testpath = {
         test.equal(Path.dirname("a/../b/c.txt"), "b");
         test.done();
     },
-    
+
     testBasenameSimple: function(test) {
         test.expect(1);
         test.equal(Path.basename("c.txt"), "c.txt");
@@ -126,7 +126,7 @@ module.exports.testpath = {
         test.equal(Path.normalize("a/b/."), "a/b");
         test.done();
     },
-    
+
     testNormalizeRemoveDotsAmongstDotDots: function(test) {
         test.expect(1);
         test.equal(Path.normalize(".././../b/c.txt"), "../../b/c.txt");
@@ -150,7 +150,7 @@ module.exports.testpath = {
         test.equal(Path.normalize("a//b//c.txt"), "a/b/c.txt");
         test.done();
     },
-    
+
     testNormalizeConvertDOSToPosix: function(test) {
         test.expect(1);
         test.equal(Path.normalize("a\\b\\c.txt"), "a/b/c.txt");
@@ -186,7 +186,7 @@ module.exports.testpath = {
         test.equal(Path.join("b/", "/c.txt"), "b/c.txt");
         test.done();
     },
-    
+
     testJoinUndefined: function(test) {
         test.expect(1);
         test.equal(Path.join(), "");
