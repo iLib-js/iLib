@@ -23,6 +23,7 @@ var modules = {};
 var suites = [
     "testset.js",
     "testutils.js",
+    "testpath.js"
 ];
 
 var ilib = require("../../../lib/ilib-node.js");
