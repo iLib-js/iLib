@@ -108,7 +108,7 @@ var ListFmt = function(options) {
 
 	Utils.loadData({
 		name: "list.json",
-		object: ListFmt,
+		object: "ListFmt",
 		locale: this.locale, 
 		sync: this.sync,
 		loadParams: this.loadParams,

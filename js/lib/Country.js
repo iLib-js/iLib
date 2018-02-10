@@ -94,7 +94,7 @@ var Country = function (options) {
 			if (!this.codeToCountry) {
 				Utils.loadData({
 					name: "ctryreverse.json",
-					object: Country,
+					object: "Country",
 					locale: locale,
 					sync: sync,
 					loadParams: loadParams,
