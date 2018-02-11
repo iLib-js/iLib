@@ -19,18 +19,6 @@
  * limitations under the License.
  */
 
-/* !data
-charset/ISO-10646-UCS-2
-charset/UTF-16BE
-charset/UTF-16
-charset/UTF-16LE
-charset/UTF-8
-charset/ISO-8859-1
-charset/EUC-JP
-charset/Shift_JIS
-charset/ISO-8859-15
-*/
-
 var ilib = require("./ilib.js");
 
 ilib.DateRngFmt = require("./DateRngFmt.js");
@@ -128,13 +116,6 @@ ilib.UTF16LE = require("./UTF16LE.js");
 ilib.AlphabeticIndex = require("./AlphabeticIndex.js");
 ilib.TimeZone = require("./TimeZone.js");
 ilib.Currency = require("./Currency.js");
-
-/* not exposed... these are here to force the charmap data to be included */
-ilib.charmaps_Jpan = require("./charmaps/Jpan.js");
-ilib.charmaps_Kore = require("./charmaps/Kore.js");
-ilib.charmaps_Hans = require("./charmaps/Hans.js");
-ilib.charmaps_Hant = require("./charmaps/Hant.js");
-ilib.charmaps_general = require("./charmaps/general.js");
 
 /* private classes used in the tests */
 ilib.ISet = require("./ISet.js");

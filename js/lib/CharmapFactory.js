@@ -19,7 +19,6 @@
  */
 
 /* !depends ilib.js JSUtils.js Charmap.js CharmapTable.js */
-// !data charset/ISO-8859-15 charmaps/ISO-8859-15
 
 var ilib = require("./ilib.js");
 var JSUtils = require("./JSUtils.js");

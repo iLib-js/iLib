@@ -19,7 +19,7 @@
 
 // !depends ilib.js Utils.js Charset.js JSUtils.js IString.js
 
-// !data charmaps charset/US-ASCII charset/ISO-10646-UCS-2 charset/ISO-10646-UCS-4 charset/ISO-10646-Unicode-Latin1
+// !data charmaps charset/US-ASCII charset/ISO-10646-UCS-2 charset/ISO-8859-1 charset/ISO-8859-15 charmaps/ISO-8859-15 charmaps/ISO-8859-1 charset/ISO-8859-1
 
 var ilib = require("./ilib.js");
 var Utils = require("./Utils.js");

@@ -95,10 +95,14 @@ NormString.init = function(options) {
         "nfkd": ["nfkd", "nfd"],
         "nfkc": ["nfkd", "nfd"]
     };
-    var files = ["normdata.json"];
+    var files = [];
     var forms = formDependencies[form];
+    var toLoad = [];
     for (var f in forms) {
-        files.push(forms[f] + "/" + script + ".json");
+        if (!ilib.data.norm[f]) {
+            files.push(forms[f] + "/" + script + ".json");
+            toLoad.push(forms[f]);
+        }
     }
 
     if (!ilib.data.norm || JSUtils.isEmpty(ilib.data.norm.ccc)) {
@@ -112,15 +116,16 @@ NormString.init = function(options) {
             callback: ilib.bind(this, function(normdata){
                 if (!normdata) {
                     ilib.data.cache.normdata = normdata;
+                } else {
+                    ilib.extend(ilib.data.norm, normdata);
                 }
     
-                if (JSUtils.isEmpty(ilib.data.norm.ccc) || JSUtils.isEmpty(ilib.data.norm.nfd) || JSUtils.isEmpty(ilib.data.norm.nfkd)) {
+                if (files.length) {
                     //console.log("loading files " + JSON.stringify(files));
                     Utils._callLoadData(files, sync, loadParams, function(arr) {
-                        ilib.extend(ilib.data.norm, arr[0]);
-                        for (var i = 1; i < arr.length; i++) {
+                        for (var i = 0; i < arr.length; i++) {
                             if (typeof(arr[i]) !== 'undefined') {
-                                ilib.extend(ilib.data.norm[forms[i-1]], arr[i]);
+                                ilib.extend(ilib.data.norm[toLoad[i]], arr[i]);
                             }
                         }
                         if (options && typeof(options.onLoad) === 'function') {
