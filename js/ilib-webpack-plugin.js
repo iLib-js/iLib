@@ -31,6 +31,10 @@ function toArray(set) {
     return ret;
 }
 
+function toIlibDataName(str) {
+    return (!str || str === "root" || str === "*") ? "" : str.replace(/[\.:\(\)\/\\\+\-]/g, "_");
+}
+
 function Asset(content) {
     this.content = content || "";
 }
@@ -117,7 +121,7 @@ IlibWebpackPlugin.prototype.apply = function(compiler) {
             }
 
             var charsets = new Set();
-            var charmaps = new Set();
+            var charmaps = {};
             var lang2charset;
             var outputSet = {};
 
@@ -141,8 +145,11 @@ IlibWebpackPlugin.prototype.apply = function(compiler) {
                             });
 
                             if (filename === "charmaps") {
+                                if (!charmaps[spec]) {
+                                    charmaps[spec] = new Set();
+                                }
                                 lang2charset[spec].forEach(function(charsetName) {
-                                    charmaps.add(charsetName);
+                                    charmaps[spec].add(charsetName);
                                 });
                             }
                         }
@@ -232,9 +239,9 @@ IlibWebpackPlugin.prototype.apply = function(compiler) {
                                         outputSet[part] = {};
                                     }
                                     if (!outputSet[part][filename]) {
-                                        var line = "ilib.data." + filename.replace(/\//g, "_").replace(/-/g, "_");
+                                        var line = "ilib.data." + toIlibDataName(filename);
                                         if (part !== "root") {
-                                            line += "_" + part.replace(/-/g, "_");
+                                            line += "_" + toIlibDataName(part);
                                         }
                                         data = fs.readFileSync(cwdToData, "utf-8");
                                         line += " = " + data + ";\n";
@@ -252,6 +259,8 @@ IlibWebpackPlugin.prototype.apply = function(compiler) {
             }.bind(this));
 
             if (charsets.size > 0) {
+                var optional = new Set();
+                
                 if (!outputSet.root) {
                     outputSet.root = {};
                 }
@@ -266,19 +275,30 @@ IlibWebpackPlugin.prototype.apply = function(compiler) {
                     var data, cwdToData = path.join("data/locale/charset", charset + ".json");
                     if (!outputSet.root[filename] && fs.existsSync(cwdToData)) {
                         data = fs.readFileSync(cwdToData, "utf-8");
-                        var line = "ilib.data.charset['" + charset + "'] = " + data + ";\n";
+                        var line = "ilib.data.charset_" + toIlibDataName(charset) + " = " + data + ";\n";
                         outputSet.root[charset] = line;
+                        
+                        var cs = JSON.parse(data);
+                        if (typeof(cs.optional) === "boolean" && cs.optional) {
+                            optional.add(charset);
+                        }
                     }
                 });
 
-                charmaps.forEach(function(charset) {
-                    var data, cwdToData = path.join("data/locale/charmaps", charset + ".json");
-                    if (!outputSet.root[filename] && fs.existsSync(cwdToData)) {
-                        data = fs.readFileSync(cwdToData, "utf-8");
-                        var line = "ilib.data.charmaps['" + charset + "'] = " + data + ";\n";
-                        outputSet.root[charset] = line;
+                for (var locale in charmaps) {
+                    var loc = (locale === "*" ? "root" : locale);
+                    if (!outputSet[loc]) {
+                        outputSet[loc] = {};
                     }
-                });
+                    charmaps[locale].forEach(function(charset) {
+                        var data, cwdToData = path.join("data/locale/charmaps", charset + ".json");
+                        if (!optional.has(charset) && !outputSet[loc][charset] && fs.existsSync(cwdToData)) {
+                            data = fs.readFileSync(cwdToData, "utf-8");
+                            var line = "ilib.data.charmaps_" + toIlibDataName(charset) + " = " + data + ";\n";
+                            outputSet[loc][charset] = line;
+                        }
+                    });
+                }
             }
 
             var ilibFileName = "ilib";
