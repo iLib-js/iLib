@@ -1,7 +1,7 @@
 /*
  * ilib.js - define the ilib name space
  * 
- * Copyright © 2012-2017, JEDLSoft
+ * Copyright © 2012-2018, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -130,17 +130,18 @@ ilib.clearPseudoLocales();
  */
 ilib._getPlatform = function () {
     if (!ilib._platform) {
-    	try {
-    		if (typeof(java.lang.Object) !== 'undefined') {
-    			ilib._platform = (typeof(process) !== 'undefined') ? "trireme" : "rhino";
-    			return ilib._platform;
-    		}
-    	} catch (e) {}
-    	
+        try {
+            if (typeof(java) !== "undefined" && typeof(java.lang.Object) !== 'undefined') {
+                ilib._platform = (typeof(process) !== 'undefined') ? "trireme" : "rhino";
+                return ilib._platform;
+            }
+        } catch (e) {}
+
         if (typeof(process) !== 'undefined' && process.versions && typeof(module) !== 'undefined') {
-            ilib._platform = "nodejs";
+            // if browser and window are defined, then this is a mock process object created by webpack
+            ilib._platform = (process.browser && typeof(window) !== 'undefined') ? "browser" : "nodejs";
         } else if (typeof(Qt) !== 'undefined') {
-        	ilib._platform = "qt";
+            ilib._platform = "qt";
         } else if (typeof(window) !== 'undefined') {
             ilib._platform = (typeof(PalmSystem) !== 'undefined') ? "webos" : "browser";
         } else {
