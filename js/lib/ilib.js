@@ -38,7 +38,14 @@ ilib._ver = function() {
  * @return {string} a version string for this instance of ilib
  */
 ilib.getVersion = function () {
-	// TODO: need some way of getting the version number under dynamic load code
+    if (ilib._dyncode) {
+        try {
+            var pkg = require("../package.json");
+            return pkg.version;
+        } catch (e) {
+            // ignore
+        }
+    }
     return ilib._ver() || "13.0"; 
 };
 
