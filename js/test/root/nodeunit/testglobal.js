@@ -131,9 +131,23 @@ module.exports.testglobal = {
         test.done();
     },
 
-    testGetVersion: function(test) {
-        test.expect(1);
-        test.equal(ilib.getVersion().substring(0,4), "13.1");
+    testGetVersionAssembled: function(test) {
+        var version;
+        
+        if (!ilib._dyncode) {
+            test.expect(1);
+            test.equal(ilib.getVersion().substring(0,4), "13.1");
+        }
+        test.done();
+    },
+
+    testGetVersionDynamic: function(test) {
+        
+        if (ilib._dyncode) {
+            test.expect(1);
+            var version = require("../../../package.json").version;
+            test.equal(ilib.getVersion(), version);
+        }
         test.done();
     },
 
