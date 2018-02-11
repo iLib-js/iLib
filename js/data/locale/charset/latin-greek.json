@@ -2,5 +2,6 @@
 	"min": 1,
 	"max": 1,
 	"scripts": ["Grek", "Latn"],
-	"locales": ["GR"]
+	"locales": ["GR"],
+  "optional": true
 }

@@ -3,5 +3,6 @@
 	"min": 1,
 	"max": 1,
 	"scripts": ["Cyrl"],
-	"locales": ["MN","KZ","RU","UZ"]
+	"locales": ["MN","KZ","RU","UZ"],
+  "optional": true
 }
