@@ -53,16 +53,21 @@ module.exports = function(env, args) {
             "zh-Hans-CN", "zh-Hant-HK", "zh-Hant-TW", "zh-Hans-SG"
         ];
     }
-    
-    outputPath = (assembly === "assembled") ? 
-        path.resolve(__dirname, 'output/js', size, assembly) :
-        path.resolve(__dirname, 'output/js', size, assembly, compilationType);
-    
+
+    var urlPath = ((assembly === "assembled") ?
+        path.join('output/js', size, assembly) :
+        path.join('output/js', size, assembly, compilationType)) + "/";
+    outputPath = (assembly === "assembled") ?
+        path.resolve(__dirname, urlPath) :
+        path.resolve(__dirname, urlPath);
+
     var ret = {
         entry: './lib/ilib-' + size + '-webpack.js',
         output: {
             filename: 'ilib-standard.js',
+            chunkFilename: 'ilib.[name].js',
             path: outputPath,
+            publicPath: "/" + urlPath,
             library: 'ilib',
             libraryTarget: 'umd'
         },
@@ -73,7 +78,10 @@ module.exports = function(env, args) {
                 use: {
                     loader: path.resolve('./lib/ilibdata-webpack-loader.js'),
                     options: {
-                        locales: locales
+                        locales: locales,
+                        assembly: assembly,
+                        compilation: compilationType,
+                        size: size
                     }
                 }
             }]
@@ -81,13 +89,16 @@ module.exports = function(env, args) {
         plugins: [
             new webpack.DefinePlugin({
                 __VERSION__: JSON.stringify(require("./package.json").version)
-            }),
+            })
+            /*
+            ,
             new IlibWebpackPlugin({
                 locales: locales,
                 assembly: assembly,
                 compilation: compilationType,
                 size: size
             })
+            */
         ]
     };
 

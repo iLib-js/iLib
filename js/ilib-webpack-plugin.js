@@ -260,7 +260,7 @@ IlibWebpackPlugin.prototype.apply = function(compiler) {
 
             if (charsets.size > 0) {
                 var optional = new Set();
-                
+
                 if (!outputSet.root) {
                     outputSet.root = {};
                 }
@@ -277,7 +277,7 @@ IlibWebpackPlugin.prototype.apply = function(compiler) {
                         data = fs.readFileSync(cwdToData, "utf-8");
                         var line = "ilib.data.charset_" + toIlibDataName(charset) + " = " + data + ";\n";
                         outputSet.root[charset] = line;
-                        
+
                         var cs = JSON.parse(data);
                         if (typeof(cs.optional) === "boolean" && cs.optional) {
                             optional.add(charset);

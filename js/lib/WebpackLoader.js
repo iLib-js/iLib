@@ -1,6 +1,6 @@
 /*
  * WebpackLoader.js - Loader implementation for webpack'ed ilib on the web
- * 
+ *
  * Copyright © 2018, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -20,86 +20,95 @@
 var Loader = require("./Loader.js");
 var Path = require("./Path.js");
 var Locale = require("./Locale.js");
+var ISet = require("./ISet.js");
+
+var alreadyLoaded = new ISet();
+
+function loadLocaleData(ilib, locale, callback) {
+    var promise, module;
+    switch (locale) {
+        // This special macro will get replaced in the ilibdata-webpack-loader with
+        // case statements for each locale js file so that webpack can make separate
+        // bundles for each one of those files when in dynamic load mode. In static
+        // (assembled) mode, this will get replaced with require calls that cause
+        // the data to be put into one giant webpack bundle.
+
+        // !loadLocaleData
+    }
+}
 
 /**
  * @class
  * Implementation of Loader for webpack.
- * 
+ *
  * @constructor
  * @private
  */
 module.exports = function (ilib) {
-    
     var WebpackLoader = function (ilib) {
         // util.print("new common WebpackLoader instance\n");
-    
+
         this.parent.call(this, ilib);
-        
+
         this.includePath.push("");
     };
-        
+
     // make this a subclass of loader
     WebpackLoader.prototype = new Loader();
     WebpackLoader.prototype.parent = Loader;
     WebpackLoader.prototype.constructor = WebpackLoader;
-    
+
     WebpackLoader.prototype.name = "WebpackLoader";
     WebpackLoader.prototype._loadFile = function (pathname, sync, cb) {
         var text;
         console.log("WebpackLoader._loadFile: loading " + pathname + (sync ? " sync" : " async"));
-        
+
         var parts = ["."];
         var dir = Path.dirname(pathname);
-        var base = pathname.substring(dir.length+1, pathname.lastIndexOf("."));
+        var base = Path.basename(pathname, "json");
         var dataName = base;
-        var locale = new Locale();
-        var rootUrl = "/output/js/full/assembled/";
+        var locale = undefined;
+        var filename;
 
         if (dir) {
-            var locpath = /([a-z][a-z](\/[A-Z][a-z][a-z][a-z])?(\/[A-Z][A-Z](\/[A-Z]+)?)?)$/.exec(dir);
+            var locpath = /(^|\/)([a-z][a-z][a-z]?(\/[A-Z][a-z][a-z][a-z])?(\/[A-Z][A-Z](\/[A-Z]+)?)?)$/.exec(dir);
             if (locpath) {
-                locale = new Locale(locpath[0].substring(1).replace(/\//g, "-"));
+                locale = new Locale(locpath[2].replace(/\//g, "-"));
             }
         }
-        
-        if (locale) {
-            var filename;
-            
-            if (locale.script) {
-                if (locale.region) {
-                    filename = locale.language + "-" + locale.script + "-" + locale.region;
-                    document.write('<scrip' + 't src="' + rootUrl + part + '.js"></scri' + 'pt>\n');
-                } else {
-                    filename = locale.language + "-" + locale.script;
-                }
-            } else if (locale.region) {
-                filename = "und-" + locale.region;
-                document.write('<scrip' + 't src="' + rootUrl + filename + '.js"></scri' + 'pt>\n');
-                
-                filename = locale.language + "-" + locale.region;
-            } else {
-                filename = locale.language;
-            }
-            
-            document.write('<scrip' + 't src="' + rootUrl + filename + '.js"></scri' + 'pt>\n');
-        }
-        
+
+        filename = locale && locale.getSpec() || "root";
         var dataName = base;
-        if (dir) {
-            locale = new Locale(locpath[0].substring(1).replace(/\//g, "-"));
-            var spec = locale.getSpec();
-            if (spec) {
-                dataName += "_" + spec;
-            }
+        if (dir && locale) {
+            dataName += "_" + filename;
         }
-        
+
         dataName = dataName.replace(/[\.:\(\)\/\\\+\-]/g, "_");
+
+        if (alreadyLoaded.has(filename)) {
+            if (cb && typeof(cb) === "function") {
+                cb(ilib.data[dataName]);
+            }
+        } else {
+            alreadyLoaded.add(filename);
+            loadLocaleData(ilib, filename, function(callback, data) {
+                if (callback && typeof(callback) === "function") {
+                    callback(ilib.data[dataName]);
+                }
+            }.bind(this, cb));
+        }
 
         return ilib.data[dataName];
     };
-    
+
     WebpackLoader.prototype._exists = function(dir, file) {
         return false;
+    };
+    
+    // Ensure that the data for a locale is loaded into memory. Thereafter,
+    // all ilib code can be called synchronously.
+    WebpackLoader.prototype.ensureLocale = function(locale, callback) {
+        loadLocaleData(ilib, locale, callback);
     };
 
     return new WebpackLoader(ilib);

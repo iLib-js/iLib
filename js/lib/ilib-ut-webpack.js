@@ -138,11 +138,6 @@ ilib.PhoneHandlerFactory = require("./PhoneHandlerFactory.js");
 ilib.PhoneLocale = require("./PhoneLocale.js");
 ilib.RataDie = require("./RataDie.js");
 
-ilib.WebpackLoader = require("./WebpackLoader.js");
-
-ilib.setLoaderCallback(ilib.WebpackLoader(ilib));
-
-ilib._dyncode = false;
-ilib._dyndata = true;
+require("./ilib-getdata.js");
 
 module.exports = ilib;
