@@ -230,6 +230,10 @@ module.exports.testnumprs = {
         ilib._load = undefined;
         var ctypedata = ilib.data.ctype;
         ilib.data.ctype = undefined;
+        var ru = ilib.data.localeinfo_ru;
+        ilib.data.localeinfo_ru = undefined;
+        var ruRU = ilib.data.localeinfo_ru_RU;
+        ilib.data.localeinfo_ru_RU = undefined;
 
         var num = new INumber('23224234.23423', {locale: "ru-RU"});
         test.ok(num !== null);
@@ -238,6 +242,8 @@ module.exports.testnumprs = {
 
         ilib._load = temp;
         ilib.data.ctype = ctypedata;
+        ilib.data.localeinfo_ru = ru;
+        ilib.data.localeinfo_ru_RU = ruRU;
 
         test.done();
     },
