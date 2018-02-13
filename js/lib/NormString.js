@@ -282,10 +282,13 @@ NormString._expand = function (ch, canon, compat) {
  * 
  * The normalization data is organized by normalization form and within there
  * by script. To include the normalization data for a particular script with
- * a particular normalization form, use the directive:
+ * a particular normalization form, use the following require:
  * 
  * <pre><code>
- * !depends &lt;form&gt;/&lt;script&gt;.js
+ * NormString.init({
+ *   form: "&lt;form&gt;",
+ *   script: "&lt;script&gt;"
+ * });
  * </code></pre>
  * 
  * Where &lt;form&gt is the normalization form ("nfd", "nfc", "nfkd", or "nfkc"), and
@@ -293,7 +296,10 @@ NormString._expand = function (ch, canon, compat) {
  * support. Example: to load in the NFC data for Cyrillic, you would use:
  * 
  * <pre><code>
- * !depends nfc/Cyrl.js
+ * NormString.init({
+ *   form: "nfc",
+ *   script: "Cyrl"
+ * });
  * </code></pre>
  * 
  * Note that because certain normalization forms include others in their algorithm, 
@@ -322,10 +328,10 @@ NormString._expand = function (ch, canon, compat) {
  * numerals "0" through "9".<p>
  * 
  * By default, none of the data for normalization is automatically 
- * included in the preassembled iliball.js file. 
+ * included in the preassembled ilib files. (For size "full".) 
  * If you would like to normalize strings, you must assemble
  * your own copy of ilib and explicitly include the normalization data
- * for those scripts as per the instructions above. This normalization method will 
+ * for those scripts. This normalization method will 
  * produce output, even without the normalization data. However, the output will be 
  * simply the same thing as its input for all scripts 
  * except Korean Hangul and Jamo, which are decomposed and recomposed 

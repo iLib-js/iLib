@@ -1,7 +1,7 @@
 /*
- * persratadie.js - Represent a rata die date in the Persian calendar
+ * PersRataDie.js - Represent a rata die date in the Persian calendar
  * 
- * Copyright © 2014-2015, JEDLSoft
+ * Copyright © 2014-2015, 2018, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,21 +17,12 @@
  * limitations under the License.
  */
 
-/* !depends 
-ilib.js
-MathUtils.js
-RataDie.js
-Astro.js
-GregorianDate.js
-*/
-
 var ilib = require("./ilib.js");
 var MathUtils = require("./MathUtils.js");
 
 var Astro = require("./Astro.js");
 var RataDie = require("./RataDie.js");
 var GregorianDate = require("./GregorianDate.js");
-
 
 /**
  * @class

@@ -1,7 +1,7 @@
 /*
  * LocaleMatcher.js - Locale matcher definition
  * 
- * Copyright © 2013-2015, JEDLSoft
+ * Copyright © 2013-2015, 2018, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,7 +17,6 @@
  * limitations under the License.
  */
 
-// !depends ilib.js Locale.js Utils.js
 // !data likelylocales
 
 var ilib = require("./ilib.js");
