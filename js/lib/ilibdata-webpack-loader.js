@@ -86,7 +86,7 @@ function emitLocaleData(compilation, options) {
                 scripts.add(full.getScript());
             }
         });
-        
+
         locales.forEach(function(locale) {
             localeData.forEach(function(filename) {
                 normPattern.lastIndex = 0;
@@ -271,7 +271,7 @@ function emitLocaleData(compilation, options) {
                 });
             }
         }
-        
+
         function addForm(form, script) {
             if (script) {
                 try {
@@ -287,14 +287,14 @@ function emitLocaleData(compilation, options) {
                 }
             }
         }
-        
+
         for (var form in normalizations) {
             if (normalizations[form].has("all")) {
                 // if "all" is there, then we don't need to add each script individually
                 // because they are all in the all.json already
                 addForm(form, "all");
             } else {
-                var set = (normalizations.size === 0 || (normalizations[form].has("") && normalizations.size === 1)) ? scripts : normalizations[form]; 
+                var set = (normalizations.size === 0 || (normalizations[form].has("") && normalizations.size === 1)) ? scripts : normalizations[form];
                 set.forEach(function(script) {
                     console.log("Inluding " + form + " for script " + script);
                     addForm(form, script);
@@ -358,12 +358,13 @@ function emitLocaleData(compilation, options) {
 var ilibDataLoader = function(source) {
     const options = getOptions(this);
     var match;
-    var partial = source;
     var output = "";
+    var async = false;
+    var callback;
 
     // validateOptions(schema, options, 'Ilib data loader');
 
-    // console.log("ilibdata-loader: processing file ");
+    console.log("ilibdata-loader: processing file " + this.resource);
 
     // first find all the locale parts we need to search
     var locales = options.locales;
@@ -376,6 +377,14 @@ var ilibDataLoader = function(source) {
     }
     var dataSet = this._compilation.localeDataSet;
 
+    if (defineLocaleDataPattern.exec(source) !== null) {
+        // process this file asynchronously so that it will happen after all the other
+        // files are processed
+        async = true;
+        callback = this.async();
+    }
+    defineLocaleDataPattern.lastIndex = 0;
+
     var searchFile = function (re, text) {
         var output = "";
 
@@ -385,7 +394,9 @@ var ilibDataLoader = function(source) {
             var datafiles = match[1].split(/\s+/g);
 
             datafiles.forEach(function(filename) {
-                dataSet.add(filename);
+                if (filename) {
+                    dataSet.add(filename);
+                }
             });
         }
     };
@@ -419,12 +430,6 @@ var ilibDataLoader = function(source) {
         return output + partial;
     }.bind(this);
 
-    searchFile(dataPatternSlashStar, partial);
-    searchFile(dataPatternSlashSlash, partial);
-
-    partial = processMacros(macroPatternSlashSlash, partial);
-    partial = processMacros(macroPatternQuoted, partial);
-
     var processDefineLocaleData = function (text) {
         var partial = text;
         var output = "";
@@ -457,8 +462,6 @@ var ilibDataLoader = function(source) {
         return output + partial;
     }.bind(this);
 
-    partial = processDefineLocaleData(partial);
-
     var processLoadLocaleData = function (text) {
         var partial = text;
         var output = "";
@@ -466,7 +469,7 @@ var ilibDataLoader = function(source) {
         loadLocaleDataPattern.lastIndex = 0;
         if ((match = loadLocaleDataPattern.exec(partial)) !== null) {
             var files = emitLocaleData(this._compilation, options);
-            
+
             // console.log(">>>>>>>>>> found a match");
             output += partial.substring(0, match.index);
             var outputPath = path.join("../output/js", options.size, options.assembly, "locales");
@@ -487,10 +490,28 @@ var ilibDataLoader = function(source) {
         return output + partial;
     }.bind(this);
 
-    output = processLoadLocaleData(partial);
+    function processFile(partial) {
+        searchFile(dataPatternSlashStar, partial);
+        searchFile(dataPatternSlashSlash, partial);
 
-    // console.log("****************************************\nTransformed file to:\n" + output);
-    return output;
+        partial = processMacros(macroPatternSlashSlash, partial);
+        partial = processMacros(macroPatternQuoted, partial);
+
+        partial = processDefineLocaleData(partial);
+
+        return processLoadLocaleData(partial);
+    }
+
+    if (async) {
+        setTimeout(function (source) {
+            callback(null, processFile(source));
+        }, 250, source);
+    } else {
+        output = processFile(source);
+
+        // console.log("****************************************\nTransformed file to:\n" + output);
+        return output;
+    }
 };
 
 module.exports = ilibDataLoader;
