@@ -1,7 +1,7 @@
 /*
  * UnitFmt.js - Unit formatter class
  * 
- * Copyright © 2014-2015, JEDLSoft
+ * Copyright © 2014-2015, 2018, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,17 +16,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
-/*
-!depends 
-ilib.js 
-Locale.js 
-ResBundle.js 
-LocaleInfo.js
-IString.js
-NumFmt.js
-Utils.js
-*/
 
 // !data unitfmt
 

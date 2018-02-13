@@ -17,21 +17,6 @@
  * limitations under the License.
  */
 
-/* !depends
-ilib.js
-Utils.js
-Locale.js
-LocaleInfo.js
-NormString.js
-CType.js
-IString.js
-isIdeo.js
-isAscii.js
-isDigit.js
-Collator.js
-NormString.js
-*/
-
 // !data nfc nfkd
 
 var ilib = require("./ilib.js");

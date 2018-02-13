@@ -1,7 +1,7 @@
 /*
  * Country.js - Country class to get country name corresponding to country code in locale assigned
  *
- * Copyright © 2017, LGE
+ * Copyright © 2017, 2018, LGE
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,8 +16,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
-// !depends ilib.js Utils.js Locale.js LocaleInfo.js ResBundle.js
 
 // !data ctryreverse
 

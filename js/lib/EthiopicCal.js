@@ -1,7 +1,7 @@
 /*
  * EthiopicCal.js - Represent a Ethiopic calendar object.
- * 
- * Copyright © 2015-2017, JEDLSoft
+ *
+ * Copyright © 2015-2017, 2018, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,8 +17,6 @@
  * limitations under the License.
  */
 
-/* !depends ilib.js Calendar.js Utils.js MathUtils.js */
-
 var ilib = require("./ilib.js");
 var Utils = require("./Utils.js");
 var MathUtils = require("./MathUtils.js");
@@ -29,8 +27,8 @@ var Calendar = require("./Calendar.js");
  * @class
  * Construct a new Ethiopic calendar object. This class encodes information about
  * a Ethiopic calendar.<p>
- * 
- * 
+ *
+ *
  * @constructor
  * @extends Calendar
  */
@@ -40,10 +38,10 @@ var EthiopicCal = function() {
 
 /**
  * Return the number of months in the given year. The number of months in a year varies
- * for lunar calendars because in some years, an extra month is needed to extend the 
+ * for lunar calendars because in some years, an extra month is needed to extend the
  * days in a year to an entire solar year. The month is represented as a 1-based number
  * where 1=Maskaram, 2=Teqemt, etc. until 13=Paguemen.
- * 
+ *
  * @param {number} year a year for which the number of months is sought
  */
 EthiopicCal.prototype.getNumMonths = function(year) {
@@ -54,7 +52,7 @@ EthiopicCal.prototype.getNumMonths = function(year) {
  * Return the number of days in a particular month in a particular year. This function
  * can return a different number for a month depending on the year because of things
  * like leap years.
- * 
+ *
  * @param {number|string} month the month for which the length is sought
  * @param {number} year the year within which that month can be found
  * @return {number} the number of days within the given month in the given year
@@ -62,15 +60,15 @@ EthiopicCal.prototype.getNumMonths = function(year) {
 EthiopicCal.prototype.getMonLength = function(month, year) {
 	var m = month;
 	switch (typeof(m)) {
-        case "string": 
-            m = parseInt(m, 10); 
+        case "string":
+            m = parseInt(m, 10);
             break;
         case "function":
         case "object":
         case "undefined":
             return 30;
             break;
-    }    
+    }
 	if (m < 13) {
 		return 30;
 	} else {
@@ -106,8 +104,8 @@ EthiopicCal.prototype.isLeapYear = function(year) {
 
 /**
  * Return the type of this calendar.
- * 
- * @return {string} the name of the type of this calendar 
+ *
+ * @return {string} the name of the type of this calendar
  */
 EthiopicCal.prototype.getType = function() {
 	return this.type;

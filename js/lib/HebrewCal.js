@@ -1,7 +1,7 @@
 /*
  * HebrewCal.js - Represent a Hebrew calendar object.
  * 
- * Copyright © 2012-2017, JEDLSoft
+ * Copyright © 2012-2018, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,9 +16,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
-
-/* !depends ilib.js Calendar.js MathUtils.js */
 
 var ilib = require("./ilib.js");
 var MathUtils = require("./MathUtils.js");

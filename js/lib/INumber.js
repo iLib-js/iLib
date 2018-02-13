@@ -17,17 +17,6 @@
  * limitations under the License.
  */
 
-/*
-!depends 
-ilib.js 
-Locale.js 
-isDigit.js 
-isSpace.js
-LocaleInfo.js
-Utils.js
-Currency.js
-*/
-
 var ilib = require("./ilib.js");
 var Utils = require("./Utils.js");
 

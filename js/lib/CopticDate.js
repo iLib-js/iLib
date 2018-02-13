@@ -1,7 +1,7 @@
 /*
  * CopticDate.js - Represent a date in the Coptic calendar
  * 
- * Copyright © 2015, JEDLSoft
+ * Copyright © 2015, 2018, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,19 +16,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
-/* !depends 
-ilib.js
-IDate.js 
-CopticCal.js 
-MathUtils.js
-JSUtils.js
-Locale.js
-LocaleInfo.js 
-TimeZone.js
-EthiopicDate.js
-CopticRataDie.js
-*/
 
 var ilib = require("./ilib.js");
 var MathUtils = require("./MathUtils.js");
