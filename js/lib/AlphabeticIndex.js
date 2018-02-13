@@ -1,7 +1,7 @@
 /*
  * AlphabeticIndex.js - Represent an alphabetic index
  *
- * Copyright © 2017, JEDLSoft
+ * Copyright © 2017-2018, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -31,6 +31,8 @@ isDigit.js
 Collator.js
 NormString.js
 */
+
+// !data nfc nfkd
 
 var ilib = require("./ilib.js");
 var Utils = require("./Utils.js");

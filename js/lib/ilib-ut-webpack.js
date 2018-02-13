@@ -117,6 +117,14 @@ ilib.AlphabeticIndex = require("./AlphabeticIndex.js");
 ilib.TimeZone = require("./TimeZone.js");
 ilib.Currency = require("./Currency.js");
 
+/* make sure all the data is loaded that will be tested */
+require("./nfd/all.js");
+require("./nfc/all.js");
+require("./nfkc/all.js");
+require("./nfkd/all.js");
+
+require("./charmaps/Jpan.js");
+
 /* private classes used in the tests */
 ilib.ISet = require("./ISet.js");
 ilib.SearchUtils = require("./SearchUtils.js");

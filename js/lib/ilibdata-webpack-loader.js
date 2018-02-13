@@ -26,6 +26,7 @@ var path = require('path');
 var fs = require('fs');
 var Locale = require('./Locale.js');
 var Utils = require('./Utils.js');
+var LocaleMatcher = require('./LocaleMatcher.js');
 
 /*
 const schema = {
@@ -62,19 +63,33 @@ let macroPatternQuoted = /["']!macro\s*(\S*)["']/g;
 let loadLocaleDataPattern = /\/\/\s*!loadLocaleData/g;
 let defineLocaleDataPattern = /\/\/\s*!defineLocaleData/g;
 
+let normPattern = /(nfc|nfd|nfkc|nfkd)(\/(\w+))?/g;
+
 function emitLocaleData(compilation, options) {
     var localeData = compilation.localeDataSet;
     var outputFileName, output;
+    var scripts = new Set();
+    var normalizations = {};
 
     if (localeData) {
         var charsets = new Set();
         var charmaps = {};
         var lang2charset;
         var outputSet = {};
-        var locales = options.locales;
+        var match;
 
+        var locales = options.locales;
+        locales.forEach(function(locale) {
+            var lm = new LocaleMatcher({locale: locale});
+            var full = lm.getLikelyLocale();
+            if (full.getScript()) {
+                scripts.add(full.getScript());
+            }
+        });
+        
         locales.forEach(function(locale) {
             localeData.forEach(function(filename) {
+                normPattern.lastIndex = 0;
                 if (filename === "charset" || filename === "charmaps") {
                     // charmaps and charset info are special cases because they are non-locale data.
                     // If they just use the generic "charset" or "charmaps" data, then
@@ -101,6 +116,14 @@ function emitLocaleData(compilation, options) {
                             });
                         }
                     }
+                } else if ((match = normPattern.exec(filename)) !== null) {
+                    var form = match[1];
+                    if (!normalizations[form]) {
+                        normalizations[form] = new Set();
+                    }
+                    if (match.length > 3) {
+                        normalizations[form].add(match[3] || "");
+                    }
                 } else if (filename === "zoneinfo") {
                     // time zone data in the zoneinfo files are a special case because they are non-locale data
                     // console.log(">>>>>>>>>>>>> processing zoneinfo. cwd is " + process.cwd());
@@ -108,7 +131,7 @@ function emitLocaleData(compilation, options) {
                     var data = fs.readFileSync(cwdToData, "utf-8");
                     var zonetab = JSON.parse(data);
                     // console.log(">>>>>>>>>>>>> got zone tab.");
-                    var line = 'ilib.data.zonetab = ' + data + ';\n';
+                    var line = 'ilib.data.zoneinfo.zonetab = ' + data + ';\n';
                     if (!outputSet.root) {
                         outputSet.root = {};
                     }
@@ -245,6 +268,36 @@ function emitLocaleData(compilation, options) {
                         var line = "ilib.data.charmaps_" + toIlibDataName(charset) + " = " + data + ";\n";
                         outputSet[loc][charset] = line;
                     }
+                });
+            }
+        }
+        
+        function addForm(form, script) {
+            if (script) {
+                try {
+                    var cwdToData = path.join("data/locale", form, script + ".json");
+                    if (fs.existsSync(cwdToData)) {
+                        data = fs.readFileSync(cwdToData, "utf-8");
+                        var line = '// form ' + form + ' script ' + script + '\nilib.extend(ilib.data.norm.' + form + ', ' + data + ');\n';
+                        // console.log(">>>>>>>>>>>>> Adding form: " + form);
+                        outputSet.root[form + "/" + script] = line;
+                    }
+                } catch (e) {
+                    console.log("Error: " + e);
+                }
+            }
+        }
+        
+        for (var form in normalizations) {
+            if (normalizations[form].has("all")) {
+                // if "all" is there, then we don't need to add each script individually
+                // because they are all in the all.json already
+                addForm(form, "all");
+            } else {
+                var set = (normalizations.size === 0 || (normalizations[form].has("") && normalizations.size === 1)) ? scripts : normalizations[form]; 
+                set.forEach(function(script) {
+                    console.log("Inluding " + form + " for script " + script);
+                    addForm(form, script);
                 });
             }
         }
