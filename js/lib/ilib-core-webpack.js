@@ -25,4 +25,6 @@ ilib.IString = require("./IString.js");
 ilib.ResBundle = require("./ResBundle.js");
 ilib.ScriptInfo = require("./ScriptInfo.js");
 
+require("./ilib-getdata.js");
+
 module.exports = ilib;

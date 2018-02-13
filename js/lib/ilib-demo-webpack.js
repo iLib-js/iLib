@@ -112,4 +112,6 @@ ilib.Country = require("./Country.js");
 ilib.ListFmt = require("./ListFmt.js");
 ilib.AlphabeticIndex = require("./AlphabeticIndex.js");
 
+require("./ilib-getdata.js");
+
 module.exports = ilib;

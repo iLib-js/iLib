@@ -112,4 +112,6 @@ ilib.AlphabeticIndex = require("./AlphabeticIndex.js");
 ilib.TimeZone = require("./TimeZone.js");
 ilib.Currency = require("./Currency.js");
 
+require("./ilib-getdata.js");
+
 module.exports = ilib;

@@ -42,4 +42,6 @@ ilib.CaseMapper = require("./CaseMapper.js");
 ilib.ListFmt = require("./ListFmt.js");
 ilib.TimeZone = require("./TimeZone.js");
 
+require("./ilib-getdata.js");
+
 module.exports = ilib;
