@@ -210,7 +210,7 @@ module.exports.testalphaindex = {
             },
             {
                 label: "B",
-                elements: ["Bravo", "beta"]
+                elements: ["beta", "Bravo"]
             },
             {
                 label: "D",

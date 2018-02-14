@@ -155,22 +155,22 @@ var AlphabeticIndex = function (options) {
                 NormString.init({
                     sync: this.sync,
                     loadParam: this.loadParams,
-                    onLoad: ilib.bind(this, function(){
+                    onLoad: ilib.bind(this, function() {
                         new Collator ({
                             locale: this.locale,
                             useNative: false,
                             sensitivity: "primary",
-                            usage: "sort",
+                            usage: "search",
                             sync: this.sync,
                             loadParam : this.loadParams,
-                            onLoad: ilib.bind(this, function(collation){
-                            this.collationObj = collation;
-                            this._init();
-                            if (options && typeof(options.onLoad) === 'function') {
-                                options.onLoad(this);
-                            }
-                        })
-                    });
+                            onLoad: ilib.bind(this, function(collation) {
+                                this.collationObj = collation;
+                                this._init();
+                                if (options && typeof(options.onLoad) === 'function') {
+                                    options.onLoad(this);
+                                }
+                            })
+                        });
                     })
                 })
             }));
@@ -442,14 +442,14 @@ AlphabeticIndex.prototype.getAllBuckets = function() {
         tempArr.push(this.index[i].label);
     }
 
-    tempArr.sort(this.collationObj.compare());
+    tempArr.sort(ilib.bind(this.collationObj, this.collationObj.compare));
 
     for (i=0; i < tempArr.length; i++) {
         tempBucket={};
         tempBucket.label = tempArr[i];
         itemIndex = this._getLabelIndex(tempArr[i]);
 
-        this.index[itemIndex].elements.sort(this.collationObj.compare());
+        this.index[itemIndex].elements.sort(ilib.bind(this.collationObj, this.collationObj.compare));
         tempBucket.elements = this.index[itemIndex].elements;
         tempIndex[i] = tempBucket;
         tempBucket={};
