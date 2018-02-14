@@ -128,9 +128,10 @@ NormString.init = function(options) {
                            options.onLoad(this);
                         }
                     });
-                }
-                if (options && typeof(options.onLoad) === 'function') {
-                    options.onLoad(this);
+                } else {
+                    if (options && typeof(options.onLoad) === 'function') {
+                        options.onLoad(this);
+                    }
                 }
             })
         })
