@@ -1634,7 +1634,6 @@ module.exports = {
         var durationSysresTest = {};
         var cldrDateFieldData = {};
         var dataLength = length;
-        var day, cldrDayPast, cldrDayFuture;
 
         var isRtl = (rtlLanguages.indexOf(language) > -1) && (!script || rtlScripts.indexOf(script) > 0);
         
@@ -1660,28 +1659,6 @@ module.exports = {
                         fullStr += "#" + temp;
                     } else {
                         fullStr += name +"#" + temp;    
-                    }
-
-
-                    
-                    if (length === "full" && name === 'other' && duration === 'day') {
-                        day = cldrUnitData[durationKey][nameValue];
-                        cldrDateFieldData = loadFile(path.join(sourcePath, "dateFields.json"));
-                        sourcePathSplit = sourcePath.split("/");
-                        fileName = sourcePathSplit[sourcePathSplit.length -1];
-                        
-                        if (cldrDateFieldData) {
-                            cldrDayPast =  cldrDateFieldData.main[fileName]["dates"]["fields"]["day"]["relativeTime-type-past"]["relativeTimePattern-count-other"];
-                            cldrDayFuture = cldrDateFieldData.main[fileName]["dates"]["fields"]["day"]["relativeTime-type-future"]["relativeTimePattern-count-other"];
-                            
-                            if (isRtl) {
-                                cldrDayPast = "\u200F" + cldrDayPast;
-                                cldrDayFuture = "\u200F" + cldrDayFuture;
-                            }
-
-                            durationSysres["in {duration}"] = cldrDayFuture.replace(day, "{duration}").toLowerCase();    
-                            durationSysres["{duration} ago"] = cldrDayPast.replace(day, "{duration}").toLowerCase();    
-                        }
                     }
                 }
             }            
@@ -1797,6 +1774,149 @@ module.exports = {
         return mergedSeperatorRes;
     },
 
+    createRelativeFormatResources: function (sourcePath, dateFieldPath, cldrData, language, script) {
+        var relativeObject = {
+            "relativeFutureFormatFull" : {
+                "second": "1#in 1 second|#in {num} seconds",
+                "minute": "1#in 1 minute|#in {num} minutes",
+                "hour": "1#in 1 hour|#in {num} hours",
+                "day": "1#in 1 day|#in {num} days",
+                "week": "1#in 1 week|#in {num} weeks",
+                "month": "1#in 1 month|#in {num} months",
+                "year": "1#in 1 year|#in {num} years"
+            },
+            "relativeFutureFormatMedium" : {
+                "second": "1#in 1 sec|#in {num} sec",
+                "minute": "1#in 1 min|#in {num} min",
+                "hour": "1#in 1 hr|#in {num} hrs",
+                "day": "1#in 1 dy|#in {num} dys",
+                "week": "1#in 1 wk|#in {num} wks",
+                "month": "1#in 1 mon|#in {num} mons",
+                "year": "1#in 1 yr|#in {num} yrs"
+            },
+            "relativeFutureFormatShort" : {
+                "second": "#in {num}s",
+                "minute": "#in {num}mi",
+                "hour": "#in {num}h",
+                "day": "#in {num}d",
+                "week": "#in {num}w",
+                "month": "#in {num}mo",
+                "year": "#in {num}y"
+            },
+            "relativePastFormatFull" : {
+                "second": "1#1 second ago|#{num} seconds ago",
+                "minute": "1#1 minute ago|#{num} minutes ago",
+                "hour": "1#1 hour ago|#{num} hours ago",
+                "day": "1#1 day ago|#{num} days ago",
+                "week": "1#1 week ago|#{num} weeks ago",
+                "month": "1#1 month ago|#{num} months ago",
+                "year": "1#1 year ago|#{num} years ago"
+            },
+            "relativePastFormatMedium" : {
+                "second": "1#1 sec ago|#{num} sec ago",
+                "minute": "1#1 min ago|#{num} min ago",
+                "hour": "1#1 hr ago|#{num} hrs ago",
+                "day": "1#1 dy ago|#{num} dys ago",
+                "week": "1#1 wk ago|#{num} wks ago",
+                "month": "1#1 mon ago|#{num} mons ago",
+                "year": "1#1 yr ago|#{num} yrs ago"
+            },
+            "relativePastFormatShort" : {
+                "second": "#{num}s ago",
+                "minute": "#{num}mi ago",
+                "hour": "#{num}h ago",
+                "day": "#{num}d ago",
+                "week": "#{num}w ago",
+                "month": "#{num}mo ago",
+                "year": "#{num}y ago"
+            }
+        };
+
+        var sysres = [];
+        var mergedSysres = {};
+
+        for (var prop in relativeObject) {
+            switch(prop) {
+                case "relativePastFormatFull":
+                    result = module.exports.createRelativeFormatDetail(cldrData, relativeObject[prop], "past", "full", language, script);
+                    sysres.push(result);
+                break;
+                case "relativePastFormatMedium":
+                    result = module.exports.createRelativeFormatDetail(cldrData, relativeObject[prop], "past", "long", language, script);
+                    sysres.push(result);
+                break;
+                case "relativePastFormatShort":
+                    result = module.exports.createRelativeFormatDetail(cldrData, relativeObject[prop], "past", "short", language, script);
+                    sysres.push(result);
+                break;
+                case "relativeFutureFormatFull":
+                    result = module.exports.createRelativeFormatDetail(cldrData, relativeObject[prop], "future", "full", language, script);
+                    sysres.push(result);
+                break;
+                case "relativeFutureFormatMedium":
+                    result = module.exports.createRelativeFormatDetail(cldrData, relativeObject[prop], "future", "long", language, script);
+                    sysres.push(result);
+                break;
+                case "relativeFutureFormatShort":
+                    result = module.exports.createRelativeFormatDetail(cldrData, relativeObject[prop], "future", "short", language, script);
+                    sysres.push(result);
+                break;
+            }
+        }
+
+        for (var i=0; i< sysres.length; i++) {
+            mergedSysres = common.merge(mergedSysres, sysres[i]);
+        }
+        return mergedSysres;
+    },
+    createRelativeFormatDetail: function (cldrDateFieldsData, relativeObject, relation, length, language, script) {
+        var relativeSysres = {};
+        var dataLength = "";
+        var isRtl = (rtlLanguages.indexOf(language) > -1) && (!script || rtlScripts.indexOf(script) > 0);
+
+        switch (length) {
+          case 'short':
+            dataLength = '-short';
+            break;
+          case 'medium':
+            dataLength = '-narrow';
+            break;
+          case 'long':
+          case 'full':
+            break;
+        }
+
+        for (obj in relativeObject) {
+            var unitKey = obj + dataLength;
+            var typeKey = "relativeTime-type-" + relation;
+            var temp;
+            var fullStr = "";
+
+            var plurals = ['zero', 'one', 'two', 'few', 'many', 'other'];
+
+            for (var plural of plurals) {
+                stringKey = "relativeTimePattern-count-" + plural;
+                if (typeof(cldrDateFieldsData[unitKey][typeKey][stringKey]) !== 'undefined') {
+                    if (fullStr.length > 0) {
+                        fullStr += "|";
+                    }
+
+                    temp = cldrDateFieldsData[unitKey][typeKey][stringKey].replace("{0}", "{num}");
+                    if (isRtl) {
+                        temp = "\u200F" + temp;
+                    }
+
+                    if (plural === "other") {
+                        fullStr += "#" + temp;
+                    } else {
+                        fullStr += plural +"#" + temp;
+                    }
+                }
+            }
+            relativeSysres[relativeObject[obj]] = fullStr;
+        }
+        return relativeSysres;
+    },
     /**
      * Find the distance between two objects in terms of number of properties that
      * are missing or have different values.

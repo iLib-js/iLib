@@ -42,6 +42,50 @@ function usage() {
         "  the top level of the ilib locale data directory\n");
     process.exit(1);
 }
+
+function calcLocalePath(language, script, region, filename) {
+    var path = localeDirName + "/";
+    if (language) {
+        path += language + "/";
+    }
+    if (script) {
+        path += script + "/";
+    }
+    if (region) {
+        path += region + "/";
+    }
+    path += filename;
+    return path;
+}
+
+function anyProperties(data) {
+    var count = 0;
+    for (var prop in data) {
+        if (prop && data[prop]) {
+            count++;
+        }
+        if (count > 1) {
+            return true;
+        }
+    }
+    return false;
+}
+
+function writeSystemResources(language, script, region, data) {
+    var path = calcLocalePath(language, script, region, "");
+    // if (data && data.generated) {
+        if (anyProperties(data)) {
+            console.log("Writing " + path + "\n");
+            makeDirs(path);
+            fs.writeFileSync(path + "/sysres.json", JSON.stringify(data, true, 4), "utf-8");
+        } else {
+            console.log("Skipping empty " + path + "\n");
+        }
+    // } else {
+        // console.log("Skipping existing " + path + "\n");
+    // }
+}
+
 var cldrDirName;
 var localeDirName;
 var tmpDirName = "./tmp";
@@ -89,13 +133,12 @@ if (!fs.existsSync(cldrMiscDirName)) {
     usage();
 }
 if (!fs.existsSync(localeDirName)) {
-    console.error("Could not access locale data directory " + localeDirName);
-    usage();
+    localeDirName = tmpDirName;
+    // console.error("Could not access locale data directory " + localeDirName);
+    // usage();
 }
 
-if (!fs.existsSync(tmpDirName)) {
-	makeDirs(tmpDirName);
-}
+makeDirs(localeDirName);
 
 var filename, root, json, suppData, languageData, scripts = {};
 
@@ -232,6 +275,13 @@ list.forEach(function (file) {
 		group = aux.getFormatGroup(systemResources, localeComponents);
 		group.data = merge(group.data || {}, newFormats);
 
+        // relative time format
+        dateFields = aux.loadFile(path.join(sourcePath, "dateFields.json"));
+		newFormats = aux.createRelativeFormatResources(sourceUnitPath, sourcePath, dateFields.main[file].dates.fields, language, script);
+        //console.log("Relative format data is " + JSON.stringify(newFormats, undefined, 4) + "\n");
+		group = aux.getFormatGroup(systemResources, localeComponents);
+		// group.data = merge(group.data || {}, newFormats);
+
 		// separator
 		seperator = aux.loadFile(path.join(sourceMiscPath, "listPatterns.json"));
 		newFormats = aux.createSeperatorResources(sourcePath, seperator.main[file].listPatterns, language);
@@ -281,10 +331,40 @@ console.log("\nPruning duplicated formats ...\n");
 console.log("\nWriting out final files ...\n");
 
 console.log("dateformats.json: ");
-aux.writeFormats(tmpDirName, "dateformats.json", dateFormats, []);
+aux.writeFormats(localeDirName, "dateformats.json", dateFormats, []);
 console.log("\n");
 console.log("sysres.json: ");
-aux.writeFormats(tmpDirName, "sysres.json", systemResources, []);
+mergeAndPrune(systemResources);
+for (language in systemResources) {
+    if (language && systemResources[language] && language !== 'data' && language !== 'merged') {
+        for (var subpart in systemResources[language]) {
+            if (subpart && systemResources[language][subpart] && subpart !== 'data' && subpart !== 'merged') {
+                if (Locale.isScriptCode(subpart)) {
+                    script = subpart;
+                    for (region in systemResources[language][script]) {
+                        if (region && systemResources[language][script][region] && region !== 'data' && region !== 'merged') {
+                            delete systemResources[language][script][region].data['in {duration}'];
+                            delete systemResources[language][script][region].data['{duration} ago'];
+                            writeSystemResources(language, script, region, systemResources[language][script][region].data);
+                        }
+                    }
+                    delete systemResources[language][script].data['in {duration}'];
+                    delete systemResources[language][script].data['{duration} ago'];
+                    writeSystemResources(language, script, undefined, systemResources[language][script].data);
+                } else {
+                    delete systemResources[language][subpart].data['in {duration}'];
+                    delete systemResources[language][subpart].data['{duration} ago'];
+                    writeSystemResources(language, undefined, subpart, systemResources[language][subpart].data);
+                }
+            }
+        }
+        delete systemResources[language].data['in {duration}'];
+        delete systemResources[language].data['{duration} ago'];
+        writeSystemResources(language, undefined, undefined, systemResources[language].data);
+    }
+}
+writeSystemResources(undefined, undefined, undefined, systemResources.data);
+// aux.writeFormats(localeDirName, "sysres.json", systemResources, []);
 console.log("\n");
 
 console.log("Done.");
