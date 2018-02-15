@@ -1,0 +1,100 @@
+<!--
+testSuite.html - browser-based test suite for this directory
+
+Copyright © 2017, JEDLSoft
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+
+See the License for the specific language governing permissions and
+limitations under the License.
+-->
+<html>
+  <head>
+    <title>Test Suite</title>
+    <link rel="stylesheet" href="/test/nodeunit/nodeunit.css" type="text/css" />
+    <script>
+        var module = {};
+    </script>
+    <script src="/test/nodeunit/nodeunit.js"></script>
+    <script src="/output/js/ut/assembled/ilib-ut.js"></script>
+    <script>
+        module = {
+            exports: {}
+        };
+    </script>
+    <script src="testimsi.js"></script>
+    <script src="testnormalize.js"></script>
+    <script src="testnormalize_BR.js"></script>
+    <script src="testnormalize_JP.js"></script>
+    <script src="testnormalize_KR.js"></script>
+    <script src="testnormalize_RU.js"></script>
+    <script src="testnormalize_TW.js"></script>
+    <script src="testnumplan.js"></script>
+    <script src="testphonefmt_AU.js"></script>
+    <script src="testphonefmt_BE.js"></script>
+    <script src="testphonefmt_BR.js"></script>
+    <script src="testphonefmt_CN.js"></script>
+    <script src="testphonefmt_DE.js"></script>
+    <script src="testphonefmt_ES.js"></script>
+    <script src="testphonefmt_FR.js"></script>
+    <script src="testphonefmt_GB.js"></script>
+    <script src="testphonefmt_HK.js"></script>
+    <script src="testphonefmt_IE.js"></script>
+    <script src="testphonefmt_IN.js"></script>
+    <script src="testphonefmt_IT.js"></script>
+    <script src="testphonefmt_JP.js"></script>
+    <script src="testphonefmt_KR.js"></script>
+    <script src="testphonefmt_LU.js"></script>
+    <script src="testphonefmt_MX.js"></script>
+    <script src="testphonefmt_NL.js"></script>
+    <script src="testphonefmt_NZ.js"></script>
+    <script src="testphonefmt_RU.js"></script>
+    <script src="testphonefmt_SG.js"></script>
+    <script src="testphonefmt_TW.js"></script>
+    <script src="testphonefmt_US.js"></script>
+    <script src="testphonegeo.js"></script>
+    <script src="testphonegeo_BR.js"></script>
+    <script src="testphonegeo_JP.js"></script>
+    <script src="testphonegeo_KR.js"></script>
+    <script src="testphonegeo_RU.js"></script>
+    <script src="testphonegeo_TW.js"></script>
+    <script src="testphoneloc.js"></script>
+    <script src="testphonenum.js"></script>
+    <script src="testphonenum_AU.js"></script>
+    <script src="testphonenum_BE.js"></script>
+    <script src="testphonenum_BR.js"></script>
+    <script src="testphonenum_CN.js"></script>
+    <script src="testphonenum_DE.js"></script>
+    <script src="testphonenum_ES.js"></script>
+    <script src="testphonenum_FR.js"></script>
+    <script src="testphonenum_GB.js"></script>
+    <script src="testphonenum_HK.js"></script>
+    <script src="testphonenum_IE.js"></script>
+    <script src="testphonenum_IN.js"></script>
+    <script src="testphonenum_IT.js"></script>
+    <script src="testphonenum_JP.js"></script>
+    <script src="testphonenum_KR.js"></script>
+    <script src="testphonenum_LU.js"></script>
+    <script src="testphonenum_MX.js"></script>
+    <script src="testphonenum_NL.js"></script>
+    <script src="testphonenum_NZ.js"></script>
+    <script src="testphonenum_RU.js"></script>
+    <script src="testphonenum_SG.js"></script>
+    <script src="testphonenum_TW.js"></script>
+    <script src="testphonenum_US.js"></script>
+  </head>
+  <body>
+    <h1 id="nodeunit-header">phone Test Suite</h1>
+    <script>
+     nodeunit.run(module.exports);
+    </script>
+  </body>
+</html>

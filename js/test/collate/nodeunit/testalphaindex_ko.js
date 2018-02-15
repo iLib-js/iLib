@@ -703,18 +703,6 @@ module.exports.testalphaindex_ko = {
         test.done();
     },
 
-    testAlphaIndexConstructorAsync: function(test) {
-        test.expect(1);
-        var ai = new AlphabeticIndex({
-            locale: "ko-KR",
-            sync: false,
-            onLoad: function(ai) {
-                test.ok(ai);
-                test.done();
-            }
-        });
-    },
-
     testAlphaIndexUnknowLocaleActsLikeEnglish: function(test) {
         test.expect(2);
 

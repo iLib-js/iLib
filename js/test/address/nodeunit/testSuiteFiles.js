@@ -149,5 +149,5 @@ module.exports.files = [
     "testaddress_YE.js",
     "testaddress_ZA.js",
     "testaddress_ZM.js",
-    "testaddressasync.js",
+    "testaddressasync.js"
 ];

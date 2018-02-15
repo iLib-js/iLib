@@ -53,18 +53,6 @@ module.exports.testalphaindex_de = {
         test.done();
     },
 
-    testAlphaIndexConstructorAsync_deDE: function(test) {
-        test.expect(1);
-        var ai = new AlphabeticIndex({
-            locale: "de-DE",
-            sync: false,
-            onLoad: function(ai) {
-                test.ok(ai);
-                test.done();
-            }
-        });
-    },
-    
     testAlphaIndexgetDefaultIndexStyle_deDE: function(test) {
         test.expect(2);
         var ai = new AlphabeticIndex({

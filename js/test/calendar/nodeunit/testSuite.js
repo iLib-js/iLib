@@ -46,7 +46,7 @@ var suites = [
     "testpersiandateastro.js",
     "testthaisolar.js",
     "testthaisolardate.js",
-    "testtimezone.js",
+    "testtimezone.js"
 ];
 
 var ilib = require("../../../lib/ilib-node.js");

@@ -1,0 +1,45 @@
+<!--
+testSuite.html - browser-based test suite for this directory
+
+Copyright © 2017, JEDLSoft
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+
+See the License for the specific language governing permissions and
+limitations under the License.
+-->
+<html>
+  <head>
+    <title>Test Suite</title>
+    <link rel="stylesheet" href="/test/nodeunit/nodeunit.css" type="text/css" />
+    <script>
+        var module = {};
+    </script>
+    <script src="/test/nodeunit/nodeunit.js"></script>
+    <script src="/output/js/ut/assembled/ilib-ut.js"></script>
+    <script>
+        module = {
+            exports: {}
+        };
+    </script>
+    <script src="testcurrency.js"></script>
+    <script src="testnumfmt.js"></script>
+    <script src="testnumfmt_af.js"></script>
+    <script src="testnumfmt_am.js"></script>
+    <script src="testnumprs.js"></script>
+  </head>
+  <body>
+    <h1 id="nodeunit-header">number Test Suite</h1>
+    <script>
+     nodeunit.run(module.exports);
+    </script>
+  </body>
+</html>

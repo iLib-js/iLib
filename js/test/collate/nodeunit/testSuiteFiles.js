@@ -1,7 +1,7 @@
 /*
  * testSuiteFiles.js - list the test files in this directory
  * 
- * Copyright © 2017, JEDLSoft
+ * Copyright © 2017-2018, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,8 +19,11 @@
 
 module.exports.files = [
     "testalphaindex.js",
+    "testalphaindexasync.js",
     "testalphaindex_de.js",
+    "testalphaindex_ko.js",
     "testcollation.js",
+    "testcollationasync.js",
     "testcollation_cs.js",
     "testcollation_da.js",
     "testcollation_de.js",
