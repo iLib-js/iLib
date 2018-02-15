@@ -25,6 +25,10 @@ ilib.IString = require("./IString.js");
 ilib.ResBundle = require("./ResBundle.js");
 ilib.ScriptInfo = require("./ScriptInfo.js");
 
+//This unpacks the above classes to the global scope
+require("./ilib-unpack.js");
+
+// Must be at the end of meta file
 require("./ilib-getdata.js");
 
 module.exports = ilib;

@@ -112,6 +112,10 @@ ilib.Country = require("./Country.js");
 ilib.ListFmt = require("./ListFmt.js");
 ilib.AlphabeticIndex = require("./AlphabeticIndex.js");
 
+// This unpacks the above classes to the global scope
+require("./ilib-unpack.js");
+
+// Must be at the end of meta file
 require("./ilib-getdata.js");
 
 module.exports = ilib;

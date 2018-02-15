@@ -112,6 +112,10 @@ ilib.AlphabeticIndex = require("./AlphabeticIndex.js");
 ilib.TimeZone = require("./TimeZone.js");
 ilib.Currency = require("./Currency.js");
 
+//This unpacks the above classes to the global scope
+require("./ilib-unpack.js");
+
+// Must be at the end of meta file
 require("./ilib-getdata.js");
 
 module.exports = ilib;

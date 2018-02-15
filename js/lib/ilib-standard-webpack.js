@@ -2,7 +2,7 @@
  * ilib-standard-webpack.js - metafile that includes a reasonable set of other js files
  * 
  * @license
- * Copyright © 2017-2018, JEDLSoft
+ * Copyright © 2018, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,6 +19,7 @@
  */
 
 var ilib = require("./ilib.js");
+
 ilib.DateRngFmt = require("./DateRngFmt.js");
 ilib.IDate = require("./IDate.js");
 ilib.DateFactory = require("./DateFactory.js");
@@ -42,6 +43,10 @@ ilib.CaseMapper = require("./CaseMapper.js");
 ilib.ListFmt = require("./ListFmt.js");
 ilib.TimeZone = require("./TimeZone.js");
 
+//This unpacks the above classes to the global scope
+require("./ilib-unpack.js");
+
+// Must be at the end of meta file
 require("./ilib-getdata.js");
 
 module.exports = ilib;
