@@ -19,7 +19,8 @@
 var webpack = require('webpack');
 var path = require('path');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
-const IlibWebpackPlugin = require("./ilib-webpack-plugin.js");
+// const IlibWebpackPlugin = require("./ilib-webpack-plugin.js");
+// const IlibWebpackLoader = require("ilib-webpack-loader");
 
 module.exports = function(env, args) {
     var size = args.env.size || "standard",
