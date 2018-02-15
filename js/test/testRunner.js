@@ -145,10 +145,6 @@ if (assembly === "dynamic") {
     
     ilib = global["ilib"];
     
-    console.log("loading in shim file ilib-unpack.js");
-    script = fs.readFileSync("../lib/ilib-unpack.js", "utf-8");
-    geval(script);
-
     if (assembly === "dynamicdata") {
         ilib.setLoaderCallback(NodeLoader(ilib));
     
