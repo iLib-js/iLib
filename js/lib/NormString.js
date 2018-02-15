@@ -98,12 +98,12 @@ NormString.init = function(options) {
     var files = [];
     var forms = formDependencies[form];
     var toLoad = [];
-    for (var f in forms) {
+    forms.forEach(function(f) {
         if (!ilib.data.norm[f]) {
             files.push(forms[f] + "/" + script + ".json");
             toLoad.push(forms[f]);
         }
-    }
+    });
 
     if (files.length || !ilib.data.ccc || JSUtils.isEmpty(ilib.data.ccc)) {
         Utils.loadData({
