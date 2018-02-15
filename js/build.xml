@@ -261,43 +261,51 @@ limitations under the License.
 			compilation="compiled"
 			locales="${locales.demo}"/>
 	</target>
-	<target name="assemble.dynamic" depends="prepare,gen.manifest.locale,install.uglify" description="compresses/minifies the dynamic load code files">
+	<target name="assemble.dynamic" depends="prepare,gen.manifest.locale" description="compresses/minifies the dynamic load code files">
 		<!-- handle ilib.js as a special case so we can replace the version number in it -->
 		<copy file="${build.lib}/ilib.js" toFile="${build.output.js}/ilib.js" verbose="true"/>
 		<replace token="// !macro ilibVersion" value='"${version}"' preserveLastModified="true">
 		    <fileset dir="${build.output.js}" includes="ilib.js"/>
 		</replace>
-		<exec osfamily="unix" executable="node" dir="${build.base}" failifexecutionfails="true">
-			<arg value="${uglify.location}/bin/uglifyjs"/>
+		<exec osfamily="unix" executable="${uglify.command}" dir="${build.base}" failifexecutionfails="true">
 			<arg value="${build.output.js}/ilib.js"/>
+			<arg value="--comments=/ !data/"/>
 			<arg value="-o"/>
 			<arg value="${build.output.dyncode}/ilib.js"/>
 			<arg value="-m"/>
+            <arg value="-c"/>
+			<arg value="-v"/>
 		</exec>
-		<exec osfamily="windows" executable="node.exe" dir="${build.base}" failifexecutionfails="true">
-			<arg value="${uglify.location}/bin/uglifyjs"/>
+		<exec osfamily="windows" executable="${uglify.command}" dir="${build.base}" failifexecutionfails="true">
 			<arg value="${build.output.js}/ilib.js"/>
+			<arg value="--comments=/ !data/"/>
 			<arg value="-o"/>
 			<arg value="${build.output.dyncode}/ilib.js"/>
 			<arg value="-m"/>
+            <arg value="-c"/>
+			<arg value="-v"/>
 		</exec>
 		<!-- then do all the rest of them -->
-		<apply osfamily="unix" executable="node" dest="${build.output.dyncode}" parallel="false">
-			<arg value="${uglify.location}/bin/uglifyjs"/>
+		<apply osfamily="unix" executable="${uglify.command}" dest="${build.output.dyncode}" parallel="false">
 			<srcfile/>
+			<arg value="--comments=/ !data/"/>
 			<arg value="-o"/>
 			<targetfile/>
 			<arg value="-m"/>
+            <arg value="-c"/>
+			<arg value="-v"/>
 			<fileset dir="${build.lib}" includes="*.js" excludes="ilib.js,ilib-*.js,runner.js,externs.js,datefmtstr.js"/>
 			<fileset dir="${build.lib}" includes="ilib-node*.js,ilib-stubs*,ilib-web.js,ilib-qt.js"/>
 			<mapper type="glob" from="*.js" to="*.js"/>
 		</apply>
-		<apply osfamily="windows" executable="node.exe" dest="${build.output.dyncode}" parallel="false">
-			<arg value="${uglify.location}/bin/uglifyjs"/>
+		<apply osfamily="windows" executable="${uglify.command}" dest="${build.output.dyncode}" parallel="false">
 			<srcfile/>
+			<arg value="--comments=/ !data/"/>
 			<arg value="-o"/>
 			<targetfile/>
 			<arg value="-m"/>
+			<arg value="-c"/>
+			<arg value="-v"/>
 			<fileset dir="${build.lib}" includes="*.js"  excludes="ilib-*.js,runner.js,externs.js,datefmtstr.js"/>
 			<fileset dir="${build.lib}" includes="ilib-node*.js,ilib-stubs*,ilib-web.js,ilib-qt.js"/>
 			<mapper type="glob" from="*.js" to="*.js"/>
@@ -748,26 +756,6 @@ limitations under the License.
 	</macrodef>
 	<target name="npm.set.parseable.true">
 		<npm command="config" args="set parseable true" dir="${build.base}"/>
-	</target>
-	<target name="testuglifyinstalled" depends="npm.set.parseable.true">
-    	<echo>Testing if uglify is already installed.</echo>
-    	<exec osfamily="unix" outputproperty="uglify.location" resultproperty="uglify.result" errorproperty="uglify.error" executable="sh" dir="${build.base}" failifexecutionfails="true">
-    		<arg value="-c"/>
-			<arg value="npm list uglify-js | tail -1"/>
-		</exec>
-		<exec osfamily="windows" outputproperty="uglify.location" resultproperty="uglify.result" errorproperty="uglify.error" executable="cmd.exe" dir="${build.base}" failifexecutionfails="true">
-    		<arg value="/c"/>
-			<arg value="npm list uglify-js | tail -1"/>
-		</exec>
-    	<condition property="uglify.installed">
-    	    <equals arg1="${uglify.result}" arg2="0"/>
-    	</condition>
-    	<echo>Uglify installed: ${uglify.installed} at location ${uglify.location}</echo>
-    </target>
-	<target name="install.uglify" unless="uglify.installed" depends="testuglifyinstalled">
-		<echo>Installing uglify</echo>
-		<npm command="install" args="uglify-js" dir="${build.base}"/>
-		<echo>Done.</echo>
 	</target>
 	<target name="location.trireme">
     	<exec osfamily="unix" outputproperty="trireme.location" resultproperty="trireme.result" errorproperty="trireme.error" executable="sh" dir="${build.base}" failifexecutionfails="true">

@@ -61,16 +61,16 @@ function findIlibRoot() {
     return dir && path.join(dir, "ilib");
 }
 
-let dataPatternSlashStar = /\/\*\s*!data\s*([^\*]+)\*\//g;
-let dataPatternSlashSlash = /\/\/\s*!data\s*([^\n]+)/g;
+var dataPatternSlashStar = /\/\*\s*!data\s*([^\*]+)\*\//g;
+var dataPatternSlashSlash = /\/\/\s*!data\s*([^\n]+)/g;
 
-let macroPatternSlashSlash = /\/\/\s*!macro\s*(\S*)/g;
-let macroPatternQuoted = /["']!macro\s*(\S*)["']/g;
+var macroPatternSlashSlash = /\/\/\s*!macro\s*(\S*)/g;
+var macroPatternQuoted = /["']!macro\s*(\S*)["']/g;
 
-let loadLocaleDataPattern = /\/\/\s*!loadLocaleData/g;
-let defineLocaleDataPattern = /\/\/\s*!defineLocaleData/g;
+var loadLocaleDataPattern = /\/\/\s*!loadLocaleData/g;
+var defineLocaleDataPattern = /\/\/\s*!defineLocaleData/g;
 
-let normPattern = /(nfc|nfd|nfkc|nfkd)(\/(\w+))?/g;
+var normPattern = /(nfc|nfd|nfkc|nfkd)(\/(\w+))?/g;
 
 /**
  * Produce a set of js files that contain the necessary
@@ -381,7 +381,8 @@ function emitLocaleData(compilation, options) {
             }
             */
 
-            var outputPath = path.join(outputDir, options.size, options.assembly, "locales", outputFileName);
+            var outputPath = path.join(outputDir, "locales", outputFileName);
+            console.log("Writing to " + outputPath);
             makeDirs(path.dirname(outputPath));
             fs.writeFileSync(outputPath, output, "utf-8");
         }
@@ -486,7 +487,7 @@ var ilibDataLoader = function(source) {
                     "ilib._dyndata = true;\n";
             } else {
                 var files = emitLocaleData(this._compilation, options);
-                var outputPath = path.join("../output/js", options.size, options.assembly, "locales");
+                var outputPath = path.join(outputRoot, "locales");
                 files.forEach(function(locale) {
                     output += "require('" + path.join(outputPath, locale + ".js") + "');\n";
                 });
@@ -512,7 +513,7 @@ var ilibDataLoader = function(source) {
 
             // console.log(">>>>>>>>>> found a match");
             output += partial.substring(0, match.index);
-            var outputPath = path.join("../output/js", options.size, options.assembly, "locales");
+            var outputPath = path.join(outputRoot, "locales");
             files.forEach(function(locale) {
                 if (locale === "root") {
                     output += "default:\n";

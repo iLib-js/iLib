@@ -61,7 +61,6 @@ module.exports = function (ilib) {
     WebpackLoader.prototype.name = "WebpackLoader";
     WebpackLoader.prototype._loadFile = function (pathname, sync, cb) {
         var text;
-        console.log("WebpackLoader._loadFile: loading " + pathname + (sync ? " sync" : " async"));
 
         var parts = ["."];
         var dir = Path.dirname(pathname);
@@ -90,6 +89,8 @@ module.exports = function (ilib) {
                 cb(ilib.data[dataName]);
             }
         } else {
+            console.log("WebpackLoader._loadFile: loading " + pathname + (sync ? " sync" : " async") + " as " + filename + ".js");
+
             alreadyLoaded.add(filename);
             loadLocaleData(ilib, filename, function(callback, data) {
                 if (callback && typeof(callback) === "function") {
