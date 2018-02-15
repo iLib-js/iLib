@@ -152,7 +152,7 @@ var suites = [
     "testaddress_YE.js",
     "testaddress_ZA.js",
     "testaddress_ZM.js",
-    "testaddressasync.js",
+    "testaddressasync.js"
 ];
 
 suites.forEach(function (path) {

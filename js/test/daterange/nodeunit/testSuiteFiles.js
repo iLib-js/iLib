@@ -93,5 +93,5 @@ module.exports.files = [
     "testdatefmtrange_vi_VN.js",
     "testdatefmtrange_zh_Hans_CN.js",
     "testdatefmtrange_zh_Hant_HK.js",
-    "testdatefmtrange_zh_Hant_TW.js",
+    "testdatefmtrange_zh_Hant_TW.js"
 ];

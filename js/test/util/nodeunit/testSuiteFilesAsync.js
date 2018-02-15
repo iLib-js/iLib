@@ -18,30 +18,7 @@
  */
 
 module.exports.files = [
-    "testastro.js",
-    "testcalasync.js",
-    "testcalendar.js",
-    "testcoptic.js",
-    "testcopticdate.js",
-    "testethiopic.js",
-    "testethiopicdate.js",
-    "testgregorian.js",
-    "testgregoriandate.js",
-    "testgregratadie.js",
-    "testhan.js",
-    "testhandate.js",
-    "testhebrew.js",
-    "testhebrewdate.js",
-    "testislamic.js",
-    "testislamicdate.js",
-    "testjulian.js",
-    "testjuliandate.js",
-    "testjulianday.js",
-    "testpersian.js",
-    "testpersianastro.js",
-    "testpersiandate.js",
-    "testpersiandateastro.js",
-    "testthaisolar.js",
-    "testthaisolardate.js",
-    "testtimezone.js"
+    "testset.js",
+    "testutils.js",
+    "testpath.js"
 ];
