@@ -1,6 +1,6 @@
 /**
- * ilibdata-webpack-loader.js - A Webpack loader to process js files and insert
- * requires for all of the data that is needed for all the locales
+ * ilibdata-webpack-loader.js - A webpack loader to process js files and include
+ * all of the locale data that is needed for the requested locales
  *
  * @license
  * Copyright © 2018, JEDLSoft
@@ -54,6 +54,13 @@ function toIlibDataName(str) {
     return (!str || str === "root" || str === "*") ? "" : str.replace(/[\.:\(\)\/\\\+\-]/g, "_");
 }
 
+function findIlibRoot() {
+    var dir = module.paths.find(function(p) {
+        return fs.existsSync(path.join(p, "ilib/package.json"));
+    });
+    return dir && path.join(dir, "ilib");
+}
+
 let dataPatternSlashStar = /\/\*\s*!data\s*([^\*]+)\*\//g;
 let dataPatternSlashSlash = /\/\/\s*!data\s*([^\n]+)/g;
 
@@ -65,11 +72,41 @@ let defineLocaleDataPattern = /\/\/\s*!defineLocaleData/g;
 
 let normPattern = /(nfc|nfd|nfkc|nfkd)(\/(\w+))?/g;
 
+/**
+ * Produce a set of js files that contain the necessary
+ * locale data. These files are output into js files, one
+ * per locale part, that each export a function that adds
+ * data for that locale part to the ilib.data structure.
+ * For example, the locale "en-US" has the following parts:
+ *
+ * <ul>
+ * <li><i>root</i> - shared by all locales, containing
+ * generic locale data and most non-locale data.
+ * <li><i>en</i> - language-specific data shared by all
+ * of the English locales. Example: date formats
+ * <li><i>und-US</i> - region-specific data shared by
+ * all languages in the same region. Example: default
+ * time zone or standard currency
+ * <li><i>en-US</i> - language- and region-specific
+ * information that overrides the above information.
+ * </ul>
+ *
+ * Ilib knows to load the locale data parts in the right
+ * order such that the more specific data overrides
+ * the less specific data.
+ *
+ * @param compilation the webpack compilation
+ * @param optionsk the options for this loader from
+ * the webpack.config.js
+ * @returns {Array.<string>} an array of files that
+ * were emitted by this function
+ */
 function emitLocaleData(compilation, options) {
     var localeData = compilation.localeDataSet;
     var outputFileName, output;
     var scripts = new Set();
     var normalizations = {};
+    var outputDir = compilation.options.output.path;
 
     if (localeData) {
         var charsets = new Set();
@@ -77,6 +114,7 @@ function emitLocaleData(compilation, options) {
         var lang2charset;
         var outputSet = {};
         var match;
+        var root = findIlibRoot();
 
         var locales = options.locales;
         locales.forEach(function(locale) {
@@ -95,7 +133,7 @@ function emitLocaleData(compilation, options) {
                     // If they just use the generic "charset" or "charmaps" data, then
                     // we figure out which charsets are appropriate for the locale
                     if (!lang2charset) {
-                        lang2charset = require("../data/locale/lang2charset.json");
+                        lang2charset = require(path.join(root, "js/locale/lang2charset.json"));
                     }
 
                     var l = new Locale(locale);
@@ -127,7 +165,7 @@ function emitLocaleData(compilation, options) {
                 } else if (filename === "zoneinfo") {
                     // time zone data in the zoneinfo files are a special case because they are non-locale data
                     // console.log(">>>>>>>>>>>>> processing zoneinfo. cwd is " + process.cwd());
-                    var cwdToData = "./data/locale/zoneinfo/zonetab.json";
+                    var cwdToData = path.join(root, "js/locale/zoneinfo/zonetab.json");
                     var data = fs.readFileSync(cwdToData, "utf-8");
                     var zonetab = JSON.parse(data);
                     // console.log(">>>>>>>>>>>>> got zone tab.");
@@ -151,7 +189,7 @@ function emitLocaleData(compilation, options) {
                     });
                     zoneSet.forEach(function(zone) {
                         try {
-                            var cwdToData = path.join("data/locale/zoneinfo", zone + ".json");
+                            var cwdToData = path.join(root, "js/locale/zoneinfo", zone + ".json");
                             if (fs.existsSync(cwdToData)) {
                                 data = fs.readFileSync(cwdToData, "utf-8");
                                 var line = 'ilib.data.zoneinfo["' + zone.replace(/-/g, "m").replace(/\+/g, "p") + '"] = ' + data + ';\n';
@@ -164,8 +202,9 @@ function emitLocaleData(compilation, options) {
                     }.bind(this));
 
                     // now add the generic zones
-                    var list = fs.readdirSync("data/locale/zoneinfo");
-                    list = list.concat(fs.readdirSync("data/locale/zoneinfo/Etc").map(function(zone) {
+                    var zoneinfoDir = path.join(root, "js/locale/zoneinfo");
+                    var list = fs.readdirSync(zoneinfoDir);
+                    list = list.concat(fs.readdirSync(path.join(zoneinfoDir, "Etc")).map(function(zone) {
                         return "Etc/" + zone;
                     }));
 
@@ -173,7 +212,7 @@ function emitLocaleData(compilation, options) {
                         return pathname.endsWith(".json") && pathname !== "zonetab.json";
                     }).forEach(function (file) {
                         var zone = path.basename(file, ".json");
-                        var cwdToData = path.join("data/locale/zoneinfo", file);
+                        var cwdToData = path.join(root, "js/locale/zoneinfo", file);
                         data = fs.readFileSync(cwdToData, "utf-8");
                         var line = 'ilib.data.zoneinfo["' + zone.replace(/-/g, "m").replace(/\+/g, "p") + '"] = ' + data + ';\n';
                         // console.log(">>>>>>>>>>>>> Adding generic zone: " + line);
@@ -201,7 +240,7 @@ function emitLocaleData(compilation, options) {
 
                     parts.forEach(function(localeDir) {
                         try {
-                            var cwdToData = path.join("data/locale", localeDir, filename + ".json");
+                            var cwdToData = path.join(root, "js/locale", localeDir, filename + ".json");
                             if (fs.existsSync(cwdToData)) {
                                 var part = localeDir === "." ? "root" : localeDir;
                                 part = part.replace(/\//g, "-");
@@ -235,7 +274,7 @@ function emitLocaleData(compilation, options) {
             if (!outputSet.root) {
                 outputSet.root = {};
             }
-            var data, cwdToData ="data/locale/charsetaliases.json";
+            var data, cwdToData = path.join(root, "js/locale/charsetaliases.json");
             if (!outputSet.root.charsetaliases && fs.existsSync(cwdToData)) {
                 data = fs.readFileSync(cwdToData, "utf-8");
                 var line = "ilib.data.charsetaliases = " + data + ";\n";
@@ -243,7 +282,7 @@ function emitLocaleData(compilation, options) {
             }
 
             charsets.forEach(function(charset) {
-                var data, cwdToData = path.join("data/locale/charset", charset + ".json");
+                var data, cwdToData = path.join(root, "js/locale/charset", charset + ".json");
                 if (!outputSet.root[filename] && fs.existsSync(cwdToData)) {
                     data = fs.readFileSync(cwdToData, "utf-8");
                     var line = "ilib.data.charset_" + toIlibDataName(charset) + " = " + data + ";\n";
@@ -262,7 +301,7 @@ function emitLocaleData(compilation, options) {
                     outputSet[loc] = {};
                 }
                 charmaps[locale].forEach(function(charset) {
-                    var data, cwdToData = path.join("data/locale/charmaps", charset + ".json");
+                    var data, cwdToData = path.join(root, "js/locale/charmaps", charset + ".json");
                     if (!optional.has(charset) && !outputSet[loc][charset] && fs.existsSync(cwdToData)) {
                         data = fs.readFileSync(cwdToData, "utf-8");
                         var line = "ilib.data.charmaps_" + toIlibDataName(charset) + " = " + data + ";\n";
@@ -275,7 +314,7 @@ function emitLocaleData(compilation, options) {
         function addForm(form, script) {
             if (script) {
                 try {
-                    var cwdToData = path.join("data/locale", form, script + ".json");
+                    var cwdToData = path.join(root, "js/locale", form, script + ".json");
                     if (fs.existsSync(cwdToData)) {
                         data = fs.readFileSync(cwdToData, "utf-8");
                         var line = '// form ' + form + ' script ' + script + '\nilib.extend(ilib.data.norm.' + form + ', ' + data + ');\n';
@@ -308,7 +347,7 @@ function emitLocaleData(compilation, options) {
 
             var output =
                 "/*\n" +
-                " * WARNING: this is a file generated by ilib-webpack-plugin.js.\n" +
+                " * WARNING: this is a file generated by ilib-webpack-loader.js.\n" +
                 " * Do not hand edit or else your changes may be overwritten and lost.\n" +
                 " */\n"
             output += (options.assembly === "dynamic") ?
@@ -342,7 +381,7 @@ function emitLocaleData(compilation, options) {
             }
             */
 
-            var outputPath = path.join("./output/js", options.size, options.assembly, "locales", outputFileName);
+            var outputPath = path.join(outputDir, options.size, options.assembly, "locales", outputFileName);
             makeDirs(path.dirname(outputPath));
             fs.writeFileSync(outputPath, output, "utf-8");
         }
@@ -361,6 +400,7 @@ var ilibDataLoader = function(source) {
     var output = "";
     var async = false;
     var callback;
+    var outputRoot = this.options.output.path;
 
     // validateOptions(schema, options, 'Ilib data loader');
 
@@ -474,6 +514,9 @@ var ilibDataLoader = function(source) {
             output += partial.substring(0, match.index);
             var outputPath = path.join("../output/js", options.size, options.assembly, "locales");
             files.forEach(function(locale) {
+                if (locale === "root") {
+                    output += "default:\n";
+                }
                 output +=
                     "        case '" + locale + "':\n" +
                     "            System.import(/* webpackChunkName: '" + locale + "' */ '" + path.join(outputPath, locale + ".js") + "').then(function(module) {\n" +
