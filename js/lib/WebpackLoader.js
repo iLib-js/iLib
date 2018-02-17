@@ -25,7 +25,6 @@ var ISet = require("./ISet.js");
 var alreadyLoaded = new ISet();
 
 function loadLocaleData(ilib, locale, callback) {
-    var promise, module;
     switch (locale) {
         // This special macro will get replaced in the ilibdata-webpack-loader with
         // case statements for each locale js file so that webpack can make separate
@@ -34,6 +33,13 @@ function loadLocaleData(ilib, locale, callback) {
         // the data to be put into one giant webpack bundle.
 
         // !loadLocaleData
+        
+        case "dummy":
+            // This is just here to prevent webpack from removing the function contents. Otherwise, 
+            // it will think this whole function is "unused" or "dead" code.
+            console.log("Should never happen");
+            callback();
+            break;
     }
 }
 
@@ -60,9 +66,6 @@ module.exports = function (ilib) {
 
     WebpackLoader.prototype.name = "WebpackLoader";
     WebpackLoader.prototype._loadFile = function (pathname, sync, cb) {
-        var text;
-
-        var parts = ["."];
         var dir = Path.dirname(pathname);
         var base = Path.basename(pathname, "json");
         var dataName = base;
@@ -76,7 +79,7 @@ module.exports = function (ilib) {
             }
         }
 
-        filename = locale && locale.getSpec() || "root";
+        filename = locale && locale.getSpec() || (base === "ilibmanifest" ? "ilibmanifest" : "root");
         var dataName = base;
         if (dir && locale) {
             dataName += "_" + filename;
@@ -94,7 +97,7 @@ module.exports = function (ilib) {
             alreadyLoaded.add(filename);
             loadLocaleData(ilib, filename, function(callback, data) {
                 if (callback && typeof(callback) === "function") {
-                    callback(ilib.data[dataName]);
+                    callback(data || ilib.data[dataName]);
                 }
             }.bind(this, cb));
         }
