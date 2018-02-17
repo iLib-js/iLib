@@ -87,7 +87,7 @@ limitations under the License.
 	<!-- =================================================================== -->
 	<!-- Implement the standard targets                                      -->
 	<!-- =================================================================== -->
-	<target name="all" depends="dist,doc,demo" description="Build everything. This is the target that the build should run."/>
+	<target name="all" depends="dist,doc" description="Build everything. This is the target that the build should run."/>
 
 	<target name="clean" description="Remove all generated files to start from scratch">
 		<delete dir="${build.classes}"/>
@@ -137,7 +137,7 @@ limitations under the License.
 		</sequential>
 	</macrodef>
 	<target name="testilib.core" description="test whether or not the ilib-core single file needs to be rebuilt">
-		<uptodate property="core.ilib.core.not.needed" targetfile="${build.output.js}/ilib-core-compiled.js">
+		<uptodate property="core.ilib.core.not.needed" targetfile="${build.output.js}/core/assembled/ilib-core.js">
 			<srcfiles dir="${build.lib}" includes="**/*.js" excludes="ilib-*.js,**/test/**,runner.js,*Loader.js" />
 			<srcfiles dir="${build.lib}" includes="ilib-core-webpack.js"/>
 			<srcfiles dir="${build.locale}" includes="**/*.json" />
@@ -186,7 +186,7 @@ limitations under the License.
 	</target>
 	
 	<target name="testilib.standard" description="test whether or not the ilib-standard single file needs to be rebuilt">
-		<uptodate property="core.ilib.standard.not.needed" targetfile="${build.output.js}/ilib-standard-compiled.js">
+		<uptodate property="core.ilib.standard.not.needed" targetfile="${build.output.js}/standard/assembled/ilib-standard.js">
 			<srcfiles dir="${build.lib}" includes="**/*.js" excludes="ilib-*.js,**/test/**,runner.js,*Loader.js" />
 			<srcfiles dir="${build.lib}" includes="ilib-standard-webpack.js"/>
 			<srcfiles dir="${build.locale}" includes="**/*.json" />
@@ -205,7 +205,7 @@ limitations under the License.
 			locales="${locales.default}"/>
 	</target>
 	<target name="testilib.full" description="test whether or not the ilib-full single file needs to be rebuilt">
-		<uptodate property="core.ilib.full.not.needed" targetfile="${build.output.js}/ilib-full-compiled.js">
+		<uptodate property="core.ilib.full.not.needed" targetfile="${build.output.js}/full/assembled/ilib-full.js">
 			<srcfiles dir="${build.lib}" includes="**/*.js" excludes="ilib-*.js,**/test/**,runner.js,*Loader.js" />
 			<srcfiles dir="${build.lib}" includes="ilib-full-webpack.js"/>
 			<srcfiles dir="${build.locale}" includes="**/*.json" />
@@ -224,7 +224,7 @@ limitations under the License.
 			locales="${locales.default}"/>
 	</target>
 	<target name="testilibut" description="test whether or not the ilib-ut single file needs to be rebuilt">
-		<uptodate property="ilib-ut.not.needed" targetfile="${build.output.js}/ilib-ut-compiled.js">
+		<uptodate property="ilib-ut.not.needed" targetfile="${build.output.js}/ut/assembled/ilib-ut.js">
 			<srcfiles dir="${build.lib}" includes="**/*.js" excludes="ilib-*.js,**/test/**,runner.js,*Loader.js" />
 			<srcfiles dir="${build.lib}" includes="ilib-ut-webpack.js"/>
 			<srcfiles dir="${build.locale}" includes="**/*.json" />
@@ -243,7 +243,7 @@ limitations under the License.
 			locales="${locales.unittest}"/>
 	</target>
 	<target name="testilibdemo" description="test whether or not the ilib-demo file needs to be rebuilt">
-		<uptodate property="ilib-demo.not.needed" targetfile="${build.output.js}/ilib-demo-compiled.js">
+		<uptodate property="ilib-demo.not.needed" targetfile="${build.output.js}/demo/assembled/ilib-demo.js">
 			<srcfiles dir="${build.lib}" includes="**/*.js" excludes="ilib-*.js,**/test/**,runner.js,*Loader.js"/>
 			<srcfiles dir="${build.lib}" includes="**/ilib-demo-webpack.js"/>
 			<srcfiles dir="${build.locale}" includes="**/*.json"/>
@@ -269,7 +269,8 @@ limitations under the License.
 		</replace>
 		<exec osfamily="unix" executable="${uglify.command}" dir="${build.base}" failifexecutionfails="true">
 			<arg value="${build.output.js}/ilib.js"/>
-			<arg value="--comments=/ !data/"/>
+            <arg value="--comments"/>
+            <arg value="/ \!(data|loadLocaleData|defineLocaleData)/"/>
 			<arg value="-o"/>
 			<arg value="${build.output.dyncode}/ilib.js"/>
 			<arg value="-m"/>
@@ -278,8 +279,9 @@ limitations under the License.
 		</exec>
 		<exec osfamily="windows" executable="${uglify.command}" dir="${build.base}" failifexecutionfails="true">
 			<arg value="${build.output.js}/ilib.js"/>
-			<arg value="--comments=/ !data/"/>
-			<arg value="-o"/>
+            <arg value="--comments"/>
+            <arg value="/ \!(data|loadLocaleData|defineLocaleData)/"/>
+            <arg value="-o"/>
 			<arg value="${build.output.dyncode}/ilib.js"/>
 			<arg value="-m"/>
             <arg value="-c"/>
@@ -288,26 +290,28 @@ limitations under the License.
 		<!-- then do all the rest of them -->
 		<apply osfamily="unix" executable="${uglify.command}" dest="${build.output.dyncode}" parallel="false">
 			<srcfile/>
-			<arg value="--comments=/ !data/"/>
-			<arg value="-o"/>
+			<arg value="--comments"/>
+			<arg value="/ \!(data|loadLocaleData|defineLocaleData)/"/>
+            <arg value="-o"/>
 			<targetfile/>
 			<arg value="-m"/>
             <arg value="-c"/>
 			<arg value="-v"/>
 			<fileset dir="${build.lib}" includes="*.js" excludes="ilib.js,ilib-*.js,runner.js,externs.js,datefmtstr.js"/>
-			<fileset dir="${build.lib}" includes="ilib-node*.js,ilib-stubs*,ilib-web.js,ilib-qt.js"/>
+			<fileset dir="${build.lib}" includes="ilib-node*.js,ilib-stubs*,ilib-web.js,ilib-qt.js,ilib-getdata.js,ilib-unpack.js"/>
 			<mapper type="glob" from="*.js" to="*.js"/>
 		</apply>
 		<apply osfamily="windows" executable="${uglify.command}" dest="${build.output.dyncode}" parallel="false">
 			<srcfile/>
-			<arg value="--comments=/ !data/"/>
-			<arg value="-o"/>
+            <arg value="--comments"/>
+            <arg value="/ \!(data|loadLocaleData|defineLocaleData)/"/>
+            <arg value="-o"/>
 			<targetfile/>
 			<arg value="-m"/>
 			<arg value="-c"/>
 			<arg value="-v"/>
 			<fileset dir="${build.lib}" includes="*.js"  excludes="ilib-*.js,runner.js,externs.js,datefmtstr.js"/>
-			<fileset dir="${build.lib}" includes="ilib-node*.js,ilib-stubs*,ilib-web.js,ilib-qt.js"/>
+			<fileset dir="${build.lib}" includes="ilib-node*.js,ilib-stubs*,ilib-web.js,ilib-qt.js,ilib-getdata.js,ilib-unpack.js"/>
 			<mapper type="glob" from="*.js" to="*.js"/>
 		</apply>
 	</target>
@@ -366,24 +370,22 @@ limitations under the License.
 		</copy>
 	</target>
 	
-	<target name="dist" depends="assemble.core,assemble.standard,assemble.full,assemble.dynamic,doc,demo,update.package.json" description="Create all distribution objects and exports them to the top level dir for packaging">
+	<target name="dist" depends="update.package.json,assemble.core,assemble.standard,assemble.full,assemble.dynamic,doc" description="Create all distribution objects and exports them to the top level dir for packaging">
 		<mkdir dir="${build.export}/js/assembled"/>
 		<copy todir="${build.export}/js/assembled">
 			<fileset dir="${build.output.js}">
-				<include name="ilib-core.js"/>
-				<include name="ilib-core-compiled.js"/>
-				<include name="ilib-standard.js"/>
-				<include name="ilib-standard-compiled.js"/>
-				<include name="ilib-full.js"/>
-				<include name="ilib-full-compiled.js"/>
-				<include name="ilib-core-dyn.js"/>
-				<include name="ilib-core-dyn-compiled.js"/>
-				<include name="ilib-standard-dyn.js"/>
-				<include name="ilib-standard-dyn-compiled.js"/>
-				<include name="ilib-full-dyn.js"/>
-				<include name="ilib-full-dyn-compiled.js"/>
-				<include name="ilib-web-async.js"/>
-				<include name="ilib-web-async-compiled.js"/>
+				<include name="core/assembled/ilib-core.js"/>
+				<include name="core/assembled/ilib-core-compiled.js"/>
+				<include name="standard/assembled/ilib-standard.js"/>
+				<include name="standard/assembled/ilib-standard-compiled.js"/>
+				<include name="full/assembled/ilib-full.js"/>
+				<include name="full/assembled/ilib-full-compiled.js"/>
+				<include name="core/dynamic/uncompiled/ilib-core-dyn.js"/>
+				<include name="core/dynamic/compiled/ilib-core-dyn-compiled.js"/>
+				<include name="standard/dynamic/uncompiled/ilib-standard-dyn.js"/>
+				<include name="standard/dynamic/compiled/ilib-standard-dyn-compiled.js"/>
+				<include name="full/dynamic/uncompiled/ilib-full-dyn.js"/>
+				<include name="full/dynamic/compiled/ilib-full-dyn-compiled.js"/>
 			</fileset>
 		</copy>
 		<mkdir dir="${build.export}/js/dyncode"/>
@@ -661,12 +663,12 @@ limitations under the License.
 		<java dir="${build.lib}" jar="${JSDOCDIR}/jsrun.jar" fork="true">
 			<jvmarg value="-Djsdoc.dir=${JSDOCDIR}"/>
 			<jvmarg value="-Djsdoc.template.dir=${JSDOCDIR}/templates/jsdoc"/>
-			<jvmarg value="-Xmx1024m"/>
+			<jvmarg value="-Xmx4096m"/>
 			<arg value="${JSDOCDIR}/app/run.js"/>
 			<arg value="--directory=${build.jsdoc}"/>
 			<arg value="--recurse=100"/>
 			<arg value="--encoding=utf-8"/>
-			<arg value="${build.output.js}/ilib-full.js"/>
+			<arg value="${build.output.js}/full/assembled/ilib-full.js"/>
 		</java>
 	</target>
 	<target name="testinfo" description="test whether or not the localeinfo.json files need to rebuilt">
