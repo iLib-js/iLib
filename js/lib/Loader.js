@@ -1,7 +1,7 @@
 /*
  * Loader.js - shared loader implementation
  * 
- * Copyright © 2015, JEDLSoft
+ * Copyright © 2015, 2018, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -117,7 +117,7 @@ Loader.prototype.loadFiles = function(paths, sync, params, callback) {
 		
 		for (var i = 0; i < paths.length; i++) {
 			var text = this._loadFileAlongIncludePath(includePath, Path.normalize(paths[i]));
-			ret.push(text ? JSON.parse(text) : undefined);
+			ret.push(typeof(text) === "string" ? JSON.parse(text) : text);
 			if (params && params.returnOne && text) {
 				break;
 			}
@@ -173,7 +173,7 @@ Loader.prototype._loadFilesAsync = function (includePath, paths, callback) {
 		
 		//console.log("Loader._loadFilesAsync: attempting to load " + filename + " along the include path.");
 		this._loadFilesAsyncAlongIncludePath(includePath, filename, ilib.bind(this, function (json) {
-			this.results.push(json ? JSON.parse(json) : undefined);
+		    this.results.push(typeof(json) === "string" ? JSON.parse(json) : json);
 			this._loadFilesAsync(includePath, paths, callback);
 		}));
 	} else {
@@ -185,24 +185,24 @@ Loader.prototype._loadFilesAsync = function (includePath, paths, callback) {
 };
 
 Loader.prototype._loadManifestFile = function(i, sync, cb) {
-	//console.log("Loader._loadManifestFile: Checking include path " + i + " " + this.includePath[i]);
-	if (i < this.includePath.length) {
-		var filepath = Path.join(this.includePath[i], "ilibmanifest.json");
-		//console.log("Loader._loadManifestFile: Loading manifest file " + filepath);
-		var text = this._loadFile(filepath, sync, ilib.bind(this, function(text) {
-			if (text) {
-				//console.log("Loader._loadManifestFile: success!");
-				this.manifest[this.includePath[i]] = JSON.parse(text).files;
-			}
-			//else console.log("Loader._loadManifestFile: failed...");
-			this._loadManifestFile(i+1, sync, cb);
-		}));
-	} else {
-		if (typeof(cb) === 'function') {
-			//console.log("Loader._loadManifestFile: now calling callback function");
-			cb();
-		}
-	}
+    //console.log("Loader._loadManifestFile: Checking include path " + i + " " + this.includePath[i]);
+    if (i < this.includePath.length) {
+        var filepath = Path.join(this.includePath[i], "ilibmanifest.json");
+        //console.log("Loader._loadManifestFile: Loading manifest file " + filepath);
+        var text = this._loadFile(filepath, sync, ilib.bind(this, function(text) {
+            if (text) {
+                //console.log("Loader._loadManifestFile: success!");
+                this.manifest[this.includePath[i]] = (typeof(text) === "string" ? JSON.parse(text) : text).files;
+            }
+            //else console.log("Loader._loadManifestFile: failed...");
+            this._loadManifestFile(i+1, sync, cb);
+        }));
+    } else {
+        if (typeof(cb) === 'function') {
+            //console.log("Loader._loadManifestFile: now calling callback function");
+            cb();
+        }
+    }
 };
 
 Loader.prototype._loadManifests = function(sync, cb) {

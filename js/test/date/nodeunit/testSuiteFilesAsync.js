@@ -1,7 +1,7 @@
 /*
- * testSuite.js - test suite for this directory
+ * testSuiteFilesAsync.js - list the test files in this directory
  * 
- * Copyright © 2017, JEDLSoft
+ * Copyright © 2018, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,16 +17,7 @@
  * limitations under the License.
  */
 
-var nodeunit = require("nodeunit");
-var reporter = nodeunit.reporters.minimal;
-var modules = {};
-var suites = require("./testSuiteFiles.js").files;
-
-suites.forEach(function (path) {
-    var test = require("./" + path);
-    for (var suite in test) {
-        modules[suite] = test[suite];
-    }
-});
-
-reporter.run(modules);
+module.exports.files = [
+    "testdateasync.js",
+    "testdatefmtasync.js"
+];

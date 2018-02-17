@@ -3020,58 +3020,7 @@ module.exports.testdatefmt = {
         test.equal(fmt.getCalendar(), "gregorian");
         test.equal(fmt.getTemplate(), "dd.MM.yy");
         test.done();
-    },
-    
-    testDateFmtLoadLocaleDataAsynch: function(test) {
-        if (ilib.isDynData()) {
-            // don't need to test loading on the dynamic load version because we are testing
-            // it via all the other tests already.
-            test.done();
-            return;
-        }
-        ilib.setLoaderCallback(mockLoaderDF);
-        
-        new DateFmt({
-            locale: "zz-ZZ",
-            sync: false,
-            onLoad: function (fmt) {
-                ilib.setLoaderCallback(oldLoader);
-                test.expect(4);
-                test.ok(fmt !== null);
-                
-                test.equal(fmt.getLocale().toString(), "zz-ZZ");
-                test.equal(fmt.getCalendar(), "gregorian");
-                test.equal(fmt.getTemplate(), "dd.MM.yy");
-                test.done();
-            }
-        });
-    },
-    
-    testDateFmtLoadLocaleDataAsynchCached: function(test) {
-        if (ilib.isDynData()) {
-            // don't need to test loading on the dynamic load version because we are testing
-            // it via all the other tests already.
-            test.done();
-            return;
-        }
-        ilib.setLoaderCallback(mockLoaderDF);
-        
-        test.expect(4);
-        new DateFmt({
-            locale: "zz-ZZ",
-            sync: false,
-            onLoad: function (fmt) {
-                ilib.setLoaderCallback(oldLoader);
-                test.ok(fmt !== null);
-                
-                test.equal(fmt.getLocale().toString(), "zz-ZZ");
-                test.equal(fmt.getCalendar(), "gregorian");
-                test.equal(fmt.getTemplate(), "dd.MM.yy");
-                test.done();
-            }
-        });
-    },
-    
+    },    
     
     testDateFmtTransitionToDSTRightBefore: function(test) {
         test.expect(2);
