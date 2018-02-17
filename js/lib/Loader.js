@@ -190,7 +190,7 @@ Loader.prototype._loadManifestFile = function(i, sync, cb) {
         var text = this._loadFile(filepath, sync, ilib.bind(this, function(text) {
             if (text) {
                 //console.log("Loader._loadManifestFile: success!");
-                this.manifest[this.includePath[i]] = JSON.parse(text).files;
+                this.manifest[this.includePath[i]] = (typeof(text) === "string" ? JSON.parse(text) : text).files;
             }
             //else console.log("Loader._loadManifestFile: failed...");
             this._loadManifestFile(i+1, sync, cb);

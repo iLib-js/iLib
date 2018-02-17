@@ -18,5 +18,6 @@
  */
 
 module.exports.files = [
-    "testdate.js"
+    "testdateasync.js",
+    "testdatefmtasync.js"
 ];
