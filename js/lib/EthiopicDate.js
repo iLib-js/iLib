@@ -17,6 +17,17 @@
  * limitations under the License.
  */
 
+/* !depends 
+ilib.js
+IDate.js 
+EthiopicCal.js 
+MathUtils.js
+Locale.js
+LocaleInfo.js 
+TimeZone.js
+EthiopicRataDie.js
+*/
+
 var ilib = require("./ilib.js");
 var MathUtils = require("./MathUtils.js");
 
