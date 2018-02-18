@@ -141,21 +141,21 @@ var GregRataDie = require("./GregRataDie.js");
  * @param {Object=} params parameters that govern the settings and behaviour of this Gregorian date
  */
 var GregorianDate = function(params) {
-	this.cal = new GregorianCal();
+    this.cal = new GregorianCal();
 
-	params = params || {};
-	if (typeof(params.noinstance) === 'boolean' && params.noinstance) {
-	    // for doing inheritance, so don't need to fill in the data. The
+    params = params || {};
+    if (typeof(params.noinstance) === 'boolean' && params.noinstance) {
+        // for doing inheritance, so don't need to fill in the data. The
         // inheriting class only wants the methods.
-	    return;
-	}
+        return;
+    }
 
-	if (params.timezone) {
-	    this.timezone = params.timezone.toString();
-	}
-	if (params.locale) {
-	    this.locale = (typeof(params.locale) === 'string') ? new Locale(params.locale) : params.locale;
-	}
+    if (params.timezone) {
+        this.timezone = params.timezone.toString();
+    }
+    if (params.locale) {
+        this.locale = (typeof(params.locale) === 'string') ? new Locale(params.locale) : params.locale;
+    }
 
     if (!this.timezone) {
         if (this.locale) {
