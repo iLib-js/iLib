@@ -112,18 +112,17 @@ var PersRataDie = require("./PersRataDie.js");
  * @param {Object=} params parameters that govern the settings and behaviour of this Persian date
  */
 var PersianDate = function(params) {
-	this.cal = new PersianCal();
-	this.timezone = "local";
-	
-	params = params || {};
-	
-	if (params.timezone) {
-	    this.timezone = params.timezone;
-	}
-	if (params.locale) {
-	    this.locale = (typeof(params.locale) === 'string') ? new Locale(params.locale) : params.locale;
-	}
-	
+    this.cal = new PersianCal();
+
+    params = params || {};
+
+    if (params.timezone) {
+        this.timezone = params.timezone;
+    }
+    if (params.locale) {
+        this.locale = (typeof(params.locale) === 'string') ? new Locale(params.locale) : params.locale;
+    }
+
     if (!this.timezone) {
         if (this.locale) {
             new LocaleInfo(this.locale, {
@@ -142,7 +141,6 @@ var PersianDate = function(params) {
     } else {
         this._init(params);
     }
-
 };
 
 PersianDate.prototype = new IDate({noinstance: true});
@@ -155,11 +153,11 @@ PersianDate.prototype.constructor = PersianDate;
  */
 PersianDate.prototype._init = function (params) {
     Astro.initAstro(
-        params && typeof(params.sync) === 'boolean' ? params.sync : true,
-        params && params.loadParams,
+        typeof(params.sync) === 'boolean' ? params.sync : true,
+        params.loadParams,
         ilib.bind(this, function (x) {
-            if (params && (params.year || params.month || params.day || params.hour ||
-                    params.minute || params.second || params.millisecond)) {
+            if (params.year || params.month || params.day || params.hour ||
+                    params.minute || params.second || params.millisecond) {
                 /**
                  * Year in the Persian calendar.
                  * @type number
