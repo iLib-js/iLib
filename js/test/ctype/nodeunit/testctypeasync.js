@@ -75,7 +75,7 @@ if (typeof(IString) === "undefined") {
     var IString = require("../.././../lib/IString.js");
 }
 
-module.exports.testctype = {
+module.exports.testctypeasync = {
     testIsAlphaTrue: function(test) {
         test.expect(5);
         isAlpha._init(false, undefined, function() {
