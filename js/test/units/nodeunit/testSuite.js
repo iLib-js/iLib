@@ -1,7 +1,7 @@
 /*
  * testSuite.js - test suite for this directory
  * 
- * Copyright © 2017, JEDLSoft
+ * Copyright © 2017-2018, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -36,6 +36,8 @@ var suites = [
     "testunitfmt.js",
     "testunits.js",
 ];
+
+var ilib = require("../../../lib/ilib-node.js");
 
 suites.forEach(function (path) {
     var test = require("./" + path);
