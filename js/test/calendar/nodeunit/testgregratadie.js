@@ -18,7 +18,7 @@
  */
 
 if (typeof(ilib) === "undefined") {
-    var ilib = require("../.././../lib/ilib-node.js");
+    var ilib = require("../.././../lib/ilib.js");
 }
 if (typeof(GregRataDie) === "undefined") {
     var GregRataDie = require("../.././../lib/GregRataDie.js");

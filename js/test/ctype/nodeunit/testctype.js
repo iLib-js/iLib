@@ -63,7 +63,7 @@ if (typeof(isAlnum) === "undefined") {
     var isAlnum = require("../.././../lib/isAlnum.js");
 }
 if (typeof(ilib) === "undefined") {
-    var ilib = require("../.././../lib/ilib-node.js");
+    var ilib = require("../.././../lib/ilib.js");
 }
 if (typeof(Currency) === "undefined") {
     var Currency = require("../.././../lib/Currency.js");
