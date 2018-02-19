@@ -18,5 +18,5 @@
  */
 
 module.exports.files = [
-    "testctype.js",
+    "testctypeasync.js"
 ];
