@@ -25,11 +25,6 @@ if (typeof(AlphabeticIndex) === "undefined") {
 }
 
 module.exports.testalphaindexasync = {
-    setUp: function(callback) {
-        ilib.clearCache();
-        callback();
-    },
-
     testAlphaIndexAsyncConstructor: function(test) {
         test.expect(1);
         new AlphabeticIndex({
