@@ -184,6 +184,7 @@ var TimeZone = function(options) {
 	if (!this.id) {
 		new LocaleInfo(this.locale, {
 			sync: this.sync,
+			loadParams: this.loadParams,
 			onLoad: ilib.bind(this, function (li) {
 				this.id = li.getTimeZone() || "Etc/UTC";
 				this._loadtzdata();
