@@ -462,7 +462,7 @@ module.exports.testalphaindex_de = {
             },
             {
                 label: "U",
-                elements: ["Ualrich", "Udrich", "Uelrich", "Ulrich", "Ülrich"]
+                elements: ["Ualrich", "Udrich", "Uelrich", "Ülrich", "Ulrich"]
             }
         ];
 
@@ -520,7 +520,7 @@ module.exports.testalphaindex_de = {
             },
             {
                 label: "J",
-                elements: ["Josef", "Juan", "Judrich", "Juergen", "Julia","Jürgen"]
+                elements: ["Josef", "Juan", "Judrich", "Juergen", "Julia", "Jürgen"]
             },
             {
                 label: "K",
@@ -532,7 +532,7 @@ module.exports.testalphaindex_de = {
             },
             {
                 label: "U",
-                elements: ["Ualrich", "Udrich", "Uelrich", "Ulrich", "Ülrich"]
+                elements: ["Ualrich", "Udrich", "Uelrich", "Ülrich", "Ulrich"]
             }
         ];
 
