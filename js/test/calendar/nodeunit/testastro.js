@@ -101,10 +101,6 @@ var testDatesAstro2 = [
     [ 2486076.5,    175.5004873603607,    956.4193104167667,    764646.5662724614,    764676.191299815],
 ];
 
-if (typeof(ilib) === "undefined") {
-    var ilib = require("../../../lib/ilib.js");
-}
-
 module.exports.testastro = {
     setUp: function(callback) {
         ilib.clearCache();
