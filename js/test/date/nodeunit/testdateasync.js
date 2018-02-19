@@ -32,11 +32,6 @@ if (typeof(ilib) === "undefined") {
 }
 
 module.exports.testdateasync = {
-    setUp: function(callback) {
-        ilib.clearCache();
-        callback();
-    },
-
     testDateConstructor: function(test) {
         test.expect(1);
         DateFactory({

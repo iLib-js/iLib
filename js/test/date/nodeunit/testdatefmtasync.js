@@ -45,35 +45,7 @@ if (typeof(DateFactory) === "undefined") {
     var DateFactory = require("../../../lib/DateFactory.js");
 }
 
-function mockLoaderDF(paths, sync, params, callback) {
-    var data = [];
-    
-    setTimeout(function() {
-        if (paths[0].indexOf("localeinfo") !== -1) {
-            data.push(ilib.data.localeinfo); // for the generic, shared stuff
-            data.push(ilib.data.localeinfo_de);
-        } else {
-            data.push(ilib.data.dateformats); // for the generic, shared stuff
-            data.push(ilib.data.dateformats_de);
-        }
-        
-        callback.call(this, data);  
-    }, 10);
-}
-
-var oldLoader = ilib._load;
-
 module.exports.testdatefmtasync = {
-    setUp: function(callback) {
-        ilib.clearCache();
-        callback();
-    },
-
-    tearDown: function(callback) {
-        ilib._load = oldLoader;
-        callback();
-    },
-
     testDateFmtConstructorEmpty: function(test) {
         test.expect(1);
         new DateFmt({
@@ -102,21 +74,16 @@ module.exports.testdatefmtasync = {
     },
     
     testDateFmtGetCalendarNotInThisLocale: function(test) {
-        try {
-            new DateFmt({
-                calendar: "arabic", 
-                locale: 'en-US',
-                sync: false,
-                onLoad: function(fmt) {
-                    test.fail();
-                    test.done();
-                }
-            });
-        } catch (str) {
-            test.equal(typeof(str), "string");
-            test.equal(str, "No formats available for calendar arabic in locale en-US");
-            test.done();
-        }
+        new DateFmt({
+            calendar: "arabic", 
+            locale: 'en-US',
+            sync: false,
+            onLoad: function(fmt) {
+                // "No formats available for calendar arabic in locale en-US"
+                test.ok(!fmt);
+                test.done();
+            }
+        });
     },
     
     testDateFmtGetTimeZoneDefault: function(test) {
@@ -129,7 +96,6 @@ module.exports.testdatefmtasync = {
         new DateFmt({
             sync: false,
             onLoad: function(fmt) {
-                test.fail();
                 test.ok(fmt !== null);
                 
                 test.equal(fmt.getTimeZone().getId(), "local");
@@ -336,56 +302,6 @@ module.exports.testdatefmtasync = {
                     }
                 });
                 
-            }
-        });
-    },
-    
-    testDateFmtLoadLocaleDataAsynch: function(test) {
-        if (ilib.isDynData()) {
-            // don't need to test loading on the dynamic load version because we are testing
-            // it via all the other tests already.
-            test.done();
-            return;
-        }
-        ilib.setLoaderCallback(mockLoaderDF);
-        
-        new DateFmt({
-            locale: "zz-ZZ",
-            sync: false,
-            onLoad: function (fmt) {
-                ilib.setLoaderCallback(oldLoader);
-                test.expect(4);
-                test.ok(fmt !== null);
-                
-                test.equal(fmt.getLocale().toString(), "zz-ZZ");
-                test.equal(fmt.getCalendar(), "gregorian");
-                test.equal(fmt.getTemplate(), "dd.MM.yy");
-                test.done();
-            }
-        });
-    },
-    
-    testDateFmtLoadLocaleDataAsynchCached: function(test) {
-        if (ilib.isDynData()) {
-            // don't need to test loading on the dynamic load version because we are testing
-            // it via all the other tests already.
-            test.done();
-            return;
-        }
-        ilib.setLoaderCallback(mockLoaderDF);
-        
-        test.expect(4);
-        new DateFmt({
-            locale: "zz-ZZ",
-            sync: false,
-            onLoad: function (fmt) {
-                ilib.setLoaderCallback(oldLoader);
-                test.ok(fmt !== null);
-                
-                test.equal(fmt.getLocale().toString(), "zz-ZZ");
-                test.equal(fmt.getCalendar(), "gregorian");
-                test.equal(fmt.getTemplate(), "dd.MM.yy");
-                test.done();
             }
         });
     }

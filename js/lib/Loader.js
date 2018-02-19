@@ -134,8 +134,8 @@ Loader.prototype.loadFiles = function(paths, sync, params, callback) {
 	// asynchronous
 	this._loadManifests(false, ilib.bind(this, function() {
 		//console.log("Loader.loadFiles: now loading files asynchronously");
-		this.results = [];
-		this._loadFilesAsync(includePath, paths, callback);
+		var results = [];
+		this._loadFilesAsync(includePath, paths, results, callback);
 	}));
 };
 
@@ -151,7 +151,7 @@ Loader.prototype._loadFilesAsyncAlongIncludePath = function (includes, filename,
 			var filepath = Path.join(root, filename);
 			this._loadFile(filepath, false, ilib.bind(this, function(t) {
 				//console.log("Loader._loadFilesAsyncAlongIncludePath: loading " + (t ? " success" : " failed"));
-				if (t) {
+			    if (t) {
 					cb(t);
 				} else {
 					this._loadFilesAsyncAlongIncludePath(includes, filename, cb);
@@ -162,24 +162,25 @@ Loader.prototype._loadFilesAsyncAlongIncludePath = function (includes, filename,
 			this._loadFilesAsyncAlongIncludePath(includes, filename, cb);
 		}
 	} else {
+	    // file not found in any of the include paths
 		cb();
 	}
 };
 
-Loader.prototype._loadFilesAsync = function (includePath, paths, callback) {
+Loader.prototype._loadFilesAsync = function (includePath, paths, results, callback) {
 	if (paths.length > 0) {
 		var filename = paths[0];
 		paths = paths.slice(1);
 		
 		//console.log("Loader._loadFilesAsync: attempting to load " + filename + " along the include path.");
 		this._loadFilesAsyncAlongIncludePath(includePath, filename, ilib.bind(this, function (json) {
-		    this.results.push(typeof(json) === "string" ? JSON.parse(json) : json);
-			this._loadFilesAsync(includePath, paths, callback);
+		    results.push(typeof(json) === "string" ? JSON.parse(json) : json);
+			this._loadFilesAsync(includePath, paths, results, callback);
 		}));
 	} else {
 		// only call the callback at the end of the chain of files
 		if (typeof(callback) === 'function') {
-			callback(this.results);
+			callback(results);
 		}
 	}
 };
