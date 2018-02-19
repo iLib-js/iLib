@@ -22,7 +22,7 @@ if (typeof(CaseMapper) === "undefined") {
 }
 
 if (typeof(ilib) === "undefined") {
-    var ilib = require("../../..");
+    var ilib = require("../../../lib/ilib.js");
 }
 
 module.exports.testtolower = {

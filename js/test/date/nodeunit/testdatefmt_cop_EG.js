@@ -27,7 +27,7 @@ if (typeof(CopticDate) === "undefined") {
     var CopticDate = require("../.././../lib/CopticDate.js");
 }
 if (typeof(ilib) === "undefined") {
-    var ilib = require("../../..");
+    var ilib = require("../../../lib/ilib.js");
 }
 
 module.exports.testdatefmt_cop_EG = {

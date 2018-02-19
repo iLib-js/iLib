@@ -113,7 +113,7 @@ var lookAheadStates = {
 
 
 if (typeof(ilib) === "undefined") {
-    var ilib = require("../../..");
+    var ilib = require("../../../lib/ilib.js");
 }
 
 var oldLoader = ilib._load;

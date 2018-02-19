@@ -106,7 +106,7 @@ function mockLoaderTZ2(paths, sync, params, callback) {
 var oldLoader = ilib._load;
 
 if (typeof(ilib) === "undefined") {
-    var ilib = require("../../..");
+    var ilib = require("../../../lib/ilib.js");
 }
 
 module.exports.testtimezone = {

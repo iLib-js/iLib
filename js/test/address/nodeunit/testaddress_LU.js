@@ -26,7 +26,7 @@ if (typeof(AddressFmt) === "undefined") {
 // TODO: get some Luxembourg addresses
 
 if (typeof(ilib) === "undefined") {
-    var ilib = require("../../..");
+    var ilib = require("../../../lib/ilib.js");
 }
 
 module.exports.testaddress_LU = {

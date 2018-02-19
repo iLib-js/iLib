@@ -32,7 +32,7 @@ if (typeof(DateFmt) === "undefined") {
 /* First, Gregorian. See the bottom for the Persian calendar tests */
 
 if (typeof(ilib) === "undefined") {
-    var ilib = require("../../..");
+    var ilib = require("../../../lib/ilib.js");
 }
 
 module.exports.testdatefmt_fa_IR = {

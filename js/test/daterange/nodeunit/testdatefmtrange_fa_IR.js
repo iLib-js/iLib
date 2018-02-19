@@ -30,7 +30,7 @@ if (typeof(DateRngFmt) === "undefined") {
  * half way down the file. */
 
 if (typeof(ilib) === "undefined") {
-    var ilib = require("../../..");
+    var ilib = require("../../../lib/ilib.js");
 }
 
 module.exports.testdatefmtrange_fa_IR = {

@@ -24,7 +24,7 @@ if (typeof(PhoneGeoLocator) === "undefined") {
 }
 /* Calling from US*/
 if (typeof(ilib) === "undefined") {
-    var ilib = require("../../..");
+    var ilib = require("../../../lib/ilib.js");
 }
 
 module.exports.phonegeo_TW = {

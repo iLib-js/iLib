@@ -25,7 +25,7 @@ if (typeof(Collator) === "undefined") {
 }
 
 if (typeof(ilib) === "undefined") {
-    var ilib = require("../../..");
+    var ilib = require("../../../lib/ilib.js");
 }
 
 module.exports.testcollation_cs = {

@@ -25,7 +25,7 @@ if (typeof(DateRngFmt) === "undefined") {
 }
 
 if (typeof(ilib) === "undefined") {
-    var ilib = require("../../..");
+    var ilib = require("../../../lib/ilib.js");
 }
 
 module.exports.testdatefmtrange_uk_UA = {
