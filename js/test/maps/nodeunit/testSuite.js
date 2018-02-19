@@ -20,17 +20,7 @@
 var nodeunit = require("nodeunit");
 var reporter = nodeunit.reporters.minimal;
 var modules = {};
-var suites = [
-    "testcharmap.js",
-    "testcm_CN.js",
-    "testcm_ISO-8859-1.js",
-    "testcm_JP.js",
-    "testcm_KR.js",
-    "testcm_UTF-16.js",
-    "testcm_UTF-8.js",
-    "testtolower.js",
-    "testtoupper.js",
-];
+var suites = require("./testSuiteFiles.js").files;
 
 var ilib = require("../../../lib/ilib-node.js");
 

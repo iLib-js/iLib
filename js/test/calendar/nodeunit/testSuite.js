@@ -20,34 +20,7 @@
 var nodeunit = require("nodeunit");
 var reporter = nodeunit.reporters.minimal;
 var modules = {};
-var suites = [
-    "testastro.js",
-    "testcalasync.js",
-    "testcalendar.js",
-    "testcoptic.js",
-    "testcopticdate.js",
-    "testethiopic.js",
-    "testethiopicdate.js",
-    "testgregorian.js",
-    "testgregoriandate.js",
-    "testgregratadie.js",
-    "testhan.js",
-    "testhandate.js",
-    "testhebrew.js",
-    "testhebrewdate.js",
-    "testislamic.js",
-    "testislamicdate.js",
-    "testjulian.js",
-    "testjuliandate.js",
-    "testjulianday.js",
-    "testpersian.js",
-    "testpersianastro.js",
-    "testpersiandate.js",
-    "testpersiandateastro.js",
-    "testthaisolar.js",
-    "testthaisolardate.js",
-    "testtimezone.js"
-];
+var suites = require("./testSuiteFiles.js").files;
 
 var ilib = require("../../../lib/ilib-node.js");
 

@@ -20,46 +20,7 @@
 var nodeunit = require("nodeunit");
 var reporter = nodeunit.reporters.minimal;
 var modules = {};
-var suites = [
-    "testglyphstr.js",
-    "testlistfmt.js",
-    "testlistfmt_am_ET.js",
-    "testlistfmt_ar.js",
-    "testlistfmt_bs.js",
-    "testlistfmt_de.js",
-    "testlistfmt_en.js",
-    "testlistfmt_el.js",
-    "testlistfmt_es.js",
-    "testlistfmt_fa.js",
-    "testlistfmt_fr.js",
-    "testlistfmt_gu_IN.js",
-    "testlistfmt_he_IL.js",
-    "testlistfmt_hi_IN.js",
-    "testlistfmt_hr.js",
-    "testlistfmt_it.js",
-    "testlistfmt_kn_IN.js",
-    "testlistfmt_ml_IN.js",
-    "testlistfmt_mr_IN.js",
-    "testlistfmt_ms.js",
-    "testlistfmt_nb_NO.js",
-    "testlistfmt_nl.js",
-    "testlistfmt_ja_JP.js",
-    "testlistfmt_pa.js",
-    "testlistfmt_pt.js",
-    "testlistfmt_ru.js",
-    "testlistfmt_si_LK.js",
-    "testlistfmt_sr.js",
-    "testlistfmt_sv.js",
-    "testlistfmt_sq.js",
-    "testlistfmt_ta_IN.js",
-    "testlistfmt_te_IN.js",
-    "testlistfmt_th_TH.js",
-    "testlistfmt_tr.js",
-    "testlistfmt_uk_UA.js",
-    "testlistfmt_ur.js",
-    "testlistfmt_zh.js",
-    "testnorm.js"
-];
+var suites = require("./testSuiteFiles.js").files;
 
 var ilib = require("../../../lib/ilib-node.js");
 

@@ -20,9 +20,7 @@
 var nodeunit = require("nodeunit");
 var reporter = nodeunit.reporters.minimal;
 var modules = {};
-var suites = [
-    "testctype.js",
-];
+var suites = require("./testSuiteFiles.js").files;
 
 var ilib = require("../../../lib/ilib-node.js");
 

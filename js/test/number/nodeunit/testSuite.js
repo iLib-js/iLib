@@ -20,13 +20,7 @@
 var nodeunit = require("nodeunit");
 var reporter = nodeunit.reporters.minimal;
 var modules = {};
-var suites = [
-    "testcurrency.js",
-    "testnumfmt.js",
-    "testnumfmt_af.js",
-    "testnumfmt_am.js",
-    "testnumprs.js",
-];
+var suites = require("./testSuiteFiles.js").files;
 
 var ilib = require("../../../lib/ilib-node.js");
 

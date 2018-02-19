@@ -20,19 +20,7 @@
 var nodeunit = require("nodeunit");
 var reporter = nodeunit.reporters.minimal;
 var modules = {};
-var suites = [
-    "testcharset.js",
-    "testcountry.js",
-    "testglobal.js",
-    "testloader.js",
-    "testlocale.js",
-    "testlocaleinfo.js",
-    "testlocalematch.js",
-    "testrequire.js",
-    "testresources.js",
-    "testscriptinfo.js",
-    "teststrings.js",
-];
+var suites = require("./testSuiteFiles.js").files;
 
 var ilib = require("../../../lib/ilib-node.js");
 
