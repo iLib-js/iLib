@@ -24,10 +24,6 @@ if (typeof(Locale) === "undefined") {
     var Locale = require("../.././../lib/Locale.js");
 }
 
-if (typeof(ilib) === "undefined") {
-    var ilib = require("../../../lib/ilib.js");
-}
-
 module.exports.testglobal = {
     setUp: function(callback) {
         ilib.clearCache();

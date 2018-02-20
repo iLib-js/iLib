@@ -30,14 +30,6 @@ if (typeof(IString) === "undefined") {
     var IString = require("../.././../lib/IString.js");
 }
 
-function setUp() {
-    ilib.locale = undefined;
-}
-
-if (typeof(ilib) === "undefined") {
-    var ilib = require("../../../lib/ilib.js");
-}
-
 module.exports.teststrings = {
     setUp: function(callback) {
         ilib.clearCache();
