@@ -1,0 +1,3 @@
+module FS
+plugin FileReader
+classname FileReader
