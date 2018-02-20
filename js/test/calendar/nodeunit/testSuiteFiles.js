@@ -43,5 +43,6 @@ module.exports.files = [
     "testpersiandateastro.js",
     "testthaisolar.js",
     "testthaisolardate.js",
-    "testtimezone.js"
+    "testtimezone.js",
+    "testtimezoneasync.js"
 ];

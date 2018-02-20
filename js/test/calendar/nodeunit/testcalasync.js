@@ -1,7 +1,7 @@
 /*
  * testcalasync.js - test the calendar objects asynchronously
  * 
- * Copyright © 2015,2017, JEDLSoft
+ * Copyright © 2015,2017-2018, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,163 +17,410 @@
  * limitations under the License.
  */
 
-if (typeof(TimeZone) === "undefined") {
-    var TimeZone = require("../.././../lib/TimeZone.js");
+if (typeof(CalendarFactory) === "undefined") {
+    var CalendarFactory = require("../.././../lib/CalendarFactory.js");
 }
 
 if (typeof(ilib) === "undefined") {
     var ilib = require("../../../lib/ilib.js");
 }
 
+if (typeof(CopticDate) === "undefined") {
+    var CopticDate = require("../.././../lib/CopticDate.js");
+}
+
+if (typeof(EthiopicDate) === "undefined") {
+    var EthiopicDate = require("../.././../lib/EthiopicDate.js");
+}
+
+if (typeof(GregorianDate) === "undefined") {
+    var GregorianDate = require("../.././../lib/GregorianDate.js");
+}
+
+if (typeof(HanDate) === "undefined") {
+    var HanDate = require("../.././../lib/HanDate.js");
+}
+
+if (typeof(HebrewDate) === "undefined") {
+    var HebrewDate = require("../.././../lib/HebrewDate.js");
+}
+
+if (typeof(IslamicDate) === "undefined") {
+    var IslamicDate = require("../.././../lib/IslamicDate.js");
+}
+
+if (typeof(JulianDate) === "undefined") {
+    var JulianDate = require("../.././../lib/JulianDate.js");
+}
+
+if (typeof(PersianAlgoDate) === "undefined") {
+    var PersianAlgoDate = require("../.././../lib/PersianAlgoDate.js");
+}
+
+if (typeof(PersianDate) === "undefined") {
+    var PersianDate = require("../.././../lib/PersianDate.js");
+}
+
+if (typeof(ThaiSolarDate) === "undefined") {
+    var ThaiSolarDate = require("../.././../lib/ThaiSolarDate.js");
+}
+
 module.exports.testcalasync = {
-    setUp: function(callback) {
-        ilib.clearCache();
-        callback();
+    testCalendarFactoryAsyncDefault: function(test) {
+        test.expect(1);
+        CalendarFactory({
+            sync: false,
+            onLoad: function(cal) {
+                test.ok(typeof(cal) !== "undefined");
+                test.done();
+            }
+        });
+    },
+    
+    testCalendarFactoryAsyncSpecific: function(test) {
+        test.expect(2);
+        var cal = CalendarFactory({
+            type: "julian",
+            sync: false,
+            onLoad: function(cal) {
+                test.ok(typeof(cal) !== "undefined");
+                
+                test.equal(cal.getType(), "julian");
+                test.done();
+            }
+        });
+    },
+    
+    testCalendarFactoryAsyncUnknown: function(test) {
+        test.expect(1);
+        CalendarFactory({
+            type: "asdf",
+            sync: false,
+            onLoad: function(cal) {
+                test.ok(typeof(cal) === "undefined");
+                test.done();
+            }
+        });
+    },
+    
+    testCalendarFactoryAsyncDefaultForLocale: function(test) {
+        test.expect(2);
+        CalendarFactory({
+            locale: "fa-IR",
+            sync: false,
+            onLoad: function(cal) {
+                test.ok(typeof(cal) !== "undefined");
+                
+                test.equal(cal.getType(), "persian");
+                test.done();
+            }
+        });
+    },
+        
+    testCalendarFactoryAsyncDefaultForLocaleOther: function(test) {
+        test.expect(2);
+        var cal = CalendarFactory({
+            locale: "th-TH",
+            sync: false,
+            onLoad: function(cal) {
+                test.ok(typeof(cal) !== "undefined");
+                
+                test.equal(cal.getType(), "thaisolar");
+                test.done();
+            }
+        });
+    },
+    
+    testCalendarFactoryAsyncOverrideLocale: function(test) {
+        test.expect(2);
+        var cal = CalendarFactory({
+            locale: "fa-IR", 
+            type: "gregorian",
+            sync: false,
+            onLoad: function(cal) {
+                test.ok(typeof(cal) !== "undefined");
+                
+                test.equal(cal.getType(), "gregorian");
+                test.done();
+            }
+        });
+    },
+    
+    testCopticDateAsyncConstructorFull: function(test) {
+        test.expect(8);
+        new CopticDate({
+            year: 1735,
+            month: 9,
+            day: 23,
+            hour: 16,
+            minute: 7,
+            second: 12,
+            millisecond: 123,
+            timezone: "Etc/UTC",
+            sync: false,
+            onLoad: function(cd) {
+                test.ok(cd !== null);
+                
+                test.equal(cd.getYears(), 1735);
+                test.equal(cd.getMonths(), 9);
+                test.equal(cd.getDays(), 23);
+                test.equal(cd.getHours(), 16);
+                test.equal(cd.getMinutes(), 7);
+                test.equal(cd.getSeconds(), 12);
+                test.equal(cd.getMilliseconds(), 123);
+                test.done();
+            }
+        });    
+    },
+    
+    testEthiopicDateAsyncConstructorFull: function(test) {
+        test.expect(8);
+        new EthiopicDate({
+            year: 2011,
+            month: 9,
+            day: 23,
+            hour: 16,
+            minute: 7,
+            second: 12,
+            millisecond: 123,
+            timezone: "Etc/UTC",
+            sync: false,
+            onLoad: function(ed) {
+                test.ok(ed !== null);
+                
+                test.equal(ed.getYears(), 2011);
+                test.equal(ed.getMonths(), 9);
+                test.equal(ed.getDays(), 23);
+                test.equal(ed.getHours(), 16);
+                test.equal(ed.getMinutes(), 7);
+                test.equal(ed.getSeconds(), 12);
+                test.equal(ed.getMilliseconds(), 123);
+                test.done();
+            }
+        });    
     },
 
-    testTZAsyncGetAvailableIds: function(test) {
-        test.expect(2);
-        TimeZone.getAvailableIds(undefined, false, function(zones) {
-            test.ok(typeof(zones) !== "undefined");
-            
-            test.ok(zones.length > 0);
-            test.done();
-        });
-    },
-    
-    testTZAsyncGetAvailableIdsRightValues: function(test) {
-        test.expect(6);
-        TimeZone.getAvailableIds(undefined, false, function(zones) {
-            test.ok(typeof(zones) !== "undefined");
-            
-            //var util = require("util");
-            //util.print("ilib._load is " + util.inspect(ilib._load) + "\n");
-            test.contains(zones, "Europe/London");
-            test.contains(zones, "America/Los_Angeles");
-            test.contains(zones, "Australia/Sydney");
-            test.contains(zones, "Asia/Tokyo");
-            test.contains(zones, "Africa/Cairo");
-            test.done();
-        });
-    },
-    
-    testTZAsyncGetAvailableIdsNoFilterContainsLocal: function(test) {
-        test.expect(2);
-        TimeZone.getAvailableIds(undefined, false, function(zones) {
-            test.ok(typeof(zones) !== "undefined");
-            
-            test.ok(zones.indexOf("local") != -1);
-            test.done();
-        });
-    },
-    
-    testTZAsyncGetAvailableIdsByCountryRightLength: function(test) {
-        test.expect(2);
-        TimeZone.getAvailableIds("US", false, function(zones) {
-            test.ok(typeof(zones) !== "undefined");
-            
-            test.equal(zones.length, 48);
-            test.done();
-        });
-    },
-    
-    testTZAsyncGetAvailableIdsWithFilterContainsNoLocal: function(test) {
-        try {
-            TimeZone.getAvailableIds("US", false, function(zones) {
-                test.ok(typeof(zones) !== "undefined");
+    testGregDateAsyncConstructorFull: function(test) {
+        test.expect(8);
+        new GregorianDate({
+            year: 2011, 
+            month: 9, 
+            day: 23, 
+            hour: 16, 
+            minute: 7, 
+            second: 12, 
+            millisecond: 123,
+            sync: false,
+            onLoad: function(gd) {
+                test.ok(gd !== null);
                 
-                test.ok(zones.indexOf("local") == -1);
-            });
-        } catch (e) {
-            test.ok(typeof(e) !== "undefined");
-        }
-        test.done();
-    },
-    
-    testTZAsyncGetAvailableIdsByCountryRightContents: function(test) {
-        test.expect(2);
-        TimeZone.getAvailableIds("US", false, function(zones) {
-            test.ok(typeof(zones) !== "undefined");
-            
-            var expected = [
-                "America/New_York",
-                "America/Detroit",
-                "America/Kentucky/Louisville",
-                "America/Kentucky/Monticello",
-                "America/Indiana/Indianapolis",
-                "America/Indiana/Vincennes",
-                "America/Indiana/Winamac",
-                "America/Indiana/Marengo",
-                "America/Indiana/Petersburg",
-                "America/Indiana/Vevay",
-                "America/Chicago",
-                "America/Indiana/Tell_City",
-                "America/Indiana/Knox",
-                "America/Menominee",
-                "America/North_Dakota/Center",
-                "America/North_Dakota/New_Salem",
-                "America/North_Dakota/Beulah",
-                "America/Denver",
-                "America/Boise",
-                "America/Phoenix",
-                "America/Los_Angeles",
-                "America/Anchorage",
-                "America/Juneau",
-                "America/Sitka",
-                "America/Metlakatla",
-                "America/Yakutat",
-                "America/Nome",
-                "America/Adak",
-                "Pacific/Honolulu",
-                "America/Atka",
-                "America/Fort_Wayne",
-                "America/Indianapolis",
-                "America/Knox_IN",
-                "America/Louisville",
-                "America/Shiprock",
-                "Navajo",
-                "Pacific/Johnston",
-                "US/Alaska",
-                "US/Aleutian",
-                "US/Arizona",
-                "US/Central",
-                "US/East-Indiana",
-                "US/Eastern",
-                "US/Hawaii",
-                "US/Indiana-Starke",
-                "US/Michigan",
-                "US/Mountain",
-                "US/Pacific"
-            ];
-            
-            test.equalIgnoringOrder(zones, expected);
-            test.done();
+                test.equal(gd.getYears(), 2011);
+                test.equal(gd.getMonths(), 9);
+                test.equal(gd.getDays(), 23);
+                test.equal(gd.getHours(), 16);
+                test.equal(gd.getMinutes(), 7);
+                test.equal(gd.getSeconds(), 12);
+                test.equal(gd.getMilliseconds(), 123);
+                test.done();
+            }
         });
+        
     },
     
-    testTZAsyncGetAvailableIdsByCountry2RightLength: function(test) {
-        test.expect(2);
-        var zones = TimeZone.getAvailableIds("SG", false, function(zones) {
-            test.ok(typeof(zones) !== "undefined");
-            
-            test.equal(zones.length, 2);
-            test.done();
+    testHanDateAsyncConstructorFull: function(test) {
+        test.expect(10);
+        new HanDate({
+            year: 4711,
+            month: 9,
+            day: 23,
+            hour: 16,
+            minute: 7,
+            second: 12,
+            millisecond: 123,
+            timezone: "Etc/UTC",
+            sync: false,
+            onLoad: function(hd) {
+                test.ok(hd !== null);
+                
+                test.equal(hd.getYears(), 4711);
+                test.equal(hd.getMonths(), 9);
+                test.equal(hd.getDays(), 23);
+                test.equal(hd.getHours(), 16);
+                test.equal(hd.getMinutes(), 7);
+                test.equal(hd.getSeconds(), 12);
+                test.equal(hd.getMilliseconds(), 123);
+                test.equal(hd.getCycles(), 78);
+                test.equal(hd.getCycleYears(), 31);
+                test.done();
+            }
         });
+        
     },
     
-    testTZAsyncGetAvailableIdsByCountry2RightContents: function(test) {
-        test.expect(2);
-        var zones = TimeZone.getAvailableIds("SG", false, function(zones) {
-            test.ok(typeof(zones) !== "undefined");
-            
-            var expected = [
-                "Asia/Singapore",
-                "Singapore"        // legacy tz
-            ];
-            
-            test.equalIgnoringOrder(zones, expected);
-            test.done();
+    testHebrewDateAsyncConstructorFull: function(test) {
+        test.expect(8);
+        new HebrewDate({
+            year: 2011,
+            month: 9,
+            day: 23,
+            hour: 16,
+            minute: 7,
+            second: 12,
+            millisecond: 123,
+            timezone: "Etc/UTC",
+            sync: false,
+            onLoad: function(hd) {
+                test.ok(hd !== null);
+                
+                test.equal(hd.getYears(), 2011);
+                test.equal(hd.getMonths(), 9);
+                test.equal(hd.getDays(), 23);
+                test.equal(hd.getHours(), 16);
+                test.equal(hd.getMinutes(), 7);
+                test.equal(hd.getSeconds(), 12);
+                test.equal(hd.getMilliseconds(), 123);
+                test.done();
+            }
+        });
+        
+    },
+    
+    testIslamicDateAsyncConstructorFull: function(test) {
+        test.expect(8);
+        new IslamicDate({
+            year: 2011,
+            month: 9,
+            day: 23,
+            hour: 16,
+            minute: 7,
+            second: 12,
+            millisecond: 123,
+            timezone: "Etc/UTC",
+            sync: false,
+            onLoad: function(id) {
+                test.ok(id !== null);
+                
+                test.equal(id.getYears(), 2011);
+                test.equal(id.getMonths(), 9);
+                test.equal(id.getDays(), 23);
+                test.equal(id.getHours(), 16);
+                test.equal(id.getMinutes(), 7);
+                test.equal(id.getSeconds(), 12);
+                test.equal(id.getMilliseconds(), 123);
+                test.done();
+            }
+        });
+        
+    },
+    
+    testJulDateAsyncConstructorFull: function(test) {
+        test.expect(8);
+        new JulianDate({
+            year: 2011,
+            month: 9,
+            day: 23,
+            hour: 16,
+            minute: 7,
+            second: 12,
+            millisecond: 123,
+            timezone: "Etc/UTC",
+            sync: false,
+            onLoad: function(jul) {
+                test.ok(jul !== null);
+                
+                test.equal(jul.getYears(), 2011);
+                test.equal(jul.getMonths(), 9);
+                test.equal(jul.getDays(), 23);
+                test.equal(jul.getHours(), 16);
+                test.equal(jul.getMinutes(), 7);
+                test.equal(jul.getSeconds(), 12);
+                test.equal(jul.getMilliseconds(), 123);
+                test.done();
+            }
+        });
+        
+    },
+    
+    testPersAlgoDateAsyncConstructorFull: function(test) {
+        test.expect(8);
+        new PersianAlgoDate({
+            year: 1392,
+            month: 9,
+            day: 23,
+            hour: 16,
+            minute: 7,
+            second: 12,
+            millisecond: 123,
+            timezone: "Etc/UTC",
+            sync: false,
+            onLoad: function(pd) {
+                test.ok(pd !== null);
+                
+                test.equal(pd.getYears(), 1392);
+                test.equal(pd.getMonths(), 9);
+                test.equal(pd.getDays(), 23);
+                test.equal(pd.getHours(), 16);
+                test.equal(pd.getMinutes(), 7);
+                test.equal(pd.getSeconds(), 12);
+                test.equal(pd.getMilliseconds(), 123);
+                test.done();
+            }
+        });
+        
+    },
+    
+    testPersDateAstroAsyncConstructorFull: function(test) {
+        test.expect(8);
+        new PersianDate({
+            year: 1392,
+            month: 9,
+            day: 23,
+            hour: 16,
+            minute: 7,
+            second: 12,
+            millisecond: 123,
+            timezone: "Etc/UTC",
+            sync: false,
+            onLoad: function(pd) {
+                test.ok(pd !== null);
+                
+                test.equal(pd.getYears(), 1392);
+                test.equal(pd.getMonths(), 9);
+                test.equal(pd.getDays(), 23);
+                test.equal(pd.getHours(), 16);
+                test.equal(pd.getMinutes(), 7);
+                test.equal(pd.getSeconds(), 12);
+                test.equal(pd.getMilliseconds(), 123);
+                test.done();
+            }
+        });
+        
+    },
+    
+    testThaiSolarDateAsyncConstructorFull: function(test) {
+        test.expect(8);
+        new ThaiSolarDate({
+            year: 2553, 
+            month: 9, 
+            day: 23, 
+            hour: 16, 
+            minute: 7, 
+            second: 12, 
+            millisecond: 123,
+            timezone: "Etc/UTC",
+            sync: false,
+            onLoad: function(td) {
+                test.ok(td !== null);
+                
+                test.equal(td.getYears(), 2553);
+                test.equal(td.getMonths(), 9);
+                test.equal(td.getDays(), 23);
+                test.equal(td.getHours(), 16);
+                test.equal(td.getMinutes(), 7);
+                test.equal(td.getSeconds(), 12);
+                test.equal(td.getMilliseconds(), 123);
+                test.done();
+            }
         });
     }
-    
 };

@@ -1,7 +1,7 @@
 /*
  * persianastro.js - Represent a Persian astronomical (Hijjri) calendar object.
  * 
- * Copyright © 2014-2015, JEDLSoft
+ * Copyright © 2014-2015,2018, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -44,8 +44,12 @@ var PersRataDie = require("./PersRataDie.js");
  * @constructor
  * @extends Calendar
  */
-var PersianCal = function() {
+var PersianCal = function(options) {
 	this.type = "persian";
+    
+    if (options && typeof(options.onLoad) === "function") {
+        options.onLoad(this);
+    }
 };
 
 /**

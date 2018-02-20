@@ -1,7 +1,7 @@
 /*
  * coptic.js - Represent a Coptic calendar object.
  * 
- * Copyright © 2015, JEDLSoft
+ * Copyright © 2015,2018, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -35,8 +35,12 @@ var EthiopicCal = require("./EthiopicCal.js");
  * @constructor
  * @extends EthiopicCal
  */
-var CopticCal = function() {
+var CopticCal = function(options) {
 	this.type = "coptic";
+    
+    if (options && typeof(options.onLoad) === "function") {
+        options.onLoad(this);
+    }
 };
 
 CopticCal.prototype = new EthiopicCal();

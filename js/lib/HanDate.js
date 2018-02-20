@@ -160,7 +160,7 @@ HanDate.prototype._init = function (params) {
     new HanCal({
         sync: params && typeof(params) === 'boolean' ? params.sync : true,
         loadParams: params && params.loadParams,
-        callback: ilib.bind(this, function (cal) {
+        onLoad: ilib.bind(this, function (cal) {
             this.cal = cal;
     
             if (params.year || params.month || params.day || params.hour ||

@@ -455,54 +455,51 @@ var DateFmt = function(options) {
 				DateFactory._dynLoadDate(this.calName);
 			}
 			
-			this.cal = CalendarFactory({
-				type: this.calName
-			});
-			if (!this.cal) {
-				this.cal = new GregorianCal();
-			}
-			if (this.meridiems === "default") {
-				this.meridiems = li.getMeridiemsStyle();
-			}
-
-			/*
-			if (this.timeComponents &&
-					(this.clock === '24' || 
-					(!this.clock && this.locinfo.getClock() === "24"))) {
-				// make sure we don't have am/pm in 24 hour mode unless the user specifically
-				// requested it in the time component option
-				this.timeComponents = this.timeComponents.replace("a", "");
-			}
-			*/
-
-			// load the strings used to translate the components
-			new ResBundle({
-				locale: this.locale,
-				name: "sysres",
+			CalendarFactory({
+				type: this.calName,
 				sync: sync,
-				loadParams: loadParams, 
-				onLoad: ilib.bind(this, function (rb) {
-					this.sysres = rb;
-					
-					if (!this.tz) {
-					    var timezone = options.timezone;
-					    if (!timezone && !options.locale) { 
-					        timezone = "local";
-					    }
-					    
-					    new TimeZone({
-					        locale: this.locale,
-					        id: timezone,
-					        sync: sync,
-					        loadParams: loadParams,
-					        onLoad: ilib.bind(this, function(tz) {
-					            this.tz = tz;
-					            this._init(options);
-					        })
-					    });
-					} else {
-					    this._init(options);
-					}
+				loadParams: loadParams,
+				onLoad: ilib.bind(this, function(cal) {
+				    this.cal = cal;
+				    
+				    if (!this.cal) {
+				        // can be synchronous
+				        this.cal = new GregorianCal();
+				    }
+				    if (this.meridiems === "default") {
+				        this.meridiems = li.getMeridiemsStyle();
+				    }
+
+				    // load the strings used to translate the components
+				    new ResBundle({
+				        locale: this.locale,
+				        name: "sysres",
+				        sync: sync,
+				        loadParams: loadParams, 
+				        onLoad: ilib.bind(this, function (rb) {
+				            this.sysres = rb;
+				            
+				            if (!this.tz) {
+				                var timezone = options.timezone;
+				                if (!timezone && !options.locale) { 
+				                    timezone = "local";
+				                }
+				                
+				                new TimeZone({
+				                    locale: this.locale,
+				                    id: timezone,
+				                    sync: sync,
+				                    loadParams: loadParams,
+				                    onLoad: ilib.bind(this, function(tz) {
+				                        this.tz = tz;
+				                        this._init(options);
+				                    })
+				                });
+				            } else {
+				                this._init(options);
+				            }
+				        })
+				    });
 				})
 			});
 		})

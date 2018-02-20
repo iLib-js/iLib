@@ -54,10 +54,6 @@ function mockLoaderDRF(paths, sync, params, callback) {
     return data;
 }
 
-if (typeof(ilib) === "undefined") {
-    var ilib = require("../../../lib/ilib.js");
-}
-
 var oldLoader = ilib._load;
 
 module.exports.testdatefmtrange = {
