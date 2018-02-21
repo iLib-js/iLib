@@ -611,6 +611,22 @@ module.exports.testctype = {
         test.done();
     },
 
+    testIsDigitNonLatin: function(test) {
+        test.expect(10);
+        // bengali digits
+        test.ok(isDigit("০"));
+        test.ok(isDigit('১'));
+        test.ok(isDigit('২'));
+        test.ok(isDigit('৩'));
+        test.ok(isDigit('৪'));
+        test.ok(isDigit('৫'));
+        test.ok(isDigit('৬'));
+        test.ok(isDigit('৭'));
+        test.ok(isDigit('৮'));
+        test.ok(isDigit('৯'));
+        test.done();
+    },
+
     testIsDigitUndefined: function(test) {
         test.expect(1);
         test.ok(!isDigit());

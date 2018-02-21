@@ -30,7 +30,7 @@ var Charmap = require("./Charmap.js");
  */
 var ISO2022 = function (options) {
     // first, load in all the tables we need for this version of 2022
-    options = options || {};
+    options = options || {sync: true};
     var name = options.name || "ISO-2022-JP";
     var sync = typeof(options.sync) === "boolean" ? options.sync : true;
     

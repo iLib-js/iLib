@@ -145,7 +145,7 @@ var DurationFmt = function(options) {
 		
 		loadParams = options.loadParams;
 	}
-	options = options || {};
+	options = options || {sync: true};
 
     new ResBundle({
         locale: this.locale,

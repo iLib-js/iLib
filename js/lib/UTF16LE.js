@@ -32,7 +32,7 @@ var Charmap = require("./Charmap.js");
  * @extends Charmap
  */
 var UTF16LE = function (options) {
-    options = options || {};
+    options = options || {sync: true};
     if (typeof(options.charset) === "object" && options.charset instanceof Charset) {
         this.charset = options.charset;
         this._init(options);

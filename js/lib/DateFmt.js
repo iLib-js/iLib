@@ -324,7 +324,7 @@ var DateFmt = function(options) {
 	this.timeComponents = "ahm";
 	this.meridiems = "default";
 	
-	options = options || {};
+	options = options || {sync: true};
 	if (options.locale) {
 	    this.locale = (typeof(options.locale) === 'string') ? new Locale(options.locale) : options.locale;
 	}
@@ -603,16 +603,13 @@ DateFmt.weekDayLenMap = {
  * @return {Array.<{name:string,start:string,end:string}>}
  */
 DateFmt.getMeridiemsRange = function (options) {
-	options = options || {};
-	var args = {};
-	if (options.locale) {
-		args.locale = options.locale;
-	}
-
-	if (options.meridiems) {
-		args.meridiems = options.meridiems;
-	}
-
+	options = options || {sync: true};
+	var args = Utils.merge({}, options);
+	args.onLoad = function(fmt) {
+	    if (typeof(options.onLoad) === "function") {
+	        options.onLoad(fmt.getMeridiemsRange());
+	    }
+	};
 	var fmt = new DateFmt(args);
 
 	return fmt.getMeridiemsRange();

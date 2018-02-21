@@ -134,7 +134,7 @@ var CharmapFactory = function(options) {
 			sync = options.sync;
 		}
 	} else {
-	    options = {};
+	    options = {sync: true};
 	}
 
 	var instance;

@@ -32,7 +32,7 @@ var IString = require("./IString.js");
  * @extends Charmap
  */
 var UTF8 = function (options) {
-    options = options || {};
+    options = options || {sync: true};
     if (typeof(options.charset) === "object" && options.charset instanceof Charset) {
         this.charset = options.charset;
         this._init(options);

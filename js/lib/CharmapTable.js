@@ -139,7 +139,7 @@ var CharmapTable = function(options) {
             this.charsetName = options.name;
         }
     } else {
-        options = {};
+        options = {sync: true};
     }
 
     if (!this.charset) {

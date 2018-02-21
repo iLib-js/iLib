@@ -1,7 +1,7 @@
 <!--
-testSuite.html - browser-based test suite for this directory
+testSuiteAsync.html - browser-based test suite for this directory
 
-Copyright © 2017, JEDLSoft
+Copyright © 2018, JEDLSoft
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -24,20 +24,18 @@ limitations under the License.
         var module = {};
     </script>
     <script src="/test/nodeunit/nodeunit.js"></script>
-    <script src="/output/js/ut/assembled/ilib-ut.js"></script>
+    <script src="/output/js/ut/assembled/ilib-ut-dyn.js"></script>
     <script>
         module = {
             exports: {}
         };
     </script>
-    <script src="testcurrency.js"></script>
-    <script src="testnumfmt.js"></script>
-    <script src="testnumfmt_af.js"></script>
-    <script src="testnumfmt_am.js"></script>
-    <script src="testnumprs.js"></script>
+    <script src="testcurrencyasync.js"></script>
+    <script src="testnumfmtasync.js"></script>
+    <script src="testnumprsasync.js"></script>
   </head>
   <body>
-    <h1 id="nodeunit-header">number Test Suite</h1>
+    <h1 id="nodeunit-header">Async Number Test Suite</h1>
     <script>
      nodeunit.run(module.exports);
     </script>
