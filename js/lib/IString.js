@@ -74,6 +74,26 @@ IString._isSurrogate = function (ch) {
 	return ((n >= 0xDC00 && n <= 0xDFFF) || (n >= 0xD800 && n <= 0xDBFF));
 };
 
+// build in the English rule
+IString.plurals_default = {
+    "one": {
+        "and": [
+            {
+                "eq": [
+                    "i",
+                    1
+                ]
+            },
+            {
+                "eq": [
+                    "v",
+                    0
+                ]
+            }
+        ]
+    }
+};
+
 /**
  * Convert a UCS-4 code point to a Javascript string. The codepoint can be any valid 
  * UCS-4 Unicode character, including supplementary characters. Standard Javascript
@@ -163,9 +183,9 @@ IString.loadPlurals = function (sync, locale, loadParams, onLoad) {
 			loadParams: loadParams,
 			callback: ilib.bind(this, function(plurals) {
 				if (!plurals) {
-					ilib.data.cache.IString[spec] = {};
+					ilib.data.cache.IString[spec] = IString.plurals_default;
 				}
-				ilib.data["plurals_" + spec] = plurals || {};
+				ilib.data["plurals_" + spec] = plurals || IString.plurals_default;
 				if (onLoad && typeof(onLoad) === 'function') {
 					onLoad(ilib.data["plurals_" + spec]);
 				}
