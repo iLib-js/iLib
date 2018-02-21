@@ -83,7 +83,7 @@ module.exports.testcm_UTF_8 = {
         });
         test.ok(typeof(cm) !== "undefined");
         var input = new Uint8Array([
-            0xe4, 0xb8,    0x80,
+            0xe4, 0xb8, 0x80,
             0xe4, 0xb8, 0x81,
             0xe4, 0xb8, 0x82,
             0xe5, 0x9c, 0x81,
