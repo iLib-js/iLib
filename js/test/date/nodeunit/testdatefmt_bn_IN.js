@@ -298,6 +298,7 @@ module.exports.testdatefmt_bn_IN = {
         test.ok(typeof(fmt) !== "undefined");
         
         var date = new JulianDate({
+            locale: "bn-IN",
             year: 2011,
             month: 9,
             day: 29,
