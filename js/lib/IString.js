@@ -46,7 +46,7 @@ var Locale = require("./Locale.js");
 var IString = function (string) {
 	if (typeof(string) === 'object') {
 		if (string instanceof IString) {
-			this.str = string.str;	
+			this.str = string.str;
 		} else {
 			this.str = string.toString();
 		}

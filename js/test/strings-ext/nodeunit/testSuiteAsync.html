@@ -1,7 +1,7 @@
 <!--
-testSuite.html - browser-based test suite for this directory
+testSuiteAsync.html - browser-based test suite for this directory
 
-Copyright © 2017, JEDLSoft
+Copyright © 2018, JEDLSoft
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -24,54 +24,19 @@ limitations under the License.
         var module = {};
     </script>
     <script src="/test/nodeunit/nodeunit.js"></script>
-    <script src="/output/js/ut/assembled/ilib-ut.js"></script>
+    <script src="/output/js/ut/assembled/ilib-ut-dyn.js"></script>
     <script src="/test/strings-ext/test/normdata.js"></script>
     <script>
         module = {
             exports: {}
         };
     </script>
-    <!--  script src="testglyphstr.js"></script>
-    <script src="testlistfmt.js"></script>
-    <script src="testlistfmt_am_ET.js"></script>
-    <script src="testlistfmt_ar.js"></script>
-    <script src="testlistfmt_bs.js"></script>
-    <script src="testlistfmt_de.js"></script>
-    <script src="testlistfmt_el.js"></script>
-    <script src="testlistfmt_en.js"></script>
-    <script src="testlistfmt_es.js"></script>
-    <script src="testlistfmt_fa.js"></script>
-    <script src="testlistfmt_fr.js"></script>
-    <script src="testlistfmt_gu_IN.js"></script>
-    <script src="testlistfmt_he_IL.js"></script>
-    <script src="testlistfmt_hi_IN.js"></script>
-    <script src="testlistfmt_hr.js"></script>
-    <script src="testlistfmt_it.js"></script>
-    <script src="testlistfmt_kn_IN.js"></script>
-    <script src="testlistfmt_ml_IN.js"></script>
-    <script src="testlistfmt_mr_IN.js"></script>
-    <script src="testlistfmt_ms.js"></script>
-    <script src="testlistfmt_nb_NO.js"></script>
-    <script src="testlistfmt_nl.js"></script>
-    <script src="testlistfmt_pa.js"></script>
-    <script src="testlistfmt_ja_JP.js"></script>
-    <script src="testlistfmt_pt.js"></script>
-    <script src="testlistfmt_ru.js"></script>
-    <script src="testlistfmt_si_LK.js"></script>
-    <script src="testlistfmt_sq.js"></script>
-    <script src="testlistfmt_sr.js"></script>
-    <script src="testlistfmt_sv.js"></script>
-    <script src="testlistfmt_ta_IN.js"></script>
-    <script src="testlistfmt_te_IN.js"></script>
-    <script src="testlistfmt_th_TH.js"></script>
-    <script src="testlistfmt_tr.js"></script>
-    <script src="testlistfmt_uk_UA.js"></script>
-    <script src="testlistfmt_ur.js"></script>
-    <script src="testlistfmt_zh.js"></script -->
-    <script src="testnorm.js"></script>
+    <script src="testglyphstrasync.js"></script>
+    <script src="testlistfmtasync.js"></script>
+    <script src="testnormasync.js"></script>
   </head>
   <body>
-    <h1 id="nodeunit-header">strings-ext Test Suite</h1>
+    <h1 id="nodeunit-header">Async Strings-ext Test Suite</h1>
     <script>
      nodeunit.run(module.exports);
     </script>
