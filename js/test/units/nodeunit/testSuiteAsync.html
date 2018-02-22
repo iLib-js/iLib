@@ -1,7 +1,7 @@
 <!--
-testSuite.html - browser-based test suite for this directory
+testSuiteAsync.html - browser-based test suite for this directory
 
-Copyright © 2017, JEDLSoft
+Copyright © 2018, JEDLSoft
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -24,29 +24,16 @@ limitations under the License.
         var module = {};
     </script>
     <script src="/test/nodeunit/nodeunit.js"></script>
-    <script src="/output/js/ut/assembled/ilib-ut.js"></script>
+    <script src="/output/js/ut/assembled/ilib-ut-dyn.js"></script>
     <script>
         module = {
             exports: {}
         };
     </script>
-    <script src="testFuelConsumption.js"></script>
-    <script src="testUnknown.js"></script>
-    <script src="testVolume.js"></script>
-    <script src="testarea.js"></script>
-    <script src="testdigitalstoreage.js"></script>
-    <script src="testenergy.js"></script>
-    <script src="testlengths.js"></script>
-    <script src="testmass.js"></script>
-    <script src="testmeasurement.js"></script>
-    <script src="testspeeds.js"></script>
-    <script src="testtemp.js"></script>
-    <script src="testtime.js"></script>
-    <script src="testunitfmt.js"></script>
-    <script src="testunits.js"></script>
+    <script src="testunitfmtasync.js"></script>
   </head>
   <body>
-    <h1 id="nodeunit-header">units Test Suite</h1>
+    <h1 id="nodeunit-header">Async Units Test Suite</h1>
     <script>
      nodeunit.run(module.exports);
     </script>
