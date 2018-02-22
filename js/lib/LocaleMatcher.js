@@ -18,7 +18,7 @@
  */
 
 // !depends ilib.js Locale.js Utils.js
-// !data likelylocales
+// !data localematch
 
 var ilib = require("./ilib.js");
 var Utils = require("./Utils.js");
@@ -85,7 +85,7 @@ var LocaleMatcher = function(options) {
 		}
 	}
 
-	if (typeof(ilib.data.likelylocales) === 'undefined') {
+	if (typeof(ilib.data.localematch) === 'undefined') {
 		Utils.loadData({
 			object: "LocaleMatcher",
 			locale: "-",
@@ -106,7 +106,7 @@ var LocaleMatcher = function(options) {
 			})
 		});
 	} else {
-		this.info = ilib.data.likelylocales;
+		this.info = ilib.data.localematch;
 	}
 };
 
