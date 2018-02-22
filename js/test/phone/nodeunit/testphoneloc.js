@@ -133,30 +133,5 @@ module.exports.phoneloc = {
         test.ok(typeof(loc) !== "undefined");
         test.equal(loc.region, "US");
         test.done();
-    },
-    
-    testPhoneLocLoadLocaleDataSynch: function(test) {
-        if (ilib.isDynData()) {
-            // don't need to test loading on the dynamic load version because we are testing
-            // it via all the other tests already.
-            test.done();
-            return;
-        }
-        
-        var oldLoader = ilib._load;
-        ilib.setLoaderCallback(mockLoaderPhoneLoc);
-    
-        new PhoneLocale({
-            countryCode: "44",
-            sync: false,
-            onLoad: function (loc) {
-                ilib.setLoaderCallback(oldLoader);
-        test.expect(2);
-                test.ok(loc !== null);
-                test.equal(loc.getRegion(), "GB");                
-                test.done();
-            }
-        });
     }
-    
 };

@@ -604,7 +604,7 @@ DateFmt.weekDayLenMap = {
  */
 DateFmt.getMeridiemsRange = function (options) {
 	options = options || {sync: true};
-	var args = Utils.merge({}, options);
+	var args = JSUtils.merge({}, options);
 	args.onLoad = function(fmt) {
 	    if (typeof(options.onLoad) === "function") {
 	        options.onLoad(fmt.getMeridiemsRange());
