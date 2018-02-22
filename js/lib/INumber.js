@@ -25,11 +25,13 @@ isDigit.js
 isSpace.js
 LocaleInfo.js
 Utils.js
+JSUtils.js
 Currency.js
 */
 
 var ilib = require("./ilib.js");
 var Utils = require("./Utils.js");
+var JSUtils = require("./JSUtils.js");
 
 var Locale = require("./Locale.js");
 var LocaleInfo = require("./LocaleInfo.js");
@@ -253,9 +255,7 @@ INumber.prototype = {
             digitMap[digits[i]] = String(i);
         }
         
-        return str.split("").map(function(ch) {
-            return digitMap[ch] || ch;
-        }).join("");
+        return JSUtils.mapString(str, digitMap);
     },
     
 	/**
