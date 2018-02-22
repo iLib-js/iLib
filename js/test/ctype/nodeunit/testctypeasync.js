@@ -354,7 +354,7 @@ module.exports.testctypeasync = {
             test.done();
         });
     },
-    
+
     testIsAlnum: function(test) {
         test.expect(11);
         isAlnum._init(false, undefined, function() {

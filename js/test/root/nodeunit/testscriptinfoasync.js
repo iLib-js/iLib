@@ -1,6 +1,6 @@
 /*
  * testscriptinfoasync.js - test the script info object
- * 
+ *
  * Copyright © 2018, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -134,5 +134,5 @@ module.exports.testscriptinfoasync = {
                 test.done();
             });
         });
-    }    
+    }
 };

@@ -1,6 +1,6 @@
 /*
  * testtimezoneasync.js - test the timezone objects asynchronously
- * 
+ *
  * Copyright © 2015,2017-2018, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -30,17 +30,17 @@ module.exports.testtimezoneasync = {
         test.expect(2);
         TimeZone.getAvailableIds(undefined, false, function(zones) {
             test.ok(typeof(zones) !== "undefined");
-            
+
             test.ok(zones.length > 0);
             test.done();
         });
     },
-    
+
     testTZAsyncGetAvailableIdsRightValues: function(test) {
         test.expect(6);
         TimeZone.getAvailableIds(undefined, false, function(zones) {
             test.ok(typeof(zones) !== "undefined");
-            
+
             //var util = require("util");
             //util.print("ilib._load is " + util.inspect(ilib._load) + "\n");
             test.contains(zones, "Europe/London");
@@ -51,32 +51,32 @@ module.exports.testtimezoneasync = {
             test.done();
         });
     },
-    
+
     testTZAsyncGetAvailableIdsNoFilterContainsLocal: function(test) {
         test.expect(2);
         TimeZone.getAvailableIds(undefined, false, function(zones) {
             test.ok(typeof(zones) !== "undefined");
-            
+
             test.ok(zones.indexOf("local") != -1);
             test.done();
         });
     },
-    
+
     testTZAsyncGetAvailableIdsByCountryRightLength: function(test) {
         test.expect(2);
         TimeZone.getAvailableIds("US", false, function(zones) {
             test.ok(typeof(zones) !== "undefined");
-            
+
             test.equal(zones.length, 48);
             test.done();
         });
     },
-    
+
     testTZAsyncGetAvailableIdsWithFilterContainsNoLocal: function(test) {
         try {
             TimeZone.getAvailableIds("US", false, function(zones) {
                 test.ok(typeof(zones) !== "undefined");
-                
+
                 test.ok(zones.indexOf("local") == -1);
             });
         } catch (e) {
@@ -84,12 +84,12 @@ module.exports.testtimezoneasync = {
         }
         test.done();
     },
-    
+
     testTZAsyncGetAvailableIdsByCountryRightContents: function(test) {
         test.expect(2);
         TimeZone.getAvailableIds("US", false, function(zones) {
             test.ok(typeof(zones) !== "undefined");
-            
+
             var expected = [
                 "America/New_York",
                 "America/Detroit",
@@ -140,32 +140,32 @@ module.exports.testtimezoneasync = {
                 "US/Mountain",
                 "US/Pacific"
             ];
-            
+
             test.equalIgnoringOrder(zones, expected);
             test.done();
         });
     },
-    
+
     testTZAsyncGetAvailableIdsByCountry2RightLength: function(test) {
         test.expect(2);
         var zones = TimeZone.getAvailableIds("SG", false, function(zones) {
             test.ok(typeof(zones) !== "undefined");
-            
+
             test.equal(zones.length, 2);
             test.done();
         });
     },
-    
+
     testTZAsyncGetAvailableIdsByCountry2RightContents: function(test) {
         test.expect(2);
         var zones = TimeZone.getAvailableIds("SG", false, function(zones) {
             test.ok(typeof(zones) !== "undefined");
-            
+
             var expected = [
                 "Asia/Singapore",
                 "Singapore"        // legacy tz
             ];
-            
+
             test.equalIgnoringOrder(zones, expected);
             test.done();
         });

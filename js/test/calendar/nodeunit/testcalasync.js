@@ -1,6 +1,6 @@
 /*
  * testcalasync.js - test the calendar objects asynchronously
- * 
+ *
  * Copyright © 2015,2017-2018, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -76,7 +76,7 @@ module.exports.testcalasync = {
             }
         });
     },
-    
+
     testCalendarFactoryAsyncSpecific: function(test) {
         test.expect(2);
         var cal = CalendarFactory({
@@ -84,13 +84,13 @@ module.exports.testcalasync = {
             sync: false,
             onLoad: function(cal) {
                 test.ok(typeof(cal) !== "undefined");
-                
+
                 test.equal(cal.getType(), "julian");
                 test.done();
             }
         });
     },
-    
+
     testCalendarFactoryAsyncUnknown: function(test) {
         test.expect(1);
         CalendarFactory({
@@ -102,7 +102,7 @@ module.exports.testcalasync = {
             }
         });
     },
-    
+
     testCalendarFactoryAsyncDefaultForLocale: function(test) {
         test.expect(2);
         CalendarFactory({
@@ -110,13 +110,13 @@ module.exports.testcalasync = {
             sync: false,
             onLoad: function(cal) {
                 test.ok(typeof(cal) !== "undefined");
-                
+
                 test.equal(cal.getType(), "persian");
                 test.done();
             }
         });
     },
-        
+
     testCalendarFactoryAsyncDefaultForLocaleOther: function(test) {
         test.expect(2);
         var cal = CalendarFactory({
@@ -124,28 +124,28 @@ module.exports.testcalasync = {
             sync: false,
             onLoad: function(cal) {
                 test.ok(typeof(cal) !== "undefined");
-                
+
                 test.equal(cal.getType(), "thaisolar");
                 test.done();
             }
         });
     },
-    
+
     testCalendarFactoryAsyncOverrideLocale: function(test) {
         test.expect(2);
         var cal = CalendarFactory({
-            locale: "fa-IR", 
+            locale: "fa-IR",
             type: "gregorian",
             sync: false,
             onLoad: function(cal) {
                 test.ok(typeof(cal) !== "undefined");
-                
+
                 test.equal(cal.getType(), "gregorian");
                 test.done();
             }
         });
     },
-    
+
     testCopticDateAsyncConstructorFull: function(test) {
         test.expect(8);
         new CopticDate({
@@ -160,7 +160,7 @@ module.exports.testcalasync = {
             sync: false,
             onLoad: function(cd) {
                 test.ok(cd !== null);
-                
+
                 test.equal(cd.getYears(), 1735);
                 test.equal(cd.getMonths(), 9);
                 test.equal(cd.getDays(), 23);
@@ -170,9 +170,9 @@ module.exports.testcalasync = {
                 test.equal(cd.getMilliseconds(), 123);
                 test.done();
             }
-        });    
+        });
     },
-    
+
     testEthiopicDateAsyncConstructorFull: function(test) {
         test.expect(8);
         new EthiopicDate({
@@ -187,7 +187,7 @@ module.exports.testcalasync = {
             sync: false,
             onLoad: function(ed) {
                 test.ok(ed !== null);
-                
+
                 test.equal(ed.getYears(), 2011);
                 test.equal(ed.getMonths(), 9);
                 test.equal(ed.getDays(), 23);
@@ -197,23 +197,23 @@ module.exports.testcalasync = {
                 test.equal(ed.getMilliseconds(), 123);
                 test.done();
             }
-        });    
+        });
     },
 
     testGregDateAsyncConstructorFull: function(test) {
         test.expect(8);
         new GregorianDate({
-            year: 2011, 
-            month: 9, 
-            day: 23, 
-            hour: 16, 
-            minute: 7, 
-            second: 12, 
+            year: 2011,
+            month: 9,
+            day: 23,
+            hour: 16,
+            minute: 7,
+            second: 12,
             millisecond: 123,
             sync: false,
             onLoad: function(gd) {
                 test.ok(gd !== null);
-                
+
                 test.equal(gd.getYears(), 2011);
                 test.equal(gd.getMonths(), 9);
                 test.equal(gd.getDays(), 23);
@@ -224,9 +224,9 @@ module.exports.testcalasync = {
                 test.done();
             }
         });
-        
+
     },
-    
+
     testHanDateAsyncConstructorFull: function(test) {
         test.expect(10);
         new HanDate({
@@ -241,7 +241,7 @@ module.exports.testcalasync = {
             sync: false,
             onLoad: function(hd) {
                 test.ok(hd !== null);
-                
+
                 test.equal(hd.getYears(), 4711);
                 test.equal(hd.getMonths(), 9);
                 test.equal(hd.getDays(), 23);
@@ -254,9 +254,9 @@ module.exports.testcalasync = {
                 test.done();
             }
         });
-        
+
     },
-    
+
     testHebrewDateAsyncConstructorFull: function(test) {
         test.expect(8);
         new HebrewDate({
@@ -271,7 +271,7 @@ module.exports.testcalasync = {
             sync: false,
             onLoad: function(hd) {
                 test.ok(hd !== null);
-                
+
                 test.equal(hd.getYears(), 2011);
                 test.equal(hd.getMonths(), 9);
                 test.equal(hd.getDays(), 23);
@@ -282,9 +282,9 @@ module.exports.testcalasync = {
                 test.done();
             }
         });
-        
+
     },
-    
+
     testIslamicDateAsyncConstructorFull: function(test) {
         test.expect(8);
         new IslamicDate({
@@ -299,7 +299,7 @@ module.exports.testcalasync = {
             sync: false,
             onLoad: function(id) {
                 test.ok(id !== null);
-                
+
                 test.equal(id.getYears(), 2011);
                 test.equal(id.getMonths(), 9);
                 test.equal(id.getDays(), 23);
@@ -310,9 +310,9 @@ module.exports.testcalasync = {
                 test.done();
             }
         });
-        
+
     },
-    
+
     testJulDateAsyncConstructorFull: function(test) {
         test.expect(8);
         new JulianDate({
@@ -327,7 +327,7 @@ module.exports.testcalasync = {
             sync: false,
             onLoad: function(jul) {
                 test.ok(jul !== null);
-                
+
                 test.equal(jul.getYears(), 2011);
                 test.equal(jul.getMonths(), 9);
                 test.equal(jul.getDays(), 23);
@@ -338,9 +338,9 @@ module.exports.testcalasync = {
                 test.done();
             }
         });
-        
+
     },
-    
+
     testPersAlgoDateAsyncConstructorFull: function(test) {
         test.expect(8);
         new PersianAlgoDate({
@@ -355,7 +355,7 @@ module.exports.testcalasync = {
             sync: false,
             onLoad: function(pd) {
                 test.ok(pd !== null);
-                
+
                 test.equal(pd.getYears(), 1392);
                 test.equal(pd.getMonths(), 9);
                 test.equal(pd.getDays(), 23);
@@ -366,9 +366,9 @@ module.exports.testcalasync = {
                 test.done();
             }
         });
-        
+
     },
-    
+
     testPersDateAstroAsyncConstructorFull: function(test) {
         test.expect(8);
         new PersianDate({
@@ -383,7 +383,7 @@ module.exports.testcalasync = {
             sync: false,
             onLoad: function(pd) {
                 test.ok(pd !== null);
-                
+
                 test.equal(pd.getYears(), 1392);
                 test.equal(pd.getMonths(), 9);
                 test.equal(pd.getDays(), 23);
@@ -394,24 +394,24 @@ module.exports.testcalasync = {
                 test.done();
             }
         });
-        
+
     },
-    
+
     testThaiSolarDateAsyncConstructorFull: function(test) {
         test.expect(8);
         new ThaiSolarDate({
-            year: 2553, 
-            month: 9, 
-            day: 23, 
-            hour: 16, 
-            minute: 7, 
-            second: 12, 
+            year: 2553,
+            month: 9,
+            day: 23,
+            hour: 16,
+            minute: 7,
+            second: 12,
             millisecond: 123,
             timezone: "Etc/UTC",
             sync: false,
             onLoad: function(td) {
                 test.ok(td !== null);
-                
+
                 test.equal(td.getYears(), 2553);
                 test.equal(td.getMonths(), 9);
                 test.equal(td.getDays(), 23);

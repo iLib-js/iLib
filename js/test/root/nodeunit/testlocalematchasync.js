@@ -34,7 +34,7 @@ module.exports.testlocalematchasync = {
                 test.ok(lm !== null);
                 test.done();
             }
-        });  
+        });
     },
 
     testLocaleMatcherAsyncGetLikelyLocaleByLanguage1: function(test) {
@@ -80,5 +80,5 @@ module.exports.testlocalematchasync = {
                 test.done();
             }
         });
-    }    
+    }
 };

@@ -1,6 +1,6 @@
 /*
  * testdurfmtasync.js - test the duration formatter object
- * 
+ *
  * Copyright © 2018, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -35,9 +35,9 @@ module.exports.testdurfmtasync = {
                 test.done();
             }
         });
-        
+
     },
-    
+
     testDurFmtAsyncGetLocale: function(test) {
         test.expect(2);
         new DurationFmt({
@@ -45,13 +45,13 @@ module.exports.testdurfmtasync = {
             sync: false,
             onLoad: function(fmt) {
                 test.ok(fmt !== null);
-                
+
                 test.equal(fmt.getLocale().toString(), "de-DE");
                 test.done();
             }
         });
     },
-    
+
     testDurFmtAsyncGetLocaleBogus: function(test) {
         test.expect(2);
         new DurationFmt({
@@ -59,13 +59,13 @@ module.exports.testdurfmtasync = {
             sync: false,
             onLoad: function(fmt) {
                 test.ok(fmt !== null);
-                
+
                 test.equal(fmt.getLocale().toString(), "zyy-XX");
                 test.done();
             }
         });
     },
-    
+
     testDurFmtAsyncFormatShortText: function(test) {
         test.expect(2);
         new DurationFmt({
@@ -73,7 +73,7 @@ module.exports.testdurfmtasync = {
             sync: false,
             onLoad: function(fmt) {
                 test.ok(fmt !== null);
-                
+
                 var duration = fmt.format({
                     year: 1,
                     month: 1,
@@ -89,7 +89,7 @@ module.exports.testdurfmtasync = {
             }
         });
     },
-    
+
     testDurFmtAsyncFormatLongSingle: function(test) {
         test.expect(2);
         new DurationFmt({
@@ -97,7 +97,7 @@ module.exports.testdurfmtasync = {
             sync: false,
             onLoad: function(fmt) {
                 test.ok(fmt !== null);
-                
+
                 var duration = fmt.format({
                     year: 1,
                     month: 1,
@@ -113,7 +113,7 @@ module.exports.testdurfmtasync = {
             }
         });
     },
-    
+
     testDurFmtAsyncFormatFullPlural: function(test) {
         test.expect(2);
         new DurationFmt({
@@ -121,7 +121,7 @@ module.exports.testdurfmtasync = {
             sync: false,
             onLoad: function(fmt) {
                 test.ok(fmt !== null);
-                
+
                 var duration = fmt.format({
                     year: 2,
                     month: 2,
@@ -131,13 +131,13 @@ module.exports.testdurfmtasync = {
                     minute: 2,
                     second: 2,
                     millisecond: 2
-                }); 
+                });
                 test.equal(duration.toString(), "2 years, 2 months, 2 weeks, 2 days, 2 hours, 2 minutes, 2 seconds, 2 milliseconds");
                 test.done();
             }
         });
     },
-    
+
     testDurFmtAsyncFormatShortDEDefaultStyle: function(test) {
         test.expect(2);
         new DurationFmt({
@@ -161,7 +161,7 @@ module.exports.testdurfmtasync = {
             }
         });
     },
-    
+
     testDurFmtAsyncFormatFullDESingle: function(test) {
         test.expect(2);
         new DurationFmt({
@@ -170,7 +170,7 @@ module.exports.testdurfmtasync = {
             sync: false,
             onLoad: function(fmt) {
                 test.ok(fmt !== null);
-                
+
                 var duration = fmt.format({
                     year: 1,
                     month: 1,
@@ -186,7 +186,7 @@ module.exports.testdurfmtasync = {
             }
         });
     },
-    
+
     testDurFmtAsyncFormatShortZHText: function(test) {
         test.expect(2);
         new DurationFmt({
@@ -196,7 +196,7 @@ module.exports.testdurfmtasync = {
             sync: false,
             onLoad: function(fmt) {
                 test.ok(fmt !== null);
-                
+
                 var duration = fmt.format({
                     year: 1,
                     month: 1,
@@ -212,7 +212,7 @@ module.exports.testdurfmtasync = {
             }
         });
     },
-    
+
     testDurFmtAsyncFormatShortZHClock: function(test) {
         test.expect(2);
         new DurationFmt({
@@ -222,7 +222,7 @@ module.exports.testdurfmtasync = {
             sync: false,
             onLoad: function(fmt) {
                 test.ok(fmt !== null);
-                
+
                 var duration = fmt.format({
                     year: 1,
                     month: 1,
@@ -238,7 +238,7 @@ module.exports.testdurfmtasync = {
             }
         });
     },
-        
+
     testDurFmtAsyncFormatFullZH: function(test) {
         test.expect(2);
         new DurationFmt({
@@ -247,7 +247,7 @@ module.exports.testdurfmtasync = {
             sync: false,
             onLoad: function(fmt) {
                 test.ok(fmt !== null);
-                
+
                 var duration = fmt.format({
                     year: 1,
                     month: 1,

@@ -1,6 +1,6 @@
 /*
  * testimsiasync.js - Test the parseImsi() function.
- * 
+ *
  * Copyright © 2018, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -33,7 +33,7 @@ module.exports.imsiasync = {
             mnc: "030",
             msin: "14084567890"
         };
-    
+
         PhoneNumber.parseImsi(imsi, {
             sync: false,
             onLoad: function(actual) {
@@ -42,7 +42,7 @@ module.exports.imsiasync = {
             }
         })
     },
-    
+
     testSpecialImsi1: function(test) {
         test.expect(1);
         var imsi = "31000201234567"
@@ -51,7 +51,7 @@ module.exports.imsiasync = {
             mnc: "00",
             msin: "201234567"
         };
-        
+
         PhoneNumber.parseImsi(imsi, {
             sync: false,
             onLoad: function(actual) {
@@ -60,7 +60,7 @@ module.exports.imsiasync = {
             }
         });
     },
-    
+
     testBrokenMCC: function(test) {
         test.expect(1);
         var imsi = "32000414084567890"
@@ -69,7 +69,7 @@ module.exports.imsiasync = {
             mnc: "004",
             msin: "14084567890"
         };
-        
+
         // should default to a 3 digit mnc
         PhoneNumber.parseImsi(imsi, {
             sync: false,
@@ -79,7 +79,7 @@ module.exports.imsiasync = {
             }
         });
     },
-    
+
     testBrokenMNC: function(test) {
         test.expect(1);
         var imsi = "31014114084567890"
@@ -88,7 +88,7 @@ module.exports.imsiasync = {
             mnc: "141",
             msin: "14084567890"
         };
-        
+
         // should default to a 3 digit mnc
         PhoneNumber.parseImsi(imsi, {
             sync: false,
@@ -98,7 +98,7 @@ module.exports.imsiasync = {
             }
         });
     },
-    
+
     testTooShort: function(test) {
         test.expect(1);
         var imsi = "31";
@@ -110,7 +110,7 @@ module.exports.imsiasync = {
             }
         });
     },
-    
+
     testUndefined: function(test) {
         test.expect(1);
         PhoneNumber.parseImsi(undefined, {
@@ -120,5 +120,5 @@ module.exports.imsiasync = {
                 test.done();
             }
         });
-    }    
+    }
 };

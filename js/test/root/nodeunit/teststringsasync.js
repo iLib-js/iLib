@@ -39,7 +39,7 @@ module.exports.teststringsasync = {
             test.ok(str !== null);
             test.done();
         })
-    },    
+    },
 
     testStringSetLocale: function(test) {
         test.expect(2);
@@ -74,7 +74,7 @@ module.exports.teststringsasync = {
             test.done();
         });
     },
-    
+
     testStringFormatChoiceSimpleRussianTwice: function(test) {
         test.expect(4);
         var str = new IString("1#first string|few#second string|many#third string");
@@ -83,7 +83,7 @@ module.exports.teststringsasync = {
 
             test.equal(str.formatChoice(5), "third string");
             str = new IString("1#single|few#few|many#many");
-            
+
             // Russian rules should already be loaded. Need to make sure
             // the callback is still called anyways
             str.setLocale("ru-RU", false, undefined, function() {

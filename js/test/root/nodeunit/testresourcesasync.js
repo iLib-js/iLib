@@ -1,6 +1,6 @@
 /*
  * testresourcesasync.js - test the Resources object
- * 
+ *
  * Copyright © 2018, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -67,16 +67,16 @@ module.exports.testresourcesasync = {
             test.done();
             return;
         }
-        
+
         test.expect(4);
-        
+
         // clear this to be sure it is actually loading something
         ilib.data.tester = undefined;
         ilib.data.tester_es = undefined;
         ilib.data.tester_es_MX = undefined;
-        
+
         var base = path.relative(process.cwd(), path.resolve(__dirname, "../test/resources"));
-        
+
         new ResBundle({
             locale: "es-MX",
             sync: false,
@@ -93,7 +93,7 @@ module.exports.testresourcesasync = {
             }
         });
 
-    }, 
+    },
 
     testResBundleAsyncGetStringOtherBundlePsuedoRaw: function(test) {
         test.expect(4);

@@ -1,6 +1,6 @@
 /*
  * testphonenumasync.js - test phonenumber class
- * 
+ *
  * Copyright © 2018, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -35,7 +35,7 @@ module.exports.phonenumasync = {
             sync: false,
             onLoad: function(parsed) {
                 test.ok(typeof(parsed) !== "undefined");
-                
+
                 new PhoneNumber({
                     trunkAccess: "0",
                     areaCode: "8",
@@ -59,7 +59,7 @@ module.exports.phonenumasync = {
             sync: false,
             onLoad: function(parsed) {
                 test.ok(typeof(parsed) !== "undefined");
-                
+
                 new PhoneNumber({
                     iddPrefix: "+",
                     countryCode: "852",
@@ -83,7 +83,7 @@ module.exports.phonenumasync = {
             sync: false,
             onLoad: function(parsed) {
                 test.ok(typeof(parsed) !== "undefined");
-                
+
                 new PhoneNumber({
                     areaCode: "456",
                     subscriberNumber: "3453434"
@@ -106,7 +106,7 @@ module.exports.phonenumasync = {
             sync: false,
             onLoad: function(parsed) {
                 test.ok(typeof(parsed) !== "undefined");
-                
+
                 new PhoneNumber({
                     trunkAccess: "0",
                     areaCode: "33",
@@ -130,7 +130,7 @@ module.exports.phonenumasync = {
             sync: false,
             onLoad: function(parsed) {
                 test.ok(typeof(parsed) !== "undefined");
-                
+
                 new PhoneNumber({
                     areaCode: "624",
                     subscriberNumber: "1234567"
@@ -145,7 +145,7 @@ module.exports.phonenumasync = {
             }
         });
     },
-    
+
     testPhoneParseAsyncUndefined: function(test) {
         test.expect(1);
         new PhoneNumber(undefined, {

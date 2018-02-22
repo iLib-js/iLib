@@ -1,6 +1,6 @@
 /*
  * testphonefmtasync.js - Test the phonefmt
- * 
+ *
  * Copyright © 2018, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -55,7 +55,7 @@ module.exports.phonefmtasync = {
             }
         });
     },
-    
+
     testFormatAsyncUSPlusIDDtoUnknownCountry: function(test) {
         test.expect(1);
         var formatted;
@@ -73,7 +73,7 @@ module.exports.phonefmtasync = {
                     sync: false,
                     onLoad: function(fmt) {
                         var expected = "+506 87654321";    // use last resort rule for subscriber number
-                        
+
                         fmt.format(parsed, {
                             sync: false,
                             onLoad: function(formatted) {
@@ -86,7 +86,7 @@ module.exports.phonefmtasync = {
             }
         });
     },
-    
+
     testFormatAsyncUSStyle0Emergency: function(test) {
         test.expect(1);
         var formatted;
@@ -97,12 +97,12 @@ module.exports.phonefmtasync = {
             onLoad: function(parsed) {
                 // default to US format
                 new PhoneFmt({
-                    locale: "en-US", 
+                    locale: "en-US",
                     style: "default",
                     sync: false,
                     onLoad: function(fmt) {
                         var expected = "911 ";
-                        
+
                         fmt.format(parsed, {
                             sync: false,
                             onLoad: function(formatted) {
@@ -115,7 +115,7 @@ module.exports.phonefmtasync = {
             }
         });
     },
-    
+
     testFormatAsyncUSNumberWithFRMCC: function(test) {
         test.expect(1);
         var formatted;
@@ -128,13 +128,13 @@ module.exports.phonefmtasync = {
             onLoad: function(parsed) {
                 // default to US format
                 new PhoneFmt({
-                    locale: "en-US", 
-                    style: "default", 
+                    locale: "en-US",
+                    style: "default",
                     mcc: "208",
                     sync: false,
                     onLoad: function(fmt) {
                         var expected = "06 15 98 76 54";
-                        
+
                         fmt.format(parsed, {
                             sync: false,
                             onLoad: function(formatted) {
@@ -147,7 +147,7 @@ module.exports.phonefmtasync = {
             }
         });
     },
-    
+
     testFormatAsyncWithParamsFormatUSInternational: function(test) {
         test.expect(1);
         var formatted;
@@ -161,11 +161,11 @@ module.exports.phonefmtasync = {
             sync: false,
             onLoad: function(parsed) {
                 new PhoneFmt({
-                    locale: "en-US", 
+                    locale: "en-US",
                     sync: false,
                     onLoad: function(fmt) {
                         var expected = "+33 1 12 34 56 78";
-                        
+
                         fmt.format(parsed, {
                             sync: false,
                             onLoad: function(formatted) {
@@ -178,7 +178,7 @@ module.exports.phonefmtasync = {
             }
         });
     },
-    
+
     testFormatAsyncGBLongAreaCode: function(test) {
         test.expect(1);
         var formatted;
@@ -187,16 +187,16 @@ module.exports.phonefmtasync = {
                 areaCode: "17684",
                 subscriberNumber: "12345"
         }, {
-            locale: "en-GB", 
+            locale: "en-GB",
             sync: false,
             onLoad: function(parsed) {
                 new PhoneFmt({
-                    locale: "en-GB", 
-                    style: "default", 
+                    locale: "en-GB",
+                    style: "default",
                     sync: false,
                     onLoad: function(fmt) {
                         var expected = "(0176 84) 12345";
-                        
+
                         fmt.format(parsed, {
                             sync: false,
                             onLoad: function(formatted) {
@@ -208,8 +208,8 @@ module.exports.phonefmtasync = {
                 });
             }
         });
-        
-        
+
+
     },
 
     testFormatAsyncDEStyle1: function(test) {
@@ -220,11 +220,11 @@ module.exports.phonefmtasync = {
                 areaCode: "6224",
                 subscriberNumber: "1234567"
         }, {
-            locale: "de-DE", 
+            locale: "de-DE",
             sync: false,
             onLoad: function(parsed) {
                 new PhoneFmt({
-                    locale: "de-DE", 
+                    locale: "de-DE",
                     style: "alten",
                     sync: false,
                     onLoad: function(fmt) {
@@ -242,7 +242,7 @@ module.exports.phonefmtasync = {
             }
         });
     },
-    
+
     testFormatAsyncJPStyle1: function(test) {
         test.expect(1);
         var formatted;
@@ -256,7 +256,7 @@ module.exports.phonefmtasync = {
                     sync: false,
                     onLoad: function(fmt) {
                         var expected = "06-6879-5111";
-                        
+
                         fmt.format(parsed, {
                             sync: false,
                             onLoad: function(formatted) {
@@ -264,7 +264,7 @@ module.exports.phonefmtasync = {
                                 test.done();
                             }
                         });
-                        
+
                     }
                 });
             }

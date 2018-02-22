@@ -1,6 +1,6 @@
 /*
  * testnumplanasync.js - Test the phone numbering plan.
- * 
+ *
  * Copyright © 2018, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -37,7 +37,7 @@ module.exports.numplanasync = {
             }
         });
     },
-    
+
     testNumberingPlanAsync2: function(test) {
         test.expect(2);
         new NumberingPlan({
@@ -50,7 +50,7 @@ module.exports.numplanasync = {
             }
         });
     },
-    
+
     testNumberingPlanAsyncUnknown: function(test) {
         test.expect(2);
         new NumberingPlan({
@@ -63,7 +63,7 @@ module.exports.numplanasync = {
             }
         });
     },
-    
+
     testNumberingPlanAsyncUnrecognized: function(test) {
         test.expect(2);
         new NumberingPlan({

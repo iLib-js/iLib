@@ -1,6 +1,6 @@
 /*
  * testphonegeoasync.js - Test the GeoLocator Object.
- * 
+ *
  * Copyright © 2018, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -54,9 +54,9 @@ module.exports.phonegeoasync = {
                             }
                         };
                         test.ok(typeof(locator) !== "undefined");
-                        
+
                         var geoInfo = locator.locate(parsed);
-                        
+
                         test.equal(geoInfo.country.code, expected.country.code);
                         test.equal(geoInfo.country.sn, expected.country.sn);
                         test.equal(geoInfo.country.ln, expected.country.ln);
@@ -68,7 +68,7 @@ module.exports.phonegeoasync = {
             }
         });
     },
-        
+
     testPhoneGeoAsyncNANPOtherLocale: function(test) {
         test.expect(6);
         new PhoneNumber("+1 650 654 3210", {
@@ -89,10 +89,10 @@ module.exports.phonegeoasync = {
                                 ln: "Californie centrale : San Mateo, Palo Alto, Redwood City, Menlo Park, Mountain View, banlieues du sud de San Francisco"
                             }
                         };
-                        
+
                         test.ok(typeof(locator) !== "undefined");
                         var geoInfo = locator.locate(parsed);
-                        
+
                         test.equal(geoInfo.country.code, expected.country.code);
                         test.equal(geoInfo.country.sn, expected.country.sn);
                         test.equal(geoInfo.country.ln, expected.country.ln);
@@ -102,9 +102,9 @@ module.exports.phonegeoasync = {
                     }
                 });
             }
-        });     
+        });
     },
-        
+
     //for bug NOV-118981
     testPhoneGeoAsyncNANPInvalidNumber: function(test) {
         test.expect(6);
@@ -126,10 +126,10 @@ module.exports.phonegeoasync = {
                                 ln: "Ohio"
                             }
                         };
-                        
+
                         test.ok(typeof(locator) !== "undefined");
                         var geoInfo = locator.locate(parsed);
-                        
+
                         test.equal(geoInfo.country.code, expected.country.code);
                         test.equal(geoInfo.country.sn, expected.country.sn);
                         test.equal(geoInfo.country.ln, expected.country.ln);
@@ -140,9 +140,9 @@ module.exports.phonegeoasync = {
                 });
             }
         });
-        
+
     },
-    
+
     testPhoneGeoAsyncDefaultDE: function(test) {
         test.expect(6);
         new PhoneNumber("06224 123456", {
@@ -164,10 +164,10 @@ module.exports.phonegeoasync = {
                                 ln: "Leimen, Nußloch, Sandhausen"
                             }
                         };
-                        
+
                         test.ok(typeof(locator) !== "undefined");
                         var geoInfo = locator.locate(parsed);
-                        
+
                         test.equal(geoInfo.country.code, expected.country.code);
                         test.equal(geoInfo.country.sn, expected.country.sn);
                         test.equal(geoInfo.country.ln, expected.country.ln);
@@ -179,7 +179,7 @@ module.exports.phonegeoasync = {
             }
         });
     },
-    
+
     testPhoneGeoAsyncDEMobileNumber: function(test) {
         test.expect(6);
         new PhoneNumber("017 12345678", {
@@ -201,10 +201,10 @@ module.exports.phonegeoasync = {
                                 ln: "Handynummer"
                             }
                         };
-                        
+
                         test.ok(typeof(locator) !== "undefined");
                         var geoInfo = locator.locate(parsed);
-                        
+
                         test.equal(geoInfo.country.code, expected.country.code);
                         test.equal(geoInfo.country.sn, expected.country.sn);
                         test.equal(geoInfo.country.ln, expected.country.ln);
@@ -216,7 +216,7 @@ module.exports.phonegeoasync = {
             }
         });
     },
-        
+
     testPhoneGeoAsyncDefaultHK: function(test) {
         test.expect(6);
         new PhoneNumber("0663 12345678", {
@@ -224,7 +224,7 @@ module.exports.phonegeoasync = {
             sync: false,
             onLoad: function(parsed) {
                 new PhoneGeoLocator({
-                    locale: 'zh-HK', 
+                    locale: 'zh-HK',
                     mcc: "460",
                     sync: false,
                     onLoad: function(locator) {
@@ -239,11 +239,11 @@ module.exports.phonegeoasync = {
                                 ln: "揭阳市"
                             }
                         };
-                        
+
                         // give the prc mcc number so that this gives the right geo location
                         test.ok(typeof(locator) !== "undefined");
                         var geoInfo = locator.locate(parsed);
-                        
+
                         test.equal(geoInfo.country.code, expected.country.code);
                         test.equal(geoInfo.country.sn, expected.country.sn);
                         test.equal(geoInfo.country.ln, expected.country.ln);

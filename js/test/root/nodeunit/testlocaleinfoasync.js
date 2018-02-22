@@ -130,5 +130,5 @@ module.exports.testlocaleinfoasync = {
                 test.done();
             }
         });
-    }    
+    }
 };

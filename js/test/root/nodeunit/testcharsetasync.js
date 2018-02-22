@@ -47,7 +47,7 @@ module.exports.testcharsetasync = {
                     name: "KOI8-R",
                     sync: false,
                     onLoad: function(cs) {
-                        test.equal(cs.getName(), "KOI8-R"); 
+                        test.equal(cs.getName(), "KOI8-R");
                         test.done();
                     }
                 });

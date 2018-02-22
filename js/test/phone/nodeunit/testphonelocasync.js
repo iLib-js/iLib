@@ -1,6 +1,6 @@
 /*
  * testphonelocasync.js - Test the phoneloc class.
- * 
+ *
  * Copyright © 2018, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -37,7 +37,7 @@ module.exports.phonelocasync = {
             }
         });
     },
-    
+
     testPhoneLocAsyncMCCUnknownMCC: function(test) {
         test.expect(2);
         new PhoneLocale({
@@ -50,7 +50,7 @@ module.exports.phonelocasync = {
             }
         });
     },
-    
+
     testPhoneLocAsyncCC1: function(test) {
         test.expect(2);
         new PhoneLocale({
@@ -63,7 +63,7 @@ module.exports.phonelocasync = {
             }
         });
     },
-    
+
     testPhoneLocAsyncCC1: function(test) {
         test.expect(2);
         new PhoneLocale({
@@ -71,12 +71,12 @@ module.exports.phonelocasync = {
             sync: false,
             onLoad: function(loc) {
                 test.ok(typeof(loc) !== "undefined");
-                test.equal(loc.getRegion(), "GB");    
+                test.equal(loc.getRegion(), "GB");
                 test.done();
             }
         });
     },
-    
+
     testPhoneLocAsyncCCUnknownCC: function(test) {
         test.expect(2);
         new PhoneLocale({
@@ -89,7 +89,7 @@ module.exports.phonelocasync = {
             }
         });
     },
-    
+
     testPhoneLocAsyncLocaleUS: function(test) {
         test.expect(2);
         new PhoneLocale({
@@ -102,31 +102,31 @@ module.exports.phonelocasync = {
             }
         });
     },
-    
+
     testPhoneLocAsyncLocaleDE: function(test) {
         test.expect(2);
         new PhoneLocale({locale: "de-DE",
             sync: false,
             onLoad: function(loc) {
                 test.ok(typeof(loc) !== "undefined");
-                test.equal(loc.getRegion(), "DE");    
+                test.equal(loc.getRegion(), "DE");
                 test.done();
             }
         });
     },
-    
+
     testPhoneLocAsyncDefault: function(test) {
         test.expect(2);
         new PhoneLocale({
             sync: false,
             onLoad: function(loc) {
                 test.ok(typeof(loc) !== "undefined");
-                test.equal(loc.region, "US");    
+                test.equal(loc.region, "US");
                 test.done();
             }
         });
     },
-    
+
     testPhoneLocAsyncDefaultEmpty: function(test) {
         test.expect(2);
         new PhoneLocale({

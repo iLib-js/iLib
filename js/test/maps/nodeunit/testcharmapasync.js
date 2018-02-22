@@ -1,6 +1,6 @@
 /*
  * testcharmapasync.js - Test the charset mapping routines
- * 
+ *
  * Copyright © 2018, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -36,7 +36,7 @@ module.exports.testcharmapasync = {
             }
         });
     },
-    
+
     testCharmapAsyncLoadMap: function(test) {
         test.expect(3);
         var cm = CharmapFactory({
@@ -50,7 +50,7 @@ module.exports.testcharmapasync = {
             }
         });
     },
-    
+
     testCharmapAsyncAlias: function(test) {
         test.expect(3);
         var cm = CharmapFactory({
@@ -64,7 +64,7 @@ module.exports.testcharmapasync = {
             }
         });
     },
-    
+
     testCharmapAsyncLoadAlgorithmic: function(test) {
         test.expect(3);
         var cm = CharmapFactory({
@@ -78,7 +78,7 @@ module.exports.testcharmapasync = {
             }
         });
     },
-    
+
     testCharmapAsyncUTF8MapToUnicodeUint8ArrayExtended3: function(test) {
         test.expect(2);
         var cm = CharmapFactory({
@@ -94,20 +94,20 @@ module.exports.testcharmapasync = {
                     0xe5, 0x9c, 0x82,
                     0xe5, 0x9c, 0x83
                 ]);
-                
+
                 test.equal(cm.mapToUnicode(input), "一丁丂圁圂圃");
                 test.done();
             }
         });
     },
-    
+
     testCharmapAsyncCNMapToUnicode: function(test) {
         var big5source = [
             0xa4, 0xb1, // 仃
             0xa4, 0x48, // 人
             0xae, 0x49, // 埋
             0xaa, 0x42, // 朋
-            0xae, 0x54  // 娛 
+            0xae, 0x54  // 娛
         ];
 
         CharmapFactory({
@@ -120,14 +120,14 @@ module.exports.testcharmapasync = {
             }
         });
     },
-    
+
     testCharmapAsyncCNMapToNative: function(test) {
         var big5source = [
             0xa4, 0xb1, // 仃
             0xa4, 0x48, // 人
             0xae, 0x49, // 埋
             0xaa, 0x42, // 朋
-            0xae, 0x54  // 娛 
+            0xae, 0x54  // 娛
         ];
 
         CharmapFactory({

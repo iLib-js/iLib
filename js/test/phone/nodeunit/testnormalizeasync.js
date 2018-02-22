@@ -1,6 +1,6 @@
 /*
  * testnormalizeasync.js - test phonenumber normalize function()
- * 
+ *
  * Copyright © 2018, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -50,7 +50,7 @@ module.exports.normalizeasync = {
             }
         });
     },
-    
+
     testNormalizeAsyncLDNumberUsingDEMCC: function(test) {
         test.expect(1);
         new PhoneNumber("02302 654321", {
@@ -63,7 +63,7 @@ module.exports.normalizeasync = {
                     sync: false,
                     onLoad: function(normalized) {
                         var expected = "+492302654321";
-                        
+
                         test.equal(normalized, expected); // 'de-DE'
                         test.done();
                     }
@@ -71,7 +71,7 @@ module.exports.normalizeasync = {
             }
         });
     },
-    
+
     testNormalizeAsyncLDNumberUsingUSSpanishLocale: function(test) {
         test.expect(1);
         new PhoneNumber("650 7654321", {
@@ -83,12 +83,12 @@ module.exports.normalizeasync = {
                     sync: false,
                     onLoad: function(normalized) {
                         var expected = "+16507654321";
-                        
+
                         test.equal(normalized, expected); // 'es-US'
                         test.done();
                     }
                 });
             }
         });
-    }    
+    }
 };

@@ -1,6 +1,6 @@
 /*
  * testnamefmtasync.js - test the name formatter object
- * 
+ *
  * Copyright © 2018, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -38,9 +38,9 @@ module.exports.testnamefmtasync = {
                 test.done();
             }
         });
-        
+
     },
-    
+
     testNameFmtAsyncGetBogus: function(test) {
         test.expect(1);
         new NameFmt({
@@ -51,9 +51,9 @@ module.exports.testnamefmtasync = {
                 test.done();
             }
         });
-        
+
     },
-    
+
     testNameFmtAsyncENFull: function(test) {
         test.expect(1);
         new Name({
@@ -73,11 +73,11 @@ module.exports.testnamefmtasync = {
                         test.done();
                     }
                 });
-                
+
             }
         });
     },
-    
+
     testNameFmtAsyncDEFull: function(test) {
         test.expect(1);
         new Name({
@@ -122,7 +122,7 @@ module.exports.testnamefmtasync = {
                         test.done();
                     }
                 });
-                
+
             }
         });
     },
@@ -146,7 +146,7 @@ module.exports.testnamefmtasync = {
                         test.done();
                     }
                 });
-                
+
             }
         });
     }

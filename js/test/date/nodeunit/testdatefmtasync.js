@@ -1,6 +1,6 @@
 /*
  * testdatefmtasync.js - test the date formatter object asynchronously
- * 
+ *
  * Copyright © 2018, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -56,7 +56,7 @@ module.exports.testdatefmtasync = {
             }
         });
     },
-    
+
     testDateFmtGetCalendarExplicit: function(test) {
         test.expect(3);
         new DateFmt({
@@ -66,16 +66,16 @@ module.exports.testdatefmtasync = {
                 test.ok(fmt !== null);
                 var cal = fmt.getCalendar();
                 test.ok(cal !== null);
-                
+
                 test.equal(cal, "julian");
                 test.done();
             }
         });
     },
-    
+
     testDateFmtGetCalendarNotInThisLocale: function(test) {
         new DateFmt({
-            calendar: "arabic", 
+            calendar: "arabic",
             locale: 'en-US',
             sync: false,
             onLoad: function(fmt) {
@@ -85,7 +85,7 @@ module.exports.testdatefmtasync = {
             }
         });
     },
-    
+
     testDateFmtGetTimeZoneDefault: function(test) {
         test.expect(2);
         ilib.tz = undefined;    // just in case
@@ -97,13 +97,13 @@ module.exports.testdatefmtasync = {
             sync: false,
             onLoad: function(fmt) {
                 test.ok(fmt !== null);
-                
+
                 test.equal(fmt.getTimeZone().getId(), "local");
                 test.done();
             }
         });
     },
-    
+
     testDateFmtGetTimeZone: function(test) {
         test.expect(2);
         new DateFmt({
@@ -111,43 +111,43 @@ module.exports.testdatefmtasync = {
             sync: false,
             onLoad: function(fmt) {
                 test.ok(fmt !== null);
-                
+
                 test.equal(fmt.getTimeZone().getId(), "Europe/Paris");
                 test.done();
             }
         });
     },
-    
+
     testDateFmtUseTemplateNonEmptyCalendar: function(test) {
         test.expect(2);
         new DateFmt({
-            calendar: 'julian', 
+            calendar: 'julian',
             template: "EEE 'the' DD 'of' MM, yyyy G",
             sync: false,
             onLoad: function(fmt) {
                 test.ok(fmt !== null);
-                
+
                 test.equal(fmt.getCalendar(), "julian");
                 test.done();
             }
         });
     },
-    
+
     testDateFmtUseTemplateNonEmptyLocale: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
-            locale: 'de-DE', 
+            locale: 'de-DE',
             template: "EEE 'the' DD 'of' MM, yyyy G",
             sync: false,
             onLoad: function(fmt) {
                 test.ok(fmt !== null);
-                
+
                 test.equal(fmt.getLocale().toString(), "de-DE");
                 test.done();
             }
         });
     },
-    
+
     testDateFmtFormatJSDate1: function(test) {
         test.expect(2);
         new DateFmt({
@@ -157,8 +157,8 @@ module.exports.testdatefmtasync = {
             sync: false,
             onLoad: function(fmt) {
                 test.ok(fmt !== null);
-                
-                // test formatting a javascript date. It should be converted to 
+
+                // test formatting a javascript date. It should be converted to
                 // an ilib date object automatically and then formatted
                 var datMyBday = new Date("Fri Aug 13 1982 13:37:35 GMT-0700");
                 test.equal(fmt.format(datMyBday), "1:37 PM");
@@ -166,7 +166,7 @@ module.exports.testdatefmtasync = {
             }
         });
     },
-    
+
     testDateFmtFormatJSDateRightTimeZone1: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
@@ -177,8 +177,8 @@ module.exports.testdatefmtasync = {
             sync: false,
             onLoad: function(fmt) {
                 test.ok(fmt !== null);
-                
-                // test formatting a javascript date. It should be converted to 
+
+                // test formatting a javascript date. It should be converted to
                 // an ilib date object automatically and then formatted
                 var datMyBday = new Date("Wed May 14 2014 23:37:35 GMT-0700");
                 test.equal(fmt.format(datMyBday), "Wednesday");
@@ -186,7 +186,7 @@ module.exports.testdatefmtasync = {
             }
         });
     },
-    
+
     testDateFmtGetMonthsOfYearThai: function(test) {
         test.expect(2);
         // uses ThaiSolar calendar
@@ -195,16 +195,16 @@ module.exports.testdatefmtasync = {
             sync: false,
             onLoad: function(fmt) {
                 test.ok(fmt !== null);
-                
+
                 var arrMonths = fmt.getMonthsOfYear({length: "long"});
-                
+
                 var expected = [undefined, "ม.ค.", "ก.พ.", "มี.ค.", "เม.ย.", "พ.ค.", "มิ.ย.", "ก.ค.", "ส.ค.", "ก.ย.", "ต.ค.", "พ.ย.", "ธ.ค."];
                 test.deepEqual(arrMonths, expected);
                 test.done();
             }
         });
     },
-    
+
     testDateFmtFormatRelativeWithinMinuteAfter: function(test) {
         test.expect(1);
         new DateFmt({
@@ -240,7 +240,7 @@ module.exports.testdatefmtasync = {
             }
         });
     },
-    
+
     testDateFmtConvertToGMT: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
@@ -252,7 +252,7 @@ module.exports.testdatefmtasync = {
             sync: false,
             onLoad: function(fmt) {
                 test.ok(fmt !== null);
-                
+
                 new GregorianDate({
                     year: 2011,
                     month: 9,
@@ -272,7 +272,7 @@ module.exports.testdatefmtasync = {
             }
         });
     },
-    
+
     testDateFmtConvertToOtherTimeZone: function(test) {
         test.expect(2);
         new DateFmt({
@@ -284,7 +284,7 @@ module.exports.testdatefmtasync = {
             sync: false,
             onLoad: function(fmt) {
                 test.ok(fmt !== null);
-                
+
                 new GregorianDate({
                     year: 2011,
                     month: 9,
@@ -301,7 +301,7 @@ module.exports.testdatefmtasync = {
                         test.done();
                     }
                 });
-                
+
             }
         });
     }

@@ -1,6 +1,6 @@
 /*
  * testnameasync.js - test the name object
- * 
+ *
  * Copyright © 2018, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -36,7 +36,7 @@ module.exports.testnameasync = {
             }
         });
     },
-    
+
     testNameAsyncCopyConstructor: function(test) {
         test.expect(2);
         new Name({
@@ -50,13 +50,13 @@ module.exports.testnameasync = {
             sync: false,
             onLoad: function(name) {
                 test.ok(typeof(name) !== "undefined");
-                
+
                 test.contains(name, { prefix: "a", givenName: "b", middleName: "c", familyName: "d", suffix: "e", honorific: "x"});
                 test.done();
             }
         });
     },
-    
+
     testNameAsyncDEWithMultiplePrefixes: function(test) {
         test.expect(2);
         new Name("Herr Dr. Josef Hans Jürgen Herzheim", {
@@ -64,13 +64,13 @@ module.exports.testnameasync = {
             sync: false,
             onLoad: function(name) {
                 test.ok(typeof(name) !== "undefined");
-                
+
                 test.contains(name, { prefix: "Herr Dr.", givenName: "Josef", middleName: "Hans Jürgen", familyName: "Herzheim" });
                 test.done();
             }
         });
     },
-    
+
     testNameAsyncESFull: function(test) {
         test.expect(2);
         new Name("Juan Carlos Maria León Arroyo", {
@@ -78,13 +78,13 @@ module.exports.testnameasync = {
             sync: false,
             onLoad: function(name) {
                 test.ok(typeof(name) !== "undefined");
-                
+
                 test.contains(name, { givenName: "Juan", middleName: "Carlos Maria", familyName: "León Arroyo" });
                 test.done();
             }
         });
     },
-    
+
     testNameAsyncZHHonorific: function(test) {
         test.expect(2);
         new Name("堂哥胡锦涛", {
@@ -92,7 +92,7 @@ module.exports.testnameasync = {
             sync: false,
             onLoad: function(name) {
                 test.ok(typeof(name) !== "undefined");
-                
+
                 test.contains(name, { prefix: "堂哥", givenName: "锦涛", familyName: "胡" });
                 test.done();
             }
