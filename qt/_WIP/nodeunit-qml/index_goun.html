@@ -11,13 +11,15 @@
     <script src="main_goun.js"></script>
   </body>
   	<script>
-  		//var modules= {};
+  	//var modules= {};
 		//var suites = ["./test.js"];
 		
 		var testArray = [];
+    
 		testArray.push(this.suite1);
 		nodeunit.run(testArray);
-      	console.log("index Done!!!!");
+
+    nodeunit.finish();
 
     </script>
 </html>

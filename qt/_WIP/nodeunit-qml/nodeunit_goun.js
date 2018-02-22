@@ -42,7 +42,6 @@ var nodeunit = (function(){
             });
         }
 
-
         // 4. Pure assertion tests whether a value is truthy, as determined
         // by !!guard.
         // assert.ok(guard, message_opt);
@@ -59,44 +58,33 @@ var nodeunit = (function(){
         assert.equal = function equal(actual, expected, message) {
             if (actual != expected) fail(actual, expected, message, "==", assert.equal);
         };
-
-
-
     })(assert);
 
-    var _keys = function (obj) {
-            if (Object.keys) {
-                return Object.keys(obj);
-            }
-            var keys = [];
-            for (var k in obj) {
-                if (obj.hasOwnProperty(k)) {
-                    kyes.push(k);
-                }
-            }
-            return keys;
-        };
-
     (function(exports){
+        var totalCaseNum = 0, assertionNum = 0;
+        var failNum = 0, successNum = 0;
+        var startTime = 0, endTime = 0;
 
         exports.run = function (modules, options) {
             options = options || {};
-            var start = new Date().getTime();
+
+            startTime = new Date().getTime();
     
             exports.runModules(modules, {
                 moduleStart: function (name) {            
                     console.log("moduleStart");
                 },
                 testDone: function (name, assertions) {
-                    console.log("testDone");
-                    console.log("name: " + name + " assertions.failures() " + assertions.failures() +
-                        " assertions.pass() " + assertions.passed());
+                    totalCaseNum++;
+                    assertionNum = assertionNum + assertions.length;
                     for (var i=0; i < assertions.length; i++) {
                         var a = assertions[i];
                         if (a.failed()) {
-                            console.log("failed!!!");
+                            successNum++;
+                            console.log("[" + name + "] assertions.failures() " + assertions.failures());
                         } else {
-                            console.log("pass!!")
+                            failNum++;
+                            console.log("[" + name + "] assertions.passed() " + assertions.passed());
                         }
                     }
                 },
@@ -114,7 +102,6 @@ var nodeunit = (function(){
             optionalCallback('moduleDone');
             optionalCallback('testStart');
             optionalCallback('testDone');
-
             return opt;
         },
 
@@ -159,10 +146,7 @@ var nodeunit = (function(){
             return that;
         };
 
-
-
         var assertWrapper = function(callback) {
-            console.log("assertWrapper!")
             return function(new_method, assert_method, arity){
                 return function() {
                     var message = arguments[arity -1];
@@ -170,7 +154,7 @@ var nodeunit = (function(){
                     try {
                        assert[assert_method].apply(null, arguments);
                     } catch (e) {
-                        console.log('[assertWrapper] ' + e);
+                        //console.log('[assertWrapper] ' + e);
                         a.error = e;
                     }
                     callback(a);
@@ -184,7 +168,6 @@ var nodeunit = (function(){
 
             var wrapAssert = assertWrapper(function (a) {
                 a_list.push(a);
-                console.log("wrapAssert!");
             });
 
             var test = {
@@ -193,11 +176,9 @@ var nodeunit = (function(){
                     var assertion_list = exports.assertionList(a_list, end - start);
 
                     options.testDone(name, assertion_list);
-
+                    callback(null, a_list);
                 },
-                //ok: wrapAssert('ok', 'ok', 2),
                 ok: function (value, message) {
-                    console.log("ok!");
                 },
                 same: function() {
 
@@ -218,13 +199,9 @@ var nodeunit = (function(){
             return test;
         },
         exports.runSuite = function (name, fn, opt, callback) {
-            var keys = _keys(fn);
             var prop = fn;
             var options = exports.options(opt);
             var start = new Date().getTime();
-            
-
-            //async.concatSeries
 
             for (var prop in fn) {
                 if (fn.hasOwnProperty(prop)) {
@@ -233,7 +210,7 @@ var nodeunit = (function(){
                         try {
                             fn[prop](test);
                         } catch(e) {
-                            console.log("[exports.runSuite]" + e);
+                            //console.log("[exports.runSuite]" + e);
                             test.done(e);
                         }
                     }
@@ -242,29 +219,29 @@ var nodeunit = (function(){
         },
         
         exports.runModule = function(suite, options) {
-            console.log("runSuite Func");
-            var start = new Date().getTime();
-            
-            
             exports.runSuite(null, suite, options, function(err, a_list) {
-                var end = new Date().getTime();
-                var assertion_list = types.assertionList(a_list, end - start);
-                options.moduleDone(name, assertion_list);
-                callback(null, a_list);
+                options.moduleDone();
             });
-
         },
 
         exports.runModules = function(modules, opt) {
             var options = exports.options(opt);
             exports.runModule(modules[0], options);
         }
+        
+        exports.finish = function() {
+            endTime = new Date().getTime();
+            console.log("\n[Result] A total of " + totalCaseNum + " tests were performed.")
+            console.log("[Result] " + successNum + " assertions of " + assertionNum + " passed, " + failNum + " failed");
+            console.log("[Result] Test compledted in " + (endTime - startTime) + " milliseconds");
+        }
 
     })(reporter);
 
-    //nodeunit.assert = assert;
     nodeunit.reporter = reporter;
     nodeunit.run = reporter.run;
+    nodeunit.start = reporter.start;
+    nodeunit.finish = reporter.finish;
 
 return nodeunit; 
 })();

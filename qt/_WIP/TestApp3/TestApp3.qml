@@ -13,7 +13,7 @@ QtObject {
                     test.ok(true, 'everythings ok');
                     test.done();
                 },
-                'apples and oranges': function (test) {
+             'apples and oranges': function (test) {
                     console.log("[main_goun.js] apples and oranges!!!")
                     test.equal('apples', 'oranges', 'comparing apples and oranges');
                     test.done();
@@ -22,7 +22,9 @@ QtObject {
 
         var Temp = new Array()
         Temp.push(suite);
+
         Nodeunit.nodeunit.run(Temp)
+        Nodeunit.nodeunit.finish();
         console.log("TEST DONE")
 
         /* Test for Browser. Not working.
