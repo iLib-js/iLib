@@ -1,7 +1,7 @@
 /*
  * testRunner.js - top level test suite
  * 
- * Copyright © 2017, JEDLSoft
+ * Copyright © 2017-2018, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -22,6 +22,7 @@ var fs = require("fs");
 
 var path = require("../lib/Path.js");
 var NodeLoader = require("../lib/NodeLoader.js");
+var AsyncNodeLoader = require("../lib/AsyncNodeLoader.js");
 
 var nodeunit = require("nodeunit");
 var reporter = nodeunit.reporters.minimal;
@@ -70,13 +71,14 @@ var assembly = "dynamic";
 var compilation = "uncompiled";
 var size = "full";
 var suite = suiteDefinitions.full;
+var sync = true;
 
-// Usage: testSuite.js [assembly_style [compilation_style [suite_name_or_collection]]]
+// Usage: testSuite.js [assembly_style [compilation_style [suite_name_or_collection [sync|async]]]]
 if (process.argv.length > 2) {
 	if (process.argv.length > 3) {
 		if (process.argv.length > 4) {
 			if (process.argv.length > 5) {
-				set = process.argv[5];
+			    sync = (process.argv[5] !== "async");
 			}
 			
 			size = process.argv[4];
@@ -111,13 +113,13 @@ if (process.argv.length > 2) {
 	}
 }
 
-console.log("Running " + compilation + " " + assembly + " suites: " + JSON.stringify(suite));
+console.log("Running " + compilation + " " + assembly + " " + (sync ? "sync" : "async") + " suites: " + JSON.stringify(suite));
 
 if (assembly === "dynamic") {
     console.log("requiring ../lib/ilib.js");
     var ilib = require("../lib/ilib.js");
 
-    ilib.setLoaderCallback(NodeLoader(ilib));
+    ilib.setLoaderCallback(sync ? NodeLoader(ilib) : AsyncNodeLoader(ilib));
 
     ilib._dyncode = true; // indicate that we are using dynamically loaded code
     ilib._dyndata = true;
@@ -128,7 +130,7 @@ if (assembly === "dynamic") {
     eval(script);
 
     if (assembly === "dynamicdata") {
-        ilib.setLoaderCallback(NodeLoader(ilib));
+        ilib.setLoaderCallback(sync ? NodeLoader(ilib) : AsyncNodeLoader(ilib));
     
         ilib._dyncode = false;
         ilib._dyndata = true;
@@ -146,13 +148,20 @@ var modules = {};
 
 for (var i = 0; i < suite.length; i++) {
     console.log("Adding suite: " + suite[i]);
-    suites = require("./" + path.join(suite[i], "nodeunit/testSuiteFiles.js")).files.forEach(function(file) {
-        var test = require("./" + path.join(suite[i], "nodeunit", file));
-        if (!modules[suite[i]]) modules[suite[i]] = {};
-        for (var t in test) {
-            modules[suite[i]][t] = test[t];
-        }
-    });
+    var suiteFile = sync ? "nodeunit/testSuiteFiles.js" : "nodeunit/testSuiteFilesAsync.js";
+    var suiteFilesPath = path.join(suite[i], suiteFile);
+    if (fs.existsSync(suiteFilesPath)) {
+        suites = require("./" + suiteFilesPath).files.forEach(function(file) {
+            var test = require("./" + path.join(suite[i], "nodeunit", file));
+            if (!modules[suite[i]]) modules[suite[i]] = {};
+            for (var t in test) {
+                modules[suite[i]][t] = test[t];
+            }
+        });
+    }
 }
 
-reporter.run(modules);
+reporter.run(modules, undefined, function(err) {
+    process.exitCode = err ? 1 : 0;
+});
+
