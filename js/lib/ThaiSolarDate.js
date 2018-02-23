@@ -99,9 +99,10 @@ var GregRataDie = require("./GregRataDie.js");
  */
 var ThaiSolarDate = function(params) {
     var p = {};
-    JSUtils.shallowCopy(params, p);
 
     if (params) {
+        JSUtils.shallowCopy(params, p);
+        
         // there is 198327 days difference between the Thai solar and
         // Gregorian epochs which is equivalent to 543 years
         if (typeof(p.year) !== 'undefined') {
@@ -111,7 +112,7 @@ var ThaiSolarDate = function(params) {
             p.rd -= 198327;
         }
     }
-    this.rd = NaN; // clear these out so that the GregorianDate constructor can set it
+    this.rd = null; // clear these out so that the GregorianDate constructor can set it
     this.offset = undefined;
     //console.log("ThaiSolarDate.constructor: date is " + JSON.stringify(this) + " parent is " + JSON.stringify(this.parent) + " and parent.parent is " + JSON.stringify(this.parent.parent));
 

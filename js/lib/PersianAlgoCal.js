@@ -29,7 +29,7 @@ var Calendar = require("./Calendar.js");
  * Construct a new Persian algorithmic calendar object. This class encodes information about
  * a Persian algorithmic calendar.<p>
  * 
- * 
+ * @param {Object=} options Options governing the construction of this instance
  * @constructor
  * @extends Calendar
  */
