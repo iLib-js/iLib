@@ -158,7 +158,7 @@ HanDate.prototype.constructor = HanDate;
  */
 HanDate.prototype._init = function (params) {
     new HanCal({
-        sync: params && typeof(params) === 'boolean' ? params.sync : true,
+        sync: params && typeof(params.sync) === 'boolean' ? params.sync : true,
         loadParams: params && params.loadParams,
         onLoad: ilib.bind(this, function (cal) {
             this.cal = cal;
