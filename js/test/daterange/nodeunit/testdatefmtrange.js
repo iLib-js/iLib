@@ -253,6 +253,7 @@ module.exports.testdatefmtrange = {
     
     testDateRngFmtGetDefaultLocale: function(test) {
         test.expect(2);
+        
         var fmt = new DateRngFmt({locale: "yy-YY"});
         test.ok(fmt !== null);
         
@@ -332,7 +333,7 @@ module.exports.testdatefmtrange = {
             test.done();
             return;
         }
-         ilib.setLoaderCallback(mockLoaderDRF);
+        ilib.setLoaderCallback(mockLoaderDRF);
         
         var fmt = new DateRngFmt({
             locale: "yy-YY"

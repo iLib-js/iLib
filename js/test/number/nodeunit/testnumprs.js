@@ -230,14 +230,17 @@ module.exports.testnumprs = {
         ilib._load = undefined;
         var ctypedata = ilib.data.ctype;
         ilib.data.ctype = undefined;
+        var ctype_n = ilib.data.ctype_n;
+        ilib.data.ctype_n = undefined;
 
-        var num = new INumber('23224234.23423', {locale: "ru-RU"});
+        var num = new INumber('23224234,23423', {locale: "ru-RU"});
         test.ok(num !== null);
 
         test.equal(num.valueOf(), 23224234.23423);
 
         ilib._load = temp;
         ilib.data.ctype = ctypedata;
+        ilib.data.ctype_n = ctype_n;
 
         test.done();
     },
