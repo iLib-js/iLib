@@ -63,7 +63,7 @@ module.exports.testresourcesasync = {
     },
 
     testResBundleAsyncGetStringOtherBundleesMX: function(test) {
-        if (ilib._getPlatform() !== "nodejs" || !ilib._dyndata) {
+        if (ilib._getPlatform() !== "nodejs" || !ilib._dyndata || !ilib._dyncode) {
             test.done();
             return;
         }

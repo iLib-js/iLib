@@ -40,7 +40,8 @@ ilib._ver = function() {
 ilib.getVersion = function () {
     if (ilib._dyncode) {
         try {
-            var pkg = require("../package.json");
+            var pkg;
+            pkg = require("../package.json");
             return pkg.version;
         } catch (e) {
             // ignore
