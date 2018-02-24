@@ -114,6 +114,7 @@ if (process.argv.length > 2) {
 }
 
 console.log("Running " + compilation + " " + assembly + " " + (sync ? "sync" : "async") + " suites: " + JSON.stringify(suite));
+var geval = eval; // cause it to execute in the global scope
 
 if (assembly === "dynamic") {
     console.log("requiring ../lib/ilib.js");
@@ -127,23 +128,24 @@ if (assembly === "dynamic") {
     var fileName = "../output/js/ilib-ut" + ((assembly === "dynamicdata") ? "-dyn" : "") + ((compilation === "compiled") ? "-compiled" : "") + ".js";
     console.log("loading in " + fileName);
     var script = fs.readFileSync(fileName, "utf-8");
-    eval(script);
+    geval(script);
 
     if (assembly === "dynamicdata") {
-        ilib.setLoaderCallback(sync ? NodeLoader(ilib) : AsyncNodeLoader(ilib));
+        global.ilib.setLoaderCallback(sync ? global.NodeLoader(ilib) : global.AsyncNodeLoader(ilib));
     
-        ilib._dyncode = false;
-        ilib._dyndata = true;
+        global.ilib._dyncode = false;
+        global.ilib._dyndata = true;
     } else {
-        CType._init(true);
-        NormString.init();
+        global.CType._init(true);
+        global.NormString.init();
     
-        ilib._dyncode = false;
-        ilib._dyndata = false;
+        global.ilib._dyncode = false;
+        global.ilib._dyndata = false;
     }
 }
 
 var suites;
+global.module = { exports: {} };
 var modules = {};
 
 for (var i = 0; i < suite.length; i++) {
@@ -152,10 +154,22 @@ for (var i = 0; i < suite.length; i++) {
     var suiteFilesPath = path.join(suite[i], suiteFile);
     if (fs.existsSync(suiteFilesPath)) {
         suites = require("./" + suiteFilesPath).files.forEach(function(file) {
-            var test = require("./" + path.join(suite[i], "nodeunit", file));
+            var filepath = path.join(suite[i], "nodeunit", file);
             if (!modules[suite[i]]) modules[suite[i]] = {};
-            for (var t in test) {
-                modules[suite[i]][t] = test[t];
+            if (assembly === "dynamic") {
+                var test = require("./" + filepath);
+                for (var t in test) {
+                    modules[suite[i]][t] = test[t];
+                }
+            } else {
+                var test = fs.readFileSync(filepath, "utf-8");
+                geval(test);
+                var subtest = global.module.exports;
+                if (subtest) {
+                    for (var t in subtest) {
+                        modules[suite[i]][t] = subtest[t];
+                    }
+                }
             }
         });
     }

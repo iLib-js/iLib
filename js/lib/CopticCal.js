@@ -31,7 +31,7 @@ var EthiopicCal = require("./EthiopicCal.js");
  * Construct a new Coptic calendar object. This class encodes information about
  * a Coptic calendar.<p>
  * 
- * 
+ * @param {Object=} options Options governing the construction of this instance
  * @constructor
  * @extends EthiopicCal
  */

@@ -40,7 +40,7 @@ var PersRataDie = require("./PersRataDie.js");
  * astronomical observations of the sun in Teheran, instead of calculating
  * the leap years based on a regular cyclical rhythm algorithm.<p>
  * 
- * 
+ * @param {Object=} options Options governing the construction of this instance
  * @constructor
  * @extends Calendar
  */

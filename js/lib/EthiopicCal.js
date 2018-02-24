@@ -30,7 +30,7 @@ var Calendar = require("./Calendar.js");
  * Construct a new Ethiopic calendar object. This class encodes information about
  * a Ethiopic calendar.<p>
  * 
- * 
+ * @param {Object=} options Options governing the construction of this instance
  * @constructor
  * @extends Calendar
  */

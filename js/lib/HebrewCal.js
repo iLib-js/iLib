@@ -38,7 +38,7 @@ var Calendar = require("./Calendar.js");
  * a calendar based on calculations rather than observations to determine the 
  * beginning of lunar months, and therefore the dates of holidays.<p>
  * 
- * 
+ * @param {Object=} options Options governing the construction of this instance
  * @constructor
  * @extends Calendar
  */
