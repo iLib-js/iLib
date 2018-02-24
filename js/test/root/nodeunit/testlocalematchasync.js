@@ -28,7 +28,7 @@ if (typeof(ilib) === "undefined") {
 module.exports.testlocalematchasync = {
     testLocaleMatcherAsyncConstructor: function(test) {
         test.expect(1);
-        var loc = new LocaleMatcher({
+        new LocaleMatcher({
             sync: false,
             onLoad: function(lm) {
                 test.ok(lm !== null);

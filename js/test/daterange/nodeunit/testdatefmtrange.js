@@ -294,6 +294,7 @@ module.exports.testdatefmtrange = {
             return;
         }
         ilib.setLoaderCallback(mockLoaderDRF);
+        ilib.clearCache();
         
         var fmt = new DateRngFmt({
             locale: "yy-YY"

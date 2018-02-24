@@ -1323,19 +1323,20 @@ module.exports.testresources = {
             return;
         }
         var onloadcalled = false;
+        ilib.clearCache()
         ilib.setLoaderCallback(mockLoaderRes);
         var rb = new ResBundle({
             locale: "de-DE-SAP",
             name: "foobar",
             sync: false,
             onLoad: function(rb) {
-        test.expect(6);
+                test.expect(6);
                 test.ok(typeof(rb) !== "undefined");
-                
+
                 test.equal(rb.getString("first string").toString(), "erste String");
                 test.equal(rb.getString("second string").toString(), "zweite String");
                 test.equal(rb.getString("third string").toString(), "dritte String");
-                
+
                 onloadcalled = true;
             }
         });
