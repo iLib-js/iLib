@@ -254,8 +254,12 @@ INumber.prototype = {
         for (var i = 0; i < digits.length; i++) {
             digitMap[digits[i]] = String(i);
         }
+        var decimal = this.li.getNativeDecimalSeparator();
         
-        return JSUtils.mapString(str, digitMap);
+        return str.split("").map(function(ch) {
+            if (ch == decimal) return ".";
+            return digitMap[ch] || ch;
+        }).join("");
     },
     
 	/**
