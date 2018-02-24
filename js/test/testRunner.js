@@ -136,8 +136,16 @@ if (assembly === "dynamic") {
         global.ilib._dyncode = false;
         global.ilib._dyndata = true;
     } else {
-        global.CType._init(true);
-        global.NormString.init();
+        if (suite.indexOf("ctype") > -1) {
+            global.CType._init(true);
+        }
+        if (suite.indexOf("strings-ext") > -1) {
+            global.NormString.init();
+            
+            // special case for massive test data that we should only load if we need it
+            script = fs.readFileSync("strings-ext/test/normdata.js", "utf-8");
+            geval(script);
+        }
     
         global.ilib._dyncode = false;
         global.ilib._dyndata = false;
@@ -145,7 +153,6 @@ if (assembly === "dynamic") {
 }
 
 var suites;
-global.module = { exports: {} };
 var modules = {};
 
 for (var i = 0; i < suite.length; i++) {
@@ -162,6 +169,7 @@ for (var i = 0; i < suite.length; i++) {
                     modules[suite[i]][t] = test[t];
                 }
             } else {
+                global.module = { exports: {} };
                 var test = fs.readFileSync(filepath, "utf-8");
                 geval(test);
                 var subtest = global.module.exports;
