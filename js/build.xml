@@ -1374,15 +1374,12 @@ limitations under the License.
 	</target>
 
 	<target name="test.remote" depends="prepare,assemble.unittest" description="Run a remote server to test ilib in remote browsers">
-	    <exec osfamily="unix" resultproperty="uglify.result" errorproperty="uglify.error" executable="node" dir="${build.base}" failifexecutionfails="true">
+	    <exec osfamily="unix" executable="node" dir="${build.base}" failifexecutionfails="true">
 			<arg value="node_modules/http-server/bin/http-server"/>
 			<arg value="-p"/>
 			<arg value="9090"/>
 		</exec>
-		<exec osfamily="mac" resultproperty="uglify.result" errorproperty="uglify.error" executable="node" dir="${build.base}" failifexecutionfails="true">
-			<arg value="node_modules/http-server/bin/http-server"/>
-		</exec>
-		<exec osfamily="windows" resultproperty="uglify.result" errorproperty="uglify.error" executable="node.exe" dir="${build.base}" failifexecutionfails="true">
+		<exec osfamily="windows" executable="node.exe" dir="${build.base}" failifexecutionfails="true">
 			<arg value="node_modules/http-server/bin/http-server"/>
 		</exec>
 	</target>

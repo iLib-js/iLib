@@ -21,6 +21,10 @@ if (typeof(INumber) === "undefined") {
     var INumber = require("../.././../lib/INumber.js");
 }
 
+if (typeof(LocaleInfo) === "undefined") {
+    var LocaleInfo = require("../.././../lib/LocaleInfo.js");
+}
+
 if (typeof(ilib) === "undefined") {
     var ilib = require("../../../lib/ilib.js");
 }
@@ -226,6 +230,11 @@ module.exports.testnumprs = {
 
     testNumberFloatNoLocaleData: function(test) {
         test.expect(2);
+
+        // make sure the Russian locale info is already 
+        // loaded before we shut off the loader
+        var li = new LocaleInfo("ru-RU");
+
         var temp = ilib._load;
         ilib._load = undefined;
         var ctypedata = ilib.data.ctype;
