@@ -131,24 +131,27 @@ if (assembly === "dynamic") {
     geval(script);
 
     if (assembly === "dynamicdata") {
-        global.ilib.setLoaderCallback(sync ? global.NodeLoader(ilib) : global.AsyncNodeLoader(ilib));
+        global.ilib.setLoaderCallback(sync ? NodeLoader(ilib) : AsyncNodeLoader(ilib));
     
         global.ilib._dyncode = false;
         global.ilib._dyndata = true;
+        global.require = require;
     } else {
         if (suite.indexOf("ctype") > -1) {
             global.CType._init(true);
         }
         if (suite.indexOf("strings-ext") > -1) {
             global.NormString.init();
-            
-            // special case for massive test data that we should only load if we need it
-            script = fs.readFileSync("strings-ext/test/normdata.js", "utf-8");
-            geval(script);
         }
-    
+        
         global.ilib._dyncode = false;
         global.ilib._dyndata = false;
+    }
+    
+    if (suite.indexOf("strings-ext") > -1) {
+        // special case for massive test data that we should only load if we need it
+        script = fs.readFileSync("strings-ext/test/normdata.js", "utf-8");
+        geval(script);
     }
 }
 
