@@ -322,7 +322,7 @@ limitations under the License.
 			<srcfiles dir="${build.locale}" includes="**/*.json"/>
 		</uptodate>
 	</target>
-	<target name="assemble.unittest" depends="prepare,gen.manifest.locale,update.package.json,assemble.unittest.maps,testilibut" unless="ilib-ut.not.needed" description="assembles only the locales needed for the unit tests">
+	<target name="assemble.unittest" depends="prepare,gen.manifest.locale,update.package.json,testilibut" unless="ilib-ut.not.needed" description="assembles only the locales needed for the unit tests">
 		<runassemble
 			tgtfilename="${build.output.js}/ilib-ut.js"
 			srcfilename="${build.lib}/ilib-ut-inc.js"
@@ -348,7 +348,7 @@ limitations under the License.
 			<srcfiles dir="${build.locale}" includes="**/*.json"/>
 		</uptodate>
 	</target>
-	<target name="assemble.dyndata.unittest" depends="prepare,gen.manifest.locale,assemble.dyndata.unittest.maps,testilib.dyn.ut" unless="ilib-dyn-ut.not.needed" description="assembles only the locales needed for the unit tests">
+	<target name="assemble.dyndata.unittest" depends="prepare,gen.manifest.locale,testilib.dyn.ut" unless="ilib-dyn-ut.not.needed" description="assembles only the locales needed for the unit tests">
 		<runassemble
 			tgtfilename="${build.output.js}/ilib-ut-dyn.js"
 			srcfilename="${build.lib}/ilib-ut-inc.js"
