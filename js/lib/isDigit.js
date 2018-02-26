@@ -17,7 +17,7 @@
  * limitations under the License.
  */
 
-// !data ctype
+// !data ctype ctype_n
 
 var ilib = require("./ilib.js");
 var CType = require("./CType.js");
@@ -47,7 +47,7 @@ var isDigit = function (ch) {
 			num = ch._toCodePoint(0);
 			break;
 	}
-	return ilib.data.ctype ? CType._inRange(num, 'digit', ilib.data.ctype) : (num >= 0x30 && num <= 0x39);
+	return ilib.data.ctype ? CType._inRange(num, 'Nd', ilib.data.ctype_n) : (num >= 0x30 && num <= 0x39);
 };
 
 /**
@@ -57,7 +57,7 @@ var isDigit = function (ch) {
  * @param {function(*)|undefined} onLoad
  */
 isDigit._init = function (sync, loadParams, onLoad) {
-	CType._init(sync, loadParams, onLoad);
+    CType._load("ctype_n", sync, loadParams, onLoad);
 };
 
 module.exports = isDigit;

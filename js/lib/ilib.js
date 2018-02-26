@@ -40,7 +40,8 @@ ilib._ver = function() {
 ilib.getVersion = function () {
     if (ilib._dyncode) {
         try {
-            var pkg = require("../package.json");
+            var pkg;
+            pkg = require("../package.json");
             return pkg.version;
         } catch (e) {
             // ignore
@@ -53,13 +54,13 @@ ilib.getVersion = function () {
  * Place where resources and such are eventually assigned.
  */
 ilib.data = {
-    /** @type {{ccc:Object.<string,number>,nfd:Object.<string,string>,nfc:Object.<string,string>,nfkd:Object.<string,string>,nfkc:Object.<string,string>}} */
+	/** @type {{ccc:Object.<string,number>,nfd:Object.<string,string>,nfc:Object.<string,string>,nfkd:Object.<string,string>,nfkc:Object.<string,string>}} */
     norm: {
-        ccc: {},
-        nfd: {},
-        nfc: {},
-        nfkd: {},
-        nfkc: {}
+    	ccc: {},
+    	nfd: {},
+    	nfc: {},
+    	nfkd: {},
+    	nfkc: {}
     },
     zoneinfo: {
         "Etc/UTC":{"o":"0:0","f":"UTC"},
@@ -130,18 +131,17 @@ ilib.clearPseudoLocales();
  */
 ilib._getPlatform = function () {
     if (!ilib._platform) {
-        try {
-            if (typeof(java) !== "undefined" && typeof(java.lang.Object) !== 'undefined') {
-                ilib._platform = (typeof(process) !== 'undefined') ? "trireme" : "rhino";
-                return ilib._platform;
-            }
-        } catch (e) {}
-
-        if (typeof(process) !== 'undefined' && process.versions && typeof(module) !== 'undefined') {
-            // if browser and window are defined, then this is a mock process object created by webpack
-            ilib._platform = (process.browser && typeof(window) !== 'undefined') ? "browser" : "nodejs";
+    	try {
+    		if (typeof(java.lang.Object) !== 'undefined') {
+    			ilib._platform = (typeof(process) !== 'undefined') ? "trireme" : "rhino";
+    			return ilib._platform;
+    		}
+    	} catch (e) {}
+    	
+        if (typeof(process) !== 'undefined' && process.versions && process.versions.node && typeof(module) !== 'undefined') {
+            ilib._platform = "nodejs";
         } else if (typeof(Qt) !== 'undefined') {
-            ilib._platform = "qt";
+        	ilib._platform = "qt";
         } else if (typeof(window) !== 'undefined') {
             ilib._platform = (typeof(PalmSystem) !== 'undefined') ? "webos" : "browser";
         } else {
@@ -194,37 +194,6 @@ ilib._getBrowser = function () {
 };
 
 /**
- * Return the value of the top object in the system. This could be global
- * for node, or window for browsers, etc.
- * @private
- * @static
- * @return {Object|undefined} the top variable, or undefined if there is none on this
- * platform
- */
-ilib._top = function() {
-    if (typeof(this.top) === 'undefined') {
-        this.top = null;
-        switch (ilib._getPlatform()) {
-            case "rhino":
-                this.top = (function() {
-                  return (typeof global === 'object') ? global : this;
-                })();
-                break;
-            case "nodejs":
-            case "trireme":
-                this.top = typeof(global) !== 'undefined' ? global : this;
-                //console.log("ilib._top: top is " + (typeof(global) !== 'undefined' ? "global" : "this"));
-                break;
-            default:
-                this.top = window;
-                break;
-        }
-    }
-
-    return this.top || undefined;
-};
-
-/**
  * Return the value of a global variable given its name in a way that works 
  * correctly for the current platform.
  * @private
@@ -233,7 +202,23 @@ ilib._top = function() {
  * @return {*} the global variable, or undefined if it does not exist
  */
 ilib._global = function(name) {
-    var top = this._top();
+    switch (ilib._getPlatform()) {
+        case "rhino":
+            var top = (function() {
+              return (typeof global === 'object') ? global : this;
+            })();
+            break;
+        case "nodejs":
+        case "trireme":
+            top = typeof(global) !== 'undefined' ? global : this;
+            //console.log("ilib._global: top is " + (typeof(global) !== 'undefined' ? "global" : "this"));
+            break;
+        case "qt":
+        	return undefined;
+        default:
+        	top = window;
+        	break;
+    }
     try {
 		return top[name];
 	} catch (e) {

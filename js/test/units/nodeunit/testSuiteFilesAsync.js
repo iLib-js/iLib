@@ -1,7 +1,7 @@
 /*
- * testSuiteFiles.js - list the test files in this directory
+ * testSuiteFilesAsync.js - list the test files in this directory
  * 
- * Copyright © 2017, JEDLSoft
+ * Copyright © 2018, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,18 +18,5 @@
  */
 
 module.exports.files = [
-    "testFuelConsumption.js",
-    "testUnknown.js",
-    "testVolume.js",
-    "testarea.js",
-    "testdigitalstoreage.js",
-    "testenergy.js",
-    "testlengths.js",
-    "testmass.js",
-    "testmeasurement.js",
-    "testspeeds.js",
-    "testtemp.js",
-    "testtime.js",
-    "testunitfmt.js",
-    "testunits.js",
+    "testunitfmtasync.js"
 ];

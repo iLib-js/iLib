@@ -18,5 +18,5 @@
  */
 
 module.exports.files = [
-    "testdatefmtrange.js"
+    "testdatefmtrangeasync.js"
 ];

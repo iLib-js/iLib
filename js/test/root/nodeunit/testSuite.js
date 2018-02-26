@@ -1,7 +1,7 @@
 /*
  * testSuite.js - test suite for this directory
  * 
- * Copyright © 2017, JEDLSoft
+ * Copyright © 2017-2018, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,19 +20,9 @@
 var nodeunit = require("nodeunit");
 var reporter = nodeunit.reporters.minimal;
 var modules = {};
-var suites = [
-    "testcharset.js",
-    "testcountry.js",
-    "testglobal.js",
-    "testloader.js",
-    "testlocale.js",
-    "testlocaleinfo.js",
-    "testlocalematch.js",
-    "testrequire.js",
-    "testresources.js",
-    "testscriptinfo.js",
-    "teststrings.js",
-];
+var suites = require("./testSuiteFiles.js").files;
+
+var ilib = require("../../../lib/ilib-node.js");
 
 var ilib = require("../../../lib/ilib-node.js");
 

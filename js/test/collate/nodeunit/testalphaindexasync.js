@@ -25,11 +25,6 @@ if (typeof(AlphabeticIndex) === "undefined") {
 }
 
 module.exports.testalphaindexasync = {
-    setUp: function(callback) {
-        ilib.clearCache();
-        callback();
-    },
-
     testAlphaIndexAsyncConstructor: function(test) {
         test.expect(1);
         new AlphabeticIndex({
@@ -88,7 +83,7 @@ module.exports.testalphaindexasync = {
                 test.ok(ai);
                 test.equal("B", ai.getBucket("belarus"));
                 test.equal("B", ai.getBucket("Belarus"));
-                
+
                 test.done();
             }
         });
@@ -102,10 +97,10 @@ module.exports.testalphaindexasync = {
             sync: false,
             onLoad: function(ai) {
                 test.ok(ai);
-                
+
                 test.equal("E", ai.getBucket("Élan"));
                 test.equal("E", ai.getBucket("ëieasdf"));
-                
+
                 test.done();
             }
         });
@@ -119,7 +114,7 @@ module.exports.testalphaindexasync = {
             sync: false,
             onLoad: function(ai) {
                 test.ok(ai);
-                
+
                 var items = [
                     "omicron",
                     "beta",
@@ -136,11 +131,11 @@ module.exports.testalphaindexasync = {
                     "mu",
                     "gamma"
                     ];
-                
+
                 items.forEach(function(item) {
                     ai.addElement(item);
                 });
-                
+
                 var expected = [
                     {
                         label: "A",
@@ -183,7 +178,7 @@ module.exports.testalphaindexasync = {
                         elements: ["zeta"]
                     }
                     ]
-                
+
                 test.deepEqual(ai.getAllBuckets(), expected);
                 test.done();
             }
@@ -198,7 +193,7 @@ module.exports.testalphaindexasync = {
             sync: false,
             onLoad: function(ai) {
                 test.ok(ai);
-                
+
                 var items = [
                     "omicron",
                     "beta",
@@ -221,11 +216,11 @@ module.exports.testalphaindexasync = {
                     "mu",
                     "gamma"
                     ];
-                
+
                 items.forEach(function(item) {
                     ai.addElement(item);
                 });
-                
+
                 var expected = [
                     "A",
                     "B",
@@ -243,7 +238,7 @@ module.exports.testalphaindexasync = {
                     "T",
                     "Z"
                     ];
-                
+
                 test.deepEqual(ai.getBucketLabels(), expected);
                 test.done();
             }
@@ -257,9 +252,9 @@ module.exports.testalphaindexasync = {
         new AlphabeticIndex({
             locale: "qq-QQ",
             sync: false,
-            onLoad: function(ai) {        
+            onLoad: function(ai) {
                 test.ok(ai);
-                
+
                 var items = [
                     "omicron",
                     "beta",
@@ -277,11 +272,11 @@ module.exports.testalphaindexasync = {
                     "gamma",
                     "ürgen"
                     ];
-                
+
                 items.forEach(function(item) {
                     ai.addElement(item);
                 });
-                
+
                 var expected = [
                     {
                         label: "A",
@@ -328,13 +323,13 @@ module.exports.testalphaindexasync = {
                         elements: ["zeta"]
                     }
                     ]
-                
+
                 test.deepEqual(ai.getAllBuckets(), expected);
                 test.done();
             }
         });
     },
-    
+
     testAlphaIndexAsyncConstructorAsync_deDE: function(test) {
         test.expect(1);
         var ai = new AlphabeticIndex({
@@ -346,7 +341,7 @@ module.exports.testalphaindexasync = {
             }
         });
     },
-    
+
     testAlphaIndexAsyncGetBucket_deDE2: function(test) {
         test.expect(7);
 
@@ -355,15 +350,15 @@ module.exports.testalphaindexasync = {
             sync: false,
             onLoad: function(ai) {
                 test.ok(ai);
-                
+
                 test.equal("U", ai.getBucket("über"));
                 test.equal("A", ai.getBucket("änderen"));
                 test.equal("O", ai.getBucket("öffenen"));
-                
+
                 test.equal("U", ai.getBucket("Über"));
                 test.equal("A", ai.getBucket("Änderen"));
                 test.equal("O", ai.getBucket("Öffenen"));
-                
+
                 test.done();
             }
         });
@@ -393,7 +388,7 @@ module.exports.testalphaindexasync = {
             sync: false,
             onLoad: function(ai) {
                 test.ok(ai);
-                
+
                 var items = [
                     "Jürgen",
                     "Georg",
@@ -414,11 +409,11 @@ module.exports.testalphaindexasync = {
                     "Ualrich",
                     "Judrich"
                     ];
-                
+
                 items.forEach(function(item) {
                     ai.addElement(item);
                 });
-                
+
                 var expected = [
                     {
                         label: "F",
@@ -449,7 +444,7 @@ module.exports.testalphaindexasync = {
                         elements: ["Ualrich", "Udrich", "Uelrich", "Ülrich", "Ulrich"]
                     }
                     ];
-                
+
                 test.deepEqual(ai.getAllBuckets(), expected);
                 test.done();
             }
@@ -466,7 +461,7 @@ module.exports.testalphaindexasync = {
             sync: false,
             onLoad: function(ai) {
                 test.ok(ai);
-                
+
                 var items = [
                     "Jürgen",
                     "Georg",
@@ -487,11 +482,11 @@ module.exports.testalphaindexasync = {
                     "Ualrich",
                     "Judrich"
                     ];
-                
+
                 items.forEach(function(item) {
                     ai.addElement(item);
                 });
-                
+
                 var expected = [
                     {
                         label: "F",
@@ -522,13 +517,13 @@ module.exports.testalphaindexasync = {
                         elements: ["Ualrich", "Udrich", "Uelrich", "Ülrich", "Ulrich"]
                     }
                     ];
-                
+
                 test.deepEqual(ai.getAllBuckets(), expected);
                 test.done();
             }
         });
     },
-    
+
     testAlphaIndexAsyncConstructorAsync: function(test) {
         test.expect(1);
         var ai = new AlphabeticIndex({
@@ -549,10 +544,10 @@ module.exports.testalphaindexasync = {
             sync: false,
             onLoad: function(ai) {
                 test.ok(ai);
-                
+
                 var items = [
                     "Apple",
-                    "Banana",  
+                    "Banana",
                     "김철수",
                     "김영희",
                     "송현경",
@@ -574,11 +569,11 @@ module.exports.testalphaindexasync = {
                     "주광수",
                     "박세진"
                     ];
-                
+
                 items.forEach(function(item) {
                     ai.addElement(item);
                 });
-                
+
                 var expected = [
                     {
                         label: "ㄱ",
@@ -621,7 +616,7 @@ module.exports.testalphaindexasync = {
                         elements: ["Banana"]
                     }
                     ]
-                
+
                 test.deepEqual(ai.getAllBuckets(), expected);
                 test.done();
             }
@@ -637,7 +632,7 @@ module.exports.testalphaindexasync = {
             sync: false,
             onLoad: function(ai) {
                 test.ok(ai);
-                
+
                 var items = [
                     "Apple",
                     "Banana",
@@ -655,11 +650,11 @@ module.exports.testalphaindexasync = {
                     "임민성",
                     "박세진"
                     ];
-                
+
                 items.forEach(function(item) {
                     ai.addElement(item);
                 });
-                
+
                 var expected = [
                     {
                         label: "ㄱ",
@@ -706,7 +701,7 @@ module.exports.testalphaindexasync = {
                         elements: ["りんご"]
                     }
                     ];
-                
+
                 test.deepEqual(ai.getAllBuckets(), expected);
                 test.done();
             }

@@ -165,9 +165,6 @@ var PhoneNumber = function(number, options) {
 	this.sync = true;
 	this.loadParams = {};
 	
-	if (!number || (typeof number === "string" && number.length === 0)) {
-		return this;
-	}
 
 	if (options) {
 		if (typeof(options.sync) === 'boolean') {
@@ -185,8 +182,18 @@ var PhoneNumber = function(number, options) {
 			 */
 			this.onLoad = options.onLoad;
 		}
+	} else {
+	    options = {sync: true};
 	}
 
+	if (!number || (typeof number === "string" && number.length === 0)) {
+        if (typeof(options.onLoad) === 'function') {
+            options.onLoad(undefined);
+        }
+
+	    return this;
+	}
+	
 	if (typeof number === "object") {
 		/**
 		 * The vertical service code. These are codes that typically
@@ -320,6 +327,9 @@ var PhoneNumber = function(number, options) {
 						// the copy constructor code above did not find the locale 
 						// or plan before, but now they are loaded, so we can return 
 						// already without going further
+					    if (typeof(options.onLoad) === "function") {
+					        options.onLoad(this);
+					    }
 						return;
 					}
 					Utils.loadData({
@@ -397,6 +407,9 @@ PhoneNumber.parseImsi = function(imsi, options) {
 		fields = {};
 	
 	if (!imsi) {
+	    if (options && typeof(options.onLoad) === 'function') {
+            options.onLoad(undefined);
+        }
 		return undefined;
 	}
 
@@ -1138,42 +1151,12 @@ PhoneNumber.prototype = {
 		if (other.locale && this.locale && !this.locale.equals(other.locale) && (!this.countryCode || !other.countryCode)) {
 			return false;
 		}
-		
-		for (var p in other) {
-			if (p !== undefined && this[p] !== undefined && typeof(this[p]) !== 'object') {
-				if (other[p] === undefined) {
-					/*console.error("PhoneNumber.equals: other is missing property " + p + " which has the value " + this[p] + " in this");
-					console.error("this is : " + JSON.stringify(this));
-					console.error("other is: " + JSON.stringify(other));*/
-					return false;
-				}
-				if (this[p] !== other[p]) {
-					/*console.error("PhoneNumber.equals: difference in property " + p);
-					console.error("this is : " + JSON.stringify(this));
-					console.error("other is: " + JSON.stringify(other));*/
-					return false;
-				}
-			}
-		}
-		for (var p in other) {
-			if (p !== undefined && other[p] !== undefined && typeof(other[p]) !== 'object') {
-				if (this[p] === undefined) {
-					/*console.error("PhoneNumber.equals: this is missing property " + p + " which has the value " + other[p] + " in the other");
-					console.error("this is : " + JSON.stringify(this));
-					console.error("other is: " + JSON.stringify(other));*/
-					return false;
-				}
-				if (this[p] !== other[p]) {
-					/*console.error("PhoneNumber.equals: difference in property " + p);
-					console.error("this is : " + JSON.stringify(this));
-					console.error("other is: " + JSON.stringify(other));*/
-					return false;
-				}
-			}
-		}
-		return true;
+
+		var _this = this;
+		return PhoneNumber._fieldOrder.every(function(field) {
+		    return _this[field] === other[field];
+		});
 	},
-	
 
 	/**
 	 * @private

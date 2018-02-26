@@ -1,7 +1,7 @@
 /*
- * testSuiteFiles.js - list the test files in this directory
+ * testSuiteFilesAsync.js - list the test files in this directory
  * 
- * Copyright © 2017, JEDLSoft
+ * Copyright © 2018, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,13 +18,5 @@
  */
 
 module.exports.files = [
-    "testcharmap.js",
-    "testcm_CN.js",
-    "testcm_ISO-8859-1.js",
-    "testcm_JP.js",
-    "testcm_KR.js",
-    "testcm_UTF-16.js",
-    "testcm_UTF-8.js",
-    "testtolower.js",
-    "testtoupper.js",
+    "testcharmapasync.js"
 ];

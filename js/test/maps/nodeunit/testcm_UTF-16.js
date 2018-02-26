@@ -37,7 +37,7 @@ module.exports.testcm_UTF_16 = {
             name: "UTF-16"
         });
         test.ok(typeof(cm) !== "undefined");
-        test.equal(cm.getName(), "UTF-16LE");
+        test.equal(cm.getName(), "UTF-16");
         test.done();
     },
     

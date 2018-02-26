@@ -99,6 +99,9 @@ var LocaleMatcher = function(options) {
 		});
 	} else {
 		this.info = ilib.data.likelylocales;
+		if (options && typeof(options.onLoad) === 'function') {
+            options.onLoad(this);
+        }
 	}
 };
 

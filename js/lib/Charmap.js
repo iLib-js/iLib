@@ -99,7 +99,10 @@ var Charmap = function(options) {
 	var sync = true,
 	    loadParams = undefined;
 	
-	this.charset = new Charset({name: "US-ASCII"});
+	if (options && options.noinstance) {
+	    return;
+	}
+	
 	this.missing = "placeholder";
 	this.placeholder = "?";
 	this.escapeStyle = "js";

@@ -1,7 +1,7 @@
 /*
  * testSuite.js - test suite for this directory
  * 
- * Copyright © 2017, JEDLSoft
+ * Copyright © 2017-2018, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,22 +20,9 @@
 var nodeunit = require("nodeunit");
 var reporter = nodeunit.reporters.minimal;
 var modules = {};
-var suites = [
-    "testFuelConsumption.js",
-    "testUnknown.js",
-    "testVolume.js",
-    "testarea.js",
-    "testdigitalstoreage.js",
-    "testenergy.js",
-    "testlengths.js",
-    "testmass.js",
-    "testmeasurement.js",
-    "testspeeds.js",
-    "testtemp.js",
-    "testtime.js",
-    "testunitfmt.js",
-    "testunits.js",
-];
+var suites = require("./testSuiteFiles.js").files;
+
+var ilib = require("../../../lib/ilib-node.js");
 
 var ilib = require("../../../lib/ilib-node.js");
 

@@ -26,12 +26,16 @@ var Calendar = require("./Calendar.js");
  * Construct a new Julian calendar object. This class encodes information about
  * a Julian calendar.<p>
  * 
- * 
+ * @param {Object=} options Options governing the construction of this instance
  * @constructor
  * @extends Calendar
  */
-var JulianCal = function() {
+var JulianCal = function(options) {
 	this.type = "julian";
+    
+    if (options && typeof(options.onLoad) === "function") {
+        options.onLoad(this);
+    }
 };
 
 /* the lengths of each month */

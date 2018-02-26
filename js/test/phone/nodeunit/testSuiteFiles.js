@@ -1,7 +1,7 @@
 /*
  * testSuiteFiles.js - list the test files in this directory
  * 
- * Copyright © 2017, JEDLSoft
+ * Copyright © 2017-2018, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -78,4 +78,11 @@ module.exports.files = [
     "testphonenum_SG.js",
     "testphonenum_TW.js",
     "testphonenum_US.js",
+    "testimsiasync.js",
+    "testnormalizeasync.js",
+    "testnumplanasync.js",
+    "testphonefmtasync.js",
+    "testphonegeoasync.js",
+    "testphonelocasync.js",
+    "testphonenumasync.js"
 ];

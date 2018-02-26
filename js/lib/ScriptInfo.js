@@ -92,8 +92,10 @@ var ScriptInfo = function(script, options) {
 		});
 	} else {
 		this.info = ilib.data.scripts[script];
+        if (options && typeof(options.onLoad) === 'function') {
+            options.onLoad(this);
+        }
 	}
-
 };
 
 /**
@@ -139,6 +141,10 @@ ScriptInfo.getAllScripts = function(sync, loadParams, onLoad) {
 				}
 			})
 		});
+	} else {
+        if (typeof(onLoad) === 'function') {
+            onLoad(ScriptInfo._getScriptsArray());
+        }
 	}
 	
 	return ScriptInfo._getScriptsArray();

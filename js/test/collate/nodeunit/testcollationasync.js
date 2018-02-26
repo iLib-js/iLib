@@ -1,6 +1,6 @@
 /*
  * testcollationasync.js - test the Collator object asynchronously
- * 
+ *
  * Copyright © 2018, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -35,7 +35,7 @@ module.exports.testcollationasync = {
         ilib.clearCache();
         callback();
     },
-    
+
     testCollatorAsyncConstructorNative: function(test) {
         test.expect(1);
         var col = new Collator({
@@ -45,16 +45,16 @@ module.exports.testcollationasync = {
                 test.done();
             }
         });
-    
+
     },
-    
+
     testCollatorAsyncDefaultNative: function(test) {
         test.expect(5);
         var col = new Collator({
             sync: false,
             onLoad: function(col) {
                 test.ok(typeof(col) !== "undefined");
-                
+
                 // should compare in English
                 test.equal(0, col.compare("string", "string"), "equality");
                 test.ok("a < b", col.compare("a", "b") < 0);
@@ -63,9 +63,9 @@ module.exports.testcollationasync = {
                 test.done();
             }
         });
-    
+
     },
-    
+
     testCollatorAsyncDefaultCase: function(test) {
         test.expect(5);
         var col = new Collator({
@@ -74,10 +74,10 @@ module.exports.testcollationasync = {
                 test.ok(typeof(col) !== "undefined");
                 // netscape and ie do not work properly on some platforms
                 var browser = ilib._getBrowser();
-                if ((browser === "firefox" && 
-                    navigator && 
-                    navigator.userAgent && 
-                    navigator.userAgent.indexOf("Android")) || 
+                if ((browser === "firefox" &&
+                    navigator &&
+                    navigator.userAgent &&
+                    navigator.userAgent.indexOf("Android")) ||
                     browser === "ie" || browser === "Edge" || browser === "iOS") {
                     // should compare lower-case first within a base character
                     test.ok("a < A", col.compare("a", "A") < 0);
@@ -95,14 +95,14 @@ module.exports.testcollationasync = {
             }
         });
     },
-    
+
     testCollatorAsyncGetComparator: function(test) {
         test.expect(3);
         var col = new Collator({
             sync: false,
             onLoad: function(col) {
                 test.ok(typeof(col) !== "undefined");
-                
+
                 // should compare in English
                 var func = col.getComparator();
                 test.ok(typeof(func) !== "undefined");
@@ -111,8 +111,8 @@ module.exports.testcollationasync = {
             }
         });
     },
-    
-    
+
+
     testCollatorAsyncConstructorJS: function(test) {
         test.expect(1);
         var col = new Collator({
@@ -123,9 +123,9 @@ module.exports.testcollationasync = {
                 test.done();
             }
         });
-    
+
     },
-    
+
     testCollatorAsyncDefaultJS: function(test) {
         test.expect(5);
         var col = new Collator({
@@ -133,7 +133,7 @@ module.exports.testcollationasync = {
             sync: false,
             onLoad: function(col) {
                 test.ok(typeof(col) !== "undefined");
-                
+
                 // should compare in English
                 test.equal(0, col.compare("string", "string"), "equality");
                 test.ok("a < b", col.compare("a", "b") < 0);
@@ -142,10 +142,10 @@ module.exports.testcollationasync = {
                 test.done();
             }
         });
-    
+
     },
-    
-    
+
+
     testCollatorAsyncGetComparatorWorksWithCaseJS: function(test) {
         test.expect(6);
         var col = new Collator({
@@ -153,10 +153,10 @@ module.exports.testcollationasync = {
             sync: false,
             onLoad: function(col) {
                 test.ok(typeof(col) !== "undefined");
-                
+
                 var func = col.getComparator();
                 test.ok(typeof(func) !== "undefined");
-                
+
                 // should compare upper-case first
                 test.ok("A < a", func("A", "a") < 0);
                 test.ok("B < b", func("B", "b") < 0);
@@ -165,10 +165,10 @@ module.exports.testcollationasync = {
                 test.done();
             }
         });
-    
+
     },
-    
-    
+
+
     testCollatorAsyncGetSortKeyNative: function(test) {
         if (typeof(Intl) === 'undefined' && Intl) {
             test.done();
@@ -179,15 +179,15 @@ module.exports.testcollationasync = {
             onLoad: function(col) {
                 test.expect(2);
                 test.ok(typeof(col) !== "undefined");
-                
+
                 // no sort key available when using native...
                 test.equal(col.sortKey("string"), "string");
                 test.done();
             }
         });
-    
+
     },
-    
+
     testCollatorAsyncGetSortKeySimpleUpper: function(test) {
         test.expect(2);
         var col = new Collator({
@@ -195,14 +195,14 @@ module.exports.testcollationasync = {
             sync: false,
             onLoad: function(col) {
                 test.ok(typeof(col) !== "undefined");
-                
+
                 test.equal(col.sortKey("ABCDEF"), "4204404604804a04c0");
                 test.done();
             }
         });
-    
+
     },
-    
+
     testCollatorAsyncGetSortKeyMixed: function(test) {
         test.expect(2);
         var col = new Collator({
@@ -210,33 +210,33 @@ module.exports.testcollationasync = {
             sync: false,
             onLoad: function(col) {
                 test.ok(typeof(col) !== "undefined");
-                
+
                 test.equal(col.sortKey("String"), "6606826425225c24e2");
                 test.done();
             }
         });
-    
+
     },
-        
+
     testCollatorAsyncWithSort: function(test) {
         test.expect(2);
         var col = new Collator({
             sync: false,
             onLoad: function(col) {
                 test.ok(typeof(col) !== "undefined");
-                
+
                 var input = ["q", "w", "e", "r", "t", "y", "u", "i", "o", "p"];
-                
+
                 input.sort(col.getComparator());
-                
+
                 var expected = ["e", "i", "o", "p", "q", "r", "t", "u", "w", "y"];
-                
+
                 test.deepEqual(input, expected);
                 test.done();
             }
         });
     },
-    
+
     testCollatorAsyncWithSortJS: function(test) {
         test.expect(2);
         var col = new Collator({
@@ -244,19 +244,19 @@ module.exports.testcollationasync = {
             sync: false,
             onLoad: function(col) {
                 test.ok(typeof(col) !== "undefined");
-                
+
                 var input = ["q", "w", "e", "r", "t", "y", "u", "i", "o", "p"];
-                
+
                 input.sort(col.getComparator());
-                
+
                 var expected = ["e", "i", "o", "p", "q", "r", "t", "u", "w", "y"];
-                
+
                 test.deepEqual(input, expected);
                 test.done();
             }
         });
     },
-    
+
     testCollatorAsyncWithSortUpperFirstJS: function(test) {
         test.expect(2);
         var col = new Collator({
@@ -265,31 +265,31 @@ module.exports.testcollationasync = {
             sync: false,
             onLoad: function(col) {
                 test.ok(typeof(col) !== "undefined");
-                
+
                 var input = ["q", "I", "e", "r", "T", "U", "i", "E", "o", "p"];
-                
+
                 input.sort(col.getComparator());
-                
+
                 var expected = ["E", "e", "I", "i", "o", "p", "q", "r", "T", "U"];
-                
+
                 test.deepEqual(input, expected);
                 test.done();
             }
         });
     },
-    
+
     testCollatorAsyncGetAvailableScripts: function(test) {
         test.expect(1);
         test.deepEqual(Collator.getAvailableScripts(), ["Latn"]);
         test.done();
     },
-    
+
     testCollatorAsyncGetAvailableStyles: function(test) {
         test.expect(1);
         test.deepEqual(Collator.getAvailableStyles(), ["standard"]);
         test.done();
     },
-    
+
     testCollatorAsyncPhonebookQuatAE_de: function(test) {
         test.expect(5);
         var col = new Collator({
@@ -301,7 +301,7 @@ module.exports.testcollationasync = {
             sync: false,
             onLoad: function(col) {
                 test.ok(typeof(col) !== "undefined");
-                
+
                 // aa ae äa äz af
                 test.ok("aa < ae",  col.compare("aa", "ae") < 0);
                 test.ok("ae < äa",  col.compare("ae", "äa") < 0);
@@ -310,7 +310,7 @@ module.exports.testcollationasync = {
                 test.done();
             }
         });
-    
+
     },
 
     testCollatorAsyncQuat_el: function(test) {
@@ -323,9 +323,9 @@ module.exports.testcollationasync = {
             sync: false,
             onLoad: function(col) {
                 test.ok(typeof(col) !== "undefined");
-                
-                // Α α Ά Ά ά ά Β β Γ γ Δ δ Ε ε Έ Έ έ έ Ζ ζ Η η Ή Ή ή ή Θ θ Ι ι Ί Ί ί ί Ϊ Ϊ ϊ ϊ ΐ ΐ ί̈ Κ κ Λ λ Μ μ Ν ν Ξ ξ Ο ο Ό Ό ό ό Π π Ρ ρ Σ σ ς Τ τ Υ υ Ύ Ύ ύ ύ Ϋ Ϋ ϋ ϋ ΰ ΰ ύ̈ Φ φ Χ χ Ψ ψ Ω ω Ώ Ώ ώ ώ 
-                
+
+                // Α α Ά Ά ά ά Β β Γ γ Δ δ Ε ε Έ Έ έ έ Ζ ζ Η η Ή Ή ή ή Θ θ Ι ι Ί Ί ί ί Ϊ Ϊ ϊ ϊ ΐ ΐ ί̈ Κ κ Λ λ Μ μ Ν ν Ξ ξ Ο ο Ό Ό ό ό Π π Ρ ρ Σ σ ς Τ τ Υ υ Ύ Ύ ύ ύ Ϋ Ϋ ϋ ϋ ΰ ΰ ύ̈ Φ φ Χ χ Ψ ψ Ω ω Ώ Ώ ώ ώ
+
                 test.ok("Α < α", col.compare("Α", "α") < 0);
                 test.ok("α < Ά", col.compare("α", "Ά") < 0);
                 test.ok("Ά < Ά", col.compare("Ά", "Ά") < 0);
@@ -419,7 +419,7 @@ module.exports.testcollationasync = {
                 test.done();
             }
         });
-    
+
     },
 
     testCollatorAsyncPriL_ko: function(test) {
@@ -431,7 +431,7 @@ module.exports.testcollationasync = {
             sync: false,
             onLoad: function(col) {
                 test.ok(typeof(col) !== "undefined");
-                
+
                 // 가까나다따
                 test.ok("가 < 까", col.compare("가", "까") < 0);
                 test.ok("까 < 나", col.compare("까", "나") < 0);
@@ -440,9 +440,9 @@ module.exports.testcollationasync = {
                 test.done();
             }
         });
-    
+
     },
-    
+
     testCollatorAsyncQuatHanzi_zh_Hans: function(test) {
         test.expect(21);
         var col = new Collator({
@@ -453,9 +453,9 @@ module.exports.testcollationasync = {
             sync: false,
             onLoad: function(col) {
                 // Hanzi are all primary differences from each other
-                
+
                 test.ok(typeof(col) !== "undefined");
-                
+
                 test.ok("阿 < 拜", col.compare("阿", "拜") < 0);
                 test.ok("拜 < 𩑻", col.compare("拜", "𩑻") < 0);
                 test.ok("𩑻 < 䯋", col.compare("𩑻", "䯋") < 0);
@@ -479,9 +479,9 @@ module.exports.testcollationasync = {
                 test.done();
             }
         });
-    
+
     },
-    
+
     testCollatorAsyncTraditionalQuatCH_es: function(test) {
         test.expect(6);
         var col = new Collator({
@@ -492,7 +492,7 @@ module.exports.testcollationasync = {
             sync: false,
             onLoad: function(col) {
                 test.ok(typeof(col) !== "undefined");
-                
+
                 // a b c ch d
                 test.ok("a < b",  col.compare("a", "b") < 0);
                 test.ok("b < c",  col.compare("b", "c") < 0);

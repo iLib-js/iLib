@@ -111,97 +111,99 @@ var NumFmt = require("./NumFmt.js");
  * @param {Object} options options governing the way this date formatter instance works
  */
 var UnitFmt = function(options) {
-	var sync = true, 
-		loadParams = undefined;
-	
+    var sync = true, 
+        loadParams = undefined;
+
     this.length = "long";
     this.scale  = true;
     this.measurementType = 'undefined';
     this.convert = true;
-	this.locale = new Locale();
+    this.locale = new Locale();
 
-    if (options) {
-    	if (options.locale) {
-    		this.locale = (typeof(options.locale) === 'string') ? new Locale(options.locale) : options.locale;
-    	}
-
-    	if (typeof(options.sync) === 'boolean') {
-    		sync = options.sync;
-    	}
-
-    	if (typeof(options.loadParams) !== 'undefined') {
-    		loadParams = options.loadParams;
-    	}
-
-    	if (options.length) {
-    		this.length = options.length;
-    	}
-
-    	if (typeof(options.autoScale) === 'boolean') {
-    		this.scale = options.autoScale;
-    	}
-
-    	if (typeof(options.autoConvert) === 'boolean') {
-    		this.convert = options.autoConvert;
-    	}
-        
-        if (typeof(options.useNative) === 'boolean') {
-    		this.useNative = options.useNative;
-    	}
-
-    	if (options.measurementSystem) {
-    		this.measurementSystem = options.measurementSystem;
-    	}
-        
-        if (typeof (options.maxFractionDigits) === 'number') {
-            /** 
-             * @private
-             * @type {number|undefined} 
-             */
-            this.maxFractionDigits = options.maxFractionDigits;
-        }
-        if (typeof (options.minFractionDigits) === 'number') {
-            /** 
-             * @private
-             * @type {number|undefined} 
-             */
-            this.minFractionDigits = options.minFractionDigits;
-        }
-        /** 
-         * @private
-         * @type {string} 
-         */
-        this.roundingMode = options.roundingMode;
+    options = options || {sync: true};
+    
+    if (options.locale) {
+        this.locale = (typeof(options.locale) === 'string') ? new Locale(options.locale) : options.locale;
     }
 
+    if (typeof(options.sync) === 'boolean') {
+        sync = options.sync;
+    }
+
+    if (typeof(options.loadParams) !== 'undefined') {
+        loadParams = options.loadParams;
+    }
+
+    if (options.length) {
+        this.length = options.length;
+    }
+
+    if (typeof(options.autoScale) === 'boolean') {
+        this.scale = options.autoScale;
+    }
+
+    if (typeof(options.autoConvert) === 'boolean') {
+        this.convert = options.autoConvert;
+    }
+
+    if (typeof(options.useNative) === 'boolean') {
+        this.useNative = options.useNative;
+    }
+
+    if (options.measurementSystem) {
+        this.measurementSystem = options.measurementSystem;
+    }
+
+    if (typeof (options.maxFractionDigits) === 'number') {
+        /** 
+         * @private
+         * @type {number|undefined} 
+         */
+        this.maxFractionDigits = options.maxFractionDigits;
+    }
+    if (typeof (options.minFractionDigits) === 'number') {
+        /** 
+         * @private
+         * @type {number|undefined} 
+         */
+        this.minFractionDigits = options.minFractionDigits;
+    }
+    /** 
+     * @private
+     * @type {string} 
+     */
+    this.roundingMode = options.roundingMode;
+
     Utils.loadData({
-		object: "UnitFmt", 
-		locale: this.locale, 
-		name: "unitfmt.json", 
-		sync: sync, 
-		loadParams: loadParams, 
-		callback: ilib.bind(this, function (format) {                      
-			var formatted = format;
-			this.template = formatted["unitfmt"][this.length];
-			
-			new NumFmt({
-	    		locale: this.locale,
-	    		useNative: this.useNative,
-	            maxFractionDigits: this.maxFractionDigits,
-	            minFractionDigits: this.minFractionDigits,
-	            roundingMode: this.roundingMode,
-	            sync: sync,
-	            loadParams: loadParams,
-	            onLoad: ilib.bind(this, function (numfmt) {
-	            	this.numFmt = numfmt;
-	            	
-	    			if (options && typeof(options.onLoad) === 'function') {
-	    				options.onLoad(this);
-	    			}
-	            })
-	    	});
-		})
-	});
+        object: "UnitFmt", 
+        locale: this.locale, 
+        name: "unitfmt.json", 
+        sync: sync, 
+        loadParams: loadParams, 
+        callback: ilib.bind(this, function (format) {                      
+            this.template = format["unitfmt"][this.length];
+
+            new NumFmt({
+                locale: this.locale,
+                useNative: this.useNative,
+                maxFractionDigits: this.maxFractionDigits,
+                minFractionDigits: this.minFractionDigits,
+                roundingMode: this.roundingMode,
+                sync: sync,
+                loadParams: loadParams,
+                onLoad: ilib.bind(this, function (numfmt) {
+                    this.numFmt = numfmt;
+                    
+                    // ensure that the plural rules are loaded before we proceed
+                    IString.loadPlurals(sync, this.locale, loadParams, ilib.bind(this, function() {
+                        if (options && typeof(options.onLoad) === 'function') {
+                            options.onLoad(this);
+                        }
+                    }));
+                })
+            });
+        })
+    });
 };
 
 UnitFmt.prototype = {
@@ -261,13 +263,13 @@ UnitFmt.prototype = {
 	 * @return {string} the formatted version of the given date instance
 	 */
     format: function (measurement) {
-    	var u = this.convert ? measurement.localize(this.locale.getSpec()) : measurement;
-    	u = this.scale ? u.scale(this.measurementSystem) : u;
-    	var formatted = new IString(this.template[u.getUnit()]);
-    	// make sure to use the right plural rules
-    	formatted.setLocale(this.locale, true, undefined, undefined);
-    	formatted = formatted.formatChoice(u.amount,{n:this.numFmt.format(u.amount)});
-    	return formatted.length > 0 ? formatted : u.amount +" " + u.unit;
+        var u = this.convert ? measurement.localize(this.locale.getSpec()) : measurement;
+        u = this.scale ? u.scale(this.measurementSystem) : u;
+        var formatted = new IString(this.template[u.getUnit()]);
+        // make sure to use the right plural rules
+        formatted.setLocale(this.locale, true, undefined, undefined);
+        formatted = formatted.formatChoice(u.amount, {n: this.numFmt.format(u.amount)});
+        return formatted.length > 0 ? formatted : u.amount + " " + u.unit;
     }
 };
 

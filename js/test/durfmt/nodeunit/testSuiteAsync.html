@@ -1,7 +1,7 @@
 <!--
-testSuite.html - browser-based test suite for this directory
+testSuiteAsync.html - browser-based test suite for this directory
 
-Copyright © 2017, JEDLSoft
+Copyright © 2018, JEDLSoft
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -24,24 +24,16 @@ limitations under the License.
         var module = {};
     </script>
     <script src="/test/nodeunit/nodeunit.js"></script>
-    <script src="/output/js/ut/assembled/ilib-ut.js"></script>
+    <script src="/output/js/ut/assembled/ilib-ut-dyn.js"></script>
     <script>
         module = {
             exports: {}
         };
     </script>
-    <script src="testdurfmt.js"></script>
-    <script src="testdurfmt_am_ET.js"></script>
-    <script src="testdurfmt_ar_SA.js"></script>
-    <script src="testdurfmt_az_Latn_AZ.js"></script>
-    <script src="testdurfmt_ha_Latn_NG.js"></script>
-    <script src="testdurfmt_km_KH.js"></script>
-    <script src="testdurfmt_or_IN.js"></script>
-    <script src="testdurfmt_si_LK.js"></script>
-    <script src="testdurfmt_sw_KE.js"></script>
+    <script src="testdurfmtasync.js"></script>
   </head>
   <body>
-    <h1 id="nodeunit-header">durfmt Test Suite</h1>
+    <h1 id="nodeunit-header">Async Durfmt Test Suite</h1>
     <script>
      nodeunit.run(module.exports);
     </script>

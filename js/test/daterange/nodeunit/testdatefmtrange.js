@@ -1,7 +1,7 @@
 /*
  * testdatefmtrange.js - test the date range formatter object
  * 
- * Copyright © 2012-2017, JEDLSoft
+ * Copyright © 2012-2018, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -253,6 +253,7 @@ module.exports.testdatefmtrange = {
     
     testDateRngFmtGetDefaultLocale: function(test) {
         test.expect(2);
+        
         var fmt = new DateRngFmt({locale: "yy-YY"});
         test.ok(fmt !== null);
         
@@ -294,6 +295,7 @@ module.exports.testdatefmtrange = {
             return;
         }
         ilib.setLoaderCallback(mockLoaderDRF);
+        ilib.clearCache();
         
         var fmt = new DateRngFmt({
             locale: "yy-YY"
@@ -331,7 +333,7 @@ module.exports.testdatefmtrange = {
             test.done();
             return;
         }
-         ilib.setLoaderCallback(mockLoaderDRF);
+        ilib.setLoaderCallback(mockLoaderDRF);
         
         var fmt = new DateRngFmt({
             locale: "yy-YY"

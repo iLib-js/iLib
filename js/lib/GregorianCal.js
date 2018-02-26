@@ -37,6 +37,10 @@ var GregorianCal = function(options) {
 	if (!options || !options.noinstance) {
 		this.type = "gregorian";
 	}
+	
+	if (options && typeof(options.onLoad) === "function") {
+	    options.onLoad(this);
+	}
 };
 
 /**

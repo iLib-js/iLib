@@ -80,15 +80,15 @@ var CopticRataDie = require("./CopticRataDie.js");
  * @param {Object=} params parameters that govern the settings and behaviour of this Coptic date
  */
 var CopticDate = function(params) {
-	this.rd = NaN; // clear these out so that the EthiopicDate constructor can set it
-	var newparams = ilib.extend({}, params);
-	newparams.onLoad = function(ed) {
-	    ed.cal = new CopticCal();
-	    if (typeof(params.onLoad) === "function") {
-	        params.onLoad(ed);
-	    }
-	};
-	EthiopicDate.call(this, params);
+    this.rd = NaN; // clear these out so that the EthiopicDate constructor can set it
+    var newparams = ilib.extend({}, params);
+    newparams.onLoad = function(ed) {
+        ed.cal = new CopticCal();
+        if (typeof(params.onLoad) === "function") {
+            params.onLoad(ed);
+        }
+    };
+    EthiopicDate.call(this, params);
 };
 
 CopticDate.prototype = new EthiopicDate({noinstance: true});

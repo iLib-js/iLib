@@ -298,6 +298,7 @@ module.exports.testdatefmt_gu_IN = {
         test.ok(typeof(fmt) !== "undefined");
         
         var date = new JulianDate({
+            locale: "gu-IN",
             year: 2011,
             month: 9,
             day: 29,
@@ -308,9 +309,7 @@ module.exports.testdatefmt_gu_IN = {
         });
         test.equal(fmt.format(date), "2011-09-29");
         test.done();
-    },
-    
-    
+    },   
     
     testDateFmtINTemplateClock12SwitchHH_gu_IN: function(test) {
         test.expect(2);

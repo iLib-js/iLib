@@ -2,7 +2,7 @@
  * testcollation_general.js - test the Collator object in any languages that
  * uses the general rules
  * 
- * Copyright © 2014,2017, JEDLSoft
+ * Copyright © 2014, 2017-2018, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.

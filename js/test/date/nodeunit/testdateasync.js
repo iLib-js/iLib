@@ -32,11 +32,6 @@ if (typeof(ilib) === "undefined") {
 }
 
 module.exports.testdateasync = {
-    setUp: function(callback) {
-        ilib.clearCache();
-        callback();
-    },
-
     testDateConstructor: function(test) {
         test.expect(1);
         DateFactory({
@@ -61,7 +56,7 @@ module.exports.testdateasync = {
             sync: false,
             onLoad: function(gd) {
                 test.ok(gd !== null);
-                
+
                 test.equal(gd.getYears(), 2011);
                 test.equal(gd.getMonths(), 9);
                 test.equal(gd.getDays(), 23);
@@ -169,7 +164,7 @@ module.exports.testdateasync = {
             }
         });
     },
-    
+
     testDstEndBoundary_Azores: function(test) {
         test.expect(1);
         var boundaryiLib = DateFactory({

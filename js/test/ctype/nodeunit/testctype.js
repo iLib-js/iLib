@@ -1,7 +1,7 @@
 /*
  * testctype.js - test the character type information functions
  *
- * Copyright © 2012-2015,2017, JEDLSoft
+ * Copyright © 2012-2015, 2017-2018, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -77,20 +77,20 @@ if (typeof(IString) === "undefined") {
 
 if (ilib.isDynData()) {
     // now load the data
-    isAlnum._init(false);
-    isAlpha._init(false);
-    isAscii._init(false);
-    isBlank._init(false);
-    isCntrl._init(false);
-    isDigit._init(false);
-    isGraph._init(false);
-    isIdeo._init(false);
-    isLower._init(false);
-    isPunct._init(false);
-    isScript._init(false);
-    isSpace._init(false);
-    isUpper._init(false);
-    isXdigit._init(false);
+    isAlnum._init(true);
+    isAlpha._init(true);
+    isAscii._init(true);
+    isBlank._init(true);
+    isCntrl._init(true);
+    isDigit._init(true);
+    isGraph._init(true);
+    isIdeo._init(true);
+    isLower._init(true);
+    isPunct._init(true);
+    isScript._init(true);
+    isSpace._init(true);
+    isUpper._init(true);
+    isXdigit._init(true);
 }
 
 module.exports.testctype = {

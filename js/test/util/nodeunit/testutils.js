@@ -856,6 +856,10 @@ module.exports.testutils = {
         test.equal(m.a, "e");
         test.equal(m.c, "f");
         test.equal(m.g, "i");
+        
+        // clean up for the other tests
+        ilib.data.foobar = ilib.data.foobar_de = ilib.data.foobar_de_DE = ilib.data.foobar_de_Latn_DE = ilib.data.foobar_de_Latn_DE_SAP = undefined;
+        
         test.done();
     },
     
@@ -883,6 +887,10 @@ module.exports.testutils = {
         test.equal(m.a, "b");
         test.equal(m.c, "d");
         test.ok(typeof(m.g) === "undefined");
+        
+        // clean up for the other tests
+        ilib.data.foobar = ilib.data.foobar_de = ilib.data.foobar_de_DE = ilib.data.foobar_de_Latn_DE = ilib.data.foobar_de_Latn_DE_SAP = undefined;
+        
         test.done();
     },
     
@@ -910,6 +918,10 @@ module.exports.testutils = {
         test.equal(m.a, "e");
         test.equal(m.c, "f");
         test.ok(typeof(m.g) === "undefined");
+        
+        // clean up for the other tests
+        ilib.data.foobar = ilib.data.foobar_de = ilib.data.foobar_de_DE = ilib.data.foobar_de_Latn_DE = ilib.data.foobar_de_Latn_DE_SAP = undefined;
+        
         test.done();
     },
     
@@ -935,6 +947,10 @@ module.exports.testutils = {
         var locale = new Locale("de-DE-Latn-SAP");
         var m = Utils.mergeLocData("asdf", locale);
         test.ok(typeof(m) === "undefined");
+        
+        // clean up for the other tests
+        ilib.data.foobar = ilib.data.foobar_de = ilib.data.foobar_de_DE = ilib.data.foobar_de_Latn_DE = ilib.data.foobar_de_Latn_DE_SAP = undefined;
+        
         test.done();
     },
     
@@ -960,6 +976,10 @@ module.exports.testutils = {
         var locale = new Locale("de-DE-Latn-SAP");
         var m = Utils.mergeLocData(undefined, locale);
         test.ok(typeof(m) === "undefined");
+        
+        // clean up for the other tests
+        ilib.data.foobar = ilib.data.foobar_de = ilib.data.foobar_de_DE = ilib.data.foobar_de_Latn_DE = ilib.data.foobar_de_Latn_DE_SAP = undefined;
+        
         test.done();
     },
     
@@ -988,6 +1008,10 @@ module.exports.testutils = {
         test.equal(m.a, "e");
         test.equal(m.c, "f");
         test.ok(typeof(m.g) === "undefined");
+        
+        // clean up for the other tests
+        ilib.data.foobar = ilib.data.foobar_en = ilib.data.foobar_en_US = ilib.data.foobar_en_Latn_US = ilib.data.foobar_en_Latn_US_SAP = undefined;
+        
         test.done();
     },
     
@@ -1016,6 +1040,10 @@ module.exports.testutils = {
         test.equal(ilib.data.foobar.a, "b");
         test.equal(ilib.data.foobar.c, "d");
         test.ok(typeof(ilib.data.foobar.g) === "undefined");
+        
+        // clean up for the other tests
+        ilib.data.foobar = ilib.data.foobar_de = ilib.data.foobar_de_DE = ilib.data.foobar_de_Latn_DE = ilib.data.foobar_de_Latn_DE_SAP = undefined;
+        
         test.done();
     },
     
@@ -1041,6 +1069,7 @@ module.exports.testutils = {
         test.equal(m.g, "i");
         test.done();
         
+        // clean up for the other tests
         ilib.data.asdf_de = ilib.data.asdf_de_DE = ilib.data.asdf_de_Latn_DE = ilib.data.asdf_de_Latn_DE_SAP = undefined;
     },
     
@@ -1062,6 +1091,10 @@ module.exports.testutils = {
         test.equal(m.a, "e");
         test.equal(m.c, "d");
         test.equal(m.g, "i");
+        
+        // clean up for the other tests
+        ilib.data.foobar = ilib.data.foobar_de = ilib.data.foobar_de_Latn = undefined;
+
         test.done();
     },
     
@@ -1594,6 +1627,7 @@ module.exports.testutils = {
             return;
         }
         
+        ilib.clearCache();
         ilib.setLoaderCallback(mockLoaderUtil);
         Utils.loadData({
             name: "foo.json",
@@ -1779,6 +1813,8 @@ module.exports.testutils = {
             test.done();
             return;
         }
+        
+        ilib.clearCache();
         ilib.setLoaderCallback(mockLoaderUtil);
         Utils.loadData({
             name: "foo.json",
@@ -1805,6 +1841,7 @@ module.exports.testutils = {
             return;
         }
         
+        ilib.clearCache();
         ilib.setLoaderCallback(mockLoaderUtil);
         Utils.loadData({
             name: "foo.json",
@@ -1845,6 +1882,7 @@ module.exports.testutils = {
             return;
         }
         
+        ilib.clearCache();
         ilib.setLoaderCallback(mockLoaderUtil);
         Utils.loadData({
             name: "foo.json",
@@ -1870,6 +1908,7 @@ module.exports.testutils = {
             test.done();
             return;
         }
+        ilib.clearCache();
         ilib.setLoaderCallback(mockLoaderUtil);
         Utils.loadData({
             name: "foo.json",
@@ -1890,6 +1929,7 @@ module.exports.testutils = {
             test.done();
             return;
         }
+        ilib.clearCache();
         ilib.setLoaderCallback(mockLoaderUtil);
         Utils.loadData({
             name: "foo.html",
