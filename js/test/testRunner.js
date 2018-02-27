@@ -125,7 +125,12 @@ if (assembly === "dynamic") {
     ilib._dyncode = true; // indicate that we are using dynamically loaded code
     ilib._dyndata = true;
 } else {
-    var fileName = "../output/js/ilib-ut" + ((assembly === "dynamicdata") ? "-dyn" : "") + ((compilation === "compiled") ? "-compiled" : "") + ".js";
+    var fileName = "../output/js/ut/";
+    fileName += assembly + "/";
+    if (assembly !== "assembled") {
+        fileName += compilation + "/";
+    }
+    fileName += "ilib-ut" + ((assembly === "dynamicdata") ? "-dyn" : "") + ((compilation === "compiled") ? "-compiled" : "") + ".js";
     console.log("loading in " + fileName);
     var script = fs.readFileSync(fileName, "utf-8");
     geval(script);
@@ -186,4 +191,6 @@ for (var i = 0; i < suite.length; i++) {
     }
 }
 
-reporter.run(modules);
+reporter.run(modules, undefined, function(err) {
+    process.exitCode = err ? 1 : 0;
+});
