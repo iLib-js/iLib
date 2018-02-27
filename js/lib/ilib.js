@@ -194,6 +194,37 @@ ilib._getBrowser = function () {
 };
 
 /**
+ * Return the value of the top object in the system. This could be global
+ * for node, or window for browsers, etc.
+ * @private
+ * @static
+ * @return {Object|undefined} the top variable, or undefined if there is none on this
+ * platform
+ */
+ilib._top = function() {
+    if (typeof(this.top) === 'undefined') {
+        this.top = null;
+        switch (ilib._getPlatform()) {
+            case "rhino":
+                this.top = (function() {
+                  return (typeof global === 'object') ? global : this;
+                })();
+                break;
+            case "nodejs":
+            case "trireme":
+                this.top = typeof(global) !== 'undefined' ? global : this;
+                //console.log("ilib._top: top is " + (typeof(global) !== 'undefined' ? "global" : "this"));
+                break;
+            default:
+                this.top = window;
+                break;
+        }
+    }
+
+    return this.top || undefined;
+};
+
+/**
  * Return the value of a global variable given its name in a way that works 
  * correctly for the current platform.
  * @private
@@ -202,23 +233,7 @@ ilib._getBrowser = function () {
  * @return {*} the global variable, or undefined if it does not exist
  */
 ilib._global = function(name) {
-    switch (ilib._getPlatform()) {
-        case "rhino":
-            var top = (function() {
-              return (typeof global === 'object') ? global : this;
-            })();
-            break;
-        case "nodejs":
-        case "trireme":
-            top = typeof(global) !== 'undefined' ? global : this;
-            //console.log("ilib._global: top is " + (typeof(global) !== 'undefined' ? "global" : "this"));
-            break;
-        case "qt":
-        	return undefined;
-        default:
-        	top = window;
-        	break;
-    }
+    var top = this._top();
     try {
 		return top[name];
 	} catch (e) {
