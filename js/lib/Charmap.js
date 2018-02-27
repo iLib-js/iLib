@@ -136,8 +136,6 @@ var Charmap = function(options) {
 			}
 		}
 	}
-	
-	this._calcExpansionFactor();
 };
 
 /**
