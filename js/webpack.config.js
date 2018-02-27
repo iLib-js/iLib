@@ -23,10 +23,12 @@ const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 // const IlibWebpackLoader = require("ilib-webpack-loader");
 
 module.exports = function(env, args) {
-    var size = args.env.size || "standard",
-        assembly = args.env.assembly || "assembled",
-        compilationType = args.env.compilation || "uncompiled",
-        locales = args.env.locales,
+    var env = (args && args.env) || {};
+    var size = env.size || "standard",
+        assembly = env.assembly || "assembled",
+        compilationType = env.compilation || "uncompiled",
+        locales = env.locales,
+        ilibRoot = path.resolve(env.ilibRoot || "."),
         outputPath;
 
     // "ut" is unit tests
@@ -82,7 +84,8 @@ module.exports = function(env, args) {
                         locales: locales,
                         assembly: assembly,
                         compilation: compilationType,
-                        size: size
+                        size: size,
+                        ilibRoot: ilibRoot
                     }
                 }
             }]

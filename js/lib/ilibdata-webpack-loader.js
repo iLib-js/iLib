@@ -72,6 +72,15 @@ var defineLocaleDataPattern = /\/\/\s*!defineLocaleData/g;
 
 var normPattern = /(nfc|nfd|nfkc|nfkd)(\/(\w+))?/g;
 
+function calcDataRoot(options) {
+    var ilibRoot = options.ilibRoot;
+    if (!ilibRoot) {
+        return path.join(findIlibRoot(), "locale");
+    } else {
+        return path.join(ilibRoot, (options.compilation && options.compilation === "uncompiled") ? "data/locale" : "locale");
+    }
+}
+
 /**
  * Produce a set of js files that contain the necessary
  * locale data. These files are output into js files, one
@@ -114,8 +123,8 @@ function emitLocaleData(compilation, options) {
         var lang2charset;
         var outputSet = {};
         var match;
-        var root = findIlibRoot();
-        var dataRoot = path.join(root, (options.compilation && options.compilation === "uncompiled") ? "data/locale" : "locale");
+        var root = options.ilibRoot || findIlibRoot();
+        var dataRoot = calcDataRoot(options);
         var manifest = []; // list of all locale data files that were processed
 
         var locales = options.locales;
@@ -126,7 +135,7 @@ function emitLocaleData(compilation, options) {
                 scripts.add(full.getScript());
             }
         });
-        console.log("emitting locale data for locales " + locales.join(","));
+        if (options.debug) console.log("emitting locale data for locales " + locales.join(","));
 
         locales.forEach(function(locale) {
             localeData.forEach(function(filename) {
@@ -136,7 +145,12 @@ function emitLocaleData(compilation, options) {
                     // If they just use the generic "charset" or "charmaps" data, then
                     // we figure out which charsets are appropriate for the locale
                     if (!lang2charset) {
-                        lang2charset = require(path.join(dataRoot, "lang2charset.json"));
+                        var fileName = path.join(dataRoot, "lang2charset.json");
+                        
+                        if (fileName[0] !== '/' && fileName[0] !== '.' ) {
+                            fileName = "./" + fileName;
+                        }
+                        lang2charset = require(fileName);
                     }
 
                     var l = new Locale(locale);
@@ -346,7 +360,7 @@ function emitLocaleData(compilation, options) {
             } else {
                 var set = (normalizations.size === 0 || (normalizations[form].has("") && normalizations.size === 1)) ? scripts : normalizations[form];
                 set.forEach(function(script) {
-                    console.log("Inluding " + form + " for script " + script);
+                    if (options.debug) console.log("Including " + form + " for script " + script);
                     addForm(form, script);
                 });
             }
@@ -359,7 +373,10 @@ function emitLocaleData(compilation, options) {
         var manifestObj =  {
             files: manifest
         };
-        fs.writeFileSync(path.join(outputDir, "locales/ilibmanifest.json"), JSON.stringify(manifestObj), "utf-8");
+        var outputPath = path.join(outputDir, "locales");
+        makeDirs(outputPath);
+        if (options.debug) console.log("Emitting " + path.join(outputPath, "ilibmanifest.json"));
+        fs.writeFileSync(path.join(outputPath, "ilibmanifest.json"), JSON.stringify(manifestObj), "utf-8");
 
         for (var filename in outputSet) {
             var outputFileName = filename + ".js";
@@ -382,7 +399,7 @@ function emitLocaleData(compilation, options) {
                 "};\n" :
                 "module.exports = ilib;\n";
 
-            console.log("Emitting " + outputFileName + " size " + output.length);
+            if (options.debug) console.log("Emitting " + outputFileName + " size " + output.length);
 
             /*
             if (options.compilationType === "compiled") {
@@ -401,10 +418,10 @@ function emitLocaleData(compilation, options) {
             }
             */
 
-            var outputPath = path.join(outputDir, "locales", outputFileName);
-            console.log("Writing to " + outputPath);
-            makeDirs(path.dirname(outputPath));
-            fs.writeFileSync(outputPath, output, "utf-8");
+            var outputFile = path.join(outputPath, outputFileName);
+            if (options.debug) console.log("Writing to " + outputFile);
+            makeDirs(path.dirname(outputFile));
+            fs.writeFileSync(outputFile, output, "utf-8");
         }
 
         // console.log("Done emitting locale data.");
@@ -425,7 +442,7 @@ var ilibDataLoader = function(source) {
 
     // validateOptions(schema, options, 'Ilib data loader');
 
-    console.log("ilibdata-loader: processing file " + this.resource);
+    if (options.debug) console.log("ilibdata-loader: processing file " + this.resource);
 
     // first find all the locale parts we need to search
     var locales = options.locales;
