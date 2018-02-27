@@ -704,19 +704,19 @@ limitations under the License.
 	    <run-nodeunit-all assembly="dynamic" compilation="compiled" sync="sync" failquit="true"/>
 		<run-nodeunit-all assembly="dynamic" compilation="compiled" sync="async" failquit="true"/>
 	</target>
-	<target name="test.assembled.uncompiled.nu" depends="update.package.json,assemble.unittest">
+	<target name="test.assembled.uncompiled.nu" depends="update.package.json,assemble.unittest.assembled">
 	    <run-nodeunit-all assembly="assembled" compilation="uncompiled" sync="sync" failquit="true"/>
 		<run-nodeunit-all assembly="assembled" compilation="uncompiled" sync="async" failquit="true"/>
 	</target>
-	<target name="test.assembled.compiled.nu" depends="update.package.json,assemble.unittest">
+	<target name="test.assembled.compiled.nu" depends="update.package.json,assemble.unittest.assembled">
 	    <run-nodeunit-all assembly="assembled" compilation="compiled" sync="sync" failquit="true"/>
 		<run-nodeunit-all assembly="assembled" compilation="compiled" sync="async" failquit="true"/>
 	</target>
-	<target name="test.dyndata.uncompiled.nu" depends="assemble.unittest.dyndata,update.package.json">
+	<target name="test.dyndata.uncompiled.nu" depends="update.package.json,assemble.unittest.dyndata">
 	    <run-nodeunit-all assembly="dynamicdata" compilation="uncompiled" sync="sync" failquit="true"/>
 	    <run-nodeunit-all assembly="dynamicdata" compilation="uncompiled" sync="async" failquit="true"/>
 	</target>
-	<target name="test.dyndata.compiled.nu" depends="assemble.unittest.dyndata,update.package.json">
+	<target name="test.dyndata.compiled.nu" depends="update.package.json,assemble.unittest.dyndata">
 	    <run-nodeunit-all assembly="dynamicdata" compilation="compiled" sync="sync" failquit="true"/>
 	    <run-nodeunit-all assembly="dynamicdata" compilation="compiled" sync="async" failquit="true"/>
 	</target>

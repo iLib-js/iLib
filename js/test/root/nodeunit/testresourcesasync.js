@@ -26,7 +26,7 @@ if (typeof(ResBundle) === "undefined") {
 if (typeof(Locale) === "undefined") {
     var Locale = require("../.././../lib/Locale.js");
 }
-if (ilib._getPlatform() === "nodejs") {
+if (ilib._getPlatform() === "nodejs" && ilib._dyndata && ilib._dyncode) {
     var path = require("path");
 }
 

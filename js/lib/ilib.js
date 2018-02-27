@@ -131,17 +131,17 @@ ilib.clearPseudoLocales();
  */
 ilib._getPlatform = function () {
     if (!ilib._platform) {
-    	try {
-    		if (typeof(java.lang.Object) !== 'undefined') {
-    			ilib._platform = (typeof(process) !== 'undefined') ? "trireme" : "rhino";
-    			return ilib._platform;
-    		}
-    	} catch (e) {}
-    	
-        if (typeof(process) !== 'undefined' && process.versions && process.versions.node && typeof(module) !== 'undefined') {
+        try {
+            if (typeof(java.lang.Object) !== 'undefined') {
+                ilib._platform = (typeof(process) !== 'undefined') ? "trireme" : "rhino";
+                return ilib._platform;
+            }
+        } catch (e) {}
+
+        if (typeof(global) !== 'undefined' && global.process && global.process.versions && global.process.versions.node) {
             ilib._platform = "nodejs";
         } else if (typeof(Qt) !== 'undefined') {
-        	ilib._platform = "qt";
+            ilib._platform = "qt";
         } else if (typeof(window) !== 'undefined') {
             ilib._platform = (typeof(PalmSystem) !== 'undefined') ? "webos" : "browser";
         } else {
@@ -295,10 +295,10 @@ ilib.setLocale = function (spec) {
  */
 ilib.getLocale = function () {
     if (typeof(ilib.locale) !== 'string') {
-    	var plat = ilib._getPlatform();
-    	switch (plat) {
-    		case 'browser':
-            	// running in a browser
+        var plat = ilib._getPlatform();
+        switch (plat) {
+            case 'browser':
+                // running in a browser
                 if(typeof(navigator.language) !== 'undefined') {
                     ilib.locale = navigator.language.substring(0,3) + navigator.language.substring(3,5).toUpperCase();  // FF/Opera/Chrome/Webkit    
                 }
@@ -306,65 +306,65 @@ ilib.getLocale = function () {
                     // IE on Windows
                     var lang = typeof(navigator.browserLanguage) !== 'undefined' ? 
                         navigator.browserLanguage :
-                        (typeof(navigator.userLanguage) !== 'undefined' ? 
-                            navigator.userLanguage :
-                            (typeof(navigator.systemLanguage) !== 'undefined' ?
-                                navigator.systemLanguage :
-                                undefined));
+                            (typeof(navigator.userLanguage) !== 'undefined' ? 
+                                navigator.userLanguage :
+                                    (typeof(navigator.systemLanguage) !== 'undefined' ?
+                                        navigator.systemLanguage :
+                                            undefined));
                     if (typeof(lang) !== 'undefined' && lang) {
                         // for some reason, MS uses lower case region tags
                         ilib.locale = lang.substring(0,3) + lang.substring(3,5).toUpperCase();
                     }
                 }
                 break;
-    		case 'webos':
+            case 'webos':
                 // webOS
                 if (typeof(PalmSystem.locales) !== 'undefined' && 
-                		typeof(PalmSystem.locales.UI) != 'undefined' && 
-                		PalmSystem.locales.UI.length > 0) {
+                    typeof(PalmSystem.locales.UI) != 'undefined' && 
+                    PalmSystem.locales.UI.length > 0) {
                     ilib.locale = PalmSystem.locales.UI;
                 } else if (typeof(PalmSystem.locale) !== 'undefined') {
-                	ilib.locale = PalmSystem.locale;
+                    ilib.locale = PalmSystem.locale;
                 }
-    			break;
-    		case 'rhino':
+                break;
+            case 'rhino':
                 if (typeof(environment) !== 'undefined' && environment.user && typeof(environment.user.language) === 'string' && environment.user.language.length > 0) {
-                	// running under plain rhino
+                    // running under plain rhino
                     ilib.locale = environment.user.language;
                     if (typeof(environment.user.country) === 'string' && environment.user.country.length > 0) {
                         ilib.locale += '-' + environment.user.country;
                     }
                 }
                 break;
-    		case "trireme":
-            	// under trireme on rhino emulating nodejs
-            	var lang = process.env.LANG || process.env.LANGUAGE || process.env.LC_ALL;
+            case "trireme":
+                // under trireme on rhino emulating nodejs
+                var lang = process.env.LANG || process.env.LANGUAGE || process.env.LC_ALL;
                 // the LANG variable on unix is in the form "lang_REGION.CHARSET"
                 // where language and region are the correct ISO codes separated by
                 // an underscore. This translate it back to the BCP-47 form.
                 if (lang && typeof(lang) !== 'undefined') {
                     ilib.locale = lang.substring(0,2).toLowerCase() + '-' + lang.substring(3,5).toUpperCase();
                 }
-            	break;
-    		case 'nodejs':
+                break;
+            case 'nodejs':
                 // running under nodejs
-                var lang = process.env.LANG || process.env.LC_ALL;
+                var lang = global.process.env.LANG || global.process.env.LC_ALL;
                 // the LANG variable on unix is in the form "lang_REGION.CHARSET"
                 // where language and region are the correct ISO codes separated by
                 // an underscore. This translate it back to the BCP-47 form.
                 if (lang && typeof(lang) !== 'undefined') {
                     ilib.locale = lang.substring(0,2).toLowerCase() + '-' + lang.substring(3,5).toUpperCase();
                 }
-    			break;
-    		case 'qt':
-            	// running in the Javascript engine under Qt/QML
-            	var locobj = Qt.locale();
-            	var lang = locobj.name && locobj.name.replace("_", "-") || "en-US";
-    			break;
-    	}
+                break;
+            case 'qt':
+                // running in the Javascript engine under Qt/QML
+                var locobj = Qt.locale();
+                var lang = locobj.name && locobj.name.replace("_", "-") || "en-US";
+                break;
+        }
         ilib.locale = typeof(ilib.locale) === 'string' && ilib.locale ? ilib.locale : 'en-US';
         if (ilib.locale === "en") {
-        	ilib.locale = "en-US"; // hack to get various platforms working correctly
+            ilib.locale = "en-US"; // hack to get various platforms working correctly
         }
     }
     return ilib.locale;
@@ -399,26 +399,30 @@ ilib.setTimeZone = function (tz) {
  */
 ilib.getTimeZone = function() {
     if (typeof(ilib.tz) === 'undefined') {
-        if (typeof(navigator) !== 'undefined' && typeof(navigator.timezone) !== 'undefined') {
-            // running in a browser
-            if (navigator.timezone.length > 0) {
-                ilib.tz = navigator.timezone;
-            }
-        } else if (typeof(PalmSystem) !== 'undefined' && typeof(PalmSystem.timezone) !== 'undefined') {
-            // running in webkit on webOS
-            if (PalmSystem.timezone.length > 0) {
-                ilib.tz = PalmSystem.timezone;
-            }
-        } else if (typeof(environment) !== 'undefined' && typeof(environment.user) !== 'undefined') {
-            // running under rhino
-            if (typeof(environment.user.timezone) !== 'undefined' && environment.user.timezone.length > 0) {
-                ilib.tz = environment.user.timezone;
-            }
-        } else if (typeof(process) !== 'undefined' && typeof(process.env) !== 'undefined') {
-            // running in nodejs
-            if (process.env.TZ && typeof(process.env.TZ) !== "undefined") {
-                ilib.tz = process.env.TZ;
-            }
+        switch (ilib._getPlatform()) {
+            case 'browser':
+                // running in a browser
+                if (navigator.timezone.length > 0) {
+                    ilib.tz = navigator.timezone;
+                }
+                break;
+            case 'webos':
+                // running in webkit on webOS
+                if (PalmSystem.timezone.length > 0) {
+                    ilib.tz = PalmSystem.timezone;
+                }
+                break;
+            case 'rhino':
+                // running under rhino
+                if (typeof(environment.user.timezone) !== 'undefined' && environment.user.timezone.length > 0) {
+                    ilib.tz = environment.user.timezone;
+                }
+                break;
+            case 'nodejs':
+                if (typeof(global.process.env.TZ) !== "undefined" && global.process.env.TZ) {
+                    ilib.tz = global.process.env.TZ;
+                }
+                break;
         }
         
         ilib.tz = ilib.tz || "local"; 
