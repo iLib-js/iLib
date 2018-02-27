@@ -157,12 +157,12 @@ limitations under the License.
 	</target>
     <target name="assemble.core.dyndata" depends="prepare,gen.manifest.locale,testilib.core" unless="core.ilib.core.not.needed" description="assembles the js files into a single file in the right order to satisfy dependencies">
         <runassemble
-            assembly="dynamic"
+            assembly="dynamicdata"
             size="core"
             compilation="uncompiled"
             locales="${locales.default}"/>
         <runassemble
-            assembly="dynamic"
+            assembly="dynamicdata"
             size="core"
             compilation="compiled"
             locales="${locales.default}"/>
@@ -206,12 +206,12 @@ limitations under the License.
 	</target>
     <target name="assemble.standard.dyndata" depends="prepare,gen.manifest.locale,testilib.standard" unless="core.ilib.standard.not.needed" description="assembles the js files into a single file in the right order to satisfy dependencies">
         <runassemble
-            assembly="dynamic"
+            assembly="dynamicdata"
             size="standard"
             compilation="uncompiled"
             locales="${locales.default}"/>
         <runassemble
-            assembly="dynamic"
+            assembly="dynamicdata"
             size="standard"
             compilation="compiled"
             locales="${locales.default}"/>
@@ -239,12 +239,12 @@ limitations under the License.
 	</target>
 	<target name="assemble.full.dyndata" depends="prepare,gen.manifest.locale,testilib.full" unless="core.ilib.full.not.needed" description="assembles the js files into a single file in the right order to satisfy dependencies">
         <runassemble
-            assembly="dynamic"
+            assembly="dynamicdata"
             size="full"
             compilation="uncompiled"
             locales="${locales.default}"/>
         <runassemble
-            assembly="dynamic"
+            assembly="dynamicdata"
             size="full"
             compilation="compiled"
             locales="${locales.default}"/>
@@ -272,12 +272,12 @@ limitations under the License.
 	</target>
 	<target name="assemble.unittest.dyndata" depends="prepare,gen.manifest.locale,update.package.json,testilibut" unless="ilib-ut.not.needed" description="assembles only the locales needed for the unit tests">
         <runassemble
-            assembly="dynamic"
+            assembly="dynamicdata"
             size="ut"
             compilation="uncompiled"
             locales="${locales.unittest}"/>
         <runassemble
-            assembly="dynamic"
+            assembly="dynamicdata"
             size="ut"
             compilation="compiled"
             locales="${locales.unittest}"/>
@@ -307,12 +307,12 @@ limitations under the License.
 	</target>
     <target name="assemble.demo.dyndata" depends="prepare,gen.manifest.locale,testilibdemo" unless="ilib-demo.not.needed" description="assembles the js files into a single file for the demo">
         <runassemble
-            assembly="dynamic"
+            assembly="dynamicdata"
             size="demo"
             compilation="uncompiled"
             locales="${locales.demo}"/>
         <runassemble
-            assembly="dynamic"
+            assembly="dynamicdata"
             size="demo"
             compilation="compiled"
             locales="${locales.demo}"/>

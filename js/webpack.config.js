@@ -36,7 +36,7 @@ module.exports = function(env, args) {
         size = "standard";
     }
 
-    if (assembly !== "dynamic" && assembly !== "assembled") {
+    if (assembly !== "dynamic" && assembly !== "dynamicdata" && assembly !== "assembled") {
         assembly = "assembled";
     }
 
@@ -107,7 +107,7 @@ module.exports = function(env, args) {
     };
 
     ret.output.filename = "ilib-" + size;
-    if (assembly === "dynamic") {
+    if (assembly === "dynamicdata") {
         ret.output.filename += "-dyn";
     }
     if (compilationType === "compiled") {

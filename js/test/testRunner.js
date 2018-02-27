@@ -109,7 +109,7 @@ if (process.argv.length > 2) {
 		// dynamicdata: pre-assembled code, but dynamically loaded locale data
 		// dynamic: dynamically loaded code and locale data
 		console.log("Assembly " + assembly + " is unknown. Using 'dynamic' by default.");
-		compilation = "dynamic";
+		assembly = "dynamic";
 	}
 }
 
@@ -171,7 +171,7 @@ for (var i = 0; i < suite.length; i++) {
         suites = require("./" + suiteFilesPath).files.forEach(function(file) {
             var filepath = path.join(suite[i], "nodeunit", file);
             if (!modules[suite[i]]) modules[suite[i]] = {};
-            if (assembly === "dynamic") {
+            if (assembly === "dynamicdata") {
                 var test = require("./" + filepath);
                 for (var t in test) {
                     modules[suite[i]][t] = test[t];
