@@ -1,6 +1,6 @@
 /*
  * NormString.js - ilib normalized string subclass definition
-d *
+ * 
  * Copyright © 2013-2015, 2018, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -122,9 +122,9 @@ NormString.init = function(options) {
     var forms = formDependencies[form];
     var toLoad = [];
     forms.forEach(function(f) {
-        if (!ilib.data.norm[f]) {
-            files.push(forms[f] + "/" + script + ".json");
-            toLoad.push(forms[f]);
+        if (!ilib.data.norm[f] || JSUtils.isEmpty(ilib.data.norm[f])) {
+            files.push(f + "/" + script + ".json");
+            toLoad.push(f);
         }
     });
 
