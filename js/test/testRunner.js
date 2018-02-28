@@ -72,6 +72,7 @@ var compilation = "uncompiled";
 var size = "full";
 var suite = suiteDefinitions.full;
 var sync = true;
+var target = "node";
 
 // Usage: testSuite.js [assembly_style [compilation_style [suite_name_or_collection [sync|async]]]]
 if (process.argv.length > 2) {
@@ -125,12 +126,10 @@ if (assembly === "dynamic") {
     ilib._dyncode = true; // indicate that we are using dynamically loaded code
     ilib._dyndata = true;
 } else {
-    var fileName = "../output/js/ut/";
-    fileName += assembly + "/";
-    if (assembly !== "assembled") {
-        fileName += compilation + "/";
-    }
-    fileName += "ilib-ut" + ((assembly === "dynamicdata") ? "-dyn" : "") + ((compilation === "compiled") ? "-compiled" : "") + ".js";
+    var dirName = ["ut", assembly, compilation, (assembly === "dynamicdata" ? target : "web")].join("-");
+    var urlPath = path.join('../output/js', dirName);
+    
+    fileName = path.join(urlPath, "ilib-ut" + ((assembly === "dynamicdata") ? "-dyn" : "") + ((compilation === "compiled") ? "-compiled" : "") + ".js");
     console.log("loading in " + fileName);
     var script = fs.readFileSync(fileName, "utf-8");
     geval(script);
@@ -169,22 +168,19 @@ for (var i = 0; i < suite.length; i++) {
     var suiteFilesPath = path.join(suite[i], suiteFile);
     if (fs.existsSync(suiteFilesPath)) {
         suites = require("./" + suiteFilesPath).files.forEach(function(file) {
-            var filepath = path.join(suite[i], "nodeunit", file);
+            var subtest, filepath = path.join(suite[i], "nodeunit", file);
             if (!modules[suite[i]]) modules[suite[i]] = {};
-            if (assembly === "dynamicdata") {
-                var test = require("./" + filepath);
-                for (var t in test) {
-                    modules[suite[i]][t] = test[t];
-                }
+            if (assembly === "dynamic") {
+                subtest = require("./" + filepath);
             } else {
                 global.module = { exports: {} };
                 var test = fs.readFileSync(filepath, "utf-8");
                 geval(test);
-                var subtest = global.module.exports;
-                if (subtest) {
-                    for (var t in subtest) {
-                        modules[suite[i]][t] = subtest[t];
-                    }
+                subtest = global.module.exports;
+            }
+            if (subtest) {
+                for (var t in subtest) {
+                    modules[suite[i]][t] = subtest[t];
                 }
             }
         });

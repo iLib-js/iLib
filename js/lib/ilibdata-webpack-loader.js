@@ -389,7 +389,7 @@ function emitLocaleData(compilation, options) {
                 " */\n"
             output += (options.assembly === "dynamicdata") ?
                 "module.exports.installLocale = function(ilib) {\n" :
-                "var ilib = require('../../../../../lib/ilib.js');\n";
+                "var ilib = require('../../../../lib/ilib.js');\n";
 
             for (var dataFile in dataFiles) {
                 output += dataFiles[dataFile];

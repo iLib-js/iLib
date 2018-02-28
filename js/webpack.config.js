@@ -23,10 +23,11 @@ const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 // const IlibWebpackLoader = require("ilib-webpack-loader");
 
 module.exports = function(env, args) {
-    var env = (args && args.env) || {};
+    env = env || {};
     var size = env.size || "standard",
         assembly = env.assembly || "assembled",
         compilationType = env.compilation || "uncompiled",
+        target = env.target || "web",
         locales = env.locales,
         ilibRoot = path.resolve(env.ilibRoot || "."),
         outputPath;
@@ -43,6 +44,11 @@ module.exports = function(env, args) {
     if (compilationType !== "compiled" && compilationType !== "uncompiled") {
         compilationType = "uncompiled";
     }
+    
+    if (target !== "web" && target !== "node") {
+        // TODO add other targets here as necessary
+        target = "web";
+    }
 
     if (locales) {
         locales = locales.split(",");
@@ -57,9 +63,8 @@ module.exports = function(env, args) {
         ];
     }
 
-    var urlPath = ((assembly === "assembled") ?
-        path.join('output/js', size, assembly) :
-        path.join('output/js', size, assembly, compilationType)) + "/";
+    var dirName = [size, assembly, compilationType, target].join("-");
+    var urlPath = path.join('output/js', dirName);
     outputPath = (assembly === "assembled") ?
         path.resolve(__dirname, urlPath) :
         path.resolve(__dirname, urlPath);
@@ -85,7 +90,8 @@ module.exports = function(env, args) {
                         assembly: assembly,
                         compilation: compilationType,
                         size: size,
-                        ilibRoot: ilibRoot
+                        ilibRoot: ilibRoot,
+                        target: target
                     }
                 }
             }]
@@ -106,6 +112,10 @@ module.exports = function(env, args) {
         ]
     };
 
+    if (target !== "web") {
+        ret.target = target;
+    }
+    
     ret.output.filename = "ilib-" + size;
     if (assembly === "dynamicdata") {
         ret.output.filename += "-dyn";
