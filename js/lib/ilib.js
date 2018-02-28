@@ -402,13 +402,13 @@ ilib.getTimeZone = function() {
         switch (ilib._getPlatform()) {
             case 'browser':
                 // running in a browser
-                if (navigator.timezone.length > 0) {
+                if (navigator.timezone && navigator.timezone.length > 0) {
                     ilib.tz = navigator.timezone;
                 }
                 break;
             case 'webos':
                 // running in webkit on webOS
-                if (PalmSystem.timezone.length > 0) {
+                if (PalmSystem.timezone && PalmSystem.timezone.length > 0) {
                     ilib.tz = PalmSystem.timezone;
                 }
                 break;
@@ -419,7 +419,7 @@ ilib.getTimeZone = function() {
                 }
                 break;
             case 'nodejs':
-                if (typeof(global.process.env.TZ) !== "undefined" && global.process.env.TZ) {
+                if (global.process.env && typeof(global.process.env.TZ) !== "undefined") {
                     ilib.tz = global.process.env.TZ;
                 }
                 break;

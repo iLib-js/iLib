@@ -209,7 +209,7 @@ limitations under the License.
 	<target name="testilibut" description="test whether or not the ilib-ut single file needs to be rebuilt">
 		<uptodate property="ilib-ut.not.needed" targetfile="${build.output.js}/ut-assembled-uncompiled-web/ilib-ut.js">
 			<srcfiles dir="${build.lib}" includes="**/*.js" excludes="ilib-*.js,**/test/**,runner.js,*Loader.js" />
-			<srcfiles dir="${build.lib}" includes="ilib-ut-webpack.js"/>
+			<srcfiles dir="${build.lib}" includes="ilib-ut-webpack.js,lib/WebpackLoader.js"/>
 			<srcfiles dir="${build.locale}" includes="**/*.json" />
 		</uptodate>
 	</target>
@@ -217,7 +217,14 @@ limitations under the License.
         <runassemble size="ut" locales="${locales.unittest}"/>
         <runassemble size="ut" compilation="compiled" locales="${locales.unittest}"/>
     </target>
-    <target name="assemble.unittest.dyndata" depends="prepare,gen.manifest.locale,update.package.json,testilibut" unless="ilib-ut.not.needed" description="assembles only the locales needed for the unit tests">
+    <target name="testilibut.dyndata" description="test whether or not the ilib-ut single file needs to be rebuilt">
+        <uptodate property="ilib-ut.dyndata.not.needed" targetfile="${build.output.js}/ut-dynamicdata-uncompiled-web/ilib-ut-dyn.js">
+            <srcfiles dir="${build.lib}" includes="**/*.js" excludes="ilib-*.js,**/test/**,runner.js,*Loader.js" />
+            <srcfiles dir="${build.lib}" includes="ilib-ut-webpack.js,lib/WebpackLoader.js"/>
+            <srcfiles dir="${build.locale}" includes="**/*.json" />
+        </uptodate>
+    </target>
+    <target name="assemble.unittest.dyndata" depends="prepare,gen.manifest.locale,update.package.json,testilibut.dyndata" unless="ilib-ut.dyndata.not.needed" description="assembles only the locales needed for the unit tests">
         <runassemble assembly="dynamicdata" size="ut" locales="${locales.unittest}"/>
         <runassemble assembly="dynamicdata" size="ut" compilation="compiled" locales="${locales.unittest}"/>
     </target>
@@ -225,7 +232,7 @@ limitations under the License.
    <target name="testilibut.node" description="test whether or not the ilib-ut single file needs to be rebuilt">
         <uptodate property="ilib-ut.node.not.needed" targetfile="${build.output.js}/ut-assembled-uncompiled-node/ilib-ut.js">
             <srcfiles dir="${build.lib}" includes="**/*.js" excludes="ilib-*.js,**/test/**,runner.js,*Loader.js" />
-            <srcfiles dir="${build.lib}" includes="ilib-ut-webpack.js"/>
+            <srcfiles dir="${build.lib}" includes="ilib-ut-webpack.js,lib/WebpackLoader.js"/>
             <srcfiles dir="${build.locale}" includes="**/*.json" />
         </uptodate>
     </target>
@@ -233,7 +240,14 @@ limitations under the License.
         <runassemble size="ut" locales="${locales.unittest}" target="node"/>
         <runassemble size="ut" locales="${locales.unittest}" compilation="compiled" target="node"/>
     </target>
-    <target name="assemble.unittest.dyndata.node" depends="prepare,gen.manifest.locale,update.package.json,testilibut.node" unless="ilib-ut.node.not.needed" description="assembles only the locales needed for the unit tests">
+   <target name="testilibut.dyndata.node" description="test whether or not the ilib-ut single file needs to be rebuilt">
+        <uptodate property="ilib-ut.dyndata.node.not.needed" targetfile="${build.output.js}/ut-dynamicdata-uncompiled-node/ilib-ut-dyn.js">
+            <srcfiles dir="${build.lib}" includes="**/*.js" excludes="ilib-*.js,**/test/**,runner.js,*Loader.js" />
+            <srcfiles dir="${build.lib}" includes="ilib-ut-webpack.js,lib/WebpackLoader.js"/>
+            <srcfiles dir="${build.locale}" includes="**/*.json" />
+        </uptodate>
+    </target>
+    <target name="assemble.unittest.dyndata.node" depends="prepare,gen.manifest.locale,update.package.json,testilibut.dyndata.node" unless="ilib-ut.dyndata.node.not.needed" description="assembles only the locales needed for the unit tests">
         <runassemble assembly="dynamicdata" size="ut" locales="${locales.unittest}" target="node"/>
         <runassemble assembly="dynamicdata" size="ut" compilation="compiled" locales="${locales.unittest}" target="node"/>
     </target>
@@ -643,11 +657,11 @@ limitations under the License.
 	    <run-nodeunit-all assembly="dynamic" compilation="compiled" sync="sync" failquit="true"/>
 		<run-nodeunit-all assembly="dynamic" compilation="compiled" sync="async" failquit="true"/>
 	</target>
-	<target name="test.assembled.uncompiled.nu" depends="update.package.json,assemble.unittest.assembled">
+	<target name="test.assembled.uncompiled.nu" depends="update.package.json,assemble.unittest.assembled.node">
 	    <run-nodeunit-all assembly="assembled" compilation="uncompiled" sync="sync" failquit="true"/>
 		<run-nodeunit-all assembly="assembled" compilation="uncompiled" sync="async" failquit="true"/>
 	</target>
-	<target name="test.assembled.compiled.nu" depends="update.package.json,assemble.unittest.assembled">
+	<target name="test.assembled.compiled.nu" depends="update.package.json,assemble.unittest.assembled.node">
 	    <run-nodeunit-all assembly="assembled" compilation="compiled" sync="sync" failquit="true"/>
 		<run-nodeunit-all assembly="assembled" compilation="compiled" sync="async" failquit="true"/>
 	</target>
@@ -936,7 +950,7 @@ limitations under the License.
 	<target name="test.rhino" depends="test.assembled.compiled.rhino,test.assembled.uncompiled.rhino,test.dynamic.uncompiled.rhino,test.dynamic.compiled.rhino">
 	</target>
 
-	<target name="test.remote" depends="prepare,assemble.unittest" description="Run a remote server to test ilib in remote browsers">
+	<target name="test.remote" depends="prepare,assemble.unittest.assembled,assemble.unittest.dyndata" description="Run a remote server to test ilib in remote browsers">
 	    <exec osfamily="unix" executable="node" dir="${build.base}" failifexecutionfails="true">
 			<arg value="../node_modules/http-server/bin/http-server"/>
 			<arg value="-p"/>

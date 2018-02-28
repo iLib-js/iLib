@@ -75,7 +75,7 @@ module.exports = function(env, args) {
             filename: 'ilib-standard.js',
             chunkFilename: 'ilib.[name].js',
             path: outputPath,
-            publicPath: "/" + urlPath,
+            publicPath: "/" + urlPath + "/",
             library: 'ilib',
             libraryTarget: 'umd'
         },

@@ -43,6 +43,10 @@ function loadLocaleData(ilib, locale, callback) {
     }
 }
 
+function getData(dataName, tzName) {
+    return dataName === "zoneinfo" ? ilib.data.zoneinfo[tzName] : ilib.data[dataName];
+}
+
 /**
  * @class
  * Implementation of Loader for webpack.
@@ -71,6 +75,7 @@ module.exports = function (ilib) {
         var dataName = base;
         var locale = undefined;
         var filename;
+        var tzName;
 
         if (dir) {
             var locpath = /(^|\/)([a-z][a-z][a-z]?(\/[A-Z][a-z][a-z][a-z])?(\/[A-Z][A-Z](\/[A-Z]+)?)?)$/.exec(dir);
@@ -81,15 +86,22 @@ module.exports = function (ilib) {
 
         filename = locale && locale.getSpec() || (base === "ilibmanifest" ? "ilibmanifest" : "root");
         var dataName = base;
-        if (dir && locale) {
-            dataName += "_" + filename;
+        if (dir) {
+            if (locale) {
+                dataName += "_" + filename;
+            } else if (dir === "charset" || dir === "charmaps") {
+                dataName = dir + "_" + base;
+            } else if (dir.substring(0, 9) === "zoneinfo/") {
+                dataName = "zoneinfo";
+                tzName = pathname.substring(9).substring(0, - 5);
+            }
         }
 
         dataName = dataName.replace(/[\.:\(\)\/\\\+\-]/g, "_");
 
         if (alreadyLoaded.has(filename)) {
             if (cb && typeof(cb) === "function") {
-                cb(ilib.data[dataName]);
+                cb(getData(dataName, tzName));
             }
         } else {
             console.log("WebpackLoader._loadFile: loading " + pathname + (sync ? " sync" : " async") + " as " + filename + ".js");
@@ -97,7 +109,7 @@ module.exports = function (ilib) {
             alreadyLoaded.add(filename);
             loadLocaleData(ilib, filename, function(callback, data) {
                 if (callback && typeof(callback) === "function") {
-                    callback(data || ilib.data[dataName]);
+                    callback((data && typeof(data) === "object" && typeof(data.installLocale) === "function") ? getData(dataName, tzName) : data);
                 }
             }.bind(this, cb));
         }

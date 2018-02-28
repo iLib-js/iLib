@@ -25,7 +25,6 @@ var NodeLoader = require("../lib/NodeLoader.js");
 var AsyncNodeLoader = require("../lib/AsyncNodeLoader.js");
 
 var nodeunit = require("nodeunit");
-var reporter = nodeunit.reporters.minimal;
 
 var suiteDefinitions = {
 	"core": [
@@ -73,6 +72,7 @@ var size = "full";
 var suite = suiteDefinitions.full;
 var sync = true;
 var target = "node";
+var reporter;
 
 // Usage: testSuite.js [assembly_style [compilation_style [suite_name_or_collection [sync|async]]]]
 if (process.argv.length > 2) {
@@ -86,9 +86,11 @@ if (process.argv.length > 2) {
 			if (suiteDefinitions[size]) {
                 console.log("Only running set " + size);
                 suite = suiteDefinitions[size];
+                reporter = nodeunit.reporters.minimal;
 			} else if (suiteDefinitions.full.indexOf(size) > -1) {
                 console.log("Only running suite " + size);
                 suite = [size];
+                reporter = nodeunit.reporters["default"];
 			} else {
 			    if (size !== "all") {
 			        console.log("Suite " + size + " is unrecognized. Testing all suites by default.");
@@ -96,6 +98,7 @@ if (process.argv.length > 2) {
 			        console.log("Testing all suites.");
 			    }
                 suite = suiteDefinitions.full;
+                reporter = nodeunit.reporters.minimal;
 			}
 		}
 		compilation = process.argv[3];
@@ -112,6 +115,9 @@ if (process.argv.length > 2) {
 		console.log("Assembly " + assembly + " is unknown. Using 'dynamic' by default.");
 		assembly = "dynamic";
 	}
+} else {
+    console.log('Usage: testRunner.js [assembled|dynamicdata|dynamic [compiled|uncompiled [suite_name_or_collection [sync|async]]]]');
+    process.exit(1);
 }
 
 console.log("Running " + compilation + " " + assembly + " " + (sync ? "sync" : "async") + " suites: " + JSON.stringify(suite));
