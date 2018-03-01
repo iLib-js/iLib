@@ -1270,13 +1270,13 @@ module.exports.testresources = {
        test.done();
     },
     
-    testResBundleConstructAsynchPreassembled: function(test) {
+    testResBundleConstructPreassembledCallback: function(test) {
         test.expect(6);
         var onloadcalled = false;
         ResBundle.resources = undefined;
         var rb = new ResBundle({
             locale: "fr-CA-govt",
-            sync: false,
+            sync: true,
             onLoad: function(rb) {
                 test.ok(typeof(rb) !== "undefined");
                 
@@ -1293,12 +1293,12 @@ module.exports.testresources = {
         test.done();
     },
     
-    testResBundleConstructAsynchPreassembledCached: function(test) {
+    testResBundleConstructPreassembledCachedCallback: function(test) {
         test.expect(6);
         var onloadcalled = false;
         var rb = new ResBundle({
             locale: "fr-CA-govt",
-            sync: false,
+            sync: true,
             onLoad: function(rb) {
                 test.ok(typeof(rb) !== "undefined");
                 
