@@ -141,13 +141,13 @@ module.exports.phoneloc = {
         
         var oldLoader = ilib._load;
         ilib.setLoaderCallback(mockLoaderPhoneLoc);
+        test.expect(2);
     
         new PhoneLocale({
             countryCode: "44",
             sync: false,
             onLoad: function (loc) {
                 ilib.setLoaderCallback(oldLoader);
-        test.expect(2);
                 test.ok(loc !== null);
                 test.equal(loc.getRegion(), "GB");                
                 test.done();

@@ -305,10 +305,11 @@ function emitLocaleData(compilation, options) {
 
             charsets.forEach(function(charset) {
                 var data, cwdToData = path.join(dataRoot, "charset", charset + ".json");
+				filename = "charset_" + charset;
                 if (!outputSet.root[filename] && fs.existsSync(cwdToData)) {
                     data = fs.readFileSync(cwdToData, "utf-8");
                     var line = "ilib.data.charset_" + toIlibDataName(charset) + " = " + data + ";\n";
-                    outputSet.root[charset] = line;
+                    outputSet.root[filename] = line;
                     manifest.push(path.join("charset", charset + ".json"));
                     
                     var cs = JSON.parse(data);
@@ -320,15 +321,13 @@ function emitLocaleData(compilation, options) {
 
             for (var locale in charmaps) {
                 var loc = (locale === "*" ? "root" : locale);
-                if (!outputSet[loc]) {
-                    outputSet[loc] = {};
-                }
                 charmaps[locale].forEach(function(charset) {
                     var data, cwdToData = path.join(dataRoot, "charmaps", charset + ".json");
-                    if (!optional.has(charset) && !outputSet[loc][charset] && fs.existsSync(cwdToData)) {
+					filename = "charmaps_" + charset;
+                    if (!optional.has(charset) && !outputSet.root[filename] && fs.existsSync(cwdToData)) {
                         data = fs.readFileSync(cwdToData, "utf-8");
                         var line = "ilib.data.charmaps_" + toIlibDataName(charset) + " = " + data + ";\n";
-                        outputSet[loc][charset] = line;
+                        outputSet.root[filename] = line;
                         manifest.push(path.join("charmaps", charset + ".json"));
                     }
                 });

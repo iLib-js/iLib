@@ -390,7 +390,7 @@ Utils.loadData = function(params) {
 		
 		// async loading would have put the data into the cache already, checked just above this. So,
 		// only check the merged loc data if we are in sync mode.
-		if (type === "json" && sync) {
+		if (type === "json" && (!ilib._dyndata || sync)) {
 			// console.log("type is json");
 			basename = name.substring(0, name.lastIndexOf("."));
 			if (nonlocale) {
