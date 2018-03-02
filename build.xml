@@ -42,7 +42,7 @@ limitations under the License.
         <attribute name="target"/>
         <sequential>
             <subant target="@{target}"  >
-            	<property name="dist" value="${build.dist}"/>
+                <property name="dist" value="${build.dist}"/>
                 <fileset dir="." includes="*/build.xml"/>
             </subant>
         </sequential>
@@ -71,6 +71,7 @@ limitations under the License.
 
 	<target name="dist" depends="all" description="Build the distribution package.">
 		<mkdir dir="${build.dist}" description="Dir to contain all the distribution outputs"/>
+		<mkdir dir="${build.export}" description="Dir to contain all the exported outputs"/>
 		<iterate target="export"/>
 		<zip destfile="${build.dist}/ilib-${version}.zip"
 			basedir="${build.export}"
