@@ -580,7 +580,7 @@ USStateHandler.prototype.vsc = function (number, currentChar, fields, regionSett
  * Creates a phone handler instance that is correct for the locale. Phone handlers are
  * used to handle parsing of the various fields in a phone number.
  * 
- * @protected
+ * @private
  * @static
  * @return {PhoneHandler} the correct phone handler for the locale
  */

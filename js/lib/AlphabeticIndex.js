@@ -40,10 +40,11 @@ var NormString = require("./NormString.js");
  * language. An example would be an index of person names in a contact
  * list, organized by the first letter of the family name.<p>
  *
- * Example in English:
+ * Example in English:<p>
+ * 
  * Buckets: A B C D E F G H I J K L M N O P Q R S T U V W X Y Z #<p>
  *
- * <code>
+ * <pre>
  * A
  *    Adams
  *    Albers
@@ -53,7 +54,7 @@ var NormString = require("./NormString.js");
  *    Banerjee
  *    Brunshteyn
  * ...
- * </code>
+ * </pre>
  *
  * This class can give you the sorted list of labels to show in the UI. It can
  * also organize a list of string elements into buckets for each

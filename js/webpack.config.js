@@ -70,7 +70,7 @@ module.exports = function(env, args) {
         path.resolve(__dirname, urlPath);
 
     var ret = {
-        entry: './lib/ilib-' + size + '-webpack.js',
+        entry: './lib/metafiles/ilib-' + size + '-webpack.js',
         output: {
             filename: 'ilib-standard.js',
             chunkFilename: 'ilib.[name].js',
@@ -84,7 +84,7 @@ module.exports = function(env, args) {
                 test: /\.js$/, // Run the loader on all .js files
                 exclude: /(node_modules|webpack)/, // ignore all files in the node_modules or webpack folders
                 use: {
-                    loader: path.resolve('./lib/ilibdata-webpack-loader.js'),
+                    loader: path.resolve('./ilibdata-webpack-loader.js'),
                     options: {
                         locales: locales,
                         assembly: assembly,
