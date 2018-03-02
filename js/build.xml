@@ -256,7 +256,7 @@ limitations under the License.
     <target name="assemble.unittest.dyncode" depends="prepare,gen.manifest.locale" description="prepares dynamic load code for the unit tests"/>
 
 	<target name="testilibdemo" description="test whether or not the ilib-demo file needs to be rebuilt">
-		<uptodate property="ilib-demo.not.needed" targetfile="${build.output.js}/demo-assembled-uncompiled-web/ilib-demo.js">
+		<uptodate property="ilib-demo.not.needed" targetfile="${build.output.js}/demo-dynamicdata-uncompiled-web/ilib-demo-dyn.js">
 			<srcfiles dir="${build.lib}" includes="**/*.js" excludes="ilib-*.js,**/test/**,runner.js,*Loader.js"/>
 			<srcfiles dir="${build.lib}" includes="metafiles/ilib-demo-webpack.js"/>
 			<srcfiles dir="${build.locale}" includes="**/*.json"/>
@@ -426,8 +426,8 @@ limitations under the License.
 				<include name="**/*.js"/>
 			</fileset>
 		</copy>
-		<mkdir dir="${build.export}/docs/jsdoc"/>
-		<copy todir="${build.export}/docs/jsdoc">
+		<mkdir dir="${build.export}/doc/jsdoc"/>
+		<copy todir="${build.export}/doc/jsdoc">
 			<fileset dir="${build.jsdoc}">
 				<include name="**/*"/>
 			</fileset>
@@ -773,6 +773,7 @@ limitations under the License.
 		</uptodate>
 	</target>
 	<target name="doc"
+            depends="testjsdoc"
             description="creates jsdoc for all local java files in this project"
             unless="core.jsdoc.not.needed">
 		<delete dir="${build.jsdoc}"/>

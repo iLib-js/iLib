@@ -63,23 +63,26 @@ limitations under the License.
 	<!-- =================================================================== -->
 	<target name="all" depends="export,doc" description="Build everything. This is the target that the build should run."/>
 
-	<target name="clean" depends="run.qmake" description="Remove all generated files to start from scratch">
+	<target name="clean" description="Remove all generated files to start from scratch">
 		<delete dir="${build.output.qt}"/>
 		<delete dir="${build.output}"/>
 		<delete dir="${build.export}/qt"/>
-		<sequential>
-			<exec osfamily="unix" executable="make" dir="${build.filereader}" failifexecutionfails="true" failonerror="true">
-				<arg line="clean"/>
-			</exec>
-			<exec osfamily="mac" executable="make" dir="${build.filereader}" failifexecutionfails="true" failonerror="true">
-				<arg line="clean"/>
-			</exec>
-			<exec osfamily="windows" executable="make.exe" dir="${build.filereader}" failifexecutionfails="true"  failonerror="true">
-				<arg line="clean"/>
-			</exec>
-		</sequential>
 	</target>
-	
+
+    <target name="qmake.clean" depends="run.qmake" description="Remove all generated files to start from scratch">
+        <sequential>
+            <exec osfamily="unix" executable="make" dir="${build.filereader}" failifexecutionfails="true" failonerror="true">
+                <arg line="clean"/>
+            </exec>
+            <exec osfamily="mac" executable="make" dir="${build.filereader}" failifexecutionfails="true" failonerror="true">
+                <arg line="clean"/>
+            </exec>
+            <exec osfamily="windows" executable="make.exe" dir="${build.filereader}" failifexecutionfails="true"  failonerror="true">
+                <arg line="clean"/>
+            </exec>
+        </sequential>
+    </target>
+
 	<target name="test.qmake" description="test whether or not we need to run qmake to update the Makefile">
 		<uptodate property="qmake.not.needed" targetfile="${build.filereader}/debug">
 			<srcfiles dir="${build.filereader}" includes="Makefile*" />

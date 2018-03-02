@@ -56,12 +56,18 @@ limitations under the License.
 		<iterate target="export"/>
 		<iterate target="all"/>
 	</target>
-		
-	<target name="clean" description="Remove all generated files to start from scratch">
-		<iterate target="clean"/>
-		<delete dir="${build.dist}"/>
-		<delete dir="${build.export}"/>
-	</target>
+
+    <target name="clean" description="Remove all generated files to start from scratch">
+        <delete dir="${build.dist}"/>
+        <delete dir="${build.export}"/>
+        <delete>
+            <fileset dir="${build.base}/docs/demo/scripts">
+                <include name="ilib-demo*"/>
+                <include name="ilib.*.js"/>
+            </fileset>
+        </delete>
+        <iterate target="clean"/>
+    </target>
 
 	<target name="dist" depends="all" description="Build the distribution package.">
 		<mkdir dir="${build.dist}" description="Dir to contain all the distribution outputs"/>

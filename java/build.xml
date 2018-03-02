@@ -240,10 +240,16 @@ limitations under the License.
 	<target name="dist.release" depends="jars.release" description="Create the distribution of the release versions of the built objects">
 	</target>
 	
-	<target name="export" description="export all files that other subprojects may need before building">
+	<target name="export" depends="doc" description="export all files that other subprojects may need before building">
+        <mkdir dir="${build.export}/doc/javadoc"/>
+        <copy todir="${build.export}/doc/javadoc">
+            <fileset dir="${build.javadoc}">
+                <include name="**/*"/>
+            </fileset>
+        </copy>
 	</target>
 	
-	<target name="dist" depends="dist.release,doc" description="Distribute all built objects in preparation for running">
+	<target name="dist" depends="dist.release,export" description="Distribute all built objects in preparation for running">
 		<mkdir dir="${build.export}/java"/>
 		<copy todir="${build.export}/java">
 			<fileset dir="${build.output.release}/">
@@ -255,12 +261,6 @@ limitations under the License.
 				<include name="log4j-*.jar"/>
 				<include name="log4j.properties"/>
 				<include name="json-*.jar"/>
-			</fileset>
-		</copy>
-		<mkdir dir="${build.export}/doc/javadoc"/>
-		<copy todir="${build.export}/doc/javadoc">
-			<fileset dir="${build.javadoc}">
-				<include name="**/*"/>
 			</fileset>
 		</copy>
 		<mkdir dir="${build.export}/src/java"/>
