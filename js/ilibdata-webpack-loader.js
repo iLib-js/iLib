@@ -400,23 +400,6 @@ function emitLocaleData(compilation, options) {
 
             if (options.debug) console.log("Emitting " + outputFileName + " size " + output.length);
 
-            /*
-            if (options.compilationType === "compiled") {
-                try {
-                    var result = UglifyJS.minify(output, {fromString: true});
-                    if (!result.error) {
-                        output = result.code;
-                        //console.log("After compression: " + output.length);
-                    //} else {
-                        //console.log("Error compressing " + outputFileName + ": " + result.error);
-                    }
-                } catch (e) {
-                    console.log("Error while parsing " + filename);
-                    console.log(e);
-                }
-            }
-             */
-
             var outputFile = path.join(outputPath, outputFileName);
             if (options.debug) console.log("Writing to " + outputFile);
             makeDirs(path.dirname(outputFile));
@@ -432,19 +415,26 @@ function emitLocaleData(compilation, options) {
 }
 
 var ilibDataLoader = function(source) {
-    const options = getOptions(this);
+    const options = getOptions(this) || {};
     var match;
     var output = "";
     var async = false;
     var callback;
-    var outputRoot = this.options.output.path;
+    var outputRoot = (options.output && options.output.path) || ".";
 
-    // validateOptions(schema, options, 'Ilib data loader');
+    options.locales = options.locales || [
+        "en-AU", "en-CA", "en-GB", "en-IN", "en-NG", "en-PH",
+        "en-PK", "en-US", "en-ZA", "de-DE", "fr-CA", "fr-FR",
+        "es-AR", "es-ES", "es-MX", "id-ID", "it-IT", "ja-JP",
+        "ko-KR", "pt-BR", "ru-RU", "tr-TR", "vi-VN", "zxx-XX",
+        "zh-Hans-CN", "zh-Hant-HK", "zh-Hant-TW", "zh-Hans-SG"
+    ];
+    options.assembly = options.assembly || "assembled";
+    options.compilation = options.compilation || "uncompiled";
+    options.size = options.size || "standard";
+    options.target = options.target || "web";
 
     if (options.debug) console.log("ilibdata-loader: processing file " + this.resource);
-
-    // first find all the locale parts we need to search
-    var locales = options.locales;
 
     // mix all of the locale data we find in all of the js files together so that
     // we can emit one file for each locale with all the locale data that are
@@ -490,7 +480,7 @@ var ilibDataLoader = function(source) {
 
             if (macroName) {
                 if (macroName.toLowerCase() === "localelist") {
-                    output += locales.map(function(locale) {
+                    output += options.locales.map(function(locale) {
                         return '"' + locale + '"';
                     }).join(", ");
                 } else if (macroName.toLowerCase() === "ilibversion") {
@@ -555,9 +545,6 @@ var ilibDataLoader = function(source) {
                     output += "default:\n";
                 }
 
-                if (file === "ilibmanifest.json") {
-
-                }
                 output += "        case '" + file + "':\n"
 
                 output += (file === "ilibmanifest") ?
@@ -570,7 +557,7 @@ var ilibDataLoader = function(source) {
 
                     output +=
                         "            });\n" +
-                        "            break;\n" 
+                        "            break;\n"
             });
 
             partial = partial.substring(match.index + match[0].length);

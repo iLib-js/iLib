@@ -308,18 +308,19 @@ limitations under the License.
 			<arg value="-m"/>
             <arg value="-c"/>
 			<arg value="-v"/>
-			<fileset dir="${build.lib}">
-				<include name="*.js"/>
-				<exclude name="ilib.js"/>
-				<exclude name="ilib-*.js"/>
-				<exclude name="externs.js"/>
-				<exclude name="datefmtstr.js"/>
-				<exclude name="ilibdata-webpack-loader.js"/>
-				<include name="ilib-node*"/>
-				<include name="ilib-qt*"/>
-				<include name="ilib-getdata.js"/>
-				<include name="ilib-unpack.js"/>
-			</fileset>
+            <fileset dir="${build.lib}">
+                <include name="*.js"/>
+                <exclude name="ilib.js"/>
+                <exclude name="ilib-*.js"/>
+                <exclude name="externs.js"/>
+                <exclude name="datefmtstr.js"/>
+            </fileset>
+            <fileset dir="${build.lib}">
+                <include name="ilib-node*"/>
+                <include name="ilib-qt*"/>
+                <include name="ilib-getdata.js"/>
+                <include name="ilib-unpack.js"/>
+            </fileset>
 			<mapper type="glob" from="*.js" to="*.js"/>
 		</apply>
 		<apply osfamily="windows" executable="${uglify.command}" dest="${build.output.dyncode}" parallel="false">
@@ -337,7 +338,8 @@ limitations under the License.
                 <exclude name="ilib-*.js"/>
                 <exclude name="externs.js"/>
                 <exclude name="datefmtstr.js"/>
-                <exclude name="ilibdata-webpack-loader.js"/>
+            </fileset>
+            <fileset dir="${build.lib}">
                 <include name="ilib-node*"/>
                 <include name="ilib-qt*"/>
                 <include name="ilib-getdata.js"/>
@@ -463,8 +465,13 @@ limitations under the License.
 				<exclude name="ilib-qt.js"/>
 				<exclude name="ilib-rhino.js"/>
 				<exclude name="ilib-enyo.js"/>
-				<include name="NodeLoader.js"/>
-			</fileset>
+            </fileset>
+            <fileset dir="${build.export}/js/dyncode">
+                <include name="Loader.js"/>
+                <include name="RhinoLoader.js"/>
+                <include name="WebpackLoader.js"/>
+                <include name="NodeLoader.js"/>
+            </fileset>
 			<fileset dir="${build.export}/js/assembled">
 				<include name="ilib-full-dyn.js"/>
 				<include name="ilib-full-dyn-compiled.js"/>
@@ -476,12 +483,40 @@ limitations under the License.
 			</fileset>
 		</copy>
 	</target>
-	<target name="demo" depends="assemble.demo.dyndata" description="Copy all things needed for the demo site to the right place">
-		<copy todir="${build.demo}/scripts">
-			<fileset dir="${build.output.js}/demo-dynamicdata-uncompiled-web">
-				<include name="*.js"/>
-			</fileset>
-		</copy>
+    <target name="test.demo.built" description="test whether or not the ilib demo files needs to be rebuilt">
+        <uptodate property="demo.already.built" targetfile="${build.demo}/ilib.js">
+            <srcfiles dir="${build.demo}" includes="ilib-include.js"/>
+        </uptodate>
+    </target>
+    <target name="scan.demo">
+        <sequential>
+            <echo>Scanning demo dir for ilib classes</echo>
+            <exec osfamily="unix" executable="ilib-scanner" dir="${build.demo}" failifexecutionfails="@{failquit}" failonerror="@{failquit}">
+                <arg value="scripts/ilib-include.js"/>
+                <arg value="--assembly=dynamicdata"/>
+                <arg value="--compilation=compiled"/>
+                <arg value="--locales=${demo.locales}"/>
+            </exec>
+            <exec osfamily="windows" executable="ilib-scanner" dir="${build.demo}" failifexecutionfails="@{failquit}"  failonerror="@{failquit}">
+                <arg value="scripts/ilib-include.js"/>
+                <arg value="--assembly=dynamicdata"/>
+                <arg value="--compilation=compiled"/>
+                <arg value="--locales=${demo.locales}"/>
+            </exec>
+        </sequential>
+    </target>
+    <target name="build.demo" depends="scan.demo">
+       <sequential>
+            <echo>Executing ${WEBPACKDIR}/bin/webpack.js</echo>
+            <exec osfamily="unix" executable="node" dir="${build.demo}/scripts" failifexecutionfails="@{failquit}" failonerror="@{failquit}">
+                <arg value="${WEBPACKDIR}/bin/webpack.js"/>
+            </exec>
+            <exec osfamily="windows" executable="node.exe" dir="${build.demo}/scripts" failifexecutionfails="@{failquit}"  failonerror="@{failquit}">
+                <arg value="${WEBPACKDIR}/bin/webpack.js"/>
+            </exec>
+        </sequential>
+    </target>
+	<target name="demo" depends="test.demo.built,build.demo" unless="demo.already.built" description="Copy all things needed for the demo site to the right place">
 		<tar destfile="${build.demo}/demo.tgz" compression="gzip">
 			<fileset dir="${build.demo}" id="id">
 			    <include name="**/*.html"/>

@@ -144,7 +144,7 @@ if (top) {
     ]);
 
     exportClasses.forEach(function(className) {
-        console.log("Defining " + className);
+        // console.log("Defining " + className);
         if (typeof(ilib[className]) !== 'undefined') {
             top[className] = ilib[className];
         }
