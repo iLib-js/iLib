@@ -495,13 +495,13 @@ limitations under the License.
                 <arg value="scripts/ilib-include.js"/>
                 <arg value="--assembly=dynamicdata"/>
                 <arg value="--compilation=compiled"/>
-                <arg value="--locales=${demo.locales}"/>
+                <arg value="--locales=${locales.demo}"/>
             </exec>
             <exec osfamily="windows" executable="ilib-scanner" dir="${build.demo}" failifexecutionfails="@{failquit}"  failonerror="@{failquit}">
                 <arg value="scripts/ilib-include.js"/>
                 <arg value="--assembly=dynamicdata"/>
                 <arg value="--compilation=compiled"/>
-                <arg value="--locales=${demo.locales}"/>
+                <arg value="--locales=${locales.demo}"/>
             </exec>
         </sequential>
     </target>
