@@ -850,9 +850,8 @@ Locale.prototype = {
 /**
  * @private
  */
-Locale.locales = [
-	// !macro localelist
-];
+Locale.locales = [];
+// !macro localelist
 
 /**
  * Return the list of available locales that this iLib file supports.

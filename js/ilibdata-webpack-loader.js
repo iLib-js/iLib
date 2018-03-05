@@ -420,15 +420,17 @@ var ilibDataLoader = function(source) {
     var output = "";
     var async = false;
     var callback;
-    var outputRoot = (options.output && options.output.path) || ".";
+    var outputRoot = (this._compilation.options &&
+        this._compilation.options.output &&
+        this._compilation.options.output.path) || ".";
 
-    options.locales = options.locales || [
+    options.locales = typeof(options.locales) === "string" ? options.locales.split(",") : (options.locales || [
         "en-AU", "en-CA", "en-GB", "en-IN", "en-NG", "en-PH",
         "en-PK", "en-US", "en-ZA", "de-DE", "fr-CA", "fr-FR",
         "es-AR", "es-ES", "es-MX", "id-ID", "it-IT", "ja-JP",
         "ko-KR", "pt-BR", "ru-RU", "tr-TR", "vi-VN", "zxx-XX",
         "zh-Hans-CN", "zh-Hant-HK", "zh-Hant-TW", "zh-Hans-SG"
-    ];
+    ]);
     options.assembly = options.assembly || "assembled";
     options.compilation = options.compilation || "uncompiled";
     options.size = options.size || "standard";
@@ -480,9 +482,7 @@ var ilibDataLoader = function(source) {
 
             if (macroName) {
                 if (macroName.toLowerCase() === "localelist") {
-                    output += options.locales.map(function(locale) {
-                        return '"' + locale + '"';
-                    }).join(", ");
+                    output += "Locale.locales = " + JSON.stringify(options.locales) + ";";
                 } else if (macroName.toLowerCase() === "ilibversion") {
                     // the DefinePlugin in the config will replace this with the
                     // actual version number from the project.json file

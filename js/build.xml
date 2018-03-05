@@ -281,7 +281,7 @@ limitations under the License.
 		<exec osfamily="unix" executable="${uglify.command}" dir="${build.base}" failifexecutionfails="true">
 			<arg value="${build.output.js}/ilib.js"/>
             <arg value="--comments"/>
-            <arg value="/ \!(data|loadLocaleData|defineLocaleData)/"/>
+            <arg value="/\!(data|loadLocaleData|defineLocaleData|macro)/"/>
 			<arg value="-o"/>
 			<arg value="${build.output.dyncode}/ilib.js"/>
 			<arg value="-m"/>
@@ -291,7 +291,7 @@ limitations under the License.
 		<exec osfamily="windows" executable="${uglify.command}" dir="${build.base}" failifexecutionfails="true">
 			<arg value="${build.output.js}/ilib.js"/>
             <arg value="--comments"/>
-            <arg value="/ \!(data|loadLocaleData|defineLocaleData)/"/>
+            <arg value="/\!(data|loadLocaleData|defineLocaleData|macro)/"/>
             <arg value="-o"/>
 			<arg value="${build.output.dyncode}/ilib.js"/>
 			<arg value="-m"/>
@@ -302,7 +302,7 @@ limitations under the License.
 		<apply osfamily="unix" executable="${uglify.command}" dest="${build.output.dyncode}" parallel="false">
 			<srcfile/>
 			<arg value="--comments"/>
-			<arg value="/ \!(data|loadLocaleData|defineLocaleData)/"/>
+			<arg value="/\!(data|loadLocaleData|defineLocaleData|macro)/"/>
             <arg value="-o"/>
 			<targetfile/>
 			<arg value="-m"/>
@@ -326,7 +326,7 @@ limitations under the License.
 		<apply osfamily="windows" executable="${uglify.command}" dest="${build.output.dyncode}" parallel="false">
 			<srcfile/>
             <arg value="--comments"/>
-            <arg value="/ \!(data|loadLocaleData|defineLocaleData)/"/>
+            <arg value="/\!(data|loadLocaleData|defineLocaleData|macro)/"/>
             <arg value="-o"/>
 			<targetfile/>
 			<arg value="-m"/>
@@ -493,13 +493,13 @@ limitations under the License.
             <echo>Scanning demo dir for ilib classes</echo>
             <exec osfamily="unix" executable="ilib-scanner" dir="${build.demo}" failifexecutionfails="@{failquit}" failonerror="@{failquit}">
                 <arg value="scripts/ilib-include.js"/>
-                <arg value="--assembly=dynamicdata"/>
+                <arg value="--assembly=assembled"/>
                 <arg value="--compilation=compiled"/>
                 <arg value="--locales=${locales.demo}"/>
             </exec>
             <exec osfamily="windows" executable="ilib-scanner" dir="${build.demo}" failifexecutionfails="@{failquit}"  failonerror="@{failquit}">
                 <arg value="scripts/ilib-include.js"/>
-                <arg value="--assembly=dynamicdata"/>
+                <arg value="--assembly=assembled"/>
                 <arg value="--compilation=compiled"/>
                 <arg value="--locales=${locales.demo}"/>
             </exec>
