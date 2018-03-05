@@ -60,16 +60,23 @@ requireClass.prototype.normalize = function(pathname) {
 	return pathname;
 };
 	
-requireClass.prototype.require = function(parent, pathname) {
-	//console.log("------------------------\nrequire: called with " + pathname);
+requireClass.prototype.require = function(parent, pathname, absolutePath) {
+    //console.log("------------------------\nrequire: called with " + pathname);
 
 	if (pathname === "./runner.js") {
 		// special case to redirect to the qt runner instead
 		pathname = this.root + "/../../qt/UnitTest/runner.js";
 	} else if (pathname === "./TestSuiteModule.js") {
 		// special case to redirect to qt instead
-		pathname = this.root + "/../../qt/UnitTest/TestSuiteModule.js";
-	} else {
+        //pathname = this.root + "/../../qt/UnitTest/TestSuiteModule.js";
+        pathname = this.root + "/../../qt/NodeunitTest/TestSuiteModule.js";
+    } else if (pathname === "nodeunit") {
+        console.log(" [ilib-qt.js] Loading nodeunit-qml.js ");
+        pathname = this.root + "/../test/nodeunit/nodeunit-qml.js";
+    } else if (pathname === "qmltest") {
+        pathname = this.root + "/../test" + absolutePath;
+        console.log("*** [ilib-qt.js] Loading Test files...  "+ pathname);
+    } else {
 		
 		if (parent && parent.charAt(0) !== '/') {
 			// take care of relative parents (aren't all parents relatives? haha)

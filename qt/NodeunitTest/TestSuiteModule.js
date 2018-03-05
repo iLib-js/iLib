@@ -68,7 +68,7 @@ TestSuite.prototype = {
 			if (typeof(from[p]) !== 'undefined') {
 				to[p] = from[p];
 			}
-		}d
+        }
 	},
 
 	addToContext: function(obj) {
@@ -76,8 +76,22 @@ TestSuite.prototype = {
 	},
 	
 	runTests: function(results, root) {
-
-
+        //console.log("TestSuite.runTests: for suite " + this.path);
+        var suiteComponent = Qt.createComponent("TestEnvironment.qml");
+		if (suiteComponent.status != Component.Ready) {
+		    if (suiteComponent.status == Component.Error)
+		        console.debug("TestSuite.runTests: Error: "+ suiteComponent.errorString());
+		    return; // or maybe throw
+		}
+		var suiteRunner = suiteComponent.createObject(null, {
+        	path: this.path,
+        	root: root,
+        	includes: this.includes,
+        	results: results
+        });
+        if (suiteRunner == null) {
+        	console.log("TestSuite.runTests: failed to run test suite " + this.path);
+        }
 	}
 };
 

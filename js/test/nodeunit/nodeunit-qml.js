@@ -56,8 +56,52 @@ var nodeunit = (function(){
         // assert.equal(actual, expected, message_opt);
 
         assert.equal = function equal(actual, expected, message) {
-            if (actual != expected) fail(actual, expected, message, "==", assert.equal);
+            if (actual !== expected) fail(actual, expected, message, "==", assert.equal);
         };
+
+        // 6. The non-equality assertion tests for whether two objects are not equal
+        // with != assert.notEqual(actual, expected, message_opt);
+
+        assert.notEqual = function notEqual(actual, expected, message) {
+          if (actual == expected) {
+            fail(actual, expected, message, "!=", assert.notEqual);
+          }
+        };
+
+        // 7. The equivalence assertion tests a deep equality relation.
+        // assert.deepEqual(actual, expected, message_opt);
+
+        assert.deepEqual = function deepEqual(actual, expected, message) {
+          if (!_deepEqual(actual, expected)) {
+            fail(actual, expected, message, "deepEqual", assert.deepEqual);
+          }
+        };
+
+        function _deepEqual(actual, expected) {
+            // 7.1. All identical values are equivalent, as determined by ===.
+            if (actual === expected) {
+                return true;
+            // 7.2. If the expected value is a Date object, the actual value is
+            // equivalent if it is also a Date object that refers to the same time.
+            } else if (actual instanceof Date && expected instanceof Date) {
+                return actual.getTime() === expected.getTime();
+            // 7.3. Other pairs that do not both pass typeof value == "object",
+            // equivalence is determined by ==.
+            } else if (typeof actual != 'object' && typeof expected != 'object') {
+                return actual == expected;
+            // 7.4. For all other Object pairs, including Array objects, equivalence is
+            // determined by having the same number of owned properties (as verified
+            // with Object.prototype.hasOwnProperty.call), the same set of keys
+            // (although not necessarily the same order), equivalent values for every
+            // corresponding key, and an identical "prototype" property. Note: this
+            // accounts for both named and indexed properties on Arrays.
+            } else {
+                return objEquiv(actual, expected);
+            }
+        };
+
+
+
     })(assert);
 
     (function(exports){
@@ -80,11 +124,13 @@ var nodeunit = (function(){
                     for (var i=0; i < assertions.length; i++) {
                         var a = assertions[i];
                         if (a.failed()) {
-                            successNum++;
-                            console.log("[" + name + "] assertions.failures() " + assertions.failures());
-                        } else {
                             failNum++;
-                            console.log("[" + name + "] assertions.passed() " + assertions.passed());
+                            //console.log("[" + name + "] assertions.failures() " + assertions.failures());
+                            console.log("[" + name + "] Test failed.");
+                        } else {
+                            successNum++;
+                            //console.log("[" + name + "] assertions.passed() " + assertions.passed());
+                            //console.log("[" + name + "] Test Success.");
                         }
                     }
                 },
@@ -94,7 +140,7 @@ var nodeunit = (function(){
             });
         };
 
-        exports.options = function(opt) {
+        exports.options = function(opt){
             var optionalCallback = function(name) {
                 opt[name] = opt[name] || function() {};
             };
@@ -103,7 +149,7 @@ var nodeunit = (function(){
             optionalCallback('testStart');
             optionalCallback('testDone');
             return opt;
-        },
+        };
 
         exports.assertion = function(obj) {
             return {
@@ -172,6 +218,15 @@ var nodeunit = (function(){
 
             var test = {
                 done: function (err) {
+                    if (expecting !== undefined && expecting !== a_list.length) {
+                        var e = new Error(
+                            'Expected ' + expecting + ' assertions, ' +
+                            a_list.length + ' ran'
+                        );
+                        var a1 = exports.assertion({method: 'expect', error: e});
+                            a_list.push(a1);
+                        }
+                        
                     var end = new Date().getTime();
                     var assertion_list = exports.assertionList(a_list, end - start);
 
@@ -186,8 +241,8 @@ var nodeunit = (function(){
                 equals: function() {
 
                 }, 
-                expect: function() {
-
+                expect: function(num) {
+                    expecting = num;
                 }
             }
             for (var k in assert) {
@@ -197,7 +252,8 @@ var nodeunit = (function(){
             }
 
             return test;
-        },
+        };
+
         exports.runSuite = function (name, fn, opt, callback) {
             var prop = fn;
             var options = exports.options(opt);
@@ -216,24 +272,30 @@ var nodeunit = (function(){
                     }
                 }
             }
-        },
+        };
         
         exports.runModule = function(suite, options) {
             exports.runSuite(null, suite, options, function(err, a_list) {
                 options.moduleDone();
             });
-        },
+        };
 
         exports.runModules = function(modules, opt) {
             var options = exports.options(opt);
-            exports.runModule(modules[0], options);
-        }
+            for(var testSuite in modules) {
+                if (modules.hasOwnProperty(testSuite)) {
+                    exports.runModule(modules[testSuite], options);
+                }
+            }
+        };
         
         exports.finish = function() {
             endTime = new Date().getTime();
-            console.log("\n[Result] A total of " + totalCaseNum + " tests were performed.")
+            console.log("----------------------------------------------------------------------")
+            console.log("[Result] A total of " + totalCaseNum + " tests were performed.")
             console.log("[Result] " + successNum + " assertions of " + assertionNum + " passed, " + failNum + " failed");
             console.log("[Result] Test compledted in " + (endTime - startTime) + " milliseconds");
+            console.log("----------------------------------------------------------------------")
         }
 
     })(reporter);
@@ -243,6 +305,6 @@ var nodeunit = (function(){
     nodeunit.start = reporter.start;
     nodeunit.finish = reporter.finish;
 
-return nodeunit; 
+return nodeunit;
 })();
 
