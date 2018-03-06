@@ -23,15 +23,14 @@ QtObject {
 
         console.log(">>>>>> [TestEnvironment.qml] path: " + path);
         console.log(">>>>>> [TestEnvironment.qml] moduleName: " + moduleName);
+
         testSuites = require("qmltest", path);
 
         for (testfile in testSuites[moduleName]) {
-
             if (testSuites[moduleName].hasOwnProperty(testfile)) {
-                runTest = require("qmltest", "/"+moduleName + "/nodeunit/"+ testSuites[moduleName][testfile]);
+                runTest = require("qmltest", "/" +moduleName + "/nodeunit/"+ testSuites[moduleName][testfile]);
             }
         }
-
         Nodeunit.nodeunit.run(runTest)
         Nodeunit.nodeunit.finish();
     }

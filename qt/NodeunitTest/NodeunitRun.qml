@@ -36,7 +36,7 @@ QtObject {
         var s, ts;
         for (s in suiteDefinitions) {
             ts = new TestSuite(suiteDefinitions[s], s);
-            //console.log("[NodeunitRun.qml ] <<<<< name: " + s + "  "+ suiteDefinitions[s]);
+            //console.log("[NodeunitRun.qml] <<<<< name: " + s + "  "+ suiteDefinitions[s]);
             runner.addSuite(ts);
         }
         runner.runTests();
