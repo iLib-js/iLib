@@ -1,21 +1,17 @@
 import QtQuick 2.0
 import FS 1.0 as FS
 import "../../js/lib/ilib-qt.js" as QtIlib
-import "../../js/test/nodeunit/nodeunit-qml.js" as Nodeunit;
+import "../../js/test/nodeunit/nodeunit-qml.js" as Nodeunit
 
 QtObject {
 	id: thisObj
-	
 	property string path: ""
-	property string root: ""
-	property var includes: [""]
-	property var results: {}
-	property var module: {}
-	property var ilib: {}
-	property var require: {}
+    property string moduleName: ""
+    property var ilib: {}
+    property var require: {}
 	
     Component.onCompleted: {
-        console.log(">>>>>> [TestEnvironment.qml] new context. Loading in a fresh copy of ilib.");
+        console.log(">>>>>>>>>>>> [TestEnvironment.qml] new context. Loading in a fresh copy of ilib.");
         
         ilib = QtIlib.ilib;
         var loader = new QtIlib.QmlLoader(FS.FileReader);
@@ -23,20 +19,20 @@ QtObject {
 
 		require = QtIlib.require;
 
-        /*iLib Usage Sample
-        var DateFmt = require("DateFmt.js");
-        var fmt = new DateFmt({locale:"ko-KR", length:"full"});
-        var fortatted  = fmt.format("new Date()");
-        console.log("iLib Test:: "+ fortatted);
-        */
+        var testSuites, testfile, runTest
 
-        var modules = {};
-        //console.log(">>>>>> [TestEnvironment.qml] path: " + path);
-        var test = require("qmltest", path);
-        modules["testdate"] = test["testdate"];
+        console.log(">>>>>> [TestEnvironment.qml] path: " + path);
+        console.log(">>>>>> [TestEnvironment.qml] moduleName: " + moduleName);
+        testSuites = require("qmltest", path);
 
-        Nodeunit.nodeunit.run(modules)
+        for (testfile in testSuites[moduleName]) {
+
+            if (testSuites[moduleName].hasOwnProperty(testfile)) {
+                runTest = require("qmltest", "/"+moduleName + "/nodeunit/"+ testSuites[moduleName][testfile]);
+            }
+        }
+
+        Nodeunit.nodeunit.run(runTest)
         Nodeunit.nodeunit.finish();
-
     }
 }

@@ -26,44 +26,17 @@
  * @param {string|ilib.String=} string initialize this instance with this string 
  */
 function TestRunner(root) {
-	this.results = {
-		pass: 0,
-		fail: 0,
-		runs: 0,
-		failures: [],
-		timings: {}
-	};
 	this.subSuites = [];
-	this.root = root || "../..";
+    this.root = root || ".";
 };
 
 TestRunner.prototype = {
-    _isEmpty: function (obj) {
-        var prop = undefined;
-
-        if (!obj) {
-            return true;
-        }
-
-        for (prop in obj) {
-            if (prop && typeof(obj[prop]) !== 'undefined') {
-                return false;
-            }
-        }
-        return true;
-    },
-	
 	runTests: function() {
-		var start = new Date();
-		this.subSuites.forEach(function (suite) {
+        var start = new Date();
+        this.subSuites.forEach(function (suite) {
             console.log("[runner.js] runTests: running suite " + suite.path);
 			suite.runTests(this.results, this.root);
 		}.bind(this));
-		
-		var end = new Date();
-		this.duration = (end.getTime() - start.getTime()) / 1000;
-		
-        //this.report();
 	},
 
 	
@@ -78,5 +51,4 @@ if (!module) {
 		exports: {}
 	};
 }
-
 module.exports = TestRunner;

@@ -20,10 +20,11 @@
 
 Qt.include("./runner.js");
 
+
 function _runAllTests(path, results) {
 	var tests = [];
 	
-	for (var func in this) {
+    for (var func in this) {
 		//console.log("Looking to see if " + func + " is a function.");
 		if (func && this[func] && typeof(this[func]) === 'function' && func.substring(0,4) === "test") {
 			tests.push(func);
@@ -102,21 +103,23 @@ function runTests(path, root, includes, results) {
 	
 	if (path) {		
 
-		console.log("TestRunner.runTests: Running " + root + "/js/test/" + path);
+        console.log("[runtest.js] path " + path);
 		var tmp = module.filename;
-		module.filename = root + "/js/test/" + path;
+
+        //module.filename = root + "/js/test/" + path;
+        module.filename = "/home/goun/Source/opensource_iLib/qtBuild-Nodeunit/js/test/date/nodeunit/testSuiteQml.js";
 		Qt.include(module.filename);
 		if (typeof(suite) === 'function') {
 			//console.log("TestRunner.runTests: found a subsuite. Dir is: " + Qt.resolvedUrl(".").toString());
 			subSuite = suite();
 		} else {
-			//console.log("TestRunner.runTests: Running subtests.");
+            console.log("[runtest.js] runTests: Running subtests.");
 			_runAllTests(path, results);
 		}
 		module.filename = tmp;
 	}
 	if (subSuite && subSuite.subSuites) {
-		//console.log("TestRunner: running tests for subsuites.");
+        console.log("TestRunner: running tests for subsuites.");
 		subSuite.subSuites.forEach(function (suite) {
 			suite.tests.applyIncludes(includes);
 			suite.tests.runTests(results, root);
