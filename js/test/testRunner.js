@@ -132,7 +132,7 @@ if (assembly === "dynamic") {
     ilib._dyncode = true; // indicate that we are using dynamically loaded code
     ilib._dyndata = true;
 } else {
-    var dirName = ["ut", assembly, compilation, (assembly === "dynamicdata" ? target : "web")].join("-");
+    var dirName = ["ut", assembly, compilation, target].join("-");
     var urlPath = path.join('../output/js', dirName);
     
     fileName = path.join(urlPath, "ilib-ut" + ((assembly === "dynamicdata") ? "-dyn" : "") + ((compilation === "compiled") ? "-compiled" : "") + ".js");
