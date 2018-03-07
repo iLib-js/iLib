@@ -120,17 +120,15 @@ limitations under the License.
         <attribute name="locales" default="${locales.default}"/>
 		<attribute name="target" default="web"/>
 		<sequential>
-		    <echo>executing ${WEBPACKDIR}/bin/webpack.js</echo>
-			<exec osfamily="unix" executable="node" dir="${build.base}" failifexecutionfails="@{failquit}" failonerror="@{failquit}">
-			    <arg value="${WEBPACKDIR}/bin/webpack.js"/>
+		    <echo>executing webpack</echo>
+			<exec osfamily="unix" executable="webpack" dir="${build.base}" failifexecutionfails="@{failquit}" failonerror="@{failquit}">
 				<arg value="--env.assembly=@{assembly}"/>
 				<arg value="--env.size=@{size}"/>
 				<arg value="--env.compilation=@{compilation}"/>
 				<arg value="--env.locales=@{locales}"/>
 				<arg value="--env.target=@{target}"/>
 			</exec>
-			<exec osfamily="windows" executable="node.exe" dir="${build.base}" failifexecutionfails="@{failquit}"  failonerror="@{failquit}">
-				<arg value="${WEBPACKDIR}/bin/webpack.js"/>
+			<exec osfamily="windows" executable="webpack.bat" dir="${build.base}" failifexecutionfails="@{failquit}"  failonerror="@{failquit}">
 				<arg value="--env.assembly=@{assembly}"/>
 				<arg value="--env.size=@{size}"/>
 				<arg value="--env.compilation=@{compilation}"/>
@@ -507,12 +505,10 @@ limitations under the License.
     </target>
     <target name="build.demo" depends="scan.demo">
        <sequential>
-            <echo>Executing ${WEBPACKDIR}/bin/webpack.js</echo>
-            <exec osfamily="unix" executable="node" dir="${build.demo}/scripts" failifexecutionfails="@{failquit}" failonerror="@{failquit}">
-                <arg value="${WEBPACKDIR}/bin/webpack.js"/>
+            <echo>Executing webpack.js</echo>
+            <exec osfamily="unix" executable="webpack" dir="${build.demo}/scripts" failifexecutionfails="@{failquit}" failonerror="@{failquit}">
             </exec>
-            <exec osfamily="windows" executable="node.exe" dir="${build.demo}/scripts" failifexecutionfails="@{failquit}"  failonerror="@{failquit}">
-                <arg value="${WEBPACKDIR}/bin/webpack.js"/>
+            <exec osfamily="windows" executable="webpack.bat" dir="${build.demo}/scripts" failifexecutionfails="@{failquit}"  failonerror="@{failquit}">
             </exec>
         </sequential>
     </target>
