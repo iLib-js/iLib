@@ -26,11 +26,27 @@ QtObject {
 
         testSuites = require("qmltest", path);
 
-        for (testfile in testSuites[moduleName]) {
-            if (testSuites[moduleName].hasOwnProperty(testfile)) {
-                runTest = require("qmltest", "/" +moduleName + "/nodeunit/"+ testSuites[moduleName][testfile]);
+        if (moduleName === "name") {
+            for (testfile in testSuites["namefmt"]) {
+                if (testSuites["namefmt"].hasOwnProperty(testfile)) {
+                    runTest = require("qmltest", "/" +moduleName + "/nodeunit/"+ testSuites["namefmt"][testfile]);
+                }
+            }
+        } else if (moduleName === "strings-ext") {
+            for (testfile in testSuites["strings_ext"]) {
+                if (testSuites["strings_ext"].hasOwnProperty(testfile)) {
+                    runTest = require("qmltest", "/" +moduleName + "/nodeunit/"+ testSuites["strings_ext"][testfile]);
+                }
+            }
+        } else {
+            for (testfile in testSuites[moduleName]) {
+                if (testSuites[moduleName].hasOwnProperty(testfile)) {
+                    runTest = require("qmltest", "/" +moduleName + "/nodeunit/"+ testSuites[moduleName][testfile]);
+
+                }
             }
         }
+
         Nodeunit.nodeunit.run(runTest)
         Nodeunit.nodeunit.finish();
     }

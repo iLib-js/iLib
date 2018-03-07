@@ -97,7 +97,7 @@ requireClass.prototype.require = function(parent, pathname, absolutePath) {
 	}
 	
 	pathname = this.normalize(pathname);
-	//console.log("require: pathname after is " + pathname);
+    //console.log(" require: pathname after is " + pathname);
 	
 	if (this.cache[pathname]) {
 		//console.log("require: cache hit");

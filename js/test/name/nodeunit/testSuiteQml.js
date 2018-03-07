@@ -17,7 +17,7 @@
  * limitations under the License.
  */
 
-module.exports.name = {
+module.exports.namefmt = {
     "testname": "testname.js",
     "testname_ar": "testname_ar.js",
     "testname_bg": "testname_bg.js",

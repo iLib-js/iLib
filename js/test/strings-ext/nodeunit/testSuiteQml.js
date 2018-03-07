@@ -39,7 +39,7 @@ module.exports.strings_ext = {
     "testlistfmt_mr_IN": "testlistfmt_mr_IN.js",
     "testlistfmt_ms": "testlistfmt_ms.js",
     "testlistfmt_nb_NO": "testlistfmt_nb_NO.js",
-    "testlistfmt_nl" "testlistfmt_nl.js",
+    "testlistfmt_nl": "testlistfmt_nl.js",
     "testlistfmt_ja_JP": "testlistfmt_ja_JP.js",
     "testlistfmt_pa": "testlistfmt_pa.js",
     "testlistfmt_pt": "testlistfmt_pt.js",
