@@ -24,6 +24,7 @@ const getOptions = require('loader-utils').getOptions;
 
 var path = require('path');
 var fs = require('fs');
+var ilib = require("./lib/ilib-node.js");
 var Locale = require('./lib/Locale.js');
 var Utils = require('./lib/Utils.js');
 var LocaleMatcher = require('./lib/LocaleMatcher.js');

@@ -61,15 +61,13 @@
         "grunt-contrib-uglify": "~0.5.0",
         "http-server": "^0.11.1",
         "iso-15924": "^2.0.0",
-        "nodeunit": "0.12.0",
+        "jsdoc2": "2.4.0",
         "should": ">=11.1.0",
         "tap": "^10.0.2",
         "trireme": "^0.9.0",
         "uglify-js": "^3.3.0",
         "uglifyjs-webpack-plugin": "^1.0.0",
-        "webpack": ">= 3.10.0",
-        "webpack-cli": "^2.0.0",
-        "jsdoc2": "2.4.0"
+        "webpack": "^3.10.0"
     },
     "scripts": {
         "test": "ant test",
