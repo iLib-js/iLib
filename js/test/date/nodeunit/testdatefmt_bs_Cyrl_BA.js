@@ -1,6 +1,6 @@
 /*
  * testdatefmt_bs_Cyrl_BA.js - test the date formatter object in Cyrillic Bosnian
- * 
+ *
  * Copyright © 2012-2015,2017, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -39,17 +39,17 @@ module.exports.testdatefmt_bs_Cyrl_BA = {
     testDateFmtConstructorEmpty_bs_Cyrl_BA: function(test) {
         test.expect(1);
         var fmt = new DateFmt({locale: "bs-Cyrl-BA"});
-        
+
         test.ok(fmt !== null);
         test.done();
     },
-    
-    
+
+
     testDateFmtSimpleShort_bs_Cyrl_BA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "bs-Cyrl-BA", length: "short"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "bs-Cyrl-BA",
             year: 2011,
@@ -63,12 +63,12 @@ module.exports.testdatefmt_bs_Cyrl_BA = {
         test.equal(fmt.format(date), "29.9.11.");
         test.done();
     },
-    
+
     testDateFmtSimpleMedium_bs_Cyrl_BA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "bs-Cyrl-BA", length: "medium"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "bs-Cyrl-BA",
             year: 2011,
@@ -82,12 +82,12 @@ module.exports.testdatefmt_bs_Cyrl_BA = {
         test.equal(fmt.format(date), "29.09.2011.");
         test.done();
     },
-    
+
     testDateFmtSimpleLong_bs_Cyrl_BA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "bs-Cyrl-BA", length: "long"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "bs-Cyrl-BA",
             year: 2011,
@@ -101,12 +101,12 @@ module.exports.testdatefmt_bs_Cyrl_BA = {
         test.equal(fmt.format(date), "29. септембар 2011.");
         test.done();
     },
-    
+
     testDateFmtSimpleFull_bs_Cyrl_BA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "bs-Cyrl-BA", length: "full"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "bs-Cyrl-BA",
             year: 2011,
@@ -120,12 +120,12 @@ module.exports.testdatefmt_bs_Cyrl_BA = {
         test.equal(fmt.format(date), "29. септембар 2011.");
         test.done();
     },
-    
+
     testDateFmtSimpleTimeShort_bs_Cyrl_BA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "bs-Cyrl-BA", length: "short", type: "time"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "bs-Cyrl-BA",
             year: 2011,
@@ -139,12 +139,12 @@ module.exports.testdatefmt_bs_Cyrl_BA = {
         test.equal(fmt.format(date), "13:45");
         test.done();
     },
-    
+
     testDateFmtSimpleTimeMedium_bs_Cyrl_BA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "bs-Cyrl-BA", length: "medium", type: "time"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "bs-Cyrl-BA",
             year: 2011,
@@ -158,12 +158,12 @@ module.exports.testdatefmt_bs_Cyrl_BA = {
         test.equal(fmt.format(date), "13:45");
         test.done();
     },
-    
+
     testDateFmtSimpleTimeLong_bs_Cyrl_BA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "bs-Cyrl-BA", timelength: "long", type: "time"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "bs-Cyrl-BA",
             year: 2011,
@@ -177,12 +177,12 @@ module.exports.testdatefmt_bs_Cyrl_BA = {
         test.equal(fmt.format(date), "13:45");
         test.done();
     },
-    
+
     testDateFmtSimpleTimeFull_bs_Cyrl_BA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "bs-Cyrl-BA", length: "full", type: "time"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "bs-Cyrl-BA",
             year: 2011,
@@ -196,12 +196,12 @@ module.exports.testdatefmt_bs_Cyrl_BA = {
         test.equal(fmt.format(date), "13:45");
         test.done();
     },
-    
+
     testDateFmtDateTimeSimpleShort_bs_Cyrl_BA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "bs-Cyrl-BA", length: "short", type: "datetime"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "bs-Cyrl-BA",
             year: 2011,
@@ -215,12 +215,12 @@ module.exports.testdatefmt_bs_Cyrl_BA = {
         test.equal(fmt.format(date), "29.9.11. 13:45");
         test.done();
     },
-    
+
     testDateFmtDateTimeSimpleMedium_bs_Cyrl_BA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "bs-Cyrl-BA", length: "medium", type: "datetime"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "bs-Cyrl-BA",
             year: 2011,
@@ -234,12 +234,12 @@ module.exports.testdatefmt_bs_Cyrl_BA = {
         test.equal(fmt.format(date), "29.09.2011. 13:45");
         test.done();
     },
-    
+
     testDateFmtDateTimeSimpleLong_bs_Cyrl_BA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "bs-Cyrl-BA", length: "long", type: "datetime"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "bs-Cyrl-BA",
             year: 2011,
@@ -253,12 +253,12 @@ module.exports.testdatefmt_bs_Cyrl_BA = {
         test.equal(fmt.format(date), "29. септембар 2011. 13:45");
         test.done();
     },
-    
+
     testDateFmtDateTimeSimpleFull_bs_Cyrl_BA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "bs-Cyrl-BA", length: "full", type: "datetime"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "bs-Cyrl-BA",
             year: 2011,
@@ -272,13 +272,13 @@ module.exports.testdatefmt_bs_Cyrl_BA = {
         test.equal(fmt.format(date), "29. септембар 2011. 13:45");
         test.done();
     },
-    
-    
+
+
     testDateFmtTemplateCalendar_bs_Cyrl_BA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "bs-Cyrl-BA", calendar: "julian", template: "yyyy-MM-dd"});
         test.ok(fmt !== null);
-        
+
         var date = new JulianDate({
             locale: "bs-Cyrl-BA",
             year: 2011,
@@ -292,14 +292,14 @@ module.exports.testdatefmt_bs_Cyrl_BA = {
         test.equal(fmt.format(date), "2011-09-29");
         test.done();
     },
-    
-    
-    
+
+
+
     testDateFmtTemplateClock12SwitchHH_bs_Cyrl_BA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "bs-Cyrl-BA", clock: "12", template: "HH:mm"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "bs-Cyrl-BA",
             year: 2011,
@@ -313,12 +313,12 @@ module.exports.testdatefmt_bs_Cyrl_BA = {
         test.equal(fmt.format(date), "01:45");
         test.done();
     },
-    
+
     testDateFmtTemplateClock12Switchkk_bs_Cyrl_BA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "bs-Cyrl-BA", clock: "12", template: "kk:mm"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "bs-Cyrl-BA",
             year: 2011,
@@ -332,12 +332,12 @@ module.exports.testdatefmt_bs_Cyrl_BA = {
         test.equal(fmt.format(date), "01:45");
         test.done();
     },
-    
+
     testDateFmtTemplateClock24Switchhh_bs_Cyrl_BA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "bs-Cyrl-BA", clock: "24", template: "hh:mm"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "bs-Cyrl-BA",
             year: 2011,
@@ -351,12 +351,12 @@ module.exports.testdatefmt_bs_Cyrl_BA = {
         test.equal(fmt.format(date), "13:45");
         test.done();
     },
-    
+
     testDateFmtTemplateClock24SwitchKK_bs_Cyrl_BA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "bs-Cyrl-BA", clock: "24", template: "KK:mm"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "bs-Cyrl-BA",
             year: 2011,
@@ -370,12 +370,12 @@ module.exports.testdatefmt_bs_Cyrl_BA = {
         test.equal(fmt.format(date), "13:45");
         test.done();
     },
-    
+
     testDateFmtTemplateNoClockNotFollowLocaleDefault12hh_bs_Cyrl_BA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "bs-Cyrl-BA", template: "hh:mm"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "bs-Cyrl-BA",
             year: 2011,
@@ -389,12 +389,12 @@ module.exports.testdatefmt_bs_Cyrl_BA = {
         test.equal(fmt.format(date), "01:45");
         test.done();
     },
-    
+
     testDateFmtTemplateNoClockNotFollowLocaleDefault12KK_bs_Cyrl_BA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "bs-Cyrl-BA", template: "KK:mm"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "bs-Cyrl-BA",
             year: 2011,
@@ -408,12 +408,12 @@ module.exports.testdatefmt_bs_Cyrl_BA = {
         test.equal(fmt.format(date), "01:45");
         test.done();
     },
-    
+
     testDateFmtTemplateNoClockNotFollowLocaleDefault24HH_bs_Cyrl_BA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "bs-Cyrl-BA", template: "HH:mm"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "bs-Cyrl-BA",
             year: 2011,
@@ -427,12 +427,12 @@ module.exports.testdatefmt_bs_Cyrl_BA = {
         test.equal(fmt.format(date), "13:45");
         test.done();
     },
-    
+
     testDateFmtTemplateNoClockNotFollowLocaleDefault24kk_bs_Cyrl_BA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "bs-Cyrl-BA", template: "kk:mm"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "bs-Cyrl-BA",
             year: 2011,
@@ -446,13 +446,13 @@ module.exports.testdatefmt_bs_Cyrl_BA = {
         test.equal(fmt.format(date), "13:45");
         test.done();
     },
-    
-    
+
+
     testDateFmtTypeDate_bs_Cyrl_BA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "bs-Cyrl-BA", type: "date"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "bs-Cyrl-BA",
             year: 2011,
@@ -466,12 +466,12 @@ module.exports.testdatefmt_bs_Cyrl_BA = {
         test.equal(fmt.format(date), "29.9.11.");
         test.done();
     },
-    
+
     testDateFmtTypeTime_bs_Cyrl_BA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "bs-Cyrl-BA", type: "time"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "bs-Cyrl-BA",
             year: 2011,
@@ -485,12 +485,12 @@ module.exports.testdatefmt_bs_Cyrl_BA = {
         test.equal(fmt.format(date), "13:45");
         test.done();
     },
-    
+
     testDateFmtTypeDateTime_bs_Cyrl_BA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "bs-Cyrl-BA", type: "datetime"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "bs-Cyrl-BA",
             year: 2011,
@@ -504,13 +504,13 @@ module.exports.testdatefmt_bs_Cyrl_BA = {
         test.equal(fmt.format(date), "29.9.11. 13:45");
         test.done();
     },
-    
-    
+
+
     testDateFmtShortDateComponentsY_bs_Cyrl_BA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "bs-Cyrl-BA", date: "y"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "bs-Cyrl-BA",
             year: 2011,
@@ -524,12 +524,12 @@ module.exports.testdatefmt_bs_Cyrl_BA = {
         test.equal(fmt.format(date), "11");
         test.done();
     },
-    
+
     testDateFmtShortDateComponentsM_bs_Cyrl_BA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "bs-Cyrl-BA", date: "m"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "bs-Cyrl-BA",
             year: 2011,
@@ -543,12 +543,12 @@ module.exports.testdatefmt_bs_Cyrl_BA = {
         test.equal(fmt.format(date), "9");
         test.done();
     },
-    
+
     testDateFmtShortDateComponentsN_bs_Cyrl_BA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "bs-Cyrl-BA", date: "n"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "bs-Cyrl-BA",
             year: 2011,
@@ -562,12 +562,12 @@ module.exports.testdatefmt_bs_Cyrl_BA = {
         test.equal(fmt.format(date), "с");
         test.done();
     },
-    
+
     testDateFmtShortDateComponentsD_bs_Cyrl_BA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "bs-Cyrl-BA", date: "d"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "bs-Cyrl-BA",
             year: 2011,
@@ -581,12 +581,12 @@ module.exports.testdatefmt_bs_Cyrl_BA = {
         test.equal(fmt.format(date), "29");
         test.done();
     },
-    
+
     testDateFmtShortDateComponentsDM_bs_Cyrl_BA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "bs-Cyrl-BA", date: "dm"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "bs-Cyrl-BA",
             year: 2011,
@@ -600,12 +600,12 @@ module.exports.testdatefmt_bs_Cyrl_BA = {
         test.equal(fmt.format(date), "29.9");
         test.done();
     },
-    
+
     testDateFmtShortDateComponentsMY_bs_Cyrl_BA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "bs-Cyrl-BA", date: "my"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "bs-Cyrl-BA",
             year: 2011,
@@ -619,12 +619,12 @@ module.exports.testdatefmt_bs_Cyrl_BA = {
         test.equal(fmt.format(date), "9.11.");
         test.done();
     },
-    
+
     testDateFmtShortDateComponentsDMY_bs_Cyrl_BA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "bs-Cyrl-BA", date: "dmy"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "bs-Cyrl-BA",
             year: 2011,
@@ -638,12 +638,12 @@ module.exports.testdatefmt_bs_Cyrl_BA = {
         test.equal(fmt.format(date), "29.9.11.");
         test.done();
     },
-    
+
     testDateFmtShortDateComponentsWDM_bs_Cyrl_BA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "bs-Cyrl-BA", date: "wdm"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "bs-Cyrl-BA",
             year: 2011,
@@ -657,12 +657,12 @@ module.exports.testdatefmt_bs_Cyrl_BA = {
         test.equal(fmt.format(date), "ч, 29.9");
         test.done();
     },
-    
+
     testDateFmtShortDateComponentsWDMY_bs_Cyrl_BA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "bs-Cyrl-BA", date: "wdmy"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "bs-Cyrl-BA",
             year: 2011,
@@ -676,13 +676,13 @@ module.exports.testdatefmt_bs_Cyrl_BA = {
         test.equal(fmt.format(date), "ч, 29.9.11.");
         test.done();
     },
-    
-    
+
+
     testDateFmtFullDateComponentsY_bs_Cyrl_BA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "bs-Cyrl-BA", length: "full", date: "y"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "bs-Cyrl-BA",
             year: 2011,
@@ -696,12 +696,12 @@ module.exports.testdatefmt_bs_Cyrl_BA = {
         test.equal(fmt.format(date), "2011");
         test.done();
     },
-    
+
     testDateFmtFullDateComponentsM_bs_Cyrl_BA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "bs-Cyrl-BA", length: "full", date: "m"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "bs-Cyrl-BA",
             year: 2011,
@@ -715,12 +715,12 @@ module.exports.testdatefmt_bs_Cyrl_BA = {
         test.equal(fmt.format(date), "септембар");
         test.done();
     },
-    
+
     testDateFmtFullDateComponentsD_bs_Cyrl_BA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "bs-Cyrl-BA", length: "full", date: "d"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "bs-Cyrl-BA",
             year: 2011,
@@ -734,12 +734,12 @@ module.exports.testdatefmt_bs_Cyrl_BA = {
         test.equal(fmt.format(date), "29");
         test.done();
     },
-    
+
     testDateFmtFullDateComponentsDM_bs_Cyrl_BA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "bs-Cyrl-BA", length: "full", date: "dm"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "bs-Cyrl-BA",
             year: 2011,
@@ -753,12 +753,12 @@ module.exports.testdatefmt_bs_Cyrl_BA = {
         test.equal(fmt.format(date), "29. септембар");
         test.done();
     },
-    
+
     testDateFmtFullDateComponentsMY_bs_Cyrl_BA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "bs-Cyrl-BA", length: "full", date: "my"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "bs-Cyrl-BA",
             year: 2011,
@@ -772,12 +772,12 @@ module.exports.testdatefmt_bs_Cyrl_BA = {
         test.equal(fmt.format(date), "септембар 2011.");
         test.done();
     },
-    
+
     testDateFmtFullDateComponentsDMY_bs_Cyrl_BA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "bs-Cyrl-BA", length: "full", date: "dmy"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "bs-Cyrl-BA",
             year: 2011,
@@ -791,12 +791,12 @@ module.exports.testdatefmt_bs_Cyrl_BA = {
         test.equal(fmt.format(date), "29. септембар 2011.");
         test.done();
     },
-    
+
     testDateFmtFullDateComponentsWDM_bs_Cyrl_BA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "bs-Cyrl-BA", length: "full", date: "wdm"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "bs-Cyrl-BA",
             year: 2011,
@@ -810,12 +810,12 @@ module.exports.testdatefmt_bs_Cyrl_BA = {
         test.equal(fmt.format(date), "четвртак, 29. септембар");
         test.done();
     },
-    
+
     testDateFmtFullDateComponentsWDMY_bs_Cyrl_BA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "bs-Cyrl-BA", length: "full", date: "wdmy"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "bs-Cyrl-BA",
             year: 2011,
@@ -829,13 +829,13 @@ module.exports.testdatefmt_bs_Cyrl_BA = {
         test.equal(fmt.format(date), "четвртак, 29. септембар 2011.");
         test.done();
     },
-    
-    
+
+
     testDateFmtShortTimeComponentsS_bs_Cyrl_BA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "bs-Cyrl-BA", type: "time", time: "s"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "bs-Cyrl-BA",
             year: 2011,
@@ -849,12 +849,12 @@ module.exports.testdatefmt_bs_Cyrl_BA = {
         test.equal(fmt.format(date), "37");
         test.done();
     },
-    
+
     testDateFmtShortTimeComponentsM_bs_Cyrl_BA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "bs-Cyrl-BA", type: "time", time: "m"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "bs-Cyrl-BA",
             year: 2011,
@@ -868,12 +868,12 @@ module.exports.testdatefmt_bs_Cyrl_BA = {
         test.equal(fmt.format(date), "45");
         test.done();
     },
-    
+
     testDateFmtShortTimeComponentsH_bs_Cyrl_BA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "bs-Cyrl-BA", type: "time", time: "h"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "bs-Cyrl-BA",
             year: 2011,
@@ -887,12 +887,12 @@ module.exports.testdatefmt_bs_Cyrl_BA = {
         test.equal(fmt.format(date), "13");
         test.done();
     },
-    
+
     testDateFmtShortTimeComponentsMS_bs_Cyrl_BA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "bs-Cyrl-BA", type: "time", time: "ms"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "bs-Cyrl-BA",
             year: 2011,
@@ -906,12 +906,12 @@ module.exports.testdatefmt_bs_Cyrl_BA = {
         test.equal(fmt.format(date), "45:37");
         test.done();
     },
-    
+
     testDateFmtShortTimeComponentsHM_bs_Cyrl_BA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "bs-Cyrl-BA", type: "time", time: "hm"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "bs-Cyrl-BA",
             year: 2011,
@@ -925,12 +925,12 @@ module.exports.testdatefmt_bs_Cyrl_BA = {
         test.equal(fmt.format(date), "13:45");
         test.done();
     },
-    
+
     testDateFmtShortTimeComponentsHMS_bs_Cyrl_BA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "bs-Cyrl-BA", type: "time", time: "hms"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "bs-Cyrl-BA",
             year: 2011,
@@ -944,12 +944,12 @@ module.exports.testdatefmt_bs_Cyrl_BA = {
         test.equal(fmt.format(date), "13:45:37");
         test.done();
     },
-    
+
     testDateFmtShortTimeComponentsHMA_bs_Cyrl_BA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "bs-Cyrl-BA", type: "time", time: "hma"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "bs-Cyrl-BA",
             year: 2011,
@@ -963,16 +963,16 @@ module.exports.testdatefmt_bs_Cyrl_BA = {
         test.equal(fmt.format(date), "13:45");
         test.done();
     },
-    
+
     testDateFmtShortTimeComponentsHMZ_bs_Cyrl_BA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
-            locale: "bs-Cyrl-BA", 
-            type: "time", 
+            locale: "bs-Cyrl-BA",
+            type: "time",
             time: "hmz"
         });
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "bs-Cyrl-BA",
             year: 2011,
@@ -986,16 +986,16 @@ module.exports.testdatefmt_bs_Cyrl_BA = {
         test.equal(fmt.format(date), "13:45 CEST");
         test.done();
     },
-    
+
     testDateFmtShortTimeComponentsHMAZ_bs_Cyrl_BA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
-            locale: "bs-Cyrl-BA", 
-            type: "time", 
+            locale: "bs-Cyrl-BA",
+            type: "time",
             time: "hmaz"
         });
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "bs-Cyrl-BA",
             year: 2011,
@@ -1009,12 +1009,12 @@ module.exports.testdatefmt_bs_Cyrl_BA = {
         test.equal(fmt.format(date), "13:45 CEST");
         test.done();
     },
-    
+
     testDateFmtShortTimeComponentsHMSA_bs_Cyrl_BA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "bs-Cyrl-BA", type: "time", time: "hmsa"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "bs-Cyrl-BA",
             year: 2011,
@@ -1028,16 +1028,16 @@ module.exports.testdatefmt_bs_Cyrl_BA = {
         test.equal(fmt.format(date), "13:45:37");
         test.done();
     },
-    
+
     testDateFmtShortTimeComponentsHMSZ_bs_Cyrl_BA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
-            locale: "bs-Cyrl-BA", 
-            type: "time", 
+            locale: "bs-Cyrl-BA",
+            type: "time",
             time: "hmsz"
         });
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "bs-Cyrl-BA",
             year: 2011,
@@ -1051,16 +1051,16 @@ module.exports.testdatefmt_bs_Cyrl_BA = {
         test.equal(fmt.format(date), "13:45:37 CEST");
         test.done();
     },
-    
+
     testDateFmtShortTimeComponentsHMSAZ_bs_Cyrl_BA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
-            locale: "bs-Cyrl-BA", 
-            type: "time", 
+            locale: "bs-Cyrl-BA",
+            type: "time",
             time: "hmsaz"
         });
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "bs-Cyrl-BA",
             year: 2011,
@@ -1074,13 +1074,13 @@ module.exports.testdatefmt_bs_Cyrl_BA = {
         test.equal(fmt.format(date), "13:45:37 CEST");
         test.done();
     },
-    
-    
+
+
     testDateFmtFullTimeComponentsS_bs_Cyrl_BA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "bs-Cyrl-BA", type: "time", length: "full", time: "s"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "bs-Cyrl-BA",
             year: 2011,
@@ -1094,12 +1094,12 @@ module.exports.testdatefmt_bs_Cyrl_BA = {
         test.equal(fmt.format(date), "37");
         test.done();
     },
-    
+
     testDateFmtFullTimeComponentsM_bs_Cyrl_BA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "bs-Cyrl-BA", type: "time", length: "full", time: "m"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "bs-Cyrl-BA",
             year: 2011,
@@ -1113,12 +1113,12 @@ module.exports.testdatefmt_bs_Cyrl_BA = {
         test.equal(fmt.format(date), "45");
         test.done();
     },
-    
+
     testDateFmtFullTimeComponentsH_bs_Cyrl_BA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "bs-Cyrl-BA", type: "time", length: "full", time: "h"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "bs-Cyrl-BA",
             year: 2011,
@@ -1132,12 +1132,12 @@ module.exports.testdatefmt_bs_Cyrl_BA = {
         test.equal(fmt.format(date), "13");
         test.done();
     },
-    
+
     testDateFmtFullTimeComponentsMS_bs_Cyrl_BA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "bs-Cyrl-BA", type: "time", length: "full", time: "ms"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "bs-Cyrl-BA",
             year: 2011,
@@ -1151,12 +1151,12 @@ module.exports.testdatefmt_bs_Cyrl_BA = {
         test.equal(fmt.format(date), "45:37");
         test.done();
     },
-    
+
     testDateFmtFullTimeComponentsHM_bs_Cyrl_BA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "bs-Cyrl-BA", type: "time", length: "full", time: "hm"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "bs-Cyrl-BA",
             year: 2011,
@@ -1170,12 +1170,12 @@ module.exports.testdatefmt_bs_Cyrl_BA = {
         test.equal(fmt.format(date), "13:45");
         test.done();
     },
-    
+
     testDateFmtFullTimeComponentsHMS_bs_Cyrl_BA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "bs-Cyrl-BA", type: "time", length: "full", time: "hms"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "bs-Cyrl-BA",
             year: 2011,
@@ -1189,12 +1189,12 @@ module.exports.testdatefmt_bs_Cyrl_BA = {
         test.equal(fmt.format(date), "13:45:37");
         test.done();
     },
-    
+
     testDateFmtFullTimeComponentsHMA_bs_Cyrl_BA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "bs-Cyrl-BA", type: "time", length: "full", time: "hma"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "bs-Cyrl-BA",
             year: 2011,
@@ -1208,17 +1208,17 @@ module.exports.testdatefmt_bs_Cyrl_BA = {
         test.equal(fmt.format(date), "13:45");
         test.done();
     },
-    
+
     testDateFmtFullTimeComponentsHMZ_bs_Cyrl_BA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
-            locale: "bs-Cyrl-BA", 
-            type: "time", 
-            length: "full", 
+            locale: "bs-Cyrl-BA",
+            type: "time",
+            length: "full",
             time: "hmz"
         });
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "bs-Cyrl-BA",
             year: 2011,
@@ -1232,17 +1232,17 @@ module.exports.testdatefmt_bs_Cyrl_BA = {
         test.equal(fmt.format(date), "13:45 CEST");
         test.done();
     },
-    
+
     testDateFmtFullTimeComponentsHMAZ_bs_Cyrl_BA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
-            locale: "bs-Cyrl-BA", 
-            type: "time", 
-            length: "full", 
+            locale: "bs-Cyrl-BA",
+            type: "time",
+            length: "full",
             time: "hmaz"
         });
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "bs-Cyrl-BA",
             year: 2011,
@@ -1256,12 +1256,12 @@ module.exports.testdatefmt_bs_Cyrl_BA = {
         test.equal(fmt.format(date), "13:45 CEST");
         test.done();
     },
-    
+
     testDateFmtFullTimeComponentsHMSA_bs_Cyrl_BA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "bs-Cyrl-BA", type: "time", length: "full", time: "hmsa"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "bs-Cyrl-BA",
             year: 2011,
@@ -1275,17 +1275,17 @@ module.exports.testdatefmt_bs_Cyrl_BA = {
         test.equal(fmt.format(date), "13:45:37");
         test.done();
     },
-    
+
     testDateFmtFullTimeComponentsHMSZ_bs_Cyrl_BA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
-            locale: "bs-Cyrl-BA", 
-            type: "time", 
-            length: "full", 
+            locale: "bs-Cyrl-BA",
+            type: "time",
+            length: "full",
             time: "hmsz"
         });
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "bs-Cyrl-BA",
             year: 2011,
@@ -1299,17 +1299,17 @@ module.exports.testdatefmt_bs_Cyrl_BA = {
         test.equal(fmt.format(date), "13:45:37 CEST");
         test.done();
     },
-    
+
     testDateFmtFullTimeComponentsHMSAZ_bs_Cyrl_BA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
-            locale: "bs-Cyrl-BA", 
-            type: "time", 
-            length: "full", 
+            locale: "bs-Cyrl-BA",
+            type: "time",
+            length: "full",
             time: "hmsaz"
         });
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "bs-Cyrl-BA",
             year: 2011,
@@ -1323,17 +1323,17 @@ module.exports.testdatefmt_bs_Cyrl_BA = {
         test.equal(fmt.format(date), "13:45:37 CEST");
         test.done();
     },
-    
+
     testDateFmtWithTimeZoneAndNoDST_bs_Cyrl_BA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
-            locale: "bs-Cyrl-BA", 
-            type: "time", 
-            length: "full", 
+            locale: "bs-Cyrl-BA",
+            type: "time",
+            length: "full",
             time: "hmsz"
         });
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "bs-Cyrl-BA",
             year: 2011,
@@ -1347,12 +1347,12 @@ module.exports.testdatefmt_bs_Cyrl_BA = {
         test.equal(fmt.format(date), "13:45:37 CET");
         test.done();
     },
-    
+
     testDateFmtFormatRelativeWithinMinuteAfter_bs_Cyrl_BA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "bs-Cyrl-BA", length: "full"});
         test.ok(fmt !== null);
-        
+
         var reference = new GregorianDate({
             locale: "bs-Cyrl-BA",
             year: 2011,
@@ -1373,14 +1373,14 @@ module.exports.testdatefmt_bs_Cyrl_BA = {
             second: 30,
             millisecond: 0
         });
-        test.equal(fmt.formatRelative(reference, date), "за 30 секунда");
+        test.equal(fmt.formatRelative(reference, date), "за 30 секунди");
         test.done();
     },
     testDateFmtFormatRelativeWithinMinuteBefore_bs_Cyrl_BA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "bs-Cyrl-BA", length: "full"});
         test.ok(fmt !== null);
-        
+
         var reference = new GregorianDate({
             locale: "bs-Cyrl-BA",
             year: 2011,
@@ -1401,14 +1401,14 @@ module.exports.testdatefmt_bs_Cyrl_BA = {
             second: 30,
             millisecond: 0
         });
-        test.equal(fmt.formatRelative(reference, date), "пре 30 секунда");
+        test.equal(fmt.formatRelative(reference, date), "пре 30 секунди");
         test.done();
     },
     testDateFmtFormatRelativeWithinHourAfter_bs_Cyrl_BA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "bs-Cyrl-BA", length: "full"});
         test.ok(fmt !== null);
-        
+
         var reference = new GregorianDate({
             locale: "bs-Cyrl-BA",
             year: 2011,
@@ -1429,14 +1429,14 @@ module.exports.testdatefmt_bs_Cyrl_BA = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.formatRelative(reference, date), "за 10 минут");
+        test.equal(fmt.formatRelative(reference, date), "за 10 минута");
         test.done();
     },
     testDateFmtFormatRelativeWithinHourBefore_bs_Cyrl_BA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "bs-Cyrl-BA", length: "full"});
         test.ok(fmt !== null);
-        
+
         var reference = new GregorianDate({
             locale: "bs-Cyrl-BA",
             year: 2011,
@@ -1457,14 +1457,14 @@ module.exports.testdatefmt_bs_Cyrl_BA = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.formatRelative(reference, date), "пре 10 минут");
+        test.equal(fmt.formatRelative(reference, date), "пре 10 минута");
         test.done();
     },
     testDateFmtFormatRelativeWithinDayAfter_bs_Cyrl_BA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "bs-Cyrl-BA", length: "full"});
         test.ok(fmt !== null);
-        
+
         var reference = new GregorianDate({
             locale: "bs-Cyrl-BA",
             year: 2011,
@@ -1492,7 +1492,7 @@ module.exports.testdatefmt_bs_Cyrl_BA = {
         test.expect(2);
         var fmt = new DateFmt({locale: "bs-Cyrl-BA", length: "full"});
         test.ok(fmt !== null);
-        
+
         var reference = new GregorianDate({
             locale: "bs-Cyrl-BA",
             year: 2011,
@@ -1516,12 +1516,12 @@ module.exports.testdatefmt_bs_Cyrl_BA = {
         test.equal(fmt.formatRelative(reference, date), "пре 4 сата");
         test.done();
     },
-    
+
     testDateFmtFormatRelativeWithinFortnightAfter_bs_Cyrl_BA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "bs-Cyrl-BA", length: "full"});
         test.ok(fmt !== null);
-        
+
         var reference = new GregorianDate({
             locale: "bs-Cyrl-BA",
             year: 2011,
@@ -1549,7 +1549,7 @@ module.exports.testdatefmt_bs_Cyrl_BA = {
         test.expect(2);
         var fmt = new DateFmt({locale: "bs-Cyrl-BA", length: "full"});
         test.ok(fmt !== null);
-        
+
         var reference = new GregorianDate({
             locale: "bs-Cyrl-BA",
             year: 2011,
@@ -1573,12 +1573,12 @@ module.exports.testdatefmt_bs_Cyrl_BA = {
         test.equal(fmt.formatRelative(reference, date), "пре 4 дана");
         test.done();
     },
-    
+
     testDateFmtFormatRelativeWithinQuarterAfter_bs_Cyrl_BA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "bs-Cyrl-BA", length: "full"});
         test.ok(fmt !== null);
-        
+
         var reference = new GregorianDate({
             locale: "bs-Cyrl-BA",
             year: 2011,
@@ -1606,7 +1606,7 @@ module.exports.testdatefmt_bs_Cyrl_BA = {
         test.expect(2);
         var fmt = new DateFmt({locale: "bs-Cyrl-BA", length: "full"});
         test.ok(fmt !== null);
-        
+
         var reference = new GregorianDate({
             locale: "bs-Cyrl-BA",
             year: 2011,
@@ -1630,12 +1630,12 @@ module.exports.testdatefmt_bs_Cyrl_BA = {
         test.equal(fmt.formatRelative(reference, date), "пре 9 недеља");
         test.done();
     },
-    
+
     testDateFmtFormatRelativeWithinTwoYearsAfter_bs_Cyrl_BA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "bs-Cyrl-BA", length: "full"});
         test.ok(fmt !== null);
-        
+
         var reference = new GregorianDate({
             locale: "bs-Cyrl-BA",
             year: 2011,
@@ -1656,14 +1656,14 @@ module.exports.testdatefmt_bs_Cyrl_BA = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.formatRelative(reference, date), "за 16 месец");
+        test.equal(fmt.formatRelative(reference, date), "за 16 месеци");
         test.done();
     },
     testDateFmtFormatRelativeWithinTwoYearsBefore_bs_Cyrl_BA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "bs-Cyrl-BA", length: "full"});
         test.ok(fmt !== null);
-        
+
         var reference = new GregorianDate({
             locale: "bs-Cyrl-BA",
             year: 2011,
@@ -1684,15 +1684,15 @@ module.exports.testdatefmt_bs_Cyrl_BA = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.formatRelative(reference, date), "пре 14 месец");
+        test.equal(fmt.formatRelative(reference, date), "пре 14 месеци");
         test.done();
     },
-    
+
     testDateFmtFormatRelativeYearsAfter_bs_Cyrl_BA: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "bs-Cyrl-BA", length: "full"});
         test.ok(fmt !== null);
-        
+
         var reference = new GregorianDate({
             locale: "bs-Cyrl-BA",
             year: 2011,
@@ -1720,7 +1720,7 @@ module.exports.testdatefmt_bs_Cyrl_BA = {
         test.expect(2);
         var fmt = new DateFmt({locale: "bs-Cyrl-BA", length: "full"});
         test.ok(fmt !== null);
-        
+
         var reference = new GregorianDate({
             locale: "bs-Cyrl-BA",
             year: 2011,
@@ -1741,9 +1741,9 @@ module.exports.testdatefmt_bs_Cyrl_BA = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.formatRelative(reference, date), "пре 21 година");
+        test.equal(fmt.formatRelative(reference, date), "пре 21 годину");
         test.done();
     }
-    
-    
+
+
 };
