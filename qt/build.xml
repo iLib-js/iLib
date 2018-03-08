@@ -141,6 +141,23 @@ limitations under the License.
 			</exec>
 		</sequential>
 	</target>
+
+	<target name="test.qt.nodeunit" depends="" description="Run the unit tests in the qt test framework. Make sure you have Qt 5.4 or later, and it is the first Qt in your path.">
+		<sequential>
+			<exec osfamily="unix" executable="${QTBIN}/qmlscene" dir="${build.base}/NodeunitTest" failifexecutionfails="true" failonerror="true">
+				<env key="QML2_IMPORT_PATH" value="../FileReader/imports"/>
+				<arg line="NodeunitRun.qml"/>
+			</exec>
+			<exec osfamily="mac" executable="${QTBIN}/qmlscene" dir="${build.base}/NodeunitTest" failifexecutionfails="true" failonerror="true">
+				<env key="QML2_IMPORT_PATH" value="../FileReader/imports"/>
+				<arg line="NodeunitRun.qml"/>
+			</exec>
+			<exec osfamily="windows" executable="${QTBIN}/qmlscene.exe" dir="${build.base}/NodeunitTest" failifexecutionfails="true"  failonerror="true">
+				<env key="QML2_IMPORT_PATH" value="../FileReader/imports"/>
+				<arg line="NodeunitRun.qml"/>
+			</exec>
+		</sequential>
+	</target>
 		
 	<!-- Should not run the tests from an automated build, because qmlscene doesn't exit at the end. They should
 	     only be run by hand. -->

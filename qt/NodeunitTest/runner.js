@@ -41,7 +41,7 @@ TestRunner.prototype = {
 
 	
 	addSuite: function (suite) {
-        console.log("[runner.js] addSuite:  (" + suite.path + ")");
+        //console.log("[runner.js] addSuite:  (" + suite.path + ")");
 		this.subSuites.push(suite);
     }
 };

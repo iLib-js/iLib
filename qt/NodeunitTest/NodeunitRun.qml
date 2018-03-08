@@ -10,30 +10,21 @@ QtObject {
         var runner = new TestRunner("../..");
 
         var suiteDefinitions = {
-            //"address": "/address/nodeunit/testSuiteQml.js", /* All passed. */
-
-            //"calendar": "/calendar/nodeunit/testSuiteQml.js", /* 36 assertions faild. */
-            //"collate": "/collate/nodeunit/testSuiteQml.js", /* 166 assertions faild. it takes 652432ms almost 11 minutes.*/
-
-            //"ctype": "/ctype/nodeunit/testSuiteQml.js", /* All passed. */
-
-            //"date": "/date/nodeunit/testSuiteQml.js", /* All passed. */
-            //"daterange": "/daterange/nodeunit/testSuiteQml.js", /* All passed. */
-            //"durfmt": "/durfmt/nodeunit/testSuiteQml.js", /* All passed. */
-
-            //"name": "/name/nodeunit/testSuiteQml.js"  /* 465 assertions failed */
-
-            //"number": "/number/nodeunit/testSuiteQml.js", /* All passed. */
-            //"maps": "/maps/nodeunit/testSuiteQml.js",  /* All passed. */
-            //"phone": "/phone/nodeunit/testSuiteQml.js", /* All passed. */
-
-            //"root": "/root/nodeunit/testSuiteQml.js",  /* 3 assertions faild. */
-
-            "strings-ext": "/strings-ext/nodeunit/testSuiteQml.js", /* All passed. */
-
-            //"units": "/units/nodeunit/testSuiteQml.js", /* All passed. */
-
-            //"util": "/util/nodeunit/testSuiteQml.js" /* 41 assertions faild. */
+            "address": "/address/nodeunit/testSuiteQml.js",
+            "calendar": "/calendar/nodeunit/testSuiteQml.js",
+            "ctype": "/ctype/nodeunit/testSuiteQml.js",
+            "date": "/date/nodeunit/testSuiteQml.js",
+            "daterange": "/daterange/nodeunit/testSuiteQml.js",
+            "durfmt": "/durfmt/nodeunit/testSuiteQml.js",
+            "name": "/name/nodeunit/testSuiteQml.js",
+            "number": "/number/nodeunit/testSuiteQml.js",
+            "maps": "/maps/nodeunit/testSuiteQml.js",
+            "phone": "/phone/nodeunit/testSuiteQml.js",
+            "root": "/root/nodeunit/testSuiteQml.js",
+            "strings-ext": "/strings-ext/nodeunit/testSuiteQml.js",
+            "units": "/units/nodeunit/testSuiteQml.js",
+            "util": "/util/nodeunit/testSuiteQml.js",
+            "collate": "/collate/nodeunit/testSuiteQml.js",   /*it takes 652432ms almost 11 minutes.*/
         };
 
         var s, ts;
@@ -43,5 +34,7 @@ QtObject {
             runner.addSuite(ts);
         }
         runner.runTests();
+        console.log("\n *************************** All of iLib Test on QML is Done. ***********************************");
+
     }
 }

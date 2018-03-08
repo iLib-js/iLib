@@ -71,11 +71,11 @@ requireClass.prototype.require = function(parent, pathname, absolutePath) {
         //pathname = this.root + "/../../qt/UnitTest/TestSuiteModule.js";
         pathname = this.root + "/../../qt/NodeunitTest/TestSuiteModule.js";
     } else if (pathname === "nodeunit") {
-        console.log(" [ilib-qt.js] Loading nodeunit-qml.js ");
+        //console.log(" [ilib-qt.js] Loading nodeunit-qml.js ");
         pathname = this.root + "/../test/nodeunit/nodeunit-qml.js";
     } else if (pathname === "qmltest") {
         pathname = this.root + "/../test" + absolutePath;
-        console.log("*** [ilib-qt.js] Loading Test files...  "+ pathname);
+        //console.log("[ilib-qt.js] Loading Test file...  "+ pathname);
     } else {
 		
 		if (parent && parent.charAt(0) !== '/') {

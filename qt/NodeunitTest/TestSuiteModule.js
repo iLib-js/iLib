@@ -40,8 +40,7 @@ TestSuite.prototype = {
 	},
 	
 	runTests: function(results, root) {
-        console.log("[TestSuiteModule.js] TestSuite.runTests: for suite (this.name) " + this.name);
-
+        //console.log("[TestSuiteModule.js] TestSuite.runTests: for suite (this.moduleName) " + this.moduleName);
         var suiteComponent = Qt.createComponent("./TestEnvironment.qml");
 		if (suiteComponent.status != Component.Ready) {
 		    if (suiteComponent.status == Component.Error)

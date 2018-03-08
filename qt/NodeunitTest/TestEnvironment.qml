@@ -11,7 +11,7 @@ QtObject {
     property var require: {}
 	
     Component.onCompleted: {
-        console.log(">>>>>>>>>>>> [TestEnvironment.qml] new context. Loading in a fresh copy of ilib.");
+        //console.log(">>>>>>>>>>>> [TestEnvironment.qml] new context. Loading in a fresh copy of ilib.");
         
         ilib = QtIlib.ilib;
         var loader = new QtIlib.QmlLoader(FS.FileReader);
@@ -21,8 +21,7 @@ QtObject {
 
         var testSuites, testfile, runTest
 
-        console.log(">>>>>> [TestEnvironment.qml] path: " + path);
-        console.log(">>>>>> [TestEnvironment.qml] moduleName: " + moduleName);
+        console.log("[TestEnvironment.qml] (path) : " + path + " (moduleName): " + moduleName);
 
         testSuites = require("qmltest", path);
 
