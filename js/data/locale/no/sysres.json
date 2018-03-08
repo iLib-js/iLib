@@ -93,7 +93,5 @@
     "1#1 day|#{num} days": "1#1 dag|#{num} dager",
     "1#1 week|#{num} weeks": "1#1 uke|#{num} uker",
     "1#1 month|#{num} months": "1#1 måned|#{num} måneder",
-    "1#1 year|#{num} years": "#{num} år",
-    "{duration} ago": "{duration} siden",
-    "in {duration}": "i {duration}"
+    "1#1 year|#{num} years": "#{num} år"
 }

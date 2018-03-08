@@ -177,7 +177,5 @@
     "#{num}y": "#{num}س",
     "durationMediumYears": "#{num} سا",
     "1#1 yr|#{num} yrs": "#{num} ساڵ",
-    "1#1 year|#{num} years": "#{num} ساڵ",
-    "{duration} ago": "لەمەوبەر {duration}",
-    "in {duration}": "{duration} لە"
+    "1#1 year|#{num} years": "#{num} ساڵ"
 }

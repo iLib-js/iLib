@@ -159,8 +159,6 @@
     "1#1 second|#{num} seconds": "one#{num} sekunda|few#{num} sekunde|#{num} sekundi",
     "1#1 minute|#{num} minutes": "one#{num} minuta|few#{num} minute|#{num} minuta",
     "1#1 hour|#{num} hours": "one#{num} sat|few#{num} sata|#{num} sati",
-    "in {duration}": "za {duration}",
-    "{duration} ago": "prije {duration}",
     "1#1 day|#{num} days": "one#{num} dan|few#{num} dana|#{num} dana",
     "1#1 week|#{num} weeks": "one#{num} tjedan|few#{num} tjedna|#{num} tjedana",
     "1#1 month|#{num} months": "one#{num} mjesec|few#{num} mjeseca|#{num} mjeseci",

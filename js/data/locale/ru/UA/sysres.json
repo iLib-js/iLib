@@ -159,8 +159,6 @@
     "1#1 second|#{num} seconds": "one#{num} секунда|few#{num} секунды|many#{num} секунд|#{num} секунды",
     "1#1 minute|#{num} minutes": "one#{num} минута|few#{num} минуты|many#{num} минут|#{num} минуты",
     "1#1 hour|#{num} hours": "one#{num} час|few#{num} часа|many#{num} часов|#{num} часа",
-    "in {duration}": "через {duration}",
-    "{duration} ago": "{duration} назад",
     "1#1 day|#{num} days": "one#{num} день|few#{num} дня|many#{num} дней|#{num} дня",
     "1#1 week|#{num} weeks": "one#{num} неделя|few#{num} недели|many#{num} недель|#{num} недели",
     "1#1 month|#{num} months": "one#{num} месяц|few#{num} месяца|many#{num} месяцев|#{num} месяца",
