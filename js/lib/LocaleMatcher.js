@@ -107,6 +107,9 @@ var LocaleMatcher = function(options) {
 		});
 	} else {
 		this.info = ilib.data.localematch;
+		if (options && typeof(options.onLoad) === 'function') {
+            options.onLoad(this);
+        }
 	}
 };
 

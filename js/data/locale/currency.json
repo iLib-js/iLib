@@ -640,6 +640,11 @@
         "sign": "£"
     },
     "STD": {
+        "name": "São Tomé & Príncipe Dobra (1977-2017)",
+        "decimals": 0,
+        "sign": "Db"
+    },
+    "STN": {
         "name": "São Tomé & Príncipe Dobra",
         "decimals": 0,
         "sign": "Db"

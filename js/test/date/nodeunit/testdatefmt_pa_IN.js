@@ -27,7 +27,7 @@ if (typeof(DateFmt) === "undefined") {
     var DateFmt = require("../.././../lib/DateFmt.js");
 }
 if (typeof(ilib) === "undefined") {
-    var ilib = require("../../..");
+    var ilib = require("../../../lib/ilib.js");
 }
 
 module.exports.testdatefmt_pa_IN = {
@@ -298,6 +298,7 @@ module.exports.testdatefmt_pa_IN = {
         test.ok(typeof(fmt) !== "undefined");
         
         var date = new JulianDate({
+            locale: "pa-IN",
             year: 2011,
             month: 9,
             day: 29,
@@ -309,8 +310,6 @@ module.exports.testdatefmt_pa_IN = {
         test.equal(fmt.format(date), "2011-09-29");
         test.done();
     },
-    
-    
     
     testDateFmtINTemplateClock12SwitchHH_pa_IN: function(test) {
         test.expect(2);

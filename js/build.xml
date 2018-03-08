@@ -114,10 +114,10 @@ limitations under the License.
         <attribute name="srcfilename"/>
         <attribute name="locales"/>
 		<sequential>
-			<java dir="${build.lib}" 
-					fork="true" 
+			<java dir="${build.lib}"
+					fork="true"
 					maxmemory="6000m"
-					classname="com.ilib.tools.jsa.JSAssemble" 
+					classname="com.ilib.tools.jsa.JSAssemble"
 					classpathref="project.classpath.jsa">
 				<arg value="-I"/>
 				<arg value="${build.locale}"/>
@@ -322,7 +322,7 @@ limitations under the License.
 			<srcfiles dir="${build.locale}" includes="**/*.json"/>
 		</uptodate>
 	</target>
-	<target name="assemble.unittest" depends="prepare,gen.manifest.locale,update.package.json,assemble.unittest.maps,testilibut" unless="ilib-ut.not.needed" description="assembles only the locales needed for the unit tests">
+	<target name="assemble.unittest" depends="prepare,gen.manifest.locale,update.package.json,testilibut" unless="ilib-ut.not.needed" description="assembles only the locales needed for the unit tests">
 		<runassemble
 			tgtfilename="${build.output.js}/ilib-ut.js"
 			srcfilename="${build.lib}/ilib-ut-inc.js"
@@ -348,7 +348,7 @@ limitations under the License.
 			<srcfiles dir="${build.locale}" includes="**/*.json"/>
 		</uptodate>
 	</target>
-	<target name="assemble.dyndata.unittest" depends="prepare,gen.manifest.locale,assemble.dyndata.unittest.maps,testilib.dyn.ut" unless="ilib-dyn-ut.not.needed" description="assembles only the locales needed for the unit tests">
+	<target name="assemble.dyndata.unittest" depends="prepare,gen.manifest.locale,testilib.dyn.ut" unless="ilib-dyn-ut.not.needed" description="assembles only the locales needed for the unit tests">
 		<runassemble
 			tgtfilename="${build.output.js}/ilib-ut-dyn.js"
 			srcfilename="${build.lib}/ilib-ut-inc.js"
@@ -585,7 +585,7 @@ limitations under the License.
 			</fileset>
 		</copy>
 	</target>
-	
+
 	<target name="dist" depends="assemble.web.async,assemble.core,assemble.standard,assemble.full,assemble.dyndata.core,assemble.dyndata.standard,assemble.dyndata.full,assemble.dynamic,doc,demo,update.package.json" description="Create all distribution objects and exports them to the top level dir for packaging">
 		<mkdir dir="${build.export}/js/assembled"/>
 		<copy todir="${build.export}/js/assembled">
@@ -684,52 +684,60 @@ limitations under the License.
 	<macrodef name="run-nodeunit-all">
 		<attribute name="assembly"/>
 		<attribute name="compilation"/>
+		<attribute name="sync"/>
 		<attribute name="failquit"/>
 		<sequential>
 			<exec osfamily="unix" executable="node" dir="${build.test}" failifexecutionfails="@{failquit}" failonerror="@{failquit}">
 				<arg line="testRunner.js"/>
 				<arg line="@{assembly}"/>
 				<arg line="@{compilation}"/>
-			</exec>
-			<exec osfamily="mac" executable="node" dir="${build.test}" failifexecutionfails="@{failquit}" failonerror="@{failquit}">
-				<arg line="testRunner.js"/>
-				<arg line="@{assembly}"/>
-				<arg line="@{compilation}"/>
+				<arg line="all"/>
+				<arg line="@{sync}"/>
 			</exec>
 			<exec osfamily="windows" executable="node.exe" dir="${build.test}" failifexecutionfails="@{failquit}"  failonerror="@{failquit}">
 				<arg line="testRunner.js"/>
 				<arg line="@{assembly}"/>
 				<arg line="@{compilation}"/>
+                <arg line="all"/>
+                <arg line="@{sync}"/>
 			</exec>
 		</sequential>
 	</macrodef>
-	
+
 	<macrodef name="run-nodeunit">
 		<attribute name="suite"/>
 		<attribute name="failquit"/>
+		<attribute name="file"/>
 		<sequential>
 			<exec osfamily="unix" executable="node" dir="${build.test}" failifexecutionfails="@{failquit}" failonerror="@{failquit}">
-				<arg line="@{suite}/nodeunit/testSuite.js"/>
-			</exec>
-			<exec osfamily="mac" executable="node" dir="${build.test}" failifexecutionfails="@{failquit}" failonerror="@{failquit}">
-				<arg line="@{suite}/nodeunit/testSuite.js"/>
+				<arg line="@{suite}/nodeunit/@{file}"/>
 			</exec>
 			<exec osfamily="windows" executable="node.exe" dir="${build.test}" failifexecutionfails="@{failquit}"  failonerror="@{failquit}">
-				<arg line="@{suite}/nodeunit/testSuite.js"/>
+				<arg line="@{suite}/nodeunit/@{file}"/>
 			</exec>
 		</sequential>
 	</macrodef>
+
+	<macrodef name="run-nodeunit-sync">
+		<attribute name="suite"/>
+        <attribute name="failquit"/>
+		<sequential>
+		    <run-nodeunit suite="@{suite}" failquit="@{failquit}" file="testSuite.js"/>
+		</sequential>
+	</macrodef>
+    <macrodef name="run-nodeunit-async">
+        <attribute name="suite"/>
+        <attribute name="failquit"/>
+        <sequential>
+            <run-nodeunit suite="@{suite}" failquit="@{failquit}" file="testSuiteAsync.js"/>
+        </sequential>
+    </macrodef>
 
 	<macrodef name="debug-nodeunit">
 		<attribute name="suite"/>
 		<attribute name="failquit"/>
 		<sequential>
 			<exec osfamily="unix" executable="node" dir="${build.test}" failifexecutionfails="@{failquit}" failonerror="@{failquit}">
-				<arg line="--inspect"/>
-				<arg line="--debug-brk"/>
-				<arg line="@{suite}/nodeunit/testSuite.js"/>
-			</exec>
-			<exec osfamily="mac" executable="node" dir="${build.test}" failifexecutionfails="@{failquit}" failonerror="@{failquit}">
 				<arg line="--inspect"/>
 				<arg line="--debug-brk"/>
 				<arg line="@{suite}/nodeunit/testSuite.js"/>
@@ -743,54 +751,68 @@ limitations under the License.
 	</macrodef>
 
 	<target depends="assemble.dyncode.unittest,update.package.json" name="test.address.nu">
-		<run-nodeunit suite="address" failquit="true"/>
-	</target>	
+		<run-nodeunit-sync suite="address" failquit="true"/>
+		<run-nodeunit-async suite="address" failquit="true"/>
+	</target>
 	<target depends="assemble.dyncode.unittest,update.package.json" name="test.calendar.nu">
-		<run-nodeunit suite="calendar" failquit="true"/>
+		<run-nodeunit-sync suite="calendar" failquit="true"/>
+		<run-nodeunit-async suite="calendar" failquit="true"/>
 	</target>
 	<target depends="assemble.dyncode.unittest,update.package.json" name="test.collate.nu">
-		<run-nodeunit suite="collate" failquit="true"/>
+		<run-nodeunit-sync suite="collate" failquit="true"/>
+		<run-nodeunit-async suite="collate" failquit="true"/>
 	</target>
 	<target depends="assemble.dyncode.unittest,update.package.json" name="test.ctype.nu">
-		<run-nodeunit suite="ctype" failquit="true"/>
+		<run-nodeunit-sync suite="ctype" failquit="true"/>
+		<run-nodeunit-async suite="ctype" failquit="true"/>
 	</target>
 	<target depends="assemble.dyncode.unittest,update.package.json" name="test.date.nu">
-		<run-nodeunit suite="date" failquit="true"/>
+		<run-nodeunit-sync suite="date" failquit="true"/>
+		<run-nodeunit-async suite="date" failquit="true"/>
 	</target>
 	<target depends="assemble.dyncode.unittest,update.package.json" name="test.daterange.nu">
-		<run-nodeunit suite="daterange" failquit="true"/>
+		<run-nodeunit-sync suite="daterange" failquit="true"/>
+		<run-nodeunit-async suite="daterange" failquit="true"/>
 	</target>
 	<target depends="assemble.dyncode.unittest,update.package.json" name="test.durfmt.nu">
-		<run-nodeunit suite="durfmt" failquit="true"/>
+		<run-nodeunit-sync suite="durfmt" failquit="true"/>
+		<run-nodeunit-async suite="durfmt" failquit="true"/>
 	</target>
 	<target depends="assemble.dyncode.unittest,update.package.json" name="test.maps.nu">
-		<run-nodeunit suite="maps" failquit="true"/>
+		<run-nodeunit-sync suite="maps" failquit="true"/>
+		<run-nodeunit-async suite="maps" failquit="true"/>
 	</target>
 	<target depends="assemble.dyncode.unittest,update.package.json" name="test.name.nu">
-		<run-nodeunit suite="name" failquit="true"/>
+		<run-nodeunit-sync suite="name" failquit="true"/>
+		<run-nodeunit-async suite="name" failquit="true"/>
 	</target>
 	<target depends="assemble.dyncode.unittest,update.package.json" name="test.number.nu">
-		<run-nodeunit suite="number" failquit="true"/>
+		<run-nodeunit-sync suite="number" failquit="true"/>
+		<run-nodeunit-async suite="number" failquit="true"/>
 	</target>
 	<target depends="assemble.dyncode.unittest,update.package.json" name="test.phone.nu">
-		<run-nodeunit suite="phone" failquit="true"/>
+		<run-nodeunit-sync suite="phone" failquit="true"/>
+		<run-nodeunit-async suite="phone" failquit="true"/>
 	</target>
 	<target depends="assemble.dyncode.unittest,update.package.json" name="test.root.nu">
-		<run-nodeunit suite="root" failquit="true"/>
+		<run-nodeunit-sync suite="root" failquit="true"/>
+		<run-nodeunit-async suite="root" failquit="true"/>
 	</target>
 	<target depends="assemble.dyncode.unittest,update.package.json" name="test.strings-ext.nu">
-		<run-nodeunit suite="strings-ext" failquit="true"/>
+		<run-nodeunit-sync suite="strings-ext" failquit="true"/>
+		<run-nodeunit-async suite="strings-ext" failquit="true"/>
 	</target>
 	<target depends="assemble.dyncode.unittest,update.package.json" name="test.units.nu">
-		<run-nodeunit suite="units" failquit="true"/>
+		<run-nodeunit-sync suite="units" failquit="true"/>
+		<run-nodeunit-async suite="units" failquit="true"/>
 	</target>
 	<target depends="assemble.dyncode.unittest,update.package.json" name="test.util.nu">
-		<run-nodeunit suite="util" failquit="true"/>
+		<run-nodeunit-sync suite="util" failquit="true"/>
 	</target>
 
 	<target depends="assemble.dyncode.unittest,update.package.json" name="debug.address.nu">
 		<debug-nodeunit suite="address" failquit="true"/>
-	</target>	
+	</target>
 	<target depends="assemble.dyncode.unittest,update.package.json" name="debug.calendar.nu">
 		<debug-nodeunit suite="calendar" failquit="true"/>
 	</target>
@@ -835,30 +857,37 @@ limitations under the License.
 	</target>
 
 	<target name="test.dynamic.uncompiled.nu" depends="update.package.json">
-	    <run-nodeunit-all assembly="dynamic" compilation="uncompiled" failquit="true"/>
+        <run-nodeunit-all assembly="dynamic" compilation="uncompiled" sync="async" failquit="true"/>
+	    <run-nodeunit-all assembly="dynamic" compilation="uncompiled" sync="sync" failquit="true"/>
 	</target>
 	<target name="test.dynamic.compiled.nu" depends="update.package.json">
-	    <run-nodeunit-all assembly="dynamic" compilation="compiled" failquit="true"/>
+	    <run-nodeunit-all assembly="dynamic" compilation="compiled" sync="sync" failquit="true"/>
+		<run-nodeunit-all assembly="dynamic" compilation="compiled" sync="async" failquit="true"/>
 	</target>
 	<target name="test.assembled.uncompiled.nu" depends="update.package.json,assemble.unittest">
-	    <run-nodeunit-all assembly="assembled" compilation="uncompiled" failquit="true"/>
+	    <run-nodeunit-all assembly="assembled" compilation="uncompiled" sync="sync" failquit="true"/>
+		<run-nodeunit-all assembly="assembled" compilation="uncompiled" sync="async" failquit="true"/>
 	</target>
 	<target name="test.assembled.compiled.nu" depends="update.package.json,assemble.unittest">
-	    <run-nodeunit-all assembly="assembled" compilation="compiled" failquit="true"/>
+	    <run-nodeunit-all assembly="assembled" compilation="compiled" sync="sync" failquit="true"/>
+		<run-nodeunit-all assembly="assembled" compilation="compiled" sync="async" failquit="true"/>
 	</target>
 	<target name="test.dyndata.uncompiled.nu" depends="assemble.dyndata.unittest,update.package.json">
-	    <run-nodeunit-all assembly="dynamicdata" compilation="uncompiled" failquit="true"/>
+	    <run-nodeunit-all assembly="dynamicdata" compilation="uncompiled" sync="sync" failquit="true"/>
+		<run-nodeunit-all assembly="dynamicdata" compilation="uncompiled" sync="async" failquit="true"/>
 	</target>
 	<target name="test.dyndata.compiled.nu" depends="assemble.dyndata.unittest,update.package.json">
-	    <run-nodeunit-all assembly="dynamicdata" compilation="compiled" failquit="true"/>
+	    <run-nodeunit-all assembly="dynamicdata" compilation="compiled" sync="sync" failquit="true"/>
+		<run-nodeunit-all assembly="dynamicdata" compilation="compiled" sync="async" failquit="true"/>
 	</target>
-				
+
 	<target name="test.all.nu" depends="test.dynamic.uncompiled.nu,test.dynamic.compiled.nu,test.assembled.uncompiled.nu,test.assembled.compiled.nu,test.dyndata.uncompiled.nu,test.dyndata.compiled.nu" />
-	
+
 	<macrodef name="runtests">
         <attribute name="assembly"/>
         <attribute name="compilation"/>
         <attribute name="suite"/>
+		<attribute name="sync"/>
 		<attribute name="failquit"/>
 		<sequential>
 			<exec osfamily="unix" executable="node" dir="${build.test}" failifexecutionfails="@{failquit}" failonerror="@{failquit}">
@@ -866,18 +895,21 @@ limitations under the License.
 				<arg line="@{assembly}"/>
 				<arg line="@{compilation}"/>
 				<arg line="@{suite}"/>
+				<arg line="@{sync}"/>
 			</exec>
 			<exec osfamily="mac" executable="node" dir="${build.test}" failifexecutionfails="@{failquit}" failonerror="@{failquit}">
 				<arg value="testSuite.js"/>
 				<arg line="@{assembly}"/>
 				<arg line="@{compilation}"/>
 				<arg line="@{suite}"/>
+				<arg line="@{sync}"/>
 			</exec>
 			<exec osfamily="windows" executable="node.exe" dir="${build.test}" failifexecutionfails="@{failquit}"  failonerror="@{failquit}">
 				<arg line="testSuite.js"/>
 				<arg line="@{assembly}"/>
 				<arg line="@{compilation}"/>
 				<arg line="@{suite}"/>
+				<arg line="@{sync}"/>
 			</exec>
 		</sequential>
 	</macrodef>
@@ -905,110 +937,144 @@ limitations under the License.
 	</macrodef>
 
 	<target depends="assemble.dyncode.unittest" name="test.util">
-		<runtests suite="util" assembly="dynamic" compilation="compiled" failquit="true"/>
+		<runtests suite="util" assembly="dynamic" compilation="compiled" sync="sync" failquit="true"/>
+		<runtests suite="util" assembly="dynamic" compilation="compiled" sync="async" failquit="true"/>
 	</target>
 	<target depends="assemble.dyncode.unittest" name="test.root">
-		<runtests suite="." assembly="dynamic" compilation="compiled" failquit="true"/>
+		<runtests suite="." assembly="dynamic" compilation="compiled" sync="sync" failquit="true"/>
+		<runtests suite="." assembly="dynamic" compilation="compiled" sync="async" failquit="true"/>
 	</target>
 	<target depends="assemble.dyncode.unittest" name="test.calendar">
-		<runtests suite="calendar" assembly="dynamic" compilation="compiled" failquit="true"/>
+		<runtests suite="calendar" assembly="dynamic" compilation="compiled" sync="sync" failquit="true"/>
+		<runtests suite="calendar" assembly="dynamic" compilation="compiled" sync="async" failquit="true"/>
 	</target>
 	<target depends="assemble.dyncode.unittest" name="test.date">
-		<runtests suite="date1" assembly="dynamic" compilation="compiled" failquit="false"/>
-		<runtests suite="date2" assembly="dynamic" compilation="compiled" failquit="false"/>
-		<runtests suite="date3" assembly="dynamic" compilation="compiled" failquit="true"/>
+		<runtests suite="date1" assembly="dynamic" compilation="compiled" sync="sync" failquit="false"/>
+		<runtests suite="date2" assembly="dynamic" compilation="compiled" sync="sync" failquit="false"/>
+		<runtests suite="date3" assembly="dynamic" compilation="compiled" sync="sync" failquit="true"/>
+        <runtests suite="date1" assembly="dynamic" compilation="compiled" sync="async" failquit="false"/>
+        <runtests suite="date2" assembly="dynamic" compilation="compiled" sync="async" failquit="false"/>
+        <runtests suite="date3" assembly="dynamic" compilation="compiled" sync="async" failquit="true"/>
 	</target>
 	<target depends="assemble.dyncode.unittest" name="test.daterange">
-		<runtests suite="daterange1" assembly="dynamic" compilation="compiled" failquit="false"/>
-		<runtests suite="daterange3" assembly="dynamic" compilation="compiled" failquit="false"/>
-		<runtests suite="daterange2" assembly="dynamic" compilation="compiled" failquit="true"/>
+		<runtests suite="daterange1" assembly="dynamic" compilation="compiled" sync="sync" failquit="false"/>
+		<runtests suite="daterange3" assembly="dynamic" compilation="compiled" sync="sync" failquit="false"/>
+		<runtests suite="daterange2" assembly="dynamic" compilation="compiled" sync="sync" failquit="true"/>
+        <runtests suite="daterange1" assembly="dynamic" compilation="compiled" sync="async" failquit="false"/>
+        <runtests suite="daterange3" assembly="dynamic" compilation="compiled" sync="async" failquit="false"/>
+        <runtests suite="daterange2" assembly="dynamic" compilation="compiled" sync="async" failquit="true"/>
 	</target>
 	<target depends="assemble.dyncode.unittest" name="test.durfmt">
-		<runtests suite="durfmt" assembly="dynamic" compilation="compiled" failquit="true"/>
+		<runtests suite="durfmt" assembly="dynamic" compilation="compiled" sync="sync" failquit="true"/>
 	</target>
 	<target depends="assemble.dyncode.unittest,assemble.dyndata.unittest,assemble.unittest" name="test.number">
-		<runtests suite="number" assembly="dynamic" compilation="compiled" failquit="true"/>
-        <runtests suite="number" assembly="dynamicdata" compilation="compiled" failquit="true"/>
-        <runtests suite="number" assembly="assembled" compilation="compiled" failquit="true"/>
-        <runtests suite="number" assembly="dynamic" compilation="uncompiled" failquit="true"/>
-        <runtests suite="number" assembly="dynamicdata" compilation="uncompiled" failquit="true"/>
-        <runtests suite="number" assembly="assembled" compilation="uncompiled" failquit="true"/>
+		<runtests suite="number" assembly="dynamic" compilation="compiled" sync="sync" failquit="true"/>
+        <runtests suite="number" assembly="dynamicdata" compilation="compiled" sync="sync" failquit="true"/>
+        <runtests suite="number" assembly="assembled" compilation="compiled" sync="sync" failquit="true"/>
+        <runtests suite="number" assembly="dynamic" compilation="uncompiled" sync="sync" failquit="true"/>
+        <runtests suite="number" assembly="dynamicdata" compilation="uncompiled" sync="sync" failquit="true"/>
+        <runtests suite="number" assembly="assembled" compilation="uncompiled" sync="sync" failquit="true"/>
+        <runtests suite="number" assembly="dynamic" compilation="compiled" sync="async" failquit="true"/>
+        <runtests suite="number" assembly="dynamicdata" compilation="compiled" sync="async" failquit="true"/>
+        <runtests suite="number" assembly="assembled" compilation="compiled" sync="async" failquit="true"/>
+        <runtests suite="number" assembly="dynamic" compilation="uncompiled" sync="async" failquit="true"/>
+        <runtests suite="number" assembly="dynamicdata" compilation="uncompiled" sync="async" failquit="true"/>
+        <runtests suite="number" assembly="assembled" compilation="uncompiled" sync="async" failquit="true"/>
 	</target>
 	<target depends="assemble.dyncode.unittest" name="test.maps">
-		<runtests suite="maps" assembly="dynamic" compilation="compiled" failquit="true"/>
+		<runtests suite="maps" assembly="dynamic" compilation="compiled" sync="sync" failquit="true"/>
+		<runtests suite="maps" assembly="dynamic" compilation="compiled" sync="async" failquit="true"/>
 	</target>
 	<target depends="assemble.dyncode.unittest" name="test.ctype">
-		<runtests suite="ctype" assembly="dynamic" compilation="compiled" failquit="true"/>
+		<runtests suite="ctype" assembly="dynamic" compilation="compiled" sync="sync" failquit="true"/>
+		<runtests suite="ctype" assembly="dynamic" compilation="compiled" sync="async" failquit="true"/>
 	</target>
 	<target depends="assemble.dyncode.unittest" name="test.strings-ext">
-		<runtests suite="strings-ext" assembly="dynamic" compilation="compiled" failquit="false"/>
+		<runtests suite="strings-ext" assembly="dynamic" compilation="compiled" sync="sync" failquit="false"/>
+		<runtests suite="strings-ext" assembly="dynamic" compilation="compiled" sync="async" failquit="false"/>
 	</target>
 	<target depends="assemble.dyncode.unittest" name="test.phone">
-		<runtests suite="phone1" assembly="dynamic" compilation="compiled" failquit="false"/>
-		<runtests suite="phone2" assembly="dynamic" compilation="compiled" failquit="false"/>
-		<runtests suite="phone3" assembly="dynamic" compilation="compiled" failquit="true"/>
+		<runtests suite="phone1" assembly="dynamic" compilation="compiled" sync="sync" failquit="false"/>
+		<runtests suite="phone2" assembly="dynamic" compilation="compiled" sync="sync" failquit="false"/>
+		<runtests suite="phone3" assembly="dynamic" compilation="compiled" sync="sync" failquit="true"/>
+        <runtests suite="phone1" assembly="dynamic" compilation="compiled" sync="async" failquit="false"/>
+        <runtests suite="phone2" assembly="dynamic" compilation="compiled" sync="async" failquit="false"/>
+        <runtests suite="phone3" assembly="dynamic" compilation="compiled" sync="async" failquit="true"/>
 	</target>
 	<target depends="assemble.dyncode.unittest" name="test.units">
-		<runtests suite="units" assembly="dynamic" compilation="compiled" failquit="true"/>
+		<runtests suite="units" assembly="dynamic" compilation="compiled" sync="sync" failquit="true"/>
+		<runtests suite="units" assembly="dynamic" compilation="compiled" sync="async" failquit="true"/>
 	</target>
 	<target depends="assemble.dyncode.unittest" name="test.name">
-		<runtests suite="name" assembly="dynamic" compilation="compiled" failquit="true"/>
+		<runtests suite="name" assembly="dynamic" compilation="compiled" sync="sync" failquit="true"/>
+		<runtests suite="name" assembly="dynamic" compilation="compiled" sync="async" failquit="true"/>
 	</target>
 	<target depends="assemble.dyncode.unittest" name="test.address">
-		<runtests suite="address1" assembly="dynamic" compilation="compiled" failquit="false"/>
-		<runtests suite="address2" assembly="dynamic" compilation="compiled" failquit="false"/>
-		<runtests suite="address3" assembly="dynamic" compilation="compiled" failquit="false"/>
+		<runtests suite="address1" assembly="dynamic" compilation="compiled" sync="sync" failquit="false"/>
+		<runtests suite="address2" assembly="dynamic" compilation="compiled" sync="sync" failquit="false"/>
+		<runtests suite="address3" assembly="dynamic" compilation="compiled" sync="sync" failquit="false"/>
+        <runtests suite="address1" assembly="dynamic" compilation="compiled" sync="async" failquit="false"/>
+        <runtests suite="address2" assembly="dynamic" compilation="compiled" sync="async" failquit="false"/>
+        <runtests suite="address3" assembly="dynamic" compilation="compiled" sync="async" failquit="false"/>
 	</target>
 	<target depends="assemble.dyncode.unittest" name="test.collate">
-		<runtests suite="collate" assembly="dynamic" compilation="compiled" failquit="true"/>
+		<runtests suite="collate" assembly="dynamic" compilation="compiled" sync="sync" failquit="true"/>
+		<runtests suite="collate" assembly="dynamic" compilation="compiled" sync="async" failquit="true"/>
 	</target>
 	<macrodef name="runallsuites">
         <attribute name="assembly"/>
         <attribute name="compilation"/>
         <attribute name="failquit"/>
+		<attribute name="sync"/>
 		<sequential>
-			<runtests suite="util" assembly="@{assembly}" compilation="@{compilation}" failquit="@{failquit}"/>
-			<runtests suite="." assembly="@{assembly}" compilation="@{compilation}" failquit="@{failquit}"/>
-			<runtests suite="calendar" assembly="@{assembly}" compilation="@{compilation}" failquit="@{failquit}"/>
-			<runtests suite="date1" assembly="@{assembly}" compilation="@{compilation}" failquit="@{failquit}"/>
-			<runtests suite="date2" assembly="@{assembly}" compilation="@{compilation}" failquit="@{failquit}"/>
-			<runtests suite="date3" assembly="@{assembly}" compilation="@{compilation}" failquit="@{failquit}"/>
-			<runtests suite="daterange1" assembly="@{assembly}" compilation="@{compilation}" failquit="@{failquit}"/>
-			<runtests suite="daterange2" assembly="@{assembly}" compilation="@{compilation}" failquit="@{failquit}"/>
-			<runtests suite="daterange3" assembly="@{assembly}" compilation="@{compilation}" failquit="@{failquit}"/>
-			<runtests suite="durfmt" assembly="@{assembly}" compilation="@{compilation}" failquit="@{failquit}"/>
-			<runtests suite="number" assembly="@{assembly}" compilation="@{compilation}" failquit="@{failquit}"/>
-			<runtests suite="maps" assembly="@{assembly}" compilation="@{compilation}" failquit="@{failquit}"/>
-			<runtests suite="ctype" assembly="@{assembly}" compilation="@{compilation}" failquit="@{failquit}"/>
-			<runtests suite="strings-ext" assembly="@{assembly}" compilation="@{compilation}" failquit="@{failquit}"/>
-			<runtests suite="phone1" assembly="@{assembly}" compilation="@{compilation}" failquit="@{failquit}"/>
-			<runtests suite="phone2" assembly="@{assembly}" compilation="@{compilation}" failquit="@{failquit}"/>
-			<runtests suite="phone3" assembly="@{assembly}" compilation="@{compilation}" failquit="@{failquit}"/>
-			<runtests suite="units" assembly="@{assembly}" compilation="@{compilation}" failquit="@{failquit}"/>
-			<runtests suite="name" assembly="@{assembly}" compilation="@{compilation}" failquit="@{failquit}"/>
-			<runtests suite="address1" assembly="@{assembly}" compilation="@{compilation}" failquit="@{failquit}"/>
-			<runtests suite="address2" assembly="@{assembly}" compilation="@{compilation}" failquit="@{failquit}"/>
-			<runtests suite="address3" assembly="@{assembly}" compilation="@{compilation}" failquit="@{failquit}"/>
-			<runtests suite="collate" assembly="@{assembly}" compilation="@{compilation}" failquit="@{failquit}"/>
+			<runtests suite="util" assembly="@{assembly}" compilation="@{compilation}" sync="@{sync}" failquit="@{failquit}"/>
+			<runtests suite="." assembly="@{assembly}" compilation="@{compilation}" sync="@{sync}" failquit="@{failquit}"/>
+			<runtests suite="calendar" assembly="@{assembly}" compilation="@{compilation}" sync="@{sync}" failquit="@{failquit}"/>
+			<runtests suite="date1" assembly="@{assembly}" compilation="@{compilation}" sync="@{sync}" failquit="@{failquit}"/>
+			<runtests suite="date2" assembly="@{assembly}" compilation="@{compilation}" sync="@{sync}" failquit="@{failquit}"/>
+			<runtests suite="date3" assembly="@{assembly}" compilation="@{compilation}" sync="@{sync}" failquit="@{failquit}"/>
+			<runtests suite="daterange1" assembly="@{assembly}" compilation="@{compilation}" sync="@{sync}" failquit="@{failquit}"/>
+			<runtests suite="daterange2" assembly="@{assembly}" compilation="@{compilation}" sync="@{sync}" failquit="@{failquit}"/>
+			<runtests suite="daterange3" assembly="@{assembly}" compilation="@{compilation}" sync="@{sync}" failquit="@{failquit}"/>
+			<runtests suite="durfmt" assembly="@{assembly}" compilation="@{compilation}" sync="@{sync}" failquit="@{failquit}"/>
+			<runtests suite="number" assembly="@{assembly}" compilation="@{compilation}" sync="@{sync}" failquit="@{failquit}"/>
+			<runtests suite="maps" assembly="@{assembly}" compilation="@{compilation}" sync="@{sync}" failquit="@{failquit}"/>
+			<runtests suite="ctype" assembly="@{assembly}" compilation="@{compilation}" sync="@{sync}" failquit="@{failquit}"/>
+			<runtests suite="strings-ext" assembly="@{assembly}" compilation="@{compilation}" sync="@{sync}" failquit="@{failquit}"/>
+			<runtests suite="phone1" assembly="@{assembly}" compilation="@{compilation}" sync="@{sync}" failquit="@{failquit}"/>
+			<runtests suite="phone2" assembly="@{assembly}" compilation="@{compilation}" sync="@{sync}" failquit="@{failquit}"/>
+			<runtests suite="phone3" assembly="@{assembly}" compilation="@{compilation}" sync="@{sync}" failquit="@{failquit}"/>
+			<runtests suite="units" assembly="@{assembly}" compilation="@{compilation}" sync="@{sync}" failquit="@{failquit}"/>
+			<runtests suite="name" assembly="@{assembly}" compilation="@{compilation}" sync="@{sync}" failquit="@{failquit}"/>
+			<runtests suite="address1" assembly="@{assembly}" compilation="@{compilation}" sync="@{sync}" failquit="@{failquit}"/>
+			<runtests suite="address2" assembly="@{assembly}" compilation="@{compilation}" sync="@{sync}" failquit="@{failquit}"/>
+			<runtests suite="address3" assembly="@{assembly}" compilation="@{compilation}" sync="@{sync}" failquit="@{failquit}"/>
+			<runtests suite="collate" assembly="@{assembly}" compilation="@{compilation}" sync="@{sync}" failquit="@{failquit}"/>
 		</sequential>
 	</macrodef>
 	<target depends="assemble.unittest" name="test.assembled.compiled">
-		<runallsuites assembly="assembled" compilation="compiled" failquit="true"/>
+		<runallsuites assembly="assembled" compilation="compiled" sync="sync" failquit="true"/>
+		<runallsuites assembly="assembled" compilation="compiled" sync="async" failquit="true"/>
 	</target>
 	<target depends="assemble.unittest" name="test.assembled.uncompiled">
-		<runallsuites assembly="assembled" compilation="uncompiled" failquit="true"/>
+		<runallsuites assembly="assembled" compilation="uncompiled" sync="sync" failquit="true"/>
+		<runallsuites assembly="assembled" compilation="uncompiled" sync="async" failquit="true"/>
 	</target>
 	<target name="test.dynamic.uncompiled">
-		<runallsuites assembly="dynamic" compilation="uncompiled" failquit="true"/>
+		<runallsuites assembly="dynamic" compilation="uncompiled" sync="sync" failquit="true"/>
+		<runallsuites assembly="dynamic" compilation="uncompiled" sync="async" failquit="true"/>
 	</target>
 	<target name="test.dynamic.compiled">
-		<runallsuites assembly="dynamic" compilation="compiled" failquit="false"/>
+		<runallsuites assembly="dynamic" compilation="compiled" sync="sync" failquit="false"/>
+		<runallsuites assembly="dynamic" compilation="compiled" sync="async" failquit="false"/>
 	</target>
 	<target depends="assemble.dyndata.unittest" name="test.dynamicdata.compiled">
-		<runallsuites assembly="dynamicdata" compilation="compiled" failquit="true"/>
+		<runallsuites assembly="dynamicdata" compilation="compiled" sync="sync" failquit="true"/>
+		<runallsuites assembly="dynamicdata" compilation="compiled" sync="async" failquit="true"/>
 	</target>
 	<target depends="assemble.dyndata.unittest" name="test.dynamicdata.uncompiled">
-		<runallsuites assembly="dynamicdata" compilation="uncompiled" failquit="true"/>
+		<runallsuites assembly="dynamicdata" compilation="uncompiled" sync="sync" failquit="true"/>
+		<runallsuites assembly="dynamicdata" compilation="uncompiled" sync="async" failquit="true"/>
 	</target>
 	<target name="bench.core" depends="assemble.unittest,assemble.dyndata.unittest"
 			description="run the benchmarking tests">
@@ -1306,18 +1372,15 @@ limitations under the License.
 	</target>
 	<target name="test.rhino" depends="test.assembled.compiled.rhino,test.assembled.uncompiled.rhino,test.dynamic.uncompiled.rhino,test.dynamic.compiled.rhino,test.dynamicdata.compiled.rhino,test.dynamicdata.uncompiled.rhino">
 	</target>
-	
+
 	<target name="test.remote" depends="prepare,assemble.unittest" description="Run a remote server to test ilib in remote browsers">
-	    <exec osfamily="unix" resultproperty="uglify.result" errorproperty="uglify.error" executable="node" dir="${build.base}" failifexecutionfails="true">
-			<arg value="node_modules/http-server/bin/http-server"/>
+	    <exec osfamily="unix" executable="node" dir="${build.base}" failifexecutionfails="true">
+			<arg value="../node_modules/http-server/bin/http-server"/>
 			<arg value="-p"/>
 			<arg value="9090"/>
 		</exec>
-		<exec osfamily="mac" resultproperty="uglify.result" errorproperty="uglify.error" executable="node" dir="${build.base}" failifexecutionfails="true">
-			<arg value="node_modules/http-server/bin/http-server"/>
-		</exec>
-		<exec osfamily="windows" resultproperty="uglify.result" errorproperty="uglify.error" executable="node.exe" dir="${build.base}" failifexecutionfails="true">
-			<arg value="node_modules/http-server/bin/http-server"/>
+		<exec osfamily="windows" executable="node.exe" dir="${build.base}" failifexecutionfails="true">
+			<arg value="../node_modules/http-server/bin/http-server"/>
 		</exec>
 	</target>
 </project>

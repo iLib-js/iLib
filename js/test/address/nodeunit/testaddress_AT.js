@@ -26,7 +26,7 @@ if (typeof(AddressFmt) === "undefined") {
 // TODO: put in Austrian addresses here
 
 if (typeof(ilib) === "undefined") {
-    var ilib = require("../../..");
+    var ilib = require("../../../lib/ilib.js");
 }
 
 module.exports.testaddress_AT = {

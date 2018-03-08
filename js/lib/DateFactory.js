@@ -134,10 +134,6 @@ var DateFactory = function(options) {
 				type = info.getCalendar();
 				
 				obj = DateFactory._init(type, options);
-				
-				if (options && typeof(options.onLoad) === 'function') {
-					options.onLoad(obj);
-				}
 			}
 		});
 	} else {
@@ -195,6 +191,9 @@ DateFactory._init = function(type, options) {
 	
 	// pass the same options through to the constructor so the subclass
 	// has the ability to do something with if it needs to
+	if (!cons && typeof(options.onLoad) === "function") {
+	    options.onLoad(undefined);
+	}
 	return cons && new cons(options);
 };
 

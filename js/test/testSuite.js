@@ -81,12 +81,16 @@ var assembly = "dynamic";
 var compilation = "uncompiled";
 var size = "full";
 var suite = suiteDefinitions.full;
+var sync = true;
 
 // Usage: testSuite.js [assembly_style [compilation_style [suite_name_or_collection]]]
 if (process.argv.length > 2) {
 	if (process.argv.length > 3) {
 		if (process.argv.length > 4) {
 			if (process.argv.length > 5) {
+			    if (process.argv.length > 6) {
+			        sync = (process.argv[6] !== "async");
+			    }
 				set = process.argv[5];
 			}
 			
