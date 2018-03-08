@@ -1,7 +1,7 @@
 /*
  * testcountry.js - test the country routines
  *
- * Copyright © 2017,2017, LGE
+ * Copyright © 2017, LGE
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -22,7 +22,7 @@ if (typeof(Country) === "undefined") {
 }
 
 if (typeof(ilib) === "undefined") {
-    var ilib = require("../../..");
+    var ilib = require("../../../lib/ilib.js");
 }
 
 module.exports.testcountry = {

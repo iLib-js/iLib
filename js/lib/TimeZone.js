@@ -184,6 +184,7 @@ var TimeZone = function(options) {
 	if (!this.id) {
 		new LocaleInfo(this.locale, {
 			sync: this.sync,
+			loadParams: this.loadParams,
 			onLoad: ilib.bind(this, function (li) {
 				this.id = li.getTimeZone() || "Etc/UTC";
 				this._loadtzdata();
@@ -688,7 +689,7 @@ TimeZone.prototype._calcRuleStart = function (rule, year) {
 		});
 	} else {
 		if (rule.r.charAt(0) == 'l' || rule.r.charAt(0) == 'f') {
-			cal = CalendarFactory({type: "gregorian"});
+			cal = CalendarFactory({type: "gregorian"}); // can be synchronous
 			type = rule.r.charAt(0);
 			weekday = parseInt(rule.r.substring(1), 10);
 			day = (type === 'l') ? cal.getMonLength(rule.m, year) : 1;

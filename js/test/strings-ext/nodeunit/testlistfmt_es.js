@@ -24,7 +24,7 @@ if (typeof(ListFmt) === "undefined") {
 // es-ES
 
 if (typeof(ilib) === "undefined") {
-    var ilib = require("../../..");
+    var ilib = require("../../../lib/ilib.js");
 }
 
 module.exports.testlistfmt_es = {

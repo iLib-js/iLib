@@ -17,6 +17,10 @@ Bug Fixes:
 
 * Fixed number parsing (INumber) and CType functions when no locale data is available. Previously, they would just not
 work at all. Now, they default to US English/ASCII behaviours.
+* Signficant refactoring of many classes to support true asynchronous operation. Previous code only paid lip service to
+async operation by supporting callbacks. However, when you ran it in an actual async environment, the callbacks were not
+called properly, and many classes used other ilib classes synchronously under the covers. Now a new async testing loader
+and new unit tests prove that the async operation is actually working correctly.
 
 Build 000
 -------

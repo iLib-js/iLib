@@ -18,7 +18,7 @@
  */
 
 if (typeof(ilib) === "undefined") {
-    var ilib = require("../../../lib/ilib-node.js");
+    var ilib = require("../../../lib/ilib.js");
 }
 if (typeof(ThaiSolarDate) === "undefined") {
     var ThaiSolarDate = require("../.././../lib/ThaiSolarDate.js");
@@ -65,7 +65,7 @@ function mockLoaderDF(paths, sync, params, callback) {
 var oldLoader = ilib._load;
 
 if (typeof(ilib) === "undefined") {
-    var ilib = require("../../..");
+    var ilib = require("../../../lib/ilib.js");
 }
 
 module.exports.testdatefmt = {
@@ -3020,58 +3020,7 @@ module.exports.testdatefmt = {
         test.equal(fmt.getCalendar(), "gregorian");
         test.equal(fmt.getTemplate(), "dd.MM.yy");
         test.done();
-    },
-    
-    testDateFmtLoadLocaleDataAsynch: function(test) {
-        if (ilib.isDynData()) {
-            // don't need to test loading on the dynamic load version because we are testing
-            // it via all the other tests already.
-            test.done();
-            return;
-        }
-        ilib.setLoaderCallback(mockLoaderDF);
-        
-        new DateFmt({
-            locale: "zz-ZZ",
-            sync: false,
-            onLoad: function (fmt) {
-                ilib.setLoaderCallback(oldLoader);
-                test.expect(4);
-                test.ok(fmt !== null);
-                
-                test.equal(fmt.getLocale().toString(), "zz-ZZ");
-                test.equal(fmt.getCalendar(), "gregorian");
-                test.equal(fmt.getTemplate(), "dd.MM.yy");
-                test.done();
-            }
-        });
-    },
-    
-    testDateFmtLoadLocaleDataAsynchCached: function(test) {
-        if (ilib.isDynData()) {
-            // don't need to test loading on the dynamic load version because we are testing
-            // it via all the other tests already.
-            test.done();
-            return;
-        }
-        ilib.setLoaderCallback(mockLoaderDF);
-        
-        test.expect(4);
-        new DateFmt({
-            locale: "zz-ZZ",
-            sync: false,
-            onLoad: function (fmt) {
-                ilib.setLoaderCallback(oldLoader);
-                test.ok(fmt !== null);
-                
-                test.equal(fmt.getLocale().toString(), "zz-ZZ");
-                test.equal(fmt.getCalendar(), "gregorian");
-                test.equal(fmt.getTemplate(), "dd.MM.yy");
-                test.done();
-            }
-        });
-    },
-    
+    },    
     
     testDateFmtTransitionToDSTRightBefore: function(test) {
         test.expect(2);

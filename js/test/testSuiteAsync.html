@@ -1,0 +1,104 @@
+<!--
+testSuiteAsync.html - Run all async tests
+
+Copyright © 2018, JEDLSoft
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+
+See the License for the specific language governing permissions and
+limitations under the License.
+-->
+
+<html>
+  <head>
+    <title>Test Suite</title>
+    <link rel="stylesheet" href="/test/nodeunit/nodeunit.css" type="text/css" />
+    <script>
+        var module = {};
+    </script>
+    <script src="/test/nodeunit/nodeunit.js"></script>
+    <script src="/output/js/ut/dynamic/ilib-ut-dyn.js"></script>
+    <script src="strings-ext/test/normdata.js"></script>
+    <script>
+        var suites = {};
+        module = {
+            exports: {}
+        };
+        function loadTests(suite) {
+            for (var prop in module.exports.files) {
+                document.write("<scrip" + 't src="' + suite + "/nodeunit/" + module.exports.files[prop] + '"></scr' + "ipt>");
+            }
+        }
+    </script>
+    <script src="root/nodeunit/testSuiteFilesAsync.js"></script>
+	<script>
+		loadTests("root");
+	</script>
+    <script src="name/nodeunit/testSuiteFilesAsync.js"></script>
+	<script>
+		loadTests("name");
+	</script>
+    <script src="date/nodeunit/testSuiteFilesAsync.js"></script>
+	<script>
+		loadTests("date");
+	</script>
+    <script src="daterange/nodeunit/testSuiteFilesAsync.js"></script>
+	<script>
+		loadTests("daterange");
+	</script>
+    <script src="durfmt/nodeunit/testSuiteFilesAsync.js"></script>
+	<script>
+		loadTests("durfmt");
+	</script>
+    <script src="phone/nodeunit/testSuiteFilesAsync.js"></script>
+	<script>
+		loadTests("phone");
+	</script>
+    <script src="ctype/nodeunit/testSuiteFilesAsync.js"></script>
+	<script>
+		loadTests("ctype");
+	</script>
+    <script src="collate/nodeunit/testSuiteFilesAsync.js"></script>
+	<script>
+		loadTests("collate");
+	</script>
+    <script src="number/nodeunit/testSuiteFilesAsync.js"></script>
+	<script>
+		loadTests("number");
+	</script>
+    <script src="units/nodeunit/testSuiteFilesAsync.js"></script>
+	<script>
+		loadTests("units");
+	</script>
+    <script src="maps/nodeunit/testSuiteFilesAsync.js"></script>
+	<script>
+		loadTests("maps");
+	</script>
+    <script src="strings-ext/nodeunit/testSuiteFilesAsync.js"></script>
+	<script>
+		loadTests("strings-ext");
+	</script>
+    <script src="calendar/nodeunit/testSuiteFilesAsync.js"></script>
+	<script>
+		loadTests("calendar");
+	</script>
+    <script src="address/nodeunit/testSuiteFilesAsync.js"></script>
+	<script>
+		loadTests("address");
+	</script>
+  </head>
+  <body>
+    <h1 id="nodeunit-header">iLib All Async Test Suites</h1>
+    <script>
+     nodeunit.run(module.exports);
+    </script>
+  </body>
+</html>

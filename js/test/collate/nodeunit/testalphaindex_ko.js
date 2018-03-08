@@ -18,7 +18,7 @@
  */
 
 if (typeof(ilib) === "undefined") {
-    var ilib = require("../../../lib/ilib-node.js");
+    var ilib = require("../../../lib/ilib.js");
 }
 if (typeof(AlphabeticIndex) === "undefined") {
     var AlphabeticIndex = require("../../../lib/AlphabeticIndex.js");
@@ -701,18 +701,6 @@ module.exports.testalphaindex_ko = {
 
         test.deepEqual(ai.getAllBuckets(), expected);
         test.done();
-    },
-
-    testAlphaIndexConstructorAsync: function(test) {
-        test.expect(1);
-        var ai = new AlphabeticIndex({
-            locale: "ko-KR",
-            sync: false,
-            onLoad: function(ai) {
-                test.ok(ai);
-                test.done();
-            }
-        });
     },
 
     testAlphaIndexUnknowLocaleActsLikeEnglish: function(test) {

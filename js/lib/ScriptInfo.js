@@ -1,7 +1,7 @@
 /*
  * ScriptInfo.js - information about scripts
  * 
- * Copyright © 2012-2017, JEDLSoft
+ * Copyright © 2012-2018, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -94,8 +94,10 @@ var ScriptInfo = function(script, options) {
 		});
 	} else {
 		this.info = ilib.data.scripts[script];
+        if (options && typeof(options.onLoad) === 'function') {
+            options.onLoad(this);
+        }
 	}
-
 };
 
 /**
@@ -141,6 +143,10 @@ ScriptInfo.getAllScripts = function(sync, loadParams, onLoad) {
 				}
 			})
 		});
+	} else {
+        if (typeof(onLoad) === 'function') {
+            onLoad(ScriptInfo._getScriptsArray());
+        }
 	}
 	
 	return ScriptInfo._getScriptsArray();

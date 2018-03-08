@@ -19,6 +19,7 @@
 
 module.exports.files = [
     "testdatefmtrange.js",
+    "testdatefmtrangeasync.js",
     "testdatefmtrange_af_NA.js",
     "testdatefmtrange_af_ZA.js",
     "testdatefmtrange_am_ET.js",
@@ -93,5 +94,5 @@ module.exports.files = [
     "testdatefmtrange_vi_VN.js",
     "testdatefmtrange_zh_Hans_CN.js",
     "testdatefmtrange_zh_Hant_HK.js",
-    "testdatefmtrange_zh_Hant_TW.js",
+    "testdatefmtrange_zh_Hant_TW.js"
 ];
