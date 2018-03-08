@@ -1485,9 +1485,9 @@ DateFmt.prototype = {
 	formatRelative: function(reference, date) {
 		reference = DateFactory._dateToIlib(reference);
 		date = DateFactory._dateToIlib(date);
-		
-		var referenceRd, dateRd, fmt, time, diff, num;
-		
+
+		var referenceRd, dateRd, fmt, time, diff, absDiff, num;
+
 		if (typeof(reference) !== 'object' || !reference.getCalendar || reference.getCalendar() !== this.calName ||
 			typeof(date) !== 'object' || !date.getCalendar || date.getCalendar() !== this.calName) {
 			throw "Wrong calendar type";
@@ -1495,136 +1495,117 @@ DateFmt.prototype = {
 		
 		referenceRd = reference.getRataDie();
 		dateRd = date.getRataDie();
-		
-		if (dateRd < referenceRd) {
-			diff = referenceRd - dateRd;
-			fmt = this.sysres.getString("{duration} ago");
-		} else {
-			diff = dateRd - referenceRd;
-			fmt = this.sysres.getString("in {duration}");
-		}
-		
-		if (diff < 0.000694444) {
-			num = Math.round(diff * 86400);
+
+		diff = referenceRd - dateRd;
+		absDiff = Math.abs(diff);
+
+		if (absDiff < 0.000694444) {
+			num = Math.round(absDiff * 86400);
 			switch (this.length) {
 				case 's':
-					time = this.sysres.getString("#{num}s");
+					fmt = diff > 0 ? this.sysres.getString("#{num}s ago") : this.sysres.getString("#in {num}s");
 					break;
 				case 'm':
-					time = this.sysres.getString("1#1 se|#{num} sec");
-					break;
-				case 'l':
-					time = this.sysres.getString("1#1 sec|#{num} sec");
+					fmt = diff > 0 ? this.sysres.getString("1#1 sec ago|#{num} sec ago") : this.sysres.getString("1#in 1 sec|#in {num} sec");
 					break;
 				default:
 				case 'f':
-					time = this.sysres.getString("1#1 second|#{num} seconds");
+				case 'l':
+					fmt = diff > 0 ? this.sysres.getString("1#1 second ago|#{num} seconds ago") : this.sysres.getString("1#in 1 second|#in {num} seconds");
 					break;
 			}
-		} else if (diff < 0.041666667) {
-			num = Math.round(diff * 1440);
+		} else if (absDiff < 0.041666667) {
+			num = Math.round(absDiff * 1440);
 			switch (this.length) {
 				case 's':
-					time = this.sysres.getString("#{num}m", "durationShortMinutes");
+					fmt = diff > 0 ? this.sysres.getString("#{num}mi ago") : this.sysres.getString("#in {num}mi");
 					break;
 				case 'm':
-					time = this.sysres.getString("1#1 mi|#{num} min");
-					break;
-				case 'l':
-					time = this.sysres.getString("1#1 min|#{num} min");
+					fmt = diff > 0 ? this.sysres.getString("1#1 min ago|#{num} min ago") :  this.sysres.getString("1#in 1 min|#in {num} min");
 					break;
 				default:
 				case 'f':
-					time = this.sysres.getString("1#1 minute|#{num} minutes");
+				case 'l':
+					fmt = diff > 0 ? this.sysres.getString("1#1 minute ago|#{num} minutes ago") : this.sysres.getString("1#in 1 minute|#in {num} minutes");
 					break;
 			}
-		} else if (diff < 1) {
-			num = Math.round(diff * 24);
+		} else if (absDiff < 1) {
+			num = Math.round(absDiff * 24);
 			switch (this.length) {
 				case 's':
-					time = this.sysres.getString("#{num}h");
+					fmt = diff > 0 ? this.sysres.getString("#{num}h ago") : this.sysres.getString("#in {num}h");
 					break;
 				case 'm':
-					time = this.sysres.getString("1#1 hr|#{num} hrs", "durationMediumHours");
-					break;
-				case 'l':
-					time = this.sysres.getString("1#1 hr|#{num} hrs");
+					fmt = diff > 0 ? this.sysres.getString("1#1 hr ago|#{num} hrs ago") : this.sysres.getString("1#in 1 hr|#in {num} hrs");
 					break;
 				default:
 				case 'f':
-					time = this.sysres.getString("1#1 hour|#{num} hours");
+				case 'l':
+					fmt = diff > 0 ? this.sysres.getString("1#1 hour ago|#{num} hours ago") : this.sysres.getString("1#in 1 hour|#in {num} hours");
 					break;
 			}
-		} else if (diff < 14) {
-			num = Math.round(diff);
+		} else if (absDiff < 14) {
+			num = Math.round(absDiff);
 			switch (this.length) {
 				case 's':
-					time = this.sysres.getString("#{num}d");
+					fmt = diff > 0 ? this.sysres.getString("#{num}d ago") : this.sysres.getString("#in {num}d");
 					break;
 				case 'm':
-					time = this.sysres.getString("1#1 dy|#{num} dys");
-					break;
-				case 'l':
-					time = this.sysres.getString("1#1 day|#{num} days", "durationLongDays");
+					fmt = diff > 0 ? this.sysres.getString("1#1 dy ago|#{nudurationm} dys ago") : this.sysres.getString("1#in 1 dy|#in {num} dys");
 					break;
 				default:
 				case 'f':
-					time = this.sysres.getString("1#1 day|#{num} days");
+				case 'l':
+					fmt = diff > 0 ? this.sysres.getString("1#1 day ago|#{num} days ago") : this.sysres.getString("1#in 1 day|#in {num} days");
 					break;
 			}
-		} else if (diff < 84) {
-			num = Math.round(diff/7);
+		} else if (absDiff < 84) {
+			num = Math.round(absDiff/7);
 			switch (this.length) {
 				case 's':
-					time = this.sysres.getString("#{num}w");
+					fmt = diff > 0 ? this.sysres.getString("#{num}w ago") : this.sysres.getString("#in {num}w");
 					break;
 				case 'm':
-					time = this.sysres.getString("1#1 wk|#{num} wks", "durationMediumWeeks");
-					break;
-				case 'l':
-					time = this.sysres.getString("1#1 wk|#{num} wks");
+					fmt = diff > 0 ? this.sysres.getString("1#1 wk ago|#{num} wks ago") : this.sysres.getString("1#in 1 wk|#in {num} wks");
 					break;
 				default:
 				case 'f':
-					time = this.sysres.getString("1#1 week|#{num} weeks");
+				case 'l':
+					fmt = diff > 0 ? this.sysres.getString("1#1 week ago|#{num} weeks ago") : this.sysres.getString("1#in 1 week|#in {num} weeks");
 					break;
 			}
-		} else if (diff < 730) {
-			num = Math.round(diff/30.4);
+		} else if (absDiff < 730) {
+			num = Math.round(absDiff/30.4);
 			switch (this.length) {
 				case 's':
-					time = this.sysres.getString("#{num}m", "durationShortMonths");
+					fmt = diff > 0 ? this.sysres.getString("#{num}mo ago") : this.sysres.getString("#in {num}mo");
 					break;
 				case 'm':
-					time = this.sysres.getString("1#1 mo|#{num} mos");
-					break;
-				case 'l':
-					time = this.sysres.getString("1#1 mon|#{num} mons");
+					fmt = diff > 0 ? this.sysres.getString("1#1 mon ago|#{num} mons ago") : this.sysres.getString("1#in 1 mon|#in {num} mons");
 					break;
 				default:
 				case 'f':
-					time = this.sysres.getString("1#1 month|#{num} months");
+				case 'l':
+					fmt = diff > 0 ? this.sysres.getString("1#1 month ago|#{num} months ago") : this.sysres.getString("1#in 1 month|#in {num} months");
 					break;
 			}
 		} else {
-			num = Math.round(diff/365);
+			num = Math.round(absDiff/365);
 			switch (this.length) {
 				case 's':
-					time = this.sysres.getString("#{num}y");
+					fmt = diff > 0 ? this.sysres.getString("#{num}y ago") : this.sysres.getString("#in {num}y");
 					break;
 				case 'm':
-					time = this.sysres.getString("1#1 yr|#{num} yrs", "durationMediumYears");
-					break;
-				case 'l':
-					time = this.sysres.getString("1#1 yr|#{num} yrs");
+					fmt = diff > 0 ? this.sysres.getString("1#1 yr ago|#{num} yrs ago") : this.sysres.getString("1#in 1 yr|#in {num} yrs");
 					break;
 				default:
 				case 'f':
-					time = this.sysres.getString("1#1 year|#{num} years");
+				case 'l':
+					fmt = diff > 0 ? this.sysres.getString("1#1 year ago|#{num} years ago") : this.sysres.getString("1#in 1 year|#in {num} years");
 					break;
 			}
 		}
-		return fmt.format({duration: time.formatChoice(num, {num: num})});
+		return fmt.formatChoice(num, {num: num});
 	}
 };
 
