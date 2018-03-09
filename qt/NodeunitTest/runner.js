@@ -25,17 +25,15 @@
  * @constructor
  * @param {string|ilib.String=} string initialize this instance with this string 
  */
-function TestRunner(root) {
+function TestRunner() {
 	this.subSuites = [];
-    this.root = root || ".";
 };
 
 TestRunner.prototype = {
 	runTests: function() {
-        var start = new Date();
         this.subSuites.forEach(function (suite) {
             console.log("[runner.js] runTests: running suite " + suite.path);
-			suite.runTests(this.results, this.root);
+            suite.runTests();
 		}.bind(this));
 	},
 

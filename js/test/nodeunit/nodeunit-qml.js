@@ -361,13 +361,11 @@ var nodeunit = (function(){
         var failNum = 0, successNum = 0;
         var startTime = 0, endTime = 0;
 
-        exports.run = function (modules, options) {
-            options = options || {};
-
+        exports.run = function (modules) {
             startTime = new Date().getTime();
     
             exports.runModules(modules, {
-                moduleStart: function (name) {            
+                moduleStart: function (name) {
                     console.log("moduleStart");
                 },
                 testDone: function (name, assertions) {
@@ -398,8 +396,6 @@ var nodeunit = (function(){
             };
             optionalCallback('moduleStart');
             optionalCallback('moduleDone');
-            optionalCallback('testStart');
-            optionalCallback('testDone');
             return opt;
         };
 
@@ -426,7 +422,7 @@ var nodeunit = (function(){
         * @api public
         */
 
-        exports.assertionList = function (arr, duration) {
+        exports.assertionList = function (arr) {
             var that = arr || [];
             that.failures = function () {
                 var failures = 0;
@@ -440,7 +436,7 @@ var nodeunit = (function(){
             that.passed = function () {
                 return that.length - that.failures();
             };
-            that.duration = duration || 0;
+
             return that;
         };
 
@@ -478,9 +474,8 @@ var nodeunit = (function(){
                         var a1 = exports.assertion({method: 'expect', error: e});
                             a_list.push(a1);
                         }
-                        
-                    var end = new Date().getTime();
-                    var assertion_list = exports.assertionList(a_list, end - start);
+
+                    var assertion_list = exports.assertionList(a_list);
 
                     options.testDone(name, assertion_list);
                     callback(null, a_list);
@@ -554,4 +549,5 @@ var nodeunit = (function(){
     nodeunit.finish = reporter.finish;
 
 return nodeunit;
+
 })();

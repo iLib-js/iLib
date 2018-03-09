@@ -7,11 +7,12 @@ QtObject {
 
         var TestSuite = TestSuiteModule.TestSuite;
         var TestRunner = TestRunnerModule.TestRunner;
-        var runner = new TestRunner("../..");
+        var runner = new TestRunner();
 
         var suiteDefinitions = {
             "address": "/address/nodeunit/testSuiteQml.js",
             "calendar": "/calendar/nodeunit/testSuiteQml.js",
+            "collate": "/collate/nodeunit/testSuiteQml.js",   /* It takes almost 11 minutes. */
             "ctype": "/ctype/nodeunit/testSuiteQml.js",
             "date": "/date/nodeunit/testSuiteQml.js",
             "daterange": "/daterange/nodeunit/testSuiteQml.js",
@@ -23,8 +24,7 @@ QtObject {
             "root": "/root/nodeunit/testSuiteQml.js",
             "strings-ext": "/strings-ext/nodeunit/testSuiteQml.js",
             "units": "/units/nodeunit/testSuiteQml.js",
-            "util": "/util/nodeunit/testSuiteQml.js",
-            "collate": "/collate/nodeunit/testSuiteQml.js",   /* it takes almost 11 minutes. */
+            "util": "/util/nodeunit/testSuiteQml.js"
         };
 
         var s, ts;
