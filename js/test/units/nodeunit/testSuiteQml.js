@@ -17,19 +17,19 @@
  * limitations under the License.
  */
 
-module.exports.units = {
-    "testFuelConsumption": "testFuelConsumption.js",
-    "testUnknown": "testUnknown.js",
-    "testVolume": "testVolume.js",
-    "testarea": "testarea.js",
-    "testdigitalstoreage": "testdigitalstoreage.js",
-    "testenergy": "testenergy.js",
-    "testlengths": "testlengths.js",
-    "testmass": "testmass.js",
-    "testmeasurement": "testmeasurement.js",
-    "testspeeds": "testspeeds.js",
-    "testtemp": "testtemp.js",
-    "testtime": "testtime.js",
-    "testunitfmt": "testunitfmt.js",
-    "testunits": "testunits.js"
-}
+module.exports.units = [
+    "testFuelConsumption.js",
+    "testUnknown.js",
+    "testVolume.js",
+    "testarea.js",
+    "testdigitalstoreage.js",
+    "testenergy.js",
+    "testlengths.js",
+    "testmass.js",
+    "testmeasurement.js",
+    "testspeeds.js",
+    "testtemp.js",
+    "testtime.js",
+    "testunitfmt.js",
+    "testunits.js"
+]

@@ -17,14 +17,14 @@
  * limitations under the License.
  */
 
-module.exports.durfmt = {
-    "testdurfmt": "testdurfmt.js",
-    "testdurfmt_am_ET": "testdurfmt_am_ET.js",
-    "testdurfmt_ar_SA": "testdurfmt_ar_SA.js",
-    "testdurfmt_az_Latn_AZ": "testdurfmt_az_Latn_AZ.js",
-    "testdurfmt_ha_Latn_NG": "testdurfmt_ha_Latn_NG.js",
-    "testdurfmt_km_KH": "testdurfmt_km_KH.js",
-    "testdurfmt_or_IN": "testdurfmt_or_IN.js",
-    "testdurfmt_si_LK": "testdurfmt_si_LK.js",
-    "testdurfmt_sw_KE": "testdurfmt_sw_KE.js"
-}
+module.exports.durfmt = [
+    "testdurfmt.js",
+    "testdurfmt_am_ET.js",
+    "testdurfmt_ar_SA.js",
+    "testdurfmt_az_Latn_AZ.js",
+    "testdurfmt_ha_Latn_NG.js",
+    "testdurfmt_km_KH.js",
+    "testdurfmt_or_IN.js",
+    "testdurfmt_si_LK.js",
+    "testdurfmt_sw_KE.js"
+]

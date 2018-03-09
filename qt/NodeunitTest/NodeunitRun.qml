@@ -24,7 +24,7 @@ QtObject {
             "strings-ext": "/strings-ext/nodeunit/testSuiteQml.js",
             "units": "/units/nodeunit/testSuiteQml.js",
             "util": "/util/nodeunit/testSuiteQml.js",
-            "collate": "/collate/nodeunit/testSuiteQml.js",   /*it takes 652432ms almost 11 minutes.*/
+            "collate": "/collate/nodeunit/testSuiteQml.js",   /* it takes almost 11 minutes. */
         };
 
         var s, ts;

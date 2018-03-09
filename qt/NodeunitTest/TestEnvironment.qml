@@ -12,37 +12,27 @@ QtObject {
 	
     Component.onCompleted: {
         //console.log(">>>>>>>>>>>> [TestEnvironment.qml] new context. Loading in a fresh copy of ilib.");
-        
+        console.log("[TestEnvironment.qml] (path) : " + path + " (moduleName): " + moduleName);
+
         ilib = QtIlib.ilib;
         var loader = new QtIlib.QmlLoader(FS.FileReader);
         ilib.setLoaderCallback(loader);
-
 		require = QtIlib.require;
 
-        var testSuites, testfile, runTest
-
-        console.log("[TestEnvironment.qml] (path) : " + path + " (moduleName): " + moduleName);
-
+        var testSuites, runTest, i;
         testSuites = require("qmltest", path);
 
         if (moduleName === "name") {
-            for (testfile in testSuites["namefmt"]) {
-                if (testSuites["namefmt"].hasOwnProperty(testfile)) {
-                    runTest = require("qmltest", "/" +moduleName + "/nodeunit/"+ testSuites["namefmt"][testfile]);
-                }
+            for (i=0; i < testSuites["namefmt"].length; i++) {
+                runTest = require("qmltest", "/" +moduleName + "/nodeunit/"+ testSuites["namefmt"][i]);
             }
         } else if (moduleName === "strings-ext") {
-            for (testfile in testSuites["strings_ext"]) {
-                if (testSuites["strings_ext"].hasOwnProperty(testfile)) {
-                    runTest = require("qmltest", "/" +moduleName + "/nodeunit/"+ testSuites["strings_ext"][testfile]);
-                }
+           for (i=0; i < testSuites["strings_ext"].length; i++) {
+                runTest = require("qmltest", "/" +moduleName + "/nodeunit/"+ testSuites["strings_ext"][i]);
             }
         } else {
-            for (testfile in testSuites[moduleName]) {
-                if (testSuites[moduleName].hasOwnProperty(testfile)) {
-                    runTest = require("qmltest", "/" +moduleName + "/nodeunit/"+ testSuites[moduleName][testfile]);
-
-                }
+            for (i=0; i < testSuites[moduleName].length; i++) {
+                runTest = require("qmltest", "/" +moduleName + "/nodeunit/"+ testSuites[moduleName][i]);
             }
         }
 

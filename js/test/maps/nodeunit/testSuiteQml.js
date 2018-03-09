@@ -17,14 +17,14 @@
  * limitations under the License.
  */
 
-module.exports.maps = {
-    "testcharmap": "testcharmap.js",
-    "testcm_CN": "testcm_CN.js",
-    "testcm_ISO-8859-1": "testcm_ISO-8859-1.js",
-    "testcm_JP": "testcm_JP.js",
-    "testcm_KR": "testcm_KR.js",
-    "testcm_UTF-16": "testcm_UTF-16.js",
-    "testcm_UTF-8": "testcm_UTF-8.js",
-    "testtolower": "testtolower.js",
-    "testtoupper": "testtoupper.js"
-}
+module.exports.maps = [
+    "testcharmap.js",
+    "testcm_CN.js",
+    "testcm_ISO-8859-1.js",
+    "testcm_JP.js",
+    "testcm_KR.js",
+    "testcm_UTF-16.js",
+    "testcm_UTF-8.js",
+    "testtolower.js",
+    "testtoupper.js"
+]

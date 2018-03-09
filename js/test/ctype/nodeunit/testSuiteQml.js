@@ -17,6 +17,6 @@
  * limitations under the License.
  */
 
-module.exports.ctype = {
-    "testctype": "testctype.js"
-}
+module.exports.ctype = [
+    "testctype.js"
+]

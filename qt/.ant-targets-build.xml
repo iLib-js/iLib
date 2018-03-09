@@ -1,0 +1,9 @@
+all
+clean
+doc
+export
+filereader
+prepare
+test
+test.qt
+test.qt.nodeunit

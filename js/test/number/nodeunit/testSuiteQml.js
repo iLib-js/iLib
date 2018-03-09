@@ -17,10 +17,10 @@
  * limitations under the License.
  */
 
-module.exports.number = {
-    "testcurrency": "testcurrency.js",
-    "testnumfmt": "testnumfmt.js",
-    "testnumfmt_af": "testnumfmt_af.js",
-    "testnumfmt_am": "testnumfmt_am.js",
-    "testnumprs": "testnumprs.js"
-}
+module.exports.number = [
+    "testcurrency.js",
+    "testnumfmt.js",
+    "testnumfmt_af.js",
+    "testnumfmt_am.js",
+    "testnumprs.js"
+]

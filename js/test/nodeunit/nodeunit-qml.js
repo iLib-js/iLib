@@ -492,6 +492,7 @@ var nodeunit = (function(){
                     expecting = num;
                 }
             }
+            // add all functions from the assert module
             for (var k in assert) {
                 if (assert.hasOwnProperty(k)) {
                     test[k] = wrapAssert(k, k, assert[k].length);

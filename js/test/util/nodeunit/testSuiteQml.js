@@ -17,7 +17,7 @@
  * limitations under the License.
  */
 
-module.exports.util = {
-    "testset": "testset.js",
-    "testutils": "testutils.js"
-}
+module.exports.util = [
+    "testset.js",
+    "testutils.js"
+]

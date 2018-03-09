@@ -17,16 +17,16 @@
  * limitations under the License.
  */
 
-module.exports.root = {
-    "testcharset": "testcharset.js",
-    "testcountry": "testcountry.js",
-    "testglobal": "testglobal.js",
-    "testloader": "testloader.js",
-    "testlocale": "testlocale.js",
-    "testlocaleinfo": "testlocaleinfo.js",
-    "testlocalematch": "testlocalematch.js",
-    "testrequire": "testrequire.js",
-    "testresources": "testresources.js",
-    "testscriptinfo": "testscriptinfo.js",
-    "teststrings": "teststrings.js"
-}
+module.exports.root = [
+    "testcharset.js",
+    "testcountry.js",
+    "testglobal.js",
+    "testloader.js",
+    "testlocale.js",
+    "testlocaleinfo.js",
+    "testlocalematch.js",
+    "testrequire.js",
+    "testresources.js",
+    "testscriptinfo.js",
+    "teststrings.js"
+]
