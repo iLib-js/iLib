@@ -37,8 +37,51 @@ var IString = require("./IString.js");
  *
  * <li><i>direction</i> - "toupper" for upper-casing, or "tolower" for lower-casing.
  * Default if not specified is "toupper".
+ *
+ * <li><i>type</i> - the type of mapping. This allows the case mapper to map the
+ * case of an entire string properly, and not just to all-lower and all-upper. The
+ * valid choices for this property are:
+ *   <ul>
+ *   <li><i>tolower</i> - map the entire string to lower case. This type is implied
+ *   when direction property is set to "tolower".
+ *   <li><i>toupper</i> - map the entire string to upper case. This type is implied
+ *   when direction property is set to "toupper".
+ *   <li><i>sentence</i> - map the string to sentence case. This mode is used when
+ *   writing sentences in regular text. In many languages, this
+ *   means capitalizing the first character of the sentence. This mode will skip
+ *   over non-letter characters at the beginning of the string until the first letter
+ *   character is found.
+ *   <li><i>title</i> - map the string to title case. This mode is used when writing
+ *   a heading or the title of page. In some languages, all words have an initial
+ *   capital letter (like start case). In others, only "open class" words get
+ *   capitalized, and in yet
+ *   others, only the initial word in the string is capitalized (like sentence case)
+ *   and all other words retain their previous capitalization. The style depends on
+ *   the locale.
+ *   <li><i>start</i> - map the string to start case. This converts each word in the
+ *   string to be capitalized.
+ *   </ul>
  * </ul>
  *
+ * This class can deal with Unicode digraph or ligature characters properly per
+ * locale. For example, in Dutch, the word "ijsland" (the country "Iceland") is
+ * capitalized in sentence case as "IJsland" with both characters of the digraph
+ * "ij" being capitalized together.<p>
+ *
+ * Note that when a string is sentence- or title-cased, and the conventions of the
+ * language are not to capitalize words in the middle of a sentence, the case of
+ * the text in the middle of the sentence is not modified. It is assumed that the
+ * sentence already has the proper casing in it already. For example, German is one
+ * of the languages where title case only upper-cases the first word in the
+ * string, and it is also convention to upper-case all nouns. This class will
+ * perform the proper upper-casing of the first word, but will not touch the rest
+ * of the string, as it is assumed that the nouns in the rest of the string are
+ * already upper-cased properly.<p>
+ *
+ * If the type and direction properties are both given, the type property will take
+ * precedence and the direction property will be ignored. The type of "toupper" is the
+ * same as the direction "toupper", and similarly the type "tolower" is the same as
+ * the direction "tolower".
  *
  * @constructor
  * @param {Object=} options options to initialize this mapper
