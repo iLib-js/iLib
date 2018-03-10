@@ -28,7 +28,7 @@ if (typeof(DateRngFmt) === "undefined") {
 }
 //needs translation for a.m.-p.m.
 if (typeof(ilib) === "undefined") {
-    var ilib = require("../../..");
+    var ilib = require("../../../lib/ilib.js");
 }
 
 module.exports.testdatefmtrange_ml_IN = {

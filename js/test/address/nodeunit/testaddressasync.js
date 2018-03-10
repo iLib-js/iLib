@@ -1,6 +1,6 @@
 /*
  * testaddressasync.js - test the address parsing and formatting routines asynchronously
- * 
+ *
  * Copyright © 2015,2017, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -24,7 +24,7 @@ if (typeof(AddressFmt) === "undefined") {
     var AddressFmt = require("../../../lib/AddressFmt.js");
 }
 if (typeof(ilib) === "undefined") {
-    var ilib = require("../../..");
+    var ilib = require("../../../lib/ilib.js");
 }
 
 module.exports.testaddressasync = {
@@ -34,8 +34,8 @@ module.exports.testaddressasync = {
     },
 
     testParseAddressAsyncSimple: function(test) {
-        test.expect(8);
-        var pa = new Address("950 W Maude Ave.\nSunnyvale, CA 94085\nUSA", {
+        test.expect(7);
+        new Address("950 W Maude Ave.\nSunnyvale, CA 94085\nUSA", {
             locale: 'en-US',
             sync: false,
             onLoad: function(parsedAddress) {
@@ -46,16 +46,15 @@ module.exports.testaddressasync = {
                 test.equal(parsedAddress.postalCode, "94085");
                 test.equal(parsedAddress.country, "USA");
                 test.equal(parsedAddress.countryCode, "US");
+                test.done();
             }
         });
-        test.ok(typeof(pa) !== "undefined");
-        test.done();
     },
-    
+
     // to verify NOV-111026
     testParseAddressAsyncSimple2: function(test) {
-        test.expect(8);
-        var pa = new Address("20 Main St.\nMyTown, NY 11530\nUSA", {
+        test.expect(7);
+        new Address("20 Main St.\nMyTown, NY 11530\nUSA", {
             locale: 'en-US',
             sync: false,
             onLoad: function(parsedAddress) {
@@ -66,14 +65,13 @@ module.exports.testaddressasync = {
                 test.equal(parsedAddress.postalCode, "11530");
                 test.equal(parsedAddress.country, "USA");
                 test.equal(parsedAddress.countryCode, "US");
+                test.done();
             }
         });
-        test.ok(typeof(pa) !== "undefined");
-        test.done();
     },
-    
+
     testParseAddressAsyncSimple3: function(test) {
-        test.expect(8);
+        test.expect(7);
         var pa = new Address("5-2-1 Ginza, Chuo-ku\nTokyo 170-3293\nJapan", {
             locale: 'en-US',
             sync: false,
@@ -85,14 +83,13 @@ module.exports.testaddressasync = {
                 test.equal(parsedAddress.postalCode, "170-3293");
                 test.equal(parsedAddress.country, "Japan");
                 test.equal(parsedAddress.countryCode, "JP");
+                test.done();
             }
         });
-        test.ok(typeof(pa) !== "undefined");
-        test.done();
     },
-    
+
     testParseAddressAsyncMoreComplex: function(test) {
-        test.expect(8);
+        test.expect(7);
         var pa = new Address("950 W 21st Ave, Apt 45\nNY, NY 10234", {
             locale: 'en-US',
             sync: false,
@@ -104,14 +101,13 @@ module.exports.testaddressasync = {
                 test.equal(parsedAddress.postalCode, "10234");
                 test.ok(typeof(parsedAddress.country) === "undefined");
                 test.equal(parsedAddress.countryCode, "US");
+                test.done();
             }
         });
-        test.ok(typeof(pa) !== "undefined");
-        test.done();
     },
-    
+
     testParseAddressAsyncSpelledOutState: function(test) {
-        test.expect(8);
+        test.expect(7);
         var pa = new Address("20 Main St.\nMyTown, Arizona 11530\nUSA", {
             locale: 'en-US',
             sync: false,
@@ -123,14 +119,13 @@ module.exports.testaddressasync = {
                 test.equal(parsedAddress.postalCode, "11530");
                 test.equal(parsedAddress.country, "USA");
                 test.equal(parsedAddress.countryCode, "US");
+                test.done();
             }
         });
-        test.ok(typeof(pa) !== "undefined");
-        test.done();
     },
-    
+
     testParseAddressAsyncSpelledOutStateWithSpaces: function(test) {
-        test.expect(8);
+        test.expect(7);
         var pa = new Address("20 Main St.\nMyTown, New York 11530\nUSA", {
             locale: 'en-US',
             sync: false,
@@ -142,15 +137,14 @@ module.exports.testaddressasync = {
                 test.equal(parsedAddress.postalCode, "11530");
                 test.equal(parsedAddress.country, "USA");
                 test.equal(parsedAddress.countryCode, "US");
+                test.done();
             }
         });
-        test.ok(typeof(pa) !== "undefined");
-        test.done();
     },
-    
+
     testParseAddressAsyncUnknown: function(test) {
-        test.expect(8);
-    
+        test.expect(7);
+
         var pa = new Address("123 Main Street, Pretoria 5678, South Africa", {
             locale: 'en-US',
             sync: false,
@@ -162,14 +156,13 @@ module.exports.testaddressasync = {
                 test.equal(parsedAddress.postalCode, "5678");
                 test.equal(parsedAddress.country, "South Africa");
                 test.equal(parsedAddress.countryCode, "ZA");
+                test.done();
             }
         });
-        test.ok(typeof(pa) !== "undefined");
-        test.done();
     },
-    
+
     testParseAddressAsyncNonUS: function(test) {
-        test.expect(8);
+        test.expect(7);
         var pa = new Address("Achterberglaan 23, 2345 GD Uithoorn, Netherlands", {
             locale: 'en-US',
             sync: false,
@@ -181,14 +174,13 @@ module.exports.testaddressasync = {
                 test.equal(parsedAddress.postalCode, "2345 GD");
                 test.equal(parsedAddress.country, "Netherlands");
                 test.equal(parsedAddress.countryCode, "NL");
+                test.done();
             }
         });
-        test.ok(typeof(pa) !== "undefined");
-        test.done();
     },
-        
+
     testFormatAddressAsyncUS: function(test) {
-        test.expect(3);
+        test.expect(2);
         var pa = new Address({
             streetAddress: "1234 Any Street",
             locality: "Anytown",
@@ -197,7 +189,7 @@ module.exports.testaddressasync = {
             country: "United States of America",
             countryCode: "US"
         }, {locale: 'en-US'});
-        
+
         var expected = "1234 Any Street\nAnytown CA 94085\nUnited States of America";
         var f = new AddressFmt({
             locale: 'en-US',
@@ -205,38 +197,37 @@ module.exports.testaddressasync = {
             onLoad: function(formatter) {
                 test.ok(typeof(formatter) !== "undefined");
                 test.equal(formatter.format(pa), expected);
+                test.done();
             }
         });
-        test.ok(typeof(f) !== "undefined");
-        test.done();
     },
-    
+
     testFormatAddressAsyncUnknownLocaleQQ: function(test) {
-        test.expect(3);
+        test.expect(2);
         var pa = new Address({
-            streetAddress: "123 mcdonald ave, apt 234", 
+            streetAddress: "123 mcdonald ave, apt 234",
             locality: "Sunnyvale",
             region: "CA",
-            postalCode: "94086", 
+            postalCode: "94086",
             locale: 'en-QQ'
         });
-        
+
+        // should return the "root" information
         var expected = "123 mcdonald ave, apt 234\nSunnyvale CA 94086";
         var f = new AddressFmt({
-            locale: 'en-QQ', 
+            locale: 'en-QQ',
             style: 'nocountry',
             sync: false,
             onLoad: function(formatter) {
                 test.ok(typeof(formatter) !== "undefined");
                 test.equal(formatter.format(pa), expected);
+                test.done();
             }
         });
-        test.ok(typeof(f) !== "undefined");
-        test.done();
     },
-    
+
     testParseAddressAsyncJPAsianNormal1: function(test) {
-        test.expect(7);
+        test.expect(6);
         var pa = new Address("〒150-2345 東京都渋谷区本町2丁目4-7サニーマンション203",  {
             locale: 'ja-JP',
             sync: false,
@@ -247,14 +238,13 @@ module.exports.testaddressasync = {
                 test.equal(parsedAddress.region, "東京都");
                 test.equal(parsedAddress.postalCode, "〒150-2345");
                 test.equal(parsedAddress.countryCode, "JP");
+                test.done();
             }
         });
-        test.ok(typeof(pa) !== "undefined");
-        test.done();
     },
-    
+
     testFormatAddressAsyncJPAsianNormal: function(test) {
-        test.expect(3);
+        test.expect(2);
         var parsedAddress = new Address({
             streetAddress: "本町2丁目4-7サニーマンション203",
             locality: "渋谷区",
@@ -263,24 +253,23 @@ module.exports.testaddressasync = {
             countryCode: "JP",
             format: "asian"
         }, {locale: 'ja-JP'});
-        
+
         var expected = "〒150-2345\n東京都渋谷区本町2丁目4-7サニーマンション203";
-        
+
         var f = new AddressFmt({
             locale: 'ja-JP',
             sync: false,
             onLoad: function(formatter) {
                 test.ok(typeof(formatter) !== "undefined");
                 test.equal(formatter.format(parsedAddress), expected);
+                test.done();
             }
         });
-        test.ok(typeof(f) !== "undefined");
-        test.done();
     },
-    
-    
+
+
     testParseAddressAsyncCNAsianNormal: function(test) {
-        test.expect(8);
+        test.expect(7);
         var pa = new Address("中国北京市朝阳区建国路112号 中国惠普大厦100022", {
             locale: 'zh-CN',
             sync: false,
@@ -292,14 +281,13 @@ module.exports.testaddressasync = {
                 test.equal(parsedAddress.postalCode, "100022");
                 test.equal(parsedAddress.country, "中国");
                 test.equal(parsedAddress.countryCode, "CN");
+                test.done();
             }
         });
-        test.ok(typeof(pa) !== "undefined");
-        test.done();
     },
-    
+
     testParseAddressAsyncDENormal: function(test) {
-        test.expect(8);
+        test.expect(7);
         var pa = new Address("Herrenberger Straße 140, 71034 Böblingen, Deutschland", {
             locale: 'de-DE',
             sync: false,
@@ -311,14 +299,13 @@ module.exports.testaddressasync = {
                 test.equal(parsedAddress.postalCode, "71034");
                 test.equal(parsedAddress.country, "Deutschland");
                 test.equal(parsedAddress.countryCode, "DE");
+                test.done();
             }
         });
-        test.ok(typeof(pa) !== "undefined");
-        test.done();
     },
-    
+
     testParseAddressAsyncTHNormal: function(test) {
-        test.expect(8);
+        test.expect(7);
         var pa = new Address("49 ซอยร่วมฤดี, ถนนเพลินจิต, ลุมพินี\nเขตปทุมวัน กรุงเทพฯ 10330\nประเทศไทย", {
             locale: 'th-Th',
             sync: false,
@@ -330,14 +317,13 @@ module.exports.testaddressasync = {
                 test.equal(parsedAddress.postalCode, "10330");
                 test.equal(parsedAddress.country, "ประเทศไทย");
                 test.equal(parsedAddress.countryCode, "TH");
+                test.done();
             }
         });
-        test.ok(typeof(pa) !== "undefined");
-        test.done();
     },
-    
+
     testParseAddressAsyncRUNormal: function(test) {
-        test.expect(8);
+        test.expect(7);
         var pa = new Address("Петров Иван Сергеевич ул. Лесная D. 5 поз. Лесной\nАЛЕКСЕЕВСКИЙ R-N\nВоронежская область\nРоссия\n247112", {
             locale: 'ru-RU',
             sync: false,
@@ -349,14 +335,13 @@ module.exports.testaddressasync = {
                 test.equal(parsedAddress.postalCode, "247112");
                 test.equal(parsedAddress.country, "Россия");
                 test.equal(parsedAddress.countryCode, "RU");
+                test.done();
             }
         });
-        test.ok(typeof(pa) !== "undefined");
-        test.done();
     },
-    
+
     testParseAddressAsyncSANormalNative: function(test) {
-        test.expect(8);
+        test.expect(7);
         var pa = new Address("السيد عبد الله ناصر\nمكة المكرمة ٢١۴۵۴\nالمملكة العربية السعودية", {
             locale: 'ar-SA',
             sync: false,
@@ -368,18 +353,17 @@ module.exports.testaddressasync = {
                 test.equal(parsedAddress.postalCode, "٢١۴۵۴");
                 test.equal(parsedAddress.country, "المملكة العربية السعودية");
                 test.equal(parsedAddress.countryCode, "SA");
+                test.done();
             }
         });
-        test.ok(typeof(pa) !== "undefined");
-        test.done();
     },
-    
+
     testParseAddressAsyncINHINormal: function(test) {
-        test.expect(8);
+        test.expect(7);
         var pa = new Address("१२५/१, एजी टावर्स. ३ तल, पार्क स्ट्रीट. सर्कस एवेन्यू\nकोलकाता\nपश्चिम बंगाल\n७०००१७\nभारत", {
             locale: 'hi-IN',
             sync: false,
-            onLoad: function(parsedAddress) {    
+            onLoad: function(parsedAddress) {
                 test.ok(typeof(parsedAddress) !== "undefined");
                 test.equal(parsedAddress.streetAddress, "१२५/१, एजी टावर्स. ३ तल, पार्क स्ट्रीट. सर्कस एवेन्यू");
                 test.equal(parsedAddress.locality, "कोलकाता");
@@ -387,18 +371,17 @@ module.exports.testaddressasync = {
                 test.equal(parsedAddress.postalCode, "७०००१७");
                 test.equal(parsedAddress.country, "भारत");
                 test.equal(parsedAddress.countryCode, "IN");
+                test.done();
             }
         });
-        test.ok(typeof(pa) !== "undefined");
-        test.done();
     },
-    
+
     testParseAddressAsyncINGUNoZip: function(test) {
-        test.expect(8);
+        test.expect(7);
         var pa = new Address("125/1, એજી ટાવર્સ. 3 જો માળ, પાર્ક સ્ટ્રીટ. સર્કસ એવન્યુ\nકોલકાતા\nપશ્ચિમ બંગાળ\nભારત", {
             locale: 'gu-IN',
             sync: false,
-            onLoad: function(parsedAddress) {                        
+            onLoad: function(parsedAddress) {
                 test.ok(typeof(parsedAddress) !== "undefined");
                 test.equal(parsedAddress.streetAddress, "125/1, એજી ટાવર્સ. 3 જો માળ, પાર્ક સ્ટ્રીટ. સર્કસ એવન્યુ");
                 test.equal(parsedAddress.locality, "કોલકાતા");
@@ -406,10 +389,8 @@ module.exports.testaddressasync = {
                 test.equal(parsedAddress.country, "ભારત");
                 test.equal(parsedAddress.countryCode, "IN");
                 test.ok(typeof(parsedAddress.postalCode) === "undefined");
+                test.done();
             }
         });
-        test.ok(typeof(pa) !== "undefined");
-        test.done();
     }
-    
 };

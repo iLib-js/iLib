@@ -22,7 +22,7 @@ if (typeof(Currency) === "undefined") {
 }
 
 if (typeof(ilib) === "undefined") {
-    var ilib = require("../../..");
+    var ilib = require("../../../lib/ilib.js");
 }
 
 module.exports.testcurrency = {
@@ -146,26 +146,5 @@ module.exports.testcurrency = {
         var locale = cur.getLocale();
         test.equal(locale.toString(), "en-GB");
         test.done();
-    },
-    
-    testCurrencyAsync: function(test) {
-        test.expect(6);
-        new Currency({
-            locale: "en-GB",
-            sign: "$",
-            sync: false,
-            onLoad: function (cur) {
-                test.ok(cur !== null);
-    
-                test.equal(cur.getCode(), "USD");
-                test.equal(cur.getFractionDigits(), 2);
-                test.equal(cur.getSign(), "$");
-                test.equal(cur.getName(), "US Dollar");
-                var locale = cur.getLocale();
-                test.equal(locale.toString(), "en-GB");
-                test.done();
-            }
-        });
-    }
-    
+    }    
 };

@@ -18,7 +18,7 @@
  */
 
 if (typeof(ilib) === "undefined") {
-    var ilib = require("../.././../lib/ilib-node.js");
+    var ilib = require("../.././../lib/ilib.js");
 }
 if (typeof(PhoneNumber) === "undefined") {
     var PhoneNumber = require("../.././../lib/PhoneNumber.js");
@@ -45,7 +45,7 @@ function mockLoaderGeo(paths, sync, params, callback) {
 }
 
 if (typeof(ilib) === "undefined") {
-    var ilib = require("../../..");
+    var ilib = require("../../../lib/ilib.js");
 }
 
 var oldLoader = ilib._load;

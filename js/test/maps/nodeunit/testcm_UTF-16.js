@@ -22,7 +22,7 @@ if (typeof(CharmapFactory) === "undefined") {
 }
 
 if (typeof(ilib) === "undefined") {
-    var ilib = require("../../..");
+    var ilib = require("../../../lib/ilib.js");
 }
 
 module.exports.testcm_UTF_16 = {
@@ -37,7 +37,7 @@ module.exports.testcm_UTF_16 = {
             name: "UTF-16"
         });
         test.ok(typeof(cm) !== "undefined");
-        test.equal(cm.getName(), "UTF-16LE");
+        test.equal(cm.getName(), "UTF-16");
         test.done();
     },
     

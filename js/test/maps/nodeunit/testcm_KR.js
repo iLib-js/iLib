@@ -323,7 +323,7 @@ var testDataKR = {
 };
 
 if (typeof(ilib) === "undefined") {
-    var ilib = require("../../..");
+    var ilib = require("../../../lib/ilib.js");
 }
 
 module.exports.testcm_KR = {

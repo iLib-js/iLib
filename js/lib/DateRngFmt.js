@@ -1,7 +1,7 @@
 /*
- * DateFmt.js - Date formatter definition
+ * DateRngFmt.js - Date formatter definition
  * 
- * Copyright © 2012-2015, JEDLSoft
+ * Copyright © 2012-2015,2018, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -179,19 +179,32 @@ var DateRngFmt = function(options) {
 			// get the default calendar name from the locale, and if the locale doesn't define
 			// one, use the hard-coded gregorian as the last resort
 			this.calName = this.calName || this.locinfo.getCalendar() || "gregorian";
-			this.cal = CalendarFactory({
-				type: this.calName
+			CalendarFactory({
+				type: this.calName,
+				sync: sync,
+				loadParams: loadParams,
+				onLoad: ilib.bind(this, function(cal) {
+				    this.cal = cal;
+				    
+				    if (!this.cal) {
+				        // always synchronous
+				        this.cal = new GregorianCal();
+				    }
+				    
+				    this.timeTemplate = this.dateFmt._getFormat(this.dateFmt.formats.time[this.dateFmt.clock], this.dateFmt.timeComponents, this.length) || "hh:mm";
+				    this.timeTemplateArr = this.dateFmt._tokenize(this.timeTemplate);
+				    
+				    if (options && typeof(options.onLoad) === 'function') {
+				        options.onLoad(this);
+				    }
+				})
 			});
-			if (!this.cal) {
-				this.cal = new GregorianCal();
-			}
-			
-			this.timeTemplate = this.dateFmt._getFormat(this.dateFmt.formats.time[this.dateFmt.clock], this.dateFmt.timeComponents, this.length) || "hh:mm";
-			this.timeTemplateArr = this.dateFmt._tokenize(this.timeTemplate);
-			
-			if (options && typeof(options.onLoad) === 'function') {
-				options.onLoad(this);
-			}
+		} else {
+		    if (options && typeof(options.sync) === "boolean" && !options.sync && typeof(options.onLoad) === 'function') {
+                options.onLoad(undefined);
+            } else {
+                throw "No formats available for calendar " + this.calName + " in locale " + this.locale.getSpec();
+            }
 		}
 	});
 
