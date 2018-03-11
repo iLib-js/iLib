@@ -62,7 +62,7 @@ var testDatesPersAlgoPersian = [
 ];
 
 if (typeof(ilib) === "undefined") {
-    var ilib = require("../../..");
+    var ilib = require("../../../lib/ilib.js");
 }
 
 module.exports.testpersiandate = {

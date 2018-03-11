@@ -22,7 +22,7 @@ if (typeof(NumFmt) === "undefined") {
 }
 
 if (typeof(ilib) === "undefined") {
-    var ilib = require("../../..");
+    var ilib = require("../../../lib/ilib.js");
 }
 
 module.exports.testnumfmt = {
@@ -6708,50 +6708,5 @@ module.exports.testnumfmt = {
     
         test.equal(fmt.format(-123456.785), "-123.456,78");
         test.done();
-    },
-    
-    testNumFmtAsyncDefaults: function(test) {
-        test.expect(7);
-        new NumFmt({
-            sync: false,
-            onLoad: function (fmt) {
-                test.ok(fmt !== null);
-    
-                test.equal(fmt.getType(), "number");
-                test.equal(fmt.getMaxFractionDigits(), -1);
-                test.equal(fmt.getMinFractionDigits(), -1);
-                test.ok(fmt.isGroupingUsed());
-                test.equal(fmt.getRoundingMode(), "halfdown");
-                test.ok(typeof(fmt.getCurrency()) === "undefined");
-                test.done();
-            }
-        });
-    },
-    
-    testNumFmtAsync: function(test) {
-        test.expect(2);
-        new NumFmt({
-            sync: false,
-            onLoad: function (fmt) {
-                test.ok(fmt !== null);
-                test.equal(fmt.format(12345678901234.0), "12,345,678,901,234");
-                test.done();
-            }
-        });
-    },
-    
-    testNumFmtAsyncWithLocale: function(test) {
-        test.expect(2);
-        new NumFmt({
-            locale: "it-IT",
-            maxFractionDigits: 2,
-            sync: false,
-            onLoad: function (fmt) {
-                test.ok(fmt !== null);
-                test.equal(fmt.format(-123456.785), "-123.456,78");
-                test.done();
-            }
-        });
-    }
-    
+    }    
 };

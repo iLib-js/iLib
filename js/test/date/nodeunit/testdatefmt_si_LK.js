@@ -1,7 +1,7 @@
 /*
  * testdatefmt_si_LK.js - test the date formatter object in Sri Lanka
  *
- * Copyright © 2017,2017, JEDLSoft
+ * Copyright © 2017,2017-2018, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -28,7 +28,7 @@ if (typeof(DateFmt) === "undefined") {
 }
 
 if (typeof(ilib) === "undefined") {
-    var ilib = require("../../..");
+    var ilib = require("../../../lib/ilib.js");
 }
 
 module.exports.testdatefmt_si_LK = {
@@ -1749,6 +1749,4 @@ module.exports.testdatefmt_si_LK = {
         test.equal(fmt.formatRelative(reference, date), "වසර 21කට පෙර");
         test.done();
     }
-
-
 };

@@ -1,7 +1,7 @@
 /*
  * testdatefmt_bs_Latn_BA.js - test the date formatter object in Latin Bosnian
  *
- * Copyright © 2012-2015,2017, JEDLSoft
+ * Copyright © 2012-2015,2017-2018, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -28,7 +28,7 @@ if (typeof(DateFmt) === "undefined") {
 }
 
 if (typeof(ilib) === "undefined") {
-    var ilib = require("../../..");
+    var ilib = require("../../../lib/ilib.js");
 }
 
 module.exports.testdatefmt_bs_Latn_BA = {
@@ -1746,6 +1746,4 @@ module.exports.testdatefmt_bs_Latn_BA = {
         test.equal(fmt.formatRelative(reference, date), "prije 21 godinu");
         test.done();
     }
-
-
 };

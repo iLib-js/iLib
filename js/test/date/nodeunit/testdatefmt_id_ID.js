@@ -27,7 +27,7 @@ if (typeof(DateFmt) === "undefined") {
     var DateFmt = require("../.././../lib/DateFmt.js");
 }
 if (typeof(ilib) === "undefined") {
-    var ilib = require("../../..");
+    var ilib = require("../../../lib/ilib.js");
 }
 
 module.exports.testdatefmt_id_ID = {
@@ -1772,6 +1772,4 @@ module.exports.testdatefmt_id_ID = {
         test.equal(fmt.formatRelative(reference, date), "21 tahun yang lalu");
         test.done();
     }
-
-
 };

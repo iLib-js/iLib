@@ -1,7 +1,7 @@
 /*
  * testdatefmt_mr_IN.js - test the date formatter object in Marathi for India
  *
- * Copyright © 2013-2015,2017, JEDLSoft
+ * Copyright © 2013-2015,2017-2018, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -27,7 +27,7 @@ if (typeof(DateFmt) === "undefined") {
     var DateFmt = require("../.././../lib/DateFmt.js");
 }
 if (typeof(ilib) === "undefined") {
-    var ilib = require("../../..");
+    var ilib = require("../../../lib/ilib.js");
 }
 
 module.exports.testdatefmt_mr_IN = {
@@ -297,6 +297,7 @@ module.exports.testdatefmt_mr_IN = {
         test.ok(typeof(fmt) !== "undefined");
 
         var date = new JulianDate({
+            locale: "mr-IN",
             year: 2011,
             month: 9,
             day: 29,
@@ -308,9 +309,6 @@ module.exports.testdatefmt_mr_IN = {
         test.equal(fmt.format(date), "2011-09-29");
         test.done();
     },
-
-
-
     testDateFmtINTemplateClock12SwitchHH_mr_IN: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "mr-IN", clock: "12", template: "HH:mm"});
@@ -1711,7 +1709,4 @@ module.exports.testdatefmt_mr_IN = {
         test.equal(fmt.formatRelative(reference, date), "21 वर्षांपूर्वी");
         test.done();
     }
-
-
-
 };

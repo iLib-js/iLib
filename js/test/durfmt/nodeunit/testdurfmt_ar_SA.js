@@ -23,7 +23,7 @@ if (typeof(DurationFmt) === "undefined") {
 //test cases for ar-SA
 
 if (typeof(ilib) === "undefined") {
-    var ilib = require("../../..");
+    var ilib = require("../../../lib/ilib.js");
 }
 
 module.exports.testdurfmt_ar_SA = {

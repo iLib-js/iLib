@@ -28,7 +28,7 @@ if (typeof(DateFmt) === "undefined") {
 }
 
 if (typeof(ilib) === "undefined") {
-    var ilib = require("../../..");
+    var ilib = require("../../../lib/ilib.js");
 }
 
 module.exports.testdatefmt_km_KH = {
@@ -1746,6 +1746,4 @@ module.exports.testdatefmt_km_KH = {
         test.equal(fmt.formatRelative(reference, date), "21 ឆ្នាំ​មុន");
         test.done();
     }
-
-
 };

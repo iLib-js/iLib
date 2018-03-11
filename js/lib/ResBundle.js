@@ -253,7 +253,7 @@ var ResBundle = function (options) {
 			}
 		}
 	} else {
-		options = {};
+		options = {sync: true};
 	}
 	
 	this.map = {};

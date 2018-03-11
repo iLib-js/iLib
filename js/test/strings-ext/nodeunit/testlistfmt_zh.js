@@ -23,7 +23,7 @@ if (typeof(ListFmt) === "undefined") {
 
 // zh-Hans-CN
 if (typeof(ilib) === "undefined") {
-    var ilib = require("../../..");
+    var ilib = require("../../../lib/ilib.js");
 }
 
 module.exports.testlistfmt_zh = {

@@ -19,7 +19,9 @@
 
 module.exports.files = [
     "testdate.js",
+//    "testdateasync.js",
     "testdatefmt.js",
+ //   "testdatefmtasync.js",
     "testdatefmt_af_NA.js",
     "testdatefmt_af_ZA.js",
     "testdatefmt_am_ET.js",

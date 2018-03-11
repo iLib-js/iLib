@@ -1,7 +1,7 @@
 /*
  * testdatefmt_fr_FR.js - test the date formatter object in standard French
  *
- * Copyright © 2012-2015,2017, JEDLSoft
+ * Copyright © 2012-2015,2017-2018, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -27,7 +27,7 @@ if (typeof(DateFmt) === "undefined") {
     var DateFmt = require("../.././../lib/DateFmt.js");
 }
 if (typeof(ilib) === "undefined") {
-    var ilib = require("../../..");
+    var ilib = require("../../../lib/ilib.js");
 }
 
 module.exports.testdatefmt_fr_CA = {
@@ -1779,6 +1779,4 @@ module.exports.testdatefmt_fr_CA = {
         test.equal(fmt.formatRelative(reference, date), "Il y a 21 ans");
         test.done();
     }
-
-
 };

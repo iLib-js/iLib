@@ -1,7 +1,7 @@
 /*
  * testSuiteFiles.js - list the test files in this directory
  * 
- * Copyright © 2017, JEDLSoft
+ * Copyright © 2017-2018, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -29,4 +29,11 @@ module.exports.files = [
     "testresources.js",
     "testscriptinfo.js",
     "teststrings.js",
+    "testcharsetasync.js",
+    "testcountryasync.js",
+    "testlocaleinfoasync.js",
+    "testlocalematchasync.js",
+    "testresourcesasync.js",
+    "testscriptinfoasync.js",
+    "teststringsasync.js"
 ];

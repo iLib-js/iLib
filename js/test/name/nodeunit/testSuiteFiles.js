@@ -19,6 +19,7 @@
 
 module.exports.files = [
     "testname.js",
+    "testnameasync.js",
     "testname_ar.js",
     "testname_bg.js",
     "testname_bn.js",
@@ -76,4 +77,5 @@ module.exports.files = [
     "testname_zh_Hans.js",
     "testname_zh_Hant.js",
     "testnamefmt.js",
+    "testnamefmtasync.js"
 ];

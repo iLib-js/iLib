@@ -24,7 +24,7 @@ if (typeof(AddressFmt) === "undefined") {
     var AddressFmt = require("../../../lib/AddressFmt.js");
 }
 if (typeof(ilib) === "undefined") {
-    var ilib = require("../../..");
+    var ilib = require("../../../lib/ilib.js");
 }
 
 module.exports.testaddress_PL = {

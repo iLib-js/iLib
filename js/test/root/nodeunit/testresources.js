@@ -1,7 +1,7 @@
 /*
  * testresources.js - test the Resources object
  * 
- * Copyright © 2012-2015,2017, JEDLSoft
+ * Copyright © 2012-2015,2017-2018, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,7 +18,7 @@
  */
 
 if (typeof(ilib) === "undefined") {
-    var ilib = require("../.././../lib/ilib-node.js");
+    var ilib = require("../.././../lib/ilib.js");
 }
 if (typeof(ResBundle) === "undefined") {
     var ResBundle = require("../.././../lib/ResBundle.js");
@@ -130,11 +130,6 @@ function mockLoaderRes(paths, sync, params, callback) {
     }
     return data;
 };
-
-
-if (typeof(ilib) === "undefined") {
-    var ilib = require("../../..");
-}
 
 var oldLoader = ilib._load;
 
@@ -1328,19 +1323,20 @@ module.exports.testresources = {
             return;
         }
         var onloadcalled = false;
+        ilib.clearCache()
         ilib.setLoaderCallback(mockLoaderRes);
         var rb = new ResBundle({
             locale: "de-DE-SAP",
             name: "foobar",
             sync: false,
             onLoad: function(rb) {
-        test.expect(6);
+                test.expect(6);
                 test.ok(typeof(rb) !== "undefined");
-                
+
                 test.equal(rb.getString("first string").toString(), "erste String");
                 test.equal(rb.getString("second string").toString(), "zweite String");
                 test.equal(rb.getString("third string").toString(), "dritte String");
-                
+
                 onloadcalled = true;
             }
         });

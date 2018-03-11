@@ -18,7 +18,7 @@
  */
 
 if (typeof(ilib) === "undefined") {
-    var ilib = require("../../../lib/ilib-node.js");
+    var ilib = require("../../../lib/ilib.js");
 }
 if (typeof(AlphabeticIndex) === "undefined") {
     var AlphabeticIndex = require("../../../lib/AlphabeticIndex.js");
@@ -53,18 +53,6 @@ module.exports.testalphaindex_de = {
         test.done();
     },
 
-    testAlphaIndexConstructorAsync_deDE: function(test) {
-        test.expect(1);
-        var ai = new AlphabeticIndex({
-            locale: "de-DE",
-            sync: false,
-            onLoad: function(ai) {
-                test.ok(ai);
-                test.done();
-            }
-        });
-    },
-    
     testAlphaIndexgetDefaultIndexStyle_deDE: function(test) {
         test.expect(2);
         var ai = new AlphabeticIndex({
@@ -474,7 +462,7 @@ module.exports.testalphaindex_de = {
             },
             {
                 label: "U",
-                elements: ["Ualrich", "Udrich", "Uelrich", "Ulrich", "Ülrich"]
+                elements: ["Ualrich", "Udrich", "Uelrich", "Ülrich", "Ulrich"]
             }
         ];
 
@@ -532,7 +520,7 @@ module.exports.testalphaindex_de = {
             },
             {
                 label: "J",
-                elements: ["Josef", "Juan", "Judrich", "Juergen", "Julia","Jürgen"]
+                elements: ["Josef", "Juan", "Judrich", "Juergen", "Julia", "Jürgen"]
             },
             {
                 label: "K",
@@ -544,7 +532,7 @@ module.exports.testalphaindex_de = {
             },
             {
                 label: "U",
-                elements: ["Ualrich", "Udrich", "Uelrich", "Ulrich", "Ülrich"]
+                elements: ["Ualrich", "Udrich", "Uelrich", "Ülrich", "Ulrich"]
             }
         ];
 

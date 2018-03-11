@@ -1,7 +1,7 @@
 /*
  * Name.js - Person name parser
  *
- * Copyright © 2013-2015, JEDLSoft
+ * Copyright © 2013-2015, 2018, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -129,7 +129,10 @@ var Name = function (name, options) {
     var sync = true;
 
     if (!name || name.length === 0) {
-    	return;
+        if (options && typeof(options.onLoad) === 'function') {
+            options.onLoad(undefined);
+        }
+        return;
     }
 
     this.loadParams = {};
@@ -147,16 +150,16 @@ var Name = function (name, options) {
             this.order = options.order;
         }
 
-        if (typeof (options.sync) !== 'undefined') {
-            sync = (options.sync == true);
+        if (typeof(options.sync) === 'boolean') {
+            sync = options.sync;
         }
 
-        if (typeof (options.loadParams) !== 'undefined') {
+        if (typeof(options.loadParams) !== 'undefined') {
             this.loadParams = options.loadParams;
         }
         
         if (typeof(options.compoundFamilyName) !== 'undefined') {
-        	this.singleFamilyName = !options.compoundFamilyName; 
+            this.singleFamilyName = !options.compoundFamilyName; 
         }
     }
 
@@ -179,7 +182,7 @@ var Name = function (name, options) {
 								ilib.data.cache.Name[spec] = info;
 							}
                             if (typeof (name) === 'object') {
-    							// copy constructor
+    							    // copy constructor
 							    /**
 							     * The prefixes for this name
 							     * @type {string|Array.<string>}
@@ -221,7 +224,12 @@ var Name = function (name, options) {
 							    this.order = name.order;
 							    this.useSpaces = name.useSpaces;
 							    this.isAsianName = name.isAsianName;
-					    	    return;
+							    
+							    if (options && typeof(options.onLoad) === 'function') {
+	                                options.onLoad(this);
+	                            }
+							    
+					    	        return;
 						    }
 							/** 
 							 * @type {{

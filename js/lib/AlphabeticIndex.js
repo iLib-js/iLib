@@ -1,7 +1,7 @@
 /*
  * AlphabeticIndex.js - Represent an alphabetic index
  *
- * Copyright © 2017, JEDLSoft
+ * Copyright © 2017-2018, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -132,14 +132,14 @@ var AlphabeticIndex = function (options) {
     this.accentSensitive = false;
     this.overflowLabel = "#";
     this.underflowLabel = "*";
-    this.style = "standard";    
+    this.style = "standard";
     this.index = [];
 
     if (options) {
         if (options.locale) {
             this.locale = (typeof(options.locale) === 'string') ? new Locale(options.locale) : options.locale;
         }
-        
+
         if (typeof(options.style) !== 'undefined') {
             this.style = options.style;
         }
@@ -151,7 +151,7 @@ var AlphabeticIndex = function (options) {
         if (typeof(options.underflowLabel) !== 'undefined') {
             this.underflowLabel = options.underflowLabel;
         }
-        
+
         if (typeof(options.sync) !== 'undefined') {
             this.sync = (options.sync == true);
         }
@@ -161,29 +161,29 @@ var AlphabeticIndex = function (options) {
     }
 
     this.locale = this.locale || new Locale();
-    
+
     isAscii._init(this.sync, this.loadParams, ilib.bind(this, function() {
         isIdeo._init(this.sync, this.loadParams, ilib.bind(this, function(){
             isDigit._init(this.sync, this.loadParams, ilib.bind(this, function(){
                 NormString.init({
                     sync: this.sync,
                     loadParam: this.loadParams,
-                    onLoad: ilib.bind(this, function(){
+                    onLoad: ilib.bind(this, function() {
                         new Collator ({
                             locale: this.locale,
                             useNative: false,
                             sensitivity: "primary",
-                            usage: "sort",
+                            usage: "search",
                             sync: this.sync,
                             loadParam : this.loadParams,
-                            onLoad: ilib.bind(this, function(collation){
-                            this.collationObj = collation;
-                            this._init();
-                            if (options && typeof(options.onLoad) === 'function') {
-                                options.onLoad(this);
-                            }
-                        })
-                    });
+                            onLoad: ilib.bind(this, function(collation) {
+                                this.collationObj = collation;
+                                this._init();
+                                if (options && typeof(options.onLoad) === 'function') {
+                                    options.onLoad(this);
+                                }
+                            })
+                        });
                     })
                 })
             }));
@@ -196,25 +196,35 @@ var AlphabeticIndex = function (options) {
  */
 AlphabeticIndex.prototype._updateCollationMap = function() {
     this.mixedCollationMap = new Array();
-    var collationData = {};
 
-    for (var i=0; i < this.inherit.length; i++) {
-        collationData = {};
+    // we just loaded it, so it should already be in the cache,
+    // so we can always do sync=true
+    Utils.loadData({
+        object: "Collator",
+        locale: this.locale,
+        name: "collation.json",
+        sync: true,
+        loadParams: this.loadParams,
+        callback: ilib.bind(this, function (collations) {
+            for (var i=0; i < this.inherit.length; i++) {
+                var collationData = {};
 
-        if (this.inherit[i] === "this") {
-            collationData.style = this.style;
-            collationData.flowBoundaries = this.flowBoundaries;
-            collationData.indexUnits = this.indexUnits
-            collationData.map = this.collationMap;
-            this.mixedCollationMap.push(collationData);
-        } else {
-            collationData.style = this.inherit[i];
-            collationData.flowBoundaries = ilib.data.collation[this.inherit[i]].flowBoundaries;
-            collationData.indexUnits = ilib.data.collation[this.inherit[i]].indexUnits;
-            collationData.map = ilib.data.collation[this.inherit[i]].map;
-            this.mixedCollationMap.push(collationData);
-        }
-    }
+                if (this.inherit[i] === "this") {
+                    collationData.style = this.style;
+                    collationData.flowBoundaries = this.flowBoundaries;
+                    collationData.indexUnits = this.indexUnits
+                    collationData.map = this.collationMap;
+                    this.mixedCollationMap.push(collationData);
+                } else {
+                    collationData.style = this.inherit[i];
+                    collationData.flowBoundaries = collations[this.inherit[i]].flowBoundaries;
+                    collationData.indexUnits = collations[this.inherit[i]].indexUnits;
+                    collationData.map = collations[this.inherit[i]].map;
+                    this.mixedCollationMap.push(collationData);
+                }
+            }
+        })
+    });
 }
 /**
  * @private
@@ -222,11 +232,11 @@ AlphabeticIndex.prototype._updateCollationMap = function() {
 AlphabeticIndex.prototype._init = function() {
 
     this.flowBoundaries = new Array();
-    
+
     if (this.style === 'standard') {
         this.style = this.collationObj.defaultRule;
     }
-    
+
     this.collationMap = this.collationObj.collation.map;
     this.flowBoundaries = this.collationObj.collation.flowBoundaries;
     this.indexUnits = this.collationObj.collation.indexUnits;
@@ -339,7 +349,7 @@ AlphabeticIndex.prototype.addElement = function(element) {
 
     for (i = 0; i < this.index.length; i++) {
         if (this.index[i].label === label) {
-            if (this.index[i].elements.indexOf(element) == -1) {
+            if (this.index[i].elements.indexOf(element) === -1) {
                 this.index[i].elements.push(element);
             }
             newItem = false;
@@ -455,14 +465,14 @@ AlphabeticIndex.prototype.getAllBuckets = function() {
         tempArr.push(this.index[i].label);
     }
 
-    tempArr.sort(this.collationObj.compare());
+    tempArr.sort(ilib.bind(this.collationObj, this.collationObj.compare));
 
     for (i=0; i < tempArr.length; i++) {
         tempBucket={};
         tempBucket.label = tempArr[i];
         itemIndex = this._getLabelIndex(tempArr[i]);
 
-        this.index[itemIndex].elements.sort(this.collationObj.compare());
+        this.index[itemIndex].elements.sort(ilib.bind(this.collationObj, this.collationObj.compare));
         tempBucket.elements = this.index[itemIndex].elements;
         tempIndex[i] = tempBucket;
         tempBucket={};
@@ -472,7 +482,7 @@ AlphabeticIndex.prototype.getAllBuckets = function() {
 
     for (i=0; i < this.index.length; i++) {
         if (this.inherit &&
-            this.mixedCollationMap[0].indexUnits.indexOf(this.index[i].label) == -1) {
+            this.mixedCollationMap[0].indexUnits.indexOf(this.index[i].label) === -1) {
             mixedScriptEndIndex = i;
             count++;
         }
@@ -484,7 +494,7 @@ AlphabeticIndex.prototype.getAllBuckets = function() {
     }
 
     for (i=0; i < this.index.length; i++) {
-        if (this.index[i].label == this.underflowLabel) {
+        if (this.index[i].label === this.underflowLabel) {
             underflowIndex = i
             break;
         }
@@ -496,7 +506,7 @@ AlphabeticIndex.prototype.getAllBuckets = function() {
     }
 
     for (i=0; i < this.index.length; i++) {
-        if (this.index[i].label == this.overflowLabel) {
+        if (this.index[i].label === this.overflowLabel) {
             overflowIndex = i
             break;
         }
@@ -525,9 +535,8 @@ AlphabeticIndex.prototype.getBucket = function(element) {
     var firstChar;
     var collationValue;
     var charNum, firstBoundaryChar, endBoundaryChar, firstCharNum, endCharNum;
-    var source;
     var validMapNum = -1;
-    
+
     if (!element) {
         return undefined;
     }
@@ -636,13 +645,11 @@ AlphabeticIndex.prototype.getBucketLabels = function() {
  * for this index in collation order
  */
 AlphabeticIndex.prototype.getAllBucketLabels = function() {
-    var label;
-
     if (this.allBucketLabels) {
         return this.allBucketLabels;
     }
 
-    this.allBucketLabels = new Array(); 
+    this.allBucketLabels = new Array();
     this.allBucketLabels = [this.underflowLabel].concat(this.indexUnits, this.overflowLabel);
     return this.allBucketLabels;
 };

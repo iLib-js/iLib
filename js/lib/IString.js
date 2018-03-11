@@ -46,7 +46,7 @@ var Locale = require("./Locale.js");
 var IString = function (string) {
 	if (typeof(string) === 'object') {
 		if (string instanceof IString) {
-			this.str = string.str;	
+			this.str = string.str;
 		} else {
 			this.str = string.toString();
 		}
@@ -72,6 +72,26 @@ var IString = function (string) {
 IString._isSurrogate = function (ch) {
 	var n = ch.charCodeAt(0);
 	return ((n >= 0xDC00 && n <= 0xDFFF) || (n >= 0xD800 && n <= 0xDBFF));
+};
+
+// build in the English rule
+IString.plurals_default = {
+    "one": {
+        "and": [
+            {
+                "eq": [
+                    "i",
+                    1
+                ]
+            },
+            {
+                "eq": [
+                    "v",
+                    0
+                ]
+            }
+        ]
+    }
 };
 
 /**
@@ -163,9 +183,9 @@ IString.loadPlurals = function (sync, locale, loadParams, onLoad) {
 			loadParams: loadParams,
 			callback: ilib.bind(this, function(plurals) {
 				if (!plurals) {
-					ilib.data.cache.IString[spec] = {};
+					ilib.data.cache.IString[spec] = IString.plurals_default;
 				}
-				ilib.data["plurals_" + spec] = plurals || {};
+				ilib.data["plurals_" + spec] = plurals || IString.plurals_default;
 				if (onLoad && typeof(onLoad) === 'function') {
 					onLoad(ilib.data["plurals_" + spec]);
 				}

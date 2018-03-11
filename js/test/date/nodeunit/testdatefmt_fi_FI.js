@@ -1,7 +1,7 @@
 /*
  * testdatefmt_fi_FI.js - test the date formatter object in Finnish
  *
- * Copyright © 2012-2015,2017, JEDLSoft
+ * Copyright © 2012-2015,2017-2018, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -27,7 +27,7 @@ if (typeof(DateFmt) === "undefined") {
     var DateFmt = require("../.././../lib/DateFmt.js");
 }
 if (typeof(ilib) === "undefined") {
-    var ilib = require("../../..");
+    var ilib = require("../../../lib/ilib.js");
 }
 
 module.exports.testdatefmt_fi_FI = {
@@ -1743,6 +1743,4 @@ module.exports.testdatefmt_fi_FI = {
         test.equal(fmt.formatRelative(reference, date), "21 vuotta sitten");
         test.done();
     }
-
-
 };

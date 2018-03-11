@@ -24,7 +24,7 @@ if (typeof(PhoneGeoLocator) === "undefined") {
     var PhoneGeoLocator = require("../.././../lib/PhoneGeoLocator.js");
 }
 if (typeof(ilib) === "undefined") {
-    var ilib = require("../../..");
+    var ilib = require("../../../lib/ilib.js");
 }
 
 module.exports.phonegeo_BR = {

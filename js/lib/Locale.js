@@ -69,7 +69,7 @@ var JSUtils = require("./JSUtils.js");
  * @param {string=} script the ISO 15924 code of the script for this locale, if any
  */
 var Locale = function(language, region, variant, script) {
-    if (typeof(region) === 'undefined') {
+    if (typeof(region) === 'undefined' && typeof(variant) === 'undefined' && typeof(script) === 'undefined') {
 		var spec = language || ilib.getLocale();
 		if (typeof(spec) === 'string') {
 			var parts = spec.split('-');

@@ -1,6 +1,6 @@
 {
     "name": "ilib",
-    "version": "13.0.0",
+    "version": "13.2.0",
     "main": "js/lib/ilib-node.js",
     "description": "iLib is a cross-engine library of internationalization (i18n) classes written in pure JS",
     "keywords": [
@@ -58,6 +58,7 @@
     "devDependencies": {
         "cldr-data": "^32.0.0",
         "ejs": "^2.5.2",
+        "http-server": "^0.11.1",
         "nodeunit": "0.12.0",
         "should": ">=11.1.0",
         "tap": "^10.0.2",

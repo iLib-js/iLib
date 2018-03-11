@@ -18,7 +18,7 @@
  */
 
 if (typeof(ilib) === "undefined") {
-    var ilib = require("../.././../lib/ilib-node.js");
+    var ilib = require("../.././../lib/ilib.js");
 }
 if (typeof(NormString) === "undefined") {
     var NormString = require("../.././../lib/NormString.js");
@@ -28,14 +28,6 @@ if (typeof(Locale) === "undefined") {
 }
 if (typeof(IString) === "undefined") {
     var IString = require("../.././../lib/IString.js");
-}
-
-function setUp() {
-    ilib.locale = undefined;
-}
-
-if (typeof(ilib) === "undefined") {
-    var ilib = require("../../..");
 }
 
 module.exports.teststrings = {

@@ -63,7 +63,7 @@ if (typeof(isAlnum) === "undefined") {
     var isAlnum = require("../.././../lib/isAlnum.js");
 }
 if (typeof(ilib) === "undefined") {
-    var ilib = require("../.././../lib/ilib-node.js");
+    var ilib = require("../.././../lib/ilib.js");
 }
 if (typeof(Currency) === "undefined") {
     var Currency = require("../.././../lib/Currency.js");
@@ -94,7 +94,7 @@ if (ilib.isDynData()) {
 }
 
 if (typeof(ilib) === "undefined") {
-    var ilib = require("../../..");
+    var ilib = require("../../../lib/ilib.js");
 }
 
 module.exports.testctype = {
@@ -608,6 +608,22 @@ module.exports.testctype = {
     testIsDigitEmpty: function(test) {
         test.expect(1);
         test.ok(!isDigit(''));
+        test.done();
+    },
+
+    testIsDigitNonLatin: function(test) {
+        test.expect(10);
+        // bengali digits
+        test.ok(isDigit("০"));
+        test.ok(isDigit('১'));
+        test.ok(isDigit('২'));
+        test.ok(isDigit('৩'));
+        test.ok(isDigit('৪'));
+        test.ok(isDigit('৫'));
+        test.ok(isDigit('৬'));
+        test.ok(isDigit('৭'));
+        test.ok(isDigit('৮'));
+        test.ok(isDigit('৯'));
         test.done();
     },
 

@@ -1,7 +1,7 @@
 /*
  * testdatefmt_cop_EG.js - test the date formatter object in Coptic
  *
- * Copyright © 2015,2017, JEDLSoft
+ * Copyright © 2015,2017-2018, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -27,7 +27,7 @@ if (typeof(CopticDate) === "undefined") {
     var CopticDate = require("../.././../lib/CopticDate.js");
 }
 if (typeof(ilib) === "undefined") {
-    var ilib = require("../../..");
+    var ilib = require("../../../lib/ilib.js");
 }
 
 module.exports.testdatefmt_cop_EG = {
@@ -1814,5 +1814,4 @@ module.exports.testdatefmt_cop_EG = {
         test.equal(fmt.formatRelative(reference, date), "‏قبل 21 سنة");
         test.done();
     }
-
 };

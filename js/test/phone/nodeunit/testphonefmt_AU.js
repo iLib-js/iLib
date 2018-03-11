@@ -24,7 +24,7 @@ if (typeof(PhoneFmt) === "undefined") {
     var PhoneFmt = require("../.././../lib/PhoneFmt.js");
 }
 if (typeof(ilib) === "undefined") {
-    var ilib = require("../../..");
+    var ilib = require("../../../lib/ilib.js");
 }
 
 module.exports.phonefmt_AU = {
