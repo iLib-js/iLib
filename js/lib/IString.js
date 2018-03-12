@@ -1,7 +1,7 @@
 /*
  * IString.js - ilib string subclass definition
  *
- * Copyright © 2012-2015, JEDLSoft
+ * Copyright © 2012-2015, 2018, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -623,6 +623,9 @@ IString.prototype = {
 
 	/** @private */
     _testChoice: function(index, limit) {
+        var numberDigits = {};
+        var operandValue = {};
+        
         switch (typeof(index)) {
             case 'number':
                 operandValue = IString._fncs.calculateNumberDigits(index);
@@ -655,6 +658,8 @@ IString.prototype = {
                             }
                             break;
                         case "other":
+                            // matches anything
+                            return true;
                         default:
                             var dash = limit.indexOf("-");
                             if (dash !== -1) {
@@ -829,8 +834,6 @@ IString.prototype = {
 		var arg;
 		var result = undefined;
 		var defaultCase = "";
-		var numberDigits = {};
-		var operandValue = {};
 
 		if (this.str.length === 0) {
 			// nothing to do
@@ -853,7 +856,7 @@ IString.prototype = {
 			}
 		}
 
-		var args = (JSUtils.isArray(argIndex)) ? argIndex : [argIndex];
+		var args = (ilib.isArray(argIndex)) ? argIndex : [argIndex];
 
 		// then apply the argument index (or indices)
         for (i = 0; i < limits.length; i++) {

@@ -1,7 +1,7 @@
 /*
  * teststrings.js - test the String object
  *
- * Copyright © 2012-2017, JEDLSoft
+ * Copyright © 2012-2018, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -609,7 +609,227 @@ module.exports.teststrings = {
         test.equal(str.formatChoice(2, { name: "johndoe", num: 2 }), "User johndoe has 2 items.");
         test.done();
     },
+
+    testStringFormatChoiceWithMultipleIndexes0: function(test) {
+        test.expect(2);
+        var str = new IString("0,0#{num} items on {pages} pages.|1,1#{num} item on {pages} page.|other,1#{num} items on {pages} page.|#{num} items on {pages} pages.");
     
+        test.ok(str !== null);
+    
+        var params = {
+            num: 0,
+            pages: 0
+        };
+        
+        test.equal(str.formatChoice([params.num,params.pages], params), "0 items on 0 pages.");
+        test.done();
+    },
+
+    testStringFormatChoiceWithMultipleIndexes1: function(test) {
+        test.expect(2);
+        var str = new IString("0,0#{num} items on {pages} pages.|1,1#{num} item on {pages} page.|other,1#{num} items on {pages} page.|#{num} items on {pages} pages.");
+    
+        test.ok(str !== null);
+    
+        var params = {
+            num: 1,
+            pages: 1
+        };
+        
+        test.equal(str.formatChoice([params.num,params.pages], params), "1 item on 1 page.");
+        test.done();
+    },
+
+    testStringFormatChoiceWithMultipleIndexes2: function(test) {
+        test.expect(2);
+        var str = new IString("0,0#{num} items on {pages} pages.|1,1#{num} item on {pages} page.|other,1#{num} items on {pages} page.|#{num} items on {pages} pages.");
+    
+        test.ok(str !== null);
+    
+        var params = {
+            num: 10,
+            pages: 1
+        };
+        
+        test.equal(str.formatChoice([params.num,params.pages], params), "10 items on 1 page.");
+        test.done();
+    },
+
+    testStringFormatChoiceWithMultipleIndexes3: function(test) {
+        test.expect(2);
+        var str = new IString("0,0#{num} items on {pages} pages.|1,1#{num} item on {pages} page.|other,1#{num} items on {pages} page.|#{num} items on {pages} pages.");
+    
+        test.ok(str !== null);
+    
+        var params = {
+            num: 10,
+            pages: 2
+        };
+        
+        test.equal(str.formatChoice([params.num,params.pages], params), "10 items on 2 pages.");
+        test.done();
+    },
+
+    testStringFormatChoiceWithMultipleIndexesWithClassesRU0: function(test) {
+        test.expect(2);
+        var str = new IString("0,0#{num} items on {pages} pages.|one,one#{num} item on {pages} page.|few,one#{num} items (few) on {pages} page.|many,one#{num} items (many) on {pages} page.|one,few#{num} item (one) on {pages} pages (few).|few,few#{num} items (few) on {pages} pages (few).|many,few#{num} items (many) on {pages} pages (few).|one,many#{num} item (one) on {pages} pages (many).|few,many#{num} items (few) on {pages} pages (many).|many,many#{num} items (many) on {pages} pages (many).");
+        str.setLocale("ru-RU");
+        
+        test.ok(str !== null);
+    
+        var params = {
+            num: 0,
+            pages: 0
+        };
+        
+        test.equal(str.formatChoice([params.num,params.pages], params), "0 items on 0 pages.");
+        test.done();
+    },
+
+    testStringFormatChoiceWithMultipleIndexesWithClassesRU1: function(test) {
+        test.expect(2);
+        var str = new IString("0,0#{num} items on {pages} pages.|one,one#{num} item on {pages} page.|few,one#{num} items (few) on {pages} page.|many,one#{num} items (many) on {pages} page.|one,few#{num} item (one) on {pages} pages (few).|few,few#{num} items (few) on {pages} pages (few).|many,few#{num} items (many) on {pages} pages (few).|one,many#{num} item (one) on {pages} pages (many).|few,many#{num} items (few) on {pages} pages (many).|many,many#{num} items (many) on {pages} pages (many).");
+        str.setLocale("ru-RU");
+        
+        test.ok(str !== null);
+    
+        var params = {
+            num: 1,
+            pages: 1
+        };
+        
+        test.equal(str.formatChoice([params.num,params.pages], params), "1 item on 1 page.");
+        test.done();
+    },
+
+    testStringFormatChoiceWithMultipleIndexesWithClassesRU2: function(test) {
+        test.expect(2);
+        var str = new IString("0,0#{num} items on {pages} pages.|one,one#{num} item on {pages} page.|few,one#{num} items (few) on {pages} page.|many,one#{num} items (many) on {pages} page.|one,few#{num} item (one) on {pages} pages (few).|few,few#{num} items (few) on {pages} pages (few).|many,few#{num} items (many) on {pages} pages (few).|one,many#{num} item (one) on {pages} pages (many).|few,many#{num} items (few) on {pages} pages (many).|many,many#{num} items (many) on {pages} pages (many).");
+        str.setLocale("ru-RU");
+        
+        test.ok(str !== null);
+    
+        var params = {
+            num: 3,
+            pages: 1
+        };
+        
+        test.equal(str.formatChoice([params.num,params.pages], params), "3 items (few) on 1 page.");
+        test.done();
+    },
+
+    testStringFormatChoiceWithMultipleIndexesWithClassesRU3: function(test) {
+        test.expect(2);
+        var str = new IString("0,0#{num} items on {pages} pages.|one,one#{num} item on {pages} page.|few,one#{num} items (few) on {pages} page.|many,one#{num} items (many) on {pages} page.|one,few#{num} item (one) on {pages} pages (few).|few,few#{num} items (few) on {pages} pages (few).|many,few#{num} items (many) on {pages} pages (few).|one,many#{num} item (one) on {pages} pages (many).|few,many#{num} items (few) on {pages} pages (many).|many,many#{num} items (many) on {pages} pages (many).");
+        str.setLocale("ru-RU");
+        
+        test.ok(str !== null);
+    
+        var params = {
+            num: 5,
+            pages: 1
+        };
+        
+        test.equal(str.formatChoice([params.num,params.pages], params), "5 items (many) on 1 page.");
+        test.done();
+    },
+
+    testStringFormatChoiceWithMultipleIndexesWithClassesRU4: function(test) {
+        test.expect(2);
+        var str = new IString("0,0#{num} items on {pages} pages.|one,one#{num} item on {pages} page.|few,one#{num} items (few) on {pages} page.|many,one#{num} items (many) on {pages} page.|one,few#{num} item (one) on {pages} pages (few).|few,few#{num} items (few) on {pages} pages (few).|many,few#{num} items (many) on {pages} pages (few).|one,many#{num} item (one) on {pages} pages (many).|few,many#{num} items (few) on {pages} pages (many).|many,many#{num} items (many) on {pages} pages (many).");
+        str.setLocale("ru-RU");
+        
+        test.ok(str !== null);
+    
+        var params = {
+            num: 21,
+            pages: 2
+        };
+        
+        test.equal(str.formatChoice([params.num,params.pages], params), "21 item (one) on 2 pages (few).");
+        test.done();
+    },
+
+    testStringFormatChoiceWithMultipleIndexesWithClassesRU5: function(test) {
+        test.expect(2);
+        var str = new IString("0,0#{num} items on {pages} pages.|one,one#{num} item on {pages} page.|few,one#{num} items (few) on {pages} page.|many,one#{num} items (many) on {pages} page.|one,few#{num} item (one) on {pages} pages (few).|few,few#{num} items (few) on {pages} pages (few).|many,few#{num} items (many) on {pages} pages (few).|one,many#{num} item (one) on {pages} pages (many).|few,many#{num} items (few) on {pages} pages (many).|many,many#{num} items (many) on {pages} pages (many).");
+        str.setLocale("ru-RU");
+        
+        test.ok(str !== null);
+    
+        var params = {
+            num: 22,
+            pages: 2
+        };
+        
+        test.equal(str.formatChoice([params.num,params.pages], params), "22 items (few) on 2 pages (few).");
+        test.done();
+    },
+
+    testStringFormatChoiceWithMultipleIndexesWithClassesRU6: function(test) {
+        test.expect(2);
+        var str = new IString("0,0#{num} items on {pages} pages.|one,one#{num} item on {pages} page.|few,one#{num} items (few) on {pages} page.|many,one#{num} items (many) on {pages} page.|one,few#{num} item (one) on {pages} pages (few).|few,few#{num} items (few) on {pages} pages (few).|many,few#{num} items (many) on {pages} pages (few).|one,many#{num} item (one) on {pages} pages (many).|few,many#{num} items (few) on {pages} pages (many).|many,many#{num} items (many) on {pages} pages (many).");
+        str.setLocale("ru-RU");
+        
+        test.ok(str !== null);
+    
+        var params = {
+            num: 25,
+            pages: 2
+        };
+        
+        test.equal(str.formatChoice([params.num,params.pages], params), "25 items (many) on 2 pages (few).");
+        test.done();
+    },
+
+    testStringFormatChoiceWithMultipleIndexesWithClassesRU7: function(test) {
+        test.expect(2);
+        var str = new IString("0,0#{num} items on {pages} pages.|one,one#{num} item on {pages} page.|few,one#{num} items (few) on {pages} page.|many,one#{num} items (many) on {pages} page.|one,few#{num} item (one) on {pages} pages (few).|few,few#{num} items (few) on {pages} pages (few).|many,few#{num} items (many) on {pages} pages (few).|one,many#{num} item (one) on {pages} pages (many).|few,many#{num} items (few) on {pages} pages (many).|many,many#{num} items (many) on {pages} pages (many).");
+        str.setLocale("ru-RU");
+        
+        test.ok(str !== null);
+    
+        var params = {
+            num: 21,
+            pages: 5
+        };
+        
+        test.equal(str.formatChoice([params.num,params.pages], params), "21 item (one) on 5 pages (many).");
+        test.done();
+    },
+
+    testStringFormatChoiceWithMultipleIndexesWithClassesRU8: function(test) {
+        test.expect(2);
+        var str = new IString("0,0#{num} items on {pages} pages.|one,one#{num} item on {pages} page.|few,one#{num} items (few) on {pages} page.|many,one#{num} items (many) on {pages} page.|one,few#{num} item (one) on {pages} pages (few).|few,few#{num} items (few) on {pages} pages (few).|many,few#{num} items (many) on {pages} pages (few).|one,many#{num} item (one) on {pages} pages (many).|few,many#{num} items (few) on {pages} pages (many).|many,many#{num} items (many) on {pages} pages (many).");
+        str.setLocale("ru-RU");
+        
+        test.ok(str !== null);
+    
+        var params = {
+            num: 22,
+            pages: 5
+        };
+        
+        test.equal(str.formatChoice([params.num,params.pages], params), "22 items (few) on 5 pages (many).");
+        test.done();
+    },
+
+    testStringFormatChoiceWithMultipleIndexesWithClassesRU9: function(test) {
+        test.expect(2);
+        var str = new IString("0,0#{num} items on {pages} pages.|one,one#{num} item on {pages} page.|few,one#{num} items (few) on {pages} page.|many,one#{num} items (many) on {pages} page.|one,few#{num} item (one) on {pages} pages (few).|few,few#{num} items (few) on {pages} pages (few).|many,few#{num} items (many) on {pages} pages (few).|one,many#{num} item (one) on {pages} pages (many).|few,many#{num} items (few) on {pages} pages (many).|many,many#{num} items (many) on {pages} pages (many).");
+        str.setLocale("ru-RU");
+        
+        test.ok(str !== null);
+    
+        var params = {
+            num: 25,
+            pages: 5
+        };
+        
+        test.equal(str.formatChoice([params.num,params.pages], params), "25 items (many) on 5 pages (many).");
+        test.done();
+    },
+
     testStringDelegateCharAt: function(test) {
         test.expect(2);
         var str = new IString("0#User {name} has no items.|1#User {name} has {num} item.|#User {name} has {num} items.");
