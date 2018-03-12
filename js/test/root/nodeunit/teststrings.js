@@ -830,6 +830,54 @@ module.exports.teststrings = {
         test.done();
     },
 
+    testStringFormatChoiceWithMultipleIndexesWithInsufficientIndexes: function(test) {
+        test.expect(2);
+        var str = new IString("0,0#{num} items on {pages} pages.|one,one#{num} item on {pages} page.|few,one#{num} items (few) on {pages} page.|many,one#{num} items (many) on {pages} page.|one,few#{num} item (one) on {pages} pages (few).|few,few#{num} items (few) on {pages} pages (few).|many,few#{num} items (many) on {pages} pages (few).|one,many#{num} item (one) on {pages} pages (many).|few,many#{num} items (few) on {pages} pages (many).|many,many#{num} items (many) on {pages} pages (many).");
+        str.setLocale("ru-RU");
+        
+        test.ok(str !== null);
+    
+        var params = {
+            num: 25,
+            pages: 5
+        };
+        
+        test.equal(str.formatChoice(params.num, params), "25 items (many) on 5 page.");
+        test.done();
+    },
+
+    testStringFormatChoiceWithMultipleIndexesWithTooManyIndexes: function(test) {
+        test.expect(2);
+        var str = new IString("0,0#{num} items on {pages} pages.|one,one#{num} item on {pages} page.|few,one#{num} items (few) on {pages} page.|many,one#{num} items (many) on {pages} page.|one,few#{num} item (one) on {pages} pages (few).|few,few#{num} items (few) on {pages} pages (few).|many,few#{num} items (many) on {pages} pages (few).|one,many#{num} item (one) on {pages} pages (many).|few,many#{num} items (few) on {pages} pages (many).|many,many#{num} items (many) on {pages} pages (many).");
+        str.setLocale("ru-RU");
+        
+        test.ok(str !== null);
+    
+        var params = {
+            num: 22,
+            pages: 5
+        };
+        
+        test.equal(str.formatChoice([params.num,params.pages,10], params), "22 items (few) on 5 pages (many).");
+        test.done();
+    },
+
+    testStringFormatChoiceWithMultipleIndexesWithInsufficientLimits: function(test) {
+        test.expect(2);
+        var str = new IString("0#{num} items on {pages} pages.|one#{num} item on {pages} page.|few#{num} items (few) on {pages} pages.|many#{num} items (many) on {pages} pages.");
+        str.setLocale("ru-RU");
+        
+        test.ok(str !== null);
+    
+        var params = {
+            num: 22,
+            pages: 5
+        };
+        
+        test.equal(str.formatChoice([params.num,params.pages,10], params), "22 items (few) on 5 pages.");
+        test.done();
+    },
+
     testStringDelegateCharAt: function(test) {
         test.expect(2);
         var str = new IString("0#User {name} has no items.|1#User {name} has {num} item.|#User {name} has {num} items.");
