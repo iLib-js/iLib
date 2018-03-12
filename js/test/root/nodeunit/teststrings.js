@@ -670,6 +670,21 @@ module.exports.teststrings = {
         test.done();
     },
 
+    testStringFormatChoiceWithMultipleIndexesWithEmptyLimitsInsteadOfOther: function(test) {
+        test.expect(2);
+        var str = new IString("0,0#{num} items on {pages} pages.|1,1#{num} item on {pages} page.|,1#{num} items on {pages} page.|#{num} items on {pages} pages.");
+    
+        test.ok(str !== null);
+    
+        var params = {
+            num: 10,
+            pages: 1
+        };
+        
+        test.equal(str.formatChoice([params.num,params.pages], params), "10 items on 1 page.");
+        test.done();
+    },
+
     testStringFormatChoiceWithMultipleIndexesWithClassesRU0: function(test) {
         test.expect(2);
         var str = new IString("0,0#{num} items on {pages} pages.|one,one#{num} item on {pages} page.|few,one#{num} items (few) on {pages} page.|many,one#{num} items (many) on {pages} page.|one,few#{num} item (one) on {pages} pages (few).|few,few#{num} items (few) on {pages} pages (few).|many,few#{num} items (many) on {pages} pages (few).|one,many#{num} item (one) on {pages} pages (many).|few,many#{num} items (few) on {pages} pages (many).|many,many#{num} items (many) on {pages} pages (many).");

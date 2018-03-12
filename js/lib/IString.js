@@ -657,6 +657,7 @@ IString.prototype = {
                                 return IString._fncs.getValue(rule, operandValue);
                             }
                             break;
+                        case "":
                         case "other":
                             // matches anything
                             return true;
