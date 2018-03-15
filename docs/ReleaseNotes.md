@@ -3,8 +3,26 @@ Release Notes for Version 13.0
 
 * Updated Date Formatter for fully supporting relativeTimePattern of CLDR.
 
+Build 002
+-------
+
+Published as version 13.2.0
+
+New Features:
+
+* Updated the time zone data to IANA tzdata 2018c release
+* Added the ability to pass in multiple indexes as the first parameter to IString.formatChoice(). This allows you to format 
+  choice strings where there are two or more plurals in the string at the same time. For example, if your string is "There
+  are N items on P pages", you can get the locale-sensitive plurals of "items" and "pages" correct with one call.
+  
+
+Bug Fixes:
+
+
 Build 001
 -------
+
+Published as version 13.1.0
 
 New Features:
 
