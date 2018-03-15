@@ -10,7 +10,7 @@ before_install:
   #- sudo add-apt-repository --yes ppa:ubuntu-sdk-team/ppa
   #- sudo apt-get update -qq
   - sudo add-apt-repository ppa:beineri/opt-qt58-trusty -y
-  - sudo apt-get update
+  #- sudo apt-get update
 install:
   #- sudo apt-get -y install qt55[QTPACKAGE]
   #- sudo apt-get install qt5-default
