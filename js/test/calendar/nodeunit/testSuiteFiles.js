@@ -44,4 +44,5 @@ module.exports.files = [
     "testthaisolar.js",
     "testthaisolardate.js",
     "testtimezone.js",
+    "testtimezoneasync.js"
 ];

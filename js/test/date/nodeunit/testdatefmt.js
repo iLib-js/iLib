@@ -18,7 +18,7 @@
  */
 
 if (typeof(ilib) === "undefined") {
-    var ilib = require("../../../lib/ilib-node.js");
+    var ilib = require("../../../lib/ilib.js");
 }
 if (typeof(ThaiSolarDate) === "undefined") {
     var ThaiSolarDate = require("../.././../lib/ThaiSolarDate.js");
@@ -65,7 +65,7 @@ function mockLoaderDF(paths, sync, params, callback) {
 var oldLoader = ilib._load;
 
 if (typeof(ilib) === "undefined") {
-    var ilib = require("../../..");
+    var ilib = require("../../../lib/ilib.js");
 }
 
 module.exports.testdatefmt = {
@@ -3020,58 +3020,7 @@ module.exports.testdatefmt = {
         test.equal(fmt.getCalendar(), "gregorian");
         test.equal(fmt.getTemplate(), "dd.MM.yy");
         test.done();
-    },
-    
-    testDateFmtLoadLocaleDataAsynch: function(test) {
-        if (ilib.isDynData()) {
-            // don't need to test loading on the dynamic load version because we are testing
-            // it via all the other tests already.
-            test.done();
-            return;
-        }
-        ilib.setLoaderCallback(mockLoaderDF);
-        
-        new DateFmt({
-            locale: "zz-ZZ",
-            sync: false,
-            onLoad: function (fmt) {
-                ilib.setLoaderCallback(oldLoader);
-                test.expect(4);
-                test.ok(fmt !== null);
-                
-                test.equal(fmt.getLocale().toString(), "zz-ZZ");
-                test.equal(fmt.getCalendar(), "gregorian");
-                test.equal(fmt.getTemplate(), "dd.MM.yy");
-                test.done();
-            }
-        });
-    },
-    
-    testDateFmtLoadLocaleDataAsynchCached: function(test) {
-        if (ilib.isDynData()) {
-            // don't need to test loading on the dynamic load version because we are testing
-            // it via all the other tests already.
-            test.done();
-            return;
-        }
-        ilib.setLoaderCallback(mockLoaderDF);
-        
-        test.expect(4);
-        new DateFmt({
-            locale: "zz-ZZ",
-            sync: false,
-            onLoad: function (fmt) {
-                ilib.setLoaderCallback(oldLoader);
-                test.ok(fmt !== null);
-                
-                test.equal(fmt.getLocale().toString(), "zz-ZZ");
-                test.equal(fmt.getCalendar(), "gregorian");
-                test.equal(fmt.getTemplate(), "dd.MM.yy");
-                test.done();
-            }
-        });
-    },
-    
+    },    
     
     testDateFmtTransitionToDSTRightBefore: function(test) {
         test.expect(2);
@@ -3681,6 +3630,66 @@ module.exports.testdatefmt = {
         test.ok(fmt !== null);
     
         test.equal(fmt.format({minute: 0, second: 9}).toString(), "00:9");
+        test.done();
+    },
+    
+    testDateFmtGetDateComponentOrderEN: function(test) {
+    	test.expect(2);
+    	
+    	var fmt = new DateFmt({locale: "en"})
+        test.ok(fmt !== null);
+    
+        test.equal(fmt.getDateComponentOrder(), "mdy");
+        test.done();
+    },
+    
+    testDateFmtGetDateComponentOrderENGB: function(test) {
+    	test.expect(2);
+    	
+    	var fmt = new DateFmt({locale: "en-GB"})
+        test.ok(fmt !== null);
+    
+        test.equal(fmt.getDateComponentOrder(), "dmy");
+        test.done();
+    },
+   
+    testDateFmtGetDateComponentOrderENUS: function(test) {
+    	test.expect(2);
+    	
+    	var fmt = new DateFmt({locale: "en-US"})
+        test.ok(fmt !== null);
+    
+        test.equal(fmt.getDateComponentOrder(), "mdy");
+        test.done();
+    },
+
+    testDateFmtGetDateComponentOrderDE: function(test) {
+    	test.expect(2);
+    	
+    	var fmt = new DateFmt({locale: "de-DE"})
+        test.ok(fmt !== null);
+    
+        test.equal(fmt.getDateComponentOrder(), "dmy");
+        test.done();
+    },
+
+    testDateFmtGetDateComponentOrderAK: function(test) {
+    	test.expect(2);
+    	
+    	var fmt = new DateFmt({locale: "ak-GH"})
+        test.ok(fmt !== null);
+    
+        test.equal(fmt.getDateComponentOrder(), "ymd");
+        test.done();
+    },
+
+    testDateFmtGetDateComponentOrderLV: function(test) {
+    	test.expect(2);
+    	
+    	var fmt = new DateFmt({locale: "lv-LV"})
+        test.ok(fmt !== null);
+    
+        test.equal(fmt.getDateComponentOrder(), "ydm");
         test.done();
     }
 };

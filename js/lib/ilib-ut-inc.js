@@ -120,6 +120,7 @@ charmaps/Kore.js
 charmaps/Hans.js
 charmaps/Hant.js
 charmaps/general.js
+AlphabeticIndex.js
 */
 
 /* !data

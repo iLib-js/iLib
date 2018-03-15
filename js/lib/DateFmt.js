@@ -1,7 +1,7 @@
 /*
  * DateFmt.js - Date formatter definition
  * 
- * Copyright © 2012-2015, JEDLSoft
+ * Copyright © 2012-2015, 2018, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -324,130 +324,122 @@ var DateFmt = function(options) {
 	this.timeComponents = "ahm";
 	this.meridiems = "default";
 	
-	if (options) {
-		if (options.locale) {
-			this.locale = (typeof(options.locale) === 'string') ? new Locale(options.locale) : options.locale;
-		}
-		
-		if (options.type) {
-			if (options.type === 'date' || options.type === 'time' || options.type === 'datetime') {
-				this.type = options.type;
-			}
-		}
-		
-		if (options.calendar) {
-			this.calName = options.calendar;
-		}
-		
-		if (options.length) {
-			if (options.length === 'short' ||
-				options.length === 'medium' ||
-				options.length === 'long' ||
-				options.length === 'full') {
-				// only use the first char to save space in the json files
-				this.length = options.length.charAt(0);
-			}
-		}
-		
-		if (options.date) {
-			arr = options.date.split("");
-			var dateComps = new ISet();
-			bad = false;
-			for (i = 0; i < arr.length; i++) {
-				var c = arr[i].toLowerCase();
-				if (c === "e") c = "w"; // map ICU -> ilib
-				if (c !== 'd' && c !== 'm' && c !== 'y' && c !== 'w' && c !== 'n') {
-					// ignore time components and the era
-					if (c !== 'h' && c !== 'm'  && c !== 's' && c !== 'a' && c !== 'z' && c !== 'g') {
-    					bad = true;
-    					break;
-					}
-				} else {
-    				dateComps.add(c);
-				}
-			}
-			if (!bad) {
-				var comps = dateComps.asArray().sort(function (left, right) {
-					return (left < right) ? -1 : ((right < left) ? 1 : 0);
-				});
-				this.dateComponents = comps.join("");
-			}
-		}
-
-		if (options.time) {
-			arr = options.time.split("");
-			var timeComps = new ISet();
-			this.badTime = false;
-			for (i = 0; i < arr.length; i++) {
-				var c = arr[i].toLowerCase();
-				if (c !== 'h' && c !== 'm' && c !== 's' && c !== 'a' && c !== 'z') {
-					// ignore the date components
-					if (c !== 'd' && c !== 'm' && c !== 'y' && c !== 'w' && c !== 'e' && c !== 'n' && c !== 'g') {
-    					this.badTime = true;
-    					break;
-					}
-				} else {
-					timeComps.add(c);
-				}
-			}
-			if (!this.badTime) {
-				var comps = timeComps.asArray().sort(function (left, right) {
-					return (left < right) ? -1 : ((right < left) ? 1 : 0);
-				});
-				this.timeComponents = comps.join("");
-			}
-		}
-		
-		if (options.clock && (options.clock === '12' || options.clock === '24')) {
-			this.clock = options.clock;
-		}
-		
-		if (options.template) {
-			// many options are not useful when specifying the template directly, so zero
-			// them out.
-			this.type = "";
-			this.length = "";
-			this.dateComponents = "";
-			this.timeComponents = "";
-			
-			this.template = options.template;
-		}
-		
-		if (options.timezone) {
-			if (options.timezone instanceof TimeZone) {
-				this.tz = options.timezone;
-			} else {
-				this.tz = new TimeZone({
-					locale: this.locale, 
-					id: options.timezone
-				});
-			}
-		} else if (options.locale) {
-			// if an explicit locale was given, then get the time zone for that locale
-			this.tz = new TimeZone({
-				locale: this.locale
-			});
-		} // else just assume time zone "local"
-		
-		if (typeof(options.useNative) === 'boolean') {
-			this.useNative = options.useNative;
-		}
-		
-		if (typeof(options.meridiems) !== 'undefined' && 
-				(options.meridiems === "chinese" || 
-				 options.meridiems === "gregorian" || 
-				 options.meridiems === "ethiopic")) {
-			this.meridiems = options.meridiems;
-		}
-		
-		if (typeof(options.sync) !== 'undefined') {
-			sync = (options.sync === true);
-		}
-		
-		loadParams = options.loadParams;
+	options = options || {sync: true};
+	if (options.locale) {
+	    this.locale = (typeof(options.locale) === 'string') ? new Locale(options.locale) : options.locale;
 	}
 
-		new LocaleInfo(this.locale, {
+	if (options.type) {
+	    if (options.type === 'date' || options.type === 'time' || options.type === 'datetime') {
+	        this.type = options.type;
+	    }
+	}
+
+	if (options.calendar) {
+	    this.calName = options.calendar;
+	}
+
+	if (options.length) {
+	    if (options.length === 'short' ||
+	        options.length === 'medium' ||
+	        options.length === 'long' ||
+	        options.length === 'full') {
+	        // only use the first char to save space in the json files
+	        this.length = options.length.charAt(0);
+	    }
+	}
+
+	if (options.date) {
+	    arr = options.date.split("");
+	    var dateComps = new ISet();
+	    bad = false;
+	    for (i = 0; i < arr.length; i++) {
+	        var c = arr[i].toLowerCase();
+	        if (c === "e") c = "w"; // map ICU -> ilib
+	        if (c !== 'd' && c !== 'm' && c !== 'y' && c !== 'w' && c !== 'n') {
+	            // ignore time components and the era
+	            if (c !== 'h' && c !== 'm'  && c !== 's' && c !== 'a' && c !== 'z' && c !== 'g') {
+	                bad = true;
+	                break;
+	            }
+	        } else {
+	            dateComps.add(c);
+	        }
+	    }
+	    if (!bad) {
+	        var comps = dateComps.asArray().sort(function (left, right) {
+	            return (left < right) ? -1 : ((right < left) ? 1 : 0);
+	        });
+	        this.dateComponents = comps.join("");
+	    }
+	}
+
+	if (options.time) {
+	    arr = options.time.split("");
+	    var timeComps = new ISet();
+	    this.badTime = false;
+	    for (i = 0; i < arr.length; i++) {
+	        var c = arr[i].toLowerCase();
+	        if (c !== 'h' && c !== 'm' && c !== 's' && c !== 'a' && c !== 'z') {
+	            // ignore the date components
+	            if (c !== 'd' && c !== 'm' && c !== 'y' && c !== 'w' && c !== 'e' && c !== 'n' && c !== 'g') {
+	                this.badTime = true;
+	                break;
+	            }
+	        } else {
+	            timeComps.add(c);
+	        }
+	    }
+	    if (!this.badTime) {
+	        var comps = timeComps.asArray().sort(function (left, right) {
+	            return (left < right) ? -1 : ((right < left) ? 1 : 0);
+	        });
+	        this.timeComponents = comps.join("");
+	    }
+	}
+
+	if (options.clock && (options.clock === '12' || options.clock === '24')) {
+	    this.clock = options.clock;
+	}
+
+	if (options.template) {
+	    // many options are not useful when specifying the template directly, so zero
+	    // them out.
+	    this.type = "";
+	    this.length = "";
+	    this.dateComponents = "";
+	    this.timeComponents = "";
+
+	    this.template = options.template;
+	}
+
+	if (options.timezone) {
+	    if (options.timezone instanceof TimeZone) {
+	        this.tz = options.timezone;
+	        this.timezone = this.tz.getId();
+	    } else {
+	        this.timezone = options.timezone;
+	    }
+	}
+
+	if (typeof(options.useNative) === 'boolean') {
+	    this.useNative = options.useNative;
+	}
+
+	if (typeof(options.meridiems) !== 'undefined' && 
+	    (options.meridiems === "chinese" || 
+	        options.meridiems === "gregorian" || 
+	        options.meridiems === "ethiopic")) {
+	    this.meridiems = options.meridiems;
+	}
+
+	if (typeof(options.sync) !== 'undefined') {
+	    sync = (options.sync === true);
+	}
+
+	loadParams = options.loadParams;
+
+	new LocaleInfo(this.locale, {
 		sync: sync,
 		loadParams: loadParams, 
 		onLoad: ilib.bind(this, function (li) {
@@ -463,75 +455,53 @@ var DateFmt = function(options) {
 				DateFactory._dynLoadDate(this.calName);
 			}
 			
-			this.cal = CalendarFactory({
-				type: this.calName
-			});
-			if (!this.cal) {
-				this.cal = new GregorianCal();
-			}
-			if (this.meridiems === "default") {
-				this.meridiems = li.getMeridiemsStyle();
-			}
-
-			/*
-			if (this.timeComponents &&
-					(this.clock === '24' || 
-					(!this.clock && this.locinfo.getClock() === "24"))) {
-				// make sure we don't have am/pm in 24 hour mode unless the user specifically
-				// requested it in the time component option
-				this.timeComponents = this.timeComponents.replace("a", "");
-			}
-			*/
-
-			// load the strings used to translate the components
-			new ResBundle({
-				locale: this.locale,
-				name: "sysres",
+			CalendarFactory({
+				type: this.calName,
 				sync: sync,
-				loadParams: loadParams, 
-				onLoad: ilib.bind(this, function (rb) {
-					this.sysres = rb;
-					
-					if (!this.template) {
-						Utils.loadData({
-							object: "DateFmt", 
-							locale: this.locale, 
-							name: "dateformats.json", 
-							sync: sync, 
-							loadParams: loadParams, 
-							callback: ilib.bind(this, function (formats) {
-								var spec = this.locale.getSpec().replace(/-/g, '_');
-								if (!formats) {
-									formats = ilib.data.dateformats || DateFmt.defaultFmt;
-									ilib.data.cache.DateFmt[spec] = formats;
-								}
-/*
-								if (!ilib.data.dateformats) {
-									ilib.data.dateformats = {};
-								}
-								if (!ilib.data.dateformats[spec]) {
-									ilib.data.dateformats[spec] = formats;
-								}
-*/
-								if (typeof(this.clock) === 'undefined') {
-									// default to the locale instead
-									this.clock = this.locinfo.getClock();
-								}
-								this._initTemplate(formats);
-								this._massageTemplate();
-								if (options && typeof(options.onLoad) === 'function') {
-									options.onLoad(this);
-								}
-							})
-						});
-					} else {
-						this._massageTemplate();
-						if (options && typeof(options.onLoad) === 'function') {
-							options.onLoad(this);
-						}
-					}
+				loadParams: loadParams,
+				onLoad: ilib.bind(this, function(cal) {
+				    this.cal = cal;
+				    
+				    if (!this.cal) {
+				        // can be synchronous
+				        this.cal = new GregorianCal();
+				    }
+				    if (this.meridiems === "default") {
+				        this.meridiems = li.getMeridiemsStyle();
+				    }
+
+				    // load the strings used to translate the components
+				    new ResBundle({
+				        locale: this.locale,
+				        name: "sysres",
+				        sync: sync,
+				        loadParams: loadParams, 
+				        onLoad: ilib.bind(this, function (rb) {
+				            this.sysres = rb;
+				            
+				            if (!this.tz) {
+				                var timezone = options.timezone;
+				                if (!timezone && !options.locale) { 
+				                    timezone = "local";
+				                }
+				                
+				                new TimeZone({
+				                    locale: this.locale,
+				                    id: timezone,
+				                    sync: sync,
+				                    loadParams: loadParams,
+				                    onLoad: ilib.bind(this, function(tz) {
+				                        this.tz = tz;
+				                        this._init(options);
+				                    })
+				                });
+				            } else {
+				                this._init(options);
+				            }
+				        })
+				    });
 				})
-			});	
+			});
 		})
 	});
 };
@@ -633,22 +603,73 @@ DateFmt.weekDayLenMap = {
  * @return {Array.<{name:string,start:string,end:string}>}
  */
 DateFmt.getMeridiemsRange = function (options) {
-	options = options || {};
-	var args = {};
-	if (options.locale) {
-		args.locale = options.locale;
-	}
-
-	if (options.meridiems) {
-		args.meridiems = options.meridiems;
-	}
-
+	options = options || {sync: true};
+	var args = JSUtils.merge({}, options);
+	args.onLoad = function(fmt) {
+	    if (typeof(options.onLoad) === "function") {
+	        options.onLoad(fmt.getMeridiemsRange());
+	    }
+	};
 	var fmt = new DateFmt(args);
 
 	return fmt.getMeridiemsRange();
 };
 
 DateFmt.prototype = {
+    /**
+     * @private
+     * Finish initializing the formatter object
+     */
+    _init: function(options) {
+        if (!this.template) {
+            Utils.loadData({
+                object: "DateFmt", 
+                locale: this.locale, 
+                name: "dateformats.json", 
+                sync: options.sync, 
+                loadParams: options.loadParams, 
+                callback: ilib.bind(this, function (formats) {
+                    var spec = this.locale.getSpec().replace(/-/g, '_');
+                    if (!formats) {
+                        formats = ilib.data.dateformats || DateFmt.defaultFmt;
+                        ilib.data.cache.DateFmt[spec] = formats;
+                    }
+                    
+                    if (typeof(this.clock) === 'undefined') {
+                        // default to the locale instead
+                        this.clock = this.locinfo.getClock();
+                    }
+                    
+                    var ret = this;
+
+                    if (typeof(options.sync) === "boolean" && !options.sync) {
+                        // in async mode, capture the exception and call the callback with "undefined"
+                        try {
+                            this._initTemplate(formats);
+                            this._massageTemplate();
+                        } catch (e) {
+                            ret = undefined;
+                        }
+                    } else {
+                        // in sync mode, allow the exception to percolate upwards
+                        this._initTemplate(formats);
+                        this._massageTemplate();
+                    }
+
+                    if (typeof(options.onLoad) === 'function') {
+                        options.onLoad(ret);
+                    }
+               })
+            });
+        } else {
+            this._massageTemplate();
+        
+            if (typeof(options.onLoad) === 'function') {
+                options.onLoad(this);
+            }
+        }
+    },
+    
 	/**
 	 * @protected
 	 * @param {string|{
@@ -699,6 +720,13 @@ DateFmt.prototype = {
 					this.template = this._getFormat(this.formats.time[this.clock], this.timeComponents, this.length);
 					break;
 			}
+			
+			// calculate what order the components appear in for this locale
+			this.componentOrder = this._getFormat(this.formats.date, "dmy", "l").
+			    replace(/[^dMy]/g, "").
+			    replace(/y+/, "y").
+			    replace(/d+/, "d").
+			    replace(/M+/, "m");
 		} else {
 			throw "No formats available for calendar " + this.calName + " in locale " + this.locale.toString();
 		}
@@ -903,6 +931,30 @@ DateFmt.prototype = {
 	},
 	
 	/**
+	 * Return the order of the year, month, and date components for the current locale.<p>
+	 * 
+	 * When implementing a date input widget in a UI, it would be useful to know what
+	 * order to put the year, month, and date input fields so that it conforms to the
+	 * user expectations for the locale. This method gives that order by returning a
+	 * string that has a single "y", "m", and "d" character in it in the correct
+	 * order.<p>
+	 * 
+	 * For example, the return value "ymd" means that this locale formats the year first,
+	 * the month second, and the date third, and "mdy" means that the month is first,
+	 * the date is second, and the year is third. Four of the 6 possible permutations
+	 * of the three letters have at least one locale that uses that ordering, though some
+	 * combinations are far more likely than others. The ones that are not used by any 
+	 * locales are "dym" and "myd", though new locales are still being added to 
+	 * CLDR frequently, and possible orderings cannot be predicted. Your code should 
+	 * support all 6 possibilities, just in case.
+	 * 
+	 * @return {String} a string giving the date component order
+	 */
+	getDateComponentOrder: function() {
+	    return this.componentOrder;
+	},
+	
+	/**
 	 * Return the type of this formatter. The type is a string that has one of the following
 	 * values: "time", "date", "datetime".
 	 * @return {string} the type of the formatter
@@ -961,19 +1013,12 @@ DateFmt.prototype = {
 	/**
 	 * Return the time zone used to format date/times for this formatter
 	 * instance.
-	 * @return a string naming the time zone
+	 * @return {TimeZone} a time zone object that this formatter is formatting for
 	 */
 	getTimeZone: function () {
-		// Lazy load the time zone. If it wasn't explicitly set up before, set 
-		// it up now, but use the 
-		// default TZ for the locale. This way, if the caller never uses the
-		// time zone in their format, we never have to load up a TimeZone
-		// instance into this formatter.
-		if (!this.tz) {
-			this.tz = new TimeZone({id: ilib.getTimeZone()});
-		}
 		return this.tz;
 	},
+	
 	/**
 	 * Return the clock option set in the constructor. If the clock option was
 	 * not given, the default from the locale is returned instead.
@@ -983,6 +1028,7 @@ DateFmt.prototype = {
 	getClock: function () {
 		return this.clock || this.locinfo.getClock();
 	},
+	
 	/**
 	 * Return the meridiems range in current locale. 
 	 * @return {Array.<{name:string,start:string,end:string}>} the range of available meridiems

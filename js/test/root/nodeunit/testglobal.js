@@ -18,14 +18,10 @@
  */
 
 if (typeof(ilib) === "undefined") {
-    var ilib = require("../.././../lib/ilib-node.js");
+    var ilib = require("../.././../lib/ilib.js");
 }
 if (typeof(Locale) === "undefined") {
     var Locale = require("../.././../lib/Locale.js");
-}
-
-if (typeof(ilib) === "undefined") {
-    var ilib = require("../../..");
 }
 
 module.exports.testglobal = {
@@ -135,7 +131,7 @@ module.exports.testglobal = {
     
     testGetVersion: function(test) {
         test.expect(1);
-        test.equal(ilib.getVersion().substring(0,4), "13.0");
+        test.equal(ilib.getVersion().substring(0,4), "13.2");
         test.done();
     },
     

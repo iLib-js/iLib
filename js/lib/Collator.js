@@ -383,6 +383,8 @@ var Collator = function(options) {
 		if (typeof(options.style) === 'string') {
 			this.style = options.style;
 		}
+	} else {
+	    options = {sync: true};
 	}
 
 	if (this.usage === "sort") {
@@ -424,31 +426,43 @@ var Collator = function(options) {
 					var spec = this.locale.getSpec().replace(/-/g, '_');
 					ilib.data.cache.Collator[spec] = collation;
 				}
-				this._init(collation);
-				new LocaleInfo(this.locale, {
-					sync: sync,
-					loadParams: loadParams,
-					onLoad: ilib.bind(this, function(li) {
-						this.li = li;
-						if (this.ignorePunctuation) {
-			    			isPunct._init(sync, loadParams, ilib.bind(this, function() {
-								if (options && typeof(options.onLoad) === 'function') {
-									options.onLoad(this);
-								}
-			    			}));
-		    			} else {
-							if (options && typeof(options.onLoad) === 'function') {
-								options.onLoad(this);
-							}
-		    			}
-		    		})
-				});
+				this._initCollation(collation);
+		        if (this.ignorePunctuation) {
+		            isPunct._init(sync, loadParams, ilib.bind(this, function() {
+		                this._init(options);
+		            }));
+		        } else {
+		            this._init(options);
+		        }
 			})
 		});
 	}
 };
 
 Collator.prototype = {
+    /**
+     * @private
+     */
+    _init: function(options) {
+        if (this.numeric) {
+            // Create a fake INumber instance now to guarantee that the locale data 
+            // is loaded so we can create sync INumber instances later, even in async mode
+            new INumber("1", {
+                sync: options.sync,
+                loadParams: options.loadParams,
+                onLoad: function(n) {
+                    if (typeof(options.onLoad) === 'function') {
+                        options.onLoad(this);
+                    }
+                }
+            })
+        } else {
+            if (typeof(options.onLoad) === 'function') {
+                options.onLoad(this);
+            }
+        }
+    },
+        
 	/**
 	 * @private
 	 * Bit pack an array of values into a single number
@@ -527,71 +541,77 @@ Collator.prototype = {
 	 * @private
 	 */
 	_addRules: function(rules, start) {
-		var p;
-    	for (var r in rules.map) {
-    		if (r) {
-    			this.map[r] = this._packRule(rules.map[r], start);
-    			p = typeof(rules.map[r][0]) === 'number' ? rules.map[r][0] : rules.map[r][0][0]; 
-    			this.lastMap = Math.max(p + start, this.lastMap);
-    		}
-    	}
-    	
-    	if (typeof(rules.ranges) !== 'undefined') {
-    		// for each range, everything in the range goes in primary sequence from the start
-    		for (var i = 0; i < rules.ranges.length; i++) {
-    			var range = rules.ranges[i];
-    			
-    			this.lastMap = range.start;
-    			if (typeof(range.chars) === "string") {
-    				this._addChars(range.chars, start);
-    			} else {
-    				for (var k = 0; k < range.chars.length; k++) {
-    					this._addChars(range.chars[k], start);
-    				}
-    			}
-    		}
-    	}
+	    var p;
+	    for (var r in rules.map) {
+	        if (r) {
+	            this.map[r] = this._packRule(rules.map[r], start);
+	            p = typeof(rules.map[r][0]) === 'number' ? rules.map[r][0] : rules.map[r][0][0];
+	            this.lastMap = Math.max(p + start, this.lastMap);
+	        }
+	    }
+
+	    if (typeof(rules.ranges) !== 'undefined') {
+	        // for each range, everything in the range goes in primary sequence from the start
+	        for (var i = 0; i < rules.ranges.length; i++) {
+	            var range = rules.ranges[i];
+
+	            this.lastMap = range.start;
+	            if (typeof(range.chars) === "string") {
+	                this._addChars(range.chars, start);
+	            } else {
+	                for (var k = 0; k < range.chars.length; k++) {
+	                    this._addChars(range.chars[k], start);
+	                }
+	            }
+	        }
+	    }
 	},
 	
 	/**
      * @private
      */
-    _init: function(rules) {
-    	var rule = this.style;
-    	while (typeof(rule) === 'string') {
-    		rule = rules[rule];
-    	}
-    	if (!rule) {
-    		rule = "default";
-        	while (typeof(rule) === 'string') {
-        		rule = rules[rule];
-        	}
-    	}
-    	if (!rule) {
-    		this.map = {};
-    		return;
-    	}
-    	
-    	/** 
-    	 * @private
-    	 * @type {{scripts:Array.<string>,bits:Array.<number>,maxes:Array.<number>,bases:Array.<number>,map:Object.<string,Array.<number|null|Array.<number>>>}}
-    	 */
-    	this.collation = rule;
-    	this.map = {};
-    	this.lastMap = -1;
-    	this.keysize = this.collation.keysize[this.level-1];
-    	
-    	if (typeof(this.collation.inherit) !== 'undefined') {
-    		for (var i = 0; i < this.collation.inherit.length; i++) {
-    			var col = this.collation.inherit[i];
-    			rule = typeof(col) === 'object' ? col.name : col;
-    			if (rules[rule]) {
-    				this._addRules(rules[rule], col.start || this.lastMap+1);
-    			}
-    		}
-    	}
-    	this._addRules(this.collation, this.lastMap+1);
-    },
+	_initCollation: function(rules) {
+	    var rule = this.style;
+	    while (typeof(rule) === 'string') {
+	        rule = rules[rule];
+	    }
+
+	    if (!rule) {
+	        rule = "default";
+
+	        while (typeof(rule) === 'string') {
+	            rule = rules[rule];
+	        }
+	    }
+	    if (!rule) {
+	        this.map = {};
+	        return;
+	    }
+
+	    /** 
+	     * @private
+	     * @type {{scripts:Array.<string>,bits:Array.<number>,maxes:Array.<number>,bases:Array.<number>,map:Object.<string,Array.<number|null|Array.<number>>>}}
+	     */
+	    this.collation = rule;
+	    this.map = {};
+	    this.lastMap = -1;
+	    this.keysize = this.collation.keysize[this.level-1];
+	    this.defaultRule = rules["default"];
+
+	    if (typeof(this.collation.inherit) !== 'undefined') {
+	        for (var i = 0; i < this.collation.inherit.length; i++) {
+	            if (this.collation.inherit === 'this') {
+	                continue;
+	            }
+	            var col = this.collation.inherit[i];
+	            rule = typeof(col) === 'object' ? col.name : col;
+	            if (rules[rule]) {
+	                this._addRules(rules[rule], col.start || this.lastMap+1);
+	            }
+	        }
+	    }
+	    this._addRules(this.collation, this.lastMap+1);
+	},
     
     /**
      * @private
@@ -778,6 +798,15 @@ Collator.getAvailableStyles = function (locale) {
  */
 Collator.getAvailableScripts = function () {
 	return [ "Latn" ];
+};
+
+
+/**
+ * Return a default collation style
+ *  
+ * @returns {string} default collation style such as 'latin', 'korean' etc */
+Collator.prototype.getDefaultCollatorStyle = function () {
+	return this.defaultRule;
 };
 
 module.exports = Collator;

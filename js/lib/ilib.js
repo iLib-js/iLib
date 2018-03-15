@@ -1,7 +1,7 @@
 /*
  * ilib.js - define the ilib name space
  * 
- * Copyright © 2012-2017, JEDLSoft
+ * Copyright © 2012-2018, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -38,7 +38,15 @@ ilib._ver = function() {
  * @return {string} a version string for this instance of ilib
  */
 ilib.getVersion = function () {
-	// TODO: need some way of getting the version number under dynamic load code
+    if (ilib._dyncode) {
+        try {
+            var pkg;
+            pkg = require("../package.json");
+            return pkg.version;
+        } catch (e) {
+            // ignore
+        }
+    }
     return ilib._ver() || "13.0"; 
 };
 

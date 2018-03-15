@@ -27,7 +27,7 @@ if (typeof(DateFmt) === "undefined") {
     var DateFmt = require("../.././../lib/DateFmt.js");
 }
 if (typeof(ilib) === "undefined") {
-    var ilib = require("../../..");
+    var ilib = require("../../../lib/ilib.js");
 }
 
 module.exports.testdatefmt_as_IN = {
@@ -298,6 +298,7 @@ module.exports.testdatefmt_as_IN = {
         test.ok(typeof(fmt) !== "undefined");
         
         var date = new JulianDate({
+            locale: "as-IN",
             year: 2011,
             month: 9,
             day: 29,

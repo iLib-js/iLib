@@ -24,7 +24,7 @@ if (typeof(Name) === "undefined") {
     var Name = require("../.././../lib/Name.js");
 }
 if (typeof(ilib) === "undefined") {
-    var ilib = require("../../..");
+    var ilib = require("../../../lib/ilib.js");
 }
 
 module.exports.testname_kn = {

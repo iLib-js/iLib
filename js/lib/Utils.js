@@ -422,7 +422,11 @@ Utils.loadData = function(params) {
 					data = ilib.data[basename] || {};
 					for (var i = 0; i < arr.length; i++) {
 						if (typeof(arr[i]) !== 'undefined') {
-							data = loadParams.returnOne ? arr[i] : JSUtils.merge(data, arr[i], replace);
+						    if (loadParams.returnOne) {
+						        data = arr[i];
+						        break;
+						    }
+							data = JSUtils.merge(data, arr[i], replace);
 						}
 					}
 					

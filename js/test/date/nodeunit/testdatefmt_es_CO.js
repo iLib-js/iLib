@@ -1212,7 +1212,7 @@ function tCOSTDateFmtWithTimeZoneAndNoDST_es_CO() {
 }
 
 if (typeof(ilib) === "undefined") {
-    var ilib = require("../../..");
+    var ilib = require("../../../lib/ilib.js");
 }
 
 module.exports.testdatefmt_es_CO = {

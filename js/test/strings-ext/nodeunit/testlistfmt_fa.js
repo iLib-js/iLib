@@ -22,7 +22,7 @@ if (typeof(ListFmt) === "undefined") {
 }
 
 if (typeof(ilib) === "undefined") {
-    var ilib = require("../../..");
+    var ilib = require("../../../lib/ilib.js");
 }
 
 module.exports.testlistfmt_fa = {

@@ -2,7 +2,7 @@
  * GlyphString.js - ilib string subclass that allows you to access 
  * whole glyphs at a time
  * 
- * Copyright © 2015-2017, JEDLSoft
+ * Copyright © 2015-2018, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -106,26 +106,17 @@ var GlyphString = function (str, options) {
 	
 	IString.call(this, str);
 	
-	var sync = true;
-	var loadParams = {};
-	if (options) {
-		if (typeof(options.sync) === 'boolean') {
-			sync = options.sync;
-		}
-		if (options.loadParams) {
-			loadParams = options.loadParams;
-		}
-	}
+	options = options || {sync: true};
 	
-	CType._load("ctype_m", sync, loadParams, function() {
+	CType._load("ctype_m", options.sync, options.loadParams, ilib.bind(this, function() {
 		if (!ilib.data.norm || JSUtils.isEmpty(ilib.data.norm.ccc)) {
 			Utils.loadData({
 				object: "GlyphString", 
 				locale: "-", 
 				name: "normdata.json",
 				nonlocale: true,
-				sync: sync, 
-				loadParams: loadParams, 
+				sync: options.sync, 
+				loadParams: options.loadParams, 
 				callback: ilib.bind(this, function (norm) {
 					ilib.extend(ilib.data.norm, norm);
 					if (options && typeof(options.onLoad) === 'function') {
@@ -138,7 +129,7 @@ var GlyphString = function (str, options) {
 				options.onLoad(this);
 			}
 		}
-	});
+	}));
 };
 
 GlyphString.prototype = new IString(undefined);

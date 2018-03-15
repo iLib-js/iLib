@@ -384,7 +384,11 @@ Address.prototype = {
 				var it = line.charIterator();
 				while (it.hasNext()) {
 					var c = it.next();
-					if (isIdeo(c) || CType.withinRange(c, "Hangul")) {
+					if (isIdeo(c) || 
+					        CType.withinRange(c, "hangul") || 
+					        CType.withinRange(c, 'katakana') ||
+					        CType.withinRange(c, 'hiragana') ||
+					        CType.withinRange(c, 'bopomofo')) {
 						asianChars++;
 					} else if (isAscii(c) && !isDigit(c)) {
 						latinChars++;

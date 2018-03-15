@@ -69,7 +69,7 @@ var JSUtils = require("./JSUtils.js");
  * @param {string=} script the ISO 15924 code of the script for this locale, if any
  */
 var Locale = function(language, region, variant, script) {
-	if (typeof(region) === 'undefined') {
+    if (typeof(region) === 'undefined' && typeof(variant) === 'undefined' && typeof(script) === 'undefined') {
 		var spec = language || ilib.getLocale();
 		if (typeof(spec) === 'string') {
 			var parts = spec.split('-');
@@ -798,7 +798,24 @@ Locale.prototype = {
 	 * @return {string} the locale specifier
 	 */
 	getSpec: function() {
+	    if (!this.spec) this._genSpec();
 		return this.spec;
+	},
+	
+	/**
+	 * Return the language locale specifier. This includes the
+	 * language and the script if it is available. This can be
+	 * used to see whether the written language of two locales
+	 * match each other regardless of the region or variant.
+	 * 
+	 * @return {string} the language locale specifier
+	 */
+	getLangSpec: function() {
+	    var spec = this.language;
+	    if (spec && this.script) {
+	        spec += "-" + this.script;
+	    }
+	    return spec || "";
 	},
 	
 	/**

@@ -18,7 +18,7 @@
  */
 
 if (typeof(ilib) === "undefined") {
-    var ilib = require("../.././../lib/ilib-node.js");
+    var ilib = require("../.././../lib/ilib.js");
 }
 if (typeof(LocaleInfo) === "undefined") {
     var LocaleInfo = require("../.././../lib/LocaleInfo.js");
@@ -52,10 +52,6 @@ function mockLoaderDRF(paths, sync, params, callback) {
         callback.call(this, data);    
     }
     return data;
-}
-
-if (typeof(ilib) === "undefined") {
-    var ilib = require("../../..");
 }
 
 var oldLoader = ilib._load;
@@ -257,6 +253,7 @@ module.exports.testdatefmtrange = {
     
     testDateRngFmtGetDefaultLocale: function(test) {
         test.expect(2);
+        
         var fmt = new DateRngFmt({locale: "yy-YY"});
         test.ok(fmt !== null);
         
@@ -298,6 +295,7 @@ module.exports.testdatefmtrange = {
             return;
         }
         ilib.setLoaderCallback(mockLoaderDRF);
+        ilib.clearCache();
         
         var fmt = new DateRngFmt({
             locale: "yy-YY"
@@ -335,7 +333,7 @@ module.exports.testdatefmtrange = {
             test.done();
             return;
         }
-         ilib.setLoaderCallback(mockLoaderDRF);
+        ilib.setLoaderCallback(mockLoaderDRF);
         
         var fmt = new DateRngFmt({
             locale: "yy-YY"
