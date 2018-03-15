@@ -273,7 +273,9 @@ public class Offset
             if ( endRule != null ) {
                 Rule wallTime = endRule.clone();
                 RelativeDate rd = wallTime.getTransitionTime();
-                rd.offsetToWallTime(offsetHours, offsetMinutes, startRule.getSaveHours(), startRule.getSaveMinutes());
+                if (startRule != null) {
+                	rd.offsetToWallTime(offsetHours, offsetMinutes, startRule.getSaveHours(), startRule.getSaveMinutes());
+                }
                 json.put("e", wallTime.getJson(currentOnly));
             }
             
