@@ -1,6 +1,8 @@
 Release Notes for Version 13.0
 =============================
 
+* Updated Date Formatter for fully supporting relativeTimePattern of CLDR.
+
 Build 001
 -------
 
