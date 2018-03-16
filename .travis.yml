@@ -15,8 +15,8 @@ install:
   
   - npm install
 before_script:
-  - QTDIR="/opt/qt56"
-  - QTBIN="/opt/qt56/bin"
+  - QTDIR="/opt/qt55"
+  - QTBIN="/opt/qt55/bin"
   - PATH="$QTDIR/bin:$PATH"
   - source /opt/qt55/bin/qt55-env.sh
 script:
