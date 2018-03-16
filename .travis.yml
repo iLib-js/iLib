@@ -5,8 +5,20 @@ node_js:
   - "8"
 env:
   - CXX=g++-4.8
+
+before_install:
+  # Qt5
+  - sudo apt-add-repository --yes ppa:beineri/opt-qt551-trusty
+  - sudo apt-get -qq update
+
 install:
+   # Qt5
+  - yes | sudo apt-get install --yes qt55base qt55imageformats qt55svg qtdeclarative5-dev
   - npm install
+before_script:
+  - QTDIR="/opt/qt55"
+  - PATH="$QTDIR/bin:$PATH"
+  - source /opt/qt55/bin/qt55-env.sh
 script:
   - ant test
 branches:
