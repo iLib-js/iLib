@@ -28,4 +28,4 @@ branches:
     - master
     - development
 sudo: required
-dist: precise
+#dist: precise
