@@ -15,7 +15,7 @@ before_install:
 
 install:
    # Qt5
-  - yes | sudo apt-get install --yes qt55base qt55imageformats qt55svg qtdeclarative5-dev
+  - yes | sudo apt-get install --yes qt55base qt55imageformats qt55svg qtdeclarative5-dev qt5-qmake
   #- source /opt/qt56/bin/qt56-env.sh
   - npm install
 before_script:
