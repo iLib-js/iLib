@@ -8,17 +8,19 @@ env:
 
 before_install:
   # Qt5
-  - sudo apt-add-repository --yes ppa:beineri/opt-qt551-trusty
-  - sudo apt-get -qq update
+  - sudo apt-get clean
+  - sudo add-apt-repository ppa:beineri/opt-qt562-trusty
+  - sudo apt-get update
 
 install:
    # Qt5
-  - yes | sudo apt-get install --yes qt55base qt55imageformats qt55svg qtdeclarative5-dev
+  #- yes | sudo apt-get install --yes qt55base qt55imageformats qt55svg qtdeclarative5-dev
+  - source /opt/qt56/bin/qt56-env.sh
   - npm install
 before_script:
-  - QTDIR="/opt/qt55"
+  - QTDIR="/opt/qt56"
   - PATH="$QTDIR/bin:$PATH"
-  - source /opt/qt55/bin/qt55-env.sh
+  - source /opt/qt56/bin/qt56-env.sh
 script:
   - ant test
 branches:
