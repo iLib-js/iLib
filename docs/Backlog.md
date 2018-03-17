@@ -72,7 +72,7 @@ Here is a list of features in no particular order that may be developed for iLib
     * normalization of IANA charset names
     * charset conversion
     * recognition
-* character functions
+* character functions - DONE
     * script identification (given a character, tell what script it is used in)
     * character normalization (Unicode normalizations, etc.) - DONE
 * word functions
@@ -102,6 +102,8 @@ Here is a list of features in no particular order that may be developed for iLib
     * KKC for Japanese
     * Hangul for Korean
     * Pinyin for Chinese (and others? Wubi?)
+* List Formatter - DONE
+* Alphabetic Index - DONE
 * More locale data 
     * translations for strings to more locales - DONE
     * date components and formats - DONE

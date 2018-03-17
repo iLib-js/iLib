@@ -121,14 +121,14 @@ limitations under the License.
 		<attribute name="target" default="web"/>
 		<sequential>
 		    <echo>executing webpack</echo>
-			<exec osfamily="unix" executable="../node_modules/.bin/webpack" dir="${build.base}" failifexecutionfails="@{failquit}" failonerror="@{failquit}">
+			<exec osfamily="unix" executable="${webpack.command}" dir="${build.base}" failifexecutionfails="@{failquit}" failonerror="@{failquit}">
 				<arg value="--env.assembly=@{assembly}"/>
 				<arg value="--env.size=@{size}"/>
 				<arg value="--env.compilation=@{compilation}"/>
 				<arg value="--env.locales=@{locales}"/>
 				<arg value="--env.target=@{target}"/>
 			</exec>
-			<exec osfamily="windows" executable="../node_modules/.bin/webpack.bat" dir="${build.base}" failifexecutionfails="@{failquit}"  failonerror="@{failquit}">
+			<exec osfamily="windows" executable="${webpack.command}.bat" dir="${build.base}" failifexecutionfails="@{failquit}"  failonerror="@{failquit}">
 				<arg value="--env.assembly=@{assembly}"/>
 				<arg value="--env.size=@{size}"/>
 				<arg value="--env.compilation=@{compilation}"/>
@@ -506,9 +506,9 @@ limitations under the License.
     <target name="build.demo" depends="scan.demo">
        <sequential>
             <echo>Executing webpack.js</echo>
-            <exec osfamily="unix" executable="../node_modules/.bin/webpack" dir="${build.demo}/scripts" failifexecutionfails="@{failquit}" failonerror="@{failquit}">
+            <exec osfamily="unix" executable="${webpack.command}" dir="${build.demo}/scripts" failifexecutionfails="@{failquit}" failonerror="@{failquit}">
             </exec>
-            <exec osfamily="windows" executable="../node_modules/.bin/webpack.bat" dir="${build.demo}/scripts" failifexecutionfails="@{failquit}"  failonerror="@{failquit}">
+            <exec osfamily="windows" executable="%{webpack.command}.bat" dir="${build.demo}/scripts" failifexecutionfails="@{failquit}"  failonerror="@{failquit}">
             </exec>
         </sequential>
     </target>
