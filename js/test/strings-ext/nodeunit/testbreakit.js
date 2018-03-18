@@ -38,14 +38,14 @@ module.exports.testbreakit = {
         var bi = new BreakIterator("abc");
         test.ok(bi);
         
-        test.ok(it.hasNext());
-        test.equal(it.next(), "a");
-        test.ok(it.hasNext());
-        test.equal(it.next(), "b");
-        test.ok(it.hasNext());
-        test.equal(it.next(), "c");
-        test.ok(!it.hasNext());
-        test.equal(it.next(), undefined);
+        test.ok(bi.hasNext());
+        test.equal(bi.next(), "a");
+        test.ok(bi.hasNext());
+        test.equal(bi.next(), "b");
+        test.ok(bi.hasNext());
+        test.equal(bi.next(), "c");
+        test.ok(!bi.hasNext());
+        test.equal(bi.next(), undefined);
         test.done();
     },
 
@@ -56,14 +56,14 @@ module.exports.testbreakit = {
         });
         test.ok(bi);
         
-        test.ok(it.hasNext());
-        test.equal(it.next(), "a");
-        test.ok(it.hasNext());
-        test.equal(it.next(), "Ä");
-        test.ok(it.hasNext());
-        test.equal(it.next(), "a");
-        test.ok(!it.hasNext());
-        test.equal(it.next(), undefined);
+        test.ok(bi.hasNext());
+        test.equal(bi.next(), "a");
+        test.ok(bi.hasNext());
+        test.equal(bi.next(), "Ä");
+        test.ok(bi.hasNext());
+        test.equal(bi.next(), "a");
+        test.ok(!bi.hasNext());
+        test.equal(bi.next(), undefined);
         test.done();
     },
     
@@ -74,24 +74,24 @@ module.exports.testbreakit = {
         });
         test.ok(bi);
         
-        test.ok(it.hasNext());
-        test.equal(it.next(), "This");
-        test.ok(it.hasNext());
-        test.equal(it.next(), " ");
-        test.ok(it.hasNext());
-        test.equal(it.next(), "is");
-        test.ok(it.hasNext());
-        test.equal(it.next(), " ");
-        test.ok(it.hasNext());
-        test.equal(it.next(), "a");
-        test.ok(it.hasNext());
-        test.equal(it.next(), " ");
-        test.ok(it.hasNext());
-        test.equal(it.next(), "sentence");
-        test.ok(it.hasNext());
-        test.equal(it.next(), ".");
-        test.ok(!it.hasNext());
-        test.equal(it.next(), undefined);
+        test.ok(bi.hasNext());
+        test.equal(bi.next(), "This");
+        test.ok(bi.hasNext());
+        test.equal(bi.next(), " ");
+        test.ok(bi.hasNext());
+        test.equal(bi.next(), "is");
+        test.ok(bi.hasNext());
+        test.equal(bi.next(), " ");
+        test.ok(bi.hasNext());
+        test.equal(bi.next(), "a");
+        test.ok(bi.hasNext());
+        test.equal(bi.next(), " ");
+        test.ok(bi.hasNext());
+        test.equal(bi.next(), "sentence");
+        test.ok(bi.hasNext());
+        test.equal(bi.next(), ".");
+        test.ok(!bi.hasNext());
+        test.equal(bi.next(), undefined);
         test.done();
     },
 
@@ -102,18 +102,18 @@ module.exports.testbreakit = {
         });
         test.ok(bi);
         
-        test.ok(it.hasNext());
-        test.equal(it.next(), "This is a sentence.");
-        test.ok(it.hasNext());
-        test.equal(it.next(), " ");
-        test.ok(it.hasNext());
-        test.equal(it.next(), "This is another sentence!");
-        test.ok(it.hasNext());
-        test.equal(it.next(), " ");
-        test.ok(it.hasNext());
-        test.equal(it.next(), "This is a third?");
-        test.ok(!it.hasNext());
-        test.equal(it.next(), undefined);
+        test.ok(bi.hasNext());
+        test.equal(bi.next(), "This is a sentence.");
+        test.ok(bi.hasNext());
+        test.equal(bi.next(), " ");
+        test.ok(bi.hasNext());
+        test.equal(bi.next(), "This is another sentence!");
+        test.ok(bi.hasNext());
+        test.equal(bi.next(), " ");
+        test.ok(bi.hasNext());
+        test.equal(bi.next(), "This is a third?");
+        test.ok(!bi.hasNext());
+        test.equal(bi.next(), undefined);
         test.done();
     },
 
@@ -125,18 +125,18 @@ module.exports.testbreakit = {
         });
         test.ok(bi);
         
-        test.ok(it.hasNext());
-        test.equal(it.next(), "This is a sentence. ");
-        test.ok(it.hasNext());
-        test.equal(it.next(), " ");
-        test.ok(it.hasNext());
-        test.equal(it.next(), "This is another ");
-        test.ok(it.hasNext());
-        test.equal(it.next(), "sentence! This is a ");
-        test.ok(it.hasNext());
-        test.equal(it.next(), "third?");
-        test.ok(!it.hasNext());
-        test.equal(it.next(), undefined);
+        test.ok(bi.hasNext());
+        test.equal(bi.next(), "This is a sentence. ");
+        test.ok(bi.hasNext());
+        test.equal(bi.next(), " ");
+        test.ok(bi.hasNext());
+        test.equal(bi.next(), "This is another ");
+        test.ok(bi.hasNext());
+        test.equal(bi.next(), "sentence! This is a ");
+        test.ok(bi.hasNext());
+        test.equal(bi.next(), "third?");
+        test.ok(!bi.hasNext());
+        test.equal(bi.next(), undefined);
         test.done();
     },
     
@@ -147,8 +147,8 @@ module.exports.testbreakit = {
         });
         test.ok(bi);
         
-        test.ok(!it.hasNext());
-        test.ok(!it.next());
+        test.ok(!bi.hasNext());
+        test.ok(!bi.next());
         test.done();
     },
 
@@ -159,7 +159,7 @@ module.exports.testbreakit = {
         });
         test.ok(bi);
         
-        test.ok(!it.first());
+        test.ok(!bi.first());
         test.done();
     },
 
@@ -170,7 +170,7 @@ module.exports.testbreakit = {
         });
         test.ok(bi);
         
-        test.ok(!it.last());
+        test.ok(!bi.last());
         test.done();
     },
 
@@ -181,20 +181,98 @@ module.exports.testbreakit = {
         });
         test.ok(bi);
         
-        test.ok(!it.previous());
+        test.ok(!bi.previous());
         test.done();
     },
 
-    testBreakIteratorNoWords: function(test) {
-        test.expect(3);
-        var bi = new BreakIterator("", {
+    testBreakIteratorPrevious: function(test) {
+        test.expect(8);
+        var bi = new BreakIterator("This is a sentence.", {
             type: "word"
         });
         test.ok(bi);
         
-        test.ok(!it.hasNext());
-        test.ok(!it.next());
+        test.equal(bi.next(), "This");
+        test.equal(bi.next(), " ");
+        test.equal(bi.next(), "is");
+        test.equal(bi.previous(), "is");
+        test.equal(bi.previous(), " ");
+        test.equal(bi.previous(), "This");
+        test.equal(bi.previous(), undefined);
         test.done();
     },
 
+    testBreakIteratorStartHasNoPrevious: function(test) {
+        test.expect(8);
+        var bi = new BreakIterator("This is a sentence.", {
+            type: "word"
+        });
+        test.ok(bi);
+        
+        test.ok(bi.hasNext());
+        test.equal(bi.previous(), undefined);
+        test.done();
+    },
+
+    testBreakIteratorFirst: function(test) {
+        test.expect(7);
+        var bi = new BreakIterator("This is a sentence.", {
+            type: "word"
+        });
+        test.ok(bi);
+        
+        test.equal(bi.next(), "This");
+        test.equal(bi.next(), " ");
+        test.equal(bi.next(), "is");
+        test.equal(bi.next(), " ");
+        test.equal(bi.next(), "a");
+        test.equal(bi.first(), "This");
+        test.done();
+    },
+
+    testBreakIteratorFirstNoPrevious: function(test) {
+        test.expect(8);
+        var bi = new BreakIterator("This is a sentence.", {
+            type: "word"
+        });
+        test.ok(bi);
+        
+        test.equal(bi.next(), "This");
+        test.equal(bi.next(), " ");
+        test.equal(bi.next(), "is");
+        test.equal(bi.next(), " ");
+        test.equal(bi.next(), "a");
+        test.equal(bi.first(), "This");
+        test.ok(!bi.previous());
+        
+        test.done();
+    },
+
+    testBreakIteratorLast: function(test) {
+        test.expect(5);
+        var bi = new BreakIterator("This is a sentence.", {
+            type: "word"
+        });
+        test.ok(bi);
+        
+        test.equal(bi.next(), "This");
+        test.equal(bi.next(), " ");
+        test.equal(bi.next(), "is");
+        test.equal(bi.last(), ".");
+        test.done();
+    },
+
+    testBreakIteratorLastNoNext: function(test) {
+        test.expect(4);
+        var bi = new BreakIterator("This is a sentence.", {
+            type: "word"
+        });
+        test.ok(bi);
+        
+        test.equal(bi.last(), ".");
+        test.ok(!bi.hasNext());
+        test.ok(!bi.next());
+        
+        test.done();
+    }
 };
