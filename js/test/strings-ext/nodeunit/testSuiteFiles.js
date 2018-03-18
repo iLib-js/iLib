@@ -58,5 +58,6 @@ module.exports.files = [
     "testlistfmt_zh.js",
     "testlistfmtasync.js",
     "testnorm.js",
-    "testnormasync.js"
+    "testnormasync.js",
+    "testbreakit.js"
 ];
