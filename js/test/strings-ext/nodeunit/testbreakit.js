@@ -1,5 +1,5 @@
 /*
- * testglyphstr.js - test the break iteration routines
+ * testbreakit.js - test the general break iteration routines
  * 
  * Copyright © 2018, JEDLSoft
  *
@@ -66,7 +66,46 @@ module.exports.testbreakit = {
         test.equal(bi.next(), undefined);
         test.done();
     },
-    
+
+    testBreakIteratorGlyphEmpty: function(test) {
+        test.expect(3);
+        var bi = new BreakIterator("", { // the A umlaut is a decomposed char
+            type: "glyph"
+        });
+        test.ok(bi);
+        
+        test.ok(!bi.hasNext());
+        test.equal(bi.next(), undefined);
+        test.done();
+    },
+
+    testBreakIteratorGlyphTokenTypes: function(test) {
+        test.expect(8);
+        var bi = new BreakIterator("aÄa b", { // the A umlaut is a decomposed char
+            type: "glyph"
+        });
+        test.ok(bi);
+        
+        test.ok(bi.hasNext());
+        test.equal(bi.next(), "a");
+        test.equal(bi.type(), "glyph")
+        test.ok(bi.hasNext());
+        test.equal(bi.next(), "Ä");
+        test.equal(bi.type(), "glyph")
+        test.ok(bi.hasNext());
+        test.equal(bi.next(), "a");
+        test.equal(bi.type(), "glyph")
+        test.ok(bi.hasNext());
+        test.equal(bi.next(), " ");
+        test.equal(bi.type(), "other")
+        test.ok(bi.hasNext());
+        test.equal(bi.next(), "b");
+        test.equal(bi.type(), "glyph")
+        test.ok(!bi.hasNext());
+        test.equal(bi.next(), undefined);
+        test.done();
+    },
+
     testBreakIteratorWord: function(test) {
         test.expect(19);
         var bi = new BreakIterator("This is a sentence.", {
@@ -80,6 +119,54 @@ module.exports.testbreakit = {
         test.equal(bi.next(), " ");
         test.ok(bi.hasNext());
         test.equal(bi.next(), "is");
+        test.ok(bi.hasNext());
+        test.equal(bi.next(), " ");
+        test.ok(bi.hasNext());
+        test.equal(bi.next(), "a");
+        test.ok(bi.hasNext());
+        test.equal(bi.next(), " ");
+        test.ok(bi.hasNext());
+        test.equal(bi.next(), "sentence");
+        test.ok(bi.hasNext());
+        test.equal(bi.next(), ".");
+        test.ok(!bi.hasNext());
+        test.equal(bi.next(), undefined);
+        test.done();
+    },
+
+    testBreakIteratorWordNoBreakJoiner: function(test) {
+        test.expect(19);
+        var bi = new BreakIterator("This‍ is a sentence.", {
+            type: "word"
+        });
+        test.ok(bi);
+        
+        test.ok(bi.hasNext());
+        test.equal(bi.next(), "This‍ is");
+        test.ok(bi.hasNext());
+        test.equal(bi.next(), " ");
+        test.ok(bi.hasNext());
+        test.equal(bi.next(), "a");
+        test.ok(bi.hasNext());
+        test.equal(bi.next(), " ");
+        test.ok(bi.hasNext());
+        test.equal(bi.next(), "sentence");
+        test.ok(bi.hasNext());
+        test.equal(bi.next(), ".");
+        test.ok(!bi.hasNext());
+        test.equal(bi.next(), undefined);
+        test.done();
+    },
+
+    testBreakIteratorWordZeroWidthJoiner: function(test) {
+        test.expect(19);
+        var bi = new BreakIterator("This‍is a sentence.", {
+            type: "word"
+        });
+        test.ok(bi);
+        
+        test.ok(bi.hasNext());
+        test.equal(bi.next(), "This‍is");
         test.ok(bi.hasNext());
         test.equal(bi.next(), " ");
         test.ok(bi.hasNext());
