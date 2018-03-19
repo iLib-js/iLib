@@ -22,8 +22,8 @@ before_script:
 script:
   #- source /opt/qt55/bin/qt55-env.sh
   - ant test
-  - cd qt
-  - ant test.qt.nodeunit
+  #- cd qt
+  #- ant test.qt.nodeunit
 branches:
   only:
     - master
