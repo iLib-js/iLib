@@ -170,6 +170,21 @@ BreakIterator.prototype.next = function() {
 };
 
 /**
+ * Return the type of the current chunk of text between 
+ * the current boundary and the previous boundary. The return
+ * value is either the name of type of the iterator (ie. "character"
+ * or "word", etc.) or "other" for chunks that do not fit into
+ * the type. If the  iterator is at the first
+ * position in the text then there are no more chunks previous to
+ * that, then this method returns "undefined".
+ *
+ * @returns {String|undefined} the type of the previous chunk
+ */
+BreakIterator.prototype.type = function() {
+    return undefined;
+};
+
+/**
  * Reset the current position to the beginning of the
  * the string and return the first chunk of text in the
  * string. The current position is set to the first
