@@ -22,6 +22,10 @@ before_script:
 script:
   #- source /opt/qt55/bin/qt55-env.sh
   - export QT_QPA_PLATFORM=offscreen
+  - export QTDIR=/opt/qt55
+  - export PATH=$QTDIR/bin:$PATH
+  - export LD_LIBRARY_PATH=/$QTDIR/lib:$LD_LIBRARY_PATH
+
   - ant test
   - cd qt
   - which qmake
