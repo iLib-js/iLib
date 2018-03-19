@@ -27,6 +27,7 @@ script:
   - which qmake
   - which qmlscene
   - /usr/bin/qmake -query
+
   - cd qt
   # QFontDatabase: Cannot find font directory /usr/lib/x86_64-linux-gnu/fonts - is Qt installed correctly?
   #- sudo ln -s /usr/share/fonts /usr/lib/x86_64-linux-gnu/fonts
