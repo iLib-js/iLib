@@ -22,11 +22,15 @@ before_script:
 script:
   #- source /opt/qt55/bin/qt55-env.sh
   - export QT_QPA_PLATFORM=offscreen
-  - which qmake
   - ant test
   - cd qt
+  - which qmake
   - which qmlscene
+  - /usr/bin/qmake -query
   - cd qt/NodeunitTest
+  # QFontDatabase: Cannot find font directory /usr/lib/x86_64-linux-gnu/fonts - is Qt installed correctly?
+  - ln -s /usr/share/fonts /usr/lib/x86_64-linux-gnu/fonts
+
   - /usr/bin/qmlscene NodeunitRun.qml -I ../FileReader/imports/
   # - ant test.qt.nodeunit
 branches:
