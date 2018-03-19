@@ -29,7 +29,7 @@ script:
   - /usr/bin/qmake -query
   - cd qt/NodeunitTest
   # QFontDatabase: Cannot find font directory /usr/lib/x86_64-linux-gnu/fonts - is Qt installed correctly?
-  - ln -s /usr/share/fonts /usr/lib/x86_64-linux-gnu/fonts
+  - sudo ln -s /usr/share/fonts /usr/lib/x86_64-linux-gnu/fonts
 
   - /usr/bin/qmlscene NodeunitRun.qml -I ../FileReader/imports/
   # - ant test.qt.nodeunit
