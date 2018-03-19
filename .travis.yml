@@ -20,11 +20,10 @@ before_script:
   #- PATH="$QTDIR/bin:$PATH"
   #- source /opt/qt55/bin/qt55-env.sh
 script:
-  - source /opt/qt55/bin/qt55-env.sh
-  - which qmake
-  - /opt/qt55/bin/qmake
-  - make
+  #- source /opt/qt55/bin/qt55-env.sh
   - ant test
+  - cd qt
+  - ant test.qt.nodeunit
 branches:
   only:
     - master
