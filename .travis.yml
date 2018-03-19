@@ -24,7 +24,10 @@ script:
   - export QT_QPA_PLATFORM=offscreen
   - ant test
   - cd qt
-  - ant test.qt.nodeunit
+  - which qmlscene
+  - cd qt/nodeunit
+  - /opt/qt55/bin/qmlscene NodeunitRun.qml -I ../FileReader/imports/
+  # - ant test.qt.nodeunit
 branches:
   only:
     - master
