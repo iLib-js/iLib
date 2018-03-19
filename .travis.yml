@@ -22,11 +22,12 @@ before_script:
 script:
   #- source /opt/qt55/bin/qt55-env.sh
   - export QT_QPA_PLATFORM=offscreen
+  - which qmake
   - ant test
   - cd qt
   - which qmlscene
-  - cd qt/nodeunit
-  - /opt/qt55/bin/qmlscene NodeunitRun.qml -I ../FileReader/imports/
+  - cd qt/NodeunitTest
+  - /usr/bin/qmlscene NodeunitRun.qml -I ../FileReader/imports/
   # - ant test.qt.nodeunit
 branches:
   only:
