@@ -21,6 +21,7 @@ before_script:
   #- PATH="$QTDIR/bin:$PATH"
 script:
   #- source /opt/qt55/bin/qt55-env.sh
+
   - export QT_QPA_PLATFORM=offscreen
   - ant test
   - cd qt
