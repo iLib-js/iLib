@@ -12,6 +12,7 @@ before_install:
 install:
   # Qt
   - sudo apt-get -y install qt55[QTPACKAGE]
+  - sudo apt-get -y install qmlscene qt5-default
   
   - npm install
 before_script:
