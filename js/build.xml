@@ -1132,10 +1132,10 @@ limitations under the License.
 	</target>
 	<!-- target name="test" depends="test.core"/ -->
 	<target name="test.only" depends="test.all.nu" description="Run all tests"/>
-	<!--<target name="reports.only" depends="core.junit.report" description="Generate reports on previously run tests"/>
+	<target name="reports.only" depends="core.junit.report" description="Generate reports on previously run tests"/>
 	<target name="reports" depends="test.only,reports.only" description="Run all tests, then generate reports on the results"/>
 	<target name="test" depends="reports" description="Run all tests and build all reports"/>
-	<target name="bench" depends="bench.core" description="Run all benchmark tests and build all benchmark reports"/>-->
+	<target name="bench" depends="bench.core" description="Run all benchmark tests and build all benchmark reports"/>
 	<target name="testjsdoc" description="test whether or not the jsdocs need to be rebuilt">
 		<uptodate
                 property="core.jsdoc.not.needed"
