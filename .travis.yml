@@ -12,8 +12,7 @@ before_install:
 install:
   # Qt
   - sudo apt-get -y install qt55[QTPACKAGE]
-  - sudo apt-get -y install qmlscene qt5-default
-  - sudo apt-get install qml-module-qtquick*
+  - sudo apt-get -y install qmlscene qt5-default qtdeclarative5-dev qtbase5-dev
   - npm install
 before_script:
   #- QTDIR="/opt/qt55"
