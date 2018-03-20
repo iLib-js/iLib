@@ -19,7 +19,7 @@ before_script:
   #- QTBIN="/opt/qt55/bin"
   #- PATH="$QTDIR/bin:$PATH"
 script:
-  #- source /opt/qt55/bin/qt55-env.sh
+  - source /opt/qt55/bin/qt55-env.sh
   - export QT_QPA_PLATFORM=offscreen
   - ant test
   - which qmake
@@ -27,7 +27,6 @@ script:
   #- /usr/bin/qmake -query
   # QFontDatabase: Cannot find font directory /usr/lib/x86_64-linux-gnu/fonts - is Qt installed correctly?
   - sudo ln -s /usr/share/fonts /usr/lib/x86_64-linux-gnu/fonts
-  # /usr/bin/qmlscene NodeunitRun.qml -I ../FileReader/imports/
   - cd qt
   - cd NodeunitTest
   - /usr/bin/qmlscene NodeunitRun.qml -I ../FileReader/imports/
