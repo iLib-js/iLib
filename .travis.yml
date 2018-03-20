@@ -12,7 +12,7 @@ before_install:
 install:
   # Qt
   - sudo apt-get -y install qt55[QTPACKAGE]
-  - sudo apt-get -y install qmlscene qt5-default qtdeclarative5-dev qtbase5-dev
+  - sudo apt-get -y install qmlscene qt5-default
   - npm install
 before_script:
   #- QTDIR="/opt/qt55"
@@ -20,7 +20,7 @@ before_script:
   #- PATH="$QTDIR/bin:$PATH"
 script:
   #- source /opt/qt55/bin/qt55-env.sh
-  #- export QT_QPA_PLATFORM=offscreen
+  - export QT_QPA_PLATFORM=offscreen
   - ant test
   - cd qt
   - which qmake
