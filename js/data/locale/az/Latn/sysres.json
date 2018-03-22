@@ -159,8 +159,6 @@
     "1#1 second|#{num} seconds": "one#{num} saniyə|#{num} saniyə",
     "1#1 minute|#{num} minutes": "one#{num} dəqiqə|#{num} dəqiqə",
     "1#1 hour|#{num} hours": "one#{num} saat|#{num} saat",
-    "in {duration}": "{duration} ərzində",
-    "{duration} ago": "{duration} öncə",
     "1#1 day|#{num} days": "one#{num} gün|#{num} gün",
     "1#1 week|#{num} weeks": "one#{num} həftə|#{num} həftə",
     "1#1 month|#{num} months": "one#{num} ay|#{num} ay",

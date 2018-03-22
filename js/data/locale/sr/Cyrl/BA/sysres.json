@@ -83,8 +83,6 @@
     "1#1 second|#{num} seconds": "one#{num} секунда|few#{num} секунде|#{num} секунди",
     "1#1 minute|#{num} minutes": "one#{num} минут|few#{num} минута|#{num} минута",
     "1#1 hour|#{num} hours": "one#{num} сат|few#{num} сата|#{num} сати",
-    "in {duration}": "за {duration}",
-    "{duration} ago": "пре {duration}",
     "1#1 day|#{num} days": "one#{num} дан|few#{num} дана|#{num} дана",
     "1#1 week|#{num} weeks": "one#{num} недеља|few#{num} недеље|#{num} недеља",
     "1#1 month|#{num} months": "one#{num} месец|few#{num} месеца|#{num} месеци",

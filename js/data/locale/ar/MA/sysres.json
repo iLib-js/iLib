@@ -83,8 +83,6 @@
     "1#1 second|#{num} seconds": "zero#{num} ثانية|one#ثانية|two#ثانيتان|few#{num} ثوان|many#{num} ثانية|#{num} ثانية",
     "1#1 minute|#{num} minutes": "zero#{num} دقيقة|one#دقيقة|two#دقيقتان|few#{num} دقائق|many#{num} دقيقة|#{num} دقيقة",
     "1#1 hour|#{num} hours": "zero#{num} ساعة|one#ساعة|two#ساعتان|few#{num} ساعات|many#{num} ساعة|#{num} ساعة",
-    "in {duration}": "‏خلال {duration}",
-    "{duration} ago": "‏قبل {duration}",
     "1#1 day|#{num} days": "zero#{num} يوم|one#يوم|two#يومان|few#{num} أيام|many#{num} يومًا|#{num} يوم",
     "1#1 week|#{num} weeks": "zero#{num} أسبوع|one#أسبوع|two#أسبوعان|few#{num} أسابيع|many#{num} أسبوعًا|#{num} أسبوع",
     "1#1 month|#{num} months": "zero#{num} شهر|one#شهر|two#شهران|few#{num} أشهر|many#{num} شهرًا|#{num} شهر",
