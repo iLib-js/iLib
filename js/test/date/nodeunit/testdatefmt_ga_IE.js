@@ -1,7 +1,7 @@
 /*
  * testdatefmt_ga_IE.js - test the date formatter object in Irish Gaelic
- * 
- * Copyright © 2012-2015,2017, JEDLSoft
+ *
+ * Copyright © 2012-2015,2017-2018, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -39,17 +39,17 @@ module.exports.testdatefmt_ga_IE = {
     testDateFmtConstructorEmpty_ga_IE: function(test) {
         test.expect(1);
         var fmt = new DateFmt({locale: "ga-IE"});
-        
+
         test.ok(fmt !== null);
         test.done();
     },
-    
-    
+
+
     testDateFmtSimpleShort_ga_IE: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ga-IE", length: "short"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ga-IE",
             year: 2011,
@@ -63,12 +63,12 @@ module.exports.testdatefmt_ga_IE = {
         test.equal(fmt.format(date), "29/09/2011");
         test.done();
     },
-    
+
     testDateFmtSimpleMedium_ga_IE: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ga-IE", length: "medium"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ga-IE",
             year: 2011,
@@ -82,12 +82,12 @@ module.exports.testdatefmt_ga_IE = {
         test.equal(fmt.format(date), "29 MFómh 2011");
         test.done();
     },
-    
+
     testDateFmtSimpleLong_ga_IE: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ga-IE", length: "long"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ga-IE",
             year: 2011,
@@ -101,12 +101,12 @@ module.exports.testdatefmt_ga_IE = {
         test.equal(fmt.format(date), "29 Meán Fómhair 2011");
         test.done();
     },
-    
+
     testDateFmtSimpleFull_ga_IE: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ga-IE", length: "full"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ga-IE",
             year: 2011,
@@ -120,12 +120,12 @@ module.exports.testdatefmt_ga_IE = {
         test.equal(fmt.format(date), "29 Meán Fómhair 2011");
         test.done();
     },
-    
+
     testDateFmtSimpleTimeShort_ga_IE: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ga-IE", length: "short", type: "time"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ga-IE",
             year: 2011,
@@ -139,12 +139,12 @@ module.exports.testdatefmt_ga_IE = {
         test.equal(fmt.format(date), "13:45");
         test.done();
     },
-    
+
     testDateFmtSimpleTimeMedium_ga_IE: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ga-IE", length: "medium", type: "time"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ga-IE",
             year: 2011,
@@ -158,12 +158,12 @@ module.exports.testdatefmt_ga_IE = {
         test.equal(fmt.format(date), "13:45");
         test.done();
     },
-    
+
     testDateFmtSimpleTimeLong_ga_IE: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ga-IE", timelength: "long", type: "time"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ga-IE",
             year: 2011,
@@ -177,12 +177,12 @@ module.exports.testdatefmt_ga_IE = {
         test.equal(fmt.format(date), "13:45");
         test.done();
     },
-    
+
     testDateFmtSimpleTimeFull_ga_IE: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ga-IE", length: "full", type: "time"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ga-IE",
             year: 2011,
@@ -196,12 +196,12 @@ module.exports.testdatefmt_ga_IE = {
         test.equal(fmt.format(date), "13:45");
         test.done();
     },
-    
+
     testDateFmtDateTimeSimpleShort_ga_IE: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ga-IE", length: "short", type: "datetime"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ga-IE",
             year: 2011,
@@ -215,12 +215,12 @@ module.exports.testdatefmt_ga_IE = {
         test.equal(fmt.format(date), "29/09/2011 13:45");
         test.done();
     },
-    
+
     testDateFmtDateTimeSimpleMedium_ga_IE: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ga-IE", length: "medium", type: "datetime"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ga-IE",
             year: 2011,
@@ -234,12 +234,12 @@ module.exports.testdatefmt_ga_IE = {
         test.equal(fmt.format(date), "29 MFómh 2011 13:45");
         test.done();
     },
-    
+
     testDateFmtDateTimeSimpleLong_ga_IE: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ga-IE", length: "long", type: "datetime"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ga-IE",
             year: 2011,
@@ -253,12 +253,12 @@ module.exports.testdatefmt_ga_IE = {
         test.equal(fmt.format(date), "29 Meán Fómhair 2011 13:45");
         test.done();
     },
-    
+
     testDateFmtDateTimeSimpleFull_ga_IE: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ga-IE", length: "full", type: "datetime"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ga-IE",
             year: 2011,
@@ -272,13 +272,13 @@ module.exports.testdatefmt_ga_IE = {
         test.equal(fmt.format(date), "29 Meán Fómhair 2011 13:45");
         test.done();
     },
-    
+
     testDateFmtDateTimeFullwithUseNativeFalse_ga_IE: function(test) {
         test.expect(2);
         var fmt= new DateFmt({locale:"ga-IE",length: "full", type:"datetime", date: "dmwy", time:"hma", useNative:false});
-    
+
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ga-IE",
             year: 2015,
@@ -292,12 +292,12 @@ module.exports.testdatefmt_ga_IE = {
         test.equal(fmt.format(date), "Dé Céadaoin 8 Aibreán 2015 13:45");
         test.done();
     },
-    
+
     testDateFmtTemplateCalendar_ga_IE: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ga-IE", calendar: "julian", template: "yyyy-MM-dd"});
         test.ok(fmt !== null);
-        
+
         var date = new JulianDate({
             locale: "ga-IE",
             year: 2011,
@@ -311,13 +311,13 @@ module.exports.testdatefmt_ga_IE = {
         test.equal(fmt.format(date), "2011-09-29");
         test.done();
     },
-    
-    
+
+
     testDateFmtTemplateClock12SwitchHH_ga_IE: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ga-IE", clock: "12", template: "HH:mm"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ga-IE",
             year: 2011,
@@ -331,12 +331,12 @@ module.exports.testdatefmt_ga_IE = {
         test.equal(fmt.format(date), "01:45");
         test.done();
     },
-    
+
     testDateFmtTemplateClock12Switchkk_ga_IE: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ga-IE", clock: "12", template: "kk:mm"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ga-IE",
             year: 2011,
@@ -350,12 +350,12 @@ module.exports.testdatefmt_ga_IE = {
         test.equal(fmt.format(date), "01:45");
         test.done();
     },
-    
+
     testDateFmtTemplateClock24Switchhh_ga_IE: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ga-IE", clock: "24", template: "hh:mm"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ga-IE",
             year: 2011,
@@ -369,12 +369,12 @@ module.exports.testdatefmt_ga_IE = {
         test.equal(fmt.format(date), "13:45");
         test.done();
     },
-    
+
     testDateFmtTemplateClock24SwitchKK_ga_IE: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ga-IE", clock: "24", template: "KK:mm"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ga-IE",
             year: 2011,
@@ -388,12 +388,12 @@ module.exports.testdatefmt_ga_IE = {
         test.equal(fmt.format(date), "13:45");
         test.done();
     },
-    
+
     testDateFmtTemplateNoClockDoNotFollowLocaleDefault12hh_ga_IE: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ga-IE", template: "hh:mm"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ga-IE",
             year: 2011,
@@ -407,12 +407,12 @@ module.exports.testdatefmt_ga_IE = {
         test.equal(fmt.format(date), "01:45");
         test.done();
     },
-    
+
     testDateFmtTemplateNoClockDoNotFollowLocaleDefault12KK_ga_IE: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ga-IE", template: "KK:mm"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ga-IE",
             year: 2011,
@@ -426,12 +426,12 @@ module.exports.testdatefmt_ga_IE = {
         test.equal(fmt.format(date), "01:45");
         test.done();
     },
-    
+
     testDateFmtTemplateNoClockDoNotFollowLocaleDefault24HH_ga_IE: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ga-IE", template: "HH:mm"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ga-IE",
             year: 2011,
@@ -445,12 +445,12 @@ module.exports.testdatefmt_ga_IE = {
         test.equal(fmt.format(date), "13:45");
         test.done();
     },
-    
+
     testDateFmtTemplateNoClockDoNotFollowLocaleDefault24kk_ga_IE: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ga-IE", template: "kk:mm"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ga-IE",
             year: 2011,
@@ -464,16 +464,16 @@ module.exports.testdatefmt_ga_IE = {
         test.equal(fmt.format(date), "13:45");
         test.done();
     },
-    
-    
-    
-    
-    
+
+
+
+
+
     testDateFmtShortDateComponentsY_ga_IE: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ga-IE", date: "y"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ga-IE",
             year: 2011,
@@ -487,12 +487,12 @@ module.exports.testdatefmt_ga_IE = {
         test.equal(fmt.format(date), "2011");
         test.done();
     },
-    
+
     testDateFmtShortDateComponentsM_ga_IE: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ga-IE", date: "m"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ga-IE",
             year: 2011,
@@ -506,12 +506,12 @@ module.exports.testdatefmt_ga_IE = {
         test.equal(fmt.format(date), "09");
         test.done();
     },
-    
+
     testDateFmtShortDateComponentsN_ga_IE: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ga-IE", date: "n"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ga-IE",
             year: 2011,
@@ -525,12 +525,12 @@ module.exports.testdatefmt_ga_IE = {
         test.equal(fmt.format(date), "M");
         test.done();
     },
-    
+
     testDateFmtShortDateComponentsD_ga_IE: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ga-IE", date: "d"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ga-IE",
             year: 2011,
@@ -544,12 +544,12 @@ module.exports.testdatefmt_ga_IE = {
         test.equal(fmt.format(date), "29");
         test.done();
     },
-    
+
     testDateFmtShortDateComponentsDM_ga_IE: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ga-IE", date: "dm"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ga-IE",
             year: 2011,
@@ -563,12 +563,12 @@ module.exports.testdatefmt_ga_IE = {
         test.equal(fmt.format(date), "29/09");
         test.done();
     },
-    
+
     testDateFmtShortDateComponentsMY_ga_IE: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ga-IE", date: "my"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ga-IE",
             year: 2011,
@@ -582,12 +582,12 @@ module.exports.testdatefmt_ga_IE = {
         test.equal(fmt.format(date), "09/2011");
         test.done();
     },
-    
+
     testDateFmtShortDateComponentsDMY_ga_IE: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ga-IE", date: "dmy"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ga-IE",
             year: 2011,
@@ -601,12 +601,12 @@ module.exports.testdatefmt_ga_IE = {
         test.equal(fmt.format(date), "29/09/2011");
         test.done();
     },
-    
+
     testDateFmtShortDateComponentsWDM_ga_IE: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ga-IE", date: "wdm"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ga-IE",
             year: 2011,
@@ -620,12 +620,12 @@ module.exports.testdatefmt_ga_IE = {
         test.equal(fmt.format(date), "D 29/09");
         test.done();
     },
-    
+
     testDateFmtShortDateComponentsWDMY_ga_IE: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ga-IE", date: "wdmy"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ga-IE",
             year: 2011,
@@ -639,13 +639,13 @@ module.exports.testdatefmt_ga_IE = {
         test.equal(fmt.format(date), "D 29/09/2011");
         test.done();
     },
-    
-    
+
+
     testDateFmtFullDateComponentsY_ga_IE: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ga-IE", length: "full", date: "y"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ga-IE",
             year: 2011,
@@ -659,12 +659,12 @@ module.exports.testdatefmt_ga_IE = {
         test.equal(fmt.format(date), "2011");
         test.done();
     },
-    
+
     testDateFmtFullDateComponentsM_ga_IE: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ga-IE", length: "full", date: "m"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ga-IE",
             year: 2011,
@@ -678,12 +678,12 @@ module.exports.testdatefmt_ga_IE = {
         test.equal(fmt.format(date), "Meán Fómhair");
         test.done();
     },
-    
+
     testDateFmtFullDateComponentsD_ga_IE: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ga-IE", length: "full", date: "d"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ga-IE",
             year: 2011,
@@ -697,12 +697,12 @@ module.exports.testdatefmt_ga_IE = {
         test.equal(fmt.format(date), "29");
         test.done();
     },
-    
+
     testDateFmtFullDateComponentsDM_ga_IE: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ga-IE", length: "full", date: "dm"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ga-IE",
             year: 2011,
@@ -716,12 +716,12 @@ module.exports.testdatefmt_ga_IE = {
         test.equal(fmt.format(date), "29 Meán Fómhair");
         test.done();
     },
-    
+
     testDateFmtFullDateComponentsMY_ga_IE: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ga-IE", length: "full", date: "my"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ga-IE",
             year: 2011,
@@ -735,12 +735,12 @@ module.exports.testdatefmt_ga_IE = {
         test.equal(fmt.format(date), "Meán Fómhair 2011");
         test.done();
     },
-    
+
     testDateFmtFullDateComponentsDMY_ga_IE: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ga-IE", length: "full", date: "dmy"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ga-IE",
             year: 2011,
@@ -754,12 +754,12 @@ module.exports.testdatefmt_ga_IE = {
         test.equal(fmt.format(date), "29 Meán Fómhair 2011");
         test.done();
     },
-    
+
     testDateFmtFullDateComponentsWDM_ga_IE: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ga-IE", length: "full", date: "wdm"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ga-IE",
             year: 2011,
@@ -773,12 +773,12 @@ module.exports.testdatefmt_ga_IE = {
         test.equal(fmt.format(date), "Déardaoin 29 Meán Fómhair");
         test.done();
     },
-    
+
     testDateFmtFullDateComponentsWDMY_ga_IE: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ga-IE", length: "full", date: "wdmy"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ga-IE",
             year: 2011,
@@ -792,13 +792,13 @@ module.exports.testdatefmt_ga_IE = {
         test.equal(fmt.format(date), "Déardaoin 29 Meán Fómhair 2011");
         test.done();
     },
-    
-    
+
+
     testDateFmtShortTimeComponentsS_ga_IE: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ga-IE", type: "time", time: "s"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ga-IE",
             year: 2011,
@@ -812,12 +812,12 @@ module.exports.testdatefmt_ga_IE = {
         test.equal(fmt.format(date), "37");
         test.done();
     },
-    
+
     testDateFmtShortTimeComponentsM_ga_IE: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ga-IE", type: "time", time: "m"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ga-IE",
             year: 2011,
@@ -831,12 +831,12 @@ module.exports.testdatefmt_ga_IE = {
         test.equal(fmt.format(date), "45");
         test.done();
     },
-    
+
     testDateFmtShortTimeComponentsH_ga_IE: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ga-IE", type: "time", time: "h"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ga-IE",
             year: 2011,
@@ -850,13 +850,13 @@ module.exports.testdatefmt_ga_IE = {
         test.equal(fmt.format(date), "13");
         test.done();
     },
-    
-    
+
+
     testDateFmtShortTimeComponentsHM_ga_IE: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ga-IE", type: "time", time: "hm"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ga-IE",
             year: 2011,
@@ -870,12 +870,12 @@ module.exports.testdatefmt_ga_IE = {
         test.equal(fmt.format(date), "13:45");
         test.done();
     },
-    
+
     testDateFmtShortTimeComponentsHMS_ga_IE: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ga-IE", type: "time", time: "hms"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ga-IE",
             year: 2011,
@@ -889,12 +889,12 @@ module.exports.testdatefmt_ga_IE = {
         test.equal(fmt.format(date), "13:45:37");
         test.done();
     },
-    
+
     testDateFmtShortTimeComponentsHMA_ga_IE: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ga-IE", type: "time", time: "hma"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ga-IE",
             year: 2011,
@@ -908,16 +908,16 @@ module.exports.testdatefmt_ga_IE = {
         test.equal(fmt.format(date), "13:45");
         test.done();
     },
-    
+
     testDateFmtShortTimeComponentsHMZ_ga_IE: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
-            locale: "ga-IE", 
-            type: "time", 
+            locale: "ga-IE",
+            type: "time",
             time: "hmz"
         });
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ga-IE",
             year: 2011,
@@ -931,16 +931,16 @@ module.exports.testdatefmt_ga_IE = {
         test.equal(fmt.format(date), "13:45 GMT/IST");
         test.done();
     },
-    
+
     testDateFmtShortTimeComponentsHMAZ_ga_IE: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
-            locale: "ga-IE", 
-            type: "time", 
+            locale: "ga-IE",
+            type: "time",
             time: "ahmsz"
         });
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ga-IE",
             year: 2011,
@@ -954,12 +954,12 @@ module.exports.testdatefmt_ga_IE = {
         test.equal(fmt.format(date), "13:45:37 GMT/IST");
         test.done();
     },
-    
+
     testDateFmtShortTimeComponentsHMSA_ga_IE: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ga-IE", type: "time", time: "hmsa"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ga-IE",
             year: 2011,
@@ -973,16 +973,16 @@ module.exports.testdatefmt_ga_IE = {
         test.equal(fmt.format(date), "13:45:37");
         test.done();
     },
-    
+
     testDateFmtShortTimeComponentsHMSZ_ga_IE: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
-            locale: "ga-IE", 
-            type: "time", 
+            locale: "ga-IE",
+            type: "time",
             time: "hmsz"
         });
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ga-IE",
             year: 2011,
@@ -996,16 +996,16 @@ module.exports.testdatefmt_ga_IE = {
         test.equal(fmt.format(date), "13:45:37 GMT/IST");
         test.done();
     },
-    
+
     testDateFmtShortTimeComponentsHMSAZ_ga_IE: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
-            locale: "ga-IE", 
-            type: "time", 
+            locale: "ga-IE",
+            type: "time",
             time: "hmsaz"
         });
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ga-IE",
             year: 2011,
@@ -1019,13 +1019,13 @@ module.exports.testdatefmt_ga_IE = {
         test.equal(fmt.format(date), "13:45:37 GMT/IST");
         test.done();
     },
-    
-    
+
+
     testDateFmtFullTimeComponentsS_ga_IE: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ga-IE", type: "time", length: "full", time: "s"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ga-IE",
             year: 2011,
@@ -1039,12 +1039,12 @@ module.exports.testdatefmt_ga_IE = {
         test.equal(fmt.format(date), "37");
         test.done();
     },
-    
+
     testDateFmtFullTimeComponentsM_ga_IE: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ga-IE", type: "time", length: "full", time: "m"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ga-IE",
             year: 2011,
@@ -1058,12 +1058,12 @@ module.exports.testdatefmt_ga_IE = {
         test.equal(fmt.format(date), "45");
         test.done();
     },
-    
+
     testDateFmtFullTimeComponentsH_ga_IE: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ga-IE", type: "time", length: "full", time: "h"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ga-IE",
             year: 2011,
@@ -1077,13 +1077,13 @@ module.exports.testdatefmt_ga_IE = {
         test.equal(fmt.format(date), "13");
         test.done();
     },
-    
-    
+
+
     testDateFmtFullTimeComponentsHM_ga_IE: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ga-IE", type: "time", length: "full", time: "hm"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ga-IE",
             year: 2011,
@@ -1097,12 +1097,12 @@ module.exports.testdatefmt_ga_IE = {
         test.equal(fmt.format(date), "13:45");
         test.done();
     },
-    
+
     testDateFmtFullTimeComponentsHMS_ga_IE: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ga-IE", type: "time", length: "full", time: "hms"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ga-IE",
             year: 2011,
@@ -1116,12 +1116,12 @@ module.exports.testdatefmt_ga_IE = {
         test.equal(fmt.format(date), "13:45:37");
         test.done();
     },
-    
+
     testDateFmtFullTimeComponentsHMA_ga_IE: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ga-IE", type: "time", length: "full", time: "hma"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ga-IE",
             year: 2011,
@@ -1135,17 +1135,17 @@ module.exports.testdatefmt_ga_IE = {
         test.equal(fmt.format(date), "13:45");
         test.done();
     },
-    
+
     testDateFmtFullTimeComponentsHMZ_ga_IE: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
-            locale: "ga-IE", 
-            type: "time", 
-            length: "full", 
+            locale: "ga-IE",
+            type: "time",
+            length: "full",
             time: "hmz"
         });
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ga-IE",
             year: 2011,
@@ -1159,13 +1159,13 @@ module.exports.testdatefmt_ga_IE = {
         test.equal(fmt.format(date), "13:45 GMT/IST");
         test.done();
     },
-    
-    
+
+
     testDateFmtFullTimeComponentsHMSA_ga_IE: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ga-IE", type: "time", length: "full", time: "hmsa"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ga-IE",
             year: 2011,
@@ -1179,17 +1179,17 @@ module.exports.testdatefmt_ga_IE = {
         test.equal(fmt.format(date), "13:45:37");
         test.done();
     },
-    
+
     testDateFmtFullTimeComponentsHMSZ_ga_IE: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
-            locale: "ga-IE", 
-            type: "time", 
-            length: "full", 
+            locale: "ga-IE",
+            type: "time",
+            length: "full",
             time: "hmsz"
         });
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ga-IE",
             year: 2011,
@@ -1203,17 +1203,17 @@ module.exports.testdatefmt_ga_IE = {
         test.equal(fmt.format(date), "13:45:37 GMT/IST");
         test.done();
     },
-    
+
     testDateFmtFullTimeComponentsHMSAZ_ga_IE: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
-            locale: "ga-IE", 
-            type: "time", 
-            length: "full", 
+            locale: "ga-IE",
+            type: "time",
+            length: "full",
             time: "hmsaz"
         });
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ga-IE",
             year: 2011,
@@ -1227,17 +1227,17 @@ module.exports.testdatefmt_ga_IE = {
         test.equal(fmt.format(date), "13:45:37 GMT/IST");
         test.done();
     },
-    
+
     testDateFmtWithTimeZoneAndNoDST_ga_IE: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
-            locale: "ga-IE", 
-            type: "time", 
-            length: "full", 
+            locale: "ga-IE",
+            type: "time",
+            length: "full",
             time: "hmsz"
         });
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ga-IE",
             year: 2011,
@@ -1251,12 +1251,12 @@ module.exports.testdatefmt_ga_IE = {
         test.equal(fmt.format(date), "13:45:37 GMT/IST");
         test.done();
     },
-    
+
     testDateFmtFormatRelativeWithinMinuteAfter_ga_IE: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ga-IE", length: "full"});
         test.ok(fmt !== null);
-        
+
         var reference = new GregorianDate({
             locale: "ga-IE",
             year: 2011,
@@ -1284,7 +1284,7 @@ module.exports.testdatefmt_ga_IE = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ga-IE", length: "full"});
         test.ok(fmt !== null);
-        
+
         var reference = new GregorianDate({
             locale: "ga-IE",
             year: 2011,
@@ -1312,7 +1312,7 @@ module.exports.testdatefmt_ga_IE = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ga-IE", length: "full"});
         test.ok(fmt !== null);
-        
+
         var reference = new GregorianDate({
             locale: "ga-IE",
             year: 2011,
@@ -1340,7 +1340,7 @@ module.exports.testdatefmt_ga_IE = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ga-IE", length: "full"});
         test.ok(fmt !== null);
-        
+
         var reference = new GregorianDate({
             locale: "ga-IE",
             year: 2011,
@@ -1368,7 +1368,7 @@ module.exports.testdatefmt_ga_IE = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ga-IE", length: "full"});
         test.ok(fmt !== null);
-        
+
         var reference = new GregorianDate({
             locale: "ga-IE",
             year: 2011,
@@ -1389,14 +1389,14 @@ module.exports.testdatefmt_ga_IE = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.formatRelative(reference, date), "i gceann 4 huaire");
+        test.equal(fmt.formatRelative(reference, date), "i gceann 4 huaire an chloig");
         test.done();
     },
     testDateFmtFormatRelativeWithinDayBefore_ga_IE: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ga-IE", length: "full"});
         test.ok(fmt !== null);
-        
+
         var reference = new GregorianDate({
             locale: "ga-IE",
             year: 2011,
@@ -1417,15 +1417,15 @@ module.exports.testdatefmt_ga_IE = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.formatRelative(reference, date), "4 huaire ó shin");
+        test.equal(fmt.formatRelative(reference, date), "4 huaire an chloig ó shin");
         test.done();
     },
-    
+
     testDateFmtFormatRelativeWithinFortnightAfter_ga_IE: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ga-IE", length: "full"});
         test.ok(fmt !== null);
-        
+
         var reference = new GregorianDate({
             locale: "ga-IE",
             year: 2011,
@@ -1453,7 +1453,7 @@ module.exports.testdatefmt_ga_IE = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ga-IE", length: "full"});
         test.ok(fmt !== null);
-        
+
         var reference = new GregorianDate({
             locale: "ga-IE",
             year: 2011,
@@ -1477,12 +1477,12 @@ module.exports.testdatefmt_ga_IE = {
         test.equal(fmt.formatRelative(reference, date), "4 lá ó shin");
         test.done();
     },
-    
+
     testDateFmtFormatRelativeWithinQuarterAfter_ga_IE: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ga-IE", length: "full"});
         test.ok(fmt !== null);
-        
+
         var reference = new GregorianDate({
             locale: "ga-IE",
             year: 2011,
@@ -1510,7 +1510,7 @@ module.exports.testdatefmt_ga_IE = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ga-IE", length: "full"});
         test.ok(fmt !== null);
-        
+
         var reference = new GregorianDate({
             locale: "ga-IE",
             year: 2011,
@@ -1534,12 +1534,12 @@ module.exports.testdatefmt_ga_IE = {
         test.equal(fmt.formatRelative(reference, date), "9 seachtaine ó shin");
         test.done();
     },
-    
+
     testDateFmtFormatRelativeWithinTwoYearsAfter_ga_IE: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ga-IE", length: "full"});
         test.ok(fmt !== null);
-        
+
         var reference = new GregorianDate({
             locale: "ga-IE",
             year: 2011,
@@ -1567,7 +1567,7 @@ module.exports.testdatefmt_ga_IE = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ga-IE", length: "full"});
         test.ok(fmt !== null);
-        
+
         var reference = new GregorianDate({
             locale: "ga-IE",
             year: 2011,
@@ -1591,12 +1591,12 @@ module.exports.testdatefmt_ga_IE = {
         test.equal(fmt.formatRelative(reference, date), "14 mí ó shin");
         test.done();
     },
-    
+
     testDateFmtFormatRelativeYearsAfter_ga_IE: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "ga-IE", length: "full"});
         test.ok(fmt !== null);
-        
+
         var reference = new GregorianDate({
             locale: "ga-IE",
             year: 2011,
@@ -1624,7 +1624,7 @@ module.exports.testdatefmt_ga_IE = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ga-IE", length: "full"});
         test.ok(fmt !== null);
-        
+
         var reference = new GregorianDate({
             locale: "ga-IE",
             year: 2011,
@@ -1648,7 +1648,4 @@ module.exports.testdatefmt_ga_IE = {
         test.equal(fmt.formatRelative(reference, date), "21 bliain ó shin");
         test.done();
     }
-    
-    
-    
 };

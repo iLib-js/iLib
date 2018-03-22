@@ -83,8 +83,6 @@
     "1#1 second|#{num} seconds": "one#{num} secundă|few#{num} secunde|#{num} de secunde",
     "1#1 minute|#{num} minutes": "one#{num} minut|few#{num} minute|#{num} de minute",
     "1#1 hour|#{num} hours": "one#{num} oră|few#{num} ore|#{num} de ore",
-    "in {duration}": "peste {duration}",
-    "{duration} ago": "acum {duration}",
     "1#1 day|#{num} days": "one#{num} zi|few#{num} zile|#{num} de zile",
     "1#1 week|#{num} weeks": "one#{num} săptămână|few#{num} săptămâni|#{num} de săptămâni",
     "1#1 month|#{num} months": "one#{num} lună|few#{num} luni|#{num} de luni",

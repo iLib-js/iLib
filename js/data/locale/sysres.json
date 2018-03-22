@@ -92,13 +92,11 @@
     "a4-ethiopic": "PM",
     "G-1": "BCE",
     "G1": "CE",
-    
     "separatorFull": ", ",
     "finalSeparatorFull": ", and ",
-    "separatorShort":" ",
-    "separatorMedium":" ",
-    "separatorLong":", ",
-    
+    "separatorShort": " ",
+    "separatorMedium": " ",
+    "separatorLong": ", ",
     "N1-hebrew": "N",
     "N2-hebrew": "I",
     "N3-hebrew": "S",
@@ -112,7 +110,6 @@
     "N11-hebrew": "S",
     "N12-hebrew": "A",
     "N13-hebrew": "A",
-
     "NN1-hebrew": "Ni",
     "NN2-hebrew": "Iy",
     "NN3-hebrew": "Si",
@@ -126,7 +123,6 @@
     "NN11-hebrew": "Sh",
     "NN12-hebrew": "Ad",
     "NN13-hebrew": "A2",
-
     "MMM1-hebrew": "Nis",
     "MMM2-hebrew": "Iyy",
     "MMM3-hebrew": "Siv",
@@ -140,7 +136,6 @@
     "MMM11-hebrew": "She",
     "MMM12-hebrew": "Ada",
     "MMM13-hebrew": "Ad2",
-
     "MMMM1-hebrew": "Nisan",
     "MMMM2-hebrew": "Iyyar",
     "MMMM3-hebrew": "Sivan",
@@ -154,7 +149,6 @@
     "MMMM11-hebrew": "Shevat",
     "MMMM12-hebrew": "Adar",
     "MMMM13-hebrew": "Adar II",
-
     "E0-hebrew": "R",
     "E1-hebrew": "S",
     "E2-hebrew": "S",
@@ -162,7 +156,6 @@
     "E4-hebrew": "Ḥ",
     "E5-hebrew": "S",
     "E6-hebrew": "S",
-
     "EE0-hebrew": "ri",
     "EE1-hebrew": "se",
     "EE2-hebrew": "sl",
@@ -170,7 +163,6 @@
     "EE4-hebrew": "ḥa",
     "EE5-hebrew": "si",
     "EE6-hebrew": "sa",
-
     "EEE0-hebrew": "ris",
     "EEE1-hebrew": "she",
     "EEE2-hebrew": "shl",
@@ -178,7 +170,6 @@
     "EEE4-hebrew": "ḥam",
     "EEE5-hebrew": "shi",
     "EEE6-hebrew": "sha",
-    
     "EEEE0-hebrew": "yom rishon",
     "EEEE1-hebrew": "yom sheni",
     "EEEE2-hebrew": "yom shlishi",
@@ -186,7 +177,6 @@
     "EEEE4-hebrew": "yom ḥamishi",
     "EEEE5-hebrew": "yom shishi",
     "EEEE6-hebrew": "yom shabbat",
-
     "N1-islamic": "M",
     "N2-islamic": "Ṣ",
     "N3-islamic": "R",
@@ -199,7 +189,6 @@
     "N10-islamic": "Š",
     "N11-islamic": "Q",
     "N12-islamic": "Ḥ",
-
     "NN1-islamic": "Mu",
     "NN2-islamic": "Ṣa",
     "NN3-islamic": "Rb",
@@ -212,7 +201,6 @@
     "NN10-islamic": "Ša",
     "NN11-islamic": "Qa",
     "NN12-islamic": "Ḥi",
-
     "MMM1-islamic": "Muḥ",
     "MMM2-islamic": "Ṣaf",
     "MMM3-islamic": "Rab",
@@ -225,7 +213,6 @@
     "MMM10-islamic": "Šaw",
     "MMM11-islamic": "Qad",
     "MMM12-islamic": "Ḥij",
-
     "MMMM1-islamic": "Muḥarram",
     "MMMM2-islamic": "Ṣafar",
     "MMMM3-islamic": "Rabī‘ I",
@@ -238,7 +225,6 @@
     "MMMM10-islamic": "Šawwāl",
     "MMMM11-islamic": "Ḏu al-Qa‘da",
     "MMMM12-islamic": "Ḏu al-Ḥijja",
-    
     "E0-islamic": "A",
     "E1-islamic": "I",
     "E2-islamic": "T",
@@ -246,7 +232,6 @@
     "E4-islamic": "K",
     "E5-islamic": "J",
     "E6-islamic": "S",
-
     "EE0-islamic": "ah",
     "EE1-islamic": "it",
     "EE2-islamic": "th",
@@ -254,7 +239,6 @@
     "EE4-islamic": "kh",
     "EE5-islamic": "ju",
     "EE6-islamic": "sa",
-
     "EEE0-islamic": "aha",
     "EEE1-islamic": "ith",
     "EEE2-islamic": "tha",
@@ -262,7 +246,6 @@
     "EEE4-islamic": "kha",
     "EEE5-islamic": "jum",
     "EEE6-islamic": "sab",
-    
     "EEEE0-islamic": "yawn al-ahad",
     "EEEE1-islamic": "yawn al-ithnaya",
     "EEEE2-islamic": "yawn uth-thalathaa",
@@ -270,7 +253,6 @@
     "EEEE4-islamic": "yawn al-khamis",
     "EEEE5-islamic": "yawn al-jum‘a",
     "EEEE6-islamic": "yawn as-sabt",
-
     "N1-persian": "F",
     "N2-persian": "O",
     "N3-persian": "K",
@@ -283,7 +265,6 @@
     "N10-persian": "D",
     "N11-persian": "B",
     "N12-persian": "E",
-
     "NN1-persian": "Fa",
     "NN2-persian": "Or",
     "NN3-persian": "Kh",
@@ -296,7 +277,6 @@
     "NN10-persian": "De",
     "NN11-persian": "Ba",
     "NN12-persian": "Es",
-
     "MMM1-persian": "Far",
     "MMM2-persian": "Ord",
     "MMM3-persian": "Kho",
@@ -309,7 +289,6 @@
     "MMM10-persian": "Dey",
     "MMM11-persian": "Bah",
     "MMM12-persian": "Esf",
-
     "MMMM1-persian": "Farvardin",
     "MMMM2-persian": "Ordibehesht",
     "MMMM3-persian": "Khordad",
@@ -322,7 +301,6 @@
     "MMMM10-persian": "Dey",
     "MMMM11-persian": "Bahman",
     "MMMM12-persian": "Esfand",
-    
     "E0-persian": "Y",
     "E1-persian": "D",
     "E2-persian": "S",
@@ -330,7 +308,6 @@
     "E4-persian": "P",
     "E5-persian": "J",
     "E6-persian": "S",
-
     "EE0-persian": "Ye",
     "EE1-persian": "Do",
     "EE2-persian": "Se",
@@ -338,7 +315,6 @@
     "EE4-persian": "Pa",
     "EE5-persian": "Jo",
     "EE6-persian": "Sh",
-
     "EEE0-persian": "Yek",
     "EEE1-persian": "Dos",
     "EEE2-persian": "Ses",
@@ -346,7 +322,6 @@
     "EEE4-persian": "Pan",
     "EEE5-persian": "Jom",
     "EEE6-persian": "Sha",
-    
     "EEEE0-persian": "Yekshanbeh",
     "EEEE1-persian": "Doshanbeh",
     "EEEE2-persian": "Seshhanbeh",
@@ -354,7 +329,6 @@
     "EEEE4-persian": "Panjshanbeh",
     "EEEE5-persian": "Jomeh",
     "EEEE6-persian": "Shanbeh",
-    
     "N1-persian-algo": "F",
     "N2-persian-algo": "O",
     "N3-persian-algo": "K",
@@ -367,7 +341,6 @@
     "N10-persian-algo": "D",
     "N11-persian-algo": "B",
     "N12-persian-algo": "E",
-
     "NN1-persian-algo": "Fa",
     "NN2-persian-algo": "Or",
     "NN3-persian-algo": "Kh",
@@ -380,7 +353,6 @@
     "NN10-persian-algo": "De",
     "NN11-persian-algo": "Ba",
     "NN12-persian-algo": "Es",
-
     "MMM1-persian-algo": "Far",
     "MMM2-persian-algo": "Ord",
     "MMM3-persian-algo": "Kho",
@@ -393,7 +365,6 @@
     "MMM10-persian-algo": "Dey",
     "MMM11-persian-algo": "Bah",
     "MMM12-persian-algo": "Esf",
-
     "MMMM1-persian-algo": "Farvardin",
     "MMMM2-persian-algo": "Ordibehesht",
     "MMMM3-persian-algo": "Khordad",
@@ -406,7 +377,6 @@
     "MMMM10-persian-algo": "Dey",
     "MMMM11-persian-algo": "Bahman",
     "MMMM12-persian-algo": "Esfand",
-
     "E0-persian-algo": "Y",
     "E1-persian-algo": "D",
     "E2-persian-algo": "S",
@@ -414,7 +384,6 @@
     "E4-persian-algo": "P",
     "E5-persian-algo": "J",
     "E6-persian-algo": "S",
-
     "EE0-persian-algo": "Ye",
     "EE1-persian-algo": "Do",
     "EE2-persian-algo": "Se",
@@ -422,7 +391,6 @@
     "EE4-persian-algo": "Pa",
     "EE5-persian-algo": "Jo",
     "EE6-persian-algo": "Sh",
-
     "EEE0-persian-algo": "Yek",
     "EEE1-persian-algo": "Dos",
     "EEE2-persian-algo": "Ses",
@@ -430,7 +398,6 @@
     "EEE4-persian-algo": "Pan",
     "EEE5-persian-algo": "Jom",
     "EEE6-persian-algo": "Sha",
-    
     "EEEE0-persian-algo": "Yekshanbeh",
     "EEEE1-persian-algo": "Doshanbeh",
     "EEEE2-persian-algo": "Seshhanbeh",
@@ -438,7 +405,6 @@
     "EEEE4-persian-algo": "Panjshanbeh",
     "EEEE5-persian-algo": "Jomeh",
     "EEEE6-persian-algo": "Shanbeh",
-
     "M1-thaisolar": "M",
     "M2-thaisolar": "K",
     "M3-thaisolar": "M",
@@ -451,7 +417,6 @@
     "M10-thaisolar": "T",
     "M11-thaisolar": "P",
     "M12-thaisolar": "T",
-
     "MM1-thaisolar": "MaK",
     "MM2-thaisolar": "KP",
     "MM3-thaisolar": "MiK",
@@ -464,7 +429,6 @@
     "MM10-thaisolar": "TuK",
     "MM11-thaisolar": "PY",
     "MM12-thaisolar": "ThK",
-
     "MMM1-thaisolar": "Ma.K.",
     "MMM2-thaisolar": "Ku.P.",
     "MMM3-thaisolar": "Mi.K.",
@@ -477,7 +441,6 @@
     "MMM10-thaisolar": "Tu.K.",
     "MMM11-thaisolar": "Ph.Y.",
     "MMM12-thaisolar": "Th.K.",
-
     "MMMM1-thaisolar": "Makarakhom",
     "MMMM2-thaisolar": "Kumphaphan",
     "MMMM3-thaisolar": "Minakhom",
@@ -490,7 +453,6 @@
     "MMMM10-thaisolar": "Tulakhom",
     "MMMM11-thaisolar": "Phruetsachikayon",
     "MMMM12-thaisolar": "Thanwakhom",
-
     "E0-thaisolar": "A",
     "E1-thaisolar": "C",
     "E2-thaisolar": "A",
@@ -498,7 +460,6 @@
     "E4-thaisolar": "P",
     "E5-thaisolar": "S",
     "E6-thaisolar": "S",
-
     "EE0-thaisolar": "at",
     "EE1-thaisolar": "ch",
     "EE2-thaisolar": "an",
@@ -506,7 +467,6 @@
     "EE4-thaisolar": "pr",
     "EE5-thaisolar": "su",
     "EE6-thaisolar": "sa",
-
     "EEE0-thaisolar": "ath",
     "EEE1-thaisolar": "cha",
     "EEE2-thaisolar": "ang",
@@ -514,7 +474,6 @@
     "EEE4-thaisolar": "phr",
     "EEE5-thaisolar": "suk",
     "EEE6-thaisolar": "sao",
-    
     "EEEE0-thaisolar": "wan athit",
     "EEEE1-thaisolar": "wan chan",
     "EEEE2-thaisolar": "wan angkhan",
@@ -522,7 +481,6 @@
     "EEEE4-thaisolar": "wan phruehatsabodi",
     "EEEE5-thaisolar": "wan suk",
     "EEEE6-thaisolar": "wan sao",
-
     "N1-coptic": "T",
     "N2-coptic": "P",
     "N3-coptic": "A",
@@ -536,7 +494,6 @@
     "N11-coptic": "E",
     "N12-coptic": "M",
     "N13-coptic": "E",
-
     "NN1-coptic": "Th",
     "NN2-coptic": "Pa",
     "NN3-coptic": "At",
@@ -550,7 +507,6 @@
     "NN11-coptic": "Ep",
     "NN12-coptic": "Me",
     "NN13-coptic": "Ep",
-
     "MMM1-coptic": "Tho",
     "MMM2-coptic": "Pao",
     "MMM3-coptic": "Ath",
@@ -564,7 +520,6 @@
     "MMM11-coptic": "Epe",
     "MMM12-coptic": "Mes",
     "MMM13-coptic": "Epa",
-
     "MMMM1-coptic": "Thoout",
     "MMMM2-coptic": "Paope",
     "MMMM3-coptic": "Athor",
@@ -578,7 +533,6 @@
     "MMMM11-coptic": "Epeep",
     "MMMM12-coptic": "Mesore",
     "MMMM13-coptic": "Epagomene",
-
     "E0-coptic": "T",
     "E1-coptic": "P",
     "E2-coptic": "P",
@@ -586,7 +540,6 @@
     "E4-coptic": "P",
     "E5-coptic": "P",
     "E6-coptic": "P",
-
     "EE0-coptic": "Tk",
     "EE1-coptic": "Pe",
     "EE2-coptic": "Ps",
@@ -594,7 +547,6 @@
     "EE4-coptic": "Pt",
     "EE5-coptic": "Ps",
     "EE6-coptic": "Ps",
-
     "EEE0-coptic": "Tky",
     "EEE1-coptic": "Pes",
     "EEE2-coptic": "Psh",
@@ -602,7 +554,6 @@
     "EEE4-coptic": "Pti",
     "EEE5-coptic": "Pso",
     "EEE6-coptic": "Psa",
-    
     "EEEE0-coptic": "Tkyriake",
     "EEEE1-coptic": "Pesnau",
     "EEEE2-coptic": "Pshoment",
@@ -610,63 +561,58 @@
     "EEEE4-coptic": "Ptiou",
     "EEEE5-coptic": "Psoou",
     "EEEE6-coptic": "Psabbaton",
-
-    "N1-ethiopic":  "M",
-    "N2-ethiopic":  "T",
-    "N3-ethiopic":  "H",
-    "N4-ethiopic":  "T",
-    "N5-ethiopic":  "T",
-    "N6-ethiopic":  "Y",
-    "N7-ethiopic":  "M",
-    "N8-ethiopic":  "M",
-    "N9-ethiopic":  "G",
+    "N1-ethiopic": "M",
+    "N2-ethiopic": "T",
+    "N3-ethiopic": "H",
+    "N4-ethiopic": "T",
+    "N5-ethiopic": "T",
+    "N6-ethiopic": "Y",
+    "N7-ethiopic": "M",
+    "N8-ethiopic": "M",
+    "N9-ethiopic": "G",
     "N10-ethiopic": "S",
     "N11-ethiopic": "H",
     "N12-ethiopic": "N",
     "N13-ethiopic": "P",
-
-    "NN1-ethiopic":  "Ma",
-    "NN2-ethiopic":  "Te",
-    "NN3-ethiopic":  "He",
-    "NN4-ethiopic":  "Ta",
-    "NN5-ethiopic":  "Te",
-    "NN6-ethiopic":  "Ya",
-    "NN7-ethiopic":  "Ma",
-    "NN8-ethiopic":  "Mi",
-    "NN9-ethiopic":  "Ge",
+    "NN1-ethiopic": "Ma",
+    "NN2-ethiopic": "Te",
+    "NN3-ethiopic": "He",
+    "NN4-ethiopic": "Ta",
+    "NN5-ethiopic": "Te",
+    "NN6-ethiopic": "Ya",
+    "NN7-ethiopic": "Ma",
+    "NN8-ethiopic": "Mi",
+    "NN9-ethiopic": "Ge",
     "NN10-ethiopic": "Sa",
     "NN11-ethiopic": "Ha",
     "NN12-ethiopic": "Na",
     "NN13-ethiopic": "Pa",
-
-    "MMM1-ethiopic":  "Mas",
-    "MMM2-ethiopic":  "Teq",
-    "MMM3-ethiopic":  "Hed",
-    "MMM4-ethiopic":  "Tak",
-    "MMM5-ethiopic":  "Ter",
-    "MMM6-ethiopic":  "Yak",
-    "MMM7-ethiopic":  "Mag",
-    "MMM8-ethiopic":  "Miy",
-    "MMM9-ethiopic":  "Gen",
+    "MMM1-ethiopic": "Mas",
+    "MMM2-ethiopic": "Teq",
+    "MMM3-ethiopic": "Hed",
+    "MMM4-ethiopic": "Tak",
+    "MMM5-ethiopic": "Ter",
+    "MMM6-ethiopic": "Yak",
+    "MMM7-ethiopic": "Mag",
+    "MMM8-ethiopic": "Miy",
+    "MMM9-ethiopic": "Gen",
     "MMM10-ethiopic": "San",
     "MMM11-ethiopic": "Ham",
     "MMM12-ethiopic": "Nah",
     "MMM13-ethiopic": "Pag",
-
-    "MMMM1-ethiopic":  "Maskaram",
-    "MMMM2-ethiopic":  "Teqemt",
-    "MMMM3-ethiopic":  "Hedar",
-    "MMMM4-ethiopic":  "Takhsas",
-    "MMMM5-ethiopic":  "Ter",
-    "MMMM6-ethiopic":  "Yakatit",
-    "MMMM7-ethiopic":  "Magabit",
-    "MMMM8-ethiopic":  "Miyazya",
-    "MMMM9-ethiopic":  "Genbot",
+    "MMMM1-ethiopic": "Maskaram",
+    "MMMM2-ethiopic": "Teqemt",
+    "MMMM3-ethiopic": "Hedar",
+    "MMMM4-ethiopic": "Takhsas",
+    "MMMM5-ethiopic": "Ter",
+    "MMMM6-ethiopic": "Yakatit",
+    "MMMM7-ethiopic": "Magabit",
+    "MMMM8-ethiopic": "Miyazya",
+    "MMMM9-ethiopic": "Genbot",
     "MMMM10-ethiopic": "Sane",
     "MMMM11-ethiopic": "Hamle",
     "MMMM12-ethiopic": "Nahase",
     "MMMM13-ethiopic": "Paguemen",
-
     "E0-ethiopic": "I",
     "E1-ethiopic": "S",
     "E2-ethiopic": "M",
@@ -674,7 +620,6 @@
     "E4-ethiopic": "H",
     "E5-ethiopic": "A",
     "E6-ethiopic": "K",
-
     "EE0-ethiopic": "Ih",
     "EE1-ethiopic": "Sa",
     "EE2-ethiopic": "Ma",
@@ -682,7 +627,6 @@
     "EE4-ethiopic": "Ha",
     "EE5-ethiopic": "Ar",
     "EE6-ethiopic": "Ki",
-
     "EEE0-ethiopic": "Ihu",
     "EEE1-ethiopic": "San",
     "EEE2-ethiopic": "Mak",
@@ -690,7 +634,6 @@
     "EEE4-ethiopic": "Ham",
     "EEE5-ethiopic": "Arb",
     "EEE6-ethiopic": "Kid",
-    
     "EEEE0-ethiopic": "Ihud",
     "EEEE1-ethiopic": "Sanyo",
     "EEEE2-ethiopic": "Maksanyo",

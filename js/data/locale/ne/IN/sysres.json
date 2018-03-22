@@ -159,8 +159,6 @@
     "1#1 second|#{num} seconds": "one#{num} सेकेण्ड|#{num} सेकेण्ड",
     "1#1 minute|#{num} minutes": "one#{num} मिनेट|#{num} मिनेट",
     "1#1 hour|#{num} hours": "one#{num} घण्टा|#{num} घण्टा",
-    "in {duration}": "{duration}मा",
-    "{duration} ago": "{duration} पहिले",
     "1#1 day|#{num} days": "one#{num} दिन|#{num} दिन",
     "1#1 week|#{num} weeks": "one#{num} हप्ता|#{num} हप्ता",
     "1#1 month|#{num} months": "one#{num} महिना|#{num} महिना",
