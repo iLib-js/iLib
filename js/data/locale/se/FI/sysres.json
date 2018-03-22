@@ -83,8 +83,6 @@
     "1#1 second|#{num} seconds": "one#{num} sekunda|two#{num} sekundda|#{num} sekundda",
     "1#1 minute|#{num} minutes": "one#{num} minuhta|two#{num} minuhtta|#{num} minuhtta",
     "1#1 hour|#{num} hours": "one#{num} diibmu|two#{num} diimmur|#{num} diibmur",
-    "in {duration}": "{duration} maŋŋilit",
-    "{duration} ago": "{duration} árat",
     "1#1 day|#{num} days": "one#{num} jándor|two#{num} jándora|#{num} jándora",
     "1#1 week|#{num} weeks": "one#{num} váhku|two#{num} váhkku|#{num} váhkku",
     "1#1 month|#{num} months": "one#{num} mánotbadji|two#{num} mánotbaji|#{num} mánotbadji",
@@ -112,5 +110,11 @@
     "separatorMedium": ", ",
     "finalSeparatorMedium": ", ",
     "separatorShort": " ",
-    "finalSeparatorShort": " "
+    "finalSeparatorShort": " ",
+    "1#in 1 year|#in {num} years": "one#{num} jagi siste|two#{num} jagi siste|#{num} jagi siste",
+    "1#in 1 yr|#in {num} yrs": "one#{num} jagi siste|two#{num} jagi siste|#{num} jagi siste",
+    "#in {num}y": "one#{num} jagi siste|two#{num} jagi siste|#{num} jagi siste",
+    "1#1 year ago|#{num} years ago": "one#{num} jagi árat|two#{num} jagi árat|#{num} jagi árat",
+    "1#1 yr ago|#{num} yrs ago": "one#{num} jagi árat|two#{num} jagi árat|#{num} jagi árat",
+    "#{num}y ago": "one#{num} jagi árat|two#{num} jagi árat|#{num} jagi árat"
 }

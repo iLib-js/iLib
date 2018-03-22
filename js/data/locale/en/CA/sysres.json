@@ -83,8 +83,6 @@
     "1#1 second|#{num} seconds": "one#{num} second|#{num} seconds",
     "1#1 minute|#{num} minutes": "one#{num} minute|#{num} minutes",
     "1#1 hour|#{num} hours": "one#{num} hour|#{num} hours",
-    "in {duration}": "in {duration}",
-    "{duration} ago": "{duration} ago",
     "1#1 day|#{num} days": "one#{num} day|#{num} days",
     "1#1 week|#{num} weeks": "one#{num} week|#{num} weeks",
     "1#1 month|#{num} months": "one#{num} month|#{num} months",
@@ -112,5 +110,17 @@
     "separatorMedium": ", ",
     "finalSeparatorMedium": ", ",
     "separatorShort": " ",
-    "finalSeparatorShort": " "
+    "finalSeparatorShort": " ",
+    "#in {num}s": "one#in {num} sec.|#in {num} secs.",
+    "#in {num}mi": "one#in {num} min.|#in {num} mins.",
+    "#in {num}h": "one#in {num} hr.|#in {num} hrs.",
+    "#in {num}w": "one#in {num} wk.|#in {num} wks.",
+    "#in {num}mo": "one#in {num} mo.|#in {num} mos.",
+    "#in {num}y": "one#in {num} yr.|#in {num} yrs.",
+    "#{num}s ago": "one#{num} sec. ago|#{num} secs. ago",
+    "#{num}mi ago": "one#{num} min. ago|#{num} mins. ago",
+    "#{num}h ago": "one#{num} hr. ago|#{num} hrs. ago",
+    "#{num}w ago": "one#{num} wk. ago|#{num} wks. ago",
+    "#{num}mo ago": "one#{num} mo. ago|#{num} mos. ago",
+    "#{num}y ago": "one#{num} yr. ago|#{num} yrs. ago"
 }

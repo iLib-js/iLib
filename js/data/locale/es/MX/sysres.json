@@ -83,8 +83,6 @@
     "1#1 second|#{num} seconds": "one#{num} segundo|#{num} segundos",
     "1#1 minute|#{num} minutes": "one#{num} minuto|#{num} minutos",
     "1#1 hour|#{num} hours": "one#{num} hora|#{num} horas",
-    "in {duration}": "dentro de {duration}",
-    "{duration} ago": "hace {duration}",
     "1#1 day|#{num} days": "one#{num} día|#{num} días",
     "1#1 week|#{num} weeks": "one#{num} semana|#{num} semanas",
     "1#1 month|#{num} months": "one#{num} mes|#{num} meses",
@@ -116,5 +114,14 @@
     "1#1 dy|#{num} dys": "one#{num} d|#{num} d",
     "durationMediumWeeks": "one#{num} sem|#{num} sem",
     "1#1 mo|#{num} mos": "one#{num} m|#{num} m",
-    "durationMediumYears": "one#{num}a|#{num} a"
+    "durationMediumYears": "one#{num}a|#{num} a",
+    "1#in 1 month|#in {num} months": "one#en {num} mes|#en {num} meses",
+    "1#in 1 mon|#in {num} mons": "one#en {num} mes|#en {num} meses",
+    "#in {num}s": "one#en {num} s|#en {num} s",
+    "#in {num}mi": "one#en {num} min|#en {num} min",
+    "#in {num}h": "one#en {num} h|#en {num} n",
+    "#in {num}d": "one#en {num} día|#en {num} días",
+    "#in {num}w": "one#en {num} sem.|#en {num} sem.",
+    "#in {num}mo": "one#en {num} m|#en {num} m",
+    "#in {num}y": "one#en {num} a|#en {num} a"
 }
