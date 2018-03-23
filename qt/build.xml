@@ -142,7 +142,7 @@ limitations under the License.
 		</sequential>
 	</target>
 
-	<target name="test.qt.nodeunit" depends="" description="Run the unit tests in the qt test framework. Make sure you have Qt 5.4 or later, and it is the first Qt in your path.">
+	<target name="test.qt.nodeunit" depends="filereader" description="Run the unit tests in the qt test framework. Make sure you have Qt 5.4 or later, and it is the first Qt in your path.">
 		<sequential>
 			<exec osfamily="unix" executable="${QTBIN}/qmlscene" dir="${build.base}/NodeunitTest" failifexecutionfails="true" failonerror="true">
 				<env key="QML2_IMPORT_PATH" value="../FileReader/imports"/>

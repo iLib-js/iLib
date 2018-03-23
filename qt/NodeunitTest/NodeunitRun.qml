@@ -10,21 +10,21 @@ QtObject {
         var runner = new TestRunner();
 
         var suiteDefinitions = {
-            "address": "/address/nodeunit/testSuiteQml.js",
-            "calendar": "/calendar/nodeunit/testSuiteQml.js",
-            "collate": "/collate/nodeunit/testSuiteQml.js",  /* It takes almost 11 minutes. */
-            "ctype": "/ctype/nodeunit/testSuiteQml.js",
-            "date": "/date/nodeunit/testSuiteQml.js",
-            "daterange": "/daterange/nodeunit/testSuiteQml.js",
-            "durfmt": "/durfmt/nodeunit/testSuiteQml.js",
-            "name": "/name/nodeunit/testSuiteQml.js",
-            "number": "/number/nodeunit/testSuiteQml.js",
-            "maps": "/maps/nodeunit/testSuiteQml.js",
-            "phone": "/phone/nodeunit/testSuiteQml.js",
-            "root": "/root/nodeunit/testSuiteQml.js",
-            "strings-ext": "/strings-ext/nodeunit/testSuiteQml.js",
-            "units": "/units/nodeunit/testSuiteQml.js",
-            "util": "/util/nodeunit/testSuiteQml.js"
+            "address": "/address/nodeunit/testSuiteFiles.js",
+            "calendar": "/calendar/nodeunit/testSuiteFiles.js",
+            "collate": "/collate/nodeunit/testSuiteFiles.js",  /* It takes almost 11 minutes. */
+            "ctype": "/ctype/nodeunit/testSuiteFiles.js",
+            "date": "/date/nodeunit/testSuiteFiles.js",
+            "daterange": "/daterange/nodeunit/testSuiteFiles.js",
+            "durfmt": "/durfmt/nodeunit/testSuiteFiles.js",
+            "name": "/name/nodeunit/testSuiteFiles.js",
+            "number": "/number/nodeunit/testSuiteFiles.js",
+            "maps": "/maps/nodeunit/testSuiteFiles.js",
+            "phone": "/phone/nodeunit/testSuiteFiles.js",
+            "root": "/root/nodeunit/testSuiteFiles.js",
+            "strings-ext": "/strings-ext/nodeunit/testSuiteFiles.js",
+            "units": "/units/nodeunit/testSuiteFiles.js",
+            "util": "/util/nodeunit/testSuiteFiles.js"
         };
 
         var s, ts;
