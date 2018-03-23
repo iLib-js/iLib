@@ -54,7 +54,7 @@ var nodeunit = (function(){
         // ==.
         // assert.equal(actual, expected, message_opt);
         assert.equal = function equal(actual, expected, message) {
-            if (actual !== expected) fail(actual, expected, message, "==", assert.equal);
+            if (actual != expected) fail(actual, expected, message, "==", assert.equal);
         };
 
         // 6. The non-equality assertion tests for whether two objects are not equal
