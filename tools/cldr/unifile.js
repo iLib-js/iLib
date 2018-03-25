@@ -52,7 +52,7 @@ var fs = require('fs');
  * @constructor
  * @param {Object.<path:string,string:string,splitChar:string,commentString:string>} options options governing the construction of this file
  */
-exports.UnicodeFile = function (options) {
+var UnicodeFile = function (options) {
 	var data;
 	
 	this.rows = [];
@@ -94,7 +94,7 @@ exports.UnicodeFile = function (options) {
 	}
 };
 
-exports.UnicodeFile.prototype = {
+UnicodeFile.prototype = {
 	/**
 	 * Return the number of content lines in this unicode file.
 	 * @return {number} the number of content lines in this unicode file
@@ -123,3 +123,5 @@ exports.UnicodeFile.prototype = {
 		return (index >= 0 && index < this.rows.length) ? this.rows[index] : undefined;
 	}
 };
+
+module.exports = UnicodeFile;

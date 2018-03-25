@@ -18,16 +18,39 @@
  * limitations under the License.
  */
 
+// !data workbreak.json
+
 /* !depends
 ilib.js
 Locale.js
 LocaleInfo.js
+NormString.js
+IString.js
+CType.js
 */
 
 var ilib = require("./ilib.js");
 var Locale = require("./Locale.js");
 var LocaleInfo = require("./LocaleInfo.js");
 var NormString = require("./NormString.js");
+var IString = require("./IString.js");
+var CType = require("./CType.js");
+
+function isNewLine(string) {
+    var c = IString.toCodePoint(string, 0);
+    return c === 0x0B || c === 0x0C || c === 0x85 || c === 0x2028 || c === 0x2029;
+}
+
+function isExtend(string) {
+    var c = IString.toCodePoint(string, 0);
+    
+    CType._inRange(string, "Mc") // Spacing mark
+    && c !== 0x200D
+}
+
+function tokenize(string) {
+    
+}
 
 /**
  * @class A class that locates boundaries in text, and acts as an iterator
@@ -38,8 +61,8 @@ var NormString = require("./NormString.js");
  *
  * <ul>
  * <li><i>type</i> - specify the type of the iterator desired. The
- * list of valid values is "character", "glyph", "word", "sentence", and
- * "line". Default is "character".
+ * list of valid values is "character", "glyph", "word", "sentence",
+ * "line", and "paragraph". Default is "character".
  *
  * <li><i>locale</i> - the locale of this iterator, which controls the
  * grammatical rules behind things like what is a word and what is
