@@ -121,6 +121,7 @@ charmaps/Hans.js
 charmaps/Hant.js
 charmaps/general.js
 AlphabeticIndex.js
+BreakIterator.js
 */
 
 /* !data
