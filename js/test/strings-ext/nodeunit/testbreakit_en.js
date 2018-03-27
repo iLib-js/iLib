@@ -25,6 +25,10 @@ if (typeof(BreakIterator) === "undefined") {
     var BreakIterator = require("../.././../lib/BreakIterator.js");
 }
 
+if (typeof(wordBreakData) === "undefined") {
+    var wordBreakData = require("./wordBreakData.js");
+}
+
 module.exports.testbreakit_en = {
     testBreakIteratorENConstructorDefault: function(test) {
         test.expect(1);
@@ -466,5 +470,28 @@ module.exports.testbreakit_en = {
         test.ok(!bi.hasNext());
         test.equal(bi.next(), undefined);
         test.done();
+    },
+    
+    testBreakIteratorENUnicodeTest: function(test) {
+        // there is no text.expect here, because there are a 
+        // variable number of tests in the Unicode data.
+        
+        for (var text in wordBreakData) {
+            var bi = new BreakIterator(text, {
+                type: "word",
+                locale: "en-US"
+            });
+            test.ok(bi);
+            
+            var result = [];
+            while (bi.hasNext()) {
+                result.push(bi.next());
+            }
+            
+            test.deepEqual(result, wordBreakData[text]);
+        }
+
+        test.done();
     }
+
 };
