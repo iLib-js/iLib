@@ -537,7 +537,7 @@ var nodeunit = (function(){
             console.log("===========================================================================================");
             console.log("[Result] A total of " + totalCaseNum + " tests were performed.")
             console.log("[Result] " + successNum + " assertions of " + assertionNum + " passed, " + failNum + " failed");
-            console.log("[Result] Test compledted in " + (endTime - startTime)/1000 + " seconds");
+            console.log("[Result] Test completed in " + (endTime - startTime)/1000 + " seconds");
             console.log("===========================================================================================");
         }
 
