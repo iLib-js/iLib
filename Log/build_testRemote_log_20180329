@@ -1,0 +1,478 @@
+Buildfile: /home/goun/Source/opensource_iLib/webpack/js/build.xml
+
+testpackagejson:
+
+update.package.json:
+
+prepare:
+
+testinfo:
+
+geninfo:
+
+testlocalejson:
+
+compress.locale.json:
+
+test.locale.manifest:
+
+gen.manifest.locale:
+
+testilibut:
+
+assemble.unittest.assembled:
+     [echo] executing webpack
+     [exec] Hash: 633b08acb70b6287a7f6
+     [exec] Version: webpack 3.11.0
+     [exec] Time: 877ms
+     [exec]      Asset    Size  Chunks                    Chunk Names
+     [exec] ilib-ut.js  1.3 MB       0  [emitted]  [big]  main
+     [exec]    [2] ./lib/Utils.js 14.3 kB {0} [built]
+     [exec]    [3] ./lib/IString.js 40.2 kB {0} [built]
+     [exec]    [4] ./lib/MathUtils.js 4.42 kB {0} [built]
+     [exec]    [5] ./lib/JSUtils.js 8.92 kB {0} [built]
+     [exec]    [6] ./lib/LocaleInfo.js 19.3 kB {0} [built]
+     [exec]    [7] ./lib/Calendar.js 2.96 kB {0} [built]
+     [exec]    [8] ./lib/CType.js 11.5 kB {0} [built]
+     [exec]    [9] ./lib/IDate.js 12 kB {0} [built]
+     [exec]   [10] ./lib/Measurement.js 4.43 kB {0} [built]
+     [exec]   [11] ./lib/TimeZone.js 30.5 kB {0} [built]
+     [exec]   [12] ./lib/RataDie.js 12.3 kB {0} [built]
+     [exec]   [13] ./lib/SearchUtils.js 4.01 kB {0} [built]
+     [exec]   [14] ./lib/Charset.js 7.67 kB {0} [built]
+     [exec]   [64] ./lib/CodePointSource.js 2.86 kB {0} [built]
+     [exec]   [80] ./lib/metafiles/ilib-ut-webpack.js 6.42 kB {0} [built]
+     [exec]     + 114 hidden modules
+     [exec] 
+     [exec] WARNING in ./lib/CalendarFactory.js
+     [exec] 143:34-53 Critical dependency: the request of a dependency is an expression
+     [exec]  @ ./lib/CalendarFactory.js
+     [exec]  @ ./lib/metafiles/ilib-ut-webpack.js
+     [exec] 
+     [exec] WARNING in ./lib/CharmapFactory.js
+     [exec] 156:39-79 Critical dependency: the request of a dependency is an expression
+     [exec]  @ ./lib/CharmapFactory.js
+     [exec]  @ ./lib/metafiles/ilib-ut-webpack.js
+     [exec] 
+     [exec] WARNING in ./lib/DateFactory.js
+     [exec] 178:31-50 Critical dependency: the request of a dependency is an expression
+     [exec]  @ ./lib/DateFactory.js
+     [exec]  @ ./lib/metafiles/ilib-ut-webpack.js
+     [echo] executing webpack
+     [exec] Hash: f7232a6565da6be691ee
+     [exec] Version: webpack 3.11.0
+     [exec] Time: 1031ms
+     [exec]               Asset    Size  Chunks                    Chunk Names
+     [exec] ilib-ut-compiled.js  312 kB       0  [emitted]  [big]  main
+     [exec]    [2] ./lib/Utils.js 14.3 kB {0} [built]
+     [exec]    [3] ./lib/IString.js 40.2 kB {0} [built]
+     [exec]    [4] ./lib/MathUtils.js 4.42 kB {0} [built]
+     [exec]    [5] ./lib/JSUtils.js 8.92 kB {0} [built]
+     [exec]    [6] ./lib/LocaleInfo.js 19.3 kB {0} [built]
+     [exec]    [7] ./lib/Calendar.js 2.96 kB {0} [built]
+     [exec]    [8] ./lib/CType.js 11.5 kB {0} [built]
+     [exec]    [9] ./lib/IDate.js 12 kB {0} [built]
+     [exec]   [10] ./lib/Measurement.js 4.43 kB {0} [built]
+     [exec]   [11] ./lib/TimeZone.js 30.5 kB {0} [built]
+     [exec]   [12] ./lib/RataDie.js 12.3 kB {0} [built]
+     [exec]   [13] ./lib/SearchUtils.js 4.01 kB {0} [built]
+     [exec]   [14] ./lib/Charset.js 7.67 kB {0} [built]
+     [exec]   [64] ./lib/CodePointSource.js 2.86 kB {0} [built]
+     [exec]   [80] ./lib/metafiles/ilib-ut-webpack.js 6.42 kB {0} [built]
+     [exec]     + 114 hidden modules
+     [exec] 
+     [exec] WARNING in ./lib/CalendarFactory.js
+     [exec] 143:34-53 Critical dependency: the request of a dependency is an expression
+     [exec]  @ ./lib/CalendarFactory.js
+     [exec]  @ ./lib/metafiles/ilib-ut-webpack.js
+     [exec] 
+     [exec] WARNING in ./lib/CharmapFactory.js
+     [exec] 156:39-79 Critical dependency: the request of a dependency is an expression
+     [exec]  @ ./lib/CharmapFactory.js
+     [exec]  @ ./lib/metafiles/ilib-ut-webpack.js
+     [exec] 
+     [exec] WARNING in ./lib/DateFactory.js
+     [exec] 178:31-50 Critical dependency: the request of a dependency is an expression
+     [exec]  @ ./lib/DateFactory.js
+     [exec]  @ ./lib/metafiles/ilib-ut-webpack.js
+     [exec] 
+     [exec] WARNING in ilib-ut-compiled.js from UglifyJs
+     [exec] Condition always true [ilib-ut-compiled.js:168,4]
+     [exec] Dropping duplicated definition of variable lang [ilib-ut-compiled.js:386,24]
+     [exec] Dropping duplicated definition of variable lang [ilib-ut-compiled.js:420,20]
+     [exec] Dropping duplicated definition of variable lang [ilib-ut-compiled.js:430,20]
+     [exec] Dropping duplicated definition of variable i [ilib-ut-compiled.js:1511,11]
+     [exec] Dropping duplicated definition of variable i [ilib-ut-compiled.js:2209,9]
+     [exec] Dropping unused variable type [ilib-ut-compiled.js:3070,6]
+     [exec] Dropping unused variable limit [ilib-ut-compiled.js:3075,6]
+     [exec] Non-strict equality against boolean: == true [ilib-ut-compiled.js:4172,10]
+     [exec] Dropping unused variable i [ilib-ut-compiled.js:4804,12]
+     [exec] Side effects in initialization of unused variable Locale [ilib-ut-compiled.js:4745,4]
+     [exec] Dropping unreachable code [ilib-ut-compiled.js:6009,3]
+     [exec] Dropping unreachable code [ilib-ut-compiled.js:6042,3]
+     [exec] Dropping duplicated definition of variable temp [ilib-ut-compiled.js:5999,9]
+     [exec] Dropping duplicated definition of variable temp [ilib-ut-compiled.js:6032,9]
+     [exec] Dropping duplicated definition of variable temp [ilib-ut-compiled.js:6037,7]
+     [exec] Side effects in initialization of unused variable ilib [ilib-ut-compiled.js:6517,4]
+     [exec] Non-strict equality against boolean: == true [ilib-ut-compiled.js:7029,10]
+     [exec] Side effects in initialization of unused variable JulianDay [ilib-ut-compiled.js:7202,4]
+     [exec] Side effects in initialization of unused variable Calendar [ilib-ut-compiled.js:7205,4]
+     [exec] Non-strict equality against boolean: == true [ilib-ut-compiled.js:7885,15]
+     [exec] Side effects in initialization of unused variable ilib [ilib-ut-compiled.js:8357,4]
+     [exec] Side effects in initialization of unused variable ilib [ilib-ut-compiled.js:8546,4]
+     [exec] Side effects in initialization of unused variable Utils [ilib-ut-compiled.js:8547,4]
+     [exec] Dropping unused variable sync [ilib-ut-compiled.js:8820,5]
+     [exec] Dropping unused variable loadParams [ilib-ut-compiled.js:8821,5]
+     [exec] Dropping unused variable j [ilib-ut-compiled.js:9015,19]
+     [exec] Side effects in initialization of unused variable Utils [ilib-ut-compiled.js:8744,4]
+     [exec] Side effects in initialization of unused variable Charset [ilib-ut-compiled.js:8745,4]
+     [exec] Dropping unused variable row [ilib-ut-compiled.js:9918,2]
+     [exec] Dropping duplicated definition of variable i [ilib-ut-compiled.js:9985,10]
+     [exec] Side effects in initialization of unused variable MathUtils [ilib-ut-compiled.js:9292,4]
+     [exec] Dropping unreachable code [ilib-ut-compiled.js:10366,12]
+     [exec] Dropping unreachable code [ilib-ut-compiled.js:10396,12]
+     [exec] Side effects in initialization of unused variable ilib [ilib-ut-compiled.js:10312,4]
+     [exec] Side effects in initialization of unused variable Utils [ilib-ut-compiled.js:10313,4]
+     [exec] Dropping duplicated definition of variable ch [ilib-ut-compiled.js:10970,12]
+     [exec] Dropping duplicated definition of variable it [ilib-ut-compiled.js:10976,16]
+     [exec] Dropping duplicated definition of variable it [ilib-ut-compiled.js:11018,8]
+     [exec] Dropping duplicated definition of variable end [ilib-ut-compiled.js:11052,20]
+     [exec] Dropping duplicated definition of variable testChar [ilib-ut-compiled.js:11059,32]
+     [exec] Non-strict equality against boolean: == true [ilib-ut-compiled.js:11263,10]
+     [exec] Side effects in initialization of unused variable JSUtils [ilib-ut-compiled.js:11214,4]
+     [exec] Non-strict equality against boolean: == true [ilib-ut-compiled.js:11493,10]
+     [exec] Dropping duplicated definition of variable c [ilib-ut-compiled.js:12026,13]
+     [exec] Dropping duplicated definition of variable comps [ilib-ut-compiled.js:12063,13]
+     [exec] Dropping unused variable time [ilib-ut-compiled.js:13173,32]
+     [exec] Side effects in initialization of unused variable Calendar [ilib-ut-compiled.js:11718,4]
+     [exec] Side effects in initialization of unused variable IString [ilib-ut-compiled.js:11721,4]
+     [exec] Dropping unused variable cons [ilib-ut-compiled.js:13409,2]
+     [exec] Side effects in initialization of unused variable GregorianDate [ilib-ut-compiled.js:13334,4]
+     [exec] Side effects in initialization of unused variable ilib [ilib-ut-compiled.js:13591,4]
+     [exec] Side effects in initialization of unused variable ilib [ilib-ut-compiled.js:13823,4]
+     [exec] Side effects in initialization of unused variable ilib [ilib-ut-compiled.js:13953,4]
+     [exec] Side effects in initialization of unused variable ilib [ilib-ut-compiled.js:14113,4]
+     [exec] Side effects in initialization of unused variable ilib [ilib-ut-compiled.js:14800,4]
+     [exec] Side effects in initialization of unused variable ilib [ilib-ut-compiled.js:14928,4]
+     [exec] Side effects in initialization of unused variable Utils [ilib-ut-compiled.js:14929,4]
+     [exec] Side effects in initialization of unused variable Locale [ilib-ut-compiled.js:14930,4]
+     [exec] Non-strict equality against boolean: == true [ilib-ut-compiled.js:15080,10]
+     [exec] Side effects in initialization of unused variable Utils [ilib-ut-compiled.js:14986,4]
+     [exec] Side effects in initialization of unused variable JSUtils [ilib-ut-compiled.js:14987,4]
+     [exec] Side effects in initialization of unused variable CType [ilib-ut-compiled.js:14992,4]
+     [exec] Non-strict equality against boolean: == true [ilib-ut-compiled.js:16609,10]
+     [exec] Dropping unused variable state [ilib-ut-compiled.js:16654,2]
+     [exec] Non-strict equality against boolean: == true [ilib-ut-compiled.js:17746,11]
+     [exec] Side effects in initialization of unused variable Locale [ilib-ut-compiled.js:16216,4]
+     [exec] Non-strict equality against boolean: == true [ilib-ut-compiled.js:17976,10]
+     [exec] Side effects in initialization of unused variable Utils [ilib-ut-compiled.js:17855,4]
+     [exec] Side effects in initialization of unused variable LocaleInfo [ilib-ut-compiled.js:17859,4]
+     [exec] Side effects in initialization of unused variable IDate [ilib-ut-compiled.js:17861,4]
+     [exec] Side effects in initialization of unused variable TimeZone [ilib-ut-compiled.js:17866,4]
+     [exec] Side effects in initialization of unused variable ilib [ilib-ut-compiled.js:18410,4]
+     [exec] Side effects in initialization of unused variable ilib [ilib-ut-compiled.js:18638,4]
+     [exec] Side effects in initialization of unused variable MathUtils [ilib-ut-compiled.js:18639,4]
+     [exec] Dropping unused variable cumulative [ilib-ut-compiled.js:19186,2]
+     [exec] Side effects in initialization of unused variable Calendar [ilib-ut-compiled.js:18980,4]
+     [exec] Side effects in initialization of unused variable ilib [ilib-ut-compiled.js:19287,4]
+     [exec] Side effects in initialization of unused variable Utils [ilib-ut-compiled.js:19391,4]
+     [exec] Side effects in initialization of unused variable INumber [ilib-ut-compiled.js:19399,4]
+     [exec] Non-strict equality against boolean: == true [ilib-ut-compiled.js:20094,10]
+     [exec] Non-strict equality against boolean: == false [ilib-ut-compiled.js:20703,20]
+     [exec] Non-strict equality against boolean: == true [ilib-ut-compiled.js:21687,15]
+     [exec] Non-strict equality against boolean: == true [ilib-ut-compiled.js:22538,10]
+     [exec] Dropping unused variable lchar [ilib-ut-compiled.js:22797,3]
+     [exec] Dropping unused variable rchar [ilib-ut-compiled.js:22798,3]
+     [exec] Dropping duplicated definition of variable diff [ilib-ut-compiled.js:22806,8]
+     [exec] Side effects in initialization of unused variable MathUtils [ilib-ut-compiled.js:22212,4]
+     [exec] Side effects in initialization of unused variable LocaleInfo [ilib-ut-compiled.js:22216,4]
+     [exec] Side effects in initialization of unused variable isDigit [ilib-ut-compiled.js:22219,4]
+     [exec] Dropping unreachable code [ilib-ut-compiled.js:23970,2]
+     [exec] Side effects in initialization of unused variable Calendar [ilib-ut-compiled.js:29559,4]
+     [exec] Side effects in initialization of unused variable Calendar [ilib-ut-compiled.js:30349,4]
+     [exec] Side effects in initialization of unused variable Calendar [ilib-ut-compiled.js:30855,4]
+     [exec] Side effects in initialization of unused variable Calendar [ilib-ut-compiled.js:31310,4]
+     [exec] Side effects in initialization of unused variable GregRataDie [ilib-ut-compiled.js:31315,4]
+     [exec] Side effects in initialization of unused variable Calendar [ilib-ut-compiled.js:31556,4]
+     [exec] Side effects in initialization of unused variable Calendar [ilib-ut-compiled.js:31939,4]
+     [exec] Side effects in initialization of unused variable Calendar [ilib-ut-compiled.js:32355,4]
+     [exec] Side effects in initialization of unused variable JSUtils [ilib-ut-compiled.js:32902,4]
+     [exec] Side effects in initialization of unused variable Locale [ilib-ut-compiled.js:32904,4]
+     [exec] Side effects in initialization of unused variable LocaleInfo [ilib-ut-compiled.js:32905,4]
+     [exec] Side effects in initialization of unused variable TimeZone [ilib-ut-compiled.js:32907,4]
+     [exec] Side effects in initialization of unused variable Calendar [ilib-ut-compiled.js:32908,4]
+     [exec] Non-strict equality against boolean: == true [ilib-ut-compiled.js:33141,10]
+     [exec] Dropping unused variable temp [ilib-ut-compiled.js:33368,14]
+     [exec] Side effects in initialization of unused variable Utils [ilib-ut-compiled.js:33039,4]
+     [exec] Side effects in initialization of unused variable CType [ilib-ut-compiled.js:33460,4]
+     [exec] Side effects in initialization of unused variable ilib [ilib-ut-compiled.js:33595,4]
+     [exec] Side effects in initialization of unused variable CType [ilib-ut-compiled.js:33735,4]
+     [exec] Non-strict equality against boolean: == true [ilib-ut-compiled.js:34123,10]
+     [exec] Side effects in initialization of unused variable CType [ilib-ut-compiled.js:34007,4]
+     [exec] Non-strict equality against boolean: == true [ilib-ut-compiled.js:34465,15]
+     [exec] Side effects in initialization of unused variable Address [ilib-ut-compiled.js:34413,4]
+     [exec] Non-strict equality against boolean: == true [ilib-ut-compiled.js:34673,10]
+     [exec] Dropping duplicated definition of variable thisfull [ilib-ut-compiled.js:34878,8]
+     [exec] Dropping duplicated definition of variable otherfull [ilib-ut-compiled.js:34879,8]
+     [exec] Dropping duplicated definition of variable thisfull [ilib-ut-compiled.js:34891,8]
+     [exec] Dropping duplicated definition of variable otherfull [ilib-ut-compiled.js:34892,8]
+     [exec] Dropping duplicated definition of variable i [ilib-ut-compiled.js:34917,11]
+     [exec] Non-strict equality against boolean: == true [ilib-ut-compiled.js:35097,10]
+     [exec] Non-strict equality against boolean: == true [ilib-ut-compiled.js:35270,15]
+     [exec] Non-strict equality against boolean: == true [ilib-ut-compiled.js:35412,11]
+     [exec] Dropping unused variable prefix [ilib-ut-compiled.js:35852,3]
+     [exec] Non-strict equality against boolean: == true [ilib-ut-compiled.js:36212,11]
+     [exec] Side effects in initialization of unused variable Locale [ilib-ut-compiled.js:35683,4]
+     [exec] Side effects in initialization of unused variable AreaUnit [ilib-ut-compiled.js:36341,4]
+     [exec] Side effects in initialization of unused variable DigitalStorageUnit [ilib-ut-compiled.js:36342,4]
+     [exec] Side effects in initialization of unused variable EnergyUnit [ilib-ut-compiled.js:36343,4]
+     [exec] Side effects in initialization of unused variable FuelConsumptionUnit [ilib-ut-compiled.js:36344,4]
+     [exec] Side effects in initialization of unused variable LengthUnit [ilib-ut-compiled.js:36345,4]
+     [exec] Side effects in initialization of unused variable MassUnit [ilib-ut-compiled.js:36346,4]
+     [exec] Side effects in initialization of unused variable TemperatureUnit [ilib-ut-compiled.js:36347,4]
+     [exec] Side effects in initialization of unused variable TimeUnit [ilib-ut-compiled.js:36348,4]
+     [exec] Side effects in initialization of unused variable VelocityUnit [ilib-ut-compiled.js:36349,4]
+     [exec] Side effects in initialization of unused variable VolumeUnit [ilib-ut-compiled.js:36350,4]
+     [exec] Side effects in initialization of unused variable LocaleInfo [ilib-ut-compiled.js:36487,4]
+     [exec] Side effects in initialization of unused variable ResBundle [ilib-ut-compiled.js:36488,4]
+     [exec] Non-strict equality against boolean: == true [ilib-ut-compiled.js:36829,15]
+     [exec] Dropping unused variable localeinfo [ilib-ut-compiled.js:37000,13]
+     [exec] Side effects in initialization of unused variable entry [ilib-ut-compiled.js:37311,8]
+     [exec] Dropping unused function circumventWebpackCharmap [ilib-ut-compiled.js:37183,9]
+     [exec] Dropping unused variable loadParams [ilib-ut-compiled.js:37486,8]
+     [exec] Non-strict equality against boolean: == true [ilib-ut-compiled.js:38491,24]
+     [exec] Dropping duplicated definition of variable i [ilib-ut-compiled.js:38911,21]
+     [exec] Side effects in initialization of unused variable LocaleInfo [ilib-ut-compiled.js:38372,4]
+
+testilibut.dyndata:
+
+assemble.unittest.dyndata:
+     [echo] executing webpack
+     [exec] Hash: 4ef0c6a58fe716f0ef89
+     [exec] Version: webpack 3.11.0
+     [exec] Time: 1099ms
+     [exec]          Asset    Size  Chunks                    Chunk Names
+     [exec] ilib-ut-dyn.js  1.3 MB       0  [emitted]  [big]  main
+     [exec]    [2] ./lib/Utils.js 14.3 kB {0} [built]
+     [exec]    [3] ./lib/IString.js 40.2 kB {0} [built]
+     [exec]    [4] ./lib/MathUtils.js 4.42 kB {0} [built]
+     [exec]    [5] ./lib/JSUtils.js 8.92 kB {0} [built]
+     [exec]    [6] ./lib/LocaleInfo.js 19.3 kB {0} [built]
+     [exec]    [7] ./lib/Calendar.js 2.96 kB {0} [built]
+     [exec]    [8] ./lib/CType.js 11.5 kB {0} [built]
+     [exec]    [9] ./lib/IDate.js 12 kB {0} [built]
+     [exec]   [10] ./lib/Measurement.js 4.43 kB {0} [built]
+     [exec]   [11] ./lib/TimeZone.js 30.5 kB {0} [built]
+     [exec]   [12] ./lib/RataDie.js 12.3 kB {0} [built]
+     [exec]   [13] ./lib/SearchUtils.js 4.01 kB {0} [built]
+     [exec]   [14] ./lib/Charset.js 7.67 kB {0} [built]
+     [exec]   [64] ./lib/CodePointSource.js 2.86 kB {0} [built]
+     [exec]   [80] ./lib/metafiles/ilib-ut-webpack.js 6.42 kB {0} [built]
+     [exec]     + 114 hidden modules
+     [exec] 
+     [exec] WARNING in ./lib/CalendarFactory.js
+     [exec] 143:34-53 Critical dependency: the request of a dependency is an expression
+     [exec]  @ ./lib/CalendarFactory.js
+     [exec]  @ ./lib/metafiles/ilib-ut-webpack.js
+     [exec] 
+     [exec] WARNING in ./lib/CharmapFactory.js
+     [exec] 156:39-79 Critical dependency: the request of a dependency is an expression
+     [exec]  @ ./lib/CharmapFactory.js
+     [exec]  @ ./lib/metafiles/ilib-ut-webpack.js
+     [exec] 
+     [exec] WARNING in ./lib/DateFactory.js
+     [exec] 178:31-50 Critical dependency: the request of a dependency is an expression
+     [exec]  @ ./lib/DateFactory.js
+     [exec]  @ ./lib/metafiles/ilib-ut-webpack.js
+     [echo] executing webpack
+     [exec] Hash: 81b15596ad487b3e63e1
+     [exec] Version: webpack 3.11.0
+     [exec] Time: 894ms
+     [exec]                   Asset    Size  Chunks                    Chunk Names
+     [exec] ilib-ut-dyn-compiled.js  312 kB       0  [emitted]  [big]  main
+     [exec]    [2] ./lib/Utils.js 14.3 kB {0} [built]
+     [exec]    [3] ./lib/IString.js 40.2 kB {0} [built]
+     [exec]    [4] ./lib/MathUtils.js 4.42 kB {0} [built]
+     [exec]    [5] ./lib/JSUtils.js 8.92 kB {0} [built]
+     [exec]    [6] ./lib/LocaleInfo.js 19.3 kB {0} [built]
+     [exec]    [7] ./lib/Calendar.js 2.96 kB {0} [built]
+     [exec]    [8] ./lib/CType.js 11.5 kB {0} [built]
+     [exec]    [9] ./lib/IDate.js 12 kB {0} [built]
+     [exec]   [10] ./lib/Measurement.js 4.43 kB {0} [built]
+     [exec]   [11] ./lib/TimeZone.js 30.5 kB {0} [built]
+     [exec]   [12] ./lib/RataDie.js 12.3 kB {0} [built]
+     [exec]   [13] ./lib/SearchUtils.js 4.01 kB {0} [built]
+     [exec]   [14] ./lib/Charset.js 7.67 kB {0} [built]
+     [exec]   [64] ./lib/CodePointSource.js 2.86 kB {0} [built]
+     [exec]   [80] ./lib/metafiles/ilib-ut-webpack.js 6.42 kB {0} [built]
+     [exec]     + 114 hidden modules
+     [exec] 
+     [exec] WARNING in ./lib/CalendarFactory.js
+     [exec] 143:34-53 Critical dependency: the request of a dependency is an expression
+     [exec]  @ ./lib/CalendarFactory.js
+     [exec]  @ ./lib/metafiles/ilib-ut-webpack.js
+     [exec] 
+     [exec] WARNING in ./lib/CharmapFactory.js
+     [exec] 156:39-79 Critical dependency: the request of a dependency is an expression
+     [exec]  @ ./lib/CharmapFactory.js
+     [exec]  @ ./lib/metafiles/ilib-ut-webpack.js
+     [exec] 
+     [exec] WARNING in ./lib/DateFactory.js
+     [exec] 178:31-50 Critical dependency: the request of a dependency is an expression
+     [exec]  @ ./lib/DateFactory.js
+     [exec]  @ ./lib/metafiles/ilib-ut-webpack.js
+     [exec] 
+     [exec] WARNING in ilib-ut-dyn-compiled.js from UglifyJs
+     [exec] Condition always true [ilib-ut-dyn-compiled.js:168,4]
+     [exec] Dropping duplicated definition of variable lang [ilib-ut-dyn-compiled.js:386,24]
+     [exec] Dropping duplicated definition of variable lang [ilib-ut-dyn-compiled.js:420,20]
+     [exec] Dropping duplicated definition of variable lang [ilib-ut-dyn-compiled.js:430,20]
+     [exec] Dropping duplicated definition of variable i [ilib-ut-dyn-compiled.js:1511,11]
+     [exec] Dropping duplicated definition of variable i [ilib-ut-dyn-compiled.js:2209,9]
+     [exec] Dropping unused variable type [ilib-ut-dyn-compiled.js:3070,6]
+     [exec] Dropping unused variable limit [ilib-ut-dyn-compiled.js:3075,6]
+     [exec] Non-strict equality against boolean: == true [ilib-ut-dyn-compiled.js:4172,10]
+     [exec] Dropping unused variable i [ilib-ut-dyn-compiled.js:4804,12]
+     [exec] Side effects in initialization of unused variable Locale [ilib-ut-dyn-compiled.js:4745,4]
+     [exec] Dropping unreachable code [ilib-ut-dyn-compiled.js:6009,3]
+     [exec] Dropping unreachable code [ilib-ut-dyn-compiled.js:6042,3]
+     [exec] Dropping duplicated definition of variable temp [ilib-ut-dyn-compiled.js:5999,9]
+     [exec] Dropping duplicated definition of variable temp [ilib-ut-dyn-compiled.js:6032,9]
+     [exec] Dropping duplicated definition of variable temp [ilib-ut-dyn-compiled.js:6037,7]
+     [exec] Side effects in initialization of unused variable ilib [ilib-ut-dyn-compiled.js:6517,4]
+     [exec] Non-strict equality against boolean: == true [ilib-ut-dyn-compiled.js:7029,10]
+     [exec] Side effects in initialization of unused variable JulianDay [ilib-ut-dyn-compiled.js:7202,4]
+     [exec] Side effects in initialization of unused variable Calendar [ilib-ut-dyn-compiled.js:7205,4]
+     [exec] Non-strict equality against boolean: == true [ilib-ut-dyn-compiled.js:7885,15]
+     [exec] Side effects in initialization of unused variable ilib [ilib-ut-dyn-compiled.js:8357,4]
+     [exec] Side effects in initialization of unused variable ilib [ilib-ut-dyn-compiled.js:8546,4]
+     [exec] Side effects in initialization of unused variable Utils [ilib-ut-dyn-compiled.js:8547,4]
+     [exec] Dropping unused variable sync [ilib-ut-dyn-compiled.js:8820,5]
+     [exec] Dropping unused variable loadParams [ilib-ut-dyn-compiled.js:8821,5]
+     [exec] Dropping unused variable j [ilib-ut-dyn-compiled.js:9015,19]
+     [exec] Side effects in initialization of unused variable Utils [ilib-ut-dyn-compiled.js:8744,4]
+     [exec] Side effects in initialization of unused variable Charset [ilib-ut-dyn-compiled.js:8745,4]
+     [exec] Dropping unused variable row [ilib-ut-dyn-compiled.js:9918,2]
+     [exec] Dropping duplicated definition of variable i [ilib-ut-dyn-compiled.js:9985,10]
+     [exec] Side effects in initialization of unused variable MathUtils [ilib-ut-dyn-compiled.js:9292,4]
+     [exec] Dropping unreachable code [ilib-ut-dyn-compiled.js:10366,12]
+     [exec] Dropping unreachable code [ilib-ut-dyn-compiled.js:10396,12]
+     [exec] Side effects in initialization of unused variable ilib [ilib-ut-dyn-compiled.js:10312,4]
+     [exec] Side effects in initialization of unused variable Utils [ilib-ut-dyn-compiled.js:10313,4]
+     [exec] Dropping duplicated definition of variable ch [ilib-ut-dyn-compiled.js:10970,12]
+     [exec] Dropping duplicated definition of variable it [ilib-ut-dyn-compiled.js:10976,16]
+     [exec] Dropping duplicated definition of variable it [ilib-ut-dyn-compiled.js:11018,8]
+     [exec] Dropping duplicated definition of variable end [ilib-ut-dyn-compiled.js:11052,20]
+     [exec] Dropping duplicated definition of variable testChar [ilib-ut-dyn-compiled.js:11059,32]
+     [exec] Non-strict equality against boolean: == true [ilib-ut-dyn-compiled.js:11263,10]
+     [exec] Side effects in initialization of unused variable JSUtils [ilib-ut-dyn-compiled.js:11214,4]
+     [exec] Non-strict equality against boolean: == true [ilib-ut-dyn-compiled.js:11493,10]
+     [exec] Dropping duplicated definition of variable c [ilib-ut-dyn-compiled.js:12026,13]
+     [exec] Dropping duplicated definition of variable comps [ilib-ut-dyn-compiled.js:12063,13]
+     [exec] Dropping unused variable time [ilib-ut-dyn-compiled.js:13173,32]
+     [exec] Side effects in initialization of unused variable Calendar [ilib-ut-dyn-compiled.js:11718,4]
+     [exec] Side effects in initialization of unused variable IString [ilib-ut-dyn-compiled.js:11721,4]
+     [exec] Dropping unused variable cons [ilib-ut-dyn-compiled.js:13409,2]
+     [exec] Side effects in initialization of unused variable GregorianDate [ilib-ut-dyn-compiled.js:13334,4]
+     [exec] Side effects in initialization of unused variable ilib [ilib-ut-dyn-compiled.js:13591,4]
+     [exec] Side effects in initialization of unused variable ilib [ilib-ut-dyn-compiled.js:13823,4]
+     [exec] Side effects in initialization of unused variable ilib [ilib-ut-dyn-compiled.js:13953,4]
+     [exec] Side effects in initialization of unused variable ilib [ilib-ut-dyn-compiled.js:14113,4]
+     [exec] Side effects in initialization of unused variable ilib [ilib-ut-dyn-compiled.js:14800,4]
+     [exec] Side effects in initialization of unused variable ilib [ilib-ut-dyn-compiled.js:14928,4]
+     [exec] Side effects in initialization of unused variable Utils [ilib-ut-dyn-compiled.js:14929,4]
+     [exec] Side effects in initialization of unused variable Locale [ilib-ut-dyn-compiled.js:14930,4]
+     [exec] Non-strict equality against boolean: == true [ilib-ut-dyn-compiled.js:15080,10]
+     [exec] Side effects in initialization of unused variable Utils [ilib-ut-dyn-compiled.js:14986,4]
+     [exec] Side effects in initialization of unused variable JSUtils [ilib-ut-dyn-compiled.js:14987,4]
+     [exec] Side effects in initialization of unused variable CType [ilib-ut-dyn-compiled.js:14992,4]
+     [exec] Non-strict equality against boolean: == true [ilib-ut-dyn-compiled.js:16609,10]
+     [exec] Dropping unused variable state [ilib-ut-dyn-compiled.js:16654,2]
+     [exec] Non-strict equality against boolean: == true [ilib-ut-dyn-compiled.js:17746,11]
+     [exec] Side effects in initialization of unused variable Locale [ilib-ut-dyn-compiled.js:16216,4]
+     [exec] Non-strict equality against boolean: == true [ilib-ut-dyn-compiled.js:17976,10]
+     [exec] Side effects in initialization of unused variable Utils [ilib-ut-dyn-compiled.js:17855,4]
+     [exec] Side effects in initialization of unused variable LocaleInfo [ilib-ut-dyn-compiled.js:17859,4]
+     [exec] Side effects in initialization of unused variable IDate [ilib-ut-dyn-compiled.js:17861,4]
+     [exec] Side effects in initialization of unused variable TimeZone [ilib-ut-dyn-compiled.js:17866,4]
+     [exec] Side effects in initialization of unused variable ilib [ilib-ut-dyn-compiled.js:18410,4]
+     [exec] Side effects in initialization of unused variable ilib [ilib-ut-dyn-compiled.js:18638,4]
+     [exec] Side effects in initialization of unused variable MathUtils [ilib-ut-dyn-compiled.js:18639,4]
+     [exec] Dropping unused variable cumulative [ilib-ut-dyn-compiled.js:19186,2]
+     [exec] Side effects in initialization of unused variable Calendar [ilib-ut-dyn-compiled.js:18980,4]
+     [exec] Side effects in initialization of unused variable ilib [ilib-ut-dyn-compiled.js:19287,4]
+     [exec] Side effects in initialization of unused variable Utils [ilib-ut-dyn-compiled.js:19391,4]
+     [exec] Side effects in initialization of unused variable INumber [ilib-ut-dyn-compiled.js:19399,4]
+     [exec] Non-strict equality against boolean: == true [ilib-ut-dyn-compiled.js:20094,10]
+     [exec] Non-strict equality against boolean: == false [ilib-ut-dyn-compiled.js:20703,20]
+     [exec] Non-strict equality against boolean: == true [ilib-ut-dyn-compiled.js:21687,15]
+     [exec] Non-strict equality against boolean: == true [ilib-ut-dyn-compiled.js:22538,10]
+     [exec] Dropping unused variable lchar [ilib-ut-dyn-compiled.js:22797,3]
+     [exec] Dropping unused variable rchar [ilib-ut-dyn-compiled.js:22798,3]
+     [exec] Dropping duplicated definition of variable diff [ilib-ut-dyn-compiled.js:22806,8]
+     [exec] Side effects in initialization of unused variable MathUtils [ilib-ut-dyn-compiled.js:22212,4]
+     [exec] Side effects in initialization of unused variable LocaleInfo [ilib-ut-dyn-compiled.js:22216,4]
+     [exec] Side effects in initialization of unused variable isDigit [ilib-ut-dyn-compiled.js:22219,4]
+     [exec] Dropping unreachable code [ilib-ut-dyn-compiled.js:23970,2]
+     [exec] Side effects in initialization of unused variable Calendar [ilib-ut-dyn-compiled.js:29559,4]
+     [exec] Side effects in initialization of unused variable Calendar [ilib-ut-dyn-compiled.js:30349,4]
+     [exec] Side effects in initialization of unused variable Calendar [ilib-ut-dyn-compiled.js:30855,4]
+     [exec] Side effects in initialization of unused variable Calendar [ilib-ut-dyn-compiled.js:31310,4]
+     [exec] Side effects in initialization of unused variable GregRataDie [ilib-ut-dyn-compiled.js:31315,4]
+     [exec] Side effects in initialization of unused variable Calendar [ilib-ut-dyn-compiled.js:31556,4]
+     [exec] Side effects in initialization of unused variable Calendar [ilib-ut-dyn-compiled.js:31939,4]
+     [exec] Side effects in initialization of unused variable Calendar [ilib-ut-dyn-compiled.js:32355,4]
+     [exec] Side effects in initialization of unused variable JSUtils [ilib-ut-dyn-compiled.js:32902,4]
+     [exec] Side effects in initialization of unused variable Locale [ilib-ut-dyn-compiled.js:32904,4]
+     [exec] Side effects in initialization of unused variable LocaleInfo [ilib-ut-dyn-compiled.js:32905,4]
+     [exec] Side effects in initialization of unused variable TimeZone [ilib-ut-dyn-compiled.js:32907,4]
+     [exec] Side effects in initialization of unused variable Calendar [ilib-ut-dyn-compiled.js:32908,4]
+     [exec] Non-strict equality against boolean: == true [ilib-ut-dyn-compiled.js:33141,10]
+     [exec] Dropping unused variable temp [ilib-ut-dyn-compiled.js:33368,14]
+     [exec] Side effects in initialization of unused variable Utils [ilib-ut-dyn-compiled.js:33039,4]
+     [exec] Side effects in initialization of unused variable CType [ilib-ut-dyn-compiled.js:33460,4]
+     [exec] Side effects in initialization of unused variable ilib [ilib-ut-dyn-compiled.js:33595,4]
+     [exec] Side effects in initialization of unused variable CType [ilib-ut-dyn-compiled.js:33735,4]
+     [exec] Non-strict equality against boolean: == true [ilib-ut-dyn-compiled.js:34123,10]
+     [exec] Side effects in initialization of unused variable CType [ilib-ut-dyn-compiled.js:34007,4]
+     [exec] Non-strict equality against boolean: == true [ilib-ut-dyn-compiled.js:34465,15]
+     [exec] Side effects in initialization of unused variable Address [ilib-ut-dyn-compiled.js:34413,4]
+     [exec] Non-strict equality against boolean: == true [ilib-ut-dyn-compiled.js:34673,10]
+     [exec] Dropping duplicated definition of variable thisfull [ilib-ut-dyn-compiled.js:34878,8]
+     [exec] Dropping duplicated definition of variable otherfull [ilib-ut-dyn-compiled.js:34879,8]
+     [exec] Dropping duplicated definition of variable thisfull [ilib-ut-dyn-compiled.js:34891,8]
+     [exec] Dropping duplicated definition of variable otherfull [ilib-ut-dyn-compiled.js:34892,8]
+     [exec] Dropping duplicated definition of variable i [ilib-ut-dyn-compiled.js:34917,11]
+     [exec] Non-strict equality against boolean: == true [ilib-ut-dyn-compiled.js:35097,10]
+     [exec] Non-strict equality against boolean: == true [ilib-ut-dyn-compiled.js:35270,15]
+     [exec] Non-strict equality against boolean: == true [ilib-ut-dyn-compiled.js:35412,11]
+     [exec] Dropping unused variable prefix [ilib-ut-dyn-compiled.js:35852,3]
+     [exec] Non-strict equality against boolean: == true [ilib-ut-dyn-compiled.js:36212,11]
+     [exec] Side effects in initialization of unused variable Locale [ilib-ut-dyn-compiled.js:35683,4]
+     [exec] Side effects in initialization of unused variable AreaUnit [ilib-ut-dyn-compiled.js:36341,4]
+     [exec] Side effects in initialization of unused variable DigitalStorageUnit [ilib-ut-dyn-compiled.js:36342,4]
+     [exec] Side effects in initialization of unused variable EnergyUnit [ilib-ut-dyn-compiled.js:36343,4]
+     [exec] Side effects in initialization of unused variable FuelConsumptionUnit [ilib-ut-dyn-compiled.js:36344,4]
+     [exec] Side effects in initialization of unused variable LengthUnit [ilib-ut-dyn-compiled.js:36345,4]
+     [exec] Side effects in initialization of unused variable MassUnit [ilib-ut-dyn-compiled.js:36346,4]
+     [exec] Side effects in initialization of unused variable TemperatureUnit [ilib-ut-dyn-compiled.js:36347,4]
+     [exec] Side effects in initialization of unused variable TimeUnit [ilib-ut-dyn-compiled.js:36348,4]
+     [exec] Side effects in initialization of unused variable VelocityUnit [ilib-ut-dyn-compiled.js:36349,4]
+     [exec] Side effects in initialization of unused variable VolumeUnit [ilib-ut-dyn-compiled.js:36350,4]
+     [exec] Side effects in initialization of unused variable LocaleInfo [ilib-ut-dyn-compiled.js:36487,4]
+     [exec] Side effects in initialization of unused variable ResBundle [ilib-ut-dyn-compiled.js:36488,4]
+     [exec] Non-strict equality against boolean: == true [ilib-ut-dyn-compiled.js:36829,15]
+     [exec] Dropping unused variable localeinfo [ilib-ut-dyn-compiled.js:37000,13]
+     [exec] Side effects in initialization of unused variable entry [ilib-ut-dyn-compiled.js:37311,8]
+     [exec] Dropping unused function circumventWebpackCharmap [ilib-ut-dyn-compiled.js:37183,9]
+     [exec] Dropping unused variable loadParams [ilib-ut-dyn-compiled.js:37486,8]
+     [exec] Non-strict equality against boolean: == true [ilib-ut-dyn-compiled.js:38491,24]
+     [exec] Dropping duplicated definition of variable i [ilib-ut-dyn-compiled.js:38911,21]
+     [exec] Side effects in initialization of unused variable LocaleInfo [ilib-ut-dyn-compiled.js:38372,4]
+
+test.remote:
+     [exec] Starting up http-server, serving ./
+     [exec] Available on:
+     [exec]   http://127.0.0.1:9090
+     [exec]   http://192.168.0.2:9090
+     [exec] Hit CTRL-C to stop the server
