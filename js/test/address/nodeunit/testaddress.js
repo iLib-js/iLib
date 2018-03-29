@@ -287,7 +287,25 @@ module.exports.testaddress = {
         test.equal(parsedAddress.countryCode, "US");
         test.done();
     },
-    
+
+    testFormatAddressDefault: function(test) {
+        test.expect(1);
+        var parsedAddress = new Address({
+            streetAddress: "1234 Any Street",
+            locality: "Anytown",
+            region: "CA",
+            postalCode: "94085",
+            country: "United States of America",
+            countryCode: "US"
+        }, {locale: 'en-US'});
+        
+        // should give US format by default
+        var expected = "1234 Any Street\nAnytown CA 94085\nUnited States of America";
+        var formatter = new AddressFmt();
+        test.equal(formatter.format(parsedAddress), expected);
+        test.done();
+    },
+
     testFormatAddressUS: function(test) {
         test.expect(1);
         var parsedAddress = new Address({
