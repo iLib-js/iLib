@@ -82,7 +82,7 @@ module.exports = function(env, args) {
         module: {
             rules: [{
                 test: /\.js$/, // Run the loader on all .js files
-                exclude: /(node_modules|webpack)/, // ignore all files in the node_modules or webpack folders
+                exclude: /node_modules/, // ignore all files in the node_modules folder
                 use: {
                     loader: path.resolve('./ilibdata-webpack-loader.js'),
                     options: {
