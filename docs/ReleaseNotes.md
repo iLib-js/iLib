@@ -1,7 +1,17 @@
 Release Notes for Version 13.0
 =============================
 
+Build 003
+-------
+
+New Features:
+
+Bug Fixes:
+
 * Updated Date Formatter for fully supporting relativeTimePattern of CLDR.
+* Removed duplicate entries in various locale json data files
+* Removed an exception that was thrown when the address formatter was instantiated without
+any arguments
 
 Build 002
 -------
