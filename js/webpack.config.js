@@ -19,8 +19,6 @@
 var webpack = require('webpack');
 var path = require('path');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
-// const IlibWebpackPlugin = require("./ilib-webpack-plugin.js");
-// const IlibWebpackLoader = require("ilib-webpack-loader");
 
 module.exports = function(env, args) {
     env = env || {};
@@ -84,7 +82,7 @@ module.exports = function(env, args) {
                 test: /\.js$/, // Run the loader on all .js files
                 exclude: /(node_modules|webpack)/, // ignore all files in the node_modules or webpack folders
                 use: {
-                    loader: path.resolve('./ilibdata-webpack-loader.js'),
+                    loader: 'ilib-webpack-loader',
                     options: {
                         locales: locales,
                         assembly: assembly,
