@@ -12,6 +12,8 @@ Bug Fixes:
 * Removed duplicate entries in various locale json data files
 * Removed an exception that was thrown when the address formatter was instantiated without
 any arguments
+* Fixed a bug where the Locale constructor would throw an exception if any of the arguments
+was a non-string. Now it does not throw. Instead, it just ignores the argument.
 
 Build 002
 -------
