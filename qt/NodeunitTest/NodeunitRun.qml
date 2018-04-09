@@ -34,7 +34,6 @@ QtObject {
             runner.addSuite(ts);
         }
         runner.runTests();
-        console.log("\n *************************** All of iLib Test on QML is Done. ***********************************");
-
+        console.log("\n *************************** All iLib tests on QML are done. ***********************************");
     }
 }
