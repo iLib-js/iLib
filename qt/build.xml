@@ -34,17 +34,9 @@ limitations under the License.
 	<!-- Properties that can be overridden -->
 	<!-- directories -->
 	<property name="build.base"						value="${basedir}"/>
-
-	<property name="build.dist"						value="${build.base}/../dist"/>
-	<property name="build.export"					value="${build.base}/../export"/>
-	<property name="build.demo"						value="${build.base}/../doc/demo"/>
-	<property name="build.tools"					value="${build.base}/../tools/build"/>
-	<property name="build.js"						value="${build.base}/../js"/>	
-	
-	<property name="build.lib"						value="${build.base}/lib"/>
+	<property name="build.export"					value="${build.base}/../export"/>	
 	<property name="build.output"					value="${build.base}/output"/>
-	<property name="build.output.qt"				value="${build.base}/build-filereader"/>
-	
+	<property name="build.output.qt"				value="${build.base}/output/qt"/>
 	<property name="build.filereader"				value="${build.base}/FileReader"/>
 	<property name="build.unittest"					value="${build.base}/UnitTest"/>
 
@@ -63,46 +55,47 @@ limitations under the License.
 	<!-- =================================================================== -->
 	<target name="all" depends="export,doc" description="Build everything. This is the target that the build should run."/>
 
-	<target name="clean" depends="run.qmake" description="Remove all generated files to start from scratch">
-		<delete dir="${build.output.qt}"/>
-		<delete dir="${build.output}"/>
-		<delete dir="${build.export}/qt"/>
+	<target name="clean" description="Remove all generated files to start from scratch">
+		
+
 		<sequential>
-			<exec osfamily="unix" executable="make" dir="${build.filereader}" failifexecutionfails="true" failonerror="true">
+			<exec osfamily="unix" executable="make" dir="${build.filereader}" failifexecutionfails="true" failonerror="false">
 				<arg line="clean"/>
 			</exec>
-			<exec osfamily="mac" executable="make" dir="${build.filereader}" failifexecutionfails="true" failonerror="true">
+			<exec osfamily="mac" executable="make" dir="${build.filereader}" failifexecutionfails="true" failonerror="false">
 				<arg line="clean"/>
 			</exec>
-			<exec osfamily="windows" executable="make.exe" dir="${build.filereader}" failifexecutionfails="true"  failonerror="true">
+			<exec osfamily="windows" executable="make.exe" dir="${build.filereader}" failifexecutionfails="true"  failonerror="false">
 				<arg line="clean"/>
 			</exec>
 		</sequential>
-	</target>
-	
-	<target name="test.qmake" description="test whether or not we need to run qmake to update the Makefile">
-		<uptodate property="qmake.not.needed" targetfile="${build.filereader}/debug">
-			<srcfiles dir="${build.filereader}" includes="Makefile*" />
-		</uptodate>
-	</target>
-	
-	<target name="run.qmake" depends="test.qmake" unless="qmake.not.needed">
-		<exec osfamily="unix" executable="qmake" dir="${build.filereader}" failifexecutionfails="true" failonerror="true">
-		</exec>
-		<exec osfamily="mac" executable="qmake" dir="${build.filereader}" failifexecutionfails="true" failonerror="true">
-		</exec>
-		<exec osfamily="windows" executable="qmake.exe" dir="${build.filereader}" failifexecutionfails="true"  failonerror="true">
-		</exec>
+		<delete dir="${build.filereader}/imports"/>
+		<delete dir="${build.output}"/>
+		<delete dir="${build.export}/qt"/>
+		<delete>
+			<fileset dir="${build.filereader}" includes="Makefile*" />
+		</delete>
 	</target>
 
 	<target name="prepare" description="Prepare all directories that are needed before the project can be built">
 		<mkdir dir="${build.output.qt}"/>
+		<sequential>
+			<exec osfamily="unix" executable="${QTBIN}/qmake" dir="${build.filereader}" failifexecutionfails="true" failonerror="true">
+				<arg value="filereader.pro"/>
+			</exec>
+			<exec osfamily="mac" executable="${QTBIN}/qmake" dir="${build.filereader}" failifexecutionfails="true" failonerror="true">
+				<arg value="filereader.pro"/>
+			</exec>
+			<exec osfamily="windows" executable="${QTBIN}/qmake.exe" dir="${build.filereader}" failifexecutionfails="true"  failonerror="true">
+				<arg value="filereader.pro"/>
+			</exec>
+		</sequential>
 	</target>
 
 	<!-- =================================================================== -->
 	<!-- Create the core jar file                                            -->
 	<!-- =================================================================== -->
-	<target name="filereader" depends="prepare,run.qmake" description="Build the file reader plugin">
+	<target name="filereader" depends="prepare" description="Build the file reader plugin">
 		<exec osfamily="unix" executable="make" dir="${build.filereader}" failifexecutionfails="true" failonerror="true">
 		</exec>
 		<exec osfamily="mac" executable="make" dir="${build.filereader}" failifexecutionfails="true" failonerror="true">
@@ -110,27 +103,29 @@ limitations under the License.
 		<exec osfamily="windows" executable="make.exe" dir="${build.filereader}" failifexecutionfails="true"  failonerror="true">
 		</exec>
 	</target>
-
-	<target name="export" description="export all files that other subprojects may need before building">
-	</target>
 	
-	<target name="dist" depends="filereader" description="Create all distribution objects and exports them to the top level dir for packaging">
+	<target name="export" depends="filereader" description="Create all objects and export them to the top level dir for packaging">
 		<mkdir dir="${build.export}/qt/${os.name}-${os.arch}/FS"/>
+		<mkdir dir= "${build.filereader}/imports/FS"/>
 		<copy todir="${build.export}/qt/${os.name}-${os.arch}/FS">
-			<fileset dir="${build.base}/build-filereader">
-				<include name="libFileReader.so"/>
+			<fileset dir="${build.output.qt}">
+				<include name="*"/>
+			</fileset>
+			<fileset dir="${build.filereader}">
 				<include name="qmldir"/>
 			</fileset>
 		</copy>
-		<mkdir dir="${build.export}/src/qt/FileReader"/>
-		<copy todir="${build.export}/src/qt/FileReader">
-			<fileset dir="${build.filereader}">
+		<copy todir="${build.filereader}/imports/FS">
+			<fileset dir="${build.output.qt}">
 				<include name="*"/>
+			</fileset>
+			<fileset dir="${build.filereader}">
+				<include name="qmldir"/>
 			</fileset>
 		</copy>
 	</target>
 	
-	<target name="test.qt" depends="filereader" description="Run the unit tests in the qt test framework. Make sure you have Qt 5.4 or later, and it is the first Qt in your path.">
+	<target name="test.qt" depends="" description="Run the unit tests in the qt test framework. Make sure you have Qt 5.4 or later, and it is the first Qt in your path.">
 		<sequential>
 			<exec osfamily="unix" executable="${QTBIN}/qmlscene" dir="${build.base}/UnitTest" failifexecutionfails="true" failonerror="true">
 				<env key="QML2_IMPORT_PATH" value="../FileReader/imports"/>
@@ -146,10 +141,27 @@ limitations under the License.
 			</exec>
 		</sequential>
 	</target>
+
+	<target name="test.qt.nodeunit" depends="filereader" description="Run the unit tests in the qt test framework. Make sure you have Qt 5.4 or later, and it is the first Qt in your path.">
+		<sequential>
+			<exec osfamily="unix" executable="${QTBIN}/qmlscene" dir="${build.base}/NodeunitTest" failifexecutionfails="true" failonerror="true">
+				<env key="QML2_IMPORT_PATH" value="../FileReader/imports"/>
+				<arg line="NodeunitRun.qml"/>
+			</exec>
+			<exec osfamily="mac" executable="${QTBIN}/qmlscene" dir="${build.base}/NodeunitTest" failifexecutionfails="true" failonerror="true">
+				<env key="QML2_IMPORT_PATH" value="../FileReader/imports"/>
+				<arg line="NodeunitRun.qml"/>
+			</exec>
+			<exec osfamily="windows" executable="${QTBIN}/qmlscene.exe" dir="${build.base}/NodeunitTest" failifexecutionfails="true"  failonerror="true">
+				<env key="QML2_IMPORT_PATH" value="../FileReader/imports"/>
+				<arg line="NodeunitRun.qml"/>
+			</exec>
+		</sequential>
+	</target>
 		
 	<!-- Should not run the tests from an automated build, because qmlscene doesn't exit at the end. They should
 	     only be run by hand. -->
-	<target name="test" description="Run all tests and build all reports" />
+	<target name="test" depends="" description="Run all tests and build all reports" />
 
 	<target name="doc" />
 	
