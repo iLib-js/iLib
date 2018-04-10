@@ -1,8 +1,20 @@
 Release Notes for Version 13.0
 =============================
 
+Build 003
+-------
+
+Published as version 13.1.1 to follow the semver rules
+ 
+Bug Fixes:
+
+* Build system was broken and the compressed js files did not make it into ilib 13.1.0 in npm, making it a 
+useless release! This is fixed now. There are no code changes between 13.1.0 and 13.1.1, only build fixes.
+
 Build 001
 -------
+
+Published as version 13.1.0
 
 New Features:
 
@@ -36,6 +48,8 @@ and new unit tests prove that the async operation is actually working correctly.
 
 Build 000
 -------
+
+Published as version 13.0.0
 
 New Features:
 
