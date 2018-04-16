@@ -360,6 +360,31 @@ TimeZone.getAvailableIds = function (country, sync, onLoad) {
 };
 
 /**
+ * Detect the current time zone from the environment. For some engines, the
+ * name of the time zone is available, and will be returned directly. For
+ * others, we need to make a guess based on the current offset, whether or
+ * not there is daylight savings time, and if so, when the time changes.
+ * 
+ * @returns {String} the IANA id of the detected time zone
+ */
+TimeZone.detect = function() {
+    // first see if the system provides it
+    if (ilib.isGlobal(Intl) && typeof(Intl.DateTimeFormat) != "undefined") {
+        var intlformatter = Intl.DateTimeFormat();
+    
+        if (intlformatter && intlformatter.resolvedOptions) {
+            var timezone = format.resolvedOptions().timeZone;
+    
+            if (timezone && (timezone.indexOf("/") > -1 || timezone === 'UTC') && timezone.substring(0, 3) !== "Etc") {
+                return timezone;
+            }
+        }
+    }
+    
+    // otherwise, guess
+};
+
+/**
  * Return the id used to uniquely identify this time zone.
  * @return {string} a unique id for this time zone
  */
