@@ -138,10 +138,10 @@
             "tablespoon": "one#{n} قاشق غذاخوری|#{n} قاشق غذاخوری",
             "teaspoon": "one#{n} قاشق چای‌خوری|#{n} قاشق چای‌خوری",
             "coordinateUnit": "",
-            "foot-per-second": "#{n} فوت/ثانیه",
-            "kilometer-per-second": "#{n} کیلومتر/ثانیه",
-            "mile-per-second": "#{n} مایل/ثانیه",
-            "kilometer-per-liter": "#{n} کیلومتر/لیتر"
+            "foot-per-second": "#{n} فوت در ثانیه",
+            "kilometer-per-second": "#{n} کیلومتر در ثانیه",
+            "mile-per-second": "#{n} مایل در ثانیه",
+            "kilometer-per-liter": "#{n} کیلومتر در لیتر"
         },
         "short": {
             "g-force": "one#{n} جاذبه|#{n} جاذبه",

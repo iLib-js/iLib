@@ -318,11 +318,11 @@
             "kilometer-per-second": "1#{n}  km/s|#{n}  km/s",
             "mile-per-second": "1#{n} mps|#{n}  mps",
             "decade": "one#{n} decade|#{n} decades",
-            "teaspoon-imperial": "one#{n} imperial tsp|#{n} imperial tsp",
-            "tablespoon-imperial": "one#{n} imperial tbsp|#{n} imperial tbsp",
-            "ounce-imperial": "one#{n} imperial oz|#{n} imperial oz",
-            "pint-imperial": "one#{n} imperial pt|#{n} imperial pt",
-            "quart-imperial": "one#{n} imperial qt|#{n} imperial qt"
+            "teaspoon-imperial": "one#{n} tsp(i)|#{n} tsp(i)",
+            "tablespoon-imperial": "one#{n} tbsp(i)|#{n} tbsp(i)",
+            "ounce-imperial": "one#{n} oz(i)|#{n} oz(i)",
+            "pint-imperial": "one#{n} pt(i)|#{n} pt(i)",
+            "quart-imperial": "one#{n} qt(i)|#{n} qt(i)"
         }
     }
 }

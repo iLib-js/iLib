@@ -138,10 +138,10 @@
             "tablespoon": "one#{n} tbsp|#{n} tbsp",
             "teaspoon": "one#{n} tsp|#{n} tsp",
             "coordinateUnit": "",
-            "foot-per-second": "#{n} ጫማ/ሰከንድ",
-            "kilometer-per-second": "#{n} ኪሎሜትር/ሰከንድ",
-            "mile-per-second": "#{n} ማይል/ሰከንድ",
-            "kilometer-per-liter": "#{n} ኪሎሜትር/ሊትር"
+            "foot-per-second": "#{n} ጫማ በሰከንድ",
+            "kilometer-per-second": "#{n} ኪሎሜትር በሰከንድ",
+            "mile-per-second": "#{n} ማይል በሰከንድ",
+            "kilometer-per-liter": "#{n} ኪሎሜትር በሊትር"
         },
         "short": {
             "g-force": "one#{n} ጂ|#{n} ጂ",

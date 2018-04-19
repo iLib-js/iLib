@@ -829,7 +829,7 @@ module.exports.testunitfmt = {
     
         var uf = new UnitFmt({locale:"ko-KR",autoConvert:false,autoScale:true});
         var str = uf.format(m1);
-        test.equal(str, "1,000 킬로미터/리터");
+        test.equal(str, "1,000 리터당 킬로미터");
         test.done();
     },
     
@@ -1207,7 +1207,7 @@ module.exports.testunitfmt = {
     
         var uf = new UnitFmt({locale:"ko-KR",autoConvert:false,autoScale:false});
         var str = uf.format(m1);
-        test.equal(str, "1,000 피트/초");
+        test.equal(str, "1,000 초당 피트");
         test.done();
     },
     

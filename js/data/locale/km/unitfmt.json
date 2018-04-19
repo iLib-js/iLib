@@ -138,10 +138,10 @@
             "tablespoon": "#{n} ស្លាបព្រា​បាយ",
             "teaspoon": "#{n} ស្លាបព្រា​កាហ្វេ",
             "coordinateUnit": "",
-            "foot-per-second": "#{n} ហ្វីត/វិនាទី",
-            "kilometer-per-second": "#{n} គីឡូម៉ែត្រ/វិនាទី",
-            "mile-per-second": "#{n} ម៉ាយ/វិនាទី",
-            "kilometer-per-liter": "#{n} គីឡូម៉ែត្រ/លីត្រ"
+            "foot-per-second": "#{n} ហ្វីត​ ក្នុង​មួយ​ វិនាទី",
+            "kilometer-per-second": "#{n} គីឡូម៉ែត្រ​ ក្នុង​មួយ​ វិនាទី",
+            "mile-per-second": "#{n} ម៉ាយ​ ក្នុង​មួយ​ វិនាទី",
+            "kilometer-per-liter": "#{n} គីឡូម៉ែត្រ​ ក្នុង​មួយ​ លីត្រ"
         },
         "short": {
             "g-force": "#{n} G",

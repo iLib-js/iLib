@@ -138,10 +138,10 @@
             "tablespoon": "zero#{n} ملعقة كبيرة|one#ملعقة كبيرة|two#{n} ملعقة كبيرة|few#{n} ملعقة كبيرة|many#{n} ملعقة كبيرة|#{n} ملعقة كبيرة",
             "teaspoon": "zero#{n} ملعقة صغيرة|one#ملعقة صغيرة|two#{n} ملعقة صغيرة|few#{n} ملعقة صغيرة|many#{n} ملعقة صغيرة|#{n} ملعقة صغيرة",
             "coordinateUnit": "",
-            "foot-per-second": "#{n} قدم/ثانية",
-            "kilometer-per-second": "#{n} كيلومتر/ثانية",
-            "mile-per-second": "#{n} ميل/ثانية",
-            "kilometer-per-liter": "#{n} كيلومتر/لتر"
+            "foot-per-second": "#{n} قدم لكل ثانية",
+            "kilometer-per-second": "#{n} كيلومتر لكل ثانية",
+            "mile-per-second": "#{n} ميل لكل ثانية",
+            "kilometer-per-liter": "#{n} كيلومتر لكل لتر"
         },
         "short": {
             "g-force": "zero#{n} قوة تسارع|one#{n} قوة تسارع|two#{n} قوة تسارع|few#{n} قوة تسارع|many#{n} قوة تسارع|#{n} قوة تسارع",

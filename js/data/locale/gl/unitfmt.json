@@ -138,10 +138,10 @@
             "tablespoon": "one#{n} cullerada|#{n} culleradas",
             "teaspoon": "one#{n} culleriña|#{n} culleriñas",
             "coordinateUnit": "",
-            "foot-per-second": "#{n} pés/segundo",
-            "kilometer-per-second": "#{n} quilómetros/segundo",
-            "mile-per-second": "#{n} millas/segundo",
-            "kilometer-per-liter": "#{n} quilómetros/litro"
+            "foot-per-second": "#{n} pés por segundo",
+            "kilometer-per-second": "#{n} quilómetros por segundo",
+            "mile-per-second": "#{n} millas por segundo",
+            "kilometer-per-liter": "#{n} quilómetros por litro"
         },
         "short": {
             "g-force": "one#{n} G|#{n} G",

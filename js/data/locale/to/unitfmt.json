@@ -138,10 +138,10 @@
             "tablespoon": "#sēpuni tēpile ʻe {n}",
             "teaspoon": "#sēpuni tī ʻe {n}",
             "coordinateUnit": "",
-            "foot-per-second": "#{n} fute/sekoni",
-            "kilometer-per-second": "#{n} kilomita/sekoni",
-            "mile-per-second": "#{n} maile/sekoni",
-            "kilometer-per-liter": "#{n} kilomita/lita"
+            "foot-per-second": "#{n} fute ʻi he sekoni",
+            "kilometer-per-second": "#{n} kilomita ʻi he sekoni",
+            "mile-per-second": "#{n} maile ʻi he sekoni",
+            "kilometer-per-liter": "#{n} kilomita ʻi he lita"
         },
         "short": {
             "g-force": "#k-mā ʻe {n}",

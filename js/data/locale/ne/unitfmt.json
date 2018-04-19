@@ -138,10 +138,10 @@
             "tablespoon": "one#{n} टेबल चम्चा|#{n} टेबल चम्चा",
             "teaspoon": "one#{n}चिया चम्चा|#{n}चिया चम्चा",
             "coordinateUnit": "",
-            "foot-per-second": "#{n} फुटप्रति सेकेन्ड",
-            "kilometer-per-second": "#{n} किलोमिटरप्रति सेकेन्ड",
-            "mile-per-second": "#{n} माइलप्रति सेकेन्ड",
-            "kilometer-per-liter": "#{n} किलोमिटरप्रति लिटर"
+            "foot-per-second": "#{n} फुटप्रतिसेकेन्ड",
+            "kilometer-per-second": "#{n} किलोमिटरप्रतिसेकेन्ड",
+            "mile-per-second": "#{n} माइलप्रतिसेकेन्ड",
+            "kilometer-per-liter": "#{n} किलोमिटरप्रतिलिटर"
         },
         "short": {
             "g-force": "one#{n} G|#{n} G",

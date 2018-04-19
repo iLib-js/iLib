@@ -117,67 +117,48 @@ function frameUnits(data, locale, localeData) {
     if (!localeData["unitfmt"]) {
         localeData["unitfmt"] = {};
     }
-    if (!localeData["unitfmt"]["long"]) {
-        localeData["unitfmt"]["long"] = {};
-    }
-    if (!localeData["unitfmt"]["short"]) {
-        localeData["unitfmt"]["short"] = {};
-    }
-    for (var ufl in data["main"][locale]["units"]["long"]) {
-        if (ufl !== "per") {
-            var index = ufl.indexOf("-");
-            var dispname = ufl.substring(index+1);
-            localeData["unitfmt"]["long"][dispname] = frameUnitsString(data["main"][locale]["units"]["long"][ufl]);
-            // special case - format is shared
-            if (dispname === "ton") {
-                localeData["unitfmt"]["long"]["short-ton"] = localeData["unitfmt"]["long"]["ton"];
+    ["long", "short"].forEach(function(size) {
+        if (!localeData["unitfmt"][size]) {
+            localeData["unitfmt"][size] = {};
+        }
+        for (var ufl in data["main"][locale]["units"][size]) {
+            if (ufl !== "per") {
+                var index = ufl.indexOf("-");
+                var dispname = ufl.substring(index+1);
+                localeData["unitfmt"][size][dispname] = frameUnitsString(data["main"][locale]["units"][size][ufl]);
+                // special case - format is shared
+                if (dispname === "ton") {
+                    localeData["unitfmt"][size]["short-ton"] = localeData["unitfmt"][size]["ton"];
+                }
             }
         }
-    }
-    for (var ufs in data["main"][locale]["units"]["short"]) {
-        if (ufs !== "per") {
-            var index = ufs.indexOf("-");
-            var dispname = ufs.substring(index+1);
-            localeData["unitfmt"]["short"][dispname] = frameUnitsString(data["main"][locale]["units"]["short"][ufs]);
-            // special case - format is shared
-            if (dispname === "ton") {
-                localeData["unitfmt"]["short"]["short-ton"] = localeData["unitfmt"]["short"]["ton"];
-            }
-        }
-    }
+    });
+    
+    // these don't exist in cdlr by themselves, but we can construct them
+    var compounds = {
+        "foot-per-second": ["length-foot", "duration-second"],
+        "kilometer-per-second": ["length-kilometer", "duration-second"],
+        "mile-per-second": ["length-mile", "duration-second"],
+        "kilometer-per-liter": ["length-kilometer", "volume-liter"],
+    };
 
-    // compound measures
     var l = new Locale(locale);
     if (locale !== "root") {
         // English can inherit from root, so just ignore it
         if (l.getLanguage() !== "en") {
-            var shortCompoundTemplate = "#{n}" + (isAsianLanguage(locale) ? "" : " ") + data.main[locale].units.short.per.compoundUnitPattern;
-            var longCompoundTemplate = "#{n}" + (isAsianLanguage(locale) ? "" : " ") + data.main[locale].units.long.per.compoundUnitPattern;
-        
-            // these don't exist in cdlr by themselves, but we can construct them
-            var compounds = {
-                "foot-per-second": ["length-foot", "duration-second"],
-                "kilometer-per-second": ["length-kilometer", "duration-second"],
-                "mile-per-second": ["length-mile", "duration-second"],
-                "kilometer-per-liter": ["length-kilometer", "volume-liter"],
-            };
-        
-            for (var c in compounds) {
-                if (!localeData.unitfmt.short[c]) {
-                    localeData.unitfmt.short[c] = frameUnitsStringCompound(
-                        shortCompoundTemplate,
-                        data.main[locale].units.short[compounds[c][0]],
-                        data.main[locale].units.short[compounds[c][1]]
-                        );
+            ["long", "short"].forEach(function(size) {
+                var compoundTemplate = "#{n}" + (isAsianLanguage(locale) ? "" : " ") + data.main[locale].units[size].per.compoundUnitPattern;
+            
+                for (var c in compounds) {
+                    if (!localeData.unitfmt[size][c]) {
+                        localeData.unitfmt[size][c] = frameUnitsStringCompound(
+                            compoundTemplate,
+                            data.main[locale].units[size][compounds[c][0]],
+                            data.main[locale].units[size][compounds[c][1]]
+                            );
+                    }
                 }
-                if (!localeData.unitfmt.long[c]) {
-                    localeData.unitfmt.long[c] = frameUnitsStringCompound(
-                        shortCompoundTemplate,
-                        data.main[locale].units.long[compounds[c][0]],
-                        data.main[locale].units.long[compounds[c][1]]
-                        );
-                }
-            }
+            });
         }
     } else {
         // these don't exist in cldr yet, so we have to default to English
@@ -226,11 +207,39 @@ function frameUnits(data, locale, localeData) {
         localeData["unitfmt"]["short"]["kilometer-per-second"] = "1#{n}  km/s|#{n}  km/s";
         localeData["unitfmt"]["short"]["mile-per-second"] = "1#{n} mps|#{n}  mps";
         localeData["unitfmt"]["short"]["decade"] = "one#{n} decade|#{n} decades";
-        localeData["unitfmt"]["short"]["teaspoon-imperial"] = "one#{n} imperial tsp|#{n} imperial tsp";
-        localeData["unitfmt"]["short"]["tablespoon-imperial"] = "one#{n} imperial tbsp|#{n} imperial tbsp";
-        localeData["unitfmt"]["short"]["ounce-imperial"] = "one#{n} imperial oz|#{n} imperial oz";
-        localeData["unitfmt"]["short"]["pint-imperial"] = "one#{n} imperial pt|#{n} imperial pt";
-        localeData["unitfmt"]["short"]["quart-imperial"] = "one#{n} imperial qt|#{n} imperial qt";
+        localeData["unitfmt"]["short"]["teaspoon-imperial"] = "one#{n} tsp(i)|#{n} tsp(i)";
+        localeData["unitfmt"]["short"]["tablespoon-imperial"] = "one#{n} tbsp(i)|#{n} tbsp(i)";
+        localeData["unitfmt"]["short"]["ounce-imperial"] = "one#{n} oz(i)|#{n} oz(i)";
+        localeData["unitfmt"]["short"]["pint-imperial"] = "one#{n} pt(i)|#{n} pt(i)";
+        localeData["unitfmt"]["short"]["quart-imperial"] = "one#{n} qt(i)|#{n} qt(i)";
+
+        /*
+        uncomment if we decide to support the "narrow" size
+        localeData["unitfmt"]["narrow"]["decameter"] = "one#{n}dam|#{n}dam";
+        localeData["unitfmt"]["narrow"]["hectometer"] = "one#{n}hm|#{n}hm";
+        localeData["unitfmt"]["narrow"]["megameter"] = "one#{n}Mm|#{n}Mm";
+        localeData["unitfmt"]["narrow"]["gigameter"] = "one#{n}Gm|#{n}Gm";
+        localeData["unitfmt"]["narrow"]["petabit"] = "one#{n}pb|#{n}pb";
+        localeData["unitfmt"]["narrow"]["petabyte"] = "one#{n}pB|#{n}pB";
+        localeData["unitfmt"]["narrow"]["BTU"] = "one#{n}BTU|#{n}BTU";
+        localeData["unitfmt"]["narrow"]["millijoule"] = "one#{n}mJ|#{n}mJ";
+        localeData["unitfmt"]["narrow"]["watt-hour"] = "one#{n}Wh|#{n}Wh";
+        localeData["unitfmt"]["narrow"]["megajoule"] = "one#{n}MJ|#{n}MJ";
+        localeData["unitfmt"]["narrow"]["gigajoule"] = "one#{n}GJ|#{n}GJ";
+        localeData["unitfmt"]["narrow"]["megawatt-hour"] = "one#{n}MWh|#{n}MWh";
+        localeData["unitfmt"]["narrow"]["gigawatt-hour"] = "one#{n}GWh|#{n}GWh";
+        localeData["unitfmt"]["narrow"]["kilometer-per-liter"] = "1#{n}km/l|#{n}km/l";
+        localeData["unitfmt"]["narrow"]["short-ton"] = "1#{n}short ton|#{n}short tons";
+        localeData["unitfmt"]["narrow"]["foot-per-second"] = "1#{n}ft/s|#{n}ft/s";
+        localeData["unitfmt"]["narrow"]["kilometer-per-second"] = "1#{n}km/s|#{n}km/s";
+        localeData["unitfmt"]["narrow"]["mile-per-second"] = "1#{n}mps|#{n}mps";
+        localeData["unitfmt"]["narrow"]["decade"] = "one#{n}decade|#{n}decades";
+        localeData["unitfmt"]["narrow"]["teaspoon-imperial"] = "one#{n}tsp(i)|#{n}tsp(i)";
+        localeData["unitfmt"]["narrow"]["tablespoon-imperial"] = "one#{n}tbsp(i)|#{n}tbsp(i)";
+        localeData["unitfmt"]["narrow"]["ounce-imperial"] = "one#{n}oz(i)|#{n}oz(i)";
+        localeData["unitfmt"]["narrow"]["pint-imperial"] = "one#{n}pt(i)|#{n}pt(i)";
+        localeData["unitfmt"]["narrow"]["quart-imperial"] = "one#{n}qt(i)|#{n}qt(i)";
+        */
     }
     return localeData;
 }

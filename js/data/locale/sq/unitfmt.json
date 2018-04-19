@@ -138,10 +138,10 @@
             "tablespoon": "one#{n} lugë gjelle|#{n} lugë gjelle",
             "teaspoon": "one#{n} lugë kafeje|#{n} lugë kafeje",
             "coordinateUnit": "",
-            "foot-per-second": "#{n} këmbë/sekondë",
-            "kilometer-per-second": "#{n} kilometra/sekondë",
-            "mile-per-second": "#{n} milje/sekondë",
-            "kilometer-per-liter": "#{n} kilometra/litër"
+            "foot-per-second": "#{n} këmbë në sekondë",
+            "kilometer-per-second": "#{n} kilometra në sekondë",
+            "mile-per-second": "#{n} milje në sekondë",
+            "kilometer-per-liter": "#{n} kilometra në litër"
         },
         "short": {
             "g-force": "one#{n} G|#{n} G",

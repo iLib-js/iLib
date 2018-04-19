@@ -138,10 +138,10 @@
             "tablespoon": "one#{n} супена лъжица|#{n} супени лъжици",
             "teaspoon": "one#{n} чаена лъжица|#{n} чаени лъжици",
             "coordinateUnit": "",
-            "foot-per-second": "#{n} футове/секунда",
-            "kilometer-per-second": "#{n} километри/секунда",
-            "mile-per-second": "#{n} мили/секунда",
-            "kilometer-per-liter": "#{n} километри/литър"
+            "foot-per-second": "#{n} футове на секунда",
+            "kilometer-per-second": "#{n} километри на секунда",
+            "mile-per-second": "#{n} мили на секунда",
+            "kilometer-per-liter": "#{n} километри на литър"
         },
         "short": {
             "g-force": "one#{n} G|#{n} G",

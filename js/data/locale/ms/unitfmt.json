@@ -138,10 +138,10 @@
             "tablespoon": "#{n} sudu besar",
             "teaspoon": "#{n} sudu teh",
             "coordinateUnit": "",
-            "foot-per-second": "#{n} kaki/saat",
-            "kilometer-per-second": "#{n} kilometer/saat",
-            "mile-per-second": "#{n} batu/saat",
-            "kilometer-per-liter": "#{n} kilometer/liter"
+            "foot-per-second": "#{n} kaki per saat",
+            "kilometer-per-second": "#{n} kilometer per saat",
+            "mile-per-second": "#{n} batu per saat",
+            "kilometer-per-liter": "#{n} kilometer per liter"
         },
         "short": {
             "g-force": "#{n} G",

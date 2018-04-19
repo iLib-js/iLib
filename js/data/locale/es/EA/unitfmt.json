@@ -138,10 +138,10 @@
             "tablespoon": "one#{n} cucharada|#{n} cucharadas",
             "teaspoon": "one#{n} cucharadita|#{n} cucharaditas",
             "coordinateUnit": "",
-            "foot-per-second": "#{n} pies/segundo",
-            "kilometer-per-second": "#{n} kilómetros/segundo",
-            "mile-per-second": "#{n} millas/segundo",
-            "kilometer-per-liter": "#{n} kilómetros/litro"
+            "foot-per-second": "#{n} pies por segundo",
+            "kilometer-per-second": "#{n} kilómetros por segundo",
+            "mile-per-second": "#{n} millas por segundo",
+            "kilometer-per-liter": "#{n} kilómetros por litro"
         },
         "short": {
             "g-force": "one#{n} Fg|#{n} Fg",

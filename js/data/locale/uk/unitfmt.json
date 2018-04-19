@@ -138,10 +138,10 @@
             "tablespoon": "one#{n} столова ложка|few#{n} столові ложки|many#{n} столових ложок|#{n} столової ложки",
             "teaspoon": "one#{n} чайна ложка|few#{n} чайні ложки|many#{n} чайних ложок|#{n} чайної ложки",
             "coordinateUnit": "",
-            "foot-per-second": "#{n} фути/секунда",
-            "kilometer-per-second": "#{n} кілометри/секунда",
-            "mile-per-second": "#{n} милі/секунда",
-            "kilometer-per-liter": "#{n} кілометри/літр"
+            "foot-per-second": "#{n} фути на секунда",
+            "kilometer-per-second": "#{n} кілометри на секунда",
+            "mile-per-second": "#{n} милі на секунда",
+            "kilometer-per-liter": "#{n} кілометри на літр"
         },
         "short": {
             "g-force": "one#{n} G|few#{n} G|many#{n} G|#{n} G",

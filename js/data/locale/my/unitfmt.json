@@ -138,10 +138,10 @@
             "tablespoon": "#စားပွဲဇွန်း {n} ဇွန်း",
             "teaspoon": "#လက်ဖက်ရည်ဇွန်း {n} ဇွန်း",
             "coordinateUnit": "",
-            "foot-per-second": "#{n} ပေ/စက္ကန့်",
-            "kilometer-per-second": "#{n} ကီလိုမီတာ/စက္ကန့်",
-            "mile-per-second": "#{n} မိုင်/စက္ကန့်",
-            "kilometer-per-liter": "#{n} ကီလိုမီတာ/လီတာ"
+            "foot-per-second": "#{n} တစ်စက္ကန့် လျှင် ပေ",
+            "kilometer-per-second": "#{n} တစ်စက္ကန့် လျှင် ကီလိုမီတာ",
+            "mile-per-second": "#{n} တစ်စက္ကန့် လျှင် မိုင်",
+            "kilometer-per-liter": "#{n} တစ်လီတာ လျှင် ကီလိုမီတာ"
         },
         "short": {
             "g-force": "#{n} G",

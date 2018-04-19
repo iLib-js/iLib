@@ -138,10 +138,10 @@
             "tablespoon": "one#මේස හැදී {n}|#මේස හැදී {n}",
             "teaspoon": "one#තේ හැදී {n}|#තේ හැදී {n}",
             "coordinateUnit": "",
-            "foot-per-second": "#{n} අඩි/තත්පර",
-            "kilometer-per-second": "#{n} කිලෝමීටර්/තත්පර",
-            "mile-per-second": "#{n} සැතපුම්/තත්පර",
-            "kilometer-per-liter": "#{n} කිලෝමීටර්/ලීටර්"
+            "foot-per-second": "#{n} තත්පර ට අඩි බැගින්",
+            "kilometer-per-second": "#{n} තත්පර ට කිලෝමීටර් බැගින්",
+            "mile-per-second": "#{n} තත්පර ට සැතපුම් බැගින්",
+            "kilometer-per-liter": "#{n} ලීටර් ට කිලෝමීටර් බැගින්"
         },
         "short": {
             "g-force": "one#{n} G|#{n} G",

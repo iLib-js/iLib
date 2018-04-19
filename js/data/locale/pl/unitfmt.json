@@ -138,10 +138,10 @@
             "tablespoon": "one#{n} łyżka stołowa|few#{n} łyżki stołowe|many#{n} łyżek stołowych|#{n} łyżki stołowej",
             "teaspoon": "one#{n} łyżeczka|few#{n} łyżeczki|many#{n} łyżeczek|#{n} łyżeczki",
             "coordinateUnit": "",
-            "foot-per-second": "#{n} stopy/sekunda",
-            "kilometer-per-second": "#{n} kilometry/sekunda",
-            "mile-per-second": "#{n} mile/sekunda",
-            "kilometer-per-liter": "#{n} kilometry/litr"
+            "foot-per-second": "#{n} stopy na sekunda",
+            "kilometer-per-second": "#{n} kilometry na sekunda",
+            "mile-per-second": "#{n} mile na sekunda",
+            "kilometer-per-liter": "#{n} kilometry na litr"
         },
         "short": {
             "g-force": "one#{n} G|few#{n} G|many#{n} G|#{n} G",

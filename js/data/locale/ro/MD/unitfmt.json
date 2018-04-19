@@ -138,10 +138,10 @@
             "tablespoon": "one#{n} lingură|few#{n} linguri|#{n} de linguri",
             "teaspoon": "one#{n} linguriță|few#{n} lingurițe|#{n} de lingurițe",
             "coordinateUnit": "",
-            "foot-per-second": "#{n} picioare/secundă",
-            "kilometer-per-second": "#{n} kilometri/secundă",
-            "mile-per-second": "#{n} mile/secundă",
-            "kilometer-per-liter": "#{n} kilometri/litru"
+            "foot-per-second": "#{n} picioare pe secundă",
+            "kilometer-per-second": "#{n} kilometri pe secundă",
+            "mile-per-second": "#{n} mile pe secundă",
+            "kilometer-per-liter": "#{n} kilometri pe litru"
         },
         "short": {
             "g-force": "one#{n} G|few#{n} G|#{n} G",

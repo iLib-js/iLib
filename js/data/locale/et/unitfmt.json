@@ -138,10 +138,10 @@
             "tablespoon": "one#{n} supilusikas|#{n} supilusikat",
             "teaspoon": "one#{n} teelusikas|#{n} teelusikat",
             "coordinateUnit": "",
-            "foot-per-second": "#{n} jalad/sekund",
-            "kilometer-per-second": "#{n} kilomeetrid/sekund",
-            "mile-per-second": "#{n} miilid/sekund",
-            "kilometer-per-liter": "#{n} kilomeetrid/liiter"
+            "foot-per-second": "#{n} jalad sekund kohta",
+            "kilometer-per-second": "#{n} kilomeetrid sekund kohta",
+            "mile-per-second": "#{n} miilid sekund kohta",
+            "kilometer-per-liter": "#{n} kilomeetrid liiter kohta"
         },
         "short": {
             "g-force": "one#{n} G|#{n} G",

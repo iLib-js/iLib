@@ -138,10 +138,10 @@
             "tablespoon": "one#{n} spúnóg bhoird|two#{n} spúnóg bhoird|few#{n} spúnóg bhoird|many#{n} spúnóg bhoird|#{n} spúnóg bhoird",
             "teaspoon": "one#{n} taespúnóg|two#{n} thaespúnóg|few#{n} thaespúnóg|many#{n} dtaespúnóg|#{n} taespúnóg",
             "coordinateUnit": "",
-            "foot-per-second": "#{n} troithe/soicind",
-            "kilometer-per-second": "#{n} ciliméadair/soicind",
-            "mile-per-second": "#{n} mílte/soicind",
-            "kilometer-per-liter": "#{n} ciliméadair/lítear"
+            "foot-per-second": "#{n} troithe sa soicind",
+            "kilometer-per-second": "#{n} ciliméadair sa soicind",
+            "mile-per-second": "#{n} mílte sa soicind",
+            "kilometer-per-liter": "#{n} ciliméadair sa lítear"
         },
         "short": {
             "g-force": "one#{n} G|two#{n} G|few#{n} G|many#{n} G|#{n} G",

@@ -138,10 +138,10 @@
             "tablespoon": "one#{n} κουταλιά της σούπας|#{n} κουταλιές της σούπας",
             "teaspoon": "one#{n} κουταλιά του γλυκού|#{n} κουταλιές του γλυκού",
             "coordinateUnit": "",
-            "foot-per-second": "#{n} πόδια/δευτερόλεπτο",
-            "kilometer-per-second": "#{n} χιλιόμετρα/δευτερόλεπτο",
-            "mile-per-second": "#{n} μίλια/δευτερόλεπτο",
-            "kilometer-per-liter": "#{n} χιλιόμετρα/λίτρο"
+            "foot-per-second": "#{n} πόδια ανά δευτερόλεπτο",
+            "kilometer-per-second": "#{n} χιλιόμετρα ανά δευτερόλεπτο",
+            "mile-per-second": "#{n} μίλια ανά δευτερόλεπτο",
+            "kilometer-per-liter": "#{n} χιλιόμετρα ανά λίτρο"
         },
         "short": {
             "g-force": "one#{n} G|#{n} G",

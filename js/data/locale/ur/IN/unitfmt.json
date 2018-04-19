@@ -138,10 +138,10 @@
             "tablespoon": "one#{n} ٹیبل سپون|#{n} ٹیبل سپون",
             "teaspoon": "one#{n} ٹی سپون|#{n} ٹی سپون",
             "coordinateUnit": "",
-            "foot-per-second": "#{n} فیٹ/سیکنڈ",
-            "kilometer-per-second": "#{n} کلو میٹر/سیکنڈ",
-            "mile-per-second": "#{n} میل/سیکنڈ",
-            "kilometer-per-liter": "#{n} کلو میٹر/لیٹر"
+            "foot-per-second": "#{n} فیٹ فی سیکنڈ",
+            "kilometer-per-second": "#{n} کلو میٹر فی سیکنڈ",
+            "mile-per-second": "#{n} میل فی سیکنڈ",
+            "kilometer-per-liter": "#{n} کلو میٹر فی لیٹر"
         },
         "short": {
             "g-force": "one#{n} G|#{n} G",

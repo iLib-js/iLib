@@ -138,10 +138,10 @@
             "tablespoon": "one#{n} matskeið|#{n} matskeiðar",
             "teaspoon": "one#{n} teskeið|#{n} teskeiðar",
             "coordinateUnit": "",
-            "foot-per-second": "#{n} fet/sekúnda",
-            "kilometer-per-second": "#{n} kílómetrar/sekúnda",
-            "mile-per-second": "#{n} mílur/sekúnda",
-            "kilometer-per-liter": "#{n} kílómetrar/lítri"
+            "foot-per-second": "#{n} fet á sekúnda",
+            "kilometer-per-second": "#{n} kílómetrar á sekúnda",
+            "mile-per-second": "#{n} mílur á sekúnda",
+            "kilometer-per-liter": "#{n} kílómetrar á lítri"
         },
         "short": {
             "g-force": "one#{n} G|#{n} G",

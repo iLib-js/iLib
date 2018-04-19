@@ -138,10 +138,10 @@
             "tablespoon": "#{n} sendok makan",
             "teaspoon": "#{n} sendok teh",
             "coordinateUnit": "",
-            "foot-per-second": "#{n} kaki/detik",
-            "kilometer-per-second": "#{n} kilometer/detik",
-            "mile-per-second": "#{n} mil/detik",
-            "kilometer-per-liter": "#{n} kilometer/liter"
+            "foot-per-second": "#{n} kaki per detik",
+            "kilometer-per-second": "#{n} kilometer per detik",
+            "mile-per-second": "#{n} mil per detik",
+            "kilometer-per-liter": "#{n} kilometer per liter"
         },
         "short": {
             "g-force": "#{n} G",

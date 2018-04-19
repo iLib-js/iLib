@@ -138,10 +138,10 @@
             "tablespoon": "one#{n} spiseskje|#{n} spiseskjeer",
             "teaspoon": "one#{n} teskje|#{n} teskjeer",
             "coordinateUnit": "",
-            "foot-per-second": "#{n} fot/sekund",
-            "kilometer-per-second": "#{n} kilometer/sekund",
-            "mile-per-second": "#{n} engelske mil/sekund",
-            "kilometer-per-liter": "#{n} kilometer/liter"
+            "foot-per-second": "#{n} fot per sekund",
+            "kilometer-per-second": "#{n} kilometer per sekund",
+            "mile-per-second": "#{n} engelske mil per sekund",
+            "kilometer-per-liter": "#{n} kilometer per liter"
         },
         "short": {
             "g-force": "one#{n} G|#{n} G",

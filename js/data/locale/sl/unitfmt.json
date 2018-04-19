@@ -138,10 +138,10 @@
             "tablespoon": "one#{n} jedilna žlica|two#{n} jedilni žlici|few#{n} jedilne žlice|#{n} jedilnih žlic",
             "teaspoon": "one#{n} čajna žlička|two#{n} čajni žlički|few#{n} čajne žličke|#{n} čajnih žličk",
             "coordinateUnit": "",
-            "foot-per-second": "#{n} čevlji/sekunda",
-            "kilometer-per-second": "#{n} kilometri/sekunda",
-            "mile-per-second": "#{n} milje/sekunda",
-            "kilometer-per-liter": "#{n} kilometri/liter"
+            "foot-per-second": "#{n} čevlji na sekunda",
+            "kilometer-per-second": "#{n} kilometri na sekunda",
+            "mile-per-second": "#{n} milje na sekunda",
+            "kilometer-per-liter": "#{n} kilometri na liter"
         },
         "short": {
             "g-force": "one#{n} G|two#{n} G|few#{n} G|#{n} G",

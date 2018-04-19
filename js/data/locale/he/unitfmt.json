@@ -138,10 +138,10 @@
             "tablespoon": "one#כף אחת|two#שתי כפות|many#{n} כפות|#{n} כפות",
             "teaspoon": "one#כפית {n}|two#{n} כפיות|many#{n} כפיות|#{n} כפיות",
             "coordinateUnit": "",
-            "foot-per-second": "#{n} רגל/שניה",
-            "kilometer-per-second": "#{n} קילומטרים/שניה",
-            "mile-per-second": "#{n} מייל/שניה",
-            "kilometer-per-liter": "#{n} קילומטרים/ליטר"
+            "foot-per-second": "#{n} רגל לכל שניה",
+            "kilometer-per-second": "#{n} קילומטרים לכל שניה",
+            "mile-per-second": "#{n} מייל לכל שניה",
+            "kilometer-per-liter": "#{n} קילומטרים לכל ליטר"
         },
         "short": {
             "g-force": "one#{n} G|two#{n} G|many#{n} G|#{n} G",

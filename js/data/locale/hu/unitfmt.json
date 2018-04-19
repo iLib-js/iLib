@@ -138,10 +138,10 @@
             "tablespoon": "one#{n} evőkanál|#{n} evőkanál",
             "teaspoon": "one#{n} kávéskanál|#{n} kávéskanál",
             "coordinateUnit": "",
-            "foot-per-second": "#{n} láb/másodperc",
-            "kilometer-per-second": "#{n} kilométer/másodperc",
-            "mile-per-second": "#{n} mérföld/másodperc",
-            "kilometer-per-liter": "#{n} kilométer/liter"
+            "foot-per-second": "#{n} láb per másodperc",
+            "kilometer-per-second": "#{n} kilométer per másodperc",
+            "mile-per-second": "#{n} mérföld per másodperc",
+            "kilometer-per-liter": "#{n} kilométer per liter"
         },
         "short": {
             "g-force": "one#{n} G|#{n} G",

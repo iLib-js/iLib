@@ -138,10 +138,10 @@
             "tablespoon": "one#{n} ਟੇਬਲ ਸਪੂਨ|#{n} ਟੇਬਲ ਸਪੂਨ",
             "teaspoon": "one#{n} ਟੀ ਸਪੂਨ|#{n} ਟੀ ਸਪੂਨ",
             "coordinateUnit": "",
-            "foot-per-second": "#{n} ਫੁੱਟ/ਸਕਿੰਟ",
-            "kilometer-per-second": "#{n} ਕਿਲੋਮੀਟਰ/ਸਕਿੰਟ",
-            "mile-per-second": "#{n} ਮੀਲ/ਸਕਿੰਟ",
-            "kilometer-per-liter": "#{n} ਕਿਲੋਮੀਟਰ/ਲਿਟਰ"
+            "foot-per-second": "#{n} ਫੁੱਟ ਪ੍ਰਤੀ ਸਕਿੰਟ",
+            "kilometer-per-second": "#{n} ਕਿਲੋਮੀਟਰ ਪ੍ਰਤੀ ਸਕਿੰਟ",
+            "mile-per-second": "#{n} ਮੀਲ ਪ੍ਰਤੀ ਸਕਿੰਟ",
+            "kilometer-per-liter": "#{n} ਕਿਲੋਮੀਟਰ ਪ੍ਰਤੀ ਲਿਟਰ"
         },
         "short": {
             "g-force": "one#{n} G|#{n} G",

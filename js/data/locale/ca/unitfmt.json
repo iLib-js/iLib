@@ -138,10 +138,10 @@
             "tablespoon": "one#{n} cullerada|#{n} cullerades",
             "teaspoon": "one#{n} culleradeta|#{n} culleradetes",
             "coordinateUnit": "",
-            "foot-per-second": "#{n} peus/segon",
-            "kilometer-per-second": "#{n} quilòmetres/segon",
-            "mile-per-second": "#{n} milles/segon",
-            "kilometer-per-liter": "#{n} quilòmetres/litre"
+            "foot-per-second": "#{n} peus per segon",
+            "kilometer-per-second": "#{n} quilòmetres per segon",
+            "mile-per-second": "#{n} milles per segon",
+            "kilometer-per-liter": "#{n} quilòmetres per litre"
         },
         "short": {
             "g-force": "one#{n} G|#{n} G",

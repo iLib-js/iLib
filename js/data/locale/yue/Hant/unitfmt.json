@@ -138,10 +138,10 @@
             "tablespoon": "#{n} 湯匙",
             "teaspoon": "#{n} 茶匙",
             "coordinateUnit": "",
-            "foot-per-second": "#{n} 英呎/秒",
-            "kilometer-per-second": "#{n} 公里/秒",
-            "mile-per-second": "#{n} 英里/秒",
-            "kilometer-per-liter": "#{n} 公里/公升"
+            "foot-per-second": "#{n} 每 秒 英呎",
+            "kilometer-per-second": "#{n} 每 秒 公里",
+            "mile-per-second": "#{n} 每 秒 英里",
+            "kilometer-per-liter": "#{n} 每 公升 公里"
         },
         "short": {
             "g-force": "#{n} G 力",

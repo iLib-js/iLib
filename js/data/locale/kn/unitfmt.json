@@ -138,10 +138,10 @@
             "tablespoon": "one#{n} ಟೇಬಲ್ ಸ್ಪೂನ್‍|#{n} ಟೇಬಲ್ ಸ್ಪೂನ್‍‍ಗಳು",
             "teaspoon": "one#{n} ಟೀ ಸ್ಪೂನ್‍|#{n} ಟೀ ಸ್ಪೂನ್‍ಗಳು",
             "coordinateUnit": "",
-            "foot-per-second": "#{n} ಅಡಿ/ಸೆಕೆಂಡ್",
-            "kilometer-per-second": "#{n} ಕಿಲೋಮೀಟರ್‌ಗಳು/ಸೆಕೆಂಡ್",
-            "mile-per-second": "#{n} ಮೈಲುಗಳು/ಸೆಕೆಂಡ್",
-            "kilometer-per-liter": "#{n} ಕಿಲೋಮೀಟರ್‌ಗಳು/ಲೀಟರ್"
+            "foot-per-second": "#{n} ಅಡಿ ಪ್ರತಿ ಸೆಕೆಂಡ್ ಗೆ",
+            "kilometer-per-second": "#{n} ಕಿಲೋಮೀಟರ್‌ಗಳು ಪ್ರತಿ ಸೆಕೆಂಡ್ ಗೆ",
+            "mile-per-second": "#{n} ಮೈಲುಗಳು ಪ್ರತಿ ಸೆಕೆಂಡ್ ಗೆ",
+            "kilometer-per-liter": "#{n} ಕಿಲೋಮೀಟರ್‌ಗಳು ಪ್ರತಿ ಲೀಟರ್ ಗೆ"
         },
         "short": {
             "g-force": "one#{n} ಜಿ-ಫೋ.|#{n} ಜಿ-ಫೋ.",

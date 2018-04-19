@@ -138,10 +138,10 @@
             "tablespoon": "one#{n} kutsara|#{n} na kutsara",
             "teaspoon": "one#{n} kutsarita|#{n} na kutsarita",
             "coordinateUnit": "",
-            "foot-per-second": "#{n} talampakan/segundo",
-            "kilometer-per-second": "#{n} kilometro/segundo",
-            "mile-per-second": "#{n} milya/segundo",
-            "kilometer-per-liter": "#{n} kilometro/litro"
+            "foot-per-second": "#{n} talampakan kada segundo",
+            "kilometer-per-second": "#{n} kilometro kada segundo",
+            "mile-per-second": "#{n} milya kada segundo",
+            "kilometer-per-liter": "#{n} kilometro kada litro"
         },
         "short": {
             "g-force": "one#{n} G|#{n} G",

@@ -138,10 +138,10 @@
             "tablespoon": "one#kijiko {n} kikubwa|#vijiko {n} vikubwa",
             "teaspoon": "one#kijiko {n} kidogo|#vijiko {n} vidogo",
             "coordinateUnit": "",
-            "foot-per-second": "#{n} futi/sekunde",
-            "kilometer-per-second": "#{n} kilomita/sekunde",
-            "mile-per-second": "#{n} maili/sekunde",
-            "kilometer-per-liter": "#{n} kilomita/lita"
+            "foot-per-second": "#{n} futi kwa kila sekunde",
+            "kilometer-per-second": "#{n} kilomita kwa kila sekunde",
+            "mile-per-second": "#{n} maili kwa kila sekunde",
+            "kilometer-per-liter": "#{n} kilomita kwa kila lita"
         },
         "short": {
             "g-force": "one#G {n}|#G {n}",
