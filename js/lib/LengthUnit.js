@@ -36,12 +36,11 @@ var Measurement = require("./Measurement.js");
 var LengthUnit = function (options) {
 	this.unit = "meter";
 	this.amount = 0;
-	this.aliases = LengthUnit.aliases; // share this table in all instances
 	
 	if (options) {
 		if (typeof(options.unit) !== 'undefined') {
 			this.originalUnit = options.unit;
-			this.unit = this.aliases[options.unit] || options.unit;
+			this.unit = this.normalizeUnits(options.unit) || options.unit;
 		}
 		
 		if (typeof(options.amount) === 'object') {
@@ -313,8 +312,8 @@ LengthUnit.aliases = {
  * @returns {number|undefined} the converted amount
  */
 LengthUnit.convert = function(to, from, length) {
-    from = LengthUnit.aliases[from] || from;
-    to = LengthUnit.aliases[to] || to;
+    from = Measurement.getUnitIdCaseInsensitive(LengthUnit, from) || from;
+    to = Measurement.getUnitIdCaseInsensitive(LengthUnit, to) || to;
     var fromRow = LengthUnit.ratios[from];
     var toRow = LengthUnit.ratios[to];
     if (typeof(from) === 'undefined' || typeof(to) === 'undefined') {

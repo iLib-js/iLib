@@ -20,6 +20,7 @@
 
 /*
 !depends
+ilib.js
 UnknownUnit.js
 AreaUnit.js
 DigitalStorageUnit.js
@@ -36,6 +37,7 @@ Measurement.js
 
 // TODO: make these dependencies dynamic or at least generate them in the build
 // These will each add themselves to Measurement._constructors[]
+var ilib = require("./ilib.js");
 var UnknownUnit = require("./UnknownUnit.js");
 var AreaUnit = require("./AreaUnit.js");
 var DigitalStorageUnit = require("./DigitalStorageUnit.js");
@@ -115,11 +117,24 @@ var MeasurementFactory = function(options) {
 
     var measure = undefined;
 
+    // first try in the existing case
     for (var c in Measurement._constructors) {
         var measurement = Measurement._constructors[c];
-        if (typeof(measurement.aliases[options.unit]) !== 'undefined' || (measurement.ratios && typeof(measurement.ratios[options.unit]) !== 'undefined')) {
+        if (Measurement.getUnitId(measurement, options.unit)) {
             measure = c;
             break;
+        }
+    }
+
+    if (!measure) {
+        // if it wasn't found before, try again in lower case -- this may recognize incorrectly because some
+        // units can differ only in their case like "mm" and "Mm"
+        for (var c in Measurement._constructors) {
+            var measurement = Measurement._constructors[c];
+            if (typeof(Measurement.getUnitIdCaseInsensitive(measurement, options.unit)) !== 'undefined') {
+                measure = c;
+                break;
+            }
         }
     }
 

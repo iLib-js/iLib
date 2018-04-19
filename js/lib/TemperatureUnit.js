@@ -36,12 +36,11 @@ var Measurement = require("./Measurement.js");
 var TemperatureUnit = function (options) {
 	this.unit = "celsius";
 	this.amount = 0;
-	this.aliases = TemperatureUnit.aliases; // share this table in all instances
 
 	if (options) {
 		if (typeof(options.unit) !== 'undefined') {
 			this.originalUnit = options.unit;
-			this.unit = this.aliases[options.unit] || options.unit;
+			this.unit = this.normalizeUnits(options.unit) || options.unit;
 		}
 
 		if (typeof(options.amount) === 'object') {
@@ -78,16 +77,11 @@ TemperatureUnit.prototype.getMeasure = function() {
 
 TemperatureUnit.aliases = {
     "Celsius": "celsius",
-    "celsius": "celsius",
     "C": "celsius",
-    "centegrade": "celsius",
     "Centegrade": "celsius",
-    "centigrade": "celsius",
     "Centigrade": "celsius",
-    "fahrenheit": "fahrenheit",
     "Fahrenheit": "fahrenheit",
     "F": "fahrenheit",
-    "kelvin": "kelvin",
     "K": "kelvin",
     "Kelvin": "kelvin",
     "°F": "fahrenheit",
@@ -126,8 +120,8 @@ TemperatureUnit.prototype.convert = function(to) {
  */
 TemperatureUnit.convert = function(to, from, temperature) {
 	var result = 0;
-	from = TemperatureUnit.aliases[from] || from;
-	to = TemperatureUnit.aliases[to] || to;
+	from = Measurement.getUnitIdCaseInsensitive(TemperatureUnit, from) || from;
+	to = Measurement.getUnitIdCaseInsensitive(TemperatureUnit, to) || to;
 	if (from === to)
 		return temperature;
 

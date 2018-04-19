@@ -36,12 +36,11 @@ var Measurement = require("./Measurement.js");
 var FuelConsumptionUnit = function(options) {
     this.unit = "liter-per-100kilometers";
     this.amount = 0;
-    this.aliases = FuelConsumptionUnit.aliases; // share this table in all instances
 
     if (options) {
         if (typeof(options.unit) !== 'undefined') {
             this.originalUnit = options.unit;
-            this.unit = this.aliases[options.unit] || options.unit;
+            this.unit = this.normalizeUnits(options.unit) || options.unit;
         }
 
         if (typeof(options.amount) === 'object') {
@@ -226,8 +225,8 @@ FuelConsumptionUnit.prototype.localize = function(locale) {
  * @returns {number|undefined} the converted amount
  */
 FuelConsumptionUnit.convert = function(to, from, fuelConsumption) {
-    from = FuelConsumptionUnit.aliases[from] || from;
-    to = FuelConsumptionUnit.aliases[to] || to;
+    from = Measurement.getUnitIdCaseInsensitive(FuelConsumptionUnit, from) || from;
+    to = Measurement.getUnitIdCaseInsensitive(FuelConsumptionUnit, to) || to;
     var fromRow = FuelConsumptionUnit.ratios[from];
     var toRow = FuelConsumptionUnit.ratios[to];
     if (typeof(from) === 'undefined' || typeof(to) === 'undefined') {

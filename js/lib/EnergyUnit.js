@@ -36,12 +36,11 @@ var Measurement = require("./Measurement.js");
 var EnergyUnit = function (options) {
 	this.unit = "joule";
 	this.amount = 0;
-	this.aliases = EnergyUnit.aliases; // share this table in all instances
 
 	if (options) {
 		if (typeof(options.unit) !== 'undefined') {
 			this.originalUnit = options.unit;
-			this.unit = this.aliases[options.unit] || options.unit;
+			this.unit = this.normalizeUnits(options.unit);
 		}
 
 		if (typeof(options.amount) === 'object') {
@@ -118,83 +117,76 @@ EnergyUnit.prototype.convert = function(to) {
 EnergyUnit.aliases = {
     "milli joule": "millijoule",
     "millijoule": "millijoule",
-    "MilliJoule": "millijoule",
     "milliJ": "millijoule",
+    "mJ": "millijoule",
     "joule": "joule",
-    "J": "joule",
-    "j": "joule",
-    "Joule": "joule",
-    "Joules": "joule",
     "joules": "joule",
+    "J": "joule",
     "BTU": "BTU",
-    "btu": "BTU",
-    "British thermal unit": "BTU",
-    "british thermal unit": "BTU",
+    "British Thermal Unit": "BTU",
+    "British Thermal Units": "BTU",
     "kilo joule": "kilojoule",
-    "kJ": "kilojoule",
-    "kj": "kilojoule",
-    "Kj": "kilojoule",
-    "kiloJoule": "kilojoule",
     "kilojoule": "kilojoule",
+    "kilojoules": "kilojoule",
     "kjoule": "kilojoule",
+    "kJ": "kilojoule",
     "watt hour": "watt-hour",
+    "watt hours": "watt-hour",
     "Wh": "watt-hour",
-    "wh": "watt-hour",
-    "watt-hour": "watt-hour",
+    "food calorie": "foodcalorie",
+    "food calories": "foodcalorie",
     "calorie": "foodcalorie",
-    "Cal": "foodcalorie",
-    "cal": "foodcalorie",
-    "Calorie": "foodcalorie",
     "calories": "foodcalorie",
+    "Cal": "foodcalorie",
     "mega joule": "megajoule",
-    "MJ": "megajoule",
+    "mega joules": "megajoule",
     "megajoule": "megajoule",
     "megajoules": "megajoule",
-    "Megajoules": "megajoule",
-    "megaJoules": "megajoule",
-    "MegaJoules": "megajoule",
-    "megaJoule": "megajoule",
-    "MegaJoule": "megajoule",
-    "kilo Watt hour": "kilowatt-hour",
-    "kWh": "kilowatt-hour",
+    "MJ": "megajoule",
+    "kilo watt hour": "kilowatt-hour",
+    "kilo watt hours": "kilowatt-hour",
     "kiloWh": "kilowatt-hour",
-    "KiloWh": "kilowatt-hour",
-    "KiloWatt-hour": "kilowatt-hour",
     "kilowatt hour": "kilowatt-hour",
+    "kilowatt hours": "kilowatt-hour",
     "kilowatt-hour": "kilowatt-hour",
-    "KiloWatt-hours": "kilowatt-hour",
     "kilowatt-hours": "kilowatt-hour",
-    "Kilo Watt-hour": "kilowatt-hour",
-    "Kilo Watt-hours": "kilowatt-hour",
+    "kilowatthour": "kilowatt-hour",
+    "kilowatthours": "kilowatt-hour",
+    "kW hour": "kilowatt-hour",
+    "kW hours": "kilowatt-hour",
+    "kW-hour": "kilowatt-hour",
+    "kW-hours": "kilowatt-hour",
+    "kiloWh": "kilowatt-hour",
+    "kWh": "kilowatt-hour",
     "giga joule": "gigajoule",
-    "gJ": "gigajoule",
-    "GJ": "gigajoule",
-    "GigaJoule": "gigajoule",
-    "gigaJoule": "gigajoule",
+    "Gj": "gigajoule",
     "gigajoule": "gigajoule",   
-    "GigaJoules": "gigajoule",
-    "gigaJoules": "gigajoule",
-    "Gigajoules": "gigajoule",
     "gigajoules": "gigajoule",
     "mega watt hour": "megawatt-hour",
-    "MWh": "megawatt-hour",
-    "MegaWh": "megawatt-hour",
-    "megaWh": "megawatt-hour",
-    "megaWatthour": "megawatt-hour",
-    "megaWatt-hour": "megawatt-hour",
-    "mega Watt-hour": "megawatt-hour",
-    "megaWatt hour": "megawatt-hour",
+    "mega watt hours": "megawatt-hour",
     "megawatt hour": "megawatt-hour",
-    "mega Watt hour": "megawatt-hour",
+    "megawatt hours": "megawatt-hour",
+    "megawatt-hour": "megawatt-hour",
+    "megawatt-hours": "megawatt-hour",
+    "MW hour": "megawatt-hour",
+    "MW hours": "megawatt-hour",
+    "MW-hour": "megawatt-hour",
+    "MW-hours": "megawatt-hour",
+    "megaWh": "megawatt-hour",
+    "MWh": "megawatt-hour",
     "giga watt hour": "gigawatt-hour",
-    "gWh": "gigawatt-hour",
-    "GWh": "gigawatt-hour",
-    "gigaWh": "gigawatt-hour",
-    "gigaWatt-hour": "gigawatt-hour",
-    "gigawatt-hour": "gigawatt-hour",
-    "gigaWatt hour": "gigawatt-hour",
+    "giga watt hour": "gigawatt-hour",
+    "giga watt hours": "gigawatt-hour",
     "gigawatt hour": "gigawatt-hour",
-    "gigawatthour": "gigawatt-hour"
+    "gigawatt hours": "gigawatt-hour",
+    "gigawatt-hours": "gigawatt-hour",
+    "gigawatthour": "gigawatt-hour",
+    "GW hour": "gigawatt-hour",
+    "GW hours": "gigawatt-hour",
+    "GW-hour": "gigawatt-hour",
+    "GW-hours": "gigawatt-hour",
+    "gigaWh": "gigawatt-hour",
+    "GWh": "gigawatt-hour"
 };
 
 /**
@@ -206,8 +198,8 @@ EnergyUnit.aliases = {
  * @returns {number|undefined} the converted amount
  */
 EnergyUnit.convert = function(to, from, energy) {
-    from = EnergyUnit.aliases[from] || from;
-    to = EnergyUnit.aliases[to] || to;
+    from = Measurement.getUnitIdCaseInsensitive(EnergyUnit, from) || from;
+    to = Measurement.getUnitIdCaseInsensitive(EnergyUnit, to) || to;
     var fromRow = EnergyUnit.ratios[from];
     var toRow = EnergyUnit.ratios[to];
     if (typeof(from) === 'undefined' || typeof(to) === 'undefined') {
@@ -221,11 +213,7 @@ EnergyUnit.convert = function(to, from, energy) {
  * @static
  */
 EnergyUnit.getMeasures = function () {
-    var ret = [];
-    for (var m in EnergyUnit.ratios) {
-        ret.push(m);
-    }
-    return ret;
+    return Object.keys(EnergyUnit.ratios);
 };
 
 EnergyUnit.metricJouleSystem = {

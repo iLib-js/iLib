@@ -36,12 +36,11 @@ var Measurement = require("./Measurement.js");
 var TimeUnit = function (options) {
 	this.unit = "second";
 	this.amount = 0;
-	this.aliases = TimeUnit.aliases; // share this table in all instances
 	
 	if (options) {
 		if (typeof(options.unit) !== 'undefined') {
 			this.originalUnit = options.unit;
-			this.unit = this.aliases[options.unit] || options.unit;
+			this.unit = this.normalizeUnits(options.unit) || options.unit;
 		}
 		
 		if (typeof(options.amount) === 'object') {
@@ -209,8 +208,8 @@ TimeUnit.aliases = {
  * @returns {number|undefined} the converted amount
  */
 TimeUnit.convert = function(to, from, time) {
-    from = TimeUnit.aliases[from] || from;
-    to = TimeUnit.aliases[to] || to;
+    from = Measurement.getUnitIdCaseInsensitive(TimeUnit, from) || from;
+    to = Measurement.getUnitIdCaseInsensitive(TimeUnit, to) || to;
     var fromRow = TimeUnit.ratios[from];
     var toRow = TimeUnit.ratios[to];
     if (typeof(from) === 'undefined' || typeof(to) === 'undefined') {
@@ -276,11 +275,7 @@ TimeUnit.prototype.scale = function(measurementsystem) {
  * @static
  */
 TimeUnit.getMeasures = function () {
-	var ret = [];
-	for (var m in TimeUnit.ratios) {
-		ret.push(m);
-	}
-	return ret;
+    return Object.keys(TimeUnit.ratios);
 };
 
 //register with the factory method

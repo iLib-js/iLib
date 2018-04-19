@@ -36,12 +36,11 @@ var Measurement = require("./Measurement.js");
 var MassUnit = function (options) {
 	this.unit = "gram";
 	this.amount = 0;
-	this.aliases = MassUnit.aliases; // share this table in all instances
 	
 	if (options) {
 		if (typeof(options.unit) !== 'undefined') {
 			this.originalUnit = options.unit;
-			this.unit = this.aliases[options.unit] || options.unit;
+			this.unit = this.normalizeUnits(options.unit) || options.unit;
 		}
 		
 		if (typeof(options.amount) === 'object') {
@@ -275,8 +274,8 @@ MassUnit.aliases = {
  * @returns {number|undefined} the converted amount
  */
 MassUnit.convert = function(to, from, mass) {
-    from = MassUnit.aliases[from] || from;
-    to = MassUnit.aliases[to] || to;
+    from = Measurement.getUnitIdCaseInsensitive(MassUnit, from) || from;
+    to = Measurement.getUnitIdCaseInsensitive(MassUnit, to) || to;
     var fromRow = MassUnit.ratios[from];
     var toRow = MassUnit.ratios[to];
     if (typeof(from) === 'undefined' || typeof(to) === 'undefined') {
@@ -341,11 +340,7 @@ MassUnit.prototype.scale = function(measurementsystem) {
  * @static
  */
 MassUnit.getMeasures = function () {
-	var ret = [];
-	for (var m in MassUnit.ratios) {
-		ret.push(m);
-	}
-	return ret;
+    return Object.keys(MassUnit.ratios);
 };
 
 //register with the factory method

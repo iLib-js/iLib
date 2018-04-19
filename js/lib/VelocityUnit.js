@@ -36,12 +36,11 @@ var Measurement = require("./Measurement.js");
 var VelocityUnit = function (options) {
 	this.unit = "meter-per-second";
 	this.amount = 0;
-	this.aliases = VelocityUnit.aliases; // share this table in all instances
 	
 	if (options) {
 		if (typeof(options.unit) !== 'undefined') {
 			this.originalUnit = options.unit;
-			this.unit = this.aliases[options.unit] || options.unit;
+			this.unit = this.normalizeUnits(options.unit) || options.unit;
 		}
 		
 		if (typeof(options.amount) === 'object') {
@@ -65,14 +64,14 @@ VelocityUnit.prototype.parent = Measurement;
 VelocityUnit.prototype.constructor = VelocityUnit;
 
 VelocityUnit.ratios = {
-    /*                  index,  k/h         f/s         miles/h      knot         m/s        km/s         miles/s */
-    "kilometer-per-hour": [ 1,  1,          0.911344,   0.621371,    0.539957,    0.277778,  2.77778e-4,  1.72603109e-4 ],
-    "foot-per-second":    [ 2,  1.09728,    1,          0.681818,    0.592484,    0.3048,    3.048e-4,    1.89393939e-4 ],  
-    "mile-per-hour":      [ 3,  1.60934,    1.46667,    1,           0.868976,    0.44704,   4.4704e-4,   2.77777778e-4 ],
-    "knot":               [ 4,  1.852,      1.68781,    1.15078,     1,           0.514444,  5.14444e-4,  3.19660958e-4 ],
-    "meter-per-second":   [ 5,  3.6,        3.28084,    2.236936,    1.94384,     1,         0.001,       6.21371192e-4 ],
-    "kilometer-per-second":   [ 6,  3600,       3280.8399,  2236.93629,  1943.84449,  1000,      1,           0.621371192   ],
-    "mile-per-second":       [ 7,  5793.6384,  5280,       3600,        3128.31447,  1609.344,  1.609344,    1             ]
+    /*                    index,  k/h         f/s         miles/h      knot         m/s        km/s         miles/s */
+    "kilometer-per-hour":   [ 1,  1,          0.911344,   0.621371,    0.539957,    0.277778,  2.77778e-4,  1.72603109e-4 ],
+    "foot-per-second":      [ 2,  1.09728,    1,          0.681818,    0.592484,    0.3048,    3.048e-4,    1.89393939e-4 ],  
+    "mile-per-hour":        [ 3,  1.60934,    1.46667,    1,           0.868976,    0.44704,   4.4704e-4,   2.77777778e-4 ],
+    "knot":                 [ 4,  1.852,      1.68781,    1.15078,     1,           0.514444,  5.14444e-4,  3.19660958e-4 ],
+    "meter-per-second":     [ 5,  3.6,        3.28084,    2.236936,    1.94384,     1,         0.001,       6.21371192e-4 ],
+    "kilometer-per-second": [ 6,  3600,       3280.8399,  2236.93629,  1943.84449,  1000,      1,           0.621371192   ],
+    "mile-per-second":      [ 7,  5793.6384,  5280,       3600,        3128.31447,  1609.344,  1.609344,    1             ]
 };
 
 VelocityUnit.metricSystem = {
@@ -299,8 +298,8 @@ VelocityUnit.aliases = {
  * @returns {number|undefined} the converted amount
  */
 VelocityUnit.convert = function(to, from, speed) {
-    from = VelocityUnit.aliases[from] || from;
-    to = VelocityUnit.aliases[to] || to;
+    from = Measurement.getUnitIdCaseInsensitive(VelocityUnit, from) || from;
+    to = Measurement.getUnitIdCaseInsensitive(VelocityUnit, to) || to;
 	var fromRow = VelocityUnit.ratios[from];
 	var toRow = VelocityUnit.ratios[to];
 	if (typeof(from) === 'undefined' || typeof(to) === 'undefined') {
@@ -315,11 +314,7 @@ VelocityUnit.convert = function(to, from, speed) {
  * @static
  */
 VelocityUnit.getMeasures = function () {
-	var ret = [];
-	for (var m in VelocityUnit.ratios) {
-		ret.push(m);
-	}
-	return ret;
+    return Object.keys(VelocityUnit.ratios);
 };
 
 //register with the factory method

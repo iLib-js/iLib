@@ -35,12 +35,11 @@ var Measurement = require("./Measurement.js");
 var AreaUnit = function (options) {
 	this.unit = "square-meter";
 	this.amount = 0;
-	this.aliases = AreaUnit.aliases; // share this table in all instances
 	
 	if (options) {
 		if (typeof(options.unit) !== 'undefined') {
 			this.originalUnit = options.unit;
-			this.unit = this.aliases[options.unit] || options.unit;
+			this.unit = this.normalizeUnits(options.unit) || options.unit;
 		}
 		
 		if (typeof(options.amount) === 'object') {
@@ -115,64 +114,71 @@ AreaUnit.prototype.convert = function(to) {
 
 AreaUnit.aliases = {
     "square centimeter":"square-centimeter",
+    "square centimeters":"square-centimeter",
+    "square centimetre":"square-centimeter",
+    "square centimetres":"square-centimeter",
+    "sq centimeter":"square-centimeter",
+    "sq centimeters":"square-centimeter",
+    "sq centimetre":"square-centimeter",
+    "sq centimetres":"square-centimeter",
     "square cm":"square-centimeter",
     "sq cm":"square-centimeter",
-    "Square Cm":"square-centimeter",
-    "square Centimeters":"square-centimeter",
-    "square Centimeter":"square-centimeter",
-    "square Centimetre":"square-centimeter",
-    "square Centimetres":"square-centimeter",
-    "square centimeters":"square-centimeter",
-    "Square km": "square-kilometer",
-	"Square kilometre":"square-kilometer",
-	"square kilometer":"square-kilometer",
-	"square kilometre":"square-kilometer",
-	"square kilometers":"square-kilometer",
-	"square kilometres":"square-kilometer",
+    "cm2":"square-centimeter",
+    "cm²":"square-centimeter",
+    "square kilometer":"square-kilometer",
+    "square kilometre":"square-kilometer",
+    "square kilometers":"square-kilometer",
+    "square kilometres":"square-kilometer",
+    "sq kilometer":"square-kilometer",
+    "sq kilometre":"square-kilometer",
+    "sq kilometers":"square-kilometer",
+    "sq kilometres":"square-kilometer",
     "square km":"square-kilometer",
-	"sq km":"square-kilometer",
-	"km2":"square-kilometer",
-	"Hectare":"hectare",
-	"hectare":"hectare",
-	"ha":"hectare",
-	"Square meter": "square-meter",
-	"Square meters":"square-meter",
-	"square meter": "square-meter",
-	"square meters":"square-meter",
-	"Square metre": "square-meter",
-	"Square metres":"square-meter",
-	"square metres": "square-meter",
-	"Square Metres":"square-meter",
-	"sqm":"square-meter",
-	"m2": "square-meter",
-	"Square mile":"square-mile",
-	"Square miles":"square-mile",
-	"square mile":"square-mile",
-	"square miles":"square-mile",
-	"square mi":"square-mile",
-	"Square mi":"square-mile",
-	"sq mi":"square-mile",
-	"mi2":"square-mile",
-	"Acre": "acre",
-	"acre": "acre",
-	"Acres":"acre",
-	"acres":"acre",
-	"Square yard": "square-yard",
-	"Square yards":"square-yard",
-	"square yard": "square-yard",
-	"square yards":"square-yard",
-	"yd2":"square-yard",
-	"Square foot": "square-foot",
-	"square foot": "square-foot",
-	"Square feet": "square-foot",
-	"Square Feet": "square-foot",
-	"sq ft":"square-foot",
-	"ft2":"square-foot",
-	"Square inch":"square-inch",
-	"square inch":"square-inch",
-	"Square inches":"square-inch",
-	"square inches":"square-inch",
-	"in2":"square-inch"
+    "sq km":"square-kilometer",
+    "km2":"square-kilometer",
+    "km²":"square-kilometer",
+    "hectare":"hectare",
+    "ha":"hectare",
+    "square meter": "square-meter",
+    "square meters":"square-meter",
+    "square metre": "square-meter",
+    "square metres": "square-meter",
+    "sq meter": "square-meter",
+    "sq meters":"square-meter",
+    "sq metre": "square-meter",
+    "sq metres": "square-meter",
+    "sqm":"square-meter",
+    "m2": "square-meter",
+    "m²":"square-meter",
+    "square mile":"square-mile",
+    "square miles":"square-mile",
+    "square mi":"square-mile",
+    "sq mi":"square-mile",
+    "mi2":"square-mile",
+    "mi²":"square-mile",
+    "acre": "acre",
+    "acres":"acre",
+    "square yard": "square-yard",
+    "square yards":"square-yard",
+    "sq yard": "square-yard",
+    "sq yards": "square-yard",
+    "sq yrd": "square-yard",
+    "sq yrds": "square-yard",
+    "yard2":"square-yard",
+    "yard²":"square-yard",
+    "yrd2":"square-yard",
+    "yrd²":"square-yard",
+    "yd2":"square-yard",
+    "yd²":"square-yard",
+    "square foot": "square-foot",
+    "square feet": "square-foot",
+    "sq ft":"square-foot",
+    "ft2":"square-foot",
+    "ft²":"square-foot",
+    "square inch":"square-inch",
+    "square inches":"square-inch",
+    "in2":"square-inch",
+    "in²":"square-inch"
 };
 
 /**
@@ -184,8 +190,8 @@ AreaUnit.aliases = {
  * @returns {number|undefined} the converted amount
  */
 AreaUnit.convert = function(to, from, area) {
-    from = AreaUnit.aliases[from] || from;
-    to = AreaUnit.aliases[to] || to;
+    from = Measurement.getUnitIdCaseInsensitive(AreaUnit, from) || from;
+    to = Measurement.getUnitIdCaseInsensitive(AreaUnit, to) || to;
 	var fromRow = AreaUnit.ratios[from];
 	var toRow = AreaUnit.ratios[to];
 	if (typeof(from) === 'undefined' || typeof(to) === 'undefined') {
@@ -199,11 +205,7 @@ AreaUnit.convert = function(to, from, area) {
  * @static
  */
 AreaUnit.getMeasures = function () {
-	var ret = [];
-	for (var m in AreaUnit.ratios) {
-		ret.push(m);
-	}
-	return ret;
+    return Object.keys(AreaUnit.ratios);
 };
 
 AreaUnit.metricSystem = {

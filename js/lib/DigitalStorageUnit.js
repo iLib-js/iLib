@@ -36,12 +36,11 @@ var Measurement = require("./Measurement.js");
 var DigitalStorageUnit = function (options) {
 	this.unit = "byte";
 	this.amount = 0;
-	this.aliases = DigitalStorageUnit.aliases; // share this table in all instances
 	
 	if (options) {
 		if (typeof(options.unit) !== 'undefined') {
 			this.originalUnit = options.unit;
-			this.unit = this.aliases[options.unit] || options.unit;
+			this.unit = this.normalizeUnits(options.unit) || options.unit;
 		}
 		
 		if (typeof(options.amount) === 'object') {
@@ -311,8 +310,8 @@ DigitalStorageUnit.aliases = {
  * @returns {number|undefined} the converted amount
  */
 DigitalStorageUnit.convert = function(to, from, digitalStorage) {
-    from = DigitalStorageUnit.aliases[from] || from;
-    to = DigitalStorageUnit.aliases[to] || to;
+    from = Measurement.getUnitIdCaseInsensitive(DigitalStorageUnit, from) || from;
+    to = Measurement.getUnitIdCaseInsensitive(DigitalStorageUnit, to) || to;
 	var fromRow = DigitalStorageUnit.ratios[from];
 	var toRow = DigitalStorageUnit.ratios[to];
 	if (typeof(from) === 'undefined' || typeof(to) === 'undefined') {
@@ -327,11 +326,7 @@ DigitalStorageUnit.convert = function(to, from, digitalStorage) {
  * @static
  */
 DigitalStorageUnit.getMeasures = function () {
-	var ret = [];
-	for (var m in DigitalStorageUnit.ratios) {
-		ret.push(m);
-	}
-	return ret;
+    return Object.keys(DigitalStorageUnit.ratios);
 };
 
 //register with the factory method

@@ -37,12 +37,11 @@ var Measurement = require("./Measurement.js");
 var VolumeUnit = function (options) {
 	this.unit = "cubic-meter";
 	this.amount = 0;
-	this.aliases = VolumeUnit.aliases; // share this table in all instances
 	
 	if (options) {
 		if (typeof(options.unit) !== 'undefined') {
 			this.originalUnit = options.unit;
-			this.unit = this.aliases[options.unit] || options.unit;
+			this.unit = this.normalizeUnits(options.unit) || options.unit;
 		}
 		
 		if (typeof(options.amount) === 'object') {
@@ -237,8 +236,8 @@ VolumeUnit.aliases = {
  * @returns {number|undefined} the converted amount
  */
 VolumeUnit.convert = function(to, from, volume) {
-    from = VolumeUnit.aliases[from] || from;
-    to = VolumeUnit.aliases[to] || to;
+    from = Measurement.getUnitIdCaseInsensitive(VolumeUnit, from) || from;
+    to = Measurement.getUnitIdCaseInsensitive(VolumeUnit, to) || to;
 	var fromRow = VolumeUnit.ratios[from];
 	var toRow = VolumeUnit.ratios[to];
 	if (typeof(from) === 'undefined' || typeof(to) === 'undefined') {
@@ -253,12 +252,9 @@ VolumeUnit.convert = function(to, from, volume) {
  * @static
  */
 VolumeUnit.getMeasures = function () {
-	var ret = [];
-	for (var m in VolumeUnit.ratios) {
-		ret.push(m);
-	}
-	return ret;
+    return Object.keys(VolumeUnit.ratios);
 };
+
 VolumeUnit.metricSystem = {
     "milliliter": 10,
     "liter": 11,
