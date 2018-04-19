@@ -70,13 +70,13 @@ EnergyUnit.ratios = {
     "joule":        [ 2,   1000,       1,          9.4781707775e-4,  0.001,      2.7777777778e-4,  2.3884589663e-4,  1.0e-6,        2.7777777778e-7,   1.0e-9,        2.7777777778e-10,   2.7777777778e-13  ],
     "BTU":          [ 3,   1055055.9,  1055.0559,  1,                1.0550559,  0.29307108333,    0.25199577243,    1.0550559e-3,  2.9307108333e-4,   1.0550559e-6,  2.9307108333e-7,    2.9307108333e-10  ],
     "kilojoule":    [ 4,   1000000,    1000,       0.94781707775,    1,          0.27777777778,    0.23884589663,    0.001,         2.7777777778e-4,   1.0e-6,        2.7777777778e-7,    2.7777777778e-10  ],
-    "watt hour":    [ 5,   3.6e+6,     3600,       3.4121414799,     3.6,        1,                0.85984522786,    0.0036,        0.001,             3.6e-6,        1.0e-6,             1.0e-9            ],
-    "calorie":      [ 6,   4.868e+5,   4186.8,     3.9683205411,     4.1868,     1.163,            1,                4.1868e-3,     1.163e-3,          4.1868e-6,     1.163e-6,           1.163e-9          ],
+    "watt-hour":    [ 5,   3.6e+6,     3600,       3.4121414799,     3.6,        1,                0.85984522786,    0.0036,        0.001,             3.6e-6,        1.0e-6,             1.0e-9            ],
+    "foodcalorie":  [ 6,   4.868e+5,   4186.8,     3.9683205411,     4.1868,     1.163,            1,                4.1868e-3,     1.163e-3,          4.1868e-6,     1.163e-6,           1.163e-9          ],
     "megajoule":    [ 7,   1e+9,       1e+6,       947.81707775,     1000,       277.77777778,     238.84589663,     1,             0.27777777778,     0.001,         2.7777777778e-4,    2.7777777778e-7   ],
-    "kilowatt hour":[ 8,   3.6e+9,     3.6e+6,     3412.1414799,     3600,       1000,             859.84522786,     3.6,           1,                 3.6e-3,        0.001,              1e-6              ],
+    "kilowatt-hour":[ 8,   3.6e+9,     3.6e+6,     3412.1414799,     3600,       1000,             859.84522786,     3.6,           1,                 3.6e-3,        0.001,              1e-6              ],
     "gigajoule":    [ 9,   1e+12,      1e+9,       947817.07775,     1e+6,       277777.77778,     238845.89663,     1000,          277.77777778,      1,             0.27777777778,      2.7777777778e-4   ],
-    "megawatt hour":[ 10,  3.6e+12,    3.6e+9,     3412141.4799,     3.6e+6,     1e+6,             859845.22786,     3600,          1000,              3.6,           1,                  0.001             ],
-    "gigawatt hour":[ 11,  3.6e+15,    3.6e+12,    3412141479.9,     3.6e+9,     1e+9,             859845227.86,     3.6e+6,        1e+6,              3600,          1000,               1                 ]
+    "megawatt-hour":[ 10,  3.6e+12,    3.6e+9,     3412141.4799,     3.6e+6,     1e+6,             859845.22786,     3600,          1000,              3.6,           1,                  0.001             ],
+    "gigawatt-hour":[ 11,  3.6e+15,    3.6e+12,    3412141479.9,     3.6e+9,     1e+9,             859845227.86,     3.6e+6,        1e+6,              3600,          1000,               1                 ]
 };
 
 /**
@@ -106,13 +106,13 @@ EnergyUnit.prototype.getMeasure = function() {
  * measurement type 
  */
 EnergyUnit.prototype.convert = function(to) {
-	if (!to || typeof(EnergyUnit.ratios[this.normalizeUnits(to)]) === 'undefined') {
-		return undefined;
-	}
-	return new EnergyUnit({
-		unit: to,
-		amount: this
-	});
+    if (!to || typeof(EnergyUnit.ratios[this.normalizeUnits(to)]) === 'undefined') {
+        return undefined;
+    }
+    return new EnergyUnit({
+        unit: to,
+        amount: this
+    });
 };
 
 EnergyUnit.aliases = {
@@ -137,15 +137,15 @@ EnergyUnit.aliases = {
     "kiloJoule": "kilojoule",
     "kilojoule": "kilojoule",
     "kjoule": "kilojoule",
-    "watt hour": "watt hour",
-    "Wh": "watt hour",
-    "wh": "watt hour",
-    "watt-hour": "watt hour",
-    "calorie": "calorie",
-    "Cal": "calorie",
-    "cal": "calorie",
-    "Calorie": "calorie",
-    "calories": "calorie",
+    "watt hour": "watt-hour",
+    "Wh": "watt-hour",
+    "wh": "watt-hour",
+    "watt-hour": "watt-hour",
+    "calorie": "foodcalorie",
+    "Cal": "foodcalorie",
+    "cal": "foodcalorie",
+    "Calorie": "foodcalorie",
+    "calories": "foodcalorie",
     "mega joule": "megajoule",
     "MJ": "megajoule",
     "megajoule": "megajoule",
@@ -155,17 +155,17 @@ EnergyUnit.aliases = {
     "MegaJoules": "megajoule",
     "megaJoule": "megajoule",
     "MegaJoule": "megajoule",
-    "kilo Watt hour": "kilowatt hour",
-    "kWh": "kilowatt hour",
-    "kiloWh": "kilowatt hour",
-    "KiloWh": "kilowatt hour",
-    "KiloWatt-hour": "kilowatt hour",
-    "kilowatt hour": "kilowatt hour",
-    "kilowatt-hour": "kilowatt hour",
-    "KiloWatt-hours": "kilowatt hour",
-    "kilowatt-hours": "kilowatt hour",
-    "Kilo Watt-hour": "kilowatt hour",
-    "Kilo Watt-hours": "kilowatt hour",
+    "kilo Watt hour": "kilowatt-hour",
+    "kWh": "kilowatt-hour",
+    "kiloWh": "kilowatt-hour",
+    "KiloWh": "kilowatt-hour",
+    "KiloWatt-hour": "kilowatt-hour",
+    "kilowatt hour": "kilowatt-hour",
+    "kilowatt-hour": "kilowatt-hour",
+    "KiloWatt-hours": "kilowatt-hour",
+    "kilowatt-hours": "kilowatt-hour",
+    "Kilo Watt-hour": "kilowatt-hour",
+    "Kilo Watt-hours": "kilowatt-hour",
     "giga joule": "gigajoule",
     "gJ": "gigajoule",
     "GJ": "gigajoule",
@@ -176,25 +176,25 @@ EnergyUnit.aliases = {
     "gigaJoules": "gigajoule",
     "Gigajoules": "gigajoule",
     "gigajoules": "gigajoule",
-    "mega watt hour": "megawatt hour",
-    "MWh": "megawatt hour",
-    "MegaWh": "megawatt hour",
-    "megaWh": "megawatt hour",
-    "megaWatthour": "megawatt hour",
-    "megaWatt-hour": "megawatt hour",
-    "mega Watt-hour": "megawatt hour",
-    "megaWatt hour": "megawatt hour",
-    "megawatt hour": "megawatt hour",
-    "mega Watt hour": "megawatt hour",
-    "giga watt hour": "gigawatt hour",
-    "gWh": "gigawatt hour",
-    "GWh": "gigawatt hour",
-    "gigaWh": "gigawatt hour",
-    "gigaWatt-hour": "gigawatt hour",
-    "gigawatt-hour": "gigawatt hour",
-    "gigaWatt hour": "gigawatt hour",
-    "gigawatt hour": "gigawatt hour",
-    "gigawatthour": "gigawatt hour"
+    "mega watt hour": "megawatt-hour",
+    "MWh": "megawatt-hour",
+    "MegaWh": "megawatt-hour",
+    "megaWh": "megawatt-hour",
+    "megaWatthour": "megawatt-hour",
+    "megaWatt-hour": "megawatt-hour",
+    "mega Watt-hour": "megawatt-hour",
+    "megaWatt hour": "megawatt-hour",
+    "megawatt hour": "megawatt-hour",
+    "mega Watt hour": "megawatt-hour",
+    "giga watt hour": "gigawatt-hour",
+    "gWh": "gigawatt-hour",
+    "GWh": "gigawatt-hour",
+    "gigaWh": "gigawatt-hour",
+    "gigaWatt-hour": "gigawatt-hour",
+    "gigawatt-hour": "gigawatt-hour",
+    "gigaWatt hour": "gigawatt-hour",
+    "gigawatt hour": "gigawatt-hour",
+    "gigawatthour": "gigawatt-hour"
 };
 
 /**
@@ -221,11 +221,11 @@ EnergyUnit.convert = function(to, from, energy) {
  * @static
  */
 EnergyUnit.getMeasures = function () {
-	var ret = [];
-	for (var m in EnergyUnit.ratios) {
-		ret.push(m);
-	}
-	return ret;
+    var ret = [];
+    for (var m in EnergyUnit.ratios) {
+        ret.push(m);
+    }
+    return ret;
 };
 
 EnergyUnit.metricJouleSystem = {
@@ -236,17 +236,17 @@ EnergyUnit.metricJouleSystem = {
     "gigajoule": 9
 };
 EnergyUnit.metricWattHourSystem = {
-    "watt hour": 5,
-    "kilowatt hour": 8,
-    "megawatt hour": 10,
-    "gigawatt hour": 11
+    "watt-hour": 5,
+    "kilowatt-hour": 8,
+    "megawatt-hour": 10,
+    "gigawatt-hour": 11
 };
 
 EnergyUnit.imperialSystem = {
-	"BTU": 3
+    "BTU": 3
 };
 EnergyUnit.uscustomarySystem = {
-	"calorie": 6
+    "foodcalorie": 6
 };
 
 EnergyUnit.metricToImperial = {
@@ -257,7 +257,7 @@ EnergyUnit.metricToImperial = {
     "gigajoule": "BTU"
 };
 EnergyUnit.imperialToMetric = {
-	"BTU": "joule"
+    "BTU": "joule"
 };
 
 /**

@@ -73,6 +73,12 @@ var NumFmt = require("./NumFmt.js");
  * being formatted. Default for the autoConvert property is "true", so it only needs to 
  * be specified when you want to turn off autoconversion.
  * 
+ * <li><i>length</i> - the length of the units text. This can be either "short" or "long"
+ * with the default being "long". Example: a short units text might be "kph" and the 
+ * corresponding long units text would be "kilometers per hour". Typically, it is the
+ * long units text that is translated per locale, though the short one may be as well.
+ * Plurals are taken care of properly per locale as well.
+ * 
  * <li><i>maxFractionDigits</i> - the maximum number of digits that should appear in the
  * formatted output after the decimal. A value of -1 means unlimited, and 0 means only print
  * the integral part of the number.

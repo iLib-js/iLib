@@ -73,9 +73,9 @@ MassUnit.ratios = {
 	"pound":       [ 5,   4.536e+8,   453592,    453.592,   16,         1,           0.453592,   0.0714286,    0.0005,      0.000453592,  0.000446429  ],
     "kilogram":    [ 6,   1e+9,       1e+6,      1000,      35.274,     2.20462,     1,          0.157473,     0.00110231,  0.001,        0.000984207  ],
     "stone":       [ 7,   6.35e+9,    6.35e+6,   6350.29,   224,        14,          6.35029,    1,            0.007,       0.00635029,   0.00625      ],
-    "short ton":   [ 8,   9.072e+11,  9.072e+8,  907185,    32000,      2000,        907.185,    142.857,      1,           0.907185,     0.892857     ],
-    "metric ton":  [ 9,   1e+12,      1e+9,      1e+6,      35274,      2204.62,     1000,       157.473,      1.10231,     1,            0.984207     ],
-    "long ton":    [ 10,  1.016e+12,  1.016e+9,  1.016e+6,  35840,      2240,        1016.05,    160,          1.12,        1.01605,      1            ]
+    "short-ton":   [ 8,   9.072e+11,  9.072e+8,  907185,    32000,      2000,        907.185,    142.857,      1,           0.907185,     0.892857     ],
+    "metric-ton":  [ 9,   1e+12,      1e+9,      1e+6,      35274,      2204.62,     1000,       157.473,      1.10231,     1,            0.984207     ],
+    "ton":         [ 10,  1.016e+12,  1.016e+9,  1.016e+6,  35840,      2240,        1016.05,    160,          1.12,        1.01605,      1            ]
 };
 
 MassUnit.metricSystem = {
@@ -83,18 +83,18 @@ MassUnit.metricSystem = {
     "milligram": 2,
     "gram": 3,
     "kilogram": 6,
-    "metric ton": 9
+    "metric-ton": 9
 };
 MassUnit.imperialSystem = {
     "ounce": 4,
     "pound": 5,
     "stone": 7,
-    "long ton": 10
+    "ton": 10
 };
 MassUnit.uscustomarySystem = {
     "ounce": 4,
     "pound": 5,
-    "short ton": 8
+    "short-ton": 8
 };
 
 MassUnit.metricToUScustomary = {
@@ -102,40 +102,40 @@ MassUnit.metricToUScustomary = {
     "milligram": "ounce",
     "gram": "ounce",
     "kilogram": "pound",
-    "metric ton": "long ton"
+    "metric-ton": "ton"
 };
 MassUnit.metricToImperial = {
     "microgram": "ounce",
     "milligram": "ounce",
     "gram": "ounce",
     "kilogram": "pound",
-    "metric ton": "short ton"
+    "metric-ton": "short-ton"
 };
 
 MassUnit.imperialToMetric = {
     "ounce": "gram",
     "pound": "kilogram",
     "stone": "kilogram",
-    "short ton": "metric ton"
+    "short-ton": "metric-ton"
 };
 MassUnit.imperialToUScustomary = {
     "ounce": "ounce",
     "pound": "pound",
     "stone": "stone",
-    "short ton": "long ton"
+    "short-ton": "ton"
 };
 
 MassUnit.uScustomaryToImperial = {
     "ounce": "ounce",
     "pound": "pound",
     "stone": "stone",
-    "long ton": "short ton"
+    "ton": "short-ton"
 };
 MassUnit.uScustomarylToMetric = {
     "ounce": "gram",
     "pound": "kilogram",
     "stone": "kilogram",
-    "long ton": "metric ton"
+    "ton": "metric-ton"
 };
 
 /**
@@ -226,6 +226,7 @@ MassUnit.aliases = {
     "poundm":"pound",
     "℔":"pound",
     "lb":"pound",
+    "lbs":"pound",
     "pounds":"pound",
     "Pound":"pound",
     "Pounds":"pound",
@@ -246,23 +247,23 @@ MassUnit.aliases = {
     "st":"stone",
     "stones":"stone",
     "Stone":"stone",
-    "short ton":"short ton",
-    "Short ton":"short ton",
-    "Short Ton":"short ton",
-    "metric ton":"metric ton",
-    "metricton":"metric ton",
-    "t":"metric ton",
-    "tonne":"metric ton",
-    "Tonne":"metric ton",
-    "Metric Ton":"metric ton",
-    "MetricTon":"metric ton",    
-    "long ton":"long ton",
-    "longton":"long ton",
-    "Longton":"long ton",
-    "Long ton":"long ton",
-    "Long Ton":"long ton",
-    "ton":"long ton",
-    "Ton":"long ton"
+    "short ton":"short-ton",
+    "Short ton":"short-ton",
+    "Short Ton":"short-ton",
+    "metric ton":"metric-ton",
+    "metricton":"metric-ton",
+    "t":"metric-ton",
+    "tonne":"metric-ton",
+    "Tonne":"metric-ton",
+    "Metric Ton":"metric-ton",
+    "MetricTon":"metric-ton",    
+    "long ton":"ton",
+    "longton":"ton",
+    "Longton":"ton",
+    "Long ton":"ton",
+    "Long Ton":"ton",
+    "ton":"ton",
+    "Ton":"ton"
 };
 
 /**

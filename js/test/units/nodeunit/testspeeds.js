@@ -110,7 +110,7 @@ module.exports.testspeeds = {
         m = m.scale("metric");
     
         test.roughlyEqual(m.amount, 1, 0.1);
-        test.equal(m.unit, "kilometer/hour");
+        test.equal(m.unit, "kilometer-per-hour");
         test.done();
     },
     
@@ -166,7 +166,7 @@ module.exports.testspeeds = {
         m = m.localize("en-IN");
     
         test.roughlyEqual(m.amount, 1609.34, 0.01);
-        test.equal(m.unit, "kilometer/hour");
+        test.equal(m.unit, "kilometer-per-hour");
         test.done();
     },
     
@@ -180,7 +180,7 @@ module.exports.testspeeds = {
         m = m.localize("en-US");
     
         test.roughlyEqual(m.amount, 621.371, 0.001);
-        test.equal(m.unit, "miles/hour");
+        test.equal(m.unit, "mile-per-hour");
         test.done();
     },
     
@@ -194,7 +194,7 @@ module.exports.testspeeds = {
         m = m.localize("en-GB");
     
         test.equal(m.amount, 1000);
-        test.equal(m.unit, "miles/hour");
+        test.equal(m.unit, "mile-per-hour");
         test.done();
     },
     
@@ -202,13 +202,13 @@ module.exports.testspeeds = {
         test.expect(1);
         var measures = VelocityUnit.getMeasures();
         var expected = [
-            "kilometer/hour",
-            "feet/second",
-            "miles/hour",
+            "kilometer-per-hour",
+            "foot-per-second",
+            "mile-per-hour",
             "knot",
-            "meters/second",
-            "kilometer/second",
-            "miles/second",
+            "meter-per-second",
+            "kilometer-per-second",
+            "mile-per-second"
         ];
         test.equalIgnoringOrder(measures, expected);
         test.done();

@@ -109,28 +109,28 @@ var Measurement = require("./Measurement.js");
  * @param {Object=} options options that control the construction of this instance
  */
 var MeasurementFactory = function(options) {
-	if (!options || typeof(options.unit) === 'undefined') {
-		return undefined;
-	}
+    if (!options || typeof(options.unit) === 'undefined') {
+        return undefined;
+    }
 
-	var measure = undefined;
+    var measure = undefined;
 
-	for (var c in Measurement._constructors) {
-		var measurement = Measurement._constructors[c];
-		if (typeof(measurement.aliases[options.unit]) !== 'undefined') {
-			measure = c;
-			break;
-		}
-	}
+    for (var c in Measurement._constructors) {
+        var measurement = Measurement._constructors[c];
+        if (typeof(measurement.aliases[options.unit]) !== 'undefined' || (measurement.ratios && typeof(measurement.ratios[options.unit]) !== 'undefined')) {
+            measure = c;
+            break;
+        }
+    }
 
-	if (!measure || typeof(measure) === 'undefined') {
-		return new UnknownUnit({
-			unit: options.unit,
-			amount: options.amount
-		});
-	} else {
-		return new Measurement._constructors[measure](options);
-	}
+    if (!measure || typeof(measure) === 'undefined') {
+        return new UnknownUnit({
+            unit: options.unit,
+            amount: options.amount
+        });
+    } else {
+        return new Measurement._constructors[measure](options);
+    }
 };
 
 /**

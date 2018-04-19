@@ -125,7 +125,7 @@ module.exports.testenergy = {
         var m2 = m1.scale("metric");
     
         test.equal(m2.amount, 10);
-        test.equal(m2.unit, "kilowatt hour");
+        test.equal(m2.unit, "kilowatt-hour");
         test.done();
     },
     
@@ -138,7 +138,7 @@ module.exports.testenergy = {
         var m2 = m1.scale("metric");
     
         test.equal(m2.amount, 1.233453);
-        test.equal(m2.unit, "gigawatt hour");
+        test.equal(m2.unit, "gigawatt-hour");
         test.done();
     },
     
@@ -176,13 +176,13 @@ module.exports.testenergy = {
             "joule",
             "BTU",
             "kilojoule",
-            "watt hour",
-            "calorie",
+            "watt-hour",
+            "foodcalorie",
             "megajoule",
-            "kilowatt hour",
+            "kilowatt-hour",
             "gigajoule",
-            "megawatt hour",
-            "gigawatt hour"
+            "megawatt-hour",
+            "gigawatt-hour"
     
         ];
         test.equalIgnoringOrder(measures, expected);

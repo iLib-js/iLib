@@ -34,7 +34,7 @@ var Measurement = require("./Measurement.js");
  * the construction of this instance
  */
 var FuelConsumptionUnit = function(options) {
-    this.unit = "km/liter";
+    this.unit = "liter-per-100kilometers";
     this.amount = 0;
     this.aliases = FuelConsumptionUnit.aliases; // share this table in all instances
 
@@ -60,12 +60,14 @@ FuelConsumptionUnit.prototype = new Measurement();
 FuelConsumptionUnit.prototype.parent = Measurement;
 FuelConsumptionUnit.prototype.constructor = FuelConsumptionUnit;
 
-FuelConsumptionUnit.ratios = [
-    "km/liter",
-    "liter/100km",
-    "mpg",
-    "mpg(imp)"
-];
+FuelConsumptionUnit.ratios = {
+    /*                         index    km/L        L/km        L/100km           mpg         mpgi       inverse? */
+     "kilometer-per-liter":      [ 1,   1,          1,          100,              2.35215,    2.82481,   false ],
+     "liter-per-kilometer":      [ 2,   1,          1,          0.01,             2.35215,    2.82481,   true  ],
+     "liter-per-100kilometers":  [ 3,   100,        0.01,       1,                235.215,    282.481,   true  ],
+     "mile-per-gallon":          [ 4,   0.425144,   2.35215,    235.215,          1,          1.20095,   false ],
+     "mile-per-gallon-imperial": [ 5,   0.354006,   2.82481,    282.481,          0.8326741,  1,         false ]
+};
 
 /**
  * Return the type of this measurement. Examples are "mass",
@@ -102,68 +104,85 @@ FuelConsumptionUnit.prototype.convert = function(to) {
         amount: this
     });
 };
-/*["km/liter", "liter/100km", "mpg", "mpg(imp)"*/
+
 FuelConsumptionUnit.aliases = {
-    "Km/liter": "km/liter",
-    "KM/Liter": "km/liter",
-    "KM/L": "km/liter",
-    "Kilometers Per Liter": "km/liter",
-    "kilometers per liter": "km/liter",
-    "km/l": "km/liter",
-    "Kilometers/Liter": "km/liter",
-    "Kilometer/Liter": "km/liter",
-    "kilometers/liter": "km/liter",
-    "kilometer/liter": "km/liter",
-    "km/liter": "km/liter",
-    "Liter/100km": "liter/100km",
-    "Liters/100km": "liter/100km",
-    "Liter/100kms": "liter/100km",
-    "Liters/100kms": "liter/100km",
-    "liter/100km": "liter/100km",
-    "liters/100kms": "liter/100km",
-    "liters/100km": "liter/100km",
-    "liter/100kms": "liter/100km",
-    "Liter/100KM": "liter/100km",
-    "Liters/100KM": "liter/100km",
-    "L/100km": "liter/100km",
-    "L/100KM": "liter/100km",
-    "l/100KM": "liter/100km",
-    "l/100km": "liter/100km",
-    "l/100kms": "liter/100km",
-    "MPG(US)": "mpg",
-    "USMPG ": "mpg",
-    "mpg": "mpg",
-    "mpgUS": "mpg",
-    "mpg(US)": "mpg",
-    "mpg(us)": "mpg",
-    "mpg-us": "mpg",
-    "mpg Imp": "mpg(imp)",
-    "MPG(imp)": "mpg(imp)",
-    "mpg(imp)": "mpg(imp)",
-    "mpg-imp": "mpg(imp)"
+    "Km/liter": "kilometer-per-liter",
+    "KM/Liter": "kilometer-per-liter",
+    "KM/L": "kilometer-per-liter",
+    "Kilometers Per Liter": "kilometer-per-liter",
+    "kilometers per liter": "kilometer-per-liter",
+    "km/l": "kilometer-per-liter",
+    "Kilometers/Liter": "kilometer-per-liter",
+    "Kilometer/Liter": "kilometer-per-liter",
+    "kilometers/liter": "kilometer-per-liter",
+    "kilometer/liter": "kilometer-per-liter",
+    "km/liter": "kilometer-per-liter",
+    "Liter/100km": "liter-per-100kilometers",
+    "Liters/100km": "liter-per-100kilometers",
+    "Liter/100kms": "liter-per-100kilometers",
+    "Liters/100kms": "liter-per-100kilometers",
+    "liter/100km": "liter-per-100kilometers",
+    "liters/100kms": "liter-per-100kilometers",
+    "liters/100km": "liter-per-100kilometers",
+    "liter/100kms": "liter-per-100kilometers",
+    "Liter/100KM": "liter-per-100kilometers",
+    "Liters/100KM": "liter-per-100kilometers",
+    "L/100km": "liter-per-100kilometers",
+    "L/100KM": "liter-per-100kilometers",
+    "l/100KM": "liter-per-100kilometers",
+    "l/100km": "liter-per-100kilometers",
+    "l/100kms": "liter-per-100kilometers",
+    "Liter/km": "liter-per-kilometer",
+    "Liters/km": "liter-per-kilometer",
+    "Liter/kms": "liter-per-kilometer",
+    "Liters/kms": "liter-per-kilometer",
+    "liter/km": "liter-per-kilometer",
+    "liters/kms": "liter-per-kilometer",
+    "liters/km": "liter-per-kilometer",
+    "liter/kms": "liter-per-kilometer",
+    "Liter/KM": "liter-per-kilometer",
+    "Liters/KM": "liter-per-kilometer",
+    "L/km": "liter-per-kilometer",
+    "L/KM": "liter-per-kilometer",
+    "l/KM": "liter-per-kilometer",
+    "l/km": "liter-per-kilometer",
+    "l/kms": "liter-per-kilometer",
+    "MPG(US)": "mile-per-gallon",
+    "USMPG ": "mile-per-gallon",
+    "mpg": "mile-per-gallon",
+    "mpgUS": "mile-per-gallon",
+    "mpg(US)": "mile-per-gallon",
+    "mpg(us)": "mile-per-gallon",
+    "mpg-us": "mile-per-gallon",
+    "mpg Imp": "mile-per-gallon-imperial",
+    "MPG(imp)": "mile-per-gallon-imperial",
+    "mpg(imp)": "mile-per-gallon-imperial",
+    "mpg-imp": "mile-per-gallon-imperial"
 };
 
 FuelConsumptionUnit.metricToUScustomary = {
-    "km/liter": "mpg",
-    "liter/100km": "mpg"
+    "liter-per-kilometer": "mile-per-gallon",
+    "kilometer-per-liter": "mile-per-gallon",
+    "liter-per-100kilometers": "mile-per-gallon"
 };
 FuelConsumptionUnit.metricToImperial = {
-    "km/liter": "mpg(imp)",
-    "liter/100km": "mpg(imp)"
+    "liter-per-kilometer": "mile-per-gallon-imperial",
+    "kilometer-per-liter": "mile-per-gallon-imperial",
+    "liter-per-100kilometers": "mile-per-gallon-imperial"
 };
 
 FuelConsumptionUnit.imperialToMetric = {
-	"mpg(imp)": "km/liter"
+    "mile-per-gallon-imperial": "liter-per-100kilometers"
 };
 FuelConsumptionUnit.imperialToUScustomary = {
-	"mpg(imp)": "mpg"
+    "mile-per-gallon-imperial": "mile-per-gallon"
 };
 
 FuelConsumptionUnit.uScustomaryToImperial = {
-	"mpg": "mpg(imp)"
+    "mile-per-gallon": "mile-per-gallon-imperial"
 };
 FuelConsumptionUnit.uScustomarylToMetric = {
-	"mpg": "km/liter"
+    "mile-per-gallon": "liter-per-100kilometers"
 };
 
 /**
@@ -177,24 +196,24 @@ FuelConsumptionUnit.uScustomarylToMetric = {
  * @returns {Measurement} a new instance that is converted to locale
  */
 FuelConsumptionUnit.prototype.localize = function(locale) {
-	var to;
-	if (locale === "en-US") {
-		to = FuelConsumptionUnit.metricToUScustomary[this.unit] ||
-		    FuelConsumptionUnit.imperialToUScustomary[this.unit] ||
-		    this.unit;
-	} else if (locale === "en-GB") {
-		to = FuelConsumptionUnit.metricToImperial[this.unit] ||
-		    FuelConsumptionUnit.uScustomaryToImperial[this.unit] ||
-		    this.unit;
-	} else {
-		to = FuelConsumptionUnit.uScustomarylToMetric[this.unit] ||
-		    FuelConsumptionUnit.imperialToUScustomary[this.unit] ||
-		    this.unit;
-	}
-	return new FuelConsumptionUnit({
-	    unit: to,
-	    amount: this
-	});
+    var to;
+    if (locale === "en-US") {
+        to = FuelConsumptionUnit.metricToUScustomary[this.unit] ||
+             FuelConsumptionUnit.imperialToUScustomary[this.unit] ||
+             this.unit;
+    } else if (locale === "en-GB") {
+        to = FuelConsumptionUnit.metricToImperial[this.unit] ||
+             FuelConsumptionUnit.uScustomaryToImperial[this.unit] ||
+             this.unit;
+    } else {
+        to = FuelConsumptionUnit.uScustomarylToMetric[this.unit] ||
+             FuelConsumptionUnit.imperialToUScustomary[this.unit] ||
+             this.unit;
+    }
+    return new FuelConsumptionUnit({
+        unit: to,
+        amount: this
+    });
 };
 
 /**
@@ -209,75 +228,19 @@ FuelConsumptionUnit.prototype.localize = function(locale) {
 FuelConsumptionUnit.convert = function(to, from, fuelConsumption) {
     from = FuelConsumptionUnit.aliases[from] || from;
     to = FuelConsumptionUnit.aliases[to] || to;
-    var returnValue = 0;
-
-    switch (from) {
-        case "km/liter":
-            switch (to) {
-                case "km/liter":
-                    returnValue = fuelConsumption * 1;
-                    break;
-                case "liter/100km":
-                    returnValue = 100 / fuelConsumption;
-                    break;
-                case "mpg":
-                    returnValue = fuelConsumption * 2.35215;
-                    break;
-                case "mpg(imp)":
-                    returnValue = fuelConsumption * 2.82481;
-                    break;
-            }
-            break;
-        case "liter/100km":
-            switch (to) {
-                case "km/liter":
-                    returnValue = 100 / fuelConsumption;
-                    break;
-                case "liter/100km":
-                    returnValue = fuelConsumption * 1;
-                    break;
-                case "mpg":
-                    returnValue = 235.215 / fuelConsumption;
-                    break;
-                case "mpg(imp)":
-                    returnValue = 282.481 / fuelConsumption;
-                    break;
-            }
-            break;
-        case "mpg":
-            switch (to) {
-                case "km/liter":
-                    returnValue = fuelConsumption * 0.425144;
-                    break;
-                case "liter/100km":
-                    returnValue = 235.215 / fuelConsumption;
-                    break;
-                case "mpg":
-                    returnValue = 1 * fuelConsumption;
-                    break;
-                case "mpg(imp)":
-                    returnValue = 1.20095 * fuelConsumption;
-                    break;
-            }
-            break;
-        case "mpg(imp)":
-            switch (to) {
-                case "km/liter":
-                    returnValue = fuelConsumption * 0.354006;
-                    break;
-                case "liter/100km":
-                    returnValue = 282.481 / fuelConsumption;
-                    break;
-                case "mpg":
-                    returnValue = 0.832674 * fuelConsumption;
-                    break;
-                case "mpg(imp)":
-                    returnValue = 1 * fuelConsumption;
-                    break;
-            }
-            break;
+    var fromRow = FuelConsumptionUnit.ratios[from];
+    var toRow = FuelConsumptionUnit.ratios[to];
+    if (typeof(from) === 'undefined' || typeof(to) === 'undefined') {
+        return undefined;
     }
-    return returnValue;
+    
+    if (fromRow[6] !== toRow[6]) {
+        // inverses of each other. Avoid the divide by 0.
+        return fuelConsumption ? (fromRow[toRow[0]] / fuelConsumption) : 0;
+    }
+    
+    // not inverses, so just multiply by the factor
+    return fuelConsumption * fromRow[toRow[0]];
 };
 
 /**
@@ -305,13 +268,7 @@ FuelConsumptionUnit.prototype.scale = function(measurementsystem) {
  * @static
  */
 FuelConsumptionUnit.getMeasures = function() {
-    var ret = [];
-    ret.push("km/liter");
-    ret.push("liter/100km");
-    ret.push("mpg");
-    ret.push("mpg(imp)");
-    
-    return ret;
+    return Object.keys(FuelConsumptionUnit.ratios);
 };
 
 //register with the factory method

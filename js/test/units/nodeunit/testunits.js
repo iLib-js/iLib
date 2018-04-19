@@ -139,7 +139,7 @@ module.exports.testunits = {
             "kilometer",
             "megameter",
             "gigameter",
-            "nauticalmile",
+            "nautical-mile",
             "mile",
             "yard",
             "foot",
@@ -162,10 +162,10 @@ module.exports.testunits = {
     
     testMeasurementConstructorSpeeds: function(test) {
         var measures = [
-            "feet/second",
-            "meters/second",
-            "kilometer/hour",
-            "miles/hour",
+            "foot-per-second",
+            "meter-per-second",
+            "kilometer-per-hour",
+            "mile-per-hour",
             "knot"        
         ];
     

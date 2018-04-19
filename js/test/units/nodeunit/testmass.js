@@ -202,7 +202,7 @@ module.exports.testmass = {
         m = m.scale("imperial");
     
         test.roughlyEqual(m.amount, 13.9508929, 0.001);
-        test.equal(m.unit, "long ton");
+        test.equal(m.unit, "ton");
         test.done();
     },
     
@@ -230,7 +230,7 @@ module.exports.testmass = {
         m = m.scale("uscustomary");
     
         test.roughlyEqual(m.amount, 3.125, 0.001);
-        test.equal(m.unit, "short ton");
+        test.equal(m.unit, "short-ton");
         test.done();
     },
     
@@ -286,10 +286,24 @@ module.exports.testmass = {
         m = m.localize("en-GB");
     
         test.equal(m.amount, 1120);
-        test.equal(m.unit, "short ton");
+        test.equal(m.unit, "short-ton");
         test.done();
     },
+
+    testMassLocalize4: function(test) {
+        test.expect(2);
+        var m = new MassUnit({
+            unit: "ton",
+            amount: 1000
+        });
     
+        m = m.localize("en-GB");
+    
+        test.equal(m.amount, 1120);
+        test.equal(m.unit, "short-ton");
+        test.done();
+    },
+
     testMassLocalize5: function(test) {
         test.expect(2);
         var m = new MassUnit({
@@ -300,10 +314,46 @@ module.exports.testmass = {
         m = m.localize("en-GB");
     
         test.roughlyEqual(m.amount, 1102.31, 0.001);
-        test.equal(m.unit, "short ton");
+        test.equal(m.unit, "short-ton");
         test.done();
     },
     
+    testMassAliases1: function(test) {
+        test.expect(2);
+        var m = new MassUnit({
+            unit: "lbs",
+            amount: 1000
+        });
+    
+        test.ok(m);
+        test.equal(m.unit, "pound");
+        test.done();
+    },
+
+    testMassAliases2: function(test) {
+        test.expect(2);
+        var m = new MassUnit({
+            unit: "lb",
+            amount: 1000
+        });
+    
+        test.ok(m);
+        test.equal(m.unit, "pound");
+        test.done();
+    },
+
+    testMassAliases3: function(test) {
+        test.expect(2);
+        var m = new MassUnit({
+            unit: "pound",
+            amount: 1000
+        });
+    
+        test.ok(m);
+        test.equal(m.unit, "pound");
+        test.done();
+    },
+
     testMassGetMeasures: function(test) {
         test.expect(1);
         var measures = MassUnit.getMeasures();
@@ -315,9 +365,9 @@ module.exports.testmass = {
             "pound",
             "kilogram",
             "stone",
-            "short ton",
-            "metric ton",
-            "long ton"
+            "short-ton",
+            "metric-ton",
+            "ton"
         ];
         test.equalIgnoringOrder(measures, expected);
         test.done();

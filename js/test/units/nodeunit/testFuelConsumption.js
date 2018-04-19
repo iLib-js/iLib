@@ -165,8 +165,8 @@ module.exports.testFuelConsumption = {
     
         m = m.localize("en-US");
     
-        test.equal(m.amount, 832.674);
-        test.equal(m.unit, "mpg");
+        test.equal(m.amount, 832.6741);
+        test.equal(m.unit, "mile-per-gallon");
         test.done();
     },
     
@@ -180,7 +180,7 @@ module.exports.testFuelConsumption = {
         m = m.localize("en-IN");
     
         test.roughlyEqual(m.amount, 1000, 0.01);
-        test.equal(m.unit, "km/liter");
+        test.equal(m.unit, "kilometer-per-liter");
         test.done();
     },
     
@@ -194,7 +194,7 @@ module.exports.testFuelConsumption = {
         m = m.localize("en-US");
     
         test.roughlyEqual(m.amount, 2352.15, 0.001);
-        test.equal(m.unit, "mpg");
+        test.equal(m.unit, "mile-per-gallon");
         test.done();
     },
     
@@ -208,7 +208,7 @@ module.exports.testFuelConsumption = {
         m = m.localize("en-GB");
     
         test.equal(m.amount, 2824.81);
-        test.equal(m.unit, "mpg(imp)");
+        test.equal(m.unit, "mile-per-gallon-imperial");
         test.done();
     },
     
@@ -222,7 +222,7 @@ module.exports.testFuelConsumption = {
         m = m.localize("en-GB");
     
         test.roughlyEqual(m.amount, 2824.81, 0.001);
-        test.equal(m.unit, "mpg(imp)");
+        test.equal(m.unit, "mile-per-gallon-imperial");
         test.done();
     },
     
@@ -230,10 +230,11 @@ module.exports.testFuelConsumption = {
         test.expect(1);
         var measures = FuelConsumptionUnit.getMeasures();
         var expected = [
-            "liter/100km",
-            "mpg",
-            "mpg(imp)",
-            "km/liter",
+            "liter-per-100kilometers",
+            "mile-per-gallon",
+            "mile-per-gallon-imperial",
+            "kilometer-per-liter",
+            "liter-per-kilometer"
         ];
     
         test.equalIgnoringOrder(measures, expected);
