@@ -1,6 +1,6 @@
 /*
  * UnitFmt.js - Unit formatter class
- * 
+ *
  * Copyright © 2014-2015,2018, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -18,10 +18,10 @@
  */
 
 /*
-!depends 
-ilib.js 
-Locale.js 
-ResBundle.js 
+!depends
+ilib.js
+Locale.js
+ResBundle.js
 LocaleInfo.js
 IString.js
 NumFmt.js
@@ -39,21 +39,29 @@ var ResBundle = require("./ResBundle.js");
 var IString = require("./IString.js");
 var NumFmt = require("./NumFmt.js");
 
+// for converting ilib lengths to the ones that are supported in cldr
+var lenMap = {
+  "full": "long",
+  "long": "long",
+  "medium": "short",
+  "short": "short"
+};
+
 /**
  * @class
  * Create a new unit formatter instance. The unit formatter is immutable once
  * it is created, but can format as many different strings with different values
- * as needed with the same options. Create different unit formatter instances 
- * for different purposes and then keep them cached for use later if you have 
+ * as needed with the same options. Create different unit formatter instances
+ * for different purposes and then keep them cached for use later if you have
  * more than one unit string to format.<p>
- * 
+ *
  * The options may contain any of the following properties:
- * 
+ *
  * <ul>
  * <li><i>locale</i> - locale to use when formatting the units. The locale also
  * controls the translation of the names of the units. If the locale is
  * not specified, then the default locale of the app or web page will be used.
- * 
+ *
  * <li><i>autoScale</i> - when true, automatically scale the amount to get the smallest
  * number greater than 1, where possible, possibly by converting units within the locale's
  * measurement system. For example, if the current locale is "en-US", and we have
@@ -64,29 +72,92 @@ var NumFmt = require("./NumFmt.js");
  * already, it cannot be scaled down any further and no autoscaling will be applied.
  * Default for the autoScale property is "true", so it only needs to be specified when
  * you want to turn off autoscaling.
- * 
+ *
  * <li><i>autoConvert</i> - automatically convert the units to the nearest appropriate
- * measure of the same type in the measurement system used by the locale. For example, 
- * if a measurement of length is given in meters, but the current locale is "en-US" 
- * which uses the US Customary system, then the nearest appropriate measure would be 
+ * measure of the same type in the measurement system used by the locale. For example,
+ * if a measurement of length is given in meters, but the current locale is "en-US"
+ * which uses the US Customary system, then the nearest appropriate measure would be
  * "yards", and the amount would be converted from meters to yards automatically before
- * being formatted. Default for the autoConvert property is "true", so it only needs to 
+ * being formatted. Default for the autoConvert property is "true", so it only needs to
  * be specified when you want to turn off autoconversion.
- * 
+ *
+ * <li><i>usage</i> - describe the reason for the measure. When auto converting and auto
+ * scaling the
+ * units, this setting will affect which units will be selected for display and how
+ * they will be displayed. For example, a
+ * person's weight is typically given as stone and pounds in England, but never in the
+ * US where it is pounds only. If the usage is set to "personalWeight", the appropriate
+ * measures will be selected for the locale, even if a larger or smaller unit would be
+ * better for pure auto-scaling. Setting the usage can implicitly set the style, the
+ * max- and minFractionDigits, roundingMode, length, etc.<p>
+ *
+ * List of usages currently supported:
+ *   <ul>
+ *   <li><i>general</i> no specific usage with no preselected measures. (Default)
+ *   <li><i>babyHeight</i> length of a baby
+ *   <li><i>floorSpace</i> area of the floor of a house or building
+ *   <li><i>landArea</i> area of a piece of plot of land
+ *   <li><i>networkingSpeed</i> speed of transfer of data over a network
+ *   <li><i>audioSpeed</i> speed of transfer of audio data
+ *   <li><i>interfaceSpeed</i> speed of transfer of data over a computer interface such as a USB or SATA bus
+ *   <li><i>foodEnergy</i> amount of energy contains in food
+ *   <li><i>electricalEnergy</i> amount of energy in electricity
+ *   <li><i>heatingEnergy</i> amount of energy required to heat things such as water or home interiors
+ *   <li><i>nauticalDistance</i> distance traveled by a boat
+ *   <li><i>personHeight</i> height of an adult or larger child
+ *   <li><i>vehicleDistance</i> distance traveled by a vehicle or aircraft (except a boat)
+ *   <li><i>personWeight</i> weight/mass of an adult human or larger child
+ *   <li><i>babyWeight</i> weight/mass of a baby or of small animals such as cats and dogs
+ *   <li><i>vehicleWeight</i> weight/mass of a vehicle (including a boat)
+ *   <li><i>drugWeight</i> weight/mass of a medicinal drug
+ *   <li><i>vehicleSpeed</i> speed of travel of a vehicle or aircraft (except a boat)
+ *   <li><i>nauticalSpeed</i> speed of travel of a boat
+ *   <li><i>foodVolume</i> volume of a food substance such as in a recipe
+ *   <li><i>drinkVolume</i> volume of a drink
+ *   <li><i>fuelVolume</i> volume of a vehicular fuel
+ *   <li><i>engineVolume</i> volume of an engine's combustion space
+ *   <li><i>storageVolume</i> volume of a mass storage tank
+ *   <li><i>gasVolume</i> volume of a gas such as natural gas used in a home
+ *   <li><i>waterVolume</i> volume of a large amount of water, such as amount of water
+ *   a home might use
+ *   </ul>
+ *
+ * <li><i>style</i> - give the style of this formatter. This is used to
+ * decide how to format the number and units when the number is not whole, or becomes
+ * not whole after auto conversion and scaling. There are two basic styles
+ * supported so far:
+ *
+ *   <ul>
+ *   <li><i>numeric</i> - only the largest unit is used and the number is given as
+ *   decimals. Example: "5.25 lbs"
+ *   <li><i>list</i> - display the measure with a list of successively smaller-sized
+ *   units. Example: "5 lbs 4 oz"
+ *   </ul>
+ *
+ * The style is most useful for units which are not powers of 10 greater than the
+ * smaller units as in the metric system, though it can be useful for metric measures
+ * as well. Example: "2kg 381g".<p>
+ *
+ * The style may be set implicitly when you set the usage. For example, if the usage is
+ * "personWeight", the style will be "numeric" and the maxFractionDigits will be 0. That
+ * is, weight of adults and children are most often given in whole pounds. (eg. "172 lbs").
+ * If the usage is "babyWeight", the style will be "list", and the measures will be pounds
+ * and ounces. (eg. "7 lbs 2 oz").
+ *
  * <li><i>length</i> - the length of the units text. This can be either "short" or "long"
- * with the default being "long". Example: a short units text might be "kph" and the 
+ * with the default being "long". Example: a short units text might be "kph" and the
  * corresponding long units text would be "kilometers per hour". Typically, it is the
  * long units text that is translated per locale, though the short one may be as well.
  * Plurals are taken care of properly per locale as well.
- * 
+ *
  * <li><i>maxFractionDigits</i> - the maximum number of digits that should appear in the
  * formatted output after the decimal. A value of -1 means unlimited, and 0 means only print
  * the integral part of the number.
- * 
+ *
  * <li><i>minFractionDigits</i> - the minimum number of fractional digits that should
  * appear in the formatted output. If the number does not have enough fractional digits
  * to reach this minimum, the number will be zero-padded at the end to get to the limit.
- * 
+ *
  * <li><i>roundingMode</i> - When the maxFractionDigits or maxIntegerDigits is specified,
  * this property governs how the least significant digits are rounded to conform to that
  * maximum. The value of this property is a string with one of the following values:
@@ -100,35 +171,35 @@ var NumFmt = require("./NumFmt.js");
  *   <li><i>halfeven</i> - round towards nearest neighbour. If equidistant, round towards the even neighbour
  *   <li><i>halfodd</i> - round towards nearest neighbour. If equidistant, round towards the odd neighbour
  * </ul>
- * 
- * <li><i>onLoad</i> - a callback function to call when the date format object is fully 
+ *
+ * <li><i>onLoad</i> - a callback function to call when the date format object is fully
  * loaded. When the onLoad option is given, the UnitFmt object will attempt to
  * load any missing locale data using the ilib loader callback.
- * When the constructor is done (even if the data is already preassembled), the 
+ * When the constructor is done (even if the data is already preassembled), the
  * onLoad function is called with the current instance as a parameter, so this
  * callback can be used with preassembled or dynamic loading or a mix of the two.
- * 
- * <li><i>sync</i> - tell whether to load any missing locale data synchronously or 
+ *
+ * <li><i>sync</i> - tell whether to load any missing locale data synchronously or
  * asynchronously. If this option is given as "false", then the "onLoad"
  * callback must be given, as the instance returned from this constructor will
  * not be usable for a while.
- *  
- * <li><i>loadParams</i> - an object containing parameters to pass to the 
+ *
+ * <li><i>loadParams</i> - an object containing parameters to pass to the
  * loader callback function when locale data is missing. The parameters are not
- * interpretted or modified in any way. They are simply passed along. The object 
+ * interpretted or modified in any way. They are simply passed along. The object
  * may contain any property/value pairs as long as the calling code is in
  * agreement with the loader callback function as to what those parameters mean.
  * </ul>
- * 
+ *
  * Here is an example of how you might use the unit formatter to format a string with
  * the correct units.<p>
- * 
- *  
+ *
+ *
  * @constructor
  * @param {Object} options options governing the way this date formatter instance works
  */
 var UnitFmt = function(options) {
-    var sync = true, 
+    var sync = true,
         loadParams = undefined;
 
     this.length = "long";
@@ -138,7 +209,7 @@ var UnitFmt = function(options) {
     this.locale = new Locale();
 
     options = options || {sync: true};
-    
+
     if (options.locale) {
         this.locale = (typeof(options.locale) === 'string') ? new Locale(options.locale) : options.locale;
     }
@@ -152,7 +223,7 @@ var UnitFmt = function(options) {
     }
 
     if (options.length) {
-        this.length = options.length;
+        this.length = lenMap[options.length] || "long";
     }
 
     if (typeof(options.autoScale) === 'boolean') {
@@ -172,32 +243,32 @@ var UnitFmt = function(options) {
     }
 
     if (typeof (options.maxFractionDigits) === 'number') {
-        /** 
+        /**
          * @private
-         * @type {number|undefined} 
+         * @type {number|undefined}
          */
         this.maxFractionDigits = options.maxFractionDigits;
     }
     if (typeof (options.minFractionDigits) === 'number') {
-        /** 
+        /**
          * @private
-         * @type {number|undefined} 
+         * @type {number|undefined}
          */
         this.minFractionDigits = options.minFractionDigits;
     }
-    /** 
+    /**
      * @private
-     * @type {string} 
+     * @type {string}
      */
     this.roundingMode = options.roundingMode;
 
     Utils.loadData({
-        object: "UnitFmt", 
-        locale: this.locale, 
-        name: "unitfmt.json", 
-        sync: sync, 
-        loadParams: loadParams, 
-        callback: ilib.bind(this, function (format) {                      
+        object: "UnitFmt",
+        locale: this.locale,
+        name: "unitfmt.json",
+        sync: sync,
+        loadParams: loadParams,
+        callback: ilib.bind(this, function (format) {
             this.template = format["unitfmt"][this.length];
 
             new NumFmt({
@@ -210,7 +281,7 @@ var UnitFmt = function(options) {
                 loadParams: loadParams,
                 onLoad: ilib.bind(this, function (numfmt) {
                     this.numFmt = numfmt;
-                    
+
                     // ensure that the plural rules are loaded before we proceed
                     IString.loadPlurals(sync, this.locale, loadParams, ilib.bind(this, function() {
                         if (options && typeof(options.onLoad) === 'function') {
@@ -224,42 +295,42 @@ var UnitFmt = function(options) {
 };
 
 UnitFmt.prototype = {
-	
-	/**
-	 * Return the locale used with this formatter instance.
-	 * @return {Locale} the Locale instance for this formatter
-	 */
-	getLocale: function() {
-		return this.locale;
-	},
-	
-	/**
-	 * Return the template string that is used to format date/times for this
-	 * formatter instance. This will work, even when the template property is not explicitly 
-	 * given in the options to the constructor. Without the template option, the constructor 
-	 * will build the appropriate template according to the options and use that template
-	 * in the format method. 
-	 * 
-	 * @return {string} the format template for this formatter
-	 */
-	getTemplate: function() {
-		return this.template;
-	},
-	
-	/**
-	 * Convert this formatter to a string representation by returning the
-	 * format template. This method delegates to getTemplate.
-	 * 
-	 * @return {string} the format template
-	 */
-	toString: function() {
-		return this.getTemplate();
-	},
-    
-	/**
-	 * Return whether or not this formatter will auto-scale the units while formatting.
-	 * @returns {boolean} true if auto-scaling is turned on
-	 */
+
+    /**
+     * Return the locale used with this formatter instance.
+     * @return {Locale} the Locale instance for this formatter
+     */
+    getLocale: function() {
+        return this.locale;
+    },
+
+    /**
+     * Return the template string that is used to format date/times for this
+     * formatter instance. This will work, even when the template property is not explicitly
+     * given in the options to the constructor. Without the template option, the constructor
+     * will build the appropriate template according to the options and use that template
+     * in the format method.
+     *
+     * @return {string} the format template for this formatter
+     */
+    getTemplate: function() {
+        return this.template;
+    },
+
+    /**
+     * Convert this formatter to a string representation by returning the
+     * format template. This method delegates to getTemplate.
+     *
+     * @return {string} the format template
+     */
+    toString: function() {
+        return this.getTemplate();
+    },
+
+    /**
+     * Return whether or not this formatter will auto-scale the units while formatting.
+     * @returns {boolean} true if auto-scaling is turned on
+     */
     getScale: function() {
         return this.scale;
     },
@@ -272,16 +343,19 @@ UnitFmt.prototype = {
         return this.measurementSystem;
     },
 
-	/**
-	 * Format a particular unit instance according to the settings of this
-	 * formatter object.
-	 * 
-	 * @param {Measurement} measurement measurement to format	 
-	 * @return {string} the formatted version of the given date instance
-	 */
+    /**
+     * Format a particular unit instance according to the settings of this
+     * formatter object.
+     *
+     * @param {Measurement} measurement measurement to format
+     * @return {string} the formatted version of the given date instance
+     */
     format: function (measurement) {
         var u = this.convert ? measurement.localize(this.locale.getSpec()) : measurement;
         u = this.scale ? u.scale(this.measurementSystem) : u;
+        if (this.style === "list") {
+            
+        }
         var formatted = new IString(this.template[u.getUnit()]);
         // make sure to use the right plural rules
         formatted.setLocale(this.locale, true, undefined, undefined);
