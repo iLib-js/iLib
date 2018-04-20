@@ -10,6 +10,7 @@ before_install:
   - sudo apt-add-repository --yes ppa:beineri/opt-qt551-trusty
   - sudo apt-get update -qq
 install:
+  - travis_wait 30 mvn install
   # Qt
   - sudo apt-get -y install qt55[QTPACKAGE]
   - sudo apt-get -y install qmlscene qt5-default qtdeclarative5-dev qtbase5-dev
