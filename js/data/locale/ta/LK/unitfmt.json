@@ -141,7 +141,22 @@
             "foot-per-second": "#{n} அடி/விநாடி",
             "kilometer-per-second": "#{n} கிலோமீட்டர்கள்/விநாடி",
             "mile-per-second": "#{n} மைல்கள்/விநாடி",
-            "kilometer-per-liter": "#{n} கிலோமீட்டர்கள்/லிட்டர்"
+            "kilometer-per-liter": "#{n} கிலோமீட்டர்கள்/லிட்டர்",
+            "bit-per-second": "#{n} பிட்கள்/விநாடி",
+            "kilobit-per-second": "#{n} கிலோபிட்கள்/விநாடி",
+            "megabit-per-second": "#{n} மெகாபிட்கள்/விநாடி",
+            "gigabit-per-second": "#{n} கிகாபிட்கள்/விநாடி",
+            "terabit-per-second": "#{n} டெராபிட்கள்/விநாடி",
+            "byte-per-second": "#{n} பைட்கள்/விநாடி",
+            "kilobyte-per-second": "#{n} கிலோபைட்கள்/விநாடி",
+            "megabyte-per-second": "#{n} மெகாபைட்கள்/விநாடி",
+            "gigabyte-per-second": "#{n} கிகாபைட்கள்/விநாடி",
+            "terabyte-per-second": "#{n} டெராபைட்கள்/விநாடி",
+            "byte-per-hour": "#{n} பைட்கள் / மணிநேரம்",
+            "kilobyte-per-hour": "#{n} கிலோபைட்கள் / மணிநேரம்",
+            "megabyte-per-hour": "#{n} மெகாபைட்கள் / மணிநேரம்",
+            "gigabyte-per-hour": "#{n} கிகாபைட்கள் / மணிநேரம்",
+            "terabyte-per-hour": "#{n} டெராபைட்கள் / மணிநேரம்"
         },
         "short": {
             "g-force": "one#{n} ஜி.ஃபோ.|#{n} ஜி.ஃபோ.",
@@ -281,10 +296,25 @@
             "tablespoon": "one#{n} மே.க.|#{n} மே.க.",
             "teaspoon": "one#{n} தே.க.|#{n} தே.க.",
             "coordinateUnit": "",
-            "foot-per-second": "#{n} அடி/விநாடி",
-            "kilometer-per-second": "#{n} கி.மீ./விநாடி",
-            "mile-per-second": "#{n} மைல்கள்/விநாடி",
-            "kilometer-per-liter": "#{n} கி.மீ./லி."
+            "foot-per-second": "#{n} அடி/வி.",
+            "kilometer-per-second": "#{n} கி.மீ./வி.",
+            "mile-per-second": "#{n} மை./வி.",
+            "kilometer-per-liter": "#{n} கி.மீ./லி.",
+            "bit-per-second": "#{n} பிட்/வி.",
+            "kilobit-per-second": "#{n} kb/வி.",
+            "megabit-per-second": "#{n} Mb/வி.",
+            "gigabit-per-second": "#{n} Gb/வி.",
+            "terabit-per-second": "#{n} Tb/வி.",
+            "byte-per-second": "#{n} பை./வி.",
+            "kilobyte-per-second": "#{n} kB/வி.",
+            "megabyte-per-second": "#{n} MB/வி.",
+            "gigabyte-per-second": "#{n} GB/வி.",
+            "terabyte-per-second": "#{n} TB/வி.",
+            "byte-per-hour": "#{n} பை. /ம.நே",
+            "kilobyte-per-hour": "#{n} kB /ம.நே",
+            "megabyte-per-hour": "#{n} MB /ம.நே",
+            "gigabyte-per-hour": "#{n} GB /ம.நே",
+            "terabyte-per-hour": "#{n} TB /ம.நே"
         }
     }
 }

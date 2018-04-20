@@ -141,7 +141,22 @@
             "foot-per-second": "#{n} fit/saniye",
             "kilometer-per-second": "#{n} kilometre/saniye",
             "mile-per-second": "#{n} mil/saniye",
-            "kilometer-per-liter": "#{n} kilometre/litre"
+            "kilometer-per-liter": "#{n} kilometre/litre",
+            "bit-per-second": "#{n} bit/saniye",
+            "kilobit-per-second": "#{n} kilobit/saniye",
+            "megabit-per-second": "#{n} megabit/saniye",
+            "gigabit-per-second": "#{n} gigabit/saniye",
+            "terabit-per-second": "#{n} terabit/saniye",
+            "byte-per-second": "#{n} bayt/saniye",
+            "kilobyte-per-second": "#{n} kilobyte/saniye",
+            "megabyte-per-second": "#{n} megabayt/saniye",
+            "gigabyte-per-second": "#{n} gigabayt/saniye",
+            "terabyte-per-second": "#{n} terabayt/saniye",
+            "byte-per-hour": "#{n} bayt/saat",
+            "kilobyte-per-hour": "#{n} kilobyte/saat",
+            "megabyte-per-hour": "#{n} megabayt/saat",
+            "gigabyte-per-hour": "#{n} gigabayt/saat",
+            "terabyte-per-hour": "#{n} terabayt/saat"
         },
         "short": {
             "g-force": "one#{n} G|#{n} G",
@@ -281,10 +296,25 @@
             "tablespoon": "one#{n} yk|#{n} yk",
             "teaspoon": "one#{n} tk|#{n} tk",
             "coordinateUnit": "",
-            "foot-per-second": "#{n} fit/sn.",
-            "kilometer-per-second": "#{n} km/sn.",
-            "mile-per-second": "#{n} mil/sn.",
-            "kilometer-per-liter": "#{n} km/l"
+            "foot-per-second": "#{n} fit/sn",
+            "kilometer-per-second": "#{n} km/sn",
+            "mile-per-second": "#{n} mil/sn",
+            "kilometer-per-liter": "#{n} km/l",
+            "bit-per-second": "#{n} bit/sn",
+            "kilobit-per-second": "#{n} kb/sn",
+            "megabit-per-second": "#{n} Mb/sn",
+            "gigabit-per-second": "#{n} Gb/sn",
+            "terabit-per-second": "#{n} Tb/sn",
+            "byte-per-second": "#{n} bayt/sn",
+            "kilobyte-per-second": "#{n} kB/sn",
+            "megabyte-per-second": "#{n} MB/sn",
+            "gigabyte-per-second": "#{n} GB/sn",
+            "terabyte-per-second": "#{n} TB/sn",
+            "byte-per-hour": "#{n} bayt/sa",
+            "kilobyte-per-hour": "#{n} kB/sa",
+            "megabyte-per-hour": "#{n} MB/sa",
+            "gigabyte-per-hour": "#{n} GB/sa",
+            "terabyte-per-hour": "#{n} TB/sa"
         }
     }
 }

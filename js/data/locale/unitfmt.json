@@ -160,7 +160,25 @@
             "tablespoon-imperial": "one#{n} imperial tablespoon|#{n} imperial tablespoons",
             "ounce-imperial": "one#{n} imperial ounce|#{n} imperial ounces",
             "pint-imperial": "one#{n} imperial pint|#{n} imperial pints",
-            "quart-imperial": "one#{n} imperial quart|#{n} imperial quarts"
+            "quart-imperial": "one#{n} imperial quart|#{n} imperial quarts",
+            "bit-per-second": "#{n} b/s",
+            "kilobit-per-second": "#{n} kb/s",
+            "megabit-per-second": "#{n} Mb/s",
+            "gigabit-per-second": "#{n} Gb/s",
+            "terabit-per-second": "#{n} Tb/s",
+            "petabit-per-second": "#{n} Pb/s",
+            "byte-per-second": "#{n} B/s",
+            "kilobyte-per-second": "#{n} kB/s",
+            "megabyte-per-second": "#{n} MB/s",
+            "gigabyte-per-second": "#{n} GB/s",
+            "terabyte-per-second": "#{n} TB/s",
+            "petabyte-per-second": "#{n} PB/s",
+            "byte-per-hour": "#{n} B/h",
+            "kilobyte-per-hour": "#{n} kB/h",
+            "megabyte-per-hour": "#{n} MB/h",
+            "gigabyte-per-hour": "#{n} GB/h",
+            "terabyte-per-hour": "#{n} TB/h",
+            "petabyte-per-hour": "#{n} PB/h"
         },
         "short": {
             "g-force": "#{n} G",
@@ -322,7 +340,25 @@
             "tablespoon-imperial": "one#{n} tbsp(i)|#{n} tbsp(i)",
             "ounce-imperial": "one#{n} oz(i)|#{n} oz(i)",
             "pint-imperial": "one#{n} pt(i)|#{n} pt(i)",
-            "quart-imperial": "one#{n} qt(i)|#{n} qt(i)"
+            "quart-imperial": "one#{n} qt(i)|#{n} qt(i)",
+            "bit-per-second": "#{n} b/s",
+            "kilobit-per-second": "#{n} kb/s",
+            "megabit-per-second": "#{n} Mb/s",
+            "gigabit-per-second": "#{n} Gb/s",
+            "terabit-per-second": "#{n} Tb/s",
+            "petabit-per-second": "#{n} Pb/s",
+            "byte-per-second": "#{n} B/s",
+            "kilobyte-per-second": "#{n} kB/s",
+            "megabyte-per-second": "#{n} MB/s",
+            "gigabyte-per-second": "#{n} GB/s",
+            "terabyte-per-second": "#{n} TB/s",
+            "petabyte-per-second": "#{n} PB/s",
+            "byte-per-hour": "#{n} B/h",
+            "kilobyte-per-hour": "#{n} kB/h",
+            "megabyte-per-hour": "#{n} MB/h",
+            "gigabyte-per-hour": "#{n} GB/h",
+            "terabyte-per-hour": "#{n} TB/h",
+            "petabyte-per-hour": "#{n} PB/h"
         }
     }
 }

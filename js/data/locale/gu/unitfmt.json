@@ -141,7 +141,22 @@
             "foot-per-second": "#{n} ફૂટ પ્રતિ સેકંડ",
             "kilometer-per-second": "#{n} કિલોમીટર પ્રતિ સેકંડ",
             "mile-per-second": "#{n} માઇલ પ્રતિ સેકંડ",
-            "kilometer-per-liter": "#{n} કિલોમીટર પ્રતિ લિટર"
+            "kilometer-per-liter": "#{n} કિલોમીટર પ્રતિ લિટર",
+            "bit-per-second": "#{n} બિટ પ્રતિ સેકંડ",
+            "kilobit-per-second": "#{n} કિલોબિટ પ્રતિ સેકંડ",
+            "megabit-per-second": "#{n} મેગાબિટ પ્રતિ સેકંડ",
+            "gigabit-per-second": "#{n} ગીગાબિટ પ્રતિ સેકંડ",
+            "terabit-per-second": "#{n} ટેરાબિટ પ્રતિ સેકંડ",
+            "byte-per-second": "#{n} બાઇટ પ્રતિ સેકંડ",
+            "kilobyte-per-second": "#{n} કિલોબાઇટ પ્રતિ સેકંડ",
+            "megabyte-per-second": "#{n} મેગાબાઇટ પ્રતિ સેકંડ",
+            "gigabyte-per-second": "#{n} ગીગાબાઇટ પ્રતિ સેકંડ",
+            "terabyte-per-second": "#{n} ટેરાબાઇટ પ્રતિ સેકંડ",
+            "byte-per-hour": "#{n} બાઇટ પ્રતિ કલાક",
+            "kilobyte-per-hour": "#{n} કિલોબાઇટ પ્રતિ કલાક",
+            "megabyte-per-hour": "#{n} મેગાબાઇટ પ્રતિ કલાક",
+            "gigabyte-per-hour": "#{n} ગીગાબાઇટ પ્રતિ કલાક",
+            "terabyte-per-hour": "#{n} ટેરાબાઇટ પ્રતિ કલાક"
         },
         "short": {
             "g-force": "one#{n} ગુ|#{n} ગુ",
@@ -281,10 +296,25 @@
             "tablespoon": "one#{n} ટેબલસ્પૂન|#{n} ટેબલસ્પૂન",
             "teaspoon": "one#{n} ટીસ્પૂન|#{n} ટીસ્પૂન",
             "coordinateUnit": "",
-            "foot-per-second": "#{n} ફૂટ/સેકંડ",
-            "kilometer-per-second": "#{n} કિમી/સેકંડ",
-            "mile-per-second": "#{n} માઇલ/સેકંડ",
-            "kilometer-per-liter": "#{n} કિમી/લિ"
+            "foot-per-second": "#{n} ફૂટ પ્રતિ સેકંડ",
+            "kilometer-per-second": "#{n} કિમી પ્રતિ સેકંડ",
+            "mile-per-second": "#{n} માઇલ પ્રતિ સેકંડ",
+            "kilometer-per-liter": "#{n} કિમી/લિ",
+            "bit-per-second": "#{n} બિટ પ્રતિ સેકંડ",
+            "kilobit-per-second": "#{n} kb પ્રતિ સેકંડ",
+            "megabit-per-second": "#{n} Mb પ્રતિ સેકંડ",
+            "gigabit-per-second": "#{n} Gb પ્રતિ સેકંડ",
+            "terabit-per-second": "#{n} Tb પ્રતિ સેકંડ",
+            "byte-per-second": "#{n} બાઇટ પ્રતિ સેકંડ",
+            "kilobyte-per-second": "#{n} kB પ્રતિ સેકંડ",
+            "megabyte-per-second": "#{n} MB પ્રતિ સેકંડ",
+            "gigabyte-per-second": "#{n} GB પ્રતિ સેકંડ",
+            "terabyte-per-second": "#{n} TB પ્રતિ સેકંડ",
+            "byte-per-hour": "#{n} બાઇટ પ્રતિ કલાક",
+            "kilobyte-per-hour": "#{n} kB પ્રતિ કલાક",
+            "megabyte-per-hour": "#{n} MB પ્રતિ કલાક",
+            "gigabyte-per-hour": "#{n} GB પ્રતિ કલાક",
+            "terabyte-per-hour": "#{n} TB પ્રતિ કલાક"
         }
     }
 }

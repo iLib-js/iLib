@@ -141,7 +141,22 @@
             "foot-per-second": "#{n} fot per sekund",
             "kilometer-per-second": "#{n} kilometer per sekund",
             "mile-per-second": "#{n} engelska mil per sekund",
-            "kilometer-per-liter": "#{n} kilometer per liter"
+            "kilometer-per-liter": "#{n} kilometer per liter",
+            "bit-per-second": "#{n} bit per sekund",
+            "kilobit-per-second": "#{n} kilobit per sekund",
+            "megabit-per-second": "#{n} megabit per sekund",
+            "gigabit-per-second": "#{n} gigabit per sekund",
+            "terabit-per-second": "#{n} terabit per sekund",
+            "byte-per-second": "#{n} byte per sekund",
+            "kilobyte-per-second": "#{n} kilobyte per sekund",
+            "megabyte-per-second": "#{n} megabyte per sekund",
+            "gigabyte-per-second": "#{n} gigabyte per sekund",
+            "terabyte-per-second": "#{n} terabyte per sekund",
+            "byte-per-hour": "#{n} byte per timme",
+            "kilobyte-per-hour": "#{n} kilobyte per timme",
+            "megabyte-per-hour": "#{n} megabyte per timme",
+            "gigabyte-per-hour": "#{n} gigabyte per timme",
+            "terabyte-per-hour": "#{n} terabyte per timme"
         },
         "short": {
             "g-force": "one#{n} G|#{n} G",
@@ -284,7 +299,22 @@
             "foot-per-second": "#{n} fot/s",
             "kilometer-per-second": "#{n} km/s",
             "mile-per-second": "#{n} eng. mil/s",
-            "kilometer-per-liter": "#{n} km/l"
+            "kilometer-per-liter": "#{n} km/l",
+            "bit-per-second": "#{n} b/s",
+            "kilobit-per-second": "#{n} kb/s",
+            "megabit-per-second": "#{n} Mb/s",
+            "gigabit-per-second": "#{n} Gb/s",
+            "terabit-per-second": "#{n} Tb/s",
+            "byte-per-second": "#{n} B/s",
+            "kilobyte-per-second": "#{n} kB/s",
+            "megabyte-per-second": "#{n} MB/s",
+            "gigabyte-per-second": "#{n} GB/s",
+            "terabyte-per-second": "#{n} TB/s",
+            "byte-per-hour": "#{n} B/h",
+            "kilobyte-per-hour": "#{n} kB/h",
+            "megabyte-per-hour": "#{n} MB/h",
+            "gigabyte-per-hour": "#{n} GB/h",
+            "terabyte-per-hour": "#{n} TB/h"
         }
     }
 }

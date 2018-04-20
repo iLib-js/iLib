@@ -138,10 +138,25 @@
             "tablespoon": "zero#{n} ملعقة كبيرة|one#ملعقة كبيرة|two#{n} ملعقة كبيرة|few#{n} ملعقة كبيرة|many#{n} ملعقة كبيرة|#{n} ملعقة كبيرة",
             "teaspoon": "zero#{n} ملعقة صغيرة|one#ملعقة صغيرة|two#{n} ملعقة صغيرة|few#{n} ملعقة صغيرة|many#{n} ملعقة صغيرة|#{n} ملعقة صغيرة",
             "coordinateUnit": "",
-            "foot-per-second": "#{n} قدم لكل ثانية",
-            "kilometer-per-second": "#{n} كيلومتر لكل ثانية",
-            "mile-per-second": "#{n} ميل لكل ثانية",
-            "kilometer-per-liter": "#{n} كيلومتر لكل لتر"
+            "foot-per-second": "#{n} قدم/ثانية",
+            "kilometer-per-second": "#{n} كيلومتر/ثانية",
+            "mile-per-second": "#{n} ميل/ثانية",
+            "kilometer-per-liter": "#{n} كيلومتر لكل لتر",
+            "bit-per-second": "#{n} بت/ثانية",
+            "kilobit-per-second": "#{n} كيلوبت/ثانية",
+            "megabit-per-second": "#{n} ميغابت/ثانية",
+            "gigabit-per-second": "#{n} غيغابت/ثانية",
+            "terabit-per-second": "#{n} تيرابت/ثانية",
+            "byte-per-second": "#{n} بايت/ثانية",
+            "kilobyte-per-second": "#{n} كيلوبايت/ثانية",
+            "megabyte-per-second": "#{n} ميغابايت/ثانية",
+            "gigabyte-per-second": "#{n} غيغابايت/ثانية",
+            "terabyte-per-second": "#{n} تيرابايت/ثانية",
+            "byte-per-hour": "#{n} بايت كل ساعة",
+            "kilobyte-per-hour": "#{n} كيلوبايت كل ساعة",
+            "megabyte-per-hour": "#{n} ميغابايت كل ساعة",
+            "gigabyte-per-hour": "#{n} غيغابايت كل ساعة",
+            "terabyte-per-hour": "#{n} تيرابايت كل ساعة"
         },
         "short": {
             "g-force": "zero#{n} قوة تسارع|one#{n} قوة تسارع|two#{n} قوة تسارع|few#{n} قوة تسارع|many#{n} قوة تسارع|#{n} قوة تسارع",
@@ -284,7 +299,22 @@
             "foot-per-second": "#{n} قدم/ث",
             "kilometer-per-second": "#{n} كم/ث",
             "mile-per-second": "#{n} ميل/ث",
-            "kilometer-per-liter": "#{n} كم/لتر"
+            "kilometer-per-liter": "#{n} كم/ل",
+            "bit-per-second": "#{n} بت/ث",
+            "kilobit-per-second": "#{n} كيلوبت/ث",
+            "megabit-per-second": "#{n} ميغابت/ث",
+            "gigabit-per-second": "#{n} غيغابت/ث",
+            "terabit-per-second": "#{n} تيرابت/ث",
+            "byte-per-second": "#{n} بايت/ث",
+            "kilobyte-per-second": "#{n} كيلوبايت/ث",
+            "megabyte-per-second": "#{n} ميغابايت/ث",
+            "gigabyte-per-second": "#{n} غيغابايت/ث",
+            "terabyte-per-second": "#{n} تيرابايت/ث",
+            "byte-per-hour": "#{n} بايت/س",
+            "kilobyte-per-hour": "#{n} كيلوبايت/س",
+            "megabyte-per-hour": "#{n} ميغابايت/س",
+            "gigabyte-per-hour": "#{n} غيغابايت/س",
+            "terabyte-per-hour": "#{n} تيرابايت/س"
         }
     }
 }

@@ -138,10 +138,25 @@
             "tablespoon": "one#{n} ടേബിൾസ്‌പൂൺ|#{n} ടേബിൾസ്‌പൂൺ",
             "teaspoon": "one#{n} ടീസ്‌പൂൺ|#{n} ടീസ്‌പൂൺ",
             "coordinateUnit": "",
-            "foot-per-second": "#{n} അടി/സെക്കൻഡ്",
-            "kilometer-per-second": "#{n} കിലോമീറ്റർ/സെക്കൻഡ്",
-            "mile-per-second": "#{n} മൈൽ/സെക്കൻഡ്",
-            "kilometer-per-liter": "#{n} കിലോമീറ്റർ/ലിറ്റർ"
+            "foot-per-second": "#{n} അടി / സെക്കൻഡ്",
+            "kilometer-per-second": "#{n} കിലോമീറ്റർ / സെക്കൻഡ്",
+            "mile-per-second": "#{n} മൈൽ / സെക്കൻഡ്",
+            "kilometer-per-liter": "#{n} കിലോമീറ്റർ / ലിറ്റർ",
+            "bit-per-second": "#{n} ബിറ്റ് / സെക്കൻഡ്",
+            "kilobit-per-second": "#{n} കിലോബിറ്റ് / സെക്കൻഡ്",
+            "megabit-per-second": "#{n} മെഗാബിറ്റ് / സെക്കൻഡ്",
+            "gigabit-per-second": "#{n} ജിഗാബിറ്റ് / സെക്കൻഡ്",
+            "terabit-per-second": "#{n} ടെറാബിറ്റ് / സെക്കൻഡ്",
+            "byte-per-second": "#{n} ബൈറ്റ് / സെക്കൻഡ്",
+            "kilobyte-per-second": "#{n} കിലോബൈറ്റ് / സെക്കൻഡ്",
+            "megabyte-per-second": "#{n} മെഗാബൈറ്റ് / സെക്കൻഡ്",
+            "gigabyte-per-second": "#{n} ജിഗാബൈറ്റ് / സെക്കൻഡ്",
+            "terabyte-per-second": "#{n} ടെറാബൈറ്റ് / സെക്കൻഡ്",
+            "byte-per-hour": "#{n} ബൈറ്റ് / മണിക്കൂർ",
+            "kilobyte-per-hour": "#{n} കിലോബൈറ്റ് / മണിക്കൂർ",
+            "megabyte-per-hour": "#{n} മെഗാബൈറ്റ് / മണിക്കൂർ",
+            "gigabyte-per-hour": "#{n} ജിഗാബൈറ്റ് / മണിക്കൂർ",
+            "terabyte-per-hour": "#{n} ടെറാബൈറ്റ് / മണിക്കൂർ"
         },
         "short": {
             "g-force": "one#{n} ജി|#{n} ജി",
@@ -284,7 +299,22 @@
             "foot-per-second": "#{n} അടി/സെ.",
             "kilometer-per-second": "#{n} കി.മീ./സെ.",
             "mile-per-second": "#{n} മൈൽ/സെ.",
-            "kilometer-per-liter": "#{n} കി.മീ./ലി."
+            "kilometer-per-liter": "#{n} കി.മീ./ലി.",
+            "bit-per-second": "#{n} ബിറ്റ്/സെ.",
+            "kilobit-per-second": "#{n} കി.ബിറ്റ്/സെ.",
+            "megabit-per-second": "#{n} മെ.ബി./സെ.",
+            "gigabit-per-second": "#{n} ജിബി/സെ.",
+            "terabit-per-second": "#{n} ടെ.ബി./സെ.",
+            "byte-per-second": "#{n} ബൈറ്റ്/സെ.",
+            "kilobyte-per-second": "#{n} കി.ബി./സെ.",
+            "megabyte-per-second": "#{n} മെ.ബൈ./സെ.",
+            "gigabyte-per-second": "#{n} ജി.ബൈ./സെ.",
+            "terabyte-per-second": "#{n} ടിബി/സെ.",
+            "byte-per-hour": "#{n} ബൈറ്റ്/മ.",
+            "kilobyte-per-hour": "#{n} കി.ബി./മ.",
+            "megabyte-per-hour": "#{n} മെ.ബൈ./മ.",
+            "gigabyte-per-hour": "#{n} ജി.ബൈ./മ.",
+            "terabyte-per-hour": "#{n} ടിബി/മ."
         }
     }
 }

@@ -138,10 +138,25 @@
             "tablespoon": "one#{n} სუფრის კოვზი|#{n} სუფრის კოვზი",
             "teaspoon": "one#{n} ჩაის კოვზი|#{n} ჩაის კოვზი",
             "coordinateUnit": "",
-            "foot-per-second": "#{n} ფუტი/წამი",
-            "kilometer-per-second": "#{n} კილომეტრი/წამი",
-            "mile-per-second": "#{n} მილი/წამი",
-            "kilometer-per-liter": "#{n} კილომეტრი/ლიტრი"
+            "foot-per-second": "#{n} ფუტი წამში",
+            "kilometer-per-second": "#{n} კილომეტრი წამში",
+            "mile-per-second": "#{n} მილი წამში",
+            "kilometer-per-liter": "#{n} კილომეტრი ლიტრში",
+            "bit-per-second": "#{n} ბიტი წამში",
+            "kilobit-per-second": "#{n} კილობიტი წამში",
+            "megabit-per-second": "#{n} მეგაბიტი წამში",
+            "gigabit-per-second": "#{n} გიგაბიტი წამში",
+            "terabit-per-second": "#{n} ტერაბიტი წამში",
+            "byte-per-second": "#{n} ბაიტი წამში",
+            "kilobyte-per-second": "#{n} კილობაიტი წამში",
+            "megabyte-per-second": "#{n} მეგაბაიტი წამში",
+            "gigabyte-per-second": "#{n} გიგაბაიტი წამში",
+            "terabyte-per-second": "#{n} ტერაბაიტი წამში",
+            "byte-per-hour": "#{n} ბაიტი საათში",
+            "kilobyte-per-hour": "#{n} კილობაიტი საათში",
+            "megabyte-per-hour": "#{n} მეგაბაიტი საათში",
+            "gigabyte-per-hour": "#{n} გიგაბაიტი საათში",
+            "terabyte-per-hour": "#{n} ტერაბაიტი საათში"
         },
         "short": {
             "g-force": "one#{n} ინ. ძ.|#{n} ინ. ძ.",
@@ -284,7 +299,22 @@
             "foot-per-second": "#{n} ფტ/წმ",
             "kilometer-per-second": "#{n} კმ/წმ",
             "mile-per-second": "#{n} მილი/წმ",
-            "kilometer-per-liter": "#{n} კმ/ლ"
+            "kilometer-per-liter": "#{n} კმ/ლ",
+            "bit-per-second": "#{n} ბიტი/წმ",
+            "kilobit-per-second": "#{n} კბიტი/წმ",
+            "megabit-per-second": "#{n} მბიტი/წმ",
+            "gigabit-per-second": "#{n} გბიტი/წმ",
+            "terabit-per-second": "#{n} ტბიტი/წმ",
+            "byte-per-second": "#{n} ბაიტი/წმ",
+            "kilobyte-per-second": "#{n} კბაიტი/წმ",
+            "megabyte-per-second": "#{n} მბაიტი/წმ",
+            "gigabyte-per-second": "#{n} გბაიტი/წმ",
+            "terabyte-per-second": "#{n} ტბაიტი/წმ",
+            "byte-per-hour": "#{n} ბაიტი/სთ",
+            "kilobyte-per-hour": "#{n} კბაიტი/სთ",
+            "megabyte-per-hour": "#{n} მბაიტი/სთ",
+            "gigabyte-per-hour": "#{n} გბაიტი/სთ",
+            "terabyte-per-hour": "#{n} ტბაიტი/სთ"
         }
     }
 }

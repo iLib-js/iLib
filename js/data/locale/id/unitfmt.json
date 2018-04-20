@@ -141,7 +141,22 @@
             "foot-per-second": "#{n} kaki per detik",
             "kilometer-per-second": "#{n} kilometer per detik",
             "mile-per-second": "#{n} mil per detik",
-            "kilometer-per-liter": "#{n} kilometer per liter"
+            "kilometer-per-liter": "#{n} kilometer per liter",
+            "bit-per-second": "#{n} bit per detik",
+            "kilobit-per-second": "#{n} kilobit per detik",
+            "megabit-per-second": "#{n} megabit per detik",
+            "gigabit-per-second": "#{n} gigabit per detik",
+            "terabit-per-second": "#{n} terabit per detik",
+            "byte-per-second": "#{n} byte per detik",
+            "kilobyte-per-second": "#{n} kilobyte per detik",
+            "megabyte-per-second": "#{n} megabyte per detik",
+            "gigabyte-per-second": "#{n} gigabyte per detik",
+            "terabyte-per-second": "#{n} terabyte per detik",
+            "byte-per-hour": "#{n} byte per jam",
+            "kilobyte-per-hour": "#{n} kilobyte per jam",
+            "megabyte-per-hour": "#{n} megabyte per jam",
+            "gigabyte-per-hour": "#{n} gigabyte per jam",
+            "terabyte-per-hour": "#{n} terabyte per jam"
         },
         "short": {
             "g-force": "#{n} G",
@@ -281,10 +296,25 @@
             "tablespoon": "#{n} sdm",
             "teaspoon": "#{n} sdt",
             "coordinateUnit": "",
-            "foot-per-second": "#{n} kaki/dtk",
+            "foot-per-second": "#{n} ft/dtk",
             "kilometer-per-second": "#{n} km/dtk",
-            "mile-per-second": "#{n} mil/dtk",
-            "kilometer-per-liter": "#{n} km/liter"
+            "mile-per-second": "#{n} mi/dtk",
+            "kilometer-per-liter": "#{n} km/l",
+            "bit-per-second": "#{n} bit/dtk",
+            "kilobit-per-second": "#{n} kb/dtk",
+            "megabit-per-second": "#{n} Mb/dtk",
+            "gigabit-per-second": "#{n} Gb/dtk",
+            "terabit-per-second": "#{n} Tb/dtk",
+            "byte-per-second": "#{n} byte/dtk",
+            "kilobyte-per-second": "#{n} kB/dtk",
+            "megabyte-per-second": "#{n} MB/dtk",
+            "gigabyte-per-second": "#{n} GB/dtk",
+            "terabyte-per-second": "#{n} TB/dtk",
+            "byte-per-hour": "#{n} byte/j",
+            "kilobyte-per-hour": "#{n} kB/j",
+            "megabyte-per-hour": "#{n} MB/j",
+            "gigabyte-per-hour": "#{n} GB/j",
+            "terabyte-per-hour": "#{n} TB/j"
         }
     }
 }

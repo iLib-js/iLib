@@ -138,10 +138,25 @@
             "tablespoon": "one#{n} ас қасық|#{n} ас қасық",
             "teaspoon": "one#{n} шай қасық|#{n} шай қасық",
             "coordinateUnit": "",
-            "foot-per-second": "#{n} фут/секунд",
-            "kilometer-per-second": "#{n} километр/секунд",
-            "mile-per-second": "#{n} миля/секунд",
-            "kilometer-per-liter": "#{n} километр/литр"
+            "foot-per-second": "#секундына {n} фут",
+            "kilometer-per-second": "#секундына {n} километр",
+            "mile-per-second": "#секундына {n} миля",
+            "kilometer-per-liter": "#{n} километр/литр",
+            "bit-per-second": "#секундына {n} бит",
+            "kilobit-per-second": "#секундына {n} килобит",
+            "megabit-per-second": "#секундына {n} мегабит",
+            "gigabit-per-second": "#секундына {n} гигабит",
+            "terabit-per-second": "#секундына {n} терабит",
+            "byte-per-second": "#секундына {n} байт",
+            "kilobyte-per-second": "#секундына {n} килобайт",
+            "megabyte-per-second": "#секундына {n} мегабайт",
+            "gigabyte-per-second": "#секундына {n} гигабайт",
+            "terabyte-per-second": "#секундына {n} терабайт",
+            "byte-per-hour": "#сағатына {n} байт",
+            "kilobyte-per-hour": "#сағатына {n} килобайт",
+            "megabyte-per-hour": "#сағатына {n} мегабайт",
+            "gigabyte-per-hour": "#сағатына {n} гигабайт",
+            "terabyte-per-hour": "#сағатына {n} терабайт"
         },
         "short": {
             "g-force": "one#{n} G|#{n} G",
@@ -284,7 +299,22 @@
             "foot-per-second": "#{n} фут/с",
             "kilometer-per-second": "#{n} км/с",
             "mile-per-second": "#{n} миля/с",
-            "kilometer-per-liter": "#{n} км/л"
+            "kilometer-per-liter": "#{n} км/л",
+            "bit-per-second": "#{n} бит/с",
+            "kilobit-per-second": "#{n} кб/с",
+            "megabit-per-second": "#{n} Mб/с",
+            "gigabit-per-second": "#{n} Гб/с",
+            "terabit-per-second": "#{n} Tб/с",
+            "byte-per-second": "#{n} байт/с",
+            "kilobyte-per-second": "#{n} кБ/с",
+            "megabyte-per-second": "#{n} MБ/с",
+            "gigabyte-per-second": "#{n} ГБ/с",
+            "terabyte-per-second": "#{n} TБ/с",
+            "byte-per-hour": "#{n} байт/сағ",
+            "kilobyte-per-hour": "#{n} кБ/сағ",
+            "megabyte-per-hour": "#{n} MБ/сағ",
+            "gigabyte-per-hour": "#{n} ГБ/сағ",
+            "terabyte-per-hour": "#{n} TБ/сағ"
         }
     }
 }

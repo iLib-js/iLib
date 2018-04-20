@@ -141,7 +141,22 @@
             "foot-per-second": "#{n} fut/soniya",
             "kilometer-per-second": "#{n} kilometr/soniya",
             "mile-per-second": "#{n} mil/soniya",
-            "kilometer-per-liter": "#{n} kilometr/litr"
+            "kilometer-per-liter": "#{n} kilometr/litr",
+            "bit-per-second": "#{n} bit/soniya",
+            "kilobit-per-second": "#{n} kilobit/soniya",
+            "megabit-per-second": "#{n} megabit/soniya",
+            "gigabit-per-second": "#{n} gigabit/soniya",
+            "terabit-per-second": "#{n} terabit/soniya",
+            "byte-per-second": "#{n} bayt/soniya",
+            "kilobyte-per-second": "#{n} kilobayt/soniya",
+            "megabyte-per-second": "#{n} megabayt/soniya",
+            "gigabyte-per-second": "#{n} gigabayt/soniya",
+            "terabyte-per-second": "#{n} terabayt/soniya",
+            "byte-per-hour": "#{n} bayt/soat",
+            "kilobyte-per-hour": "#{n} kilobayt/soat",
+            "megabyte-per-hour": "#{n} megabayt/soat",
+            "gigabyte-per-hour": "#{n} gigabayt/soat",
+            "terabyte-per-hour": "#{n} terabayt/soat"
         },
         "short": {
             "g-force": "one#{n} G|#{n} G",
@@ -281,10 +296,25 @@
             "tablespoon": "one#{n} osh qoshiq|#{n} osh qoshiq",
             "teaspoon": "one#{n} choy qoshiq|#{n} choy qoshiq",
             "coordinateUnit": "",
-            "foot-per-second": "#{n} fut/son.",
-            "kilometer-per-second": "#{n} km/son.",
-            "mile-per-second": "#{n} mil/son.",
-            "kilometer-per-liter": "#{n} km/L"
+            "foot-per-second": "#{n} fut/s",
+            "kilometer-per-second": "#{n} km/s",
+            "mile-per-second": "#{n} mil/s",
+            "kilometer-per-liter": "#{n} km/L",
+            "bit-per-second": "#{n} bit/s",
+            "kilobit-per-second": "#{n} kbit/s",
+            "megabit-per-second": "#{n} Mbit/s",
+            "gigabit-per-second": "#{n} Gbit/s",
+            "terabit-per-second": "#{n} Tbit/s",
+            "byte-per-second": "#{n} bayt/s",
+            "kilobyte-per-second": "#{n} KB/s",
+            "megabyte-per-second": "#{n} MB/s",
+            "gigabyte-per-second": "#{n} GB/s",
+            "terabyte-per-second": "#{n} TB/s",
+            "byte-per-hour": "#{n} bayt/soat",
+            "kilobyte-per-hour": "#{n} KB/soat",
+            "megabyte-per-hour": "#{n} MB/soat",
+            "gigabyte-per-hour": "#{n} GB/soat",
+            "terabyte-per-hour": "#{n} TB/soat"
         }
     }
 }

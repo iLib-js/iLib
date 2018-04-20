@@ -141,7 +141,22 @@
             "foot-per-second": "#{n} πόδια ανά δευτερόλεπτο",
             "kilometer-per-second": "#{n} χιλιόμετρα ανά δευτερόλεπτο",
             "mile-per-second": "#{n} μίλια ανά δευτερόλεπτο",
-            "kilometer-per-liter": "#{n} χιλιόμετρα ανά λίτρο"
+            "kilometer-per-liter": "#{n} χιλιόμετρα ανά λίτρο",
+            "bit-per-second": "#{n} bit ανά δευτερόλεπτο",
+            "kilobit-per-second": "#{n} kilobit ανά δευτερόλεπτο",
+            "megabit-per-second": "#{n} megabit ανά δευτερόλεπτο",
+            "gigabit-per-second": "#{n} gigabit ανά δευτερόλεπτο",
+            "terabit-per-second": "#{n} terabit ανά δευτερόλεπτο",
+            "byte-per-second": "#{n} byte ανά δευτερόλεπτο",
+            "kilobyte-per-second": "#{n} kilobyte ανά δευτερόλεπτο",
+            "megabyte-per-second": "#{n} megabyte ανά δευτερόλεπτο",
+            "gigabyte-per-second": "#{n} gigabyte ανά δευτερόλεπτο",
+            "terabyte-per-second": "#{n} terabyte ανά δευτερόλεπτο",
+            "byte-per-hour": "#{n} byte ανά ώρα",
+            "kilobyte-per-hour": "#{n} kilobyte ανά ώρα",
+            "megabyte-per-hour": "#{n} megabyte ανά ώρα",
+            "gigabyte-per-hour": "#{n} gigabyte ανά ώρα",
+            "terabyte-per-hour": "#{n} terabyte ανά ώρα"
         },
         "short": {
             "g-force": "one#{n} G|#{n} G",
@@ -281,10 +296,25 @@
             "tablespoon": "one#{n} κ.σ.|#{n} κ.σ.",
             "teaspoon": "one#{n} κ.γ.|#{n} κ.γ.",
             "coordinateUnit": "",
-            "foot-per-second": "#{n} πόδια/δευτ.",
+            "foot-per-second": "#{n} πδ/δευτ.",
             "kilometer-per-second": "#{n} χλμ./δευτ.",
-            "mile-per-second": "#{n} μίλια/δευτ.",
-            "kilometer-per-liter": "#{n} χλμ./λίτ."
+            "mile-per-second": "#{n} μίλ./δευτ.",
+            "kilometer-per-liter": "#{n} χλμ./λ.",
+            "bit-per-second": "#{n} bit/δευτ.",
+            "kilobit-per-second": "#{n} kb/δευτ.",
+            "megabit-per-second": "#{n} Mb/δευτ.",
+            "gigabit-per-second": "#{n} Gb/δευτ.",
+            "terabit-per-second": "#{n} Tb/δευτ.",
+            "byte-per-second": "#{n} byte/δευτ.",
+            "kilobyte-per-second": "#{n} kB/δευτ.",
+            "megabyte-per-second": "#{n} MB/δευτ.",
+            "gigabyte-per-second": "#{n} GB/δευτ.",
+            "terabyte-per-second": "#{n} TB/δευτ.",
+            "byte-per-hour": "#{n} byte/ώ.",
+            "kilobyte-per-hour": "#{n} kB/ώ.",
+            "megabyte-per-hour": "#{n} MB/ώ.",
+            "gigabyte-per-hour": "#{n} GB/ώ.",
+            "terabyte-per-hour": "#{n} TB/ώ."
         }
     }
 }

@@ -138,10 +138,25 @@
             "tablespoon": "one#{n} polievková lyžica|few#{n} polievkové lyžice|many#{n} polievkovej lyžice|#{n} polievkových lyžíc",
             "teaspoon": "one#{n} čajová lyžica|few#{n} čajové lyžice|many#{n} čajovej lyžice|#{n} čajových lyžíc",
             "coordinateUnit": "",
-            "foot-per-second": "#{n} stopy/sekunda",
-            "kilometer-per-second": "#{n} kilometre/sekunda",
-            "mile-per-second": "#{n} míle/sekunda",
-            "kilometer-per-liter": "#{n} kilometre/liter"
+            "foot-per-second": "#{n} stôp za sekundu",
+            "kilometer-per-second": "#{n} kilometrov za sekundu",
+            "mile-per-second": "#{n} míľ za sekundu",
+            "kilometer-per-liter": "#{n} kilometrov na liter",
+            "bit-per-second": "#{n} bitov za sekundu",
+            "kilobit-per-second": "#{n} kilobitov za sekundu",
+            "megabit-per-second": "#{n} megabitov za sekundu",
+            "gigabit-per-second": "#{n} gigabitov za sekundu",
+            "terabit-per-second": "#{n} terabitov za sekundu",
+            "byte-per-second": "#{n} bajtov za sekundu",
+            "kilobyte-per-second": "#{n} kilobajtov za sekundu",
+            "megabyte-per-second": "#{n} megabajtov za sekundu",
+            "gigabyte-per-second": "#{n} gigabajtov za sekundu",
+            "terabyte-per-second": "#{n} terabajtov za sekundu",
+            "byte-per-hour": "#{n} bajtov za hodinu",
+            "kilobyte-per-hour": "#{n} kilobajtov za hodinu",
+            "megabyte-per-hour": "#{n} megabajtov za hodinu",
+            "gigabyte-per-hour": "#{n} gigabajtov za hodinu",
+            "terabyte-per-hour": "#{n} terabajtov za hodinu"
         },
         "short": {
             "g-force": "one#{n} G|few#{n} G|many#{n} G|#{n} G",
@@ -284,7 +299,22 @@
             "foot-per-second": "#{n} ft/s",
             "kilometer-per-second": "#{n} km/s",
             "mile-per-second": "#{n} mi/s",
-            "kilometer-per-liter": "#{n} km/l"
+            "kilometer-per-liter": "#{n} km/l",
+            "bit-per-second": "#{n} b/s",
+            "kilobit-per-second": "#{n} kb/s",
+            "megabit-per-second": "#{n} Mb/s",
+            "gigabit-per-second": "#{n} Gb/s",
+            "terabit-per-second": "#{n} Tb/s",
+            "byte-per-second": "#{n} B/s",
+            "kilobyte-per-second": "#{n} kB/s",
+            "megabyte-per-second": "#{n} MB/s",
+            "gigabyte-per-second": "#{n} GB/s",
+            "terabyte-per-second": "#{n} TB/s",
+            "byte-per-hour": "#{n} B/h",
+            "kilobyte-per-hour": "#{n} kB/h",
+            "megabyte-per-hour": "#{n} MB/h",
+            "gigabyte-per-hour": "#{n} GB/h",
+            "terabyte-per-hour": "#{n} TB/h"
         }
     }
 }

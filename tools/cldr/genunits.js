@@ -103,9 +103,20 @@ function frameUnitsString(data) {
     return choices.join("|").replace(/\{0\}/g, "{n}");
 }
 
-function frameUnitsStringCompound(template, numerator, denominator) {
-    var d = denominator["unitPattern-count-one"] || denominator.displayName;
-    return template.replace(/\{0\}/g, numerator.displayName).replace(/\{1\}/g, d.replace(/\{0\}/, "").trim());
+function frameUnitsStringCompound(template, n, numerator, denominator) {
+    var num = numerator["unitPattern-count-other"] || numerator["unitPattern-count-one"];
+    if (num) {
+        num = num.replace(/\{0\}/, n.trim());
+    } else {
+        num = n + numerator.displayName;
+    }
+
+    if (denominator.perUnitPattern) {
+        return denominator.perUnitPattern.replace(/\{0\}/g, num).trim();
+    }
+    
+    var den = (denominator["unitPattern-count-one"].replace(/\{0\}/, "") || denominator.displayName).trim();
+    return template.replace(/\{0\}/g, num).replace(/\{1\}/g, den);
 }
 
 function isAsianLanguage(locale) {
@@ -140,26 +151,43 @@ function frameUnits(data, locale, localeData) {
         "kilometer-per-second": ["length-kilometer", "duration-second"],
         "mile-per-second": ["length-mile", "duration-second"],
         "kilometer-per-liter": ["length-kilometer", "volume-liter"],
+        "bit-per-second": ["digital-bit", "duration-second"],
+        "kilobit-per-second": ["digital-kilobit", "duration-second"],
+        "megabit-per-second": ["digital-megabit", "duration-second"],
+        "gigabit-per-second": ["digital-gigabit", "duration-second"],
+        "terabit-per-second": ["digital-terabit", "duration-second"],
+        "byte-per-second": ["digital-byte", "duration-second"],
+        "kilobyte-per-second": ["digital-kilobyte", "duration-second"],
+        "megabyte-per-second": ["digital-megabyte", "duration-second"],
+        "gigabyte-per-second": ["digital-gigabyte", "duration-second"],
+        "terabyte-per-second": ["digital-terabyte", "duration-second"],
+        "byte-per-hour": ["digital-byte", "duration-hour"],
+        "kilobyte-per-hour": ["digital-kilobyte", "duration-hour"],
+        "megabyte-per-hour": ["digital-megabyte", "duration-hour"],
+        "gigabyte-per-hour": ["digital-gigabyte", "duration-hour"],
+        "terabyte-per-hour": ["digital-terabyte", "duration-hour"]
     };
 
     var l = new Locale(locale);
     if (locale !== "root") {
         // English can inherit from root, so just ignore it
-        if (l.getLanguage() !== "en") {
+        //if (l.getLanguage() !== "en") {
             ["long", "short"].forEach(function(size) {
-                var compoundTemplate = "#{n}" + (isAsianLanguage(locale) ? "" : " ") + data.main[locale].units[size].per.compoundUnitPattern;
-            
+                var compoundTemplate = data.main[locale].units[size].per.compoundUnitPattern;
+                var n = "{n}" + (isAsianLanguage(locale) ? "" : " ");
+                
                 for (var c in compounds) {
                     if (!localeData.unitfmt[size][c]) {
-                        localeData.unitfmt[size][c] = frameUnitsStringCompound(
+                        localeData.unitfmt[size][c] = "#" + frameUnitsStringCompound(
                             compoundTemplate,
+                            n,
                             data.main[locale].units[size][compounds[c][0]],
                             data.main[locale].units[size][compounds[c][1]]
                             );
                     }
                 }
             });
-        }
+        //}
     } else {
         // these don't exist in cldr yet, so we have to default to English
         localeData["unitfmt"]["long"]["decameter"] = "one#{n} decameter|#{n} decameters";
@@ -187,6 +215,24 @@ function frameUnits(data, locale, localeData) {
         localeData["unitfmt"]["long"]["pint-imperial"] = "one#{n} imperial pint|#{n} imperial pints";
         localeData["unitfmt"]["long"]["quart-imperial"] = "one#{n} imperial quart|#{n} imperial quarts";
         localeData["unitfmt"]["long"]["kilometer-per-second"] = "1#{n} kilometer per second|#{n} kilometers per second";
+        localeData["unitfmt"]["long"]["bit-per-second"] = "#{n} b/s";
+        localeData["unitfmt"]["long"]["kilobit-per-second"] = "#{n} kb/s";
+        localeData["unitfmt"]["long"]["megabit-per-second"] = "#{n} Mb/s";
+        localeData["unitfmt"]["long"]["gigabit-per-second"] = "#{n} Gb/s";
+        localeData["unitfmt"]["long"]["terabit-per-second"] = "#{n} Tb/s";
+        localeData["unitfmt"]["long"]["petabit-per-second"] = "#{n} Pb/s";
+        localeData["unitfmt"]["long"]["byte-per-second"] = "#{n} B/s";
+        localeData["unitfmt"]["long"]["kilobyte-per-second"] = "#{n} kB/s";
+        localeData["unitfmt"]["long"]["megabyte-per-second"] = "#{n} MB/s";
+        localeData["unitfmt"]["long"]["gigabyte-per-second"] = "#{n} GB/s";
+        localeData["unitfmt"]["long"]["terabyte-per-second"] = "#{n} TB/s";
+        localeData["unitfmt"]["long"]["petabyte-per-second"] = "#{n} PB/s";
+        localeData["unitfmt"]["long"]["byte-per-hour"] = "#{n} B/h";
+        localeData["unitfmt"]["long"]["kilobyte-per-hour"] = "#{n} kB/h";
+        localeData["unitfmt"]["long"]["megabyte-per-hour"] = "#{n} MB/h";
+        localeData["unitfmt"]["long"]["gigabyte-per-hour"] = "#{n} GB/h";
+        localeData["unitfmt"]["long"]["terabyte-per-hour"] = "#{n} TB/h";
+        localeData["unitfmt"]["long"]["petabyte-per-hour"] = "#{n} PB/h";                                                          
 
         localeData["unitfmt"]["short"]["decameter"] = "one#{n} dam|#{n} dam";
         localeData["unitfmt"]["short"]["hectometer"] = "one#{n} hm|#{n} hm";
@@ -212,6 +258,24 @@ function frameUnits(data, locale, localeData) {
         localeData["unitfmt"]["short"]["ounce-imperial"] = "one#{n} oz(i)|#{n} oz(i)";
         localeData["unitfmt"]["short"]["pint-imperial"] = "one#{n} pt(i)|#{n} pt(i)";
         localeData["unitfmt"]["short"]["quart-imperial"] = "one#{n} qt(i)|#{n} qt(i)";
+        localeData["unitfmt"]["short"]["bit-per-second"] = "#{n} b/s";
+        localeData["unitfmt"]["short"]["kilobit-per-second"] = "#{n} kb/s";
+        localeData["unitfmt"]["short"]["megabit-per-second"] = "#{n} Mb/s";
+        localeData["unitfmt"]["short"]["gigabit-per-second"] = "#{n} Gb/s";
+        localeData["unitfmt"]["short"]["terabit-per-second"] = "#{n} Tb/s";
+        localeData["unitfmt"]["short"]["petabit-per-second"] = "#{n} Pb/s";
+        localeData["unitfmt"]["short"]["byte-per-second"] = "#{n} B/s";
+        localeData["unitfmt"]["short"]["kilobyte-per-second"] = "#{n} kB/s";
+        localeData["unitfmt"]["short"]["megabyte-per-second"] = "#{n} MB/s";
+        localeData["unitfmt"]["short"]["gigabyte-per-second"] = "#{n} GB/s";
+        localeData["unitfmt"]["short"]["terabyte-per-second"] = "#{n} TB/s";
+        localeData["unitfmt"]["short"]["petabyte-per-second"] = "#{n} PB/s";
+        localeData["unitfmt"]["short"]["byte-per-hour"] = "#{n} B/h";
+        localeData["unitfmt"]["short"]["kilobyte-per-hour"] = "#{n} kB/h";
+        localeData["unitfmt"]["short"]["megabyte-per-hour"] = "#{n} MB/h";
+        localeData["unitfmt"]["short"]["gigabyte-per-hour"] = "#{n} GB/h";
+        localeData["unitfmt"]["short"]["terabyte-per-hour"] = "#{n} TB/h";
+        localeData["unitfmt"]["short"]["petabyte-per-hour"] = "#{n} PB/h";
 
         /*
         uncomment if we decide to support the "narrow" size

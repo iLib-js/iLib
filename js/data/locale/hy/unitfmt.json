@@ -138,10 +138,25 @@
             "tablespoon": "one#{n} ճաշի գդալ|#{n} ճաշի գդալ",
             "teaspoon": "one#{n} թեյի գդալ|#{n} թեյի գդալ",
             "coordinateUnit": "",
-            "foot-per-second": "#{n} ֆուտեր/վայրկյան",
-            "kilometer-per-second": "#{n} կիլոմետրեր/վայրկյան",
-            "mile-per-second": "#{n} մղոններ/վայրկյան",
-            "kilometer-per-liter": "#{n} կիլոմետրեր/լիտր"
+            "foot-per-second": "#{n} ֆուտ վայրկյանում",
+            "kilometer-per-second": "#{n} կիլոմետր վայրկյանում",
+            "mile-per-second": "#{n} մղոն վայրկյանում",
+            "kilometer-per-liter": "#{n} կիլոմետր լիտրի վրա",
+            "bit-per-second": "#{n} բիթ վայրկյանում",
+            "kilobit-per-second": "#{n} կիլոբիթ վայրկյանում",
+            "megabit-per-second": "#{n} մեգաբիթ վայրկյանում",
+            "gigabit-per-second": "#{n} գիգաբիթ վայրկյանում",
+            "terabit-per-second": "#{n} տերաբիթ վայրկյանում",
+            "byte-per-second": "#{n} բայթ վայրկյանում",
+            "kilobyte-per-second": "#{n} կիլոբայթ վայրկյանում",
+            "megabyte-per-second": "#{n} մեգաբայթ վայրկյանում",
+            "gigabyte-per-second": "#{n} գիգաբայթ վայրկյանում",
+            "terabyte-per-second": "#{n} տերաբայթ վայրկյանում",
+            "byte-per-hour": "#{n} բայթ ժամում",
+            "kilobyte-per-hour": "#{n} կիլոբայթ ժամում",
+            "megabyte-per-hour": "#{n} մեգաբայթ ժամում",
+            "gigabyte-per-hour": "#{n} գիգաբայթ ժամում",
+            "terabyte-per-hour": "#{n} տերաբայթ ժամում"
         },
         "short": {
             "g-force": "one#{n} g|#{n} g",
@@ -284,7 +299,22 @@
             "foot-per-second": "#{n} ֆտ/վրկ",
             "kilometer-per-second": "#{n} կմ/վրկ",
             "mile-per-second": "#{n} մղ/վրկ",
-            "kilometer-per-liter": "#{n} կմ/լ"
+            "kilometer-per-liter": "#{n} կմ/լ",
+            "bit-per-second": "#{n} բիթ/վրկ",
+            "kilobit-per-second": "#{n} կբիթ/վրկ",
+            "megabit-per-second": "#{n} Մբիթ/վրկ",
+            "gigabit-per-second": "#{n} Գբիթ/վրկ",
+            "terabit-per-second": "#{n} Տբիթ/վրկ",
+            "byte-per-second": "#{n} Բ/վրկ",
+            "kilobyte-per-second": "#{n} կԲ/վրկ",
+            "megabyte-per-second": "#{n} ՄԲ/վրկ",
+            "gigabyte-per-second": "#{n} ԳԲ/վրկ",
+            "terabyte-per-second": "#{n} ՏԲ/վրկ",
+            "byte-per-hour": "#{n} Բ/ժ",
+            "kilobyte-per-hour": "#{n} կԲ/ժ",
+            "megabyte-per-hour": "#{n} ՄԲ/ժ",
+            "gigabyte-per-hour": "#{n} ԳԲ/ժ",
+            "terabyte-per-hour": "#{n} ՏԲ/ժ"
         }
     }
 }

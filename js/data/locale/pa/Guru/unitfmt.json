@@ -141,7 +141,22 @@
             "foot-per-second": "#{n} ਫੁੱਟ ਪ੍ਰਤੀ ਸਕਿੰਟ",
             "kilometer-per-second": "#{n} ਕਿਲੋਮੀਟਰ ਪ੍ਰਤੀ ਸਕਿੰਟ",
             "mile-per-second": "#{n} ਮੀਲ ਪ੍ਰਤੀ ਸਕਿੰਟ",
-            "kilometer-per-liter": "#{n} ਕਿਲੋਮੀਟਰ ਪ੍ਰਤੀ ਲਿਟਰ"
+            "kilometer-per-liter": "#{n} ਕਿਲੋਮੀਟਰ ਪ੍ਰਤੀ ਲਿਟਰ",
+            "bit-per-second": "#{n} ਬਿਟ ਪ੍ਰਤੀ ਸਕਿੰਟ",
+            "kilobit-per-second": "#{n} ਕਿਲੋਬਿਟ ਪ੍ਰਤੀ ਸਕਿੰਟ",
+            "megabit-per-second": "#{n} ਮੈਗਾਬਿਟ ਪ੍ਰਤੀ ਸਕਿੰਟ",
+            "gigabit-per-second": "#{n} ਗੀਗਾਬਿਟ ਪ੍ਰਤੀ ਸਕਿੰਟ",
+            "terabit-per-second": "#{n} ਟੇਰਾਬਿਟ ਪ੍ਰਤੀ ਸਕਿੰਟ",
+            "byte-per-second": "#{n} ਬਾਇਟ ਪ੍ਰਤੀ ਸਕਿੰਟ",
+            "kilobyte-per-second": "#{n} ਕਿਲੋਬਾਇਟ ਪ੍ਰਤੀ ਸਕਿੰਟ",
+            "megabyte-per-second": "#{n} ਮੈਗਾਬਾਇਟ ਪ੍ਰਤੀ ਸਕਿੰਟ",
+            "gigabyte-per-second": "#{n} ਗੀਗਾਬਾਇਟ ਪ੍ਰਤੀ ਸਕਿੰਟ",
+            "terabyte-per-second": "#{n} ਟੈਰਾਬਾਇਟ ਪ੍ਰਤੀ ਸਕਿੰਟ",
+            "byte-per-hour": "#{n} ਬਾਇਟ ਪ੍ਰਤੀ ਘੰਟਾ",
+            "kilobyte-per-hour": "#{n} ਕਿਲੋਬਾਇਟ ਪ੍ਰਤੀ ਘੰਟਾ",
+            "megabyte-per-hour": "#{n} ਮੈਗਾਬਾਇਟ ਪ੍ਰਤੀ ਘੰਟਾ",
+            "gigabyte-per-hour": "#{n} ਗੀਗਾਬਾਇਟ ਪ੍ਰਤੀ ਘੰਟਾ",
+            "terabyte-per-hour": "#{n} ਟੈਰਾਬਾਇਟ ਪ੍ਰਤੀ ਘੰਟਾ"
         },
         "short": {
             "g-force": "one#{n} G|#{n} G",
@@ -281,10 +296,25 @@
             "tablespoon": "one#{n} ਟੇਬਲ ਸਪੂਨ|#{n} ਟੇਬਲ ਸਪੂਨ",
             "teaspoon": "one#{n} ਟੀ ਸਪੂਨ|#{n} ਟੀ ਸਪੂਨ",
             "coordinateUnit": "",
-            "foot-per-second": "#{n} ਫੁੱਟ/ਸਕਿੰਟ",
-            "kilometer-per-second": "#{n} ਕਿ.ਮੀ./ਸਕਿੰਟ",
-            "mile-per-second": "#{n} ਮੀਲ/ਸਕਿੰਟ",
-            "kilometer-per-liter": "#{n} ਕਿ.ਮੀ./ਲਿ."
+            "foot-per-second": "#{n} ਫੁੱਟ ਪ੍ਰ.ਸ.",
+            "kilometer-per-second": "#{n} ਕਿ.ਮੀ. ਪ੍ਰ.ਸ.",
+            "mile-per-second": "#{n} ਮੀਲ ਪ੍ਰ.ਸ.",
+            "kilometer-per-liter": "#{n} ਕਿ.ਮੀ./ਲਿ.",
+            "bit-per-second": "#{n} ਬਿਟ ਪ੍ਰ.ਸ.",
+            "kilobit-per-second": "#{n} kb ਪ੍ਰ.ਸ.",
+            "megabit-per-second": "#{n} Mb ਪ੍ਰ.ਸ.",
+            "gigabit-per-second": "#{n} Gb ਪ੍ਰ.ਸ.",
+            "terabit-per-second": "#{n} Tb ਪ੍ਰ.ਸ.",
+            "byte-per-second": "#{n} ਬਾਇਟ ਪ੍ਰ.ਸ.",
+            "kilobyte-per-second": "#{n} kB ਪ੍ਰ.ਸ.",
+            "megabyte-per-second": "#{n} MB ਪ੍ਰ.ਸ.",
+            "gigabyte-per-second": "#{n} GB ਪ੍ਰ.ਸ.",
+            "terabyte-per-second": "#{n} TB ਪ੍ਰ.ਸ.",
+            "byte-per-hour": "#{n} ਬਾਇਟ ਪ੍ਰ.ਘੰ.",
+            "kilobyte-per-hour": "#{n} kB ਪ੍ਰ.ਘੰ.",
+            "megabyte-per-hour": "#{n} MB ਪ੍ਰ.ਘੰ.",
+            "gigabyte-per-hour": "#{n} GB ਪ੍ਰ.ਘੰ.",
+            "terabyte-per-hour": "#{n} TB ਪ੍ਰ.ਘੰ."
         }
     }
 }

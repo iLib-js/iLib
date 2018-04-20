@@ -141,7 +141,22 @@
             "foot-per-second": "#{n} فیٹ فی سیکنڈ",
             "kilometer-per-second": "#{n} کلو میٹر فی سیکنڈ",
             "mile-per-second": "#{n} میل فی سیکنڈ",
-            "kilometer-per-liter": "#{n} کلو میٹر فی لیٹر"
+            "kilometer-per-liter": "#{n} کلو میٹر فی لیٹر",
+            "bit-per-second": "#{n} بٹس فی سیکنڈ",
+            "kilobit-per-second": "#{n} کلوبٹس فی سیکنڈ",
+            "megabit-per-second": "#{n} میگابٹس فی سیکنڈ",
+            "gigabit-per-second": "#{n} گیگابٹس فی سیکنڈ",
+            "terabit-per-second": "#{n} ٹیرابٹس فی سیکنڈ",
+            "byte-per-second": "#{n} بائٹس فی سیکنڈ",
+            "kilobyte-per-second": "#{n} کلوبائٹس فی سیکنڈ",
+            "megabyte-per-second": "#{n} ميگابائٹس فی سیکنڈ",
+            "gigabyte-per-second": "#{n} گیگابائٹ فی سیکنڈ",
+            "terabyte-per-second": "#{n} ٹیرابائٹ فی سیکنڈ",
+            "byte-per-hour": "#{n} بائٹس فی گھنٹہ",
+            "kilobyte-per-hour": "#{n} کلوبائٹس فی گھنٹہ",
+            "megabyte-per-hour": "#{n} ميگابائٹس فی گھنٹہ",
+            "gigabyte-per-hour": "#{n} گیگابائٹ فی گھنٹہ",
+            "terabyte-per-hour": "#{n} ٹیرابائٹ فی گھنٹہ"
         },
         "short": {
             "g-force": "one#{n} G|#{n} G",
@@ -281,10 +296,25 @@
             "tablespoon": "one#{n} tbsp|#{n} tbsp",
             "teaspoon": "one#{n} tsp|#{n} tsp",
             "coordinateUnit": "",
-            "foot-per-second": "#{n} فیٹ/سیکنڈ",
-            "kilometer-per-second": "#{n} کلو میٹر/سیکنڈ",
-            "mile-per-second": "#{n} میل/سیکنڈ",
-            "kilometer-per-liter": "#{n} کلو میٹر/لیٹر"
+            "foot-per-second": "#{n} فیٹ فی سیکنڈ",
+            "kilometer-per-second": "#{n} کلو میٹر فی سیکنڈ",
+            "mile-per-second": "#{n} میل فی سیکنڈ",
+            "kilometer-per-liter": "#{n} کلو میٹر فی لیٹر",
+            "bit-per-second": "#{n} bit فی سیکنڈ",
+            "kilobit-per-second": "#{n} kb فی سیکنڈ",
+            "megabit-per-second": "#{n} Mb فی سیکنڈ",
+            "gigabit-per-second": "#{n} Gb فی سیکنڈ",
+            "terabit-per-second": "#{n} Tb فی سیکنڈ",
+            "byte-per-second": "#{n} byte فی سیکنڈ",
+            "kilobyte-per-second": "#{n} kB فی سیکنڈ",
+            "megabyte-per-second": "#{n} MB فی سیکنڈ",
+            "gigabyte-per-second": "#{n} GB فی سیکنڈ",
+            "terabyte-per-second": "#{n} TB فی سیکنڈ",
+            "byte-per-hour": "#{n} byte فی گھنٹہ",
+            "kilobyte-per-hour": "#{n} kB فی گھنٹہ",
+            "megabyte-per-hour": "#{n} MB فی گھنٹہ",
+            "gigabyte-per-hour": "#{n} GB فی گھنٹہ",
+            "terabyte-per-hour": "#{n} TB فی گھنٹہ"
         }
     }
 }

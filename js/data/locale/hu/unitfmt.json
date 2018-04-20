@@ -138,10 +138,25 @@
             "tablespoon": "one#{n} evőkanál|#{n} evőkanál",
             "teaspoon": "one#{n} kávéskanál|#{n} kávéskanál",
             "coordinateUnit": "",
-            "foot-per-second": "#{n} láb per másodperc",
-            "kilometer-per-second": "#{n} kilométer per másodperc",
-            "mile-per-second": "#{n} mérföld per másodperc",
-            "kilometer-per-liter": "#{n} kilométer per liter"
+            "foot-per-second": "#{n} láb/másodperc",
+            "kilometer-per-second": "#{n} kilométer/másodperc",
+            "mile-per-second": "#{n} mérföld/másodperc",
+            "kilometer-per-liter": "#{n} kilométer/liter",
+            "bit-per-second": "#{n} bit/másodperc",
+            "kilobit-per-second": "#{n} kilobit/másodperc",
+            "megabit-per-second": "#{n} megabit/másodperc",
+            "gigabit-per-second": "#{n} gigabit/másodperc",
+            "terabit-per-second": "#{n} terabit/másodperc",
+            "byte-per-second": "#{n} bájt/másodperc",
+            "kilobyte-per-second": "#{n} kilobájt/másodperc",
+            "megabyte-per-second": "#{n} megabájt/másodperc",
+            "gigabyte-per-second": "#{n} gigabájt/másodperc",
+            "terabyte-per-second": "#{n} terabájt/másodperc",
+            "byte-per-hour": "#{n} bájt/óra",
+            "kilobyte-per-hour": "#{n} kilobájt/óra",
+            "megabyte-per-hour": "#{n} megabájt/óra",
+            "gigabyte-per-hour": "#{n} gigabájt/óra",
+            "terabyte-per-hour": "#{n} terabájt/óra"
         },
         "short": {
             "g-force": "one#{n} G|#{n} G",
@@ -284,7 +299,22 @@
             "foot-per-second": "#{n} láb/s",
             "kilometer-per-second": "#{n} km/s",
             "mile-per-second": "#{n} mf/s",
-            "kilometer-per-liter": "#{n} km/l"
+            "kilometer-per-liter": "#{n} km/l",
+            "bit-per-second": "#{n} bit/s",
+            "kilobit-per-second": "#{n} kb/s",
+            "megabit-per-second": "#{n} Mb/s",
+            "gigabit-per-second": "#{n} Gb/s",
+            "terabit-per-second": "#{n} Tb/s",
+            "byte-per-second": "#{n} bájt/s",
+            "kilobyte-per-second": "#{n} kB/s",
+            "megabyte-per-second": "#{n} MB/s",
+            "gigabyte-per-second": "#{n} GB/s",
+            "terabyte-per-second": "#{n} TB/s",
+            "byte-per-hour": "#{n} bájt/h",
+            "kilobyte-per-hour": "#{n} kB/h",
+            "megabyte-per-hour": "#{n} MB/h",
+            "gigabyte-per-hour": "#{n} GB/h",
+            "terabyte-per-hour": "#{n} TB/h"
         }
     }
 }

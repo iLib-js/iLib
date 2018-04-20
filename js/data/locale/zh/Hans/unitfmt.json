@@ -138,10 +138,25 @@
             "tablespoon": "#{n}汤匙",
             "teaspoon": "#{n}茶匙",
             "coordinateUnit": "",
-            "foot-per-second": "#{n}每秒钟英尺",
-            "kilometer-per-second": "#{n}每秒钟公里",
-            "mile-per-second": "#{n}每秒钟英里",
-            "kilometer-per-liter": "#{n}每升公里"
+            "foot-per-second": "#{n}英尺/秒",
+            "kilometer-per-second": "#{n}公里/秒",
+            "mile-per-second": "#{n}英里/秒",
+            "kilometer-per-liter": "#每升{n}公里",
+            "bit-per-second": "#{n}比特/秒",
+            "kilobit-per-second": "#{n}千比特/秒",
+            "megabit-per-second": "#{n}兆比特/秒",
+            "gigabit-per-second": "#{n}吉比特/秒",
+            "terabit-per-second": "#{n}太比特/秒",
+            "byte-per-second": "#{n}字节/秒",
+            "kilobyte-per-second": "#{n}千字节/秒",
+            "megabyte-per-second": "#{n}兆字节/秒",
+            "gigabyte-per-second": "#{n}吉字节/秒",
+            "terabyte-per-second": "#{n}太字节/秒",
+            "byte-per-hour": "#每小时{n}字节",
+            "kilobyte-per-hour": "#每小时{n}千字节",
+            "megabyte-per-hour": "#每小时{n}兆字节",
+            "gigabyte-per-hour": "#每小时{n}吉字节",
+            "terabyte-per-hour": "#每小时{n}太字节"
         },
         "short": {
             "g-force": "#{n}G",
@@ -284,7 +299,22 @@
             "foot-per-second": "#{n}英尺/秒",
             "kilometer-per-second": "#{n}公里/秒",
             "mile-per-second": "#{n}英里/秒",
-            "kilometer-per-liter": "#{n}公里/升"
+            "kilometer-per-liter": "#{n}公里/升",
+            "bit-per-second": "#{n}比特/秒",
+            "kilobit-per-second": "#{n}千比特/秒",
+            "megabit-per-second": "#{n}兆比特/秒",
+            "gigabit-per-second": "#{n}吉比特/秒",
+            "terabit-per-second": "#{n}太比特/秒",
+            "byte-per-second": "#{n}字节/秒",
+            "kilobyte-per-second": "#{n}千字节/秒",
+            "megabyte-per-second": "#{n}兆字节/秒",
+            "gigabyte-per-second": "#{n}吉字节/秒",
+            "terabyte-per-second": "#{n}太字节/秒",
+            "byte-per-hour": "#{n}字节/小时",
+            "kilobyte-per-hour": "#{n}千字节/小时",
+            "megabyte-per-hour": "#{n}兆字节/小时",
+            "gigabyte-per-hour": "#{n}吉字节/小时",
+            "terabyte-per-hour": "#{n}太字节/小时"
         }
     }
 }
