@@ -41,6 +41,7 @@ var ilib = require("./ilib.js");
 var UnknownUnit = require("./UnknownUnit.js");
 var AreaUnit = require("./AreaUnit.js");
 var DigitalStorageUnit = require("./DigitalStorageUnit.js");
+var DigitalSpeedUnit = require("./DigitalSpeedUnit.js");
 var EnergyUnit = require("./EnergyUnit.js");
 var FuelConsumptionUnit = require("./FuelConsumptionUnit.js");
 var LengthUnit = require("./LengthUnit.js");
