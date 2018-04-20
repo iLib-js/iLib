@@ -20,7 +20,6 @@
 
 /*
 !depends
-ilib.js
 UnknownUnit.js
 AreaUnit.js
 DigitalStorageUnit.js
@@ -37,7 +36,6 @@ Measurement.js
 
 // TODO: make these dependencies dynamic or at least generate them in the build
 // These will each add themselves to Measurement._constructors[]
-var ilib = require("./ilib.js");
 var UnknownUnit = require("./UnknownUnit.js");
 var AreaUnit = require("./AreaUnit.js");
 var DigitalStorageUnit = require("./DigitalStorageUnit.js");
