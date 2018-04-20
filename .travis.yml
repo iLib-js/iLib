@@ -26,6 +26,8 @@ script:
   - ant test
   #- which qmake
   #- which qmlscene
+  - cd qt
+  - ant test.qt.nodeunit
   #- cd qt/NodeunitTest
   #- /usr/bin/qmlscene NodeunitRun.qml -I ../FileReader/imports/
 branches:
