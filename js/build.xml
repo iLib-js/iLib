@@ -30,6 +30,7 @@ limitations under the License.
 	<property name="build.export"					value="${build.base}/../export"/>
 	<property name="build.demo"						value="${build.base}/../docs/demo"/>
 	<property name="build.tools"					value="${build.base}/../tools"/>
+	<property name="build.tools.qmlizer"			value="${build.base}/../tools/qmlizer"/>
 	<property name="build.tools.build"				value="${build.base}/../tools/build"/>
 	<property name="build.bin"						value="${build.base}/bin"/>
 	<property name="build.lib"						value="${build.base}/lib"/>
@@ -49,7 +50,7 @@ limitations under the License.
 	<property name="build.bin"						value="${build.base}/../bin"/>
 	<property name="jar.ilib"					    value="ilib.jar"/>
 	<property name="locales.default"                value="en-AU,en-CA,en-GB,en-IN,en-NG,en-PH,en-PK,en-SG,en-US,en-ZA,de-DE,fr-CA,fr-FR,es-AR,es-ES,es-MX,id-ID,it-IT,ja-JP,ko-KR,pt-BR,ru-RU,tr-TR,vi-VN,zxx-XX,zh-Hans-CN,zh-Hant-HK,zh-Hant-TW,zh-Hans-SG"/>
-    <property name="locales.unittest"               value="aa-DJ,af-NA,agq-CM,ak-GH,am-ET,ar-AE,ar-BH,ar-DJ,ar-DZ,ar-EG,ar-IQ,ar-JO,ar-KW,ar-LB,ar-LY,ar-MA,ar-MR,ar-OM,ar-QA,ar-SA,ar-SD,ar-SY,ar-TN,ar-YE,asa-TZ,as-IN,az-Latn-AZ,bas-CM,be-BY,bem-ZM,bg-BG,bh-IN,bm-ML,bn-IN,br-FR,bs-BS,bs-Cyrl-BA,bs-Latn-BA,bs-ME,ca-FR,cop-EG,cs-CZ,da-DK,de-AT,de-DE,el-GR,en-AM,en-AU,en-CA,en-ET,en-GB,en-GH,en-GM,en-HK,en-IE,en-IN,en-IS,en-KE,en-LK,en-LR,en-MW,en-MY,en-NG,en-NZ,en-PA,en-PH,en-PK,en-PR,en-RW,en-SD,en-SG,en-SL,en-TZ,en-UG,en-US,en-ZA,en-ZM,es-AR,es-BO,es-CL,es-CO,es-CR,es-DO,es-EC,es-ES,es-GQ,es-GT,es-HN,es-MX,es-NI,es-PA,es-PE,es-PR,es-PY,es-SV,es-UY,es-VE,et-EE,fa-AF,fa-IR,ff-SN,fi-FI,fj-FJ,fo-FO,fr-AD,fr-BE,fr-BF,fr-BJ,fr-CA,fr-CD,fr-CF,fr-CG,fr-CH,fr-CI,fr-CM,fr-DJ,fr-DZ,fr-FR,fr-GA,fr-GN,fr-LB,fr-LU,fr-MG,fr-ML,fr-RW,fr-SN,fr-TG,fr-YT,ga-IE,gl-ES,gu-IN,ha-Latn-NG,he-IL,hi-IN,hr-HR,hr-ME,hu-HU,hy-AZ,hy-AM,id-ID,id-MY,it-CH,it-IT,it-SM,ja-JP,ka-IR,kk-Cyrl-KZ,km-KH,kn-IN,ko-KR,ks-Arab-IN,ku-Arab-IQ,ku-Arab-IR,ku-IR,lg-UG,ln-CF,lt-LT,lv-LV,fr-Latn-MA,mi-CK,mk-MK,ml-IN,mm-MM,mn-CN,mn-Cyrl-MN,mr-IN,ms-BN,ms-MY,ne-NP,nl-BE,nl-NL,nb-NO,nn-NO,no-NO,no-SJ,om-ET,or-IN,os-RU,pa-Arab,pa-IN,pa-Arab-PK,pl-PL,ps-AF,pt-AO,pt-BR,pt-CV,pt-GW,pt-GQ,pt-MO,pt-MZ,pt-PT,pt-ST,pt-TL,ro-RO,ro-RS,ru-GE,ru-KG,ru-KZ,ru-RU,ru-TM,shi-Tfng-MA,si-LK,sk-SK,sl-SI,sl-SL,so-ET,so-SO,sq-AL,sq-ME,sq-MK,sr-Cyrl-BA,sr-Latn-BA,sr-Latn-RS,sr-Latn-ME,sr-RS,sr-Latn-RS,ss-ZA,st-LS,sv-FI,sv-SE,sw-KE,sw-UG,ta-IN,ta-LK,ta-MY,ta-SG,te-IN,th-TH,tr-TR,uk-UA,ur-IN,ur-PK,uz-AF,uz-Arab-AF,uz-Cyrl-UZ,uz-Latn-UZ,uz-UZ,vai-Latn-LR,vi-VN,zh-Hans-CN,zh-Hant-HK,zh-Hans-HK,zh-Hans-MY,zh-Hant-TW,zh-Hans-MO,zh-Hant-MO,zh-Hans-SG,zh-Hant-US,zu-ZA,zxx-Cyrl-XX,zxx-Hans-XX,zxx-Hebr-XX,zxx-XX"/>
+        <property name="locales.unittest"               value="aa-DJ,af-NA,agq-CM,ak-GH,am-ET,ar-AE,ar-BH,ar-DJ,ar-DZ,ar-EG,ar-IQ,ar-JO,ar-KW,ar-LB,ar-LY,ar-MA,ar-MR,ar-OM,ar-QA,ar-SA,ar-SD,ar-SY,ar-TN,ar-YE,asa-TZ,as-IN,az-Latn-AZ,bas-CM,be-BY,bem-ZM,bg-BG,bh-IN,bm-ML,bn-IN,br-FR,bs-BS,bs-Cyrl-BA,bs-Latn-BA,bs-ME,ca-FR,cop-EG,cs-CZ,da-DK,de-AT,de-DE,el-GR,en-AM,en-AU,en-CA,en-ET,en-GB,en-GH,en-GM,en-HK,en-IE,en-IN,en-IS,en-KE,en-LK,en-LR,en-MW,en-MY,en-NG,en-NZ,en-PA,en-PH,en-PK,en-PR,en-RW,en-SD,en-SG,en-SL,en-TZ,en-UG,en-US,en-ZA,en-ZM,es-AR,es-BO,es-CL,es-CO,es-CR,es-DO,es-EC,es-ES,es-GQ,es-GT,es-HN,es-MX,es-NI,es-PA,es-PE,es-PR,es-PY,es-SV,es-UY,es-VE,et-EE,fa-AF,fa-IR,ff-SN,fi-FI,fj-FJ,fo-FO,fr-AD,fr-BE,fr-BF,fr-BJ,fr-CA,fr-CD,fr-CF,fr-CG,fr-CH,fr-CI,fr-CM,fr-DJ,fr-DZ,fr-FR,fr-GA,fr-GN,fr-LB,fr-LU,fr-MG,fr-ML,fr-RW,fr-SN,fr-TG,fr-YT,ga-IE,gl-ES,gu-IN,ha-Latn-NG,he-IL,hi-IN,hr-HR,hr-ME,hu-HU,hy-AZ,hy-AM,id-ID,id-MY,it-CH,it-IT,it-SM,ja-JP,ka-IR,kk-Cyrl-KZ,km-KH,kn-IN,ko-KR,ks-Arab-IN,ku-Arab-IQ,ku-Arab-IR,ku-IR,lg-UG,ln-CF,lt-LT,lv-LV,fr-Latn-MA,mi-CK,mk-MK,ml-IN,mm-MM,mn-CN,mn-Cyrl-MN,mr-IN,ms-BN,ms-MY,ne-NP,nl-BE,nl-NL,nb-NO,nn-NO,no-NO,no-SJ,om-ET,or-IN,os-RU,pa-Arab,pa-IN,pa-Arab-PK,pl-PL,ps-AF,pt-AO,pt-BR,pt-CV,pt-GW,pt-GQ,pt-MO,pt-MZ,pt-PT,pt-ST,pt-TL,ro-RO,ro-RS,ru-GE,ru-KG,ru-KZ,ru-RU,ru-TM,shi-Tfng-MA,si-LK,sk-SK,sl-SI,sl-SL,so-ET,so-SO,sq-AL,sq-ME,sq-MK,sr-Cyrl-BA,sr-Latn-BA,sr-Latn-RS,sr-Latn-ME,sr-RS,sr-Latn-RS,ss-ZA,st-LS,sv-FI,sv-SE,sw-KE,sw-UG,ta-IN,ta-LK,ta-MY,ta-SG,te-IN,th-TH,tr-TR,uk-UA,ur-IN,ur-PK,uz-AF,uz-Arab-AF,uz-Cyrl-UZ,uz-Latn-UZ,uz-UZ,vai-Latn-LR,vi-VN,zh-Hans-CN,zh-Hant-HK,zh-Hans-HK,zh-Hans-MY,zh-Hant-TW,zh-Hans-MO,zh-Hant-MO,zh-Hans-SG,zh-Hant-US,zu-ZA,zxx-Cyrl-XX,zxx-Hans-XX,zxx-Hebr-XX,zxx-XX"/>
 	<property name="locales.demo"                   value="aa-DJ,af-NA,af-ZA,agq-CM,ak-GH,am-ET,ar-AE,ar-BH,ar-DJ,ar-DZ,ar-EG,ar-IQ,ar-JO,ar-KW,ar-LB,ar-LY,ar-MA,ar-MR,ar-OM,ar-QA,ar-SA,ar-SD,ar-SY,ar-TN,ar-YE,as-IN,asa-TZ,az-AZ,bas-CM,be-BY,bem-ZM,bg-BG,bh-IN,bm-ML,bn-IN,br-FR,bs-Cyrl-BA,bs-Latn-BA,bs-ME,ca-FR,cop-EG,cs-CZ,da-DK,de-AT,de-CH,de-DE,el-GR,en-AU,en-CA,en-ET,en-GB,en-GH,en-GM,en-HK,en-IE,en-IN,en-KE,en-LK,en-LR,en-MW,en-MY,en-NG,en-NZ,en-PH,en-PK,en-PR,en-RW,en-SG,en-SL,en-TZ,en-UG,en-US,en-ZA,en-ZM,es-AR,es-CO,es-CR,es-DO,es-EC,es-ES,es-GQ,es-GT,es-HN,es-MX,es-SV,es-UY,es-VE,et-EE,fa-AF,fa-IR,ff-SN,fi-FI,fj-FJ,fr-AD,fr-BE,fr-BF,fr-BJ,fr-CA,fr-CD,fr-CF,fr-CG,fr-CH,fr-CI,fr-CM,fr-DJ,fr-DZ,fr-FR,fr-GA,fr-GN,fr-LB,fr-LU,fr-MG,fr-ML,fr-RW,fr-SN,fr-TG,fr-YT,ga-IE,gl-ES,gu-IN,ha-Latn-NG,he-IL,hi-IN,hr-HR,hr-ME,hu-HU,hy-AM,hy-AZ,id-ID,id-MY,it-CH,it-IT,it-SM,ja-JP,ka-IR,kk-Cyrl-KZ,km-KH,kn-IN,ko-KR,ks-Arab-IN,ku-IR,lg-UG,ln-CF,lt-LT,lv-LV,mi-CK,mk-MK,ml-IN,mn-CN,mr-IN,ms-BN,ms-MY,nb-NO,ne-IN,nl-BE,nl-CW,nl-GF,nl-NL,nl-SR,no-BV,no-NO,no-SJ,om-ET,or-IN,os-RU,pa-Arab-PK,pl-PL,pt-AO,pt-BR,pt-CV,pt-GW,pt-MO,pt-MZ,pt-PT,pt-ST,pt-TL,ro-RO,ro-RS,ru-KG,ru-KZ,ru-RU,ru-TM,si-LK,sk-SK,sl-SI,so-ET,so-SO,sq-AL,sq-ME,sq-MK,sr-Cyrl-BA,sr-Latn-BA,sr-Latn-ME,sr-Latn-RS,sr-RS,ss-ZA,st-LS,sv-FI,sv-SE,sw-UG,ta-LK,ta-MY,ta-SG,te-IN,th-TH,tr-TR,uk-UA,ur-IN,ur-PK,uz-AF,uz-Arab-AF,uz-Cyrl-UZ,uz-Latn-UZ,vai-Latn-LR,vi-VN,zh-Hans-CN,zh-Hans-MO,zh-Hans-MY,zh-Hans-SG,zh-Hant-HK,zh-Hant-TW,zh-Hant-US,zu-ZA,zxx-Cyrl-XX,zxx-Hans-XX,zxx-Hebr-XX,zxx-XX"/>
 
 	<!-- =================================================================== -->
@@ -282,7 +283,7 @@ limitations under the License.
             <arg value="/\!(data|loadLocaleData|defineLocaleData|macro)/"/>
 			<arg value="-o"/>
 			<arg value="${build.output.dyncode}/ilib.js"/>
-			<arg value="-m"/>
+			<arg value="--no-mangle-functions"/>
             <arg value="-c"/>
 			<arg value="-v"/>
 		</exec>
@@ -292,10 +293,21 @@ limitations under the License.
             <arg value="/\!(data|loadLocaleData|defineLocaleData|macro)/"/>
             <arg value="-o"/>
 			<arg value="${build.output.dyncode}/ilib.js"/>
-			<arg value="-m"/>
+			<arg value="--no-mangle-functions"/>
             <arg value="-c"/>
 			<arg value="-v"/>
 		</exec>
+		<exec osfamily="unix" executable="node" dir="${build.base}" failifexecutionfails="true">
+			<arg value="${build.tools.qmlizer}/qmlizer.js"/>
+			<arg value="${build.output.dyncode}/ilib.js"/>
+			<arg value="${build.output.dyncode}/ilib.js"/>
+		</exec>
+		<exec osfamily="windows" executable="node.exe" dir="${build.base}" failifexecutionfails="true">
+			<arg value="${build.tools.qmlizer}/qmlizer.js"/>
+			<arg value="${build.output.dyncode}/ilib.js"/>
+			<arg value="${build.output.dyncode}/ilib.js"/>
+		</exec>
+
 		<!-- then do all the rest of them -->
 		<apply osfamily="unix" executable="${uglify.command}" dest="${build.output.dyncode}" parallel="false">
 			<srcfile/>
@@ -303,7 +315,7 @@ limitations under the License.
 			<arg value="/\!(data|loadLocaleData|defineLocaleData|macro)/"/>
             <arg value="-o"/>
 			<targetfile/>
-			<arg value="-m"/>
+			<arg value="--no-mangle-functions"/>
             <arg value="-c"/>
 			<arg value="-v"/>
             <fileset dir="${build.lib}">
@@ -327,22 +339,27 @@ limitations under the License.
             <arg value="/\!(data|loadLocaleData|defineLocaleData|macro)/"/>
             <arg value="-o"/>
 			<targetfile/>
-			<arg value="-m"/>
+			<arg value="--no-mangle-functions"/>
 			<arg value="-c"/>
 			<arg value="-v"/>
-            <fileset dir="${build.lib}">
-                <include name="*.js"/>
-                <exclude name="ilib.js"/>
-                <exclude name="ilib-*.js"/>
-                <exclude name="externs.js"/>
-                <exclude name="datefmtstr.js"/>
-            </fileset>
-            <fileset dir="${build.lib}">
-                <include name="ilib-node*"/>
-                <include name="ilib-qt*"/>
-                <include name="ilib-getdata.js"/>
-                <include name="ilib-unpack.js"/>
-            </fileset>
+			<fileset dir="${build.lib}" includes="*.js"  excludes="ilib.js,ilib-*.js,runner.js,externs.js,datefmtstr.js"/>
+			<fileset dir="${build.lib}" includes="ilib-node*.js,ilib-stubs*,ilib-web.js,ilib-qt.js"/>
+			<mapper type="glob" from="*.js" to="*.js"/>
+		</apply>
+		<apply osfamily="unix" executable="node" dest="${build.output.dyncode}" parallel="false" force="true">
+			<arg value="${build.tools.qmlizer}/qmlizer.js"/>
+			<srcfile/>
+			<targetfile/>
+			<fileset dir="${build.output.dyncode}" includes="*.js" excludes="ilib.js,ilib-*.js,runner.js,externs.js,datefmtstr.js"/>
+			<fileset dir="${build.output.dyncode}" includes="ilib-node*.js,ilib-stubs*,ilib-web.js,ilib-qt.js"/>
+			<mapper type="glob" from="*.js" to="*.js"/>
+		</apply>
+		<apply osfamily="windows" executable="node.exe" dest="${build.output.dyncode}" parallel="false" force="true">
+			<arg value="${build.tools.qmlizer}/qmlizer.js"/>
+			<srcfile/>
+			<targetfile/>
+			<fileset dir="${build.output.dyncode}" includes="*.js" excludes="ilib.js,ilib-*.js,runner.js,externs.js,datefmtstr.js"/>
+			<fileset dir="${build.output.dyncode}" includes="ilib-node*.js,ilib-stubs*,ilib-web.js,ilib-qt.js"/>
 			<mapper type="glob" from="*.js" to="*.js"/>
 		</apply>
 	</target>

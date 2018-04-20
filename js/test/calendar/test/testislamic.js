@@ -265,16 +265,3 @@ function testIslamicIsLeapYear30() {
     
     assertFalse(cal.isLeapYear(30));
 }
-
-function testIslamicNewDateInstance() {
-    var cal = new IslamicCal();
-    var d = cal.newDateInstance({
-    	year: 20,
-    	month: 6,
-    	day: 1
-    });
-    
-    assertNotUndefined(d);
-    assertNotUndefined(d.cal);
-    assertEquals("islamic", d.cal.type);
-}
