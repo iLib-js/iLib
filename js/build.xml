@@ -473,7 +473,7 @@ limitations under the License.
 			</sources>
 		</jscomp>
 	</target>
-	<target name="assemble.dynamic" depends="prepare,gen.manifest.locale,install.uglify" description="compresses/minifies the dynamic load code files">
+	<target name="assemble.dynamic" depends="prepare,gen.manifest.locale" description="compresses/minifies the dynamic load code files">
 		<!-- handle ilib.js as a special case so we can replace the version number in it -->
 		<copy file="${build.lib}/ilib.js" toFile="${build.output.js}/ilib.js" verbose="true"/>
 		<replace token="// !macro ilibVersion" value='"${version}"' preserveLastModified="true">
