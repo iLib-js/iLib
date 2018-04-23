@@ -107,7 +107,7 @@ function runTests(path, root, includes, results) {
 			//console.log("TestRunner.runTests: now including file " + root + "/js/test/" + inc);
 			Qt.include(root + "/js/test/" + inc);
 		}.bind(this));
-		//console.log("TestRunner.runTests: Running " + root + "/js/test/" + path);
+		console.log("TestRunner.runTests: Running " + root + "/js/test/" + path);
 		var tmp = module.filename;
 		module.filename = root + "/js/test/" + path;
 		Qt.include(module.filename);

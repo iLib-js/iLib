@@ -351,18 +351,6 @@ function testHebrewIsLeapYear30() {
     assertTrue(cal.isLeapYear(30));
 }
 
-function testHebrewNewDateInstance() {
-    var cal = new HebrewCal();
-    var d = cal.newDateInstance({
-    	year: 20,
-    	month: 6,
-    	day: 1
-    });
-    
-    assertNotUndefined(d);
-    assertEquals("hebrew", d.cal.type);
-}
-
 function testHebrewGetNumMonths1() {
     var cal = new HebrewCal();
     

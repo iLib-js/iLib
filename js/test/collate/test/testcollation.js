@@ -587,15 +587,13 @@ function testCollatorGetComparatorWorksWithCaseJS() {
 
 
 function testCollatorGetSortKeyNative() {
-	if (typeof(Intl) === 'undefined' && Intl) {
-	    return;
-	}
-	var col = new Collator();
 
-	assertNotUndefined(col);
-
-	// no sort key available when using native...
-	assertEquals("string", col.sortKey("string"));
+	if (typeof(Intl) !== 'undefined' && Intl) {
+        var col = new Collator();
+        assertNotUndefined(col);
+         // no sort key available when using native...
+        assertEquals("string", col.sortKey("string"));
+    }
 }
 
 function testCollatorGetSortKeySimpleUpper() {

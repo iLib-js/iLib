@@ -3,6 +3,18 @@ Release Notes for Version 13.0
 
 Build 003
 -------
+Published as version 13.3.0
+
+New Features:
+* Updated to work properly run test cases on QT/QML environment.
+  * Imeplemented simple version of nodeunit library to work in QT/QML environment.
+  * Confirmed that all of iLib cases are passed in QT 5.7 version.
+
+Bug Fixes:
+
+
+Build 003
+-------
 
 New Features:
 
