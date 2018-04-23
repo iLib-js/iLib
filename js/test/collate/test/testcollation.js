@@ -17,7 +17,7 @@
  * limitations under the License.
  */
 
-var ilib = require("../lib/ilib-node.js");
+var ilib = require("../lib/ilib.js");
 var ElementIterator = require("../lib/ElementIterator.js");
 var Collator = require("../lib/Collator.js");
 var CodePointSource = require("../lib/CodePointSource.js");
@@ -587,15 +587,13 @@ function testCollatorGetComparatorWorksWithCaseJS() {
 
 
 function testCollatorGetSortKeyNative() {
-	if (typeof(Intl) === 'undefined' && Intl) {
-	    return;
-	}
-	var col = new Collator();
 
-	assertNotUndefined(col);
-
-	// no sort key available when using native...
-	assertEquals("string", col.sortKey("string"));
+	if (typeof(Intl) !== 'undefined' && Intl) {
+        var col = new Collator();
+        assertNotUndefined(col);
+         // no sort key available when using native...
+        assertEquals("string", col.sortKey("string"));
+    }
 }
 
 function testCollatorGetSortKeySimpleUpper() {

@@ -40,17 +40,17 @@ module.exports.testdatefmt_km_KH = {
     testDateFmtConstructorEmpty_km_KH: function(test) {
         test.expect(1);
         var fmt = new DateFmt({locale: "km-KH"});
-    
+
         test.ok(fmt !== null);
         test.done();
     },
-    
-    
+
+
     testDateFmtSimpleShort_km_KH: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "km-KH", length: "short"});
         test.ok(fmt !== null);
-    
+
         var date = new GregorianDate({
             locale: "km-KH",
             year: 2011,
@@ -64,12 +64,12 @@ module.exports.testdatefmt_km_KH = {
         test.equal(fmt.format(date), "29/9/11");
         test.done();
     },
-    
+
     testDateFmtSimpleMedium_km_KH: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "km-KH", length: "medium"});
         test.ok(fmt !== null);
-    
+
         var date = new GregorianDate({
             locale: "km-KH",
             year: 2011,
@@ -83,12 +83,12 @@ module.exports.testdatefmt_km_KH = {
         test.equal(fmt.format(date), "29 កញ្ញា 2011");
         test.done();
     },
-    
+
     testDateFmtSimpleLong_km_KH: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "km-KH", length: "long"});
         test.ok(fmt !== null);
-    
+
         var date = new GregorianDate({
             locale: "km-KH",
             year: 2011,
@@ -102,12 +102,12 @@ module.exports.testdatefmt_km_KH = {
         test.equal(fmt.format(date), "29 កញ្ញា 2011");
         test.done();
     },
-    
+
     testDateFmtSimpleFull_km_KH: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "km-KH", length: "full"});
         test.ok(fmt !== null);
-    
+
         var date = new GregorianDate({
             locale: "km-KH",
             year: 2011,
@@ -121,12 +121,12 @@ module.exports.testdatefmt_km_KH = {
         test.equal(fmt.format(date), "29 កញ្ញា 2011");
         test.done();
     },
-    
+
     testDateFmtSimpleTimeShort_km_KH: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "km-KH", length: "short", type: "time"});
         test.ok(fmt !== null);
-    
+
         var date = new GregorianDate({
             locale: "km-KH",
             year: 2011,
@@ -140,12 +140,12 @@ module.exports.testdatefmt_km_KH = {
         test.equal(fmt.format(date), "1:45 PM");
         test.done();
     },
-    
+
     testDateFmtSimpleTimeMedium_km_KH: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "km-KH", length: "medium", type: "time"});
         test.ok(fmt !== null);
-    
+
         var date = new GregorianDate({
             locale: "km-KH",
             year: 2011,
@@ -159,12 +159,12 @@ module.exports.testdatefmt_km_KH = {
         test.equal(fmt.format(date), "1:45 PM");
         test.done();
     },
-    
+
     testDateFmtSimpleTimeLong_km_KH: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "km-KH", timelength: "long", type: "time"});
         test.ok(fmt !== null);
-    
+
         var date = new GregorianDate({
             locale: "km-KH",
             year: 2011,
@@ -178,12 +178,12 @@ module.exports.testdatefmt_km_KH = {
         test.equal(fmt.format(date), "1:45 PM");
         test.done();
     },
-    
+
     testDateFmtSimpleTimeFull_km_KH: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "km-KH", length: "full", type: "time"});
         test.ok(fmt !== null);
-    
+
         var date = new GregorianDate({
             locale: "km-KH",
             year: 2011,
@@ -197,12 +197,12 @@ module.exports.testdatefmt_km_KH = {
         test.equal(fmt.format(date), "1:45 PM");
         test.done();
     },
-    
+
     testDateFmtDateTimeSimpleShort_km_KH: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "km-KH", length: "short", type: "datetime"});
         test.ok(fmt !== null);
-    
+
         var date = new GregorianDate({
             locale: "km-KH",
             year: 2011,
@@ -216,12 +216,12 @@ module.exports.testdatefmt_km_KH = {
         test.equal(fmt.format(date), "29/9/11, 1:45 PM");
         test.done();
     },
-    
+
     testDateFmtDateTimeSimpleMedium_km_KH: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "km-KH", length: "medium", type: "datetime"});
         test.ok(fmt !== null);
-    
+
         var date = new GregorianDate({
             locale: "km-KH",
             year: 2011,
@@ -235,12 +235,12 @@ module.exports.testdatefmt_km_KH = {
         test.equal(fmt.format(date), "29 កញ្ញា 2011, 1:45 PM");
         test.done();
     },
-    
+
     testDateFmtDateTimeSimpleLong_km_KH: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "km-KH", length: "long", type: "datetime"});
         test.ok(fmt !== null);
-    
+
         var date = new GregorianDate({
             locale: "km-KH",
             year: 2011,
@@ -251,16 +251,16 @@ module.exports.testdatefmt_km_KH = {
             second: 0,
             millisecond: 0
         });
-    
+
         test.equal(fmt.format(date), "29 កញ្ញា 2011 នៅ​ម៉ោង 1:45 PM");
         test.done();
     },
-    
+
     testDateFmtDateTimeSimpleFull_km_KH: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "km-KH", length: "full", type: "datetime"});
         test.ok(fmt !== null);
-    
+
         var date = new GregorianDate({
             locale: "km-KH",
             year: 2011,
@@ -274,13 +274,13 @@ module.exports.testdatefmt_km_KH = {
         test.equal(fmt.format(date), "29 កញ្ញា 2011 នៅ​ម៉ោង 1:45 PM");
         test.done();
     },
-    
-    
+
+
     testDateFmtTemplateCalendar_km_KH: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "km-KH", calendar: "julian", template: "yyyy-MM-dd"});
         test.ok(fmt !== null);
-    
+
         var date = new JulianDate({
             locale: "km-KH",
             year: 2011,
@@ -294,14 +294,14 @@ module.exports.testdatefmt_km_KH = {
         test.equal(fmt.format(date), "2011-09-29");
         test.done();
     },
-    
-    
-    
+
+
+
     testDateFmtTemplateClock12SwitchHH_km_KH: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "km-KH", clock: "12", template: "HH:mm"});
         test.ok(fmt !== null);
-    
+
         var date = new GregorianDate({
             locale: "km-KH",
             year: 2011,
@@ -315,12 +315,12 @@ module.exports.testdatefmt_km_KH = {
         test.equal(fmt.format(date), "01:45");
         test.done();
     },
-    
+
     testDateFmtTemplateClock12Switchkk_km_KH: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "km-KH", clock: "12", template: "kk:mm"});
         test.ok(fmt !== null);
-    
+
         var date = new GregorianDate({
             locale: "km-KH",
             year: 2011,
@@ -334,12 +334,12 @@ module.exports.testdatefmt_km_KH = {
         test.equal(fmt.format(date), "01:45");
         test.done();
     },
-    
+
     testDateFmtTemplateClock24Switchhh_km_KH: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "km-KH", clock: "24", template: "hh:mm"});
         test.ok(fmt !== null);
-    
+
         var date = new GregorianDate({
             locale: "km-KH",
             year: 2011,
@@ -353,12 +353,12 @@ module.exports.testdatefmt_km_KH = {
         test.equal(fmt.format(date), "13:45");
         test.done();
     },
-    
+
     testDateFmtTemplateClock24SwitchKK_km_KH: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "km-KH", clock: "24", template: "KK:mm"});
         test.ok(fmt !== null);
-    
+
         var date = new GregorianDate({
             locale: "km-KH",
             year: 2011,
@@ -372,12 +372,12 @@ module.exports.testdatefmt_km_KH = {
         test.equal(fmt.format(date), "13:45");
         test.done();
     },
-    
+
     testDateFmtTemplateNoClockNotFollowLocaleDefault12hh_km_KH: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "km-KH", template: "hh:mm"});
         test.ok(fmt !== null);
-    
+
         var date = new GregorianDate({
             locale: "km-KH",
             year: 2011,
@@ -391,12 +391,12 @@ module.exports.testdatefmt_km_KH = {
         test.equal(fmt.format(date), "01:45");
         test.done();
     },
-    
+
     testDateFmtTemplateNoClockNotFollowLocaleDefault12KK_km_KH: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "km-KH", template: "KK:mm"});
         test.ok(fmt !== null);
-    
+
         var date = new GregorianDate({
             locale: "km-KH",
             year: 2011,
@@ -410,12 +410,12 @@ module.exports.testdatefmt_km_KH = {
         test.equal(fmt.format(date), "01:45");
         test.done();
     },
-    
+
     testDateFmtTemplateNoClockNotFollowLocaleDefault24HH_km_KH: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "km-KH", template: "HH:mm"});
         test.ok(fmt !== null);
-    
+
         var date = new GregorianDate({
             locale: "km-KH",
             year: 2011,
@@ -429,12 +429,12 @@ module.exports.testdatefmt_km_KH = {
         test.equal(fmt.format(date), "13:45");
         test.done();
     },
-    
+
     testDateFmtTemplateNoClockNotFollowLocaleDefault24kk_km_KH: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "km-KH", template: "kk:mm"});
         test.ok(fmt !== null);
-    
+
         var date = new GregorianDate({
             locale: "km-KH",
             year: 2011,
@@ -448,13 +448,13 @@ module.exports.testdatefmt_km_KH = {
         test.equal(fmt.format(date), "13:45");
         test.done();
     },
-    
-    
+
+
     testDateFmtTypeDate_km_KH: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "km-KH", type: "date"});
         test.ok(fmt !== null);
-    
+
         var date = new GregorianDate({
             locale: "km-KH",
             year: 2011,
@@ -468,12 +468,12 @@ module.exports.testdatefmt_km_KH = {
         test.equal(fmt.format(date), "29/9/11");
         test.done();
     },
-    
+
     testDateFmtTypeTime_km_KH: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "km-KH", type: "time"});
         test.ok(fmt !== null);
-    
+
         var date = new GregorianDate({
             locale: "km-KH",
             year: 2011,
@@ -487,12 +487,12 @@ module.exports.testdatefmt_km_KH = {
         test.equal(fmt.format(date), "1:45 PM");
         test.done();
     },
-    
+
     testDateFmtTypeDateTime_km_KH: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "km-KH", type: "datetime"});
         test.ok(fmt !== null);
-    
+
         var date = new GregorianDate({
             locale: "km-KH",
             year: 2011,
@@ -506,13 +506,13 @@ module.exports.testdatefmt_km_KH = {
         test.equal(fmt.format(date), "29/9/11, 1:45 PM");
         test.done();
     },
-    
-    
+
+
     testDateFmtShortDateComponentsY_km_KH: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "km-KH", date: "y"});
         test.ok(fmt !== null);
-    
+
         var date = new GregorianDate({
             locale: "km-KH",
             year: 2011,
@@ -526,12 +526,12 @@ module.exports.testdatefmt_km_KH = {
         test.equal(fmt.format(date), "11");
         test.done();
     },
-    
+
     testDateFmtShortDateComponentsM_km_KH: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "km-KH", date: "m"});
         test.ok(fmt !== null);
-    
+
         var date = new GregorianDate({
             locale: "km-KH",
             year: 2011,
@@ -545,12 +545,12 @@ module.exports.testdatefmt_km_KH = {
         test.equal(fmt.format(date), "9");
         test.done();
     },
-    
+
     testDateFmtShortDateComponentsN_km_KH: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "km-KH", date: "n"});
         test.ok(fmt !== null);
-    
+
         var date = new GregorianDate({
             locale: "km-KH",
             year: 2011,
@@ -564,12 +564,12 @@ module.exports.testdatefmt_km_KH = {
         test.equal(fmt.format(date), "ក");
         test.done();
     },
-    
+
     testDateFmtShortDateComponentsD_km_KH: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "km-KH", date: "d"});
         test.ok(fmt !== null);
-    
+
         var date = new GregorianDate({
             locale: "km-KH",
             year: 2011,
@@ -583,12 +583,12 @@ module.exports.testdatefmt_km_KH = {
         test.equal(fmt.format(date), "29");
         test.done();
     },
-    
+
     testDateFmtShortDateComponentsDM_km_KH: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "km-KH", date: "dm"});
         test.ok(fmt !== null);
-    
+
         var date = new GregorianDate({
             locale: "km-KH",
             year: 2011,
@@ -602,12 +602,12 @@ module.exports.testdatefmt_km_KH = {
         test.equal(fmt.format(date), "29/9");
         test.done();
     },
-    
+
     testDateFmtShortDateComponentsMY_km_KH: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "km-KH", date: "my"});
         test.ok(fmt !== null);
-    
+
         var date = new GregorianDate({
             locale: "km-KH",
             year: 2011,
@@ -621,12 +621,12 @@ module.exports.testdatefmt_km_KH = {
         test.equal(fmt.format(date), "9/11");
         test.done();
     },
-    
+
     testDateFmtShortDateComponentsDMY_km_KH: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "km-KH", date: "dmy"});
         test.ok(fmt !== null);
-    
+
         var date = new GregorianDate({
             locale: "km-KH",
             year: 2011,
@@ -640,12 +640,12 @@ module.exports.testdatefmt_km_KH = {
         test.equal(fmt.format(date), "29/9/11");
         test.done();
     },
-    
+
     testDateFmtShortDateComponentsDMW_km_KH: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "km-KH", date: "dmw"});
         test.ok(fmt !== null);
-    
+
         var date = new GregorianDate({
             locale: "km-KH",
             year: 2011,
@@ -659,12 +659,12 @@ module.exports.testdatefmt_km_KH = {
         test.equal(fmt.format(date), "ព 29/9");
         test.done();
     },
-    
+
     testDateFmtShortDateComponentsDMWY_km_KH: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "km-KH", date: "dmwy"});
         test.ok(fmt !== null);
-    
+
         var date = new GregorianDate({
             locale: "km-KH",
             year: 2011,
@@ -678,13 +678,13 @@ module.exports.testdatefmt_km_KH = {
         test.equal(fmt.format(date), "ព 29/9/11");
         test.done();
     },
-    
-    
+
+
     testDateFmtFullDateComponentsY_km_KH: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "km-KH", length: "full", date: "y"});
         test.ok(fmt !== null);
-    
+
         var date = new GregorianDate({
             locale: "km-KH",
             year: 2011,
@@ -698,12 +698,12 @@ module.exports.testdatefmt_km_KH = {
         test.equal(fmt.format(date), "2011");
         test.done();
     },
-    
+
     testDateFmtFullDateComponentsM_km_KH: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "km-KH", length: "full", date: "m"});
         test.ok(fmt !== null);
-    
+
         var date = new GregorianDate({
             locale: "km-KH",
             year: 2011,
@@ -717,12 +717,12 @@ module.exports.testdatefmt_km_KH = {
         test.equal(fmt.format(date), "កញ្ញា");
         test.done();
     },
-    
+
     testDateFmtFullDateComponentsD_km_KH: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "km-KH", length: "full", date: "d"});
         test.ok(fmt !== null);
-    
+
         var date = new GregorianDate({
             locale: "km-KH",
             year: 2011,
@@ -736,12 +736,12 @@ module.exports.testdatefmt_km_KH = {
         test.equal(fmt.format(date), "29");
         test.done();
     },
-    
+
     testDateFmtFullDateComponentsDM_km_KH: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "km-KH", length: "full", date: "dm"});
         test.ok(fmt !== null);
-    
+
         var date = new GregorianDate({
             locale: "km-KH",
             year: 2011,
@@ -755,12 +755,12 @@ module.exports.testdatefmt_km_KH = {
         test.equal(fmt.format(date), "29 កញ្ញា");
         test.done();
     },
-    
+
     testDateFmtFullDateComponentsMY_km_KH: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "km-KH", length: "full", date: "my"});
         test.ok(fmt !== null);
-    
+
         var date = new GregorianDate({
             locale: "km-KH",
             year: 2011,
@@ -774,12 +774,12 @@ module.exports.testdatefmt_km_KH = {
         test.equal(fmt.format(date), "កញ្ញា 2011");
         test.done();
     },
-    
+
     testDateFmtFullDateComponentsDMY_km_KH: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "km-KH", length: "full", date: "dmy"});
         test.ok(fmt !== null);
-    
+
         var date = new GregorianDate({
             locale: "km-KH",
             year: 2011,
@@ -793,12 +793,12 @@ module.exports.testdatefmt_km_KH = {
         test.equal(fmt.format(date), "29 កញ្ញា 2011");
         test.done();
     },
-    
+
     testDateFmtFullDateComponentsDMW_km_KH: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "km-KH", length: "full", date: "dmw"});
         test.ok(fmt !== null);
-    
+
         var date = new GregorianDate({
             locale: "km-KH",
             year: 2011,
@@ -812,12 +812,12 @@ module.exports.testdatefmt_km_KH = {
         test.equal(fmt.format(date), "ព្រហស្បតិ៍ 29 កញ្ញា");
         test.done();
     },
-    
+
     testDateFmtFullDateComponentsDMWY_km_KH: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "km-KH", length: "full", date: "dmwy"});
         test.ok(fmt !== null);
-    
+
         var date = new GregorianDate({
             locale: "km-KH",
             year: 2011,
@@ -831,13 +831,13 @@ module.exports.testdatefmt_km_KH = {
         test.equal(fmt.format(date), "ព្រហស្បតិ៍ 29 កញ្ញា 2011");
         test.done();
     },
-    
-    
+
+
     testDateFmtShortTimeComponentsS_km_KH: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "km-KH", type: "time", time: "s"});
         test.ok(fmt !== null);
-    
+
         var date = new GregorianDate({
             locale: "km-KH",
             year: 2011,
@@ -851,12 +851,12 @@ module.exports.testdatefmt_km_KH = {
         test.equal(fmt.format(date), "37");
         test.done();
     },
-    
+
     testDateFmtShortTimeComponentsM_km_KH: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "km-KH", type: "time", time: "m"});
         test.ok(fmt !== null);
-    
+
         var date = new GregorianDate({
             locale: "km-KH",
             year: 2011,
@@ -870,12 +870,12 @@ module.exports.testdatefmt_km_KH = {
         test.equal(fmt.format(date), "45");
         test.done();
     },
-    
+
     testDateFmtShortTimeComponentsH_km_KH: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "km-KH", type: "time", time: "h"});
         test.ok(fmt !== null);
-    
+
         var date = new GregorianDate({
             locale: "km-KH",
             year: 2011,
@@ -889,12 +889,12 @@ module.exports.testdatefmt_km_KH = {
         test.equal(fmt.format(date), "1");
         test.done();
     },
-    
+
     testDateFmtShortTimeComponentsMS_km_KH: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "km-KH", type: "time", time: "ms"});
         test.ok(fmt !== null);
-    
+
         var date = new GregorianDate({
             locale: "km-KH",
             year: 2011,
@@ -908,12 +908,12 @@ module.exports.testdatefmt_km_KH = {
         test.equal(fmt.format(date), "45:37");
         test.done();
     },
-    
+
     testDateFmtShortTimeComponentsHM_km_KH: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "km-KH", type: "time", time: "hm"});
         test.ok(fmt !== null);
-    
+
         var date = new GregorianDate({
             locale: "km-KH",
             year: 2011,
@@ -927,12 +927,12 @@ module.exports.testdatefmt_km_KH = {
         test.equal(fmt.format(date), "1:45");
         test.done();
     },
-    
+
     testDateFmtShortTimeComponentsHMS_km_KH: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "km-KH", type: "time", time: "hms"});
         test.ok(fmt !== null);
-    
+
         var date = new GregorianDate({
             locale: "km-KH",
             year: 2011,
@@ -946,12 +946,12 @@ module.exports.testdatefmt_km_KH = {
         test.equal(fmt.format(date), "1:45:37");
         test.done();
     },
-    
+
     testDateFmtShortTimeComponentsHMA_km_KH: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "km-KH", type: "time", time: "hma"});
         test.ok(fmt !== null);
-    
+
         var date = new GregorianDate({
             locale: "km-KH",
             year: 2011,
@@ -965,7 +965,7 @@ module.exports.testdatefmt_km_KH = {
         test.equal(fmt.format(date), "1:45 PM");
         test.done();
     },
-    
+
     testDateFmtShortTimeComponentsHMZ_km_KH: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
@@ -974,7 +974,7 @@ module.exports.testdatefmt_km_KH = {
             time: "hmz"
         });
         test.ok(fmt !== null);
-    
+
         var date = new GregorianDate({
             locale: "km-KH",
             year: 2011,
@@ -988,7 +988,7 @@ module.exports.testdatefmt_km_KH = {
         test.equal(fmt.format(date), "1:45 +07");
         test.done();
     },
-    
+
     testDateFmtShortTimeComponentsHMAZ_km_KH: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
@@ -997,7 +997,7 @@ module.exports.testdatefmt_km_KH = {
             time: "hmaz"
         });
         test.ok(fmt !== null);
-    
+
         var date = new GregorianDate({
             locale: "km-KH",
             year: 2011,
@@ -1011,12 +1011,12 @@ module.exports.testdatefmt_km_KH = {
         test.equal(fmt.format(date), "1:45 PM +07");
         test.done();
     },
-    
+
     testDateFmtShortTimeComponentsHMSA_km_KH: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "km-KH", type: "time", time: "hmsa"});
         test.ok(fmt !== null);
-    
+
         var date = new GregorianDate({
             locale: "km-KH",
             year: 2011,
@@ -1030,7 +1030,7 @@ module.exports.testdatefmt_km_KH = {
         test.equal(fmt.format(date), "1:45:37 PM");
         test.done();
     },
-    
+
     testDateFmtShortTimeComponentsHMSZ_km_KH: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
@@ -1039,7 +1039,7 @@ module.exports.testdatefmt_km_KH = {
             time: "hmsz"
         });
         test.ok(fmt !== null);
-    
+
         var date = new GregorianDate({
             locale: "km-KH",
             year: 2011,
@@ -1053,7 +1053,7 @@ module.exports.testdatefmt_km_KH = {
         test.equal(fmt.format(date), "1:45:37 +07");
         test.done();
     },
-    
+
     testDateFmtShortTimeComponentsHMSAZ_km_KH: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
@@ -1062,7 +1062,7 @@ module.exports.testdatefmt_km_KH = {
             time: "hmsaz"
         });
         test.ok(fmt !== null);
-    
+
         var date = new GregorianDate({
             locale: "km-KH",
             year: 2011,
@@ -1076,13 +1076,13 @@ module.exports.testdatefmt_km_KH = {
         test.equal(fmt.format(date), "1:45:37 PM +07");
         test.done();
     },
-    
-    
+
+
     testDateFmtFullTimeComponentsS_km_KH: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "km-KH", type: "time", length: "full", time: "s"});
         test.ok(fmt !== null);
-    
+
         var date = new GregorianDate({
             locale: "km-KH",
             year: 2011,
@@ -1096,12 +1096,12 @@ module.exports.testdatefmt_km_KH = {
         test.equal(fmt.format(date), "37");
         test.done();
     },
-    
+
     testDateFmtFullTimeComponentsM_km_KH: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "km-KH", type: "time", length: "full", time: "m"});
         test.ok(fmt !== null);
-    
+
         var date = new GregorianDate({
             locale: "km-KH",
             year: 2011,
@@ -1115,12 +1115,12 @@ module.exports.testdatefmt_km_KH = {
         test.equal(fmt.format(date), "45");
         test.done();
     },
-    
+
     testDateFmtFullTimeComponentsH_km_KH: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "km-KH", type: "time", length: "full", time: "h"});
         test.ok(fmt !== null);
-    
+
         var date = new GregorianDate({
             locale: "km-KH",
             year: 2011,
@@ -1134,12 +1134,12 @@ module.exports.testdatefmt_km_KH = {
         test.equal(fmt.format(date), "1");
         test.done();
     },
-    
+
     testDateFmtFullTimeComponentsMS_km_KH: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "km-KH", type: "time", length: "full", time: "ms"});
         test.ok(fmt !== null);
-    
+
         var date = new GregorianDate({
             locale: "km-KH",
             year: 2011,
@@ -1153,12 +1153,12 @@ module.exports.testdatefmt_km_KH = {
         test.equal(fmt.format(date), "45:37");
         test.done();
     },
-    
+
     testDateFmtFullTimeComponentsHM_km_KH: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "km-KH", type: "time", length: "full", time: "hm"});
         test.ok(fmt !== null);
-    
+
         var date = new GregorianDate({
             locale: "km-KH",
             year: 2011,
@@ -1172,12 +1172,12 @@ module.exports.testdatefmt_km_KH = {
         test.equal(fmt.format(date), "1:45");
         test.done();
     },
-    
+
     testDateFmtFullTimeComponentsHMS_km_KH: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "km-KH", type: "time", length: "full", time: "hms"});
         test.ok(fmt !== null);
-    
+
         var date = new GregorianDate({
             locale: "km-KH",
             year: 2011,
@@ -1191,12 +1191,12 @@ module.exports.testdatefmt_km_KH = {
         test.equal(fmt.format(date), "1:45:37");
         test.done();
     },
-    
+
     testDateFmtFullTimeComponentsHMA_km_KH: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "km-KH", type: "time", length: "full", time: "hma"});
         test.ok(fmt !== null);
-    
+
         var date = new GregorianDate({
             locale: "km-KH",
             year: 2011,
@@ -1210,7 +1210,7 @@ module.exports.testdatefmt_km_KH = {
         test.equal(fmt.format(date), "1:45 PM");
         test.done();
     },
-    
+
     testDateFmtFullTimeComponentsHMZ_km_KH: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
@@ -1220,7 +1220,7 @@ module.exports.testdatefmt_km_KH = {
             time: "hmz"
         });
         test.ok(fmt !== null);
-    
+
         var date = new GregorianDate({
             locale: "km-KH",
             year: 2011,
@@ -1234,7 +1234,7 @@ module.exports.testdatefmt_km_KH = {
         test.equal(fmt.format(date), "1:45 +07");
         test.done();
     },
-    
+
     testDateFmtFullTimeComponentsHMAZ_km_KH: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
@@ -1244,7 +1244,7 @@ module.exports.testdatefmt_km_KH = {
             time: "hmaz"
         });
         test.ok(fmt !== null);
-    
+
         var date = new GregorianDate({
             locale: "km-KH",
             year: 2011,
@@ -1258,12 +1258,12 @@ module.exports.testdatefmt_km_KH = {
         test.equal(fmt.format(date), "1:45 PM +07");
         test.done();
     },
-    
+
     testDateFmtFullTimeComponentsHMSA_km_KH: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "km-KH", type: "time", length: "full", time: "hmsa"});
         test.ok(fmt !== null);
-    
+
         var date = new GregorianDate({
             locale: "km-KH",
             year: 2011,
@@ -1277,7 +1277,7 @@ module.exports.testdatefmt_km_KH = {
         test.equal(fmt.format(date), "1:45:37 PM");
         test.done();
     },
-    
+
     testDateFmtFullTimeComponentsHMSZ_km_KH: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
@@ -1287,7 +1287,7 @@ module.exports.testdatefmt_km_KH = {
             time: "hmsz"
         });
         test.ok(fmt !== null);
-    
+
         var date = new GregorianDate({
             locale: "km-KH",
             year: 2011,
@@ -1301,7 +1301,7 @@ module.exports.testdatefmt_km_KH = {
         test.equal(fmt.format(date), "1:45:37 +07");
         test.done();
     },
-    
+
     testDateFmtFullTimeComponentsHMSAZ_km_KH: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
@@ -1311,7 +1311,7 @@ module.exports.testdatefmt_km_KH = {
             time: "hmsaz"
         });
         test.ok(fmt !== null);
-    
+
         var date = new GregorianDate({
             locale: "km-KH",
             year: 2011,
@@ -1325,7 +1325,7 @@ module.exports.testdatefmt_km_KH = {
         test.equal(fmt.format(date), "1:45:37 PM +07");
         test.done();
     },
-    
+
     testDateFmtWithTimeZoneAndNoDST_km_KH: function(test) {
         test.expect(2);
         var fmt = new DateFmt({
@@ -1335,7 +1335,7 @@ module.exports.testdatefmt_km_KH = {
             time: "hmsz"
         });
         test.ok(fmt !== null);
-    
+
         var date = new GregorianDate({
             locale: "km-KH",
             year: 2011,
@@ -1349,12 +1349,12 @@ module.exports.testdatefmt_km_KH = {
         test.equal(fmt.format(date), "1:45:37 +07");
         test.done();
     },
-    
+
     testDateFmtFormatRelativeWithinMinuteAfter_km_KH: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "km-KH", length: "full"});
         test.ok(fmt !== null);
-    
+
         var reference = new GregorianDate({
             locale: "km-KH",
             year: 2011,
@@ -1382,7 +1382,7 @@ module.exports.testdatefmt_km_KH = {
         test.expect(2);
         var fmt = new DateFmt({locale: "km-KH", length: "full"});
         test.ok(fmt !== null);
-    
+
         var reference = new GregorianDate({
             locale: "km-KH",
             year: 2011,
@@ -1410,7 +1410,7 @@ module.exports.testdatefmt_km_KH = {
         test.expect(2);
         var fmt = new DateFmt({locale: "km-KH", length: "full"});
         test.ok(fmt !== null);
-    
+
         var reference = new GregorianDate({
             locale: "km-KH",
             year: 2011,
@@ -1438,7 +1438,7 @@ module.exports.testdatefmt_km_KH = {
         test.expect(2);
         var fmt = new DateFmt({locale: "km-KH", length: "full"});
         test.ok(fmt !== null);
-    
+
         var reference = new GregorianDate({
             locale: "km-KH",
             year: 2011,
@@ -1466,7 +1466,7 @@ module.exports.testdatefmt_km_KH = {
         test.expect(2);
         var fmt = new DateFmt({locale: "km-KH", length: "full"});
         test.ok(fmt !== null);
-    
+
         var reference = new GregorianDate({
             locale: "km-KH",
             year: 2011,
@@ -1487,14 +1487,14 @@ module.exports.testdatefmt_km_KH = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.formatRelative(reference, date), "4 ម៉ោងទៀត");
+        test.equal(fmt.formatRelative(reference, date), "ក្នុង​រយៈ​ពេល 4 ម៉ោង");
         test.done();
     },
     testDateFmtFormatRelativeWithinDayBefore_km_KH: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "km-KH", length: "full"});
         test.ok(fmt !== null);
-    
+
         var reference = new GregorianDate({
             locale: "km-KH",
             year: 2011,
@@ -1518,12 +1518,12 @@ module.exports.testdatefmt_km_KH = {
         test.equal(fmt.formatRelative(reference, date), "4 ម៉ោង​មុន");
         test.done();
     },
-    
+
     testDateFmtFormatRelativeWithinFortnightAfter_km_KH: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "km-KH", length: "full"});
         test.ok(fmt !== null);
-    
+
         var reference = new GregorianDate({
             locale: "km-KH",
             year: 2011,
@@ -1551,7 +1551,7 @@ module.exports.testdatefmt_km_KH = {
         test.expect(2);
         var fmt = new DateFmt({locale: "km-KH", length: "full"});
         test.ok(fmt !== null);
-    
+
         var reference = new GregorianDate({
             locale: "km-KH",
             year: 2011,
@@ -1575,12 +1575,12 @@ module.exports.testdatefmt_km_KH = {
         test.equal(fmt.formatRelative(reference, date), "4 ថ្ងៃ​មុន");
         test.done();
     },
-    
+
     testDateFmtFormatRelativeWithinQuarterAfter_km_KH: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "km-KH", length: "full"});
         test.ok(fmt !== null);
-    
+
         var reference = new GregorianDate({
             locale: "km-KH",
             year: 2011,
@@ -1608,7 +1608,7 @@ module.exports.testdatefmt_km_KH = {
         test.expect(2);
         var fmt = new DateFmt({locale: "km-KH", length: "full"});
         test.ok(fmt !== null);
-    
+
         var reference = new GregorianDate({
             locale: "km-KH",
             year: 2011,
@@ -1632,12 +1632,12 @@ module.exports.testdatefmt_km_KH = {
         test.equal(fmt.formatRelative(reference, date), "9 សប្ដាហ៍​មុន");
         test.done();
     },
-    
+
     testDateFmtFormatRelativeWithinTwoYearsAfter_km_KH: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "km-KH", length: "full"});
         test.ok(fmt !== null);
-    
+
         var reference = new GregorianDate({
             locale: "km-KH",
             year: 2011,
@@ -1665,7 +1665,7 @@ module.exports.testdatefmt_km_KH = {
         test.expect(2);
         var fmt = new DateFmt({locale: "km-KH", length: "full"});
         test.ok(fmt !== null);
-    
+
         var reference = new GregorianDate({
             locale: "km-KH",
             year: 2011,
@@ -1686,15 +1686,15 @@ module.exports.testdatefmt_km_KH = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.formatRelative(reference, date), "14 ខែ​មុន");
+        test.equal(fmt.formatRelative(reference, date), "14 ខែមុន");
         test.done();
     },
-    
+
     testDateFmtFormatRelativeYearsAfter_km_KH: function(test) {
         test.expect(2);
         var fmt = new DateFmt({locale: "km-KH", length: "full"});
         test.ok(fmt !== null);
-    
+
         var reference = new GregorianDate({
             locale: "km-KH",
             year: 2011,
@@ -1722,7 +1722,7 @@ module.exports.testdatefmt_km_KH = {
         test.expect(2);
         var fmt = new DateFmt({locale: "km-KH", length: "full"});
         test.ok(fmt !== null);
-    
+
         var reference = new GregorianDate({
             locale: "km-KH",
             year: 2011,
@@ -1746,6 +1746,4 @@ module.exports.testdatefmt_km_KH = {
         test.equal(fmt.formatRelative(reference, date), "21 ឆ្នាំ​មុន");
         test.done();
     }
-    
-    
 };

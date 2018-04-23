@@ -83,8 +83,6 @@
     "1#1 second|#{num} seconds": "one#sekunde {num}|#sekunde {num}",
     "1#1 minute|#{num} minutes": "one#dakika {num}|#dakika {num}",
     "1#1 hour|#{num} hours": "one#saa {num}|#saa {num}",
-    "in {duration}": "baada ya {duration}",
-    "{duration} ago": "{duration} zilizopita",
     "1#1 day|#{num} days": "one#siku {num}|#siku {num}",
     "1#1 week|#{num} weeks": "one#wiki {num}|#wiki {num}",
     "1#1 month|#{num} months": "one#mwezi {num}|#miezi {num}",

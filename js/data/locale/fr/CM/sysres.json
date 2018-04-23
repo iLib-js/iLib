@@ -83,8 +83,6 @@
     "1#1 second|#{num} seconds": "one#{num} seconde|#{num} secondes",
     "1#1 minute|#{num} minutes": "one#{num} minute|#{num} minutes",
     "1#1 hour|#{num} hours": "one#{num} heure|#{num} heures",
-    "in {duration}": "dans {duration}",
-    "{duration} ago": "il y a {duration}",
     "1#1 day|#{num} days": "one#{num} jour|#{num} jours",
     "1#1 week|#{num} weeks": "one#{num} semaine|#{num} semaines",
     "1#1 month|#{num} months": "one#{num} mois|#{num} mois",

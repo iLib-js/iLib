@@ -18,7 +18,7 @@
  * limitations under the License.
  */
 
-var ilib = require("../lib/ilib-node.js");
+var ilib = require("../lib/ilib.js");
 var Collator = require("../lib/Collator.js");
 function testCollatorConstructorNative_it() {
 	var col = new Collator({useNative: false, locale: "it-IT"});
@@ -164,15 +164,15 @@ function testCollatorGetComparatorWorksWithCaseJS_it() {
 
 
 function testCollatorGetSortKeyNative_it() {
-	if (typeof(Intl) === 'undefined' && Intl) {
-	    return;
-	}
-	var col = new Collator({locale: "it-IT"});
 
-	assertNotUndefined(col);
+	if (typeof(Intl) !== 'undefined' && Intl) {
+        var col = new Collator({locale: "it-IT"});
 
-	// no sort key available when using native...
-	assertEquals("string", col.sortKey("string"));
+        assertNotUndefined(col);
+
+        // no sort key available when using native...
+        assertEquals("string", col.sortKey("string"));
+    }
 }
 
 function testCollatorGetSortKeySimpleUpper_it() {

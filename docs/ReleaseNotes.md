@@ -1,5 +1,44 @@
 Release Notes for Version 13.0
 =============================
+Build 003
+-------
+Published as version 13.3.0
+
+New Features:
+* Updated to work properly run test cases on QT/QML environment.
+  * Imeplemented simple version of nodeunit library to work in QT/QML environment.
+  * Confirmed that all of iLib cases are passed in QT 5.7 version.
+
+Bug Fixes:
+
+
+Build 003
+-------
+
+New Features:
+
+Bug Fixes:
+
+* Updated Date Formatter for fully supporting relativeTimePattern of CLDR.
+* Removed duplicate entries in various locale json data files
+* Removed an exception that was thrown when the address formatter was instantiated without
+any arguments
+
+Build 002
+-------
+
+Published as version 13.2.0
+
+New Features:
+
+* Updated the time zone data to IANA tzdata 2018c release
+* Added the ability to pass in multiple indexes as the first parameter to IString.formatChoice(). This allows you to format 
+  choice strings where there are two or more plurals in the string at the same time. For example, if your string is "There
+  are N items on P pages", you can get the locale-sensitive plurals of "items" and "pages" correct with one call.
+  
+
+Bug Fixes:
+
 
 Build 003
 -------

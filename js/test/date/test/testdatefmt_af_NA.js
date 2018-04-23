@@ -1084,7 +1084,7 @@ function testDateFmtShortTimeComponentsHMZ_af_NA() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("13:45 WAST", fmt.format(date));
+    assertEquals("13:45 CAT", fmt.format(date));
 }
 
 function testDateFmtShortTimeComponentsHMAZ_af_NA() {
@@ -1106,7 +1106,7 @@ function testDateFmtShortTimeComponentsHMAZ_af_NA() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("13:45 WAST", fmt.format(date));
+    assertEquals("13:45 CAT", fmt.format(date));
 }
 
 function testDateFmtShortTimeComponentsHMSA_af_NA() {
@@ -1145,7 +1145,7 @@ function testDateFmtShortTimeComponentsHMSZ_af_NA() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("13:45:37 WAST", fmt.format(date));
+    assertEquals("13:45:37 CAT", fmt.format(date));
 }
 
 function testDateFmtShortTimeComponentsHMSAZ_af_NA() {
@@ -1167,7 +1167,7 @@ function testDateFmtShortTimeComponentsHMSAZ_af_NA() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("13:45:37 WAST", fmt.format(date));
+    assertEquals("13:45:37 CAT", fmt.format(date));
 }
 
 
@@ -1309,7 +1309,7 @@ function testDateFmtFullTimeComponentsHMZ_af_NA() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("13:45 WAST", fmt.format(date));
+    assertEquals("13:45 CAT", fmt.format(date));
 }
 
 function testDateFmtFullTimeComponentsHMAZ_af_NA() {
@@ -1331,7 +1331,7 @@ function testDateFmtFullTimeComponentsHMAZ_af_NA() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("13:45 WAST", fmt.format(date));
+    assertEquals("13:45 CAT", fmt.format(date));
 }
 
 function testDateFmtFullTimeComponentsHMSA_af_NA() {
@@ -1371,7 +1371,7 @@ function testDateFmtFullTimeComponentsHMSZ_af_NA() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("13:45:37 WAST", fmt.format(date));
+    assertEquals("13:45:37 CAT", fmt.format(date));
 }
 
 function testDateFmtFullTimeComponentsHMSAZ_af_NA() {
@@ -1393,7 +1393,7 @@ function testDateFmtFullTimeComponentsHMSAZ_af_NA() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("13:45:37 WAST", fmt.format(date));
+    assertEquals("13:45:37 CAT", fmt.format(date));
 }
 
 function testDateFmtWithTimeZoneAndNoDST_af_NA() {
@@ -1415,7 +1415,7 @@ function testDateFmtWithTimeZoneAndNoDST_af_NA() {
 		second: 37,
 		millisecond: 0
 	});
-    assertEquals("13:45:37 WAST", fmt.format(date));
+    assertEquals("13:45:37 CAT", fmt.format(date));
 }
 
 function testDateFmtFormatRelativeWithinMinuteAfter_af_NA() {
