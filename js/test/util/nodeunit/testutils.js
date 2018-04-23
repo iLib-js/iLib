@@ -832,6 +832,41 @@ module.exports.testutils = {
         test.done();
     },
     
+    testGetSublocalesENUS: function(test) {
+        test.expect(1);
+
+        test.deepEqual(Utils.getSublocales("en-US"), ["root", "en", "und-US", "en-US"]);
+        test.done();
+    },
+
+    testGetSublocalesESUS: function(test) {
+        test.expect(1);
+
+        test.deepEqual(Utils.getSublocales("es-US"), ["root", "es", "und-US", "es-US"]);
+        test.done();
+    },
+
+    testGetSublocalesZHCN: function(test) {
+        test.expect(1);
+
+        test.deepEqual(Utils.getSublocales("zh-Hans-CN"), ["root", "zh", "und-CN", "zh-Hans", "zh-CN", "zh-Hans-CN"]);
+        test.done();
+    },
+
+    testGetSublocalesWithVariant: function(test) {
+        test.expect(1);
+
+        test.deepEqual(Utils.getSublocales("es-US-ASDF"), ["root", "es", "und-US", "es-US", "und-US-ASDF", "es-US-ASDF"]);
+        test.done();
+    },
+
+    testGetSublocalesWithScriptAndVariant: function(test) {
+        test.expect(1);
+
+        test.deepEqual(Utils.getSublocales("zh-Hans-CN-ASDF"), ["root", "zh", "und-CN", "zh-Hans", "zh-CN", "und-CN-ASDF", "zh-Hans-CN", "zh-CN-ASDF", "zh-Hans-CN-ASDF"]);
+        test.done();
+    },
+
     testMergeLocData: function(test) {
         test.expect(3);
         ilib.data.foobar = {
@@ -1187,12 +1222,12 @@ module.exports.testutils = {
     
     testGetLocFilesRegionVariant: function(test) {
         test.expect(2);
-        var locale = new Locale("US-govt");
+        var locale = new Locale("US-GOVT");
         var f = Utils.getLocFiles(locale, "localeinfo.json");
         var expected = [
             "localeinfo.json",
             "und/US/localeinfo.json",
-            "und/US/govt/localeinfo.json"
+            "und/US/GOVT/localeinfo.json"
         ];
         
         test.equal(f.length, expected.length);

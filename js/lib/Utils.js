@@ -20,8 +20,139 @@
 var ilib = require("./ilib.js");
 var Locale = require("./Locale.js");
 var JSUtils = require("./JSUtils.js");
+var Path = require("./Path.js");
 
 var Utils = {};
+
+/**
+ * Return an array of locales that represent the sublocales of
+ * the given locale. These sublocales are intended to be used
+ * to load locale data. Each sublocale might be represented
+ * separately by files on disk in order to share them with other
+ * locales that have the same sublocales. The sublocales are
+ * given in the order that they should be loaded, which is
+ * least specific to most specific.<p>
+ *
+ * For example, the locale "en-US" would have the sublocales
+ * "root", "en", "und-US", and "en-US".<p>
+ *
+ * <h4>Variations</h4>
+ *
+ * With only language and region specified, the following
+ * sequence of sublocales will be generated:<p>
+ *
+ * <pre>
+ * root
+ * language
+ * und-region
+ * language-region
+ * </pre>
+ *
+ * With only language and script specified:<p>
+ *
+ * <pre>
+ * root
+ * language
+ * language-script
+ * </pre>
+ *
+ * With only script and region specified:<p>
+ *
+ * <pre>
+ * root
+ * und-region
+ * </pre>
+ *
+ * With only region and variant specified:<p>
+ *
+ * <pre>
+ * root
+ * und-region
+ * region-variant
+ * </pre>
+ *
+ * With only language, script, and region specified:<p>
+ *
+ * <pre>
+ * root
+ * language
+ * und-region
+ * language-script
+ * language-region
+ * language-script-region
+ * </pre>
+ *
+ * With only language, region, and variant specified:<p>
+ *
+ * <pre>
+ * root
+ * language
+ * und-region
+ * language-region
+ * und-region-variant
+ * language-region-variant
+ * </pre>
+ *
+ * With all parts specified:<p>
+ *
+ * <pre>
+ * root
+ * language
+ * und-region
+ * language-script
+ * language-region
+ * und-region-variant
+ * language-script-region
+ * language-region-variant
+ * language-script-region-variant
+ * </pre>
+ *
+ * @static
+ * @param {Locale|String} locale the locale to find the sublocales for
+ * @return {Array.<string>} An array of locale specifiers that
+ * are the sublocales of the given on
+ */
+Utils.getSublocales = function(locale) {
+    var ret = ["root"];
+    var loc = typeof(locale) === "string" ? new Locale(locale) : locale;
+
+    if (loc.getLanguage()) {
+        ret.push(loc.getLanguage());
+    }
+
+    if (loc.getRegion()) {
+        ret.push('und-' + loc.getRegion());
+    }
+
+    if (loc.getLanguage()) {
+        if (loc.getScript()) {
+            ret.push(loc.getLanguage() + '-' + loc.getScript());
+        }
+
+        if (loc.getRegion()) {
+            ret.push(loc.getLanguage() + '-' + loc.getRegion());
+        }
+    }
+
+    if (loc.getRegion() && loc.getVariant()) {
+        ret.push("und-" + loc.getRegion() + '-' + loc.getVariant());
+    }
+
+    if (loc.getLanguage()) {
+        if (loc.getScript() && loc.getRegion()) {
+            ret.push(loc.getLanguage() + '-' + loc.getScript() + '-' + loc.getRegion());
+        }
+
+        if (loc.getRegion() && loc.getVariant()) {
+            ret.push(loc.getLanguage() + '-' + loc.getRegion() + '-' + loc.getVariant());
+        }
+
+        if (loc.getScript() && loc.getRegion() && loc.getVariant()) {
+            ret.push(loc.getLanguage() + '-' + loc.getScript() + '-' + loc.getRegion() + '-' + loc.getVariant());
+        }
+    }
+    return ret;
+};
 
 /**
  * Find and merge all the locale data for a particular prefix in the given locale
@@ -51,94 +182,28 @@ var Utils = {};
  * @return {Object?} the merged locale data
  */
 Utils.mergeLocData = function (prefix, locale, replaceArrays, returnOne) {
-	var data = undefined;
-	var loc = locale || new Locale();
-	var foundLocaleData = false;
-	var property = prefix;
-	var mostSpecific;
+    var data = undefined;
+    var loc = locale || new Locale();
+    var foundLocaleData = false;
+    var mostSpecific;
 
-	data = ilib.data[prefix] || {};
+    data = ilib.data[prefix] || {};
 
-	mostSpecific = data;
+    mostSpecific = data;
 
-	if (loc.getLanguage()) {
-		property = prefix + '_' + loc.getLanguage();
-		if (ilib.data[property]) {
-			foundLocaleData = true;
-			data = JSUtils.merge(data, ilib.data[property], replaceArrays);
-			mostSpecific = ilib.data[property];
-		}
-	}
-	
-	if (loc.getRegion()) {
-		property = prefix + '_und_' + loc.getRegion();
-		if (ilib.data[property]) {
-			foundLocaleData = true;
-			data = JSUtils.merge(data, ilib.data[property], replaceArrays);
-			mostSpecific = ilib.data[property];
-		}
-	}
-	
-	if (loc.getLanguage()) {
-		property = prefix + '_' + loc.getLanguage();
-		
-		if (loc.getScript()) {
-			property = prefix + '_' + loc.getLanguage() + '_' + loc.getScript();
-			if (ilib.data[property]) {
-				foundLocaleData = true;
-				data = JSUtils.merge(data, ilib.data[property], replaceArrays);
-				mostSpecific = ilib.data[property];
-			}
-		}
-		
-		if (loc.getRegion()) {
-			property = prefix + '_' + loc.getLanguage() + '_' + loc.getRegion();
-			if (ilib.data[property]) {
-				foundLocaleData = true;
-				data = JSUtils.merge(data, ilib.data[property], replaceArrays);
-				mostSpecific = ilib.data[property];
-			}
-		}		
-	}
-	
-	if (loc.getRegion() && loc.getVariant()) {
-		property = prefix + '_' + loc.getLanguage() + '_' + loc.getVariant();
-		if (ilib.data[property]) {
-			foundLocaleData = true;
-			data = JSUtils.merge(data, ilib.data[property], replaceArrays);
-			mostSpecific = ilib.data[property];
-		}
-	}
+    Utils.getSublocales(loc).forEach(function(l) {
+        var property = (l === "root") ? prefix : prefix + '_' + l.replace(/-/g, "_");
 
-	if (loc.getLanguage() && loc.getScript() && loc.getRegion()) {
-		property = prefix + '_' + loc.getLanguage() + '_' + loc.getScript() + '_' + loc.getRegion();
-		if (ilib.data[property]) {
-			foundLocaleData = true;
-			data = JSUtils.merge(data, ilib.data[property], replaceArrays);
-			mostSpecific = ilib.data[property];
-		}
-	}
+        if (ilib.data[property]) {
+            foundLocaleData = true;
+            data = JSUtils.merge(data, ilib.data[property], replaceArrays);
+            mostSpecific = ilib.data[property];
+        }
+    });
 
-	if (loc.getLanguage() && loc.getRegion() && loc.getVariant()) {
-		property = prefix + '_' + loc.getLanguage() + '_' + loc.getRegion() + '_' + loc.getVariant();
-		if (ilib.data[property]) {
-			foundLocaleData = true;
-			data = JSUtils.merge(data, ilib.data[property], replaceArrays);
-			mostSpecific = ilib.data[property];
-		}
-	}
-
-	if (loc.getLanguage() && loc.getScript() && loc.getRegion() && loc.getVariant()) {
-		property = prefix + '_' + loc.getLanguage() + '_' + loc.getScript() + '_' + loc.getRegion() + '_' + loc.getVariant();
-		if (ilib.data[property]) {
-			foundLocaleData = true;
-			data = JSUtils.merge(data, ilib.data[property], replaceArrays);
-			mostSpecific = ilib.data[property];
-		}
-	}
-	
-	return foundLocaleData ? (returnOne ? mostSpecific : data) : undefined;
+    return foundLocaleData ? (returnOne ? mostSpecific : data) : undefined;
 };
+
 
 /**
  * Return an array of relative path names for the
@@ -229,60 +294,12 @@ Utils.mergeLocData = function (prefix, locale, replaceArrays, returnOne) {
  * for the files that contain the locale data
  */
 Utils.getLocFiles = function(locale, name) {
-	var dir = "";
-	var files = [];
-	var filename = name || "resources.json";
-	var loc = locale || new Locale();
-	
-	var language = loc.getLanguage();
-	var region = loc.getRegion();
-	var script = loc.getScript();
-	var variant = loc.getVariant();
-	
-	files.push(filename); // generic shared file
-	
-	if (language) {
-		dir = language + "/";
-		files.push(dir + filename);
-	}
-	
-	if (region) {
-		dir = "und/" + region + "/";
-		files.push(dir + filename);
-	}
-	
-	if (language) {
-		if (script) {
-			dir = language + "/" + script + "/";
-			files.push(dir + filename);
-		}
-		if (region) {
-			dir = language + "/" + region + "/";
-			files.push(dir + filename);
-		}
-	}
-	
-	if (region && variant) {
-		dir = "und/" + region + "/" + variant + "/";
-		files.push(dir + filename);
-	}
+    var filename = name || "resources.json";
+    var loc = locale || new Locale();
 
-	if (language && script && region) {
-		dir = language + "/" + script + "/" + region + "/";
-		files.push(dir + filename);
-	}
-
-	if (language && region && variant) {
-		dir = language + "/" + region + "/" + variant + "/";
-		files.push(dir + filename);
-	}
-
-	if (language && script && region && variant) {
-		dir = language + "/" + script + "/" + region + "/" + variant + "/";
-		files.push(dir + filename);
-	}
-	
-	return files;
+    return Utils.getSublocales(loc).map(function(l) {
+        return (l === "root") ? filename : Path.join(l.replace(/-/g, "/"), filename);
+    });
 };
 
 /**

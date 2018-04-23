@@ -1,6 +1,6 @@
 /*
  * JSUtils.js - Misc utilities to work around Javascript engine differences
- * 
+ *
  * Copyright © 2013-2015, 2018, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -22,11 +22,11 @@ var ilib = require("./ilib.js");
 var JSUtils = {};
 
 /**
- * Perform a shallow copy of the source object to the target object. This only 
- * copies the assignments of the source properties to the target properties, 
+ * Perform a shallow copy of the source object to the target object. This only
+ * copies the assignments of the source properties to the target properties,
  * but not recursively from there.<p>
- * 
- * 
+ *
+ *
  * @static
  * @param {Object} source the source object to copy properties from
  * @param {Object} target the target object to copy properties into
@@ -44,7 +44,7 @@ JSUtils.shallowCopy = function (source, target) {
 
 /**
  * Perform a recursive deep copy from the "from" object to the "deep" object.
- * 
+ *
  * @static
  * @param {Object} from the object to copy from
  * @param {Object} to the object to copy to
@@ -70,7 +70,7 @@ JSUtils.deepCopy = function(from, to) {
  * Map a string to the given set of alternate characters. If the target set
  * does not contain a particular character in the input string, then that
  * character will be copied to the output unmapped.
- * 
+ *
  * @static
  * @param {string} str a string to map to an alternate set of characters
  * @param {Array.<string>|Object} map a mapping to alternate characters
@@ -81,7 +81,7 @@ JSUtils.mapString = function (str, map) {
 	if (map && str) {
 		for (var i = 0; i < str.length; i++) {
 			var c = str.charAt(i); // TODO use a char iterator?
-			mapped += map[c] || c; 
+			mapped += map[c] || c;
 		}
 	} else {
 		mapped = str;
@@ -94,7 +94,7 @@ JSUtils.mapString = function (str, map) {
  * support indexOf, it is used directly. Otherwise, this function implements it
  * itself. The idea is to make sure that you can use the quick indexOf if it is
  * available, but use a slower implementation in older engines as well.
- * 
+ *
  * @static
  * @param {Array.<Object>} array array to search
  * @param {Object} obj object being sought. This should be of the same type as the
@@ -120,7 +120,7 @@ JSUtils.indexOf = function(array, obj) {
 
 /**
  * Pad the str with zeros to the given length of digits.
- * 
+ *
  * @static
  * @param {string|number} str the string or number to pad
  * @param {number} length the desired total length of the output string, padded
@@ -136,8 +136,8 @@ JSUtils.pad = function (str, length, right) {
 	if (str.charAt(0) === '-') {
 		start++;
 	}
-	return (str.length >= length+start) ? str : 
-		(right ? str + JSUtils.pad.zeros.substring(0,length-str.length+start) : 
+	return (str.length >= length+start) ? str :
+		(right ? str + JSUtils.pad.zeros.substring(0,length-str.length+start) :
 			str.substring(0, start) + JSUtils.pad.zeros.substring(0,length-str.length+start) + str.substring(start));
 };
 
@@ -147,7 +147,7 @@ JSUtils.pad.zeros = "00000000000000000000000000000000";
 /**
  * Convert a string into the hexadecimal representation
  * of the Unicode characters in that string.
- * 
+ *
  * @static
  * @param {string} string The string to convert
  * @param {number=} limit the number of digits to use to represent the character (1 to 8)
@@ -155,10 +155,10 @@ JSUtils.pad.zeros = "00000000000000000000000000000000";
  * Unicode characters in the input string
  */
 JSUtils.toHexString = function(string, limit) {
-	var i, 
-		result = "", 
+	var i,
+		result = "",
 		lim = (limit && limit < 9) ? limit : 4;
-	
+
 	if (!string) {
 		return "";
 	}
@@ -170,8 +170,8 @@ JSUtils.toHexString = function(string, limit) {
 };
 
 /**
- * Test whether an object in a Javascript Date. 
- * 
+ * Test whether an object in a Javascript Date.
+ *
  * @static
  * @param {Object|null|undefined} object The object to test
  * @return {boolean} return true if the object is a Date
@@ -181,19 +181,19 @@ JSUtils.isDate = function(object) {
 	if (typeof(object) === 'object') {
 		return Object.prototype.toString.call(object) === '[object Date]';
 	}
-	return false; 
+	return false;
 };
 
 /**
  * Merge the properties of object2 into object1 in a deep manner and return a merged
- * object. If the property exists in both objects, the value in object2 will overwrite 
+ * object. If the property exists in both objects, the value in object2 will overwrite
  * the value in object1. If a property exists in object1, but not in object2, its value
- * will not be touched. If a property exists in object2, but not in object1, it will be 
+ * will not be touched. If a property exists in object2, but not in object1, it will be
  * added to the merged result.<p>
- * 
+ *
  * Name1 and name2 are for creating debug output only. They are not necessary.<p>
- * 
- * 
+ *
+ *
  * @static
  * @param {*} object1 the object to merge into
  * @param {*} object2 the object to merge
@@ -236,19 +236,19 @@ JSUtils.merge = function (object1, object2, replace, name1, name2) {
 
 /**
  * Return true if the given object has no properties.<p>
- * 
- * 
+ *
+ *
  * @static
  * @param {Object} obj the object to check
  * @return {boolean} true if the given object has no properties, false otherwise
  */
 JSUtils.isEmpty = function (obj) {
 	var prop = undefined;
-	
+
 	if (!obj) {
 		return true;
 	}
-	
+
 	for (prop in obj) {
 		if (prop && typeof(obj[prop]) !== 'undefined') {
 			return false;
@@ -262,15 +262,15 @@ JSUtils.isEmpty = function (obj) {
  */
 JSUtils.hashCode = function(obj) {
 	var hash = 0;
-	
+
 	function addHash(hash, newValue) {
 		// co-prime numbers creates a nicely distributed hash
 		hash *= 65543;
 		hash += newValue;
-		hash %= 2147483647; 
+		hash %= 2147483647;
 		return hash;
 	}
-	
+
 	function stringHash(str) {
 		var hash = 0;
 		for (var i = 0; i < str.length; i++) {
@@ -278,7 +278,7 @@ JSUtils.hashCode = function(obj) {
 		}
 		return hash;
 	}
-	
+
 	switch (typeof(obj)) {
 		case 'undefined':
 			hash = 0;
@@ -309,9 +309,33 @@ JSUtils.hashCode = function(obj) {
 			}
 			break;
 	}
-	
+
 	return hash;
 };
 
+/**
+ * Calls the given action function on each element in the given
+ * array arr in order and finally call the given callback when they are
+ * all done. The action function should take the array to
+ * process as its parameter, and a callback function. It should
+ * process the first element in the array and then call its callback
+ * function with the result of processing that element (if any).
+ *
+ * @param {Array.<Object>} arr the array to process
+ * @param {Function(Array.<Object>, Function(*))} action the action
+ * to perform on each element of the array
+ * @param {Function(*)} callback the callback function to call
+ * with the results of processing each element of the array.
+ */
+JSUtils.callAll = function(arr, action, callback, results) {
+    if (arr) {
+        action(arr, function(result) {
+            results.push(result);
+            JSUtils.callAll(arr.slice(1), action, callback, results);
+        });
+    } else {
+        callback(result);
+    }
+};
 
 module.exports = JSUtils;

@@ -21,6 +21,8 @@ var Loader = require("./Loader.js");
 var Path = require("./Path.js");
 var Locale = require("./Locale.js");
 var ISet = require("./ISet.js");
+var Utils = require("./Utils.js");
+var JSUtils = require("./JSUtils.js");
 
 var alreadyLoaded = new ISet();
 
@@ -59,6 +61,8 @@ module.exports = function (ilib) {
         // util.print("new common WebpackLoader instance\n");
 
         this.parent.call(this, ilib);
+        
+        this.manifests = {};
 
         this.includePath.push("");
     };
@@ -120,11 +124,44 @@ module.exports = function (ilib) {
     WebpackLoader.prototype._exists = function(dir, file) {
         return false;
     };
-    
-    // Ensure that the data for a locale is loaded into memory. Thereafter,
-    // all ilib code can be called synchronously.
-    WebpackLoader.prototype.ensureLocale = function(locale, callback) {
-        loadLocaleData(ilib, locale, callback);
+
+    /**
+     * @private
+     */
+    WebpackLoader.prototype._ensureManifest = function(locale, dir, callback) {
+        if (this.manifests[dir]) {
+            callback(this.manifests[dir]);
+        } else {
+            this._loadFile(Path.join(dir, "ilibmanifest.json"), ilib.bind(this, function(manifest) {
+                if (manifest) {
+                    this.manifests[dir] = manifest.files;
+                    callback(manifest.files);
+                } else {
+                    callback(); // undefined param indicates error
+                }
+            }));
+        }
+    };
+
+    /**
+     * Ensure that the data for a locale is loaded into memory from the given
+     * dir. This will decompose the locale into its constituent parts and
+     * load all the appropriate files based on those parts. Thereafter,
+     * all ilib code can be called synchronously.
+     */
+    WebpackLoader.prototype.ensureLocale = function(locale, dir, callback) {
+        this._ensureManifest(locale, dir, function(manifest) {
+            var filesToLoad = Utils.getSublocales(locale).map(function(sublocale) {
+                return Path.join(dir, sublocale + ".js");
+            }).filter(function(file) {
+                return !manifest || Loader.indexOf(manifest, file) > -1;
+            });
+            JSUtils.callAll(filesToLoad, ilib.bind(this, function(arr, cb) {
+                this._loadFile(arr[0], false, cb);
+            }), function(results) {
+                callback(results);
+            });
+        });
     };
 
     return new WebpackLoader(ilib);
