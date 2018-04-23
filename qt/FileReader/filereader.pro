@@ -1,10 +1,15 @@
 TEMPLATE = lib
-TARGET = FileReader
+TARGET = "FileReader"
+CONFIG(debug, debug|release) {
+    unix: TARGET = $$join(TARGET, , , _debug)
+    win32: TARGET = $$join(TARGET, , , d)
+}
+TARGET = $$qtLibraryTarget($$TARGET)
+DESTDIR = ../output/qt
 QT += qml quick
 CONFIG += qt plugin debug_and_release build_all
 QML_IMPORT_PATH = imports
 
-TARGET = $$qtLibraryTarget($$TARGET)
 uri = com.jedlsoft.filesystem
 
 # Input

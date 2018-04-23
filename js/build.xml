@@ -30,6 +30,7 @@ limitations under the License.
 	<property name="build.export"					value="${build.base}/../export"/>
 	<property name="build.demo"						value="${build.base}/../docs/demo"/>
 	<property name="build.tools"					value="${build.base}/../tools"/>
+	<property name="build.tools.qmlizer"			value="${build.base}/../tools/qmlizer"/>
 	<property name="build.tools.build"				value="${build.base}/../tools/build"/>
 	<property name="build.bin"						value="${build.base}/bin"/>
 	<property name="build.lib"						value="${build.base}/lib"/>
@@ -483,29 +484,45 @@ limitations under the License.
 			<arg value="${build.output.js}/ilib.js"/>
 			<arg value="-o"/>
 			<arg value="${build.output.dyncode}/ilib.js"/>
-			<arg value="-m"/>
+			<arg value="--no-mangle-functions"/>
 		</exec>
 		<exec osfamily="mac" executable="node" dir="${build.base}" failifexecutionfails="true">
 			<arg value="${uglify.location}/bin/uglifyjs"/>
 			<arg value="${build.output.js}/ilib.js"/>
 			<arg value="-o"/>
 			<arg value="${build.output.dyncode}/ilib.js"/>
-			<arg value="-m"/>
+			<arg value="--no-mangle-functions"/>
 		</exec>
 		<exec osfamily="windows" executable="node.exe" dir="${build.base}" failifexecutionfails="true">
 			<arg value="${uglify.location}/bin/uglifyjs"/>
 			<arg value="${build.output.js}/ilib.js"/>
 			<arg value="-o"/>
 			<arg value="${build.output.dyncode}/ilib.js"/>
-			<arg value="-m"/>
+			<arg value="--no-mangle-functions"/>
 		</exec>
+		<exec osfamily="unix" executable="node" dir="${build.base}" failifexecutionfails="true">
+			<arg value="${build.tools.qmlizer}/qmlizer.js"/>
+			<arg value="${build.output.dyncode}/ilib.js"/>
+			<arg value="${build.output.dyncode}/ilib.js"/>
+		</exec>
+		<exec osfamily="mac" executable="node" dir="${build.base}" failifexecutionfails="true">
+			<arg value="${build.tools.qmlizer}/qmlizer.js"/>
+			<arg value="${build.output.dyncode}/ilib.js"/>
+			<arg value="${build.output.dyncode}/ilib.js"/>
+		</exec>
+		<exec osfamily="windows" executable="node.exe" dir="${build.base}" failifexecutionfails="true">
+			<arg value="${build.tools.qmlizer}/qmlizer.js"/>
+			<arg value="${build.output.dyncode}/ilib.js"/>
+			<arg value="${build.output.dyncode}/ilib.js"/>
+		</exec>
+
 		<!-- then do all the rest of them -->
 		<apply osfamily="unix" executable="node" dest="${build.output.dyncode}" parallel="false">
 			<arg value="${uglify.location}/bin/uglifyjs"/>
 			<srcfile/>
 			<arg value="-o"/>
 			<targetfile/>
-			<arg value="-m"/>
+			<arg value="--no-mangle-functions"/>
 			<fileset dir="${build.lib}" includes="*.js" excludes="ilib.js,ilib-*.js,runner.js,externs.js,datefmtstr.js"/>
 			<fileset dir="${build.lib}" includes="ilib-node*.js,ilib-stubs*,ilib-web.js,ilib-qt.js"/>
 			<mapper type="glob" from="*.js" to="*.js"/>
@@ -515,7 +532,7 @@ limitations under the License.
 			<srcfile/>
 			<arg value="-o"/>
 			<targetfile/>
-			<arg value="-m"/>
+			<arg value="--no-mangle-functions"/>
 			<fileset dir="${build.lib}" includes="*.js"  excludes="ilib.js,ilib-*.js,runner.js,externs.js,datefmtstr.js"/>
 			<fileset dir="${build.lib}" includes="ilib-node*.js,ilib-stubs*,ilib-web.js,ilib-qt.js"/>
 			<mapper type="glob" from="*.js" to="*.js"/>
@@ -525,9 +542,33 @@ limitations under the License.
 			<srcfile/>
 			<arg value="-o"/>
 			<targetfile/>
-			<arg value="-m"/>
+			<arg value="--no-mangle-functions"/>
 			<fileset dir="${build.lib}" includes="*.js"  excludes="ilib-*.js,runner.js,externs.js,datefmtstr.js"/>
 			<fileset dir="${build.lib}" includes="ilib-node*.js,ilib-stubs*,ilib-web.js,ilib-qt.js"/>
+			<mapper type="glob" from="*.js" to="*.js"/>
+		</apply>
+		<apply osfamily="unix" executable="node" dest="${build.output.dyncode}" parallel="false" force="true">
+			<arg value="${build.tools.qmlizer}/qmlizer.js"/>
+			<srcfile/>
+			<targetfile/>
+			<fileset dir="${build.output.dyncode}" includes="*.js" excludes="ilib.js,ilib-*.js,runner.js,externs.js,datefmtstr.js"/>
+			<fileset dir="${build.output.dyncode}" includes="ilib-node*.js,ilib-stubs*,ilib-web.js,ilib-qt.js"/>
+			<mapper type="glob" from="*.js" to="*.js"/>
+		</apply>
+		<apply osfamily="mac" executable="node" dest="${build.output.dyncode}" parallel="false" force="true">
+			<arg value="${build.tools.qmlizer}/qmlizer.js"/>
+			<srcfile/>
+			<targetfile/>
+			<fileset dir="${build.output.dyncode}" includes="*.js" excludes="ilib.js,ilib-*.js,runner.js,externs.js,datefmtstr.js"/>
+			<fileset dir="${build.output.dyncode}" includes="ilib-node*.js,ilib-stubs*,ilib-web.js,ilib-qt.js"/>
+			<mapper type="glob" from="*.js" to="*.js"/>
+		</apply>
+		<apply osfamily="windows" executable="node.exe" dest="${build.output.dyncode}" parallel="false" force="true">
+			<arg value="${build.tools.qmlizer}/qmlizer.js"/>
+			<srcfile/>
+			<targetfile/>
+			<fileset dir="${build.output.dyncode}" includes="*.js" excludes="ilib.js,ilib-*.js,runner.js,externs.js,datefmtstr.js"/>
+			<fileset dir="${build.output.dyncode}" includes="ilib-node*.js,ilib-stubs*,ilib-web.js,ilib-qt.js"/>
 			<mapper type="glob" from="*.js" to="*.js"/>
 		</apply>
 	</target>

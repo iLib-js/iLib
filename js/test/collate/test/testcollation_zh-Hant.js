@@ -17,7 +17,7 @@
  * limitations under the License.
  */
 
-var ilib = require("../lib/ilib-node.js");
+var ilib = require("../lib/ilib.js");
 var Collator = require("../lib/Collator.js");
 function testJSCollatorQuatHanzi_zh_Hant_stroke() {
 	var col = new Collator({
