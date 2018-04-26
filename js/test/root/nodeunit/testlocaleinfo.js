@@ -27,7 +27,7 @@ if (typeof(LocaleInfo) === "undefined") {
 function mockLoaderLI(paths, sync, params, callback) {
     var data = [];
     // for the generic, shared stuff
-    data.push(ilib.data.localeinfo || {
+    data.push({
         "calendar": "gregorian",
         "clock": "24",
         "currency": "USD",
@@ -80,7 +80,7 @@ function mockLoaderLI(paths, sync, params, callback) {
                 "locale": "FR"
             });
         } else {
-            data.push((path.indexOf('zzz') === -1) ? undefined : {
+            data.push((path.indexOf('yyy') === -1) ? undefined : {
                 "clock": "24",
                 "units": "metric",
                 "calendar": "hebrew",
@@ -98,7 +98,7 @@ function mockLoaderLI(paths, sync, params, callback) {
                         "iso": "iso {s} {n}"
                     }
                 },
-                "locale": "zzz-ZZ"
+                "locale": "yyy-ZZ"
             });
         }
     });
@@ -12426,7 +12426,7 @@ module.exports.testlocaleinfo = {
             return;
         }
         ilib.setLoaderCallback(mockLoaderLI);
-        var info = new LocaleInfo("zzz-ZX", {
+        var info = new LocaleInfo("yyy-ZX", {
             sync: false,
             onLoad: function (li) {
                 test.expect(5);
@@ -12450,7 +12450,7 @@ module.exports.testlocaleinfo = {
             return;
         }
         ilib.setLoaderCallback(mockLoaderLI);
-        var info = new LocaleInfo("zzz-ZX", {
+        var info = new LocaleInfo("yyy-ZX", {
             sync: true
         });
     
@@ -12472,14 +12472,14 @@ module.exports.testlocaleinfo = {
             test.done();
             return;
         }
+        test.expect(5);
         ilib.setLoaderCallback(mockLoaderLI);
         var info = new LocaleInfo("qq-QQ", {
             sync: false,
             onLoad: function (li) {
-        test.expect(5);
                 test.ok(typeof(li) !== "undefined");
                 // should return the shared data only
-                test.equal(li.getCurrencyFormats().common, "{s} {n}");
+                test.equal(li.getCurrencyFormats().common, "{s}{n}");
                 test.equal(li.getFirstDayOfWeek(), 1);
                 test.equal(li.getPercentageSymbol(), "%");
             }
@@ -12529,7 +12529,7 @@ module.exports.testlocaleinfo = {
         test.expect(4);
         test.ok(typeof(li) !== "undefined");
         // should return the shared data only
-        test.equal(li.getCurrencyFormats().common, "{s} {n}");
+        test.equal(li.getCurrencyFormats().common, "{s}{n}");
         test.equal(li.getFirstDayOfWeek(), 1);
         test.equal(li.getPercentageSymbol(), "%");
         test.done();

@@ -71,9 +71,10 @@ module.exports.testresourcesasync = {
         test.expect(4);
 
         // clear this to be sure it is actually loading something
-        ilib.data.tester = undefined;
-        ilib.data.tester_es = undefined;
-        ilib.data.tester_es_MX = undefined;
+        ilib.data.strings = undefined;
+        ilib.data.strings_es = undefined;
+        ilib.data.strings_und_MX = undefined;
+        ilib.data.strings_es_MX = undefined;
 
         var base = path.relative(process.cwd(), path.resolve(__dirname, "../test/resources"));
 
