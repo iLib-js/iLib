@@ -404,8 +404,9 @@ var Collator = function(options) {
 			object: "Collator", 
 			locale: this.locale, 
 			name: "collation.json",
+            replace: true,
 			sync: sync,
-			loadParams: loadParams, 
+			loadParams: loadParams,
 			callback: ilib.bind(this, function (collation) {
 				if (!collation) {
 					collation = ilib.data.collation;
