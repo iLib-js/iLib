@@ -42,23 +42,23 @@ module.exports = function (ilib) {
 
         this.base = (typeof(module) !== 'undefined' && module.filename) ?
             path.join(path.dirname(module.filename), "..") :
-                this.root;
+            this.root;
 
-            //console.log("module.filename is " + module.filename + "\n");
-            //console.log("base is defined as " + this.base + "\n");
+        //console.log("module.filename is " + module.filename + "\n");
+        //console.log("base is defined as " + this.base + "\n");
 
-            this.includePath.push(path.join(this.root, "resources")); 	// always check the application's resources dir first
+        this.includePath.push(path.join(this.root, "resources")); 	// always check the application's resources dir first
 
-            // then a standard locale dir of a built version of ilib from npm
-            this._exists(path.join(this.base, "locale"), "localeinfo.json");
+        // then a standard locale dir of a built version of ilib from npm
+        this._exists(path.join(this.base, "locale"), "localeinfo.json");
 
-            // try the standard install directories
-            this._exists("/usr/share/javascript/ilib/locale", "localeinfo.json");
+        // try the standard install directories
+        this._exists("/usr/share/javascript/ilib/locale", "localeinfo.json");
 
-            // ... else fall back to see if we're in a check-out dir of ilib
-            // this._exists(path.join(this.base, "data", "locale"), "localeinfo.json");
+        // ... else fall back to see if we're in a check-out dir of ilib
+        // this._exists(path.join(this.base, "data", "locale"), "localeinfo.json");
 
-            // console.log("AsyncNodeLoader: include path is now " + JSON.stringify(this.includePath));
+        // console.log("AsyncNodeLoader: include path is now " + JSON.stringify(this.includePath));
     };
 
     // make this a subclass of loader
