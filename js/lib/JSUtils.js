@@ -328,13 +328,14 @@ JSUtils.hashCode = function(obj) {
  * with the results of processing each element of the array.
  */
 JSUtils.callAll = function(arr, action, callback, results) {
-    if (arr) {
+    results = results || [];
+    if (arr && arr.length) {
         action(arr, function(result) {
             results.push(result);
             JSUtils.callAll(arr.slice(1), action, callback, results);
         });
     } else {
-        callback(result);
+        callback(results);
     }
 };
 

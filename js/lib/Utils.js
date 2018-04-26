@@ -195,7 +195,7 @@ Utils.mergeLocData = function (prefix, locale, replaceArrays, returnOne) {
         var property = (l === "root") ? prefix : prefix + '_' + l.replace(/-/g, "_");
 
         if (ilib.data[property]) {
-            foundLocaleData = true;
+            if (l !== "root") foundLocaleData = true;
             data = JSUtils.merge(data, ilib.data[property], replaceArrays);
             mostSpecific = ilib.data[property];
         }
@@ -404,12 +404,12 @@ Utils.loadData = function(params) {
 	var spec = ((!nonlocale && locale.getSpec().replace(/-/g, '_')) || "root") + "," + name + "," + String(JSUtils.hashCode(loadParams));
 	if (!object || !ilib.data.cache[object] || typeof(ilib.data.cache[object][spec]) === 'undefined') {
 		var data, returnOne = (loadParams && loadParams.returnOne);
+		basename = name.substring(0, name.lastIndexOf("."));
 		
 		// async loading would have put the data into the cache already, checked just above this. So,
 		// only check the merged loc data if we are in sync mode.
-		if (type === "json" && (!ilib._dyndata || sync)) {
+		if (type === "json") {
 			// console.log("type is json");
-			basename = name.substring(0, name.lastIndexOf("."));
 			if (nonlocale) {
 				basename = basename.replace(/[\.:\(\)\/\\\+\-]/g, "_");
 				data = ilib.data[basename];
