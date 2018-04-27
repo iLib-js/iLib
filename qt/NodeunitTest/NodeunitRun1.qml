@@ -13,9 +13,9 @@ QtObject {
             var runner = new TestRunner();
 
             var suiteDefinitions = {
-                "address": "/address/nodeunit/testSuiteFiles.js",
-                "calendar": "/calendar/nodeunit/testSuiteFiles.js",
-                "ctype": "/ctype/nodeunit/testSuiteFiles.js"
+                "address": "/address/nodeunit/testSuiteFiles.js"
+                //"calendar": "/calendar/nodeunit/testSuiteFiles.js",
+                //"ctype": "/ctype/nodeunit/testSuiteFiles.js",
                 //"date": "/date/nodeunit/testSuiteFiles.js",
                 //"daterange": "/daterange/nodeunit/testSuiteFiles.js"
             };
