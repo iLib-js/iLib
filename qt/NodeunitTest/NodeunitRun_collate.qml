@@ -13,9 +13,7 @@ QtObject {
             var runner = new TestRunner();
 
             var suiteDefinitions = {
-                "maps": "/maps/nodeunit/testSuiteFiles.js",
-                "phone": "/phone/nodeunit/testSuiteFiles.js",
-                "root": "/root/nodeunit/testSuiteFiles.js"
+                "collate": "/collate/nodeunit/testSuiteFiles.js"  /* It takes almost 11 minutes. */
             };
 
             var s, ts;
