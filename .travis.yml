@@ -29,9 +29,19 @@ script:
   - cd qt/NodeunitTest
   - /usr/bin/qmlscene NodeunitRun_address.qml -I ../FileReader/imports/
   - /usr/bin/qmlscene NodeunitRun_calendar.qml -I ../FileReader/imports/
-  #- /usr/bin/qmlscene NodeunitRun3.qml -I ../FileReader/imports/
-  #- /usr/bin/qmlscene NodeunitRun4.qml -I ../FileReader/imports/
-  #- /usr/bin/qmlscene NodeunitRun5.qml -I ../FileReader/imports/
+  - /usr/bin/qmlscene NodeunitRun_collate.qml -I ../FileReader/imports/
+  #- /usr/bin/qmlscene NodeunitRun_ctype.qml -I ../FileReader/imports/
+  #- /usr/bin/qmlscene NodeunitRun_date.qml -I ../FileReader/imports/
+  #- /usr/bin/qmlscene NodeunitRun_daterange.qml -I ../FileReader/imports/
+  #- /usr/bin/qmlscene NodeunitRun_durfmt.qml -I ../FileReader/imports/
+  #- /usr/bin/qmlscene NodeunitRun_maps.qml -I ../FileReader/imports/
+  #- /usr/bin/qmlscene NodeunitRun_name.qml -I ../FileReader/imports/
+  #- /usr/bin/qmlscene NodeunitRun_number.qml -I ../FileReader/imports/
+  #- /usr/bin/qmlscene NodeunitRun_phone.qml -I ../FileReader/imports/
+  #- /usr/bin/qmlscene NodeunitRun_root.qml -I ../FileReader/imports/
+  #- /usr/bin/qmlscene NodeunitRun_strings_ext.qml -I ../FileReader/imports/
+  #- /usr/bin/qmlscene NodeunitRun_units.qml -I ../FileReader/imports/
+  #- /usr/bin/qmlscene NodeunitRun_util.qml -I ../FileReader/imports/
 branches:
   only:
     - master
