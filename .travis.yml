@@ -27,7 +27,11 @@ script:
   #- which qmake
   #- which qmlscene
   - cd qt/NodeunitTest
-  - /usr/bin/qmlscene NodeunitRun.qml -I ../FileReader/imports/
+  - /usr/bin/qmlscene NodeunitRun1.qml -I ../FileReader/imports/
+  - /usr/bin/qmlscene NodeunitRun1.qml -I ../FileReader/imports/
+  - /usr/bin/qmlscene NodeunitRun1.qml -I ../FileReader/imports/
+  - /usr/bin/qmlscene NodeunitRun1.qml -I ../FileReader/imports/
+  - /usr/bin/qmlscene NodeunitRun1.qml -I ../FileReader/imports/
 branches:
   only:
     - master
