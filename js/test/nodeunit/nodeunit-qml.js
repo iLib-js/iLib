@@ -380,7 +380,7 @@ var nodeunit = (function(){
                         } else {
                             successNum++;
                             //console.log("[" + name + "] assertions.passed() " + assertions.passed());
-                            console.log("[" + name + "] assertion is passed");
+                            //console.log("[" + name + "] assertion is passed");
                         }
                     }
                 },
