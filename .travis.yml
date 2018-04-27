@@ -27,8 +27,8 @@ script:
   #- which qmake
   #- which qmlscene
   - cd qt/NodeunitTest
-  - /usr/bin/qmlscene NodeunitRun1.qml -I ../FileReader/imports/
-  #- /usr/bin/qmlscene NodeunitRun2.qml -I ../FileReader/imports/
+  - /usr/bin/qmlscene NodeunitRun_address.qml -I ../FileReader/imports/
+  - /usr/bin/qmlscene NodeunitRun_calendar.qml -I ../FileReader/imports/
   #- /usr/bin/qmlscene NodeunitRun3.qml -I ../FileReader/imports/
   #- /usr/bin/qmlscene NodeunitRun4.qml -I ../FileReader/imports/
   #- /usr/bin/qmlscene NodeunitRun5.qml -I ../FileReader/imports/
