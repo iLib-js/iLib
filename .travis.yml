@@ -29,9 +29,9 @@ script:
   - cd qt/NodeunitTest
   - /usr/bin/qmlscene NodeunitRun_address.qml -I ../FileReader/imports/
   - /usr/bin/qmlscene NodeunitRun_calendar.qml -I ../FileReader/imports/
-  - /usr/bin/qmlscene NodeunitRun_collate.qml -I ../FileReader/imports/
-  #- /usr/bin/qmlscene NodeunitRun_ctype.qml -I ../FileReader/imports/
-  #- /usr/bin/qmlscene NodeunitRun_date.qml -I ../FileReader/imports/
+  #- /usr/bin/qmlscene NodeunitRun_collate.qml -I ../FileReader/imports/
+  - /usr/bin/qmlscene NodeunitRun_ctype.qml -I ../FileReader/imports/
+  - /usr/bin/qmlscene NodeunitRun_date.qml -I ../FileReader/imports/
   #- /usr/bin/qmlscene NodeunitRun_daterange.qml -I ../FileReader/imports/
   #- /usr/bin/qmlscene NodeunitRun_durfmt.qml -I ../FileReader/imports/
   #- /usr/bin/qmlscene NodeunitRun_maps.qml -I ../FileReader/imports/
