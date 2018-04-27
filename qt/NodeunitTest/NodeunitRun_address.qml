@@ -13,10 +13,7 @@ QtObject {
             var runner = new TestRunner();
 
             var suiteDefinitions = {
-                "daterange": "/daterange/nodeunit/testSuiteFiles.js",
-                "durfmt": "/durfmt/nodeunit/testSuiteFiles.js",
-                "name": "/name/nodeunit/testSuiteFiles.js",
-                "number": "/number/nodeunit/testSuiteFiles.js"
+                "address": "/address/nodeunit/testSuiteFiles.js"
             };
 
             var s, ts;
