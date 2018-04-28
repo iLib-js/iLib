@@ -35,18 +35,14 @@ function loadLocaleData(ilib, locale, callback) {
         // the data to be put into one giant webpack bundle.
 
         // !loadLocaleData
-        
+
         case "dummy":
-            // This is just here to prevent webpack from removing the function contents. Otherwise, 
+            // This is just here to prevent webpack from removing the function contents. Otherwise,
             // it will think this whole function is "unused" or "dead" code.
             console.log("Should never happen");
             callback();
             break;
     }
-}
-
-function getData(dataName, tzName) {
-    return dataName === "zoneinfo" ? ilib.data.zoneinfo[tzName] : ilib.data[dataName];
 }
 
 /**
@@ -61,7 +57,7 @@ module.exports = function (ilib) {
         // util.print("new common WebpackLoader instance\n");
 
         this.parent.call(this, ilib);
-        
+        this.ilib = ilib;
         this.manifests = {};
 
         this.includePath.push("");
@@ -73,6 +69,12 @@ module.exports = function (ilib) {
     WebpackLoader.prototype.constructor = WebpackLoader;
 
     WebpackLoader.prototype.name = "WebpackLoader";
+
+    WebpackLoader.prototype.getData = function(dataName, tzName) {
+        return dataName === "zoneinfo" ? this.ilib.data.zoneinfo[tzName] : this.ilib.data[dataName];
+    };
+
+    // used locally with node
     WebpackLoader.prototype._loadFile = function (pathname, sync, cb) {
         var dir = Path.dirname(pathname);
         var base = Path.basename(pathname, "json");
@@ -88,7 +90,7 @@ module.exports = function (ilib) {
             }
         }
 
-        filename = locale && locale.getSpec() || (base === "ilibmanifest" ? "ilibmanifest" : "root");
+        filename = locale && locale.getSpec() || (base === "ilibmanifest" ? "localmanifest" : "root");
         var dataName = base;
         if (dir) {
             if (locale) {
@@ -102,27 +104,45 @@ module.exports = function (ilib) {
         }
 
         dataName = dataName.replace(/[\.:\(\)\/\\\+\-]/g, "_");
+        var data = this.getData(dataName, tzName);
 
-        if (alreadyLoaded.has(filename)) {
-            if (cb && typeof(cb) === "function") {
-                cb(getData(dataName, tzName));
-            }
-        } else {
+        if (data) {
+            // already loaded
+            if (typeof(cb) === "function") cb(data);
+        } else if (!alreadyLoaded.has(filename)) {
             console.log("WebpackLoader._loadFile: loading " + pathname + (sync ? " sync" : " async") + " as " + filename + ".js");
 
             alreadyLoaded.add(filename);
-            loadLocaleData(ilib, filename, function(callback, data) {
+            loadLocaleData(this.ilib, filename, function(callback, data) {
                 if (callback && typeof(callback) === "function") {
-                    callback((data && typeof(data) === "object" && typeof(data.installLocale) === "function") ? getData(dataName, tzName) : data);
+                    callback((data && typeof(data) === "object" && typeof(data.installLocale) === "function") ? this.getData(dataName, tzName) : data);
                 }
             }.bind(this, cb));
+        } else {
+            if (typeof(cb) === "function") cb();
         }
 
-        return ilib.data[dataName];
+        return data;
     };
 
     WebpackLoader.prototype._exists = function(dir, file) {
         return false;
+    };
+
+    // used remotely on a browser
+    WebpackLoader.prototype._loadLocaleFile = function(path, sync, callback) {
+        var base = Path.basename(path, ".js");
+
+        if (alreadyLoaded.has(base)) {
+            callback();
+        } else {
+            console.log("WebpackLoader._loadLocaleFile: loading " + path + (sync ? " sync" : " async"));
+
+            alreadyLoaded.add(base);
+            loadLocaleData(this.ilib, base, function(callback, data) {
+                callback(data);
+            }.bind(this, callback));
+        }
     };
 
     /**
@@ -132,7 +152,7 @@ module.exports = function (ilib) {
         if (this.manifests[dir]) {
             callback(this.manifests[dir]);
         } else {
-            this._loadFile(Path.join(dir, "ilibmanifest.json"), ilib.bind(this, function(manifest) {
+            this._loadLocaleFile(Path.join(dir, "remotemanifest.js"), false, ilib.bind(this, function(manifest) {
                 if (manifest) {
                     this.manifests[dir] = manifest.files;
                     callback(manifest.files);
@@ -150,18 +170,18 @@ module.exports = function (ilib) {
      * all ilib code can be called synchronously.
      */
     WebpackLoader.prototype.ensureLocale = function(locale, dir, callback) {
-        this._ensureManifest(locale, dir, function(manifest) {
+        this._ensureManifest(locale, dir, ilib.bind(this, function(manifest) {
             var filesToLoad = Utils.getSublocales(locale).map(function(sublocale) {
-                return Path.join(dir, sublocale + ".js");
+                return sublocale + ".js";
             }).filter(function(file) {
                 return !manifest || Loader.indexOf(manifest, file) > -1;
             });
             JSUtils.callAll(filesToLoad, ilib.bind(this, function(arr, cb) {
-                this._loadFile(arr[0], false, cb);
+                this._loadLocaleFile(arr[0], false, cb);
             }), function(results) {
                 callback(results);
             });
-        });
+        }));
     };
 
     return new WebpackLoader(ilib);

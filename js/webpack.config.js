@@ -19,6 +19,7 @@
 var webpack = require('webpack');
 var path = require('path');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+var IlibWebpackPlugin = require('ilib-webpack-plugin');
 
 module.exports = function(env, args) {
     env = env || {};
@@ -97,16 +98,13 @@ module.exports = function(env, args) {
         plugins: [
             new webpack.DefinePlugin({
                 __VERSION__: JSON.stringify(require("./package.json").version)
-            })
-            /*
-            ,
+            }),
             new IlibWebpackPlugin({
                 locales: locales,
                 assembly: assembly,
                 compilation: compilationType,
                 size: size
             })
-            */
         ]
     };
 
