@@ -1,6 +1,6 @@
 /*
  * DigitalSpeedUnit.js - Unit conversions for Digital Storage
- * 
+ *
  * Copyright © 2018, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -18,7 +18,7 @@
  */
 
 /*
-!depends 
+!depends
 Measurement.js
 */
 
@@ -28,16 +28,16 @@ var Measurement = require("./Measurement.js");
  * @class
  * Create a new DigitalSpeed measurement instance. This measures the speed of
  * transfer of data.
- *  
+ *
  * @constructor
  * @extends Measurement
- * @param options {{unit:string,amount:number|string|undefined}} Options controlling 
+ * @param options {{unit:string,amount:number|string|undefined}} Options controlling
  * the construction of this instance
  */
 var DigitalSpeedUnit = function (options) {
     this.unit = "byte";
     this.amount = 0;
-    
+
     if (options) {
         if (typeof(options.unit) !== 'undefined') {
             this.originalUnit = options.unit;
@@ -65,7 +65,7 @@ DigitalSpeedUnit.prototype.parent = Measurement;
 DigitalSpeedUnit.prototype.constructor = DigitalSpeedUnit;
 
 DigitalSpeedUnit.ratios = {
-    /*                       #    bps               Bps              kbps             kBps             Mbps              MBps              Gbps             GBps               Tbps              TBps              Pbps               PBps               Bph             kBph             MBph             GBph             TBph            PBph   */           
+    /*                       #    bps               Bps              kbps             kBps             Mbps              MBps              Gbps             GBps               Tbps              TBps              Pbps               PBps               Bph             kBph             MBph             GBph             TBph            PBph   */
     "bit-per-second":      [ 1,   1,                0.125,           0.0009765625,    1.220703125e-4,  9.536743164e-7,   1.192092896e-7,   9.313225746e-10, 1.164153218e-10,   9.094947017e-13,  1.136868377e-13,  8.881784197e-16,   1.110223025e-16,   450,            0.45,           4.5e-4,          4.5e-7,          4.5e-10,         4.5e-13         ],
     "byte-per-second":     [ 2,   8,                1,               0.0078125,       0.0009765625,    7.629394531e-6,   9.536743164e-7,   7.450580597e-9,  9.313225746e-10,   7.275957614e-12,  9.094947017e-13,  7.105427358e-15,   8.881784197e-16,   3600,           3.6,            3.6e-3,          3.6e-6,          3.6e-9,          3.6e-12         ],
     "kilobit-per-second":  [ 3,   1024,             128,             1,               0.125,           0.0009765625,     1.220703125e-4,   9.536743164e-7,  1.192092896e-7,    9.313225746e-10,  1.164153218e-10,  9.094947017e-13,   1.136868377e-13,   4.5e5,          450,            0.45,            4.5e-4,          4.5e-7,          4.5e-10         ],
@@ -78,7 +78,7 @@ DigitalSpeedUnit.ratios = {
     "terabyte-per-second": [ 10,  8.796093022e12,   1.099511628e12,  8589934592,      1073741824,      8388608,          1048576,          8192,            1024,              8,                1,                0.0078125,         0.0009765625,      3.6e15,         3.6e12,         3.6e9,           3.6e6,           3600,            3.6             ],
     "petabit-per-second":  [ 11,  1.125899907e15,   1.407374884e14,  1.099511628e12,  137438953472,    1073741824,       134217728,        1048576,         131072,            1024,             128,              1,                 0.125,             4.5e17,         4.5e14,         4.5e11,          4.5e8,           4.5e5,           450             ],
     "petabyte-per-second": [ 12,  9.007199255e15,   1.125899907e15,  8.796093022e12,  1.099511628e12,  8589934592,       1073741824,       8388608,         1048576,           8192,             1024,             8,                 1,                 3.6e18,         3.6e15,         3.6e12,          3.6e9,           3.6e6,           3600            ],
-    
+
     "byte-per-hour":       [ 13,  28800,            3600,            28.125,           3.515625,        0.0274658203116, 3.43322753904e-3, 2.68220901492e-5, 3.35276126856e-6, 2.61934474104e-8, 3.27418092612e-9, 2.55795384888e-11, 3.19744231092e-12, 1,              0.0078125,      9.536743164e-7,  9.313225746e-10, 9.094947017e-13, 8.881784197e-16 ],
     "kilobyte-per-hour":   [ 14,  29491200,         3686400,         28800,            3600,            28.125,          3.515625,         0.0274658203116,  3.43322753904e-3, 2.68220901492e-5, 3.35276126856e-6, 2.61934474104e-8,  3.27418092612e-9,  1024,           1,              0.0078125,       9.536743164e-7,  9.313225746e-10, 9.094947017e-13 ],
     "megabyte-per-hour":   [ 15,  30198988800,      3774873600,      29491200,         3686400,         28800,           3600,             28.125,           3.515625,         0.0274658203116,  3.43322753904e-3, 2.68220901492e-5,  3.35276126856e-6,  1048576,        1024,           1,               0.0078125,       9.536743164e-7,  9.313225746e-10 ],
@@ -108,12 +108,12 @@ DigitalSpeedUnit.byteSystem = {
  * Return the type of this measurement. Examples are "mass",
  * "length", "speed", etc. Measurements can only be converted
  * to measurements of the same type.<p>
- * 
- * The type of the units is determined automatically from the 
- * units. For example, the unit "grams" is type "mass". Use the 
+ *
+ * The type of the units is determined automatically from the
+ * units. For example, the unit "grams" is type "mass". Use the
  * static call {@link Measurement.getAvailableUnits}
  * to find out what units this version of ilib supports.
- *  
+ *
  * @return {string} the name of the type of this measurement
  */
 DigitalSpeedUnit.prototype.getMeasure = function() {
@@ -124,12 +124,12 @@ DigitalSpeedUnit.prototype.getMeasure = function() {
  * Return a new measurement instance that is converted to a new
  * measurement unit. Measurements can only be converted
  * to measurements of the same type.<p>
- *  
+ *
  * @param {string} to The name of the units to convert to
  * @return {Measurement|undefined} the converted measurement
  * or undefined if the requested units are for a different
  * measurement type
- * 
+ *
  */
 DigitalSpeedUnit.prototype.convert = function(to) {
     if (!to || typeof(DigitalSpeedUnit.ratios[this.normalizeUnits(to)]) === 'undefined') {
@@ -143,11 +143,11 @@ DigitalSpeedUnit.prototype.convert = function(to) {
 
 /**
  * Localize the measurement to the commonly used measurement in that locale. For example
- * If a user's locale is "en-US" and the measurement is given as "60 kmh", 
- * the formatted number should be automatically converted to the most appropriate 
+ * If a user's locale is "en-US" and the measurement is given as "60 kmh",
+ * the formatted number should be automatically converted to the most appropriate
  * measure in the other system, in this case, mph. The formatted result should
- * appear as "37.3 mph". 
- * 
+ * appear as "37.3 mph".
+ *
  * @param {string} locale current locale string
  * @returns {Measurement} a new instance that is converted to locale
  */
@@ -161,14 +161,14 @@ DigitalSpeedUnit.prototype.localize = function(locale) {
 /**
  * Scale the measurement unit to an acceptable level. The scaling
  * happens so that the integer part of the amount is as small as
- * possible without being below zero. This will result in the 
+ * possible without being below zero. This will result in the
  * largest units that can represent this measurement without
- * fractions. Measurements can only be scaled to other measurements 
+ * fractions. Measurements can only be scaled to other measurements
  * of the same type.
- * 
+ *
  * @param {string=} measurementsystem system to use (uscustomary|imperial|metric),
  * or undefined if the system can be inferred from the current measure
- * @return {Measurement} a new instance that is scaled to the 
+ * @return {Measurement} a new instance that is scaled to the
  * right level
  */
 DigitalSpeedUnit.prototype.scale = function(measurementsystem) {
@@ -178,11 +178,11 @@ DigitalSpeedUnit.prototype.scale = function(measurementsystem) {
     } else {
         mSystem = DigitalSpeedUnit.byteSystem;
     }
-    
+
     var dStorage = this.amount;
     var munit = this.unit;
     var fromRow = DigitalSpeedUnit.ratios[this.unit];
-    
+
     dStorage = 18446744073709551999;
     for (var m in mSystem) {
         var tmp = this.amount * fromRow[mSystem[m]];
@@ -191,7 +191,7 @@ DigitalSpeedUnit.prototype.scale = function(measurementsystem) {
             munit = m;
         }
     }
-    
+
     return new DigitalSpeedUnit({
         unit: munit,
         amount: dStorage
@@ -340,7 +340,7 @@ DigitalSpeedUnit.convert = function(to, from, digitalSpeed) {
     var toRow = DigitalSpeedUnit.ratios[to];
     if (typeof(from) === 'undefined' || typeof(to) === 'undefined') {
         return undefined;
-    }    
+    }
     var result = digitalSpeed * fromRow[toRow[0]];
     return result;
 };
