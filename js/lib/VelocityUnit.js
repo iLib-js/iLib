@@ -1,7 +1,7 @@
 /*
- * VelocityUnit.js - Unit conversions for VelocityUnits/speeds
- * 
- * Copyright © 2014-2015, JEDLSoft
+ * VelocityUnit.js - Unit conversions for velocity/speed measurements
+ *
+ * Copyright © 2014-2015, 2018 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,7 +18,7 @@
  */
 
 /*
-!depends 
+!depends
 Measurement.js
 */
 
@@ -27,22 +27,22 @@ var Measurement = require("./Measurement.js");
 /**
  * @class
  * Create a new speed measurement instance.
- * 
+ *
  * @constructor
  * @extends Measurement
- * @param options {{unit:string,amount:number|string|undefined}} Options controlling 
+ * @param options {{unit:string,amount:number|string|undefined}} Options controlling
  * the construction of this instance
  */
 var VelocityUnit = function (options) {
 	this.unit = "meter-per-second";
 	this.amount = 0;
-	
+
 	if (options) {
 		if (typeof(options.unit) !== 'undefined') {
 			this.originalUnit = options.unit;
 			this.unit = this.normalizeUnits(options.unit) || options.unit;
 		}
-		
+
 		if (typeof(options.amount) === 'object') {
 			if (options.amount.getMeasure() === "speed") {
 				this.amount = VelocityUnit.convert(this.unit, options.amount.getUnit(), options.amount.getAmount());
@@ -53,7 +53,7 @@ var VelocityUnit = function (options) {
 			this.amount = parseFloat(options.amount);
 		}
 	}
-	
+
 	if (typeof(VelocityUnit.ratios[this.unit]) === 'undefined') {
 		throw "Unknown unit: " + options.unit;
 	}
@@ -66,7 +66,7 @@ VelocityUnit.prototype.constructor = VelocityUnit;
 VelocityUnit.ratios = {
     /*                    index,  k/h         f/s         miles/h      knot         m/s        km/s         miles/s */
     "kilometer-per-hour":   [ 1,  1,          0.911344,   0.621371,    0.539957,    0.277778,  2.77778e-4,  1.72603109e-4 ],
-    "foot-per-second":      [ 2,  1.09728,    1,          0.681818,    0.592484,    0.3048,    3.048e-4,    1.89393939e-4 ],  
+    "foot-per-second":      [ 2,  1.09728,    1,          0.681818,    0.592484,    0.3048,    3.048e-4,    1.89393939e-4 ],
     "mile-per-hour":        [ 3,  1.60934,    1.46667,    1,           0.868976,    0.44704,   4.4704e-4,   2.77777778e-4 ],
     "knot":                 [ 4,  1.852,      1.68781,    1.15078,     1,           0.514444,  5.14444e-4,  3.19660958e-4 ],
     "meter-per-second":     [ 5,  3.6,        3.28084,    2.236936,    1.94384,     1,         0.001,       6.21371192e-4 ],
@@ -108,12 +108,12 @@ VelocityUnit.UScustomaryTometric = {
  * Return the type of this measurement. Examples are "mass",
  * "length", "speed", etc. Measurements can only be converted
  * to measurements of the same type.<p>
- * 
- * The type of the units is determined automatically from the 
- * units. For example, the unit "grams" is type "mass". Use the 
+ *
+ * The type of the units is determined automatically from the
+ * units. For example, the unit "grams" is type "mass". Use the
  * static call {@link Measurement.getAvailableUnits}
  * to find out what units this version of ilib supports.
- *  
+ *
  * @return {string} the name of the type of this measurement
  */
 VelocityUnit.prototype.getMeasure = function() {
@@ -124,11 +124,11 @@ VelocityUnit.prototype.getMeasure = function() {
  * Return a new measurement instance that is converted to a new
  * measurement unit. Measurements can only be converted
  * to measurements of the same type.<p>
- *  
+ *
  * @param {string} to The name of the units to convert to
  * @return {Measurement|undefined} the converted measurement
  * or undefined if the requested units are for a different
- * measurement type 
+ * measurement type
  */
 VelocityUnit.prototype.convert = function(to) {
 	if (!to || typeof(VelocityUnit.ratios[this.normalizeUnits(to)]) === 'undefined') {
@@ -143,15 +143,16 @@ VelocityUnit.prototype.convert = function(to) {
 /**
  * Scale the measurement unit to an acceptable level. The scaling
  * happens so that the integer part of the amount is as small as
- * possible without being below zero. This will result in the 
+ * possible without being below zero. This will result in the
  * largest units that can represent this measurement without
- * fractions. Measurements can only be scaled to other measurements 
+ * fractions. Measurements can only be scaled to other measurements
  * of the same type.
- * 
+ *
  * @param {string=} measurementsystem system to use (uscustomary|imperial|metric),
  * or undefined if the system can be inferred from the current measure
- * @return {Measurement} a new instance that is scaled to the 
- * right level
+ * @param {String} style the style of autoscaling
+ * @return {Measurement|Array.<Measurement>} a new instance that is scaled to the
+ * right level, or an array of instances if the style is "list"
  */
 VelocityUnit.prototype.scale = function(measurementsystem) {
 	var mSystem;
@@ -171,33 +172,67 @@ VelocityUnit.prototype.scale = function(measurementsystem) {
 		});
 	}
 
-	var speed = this.amount;
-	var munit = this.unit;
-	var fromRow = VelocityUnit.ratios[this.unit];
+    var speed = this.amount;
+    var munit = this.unit;
+    var fromRow = VelocityUnit.ratios[this.unit];
 
-	speed = 18446744073709551999;
-	
+    speed = 18446744073709551999;
+
     for ( var m in mSystem) {
-		var tmp = this.amount * fromRow[mSystem[m]];
-		if (tmp >= 1 && tmp < speed) {
-			speed = tmp;
-			munit = m;
-		}
-	}
+        var tmp = this.amount * fromRow[mSystem[m]];
+        if (tmp >= 1 && tmp < speed) {
+            speed = tmp;
+            munit = m;
+        }
+    }
 
-	return new VelocityUnit({
-	    unit: munit,
-	    amount: speed
-	});
+    return new VelocityUnit({
+        unit: munit,
+        amount: speed
+    });
 };
 
 /**
+ * Expand the current measurement such that any fractions of the current unit
+ * are represented in terms of smaller units in the same system instead of fractions
+ * of the current unit. For example, "6.25 feet" may be represented as
+ * "6 feet 4 inches" instead. The return value is an array of measurements which
+ * are progressively smaller until the smallest unit in the system is reached
+ * or until there is a whole number of any unit along the way.
+ *
+ * @param {string=} measurementsystem system to use (uscustomary|imperial|metric),
+ * or undefined if the system can be inferred from the current measure
+ * @return {Array.<Measurement>} an array of new measurements in order from
+ * the current units to the smallest units in the system which together are the
+ * same measurement as this one
+ */
+VelocityUnit.prototype.expand = function(measurementsystem) {
+    var mSystem;
+    if (measurementsystem === "metric" ||
+            (typeof (measurementsystem) === 'undefined' && typeof (VelocityUnit.metricSystem[this.unit]) !== 'undefined')) {
+        mSystem = VelocityUnit.metricSystem;
+    } else if (measurementsystem === "imperial" ||
+            (typeof (measurementsystem) === 'undefined' && typeof (VelocityUnit.imperialSystem[this.unit]) !== 'undefined')) {
+        mSystem = VelocityUnit.imperialSystem;
+    } else if (measurementsystem === "uscustomary" ||
+            (typeof (measurementsystem) === 'undefined' && typeof (VelocityUnit.uscustomarySystem[this.unit]) !== 'undefined')) {
+        mSystem = VelocityUnit.uscustomarySystem;
+    } else {
+        mSystem = VelocityUnit.metricSystem;
+    }
+
+    return this.list(Object.keys(mSystem), VelocityUnit.ratios).map(function(item) {
+        return new VelocityUnit(item);
+    });
+}
+
+/**
  * Localize the measurement to the commonly used measurement in that locale. For example
- * If a user's locale is "en-US" and the measurement is given as "60 kmh", 
- * the formatted number should be automatically converted to the most appropriate 
+ * If a user's locale is "en-US" and the measurement is given as "60 kmh",
+ * the formatted number should be automatically converted to the most appropriate
  * measure in the other system, in this case, mph. The formatted result should
- * appear as "37.3 mph". 
- * 
+ * appear as "37.3 mph".
+ *
  * @param {string} locale current locale string
  * @returns {Measurement} a new instance that is converted to locale
  */
@@ -304,7 +339,7 @@ VelocityUnit.convert = function(to, from, speed) {
 	var toRow = VelocityUnit.ratios[to];
 	if (typeof(from) === 'undefined' || typeof(to) === 'undefined') {
 		return undefined;
-	}	
+	}
 	var result = speed * fromRow[toRow[0]];
     return result;
 };

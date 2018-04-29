@@ -2497,6 +2497,167 @@ module.exports.testunitfmt = {
         var str = uf.format(m1);
         test.equal(str, "100 公頃");
         test.done();
-    }
+    },
+    
+    testUnitFormatWithNumericStyleUS: function(test) {
+        test.expect(1);
+        var m1 = MeasurementFactory({
+            unit: "feet",
+            amount: 6.2
+        });
 
+        var uf = new UnitFmt({
+            autoScale: false,
+            style: "numeric",
+            length: "long",
+            locale: "en-US"
+        });
+        var str = uf.format(m1);
+        test.equal(str, "6.2 feet");
+        test.done();
+    },
+    
+    testUnitFormatWithListStyleUS: function(test) {
+        test.expect(1);
+        var m1 = MeasurementFactory({
+            unit: "feet",
+            amount: 6.2
+        });
+
+        var uf = new UnitFmt({
+            autoScale: false,
+            style: "list",
+            length: "long",
+            locale: "en-US"
+        });
+        var str = uf.format(m1);
+        test.equal(str, "6 feet 2.4 inches");
+        test.done();
+    },
+
+    testUnitFormatWithNumericStyleUSshort: function(test) {
+        test.expect(1);
+        var m1 = MeasurementFactory({
+            unit: "feet",
+            amount: 6.2
+        });
+
+        var uf = new UnitFmt({
+            autoScale: false,
+            style: "numeric",
+            length: "short",
+            locale: "en-US"
+        });
+        var str = uf.format(m1);
+        test.equal(str, "6.2 ft");
+        test.done();
+    },
+    
+    testUnitFormatWithListStyleUSshort: function(test) {
+        test.expect(1);
+        var m1 = MeasurementFactory({
+            unit: "feet",
+            amount: 6.2
+        });
+
+        var uf = new UnitFmt({
+            autoScale: false,
+            style: "list",
+            length: "short",
+            locale: "en-US"
+        });
+        var str = uf.format(m1);
+        test.equal(str, "6 ft 2.4 in");
+        test.done();
+    },
+
+    testUnitFormatWithListStyleUS2: function(test) {
+        test.expect(1);
+        var m1 = MeasurementFactory({
+            unit: "fluid ounces",
+            amount: 143
+        });
+
+        var uf = new UnitFmt({
+            autoScale: true,
+            style: "list",
+            length: "long",
+            locale: "en-US"
+        });
+        var str = uf.format(m1);
+        test.equal(str, "1 gallon 1 cup 7 fluid ounces");
+        test.done();
+    },
+
+    testUnitFormatWithNumericStyleDE: function(test) {
+        test.expect(1);
+        var m1 = MeasurementFactory({
+            unit: "meter",
+            amount: 1.865
+        });
+
+        var uf = new UnitFmt({
+            autoScale: false,
+            style: "numeric",
+            length: "long",
+            locale: "de-DE"
+        });
+        var str = uf.format(m1);
+        test.equal(str, "1,865 Meter");
+        test.done();
+    },
+    
+    testUnitFormatWithListStyleDE: function(test) {
+        test.expect(1);
+        var m1 = MeasurementFactory({
+            unit: "meter",
+            amount: 1.865
+        });
+
+        var uf = new UnitFmt({
+            autoScale: false,
+            style: "list",
+            length: "long",
+            locale: "de-DE"
+        });
+        var str = uf.format(m1);
+        test.equal(str, "1 Meter, 8 Dezimeter, 6 Zentimeter und 5 Millimeter");
+        test.done();
+    },
+
+    testUnitFormatWithNumericStyleDEshort: function(test) {
+        test.expect(1);
+        var m1 = MeasurementFactory({
+            unit: "meter",
+            amount: 1.865
+        });
+
+        var uf = new UnitFmt({
+            autoScale: false,
+            style: "numeric",
+            length: "short",
+            locale: "de-DE"
+        });
+        var str = uf.format(m1);
+        test.equal(str, "1,865 m");
+        test.done();
+    },
+    
+    testUnitFormatWithListStyleDEshort: function(test) {
+        test.expect(1);
+        var m1 = MeasurementFactory({
+            unit: "meter",
+            amount: 1.865
+        });
+
+        var uf = new UnitFmt({
+            autoScale: false,
+            style: "list",
+            length: "short",
+            locale: "de-DE"
+        });
+        var str = uf.format(m1);
+        test.equal(str, "1 m, 8 dm, 6 cm und 5 mm");
+        test.done();
+    }
 };

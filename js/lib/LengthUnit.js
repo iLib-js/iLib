@@ -1,7 +1,7 @@
 /*
- * LengthUnit.js - Unit conversions for Lengths/lengths
- * 
- * Copyright © 2014-2015, JEDLSoft
+ * LengthUnit.js - Unit conversions for length measurements
+ *
+ * Copyright © 2014-2015, 2018 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,7 +18,7 @@
  */
 
 /*
-!depends 
+!depends
 Measurement.js
 */
 
@@ -27,22 +27,22 @@ var Measurement = require("./Measurement.js");
 /**
  * @class
  * Create a new length measurement instance.
- *  
+ *
  * @constructor
  * @extends Measurement
- * @param options {{unit:string,amount:number|string|undefined}} Options controlling 
+ * @param options {{unit:string,amount:number|string|undefined}} Options controlling
  * the construction of this instance
  */
 var LengthUnit = function (options) {
 	this.unit = "meter";
 	this.amount = 0;
-	
+
 	if (options) {
 		if (typeof(options.unit) !== 'undefined') {
 			this.originalUnit = options.unit;
 			this.unit = this.normalizeUnits(options.unit) || options.unit;
 		}
-		
+
 		if (typeof(options.amount) === 'object') {
 			if (options.amount.getMeasure() === "length") {
 				this.amount = LengthUnit.convert(this.unit, options.amount.getUnit(), options.amount.getAmount());
@@ -53,7 +53,7 @@ var LengthUnit = function (options) {
 			this.amount = parseFloat(options.amount);
 		}
 	}
-	
+
 	if (typeof(LengthUnit.ratios[this.unit]) === 'undefined') {
 		throw "Unknown unit: " + options.unit;
 	}
@@ -64,7 +64,7 @@ LengthUnit.prototype.parent = Measurement;
 LengthUnit.prototype.constructor = LengthUnit;
 
 LengthUnit.ratios = {
-    /*               index, µm           mm           cm           inch         dm           foot          yard          m             dam            hm              km              mile            nm            Mm             Gm             */ 
+    /*               index, µm           mm           cm           inch         dm           foot          yard          m             dam            hm              km              mile            nm            Mm             Gm             */
     "micrometer":    [ 1,   1,           1e-3,        1e-4,        3.93701e-5,  1e-5,        3.28084e-6,   1.09361e-6,   1e-6,         1e-7,          1e-8,           1e-9,           6.21373e-10,  5.39957e-10,  1e-12,          1e-15           ],
     "millimeter":    [ 2,   1000,        1,           0.1,         0.0393701,   0.01,        0.00328084,   1.09361e-3,   0.001,        1e-4,          1e-5,           1e-6,           6.21373e-7,   5.39957e-7,   1e-9,           1e-12           ],
     "centimeter":    [ 3,   1e4,         10,          1,           0.393701,    0.1,         0.0328084,    0.0109361,    0.01,         0.001,         1e-4,           1e-5,           6.21373e-6,   5.39957e-6,   1e-8,           1e-9            ],
@@ -78,8 +78,8 @@ LengthUnit.ratios = {
     "kilometer":     [ 11,  1e9,         1e6,         1e5,         39370.1,     1e4,         3280.84,      1093.61,      1000,         100,           10,             1,              0.621373,     0.539957,     0.001,          1e-4            ],
     "mile":          [ 12,  1.60934e9,   1.60934e6,   1.60934e5,   63360,       1.60934e4,   5280,         1760,         1609.34,      160.934,       16.0934,        1.60934,        1,            0.868976,     1.60934e-3,     1.60934e-6      ],
     "nautical-mile": [ 13,  1.852e9,     1.852e6,     1.852e5,     72913.4,     1.852e4,     6076.12,      2025.37,      1852,         185.2,         18.52,          1.852,          1.15078,      1,            1.852e-3,       1.852e-6        ],
-    "megameter":     [ 14,  1e12,        1e9,         1e6,         3.93701e7,   1e5,         3.28084e6,    1.09361e6,    1e4,          1000,          100,            10,             621.373,      539.957,      1,              0.001           ],        
-    "gigameter":     [ 15,  1e15,        1e12,        1e9,         3.93701e10,  1e8,         3.28084e9,    1.09361e9,    1e7,          1e6,           1e5,            1e4,            621373.0,     539957.0,     1000,           1               ]	
+    "megameter":     [ 14,  1e12,        1e9,         1e6,         3.93701e7,   1e5,         3.28084e6,    1.09361e6,    1e4,          1000,          100,            10,             621.373,      539.957,      1,              0.001           ],
+    "gigameter":     [ 15,  1e15,        1e12,        1e9,         3.93701e10,  1e8,         3.28084e9,    1.09361e9,    1e7,          1e6,           1e5,            1e4,            621373.0,     539957.0,     1000,           1               ]
 };
 
 LengthUnit.metricSystem = {
@@ -133,12 +133,12 @@ LengthUnit.usCustomaryToMetric = {
  * Return the type of this measurement. Examples are "mass",
  * "length", "speed", etc. Measurements can only be converted
  * to measurements of the same type.<p>
- * 
- * The type of the units is determined automatically from the 
- * units. For example, the unit "grams" is type "mass". Use the 
+ *
+ * The type of the units is determined automatically from the
+ * units. For example, the unit "grams" is type "mass". Use the
  * static call {@link Measurement.getAvailableUnits}
  * to find out what units this version of ilib supports.
- *  
+ *
  * @return {string} the name of the type of this measurement
  */
 LengthUnit.prototype.getMeasure = function() {
@@ -147,11 +147,11 @@ LengthUnit.prototype.getMeasure = function() {
 
 /**
  * Localize the measurement to the commonly used measurement in that locale. For example
- * If a user's locale is "en-US" and the measurement is given as "60 kmh", 
- * the formatted number should be automatically converted to the most appropriate 
+ * If a user's locale is "en-US" and the measurement is given as "60 kmh",
+ * the formatted number should be automatically converted to the most appropriate
  * measure in the other system, in this case, mph. The formatted result should
- * appear as "37.3 mph". 
- * 
+ * appear as "37.3 mph".
+ *
  * @param {string} locale current locale string
  * @returns {Measurement} a new instance that is converted to locale
  */
@@ -172,11 +172,11 @@ LengthUnit.prototype.localize = function(locale) {
  * Return a new measurement instance that is converted to a new
  * measurement unit. Measurements can only be converted
  * to measurements of the same type.<p>
- *  
+ *
  * @param {string} to The name of the units to convert to
  * @return {Measurement|undefined} the converted measurement
  * or undefined if the requested units are for a different
- * measurement type 
+ * measurement type
  */
 LengthUnit.prototype.convert = function(to) {
 	if (!to || typeof(LengthUnit.ratios[this.normalizeUnits(to)]) === 'undefined') {
@@ -191,25 +191,25 @@ LengthUnit.prototype.convert = function(to) {
 /**
  * Scale the measurement unit to an acceptable level. The scaling
  * happens so that the integer part of the amount is as small as
- * possible without being below zero. This will result in the 
+ * possible without being below zero. This will result in the
  * largest units that can represent this measurement without
- * fractions. Measurements can only be scaled to other measurements 
+ * fractions. Measurements can only be scaled to other measurements
  * of the same type.
- * 
+ *
  * @param {string=} measurementsystem system to use (uscustomary|imperial|metric),
  * or undefined if the system can be inferred from the current measure
- * @return {Measurement} a new instance that is scaled to the 
+ * @return {Measurement} a new instance that is scaled to the
  * right level
  */
 LengthUnit.prototype.scale = function(measurementsystem) {
-    var mSystem;    
-    if (measurementsystem === "metric" || (typeof(measurementsystem) === 'undefined' 
+    var mSystem;
+    if (measurementsystem === "metric" || (typeof(measurementsystem) === 'undefined'
             && typeof(LengthUnit.metricSystem[this.unit]) !== 'undefined')) {
         mSystem = LengthUnit.metricSystem;
-    } else if (measurementsystem === "imperial" || (typeof(measurementsystem) === 'undefined' 
+    } else if (measurementsystem === "imperial" || (typeof(measurementsystem) === 'undefined'
             && typeof(LengthUnit.imperialSystem[this.unit]) !== 'undefined')) {
         mSystem = LengthUnit.imperialSystem;
-    } else if (measurementsystem === "uscustomary" || (typeof(measurementsystem) === 'undefined' 
+    } else if (measurementsystem === "uscustomary" || (typeof(measurementsystem) === 'undefined'
             && typeof(LengthUnit.uscustomarySystem[this.unit]) !== 'undefined')) {
         mSystem = LengthUnit.uscustomarySystem;
     } else {
@@ -217,12 +217,12 @@ LengthUnit.prototype.scale = function(measurementsystem) {
 			unit: this.unit,
 			amount: this.amount
 		});
-    }    
-    
+    }
+
     var length = this.amount;
     var munit = this.unit;
     var fromRow = LengthUnit.ratios[this.unit];
-    
+
     length = 18446744073709551999;
     for (var m in mSystem) {
     	var tmp = this.amount * fromRow[mSystem[m]];
@@ -231,10 +231,44 @@ LengthUnit.prototype.scale = function(measurementsystem) {
 	        munit = m;
         }
     }
-    
+
     return new LengthUnit({
 		unit: munit,
 		amount: length
+    });
+};
+
+/**
+ * Expand the current measurement such that any fractions of the current unit
+ * are represented in terms of smaller units in the same system instead of fractions
+ * of the current unit. For example, "6.25 feet" may be represented as
+ * "6 feet 4 inches" instead. The return value is an array of measurements which
+ * are progressively smaller until the smallest unit in the system is reached
+ * or until there is a whole number of any unit along the way.
+ *
+ * @param {string=} measurementsystem system to use (uscustomary|imperial|metric),
+ * or undefined if the system can be inferred from the current measure
+ * @return {Array.<Measurement>} an array of new measurements in order from
+ * the current units to the smallest units in the system which together are the
+ * same measurement as this one
+ */
+LengthUnit.prototype.expand = function(measurementsystem) {
+    var mSystem;
+    if (measurementsystem === "metric" || (typeof(measurementsystem) === 'undefined'
+            && typeof(LengthUnit.metricSystem[this.unit]) !== 'undefined')) {
+        mSystem = LengthUnit.metricSystem;
+    } else if (measurementsystem === "imperial" || (typeof(measurementsystem) === 'undefined'
+            && typeof(LengthUnit.imperialSystem[this.unit]) !== 'undefined')) {
+        mSystem = LengthUnit.imperialSystem;
+    } else if (measurementsystem === "uscustomary" || (typeof(measurementsystem) === 'undefined'
+            && typeof(LengthUnit.uscustomarySystem[this.unit]) !== 'undefined')) {
+        mSystem = LengthUnit.uscustomarySystem;
+    } else {
+        mSystem = LengthUnit.metricSystem;
+    }
+
+    return this.list(Object.keys(mSystem), LengthUnit.ratios).map(function(item) {
+        return new LengthUnit(item);
     });
 };
 
@@ -255,7 +289,7 @@ LengthUnit.aliases = {
 	"metre": "meter",
 	"metres": "meter",
 	"m": "meter",
-	"meter": "meter",        
+	"meter": "meter",
 	"micrometers": "micrometer",
 	"micrometres": "micrometer",
 	"micrometre": "micrometer",

@@ -1,7 +1,7 @@
 /*
  * Measurement.js - Measurement unit superclass
  *
- * Copyright © 2014-2015, JEDLSoft
+ * Copyright © 2014-2015, 2018 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,6 +16,14 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
+var JSUtils = require("./JSUtils.js");
+var MathUtils = require("./MathUtils.js");
+
+function round(number, precision) {
+    var factor = Math.pow(10, precision);
+    return MathUtils.halfdown(number * factor) / factor;
+}
 
 /**
  * @class
@@ -135,7 +143,102 @@ Measurement.prototype = {
      * @param {string} locale current locale string
      * @returns {Measurement} a new instance that is converted to locale
      */
-    localize: function(locale) {}
+    localize: function(locale) {},
+
+    /**
+     * Convert the current measurement to a list of measures
+     * and amounts. This method will autoScale the current measurement
+     * to the largest measure in the given measures list such that the
+     * amount of that measure is still greater than or equal to 1. From
+     * there, it will truncate that measure to a whole
+     * number and then it will calculate the remainder in terms of
+     * each of the smaller measures in the given list.<p>
+     *
+     * For example, if a person's height is given as 70.5 inches, and
+     * the list of measures is ["mile", "foot", "inch"], then it will
+     * scale the amount to 5 feet, 10.5 inches. The amount is not big
+     * enough to have any whole miles, so that measure is not used.
+     * The first measure will be "foot" because it is the first one
+     * in the measure list where the there is an amount of them that
+     * is greater than or equal to 1. The return value in this example
+     * would be:
+     *
+     * <pre>
+     * [
+     *   {
+     *     "unit": "foot",
+     *     "amount": 5
+     *   },
+     *   {
+     *     "unit": "inch",
+     *     "amount": 10.5
+     *   }
+     * ]
+     * </pre>
+     *
+     * Note that all measures except the smallest will be returned
+     * as whole numbers. The smallest measure will contain any possible
+     * fractional remainder.
+     *
+     * @param {Array.<String>} measures array of measure names to
+     * convert this measure to
+     * @param {Array.<Array.<Number>>} ratios the conversion ratios
+     * table for the measurement type
+     * @returns {Array.<{unit: String, amount: Number}>} the conversion
+     * of the current measurement into an array of unit names and
+     * their amounts
+     */
+    list: function(measures, ratios) {
+        var row = ratios[this.unit];
+        var ret = [];
+        var remainder, i, scaled, index;
+        var unit = this.unit;
+        var amount = this.amount;
+
+        i = JSUtils.indexOf(measures, this.unit);
+
+        if (i === -1) {
+            // this unit is not in this measurement system, so we have to convert
+            for (i = 0; i < measures.length; i++) {
+                unit = measures[i];
+                index = ratios[unit][0];
+                scaled = this.amount * row[index];
+                if (scaled < 1.0) {
+                    // the previous one is the largest measure
+                    if (i > 0) i--;
+                    break;
+                }
+            }
+
+            // i is now the index of the largest measure
+            unit = measures[i];
+            amount = round(this.amount * row[ratios[unit][0]], 9);
+        }
+
+        for (j = i; j > 0; j--) {
+            var item = {
+                unit: unit,
+                amount: Math.trunc(amount)
+            };
+            if (item.amount !== 0) ret.push(item);
+
+            remainder = amount - item.amount;
+
+            row = ratios[unit];
+            unit = measures[j-1];
+            amount = round(remainder * row[ratios[unit][0]], 9);
+        }
+
+        // last measure is not truncated
+        if (amount !== 0) {
+            ret.push({
+                unit: unit,
+                amount: round(amount, 9)
+            });
+        }
+
+        return ret;
+    }
 };
 
 /**

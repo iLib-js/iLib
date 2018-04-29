@@ -1,7 +1,7 @@
 /*
- * volume.js - Unit conversions for volume
- * 
- * Copyright © 2014-2015, JEDLSoft
+ * VolumeUnit.js - Unit conversions for volume measurements
+ *
+ * Copyright © 2014-2015, 2018 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,7 +19,7 @@
  */
 
 /*
-!depends 
+!depends
 Measurement.js
 */
 
@@ -28,22 +28,22 @@ var Measurement = require("./Measurement.js");
 /**
  * @class
  * Create a new Volume measurement instance.
- * 
+ *
  * @constructor
  * @extends Measurement
- * @param options {{unit:string,amount:number|string|undefined}} Options controlling 
+ * @param options {{unit:string,amount:number|string|undefined}} Options controlling
  * the construction of this instance
  */
 var VolumeUnit = function (options) {
 	this.unit = "cubic-meter";
 	this.amount = 0;
-	
+
 	if (options) {
 		if (typeof(options.unit) !== 'undefined') {
 			this.originalUnit = options.unit;
 			this.unit = this.normalizeUnits(options.unit) || options.unit;
 		}
-		
+
 		if (typeof(options.amount) === 'object') {
 			if (options.amount.getMeasure() === "volume") {
 				this.amount = VolumeUnit.convert(this.unit, options.amount.getUnit(), options.amount.getAmount());
@@ -54,7 +54,7 @@ var VolumeUnit = function (options) {
 			this.amount = parseFloat(options.amount);
 		}
 	}
-	
+
 	if (typeof(VolumeUnit.ratios[this.unit]) === 'undefined') {
 		throw "Unknown unit: " + options.unit;
 	}
@@ -69,7 +69,7 @@ VolumeUnit.ratios = {
     "teaspoon" :           [1,    1,        0.333333,      0.300781,   0.166667, 0.0208333,  0.0104167,  0.00520833, 0.00130208,  0.000174063, 4.92892,    0.00492892, 4.9289e-6,   0.832674,      0.277558,      0.173474,        0.00867369,     0.00433684,     0.00108421          ],
     "tablespoon":          [2,    3,        1,             0.902344,   0.5,      0.0625,     0.0312,     0.015625,   0.00390625,  0.00052219,  14.7868,    0.0147868,  1.4787e-5,   2.49802,       0.832674,      0.520421,        0.0260211,      0.0130105,      0.00325263          ],
     "cubic-inch":          [3,    3.32468,  1.10823,       1,          0.554113, 0.0692641,  0.034632,   0.017316,   0.004329,    0.000578704, 16.3871,    0.0163871,  1.6387e-5,   2.76837,       0.92279,       0.576744,        0.0288372,      0.0144186,      0.00360465          ],
-    "fluid-ounce":         [4,    6,        2,             1.80469,    1,        0.125,      0.0625,     0.0078125,  0.0078125,   0.00104438,  29.5735,    0.0295735,  2.9574e-5,   4.99604,       1.04084,       1.04084,         0.0520421,      0.0260211,      0.00650526          ],
+    "fluid-ounce":         [4,    6,        2,             1.80469,    1,        0.125,      0.0625,     0.03125,    0.0078125,   0.00104438,  29.5735,    0.0295735,  2.9574e-5,   4.99604,       1.04084,       1.04084,         0.0520421,      0.0260211,      0.00650526          ],
     "cup":                 [5,    48,       16,            14.4375,    8,        1,          0.5,        0.25,       0.0625,      0.00835503,  236.588,    0.236588,   0.000236588, 39.9683,       13.3228,       8.32674,         0.416337,       0.208168,       0.0520421           ],
     "pint":                [6,    96,       32,            28.875,     16,       2,          1,          0.5,        0.125,       0.0167101,   473.176,    0.473176,   0.000473176, 79.9367,       26.6456,       16.6535,         0.832674,       0.416337,       0.104084            ],
     "quart":               [7,    192,      64,            57.75,      32,       4,          2,          1,          0.25,        0.0334201,   946.353,    0.946353,   0.000946353, 159.873,       53.2911,       33.307,          1.66535,        0.832674,       0.208168            ],
@@ -90,12 +90,12 @@ VolumeUnit.ratios = {
  * Return the type of this measurement. Examples are "mass",
  * "length", "speed", etc. Measurements can only be converted
  * to measurements of the same type.<p>
- * 
- * The type of the units is determined automatically from the 
- * units. For example, the unit "grams" is type "mass". Use the 
+ *
+ * The type of the units is determined automatically from the
+ * units. For example, the unit "grams" is type "mass". Use the
  * static call {@link Measurement.getAvailableUnits}
  * to find out what units this version of ilib supports.
- *  
+ *
  * @return {string} the name of the type of this measurement
  */
 VolumeUnit.prototype.getMeasure = function() {
@@ -106,11 +106,11 @@ VolumeUnit.prototype.getMeasure = function() {
  * Return a new measurement instance that is converted to a new
  * measurement unit. Measurements can only be converted
  * to measurements of the same type.<p>
- *  
+ *
  * @param {string} to The name of the units to convert to
  * @return {Measurement|undefined} the converted measurement
  * or undefined if the requested units are for a different
- * measurement type 
+ * measurement type
  */
 VolumeUnit.prototype.convert = function(to) {
 	if (!to || typeof(VolumeUnit.ratios[this.normalizeUnits(to)]) === 'undefined') {
@@ -150,6 +150,10 @@ VolumeUnit.aliases = {
     "cup": "cup",
     "us ounce": "fluid-ounce",
     "US ounce": "fluid-ounce",
+    "fluid ounce": "fluid-ounce",
+    "fluid ounces": "fluid-ounce",
+    "Fluid Ounce": "fluid-ounce",
+    "Fluid Ounces": "fluid-ounce",
     "℥": "fluid-ounce",
     "US Oz": "fluid-ounce",
     "oz(US)": "fluid-ounce",
@@ -242,7 +246,7 @@ VolumeUnit.convert = function(to, from, volume) {
 	var toRow = VolumeUnit.ratios[to];
 	if (typeof(from) === 'undefined' || typeof(to) === 'undefined') {
 		return undefined;
-	}	
+	}
 	var result = volume * fromRow[toRow[0]];
     return result;
 };
@@ -333,11 +337,11 @@ VolumeUnit.uScustomarylToMetric = {
 
 /**
  * Localize the measurement to the commonly used measurement in that locale. For example
- * If a user's locale is "en-US" and the measurement is given as "60 kmh", 
- * the formatted number should be automatically converted to the most appropriate 
+ * If a user's locale is "en-US" and the measurement is given as "60 kmh",
+ * the formatted number should be automatically converted to the most appropriate
  * measure in the other system, in this case, mph. The formatted result should
- * appear as "37.3 mph". 
- * 
+ * appear as "37.3 mph".
+ *
  * @param {string} locale current locale string
  * @returns {Measurement} a new instance that is converted to locale
  */
@@ -365,14 +369,14 @@ VolumeUnit.prototype.localize = function(locale) {
 /**
  * Scale the measurement unit to an acceptable level. The scaling
  * happens so that the integer part of the amount is as small as
- * possible without being below zero. This will result in the 
+ * possible without being below zero. This will result in the
  * largest units that can represent this measurement without
- * fractions. Measurements can only be scaled to other measurements 
+ * fractions. Measurements can only be scaled to other measurements
  * of the same type.
- * 
+ *
  * @param {string=} measurementsystem system to use (uscustomary|imperial|metric),
  * or undefined if the system can be inferred from the current measure
- * @return {Measurement} a new instance that is scaled to the 
+ * @return {Measurement} a new instance that is scaled to the
  * right level
  */
 VolumeUnit.prototype.scale = function(measurementsystem) {
@@ -394,7 +398,7 @@ VolumeUnit.prototype.scale = function(measurementsystem) {
     var munit = this.unit;
 
     volume = 18446744073709551999;
-    
+
     for (var m in mSystem) {
     	var tmp = this.amount * fromRow[mSystem[m]];
         if (tmp >= 1 && tmp < volume) {
@@ -402,12 +406,46 @@ VolumeUnit.prototype.scale = function(measurementsystem) {
 	        munit = m;
         }
     }
-    
+
     return new VolumeUnit({
         unit: munit,
         amount: volume
     });
 };
+
+/**
+ * Expand the current measurement such that any fractions of the current unit
+ * are represented in terms of smaller units in the same system instead of fractions
+ * of the current unit. For example, "6.25 feet" may be represented as
+ * "6 feet 4 inches" instead. The return value is an array of measurements which
+ * are progressively smaller until the smallest unit in the system is reached
+ * or until there is a whole number of any unit along the way.
+ *
+ * @param {string=} measurementsystem system to use (uscustomary|imperial|metric),
+ * or undefined if the system can be inferred from the current measure
+ * @return {Array.<Measurement>} an array of new measurements in order from
+ * the current units to the smallest units in the system which together are the
+ * same measurement as this one
+ */
+VolumeUnit.prototype.expand = function(measurementsystem) {
+    var mSystem;
+    if (measurementsystem === "metric"|| (typeof(measurementsystem) === 'undefined'
+        && typeof(VolumeUnit.metricSystem[this.unit]) !== 'undefined')) {
+        mSystem = VolumeUnit.metricSystem;
+    } else if (measurementsystem === "uscustomary" || (typeof(measurementsystem) === 'undefined'
+        && typeof(VolumeUnit.uscustomarySystem[this.unit]) !== 'undefined')) {
+        mSystem = VolumeUnit.uscustomarySystem;
+    } else if (measurementsystem === "imperial"|| (typeof(measurementsystem) === 'undefined'
+        && typeof(VolumeUnit.imperialSystem[this.unit]) !== 'undefined')) {
+        mSystem = VolumeUnit.imperialSystem;
+    } else {
+        mSystem = VolumeUnit.metricSystem;
+    }
+
+    return this.list(Object.keys(mSystem), VolumeUnit.ratios).map(function(item) {
+        return new VolumeUnit(item);
+    });
+}
 
 //register with the factory method
 Measurement._constructors["volume"] = VolumeUnit;

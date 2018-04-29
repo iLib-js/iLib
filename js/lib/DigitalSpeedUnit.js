@@ -1,7 +1,7 @@
 /*
  * DigitalSpeedUnit.js - Unit conversions for Digital Storage
  *
- * Copyright © 2018, JEDLSoft
+ * Copyright © 2018 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -173,10 +173,10 @@ DigitalSpeedUnit.prototype.localize = function(locale) {
  */
 DigitalSpeedUnit.prototype.scale = function(measurementsystem) {
     var mSystem;
-    if (this.unit in DigitalSpeedUnit.bitSystem) {
-        mSystem = DigitalSpeedUnit.bitSystem;
-    } else {
+    if (this.unit in DigitalSpeedUnit.byteSystem) {
         mSystem = DigitalSpeedUnit.byteSystem;
+    } else {
+        mSystem = DigitalSpeedUnit.bitSystem;
     }
 
     var dStorage = this.amount;
@@ -197,6 +197,34 @@ DigitalSpeedUnit.prototype.scale = function(measurementsystem) {
         amount: dStorage
     });
 };
+
+/**
+ * Expand the current measurement such that any fractions of the current unit
+ * are represented in terms of smaller units in the same system instead of fractions
+ * of the current unit. For example, "6.25 feet" may be represented as
+ * "6 feet 4 inches" instead. The return value is an array of measurements which
+ * are progressively smaller until the smallest unit in the system is reached
+ * or until there is a whole number of any unit along the way.
+ *
+ * @param {string=} measurementsystem system to use (uscustomary|imperial|metric),
+ * or undefined if the system can be inferred from the current measure
+ * @return {Array.<Measurement>} an array of new measurements in order from
+ * the current units to the smallest units in the system which together are the
+ * same measurement as this one
+ */
+DigitalSpeedUnit.prototype.expand = function(measurementsystem) {
+    var mSystem;
+    if (this.unit in DigitalSpeedUnit.byteSystem) {
+        mSystem = DigitalSpeedUnit.byteSystem;
+    } else {
+        mSystem = DigitalSpeedUnit.bitSystem;
+    }
+
+    return this.list(Object.keys(mSystem), DigitalSpeedUnit.ratios).map(function(item) {
+        return new DigitalSpeedUnit(item);
+    });
+};
+
 
 DigitalSpeedUnit.aliases = {
     "bits/s": "bit-per-second",

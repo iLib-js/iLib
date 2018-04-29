@@ -1,7 +1,7 @@
 /*
  * UnitFmt.js - Unit formatter class
  *
- * Copyright © 2014-2015,2018, JEDLSoft
+ * Copyright © 2014-2015, 2018 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -38,6 +38,15 @@ var LocaleInfo = require("./LocaleInfo.js");
 var ResBundle = require("./ResBundle.js");
 var IString = require("./IString.js");
 var NumFmt = require("./NumFmt.js");
+var ListFmt = require("./ListFmt.js");
+
+// for converting ilib lengths to the ones that are supported in cldr
+var lenMap = {
+  "full": "long",
+  "long": "long",
+  "medium": "short",
+  "short": "short"
+};
 
 /**
  * @class
@@ -72,6 +81,69 @@ var NumFmt = require("./NumFmt.js");
  * "yards", and the amount would be converted from meters to yards automatically before
  * being formatted. Default for the autoConvert property is "true", so it only needs to
  * be specified when you want to turn off autoconversion.
+ *
+ * <li><i>usage</i> - describe the reason for the measure. When auto converting and auto
+ * scaling the
+ * units, this setting will affect which units will be selected for display and how
+ * they will be displayed. For example, a
+ * person's weight is typically given as stone and pounds in England, but never in the
+ * US where it is pounds only. If the usage is set to "personalWeight", the appropriate
+ * measures will be selected for the locale, even if a larger or smaller unit would be
+ * better for pure auto-scaling. Setting the usage can implicitly set the style, the
+ * max- and minFractionDigits, roundingMode, length, etc.<p>
+ *
+ * List of usages currently supported:
+ *   <ul>
+ *   <li><i>general</i> no specific usage with no preselected measures. (Default)
+ *   <li><i>floorSpace</i> area of the floor of a house or building
+ *   <li><i>landArea</i> area of a piece of plot of land
+ *   <li><i>networkingSpeed</i> speed of transfer of data over a network
+ *   <li><i>audioSpeed</i> speed of transfer of audio data
+ *   <li><i>interfaceSpeed</i> speed of transfer of data over a computer interface such as a USB or SATA bus
+ *   <li><i>foodEnergy</i> amount of energy contains in food
+ *   <li><i>electricalEnergy</i> amount of energy in electricity
+ *   <li><i>heatingEnergy</i> amount of energy required to heat things such as water or home interiors
+ *   <li><i>nauticalDistance</i> distance traveled by a boat
+ *   <li><i>babyHeight</i> length of a baby
+ *   <li><i>personHeight</i> height of an adult or child (not a baby)
+ *   <li><i>vehicleDistance</i> distance traveled by a vehicle or aircraft (except a boat)
+ *   <li><i>personWeight</i> weight/mass of an adult human or larger child
+ *   <li><i>babyWeight</i> weight/mass of a baby or of small animals such as cats and dogs
+ *   <li><i>vehicleWeight</i> weight/mass of a vehicle (including a boat)
+ *   <li><i>drugWeight</i> weight/mass of a medicinal drug
+ *   <li><i>vehicleSpeed</i> speed of travel of a vehicle or aircraft (except a boat)
+ *   <li><i>nauticalSpeed</i> speed of travel of a boat
+ *   <li><i>foodVolume</i> volume of a food substance such as in a recipe
+ *   <li><i>dryFoodVolume</i> volume of a dry food substance in a recipe such as flour
+ *   <li><i>liquidFoodVolume</i> volume of a liquid food substance in a recipe such as milk
+ *   <li><i>drinkVolume</i> volume of a drink
+ *   <li><i>fuelVolume</i> volume of a vehicular fuel
+ *   <li><i>engineVolume</i> volume of an engine's combustion space
+ *   <li><i>storageVolume</i> volume of a mass storage tank
+ *   <li><i>gasVolume</i> volume of a gas such as natural gas used in a home
+ *   </ul>
+ *
+ * <li><i>style</i> - give the style of this formatter. This is used to
+ * decide how to format the number and units when the number is not whole, or becomes
+ * not whole after auto conversion and scaling. There are two basic styles
+ * supported so far:
+ *
+ *   <ul>
+ *   <li><i>numeric</i> - only the largest unit is used and the number is given as
+ *   decimals. Example: "5.25 lbs"
+ *   <li><i>list</i> - display the measure with a list of successively smaller-sized
+ *   units. Example: "5 lbs 4 oz"
+ *   </ul>
+ *
+ * The style is most useful for units which are not powers of 10 greater than the
+ * smaller units as in the metric system, though it can be useful for metric measures
+ * as well. Example: "2kg 381g".<p>
+ *
+ * The style may be set implicitly when you set the usage. For example, if the usage is
+ * "personWeight", the style will be "numeric" and the maxFractionDigits will be 0. That
+ * is, weight of adults and children are most often given in whole pounds. (eg. "172 lbs").
+ * If the usage is "babyWeight", the style will be "list", and the measures will be pounds
+ * and ounces. (eg. "7 lbs 2 oz").
  *
  * <li><i>length</i> - the length of the units text. This can be either "short" or "long"
  * with the default being "long". Example: a short units text might be "kph" and the
@@ -152,11 +224,15 @@ var UnitFmt = function(options) {
     }
 
     if (options.length) {
-        this.length = options.length;
+        this.length = lenMap[options.length] || "long";
     }
 
     if (typeof(options.autoScale) === 'boolean') {
         this.scale = options.autoScale;
+    }
+
+    if (typeof(options.style) === 'string') {
+        this.style = options.style;
     }
 
     if (typeof(options.autoConvert) === 'boolean') {
@@ -213,8 +289,24 @@ var UnitFmt = function(options) {
 
                     // ensure that the plural rules are loaded before we proceed
                     IString.loadPlurals(sync, this.locale, loadParams, ilib.bind(this, function() {
-                        if (options && typeof(options.onLoad) === 'function') {
-                            options.onLoad(this);
+                        if (this.style === "list") {
+                            new ListFmt({
+                                locale: this.locale,
+                                style: "unit",
+                                sync: sync,
+                                loadParams: loadParams,
+                                onLoad: ilib.bind(this, function (listFmt) {
+                                    this.listFmt = listFmt;
+
+                                    if (options && typeof(options.onLoad) === 'function') {
+                                        options.onLoad(this);
+                                    }
+                                })
+                            });
+                        } else {
+                            if (options && typeof(options.onLoad) === 'function') {
+                                options.onLoad(this);
+                            }
                         }
                     }));
                 })
@@ -225,41 +317,41 @@ var UnitFmt = function(options) {
 
 UnitFmt.prototype = {
 
-	/**
-	 * Return the locale used with this formatter instance.
-	 * @return {Locale} the Locale instance for this formatter
-	 */
-	getLocale: function() {
-		return this.locale;
-	},
+    /**
+     * Return the locale used with this formatter instance.
+     * @return {Locale} the Locale instance for this formatter
+     */
+    getLocale: function() {
+        return this.locale;
+    },
 
-	/**
-	 * Return the template string that is used to format date/times for this
-	 * formatter instance. This will work, even when the template property is not explicitly
-	 * given in the options to the constructor. Without the template option, the constructor
-	 * will build the appropriate template according to the options and use that template
-	 * in the format method.
-	 *
-	 * @return {string} the format template for this formatter
-	 */
-	getTemplate: function() {
-		return this.template;
-	},
+    /**
+     * Return the template string that is used to format date/times for this
+     * formatter instance. This will work, even when the template property is not explicitly
+     * given in the options to the constructor. Without the template option, the constructor
+     * will build the appropriate template according to the options and use that template
+     * in the format method.
+     *
+     * @return {string} the format template for this formatter
+     */
+    getTemplate: function() {
+        return this.template;
+    },
 
-	/**
-	 * Convert this formatter to a string representation by returning the
-	 * format template. This method delegates to getTemplate.
-	 *
-	 * @return {string} the format template
-	 */
-	toString: function() {
-		return this.getTemplate();
-	},
+    /**
+     * Convert this formatter to a string representation by returning the
+     * format template. This method delegates to getTemplate.
+     *
+     * @return {string} the format template
+     */
+    toString: function() {
+        return this.getTemplate();
+    },
 
-	/**
-	 * Return whether or not this formatter will auto-scale the units while formatting.
-	 * @returns {boolean} true if auto-scaling is turned on
-	 */
+    /**
+     * Return whether or not this formatter will auto-scale the units while formatting.
+     * @returns {boolean} true if auto-scaling is turned on
+     */
     getScale: function() {
         return this.scale;
     },
@@ -272,21 +364,40 @@ UnitFmt.prototype = {
         return this.measurementSystem;
     },
 
-	/**
-	 * Format a particular unit instance according to the settings of this
-	 * formatter object.
-	 *
-	 * @param {Measurement} measurement measurement to format
-	 * @return {string} the formatted version of the given date instance
-	 */
-    format: function (measurement) {
-        var u = this.convert ? measurement.localize(this.locale.getSpec()) : measurement;
-        u = this.scale ? u.scale(this.measurementSystem) : u;
+    /**
+     * @private
+     */
+    _format: function(u) {
         var formatted = new IString(this.template[u.getUnit()]);
         // make sure to use the right plural rules
         formatted.setLocale(this.locale, true, undefined, undefined);
         formatted = formatted.formatChoice(u.amount, {n: this.numFmt.format(u.amount)});
         return formatted.length > 0 ? formatted : u.amount + " " + u.unit;
+    },
+
+    /**
+     * Format a particular unit instance according to the settings of this
+     * formatter object.
+     *
+     * @param {Measurement} measurement measurement to format
+     * @return {string} the formatted version of the given date instance
+     */
+    format: function (measurement) {
+        var u = this.convert ? measurement.localize(this.locale.getSpec()) : measurement;
+        u = this.scale ? u.scale(this.measurementSystem, this.style) : u;
+        if (this.style === "list") {
+            u = u.expand(this.measurementSystem);
+            var formatted = u.map(ilib.bind(this, function(unit) {
+                return this._format(unit);
+            }));
+            if (this.listFmt && formatted.length) {
+                return this.listFmt.format(formatted);
+            } else {
+                return formatted.join(' ');
+            }
+        } else {
+            return this._format(u);
+        }
     }
 };
 

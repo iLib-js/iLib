@@ -360,5 +360,198 @@
             "terabyte-per-hour": "#{n} TB/h",
             "petabyte-per-hour": "#{n} PB/h"
         }
+    },
+    "usages": {
+        "floorSpace": {
+            "description": "area of the floor of a house or building",
+            "units": {
+                "metric": ["square-meter"],
+                "uscustomary": ["square-foot"],
+                "imperial": ["square-foot"]
+            },
+            "maxFractionDigits": 0
+        },
+        "landArea": {
+            "description": "area of a piece of plot of land",
+            "units": {
+                "metric": ["square-meter", "hectare"],
+                "uscustomary": ["square-foot", "acre", "square-mile"],
+                "imperial": ["square-foot", "acre", "square-mile"]
+            },
+            "maxFractionDigits": 0
+        },
+        "networkingSpeed": {
+            "description": "speed of transfer of data over a network",
+            "system": "bitSystem",
+            "maxFractionDigits": 2
+        },
+        "audioSpeed": {
+            "description": "speed of transfer of audio data",
+            "system": "bitSystem"
+        },
+        "interfaceSpeed": {
+            "description": "speed of transfer of data over a computer interface such as a USB or SATA bus",
+            "system": "byteSystem"
+        },
+        "foodEnergy": {
+            "description": "amount of energy contains in food",
+            "units": {
+                "metric": ["millijoule", "joule", "kilojoule", "megajoule", "gigajoule"],
+                "uscustomary": ["foodcalorie"],
+                "imperial": ["foodcalorie"]
+            }
+        },
+        "electricalEnergy": {
+            "description": "amount of energy in electricity",
+            "units": ["gigawatt-hour", "megawatt-hour", "kilowatt-hour", "watt-hour"]
+        },
+        "heatingEnergy": {
+            "description": "amount of energy required to heat things such as water or home interiors",
+            "units": {
+                "metric": ["millijoule", "joule", "kilojoule", "megajoule", "gigajoule"],
+                "uscustomary": ["BTU"],
+                "imperial": ["BTU"]
+            }
+        },
+        "nauticalDistance": {
+            "description": "distance traveled by a boat",
+            "units": {
+                "metric": ["meter", "kilometer"],
+                "uscustomary": ["foot", "yard", "nautical-mile"],
+                "imperial": ["foot", "yard", "nautical-mile"]
+            }
+        },
+        "babyHeight": {
+            "description": "length of a baby",
+            "units": {
+                "metric": ["centimeter"],
+                "uscustomary": ["inch"],
+                "imperial": ["inch"]
+            }
+        },
+        "personHeight": {
+            "description": "height of an adult or child (not a baby)",
+            "units": {
+                "metric": ["centimeter", "meter"],
+                "uscustomary": ["inch", "foot"],
+                "imperial": ["inch", "foot"]
+            },
+            "style": "list"
+        },
+        "vehicleDistance": {
+            "description": "distance traveled by a vehicle or aircraft (except a boat)",
+            "units": {
+                "metric": ["meter", "kilometer"],
+                "uscustomary": ["yard", "mile"],
+                "imperial": ["yard", "mile"]
+            }
+        },
+        "personWeight": {
+            "description": "weight/mass of an adult human or larger child",
+            "units": {
+                "metric": ["kilogram"],
+                "uscustomary": ["pound"],
+                "imperial": ["pound", "stone"]
+            },
+            "style": "list",
+            "maxFractionDigits": 0
+        },
+        "babyWeight": {
+            "description": "weight/mass of a baby or of small animals such as cats and dogs",
+            "units": {
+                "metric": ["gram", "kilogram"],
+                "uscustomary": ["ounce", "pound"],
+                "imperial": ["ounce", "pound"]
+            },
+            "style": "list"
+        },
+        "vehicleWeight": {
+            "description": "weight/mass of a vehicle (including a boat)",
+            "units": {
+                "metric": ["kilogram", "metric-ton"],
+                "uscustomary": ["pound", "ton"],
+                "imperial": ["pound", "ton"]
+            }
+        },
+        "drugWeight": {
+            "description": "weight/mass of a medicinal drug",
+            "units": {
+                "metric": ["microgram", "milligram", "gram"],
+                "uscustomary": ["ounce"],
+                "imperial": ["ounce"]
+            }
+        },
+        "vehicleSpeed": {
+            "units": {
+                "metric": ["kilometer-per-hour"],
+                "uscustomary": ["mile-per-hour"],
+                "imperial": ["mile-per-hour"]
+            }
+        },
+        "nauticalSpeed": {
+            "description": "speed of travel of a boat",
+            "units": {
+                "metric": ["kilometer-per-hour"],
+                "uscustomary": ["knot"],
+                "imperial": ["knot"]
+            }
+        },
+        "dryFoodVolume": {
+            "units": {
+                "metric": ["milliliter", "liter"],
+                "uscustomary": ["teaspoon", "tablespoon", "cup", "gallon"],
+                "imperial": ["teaspoon-imperial", "tablespoon-imperial", "cup-imperial", "gallon-imperial"]
+            },
+            "style": "list"
+        },
+        "liquidFoodVolume": {
+            "description": "volume of a liquid food substance in a recipe such as milk",
+            "units": {
+                "metric": ["milliliter", "liter"],
+                "uscustomary": ["teaspoon", "tablespoon", "fluid-ounce", "cup", "pint", "quart", "gallon"],
+                "imperial": ["teaspoon-imperial", "tablespoon-imperial", "ounce-imperial", "cup", "pint-imperial", "quart-imperial", "gallon-imperial"]
+            },
+            "style": "list"
+        },
+        "drinkVolume": {
+            "description": "volume of a drink",
+            "units": {
+                "metric": ["milliliter", "liter"],
+                "uscustomary": ["cup", "pint", "quart", "gallon"],
+                "imperial": ["cup", "pint-imperial", "quart-imperial", "gallon-imperial"]
+            }
+        },
+        "fuelVolume": {
+            "description": "volume of a vehicular fuel",
+            "units": {
+                "metric": ["liter"],
+                "uscustomary": ["gallon"],
+                "imperial": ["gallon-imperial"]
+            }
+        },
+        "engineVolume": {
+            "description": "volume of an engine's combustion space",
+            "units": {
+                "metric": ["cubic-centimeter"],
+                "uscustomary": ["cubic-inch"],
+                "imperial": ["cubic-inch"]
+            }
+        },
+        "storageVolume": {
+            "description": "volume of a mass storage tank",
+            "units": {
+                "metric": ["liter", "cubic-meter"],
+                "uscustomary": ["gallon", "cubic-foot"],
+                "imperial": ["gallon-imperial", "cubic-foot"]
+            }
+        },
+        "gasVolume": {
+            "description": "volume of a gas such as natural gas used in a home a home might use",
+            "units": {
+                "metric": ["cubic-meter"],
+                "uscustomary": ["cubic-foot"],
+                "imperial": ["cubic-foot"]
+            }
+        }
     }
 }

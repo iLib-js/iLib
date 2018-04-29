@@ -1,7 +1,7 @@
 /*
- * Time.js - Unit conversions for Times/times
- * 
- * Copyright © 2014-2015, JEDLSoft
+ * TimeUnit.js - Unit conversions for time measurements
+ *
+ * Copyright © 2014-2015, 2018 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,7 +18,7 @@
  */
 
 /*
-!depends 
+!depends
 Measurement.js
 */
 
@@ -27,22 +27,22 @@ var Measurement = require("./Measurement.js");
 /**
  * @class
  * Create a new time measurement instance.
- * 
+ *
  * @constructor
  * @extends Measurement
- * @param options {{unit:string,amount:number|string|undefined}} Options controlling 
+ * @param options {{unit:string,amount:number|string|undefined}} Options controlling
  * the construction of this instance
  */
 var TimeUnit = function (options) {
 	this.unit = "second";
 	this.amount = 0;
-	
+
 	if (options) {
 		if (typeof(options.unit) !== 'undefined') {
 			this.originalUnit = options.unit;
 			this.unit = this.normalizeUnits(options.unit) || options.unit;
 		}
-		
+
 		if (typeof(options.amount) === 'object') {
 			if (options.amount.getMeasure() === "time") {
 				this.amount = TimeUnit.convert(this.unit, options.amount.getUnit(), options.amount.getAmount());
@@ -53,7 +53,7 @@ var TimeUnit = function (options) {
 			this.amount = parseFloat(options.amount);
 		}
 	}
-	
+
 	if (typeof(TimeUnit.ratios[this.unit]) === 'undefined') {
 		throw "Unknown unit: " + options.unit;
 	}
@@ -64,9 +64,9 @@ TimeUnit.prototype.parent = Measurement;
 TimeUnit.prototype.constructor = TimeUnit;
 
 TimeUnit.ratios = {
-	/*              index  nsec        msec        mlsec       sec        min          hour          day           week         month        year         decade        century    */           
-	"nanosecond":   [ 1,   1,          0.001,      1e-6,       1e-9,      1.6667e-11,  2.7778e-13,   1.1574e-14,   1.6534e-15,  3.8027e-16,  3.1689e-17,  3.1689e-18,   3.1689e-19  ],  
-	"microsecond":  [ 2,   1000,       1,          0.001,      1e-6,      1.6667e-8,   2.7778e-10,   1.1574e-11,   1.6534e-12,  3.8027e-13,  3.1689e-14,  3.1689e-15,   3.1689e-16  ],  
+	/*              index  nsec        msec        mlsec       sec        min          hour          day           week         month        year         decade        century    */
+	"nanosecond":   [ 1,   1,          0.001,      1e-6,       1e-9,      1.6667e-11,  2.7778e-13,   1.1574e-14,   1.6534e-15,  3.8027e-16,  3.1689e-17,  3.1689e-18,   3.1689e-19  ],
+	"microsecond":  [ 2,   1000,       1,          0.001,      1e-6,      1.6667e-8,   2.7778e-10,   1.1574e-11,   1.6534e-12,  3.8027e-13,  3.1689e-14,  3.1689e-15,   3.1689e-16  ],
 	"millisecond":  [ 3,   1e+6,       1000,       1,          0.001,     1.6667e-5,   2.7778e-7,    1.1574e-8,    1.6534e-9,   3.8027e-10,  3.1689e-11,  3.1689e-12,   3.1689e-13  ],
 	"second":       [ 4,   1e+9,       1e+6,       1000,       1,         0.0166667,   0.000277778,  1.1574e-5,    1.6534e-6,   3.8027e-7,   3.1689e-8,   3.1689e-9,    3.1689e-10  ],
 	"minute":       [ 5,   6e+10,      6e+7,       60000,      60,        1,           0.0166667,    0.000694444,  9.9206e-5,   2.2816e-5,   1.9013e-6,   1.9013e-7,    1.9013e-8   ],
@@ -83,12 +83,12 @@ TimeUnit.ratios = {
  * Return the type of this measurement. Examples are "mass",
  * "length", "speed", etc. Measurements can only be converted
  * to measurements of the same type.<p>
- * 
- * The type of the units is determined automatically from the 
- * units. For example, the unit "grams" is type "mass". Use the 
+ *
+ * The type of the units is determined automatically from the
+ * units. For example, the unit "grams" is type "mass". Use the
  * static call {@link Measurement.getAvailableUnits}
  * to find out what units this version of ilib supports.
- *  
+ *
  * @return {string} the name of the type of this measurement
  */
 TimeUnit.prototype.getMeasure = function() {
@@ -99,11 +99,11 @@ TimeUnit.prototype.getMeasure = function() {
  * Return a new measurement instance that is converted to a new
  * measurement unit. Measurements can only be converted
  * to measurements of the same type.<p>
- *  
+ *
  * @param {string} to The name of the units to convert to
  * @return {Measurement|undefined} the converted measurement
  * or undefined if the requested units are for a different
- * measurement type 
+ * measurement type
  */
 TimeUnit.prototype.convert = function(to) {
 	if (!to || typeof(TimeUnit.ratios[this.normalizeUnits(to)]) === 'undefined') {
@@ -214,17 +214,17 @@ TimeUnit.convert = function(to, from, time) {
     var toRow = TimeUnit.ratios[to];
     if (typeof(from) === 'undefined' || typeof(to) === 'undefined') {
         return undefined;
-    }	
+    }
     return time * fromRow[toRow[0]];
 };
 
 /**
  * Localize the measurement to the commonly used measurement in that locale. For example
- * If a user's locale is "en-US" and the measurement is given as "60 kmh", 
- * the formatted number should be automatically converted to the most appropriate 
+ * If a user's locale is "en-US" and the measurement is given as "60 kmh",
+ * the formatted number should be automatically converted to the most appropriate
  * measure in the other system, in this case, mph. The formatted result should
- * appear as "37.3 mph". 
- * 
+ * appear as "37.3 mph".
+ *
  * @param {string} locale current locale string
  * @returns {Measurement} a new instance that is converted to locale
  */
@@ -238,14 +238,14 @@ TimeUnit.prototype.localize = function(locale) {
 /**
  * Scale the measurement unit to an acceptable level. The scaling
  * happens so that the integer part of the amount is as small as
- * possible without being below zero. This will result in the 
+ * possible without being below zero. This will result in the
  * largest units that can represent this measurement without
- * fractions. Measurements can only be scaled to other measurements 
+ * fractions. Measurements can only be scaled to other measurements
  * of the same type.
- * 
+ *
  * @param {string=} measurementsystem system to use (uscustomary|imperial|metric),
  * or undefined if the system can be inferred from the current measure
- * @return {Measurement} a new instance that is scaled to the 
+ * @return {Measurement} a new instance that is scaled to the
  * right level
  */
 TimeUnit.prototype.scale = function(measurementsystem) {
@@ -270,6 +270,27 @@ TimeUnit.prototype.scale = function(measurementsystem) {
         amount: time
     });
 };
+
+/**
+ * Expand the current measurement such that any fractions of the current unit
+ * are represented in terms of smaller units in the same system instead of fractions
+ * of the current unit. For example, "6.25 feet" may be represented as
+ * "6 feet 4 inches" instead. The return value is an array of measurements which
+ * are progressively smaller until the smallest unit in the system is reached
+ * or until there is a whole number of any unit along the way.
+ *
+ * @param {string=} measurementsystem system to use (uscustomary|imperial|metric),
+ * or undefined if the system can be inferred from the current measure
+ * @return {Array.<Measurement>} an array of new measurements in order from
+ * the current units to the smallest units in the system which together are the
+ * same measurement as this one
+ */
+TimeUnit.prototype.expand = function(measurementsystem) {
+    return this.list(Object.keys(TimeUnit.ratios), TimeUnit.ratios).map(function(item) {
+        return new TimeUnit(item);
+    });
+}
+
 /**
  * @private
  * @static
