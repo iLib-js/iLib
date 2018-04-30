@@ -235,6 +235,10 @@ var UnitFmt = function(options) {
         this.style = options.style;
     }
 
+    if (typeof(options.usage) === 'string') {
+        this.usage = options.usage;
+    }
+
     if (typeof(options.autoConvert) === 'boolean') {
         this.convert = options.autoConvert;
     }
@@ -275,6 +279,27 @@ var UnitFmt = function(options) {
         loadParams: loadParams,
         callback: ilib.bind(this, function (format) {
             this.template = format["unitfmt"][this.length];
+
+            if (this.usage && format.usage) {
+                // if usage is not recognized, usageInfo will be undefined, which we will use to indicate unknown usage
+                this.usageInfo = format.usage[this.usage];
+                if (this.usageInfo) {
+                    // default settings for this usage, but don't override the options that were passed in
+                    if (typeof(this.maxFractionDigits) !== 'number' && typeof(this.usageInfo.maxFractionDigits) === 'number') {
+                        this.maxFractionDigits = this.usageInfo.maxFractionDigits;
+                    }
+                    if (typeof(this.minFractionDigits) !== 'number' && typeof(this.usageInfo.minFractionDigits) === 'number') {
+                        this.minFractionDigits = this.usageInfo.minFractionDigits;
+                    }
+                    if (!this.measurementSystem && this.usageInfo.system) {
+                        this.measurementSystem = this.usageInfo.system;
+                    }
+                    this.units = this.usageInfo.units;
+                    if (!this.style && this.usageInfo.style) {
+                        this.style = this.usageInfo.style;
+                    }
+                }
+            }
 
             new NumFmt({
                 locale: this.locale,
