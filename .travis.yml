@@ -28,7 +28,7 @@ script:
   #- which qmlscene
   #- cd qt/NodeunitTest
   #- /usr/bin/qmlscene NodeunitRunAll.qml -I ../FileReader/imports/
-  branches:
+branches:
   only:
     - master
     - development
