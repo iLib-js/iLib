@@ -19,7 +19,7 @@ script:
   - source /opt/qt55/bin/qt55-env.sh
   # [Error] [exec] QXcbConnection: Could not connect to display
   - export QT_QPA_PLATFORM=offscreen
-  # Error QFontDatabase: Cannot find font directory /usr/lib/x86_64-linux-gnu/fonts - is Qt installed correctly?
+  # [Error] QFontDatabase: Cannot find font directory /usr/lib/x86_64-linux-gnu/fonts - is Qt installed correctly?
   - sudo ln -s /usr/share/fonts /usr/lib/x86_64-linux-gnu/fonts
 
   # iLib Full builde / Running nodeunit test.
