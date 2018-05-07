@@ -180,9 +180,9 @@ Measurement.prototype = {
      * as whole numbers. The smallest measure will contain any possible
      * fractional remainder.
      *
-     * @param {Array.<String>} measures array of measure names to
+     * @param {Array.<string>} measures array of measure names to
      * convert this measure to
-     * @param {Array.<Array.<Number>>} ratios the conversion ratios
+     * @param {Object} ratios the conversion ratios
      * table for the measurement type
      * @returns {Array.<{unit: String, amount: Number}>} the conversion
      * of the current measurement into an array of unit names and
@@ -215,7 +215,7 @@ Measurement.prototype = {
             amount = round(this.amount * row[ratios[unit][0]], 9);
         }
 
-        for (j = i; j > 0; j--) {
+        for (var j = i; j > 0; j--) {
             var item = {
                 unit: unit,
                 amount: Math.trunc(amount)
