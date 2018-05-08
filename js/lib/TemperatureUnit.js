@@ -213,7 +213,8 @@ TemperatureUnit.usCustomaryToMetric = {
  */
 TemperatureUnit.prototype.localize = function(locale) {
     var to;
-    if (locale === "en-US" ) {
+    var system = Measurement.getMeasurementSystemForLocale(locale);
+    if (system === "uscustomary" || system === "imperial") {
         to = TemperatureUnit.metricToUScustomary[this.unit] || this.unit;
     } else {
         to = TemperatureUnit.usCustomaryToMetric[this.unit] || this.unit;

@@ -141,10 +141,29 @@ LengthUnit.usCustomaryToMetric = {
  * static call {@link Measurement.getAvailableUnits}
  * to find out what units this version of ilib supports.
  *
- * @return {string} the name of the type of this measurement
+ * @returns {string} the name of the type of this measurement
  */
 LengthUnit.prototype.getMeasure = function() {
 	return "length";
+};
+
+/**
+ * Return the name of the measurement system that the current
+ * unit is a part of.
+ * 
+ * @returns {string} the name of the measurement system for 
+ * the units of this measurement
+ */
+LengthUnit.prototype.getMeasurementSystem = function() {
+    if (LengthUnit.uscustomarySystem[this.unit]) {
+        return "uscustomary";
+    }
+    
+    if (LengthUnit.imperialSystem[this.unit]) {
+        return "imperial";
+    }
+    
+    return "metric";
 };
 
 /**
@@ -159,7 +178,10 @@ LengthUnit.prototype.getMeasure = function() {
  */
 LengthUnit.prototype.localize = function(locale) {
     var to;
-    if (locale === "en-US" || locale === "en-GB") {
+    var system = Measurement.getMeasurementSystemForLocale(locale);
+    
+    // imperial is the same as US customary for lengths
+    if (system === "uscustomary" || system === "imperial") {
         to = LengthUnit.metricToUScustomary[this.unit] || this.unit;
     } else {
         to = LengthUnit.usCustomaryToMetric[this.unit] || this.unit;
@@ -200,22 +222,23 @@ LengthUnit.prototype.convert = function(to) {
  *
  * @param {string=} measurementsystem system to use (uscustomary|imperial|metric),
  * or undefined if the system can be inferred from the current measure
- * @return {Measurement} a new instance that is scaled to the
- * right level
+ * @param {Object=} units mapping from the measurement system to the units to use
+ * for this scaling. If this is not defined, this measurement type will use the
+ * set of units that it knows about for the given measurement system
+ * @param {string=} style the style of the formatter
+ * @return {Measurement} a new instance that is scaled to the right level
  */
-LengthUnit.prototype.scale = function(measurementsystem) {
-    var mSystem;
-    if (ilib.isArray(measurementsystem)) {
-        mSystem = measurementsystem;
+LengthUnit.prototype.scale = function(measurementsystem, units, style) {
+    var systemName = this.getMeasurementSystem(),
+        mSystem;
+    if (units && units[systemName]) {
+        mSystem = units[systemName];
     } else {
-        if (measurementsystem === "metric" || (typeof(measurementsystem) === 'undefined'
-                && typeof(LengthUnit.metricSystem[this.unit]) !== 'undefined')) {
+        if (systemName === "metric") {
             mSystem = Object.keys(LengthUnit.metricSystem);
-        } else if (measurementsystem === "imperial" || (typeof(measurementsystem) === 'undefined'
-                && typeof(LengthUnit.imperialSystem[this.unit]) !== 'undefined')) {
+        } else if (systemName === "imperial") {
             mSystem = Object.keys(LengthUnit.imperialSystem);
-        } else if (measurementsystem === "uscustomary" || (typeof(measurementsystem) === 'undefined'
-                && typeof(LengthUnit.uscustomarySystem[this.unit]) !== 'undefined')) {
+        } else if (systemName === "uscustomary") {
             mSystem = Object.keys(LengthUnit.uscustomarySystem);
         } else {
             return new LengthUnit({
@@ -254,29 +277,28 @@ LengthUnit.prototype.scale = function(measurementsystem) {
  *
  * @param {string=} measurementsystem system to use (uscustomary|imperial|metric),
  * or undefined if the system can be inferred from the current measure
+ * @param {Object=} units object containing a mapping between the measurement system
+ * and an array of units to use to restrict the expansion to
  * @return {Array.<Measurement>} an array of new measurements in order from
  * the current units to the smallest units in the system which together are the
  * same measurement as this one
  */
-LengthUnit.prototype.expand = function(measurementsystem) {
-    var mSystem;
-    if (ilib.isArray(measurementsystem)) {
-        mSystem = measurementsystem;
+LengthUnit.prototype.expand = function(measurementsystem, units) {
+    var mSystem, systemName = this.getMeasurementSystem();
+    if (units) {
+        mSystem = units[systemName];
     } else {
-        if (measurementsystem === "metric" || (typeof(measurementsystem) === 'undefined'
-                && typeof(LengthUnit.metricSystem[this.unit]) !== 'undefined')) {
-            mSystem = LengthUnit.metricSystem;
-        } else if (measurementsystem === "imperial" || (typeof(measurementsystem) === 'undefined'
+        if (measurementsystem === "imperial" || (typeof(measurementsystem) === 'undefined'
                 && typeof(LengthUnit.imperialSystem[this.unit]) !== 'undefined')) {
-            mSystem = LengthUnit.imperialSystem;
+            mSystem = Object.keys(LengthUnit.imperialSystem);
         } else if (measurementsystem === "uscustomary" || (typeof(measurementsystem) === 'undefined'
                 && typeof(LengthUnit.uscustomarySystem[this.unit]) !== 'undefined')) {
-            mSystem = LengthUnit.uscustomarySystem;
+            mSystem = Object.keys(LengthUnit.uscustomarySystem);
         } else {
-            mSystem = LengthUnit.metricSystem;
+            mSystem = Object.keys(LengthUnit.metricSystem);
         }
     }
-    return this.list(Object.keys(mSystem), LengthUnit.ratios).map(function(item) {
+    return this.list(mSystem, LengthUnit.ratios).map(function(item) {
         return new LengthUnit(item);
     });
 };

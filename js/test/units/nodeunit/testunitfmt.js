@@ -96,205 +96,6 @@ module.exports.testunitfmt = {
         test.done();
     },
 
-    testUnitFormatGetMeasurementSystemDefault: function(test) {
-        test.expect(1);
-        var uf = new UnitFmt();
-        test.equal(uf.getMeasurementSystem(), "uscustomary");
-        test.done();
-    },
-
-    testUnitFormatGetMeasurementSystemUS: function(test) {
-        test.expect(1);
-        var uf = new UnitFmt({
-            locale: "en-US"
-        });
-        test.equal(uf.getMeasurementSystem(), "uscustomary");
-        test.done();
-    },
-
-    testUnitFormatGetMeasurementSystemUSWithFlavor: function(test) {
-        test.expect(1);
-        var uf = new UnitFmt({
-            locale: "en-US-ASDF"
-        });
-        test.equal(uf.getMeasurementSystem(), "uscustomary");
-        test.done();
-    },
-
-    testUnitFormatGetMeasurementSystemUSNonEnglish1: function(test) {
-        test.expect(1);
-        var uf = new UnitFmt({
-            locale: "es-US"
-        });
-        test.equal(uf.getMeasurementSystem(), "uscustomary");
-        test.done();
-    },
-
-    testUnitFormatGetMeasurementSystemUSNonEnglish2: function(test) {
-        test.expect(1);
-        var uf = new UnitFmt({
-            locale: "zh-Hant-US"
-        });
-        test.equal(uf.getMeasurementSystem(), "uscustomary");
-        test.done();
-    },
-
-    testUnitFormatGetMeasurementSystemLR: function(test) {
-        test.expect(1);
-        var uf = new UnitFmt({
-            locale: "en-LR"
-        });
-        // will be metric soon
-        test.equal(uf.getMeasurementSystem(), "uscustomary");
-        test.done();
-    },
-
-    testUnitFormatGetMeasurementSystemPW: function(test) {
-        test.expect(1);
-        var uf = new UnitFmt({
-            locale: "pau-PW"
-        });
-        test.equal(uf.getMeasurementSystem(), "uscustomary");
-        test.done();
-    },
-
-    testUnitFormatGetMeasurementSystemMH: function(test) {
-        test.expect(1);
-        var uf = new UnitFmt({
-            locale: "mh-MH"
-        });
-        test.equal(uf.getMeasurementSystem(), "uscustomary");
-        test.done();
-    },
-
-    testUnitFormatGetMeasurementSystemFM: function(test) {
-        test.expect(1);
-        var uf = new UnitFmt({
-            locale: "en-FM"
-        });
-        test.equal(uf.getMeasurementSystem(), "uscustomary");
-        test.done();
-    },
-    
-    testUnitFormatGetMeasurementSystemWS: function(test) {
-        test.expect(1);
-        var uf = new UnitFmt({
-            locale: "sm-WS"
-        });
-        test.equal(uf.getMeasurementSystem(), "uscustomary");
-        test.done();
-    },
-
-    testUnitFormatGetMeasurementSystemAS: function(test) {
-        test.expect(1);
-        var uf = new UnitFmt({
-            locale: "en-AS"
-        });
-        test.equal(uf.getMeasurementSystem(), "uscustomary");
-        test.done();
-    },
-
-    testUnitFormatGetMeasurementSystemPR: function(test) {
-        test.expect(1);
-        var uf = new UnitFmt({
-            locale: "es-PR"
-        });
-        test.equal(uf.getMeasurementSystem(), "uscustomary");
-        test.done();
-    },
-
-    testUnitFormatGetMeasurementSystemENPR: function(test) {
-        test.expect(1);
-        var uf = new UnitFmt({
-            locale: "en-PR"
-        });
-        test.equal(uf.getMeasurementSystem(), "uscustomary");
-        test.done();
-    },
-
-    testUnitFormatGetMeasurementSystemGU: function(test) {
-        test.expect(1);
-        var uf = new UnitFmt({
-            locale: "en-GU"
-        });
-        test.equal(uf.getMeasurementSystem(), "uscustomary");
-        test.done();
-    },
-
-    testUnitFormatGetMeasurementSystemMP: function(test) {
-        test.expect(1);
-        var uf = new UnitFmt({
-            locale: "en-MP"
-        });
-        test.equal(uf.getMeasurementSystem(), "uscustomary");
-        test.done();
-    },
-
-    testUnitFormatGetMeasurementSystemVI: function(test) {
-        test.expect(1);
-        var uf = new UnitFmt({
-            locale: "en-VI"
-        });
-        test.equal(uf.getMeasurementSystem(), "uscustomary");
-        test.done();
-    },
-
-    testUnitFormatGetMeasurementSystemMM: function(test) {
-        test.expect(1);
-        var uf = new UnitFmt({
-            locale: "my-MM"
-        });
-        
-        // will be changing to metric very soon
-        test.equal(uf.getMeasurementSystem(), "imperial");
-        test.done();
-    },
-
-    testUnitFormatGetMeasurementSystemGB: function(test) {
-        test.expect(1);
-        var uf = new UnitFmt({
-            locale: "en-GB"
-        });
-        test.equal(uf.getMeasurementSystem(), "imperial");
-        test.done();
-    },
-
-    testUnitFormatGetMeasurementSystemGBWithFlavor: function(test) {
-        test.expect(1);
-        var uf = new UnitFmt({
-            locale: "en-GB-ASDF"
-        });
-        test.equal(uf.getMeasurementSystem(), "imperial");
-        test.done();
-    },
-
-    testUnitFormatGetMeasurementSystemOther1: function(test) {
-        test.expect(1);
-        var uf = new UnitFmt({
-            locale: "ja-JP"
-        });
-        test.equal(uf.getMeasurementSystem(), "metric");
-        test.done();
-    },
-
-    testUnitFormatGetMeasurementSystemOther2: function(test) {
-        test.expect(1);
-        var uf = new UnitFmt({
-            locale: "da-DK"
-        });
-        test.equal(uf.getMeasurementSystem(), "metric");
-        test.done();
-    },
-
-    testUnitFormatGetMeasurementSystemOther3: function(test) {
-        test.expect(1);
-        var uf = new UnitFmt({
-            locale: "zu-ZA"
-        });
-        test.equal(uf.getMeasurementSystem(), "metric");
-        test.done();
-    },
-
     testUnitFormatWithScale1: function(test) {
         test.expect(1);
         var m = MeasurementFactory({
@@ -2485,7 +2286,10 @@ module.exports.testunitfmt = {
             amount: 1000
         });
 
-        var uf = new UnitFmt({autoScale:false,locale: "zh-Hant-TW"});
+        var uf = new UnitFmt({
+            autoScale:false,
+            locale: "zh-Hant-TW"
+        });
         var str = uf.format(m1);
         test.equal(str, "1,000 公分");
         test.done();
@@ -2498,7 +2302,11 @@ module.exports.testunitfmt = {
             amount: 1000
         });
 
-        var uf = new UnitFmt({autoScale:false,locale: "zh-Hant-US"});
+        var uf = new UnitFmt({
+            autoScale: false,
+            autoConvert: false,
+            locale: "zh-Hant-US"
+        });
         var str = uf.format(m1);
         test.equal(str, "1,000 公分");
         test.done();
@@ -2742,7 +2550,11 @@ module.exports.testunitfmt = {
             amount: 100
         });
 
-        var uf = new UnitFmt({autoScale:false,locale: "zh-Hant-US"});
+        var uf = new UnitFmt({
+            autoScale: false,
+            autoConvert: false,
+            locale: "zh-Hant-US"
+        });
         var str = uf.format(m1);
         test.equal(str, "100 公頃");
         test.done();
@@ -2914,7 +2726,7 @@ module.exports.testunitfmt = {
         test.expect(1);
         var m1 = MeasurementFactory({
             unit: "feet",
-            amount: 6.15
+            amount: 6.166666666666666666
         });
 
         var uf = new UnitFmt({
@@ -2947,8 +2759,8 @@ module.exports.testunitfmt = {
     testUnitFormatWithUsageAdultHeightUSConvertFromMetric: function(test) {
         test.expect(1);
         var m1 = MeasurementFactory({
-            unit: "m",
-            amount: 1.865
+            unit: "cm",
+            amount: 187.96
         });
 
         var uf = new UnitFmt({
@@ -2965,7 +2777,7 @@ module.exports.testunitfmt = {
         test.expect(1);
         var m1 = MeasurementFactory({
             unit: "m",
-            amount: 1.865
+            amount: 1.87
         });
 
         var uf = new UnitFmt({
@@ -2974,15 +2786,15 @@ module.exports.testunitfmt = {
             locale: "de-DE"
         });
         var str = uf.format(m1);
-        test.equal(str, "1 m 86 cm");
+        test.equal(str, "1 m, 87 cm");
         test.done();
     },
 
-    testUnitFormatWithUsageAdultHeightDE: function(test) {
+    testUnitFormatWithUsageAdultHeightDENumeric: function(test) {
         test.expect(1);
         var m1 = MeasurementFactory({
             unit: "m",
-            amount: 1.865
+            amount: 1.87
         });
 
         var uf = new UnitFmt({

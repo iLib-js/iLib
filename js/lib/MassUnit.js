@@ -130,7 +130,7 @@ MassUnit.uScustomaryToImperial = {
     "stone": "stone",
     "ton": "short-ton"
 };
-MassUnit.uScustomarylToMetric = {
+MassUnit.uScustomaryToMetric = {
     "ounce": "gram",
     "pound": "kilogram",
     "stone": "kilogram",
@@ -148,21 +148,22 @@ MassUnit.uScustomarylToMetric = {
  * @returns {Measurement} a new instance that is converted to locale
  */
 MassUnit.prototype.localize = function(locale) {
-	var to;
-	if (locale === "en-US") {
-		to = MassUnit.metricToUScustomary[this.unit] ||
-		    MassUnit.imperialToUScustomary[this.unit] || this.unit;
-	} else if (locale === "en-GB") {
-		to = MassUnit.metricToImperial[this.unit] ||
-		    MassUnit.uScustomaryToImperial[this.unit] || this.unit;
-	} else {
-		to = MassUnit.uScustomarylToMetric[this.unit] ||
-		    MassUnit.imperialToUScustomary[this.unit] || this.unit;
-	}
-	return new MassUnit({
-	    unit: to,
-	    amount: this
-	});
+    var to;
+    var system = Measurement.getMeasurementSystemForLocale(locale);
+    if (system === "uscustomary") {
+        to = MassUnit.metricToUScustomary[this.unit] ||
+        MassUnit.imperialToUScustomary[this.unit] || this.unit;
+    } else if (system === "imperial") {
+        to = MassUnit.metricToImperial[this.unit] ||
+        MassUnit.uScustomaryToImperial[this.unit] || this.unit;
+    } else {
+        to = MassUnit.uScustomaryToMetric[this.unit] ||
+        MassUnit.imperialToUScustomary[this.unit] || this.unit;
+    }
+    return new MassUnit({
+        unit: to,
+        amount: this
+    });
 };
 
 /**

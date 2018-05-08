@@ -19,6 +19,7 @@
 
 var JSUtils = require("./JSUtils.js");
 var MathUtils = require("./MathUtils.js");
+var Locale = require("./Locale.js");
 
 function round(number, precision) {
     var factor = Math.pow(10, precision);
@@ -297,6 +298,36 @@ Measurement.getUnitIdCaseInsensitive = function(measurement, unit) {
     }
 
     return undefined;
+};
+
+// Hard-code these because CLDR has incorrect data, plus this is small so we don't 
+// want to do an async load just to get it.
+// Source: https://en.wikipedia.org/wiki/Metrication#Overview
+var systems = {
+  "uscustomary": ["US", "FM", "MH", "LR", "PR", "PW", "GU", "WS", "AS", "VI", "MP"],
+  "imperial": ["GB", "MM"]
+};
+// every other country in the world is metric. Myanmar (MM) is adopting metric by 2019 
+// supposedly, and Liberia is as well
+
+/**
+* Return the name of the measurement system in use in the given locale.
+* 
+* @param {string|Locale} locale the locale spec or Locale instance of the
+* 
+* @returns {string} the name of the measurement system
+*/
+Measurement.getMeasurementSystemForLocale = function(locale) {
+  var l = typeof(locale) === "object" ? locale : new Locale(locale);
+  var region = l.getRegion();
+
+  if (JSUtils.indexOf(systems.uscustomary, region) > -1) {
+      return "uscustomary";
+  } else if (JSUtils.indexOf(systems.imperial, region) > -1) {
+      return "imperial";
+  }
+  
+  return "metric";
 };
 
 module.exports = Measurement;

@@ -364,6 +364,7 @@
     "usages": {
         "floorSpace": {
             "description": "area of the floor of a house or building",
+            "type": "area",
             "units": {
                 "metric": ["square-meter"],
                 "uscustomary": ["square-foot"],
@@ -373,6 +374,7 @@
         },
         "landArea": {
             "description": "area of a piece of plot of land",
+            "type": "area",
             "units": {
                 "metric": ["square-meter", "hectare"],
                 "uscustomary": ["square-foot", "acre", "square-mile"],
@@ -382,19 +384,23 @@
         },
         "networkingSpeed": {
             "description": "speed of transfer of data over a network",
+            "type": "digitalSpeed",
             "system": "bitSystem",
             "maxFractionDigits": 2
         },
         "audioSpeed": {
             "description": "speed of transfer of audio data",
+            "type": "digitalSpeed",
             "system": "bitSystem"
         },
         "interfaceSpeed": {
             "description": "speed of transfer of data over a computer interface such as a USB or SATA bus",
+            "type": "digitalSpeed",
             "system": "byteSystem"
         },
         "foodEnergy": {
             "description": "amount of energy contains in food",
+            "type": "energy",
             "units": {
                 "metric": ["millijoule", "joule", "kilojoule", "megajoule", "gigajoule"],
                 "uscustomary": ["foodcalorie"],
@@ -403,10 +409,12 @@
         },
         "electricalEnergy": {
             "description": "amount of energy in electricity",
+            "type": "energy",
             "units": ["gigawatt-hour", "megawatt-hour", "kilowatt-hour", "watt-hour"]
         },
         "heatingEnergy": {
             "description": "amount of energy required to heat things such as water or home interiors",
+            "type": "energy",
             "units": {
                 "metric": ["millijoule", "joule", "kilojoule", "megajoule", "gigajoule"],
                 "uscustomary": ["BTU"],
@@ -415,6 +423,7 @@
         },
         "nauticalDistance": {
             "description": "distance traveled by a boat",
+            "type": "length",
             "units": {
                 "metric": ["meter", "kilometer"],
                 "uscustomary": ["foot", "yard", "nautical-mile"],
@@ -423,6 +432,7 @@
         },
         "babyHeight": {
             "description": "length of a baby",
+            "type": "length",
             "units": {
                 "metric": ["centimeter"],
                 "uscustomary": ["inch"],
@@ -431,6 +441,7 @@
         },
         "personHeight": {
             "description": "height of an adult or child (not a baby)",
+            "type": "length",
             "units": {
                 "metric": ["centimeter", "meter"],
                 "uscustomary": ["inch", "foot"],
@@ -441,6 +452,7 @@
         },
         "vehicleDistance": {
             "description": "distance traveled by a vehicle or aircraft (except a boat)",
+            "type": "length",
             "units": {
                 "metric": ["meter", "kilometer"],
                 "uscustomary": ["yard", "mile"],
@@ -449,6 +461,7 @@
         },
         "personWeight": {
             "description": "weight/mass of an adult human or larger child",
+            "type": "mass",
             "units": {
                 "metric": ["kilogram"],
                 "uscustomary": ["pound"],
@@ -459,6 +472,7 @@
         },
         "babyWeight": {
             "description": "weight/mass of a baby or of small animals such as cats and dogs",
+            "type": "mass",
             "units": {
                 "metric": ["gram", "kilogram"],
                 "uscustomary": ["ounce", "pound"],
@@ -468,6 +482,7 @@
         },
         "vehicleWeight": {
             "description": "weight/mass of a vehicle (including a boat)",
+            "type": "mass",
             "units": {
                 "metric": ["kilogram", "metric-ton"],
                 "uscustomary": ["pound", "ton"],
@@ -476,6 +491,7 @@
         },
         "drugWeight": {
             "description": "weight/mass of a medicinal drug",
+            "type": "mass",
             "units": {
                 "metric": ["microgram", "milligram", "gram"],
                 "uscustomary": ["ounce"],
@@ -483,6 +499,8 @@
             }
         },
         "vehicleSpeed": {
+            "description": "speed of travel of a vehicle, except boats",
+            "type": "velocity",
             "units": {
                 "metric": ["kilometer-per-hour"],
                 "uscustomary": ["mile-per-hour"],
@@ -491,6 +509,7 @@
         },
         "nauticalSpeed": {
             "description": "speed of travel of a boat",
+            "type": "velocity",
             "units": {
                 "metric": ["kilometer-per-hour"],
                 "uscustomary": ["knot"],
@@ -498,6 +517,8 @@
             }
         },
         "dryFoodVolume": {
+            "description": "volume of a dry food substance in a recipe such as flour",
+            "type": "volume",
             "units": {
                 "metric": ["milliliter", "liter"],
                 "uscustomary": ["teaspoon", "tablespoon", "cup", "gallon"],
@@ -507,6 +528,7 @@
         },
         "liquidFoodVolume": {
             "description": "volume of a liquid food substance in a recipe such as milk",
+            "type": "volume",
             "units": {
                 "metric": ["milliliter", "liter"],
                 "uscustomary": ["teaspoon", "tablespoon", "fluid-ounce", "cup", "pint", "quart", "gallon"],
@@ -516,6 +538,7 @@
         },
         "drinkVolume": {
             "description": "volume of a drink",
+            "type": "volume",
             "units": {
                 "metric": ["milliliter", "liter"],
                 "uscustomary": ["cup", "pint", "quart", "gallon"],
@@ -524,6 +547,7 @@
         },
         "fuelVolume": {
             "description": "volume of a vehicular fuel",
+            "type": "volume",
             "units": {
                 "metric": ["liter"],
                 "uscustomary": ["gallon"],
@@ -532,6 +556,7 @@
         },
         "engineVolume": {
             "description": "volume of an engine's combustion space",
+            "type": "volume",
             "units": {
                 "metric": ["cubic-centimeter"],
                 "uscustomary": ["cubic-inch"],
@@ -540,6 +565,7 @@
         },
         "storageVolume": {
             "description": "volume of a mass storage tank",
+            "type": "volume",
             "units": {
                 "metric": ["liter", "cubic-meter"],
                 "uscustomary": ["gallon", "cubic-foot"],
@@ -548,6 +574,7 @@
         },
         "gasVolume": {
             "description": "volume of a gas such as natural gas used in a home a home might use",
+            "type": "volume",
             "units": {
                 "metric": ["cubic-meter"],
                 "uscustomary": ["cubic-foot"],

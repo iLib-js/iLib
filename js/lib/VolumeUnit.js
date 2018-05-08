@@ -346,24 +346,25 @@ VolumeUnit.uScustomarylToMetric = {
  * @returns {Measurement} a new instance that is converted to locale
  */
 VolumeUnit.prototype.localize = function(locale) {
-	var to;
-	if (locale === "en-US") {
-		to = VolumeUnit.metricToUScustomary[this.unit] ||
-		    VolumeUnit.imperialToUScustomary[this.unit] ||
-		    this.unit;
-	} else if (locale === "en-GB") {
-		to = VolumeUnit.metricToImperial[this.unit] ||
-		    VolumeUnit.uScustomaryToImperial[this.unit] ||
-		    this.unit;
-	} else {
-		to = VolumeUnit.uScustomarylToMetric[this.unit] ||
-		    VolumeUnit.imperialToUScustomary[this.unit] ||
-		    this.unit;
-	}
-	return new VolumeUnit({
-	    unit: to,
-	    amount: this
-	});
+    var to;
+    var system = Measurement.getMeasurementSystemForLocale(locale);
+    if (system === "uscustomary") {
+        to = VolumeUnit.metricToUScustomary[this.unit] ||
+        VolumeUnit.imperialToUScustomary[this.unit] ||
+        this.unit;
+    } else if (system === "imperial") {
+        to = VolumeUnit.metricToImperial[this.unit] ||
+        VolumeUnit.uScustomaryToImperial[this.unit] ||
+        this.unit;
+    } else {
+        to = VolumeUnit.uScustomarylToMetric[this.unit] ||
+        VolumeUnit.imperialToUScustomary[this.unit] ||
+        this.unit;
+    }
+    return new VolumeUnit({
+        unit: to,
+        amount: this
+    });
 };
 
 /**

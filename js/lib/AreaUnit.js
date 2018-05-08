@@ -280,8 +280,8 @@ AreaUnit.prototype.scale = function(measurementsystem) {
     for (var m in mSystem) {
         var tmp = this.amount * fromRow[mSystem[m]];
         if (tmp >= 1 && tmp < area) {
-	        area = tmp;
-	        munit = m;
+            area = tmp;
+            munit = m;
         }
     }
 
@@ -336,7 +336,8 @@ AreaUnit.prototype.expand = function(measurementsystem) {
  */
 AreaUnit.prototype.localize = function(locale) {
     var to;
-    if (locale === "en-US" || locale === "en-GB") {
+    var system = Measurement.getMeasurementSystemForLocale(locale);
+    if (system === "uscustomary" || system === "imperial") {
         to = AreaUnit.metricToUScustomary[this.unit] || this.unit;
     } else {
         to = AreaUnit.usCustomaryToMetric[this.unit] || this.unit;

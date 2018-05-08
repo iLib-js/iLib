@@ -196,17 +196,18 @@ FuelConsumptionUnit.uScustomarylToMetric = {
  */
 FuelConsumptionUnit.prototype.localize = function(locale) {
     var to;
-    if (locale === "en-US") {
+    var system = Measurement.getMeasurementSystemForLocale(locale);
+    if (system === "uscustomary") {
         to = FuelConsumptionUnit.metricToUScustomary[this.unit] ||
              FuelConsumptionUnit.imperialToUScustomary[this.unit] ||
              this.unit;
-    } else if (locale === "en-GB") {
+    } else if (system === "imperial") {
         to = FuelConsumptionUnit.metricToImperial[this.unit] ||
              FuelConsumptionUnit.uScustomaryToImperial[this.unit] ||
              this.unit;
     } else {
         to = FuelConsumptionUnit.uScustomarylToMetric[this.unit] ||
-             FuelConsumptionUnit.imperialToUScustomary[this.unit] ||
+             FuelConsumptionUnit.imperialToMetric[this.unit] ||
              this.unit;
     }
     return new FuelConsumptionUnit({

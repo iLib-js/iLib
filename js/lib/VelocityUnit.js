@@ -238,14 +238,15 @@ VelocityUnit.prototype.expand = function(measurementsystem) {
  */
 VelocityUnit.prototype.localize = function(locale) {
     var to;
-    if (locale === "en-US" || locale === "en-GB") {
+    var system = Measurement.getMeasurementSystemForLocale(locale);
+    if (system === "uscustomary" || system === "imperial") {
         to = VelocityUnit.metricToUScustomary[this.unit] || this.unit;
     } else {
         to = VelocityUnit.UScustomaryTometric[this.unit] || this.unit;
     }
     return new VelocityUnit({
-		unit: to,
-		amount: this
+        unit: to,
+        amount: this
     });
 };
 

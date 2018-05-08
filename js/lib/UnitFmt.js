@@ -79,19 +79,27 @@ var lenMap = {
  * being formatted. Default for the autoConvert property is "true", so it only needs to
  * be specified when you want to turn off autoconversion.
  *
- * <li><i>usage</i> - describe the reason for the measure. When auto converting and auto
- * scaling the
- * units, this setting will affect which units will be selected for display and how
- * they will be displayed. For example, a
- * person's weight is typically given as stone and pounds in England, but never in the
- * US where it is pounds only. If the usage is set to "personalWeight", the appropriate
- * measures will be selected for the locale, even if a larger or smaller unit would be
- * better for pure auto-scaling. Setting the usage can implicitly set the style, the
- * max- and minFractionDigits, roundingMode, length, etc.<p>
+ * <li><i>usage</i> - describe the reason for the measure. For example, the usage of
+ * a formatter may be for a "person height", which implies that certain customary units
+ * should be used, even though other measures in the same system may be more efficient. 
+ * In US Customary measures, a person's height is traditionally given in feet and inches, 
+ * even though yards, feet and inches would be more efficient and logical.<p>
+ * 
+ * Specifying a usage implies that the
+ * autoScale is turned on so that the measure can be scaled to the level required for
+ * the customary measures for the usage. Setting the usage can also implicitly set 
+ * the style, the max- and minFractionDigits, roundingMode, length, etc. if those 
+ * options are not explicitly given in this options object. If they are given, the
+ * explicit settings override the defaults of the usage.<p>
+ * 
+ * Usages imply that the formatter should be used with a specific type of measurement. 
+ * If the format method is called on a measurement that is of the wrong type for the
+ * usage, it will be formatted as a regular measurement with default options.<p>
  *
  * List of usages currently supported:
  *   <ul>
- *   <li><i>general</i> no specific usage with no preselected measures. (Default)
+ *   <li><i>general</i> no specific usage with no preselected measures. (Default which does not
+ *   restrict the units used for any type of measurement.)
  *   <li><i>floorSpace</i> area of the floor of a house or building
  *   <li><i>landArea</i> area of a piece of plot of land
  *   <li><i>networkingSpeed</i> speed of transfer of data over a network
@@ -337,13 +345,6 @@ var UnitFmt = function(options) {
     });
 };
 
-//hard-code these because CLDR has incorrect data
-//See https://en.wikipedia.org/wiki/Metrication#Overview
-var systems = {
-    "uscustomary": ["US", "FM", "MH", "LR", "PR", "PW", "GU", "WS", "AS", "VI", "MP"],
-    "imperial": ["GB", "MM"]
-};
-
 UnitFmt.prototype = {
     /**
      * Return the locale used with this formatter instance.
@@ -390,15 +391,6 @@ UnitFmt.prototype = {
      */
     getMeasurementSystem: function() {
         if (!this.measurementSystem) {
-            // not explicitly given? Then glean from the locale instead.
-            var region = this.locale.getRegion();
-            if (JSUtils.indexOf(systems.uscustomary, region) > -1) {
-                this.measurementSystem = "uscustomary";
-            } else if (JSUtils.indexOf(systems.imperial, region) > -1) {
-                this.measurementSystem = "imperial";
-            } else {
-                this.measurementSystem = "metric";
-            }
         }
         return this.measurementSystem;
     },
@@ -422,10 +414,17 @@ UnitFmt.prototype = {
      * @return {string} the formatted version of the given date instance
      */
     format: function (measurement) {
-        var u = this.convert ? measurement.localize(this.locale.getSpec()) : measurement;
-        u = this.scale ? u.scale(this.getMeasurementSystem() || this.units, this.style) : u;
+        var u, system = this.getMeasurementSystem();
+        u = this.convert ? measurement.localize(this.locale) : measurement;
+        if (this.usageInfo && measurement.getMeasure() === this.usageInfo.type) {
+            // specifying a usage implies auto scaling, but with a restricted set of units
+            u = u.scale(system, this.units);
+        } else {
+            u = this.scale ? u.scale() : u; // scale within the current system
+        }
+
         if (this.style === "list") {
-            u = u.expand(this.getMeasurementSystem() || this.units);
+            u = u.expand(undefined, this.units);
             var formatted = u.map(ilib.bind(this, function(unit) {
                 return this._format(unit);
             }));

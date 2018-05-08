@@ -259,17 +259,18 @@ EnergyUnit.imperialToMetric = {
  * @returns {Measurement} a new instance that is converted to locale
  */
 EnergyUnit.prototype.localize = function(locale) {
-	var to;
-	if (locale === "en-GB") {
-		to = EnergyUnit.metricToImperial[this.unit] || this.unit;
-	} else {
-		to = EnergyUnit.imperialToMetric[this.unit] || this.unit;
-	}
+    var to;
+    var system = Measurement.getMeasurementSystemForLocale(locale);
+    if (system === "uscustomary" || system === "imperial") {
+        to = EnergyUnit.metricToImperial[this.unit] || this.unit;
+    } else {
+        to = EnergyUnit.imperialToMetric[this.unit] || this.unit;
+    }
 
-	return new EnergyUnit({
-	    unit: to,
-	    amount: this
-	});
+    return new EnergyUnit({
+        unit: to,
+        amount: this
+    });
 };
 
 /**
