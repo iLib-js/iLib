@@ -21,8 +21,6 @@
 !depends
 ilib.js
 Locale.js
-ResBundle.js
-LocaleInfo.js
 IString.js
 NumFmt.js
 Utils.js
@@ -32,10 +30,9 @@ Utils.js
 
 var ilib = require("./ilib.js");
 var Utils = require("./Utils.js");
+var JSUtils = require("./JSUtils.js");
 
 var Locale = require("./Locale.js");
-var LocaleInfo = require("./LocaleInfo.js");
-var ResBundle = require("./ResBundle.js");
 var IString = require("./IString.js");
 var NumFmt = require("./NumFmt.js");
 var ListFmt = require("./ListFmt.js");
@@ -280,9 +277,9 @@ var UnitFmt = function(options) {
         callback: ilib.bind(this, function (format) {
             this.template = format["unitfmt"][this.length];
 
-            if (this.usage && format.usage) {
+            if (this.usage && format.usages) {
                 // if usage is not recognized, usageInfo will be undefined, which we will use to indicate unknown usage
-                this.usageInfo = format.usage[this.usage];
+                this.usageInfo = format.usages[this.usage];
                 if (this.usageInfo) {
                     // default settings for this usage, but don't override the options that were passed in
                     if (typeof(this.maxFractionDigits) !== 'number' && typeof(this.usageInfo.maxFractionDigits) === 'number') {
@@ -340,8 +337,14 @@ var UnitFmt = function(options) {
     });
 };
 
-UnitFmt.prototype = {
+//hard-code these because CLDR has incorrect data
+//See https://en.wikipedia.org/wiki/Metrication#Overview
+var systems = {
+    "uscustomary": ["US", "FM", "MH", "LR", "PR", "PW", "GU", "WS", "AS", "VI", "MP"],
+    "imperial": ["GB", "MM"]
+};
 
+UnitFmt.prototype = {
     /**
      * Return the locale used with this formatter instance.
      * @return {Locale} the Locale instance for this formatter
@@ -386,6 +389,17 @@ UnitFmt.prototype = {
      * @returns {string} the measurement system used in this formatter
      */
     getMeasurementSystem: function() {
+        if (!this.measurementSystem) {
+            // not explicitly given? Then glean from the locale instead.
+            var region = this.locale.getRegion();
+            if (JSUtils.indexOf(systems.uscustomary, region) > -1) {
+                this.measurementSystem = "uscustomary";
+            } else if (JSUtils.indexOf(systems.imperial, region) > -1) {
+                this.measurementSystem = "imperial";
+            } else {
+                this.measurementSystem = "metric";
+            }
+        }
         return this.measurementSystem;
     },
 
@@ -409,9 +423,9 @@ UnitFmt.prototype = {
      */
     format: function (measurement) {
         var u = this.convert ? measurement.localize(this.locale.getSpec()) : measurement;
-        u = this.scale ? u.scale(this.measurementSystem, this.style) : u;
+        u = this.scale ? u.scale(this.getMeasurementSystem() || this.units, this.style) : u;
         if (this.style === "list") {
-            u = u.expand(this.measurementSystem);
+            u = u.expand(this.getMeasurementSystem() || this.units);
             var formatted = u.map(ilib.bind(this, function(unit) {
                 return this._format(unit);
             }));

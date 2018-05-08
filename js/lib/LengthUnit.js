@@ -19,9 +19,11 @@
 
 /*
 !depends
+ilib.js
 Measurement.js
 */
 
+var ilib = require("./ilib.js");
 var Measurement = require("./Measurement.js");
 
 /**
@@ -203,20 +205,24 @@ LengthUnit.prototype.convert = function(to) {
  */
 LengthUnit.prototype.scale = function(measurementsystem) {
     var mSystem;
-    if (measurementsystem === "metric" || (typeof(measurementsystem) === 'undefined'
-            && typeof(LengthUnit.metricSystem[this.unit]) !== 'undefined')) {
-        mSystem = LengthUnit.metricSystem;
-    } else if (measurementsystem === "imperial" || (typeof(measurementsystem) === 'undefined'
-            && typeof(LengthUnit.imperialSystem[this.unit]) !== 'undefined')) {
-        mSystem = LengthUnit.imperialSystem;
-    } else if (measurementsystem === "uscustomary" || (typeof(measurementsystem) === 'undefined'
-            && typeof(LengthUnit.uscustomarySystem[this.unit]) !== 'undefined')) {
-        mSystem = LengthUnit.uscustomarySystem;
+    if (ilib.isArray(measurementsystem)) {
+        mSystem = measurementsystem;
     } else {
-        return new LengthUnit({
-			unit: this.unit,
-			amount: this.amount
-		});
+        if (measurementsystem === "metric" || (typeof(measurementsystem) === 'undefined'
+                && typeof(LengthUnit.metricSystem[this.unit]) !== 'undefined')) {
+            mSystem = Object.keys(LengthUnit.metricSystem);
+        } else if (measurementsystem === "imperial" || (typeof(measurementsystem) === 'undefined'
+                && typeof(LengthUnit.imperialSystem[this.unit]) !== 'undefined')) {
+            mSystem = Object.keys(LengthUnit.imperialSystem);
+        } else if (measurementsystem === "uscustomary" || (typeof(measurementsystem) === 'undefined'
+                && typeof(LengthUnit.uscustomarySystem[this.unit]) !== 'undefined')) {
+            mSystem = Object.keys(LengthUnit.uscustomarySystem);
+        } else {
+            return new LengthUnit({
+                unit: this.unit,
+                amount: this.amount
+            });
+        }
     }
 
     var length = this.amount;
@@ -224,17 +230,17 @@ LengthUnit.prototype.scale = function(measurementsystem) {
     var fromRow = LengthUnit.ratios[this.unit];
 
     length = 18446744073709551999;
-    for (var m in mSystem) {
-    	var tmp = this.amount * fromRow[mSystem[m]];
+    for (var m = 0; m < mSystem.length; m++) {
+        var tmp = this.amount * fromRow[LengthUnit.ratios[mSystem[m]][0]];
         if (tmp >= 1 && tmp < length) {
-	        length = tmp;
-	        munit = m;
+            length = tmp;
+            munit = mSystem[m];
         }
     }
 
     return new LengthUnit({
-		unit: munit,
-		amount: length
+        unit: munit,
+        amount: length
     });
 };
 
@@ -254,19 +260,22 @@ LengthUnit.prototype.scale = function(measurementsystem) {
  */
 LengthUnit.prototype.expand = function(measurementsystem) {
     var mSystem;
-    if (measurementsystem === "metric" || (typeof(measurementsystem) === 'undefined'
-            && typeof(LengthUnit.metricSystem[this.unit]) !== 'undefined')) {
-        mSystem = LengthUnit.metricSystem;
-    } else if (measurementsystem === "imperial" || (typeof(measurementsystem) === 'undefined'
-            && typeof(LengthUnit.imperialSystem[this.unit]) !== 'undefined')) {
-        mSystem = LengthUnit.imperialSystem;
-    } else if (measurementsystem === "uscustomary" || (typeof(measurementsystem) === 'undefined'
-            && typeof(LengthUnit.uscustomarySystem[this.unit]) !== 'undefined')) {
-        mSystem = LengthUnit.uscustomarySystem;
+    if (ilib.isArray(measurementsystem)) {
+        mSystem = measurementsystem;
     } else {
-        mSystem = LengthUnit.metricSystem;
+        if (measurementsystem === "metric" || (typeof(measurementsystem) === 'undefined'
+                && typeof(LengthUnit.metricSystem[this.unit]) !== 'undefined')) {
+            mSystem = LengthUnit.metricSystem;
+        } else if (measurementsystem === "imperial" || (typeof(measurementsystem) === 'undefined'
+                && typeof(LengthUnit.imperialSystem[this.unit]) !== 'undefined')) {
+            mSystem = LengthUnit.imperialSystem;
+        } else if (measurementsystem === "uscustomary" || (typeof(measurementsystem) === 'undefined'
+                && typeof(LengthUnit.uscustomarySystem[this.unit]) !== 'undefined')) {
+            mSystem = LengthUnit.uscustomarySystem;
+        } else {
+            mSystem = LengthUnit.metricSystem;
+        }
     }
-
     return this.list(Object.keys(mSystem), LengthUnit.ratios).map(function(item) {
         return new LengthUnit(item);
     });

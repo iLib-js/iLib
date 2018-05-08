@@ -1,7 +1,7 @@
 /*
  * genmeasurementsystem.js - ilib tool to generate the json data about day of the week
  *
- * Copyright © 2013, JEDLSoft
+ * Copyright © 2013, 2018 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,116 +20,74 @@
  * This code is intended to be run under node.js
  */
 var fs = require('fs');
-var util = require('util');
+var path = require('path');
 var unifile = require('./unifile.js');
 var common = require('./common.js');
-var UnicodeFile = unifile.UnicodeFile;
-var coelesce = common.coelesce;
 var mkdirs = common.makeDirs;
 
 function usage() {
-	util.print("Usage: genmeasurementsystem [-h] CLDR_dir [toDir]\n" +
-		"Generate the measuresys.jf files for measurement system.\n\n" +
-		"-h or --help\n" +
-		"  this help\n" +
-		"CLDR_dir\n" +
-		"  directory with CLDR represented in json format downloaded from the Unicode site\n" +
-		"toDir\n" +
-		"  directory to output the measuresys.jf json files. Default: current dir.\n");
-	process.exit(1);
+    console.log("Usage: genmeasurementsystem [-h] [toDir]\n" +
+        "Generate the units.jf files for measurement systems.\n\n" +
+        "-h or --help\n" +
+        "  this help\n" +
+        "toDir\n" +
+        "  directory to output the units.jf json files. Default: current dir.\n");
+    process.exit(1);
 }
 
-var cldrDir, languageDataFileName;
 var toDir = ".";
 
 process.argv.forEach(function (val, index, array) {
-	if (val === "-h" || val === "--help") {
-		usage();
-	}
+    if (val === "-h" || val === "--help") {
+        usage();
+    }
 });
 
-if (process.argv.length < 3) {
-	util.error('Error: not enough arguments');
-	usage();
+if (process.argv.length < 2) {
+    console.log('Error: not enough arguments');
+    usage();
 }
 
-cldrDir = process.argv[2];
-if (process.argv.length > 3) {
-	toDir = process.argv[3];
+if (process.argv.length > 2) {
+    toDir = process.argv[2];
 }
 
-util.print("genmeasurementsystem - generate the localeinfo measuresys.jf files.\n" +
-	"Copyright (c) 2013 JEDLSoft\n");
+console.log("genmeasurementsystem - generate the localeinfo units.jf files.\n" +
+"Copyright (c) 2013, 2018 JEDLSoft\n");
 
-util.print("CLDR dir: " + cldrDir + "\n");
-util.print("output dir: " + toDir + "\n");
+console.log("output dir: " + toDir + "\n");
 
-languageDataFileName = cldrDir + "/supplemental/supplementalData.json";
+if (!fs.existsSync(toDir)) {
+    console.log("Could not access target directory " + toDir);
+    usage();
+}
 
-fs.exists(languageDataFileName, function (exists) {
-	if (!exists) {
-		util.error("Could not access file " + languageDataFileName);
-		usage();
-	}
-});
-
-fs.exists(toDir, function (exists) {
-	if (!exists) {
-		util.error("Could not access target directory " + toDir);
-		usage();
-	}
-});
-
-var languageDataString = fs.readFileSync(languageDataFileName, "utf-8");
-var supplementalData = JSON.parse(languageDataString);
-
-var measurementData = supplementalData.measurementData;
-//util.print("measurementData data is "+ JSON.stringify(measurementData));
-
-var units = {
-	generated: true
+var metric = {
+    generated: true,
+    units: "metric"
 };
 
-for (var measure_system in measurementData) {
-	var filename;
-	//util.print("Measurement system is :"+measure_system+"\n");
-	//util.print("measurementData  is "+measurementData[measure_system]);
+// hard-code these because CLDR has incorrect data
+// See https://en.wikipedia.org/wiki/Metrication#Overview
+var systems = {
+    "uscustomary": ["US", "FM", "MH", "LR", "PR", "PW", "GU", "WS", "AS", "VI", "MP"],
+    "imperial": ["GB", "MM"]
+};
 
-	if (measure_system && measurementData[measure_system]) {
-		if (measure_system.length < 4) {
-			if (measure_system == 001) {
-				filename = toDir;
-			} else {
-				filename = toDir + '/' + 'und/' + measure_system;
-			}
+// root is metric
+fs.writeFileSync(path.join(toDir, "units.jf"), JSON.stringify(metric, true, 4), "utf-8");
 
-			if (!fs.existsSync(filename)) {
-				mkdirs(filename);
-			}
-			//console.log(measure_system + ':\t"Units": ' + JSON.stringify(measurementData[measure_system]));
-			
-			var measureUnits = ["metric", "uscustomary"];
-			for (var i = 0; i < 2; i++) {
-				if (measurementData[measure_system] === "US") {
-					console.log(measure_system + ':\t"Units are ": ' + measureUnits[1]);
-					units.units = measureUnits[1];
-					fs.writeFile(filename + "/units.jf", JSON.stringify(units, true, 4), function (err) {
-						if (err) {
-							console.log(err);
-							throw err;
-						}
-					});
-				} else {
-					units.units = measureUnits[0];
-					console.log(measure_system + ':\t"Units are ": ' + measureUnits[0]);
-					fs.writeFile(filename + "/units.jf", JSON.stringify(units, true, 4), function (err) {
-						if (err) {
-							console.log(err);
-							throw err;
-						}
-					});
-				}
-			}
-		}
-	}
+for (var system in systems) {
+    var content = {
+        generated: true,
+        units: system
+    };
+    systems[system].forEach(function(country) {
+        var dirname = path.join(toDir, "und", country);
+        var filename = path.join(dirname, "units.jf");
+        if (!fs.existsSync(dirname)) {
+            mkdirs(dirname);
+        }
+        fs.writeFileSync(filename, JSON.stringify(content, true, 4), "utf-8");
+    });
 }

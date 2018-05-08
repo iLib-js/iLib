@@ -436,6 +436,7 @@
                 "uscustomary": ["inch", "foot"],
                 "imperial": ["inch", "foot"]
             },
+            "maxFractionDigits": 2,
             "style": "list"
         },
         "vehicleDistance": {
