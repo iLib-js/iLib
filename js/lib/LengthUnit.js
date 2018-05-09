@@ -316,6 +316,7 @@ LengthUnit.aliases = {
 	"foot": "foot",
 	"inches": "inch",
 	"inch": "inch",
+	"in": "inch",
 	"meters": "meter",
 	"metre": "meter",
 	"metres": "meter",

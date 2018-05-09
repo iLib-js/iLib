@@ -390,8 +390,6 @@ UnitFmt.prototype = {
      * @returns {string} the measurement system used in this formatter
      */
     getMeasurementSystem: function() {
-        if (!this.measurementSystem) {
-        }
         return this.measurementSystem;
     },
 

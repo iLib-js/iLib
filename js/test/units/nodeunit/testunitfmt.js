@@ -2826,4 +2826,56 @@ module.exports.testunitfmt = {
         test.done();
     },
 
+    testUnitFormatWithUsageBabyLengthUSShort: function(test) {
+        test.expect(1);
+        var m1 = MeasurementFactory({
+            unit: "in",
+            amount: 14.2
+        });
+
+        var uf = new UnitFmt({
+            usage: "babyHeight",
+            length: "short",
+            style: "numeric"
+        });
+        var str = uf.format(m1);
+        test.equal(str, "14.2 in");
+        test.done();
+    },
+
+    testUnitFormatWithUsageBabyLengthUSLong: function(test) {
+        test.expect(1);
+        var m1 = MeasurementFactory({
+            unit: "in",
+            amount: 14.2
+        });
+
+        var uf = new UnitFmt({
+            usage: "babyHeight",
+            length: "long",
+            style: "numeric"
+        });
+        var str = uf.format(m1);
+        test.equal(str, "14.2 inches");
+        test.done();
+    },
+
+    testUnitFormatWithUsageBabyLengthDE: function(test) {
+        test.expect(1);
+        var m1 = MeasurementFactory({
+            unit: "m",
+            amount: 0.285
+        });
+
+        var uf = new UnitFmt({
+            usage: "babyHeight",
+            length: "short",
+            locale: "de-DE",
+            style: "numeric"
+        });
+        var str = uf.format(m1);
+        test.equal(str, "28,5 cm");
+        test.done();
+    },
+
 };

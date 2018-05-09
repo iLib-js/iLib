@@ -437,7 +437,8 @@
                 "metric": ["centimeter"],
                 "uscustomary": ["inch"],
                 "imperial": ["inch"]
-            }
+            },
+            "maxFractionDigits": 1
         },
         "personHeight": {
             "description": "height of an adult or child (not a baby)",
@@ -447,7 +448,7 @@
                 "uscustomary": ["inch", "foot"],
                 "imperial": ["inch", "foot"]
             },
-            "maxFractionDigits": 2,
+            "maxFractionDigits": 0,
             "style": "list"
         },
         "vehicleDistance": {
