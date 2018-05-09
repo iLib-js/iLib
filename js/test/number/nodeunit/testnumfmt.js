@@ -6708,5 +6708,103 @@ module.exports.testnumfmt = {
     
         test.equal(fmt.format(-123456.785), "-123.456,78");
         test.done();
-    }    
+    },
+
+    testNumFmtSignificantDigits: function(test) {
+        test.expect(2);
+        var fmt = new NumFmt({
+            significantDigits: 3
+        });
+
+        test.ok(fmt !== null);
+
+        test.equal(fmt.format(123456.785), "123,000");
+        test.done();
+    },
+
+    testNumFmtSignificantDigitsLessThanOne: function(test) {
+        test.expect(2);
+        var fmt = new NumFmt({
+            significantDigits: 3
+        });
+
+        test.ok(fmt !== null);
+
+        test.equal(fmt.format(0.012345), "0.0123");
+        test.done();
+    },
+
+    testNumFmtSignificantDigitsStradleDecimalPoint: function(test) {
+        test.expect(2);
+        var fmt = new NumFmt({
+            significantDigits: 4
+        });
+
+        test.ok(fmt !== null);
+
+        test.equal(fmt.format(12.341262), "12.34");
+        test.done();
+    },
+
+    testNumFmtSignificantDigitsRoundUp: function(test) {
+        test.expect(2);
+        var fmt = new NumFmt({
+            significantDigits: 4
+        });
+
+        test.ok(fmt !== null);
+
+        test.equal(fmt.format(123456.785), "123,500");
+        test.done();
+    },
+
+    testNumFmtSignificantDigitsIT: function(test) {
+        test.expect(2);
+        var fmt = new NumFmt({
+            locale: "it-IT",
+            significantDigits: 3
+        });
+
+        test.ok(fmt !== null);
+
+        test.equal(fmt.format(-123456.785), "-123.000");
+        test.done();
+    },
+
+    testNumFmtSignificantDigitsFR: function(test) {
+        test.expect(2);
+        var fmt = new NumFmt({
+            locale: "fr-FR",
+            maxFractionDigits: 7
+        });
+
+        test.ok(fmt !== null);
+
+        test.equal(fmt.format(-123456.785), "-123 456,8");
+        test.done();
+    },
+    
+    testNumFmtSignificantDigitsNone: function(test) {
+        test.expect(2);
+        var fmt = new NumFmt({
+            significantDigits: 3
+        });
+
+        test.ok(fmt !== null);
+
+        test.equal(fmt.format(0), "0");
+        test.done();
+    },
+
+    testNumFmtSignificantDigitsNotEnoughDigits: function(test) {
+        test.expect(2);
+        var fmt = new NumFmt({
+            significantDigits: 3
+        });
+
+        test.ok(fmt !== null);
+
+        test.equal(fmt.format(1200), "1,200");
+        test.done();
+    }
 };
