@@ -2559,7 +2559,7 @@ module.exports.testunitfmt = {
         test.equal(str, "100 公頃");
         test.done();
     },
-    
+
     testUnitFormatWithNumericStyleUS: function(test) {
         test.expect(1);
         var m1 = MeasurementFactory({
@@ -2577,7 +2577,7 @@ module.exports.testunitfmt = {
         test.equal(str, "6.2 feet");
         test.done();
     },
-    
+
     testUnitFormatWithListStyleUS: function(test) {
         test.expect(1);
         var m1 = MeasurementFactory({
@@ -2613,7 +2613,7 @@ module.exports.testunitfmt = {
         test.equal(str, "6.2 ft");
         test.done();
     },
-    
+
     testUnitFormatWithListStyleUSshort: function(test) {
         test.expect(1);
         var m1 = MeasurementFactory({
@@ -2667,7 +2667,7 @@ module.exports.testunitfmt = {
         test.equal(str, "1,865 Meter");
         test.done();
     },
-    
+
     testUnitFormatWithListStyleDE: function(test) {
         test.expect(1);
         var m1 = MeasurementFactory({
@@ -2703,7 +2703,7 @@ module.exports.testunitfmt = {
         test.equal(str, "1,865 m");
         test.done();
     },
-    
+
     testUnitFormatWithListStyleDEshort: function(test) {
         test.expect(1);
         var m1 = MeasurementFactory({
@@ -2721,7 +2721,7 @@ module.exports.testunitfmt = {
         test.equal(str, "1 m, 8 dm, 6 cm und 5 mm");
         test.done();
     },
-    
+
     testUnitFormatWithUsageAdultHeightUSRightMeasures: function(test) {
         test.expect(1);
         var m1 = MeasurementFactory({
@@ -2894,6 +2894,108 @@ module.exports.testunitfmt = {
         test.done();
     },
 
+    testUnitFormatWithUsageVehicleDistance: function(test) {
+        test.expect(1);
+        var m1 = MeasurementFactory({
+            unit: "mile",
+            amount: 10000
+        });
+
+        var uf = new UnitFmt({
+            usage: "vehicleDistance",
+            length: "long",
+            locale: "en-US"
+        });
+        var str = uf.format(m1);
+        test.equal(str, "10,000 miles");
+        test.done();
+    },
+
+    testUnitFormatWithUsageVehicleDistanceShort: function(test) {
+        test.expect(1);
+        var m1 = MeasurementFactory({
+            unit: "mile",
+            amount: 10000
+        });
+
+        var uf = new UnitFmt({
+            usage: "vehicleDistance",
+            length: "short",
+            locale: "en-US"
+        });
+        var str = uf.format(m1);
+        test.equal(str, "10,000 mi");
+        test.done();
+    },
+
+    testUnitFormatWithUsageVehicleDistanceScale: function(test) {
+        test.expect(1);
+        var m1 = MeasurementFactory({
+            unit: "feet",
+            amount: 10000
+        });
+
+        var uf = new UnitFmt({
+            usage: "vehicleDistance",
+            length: "long",
+            locale: "en-US"
+        });
+        var str = uf.format(m1);
+        test.equal(str, "1.89 miles");
+        test.done();
+    },
+
+    testUnitFormatWithUsageVehicleDistanceScaleMetric: function(test) {
+        test.expect(1);
+        var m1 = MeasurementFactory({
+            unit: "meter",
+            amount: 10000
+        });
+
+        var uf = new UnitFmt({
+            usage: "vehicleDistance",
+            length: "long",
+            locale: "en-CA"
+        });
+        var str = uf.format(m1);
+        test.equal(str, "10 kilometres");
+        test.done();
+    },
+
+    testUnitFormatWithUsageVehicleDistanceConvert: function(test) {
+        test.expect(1);
+        var m1 = MeasurementFactory({
+            unit: "km",
+            amount: 10
+        });
+
+        var uf = new UnitFmt({
+            usage: "vehicleDistance",
+            length: "long",
+            locale: "en-US"
+        });
+        var str = uf.format(m1);
+        test.equal(str, "6.21 miles");
+        test.done();
+    },
+
+    testUnitFormatWithUsageVehicleDistanceIT: function(test) {
+        test.expect(1);
+        var m1 = MeasurementFactory({
+            unit: "km",
+            amount: 10000
+        });
+
+        var uf = new UnitFmt({
+            usage: "vehicleDistance",
+            length: "long",
+            locale: "it-IT"
+        });
+        var str = uf.format(m1);
+        test.equal(str, "10.000 chilometri");
+        test.done();
+    },
+
     testUnitFormatWithUsageFloorSpaceConvert: function(test) {
         test.expect(1);
         var m1 = MeasurementFactory({
@@ -3041,7 +3143,7 @@ module.exports.testunitfmt = {
         test.done();
     },
 
-    testUnitFormatWithUsageLandAreaFRShort: function(test) {
+    testUnitFormatWithUsageLandAreaJPShort: function(test) {
         test.expect(1);
         var m1 = MeasurementFactory({
             unit: "square meter",
@@ -3056,5 +3158,202 @@ module.exports.testunitfmt = {
         var str = uf.format(m1);
         test.equal(str, "5 ha");
         test.done();
-    }
+    },
+
+    testUnitFormatWithUsageElectricalEnergy: function(test) {
+        test.expect(1);
+        var m1 = MeasurementFactory({
+            unit: "kWh",
+            amount: 5
+        });
+
+        var uf = new UnitFmt({
+            usage: "electricalEnergy",
+            length: "long"
+        });
+        var str = uf.format(m1);
+        test.equal(str, "5 kilowatt hours");
+        test.done();
+    },
+
+    testUnitFormatWithUsageElectricalEnergyShort: function(test) {
+        test.expect(1);
+        var m1 = MeasurementFactory({
+            unit: "kWh",
+            amount: 5
+        });
+
+        var uf = new UnitFmt({
+            usage: "electricalEnergy",
+            length: "short"
+        });
+        var str = uf.format(m1);
+        test.equal(str, "5 kWh");
+        test.done();
+    },
+
+    testUnitFormatWithUsageElectricalEnergyScale: function(test) {
+        test.expect(1);
+        var m1 = MeasurementFactory({
+            unit: "Wh",
+            amount: 5000
+        });
+
+        var uf = new UnitFmt({
+            usage: "electricalEnergy",
+            length: "short"
+        });
+        var str = uf.format(m1);
+        test.equal(str, "5 kWh");
+        test.done();
+    },
+
+    testUnitFormatWithUsageElectricalEnergyConvert: function(test) {
+        test.expect(1);
+        var m1 = MeasurementFactory({
+            unit: "kJ",
+            amount: 4.320
+        });
+
+        var uf = new UnitFmt({
+            usage: "electricalEnergy",
+            length: "short"
+        });
+        var str = uf.format(m1);
+        test.equal(str, "1.2 kWh");
+        test.done();
+    },
+
+    testUnitFormatWithUsageElectricalEnergyConvert2: function(test) {
+        test.expect(1);
+        var m1 = MeasurementFactory({
+            unit: "btu",
+            amount: 4094.57
+        });
+
+        var uf = new UnitFmt({
+            usage: "electricalEnergy",
+            length: "short"
+        });
+        var str = uf.format(m1);
+        test.equal(str, "1.2 kWh");
+        test.done();
+    },
+
+    testUnitFormatWithUsageElectricalEnergyCN: function(test) {
+        test.expect(1);
+        var m1 = MeasurementFactory({
+            unit: "kWh",
+            amount: 5.4
+        });
+
+        var uf = new UnitFmt({
+            usage: "electricalEnergy",
+            length: "long",
+            locale: "zh-Hans-CN"
+        });
+        var str = uf.format(m1);
+        test.equal(str, "5.4千瓦时");
+        test.done();
+    },
+
+    testUnitFormatWithUsageHeatingEnergy: function(test) {
+        test.expect(1);
+        var m1 = MeasurementFactory({
+            unit: "BTU",
+            amount: 5000
+        });
+
+        var uf = new UnitFmt({
+            usage: "heatingEnergy",
+            length: "long"
+        });
+        var str = uf.format(m1);
+        test.equal(str, "5,000 BTU");
+        test.done();
+    },
+
+    testUnitFormatWithUsageHeatingEnergyConvert: function(test) {
+        test.expect(1);
+        var m1 = MeasurementFactory({
+            unit: "kWh",
+            amount: 5
+        });
+
+        var uf = new UnitFmt({
+            usage: "heatingEnergy",
+            length: "long"
+        });
+        var str = uf.format(m1);
+        test.equal(str, "17,060.7 BTU");
+        test.done();
+    },
+
+    testUnitFormatWithUsageHeatingEnergyShort: function(test) {
+        test.expect(1);
+        var m1 = MeasurementFactory({
+            unit: "BTU",
+            amount: 5000
+        });
+
+        var uf = new UnitFmt({
+            usage: "heatingEnergy",
+            length: "short"
+        });
+        var str = uf.format(m1);
+        test.equal(str, "5,000 BTU");
+        test.done();
+    },
+
+    testUnitFormatWithUsageHeatingEnergyScale: function(test) {
+        test.expect(1);
+        var m1 = MeasurementFactory({
+            unit: "mJ",
+            amount: 50000000
+        });
+
+        var uf = new UnitFmt({
+            usage: "heatingEnergy",
+            length: "short",
+            measurementSystem: "metric"
+        });
+        var str = uf.format(m1);
+        test.equal(str, "50 kJ");
+        test.done();
+    },
+
+    testUnitFormatWithUsageHeatingEnergyConvert2: function(test) {
+        test.expect(1);
+        var m1 = MeasurementFactory({
+            unit: "btu",
+            amount: 4094.57
+        });
+
+        var uf = new UnitFmt({
+            usage: "heatingEnergy",
+            length: "short",
+            measurementSystem: "metric"
+        });
+        var str = uf.format(m1);
+        test.equal(str, "4,320 kJ");
+        test.done();
+    },
+
+    testUnitFormatWithUsageHeatingEnergyAR: function(test) {
+        test.expect(1);
+        var m1 = MeasurementFactory({
+            unit: "kJ",
+            amount: 5
+        });
+
+        var uf = new UnitFmt({
+            usage: "heatingEnergy",
+            length: "long",
+            locale: "ar-SA"
+        });
+        var str = uf.format(m1);
+        test.equal(str, '۵ كيلو جول');
+        test.done();
+    },
+
 };
