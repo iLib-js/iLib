@@ -2878,4 +2878,183 @@ module.exports.testunitfmt = {
         test.done();
     },
 
+    testUnitFormatWithUsageFloorSpace: function(test) {
+        test.expect(1);
+        var m1 = MeasurementFactory({
+            unit: "square feet",
+            amount: 200
+        });
+
+        var uf = new UnitFmt({
+            usage: "floorSpace",
+            length: "short"
+        });
+        var str = uf.format(m1);
+        test.equal(str, "200 square feet");
+        test.done();
+    },
+
+    testUnitFormatWithUsageFloorSpaceConvert: function(test) {
+        test.expect(1);
+        var m1 = MeasurementFactory({
+            unit: "square meters",
+            amount: 10
+        });
+
+        var uf = new UnitFmt({
+            usage: "floorSpace",
+            length: "short"
+        });
+        var str = uf.format(m1);
+        test.equal(str, "107.64 square feet");
+        test.done();
+    },
+
+    testUnitFormatWithUsageFloorSpaceScale: function(test) {
+        test.expect(1);
+        var m1 = MeasurementFactory({
+            unit: "square inches",
+            amount: 20000
+        });
+
+        var uf = new UnitFmt({
+            usage: "floorSpace",
+            length: "short"
+        });
+        var str = uf.format(m1);
+        test.equal(str, "138.89 square feet");
+        test.done();
+    },
+
+    testUnitFormatWithUsageFloorSpaceDEShort: function(test) {
+        test.expect(1);
+        var m1 = MeasurementFactory({
+            unit: "m2",
+            amount: 10.2
+        });
+
+        var uf = new UnitFmt({
+            usage: "floorSpace",
+            length: "short",
+            locale: "de-DE"
+        });
+        var str = uf.format(m1);
+        test.equal(str, "10,2 m²");
+        test.done();
+    },
+
+    testUnitFormatWithUsageFloorSpaceDELong: function(test) {
+        test.expect(1);
+        var m1 = MeasurementFactory({
+            unit: "m2",
+            amount: 10.2
+        });
+
+        var uf = new UnitFmt({
+            usage: "floorSpace",
+            length: "long",
+            locale: "de-DE"
+        });
+        var str = uf.format(m1);
+        test.equal(str, "10,2 Quadratmeter");
+        test.done();
+    },
+
+    testUnitFormatWithUsageLandArea: function(test) {
+        test.expect(1);
+        var m1 = MeasurementFactory({
+            unit: "acres",
+            amount: 2.3
+        });
+
+        var uf = new UnitFmt({
+            usage: "landArea",
+            length: "long"
+        });
+        var str = uf.format(m1);
+        test.equal(str, "2.3 acres");
+        test.done();
+    },
+
+    testUnitFormatWithUsageLandAreaShort: function(test) {
+        test.expect(1);
+        var m1 = MeasurementFactory({
+            unit: "acres",
+            amount: 2.3
+        });
+
+        var uf = new UnitFmt({
+            usage: "landArea",
+            length: "short"
+        });
+        var str = uf.format(m1);
+        test.equal(str, "2.3 ac");
+        test.done();
+    },
+
+    testUnitFormatWithUsageLandAreaConvert: function(test) {
+        test.expect(1);
+        var m1 = MeasurementFactory({
+            unit: "m2",
+            amount: 5000
+        });
+
+        var uf = new UnitFmt({
+            usage: "landArea",
+            length: "long"
+        });
+        var str = uf.format(m1);
+        test.equal(str, "1.24 acres");
+        test.done();
+    },
+
+    testUnitFormatWithUsageLandAreaScale: function(test) {
+        test.expect(1);
+        var m1 = MeasurementFactory({
+            unit: "square feet",
+            amount: 80000
+        });
+
+        var uf = new UnitFmt({
+            usage: "landArea",
+            length: "long"
+        });
+        var str = uf.format(m1);
+        test.equal(str, "1.84 acres");
+        test.done();
+    },
+
+    testUnitFormatWithUsageLandAreaJP: function(test) {
+        test.expect(1);
+        var m1 = MeasurementFactory({
+            unit: "square meter",
+            amount: 5000
+        });
+
+        var uf = new UnitFmt({
+            usage: "landArea",
+            length: "long",
+            locale: "ja-JP"
+        });
+        var str = uf.format(m1);
+        test.equal(str, "5 ヘクタール");
+        test.done();
+    },
+
+    testUnitFormatWithUsageLandAreaFRShort: function(test) {
+        test.expect(1);
+        var m1 = MeasurementFactory({
+            unit: "square meter",
+            amount: 5000
+        });
+
+        var uf = new UnitFmt({
+            usage: "landArea",
+            length: "short",
+            locale: "ja-JP"
+        });
+        var str = uf.format(m1);
+        test.equal(str, "5 ha");
+        test.done();
+    }
 };
