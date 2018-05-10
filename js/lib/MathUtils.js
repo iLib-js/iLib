@@ -193,7 +193,7 @@ MathUtils.shiftDecimal = function shift(number, precision) {
 MathUtils.significant = function(number, digits, round) {
     if (digits < 1 || number === 0) return number;
     var rnd = round || Math.round;
-    var factor = -Math.floor(Math.log10(number)) + digits - 1;
+    var factor = -Math.floor(Math.log10(Math.abs(number))) + digits - 1;
     return MathUtils.shiftDecimal(rnd(MathUtils.shiftDecimal(number, factor)), -factor);
 };
 

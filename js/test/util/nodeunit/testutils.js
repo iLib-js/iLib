@@ -434,9 +434,15 @@ module.exports.testutils = {
         test.done();
     },
 
-    testSignificantNegative: function(test) {
+    testSignificantNegativeDigits: function(test) {
         test.expect(1);
         test.equal(MathUtils.significant(12345, -234), 12345);
+        test.done();
+    },
+
+    testSignificantNegativeNumber: function(test) {
+        test.expect(1);
+        test.equal(MathUtils.significant(-12345, 4), -12340);
         test.done();
     },
 

@@ -1,7 +1,7 @@
 /*
  * NumFmt.js - Number formatter definition
  *
- * Copyright © 2012-2015, JEDLSoft
+ * Copyright © 2012-2015, 2018 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -475,8 +475,17 @@ NumFmt.prototype = {
 		var i;
 		var k;
 
-        if (typeof(this.significantDigits) !== 'undefined' && this.significantDigits > 0) {
-            num = MathUtils.significant(num, this.significantDigits);
+		var parts = ("" + num).split("."),
+			integral = parts[0],
+			fraction,
+			cycle, 
+			formatted;
+
+		// only apply the either significantDigits or the maxFractionDigits -- whichever results in a shorter fractional part
+        if ((typeof(this.significantDigits) !== 'undefined' && this.significantDigits > 0) &&
+        		(typeof(this.maxFractionDigits) === 'undefined' || this.maxFractionDigits < 0 ||
+            	parts[0].length + this.maxFractionDigits > this.significantDigits)) {
+        	num = MathUtils.significant(num, this.significantDigits, this.round);
         }
         
         if (typeof(this.maxFractionDigits) !== 'undefined' && this.maxFractionDigits > -1) {
@@ -485,13 +494,9 @@ NumFmt.prototype = {
 
 		num = Math.abs(num);
 
-		var parts = ("" + num).split("."),
-			integral = parts[0],
-			fraction = parts[1],
-			cycle,
-			formatted;
-
-		integral = integral.toString();
+		parts = ("" + num).split(".");
+		integral = parts[0].toString();
+		fraction = parts[1];
 
 		if (this.minFractionDigits > 0) {
 			fraction = JSUtils.pad(fraction || "", this.minFractionDigits, true);
