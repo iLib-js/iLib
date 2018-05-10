@@ -464,6 +464,12 @@ module.exports.testutils = {
         test.done();
     },
 
+    testSignificantZero: function(test) {
+        test.expect(1);
+        test.equal(MathUtils.significant(0, 2), 0);
+        test.done();
+    },
+
     testMergeSimple: function(test) {
         test.expect(1);
         var object1 = {"a": "A", "b": "B"},

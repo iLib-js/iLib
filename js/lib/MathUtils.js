@@ -159,6 +159,23 @@ MathUtils.amod = function (dividend, modulus) {
 };
 
 /**
+ * Return the number with the decimal shifted by the given precision.
+ * Positive precisions shift the decimal to the right giving larger
+ * numbers, and negative ones shift the decimal to the left giving
+ * smaller numbers.
+ * 
+ * @static
+ * @param {number} number the number to shift
+ * @param {number} precision the number of places to move the decimal point
+ * @returns {number} the number with the decimal point shifted by the
+ * given number of decimals
+ */
+MathUtils.shiftDecimal = function shift(number, precision) {
+    var numArray = ("" + number).split("e");
+    return +(numArray[0] + "e" + (numArray[1] ? (+numArray[1] + precision) : precision));
+};
+
+/**
  * Return the given number with only the given number of significant digits.
  * The number of significant digits can start with the digits greater than
  * 1 and straddle the decimal point, or it may start after the decimal point.
@@ -169,17 +186,15 @@ MathUtils.amod = function (dividend, modulus) {
  * @param {number} number the number to return with only significant digits
  * @param {number} digits the number of significant digits to include in the
  * returned number
+ * @param {Function(number)=} round a rounding function to use
  * @returns {number} the given number with only the requested number of
  * significant digits
  */
-MathUtils.significant = function(number, digits) {
-    if (digits < 1) return number;
-    function shift(number, precision) {
-        var numArray = ("" + number).split("e");
-        return +(numArray[0] + "e" + (numArray[1] ? (+numArray[1] + precision) : precision));
-    };
+MathUtils.significant = function(number, digits, round) {
+    if (digits < 1 || number === 0) return number;
+    var rnd = round || Math.round;
     var factor = -Math.floor(Math.log10(number)) + digits - 1;
-    return shift(Math.round(shift(number, factor)), -factor);
+    return MathUtils.shiftDecimal(rnd(MathUtils.shiftDecimal(number, factor)), -factor);
 };
 
 module.exports = MathUtils;

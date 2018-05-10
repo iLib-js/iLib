@@ -1,7 +1,7 @@
 /*
  * testnumfmt.js - test the number formatter object
  *
- * Copyright © 2012-2017, JEDLSoft
+ * Copyright © 2012-2018 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -6710,6 +6710,32 @@ module.exports.testnumfmt = {
         test.done();
     },
 
+    testNumFmtGetSignificantDigits: function(test) {
+        test.expect(2);
+        var fmt = new NumFmt({
+            significantDigits: 3
+        });
+
+        test.ok(fmt !== null);
+
+        test.equal(fmt.getSignificantDigits(), 3);
+        test.done();
+    },
+
+    testNumFmtGetSignificantDigitsAsString: function(test) {
+        test.expect(2);
+        var fmt = new NumFmt({
+            significantDigits: "3"
+        });
+
+        test.ok(fmt !== null);
+
+        debugger;
+        
+        test.equal(fmt.getSignificantDigits(), 3);
+        test.done();
+    },
+
     testNumFmtSignificantDigits: function(test) {
         test.expect(2);
         var fmt = new NumFmt({
@@ -6758,6 +6784,32 @@ module.exports.testnumfmt = {
         test.done();
     },
 
+    testNumFmtSignificantDigitsConflictsWithMaxFractionDigits1: function(test) {
+        test.expect(2);
+        var fmt = new NumFmt({
+            significantDigits: 6,
+            maxFractionDigits: 4
+        });
+
+        test.ok(fmt !== null);
+
+        test.equal(fmt.format(156.785384), "156.785");
+        test.done();
+    },
+
+    testNumFmtSignificantDigitsConflictsWithMaxFractionDigits2: function(test) {
+        test.expect(2);
+        var fmt = new NumFmt({
+            significantDigits: 6,
+            maxFractionDigits: 2
+        });
+
+        test.ok(fmt !== null);
+
+        test.equal(fmt.format(156.785384), "156.79");
+        test.done();
+    },
+
     testNumFmtSignificantDigitsIT: function(test) {
         test.expect(2);
         var fmt = new NumFmt({
@@ -6775,7 +6827,7 @@ module.exports.testnumfmt = {
         test.expect(2);
         var fmt = new NumFmt({
             locale: "fr-FR",
-            maxFractionDigits: 7
+            significantDigits: 7
         });
 
         test.ok(fmt !== null);
@@ -6805,6 +6857,19 @@ module.exports.testnumfmt = {
         test.ok(fmt !== null);
 
         test.equal(fmt.format(1200), "1,200");
+        test.done();
+    },
+
+    testNumFmtSignificantDigitsScientificNotation: function(test) {
+        test.expect(2);
+        var fmt = new NumFmt({
+            significantDigits: 3,
+            style: "scientific"
+        });
+
+        test.ok(fmt !== null);
+
+        test.equal(fmt.format(12345678900), "1.23E+10");
         test.done();
     }
 };

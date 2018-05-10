@@ -184,14 +184,14 @@ var NumFmt = function (options) {
 			this.currency = options.currency;
 		}
 
-		if (typeof (options.maxFractionDigits) === 'number') {
+		if (typeof (options.maxFractionDigits) !== 'undefined') {
 			/**
 			 * @private
 			 * @type {number|undefined}
 			 */
 			this.maxFractionDigits = this._toPrimitive(options.maxFractionDigits);
 		}
-		if (typeof (options.minFractionDigits) === 'number') {
+		if (typeof (options.minFractionDigits) !== 'undefined') {
 			/**
 			 * @private
 			 * @type {number|undefined}
@@ -205,6 +205,20 @@ var NumFmt = function (options) {
 				this.minFractionDigits = 20;
 			}
 		}
+        if (typeof (options.significantDigits) !== 'undefined') {
+            /**
+             * @private
+             * @type {number|undefined}
+             */
+            this.significantDigits = this._toPrimitive(options.significantDigits);
+            // enforce the limits to avoid JS exceptions
+            if (this.significantDigits < 1) {
+                this.significantDigits = 1;
+            }
+            if (this.significantDigits > 20) {
+                this.significantDigits = 20;
+            }
+        }
 		if (options.style) {
 			/**
 			 * @private
@@ -422,14 +436,17 @@ NumFmt.prototype = {
 			integral,
 			fraction;
 
-		if (this.maxFractionDigits > 0) {
-			// if there is a max fraction digits setting, round the fraction to
-			// the right length first by dividing or multiplying by powers of 10.
-			// manipulate the fraction digits so as to
-			// avoid the rounding errors of floating point numbers
-			factor = Math.pow(10, this.maxFractionDigits);
-			significant = this.round(significant * factor) / factor;
-		}
+        if (this.maxFractionDigits > 0 || this.significantDigits > 0) {
+            // if there is a max fraction digits setting, round the fraction to
+            // the right length first by dividing or multiplying by powers of 10.
+            // manipulate the fraction digits so as to
+            // avoid the rounding errors of floating point numbers
+            var maxDigits = (this.maxFractionDigits || 25) + 1;
+            if (this.significantDigits > 0) {
+                maxDigits = Math.min(maxDigits, this.significantDigits);
+            }
+            significant = MathUtils.significant(significant, maxDigits, this.round);
+        }
 		numparts = ("" + significant).split(".");
 		integral = numparts[0];
 		fraction = numparts[1];
@@ -458,10 +475,13 @@ NumFmt.prototype = {
 		var i;
 		var k;
 
-		if (typeof(this.maxFractionDigits) !== 'undefined' && this.maxFractionDigits > -1) {
-			var factor = Math.pow(10, this.maxFractionDigits);
-			num = this.round(num * factor) / factor;
-		}
+        if (typeof(this.significantDigits) !== 'undefined' && this.significantDigits > 0) {
+            num = MathUtils.significant(num, this.significantDigits);
+        }
+        
+        if (typeof(this.maxFractionDigits) !== 'undefined' && this.maxFractionDigits > -1) {
+            num = MathUtils.shiftDecimal(this.round(MathUtils.shiftDecimal(num, this.maxFractionDigits)), -this.maxFractionDigits);
+        }
 
 		num = Math.abs(num);
 
@@ -513,10 +533,12 @@ NumFmt.prototype = {
 			formatted = integral;
 		}
 
-		if (fraction && (typeof(this.maxFractionDigits) === 'undefined' || this.maxFractionDigits > 0)) {
-			formatted += this.decimalSeparator;
-			formatted += fraction;
-		}
+        if (fraction && 
+            ((typeof(this.maxFractionDigits) === 'undefined' && typeof(this.significantDigits) === 'undefined') || 
+              this.maxFractionDigits > 0 || this.significantDigits > 0)) {
+            formatted += this.decimalSeparator;
+            formatted += fraction;
+        }
 
 		if (this.digits) {
 			formatted = JSUtils.mapString(formatted, this.digits);
@@ -613,6 +635,16 @@ NumFmt.prototype = {
 	getMinFractionDigits: function () {
 		return typeof (this.minFractionDigits) !== 'undefined' ? this.minFractionDigits : -1;
 	},
+
+   /**
+     * Returns the significant digits set up in the constructor.
+     *
+     * @return {number} the number of significant digits this
+     * formatter will format, or -1 for no minimum
+     */
+    getSignificantDigits: function () {
+        return typeof (this.significantDigits) !== 'undefined' ? this.significantDigits : -1;
+    },
 
 	/**
 	 * Returns the ISO 4217 code for the currency that this formatter formats.
