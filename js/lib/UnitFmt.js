@@ -81,18 +81,18 @@ var lenMap = {
  *
  * <li><i>usage</i> - describe the reason for the measure. For example, the usage of
  * a formatter may be for a "person height", which implies that certain customary units
- * should be used, even though other measures in the same system may be more efficient. 
- * In US Customary measures, a person's height is traditionally given in feet and inches, 
+ * should be used, even though other measures in the same system may be more efficient.
+ * In US Customary measures, a person's height is traditionally given in feet and inches,
  * even though yards, feet and inches would be more efficient and logical.<p>
- * 
+ *
  * Specifying a usage implies that the
  * autoScale is turned on so that the measure can be scaled to the level required for
- * the customary measures for the usage. Setting the usage can also implicitly set 
- * the style, the max- and minFractionDigits, roundingMode, length, etc. if those 
+ * the customary measures for the usage. Setting the usage can also implicitly set
+ * the style, the max- and minFractionDigits, roundingMode, length, etc. if those
  * options are not explicitly given in this options object. If they are given, the
  * explicit settings override the defaults of the usage.<p>
- * 
- * Usages imply that the formatter should be used with a specific type of measurement. 
+ *
+ * Usages imply that the formatter should be used with a specific type of measurement.
  * If the format method is called on a measurement that is of the wrong type for the
  * usage, it will be formatted as a regular measurement with default options.<p>
  *
@@ -108,10 +108,10 @@ var lenMap = {
  *   <li><i>foodEnergy</i> amount of energy contains in food
  *   <li><i>electricalEnergy</i> amount of energy in electricity
  *   <li><i>heatingEnergy</i> amount of energy required to heat things such as water or home interiors
- *   <li><i>nauticalDistance</i> distance traveled by a boat
  *   <li><i>babyHeight</i> length of a baby
  *   <li><i>personHeight</i> height of an adult or child (not a baby)
  *   <li><i>vehicleDistance</i> distance traveled by a vehicle or aircraft (except a boat)
+ *   <li><i>nauticalDistance</i> distance traveled by a boat
  *   <li><i>personWeight</i> weight/mass of an adult human or larger child
  *   <li><i>babyWeight</i> weight/mass of a baby or of small animals such as cats and dogs
  *   <li><i>vehicleWeight</i> weight/mass of a vehicle (including a boat)
@@ -163,6 +163,9 @@ var lenMap = {
  * <li><i>minFractionDigits</i> - the minimum number of fractional digits that should
  * appear in the formatted output. If the number does not have enough fractional digits
  * to reach this minimum, the number will be zero-padded at the end to get to the limit.
+ *
+ * <li><i>significantDigits</i> - the number of significant digits that should appear
+ * in the formatted output. If the given number is less than 1, this option will be ignored.
  *
  * <li><i>roundingMode</i> - When the maxFractionDigits or maxIntegerDigits is specified,
  * this property governs how the least significant digits are rounded to conform to that
@@ -256,20 +259,29 @@ var UnitFmt = function(options) {
         this.measurementSystem = options.measurementSystem;
     }
 
-    if (typeof (options.maxFractionDigits) === 'number') {
+    if (typeof (options.maxFractionDigits) !== 'undefined') {
         /**
          * @private
          * @type {number|undefined}
          */
-        this.maxFractionDigits = options.maxFractionDigits;
+        this.maxFractionDigits = Number(options.maxFractionDigits);
     }
-    if (typeof (options.minFractionDigits) === 'number') {
+    if (typeof (options.minFractionDigits) !== 'undefined') {
         /**
          * @private
          * @type {number|undefined}
          */
-        this.minFractionDigits = options.minFractionDigits;
+        this.minFractionDigits = Number(options.minFractionDigits);
     }
+
+    if (typeof (options.significantDigits) !== 'undefined') {
+        /**
+         * @private
+         * @type {number|undefined}
+         */
+        this.significantDigits = Number(options.significantDigits);
+    }
+
     /**
      * @private
      * @type {string}
@@ -295,6 +307,9 @@ var UnitFmt = function(options) {
                     }
                     if (typeof(this.minFractionDigits) !== 'number' && typeof(this.usageInfo.minFractionDigits) === 'number') {
                         this.minFractionDigits = this.usageInfo.minFractionDigits;
+                    }
+                    if (typeof(this.significantDigits) !== 'number' && typeof(this.usageInfo.significantDigits) === 'number') {
+                        this.significantDigits = this.usageInfo.significantDigits;
                     }
                     if (!this.measurementSystem && this.usageInfo.system) {
                         this.measurementSystem = this.usageInfo.system;

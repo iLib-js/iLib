@@ -386,17 +386,20 @@
             "description": "speed of transfer of data over a network",
             "type": "digitalSpeed",
             "system": "bitSystem",
-            "maxFractionDigits": 2
+            "maxFractionDigits": 2,
+            "significantDigits": 3
         },
         "audioSpeed": {
             "description": "speed of transfer of audio data",
             "type": "digitalSpeed",
-            "system": "bitSystem"
+            "system": "bitSystem",
+            "significantDigits": 3
         },
         "interfaceSpeed": {
             "description": "speed of transfer of data over a computer interface such as a USB or SATA bus",
             "type": "digitalSpeed",
-            "system": "byteSystem"
+            "system": "byteSystem",
+            "significantDigits": 3
         },
         "foodEnergy": {
             "description": "amount of energy contains in food",
@@ -405,7 +408,8 @@
                 "metric": ["millijoule", "joule", "kilojoule", "megajoule", "gigajoule"],
                 "uscustomary": ["foodcalorie"],
                 "imperial": ["foodcalorie"]
-            }
+            },
+            "significantDigits": 3
         },
         "electricalEnergy": {
             "description": "amount of energy in electricity",
@@ -419,7 +423,8 @@
                 "metric": ["millijoule", "joule", "kilojoule", "megajoule", "gigajoule"],
                 "uscustomary": ["BTU"],
                 "imperial": ["BTU"]
-            }
+            },
+            "significantDigits": 4
         },
         "nauticalDistance": {
             "description": "distance traveled by a boat",
@@ -428,7 +433,9 @@
                 "metric": ["meter", "kilometer"],
                 "uscustomary": ["foot", "yard", "nautical-mile"],
                 "imperial": ["foot", "yard", "nautical-mile"]
-            }
+            },
+            "maxFractionDigits": 2,
+            "significantDigits": 4
         },
         "babyHeight": {
             "description": "length of a baby",
@@ -438,13 +445,13 @@
                 "uscustomary": ["inch"],
                 "imperial": ["inch"]
             },
-            "maxFractionDigits": 1
+            "significantDigits": 3
         },
         "personHeight": {
             "description": "height of an adult or child (not a baby)",
             "type": "length",
             "units": {
-                "metric": ["centimeter", "meter"],
+                "metric": ["meter"],
                 "uscustomary": ["inch", "foot"],
                 "imperial": ["inch", "foot"]
             },
@@ -458,7 +465,9 @@
                 "metric": ["meter", "kilometer"],
                 "uscustomary": ["yard", "mile"],
                 "imperial": ["yard", "mile"]
-            }
+            },
+            "maxFractionDigits": 2,
+            "significantDigits": 4
         },
         "personWeight": {
             "description": "weight/mass of an adult human or larger child",
@@ -475,11 +484,12 @@
             "description": "weight/mass of a baby or of small animals such as cats and dogs",
             "type": "mass",
             "units": {
-                "metric": ["gram", "kilogram"],
+                "metric": ["kilogram"],
                 "uscustomary": ["ounce", "pound"],
                 "imperial": ["ounce", "pound"]
             },
-            "style": "list"
+            "style": "list",
+            "maxFractionDigits": 1
         },
         "vehicleWeight": {
             "description": "weight/mass of a vehicle (including a boat)",
@@ -488,15 +498,16 @@
                 "metric": ["kilogram", "metric-ton"],
                 "uscustomary": ["pound", "ton"],
                 "imperial": ["pound", "ton"]
-            }
+            },
+            "maxFractionDigits": 0
         },
         "drugWeight": {
-            "description": "weight/mass of a medicinal drug",
+            "description": "weight/mass of a dose of a medicinal drug",
             "type": "mass",
             "units": {
                 "metric": ["microgram", "milligram", "gram"],
-                "uscustomary": ["ounce"],
-                "imperial": ["ounce"]
+                "uscustomary": ["milligram", "ounce"],
+                "imperial": ["milligram", "ounce"]
             }
         },
         "vehicleSpeed": {
@@ -506,7 +517,8 @@
                 "metric": ["kilometer-per-hour"],
                 "uscustomary": ["mile-per-hour"],
                 "imperial": ["mile-per-hour"]
-            }
+            },
+            "maxFractionDigits": 0
         },
         "nauticalSpeed": {
             "description": "speed of travel of a boat",
@@ -515,7 +527,8 @@
                 "metric": ["kilometer-per-hour"],
                 "uscustomary": ["knot"],
                 "imperial": ["knot"]
-            }
+            },
+            "maxFractionDigits": 0
         },
         "dryFoodVolume": {
             "description": "volume of a dry food substance in a recipe such as flour",
@@ -525,7 +538,8 @@
                 "uscustomary": ["teaspoon", "tablespoon", "cup", "gallon"],
                 "imperial": ["teaspoon-imperial", "tablespoon-imperial", "cup-imperial", "gallon-imperial"]
             },
-            "style": "list"
+            "style": "list",
+            "maxFractionDigits": 2
         },
         "liquidFoodVolume": {
             "description": "volume of a liquid food substance in a recipe such as milk",
@@ -535,7 +549,8 @@
                 "uscustomary": ["teaspoon", "tablespoon", "fluid-ounce", "cup", "pint", "quart", "gallon"],
                 "imperial": ["teaspoon-imperial", "tablespoon-imperial", "ounce-imperial", "cup", "pint-imperial", "quart-imperial", "gallon-imperial"]
             },
-            "style": "list"
+            "style": "list",
+            "maxFractionDigits": 2
         },
         "drinkVolume": {
             "description": "volume of a drink",
@@ -544,7 +559,8 @@
                 "metric": ["milliliter", "liter"],
                 "uscustomary": ["cup", "pint", "quart", "gallon"],
                 "imperial": ["cup", "pint-imperial", "quart-imperial", "gallon-imperial"]
-            }
+            },
+            "maxFractionDigits": 0
         },
         "fuelVolume": {
             "description": "volume of a vehicular fuel",
@@ -553,7 +569,8 @@
                 "metric": ["liter"],
                 "uscustomary": ["gallon"],
                 "imperial": ["gallon-imperial"]
-            }
+            },
+            "maxFractionDigits": 2
         },
         "engineVolume": {
             "description": "volume of an engine's combustion space",
@@ -562,7 +579,8 @@
                 "metric": ["cubic-centimeter"],
                 "uscustomary": ["cubic-inch"],
                 "imperial": ["cubic-inch"]
-            }
+            },
+            "maxFractionDigits": 0
         },
         "storageVolume": {
             "description": "volume of a mass storage tank",
@@ -571,7 +589,8 @@
                 "metric": ["liter", "cubic-meter"],
                 "uscustomary": ["gallon", "cubic-foot"],
                 "imperial": ["gallon-imperial", "cubic-foot"]
-            }
+            },
+            "maxFractionDigits": 0
         },
         "gasVolume": {
             "description": "volume of a gas such as natural gas used in a home a home might use",
@@ -580,7 +599,8 @@
                 "metric": ["cubic-meter"],
                 "uscustomary": ["cubic-foot"],
                 "imperial": ["cubic-foot"]
-            }
+            },
+            "maxFractionDigits": 3
         }
     }
 }
