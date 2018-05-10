@@ -138,7 +138,6 @@
 "Azerbaijani - Azerbaijan":"az-Latn-AZ",
 "Khmer - Cambodia":"km-KH",
 "Sinhala - Sri Lanka":"si-LK",
-
 "Arabic - United Arab Emirates":"ar-AE",
 "Arabic - Bahrain":"ar-BH",
 "Arabic - Djibouti":"ar-DJ", 
