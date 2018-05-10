@@ -157,16 +157,3 @@ function testJulianIsLeapYearOnQuadCentennial() {
     
     assertTrue(cal.isLeapYear(2000));
 }
-
-function testJulianNewDateInstance() {
-    var cal = new JulianCal();
-    var d = cal.newDateInstance({
-    	year: 20,
-    	month: 6,
-    	day: 1
-    });
-    
-    assertNotUndefined(d);
-    assertNotUndefined(d.cal);
-    assertEquals("julian", d.cal.type);
-}

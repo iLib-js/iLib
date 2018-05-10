@@ -17,25 +17,13 @@
  * limitations under the License.
  */
 
-function TestSuite(pathname) {
-	this.tests = [];
-	this.subSuites = [];
-	this.includes = [];
-	this.contextBits = {};
-	
-	//console.log("new test suite " + pathname);
+function TestSuite(pathname, name) {
+    this.moduleName = name;
 	this.path = pathname;
+    //console.log("[TestSuiteModule.js] new test suite (name) " + this.name + " (path)" + this.path);
 };
 
 TestSuite.prototype = {
-	include: function (pathname) {
-		this.includes.push(pathname);
-	},
-
-	applyIncludes: function (includes) {
-		this.includes = this.includes.concat(includes);
-	},
-
 	/**
 	 * Add the given subsuite, and run it for the given number of
 	 * iterations. If iterations is not specified or if it is a number
@@ -51,43 +39,17 @@ TestSuite.prototype = {
 		});
 	},
 	
-	addTest: function (test) {
-		this.tests.push(test);
-	},
-	
-	getTests: function() {
-		return this.tests;
-	},
-	
-	addSetup: function(code) {
-		this.setupCode = code;
-	},
-	
-	merge: function(to, from) {
-		for (var p in from) {
-			if (typeof(from[p]) !== 'undefined') {
-				to[p] = from[p];
-			}
-		}
-	},
-	
-	addToContext: function(obj) {
-		this.merge(this.contextBits, obj);
-	},
-	
-	runTests: function(results, root) {
-		//console.log("TestSuite.runTests: for suite " + this.path);
-		var suiteComponent = Qt.createComponent("../../qt/UnitTest/TestEnvironment.qml");
+    runTests: function() {
+        //console.log("[TestSuiteModule.js] TestSuite.runTests: for suite (this.moduleName) " + this.moduleName);
+        var suiteComponent = Qt.createComponent("./TestEnvironment.qml");
 		if (suiteComponent.status != Component.Ready) {
 		    if (suiteComponent.status == Component.Error)
-		        console.debug("TestSuite.runTests: Error: "+ suiteComponent.errorString());
+                console.debug("[TestSuiteModules.js] TestSuite.runTests: Error: "+ suiteComponent.errorString());
 		    return; // or maybe throw
 		}
 		var suiteRunner = suiteComponent.createObject(null, {
         	path: this.path,
-        	root: root,
-        	includes: this.includes,
-        	results: results
+            moduleName: this.moduleName
         });
         if (suiteRunner == null) {
         	console.log("TestSuite.runTests: failed to run test suite " + this.path);

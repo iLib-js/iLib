@@ -133,15 +133,3 @@ function testPersianIsLeapYear3() {
     
     assertTrue(cal.isLeapYear(1395));
 }
-
-function testPersianNewDateInstance() {
-    var cal = new PersianCal();
-    var d = cal.newDateInstance({
-    	year: 1392,
-    	month: 6,
-    	day: 1
-    });
-    
-    assertNotUndefined(d);
-    assertEquals("persian", d.cal.type);
-}
