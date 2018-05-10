@@ -184,33 +184,33 @@ var NumFmt = function (options) {
 			this.currency = options.currency;
 		}
 
-		if (typeof (options.maxFractionDigits) !== 'undefined') {
-			/**
-			 * @private
-			 * @type {number|undefined}
-			 */
-			this.maxFractionDigits = this._toPrimitive(options.maxFractionDigits);
-		}
-		if (typeof (options.minFractionDigits) !== 'undefined') {
-			/**
-			 * @private
-			 * @type {number|undefined}
-			 */
-			this.minFractionDigits = this._toPrimitive(options.minFractionDigits);
-			// enforce the limits to avoid JS exceptions
-			if (this.minFractionDigits < 0) {
-				this.minFractionDigits = 0;
-			}
-			if (this.minFractionDigits > 20) {
-				this.minFractionDigits = 20;
-			}
-		}
+        if (typeof (options.maxFractionDigits) !== 'undefined') {
+            /**
+             * @private
+             * @type {number|undefined}
+             */
+            this.maxFractionDigits = Number(options.maxFractionDigits);
+        }
+        if (typeof (options.minFractionDigits) !== 'undefined') {
+            /**
+             * @private
+             * @type {number|undefined}
+             */
+            this.minFractionDigits = Number(options.minFractionDigits);
+            // enforce the limits to avoid JS exceptions
+            if (this.minFractionDigits < 0) {
+                this.minFractionDigits = 0;
+            }
+            if (this.minFractionDigits > 20) {
+                this.minFractionDigits = 20;
+            }
+        }
         if (typeof (options.significantDigits) !== 'undefined') {
             /**
              * @private
              * @type {number|undefined}
              */
-            this.significantDigits = this._toPrimitive(options.significantDigits);
+            this.significantDigits = Number(options.significantDigits);
             // enforce the limits to avoid JS exceptions
             if (this.significantDigits < 1) {
                 this.significantDigits = 1;
@@ -393,30 +393,6 @@ NumFmt.prototype = {
 	},
 
 	/**
-	 * @private
-	 * @param {INumber|Number|string|number} num object, string, or number to convert to a primitive number
-	 * @return {number} the primitive number equivalent of the argument
-	 */
-	_toPrimitive: function (num) {
-		var n = 0;
-
-		switch (typeof (num)) {
-		case 'number':
-			n = num;
-			break;
-		case 'string':
-			n = parseFloat(num);
-			break;
-		case 'object':
-			// call parseFloat to coerse the type to number
-			n = parseFloat(num.valueOf());
-			break;
-		}
-
-		return n;
-	},
-
-	/**
 	 * Format the number using scientific notation as a positive number. Negative
 	 * formatting to be applied later.
 	 * @private
@@ -478,7 +454,7 @@ NumFmt.prototype = {
 		var parts = ("" + num).split("."),
 			integral = parts[0],
 			fraction,
-			cycle, 
+			cycle,
 			formatted;
 
 		// only apply the either significantDigits or the maxFractionDigits -- whichever results in a shorter fractional part
@@ -487,7 +463,7 @@ NumFmt.prototype = {
             	parts[0].length + this.maxFractionDigits > this.significantDigits)) {
         	num = MathUtils.significant(num, this.significantDigits, this.round);
         }
-        
+
         if (typeof(this.maxFractionDigits) !== 'undefined' && this.maxFractionDigits > -1) {
             num = MathUtils.shiftDecimal(this.round(MathUtils.shiftDecimal(num, this.maxFractionDigits)), -this.maxFractionDigits);
         }
@@ -538,8 +514,8 @@ NumFmt.prototype = {
 			formatted = integral;
 		}
 
-        if (fraction && 
-            ((typeof(this.maxFractionDigits) === 'undefined' && typeof(this.significantDigits) === 'undefined') || 
+        if (fraction &&
+            ((typeof(this.maxFractionDigits) === 'undefined' && typeof(this.significantDigits) === 'undefined') ||
               this.maxFractionDigits > 0 || this.significantDigits > 0)) {
             formatted += this.decimalSeparator;
             formatted += fraction;
@@ -565,7 +541,7 @@ NumFmt.prototype = {
 		}
 
 		// convert to a real primitive number type
-		n = this._toPrimitive(num);
+		n = Number(num);
 
 		if (this.type === "number") {
 			formatted = (this.style === "scientific") ?
