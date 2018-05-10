@@ -1,7 +1,7 @@
 /*
  * MathUtils.js - Misc math utility routines
  *
- * Copyright © 2013-2015, JEDLSoft
+ * Copyright © 2013-2015, 2018 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
