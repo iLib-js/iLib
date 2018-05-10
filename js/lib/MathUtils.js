@@ -1,6 +1,6 @@
 /*
  * MathUtils.js - Misc math utility routines
- * 
+ *
  * Copyright © 2013-2015, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -121,12 +121,12 @@ MathUtils.halfodd = function (num) {
  * division algorithm, but for calendrical calculations, we need the Euclidean
  * division algorithm where the remainder of any division, whether the dividend
  * is negative or not, is always a positive number in the range [0, modulus).<p>
- * 
- * 
+ *
+ *
  * @static
  * @param {number} dividend the number being divided
  * @param {number} modulus the number dividing the dividend. This should always be a positive number.
- * @return the remainder of dividing the dividend by the modulus.  
+ * @return the remainder of dividing the dividend by the modulus.
  */
 MathUtils.mod = function (dividend, modulus) {
 	if (modulus == 0) {
@@ -143,12 +143,12 @@ MathUtils.mod = function (dividend, modulus) {
  * is negative or not, is always a positive number in the range (0, modulus]. The adjusted
  * modulo function differs from the regular modulo function in that when the remainder is
  * zero, the modulus should be returned instead.<p>
- * 
- * 
+ *
+ *
  * @static
  * @param {number} dividend the number being divided
  * @param {number} modulus the number dividing the dividend. This should always be a positive number.
- * @return the remainder of dividing the dividend by the modulus.  
+ * @return the remainder of dividing the dividend by the modulus.
  */
 MathUtils.amod = function (dividend, modulus) {
 	if (modulus == 0) {
@@ -156,6 +156,30 @@ MathUtils.amod = function (dividend, modulus) {
 	}
 	var x = dividend % modulus;
 	return (x <= 0) ? x + modulus : x;
+};
+
+/**
+ * Return the given number with only the given number of significant digits.
+ * The number of significant digits can start with the digits greater than
+ * 1 and straddle the decimal point, or it may start after the decimal point.
+ * If the number of digits requested is less than 1, the original number
+ * will be returned unchanged.
+ *
+ * @static
+ * @param {number} number the number to return with only significant digits
+ * @param {number} digits the number of significant digits to include in the
+ * returned number
+ * @returns {number} the given number with only the requested number of
+ * significant digits
+ */
+MathUtils.significant = function(number, digits) {
+    if (digits < 1) return number;
+    function shift(number, precision) {
+        var numArray = ("" + number).split("e");
+        return +(numArray[0] + "e" + (numArray[1] ? (+numArray[1] + precision) : precision));
+    };
+    var factor = -Math.floor(Math.log10(number)) + digits - 1;
+    return shift(Math.round(shift(number, factor)), -factor);
 };
 
 module.exports = MathUtils;

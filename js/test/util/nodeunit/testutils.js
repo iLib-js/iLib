@@ -410,6 +410,60 @@ module.exports.testutils = {
         test.done();
     },
     
+    testSignificant1: function(test) {
+        test.expect(1);
+        test.equal(MathUtils.significant(12345, 3), 12300);
+        test.done();
+    },
+
+    testSignificant2: function(test) {
+        test.expect(1);
+        test.equal(MathUtils.significant(12345, 2), 12000);
+        test.done();
+    },
+
+    testSignificant3: function(test) {
+        test.expect(1);
+        test.equal(MathUtils.significant(12345, 1), 10000);
+        test.done();
+    },
+
+    testSignificantZero: function(test) {
+        test.expect(1);
+        test.equal(MathUtils.significant(12345, 0), 12345);
+        test.done();
+    },
+
+    testSignificantNegative: function(test) {
+        test.expect(1);
+        test.equal(MathUtils.significant(12345, -234), 12345);
+        test.done();
+    },
+
+    testSignificantStradleDecimal: function(test) {
+        test.expect(1);
+        test.equal(MathUtils.significant(12.345, 4), 12.35);
+        test.done();
+    },
+
+    testSignificantLessThanOne: function(test) {
+        test.expect(1);
+        test.equal(MathUtils.significant(0.123456, 2), 0.12);
+        test.done();
+    },
+
+    testSignificantLessThanOneRound: function(test) {
+        test.expect(1);
+        test.equal(MathUtils.significant(0.123456, 4), 0.1235);
+        test.done();
+    },
+
+    testSignificantLessThanOneSmall: function(test) {
+        test.expect(1);
+        test.equal(MathUtils.significant(0.000123456, 2), 0.00012);
+        test.done();
+    },
+
     testMergeSimple: function(test) {
         test.expect(1);
         var object1 = {"a": "A", "b": "B"},
