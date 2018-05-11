@@ -2491,14 +2491,14 @@ module.exports.testunitfmt_usages = {
             length: "short"
         });
         var str = uf.format(m1);
-        test.equal(str, "22.4 cu in");
+        test.equal(str, "22.4 in³");
         test.done();
     },
 
     testUnitFormatWithUsageEngineVolumeScale: function(test) {
         test.expect(1);
         var m1 = MeasurementFactory({
-            unit: "ounce",
+            unit: "fluid ounce",
             amount: 30
         });
 
@@ -2507,7 +2507,7 @@ module.exports.testunitfmt_usages = {
             length: "short"
         });
         var str = uf.format(m1);
-        test.equal(str, "54.1406 cu in");
+        test.equal(str, "54.1406 in³");
         test.done();
     },
 
@@ -2611,6 +2611,23 @@ module.exports.testunitfmt_usages = {
         test.done();
     },
 
+    testUnitFormatWithUsageStorageVolumeConvertGB: function(test) {
+        test.expect(1);
+        var m1 = MeasurementFactory({
+            unit: "cc",
+            amount: 33000
+        });
+
+        var uf = new UnitFmt({
+            usage: "storageVolume",
+            length: "long",
+            locale: "en-GB"
+        });
+        var str = uf.format(m1);
+        test.equal(str, "1 cubic foot 1.04 imperial gallons");
+        test.done();
+    },
+
     testUnitFormatWithUsageStorageVolumeShort: function(test) {
         test.expect(1);
         var m1 = MeasurementFactory({
@@ -2623,14 +2640,14 @@ module.exports.testunitfmt_usages = {
             length: "short"
         });
         var str = uf.format(m1);
-        test.equal(str, "22.4 cu ft");
+        test.equal(str, "22.4 ft³");
         test.done();
     },
 
     testUnitFormatWithUsageStorageVolumeScale: function(test) {
         test.expect(1);
         var m1 = MeasurementFactory({
-            unit: "ounce",
+            unit: "fluid ounce",
             amount: 1000
         });
 
@@ -2639,7 +2656,24 @@ module.exports.testunitfmt_usages = {
             length: "short"
         });
         var str = uf.format(m1);
-        test.equal(str, "1 cu ft 0.332 gal");
+        test.equal(str, "1 ft³ 0.332 gal");
+        test.done();
+    },
+
+    testUnitFormatWithUsageStorageVolumeScaleGB: function(test) {
+        test.expect(1);
+        var m1 = MeasurementFactory({
+            unit: "fluid ounce",
+            amount: 1000
+        });
+
+        var uf = new UnitFmt({
+            usage: "storageVolume",
+            length: "short",
+            locale: "en-GB"
+        });
+        var str = uf.format(m1);
+        test.equal(str, "1 ft³ 0.276 gal");
         test.done();
     },
 
@@ -2656,7 +2690,7 @@ module.exports.testunitfmt_usages = {
             measurementSystem: "metric"
         });
         var str = uf.format(m1);
-        test.equal(str, "12,343 cu m");
+        test.equal(str, "12,343 m³");
         test.done();
     },
 
@@ -2669,11 +2703,27 @@ module.exports.testunitfmt_usages = {
 
         var uf = new UnitFmt({
             usage: "storageVolume",
-            length: "short",
-            measurementSystem: "metric"
+            length: "short"
         });
         var str = uf.format(m1);
-        test.equal(str, "1 cu ft 4.41 gal");
+        test.equal(str, "1 ft³ 4.41 gal");
+        test.done();
+    },
+
+    testUnitFormatWithUsageStorageVolumeConvertGB2: function(test) {
+        test.expect(1);
+        var m1 = MeasurementFactory({
+            unit: "liter",
+            amount: 45.76781
+        });
+
+        var uf = new UnitFmt({
+            usage: "storageVolume",
+            length: "short",
+            locale: "en-GB"
+        });
+        var str = uf.format(m1);
+        test.equal(str, "1 ft³ 3.672 gal");
         test.done();
     },
 
@@ -2711,4 +2761,134 @@ module.exports.testunitfmt_usages = {
         test.done();
     },
 
+    testUnitFormatWithUsageGasVolume: function(test) {
+        test.expect(1);
+        var m1 = MeasurementFactory({
+            unit: "cubic foot",
+            amount: 30
+        });
+
+        var uf = new UnitFmt({
+            usage: "gasVolume",
+            length: "long"
+        });
+        var str = uf.format(m1);
+        test.equal(str, "30 cubic feet");
+        test.done();
+    },
+
+    testUnitFormatWithUsageGasVolumeConvert: function(test) {
+        test.expect(1);
+        var m1 = MeasurementFactory({
+            unit: "cc",
+            amount: 33000
+        });
+
+        var uf = new UnitFmt({
+            usage: "gasVolume",
+            length: "long"
+        });
+        var str = uf.format(m1);
+        test.equal(str, "1.165 cubic foot");
+        test.done();
+    },
+
+    testUnitFormatWithUsageGasVolumeShort: function(test) {
+        test.expect(1);
+        var m1 = MeasurementFactory({
+            unit: "cubic feet",
+            amount: 22.4
+        });
+
+        var uf = new UnitFmt({
+            usage: "gasVolume",
+            length: "short"
+        });
+        var str = uf.format(m1);
+        test.equal(str, "22.4 ft³");
+        test.done();
+    },
+
+    testUnitFormatWithUsageGasVolumeScale: function(test) {
+        test.expect(1);
+        var m1 = MeasurementFactory({
+            unit: "fluid ounce",
+            amount: 1000
+        });
+
+        var uf = new UnitFmt({
+            usage: "gasVolume",
+            length: "short"
+        });
+        var str = uf.format(m1);
+        test.equal(str, "1.044 ft³");
+        test.done();
+    },
+
+    testUnitFormatWithUsageGasVolumeScaleMetric: function(test) {
+        test.expect(1);
+        var m1 = MeasurementFactory({
+            unit: "liter",
+            amount: 12343
+        });
+
+        var uf = new UnitFmt({
+            usage: "gasVolume",
+            length: "short",
+            measurementSystem: "metric"
+        });
+        var str = uf.format(m1);
+        test.equal(str, "12.343 m³");
+        test.done();
+    },
+
+    testUnitFormatWithUsageGasVolumeConvert2: function(test) {
+        test.expect(1);
+        var m1 = MeasurementFactory({
+            unit: "liter",
+            amount: 45.76781
+        });
+
+        var uf = new UnitFmt({
+            usage: "gasVolume",
+            length: "short"
+        });
+        var str = uf.format(m1);
+        test.equal(str, "1.616 ft³");
+        test.done();
+    },
+
+    testUnitFormatWithUsageGasVolumeCA: function(test) {
+        test.expect(1);
+        var m1 = MeasurementFactory({
+            unit: "liter",
+            amount: 2500
+        });
+
+        var uf = new UnitFmt({
+            usage: "gasVolume",
+            length: "long",
+            locale: "fr-CA"
+        });
+        var str = uf.format(m1);
+        test.equal(str, "2,5 mètres cubes");
+        test.done();
+    },
+
+    testUnitFormatWithUsageGasVolumeBY: function(test) {
+        test.expect(1);
+        var m1 = MeasurementFactory({
+            unit: "cubic meter",
+            amount: 3.2
+        });
+
+        var uf = new UnitFmt({
+            usage: "gasVolume",
+            length: "long",
+            locale: "be-BY"
+        });
+        var str = uf.format(m1);
+        test.equal(str, "3,2 кубічныя метры");
+        test.done();
+    }
 };
