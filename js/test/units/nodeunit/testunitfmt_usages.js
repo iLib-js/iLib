@@ -1578,4 +1578,1137 @@ module.exports.testunitfmt_usages = {
         test.equal(str, "33,2 kilómetros por hora");
         test.done();
     },
+    
+    testUnitFormatWithUsageLiquidFoodVolume: function(test) {
+        test.expect(1);
+        var m1 = MeasurementFactory({
+            unit: "tsp",
+            amount: 3.2
+        });
+
+        var uf = new UnitFmt({
+            usage: "liquidFoodVolume",
+            length: "long"
+        });
+        var str = uf.format(m1);
+        test.equal(str, "3.2 teaspoons");
+        test.done();
+    },
+
+    testUnitFormatWithUsageLiquidFoodVolumeConvert: function(test) {
+        test.expect(1);
+        var m1 = MeasurementFactory({
+            unit: "ml",
+            amount: 10
+        });
+
+        var uf = new UnitFmt({
+            usage: "liquidFoodVolume",
+            length: "long"
+        });
+        var str = uf.format(m1);
+        test.equal(str, "2 teaspoons");
+        test.done();
+    },
+
+    testUnitFormatWithUsageLiquidFoodVolumeShort: function(test) {
+        test.expect(1);
+        var m1 = MeasurementFactory({
+            unit: "tbsp",
+            amount: 10
+        });
+
+        var uf = new UnitFmt({
+            usage: "liquidFoodVolume",
+            length: "short"
+        });
+        var str = uf.format(m1);
+        test.equal(str, "10 tablespoons");
+        test.done();
+    },
+
+    testUnitFormatWithUsageLiquidFoodVolumeScale: function(test) {
+        test.expect(1);
+        var m1 = MeasurementFactory({
+            unit: "teaspoon",
+            amount: 105
+        });
+
+        var uf = new UnitFmt({
+            usage: "liquidFoodVolume",
+            length: "short"
+        });
+        var str = uf.format(m1);
+        test.equal(str, "2 cups 1 ounce 1.6 teaspoons");
+        test.done();
+    },
+
+    testUnitFormatWithUsageLiquidFoodVolumeScaleMetric: function(test) {
+        test.expect(1);
+        var m1 = MeasurementFactory({
+            unit: "ml",
+            amount: 1234
+        });
+
+        var uf = new UnitFmt({
+            usage: "liquidFoodVolume",
+            length: "short",
+            measurementSystem: "metric"
+        });
+        var str = uf.format(m1);
+        test.equal(str, "1 liter 234 milliliters");
+        test.done();
+    },
+
+    testUnitFormatWithUsageLiquidFoodVolumeConvert2: function(test) {
+        test.expect(1);
+        var m1 = MeasurementFactory({
+            unit: "cups",
+            amount: 1.25
+        });
+
+        var uf = new UnitFmt({
+            usage: "liquidFoodVolume",
+            length: "short",
+            measurementSystem: "metric"
+        });
+        var str = uf.format(m1);
+        test.equal(str, "300 ml");
+        test.done();
+    },
+
+    testUnitFormatWithUsageLiquidFoodVolumeGB: function(test) {
+        test.expect(1);
+        var m1 = MeasurementFactory({
+            unit: "imperial tsp",
+            amount: 3.2
+        });
+
+        var uf = new UnitFmt({
+            usage: "liquidFoodVolume",
+            length: "long",
+            locale: "en-GB"
+        });
+        var str = uf.format(m1);
+        test.equal(str, "3.2 imperial teaspoons");
+        test.done();
+    },
+
+    testUnitFormatWithUsageLiquidFoodVolumeConvertGB: function(test) {
+        test.expect(1);
+        var m1 = MeasurementFactory({
+            unit: "ml",
+            amount: 10
+        });
+
+        var uf = new UnitFmt({
+            usage: "liquidFoodVolume",
+            length: "long",
+            locale: "en-GB"
+        });
+        var str = uf.format(m1);
+        test.equal(str, "1.7 imperial teaspoons");
+        test.done();
+    },
+
+    testUnitFormatWithUsageLiquidFoodVolumeShortGB: function(test) {
+        test.expect(1);
+        var m1 = MeasurementFactory({
+            unit: "imperial tbsp",
+            amount: 10,
+            locale: "en-GB"
+        });
+
+        var uf = new UnitFmt({
+            usage: "liquidFoodVolume",
+            length: "short"
+        });
+        var str = uf.format(m1);
+        test.equal(str, "10 tbsp (imp)");
+        test.done();
+    },
+
+    testUnitFormatWithUsageLiquidFoodVolumeScaleGB: function(test) {
+        test.expect(1);
+        var m1 = MeasurementFactory({
+            unit: "imperial teaspoon",
+            amount: 105,
+            locale: "en-GB"
+        });
+
+        var uf = new UnitFmt({
+            usage: "liquidFoodVolume",
+            length: "long"
+        });
+        var str = uf.format(m1);
+        test.equal(str, "2 imperial cups 1 imperial fluid ounce 1 imperial 0.64 imperial teaspoons");
+        test.done();
+    },
+
+    testUnitFormatWithUsageLiquidFoodVolumeConvertGB2: function(test) {
+        test.expect(1);
+        var m1 = MeasurementFactory({
+            unit: "cups",
+            amount: 1.25
+        });
+
+        var uf = new UnitFmt({
+            usage: "liquidFoodVolume",
+            length: "short",
+            locale: "en-GB"
+        });
+        var str = uf.format(m1);
+        test.equal(str, "1.055852 cup (imp) 2.7 fl oz (imp)");
+        test.done();
+    },
+
+    testUnitFormatWithUsageLiquidFoodVolumeKO: function(test) {
+        test.expect(1);
+        var m1 = MeasurementFactory({
+            unit: "ml",
+            amount: 240.34
+        });
+
+        var uf = new UnitFmt({
+            usage: "liquidFoodVolume",
+            length: "long",
+            locale: "ko-KR"
+        });
+        var str = uf.format(m1);
+        test.equal(str, "240.34밀리리터");
+        test.done();
+    },
+
+    testUnitFormatWithUsageLiquidFoodVolumeNL: function(test) {
+        test.expect(1);
+        var m1 = MeasurementFactory({
+            unit: "ml",
+            amount: 330.2
+        });
+
+        var uf = new UnitFmt({
+            usage: "liquidFoodVolume",
+            length: "long",
+            locale: "nl-NL"
+        });
+        var str = uf.format(m1);
+        test.equal(str, "330,2 milliliter");
+        test.done();
+    },
+    
+    testUnitFormatWithUsageDryFoodVolume: function(test) {
+        test.expect(1);
+        var m1 = MeasurementFactory({
+            unit: "tsp",
+            amount: 3.2
+        });
+
+        var uf = new UnitFmt({
+            usage: "dryFoodVolume",
+            length: "long"
+        });
+        var str = uf.format(m1);
+        test.equal(str, "3.2 teaspoons");
+        test.done();
+    },
+
+    testUnitFormatWithUsageDryFoodVolumeConvert: function(test) {
+        test.expect(1);
+        var m1 = MeasurementFactory({
+            unit: "ml",
+            amount: 10
+        });
+
+        var uf = new UnitFmt({
+            usage: "dryFoodVolume",
+            length: "long"
+        });
+        var str = uf.format(m1);
+        test.equal(str, "2 teaspoons");
+        test.done();
+    },
+
+    testUnitFormatWithUsageDryFoodVolumeShort: function(test) {
+        test.expect(1);
+        var m1 = MeasurementFactory({
+            unit: "tbsp",
+            amount: 10
+        });
+
+        var uf = new UnitFmt({
+            usage: "dryFoodVolume",
+            length: "short"
+        });
+        var str = uf.format(m1);
+        test.equal(str, "10 tablespoons");
+        test.done();
+    },
+
+    testUnitFormatWithUsageDryFoodVolumeScale: function(test) {
+        test.expect(1);
+        var m1 = MeasurementFactory({
+            unit: "teaspoon",
+            amount: 105
+        });
+
+        var uf = new UnitFmt({
+            usage: "dryFoodVolume",
+            length: "short"
+        });
+        var str = uf.format(m1);
+        test.equal(str, "2 cups 2 tablespoons 1.6 teaspoons");
+        test.done();
+    },
+
+    testUnitFormatWithUsageDryFoodVolumeScaleMetric: function(test) {
+        test.expect(1);
+        var m1 = MeasurementFactory({
+            unit: "ml",
+            amount: 1234
+        });
+
+        var uf = new UnitFmt({
+            usage: "dryFoodVolume",
+            length: "short",
+            measurementSystem: "metric"
+        });
+        var str = uf.format(m1);
+        test.equal(str, "1 liter 234 milliliters");
+        test.done();
+    },
+
+    testUnitFormatWithUsageDryFoodVolumeConvert2: function(test) {
+        test.expect(1);
+        var m1 = MeasurementFactory({
+            unit: "cups",
+            amount: 1.25
+        });
+
+        var uf = new UnitFmt({
+            usage: "dryFoodVolume",
+            length: "short",
+            measurementSystem: "metric"
+        });
+        var str = uf.format(m1);
+        test.equal(str, "300 ml");
+        test.done();
+    },
+
+    testUnitFormatWithUsageDryFoodVolumeGB: function(test) {
+        test.expect(1);
+        var m1 = MeasurementFactory({
+            unit: "imperial tsp",
+            amount: 3.2
+        });
+
+        var uf = new UnitFmt({
+            usage: "dryFoodVolume",
+            length: "long",
+            locale: "en-GB"
+        });
+        var str = uf.format(m1);
+        test.equal(str, "3.2 imperial teaspoons");
+        test.done();
+    },
+
+    testUnitFormatWithUsageDryFoodVolumeConvertGB: function(test) {
+        test.expect(1);
+        var m1 = MeasurementFactory({
+            unit: "ml",
+            amount: 10
+        });
+
+        var uf = new UnitFmt({
+            usage: "dryFoodVolume",
+            length: "long",
+            locale: "en-GB"
+        });
+        var str = uf.format(m1);
+        test.equal(str, "1.7 imperial teaspoons");
+        test.done();
+    },
+
+    testUnitFormatWithUsageDryFoodVolumeShortGB: function(test) {
+        test.expect(1);
+        var m1 = MeasurementFactory({
+            unit: "imperial tbsp",
+            amount: 10,
+            locale: "en-GB"
+        });
+
+        var uf = new UnitFmt({
+            usage: "dryFoodVolume",
+            length: "short"
+        });
+        var str = uf.format(m1);
+        test.equal(str, "10 tbsp (imp)");
+        test.done();
+    },
+
+    testUnitFormatWithUsageDryFoodVolumeScaleGB: function(test) {
+        test.expect(1);
+        var m1 = MeasurementFactory({
+            unit: "imperial teaspoon",
+            amount: 105,
+            locale: "en-GB"
+        });
+
+        var uf = new UnitFmt({
+            usage: "dryFoodVolume",
+            length: "long"
+        });
+        var str = uf.format(m1);
+        test.equal(str, "2 imperial cups 3 tablespoons");
+        test.done();
+    },
+
+    testUnitFormatWithUsageDryFoodVolumeConvertGB2: function(test) {
+        test.expect(1);
+        var m1 = MeasurementFactory({
+            unit: "cups",
+            amount: 1.25
+        });
+
+        var uf = new UnitFmt({
+            usage: "dryFoodVolume",
+            length: "short",
+            locale: "en-GB"
+        });
+        var str = uf.format(m1);
+        test.equal(str, "1 cup (imp) 2.7 tsp (imp)");
+        test.done();
+    },
+
+    testUnitFormatWithUsageDryFoodVolumeKO: function(test) {
+        test.expect(1);
+        var m1 = MeasurementFactory({
+            unit: "ml",
+            amount: 240.34
+        });
+
+        var uf = new UnitFmt({
+            usage: "dryFoodVolume",
+            length: "long",
+            locale: "ko-KR"
+        });
+        var str = uf.format(m1);
+        test.equal(str, "240.34밀리리터");
+        test.done();
+    },
+
+    testUnitFormatWithUsageDryFoodVolumeNL: function(test) {
+        test.expect(1);
+        var m1 = MeasurementFactory({
+            unit: "ml",
+            amount: 330.2
+        });
+
+        var uf = new UnitFmt({
+            usage: "dryFoodVolume",
+            length: "long",
+            locale: "nl-NL"
+        });
+        var str = uf.format(m1);
+        test.equal(str, "330,2 milliliter");
+        test.done();
+    },
+
+    testUnitFormatWithUsageDrinkVolume: function(test) {
+        test.expect(1);
+        var m1 = MeasurementFactory({
+            unit: "pint",
+            amount: 3.2
+        });
+
+        var uf = new UnitFmt({
+            usage: "drinkVolume",
+            length: "long"
+        });
+        var str = uf.format(m1);
+        test.equal(str, "3.2 pints");
+        test.done();
+    },
+
+    testUnitFormatWithUsageDrinkVolumeConvert: function(test) {
+        test.expect(1);
+        var m1 = MeasurementFactory({
+            unit: "ml",
+            amount: 330
+        });
+
+        var uf = new UnitFmt({
+            usage: "drinkVolume",
+            length: "long"
+        });
+        var str = uf.format(m1);
+        test.equal(str, "1.375 cups");
+        test.done();
+    },
+
+    testUnitFormatWithUsageDrinkVolumeShort: function(test) {
+        test.expect(1);
+        var m1 = MeasurementFactory({
+            unit: "pint",
+            amount: 2.2
+        });
+
+        var uf = new UnitFmt({
+            usage: "drinkVolume",
+            length: "short"
+        });
+        var str = uf.format(m1);
+        test.equal(str, "2.2 pnt");
+        test.done();
+    },
+
+    testUnitFormatWithUsageDrinkVolumeScale: function(test) {
+        test.expect(1);
+        var m1 = MeasurementFactory({
+            unit: "cup",
+            amount: 8
+        });
+
+        var uf = new UnitFmt({
+            usage: "drinkVolume",
+            length: "short"
+        });
+        var str = uf.format(m1);
+        test.equal(str, "2 quarts 0.11 cups");
+        test.done();
+    },
+
+    testUnitFormatWithUsageDrinkVolumeScaleMetric: function(test) {
+        test.expect(1);
+        var m1 = MeasurementFactory({
+            unit: "ml",
+            amount: 1234
+        });
+
+        var uf = new UnitFmt({
+            usage: "drinkVolume",
+            length: "short",
+            measurementSystem: "metric"
+        });
+        var str = uf.format(m1);
+        test.equal(str, "1 liter 234 milliliters");
+        test.done();
+    },
+
+    testUnitFormatWithUsageDrinkVolumeConvert2: function(test) {
+        test.expect(1);
+        var m1 = MeasurementFactory({
+            unit: "cups",
+            amount: 2.5
+        });
+
+        var uf = new UnitFmt({
+            usage: "drinkVolume",
+            length: "short",
+            measurementSystem: "metric"
+        });
+        var str = uf.format(m1);
+        test.equal(str, "600 ml");
+        test.done();
+    },
+
+    testUnitFormatWithUsageDrinkVolumeGB: function(test) {
+        test.expect(1);
+        var m1 = MeasurementFactory({
+            unit: "imperial pint",
+            amount: 2
+        });
+
+        var uf = new UnitFmt({
+            usage: "drinkVolume",
+            length: "long",
+            locale: "en-GB"
+        });
+        var str = uf.format(m1);
+        test.equal(str, "2 imperial pints");
+        test.done();
+    },
+
+    testUnitFormatWithUsageDrinkVolumeConvertGB: function(test) {
+        test.expect(1);
+        var m1 = MeasurementFactory({
+            unit: "ml",
+            amount: 568.26125
+        });
+
+        var uf = new UnitFmt({
+            usage: "drinkVolume",
+            length: "long",
+            locale: "en-GB"
+        });
+        var str = uf.format(m1);
+        test.equal(str, "1 pint");
+        test.done();
+    },
+
+    testUnitFormatWithUsageDrinkVolumeShortGB: function(test) {
+        test.expect(1);
+        var m1 = MeasurementFactory({
+            unit: "imperial pint",
+            amount: 2,
+            locale: "en-GB"
+        });
+
+        var uf = new UnitFmt({
+            usage: "drinkVolume",
+            length: "short"
+        });
+        var str = uf.format(m1);
+        test.equal(str, "2 pnt (imp)");
+        test.done();
+    },
+
+    testUnitFormatWithUsageDrinkVolumeScaleGB: function(test) {
+        test.expect(1);
+        var m1 = MeasurementFactory({
+            unit: "imperial cups",
+            amount: 5,
+            locale: "en-GB"
+        });
+
+        var uf = new UnitFmt({
+            usage: "drinkVolume",
+            length: "long"
+        });
+        var str = uf.format(m1);
+        test.equal(str, "2 pints 1 cup");
+        test.done();
+    },
+
+    testUnitFormatWithUsageDrinkVolumeConvertGB2: function(test) {
+        test.expect(1);
+        var m1 = MeasurementFactory({
+            unit: "cups",
+            amount: 5
+        });
+
+        var uf = new UnitFmt({
+            usage: "drinkVolume",
+            length: "short",
+            locale: "en-GB"
+        });
+        var str = uf.format(m1);
+        test.equal(str, "2 pnt (imp) 0.22 cup (imp)");
+        test.done();
+    },
+
+    testUnitFormatWithUsageDrinkVolumeKO: function(test) {
+        test.expect(1);
+        var m1 = MeasurementFactory({
+            unit: "liter",
+            amount: 0.24034
+        });
+
+        var uf = new UnitFmt({
+            usage: "drinkVolume",
+            length: "long",
+            locale: "ko-KR"
+        });
+        var str = uf.format(m1);
+        test.equal(str, "240.34밀리리터");
+        test.done();
+    },
+
+    testUnitFormatWithUsageDrinkVolumeNL: function(test) {
+        test.expect(1);
+        var m1 = MeasurementFactory({
+            unit: "liter",
+            amount: 0.330
+        });
+
+        var uf = new UnitFmt({
+            usage: "drinkVolume",
+            length: "long",
+            locale: "nl-NL"
+        });
+        var str = uf.format(m1);
+        test.equal(str, "330,2 milliliter");
+        test.done();
+    },
+
+    testUnitFormatWithUsageFuelVolume: function(test) {
+        test.expect(1);
+        var m1 = MeasurementFactory({
+            unit: "gallon",
+            amount: 3
+        });
+
+        var uf = new UnitFmt({
+            usage: "fuelVolume",
+            length: "long"
+        });
+        var str = uf.format(m1);
+        test.equal(str, "3 gallons");
+        test.done();
+    },
+
+    testUnitFormatWithUsageFuelVolumeConvert: function(test) {
+        test.expect(1);
+        var m1 = MeasurementFactory({
+            unit: "liter",
+            amount: 330
+        });
+
+        var uf = new UnitFmt({
+            usage: "fuelVolume",
+            length: "long"
+        });
+        var str = uf.format(m1);
+        test.equal(str, "87.1768 gallons");
+        test.done();
+    },
+
+    testUnitFormatWithUsageFuelVolumeShort: function(test) {
+        test.expect(1);
+        var m1 = MeasurementFactory({
+            unit: "gallon",
+            amount: 228.4
+        });
+
+        var uf = new UnitFmt({
+            usage: "fuelVolume",
+            length: "short"
+        });
+        var str = uf.format(m1);
+        test.equal(str, "28.4 gal");
+        test.done();
+    },
+
+    testUnitFormatWithUsageFuelVolumeScale: function(test) {
+        test.expect(1);
+        var m1 = MeasurementFactory({
+            unit: "cup",
+            amount: 803
+        });
+
+        var uf = new UnitFmt({
+            usage: "fuelVolume",
+            length: "short"
+        });
+        var str = uf.format(m1);
+        test.equal(str, "50.9112 gal");
+        test.done();
+    },
+
+    testUnitFormatWithUsageFuelVolumeScaleMetric: function(test) {
+        test.expect(1);
+        var m1 = MeasurementFactory({
+            unit: "ml",
+            amount: 12343
+        });
+
+        var uf = new UnitFmt({
+            usage: "fuelVolume",
+            length: "short",
+            measurementSystem: "metric"
+        });
+        var str = uf.format(m1);
+        test.equal(str, "12.343 L");
+        test.done();
+    },
+
+    testUnitFormatWithUsageFuelVolumeConvert2: function(test) {
+        test.expect(1);
+        var m1 = MeasurementFactory({
+            unit: "gallon",
+            amount: 2.5
+        });
+
+        var uf = new UnitFmt({
+            usage: "fuelVolume",
+            length: "short",
+            measurementSystem: "metric"
+        });
+        var str = uf.format(m1);
+        test.equal(str, "9.46353 L");
+        test.done();
+    },
+
+    testUnitFormatWithUsageFuelVolumeGB: function(test) {
+        test.expect(1);
+        var m1 = MeasurementFactory({
+            unit: "imperial gallon",
+            amount: 2
+        });
+
+        var uf = new UnitFmt({
+            usage: "fuelVolume",
+            length: "long",
+            locale: "en-GB"
+        });
+        var str = uf.format(m1);
+        test.equal(str, "2 imperial gallons");
+        test.done();
+    },
+
+    testUnitFormatWithUsageFuelVolumeConvertGB: function(test) {
+        test.expect(1);
+        var m1 = MeasurementFactory({
+            unit: "liter",
+            amount: 56
+        });
+
+        var uf = new UnitFmt({
+            usage: "fuelVolume",
+            length: "long",
+            locale: "en-GB"
+        });
+        var str = uf.format(m1);
+        test.equal(str, "12.3183 imperial gallons");
+        test.done();
+    },
+
+    testUnitFormatWithUsageFuelVolumeShortGB: function(test) {
+        test.expect(1);
+        var m1 = MeasurementFactory({
+            unit: "imperial gallon",
+            amount: 2
+        });
+
+        var uf = new UnitFmt({
+            usage: "fuelVolume",
+            length: "short",
+            locale: "en-GB"
+        });
+        var str = uf.format(m1);
+        test.equal(str, "2 gal (imp)");
+        test.done();
+    },
+
+    testUnitFormatWithUsageFuelVolumeScaleGB: function(test) {
+        test.expect(1);
+        var m1 = MeasurementFactory({
+            unit: "imperial quarts",
+            amount: 50
+        });
+
+        var uf = new UnitFmt({
+            usage: "fuelVolume",
+            length: "long",
+            locale: "en-GB"
+        });
+        var str = uf.format(m1);
+        test.equal(str, "12.5 imperial gallons");
+        test.done();
+    },
+
+    testUnitFormatWithUsageFuelVolumeConvertGB2: function(test) {
+        test.expect(1);
+        var m1 = MeasurementFactory({
+            unit: "gallon",
+            amount: 5
+        });
+
+        var uf = new UnitFmt({
+            usage: "fuelVolume",
+            length: "short",
+            locale: "en-GB"
+        });
+        var str = uf.format(m1);
+        test.equal(str, "4.16337 gal (imp)");
+        test.done();
+    },
+
+    testUnitFormatWithUsageFuelVolumeSE: function(test) {
+        test.expect(1);
+        var m1 = MeasurementFactory({
+            unit: "liter",
+            amount: 24.034
+        });
+
+        var uf = new UnitFmt({
+            usage: "fuelVolume",
+            length: "long",
+            locale: "sv-SE"
+        });
+        var str = uf.format(m1);
+        test.equal(str, "24,034 liter");
+        test.done();
+    },
+
+    testUnitFormatWithUsageFuelVolumeUZ: function(test) {
+        test.expect(1);
+        var m1 = MeasurementFactory({
+            unit: "liter",
+            amount: 330.2
+        });
+
+        var uf = new UnitFmt({
+            usage: "fuelVolume",
+            length: "long",
+            locale: "uz-UZ"
+        });
+        var str = uf.format(m1);
+        test.equal(str, "330,2 litr");
+        test.done();
+    },
+
+    testUnitFormatWithUsageEngineVolume: function(test) {
+        test.expect(1);
+        var m1 = MeasurementFactory({
+            unit: "cubic inches",
+            amount: 30
+        });
+
+        var uf = new UnitFmt({
+            usage: "engineVolume",
+            length: "long"
+        });
+        var str = uf.format(m1);
+        test.equal(str, "30 cubic inches");
+        test.done();
+    },
+
+    testUnitFormatWithUsageEngineVolumeConvert: function(test) {
+        test.expect(1);
+        var m1 = MeasurementFactory({
+            unit: "cc",
+            amount: 330
+        });
+
+        var uf = new UnitFmt({
+            usage: "engineVolume",
+            length: "long"
+        });
+        var str = uf.format(m1);
+        test.equal(str, "20.1378 cubic inches");
+        test.done();
+    },
+
+    testUnitFormatWithUsageEngineVolumeShort: function(test) {
+        test.expect(1);
+        var m1 = MeasurementFactory({
+            unit: "cubic inches",
+            amount: 22.4
+        });
+
+        var uf = new UnitFmt({
+            usage: "engineVolume",
+            length: "short"
+        });
+        var str = uf.format(m1);
+        test.equal(str, "22.4 cu in");
+        test.done();
+    },
+
+    testUnitFormatWithUsageEngineVolumeScale: function(test) {
+        test.expect(1);
+        var m1 = MeasurementFactory({
+            unit: "ounce",
+            amount: 30
+        });
+
+        var uf = new UnitFmt({
+            usage: "engineVolume",
+            length: "short"
+        });
+        var str = uf.format(m1);
+        test.equal(str, "54.1406 cu in");
+        test.done();
+    },
+
+    testUnitFormatWithUsageEngineVolumeScaleMetric: function(test) {
+        test.expect(1);
+        var m1 = MeasurementFactory({
+            unit: "ml",
+            amount: 12343
+        });
+
+        var uf = new UnitFmt({
+            usage: "engineVolume",
+            length: "short",
+            measurementSystem: "metric"
+        });
+        var str = uf.format(m1);
+        test.equal(str, "12,343 cc");
+        test.done();
+    },
+
+    testUnitFormatWithUsageEngineVolumeConvert2: function(test) {
+        test.expect(1);
+        var m1 = MeasurementFactory({
+            unit: "cubic inch",
+            amount: 45.76781
+        });
+
+        var uf = new UnitFmt({
+            usage: "engineVolume",
+            length: "short",
+            measurementSystem: "metric"
+        });
+        var str = uf.format(m1);
+        test.equal(str, "750 cc");
+        test.done();
+    },
+
+    testUnitFormatWithUsageEngineVolumeHU: function(test) {
+        test.expect(1);
+        var m1 = MeasurementFactory({
+            unit: "ml",
+            amount: 250
+        });
+
+        var uf = new UnitFmt({
+            usage: "engineVolume",
+            length: "long",
+            locale: "hu-HU"
+        });
+        var str = uf.format(m1);
+        test.equal(str, "250 köbcentiméter");
+        test.done();
+    },
+
+    testUnitFormatWithUsageEngineVolumeKM: function(test) {
+        test.expect(1);
+        var m1 = MeasurementFactory({
+            unit: "ml",
+            amount: 330.2
+        });
+
+        var uf = new UnitFmt({
+            usage: "engineVolume",
+            length: "long",
+            locale: "km-KH"
+        });
+        var str = uf.format(m1);
+        test.equal(str, "330,2 សង់ទីម៉ែត្រគូប");
+        test.done();
+    },
+
+    testUnitFormatWithUsageStorageVolume: function(test) {
+        test.expect(1);
+        var m1 = MeasurementFactory({
+            unit: "cubic foot",
+            amount: 30
+        });
+
+        var uf = new UnitFmt({
+            usage: "storageVolume",
+            length: "long"
+        });
+        var str = uf.format(m1);
+        test.equal(str, "30 cubic feet");
+        test.done();
+    },
+
+    testUnitFormatWithUsageStorageVolumeConvert: function(test) {
+        test.expect(1);
+        var m1 = MeasurementFactory({
+            unit: "cc",
+            amount: 33000
+        });
+
+        var uf = new UnitFmt({
+            usage: "storageVolume",
+            length: "long"
+        });
+        var str = uf.format(m1);
+        test.equal(str, "1 cubic foot 1.24 gallons");
+        test.done();
+    },
+
+    testUnitFormatWithUsageStorageVolumeShort: function(test) {
+        test.expect(1);
+        var m1 = MeasurementFactory({
+            unit: "cubic feet",
+            amount: 22.4
+        });
+
+        var uf = new UnitFmt({
+            usage: "storageVolume",
+            length: "short"
+        });
+        var str = uf.format(m1);
+        test.equal(str, "22.4 cu ft");
+        test.done();
+    },
+
+    testUnitFormatWithUsageStorageVolumeScale: function(test) {
+        test.expect(1);
+        var m1 = MeasurementFactory({
+            unit: "ounce",
+            amount: 1000
+        });
+
+        var uf = new UnitFmt({
+            usage: "storageVolume",
+            length: "short"
+        });
+        var str = uf.format(m1);
+        test.equal(str, "1 cu ft 0.332 gal");
+        test.done();
+    },
+
+    testUnitFormatWithUsageStorageVolumeScaleMetric: function(test) {
+        test.expect(1);
+        var m1 = MeasurementFactory({
+            unit: "liter",
+            amount: 12343
+        });
+
+        var uf = new UnitFmt({
+            usage: "storageVolume",
+            length: "short",
+            measurementSystem: "metric"
+        });
+        var str = uf.format(m1);
+        test.equal(str, "12,343 cu m");
+        test.done();
+    },
+
+    testUnitFormatWithUsageStorageVolumeConvert2: function(test) {
+        test.expect(1);
+        var m1 = MeasurementFactory({
+            unit: "liter",
+            amount: 45.76781
+        });
+
+        var uf = new UnitFmt({
+            usage: "storageVolume",
+            length: "short",
+            measurementSystem: "metric"
+        });
+        var str = uf.format(m1);
+        test.equal(str, "1 cu ft 4.41 gal");
+        test.done();
+    },
+
+    testUnitFormatWithUsageStorageVolumeCA: function(test) {
+        test.expect(1);
+        var m1 = MeasurementFactory({
+            unit: "liter",
+            amount: 2500
+        });
+
+        var uf = new UnitFmt({
+            usage: "storageVolume",
+            length: "long",
+            locale: "fr-CA"
+        });
+        var str = uf.format(m1);
+        test.equal(str, "2 mètres cubes 500 litres");
+        test.done();
+    },
+
+    testUnitFormatWithUsageStorageVolumeBY: function(test) {
+        test.expect(1);
+        var m1 = MeasurementFactory({
+            unit: "cubic meter",
+            amount: 3.2
+        });
+
+        var uf = new UnitFmt({
+            usage: "storageVolume",
+            length: "long",
+            locale: "be-BY"
+        });
+        var str = uf.format(m1);
+        test.equal(str, "3 кубічныя метры 200 літра");
+        test.done();
+    },
+
 };
