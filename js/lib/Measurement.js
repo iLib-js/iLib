@@ -17,6 +17,8 @@
  * limitations under the License.
  */
 
+// !depends JSUtils MathUtils Locale
+
 var JSUtils = require("./JSUtils.js");
 var MathUtils = require("./MathUtils.js");
 var Locale = require("./Locale.js");
@@ -38,7 +40,27 @@ function round(number, precision) {
  * @private
  * @constructor
  */
-var Measurement = function() {
+var Measurement = function(options) {
+    if (options) {
+        if (typeof(options.unit) !== 'undefined') {
+            this.originalUnit = options.unit;
+            this.unit = this.normalizeUnits(options.unit) || options.unit;
+        }
+
+        if (typeof(options.amount) === 'object') {
+            if (options.amount.getMeasure() === this.getMeasure()) {
+                this.amount = options.amount.convert(this.unit);
+            } else {
+                throw "Cannot convert units " + options.amount.unit + " to a " + this.getMeasure();
+            }
+        } else if (typeof(options.amount) !== 'undefined') {
+            this.amount = Number(options.amount);
+        }
+        
+        if (typeof(this.ratios[this.unit]) === 'undefined') {
+            throw "Unknown unit: " + options.unit;
+        }
+    }
 };
 
 /**
@@ -108,16 +130,81 @@ Measurement.prototype = {
     getMeasure: function() {},
 
     /**
-     * Return a new measurement instance that is converted to a new
+     * Return an array of all units that this measurement types supports.
+     * 
+     * @return {Array.<string>} an array of all units that this measurement 
+     * types supports
+     */
+    getMeasures: function () {
+        return Object.keys(this.ratios);
+    },
+    
+    /**
+     * Return the name of the measurement system that the current
+     * unit is a part of.
+     * 
+     * @returns {string} the name of the measurement system for 
+     * the units of this measurement
+     */
+    getMeasurementSystem: function() {
+        if (JSUtils.indexOf(this.systems.uscustomary, this.unit) > -1) {
+            return "uscustomary";
+        }
+        
+        if (JSUtils.indexOf(this.systems.imperial, this.unit) > -1) {
+            return "imperial";
+        }
+        
+        return "metric";
+    },
+
+    /**
+     * Localize the measurement to the commonly used measurement in that locale. For example
+     * If a user's locale is "en-US" and the measurement is given as "60 kmh",
+     * the formatted number should be automatically converted to the most appropriate
+     * measure in the other system, in this case, mph. The formatted result should
+     * appear as "37.3 mph".
+     *
+     * @param {string} locale current locale string
+     * @returns {Measurement} a new instance that is converted to locale
+     */
+    localize: function(locale) {
+        var to;
+        var toSystem = Measurement.getMeasurementSystemForLocale(locale);
+        var fromSystem = this.getMeasurementSystem();
+        to = this.systems.conversions[fromSystem] && 
+            this.systems.conversions[fromSystem][toSystem] &&
+            this.systems.conversions[fromSystem][toSystem][this.unit];
+        
+        return to ? this.newUnit({
+            unit: to,
+            amount: this.convert(to)
+        }) : this;
+    },
+
+    /**
+     * Return a new measurement instance that is converted to a different
      * measurement unit. Measurements can only be converted
      * to measurements of the same type.<p>
      *
-     * @param {string} to The name of the units to convert to
-     * @return {Measurement|undefined} the converted measurement
-     * or undefined if the requested units are for a different
-     * measurement type
+     * @param {string} to the name of the units to convert this measurement to
+     * @return {number} the amount corresponding to the requested unit
      */
-    convert: function(to) {},
+    convert: function(to) {
+        if (!to || typeof(this.ratios[this.normalizeUnits(to)]) === 'undefined') {
+            return undefined;
+        }
+        
+        var from = this.getUnitIdCaseInsensitive(this.unit) || this.unit;
+        to = this.getUnitIdCaseInsensitive(to) || to;
+        if (typeof(from) === 'undefined' || typeof(to) === 'undefined') {
+            return undefined;
+        }
+        
+        var fromRow = this.ratios[from];
+        var toRow = this.ratios[to];
+        return this.amount * fromRow[toRow[0]];
+    },
 
     /**
      * Scale the measurement unit to an acceptable level. The scaling
@@ -127,24 +214,43 @@ Measurement.prototype = {
      * fractions. Measurements can only be scaled to other measurements
      * of the same type.
      *
-     * @param {string=} measurementsystem system to use (uscustomary|imperial|metric),
-     * or undefined if the system can be inferred from the current measure
+     * @param {Object=} units mapping from the measurement system to the units to use
+     * for this scaling. If this is not defined, this measurement type will use the
+     * set of units that it knows about for the given measurement system
      * @return {Measurement} a new instance that is scaled to the
      * right level
      */
-    scale: function(measurementsystem) {},
+    scale: function(measurementsystem, units) {
+        var systemName = this.getMeasurementSystem();
+        var mSystem = (units && units[systemName]) ? units[systemName] : (this.systems[systemName] || this.systems.metric);
 
+        return this.newUnit(this.scaleUnits(mSystem));
+    },
+    
     /**
-     * Localize the measurement to the commonly used measurement in that locale, for example
-     * If a user's locale is "en-US" and the measurement is given as "60 kmh",
-     * the formatted number should be automatically converted to the most appropriate
-     * measure in the other system, in this case, mph. The formatted result should
-     * appear as "37.3 mph".
+     * Expand the current measurement such that any fractions of the current unit
+     * are represented in terms of smaller units in the same system instead of fractions
+     * of the current unit. For example, "6.25 feet" may be represented as
+     * "6 feet 4 inches" instead. The return value is an array of measurements which
+     * are progressively smaller until the smallest unit in the system is reached
+     * or until there is a whole number of any unit along the way.
      *
-     * @param {string} locale current locale string
-     * @returns {Measurement} a new instance that is converted to locale
+     * @param {string=} measurementsystem system to use (uscustomary|imperial|metric),
+     * or undefined if the system can be inferred from the current measure
+     * @param {Object=} units object containing a mapping between the measurement system
+     * and an array of units to use to restrict the expansion to
+     * @return {Array.<Measurement>} an array of new measurements in order from
+     * the current units to the smallest units in the system which together are the
+     * same measurement as this one
      */
-    localize: function(locale) {},
+    expand: function(measurementsystem, units) {
+        var systemName = this.getMeasurementSystem();
+        var mSystem = (units && units[systemName]) ? units[systemName] : (this.systems[systemName] || this.systems.metric);
+
+        return this.list(mSystem, this.ratios).map(function(item) {
+            return this.newUnit(item);
+        }.bind(this));
+    },
 
     /**
      * Convert the current measurement to a list of measures
@@ -239,6 +345,80 @@ Measurement.prototype = {
         }
 
         return ret;
+    },
+    
+    /**
+     * @private
+     */
+    scaleUnits: function(mSystem) {
+        var munit, amount = 18446744073709551999;
+        var fromRow = this.ratios[this.unit];
+        
+        for (var m = 0; m < mSystem.length; m++) {
+            var tmp = this.amount * fromRow[this.ratios[mSystem[m]][0]];
+            if (tmp >= 1 && tmp < amount) {
+                amount = tmp;
+                munit = mSystem[m];
+            }
+        }
+        
+        return {
+            unit: munit,
+            amount: amount
+        };
+    },
+    
+    /**
+     * @private
+     * 
+     * Return the normalized units identifier for the given unit. This looks up the units
+     * in the aliases list and returns the normalized unit id.
+     *
+     * @static
+     * @param {Measurement} measurement the class of measure being searched
+     * @param {String} unit the unit to find
+     * @returns {String|undefined} the normalized identifier for the given unit, or
+     * undefined if there is no such unit in this type of measurement
+     */
+    getUnitId: function(unit) {
+        if (!unit) return undefined;
+
+        if (this.aliases && typeof(this.aliases[unit]) !== 'undefined') {
+            return this.aliases[unit];
+        }
+
+        if (this.ratios && typeof(this.ratios[unit]) !== 'undefined') {
+            return unit;
+        }
+
+        return undefined;
+    },
+
+    /**
+     * Return the normalized units identifier for the given unit, searching case-insensitively.
+     * This has the risk that things may match erroneously because many short form unit strings
+     * are case-sensitive. This should method be used as a last resort if no case-sensitive match
+     * is found amongst all the different types of measurements.
+     *
+     * @static
+     * @param {Measurement} measurement the class of measure being searched
+     * @param {String} unit the unit to find
+     * @returns {String|undefined} the normalized identifier for the given unit, or
+     * undefined if there is no such unit in this type of measurement
+     */
+    getUnitIdCaseInsensitive: function(unit) {
+        if (!unit) return false;
+
+        // try with the original case first, just in case that works
+        var ret = this.getUnitId(unit);
+        if (ret) return ret;
+
+        var u = unit.toLowerCase();
+        if (this.aliasesLower && typeof(this.aliasesLower[u]) !== 'undefined') {
+            return this.aliasesLower[u];
+        }
+
+        return undefined;
     }
 };
 

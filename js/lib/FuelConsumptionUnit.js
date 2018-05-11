@@ -253,10 +253,13 @@ FuelConsumptionUnit.convert = function(to, from, fuelConsumption) {
  *
  * @param {string=} measurementsystem system to use (uscustomary|imperial|metric),
  * or undefined if the system can be inferred from the current measure
+ * @param {Object=} units mapping from the measurement system to the units to use
+ * for this scaling. If this is not defined, this measurement type will use the
+ * set of units that it knows about for the given measurement system
  * @return {Measurement} a new instance that is scaled to the
  * right level
  */
-FuelConsumptionUnit.prototype.scale = function(measurementsystem) {
+FuelConsumptionUnit.prototype.scale = function(measurementsystem, units) {
     return new FuelConsumptionUnit({
         unit: this.unit,
         amount: this.amount
@@ -273,11 +276,14 @@ FuelConsumptionUnit.prototype.scale = function(measurementsystem) {
  *
  * @param {string=} measurementsystem system to use (uscustomary|imperial|metric),
  * or undefined if the system can be inferred from the current measure
+ * @param {Object=} units mapping from the measurement system to the units to use
+ * for this scaling. If this is not defined, this measurement type will use the
+ * set of units that it knows about for the given measurement system
  * @return {Array.<Measurement>} an array of new measurements in order from
  * the current units to the smallest units in the system which together are the
  * same measurement as this one
  */
-FuelConsumptionUnit.prototype.expand = function(measurementsystem) {
+FuelConsumptionUnit.prototype.expand = function(measurementsystem, units) {
     return [this]; // nothing to expand
 };
 

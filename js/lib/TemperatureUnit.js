@@ -179,11 +179,13 @@ TemperatureUnit.prototype.scale = function(measurementsystem) {
  *
  * @param {string=} measurementsystem system to use (uscustomary|imperial|metric),
  * or undefined if the system can be inferred from the current measure
+ * @param {Object=} units object containing a mapping between the measurement system
+ * and an array of units to use to restrict the expansion to
  * @return {Array.<Measurement>} an array of new measurements in order from
  * the current units to the smallest units in the system which together are the
  * same measurement as this one
  */
-TemperatureUnit.prototype.expand = function(measurementsystem) {
+TemperatureUnit.prototype.expand = function(measurementsystem, units) {
     return [this]; // nothing to expand
 }
 

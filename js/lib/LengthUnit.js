@@ -36,29 +36,15 @@ var Measurement = require("./Measurement.js");
  * the construction of this instance
  */
 var LengthUnit = function (options) {
-	this.unit = "meter";
-	this.amount = 0;
+    this.unit = "meter";
+    this.amount = 0;
 
-	if (options) {
-		if (typeof(options.unit) !== 'undefined') {
-			this.originalUnit = options.unit;
-			this.unit = this.normalizeUnits(options.unit) || options.unit;
-		}
+    this.ratios = LengthUnit.ratios;
+    this.aliases = LengthUnit.aliases;
+    this.aliasesLower = LengthUnit.aliasesLower;
+    this.systems = LengthUnit.systems;
 
-		if (typeof(options.amount) === 'object') {
-			if (options.amount.getMeasure() === "length") {
-				this.amount = LengthUnit.convert(this.unit, options.amount.getUnit(), options.amount.getAmount());
-			} else {
-				throw "Cannot convert unit " + options.amount.unit + " to a length";
-			}
-		} else if (typeof(options.amount) !== 'undefined') {
-			this.amount = parseFloat(options.amount);
-		}
-	}
-
-	if (typeof(LengthUnit.ratios[this.unit]) === 'undefined') {
-		throw "Unknown unit: " + options.unit;
-	}
+    this.parent(options);
 };
 
 LengthUnit.prototype = new Measurement();
@@ -84,51 +70,89 @@ LengthUnit.ratios = {
     "gigameter":     [ 15,  1e15,        1e12,        1e9,         3.93701e10,  1e8,         3.28084e9,    1.09361e9,    1e7,          1e6,           1e5,            1e4,            621373.0,     539957.0,     1000,           1               ]
 };
 
-LengthUnit.metricSystem = {
-    "micrometer": 1,
-    "millimeter": 2,
-    "centimeter": 3,
-    "decimeter": 5,
-    "meter": 8,
-    "decameter": 9,
-    "hectometer": 10,
-    "kilometer": 11,
-    "megameter": 14,
-    "gigameter": 15
-};
-LengthUnit.imperialSystem = {
-    "inch": 4,
-    "foot": 6,
-    "yard": 7,
-    "mile": 12,
-    "nautical-mile": 13
-};
-LengthUnit.uscustomarySystem = {
-    "inch": 4,
-    "foot": 6,
-    "yard": 7,
-    "mile": 12,
-    "nautical-mile": 13
+/**
+ * Return a new instance of this type of measurement.
+ * 
+ * @param {Object} params parameters to the constructor
+ * @return {Measurement} a measurement subclass instance
+ */
+LengthUnit.prototype.newUnit = function(params) {
+    return new LengthUnit(params);
 };
 
-LengthUnit.metricToUScustomary = {
-    "micrometer": "inch",
-    "millimeter": "inch",
-    "centimeter": "inch",
-    "decimeter": "inch",
-    "meter": "yard",
-    "decameter": "yard",
-    "hectometer": "mile",
-    "kilometer": "mile",
-    "megameter": "mile",
-    "gigameter": "mile"
-};
-LengthUnit.usCustomaryToMetric = {
-    "inch": "centimeter",
-    "foot": "centimeter",
-    "yard": "meter",
-    "mile": "kilometer",
-    "nautical-mile": "kilometer"
+LengthUnit.systems = {
+    "metric": [
+        "micrometer",
+        "millimeter",
+        "centimeter",
+        "decimeter",
+        "meter",
+        "decameter",
+        "hectometer",
+        "kilometer",
+        "megameter",
+        "gigameter"
+    ],
+    "imperial": [
+        "inch",
+        "foot",
+        "yard",
+        "mile",
+        "nautical-mile"
+    ],
+    "uscustomary": [
+        "inch",
+        "foot",
+        "yard",
+        "mile",
+        "nautical-mile"
+    ],
+    "conversions": {
+        "metric": {
+            "uscustomary": {
+                "micrometer": "inch",
+                "millimeter": "inch",
+                "centimeter": "inch",
+                "decimeter": "inch",
+                "meter": "yard",
+                "decameter": "yard",
+                "hectometer": "mile",
+                "kilometer": "mile",
+                "megameter": "mile",
+                "gigameter": "mile"
+            },
+            "imperial": {
+                "micrometer": "inch",
+                "millimeter": "inch",
+                "centimeter": "inch",
+                "decimeter": "inch",
+                "meter": "yard",
+                "decameter": "yard",
+                "hectometer": "mile",
+                "kilometer": "mile",
+                "megameter": "mile",
+                "gigameter": "mile"
+            }
+        },
+        "uscustomary": {
+            "metric": {
+                "inch": "centimeter",
+                "foot": "centimeter",
+                "yard": "meter",
+                "mile": "kilometer",
+                "nautical-mile": "kilometer"
+            }
+        },
+        "imperial": {
+            "metric": {
+                "inch": "centimeter",
+                "foot": "centimeter",
+                "yard": "meter",
+                "mile": "kilometer",
+                "nautical-mile": "kilometer"
+            }
+        }
+    }
 };
 
 /**
@@ -144,230 +168,79 @@ LengthUnit.usCustomaryToMetric = {
  * @returns {string} the name of the type of this measurement
  */
 LengthUnit.prototype.getMeasure = function() {
-	return "length";
-};
-
-/**
- * Return the name of the measurement system that the current
- * unit is a part of.
- * 
- * @returns {string} the name of the measurement system for 
- * the units of this measurement
- */
-LengthUnit.prototype.getMeasurementSystem = function() {
-    if (LengthUnit.uscustomarySystem[this.unit]) {
-        return "uscustomary";
-    }
-    
-    if (LengthUnit.imperialSystem[this.unit]) {
-        return "imperial";
-    }
-    
-    return "metric";
-};
-
-/**
- * Localize the measurement to the commonly used measurement in that locale. For example
- * If a user's locale is "en-US" and the measurement is given as "60 kmh",
- * the formatted number should be automatically converted to the most appropriate
- * measure in the other system, in this case, mph. The formatted result should
- * appear as "37.3 mph".
- *
- * @param {string} locale current locale string
- * @returns {Measurement} a new instance that is converted to locale
- */
-LengthUnit.prototype.localize = function(locale) {
-    var to;
-    var system = Measurement.getMeasurementSystemForLocale(locale);
-    
-    // imperial is the same as US customary for lengths
-    if (system === "uscustomary" || system === "imperial") {
-        to = LengthUnit.metricToUScustomary[this.unit] || this.unit;
-    } else {
-        to = LengthUnit.usCustomaryToMetric[this.unit] || this.unit;
-    }
-    return new LengthUnit({
-        unit: to,
-        amount: this
-    });
-};
-
-/**
- * Return a new measurement instance that is converted to a new
- * measurement unit. Measurements can only be converted
- * to measurements of the same type.<p>
- *
- * @param {string} to The name of the units to convert to
- * @return {Measurement|undefined} the converted measurement
- * or undefined if the requested units are for a different
- * measurement type
- */
-LengthUnit.prototype.convert = function(to) {
-	if (!to || typeof(LengthUnit.ratios[this.normalizeUnits(to)]) === 'undefined') {
-		return undefined;
-	}
-	return new LengthUnit({
-		unit: to,
-		amount: this
-	});
-};
-
-/**
- * Scale the measurement unit to an acceptable level. The scaling
- * happens so that the integer part of the amount is as small as
- * possible without being below zero. This will result in the
- * largest units that can represent this measurement without
- * fractions. Measurements can only be scaled to other measurements
- * of the same type.
- *
- * @param {string=} measurementsystem system to use (uscustomary|imperial|metric),
- * or undefined if the system can be inferred from the current measure
- * @param {Object=} units mapping from the measurement system to the units to use
- * for this scaling. If this is not defined, this measurement type will use the
- * set of units that it knows about for the given measurement system
- * @param {string=} style the style of the formatter
- * @return {Measurement} a new instance that is scaled to the right level
- */
-LengthUnit.prototype.scale = function(measurementsystem, units, style) {
-    var systemName = this.getMeasurementSystem(),
-        mSystem;
-    if (units && units[systemName]) {
-        mSystem = units[systemName];
-    } else {
-        if (systemName === "metric") {
-            mSystem = Object.keys(LengthUnit.metricSystem);
-        } else if (systemName === "imperial") {
-            mSystem = Object.keys(LengthUnit.imperialSystem);
-        } else if (systemName === "uscustomary") {
-            mSystem = Object.keys(LengthUnit.uscustomarySystem);
-        } else {
-            return new LengthUnit({
-                unit: this.unit,
-                amount: this.amount
-            });
-        }
-    }
-
-    var length = this.amount;
-    var munit = this.unit;
-    var fromRow = LengthUnit.ratios[this.unit];
-
-    length = 18446744073709551999;
-    for (var m = 0; m < mSystem.length; m++) {
-        var tmp = this.amount * fromRow[LengthUnit.ratios[mSystem[m]][0]];
-        if (tmp >= 1 && tmp < length) {
-            length = tmp;
-            munit = mSystem[m];
-        }
-    }
-
-    return new LengthUnit({
-        unit: munit,
-        amount: length
-    });
-};
-
-/**
- * Expand the current measurement such that any fractions of the current unit
- * are represented in terms of smaller units in the same system instead of fractions
- * of the current unit. For example, "6.25 feet" may be represented as
- * "6 feet 4 inches" instead. The return value is an array of measurements which
- * are progressively smaller until the smallest unit in the system is reached
- * or until there is a whole number of any unit along the way.
- *
- * @param {string=} measurementsystem system to use (uscustomary|imperial|metric),
- * or undefined if the system can be inferred from the current measure
- * @param {Object=} units object containing a mapping between the measurement system
- * and an array of units to use to restrict the expansion to
- * @return {Array.<Measurement>} an array of new measurements in order from
- * the current units to the smallest units in the system which together are the
- * same measurement as this one
- */
-LengthUnit.prototype.expand = function(measurementsystem, units) {
-    var mSystem, systemName = this.getMeasurementSystem();
-    if (units) {
-        mSystem = units[systemName];
-    } else {
-        if (measurementsystem === "imperial" || (typeof(measurementsystem) === 'undefined'
-                && typeof(LengthUnit.imperialSystem[this.unit]) !== 'undefined')) {
-            mSystem = Object.keys(LengthUnit.imperialSystem);
-        } else if (measurementsystem === "uscustomary" || (typeof(measurementsystem) === 'undefined'
-                && typeof(LengthUnit.uscustomarySystem[this.unit]) !== 'undefined')) {
-            mSystem = Object.keys(LengthUnit.uscustomarySystem);
-        } else {
-            mSystem = Object.keys(LengthUnit.metricSystem);
-        }
-    }
-    return this.list(mSystem, LengthUnit.ratios).map(function(item) {
-        return new LengthUnit(item);
-    });
+    return "length";
 };
 
 LengthUnit.aliases = {
-	"miles": "mile",
-	"mile":"mile",
-	"nauticalmiles": "nautical-mile",
-	"nautical mile": "nautical-mile",
-	"nautical miles": "nautical-mile",
-	"nauticalmile":"nautical-mile",
-	"yards": "yard",
-	"yard": "yard",
-	"feet": "foot",
-	"foot": "foot",
-	"inches": "inch",
-	"inch": "inch",
-	"in": "inch",
-	"meters": "meter",
-	"metre": "meter",
-	"metres": "meter",
-	"m": "meter",
-	"meter": "meter",
-	"micrometers": "micrometer",
-	"micrometres": "micrometer",
-	"micrometre": "micrometer",
-	"µm": "micrometer",
-	"micrometer": "micrometer",
-	"millimeters": "millimeter",
-	"millimetres": "millimeter",
-	"millimetre": "millimeter",
-	"mm": "millimeter",
-	"millimeter": "millimeter",
-	"centimeters": "centimeter",
-	"centimetres": "centimeter",
-	"centimetre": "centimeter",
-	"cm": "centimeter",
-	"centimeter": "centimeter",
-	"decimeters": "decimeter",
-	"decimetres": "decimeter",
-	"decimetre": "decimeter",
-	"dm": "decimeter",
-	"decimeter": "decimeter",
-	"decameters": "decameter",
-	"decametres": "decameter",
-	"decametre": "decameter",
-	"dam": "decameter",
-	"decameter": "decameter",
-	"hectometers": "hectometer",
-	"hectometres": "hectometer",
-	"hectometre": "hectometer",
-	"hm": "hectometer",
-	"hectometer": "hectometer",
-	"kilometers": "kilometer",
-	"kilometres": "kilometer",
-	"kilometre": "kilometer",
-	"km": "kilometer",
-	"kilometer": "kilometer",
-	"megameters": "megameter",
-	"megametres": "megameter",
-	"megametre": "megameter",
-	"Mm": "megameter",
-	"megameter": "megameter",
-	"gigameters": "gigameter",
-	"gigametres": "gigameter",
-	"gigametre": "gigameter",
-	"Gm": "gigameter",
-	"gigameter": "gigameter"
+    "miles": "mile",
+    "mile":"mile",
+    "nauticalmiles": "nautical-mile",
+    "nautical mile": "nautical-mile",
+    "nautical miles": "nautical-mile",
+    "nauticalmile":"nautical-mile",
+    "yards": "yard",
+    "yard": "yard",
+    "feet": "foot",
+    "foot": "foot",
+    "inches": "inch",
+    "inch": "inch",
+    "in": "inch",
+    "meters": "meter",
+    "metre": "meter",
+    "metres": "meter",
+    "m": "meter",
+    "meter": "meter",
+    "micrometers": "micrometer",
+    "micrometres": "micrometer",
+    "micrometre": "micrometer",
+    "µm": "micrometer",
+    "micrometer": "micrometer",
+    "millimeters": "millimeter",
+    "millimetres": "millimeter",
+    "millimetre": "millimeter",
+    "mm": "millimeter",
+    "millimeter": "millimeter",
+    "centimeters": "centimeter",
+    "centimetres": "centimeter",
+    "centimetre": "centimeter",
+    "cm": "centimeter",
+    "centimeter": "centimeter",
+    "decimeters": "decimeter",
+    "decimetres": "decimeter",
+    "decimetre": "decimeter",
+    "dm": "decimeter",
+    "decimeter": "decimeter",
+    "decameters": "decameter",
+    "decametres": "decameter",
+    "decametre": "decameter",
+    "dam": "decameter",
+    "decameter": "decameter",
+    "hectometers": "hectometer",
+    "hectometres": "hectometer",
+    "hectometre": "hectometer",
+    "hm": "hectometer",
+    "hectometer": "hectometer",
+    "kilometers": "kilometer",
+    "kilometres": "kilometer",
+    "kilometre": "kilometer",
+    "km": "kilometer",
+    "kilometer": "kilometer",
+    "megameters": "megameter",
+    "megametres": "megameter",
+    "megametre": "megameter",
+    "Mm": "megameter",
+    "megameter": "megameter",
+    "gigameters": "gigameter",
+    "gigametres": "gigameter",
+    "gigametre": "gigameter",
+    "Gm": "gigameter",
+    "gigameter": "gigameter"
 };
+
+LengthUnit.aliasesLower = {};
+for (var a in this.aliases) {
+    LengthUnit.aliasesLower[a.toLowerCase()] = LengthUnit.aliases[a];
+}
 
 /**
  * Convert a length to another measure.

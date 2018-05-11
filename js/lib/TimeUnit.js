@@ -34,29 +34,15 @@ var Measurement = require("./Measurement.js");
  * the construction of this instance
  */
 var TimeUnit = function (options) {
-	this.unit = "second";
-	this.amount = 0;
+    this.unit = "second";
+    this.amount = 0;
 
-	if (options) {
-		if (typeof(options.unit) !== 'undefined') {
-			this.originalUnit = options.unit;
-			this.unit = this.normalizeUnits(options.unit) || options.unit;
-		}
+    this.ratios = TimeUnit.ratios;
+    this.aliases = TimeUnit.aliases;
+    this.aliasesLower = TimeUnit.aliasesLower;
+    this.systems = TimeUnit.systems;
 
-		if (typeof(options.amount) === 'object') {
-			if (options.amount.getMeasure() === "time") {
-				this.amount = TimeUnit.convert(this.unit, options.amount.getUnit(), options.amount.getAmount());
-			} else {
-				throw "Cannot convert units " + options.amount.unit + " to a time";
-			}
-		} else if (typeof(options.amount) !== 'undefined') {
-			this.amount = parseFloat(options.amount);
-		}
-	}
-
-	if (typeof(TimeUnit.ratios[this.unit]) === 'undefined') {
-		throw "Unknown unit: " + options.unit;
-	}
+    this.parent(options);
 };
 
 TimeUnit.prototype = new Measurement();
@@ -64,12 +50,12 @@ TimeUnit.prototype.parent = Measurement;
 TimeUnit.prototype.constructor = TimeUnit;
 
 TimeUnit.ratios = {
-	/*              index  nsec        msec        mlsec       sec        min          hour          day           week         month        year         decade        century    */
-	"nanosecond":   [ 1,   1,          0.001,      1e-6,       1e-9,      1.6667e-11,  2.7778e-13,   1.1574e-14,   1.6534e-15,  3.8027e-16,  3.1689e-17,  3.1689e-18,   3.1689e-19  ],
-	"microsecond":  [ 2,   1000,       1,          0.001,      1e-6,      1.6667e-8,   2.7778e-10,   1.1574e-11,   1.6534e-12,  3.8027e-13,  3.1689e-14,  3.1689e-15,   3.1689e-16  ],
-	"millisecond":  [ 3,   1e+6,       1000,       1,          0.001,     1.6667e-5,   2.7778e-7,    1.1574e-8,    1.6534e-9,   3.8027e-10,  3.1689e-11,  3.1689e-12,   3.1689e-13  ],
-	"second":       [ 4,   1e+9,       1e+6,       1000,       1,         0.0166667,   0.000277778,  1.1574e-5,    1.6534e-6,   3.8027e-7,   3.1689e-8,   3.1689e-9,    3.1689e-10  ],
-	"minute":       [ 5,   6e+10,      6e+7,       60000,      60,        1,           0.0166667,    0.000694444,  9.9206e-5,   2.2816e-5,   1.9013e-6,   1.9013e-7,    1.9013e-8   ],
+    /*              index  nsec        msec        mlsec       sec        min          hour          day           week         month        year         decade        century    */
+    "nanosecond":   [ 1,   1,          0.001,      1e-6,       1e-9,      1.6667e-11,  2.7778e-13,   1.1574e-14,   1.6534e-15,  3.8027e-16,  3.1689e-17,  3.1689e-18,   3.1689e-19  ],
+    "microsecond":  [ 2,   1000,       1,          0.001,      1e-6,      1.6667e-8,   2.7778e-10,   1.1574e-11,   1.6534e-12,  3.8027e-13,  3.1689e-14,  3.1689e-15,   3.1689e-16  ],
+    "millisecond":  [ 3,   1e+6,       1000,       1,          0.001,     1.6667e-5,   2.7778e-7,    1.1574e-8,    1.6534e-9,   3.8027e-10,  3.1689e-11,  3.1689e-12,   3.1689e-13  ],
+    "second":       [ 4,   1e+9,       1e+6,       1000,       1,         0.0166667,   0.000277778,  1.1574e-5,    1.6534e-6,   3.8027e-7,   3.1689e-8,   3.1689e-9,    3.1689e-10  ],
+    "minute":       [ 5,   6e+10,      6e+7,       60000,      60,        1,           0.0166667,    0.000694444,  9.9206e-5,   2.2816e-5,   1.9013e-6,   1.9013e-7,    1.9013e-8   ],
     "hour":         [ 6,   3.6e+12,    3.6e+9,     3.6e+6,     3600,      60,          1,            0.0416667,    0.00595238,  0.00136895,  0.00011408,  1.1408e-5,    1.1408e-6   ],
     "day":          [ 7,   8.64e+13,   8.64e+10,   8.64e+7,    86400,     1440,        24,           1,            0.142857,    0.0328549,   0.00273791,  0.000273791,  2.7379e-5   ],
     "week":         [ 8,   6.048e+14,  6.048e+11,  6.048e+8,   604800,    10080,       168,          7,            1,           0.229984,    0.0191654,   0.00191654,   0.000191654 ],
@@ -92,27 +78,18 @@ TimeUnit.ratios = {
  * @return {string} the name of the type of this measurement
  */
 TimeUnit.prototype.getMeasure = function() {
-	return "time";
+    return "time";
 };
 
-/**
- * Return a new measurement instance that is converted to a new
- * measurement unit. Measurements can only be converted
- * to measurements of the same type.<p>
- *
- * @param {string} to The name of the units to convert to
- * @return {Measurement|undefined} the converted measurement
- * or undefined if the requested units are for a different
- * measurement type
- */
-TimeUnit.prototype.convert = function(to) {
-	if (!to || typeof(TimeUnit.ratios[this.normalizeUnits(to)]) === 'undefined') {
-		return undefined;
-	}
-	return new TimeUnit({
-		unit: to,
-		amount: this
-	});
+TimeUnit.systems = {
+    "metric": [],
+    "uscustomary": [],
+    "imperial": [],
+    "conversions": {
+        "metric": {},
+        "uscustomary": {},
+        "imperial": {}
+    }
 };
 
 TimeUnit.aliases = {
@@ -281,11 +258,13 @@ TimeUnit.prototype.scale = function(measurementsystem) {
  *
  * @param {string=} measurementsystem system to use (uscustomary|imperial|metric),
  * or undefined if the system can be inferred from the current measure
+ * @param {Object=} units object containing a mapping between the measurement system
+ * and an array of units to use to restrict the expansion to
  * @return {Array.<Measurement>} an array of new measurements in order from
  * the current units to the smallest units in the system which together are the
  * same measurement as this one
  */
-TimeUnit.prototype.expand = function(measurementsystem) {
+TimeUnit.prototype.expand = function(measurementsystem, units) {
     return this.list(Object.keys(TimeUnit.ratios), TimeUnit.ratios).map(function(item) {
         return new TimeUnit(item);
     });

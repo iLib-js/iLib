@@ -297,10 +297,13 @@ MassUnit.convert = function(to, from, mass) {
  *
  * @param {string=} measurementsystem system to use (uscustomary|imperial|metric),
  * or undefined if the system can be inferred from the current measure
+ * @param {Object=} units mapping from the measurement system to the units to use
+ * for this scaling. If this is not defined, this measurement type will use the
+ * set of units that it knows about for the given measurement system
  * @return {Measurement} a new instance that is scaled to the
  * right level
  */
-MassUnit.prototype.scale = function(measurementsystem) {
+MassUnit.prototype.scale = function(measurementsystem, units) {
     var mSystem;
     if (measurementsystem === "metric" || (typeof(measurementsystem) === 'undefined'
             && typeof(MassUnit.metricSystem[this.unit]) !== 'undefined')) {
@@ -348,26 +351,29 @@ MassUnit.prototype.scale = function(measurementsystem) {
  *
  * @param {string=} measurementsystem system to use (uscustomary|imperial|metric),
  * or undefined if the system can be inferred from the current measure
+ * @param {Object=} units object containing a mapping between the measurement system
+ * and an array of units to use to restrict the expansion to
  * @return {Array.<Measurement>} an array of new measurements in order from
  * the current units to the smallest units in the system which together are the
  * same measurement as this one
  */
-MassUnit.prototype.expand = function(measurementsystem) {
-    var mSystem;
-    if (measurementsystem === "metric" || (typeof(measurementsystem) === 'undefined'
-            && typeof(MassUnit.metricSystem[this.unit]) !== 'undefined')) {
-        mSystem = MassUnit.metricSystem;
-    } else if (measurementsystem === "imperial" || (typeof(measurementsystem) === 'undefined'
-            && typeof(MassUnit.imperialSystem[this.unit]) !== 'undefined')) {
-        mSystem = MassUnit.imperialSystem;
-    } else if (measurementsystem === "uscustomary" || (typeof(measurementsystem) === 'undefined'
-            && typeof(MassUnit.uscustomarySystem[this.unit]) !== 'undefined')) {
-        mSystem = MassUnit.uscustomarySystem;
+MassUnit.prototype.expand = function(measurementsystem, units) {
+    var mSystem, systemName = this.getMeasurementSystem();
+    if (units) {
+        mSystem = units[systemName];
     } else {
-        mSystem = MassUnit.metricSystem;
+        if (measurementsystem === "imperial" || (typeof(measurementsystem) === 'undefined'
+            && typeof(MassUnit.imperialSystem[this.unit]) !== 'undefined')) {
+            mSystem = Object.keys(MassUnit.imperialSystem);
+        } else if (measurementsystem === "uscustomary" || (typeof(measurementsystem) === 'undefined'
+            && typeof(MassUnit.uscustomarySystem[this.unit]) !== 'undefined')) {
+            mSystem = Object.keys(MassUnit.uscustomarySystem);
+        } else {
+            mSystem = Object.keys(MassUnit.metricSystem);
+        }
     }
 
-    return this.list(Object.keys(mSystem), MassUnit.ratios).map(function(item) {
+    return this.list(mSystem, MassUnit.ratios).map(function(item) {
         return new MassUnit(item);
     });
 }

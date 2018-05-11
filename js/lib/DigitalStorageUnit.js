@@ -160,10 +160,13 @@ DigitalStorageUnit.prototype.localize = function(locale) {
  *
  * @param {string=} measurementsystem system to use (uscustomary|imperial|metric),
  * or undefined if the system can be inferred from the current measure
+ * @param {Object=} units mapping from the measurement system to the units to use
+ * for this scaling. If this is not defined, this measurement type will use the
+ * set of units that it knows about for the given measurement system
  * @return {Measurement} a new instance that is scaled to the
  * right level
  */
-DigitalStorageUnit.prototype.scale = function(measurementsystem) {
+DigitalStorageUnit.prototype.scale = function(measurementsystem, units) {
     var mSystem;
     if (this.unit in DigitalStorageUnit.byteSystem) {
         mSystem = DigitalStorageUnit.byteSystem;
@@ -200,19 +203,26 @@ DigitalStorageUnit.prototype.scale = function(measurementsystem) {
  *
  * @param {string=} measurementsystem system to use (uscustomary|imperial|metric),
  * or undefined if the system can be inferred from the current measure
+ * @param {Object=} units mapping from the measurement system to the units to use
+ * for this scaling. If this is not defined, this measurement type will use the
+ * set of units that it knows about for the given measurement system
  * @return {Array.<Measurement>} an array of new measurements in order from
  * the current units to the smallest units in the system which together are the
  * same measurement as this one
  */
-DigitalStorageUnit.prototype.expand = function(measurementsystem) {
-    var mSystem;
-    if (this.unit in DigitalStorageUnit.byteSystem) {
-        mSystem = DigitalStorageUnit.byteSystem;
+DigitalStorageUnit.prototype.expand = function(measurementsystem, units) {
+    var mSystem, systemName = this.getMeasurementSystem();
+    if (units) {
+        mSystem = units[systemName];
     } else {
-        mSystem = DigitalStorageUnit.bitSystem;
+        if (this.unit in DigitalStorageUnit.byteSystem) {
+            mSystem = Object.keys(DigitalStorageUnit.byteSystem);
+        } else {
+            mSystem = Object.keys(DigitalStorageUnit.bitSystem);
+        }
     }
 
-    return this.list(Object.keys(mSystem), DigitalStorageUnit.ratios).map(function(item) {
+    return this.list(mSystem, DigitalStorageUnit.ratios).map(function(item) {
         return new DigitalStorageUnit(item);
     });
 };

@@ -254,10 +254,13 @@ AreaUnit.usCustomaryToMetric = {
  *
  * @param {string=} measurementsystem system to use (uscustomary|imperial|metric),
  * or undefined if the system can be inferred from the current measure
+ * @param {Object=} units mapping from the measurement system to the units to use
+ * for this scaling. If this is not defined, this measurement type will use the
+ * set of units that it knows about for the given measurement system
  * @return {Measurement} a new instance that is scaled to the
  * right level
  */
-AreaUnit.prototype.scale = function(measurementsystem) {
+AreaUnit.prototype.scale = function(measurementsystem, units) {
     var fromRow = AreaUnit.ratios[this.unit];
     var mSystem;
 
@@ -302,24 +305,30 @@ AreaUnit.prototype.scale = function(measurementsystem) {
  *
  * @param {string=} measurementsystem system to use (uscustomary|imperial|metric),
  * or undefined if the system can be inferred from the current measure
+ * @param {Object=} units mapping from the measurement system to the units to use
+ * for this scaling. If this is not defined, this measurement type will use the
+ * set of units that it knows about for the given measurement system
  * @return {Array.<Measurement>} an array of new measurements in order from
  * the current units to the smallest units in the system which together are the
  * same measurement as this one
  */
-AreaUnit.prototype.expand = function(measurementsystem) {
-    var mSystem;
-    if (measurementsystem === "metric" || (typeof(measurementsystem) === 'undefined'
-        && typeof(AreaUnit.metricSystem[this.unit]) !== 'undefined')) {
-        mSystem = AreaUnit.metricSystem;
-    } else if (measurementsystem === "uscustomary" || (typeof(measurementsystem) === 'undefined'
-        && typeof(AreaUnit.uscustomarySystem[this.unit]) !== 'undefined')) {
-        mSystem = AreaUnit.uscustomarySystem;
-    } else if (measurementsystem === "imperial" || (typeof(measurementsystem) === 'undefined'
-        && typeof(AreaUnit.imperialSystem[this.unit]) !== 'undefined')) {
-        mSystem = AreaUnit.imperialSystem;
+AreaUnit.prototype.expand = function(measurementsystem, units) {
+    var mSystem, systemName = this.getMeasurementSystem();
+    if (units) {
+        mSystem = units[systemName];
+    } else {
+        if (measurementsystem === "uscustomary" || (typeof(measurementsystem) === 'undefined'
+            && typeof(AreaUnit.uscustomarySystem[this.unit]) !== 'undefined')) {
+            mSystem = Object.keys(AreaUnit.uscustomarySystem);
+        } else if (measurementsystem === "imperial" || (typeof(measurementsystem) === 'undefined'
+            && typeof(AreaUnit.imperialSystem[this.unit]) !== 'undefined')) {
+            mSystem = Object.keys(AreaUnit.imperialSystem);
+        } else {
+            mSystem = Object.keys(AreaUnit.metricSystem);
+        }
     }
 
-    return this.list(Object.keys(mSystem), AreaUnit.ratios).map(function(item) {
+    return this.list(mSystem, AreaUnit.ratios).map(function(item) {
         return new AreaUnit(item);
     });
 };

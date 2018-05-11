@@ -42,7 +42,7 @@ module.exports.testVolume = {
         test.done();
     },
     
-    testVolumeVolumeConvertGalontoQuart: function(test) {
+    testVolumeVolumeConvertGallontoQuart: function(test) {
         test.expect(3);
         var m1 = new VolumeUnit({
             unit: "gallon",

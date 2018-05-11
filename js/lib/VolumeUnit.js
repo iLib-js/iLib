@@ -35,29 +35,15 @@ var Measurement = require("./Measurement.js");
  * the construction of this instance
  */
 var VolumeUnit = function (options) {
-	this.unit = "cubic-meter";
-	this.amount = 0;
+    this.unit = "cubic-meter";
+    this.amount = 0;
 
-	if (options) {
-		if (typeof(options.unit) !== 'undefined') {
-			this.originalUnit = options.unit;
-			this.unit = this.normalizeUnits(options.unit) || options.unit;
-		}
+    this.ratios = VolumeUnit.ratios;
+    this.aliases = VolumeUnit.aliases;
+    this.aliasesLower = VolumeUnit.aliasesLower;
+    this.systems = VolumeUnit.systems;
 
-		if (typeof(options.amount) === 'object') {
-			if (options.amount.getMeasure() === "volume") {
-				this.amount = VolumeUnit.convert(this.unit, options.amount.getUnit(), options.amount.getAmount());
-			} else {
-				throw "Cannot convert unit " + options.amount.unit + " to a volume";
-			}
-		} else if (typeof(options.amount) !== 'undefined') {
-			this.amount = parseFloat(options.amount);
-		}
-	}
-
-	if (typeof(VolumeUnit.ratios[this.unit]) === 'undefined') {
-		throw "Unknown unit: " + options.unit;
-	}
+    this.parent(options);
 };
 
 VolumeUnit.prototype = new Measurement();
@@ -99,27 +85,7 @@ VolumeUnit.ratios = {
  * @return {string} the name of the type of this measurement
  */
 VolumeUnit.prototype.getMeasure = function() {
-	return "volume";
-};
-
-/**
- * Return a new measurement instance that is converted to a new
- * measurement unit. Measurements can only be converted
- * to measurements of the same type.<p>
- *
- * @param {string} to The name of the units to convert to
- * @return {Measurement|undefined} the converted measurement
- * or undefined if the requested units are for a different
- * measurement type
- */
-VolumeUnit.prototype.convert = function(to) {
-	if (!to || typeof(VolumeUnit.ratios[this.normalizeUnits(to)]) === 'undefined') {
-		return undefined;
-	}
-	return new VolumeUnit({
-		unit: to,
-		amount: this
-	});
+    return "volume";
 };
 
 VolumeUnit.aliases = {
@@ -231,6 +197,12 @@ VolumeUnit.aliases = {
     "cui": "cubic-inch"
 };
 
+VolumeUnit.aliasesLower = {};
+for (var a in this.aliases) {
+    VolumeUnit.aliasesLower[a.toLowerCase()] = VolumeUnit.aliases[a];
+}
+
+
 /**
  * Convert a volume to another measure.
  * @static
@@ -242,13 +214,23 @@ VolumeUnit.aliases = {
 VolumeUnit.convert = function(to, from, volume) {
     from = Measurement.getUnitIdCaseInsensitive(VolumeUnit, from) || from;
     to = Measurement.getUnitIdCaseInsensitive(VolumeUnit, to) || to;
-	var fromRow = VolumeUnit.ratios[from];
-	var toRow = VolumeUnit.ratios[to];
-	if (typeof(from) === 'undefined' || typeof(to) === 'undefined') {
-		return undefined;
-	}
-	var result = volume * fromRow[toRow[0]];
+    var fromRow = VolumeUnit.ratios[from];
+    var toRow = VolumeUnit.ratios[to];
+    if (typeof(from) === 'undefined' || typeof(to) === 'undefined') {
+        return undefined;
+    }
+    var result = volume * fromRow[toRow[0]];
     return result;
+};
+
+/**
+ * Return a new instance of this type of measurement.
+ * 
+ * @param {Object} params parameters to the constructor
+ * @return {Measurement} a measurement subclass instance
+ */
+VolumeUnit.prototype.newUnit = function(params) {
+    return new VolumeUnit(params);
 };
 
 /**
@@ -259,194 +241,88 @@ VolumeUnit.getMeasures = function () {
     return Object.keys(VolumeUnit.ratios);
 };
 
-VolumeUnit.metricSystem = {
-    "milliliter": 10,
-    "liter": 11,
-    "cubic-meter": 12
-};
-VolumeUnit.imperialSystem = {
-    "teaspoon-imperial": 13,
-    "tablespoon-imperial": 14,
-    "ounce-imperial": 15,
-    "pint-imperial": 16,
-    "quart-imperial": 17,
-    "gallon-imperial": 18
-};
-VolumeUnit.uscustomarySystem = {
-    "teaspoon": 1,
-    "tablespoon": 2,
-    "cubic-inch": 3,
-    "fluid-ounce": 4,
-    "cup": 5,
-    "pint": 6,
-    "quart": 7,
-    "gallon": 8,
-    "cubic-foot": 9
-};
-
-VolumeUnit.metricToUScustomary = {
-    "milliliter": "teaspoon",
-    "liter": "quart",
-    "cubic-meter": "cubic-foot"
-};
-VolumeUnit.metricToImperial = {
-    "milliliter": "teaspoon-imperial",
-    "liter": "quart-imperial",
-    "cubic-meter": "gallon-imperial"
-};
-
-VolumeUnit.imperialToMetric = {
-    "teaspoon-imperial": "milliliter",
-    "tablespoon-imperial": "milliliter",
-    "ounce-imperial": "milliliter",
-    "pint-imperial": "liter",
-    "quart-imperial": "liter",
-    "gallon-imperial": "cubic-meter"
-};
-VolumeUnit.imperialToUScustomary = {
-    "teaspoon-imperial": "teaspoon",
-    "tablespoon-imperial": "tablespoon",
-    "ounce-imperial": "fluid-ounce",
-    "pint-imperial": "pint",
-    "quart-imperial": "quart",
-    "gallon-imperial": "gallon"
-};
-
-VolumeUnit.uScustomaryToImperial = {
-    "teaspoon": "teaspoon-imperial",
-    "tablespoon": "tablespoon-imperial",
-    "cubic-inch": "tablespoon-imperial",
-    "fluid-ounce": "ounce-imperial",
-    "cup": "ounce-imperial",
-    "pint": "pint-imperial",
-    "quart": "quart-imperial",
-    "gallon": "gallon-imperial",
-    "cubic-foot": "gallon-imperial"
-};
-VolumeUnit.uScustomarylToMetric = {
-    "teaspoon": "milliliter",
-    "tablespoon": "milliliter",
-    "cubic-inch": "milliliter",
-    "fluid-ounce": "milliliter",
-    "cup": "milliliter",
-    "pint": "liter",
-    "quart": "liter",
-    "gallon": "cubic-meter",
-    "cubic-foot": "cubic-meter"
-};
-
-/**
- * Localize the measurement to the commonly used measurement in that locale. For example
- * If a user's locale is "en-US" and the measurement is given as "60 kmh",
- * the formatted number should be automatically converted to the most appropriate
- * measure in the other system, in this case, mph. The formatted result should
- * appear as "37.3 mph".
- *
- * @param {string} locale current locale string
- * @returns {Measurement} a new instance that is converted to locale
- */
-VolumeUnit.prototype.localize = function(locale) {
-    var to;
-    var system = Measurement.getMeasurementSystemForLocale(locale);
-    if (system === "uscustomary") {
-        to = VolumeUnit.metricToUScustomary[this.unit] ||
-        VolumeUnit.imperialToUScustomary[this.unit] ||
-        this.unit;
-    } else if (system === "imperial") {
-        to = VolumeUnit.metricToImperial[this.unit] ||
-        VolumeUnit.uScustomaryToImperial[this.unit] ||
-        this.unit;
-    } else {
-        to = VolumeUnit.uScustomarylToMetric[this.unit] ||
-        VolumeUnit.imperialToUScustomary[this.unit] ||
-        this.unit;
-    }
-    return new VolumeUnit({
-        unit: to,
-        amount: this
-    });
-};
-
-/**
- * Scale the measurement unit to an acceptable level. The scaling
- * happens so that the integer part of the amount is as small as
- * possible without being below zero. This will result in the
- * largest units that can represent this measurement without
- * fractions. Measurements can only be scaled to other measurements
- * of the same type.
- *
- * @param {string=} measurementsystem system to use (uscustomary|imperial|metric),
- * or undefined if the system can be inferred from the current measure
- * @return {Measurement} a new instance that is scaled to the
- * right level
- */
-VolumeUnit.prototype.scale = function(measurementsystem) {
-    var fromRow = VolumeUnit.ratios[this.unit];
-    var mSystem;
-
-    if (measurementsystem === "metric"|| (typeof(measurementsystem) === 'undefined'
-        && typeof(VolumeUnit.metricSystem[this.unit]) !== 'undefined')) {
-        mSystem = VolumeUnit.metricSystem;
-    } else if (measurementsystem === "uscustomary" || (typeof(measurementsystem) === 'undefined'
-        && typeof(VolumeUnit.uscustomarySystem[this.unit]) !== 'undefined')) {
-        mSystem = VolumeUnit.uscustomarySystem;
-    } else if (measurementsystem === "imperial"|| (typeof(measurementsystem) === 'undefined'
-        && typeof(VolumeUnit.imperialSystem[this.unit]) !== 'undefined')) {
-        mSystem = VolumeUnit.imperialSystem;
-    }
-
-    var volume = this.amount;
-    var munit = this.unit;
-
-    volume = 18446744073709551999;
-
-    for (var m in mSystem) {
-    	var tmp = this.amount * fromRow[mSystem[m]];
-        if (tmp >= 1 && tmp < volume) {
-        	volume = tmp;
-	        munit = m;
+VolumeUnit.systems = {
+    "metric": [
+        "milliliter",
+        "liter",
+        "cubic-meter"
+    ],
+    "uscustomary": [
+        "teaspoon",
+        "tablespoon",
+        "cubic-inch",
+        "fluid-ounce",
+        "cup",
+        "pint",
+        "quart",
+        "gallon",
+        "cubic-foot"
+    ],
+    "imperial": [
+        "teaspoon-imperial",
+        "tablespoon-imperial",
+        "ounce-imperial",
+        "pint-imperial",
+        "quart-imperial",
+        "gallon-imperial"
+    ],
+    "conversions": {
+        "metric": {
+            "uscustomary": {
+                "milliliter": "teaspoon",
+                "liter": "quart",
+                "cubic-meter": "cubic-foot"
+            },
+            "imperial": {
+                "milliliter": "teaspoon-imperial",
+                "liter": "quart-imperial",
+                "cubic-meter": "gallon-imperial"
+            }
+        },
+        "imperial": {
+            "metric": {
+                "teaspoon-imperial": "milliliter",
+                "tablespoon-imperial": "milliliter",
+                "ounce-imperial": "milliliter",
+                "pint-imperial": "liter",
+                "quart-imperial": "liter",
+                "gallon-imperial": "cubic-meter"
+            },
+            "uscustomary": {
+                "teaspoon-imperial": "teaspoon",
+                "tablespoon-imperial": "tablespoon",
+                "ounce-imperial": "fluid-ounce",
+                "pint-imperial": "pint",
+                "quart-imperial": "quart",
+                "gallon-imperial": "gallon"
+            }
+        },
+        "uscustomary": {
+            "imperial": {
+                "teaspoon": "teaspoon-imperial",
+                "tablespoon": "tablespoon-imperial",
+                "cubic-inch": "tablespoon-imperial",
+                "fluid-ounce": "ounce-imperial",
+                "cup": "ounce-imperial",
+                "pint": "pint-imperial",
+                "quart": "quart-imperial",
+                "gallon": "gallon-imperial",
+                "cubic-foot": "gallon-imperial"
+            },
+            "metric": {
+                "teaspoon": "milliliter",
+                "tablespoon": "milliliter",
+                "cubic-inch": "milliliter",
+                "fluid-ounce": "milliliter",
+                "cup": "milliliter",
+                "pint": "liter",
+                "quart": "liter",
+                "gallon": "cubic-meter",
+                "cubic-foot": "cubic-meter"
+            }
         }
     }
-
-    return new VolumeUnit({
-        unit: munit,
-        amount: volume
-    });
 };
-
-/**
- * Expand the current measurement such that any fractions of the current unit
- * are represented in terms of smaller units in the same system instead of fractions
- * of the current unit. For example, "6.25 feet" may be represented as
- * "6 feet 4 inches" instead. The return value is an array of measurements which
- * are progressively smaller until the smallest unit in the system is reached
- * or until there is a whole number of any unit along the way.
- *
- * @param {string=} measurementsystem system to use (uscustomary|imperial|metric),
- * or undefined if the system can be inferred from the current measure
- * @return {Array.<Measurement>} an array of new measurements in order from
- * the current units to the smallest units in the system which together are the
- * same measurement as this one
- */
-VolumeUnit.prototype.expand = function(measurementsystem) {
-    var mSystem;
-    if (measurementsystem === "metric"|| (typeof(measurementsystem) === 'undefined'
-        && typeof(VolumeUnit.metricSystem[this.unit]) !== 'undefined')) {
-        mSystem = VolumeUnit.metricSystem;
-    } else if (measurementsystem === "uscustomary" || (typeof(measurementsystem) === 'undefined'
-        && typeof(VolumeUnit.uscustomarySystem[this.unit]) !== 'undefined')) {
-        mSystem = VolumeUnit.uscustomarySystem;
-    } else if (measurementsystem === "imperial"|| (typeof(measurementsystem) === 'undefined'
-        && typeof(VolumeUnit.imperialSystem[this.unit]) !== 'undefined')) {
-        mSystem = VolumeUnit.imperialSystem;
-    } else {
-        mSystem = VolumeUnit.metricSystem;
-    }
-
-    return this.list(Object.keys(mSystem), VolumeUnit.ratios).map(function(item) {
-        return new VolumeUnit(item);
-    });
-}
 
 //register with the factory method
 Measurement._constructors["volume"] = VolumeUnit;

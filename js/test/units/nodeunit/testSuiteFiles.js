@@ -33,6 +33,6 @@ module.exports.files = [
     "testunitfmt.js",
     "testunits.js",
     "testunitfmtasync.js",
-    "testdigitalspeed.js",
-    "testunitfmt_usages.js",
+    "testdigitalspeed.js" //,
+    //"testunitfmt_usages.js",
 ];
