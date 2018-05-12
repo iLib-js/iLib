@@ -36,26 +36,12 @@ var AreaUnit = function (options) {
 	this.unit = "square-meter";
 	this.amount = 0;
 
-	if (options) {
-		if (typeof(options.unit) !== 'undefined') {
-			this.originalUnit = options.unit;
-			this.unit = this.normalizeUnits(options.unit) || options.unit;
-		}
+    this.ratios = AreaUnit.ratios;
+    this.aliases = AreaUnit.aliases;
+    this.aliasesLower = AreaUnit.aliasesLower;
+    this.systems = AreaUnit.systems;
 
-		if (typeof(options.amount) === 'object') {
-			if (options.amount.getMeasure() === "area") {
-				this.amount = AreaUnit.convert(this.unit, options.amount.getUnit(), options.amount.getAmount());
-			} else {
-				throw "Cannot convert unit " + options.amount.unit + " to area";
-			}
-		} else if (typeof(options.amount) !== 'undefined') {
-			this.amount = parseFloat(options.amount);
-		}
-	}
-
-	if (typeof(AreaUnit.ratios[this.unit]) === 'undefined') {
-		throw "Unknown unit: " + options.unit;
-	}
+    this.parent(options);
 };
 
 AreaUnit.prototype = new Measurement();
@@ -67,7 +53,7 @@ AreaUnit.ratios = {
     "square-centimeter":[1,   	1,				0.0001,			1e-8,	    1e-10,        0.15500031,	0.00107639104,		0.000119599005,			2.47105381e-8,		3.86102159e-11 		],
     "square-meter": 	[2,   	10000,			1,              1e-4,       1e-6,         1550,    	 	10.7639,    	  	1.19599,   				0.000247105,		3.861e-7     	    ],
     "hectare":      	[3,	 	100000000,  	10000,          1,          0.01,         1.55e+7, 	  	107639,     	 	11959.9,   				2.47105	,			0.00386102    	    ],
-    "square-kilometer":    	[4,	  	10000000000, 	1e+6,          	100,        1,	          1.55e+9, 	  	1.076e+7,   	 	1.196e+6,  				247.105 ,   		0.386102     	    ],
+    "square-kilometer": [4,	  	10000000000, 	1e+6,          	100,        1,	          1.55e+9, 	  	1.076e+7,   	 	1.196e+6,  				247.105 ,   		0.386102     	    ],
     "square-inch":  	[5,	  	6.4516,			0.00064516,     6.4516e-8,  6.4516e-10,   1,			0.000771605,	  	0.0007716051, 			1.5942e-7,			2.491e-10    	    ],
     "square-foot":  	[6,		929.0304,		0.092903,       9.2903e-6,  9.2903e-8,    144,			1,          	  	0.111111,  				2.2957e-5,			3.587e-8    		],
     "square-yard":  	[7,		8361.2736,		0.836127,       8.3613e-5,  8.3613e-7,    1296,    	  	9,          	  	1,         				0.000206612,		3.2283e-7    	    ],
@@ -88,28 +74,17 @@ AreaUnit.ratios = {
  * @return {string} the name of the type of this measurement
  */
 AreaUnit.prototype.getMeasure = function() {
-	return "area";
+    return "area";
 };
 
 /**
- * Return a new measurement instance that is converted to a new
- * measurement unit. Measurements can only be converted
- * to measurements of the same type.<p>
- *
- * @param {string} to The name of the units to convert to
- * @return {Measurement|undefined} the converted measurement
- * or undefined if the requested units are for a different
- * measurement type
- *
+ * Return a new instance of this type of measurement.
+ * 
+ * @param {Object} params parameters to the constructor
+ * @return {Measurement} a measurement subclass instance
  */
-AreaUnit.prototype.convert = function(to) {
-	if (!to || typeof(AreaUnit.ratios[this.normalizeUnits(to)]) === 'undefined') {
-		return undefined;
-	}
-	return new AreaUnit({
-		unit: to,
-		amount: this
-	});
+AreaUnit.prototype.newUnit = function(params) {
+    return new AreaUnit(params);
 };
 
 AreaUnit.aliases = {
@@ -181,6 +156,12 @@ AreaUnit.aliases = {
     "in²":"square-inch"
 };
 
+AreaUnit.aliasesLower = {};
+for (var a in AreaUnit.aliases) {
+    AreaUnit.aliasesLower[a.toLowerCase()] = AreaUnit.aliases[a];
+}
+
+
 /**
  * Convert a Area to another measure.
  * @static
@@ -208,155 +189,62 @@ AreaUnit.getMeasures = function () {
     return Object.keys(AreaUnit.ratios);
 };
 
-AreaUnit.metricSystem = {
-	"square-centimeter" : 1,
-	"square-meter" : 2,
-	"hectare" : 3,
-	"square-kilometer" : 4
-};
-AreaUnit.imperialSystem = {
-	"square-inch" : 5,
-	"square-foot" : 6,
-	"square-yard" : 7,
-	"acre" : 8,
-	"square-mile" : 9
-};
-AreaUnit.uscustomarySystem = {
-	"square-inch" : 5,
-	"square-foot" : 6,
-	"square-yard" : 7,
-	"acre" : 8,
-	"square-mile" : 9
-};
-
-AreaUnit.metricToUScustomary = {
-	"square-centimeter" : "square-inch",
-	"square-meter" : "square-yard",
-	"hectare" : "acre",
-	"square-kilometer" : "square-mile"
-};
-AreaUnit.usCustomaryToMetric = {
-	"square-inch" : "square-centimeter",
-	"square-foot" : "square-meter",
-	"square-yard" : "square-meter",
-	"acre" : "hectare",
-	"square-mile" : "square-kilometer"
-};
-
-
-/**
- * Scale the measurement unit to an acceptable level. The scaling
- * happens so that the integer part of the amount is as small as
- * possible without being below zero. This will result in the
- * largest units that can represent this measurement without
- * fractions. Measurements can only be scaled to other measurements
- * of the same type.
- *
- * @param {string=} measurementsystem system to use (uscustomary|imperial|metric),
- * or undefined if the system can be inferred from the current measure
- * @param {Object=} units mapping from the measurement system to the units to use
- * for this scaling. If this is not defined, this measurement type will use the
- * set of units that it knows about for the given measurement system
- * @return {Measurement} a new instance that is scaled to the
- * right level
- */
-AreaUnit.prototype.scale = function(measurementsystem, units) {
-    var fromRow = AreaUnit.ratios[this.unit];
-    var mSystem;
-
-    if (measurementsystem === "metric" || (typeof(measurementsystem) === 'undefined'
-        && typeof(AreaUnit.metricSystem[this.unit]) !== 'undefined')) {
-        mSystem = AreaUnit.metricSystem;
-    } else if (measurementsystem === "uscustomary" || (typeof(measurementsystem) === 'undefined'
-        && typeof(AreaUnit.uscustomarySystem[this.unit]) !== 'undefined')) {
-        mSystem = AreaUnit.uscustomarySystem;
-    } else if (measurementsystem === "imperial" || (typeof(measurementsystem) === 'undefined'
-        && typeof(AreaUnit.imperialSystem[this.unit]) !== 'undefined')) {
-        mSystem = AreaUnit.imperialSystem;
-    }
-
-    var area = this.amount;
-    var munit = this.unit;
-
-    area = 18446744073709551999;
-
-    for (var m in mSystem) {
-        var tmp = this.amount * fromRow[mSystem[m]];
-        if (tmp >= 1 && tmp < area) {
-            area = tmp;
-            munit = m;
+AreaUnit.systems = {
+    "metric": [
+        "square-centimeter",
+        "square-meter",
+        "hectare",
+        "square-kilometer"
+    ],
+    "imperial": [
+        "square-inch",
+        "square-foot",
+        "square-yard",
+        "acre",
+        "square-mile"
+    ],
+    "uscustomary": [
+        "square-inch",
+        "square-foot",
+        "square-yard",
+        "acre",
+        "square-mile"
+    ],
+    "conversions": {
+        "metric": {
+            "uscustomary": {
+                "square-centimeter" : "square-inch",
+                "square-meter" : "square-yard",
+                "hectare" : "acre",
+                "square-kilometer" : "square-mile"
+            },
+            "imperial": {
+                "square-centimeter" : "square-inch",
+                "square-meter" : "square-yard",
+                "hectare" : "acre",
+                "square-kilometer" : "square-mile"
+            }
+        },
+        "uscustomary": {
+            "metric": {
+                "square-inch" : "square-centimeter",
+                "square-foot" : "square-meter",
+                "square-yard" : "square-meter",
+                "acre" : "hectare",
+                "square-mile" : "square-kilometer"
+            }
+        },
+        "imperial": {
+            "metric": {
+                "square-inch" : "square-centimeter",
+                "square-foot" : "square-meter",
+                "square-yard" : "square-meter",
+                "acre" : "hectare",
+                "square-mile" : "square-kilometer"
+            }
         }
     }
-
-    return new AreaUnit({
-        unit: munit,
-        amount: area
-    });
 };
-
-
-/**
- * Expand the current measurement such that any fractions of the current unit
- * are represented in terms of smaller units in the same system instead of fractions
- * of the current unit. For example, "6.25 feet" may be represented as
- * "6 feet 4 inches" instead. The return value is an array of measurements which
- * are progressively smaller until the smallest unit in the system is reached
- * or until there is a whole number of any unit along the way.
- *
- * @param {string=} measurementsystem system to use (uscustomary|imperial|metric),
- * or undefined if the system can be inferred from the current measure
- * @param {Object=} units mapping from the measurement system to the units to use
- * for this scaling. If this is not defined, this measurement type will use the
- * set of units that it knows about for the given measurement system
- * @return {Array.<Measurement>} an array of new measurements in order from
- * the current units to the smallest units in the system which together are the
- * same measurement as this one
- */
-AreaUnit.prototype.expand = function(measurementsystem, units) {
-    var mSystem, systemName = this.getMeasurementSystem();
-    if (units) {
-        mSystem = units[systemName];
-    } else {
-        if (measurementsystem === "uscustomary" || (typeof(measurementsystem) === 'undefined'
-            && typeof(AreaUnit.uscustomarySystem[this.unit]) !== 'undefined')) {
-            mSystem = Object.keys(AreaUnit.uscustomarySystem);
-        } else if (measurementsystem === "imperial" || (typeof(measurementsystem) === 'undefined'
-            && typeof(AreaUnit.imperialSystem[this.unit]) !== 'undefined')) {
-            mSystem = Object.keys(AreaUnit.imperialSystem);
-        } else {
-            mSystem = Object.keys(AreaUnit.metricSystem);
-        }
-    }
-
-    return this.list(mSystem, AreaUnit.ratios).map(function(item) {
-        return new AreaUnit(item);
-    });
-};
-
-/**
- * Localize the measurement to the commonly used measurement in that locale. For example
- * If a user's locale is "en-US" and the measurement is given as "60 kmh",
- * the formatted number should be automatically converted to the most appropriate
- * measure in the other system, in this case, mph. The formatted result should
- * appear as "37.3 mph".
- *
- * @param {string} locale current locale string
- * @returns {Measurement} a new instance that is converted to locale
- */
-AreaUnit.prototype.localize = function(locale) {
-    var to;
-    var system = Measurement.getMeasurementSystemForLocale(locale);
-    if (system === "uscustomary" || system === "imperial") {
-        to = AreaUnit.metricToUScustomary[this.unit] || this.unit;
-    } else {
-        to = AreaUnit.usCustomaryToMetric[this.unit] || this.unit;
-    }
-    return new AreaUnit({
-        unit: to,
-        amount: this
-    });
-};
-
 
 //register with the factory method
 Measurement._constructors["area"] = AreaUnit;

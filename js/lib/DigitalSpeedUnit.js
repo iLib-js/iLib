@@ -20,9 +20,11 @@
 /*
 !depends
 Measurement.js
+JSUtils.js
 */
 
 var Measurement = require("./Measurement.js");
+var JSUtils = require("./JSUtils.js");
 
 /**
  * @class
@@ -38,26 +40,12 @@ var DigitalSpeedUnit = function (options) {
     this.unit = "byte";
     this.amount = 0;
 
-    if (options) {
-        if (typeof(options.unit) !== 'undefined') {
-            this.originalUnit = options.unit;
-            this.unit = this.normalizeUnits(options.unit) || options.unit;
-        }
+    this.ratios = DigitalSpeedUnit.ratios;
+    this.aliases = DigitalSpeedUnit.aliases;
+    this.aliasesLower = DigitalSpeedUnit.aliasesLower;
+    this.systems = DigitalSpeedUnit.systems;
 
-        if (typeof(options.amount) === 'object') {
-            if (options.amount.getMeasure() === "digitalSpeed") {
-                this.amount = DigitalSpeedUnit.convert(this.unit, options.amount.getUnit(), options.amount.getAmount());
-            } else {
-                throw "Cannot convert unit " + options.amount.unit + " to a digitalSpeed";
-            }
-        } else if (typeof(options.amount) !== 'undefined') {
-            this.amount = parseFloat(options.amount);
-        }
-    }
-
-    if (typeof(DigitalSpeedUnit.ratios[this.unit]) === 'undefined') {
-        throw "Unknown unit: " + options.unit;
-    }
+    this.parent(options);
 };
 
 DigitalSpeedUnit.prototype = new Measurement();
@@ -87,22 +75,43 @@ DigitalSpeedUnit.ratios = {
     "petabyte-per-hour":   [ 18,  3.2425917318e19,  4.0532396652e18, 3.16659348792e16, 3.9582418608e16, 30923764531200,  3865470566400,    30198988800,      3774873600,       29491200,         3686400,          28800,             3600,              1.125899907e15, 1.099511628e12, 1073741824,      1048576,         1024,            1               ]
 };
 
-DigitalSpeedUnit.bitSystem = {
-    "bit-per-second":      1,
-    "kilobit-per-second":  3,
-    "megabit-per-second":  5,
-    "gigabit-per-second":  7,
-    "terabit-per-second":  9,
-    "petabit-per-second":  11
+/**
+ * Return a new instance of this type of measurement.
+ * 
+ * @param {Object} params parameters to the constructor
+ * @return {Measurement} a measurement subclass instance
+ */
+DigitalSpeedUnit.prototype.newUnit = function(params) {
+    return new DigitalSpeedUnit(params);
 };
-DigitalSpeedUnit.byteSystem = {
-    "byte-per-second":     2,
-    "kilobyte-per-second": 4,
-    "megabyte-per-second": 6,
-    "gigabyte-per-second": 8,
-    "terabyte-per-second": 10,
-    "petabyte-per-second": 12
+
+DigitalSpeedUnit.systems = {
+    "metric": [],
+    "uscustomary": [],
+    "imperial": [],
+    "conversions": {
+        "metric": {},
+        "uscustomary": {},
+        "imperial": {}
+    }
 };
+
+DigitalSpeedUnit.bitSystem = [
+    "bit-per-second",
+    "kilobit-per-second",
+    "megabit-per-second",
+    "gigabit-per-second",
+    "terabit-per-second",
+    "petabit-per-second"
+];
+DigitalSpeedUnit.byteSystem = [
+    "byte-per-second",
+    "kilobyte-per-second",
+    "megabyte-per-second",
+    "gigabyte-per-second",
+    "terabyte-per-second",
+    "petabyte-per-second"
+];
 
 /**
  * Return the type of this measurement. Examples are "mass",
@@ -114,31 +123,11 @@ DigitalSpeedUnit.byteSystem = {
  * static call {@link Measurement.getAvailableUnits}
  * to find out what units this version of ilib supports.
  *
+ * @override
  * @return {string} the name of the type of this measurement
  */
 DigitalSpeedUnit.prototype.getMeasure = function() {
     return "digitalSpeed";
-};
-
-/**
- * Return a new measurement instance that is converted to a new
- * measurement unit. Measurements can only be converted
- * to measurements of the same type.<p>
- *
- * @param {string} to The name of the units to convert to
- * @return {Measurement|undefined} the converted measurement
- * or undefined if the requested units are for a different
- * measurement type
- *
- */
-DigitalSpeedUnit.prototype.convert = function(to) {
-    if (!to || typeof(DigitalSpeedUnit.ratios[this.normalizeUnits(to)]) === 'undefined') {
-        return undefined;
-    }
-    return new DigitalSpeedUnit({
-        unit: to,
-        amount: this
-    });
 };
 
 /**
@@ -175,30 +164,18 @@ DigitalSpeedUnit.prototype.localize = function(locale) {
  * right level
  */
 DigitalSpeedUnit.prototype.scale = function(measurementsystem, units) {
-    var mSystem;
-    if (this.unit in DigitalSpeedUnit.byteSystem) {
-        mSystem = DigitalSpeedUnit.byteSystem;
+    var mSystem, systemName = this.getMeasurementSystem();
+    if (units) {
+        mSystem = units[systemName];
     } else {
-        mSystem = DigitalSpeedUnit.bitSystem;
-    }
-
-    var dStorage = this.amount;
-    var munit = this.unit;
-    var fromRow = DigitalSpeedUnit.ratios[this.unit];
-
-    dStorage = 18446744073709551999;
-    for (var m in mSystem) {
-        var tmp = this.amount * fromRow[mSystem[m]];
-        if (tmp >= 1 && tmp < dStorage) {
-            dStorage = tmp;
-            munit = m;
+        if (JSUtils.indexOf(DigitalSpeedUnit.byteSystem, this.unit) > -1) {
+            mSystem = DigitalSpeedUnit.byteSystem;
+        } else {
+            mSystem = DigitalSpeedUnit.bitSystem;
         }
     }
 
-    return new DigitalSpeedUnit({
-        unit: munit,
-        amount: dStorage
-    });
+    return this.newUnit(this.scaleUnits(mSystem));
 };
 
 /**
@@ -224,9 +201,9 @@ DigitalSpeedUnit.prototype.expand = function(measurementsystem, units) {
         mSystem = units[systemName];
     } else {
         if (this.unit in DigitalSpeedUnit.byteSystem) {
-            mSystem = Object.keys(DigitalSpeedUnit.byteSystem);
+            mSystem = DigitalSpeedUnit.byteSystem;
         } else {
-            mSystem = Object.keys(DigitalSpeedUnit.bitSystem);
+            mSystem = DigitalSpeedUnit.bitSystem;
         }
     }
 
@@ -234,7 +211,6 @@ DigitalSpeedUnit.prototype.expand = function(measurementsystem, units) {
         return new DigitalSpeedUnit(item);
     });
 };
-
 
 DigitalSpeedUnit.aliases = {
     "bits/s": "bit-per-second",
@@ -362,6 +338,11 @@ DigitalSpeedUnit.aliases = {
     "PB/h": "petabyte-per-hour",
     "PBph": "petabyte-per-hour"
 };
+
+DigitalSpeedUnit.aliasesLower = {};
+for (var a in DigitalSpeedUnit.aliases) {
+    DigitalSpeedUnit.aliasesLower[a.toLowerCase()] = DigitalSpeedUnit.aliases[a];
+}
 
 /**
  * Convert a digitalSpeed to another measure.

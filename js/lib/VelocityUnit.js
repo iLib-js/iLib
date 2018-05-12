@@ -212,7 +212,7 @@ VelocityUnit.aliases = {
 };
 
 VelocityUnit.aliasesLower = {};
-for (var a in this.aliases) {
+for (var a in VelocityUnit.aliases) {
     VelocityUnit.aliasesLower[a.toLowerCase()] = VelocityUnit.aliases[a];
 }
 

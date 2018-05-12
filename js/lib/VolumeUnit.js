@@ -198,7 +198,7 @@ VolumeUnit.aliases = {
 };
 
 VolumeUnit.aliasesLower = {};
-for (var a in this.aliases) {
+for (var a in VolumeUnit.aliases) {
     VolumeUnit.aliasesLower[a.toLowerCase()] = VolumeUnit.aliases[a];
 }
 

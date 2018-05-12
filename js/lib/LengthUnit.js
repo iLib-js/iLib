@@ -238,7 +238,7 @@ LengthUnit.aliases = {
 };
 
 LengthUnit.aliasesLower = {};
-for (var a in this.aliases) {
+for (var a in LengthUnit.aliases) {
     LengthUnit.aliasesLower[a.toLowerCase()] = LengthUnit.aliases[a];
 }
 
