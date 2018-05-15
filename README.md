@@ -7,7 +7,7 @@ iLib is an internationalization library written in pure ES5 Javascript. It does 
 and can run equally well in various older and newer browsers, on various OS's (including mobile), nodejs, webOS, Qt/QML, 
 RingoJS, React/Enact, or rhino.
 
-More elaborate documentation can be found [here](doc/index.md)
+More elaborate documentation can be found [here](docs/index.md)
 
 What Can iLib Do?
 ------
@@ -151,14 +151,14 @@ limitations under the License.
 More Documentation
 ------
 
-More elaborate documentation can be found [here](doc/index.md).
+More elaborate documentation can be found [here](docs/index.md).
 
 Other Information
 ------
 
 Please point your browser to the following places to get more documentation:
 
-- JSDocs: http://www.translationcircle.com/ilib/jsdoc/
+- JSDocs: http://www.translationcircle.com/ilib/doc/jsdoc/
 - Github: git clone git@github.com:iLib-js/iLib.git
 - Builds: https://github.com/iLib-js/iLib/releases
 - Wiki: https://github.com/iLib-js/iLib/wiki
