@@ -81,7 +81,7 @@ console.log("The date is " + formatter.format(date));
 // output is "The date is Fri 5/18/2012"
 ~~~~~
 
-Et voila, you have a formatted date. The strength of iLib is that the formatter classes are very flexible. The format is controlled via options to the _DateFmt()_ constructor. In the example above, only one argument was passed to the _DateFmt_ constructor to tell it to format dates only. Other arguments are assumed. It will use the current ilib locale, which it attempts to glean from the environment, and default format and length of format for that locale. See [the API reference documentation](http://www.translationcircle.com/ilib/jsdoc/) for more details on the parameters to the constructor of the _DateFmt_ class.
+Et voila, you have a formatted date. The strength of iLib is that the formatter classes are very flexible. The format is controlled via options to the _DateFmt()_ constructor. In the example above, only one argument was passed to the _DateFmt_ constructor to tell it to format dates only. Other arguments are assumed. It will use the current ilib locale, which it attempts to glean from the environment, and default format and length of format for that locale. See [the API reference documentation](http://www.translationcircle.com/ilib/doc/jsdoc/) for more details on the parameters to the constructor of the _DateFmt_ class.
 
 ## An Info Object ##
 
@@ -118,4 +118,4 @@ As a side note, all time zone information is compiled from the IANA tzdata datab
 
 ## More Reading ##
 
-The above is just a flavour of what you can get from iLib. There is also a more complete [tutorial](iLib1.0JSTutorial.pdf) for iLib 1.0 (a little out of date) that goes into detail about all the things iLib can do and a number of tutorial pages listed on the home page of this wiki. You can also browse [the latest API reference documentation](http://www.translationcircle.com/ilib/jsdoc/) when you are ready to start coding.
+The above is just a flavour of what you can get from iLib. There is also a more complete [tutorial](iLib1.0JSTutorial.pdf) for iLib 1.0 (a little out of date) that goes into detail about all the things iLib can do and a number of tutorial pages listed on the home page of this wiki. You can also browse [the latest API reference documentation](http://www.translationcircle.com/ilib/doc/jsdoc/) when you are ready to start coding.
