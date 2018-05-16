@@ -1378,6 +1378,19 @@ module.exports.testunitfmt = {
         test.done();
     },
 
+    testUnitFormatTemperature1a: function(test) {
+        test.expect(1);
+        var m1 = MeasurementFactory({
+            unit: "celsius",
+            amount: 2
+        });
+
+        var uf = new UnitFmt({locale:"en-AU"});
+        var str = uf.format(m1);
+        test.equal(str, "2 degrees Celsius");
+        test.done();
+    },
+
     testUnitFormatTemperature2: function(test) {
         test.expect(1);
         var m1 = MeasurementFactory({
@@ -2428,14 +2441,18 @@ module.exports.testunitfmt = {
             amount: 285.3
         });
 
-        var uf = new UnitFmt({autoScale:false,locale: "zh-Hant-US"});
+        // should convert to fahrenheit because it's in the US
+        var uf = new UnitFmt({
+            autoScale:false,
+            locale: "zh-Hant-US",
+            maxFractionDigits: 4
+        });
         var str = uf.format(m1);
-        test.equal(str, "285.3 克耳文");
+        test.equal(str, "華氏 53.87 度");
         test.done();
     },
 
     /*hectare*/
-
 
     testUnitFormatzhHansCNHectare: function(test) {
         test.expect(1);

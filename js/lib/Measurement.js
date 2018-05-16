@@ -51,7 +51,7 @@ var Measurement = function(options) {
             if (options.amount.getMeasure() === this.getMeasure()) {
                 this.amount = options.amount.convert(this.unit);
             } else {
-                throw "Cannot convert units " + options.amount.unit + " to a " + this.getMeasure();
+                throw "Cannot convert unit " + options.amount.unit + " to a " + this.getMeasure();
             }
         } else if (typeof(options.amount) !== 'undefined') {
             this.amount = Number(options.amount);

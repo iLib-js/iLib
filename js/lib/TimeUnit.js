@@ -81,10 +81,60 @@ TimeUnit.prototype.getMeasure = function() {
     return "time";
 };
 
+/**
+ * Return a new instance of this type of measurement.
+ *
+ * @param {Object} params parameters to the constructor
+ * @return {Measurement} a measurement subclass instance
+ */
+TimeUnit.prototype.newUnit = function(params) {
+    return new TimeUnit(params);
+};
+
+
 TimeUnit.systems = {
-    "metric": [],
-    "uscustomary": [],
-    "imperial": [],
+    "metric": [
+        "nanosecond",
+        "microsecond",
+        "millisecond",
+        "second",
+        "minute",
+        "hour",
+        "day",
+        "week",
+        "month",
+        "year",
+        "decade",
+        "century"
+    ],
+    "uscustomary": [
+        "nanosecond",
+        "microsecond",
+        "millisecond",
+        "second",
+        "minute",
+        "hour",
+        "day",
+        "week",
+        "month",
+        "year",
+        "decade",
+        "century"
+    ],
+    "imperial": [
+        "nanosecond",
+        "microsecond",
+        "millisecond",
+        "second",
+        "minute",
+        "hour",
+        "day",
+        "week",
+        "month",
+        "year",
+        "decade",
+        "century"
+    ],
     "conversions": {
         "metric": {},
         "uscustomary": {},
@@ -176,6 +226,11 @@ TimeUnit.aliases = {
     "Centuries": "century"
 };
 
+TimeUnit.aliasesLower = {};
+for (var a in TimeUnit.aliases) {
+    TimeUnit.aliasesLower[a.toLowerCase()] = TimeUnit.aliases[a];
+}
+
 /**
  * Convert a time to another measure.
  * @static
@@ -194,81 +249,6 @@ TimeUnit.convert = function(to, from, time) {
     }
     return time * fromRow[toRow[0]];
 };
-
-/**
- * Localize the measurement to the commonly used measurement in that locale. For example
- * If a user's locale is "en-US" and the measurement is given as "60 kmh",
- * the formatted number should be automatically converted to the most appropriate
- * measure in the other system, in this case, mph. The formatted result should
- * appear as "37.3 mph".
- *
- * @param {string} locale current locale string
- * @returns {Measurement} a new instance that is converted to locale
- */
-TimeUnit.prototype.localize = function(locale) {
-    return new TimeUnit({
-        unit: this.unit,
-        amount: this.amount
-    });
-};
-
-/**
- * Scale the measurement unit to an acceptable level. The scaling
- * happens so that the integer part of the amount is as small as
- * possible without being below zero. This will result in the
- * largest units that can represent this measurement without
- * fractions. Measurements can only be scaled to other measurements
- * of the same type.
- *
- * @param {string=} measurementsystem system to use (uscustomary|imperial|metric),
- * or undefined if the system can be inferred from the current measure
- * @return {Measurement} a new instance that is scaled to the
- * right level
- */
-TimeUnit.prototype.scale = function(measurementsystem) {
-
-    var fromRow = TimeUnit.ratios[this.unit];
-    var time = this.amount;
-    var munit = this.unit;
-    var i;
-
-    time = 18446744073709551999;
-    for (var m in TimeUnit.ratios) {
-    	i = TimeUnit.ratios[m][0];
-    	var tmp = this.amount * fromRow[i];
-    	if (tmp >= 1 && tmp < time) {
-	        time = tmp;
-	        munit = m;
-    	}
-    }
-
-    return new TimeUnit({
-        unit: munit,
-        amount: time
-    });
-};
-
-/**
- * Expand the current measurement such that any fractions of the current unit
- * are represented in terms of smaller units in the same system instead of fractions
- * of the current unit. For example, "6.25 feet" may be represented as
- * "6 feet 4 inches" instead. The return value is an array of measurements which
- * are progressively smaller until the smallest unit in the system is reached
- * or until there is a whole number of any unit along the way.
- *
- * @param {string=} measurementsystem system to use (uscustomary|imperial|metric),
- * or undefined if the system can be inferred from the current measure
- * @param {Object=} units object containing a mapping between the measurement system
- * and an array of units to use to restrict the expansion to
- * @return {Array.<Measurement>} an array of new measurements in order from
- * the current units to the smallest units in the system which together are the
- * same measurement as this one
- */
-TimeUnit.prototype.expand = function(measurementsystem, units) {
-    return this.list(Object.keys(TimeUnit.ratios), TimeUnit.ratios).map(function(item) {
-        return new TimeUnit(item);
-    });
-}
 
 /**
  * @private
