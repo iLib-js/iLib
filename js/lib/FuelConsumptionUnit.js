@@ -37,22 +37,12 @@ var FuelConsumptionUnit = function(options) {
     this.unit = "liter-per-100kilometers";
     this.amount = 0;
 
-    if (options) {
-        if (typeof(options.unit) !== 'undefined') {
-            this.originalUnit = options.unit;
-            this.unit = this.normalizeUnits(options.unit) || options.unit;
-        }
+    this.ratios = FuelConsumptionUnit.ratios;
+    this.aliases = FuelConsumptionUnit.aliases;
+    this.aliasesLower = FuelConsumptionUnit.aliasesLower;
+    this.systems = FuelConsumptionUnit.systems;
 
-        if (typeof(options.amount) === 'object') {
-            if (options.amount.getMeasure() === "fuelconsumption") {
-                this.amount = FuelConsumptionUnit.convert(this.unit, options.amount.getUnit(), options.amount.getAmount());
-            } else {
-                throw "Cannot convert unit " + options.amount.unit + " to fuelconsumption";
-            }
-        } else if (typeof(options.amount) !== 'undefined') {
-            this.amount = parseFloat(options.amount);
-        }
-    }
+    this.parent(options);
 };
 
 FuelConsumptionUnit.prototype = new Measurement();
@@ -85,23 +75,13 @@ FuelConsumptionUnit.prototype.getMeasure = function() {
 };
 
 /**
- * Return a new measurement instance that is converted to a new
- * measurement unit. Measurements can only be converted
- * to measurements of the same type.<p>
+ * Return a new instance of this type of measurement.
  *
- * @param {string} to The name of the units to convert to
- * @return {Measurement|undefined} the converted measurement
- * or undefined if the requested units are for a different
- * measurement type
+ * @param {Object} params parameters to the constructor
+ * @return {Measurement} a measurement subclass instance
  */
-FuelConsumptionUnit.prototype.convert = function(to) {
-    if (!to || typeof(FuelConsumptionUnit.ratios[this.normalizeUnits(to)]) === 'undefined') {
-        return undefined;
-    }
-    return new FuelConsumptionUnit({
-        unit: to,
-        amount: this
-    });
+FuelConsumptionUnit.prototype.newUnit = function(params) {
+    return new FuelConsumptionUnit(params);
 };
 
 FuelConsumptionUnit.aliases = {
@@ -159,61 +139,70 @@ FuelConsumptionUnit.aliases = {
     "mpg-imp": "mile-per-gallon-imperial"
 };
 
-FuelConsumptionUnit.metricToUScustomary = {
-    "liter-per-kilometer": "mile-per-gallon",
-    "kilometer-per-liter": "mile-per-gallon",
-    "liter-per-100kilometers": "mile-per-gallon"
-};
-FuelConsumptionUnit.metricToImperial = {
-    "liter-per-kilometer": "mile-per-gallon-imperial",
-    "kilometer-per-liter": "mile-per-gallon-imperial",
-    "liter-per-100kilometers": "mile-per-gallon-imperial"
-};
-
-FuelConsumptionUnit.imperialToMetric = {
-    "mile-per-gallon-imperial": "liter-per-100kilometers"
-};
-FuelConsumptionUnit.imperialToUScustomary = {
-    "mile-per-gallon-imperial": "mile-per-gallon"
-};
-
-FuelConsumptionUnit.uScustomaryToImperial = {
-    "mile-per-gallon": "mile-per-gallon-imperial"
-};
-FuelConsumptionUnit.uScustomarylToMetric = {
-    "mile-per-gallon": "liter-per-100kilometers"
-};
+FuelConsumptionUnit.aliasesLower = {};
+for (var a in FuelConsumptionUnit.aliases) {
+    FuelConsumptionUnit.aliasesLower[a.toLowerCase()] = FuelConsumptionUnit.aliases[a];
+}
 
 /**
- * Localize the measurement to the commonly used measurement in that locale. For example
- * If a user's locale is "en-US" and the measurement is given as "60 kmh",
- * the formatted number should be automatically converted to the most appropriate
- * measure in the other system, in this case, mph. The formatted result should
- * appear as "37.3 mph".
+ * Return a new measurement instance that is converted to a new
+ * measurement unit. Measurements can only be converted
+ * to measurements of the same type.<p>
  *
- * @param {string} locale current locale string
- * @returns {Measurement} a new instance that is converted to locale
+ * @param {string} to The name of the units to convert to
+ * @return {Measurement|undefined} the converted measurement
+ * or undefined if the requested units are for a different
+ * measurement type
  */
-FuelConsumptionUnit.prototype.localize = function(locale) {
-    var to;
-    var system = Measurement.getMeasurementSystemForLocale(locale);
-    if (system === "uscustomary") {
-        to = FuelConsumptionUnit.metricToUScustomary[this.unit] ||
-             FuelConsumptionUnit.imperialToUScustomary[this.unit] ||
-             this.unit;
-    } else if (system === "imperial") {
-        to = FuelConsumptionUnit.metricToImperial[this.unit] ||
-             FuelConsumptionUnit.uScustomaryToImperial[this.unit] ||
-             this.unit;
-    } else {
-        to = FuelConsumptionUnit.uScustomarylToMetric[this.unit] ||
-             FuelConsumptionUnit.imperialToMetric[this.unit] ||
-             this.unit;
+FuelConsumptionUnit.prototype.convert = function(to) {
+    if (!to || typeof(FuelConsumptionUnit.ratios[this.normalizeUnits(to)]) === 'undefined') {
+        return undefined;
     }
-    return new FuelConsumptionUnit({
-        unit: to,
-        amount: this
-    });
+    return FuelConsumptionUnit.convert(to, this.unit, this.amount);
+};
+
+FuelConsumptionUnit.systems = {
+    "metric": [
+        "liter-per-kilometer",
+        "liter-per-100kilometers",
+        "kilometer-per-liter",
+    ],
+    "uscustomary": [
+        "mile-per-gallon"
+    ],
+    "imperial": [
+        "mile-per-gallon-imperial"
+    ],
+    "conversions": {
+        "metric": {
+            "uscustomary": {
+                "liter-per-kilometer": "mile-per-gallon",
+                "kilometer-per-liter": "mile-per-gallon",
+                "liter-per-100kilometers": "mile-per-gallon"
+            },
+            "imperial": {
+                "liter-per-kilometer": "mile-per-gallon-imperial",
+                "kilometer-per-liter": "mile-per-gallon-imperial",
+                "liter-per-100kilometers": "mile-per-gallon-imperial"
+            }
+        },
+        "uscustomary": {
+            "metric": {
+                "mile-per-gallon": "liter-per-100kilometers"
+            },
+            "imperial": {
+                "mile-per-gallon": "mile-per-gallon-imperial"
+            }
+        },
+        "imperial": {
+            "metric": {
+                "mile-per-gallon-imperial": "liter-per-100kilometers"
+            },
+            "uscustomary": {
+                "mile-per-gallon-imperial": "mile-per-gallon"
+            }
+        }
+    }
 };
 
 /**

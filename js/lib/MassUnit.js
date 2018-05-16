@@ -19,9 +19,11 @@
 
 /*
 !depends
+ilib.js
 Measurement.js
 */
 
+var ilib = require("./ilib.js");
 var Measurement = require("./Measurement.js");
 
 /**
@@ -37,26 +39,12 @@ var MassUnit = function (options) {
 	this.unit = "gram";
 	this.amount = 0;
 
-	if (options) {
-		if (typeof(options.unit) !== 'undefined') {
-			this.originalUnit = options.unit;
-			this.unit = this.normalizeUnits(options.unit) || options.unit;
-		}
+    this.ratios = MassUnit.ratios;
+    this.aliases = MassUnit.aliases;
+    this.aliasesLower = MassUnit.aliasesLower;
+    this.systems = MassUnit.systems;
 
-		if (typeof(options.amount) === 'object') {
-			if (options.amount.getMeasure() === "mass") {
-				this.amount = MassUnit.convert(this.unit, options.amount.getUnit(), options.amount.getAmount());
-			} else {
-				throw "Cannot convert units " + options.amount.unit + " to a mass";
-			}
-		} else if (typeof(options.amount) !== 'undefined') {
-			this.amount = parseFloat(options.amount);
-		}
-	}
-
-	if (typeof(MassUnit.ratios[this.unit]) === 'undefined') {
-		throw "Unknown unit: " + options.unit;
-	}
+    this.parent(options);
 };
 
 MassUnit.prototype = new Measurement();
@@ -64,12 +52,12 @@ MassUnit.prototype.parent = Measurement;
 MassUnit.prototype.constructor = MassUnit;
 
 MassUnit.ratios = {
-	/*             index  µg          mg         g          oz          lp           kg          st            sh ton       mt ton        ln ton      */
-	"microgram":   [ 1,   1,          0.001,     1e-6,      3.5274e-8,  2.2046e-9,   1e-9,       1.5747e-10,   1.1023e-12,  1e-12,        9.8421e-13   ],
-	"milligram":   [ 2,   1000,       1,         0.001,     3.5274e-5,  2.2046e-6,   1e-6,       1.5747e-7,    1.1023e-9,   1e-9,         9.8421e-10   ],
-	"gram":        [ 3,   1e+6,       1000,      1,         0.035274,   0.00220462,  0.001,      0.000157473,  1.1023e-6,   1e-6,         9.8421e-7    ],
-	"ounce":       [ 4,   2.835e+7,   28349.5,   28.3495,   1,          0.0625,      0.0283495,  0.00446429,   3.125e-5,    2.835e-5,     2.7902e-5    ],
-	"pound":       [ 5,   4.536e+8,   453592,    453.592,   16,         1,           0.453592,   0.0714286,    0.0005,      0.000453592,  0.000446429  ],
+    /*             index  µg          mg         g          oz          lp           kg          st            sh ton       mt ton        ln ton      */
+    "microgram":   [ 1,   1,          0.001,     1e-6,      3.5274e-8,  2.2046e-9,   1e-9,       1.5747e-10,   1.1023e-12,  1e-12,        9.8421e-13   ],
+    "milligram":   [ 2,   1000,       1,         0.001,     3.5274e-5,  2.2046e-6,   1e-6,       1.5747e-7,    1.1023e-9,   1e-9,         9.8421e-10   ],
+    "gram":        [ 3,   1e+6,       1000,      1,         0.035274,   0.00220462,  0.001,      0.000157473,  1.1023e-6,   1e-6,         9.8421e-7    ],
+    "ounce":       [ 4,   2.835e+7,   28349.5,   28.3495,   1,          0.0625,      0.0283495,  0.00446429,   3.125e-5,    2.835e-5,     2.7902e-5    ],
+    "pound":       [ 5,   4.536e+8,   453592,    453.592,   16,         1,           0.453592,   0.0714286,    0.0005,      0.000453592,  0.000446429  ],
     "kilogram":    [ 6,   1e+9,       1e+6,      1000,      35.274,     2.20462,     1,          0.157473,     0.00110231,  0.001,        0.000984207  ],
     "stone":       [ 7,   6.35e+9,    6.35e+6,   6350.29,   224,        14,          6.35029,    1,            0.007,       0.00635029,   0.00625      ],
     "short-ton":   [ 8,   9.072e+11,  9.072e+8,  907185,    32000,      2000,        907.185,    142.857,      1,           0.907185,     0.892857     ],
@@ -77,93 +65,79 @@ MassUnit.ratios = {
     "ton":         [ 10,  1.016e+12,  1.016e+9,  1.016e+6,  35840,      2240,        1016.05,    160,          1.12,        1.01605,      1            ]
 };
 
-MassUnit.metricSystem = {
-    "microgram": 1,
-    "milligram": 2,
-    "gram": 3,
-    "kilogram": 6,
-    "metric-ton": 9
-};
-MassUnit.imperialSystem = {
-    "ounce": 4,
-    "pound": 5,
-    "stone": 7,
-    "ton": 10
-};
-MassUnit.uscustomarySystem = {
-    "ounce": 4,
-    "pound": 5,
-    "short-ton": 8
-};
-
-MassUnit.metricToUScustomary = {
-    "microgram": "ounce",
-    "milligram": "ounce",
-    "gram": "ounce",
-    "kilogram": "pound",
-    "metric-ton": "ton"
-};
-MassUnit.metricToImperial = {
-    "microgram": "ounce",
-    "milligram": "ounce",
-    "gram": "ounce",
-    "kilogram": "pound",
-    "metric-ton": "short-ton"
-};
-
-MassUnit.imperialToMetric = {
-    "ounce": "gram",
-    "pound": "kilogram",
-    "stone": "kilogram",
-    "short-ton": "metric-ton"
-};
-MassUnit.imperialToUScustomary = {
-    "ounce": "ounce",
-    "pound": "pound",
-    "stone": "stone",
-    "short-ton": "ton"
-};
-
-MassUnit.uScustomaryToImperial = {
-    "ounce": "ounce",
-    "pound": "pound",
-    "stone": "stone",
-    "ton": "short-ton"
-};
-MassUnit.uScustomaryToMetric = {
-    "ounce": "gram",
-    "pound": "kilogram",
-    "stone": "kilogram",
-    "ton": "metric-ton"
-};
-
 /**
- * Localize the measurement to the commonly used measurement in that locale. For example
- * If a user's locale is "en-US" and the measurement is given as "60 kmh",
- * the formatted number should be automatically converted to the most appropriate
- * measure in the other system, in this case, mph. The formatted result should
- * appear as "37.3 mph".
+ * Return a new instance of this type of measurement.
  *
- * @param {string} locale current locale string
- * @returns {Measurement} a new instance that is converted to locale
+ * @param {Object} params parameters to the constructor
+ * @return {Measurement} a measurement subclass instance
  */
-MassUnit.prototype.localize = function(locale) {
-    var to;
-    var system = Measurement.getMeasurementSystemForLocale(locale);
-    if (system === "uscustomary") {
-        to = MassUnit.metricToUScustomary[this.unit] ||
-        MassUnit.imperialToUScustomary[this.unit] || this.unit;
-    } else if (system === "imperial") {
-        to = MassUnit.metricToImperial[this.unit] ||
-        MassUnit.uScustomaryToImperial[this.unit] || this.unit;
-    } else {
-        to = MassUnit.uScustomaryToMetric[this.unit] ||
-        MassUnit.imperialToUScustomary[this.unit] || this.unit;
+MassUnit.prototype.newUnit = function(params) {
+    return new MassUnit(params);
+};
+
+MassUnit.systems = {
+    "metric": [
+        "microgram",
+        "milligram",
+        "gram",
+        "kilogram",
+        "metric-ton"
+    ],
+    "imperial": [
+        "ounce",
+        "pound",
+        "stone",
+        "ton"
+    ],
+    "uscustomary": [
+        "ounce",
+        "pound",
+        "short-ton"
+    ],
+    "conversions": {
+        "metric": {
+            "uscustomary": {
+                "microgram": "ounce",
+                "milligram": "ounce",
+                "gram": "ounce",
+                "kilogram": "pound",
+                "metric-ton": "short-ton"
+            },
+            "imperial": {
+                "microgram": "ounce",
+                "milligram": "ounce",
+                "gram": "ounce",
+                "kilogram": "pound",
+                "metric-ton": "ton"
+            }
+        },
+        "uscustomary": {
+            "imperial": {
+                "ounce": "ounce",
+                "pound": "pound",
+                "short-ton": "ton"
+            },
+            "metric": {
+                "ounce": "gram",
+                "pound": "kilogram",
+                "short-ton": "metric-ton"
+            }
+        },
+        "imperial": {
+            "uscustomary": {
+                "ounce": "ounce",
+                "pound": "pound",
+                "stone": "stone",
+                "ton": "short-ton"
+            },
+            "metric": {
+                "ounce": "gram",
+                "pound": "kilogram",
+                "stone": "kilogram",
+                "ton": "metric-ton"
+            }
+        }
     }
-    return new MassUnit({
-        unit: to,
-        amount: this
-    });
 };
 
 /**
@@ -180,26 +154,6 @@ MassUnit.prototype.localize = function(locale) {
  */
 MassUnit.prototype.getMeasure = function() {
 	return "mass";
-};
-
-/**
- * Return a new measurement instance that is converted to a new
- * measurement unit. Measurements can only be converted
- * to measurements of the same type.<p>
- *
- * @param {string} to The name of the units to convert to
- * @return {Measurement|undefined} the converted measurement
- * or undefined if the requested units are for a different
- * measurement type
- */
-MassUnit.prototype.convert = function(to) {
-	if (!to || typeof(MassUnit.ratios[this.normalizeUnits(to)]) === 'undefined') {
-		return undefined;
-	}
-	return new MassUnit({
-		unit: to,
-		amount: this
-	});
 };
 
 MassUnit.aliases = {
@@ -268,6 +222,11 @@ MassUnit.aliases = {
     "Ton":"ton"
 };
 
+MassUnit.aliasesLower = {};
+for (var a in MassUnit.aliases) {
+    MassUnit.aliasesLower[a.toLowerCase()] = MassUnit.aliases[a];
+}
+
 /**
  * Convert a mass to another measure.
  * @static
@@ -286,98 +245,6 @@ MassUnit.convert = function(to, from, mass) {
     }
     return mass * fromRow[toRow[0]];
 };
-
-/**
- * Scale the measurement unit to an acceptable level. The scaling
- * happens so that the integer part of the amount is as small as
- * possible without being below zero. This will result in the
- * largest units that can represent this measurement without
- * fractions. Measurements can only be scaled to other measurements
- * of the same type.
- *
- * @param {string=} measurementsystem system to use (uscustomary|imperial|metric),
- * or undefined if the system can be inferred from the current measure
- * @param {Object=} units mapping from the measurement system to the units to use
- * for this scaling. If this is not defined, this measurement type will use the
- * set of units that it knows about for the given measurement system
- * @return {Measurement} a new instance that is scaled to the
- * right level
- */
-MassUnit.prototype.scale = function(measurementsystem, units) {
-    var mSystem;
-    if (measurementsystem === "metric" || (typeof(measurementsystem) === 'undefined'
-            && typeof(MassUnit.metricSystem[this.unit]) !== 'undefined')) {
-        mSystem = MassUnit.metricSystem;
-    } else if (measurementsystem === "imperial" || (typeof(measurementsystem) === 'undefined'
-            && typeof(MassUnit.imperialSystem[this.unit]) !== 'undefined')) {
-        mSystem = MassUnit.imperialSystem;
-    } else if (measurementsystem === "uscustomary" || (typeof(measurementsystem) === 'undefined'
-            && typeof(MassUnit.uscustomarySystem[this.unit]) !== 'undefined')) {
-        mSystem = MassUnit.uscustomarySystem;
-    } else {
-        return new MassUnit({
-			unit: this.unit,
-			amount: this.amount
-		});
-    }
-
-    var mass = this.amount;
-    var munit = this.amount;
-    var fromRow = MassUnit.ratios[this.unit];
-
-    mass = 18446744073709551999;
-
-    for (var m in mSystem) {
-        var tmp = this.amount * fromRow[mSystem[m]];
-        if (tmp >= 1 && tmp < mass) {
-        	mass = tmp;
-            munit = m;
-        }
-    }
-
-    return new MassUnit({
-		unit: munit,
-		amount: mass
-    });
-};
-
-/**
- * Expand the current measurement such that any fractions of the current unit
- * are represented in terms of smaller units in the same system instead of fractions
- * of the current unit. For example, "6.25 feet" may be represented as
- * "6 feet 4 inches" instead. The return value is an array of measurements which
- * are progressively smaller until the smallest unit in the system is reached
- * or until there is a whole number of any unit along the way.
- *
- * @param {string=} measurementsystem system to use (uscustomary|imperial|metric),
- * or undefined if the system can be inferred from the current measure
- * @param {Object=} units object containing a mapping between the measurement system
- * and an array of units to use to restrict the expansion to
- * @return {Array.<Measurement>} an array of new measurements in order from
- * the current units to the smallest units in the system which together are the
- * same measurement as this one
- */
-MassUnit.prototype.expand = function(measurementsystem, units) {
-    var mSystem, systemName = this.getMeasurementSystem();
-    if (units) {
-        mSystem = units[systemName];
-    } else {
-        if (measurementsystem === "imperial" || (typeof(measurementsystem) === 'undefined'
-            && typeof(MassUnit.imperialSystem[this.unit]) !== 'undefined')) {
-            mSystem = Object.keys(MassUnit.imperialSystem);
-        } else if (measurementsystem === "uscustomary" || (typeof(measurementsystem) === 'undefined'
-            && typeof(MassUnit.uscustomarySystem[this.unit]) !== 'undefined')) {
-            mSystem = Object.keys(MassUnit.uscustomarySystem);
-        } else {
-            mSystem = Object.keys(MassUnit.metricSystem);
-        }
-    }
-
-    return this.list(mSystem, MassUnit.ratios).map(function(item) {
-        return new MassUnit(item);
-    });
-}
-
 
 /**
  * @private

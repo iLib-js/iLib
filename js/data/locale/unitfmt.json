@@ -414,7 +414,7 @@
         "electricalEnergy": {
             "description": "amount of energy in electricity",
             "type": "energy",
-            "units": ["gigawatt-hour", "megawatt-hour", "kilowatt-hour", "watt-hour"]
+            "units": ["watt-hour", "kilowatt-hour", "megawatt-hour", "gigawatt-hour"]
         },
         "heatingEnergy": {
             "description": "amount of energy required to heat things such as water or home interiors",

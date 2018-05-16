@@ -33,8 +33,8 @@ var Measurement = require("./Measurement.js");
  * the construction of this instance
  */
 var AreaUnit = function (options) {
-	this.unit = "square-meter";
-	this.amount = 0;
+    this.unit = "square-meter";
+    this.amount = 0;
 
     this.ratios = AreaUnit.ratios;
     this.aliases = AreaUnit.aliases;
@@ -160,7 +160,6 @@ AreaUnit.aliasesLower = {};
 for (var a in AreaUnit.aliases) {
     AreaUnit.aliasesLower[a.toLowerCase()] = AreaUnit.aliases[a];
 }
-
 
 /**
  * Convert a Area to another measure.

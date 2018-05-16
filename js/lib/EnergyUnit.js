@@ -34,29 +34,15 @@ var Measurement = require("./Measurement.js");
  * the construction of this instance
  */
 var EnergyUnit = function (options) {
-	this.unit = "joule";
-	this.amount = 0;
+    this.unit = "joule";
+    this.amount = 0;
 
-	if (options) {
-		if (typeof(options.unit) !== 'undefined') {
-			this.originalUnit = options.unit;
-			this.unit = this.normalizeUnits(options.unit);
-		}
+    this.ratios = EnergyUnit.ratios;
+    this.aliases = EnergyUnit.aliases;
+    this.aliasesLower = EnergyUnit.aliasesLower;
+    this.systems = EnergyUnit.systems;
 
-		if (typeof(options.amount) === 'object') {
-			if (options.amount.getMeasure() === "energy") {
-				this.amount = EnergyUnit.convert(this.unit, options.amount.getUnit(), options.amount.getAmount());
-			} else {
-				throw "Cannot convert units " + options.amount.unit + " to a energy";
-			}
-		} else if (typeof(options.amount) !== 'undefined') {
-			this.amount = parseFloat(options.amount);
-		}
-	}
-
-	if (typeof(EnergyUnit.ratios[this.unit]) === 'undefined') {
-		throw "Unknown unit: " + options.unit;
-	}
+    this.parent(options);
 };
 
 EnergyUnit.prototype = new Measurement();
@@ -95,23 +81,13 @@ EnergyUnit.prototype.getMeasure = function() {
 };
 
 /**
- * Return a new measurement instance that is converted to a new
- * measurement unit. Measurements can only be converted
- * to measurements of the same type.<p>
+ * Return a new instance of this type of measurement.
  *
- * @param {string} to The name of the units to convert to
- * @return {Measurement|undefined} the converted measurement
- * or undefined if the requested units are for a different
- * measurement type
+ * @param {Object} params parameters to the constructor
+ * @return {Measurement} a measurement subclass instance
  */
-EnergyUnit.prototype.convert = function(to) {
-    if (!to || typeof(EnergyUnit.ratios[this.normalizeUnits(to)]) === 'undefined') {
-        return undefined;
-    }
-    return new EnergyUnit({
-        unit: to,
-        amount: this
-    });
+EnergyUnit.prototype.newUnit = function(params) {
+    return new EnergyUnit(params);
 };
 
 EnergyUnit.aliases = {
@@ -189,6 +165,11 @@ EnergyUnit.aliases = {
     "GWh": "gigawatt-hour"
 };
 
+EnergyUnit.aliasesLower = {};
+for (var a in EnergyUnit.aliases) {
+    EnergyUnit.aliasesLower[a.toLowerCase()] = EnergyUnit.aliases[a];
+}
+
 /**
  * Convert a energy to another measure.
  * @static
@@ -208,167 +189,64 @@ EnergyUnit.convert = function(to, from, energy) {
     return energy * fromRow[toRow[0]];
 };
 
+EnergyUnit.systems = {
+    "metric": [
+        "millijoule",
+        "joule",
+        "kilojoule",
+        "watt-hour",
+        "megajoule",
+        "kilowatt-hour",
+        "gigajoule",
+        "megawatt-hour",
+        "gigawatt-hour"
+    ],
+    "imperial": [
+        "BTU",
+        "foodcalorie"
+    ],
+    "uscustomary": [
+        "BTU",
+        "foodcalorie"
+    ],
+    "conversions": {
+        "metric": {
+            "uscustomary": {
+                "millijoule": "BTU",
+                "joule": "BTU",
+                "kilojoule": "BTU",
+                "megajoule": "BTU",
+                "gigajoule": "BTU"
+            },
+            "imperial": {
+                "millijoule": "BTU",
+                "joule": "BTU",
+                "kilojoule": "BTU",
+                "megajoule": "BTU",
+                "gigajoule": "BTU"
+            }
+        },
+        "uscustomary": {
+            "metric": {
+                "BTU": "joule",
+                "foodcalorie": "joule"
+            }
+        },
+        "imperial": {
+            "metric": {
+                "BTU": "joule",
+                "foodcalorie": "joule"
+            }
+        }
+    }
+};
+
 /**
  * @private
  * @static
  */
 EnergyUnit.getMeasures = function () {
     return Object.keys(EnergyUnit.ratios);
-};
-
-EnergyUnit.metricJouleSystem = {
-    "millijoule": 1,
-    "joule": 2,
-    "kilojoule": 4,
-    "megajoule": 7,
-    "gigajoule": 9
-};
-EnergyUnit.metricWattHourSystem = {
-    "watt-hour": 5,
-    "kilowatt-hour": 8,
-    "megawatt-hour": 10,
-    "gigawatt-hour": 11
-};
-
-EnergyUnit.imperialSystem = {
-    "BTU": 3
-};
-EnergyUnit.uscustomarySystem = {
-    "foodcalorie": 6
-};
-
-EnergyUnit.metricToImperial = {
-    "millijoule": "BTU",
-    "joule": "BTU",
-    "kilojoule": "BTU",
-    "megajoule": "BTU",
-    "gigajoule": "BTU"
-};
-EnergyUnit.imperialToMetric = {
-    "BTU": "joule"
-};
-
-/**
- * Localize the measurement to the commonly used measurement in that locale. For example
- * If a user's locale is "en-US" and the measurement is given as "60 kmh",
- * the formatted number should be automatically converted to the most appropriate
- * measure in the other system, in this case, mph. The formatted result should
- * appear as "37.3 mph".
- *
- * @param {string} locale current locale string
- * @returns {Measurement} a new instance that is converted to locale
- */
-EnergyUnit.prototype.localize = function(locale) {
-    var to;
-    var system = Measurement.getMeasurementSystemForLocale(locale);
-    if (system === "uscustomary" || system === "imperial") {
-        to = EnergyUnit.metricToImperial[this.unit] || this.unit;
-    } else {
-        to = EnergyUnit.imperialToMetric[this.unit] || this.unit;
-    }
-
-    return new EnergyUnit({
-        unit: to,
-        amount: this
-    });
-};
-
-/**
- * Scale the measurement unit to an acceptable level. The scaling
- * happens so that the integer part of the amount is as small as
- * possible without being below zero. This will result in the
- * largest units that can represent this measurement without
- * fractions. Measurements can only be scaled to other measurements
- * of the same type.
- *
- * @param {string=} measurementsystem system to use (uscustomary|imperial|metric),
- * or undefined if the system can be inferred from the current measure
- * @param {Object=} units mapping from the measurement system to the units to use
- * for this scaling. If this is not defined, this measurement type will use the
- * set of units that it knows about for the given measurement system
- * @return {Measurement} a new instance that is scaled to the
- * right level
- */
-EnergyUnit.prototype.scale = function(measurementsystem, units) {
-    var fromRow = EnergyUnit.ratios[this.unit];
-    var mSystem;
-
-    if ((measurementsystem === "metric" && typeof(EnergyUnit.metricJouleSystem[this.unit]) !== 'undefined')|| (typeof(measurementsystem) === 'undefined'
-        && typeof(EnergyUnit.metricJouleSystem[this.unit]) !== 'undefined')) {
-        mSystem = EnergyUnit.metricJouleSystem;
-    }
-    else if ((measurementsystem === "metric" && typeof(EnergyUnit.metricWattHourSystem[this.unit]) !== 'undefined')|| (typeof(measurementsystem) === 'undefined'
-        && typeof(EnergyUnit.metricWattHourSystem[this.unit]) !== 'undefined')) {
-        mSystem = EnergyUnit.metricWattHourSystem;
-    }
-
-    else  if (measurementsystem === "uscustomary" || (typeof(measurementsystem) === 'undefined'
-        && typeof(EnergyUnit.uscustomarySystem[this.unit]) !== 'undefined')) {
-        mSystem = EnergyUnit.uscustomarySystem;
-    }
-    else if (measurementsystem === "imperial"|| (typeof(measurementsystem) === 'undefined'
-        && typeof(EnergyUnit.imperialSystem[this.unit]) !== 'undefined')) {
-        mSystem = EnergyUnit.imperialSystem;
-    }
-
-    var energy = this.amount;
-    var munit = this.unit;
-
-    energy = 18446744073709551999;
-
-    for (var m in mSystem) {
-        var tmp = this.amount * fromRow[mSystem[m]];
-        if (tmp >= 1 && tmp < energy) {
-	        energy = tmp;
-	        munit = m;
-        }
-    }
-
-    return new EnergyUnit({
-        unit: munit,
-        amount: energy
-    });
-};
-
-/**
- * Expand the current measurement such that any fractions of the current unit
- * are represented in terms of smaller units in the same system instead of fractions
- * of the current unit. For example, "6.25 feet" may be represented as
- * "6 feet 4 inches" instead. The return value is an array of measurements which
- * are progressively smaller until the smallest unit in the system is reached
- * or until there is a whole number of any unit along the way.
- *
- * @param {string=} measurementsystem system to use (uscustomary|imperial|metric),
- * or undefined if the system can be inferred from the current measure
- * @param {Object=} units mapping from the measurement system to the units to use
- * for this scaling. If this is not defined, this measurement type will use the
- * set of units that it knows about for the given measurement system
- * @return {Array.<Measurement>} an array of new measurements in order from
- * the current units to the smallest units in the system which together are the
- * same measurement as this one
- */
-EnergyUnit.prototype.expand = function(measurementsystem, units) {
-    var mSystem, systemName = this.getMeasurementSystem();
-    if (units) {
-        mSystem = units[systemName];
-    } else {
-        if ((measurementsystem === "metric" && typeof(EnergyUnit.metricWattHourSystem[this.unit]) !== 'undefined')|| (typeof(measurementsystem) === 'undefined'
-            && typeof(EnergyUnit.metricWattHourSystem[this.unit]) !== 'undefined')) {
-            mSystem = Object.keys(EnergyUnit.metricWattHourSystem);
-        } else if (measurementsystem === "uscustomary" || (typeof(measurementsystem) === 'undefined'
-            && typeof(EnergyUnit.uscustomarySystem[this.unit]) !== 'undefined')) {
-            mSystem = Object.keys(EnergyUnit.uscustomarySystem);
-        } else if (measurementsystem === "imperial"|| (typeof(measurementsystem) === 'undefined'
-            && typeof(EnergyUnit.imperialSystem[this.unit]) !== 'undefined')) {
-            mSystem = Object.keys(EnergyUnit.imperialSystem);
-        } else {
-            mSystem = Object.keys(EnergyUnit.metricJouleSystem);
-        }
-    }
-
-    return this.list(mSystem, EnergyUnit.ratios).map(function(item) {
-        return new EnergyUnit(item);
-    });
 };
 
 //register with the factory method

@@ -56,7 +56,7 @@ var Measurement = function(options) {
         } else if (typeof(options.amount) !== 'undefined') {
             this.amount = Number(options.amount);
         }
-        
+
         if (typeof(this.ratios[this.unit]) === 'undefined') {
             throw "Unknown unit: " + options.unit;
         }
@@ -131,30 +131,30 @@ Measurement.prototype = {
 
     /**
      * Return an array of all units that this measurement types supports.
-     * 
-     * @return {Array.<string>} an array of all units that this measurement 
+     *
+     * @return {Array.<string>} an array of all units that this measurement
      * types supports
      */
     getMeasures: function () {
         return Object.keys(this.ratios);
     },
-    
+
     /**
      * Return the name of the measurement system that the current
      * unit is a part of.
-     * 
-     * @returns {string} the name of the measurement system for 
+     *
+     * @returns {string} the name of the measurement system for
      * the units of this measurement
      */
     getMeasurementSystem: function() {
         if (JSUtils.indexOf(this.systems.uscustomary, this.unit) > -1) {
             return "uscustomary";
         }
-        
+
         if (JSUtils.indexOf(this.systems.imperial, this.unit) > -1) {
             return "imperial";
         }
-        
+
         return "metric";
     },
 
@@ -172,10 +172,10 @@ Measurement.prototype = {
         var to;
         var toSystem = Measurement.getMeasurementSystemForLocale(locale);
         var fromSystem = this.getMeasurementSystem();
-        to = this.systems.conversions[fromSystem] && 
+        to = this.systems.conversions[fromSystem] &&
             this.systems.conversions[fromSystem][toSystem] &&
             this.systems.conversions[fromSystem][toSystem][this.unit];
-        
+
         return to ? this.newUnit({
             unit: to,
             amount: this.convert(to)
@@ -194,13 +194,13 @@ Measurement.prototype = {
         if (!to || typeof(this.ratios[this.normalizeUnits(to)]) === 'undefined') {
             return undefined;
         }
-        
+
         var from = this.getUnitIdCaseInsensitive(this.unit) || this.unit;
         to = this.getUnitIdCaseInsensitive(to) || to;
         if (typeof(from) === 'undefined' || typeof(to) === 'undefined') {
             return undefined;
         }
-        
+
         var fromRow = this.ratios[from];
         var toRow = this.ratios[to];
         return this.amount * fromRow[toRow[0]];
@@ -222,11 +222,13 @@ Measurement.prototype = {
      */
     scale: function(measurementsystem, units) {
         var systemName = this.getMeasurementSystem();
-        var mSystem = (units && units[systemName]) ? units[systemName] : (this.systems[systemName] || this.systems.metric);
+        var systems = units || this.systems;
+        var mSystem = (systems[measurementsystem] && JSUtils.indexOf(systems[measurementsystem], this.unit) > -1) ?
+            systems[measurementsystem] : systems[systemName];
 
         return this.newUnit(this.scaleUnits(mSystem));
     },
-    
+
     /**
      * Expand the current measurement such that any fractions of the current unit
      * are represented in terms of smaller units in the same system instead of fractions
@@ -346,14 +348,14 @@ Measurement.prototype = {
 
         return ret;
     },
-    
+
     /**
      * @private
      */
     scaleUnits: function(mSystem) {
         var munit, amount = 18446744073709551999;
         var fromRow = this.ratios[this.unit];
-        
+
         for (var m = 0; m < mSystem.length; m++) {
             var tmp = this.amount * fromRow[this.ratios[mSystem[m]][0]];
             if (tmp >= 1 && tmp < amount) {
@@ -361,16 +363,16 @@ Measurement.prototype = {
                 munit = mSystem[m];
             }
         }
-        
+
         return {
             unit: munit,
             amount: amount
         };
     },
-    
+
     /**
      * @private
-     * 
+     *
      * Return the normalized units identifier for the given unit. This looks up the units
      * in the aliases list and returns the normalized unit id.
      *
@@ -480,21 +482,21 @@ Measurement.getUnitIdCaseInsensitive = function(measurement, unit) {
     return undefined;
 };
 
-// Hard-code these because CLDR has incorrect data, plus this is small so we don't 
+// Hard-code these because CLDR has incorrect data, plus this is small so we don't
 // want to do an async load just to get it.
 // Source: https://en.wikipedia.org/wiki/Metrication#Overview
 var systems = {
   "uscustomary": ["US", "FM", "MH", "LR", "PR", "PW", "GU", "WS", "AS", "VI", "MP"],
   "imperial": ["GB", "MM"]
 };
-// every other country in the world is metric. Myanmar (MM) is adopting metric by 2019 
+// every other country in the world is metric. Myanmar (MM) is adopting metric by 2019
 // supposedly, and Liberia is as well
 
 /**
 * Return the name of the measurement system in use in the given locale.
-* 
+*
 * @param {string|Locale} locale the locale spec or Locale instance of the
-* 
+*
 * @returns {string} the name of the measurement system
 */
 Measurement.getMeasurementSystemForLocale = function(locale) {
@@ -506,7 +508,7 @@ Measurement.getMeasurementSystemForLocale = function(locale) {
   } else if (JSUtils.indexOf(systems.imperial, region) > -1) {
       return "imperial";
   }
-  
+
   return "metric";
 };
 
