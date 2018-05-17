@@ -392,6 +392,36 @@ NumFmt.prototype = {
 		this.exponentSymbol = this.localeInfo.getExponential() || "e";
 	},
 
+    /**
+     * Apply the constraints used in the current formatter to the given number. This will
+     * will apply the maxFractionDigits, significantDigits, and rounding mode
+     * constraints and return the result. The result is further
+     * manipulated in the format method to produce the final formatted number string.
+     * This method is intended for use by code that needs to use the same number that
+     * this formatter instance uses for formatting before that number is turned into a
+     * formatted string.
+     *
+     * @param {number} num the number to constrain
+     * @returns {number} the number with the constraints applied to it
+     */
+    constrain: function(num) {
+        var parts = ("" + num).split("."),
+            result = num;
+
+        // only apply the either significantDigits or the maxFractionDigits -- whichever results in a shorter fractional part
+        if ((typeof(this.significantDigits) !== 'undefined' && this.significantDigits > 0) &&
+            (typeof(this.maxFractionDigits) === 'undefined' || this.maxFractionDigits < 0 ||
+                parts[0].length + this.maxFractionDigits > this.significantDigits)) {
+            result = MathUtils.significant(result, this.significantDigits, this.round);
+        }
+
+        if (typeof(this.maxFractionDigits) !== 'undefined' && this.maxFractionDigits > -1) {
+            result = MathUtils.shiftDecimal(this.round(MathUtils.shiftDecimal(result, this.maxFractionDigits)), -this.maxFractionDigits);
+        }
+
+        return result;
+    },
+
 	/**
 	 * Format the number using scientific notation as a positive number. Negative
 	 * formatting to be applied later.
@@ -451,24 +481,13 @@ NumFmt.prototype = {
 		var i;
 		var k;
 
-		var parts = ("" + num).split("."),
-			integral = parts[0],
-			fraction,
-			cycle,
-			formatted;
+        var parts,
+            integral,
+            fraction,
+            cycle,
+            formatted;
 
-		// only apply the either significantDigits or the maxFractionDigits -- whichever results in a shorter fractional part
-        if ((typeof(this.significantDigits) !== 'undefined' && this.significantDigits > 0) &&
-        		(typeof(this.maxFractionDigits) === 'undefined' || this.maxFractionDigits < 0 ||
-            	parts[0].length + this.maxFractionDigits > this.significantDigits)) {
-        	num = MathUtils.significant(num, this.significantDigits, this.round);
-        }
-
-        if (typeof(this.maxFractionDigits) !== 'undefined' && this.maxFractionDigits > -1) {
-            num = MathUtils.shiftDecimal(this.round(MathUtils.shiftDecimal(num, this.maxFractionDigits)), -this.maxFractionDigits);
-        }
-
-		num = Math.abs(num);
+        num = Math.abs(this.constrain(num));
 
 		parts = ("" + num).split(".");
 		integral = parts[0].toString();

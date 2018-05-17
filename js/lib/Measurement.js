@@ -183,9 +183,9 @@ Measurement.prototype = {
     },
 
     /**
-     * Return a new measurement instance that is converted to a different
-     * measurement unit. Measurements can only be converted
-     * to measurements of the same type.<p>
+     * Return the amount of the current measurement when converted to the
+     * given measurement unit. Measurements can only be converted
+     * to other measurements of the same type.<p>
      *
      * @param {string} to the name of the units to convert this measurement to
      * @return {number} the amount corresponding to the requested unit
@@ -204,6 +204,30 @@ Measurement.prototype = {
         var fromRow = this.ratios[from];
         var toRow = this.ratios[to];
         return this.amount * fromRow[toRow[0]];
+    },
+
+    /**
+     * Return a new measurement instance that is converted to a different
+     * measurement system. Measurements can only be converted
+     * to other measurements of the same type.<p>
+     *
+     * @param {string} measurementSystem the name of the system to convert to
+     * @return {Measurement} a new measurement in the given system, or the
+     * current measurement if it is already in the given system or could not
+     * be converted
+     */
+    convertSystem: function(measurementSystem) {
+        if (!measurementSystem || measurementSystem === this.getMeasurementSystem()) {
+            return this;
+        }
+        var map = this.systems.conversions[this.getMeasurementSystem()][measurementSystem];
+        var newunit = map && map[this.unit];
+        if (!newunit) return this;
+
+        return this.newUnit({
+            unit: newunit,
+            amount: this.convert(newunit)
+        });
     },
 
     /**
@@ -353,12 +377,12 @@ Measurement.prototype = {
      * @private
      */
     scaleUnits: function(mSystem) {
-        var munit, amount = 18446744073709551999;
+        var tmp, munit, amount = 18446744073709551999;
         var fromRow = this.ratios[this.unit];
 
         for (var m = 0; m < mSystem.length; m++) {
-            var tmp = this.amount * fromRow[this.ratios[mSystem[m]][0]];
-            if (tmp >= 1 && tmp < amount) {
+            tmp = this.amount * fromRow[this.ratios[mSystem[m]][0]];
+            if ((tmp >= 1 && tmp < amount) || amount === 18446744073709551999) {
                 amount = tmp;
                 munit = mSystem[m];
             }

@@ -370,7 +370,21 @@
                 "uscustomary": ["square-foot"],
                 "imperial": ["square-foot"]
             },
-            "maxFractionDigits": 0
+            "systems": {
+                "metric": {
+                    "units": ["square-meter"],
+                    "maxFractionDigits": 2
+                },
+                "uscustomary": {
+                    "units": ["square-foot"],
+                    "maxFractionDigits": 0
+                },
+                "imperial": {
+                    "units": ["square-foot"],
+                    "maxFractionDigits": 0
+                }
+            },
+            "style": "numeric"
         },
         "landArea": {
             "description": "area of a piece of plot of land",
@@ -455,8 +469,23 @@
                 "uscustomary": ["inch", "foot"],
                 "imperial": ["inch", "foot"]
             },
-            "maxFractionDigits": 0,
-            "style": "list"
+            "systems": {
+                "metric": {
+                    "units": ["meter", "centimeter"],
+                    "maxFractionDigits": 2,
+                    "style": "numeric"
+                },
+                "uscustomary": {
+                    "units": ["inch", "foot"],
+                    "maxFractionDigits": 0,
+                    "style": "list"
+                },
+                "imperial": {
+                    "units": ["inch", "foot"],
+                    "maxFractionDigits": 0,
+                    "style": "list"
+                }
+            }
         },
         "vehicleDistance": {
             "description": "distance traveled by a vehicle or aircraft (except a boat)",
@@ -557,10 +586,11 @@
             "type": "volume",
             "units": {
                 "metric": ["milliliter", "liter"],
-                "uscustomary": ["cup", "pint", "quart", "gallon"],
-                "imperial": ["cup", "pint-imperial", "quart-imperial", "gallon-imperial"]
+                "uscustomary": ["fluid-ounce", "cup", "pint", "quart", "gallon"],
+                "imperial": ["ounce-imperial", "cup", "pint-imperial", "quart-imperial", "gallon-imperial"]
             },
-            "maxFractionDigits": 0
+            "maxFractionDigits": 2,
+            "style": "numeric"
         },
         "fuelVolume": {
             "description": "volume of a vehicular fuel",
@@ -580,7 +610,7 @@
                 "uscustomary": ["cubic-inch"],
                 "imperial": ["cubic-inch"]
             },
-            "maxFractionDigits": 0
+            "maxFractionDigits": 2
         },
         "storageVolume": {
             "description": "volume of a mass storage tank",
@@ -590,7 +620,8 @@
                 "uscustomary": ["gallon", "cubic-foot"],
                 "imperial": ["gallon-imperial", "cubic-foot"]
             },
-            "maxFractionDigits": 0
+            "maxFractionDigits": 3,
+            "style": "numeric"
         },
         "gasVolume": {
             "description": "volume of a gas such as natural gas used in a home a home might use",

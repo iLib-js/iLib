@@ -98,24 +98,6 @@ module.exports.testunitfmt_usages = {
             locale: "de-DE"
         });
         var str = uf.format(m1);
-        test.equal(str, "1 m, 87 cm");
-        test.done();
-    },
-
-    testUnitFormatWithUsageAdultHeightDENumeric: function(test) {
-        test.expect(1);
-        var m1 = MeasurementFactory({
-            unit: "m",
-            amount: 1.87
-        });
-
-        var uf = new UnitFmt({
-            usage: "personHeight",
-            length: "short",
-            locale: "de-DE",
-            style: "numeric"
-        });
-        var str = uf.format(m1);
         test.equal(str, "1,87 m");
         test.done();
     },
@@ -130,8 +112,7 @@ module.exports.testunitfmt_usages = {
         var uf = new UnitFmt({
             usage: "personHeight",
             length: "short",
-            locale: "de-DE",
-            style: "numeric"
+            locale: "de-DE"
         });
         var str = uf.format(m1);
         test.equal(str, "78 cm");
@@ -187,22 +168,6 @@ module.exports.testunitfmt_usages = {
         });
         var str = uf.format(m1);
         test.equal(str, "28,5 cm");
-        test.done();
-    },
-
-    testUnitFormatWithUsageFloorSpace: function(test) {
-        test.expect(1);
-        var m1 = MeasurementFactory({
-            unit: "square feet",
-            amount: 200
-        });
-
-        var uf = new UnitFmt({
-            usage: "floorSpace",
-            length: "short"
-        });
-        var str = uf.format(m1);
-        test.equal(str, "200 square feet");
         test.done();
     },
 
@@ -410,6 +375,22 @@ module.exports.testunitfmt_usages = {
         test.done();
     },
 
+    testUnitFormatWithUsageFloorSpace: function(test) {
+        test.expect(1);
+        var m1 = MeasurementFactory({
+            unit: "square feet",
+            amount: 200
+        });
+
+        var uf = new UnitFmt({
+            usage: "floorSpace",
+            length: "long"
+        });
+        var str = uf.format(m1);
+        test.equal(str, "200 square feet");
+        test.done();
+    },
+
     testUnitFormatWithUsageFloorSpaceConvert: function(test) {
         test.expect(1);
         var m1 = MeasurementFactory({
@@ -422,7 +403,7 @@ module.exports.testunitfmt_usages = {
             length: "short"
         });
         var str = uf.format(m1);
-        test.equal(str, "107.64 square feet");
+        test.equal(str, "107.64 sq ft");
         test.done();
     },
 
@@ -435,7 +416,7 @@ module.exports.testunitfmt_usages = {
 
         var uf = new UnitFmt({
             usage: "floorSpace",
-            length: "short"
+            length: "long"
         });
         var str = uf.format(m1);
         test.equal(str, "138.89 square feet");
@@ -1578,7 +1559,7 @@ module.exports.testunitfmt_usages = {
         test.equal(str, "33,2 kilómetros por hora");
         test.done();
     },
-    
+
     testUnitFormatWithUsageLiquidFoodVolume: function(test) {
         test.expect(1);
         var m1 = MeasurementFactory({
@@ -1795,7 +1776,7 @@ module.exports.testunitfmt_usages = {
         test.equal(str, "330,2 milliliter");
         test.done();
     },
-    
+
     testUnitFormatWithUsageDryFoodVolume: function(test) {
         test.expect(1);
         var m1 = MeasurementFactory({
@@ -1932,13 +1913,13 @@ module.exports.testunitfmt_usages = {
         test.expect(1);
         var m1 = MeasurementFactory({
             unit: "imperial tbsp",
-            amount: 10,
-            locale: "en-GB"
+            amount: 10
         });
 
         var uf = new UnitFmt({
             usage: "dryFoodVolume",
-            length: "short"
+            length: "short",
+            locale: "en-GB"
         });
         var str = uf.format(m1);
         test.equal(str, "10 tbsp (imp)");
@@ -1949,13 +1930,13 @@ module.exports.testunitfmt_usages = {
         test.expect(1);
         var m1 = MeasurementFactory({
             unit: "imperial teaspoon",
-            amount: 105,
-            locale: "en-GB"
+            amount: 105
         });
 
         var uf = new UnitFmt({
             usage: "dryFoodVolume",
-            length: "long"
+            length: "long",
+            locale: "en-GB"
         });
         var str = uf.format(m1);
         test.equal(str, "2 imperial cups 3 tablespoons");
@@ -1965,7 +1946,7 @@ module.exports.testunitfmt_usages = {
     testUnitFormatWithUsageDryFoodVolumeConvertGB2: function(test) {
         test.expect(1);
         var m1 = MeasurementFactory({
-            unit: "cups",
+            unit: "imperial cups",
             amount: 1.25
         });
 
@@ -2017,7 +1998,7 @@ module.exports.testunitfmt_usages = {
         test.expect(1);
         var m1 = MeasurementFactory({
             unit: "pint",
-            amount: 3.2
+            amount: 1.2
         });
 
         var uf = new UnitFmt({
@@ -2025,7 +2006,7 @@ module.exports.testunitfmt_usages = {
             length: "long"
         });
         var str = uf.format(m1);
-        test.equal(str, "3.2 pints");
+        test.equal(str, "1.2 pints");
         test.done();
     },
 
@@ -2041,7 +2022,7 @@ module.exports.testunitfmt_usages = {
             length: "long"
         });
         var str = uf.format(m1);
-        test.equal(str, "1.375 cups");
+        test.equal(str, "1.39 cups");
         test.done();
     },
 
@@ -2057,7 +2038,7 @@ module.exports.testunitfmt_usages = {
             length: "short"
         });
         var str = uf.format(m1);
-        test.equal(str, "2.2 pnt");
+        test.equal(str, "1.1 qt");
         test.done();
     },
 
@@ -2073,7 +2054,7 @@ module.exports.testunitfmt_usages = {
             length: "short"
         });
         var str = uf.format(m1);
-        test.equal(str, "2 quarts 0.11 cups");
+        test.equal(str, "2 qt");
         test.done();
     },
 
@@ -2090,7 +2071,7 @@ module.exports.testunitfmt_usages = {
             measurementSystem: "metric"
         });
         var str = uf.format(m1);
-        test.equal(str, "1 liter 234 milliliters");
+        test.equal(str, "1.23 L");
         test.done();
     },
 
@@ -2107,7 +2088,7 @@ module.exports.testunitfmt_usages = {
             measurementSystem: "metric"
         });
         var str = uf.format(m1);
-        test.equal(str, "600 ml");
+        test.equal(str, "591.47 mL");
         test.done();
     },
 
@@ -2115,7 +2096,7 @@ module.exports.testunitfmt_usages = {
         test.expect(1);
         var m1 = MeasurementFactory({
             unit: "imperial pint",
-            amount: 2
+            amount: 3
         });
 
         var uf = new UnitFmt({
@@ -2124,7 +2105,7 @@ module.exports.testunitfmt_usages = {
             locale: "en-GB"
         });
         var str = uf.format(m1);
-        test.equal(str, "2 imperial pints");
+        test.equal(str, "1.5 imperial quarts");
         test.done();
     },
 
@@ -2141,7 +2122,7 @@ module.exports.testunitfmt_usages = {
             locale: "en-GB"
         });
         var str = uf.format(m1);
-        test.equal(str, "1 pint");
+        test.equal(str, "1 imperial pint");
         test.done();
     },
 
@@ -2149,16 +2130,16 @@ module.exports.testunitfmt_usages = {
         test.expect(1);
         var m1 = MeasurementFactory({
             unit: "imperial pint",
-            amount: 2,
-            locale: "en-GB"
+            amount: 2
         });
 
         var uf = new UnitFmt({
             usage: "drinkVolume",
-            length: "short"
+            length: "short",
+            locale: "en-GB"
         });
         var str = uf.format(m1);
-        test.equal(str, "2 pnt (imp)");
+        test.equal(str, "1 qt(i)");
         test.done();
     },
 
@@ -2166,23 +2147,23 @@ module.exports.testunitfmt_usages = {
         test.expect(1);
         var m1 = MeasurementFactory({
             unit: "imperial cups",
-            amount: 5,
-            locale: "en-GB"
+            amount: 5
         });
 
         var uf = new UnitFmt({
             usage: "drinkVolume",
-            length: "long"
+            length: "long",
+            locale: "en-GB"
         });
         var str = uf.format(m1);
-        test.equal(str, "2 pints 1 cup");
+        test.equal(str, "1.25 quarts");
         test.done();
     },
 
     testUnitFormatWithUsageDrinkVolumeConvertGB2: function(test) {
         test.expect(1);
         var m1 = MeasurementFactory({
-            unit: "cups",
+            unit: "imperial cups",
             amount: 5
         });
 
@@ -2192,7 +2173,7 @@ module.exports.testunitfmt_usages = {
             locale: "en-GB"
         });
         var str = uf.format(m1);
-        test.equal(str, "2 pnt (imp) 0.22 cup (imp)");
+        test.equal(str, "1.25 qt");
         test.done();
     },
 
@@ -2226,7 +2207,7 @@ module.exports.testunitfmt_usages = {
             locale: "nl-NL"
         });
         var str = uf.format(m1);
-        test.equal(str, "330,2 milliliter");
+        test.equal(str, "330 milliliter");
         test.done();
     },
 
@@ -2258,7 +2239,7 @@ module.exports.testunitfmt_usages = {
             length: "long"
         });
         var str = uf.format(m1);
-        test.equal(str, "87.1768 gallons");
+        test.equal(str, "87.18 gallons");
         test.done();
     },
 
@@ -2274,7 +2255,7 @@ module.exports.testunitfmt_usages = {
             length: "short"
         });
         var str = uf.format(m1);
-        test.equal(str, "28.4 gal");
+        test.equal(str, "228.4 gal");
         test.done();
     },
 
@@ -2290,7 +2271,7 @@ module.exports.testunitfmt_usages = {
             length: "short"
         });
         var str = uf.format(m1);
-        test.equal(str, "50.9112 gal");
+        test.equal(str, "50.19 gal");
         test.done();
     },
 
@@ -2307,7 +2288,7 @@ module.exports.testunitfmt_usages = {
             measurementSystem: "metric"
         });
         var str = uf.format(m1);
-        test.equal(str, "12.343 L");
+        test.equal(str, "12.34 L");
         test.done();
     },
 
@@ -2324,7 +2305,7 @@ module.exports.testunitfmt_usages = {
             measurementSystem: "metric"
         });
         var str = uf.format(m1);
-        test.equal(str, "9.46353 L");
+        test.equal(str, "9.46 L");
         test.done();
     },
 
@@ -2341,7 +2322,7 @@ module.exports.testunitfmt_usages = {
             locale: "en-GB"
         });
         var str = uf.format(m1);
-        test.equal(str, "2 imperial gallons");
+        test.equal(str, "2 gallons");
         test.done();
     },
 
@@ -2358,7 +2339,7 @@ module.exports.testunitfmt_usages = {
             locale: "en-GB"
         });
         var str = uf.format(m1);
-        test.equal(str, "12.3183 imperial gallons");
+        test.equal(str, "12.32 gallons");
         test.done();
     },
 
@@ -2375,7 +2356,7 @@ module.exports.testunitfmt_usages = {
             locale: "en-GB"
         });
         var str = uf.format(m1);
-        test.equal(str, "2 gal (imp)");
+        test.equal(str, "2 gal");
         test.done();
     },
 
@@ -2392,7 +2373,7 @@ module.exports.testunitfmt_usages = {
             locale: "en-GB"
         });
         var str = uf.format(m1);
-        test.equal(str, "12.5 imperial gallons");
+        test.equal(str, "12.5 gallons");
         test.done();
     },
 
@@ -2409,7 +2390,7 @@ module.exports.testunitfmt_usages = {
             locale: "en-GB"
         });
         var str = uf.format(m1);
-        test.equal(str, "4.16337 gal (imp)");
+        test.equal(str, "4.16 gal");
         test.done();
     },
 
@@ -2426,7 +2407,7 @@ module.exports.testunitfmt_usages = {
             locale: "sv-SE"
         });
         var str = uf.format(m1);
-        test.equal(str, "24,034 liter");
+        test.equal(str, "24,03 liter");
         test.done();
     },
 
@@ -2475,7 +2456,7 @@ module.exports.testunitfmt_usages = {
             length: "long"
         });
         var str = uf.format(m1);
-        test.equal(str, "20.1378 cubic inches");
+        test.equal(str, "20.14 cubic inches");
         test.done();
     },
 
@@ -2507,7 +2488,7 @@ module.exports.testunitfmt_usages = {
             length: "short"
         });
         var str = uf.format(m1);
-        test.equal(str, "54.1406 in³");
+        test.equal(str, "54.14 in³");
         test.done();
     },
 
@@ -2524,7 +2505,7 @@ module.exports.testunitfmt_usages = {
             measurementSystem: "metric"
         });
         var str = uf.format(m1);
-        test.equal(str, "12,343 cc");
+        test.equal(str, "12,343 cm³");
         test.done();
     },
 
@@ -2541,7 +2522,7 @@ module.exports.testunitfmt_usages = {
             measurementSystem: "metric"
         });
         var str = uf.format(m1);
-        test.equal(str, "750 cc");
+        test.equal(str, "750 cm³");
         test.done();
     },
 
@@ -2575,7 +2556,7 @@ module.exports.testunitfmt_usages = {
             locale: "km-KH"
         });
         var str = uf.format(m1);
-        test.equal(str, "330,2 សង់ទីម៉ែត្រគូប");
+        test.equal(str, "330,2 សង់ទីម៉ែត្រ​គីប");
         test.done();
     },
 
@@ -2607,7 +2588,7 @@ module.exports.testunitfmt_usages = {
             length: "long"
         });
         var str = uf.format(m1);
-        test.equal(str, "1 cubic foot 1.24 gallons");
+        test.equal(str, "1.165 cubic feet");
         test.done();
     },
 
@@ -2624,7 +2605,24 @@ module.exports.testunitfmt_usages = {
             locale: "en-GB"
         });
         var str = uf.format(m1);
-        test.equal(str, "1 cubic foot 1.04 imperial gallons");
+        test.equal(str, "1.165 cubic feet");
+        test.done();
+    },
+
+    testUnitFormatWithUsageStorageVolumeConvertGBSmall: function(test) {
+        test.expect(1);
+        var m1 = MeasurementFactory({
+            unit: "cc",
+            amount: 15000
+        });
+
+        var uf = new UnitFmt({
+            usage: "storageVolume",
+            length: "long",
+            locale: "en-GB"
+        });
+        var str = uf.format(m1);
+        test.equal(str, "3.3 gallons");
         test.done();
     },
 
@@ -2656,7 +2654,23 @@ module.exports.testunitfmt_usages = {
             length: "short"
         });
         var str = uf.format(m1);
-        test.equal(str, "1 ft³ 0.332 gal");
+        test.equal(str, "1.044 ft³");
+        test.done();
+    },
+
+    testUnitFormatWithUsageStorageVolumeScaleSmall: function(test) {
+        test.expect(1);
+        var m1 = MeasurementFactory({
+            unit: "fluid ounce",
+            amount: 100
+        });
+
+        var uf = new UnitFmt({
+            usage: "storageVolume",
+            length: "short"
+        });
+        var str = uf.format(m1);
+        test.equal(str, "0.781 gal");
         test.done();
     },
 
@@ -2673,7 +2687,7 @@ module.exports.testunitfmt_usages = {
             locale: "en-GB"
         });
         var str = uf.format(m1);
-        test.equal(str, "1 ft³ 0.276 gal");
+        test.equal(str, "1.044 ft³");
         test.done();
     },
 
@@ -2690,7 +2704,7 @@ module.exports.testunitfmt_usages = {
             measurementSystem: "metric"
         });
         var str = uf.format(m1);
-        test.equal(str, "12,343 m³");
+        test.equal(str, "12.343 m³");
         test.done();
     },
 
@@ -2706,7 +2720,7 @@ module.exports.testunitfmt_usages = {
             length: "short"
         });
         var str = uf.format(m1);
-        test.equal(str, "1 ft³ 4.41 gal");
+        test.equal(str, "1.616 ft³");
         test.done();
     },
 
@@ -2723,7 +2737,7 @@ module.exports.testunitfmt_usages = {
             locale: "en-GB"
         });
         var str = uf.format(m1);
-        test.equal(str, "1 ft³ 3.672 gal");
+        test.equal(str, "1.616 ft³");
         test.done();
     },
 
@@ -2740,7 +2754,7 @@ module.exports.testunitfmt_usages = {
             locale: "fr-CA"
         });
         var str = uf.format(m1);
-        test.equal(str, "2 mètres cubes 500 litres");
+        test.equal(str, "2,5 mètres cubes");
         test.done();
     },
 
@@ -2757,7 +2771,7 @@ module.exports.testunitfmt_usages = {
             locale: "be-BY"
         });
         var str = uf.format(m1);
-        test.equal(str, "3 кубічныя метры 200 літра");
+        test.equal(str, "3,2 кубічныя метры");
         test.done();
     },
 
@@ -2789,7 +2803,7 @@ module.exports.testunitfmt_usages = {
             length: "long"
         });
         var str = uf.format(m1);
-        test.equal(str, "1.165 cubic foot");
+        test.equal(str, "1.165 cubic feet");
         test.done();
     },
 

@@ -31,15 +31,32 @@ var Measurement = require("./Measurement.js");
  * the construction of this instance
  */
 var UnknownUnit = function (options) {
-	if (options) {
-		this.unit = options.unit;
-		this.amount = options.amount;
-	}
+    
+    this.ratios = {};
+    this.aliases = UnknownUnit.aliases;
+    this.aliasesLower = UnknownUnit.aliases;
+    this.systems = UnknownUnit.systems;
+    
+    if (options) {
+        this.unit = options.unit;
+        this.amount = options.amount;
+    }
 };
 
 UnknownUnit.prototype = new Measurement();
 UnknownUnit.prototype.parent = Measurement;
 UnknownUnit.prototype.constructor = UnknownUnit;
+
+UnknownUnit.systems = {
+    "metric": [],
+    "uscustomary": [],
+    "imperial": [],
+    "conversions": {
+        "metric": {},
+        "uscustomary": {},
+        "imperial": {}
+    }
+};
 
 UnknownUnit.aliases = {
 	"unknown":"unknown"

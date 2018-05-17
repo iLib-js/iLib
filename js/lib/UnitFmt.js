@@ -288,19 +288,21 @@ var UnitFmt = function(options) {
      */
     this.roundingMode = options.roundingMode;
 
-    Utils.loadData({
-        object: "UnitFmt",
-        locale: this.locale,
-        name: "unitfmt.json",
-        sync: sync,
-        loadParams: loadParams,
-        callback: ilib.bind(this, function (format) {
-            this.template = format["unitfmt"][this.length];
+    // ensure that the plural rules are loaded before we proceed
+    IString.loadPlurals(sync, this.locale, loadParams, ilib.bind(this, function() {
+        Utils.loadData({
+            object: "UnitFmt",
+            locale: this.locale,
+            name: "unitfmt.json",
+            sync: sync,
+            loadParams: loadParams,
+            callback: ilib.bind(this, function (format) {
+                this.template = format["unitfmt"][this.length];
 
-            if (this.usage && format.usages) {
-                // if usage is not recognized, usageInfo will be undefined, which we will use to indicate unknown usage
-                this.usageInfo = format.usages[this.usage];
-                if (this.usageInfo) {
+                if (this.usage && format.usages && format.usages[this.usage]) {
+                    // if usage is not recognized, usageInfo will be undefined, which we will use to indicate unknown usage
+                    this.usageInfo = format.usages[this.usage];
+
                     // default settings for this usage, but don't override the options that were passed in
                     if (typeof(this.maxFractionDigits) !== 'number' && typeof(this.usageInfo.maxFractionDigits) === 'number') {
                         this.maxFractionDigits = this.usageInfo.maxFractionDigits;
@@ -318,49 +320,98 @@ var UnitFmt = function(options) {
                     if (!this.style && this.usageInfo.style) {
                         this.style = this.usageInfo.style;
                     }
-                }
-            }
 
-            new NumFmt({
-                locale: this.locale,
-                useNative: this.useNative,
-                maxFractionDigits: this.maxFractionDigits,
-                minFractionDigits: this.minFractionDigits,
-                roundingMode: this.roundingMode,
-                sync: sync,
-                loadParams: loadParams,
-                onLoad: ilib.bind(this, function (numfmt) {
-                    this.numFmt = numfmt;
-
-                    // ensure that the plural rules are loaded before we proceed
-                    IString.loadPlurals(sync, this.locale, loadParams, ilib.bind(this, function() {
-                        if (this.style === "list") {
-                            new ListFmt({
-                                locale: this.locale,
-                                style: "unit",
-                                sync: sync,
-                                loadParams: loadParams,
-                                onLoad: ilib.bind(this, function (listFmt) {
-                                    this.listFmt = listFmt;
-
-                                    if (options && typeof(options.onLoad) === 'function') {
-                                        options.onLoad(this);
-                                    }
-                                })
-                            });
-                        } else {
+                    if (this.usageInfo.systems) {
+                        this.units = {
+                            metric: this.usageInfo.systems.metric.units,
+                            uscustomary: this.usageInfo.systems.uscustomary.units,
+                            imperial: this.usageInfo.systems.imperial.units
+                        };
+                        this.numFmt = {};
+                        this._initNumFmt(sync, loadParams, this.usageInfo.systems.metric, ilib.bind(this, function(numfmt) {
+                            this.numFmt.metric = numfmt;
+                            this._initNumFmt(sync, loadParams, this.usageInfo.systems.uscustomary, ilib.bind(this, function(numfmt) {
+                                this.numFmt.uscustomary = numfmt;
+                                this._initNumFmt(sync, loadParams, this.usageInfo.systems.imperial, ilib.bind(this, function(numfmt) {
+                                    this.numFmt.imperial = numfmt;
+                                    this._init(sync, loadParams, ilib.bind(this, function () {
+                                        if (options && typeof(options.onLoad) === 'function') {
+                                            options.onLoad(this);
+                                        }
+                                    }));
+                                }));
+                            }));
+                        }));
+                    } else {
+                        this._initFormatters(sync, loadParams, {}, ilib.bind(this, function() {
                             if (options && typeof(options.onLoad) === 'function') {
                                 options.onLoad(this);
                             }
+                        }));
+                    }
+                } else {
+                    this._initFormatters(sync, loadParams, {}, ilib.bind(this, function() {
+                        if (options && typeof(options.onLoad) === 'function') {
+                            options.onLoad(this);
                         }
                     }));
-                })
-            });
-        })
-    });
+                }
+            })
+        });
+    }));
 };
 
 UnitFmt.prototype = {
+    /** @private */
+    _initNumFmt: function(sync, loadParams, options, callback) {
+        new NumFmt({
+            locale: this.locale,
+            useNative: this.useNative,
+            maxFractionDigits: typeof(this.maxFractionDigits) !== 'undefined' ? this.maxFractionDigits : options.maxFractionDigits,
+            minFractionDigits: typeof(this.minFractionDigits) !== 'undefined' ? this.minFractionDigits : options.minFractionDigits,
+            significantDigits: typeof(this.significantDigits) !== 'undefined' ? this.significantDigits : options.significantDigits,
+            roundingMode: this.roundingMode || options.roundingMode,
+            sync: sync,
+            loadParams: loadParams,
+            onLoad: ilib.bind(this, function (numfmt) {
+                callback(numfmt);
+            })
+        });
+    },
+
+    _initFormatters: function(sync, loadParams, options, callback) {
+        this._initNumFmt(sync, loadParams, {}, ilib.bind(this, function(numfmt) {
+            this.numFmt = {
+                metric: numfmt,
+                uscustomary: numfmt,
+                imperial: numfmt
+            };
+
+            this._init(sync, loadParams, callback);
+        }));
+    },
+
+    /** @private */
+    _init: function(sync, loadParams, callback) {
+        if (this.style === "list" || (this.usageInfo && this.usageInfo.systems &&
+                (this.usageInfo.systems.metric.style === "list" ||
+                this.usageInfo.systems.uscustomary.style === "list" ||
+                this.usageInfo.systems.imperial.style === "list"))) {
+            new ListFmt({
+                locale: this.locale,
+                style: "unit",
+                sync: sync,
+                loadParams: loadParams,
+                onLoad: ilib.bind(this, function (listFmt) {
+                    this.listFmt = listFmt;
+                    callback();
+                })
+            });
+        } else {
+            callback();
+        }
+    },
+
     /**
      * Return the locale used with this formatter instance.
      * @return {Locale} the Locale instance for this formatter
@@ -411,12 +462,13 @@ UnitFmt.prototype = {
     /**
      * @private
      */
-    _format: function(u) {
+    _format: function(u, system) {
         var formatted = new IString(this.template[u.getUnit()]);
         // make sure to use the right plural rules
         formatted.setLocale(this.locale, true, undefined, undefined);
-        formatted = formatted.formatChoice(u.amount, {n: this.numFmt.format(u.amount)});
-        return formatted.length > 0 ? formatted : u.amount + " " + u.unit;
+        var rounded = this.numFmt[system].constrain(u.amount);
+        formatted = formatted.formatChoice(rounded, {n: this.numFmt[system].format(u.amount)});
+        return formatted.length > 0 ? formatted : rounded + " " + u.unit;
     },
 
     /**
@@ -427,19 +479,27 @@ UnitFmt.prototype = {
      * @return {string} the formatted version of the given date instance
      */
     format: function (measurement) {
-        var u, system = this.getMeasurementSystem();
-        u = this.convert ? measurement.localize(this.locale) : measurement;
+        var u = measurement, system;
+        if (this.convert) {
+            if (this.measurementSystem) {
+                if (this.measurementSystem !== measurement.getMeasurementSystem()) {
+                    u = u.convertSystem(this.measurementSystem);
+                }
+            } else {
+                u = measurement.localize(this.locale);
+            }
+        }
+        system = u.getMeasurementSystem() || this.getMeasurementSystem() || "metric";
         if (this.usageInfo && measurement.getMeasure() === this.usageInfo.type) {
             // specifying a usage implies auto scaling, but with a restricted set of units
             u = u.scale(system, this.units);
         } else {
             u = this.scale ? u.scale() : u; // scale within the current system
         }
-
-        if (this.style === "list") {
+        if (this.style === "list" || (this.usageInfo && this.usageInfo.systems && this.usageInfo.systems[system].style === "list")) {
             u = u.expand(undefined, this.units);
             var formatted = u.map(ilib.bind(this, function(unit) {
-                return this._format(unit);
+                return this._format(unit, system);
             }));
             if (this.listFmt && formatted.length) {
                 return this.listFmt.format(formatted);
@@ -447,7 +507,7 @@ UnitFmt.prototype = {
                 return formatted.join(' ');
             }
         } else {
-            return this._format(u);
+            return this._format(u, system);
         }
     }
 };

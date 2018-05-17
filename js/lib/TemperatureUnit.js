@@ -74,7 +74,7 @@ TemperatureUnit.prototype.getMeasure = function() {
 
 /**
  * Return a new instance of this type of measurement.
- * 
+ *
  * @param {Object} params parameters to the constructor
  * @return {Measurement} a measurement subclass instance
  */
