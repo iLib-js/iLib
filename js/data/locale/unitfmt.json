@@ -159,6 +159,7 @@
             "teaspoon-imperial": "one#{n} imperial teaspoon|#{n} imperial teaspoons",
             "tablespoon-imperial": "one#{n} imperial tablespoon|#{n} imperial tablespoons",
             "ounce-imperial": "one#{n} imperial ounce|#{n} imperial ounces",
+            "cup-imperial": "one#{n} imperial cup|#{n} imperial cups",
             "pint-imperial": "one#{n} imperial pint|#{n} imperial pints",
             "quart-imperial": "one#{n} imperial quart|#{n} imperial quarts",
             "bit-per-second": "#{n} b/s",
@@ -366,21 +367,33 @@
             "description": "area of the floor of a house or building",
             "type": "area",
             "units": {
-                "metric": ["square-meter"],
-                "uscustomary": ["square-foot"],
-                "imperial": ["square-foot"]
+                "metric": [
+                    "square-meter"
+                ],
+                "uscustomary": [
+                    "square-foot"
+                ],
+                "imperial": [
+                    "square-foot"
+                ]
             },
             "systems": {
                 "metric": {
-                    "units": ["square-meter"],
+                    "units": [
+                        "square-meter"
+                    ],
                     "maxFractionDigits": 2
                 },
                 "uscustomary": {
-                    "units": ["square-foot"],
+                    "units": [
+                        "square-foot"
+                    ],
                     "maxFractionDigits": 0
                 },
                 "imperial": {
-                    "units": ["square-foot"],
+                    "units": [
+                        "square-foot"
+                    ],
                     "maxFractionDigits": 0
                 }
             },
@@ -390,9 +403,20 @@
             "description": "area of a piece of plot of land",
             "type": "area",
             "units": {
-                "metric": ["square-meter", "hectare"],
-                "uscustomary": ["square-foot", "acre", "square-mile"],
-                "imperial": ["square-foot", "acre", "square-mile"]
+                "metric": [
+                    "square-meter",
+                    "hectare"
+                ],
+                "uscustomary": [
+                    "square-foot",
+                    "acre",
+                    "square-mile"
+                ],
+                "imperial": [
+                    "square-foot",
+                    "acre",
+                    "square-mile"
+                ]
             },
             "maxFractionDigits": 0
         },
@@ -419,24 +443,49 @@
             "description": "amount of energy contains in food",
             "type": "energy",
             "units": {
-                "metric": ["millijoule", "joule", "kilojoule", "megajoule", "gigajoule"],
-                "uscustomary": ["foodcalorie"],
-                "imperial": ["foodcalorie"]
+                "metric": [
+                    "millijoule",
+                    "joule",
+                    "kilojoule",
+                    "megajoule",
+                    "gigajoule"
+                ],
+                "uscustomary": [
+                    "foodcalorie"
+                ],
+                "imperial": [
+                    "foodcalorie"
+                ]
             },
             "significantDigits": 3
         },
         "electricalEnergy": {
             "description": "amount of energy in electricity",
             "type": "energy",
-            "units": ["watt-hour", "kilowatt-hour", "megawatt-hour", "gigawatt-hour"]
+            "units": [
+                "watt-hour",
+                "kilowatt-hour",
+                "megawatt-hour",
+                "gigawatt-hour"
+            ]
         },
         "heatingEnergy": {
             "description": "amount of energy required to heat things such as water or home interiors",
             "type": "energy",
             "units": {
-                "metric": ["millijoule", "joule", "kilojoule", "megajoule", "gigajoule"],
-                "uscustomary": ["BTU"],
-                "imperial": ["BTU"]
+                "metric": [
+                    "millijoule",
+                    "joule",
+                    "kilojoule",
+                    "megajoule",
+                    "gigajoule"
+                ],
+                "uscustomary": [
+                    "BTU"
+                ],
+                "imperial": [
+                    "BTU"
+                ]
             },
             "significantDigits": 4
         },
@@ -444,9 +493,20 @@
             "description": "distance traveled by a boat",
             "type": "length",
             "units": {
-                "metric": ["meter", "kilometer"],
-                "uscustomary": ["foot", "yard", "nautical-mile"],
-                "imperial": ["foot", "yard", "nautical-mile"]
+                "metric": [
+                    "meter",
+                    "kilometer"
+                ],
+                "uscustomary": [
+                    "foot",
+                    "yard",
+                    "nautical-mile"
+                ],
+                "imperial": [
+                    "foot",
+                    "yard",
+                    "nautical-mile"
+                ]
             },
             "maxFractionDigits": 2,
             "significantDigits": 4
@@ -455,9 +515,15 @@
             "description": "length of a baby",
             "type": "length",
             "units": {
-                "metric": ["centimeter"],
-                "uscustomary": ["inch"],
-                "imperial": ["inch"]
+                "metric": [
+                    "centimeter"
+                ],
+                "uscustomary": [
+                    "inch"
+                ],
+                "imperial": [
+                    "inch"
+                ]
             },
             "significantDigits": 3
         },
@@ -465,23 +531,40 @@
             "description": "height of an adult or child (not a baby)",
             "type": "length",
             "units": {
-                "metric": ["meter"],
-                "uscustomary": ["inch", "foot"],
-                "imperial": ["inch", "foot"]
+                "metric": [
+                    "meter"
+                ],
+                "uscustomary": [
+                    "inch",
+                    "foot"
+                ],
+                "imperial": [
+                    "inch",
+                    "foot"
+                ]
             },
             "systems": {
                 "metric": {
-                    "units": ["meter", "centimeter"],
+                    "units": [
+                        "meter",
+                        "centimeter"
+                    ],
                     "maxFractionDigits": 2,
                     "style": "numeric"
                 },
                 "uscustomary": {
-                    "units": ["inch", "foot"],
+                    "units": [
+                        "inch",
+                        "foot"
+                    ],
                     "maxFractionDigits": 0,
                     "style": "list"
                 },
                 "imperial": {
-                    "units": ["inch", "foot"],
+                    "units": [
+                        "inch",
+                        "foot"
+                    ],
                     "maxFractionDigits": 0,
                     "style": "list"
                 }
@@ -491,9 +574,18 @@
             "description": "distance traveled by a vehicle or aircraft (except a boat)",
             "type": "length",
             "units": {
-                "metric": ["meter", "kilometer"],
-                "uscustomary": ["yard", "mile"],
-                "imperial": ["yard", "mile"]
+                "metric": [
+                    "meter",
+                    "kilometer"
+                ],
+                "uscustomary": [
+                    "yard",
+                    "mile"
+                ],
+                "imperial": [
+                    "yard",
+                    "mile"
+                ]
             },
             "maxFractionDigits": 2,
             "significantDigits": 4
@@ -502,9 +594,16 @@
             "description": "weight/mass of an adult human or larger child",
             "type": "mass",
             "units": {
-                "metric": ["kilogram"],
-                "uscustomary": ["pound"],
-                "imperial": ["pound", "stone"]
+                "metric": [
+                    "kilogram"
+                ],
+                "uscustomary": [
+                    "pound"
+                ],
+                "imperial": [
+                    "pound",
+                    "stone"
+                ]
             },
             "style": "list",
             "maxFractionDigits": 0
@@ -513,9 +612,17 @@
             "description": "weight/mass of a baby or of small animals such as cats and dogs",
             "type": "mass",
             "units": {
-                "metric": ["kilogram"],
-                "uscustomary": ["ounce", "pound"],
-                "imperial": ["ounce", "pound"]
+                "metric": [
+                    "kilogram"
+                ],
+                "uscustomary": [
+                    "ounce",
+                    "pound"
+                ],
+                "imperial": [
+                    "ounce",
+                    "pound"
+                ]
             },
             "style": "list",
             "maxFractionDigits": 1
@@ -524,9 +631,18 @@
             "description": "weight/mass of a vehicle (including a boat)",
             "type": "mass",
             "units": {
-                "metric": ["kilogram", "metric-ton"],
-                "uscustomary": ["pound", "ton"],
-                "imperial": ["pound", "ton"]
+                "metric": [
+                    "kilogram",
+                    "metric-ton"
+                ],
+                "uscustomary": [
+                    "pound",
+                    "ton"
+                ],
+                "imperial": [
+                    "pound",
+                    "ton"
+                ]
             },
             "maxFractionDigits": 0
         },
@@ -534,18 +650,34 @@
             "description": "weight/mass of a dose of a medicinal drug",
             "type": "mass",
             "units": {
-                "metric": ["microgram", "milligram", "gram"],
-                "uscustomary": ["milligram", "ounce"],
-                "imperial": ["milligram", "ounce"]
+                "metric": [
+                    "microgram",
+                    "milligram",
+                    "gram"
+                ],
+                "uscustomary": [
+                    "milligram",
+                    "ounce"
+                ],
+                "imperial": [
+                    "milligram",
+                    "ounce"
+                ]
             }
         },
         "vehicleSpeed": {
             "description": "speed of travel of a vehicle, except boats",
             "type": "velocity",
             "units": {
-                "metric": ["kilometer-per-hour"],
-                "uscustomary": ["mile-per-hour"],
-                "imperial": ["mile-per-hour"]
+                "metric": [
+                    "kilometer-per-hour"
+                ],
+                "uscustomary": [
+                    "mile-per-hour"
+                ],
+                "imperial": [
+                    "mile-per-hour"
+                ]
             },
             "maxFractionDigits": 0
         },
@@ -553,9 +685,15 @@
             "description": "speed of travel of a boat",
             "type": "velocity",
             "units": {
-                "metric": ["kilometer-per-hour"],
-                "uscustomary": ["knot"],
-                "imperial": ["knot"]
+                "metric": [
+                    "kilometer-per-hour"
+                ],
+                "uscustomary": [
+                    "knot"
+                ],
+                "imperial": [
+                    "knot"
+                ]
             },
             "maxFractionDigits": 0
         },
@@ -563,9 +701,22 @@
             "description": "volume of a dry food substance in a recipe such as flour",
             "type": "volume",
             "units": {
-                "metric": ["milliliter", "liter"],
-                "uscustomary": ["teaspoon", "tablespoon", "cup", "gallon"],
-                "imperial": ["teaspoon-imperial", "tablespoon-imperial", "cup-imperial", "gallon-imperial"]
+                "metric": [
+                    "milliliter",
+                    "liter"
+                ],
+                "uscustomary": [
+                    "teaspoon",
+                    "tablespoon",
+                    "cup",
+                    "gallon"
+                ],
+                "imperial": [
+                    "teaspoon-imperial",
+                    "tablespoon-imperial",
+                    "cup-imperial",
+                    "gallon-imperial"
+                ]
             },
             "style": "list",
             "maxFractionDigits": 2
@@ -574,9 +725,28 @@
             "description": "volume of a liquid food substance in a recipe such as milk",
             "type": "volume",
             "units": {
-                "metric": ["milliliter", "liter"],
-                "uscustomary": ["teaspoon", "tablespoon", "fluid-ounce", "cup", "pint", "quart", "gallon"],
-                "imperial": ["teaspoon-imperial", "tablespoon-imperial", "ounce-imperial", "cup", "pint-imperial", "quart-imperial", "gallon-imperial"]
+                "metric": [
+                    "milliliter",
+                    "liter"
+                ],
+                "uscustomary": [
+                    "teaspoon",
+                    "tablespoon",
+                    "fluid-ounce",
+                    "cup",
+                    "pint",
+                    "quart",
+                    "gallon"
+                ],
+                "imperial": [
+                    "teaspoon-imperial",
+                    "tablespoon-imperial",
+                    "ounce-imperial",
+                    "cup",
+                    "pint-imperial",
+                    "quart-imperial",
+                    "gallon-imperial"
+                ]
             },
             "style": "list",
             "maxFractionDigits": 2
@@ -585,9 +755,24 @@
             "description": "volume of a drink",
             "type": "volume",
             "units": {
-                "metric": ["milliliter", "liter"],
-                "uscustomary": ["fluid-ounce", "cup", "pint", "quart", "gallon"],
-                "imperial": ["ounce-imperial", "cup", "pint-imperial", "quart-imperial", "gallon-imperial"]
+                "metric": [
+                    "milliliter",
+                    "liter"
+                ],
+                "uscustomary": [
+                    "fluid-ounce",
+                    "cup",
+                    "pint",
+                    "quart",
+                    "gallon"
+                ],
+                "imperial": [
+                    "ounce-imperial",
+                    "cup",
+                    "pint-imperial",
+                    "quart-imperial",
+                    "gallon-imperial"
+                ]
             },
             "maxFractionDigits": 2,
             "style": "numeric"
@@ -596,9 +781,15 @@
             "description": "volume of a vehicular fuel",
             "type": "volume",
             "units": {
-                "metric": ["liter"],
-                "uscustomary": ["gallon"],
-                "imperial": ["gallon-imperial"]
+                "metric": [
+                    "liter"
+                ],
+                "uscustomary": [
+                    "gallon"
+                ],
+                "imperial": [
+                    "gallon-imperial"
+                ]
             },
             "maxFractionDigits": 2
         },
@@ -606,9 +797,15 @@
             "description": "volume of an engine's combustion space",
             "type": "volume",
             "units": {
-                "metric": ["cubic-centimeter"],
-                "uscustomary": ["cubic-inch"],
-                "imperial": ["cubic-inch"]
+                "metric": [
+                    "cubic-centimeter"
+                ],
+                "uscustomary": [
+                    "cubic-inch"
+                ],
+                "imperial": [
+                    "cubic-inch"
+                ]
             },
             "maxFractionDigits": 2
         },
@@ -616,9 +813,18 @@
             "description": "volume of a mass storage tank",
             "type": "volume",
             "units": {
-                "metric": ["liter", "cubic-meter"],
-                "uscustomary": ["gallon", "cubic-foot"],
-                "imperial": ["gallon-imperial", "cubic-foot"]
+                "metric": [
+                    "liter",
+                    "cubic-meter"
+                ],
+                "uscustomary": [
+                    "gallon",
+                    "cubic-foot"
+                ],
+                "imperial": [
+                    "gallon-imperial",
+                    "cubic-foot"
+                ]
             },
             "maxFractionDigits": 3,
             "style": "numeric"
@@ -627,9 +833,15 @@
             "description": "volume of a gas such as natural gas used in a home a home might use",
             "type": "volume",
             "units": {
-                "metric": ["cubic-meter"],
-                "uscustomary": ["cubic-foot"],
-                "imperial": ["cubic-foot"]
+                "metric": [
+                    "cubic-meter"
+                ],
+                "uscustomary": [
+                    "cubic-foot"
+                ],
+                "imperial": [
+                    "cubic-foot"
+                ]
             },
             "maxFractionDigits": 3
         }
