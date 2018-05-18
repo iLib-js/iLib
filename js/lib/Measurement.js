@@ -246,9 +246,19 @@ Measurement.prototype = {
      */
     scale: function(measurementsystem, units) {
         var systemName = this.getMeasurementSystem();
-        var systems = units || this.systems;
-        var mSystem = (systems[measurementsystem] && JSUtils.indexOf(systems[measurementsystem], this.unit) > -1) ?
-            systems[measurementsystem] : systems[systemName];
+        var mSystem;
+        if (units) {
+            mSystem = (units[measurementsystem] && JSUtils.indexOf(units[measurementsystem], this.unit) > -1) ?
+                units[measurementsystem] : units[systemName];
+        }
+        if (!mSystem) {
+            mSystem = (this.systems[measurementsystem] && JSUtils.indexOf(this.systems[measurementsystem], this.unit) > -1) ?
+                this.systems[measurementsystem] : this.systems[systemName];
+        }
+        if (!mSystem) {
+            // cannot find the system to scale within... just return the measurement as is
+            return this;
+        }
 
         return this.newUnit(this.scaleUnits(mSystem));
     },
@@ -510,9 +520,10 @@ Measurement.getUnitIdCaseInsensitive = function(measurement, unit) {
 // want to do an async load just to get it.
 // Source: https://en.wikipedia.org/wiki/Metrication#Overview
 var systems = {
-  "uscustomary": ["US", "FM", "MH", "LR", "PR", "PW", "GU", "WS", "AS", "VI", "MP"],
-  "imperial": ["GB", "MM"]
+    "uscustomary": ["US", "FM", "MH", "LR", "PR", "PW", "GU", "WS", "AS", "VI", "MP"],
+    "imperial": ["GB", "MM"]
 };
+
 // every other country in the world is metric. Myanmar (MM) is adopting metric by 2019
 // supposedly, and Liberia is as well
 

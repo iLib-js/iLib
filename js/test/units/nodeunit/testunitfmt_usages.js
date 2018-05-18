@@ -403,7 +403,7 @@ module.exports.testunitfmt_usages = {
             length: "short"
         });
         var str = uf.format(m1);
-        test.equal(str, "107.64 sq ft");
+        test.equal(str, "108 sq ft");
         test.done();
     },
 
@@ -419,7 +419,7 @@ module.exports.testunitfmt_usages = {
             length: "long"
         });
         var str = uf.format(m1);
-        test.equal(str, "138.89 square feet");
+        test.equal(str, "139 square feet");
         test.done();
     },
 
@@ -525,7 +525,7 @@ module.exports.testunitfmt_usages = {
         test.expect(1);
         var m1 = MeasurementFactory({
             unit: "square meter",
-            amount: 5000
+            amount: 50000
         });
 
         var uf = new UnitFmt({
@@ -542,7 +542,7 @@ module.exports.testunitfmt_usages = {
         test.expect(1);
         var m1 = MeasurementFactory({
             unit: "square meter",
-            amount: 5000
+            amount: 50000
         });
 
         var uf = new UnitFmt({
@@ -567,7 +567,7 @@ module.exports.testunitfmt_usages = {
             length: "long"
         });
         var str = uf.format(m1);
-        test.equal(str, "5 kilowatt hours");
+        test.equal(str, "5 kilowatt-hours");
         test.done();
     },
 
@@ -721,7 +721,7 @@ module.exports.testunitfmt_usages = {
         test.expect(1);
         var m1 = MeasurementFactory({
             unit: "btu",
-            amount: 4094.57
+            amount: 409.457
         });
 
         var uf = new UnitFmt({
@@ -730,24 +730,7 @@ module.exports.testunitfmt_usages = {
             measurementSystem: "metric"
         });
         var str = uf.format(m1);
-        test.equal(str, "4,320 kJ");
-        test.done();
-    },
-
-    testUnitFormatWithUsageHeatingEnergyAR: function(test) {
-        test.expect(1);
-        var m1 = MeasurementFactory({
-            unit: "kJ",
-            amount: 5
-        });
-
-        var uf = new UnitFmt({
-            usage: "heatingEnergy",
-            length: "long",
-            locale: "ar-SA"
-        });
-        var str = uf.format(m1);
-        test.equal(str, '۵ كيلو جول');
+        test.equal(str, "432 kJ");
         test.done();
     },
 
@@ -1472,7 +1455,7 @@ module.exports.testunitfmt_usages = {
             length: "short"
         });
         var str = uf.format(m1);
-        test.equal(str, "23.2 kt");
+        test.equal(str, "23.2 kn");
         test.done();
     },
 
@@ -1488,7 +1471,7 @@ module.exports.testunitfmt_usages = {
             length: "short"
         });
         var str = uf.format(m1);
-        test.equal(str, "59.2 kt");
+        test.equal(str, "59.2 kn");
         test.done();
     },
 
@@ -1572,7 +1555,7 @@ module.exports.testunitfmt_usages = {
             length: "long"
         });
         var str = uf.format(m1);
-        test.equal(str, "3.2 teaspoons");
+        test.equal(str, "1 tablespoon 0.2 teaspoons");
         test.done();
     },
 
@@ -1588,7 +1571,7 @@ module.exports.testunitfmt_usages = {
             length: "long"
         });
         var str = uf.format(m1);
-        test.equal(str, "2 teaspoons");
+        test.equal(str, "2.03 teaspoons");
         test.done();
     },
 
@@ -1604,7 +1587,7 @@ module.exports.testunitfmt_usages = {
             length: "short"
         });
         var str = uf.format(m1);
-        test.equal(str, "10 tablespoons");
+        test.equal(str, "5 fl oz");
         test.done();
     },
 
@@ -1617,10 +1600,10 @@ module.exports.testunitfmt_usages = {
 
         var uf = new UnitFmt({
             usage: "liquidFoodVolume",
-            length: "short"
+            length: "long"
         });
         var str = uf.format(m1);
-        test.equal(str, "2 cups 1 ounce 1.6 teaspoons");
+        test.equal(str, "1 pint 1 fluid ounce 1.6 teaspoons");
         test.done();
     },
 
@@ -1633,7 +1616,7 @@ module.exports.testunitfmt_usages = {
 
         var uf = new UnitFmt({
             usage: "liquidFoodVolume",
-            length: "short",
+            length: "long",
             measurementSystem: "metric"
         });
         var str = uf.format(m1);
@@ -1654,7 +1637,7 @@ module.exports.testunitfmt_usages = {
             measurementSystem: "metric"
         });
         var str = uf.format(m1);
-        test.equal(str, "300 ml");
+        test.equal(str, "295.74 mL");
         test.done();
     },
 
@@ -1688,7 +1671,7 @@ module.exports.testunitfmt_usages = {
             locale: "en-GB"
         });
         var str = uf.format(m1);
-        test.equal(str, "1.7 imperial teaspoons");
+        test.equal(str, "1.69 teaspoons");
         test.done();
     },
 
@@ -1696,13 +1679,13 @@ module.exports.testunitfmt_usages = {
         test.expect(1);
         var m1 = MeasurementFactory({
             unit: "imperial tbsp",
-            amount: 10,
-            locale: "en-GB"
+            amount: 10
         });
 
         var uf = new UnitFmt({
             usage: "liquidFoodVolume",
-            length: "short"
+            length: "short",
+            locale: "en-GB"
         });
         var str = uf.format(m1);
         test.equal(str, "10 tbsp (imp)");
@@ -1722,7 +1705,7 @@ module.exports.testunitfmt_usages = {
             length: "long"
         });
         var str = uf.format(m1);
-        test.equal(str, "2 imperial cups 1 imperial fluid ounce 1 imperial 0.64 imperial teaspoons");
+        test.equal(str, "1 pint 5 fluid ounces 0.1 teaspoons");
         test.done();
     },
 
@@ -1739,7 +1722,7 @@ module.exports.testunitfmt_usages = {
             locale: "en-GB"
         });
         var str = uf.format(m1);
-        test.equal(str, "1.055852 cup (imp) 2.7 fl oz (imp)");
+        test.equal(str, "1 c 1 fl oz 1 tbsp 3 tsp");
         test.done();
     },
 
@@ -1818,7 +1801,7 @@ module.exports.testunitfmt_usages = {
 
         var uf = new UnitFmt({
             usage: "dryFoodVolume",
-            length: "short"
+            length: "long"
         });
         var str = uf.format(m1);
         test.equal(str, "10 tablespoons");
@@ -1834,7 +1817,7 @@ module.exports.testunitfmt_usages = {
 
         var uf = new UnitFmt({
             usage: "dryFoodVolume",
-            length: "short"
+            length: "long"
         });
         var str = uf.format(m1);
         test.equal(str, "2 cups 2 tablespoons 1.6 teaspoons");
@@ -1850,7 +1833,7 @@ module.exports.testunitfmt_usages = {
 
         var uf = new UnitFmt({
             usage: "dryFoodVolume",
-            length: "short",
+            length: "long",
             measurementSystem: "metric"
         });
         var str = uf.format(m1);
@@ -1871,7 +1854,7 @@ module.exports.testunitfmt_usages = {
             measurementSystem: "metric"
         });
         var str = uf.format(m1);
-        test.equal(str, "300 ml");
+        test.equal(str, "295.74 mL");
         test.done();
     },
 
@@ -1905,7 +1888,7 @@ module.exports.testunitfmt_usages = {
             locale: "en-GB"
         });
         var str = uf.format(m1);
-        test.equal(str, "1.7 imperial teaspoons");
+        test.equal(str, "1.69 imperial teaspoons");
         test.done();
     },
 
@@ -1922,7 +1905,7 @@ module.exports.testunitfmt_usages = {
             locale: "en-GB"
         });
         var str = uf.format(m1);
-        test.equal(str, "10 tbsp (imp)");
+        test.equal(str, "10 tbsp(i)");
         test.done();
     },
 

@@ -373,7 +373,11 @@ function frameUnits(data, locale, localeData) {
             "electricalEnergy": {
                 "description": "amount of energy in electricity",
                 "type": "energy",
-                "units": ["watt-hour", "kilowatt-hour", "megawatt-hour", "gigawatt-hour"]
+                "units": {
+                    "metric": ["watt-hour", "kilowatt-hour", "megawatt-hour", "gigawatt-hour"],
+                    "uscustomary": ["watt-hour", "kilowatt-hour", "megawatt-hour", "gigawatt-hour"],
+                    "imperial": ["watt-hour", "kilowatt-hour", "megawatt-hour", "gigawatt-hour"]
+                }
             },
             "heatingEnergy": {
                 "description": "amount of energy required to heat things such as water or home interiors",
