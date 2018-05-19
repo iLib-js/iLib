@@ -273,17 +273,19 @@ Measurement.prototype = {
      *
      * @param {string=} measurementsystem system to use (uscustomary|imperial|metric),
      * or undefined if the system can be inferred from the current measure
-     * @param {Object=} units object containing a mapping between the measurement system
+     * @param {Array.<string>=} units object containing a mapping between the measurement system
      * and an array of units to use to restrict the expansion to
+     * @param {Function(number):number} constrain a function that constrains
+     * a number according to the display options
      * @return {Array.<Measurement>} an array of new measurements in order from
      * the current units to the smallest units in the system which together are the
      * same measurement as this one
      */
-    expand: function(measurementsystem, units) {
+    expand: function(measurementsystem, units, constrain) {
         var systemName = this.getMeasurementSystem();
         var mSystem = (units && units[systemName]) ? units[systemName] : (this.systems[systemName] || this.systems.metric);
 
-        return this.list(mSystem, this.ratios).map(function(item) {
+        return this.list(mSystem, this.ratios, constrain).map(function(item) {
             return this.newUnit(item);
         }.bind(this));
     },
@@ -327,37 +329,46 @@ Measurement.prototype = {
      * convert this measure to
      * @param {Object} ratios the conversion ratios
      * table for the measurement type
+     * @param {Function(number):number} constrain a function that constrains
+     * a number according to the display options
      * @returns {Array.<{unit: String, amount: Number}>} the conversion
      * of the current measurement into an array of unit names and
      * their amounts
      */
-    list: function(measures, ratios) {
+    list: function(measures, ratios, constrain) {
         var row = ratios[this.unit];
         var ret = [];
         var remainder, i, scaled, index;
         var unit = this.unit;
         var amount = this.amount;
+        constrain = constrain || round;
 
-        i = JSUtils.indexOf(measures, this.unit);
-
-        if (i === -1) {
-            // this unit is not in this measurement system, so we have to convert
-            for (i = 0; i < measures.length; i++) {
-                unit = measures[i];
-                index = ratios[unit][0];
-                scaled = this.amount * row[index];
-                if (scaled < 1.0) {
-                    // the previous one is the largest measure
-                    if (i > 0) i--;
-                    break;
-                }
-            }
-
-            // i is now the index of the largest measure
-            unit = measures[i];
-            amount = round(this.amount * row[ratios[unit][0]], 9);
+        if (this.unit !== measures[0]) {
+            // if this unit is not the smallest measure in the system, we have to convert
+            unit = measures[0];
+            amount = this.amount * row[ratios[unit][0]];
+            row = ratios[unit];
         }
 
+        // convert to smallest measure
+        amount = constrain(amount);
+        // go backwards so we get from the largest to the smallest units in order
+        for (var j = measures.length-1; j > 0; j--) {
+            unit = measures[j];
+            scaled = amount * row[ratios[unit][0]];
+            var xf = Math.floor(scaled);
+            if (xf) {
+                var item = {
+                    unit: unit,
+                    amount: xf
+                };
+                ret.push(item);
+                
+                amount -= xf * ratios[unit][ratios[measures[0]][0]];
+            }
+        }
+            
+        /*
         for (var j = i; j > 0; j--) {
             var item = {
                 unit: unit,
@@ -371,12 +382,13 @@ Measurement.prototype = {
             unit = measures[j-1];
             amount = round(remainder * row[ratios[unit][0]], 9);
         }
-
-        // last measure is not truncated
+        */
+        
+        // last measure is rounded/constrained, not truncated
         if (amount !== 0) {
             ret.push({
-                unit: unit,
-                amount: round(amount, 9)
+                unit: measures[0],
+                amount: constrain(amount)
             });
         }
 

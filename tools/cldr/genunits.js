@@ -257,6 +257,7 @@ function frameUnits(data, locale, localeData) {
         localeData["unitfmt"]["short"]["teaspoon-imperial"] = "one#{n} tsp(i)|#{n} tsp(i)";
         localeData["unitfmt"]["short"]["tablespoon-imperial"] = "one#{n} tbsp(i)|#{n} tbsp(i)";
         localeData["unitfmt"]["short"]["ounce-imperial"] = "one#{n} oz(i)|#{n} oz(i)";
+        localeData["unitfmt"]["short"]["cup-imperial"] = "one#{n} c(i)|#{n} c(i)";
         localeData["unitfmt"]["short"]["pint-imperial"] = "one#{n} pt(i)|#{n} pt(i)";
         localeData["unitfmt"]["short"]["quart-imperial"] = "one#{n} qt(i)|#{n} qt(i)";
         localeData["unitfmt"]["short"]["bit-per-second"] = "#{n} b/s";
@@ -339,7 +340,7 @@ function frameUnits(data, locale, localeData) {
                     "uscustomary": ["square-foot", "acre", "square-mile"],
                     "imperial": ["square-foot", "acre", "square-mile"]
                 },
-                "maxFractionDigits": 0
+                "maxFractionDigits": 2
             },
             "networkingSpeed": {
                 "description": "speed of transfer of data over a network",
@@ -377,7 +378,8 @@ function frameUnits(data, locale, localeData) {
                     "metric": ["watt-hour", "kilowatt-hour", "megawatt-hour", "gigawatt-hour"],
                     "uscustomary": ["watt-hour", "kilowatt-hour", "megawatt-hour", "gigawatt-hour"],
                     "imperial": ["watt-hour", "kilowatt-hour", "megawatt-hour", "gigawatt-hour"]
-                }
+                },
+                "significantDigits": 4
             },
             "heatingEnergy": {
                 "description": "amount of energy required to heat things such as water or home interiors",
@@ -461,13 +463,23 @@ function frameUnits(data, locale, localeData) {
             "babyWeight": {
                 "description": "weight/mass of a baby or of small animals such as cats and dogs",
                 "type": "mass",
-                "units": {
-                    "metric": ["kilogram"],
-                    "uscustomary": ["ounce", "pound"],
-                    "imperial": ["ounce", "pound"]
-                },
-                "style": "list",
-                "maxFractionDigits": 1
+                "systems": {
+                    "metric": {
+                        "units": ["kilogram"],
+                        "maxFractionDigits": 2,
+                        "style": "numeric"
+                    },
+                    "uscustomary": {
+                        "units": ["ounce", "pound"],
+                        "maxFractionDigits": 0,
+                        "style": "list"
+                    },
+                    "imperial": {
+                        "units": ["ounce", "pound"],
+                        "maxFractionDigits": 0,
+                        "style": "list"
+                    }
+                }
             },
             "vehicleWeight": {
                 "description": "weight/mass of a vehicle (including a boat)",
@@ -477,7 +489,7 @@ function frameUnits(data, locale, localeData) {
                     "uscustomary": ["pound", "ton"],
                     "imperial": ["pound", "ton"]
                 },
-                "maxFractionDigits": 0
+                "maxFractionDigits": 2
             },
             "drugWeight": {
                 "description": "weight/mass of a dose of a medicinal drug",

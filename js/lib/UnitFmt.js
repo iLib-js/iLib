@@ -479,7 +479,8 @@ UnitFmt.prototype = {
      * @return {string} the formatted version of the given date instance
      */
     format: function (measurement) {
-        var u = measurement, system;
+        var u = measurement, system, listStyle;
+        
         if (this.convert) {
             if (this.measurementSystem) {
                 if (this.measurementSystem !== measurement.getMeasurementSystem()) {
@@ -490,14 +491,19 @@ UnitFmt.prototype = {
             }
         }
         system = u.getMeasurementSystem() || this.getMeasurementSystem() || "metric";
-        if (this.usageInfo && measurement.getMeasure() === this.usageInfo.type) {
-            // specifying a usage implies auto scaling, but with a restricted set of units
-            u = u.scale(system, this.units);
-        } else {
-            u = this.scale ? u.scale() : u; // scale within the current system
+        listStyle = (this.style === "list" || (this.usageInfo && this.usageInfo.systems && this.usageInfo.systems[system].style === "list"));
+        
+        if (this.scale) {
+            if (this.usageInfo && measurement.getMeasure() === this.usageInfo.type && !listStyle) {
+                // scaling with a restricted set of units
+                u = u.scale(system, this.units);
+            } else {
+                u = u.scale(); // scale within the current system
+            }
         }
-        if (this.style === "list" || (this.usageInfo && this.usageInfo.systems && this.usageInfo.systems[system].style === "list")) {
-            u = u.expand(undefined, this.units);
+        if (listStyle) {
+            var numFmt = this.numFmt[system];
+            u = u.expand(undefined, this.units, ilib.bind(numFmt, numFmt.constrain));
             var formatted = u.map(ilib.bind(this, function(unit) {
                 return this._format(unit, system);
             }));

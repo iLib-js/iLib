@@ -340,6 +340,7 @@
             "teaspoon-imperial": "one#{n} tsp(i)|#{n} tsp(i)",
             "tablespoon-imperial": "one#{n} tbsp(i)|#{n} tbsp(i)",
             "ounce-imperial": "one#{n} oz(i)|#{n} oz(i)",
+            "cup-imperial": "one#{n} c(i)|#{n} c(i)",
             "pint-imperial": "one#{n} pt(i)|#{n} pt(i)",
             "quart-imperial": "one#{n} qt(i)|#{n} qt(i)",
             "bit-per-second": "#{n} b/s",
@@ -418,7 +419,7 @@
                     "square-mile"
                 ]
             },
-            "maxFractionDigits": 0
+            "maxFractionDigits": 2
         },
         "networkingSpeed": {
             "description": "speed of transfer of data over a network",
@@ -481,7 +482,8 @@
                     "megawatt-hour",
                     "gigawatt-hour"
                 ]
-            }
+            },
+            "significantDigits": 4
         },
         "heatingEnergy": {
             "description": "amount of energy required to heat things such as water or home interiors",
@@ -625,21 +627,31 @@
         "babyWeight": {
             "description": "weight/mass of a baby or of small animals such as cats and dogs",
             "type": "mass",
-            "units": {
-                "metric": [
-                    "kilogram"
-                ],
-                "uscustomary": [
-                    "ounce",
-                    "pound"
-                ],
-                "imperial": [
-                    "ounce",
-                    "pound"
-                ]
-            },
-            "style": "list",
-            "maxFractionDigits": 1
+            "systems": {
+                "metric": {
+                    "units": [
+                        "kilogram"
+                    ],
+                    "maxFractionDigits": 2,
+                    "style": "numeric"
+                },
+                "uscustomary": {
+                    "units": [
+                        "ounce",
+                        "pound"
+                    ],
+                    "maxFractionDigits": 0,
+                    "style": "list"
+                },
+                "imperial": {
+                    "units": [
+                        "ounce",
+                        "pound"
+                    ],
+                    "maxFractionDigits": 0,
+                    "style": "list"
+                }
+            }
         },
         "vehicleWeight": {
             "description": "weight/mass of a vehicle (including a boat)",
@@ -658,7 +670,7 @@
                     "ton"
                 ]
             },
-            "maxFractionDigits": 0
+            "maxFractionDigits": 2
         },
         "drugWeight": {
             "description": "weight/mass of a dose of a medicinal drug",

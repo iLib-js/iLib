@@ -795,7 +795,7 @@ module.exports.testunitfmt_usages = {
             length: "short"
         });
         var str = uf.format(m1);
-        test.equal(str, "150 lbs");
+        test.equal(str, "150 lb");
         test.done();
     },
 
@@ -811,7 +811,7 @@ module.exports.testunitfmt_usages = {
             length: "short"
         });
         var str = uf.format(m1);
-        test.equal(str, "154 lbs");
+        test.equal(str, "154 lb");
         test.done();
     },
 
@@ -911,7 +911,7 @@ module.exports.testunitfmt_usages = {
             length: "long"
         });
         var str = uf.format(m1);
-        test.equal(str, "7 pounds 7 ounces");
+        test.equal(str, "7 pounds 1 ounce");
         test.done();
     },
 
@@ -919,7 +919,7 @@ module.exports.testunitfmt_usages = {
         test.expect(1);
         var m1 = MeasurementFactory({
             unit: "lbs",
-            amount: 150
+            amount: 10
         });
 
         var uf = new UnitFmt({
@@ -927,7 +927,7 @@ module.exports.testunitfmt_usages = {
             length: "short"
         });
         var str = uf.format(m1);
-        test.equal(str, "150 lbs");
+        test.equal(str, "10 lb");
         test.done();
     },
 
@@ -943,7 +943,7 @@ module.exports.testunitfmt_usages = {
             length: "short"
         });
         var str = uf.format(m1);
-        test.equal(str, "6 lbs 4 oz");
+        test.equal(str, "6 lb 4 oz");
         test.done();
     },
 
@@ -1043,7 +1043,7 @@ module.exports.testunitfmt_usages = {
             length: "long"
         });
         var str = uf.format(m1);
-        test.equal(str, "1.654 tons");
+        test.equal(str, "1.65 tons");
         test.done();
     },
 
@@ -1075,7 +1075,7 @@ module.exports.testunitfmt_usages = {
             length: "short"
         });
         var str = uf.format(m1);
-        test.equal(str, "2.615 tn");
+        test.equal(str, "2.62 tn");
         test.done();
     },
 
@@ -1109,7 +1109,7 @@ module.exports.testunitfmt_usages = {
             measurementSystem: "metric"
         });
         var str = uf.format(m1);
-        test.equal(str, "2.372 t");
+        test.equal(str, "2.37 t");
         test.done();
     },
 
@@ -1224,7 +1224,7 @@ module.exports.testunitfmt_usages = {
             measurementSystem: "metric"
         });
         var str = uf.format(m1);
-        test.equal(str, "3200 g");
+        test.equal(str, "3,200 g");
         test.done();
     },
 
@@ -1307,7 +1307,7 @@ module.exports.testunitfmt_usages = {
             length: "long"
         });
         var str = uf.format(m1);
-        test.equal(str, "49.7 miles per hour");
+        test.equal(str, "50 miles per hour");
         test.done();
     },
 
@@ -1323,7 +1323,7 @@ module.exports.testunitfmt_usages = {
             length: "short"
         });
         var str = uf.format(m1);
-        test.equal(str, "23.23 mph");
+        test.equal(str, "23 mph");
         test.done();
     },
 
@@ -1339,7 +1339,7 @@ module.exports.testunitfmt_usages = {
             length: "short"
         });
         var str = uf.format(m1);
-        test.equal(str, "6.8 mph");
+        test.equal(str, "6 mph");
         test.done();
     },
 
@@ -1407,7 +1407,7 @@ module.exports.testunitfmt_usages = {
             locale: "bg-BG"
         });
         var str = uf.format(m1);
-        test.equal(str, "33,2 километра в час");
+        test.equal(str, "33 километра в час");
         test.done();
     },
 
@@ -1439,7 +1439,7 @@ module.exports.testunitfmt_usages = {
             length: "long"
         });
         var str = uf.format(m1);
-        test.equal(str, "43.2 knots");
+        test.equal(str, "43 knots");
         test.done();
     },
 
@@ -1455,7 +1455,7 @@ module.exports.testunitfmt_usages = {
             length: "short"
         });
         var str = uf.format(m1);
-        test.equal(str, "23.2 kn");
+        test.equal(str, "23 kn");
         test.done();
     },
 
@@ -1471,7 +1471,7 @@ module.exports.testunitfmt_usages = {
             length: "short"
         });
         var str = uf.format(m1);
-        test.equal(str, "59.2 kn");
+        test.equal(str, "59 kn");
         test.done();
     },
 
@@ -1505,7 +1505,7 @@ module.exports.testunitfmt_usages = {
             measurementSystem: "metric"
         });
         var str = uf.format(m1);
-        test.equal(str, "92.6 kph");
+        test.equal(str, "93 kph");
         test.done();
     },
 
@@ -1522,7 +1522,7 @@ module.exports.testunitfmt_usages = {
             locale: "id-ID"
         });
         var str = uf.format(m1);
-        test.equal(str, "120,2 kilometer per jam");
+        test.equal(str, "120 kilometer per jam");
         test.done();
     },
 
@@ -1539,7 +1539,7 @@ module.exports.testunitfmt_usages = {
             locale: "es-ES"
         });
         var str = uf.format(m1);
-        test.equal(str, "33,2 kilómetros por hora");
+        test.equal(str, "33 kilómetros por hora");
         test.done();
     },
 
@@ -1603,7 +1603,7 @@ module.exports.testunitfmt_usages = {
             length: "long"
         });
         var str = uf.format(m1);
-        test.equal(str, "1 pint 1 fluid ounce 1.6 teaspoons");
+        test.equal(str, "1 pint 1 fluid ounce 1 tablespoon");
         test.done();
     },
 
@@ -1654,7 +1654,7 @@ module.exports.testunitfmt_usages = {
             locale: "en-GB"
         });
         var str = uf.format(m1);
-        test.equal(str, "3.2 imperial teaspoons");
+        test.equal(str, "1 imperial tablespoon 0.2 imperial teaspoons");
         test.done();
     },
 
@@ -1671,7 +1671,7 @@ module.exports.testunitfmt_usages = {
             locale: "en-GB"
         });
         var str = uf.format(m1);
-        test.equal(str, "1.69 teaspoons");
+        test.equal(str, "1.69 imperial teaspoons");
         test.done();
     },
 
@@ -1688,7 +1688,7 @@ module.exports.testunitfmt_usages = {
             locale: "en-GB"
         });
         var str = uf.format(m1);
-        test.equal(str, "10 tbsp (imp)");
+        test.equal(str, "6 oz(i) 1.2 tsp(i)");
         test.done();
     },
 
@@ -1772,7 +1772,7 @@ module.exports.testunitfmt_usages = {
             length: "long"
         });
         var str = uf.format(m1);
-        test.equal(str, "3.2 teaspoons");
+        test.equal(str, "1 tablespoon 0.2 teaspoons");
         test.done();
     },
 
@@ -1788,7 +1788,7 @@ module.exports.testunitfmt_usages = {
             length: "long"
         });
         var str = uf.format(m1);
-        test.equal(str, "2 teaspoons");
+        test.equal(str, "2.03 teaspoons");
         test.done();
     },
 
@@ -1820,7 +1820,7 @@ module.exports.testunitfmt_usages = {
             length: "long"
         });
         var str = uf.format(m1);
-        test.equal(str, "2 cups 2 tablespoons 1.6 teaspoons");
+        test.equal(str, "2 cups 3 tablespoons");
         test.done();
     },
 
@@ -1871,7 +1871,7 @@ module.exports.testunitfmt_usages = {
             locale: "en-GB"
         });
         var str = uf.format(m1);
-        test.equal(str, "3.2 imperial teaspoons");
+        test.equal(str, "1 imperial tablespoon 0.2 imperial teaspoons");
         test.done();
     },
 
@@ -1922,7 +1922,7 @@ module.exports.testunitfmt_usages = {
             locale: "en-GB"
         });
         var str = uf.format(m1);
-        test.equal(str, "2 imperial cups 3 tablespoons");
+        test.equal(str, "2 imperial cups 3 imperial tablespoons");
         test.done();
     },
 
@@ -1939,7 +1939,7 @@ module.exports.testunitfmt_usages = {
             locale: "en-GB"
         });
         var str = uf.format(m1);
-        test.equal(str, "1 cup (imp) 2.7 tsp (imp)");
+        test.equal(str, "1 c(i) 4 tbsp(i)");
         test.done();
     },
 
@@ -2139,7 +2139,7 @@ module.exports.testunitfmt_usages = {
             locale: "en-GB"
         });
         var str = uf.format(m1);
-        test.equal(str, "1.25 quarts");
+        test.equal(str, "1.25 imperial quarts");
         test.done();
     },
 
@@ -2156,7 +2156,7 @@ module.exports.testunitfmt_usages = {
             locale: "en-GB"
         });
         var str = uf.format(m1);
-        test.equal(str, "1.25 qt");
+        test.equal(str, "1.25 qt(i)");
         test.done();
     },
 
