@@ -2606,10 +2606,11 @@ module.exports.testunitfmt = {
             autoScale: false,
             style: "list",
             length: "long",
-            locale: "en-US"
+            locale: "en-US",
+            maxFractionDigits: 4
         });
         var str = uf.format(m1);
-        test.equal(str, "6 ft 2.4 inches");
+        test.equal(str, "6 feet 2.4 inches");
         test.done();
     },
 
@@ -2624,7 +2625,8 @@ module.exports.testunitfmt = {
             autoScale: false,
             style: "numeric",
             length: "short",
-            locale: "en-US"
+            locale: "en-US",
+            maxFractionDigits: 4
         });
         var str = uf.format(m1);
         test.equal(str, "6.2 ft");
@@ -2642,7 +2644,8 @@ module.exports.testunitfmt = {
             autoScale: false,
             style: "list",
             length: "short",
-            locale: "en-US"
+            locale: "en-US",
+            maxFractionDigits: 4
         });
         var str = uf.format(m1);
         test.equal(str, "6 ft 2.4 in");

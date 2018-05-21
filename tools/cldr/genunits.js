@@ -415,14 +415,9 @@ function frameUnits(data, locale, localeData) {
             "personHeight": {
                 "description": "height of an adult or child (not a baby)",
                 "type": "length",
-                "units": {
-                    "metric": ["meter"],
-                    "uscustomary": ["inch", "foot"],
-                    "imperial": ["inch", "foot"]
-                },
                 "systems": {
                     "metric": {
-                        "units": ["meter", "centimeter"],
+                        "units": ["centimeter", "meter"],
                         "maxFractionDigits": 2,
                         "style": "numeric"
                     },

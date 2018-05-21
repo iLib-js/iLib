@@ -503,7 +503,7 @@ UnitFmt.prototype = {
         }
         if (listStyle) {
             var numFmt = this.numFmt[system];
-            u = u.expand(undefined, this.units, ilib.bind(numFmt, numFmt.constrain));
+            u = u.expand(undefined, this.units, ilib.bind(numFmt, numFmt.constrain), this.scale);
             var formatted = u.map(ilib.bind(this, function(unit) {
                 return this._format(unit, system);
             }));

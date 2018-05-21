@@ -277,15 +277,18 @@ Measurement.prototype = {
      * and an array of units to use to restrict the expansion to
      * @param {Function(number):number} constrain a function that constrains
      * a number according to the display options
+     * @param {boolean} scale if true, rescale all of the units so that the
+     * largest unit is the largest one with a non-fractional number. If false, then
+     * the current unit stays the largest unit.
      * @return {Array.<Measurement>} an array of new measurements in order from
      * the current units to the smallest units in the system which together are the
      * same measurement as this one
      */
-    expand: function(measurementsystem, units, constrain) {
+    expand: function(measurementsystem, units, constrain, scale) {
         var systemName = this.getMeasurementSystem();
         var mSystem = (units && units[systemName]) ? units[systemName] : (this.systems[systemName] || this.systems.metric);
 
-        return this.list(mSystem, this.ratios, constrain).map(function(item) {
+        return this.list(mSystem, this.ratios, constrain, scale).map(function(item) {
             return this.newUnit(item);
         }.bind(this));
     },
@@ -331,11 +334,14 @@ Measurement.prototype = {
      * table for the measurement type
      * @param {Function(number):number} constrain a function that constrains
      * a number according to the display options
+     * @param {boolean} scale if true, rescale all of the units so that the
+     * largest unit is the largest one with a non-fractional number. If false, then
+     * the current unit stays the largest unit.
      * @returns {Array.<{unit: String, amount: Number}>} the conversion
      * of the current measurement into an array of unit names and
      * their amounts
      */
-    list: function(measures, ratios, constrain) {
+    list: function(measures, ratios, constrain, scale) {
         var row = ratios[this.unit];
         var ret = [];
         var remainder, i, scaled, index;
@@ -343,6 +349,12 @@ Measurement.prototype = {
         var amount = this.amount;
         constrain = constrain || round;
 
+        var start = JSUtils.indexOf(measures, this.unit);
+        
+        if (scale || start === -1) {
+            start = measures.length-1;
+        }
+        
         if (this.unit !== measures[0]) {
             // if this unit is not the smallest measure in the system, we have to convert
             unit = measures[0];
@@ -353,7 +365,7 @@ Measurement.prototype = {
         // convert to smallest measure
         amount = constrain(amount);
         // go backwards so we get from the largest to the smallest units in order
-        for (var j = measures.length-1; j > 0; j--) {
+        for (var j = start; j > 0; j--) {
             unit = measures[j];
             scaled = amount * row[ratios[unit][0]];
             var xf = Math.floor(scaled);

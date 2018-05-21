@@ -82,7 +82,7 @@ EnergyUnit.prototype.getMeasure = function() {
 
 /**
  * Return a new instance of this type of measurement.
- *
+ *  
  * @param {Object} params parameters to the constructor
  * @return {Measurement} a measurement subclass instance
  */
@@ -215,15 +215,23 @@ EnergyUnit.systems = {
                 "millijoule": "BTU",
                 "joule": "BTU",
                 "kilojoule": "BTU",
+                "watt-hour": "BTU",
                 "megajoule": "BTU",
-                "gigajoule": "BTU"
+                "kilowatt-hour": "BTU",
+                "gigajoule": "BTU",
+                "megawatt-hour": "BTU",
+                "gigawatt-hour": "BTU"
             },
             "imperial": {
                 "millijoule": "BTU",
                 "joule": "BTU",
                 "kilojoule": "BTU",
+                "watt-hour": "BTU",
                 "megajoule": "BTU",
-                "gigajoule": "BTU"
+                "kilowatt-hour": "BTU",
+                "gigajoule": "BTU",
+                "megawatt-hour": "BTU",
+                "gigawatt-hour": "BTU"
             }
         },
         "uscustomary": {

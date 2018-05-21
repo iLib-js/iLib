@@ -607,7 +607,7 @@ module.exports.testunitfmt_usages = {
         test.expect(1);
         var m1 = MeasurementFactory({
             unit: "kJ",
-            amount: 4.320
+            amount: 4320
         });
 
         var uf = new UnitFmt({
@@ -680,7 +680,7 @@ module.exports.testunitfmt_usages = {
             length: "long"
         });
         var str = uf.format(m1);
-        test.equal(str, "17,060.7 BTU");
+        test.equal(str, "17,060 BTU");
         test.done();
     },
 
@@ -747,7 +747,7 @@ module.exports.testunitfmt_usages = {
             locale: "ar-SA"
         });
         var str = uf.format(m1);
-        test.equal(str, '۵ كيلو جول');
+        test.equal(str, '٥ كيلو جول');
         test.done();
     },
 
