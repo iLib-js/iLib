@@ -133,7 +133,7 @@ VelocityUnit.systems = {
  * @return {string} the name of the type of this measurement
  */
 VelocityUnit.prototype.getMeasure = function() {
-    return "speed";
+    return "velocity";
 };
 
 VelocityUnit.aliases = {

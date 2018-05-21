@@ -481,7 +481,7 @@ function frameUnits(data, locale, localeData) {
                 "type": "mass",
                 "units": {
                     "metric": ["kilogram", "metric-ton"],
-                    "uscustomary": ["pound", "ton"],
+                    "uscustomary": ["pound", "short-ton"],
                     "imperial": ["pound", "ton"]
                 },
                 "maxFractionDigits": 2
@@ -493,7 +493,8 @@ function frameUnits(data, locale, localeData) {
                     "metric": ["microgram", "milligram", "gram"],
                     "uscustomary": ["milligram", "ounce"],
                     "imperial": ["milligram", "ounce"]
-                }
+                },
+                "significantDigits": 6
             },
             "vehicleSpeed": {
                 "description": "speed of travel of a vehicle, except boats",
@@ -532,7 +533,7 @@ function frameUnits(data, locale, localeData) {
                 "units": {
                     "metric": ["milliliter", "liter"],
                     "uscustomary": ["teaspoon", "tablespoon", "fluid-ounce", "cup", "pint", "quart", "gallon"],
-                    "imperial": ["teaspoon-imperial", "tablespoon-imperial", "ounce-imperial", "cup", "pint-imperial", "quart-imperial", "gallon-imperial"]
+                    "imperial": ["teaspoon-imperial", "tablespoon-imperial", "ounce-imperial", "cup-imperial", "pint-imperial", "quart-imperial", "gallon-imperial"]
                 },
                 "style": "list",
                 "maxFractionDigits": 2

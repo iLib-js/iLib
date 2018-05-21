@@ -180,6 +180,7 @@ var lenMap = {
  *   <li><i>halfeven</i> - round towards nearest neighbour. If equidistant, round towards the even neighbour
  *   <li><i>halfodd</i> - round towards nearest neighbour. If equidistant, round towards the odd neighbour
  * </ul>
+ * Default if this is not specified is "halfup".
  *
  * <li><i>onLoad</i> - a callback function to call when the date format object is fully
  * loaded. When the onLoad option is given, the UnitFmt object will attempt to
@@ -286,7 +287,7 @@ var UnitFmt = function(options) {
      * @private
      * @type {string}
      */
-    this.roundingMode = options.roundingMode;
+    this.roundingMode = options.roundingMode || "halfup";
 
     // ensure that the plural rules are loaded before we proceed
     IString.loadPlurals(sync, this.locale, loadParams, ilib.bind(this, function() {

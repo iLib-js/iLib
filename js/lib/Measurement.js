@@ -380,22 +380,6 @@ Measurement.prototype = {
             }
         }
             
-        /*
-        for (var j = i; j > 0; j--) {
-            var item = {
-                unit: unit,
-                amount: Math.trunc(amount)
-            };
-            if (item.amount !== 0) ret.push(item);
-
-            remainder = amount - item.amount;
-
-            row = ratios[unit];
-            unit = measures[j-1];
-            amount = round(remainder * row[ratios[unit][0]], 9);
-        }
-        */
-        
         // last measure is rounded/constrained, not truncated
         if (amount !== 0) {
             ret.push({

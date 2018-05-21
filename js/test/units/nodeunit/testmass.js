@@ -202,7 +202,7 @@ module.exports.testmass = {
         m = m.scale("imperial");
 
         test.roughlyEqual(m.amount, 13.9508929, 0.001);
-        test.equal(m.unit, "ton");
+        test.equal(m.unit, "short-ton");
         test.done();
     },
 

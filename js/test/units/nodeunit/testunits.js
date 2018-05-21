@@ -63,7 +63,7 @@ module.exports.testunits = {
         });
     
         test.ok(measurement !== null);
-        test.equal(measurement.getMeasure(), "speed");
+        test.equal(measurement.getMeasure(), "velocity");
         test.done();
     },
     
@@ -75,7 +75,7 @@ module.exports.testunits = {
         });
     
         test.ok(measurement !== null);
-        test.equal(measurement.getMeasure(), "speed");
+        test.equal(measurement.getMeasure(), "velocity");
         test.done();
     },
     
@@ -176,7 +176,7 @@ module.exports.testunits = {
             });
         
             test.ok(typeof(measurement) !== "undefined");
-            test.equal(measurement.getMeasure(), "speed");
+            test.equal(measurement.getMeasure(), "velocity");
             test.equal(measurement.getAmount(), 100);
             test.equal(measurement.getUnit(), measures[measure]);
         }

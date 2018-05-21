@@ -650,7 +650,7 @@
                 ],
                 "uscustomary": [
                     "pound",
-                    "ton"
+                    "short-ton"
                 ],
                 "imperial": [
                     "pound",
@@ -676,7 +676,8 @@
                     "milligram",
                     "ounce"
                 ]
-            }
+            },
+            "significantDigits": 6
         },
         "vehicleSpeed": {
             "description": "speed of travel of a vehicle, except boats",
@@ -755,7 +756,7 @@
                     "teaspoon-imperial",
                     "tablespoon-imperial",
                     "ounce-imperial",
-                    "cup",
+                    "cup-imperial",
                     "pint-imperial",
                     "quart-imperial",
                     "gallon-imperial"

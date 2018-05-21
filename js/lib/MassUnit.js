@@ -127,7 +127,7 @@ MassUnit.systems = {
             "uscustomary": {
                 "ounce": "ounce",
                 "pound": "pound",
-                "stone": "stone",
+                "stone": "pound",
                 "ton": "short-ton"
             },
             "metric": {
@@ -203,13 +203,11 @@ MassUnit.aliases = {
     "st":"stone",
     "stones":"stone",
     "Stone":"stone",
-    "short ton":"short-ton",
-    "Short ton":"short-ton",
-    "Short Ton":"short-ton",
     "metric ton":"metric-ton",
     "metricton":"metric-ton",
     "t":"metric-ton",
     "tonne":"metric-ton",
+    "tonnes":"metric-ton",
     "Tonne":"metric-ton",
     "Metric Ton":"metric-ton",
     "MetricTon":"metric-ton",
@@ -218,8 +216,13 @@ MassUnit.aliases = {
     "Longton":"ton",
     "Long ton":"ton",
     "Long Ton":"ton",
-    "ton":"ton",
-    "Ton":"ton"
+    "short ton":"short-ton",
+    "short tons":"short-ton",
+    "Short ton":"short-ton",
+    "Short Ton":"short-ton",
+    "ton":"short-ton",
+    "tons":"short-ton",
+    "Ton":"short-ton"
 };
 
 MassUnit.aliasesLower = {};

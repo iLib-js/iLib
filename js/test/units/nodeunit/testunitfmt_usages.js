@@ -1272,10 +1272,10 @@ module.exports.testunitfmt_usages = {
         var uf = new UnitFmt({
             usage: "drugWeight",
             length: "long",
-            locale: "ta-IN"
+            locale: "bn-IN"
         });
         var str = uf.format(m1);
-        test.equal(str, "௩௩.௨ ராம்கள்");
+        test.equal(str, "৩৩.২ গ্রাম");
         test.done();
     },
 
@@ -1339,7 +1339,7 @@ module.exports.testunitfmt_usages = {
             length: "short"
         });
         var str = uf.format(m1);
-        test.equal(str, "6 mph");
+        test.equal(str, "7 mph");
         test.done();
     },
 
@@ -1373,7 +1373,7 @@ module.exports.testunitfmt_usages = {
             measurementSystem: "metric"
         });
         var str = uf.format(m1);
-        test.equal(str, "80.4 kph");
+        test.equal(str, "80 kph");
         test.done();
     },
 
@@ -1712,7 +1712,7 @@ module.exports.testunitfmt_usages = {
     testUnitFormatWithUsageLiquidFoodVolumeConvertGB2: function(test) {
         test.expect(1);
         var m1 = MeasurementFactory({
-            unit: "cups",
+            unit: "imperial cups",
             amount: 1.25
         });
 
@@ -1722,7 +1722,7 @@ module.exports.testunitfmt_usages = {
             locale: "en-GB"
         });
         var str = uf.format(m1);
-        test.equal(str, "1 c 1 fl oz 1 tbsp 3 tsp");
+        test.equal(str, "1 c(i) 2 oz(i) 2.4 tsp(i)");
         test.done();
     },
 
