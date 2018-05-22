@@ -464,7 +464,8 @@ UnitFmt.prototype = {
      * @private
      */
     _format: function(u, system) {
-        var formatted = new IString(this.template[u.getUnit()]);
+        var unit = u.getUnit() === "long-ton" ? "ton" : u.getUnit();
+        var formatted = new IString(this.template[unit]);
         // make sure to use the right plural rules
         formatted.setLocale(this.locale, true, undefined, undefined);
         var rounded = this.numFmt[system].constrain(u.amount);

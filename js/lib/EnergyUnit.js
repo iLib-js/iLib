@@ -165,10 +165,12 @@ EnergyUnit.aliases = {
     "GWh": "gigawatt-hour"
 };
 
-EnergyUnit.aliasesLower = {};
-for (var a in EnergyUnit.aliases) {
-    EnergyUnit.aliasesLower[a.toLowerCase()] = EnergyUnit.aliases[a];
-}
+(function() {
+    EnergyUnit.aliasesLower = {};
+    for (var a in EnergyUnit.aliases) {
+        EnergyUnit.aliasesLower[a.toLowerCase()] = EnergyUnit.aliases[a];
+    }
+})();
 
 /**
  * Convert a energy to another measure.

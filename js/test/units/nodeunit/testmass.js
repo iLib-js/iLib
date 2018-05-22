@@ -1,7 +1,7 @@
 /*
  * testMasss.js - test the Mass object
  *
- * Copyright © 2014-2015,2017, JEDLSoft
+ * Copyright © 2014-2015,2017-2018 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -202,7 +202,7 @@ module.exports.testmass = {
         m = m.scale("imperial");
 
         test.roughlyEqual(m.amount, 13.9508929, 0.001);
-        test.equal(m.unit, "short-ton");
+        test.equal(m.unit, "long-ton");
         test.done();
     },
 
@@ -286,7 +286,7 @@ module.exports.testmass = {
         m = m.localize("en-GB"); // no change -- long tons are imperial units
 
         test.equal(m.amount, 1000);
-        test.equal(m.unit, "ton");
+        test.equal(m.unit, "long-ton");
         test.done();
     },
 
@@ -300,7 +300,7 @@ module.exports.testmass = {
         m = m.localize("en-GB");
 
         test.equal(m.amount, 892.857);
-        test.equal(m.unit, "ton");
+        test.equal(m.unit, "long-ton");
         test.done();
     },
 
@@ -314,7 +314,7 @@ module.exports.testmass = {
         m = m.localize("en-GB");
 
         test.roughlyEqual(m.amount, 984.207, 0.001);
-        test.equal(m.unit, "ton");
+        test.equal(m.unit, "long-ton");
         test.done();
     },
 
@@ -367,7 +367,7 @@ module.exports.testmass = {
             "stone",
             "short-ton",
             "metric-ton",
-            "ton"
+            "long-ton"
         ];
         test.equalIgnoringOrder(measures, expected);
         test.done();

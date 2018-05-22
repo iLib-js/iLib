@@ -139,10 +139,12 @@ FuelConsumptionUnit.aliases = {
     "mpg-imp": "mile-per-gallon-imperial"
 };
 
-FuelConsumptionUnit.aliasesLower = {};
-for (var a in FuelConsumptionUnit.aliases) {
-    FuelConsumptionUnit.aliasesLower[a.toLowerCase()] = FuelConsumptionUnit.aliases[a];
-}
+(function() {
+    FuelConsumptionUnit.aliasesLower = {};
+    for (var a in FuelConsumptionUnit.aliases) {
+        FuelConsumptionUnit.aliasesLower[a.toLowerCase()] = FuelConsumptionUnit.aliases[a];
+    }
+})();
 
 /**
  * Return a new measurement instance that is converted to a new
@@ -165,7 +167,7 @@ FuelConsumptionUnit.systems = {
     "metric": [
         "liter-per-kilometer",
         "liter-per-100kilometers",
-        "kilometer-per-liter",
+        "kilometer-per-liter"
     ],
     "uscustomary": [
         "mile-per-gallon"

@@ -186,7 +186,7 @@ MathUtils.shiftDecimal = function shift(number, precision) {
  * @param {number} number the number to return with only significant digits
  * @param {number} digits the number of significant digits to include in the
  * returned number
- * @param {Function(number)=} round a rounding function to use
+ * @param {function(number): number=} round a rounding function to use
  * @returns {number} the given number with only the requested number of
  * significant digits
  */

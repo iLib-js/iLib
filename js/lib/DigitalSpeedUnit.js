@@ -339,10 +339,12 @@ DigitalSpeedUnit.aliases = {
     "PBph": "petabyte-per-hour"
 };
 
-DigitalSpeedUnit.aliasesLower = {};
-for (var a in DigitalSpeedUnit.aliases) {
-    DigitalSpeedUnit.aliasesLower[a.toLowerCase()] = DigitalSpeedUnit.aliases[a];
-}
+(function() {
+    DigitalSpeedUnit.aliasesLower = {};
+    for (var a in DigitalSpeedUnit.aliases) {
+        DigitalSpeedUnit.aliasesLower[a.toLowerCase()] = DigitalSpeedUnit.aliases[a];
+    }
+})();
 
 /**
  * Convert a digitalSpeed to another measure.

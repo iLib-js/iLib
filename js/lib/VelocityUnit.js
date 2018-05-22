@@ -211,10 +211,12 @@ VelocityUnit.aliases = {
     "Mile/s": "mile-per-second"
 };
 
-VelocityUnit.aliasesLower = {};
-for (var a in VelocityUnit.aliases) {
-    VelocityUnit.aliasesLower[a.toLowerCase()] = VelocityUnit.aliases[a];
-}
+(function() {
+    VelocityUnit.aliasesLower = {};
+    for (var a in VelocityUnit.aliases) {
+        VelocityUnit.aliasesLower[a.toLowerCase()] = VelocityUnit.aliases[a];
+    }
+})();
 
 /**
  * Convert a speed to another measure.

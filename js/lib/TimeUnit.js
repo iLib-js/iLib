@@ -232,10 +232,12 @@ TimeUnit.aliases = {
     "milm": "millenium"
 };
 
-TimeUnit.aliasesLower = {};
-for (var a in TimeUnit.aliases) {
-    TimeUnit.aliasesLower[a.toLowerCase()] = TimeUnit.aliases[a];
-}
+(function() {
+    TimeUnit.aliasesLower = {};
+    for (var a in TimeUnit.aliases) {
+        TimeUnit.aliasesLower[a.toLowerCase()] = TimeUnit.aliases[a];
+    }
+})();
 
 /**
  * Convert a time to another measure.

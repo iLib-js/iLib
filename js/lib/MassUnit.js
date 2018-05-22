@@ -52,7 +52,7 @@ MassUnit.prototype.parent = Measurement;
 MassUnit.prototype.constructor = MassUnit;
 
 MassUnit.ratios = {
-    /*             index  µg          mg         g          oz          lp           kg          st            sh ton       mt ton        ln ton      */
+    /*             index  µg          mg         g          oz          lb           kg          st            sh ton       mt ton        ln ton      */
     "microgram":   [ 1,   1,          0.001,     1e-6,      3.5274e-8,  2.2046e-9,   1e-9,       1.5747e-10,   1.1023e-12,  1e-12,        9.8421e-13   ],
     "milligram":   [ 2,   1000,       1,         0.001,     3.5274e-5,  2.2046e-6,   1e-6,       1.5747e-7,    1.1023e-9,   1e-9,         9.8421e-10   ],
     "gram":        [ 3,   1e+6,       1000,      1,         0.035274,   0.00220462,  0.001,      0.000157473,  1.1023e-6,   1e-6,         9.8421e-7    ],
@@ -62,7 +62,7 @@ MassUnit.ratios = {
     "stone":       [ 7,   6.35e+9,    6.35e+6,   6350.29,   224,        14,          6.35029,    1,            0.007,       0.00635029,   0.00625      ],
     "short-ton":   [ 8,   9.072e+11,  9.072e+8,  907185,    32000,      2000,        907.185,    142.857,      1,           0.907185,     0.892857     ],
     "metric-ton":  [ 9,   1e+12,      1e+9,      1e+6,      35274,      2204.62,     1000,       157.473,      1.10231,     1,            0.984207     ],
-    "ton":         [ 10,  1.016e+12,  1.016e+9,  1.016e+6,  35840,      2240,        1016.05,    160,          1.12,        1.01605,      1            ]
+    "long-ton":    [ 10,  1.016e+12,  1.016e+9,  1.016e+6,  35840,      2240,        1016.05,    160,          1.12,        1.01605,      1            ]
 };
 
 /**
@@ -87,7 +87,7 @@ MassUnit.systems = {
         "ounce",
         "pound",
         "stone",
-        "ton"
+        "long-ton"
     ],
     "uscustomary": [
         "ounce",
@@ -108,14 +108,14 @@ MassUnit.systems = {
                 "milligram": "ounce",
                 "gram": "ounce",
                 "kilogram": "pound",
-                "metric-ton": "ton"
+                "metric-ton": "long-ton"
             }
         },
         "uscustomary": {
             "imperial": {
                 "ounce": "ounce",
                 "pound": "pound",
-                "short-ton": "ton"
+                "short-ton": "long-ton"
             },
             "metric": {
                 "ounce": "gram",
@@ -128,13 +128,13 @@ MassUnit.systems = {
                 "ounce": "ounce",
                 "pound": "pound",
                 "stone": "pound",
-                "ton": "short-ton"
+                "long-ton": "short-ton"
             },
             "metric": {
                 "ounce": "gram",
                 "pound": "kilogram",
                 "stone": "kilogram",
-                "ton": "metric-ton"
+                "long-ton": "metric-ton"
             }
         }
     }
@@ -211,11 +211,11 @@ MassUnit.aliases = {
     "Tonne":"metric-ton",
     "Metric Ton":"metric-ton",
     "MetricTon":"metric-ton",
-    "long ton":"ton",
-    "longton":"ton",
-    "Longton":"ton",
-    "Long ton":"ton",
-    "Long Ton":"ton",
+    "long ton":"long-ton",
+    "longton":"long-ton",
+    "Longton":"long-ton",
+    "Long ton":"long-ton",
+    "Long Ton":"long-ton",
     "short ton":"short-ton",
     "short tons":"short-ton",
     "Short ton":"short-ton",
@@ -225,10 +225,12 @@ MassUnit.aliases = {
     "Ton":"short-ton"
 };
 
-MassUnit.aliasesLower = {};
-for (var a in MassUnit.aliases) {
-    MassUnit.aliasesLower[a.toLowerCase()] = MassUnit.aliases[a];
-}
+(function() {
+    MassUnit.aliasesLower = {};
+    for (var a in MassUnit.aliases) {
+        MassUnit.aliasesLower[a.toLowerCase()] = MassUnit.aliases[a];
+    }
+})();
 
 /**
  * Convert a mass to another measure.

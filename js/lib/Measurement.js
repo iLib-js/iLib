@@ -17,7 +17,7 @@
  * limitations under the License.
  */
 
-// !depends JSUtils MathUtils Locale
+// !depends JSUtils.js MathUtils.js Locale.js
 
 var JSUtils = require("./JSUtils.js");
 var MathUtils = require("./MathUtils.js");
@@ -37,6 +37,7 @@ function round(number, precision) {
  * be created using the {@link MeasurementFactory} function, which creates the
  * correct subclass based on the given parameters.<p>
  *
+ * @param {Object] options options controlling the construction of this instance 
  * @private
  * @constructor
  */
@@ -275,9 +276,9 @@ Measurement.prototype = {
      * or undefined if the system can be inferred from the current measure
      * @param {Array.<string>=} units object containing a mapping between the measurement system
      * and an array of units to use to restrict the expansion to
-     * @param {Function(number):number} constrain a function that constrains
+     * @param {function(number):number=} constrain a function that constrains
      * a number according to the display options
-     * @param {boolean} scale if true, rescale all of the units so that the
+     * @param {boolean=} scale if true, rescale all of the units so that the
      * largest unit is the largest one with a non-fractional number. If false, then
      * the current unit stays the largest unit.
      * @return {Array.<Measurement>} an array of new measurements in order from
@@ -328,11 +329,11 @@ Measurement.prototype = {
      * as whole numbers. The smallest measure will contain any possible
      * fractional remainder.
      *
-     * @param {Array.<string>} measures array of measure names to
+     * @param {Array.<string>|undefined} measures array of measure names to
      * convert this measure to
      * @param {Object} ratios the conversion ratios
      * table for the measurement type
-     * @param {Function(number):number} constrain a function that constrains
+     * @param {function (number): number} constrain a function that constrains
      * a number according to the display options
      * @param {boolean} scale if true, rescale all of the units so that the
      * largest unit is the largest one with a non-fractional number. If false, then

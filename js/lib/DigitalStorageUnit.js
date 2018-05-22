@@ -315,10 +315,12 @@ DigitalStorageUnit.aliases = {
     "pB": "petabyte"
 };
 
-DigitalStorageUnit.aliasesLower = {};
-for (var a in DigitalStorageUnit.aliases) {
-    DigitalStorageUnit.aliasesLower[a.toLowerCase()] = DigitalStorageUnit.aliases[a];
-}
+(function() {
+    DigitalStorageUnit.aliasesLower = {};
+    for (var a in DigitalStorageUnit.aliases) {
+        DigitalStorageUnit.aliasesLower[a.toLowerCase()] = DigitalStorageUnit.aliases[a];
+    }
+})();
 
 /**
  * Convert a digitalStorage to another measure.

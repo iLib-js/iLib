@@ -53,7 +53,7 @@ TemperatureUnit.ratios = {
     /*            index, C            K            F   */
     "celsius":    [ 1,   1,           1,           9/5 ],
     "kelvin":     [ 2,   1,           1,           9/5 ],
-    "fahrenheit": [ 3,   5/9,         5/9,         1   ],
+    "fahrenheit": [ 3,   5/9,         5/9,         1   ]
 };
 
 /**
@@ -132,10 +132,12 @@ TemperatureUnit.aliases = {
     "°C": "celsius"
 };
 
-TemperatureUnit.aliasesLower = {};
-for (var a in TemperatureUnit.aliases) {
-    TemperatureUnit.aliasesLower[a.toLowerCase()] = TemperatureUnit.aliases[a];
-}
+(function() {
+    TemperatureUnit.aliasesLower = {};
+    for (var a in TemperatureUnit.aliases) {
+        TemperatureUnit.aliasesLower[a.toLowerCase()] = TemperatureUnit.aliases[a];
+    }
+})();
 
 /**
  * Return a new measurement instance that is converted to a new

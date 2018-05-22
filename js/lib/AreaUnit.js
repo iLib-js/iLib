@@ -156,10 +156,12 @@ AreaUnit.aliases = {
     "in²":"square-inch"
 };
 
-AreaUnit.aliasesLower = {};
-for (var a in AreaUnit.aliases) {
-    AreaUnit.aliasesLower[a.toLowerCase()] = AreaUnit.aliases[a];
-}
+(function() {
+    AreaUnit.aliasesLower = {};
+    for (var a in AreaUnit.aliases) {
+        AreaUnit.aliasesLower[a.toLowerCase()] = AreaUnit.aliases[a];
+    }
+})();
 
 /**
  * Convert a Area to another measure.

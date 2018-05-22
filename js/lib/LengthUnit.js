@@ -237,10 +237,12 @@ LengthUnit.aliases = {
     "gigameter": "gigameter"
 };
 
-LengthUnit.aliasesLower = {};
-for (var a in LengthUnit.aliases) {
-    LengthUnit.aliasesLower[a.toLowerCase()] = LengthUnit.aliases[a];
-}
+(function() {
+    LengthUnit.aliasesLower = {};
+    for (var a in LengthUnit.aliases) {
+        LengthUnit.aliasesLower[a.toLowerCase()] = LengthUnit.aliases[a];
+    }
+})();
 
 /**
  * Convert a length to another measure.
