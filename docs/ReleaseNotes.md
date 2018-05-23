@@ -7,13 +7,47 @@ Published as version 13.3.0
 
 New Features:
 * Updated to work properly run test cases on QT/QML environment.
-  * Implemented simple version of nodeunit library to work in QT/QML environment.
-  * Confirmed that all of iLib cases are passed in QT 5.7 version.
+    * Implemented simple version of nodeunit library to work in QT/QML environment.
+    * Confirmed that all of iLib cases are passed in QT 5.7 version.
 * Added "significantDigits" option to the number formatter
-  * Specifies the maximum number of significant digits to format into the output string,
-    which work before and after the decimal point.
-  * Can work along with max- and minFractionDigits to limit the digits in the output after
-    the decimal point.
+    * Specifies the maximum number of significant digits to format into the output string,
+      which work before and after the decimal point.
+    * Can work along with max- and minFractionDigits to limit the digits in the output after
+      the decimal point.
+* Updated unit formatting
+    * Update to latest CLDR data
+    * Added "style" parameter to the options to the constructor
+        * Style "numeric" is the default where it only formats the number with decimals and
+          the units. For example, 1.6666666 tablespoons is formatted as simply "1.6666666 tablespoons"
+        * Style "list" is where there are no decimals in the larger units and fractions of the
+          larger units are expressed instead as numbers of smaller units. 
+          For example: 1.66666666 tablespoons is formatted as "1 tablespoon 2 teaspoons"
+    * Added support for maxFractionDigits, minFractionDigits, and the new significantDigits option
+      to the constructor to pass to the number formatter constructor that is used to format the numeric
+      parts.
+    * Added support for "usage" parameter to the constructor. This allows the formatter to select
+      the most appropriate units for how the formatted string will be used. In regular common
+      usage, people often do not use the optimal units for a particular measurement, or they use 
+      units that were designed for a particular usage when other, more common or more standard 
+      units could be used. 
+      An example of where the most optimal units are not used in the US is the measurement of
+      how tall a person is. The most optimal units would be yards formatted numerically as that would produce 
+      the smallest numbers. Yet, people commonly use feet and inches with a list style format 
+      instead. For example, instead of saying "She is 1.83 yards tall", you would say, "She is
+      5 feet 6 inches tall". Similarly, an example where people commonly use a unit that is
+      designed for the usage rather than the standard unit is the measurement of electrical energy.
+      Electrical energy is commonly expressed in watt-hours, kilowatt-hours, or megawatt-hours, whereas
+      the standard ISO unit of energy is joules. You would not say that your house used "360 megajoules" 
+      of electricity in a month. You would say that it used "100 kilowatt-hours" in a month, even 
+      though they are exactly equivalent. The usage parameter automatically selects the 
+      most appropriate units within the appropriate measurement system, autoscales them if 
+      necessary, and it selects the formatting style (numeric or list), and the maxFractionDigits 
+      or significantDigits as appropriate. Each of the options that are auto-selected by
+      the usage may be overridden if desired by passing them in to the UnitFmt constructor.
+    * Unit names are now recognized case-insensitively as well, except for the few units that
+      require upper case to differentiate them
+    * Added many more aliases for the units
+    * Added digital speed units for measuring the speed of data transfer
 
 Bug Fixes:
 
