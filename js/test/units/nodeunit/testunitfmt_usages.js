@@ -2887,5 +2887,106 @@ module.exports.testunitfmt_usages = {
         var str = uf.format(m1);
         test.equal(str, "3,2 кубічныя метры");
         test.done();
-    }
+    },
+
+    testUnitFormatWithUsageWrongMeasurementType: function(test) {
+        test.expect(1);
+        var m1 = MeasurementFactory({
+            unit: "cubic feet", // a volume
+            amount: 3.2
+        });
+
+        var uf = new UnitFmt({
+            usage: "floorSpace", // area
+            length: "long"
+        });
+        var str = uf.format(m1);
+        test.equal(str, "3.2 cubic feet");
+        test.done();
+    },
+
+    testUnitFormatWithUsageUnknownUsage: function(test) {
+        test.expect(1);
+        var m1 = MeasurementFactory({
+            unit: "cubic feet",
+            amount: 3.2
+        });
+
+        var uf = new UnitFmt({
+            usage: "foobar",
+            length: "long"
+        });
+        var str = uf.format(m1);
+        test.equal(str, "3.2 cubic feet");
+        test.done();
+    },
+
+    testUnitFormatWithUsageOverrideMeasurementType: function(test) {
+        test.expect(1);
+        var m1 = MeasurementFactory({
+            unit: "square meters",
+            amount: 10
+        });
+
+        var uf = new UnitFmt({
+            usage: "floorSpace",
+            length: "short",
+            measurementSystem: "metric"
+        });
+        var str = uf.format(m1);
+        test.equal(str, "10 m²");
+        test.done();
+    },
+
+    testUnitFormatWithUsageOverrideMaxFractionDigits: function(test) {
+        test.expect(1);
+        var m1 = MeasurementFactory({
+            unit: "square feet",
+            amount: 10.832
+        });
+
+        var uf = new UnitFmt({
+            usage: "floorSpace",
+            length: "short",
+            maxFractionDigits: "2"
+        });
+        var str = uf.format(m1);
+        test.equal(str, "10.83 sq ft");
+        test.done();
+    },
+
+    testUnitFormatWithUsageOverrideSignificantDigits: function(test) {
+        test.expect(1);
+        var m1 = MeasurementFactory({
+            unit: "kWh",
+            amount: 102.338322234
+        });
+
+        var uf = new UnitFmt({
+            usage: "electricalEnergy",
+            length: "short",
+            significantDigits: "6"
+        });
+        var str = uf.format(m1);
+        test.equal(str, "102.338 kWh");
+        test.done();
+    },
+
+    testUnitFormatWithUsageNoScaling: function(test) {
+        test.expect(1);
+        var m1 = MeasurementFactory({
+            unit: "kWh",
+            amount: 102.338322234
+        });
+
+        var uf = new UnitFmt({
+            autoScale: false,
+            usage: "electricalEnergy",
+            length: "short"
+        });
+        var str = uf.format(m1);
+        test.equal(str, "102.3 kWh");
+        test.done();
+    },
+
 };
