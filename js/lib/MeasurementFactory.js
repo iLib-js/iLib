@@ -23,6 +23,7 @@
 UnknownUnit.js
 AreaUnit.js
 DigitalStorageUnit.js
+DigitalSpeedUnit.js
 EnergyUnit.js
 FuelConsumptionUnit.js
 LengthUnit.js

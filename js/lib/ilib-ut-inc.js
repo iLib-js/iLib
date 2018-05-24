@@ -101,7 +101,7 @@ TimeUnit.js
 MassUnit.js
 AreaUnit.js
 FuelConsumptionUnit.js
-VolumeUnit.js	
+VolumeUnit.js
 EnergyUnit.js
 Charset.js
 ListFmt.js
@@ -121,6 +121,7 @@ charmaps/Hans.js
 charmaps/Hant.js
 charmaps/general.js
 AlphabeticIndex.js
+DigitalSpeedUnit.js
 */
 
 /* !data
