@@ -62,7 +62,7 @@ VelocityUnit.ratios = {
 
 /**
  * Return a new instance of this type of measurement.
- * 
+ *
  * @param {Object} params parameters to the constructor
  * @return {Measurement} a measurement subclass instance
  */
@@ -80,13 +80,13 @@ VelocityUnit.systems = {
         "foot-per-second",
         "mile-per-hour",
         "knot",
-        "mile-per-second"           
+        "mile-per-second"
     ],
     "uscustomary": [
         "foot-per-second",
         "mile-per-hour",
         "knot",
-        "mile-per-second"           
+        "mile-per-second"
     ],
     "conversions": {
         "imperial": {
@@ -190,6 +190,8 @@ VelocityUnit.aliases = {
     "nauticalmile/hour": "knot",
     "nauticalmiles/hr": "knot",
     "nauticalmiles/hour": "knot",
+    "nautical mile per hour": "knot",
+    "nautical miles per hour": "knot",
     "nautical-mile/h": "knot",
     "nautical-mile/hr": "knot",
     "nautical-mile/hour": "knot",

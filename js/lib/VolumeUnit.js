@@ -353,7 +353,7 @@ VolumeUnit.convert = function(to, from, volume) {
 
 /**
  * Return a new instance of this type of measurement.
- * 
+ *
  * @param {Object} params parameters to the constructor
  * @return {Measurement} a measurement subclass instance
  */

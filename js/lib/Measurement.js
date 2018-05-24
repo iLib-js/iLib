@@ -37,7 +37,7 @@ function round(number, precision) {
  * be created using the {@link MeasurementFactory} function, which creates the
  * correct subclass based on the given parameters.<p>
  *
- * @param {Object] options options controlling the construction of this instance 
+ * @param {Object] options options controlling the construction of this instance
  * @private
  * @constructor
  */
@@ -352,11 +352,11 @@ Measurement.prototype = {
         constrain = constrain || round;
 
         var start = JSUtils.indexOf(measures, this.unit);
-        
+
         if (scale || start === -1) {
             start = measures.length-1;
         }
-        
+
         if (this.unit !== measures[0]) {
             // if this unit is not the smallest measure in the system, we have to convert
             unit = measures[0];
@@ -377,11 +377,11 @@ Measurement.prototype = {
                     amount: xf
                 };
                 ret.push(item);
-                
+
                 amount -= xf * ratios[unit][ratios[measures[0]][0]];
             }
         }
-            
+
         // last measure is rounded/constrained, not truncated
         if (amount !== 0) {
             ret.push({

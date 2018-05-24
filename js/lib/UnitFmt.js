@@ -484,7 +484,7 @@ UnitFmt.prototype = {
     format: function (measurement) {
         var u = measurement, system, listStyle;
         var doScale = this.scale;
-        
+
         if (this.convert) {
             if (this.measurementSystem) {
                 if (this.measurementSystem !== measurement.getMeasurementSystem()) {
