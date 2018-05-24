@@ -376,11 +376,11 @@ var nodeunit = (function(){
                         if (a.failed()) {
                             failNum++;
                             //console.log("[" + name + "] assertions.failures() " + assertions.failures());
-                            console.log("[" + name + "] Test failed.");
+                            console.log("[" + name + "] assertion is failed.");
                         } else {
                             successNum++;
                             //console.log("[" + name + "] assertions.passed() " + assertions.passed());
-                            //console.log("[" + name + "] Test Success.");
+                            //console.log("[" + name + "] assertion is passed");
                         }
                     }
                 },

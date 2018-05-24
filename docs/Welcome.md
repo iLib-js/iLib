@@ -24,4 +24,4 @@ Using it is easy. Just include iliball-compiled.js in your HTML, et voila, the i
 
 If you don't need everything in iLib for your web site, iLib comes with a tool that allows you to reassemble a new, smaller file that only contains the classes you need, and all the classes they depend on. 
 
-For more detailed instructions, see the [Getting Started Guide](Getting Started) or the full [iLib Tutorial](iLib1.0JSTutorial.pdf). If you are an old pro at APIs or Javascript, you can skip directly to the [API Reference Documentation](http://www.translationcircle.com/ilib/jsdoc/).
+For more detailed instructions, see the [Getting Started Guide](Getting Started) or the full [iLib Tutorial](iLib1.0JSTutorial.pdf). If you are an old pro at APIs or Javascript, you can skip directly to the [API Reference Documentation](http://www.translationcircle.com/ilib/doc/jsdoc/).

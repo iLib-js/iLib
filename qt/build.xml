@@ -146,15 +146,15 @@ limitations under the License.
 		<sequential>
 			<exec osfamily="unix" executable="${QTBIN}/qmlscene" dir="${build.base}/NodeunitTest" failifexecutionfails="true" failonerror="true">
 				<env key="QML2_IMPORT_PATH" value="../FileReader/imports"/>
-				<arg line="NodeunitRun.qml"/>
+				<arg line="NodeunitRunAll.qml"/>
 			</exec>
 			<exec osfamily="mac" executable="${QTBIN}/qmlscene" dir="${build.base}/NodeunitTest" failifexecutionfails="true" failonerror="true">
 				<env key="QML2_IMPORT_PATH" value="../FileReader/imports"/>
-				<arg line="NodeunitRun.qml"/>
+				<arg line="NodeunitRunAll.qml"/>
 			</exec>
 			<exec osfamily="windows" executable="${QTBIN}/qmlscene.exe" dir="${build.base}/NodeunitTest" failifexecutionfails="true"  failonerror="true">
 				<env key="QML2_IMPORT_PATH" value="../FileReader/imports"/>
-				<arg line="NodeunitRun.qml"/>
+				<arg line="NodeunitRunAll.qml"/>
 			</exec>
 		</sequential>
 	</target>
