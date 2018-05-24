@@ -120,7 +120,6 @@ var lenMap = {
  *   <li><i>drugWeight</i> weight/mass of a medicinal drug
  *   <li><i>vehicleSpeed</i> speed of travel of a vehicle or aircraft (except a boat)
  *   <li><i>nauticalSpeed</i> speed of travel of a boat
- *   <li><i>foodVolume</i> volume of a food substance such as in a recipe
  *   <li><i>dryFoodVolume</i> volume of a dry food substance in a recipe such as flour
  *   <li><i>liquidFoodVolume</i> volume of a liquid food substance in a recipe such as milk
  *   <li><i>drinkVolume</i> volume of a drink
