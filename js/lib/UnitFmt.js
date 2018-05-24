@@ -24,6 +24,7 @@ Locale.js
 IString.js
 NumFmt.js
 Utils.js
+Measurement.js
 */
 
 // !data unitfmt
@@ -36,6 +37,7 @@ var Locale = require("./Locale.js");
 var IString = require("./IString.js");
 var NumFmt = require("./NumFmt.js");
 var ListFmt = require("./ListFmt.js");
+var Measurement = require("./Measurement.js");
 
 // for converting ilib lengths to the ones that are supported in cldr
 var lenMap = {
@@ -482,20 +484,24 @@ UnitFmt.prototype = {
      */
     format: function (measurement) {
         var u = measurement, system, listStyle;
+        var doScale = this.scale;
         
         if (this.convert) {
             if (this.measurementSystem) {
                 if (this.measurementSystem !== measurement.getMeasurementSystem()) {
                     u = u.convertSystem(this.measurementSystem);
                 }
-            } else {
+            } else if (!this.usageInfo || Measurement.getMeasurementSystemForLocale(this.locale) !== u.getMeasurementSystem()) {
                 u = measurement.localize(this.locale);
             }
+
+            doScale = (this.usageInfo && measurement.getMeasurementSystem() !== u.getMeasurementSystem()) || this.scale;
         }
+
         system = u.getMeasurementSystem() || this.getMeasurementSystem() || "metric";
         listStyle = (this.style === "list" || (this.usageInfo && this.usageInfo.systems && this.usageInfo.systems[system].style === "list"));
-        
-        if (this.scale) {
+
+        if (doScale) {
             if (this.usageInfo && measurement.getMeasure() === this.usageInfo.type && !listStyle) {
                 // scaling with a restricted set of units
                 u = u.scale(system, this.units);
@@ -503,6 +509,7 @@ UnitFmt.prototype = {
                 u = u.scale(); // scale within the current system
             }
         }
+
         if (listStyle) {
             var numFmt = this.numFmt[system];
             u = u.expand(undefined, this.units, ilib.bind(numFmt, numFmt.constrain), this.scale);

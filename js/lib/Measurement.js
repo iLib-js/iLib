@@ -173,6 +173,7 @@ Measurement.prototype = {
         var to;
         var toSystem = Measurement.getMeasurementSystemForLocale(locale);
         var fromSystem = this.getMeasurementSystem();
+        if (toSystem === fromSystem) return this; // already there
         to = this.systems.conversions[fromSystem] &&
             this.systems.conversions[fromSystem][toSystem] &&
             this.systems.conversions[fromSystem][toSystem][this.unit];

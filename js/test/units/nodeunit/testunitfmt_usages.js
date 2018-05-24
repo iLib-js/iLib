@@ -2901,7 +2901,7 @@ module.exports.testunitfmt_usages = {
             length: "long"
         });
         var str = uf.format(m1);
-        test.equal(str, "3.2 cubic feet");
+        test.equal(str, "3 cubic feet"); // should not convert or scale
         test.done();
     },
 
