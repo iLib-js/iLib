@@ -1,6 +1,6 @@
 /*
  * testbreakit_en.js - test the break iteration routines in English
- * 
+ *
  * Copyright © 2018, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -38,7 +38,7 @@ module.exports.testbreakit_en = {
         test.ok(bi);
         test.done();
     },
-    
+
     testBreakIteratorENCharacterDefault: function(test) {
         test.expect(8);
         // take surrogate characters together
@@ -46,7 +46,7 @@ module.exports.testbreakit_en = {
             type: "character",
             locale: "en-US"
         });
-    
+
         test.ok(bi.hasNext());
         test.equal(bi.next(), "a");
         test.ok(bi.hasNext());
@@ -67,7 +67,7 @@ module.exports.testbreakit_en = {
             locale: "en-US"
         });
         test.ok(bi);
-        
+
         test.ok(bi.hasNext());
         test.equal(bi.next(), "a");
         test.ok(bi.hasNext());
@@ -78,7 +78,7 @@ module.exports.testbreakit_en = {
         test.equal(bi.next(), undefined);
         test.done();
     },
-    
+
     testBreakIteratorENWordSimple: function(test) {
         test.expect(19);
         var bi = new BreakIterator("This is a sentence.", {
@@ -86,7 +86,7 @@ module.exports.testbreakit_en = {
             locale: "en-US"
         });
         test.ok(bi);
-        
+
         test.ok(bi.hasNext());
         test.equal(bi.next(), "This");
         test.ok(bi.hasNext());
@@ -115,7 +115,7 @@ module.exports.testbreakit_en = {
             locale: "en-US"
         });
         test.ok(bi);
-        
+
         test.ok(bi.hasNext());
         test.equal(bi.next(), "He");
         test.ok(bi.hasNext());
@@ -149,7 +149,7 @@ module.exports.testbreakit_en = {
         test.equal(bi.next(), undefined);
         test.done();
     },
-    
+
     testBreakIteratorENWordWithHyphensAndDashes: function(test) {
         test.expect(31);
         var bi = new BreakIterator('Wilkins-Smith re-iterated over-the-line regular‑hyphen', {
@@ -157,7 +157,7 @@ module.exports.testbreakit_en = {
             locale: "en-US"
         });
         test.ok(bi);
-        
+
         test.ok(bi.hasNext());
         test.equal(bi.next(), "Wilkins");
         test.ok(bi.hasNext());
@@ -196,7 +196,7 @@ module.exports.testbreakit_en = {
             locale: "en-US"
         });
         test.ok(bi);
-        
+
         test.ok(bi.hasNext());
         test.equal(bi.next(), "non‑breaking‑hyphen");
         test.ok(bi.hasNext());
@@ -215,7 +215,7 @@ module.exports.testbreakit_en = {
             locale: "en-US"
         });
         test.ok(bi);
-        
+
         test.ok(bi.hasNext());
         test.equal(bi.next(), "no");
         test.ok(bi.hasNext());
@@ -242,7 +242,7 @@ module.exports.testbreakit_en = {
             locale: "en-US"
         });
         test.ok(bi);
-        
+
         test.ok(bi.hasNext());
         test.equal(bi.next(), "He");
         test.ok(bi.hasNext());
@@ -278,7 +278,7 @@ module.exports.testbreakit_en = {
             locale: "en-US"
         });
         test.ok(bi);
-        
+
         test.ok(bi.hasNext());
         test.equal(bi.next(), "He");
         test.ok(bi.hasNext());
@@ -315,7 +315,7 @@ module.exports.testbreakit_en = {
             locale: "en-US"
         });
         test.ok(bi);
-        
+
         test.ok(bi.hasNext());
         test.equal(bi.next(), "He");
         test.ok(bi.hasNext());
@@ -352,7 +352,7 @@ module.exports.testbreakit_en = {
             locale: "en-US"
         });
         test.ok(bi);
-        
+
         test.ok(bi.hasNext());
         test.equal(bi.next(), "Dr.");
         test.ok(bi.hasNext());
@@ -376,7 +376,7 @@ module.exports.testbreakit_en = {
             locale: "en-US"
         });
         test.ok(bi);
-        
+
         test.ok(bi.hasNext());
         test.equal(bi.next(), "This is a sentence.");
         test.ok(bi.hasNext());
@@ -399,7 +399,7 @@ module.exports.testbreakit_en = {
             locale: "en-US"
         });
         test.ok(bi);
-        
+
         test.ok(bi.hasNext());
         test.equal(bi.next(), "Dr. McMurdach, Ph.D. has worked in the U.S.A. since Aug. 21, 2016.");
         test.ok(bi.hasNext());
@@ -410,7 +410,7 @@ module.exports.testbreakit_en = {
         test.equal(bi.next(), undefined);
         test.done();
     },
-    
+
     testBreakIteratorENSentenceDealWithQuotesProperly: function(test) {
         test.expect(13);
         var bi = new BreakIterator('He said, "Man, that comedian was a riot! They should put him on every night!"', {
@@ -418,7 +418,7 @@ module.exports.testbreakit_en = {
             locale: "en-US"
         });
         test.ok(bi);
-        
+
         test.ok(bi.hasNext());
         test.equal(bi.next(), 'He said, "Man, that comedian was a riot!');
         test.ok(bi.hasNext());
@@ -429,7 +429,7 @@ module.exports.testbreakit_en = {
         test.equal(bi.next(), undefined);
         test.done();
     },
-    
+
     testBreakIteratorENSentence: function(test) {
         test.expect(13);
         var bi = new BreakIterator('He said, "Man, that comedian was a riot! They should put him on every night!"', {
@@ -438,7 +438,7 @@ module.exports.testbreakit_en = {
             locale: "en-US"
         });
         test.ok(bi);
-        
+
         test.ok(bi.hasNext());
         test.equal(bi.next(), 'He said, "Man, that comedian ');
         test.ok(bi.hasNext());
@@ -449,7 +449,7 @@ module.exports.testbreakit_en = {
         test.equal(bi.next(), undefined);
         test.done();
     },
-    
+
     testBreakIteratorENSentenceSoftHyphen: function(test) {
         test.expect(13);
         var bi = new BreakIterator('He said, "Man, that co­me­di­an was a riot! They should put him on ev­er­y night!"', {
@@ -458,7 +458,7 @@ module.exports.testbreakit_en = {
             locale: "en-US"
         });
         test.ok(bi);
-        
+
         test.ok(bi.hasNext());
         test.equal(bi.next(), 'He said, "Man, that co­me-');
         test.ok(bi.hasNext());
@@ -471,23 +471,23 @@ module.exports.testbreakit_en = {
         test.equal(bi.next(), undefined);
         test.done();
     },
-    
+
     testBreakIteratorENUnicodeTest: function(test) {
-        // there is no text.expect here, because there are a 
+        // there is no text.expect here, because there are a
         // variable number of tests in the Unicode data.
-        
+
         for (var text in wordBreakData) {
             var bi = new BreakIterator(text, {
                 type: "word",
                 locale: "en-US"
             });
             test.ok(bi);
-            
+
             var result = [];
             while (bi.hasNext()) {
                 result.push(bi.next());
             }
-            
+
             test.deepEqual(result, wordBreakData[text]);
         }
 
