@@ -1,6 +1,6 @@
 /*
  * testbreakit.js - test the general break iteration routines
- * 
+ *
  * Copyright © 2018, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -32,12 +32,12 @@ module.exports.testbreakit = {
         test.ok(bi);
         test.done();
     },
-    
+
     testBreakIteratorCharacterDefault: function(test) {
         test.expect(8);
         var bi = new BreakIterator("abc");
         test.ok(bi);
-        
+
         test.ok(bi.hasNext());
         test.equal(bi.next(), "a");
         test.ok(bi.hasNext());
@@ -55,7 +55,7 @@ module.exports.testbreakit = {
             type: "glyph"
         });
         test.ok(bi);
-        
+
         test.ok(bi.hasNext());
         test.equal(bi.next(), "a");
         test.ok(bi.hasNext());
@@ -73,7 +73,7 @@ module.exports.testbreakit = {
             type: "glyph"
         });
         test.ok(bi);
-        
+
         test.ok(!bi.hasNext());
         test.equal(bi.next(), undefined);
         test.done();
@@ -85,7 +85,7 @@ module.exports.testbreakit = {
             type: "glyph"
         });
         test.ok(bi);
-        
+
         test.ok(bi.hasNext());
         test.equal(bi.next(), "a");
         test.equal(bi.type(), "glyph")
@@ -112,7 +112,7 @@ module.exports.testbreakit = {
             type: "word"
         });
         test.ok(bi);
-        
+
         test.ok(bi.hasNext());
         test.equal(bi.next(), "This");
         test.ok(bi.hasNext());
@@ -140,7 +140,7 @@ module.exports.testbreakit = {
             type: "word"
         });
         test.ok(bi);
-        
+
         test.ok(bi.hasNext());
         test.equal(bi.next(), "This‍ is");
         test.ok(bi.hasNext());
@@ -164,7 +164,7 @@ module.exports.testbreakit = {
             type: "word"
         });
         test.ok(bi);
-        
+
         test.ok(bi.hasNext());
         test.equal(bi.next(), "This‍is");
         test.ok(bi.hasNext());
@@ -188,7 +188,7 @@ module.exports.testbreakit = {
             type: "sentence"
         });
         test.ok(bi);
-        
+
         test.ok(bi.hasNext());
         test.equal(bi.next(), "This is a sentence.");
         test.ok(bi.hasNext());
@@ -211,7 +211,7 @@ module.exports.testbreakit = {
             maxLength: "22"
         });
         test.ok(bi);
-        
+
         test.ok(bi.hasNext());
         test.equal(bi.next(), "This is a sentence. ");
         test.ok(bi.hasNext());
@@ -226,14 +226,14 @@ module.exports.testbreakit = {
         test.equal(bi.next(), undefined);
         test.done();
     },
-    
+
     testBreakIteratorEmptyNoNext: function(test) {
         test.expect(3);
         var bi = new BreakIterator("", {
             type: "word"
         });
         test.ok(bi);
-        
+
         test.ok(!bi.hasNext());
         test.ok(!bi.next());
         test.done();
@@ -245,7 +245,7 @@ module.exports.testbreakit = {
             type: "word"
         });
         test.ok(bi);
-        
+
         test.ok(!bi.first());
         test.done();
     },
@@ -256,7 +256,7 @@ module.exports.testbreakit = {
             type: "word"
         });
         test.ok(bi);
-        
+
         test.ok(!bi.last());
         test.done();
     },
@@ -267,7 +267,7 @@ module.exports.testbreakit = {
             type: "word"
         });
         test.ok(bi);
-        
+
         test.ok(!bi.previous());
         test.done();
     },
@@ -278,7 +278,7 @@ module.exports.testbreakit = {
             type: "word"
         });
         test.ok(bi);
-        
+
         test.equal(bi.next(), "This");
         test.equal(bi.next(), " ");
         test.equal(bi.next(), "is");
@@ -295,7 +295,7 @@ module.exports.testbreakit = {
             type: "word"
         });
         test.ok(bi);
-        
+
         test.ok(bi.hasNext());
         test.equal(bi.previous(), undefined);
         test.done();
@@ -307,7 +307,7 @@ module.exports.testbreakit = {
             type: "word"
         });
         test.ok(bi);
-        
+
         test.equal(bi.next(), "This");
         test.equal(bi.next(), " ");
         test.equal(bi.next(), "is");
@@ -323,7 +323,7 @@ module.exports.testbreakit = {
             type: "word"
         });
         test.ok(bi);
-        
+
         test.equal(bi.next(), "This");
         test.equal(bi.next(), " ");
         test.equal(bi.next(), "is");
@@ -331,7 +331,7 @@ module.exports.testbreakit = {
         test.equal(bi.next(), "a");
         test.equal(bi.first(), "This");
         test.ok(!bi.previous());
-        
+
         test.done();
     },
 
@@ -341,7 +341,7 @@ module.exports.testbreakit = {
             type: "word"
         });
         test.ok(bi);
-        
+
         test.equal(bi.next(), "This");
         test.equal(bi.next(), " ");
         test.equal(bi.next(), "is");
@@ -355,11 +355,11 @@ module.exports.testbreakit = {
             type: "word"
         });
         test.ok(bi);
-        
+
         test.equal(bi.last(), ".");
         test.ok(!bi.hasNext());
         test.ok(!bi.next());
-        
+
         test.done();
     }
 };

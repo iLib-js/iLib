@@ -43,13 +43,13 @@ function isNewLine(string) {
 
 function isExtend(string) {
     var c = IString.toCodePoint(string, 0);
-    
+
     CType._inRange(string, "Mc") // Spacing mark
     && c !== 0x200D
 }
 
 function tokenize(string) {
-    
+
 }
 
 /**
@@ -68,7 +68,7 @@ function tokenize(string) {
  * grammatical rules behind things like what is a word and what is
  * not, and which punctuation ends a sentence and what are the exceptions
  * to those rules. Default is the current locale.
- * 
+ *
  * <li><i>maxLength</i> - set the maximum number of characters in a line.
  * This parameter is ignored if the type is not given as "line". Default is 80.
  *
@@ -133,7 +133,7 @@ var BreakIterator = function (string, options) {
         instance;
 
     this.maxLength = 80;
-    
+
     if (options) {
         if (options.locale) {
             locale = (typeof(options.locale) === 'string') ? new Locale(options.locale) : options.locale;
@@ -144,7 +144,7 @@ var BreakIterator = function (string, options) {
         if (typeof(options.sync) === 'boolean') {
             sync = options.sync;
         }
-        
+
         if (typeof(options.maxLength) === "number" && options.maxLength > 0) {
             this.maxLength = options.maxLength;
         }
@@ -193,7 +193,7 @@ BreakIterator.prototype.next = function() {
 };
 
 /**
- * Return the type of the current chunk of text between 
+ * Return the type of the current chunk of text between
  * the current boundary and the previous boundary. The return
  * value is either the name of type of the iterator (ie. "character"
  * or "word", etc.) or "other" for chunks that do not fit into

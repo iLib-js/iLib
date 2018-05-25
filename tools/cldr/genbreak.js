@@ -1,7 +1,7 @@
 /*
  * genbreak.js - ilib tool to generate the ilib format break iteration
  * locale data and testing dadta
- * 
+ *
  * Copyright © 2018, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -19,7 +19,7 @@
  */
 
 /*
- * This code is intended to be run under node.js 
+ * This code is intended to be run under node.js
  */
 
 var fs = require('fs');
@@ -84,18 +84,18 @@ var tests = {};
 
 for (var i = 0; i < len; i++ ) {
     row = wbt.get(i);
-    
+
     var str = row[0].trim();
     str = str.substring(2, str.length - 2)
 
     str = str.replace(re, function(match) {
        return String.fromCharCode(parseInt(match, 16));
     });
-    
+
     var segments = str.split(/ ÷ /g).map(function(segment) {
         return segment.replace(/ × /g, "");
     });
-    
+
     tests[segments.join("")] = segments;
 }
 
