@@ -764,5 +764,34 @@ module.exports.testlocale = {
         var loc = new Locale("Hans-CN");
         test.equal(loc.getLangSpec(), "");
         test.done();
+    },
+    
+    testLocaleConstructorCalledWithNonStrings: function(test) {
+        test.expect(8);
+        
+        function a(a) { return a; }
+        
+        try {
+            var loc = new Locale(true, true, false, true);
+            test.equal(loc.getLangSpec(), "");
+            var loc = new Locale(a, a, a, a);
+            test.equal(loc.getSpec(), "");
+            var loc = new Locale(4, 4, 4, 4);
+            test.equal(loc.getSpec(), "");
+            var loc = new Locale({}, {}, {}, {});
+            test.equal(loc.getSpec(), "");
+
+            var loc = new Locale(true);
+            test.equal(loc.getSpec(), "");
+            var loc = new Locale(a);
+            test.equal(loc.getSpec(), "");
+            var loc = new Locale(4);
+            test.equal(loc.getSpec(), "");
+            var loc = new Locale({});
+            test.equal(loc.getSpec(), "");
+        } catch (e) {
+            test.fail();
+        }
+        test.done();
     }
 };
