@@ -1,281 +1,327 @@
 {
-	"properties": {
-		"CR": {
-			"include": {
-				"chars": [
-					"\u000D"
-				]
-			}
-		},
-		"LF": {
-			"include": {
-				"chars": [
-					"\u000A"
-				]
-			}
-		},
-		"Newline": {
-			"include": {
-				"chars": [
-					"\u000B",
-					"\u000C",
-					"\u0085",
-					"\u2028",
-					"\u2029"
-				]
-			}
-		},
-		"Extend": {
-			"include": {
-				"properties": {
-					"General_Category": "Spacing_Mark"
-				},
-				"categories": [
-					"Grapheme_Extend"
-				]
-			},
-			"exclude": {
-				"chars": [
-					"\u200D"
-				]
-			}
-		},
-		"ZWJ": {
-			"include": {
-				"chars": [
-					"\u200D"
-				]
-			}
-		},
-		"Regional_Indicator": {
-			"include": {
-				"categories": [
-					"Regional_Indicator"
-				]
-			}
-		},
-		"Format": {
-			"include": {
-				"properties": {
-					"General_Category": "Format"
-				}
-			},
-			"exclude": {
-				"chars": [
-					"\u200B",
-					"\u200C",
-					"\u200D"
-				]
-			}
-		},
-		"Katakana": {
-			"include": {
-				"scripts": [
-					"Kata"
-				],
-				"chars": [
-					"\u3031",
-					"\u3032",
-					"\u3033",
-					"\u3034",
-					"\u3035",
-					"\u309B",
-					"\u309C",
-					"\u30A0",
-					"\u30FC",
-					"\uFF70",
-					"\uFF70"
-				]
-			}
-		},
-		"Hebrew_Letter": {
-			"include": {
-				"scripts": [
-					"Hebr"
-				],
-				"properties": {
-					"General_Category": "Other_Letter"
-				}
-			}
-		},
-		"ALetter": {
-			"include": {
-				"categories": [
-					"Alphabetic"
-				],
-				"chars": [
-					"\u02C2",
-					"\u02C5",
-					"\u02D2",
-					"\u02D7",
-					"\u02DE",
-					"\u02DF",
-					"\u02ED",
-					"\u02EF",
-					"\u02FF",
-					"\u05F3",
-					"\uA720",
-					"\uA721",
-					"\uA789",
-					"\uA78A",
-					"\uAB5B"
-				]
-			},
-			"exclude": {
-				"properties": {
-					"Word_Break": [
-						"Katakana",
-						"Extend",
-						"Hebrew_Letter"
-					],
-					"Line_Break": "Complex_Context"
-				},
-				"categories": [
-					"Ideographic"
-				],
-				"scripts": [
-					"Kata"
-				]
-			}
-		},
-		"Single_Quote": {
-			"include": {
-				"chars": [
-					"\u0027"
-				]
-			}
-		},
-		"Double_Quote": {
-			"include": {
-				"chars": [
-					"\u0022"
-				]
-			}
-		}
-	},
-	"rules": {
-		"Other": {
-			"Format_FE": 1,
-			"Extend_FE": 1,
-			"ZWJ_FE": 1
-		},
-		"CR": {
-			"LF": 1
-		},
-		"Katakana": {
-			"Katakana": 1,
-			"ExtendNumLet": 1,
-			"Format_FE": 1,
-			"Extend_FE": 1,
-			"ZWJ_FE": 1
-		},
-		"ALetter": {
-			"ALetter": 1,
-			"Numeric": 1,
-			"ExtendNumLet": 1,
-			"Hebrew_Letter": 1,
-			"Format_FE": 1,
-			"Extend_FE": 1,
-			"ZWJ_FE": 1
-		},
-		"MidLetter": {
-			"Format_FE": 1,
-			"Extend_FE": 1,
-			"ZWJ_FE": 1
-		},
-		"MidNum": {
-			"Format_FE": 1,
-			"Extend_FE": 1,
-			"ZWJ_FE": 1
-		},
-		"MidNumLet": {
-			"Format_FE": 1,
-			"Extend_FE": 1,
-			"ZWJ_FE": 1
-		},
-		"Numeric": {
-			"ALetter": 1,
-			"Numeric": 1,
-			"ExtendNumLet": 1,
-			"Hebrew_Letter": 1,
-			"Format_FE": 1,
-			"Extend_FE": 1,
-			"ZWJ_FE": 1
-		},
-		"ExtendNumLet": {
-			"Katakana": 1,
-			"ALetter": 1,
-			"Numeric": 1,
-			"ExtendNumLet": 1,
-			"Hebrew_Letter": 1,
-			"Format_FE": 1,
-			"Extend_FE": 1,
-			"ZWJ_FE": 1
-		},
-		"RI": {
-			"RI": 1,
-			"Format_FE": 1,
-			"Extend_FE": 1,
-			"ZWJ_FE": 1
-		},
-		"Hebrew_Letter": {
-			"ALetter": 1,
-			"Numeric": 1,
-			"ExtendNumLet": 1,
-			"Hebrew_Letter": 1,
-			"Single_Quote": 1,
-			"Format_FE": 1,
-			"Extend_FE": 1,
-			"ZWJ_FE": 1
-		},
-		"Double_Quote": {
-			"Format_FE": 1,
-			"Extend_FE": 1,
-			"ZWJ_FE": 1
-		},
-		"Single_Quote": {
-			"Format_FE": 1,
-			"Extend_FE": 1,
-			"ZWJ_FE": 1
-		},
-		"E_Base": {
-			"E_Modifier": 1,
-			"Format_FE": 1,
-			"Extend_FE": 1,
-			"ZWJ_FE": 1
-		},
-		"E_Modifier": {
-			"Format_FE": 1,
-			"Extend_FE": 1,
-			"ZWJ_FE": 1
-		},
-		"Glue_After_Zwj": {
-			"Format_FE": 1,
-			"Extend_FE": 1,
-			"ZWJ_FE": 1
-		},
-		"EBG": {
-			"E_Modifier": 1,
-			"Format_FE": 1,
-			"Extend_FE": 1,
-			"ZWJ_FE": 1
-		},
-		"Format_FE": {
-			"Format_FE": 1,
-			"Extend_FE": 1,
-			"ZWJ_FE": 1
-		},
-		"Extend_FE": {
-			"Format_FE": 1,
-			"Extend_FE": 1,
-			"ZWJ_FE": 1
-		},
-		"ZWJ_FE": {
-			"Glue_After_Zwj": 1,
-			"EBG": 1,
-			"Format_FE": 1,
-			"Extend_FE": 1,
-			"ZWJ_FE": 1
-		}
-	}
+    "properties": {
+        "CR": {
+            "include": {
+                "chars": [
+                    "\u000D"
+                ]
+            }
+        },
+        "LF": {
+            "include": {
+                "chars": [
+                    "\u000A"
+                ]
+            }
+        },
+        "Newline": {
+            "include": {
+                "chars": [
+                    "\u000B",
+                    "\u000C",
+                    "\u0085",
+                    "\u2028",
+                    "\u2029"
+                ]
+            }
+        },
+        "Extend": {
+            "include": {
+                "properties": {
+                    "General_Category": "Spacing_Mark",
+                    "Grapheme_Extend": "Yes"
+                }
+            },
+            "exclude": {
+                "chars": [
+                    "\u200D"
+                ]
+            }
+        },
+        "ZWJ": {
+            "include": {
+                "chars": [
+                    "\u200D"
+                ]
+            }
+        },
+        "Regional_Indicator": {
+            "include": {
+                "properties": {
+                    "Regional_Indicator": "Yes"
+                }
+            }
+        },
+        "Format": {
+            "include": {
+                "properties": {
+                    "General_Category": "Format"
+                }
+            },
+            "exclude": {
+                "chars": [
+                    "\u200B",
+                    "\u200C",
+                    "\u200D"
+                ]
+            }
+        },
+        "Katakana": {
+            "include": {
+                "scripts": [
+                    "Kata"
+                ],
+                "chars": [
+                    "\u3031",
+                    "\u3032",
+                    "\u3033",
+                    "\u3034",
+                    "\u3035",
+                    "\u309B",
+                    "\u309C",
+                    "\u30A0",
+                    "\u30FC",
+                    "\uFF70",
+                    "\uFF70"
+                ]
+            }
+        },
+        "Hebrew_Letter": {
+            "include": {
+                "scripts": [
+                    "Hebr"
+                ],
+                "properties": {
+                    "General_Category": "Other_Letter"
+                }
+            }
+        },
+        "ALetter": {
+            "include": {
+                "properties": {
+                    "Alphabetic": "Yes"
+                },
+                "chars": [
+                    "\u02C2",
+                    "\u02C5",
+                    "\u02D2",
+                    "\u02D7",
+                    "\u02DE",
+                    "\u02DF",
+                    "\u02ED",
+                    "\u02EF",
+                    "\u02FF",
+                    "\u05F3",
+                    "\uA720",
+                    "\uA721",
+                    "\uA789",
+                    "\uA78A",
+                    "\uAB5B"
+                ]
+            },
+            "exclude": {
+                "properties": {
+                    "Word_Break": [
+                        "Katakana",
+                        "Extend",
+                        "Hebrew_Letter"
+                    ],
+                    "Line_Break": "Complex_Context",
+                    "Ideographic": "Yes"
+                },
+
+                "scripts": [
+                    "Kata"
+                ]
+            }
+        },
+        "Single_Quote": {
+            "include": {
+                "chars": [
+                    "\u0027"
+                ]
+            }
+        },
+        "Double_Quote": {
+            "include": {
+                "chars": [
+                    "\u0022"
+                ]
+            }
+        },
+        "MidNumLet": {
+            "include": {
+                "chars": ["\u002E", "\u2018", "\u2019", "\u2024", "\uFE52", "\uFF07", "\uFF0E"]
+            }
+        },
+        "MidLet": {
+            "include": {
+                "chars": ["\u00B7", "\u0387", "\u05F4", "\u2027", "\u003A", "\uFE13", "\uFE55", "\uFF1A"]
+            }
+        },
+        "MidNum": {
+            "include": {
+                "properties": {
+                    "Line_Break": "Infix_Notation"
+                },
+                "chars": ["\u066C", "\uFE50", "\uFE54", "\uFF0C", "\uFF1B"]
+            },
+            "exclude": {
+                "chars": ["\u003A", "\uFE13", "\u002E"]
+            }
+        },
+        "Numeric": {
+            "include": {
+                "properties": {
+                    "Line_Break": "Numeric"
+                }
+            },
+            "exclude": {
+                "chars": ["\u066C"]
+            }
+        },
+        "ExtendNumLet": {
+            "include": {
+                "properties": {
+                    "General_Category": "Connector_Punctuation"
+                },
+                "chars": ["\u202F"]
+            }
+        },
+        "E_Base": {
+            "include": {
+                "properties": {
+                    "Emoji_Modifier_Base": "Yes"
+                }
+            }
+        },
+        "E_Modifier": {
+            "include": {
+                "properties": {
+                    "Emoji_Modifier": "Yes"
+                }
+            }
+        },
+        "Glue_After_Zwj ": {
+            "include": {
+                "properties": {
+                    "Emoji_Glue": "Yes"
+                }
+            },
+            "exclude": {
+                "properties": {
+                    "Emoji_Modifier_Base": "Yes"
+                }
+            }
+        },
+        "EBG": {
+            "include": {
+                "properties": {
+                    "Emoji_Modifier_Base_After_ZWJ": "Yes"
+                }
+            }
+        }
+    },
+    "rules": {
+        "Any": {
+            "Format": 1,
+            "Extend": 1,
+            "ZWJ": 1,
+            "Newline": 0,
+            "CR": 0,
+            "LF": 0
+        },
+        "CR": {
+            "LF": 1,
+            "Any": 0
+        },
+        "LF": {
+            "Any": 0
+        },
+        "ZWJ": {
+            "Glue_After_Zwj": 1,
+            "EBG": 1
+        },
+        "Katakana": {
+            "Katakana": 1,
+            "ExtendNumLet": 1
+        },
+        "ALetter": {
+            "ALetter": 1,
+            "Hebrew_Letter": 1,
+            "MidLetter": {
+                "ALetter": 1,
+                "Hebrew_Letter": 1
+            },
+            "MidNumLet": {
+                "ALetter": 1,
+                "Hebrew_Letter": 1
+            },
+            "Single_Quote": {
+                "ALetter": 1,
+                "Hebrew_Letter": 1
+            },
+            "Numeric": 1,
+            "ExtendNumLet": 1
+        },
+        "Numeric": {
+            "Numeric": 1,
+            "ALetter": 1,
+            "Hebrew_Letter": 1,
+            "MidNum": {
+                "Numeric": 1
+            },
+            "MidNumLet": {
+                "Numeric": 1
+            },
+            "Single_Quote": {
+                "Numeric": 1
+            },
+            "ExtendNumLet": 1
+        },
+        "ExtendNumLet": {
+            "ExtendNumLet": 1,
+            "ALetter": 1,
+            "Hebrew_Letter": 1,
+            "Numeric": 1,
+            "Katakana": 1
+        },
+        "Hebrew_Letter": {
+            "ALetter": 1,
+            "Hebrew_Letter": 1,
+            "MidLetter": {
+                "ALetter": 1,
+                "Hebrew_Letter": 1
+            },
+            "MidNumLet": {
+                "ALetter": 1,
+                "Hebrew_Letter": 1
+            },
+            "Single_Quote": {
+                "ALetter": 1,
+                "Hebrew_Letter": 1
+            },
+            "Double_Quote": {
+                "Hebrew_Letter": 1
+            },
+            "Numeric": 1,
+            "ExtendNumLet": 1
+        },
+        "E_Base": {
+            "E_Modifier": 1
+        },
+        "EBG": {
+            "E_Modifier": 1
+        },
+        "ZWJ_FE": {
+            "Glue_After_Zwj": 1,
+            "EBG": 1,
+            "Format_FE": 1,
+            "Extend_FE": 1,
+            "ZWJ_FE": 1
+        },
+        "Newline": {
+            "Any": 0
+        }
+    }
 }
