@@ -88,15 +88,15 @@ function writeUnits(data, language, script, region) {
 
 function frameUnitsString(data) {
     var choices = [];
-    if (data["unitPattern-count-zero"])
+    if (data["unitPattern-count-zero"] && data["unitPattern-count-zero"] !== data["unitPattern-count-other"])
         choices.push("zero#" + data["unitPattern-count-zero"]);
-    if (data["unitPattern-count-one"])
+    if (data["unitPattern-count-one"] && data["unitPattern-count-one"] !== data["unitPattern-count-other"])
         choices.push("one#" + data["unitPattern-count-one"]);
-    if (data["unitPattern-count-two"])
+    if (data["unitPattern-count-two"] && data["unitPattern-count-two"] !== data["unitPattern-count-other"])
         choices.push("two#" + data["unitPattern-count-two"]);
-    if (data["unitPattern-count-few"])
+    if (data["unitPattern-count-few"] && data["unitPattern-count-few"] !== data["unitPattern-count-other"])
         choices.push("few#" + data["unitPattern-count-few"]);
-    if (data["unitPattern-count-many"])
+    if (data["unitPattern-count-many"] && data["unitPattern-count-many"] !== data["unitPattern-count-other"])
         choices.push("many#" + data["unitPattern-count-many"]);
     if (data["unitPattern-count-other"])
         choices.push("#" + data["unitPattern-count-other"]);
