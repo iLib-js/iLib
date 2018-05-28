@@ -163,7 +163,7 @@ MathUtils.amod = function (dividend, modulus) {
  * Positive precisions shift the decimal to the right giving larger
  * numbers, and negative ones shift the decimal to the left giving
  * smaller numbers.
- * 
+ *
  * @static
  * @param {number} number the number to shift
  * @param {number} precision the number of places to move the decimal point
@@ -173,6 +173,22 @@ MathUtils.amod = function (dividend, modulus) {
 MathUtils.shiftDecimal = function shift(number, precision) {
     var numArray = ("" + number).split("e");
     return +(numArray[0] + "e" + (numArray[1] ? (+numArray[1] + precision) : precision));
+};
+
+/**
+ * Returns the base 10 logarithm of a number. For platforms that support
+ * Math.log10() it is used directly. For plaforms that do not, such as Qt/QML,
+ * it will be calculated using the natural logarithm.
+ *
+ * @param {number} num the number to take the logarithm of
+ * @returns {number} the base-10 logarithm of the given number
+ */
+MathUtils.log10 = function(num) {
+    if (typeof(Math.log10) === "function") {
+        return Math.log10(num);
+    }
+
+    return Math.log(num) / Math.LN10;
 };
 
 /**
@@ -193,7 +209,7 @@ MathUtils.shiftDecimal = function shift(number, precision) {
 MathUtils.significant = function(number, digits, round) {
     if (digits < 1 || number === 0) return number;
     var rnd = round || Math.round;
-    var factor = -Math.floor(Math.log10(Math.abs(number))) + digits - 1;
+    var factor = -Math.floor(MathUtils.log10(Math.abs(number))) + digits - 1;
     return MathUtils.shiftDecimal(rnd(MathUtils.shiftDecimal(number, factor)), -factor);
 };
 
