@@ -14,6 +14,7 @@ js/.ant-targets-build.xml
 js/node_modules/*
 !/node_modules/nodeunit/
 !/node_modules/.bin/nodeunit
+/dist/
 **/*.stamp
 qt/.ant-targets-build.xml
 qt/FileReader/Makefile*
