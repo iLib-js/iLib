@@ -48,10 +48,6 @@ function isExtend(string) {
     && c !== 0x200D
 }
 
-function tokenize(string) {
-
-}
-
 /**
  * @class A class that locates boundaries in text, and acts as an iterator
  * over chunks of text between those boundaries.
@@ -129,10 +125,10 @@ function tokenize(string) {
 var BreakIterator = function (string, options) {
     var locale,
         type,
-        sync = true,
         instance;
 
     this.maxLength = 80;
+    this.sync = true;
 
     if (options) {
         if (options.locale) {
@@ -142,27 +138,66 @@ var BreakIterator = function (string, options) {
         type = options.type;
 
         if (typeof(options.sync) === 'boolean') {
-            sync = options.sync;
+            this.sync = options.sync;
         }
 
         if (typeof(options.maxLength) === "number" && options.maxLength > 0) {
             this.maxLength = options.maxLength;
         }
+
+        this.loadParams = options.loadParams;
     }
 
     if (!locale) {
         locale = new Locale();  // default locale
     }
 
-    if (!type) {
-        new LocaleInfo(locale, {
-            sync: sync,
-            loadParams: options && options.loadParams,
-            onLoad: function(info) {
+    Utils.loadData({
+        object: "BreakIterator",
+        locale: this.locale,
+        name: "wordbreak.json",
+        sync: this.sync,
+        loadParams: this.loadParams,
+        callback: ilib.bind(this, function (info) {
+            this.info = info;
+
+            if (!type) {
+                new LocaleInfo(locale, {
+                    sync: sync,
+                    loadParams: options && options.loadParams,
+                    onLoad: function(info) {
+                    }
+                });
+            } else {
             }
-        });
-    } else {
-    }
+        })
+    });
+};
+
+/**
+ * @private
+ * Parse the given string according to the rules and properties of the
+ * current iterator and store the array of break indices in the
+ * current iterator object.
+ *
+ * @param {Function} cb a function to call when the parsing is done
+ */
+BreakIterator.prototype._parse = function(cb) {
+    var gs = new GlyphString(this.string, {
+        locale: this.locale,
+        sync: this.sync,
+        loadParams: this.loadParams,
+        callback: function(gs) {
+            var current = "sot"; // start of text
+            this.breaks = [0];   // start of text is always a break
+
+            while (gs.hasNext()) {
+                var ch = gs.next();
+
+            }
+            cb();
+        }
+    });
 };
 
 /**
