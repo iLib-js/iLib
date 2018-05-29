@@ -46,14 +46,18 @@ $(function(){
 	var fmt =[];
 	var value =[];
 	var nameOfDay=[];
+	var weekNotAlone = [];
 	var nameOfMonth=[];
+	var monthNotAlone=[];
 	var monthID = [];
 	var weekID = [];
 	var fmtArray = [];
 	var length = ["full", "long", "medium", "short"];
 	var abbrLength = ["f", "l", "m", "s"];
 	var month = ["jan", "feb", "mar", "apr", "may","jun", "jul", "aug", "sep","oct","nov", "dec", "etc"];
+	var monthIter = ["MMMM", "MMM", "NN", "N"];
 	var week = ["sun", "mon", "tue", "wed", "thu", "fri","sat"];
+	var weekIter = ["EEEE", "EEE", "EE", "E"];
 
 	var dayCount = 0, monthCount = 0, fmtArrayCount;
 
@@ -71,7 +75,8 @@ $(function(){
 			fmt[j] = new DateFmt({locale: currentLocale, date:"w", length: length[j], useNative: false, timezone: 'local'});
 			value[i] = fmt[j].format(date[i]);
 			nameOfDay[dayCount] = value[i];
-			weekID[dayCount] = week[i]+length[j]
+			weekNotAlone[dayCount] = fmt[j].sysres.map[weekIter[j]+i];
+			weekID[dayCount] = week[i]+length[j];
 			dayCount++;
 		}
 	}
@@ -88,21 +93,32 @@ $(function(){
 		for (j=0; j < 4; j++) {
 			fmt[j] = new DateFmt({locale: currentLocale, date:"m", length: length[j], useNative: false, timezone: 'local'});
 			value[i] = fmt[j].format(date[i]);
-			nameOfMonth[monthCount] = value[i]
-			monthID[monthCount] = month[i]+length[j]
+			nameOfMonth[monthCount] = value[i];
+			monthNotAlone[monthCount] = fmt[j].sysres.map[monthIter[j]+(i+1)];
+			monthID[monthCount] = month[i]+length[j];
 			monthCount++;
 		}
 	}
 	for (i=0; i < weekID.length +1; i++) {
-		$("#"+weekID[i]).text(nameOfDay[i]);
+		if(fmt[0].sysres.map.c0 !== undefined) {
+			$("#weekday").text('Weekday/Stand-Alone');
+			$("#"+weekID[i]).text(weekNotAlone[i] + ' / ' + nameOfDay[i]);
+		} else {
+			$("#"+weekID[i]).text(nameOfDay[i]);
+		}
 	}
 
 	for (i=0; i < monthID.length+1; i++) {
-		$("#"+monthID[i]).text(nameOfMonth[i]);	
+		if(fmt[0].sysres.map.L1 !== undefined) {
+			$("#month").text('Month/Stand-Alone');
+			$("#"+monthID[i]).text(monthNotAlone[i] + ' / ' + nameOfMonth[i]);
+		} else {
+			$("#"+monthID[i]).text(nameOfMonth[i]);
+		}
 	}
 
 	if (currentLocale === "am-ET" || currentLocale === "en-ET" ) {
-		$("#extraLength").text("13");	
+		$("#extraLength").text("13");
 	}
 	
 	var row = [];
@@ -547,6 +563,7 @@ $(function(){
 		"hu-HU" : [1,17],
 		"id-ID" : [1,2],
 		"it-IT" : [1,2],
+		"is-IS" : [1,2,11,21,31],
 		"it-CH" : [1,17],
 		"ja-JP" : [1,16],
 		"kn-IN" : [1,2],

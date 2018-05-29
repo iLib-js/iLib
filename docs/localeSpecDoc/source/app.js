@@ -26,7 +26,7 @@ enyo.kind({
 			{name:"logoImg", kind: "Image", style:"width:116;", src: "assets/localespec_img.png"},
 			{kind:"onyx.Button", style:"visibility:hidden;", fit:true},
 			{style:"float:right;", components:[
-				{name:"headerDate", classes:"left-header-date", content: "Generated on November 8, 2016"}
+				{name:"headerDate", classes:"left-header-date", content: "Generated on"}
 			]}
 		]},
 		{kind: "FittableColumns", fit:true, components: [
@@ -52,7 +52,6 @@ enyo.kind({
 		this.inherited(arguments);
 		this.getLocaleArray();
 		//console.log("Object.keys(this.localeList).length: ", Object.keys(this.localeList).length);
-		this.getCurrentDate();
 	},
 	rendered: enyo.inherit(function(sup) {
 		return function() {
@@ -69,17 +68,6 @@ enyo.kind({
 		this.iFrameNode.width = "100%";
 		this.iFrameNode.height = "100%";
 		this.iFrameNode.src = "./localePage/localeRef.html";
-	},
-	getCurrentDate: function() {
-		var monthTranalate = ["Januarary", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
-		var d = new Date();
-		
-		var year, monty, day;
-		month = 5;
-		day = 10;
-		year = 2018;
-		var string = "Generated on " + monthTranalate[month-1] + " " + day + ", " + year;
-		this.$.headerDate.setContent(string);
 	},
 	removeINode: function() {
 		var list = document.getElementById(this.$.targetDocument.getId()); 
@@ -205,6 +193,7 @@ enyo.kind({
 			"Croatian - Montenegro":"hr-ME",
 			"Hungarian - Hungary":"hu-HU",
 			"Indonesian - Indonesia":"id-ID",
+			"Icelandic - Iceland":"is-IS",
 			"Italian - Switzerland":"it-CH",
 			"Italian - Italy":"it-IT",
 			"Japanese - Japan":"ja-JP",
