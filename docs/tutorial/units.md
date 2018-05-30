@@ -7,12 +7,14 @@ For example, if you have a GPS built in to your device, the driver probably retu
 
 Similarly in terms of scaling, if a file is 1284234564 bytes long, it would be more understandable to the user to show "1.2GB" instead of "1,284,234,564 bytes" on the screen. That is, the number is scaled to a more easy-to-understand range.
 
+Additionally, there are situations where users will expect different units than the ones that may be most "efficient" for the measurement or for which the common units are not the standard ones. For example, instead of measuring a person's height in the US using yards and fractions of a yard, people commonly use feet and inches. Similarly, the ISO standard unit for energy is the Joule. However, electrical energy is always given in kilowatt-hours instead of megajoules.
+
 iLib provides classes that can do conversion, scaling, and formatting of measurements with various units.
 
 Conversion
 ----------
 
-Conversion between measurement units occurs using the Measurement class. The idea is that you create an instance of a measurement that has both an amount and a measurement unit 
+Conversion between measurement units occurs using the Measurement class. The idea is that you create an instance of a measurement that has both an amount and a measurement unit
 (eg. "5 meters"), and you can use this to convert to other units.
 
 Each measurement unit has a type such as "length", "velocity", or "digital storage". Units can only be converted within that type. That is, "meter" can be converted to "yard" because they are both units of length, but not to "degrees Celcius" which of course is a unit of temperature.
@@ -60,7 +62,7 @@ The variable "m2" will now contain the value:
 
 Notice that the amount is converted into feet, and the unit itself has been changed via the aliases to "foot".
 
-To convert using the static convert method is also simple enough. You will need to know what type of measurement you are dealing with in order to get the subclass of Measurement that you need. 
+To convert using the static convert method is also simple enough. You will need to know what type of measurement you are dealing with in order to get the subclass of Measurement that you need.
 
 Let's say you want to do the exact same conversion as the previous example. In this case, we are converting lengths, so we need to use the convert method on the subclass Measurement.Length:
 
@@ -255,7 +257,7 @@ var uf = new UnitFmt({
 var str = uf.format(m);
 ~~~~~
 
-That is pretty much the same as formatting in English except there is a locale property given to the constructor. The result in the "str" variable is now "123 232 octets". In France, the thousands separator is a non-breaking half space character, and the word for "byte" in French is "octet". 
+That is pretty much the same as formatting in English except there is a locale property given to the constructor. The result in the "str" variable is now "123 232 octets". In France, the thousands separator is a non-breaking half space character, and the word for "byte" in French is "octet".
 
 Note that if the current locale is set to "fr-FR", you do not need to specify the locale in the UnitFmt constructor.
 
@@ -322,3 +324,256 @@ var str = uf.format(m);
 ~~~~~
 
 The variable "str" now contains the value "123 232 метров", as the last two digits are "32" which dictate the use the "ов" ending in Russian.
+
+Styles
+------
+
+iLib supports two styles of formatting: numeric and list.
+
+In the numeric style, a measurement is formatted as a number with a decimal fraction of that number plus the units. This is the default behaviour. For example, you may format a person's height in metric as "1.65 m" tall.
+
+In the list style, a measurement is formatted as a list of progressively smaller units with whole numbers of larger units and a number with a decimal fraction of the smallest unit. For example, when giving volumes of liquid for cooking in the US, you would say "1 cup 2 tablespoons", instead of "1.125 cups".
+
+Here is an example of formatting with the list style:
+
+~~~~~
+var ilib = require("ilib");
+var Measurement = require("ilib/lib/Measurement");
+var UnitFmt = require("ilib/lib/UnitFmt");
+
+var m = new Measurement({
+    amount: 1.125,
+    unit: "cups"
+});
+var uf = new UnitFmt({
+    locale: "en-US",
+    style: "list"
+});
+var str = uf.format(m);
+~~~~~
+
+This would give the output: "1 cup 2 tablespoons" as per our example above.
+
+Usages
+------
+
+There are situations where users will expect different units than the ones that may be most "efficient" for the measurement. In this case, "efficient" means that people select a unit of measure that will cause much higher or lower numbers than necessary. The most efficient measure is the one which has a numeric part that is closest to one.
+
+Also, people often measure things with units are not the standard ones. Units are often designed to measure a specific type of thing, often to make calculations easier to understand.
+
+To support this behaviour, the unit formatter now supports the concept of usages. A usage tells the formatter what you are using the measure
+for, and it will automatically select the proper set of units and the proper options. The resulting unit formatter will convert measurements, scale them, and format them properly according to the usage.
+
+For example, a person's height in the US is most frequently given as feet and inches instead of yards. Here is how the call would look to format a person's height with a usage parameter:
+
+~~~~~
+var ilib = require("ilib");
+var Measurement = require("ilib/lib/Measurement");
+var UnitFmt = require("ilib/lib/UnitFmt");
+
+var m = new Measurement({
+    amount: 5.5,
+    unit: "feet"
+});
+var uf = new UnitFmt({
+    locale: "en-US",
+    usage: "personHeight"
+});
+var str = uf.format(m);
+~~~~~
+
+This will give the string: "5 feet 6 inches". Without the usage parameter, the formatter would return simply "1.8333333333333 yards" with the numeric style of formatting.
+
+List of usages. Here is a list of all of the usages currently supported:
+
+    * floorSpace - area of the floor of a house or building
+    * landArea - area of a piece of plot of land
+    * networkingSpeed - speed of transfer of data over a network
+    * audioSpeed - speed of transfer of audio data
+    * interfaceSpeed - speed of transfer of data over a computer hardware interface such as a USB or SATA bus
+    * foodEnergy - amount of energy contains in food
+    * electricalEnergy - amount of energy in electricity
+    * heatingEnergy - amount of energy required to heat things such as water or home interiors
+    * babyHeight - length of a baby
+    * personHeight - height of an adult or child (not a baby)
+    * vehicleDistance - distance traveled by a vehicle or aircraft (except a boat)
+    * nauticalDistance - distance traveled by a boat
+    * personWeight - weight/mass of an adult human or larger child
+    * babyWeight - weight/mass of a baby or of small animals such as cats and dogs
+    * vehicleWeight - weight/mass of a vehicle (including a boat)
+    * drugWeight - weight/mass of a medicinal drug
+    * vehicleSpeed - speed of travel of a vehicle or aircraft (except a boat)
+    * nauticalSpeed - speed of travel of a boat
+    * dryFoodVolume - volume of a dry food substance in a recipe such as flour
+    * liquidFoodVolume - volume of a liquid food substance in a recipe such as milk
+    * drinkVolume - volume of a drink
+    * fuelVolume - volume of a vehicular fuel
+    * engineVolume - volume of an engine's combustion space
+    * storageVolume - volume of a mass storage tank
+    * gasVolume - volume of a gas such as natural gas used in a home
+
+Let us know if there is a usage you need which is not listed above! Submit an issue on the ilib github project.
+
+Overrides. You may override any particular option that the usage pre-selects except for the list of units.
+
+For example, the "vehicleSpeed" usage specifies a maxFractionDigits of 0 because the speed of a vehicle is hardly ever given with fractions of a mile per hour or kilometer per hour. However, if you know that the vehicle in question is very slow, like let's say, the tractor that transports rockets to the launchpad at Cape Canaveral, maybe you would want to have a few fractional digits. It would not make any sense to say that the transport vehicle goes "0 mph" with no fraction digits. Instead, you would want something like "0.45 mph". To do that, you simply specify the maxFractionDigits setting to the unit formatter constructor as usual. Any explicit option you pass to the constructor will take precedence over any automatically selected options from the usage.
+
+~~~~~
+var ilib = require("ilib");
+var Measurement = require("ilib/lib/Measurement");
+var UnitFmt = require("ilib/lib/UnitFmt");
+
+var m = new Measurement({
+    amount: 0.4543023,
+    unit: "miles per hour"
+});
+var uf = new UnitFmt({
+    locale: "en-US",
+    length: "short",
+    usage: "vehicleSpeed",
+    maxFractionDigits: 2 // override the usage
+});
+var str = uf.format(m);
+~~~~~
+
+The output is: "0.45 mph"
+
+Supported Units
+---------------
+
+The following is a list of units currently supported. If you need more units or different types of measurements, let us know on github by submitting an issue.
+
+Note that below are listed all of the internal ids of the units. When you call the MeasurementFactory to instantiate a new Measurement, you can use the ids below, or any of a variety of names in English, as the code has lots of aliases for each measure. For example, "kilometer-per-hour" can be specified as "kmh", "kph", "km/h", "km/hour", "kilometer/hour", or "kilometers per hour". All work equally well.
+
+* Area
+    * square-centimeter
+    * square-meter
+    * hectare
+    * square-kilometer
+    * square-inch
+    * square-foot
+    * square-yard
+    * acre
+    * square-mile
+* Digital Speed
+    * bit-per-second
+    * byte-per-second
+    * kilobit-per-second
+    * kilobyte-per-second
+    * megabit-per-second
+    * megabyte-per-second
+    * gigabit-per-second
+    * gigabyte-per-second
+    * terabit-per-second
+    * terabyte-per-second
+    * petabit-per-second
+    * petabyte-per-second
+    * byte-per-hour
+    * kilobyte-per-hour
+    * megabyte-per-hour
+    * gigabyte-per-hour
+    * terabyte-per-hour
+    * petabyte-per-hour
+* Digital Storage
+    * bit
+    * byte
+    * kilobit
+    * kilobyte
+    * megabit
+    * megabyte
+    * gigabit
+    * gigabyte
+    * terabit
+    * terabyte
+    * petabit
+    * petabyte
+* Energy
+    * millijoule
+    * joule
+    * kilojoule
+    * watt-hour
+    * megajoule
+    * kilowatt-hour
+    * gigajoule
+    * megawatt-hour
+    * gigawatt-hour
+    * BTU
+    * foodcalorie
+* Fuel Consumption
+    * liter-per-kilometer
+    * liter-per-100kilometers
+    * kilometer-per-liter
+    * mile-per-gallon
+    * mile-per-gallon-imperial
+* Length
+    * micrometer
+    * millimeter
+    * centimeter
+    * decimeter
+    * meter
+    * decameter
+    * hectometer
+    * kilometer
+    * megameter
+    * gigameter
+    * inch
+    * foot
+    * yard
+    * mile
+    * nautical-mile
+* Mass
+    * microgram
+    * milligram
+    * gram
+    * kilogram
+    * metric-ton
+    * ounce
+    * pound
+    * stone
+    * long-ton
+    * short-ton
+* Temperature
+    * celsius
+    * kelvin
+    * fahrenheit
+* Time
+    * nanosecond
+    * microsecond
+    * millisecond
+    * second
+    * minute
+    * hour
+    * day
+    * week
+    * month
+    * year
+    * decade
+    * century
+* Velocity
+    * kilometer-per-hour
+    * meter-per-second
+    * kilometer-per-second
+    * foot-per-second
+    * mile-per-hour
+    * knot
+    * mile-per-second
+* Volume
+    * milliliter
+    * liter
+    * cubic-meter
+    * teaspoon
+    * tablespoon
+    * cubic-inch
+    * fluid-ounce
+    * cup
+    * pint
+    * quart
+    * gallon
+    * cubic-foot
+    * teaspoon-imperial
+    * tablespoon-imperial
+    * ounce-imperial
+    * cup-imperial
+    * pint-imperial
+    * quart-imperial
+    * gallon-imperial

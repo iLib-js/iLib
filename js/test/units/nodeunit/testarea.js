@@ -209,7 +209,7 @@ module.exports.testarea = {
         var m2 = m1.scale("metric");
     
         test.equal(m2.amount, 100);
-        test.equal(m2.unit, "square meter");
+        test.equal(m2.unit, "square-meter");
         test.done();
     },
     
@@ -222,7 +222,7 @@ module.exports.testarea = {
         var m2 = m1.scale("uscustomary");
     
         test.equal(m2.amount, 100);
-        test.equal(m2.unit, "square inch");
+        test.equal(m2.unit, "square-inch");
         test.done();
     },
     
@@ -235,7 +235,7 @@ module.exports.testarea = {
         var m2 = m1.scale("metric");
     
         test.equal(m2.amount, 100);
-        test.equal(m2.unit, "square km");
+        test.equal(m2.unit, "square-kilometer");
         test.done();
     },
     
@@ -261,7 +261,7 @@ module.exports.testarea = {
         var m2 = m1.scale("metric");
     
         test.equal(m2.amount, 1);
-        test.equal(m2.unit, "square km");
+        test.equal(m2.unit, "square-kilometer");
         test.done();
     },
     
@@ -273,7 +273,7 @@ module.exports.testarea = {
         });
         var m2 = m1.scale("uscustomary");
         test.roughlyEqual(m2.amount, 1.0761, 0.0001);
-        test.equal(m2.unit, "square mile");
+        test.equal(m2.unit, "square-mile");
         test.done();
     },
     
@@ -286,7 +286,7 @@ module.exports.testarea = {
         var m2 = m1.scale("metric");
     
         test.equal(m2.amount, 100);
-        test.equal(m2.unit, "square meter");
+        test.equal(m2.unit, "square-meter");
         test.done();
     },
     
@@ -312,7 +312,7 @@ module.exports.testarea = {
         m = m.localize("en-IN");
     
         test.roughlyEqual(m.amount, 2589.99, 0.01);
-        test.equal(m.unit, "square km");
+        test.equal(m.unit, "square-kilometer");
         test.done();
     },
     
@@ -326,7 +326,7 @@ module.exports.testarea = {
         m = m.localize("en-US");
     
         test.roughlyEqual(m.amount, 386.102, 0.001);
-        test.equal(m.unit, "square mile");
+        test.equal(m.unit, "square-mile");
         test.done();
     },
     
@@ -340,22 +340,22 @@ module.exports.testarea = {
         m = m.localize("en-GB");
     
         test.equal(m.amount, 1000);
-        test.equal(m.unit, "square mile");
+        test.equal(m.unit, "square-mile");
         test.done();
     },
     testAreaGetMeasures: function(test) {
         test.expect(1);
         var measures = AreaUnit.getMeasures();
         var expected = [
-            "square centimeter",
-            "square km",
-            "square inch",
-            "square foot",
+            "square-centimeter",
+            "square-kilometer",
+            "square-inch",
+            "square-foot",
             "acre",
-            "square yard",
-            "square mile",
-            "square meter",
-            "hectare",
+            "square-yard",
+            "square-mile",
+            "square-meter",
+            "hectare"
         ];
     
         test.equalIgnoringOrder(measures, expected);

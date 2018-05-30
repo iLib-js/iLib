@@ -184,33 +184,33 @@ var NumFmt = function (options) {
 			this.currency = options.currency;
 		}
 
-		if (typeof (options.maxFractionDigits) !== 'undefined') {
-			/**
-			 * @private
-			 * @type {number|undefined}
-			 */
-			this.maxFractionDigits = this._toPrimitive(options.maxFractionDigits);
-		}
-		if (typeof (options.minFractionDigits) !== 'undefined') {
-			/**
-			 * @private
-			 * @type {number|undefined}
-			 */
-			this.minFractionDigits = this._toPrimitive(options.minFractionDigits);
-			// enforce the limits to avoid JS exceptions
-			if (this.minFractionDigits < 0) {
-				this.minFractionDigits = 0;
-			}
-			if (this.minFractionDigits > 20) {
-				this.minFractionDigits = 20;
-			}
-		}
+        if (typeof (options.maxFractionDigits) !== 'undefined') {
+            /**
+             * @private
+             * @type {number|undefined}
+             */
+            this.maxFractionDigits = Number(options.maxFractionDigits);
+        }
+        if (typeof (options.minFractionDigits) !== 'undefined') {
+            /**
+             * @private
+             * @type {number|undefined}
+             */
+            this.minFractionDigits = Number(options.minFractionDigits);
+            // enforce the limits to avoid JS exceptions
+            if (this.minFractionDigits < 0) {
+                this.minFractionDigits = 0;
+            }
+            if (this.minFractionDigits > 20) {
+                this.minFractionDigits = 20;
+            }
+        }
         if (typeof (options.significantDigits) !== 'undefined') {
             /**
              * @private
              * @type {number|undefined}
              */
-            this.significantDigits = this._toPrimitive(options.significantDigits);
+            this.significantDigits = Number(options.significantDigits);
             // enforce the limits to avoid JS exceptions
             if (this.significantDigits < 1) {
                 this.significantDigits = 1;
@@ -392,29 +392,35 @@ NumFmt.prototype = {
 		this.exponentSymbol = this.localeInfo.getExponential() || "e";
 	},
 
-	/**
-	 * @private
-	 * @param {INumber|Number|string|number} num object, string, or number to convert to a primitive number
-	 * @return {number} the primitive number equivalent of the argument
-	 */
-	_toPrimitive: function (num) {
-		var n = 0;
+    /**
+     * Apply the constraints used in the current formatter to the given number. This will
+     * will apply the maxFractionDigits, significantDigits, and rounding mode
+     * constraints and return the result. The result is further
+     * manipulated in the format method to produce the final formatted number string.
+     * This method is intended for use by code that needs to use the same number that
+     * this formatter instance uses for formatting before that number is turned into a
+     * formatted string.
+     *
+     * @param {number} num the number to constrain
+     * @returns {number} the number with the constraints applied to it
+     */
+    constrain: function(num) {
+        var parts = ("" + num).split("."),
+            result = num;
 
-		switch (typeof (num)) {
-		case 'number':
-			n = num;
-			break;
-		case 'string':
-			n = parseFloat(num);
-			break;
-		case 'object':
-			// call parseFloat to coerse the type to number
-			n = parseFloat(num.valueOf());
-			break;
-		}
+        // only apply the either significantDigits or the maxFractionDigits -- whichever results in a shorter fractional part
+        if ((typeof(this.significantDigits) !== 'undefined' && this.significantDigits > 0) &&
+            (typeof(this.maxFractionDigits) === 'undefined' || this.maxFractionDigits < 0 ||
+                parts[0].length + this.maxFractionDigits > this.significantDigits)) {
+            result = MathUtils.significant(result, this.significantDigits, this.round);
+        }
 
-		return n;
-	},
+        if (typeof(this.maxFractionDigits) !== 'undefined' && this.maxFractionDigits > -1) {
+            result = MathUtils.shiftDecimal(this.round(MathUtils.shiftDecimal(result, this.maxFractionDigits)), -this.maxFractionDigits);
+        }
+
+        return result;
+    },
 
 	/**
 	 * Format the number using scientific notation as a positive number. Negative
@@ -475,24 +481,13 @@ NumFmt.prototype = {
 		var i;
 		var k;
 
-		var parts = ("" + num).split("."),
-			integral = parts[0],
-			fraction,
-			cycle, 
-			formatted;
+        var parts,
+            integral,
+            fraction,
+            cycle,
+            formatted;
 
-		// only apply the either significantDigits or the maxFractionDigits -- whichever results in a shorter fractional part
-        if ((typeof(this.significantDigits) !== 'undefined' && this.significantDigits > 0) &&
-        		(typeof(this.maxFractionDigits) === 'undefined' || this.maxFractionDigits < 0 ||
-            	parts[0].length + this.maxFractionDigits > this.significantDigits)) {
-        	num = MathUtils.significant(num, this.significantDigits, this.round);
-        }
-        
-        if (typeof(this.maxFractionDigits) !== 'undefined' && this.maxFractionDigits > -1) {
-            num = MathUtils.shiftDecimal(this.round(MathUtils.shiftDecimal(num, this.maxFractionDigits)), -this.maxFractionDigits);
-        }
-
-		num = Math.abs(num);
+        num = Math.abs(this.constrain(num));
 
 		parts = ("" + num).split(".");
 		integral = parts[0].toString();
@@ -538,8 +533,8 @@ NumFmt.prototype = {
 			formatted = integral;
 		}
 
-        if (fraction && 
-            ((typeof(this.maxFractionDigits) === 'undefined' && typeof(this.significantDigits) === 'undefined') || 
+        if (fraction &&
+            ((typeof(this.maxFractionDigits) === 'undefined' && typeof(this.significantDigits) === 'undefined') ||
               this.maxFractionDigits > 0 || this.significantDigits > 0)) {
             formatted += this.decimalSeparator;
             formatted += fraction;
@@ -565,7 +560,7 @@ NumFmt.prototype = {
 		}
 
 		// convert to a real primitive number type
-		n = this._toPrimitive(num);
+		n = Number(num);
 
 		if (this.type === "number") {
 			formatted = (this.style === "scientific") ?

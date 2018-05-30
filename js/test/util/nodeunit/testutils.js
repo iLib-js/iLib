@@ -410,6 +410,18 @@ module.exports.testutils = {
         test.done();
     },
     
+    testLog10: function(test) {
+        test.expect(1);
+        test.equal(Math.floor(MathUtils.log10(12345)), 4);
+        test.done();
+    },
+
+    testLog10two: function(test) {
+        test.expect(1);
+        test.equal(Math.floor(MathUtils.log10(987654321)), 8);
+        test.done();
+    },
+
     testSignificant1: function(test) {
         test.expect(1);
         test.equal(MathUtils.significant(12345, 3), 12300);

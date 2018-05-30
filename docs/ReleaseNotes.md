@@ -7,13 +7,47 @@ Published as version 13.3.0
 
 New Features:
 * Updated to work properly run test cases on QT/QML environment.
-  * Implemented simple version of nodeunit library to work in QT/QML environment.
-  * Confirmed that all of iLib cases are passed in QT 5.7 version.
+    * Implemented simple version of nodeunit library to work in QT/QML environment.
+    * Confirmed that all of iLib cases are passed in QT 5.7 version.
 * Added "significantDigits" option to the number formatter
-  * Specifies the maximum number of significant digits to format into the output string,
-    which work before and after the decimal point.
-  * Can work along with max- and minFractionDigits to limit the digits in the output after
-    the decimal point.
+    * Specifies the maximum number of significant digits to format into the output string,
+      which work before and after the decimal point.
+    * Can work along with max- and minFractionDigits to limit the digits in the output after
+      the decimal point.
+* Updated unit formatting
+    * Update to latest CLDR data
+    * Added "style" parameter to the options to the constructor
+        * Style "numeric" is the default where it only formats the number with decimals and
+          the units. For example, 1.6666666 tablespoons is formatted as simply "1.6666666 tablespoons"
+        * Style "list" is where there are no decimals in the larger units and fractions of the
+          larger units are expressed instead as numbers of smaller units.
+          For example: 1.66666666 tablespoons is formatted as "1 tablespoon 2 teaspoons"
+    * Added support for maxFractionDigits, minFractionDigits, and the new significantDigits option
+      to the constructor to pass to the number formatter constructor that is used to format the numeric
+      parts.
+    * Added support for "usage" parameter to the constructor. This allows the formatter to select
+      the most appropriate units for how the formatted string will be used. In regular common
+      usage, people often do not use the optimal units for a particular measurement, or they use
+      units that were designed for a particular usage when other, more common or more standard
+      units could be used.
+      An example of where the most optimal units are not used in the US is the measurement of
+      how tall a person is. The most optimal units would be yards formatted numerically as that would produce
+      the smallest numbers. Yet, people commonly use feet and inches with a list style format
+      instead. For example, instead of saying "She is 1.83 yards tall", you would say, "She is
+      5 feet 6 inches tall". Similarly, an example where people commonly use a unit that is
+      designed for the usage rather than the standard unit is the measurement of electrical energy.
+      Electrical energy is commonly expressed in watt-hours, kilowatt-hours, or megawatt-hours, whereas
+      the standard ISO unit of energy is joules. You would not say that your house used "360 megajoules"
+      of electricity in a month. You would say that it used "100 kilowatt-hours" in a month, even
+      though they are exactly equivalent. The usage parameter automatically selects the
+      most appropriate units within the appropriate measurement system, autoscales them if
+      necessary, and it selects the formatting style (numeric or list), and the maxFractionDigits
+      or significantDigits as appropriate. Each of the options that are auto-selected by
+      the usage may be overridden if desired by passing them in to the UnitFmt constructor.
+    * Unit names are now recognized case-insensitively as well, except for the few units that
+      require upper case to differentiate them
+    * Added many more aliases for the units
+    * Added digital speed units for measuring the speed of data transfer
 
 Bug Fixes:
 
@@ -40,10 +74,10 @@ Published as version 13.2.0
 New Features:
 
 * Updated the time zone data to IANA tzdata 2018c release
-* Added the ability to pass in multiple indexes as the first parameter to IString.formatChoice(). This allows you to format 
+* Added the ability to pass in multiple indexes as the first parameter to IString.formatChoice(). This allows you to format
   choice strings where there are two or more plurals in the string at the same time. For example, if your string is "There
   are N items on P pages", you can get the locale-sensitive plurals of "items" and "pages" correct with one call.
-  
+
 
 Bug Fixes:
 
@@ -52,10 +86,10 @@ Build 003
 -------
 
 Published as version 13.1.1 to follow the semver rules
- 
+
 Bug Fixes:
 
-* Build system was broken and the compressed js files did not make it into ilib 13.1.0 in npm, making it a 
+* Build system was broken and the compressed js files did not make it into ilib 13.1.0 in npm, making it a
 useless release! This is fixed now. There are no code changes between 13.1.0 and 13.1.1, only build fixes.
 
 Build 001
@@ -73,7 +107,7 @@ to translate. When an array is given, every string in the array is translated.
 written language is of the locale regardless of region or variant
 * LocaleMatcher class updates
   * Added LocaleMatcher.match() which returns an estimated percentage match between two locales which can be used to compare
-    with other match scores to determine a best match. For example, let's say your web site has translations for English, German, Danish, 
+    with other match scores to determine a best match. For example, let's say your web site has translations for English, German, Danish,
     and Dutch, and a user comes to your site from Norway. Which translation would be best to show her? The highest match score between
     Norwegian and the languages your web site supports is with Danish, so you should show her the Danish site by default, and allow
     her to choose another language manually if she is more comfortable with one of the other languages.
@@ -158,7 +192,7 @@ Build 003
 New Features:
 
 * Updated the number formatting to the CLDR 26.0.1 settings. This means that various formats for various locales have been changed and updated to better match the actual usage in those regions.
-* Added support for new and updated Unicode ranges in CType.withinRange. 
+* Added support for new and updated Unicode ranges in CType.withinRange.
   * latin - Latin-1 supplement, Latin Extended-E
   * cyrillic - Cyrillic Supplement
   * arabic -Arabic Mathematical Alphabetic Symbols
@@ -188,13 +222,13 @@ New Features:
 * For the DateFmt class, you can now pass ICU style skeletons in this option similar to the ones you get from <a href="http://icu-project.org/apiref/icu4c432/classDateTimePatternGenerator.html#aa30c251609c1eea5ad60c95fc497251e">DateTimePatternGenerator.getSkeleton()</a>. (Ex: "MMMMy")
   * It will not extract the length from the skeleton so you still need to pass the length property, but it will extract the date components.
 * Plural formatting rules have been updated to CLDR 26
-* In the ResBundle class, add the "c" type of strings for strings extracted from the C programming language. This automatically 
-recognizes and skips the percent printf style replacement parameters when pseudo-localizing and in other situations. 
-(eg. "There are %d objects.") 
+* In the ResBundle class, add the "c" type of strings for strings extracted from the C programming language. This automatically
+recognizes and skips the percent printf style replacement parameters when pseudo-localizing and in other situations.
+(eg. "There are %d objects.")
 
 Bug Fixes:
 
-* When formatting duration ranges in right-to-left languages like Arabic or Hebrew, the code now automatically inserts the Unicode right-to-left mark before the format so that formatted durations appear right-aligned in web browsers, no matter which characters appear the beginning of the string. Without it, strings that start with ASCII characters will appear left-aligned and strings that start with RTL characters will appear right-aligned, regardless of the other characters in the string. 
+* When formatting duration ranges in right-to-left languages like Arabic or Hebrew, the code now automatically inserts the Unicode right-to-left mark before the format so that formatted durations appear right-aligned in web browsers, no matter which characters appear the beginning of the string. Without it, strings that start with ASCII characters will appear left-aligned and strings that start with RTL characters will appear right-aligned, regardless of the other characters in the string.
 
 Build 002
 -------
@@ -202,7 +236,7 @@ Build 002
 New Features:
 
 * Implemented character set mapping in pure javascript. iLib now includes json files for the same charset mappings to/from Unicode that Linux supports. (These can be huge for Eastern charsets.) See the new tutorial page about [Character Set Mapping](charmaps) for more details on how it works and how to use it.
-* Converted the minority locales English for Philippines, Korea, and Japan to be based on US English settings instead of the generic English settings which are more British style. This is due to the greater cultural influence of the US on those region over GB. 
+* Converted the minority locales English for Philippines, Korea, and Japan to be based on US English settings instead of the generic English settings which are more British style. This is due to the greater cultural influence of the US on those region over GB.
 
 Bug Fixes:
 
@@ -462,7 +496,7 @@ New Features:
     * Fixed the date range formats for gregorian in Iran.
 * Added "calendar" option to the date formatter factory method in addition to "type". The two mean the same thing.
 * Updated to IANA time zone database version 2014f, which includes the major recent changes to the Russian time zones
-* Added ilib.GlyphString which can iterate through whole glyphs as a user might see them on screen, or truncate/ellipsize a string at a given number of glyphs. Dealing with whole glyphs allows you to truncate and ellipsize a string properly to a certain length if care is taken to include non-spacing marks and combining characters, but to disclude spacing combining characters at the end of the truncation length and to count spacing characters individually. 
+* Added ilib.GlyphString which can iterate through whole glyphs as a user might see them on screen, or truncate/ellipsize a string at a given number of glyphs. Dealing with whole glyphs allows you to truncate and ellipsize a string properly to a certain length if care is taken to include non-spacing marks and combining characters, but to disclude spacing combining characters at the end of the truncation length and to count spacing characters individually.
     * The regular CSS directives to ellipsize and truncate do not handle scripts properly that contain such combining and non-spacing marks. Instead, it just truncates between Unicode characters, which may cut between a base character and a combining character.
     * Dealing with whole glyphs allows you to correctly handle Indic languages and Thai, that are commonly written with combining characters, as well as Japanese, Vietnamese, Hebrew, Arabic, and even western European languages, which are sometimes written with decomposed combining accent characters.
 * Added forEach() and forEachCodePoint() to ilib.String, which is an alternate, more Javascript-y way of iterating through the UTF-16 characters and code points. These are inherited by ilib.GlyphString, which iterates through glyphs, and ilib.NormString, which iterates normalized characters.
@@ -562,7 +596,7 @@ New Features:
 
 Bug Fixes:
 
-* date formatting fixes: 
+* date formatting fixes:
     * year 0 did not format properly with yy or yyyy templates. It was printing 01 and 0001 instead of 00 and 0000.
     * negative years were not formatting properly. For example year -34 formatted as yyyy used to come out as 0-34 instead of -0034
 * date formatters fixed
@@ -643,7 +677,7 @@ New Features:
 * ilib.Locale now recognizes locale specifiers that follow the BCP-47 conventions
     * can now recognize ISO 639 3-letter codes for languages as well
     * can now recognize ISO 15924 script codes
-* Added ilib.Name and ilib.NameFmt class to parse and format personal names. 
+* Added ilib.Name and ilib.NameFmt class to parse and format personal names.
     * Currently works in the following languages: de, en, es, fr, it, nl, and zh
     * Ability to format names by length or by an explicit set of name parts
 * Added system resources for 413 locales
@@ -687,7 +721,7 @@ language/script/region/variant
 * Added an ilib.Collator class which will be used to sort things locale-sensitively.
     * currently its methods are stubs that operate in ASCII only
     * the purpose is to get the API out there for people to start using
-* Added implementation for ilib.ScriptInfo.getScriptDirection, 
+* Added implementation for ilib.ScriptInfo.getScriptDirection,
 * added new methods getNeedsIME() and getCasing() to ilib.ScriptInfo
     * getNeedsIME returns return whether or not the script requires an IME to input its characters
     * getCasing returns whether or not the script has the concept of letter case

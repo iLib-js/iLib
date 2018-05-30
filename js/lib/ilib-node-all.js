@@ -105,5 +105,6 @@ ilib.TimeUnit = require("../lib/TimeUnit.js");
 ilib.SpeedUnit = require("../lib/VelocityUnit.js");
 ilib.VolumeUnit = require("../lib/VolumeUnit.js");
 ilib.UnitFmt = require("../lib/UnitFmt.js");
+ilib.DigitalSpeedUnit = require("../lib/DigitalSpeedUnit.js");
 
 module.exports = ilib;
