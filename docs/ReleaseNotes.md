@@ -1,21 +1,25 @@
-Release Notes for Version 13.0
-=============================
+Release Notes for Version 13
+============================
 
-Build 004
+Build 003
 -------
-Published as version 13.3.0
+Published as version 13.2.0
 
 New Features:
+* Updated the time zone data to IANA tzdata 2018c release
+* Added the ability to pass in multiple indexes as the first parameter to IString.formatChoice(). This allows you to format
+  choice strings where there are two or more plurals in the string at the same time. For example, if your string is "There
+  are N items on P pages", you can get the locale-sensitive plurals of "items" and "pages" correct with one call.
 * Updated to work properly run test cases on QT/QML environment.
     * Implemented simple version of nodeunit library to work in QT/QML environment.
-    * Confirmed that all of iLib cases are passed in QT 5.7 version.
+    * Confirmed that all of iLib cases have passed in QT 5.7 version.
 * Added "significantDigits" option to the number formatter
     * Specifies the maximum number of significant digits to format into the output string,
-      which work before and after the decimal point.
+      which works before and after the decimal point.
     * Can work along with max- and minFractionDigits to limit the digits in the output after
       the decimal point.
 * Updated unit formatting
-    * Update to latest CLDR data
+    * Update to latest CLDR 33 data
     * Added "style" parameter to the options to the constructor
         * Style "numeric" is the default where it only formats the number with decimals and
           the units. For example, 1.6666666 tablespoons is formatted as simply "1.6666666 tablespoons"
@@ -51,14 +55,6 @@ New Features:
 
 Bug Fixes:
 
-
-Build 003
--------
-
-New Features:
-
-Bug Fixes:
-
 * Updated Date Formatter for fully supporting relativeTimePattern of CLDR.
 * Removed duplicate entries in various locale json data files
 * Removed an exception that was thrown when the address formatter was instantiated without
@@ -66,23 +62,8 @@ any arguments
 * Fixed a bug where the Locale constructor would throw an exception if any of the arguments
 was a non-string. Now it does not throw. Instead, it just ignores the argument.
 
+
 Build 002
--------
-
-Published as version 13.2.0
-
-New Features:
-
-* Updated the time zone data to IANA tzdata 2018c release
-* Added the ability to pass in multiple indexes as the first parameter to IString.formatChoice(). This allows you to format
-  choice strings where there are two or more plurals in the string at the same time. For example, if your string is "There
-  are N items on P pages", you can get the locale-sensitive plurals of "items" and "pages" correct with one call.
-
-
-Bug Fixes:
-
-
-Build 003
 -------
 
 Published as version 13.1.1 to follow the semver rules
