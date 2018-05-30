@@ -83,8 +83,6 @@
     "1#1 second|#{num} seconds": "one#{num} sekonde|#{num} sekondes",
     "1#1 minute|#{num} minutes": "one#{num} minuut|#{num} minute",
     "1#1 hour|#{num} hours": "one#{num} uur|#{num} uur",
-    "in {duration}": "oor {duration}",
-    "{duration} ago": "{duration} gelede",
     "1#1 day|#{num} days": "one#{num} dag|#{num} dae",
     "1#1 week|#{num} weeks": "one#{num} week|#{num} weke",
     "1#1 month|#{num} months": "one#{num} maand|#{num} maande",

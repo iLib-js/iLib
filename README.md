@@ -7,7 +7,7 @@ iLib is an internationalization library written in pure ES5 Javascript. It does 
 and can run equally well in various older and newer browsers, on various OS's (including mobile), nodejs, webOS, Qt/QML, 
 RingoJS, React/Enact, or rhino.
 
-More elaborate documentation can be found [here](doc/index.md)
+More elaborate documentation can be found [here](docs/index.md)
 
 What Can iLib Do?
 ------
@@ -37,7 +37,11 @@ iLib contains many classes that cover a large number of i18n topics, a lot more 
 * Information about writing systems/scripts (ScriptInfo)
 * Information about currencies (Currency)
 * Information about locale settings such as default time zone, default calendar, use of 12 or 24-hour clock, 
-plus a lot more. (LocaleInfo)
+* List formatting such as "Joe, Tom, and Steve" (ListFormatter)
+* Alphabetic index keeping. For example, it can be used to put names on a contact list into their corresponding
+letter buckets (AlphabeticIndex)
+
+plus a lot more.
 
 Only need some of that? That's okay, there's a way to make smaller versions of ilib that only include the classes you need
 and only the locales you need.
@@ -73,6 +77,8 @@ Those environments have been tested on the following platforms where possible:
 * Ubuntu 12.04+
 * Windows 7 & 8
 * Mac OSX
+* Android
+* iOS
 
 Example of Using iLib Under NodeJS or RingoJS
 -------
@@ -127,7 +133,7 @@ get the source and build it yourself. This will require that you install java 1.
 Copyright and License
 -------
 
-Copyright &copy; 2011-2017, JEDLSoft
+Copyright &copy; 2011-2018, JEDLSoft
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -145,14 +151,14 @@ limitations under the License.
 More Documentation
 ------
 
-More elaborate documentation can be found [here](doc/index.md).
+More elaborate documentation can be found [here](docs/index.md).
 
 Other Information
 ------
 
 Please point your browser to the following places to get more documentation:
 
-- JSDocs: http://www.translationcircle.com/ilib/jsdoc/
+- JSDocs: http://www.translationcircle.com/ilib/doc/jsdoc/
 - Github: git clone git@github.com:iLib-js/iLib.git
 - Builds: https://github.com/iLib-js/iLib/releases
 - Wiki: https://github.com/iLib-js/iLib/wiki

@@ -1,0 +1,256 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<!--
+localeRef.html - a locale reference of the ilib Spec
+
+Copyright © 2018, JEDLSoft
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+
+See the License for the specific language governing permissions and
+limitations under the License.
+-->
+
+<html>
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<title>DataTables example</title>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+		<script type="text/javascript" language="javascript" src="scripts/ilib-demo.js"></script>
+		<!--<script type="text/javascript" language="javascript" src="scripts/localeScript.js"></script>-->
+		<script type="text/javascript" language="javascript" src="scripts/localeScript-compiled.js"></script>
+		
+		<link href="style/localeRef.css" rel="stylesheet"/>
+		<script type="text/javascript" charset="utf-8">
+
+		</script>
+	</head>
+	<body id="dt_example">
+		<div id="container">			
+			<h1>Basic Information</h1>
+	<table cellpadding="0" cellspacing="0" border="0" class="display">
+		<thead>
+			<tr><th>Subject</th><th>Info</th></tr>
+		</thead>
+		<tbody>
+			<tr><td class="table-border-underine" >System Locale</td><td id="systemLocale" /></tr>
+			<tr><td>Locale Description</td><td id="localedescription" /></tr>
+			<tr><td>Script Direction</td><td id="scriptDirection" /></tr>
+			<tr><td>Default Calendar</td><td  id="defaultCalendar"></tr>
+			<tr><td>Clock</td><td id="clock" /></tr>
+			<tr><td>Currency</td><td id="defaultCurrency" /></tr>
+			<tr><td>Week Start at</td><td id="weekStart" /></tr>
+			<tr><td>Weekend Start at</td><td id="weekendStart" /></tr>
+			<tr><td>Weekend End at</td><td id="weekendEnd" /></tr>
+			<tr><td>Delimiter Quotation Start</td><td id="delimiterStart" /></tr>
+			<tr><td>Delimiter Quotation End</td><td id="delimiterEnd" /></tr>
+		</tbody>
+	</table>
+	<div class="spacer"></div>
+	<h1>Names of the Day and Months</h1>
+	<table cellpadding="0" cellspacing="0" class="display" >
+		<thead>
+			<tr>
+				<th>Days and Months</th><th>delimiter</th><th>Full</th><th>Long</th><th>Medium</th><th>Short</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td rowspan="7">Weekday</td>
+				<td>0</td><td id="sunfull" /><td id="sunlong"/><td id="sunmedium"/><td id="sunshort"/>
+
+			</tr>
+			<tr><td>1</td><td id="monfull" /><td id="monlong"/><td id="monmedium"/><td id="monshort"/></tr>
+			<tr><td>2</td><td id="tuefull" /><td id="tuelong"/><td id="tuemedium"/><td id="tueshort"/></tr>
+			<tr><td>3</td><td id="wedfull" /><td id="wedlong"/><td id="wedmedium"/><td id="wedshort"/></tr>
+			<tr><td>4</td><td id="thufull" /><td id="thulong"/><td id="thumedium"/><td id="thushort"/></tr>
+			<tr><td>5</td><td id="frifull" /><td id="frilong"/><td id="frimedium"/><td id="frishort"/></tr>
+			<tr><td>6</td><td id="satfull" /><td id="satlong"/><td id="satmedium"/><td id="satshort"/></tr>
+
+			<tr><td rowspan="13">Month</td><td>1</td><td id="janfull"/><td id="janlong"/><td id="janmedium"/><td id="janshort"/></tr>
+			<tr><td>2</td><td id="febfull"/><td id="feblong"/><td id="febmedium"/><td id="febshort"/></tr>
+			<tr><td>3</td><td id="marfull"/><td id="marlong"/><td id="marmedium"/><td id="marshort"/></tr>
+			<tr><td>4</td><td id="aprfull"/><td id="aprlong"/><td id="aprmedium"/><td id="aprshort"/>
+			<tr><td>5</td><td id="mayfull"/><td id="maylong"/><td id="maymedium"/><td id="mayshort"/></tr>
+			<tr><td>6</td><td id="junfull"/><td id="junlong"/><td id="junmedium"/><td id="junshort"/></tr>
+			<tr><td>7</td><td id="julfull"/><td id="jullong"/><td id="julmedium"/><td id="julshort"/></tr>
+			<tr><td>8</td><td id="augfull"/><td id="auglong"/><td id="augmedium"/><td id="augshort"/></tr>
+			<tr><td>9</td><td id="sepfull"/><td id="seplong"/><td id="sepmedium"/><td id="sepshort"/></tr>
+			<tr><td>10</td><td id="octfull"/><td id="octlong"/><td id="octmedium"/><td id="octshort"/></tr>
+			<tr><td>11</td><td id="novfull"/><td id="novlong"/><td id="novmedium"/><td id="novshort"/></tr>
+			<tr><td>12</td><td id="decfull"/><td id="declong"/><td id="decmedium"/><td id="decshort"/></tr>
+			<tr><td id="extraLength"></td><td id="etcfull"/><td id="etclong"/><td id="etcmedium"/><td id="etcshort"/></tr>
+		</tbody>
+	</table>
+	<div class="spacer"></div>
+	<h1>Range of the Meridiem Units</h1>
+	<table cellpadding="0" cellspacing="0" border="0" class="display">
+		<thead>
+			<tr><th>Time Range</th><th>Meridiem</th></tr>
+		</thead>
+		<tbody id="meridiemTable">
+		</tbody>
+	</table>
+	<div class="spacer"></div>
+	<h1>Data Format: Date/Time</h1>
+	<table cellpadding="0" cellspacing="0" class="display"  >
+		<thead>
+			<tr><th>Date / Time</th><th>length</th><th>Output Format</th><th>Example</th></tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td rowspan="4">Date / Time</td><td id="dtfull"/><td id="dtfullFmt"/><td id="dtfullSample"/>
+			</tr>
+			<tr><td id="dtlong"/><td id="dtlongFmt"/><td id="dtlongSample"/></tr>
+			<tr><td id="dtmedium"/><td id="dtmediumFmt"/><td id="dtmediumSample"/></tr>
+			<tr><td id="dtshort"/><td id="dtshortFmt"/><td id="dtshortSample"/></tr>
+			<tr><td rowspan="4">Date </td><td id="datefull"/><td id="datefullFmt"/><td id="datefullSample"/>
+			</tr>
+			<tr><td id="datelong"/><td id="datelongFmt"/><td id="datelongSample"/></tr>
+			<tr><td id="datemedium"/><td id="datemediumFmt"/><td id="datemediumSample"/></tr>
+			<tr><td id="dateshort"/><td id="dateshortFmt"/><td id="dateshortSample"/></tr>
+			<tr><td rowspan="4">Time </td><td id="timefull"/><td id="timefullFmt"/><td id="timefullSample"/></tr>
+			<tr><td id="timelong"/><td id="timelongFmt"/><td id="timelongSample"/></tr>
+			<tr><td id="timemedium"/><td id="timemediumFmt"/><td id="timemediumSample"/></tr>
+			<tr><td id="timeshort"/><td id="timeshortFmt"/><td id="timeshortSample"/></tr>
+		</tbody>
+	</table>
+	<div class="spacer"></div>
+	<h1>Data Format: Date Range </h1>
+	<table cellpadding="0" cellspacing="0" class="display">
+		<!--<thead><tr><th>Date / Time</th><th>length</th><th>Example</th></tr></thead>-->
+		<thead>
+			<tr><th>Date / Time</th><th>length</th><th>Output Format</th><th>Example</th></tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td rowspan="4">within 3 days <br><br>
+				Year, month, and date ar same. <br>but time is different
+			</td><td id="cfmt0full"/><td id="cfmt0fullFmt"/><td id="cfmt0fullSample"/>
+			</tr>
+			<tr><td id="cfmt0long"/><td id="cfmt0longFmt"/><td id="cfmt0longSample"/></tr>
+			<tr><td id="cfmt0medium"/><td id="cfmt0mediumFmt"/><td id="cfmt0mediumSample"/></tr>
+			<tr><td id="cfmt0short"/><td id="cfmt0shortFmt"/><td id="cfmt0shortSample"/></tr>
+			<tr>
+				<td rowspan="4">within 3 days<br><br>
+					Year and month are same, <br>but date and time are different
+				</td><td id="cfmt1full"/><td id="cfmt1fullFmt"/><td id="cfmt1fullSample"/>
+			</tr>
+			<tr><td id="cfmt1long"/><td id="cfmt1longFmt"/><td id="cfmt1longSample"/></tr>
+			<tr><td id="cfmt1medium"/><td id="cfmt1mediumFmt"/><td id="cfmt1mediumSample"/></tr>
+			<tr><td id="cfmt1short"/><td id="cfmt1shortFmt"/><td id="cfmt1shortSample"/></tr>
+
+			<tr>
+				<td rowspan="4">within 3 days<br><br>
+					 Year is same, <br>but month, date, and time are different.
+				</td><td id="cfmt2full"/><td id="cfmt2fullFmt"/><td id="cfmt2fullSample"/>
+			</tr>
+			<tr><td id="cfmt2long"/><td id="cfmt2longFmt"/><td id="cfmt2longSample"/></tr>
+			<tr><td id="cfmt2medium"/><td id="cfmt2mediumFmt"/><td id="cfmt2mediumSample"/></tr>
+			<tr><td id="cfmt2short"/><td id="cfmt2shortFmt"/><td id="cfmt2shortSample"/></tr>
+
+			<tr>
+				<td rowspan="4">within 3 days<br><br>
+					Year, month, date, and time are all different.
+				</td><td id="cfmt3full"/><td id="cfmt3fullFmt"/><td id="cfmt3fullSample"/>
+			</tr>
+			<tr><td id="cfmt3long"/><td id="cfmt3longFmt"/><td id="cfmt3longSample"/></tr>
+			<tr><td id="cfmt3medium"/><td id="cfmt3mediumFmt"/><td id="cfmt3mediumSample"/></tr>
+			<tr><td id="cfmt3short"/><td id="cfmt3shortFmt"/><td id="cfmt3shortSample"/></tr>
+
+			<tr>
+				<td rowspan="4">within 730 (2 yeaers) days<br><br>
+					Year and month are the same,<br> but date is different.
+				</td><td id="cfmt10full"/><td id="cfmt10fullFmt"/><td id="cfmt10fullSample"/>
+			</tr>
+			<tr><td id="cfmt10long"/><td id="cfmt10longFmt"/><td id="cfmt10longSample"/></tr>
+			<tr><td id="cfmt10medium"/><td id="cfmt10mediumFmt"/><td id="cfmt10mediumSample"/></tr>
+			<tr><td id="cfmt10short"/><td id="cfmt10shortFmt"/><td id="cfmt10shortSample"/></tr>
+
+			<tr>
+				<td rowspan="4">within 730 days (2 yeaers)<br><br>
+					Year is the same, <br>but month, date, and time are different.
+				</td><td id="cfmt11full"/><td id="cfmt11fullFmt"/><td id="cfmt11fullSample"/>
+			</tr>
+			<tr><td id="cfmt11long"/><td id="cfmt11longFmt"/><td id="cfmt11longSample"/></tr>
+			<tr><td id="cfmt11medium"/><td id="cfmt11mediumFmt"/><td id="cfmt11mediumSample"/></tr>
+			<tr><td id="cfmt11short"/><td id="cfmt11shortFmt"/><td id="cfmt11shortSample"/></tr>
+
+			<tr>
+				<td rowspan="4">within 730 days (2 yeaers)<br><br>
+					All fields are different.
+				</td><td id="cfmt12full"/><td id="cfmt12fullFmt"/><td id="cfmt12fullSample"/>
+			</tr>
+			<tr><td id="cfmt12long"/><td id="cfmt12longFmt"/><td id="cfmt12longSample"/></tr>
+			<tr><td id="cfmt12medium"/><td id="cfmt12mediumFmt"/><td id="cfmt12mediumSample"/></tr>
+			<tr><td id="cfmt12short"/><td id="cfmt12shortFmt"/><td id="cfmt12shortSample"/></tr>
+
+			<tr>
+				<td rowspan="4">within 3650 days (10 yeaers) <br><br>
+					All fields are different.
+				</td><td id="cfmt20full"/><td id="cfmt20fullFmt"/><td id="cfmt20fullSample"/>
+			</tr>
+			<tr><td id="cfmt20long"/><td id="cfmt20longFmt"/><td id="cfmt20longSample"/></tr>
+			<tr><td id="cfmt20medium"/><td id="cfmt20mediumFmt"/><td id="cfmt20mediumSample"/></tr>
+			<tr><td id="cfmt20short"/><td id="cfmt20shortFmt"/><td id="cfmt20shortSample"/></tr>
+
+			<tr>
+				<td rowspan="4">longer than 10 years<br><br>
+					All fields are different.
+				</td><td id="cfmt30full"/><td id="cfmt30fullFmt"/><td id="cfmt30fullSample"/>
+			</tr>
+			<tr><td id="cfmt30long"/><td id="cfmt30longFmt"/><td id="cfmt30longSample"/></tr>
+			<tr><td id="cfmt30medium"/><td id="cfmt30mediumFmt"/><td id="cfmt30mediumSample"/></tr>
+			<tr><td id="cfmt30short"/><td id="cfmt30shortFmt"/><td id="cfmt30shortSample"/></tr>
+		</tbody>
+		</table>
+	</table>
+
+	<h1>Data Format: Date/Time Duration</h1>
+	<table cellpadding="0" cellspacing="0" class="display">
+		<thead><tr><th>Date / Time</th><th>length</th><th>Example</th></tr></thead>
+		<tbody id="durationTable" ></tbody>
+		<tbody id="durationTimeTable">
+		</tbody>
+		</table>
+	</table>
+
+	<div class="spacer"></div>
+	<h1>Data Format: Number</h1>
+	<table cellpadding="0" cellspacing="0" border="0" class="display"  >
+		<thead>
+			<tr><th>Number</th><th>Output Format</th><th>Example</th></tr>
+		</thead>
+		<tbody>
+			<tr><td>Decimal Seperator</td><td id="numDecimalSymbol"/><td id="numDecimal"/></tr>
+			<tr><td>Number Grouping</td><td id="numGroupSymbol"/><td id="numGroupFmt"/></tr>
+			<tr><td>Percent</td><td id="numPercentFmt"/><td id="numPercent"/></tr>
+			<tr><td>Negative Percent</td><td id="numNegativePercentFmt"/><td id="numNegativePercent"/></tr>
+			<tr><td>Currency</td><td id="numCurrencyFmt"/><td id="numCurrency"/></tr>
+			<tr><td>Negative Currency</td><td id="numNegativeCurrencyFmt"/><td id="numNegativeCurrency"/></tr>
+			<tr><td>Plus</td><td id="numFmt"/><td id="numPlus"/></tr>
+			<tr><td>Minus</td><td id="numNegativeFmt"/><td id="numMinus"/></tr>
+		</tbody>
+	</table>
+	<div class="spacer"></div>
+	<h1>Data Format: Phone Number</h1>
+	<table id="phonenumTable" cellpadding="0" cellspacing="0" class="display">
+		<thead>
+			<tr><th>Phone Number Category </th><th>Input</th><th>Output-partial number</th><th>Output-whole number </th></tr>
+		</thead>
+		<tbody id="phoneNumTable">
+		</tbody>
+	</table>
+
+	<div id="footer" class="clear" style="text-align:center;">
+		<span style="font-size:10px;">Data tables provided by LG Electronics © 2015<br></span>
+	</div>		
+	</body>
+</html>

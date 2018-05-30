@@ -20,8 +20,6 @@
     "durationMediumYears": "#{num} год",
     "1#1 yr|#{num} yrs": "#{num} год",
     "1#1 year|#{num} years": "few#{num} године|#{num} година",
-    "{duration} ago": "пре {duration}",
-    "in {duration}": "за {duration}",
     "#{num}s": "#{num}с",
     "1#1 se|#{num} sec": "#{num} сек",
     "1#1 mi|#{num} min": "#{num} мин",

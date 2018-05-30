@@ -17,7 +17,7 @@
  * limitations under the License.
  */
 
-var ilib = require("./../lib/ilib-node.js");
+var ilib = require("./../lib/ilib.js");
 var PhoneNumber = require("./../lib/PhoneNumber.js");
 var PhoneLocale = require("./../lib/PhoneLocale.js");
 var PhoneGeoLocator = require("./../lib/PhoneGeoLocator.js");

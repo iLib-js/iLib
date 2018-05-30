@@ -17,7 +17,7 @@
  * limitations under the License.
  */
 
-var ilib = require("./../lib/ilib-node.js");
+var ilib = require("./../lib/ilib.js");
 var RataDie = require("./../lib/RataDie.js");
 var HanCal = require("./../lib/HanCal.js");
 var Astro = require("./../lib/Astro.js");
@@ -398,16 +398,4 @@ function testHanNewYears() {
     	var n = hanLeapYears[i][0];
     	assertEquals(hanLeapYears[i][1], cal.newYears(n));
     }
-}
-
-function testHanNewDateInstance() {
-    var cal = new HanCal();
-    var d = cal.newDateInstance({
-    	year: 4681,
-    	month: 6,
-    	day: 1
-    });
-    
-    assertNotUndefined(d);
-    assertEquals("han", d.cal.type);
 }

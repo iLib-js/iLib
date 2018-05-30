@@ -63,7 +63,7 @@ module.exports.testunits = {
         });
     
         test.ok(measurement !== null);
-        test.equal(measurement.getMeasure(), "speed");
+        test.equal(measurement.getMeasure(), "velocity");
         test.done();
     },
     
@@ -75,7 +75,7 @@ module.exports.testunits = {
         });
     
         test.ok(measurement !== null);
-        test.equal(measurement.getMeasure(), "speed");
+        test.equal(measurement.getMeasure(), "velocity");
         test.done();
     },
     
@@ -139,7 +139,7 @@ module.exports.testunits = {
             "kilometer",
             "megameter",
             "gigameter",
-            "nauticalmile",
+            "nautical-mile",
             "mile",
             "yard",
             "foot",
@@ -162,10 +162,10 @@ module.exports.testunits = {
     
     testMeasurementConstructorSpeeds: function(test) {
         var measures = [
-            "feet/second",
-            "meters/second",
-            "kilometer/hour",
-            "miles/hour",
+            "foot-per-second",
+            "meter-per-second",
+            "kilometer-per-hour",
+            "mile-per-hour",
             "knot"        
         ];
     
@@ -176,7 +176,7 @@ module.exports.testunits = {
             });
         
             test.ok(typeof(measurement) !== "undefined");
-            test.equal(measurement.getMeasure(), "speed");
+            test.equal(measurement.getMeasure(), "velocity");
             test.equal(measurement.getAmount(), 100);
             test.equal(measurement.getUnit(), measures[measure]);
         }

@@ -83,8 +83,6 @@
     "1#1 second|#{num} seconds": "one#{num} sekund|#{num} sekunder",
     "1#1 minute|#{num} minutes": "one#{num} minut|#{num} minuter",
     "1#1 hour|#{num} hours": "one#{num} timme|#{num} timmar",
-    "in {duration}": "om {0} dagar",
-    "{duration} ago": "för {0} dagar sedan",
     "1#1 day|#{num} days": "one#{num} dygn|#{num} dygn",
     "1#1 week|#{num} weeks": "one#{num} vecka|#{num} veckor",
     "1#1 month|#{num} months": "one#{num} månad|#{num} månader",
