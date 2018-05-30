@@ -11,8 +11,8 @@ before_install:
   - sudo apt-get update -qq
 install:
   # Qt
-  #- sudo apt-get -y install qt55[QTPACKAGE]
-  #- sudo apt-get -y install qmlscene qt5-default qtdeclarative5-dev qtbase5-dev
+  - sudo apt-get -y install qt55[QTPACKAGE]
+  - sudo apt-get -y install qmlscene qt5-default qtdeclarative5-dev qtbase5-dev
   - npm install
 script:
   # [Error] module QtQuick is not installed
