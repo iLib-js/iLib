@@ -25,6 +25,7 @@ module.exports.files = [
     "testdatefmt_af_NA.js",
     "testdatefmt_af_ZA.js",
     "testdatefmt_am_ET.js",
+    "testdatefmt_ar_EG.js",
     "testdatefmt_ar_SA.js",
     "testdatefmt_as_IN.js",
     "testdatefmt_az_Latn_AZ.js",

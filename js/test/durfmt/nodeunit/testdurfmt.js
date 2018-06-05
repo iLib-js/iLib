@@ -2174,7 +2174,7 @@ module.exports.testdurfmt = {
             minute: 1,
             second: 1
         });           
-        test.equal(duration.toString(), "1 an, 1 m, 1 sem., 1 j, 1 h, 1 min, 1 s");
+        test.equal(duration.toString(), "1 an, 1 m., 1 sem., 1 j, 1 h, 1 min, 1 s");
         test.done();
     },
     
@@ -5076,7 +5076,7 @@ module.exports.testdurfmt = {
             minute: 1,
             second: 1
         });
-        test.equal(duration.toString(), "‏1س 1م 1ه 1ر 1ک 1خ 1چ");
+        test.equal(duration.toString(), "‏1س 1م 1ﻪـ 1ر 1ک 1خ 1چ");
         test.done();
     },
     
@@ -5098,7 +5098,8 @@ module.exports.testdurfmt = {
             minute: 1,
             second: 1
         });
-        test.equal(duration.toString(), "‏1س 1م 1ه 1ر 1ک 1خ 1چ");
+        test.equal(duration.toString(), "‏1س 1م 1ﻪـ 1ر 1ک 1خ 1چ");
+
         test.done();
     },
     
@@ -5120,7 +5121,7 @@ module.exports.testdurfmt = {
             minute: 1,
             second: 1
         });
-        test.equal(duration.toString(), "‏1س 1م 1ه 1ر 01:01:01");
+        test.equal(duration.toString(), "‏1س 1م 1ﻪـ 1ر 01:01:01");
         test.done();
     },
     
@@ -5141,7 +5142,7 @@ module.exports.testdurfmt = {
             minute: 1,
             second: 1
         });
-        test.equal(duration.toString(), "‏1 سا 1 ما 1 هە 1 رۆ 1 کات 1 خو 1 چر");
+        test.equal(duration.toString(),"‏1 سا 1 ما 1 ﻪـ 1 رۆ 1 کات 1 خو 1 چر");
         test.done();
     },
     
