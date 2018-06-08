@@ -267,6 +267,7 @@ var legacyCalls = {
 	"ilib.PhoneNumber": "PhoneNumber",
 	"ilib.Measurement.Area": "AreaUnit",
 	"ilib.Measurement.DigitalStorage": "DigitalStorageUnit",
+	"ilib.Measurement.DigitalSpeed": "DigitalSpeedUnit",
 	"ilib.Measurement.Energy": "EnergyUnit",
 	"ilib.Measurement.FuelConsumption": "FuelConsumptionUnit",
 	"ilib.Measurement.Length": "LengthUnit",

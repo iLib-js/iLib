@@ -70,7 +70,7 @@ limitations under the License.
 			basedir="${build.export}"
 			includes="js/**,java/**,locale/**,qt/**"/>
 		<zip destfile="${build.dist}/ilib-${version}-doc.zip"
-			basedir="${build.export}/doc"/>
+			basedir="${build.export}/docs"/>
 		<zip destfile="${build.dist}/ilib-${version}-src.zip">
 			<zipfileset 
 				dir="${build.export}/src"
@@ -85,7 +85,7 @@ limitations under the License.
 		<tar destfile="${build.dist}/ilib-${version}.tgz" compression="gzip" 
 			basedir="${build.export}"
 			includes="js/**,java/**,locale/**,qt/**"/>
-		<tar destfile="${build.dist}/ilib-${version}-doc.tgz" compression="gzip" basedir="${build.export}/doc" />
+		<tar destfile="${build.dist}/ilib-${version}-doc.tgz" compression="gzip" basedir="${build.export}/docs" />
 		<tar destfile="${build.dist}/ilib-${version}-src.tgz" compression="gzip">
 			<fileset dir="${build.export}/src" includes="**"/>
 			<fileset dir="${build.export}"     includes="tools/**"/>

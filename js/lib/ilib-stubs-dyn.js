@@ -134,4 +134,6 @@ if(!ilib.Measurement.Time){ilib.Measurement.Time=function(options){ilib.Measurem
 if(!ilib.Measurement.Speed){ilib.Measurement.Speed=function(options){ilib.Measurement.Speed=require("../lib/VelocityUnit.js");return new ilib.Measurement.Speed(options);};ilib.Measurement.Speed.stub=true;}
 if(!ilib.Measurement.Volume){ilib.Measurement.Volume=function(options){ilib.Measurement.Volume=require("../lib/VolumeUnit.js");return new ilib.Measurement.Volume(options);};ilib.Measurement.Volume.stub=true;}
 if(!ilib.UnitFmt){ilib.UnitFmt=function(options){ilib.UnitFmt=require("../lib/UnitFmt.js");return new ilib.UnitFmt(options);};ilib.UnitFmt.stub=true;}
+if(!ilib.Measurement.DigitalSpeed){ilib.Measurement.DigitalSpeed=function(options){ilib.Measurement.DigitalSpeed=require("../lib/DigitalSpeed.js");return new ilib.Measurement.DigitalSpeed(options);};ilib.Measurement.DigitalSpeed.stub=true;}
+
 module.exports = ilib;
