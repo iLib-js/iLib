@@ -24,6 +24,11 @@ if (typeof(JulianDate) === "undefined") {
 if (typeof(GregorianDate) === "undefined") {
     var GregorianDate = require("../.././../lib/GregorianDate.js");
 }
+
+if (typeof(IslamicDate) === "undefined") {
+    var IslamicDate = require("../.././../lib/IslamicDate.js");
+}
+
 if (typeof(DateFmt) === "undefined") {
     var DateFmt = require("../.././../lib/DateFmt.js");
 }
@@ -2044,7 +2049,7 @@ module.exports.testdatefmt_ar_EG = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ar-EG", useNative: false,  length: "full", type: "time"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ar-EG",
             year: 2011,
@@ -2063,7 +2068,7 @@ module.exports.testdatefmt_ar_EG = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ar-EG", useNative: false,  length: "short", type: "datetime"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ar-EG",
             year: 2011,
@@ -2082,7 +2087,7 @@ module.exports.testdatefmt_ar_EG = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ar-EG", useNative: false,  length: "medium", type: "datetime"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ar-EG",
             year: 2011,
@@ -2101,7 +2106,7 @@ module.exports.testdatefmt_ar_EG = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ar-EG", useNative: false,  length: "long", type: "datetime"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ar-EG",
             year: 2011,
@@ -2120,7 +2125,7 @@ module.exports.testdatefmt_ar_EG = {
         test.expect(2);
         var fmt = new DateFmt({locale: "ar-EG", useNative: false,  length: "full", type: "datetime"});
         test.ok(fmt !== null);
-        
+
         var date = new GregorianDate({
             locale: "ar-EG",
             year: 2011,
@@ -2133,6 +2138,80 @@ module.exports.testdatefmt_ar_EG = {
         });
         test.equal(fmt.format(date), "‏29 سبتمبر، 2011 ‏1:45 م");
         test.done();
+    },
+    testDateFmtNativeDateTimeSimpleFullIslamic_ar_EG: function(test) {
+        test.expect(2);
+        var fmt = new DateFmt({locale: "ar-EG", useNative:false, length: "full", type: "datetime"});
+        test.ok(fmt !== null);
+
+        var date = new IslamicDate({
+            locale: "ar-EG",
+            year: 1439,
+            month: 8,
+            day: 22,
+            hour: 13,
+            minute:45,
+            second: 0,
+            millisecond: 0
+        });
+        test.equal(fmt.format(date), "‏8 مايو، 2018 ‏1:45 م");
+        test.done();
+    },
+
+    testDateFmtNativeDateTimeSimpleLongIslamic_ar_EG: function(test) {
+        test.expect(2);
+        var fmt = new DateFmt({locale: "ar-EG", useNative:false, length: "long", type: "datetime"});
+        test.ok(fmt !== null);
+
+        var date = new IslamicDate({
+            locale: "ar-EG",
+            year: 1439,
+            month: 8,
+            day: 22,
+            hour: 13,
+            minute:45,
+            second: 0,
+            millisecond: 0
+        });
+        test.equal(fmt.format(date), "‏8 مايو، 2018 ‏1:45 م");
+        test.done();
+    },
+
+    testDateFmtNativeDateTimeSimpleMediumIslamic_ar_EG: function(test) {
+        test.expect(2);
+        var fmt = new DateFmt({locale: "ar-EG", useNative:false, length: "medium", type: "datetime"});
+        test.ok(fmt !== null);
+
+        var date = new IslamicDate({
+            locale: "ar-EG",
+            year: 1439,
+            month: 8,
+            day: 22,
+            hour: 13,
+            minute:45,
+            second: 0,
+            millisecond: 0
+        });
+        test.equal(fmt.format(date), "‏08‏/05‏/2018 ‏1:45 م");
+        test.done();
+    },
+
+    testDateFmtNativeDateTimeSimpleShortIslamic_ar_EG: function(test) {
+        test.expect(2);
+        var fmt = new DateFmt({locale: "ar-EG", useNative:false, length: "short", type: "datetime"});
+        test.ok(fmt !== null);
+
+        var date = new IslamicDate({
+            locale: "ar-EG",
+            year: 1439,
+            month: 8,
+            day: 22,
+            hour: 13,
+            minute:45,
+            second: 0,
+            millisecond: 0
+        });
+        test.equal(fmt.format(date),"‏8‏/5‏/2018 ‏1:45 م");
+        test.done();
     }
-    
 };
