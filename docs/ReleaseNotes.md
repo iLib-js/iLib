@@ -3,6 +3,7 @@ Release Notes for Version 13
 
 Build 004
 -------
+Published as version 13.3.0
 
 New Features:
 * LocaleReference Documentation
