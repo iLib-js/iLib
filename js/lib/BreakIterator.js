@@ -22,6 +22,7 @@
 
 /* !depends
 ilib.js
+Utils.js
 Locale.js
 LocaleInfo.js
 NormString.js
@@ -30,23 +31,13 @@ CType.js
 */
 
 var ilib = require("./ilib.js");
+var Utils = require("./Utils.js");
 var Locale = require("./Locale.js");
 var LocaleInfo = require("./LocaleInfo.js");
-var NormString = require("./NormString.js");
+var GlyphString = require("./GlyphString.js");
 var IString = require("./IString.js");
 var CType = require("./CType.js");
-
-function isNewLine(string) {
-    var c = IString.toCodePoint(string, 0);
-    return c === 0x0B || c === 0x0C || c === 0x85 || c === 0x2028 || c === 0x2029;
-}
-
-function isExtend(string) {
-    var c = IString.toCodePoint(string, 0);
-
-    CType._inRange(string, "Mc") // Spacing mark
-    && c !== 0x200D
-}
+var SearchUtils = require("./SearchUtils.js");
 
 /**
  * @class A class that locates boundaries in text, and acts as an iterator
@@ -129,6 +120,8 @@ var BreakIterator = function (string, options) {
 
     this.maxLength = 80;
     this.sync = true;
+    this.breakNumber = 0;
+    this.string = string;
 
     if (options) {
         if (options.locale) {
@@ -160,7 +153,14 @@ var BreakIterator = function (string, options) {
         loadParams: this.loadParams,
         callback: ilib.bind(this, function (info) {
             this.info = info;
-
+            
+            this._parse(ilib.bind(this, function() {
+                if (options && typeof(options.onLoad) === "function") {
+                    options.onLoad(this);
+                }
+            }));
+            
+            /*
             if (!type) {
                 new LocaleInfo(locale, {
                     sync: sync,
@@ -170,8 +170,34 @@ var BreakIterator = function (string, options) {
                 });
             } else {
             }
+            */
         })
     });
+};
+
+var compare = function(range, target) {
+    if (range.length === 1) {
+        return range[0] - target;
+    } else {
+        return target < range[0] ? range[0] - target :
+            (target > range[1] ? range[1] - target : 0);
+    }
+};
+
+/**
+ * @private
+ * Convert the given character into a token.
+ * 
+ * @param {number} codepoint the codepoint of the character to convert
+ * @returns {string} the name of the token corresponding
+ * to the character
+ */
+BreakIterator.prototype._tokenize = function(codepoint) {
+    var tokenEntry = SearchUtils.bsearch(codepoint, this.info.properties, compare);
+    return tokenEntry > -1 &&
+        tokenEntry < this.info.properties.length && 
+        compare(this.info.properties[tokenEntry], codepoint) === 0 && 
+        this.info.properties[tokenEntry].t;
 };
 
 /**
@@ -187,16 +213,43 @@ BreakIterator.prototype._parse = function(cb) {
         locale: this.locale,
         sync: this.sync,
         loadParams: this.loadParams,
-        callback: function(gs) {
-            var current = "sot"; // start of text
-            this.breaks = [0];   // start of text is always a break
+        onLoad: ilib.bind(this, function(gs) {
+            var it = gs.charIterator();
+            var state = "sot"; // start of text
+            this.breaks = [];
+            var index = 0;
+            var buffer, nexttoken;
+            
+            while (buffer || it.hasNext()) {
+                var ch = buffer || it.next();
+                buffer = undefined;
 
-            while (gs.hasNext()) {
-                var ch = gs.next();
+                var token = this._tokenize(IString.toCodePoint(ch));
+                var current = this.info.rules[state];
 
+                // finite state machine
+                if (!token || (!this.info.rules.Any[token] && !current[token])) {
+                    this.breaks.push(index);
+                } else if (!this.info.rules.Any[token]) {
+                    if (typeof(current[token]) === "object") {
+                        buffer = it.next();
+                        nexttoken = this._tokenize(IString.toCodePoint(buffer));
+    
+                        if (current[token][nexttoken]) {
+                            token = nexttoken;
+                            buffer = undefined;
+                        } else {
+                            this.breaks.push(index);
+                        }
+                    }
+                }
+
+                state = token || "Any";
+                index++;
             }
+
             cb();
-        }
+        })
     });
 };
 
@@ -209,7 +262,7 @@ BreakIterator.prototype._parse = function(cb) {
  * return, or false otherwise
  */
 BreakIterator.prototype.hasNext = function() {
-    return false;
+    return !!this.breaks[this.breakNumber+1];
 };
 
 
@@ -224,7 +277,13 @@ BreakIterator.prototype.hasNext = function() {
  * the current boundary and the next boundary
  */
 BreakIterator.prototype.next = function() {
-    return undefined;
+    var ret;
+
+    if (this.breakNumber < this.breaks.length) {
+        ret = this.string.substring(this.breaks[this.breakNumber], this.breaks[++this.breakNumber]);
+    }
+
+    return ret;
 };
 
 /**
@@ -255,7 +314,8 @@ BreakIterator.prototype.type = function() {
  * of text in the string
  */
 BreakIterator.prototype.first = function() {
-    return undefined;
+    this.breakNumber = 0;
+    return this.string.substring(0, this.breaks[1]);
 };
 
 /**
@@ -271,7 +331,8 @@ BreakIterator.prototype.first = function() {
  * of text in the string
  */
 BreakIterator.prototype.last = function() {
-    return undefined;
+    this.breakNumber = this.breaks.length - 1;
+    return this.string.substring(this.breaks[this.breakNumber-1], this.breaks[this.breakNumber]);
 };
 
 /**
@@ -285,7 +346,11 @@ BreakIterator.prototype.last = function() {
  * the current boundary and the previous boundary
  */
 BreakIterator.prototype.previous = function() {
-    return undefined;
+    var ret;
+    if (this.breakNumber > 0) {
+        ret = this.string.substring(this.breaks[this.breakNumber-1], this.breaks[this.breakNumber--]);
+    }
+    return ret;
 };
 
 module.exports = BreakIterator;

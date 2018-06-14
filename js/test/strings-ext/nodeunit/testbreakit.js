@@ -26,6 +26,7 @@ if (typeof(BreakIterator) === "undefined") {
 }
 
 module.exports.testbreakit = {
+    /*
     testBreakIteratorConstructorDefault: function(test) {
         test.expect(1);
         var bi = new BreakIterator("abc");
@@ -105,6 +106,7 @@ module.exports.testbreakit = {
         test.equal(bi.next(), undefined);
         test.done();
     },
+    */
 
     testBreakIteratorWord: function(test) {
         test.expect(19);
@@ -182,6 +184,7 @@ module.exports.testbreakit = {
         test.done();
     },
 
+    /*
     testBreakIteratorSentence: function(test) {
         test.expect(13);
         var bi = new BreakIterator("This is a sentence. This is another sentence! This is a third?", {
@@ -226,7 +229,8 @@ module.exports.testbreakit = {
         test.equal(bi.next(), undefined);
         test.done();
     },
-
+    */
+    
     testBreakIteratorEmptyNoNext: function(test) {
         test.expect(3);
         var bi = new BreakIterator("", {

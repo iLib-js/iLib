@@ -133,7 +133,7 @@ var testFile =
 fs.writeFileSync(path.join(testDir, "wordBreakTestData.js"), testFile, "utf-8");
 console.log("Wrote " + path.join(testDir, "wordBreakTestData.js"));
 
-var rangeStart, rangeEnd, rangeName;
+var range, rangeStart, rangeEnd, rangeName;
 
 var wbp = new UnicodeFile({
     path: path.join(unicodeCharacterDataDir, "auxiliary/WordBreakProperty.txt")
@@ -164,13 +164,42 @@ for (var i = 0; i < len; i++ ) {
     }
 }
 
+// coelesce neighbouring ranges to minimize the work
 for (rangeName in propMap) {
     if (rangeName && propMap[rangeName]) {
         propMap[rangeName] = coelesce(propMap[rangeName], 0);
     }
 }
 
+// now reverse the properties map from property name -> character range
+// to character -> property name since that is what a break iterator has to do
+var reversePropMap = [];
+for (rangeName in propMap) {
+    for (var i = 0; i < propMap[rangeName].length; i++) {
+        range = propMap[rangeName][i];
+        if (range.length === 1) {
+            reversePropMap.push({
+                s: range[0],
+                t: rangeName
+            });
+        } else {
+            reversePropMap.push({
+                s: range[0],
+                e: range[1],
+                t: rangeName
+            });
+        }
+    }
+}
+
+reversePropMap.sort(function(left, right) {
+    return left.s - right.s;
+});
+
 var wordBreakRules = {
+    "sot": {
+        "Any": 0
+    },
     "Any": {
         "Format": 1,
         "Extend": 1,
@@ -270,11 +299,14 @@ var wordBreakRules = {
     },
     "Newline": {
         "Any": 0
+    },
+    "sot": {
+        "Any": 0
     }
 };
 
 var wordbreak = {
-    "properties": propMap,
+    "properties": reversePropMap,
     "rules": wordBreakRules
 };
 
