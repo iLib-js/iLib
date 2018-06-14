@@ -111,6 +111,7 @@ ilib.UTF16LE = require("../UTF16LE.js");
 ilib.Country = require("../Country.js");
 ilib.ListFmt = require("../ListFmt.js");
 ilib.AlphabeticIndex = require("../AlphabeticIndex.js");
+ilib.DigitalSpeedUnit = require("../DigitalSpeedUnit.js");
 
 // This unpacks the above classes to the global scope
 require("../ilib-unpack.js");

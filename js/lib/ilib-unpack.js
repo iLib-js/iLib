@@ -116,7 +116,8 @@ var exportClassesPublic = [
     "ListFmt",
     "AlphabeticIndex",
     "TimeZone",
-    "Currency"
+    "Currency",
+    "DigitalSpeedUnit"
 ];
 
 if (top) {

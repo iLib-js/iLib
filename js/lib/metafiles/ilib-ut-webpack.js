@@ -116,6 +116,7 @@ ilib.UTF16LE = require("../UTF16LE.js");
 ilib.AlphabeticIndex = require("../AlphabeticIndex.js");
 ilib.TimeZone = require("../TimeZone.js");
 ilib.Currency = require("../Currency.js");
+ilib.DigitalSpeedUnit = require("../DigitalSpeedUnit.js");
 
 /* make sure all the data is loaded that will be tested */
 require("../nfd/all.js");

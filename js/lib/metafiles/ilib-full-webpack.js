@@ -111,6 +111,7 @@ ilib.ListFmt = require("../ListFmt.js");
 ilib.AlphabeticIndex = require("../AlphabeticIndex.js");
 ilib.TimeZone = require("../TimeZone.js");
 ilib.Currency = require("../Currency.js");
+ilib.DigitalSpeedUnit = require("../DigitalSpeedUnit.js");
 
 //This unpacks the above classes to the global scope
 require("../ilib-unpack.js");
