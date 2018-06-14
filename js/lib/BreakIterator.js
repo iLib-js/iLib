@@ -177,10 +177,10 @@ var BreakIterator = function (string, options) {
 
 var compare = function(range, target) {
     if (range.length === 1) {
-        return range[0] - target;
+        return range.s - target;
     } else {
-        return target < range[0] ? range[0] - target :
-            (target > range[1] ? range[1] - target : 0);
+        return target < range.s ? range.s - target :
+            (target > range.t ? range.t - target : 0);
     }
 };
 
