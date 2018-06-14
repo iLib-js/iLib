@@ -109,25 +109,25 @@ var Locale = function(language, region, variant, script) {
 	        this.variant = spec.variant || undefined;
 		}
 	} else {
-		if (language) {
+		if (language && typeof(language) === "string") {
 			language = language.trim();
 			this.language = language.length > 0 ? language.toLowerCase() : undefined;
 		} else {
 			this.language = undefined;
 		}
-		if (region) {
+		if (region && typeof(region) === "string") {
 			region = region.trim();
 			this.region = region.length > 0 ? region.toUpperCase() : undefined;
 		} else {
 			this.region = undefined;
 		}
-		if (variant) {
+		if (variant && typeof(variant) === "string") {
 			variant = variant.trim();
 			this.variant = variant.length > 0 ? variant : undefined;
 		} else {
 			this.variant = undefined;
 		}
-		if (script) {
+		if (script && typeof(script) === "string") {
 			script = script.trim();
 			this.script = script.length > 0 ? script : undefined;
 		} else {

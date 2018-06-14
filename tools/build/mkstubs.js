@@ -135,6 +135,7 @@ var legacyMapping = {
 	"PhoneNumber" : "ilib.PhoneNumber",
 	"AreaUnit" : "ilib.Measurement.Area",
 	"DigitalStorageUnit" : "ilib.Measurement.DigitalStorage",
+	"DigitalSpeedUnit" : "ilib.Measurement.DigitalSpeed",
 	"EnergyUnit" : "ilib.Measurement.Energy",
 	"FuelConsumptionUnit" : "ilib.Measurement.FuelConsumption",
 	"LengthUnit" : "ilib.Measurement.Length",

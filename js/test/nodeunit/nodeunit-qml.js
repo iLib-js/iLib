@@ -361,6 +361,15 @@ var nodeunit = (function(){
         var failNum = 0, successNum = 0;
         var startTime = 0, endTime = 0;
 
+        function getFailureDetails(assertion) {
+            if (assertion.error && assertion.error.name === "AssertionError") {
+                return "Expected that actual " + assertion.error.operator + " " + assertion.error.expected + ", but got " + assertion.error.actual + " instead.";
+            } else if (assertion.message) {
+                return assertion.message;
+            }
+            return "Unknown reason.";
+        }
+        
         exports.run = function (modules) {
             startTime = new Date().getTime();
     
@@ -376,11 +385,11 @@ var nodeunit = (function(){
                         if (a.failed()) {
                             failNum++;
                             //console.log("[" + name + "] assertions.failures() " + assertions.failures());
-                            console.log("[" + name + "] Test failed.");
+                            console.log("[" + name + "] assertion failed: " + getFailureDetails(a));
                         } else {
                             successNum++;
                             //console.log("[" + name + "] assertions.passed() " + assertions.passed());
-                            //console.log("[" + name + "] Test Success.");
+                            //console.log("[" + name + "] assertion is passed");
                         }
                     }
                 },

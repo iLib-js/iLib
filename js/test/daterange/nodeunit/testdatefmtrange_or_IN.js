@@ -56,7 +56,7 @@ module.exports.testdatefmtrange_or_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "31-12-11 1:45 pm – 2:30 pm");
+        test.equal(fmt.format(start, end), "31-12-11 1:45 PM – 2:30 PM");
         test.done();
     },
     testDateRngFmtRangeinDayMedium_or_IN: function(test) {
@@ -82,7 +82,7 @@ module.exports.testdatefmtrange_or_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "31 ଡିସେମ୍ବର 2011 1:45 pm – 2:30 pm");
+        test.equal(fmt.format(start, end), "31 ଡିସେମ୍ବର 2011 1:45 PM – 2:30 PM");
         test.done();
     },
     testDateRngFmtRangeinDayLong_or_IN: function(test) {
@@ -108,7 +108,7 @@ module.exports.testdatefmtrange_or_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "31 ଡିସେମ୍ବର 2011 1:45 pm – 2:30 pm");
+        test.equal(fmt.format(start, end), "31 ଡିସେମ୍ବର 2011 1:45 PM – 2:30 PM");
         test.done();
     },
     testDateRngFmtRangeinDayFull_or_IN: function(test) {
@@ -134,7 +134,7 @@ module.exports.testdatefmtrange_or_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "31 ଡିସେମ୍ବର 2011 1:45 pm – 2:30 pm");
+        test.equal(fmt.format(start, end), "31 ଡିସେମ୍ବର 2011 1:45 PM – 2:30 PM");
         test.done();
     },
     
@@ -161,7 +161,7 @@ module.exports.testdatefmtrange_or_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "30-12-11 1:45 pm – 31-12-11 2:30 pm");
+        test.equal(fmt.format(start, end), "30-12-11 1:45 PM – 31-12-11 2:30 PM");
         test.done();
     },
     testDateRngFmtRangeNextDayMedium_or_IN: function(test) {
@@ -187,7 +187,7 @@ module.exports.testdatefmtrange_or_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "30 ଡିସେମ୍ବର 2011 1:45 pm – 31 ଡିସେମ୍ବର 2011 2:30 pm");
+        test.equal(fmt.format(start, end), "30 ଡିସେମ୍ବର 2011 1:45 PM – 31 ଡିସେମ୍ବର 2011 2:30 PM");
         test.done();
     },
     testDateRngFmtRangeNextDayLong_or_IN: function(test) {
@@ -213,7 +213,7 @@ module.exports.testdatefmtrange_or_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "30 ଡିସେମ୍ବର 2011 1:45 pm – 31 ଡିସେମ୍ବର 2011 2:30 pm");
+        test.equal(fmt.format(start, end), "30 ଡିସେମ୍ବର 2011 1:45 PM – 31 ଡିସେମ୍ବର 2011 2:30 PM");
         test.done();
     },
     testDateRngFmtRangeNextDayFull_or_IN: function(test) {
@@ -239,7 +239,7 @@ module.exports.testdatefmtrange_or_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "30 ଡିସେମ୍ବର 2011 1:45 pm – 31 ଡିସେମ୍ବର 2011 2:30 pm");
+        test.equal(fmt.format(start, end), "30 ଡିସେମ୍ବର 2011 1:45 PM – 31 ଡିସେମ୍ବର 2011 2:30 PM");
         test.done();
     },
     

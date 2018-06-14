@@ -135,7 +135,7 @@ module.exports.testdatefmt_or_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "1:45 pm");
+        test.equal(fmt.format(date), "1:45 PM");
         test.done();
     },
     
@@ -154,7 +154,7 @@ module.exports.testdatefmt_or_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "1:45 pm");
+        test.equal(fmt.format(date), "1:45 PM");
         test.done();
     },
     
@@ -173,7 +173,7 @@ module.exports.testdatefmt_or_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "1:45 pm");
+        test.equal(fmt.format(date), "1:45 PM");
         test.done();
     },
     
@@ -192,7 +192,7 @@ module.exports.testdatefmt_or_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "1:45 pm");
+        test.equal(fmt.format(date), "1:45 PM");
         test.done();
     },
     
@@ -211,7 +211,7 @@ module.exports.testdatefmt_or_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "1:45 pm");
+        test.equal(fmt.format(date), "1:45 PM");
         test.done();
     },
     
@@ -230,7 +230,7 @@ module.exports.testdatefmt_or_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "29-9-11 1:45 pm");
+        test.equal(fmt.format(date), "29-9-11 1:45 PM");
         test.done();
     },
     
@@ -249,7 +249,7 @@ module.exports.testdatefmt_or_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "29 ସେପ୍ଟେମ୍ବର 2011 1:45 pm");
+        test.equal(fmt.format(date), "29 ସେପ୍ଟେମ୍ବର 2011 1:45 PM");
         test.done();
     },
     
@@ -268,7 +268,7 @@ module.exports.testdatefmt_or_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "29 ସେପ୍ଟେମ୍ବର 2011 1:45 pm");
+        test.equal(fmt.format(date), "29 ସେପ୍ଟେମ୍ବର 2011 1:45 PM");
         test.done();
     },
     
@@ -287,7 +287,7 @@ module.exports.testdatefmt_or_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "29 ସେପ୍ଟେମ୍ବର 2011 1:45 pm");
+        test.equal(fmt.format(date), "29 ସେପ୍ଟେମ୍ବର 2011 1:45 PM");
         test.done();
     },
     
@@ -498,7 +498,7 @@ module.exports.testdatefmt_or_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "1:45 pm");
+        test.equal(fmt.format(date), "1:45 PM");
         test.done();
     },
     
@@ -517,7 +517,7 @@ module.exports.testdatefmt_or_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "29-9-11 1:45 pm");
+        test.equal(fmt.format(date), "29-9-11 1:45 PM");
         test.done();
     },
     
@@ -958,7 +958,7 @@ module.exports.testdatefmt_or_IN = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "1:45 pm");
+        test.equal(fmt.format(date), "1:45 PM");
         test.done();
     },
     
@@ -981,7 +981,7 @@ module.exports.testdatefmt_or_IN = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "1:45:37 pm IST");
+        test.equal(fmt.format(date), "1:45:37 PM IST");
         test.done();
     },
     
@@ -1005,7 +1005,7 @@ module.exports.testdatefmt_or_IN = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "1:45:37 pm IST");
+        test.equal(fmt.format(date), "1:45:37 PM IST");
         test.done();
     },
     
@@ -1024,7 +1024,7 @@ module.exports.testdatefmt_or_IN = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "1:45:37 pm");
+        test.equal(fmt.format(date), "1:45:37 PM");
         test.done();
     },
     
@@ -1048,7 +1048,7 @@ module.exports.testdatefmt_or_IN = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "1:45:37 pm IST");
+        test.equal(fmt.format(date), "1:45:37 PM IST");
         test.done();
     },
     
@@ -1072,7 +1072,7 @@ module.exports.testdatefmt_or_IN = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "1:45:37 pm IST");
+        test.equal(fmt.format(date), "1:45:37 PM IST");
         test.done();
     },
     
@@ -1151,7 +1151,7 @@ module.exports.testdatefmt_or_IN = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "1:45 pm");
+        test.equal(fmt.format(date), "1:45 PM");
         test.done();
     },
     
@@ -1170,7 +1170,7 @@ module.exports.testdatefmt_or_IN = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "1:45:37 pm");
+        test.equal(fmt.format(date), "1:45:37 PM");
         test.done();
     },
     
@@ -1189,7 +1189,7 @@ module.exports.testdatefmt_or_IN = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "1:45 pm");
+        test.equal(fmt.format(date), "1:45 PM");
         test.done();
     },
     
@@ -1216,7 +1216,7 @@ module.exports.testdatefmt_or_IN = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "1:45:37 pm IST");
+        test.equal(fmt.format(date), "1:45:37 PM IST");
         test.done();
     },
     
@@ -1235,7 +1235,7 @@ module.exports.testdatefmt_or_IN = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "1:45:37 pm");
+        test.equal(fmt.format(date), "1:45:37 PM");
         test.done();
     },
     
@@ -1260,7 +1260,7 @@ module.exports.testdatefmt_or_IN = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "1:45:37 pm IST");
+        test.equal(fmt.format(date), "1:45:37 PM IST");
         test.done();
     },
     
@@ -1285,7 +1285,7 @@ module.exports.testdatefmt_or_IN = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "1:45:37 pm IST");
+        test.equal(fmt.format(date), "1:45:37 PM IST");
         test.done();
     },
     
@@ -1310,7 +1310,7 @@ module.exports.testdatefmt_or_IN = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "1:45:37 pm IST");
+        test.equal(fmt.format(date), "1:45:37 PM IST");
         test.done();
     }
     

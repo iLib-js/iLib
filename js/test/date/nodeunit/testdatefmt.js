@@ -3569,8 +3569,8 @@ module.exports.testdatefmt = {
         var fmt = DateFmt.getMeridiemsRange({locale: "or-IN"});
         test.ok(fmt !== null);
     
-        test.equal(fmt[0].name, "am");
-        test.equal(fmt[1].name, "pm");
+        test.equal(fmt[0].name, "AM");
+        test.equal(fmt[1].name, "PM");
         test.done();
     },
     testDateFmtGetMeridiemsRangeName_with_pa_IN_locale: function(test) {

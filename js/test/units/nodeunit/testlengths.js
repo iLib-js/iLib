@@ -223,7 +223,7 @@ module.exports.testlengths = {
         m = m.scale("uscustomary");
     
         test.roughlyEqual(m.amount, 2.743, 0.001)
-        test.equal(m.unit, "nauticalmile");
+        test.equal(m.unit, "nautical-mile");
         test.done();
     },
     
@@ -293,7 +293,7 @@ module.exports.testlengths = {
         m = m.scale();
     
         test.roughlyEqual(m.amount, 2.743, 0.001)
-        test.equal(m.unit, "nauticalmile");
+        test.equal(m.unit, "nautical-mile");
         test.done();
     },
     
@@ -367,7 +367,7 @@ module.exports.testlengths = {
             "kilometer",
             "megameter",
             "gigameter",
-            "nauticalmile",
+            "nautical-mile",
             "mile",
             "yard",
             "foot",

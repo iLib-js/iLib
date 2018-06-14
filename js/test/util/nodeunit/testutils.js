@@ -1,7 +1,7 @@
 /*
  * testutils.js - test the utility routines
  * 
- * Copyright © 2012-2015,2017, JEDLSoft
+ * Copyright © 2012-2015, 2017-2018 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -410,6 +410,84 @@ module.exports.testutils = {
         test.done();
     },
     
+    testLog10: function(test) {
+        test.expect(1);
+        test.equal(Math.floor(MathUtils.log10(12345)), 4);
+        test.done();
+    },
+
+    testLog10two: function(test) {
+        test.expect(1);
+        test.equal(Math.floor(MathUtils.log10(987654321)), 8);
+        test.done();
+    },
+
+    testSignificant1: function(test) {
+        test.expect(1);
+        test.equal(MathUtils.significant(12345, 3), 12300);
+        test.done();
+    },
+
+    testSignificant2: function(test) {
+        test.expect(1);
+        test.equal(MathUtils.significant(12345, 2), 12000);
+        test.done();
+    },
+
+    testSignificant3: function(test) {
+        test.expect(1);
+        test.equal(MathUtils.significant(12345, 1), 10000);
+        test.done();
+    },
+
+    testSignificantZero: function(test) {
+        test.expect(1);
+        test.equal(MathUtils.significant(12345, 0), 12345);
+        test.done();
+    },
+
+    testSignificantNegativeDigits: function(test) {
+        test.expect(1);
+        test.equal(MathUtils.significant(12345, -234), 12345);
+        test.done();
+    },
+
+    testSignificantNegativeNumber: function(test) {
+        test.expect(1);
+        test.equal(MathUtils.significant(-12345, 4), -12340);
+        test.done();
+    },
+
+    testSignificantStradleDecimal: function(test) {
+        test.expect(1);
+        test.equal(MathUtils.significant(12.345, 4), 12.35);
+        test.done();
+    },
+
+    testSignificantLessThanOne: function(test) {
+        test.expect(1);
+        test.equal(MathUtils.significant(0.123456, 2), 0.12);
+        test.done();
+    },
+
+    testSignificantLessThanOneRound: function(test) {
+        test.expect(1);
+        test.equal(MathUtils.significant(0.123456, 4), 0.1235);
+        test.done();
+    },
+
+    testSignificantLessThanOneSmall: function(test) {
+        test.expect(1);
+        test.equal(MathUtils.significant(0.000123456, 2), 0.00012);
+        test.done();
+    },
+
+    testSignificantZero: function(test) {
+        test.expect(1);
+        test.equal(MathUtils.significant(0, 2), 0);
+        test.done();
+    },
+
     testMergeSimple: function(test) {
         test.expect(1);
         var object1 = {"a": "A", "b": "B"},

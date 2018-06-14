@@ -42,7 +42,7 @@ module.exports.testVolume = {
         test.done();
     },
     
-    testVolumeVolumeConvertGalontoQuart: function(test) {
+    testVolumeVolumeConvertGallontoQuart: function(test) {
         test.expect(3);
         var m1 = new VolumeUnit({
             unit: "gallon",
@@ -918,7 +918,7 @@ module.exports.testVolume = {
         var m2 = m1.scale("imperial");
     
         test.roughlyEqual(m2.amount, 9.375, 0.01);
-        test.equal(m2.unit, "imperial gallon");
+        test.equal(m2.unit, "gallon-imperial");
         test.done();
     },
     
@@ -931,7 +931,7 @@ module.exports.testVolume = {
         var m2 = m1.scale("imperial");
     
         test.roughlyEqual(m2.amount, 100, 0.01);
-        test.equal(m2.unit, "imperial gallon");
+        test.equal(m2.unit, "gallon-imperial");
         test.done();
     },
     
@@ -944,7 +944,7 @@ module.exports.testVolume = {
         var m2 = m1.scale("uscustomary");
     
         test.roughlyEqual(m2.amount, 1.566569, 0.000001);
-        test.equal(m2.unit, "cubic foot");
+        test.equal(m2.unit, "cubic-foot");
         test.done();
     },
     
@@ -957,7 +957,7 @@ module.exports.testVolume = {
         var m2 = m1.scale("metric");
     
         test.roughlyEqual(m2.amount, 1.57, 0.01);
-        test.equal(m2.unit, "cubic meter");
+        test.equal(m2.unit, "cubic-meter");
         test.done();
     },
     
@@ -999,7 +999,7 @@ module.exports.testVolume = {
         m = m.localize("en-GB");
     
         test.roughlyEqual(m.amount, 879.877, 0.0001);
-        test.equal(m.unit, "imperial quart");
+        test.equal(m.unit, "quart-imperial");
         test.done();
     },
     
@@ -1013,7 +1013,7 @@ module.exports.testVolume = {
         m = m.localize("en-GB");
     
         test.roughlyEqual(m.amount, 1040.84, 0.001);
-        test.equal(m.unit, "imperial ounce");
+        test.equal(m.unit, "ounce-imperial");
         test.done();
     },
     
@@ -1025,20 +1025,20 @@ module.exports.testVolume = {
             "quart",
             "pint",
             "cup",
-            "us ounce",
-            "tbsp",
-            "tsp",
-            "cubic meter",
+            "fluid-ounce",
+            "tablespoon",
+            "teaspoon",
+            "cubic-meter",
             "liter",
             "milliliter",
-            "imperial gallon",
-            "imperial quart",
-            "imperial pint",
-            "imperial ounce",
-            "imperial tbsp",
-            "imperial tsp",
-            "cubic foot",
-            "cubic inch"
+            "gallon-imperial",
+            "quart-imperial",
+            "pint-imperial",
+            "ounce-imperial",
+            "tablespoon-imperial",
+            "teaspoon-imperial",
+            "cubic-foot",
+            "cubic-inch"
         ];
     
         test.equalIgnoringOrder(measures, expected);
