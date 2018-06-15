@@ -11,6 +11,7 @@ New Features:
     * Implemented way of publishing date automatically instead of manual fixing.
     * Updated Name of the Day and Months part. If normal and standAlone are different, It displays both.
 Bug Fixes:
+* Fixed an ar-IQ currency symbol.
 * Updated the medium format day of the week translation of the ar-EG locale.
 * Updated the month duration locale data in fr-CA correspond CLDR 33.
 * Updated the daterange locale data in fr-CA local office feedback.
