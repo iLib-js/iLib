@@ -176,12 +176,11 @@ var BreakIterator = function (string, options) {
 };
 
 var compare = function(range, target) {
-    if (range.length === 1) {
+    if (target < range.s) {
         return range.s - target;
-    } else {
-        return target < range.s ? range.s - target :
-            (target > range.t ? range.t - target : 0);
     }
+    var top = (typeof(range.e) !== "undefined") ? range.e : range.s;
+    return target > top ? top - target : 0;
 };
 
 /**
@@ -228,7 +227,7 @@ BreakIterator.prototype._parse = function(cb) {
                 var current = this.info.rules[state];
 
                 // finite state machine
-                if (!token || (!this.info.rules.Any[token] && !current[token])) {
+                if (!token || (!this.info.rules.Any[token] && !current[token] && !current.Any)) {
                     this.breaks.push(index);
                 } else if (!this.info.rules.Any[token]) {
                     if (typeof(current[token]) === "object") {
@@ -262,9 +261,8 @@ BreakIterator.prototype._parse = function(cb) {
  * return, or false otherwise
  */
 BreakIterator.prototype.hasNext = function() {
-    return !!this.breaks[this.breakNumber+1];
+	return this.breakNumber < this.breaks.length;
 };
-
 
 /**
  * Return the chunk of text between the current boundary
