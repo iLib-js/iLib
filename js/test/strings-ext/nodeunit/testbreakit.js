@@ -136,32 +136,8 @@ module.exports.testbreakit = {
         test.done();
     },
 
-    testBreakIteratorWordNoBreakJoiner: function(test) {
-        test.expect(19);
-        var bi = new BreakIterator("This‍ is a sentence.", {
-            type: "word"
-        });
-        test.ok(bi);
-
-        test.ok(bi.hasNext());
-        test.equal(bi.next(), "This‍ is");
-        test.ok(bi.hasNext());
-        test.equal(bi.next(), " ");
-        test.ok(bi.hasNext());
-        test.equal(bi.next(), "a");
-        test.ok(bi.hasNext());
-        test.equal(bi.next(), " ");
-        test.ok(bi.hasNext());
-        test.equal(bi.next(), "sentence");
-        test.ok(bi.hasNext());
-        test.equal(bi.next(), ".");
-        test.ok(!bi.hasNext());
-        test.equal(bi.next(), undefined);
-        test.done();
-    },
-
     testBreakIteratorWordZeroWidthJoiner: function(test) {
-        test.expect(19);
+        test.expect(15);
         var bi = new BreakIterator("This‍is a sentence.", {
             type: "word"
         });
@@ -244,7 +220,7 @@ module.exports.testbreakit = {
     },
 
     testBreakIteratorEmptyNoFirst: function(test) {
-        test.expect(3);
+        test.expect(2);
         var bi = new BreakIterator("", {
             type: "word"
         });
@@ -255,7 +231,7 @@ module.exports.testbreakit = {
     },
 
     testBreakIteratorEmptyNoLast: function(test) {
-        test.expect(3);
+        test.expect(2);
         var bi = new BreakIterator("", {
             type: "word"
         });
@@ -266,7 +242,7 @@ module.exports.testbreakit = {
     },
 
     testBreakIteratorEmptyNoPrevious: function(test) {
-        test.expect(3);
+        test.expect(2);
         var bi = new BreakIterator("", {
             type: "word"
         });
@@ -294,7 +270,7 @@ module.exports.testbreakit = {
     },
 
     testBreakIteratorStartHasNoPrevious: function(test) {
-        test.expect(8);
+        test.expect(3);
         var bi = new BreakIterator("This is a sentence.", {
             type: "word"
         });
