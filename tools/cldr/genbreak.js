@@ -208,7 +208,8 @@ var wordBreakRules = {
         "ZWJ": 1,
         "Newline": 0,
         "CR": 0,
-        "LF": 0
+        "LF": 0,
+        "eot": 0
     },
     "CR": {
         "LF": 1,
@@ -218,9 +219,13 @@ var wordBreakRules = {
         "Any": 0
     },
     "ZWJ": {
-        "Glue_After_Zwj": 1,
-        "EBG": 1,
-        "WSegSpace": 1
+        "Any": 1
+    },
+    "Extend": {
+        "Any": 1
+    },
+    "Format": {
+        "Any": 1
     },
     "Katakana": {
         "Katakana": 1,
@@ -287,15 +292,7 @@ var wordBreakRules = {
         "Numeric": 1,
         "ExtendNumLet": 1
     },
-    "E_Base": {
-        "E_Modifier": 1
-    },
-    "EBG": {
-        "E_Modifier": 1
-    },
     "ZWJ_FE": {
-        "Glue_After_Zwj": 1,
-        "EBG": 1,
         "Format_FE": 1,
         "Extend_FE": 1,
         "ZWJ_FE": 1,
@@ -309,6 +306,10 @@ var wordBreakRules = {
     },
     "WSegSpace": {
         "WSegSpace": 1
+    },
+    "Regional_Indicator": {
+        "Regional_Indicator": 1,
+        "Any": 0
     }
 };
 

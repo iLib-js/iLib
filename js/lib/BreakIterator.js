@@ -246,6 +246,9 @@ BreakIterator.prototype._parse = function(cb) {
                 state = token || "Any";
                 index++;
             }
+            
+            // no more to process, so put another break to indicate "end of text"
+            this.breaks.push(this.string.length);
 
             cb();
         })
@@ -261,7 +264,7 @@ BreakIterator.prototype._parse = function(cb) {
  * return, or false otherwise
  */
 BreakIterator.prototype.hasNext = function() {
-	return this.breakNumber < this.breaks.length;
+	return this.breakNumber < this.breaks.length-1;
 };
 
 /**
@@ -277,7 +280,7 @@ BreakIterator.prototype.hasNext = function() {
 BreakIterator.prototype.next = function() {
     var ret;
 
-    if (this.breakNumber < this.breaks.length) {
+    if (this.breakNumber < this.breaks.length-1) {
         ret = this.string.substring(this.breaks[this.breakNumber], this.breaks[++this.breakNumber]);
     }
 
@@ -329,8 +332,8 @@ BreakIterator.prototype.first = function() {
  * of text in the string
  */
 BreakIterator.prototype.last = function() {
-    this.breakNumber = this.breaks.length - 1;
-    return this.string.substring(this.breaks[this.breakNumber-1], this.breaks[this.breakNumber]);
+    this.breakNumber = this.breaks.length;
+    return this.string.substring(this.breaks[this.breakNumber-2], this.breaks[this.breakNumber-1]);
 };
 
 /**
