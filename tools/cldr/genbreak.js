@@ -198,117 +198,121 @@ reversePropMap.sort(function(left, right) {
     return left.s - right.s;
 });
 
+// the rule numbers from UAX #29 are given as comments after each
 var wordBreakRules = {
     "sot": {
-        "Any": 0
+        "Any": 0                    // WB1
     },
     "Any": {
-        "Format": 1,
-        "Extend": 1,
-        "ZWJ": 1,
-        "Newline": 0,
-        "CR": 0,
-        "LF": 0,
-        "eot": 0
+        "Format": 1,                // WB4
+        "Extend": 1,                // WB4
+        "ZWJ": 1,                   // WB4
+        "Newline": 0,               // WB3a
+        "CR": 0,                    // WB3b
+        "LF": 0,                    // WB3b
+        "eot": 0                    // WB2
     },
     "CR": {
-        "LF": 1,
-        "Any": 0
+        "LF": 1,                    // WB3
+        "Any": 0                    // WB3a
     },
     "LF": {
-        "Any": 0
+        "Any": 0                    // WB3a
     },
     "ZWJ": {
-        "Any": 1
+        "Any": 1                    // WB4
     },
     "Extend": {
-        "Any": 1
+        "Any": 1                    // WB4
     },
     "Format": {
-        "Any": 1
+        "Any": 1                    // WB4
     },
     "Katakana": {
-        "Katakana": 1,
-        "ExtendNumLet": 1
+        "Katakana": 1,              // WB13
+        "ExtendNumLet": 1           // WB13a
     },
     "ALetter": {
-        "ALetter": 1,
-        "Hebrew_Letter": 1,
+        "ALetter": 1,               // WB5
+        "Hebrew_Letter": 1,         // WB5
         "MidLetter": {
-            "ALetter": 1,
-            "Hebrew_Letter": 1
+            "ALetter": 1,           // WB7
+            "Hebrew_Letter": 1      // WB7
         },
         "MidNumLet": {
-            "ALetter": 1,
-            "Hebrew_Letter": 1
+            "ALetter": 1,           // WB7
+            "Hebrew_Letter": 1      // WB7
         },
         "Single_Quote": {
-            "ALetter": 1,
-            "Hebrew_Letter": 1
+            "ALetter": 1,           // WB7
+            "Hebrew_Letter": 1      // WB7
         },
-        "Numeric": 1,
-        "ExtendNumLet": 1
+        "Numeric": 1,               // WB11
+        "ExtendNumLet": 1           // WB13a
     },
     "Numeric": {
-        "Numeric": 1,
-        "ALetter": 1,
-        "Hebrew_Letter": 1,
+        "Numeric": 1,               // WB8
+        "ALetter": 1,               // WB10
+        "Hebrew_Letter": 1,         // WB10
         "MidNum": {
-            "Numeric": 1
+            "Numeric": 1            // WB11
         },
         "MidNumLet": {
-            "Numeric": 1
+            "Numeric": 1            // WB11
         },
         "Single_Quote": {
-            "Numeric": 1
+            "Numeric": 1            // WB11
         },
-        "ExtendNumLet": 1
+        "ExtendNumLet": 1           // WB13a
     },
     "ExtendNumLet": {
-        "ExtendNumLet": 1,
-        "ALetter": 1,
-        "Hebrew_Letter": 1,
-        "Numeric": 1,
-        "Katakana": 1
+        "ExtendNumLet": 1,          // WB13a
+        "ALetter": 1,               // WB13b
+        "Hebrew_Letter": 1,         // WB13b
+        "Numeric": 1,               // WB13b
+        "Katakana": 1               // WB13b
     },
     "Hebrew_Letter": {
-        "ALetter": 1,
-        "Hebrew_Letter": 1,
+        "ALetter": 1,               // WB5
+        "Hebrew_Letter": 1,         // WB5
         "MidLetter": {
-            "ALetter": 1,
-            "Hebrew_Letter": 1
+            "ALetter": 1,           // WB7
+            "Hebrew_Letter": 1      // WB7
         },
         "MidNumLet": {
-            "ALetter": 1,
-            "Hebrew_Letter": 1
+            "ALetter": 1,           // WB7
+            "Hebrew_Letter": 1      // WB7
         },
-        "Single_Quote": {
-            "ALetter": 1,
-            "Hebrew_Letter": 1
-        },
+        "Single_Quote": 1,          // WB7a
         "Double_Quote": {
-            "Hebrew_Letter": 1
+            "Hebrew_Letter": 1      // WB7b
         },
-        "Numeric": 1,
-        "ExtendNumLet": 1
+        "Numeric": 1,               // WB11
+        "ExtendNumLet": 1           // WB13a
     },
-    "ZWJ_FE": {
-        "Format_FE": 1,
-        "Extend_FE": 1,
-        "ZWJ_FE": 1,
-        "WSegSpace": 1
+    "Single_Quote": {
+        "Any": 0                    // WB999
+    },
+    "Double_Quote": {
+        "Any": 0                    // WB999
+    },
+    "MidLetter": {
+        "Any": 0                    // WB999
+    },
+    "MidNum": {
+        "Any": 0                    // WB999
+    },
+    "MidNumLet": {
+        "Any": 0                    // WB999
     },
     "Newline": {
-        "Any": 0
-    },
-    "sot": {
-        "Any": 0
+        "Any": 0                    // WB3a
     },
     "WSegSpace": {
-        "WSegSpace": 1
+        "WSegSpace": 1              // WB3d
     },
     "Regional_Indicator": {
-        "Regional_Indicator": 1,
+        "Regional_Indicator": 1,    // WB15
         "Any": 0
     }
 };

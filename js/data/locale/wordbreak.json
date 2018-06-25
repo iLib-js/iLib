@@ -4602,21 +4602,27 @@
                 "ALetter": 1,
                 "Hebrew_Letter": 1
             },
-            "Single_Quote": {
-                "ALetter": 1,
-                "Hebrew_Letter": 1
-            },
+            "Single_Quote": 1,
             "Double_Quote": {
                 "Hebrew_Letter": 1
             },
             "Numeric": 1,
             "ExtendNumLet": 1
         },
-        "ZWJ_FE": {
-            "Format_FE": 1,
-            "Extend_FE": 1,
-            "ZWJ_FE": 1,
-            "WSegSpace": 1
+        "Single_Quote": {
+            "Any": 0
+        },
+        "Double_Quote": {
+            "Any": 0
+        },
+        "MidLetter": {
+            "Any": 0
+        },
+        "MidNum": {
+            "Any": 0
+        },
+        "MidNumLet": {
+            "Any": 0
         },
         "Newline": {
             "Any": 0
