@@ -811,7 +811,20 @@ TimeZone.prototype.inDaylightTime = function (date, wallTime) {
 		var d = new Date(date ? date.getTimeExtended() + offset: undefined);
 		// the DST offset is always the one that is closest to positive infinity, no matter 
 		// if you are in the northern or southern hemisphere, east or west
-		var dst = Math.max(this.offsetJan1, this.offsetJun1);
+
+        var currentOffset = d.getTimezoneOffset();
+        var offsettoMillisecond = (-d.getTimezoneOffset()) * 60 * 1000;
+
+        var minusTime = new Date(date.getTimeExtended() - offsettoMillisecond);
+        var minusTimeOffset = minusTime.getTimezoneOffset();
+
+        var dst = Math.max(this.offsetJan1, this.offsetJun1);
+
+        if (currentOffset !== minusTimeOffset) {
+            // The dst offset value has been changed after date.getTimeExtended() value is considering offset.
+            return minusTimeOffset === dst;
+        }
+
 		return (-d.getTimezoneOffset() === dst);
 	}
 	
