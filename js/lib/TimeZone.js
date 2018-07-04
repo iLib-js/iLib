@@ -821,10 +821,12 @@ TimeZone.prototype.inDaylightTime = function (date, wallTime) {
         var dst = Math.max(this.offsetJan1, this.offsetJun1);
 
         if (currentOffset !== minusTimeOffset) {
-            // The dst offset value has been changed after date.getTimeExtended() value is considering offset.
-            return minusTimeOffset === dst;
+            if (Math.abs(currentOffset) > Math.abs(minusTimeOffset)) {
+                return minusTimeOffset === dst;
+            } else {
+                return ((-minusTimeOffset) === dst);
+            }
         }
-
         return (-d.getTimezoneOffset() === dst);
     }
     
