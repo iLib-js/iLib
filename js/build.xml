@@ -23,6 +23,8 @@ limitations under the License.
 	<!-- (and without typing -D each time it compiles it)                    -->
 	<property file="../build.properties"/>
 	<property file="build.properties"/>
+	<property environment="env"/>
+	
 	<!-- Properties that can be overridden -->
 	<!-- directories -->
 	<property name="build.base"						value="${basedir}"/>
@@ -48,9 +50,10 @@ limitations under the License.
 	<property name="build.config"					value="config"/>
 	<property name="log4j.config.file"				value="${build.config}/log4j.properties"/>
 	<property name="build.bin"						value="${build.base}/../bin"/>
+    <property name="nm.bin"                         value="${build.base}/../../node_modules/.bin"/>
 	<property name="jar.ilib"					    value="ilib.jar"/>
 	<property name="locales.default"                value="en-AU,en-CA,en-GB,en-IN,en-NG,en-PH,en-PK,en-SG,en-US,en-ZA,de-DE,fr-CA,fr-FR,es-AR,es-ES,es-MX,id-ID,it-IT,ja-JP,ko-KR,pt-BR,ru-RU,tr-TR,vi-VN,zxx-XX,zh-Hans-CN,zh-Hant-HK,zh-Hant-TW,zh-Hans-SG"/>
-        <property name="locales.unittest"               value="aa-DJ,af-NA,agq-CM,ak-GH,am-ET,ar-AE,ar-BH,ar-DJ,ar-DZ,ar-EG,ar-IQ,ar-JO,ar-KW,ar-LB,ar-LY,ar-MA,ar-MR,ar-OM,ar-QA,ar-SA,ar-SD,ar-SY,ar-TN,ar-YE,asa-TZ,as-IN,az-Latn-AZ,bas-CM,be-BY,bem-ZM,bg-BG,bh-IN,bm-ML,bn-IN,br-FR,bs-BS,bs-Cyrl-BA,bs-Latn-BA,bs-ME,ca-FR,cop-EG,cs-CZ,da-DK,de-AT,de-DE,el-GR,en-AM,en-AU,en-CA,en-ET,en-GB,en-GH,en-GM,en-HK,en-IE,en-IN,en-IS,en-KE,en-LK,en-LR,en-MW,en-MY,en-NG,en-NZ,en-PA,en-PH,en-PK,en-PR,en-RW,en-SD,en-SG,en-SL,en-TZ,en-UG,en-US,en-ZA,en-ZM,es-AR,es-BO,es-CL,es-CO,es-CR,es-DO,es-EC,es-ES,es-GQ,es-GT,es-HN,es-MX,es-NI,es-PA,es-PE,es-PR,es-PY,es-SV,es-UY,es-VE,et-EE,fa-AF,fa-IR,ff-SN,fi-FI,fj-FJ,fo-FO,fr-AD,fr-BE,fr-BF,fr-BJ,fr-CA,fr-CD,fr-CF,fr-CG,fr-CH,fr-CI,fr-CM,fr-DJ,fr-DZ,fr-FR,fr-GA,fr-GN,fr-LB,fr-LU,fr-MG,fr-ML,fr-RW,fr-SN,fr-TG,fr-YT,ga-IE,gl-ES,gu-IN,ha-Latn-NG,he-IL,hi-IN,hr-HR,hr-ME,hu-HU,hy-AZ,hy-AM,id-ID,id-MY,it-CH,it-IT,it-SM,ja-JP,ka-IR,kk-Cyrl-KZ,km-KH,kn-IN,ko-KR,ks-Arab-IN,ku-Arab-IQ,ku-Arab-IR,ku-IR,lg-UG,ln-CF,lt-LT,lv-LV,fr-Latn-MA,mi-CK,mk-MK,ml-IN,mm-MM,mn-CN,mn-Cyrl-MN,mr-IN,ms-BN,ms-MY,ne-NP,nl-BE,nl-NL,nb-NO,nn-NO,no-NO,no-SJ,om-ET,or-IN,os-RU,pa-Arab,pa-IN,pa-Arab-PK,pl-PL,ps-AF,pt-AO,pt-BR,pt-CV,pt-GW,pt-GQ,pt-MO,pt-MZ,pt-PT,pt-ST,pt-TL,ro-RO,ro-RS,ru-GE,ru-KG,ru-KZ,ru-RU,ru-TM,shi-Tfng-MA,si-LK,sk-SK,sl-SI,sl-SL,so-ET,so-SO,sq-AL,sq-ME,sq-MK,sr-Cyrl-BA,sr-Latn-BA,sr-Latn-RS,sr-Latn-ME,sr-RS,sr-Latn-RS,ss-ZA,st-LS,sv-FI,sv-SE,sw-KE,sw-UG,ta-IN,ta-LK,ta-MY,ta-SG,te-IN,th-TH,tr-TR,uk-UA,ur-IN,ur-PK,uz-AF,uz-Arab-AF,uz-Cyrl-UZ,uz-Latn-UZ,uz-UZ,vai-Latn-LR,vi-VN,zh-Hans-CN,zh-Hant-HK,zh-Hans-HK,zh-Hans-MY,zh-Hant-TW,zh-Hans-MO,zh-Hant-MO,zh-Hans-SG,zh-Hant-US,zu-ZA,zxx-Cyrl-XX,zxx-Hans-XX,zxx-Hebr-XX,zxx-XX"/>
+    <property name="locales.unittest"               value="aa-DJ,af-NA,agq-CM,ak-GH,am-ET,ar-AE,ar-BH,ar-DJ,ar-DZ,ar-EG,ar-IQ,ar-JO,ar-KW,ar-LB,ar-LY,ar-MA,ar-MR,ar-OM,ar-QA,ar-SA,ar-SD,ar-SY,ar-TN,ar-YE,asa-TZ,as-IN,az-Latn-AZ,bas-CM,be-BY,bem-ZM,bg-BG,bh-IN,bm-ML,bn-IN,br-FR,bs-BS,bs-Cyrl-BA,bs-Latn-BA,bs-ME,ca-FR,cop-EG,cs-CZ,da-DK,de-AT,de-DE,el-GR,en-AM,en-AU,en-CA,en-ET,en-GB,en-GH,en-GM,en-HK,en-IE,en-IN,en-IS,en-KE,en-LK,en-LR,en-MW,en-MY,en-NG,en-NZ,en-PA,en-PH,en-PK,en-PR,en-RW,en-SD,en-SG,en-SL,en-TZ,en-UG,en-US,en-ZA,en-ZM,es-AR,es-BO,es-CL,es-CO,es-CR,es-DO,es-EC,es-ES,es-GQ,es-GT,es-HN,es-MX,es-NI,es-PA,es-PE,es-PR,es-PY,es-SV,es-UY,es-VE,et-EE,fa-AF,fa-IR,ff-SN,fi-FI,fj-FJ,fo-FO,fr-AD,fr-BE,fr-BF,fr-BJ,fr-CA,fr-CD,fr-CF,fr-CG,fr-CH,fr-CI,fr-CM,fr-DJ,fr-DZ,fr-FR,fr-GA,fr-GN,fr-LB,fr-LU,fr-MG,fr-ML,fr-RW,fr-SN,fr-TG,fr-YT,ga-IE,gl-ES,gu-IN,ha-Latn-NG,he-IL,hi-IN,hr-HR,hr-ME,hu-HU,hy-AZ,hy-AM,id-ID,id-MY,it-CH,it-IT,it-SM,ja-JP,ka-IR,kk-Cyrl-KZ,km-KH,kn-IN,ko-KR,ks-Arab-IN,ku-Arab-IQ,ku-Arab-IR,ku-IR,lg-UG,ln-CF,lt-LT,lv-LV,fr-Latn-MA,mi-CK,mk-MK,ml-IN,mm-MM,mn-CN,mn-Cyrl-MN,mr-IN,ms-BN,ms-MY,ne-NP,nl-BE,nl-NL,nb-NO,nn-NO,no-NO,no-SJ,om-ET,or-IN,os-RU,pa-Arab,pa-IN,pa-Arab-PK,pl-PL,ps-AF,pt-AO,pt-BR,pt-CV,pt-GW,pt-GQ,pt-MO,pt-MZ,pt-PT,pt-ST,pt-TL,ro-RO,ro-RS,ru-GE,ru-KG,ru-KZ,ru-RU,ru-TM,shi-Tfng-MA,si-LK,sk-SK,sl-SI,sl-SL,so-ET,so-SO,sq-AL,sq-ME,sq-MK,sr-Cyrl-BA,sr-Latn-BA,sr-Latn-RS,sr-Latn-ME,sr-RS,sr-Latn-RS,ss-ZA,st-LS,sv-FI,sv-SE,sw-KE,sw-UG,ta-IN,ta-LK,ta-MY,ta-SG,te-IN,th-TH,tr-TR,uk-UA,ur-IN,ur-PK,uz-AF,uz-Arab-AF,uz-Cyrl-UZ,uz-Latn-UZ,uz-UZ,vai-Latn-LR,vi-VN,zh-Hans-CN,zh-Hant-HK,zh-Hans-HK,zh-Hans-MY,zh-Hant-TW,zh-Hans-MO,zh-Hant-MO,zh-Hans-SG,zh-Hant-US,zu-ZA,zxx-Cyrl-XX,zxx-Hans-XX,zxx-Hebr-XX,zxx-XX"/>
 	<property name="locales.demo"                   value="aa-DJ,af-NA,af-ZA,agq-CM,ak-GH,am-ET,ar-AE,ar-BH,ar-DJ,ar-DZ,ar-EG,ar-IQ,ar-JO,ar-KW,ar-LB,ar-LY,ar-MA,ar-MR,ar-OM,ar-QA,ar-SA,ar-SD,ar-SY,ar-TN,ar-YE,as-IN,asa-TZ,az-AZ,bas-CM,be-BY,bem-ZM,bg-BG,bh-IN,bm-ML,bn-IN,br-FR,bs-Cyrl-BA,bs-Latn-BA,bs-ME,ca-FR,cop-EG,cs-CZ,da-DK,de-AT,de-CH,de-DE,el-GR,en-AU,en-CA,en-ET,en-GB,en-GH,en-GM,en-HK,en-IE,en-IN,en-KE,en-LK,en-LR,en-MW,en-MY,en-NG,en-NZ,en-PH,en-PK,en-PR,en-RW,en-SG,en-SL,en-TZ,en-UG,en-US,en-ZA,en-ZM,es-AR,es-CO,es-CR,es-DO,es-EC,es-ES,es-GQ,es-GT,es-HN,es-MX,es-SV,es-UY,es-VE,et-EE,fa-AF,fa-IR,ff-SN,fi-FI,fj-FJ,fr-AD,fr-BE,fr-BF,fr-BJ,fr-CA,fr-CD,fr-CF,fr-CG,fr-CH,fr-CI,fr-CM,fr-DJ,fr-DZ,fr-FR,fr-GA,fr-GN,fr-LB,fr-LU,fr-MG,fr-ML,fr-RW,fr-SN,fr-TG,fr-YT,ga-IE,gl-ES,gu-IN,ha-Latn-NG,he-IL,hi-IN,hr-HR,hr-ME,hu-HU,hy-AM,hy-AZ,id-ID,id-MY,it-CH,it-IT,it-SM,ja-JP,ka-IR,kk-Cyrl-KZ,km-KH,kn-IN,ko-KR,ks-Arab-IN,ku-IR,lg-UG,ln-CF,lt-LT,lv-LV,mi-CK,mk-MK,ml-IN,mn-CN,mr-IN,ms-BN,ms-MY,nb-NO,ne-IN,nl-BE,nl-CW,nl-GF,nl-NL,nl-SR,no-BV,no-NO,no-SJ,om-ET,or-IN,os-RU,pa-Arab-PK,pl-PL,pt-AO,pt-BR,pt-CV,pt-GW,pt-MO,pt-MZ,pt-PT,pt-ST,pt-TL,ro-RO,ro-RS,ru-KG,ru-KZ,ru-RU,ru-TM,si-LK,sk-SK,sl-SI,so-ET,so-SO,sq-AL,sq-ME,sq-MK,sr-Cyrl-BA,sr-Latn-BA,sr-Latn-ME,sr-Latn-RS,sr-RS,ss-ZA,st-LS,sv-FI,sv-SE,sw-UG,ta-LK,ta-MY,ta-SG,te-IN,th-TH,tr-TR,uk-UA,ur-IN,ur-PK,uz-AF,uz-Arab-AF,uz-Cyrl-UZ,uz-Latn-UZ,vai-Latn-LR,vi-VN,zh-Hans-CN,zh-Hans-MO,zh-Hans-MY,zh-Hans-SG,zh-Hant-HK,zh-Hant-TW,zh-Hant-US,zu-ZA,zxx-Cyrl-XX,zxx-Hans-XX,zxx-Hebr-XX,zxx-XX"/>
 
 	<!-- =================================================================== -->
@@ -110,6 +113,7 @@ limitations under the License.
 		<mkdir dir="${build.output.js}"/>
 		<mkdir dir="${build.output.dyncode}"/>
 		<mkdir dir="${build.output.test}"/>
+		
 	</target>
 	<!-- =================================================================== -->
 	<!-- Create the core jar file                                            -->
@@ -122,14 +126,14 @@ limitations under the License.
 		<attribute name="target" default="web"/>
 		<sequential>
 		    <echo>executing webpack</echo>
-			<exec osfamily="unix" executable="${webpack.command}" dir="${build.base}" failifexecutionfails="@{failquit}" failonerror="@{failquit}">
+			<exec osfamily="unix" executable="webpack" dir="${build.base}" failifexecutionfails="@{failquit}" failonerror="@{failquit}">
 				<arg value="--env.assembly=@{assembly}"/>
 				<arg value="--env.size=@{size}"/>
 				<arg value="--env.compilation=@{compilation}"/>
 				<arg value="--env.locales=@{locales}"/>
 				<arg value="--env.target=@{target}"/>
 			</exec>
-			<exec osfamily="windows" executable="${webpack.command}.bat" dir="${build.base}" failifexecutionfails="@{failquit}"  failonerror="@{failquit}">
+			<exec osfamily="windows" executable="webpack.bat" dir="${build.base}" failifexecutionfails="@{failquit}"  failonerror="@{failquit}">
 				<arg value="--env.assembly=@{assembly}"/>
 				<arg value="--env.size=@{size}"/>
 				<arg value="--env.compilation=@{compilation}"/>
@@ -277,7 +281,8 @@ limitations under the License.
 		<replace token="// !macro ilibVersion" value='"${version}"' preserveLastModified="true">
 		    <fileset dir="${build.output.js}" includes="ilib.js"/>
 		</replace>
-		<exec osfamily="unix" executable="${uglify.command}" dir="${build.base}" failifexecutionfails="true">
+		<exec osfamily="unix" executable="uglifyjs" dir="${build.base}" failifexecutionfails="true">
+            <env key="PATH" path="${env.PATH}:${nm.bin}"/>
 			<arg value="${build.output.js}/ilib.js"/>
             <arg value="--comments"/>
             <arg value="/\!(data|loadLocaleData|defineLocaleData|macro)/"/>
@@ -287,7 +292,8 @@ limitations under the License.
             <arg value="-c"/>
 			<arg value="-v"/>
 		</exec>
-		<exec osfamily="windows" executable="${uglify.command}" dir="${build.base}" failifexecutionfails="true">
+		<exec osfamily="windows" executable="uglifyjs" dir="${build.base}" failifexecutionfails="true">
+            <env key="PATH" path="${env.PATH}:${nm.bin}"/>
 			<arg value="${build.output.js}/ilib.js"/>
             <arg value="--comments"/>
             <arg value="/\!(data|loadLocaleData|defineLocaleData|macro)/"/>
@@ -298,18 +304,20 @@ limitations under the License.
 			<arg value="-v"/>
 		</exec>
 		<exec osfamily="unix" executable="node" dir="${build.base}" failifexecutionfails="true">
+            <env key="PATH" path="${env.PATH}:${nm.bin}"/>
 			<arg value="${build.tools.qmlizer}/qmlizer.js"/>
 			<arg value="${build.output.dyncode}/ilib.js"/>
 			<arg value="${build.output.dyncode}/ilib.js"/>
 		</exec>
 		<exec osfamily="windows" executable="node.exe" dir="${build.base}" failifexecutionfails="true">
+            <env key="PATH" path="${env.PATH}:${nm.bin}"/>
 			<arg value="${build.tools.qmlizer}/qmlizer.js"/>
 			<arg value="${build.output.dyncode}/ilib.js"/>
 			<arg value="${build.output.dyncode}/ilib.js"/>
 		</exec>
 
 		<!-- then do all the rest of them -->
-		<apply osfamily="unix" executable="${uglify.command}" dest="${build.output.dyncode}" parallel="false">
+		<apply osfamily="unix" executable="uglifyjs" dest="${build.output.dyncode}" parallel="false">
 			<srcfile/>
 			<arg value="--comments"/>
 			<arg value="/\!(data|loadLocaleData|defineLocaleData|macro)/"/>
@@ -333,7 +341,7 @@ limitations under the License.
             </fileset>
 			<mapper type="glob" from="*.js" to="*.js"/>
 		</apply>
-		<apply osfamily="windows" executable="${uglify.command}" dest="${build.output.dyncode}" parallel="false">
+		<apply osfamily="windows" executable="uglifyjs.bat" dest="${build.output.dyncode}" parallel="false">
 			<srcfile/>
             <arg value="--comments"/>
             <arg value="/\!(data|loadLocaleData|defineLocaleData|macro)/"/>
@@ -505,27 +513,33 @@ limitations under the License.
     </target>
     <target name="scan.demo">
         <sequential>
-            <echo>Scanning demo dir for ilib classes</echo>
-            <exec osfamily="unix" executable="ilib-scanner" dir="${build.demo}" failifexecutionfails="@{failquit}" failonerror="@{failquit}">
+            <echo>Scanning demo dir for ilib classes ${env.PATH}:${nm.bin}</echo>
+            <exec osfamily="unix" executable="ilib-scanner" dir="${build.demo}" failifexecutionfails="@{failquit}" failonerror="@{failquit}" searchpath="true">
+                <env key="PATH" path="${env.PATH}:${nm.bin}"/>
                 <arg value="scripts/ilib-include.js"/>
                 <arg value="--assembly=assembled"/>
                 <arg value="--compilation=compiled"/>
                 <arg value="--locales=${locales.demo}"/>
+                <arg value="--ilibRoot=${build.base}"/>
             </exec>
-            <exec osfamily="windows" executable="ilib-scanner" dir="${build.demo}" failifexecutionfails="@{failquit}"  failonerror="@{failquit}">
+            <exec osfamily="windows" executable="ilib-scanner.bat" dir="${build.demo}" failifexecutionfails="@{failquit}"  failonerror="@{failquit}" searchpath="true">
+                <env key="PATH" path="${env.PATH}:${nm.bin}"/>
                 <arg value="scripts/ilib-include.js"/>
                 <arg value="--assembly=assembled"/>
                 <arg value="--compilation=compiled"/>
                 <arg value="--locales=${locales.demo}"/>
+                <arg value="--ilibRoot=${build.base}"/>
             </exec>
         </sequential>
     </target>
     <target name="build.demo" depends="scan.demo">
        <sequential>
             <echo>Executing webpack.js</echo>
-            <exec osfamily="unix" executable="${webpack.command}" dir="${build.demo}/scripts" failifexecutionfails="@{failquit}" failonerror="@{failquit}">
+            <exec osfamily="unix" executable="webpack" dir="${build.demo}/scripts" failifexecutionfails="@{failquit}" failonerror="@{failquit}">
+                <env key="PATH" path="${env.PATH}:${nm.bin}"/>
             </exec>
-            <exec osfamily="windows" executable="%{webpack.command}.bat" dir="${build.demo}/scripts" failifexecutionfails="@{failquit}"  failonerror="@{failquit}">
+            <exec osfamily="windows" executable="webpack.bat" dir="${build.demo}/scripts" failifexecutionfails="@{failquit}"  failonerror="@{failquit}">
+                <env key="PATH" path="${env.PATH}:${nm.bin}"/>
             </exec>
         </sequential>
     </target>
@@ -549,6 +563,7 @@ limitations under the License.
 		<attribute name="failquit"/>
 		<sequential>
 			<exec osfamily="unix" executable="node" dir="${build.test}" failifexecutionfails="@{failquit}" failonerror="@{failquit}">
+                <env key="PATH" path="${env.PATH}:${nm.bin}"/>
 				<arg line="testRunner.js"/>
 				<arg line="@{assembly}"/>
 				<arg line="@{compilation}"/>
@@ -556,6 +571,7 @@ limitations under the License.
 				<arg line="@{sync}"/>
 			</exec>
 			<exec osfamily="windows" executable="node.exe" dir="${build.test}" failifexecutionfails="@{failquit}"  failonerror="@{failquit}">
+                <env key="PATH" path="${env.PATH}:${nm.bin}"/>
 				<arg line="testRunner.js"/>
 				<arg line="@{assembly}"/>
 				<arg line="@{compilation}"/>
@@ -571,9 +587,11 @@ limitations under the License.
 		<attribute name="file"/>
 		<sequential>
 			<exec osfamily="unix" executable="node" dir="${build.test}" failifexecutionfails="@{failquit}" failonerror="@{failquit}">
+                <env key="PATH" path="${env.PATH}:${nm.bin}"/>
 				<arg line="@{suite}/nodeunit/@{file}"/>
 			</exec>
 			<exec osfamily="windows" executable="node.exe" dir="${build.test}" failifexecutionfails="@{failquit}"  failonerror="@{failquit}">
+                <env key="PATH" path="${env.PATH}:${nm.bin}"/>
 				<arg line="@{suite}/nodeunit/@{file}"/>
 			</exec>
 		</sequential>
@@ -599,10 +617,12 @@ limitations under the License.
 		<attribute name="failquit"/>
 		<sequential>
 			<exec osfamily="unix" executable="node" dir="${build.test}" failifexecutionfails="@{failquit}" failonerror="@{failquit}">
+                <env key="PATH" path="${env.PATH}:${nm.bin}"/>
 				<arg line="--inspect-brk"/>
 				<arg line="@{suite}/nodeunit/testSuite.js"/>
 			</exec>
 			<exec osfamily="windows" executable="node.exe" dir="${build.test}" failifexecutionfails="@{failquit}"  failonerror="@{failquit}">
+                <env key="PATH" path="${env.PATH}:${nm.bin}"/>
 				<arg line="--inspect-brk"/>
 				<arg line="@{suite}/nodeunit/testSuite.js"/>
 			</exec>
@@ -752,6 +772,7 @@ limitations under the License.
 		<attribute name="failquit"/>
 		<sequential>
 			<exec osfamily="unix" executable="node" dir="${build.test}" failifexecutionfails="@{failquit}" failonerror="@{failquit}">
+                <env key="PATH" path="${env.PATH}:${nm.bin}"/>
 				<arg line="testSuite.js"/>
 				<arg line="@{assembly}"/>
 				<arg line="@{compilation}"/>
@@ -759,6 +780,7 @@ limitations under the License.
 				<arg line="@{sync}"/>
 			</exec>
 			<exec osfamily="windows" executable="node.exe" dir="${build.test}" failifexecutionfails="@{failquit}"  failonerror="@{failquit}">
+                <env key="PATH" path="${env.PATH}:${nm.bin}"/>
 				<arg line="testSuite.js"/>
 				<arg line="@{assembly}"/>
 				<arg line="@{compilation}"/>
@@ -773,11 +795,13 @@ limitations under the License.
 		<attribute name="dir"/>
 		<sequential>
 			<exec osfamily="unix" executable="node" dir="@{dir}" failifexecutionfails="true" failonerror="true">
+                <env key="PATH" path="${env.PATH}:${nm.bin}"/>
 				<arg line="@{script}"/>
 				<arg line="@{args}"/>
 				<arg line="nodejs"/>
 			</exec>
 			<exec osfamily="windows" executable="node.exe" dir="@{dir}" failifexecutionfails="true"  failonerror="true">
+                <env key="PATH" path="${env.PATH}:${nm.bin}"/>
 				<arg line="@{script}"/>
 				<arg line="@{args}"/>
 				<arg line="nodejs"/>
@@ -802,11 +826,13 @@ limitations under the License.
         <attribute name="pattern"/>
         <sequential>
             <exec osfamily="unix" executable="bash" dir="@{dir}" failifexecutionfails="true" failonerror="true" outputproperty="expanded.files">
+                <env key="PATH" path="${env.PATH}:${nm.bin}"/>
                 <arg value="-c"/>
                 <arg value="ls -1 @{pattern}"/>
             </exec>
             < ! - - relies on cygwin ls - - >
             <exec osfamily="windows" executable="cmd.exe" dir="@{dir}" failifexecutionfails="true" failonerror="true" outputproperty="expanded.files">
+                <env key="PATH" path="${env.PATH}:${nm.bin}"/>
                 <arg line="/c"/>
                 <arg line="ls -1 @{pattern}"/>
             </exec>
@@ -829,10 +855,12 @@ limitations under the License.
 		<echo>Executing jsdoc ... </echo>
 		<sequential>
             <exec osfamily="unix" executable="bash" dir="${build.base}" failifexecutionfails="@{failquit}" failonerror="@{failquit}">
+                <env key="PATH" path="${env.PATH}:${nm.bin}"/>
                 <arg value="-c"/>
                 <arg value="jsdoc2 --template=${JSDOCDIR}/templates/jsdoc --directory=${build.jsdoc} --recurse=100 --encoding=utf-8 lib/*.js"/>
             </exec>
             <exec osfamily="windows" executable="cmd.exe" dir="${build.base}" failifexecutionfails="@{failquit}"  failonerror="@{failquit}">
+                <env key="PATH" path="${env.PATH}:${nm.bin}"/>
                 <arg value="/c"/>
                 <arg value="jsdoc2 --template=${JSDOCDIR}/templates/jsdoc --directory=${build.jsdoc} --recurse=100 --encoding=utf-8 lib/*.js"/>
             </exec>
@@ -847,12 +875,16 @@ limitations under the License.
 			depends="testinfo"
 			description="generates the localeinfo.json files out of the *.jf files"
 			unless="info.not.needed">
-		<exec osfamily="unix" executable="node" dir="${build.locale.src}">
-			<arg value="${build.tools.build}/mkli.js"/>
-		</exec>
-		<exec osfamily="windows" executable="node.exe" dir="${build.locale.src}">
-			<arg value="${build.tools.build}/mkli.js"/>
-		</exec>
+		<sequential>
+			<exec osfamily="unix" executable="node" dir="${build.locale.src}">
+                <env key="PATH" path="${env.PATH}:${nm.bin}"/>
+				<arg value="${build.tools.build}/mkli.js"/>
+			</exec>
+			<exec osfamily="windows" executable="node.exe" dir="${build.locale.src}">
+                <env key="PATH" path="${env.PATH}:${nm.bin}"/>
+				<arg value="${build.tools.build}/mkli.js"/>
+			</exec>
+		</sequential>
 		<touch file="${build.locale.src}/localeinfo.stamp"/>
 	</target>
 	<target name="testlocalejson" description="test whether or not the json files need to compressed">
@@ -864,16 +896,20 @@ limitations under the License.
 			depends="geninfo,testlocalejson"
 			description="compresses the json files"
 			unless="json.compress.not.needed">
-		<exec osfamily="unix" executable="node" dir="${build.locale.src}" failifexecutionfails="true" failonerror="true">
-			<arg value="${build.tools.build}/jsoncompress.js"/>
-			<arg value="."/>
-			<arg value="${build.locale}"/>
-		</exec>
-		<exec osfamily="windows" executable="node.exe" dir="${build.locale.src}">
-			<arg value="${build.tools.build}/jsoncompress.js"/>
-			<arg value="."/>
-			<arg value="${build.locale}"/>
-		</exec>
+		<sequential>
+			<exec osfamily="unix" executable="node" dir="${build.locale.src}" failifexecutionfails="true" failonerror="true">
+                <env key="PATH" path="${env.PATH}:${nm.bin}"/>
+				<arg value="${build.tools.build}/jsoncompress.js"/>
+				<arg value="."/>
+				<arg value="${build.locale}"/>
+			</exec>
+			<exec osfamily="windows" executable="node.exe" dir="${build.locale.src}">
+                <env key="PATH" path="${env.PATH}:${nm.bin}"/>
+				<arg value="${build.tools.build}/jsoncompress.js"/>
+				<arg value="."/>
+				<arg value="${build.locale}"/>
+			</exec>
+		</sequential>
 		<touch file="${build.locale.src}/jsoncompress.stamp"/>
 	</target>
 	<target name="test.locale.manifest" description="test whether or not the locale manifest needs to be regenerated">
@@ -885,12 +921,16 @@ limitations under the License.
 			depends="compress.locale.json,test.locale.manifest"
 			description="produces the ilibmanifest.json file"
 			unless="locale.manifest.not.needed">
-		<exec osfamily="unix" executable="node" dir="${build.locale}">
-			<arg value="${build.tools.build}/mkmf.js"/>
-		</exec>
-		<exec osfamily="windows" executable="node.exe" dir="${build.locale}">
-			<arg value="${build.tools.build}/mkmf.js"/>
-		</exec>
+		<sequential>
+			<exec osfamily="unix" executable="node" dir="${build.locale}">
+	            <env key="PATH" path="${env.PATH}:${nm.bin}"/>
+				<arg value="${build.tools.build}/mkmf.js"/>
+			</exec>
+			<exec osfamily="windows" executable="node.exe" dir="${build.locale}">
+	            <env key="PATH" path="${env.PATH}:${nm.bin}"/>
+				<arg value="${build.tools.build}/mkmf.js"/>
+			</exec>
+		</sequential>
 	</target>
 	<target name="testpackagejson" description="test whether or not the package.json file needs to be rebuilt">
 		<uptodate
@@ -914,10 +954,12 @@ limitations under the License.
 		<attribute name="dir"/>
 		<sequential>
 			<exec osfamily="unix" executable="npm" dir="@{dir}" failifexecutionfails="true" failonerror="true">
+                <env key="PATH" path="${env.PATH}:${nm.bin}"/>
 				<arg line="@{command}"/>
 				<arg line="@{args}"/>
 			</exec>
 			<exec osfamily="windows" executable="npm.exe" dir="@{dir}" failifexecutionfails="true"  failonerror="true">
+                <env key="PATH" path="${env.PATH}:${nm.bin}"/>
 				<arg line="@{command}"/>
 				<arg line="@{args}"/>
 			</exec>
@@ -927,14 +969,18 @@ limitations under the License.
 		<npm command="config" args="set parseable true" dir="${build.base}"/>
 	</target>
 	<target name="location.trireme">
-    	<exec osfamily="unix" outputproperty="trireme.location" resultproperty="trireme.result" errorproperty="trireme.error" executable="sh" dir="${build.base}" failifexecutionfails="true">
-    		<arg value="-c"/>
-			<arg value="npm list trireme | tail -1"/>
-		</exec>
-		<exec osfamily="windows" outputproperty="trireme.location" resultproperty="trireme.result" errorproperty="trireme.error" executable="cmd.exe" dir="${build.base}" failifexecutionfails="true">
-    		<arg value="/c"/>
-			<arg value="npm list trireme | tail -1"/>
-		</exec>
+	    <sequential>
+            <exec osfamily="unix" outputproperty="trireme.location" resultproperty="trireme.result" errorproperty="trireme.error" executable="sh" dir="${build.base}" failifexecutionfails="true">
+                <env key="PATH" path="${env.PATH}:${nm.bin}"/>
+	    		<arg value="-c"/>
+				<arg value="npm list trireme | tail -1"/>
+			</exec>
+			<exec osfamily="windows" outputproperty="trireme.location" resultproperty="trireme.result" errorproperty="trireme.error" executable="cmd.exe" dir="${build.base}" failifexecutionfails="true">
+                <env key="PATH" path="${env.PATH}:${nm.bin}"/>
+	    		<arg value="/c"/>
+				<arg value="npm list trireme | tail -1"/>
+			</exec>
+	    </sequential>
 	</target>
 	<target name="testtriremeinstalled" depends="npm.set.parseable.true,location.trireme">
     	<condition property="trireme.installed">
@@ -1034,13 +1080,17 @@ limitations under the License.
 	</target>
 
 	<target name="test.remote" depends="prepare,assemble.unittest.assembled,assemble.unittest.dyndata" description="Run a remote server to test ilib in remote browsers">
-	    <exec osfamily="unix" executable="node" dir="${build.base}" failifexecutionfails="true">
-			<arg value="../node_modules/http-server/bin/http-server"/>
-			<arg value="-p"/>
-			<arg value="9090"/>
-		</exec>
-		<exec osfamily="windows" executable="node.exe" dir="${build.base}" failifexecutionfails="true">
-			<arg value="../node_modules/http-server/bin/http-server"/>
-		</exec>
+	   <sequential>
+		    <exec osfamily="unix" executable="node" dir="${build.base}" failifexecutionfails="true">
+	            <env key="PATH" path="${env.PATH}:${nm.bin}"/>
+				<arg value="../node_modules/http-server/bin/http-server"/>
+				<arg value="-p"/>
+				<arg value="9090"/>
+			</exec>
+			<exec osfamily="windows" executable="node.exe" dir="${build.base}" failifexecutionfails="true">
+	            <env key="PATH" path="${env.PATH}:${nm.bin}"/>
+				<arg value="../node_modules/http-server/bin/http-server"/>
+			</exec>
+	   </sequential>
 	</target>
 </project>
