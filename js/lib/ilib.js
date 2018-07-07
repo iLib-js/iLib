@@ -384,29 +384,36 @@ ilib.setTimeZone = function (tz) {
  */
 ilib.getTimeZone = function() {
     if (typeof(ilib.tz) === 'undefined') {
-        if (typeof(navigator) !== 'undefined' && typeof(navigator.timezone) !== 'undefined') {
-            // running in a browser
-            if (navigator.timezone.length > 0) {
-                ilib.tz = navigator.timezone;
-            }
-        } else if (typeof(PalmSystem) !== 'undefined' && typeof(PalmSystem.timezone) !== 'undefined') {
-            // running in webkit on webOS
-            if (PalmSystem.timezone.length > 0) {
-                ilib.tz = PalmSystem.timezone;
-            }
-        } else if (typeof(environment) !== 'undefined' && typeof(environment.user) !== 'undefined') {
-            // running under rhino
-            if (typeof(environment.user.timezone) !== 'undefined' && environment.user.timezone.length > 0) {
-                ilib.tz = environment.user.timezone;
-            }
-        } else if (typeof(process) !== 'undefined' && typeof(process.env) !== 'undefined') {
-            // running in nodejs
-            if (process.env.TZ && typeof(process.env.TZ) !== "undefined") {
-                ilib.tz = process.env.TZ;
-            }
+        if (typeof(Intl) !== 'undefined' && typeof(Intl.DateTimeFormat) !== 'undefined') {
+            var ro = new Intl.DateTimeFormat().resolvedOptions();
+            ilib.tz = ro && ro.timeZone;
         }
         
-        ilib.tz = ilib.tz || "local"; 
+        if (!ilib.tz) {
+            if (typeof(navigator) !== 'undefined' && typeof(navigator.timezone) !== 'undefined') {
+                // running in a browser
+                if (navigator.timezone.length > 0) {
+                    ilib.tz = navigator.timezone;
+                }
+            } else if (typeof(PalmSystem) !== 'undefined' && typeof(PalmSystem.timezone) !== 'undefined') {
+                // running in webkit on webOS
+                if (PalmSystem.timezone.length > 0) {
+                    ilib.tz = PalmSystem.timezone;
+                }
+            } else if (typeof(environment) !== 'undefined' && typeof(environment.user) !== 'undefined') {
+                // running under rhino
+                if (typeof(environment.user.timezone) !== 'undefined' && environment.user.timezone.length > 0) {
+                    ilib.tz = environment.user.timezone;
+                }
+            } else if (typeof(process) !== 'undefined' && typeof(process.env) !== 'undefined') {
+                // running in nodejs
+                if (process.env.TZ && typeof(process.env.TZ) !== "undefined") {
+                    ilib.tz = process.env.TZ;
+                }
+            }
+            
+            ilib.tz = ilib.tz || "local";
+        }
     }
 
     return ilib.tz;
