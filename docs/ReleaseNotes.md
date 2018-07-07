@@ -6,10 +6,12 @@ Build 004
 Published as version 13.3.0
 
 New Features:
-* LocaleReference Documentation
+* Update of the LocaleReference Test Website Documentation
     * Added is-IS locale to a list.
     * Implemented way of publishing date automatically instead of manual fixing.
     * Updated Name of the Day and Months part. If normal and standAlone are different, It displays both.
+* Modified ilib.getTimeZone() to find the time zone from the Intl object if it is available. If not, it falls back
+to the previous behaviour of checking environment variables.
 
 Bug Fixes:
 * Fixed an ar-IQ currency symbol.
