@@ -621,6 +621,62 @@ module.exports.testpersiandateastro = {
         test.done();
     },
     
+    testPersDateAstroConstructorNearDSTWithExplicitTimeZone: function(test) {
+        test.expect(2);
+        var pd = new PersianDate({
+            year: 1397,
+            month: 1,
+            day: 1,
+            hour: 21,
+            minute: 13,
+            locale: "fa-IR",
+            timezone: "Asia/Tehran"
+        });
+
+        test.ok(pd !== null);
+
+        test.equal(pd.getJulianDay(), 2458199.238194444);
+        test.done();
+    },
+
+    /*
+    Doesn't work on node because you cannot change the time zone after the first
+    call to a Date method is called. After that, the time zone is fixed. So, we
+    cannot set up this test correctly in order to test it unless you set the 
+    system time zone to Asia/Tehran before running the entire suite.
+    testPersDateAstroConstructorNearDSTWithImplicitTimeZone: function(test) {
+        if (ilib._getPlatform() === "nodejs") {
+            test.expect(3);
+
+            ilib.tz = undefined;
+            var oldTZ = process.env.TZ;
+            process.env.TZ = "Asia/Tehran";
+
+            test.equal(ilib.getTimeZone(), "Asia/Tehran");
+
+            var pd = new PersianDate({
+                year: 1397,
+                month: 1,
+                day: 1,
+                hour: 21,
+                minute: 13,
+                timezone: "local",
+                locale: "fa-IR"
+            });
+
+            // var pd2 = DateFactory({year: 1397, month: 1, day: 1, hour: 21, minute: 13, timezone: "local", locale: "fa-IR"});
+            test.ok(pd !== null);
+
+            test.equal(pd.getJulianDay(), 2458199.238194444);
+
+            process.env.TZ = oldTZ;
+            ilib.tz = undefined;
+        }
+
+        test.done();
+    },
+    */
+
     testPersDateAstroSetYears: function(test) {
         test.expect(2);
         var pd = new PersianDate();
