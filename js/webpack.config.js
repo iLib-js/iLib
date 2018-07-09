@@ -103,7 +103,8 @@ module.exports = function(env, args) {
                 locales: locales,
                 assembly: assembly,
                 compilation: compilationType,
-                size: size
+                size: size,
+                ilibRoot: ilibRoot
             })
         ]
     };

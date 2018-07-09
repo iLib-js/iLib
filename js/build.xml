@@ -132,6 +132,7 @@ limitations under the License.
 				<arg value="--env.compilation=@{compilation}"/>
 				<arg value="--env.locales=@{locales}"/>
 				<arg value="--env.target=@{target}"/>
+				<arg value="--env.ilibRoot=${build.base}"/>
 			</exec>
 			<exec osfamily="windows" executable="webpack.bat" dir="${build.base}" failifexecutionfails="@{failquit}"  failonerror="@{failquit}">
 				<arg value="--env.assembly=@{assembly}"/>
@@ -139,6 +140,7 @@ limitations under the License.
 				<arg value="--env.compilation=@{compilation}"/>
 				<arg value="--env.locales=@{locales}"/>
                 <arg value="--env.target=@{target}"/>
+                <arg value="--env.ilibRoot=${build.base}"/>
 			</exec>
 		</sequential>
 	</macrodef>
