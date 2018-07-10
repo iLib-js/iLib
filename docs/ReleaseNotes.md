@@ -10,6 +10,7 @@ New Features:
     * Added is-IS locale to a list.
     * Implemented way of publishing date automatically instead of manual fixing.
     * Updated Name of the Day and Months part. If normal and standAlone are different, It displays both.
+
 Bug Fixes:
 * Fixed an ar-IQ currency symbol.
 * Updated the medium format day of the week translation of the ar-EG locale.
@@ -17,7 +18,9 @@ Bug Fixes:
 * Updated the daterange locale data in fr-CA local office feedback.
 * Updated the week duration locale data in ku-Arab-IQ correspong local office feedback.
 * Updated the meridiems data in or-IN correspond CLDR 33.
-
+* Fixed a bug where dates with the time zone "local" do not switch to DST at the right time because the time was calculated
+in UTC instead of the "local" time zone. This affected TimeZone.inDaylightTime(). If an explicit time zone was given, then
+then the calculation worked fine. It's only the special time zone "local" which had this bug.
 
 Build 003
 -------
