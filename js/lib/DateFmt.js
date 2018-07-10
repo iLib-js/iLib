@@ -603,6 +603,9 @@ DateFmt.prototype = {
      * Finish initializing the formatter object
      */
     _init: function(options) {
+        if (typeof (options.sync) === 'undefined') {
+            options.sync = true;
+        }
         if (!this.template) {
             Utils.loadData({
                 object: "DateFmt", 
