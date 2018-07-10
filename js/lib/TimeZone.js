@@ -137,65 +137,65 @@ var IString = require("./IString.js");
  * @param {Object} options Options guiding the construction of this time zone instance
  */
 var TimeZone = function(options) {
-	this.sync = true;
-	this.locale = new Locale();
-	this.isLocal = false;
-	
-	if (options) {
-		if (options.locale) {
-			this.locale = (typeof(options.locale) === 'string') ? new Locale(options.locale) : options.locale;
-		}
-		
-		if (options.id) {
-			var id = options.id.toString();
-			if (id === 'local') {
-				this.isLocal = true;
-				
-				// use standard Javascript Date to figure out the time zone offsets
-				var now = new Date(), 
-					jan1 = new Date(now.getFullYear(), 0, 1),  // months in std JS Date object are 0-based
-					jun1 = new Date(now.getFullYear(), 5, 1);
-				
-				// Javascript's method returns the offset backwards, so we have to
-				// take the negative to get the correct offset
-				this.offsetJan1 = -jan1.getTimezoneOffset();
-				this.offsetJun1 = -jun1.getTimezoneOffset();
-				// the offset of the standard time for the time zone is always the one that is closest 
-				// to negative infinity of the two, no matter whether you are in the northern or southern 
-				// hemisphere, east or west
-				this.offset = Math.min(this.offsetJan1, this.offsetJun1);
-			}
-			this.id = id;
-		} else if (options.offset) {
-			this.offset = (typeof(options.offset) === 'string') ? parseInt(options.offset, 10) : options.offset;
-			this.id = this.getDisplayName(undefined, undefined);
-		}
-		
-		if (typeof(options.sync) !== 'undefined') {
-			this.sync = !!options.sync;
-		}
-		
-		this.loadParams = options.loadParams;
-		this.onLoad = options.onLoad;
-	}
+    this.sync = true;
+    this.locale = new Locale();
+    this.isLocal = false;
+    
+    if (options) {
+        if (options.locale) {
+            this.locale = (typeof(options.locale) === 'string') ? new Locale(options.locale) : options.locale;
+        }
+        
+        if (options.id) {
+            var id = options.id.toString();
+            if (id === 'local') {
+                this.isLocal = true;
+                
+                // use standard Javascript Date to figure out the time zone offsets
+                var now = new Date(), 
+                    jan1 = new Date(now.getFullYear(), 0, 1),  // months in std JS Date object are 0-based
+                    jun1 = new Date(now.getFullYear(), 5, 1);
+                
+                // Javascript's method returns the offset backwards, so we have to
+                // take the negative to get the correct offset
+                this.offsetJan1 = -jan1.getTimezoneOffset();
+                this.offsetJun1 = -jun1.getTimezoneOffset();
+                // the offset of the standard time for the time zone is always the one that is closest 
+                // to negative infinity of the two, no matter whether you are in the northern or southern 
+                // hemisphere, east or west
+                this.offset = Math.min(this.offsetJan1, this.offsetJun1);
+            }
+            this.id = id;
+        } else if (options.offset) {
+            this.offset = (typeof(options.offset) === 'string') ? parseInt(options.offset, 10) : options.offset;
+            this.id = this.getDisplayName(undefined, undefined);
+        }
+        
+        if (typeof(options.sync) !== 'undefined') {
+            this.sync = !!options.sync;
+        }
+        
+        this.loadParams = options.loadParams;
+        this.onLoad = options.onLoad;
+    }
 
-	//console.log("timezone: locale is " + this.locale);
-	
-	if (!this.id) {
-		new LocaleInfo(this.locale, {
-			sync: this.sync,
-			loadParams: this.loadParams,
-			onLoad: ilib.bind(this, function (li) {
-				this.id = li.getTimeZone() || "Etc/UTC";
-				this._loadtzdata();
-			})
-		});
-	} else {
-		this._loadtzdata();
-	}
+    //console.log("timezone: locale is " + this.locale);
+    
+    if (!this.id) {
+        new LocaleInfo(this.locale, {
+            sync: this.sync,
+            loadParams: this.loadParams,
+            onLoad: ilib.bind(this, function (li) {
+                this.id = li.getTimeZone() || "Etc/UTC";
+                this._loadtzdata();
+            })
+        });
+    } else {
+        this._loadtzdata();
+    }
 
-	//console.log("localeinfo is: " + JSON.stringify(this.locinfo));
-	//console.log("id is: " + JSON.stringify(this.id));
+    //console.log("localeinfo is: " + JSON.stringify(this.locinfo));
+    //console.log("id is: " + JSON.stringify(this.id));
 };
 
 /*
@@ -229,98 +229,98 @@ var TimeZone = function(options) {
  * }
  */
 TimeZone.prototype._loadtzdata = function () {
-	var zoneName = this.id.replace(/-/g, "m").replace(/\+/g, "p");
-	// console.log("id is: " + JSON.stringify(this.id));
-	// console.log("zoneinfo is: " + JSON.stringify(ilib.data.zoneinfo[zoneName]));
-	if (!ilib.data.zoneinfo[zoneName] && typeof(this.offset) === 'undefined') {
-		Utils.loadData({
-			object: "TimeZone", 
-			nonlocale: true,	// locale independent 
-			name: "zoneinfo/" + this.id + ".json", 
-			sync: this.sync, 
-			loadParams: this.loadParams, 
-			callback: ilib.bind(this, function (tzdata) {
-				if (tzdata && !JSUtils.isEmpty(tzdata)) {
-					ilib.data.zoneinfo[zoneName] = tzdata;
-				}
-				this._initZone(zoneName);
-			})
-		});
-	} else {
-		this._initZone(zoneName);
-	}
+    var zoneName = this.id.replace(/-/g, "m").replace(/\+/g, "p");
+    // console.log("id is: " + JSON.stringify(this.id));
+    // console.log("zoneinfo is: " + JSON.stringify(ilib.data.zoneinfo[zoneName]));
+    if (!ilib.data.zoneinfo[zoneName] && typeof(this.offset) === 'undefined') {
+        Utils.loadData({
+            object: "TimeZone", 
+            nonlocale: true,    // locale independent 
+            name: "zoneinfo/" + this.id + ".json", 
+            sync: this.sync, 
+            loadParams: this.loadParams, 
+            callback: ilib.bind(this, function (tzdata) {
+                if (tzdata && !JSUtils.isEmpty(tzdata)) {
+                    ilib.data.zoneinfo[zoneName] = tzdata;
+                }
+                this._initZone(zoneName);
+            })
+        });
+    } else {
+        this._initZone(zoneName);
+    }
 };
 
 TimeZone.prototype._initZone = function(zoneName) {
-	/** 
-	 * @private
-	 * @type {{o:string,f:string,e:Object.<{m:number,r:string,t:string,z:string}>,s:Object.<{m:number,r:string,t:string,z:string,v:string,c:string}>,c:string,n:string}} 
-	 */
-	this.zone = ilib.data.zoneinfo[zoneName];
-	if (!this.zone && typeof(this.offset) === 'undefined') {
-		this.id = "Etc/UTC";
-		this.zone = ilib.data.zoneinfo[this.id];
-	}
-	
-	this._calcDSTSavings();
-	
-	if (typeof(this.offset) === 'undefined' && this.zone.o) {
-		var offsetParts = this._offsetStringToObj(this.zone.o);
-		/**
-		 * @private
-		 * @type {number} raw offset from UTC without DST, in minutes
-		 */
-		this.offset = (Math.abs(offsetParts.h || 0) * 60 + (offsetParts.m || 0)) * MathUtils.signum(offsetParts.h || 0);
-	}
-	
-	if (this.onLoad && typeof(this.onLoad) === 'function') {
-		this.onLoad(this);
-	}
+    /** 
+     * @private
+     * @type {{o:string,f:string,e:Object.<{m:number,r:string,t:string,z:string}>,s:Object.<{m:number,r:string,t:string,z:string,v:string,c:string}>,c:string,n:string}} 
+     */
+    this.zone = ilib.data.zoneinfo[zoneName];
+    if (!this.zone && typeof(this.offset) === 'undefined') {
+        this.id = "Etc/UTC";
+        this.zone = ilib.data.zoneinfo[this.id];
+    }
+    
+    this._calcDSTSavings();
+    
+    if (typeof(this.offset) === 'undefined' && this.zone.o) {
+        var offsetParts = this._offsetStringToObj(this.zone.o);
+        /**
+         * @private
+         * @type {number} raw offset from UTC without DST, in minutes
+         */
+        this.offset = (Math.abs(offsetParts.h || 0) * 60 + (offsetParts.m || 0)) * MathUtils.signum(offsetParts.h || 0);
+    }
+    
+    if (this.onLoad && typeof(this.onLoad) === 'function') {
+        this.onLoad(this);
+    }
 };
 
 /** @private */
 TimeZone._marshallIds = function (country, sync, callback) {
-	var tz, ids = [];
-	
-	if (!country) {
-		// local is a special zone meaning "the local time zone according to the JS engine we are running upon"
-		ids.push("local");
-		for (tz in ilib.data.timezones) {
-			if (ilib.data.timezones[tz]) {
-				ids.push(ilib.data.timezones[tz]);
-			}
-		}
-		if (typeof(callback) === 'function') {
-			callback(ids);
-		}
-	} else {
-		if (!ilib.data.zoneinfo.zonetab) {
-			Utils.loadData({
-				object: "TimeZone", 
-				nonlocale: true,	// locale independent 
-				name: "zoneinfo/zonetab.json", 
-				sync: sync, 
-				callback: ilib.bind(this, function (tzdata) {
-					if (tzdata) {
-						ilib.data.zoneinfo.zonetab = tzdata;
-					}
-					
-					ids = ilib.data.zoneinfo.zonetab[country];
-					
-					if (typeof(callback) === 'function') {
-						callback(ids);
-					}
-				})
-			});
-		} else {
-			ids = ilib.data.zoneinfo.zonetab[country];
-			if (typeof(callback) === 'function') {
-				callback(ids);
-			}
-		}
-	}
-	
-	return ids;
+    var tz, ids = [];
+    
+    if (!country) {
+        // local is a special zone meaning "the local time zone according to the JS engine we are running upon"
+        ids.push("local");
+        for (tz in ilib.data.timezones) {
+            if (ilib.data.timezones[tz]) {
+                ids.push(ilib.data.timezones[tz]);
+            }
+        }
+        if (typeof(callback) === 'function') {
+            callback(ids);
+        }
+    } else {
+        if (!ilib.data.zoneinfo.zonetab) {
+            Utils.loadData({
+                object: "TimeZone", 
+                nonlocale: true,    // locale independent 
+                name: "zoneinfo/zonetab.json", 
+                sync: sync, 
+                callback: ilib.bind(this, function (tzdata) {
+                    if (tzdata) {
+                        ilib.data.zoneinfo.zonetab = tzdata;
+                    }
+                    
+                    ids = ilib.data.zoneinfo.zonetab[country];
+                    
+                    if (typeof(callback) === 'function') {
+                        callback(ids);
+                    }
+                })
+            });
+        } else {
+            ids = ilib.data.zoneinfo.zonetab[country];
+            if (typeof(callback) === 'function') {
+                callback(ids);
+            }
+        }
+    }
+    
+    return ids;
 };
 
 /**
@@ -335,40 +335,40 @@ TimeZone._marshallIds = function (country, sync, callback) {
  * @return {Array.<string>} an array of zone id strings
  */
 TimeZone.getAvailableIds = function (country, sync, onLoad) {
-	var tz, ids = [];
-	
-	if (typeof(sync) !== 'boolean') {
-		sync = true;
-	}
-	
-	if (ilib.data.timezones.length === 0) {
-		if (typeof(ilib._load) !== 'undefined' && typeof(ilib._load.listAvailableFiles) === 'function') {
-			ilib._load.listAvailableFiles(sync, function(hash) {
-				for (var dir in hash) {
-					var files = hash[dir];
-					if (ilib.isArray(files)) {
-						files.forEach(function (filename) {
-							if (filename && filename.match(/^zoneinfo/)) {
-								ilib.data.timezones.push(filename.replace(/^zoneinfo\//, "").replace(/\.json$/, ""));
-							}
-						});
-					}
-				}
-				ids = TimeZone._marshallIds(country, sync, onLoad);
-			});
-		} else {
-			for (tz in ilib.data.zoneinfo) {
-				if (ilib.data.zoneinfo[tz]) {
-					ilib.data.timezones.push(tz);
-				}
-			}
-			ids = TimeZone._marshallIds(country, sync, onLoad);
-		}
-	} else {
-		ids = TimeZone._marshallIds(country, sync, onLoad);
-	}
-	
-	return ids;
+    var tz, ids = [];
+    
+    if (typeof(sync) !== 'boolean') {
+        sync = true;
+    }
+    
+    if (ilib.data.timezones.length === 0) {
+        if (typeof(ilib._load) !== 'undefined' && typeof(ilib._load.listAvailableFiles) === 'function') {
+            ilib._load.listAvailableFiles(sync, function(hash) {
+                for (var dir in hash) {
+                    var files = hash[dir];
+                    if (ilib.isArray(files)) {
+                        files.forEach(function (filename) {
+                            if (filename && filename.match(/^zoneinfo/)) {
+                                ilib.data.timezones.push(filename.replace(/^zoneinfo\//, "").replace(/\.json$/, ""));
+                            }
+                        });
+                    }
+                }
+                ids = TimeZone._marshallIds(country, sync, onLoad);
+            });
+        } else {
+            for (tz in ilib.data.zoneinfo) {
+                if (ilib.data.zoneinfo[tz]) {
+                    ilib.data.timezones.push(tz);
+                }
+            }
+            ids = TimeZone._marshallIds(country, sync, onLoad);
+        }
+    } else {
+        ids = TimeZone._marshallIds(country, sync, onLoad);
+    }
+    
+    return ids;
 };
 
 /**
@@ -376,7 +376,7 @@ TimeZone.getAvailableIds = function (country, sync, onLoad) {
  * @return {string} a unique id for this time zone
  */
 TimeZone.prototype.getId = function () {
-	return this.id.toString();
+    return this.id.toString();
 };
 
 /**
@@ -399,59 +399,59 @@ TimeZone.prototype.getId = function () {
  * @return {string} the name of the time zone, abbreviated according to the style 
  */
 TimeZone.prototype.getDisplayName = function (date, style) {
-	style = (this.isLocal || typeof(this.zone) === 'undefined') ? "rfc822" : (style || "standard");
-	switch (style) {
-		default:
-		case 'standard':
-			if (this.zone.f && this.zone.f !== "zzz") {
-				if (this.zone.f.indexOf("{c}") !== -1) {
-					var letter = "";
-					letter = this.inDaylightTime(date) ? this.zone.s && this.zone.s.c : this.zone.e && this.zone.e.c; 
-					var temp = new IString(this.zone.f);
-					return temp.format({c: letter || ""});
-				}
-				return this.zone.f;
-			} 
-			var temp = "GMT" + this.zone.o;
-			if (this.inDaylightTime(date)) {
-				temp += "+" + this.zone.s.v;
-			}
-			return temp;
-			break;
-		case 'rfc822':
-			var offset = this.getOffset(date), // includes the DST if applicable
-				ret = "UTC",
-				hour = offset.h || 0,
-				minute = offset.m || 0;
-			
-			if (hour !== 0) {
-				ret += (hour > 0) ? "+" : "-";
-				if (Math.abs(hour) < 10) {
-					ret += "0";
-				}
-				ret += (hour < 0) ? -hour : hour;
-				if (minute < 10) {
-					ret += "0";
-				}
-				ret += minute;
-			}
-			return ret; 
-		case 'long':
-			if (this.zone.n) {
-				if (this.zone.n.indexOf("{c}") !== -1) {
-					var str = this.inDaylightTime(date) ? "Daylight" : "Standard"; 
-					var temp = new IString(this.zone.n);
-					return temp.format({c: str || ""});
-				}
-				return this.zone.n;
-			}
-			var temp = "GMT" + this.zone.o;
-			if (this.inDaylightTime(date)) {
-				temp += "+" + this.zone.s.v;
-			}
-			return temp;
-			break;
-	}
+    style = (this.isLocal || typeof(this.zone) === 'undefined') ? "rfc822" : (style || "standard");
+    switch (style) {
+        default:
+        case 'standard':
+            if (this.zone.f && this.zone.f !== "zzz") {
+                if (this.zone.f.indexOf("{c}") !== -1) {
+                    var letter = "";
+                    letter = this.inDaylightTime(date) ? this.zone.s && this.zone.s.c : this.zone.e && this.zone.e.c; 
+                    var temp = new IString(this.zone.f);
+                    return temp.format({c: letter || ""});
+                }
+                return this.zone.f;
+            } 
+            var temp = "GMT" + this.zone.o;
+            if (this.inDaylightTime(date)) {
+                temp += "+" + this.zone.s.v;
+            }
+            return temp;
+            break;
+        case 'rfc822':
+            var offset = this.getOffset(date), // includes the DST if applicable
+                ret = "UTC",
+                hour = offset.h || 0,
+                minute = offset.m || 0;
+            
+            if (hour !== 0) {
+                ret += (hour > 0) ? "+" : "-";
+                if (Math.abs(hour) < 10) {
+                    ret += "0";
+                }
+                ret += (hour < 0) ? -hour : hour;
+                if (minute < 10) {
+                    ret += "0";
+                }
+                ret += minute;
+            }
+            return ret; 
+        case 'long':
+            if (this.zone.n) {
+                if (this.zone.n.indexOf("{c}") !== -1) {
+                    var str = this.inDaylightTime(date) ? "Daylight" : "Standard"; 
+                    var temp = new IString(this.zone.n);
+                    return temp.format({c: str || ""});
+                }
+                return this.zone.n;
+            }
+            var temp = "GMT" + this.zone.o;
+            if (this.inDaylightTime(date)) {
+                temp += "+" + this.zone.s.v;
+            }
+            return temp;
+            break;
+    }
 };
 
 /**
@@ -464,27 +464,27 @@ TimeZone.prototype.getDisplayName = function (date, style) {
  * the given date/time, in hours, minutes, and seconds
  */
 TimeZone.prototype._offsetStringToObj = function (str) {
-	var offsetParts = (typeof(str) === 'string') ? str.split(":") : [],
-		ret = {h:0},
-		temp;
-	
-	if (offsetParts.length > 0) {
-		ret.h = parseInt(offsetParts[0], 10);
-		if (offsetParts.length > 1) {
-			temp = parseInt(offsetParts[1], 10);
-			if (temp) {
-				ret.m = temp;
-			}
-			if (offsetParts.length > 2) {
-				temp = parseInt(offsetParts[2], 10);
-				if (temp) {
-					ret.s = temp;
-				}
-			}
-		}
-	}
+    var offsetParts = (typeof(str) === 'string') ? str.split(":") : [],
+        ret = {h:0},
+        temp;
+    
+    if (offsetParts.length > 0) {
+        ret.h = parseInt(offsetParts[0], 10);
+        if (offsetParts.length > 1) {
+            temp = parseInt(offsetParts[1], 10);
+            if (temp) {
+                ret.m = temp;
+            }
+            if (offsetParts.length > 2) {
+                temp = parseInt(offsetParts[2], 10);
+                if (temp) {
+                    ret.s = temp;
+                }
+            }
+        }
+    }
 
-	return ret;
+    return ret;
 };
 
 /**
@@ -496,21 +496,21 @@ TimeZone.prototype._offsetStringToObj = function (str) {
  * the given date/time, in hours, minutes, and seconds  
  */
 TimeZone.prototype.getOffset = function (date) {
-	if (!date) {
-		return this.getRawOffset();
-	}
-	var offset = this.getOffsetMillis(date)/60000;
-	
-	var hours = MathUtils.down(offset/60),
-		minutes = Math.abs(offset) - Math.abs(hours)*60;
+    if (!date) {
+        return this.getRawOffset();
+    }
+    var offset = this.getOffsetMillis(date)/60000;
+    
+    var hours = MathUtils.down(offset/60),
+        minutes = Math.abs(offset) - Math.abs(hours)*60;
 
-	var ret = {
-		h: hours
-	};
-	if (minutes != 0) {
-		ret.m = minutes;
-	}
-	return ret;
+    var ret = {
+        h: hours
+    };
+    if (minutes != 0) {
+        ret.m = minutes;
+    }
+    return ret;
 };
 
 /**
@@ -525,22 +525,22 @@ TimeZone.prototype.getOffset = function (date) {
  * @return {number} the number of milliseconds of offset from UTC that the given date is
  */
 TimeZone.prototype.getOffsetMillis = function (date) {
-	var ret;
-	
-	// check if the dst property is defined -- the intrinsic JS Date object doesn't work so
-	// well if we are in the overlap time at the end of DST
-	if (this.isLocal && typeof(date.dst) === 'undefined') {
-		var d = (!date) ? new Date() : new Date(date.getTimeExtended());
-		return -d.getTimezoneOffset() * 60000;
-	} 
-	
-	ret = this.offset;
-	
-	if (date && this.inDaylightTime(date)) {
-		ret += this.dstSavings;
-	}
-	
-	return ret * 60000;
+    var ret;
+    
+    // check if the dst property is defined -- the intrinsic JS Date object doesn't work so
+    // well if we are in the overlap time at the end of DST
+    if (this.isLocal && typeof(date.dst) === 'undefined') {
+        var d = (!date) ? new Date() : new Date(date.getTimeExtended());
+        return -d.getTimezoneOffset() * 60000;
+    } 
+    
+    ret = this.offset;
+    
+    if (date && this.inDaylightTime(date)) {
+        ret += this.dstSavings;
+    }
+    
+    return ret * 60000;
 };
 
 /**
@@ -551,15 +551,15 @@ TimeZone.prototype.getOffsetMillis = function (date) {
  * @returns {number} the number of milliseconds of offset from UTC that the given date is
  */
 TimeZone.prototype._getOffsetMillisWallTime = function (date) {
-	var ret;
-	
-	ret = this.offset;
-	
-	if (date && this.inDaylightTime(date, true)) {
-		ret += this.dstSavings;
-	}
-	
-	return ret * 60000;
+    var ret;
+    
+    ret = this.offset;
+    
+    if (date && this.inDaylightTime(date, true)) {
+        ret += this.dstSavings;
+    }
+    
+    return ret * 60000;
 };
 
 /**
@@ -571,20 +571,20 @@ TimeZone.prototype._getOffsetMillisWallTime = function (date) {
  * format "h:m:s" 
  */
 TimeZone.prototype.getOffsetStr = function (date) {
-	var offset = this.getOffset(date),
-		ret;
-	
-	ret = offset.h;
-	if (typeof(offset.m) !== 'undefined') {
-		ret += ":" + offset.m;
-		if (typeof(offset.s) !== 'undefined') {
-			ret += ":" + offset.s;
-		}
-	} else {
-		ret += ":0";
-	}
-	
-	return ret;
+    var offset = this.getOffset(date),
+        ret;
+    
+    ret = offset.h;
+    if (typeof(offset.m) !== 'undefined') {
+        ret += ":" + offset.m;
+        if (typeof(offset.s) !== 'undefined') {
+            ret += ":" + offset.s;
+        }
+    } else {
+        ret += ":0";
+    }
+    
+    return ret;
 };
 
 /**
@@ -593,16 +593,16 @@ TimeZone.prototype.getOffsetStr = function (date) {
  * UTC for this time zone, in hours, minutes, and seconds 
  */
 TimeZone.prototype.getRawOffset = function () {
-	var hours = MathUtils.down(this.offset/60),
-		minutes = Math.abs(this.offset) - Math.abs(hours)*60;
-	
-	var ret = {
-		h: hours
-	};
-	if (minutes != 0) {
-		ret.m = minutes;
-	}
-	return ret;
+    var hours = MathUtils.down(this.offset/60),
+        minutes = Math.abs(this.offset) - Math.abs(hours)*60;
+    
+    var ret = {
+        h: hours
+    };
+    if (minutes != 0) {
+        ret.m = minutes;
+    }
+    return ret;
 };
 
 /**
@@ -613,7 +613,7 @@ TimeZone.prototype.getRawOffset = function () {
  * UTC for this time zone in milliseconds 
  */
 TimeZone.prototype.getRawOffsetMillis = function () {
-	return this.offset * 60000;
+    return this.offset * 60000;
 };
 
 /**
@@ -621,8 +621,8 @@ TimeZone.prototype.getRawOffsetMillis = function () {
  * @return {string} the offset from UTC for this time zone, in the format "h:m:s" 
  */
 TimeZone.prototype.getRawOffsetStr = function () {
-	var off = this.getRawOffset();
-	return off.h + ":" + (off.m || "0");
+    var off = this.getRawOffset();
+    return off.h + ":" + (off.m || "0");
 };
 
 /**
@@ -632,20 +632,20 @@ TimeZone.prototype.getRawOffsetStr = function () {
  * clock advances for DST in hours, minutes, and seconds 
  */
 TimeZone.prototype.getDSTSavings = function () {
-	if (this.isLocal) {
-		// take the absolute because the difference in the offsets may be positive or
-		// negative, depending on the hemisphere
-		var savings = Math.abs(this.offsetJan1 - this.offsetJun1);
-		var hours = MathUtils.down(savings/60),
-			minutes = savings - hours*60;
-		return {
-			h: hours,
-			m: minutes
-		};
-	} else if (this.zone && this.zone.s) {
-		return this._offsetStringToObj(this.zone.s.v);	// this.zone.start.savings
-	}
-	return {h:0};
+    if (this.isLocal) {
+        // take the absolute because the difference in the offsets may be positive or
+        // negative, depending on the hemisphere
+        var savings = Math.abs(this.offsetJan1 - this.offsetJun1);
+        var hours = MathUtils.down(savings/60),
+            minutes = savings - hours*60;
+        return {
+            h: hours,
+            m: minutes
+        };
+    } else if (this.zone && this.zone.s) {
+        return this._offsetStringToObj(this.zone.s.v);  // this.zone.start.savings
+    }
+    return {h:0};
 };
 
 /**
@@ -655,13 +655,13 @@ TimeZone.prototype.getDSTSavings = function () {
  * format "h:m:s"
  */
 TimeZone.prototype.getDSTSavingsStr = function () {
-	if (this.isLocal) {
-		var savings = this.getDSTSavings();
-		return savings.h + ":" + savings.m;
-	} else if (typeof(this.offset) !== 'undefined' && this.zone && this.zone.s) {
-		return this.zone.s.v;	// this.zone.start.savings
-	}
-	return "0:0";
+    if (this.isLocal) {
+        var savings = this.getDSTSavings();
+        return savings.h + ":" + savings.m;
+    } else if (typeof(this.offset) !== 'undefined' && this.zone && this.zone.s) {
+        return this.zone.s.v;   // this.zone.start.savings
+    }
+    return "0:0";
 };
 
 /**
@@ -672,113 +672,113 @@ TimeZone.prototype.getDSTSavingsStr = function () {
  * @return {number} the rd of the start of DST for the year
  */
 TimeZone.prototype._calcRuleStart = function (rule, year) {
-	var type = "=", 
-		weekday = 0, 
-		day, 
-		refDay, 
-		cal, 
-		hour = 0, 
-		minute = 0, 
-		second = 0,
-		time,
-		i;
-	
-	if (typeof(rule.j) !== 'undefined') {
-		refDay = new GregRataDie({
-			julianday: rule.j
-		});
-	} else {
-		if (rule.r.charAt(0) == 'l' || rule.r.charAt(0) == 'f') {
-			cal = CalendarFactory({type: "gregorian"}); // can be synchronous
-			type = rule.r.charAt(0);
-			weekday = parseInt(rule.r.substring(1), 10);
-			day = (type === 'l') ? cal.getMonLength(rule.m, year) : 1;
-			//console.log("_calcRuleStart: Calculating the " + 
-			//		(rule.r.charAt(0) == 'f' ? "first " : "last ") + weekday + 
-			//		" of month " + rule.m);
-		} else {
-			i = rule.r.indexOf('<');
-			if (i == -1) {
-				i = rule.r.indexOf('>');
-			}
-			
-			if (i != -1) {
-				type = rule.r.charAt(i);
-				weekday = parseInt(rule.r.substring(0, i), 10);
-				day = parseInt(rule.r.substring(i+1), 10); 
-				//console.log("_calcRuleStart: Calculating the " + weekday + 
-				//		type + day + " of month " + rule.m);
-			} else {
-				day = parseInt(rule.r, 10);
-				//console.log("_calcRuleStart: Calculating the " + day + " of month " + rule.m);
-			}
-		}
-	
-		if (rule.t) {
-			time = rule.t.split(":");
-			hour = parseInt(time[0], 10);
-			if (time.length > 1) {
-				minute = parseInt(time[1], 10);
-				if (time.length > 2) {
-					second = parseInt(time[2], 10);
-				}
-			}
-		}
-		//console.log("calculating rd of " + year + "/" + rule.m + "/" + day);
-		refDay = new GregRataDie({
-			year: year, 
-			month: rule.m, 
-			day: day, 
-			hour: hour, 
-			minute: minute, 
-			second: second
-		});
-	}
-	//console.log("refDay is " + JSON.stringify(refDay));
-	var d = refDay.getRataDie();
-	
-	switch (type) {
-		case 'l':
-		case '<':
-			//console.log("returning " + refDay.onOrBefore(rd, weekday));
-			d = refDay.onOrBefore(weekday); 
-			break;
-		case 'f':
-		case '>':
-			//console.log("returning " + refDay.onOrAfterRd(rd, weekday));
-			d = refDay.onOrAfter(weekday); 
-			break;
-	}
-	return d;
+    var type = "=", 
+        weekday = 0, 
+        day, 
+        refDay, 
+        cal, 
+        hour = 0, 
+        minute = 0, 
+        second = 0,
+        time,
+        i;
+    
+    if (typeof(rule.j) !== 'undefined') {
+        refDay = new GregRataDie({
+            julianday: rule.j
+        });
+    } else {
+        if (rule.r.charAt(0) == 'l' || rule.r.charAt(0) == 'f') {
+            cal = CalendarFactory({type: "gregorian"}); // can be synchronous
+            type = rule.r.charAt(0);
+            weekday = parseInt(rule.r.substring(1), 10);
+            day = (type === 'l') ? cal.getMonLength(rule.m, year) : 1;
+            //console.log("_calcRuleStart: Calculating the " + 
+            //      (rule.r.charAt(0) == 'f' ? "first " : "last ") + weekday + 
+            //      " of month " + rule.m);
+        } else {
+            i = rule.r.indexOf('<');
+            if (i == -1) {
+                i = rule.r.indexOf('>');
+            }
+            
+            if (i != -1) {
+                type = rule.r.charAt(i);
+                weekday = parseInt(rule.r.substring(0, i), 10);
+                day = parseInt(rule.r.substring(i+1), 10); 
+                //console.log("_calcRuleStart: Calculating the " + weekday + 
+                //      type + day + " of month " + rule.m);
+            } else {
+                day = parseInt(rule.r, 10);
+                //console.log("_calcRuleStart: Calculating the " + day + " of month " + rule.m);
+            }
+        }
+    
+        if (rule.t) {
+            time = rule.t.split(":");
+            hour = parseInt(time[0], 10);
+            if (time.length > 1) {
+                minute = parseInt(time[1], 10);
+                if (time.length > 2) {
+                    second = parseInt(time[2], 10);
+                }
+            }
+        }
+        //console.log("calculating rd of " + year + "/" + rule.m + "/" + day);
+        refDay = new GregRataDie({
+            year: year, 
+            month: rule.m, 
+            day: day, 
+            hour: hour, 
+            minute: minute, 
+            second: second
+        });
+    }
+    //console.log("refDay is " + JSON.stringify(refDay));
+    var d = refDay.getRataDie();
+    
+    switch (type) {
+        case 'l':
+        case '<':
+            //console.log("returning " + refDay.onOrBefore(rd, weekday));
+            d = refDay.onOrBefore(weekday); 
+            break;
+        case 'f':
+        case '>':
+            //console.log("returning " + refDay.onOrAfterRd(rd, weekday));
+            d = refDay.onOrAfter(weekday); 
+            break;
+    }
+    return d;
 };
 
 /**
  * @private
  */
 TimeZone.prototype._calcDSTSavings = function () {
-	var saveParts = this.getDSTSavings();
-	
-	/**
-	 * @private
-	 * @type {number} savings in minutes when DST is in effect 
-	 */
-	this.dstSavings = (Math.abs(saveParts.h || 0) * 60 + (saveParts.m || 0)) * MathUtils.signum(saveParts.h || 0);
+    var saveParts = this.getDSTSavings();
+    
+    /**
+     * @private
+     * @type {number} savings in minutes when DST is in effect 
+     */
+    this.dstSavings = (Math.abs(saveParts.h || 0) * 60 + (saveParts.m || 0)) * MathUtils.signum(saveParts.h || 0);
 };
 
 /**
  * @private
  */
 TimeZone.prototype._getDSTStartRule = function (year) {
-	// TODO: update this when historic/future zones are supported
-	return this.zone.s;
+    // TODO: update this when historic/future zones are supported
+    return this.zone.s;
 };
 
 /**
  * @private
  */
 TimeZone.prototype._getDSTEndRule = function (year) {
-	// TODO: update this when historic/future zones are supported
-	return this.zone.e;
+    // TODO: update this when historic/future zones are supported
+    return this.zone.e;
 };
 
 /**
@@ -797,81 +797,96 @@ TimeZone.prototype._getDSTEndRule = function (year) {
  * otherwise.
  */
 TimeZone.prototype.inDaylightTime = function (date, wallTime) {
-	var rd, startRd, endRd, year;
+    var rd, startRd, endRd, year;
 
-	if (this.isLocal) {
-		// check if the dst property is defined -- the intrinsic JS Date object doesn't work so
-		// well if we are in the overlap time at the end of DST, so we have to work around that
-		// problem by adding in the savings ourselves
-		var offset = 0;
-		if (typeof(date.dst) !== 'undefined' && !date.dst) {
-			offset = this.dstSavings * 60000;
-		}
-		
-		var d = new Date(date ? date.getTimeExtended() + offset: undefined);
-		// the DST offset is always the one that is closest to positive infinity, no matter 
-		// if you are in the northern or southern hemisphere, east or west
-		var dst = Math.max(this.offsetJan1, this.offsetJun1);
-		return (-d.getTimezoneOffset() === dst);
-	}
-	
-	if (!date || !date.cal || date.cal.type !== "gregorian") {
-		// convert to Gregorian so that we can tell if it is in DST or not
-		var time = date && typeof(date.getTimeExtended) === 'function' ? date.getTimeExtended() : undefined;
-		rd = new GregRataDie({unixtime: time}).getRataDie();
-		year = new Date(time).getUTCFullYear();
-	} else {
-		rd = date.rd.getRataDie();
-		year = date.year;
-	}
-	// rd should be a Gregorian RD number now, in UTC
-	
-	// if we aren't using daylight time in this zone for the given year, then we are 
-	// not in daylight time
-	if (!this.useDaylightTime(year)) {
-		return false;
-	}
-	
-	// these calculate the start/end in local wall time
-	var startrule = this._getDSTStartRule(year);
-	var endrule = this._getDSTEndRule(year);
-	startRd = this._calcRuleStart(startrule, year);
-	endRd = this._calcRuleStart(endrule, year);
-	
-	if (wallTime) {
-		// rd is in wall time, so we have to make sure to skip the missing time
-		// at the start of DST when standard time ends and daylight time begins
-		startRd += this.dstSavings/1440;
-	} else {
-		// rd is in UTC, so we have to convert the start/end to UTC time so 
-		// that they can be compared directly to the UTC rd number of the date
-		
-		// when DST starts, time is standard time already, so we only have
-		// to subtract the offset to get to UTC and not worry about the DST savings
-		startRd -= this.offset/1440;  
-		
-		// when DST ends, time is in daylight time already, so we have to
-		// subtract the DST savings to get back to standard time, then the
-		// offset to get to UTC
-		endRd -= (this.offset + this.dstSavings)/1440;
-	}
-	
-	// In the northern hemisphere, the start comes first some time in spring (Feb-Apr), 
-	// then the end some time in the fall (Sept-Nov). In the southern
-	// hemisphere, it is the other way around because the seasons are reversed. Standard
-	// time is still in the winter, but the winter months are May-Aug, and daylight 
-	// savings time usually starts Aug-Oct of one year and runs through Mar-May of the 
-	// next year.
-	if (rd < endRd && endRd - rd <= this.dstSavings/1440 && typeof(date.dst) === 'boolean') {
-		// take care of the magic overlap time at the end of DST
-		return date.dst;
-	}
-	if (startRd < endRd) {
-		// northern hemisphere
-		return (rd >= startRd && rd < endRd) ? true : false;
-	} 
-	// southern hemisphere
-	return (rd >= startRd || rd < endRd) ? true : false;
+    if (this.isLocal) {
+        // check if the dst property is defined -- the intrinsic JS Date object doesn't work so
+        // well if we are in the overlap time at the end of DST, so we have to work around that
+        // problem by adding in the savings ourselves
+        var offset = 0;
+        if (typeof(date.dst) !== 'undefined' && !date.dst) {
+            offset = this.dstSavings * 60000;
+        }
+        
+        var d = new Date(date ? date.getTimeExtended() + offset: undefined);
+        // the DST offset is always the one that is closest to positive infinity, no matter 
+        // if you are in the northern or southern hemisphere, east or west
+
+        var currentOffset = d.getTimezoneOffset();
+        var offsettoMillisecond = (-d.getTimezoneOffset()) * 60 * 1000;
+
+        var minusTime = new Date(date.getTimeExtended() - offsettoMillisecond);
+        var minusTimeOffset = minusTime.getTimezoneOffset();
+
+        var dst = Math.max(this.offsetJan1, this.offsetJun1);
+
+        if (currentOffset !== minusTimeOffset) {
+            if (Math.abs(currentOffset) > Math.abs(minusTimeOffset)) {
+                return minusTimeOffset === dst;
+            } else {
+                return ((-minusTimeOffset) === dst);
+            }
+        }
+        return (-d.getTimezoneOffset() === dst);
+    }
+    
+    if (!date || !date.cal || date.cal.type !== "gregorian") {
+        // convert to Gregorian so that we can tell if it is in DST or not
+        var time = date && typeof(date.getTimeExtended) === 'function' ? date.getTimeExtended() : undefined;
+        rd = new GregRataDie({unixtime: time}).getRataDie();
+        year = new Date(time).getUTCFullYear();
+    } else {
+        rd = date.rd.getRataDie();
+        year = date.year;
+    }
+    // rd should be a Gregorian RD number now, in UTC
+    
+    // if we aren't using daylight time in this zone for the given year, then we are 
+    // not in daylight time
+    if (!this.useDaylightTime(year)) {
+        return false;
+    }
+    
+    // these calculate the start/end in local wall time
+    var startrule = this._getDSTStartRule(year);
+    var endrule = this._getDSTEndRule(year);
+    startRd = this._calcRuleStart(startrule, year);
+    endRd = this._calcRuleStart(endrule, year);
+    
+    if (wallTime) {
+        // rd is in wall time, so we have to make sure to skip the missing time
+        // at the start of DST when standard time ends and daylight time begins
+        startRd += this.dstSavings/1440;
+    } else {
+        // rd is in UTC, so we have to convert the start/end to UTC time so 
+        // that they can be compared directly to the UTC rd number of the date
+        
+        // when DST starts, time is standard time already, so we only have
+        // to subtract the offset to get to UTC and not worry about the DST savings
+        startRd -= this.offset/1440;  
+        
+        // when DST ends, time is in daylight time already, so we have to
+        // subtract the DST savings to get back to standard time, then the
+        // offset to get to UTC
+        endRd -= (this.offset + this.dstSavings)/1440;
+    }
+    
+    // In the northern hemisphere, the start comes first some time in spring (Feb-Apr), 
+    // then the end some time in the fall (Sept-Nov). In the southern
+    // hemisphere, it is the other way around because the seasons are reversed. Standard
+    // time is still in the winter, but the winter months are May-Aug, and daylight 
+    // savings time usually starts Aug-Oct of one year and runs through Mar-May of the 
+    // next year.
+    if (rd < endRd && endRd - rd <= this.dstSavings/1440 && typeof(date.dst) === 'boolean') {
+        // take care of the magic overlap time at the end of DST
+        return date.dst;
+    }
+    if (startRd < endRd) {
+        // northern hemisphere
+        return (rd >= startRd && rd < endRd) ? true : false;
+    } 
+    // southern hemisphere
+    return (rd >= startRd || rd < endRd) ? true : false;
 };
 
 /**
@@ -882,13 +897,13 @@ TimeZone.prototype.inDaylightTime = function (date, wallTime) {
  * @return {boolean} true if the time zone uses daylight savings time
  */
 TimeZone.prototype.useDaylightTime = function (year) {
-	
-	// this zone uses daylight savings time iff there is a rule defining when to start
-	// and when to stop the DST
-	return (this.isLocal && this.offsetJan1 !== this.offsetJun1) ||
-		(typeof(this.zone) !== 'undefined' && 
-		typeof(this.zone.s) !== 'undefined' && 
-		typeof(this.zone.e) !== 'undefined');
+    
+    // this zone uses daylight savings time iff there is a rule defining when to start
+    // and when to stop the DST
+    return (this.isLocal && this.offsetJan1 !== this.offsetJun1) ||
+        (typeof(this.zone) !== 'undefined' && 
+        typeof(this.zone.s) !== 'undefined' && 
+        typeof(this.zone.e) !== 'undefined');
 };
 
 /**
@@ -896,7 +911,7 @@ TimeZone.prototype.useDaylightTime = function (year) {
  * @return {string} the ISO 3166 code of the country for this zone
  */
 TimeZone.prototype.getCountry = function () {
-	return this.zone.c;
+    return this.zone.c;
 };
 
 module.exports = TimeZone;
