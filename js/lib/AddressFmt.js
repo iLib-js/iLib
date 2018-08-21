@@ -208,4 +208,68 @@ AddressFmt.prototype.format = function (address) {
 	return ret.replace(/\n+/g, '\n').trim();
 };
 
+/**
+ * Return information about the address format that can be used
+ * by UI builders to display a locale-sensitive set of input fields
+ * based on the current formatter.<p>
+ *
+ * The object returned by this method is an array of rows of
+ * the address in the order they should appear in the UI. Each
+ * row is itself an array which may have one to three address
+ * components in that row. Each address component is an object
+ * that contains a component property and a label to display
+ * with it. The label is written in the language of this
+ * formatter. Optionally, if the address component is typically
+ * constrained to a fixed list of values, then the full list of
+ * the possible values are given in the "constrained" property
+ * of the component. The constrained property maps codes to
+ * labels written in the language of this formatter. For the
+ * most part, it is the region and country components that
+ * are constrained. Constraint properties are sorted by the
+ * label where possible.<p>
+ *
+ * Here is what the result would look like for a US address:
+ * <pre>
+ * [
+ *   [{
+ *     "component": "streetAddress",
+ *     "label": "Street Address"
+ *   }],
+ *   [{
+ *     "component": "locality",
+ *     "label": "City"
+ *   },{
+ *     "component": "region",
+ *     "label": "State",
+ *     "constrained": {
+ *       "AL": "Alabama",
+ *       "AK": "Alaska",
+ *       "AZ": "Arizona",
+ *       ...
+ *       "WY": "Wyoming"
+ *     }
+ *   }, {
+ *     "component": "postalCode",
+ *     "label": "Zip Code"
+ *   }],
+ *   [{
+ *     "component": "country",
+ *     "label": "Country",
+ *     "constrained": {
+ *       "AF": "Afghanistan",
+ *       "AL": "Albania",
+ *       "DZ": "Algeria",
+ *       ...
+ *       "ZW": "Zimbabwe"
+ *     }
+ *   }]
+ * ]
+ * </pre>
+ *
+ * @returns {Array.<Object>} An array of rows of address components
+ */
+AddressFmt.prototype.getFormatInfo = function() {
+
+};
+
 module.exports = AddressFmt;
