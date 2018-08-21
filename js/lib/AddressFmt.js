@@ -214,10 +214,11 @@ AddressFmt.prototype.format = function (address) {
  * based on the current formatter's settings.<p>
  *
  * The object returned by this method is an array of address rows. Each
- * row is itself an array which may have one to three address
+ * row is itself an array which may have one to four address
  * components in that row. Each address component is an object
  * that contains a component property and a label to display
- * with it. The label is written in the locale of this formatter.<p>
+ * with it. The label is written in the given locale, or the
+ * locale of this formatter if it was not given.<p>
  *
  * Optionally, if the address component is constrained to a
  * particular pattern or to a fixed list of possible values, then
@@ -233,9 +234,9 @@ AddressFmt.prototype.format = function (address) {
  * set to an object that gives those values. The object maps codes for
  * each valid value to labels to show in the UI for that value.
  * The codes should not be shown to the user and are intended to
- * represent the values in code. The labels
- * are translated to the locale of this formatter. For the
- * most part, it is the region and country components that
+ * represent the values in code. The labels are translated to the given
+ * locale or to the locale of this formatter if it was not given. For
+ * the most part, it is the region and country components that
  * are constrained in this way. The list of values are sorted by the
  * label where possible.<p>
  *
@@ -278,9 +279,11 @@ AddressFmt.prototype.format = function (address) {
  * ]
  * </pre>
  *
+ * @param {Locale|String=} locale the locale to translate the labels
+ * to. If not given, the locale of the formatter will be used.
  * @returns {Array.<Object>} An array of rows of address components
  */
-AddressFmt.prototype.getFormatInfo = function() {
+AddressFmt.prototype.getFormatInfo = function(locale) {
 
 };
 
