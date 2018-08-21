@@ -211,29 +211,33 @@ AddressFmt.prototype.format = function (address) {
 /**
  * Return information about the address format that can be used
  * by UI builders to display a locale-sensitive set of input fields
- * based on the current formatter.<p>
+ * based on the current formatter's settings.<p>
  *
- * The object returned by this method is an array of rows of
- * the address in the order they should appear in the UI. Each
+ * The object returned by this method is an array of address rows. Each
  * row is itself an array which may have one to three address
  * components in that row. Each address component is an object
  * that contains a component property and a label to display
- * with it. The label is written in the language of this
- * formatter.<p>
+ * with it. The label is written in the locale of this formatter.<p>
  *
- * Optionally, if the address component is typically
- * constrained to a fixed list of values, then the full list of
- * the possible values are given in the "constrained" property
- * of the component. The constrained property maps codes to
- * labels written in the language of this formatter. For the
+ * Optionally, if the address component is constrained to a
+ * particular pattern or to a fixed list of possible values, then
+ * the constraint rules are given in the "constraint" property.<p>
+ *
+ * If the constraint is that the address component must conform to a
+ * particular pattern, the regular expression that matches valid input
+ * is returned in "constraint". Often, it is only the postal code
+ * component that can be validated like this.<p>
+ *
+ * If the constraint is that the address component should be limited
+ * to a fixed list of values, then the constraint property will be
+ * set to an object that gives those values. The object maps codes for
+ * each valid value to labels to show in the UI for that value.
+ * The codes should not be shown to the user and are intended to
+ * represent the values in code. The labels
+ * are translated to the locale of this formatter. For the
  * most part, it is the region and country components that
- * are constrained. Constraint properties are sorted by the
+ * are constrained in this way. The list of values are sorted by the
  * label where possible.<p>
- *
- * If an address component can be validated, the regular expression
- * that matches valid input is returned in the "validation" property.
- * Often, it is only the postal code component that can be validated
- * like this.
  *
  * Here is what the result would look like for a US address:
  * <pre>
@@ -248,7 +252,7 @@ AddressFmt.prototype.format = function (address) {
  *   },{
  *     "component": "region",
  *     "label": "State",
- *     "constrained": {
+ *     "constraint": {
  *       "AL": "Alabama",
  *       "AK": "Alaska",
  *       "AZ": "Arizona",
@@ -258,12 +262,12 @@ AddressFmt.prototype.format = function (address) {
  *   }, {
  *     "component": "postalCode",
  *     "label": "Zip Code",
- *     "validation": "[0-9]{5}(-[0-9]{4})?"
+ *     "constraint": "[0-9]{5}(-[0-9]{4})?"
  *   }],
  *   [{
  *     "component": "country",
  *     "label": "Country",
- *     "constrained": {
+ *     "constraint": {
  *       "AF": "Afghanistan",
  *       "AL": "Albania",
  *       "DZ": "Algeria",
