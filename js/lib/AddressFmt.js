@@ -219,7 +219,9 @@ AddressFmt.prototype.format = function (address) {
  * components in that row. Each address component is an object
  * that contains a component property and a label to display
  * with it. The label is written in the language of this
- * formatter. Optionally, if the address component is typically
+ * formatter.<p>
+ *
+ * Optionally, if the address component is typically
  * constrained to a fixed list of values, then the full list of
  * the possible values are given in the "constrained" property
  * of the component. The constrained property maps codes to
@@ -227,6 +229,11 @@ AddressFmt.prototype.format = function (address) {
  * most part, it is the region and country components that
  * are constrained. Constraint properties are sorted by the
  * label where possible.<p>
+ *
+ * If an address component can be validated, the regular expression
+ * that matches valid input is returned in the "validation" property.
+ * Often, it is only the postal code component that can be validated
+ * like this.
  *
  * Here is what the result would look like for a US address:
  * <pre>
@@ -250,7 +257,8 @@ AddressFmt.prototype.format = function (address) {
  *     }
  *   }, {
  *     "component": "postalCode",
- *     "label": "Zip Code"
+ *     "label": "Zip Code",
+ *     "validation": "[0-9]{5}(-[0-9]{4})?"
  *   }],
  *   [{
  *     "component": "country",
