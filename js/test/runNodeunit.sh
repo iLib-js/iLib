@@ -37,6 +37,18 @@ run_nodeunit_tests()
 
             return 1
         fi
+        if [ "$argv1" = "debug" ]
+        then
+            echo "argc:$argc"
+            echo "argv0:$argv0"
+            echo "argv1:$argv1"
+            echo "argv2:$argv2"
+
+            cd js/test/$argv2/nodeunit
+            node --inspect-brk testSuite.js
+
+            return 1
+        fi
     else
         echo "The number of arguments is not satisfied."
     fi

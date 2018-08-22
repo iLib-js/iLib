@@ -38,18 +38,6 @@ module.exports = function(grunt) {
 
             }
         },*/
-        'http-server': {
-            'dev': {
-                cwd:'js',
-                //root: '../node_modules/http-server/bin/http-server',
-                port: 9090,
-                showDir : true,
-                autoIndex: true,
-                // run in parallel with other tasks
-                runInBackground: false,
-                openBrowser: true
-            }
-        },
         shell: {
             mkli: {
                 command: 'cd js/data; node ../../tools/build/mkli.js'
@@ -65,6 +53,9 @@ module.exports = function(grunt) {
             },
             runNodeunit: {
                 command: options => './js/test/runNodeunit.sh ' + options,
+            },
+            testRemote: {
+                command: 'cd js; ../node_modules/http-server/bin/http-server -p 9090 -o'
             }
         },
         /*run_node: {
@@ -149,7 +140,6 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-md5sum');
     grunt.loadNpmTasks('grunt-shell');
     //grunt.loadNpmTasks('grunt-run-java');
-    grunt.loadNpmTasks('grunt-http-server');
     grunt.loadNpmTasks('grunt-contrib-clean');
     grunt.loadNpmTasks('grunt-contrib-copy');
     grunt.loadNpmTasks('grunt-contrib-compress');
@@ -210,5 +200,23 @@ module.exports = function(grunt) {
     grunt.registerTask('test_strings-ext_nu_async', ['shell:runNodeunit:async strings-ext']);
     grunt.registerTask('test_units_nu_async', ['shell:runNodeunit:async units']);
     grunt.registerTask('test_util_nu_async', ['shell:runNodeunit:async util']);
+
+    grunt.registerTask('test_address_nu_debug', ['shell:runNodeunit:debug address']);
+    grunt.registerTask('test_calendar_nu_debug', ['shell:runNodeunit:debug calendar']);
+    grunt.registerTask('test_collate_nu_debug', ['shell:runNodeunit:debug collate']);
+    grunt.registerTask('test_ctype_nu_debug', ['shell:runNodeunit:debug ctype']);
+    grunt.registerTask('test_date_nu_debug', ['shell:runNodeunit:debug date']);
+    grunt.registerTask('test_daterange_nu_debug', ['shell:runNodeunit:debug daterange']);
+    grunt.registerTask('test_durfmt_nu_debug', ['shell:runNodeunit:debug durfmt']);
+    grunt.registerTask('test_name_nu_debug', ['shell:runNodeunit:debug name']);
+    grunt.registerTask('test_number_nu_debug', ['shell:runNodeunit:debug number']);
+    grunt.registerTask('test_maps_nu_debug', ['shell:runNodeunit:debug maps']);
+    grunt.registerTask('test_phone_nu_debug', ['shell:runNodeunit:debug phone']);
+    grunt.registerTask('test_root_nu_debug', ['shell:runNodeunit:debug root']);
+    grunt.registerTask('test_strings-ext_nu_debug', ['shell:runNodeunit:debug strings-ext']);
+    grunt.registerTask('test_units_nu_debug', ['shell:runNodeunit:debug units']);
+    grunt.registerTask('test_util_nu_debug', ['shell:runNodeunit:debug util']);
+
+    grunt.registerTask('test_Remote', ['shell:testRemote']);
 
 };
