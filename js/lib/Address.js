@@ -250,6 +250,7 @@ Address.prototype = {
 			sync: this.sync, 
 			loadParams: this.loadParams, 
 			callback: ilib.bind(this, function(ctrynames) {
+			    this.ctrynames = ctrynames;
 				this._determineDest(ctrynames, onLoad);
 			})
 		});

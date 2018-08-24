@@ -523,7 +523,7 @@ module.exports.testaddress = {
         test.equal(info[2][0].component, "country");
         test.equal(info[2][0].label, "Land");
         test.ok(info[2][0].constraint);
-        test.equal(info[2][0].constraint["RU"], "Russische Föderation");
+        test.equal(info[2][0].constraint["RU"], "Russland");
         test.equal(info[2][0].constraint["CA"], "Kanada");
         test.equal(info[2][0].constraint["ZA"], "Südafrika");
         test.done();
@@ -605,11 +605,11 @@ module.exports.testaddress = {
         test.equal(info[1][0].label, "Town");
         test.equal(info[1][1].component, "postalCode");
         test.equal(info[1][1].label, "Post Code");
-        test.equal(info[1][1].constraint, "^[0-9]{6}");
+        test.equal(info[1][1].constraint, "[0-9]{6}");
         test.equal(info[2][0].component, "country");
         test.equal(info[2][0].label, "Country");
         test.ok(info[2][0].constraint);
-        test.equal(info[2][0].constraint["RU"], "Russian Federation");
+        test.equal(info[2][0].constraint["RU"], "Russia");
         test.equal(info[2][0].constraint["CA"], "Canada");
         test.equal(info[2][0].constraint["ZA"], "South Africa");
         test.done();
@@ -632,7 +632,7 @@ module.exports.testaddress = {
         test.equal(info[1][0].component, "locality");
         test.equal(info[1][0].label, "City");
         test.equal(info[1][1].component, "region");
-        test.equal(info[1][1].label, "Province");
+        test.equal(info[1][1].label, "Province or Territory");
         test.ok(info[1][1].constraint);
         test.equal(info[1][1].constraint["AB"], "Alberta");
         test.equal(info[1][1].constraint["BC"], "British Columbia");

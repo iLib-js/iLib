@@ -208,6 +208,32 @@ AddressFmt.prototype.format = function (address) {
 	return ret.replace(/\n+/g, '\n').trim();
 };
 
+
+/*
+ * Return true if this is an asian locale.
+ * @private
+ * @returns {boolean} true if this is an asian locale, or false otherwise
+ */
+function isAsianLocale(locale) {
+    return locale.language === "zh" || this.language === "ja" || this.language === "ko";
+}
+
+/*
+ * Invert the properties and values, filtering out all the values with numbers.
+ * @private
+ * @returns {Object} the inverted object
+ */
+function invertAndFilter(object) {
+    var ret = {};
+    for (var p in object) {
+        if (object.hasOwnProperty(p) && !object[p].match(/\d/)) {
+            ret[object[p]] = p;
+        }
+    }
+    
+    return ret;
+}
+
 /**
  * Return information about the address format that can be used
  * by UI builders to display a locale-sensitive set of input fields
@@ -284,7 +310,47 @@ AddressFmt.prototype.format = function (address) {
  * @returns {Array.<Object>} An array of rows of address components
  */
 AddressFmt.prototype.getFormatInfo = function(locale) {
+    var type, fields = this.info.fields;
+    if (this.info.multiformat) {
+        type = isAsianLocale(this.locale) ? "asian" : "latin";
+        fields = this.info.fields[type];
+    }
+    
+    if (typeof(this.style) === 'object') {
+        format = this.style[type || "latin"];
+    } else {
+        format = this.style;
+    }
+    
 
+    var localeAddress = new Address(" ", {locale: locale || this.locale});
+    
+    var rows = format.split(/\n/g);
+    return rows.map(ilib.bind(this, function(row) {
+        return row.split("}").filter(function(component) {
+            return component.length > 0;
+        }).map(ilib.bind(this, function(component) {
+            var name = component.replace(/.*{/, "");
+            var obj = {
+                component: name,
+                label: this.info.fieldNames[name]
+            };
+            var field = fields.filter(function(f) {
+                return f.name === name;
+            });
+            if (field && field[0] && field[0].pattern) {
+                if (typeof(field[0].pattern) === "string") {
+                    obj.constraint = field[0].pattern;
+                } else if (field[0].list) {
+                    obj.constraint = field[0].list;
+                }
+            }
+            if (name === "country") {
+                obj.constraint = invertAndFilter(localeAddress.ctrynames);
+            }
+            return obj;
+        }));
+    }));
 };
 
 module.exports = AddressFmt;

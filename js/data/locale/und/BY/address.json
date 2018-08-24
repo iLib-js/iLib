@@ -6,18 +6,18 @@
 	
 	"startAt": "end",
 	"fields": [
-		
 		{
 			"name": "locality",
 			"line": "startAtLast",
 			"pattern": "([АаБбВвГгҐґДдЕеЄєЖжЗзИиІіЇїЙйКкЛлМмНнОоПпРрСсТтУуФфХхЦцЧчШшЩщЬьЮюЯя\\.\\-'\\s]+)$"
 		},
-
 		{
 			"name": "postalCode",
 			"line": "last",
 			"pattern": "([0-9]{6})$"
 		}
-
-		]	
+	],
+    "fieldNames": {
+        "region": "Oblast"
+    }
 }

@@ -779,13 +779,11 @@ limitations under the License.
 		<attribute name="failquit"/>
 		<sequential>
 			<exec osfamily="unix" executable="node" dir="${build.test}" failifexecutionfails="@{failquit}" failonerror="@{failquit}">
-				<arg line="--inspect"/>
-				<arg line="--debug-brk"/>
+				<arg line="--inspect-brk"/>
 				<arg line="@{suite}/nodeunit/testSuite.js"/>
 			</exec>
 			<exec osfamily="windows" executable="node.exe" dir="${build.test}" failifexecutionfails="@{failquit}"  failonerror="@{failquit}">
-				<arg line="--inspect"/>
-				<arg line="--debug-brk"/>
+				<arg line="--inspect-brk"/>
 				<arg line="@{suite}/nodeunit/testSuite.js"/>
 			</exec>
 		</sequential>

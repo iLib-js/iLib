@@ -10,13 +10,13 @@
             "line": "startAtLast",
             "pattern": "[0-9]{5}-[0-9]{3}"
         },
-         {
+        {
             "name": "country",
             "line": "startAtLast",
             "pattern": [
-		"Brazil",
-		"Brasil"
-		]
+                "Brazil",
+                "Brasil"
+            ]
         },
         {
             "name": "region",
@@ -64,8 +64,6 @@
                 "RS",
                 "Rondônia",
                 "RO",
-                "Rondônia",
-                "RO",
                 "Roraima",
                 "RR",
                 "São Paulo",
@@ -76,13 +74,44 @@
                 "SE",
                 "Tocantins",
                 "TO"
-            ]
+            ],
+            "list": {
+                "AC": "Acre",
+                "AL": "Alagoas",
+                "AP": "Amapá",
+                "AM": "Amazonas",
+                "BA": "Bahia",
+                "CE": "Ceará",
+                "GO": "Goiás",
+                "ES": "Espírito Santo",
+                "MA": "Maranhão",
+                "MT": "Mato Grosso",
+                "MS": "Mato Grosso do Sul",
+                "MG": "Minas Gerais",
+                "PA": "Pará",
+                "PB": "Paraíba",
+                "PR": "Paraná",
+                "PE": "Pernambuco",
+                "PI": "Piauí",
+                "RJ": "Rio de Janeiro",
+                "RN": "Rio Grande do Norte",
+                "RS": "Rio Grande do Sul",
+                "RO": "Rondônia",
+                "RR": "Roraima",
+                "SP": "São Paulo",
+                "SC": "Santa Catarina",
+                "SE": "Sergipe",
+                "TO": "Tocantins"
+            }
         },
         {
             "name": "locality",
             "line": "last",
             "pattern": "(([A-za-zÃÉZÁÇÊJXÍÓKÚWYÕÀÂÔãézáçêjxíókúwyõàâô.']+)? ?[A-za-zÃÉZÁÇÊJXÍÓKÚWYÕÀÂÔãézáçêjxíókúwyõàâô.']+( -)?)$",
-	    "matchGroup": 1
+            "matchGroup": 1
         }
-    ]
+    ],
+    "fieldNames": {
+        "region": "State"
+    }
 }

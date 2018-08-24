@@ -16,5 +16,8 @@
             "pattern": "([0-9]{4})"
         }
 	 
-    ]
+    ],
+    "fieldNames": {
+        "region": "District"
+    }
 }
