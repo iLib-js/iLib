@@ -3,50 +3,34 @@ module.exports = function(grunt) {
         pkg: grunt.file.readJSON('package.json'),
         mkdir: {
             all: {
-                options: {
-                    create: ['export', 'export/docs', 'export/js', 'export/js/assembled', 'export/locale', 'export/package', 'export/qt', 'export/src', 'export/tools', 'dist']
-                }
-            },
+                options: {create: ['export', 'export/docs', 'export/js', 'export/js/assembled', 'export/locale', 'export/package', 'export/qt', 'export/src', 'export/tools', 'dist']
+            }},
             prepare: {
-                options: {
-                    create: ['js/output', 'js/output/reports', 'js/output/js', 'js/output/dyncode', 'js/output/test', 'js/output/jsdoc']
-                }
-            }
+                options: {create: ['js/output', 'js/output/reports', 'js/output/js', 'js/output/dyncode', 'js/output/test', 'js/output/jsdoc']
+            }}
         },
-        copy: {
-            dist: {
-                files: [
-                    {cwd:"export", src: ["**/*"], dest: 'dist', expand: true}
-                ]
-            }
-        },
-        /*run_java: {
-            options: {
-
-            },
-            java_command: {
-                execOptions: {
-                    cwd: ""
-                },
-                command: "java",
-                jarName: "",
-                className: "com.ilib.tools.jsa.JSAssemble",
-                javaOptions: {
-                    "classpath":["project.classpath.jsa"]
-                },
-                javaArgs: "-l ko-KR"
-
-            }
-        },*/
+        copy: {dist: {files: [{cwd:"export", src: ["**/*"], dest: 'dist', expand: true}]}},
         shell: {
             mkli: {
                 command: 'cd js/data; node ../../tools/build/mkli.js'
             },
-            compressJson: {
-
-            },
             touch_localeinfoStamp: {
                 command:'cd js/data/locale; touch localeinfo.stamp'
+            },
+            compressJson: {
+                command: 'cd js; node ../../tools/build/jsoncompress.js . locale/'
+            },
+            touch_compressJsonStamp: {
+                command:'cd js/data/locale; touch jsoncompress.stamp'
+            },
+            gen_manifest_locale: {
+                command:'cd js/locale; node ../../tools/build/mkmf.js'
+            },
+            uglifyfile: {
+                command: 'node_modules/uglify-js/bin/uglifyjs js/output/js/ilib.js -o js/output/dyncode/ilib.js --no-mangle-functions'
+            },
+            qmlizer: {
+                command: 'node tools/qmlizer/qmlizer.js js/output/dyncode/ilib.js js/output/dyncode/ilib.js'
             },
             runNodeunitAll: {
                 command: options => './js/test/runNodeunit.sh ' + options,
@@ -58,38 +42,18 @@ module.exports = function(grunt) {
                 command: 'cd js; ../node_modules/http-server/bin/http-server -p 9090 -o'
             }
         },
-        /*run_node: {
-            geninfo: {
-                options: {
-                    cwd: 'js/data',
-                },
-                files: {src: ['tools/build.mkli.js']}
-            },
-            map:{
-                options: {
-                    cwd: 'js/test',
-                },
-                files: {src: ['js/test/maps/nodeunit/testSuite.js']}
-            },
-        },*/
         compress: {
             tgz: {
                 options: {archive: "dist/ilib.tgz"},
-                files: [
-                    {expand:true, cwd: 'export', src: ["package/*"]}
-                ]
+                files: [{expand:true, cwd: 'export', src: ["package/*"]}]
             },
             fulltgz: {
                 options: {archive: "dist/ilib-<%= pkg.version %>.tgz"},
-                files: [
-                    {expand:true, cwd: 'export', src: ["js/*", "java/*", "locale/*", "qt/*"]}
-                ]
+                files: [{expand:true, cwd: 'export', src: ["js/*", "java/*", "locale/*", "qt/*"]}]
             },
             nodezip: {
                 options: {archive: 'dist/ilib-<%= pkg.version %>.zip'},
-                files: [
-                    {expand:true, cwd: 'export', src: ['js/*', 'java/*', 'locale/*', 'qt/*']}
-                ]
+                files: [{expand:true, cwd: 'export', src: ['js/*', 'java/*', 'locale/*', 'qt/*']}]
             },
             srczip: {
                 options: {archive: 'dist/ilib-<%= pkg.version %>-src.zip'},
@@ -107,30 +71,62 @@ module.exports = function(grunt) {
             },
             doczip: {
                 options: {archive: 'dist/ilib-<%= pkg.version %>-doc.zip'},
-                files: [
-                    {expand:true, cwd: 'export/docs', src: ['jsdoc/*']}
-                ]
+                files: [{expand:true, cwd: 'export/docs', src: ['jsdoc/*']}]
             },
              doctgz: {
                 options: {archive: 'dist/ilib-<%= pkg.version %>-doc.tgz'},
-                files: [
-                    {expand:true, cwd: 'export/docs', src: ['jsdoc/*']}
-                ]
+                files: [{expand:true, cwd: 'export/docs', src: ['jsdoc/*']}]
             }
         },
         md5sum: {
             build: {
-                files: [
-                    {
-                        cwd: "dist/",
-                        src: ["*.{tgz,zip,jar}"],
-                        dest: 'dist/checksum.md5'
-                    }
-                ]
+                files: [{
+                    cwd: "dist/",
+                    src: ["*.{tgz,zip,jar}"],
+                    dest: 'dist/checksum.md5'
+                }]
             }
         },
-        clean : {
-            build : ['dist', 'export', 'js/output', 'js/locale' ]
+        clean: {
+            all : ['dist', 'export', 'js/output', 'js/locale', 'js/package.json', 'docs/demo/demo.tgz', 'docs/demo/scripts/ilib-demo.js' ]
+        },
+        replace: {
+            ilibVersion: {
+                src: ['js/lib/ilib.js'],
+                dest: 'js/output/js/',
+                replacements: [{
+                    from: '// !macro ilibVersion',
+                    to: '"<%= pkg.version %>"'
+                }]
+            }
+        },
+        uglify: {
+            all: {
+                options: {
+                    banner: '/*! <%= pkg.name %> - v<%= pkg.version %> - ' +'<%= grunt.template.today("yyyy-mm-dd") %> */',
+                    mangle: false
+                },
+                files: [ {
+                    expand: true,
+                    cwd: 'js/lib/',
+                    src: ['*.js', '!ilib.js', '!ilib-*.js', '!externs.js', 'datefmtstr.js', '!ilib-node*.js','!ilib-stubs*','!ilib-web.js','!ilib-qt.js'],
+                    dest: 'js/output/dyncode/',
+                }]
+            }
+        },
+        jsdoc: {
+            api_doc: {
+                src: ['js/lib/*.js', 'README.md'], // !src/**/nls/**/*.js
+                options: {
+                    ignoreWarnings: true,
+                    destination: 'js/output/jsdoc'
+                }
+            }
+        },
+        eslint: {
+            check: {
+             src: ['js/lib/*.js']
+            }
         }
   });
 
@@ -139,16 +135,24 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-move');
     grunt.loadNpmTasks('grunt-md5sum');
     grunt.loadNpmTasks('grunt-shell');
-    //grunt.loadNpmTasks('grunt-run-java');
+    grunt.loadNpmTasks('grunt-text-replace');
+    grunt.loadNpmTasks('grunt-jsdoc');
+    grunt.loadNpmTasks('grunt-eslint');
+
     grunt.loadNpmTasks('grunt-contrib-clean');
     grunt.loadNpmTasks('grunt-contrib-copy');
     grunt.loadNpmTasks('grunt-contrib-compress');
+    grunt.loadNpmTasks('grunt-contrib-uglify');
 
     grunt.registerTask('dist', ['compress', 'md5sum']);
-    grunt.registerTask('build', ['shell:mkli', 'shell:touch_localeinfoStamp']);
-    grunt.registerTask('test', ['mkdir']);
-    grunt.registerTask('default', ['test']);
+    grunt.registerTask('build', ['shell:mkli', 'shell:touch_localeinfoStamp', 'shell:compressJson', 'shell:touch_compressJsonStamp' ]);
 
+    grunt.registerTask('clean', ['clean:all']);
+
+    grunt.registerTask('default', ['test']);
+    grunt.registerTask('uglifyFiles', ['replace:ilibVersion', 'shell:uglifyfile', 'shell:qmlizer', 'uglify:all']);
+
+    // Test Run
     grunt.registerTask('test_dynamic_uncompiled_nu_sync', ['shell:runNodeunitAll:all dynamic uncompiled sync']);
     grunt.registerTask('test_dynamic_uncompiled_nu_async', ['shell:runNodeunitAll:all dynamic uncompiled async']);
 
