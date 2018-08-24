@@ -2,7 +2,7 @@
  * gencountrynames.js - ilib tool to generate the ctrynames.json files from
  * the CLDR data files
  *
- * Copyright © 2013-2017, JEDLSoft
+ * Copyright © 2013-2018, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -31,18 +31,15 @@ var mergeAndPrune = common.mergeAndPrune;
 var makeDirs = common.makeDirs;
 
 function usage() {
-    console.log("Usage: gencountrynames [-h] CLDR_json_dir locale_data_dir\n" +
+    console.log("Usage: gencountrynames [-h] locale_data_dir\n" +
             "Generate localized country names from the CLDR data.\n\n" +
             "-h or --help\n" +
             "  this help\n" +
-            "CLDR_json_dir\n" +
-            "  the top level of the Unicode CLDR distribution in json format\n" +
             "locale_data_dir\n" +
             "  the top level of the ilib locale data directory\n");
     process.exit(1);
 }
 
-var cldrDirName;
 var localeDirName;
 
 process.argv.forEach(function (val, index, array) {
@@ -51,23 +48,16 @@ process.argv.forEach(function (val, index, array) {
     }
 });
 
-if (process.argv.length < 4) {
+if (process.argv.length < 3) {
     console.error('Error: not enough arguments');
     usage();
 }
 
-cldrDirName = process.argv[2];
-localeDirName = process.argv[3];
+localeDirName = process.argv[2];
 
 console.log("gencountrynames - generate localized country names from the CLDR data.\n" +
-        "Copyright (c) 2017 JEDLSoft");
-console.log("CLDR dir: " + cldrDirName);
+        "Copyright (c) 2013-2018 JEDLSoft");
 console.log("locale dir: " + localeDirName);
-
-if (!fs.existsSync(cldrDirName)) {
-    console.error("Could not access CLDR dir " + cldrDirName);
-    usage();
-}
 
 if (!fs.existsSync(localeDirName)) {
     console.error("Could not access locale data directory " + localeDirName);
@@ -102,8 +92,7 @@ function getRegionNames(localeData, pathname, locale) {
             script = locale.getScript(),
             region = locale.getRegion();
 
-        var filename = path.join(cldrDirName, "cldr-localenames-full/main", pathname, "territories.json");
-        var data = loadFile(filename);
+        var data = require(path.join("cldr-data/main", locale.getSpec(), "territories.json"));
 
         var destfile = calcLocalePath(language, script, region, "ctrynames.json");
         var destdata = loadFile(destfile);
@@ -242,9 +231,9 @@ function sortObject(obj) {
 var localeDirs, localeData = {};
 
 try {
-    localeDirs = fs.readdirSync(path.join(cldrDirName, "cldr-localenames-full/main"));
+    localeDirs = require("cldr-data/availableLocales.json").availableLocales;
 } catch (e) {
-    console.log("Error: Could not load file " + filename);
+    console.log("Error: Could not load file cldr-data/availableLocales.json");
     process.exit(2);
 }
 
