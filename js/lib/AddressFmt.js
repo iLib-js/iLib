@@ -307,50 +307,80 @@ function invertAndFilter(object) {
  *
  * @param {Locale|String=} locale the locale to translate the labels
  * to. If not given, the locale of the formatter will be used.
+ * @param {boolean} sync true if this method should load the data
+ * synchronously, false if async
+ * @param {Function(Object)} callback a callback to call when the data
+ * is ready
  * @returns {Array.<Object>} An array of rows of address components
  */
-AddressFmt.prototype.getFormatInfo = function(locale) {
-    var type, fields = this.info.fields;
-    if (this.info.multiformat) {
-        type = isAsianLocale(this.locale) ? "asian" : "latin";
-        fields = this.info.fields[type];
+AddressFmt.prototype.getFormatInfo = function(locale, sync, callback) {
+    var info;
+    if (typeof(locale) === "string") {
+        locale = new Locale(locale);
     }
-    
-    if (typeof(this.style) === 'object') {
-        format = this.style[type || "latin"];
-    } else {
-        format = this.style;
-    }
-    
 
-    var localeAddress = new Address(" ", {locale: locale || this.locale});
-    
-    var rows = format.split(/\n/g);
-    return rows.map(ilib.bind(this, function(row) {
-        return row.split("}").filter(function(component) {
-            return component.length > 0;
-        }).map(ilib.bind(this, function(component) {
-            var name = component.replace(/.*{/, "");
-            var obj = {
-                component: name,
-                label: this.info.fieldNames[name]
-            };
-            var field = fields.filter(function(f) {
-                return f.name === name;
-            });
-            if (field && field[0] && field[0].pattern) {
-                if (typeof(field[0].pattern) === "string") {
-                    obj.constraint = field[0].pattern;
-                } else if (field[0].list) {
-                    obj.constraint = field[0].list;
-                }
+    Utils.loadData({
+        name: "regionnames.json",
+        object: "AddressFmt",
+        locale: this.locale,
+        sync: this.sync,
+        loadParams: this.loadParams,
+        callback: ilib.bind(this, function(regions) {
+            this.regions = regions;
+
+            var type, fields = this.info.fields;
+            if (this.info.multiformat) {
+                type = isAsianLocale(this.locale) ? "asian" : "latin";
+                fields = this.info.fields[type];
             }
-            if (name === "country") {
-                obj.constraint = invertAndFilter(localeAddress.ctrynames);
+
+            if (typeof(this.style) === 'object') {
+                format = this.style[type || "latin"];
+            } else {
+                format = this.style;
             }
-            return obj;
-        }));
-    }));
+            var loc = new Locale(this.locale);
+            if (locale) {
+                loc.language = locale.getLanguage();
+            }
+            var localeAddress = new Address(" ", {locale: loc});
+
+            var rows = format.split(/\n/g);
+            info = rows.map(ilib.bind(this, function(row) {
+                return row.split("}").filter(function(component) {
+                    return component.length > 0;
+                }).map(ilib.bind(this, function(component) {
+                    var name = component.replace(/.*{/, "");
+                    var obj = {
+                        component: name,
+                        label: this.info.fieldNames[name]
+                    };
+                    var field = fields.filter(function(f) {
+                        return f.name === name;
+                    });
+                    if (field && field[0] && field[0].pattern) {
+                        if (typeof(field[0].pattern) === "string") {
+                            obj.constraint = field[0].pattern;
+                        } else if (field[0].list) {
+                            obj.constraint = field[0].list;
+                        }
+                    }
+                    if (name === "country") {
+                        obj.constraint = invertAndFilter(localeAddress.ctrynames);
+                    } else if (name === "region" && this.regions[loc.getRegion()]) {
+                        obj.constraint = this.regions[loc.getRegion()];
+                    }
+                    return obj;
+                }));
+            }));
+
+            if (callback && typeof(callback) === "function") {
+                callback(info);
+            }
+        })
+    });
+
+    return info;
 };
 
 module.exports = AddressFmt;
