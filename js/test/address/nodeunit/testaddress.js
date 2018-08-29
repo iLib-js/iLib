@@ -463,9 +463,9 @@ module.exports.testaddress = {
 
         test.equal(info[1][1].component, "region");
         test.ok(info[1][2].constraint);
-        test.equal(info[1][2].constraint["AZ"], "Arizona");
-        test.equal(info[1][2].constraint["MS"], "Mississippi");
-        test.equal(info[1][2].constraint["New York"], "New York");
+        test.equal(info[1][1].constraint["AZ"], "Arizona");
+        test.equal(info[1][1].constraint["MS"], "Mississippi");
+        test.equal(info[1][1].constraint["NY"], "New York");
 
         test.equal(info[2][0].component, "country");
         test.ok(info[2][0].constraint);
