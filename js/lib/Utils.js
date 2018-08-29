@@ -187,7 +187,7 @@ Utils.mergeLocData = function (prefix, locale, replaceArrays, returnOne) {
     var foundLocaleData = false;
     var mostSpecific;
 
-    data = ilib.data[prefix] || {};
+    data = {};
 
     mostSpecific = data;
 
@@ -373,7 +373,7 @@ Utils.loadData = function(params) {
 	}
 	if (params.locale) {
 		locale = (typeof(params.locale) === 'string') ? new Locale(params.locale) : params.locale;
-	}			
+	}
 	if (params.type) {
 		type = params.type;
 	}
