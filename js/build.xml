@@ -534,13 +534,45 @@ limitations under the License.
             </exec>
         </sequential>
     </target>
+    <target name="scan.demo.dynamic">
+        <sequential>
+            <echo>Scanning demo dir for ilib classes ${env.PATH}:${nm.bin}</echo>
+            <exec osfamily="unix" executable="ilib-scanner" dir="${build.demo}" failifexecutionfails="@{failquit}" failonerror="@{failquit}" searchpath="true">
+                <env key="PATH" path="${env.PATH}:${nm.bin}"/>
+                <arg value="scripts/ilib-include.js"/>
+                <arg value="--assembly=dynamicdata"/>
+                <arg value="--compilation=compiled"/>
+                <arg value="--locales=${locales.demo}"/>
+                <arg value="--ilibRoot=${build.base}"/>
+            </exec>
+            <exec osfamily="windows" executable="ilib-scanner.bat" dir="${build.demo}" failifexecutionfails="@{failquit}"  failonerror="@{failquit}" searchpath="true">
+                <env key="PATH" path="${env.PATH}:${nm.bin}"/>
+                <arg value="scripts/ilib-include.js"/>
+                <arg value="--assembly=dynamicdata"/>
+                <arg value="--compilation=compiled"/>
+                <arg value="--locales=${locales.demo}"/>
+                <arg value="--ilibRoot=${build.base}"/>
+            </exec>
+        </sequential>
+    </target>
     <target name="build.demo" depends="scan.demo">
        <sequential>
-            <echo>Executing webpack.js</echo>
+            <echo>Executing webpack</echo>
             <exec osfamily="unix" executable="webpack" dir="${build.demo}/scripts" failifexecutionfails="@{failquit}" failonerror="@{failquit}">
                 <env key="PATH" path="${env.PATH}:${nm.bin}"/>
             </exec>
-            <exec osfamily="windows" executable="webpack.bat" dir="${build.demo}/scripts" failifexecutionfails="@{failquit}"  failonerror="@{failquit}">
+            <exec osfamily="windows" executable="webpack.bat" dir="${build.demo}/scripts" failifexecutionfails="@{failquit}" failonerror="@{failquit}">
+                <env key="PATH" path="${env.PATH}:${nm.bin}"/>
+            </exec>
+        </sequential>
+    </target>
+    <target name="build.demo.dynamic" depends="scan.demo.dynamic">
+       <sequential>
+            <echo>Executing webpack</echo>
+            <exec osfamily="unix" executable="webpack" dir="${build.demo}/scripts" failifexecutionfails="@{failquit}" failonerror="@{failquit}">
+                <env key="PATH" path="${env.PATH}:${nm.bin}"/>
+            </exec>
+            <exec osfamily="windows" executable="webpack.bat" dir="${build.demo}/scripts" failifexecutionfails="@{failquit}" failonerror="@{failquit}">
                 <env key="PATH" path="${env.PATH}:${nm.bin}"/>
             </exec>
         </sequential>

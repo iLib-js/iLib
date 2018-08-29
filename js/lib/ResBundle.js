@@ -272,8 +272,6 @@ var ResBundle = function (options) {
 		callback: ilib.bind(this, function (map) {
 			if (!map) {
 				map = ilib.data[this.baseName] || {};
-				spec = lookupLocale.getSpec().replace(/-/g, '_');
-				ilib.data.cache[object][spec] = map;
 			}
 			this.map = map;
 			if (this.locale.isPseudo()) {

@@ -52,25 +52,43 @@ $(function() {
         locales = Locale.getAvailableLocales();
     
     // assume localized text display by default
+    // this call is synchronous because the resource bundle 
+    // is already included above in resources.js
     res = new ResBundle({
         name: "ilibTutorial"
     });
 
+    function pushLocale(map, li, name) {
+        if (li.getRegionName()) {
+            name += " - " + li.getRegionName(); 
+        }
+        map.push({id: li.getLocale(), name: name});
+    }
+    
     $.each(locales, function(i,locale) {
-    	name = res.getString(locale);
-    	if (!name || name === locale) {
-	    	var li = new LocaleInfo(locale);
-			name = li.getLanguageName();
-	        var script = li.getLocale().getScript();
-	        if (script) {
-	            var si = new ScriptInfo(script);
-	            name += " - " + si.getName(); 
-	        }
-			if (li.getRegionName()) {
-				name += " - " + li.getRegionName(); 
-			}
-		}
-	    localeMap.push({id: locale, name: name});
+        name = res.getString(locale);
+        if (!name || name === locale) {
+            new LocaleInfo(locale, {
+                sync: !ilib.isDynData(),
+                onLoad: function(li) {
+                    name = li.getLanguageName();
+                    var script = li.getLocale().getScript();
+                    if (script) {
+                        new ScriptInfo(script, {
+                            sync: !ilib.isDynData(),
+                            onLoad: function(si) {
+                                name += " - " + si.getName(); 
+                                pushLocale(localeMap, li, name);
+                            }
+                        });
+                    } else {
+                        pushLocale(localeMap, li, name);
+                    }
+                }
+            });
+        } else {
+            localeMap.push({id: locale, name: name});
+        }
     });
     
     localeMap.sort(function (left, right) {
@@ -220,40 +238,9 @@ $(function() {
                 date : dateFmt,
                 time : timeFmt,
                 useNative : useNative,
-                timezone: timezone
+                timezone: timezone,
+                sync: !ilib.isDynData()
             };
-            
-            var date,
-                cal = CalendarFactory({
-                    locale: localeName,
-                    type: (calendar === "julianday" || calendar === "unixtime") ? "gregorian" : calendar
-                });
-                
-            if (calendar === 'julianday') {
-                date = DateFactory({
-                    type: cal.getType(),
-                    julianday: $('#julianday').val(),
-                    timezone: "Etc/UTC"
-                });
-            } else if (calendar === 'unixtime') {
-                date = DateFactory({
-                    type: cal.getType(),
-                    unixtime: $('#unixtime').val(),
-                    timezone: "Etc/UTC"
-                });
-            } else {
-                date = DateFactory({
-                    type: cal.getType(),
-                    year: $('#year').val(),
-                    month: $('#month').val(),
-                    day: $('#day').val(),
-                    hour: $('#hour').val(),
-                    minute: $('#minute').val(),
-                    second: $('#second').val(),
-                    millisecond: $('#millisecond').val(),
-                    timezone: timezone
-                });
-            }
             
             if (clockFmt !== 'none') {
                 options.clock = clockFmt;
@@ -270,24 +257,68 @@ $(function() {
                     break;
             }
             
-            fmt = new DateFmt(options);
-            postFmtData = fmt.format(date);
-			var str1;
-			str1 = res.getString("The date is {date}");
-			str1 = str1.format({
-				date: fmt.format(date)
-			});
-			
-			//
-			// Apply conversion
-			//   
-			$('.testSubject').html("<b>" + postFmtData + "</b><br />"
-					// + res.getString("The date range is ") + "<b>" + rangeData + "</b><br />"
-					// + res.getString("The duration is ") + "<b>" + durationData + "</b><hr />"
-					// + str1 + "<br />"
-					//+ str2 + "<br />"
-					//+ str3
-                    );
+            var date;
+            CalendarFactory({
+                locale: localeName,
+                type: (calendar === "julianday" || calendar === "unixtime") ? "gregorian" : calendar,
+                sync: !ilib.isDynData(),
+                onLoad: function(cal) {
+                    var dfOptions;
+                    
+                    if (calendar === 'julianday') {
+                        dfOptions = {
+                            type: cal.getType(),
+                            julianday: $('#julianday').val(),
+                            timezone: "Etc/UTC"
+                        };
+                    } else if (calendar === 'unixtime') {
+                        dfOptions = {
+                            type: cal.getType(),
+                            unixtime: $('#unixtime').val(),
+                            timezone: "Etc/UTC"
+                        };
+                    } else {
+                        dfOptions = {
+                            type: cal.getType(),
+                            year: $('#year').val(),
+                            month: $('#month').val(),
+                            day: $('#day').val(),
+                            hour: $('#hour').val(),
+                            minute: $('#minute').val(),
+                            second: $('#second').val(),
+                            millisecond: $('#millisecond').val(),
+                            timezone: timezone
+                        };
+                    }
+
+                    dfOptions.sync = !ilib.isDynData();
+                    dfOptions.onLoad = function(date) {
+                        options.onLoad = function(fmt) {
+                            postFmtData = fmt.format(date);
+                            var str1;
+                            str1 = res.getString("The date is {date}");
+                            str1 = str1.format({
+                                date: fmt.format(date)
+                            });
+                            
+                            //
+                            // Apply conversion
+                            //   
+                            $('.testSubject').html("<b>" + postFmtData + "</b><br />"
+                                    // + res.getString("The date range is ") + "<b>" + rangeData + "</b><br />"
+                                    // + res.getString("The duration is ") + "<b>" + durationData + "</b><hr />"
+                                    // + str1 + "<br />"
+                                    //+ str2 + "<br />"
+                                    //+ str3
+                                    );
+                        };
+                        
+                        new DateFmt(options);
+                    };
+                    
+                    DateFactory(dfOptions);
+                }
+            });
             break;
         
         case 'CalendarConv':
@@ -1605,7 +1636,7 @@ $(document).ready(function () {
                                 <div>
 	                                <input type="radio" name="clockFmt" id="clockFmt" value="12"/>12-hour clock
 	                                <input type="radio" name="clockFmt" id="clockFmt" value="24"/>24-hour clock
-	                                <input type="radio" name="clockFmt" id="clockFmt" value="none" checked="checked"/>Default to locale settings
+	                                <input type="radio" name="clockFmt" id="clockFmt" value="" checked="checked"/>Default to locale settings
                                 </div>
                             </div>
                             <div id="nativePane">
@@ -1614,7 +1645,7 @@ $(document).ready(function () {
 	                                <input type="radio" name="useNative" id="useNative" value="false" checked="checked"/>Western digits
 	                                <input type="radio" name="useNative" id="useNative" value="true"/>Native digits
                                 </div>
-                            </div>                          
+                            </div>
                         </div>
 						<div id="chineseCyclesPicker" style="display: none">
                             <div>

@@ -617,7 +617,6 @@ DateFmt.prototype = {
                     var spec = this.locale.getSpec().replace(/-/g, '_');
                     if (!formats) {
                         formats = ilib.data.dateformats || DateFmt.defaultFmt;
-                        ilib.data.cache.DateFmt[spec] = formats;
                     }
                     
                     if (typeof(this.clock) === 'undefined') {

@@ -91,6 +91,7 @@ module.exports = function (ilib) {
         }
 
         filename = locale && locale.getSpec() || (base === "ilibmanifest" ? "localmanifest" : "root");
+        
         var dataName = base;
         if (dir) {
             if (locale) {
@@ -104,25 +105,33 @@ module.exports = function (ilib) {
         }
 
         dataName = dataName.replace(/[\.:\(\)\/\\\+\-]/g, "_");
+
+        /*
         var data = this.getData(dataName, tzName);
 
         if (data) {
             // already loaded
             if (typeof(cb) === "function") cb(data);
-        } else if (!alreadyLoaded.has(filename)) {
+        } else
+        */ 
+        if (!alreadyLoaded.has(filename)) {
             console.log("WebpackLoader._loadFile: loading " + pathname + (sync ? " sync" : " async") + " as " + filename + ".js");
 
             alreadyLoaded.add(filename);
             loadLocaleData(this.ilib, filename, function(callback, data) {
+                data = (data && typeof(data) === "object" && typeof(data.installLocale) === "function") ? this.getData(dataName, tzName) : data;
                 if (callback && typeof(callback) === "function") {
-                    callback((data && typeof(data) === "object" && typeof(data.installLocale) === "function") ? this.getData(dataName, tzName) : data);
+                    callback(data);
                 }
             }.bind(this, cb));
-        } else {
+        }
+        /*
+        else {
             if (typeof(cb) === "function") cb();
         }
+        */
 
-        return data;
+        // return data;
     };
 
     WebpackLoader.prototype._exists = function(dir, file) {

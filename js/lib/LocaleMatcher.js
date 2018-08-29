@@ -94,8 +94,6 @@ var LocaleMatcher = function(options) {
 			callback: ilib.bind(this, function (info) {
 				if (!info) {
 					info = {};
-					var spec = this.locale.getSpec().replace(/-/g, "_");
-					ilib.data.cache.LocaleMatcher[spec] = info;
 				}
 				/** @type {Object.<string,string>} */
 				this.info = info;

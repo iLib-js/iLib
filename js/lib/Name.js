@@ -166,8 +166,6 @@ var Name = function (name, options) {
 						callback: ilib.bind(this, function (info) {
 							if (!info) {
 								info = Name.defaultInfo[this.style || "western"];
-								var spec = this.locale.getSpec().replace(/-/g, "_");
-								ilib.data.cache.Name[spec] = info;
 							}
                             if (typeof (name) === 'object') {
     							    // copy constructor

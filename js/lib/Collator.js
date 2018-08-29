@@ -410,8 +410,6 @@ var Collator = function(options) {
 			callback: ilib.bind(this, function (collation) {
 				if (!collation) {
 					collation = ilib.data.collation;
-					var spec = this.locale.getSpec().replace(/-/g, '_');
-					ilib.data.cache.Collator[spec] = collation;
 				}
 				this._initCollation(collation);
 		        if (this.ignorePunctuation) {
