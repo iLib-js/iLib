@@ -1,11 +1,22 @@
 {
-    "419": "Latiinnalaš-Amerihkká",
-    "003": "Davvi-Amerihkká ja Gaska-Amerihkká",
-    "005": "Lulli-Amerihkká",
-    "013": "Gaska-Amerihkká",
-    "021": "Davvi-Amerihkká",
+    "419": "Latiinnalaš Amerihká",
+    "001": "Máilbmi",
+    "002": "Afrihka",
+    "003": "Davvi-Amerihká ja Gaska-Amerihká",
+    "005": "Lulli-Amerihká",
+    "011": "Oarje-Afrihká",
+    "013": "Gaska-Amerihká",
+    "014": "Nuorta-Afrihká",
+    "015": "Davvi-Afrihká",
+    "017": "Gaska-Afrihká",
+    "018": "Lulli-Afrihká",
+    "019": "Amerihka",
+    "021": "Davvi-Amerihká",
+    "057": "Mikronesia guovlu",
     "BA": "Bosnia ja Hercegovina",
+    "EZ": "Euroavádat",
     "KH": "Kamboža",
     "SD": "Sudan",
-    "TD": "Chad"
+    "TD": "Chad",
+    "UN": "Ovttastuvvan Našuvnnat"
 }
