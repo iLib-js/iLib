@@ -24,6 +24,7 @@
 
 var fs = require('fs');
 var path = require('path');
+var xml2json = require("xml2json");
 var common = require('./common');
 var merge = common.merge;
 var Locale = common.Locale;
@@ -31,15 +32,18 @@ var mergeAndPrune = common.mergeAndPrune;
 var makeDirs = common.makeDirs;
 
 function usage() {
-    console.log("Usage: gencountrynames [-h] locale_data_dir\n" +
+    console.log("Usage: gencountrynames [-h] CLDR_xml_dir locale_data_dir\n" +
             "Generate localized country names from the CLDR data.\n\n" +
             "-h or --help\n" +
             "  this help\n" +
+            "CLDR_xml_dir\n" +
+            "  the top level of the Unicode CLDR distribution in xml format\n" +
             "locale_data_dir\n" +
             "  the top level of the ilib locale data directory\n");
     process.exit(1);
 }
 
+var cldrDirName;
 var localeDirName;
 
 process.argv.forEach(function (val, index, array) {
@@ -48,16 +52,23 @@ process.argv.forEach(function (val, index, array) {
     }
 });
 
-if (process.argv.length < 3) {
+if (process.argv.length < 4) {
     console.error('Error: not enough arguments');
     usage();
 }
 
-localeDirName = process.argv[2];
+cldrDirName = process.argv[2];
+localeDirName = process.argv[3];
 
 console.log("gencountrynames - generate localized country names from the CLDR data.\n" +
         "Copyright (c) 2013-2018 JEDLSoft");
+console.log("CLDR dir: " + cldrDirName);
 console.log("locale dir: " + localeDirName);
+
+if (!fs.existsSync(cldrDirName)) {
+    console.error("Could not access CLDR dir " + cldrDirName);
+    usage();
+}
 
 if (!fs.existsSync(localeDirName)) {
     console.error("Could not access locale data directory " + localeDirName);
@@ -75,26 +86,26 @@ function loadFile(pathname) {
     return ret;
 }
 
-function filterRegions(regions, territories) {
-    for (var region in territories) {
-        if (region && territories[region] && (region !== territories[region])) {
-            if (Locale.isRegionCode(region)) {
-                regions[territories[region]] = region;
+function filterCountries(countries, territories) {
+    for (var country in territories) {
+        if (country && territories[country] && (country !== territories[country])) {
+            if (Locale.isRegionCode(country)) {
+                countries[territories[country]] = country;
             }
         }
     }
-    return regions;
+    return countries;
 }
 
-function getRegionNames(localeData, pathname, locale) {
+function getCountryNames(localeData, pathname, locale) {
     try {
         var language = locale.getLanguage(),
             script = locale.getScript(),
-            region = locale.getRegion();
+            country = locale.getRegion();
 
         var data = require(path.join("cldr-data/main", locale.getSpec(), "territories.json"));
 
-        var destfile = calcLocalePath(language, script, region, "ctrynames.json");
+        var destfile = calcLocalePath(language, script, country, "ctrynames.json");
         var destdata = loadFile(destfile);
 
         // If the existing file is there and done by hand, just merge these things into that file rather
@@ -113,30 +124,30 @@ function getRegionNames(localeData, pathname, locale) {
             if (!localeData[language][script]) {
                 localeData[language][script] = {};
             }
-            if (!localeData[language][script][region]) {
-                localeData[language][script][region] = {};
+            if (!localeData[language][script][country]) {
+                localeData[language][script][country] = {};
             }
-            if (region) {
-                localeData[language][script][region].data = filterRegions(destdata, data.main[locale.getSpec()].localeDisplayNames.territories);
+            if (country) {
+                localeData[language][script][country].data = filterCountries(destdata, data.main[locale.getSpec()].localeDisplayNames.territories);
             } else {
-                localeData[language][script].data = filterRegions(destdata, data.main[locale.getSpec()].localeDisplayNames.territories);
+                localeData[language][script].data = filterCountries(destdata, data.main[locale.getSpec()].localeDisplayNames.territories);
             }
-        } else if (region) {
+        } else if (country) {
             if (!localeData[language]) {
                 localeData[language] = {};
             }
-            if (!localeData[language][region]) {
-                localeData[language][region] = {};
+            if (!localeData[language][country]) {
+                localeData[language][country] = {};
             }
-            localeData[language][region].data = filterRegions(destdata, data.main[locale.getSpec()].localeDisplayNames.territories);
+            localeData[language][country].data = filterCountries(destdata, data.main[locale.getSpec()].localeDisplayNames.territories);
         } else if (language) {
             if (!localeData[language]) {
                 localeData[language] = {};
             }
-            localeData[language].data = filterRegions(destdata, data.main[locale.getSpec()].localeDisplayNames.territories);
+            localeData[language].data = filterCountries(destdata, data.main[locale.getSpec()].localeDisplayNames.territories);
         } else {
             // root locale
-            localeData.data = filterRegions(destdata, data.main[locale.getSpec()].localeDisplayNames.territories);
+            localeData.data = filterCountries(destdata, data.main[locale.getSpec()].localeDisplayNames.territories);
         }
     } catch (e) {
         return undefined;
@@ -145,24 +156,91 @@ function getRegionNames(localeData, pathname, locale) {
     return data;
 }
 
-function getMergedData(localeData, language, script, region) {
+function filterRegions(regions, subdivisions) {
+    var ret = {};
+
+    for (var i = 0; i < subdivisions.length; i++) {
+        var type = subdivisions[i].type.toUpperCase();
+        var country = type.substring(0,2);
+        var region = type.substring(2);
+        if (!ret[country]) ret[country] = {};
+        ret[country][region] = subdivisions[i]["$t"];
+    }
+
+    return ret;
+}
+
+function getRegionNames(localeData, pathname, locale) {
+    try {
+        var language = locale.getLanguage(),
+            script = locale.getScript(),
+            country = locale.getRegion();
+
+        var data, xmlData = fs.readFileSync(path.join(cldrDirName, "common/subdivisions", locale.getSpec() + ".xml"), "utf-8");
+        if (xmlData) {
+            data = xml2json.toJson(xmlData, {
+                object: true,
+                sanitize: true,
+                reversible: true,
+                trim: false
+            });
+        } else {
+            return undefined;
+        }
+
+        var destdata = {};
+
+        if (language && !localeData[language]) {
+            localeData[language] = {};
+        }
+        if (script) {
+            if (!localeData[language][script]) {
+                localeData[language][script] = {};
+            }
+            if (country) {
+                if (!localeData[language][script][country]) {
+                    localeData[language][script][country] = {};
+                }
+                localeData[language][script][country].data = filterRegions(destdata, data.ldml.localeDisplayNames.subdivisions.subdivision);
+            } else {
+                localeData[language][script].data = filterRegions(destdata, data.ldml.localeDisplayNames.subdivisions.subdivision);
+            }
+        } else if (country) {
+            if (!localeData[language][country]) {
+                localeData[language][country] = {};
+            }
+            localeData[language][country].data = filterRegions(destdata, data.ldml.localeDisplayNames.subdivisions.subdivision);
+        } else if (language) {
+            localeData[language].data = filterRegions(destdata, data.ldml.localeDisplayNames.subdivisions.subdivision);
+        }
+    } catch (e) {
+        return undefined;
+    }
+
+    return data;
+}
+
+function getMergedData(localeData, language, script, country) {
     var ret = localeData.data; // root
     if (language) {
         ret = merge(ret, localeData[language].data);
         if (script) {
             ret = merge(ret, localeData[language][script].data);
-            if (region) {
-                ret = merge(ret, localeData[language][script][region].data);
+            if (country) {
+                ret = merge(ret, localeData[language][script][country].data);
             }
-        } else if (region) {
-            ret = merge(ret, localeData[language][region].data);
+        } else if (country) {
+            ret = merge(ret, localeData[language][country].data);
         }
     }
     return ret;
 }
 
-function calcLocalePath(language, script, region, filename) {
+function calcLocalePath(language, script, country, filename) {
     var pathname = localeDirName;
+    if (!language && !script && !country) {
+        return path.join(pathname, filename); // the root!
+    }
     if (language) {
         pathname = path.join(pathname, language);
     } else {
@@ -171,8 +249,8 @@ function calcLocalePath(language, script, region, filename) {
     if (script) {
         pathname = path.join(pathname, script);
     }
-    if (region) {
-        pathname = path.join(pathname, region);
+    if (country) {
+        pathname = path.join(pathname, country);
     }
     pathname = path.join(pathname, filename);
     return pathname;
@@ -191,15 +269,15 @@ function anyProperties(data) {
     return false;
 }
 
-function writeCountryNameResources(language, script, region, data) {
-    var pathname = calcLocalePath(language, script, region, "");
+function writeResources(language, script, country, data, filePrefix) {
+    var pathname = calcLocalePath(language, script, country, "");
     var reverse = {};
 
     if (anyProperties(data)) {
         console.log("Writing " + pathname);
-        makeDirs(pathname);
+        if (pathname && pathname !== ".") makeDirs(pathname);
         //data = sortObject(data);
-        fs.writeFileSync(path.join(pathname, "ctrynames.json"), JSON.stringify(data, true, 4), "utf-8");
+        fs.writeFileSync(path.join(pathname, filePrefix + "names.json"), JSON.stringify(data, true, 4), "utf-8");
 
         for (var ctry in data) {
             if (ctry && data[ctry]) {
@@ -207,10 +285,18 @@ function writeCountryNameResources(language, script, region, data) {
             }
         }
 
-        fs.writeFileSync(path.join(pathname, "ctryreverse.json"), JSON.stringify(reverse, true, 4), "utf-8");
+        fs.writeFileSync(path.join(pathname, filePrefix + "reverse.json"), JSON.stringify(reverse, true, 4), "utf-8");
     } else {
         console.log("Skipping empty " + pathname);
     }
+}
+
+function writeCountryNameResources(language, script, country, data) {
+    writeResources(language, script, country, data, "ctry");
+}
+
+function writeRegionNameResources(language, script, country, data) {
+    writeResources(language, script, country, data, "region");
 }
 
 function sortObject(obj) {
@@ -228,7 +314,7 @@ function sortObject(obj) {
     return sortedInfoObj;
 }
 
-var localeDirs, localeData = {};
+var localeDirs, localeData = {}, regionData = {};
 
 try {
     localeDirs = require("cldr-data/availableLocales.json").availableLocales;
@@ -246,14 +332,20 @@ for (var i = 0; i < localeDirs.length; i++) {
     var locale = new Locale(localeSpec);
 
     if (localeSpec !== "root") {
-        getRegionNames(localeData, localeSpec, locale);
+        getCountryNames(localeData, localeSpec, locale);
+        getRegionNames(regionData, localeSpec, locale);
     }
 }
 
 //find the system resources
 console.log("Merging and pruning locale data...");
 mergeAndPrune(localeData);
-console.log("Writing country name resources...");
+
+// use English as the root language for regions
+regionData.data = regionData.en.data;
+
+mergeAndPrune(regionData);
+console.log("Writing country and region name resources...");
 
 // now write out the system resources
 
@@ -263,9 +355,9 @@ for (language in localeData) {
             if (subpart && localeData[language][subpart] && subpart !== 'data' && subpart !== 'merged') {
                 if (Locale.isScriptCode(subpart)) {
                     script = subpart;
-                    for (region in localeData[language][script]) {
-                        if (region && localeData[language][script][region] && region !== 'data' && region !== 'merged') {
-                            writeCountryNameResources(language, script, region, localeData[language][script][region].data);
+                    for (country in localeData[language][script]) {
+                        if (country && localeData[language][script][country] && country !== 'data' && country !== 'merged') {
+                            writeCountryNameResources(language, script, country, localeData[language][script][country].data);
                         }
                     }
                     writeCountryNameResources(language, script, undefined, localeData[language][script].data);
@@ -278,3 +370,25 @@ for (language in localeData) {
     }
 }
 writeCountryNameResources(undefined, undefined, undefined, localeData.data);
+
+for (language in regionData) {
+    if (language && regionData[language] && language !== 'data' && language !== 'merged') {
+        for (var subpart in regionData[language]) {
+            if (subpart && regionData[language][subpart] && subpart !== 'data' && subpart !== 'merged') {
+                if (Locale.isScriptCode(subpart)) {
+                    script = subpart;
+                    for (country in regionData[language][script]) {
+                        if (country && regionData[language][script][country] && country !== 'data' && country !== 'merged') {
+                            writeRegionNameResources(language, script, country, regionData[language][script][country].data);
+                        }
+                    }
+                    writeRegionNameResources(language, script, undefined, regionData[language][script].data);
+                } else {
+                    writeRegionNameResources(language, undefined, subpart, regionData[language][subpart].data);
+                }
+            }
+        }
+        writeRegionNameResources(language, undefined, undefined, regionData[language].data);
+    }
+}
+writeRegionNameResources(undefined, undefined, undefined, regionData.data);
