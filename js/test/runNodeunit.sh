@@ -2,49 +2,49 @@
 
 echo "*** Running Nodeunit Tests ***"
 
-argc=$#
-argv0=$0
-argv1=$1
-argv2=$2
-argv3=$3
-argv4=$4
+argsCount=$#
+fileName=$0
+testType=$1
+feature=$2
+compiled=$3
+syncOption=$4
 
 run_nodeunit_tests()
 {
-    if [ 2 -eq $argc ]
+    if [ 2 -eq $argsCount ]
     then
-        if [ "$argv1" = "sync" ]
+        if [ "$testType" = "sync" ]
         then
-            echo "argc:$argc"
-            echo "argv0:$argv0"
-            echo "argv1:$argv1"
-            echo "argv2:$argv2"
+            echo "argsCount:$argsCount"
+            echo "fileName:$fileName"
+            echo "testType:$testType"
+            echo "feature:$feature"
             
-            cd js/test/$argv2/nodeunit
+            cd js/test/$feature/nodeunit
             node testSuite.js
 
             return 1
         fi
-        if [ "$argv1" = "async" ]
+        if [ "$testType" = "async" ]
         then
-            echo "argc:$argc"
-            echo "argv0:$argv0"
-            echo "argv1:$argv1"
-            echo "argv2:$argv2"
+            echo "argsCount:$argsCount"
+            echo "fileName:$fileName"
+            echo "testType:$testType"
+            echo "feature:$feature"
             
-            cd js/test/$argv2/nodeunit
+            cd js/test/$feature/nodeunit
             node testSuiteAsync.js
 
             return 1
         fi
-        if [ "$argv1" = "debug" ]
+        if [ "$testType" = "debug" ]
         then
-            echo "argc:$argc"
-            echo "argv0:$argv0"
-            echo "argv1:$argv1"
-            echo "argv2:$argv2"
+            echo "argsCount:$argsCount"
+            echo "fileName:$fileName"
+            echo "testType:$testType"
+            echo "feature:$feature"
 
-            cd js/test/$argv2/nodeunit
+            cd js/test/$feature/nodeunit
             node --inspect-brk testSuite.js
 
             return 1
@@ -53,18 +53,18 @@ run_nodeunit_tests()
         echo "The number of arguments is not satisfied."
     fi
 
-    if [ 4 -eq $argc ]
+    if [ 4 -eq $argsCount ]
     then
-        if [ "$argv1" = "all" ]
+        if [ "$testType" = "all" ]
         then
-            echo "argc:$argc"
-            echo "argv0:$argv0"
-            echo "argv1:$argv1"
-            echo "argv2:$argv2"
-            echo "argv3:$argv3"
-            echo "argv4:$argv4"
+            echo "argsCount:$argsCount"
+            echo "fileName:$fileName"
+            echo "testType:$testType"
+            echo "feature:$feature"
+            echo "compiled:$compiled"
+            echo "syncOption:$syncOption"
             cd js/test
-            node testRunner.js $argv2 $argv3 all $argv4
+            node testRunner.js $feature $compiled all $syncOption
 
             return 1
         fi

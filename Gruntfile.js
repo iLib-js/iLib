@@ -1,3 +1,5 @@
+const webpackConfig = require('./js/webpack.config.js');
+
 module.exports = function(grunt) {
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
@@ -40,6 +42,17 @@ module.exports = function(grunt) {
             },
             testRemote: {
                 command: 'cd js; ../node_modules/http-server/bin/http-server -p 9090 -o'
+            },
+            run_webpack: {
+                /*
+                <arg value="--env.assembly=@{assembly}"/>
+                <arg value="--env.size=@{size}"/>
+                <arg value="--env.compilation=@{compilation}"/>
+                <arg value="--env.locales=@{locales}"/>
+                <arg value="--env.target=@{target}"/>
+                <arg value="--env.ilibRoot=${build.base}"/>
+                */
+                command: options => './js/runWebpack.sh ' + options,
             }
         },
         compress: {
@@ -130,7 +143,6 @@ module.exports = function(grunt) {
         }
   });
 
-
     grunt.loadNpmTasks('grunt-mkdir');
     grunt.loadNpmTasks('grunt-move');
     grunt.loadNpmTasks('grunt-md5sum');
@@ -151,6 +163,55 @@ module.exports = function(grunt) {
 
     grunt.registerTask('default', ['test']);
     grunt.registerTask('uglifyFiles', ['replace:ilibVersion', 'shell:uglifyfile', 'shell:qmlizer', 'uglify:all']);
+
+    // Webpack Run
+    /*
+    <arg value="--env.assembly=@{assembly}"/> . default: assembled
+    <arg value="--env.size=@{size}"/>
+    <arg value="--env.compilation=@{compilation}"/> default:"uncompiled"
+    <arg value="--env.locales=@{locales}"/> default: locales.default
+    <arg value="--env.target=@{target}"/> default: target
+    <arg value="--env.ilibRoot=${build.base}"/>
+    */
+    grunt.registerTask('webpack_assemble_core', ['shell:run_webpack:assembly core uncompiled web locales_default']);
+    grunt.registerTask('webpack_assemble_core_compiled', ['shell:run_webpack:assembly core compiled web locales_default']);
+    grunt.registerTask('webpack_assemble_core_dyndata', ['shell:run_webpack:dynamicdata core uncompiled web locales_default']);
+    grunt.registerTask('webpack_assemble_core_dyndata_compiled', ['shell:run_webpack:dynamicdata core compiled web locales_default']);
+
+    grunt.registerTask('webpack_assemble_standard', ['shell:run_webpack:assembly standard uncompiled web locales_default']);
+    grunt.registerTask('webpack_assemble_standard_compiled', ['shell:run_webpack:assembly standard compiled web locales_default']);
+    grunt.registerTask('webpack_assemble_standard_dyndata', ['shell:run_webpack:dynamicdata standard uncompiled web locales_default']);
+    grunt.registerTask('webpack_assemble_standard_dyndata_compiled', ['shell:run_webpack:dynamicdata standard compiled web locales_default']);
+
+    grunt.registerTask('webpack_assemble_full', ['shell:run_webpack:assembly full uncompiled web locales_default']);
+    grunt.registerTask('webpack_assemble_full_compiled', ['shell:run_webpack:assembly full compiled web locales_default']);
+
+    //Error
+    grunt.registerTask('webpack_assemble_full_dyndata', ['shell:run_webpack:dynamicdata full uncompiled web locales_default']);
+    grunt.registerTask('webpack_assemble_full_dyndata_compiled', ['shell:run_webpack:dynamicdata full compiled web locales_default']);
+
+    //Error occured
+    grunt.registerTask('webpack_assemble_unittest', ['shell:run_webpack:assembly ut uncompiled web locales_unittest']);
+    grunt.registerTask('webpack_assemble_unittest_compiled', ['shell:run_webpack:assembly ut compiled web locales_unittest']);
+
+    //Error occured
+    grunt.registerTask('webpack_assemble_unittest_dyndata', ['shell:run_webpack:dynamicdata ut uncompiled web locales_unittest']);
+    grunt.registerTask('webpack_assemble_unittest_dyndata_compiled', ['shell:run_webpack:dynamicdata ut compiled web locales_unittest']);
+
+    //Error occured
+    grunt.registerTask('webpack_assemble_unittest_node', ['shell:run_webpack:assembly ut uncompiled node locales_unittest']);
+    grunt.registerTask('webpack_assemble_unittest_node', ['shell:run_webpack:assembly ut compiled node locales_unittest']);
+
+    grunt.registerTask('webpack_assemble_unittest_dyndata_node', ['shell:run_webpack:dynamicdata ut uncompiled node locales_unittest']);
+    grunt.registerTask('webpack_assemble_unittest_dyndata_node_compiled', ['shell:run_webpack:dynamicdata ut uncompiled node locales_unittest']);
+
+    grunt.registerTask('webpack_assemble_demo', ['shell:run_webpack:asembly demo uncompiled node locales_demo']);
+    grunt.registerTask('webpack_assemble_demo_compiled', ['shell:run_webpack:assembly demo uncompiled node locales_demo']);
+
+    grunt.registerTask('webpack_assemble_demo_dyndata', ['shell:run_webpack:dynamicdata demo uncompiled node locales_demo']);
+    grunt.registerTask('webpack_assemble_demo_dyndata_compiled', ['shell:run_webpack:dynamicdata demo uncompiled node locales_demo']);
+
+
 
     // Test Run
     grunt.registerTask('test_dynamic_uncompiled_nu_sync', ['shell:runNodeunitAll:all dynamic uncompiled sync']);
