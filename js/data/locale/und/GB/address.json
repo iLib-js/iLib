@@ -16,5 +16,9 @@
 			"line": "last",
 			"pattern": "[A-z\\.\\-']+$"
 		}
-	]
+	],
+    "fieldNames": {
+        "postalCode": "Post Code",
+        "locality": "Town"
+    }
 }

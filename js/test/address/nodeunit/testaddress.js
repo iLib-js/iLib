@@ -489,7 +489,7 @@ module.exports.testaddress = {
         test.equal(info[2].length, 1);
 
         test.equal(info[0][0].component, "streetAddress");
-        test.equal(info[0][0].label, "Straße");
+        test.equal(info[0][0].label, "Straßenadresse");
         test.equal(info[1][0].component, "locality");
         test.equal(info[1][0].label, "Stadt");
         test.equal(info[1][1].component, "region");
@@ -514,7 +514,7 @@ module.exports.testaddress = {
         test.equal(info[2].length, 1);
 
         test.equal(info[0][0].component, "streetAddress");
-        test.equal(info[0][0].label, "Straße");
+        test.equal(info[0][0].label, "Straßenadresse");
         test.equal(info[1][0].component, "postalCode");
         test.equal(info[1][0].label, "Postleitzahl");
         test.equal(info[1][0].constraint, "[0-9]{5}");
@@ -530,7 +530,7 @@ module.exports.testaddress = {
     },
 
     testAddressFmtGetFormatInfoCN: function(test) {
-        test.expect(16);
+        test.expect(21);
         var formatter = new AddressFmt({locale: 'zh-Hans-CN'});
 
         var info = formatter.getFormatInfo();
@@ -545,11 +545,11 @@ module.exports.testaddress = {
         test.equal(info[0][0].component, "country");
         test.equal(info[0][0].label, "国家");
         test.ok(info[0][0].constraint);
-        test.equal(info[0][0].constraint["RU"], "俄罗斯联邦");
+        test.equal(info[0][0].constraint["RU"], "俄罗斯");
         test.equal(info[0][0].constraint["CA"], "加拿大");
         test.equal(info[0][0].constraint["ZA"], "南非");
         test.equal(info[1][0].component, "region");
-        test.equal(info[1][0].label, "省份");
+        test.equal(info[1][0].label, "省或地区");
         test.equal(info[2][0].component, "locality");
         test.equal(info[2][0].label, "城市");
         test.equal(info[2][1].component, "postalCode");
@@ -561,7 +561,7 @@ module.exports.testaddress = {
     },
 
     testAddressFmtGetFormatInfoSG: function(test) {
-        test.expect(16);
+        test.expect(17);
         var formatter = new AddressFmt({locale: 'zh-Hans-SG'});
 
         var info = formatter.getFormatInfo();
@@ -574,7 +574,7 @@ module.exports.testaddress = {
         test.equal(info[0][0].component, "country");
         test.equal(info[0][0].label, "国家");
         test.ok(info[0][0].constraint);
-        test.equal(info[0][0].constraint["RU"], "俄罗斯联邦");
+        test.equal(info[0][0].constraint["RU"], "俄罗斯");
         test.equal(info[0][0].constraint["CA"], "加拿大");
         test.equal(info[0][0].constraint["ZA"], "南非");
         test.equal(info[1][0].component, "postalCode");
@@ -588,7 +588,7 @@ module.exports.testaddress = {
     },
 
     testAddressFmtGetFormatInfoENSG: function(test) {
-        test.expect(16);
+        test.expect(18);
         var formatter = new AddressFmt({locale: 'en-SG'});
 
         var info = formatter.getFormatInfo();
@@ -658,16 +658,16 @@ module.exports.testaddress = {
         test.equal(info[2].length, 1);
 
         test.equal(info[0][0].component, "streetAddress");
-        test.equal(info[0][0].label, "Straße");
+        test.equal(info[0][0].label, "Straßenadresse");
         test.equal(info[1][0].component, "locality");
         test.equal(info[1][0].label, "Stadt");
         test.equal(info[1][1].component, "region");
-        test.equal(info[1][1].label, "Provinz");
+        test.equal(info[1][1].label, "Provinz oder Gebiet");
         test.equal(info[1][2].component, "postalCode");
         test.ok(info[1][1].constraint);
-        test.equal(info[1][1].constraint["AB"], "Alberta");
-        test.equal(info[1][1].constraint["BC"], "Britisch-Kolumbien");
-        test.equal(info[1][1].constraint["QC"], "Quebec");
+        test.equal(info[1][1].constraint["NT"], "Nordwest-Territorien");
+        test.equal(info[1][1].constraint["BC"], "British Columbia");
+        test.equal(info[1][1].constraint["QC"], "Québec");
         test.equal(info[1][2].label, "Postleitzahl");
         test.equal(info[1][2].constraint, "[A-Za-z][0-9][A-Za-z]\\s+[0-9][A-Za-z][0-9]");
         test.equal(info[2][0].component, "country");
@@ -691,7 +691,7 @@ module.exports.testaddress = {
         test.equal(info[0][0].component, "streetAddress");
         test.equal(info[0][0].label, "Street Address");
         test.equal(info[1][0].component, "locality");
-        test.equal(info[1][0].label, "City");
+        test.equal(info[1][0].label, "Town");
         test.equal(info[2][0].component, "postalCode");
         test.equal(info[2][0].label, "Post Code");
         test.equal(info[2][0].constraint, "([A-Za-z]{1,2}[0-9]{1,2}[ABCDEFGHJKMNPRSTUVWXYabcdefghjkmnprstuvwxy]?\\s+[0-9][A-Za-z]{2}|GIR 0AA|SAN TA1)");

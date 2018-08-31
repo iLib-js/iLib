@@ -334,7 +334,7 @@ Address.prototype = {
 			sync: this.sync, 
 			loadParams: this.loadParams,
 			callback: ilib.bind(this, function(info) {
-				if (!info || JSUtils.isEmpty(info)) {
+				if (!info || JSUtils.isEmpty(info) || !info.fields) {
 					// load the "unknown" locale instead
 					Utils.loadData({
 						object: "Address", 

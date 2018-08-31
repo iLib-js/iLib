@@ -1,0 +1,7 @@
+{
+    "streetAddress": "Street Address",
+    "locality": "City",
+    "postalCode": "Zip Code",
+    "region": "State",
+    "country": "Country"
+}

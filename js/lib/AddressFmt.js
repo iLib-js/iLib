@@ -35,6 +35,7 @@ var JSUtils = require("./JSUtils.js");
 var Locale = require("./Locale.js");
 var Address = require("./Address.js");
 var IString = require("./IString.js");
+var ResBundle = require("./ResBundle.js");
 
 /**
  * @class
@@ -315,68 +316,77 @@ function invertAndFilter(object) {
  */
 AddressFmt.prototype.getFormatInfo = function(locale, sync, callback) {
     var info;
-    if (typeof(locale) === "string") {
-        locale = new Locale(locale);
+    var loc = new Locale(this.locale);
+    if (locale) {
+        if (typeof(locale) === "string") {
+            locale = new Locale(locale);
+        }
+        loc.language = locale.getLanguage();
+        loc.spec = undefined;
     }
 
     Utils.loadData({
         name: "regionnames.json",
         object: "AddressFmt",
-        locale: this.locale,
+        locale: loc,
         sync: this.sync,
         loadParams: this.loadParams,
         callback: ilib.bind(this, function(regions) {
             this.regions = regions;
 
-            var type, fields = this.info.fields;
-            if (this.info.multiformat) {
-                type = isAsianLocale(this.locale) ? "asian" : "latin";
-                fields = this.info.fields[type];
-            }
-
-            if (typeof(this.style) === 'object') {
-                format = this.style[type || "latin"];
-            } else {
-                format = this.style;
-            }
-            var loc = new Locale(this.locale);
-            if (locale) {
-                loc.language = locale.getLanguage();
-            }
-            var localeAddress = new Address(" ", {locale: loc});
-
-            var rows = format.split(/\n/g);
-            info = rows.map(ilib.bind(this, function(row) {
-                return row.split("}").filter(function(component) {
-                    return component.length > 0;
-                }).map(ilib.bind(this, function(component) {
-                    var name = component.replace(/.*{/, "");
-                    var obj = {
-                        component: name,
-                        label: this.info.fieldNames[name]
-                    };
-                    var field = fields.filter(function(f) {
-                        return f.name === name;
-                    });
-                    if (field && field[0] && field[0].pattern) {
-                        if (typeof(field[0].pattern) === "string") {
-                            obj.constraint = field[0].pattern;
-                        } else if (field[0].list) {
-                            obj.constraint = field[0].list;
-                        }
+            new ResBundle({
+                locale: loc,
+                name: "addressres",
+                sync: this.sync,
+                loadParams: this.loadParams, 
+                onLoad: ilib.bind(this, function (rb) {
+                    var type, fields = this.info.fields;
+                    if (this.info.multiformat) {
+                        type = isAsianLocale(this.locale) ? "asian" : "latin";
+                        fields = this.info.fields[type];
                     }
-                    if (name === "country") {
-                        obj.constraint = invertAndFilter(localeAddress.ctrynames);
-                    } else if (name === "region" && this.regions[loc.getRegion()]) {
-                        obj.constraint = this.regions[loc.getRegion()];
-                    }
-                    return obj;
-                }));
-            }));
 
-            if (callback && typeof(callback) === "function") {
-                callback(info);
-            }
+                    if (typeof(this.style) === 'object') {
+                        format = this.style[type || "latin"];
+                    } else {
+                        format = this.style;
+                    }
+                    var localeAddress = new Address(" ", {locale: loc});
+
+                    var rows = format.split(/\n/g);
+                    info = rows.map(ilib.bind(this, function(row) {
+                        return row.split("}").filter(function(component) {
+                            return component.length > 0;
+                        }).map(ilib.bind(this, function(component) {
+                            var name = component.replace(/.*{/, "");
+                            var obj = {
+                                component: name,
+                                label: rb.getStringJS(this.info.fieldNames[name])
+                            };
+                            var field = fields.filter(function(f) {
+                                return f.name === name;
+                            });
+                            if (field && field[0] && field[0].pattern) {
+                                if (typeof(field[0].pattern) === "string") {
+                                    obj.constraint = field[0].pattern;
+                                } else if (field[0].list) {
+                                    obj.constraint = field[0].list;
+                                }
+                            }
+                            if (name === "country") {
+                                obj.constraint = invertAndFilter(localeAddress.ctrynames);
+                            } else if (name === "region" && this.regions[loc.getRegion()]) {
+                                obj.constraint = this.regions[loc.getRegion()];
+                            }
+                            return obj;
+                        }));
+                    }));
+
+                    if (callback && typeof(callback) === "function") {
+                        callback(info);
+                    }
+                })
+            });
         })
     });
 

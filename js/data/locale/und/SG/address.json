@@ -40,5 +40,9 @@
 				"matchGroup": 0
 			}
 		]
-	}
+	},
+    "fieldNames": {
+        "postalCode": "Post Code",
+        "locality": "Town"
+    }
 }
