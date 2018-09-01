@@ -106,12 +106,12 @@ module.exports.testaddress_IN = {
     
     testParseAddressINTENoZip: function(test) {
         test.expect(7);
-        var parsedAddress = new Address("125/1, AG టవర్స్. 3 వ అంతస్తు, పార్క్ స్ట్రీట్. సర్కస్ ఎవెన్యూ \nకలకత్తా \nవెస్ట్ బెంగాల్\nభారత దేశం", {locale: 'te-IN'});
+        var parsedAddress = new Address("125/1, AG టవర్స్. 3 వ అంతస్తు, పార్క్ స్ట్రీట్. సర్కస్ ఎవెన్యూ \nకలకత్తా \nపశ్చిమ బెంగాల్\nభారత దేశం", {locale: 'te-IN'});
         
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "125/1, AG టవర్స్. 3 వ అంతస్తు, పార్క్ స్ట్రీట్. సర్కస్ ఎవెన్యూ");
         test.equal(parsedAddress.locality, "కలకత్తా");
-        test.equal(parsedAddress.region, "వెస్ట్ బెంగాల్");
+        test.equal(parsedAddress.region, "పశ్చిమ బెంగాల్");
         test.equal(parsedAddress.country, "భారత దేశం");
         test.equal(parsedAddress.countryCode, "IN");
         test.ok(typeof(parsedAddress.postalCode) === "undefined");
