@@ -1,0 +1,6 @@
+{
+  "hello" : "Gracias!",
+  "Hello from {country}": "Que tal de {country}",
+  "Hello from {city}": "Que tal de {city}",
+  "Greetings from {city} in {country}": "Hola de {city} en {country}"               
+}
