@@ -23,6 +23,7 @@ Bug Fixes:
 * Fixed a bug where dates with the time zone "local" do not switch to DST at the right time because the time was calculated
 in UTC instead of the "local" time zone. This affected TimeZone.inDaylightTime(). If an explicit time zone was given, then
 then the calculation worked fine. It's only the special time zone "local" which had this bug.
+* Removed all of test cases written in JSUnit and related files. It is already replaced with Nodeunit TestFramework.
 
 Build 003
 -------
