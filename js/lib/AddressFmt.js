@@ -369,8 +369,6 @@ AddressFmt.prototype.getFormatInfo = function(locale, sync, callback) {
                             if (field && field[0] && field[0].pattern) {
                                 if (typeof(field[0].pattern) === "string") {
                                     obj.constraint = field[0].pattern;
-                                } else if (field[0].list) {
-                                    obj.constraint = field[0].list;
                                 }
                             }
                             if (name === "country") {
