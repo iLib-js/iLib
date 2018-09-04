@@ -131,17 +131,17 @@ ilib.clearPseudoLocales();
  */
 ilib._getPlatform = function () {
     if (!ilib._platform) {
-        try {
-            if (typeof(java.lang.Object) !== 'undefined') {
-                ilib._platform = (typeof(process) !== 'undefined') ? "trireme" : "rhino";
-                return ilib._platform;
-            }
-        } catch (e) {}
-
-        if (typeof(global) !== 'undefined' && global.process && global.process.versions && global.process.versions.node) {
+    	try {
+    		if (typeof(java.lang.Object) !== 'undefined') {
+    			ilib._platform = (typeof(process) !== 'undefined') ? "trireme" : "rhino";
+    			return ilib._platform;
+    		}
+    	} catch (e) {}
+    	
+        if (typeof(global) !== 'undefined' && global.process && global.process.versions && global.process.versions.node && typeof(module) !== 'undefined') {
             ilib._platform = "nodejs";
         } else if (typeof(Qt) !== 'undefined') {
-            ilib._platform = "qt";
+        	ilib._platform = "qt";
         } else if (typeof(window) !== 'undefined') {
             ilib._platform = (typeof(PalmSystem) !== 'undefined') ? "webos" : "browser";
         } else {
@@ -399,6 +399,11 @@ ilib.setTimeZone = function (tz) {
  */
 ilib.getTimeZone = function() {
     if (typeof(ilib.tz) === 'undefined') {
+        if (typeof(Intl) !== 'undefined' && typeof(Intl.DateTimeFormat) !== 'undefined') {
+            var ro = new Intl.DateTimeFormat().resolvedOptions();
+            ilib.tz = ro && ro.timeZone;
+        }
+        
         switch (ilib._getPlatform()) {
             case 'browser':
                 // running in a browser
