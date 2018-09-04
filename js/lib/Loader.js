@@ -94,18 +94,7 @@ Loader.prototype.loadFiles = function(paths, sync, params, callback) {
 		//console.log("nothing to load");
 		return;
 	}
-	
-	if (params && params.returnOne) {
-		// Only return the most locale-specific data. Do this by searching backwards
-		// in the list of paths.
-		var pathname;
-		var tmp = [];
-		while ((pathname = paths.pop()) !== undefined) {
-			tmp.push(pathname);
-		}
-		paths = tmp;
-	}
-	
+
 	//console.log("generic loader: attempting to load these files: " + JSON.stringify(paths) + "\n");
 	if (sync) {
 		var ret = [];
@@ -116,9 +105,6 @@ Loader.prototype.loadFiles = function(paths, sync, params, callback) {
 		for (var i = 0; i < paths.length; i++) {
 			var text = this._loadFileAlongIncludePath(includePath, Path.normalize(paths[i]));
 			ret.push(typeof(text) === "string" ? JSON.parse(text) : text);
-			if (params && params.returnOne && text) {
-				break;
-			}
 		};
 
 		// only call the callback at the end of the chain of files

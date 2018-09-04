@@ -36,17 +36,21 @@ if (typeof(DateFmt) === "undefined") {
 function mockLoaderDRF(paths, sync, params, callback) {
     var data = [];
     
-    if (paths[0].indexOf("localeinfo") !== -1) {
-        data.push(ilib.data.localeinfo); // for the generic, shared stuff
-        data.push(ilib.data.localeinfo_en);
-        data.push(ilib.data.localeinfo_US);
-        data.push(ilib.data.localeinfo_en_US);
-    } else {
-        data.push(ilib.data.dateformats); // for the generic, shared stuff
-        data.push(ilib.data.dateformats_en);
-        data.push(ilib.data.dateformats_US);
-        data.push(ilib.data.dateformats_en_US);
-    }
+    paths.forEach(function(path) {
+        if (path.indexOf("localeinfo") !== -1) {
+            if (path === "yy/localeinfo.json") {
+                data.push(ilib.data.localeinfo_en);
+            } else {
+                data.push(ilib.data.localeinfo_en_US);
+            }
+        } else {
+            if (path === "yy/dateformats.json") {
+                data.push(ilib.data.dateformats_en);
+            } else {
+                data.push(ilib.data.dateformats_en_US);
+            }
+        }
+    });
 
     if (typeof(callback) !== 'undefined') {
         callback.call(this, data);    
@@ -295,6 +299,8 @@ module.exports.testdatefmtrange = {
             return;
         }
         ilib.setLoaderCallback(mockLoaderDRF);
+        ilib.data.localeinfo_yy = ilib.data.localeinfo_und_YY = ilib.data.localeinfo_yy_YY = undefined;
+        ilib.data.dateformats_yy = ilib.data.dateformats_und_YY = ilib.data.dateformats_yy_YY = undefined;
         ilib.clearCache();
         
         var fmt = new DateRngFmt({
@@ -334,6 +340,9 @@ module.exports.testdatefmtrange = {
             return;
         }
         ilib.setLoaderCallback(mockLoaderDRF);
+        ilib.data.localeinfo_yy = ilib.data.localeinfo_und_YY = ilib.data.localeinfo_yy_YY = undefined;
+        ilib.data.dateformats_yy = ilib.data.dateformats_und_YY = ilib.data.dateformats_yy_YY = undefined;
+        ilib.clearCache();
         
         var fmt = new DateRngFmt({
             locale: "yy-YY"
@@ -371,8 +380,12 @@ module.exports.testdatefmtrange = {
             test.done();
             return;
         }
-         ilib.setLoaderCallback(mockLoaderDRF);
-    
+        ilib.setLoaderCallback(mockLoaderDRF);
+
+        ilib.data.localeinfo_yy = ilib.data.localeinfo_und_YY = ilib.data.localeinfo_yy_YY = undefined;
+        ilib.data.dateformats_yy = ilib.data.dateformats_und_YY = ilib.data.dateformats_yy_YY = undefined;
+        ilib.clearCache();
+
         var start = new GregorianDate({
             year: 2013,
             month: 2,
@@ -411,8 +424,11 @@ module.exports.testdatefmtrange = {
             test.done();
             return;
         }
-         ilib.setLoaderCallback(mockLoaderDRF);
-    
+        ilib.setLoaderCallback(mockLoaderDRF);
+        ilib.data.localeinfo_yy = ilib.data.localeinfo_und_YY = ilib.data.localeinfo_yy_YY = undefined;
+        ilib.data.dateformats_yy = ilib.data.dateformats_und_YY = ilib.data.dateformats_yy_YY = undefined;
+        ilib.clearCache();
+
         var start = new GregorianDate({
             year: 2013,
             month: 2,

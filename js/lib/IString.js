@@ -172,28 +172,19 @@ IString.loadPlurals = function (sync, locale, loadParams, onLoad) {
 		loc = new Locale(ilib.getLocale());
 	}
 	var spec = loc.getLanguage();
-	if (!ilib.data["plurals_" + spec]) {
-		Utils.loadData({
-			name: "plurals.json",
-			object: "IString",
-			locale: loc,
-			sync: sync,
-			loadParams: loadParams,
-			callback: ilib.bind(this, function(plurals) {
-				if (!plurals) {
-					ilib.data.cache.IString[spec] = IString.plurals_default;
-				}
-				ilib.data["plurals_" + spec] = plurals || IString.plurals_default;
-				if (onLoad && typeof(onLoad) === 'function') {
-					onLoad(ilib.data["plurals_" + spec]);
-				}
-			})
-		});
-	} else {
-		if (onLoad && typeof(onLoad) === 'function') {
-			onLoad(ilib.data["plurals_" + spec]);
-		}
-	}
+	Utils.loadData({
+		name: "plurals.json",
+		object: "IString",
+		locale: loc,
+		sync: sync,
+		loadParams: loadParams,
+		callback: ilib.bind(this, function(plurals) {
+		    plurals = plurals || IString.plurals_default;
+			if (onLoad && typeof(onLoad) === 'function') {
+				onLoad(plurals);
+			}
+		})
+	});
 };
 
 /**
@@ -648,7 +639,7 @@ IString.prototype = {
                         case "few":
                         case "many":
                             // CLDR locale-dependent number classes
-                            var ruleset = ilib.data["plurals_" + this.locale.getLanguage()];
+                            var ruleset = ilib.data["plurals_" + this.locale.getLanguage()]|| IString.plurals_default;
                             if (ruleset) {
                                 var rule = ruleset[limit];
                                 return IString._fncs.getValue(rule, operandValue);

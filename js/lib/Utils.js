@@ -21,6 +21,7 @@ var ilib = require("./ilib.js");
 var Locale = require("./Locale.js");
 var JSUtils = require("./JSUtils.js");
 var Path = require("./Path.js");
+var ISet = require("./ISet.js");
 
 var Utils = {};
 
@@ -168,9 +169,7 @@ Utils.getSublocales = function(locale) {
  * </ol>
  * 
  * It is okay for any of the above to be missing. This function will just skip the 
- * missing data. However, if everything except the shared data is missing, this 
- * function returns undefined, allowing the caller to go and dynamically load the
- * data instead.
+ * missing data.
  * 
  * @static
  * @param {string} prefix prefix under ilib.data of the data to merge
@@ -184,7 +183,6 @@ Utils.getSublocales = function(locale) {
 Utils.mergeLocData = function (prefix, locale, replaceArrays, returnOne) {
     var data = undefined;
     var loc = locale || new Locale();
-    var foundLocaleData = false;
     var mostSpecific;
 
     data = {};
@@ -195,13 +193,12 @@ Utils.mergeLocData = function (prefix, locale, replaceArrays, returnOne) {
         var property = (l === "root") ? prefix : prefix + '_' + l.replace(/-/g, "_");
 
         if (ilib.data[property]) {
-            if (l !== "root") foundLocaleData = true;
             data = JSUtils.merge(data, ilib.data[property], replaceArrays);
             mostSpecific = ilib.data[property];
         }
     });
 
-    return foundLocaleData ? (returnOne ? mostSpecific : data) : undefined;
+    return returnOne ? mostSpecific : data;
 };
 
 
@@ -322,163 +319,151 @@ Utils._callLoadData = function (files, sync, params, callback) {
 };
 
 /**
+ * Return true if the locale data corresponding to the given pathname is not already loaded
+ * or assembled.
+ *
+ * @private
+ * @param basename
+ * @param locale
+ * @returns
+ */
+function dataNotExists(basename, pathname) {
+    var localeBits = pathname.split("\/").slice(0, -1).join('_');
+    var property = localeBits ? basename + '_' + localeBits : basename;
+
+    return !ilib.data[property];
+}
+
+/**
  * Find locale data or load it in. If the data with the given name is preassembled, it will
  * find the data in ilib.data. If the data is not preassembled but there is a loader function,
  * this function will call it to load the data. Otherwise, the callback will be called with
  * undefined as the data. This function will create a cache under the given class object.
- * If data was successfully loaded, it will be set into the cache so that future access to 
+ * If data was successfully loaded, it will be set into the cache so that future access to
  * the same data for the same locale is much quicker.<p>
- * 
+ *
  * The parameters can specify any of the following properties:<p>
- * 
+ *
  * <ul>
  * <li><i>name</i> - String. The name of the file being loaded. Default: ResBundle.json
  * <li><i>object</i> - String. The name of the class attempting to load data. This is used to differentiate parts of the cache.
  * <li><i>locale</i> - Locale. The locale for which data is loaded. Default is the current locale.
  * <li><i>nonlocale</i> - boolean. If true, the data being loaded is not locale-specific.
- * <li><i>type</i> - String. Type of file to load. This can be "json" or "other" type. Default: "json" 
+ * <li><i>type</i> - String. Type of file to load. This can be "json" or "other" type. Default: "json"
  * <li><i>replace</i> - boolean. When merging json objects, this parameter controls whether to merge arrays
- * or have arrays replace each other. If true, arrays in child objects replace the arrays in parent 
- * objects. When false, the arrays in child objects are concatenated with the arrays in parent objects.  
+ * or have arrays replace each other. If true, arrays in child objects replace the arrays in parent
+ * objects. When false, the arrays in child objects are concatenated with the arrays in parent objects.
  * <li><i>loadParams</i> - Object. An object with parameters to pass to the loader function
  * <li><i>sync</i> - boolean. Whether or not to load the data synchronously
  * <li><i>callback</i> - function(?)=. callback Call back function to call when the data is available.
  * Data is not returned from this method, so a callback function is mandatory.
  * </ul>
- * 
+ *
  * @static
  * @param {Object} params Parameters configuring how to load the files (see above)
  */
 Utils.loadData = function(params) {
-	var name = "resources.json",
-		object = "generic", 
-		locale = new Locale(ilib.getLocale()), 
-		sync = false, 
-		type = undefined,
-		loadParams = {},
-		callback = undefined,
-		nonlocale = false,
-		replace = false,
-		basename;
-	
-	if (!params || typeof(params.callback) !== 'function') {
-		return;
-	}
+    var name = "resources.json",
+        locale = new Locale(ilib.getLocale()),
+        sync = false,
+        type = undefined,
+        loadParams = {},
+        callback = undefined,
+        nonlocale = false,
+        replace = false,
+        basename;
 
-	if (params.name) {
-		name = params.name;
-	}
-	if (params.object) {
-		object = params.object;
-	}
-	if (params.locale) {
-		locale = (typeof(params.locale) === 'string') ? new Locale(params.locale) : params.locale;
-	}
-	if (params.type) {
-		type = params.type;
-	}
-	if (params.loadParams) {
-		loadParams = params.loadParams;
-	}
-	if (params.sync) {
-		sync = params.sync;
-	}
-	if (params.nonlocale) {
-		nonlocale = !!params.nonlocale;
-	}
-	if (typeof(params.replace) === 'boolean') {
-		replace = params.replace;
-	}
-	
-	callback = params.callback;
-	
-	if (object && !ilib.data.cache[object]) {
-	    ilib.data.cache[object] = {};
-	}
-	
-	if (!type) {
-		var dot = name.lastIndexOf(".");
-		type = (dot !== -1) ? name.substring(dot+1) : "text";
-	}
+    if (!params || typeof(params.callback) !== 'function') {
+        throw "Utils.loadData called without a callback. It must have a callback to work.";
+    }
 
-	var spec = ((!nonlocale && locale.getSpec().replace(/-/g, '_')) || "root") + "," + name + "," + String(JSUtils.hashCode(loadParams));
-	if (!object || !ilib.data.cache[object] || typeof(ilib.data.cache[object][spec]) === 'undefined') {
-		var data, returnOne = (loadParams && loadParams.returnOne);
-		basename = name.substring(0, name.lastIndexOf("."));
-		
-		// async loading would have put the data into the cache already, checked just above this. So,
-		// only check the merged loc data if we are in sync mode.
-		if (type === "json") {
-			// console.log("type is json");
-			if (nonlocale) {
-				basename = basename.replace(/[\.:\(\)\/\\\+\-]/g, "_");
-				data = ilib.data[basename];
-			} else {
-				data = Utils.mergeLocData(basename, locale, replace, returnOne);
-			}
-			if (data) {
-				// console.log("found assembled data");
-				if (object) {
-					ilib.data.cache[object][spec] = data;
-				}
-				callback(data);
-				return;
-			}
-		}
-		
-		// console.log("ilib._load is " + typeof(ilib._load));
-		if (typeof(ilib._load) !== 'undefined') {
-			// the data is not preassembled, so attempt to load it dynamically
-			var files = nonlocale ? [ name || "resources.json" ] : Utils.getLocFiles(locale, name);
-			if (type !== "json") {
-				loadParams.returnOne = true;
-			}
-			
-			Utils._callLoadData(files, sync, loadParams, ilib.bind(this, function(arr) {
-				if (type === "json") {
-					data = ilib.data[basename] || {};
-					for (var i = 0; i < arr.length; i++) {
-						if (typeof(arr[i]) !== 'undefined') {
-						    if (loadParams.returnOne) {
-						        data = arr[i];
-						        break;
-						    }
-							data = JSUtils.merge(data, arr[i], replace);
-						}
-					}
-					
-					if (object) {
-						ilib.data.cache[object][spec] = data;
-					}
-					callback(data);
-				} else {
-					var i = arr.length-1; 
-					while (i > -1 && !arr[i]) {
-						i--;
-					}
-					if (i > -1) {
-						if (object) {
-							ilib.data.cache[object][spec] = arr[i];
-						}
-						callback(arr[i]);
-					} else {
-						callback(undefined);
-					}
-				}
-			}));
-		} else {
-			// no data other than the generic shared data
-			if (type === "json") {
-				data = ilib.data[basename];
-			}
-			if (object && data) {
-				ilib.data.cache[object][spec] = data;
-			}
-			callback(data);
-		}
-	} else {
-		callback(ilib.data.cache && ilib.data.cache[object] && ilib.data.cache[object][spec]);
-	}
+    if (params.name) {
+        name = params.name;
+    }
+    if (params.locale) {
+        locale = (typeof(params.locale) === 'string') ? new Locale(params.locale) : params.locale;
+    }
+    if (params.type) {
+        type = params.type;
+    }
+    if (params.loadParams) {
+        loadParams = params.loadParams;
+    }
+    if (params.sync) {
+        sync = params.sync;
+    }
+    if (params.nonlocale) {
+        nonlocale = !!params.nonlocale;
+    }
+    if (typeof(params.replace) === 'boolean') {
+        replace = params.replace;
+    }
+
+    callback = params.callback;
+
+    if (!type) {
+        var dot = name.lastIndexOf(".");
+        type = (dot !== -1) ? name.substring(dot+1) : "text";
+    }
+
+    var data, returnOne = ((loadParams && loadParams.returnOne) || type !== "json");
+
+    basename = name.substring(0, name.lastIndexOf(".")).replace(/[\.:\(\)\/\\\+\-]/g, "_");
+
+    if (typeof(ilib._load) !== 'undefined') {
+        // We have a loader, so we can figure out which json files are loaded already and
+        // which are not so that we can load the missing ones.
+        // the data is not preassembled, so attempt to load it dynamically
+        var files = nonlocale ? [ name || "resources.json" ] : Utils.getLocFiles(locale, name);
+
+        if (typeof(ilib.data.cache) === "undefined") {
+            ilib.data.cache = {};
+        }
+        if (typeof(ilib.data.cache.fileSet) === "undefined") {
+            ilib.data.cache.fileSet = new ISet();
+        }
+
+        // find the ones we haven't loaded before
+        files = files.filter(ilib.bind(this, function(file) {
+            return !ilib.data.cache.fileSet.has(file) && dataNotExists(basename, file);
+        }));
+
+        if (files.length) {
+            Utils._callLoadData(files, sync, loadParams, ilib.bind(this, function(arr) {
+                for (var i = 0; i < files.length; i++) {
+                    if (arr[i]) {
+                        var localeBits = files[i].split("\/").slice(0, -1).join('_');
+                        var property = !nonlocale && localeBits ? basename + '_' + localeBits : basename;
+
+                        if (!ilib.data[property]) {
+                            ilib.data[property] = arr[i];
+                        }
+                    }
+                    ilib.data.cache.fileSet.add(files[i]);
+                }
+
+                if (!nonlocale) {
+                    data = Utils.mergeLocData(basename, locale, replace, returnOne);
+                } else {
+                    data = ilib.data[basename];
+                }
+
+                callback(data);
+            }));
+
+            return;
+        }
+        // otherwise the code below will return the already-loaded data
+    }
+
+    // No loader, or data already loaded? Then use whatever data we have already in ilib.data
+    if (!nonlocale) {
+        data = Utils.mergeLocData(basename, locale, replace, returnOne);
+    } else {
+        data = ilib.data[basename];
+    }
+
+    callback(data);
 };
 
 module.exports = Utils;

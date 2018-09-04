@@ -51,8 +51,6 @@ getAvailableMocker.prototype.listAvailableFiles = function(sync, cb) {
 function mockLoaderTZ (paths, sync, params, callback) {
     var data = [];
     
-    data.push(ilib.data.localeinfo); // for the generic, shared stuff
-    paths.shift();
     paths.forEach(function (path) {
         data.push((path.indexOf('zz') === -1) ? undefined : {
             "clock": "24",
@@ -1671,6 +1669,8 @@ module.exports.testtimezone = {
             return;
         }
         ilib.setLoaderCallback(mockLoaderTZ);
+        ilib.data.localeinfo_zz = ilib.data.localeinfo_und_YY = ilib.data.localeinfo_zz_YY = undefined;
+        ilib.clearCache();
         var tz = new TimeZone({locale: "zz-YY"});
         test.expect(2);
         test.ok(tz !== null);
@@ -1687,6 +1687,8 @@ module.exports.testtimezone = {
             return;
         }
         ilib.setLoaderCallback(mockLoaderTZ);
+        ilib.data.localeinfo_zz = ilib.data.localeinfo_und_YY = ilib.data.localeinfo_zz_YY = undefined;
+        ilib.clearCache();
         new TimeZone({
             locale: "zz-YY",
             sync: false,
@@ -1709,6 +1711,8 @@ module.exports.testtimezone = {
         }
         ilib.setLoaderCallback(mockLoaderTZ);
         var tz = new TimeZone({locale: "ww-WW"});
+        ilib.data.localeinfo_ww = ilib.data.localeinfo_und_WW = ilib.data.localeinfo_ww_WW = undefined;
+        ilib.clearCache();
         test.expect(2);
         test.ok(tz !== null);
         ilib.setLoaderCallback(oldLoader);
@@ -1724,6 +1728,8 @@ module.exports.testtimezone = {
             return;
         }
         ilib.setLoaderCallback(mockLoaderTZ);
+        ilib.data.localeinfo_ww = ilib.data.localeinfo_und_WW = ilib.data.localeinfo_ww_WW = undefined;
+        ilib.clearCache();
         new TimeZone({
             locale: "ww-WW",
             sync: false,

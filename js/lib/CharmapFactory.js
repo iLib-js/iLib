@@ -162,8 +162,9 @@ var CharmapFactory = function(options) {
 			
 			// console.log("CharmapFactory: cons is "); console.dir(cons);
 			
-			// pass the same options through to the constructor so the subclass
-			// has the ability to do something with if it needs to
+			// Pass the same options through to the constructor so the subclass
+			// has the ability to do something with if it needs to. It should also call
+			// the onLoad callback when it is done.
 			instance = cons && new cons(JSUtils.merge(options || {}, {charset: charset}));
 		}
 	});

@@ -106,10 +106,6 @@ var StringMapper = function (options) {
 		sync: sync,
 		loadParams: loadParams, 
 		callback: ilib.bind(this, function (map) {
-			if (!map) {
-				var spec = this.locale.getSpec().replace(/-/g, "_");
-				ilib.data.cache.StringMapper[spec] = {};
-			}
 			this.mapData = map || {};
 			if (options && typeof(options.onLoad) === 'function') {
 				options.onLoad(this);

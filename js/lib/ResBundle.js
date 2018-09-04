@@ -256,10 +256,6 @@ var ResBundle = function (options) {
 	
 	this.map = {};
 
-	if (!ilib.data.cache.ResBundle) {
-        ilib.data.cache.ResBundle = {};
-    }
-	
 	lookupLocale = this.locale.isPseudo() ? new Locale("en-US") : this.locale;
 	var object = "ResBundle-" + this.baseName; 
 
@@ -275,16 +271,8 @@ var ResBundle = function (options) {
 			}
 			this.map = map;
 			if (this.locale.isPseudo()) {
-				if (!ilib.data.cache.ResBundle.pseudomap) {
-				    ilib.data.cache.ResBundle.pseudomap = {};
-				}
-	
 				this._loadPseudo(this.locale, options.onLoad);
 			} else if (this.missing === "pseudo") {
-				if (!ilib.data.cache.ResBundle.pseudomap) {
-				    ilib.data.cache.ResBundle.pseudomap = {};
-				}
-	
 				new LocaleInfo(this.locale, {
 					sync: this.sync,
 					loadParams: this.loadParams,
@@ -334,12 +322,7 @@ ResBundle.prototype = {
 			sync: this.sync, 
 			loadParams: this.loadParams, 
 			callback: ilib.bind(this, function (map) {
-				if (!map || JSUtils.isEmpty(map)) {
-					map = ResBundle.defaultPseudo;
-					var spec = pseudoLocale.getSpec().replace(/-/g, '_');
-					ilib.data.cache.ResBundle.pseudomap[spec] = map;
-				}
-				this.pseudomap = map;
+				this.pseudomap = (!map || JSUtils.isEmpty(map)) ? ResBundle.defaultPseudo : map;
 				if (typeof(onLoad) === 'function') {
 					onLoad(this);
 				}	

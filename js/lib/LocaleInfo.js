@@ -127,10 +127,6 @@ var LocaleInfo = function(locale, options) {
 		}
 	}
 
-	if (!ilib.data.cache.LocaleInfo) {
-		ilib.data.cache.LocaleInfo = {};
-	}
-
 	Utils.loadData({
 		object: "LocaleInfo", 
 		locale: this.locale, 
@@ -138,12 +134,7 @@ var LocaleInfo = function(locale, options) {
 		sync: sync, 
 		loadParams: loadParams, 
 		callback: ilib.bind(this, function (info) {
-			if (!info) {
-				info = LocaleInfo.defaultInfo;
-				var spec = this.locale.getSpec().replace(/-/g, "_");
-				ilib.data.cache.LocaleInfo[spec] = info;
-			}
-			this.info = info;
+			this.info = info || LocaleInfo.defaultInfo;
 			if (options && typeof(options.onLoad) === 'function') {
 				options.onLoad(this);
 			}

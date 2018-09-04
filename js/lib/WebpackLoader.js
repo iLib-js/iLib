@@ -106,15 +106,12 @@ module.exports = function (ilib) {
 
         dataName = dataName.replace(/[\.:\(\)\/\\\+\-]/g, "_");
 
-        /*
         var data = this.getData(dataName, tzName);
 
         if (data) {
             // already loaded
             if (typeof(cb) === "function") cb(data);
-        } else
-        */ 
-        if (!alreadyLoaded.has(filename)) {
+        } else if (!alreadyLoaded.has(filename)) {
             console.log("WebpackLoader._loadFile: loading " + pathname + (sync ? " sync" : " async") + " as " + filename + ".js");
 
             alreadyLoaded.add(filename);

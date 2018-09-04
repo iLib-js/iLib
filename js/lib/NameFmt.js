@@ -193,12 +193,7 @@ var NameFmt = function(options) {
 			sync: sync, 
 			loadParams: this.loadParams, 
 			callback: ilib.bind(this, function (info) {
-				if (!info) {
-					info = Name.defaultInfo;
-					var spec = this.locale.getSpec().replace(/-/g, "_");
-					ilib.data.cache.Name[spec] = info;
-				}
-				this.info = info;
+				this.info = info || Name.defaultInfo;;
 				this._init();
 				if (options && typeof(options.onLoad) === 'function') {
 					options.onLoad(this);
