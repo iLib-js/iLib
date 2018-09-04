@@ -216,7 +216,7 @@ AddressFmt.prototype.format = function (address) {
  * @returns {boolean} true if this is an asian locale, or false otherwise
  */
 function isAsianLocale(locale) {
-    return locale.language === "zh" || this.language === "ja" || this.language === "ko";
+    return locale.language === "zh" || locale.language === "ja" || locale.language === "ko";
 }
 
 /*
@@ -333,7 +333,7 @@ function invertAndFilter(object) {
  * to. If not given, the locale of the formatter will be used.
  * @param {boolean} sync true if this method should load the data
  * synchronously, false if async
- * @param {Function(Object)} callback a callback to call when the data
+ * @param {Function} callback a callback to call when the data
  * is ready
  * @returns {Array.<Object>} An array of rows of address components
  */
