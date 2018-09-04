@@ -258,7 +258,7 @@ function invertAndFilter(object) {
  *
  * If the constraint is that the address component should be limited
  * to a fixed list of values, then the constraint property will be
- * set to an object that gives those values. The object maps codes for
+ * set to an object that lists those values. The object maps codes for
  * each valid value to labels to show in the UI for that value.
  * The codes should not be shown to the user and are intended to
  * represent the values in code. The labels are translated to the given
@@ -287,7 +287,7 @@ function invertAndFilter(object) {
  *       ...
  *       "WY": "Wyoming"
  *     }
- *   }, {
+ *   },{
  *     "component": "postalCode",
  *     "label": "Zip Code",
  *     "constraint": "[0-9]{5}(-[0-9]{4})?"
@@ -305,7 +305,30 @@ function invertAndFilter(object) {
  *   }]
  * ]
  * </pre>
- *
+ * <p>
+ * @example <caption>Example of calling the getFormatInfo method</caption>
+ * 
+ * // the AddressFmt should be created with the locale of the address you 
+ * // would like the user to enter. For example, if you have a "country"
+ * // selector, you would create a new AddressFmt instance each time the
+ * // selector is changed.
+ * new AddressFmt({
+ *   locale: 'nl-NL', // for addresses in the Netherlands
+ *   onLoad: ilib.bind(this, function(fmt) {
+ *     fmt.getAddressFormatInfo({
+ *       // The following is the locale of the UI you would like to see the labels
+ *       // like "City" and "Postal Code" translated to. In this example, we
+ *       // are showing an input form for Dutch addresses, but the labels are
+ *       // written in US English.
+ *       locale: "en-US", 
+ *       onLoad: ilib.bind(this, function(rows) {
+ *         // iterate through the rows array and dynamically create the input 
+ *         // elements with the given labels
+ *       })
+ *     });
+ *   })
+ * });
+ * 
  * @param {Locale|String=} locale the locale to translate the labels
  * to. If not given, the locale of the formatter will be used.
  * @param {boolean} sync true if this method should load the data
@@ -340,7 +363,7 @@ AddressFmt.prototype.getFormatInfo = function(locale, sync, callback) {
                 sync: this.sync,
                 loadParams: this.loadParams, 
                 onLoad: ilib.bind(this, function (rb) {
-                    var type, fields = this.info.fields;
+                    var type, format, fields = this.info.fields;
                     if (this.info.multiformat) {
                         type = isAsianLocale(this.locale) ? "asian" : "latin";
                         fields = this.info.fields[type];
