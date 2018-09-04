@@ -61,7 +61,7 @@
         "grunt-contrib-uglify": "~0.5.0",
         "http-server": "^0.11.1",
         "ilib-webpack-loader": "^0.9.1",
-        "ilib-webpack-plugin": "^0.9.0",
+        "ilib-webpack-plugin2": "^0.9.1",
         "iso-15924": "^2.0.0",
         "jsdoc2": "^2.4.0",
         "should": ">=11.1.0",
