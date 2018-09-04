@@ -121,12 +121,9 @@ module.exports = function (ilib) {
                     callback(data);
                 }
             }.bind(this, cb));
-        }
-        /*
-        else {
+        } else {
             if (typeof(cb) === "function") cb();
         }
-        */
 
         // return data;
     };
