@@ -61,7 +61,7 @@ module.exports.testrequire = {
             test.done();
             return;
         }
-        var mod = require("../test/testfiles/datefmt2.js");
+        var mod = require("../nodeunit/testfiles/datefmt2.js");
         test.expect(2);
         test.ok(typeof(mod) !== "undefined");
         
@@ -79,7 +79,7 @@ module.exports.testrequire = {
         test.expect(4);
         test.ok(typeof(Qwerty) === "undefined");
     
-        var Qwerty = require("../test/testfiles/qwerty.js");
+        var Qwerty = require("../nodeunit/testfiles/qwerty.js");
         test.ok(typeof(Qwerty) !== "undefined");
         
         Qwerty.testproperty = "foo";
@@ -88,7 +88,7 @@ module.exports.testrequire = {
         
         // should not reload it again because it already loaded it previously
         // so the test property should be in the cache
-        Qwerty = require("../test/testfiles/qwerty.js");
+        Qwerty = require("../nodeunit/testfiles/qwerty.js");
         
         test.ok(typeof(Qwerty) !== "undefined");
         test.equal(Qwerty.testproperty, "foo");
@@ -102,7 +102,7 @@ module.exports.testrequire = {
             test.done();
             return;
         }
-        var Locale2 = require("../test/testfiles/locale2.js");
+        var Locale2 = require("../nodeunit/testfiles/locale2.js");
         
         test.expect(3);
         test.ok(typeof(Locale2) !== "undefined");
@@ -123,11 +123,11 @@ module.exports.testrequire = {
         }
         
         var dir = path.dirname(module.filename);
-        var Locale2 = require(path.join(dir, "../test/testfiles/locale2.js"));
+        var Locale2 = require(path.join(dir, "../nodeunit/testfiles/locale2.js"));
         test.expect(4);
         test.ok(typeof(Locale2) !== "undefined");
         
-        var DateFmt2 = require(path.join(dir, "../test/testfiles/datefmt2.js"));
+        var DateFmt2 = require(path.join(dir, "../nodeunit/testfiles/datefmt2.js"));
         test.ok(typeof(DateFmt2) !== "undefined");
         var df = new DateFmt2({locale: "de-DE"});
         
