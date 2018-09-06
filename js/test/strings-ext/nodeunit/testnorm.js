@@ -24,7 +24,7 @@ if (typeof(NormString) === "undefined") {
     var NormString = require("../../../lib/NormString.js");
 }
 if (typeof(normtests) === "undefined") {
-    var normtests = require("../../../test/strings-ext/test/normdata.js");
+    var normtests = require("../../../test/strings-ext/nodeunit/normdata.js");
 }
 
 if (ilib.isDynData()) {

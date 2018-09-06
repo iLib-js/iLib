@@ -76,7 +76,7 @@ module.exports.testresourcesasync = {
         ilib.data.strings_und_MX = undefined;
         ilib.data.strings_es_MX = undefined;
 
-        var base = path.relative(process.cwd(), path.resolve(__dirname, "../test/resources"));
+        var base = path.relative(process.cwd(), path.resolve(__dirname, "../nodeunit/resources"));
 
         new ResBundle({
             locale: "es-MX",

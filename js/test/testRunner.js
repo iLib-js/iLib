@@ -160,7 +160,7 @@ if (assembly === "dynamic") {
     
     if (suite.indexOf("strings-ext") > -1) {
         // special case for massive test data that we should only load if we need it
-        script = fs.readFileSync("strings-ext/test/normdata.js", "utf-8");
+        script = fs.readFileSync("strings-ext/nodeunit/normdata.js", "utf-8");
         geval(script);
     }
 }
