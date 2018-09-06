@@ -164,12 +164,12 @@ module.exports.testglobal = {
             return;
         }
 
-        test.expect(2);
-
         var ro = new Intl.DateTimeFormat().resolvedOptions();
         var expected = ro && ro.timeZone;
-        test.ok(expected);
-        test.equal(ilib.getTimeZone(), expected);
+        if (expected) {
+            test.expect(1);
+            test.equal(ilib.getTimeZone(), expected);
+        }
         test.done();
     },
 
