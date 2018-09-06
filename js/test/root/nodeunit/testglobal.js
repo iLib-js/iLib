@@ -137,6 +137,7 @@ module.exports.testglobal = {
     
     testGetTimeZoneDefault: function(test) {
         // use a different test when the Intl object is available
+        ilib._platform = undefined;
         if (ilib._global("Intl")) {
             test.done();
             return;
