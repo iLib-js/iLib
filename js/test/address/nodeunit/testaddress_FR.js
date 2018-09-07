@@ -76,14 +76,15 @@ module.exports.testaddress_FR = {
     },
     
     testParseAddressFRCedex: function(test) {
-        test.expect(7);
+        test.expect(8);
         var parsedAddress = new Address("38 avenue de l‘Opéra\n75002 Paris cedex 9\nFrance", {locale: 'fr-FR'});
         
         test.ok(typeof(parsedAddress) !== "undefined");
         test.equal(parsedAddress.streetAddress, "38 avenue de l‘Opéra");
         test.equal(parsedAddress.locality, "Paris");
         test.ok(typeof(parsedAddress.region) === "undefined");
-        test.equal(parsedAddress.postalCode, "75002 cedex 9");
+        test.equal(parsedAddress.postalCode, "75002");
+        test.equal(parsedAddress.postOffice, "cedex 9");
         test.equal(parsedAddress.country, "France");
         test.equal(parsedAddress.countryCode, "FR");
         test.done();

@@ -243,7 +243,7 @@ module.exports.testaddress_CN = {
             format: "latin"
         }, {locale: 'en-CN'});
         
-        var expected = "208 Tianhe Road, Tianhe District\nGuǎngzhōu, Guǎngdōng 510620\nChina";
+        var expected = "208 Tianhe Road, Tianhe District, Guǎngzhōu\n510620 Guǎngdōng\nChina";
         var formatter = new AddressFmt({locale: 'en-CN'});
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
@@ -261,7 +261,7 @@ module.exports.testaddress_CN = {
             format: "latin"
         }, {locale: 'en-US'});
         
-        var expected = "208 Tianhe Road, Tianhe District\nGuǎngzhōu, Guǎngdōng 510620\nChina";
+        var expected = "208 Tianhe Road, Tianhe District, Guǎngzhōu\n510620 Guǎngdōng\nChina";
         var formatter = new AddressFmt({locale: 'en-US'});
         test.equal(formatter.format(parsedAddress), expected);
         test.done();

@@ -15,6 +15,14 @@ New Features:
   * Confirmed that all of iLib cases are passed in QT 5.7 version.
 * Modified ilib.getTimeZone() to find the time zone from the Intl object if it is available. If not, it falls back
 to the previous behaviour of checking environment variables.
+* Added AddressFmt.getFormatInfo() method for returning info that a UI would need to construct an address input form
+    * Return info about the correct form elements for an address in the given country, and return them in the right 
+    order
+    * Return localized UI labels for the various form elements
+    * Returns the localized list of regions for the address form if addresses in that country
+    typically include the region
+    * Returns a regular expression string to use for validation if the form element can be validated with a regexp
+    * Returns the localized list of countries
 
 Bug Fixes:
 * Fixed an ar-IQ currency symbol.
@@ -27,6 +35,7 @@ Bug Fixes:
 in UTC instead of the "local" time zone. This affected TimeZone.inDaylightTime(). If an explicit time zone was given, then
 then the calculation worked fine. It's only the special time zone "local" which had this bug.
 * Removed all of test cases written in JSUnit and related files. It is already replaced with Nodeunit TestFramework.
+* Fixed unit tests related to the getTimeZone() method so that they work properly both when the Intl object is available and when it is not
 
 Build 003
 -------

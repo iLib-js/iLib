@@ -19,5 +19,8 @@
 			"pattern": "[0-9]{4}",
 			"matchGroup": 0
 		}
-	]
+	],
+    "fieldNames": {
+        "region": "District"
+    }
 }

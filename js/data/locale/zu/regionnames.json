@@ -1,0 +1,57 @@
+{
+    "BW": {
+        "GA": "IGaborone"
+    },
+    "CZ": {
+        "10": "IPraha"
+    },
+    "DE": {
+        "BE": "IBerlini"
+    },
+    "ES": {
+        "ML": "IMelilla"
+    },
+    "FR": {
+        "75": "IParisi"
+    },
+    "GB": {
+        "ENG": "I-England",
+        "LND": "Idolobha weLondon",
+        "SCT": "I-Scotland",
+        "UKM": "Umbuso Ohlangeneyo",
+        "WLS": "I-Wales"
+    },
+    "ID": {
+        "JT": "Jawa Tengah"
+    },
+    "JP": {
+        "13": "ITokyo"
+    },
+    "LV": {
+        "RIX": "IRiga"
+    },
+    "PT": {
+        "30": "IMadira"
+    },
+    "RU": {
+        "MOW": "IMoskwa"
+    },
+    "UA": {
+        "30": "IKiyevi"
+    },
+    "US": {
+        "NY": "New York Isifunda"
+    },
+    "VN": {
+        "DN": "IDanang",
+        "SG": "IHochiminh"
+    },
+    "ZA": {
+        "EC": "KwaXhosa",
+        "FS": "IFleyistata",
+        "GT": "IGauteng",
+        "NC": "IKipi laseNyakatho",
+        "NW": "Nyakatho-Ntshonalanga",
+        "WC": "IKipi laseNtshonalanga"
+    }
+}

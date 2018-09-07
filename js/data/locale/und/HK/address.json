@@ -104,5 +104,9 @@
 				"pattern": "(^\\S{1,5}[市鎮鄉城]|hong kong|xiānggǎng|xianggang)"
 			}
 		]
-	}
+	},
+    "fieldNames": {
+        "postalCode": "Post Code",
+        "locality": "Town"
+    }
 }

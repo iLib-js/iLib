@@ -60,6 +60,7 @@
         "grunt-contrib-nodeunit": "~0.4.1",
         "grunt-contrib-uglify": "~0.5.0",
         "http-server": "^0.11.1",
+        "nodeunit": "0.12.0",
         "ilib-webpack-loader": "^0.9.2",
         "ilib-webpack-plugin2": "^0.9.1",
         "iso-15924": "^2.0.0",
@@ -68,6 +69,7 @@
         "tap": "^10.0.2",
         "trireme": "^0.9.0",
         "uglify-js": "^3.3.0",
+        "xml2json": "^0.11.2",
         "uglifyjs-webpack-plugin": "^1.0.0",
         "webpack": "^3.10.0"
     },

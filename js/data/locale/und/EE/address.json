@@ -5,21 +5,20 @@
     },
     "startAt": "end",
     "fields": [
-        
-	{
+        {
             "name": "locality",
             "line": "startAtLast",
             "pattern": "(([ABCDEFGHIJKLMNOPQRSŠZŽTUVWÕÄÖÜXYabcdefghijklmnopqrsšzžtuvwõäöüxy']+)? ?[ABCDEFGHIJKLMNOPQRSŠZŽTUVWÕÄÖÜXYabcdefghijklmnopqrsšzžtuvwõäöüxy']+)$",
             "matchGroup": 1
         },
-	{
+        {
             "name": "postalCode",
             "line": "last",
             "pattern": "([0-9]{5})$",
             "matchGroup": 0
         }
-	
-      
-        
-    ]
+    ],
+    "fieldNames": {
+        "region": "County"
+    }
 }

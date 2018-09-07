@@ -75,69 +75,105 @@ module.exports.testglobal = {
     },
     
     testGetTimeZoneDefault: function(test) {
+        // use a different test when the Intl object is available
+        ilib._platform = undefined;
+        if (ilib._global("Intl")) {
+            test.done();
+            return;
+        }
+
         test.expect(1);
         ilib._platform = undefined;
         ilib.tz = undefined;
-        
+
         if (ilib._getPlatform() === "nodejs") {
             process.env.TZ = "";
         }
-    
+
         if (ilib._getPlatform() === "browser") {
             navigator.timezone = undefined;
         }
         test.equal(ilib.getTimeZone(), "local");
         test.done();
     },
-    
+
+    testGetTimeZoneDefaultWithIntl: function(test) {
+        // only test when the Intl object is available
+        if (!ilib._global("Intl")) {
+            test.done();
+            return;
+        }
+
+        var ro = new Intl.DateTimeFormat().resolvedOptions();
+        var expected = ro && ro.timeZone;
+        if (expected) {
+            test.expect(1);
+            test.equal(ilib.getTimeZone(), expected);
+        }
+        test.done();
+    },
+
     testSetTimeZone: function(test) {
+        // use a different test when the Intl object is available
+        if (ilib._global("Intl")) {
+            test.done();
+            return;
+        }
+
         test.expect(2);
         ilib._platform = undefined;
         ilib.tz = undefined;
         test.equal(ilib.getTimeZone(), "local");
-        
+
         ilib.setTimeZone("America/Los_Angeles");
-        
+
         test.equal(ilib.getTimeZone(), "America/Los_Angeles");
         test.done();
         delete ilib.tz; // clean up
     },
-    
+
     testGetTimeZoneBrowser: function(test) {
-        if (ilib._getPlatform() !== "browser") {
-            // only testable on a browser
+        if (ilib._getPlatform() !== "browser" || ilib._global("Intl")) {
+            // only testable on a browser without the Intl object available
             test.done();
             return;
         }
-        
+
         ilib._platform = undefined;
         ilib.tz = undefined;
         navigator.timezone = "America/New_York";
-        
+
         test.expect(1);
         test.equal(ilib.getTimeZone(), "America/New_York");
         test.done();
         navigator.timezone = undefined;
     },
-    
+
     testSetTimeZoneEmpty: function(test) {
+        // use a different test when the Intl object is available
+        if (ilib._global("Intl")) {
+            test.done();
+            return;
+        }
+
         test.expect(2);
         ilib._platform = undefined;
         ilib.tz = undefined;
         if (ilib._getPlatform() === "browser") {
             navigator.timezone = undefined;
         }
-        
+
         test.equal(ilib.getTimeZone(), "local");
-        
+
         ilib.setTimeZone();
-        
+
         test.equal(ilib.getTimeZone(), "local");
         test.done();
     },
-    
+
     testGetTimeZoneNodejs: function(test) {
-        if (ilib._getPlatform() === "nodejs") {
+        // only test on older nodejs where the Intl object is not available
+        if (ilib._getPlatform() === "nodejs" && !ilib._global("Intl")) {
             test.expect(1);
             ilib._platform = undefined;
             ilib.tz = undefined;
@@ -159,7 +195,7 @@ module.exports.testglobal = {
     },
     
     testGetTimeZoneRhino: function(test) {
-        if (ilib._getPlatform() !== "rhino") {
+        if (ilib._getPlatform() !== "rhino" || ilib._global("Intl")) {
             // only test this in rhino
             test.done();
             return;
@@ -180,7 +216,7 @@ module.exports.testglobal = {
     },
     
     testGetTimeZoneWebOS: function(test) {
-        if (ilib._getPlatform() !== "webos") {
+        if (ilib._getPlatform() !== "webos" || ilib._global("Intl")) {
             // only test this in webos
             test.done();
             return;
@@ -295,20 +331,6 @@ module.exports.testglobal = {
         // should remove the locale object and make it into a string
         test.expect(1);
         test.equal(ilib.getLocale(), "en-US");
-        test.done();
-    },
-    
-    testGetTimeZoneBrowser: function(test) {
-        if (ilib._getPlatform() !== "browser") {
-            // only test this in a real browser
-            test.done();
-            return;
-        }
-        ilib.tz = undefined;
-        navigator.timezone = 'America/Los_Angeles';             
-        
-        test.expect(1);
-        test.equal(ilib.getTimeZone(), "America/Los_Angeles");
         test.done();
     },
     

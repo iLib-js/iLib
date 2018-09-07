@@ -12,5 +12,8 @@
 			"pattern": "[A-Za-zÀÁÂÄÇÈÉÊËÌÍÎÏÒÓÔÙÚÛàáâçèéêëìíîïòóôùúû\\.\\-' ]+",
 			"matchGroup": 0
 		}
-	]
+	],
+    "fieldNames": {
+        "region": "Department"
+    }
 }

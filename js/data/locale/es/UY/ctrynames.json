@@ -1,9 +1,26 @@
 {
+    "Asia del Oeste": "145",
+    "Europa del Este": "151",
+    "Europa del Norte": "154",
+    "Europa del Oeste": "155",
+    "África del Oeste": "011",
+    "África del Este": "014",
+    "África del Norte": "015",
+    "África del Sur": "018",
+    "Asia del Este": "030",
+    "Asia del Sur": "034",
     "Asia sudoriental": "035",
+    "Europa del Sur": "039",
+    "región de Micronesia": "057",
+    "Isla Ascensión": "AC",
+    "Bosnia-Herzegovina": "BA",
     "Costa de Marfil": "CI",
+    "Eurozona": "EZ",
+    "Guernesey": "GG",
     "Islas Canarias": "IC",
     "Islas Ultramarinas": "QO",
     "Tristán da Cunha": "TA",
     "Timor Oriental": "TL",
-    "Islas Ultramarinas de EE.UU.": "UM"
+    "Islas Ultramarinas de EE.UU.": "UM",
+    "Islas Vírgenes de los Estados Unidos": "VI"
 }

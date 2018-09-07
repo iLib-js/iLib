@@ -11,5 +11,8 @@
 			"line": "last",
 			"pattern": "[A-Za-zÀÁÂÄÇÈÉÊËÌÍÎÏÒÓÔÙÚÛàáâçèéêëìíîïòóôùúû\\.\\-' ]+"
 		}
-	]
+	],
+    "fieldNames": {
+        "region": "Prefecture"
+    }
 }

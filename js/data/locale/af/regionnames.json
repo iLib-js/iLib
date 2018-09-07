@@ -1,0 +1,524 @@
+{
+    "AE": {
+        "AZ": "Aboe Dhabi",
+        "DU": "Doebai"
+    },
+    "AM": {
+        "ER": "Jerewan"
+    },
+    "AO": {
+        "BGO": "Bengo-provinsie",
+        "BGU": "Benguela-provinsie",
+        "BIE": "Bié-provinsie",
+        "CCU": "Cuando Cubango-provinsie",
+        "CNN": "Cunene-provinsie",
+        "CNO": "Cuanza Norte-provinsie",
+        "CUS": "Cuanza Sul-provinsie",
+        "HUA": "Huambo-provinsie",
+        "HUI": "Huíla-provinsie",
+        "LNO": "Lunda Norte-provinsie",
+        "LSU": "Lunda Sul-provinsie",
+        "LUA": "Luanda-provinsie",
+        "MAL": "Malanje-provinsie",
+        "MOX": "Moxico-provinsie",
+        "NAM": "Namibe-provinsie",
+        "UIG": "Uíge-provinsie",
+        "ZAI": "Zaire-provinsie"
+    },
+    "AR": {
+        "B": "Buenos Aires",
+        "C": "Buenos Aires²"
+    },
+    "AT": {
+        "2": "Karinthië",
+        "3": "Neder-Oostenryk",
+        "4": "Opper-Oostenryk",
+        "6": "Stiermarke",
+        "7": "Tirool",
+        "9": "Wene"
+    },
+    "AU": {
+        "ACT": "Australiese Hoofstadgebied",
+        "NSW": "Nieu-Suid-Wallis",
+        "NT": "Noordelike Gebied",
+        "SA": "Suid-Australië",
+        "TAS": "Tasmanië",
+        "WA": "Wes-Australië"
+    },
+    "AZ": {
+        "BA": "Bakoe",
+        "NV": "Nachitsjewan",
+        "NX": "Nachitsjewan²"
+    },
+    "BE": {
+        "BRU": "Brusselse Hoofstedelike Gewes",
+        "VAN": "Antwerpen",
+        "VBR": "Vlaams-Brabant",
+        "VLI": "Limburg, België",
+        "VOV": "Oos-Vlaandere",
+        "VWV": "Wes-Vlaandere",
+        "WAL": "Wallonië",
+        "WBR": "Waals-Brabant",
+        "WLG": "Luik",
+        "WLX": "Luxemburg"
+    },
+    "BR": {
+        "DF": "Federale Distrik"
+    },
+    "BW": {
+        "CE": "Sentraal distrik, Botswana",
+        "GH": "Ghanzi distrik",
+        "KG": "Kgalagadi distrik",
+        "KL": "Kgatleng distrik",
+        "KW": "Kweneng distrik",
+        "NE": "Noord-Oos distrik, Botswana",
+        "NW": "Noord-Wes distrik, Botswana",
+        "SE": "Suid-Oos distrik, Botswana",
+        "SO": "Suid distrik, Botswana",
+        "SP": "Selebi-Phikwe",
+        "ST": "Sowa, Botswana"
+    },
+    "CA": {
+        "BC": "Brits-Columbië",
+        "NB": "Nieu-Brunswyk",
+        "NL": "Newfoundland en Labrador",
+        "NT": "Noordwestelike gebiede",
+        "PE": "Prins-Edward-Eiland"
+    },
+    "CH": {
+        "AG": "Kanton Aargau"
+    },
+    "CN": {
+        "15": "Binne-Mongolië",
+        "31": "Sjanghai",
+        "35": "Foekien",
+        "36": "Jiangsji",
+        "37": "Sjandong",
+        "44": "Kwangdong",
+        "50": "Tsjongtsjing",
+        "51": "Sitsjuan",
+        "61": "Sjaanxi"
+    },
+    "CO": {
+        "DC": "Bogotá, DC"
+    },
+    "CZ": {
+        "10": "Praag"
+    },
+    "DE": {
+        "BE": "Berlyn",
+        "BY": "Beiere",
+        "HB": "Vrye Hansestad Bremen",
+        "MV": "Mecklenburg-Voorpommere",
+        "NI": "Nedersakse",
+        "NW": "Noordryn-Wesfale",
+        "RP": "Rynland-Palts",
+        "SH": "Sleeswyk-Holstein",
+        "SN": "Sakse",
+        "ST": "Sakse-Anhalt",
+        "TH": "Thüringen"
+    },
+    "DJ": {
+        "DJ": "Djiboeti"
+    },
+    "ES": {
+        "AN": "Andalusië",
+        "AS": "Asturië",
+        "BI": "Biskaje",
+        "CL": "Kastilië en León",
+        "CT": "Katalonië",
+        "GA": "Galicië",
+        "IB": "Baleariese Eilande",
+        "PV": "Outonome Gemeenskap van die Baskeland",
+        "SO": "Provinsie Soria"
+    },
+    "ET": {
+        "AA": "Addis Abeba",
+        "TI": "Tigray-streek"
+    },
+    "FR": {
+        "75": "Parys",
+        "BRE": "Bretagne",
+        "COR": "Korsika",
+        "GES": "Grand Est",
+        "IDF": "Île-de-France",
+        "NAQ": "Nieu-Akwitanië",
+        "OCC": "Oksitanië",
+        "PAC": "Provence-Alpes-Côte d’Azur",
+        "PDL": "Pays de la Loire"
+    },
+    "GB": {
+        "BNE": "Barnet-distrik",
+        "DUR": "Durham-graafskap",
+        "EDH": "Edinburg",
+        "ELS": "Buite-Hebride",
+        "ENG": "Engeland",
+        "ERY": "Oos-Yorkshire",
+        "ESX": "Oos-Sussex",
+        "GBN": "Groot-Brittanje",
+        "HCK": "London Borough of Hackney",
+        "IOS": "Scilly-eilande",
+        "IOW": "Eiland Wight",
+        "LND": "City of London",
+        "NIR": "Noord-Ierland",
+        "NYK": "Noord-Yorkshire",
+        "ORK": "Orkney",
+        "PTE": "Peterborough",
+        "SCT": "Skotland",
+        "TWH": "London Borough of Tower Hamlets",
+        "UKM": "Verenigde Koninkryk",
+        "WSM": "City of Westminster",
+        "WSX": "Wes-Sussex"
+    },
+    "GE": {
+        "AB": "Abchasië",
+        "AJ": "Adzjarië"
+    },
+    "GQ": {
+        "C": "Rio Muni"
+    },
+    "GR": {
+        "69": "Berg Athos"
+    },
+    "HU": {
+        "BU": "Boedapest"
+    },
+    "ID": {
+        "JK": "Djakarta",
+        "JT": "Jawa Tengah",
+        "ML": "Molukke",
+        "NU": "Klein Sunda-eilande"
+    },
+    "IL": {
+        "D": "Suidelike distrik",
+        "HA": "Haifa distrik",
+        "JM": "Jerusalem distrik",
+        "M": "Sentrale distrik",
+        "TA": "Tel Aviv distrik",
+        "Z": "Noordelike distrik"
+    },
+    "IN": {
+        "AN": "Andaman- en Nicobar-eilande",
+        "HR": "Harjana",
+        "MN": "Manipoer",
+        "OR": "Orissa",
+        "TR": "Tripoera",
+        "UP": "Oetarpradesj",
+        "WB": "Wes-Bengale"
+    },
+    "IS": {
+        "2": "Suðurnes"
+    },
+    "IT": {
+        "21": "Piëmont",
+        "32": "Trentino-Suid-Tirool",
+        "42": "Ligurië",
+        "52": "Toskane",
+        "55": "Umbrië",
+        "62": "Latium",
+        "65": "Abruzze",
+        "72": "Kampanië",
+        "78": "Kalabrië",
+        "82": "Sisilië",
+        "88": "Sardinië",
+        "BZ": "Suid-Tirool"
+    },
+    "JP": {
+        "10": "Gunma Prefektuur",
+        "11": "Saitama Prefektuur",
+        "12": "Chiba Prefektuur",
+        "13": "Tokio",
+        "14": "Kanagawa Prefektuur",
+        "15": "Niigata Prefektuur",
+        "16": "Toyama Prefektuur",
+        "17": "Ishikawa Prefektuur",
+        "18": "Fukui Prefektuur",
+        "19": "Yamanashi Prefektuur",
+        "20": "Nagano Prefektuur",
+        "21": "Gifu Prefektuur",
+        "22": "Shizuoka Prefektuur",
+        "23": "Aichi Prefektuur",
+        "24": "Mie Prefektuur",
+        "25": "Shiga Prefektuur",
+        "26": "Kioto Prefektuur",
+        "27": "Osaka Prefektuur",
+        "28": "Hyogo Prefektuur",
+        "29": "Nara Prefektuur",
+        "30": "Wakayama Prefektuur",
+        "31": "Tottori Prefektuur",
+        "32": "Shimane Prefektuur",
+        "33": "Okayama Prefektuur",
+        "34": "Hiroshima Prefektuur",
+        "35": "Yamaguchi Prefektuur",
+        "36": "Tokushima Prefektuur",
+        "37": "Kagawa Prefektuur",
+        "38": "Ehime Prefektuur",
+        "39": "Kochi Prefektuur",
+        "40": "Fukuoka Prefektuur",
+        "41": "Saga Prefektuur",
+        "42": "Nagasaki Prefektuur",
+        "43": "Kumamoto Prefektuur",
+        "44": "Oita Prefektuur",
+        "45": "Miyazaki Prefektuur",
+        "46": "Kagoshima Prefektuur",
+        "47": "Okinawa Prefektuur",
+        "01": "Hokkaido",
+        "02": "Aomori Prefektuur",
+        "03": "Iwate Prefektuur",
+        "04": "Miyagi Prefektuur",
+        "05": "Akita Prefektuur",
+        "06": "Yamagata Prefektuur",
+        "07": "Fukushima Prefektuur",
+        "08": "Ibaraki Prefektuur",
+        "09": "Tochigi Prefektuur"
+    },
+    "KG": {
+        "GB": "Bisjkek"
+    },
+    "KP": {
+        "01": "Pjongjang"
+    },
+    "KR": {
+        "11": "Seoel",
+        "29": "Gwangju"
+    },
+    "LV": {
+        "LPX": "Liepaja"
+    },
+    "MA": {
+        "FES": "Fes",
+        "MMD": "Marrakesj",
+        "MMN": "Marrakesj²",
+        "SYB": "Marrakesj³",
+        "TNG": "Tangier"
+    },
+    "MD": {
+        "CU": "Chişinău",
+        "GA": "Gagausië"
+    },
+    "MX": {
+        "CMX": "Meksikostad"
+    },
+    "MY": {
+        "04": "Malakka"
+    },
+    "MZ": {
+        "L": "Maputo",
+        "MPM": "Maputo²"
+    },
+    "NA": {
+        "CA": "Caprivi",
+        "KE": "Kawango-Oos",
+        "KW": "Kawango-Wes",
+        "OD": "Otjozondjoepa",
+        "ON": "Osjana",
+        "OS": "Omoesati",
+        "OT": "Osjikoto"
+    },
+    "NL": {
+        "LI": "Limburg, Nederland",
+        "NB": "Noord-Brabant",
+        "NH": "Noord-Holland",
+        "ZH": "Suid-Holland"
+    },
+    "PL": {
+        "KP": "Woiwodskap Kujawië-Pommere",
+        "LU": "Woiwodskap Lublin",
+        "MA": "Woiwodskap Klein-Pole",
+        "MZ": "Woiwodskap Masowië",
+        "PD": "Woiwodskap Podlachië",
+        "PK": "Woiwodskap Subkarpate",
+        "PM": "Woiwodskap Pommere",
+        "WP": "Woiwodskap Groot-Pole",
+        "ZP": "Woiwodskap Wes-Pommere"
+    },
+    "PT": {
+        "20": "Asore",
+        "30": "Madeiraeilande"
+    },
+    "RO": {
+        "B": "Boekarest"
+    },
+    "RS": {
+        "00": "Belgrado"
+    },
+    "RU": {
+        "AD": "Adigea",
+        "ALT": "Altai-krai",
+        "AMU": "Amoer-oblast",
+        "ARK": "Archangelsk-oblast",
+        "AST": "Astrachan-oblast",
+        "BA": "Basjkortostan",
+        "BEL": "Belgorod-oblast",
+        "BRY": "Brjansk-oblast",
+        "BU": "Boerjatië",
+        "CE": "Tsjetsjnië",
+        "CHE": "Tsjeljabinsk-oblast",
+        "CHU": "Tsjoekotka",
+        "CU": "Tsjoewasjië",
+        "IN": "Ingoesjetië",
+        "IRK": "Irkoetsk-oblast",
+        "IVA": "Iwanowo-oblast",
+        "KAM": "Kamtsjatka-krai",
+        "KB": "Kabardino-Balkarië",
+        "KC": "Karatsjai-Tsjerkessië",
+        "KDA": "Krasnodar-krai",
+        "KEM": "Kemerowo-oblast",
+        "KGD": "Kaliningrad-oblast",
+        "KGN": "Koergan-oblast",
+        "KHA": "Chabarofsk-krai",
+        "KHM": "Chanto-Mansië",
+        "KIR": "Kirof-oblast",
+        "KK": "Chakassië",
+        "KL": "Kalmikië",
+        "KLU": "Kaloega-oblast",
+        "KO": "Republiek van Komi",
+        "KOS": "Kostroma-oblast",
+        "KR": "Republiek van Karelië",
+        "KRS": "Koersk-oblast",
+        "KYA": "Krasnojarsk-krai",
+        "LEN": "Leningrad-oblast",
+        "LIP": "Lipetsk-oblast",
+        "MAG": "Magadan-oblast",
+        "MO": "Mordowië",
+        "MOS": "Moskou-oblast",
+        "MOW": "Moskou",
+        "MUR": "Moermansk-oblast",
+        "NEN": "Nenetsië",
+        "NGR": "Nowgorod-oblast",
+        "NIZ": "Nizjni Nowgorod-oblast",
+        "NVS": "Nowosibirsk-oblast",
+        "OMS": "Omsk-oblast",
+        "ORE": "Orenburg-oblast",
+        "ORL": "Orjol-oblast",
+        "PER": "Perm-krai",
+        "PNZ": "Penza-oblast",
+        "PRI": "Primorski-krai",
+        "PSK": "Pskof-oblast",
+        "ROS": "Rostof-oblast",
+        "RYA": "Rjazan-oblast",
+        "SA": "Jakoetië",
+        "SAK": "Sachalin-oblast",
+        "SAM": "Samara-oblast",
+        "SAR": "Saratof-oblast",
+        "SE": "Noord-Ossetië-Alanië",
+        "SMO": "Smolensk-oblast",
+        "SPE": "Sint Petersburg",
+        "STA": "Stawropol-krai",
+        "SVE": "Swerdlofsk-oblast",
+        "TA": "Tartarstan",
+        "TAM": "Tambof-oblast",
+        "TOM": "Tomsk-oblast",
+        "TUL": "Toela-oblast",
+        "TVE": "Twer-oblast",
+        "TY": "Tiwa",
+        "TYU": "Tjoemen-oblast",
+        "UD": "Oedmoertië",
+        "ULY": "Oeljanofsk-oblast",
+        "VGG": "Wolgograd-oblast",
+        "VLA": "Wladimir-oblast",
+        "VLG": "Wologda-oblast",
+        "VOR": "Woronezj-oblast",
+        "YAN": "Jamalië",
+        "YAR": "Jaroslawl-oblast",
+        "YEV": "Joodse Outonome Oblast",
+        "ZAB": "Zabaikalski-krai"
+    },
+    "SH": {
+        "AC": "Ascension",
+        "HL": "Sint Helena"
+    },
+    "TJ": {
+        "DU": "Doesjanbe"
+    },
+    "TM": {
+        "S": "Asjchabat"
+    },
+    "UA": {
+        "12": "Dnipropetrofsk-oblast",
+        "14": "Donetsk-oblast",
+        "18": "Sjitomir-oblast",
+        "21": "Transkarpatië-oblast",
+        "23": "Saporisja-oblast",
+        "26": "Iwano-Frankifsk-oblast",
+        "30": "Kiëf",
+        "32": "Kiëf-oblast",
+        "35": "Kirowohrad-oblast",
+        "40": "Sewastopol",
+        "43": "Outonome Republiek van Krim",
+        "46": "Lwif-oblast",
+        "48": "Mikolajif-oblast",
+        "51": "Odessa-oblast",
+        "53": "Poltawa-oblast",
+        "56": "Riwne-oblast",
+        "59": "Soemi-oblast",
+        "61": "Ternopil-oblast",
+        "63": "Charkif-oblast",
+        "65": "Cherson-oblast",
+        "68": "Chmelnitski-oblast",
+        "71": "Tsjerkasi-oblast",
+        "74": "Tsjernihif-oblast",
+        "77": "Tsjerniftsi-oblast",
+        "05": "Winnitsja-oblast",
+        "07": "Wolhinië-oblast",
+        "09": "Loehansk-oblast"
+    },
+    "UM": {
+        "67": "Johnston-atol",
+        "71": "Midway-atol",
+        "76": "Navassa",
+        "79": "Wake-eiland",
+        "81": "Baker-eiland",
+        "84": "Howland-eiland",
+        "86": "Jarvis-eiland",
+        "89": "Kingman-rif",
+        "95": "Palmyra-atol"
+    },
+    "US": {
+        "CA": "Kalifornië",
+        "DC": "Washington",
+        "NC": "Noord-Carolina",
+        "ND": "Noord-Dakota",
+        "NM": "Nieu-Meksiko",
+        "PA": "Pennsilvanië",
+        "SC": "Suid-Carolina",
+        "SD": "Suid-Dakota",
+        "VA": "Virginië",
+        "WA": "Washington²",
+        "WV": "Wes-Virginië"
+    },
+    "UZ": {
+        "TK": "Tasjkent"
+    },
+    "VN": {
+        "24": "Quang Binh",
+        "HP": "Hai Phong",
+        "SG": "Ho Chi Minh-stad"
+    },
+    "YE": {
+        "SA": "Sanaa"
+    },
+    "ZA": {
+        "EC": "Oos-Kaap",
+        "FS": "Vrystaat",
+        "NC": "Noord-Kaap",
+        "NW": "Noordwes",
+        "WC": "Wes-Kaap"
+    },
+    "ZM": {
+        "01": "Westelike Provinsie",
+        "02": "Sentrale Provinsie (Zambië)",
+        "03": "Oostelike Provinsie",
+        "05": "Noordelike Provinsie",
+        "06": "Noordwestelike Provinsie",
+        "07": "Suidelike Provinsie",
+        "08": "Koperstreek"
+    },
+    "ZW": {
+        "MC": "Masjonaland-Sentraal",
+        "ME": "Masjonaland-Oos",
+        "MN": "Matabeleland-Noord",
+        "MS": "Matabeleland-Suid",
+        "MW": "Masjonaland-Wes"
+    }
+}

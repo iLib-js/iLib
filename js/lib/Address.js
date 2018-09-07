@@ -239,6 +239,7 @@ Address.prototype = {
 			sync: this.sync, 
 			loadParams: this.loadParams, 
 			callback: ilib.bind(this, function(ctrynames) {
+			    this.ctrynames = ctrynames;
 				this._determineDest(ctrynames, onLoad);
 			})
 		});
@@ -322,7 +323,7 @@ Address.prototype = {
 			sync: this.sync, 
 			loadParams: this.loadParams,
 			callback: ilib.bind(this, function(info) {
-				if (!info || JSUtils.isEmpty(info)) {
+				if (!info || JSUtils.isEmpty(info) || !info.fields) {
 					// load the "unknown" locale instead
 					Utils.loadData({
 						object: "Address", 
@@ -391,7 +392,7 @@ Address.prototype = {
 			// //console.log("multiformat locale: format is now " + this.format);
 		} else {
 			startAt = (this.info && this.info.startAt) || "end";
-			infoFields = this.info.fields;
+			infoFields = (this.info && this.info.fields) || [];
 		}
 		this.compare = (startAt === "end") ? this.endsWith : this.startsWith;
 		
@@ -594,14 +595,14 @@ Address.prototype = {
 		for (j = 0; j < pattern.length; j++) {
 			start = address.compare(line, pattern[j]); 
 			if (start !== -1) {
-                            ret.match = line.substring(start, start+pattern[j].length);
-                            if (start !== 0) {
-                                ret.line = line.substring(0,start).trim();
-                            } else {
-                                ret.line = line.substring(pattern[j].length).trim();
-                            }
+                ret.match = line.substring(start, start+pattern[j].length);
+                if (start !== 0) {
+                    ret.line = line.substring(0,start).trim();
+                } else {
+                    ret.line = line.substring(pattern[j].length).trim();
+                }
 				//console.log("found match " + ret.match + " and rest of line is " + ret.line);
-                            return ret;
+                return ret;
 			}
 		}
 		

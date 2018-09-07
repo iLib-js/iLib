@@ -1,0 +1,249 @@
+{
+    "AE": {
+        "DU": "Dubaý"
+    },
+    "AM": {
+        "ER": "Ýerewan"
+    },
+    "AR": {
+        "C": "Buenos-Aýres"
+    },
+    "AT": {
+        "3": "Aşaky Awstriýa",
+        "9": "Wena"
+    },
+    "AZ": {
+        "NX": "Nahçywan Awtonom Respublikasy",
+        "SM": "Sumgait"
+    },
+    "BW": {
+        "GA": "Gabaron"
+    },
+    "CD": {
+        "KN": "Kinşasa"
+    },
+    "CF": {
+        "BGF": "Bangi"
+    },
+    "CI": {
+        "YM": "Ýamusukro"
+    },
+    "CN": {
+        "11": "Pekin",
+        "12": "Týanszin",
+        "31": "Şanhaý",
+        "50": "Çunszin"
+    },
+    "CO": {
+        "DC": "Bogota"
+    },
+    "CZ": {
+        "10": "Praga"
+    },
+    "DE": {
+        "BY": "Bawariýa",
+        "HE": "Hessen",
+        "HH": "Gamburg"
+    },
+    "DJ": {
+        "DJ": "Jibuti"
+    },
+    "ES": {
+        "CT": "Kataloniýa"
+    },
+    "FR": {
+        "75": "Pariž"
+    },
+    "GB": {
+        "CRF": "Kardiff",
+        "EDH": "Edinburg",
+        "ENG": "Angliýa",
+        "GBN": "Beýik Britaniýa",
+        "UKM": "Birleşen Patyşalyk"
+    },
+    "GE": {
+        "AB": "Abhaziýa"
+    },
+    "GN": {
+        "C": "Konakri"
+    },
+    "HU": {
+        "BU": "Budapeşt"
+    },
+    "IN": {
+        "DL": "Deli",
+        "GJ": "Güjerat"
+    },
+    "IR": {
+        "27": "Gülistan Welaýaty"
+    },
+    "IT": {
+        "KR": "Kroton",
+        "ME": "Messina welaýaty"
+    },
+    "JP": {
+        "13": "Tokio",
+        "30": "Vakaýama"
+    },
+    "KG": {
+        "GB": "Bişkek",
+        "GO": "Oş"
+    },
+    "KH": {
+        "12": "Fnom-Penh"
+    },
+    "KP": {
+        "01": "Phenýan"
+    },
+    "KR": {
+        "11": "Seul"
+    },
+    "LI": {
+        "11": "Waduz"
+    },
+    "MA": {
+        "CAS": "Kasablanka"
+    },
+    "MD": {
+        "CU": "Kişinew"
+    },
+    "MK": {
+        "85": "Skopýe"
+    },
+    "MN": {
+        "1": "Ulan-Bator"
+    },
+    "MT": {
+        "60": "Walletta"
+    },
+    "MU": {
+        "PU": "Port-Lui"
+    },
+    "MV": {
+        "MLE": "Male"
+    },
+    "MX": {
+        "CMX": "Mehiko"
+    },
+    "MZ": {
+        "MPM": "Maputu"
+    },
+    "NE": {
+        "8": "Niameý"
+    },
+    "PG": {
+        "NCD": "Port-Morsbi"
+    },
+    "PT": {
+        "20": "Azor adalary"
+    },
+    "PY": {
+        "ASU": "Asunson"
+    },
+    "RO": {
+        "B": "Buharest"
+    },
+    "RS": {
+        "00": "Belgrad"
+    },
+    "RU": {
+        "BA": "Başgyrdystan",
+        "CU": "Çuwaşystan",
+        "DA": "Dagystan",
+        "KAM": "Kamçatka Kraý",
+        "MOW": "Moskwa",
+        "ROS": "Rostow oblasty",
+        "SPE": "Sankt-Peterburg",
+        "TA": "Tatarystan"
+    },
+    "SM": {
+        "07": "San-Marino"
+    },
+    "TD": {
+        "ND": "Njamena"
+    },
+    "TJ": {
+        "DU": "Duşanbe",
+        "SU": "Sogd welayaty"
+    },
+    "TM": {
+        "B": "Balkan welaýaty",
+        "D": "Daşoguz welaýaty",
+        "L": "Lebap welaýaty",
+        "M": "Mary welaýaty"
+    },
+    "TR": {
+        "10": "Balykesir",
+        "11": "Bilejik",
+        "18": "Çankyry (il)",
+        "19": "Çorum (il)",
+        "21": "Diýarbakyr",
+        "23": "Elazyg",
+        "24": "Erzinjan",
+        "30": "Hakkari",
+        "31": "Hataý",
+        "34": "Stambul",
+        "38": "Kaýseri",
+        "39": "Kyrklareli",
+        "40": "Kyrşehir",
+        "41": "Kojaeli",
+        "42": "Konýa",
+        "43": "Kütahýa",
+        "44": "Malatýa",
+        "48": "Mugla",
+        "50": "Newşehir",
+        "51": "Nigde",
+        "54": "Sakarýa",
+        "58": "Siwas",
+        "59": "Tekirdag",
+        "62": "Tunjeli",
+        "63": "Şanlyurfa (il)",
+        "65": "Wan",
+        "66": "Ýozgat",
+        "67": "Zonguldak (il)",
+        "68": "Aksaraý",
+        "69": "Baýburt",
+        "71": "Kyrykkale",
+        "73": "Şyrnak",
+        "74": "Bartyn",
+        "76": "Ygdyr",
+        "77": "Ýalowa",
+        "80": "Osmaniýe",
+        "81": "Düzje",
+        "02": "Adyýaman",
+        "03": "Afýonkarahisar",
+        "04": "Agry",
+        "05": "Amasýa",
+        "07": "Antalýa",
+        "08": "Artwin",
+        "09": "Aýdyn"
+    },
+    "TW": {
+        "TPE": "Taýpeý"
+    },
+    "UA": {
+        "30": "Kyýiw",
+        "40": "Sewastopol"
+    },
+    "UM": {
+        "71": "Midueý"
+    },
+    "US": {
+        "AK": "Alýaska",
+        "DC": "Waşington",
+        "HI": "Gawaý adalary",
+        "NY": "Nýu-Ýork ştaty",
+        "TX": "Tehas"
+    },
+    "UZ": {
+        "QR": "Garagalpagystan",
+        "TK": "Daşkent"
+    },
+    "VN": {
+        "HN": "Hanoýi",
+        "SG": "Ho Şi Miň Şäheri"
+    },
+    "YE": {
+        "SA": "Sana"
+    }
+}
