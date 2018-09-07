@@ -24,6 +24,7 @@ Bug Fixes:
 in UTC instead of the "local" time zone. This affected TimeZone.inDaylightTime(). If an explicit time zone was given, then
 then the calculation worked fine. It's only the special time zone "local" which had this bug.
 * Removed all of test cases written in JSUnit and related files. It is already replaced with Nodeunit TestFramework.
+* Fixed unit tests related to the getTimeZone() method so that they work properly both when the Intl object is available and when it is not
 
 Build 003
 -------
