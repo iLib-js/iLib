@@ -392,20 +392,6 @@ module.exports.testglobal = {
         test.done();
     },
     
-    testGetTimeZoneBrowser: function(test) {
-        if (ilib._getPlatform() !== "browser") {
-            // only test this in a real browser
-            test.done();
-            return;
-        }
-        ilib.tz = undefined;
-        navigator.timezone = 'America/Los_Angeles';             
-        
-        test.expect(1);
-        test.equal(ilib.getTimeZone(), "America/Los_Angeles");
-        test.done();
-    },
-    
     testGetLocaleBrowser: function(test) {
         if (ilib._getPlatform() !== "browser") {
             // only test this in a real browser
