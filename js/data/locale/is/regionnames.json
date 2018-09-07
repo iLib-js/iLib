@@ -1,0 +1,465 @@
+{
+    "AE": {
+        "AJ": "Adsman"
+    },
+    "AM": {
+        "ER": "Jerevan"
+    },
+    "AR": {
+        "C": "Búenos Aíres",
+        "U": "Chubut-fylki"
+    },
+    "AT": {
+        "2": "Kärnten",
+        "3": "Neðra Austurríki",
+        "4": "Efra Austurríki",
+        "6": "Steiermark",
+        "7": "Tirol",
+        "9": "Vín"
+    },
+    "AU": {
+        "ACT": "Höfuðborgarsvæði Ástralíu",
+        "NSW": "Nýja Suður-Wales",
+        "NT": "Norður-svæðið",
+        "SA": "Suður-Ástralía",
+        "TAS": "Tasmanía",
+        "WA": "Vestur-Ástralía"
+    },
+    "AZ": {
+        "BA": "Bakú"
+    },
+    "BE": {
+        "BRU": "Brussel",
+        "VAN": "Antwerpen-hérað",
+        "VBR": "Flæmska Brabant",
+        "VOV": "Austur-Flæmingjaland",
+        "VWV": "Vestur-Flæmingjaland",
+        "WAL": "Vallónía",
+        "WBR": "Vallónska Brabant",
+        "WLG": "Liege",
+        "WLX": "Lúxemborg"
+    },
+    "BW": {
+        "GA": "Gaboróne"
+    },
+    "CA": {
+        "BC": "Breska Kólumbía",
+        "NB": "Nýja-Brúnsvík",
+        "NL": "Nýfundnaland og Labrador",
+        "NS": "Nýja-Skotland",
+        "NT": "Norðvesturhéruðin",
+        "PE": "Eyja Játvarðs prins",
+        "QC": "Québec"
+    },
+    "CD": {
+        "KN": "Kinsasa"
+    },
+    "CF": {
+        "BGF": "Bangví"
+    },
+    "CH": {
+        "JU": "Júra",
+        "NE": "Neuchatel"
+    },
+    "CL": {
+        "AR": "Araucanía-fylki",
+        "BI": "Biobío-fylki",
+        "LL": "Los Lagos-fylki",
+        "LR": "Los Ríos-fylki"
+    },
+    "CN": {
+        "31": "Sjanghæ",
+        "51": "Sesúan",
+        "54": "Tíbet"
+    },
+    "CO": {
+        "DC": "Bógóta"
+    },
+    "CZ": {
+        "10": "Prag"
+    },
+    "DE": {
+        "BB": "Brandenborg",
+        "BE": "Berlín",
+        "BY": "Bæjaraland",
+        "HE": "Hessen",
+        "HH": "Hamborg",
+        "MV": "Mecklenborg-Vorpommern",
+        "NI": "Neðra-Saxland",
+        "NW": "Norðurrín-Vestfalía",
+        "RP": "Rínarland-Pfalz",
+        "SH": "Slésvík-Holtsetaland",
+        "SN": "Saxland",
+        "ST": "Saxland-Anhalt",
+        "TH": "Þýringaland"
+    },
+    "DJ": {
+        "DJ": "Djíbútí"
+    },
+    "DK": {
+        "84": "Höfuðborgarsvæði Danmerkur"
+    },
+    "ES": {
+        "AN": "Andalúsía",
+        "AS": "Astúría",
+        "CB": "Kantabría",
+        "CL": "Kastilía-León",
+        "CM": "Kastilía-La Mancha",
+        "CT": "Katalónía",
+        "EX": "Extremadúra",
+        "GA": "Galisía",
+        "IB": "Baleareyjar",
+        "LO": "La Rioja",
+        "MC": "Múrsía",
+        "MD": "Madríd (hérað)",
+        "NC": "Navarra",
+        "PV": "Baskaland",
+        "RI": "La Rioja²",
+        "VC": "Valensía (hérað)"
+    },
+    "FR": {
+        "75": "París",
+        "BRE": "Bretanía",
+        "COR": "Korsíka",
+        "CVL": "Centre",
+        "IDF": "Île-de-France"
+    },
+    "GB": {
+        "AGY": "Öngulsey",
+        "BDG": "Barking og Dagenham",
+        "DUR": "Durham-sýsla",
+        "EDH": "Edinborg",
+        "ERY": "Austur-Yorkshire",
+        "ESX": "Austur-Sussex",
+        "GBN": "Stóra-Bretland",
+        "HMF": "Hammersmith og Fulham",
+        "IOS": "Syllingar",
+        "IOW": "Wighteyja",
+        "KEC": "Kensington og Chelsea",
+        "LND": "Lundúnaborg",
+        "NBL": "Norðymbraland",
+        "NIR": "Norður-Írland",
+        "NLK": "Norður-Lanarkshire",
+        "NYK": "Norður-Yorkshire",
+        "ORK": "Orkneyjar",
+        "PTE": "Peterborough",
+        "SCT": "Skotland",
+        "SLK": "Suður-Lanarkshire",
+        "UKM": "Bretland",
+        "WSM": "Westminsterborg",
+        "WSX": "Vestur-Sussex",
+        "ZET": "Hjaltlandseyjar"
+    },
+    "GE": {
+        "AB": "Abkasía",
+        "TB": "Tíblisi"
+    },
+    "GN": {
+        "C": "Kónakrí"
+    },
+    "GR": {
+        "69": "Aþos",
+        "E": "Þessalía"
+    },
+    "GW": {
+        "BS": "Bissá"
+    },
+    "HU": {
+        "BU": "Búdapest"
+    },
+    "ID": {
+        "JK": "Djakarta",
+        "JT": "Jawa Tengah",
+        "ML": "Mólúkkaeyjar",
+        "NU": "Litlu-Sundaeyjar",
+        "PP": "Vestur-Nýja-Gínea",
+        "SL": "Súlavesí",
+        "SM": "Súmatra"
+    },
+    "IE": {
+        "CE": "County Clare",
+        "CO": "County Cork",
+        "D": "County Dublin",
+        "G": "County Galway",
+        "LM": "County Leitrim",
+        "MO": "County Mayo",
+        "RN": "County Roscommon",
+        "SO": "County Sligo"
+    },
+    "IN": {
+        "AN": "Andaman- og Níkóbareyjar",
+        "BR": "Bíhar",
+        "DD": "Daman og Diu",
+        "DL": "Delí",
+        "DN": "Dadra og Nagar Haveli",
+        "GA": "Góa",
+        "JK": "Jammú og Kasmír",
+        "PB": "Púnjab",
+        "WB": "Vestur-Bengal"
+    },
+    "IS": {
+        "1": "Höfuðborgarsvæðið",
+        "2": "Suðurnes",
+        "3": "Vesturland",
+        "4": "Vestfirðir",
+        "5": "Norðurland vestra",
+        "6": "Norðurland eystra",
+        "7": "Austurland",
+        "8": "Suðurland"
+    },
+    "IT": {
+        "21": "Fjallaland",
+        "23": "Ágústudalur",
+        "25": "Langbarðaland",
+        "32": "Trentínó-Suður-Týról",
+        "34": "Venetó",
+        "36": "Friúlí",
+        "42": "Lígúría",
+        "45": "Emilía-Rómanja",
+        "52": "Toskana",
+        "55": "Úmbría",
+        "57": "Marke",
+        "62": "Latíum",
+        "65": "Abrútsi",
+        "67": "Mólíse",
+        "72": "Kampanía",
+        "75": "Apúlía",
+        "77": "Basilíkata",
+        "78": "Kalabría",
+        "82": "Sikiley",
+        "88": "Sardinía",
+        "FI": "Flórens",
+        "TO": "Tórínó",
+        "VB": "Verbania"
+    },
+    "JP": {
+        "13": "Tókýó",
+        "22": "Shizuoka-umdæmi",
+        "28": "Hyogo-hérað"
+    },
+    "KI": {
+        "L": "Línueyjar"
+    },
+    "KP": {
+        "01": "Pjongjang"
+    },
+    "KR": {
+        "11": "Seúl"
+    },
+    "KZ": {
+        "AKM": "Aqmolafylki",
+        "AKT": "Aktöbefylki",
+        "ALM": "Almatyfylki",
+        "ATY": "Atýráfylki",
+        "KAR": "Karagandyfylki",
+        "KUS": "Kóstanæfylki",
+        "KZY": "Kusulórdafylki",
+        "MAN": "Mangystáfylki",
+        "PAV": "Pavlódarfylki",
+        "SEV": "Norður-Kasakstanfylki",
+        "VOS": "Austur-Kasakstanfylki",
+        "YUZ": "Suður-Kasakstanfylki",
+        "ZAP": "Vestur-Kasakstanfylki",
+        "ZHA": "Djambýlfylki"
+    },
+    "LV": {
+        "RIX": "Ríga"
+    },
+    "MA": {
+        "FES": "Fez",
+        "MMD": "Marrakess",
+        "MMN": "Marrakess²",
+        "SYB": "Marrakess³"
+    },
+    "MD": {
+        "CU": "Kisínev",
+        "GA": "Gagásía"
+    },
+    "MH": {
+        "MAJ": "Majúró"
+    },
+    "ML": {
+        "BKO": "Bamakó"
+    },
+    "MN": {
+        "1": "Úlan Bator"
+    },
+    "MU": {
+        "PU": "Port Lois"
+    },
+    "MX": {
+        "CMX": "Mexíkóborg"
+    },
+    "MY": {
+        "14": "Kúala Lúmpúr"
+    },
+    "MZ": {
+        "MPM": "Mapútó"
+    },
+    "NE": {
+        "8": "Níamey"
+    },
+    "NG": {
+        "ED": "Edo-fylki"
+    },
+    "NL": {
+        "FR": "Frísland",
+        "NB": "Norður-Brabant",
+        "NH": "Norður-Holland",
+        "ZE": "Sjáland",
+        "ZH": "Suður-Holland"
+    },
+    "NO": {
+        "10": "Vestur-Agðir",
+        "12": "Hörðaland",
+        "14": "Sogn og Firðafylki",
+        "15": "Mæri og Raumsdalur",
+        "16": "Suður-Þrændalög",
+        "17": "Norður-Þrændalög",
+        "18": "Norðurland",
+        "19": "Tromsfylki",
+        "20": "Finnmörk",
+        "21": "Svalbarði",
+        "01": "Austfold",
+        "02": "Akurshús",
+        "03": "Osló",
+        "04": "Heiðmörk",
+        "05": "Upplönd",
+        "08": "Þelamörk",
+        "09": "Austur-Agðir"
+    },
+    "PL": {
+        "DS": "Neðri-Slesía",
+        "KP": "Kujavíska-Pommern",
+        "MA": "Litla-Pólland",
+        "MZ": "Masóvía",
+        "PD": "Podlasía",
+        "PK": "Neðri-Karpatía",
+        "PM": "Pommern (hérað)",
+        "SK": "Święty Krzyż",
+        "SL": "Slesía",
+        "WN": "Ermland-Masúría",
+        "WP": "Stóra-Pólland",
+        "ZP": "Vestur-Pommern"
+    },
+    "PT": {
+        "20": "Asóreyjar",
+        "30": "Madeiraeyjar"
+    },
+    "PY": {
+        "ASU": "Asúnsjón"
+    },
+    "RO": {
+        "B": "Búkarest"
+    },
+    "RS": {
+        "00": "Belgrad"
+    },
+    "RU": {
+        "AD": "Adigea",
+        "AMU": "Amúrfylki",
+        "ARK": "Arkangelskfylki",
+        "AST": "Astrakanfylki",
+        "BA": "Basjkortostan",
+        "BEL": "Belgorodfylki",
+        "CE": "Téténía",
+        "KAM": "Kamtsjatka skagi",
+        "KDA": "Krasnodarfylki",
+        "LEN": "Leníngradfylki",
+        "MOW": "Moskva",
+        "SA": "Saka",
+        "SAK": "Sakalínfylki",
+        "SE": "Norður-Ossetía",
+        "SPE": "Sankti Pétursborg",
+        "UD": "Údmúrtía",
+        "VLG": "Vologdafylki",
+        "YEV": "Hebreska sjálfstjórnarfylkið"
+    },
+    "RW": {
+        "01": "Kígalí"
+    },
+    "SB": {
+        "CT": "Honíara"
+    },
+    "SE": {
+        "AB": "Stokkhólms lán",
+        "C": "Uppsala län",
+        "D": "Södermanlands län",
+        "E": "Östergötlands län",
+        "F": "Jönköpings län",
+        "H": "Kalmar län",
+        "K": "Blekinge län",
+        "N": "Hallands län",
+        "O": "Västra Götalands län",
+        "S": "Värmlands län",
+        "Z": "Jämtlands län"
+    },
+    "SH": {
+        "HL": "Sankti Helena"
+    },
+    "SI": {
+        "090": "Píran"
+    },
+    "SM": {
+        "07": "San Marínó"
+    },
+    "SY": {
+        "HI": "Homshérað",
+        "HM": "Hamahérað"
+    },
+    "TJ": {
+        "DU": "Dúsjanbe"
+    },
+    "TM": {
+        "S": "Asgabat"
+    },
+    "TV": {
+        "FUN": "Fúnafútí"
+    },
+    "TW": {
+        "TPE": "Taípei"
+    },
+    "UA": {
+        "18": "Zjytómýrfylki",
+        "23": "Zapórizjyskfylki",
+        "30": "Kíev",
+        "40": "Sevastópol"
+    },
+    "UM": {
+        "67": "Johnstoneyja",
+        "71": "Midwayeyja",
+        "76": "Navassaeyja",
+        "79": "Varsímaeyja",
+        "81": "Bakereyja",
+        "84": "Howlandeyja",
+        "86": "Jarviseyja",
+        "89": "Kingmanrif",
+        "95": "Palmyraeyja"
+    },
+    "US": {
+        "CA": "Kalifornía",
+        "DC": "Washington",
+        "FL": "Flórída",
+        "GA": "Georgía",
+        "HI": "Hawaii / Havaí / Hawaí",
+        "NC": "Norður-Karólína",
+        "ND": "Norður-Dakóta",
+        "NY": "New York-fylki",
+        "PA": "Pennsylvanía",
+        "SC": "Suður-Karólína",
+        "SD": "Suður-Dakóta",
+        "VA": "Virginía",
+        "WA": "Washington²",
+        "WV": "Vestur-Virginía"
+    },
+    "UZ": {
+        "TK": "Taskent"
+    },
+    "VN": {
+        "HN": "Hanoí",
+        "SG": "Ho Chi Minh-borg"
+    },
+    "YE": {
+        "SA": "Sana"
+    }
+}

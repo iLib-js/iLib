@@ -37,7 +37,7 @@ function round(number, precision) {
  * be created using the {@link MeasurementFactory} function, which creates the
  * correct subclass based on the given parameters.<p>
  *
- * @param {Object] options options controlling the construction of this instance
+ * @param {Object} options options controlling the construction of this instance
  * @private
  * @constructor
  */

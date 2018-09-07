@@ -26,7 +26,7 @@ Utils.js
 JSUtils.js
 */
 
-// !data address
+// !data address addressres regionnames
 
 var ilib = require("./ilib.js");
 var Utils = require("./Utils.js");
@@ -35,6 +35,7 @@ var JSUtils = require("./JSUtils.js");
 var Locale = require("./Locale.js");
 var Address = require("./Address.js");
 var IString = require("./IString.js");
+var ResBundle = require("./ResBundle.js");
 
 /**
  * @class
@@ -206,6 +207,211 @@ AddressFmt.prototype.format = function (address) {
 	ret = ret.replace("\n ", "\n");
 	ret = ret.replace(" \n", "\n");
 	return ret.replace(/\n+/g, '\n').trim();
+};
+
+
+/*
+ * Return true if this is an asian locale.
+ * @private
+ * @returns {boolean} true if this is an asian locale, or false otherwise
+ */
+function isAsianLocale(locale) {
+    return locale.language === "zh" || locale.language === "ja" || locale.language === "ko";
+}
+
+/*
+ * Invert the properties and values, filtering out all the values with numbers.
+ * @private
+ * @returns {Object} the inverted object
+ */
+function invertAndFilter(object) {
+    var ret = {};
+    for (var p in object) {
+        if (object.hasOwnProperty(p) && !object[p].match(/\d/)) {
+            ret[object[p]] = p;
+        }
+    }
+    
+    return ret;
+}
+
+/**
+ * Return information about the address format that can be used
+ * by UI builders to display a locale-sensitive set of input fields
+ * based on the current formatter's settings.<p>
+ *
+ * The object returned by this method is an array of address rows. Each
+ * row is itself an array which may have one to four address
+ * components in that row. Each address component is an object
+ * that contains a component property and a label to display
+ * with it. The label is written in the given locale, or the
+ * locale of this formatter if it was not given.<p>
+ *
+ * Optionally, if the address component is constrained to a
+ * particular pattern or to a fixed list of possible values, then
+ * the constraint rules are given in the "constraint" property.<p>
+ *
+ * If the constraint is that the address component must conform to a
+ * particular pattern, the regular expression that matches valid input
+ * is returned in "constraint". Often, it is only the postal code
+ * component that can be validated like this.<p>
+ *
+ * If the constraint is that the address component should be limited
+ * to a fixed list of values, then the constraint property will be
+ * set to an object that lists those values. The object maps codes for
+ * each valid value to labels to show in the UI for that value.
+ * The codes should not be shown to the user and are intended to
+ * represent the values in code. The labels are translated to the given
+ * locale or to the locale of this formatter if it was not given. For
+ * the most part, it is the region and country components that
+ * are constrained in this way. The list of values are sorted by the
+ * label where possible.<p>
+ *
+ * Here is what the result would look like for a US address:
+ * <pre>
+ * [
+ *   [{
+ *     "component": "streetAddress",
+ *     "label": "Street Address"
+ *   }],
+ *   [{
+ *     "component": "locality",
+ *     "label": "City"
+ *   },{
+ *     "component": "region",
+ *     "label": "State",
+ *     "constraint": {
+ *       "AL": "Alabama",
+ *       "AK": "Alaska",
+ *       "AZ": "Arizona",
+ *       ...
+ *       "WY": "Wyoming"
+ *     }
+ *   },{
+ *     "component": "postalCode",
+ *     "label": "Zip Code",
+ *     "constraint": "[0-9]{5}(-[0-9]{4})?"
+ *   }],
+ *   [{
+ *     "component": "country",
+ *     "label": "Country",
+ *     "constraint": {
+ *       "AF": "Afghanistan",
+ *       "AL": "Albania",
+ *       "DZ": "Algeria",
+ *       ...
+ *       "ZW": "Zimbabwe"
+ *     }
+ *   }]
+ * ]
+ * </pre>
+ * <p>
+ * @example <caption>Example of calling the getFormatInfo method</caption>
+ * 
+ * // the AddressFmt should be created with the locale of the address you 
+ * // would like the user to enter. For example, if you have a "country"
+ * // selector, you would create a new AddressFmt instance each time the
+ * // selector is changed.
+ * new AddressFmt({
+ *   locale: 'nl-NL', // for addresses in the Netherlands
+ *   onLoad: ilib.bind(this, function(fmt) {
+ *     fmt.getAddressFormatInfo({
+ *       // The following is the locale of the UI you would like to see the labels
+ *       // like "City" and "Postal Code" translated to. In this example, we
+ *       // are showing an input form for Dutch addresses, but the labels are
+ *       // written in US English.
+ *       locale: "en-US", 
+ *       onLoad: ilib.bind(this, function(rows) {
+ *         // iterate through the rows array and dynamically create the input 
+ *         // elements with the given labels
+ *       })
+ *     });
+ *   })
+ * });
+ * 
+ * @param {Locale|String=} locale the locale to translate the labels
+ * to. If not given, the locale of the formatter will be used.
+ * @param {boolean} sync true if this method should load the data
+ * synchronously, false if async
+ * @param {Function} callback a callback to call when the data
+ * is ready
+ * @returns {Array.<Object>} An array of rows of address components
+ */
+AddressFmt.prototype.getFormatInfo = function(locale, sync, callback) {
+    var info;
+    var loc = new Locale(this.locale);
+    if (locale) {
+        if (typeof(locale) === "string") {
+            locale = new Locale(locale);
+        }
+        loc.language = locale.getLanguage();
+        loc.spec = undefined;
+    }
+
+    Utils.loadData({
+        name: "regionnames.json",
+        object: "AddressFmt",
+        locale: loc,
+        sync: this.sync,
+        loadParams: this.loadParams,
+        callback: ilib.bind(this, function(regions) {
+            this.regions = regions;
+
+            new ResBundle({
+                locale: loc,
+                name: "addressres",
+                sync: this.sync,
+                loadParams: this.loadParams, 
+                onLoad: ilib.bind(this, function (rb) {
+                    var type, format, fields = this.info.fields;
+                    if (this.info.multiformat) {
+                        type = isAsianLocale(this.locale) ? "asian" : "latin";
+                        fields = this.info.fields[type];
+                    }
+
+                    if (typeof(this.style) === 'object') {
+                        format = this.style[type || "latin"];
+                    } else {
+                        format = this.style;
+                    }
+                    var localeAddress = new Address(" ", {locale: loc});
+
+                    var rows = format.split(/\n/g);
+                    info = rows.map(ilib.bind(this, function(row) {
+                        return row.split("}").filter(function(component) {
+                            return component.length > 0;
+                        }).map(ilib.bind(this, function(component) {
+                            var name = component.replace(/.*{/, "");
+                            var obj = {
+                                component: name,
+                                label: rb.getStringJS(this.info.fieldNames[name])
+                            };
+                            var field = fields.filter(function(f) {
+                                return f.name === name;
+                            });
+                            if (field && field[0] && field[0].pattern) {
+                                if (typeof(field[0].pattern) === "string") {
+                                    obj.constraint = field[0].pattern;
+                                }
+                            }
+                            if (name === "country") {
+                                obj.constraint = invertAndFilter(localeAddress.ctrynames);
+                            } else if (name === "region" && this.regions[loc.getRegion()]) {
+                                obj.constraint = this.regions[loc.getRegion()];
+                            }
+                            return obj;
+                        }));
+                    }));
+
+                    if (callback && typeof(callback) === "function") {
+                        callback(info);
+                    }
+                })
+            });
+        })
+    });
+
+    return info;
 };
 
 module.exports = AddressFmt;
