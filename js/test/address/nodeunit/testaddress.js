@@ -27,6 +27,12 @@ if (typeof(ilib) === "undefined") {
     var ilib = require("../../../lib/ilib.js");
 }
 
+function searchRegions(array, regionCode) {
+    return array.find(function(region) {
+        return region.code === regionCode;
+    });
+}
+
 module.exports.testaddress = {
     setUp: function(callback) {
         ilib.clearCache();
@@ -451,7 +457,7 @@ module.exports.testaddress = {
     },
 
     testAddressFmtGetFormatInfoUSRightConstraints: function(test) {
-        test.expect(13);
+        test.expect(16);
         var formatter = new AddressFmt({locale: 'en-US'});
 
         var info = formatter.getFormatInfo();
@@ -462,10 +468,16 @@ module.exports.testaddress = {
         test.equal(info[1][2].constraint, "[0-9]{5}(-[0-9]{4})?");
 
         test.equal(info[1][1].component, "region");
-        test.ok(info[1][2].constraint);
-        test.equal(info[1][1].constraint["AZ"], "Arizona");
-        test.equal(info[1][1].constraint["MS"], "Mississippi");
-        test.equal(info[1][1].constraint["NY"], "New York");
+        test.ok(info[1][1].constraint);
+        var r = searchRegions(info[1][1].constraint, "AZ");
+        test.equal(r.code, "AZ");
+        test.equal(r.name, "Arizona");
+        r = searchRegions(info[1][1].constraint, "MS");
+        test.equal(r.code, "MS");
+        test.equal(r.name, "Mississippi");
+        r = searchRegions(info[1][1].constraint, "NY");
+        test.equal(r.code, "NY");
+        test.equal(r.name, "New York");
 
         test.equal(info[2][0].component, "country");
         test.ok(info[2][0].constraint);
@@ -616,7 +628,7 @@ module.exports.testaddress = {
     },
 
     testAddressFmtGetFormatInfoCARightComponents: function(test) {
-        test.expect(20);
+        test.expect(23);
         var formatter = new AddressFmt({locale: 'en-CA'});
 
         var info = formatter.getFormatInfo();
@@ -634,9 +646,15 @@ module.exports.testaddress = {
         test.equal(info[1][1].component, "region");
         test.equal(info[1][1].label, "Province or Territory");
         test.ok(info[1][1].constraint);
-        test.equal(info[1][1].constraint["AB"], "Alberta");
-        test.equal(info[1][1].constraint["BC"], "British Columbia");
-        test.equal(info[1][1].constraint["QC"], "Quebec");
+        var r = searchRegions(info[1][1].constraint, "NT");
+        test.equal(r.code, "NT");
+        test.equal(r.name, "Northwest Territories");
+        r = searchRegions(info[1][1].constraint, "BC");
+        test.equal(r.code, "BC");
+        test.equal(r.name, "British Columbia");
+        r = searchRegions(info[1][1].constraint, "QC");
+        test.equal(r.code, "QC");
+        test.equal(r.name, "Quebec");
         test.equal(info[1][2].component, "postalCode");
         test.equal(info[1][2].label, "Postal Code");
         test.equal(info[1][2].constraint, "[A-Za-z][0-9][A-Za-z]\\s+[0-9][A-Za-z][0-9]");
@@ -646,7 +664,7 @@ module.exports.testaddress = {
     },
 
     testAddressFmtGetFormatInfoCAInGerman: function(test) {
-        test.expect(20);
+        test.expect(23);
         var formatter = new AddressFmt({locale: 'en-CA'});
 
         var info = formatter.getFormatInfo("de");
@@ -665,9 +683,15 @@ module.exports.testaddress = {
         test.equal(info[1][1].label, "Provinz oder Gebiet");
         test.equal(info[1][2].component, "postalCode");
         test.ok(info[1][1].constraint);
-        test.equal(info[1][1].constraint["NT"], "Nordwest-Territorien");
-        test.equal(info[1][1].constraint["BC"], "British Columbia");
-        test.equal(info[1][1].constraint["QC"], "Québec");
+        var r = searchRegions(info[1][1].constraint, "NT");
+        test.equal(r.code, "NT");
+        test.equal(r.name, "Nordwest-Territorien");
+        r = searchRegions(info[1][1].constraint, "BC");
+        test.equal(r.code, "BC");
+        test.equal(r.name, "British Columbia");
+        r = searchRegions(info[1][1].constraint, "QC");
+        test.equal(r.code, "QC");
+        test.equal(r.name, "Québec");
         test.equal(info[1][2].label, "Postleitzahl");
         test.equal(info[1][2].constraint, "[A-Za-z][0-9][A-Za-z]\\s+[0-9][A-Za-z][0-9]");
         test.equal(info[2][0].component, "country");
@@ -698,5 +722,160 @@ module.exports.testaddress = {
         test.equal(info[3][0].component, "country");
         test.equal(info[3][0].label, "Country");
         test.done();
-    }
+    },
+    
+    testAddressFmtGetFormatInfoUSRightSortOrder: function(test) {
+        test.expect(60);
+        var formatter = new AddressFmt({locale: 'en-US'});
+
+        var info = formatter.getFormatInfo();
+
+        test.ok(info);
+        var expectedOrder = [
+            "Alabama",
+            "Alaska",
+            "American Samoa",
+            "Arizona",
+            "Arkansas",
+            "California",
+            "Colorado",
+            "Connecticut",
+            "Delaware",
+            "Florida",
+            "Georgia",
+            "Guam",
+            "Hawaii",
+            "Idaho",
+            "Illinois",
+            "Indiana",
+            "Iowa",
+            "Kansas",
+            "Kentucky",
+            "Louisiana",
+            "Maine",
+            "Maryland",
+            "Massachusetts",
+            "Michigan",
+            "Minnesota",
+            "Mississippi",
+            "Missouri",
+            "Montana",
+            "Nebraska",
+            "Nevada",
+            "New Hampshire",
+            "New Jersey",
+            "New Mexico",
+            "New York",
+            "North Carolina",
+            "North Dakota",
+            "Northern Mariana Islands",
+            "Ohio",
+            "Oklahoma",
+            "Oregon",
+            "Pennsylvania",
+            "Puerto Rico",
+            "Rhode Island",
+            "South Carolina",
+            "South Dakota",
+            "Tennessee",
+            "Texas",
+            "U.S. Outlying Islands",
+            "U.S. Virgin Islands",
+            "Utah",
+            "Vermont",
+            "Virginia",
+            "Washington",
+            "Washington DC",
+            "West Virginia",
+            "Wisconsin",
+            "Wyoming"
+        ];
+
+        test.equal(info[1][1].component, "region");
+        test.ok(info[1][1].constraint);
+
+        for (var i = 0; i < expectedOrder.length; i++) {
+            test.equal(info[1][1].constraint[i].name, expectedOrder[i]);
+        }
+
+        test.done();
+    },
+
+    testAddressFmtGetFormatInfoUSRightSortOrderInSpanish: function(test) {
+        test.expect(60);
+        var formatter = new AddressFmt({locale: 'en-US'});
+
+        var info = formatter.getFormatInfo("es");
+
+        test.ok(info);
+        var expectedOrder = [
+            "Alabama",
+            "Alaska",
+            "American Samoa",
+            "Arizona",
+            "Arkansas",
+            "California",
+            "Carolina del Norte",
+            "Carolina del Sur",
+            "Colorado",
+            "Connecticut",
+            "Dakota del Norte",
+            "Dakota del Sur",
+            "Delaware",
+            "Florida",
+            "Georgia",
+            "Guam",
+            "Hawái",
+            "Idaho",
+            "Illinois",
+            "Indiana",
+            "Iowa",
+            "Kansas",
+            "Kentucky",
+            "Luisiana",
+            "Maine",
+            "Maryland",
+            "Massachusetts",
+            "Míchigan",
+            "Minnesota",
+            "Misisipi",
+            "Misuri",
+            "Montana",
+            "Nebraska",
+            "Nevada",
+            "Northern Mariana Islands",
+            "Nueva Jersey",
+            "Nueva York",
+            "Nuevo Hampshire",
+            "Nuevo México",
+            "Ohio",
+            "Oklahoma",
+            "Oregón",
+            "Pensilvania",
+            "Puerto Rico",
+            "Rhode Island",
+            "Tennessee",
+            "Texas",
+            "U.S. Outlying Islands",
+            "U.S. Virgin Islands",
+            "Utah",
+            "Vermont",
+            "Virginia",
+            "Virginia Occidental",
+            "Washington",
+            "Washington D. C.",
+            "Wisconsin",
+            "Wyoming"
+        ];
+
+        test.equal(info[1][1].component, "region");
+        test.ok(info[1][1].constraint);
+
+        for (var i = 0; i < expectedOrder.length; i++) {
+            test.equal(info[1][1].constraint[i].name, expectedOrder[i]);
+        }
+
+        test.done();
+    },
+
 };

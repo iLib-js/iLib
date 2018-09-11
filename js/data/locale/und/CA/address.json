@@ -81,22 +81,7 @@
 				"yukon",
 				"yuk",
 				"yt"
-			],
-			"list": {
-                "NL": "Newfoundland and Labrador",
-                "NS": "Nova Scotia",
-                "NB": "New Brunswick",
-                "PE": "Prince Edward Island",
-                "QC": "Quebec",
-                "ON": "Ontario",
-                "MB": "Manitoba",
-                "SK": "Saskatchewan",
-                "AB": "Alberta",
-                "BC": "British Columbia",
-                "NU": "Nunavut",
-                "NT": "Northwest Territories",
-                "YT": "yukon territory"
-			}
+			]
 		},
 		{
 			"name": "locality",

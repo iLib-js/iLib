@@ -251,21 +251,22 @@ function invertAndFilter(object) {
  * particular pattern or to a fixed list of possible values, then
  * the constraint rules are given in the "constraint" property.<p>
  *
- * If the constraint is that the address component must conform to a
- * particular pattern, the regular expression that matches valid input
- * is returned in "constraint". Often, it is only the postal code
- * component that can be validated like this.<p>
+ * If an address component must conform to a particular pattern, 
+ * the regular expression that matches that pattern
+ * is returned in "constraint". Mostly, it is only the postal code
+ * component that can be validated in this way.<p>
  *
- * If the constraint is that the address component should be limited
+ * If an address component should be limited
  * to a fixed list of values, then the constraint property will be
- * set to an object that lists those values. The object maps codes for
- * each valid value to labels to show in the UI for that value.
- * The codes should not be shown to the user and are intended to
- * represent the values in code. The labels are translated to the given
+ * set to an array that lists those values. The constraint contains
+ * an array of objects in the correct sorted order for the locale
+ * where each object contains an code property containing the ISO code, 
+ * and a name field to show in UI.
+ * The ISO codes should not be shown to the user and are intended to
+ * represent the values in code. The names are translated to the given
  * locale or to the locale of this formatter if it was not given. For
  * the most part, it is the region and country components that
- * are constrained in this way. The list of values are sorted by the
- * label where possible.<p>
+ * are constrained in this way.<p>
  *
  * Here is what the result would look like for a US address:
  * <pre>
@@ -280,12 +281,17 @@ function invertAndFilter(object) {
  *   },{
  *     "component": "region",
  *     "label": "State",
- *     "constraint": {
- *       "AL": "Alabama",
- *       "AK": "Alaska",
- *       "AZ": "Arizona",
+ *     "constraint": [{
+ *       "code": "AL",
+ *       "name": "Alabama"
+ *     },{
+ *       "code": "AK",
+ *       "name": "Alaska"
+ *     },{
  *       ...
- *       "WY": "Wyoming"
+ *     },{
+ *       "code": "WY",
+ *       "name": "Wyoming"
  *     }
  *   },{
  *     "component": "postalCode",
@@ -353,7 +359,7 @@ AddressFmt.prototype.getFormatInfo = function(locale, sync, callback) {
         object: "AddressFmt",
         locale: loc,
         sync: this.sync,
-        loadParams: this.loadParams,
+        loadParams: JSUtils.merge(this.loadParams, {returnOne: true}, true),
         callback: ilib.bind(this, function(regions) {
             this.regions = regions;
 
@@ -374,38 +380,43 @@ AddressFmt.prototype.getFormatInfo = function(locale, sync, callback) {
                     } else {
                         format = this.style;
                     }
-                    var localeAddress = new Address(" ", {locale: loc});
-
-                    var rows = format.split(/\n/g);
-                    info = rows.map(ilib.bind(this, function(row) {
-                        return row.split("}").filter(function(component) {
-                            return component.length > 0;
-                        }).map(ilib.bind(this, function(component) {
-                            var name = component.replace(/.*{/, "");
-                            var obj = {
-                                component: name,
-                                label: rb.getStringJS(this.info.fieldNames[name])
-                            };
-                            var field = fields.filter(function(f) {
-                                return f.name === name;
-                            });
-                            if (field && field[0] && field[0].pattern) {
-                                if (typeof(field[0].pattern) === "string") {
-                                    obj.constraint = field[0].pattern;
-                                }
+                    new Address(" ", {
+                        locale: loc,
+                        sync: this.sync,
+                        loadParams: this.loadParams,
+                        onLoad: ilib.bind(this, function(localeAddress) {
+                            var rows = format.split(/\n/g);
+                            info = rows.map(ilib.bind(this, function(row) {
+                                return row.split("}").filter(function(component) {
+                                    return component.length > 0;
+                                }).map(ilib.bind(this, function(component) {
+                                    var name = component.replace(/.*{/, "");
+                                    var obj = {
+                                        component: name,
+                                        label: rb.getStringJS(this.info.fieldNames[name])
+                                    };
+                                    var field = fields.filter(function(f) {
+                                        return f.name === name;
+                                    });
+                                    if (field && field[0] && field[0].pattern) {
+                                        if (typeof(field[0].pattern) === "string") {
+                                            obj.constraint = field[0].pattern;
+                                        }
+                                    }
+                                    if (name === "country") {
+                                        obj.constraint = invertAndFilter(localeAddress.ctrynames);
+                                    } else if (name === "region" && this.regions[loc.getRegion()]) {
+                                        obj.constraint = this.regions[loc.getRegion()];
+                                    }
+                                    return obj;
+                                }));
+                            }));
+                            
+                            if (callback && typeof(callback) === "function") {
+                                callback(info);
                             }
-                            if (name === "country") {
-                                obj.constraint = invertAndFilter(localeAddress.ctrynames);
-                            } else if (name === "region" && this.regions[loc.getRegion()]) {
-                                obj.constraint = this.regions[loc.getRegion()];
-                            }
-                            return obj;
-                        }));
-                    }));
-
-                    if (callback && typeof(callback) === "function") {
-                        callback(info);
-                    }
+                        })
+                    });
                 })
             });
         })
