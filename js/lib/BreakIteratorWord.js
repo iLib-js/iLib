@@ -1,5 +1,5 @@
 /*
- * BreakIterator.js - A class that locates boundaries in text, and acts as an iterator
+ * BreakIteratorWord.js - A class that locates boundaries in text, and acts as an iterator
  * over chunks of text between those boundaries.
  *
  * Copyright © 2018, JEDLSoft
@@ -24,20 +24,19 @@
 ilib.js
 Utils.js
 Locale.js
-LocaleInfo.js
-NormString.js
+GlyphString.js
 IString.js
-CType.js
+SearchUtils.js
+BreakIteratorFactory.js
 */
 
 var ilib = require("./ilib.js");
 var Utils = require("./Utils.js");
 var Locale = require("./Locale.js");
-var LocaleInfo = require("./LocaleInfo.js");
 var GlyphString = require("./GlyphString.js");
 var IString = require("./IString.js");
-var CType = require("./CType.js");
 var SearchUtils = require("./SearchUtils.js");
+var BreakIteratorFactory = require("./BreakIteratorFactory.js");
 
 /**
  * @class A class that locates boundaries in text, and acts as an iterator
@@ -47,17 +46,10 @@ var SearchUtils = require("./SearchUtils.js");
  * properties:
  *
  * <ul>
- * <li><i>type</i> - specify the type of the iterator desired. The
- * list of valid values is "character", "glyph", "word", "sentence",
- * "line", and "paragraph". Default is "character".
- *
  * <li><i>locale</i> - the locale of this iterator, which controls the
  * grammatical rules behind things like what is a word and what is
  * not, and which punctuation ends a sentence and what are the exceptions
  * to those rules. Default is the current locale.
- *
- * <li><i>maxLength</i> - set the maximum number of characters in a line.
- * This parameter is ignored if the type is not given as "line". Default is 80.
  *
  * <li><i>onLoad</i> - a callback function to call when the iterator is fully
  * loaded. When the onLoad option is given, the break iterator will attempt to
@@ -102,18 +94,12 @@ var SearchUtils = require("./SearchUtils.js");
  * of the text, the previous method returns undefined.
  * </ol>
  *
- * When the type is given as "line", the text boundaries correspond to the
- * position in the text where a line break should be inserted such that the
- * resulting lines would be less than the max number of characters per line.
- * If a word occurs which is longer than the max length, it will be put on a
- * line of its own with the length of the line exceeding the max length.
- *
  * @constructor
  * @param {String} string the string to iterate over
  * @param {Object=} options options controlling the construction of this instance, or
  * undefined to use the default options
  */
-var BreakIterator = function (string, options) {
+var BreakIteratorWord = function (string, options) {
     var locale,
         type,
         instance;
@@ -128,14 +114,8 @@ var BreakIterator = function (string, options) {
             locale = (typeof(options.locale) === 'string') ? new Locale(options.locale) : options.locale;
         }
 
-        type = options.type;
-
-        if (typeof(options.sync) === 'boolean') {
+        if (typeof(options.sync) === 'boolean') {   
             this.sync = options.sync;
-        }
-
-        if (typeof(options.maxLength) === "number" && options.maxLength > 0) {
-            this.maxLength = options.maxLength;
         }
 
         this.loadParams = options.loadParams;
@@ -146,7 +126,7 @@ var BreakIterator = function (string, options) {
     }
 
     Utils.loadData({
-        object: "BreakIterator",
+        object: "BreakIteratorWord",
         locale: this.locale,
         name: "wordbreak.json",
         sync: this.sync,
@@ -191,7 +171,7 @@ var compare = function(range, target) {
  * @returns {string} the name of the token corresponding
  * to the character
  */
-BreakIterator.prototype._tokenize = function(codepoint) {
+BreakIteratorWord.prototype._tokenize = function(codepoint) {
     var tokenEntry = SearchUtils.bsearch(codepoint, this.info.properties, compare);
     return tokenEntry > -1 &&
         tokenEntry < this.info.properties.length && 
@@ -207,7 +187,7 @@ BreakIterator.prototype._tokenize = function(codepoint) {
  *
  * @param {Function} cb a function to call when the parsing is done
  */
-BreakIterator.prototype._parse = function(cb) {
+BreakIteratorWord.prototype._parse = function(cb) {
     var gs = new GlyphString(this.string, {
         locale: this.locale,
         sync: this.sync,
@@ -247,9 +227,6 @@ BreakIterator.prototype._parse = function(cb) {
                 index++;
             }
             
-            // no more to process, so put another break to indicate "end of text"
-            this.breaks.push(this.string.length);
-
             cb();
         })
     });
@@ -263,8 +240,8 @@ BreakIterator.prototype._parse = function(cb) {
  * @returns {boolean} true if there is another chunk to
  * return, or false otherwise
  */
-BreakIterator.prototype.hasNext = function() {
-	return this.breakNumber < this.breaks.length-1;
+BreakIteratorWord.prototype.hasNext = function() {
+	return this.breakNumber < this.breaks.length;
 };
 
 /**
@@ -277,29 +254,14 @@ BreakIterator.prototype.hasNext = function() {
  * @returns {String|undefined} the chunk of text between
  * the current boundary and the next boundary
  */
-BreakIterator.prototype.next = function() {
+BreakIteratorWord.prototype.next = function() {
     var ret;
 
-    if (this.breakNumber < this.breaks.length-1) {
+    if (this.breakNumber < this.breaks.length) {
         ret = this.string.substring(this.breaks[this.breakNumber], this.breaks[++this.breakNumber]);
     }
 
     return ret;
-};
-
-/**
- * Return the type of the current chunk of text between
- * the current boundary and the previous boundary. The return
- * value is either the name of type of the iterator (ie. "character"
- * or "word", etc.) or "other" for chunks that do not fit into
- * the type. If the  iterator is at the first
- * position in the text then there are no more chunks previous to
- * that, then this method returns "undefined".
- *
- * @returns {String|undefined} the type of the previous chunk
- */
-BreakIterator.prototype.type = function() {
-    return this.type;
 };
 
 /**
@@ -314,7 +276,7 @@ BreakIterator.prototype.type = function() {
  * in the string, or undefined if there are no chunks
  * of text in the string
  */
-BreakIterator.prototype.first = function() {
+BreakIteratorWord.prototype.first = function() {
     this.breakNumber = 0;
     return this.string.substring(0, this.breaks[1]);
 };
@@ -331,7 +293,7 @@ BreakIterator.prototype.first = function() {
  * in the string, or undefined if there are no chunks
  * of text in the string
  */
-BreakIterator.prototype.last = function() {
+BreakIteratorWord.prototype.last = function() {
     this.breakNumber = this.breaks.length;
     return this.string.substring(this.breaks[this.breakNumber-2], this.breaks[this.breakNumber-1]);
 };
@@ -346,7 +308,7 @@ BreakIterator.prototype.last = function() {
  * @returns {String|undefined} the chunk of text between
  * the current boundary and the previous boundary
  */
-BreakIterator.prototype.previous = function() {
+BreakIteratorWord.prototype.previous = function() {
     var ret;
     if (this.breakNumber > 0) {
         ret = this.string.substring(this.breaks[this.breakNumber-1], this.breaks[this.breakNumber--]);
@@ -354,4 +316,6 @@ BreakIterator.prototype.previous = function() {
     return ret;
 };
 
-module.exports = BreakIterator;
+BreakIteratorFactory._constructors.word = BreakIteratorWord;
+
+module.exports = BreakIteratorWord;

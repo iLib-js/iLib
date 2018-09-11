@@ -21,8 +21,8 @@ if (typeof(ilib) === "undefined") {
     var ilib = require("../../../lib/ilib.js");
 }
 
-if (typeof(BreakIterator) === "undefined") {
-    var BreakIterator = require("../.././../lib/BreakIterator.js");
+if (typeof(BreakIteratorFactory) === "undefined") {
+    var BreakIteratorFactory = require("../.././../lib/BreakIteratorFactory.js");
 }
 
 if (typeof(wordBreakData) === "undefined") {
@@ -32,7 +32,7 @@ if (typeof(wordBreakData) === "undefined") {
 module.exports.testbreakit_en = {
     testBreakIteratorENConstructorDefault: function(test) {
         test.expect(1);
-        var bi = new BreakIterator("abc", {
+        var bi = BreakIteratorFactory("abc", {
             locale: "en-US"
         });
         test.ok(bi);
@@ -40,9 +40,9 @@ module.exports.testbreakit_en = {
     },
 
     testBreakIteratorENCharacterDefault: function(test) {
-        test.expect(8);
+        test.expect(10);
         // take surrogate characters together
-        var bi = new BreakIterator("a\uD800\uDF02b\uD800\uDC00", {
+        var bi = BreakIteratorFactory("a\uD800\uDF02b\uD800\uDC00", {
             type: "character",
             locale: "en-US"
         });
@@ -61,8 +61,8 @@ module.exports.testbreakit_en = {
     },
 
     testBreakIteratorENGlyph: function(test) {
-        test.expect(8);
-        var bi = new BreakIterator("aÄa", { // the A umlaut is a decomposed char
+        test.expect(9);
+        var bi = BreakIteratorFactory("aÄa", { // the A umlaut is a decomposed char
             type: "glyph",
             locale: "en-US"
         });
@@ -81,7 +81,7 @@ module.exports.testbreakit_en = {
 
     testBreakIteratorENWordSimple: function(test) {
         test.expect(19);
-        var bi = new BreakIterator("This is a sentence.", {
+        var bi = BreakIteratorFactory("This is a sentence.", {
             type: "word",
             locale: "en-US"
         });
@@ -109,8 +109,8 @@ module.exports.testbreakit_en = {
     },
 
     testBreakIteratorENWordWithPunctuation: function(test) {
-        test.expect(31);
-        var bi = new BreakIterator('He said, "Gidyup thar, horse!"', {
+        test.expect(32);
+        var bi = BreakIteratorFactory('He said, "Gidyup thar, horse!"', {
             type: "word",
             locale: "en-US"
         });
@@ -152,7 +152,7 @@ module.exports.testbreakit_en = {
 
     testBreakIteratorENWordWithHyphensAndDashes: function(test) {
         test.expect(31);
-        var bi = new BreakIterator('Wilkins-Smith re-iterated over-the-line regular‑hyphen', {
+        var bi = BreakIteratorFactory('Wilkins-Smith re-iterated over-the-line regular‑hyphen', {
             type: "word",
             locale: "en-US"
         });
@@ -191,7 +191,7 @@ module.exports.testbreakit_en = {
 
     testBreakIteratorENWordWithNonBreakingHyphens: function(test) {
         test.expect(31);
-        var bi = new BreakIterator('non‑breaking‑hyphen word', {
+        var bi = BreakIteratorFactory('non‑breaking‑hyphen word', {
             type: "word",
             locale: "en-US"
         });
@@ -209,8 +209,8 @@ module.exports.testbreakit_en = {
     },
 
     testBreakIteratorENWordWithEnDashes: function(test) {
-        test.expect(31);
-        var bi = new BreakIterator('no break on n‑dash', {
+        test.expect(17);
+        var bi = BreakIteratorFactory('no break on n‑dash', {
             type: "word",
             locale: "en-US"
         });
@@ -236,8 +236,8 @@ module.exports.testbreakit_en = {
     },
 
     testBreakIteratorENWordWithEmDashes: function(test) {
-        test.expect(31);
-        var bi = new BreakIterator('He said—and I quote—everything.', {
+        test.expect(26);
+        var bi = BreakIteratorFactory('He said—and I quote—everything.', {
             type: "word",
             locale: "en-US"
         });
@@ -273,7 +273,7 @@ module.exports.testbreakit_en = {
 
     testBreakIteratorENWordWithApostrophes: function(test) {
         test.expect(31);
-        var bi = new BreakIterator("He can’t forget Kaua’i in Hawai’i.", {
+        var bi = BreakIteratorFactory("He can’t forget Kaua’i in Hawai’i.", {
             type: "word",
             locale: "en-US"
         });
@@ -309,8 +309,8 @@ module.exports.testbreakit_en = {
     },
 
     testBreakIteratorENWordWithEmbeddedSingleQuotes: function(test) {
-        test.expect(31);
-        var bi = new BreakIterator("He can't forget Kaua'i in Hawai'i.", {
+        test.expect(27);
+        var bi = BreakIteratorFactory("He can't forget Kaua'i in Hawai'i.", {
             type: "word",
             locale: "en-US"
         });
@@ -347,7 +347,7 @@ module.exports.testbreakit_en = {
 
     testBreakIteratorENWordWholeAbbreviations: function(test) {
         test.expect(31);
-        var bi = new BreakIterator("Dr. McMurdach, Ph.D.", {
+        var bi = BreakIteratorFactory("Dr. McMurdach, Ph.D.", {
             type: "word",
             locale: "en-US"
         });
@@ -371,7 +371,7 @@ module.exports.testbreakit_en = {
 
     testBreakIteratorENSentence: function(test) {
         test.expect(13);
-        var bi = new BreakIterator("This is a sentence. This is another sentence! This is a third?", {
+        var bi = BreakIteratorFactory("This is a sentence. This is another sentence! This is a third?", {
             type: "sentence",
             locale: "en-US"
         });
@@ -393,8 +393,8 @@ module.exports.testbreakit_en = {
     },
 
     testBreakIteratorENSentenceIgnoreSuppressions: function(test) {
-        test.expect(13);
-        var bi = new BreakIterator("Dr. McMurdach, Ph.D. has worked in the U.S.A. since Aug. 21, 2016. He works with Capt. Jack on toxocology research.", {
+        test.expect(9);
+        var bi = BreakIteratorFactory("Dr. McMurdach, Ph.D. has worked in the U.S.A. since Aug. 21, 2016. He works with Capt. Jack on toxocology research.", {
             type: "sentence",
             locale: "en-US"
         });
@@ -412,8 +412,8 @@ module.exports.testbreakit_en = {
     },
 
     testBreakIteratorENSentenceDealWithQuotesProperly: function(test) {
-        test.expect(13);
-        var bi = new BreakIterator('He said, "Man, that comedian was a riot! They should put him on every night!"', {
+        test.expect(9);
+        var bi = BreakIteratorFactory('He said, "Man, that comedian was a riot! They should put him on every night!"', {
             type: "sentence",
             locale: "en-US"
         });
@@ -432,7 +432,7 @@ module.exports.testbreakit_en = {
 
     testBreakIteratorENSentence: function(test) {
         test.expect(13);
-        var bi = new BreakIterator('He said, "Man, that comedian was a riot! They should put him on every night!"', {
+        var bi = BreakIteratorFactory('He said, "Man, that comedian was a riot! They should put him on every night!"', {
             type: "line",
             maxLength: 30,
             locale: "en-US"
@@ -451,8 +451,8 @@ module.exports.testbreakit_en = {
     },
 
     testBreakIteratorENSentenceSoftHyphen: function(test) {
-        test.expect(13);
-        var bi = new BreakIterator('He said, "Man, that co­me­di­an was a riot! They should put him on ev­er­y night!"', {
+        test.expect(11);
+        var bi = BreakIteratorFactory('He said, "Man, that co­me­di­an was a riot! They should put him on ev­er­y night!"', {
             type: "line",
             maxLength: 24,
             locale: "en-US"
@@ -477,7 +477,7 @@ module.exports.testbreakit_en = {
         // variable number of tests in the Unicode data.
 
         for (var text in wordBreakData) {
-            var bi = new BreakIterator(text, {
+            var bi = BreakIteratorFactory(text, {
                 type: "word",
                 locale: "en-US"
             });

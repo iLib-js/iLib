@@ -21,22 +21,24 @@ if (typeof(ilib) === "undefined") {
     var ilib = require("../../../lib/ilib.js");
 }
 
-if (typeof(BreakIterator) === "undefined") {
-    var BreakIterator = require("../.././../lib/BreakIterator.js");
+if (typeof(BreakIteratorFactory) === "undefined") {
+    var BreakIteratorFactory = require("../.././../lib/BreakIteratorFactory.js");
+    var BreakIteratorCharacter = require("../.././../lib/BreakIteratorCharacter.js");
+    var BreakIteratorGlyph = require("../.././../lib/BreakIteratorGlyph.js");
+    var BreakIteratorWord = require("../.././../lib/BreakIteratorWord.js");
 }
 
 module.exports.testbreakit = {
-    /*
     testBreakIteratorConstructorDefault: function(test) {
         test.expect(1);
-        var bi = new BreakIterator("abc");
+        var bi = BreakIteratorFactory("abc");
         test.ok(bi);
         test.done();
     },
 
     testBreakIteratorCharacterDefault: function(test) {
-        test.expect(8);
-        var bi = new BreakIterator("abc");
+        test.expect(9);
+        var bi = BreakIteratorFactory("abc");
         test.ok(bi);
 
         test.ok(bi.hasNext());
@@ -50,9 +52,47 @@ module.exports.testbreakit = {
         test.done();
     },
 
+    testBreakIteratorCharacterExplicit: function(test) {
+        test.expect(9);
+        var bi = BreakIteratorFactory("abc", {
+            type: "character"
+        });
+        test.ok(bi);
+
+        test.ok(bi.hasNext());
+        test.equal(bi.next(), "a");
+        test.ok(bi.hasNext());
+        test.equal(bi.next(), "b");
+        test.ok(bi.hasNext());
+        test.equal(bi.next(), "c");
+        test.ok(!bi.hasNext());
+        test.equal(bi.next(), undefined);
+        test.done();
+    },
+
+    testBreakIteratorCharacterIncludeSurrogates: function(test) {
+        test.expect(11);
+        var bi = BreakIteratorFactory("a\uD800\uDF02b\uD800\uDC00", {
+            type: "character"
+        });
+        test.ok(bi);
+    
+        test.ok(bi.hasNext());
+        test.equal(bi.next(), "a");
+        test.ok(bi.hasNext());
+        test.equal(bi.next(), "\uD800\uDF02");
+        test.ok(bi.hasNext());
+        test.equal(bi.next(), "b");
+        test.ok(bi.hasNext());
+        test.equal(bi.next(), "\uD800\uDC00");
+        test.ok(!bi.hasNext());
+        test.equal(bi.next(), undefined);
+        test.done();
+    },
+
     testBreakIteratorGlyph: function(test) {
-        test.expect(8);
-        var bi = new BreakIterator("aÄa", { // the A umlaut is a decomposed char
+        test.expect(9);
+        var bi = BreakIteratorFactory("aÄa", { // the A umlaut is a decomposed char
             type: "glyph"
         });
         test.ok(bi);
@@ -70,7 +110,7 @@ module.exports.testbreakit = {
 
     testBreakIteratorGlyphEmpty: function(test) {
         test.expect(3);
-        var bi = new BreakIterator("", { // the A umlaut is a decomposed char
+        var bi = BreakIteratorFactory("", { // the A umlaut is a decomposed char
             type: "glyph"
         });
         test.ok(bi);
@@ -82,7 +122,7 @@ module.exports.testbreakit = {
 
     testBreakIteratorGlyphTokenTypes: function(test) {
         test.expect(8);
-        var bi = new BreakIterator("aÄa b", { // the A umlaut is a decomposed char
+        var bi = BreakIteratorFactory("aÄa b", { // the A umlaut is a decomposed char
             type: "glyph"
         });
         test.ok(bi);
@@ -106,11 +146,10 @@ module.exports.testbreakit = {
         test.equal(bi.next(), undefined);
         test.done();
     },
-    */
 
     testBreakIteratorWord: function(test) {
         test.expect(19);
-        var bi = new BreakIterator("This is a sentence.", {
+        var bi = BreakIteratorFactory("This is a sentence.", {
             type: "word"
         });
         test.ok(bi);
@@ -138,7 +177,7 @@ module.exports.testbreakit = {
 
     testBreakIteratorWordZeroWidthJoiner: function(test) {
         test.expect(15);
-        var bi = new BreakIterator("This‍is a sentence.", {
+        var bi = BreakIteratorFactory("This‍is a sentence.", {
             type: "word"
         });
         test.ok(bi);
@@ -162,7 +201,7 @@ module.exports.testbreakit = {
 
     testBreakIteratorEmptyNoNext: function(test) {
         test.expect(3);
-        var bi = new BreakIterator("", {
+        var bi = BreakIteratorFactory("", {
             type: "word"
         });
         test.ok(bi);
@@ -174,7 +213,7 @@ module.exports.testbreakit = {
 
     testBreakIteratorEmptyNoFirst: function(test) {
         test.expect(2);
-        var bi = new BreakIterator("", {
+        var bi = BreakIteratorFactory("", {
             type: "word"
         });
         test.ok(bi);
@@ -185,7 +224,7 @@ module.exports.testbreakit = {
 
     testBreakIteratorEmptyNoLast: function(test) {
         test.expect(2);
-        var bi = new BreakIterator("", {
+        var bi = BreakIteratorFactory("", {
             type: "word"
         });
         test.ok(bi);
@@ -196,7 +235,7 @@ module.exports.testbreakit = {
 
     testBreakIteratorEmptyNoPrevious: function(test) {
         test.expect(2);
-        var bi = new BreakIterator("", {
+        var bi = BreakIteratorFactory("", {
             type: "word"
         });
         test.ok(bi);
@@ -207,7 +246,7 @@ module.exports.testbreakit = {
 
     testBreakIteratorPrevious: function(test) {
         test.expect(8);
-        var bi = new BreakIterator("This is a sentence.", {
+        var bi = BreakIteratorFactory("This is a sentence.", {
             type: "word"
         });
         test.ok(bi);
@@ -224,7 +263,7 @@ module.exports.testbreakit = {
 
     testBreakIteratorStartHasNoPrevious: function(test) {
         test.expect(3);
-        var bi = new BreakIterator("This is a sentence.", {
+        var bi = BreakIteratorFactory("This is a sentence.", {
             type: "word"
         });
         test.ok(bi);
@@ -236,7 +275,7 @@ module.exports.testbreakit = {
 
     testBreakIteratorFirst: function(test) {
         test.expect(7);
-        var bi = new BreakIterator("This is a sentence.", {
+        var bi = BreakIteratorFactory("This is a sentence.", {
             type: "word"
         });
         test.ok(bi);
@@ -252,7 +291,7 @@ module.exports.testbreakit = {
 
     testBreakIteratorFirstNoPrevious: function(test) {
         test.expect(8);
-        var bi = new BreakIterator("This is a sentence.", {
+        var bi = BreakIteratorFactory("This is a sentence.", {
             type: "word"
         });
         test.ok(bi);
@@ -270,7 +309,7 @@ module.exports.testbreakit = {
 
     testBreakIteratorLast: function(test) {
         test.expect(5);
-        var bi = new BreakIterator("This is a sentence.", {
+        var bi = BreakIteratorFactory("This is a sentence.", {
             type: "word"
         });
         test.ok(bi);
@@ -284,7 +323,7 @@ module.exports.testbreakit = {
 
     testBreakIteratorLastNoNext: function(test) {
         test.expect(4);
-        var bi = new BreakIterator("This is a sentence.", {
+        var bi = BreakIteratorFactory("This is a sentence.", {
             type: "word"
         });
         test.ok(bi);
@@ -298,7 +337,7 @@ module.exports.testbreakit = {
 
     testBreakIteratorWithQuotes: function(test) {
         test.expect(23);
-        var bi = new BreakIterator("This is a 'sentence.'", {
+        var bi = BreakIteratorFactory("This is a 'sentence.'", {
             type: "word"
         });
         test.ok(bi);
@@ -331,7 +370,7 @@ module.exports.testbreakit = {
     /*
     testBreakIteratorSentence: function(test) {
         test.expect(13);
-        var bi = new BreakIterator("This is a sentence. This is another sentence! This is a third?", {
+        var bi = BreakIteratorFactory("This is a sentence. This is another sentence! This is a third?", {
             type: "sentence"
         });
         test.ok(bi);
@@ -353,7 +392,7 @@ module.exports.testbreakit = {
 
     testBreakIteratorLine: function(test) {
         test.expect(13);
-        var bi = new BreakIterator("This is a sentence. This is another sentence! This is a third?", {
+        var bi = BreakIteratorFactory("This is a sentence. This is another sentence! This is a third?", {
             type: "line",
             maxLength: "22"
         });
