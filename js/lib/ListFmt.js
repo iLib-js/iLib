@@ -33,7 +33,17 @@ var Locale = require("./Locale.js");
  * The options object can contain zero or more of the following parameters:
  *
  * <ul>
- * <li><i>locale</i> locale to use to format this list, or undefined to use the
+ * <li><i>type</i> The type of this formatter. Valid values are:
+ * <ul>
+ *   <ul><i>regular</i> create a regular list.
+ *   <ul><i>conjunction</i> this list should be concatenated with "and". This is
+ *   the default.
+ *   <ul><i>disjunction</i> this list should be concatenated with "or".
+ *   <ul><i>unit</i> this is a list of measures like "5 minutes, 4 seconds". In
+ *   some languages, these type of lists are concatenated without a conjunction.
+ * </ul>
+ *
+ * <li><i>locale</i> locale to use to format this list, or undefined to use the 
  * default locale
  *
  * <li><i>length</i> - Specify the length of the format to use. The length is the approximate size of the
@@ -72,6 +82,7 @@ var Locale = require("./Locale.js");
  * @param {Object} options properties that control how this formatter behaves
  */
 var ListFmt = function(options) {
+<<<<<<< HEAD
     this.locale = new Locale();
     this.sync = true;
     this.style = "standard";
@@ -114,6 +125,55 @@ var ListFmt = function(options) {
             }
         })
     });
+=======
+	this.locale = new Locale();
+	this.sync = true;
+	this.style = "standard";
+	this.length = "short";
+	this.loadParams = {};
+	this.type = "conjunction";
+	
+	if (options) {
+	    if (options.type) {
+	        this.type = otions.type;
+	    }
+
+		if (options.locale) {
+			this.locale = options.locale;
+		}
+
+		if (typeof(options.sync) !== 'undefined') {
+			this.sync = !!options.sync;
+		}
+
+		if (options.length) {
+			this.length = options.length;
+		}
+
+		if (options.loadParams) {
+			this.loadParams = options.loadParams;
+		}
+
+		if (options.style) {
+			this.style = options.style;
+		}
+	}
+
+	Utils.loadData({
+		name: "list.json",
+		object: "ListFmt",
+		locale: this.locale, 
+		sync: this.sync,
+		loadParams: this.loadParams,
+		callback: ilib.bind(this, function (fmtdata) {
+			this.fmtdata = fmtdata;
+			
+			if (options && typeof(options.onLoad) === 'function') {
+				options.onLoad(this);
+			}
+		})
+	});
+>>>>>>> Adding a "type" parameter to the list formatter
 };
 
 /**
