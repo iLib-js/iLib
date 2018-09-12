@@ -40,6 +40,16 @@ var styleMap = {
  * The options object can contain zero or more of the following parameters:
  *
  * <ul>
+ * <li><i>type</i> The type of this formatter. Valid values are:
+ * <ul>
+ *   <ul><i>regular</i> create a regular list.
+ *   <ul><i>conjunction</i> this list should be concatenated with "and". This is
+ *   the default.
+ *   <ul><i>disjunction</i> this list should be concatenated with "or".
+ *   <ul><i>unit</i> this is a list of measures like "5 minutes, 4 seconds". In
+ *   some languages, these type of lists are concatenated without a conjunction.
+ * </ul>
+ *
  * <li><i>locale</i> locale to use to format this list, or undefined to use the
  * default locale
  *
@@ -93,6 +103,7 @@ var ListFmt = function(options) {
     this.style = "standard";
     this.length = "medium";
     this.loadParams = {};
+    this.type = "conjunction";
 
     if (options) {
         if (options.type) {
