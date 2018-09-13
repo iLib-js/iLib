@@ -229,7 +229,7 @@ function isAsianLocale(locale) {
  */
 function invertAndFilter(object) {
     var ret = [];
-    var regions = ["EU", "EZ"]
+    var regions = ["AQ", "EU", "EZ", "UN", "ZZ"]
     for (var p in object) {
         if (p && !object[p].match(/\d/) && regions.indexOf(object[p]) === -1) {
             ret.push({

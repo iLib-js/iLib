@@ -304,7 +304,7 @@ function anyProperties(data) {
     return false;
 }
 
-function writeResources(language, script, country, data, filePrefix) {
+function writeResources(language, script, country, data, filePrefix, writeReverse) {
     var pathname = calcLocalePath(language, script, country, "");
     var reverse = {};
 
@@ -314,24 +314,26 @@ function writeResources(language, script, country, data, filePrefix) {
         //data = sortObject(data);
         fs.writeFileSync(path.join(pathname, filePrefix + "names.json"), JSON.stringify(data, true, 4), "utf-8");
 
-        for (var ctry in data) {
-            if (ctry && data[ctry]) {
-                reverse[data[ctry]] = ctry;
+        if (writeReverse) {
+            for (var ctry in data) {
+                if (ctry && data[ctry]) {
+                    reverse[data[ctry]] = ctry;
+                }
             }
-        }
 
-        fs.writeFileSync(path.join(pathname, filePrefix + "reverse.json"), JSON.stringify(reverse, true, 4), "utf-8");
+            fs.writeFileSync(path.join(pathname, filePrefix + "reverse.json"), JSON.stringify(reverse, true, 4), "utf-8");
+        }
     } else {
         console.log("Skipping empty " + pathname);
     }
 }
 
 function writeCountryNameResources(language, script, country, data) {
-    writeResources(language, script, country, data, "ctry");
+    writeResources(language, script, country, data, "ctry", true);
 }
 
 function writeRegionNameResources(language, script, country, data) {
-    writeResources(language, script, country, data, "region");
+    writeResources(language, script, country, data, "region", false);
 }
 
 function sortObject(obj) {
@@ -393,6 +395,23 @@ function mergeRegions(object1, object2) {
     return newObj;
 }
 
+function mergeByValue(object1, object2) {
+    var tmp = {};
+    for (var p in object1) {
+        tmp[object1[p]] = p;
+    }
+    for (p in object2) {
+        tmp[object2[p]] = p;
+    }
+
+    var ret = {};
+    for (p in tmp) {
+        ret[tmp[p]] = p;
+    }
+
+    return ret;
+}
+
 function mergeAndSortRegions(localeData) {
     if (localeData) {
         if (typeof(localeData.merged) === 'undefined') {
@@ -429,22 +448,41 @@ function sortCountries(localeData, locale) {
                     name: country
                 });
             }
-            
+
             countries.sort(function(left, right) {
                 return langComparator(left.name, right.name);
             });
-            
+
             localeData.data = {};
             countries.forEach(function(country) {
                 localeData.data[country.name] = country.code;
             });
         }
-        
+
         for (var prop in localeData) {
             // util.print("merging " + prop + "\n");
             if (prop && typeof(localeData[prop]) !== 'undefined' && prop !== 'data' && prop !== 'merged') {
                 // util.print(prop + " ");
                 sortCountries(localeData[prop], (locale !== "root") ? locale + '-' + prop : prop);
+            }
+        }
+    }
+}
+
+function mergeCountries(localeData) {
+    if (localeData) {
+        if (typeof(localeData.merged) === 'undefined') {
+            // special case for the top level
+            localeData.merged = localeData.data;
+        }
+        for (var prop in localeData) {
+            // util.print("merging " + prop + "\n");
+            if (prop && typeof(localeData[prop]) !== 'undefined' && prop !== 'data' && prop !== 'merged') {
+                // util.print(prop + " ");
+                localeData[prop].merged = mergeByValue(localeData.merged || {}, localeData[prop].data || {});
+                localeData[prop].data = localeData[prop].merged;
+                // util.print("recursing\n");
+                mergeCountries(localeData[prop]);
             }
         }
     }
@@ -475,7 +513,9 @@ for (var i = 0; i < localeDirs.length; i++) {
 
 //find the system resources
 console.log("Merging and pruning locale data...");
-mergeAndPrune(localeData);
+localeData.data = localeData.en.data;
+
+mergeCountries(localeData);
 sortCountries(localeData, "root");
 
 // use English as the root language for regions
