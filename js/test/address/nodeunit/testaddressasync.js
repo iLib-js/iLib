@@ -401,7 +401,7 @@ module.exports.testaddressasync = {
     },
     
     testAddressFmtGetFormatInfoUSRightConstraints: function(test) {
-        test.expect(16);
+        test.expect(19);
         new AddressFmt({
             locale: 'en-US',
             sync: false,
@@ -426,9 +426,15 @@ module.exports.testaddressasync = {
 
                     test.equal(info[2][0].component, "country");
                     test.ok(info[2][0].constraint);
-                    test.equal(info[2][0].constraint["JP"], "Japan");
-                    test.equal(info[2][0].constraint["CR"], "Costa Rica");
-                    test.equal(info[2][0].constraint["ZA"], "South Africa");
+                    var r = searchRegions(info[2][0].constraint, "JP");
+                    test.equal(r.code, "JP");
+                    test.equal(r.name, "Japan");
+                    r = searchRegions(info[2][0].constraint, "CR");
+                    test.equal(r.code, "CR");
+                    test.equal(r.name, "Costa Rica");
+                    r = searchRegions(info[2][0].constraint, "ZA");
+                    test.equal(r.code, "ZA");
+                    test.equal(r.name, "South Africa");
 
                     test.done();
                 });

@@ -220,18 +220,25 @@ function isAsianLocale(locale) {
 }
 
 /*
- * Invert the properties and values, filtering out all the values with numbers.
+ * Invert the properties and values, filtering out all the regions. Regions either
+ * have values with numbers (eg. "150" for Europe), or they are on a short list of
+ * known regions with actual ISO codes.
+ * 
  * @private
  * @returns {Object} the inverted object
  */
 function invertAndFilter(object) {
-    var ret = {};
+    var ret = [];
+    var regions = ["EU", "EZ"]
     for (var p in object) {
-        if (object.hasOwnProperty(p) && !object[p].match(/\d/)) {
-            ret[object[p]] = p;
+        if (p && !object[p].match(/\d/) && regions.indexOf(object[p]) === -1) {
+            ret.push({
+                code: object[p],
+                name: p
+            });
         }
     }
-    
+
     return ret;
 }
 
@@ -301,13 +308,18 @@ function invertAndFilter(object) {
  *   [{
  *     "component": "country",
  *     "label": "Country",
- *     "constraint": {
- *       "AF": "Afghanistan",
- *       "AL": "Albania",
- *       "DZ": "Algeria",
+ *     "constraint": [{
+ *         "code": "AF",
+ *         "name": "Afghanistan"
+ *       },{
+ *         "code": "AL",
+ *         "name": "Albania"
+ *       },{
  *       ...
- *       "ZW": "Zimbabwe"
- *     }
+ *       },{
+ *         "code": "ZW",
+ *         "name": "Zimbabwe"
+ *     }]
  *   }]
  * ]
  * </pre>

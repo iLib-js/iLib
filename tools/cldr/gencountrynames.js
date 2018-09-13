@@ -120,14 +120,13 @@ function getCountryNames(localeData, pathname, locale) {
         }
 
         if (script) {
-
             if (!localeData[language]) {
                 localeData[language] = {};
             }
             if (!localeData[language][script]) {
                 localeData[language][script] = {};
             }
-            if (!localeData[language][script][country]) {
+            if (country && !localeData[language][script][country]) {
                 localeData[language][script][country] = {};
             }
             if (country) {
@@ -413,6 +412,44 @@ function mergeAndSortRegions(localeData) {
     }
 }
 
+function sortCountries(localeData, locale) {
+    if (localeData) {
+        if (localeData.data) {
+            var loc = (locale === "root") ? "en-US" : locale;
+            var collator = new Collator({
+                locale: loc,
+                sensitivity: "case"
+            });
+            var langComparator = collator.getComparator();
+
+            var countries = [];
+            for (var country in localeData.data) {
+                countries.push({
+                    code: localeData.data[country],
+                    name: country
+                });
+            }
+            
+            countries.sort(function(left, right) {
+                return langComparator(left.name, right.name);
+            });
+            
+            localeData.data = {};
+            countries.forEach(function(country) {
+                localeData.data[country.name] = country.code;
+            });
+        }
+        
+        for (var prop in localeData) {
+            // util.print("merging " + prop + "\n");
+            if (prop && typeof(localeData[prop]) !== 'undefined' && prop !== 'data' && prop !== 'merged') {
+                // util.print(prop + " ");
+                sortCountries(localeData[prop], (locale !== "root") ? locale + '-' + prop : prop);
+            }
+        }
+    }
+}
+
 var localeDirs, localeData = {}, regionData = {};
 
 try {
@@ -439,6 +476,7 @@ for (var i = 0; i < localeDirs.length; i++) {
 //find the system resources
 console.log("Merging and pruning locale data...");
 mergeAndPrune(localeData);
+sortCountries(localeData, "root");
 
 // use English as the root language for regions
 regionData.data = regionData.en.data;

@@ -457,7 +457,7 @@ module.exports.testaddress = {
     },
 
     testAddressFmtGetFormatInfoUSRightConstraints: function(test) {
-        test.expect(16);
+        test.expect(19);
         var formatter = new AddressFmt({locale: 'en-US'});
 
         var info = formatter.getFormatInfo();
@@ -481,9 +481,15 @@ module.exports.testaddress = {
 
         test.equal(info[2][0].component, "country");
         test.ok(info[2][0].constraint);
-        test.equal(info[2][0].constraint["JP"], "Japan");
-        test.equal(info[2][0].constraint["CR"], "Costa Rica");
-        test.equal(info[2][0].constraint["ZA"], "South Africa");
+        var r = searchRegions(info[2][0].constraint, "JP");
+        test.equal(r.code, "JP");
+        test.equal(r.name, "Japan");
+        r = searchRegions(info[2][0].constraint, "CR");
+        test.equal(r.code, "CR");
+        test.equal(r.name, "Costa Rica");
+        r = searchRegions(info[2][0].constraint, "ZA");
+        test.equal(r.code, "ZA");
+        test.equal(r.name, "South Africa");
 
         test.done();
     },
@@ -514,7 +520,7 @@ module.exports.testaddress = {
     },
 
     testAddressFmtGetFormatInfoDE: function(test) {
-        test.expect(18);
+        test.expect(21);
         var formatter = new AddressFmt({locale: 'de-DE'});
 
         var info = formatter.getFormatInfo();
@@ -535,14 +541,20 @@ module.exports.testaddress = {
         test.equal(info[2][0].component, "country");
         test.equal(info[2][0].label, "Land");
         test.ok(info[2][0].constraint);
-        test.equal(info[2][0].constraint["RU"], "Russland");
-        test.equal(info[2][0].constraint["CA"], "Kanada");
-        test.equal(info[2][0].constraint["ZA"], "Südafrika");
+        var r = searchRegions(info[2][0].constraint, "RU");
+        test.equal(r.code, "RU");
+        test.equal(r.name, "Russland");
+        r = searchRegions(info[2][0].constraint, "CA");
+        test.equal(r.code, "CA");
+        test.equal(r.name, "Kanada");
+        r = searchRegions(info[2][0].constraint, "ZA");
+        test.equal(r.code, "ZA");
+        test.equal(r.name, "Südafrika");
         test.done();
     },
 
     testAddressFmtGetFormatInfoCN: function(test) {
-        test.expect(21);
+        test.expect(24);
         var formatter = new AddressFmt({locale: 'zh-Hans-CN'});
 
         var info = formatter.getFormatInfo();
@@ -557,9 +569,15 @@ module.exports.testaddress = {
         test.equal(info[0][0].component, "country");
         test.equal(info[0][0].label, "国家");
         test.ok(info[0][0].constraint);
-        test.equal(info[0][0].constraint["RU"], "俄罗斯");
-        test.equal(info[0][0].constraint["CA"], "加拿大");
-        test.equal(info[0][0].constraint["ZA"], "南非");
+        var r = searchRegions(info[0][0].constraint, "RU");
+        test.equal(r.code, "RU");
+        test.equal(r.name, "俄罗斯");
+        r = searchRegions(info[0][0].constraint, "CA");
+        test.equal(r.code, "CA");
+        test.equal(r.name, "加拿大");
+        r = searchRegions(info[0][0].constraint, "ZA");
+        test.equal(r.code, "ZA");
+        test.equal(r.name, "南非");
         test.equal(info[1][0].component, "region");
         test.equal(info[1][0].label, "省或地区");
         test.equal(info[2][0].component, "locality");
@@ -573,7 +591,7 @@ module.exports.testaddress = {
     },
 
     testAddressFmtGetFormatInfoSG: function(test) {
-        test.expect(17);
+        test.expect(20);
         var formatter = new AddressFmt({locale: 'zh-Hans-SG'});
 
         var info = formatter.getFormatInfo();
@@ -586,9 +604,15 @@ module.exports.testaddress = {
         test.equal(info[0][0].component, "country");
         test.equal(info[0][0].label, "国家");
         test.ok(info[0][0].constraint);
-        test.equal(info[0][0].constraint["RU"], "俄罗斯");
-        test.equal(info[0][0].constraint["CA"], "加拿大");
-        test.equal(info[0][0].constraint["ZA"], "南非");
+        var r = searchRegions(info[0][0].constraint, "RU");
+        test.equal(r.code, "RU");
+        test.equal(r.name, "俄罗斯");
+        r = searchRegions(info[0][0].constraint, "CA");
+        test.equal(r.code, "CA");
+        test.equal(r.name, "加拿大");
+        r = searchRegions(info[0][0].constraint, "ZA");
+        test.equal(r.code, "ZA");
+        test.equal(r.name, "南非");
         test.equal(info[1][0].component, "postalCode");
         test.equal(info[1][0].label, "邮政编码");
         test.equal(info[1][0].constraint, "^[0-9]{6}");
@@ -600,7 +624,7 @@ module.exports.testaddress = {
     },
 
     testAddressFmtGetFormatInfoENSG: function(test) {
-        test.expect(18);
+        test.expect(21);
         var formatter = new AddressFmt({locale: 'en-SG'});
 
         var info = formatter.getFormatInfo();
@@ -621,9 +645,17 @@ module.exports.testaddress = {
         test.equal(info[2][0].component, "country");
         test.equal(info[2][0].label, "Country");
         test.ok(info[2][0].constraint);
-        test.equal(info[2][0].constraint["RU"], "Russia");
-        test.equal(info[2][0].constraint["CA"], "Canada");
-        test.equal(info[2][0].constraint["ZA"], "South Africa");
+
+        var r = searchRegions(info[2][0].constraint, "RU");
+        test.equal(r.code, "RU");
+        test.equal(r.name, "Russia");
+        r = searchRegions(info[2][0].constraint, "CA");
+        test.equal(r.code, "CA");
+        test.equal(r.name, "Canada");
+        r = searchRegions(info[2][0].constraint, "ZA");
+        test.equal(r.code, "ZA");
+        test.equal(r.name, "South Africa");
+
         test.done();
     },
 
