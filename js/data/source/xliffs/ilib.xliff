@@ -6692,8 +6692,8 @@
       </trans-unit>
       <trans-unit id="1321" resname="Municipality" restype="string" datatype="javascript">
         <source>Municipality</source>
-        <target>自治市/区</target>
-        <note annotates="source">{"sourceComment":null,"targetComment":null,"includedInLocalizedFile":true,"status":"REVIEW_NEEDED","variantComments":[],"createdDate":1536782797000,"pluralForm":null,"pluralFormOther":null}</note>
+        <target>自治市</target>
+        <note annotates="source">{"sourceComment":null,"targetComment":null,"includedInLocalizedFile":true,"status":"APPROVED","variantComments":[],"createdDate":1536961676000,"pluralForm":null,"pluralFormOther":null}</note>
       </trans-unit>
       <trans-unit id="1322" resname="Oblast" restype="string" datatype="javascript">
         <source>Oblast</source>
@@ -6767,8 +6767,8 @@
       </trans-unit>
       <trans-unit id="1336" resname="State" restype="string" datatype="javascript">
         <source>State</source>
-        <target>省/市/自治区</target>
-        <note annotates="source">{"sourceComment":null,"targetComment":null,"includedInLocalizedFile":true,"status":"REVIEW_NEEDED","variantComments":[],"createdDate":1536782800000,"pluralForm":null,"pluralFormOther":null}</note>
+        <target>省</target>
+        <note annotates="source">{"sourceComment":null,"targetComment":null,"includedInLocalizedFile":true,"status":"APPROVED","variantComments":[],"createdDate":1536961691000,"pluralForm":null,"pluralFormOther":null}</note>
       </trans-unit>
       <trans-unit id="1337" resname="Special Administrative Region" restype="string" datatype="javascript">
         <source>Special Administrative Region</source>
@@ -6827,8 +6827,8 @@
       </trans-unit>
       <trans-unit id="1348" resname="Indian Reserve" restype="string" datatype="javascript">
         <source>Indian Reserve</source>
-        <target>印第安人居留地</target>
-        <note annotates="source">{"sourceComment":null,"targetComment":null,"includedInLocalizedFile":true,"status":"REVIEW_NEEDED","variantComments":[],"createdDate":1536782803000,"pluralForm":null,"pluralFormOther":null}</note>
+        <target>印第安人保留地</target>
+        <note annotates="source">{"sourceComment":null,"targetComment":null,"includedInLocalizedFile":true,"status":"APPROVED","variantComments":[],"createdDate":1536961728000,"pluralForm":null,"pluralFormOther":null}</note>
       </trans-unit>
       <trans-unit id="1349" resname="Band" restype="string" datatype="javascript">
         <source>Band</source>
@@ -6842,8 +6842,8 @@
       </trans-unit>
       <trans-unit id="1351" resname="CEDEX" restype="string" datatype="javascript">
         <source>CEDEX</source>
-        <target>割让的领土</target>
-        <note annotates="source">{"sourceComment":null,"targetComment":null,"includedInLocalizedFile":true,"status":"REVIEW_NEEDED","variantComments":[],"createdDate":1536782803000,"pluralForm":null,"pluralFormOther":null}</note>
+        <target>邮局</target>
+        <note annotates="source">{"sourceComment":null,"targetComment":null,"includedInLocalizedFile":true,"status":"APPROVED","variantComments":[],"createdDate":1536961836000,"pluralForm":null,"pluralFormOther":null}</note>
       </trans-unit>
       <trans-unit id="1352" resname="streetAddress" restype="string" datatype="javascript">
         <source>Street Address</source>
@@ -6862,8 +6862,8 @@
       </trans-unit>
       <trans-unit id="1355" resname="region" restype="string" datatype="javascript">
         <source>State</source>
-        <target>省/市/自治区</target>
-        <note annotates="source">{"sourceComment":null,"targetComment":null,"includedInLocalizedFile":true,"status":"REVIEW_NEEDED","variantComments":[],"createdDate":1536782804000,"pluralForm":null,"pluralFormOther":null}</note>
+        <target>省</target>
+        <note annotates="source">{"sourceComment":null,"targetComment":null,"includedInLocalizedFile":true,"status":"APPROVED","variantComments":[],"createdDate":1536961845000,"pluralForm":null,"pluralFormOther":null}</note>
       </trans-unit>
       <trans-unit id="1356" resname="country" restype="string" datatype="javascript">
         <source>Country</source>
