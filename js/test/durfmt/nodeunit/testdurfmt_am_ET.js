@@ -1,6 +1,6 @@
 /*
  * testdurfmt_am_ET.js - test the duration formatter object
- * 
+ *
  * Copyright © 2015,2017, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -37,7 +37,7 @@ module.exports.testdurfmt_am_ET = {
             length: "short"
         });
         test.ok(fmt !== null);
-        
+
         var duration = fmt.format({
             year: 1,
             month: 1,
@@ -50,7 +50,7 @@ module.exports.testdurfmt_am_ET = {
         test.equal(duration.toString(), "1 ዓመት፣ 1 ወር፣ 1 ሳምንት፣ 1 ቀ፣ 1 ሰ፣ 1 ደ፣ 1 ሰ");
         test.done();
     },
-    
+
     testDurFmtAMFormatShortText1: function(test) {
         test.expect(2);
         var fmt = new DurationFmt({
@@ -59,7 +59,7 @@ module.exports.testdurfmt_am_ET = {
             style: "text"
         });
         test.ok(fmt !== null);
-        
+
         var duration = fmt.format({
             year: 1,
             month: 1,
@@ -72,7 +72,7 @@ module.exports.testdurfmt_am_ET = {
         test.equal(duration.toString(), "1 ዓመት፣ 1 ወር፣ 1 ሳምንት፣ 1 ቀ፣ 1 ሰ፣ 1 ደ፣ 1 ሰ");
         test.done();
     },
-    
+
     testDurFmtAMFormatShortClock1: function(test) {
         test.expect(2);
         var fmt = new DurationFmt({
@@ -81,7 +81,7 @@ module.exports.testdurfmt_am_ET = {
             style: "clock"
         });
         test.ok(fmt !== null);
-        
+
         var duration = fmt.format({
             year: 1,
             month: 1,
@@ -94,7 +94,7 @@ module.exports.testdurfmt_am_ET = {
         test.equal(duration.toString(), "1 ዓመት፣ 1 ወር፣ 1 ሳምንት፣ 1 ቀ፣ 1:01:01");
         test.done();
     },
-    
+
     testDurFmtAMFormatMedium1: function(test) {
         test.expect(2);
         var fmt = new DurationFmt({
@@ -102,7 +102,7 @@ module.exports.testdurfmt_am_ET = {
             length: "medium"
         });
         test.ok(fmt !== null);
-        
+
         var duration = fmt.format({
             year: 1,
             month: 1,
@@ -112,10 +112,10 @@ module.exports.testdurfmt_am_ET = {
             minute: 1,
             second: 1
         });
-        test.equal(duration.toString(), "1 ዓመ፣ 1 ወራ፣ 1 ሳም፣ 1 ቀና፣ 1 ሰዓ፣ 1 ደቂ፣ 1 ሰከ");
+        test.equal(duration.toString(), "1 ዓመት፣ 1 ወር፣ 1 ሳምንት፣ 1 ቀ፣ 1 ሰ፣ 1 ደ፣ 1 ሰ");
         test.done();
     },
-    
+
     testDurFmtAMFormatLong1: function(test) {
         test.expect(2);
         var fmt = new DurationFmt({
@@ -123,7 +123,7 @@ module.exports.testdurfmt_am_ET = {
             length: "long"
         });
         test.ok(fmt !== null);
-        
+
         var duration = fmt.format({
             year: 1,
             month: 1,
@@ -136,7 +136,7 @@ module.exports.testdurfmt_am_ET = {
         test.equal(duration.toString(), "1 ዓመት፣ 1 ወራት፣ 1 ሳምንት፣ 1 ቀናት፣ 1 ሰዓ፣ 1 ደቂ፣ 1 ሰከ");
         test.done();
     },
-    
+
     testDurFmtAMFormatFull1: function(test) {
         test.expect(2);
         var fmt = new DurationFmt({
@@ -144,7 +144,7 @@ module.exports.testdurfmt_am_ET = {
             length: "full"
         });
         test.ok(fmt !== null);
-        
+
         var duration = fmt.format({
             year: 1,
             month: 1,
@@ -157,7 +157,7 @@ module.exports.testdurfmt_am_ET = {
         test.equal(duration.toString(), "1 ዓመት፣ 1 ወር፣ 1 ሳምንት፣ 1 ቀናት፣ 1 ሰዓት፣ 1 ደቂቃ, እና 1 ሰከንድ");
         test.done();
     },
-    
+
     testDurFmtAMFormatShortDefaultStyle2: function(test) {
         test.expect(2);
         var fmt = new DurationFmt({
@@ -165,7 +165,7 @@ module.exports.testdurfmt_am_ET = {
             length: "short"
         });
         test.ok(fmt !== null);
-        
+
         var duration = fmt.format({
             year: 2,
             month: 2,
@@ -178,7 +178,7 @@ module.exports.testdurfmt_am_ET = {
         test.equal(duration.toString(), "2 ዓ፣ 2 ወር፣ 2 ሳምንት፣ 2 ቀ፣ 2 ሰ፣ 2 ደ፣ 2 ሰ");
         test.done();
     },
-    
+
     testDurFmtAMFormatShortText2: function(test) {
         test.expect(2);
         var fmt = new DurationFmt({
@@ -187,7 +187,7 @@ module.exports.testdurfmt_am_ET = {
             style: "text"
         });
         test.ok(fmt !== null);
-        
+
         var duration = fmt.format({
             year: 2,
             month: 2,
@@ -200,7 +200,7 @@ module.exports.testdurfmt_am_ET = {
         test.equal(duration.toString(), "2 ዓ፣ 2 ወር፣ 2 ሳምንት፣ 2 ቀ፣ 2 ሰ፣ 2 ደ፣ 2 ሰ");
         test.done();
     },
-    
+
     testDurFmtAMFormatShortClock2: function(test) {
         test.expect(2);
         var fmt = new DurationFmt({
@@ -209,7 +209,7 @@ module.exports.testdurfmt_am_ET = {
             style: "clock"
         });
         test.ok(fmt !== null);
-        
+
         var duration = fmt.format({
             year: 2,
             month: 2,
@@ -222,7 +222,7 @@ module.exports.testdurfmt_am_ET = {
         test.equal(duration.toString(), "2 ዓ፣ 2 ወር፣ 2 ሳምንት፣ 2 ቀ፣ 2:02:02");
         test.done();
     },
-    
+
     testDurFmtAMFormatMedium2: function(test) {
         test.expect(2);
         var fmt = new DurationFmt({
@@ -230,7 +230,7 @@ module.exports.testdurfmt_am_ET = {
             length: "medium"
         });
         test.ok(fmt !== null);
-        
+
         var duration = fmt.format({
             year: 2,
             month: 2,
@@ -240,10 +240,10 @@ module.exports.testdurfmt_am_ET = {
             minute: 2,
             second: 2
         });
-        test.equal(duration.toString(), "2 ዓመ፣ 2 ወራ፣ 2 ሳም፣ 2 ቀና፣ 2 ሰዓ፣ 2 ደቂ፣ 2 ሰከ");
+        test.equal(duration.toString(), "2 ዓ፣ 2 ወር፣ 2 ሳምንት፣ 2 ቀ፣ 2 ሰ፣ 2 ደ፣ 2 ሰ");
         test.done();
     },
-    
+
     testDurFmtAMFormatLong2: function(test) {
         test.expect(2);
         var fmt = new DurationFmt({
@@ -251,7 +251,7 @@ module.exports.testdurfmt_am_ET = {
             length: "long"
         });
         test.ok(fmt !== null);
-        
+
         var duration = fmt.format({
             year: 2,
             month: 2,
@@ -264,7 +264,7 @@ module.exports.testdurfmt_am_ET = {
         test.equal(duration.toString(), "2 ዓመታት፣ 2 ወራት፣ 2 ሳምንታት፣ 2 ቀናት፣ 2 ሰዓ፣ 2 ደቂቃ፣ 2 ሰከ");
         test.done();
     },
-    
+
     testDurFmtAMFormatFull2: function(test) {
         test.expect(2);
         var fmt = new DurationFmt({
@@ -272,7 +272,7 @@ module.exports.testdurfmt_am_ET = {
             length: "full"
         });
         test.ok(fmt !== null);
-        
+
         var duration = fmt.format({
             year: 2,
             month: 2,
@@ -285,7 +285,7 @@ module.exports.testdurfmt_am_ET = {
         test.equal(duration.toString(), "2 ዓመታት፣ 2 ወራት፣ 2 ሳምንታት፣ 2 ቀናት፣ 2 ሰዓቶች፣ 2 ደቂቃዎች, እና 2 ሰከንዶች");
         test.done();
     },
-    
+
     testDurFmtAMFormatShortDefaultStyle3: function(test) {
         test.expect(2);
         var fmt = new DurationFmt({
@@ -293,7 +293,7 @@ module.exports.testdurfmt_am_ET = {
             length: "short"
         });
         test.ok(fmt !== null);
-        
+
         var duration = fmt.format({
             year: 3,
             month: 3,
@@ -306,7 +306,7 @@ module.exports.testdurfmt_am_ET = {
         test.equal(duration.toString(), "3 ዓ፣ 3 ወር፣ 3 ሳምንት፣ 3 ቀ፣ 3 ሰ፣ 3 ደ፣ 3 ሰ");
         test.done();
     },
-    
+
     testDurFmtAMFormatShortText3: function(test) {
         test.expect(2);
         var fmt = new DurationFmt({
@@ -315,7 +315,7 @@ module.exports.testdurfmt_am_ET = {
             style: "text"
         });
         test.ok(fmt !== null);
-        
+
         var duration = fmt.format({
             year: 3,
             month: 3,
@@ -328,7 +328,7 @@ module.exports.testdurfmt_am_ET = {
         test.equal(duration.toString(), "3 ዓ፣ 3 ወር፣ 3 ሳምንት፣ 3 ቀ፣ 3 ሰ፣ 3 ደ፣ 3 ሰ");
         test.done();
     },
-    
+
     testDurFmtAMFormatShortClock3: function(test) {
         test.expect(2);
         var fmt = new DurationFmt({
@@ -337,7 +337,7 @@ module.exports.testdurfmt_am_ET = {
             style: "clock"
         });
         test.ok(fmt !== null);
-        
+
         var duration = fmt.format({
             year: 3,
             month: 3,
@@ -350,7 +350,7 @@ module.exports.testdurfmt_am_ET = {
         test.equal(duration.toString(), "3 ዓ፣ 3 ወር፣ 3 ሳምንት፣ 3 ቀ፣ 3:03:03");
         test.done();
     },
-    
+
     testDurFmtAMFormatMedium3: function(test) {
         test.expect(2);
         var fmt = new DurationFmt({
@@ -358,7 +358,7 @@ module.exports.testdurfmt_am_ET = {
             length: "medium"
         });
         test.ok(fmt !== null);
-        
+
         var duration = fmt.format({
             year: 3,
             month: 3,
@@ -368,10 +368,10 @@ module.exports.testdurfmt_am_ET = {
             minute: 3,
             second: 3
         });
-        test.equal(duration.toString(), "3 ዓመ፣ 3 ወራ፣ 3 ሳም፣ 3 ቀና፣ 3 ሰዓ፣ 3 ደቂ፣ 3 ሰከ");
+        test.equal(duration.toString(), "3 ዓ፣ 3 ወር፣ 3 ሳምንት፣ 3 ቀ፣ 3 ሰ፣ 3 ደ፣ 3 ሰ");
         test.done();
     },
-    
+
     testDurFmtAMFormatLong3: function(test) {
         test.expect(2);
         var fmt = new DurationFmt({
@@ -379,7 +379,7 @@ module.exports.testdurfmt_am_ET = {
             length: "long"
         });
         test.ok(fmt !== null);
-        
+
         var duration = fmt.format({
             year: 3,
             month: 3,
@@ -392,7 +392,7 @@ module.exports.testdurfmt_am_ET = {
         test.equal(duration.toString(), "3 ዓመታት፣ 3 ወራት፣ 3 ሳምንታት፣ 3 ቀናት፣ 3 ሰዓ፣ 3 ደቂቃ፣ 3 ሰከ");
         test.done();
     },
-    
+
     testDurFmtAMFormatFull3: function(test) {
         test.expect(2);
         var fmt = new DurationFmt({
@@ -400,7 +400,7 @@ module.exports.testdurfmt_am_ET = {
             length: "full"
         });
         test.ok(fmt !== null);
-        
+
         var duration = fmt.format({
             year: 3,
             month: 3,
@@ -413,7 +413,7 @@ module.exports.testdurfmt_am_ET = {
         test.equal(duration.toString(), "3 ዓመታት፣ 3 ወራት፣ 3 ሳምንታት፣ 3 ቀናት፣ 3 ሰዓቶች፣ 3 ደቂቃዎች, እና 3 ሰከንዶች");
         test.done();
     },
-    
+
     testDurFmtAMFormatShortDefaultStyle11: function(test) {
         test.expect(2);
         var fmt = new DurationFmt({
@@ -421,7 +421,7 @@ module.exports.testdurfmt_am_ET = {
             length: "short"
         });
         test.ok(fmt !== null);
-        
+
         var duration = fmt.format({
             year: 11,
             month: 11,
@@ -434,7 +434,7 @@ module.exports.testdurfmt_am_ET = {
         test.equal(duration.toString(), "11 ዓ፣ 11 ወር፣ 11 ሳምንት፣ 11 ቀ፣ 11 ሰ፣ 11 ደ፣ 11 ሰ");
         test.done();
     },
-    
+
     testDurFmtAMFormatShortText11: function(test) {
         test.expect(2);
         var fmt = new DurationFmt({
@@ -443,7 +443,7 @@ module.exports.testdurfmt_am_ET = {
             style: "text"
         });
         test.ok(fmt !== null);
-        
+
         var duration = fmt.format({
             year: 11,
             month: 11,
@@ -456,7 +456,7 @@ module.exports.testdurfmt_am_ET = {
         test.equal(duration.toString(), "11 ዓ፣ 11 ወር፣ 11 ሳምንት፣ 11 ቀ፣ 11 ሰ፣ 11 ደ፣ 11 ሰ");
         test.done();
     },
-    
+
     testDurFmtAMFormatShortClock11: function(test) {
         test.expect(2);
         var fmt = new DurationFmt({
@@ -465,7 +465,7 @@ module.exports.testdurfmt_am_ET = {
             style: "clock"
         });
         test.ok(fmt !== null);
-        
+
         var duration = fmt.format({
             year: 11,
             month: 11,
@@ -478,7 +478,7 @@ module.exports.testdurfmt_am_ET = {
         test.equal(duration.toString(), "11 ዓ፣ 11 ወር፣ 11 ሳምንት፣ 11 ቀ፣ 11:11:11");
         test.done();
     },
-    
+
     testDurFmtAMFormatMedium11: function(test) {
         test.expect(2);
         var fmt = new DurationFmt({
@@ -486,7 +486,7 @@ module.exports.testdurfmt_am_ET = {
             length: "medium"
         });
         test.ok(fmt !== null);
-        
+
         var duration = fmt.format({
             year: 11,
             month: 11,
@@ -496,10 +496,10 @@ module.exports.testdurfmt_am_ET = {
             minute: 11,
             second: 11
         });
-        test.equal(duration.toString(), "11 ዓመ፣ 11 ወራ፣ 11 ሳም፣ 11 ቀና፣ 11 ሰዓ፣ 11 ደቂ፣ 11 ሰከ");
+        test.equal(duration.toString(), "11 ዓ፣ 11 ወር፣ 11 ሳምንት፣ 11 ቀ፣ 11 ሰ፣ 11 ደ፣ 11 ሰ");
         test.done();
     },
-    
+
     testDurFmtAMFormatLong11: function(test) {
         test.expect(2);
         var fmt = new DurationFmt({
@@ -507,7 +507,7 @@ module.exports.testdurfmt_am_ET = {
             length: "long"
         });
         test.ok(fmt !== null);
-        
+
         var duration = fmt.format({
             year: 11,
             month: 11,
@@ -520,7 +520,7 @@ module.exports.testdurfmt_am_ET = {
         test.equal(duration.toString(), "11 ዓመታት፣ 11 ወራት፣ 11 ሳምንታት፣ 11 ቀናት፣ 11 ሰዓ፣ 11 ደቂቃ፣ 11 ሰከ");
         test.done();
     },
-    
+
     testDurFmtAMFormatFull11: function(test) {
         test.expect(2);
         var fmt = new DurationFmt({
@@ -528,7 +528,7 @@ module.exports.testdurfmt_am_ET = {
             length: "full"
         });
         test.ok(fmt !== null);
-        
+
         var duration = fmt.format({
             year: 11,
             month: 11,
@@ -541,7 +541,7 @@ module.exports.testdurfmt_am_ET = {
         test.equal(duration.toString(), "11 ዓመታት፣ 11 ወራት፣ 11 ሳምንታት፣ 11 ቀናት፣ 11 ሰዓቶች፣ 11 ደቂቃዎች, እና 11 ሰከንዶች");
         test.done();
     },
-    
+
     testDurFmtAMAsync1: function(test) {
         test.expect(2);
         new DurationFmt({
@@ -550,7 +550,7 @@ module.exports.testdurfmt_am_ET = {
             sync: false,
             onLoad: function (fmt) {
                 test.ok(fmt !== null);
-                
+
                 var duration = fmt.format({
                     year: 1,
                     month: 1,
@@ -565,7 +565,7 @@ module.exports.testdurfmt_am_ET = {
             }
         });
     },
-    
+
     testDurFmtAMAsyncWithLocale1: function(test) {
         test.expect(2);
         new DurationFmt({
@@ -574,7 +574,7 @@ module.exports.testdurfmt_am_ET = {
             sync: false,
             onLoad: function (fmt) {
                 test.ok(fmt !== null);
-                
+
                 var duration = fmt.format({
                     year: 1,
                     month: 1,
@@ -583,13 +583,13 @@ module.exports.testdurfmt_am_ET = {
                     hour: 1,
                     minute: 1,
                     second: 1
-                });          
+                });
                 test.equal(duration.toString(), "1 ዓመት፣ 1 ወር፣ 1 ሳምንት፣ 1 ቀናት፣ 1 ሰዓት፣ 1 ደቂቃ, እና 1 ሰከንድ");
                 test.done();
             }
         });
     },
-    
+
     testDurFmtAMAsync2: function(test) {
         test.expect(2);
         new DurationFmt({
@@ -598,7 +598,7 @@ module.exports.testdurfmt_am_ET = {
             sync: false,
             onLoad: function (fmt) {
                 test.ok(fmt !== null);
-                
+
                 var duration = fmt.format({
                     year: 2,
                     month: 2,
@@ -613,7 +613,7 @@ module.exports.testdurfmt_am_ET = {
             }
         });
     },
-    
+
     testDurFmtAMAsyncWithLocale2: function(test) {
         test.expect(2);
         new DurationFmt({
@@ -622,7 +622,7 @@ module.exports.testdurfmt_am_ET = {
             sync: false,
             onLoad: function (fmt) {
                 test.ok(fmt !== null);
-                
+
                 var duration = fmt.format({
                     year: 2,
                     month: 2,
@@ -637,7 +637,7 @@ module.exports.testdurfmt_am_ET = {
             }
         });
     },
-    
+
     testDurFmtAMAsync3: function(test) {
         test.expect(2);
         new DurationFmt({
@@ -646,7 +646,7 @@ module.exports.testdurfmt_am_ET = {
             sync: false,
             onLoad: function (fmt) {
                 test.ok(fmt !== null);
-                
+
                 var duration = fmt.format({
                     year: 3,
                     month: 3,
@@ -661,7 +661,7 @@ module.exports.testdurfmt_am_ET = {
             }
         });
     },
-    
+
     testDurFmtAMAsyncWithLocale3: function(test) {
         test.expect(2);
         new DurationFmt({
@@ -670,7 +670,7 @@ module.exports.testdurfmt_am_ET = {
             sync: false,
             onLoad: function (fmt) {
                 test.ok(fmt !== null);
-                
+
                 var duration = fmt.format({
                     year: 3,
                     month: 3,
@@ -685,7 +685,7 @@ module.exports.testdurfmt_am_ET = {
             }
         });
     },
-    
+
     testDurFmtAMAsync11: function(test) {
         test.expect(2);
         new DurationFmt({
@@ -694,7 +694,7 @@ module.exports.testdurfmt_am_ET = {
             sync: false,
             onLoad: function (fmt) {
                 test.ok(fmt !== null);
-                
+
                 var duration = fmt.format({
                     year: 11,
                     month: 11,
@@ -709,7 +709,7 @@ module.exports.testdurfmt_am_ET = {
             }
         });
     },
-    
+
     testDurFmtAMAsyncWithLocale11: function(test) {
         test.expect(2);
         new DurationFmt({
@@ -718,7 +718,7 @@ module.exports.testdurfmt_am_ET = {
             sync: false,
             onLoad: function (fmt) {
                 test.ok(fmt !== null);
-                
+
                 var duration = fmt.format({
                     year: 11,
                     month: 11,
@@ -733,7 +733,7 @@ module.exports.testdurfmt_am_ET = {
             }
         });
     },
-    
+
     testDurFmtAMFormatShortClockAsync1: function(test) {
         test.expect(2);
         new DurationFmt({
@@ -743,7 +743,7 @@ module.exports.testdurfmt_am_ET = {
             sync: false,
             onLoad: function (fmt) {
                 test.ok(fmt !== null);
-                
+
                 var duration = fmt.format({
                     year: 1,
                     month: 1,
@@ -758,7 +758,7 @@ module.exports.testdurfmt_am_ET = {
             }
         });
     },
-    
+
     testDurFmtAMAsync2: function(test) {
         test.expect(2);
         new DurationFmt({
@@ -768,7 +768,7 @@ module.exports.testdurfmt_am_ET = {
             sync: false,
             onLoad: function (fmt) {
                 test.ok(fmt !== null);
-                
+
                 var duration = fmt.format({
                     year: 2,
                     month: 2,
@@ -782,9 +782,9 @@ module.exports.testdurfmt_am_ET = {
                 test.done();
             }
         });
-        
+
     },
-    
+
     testDurFmtAMAsyncWithLocale2: function(test) {
         test.expect(2);
         new DurationFmt({
@@ -794,7 +794,7 @@ module.exports.testdurfmt_am_ET = {
             sync: false,
             onLoad: function (fmt) {
                 test.ok(fmt !== null);
-                
+
                 var duration = fmt.format({
                     year: 2,
                     month: 2,
@@ -808,9 +808,9 @@ module.exports.testdurfmt_am_ET = {
                 test.done();
             }
         });
-        
+
     },
-    
+
     testDurFmtAMFormatWesternShortClockAsync1: function(test) {
         test.expect(2);
         new DurationFmt({
@@ -821,7 +821,7 @@ module.exports.testdurfmt_am_ET = {
             sync: false,
             onLoad: function (fmt) {
                 test.ok(fmt !== null);
-                
+
                 var duration = fmt.format({
                     year: 1,
                     month: 1,
@@ -836,5 +836,5 @@ module.exports.testdurfmt_am_ET = {
             }
         });
     }
-    
+
 };
