@@ -70,7 +70,7 @@ module.exports.testglobal = {
     
     testGetVersion: function(test) {
         test.expect(1);
-        test.equal(ilib.getVersion().substring(0,4), "13.3");
+        test.equal(ilib.getVersion().substring(0,4), "14.0");
         test.done();
     },
     
