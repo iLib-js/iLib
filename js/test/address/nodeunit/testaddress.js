@@ -567,7 +567,7 @@ module.exports.testaddress = {
         test.equal(info[3].length, 1);
 
         test.equal(info[0][0].component, "country");
-        test.equal(info[0][0].label, "国家");
+        test.equal(info[0][0].label, "国家/地区");
         test.ok(info[0][0].constraint);
         var r = searchRegions(info[0][0].constraint, "RU");
         test.equal(r.code, "RU");
@@ -602,7 +602,7 @@ module.exports.testaddress = {
         test.equal(info[1].length, 3);
 
         test.equal(info[0][0].component, "country");
-        test.equal(info[0][0].label, "国家");
+        test.equal(info[0][0].label, "国家/地区");
         test.ok(info[0][0].constraint);
         var r = searchRegions(info[0][0].constraint, "RU");
         test.equal(r.code, "RU");
@@ -617,7 +617,7 @@ module.exports.testaddress = {
         test.equal(info[1][0].label, "邮政编码");
         test.equal(info[1][0].constraint, "^[0-9]{6}");
         test.equal(info[1][1].component, "locality");
-        test.equal(info[1][1].label, "城市");
+        test.equal(info[1][1].label, "镇");
         test.equal(info[1][2].component, "streetAddress");
         test.equal(info[1][2].label, "地址");
         test.done();
@@ -672,11 +672,11 @@ module.exports.testaddress = {
         test.equal(info[2].length, 1);
 
         test.equal(info[0][0].component, "streetAddress");
-        test.equal(info[0][0].label, "Street Address");
+        test.equal(info[0][0].label, "Street address");
         test.equal(info[1][0].component, "locality");
         test.equal(info[1][0].label, "City");
         test.equal(info[1][1].component, "region");
-        test.equal(info[1][1].label, "Province or Territory");
+        test.equal(info[1][1].label, "Province or territory");
         test.ok(info[1][1].constraint);
         var r = searchRegions(info[1][1].constraint, "NT");
         test.equal(r.code, "NT");
@@ -688,7 +688,7 @@ module.exports.testaddress = {
         test.equal(r.code, "QC");
         test.equal(r.name, "Quebec");
         test.equal(info[1][2].component, "postalCode");
-        test.equal(info[1][2].label, "Postal Code");
+        test.equal(info[1][2].label, "Postal code");
         test.equal(info[1][2].constraint, "[A-Za-z][0-9][A-Za-z]\\s+[0-9][A-Za-z][0-9]");
         test.equal(info[2][0].component, "country");
         test.equal(info[2][0].label, "Country");
@@ -745,11 +745,11 @@ module.exports.testaddress = {
         test.equal(info[2].length, 1);
 
         test.equal(info[0][0].component, "streetAddress");
-        test.equal(info[0][0].label, "Street Address");
+        test.equal(info[0][0].label, "Street address");
         test.equal(info[1][0].component, "locality");
         test.equal(info[1][0].label, "Town");
         test.equal(info[2][0].component, "postalCode");
-        test.equal(info[2][0].label, "Post Code");
+        test.equal(info[2][0].label, "Post code");
         test.equal(info[2][0].constraint, "([A-Za-z]{1,2}[0-9]{1,2}[ABCDEFGHJKMNPRSTUVWXYabcdefghjkmnprstuvwxy]?\\s+[0-9][A-Za-z]{2}|GIR 0AA|SAN TA1)");
         test.equal(info[3][0].component, "country");
         test.equal(info[3][0].label, "Country");
@@ -1464,5 +1464,56 @@ module.exports.testaddress = {
         }
 
         test.done();
+    },
+    
+    testAddressFmtGetFormatInfoGBWithTranslationsToRussian: function(test) {
+        test.expect(15);
+        var formatter = new AddressFmt({locale: 'en-GB'});
+
+        var info = formatter.getFormatInfo("ru");
+
+        test.ok(info);
+        test.equal(info.length, 4);
+        test.equal(info[0].length, 1);
+        test.equal(info[1].length, 1);
+        test.equal(info[2].length, 1);
+        test.equal(info[2].length, 1);
+
+        test.equal(info[0][0].component, "streetAddress");
+        test.equal(info[0][0].label, "Адрес");
+        test.equal(info[1][0].component, "locality");
+        test.equal(info[1][0].label, "Город");
+        test.equal(info[2][0].component, "postalCode");
+        test.equal(info[2][0].label, "Почтовый индекс");
+        test.equal(info[2][0].constraint, "([A-Za-z]{1,2}[0-9]{1,2}[ABCDEFGHJKMNPRSTUVWXYabcdefghjkmnprstuvwxy]?\\s+[0-9][A-Za-z]{2}|GIR 0AA|SAN TA1)");
+        test.equal(info[3][0].component, "country");
+        test.equal(info[3][0].label, "Страна");
+        test.done();
+    },
+    
+    testAddressFmtGetFormatInfoGBWithTranslationsToKorean: function(test) {
+        test.expect(15);
+        var formatter = new AddressFmt({locale: 'en-GB'});
+
+        var info = formatter.getFormatInfo("ko");
+
+        test.ok(info);
+        test.equal(info.length, 4);
+        test.equal(info[0].length, 1);
+        test.equal(info[1].length, 1);
+        test.equal(info[2].length, 1);
+        test.equal(info[2].length, 1);
+
+        test.equal(info[0][0].component, "streetAddress");
+        test.equal(info[0][0].label, "번지");
+        test.equal(info[1][0].component, "locality");
+        test.equal(info[1][0].label, "읍");
+        test.equal(info[2][0].component, "postalCode");
+        test.equal(info[2][0].label, "우편 번호");
+        test.equal(info[2][0].constraint, "([A-Za-z]{1,2}[0-9]{1,2}[ABCDEFGHJKMNPRSTUVWXYabcdefghjkmnprstuvwxy]?\\s+[0-9][A-Za-z]{2}|GIR 0AA|SAN TA1)");
+        test.equal(info[3][0].component, "country");
+        test.equal(info[3][0].label, "국가");
+        test.done();
     }
+
 };
