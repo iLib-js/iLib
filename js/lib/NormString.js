@@ -390,16 +390,16 @@ NormString.prototype.normalize = function (form) {
     }
 
     // decompose
-    var decomp = "";
+    var ch, it, decomp = "";
 
     if (nfkd) {
-        var ch, it = IString.prototype.charIterator.call(this);
+        it = IString.prototype.charIterator.call(this);
         while (it.hasNext()) {
             ch = it.next();
             decomp += NormString._expand(ch, ilib.data.norm.nfd, ilib.data.norm.nfkd);
         }
     } else {
-        var ch, it = IString.prototype.charIterator.call(this);
+        it = IString.prototype.charIterator.call(this);
         while (it.hasNext()) {
             ch = it.next();
             decomp += NormString._expand(ch, ilib.data.norm.nfd);
@@ -442,7 +442,7 @@ NormString.prototype.normalize = function (form) {
 
     var dstr = new IString(decomp);
     var it = dstr.charIterator();
-    var cpArray = [];
+    var end, testChar, cpArray = [];
 
     // easier to deal with as an array of chars
     while (it.hasNext()) {
@@ -453,7 +453,7 @@ NormString.prototype.normalize = function (form) {
     while (i < cpArray.length) {
         if (typeof(ilib.data.norm.ccc[cpArray[i]]) !== 'undefined' && ccc(cpArray[i]) !== 0) {
             // found a non-starter... rearrange all the non-starters until the next starter
-            var end = i+1;
+            end = i+1;
             while (end < cpArray.length &&
                     typeof(ilib.data.norm.ccc[cpArray[end]]) !== 'undefined' &&
                     ccc(cpArray[end]) !== 0) {
@@ -475,14 +475,14 @@ NormString.prototype.normalize = function (form) {
                 // found a starter... find all the non-starters until the next starter. Must include
                 // the next starter because under some odd circumstances, two starters sometimes recompose
                 // together to form another character
-                var end = i+1;
+                end = i+1;
                 var notdone = true;
                 while (end < cpArray.length && notdone) {
                     if (typeof(ilib.data.norm.ccc[cpArray[end]]) !== 'undefined' &&
                         ilib.data.norm.ccc[cpArray[end]] !== 0) {
                         if (ccc(cpArray[end-1]) < ccc(cpArray[end])) {
                             // not blocked
-                            var testChar = GlyphString._compose(cpArray[i], cpArray[end]);
+                            testChar = GlyphString._compose(cpArray[i], cpArray[end]);
                             if (typeof(testChar) !== 'undefined') {
                                 cpArray[i] = testChar;
 
@@ -496,7 +496,7 @@ NormString.prototype.normalize = function (form) {
                         end++;
                     } else {
                         // found the next starter. See if this can be composed with the previous starter
-                        var testChar = GlyphString._compose(cpArray[i], cpArray[end]);
+                        testChar = GlyphString._compose(cpArray[i], cpArray[end]);
                         if (ccc(cpArray[end-1]) === 0 && typeof(testChar) !== 'undefined') {
                             // not blocked and there is a mapping
                             cpArray[i] = testChar;

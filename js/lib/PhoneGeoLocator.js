@@ -1,7 +1,7 @@
 /*
- * phonegeo.js - Represent a phone number geolocator object.
+ * PhoneGeoLocator.js - Represent a phone number geolocator object.
  * 
- * Copyright © 2014-2015, JEDLSoft
+ * Copyright © 2014-2015, 2018 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -33,7 +33,6 @@ ResBundle.js
 var ilib = require("./ilib.js");
 var Utils = require("./Utils.js");
 var JSUtils = require("./JSUtils.js");
-var Locale = require("./Locale.js");
 
 var PhoneNumber = require("./PhoneNumber.js");
 var NumberingPlan = require("./NumberingPlan.js");
@@ -202,7 +201,6 @@ PhoneGeoLocator.prototype = {
 			i,
 			handlerMethod,
 			newState,
-			prefix = "",
 			consumed,
 			lastLeaf,
 			currentState,
@@ -562,7 +560,7 @@ PhoneGeoLocator.prototype = {
 
 		if (options) {
 			if (typeof(options.sync) !== 'undefined') {
-				sync = (options.sync == true);
+				sync = !!options.sync;
 			}
 		
 			if (options.loadParams) {

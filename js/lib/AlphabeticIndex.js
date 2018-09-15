@@ -21,7 +21,6 @@
 ilib.js
 Utils.js
 Locale.js
-LocaleInfo.js
 NormString.js
 CType.js
 IString.js
@@ -35,7 +34,6 @@ NormString.js
 var ilib = require("./ilib.js");
 var Utils = require("./Utils.js");
 var Locale = require("./Locale.js");
-var LocaleInfo = require("./LocaleInfo.js");
 var CType = require("./CType.js");
 var IString = require("./IString.js");
 var isIdeo = require("./isIdeo.js");
@@ -153,7 +151,7 @@ var AlphabeticIndex = function (options) {
         }
 
         if (typeof(options.sync) !== 'undefined') {
-            this.sync = (options.sync == true);
+            this.sync = !!options.sync;
         }
         if (options.loadParams) {
             this.loadParams = options.loadParams;
@@ -535,7 +533,7 @@ AlphabeticIndex.prototype.getBucket = function(element) {
     var firstChar;
     var collationValue;
     var charNum, firstBoundaryChar, endBoundaryChar, firstCharNum, endCharNum;
-    var validMapNum = -1;
+    var i, validMapNum = -1;
 
     if (!element) {
         return undefined;
@@ -544,7 +542,7 @@ AlphabeticIndex.prototype.getBucket = function(element) {
     firstChar = this._getFirstChar(element);
 
     if (this.inherit) {
-        for (var i = 0; i < this.mixedCollationMap.length; i++) {
+        for (i = 0; i < this.mixedCollationMap.length; i++) {
             if (this.mixedCollationMap[i].map[firstChar]) {
                 collationValue = this.mixedCollationMap[i].map[firstChar];
                 validMapNum = i;
@@ -573,7 +571,7 @@ AlphabeticIndex.prototype.getBucket = function(element) {
         charNum = IString.toCodePoint(firstChar, 0);
 
         if (this.inherit) {
-            for (var i=0; i < this.inherit.length; i++) {
+            for (i = 0; i < this.inherit.length; i++) {
                 firstBoundaryChar = this._getKeyByValue([this.mixedCollationMap[i].flowBoundaries[0]], i);
                 firstCharNum = IString.toCodePoint(firstBoundaryChar, 0);
 

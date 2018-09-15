@@ -77,7 +77,7 @@ var LocaleMatcher = function(options) {
 		}
 
 		if (typeof(options.sync) !== 'undefined') {
-			sync = (options.sync == true);
+			sync = !!options.sync;
 		}
 
 		if (typeof(options.loadParams) !== 'undefined') {
@@ -252,14 +252,15 @@ LocaleMatcher.prototype = {
 	match: function(locale) {
 		var other = new Locale(locale);
 		var scores = [0, 0, 0, 0];
-
+		var thisfull, otherfull, i;
+		
 		if (this.locale.language === other.language) {
 			scores[0] = 100;
 		} else {
 			if (!this.locale.language || !other.language) {
 				// check for default language
-				var thisfull = this.getLikelyLocale();
-				var otherfull = new Locale(this.info.likelyLocales[other.getSpec()] || other.getSpec());
+				thisfull = this.getLikelyLocale();
+				otherfull = new Locale(this.info.likelyLocales[other.getSpec()] || other.getSpec());
 				if (thisfull.language === otherfull.language) {
 					scores[0] = 100;
 				}
@@ -282,8 +283,8 @@ LocaleMatcher.prototype = {
 		} else {
 			if (!this.locale.script || !other.script) {
 				// check for default script
-				var thisfull = this.locale.script ? this.locale : new Locale(this.info.likelyLocales[this.locale.language]);
-				var otherfull = other.script ? other : new Locale(this.info.likelyLocales[other.language]);
+				thisfull = this.locale.script ? this.locale : new Locale(this.info.likelyLocales[this.locale.language]);
+				otherfull = other.script ? other : new Locale(this.info.likelyLocales[other.language]);
 				if (thisfull.script === otherfull.script) {
 					scores[1] = 100;
 				}
@@ -295,8 +296,8 @@ LocaleMatcher.prototype = {
 		} else {
 			if (!this.locale.region || !other.region) {
 				// check for default region
-				var thisfull = this.getLikelyLocale();
-				var otherfull = new Locale(this.info.likelyLocales[other.getSpec()] || other.getSpec());
+				thisfull = this.getLikelyLocale();
+				otherfull = new Locale(this.info.likelyLocales[other.getSpec()] || other.getSpec());
 				if (thisfull.region === otherfull.region) {
 					scores[2] = 100;
 				}
@@ -304,7 +305,7 @@ LocaleMatcher.prototype = {
 				// check for containment
 				var containers = this.info.territoryContainmentReverse[this.locale.region] || [];
 				// end at 1 because 0 is "001" which is "the whole world" -- which is not useful
-				for (var i = containers.length-1; i > 0; i--) {
+				for (i = containers.length-1; i > 0; i--) {
 					var container = this.info.territoryContainment[containers[i]];
 					if (container && container.indexOf(other.region) > -1) {
 						// same area only accounts for 20% of the region score
@@ -321,7 +322,7 @@ LocaleMatcher.prototype = {
 
 		var total = 0;
 
-		for (var i = 0; i < 4; i++) {
+		for (i = 0; i < 4; i++) {
 			total += scores[i] * componentWeights[i];
 		}
 

@@ -22,18 +22,15 @@
 ilib.js
 Locale.js
 LocaleInfo.js
-Utils.js
 MathUtils.js
 Currency.js
 IString.js
 JSUtils.js
-INumber.js
 */
 
 // !data localeinfo currency
 
 var ilib = require("./ilib.js");
-var Utils = require("./Utils.js");
 var JSUtils = require("./JSUtils.js");
 var MathUtils = require("./MathUtils.js");
 
@@ -41,7 +38,6 @@ var Locale = require("./Locale.js");
 var LocaleInfo = require("./LocaleInfo.js");
 var Currency = require("./Currency.js");
 var IString = require("./IString.js");
-var INumber = require("./INumber.js");
 
 /**
  * @class
@@ -433,8 +429,7 @@ NumFmt.prototype = {
 		var n = new Number(num);
 		var formatted;
 
-		var factor,
-			str = n.toExponential(),
+		var str = n.toExponential(),
 			parts = str.split("e"),
 			significant = parts[0],
 			exponent = parts[1],

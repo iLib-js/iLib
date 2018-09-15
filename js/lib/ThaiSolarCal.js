@@ -1,5 +1,5 @@
 /*
- * thaisolar.js - Represent a Thai solar calendar object.
+ * ThaiSolarCal.js - Represent a Thai solar calendar object.
  *
  * Copyright © 2013-2015,2018, JEDLSoft
  *
@@ -18,9 +18,8 @@
  */
 
 
-/* !depends ilib.js Calendar.js GregorianCal.js MathUtils.js */
+/* !depends Calendar.js GregorianCal.js MathUtils.js */
 
-var ilib = require("./ilib.js");
 var MathUtils = require("./MathUtils.js");
 var Calendar = require("./Calendar.js");
 var GregorianCal = require("./GregorianCal.js");

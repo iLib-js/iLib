@@ -28,12 +28,10 @@ ThaiSolarCal.js
 var ilib = require("./ilib.js");
 var JSUtils = require("./JSUtils.js");
 
-var Calendar = require("./Calendar.js");
 var IDate = require("./IDate.js");
 
 var ThaiSolarCal = require("./ThaiSolarCal.js");
 var GregorianDate = require("./GregorianDate.js");
-var GregRataDie = require("./GregRataDie.js");
 
 /**
  * @class
