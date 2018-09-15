@@ -399,6 +399,7 @@ TimeZone.prototype.getId = function () {
  * @return {string} the name of the time zone, abbreviated according to the style 
  */
 TimeZone.prototype.getDisplayName = function (date, style) {
+    var temp;
 	style = (this.isLocal || typeof(this.zone) === 'undefined') ? "rfc822" : (style || "standard");
 	switch (style) {
 		default:
@@ -407,7 +408,7 @@ TimeZone.prototype.getDisplayName = function (date, style) {
 				if (this.zone.f.indexOf("{c}") !== -1) {
 					var letter = "";
 					letter = this.inDaylightTime(date) ? this.zone.s && this.zone.s.c : this.zone.e && this.zone.e.c; 
-					var temp = new IString(this.zone.f);
+					temp = new IString(this.zone.f);
 					return temp.format({c: letter || ""});
 				}
 				return this.zone.f;
@@ -417,7 +418,7 @@ TimeZone.prototype.getDisplayName = function (date, style) {
 				temp += "+" + this.zone.s.v;
 			}
 			return temp;
-			break;
+
 		case 'rfc822':
 			var offset = this.getOffset(date), // includes the DST if applicable
 				ret = "UTC",
@@ -435,12 +436,13 @@ TimeZone.prototype.getDisplayName = function (date, style) {
 				}
 				ret += minute;
 			}
-			return ret; 
+			return ret;
+
 		case 'long':
 			if (this.zone.n) {
 				if (this.zone.n.indexOf("{c}") !== -1) {
 					var str = this.inDaylightTime(date) ? "Daylight" : "Standard"; 
-					var temp = new IString(this.zone.n);
+					temp = new IString(this.zone.n);
 					return temp.format({c: str || ""});
 				}
 				return this.zone.n;
@@ -450,7 +452,6 @@ TimeZone.prototype.getDisplayName = function (date, style) {
 				temp += "+" + this.zone.s.v;
 			}
 			return temp;
-			break;
 	}
 };
 

@@ -90,7 +90,7 @@ var ListFmt = function(options) {
 		}
 
 		if (typeof(options.sync) !== 'undefined') {
-			this.sync = (options.sync == true);
+			this.sync = !!options.sync;
 		}
 
 		if (options.length) {

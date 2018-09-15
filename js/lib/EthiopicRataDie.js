@@ -18,12 +18,10 @@
  */
 
 /* !depends 
-ilib.js
 EthiopicCal.js
 RataDie.js
 */
 
-var ilib = require("./ilib.js");
 var EthiopicCal = require("./EthiopicCal.js");
 var RataDie = require("./RataDie.js");
 

@@ -1,5 +1,5 @@
 /*
- * persianastro.js - Represent a Persian astronomical (Hijjri) calendar object.
+ * PersianCal.js - Represent a Persian astronomical (Hijjri) calendar object.
  * 
  * Copyright © 2014-2015,2018, JEDLSoft
  *
@@ -21,12 +21,7 @@
 /* !depends 
 Calendar.js 
 PersRataDie.js 
-ilib.js
-MathUtils.js
 */
-
-var ilib = require("./ilib.js");
-var MathUtils = require("./MathUtils.js");
 
 var Calendar = require("./Calendar.js");
 

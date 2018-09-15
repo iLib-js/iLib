@@ -1,5 +1,5 @@
 /*
- * coptic.js - Represent a Coptic calendar object.
+ * CopticCal.js - Represent a Coptic calendar object.
  * 
  * Copyright © 2015,2018, JEDLSoft
  *
@@ -18,11 +18,9 @@
  */
 
 
-/* !depends ilib.js Calendar.js Locale.js Utils.js EthiopicCal.js */
+/* !depends Calendar.js Utils.js EthiopicCal.js */
 
-var ilib = require("./ilib.js");
 var Utils = require("./Utils.js");
-var Locale = require("./Locale.js");
 var Calendar = require("./Calendar.js");
 var EthiopicCal = require("./EthiopicCal.js");
 

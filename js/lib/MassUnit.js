@@ -19,11 +19,9 @@
 
 /*
 !depends
-ilib.js
 Measurement.js
 */
 
-var ilib = require("./ilib.js");
 var Measurement = require("./Measurement.js");
 
 /**

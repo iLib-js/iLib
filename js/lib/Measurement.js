@@ -346,7 +346,7 @@ Measurement.prototype = {
     list: function(measures, ratios, constrain, scale) {
         var row = ratios[this.unit];
         var ret = [];
-        var remainder, i, scaled, index;
+        var scaled;
         var unit = this.unit;
         var amount = this.amount;
         constrain = constrain || round;

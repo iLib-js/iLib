@@ -123,8 +123,7 @@ var IString = require("./IString.js");
  * @param {Object=} options options which govern the construction of this instance
  */
 var CharmapTable = function(options) {
-    var sync = true,
-        loadParams = undefined;
+    var sync = true;
 
     // console.log("CharmapTable: constructor with options: " + JSON.stringify(options));
 

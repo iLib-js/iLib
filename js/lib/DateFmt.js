@@ -23,9 +23,7 @@ ilib.js
 Locale.js 
 IDate.js
 DateFactory.js  
-IString.js 
 ResBundle.js 
-Calendar.js
 CalendarFactory.js
 LocaleInfo.js
 TimeZone.js
@@ -46,10 +44,8 @@ var LocaleInfo = require("./LocaleInfo.js");
 
 var IDate = require("./IDate.js");
 var DateFactory = require("./DateFactory.js");
-var Calendar = require("./Calendar.js");
 var CalendarFactory = require("./CalendarFactory.js");
 
-var IString = require("./IString.js");
 var ResBundle = require("./ResBundle.js");
 var TimeZone = require("./TimeZone.js");
 var GregorianCal = require("./GregorianCal.js");
@@ -313,7 +309,7 @@ var ISet = require("./ISet.js");
  * @param {Object} options options governing the way this date formatter instance works
  */
 var DateFmt = function(options) {
-	var arr, i, bad, 
+	var arr, i, bad, c, comps,
 		sync = true, 
 		loadParams = undefined;
 	
@@ -354,7 +350,7 @@ var DateFmt = function(options) {
 	    var dateComps = new ISet();
 	    bad = false;
 	    for (i = 0; i < arr.length; i++) {
-	        var c = arr[i].toLowerCase();
+	        c = arr[i].toLowerCase();
 	        if (c === "e") c = "w"; // map ICU -> ilib
 	        if (c !== 'd' && c !== 'm' && c !== 'y' && c !== 'w' && c !== 'n') {
 	            // ignore time components and the era
@@ -367,7 +363,7 @@ var DateFmt = function(options) {
 	        }
 	    }
 	    if (!bad) {
-	        var comps = dateComps.asArray().sort(function (left, right) {
+	        comps = dateComps.asArray().sort(function (left, right) {
 	            return (left < right) ? -1 : ((right < left) ? 1 : 0);
 	        });
 	        this.dateComponents = comps.join("");
@@ -379,7 +375,7 @@ var DateFmt = function(options) {
 	    var timeComps = new ISet();
 	    this.badTime = false;
 	    for (i = 0; i < arr.length; i++) {
-	        var c = arr[i].toLowerCase();
+	        c = arr[i].toLowerCase();
 	        if (c !== 'h' && c !== 'm' && c !== 's' && c !== 'a' && c !== 'z') {
 	            // ignore the date components
 	            if (c !== 'd' && c !== 'm' && c !== 'y' && c !== 'w' && c !== 'e' && c !== 'n' && c !== 'g') {
@@ -391,7 +387,7 @@ var DateFmt = function(options) {
 	        }
 	    }
 	    if (!this.badTime) {
-	        var comps = timeComps.asArray().sort(function (left, right) {
+	        comps = timeComps.asArray().sort(function (left, right) {
 	            return (left < right) ? -1 : ((right < left) ? 1 : 0);
 	        });
 	        this.timeComponents = comps.join("");
@@ -1504,7 +1500,7 @@ DateFmt.prototype = {
 		reference = DateFactory._dateToIlib(reference);
 		date = DateFactory._dateToIlib(date);
 
-		var referenceRd, dateRd, fmt, time, diff, absDiff, num;
+		var referenceRd, dateRd, fmt, diff, absDiff, num;
 
 		if (typeof(reference) !== 'object' || !reference.getCalendar || reference.getCalendar() !== this.calName ||
 			typeof(date) !== 'object' || !date.getCalendar || date.getCalendar() !== this.calName) {

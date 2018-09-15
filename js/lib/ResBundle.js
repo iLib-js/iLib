@@ -241,7 +241,7 @@ var ResBundle = function (options) {
 		this.lengthen = options.lengthen || false;
 		
 		if (typeof(options.sync) !== 'undefined') {
-			this.sync = (options.sync == true);
+			this.sync = !!options.sync;
 		}
 		
 		if (typeof(options.loadParams) !== 'undefined') {
