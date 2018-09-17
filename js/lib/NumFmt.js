@@ -446,7 +446,7 @@ NumFmt.prototype = {
             if (this.significantDigits > 0) {
                 maxDigits = Math.min(maxDigits, this.significantDigits);
             }
-            significant = MathUtils.significant(significant, maxDigits, this.round);
+            significant = MathUtils.significant(Number(significant), maxDigits, this.round);
         }
 		numparts = ("" + significant).split(".");
 		integral = numparts[0];

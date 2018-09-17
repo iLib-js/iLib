@@ -128,7 +128,7 @@ Country.getAvailableCode = function() {
 			name: "ctryreverse"
 		}).getResObj();
 
-	return Object.keys(countries);
+	return countries && Object.keys(countries);
 };
 
 /**

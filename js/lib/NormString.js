@@ -441,7 +441,7 @@ NormString.prototype.normalize = function (form) {
     }
 
     var dstr = new IString(decomp);
-    var it = dstr.charIterator();
+    it = dstr.charIterator();
     var end, testChar, cpArray = [];
 
     // easier to deal with as an array of chars

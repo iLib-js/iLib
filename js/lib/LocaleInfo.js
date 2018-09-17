@@ -183,6 +183,7 @@ LocaleInfo.defaultInfo = LocaleInfo.defaultInfo || {
         "pctFmt": "{n}%",
         "negativepctFmt": "-{n}%",
         "roundingMode": "halfdown",
+        "secGroupSize": null,
         "useNative": false
     },
     "paperSizes": {

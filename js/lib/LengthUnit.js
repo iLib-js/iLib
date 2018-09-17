@@ -42,7 +42,7 @@ var LengthUnit = function (options) {
     this.aliasesLower = LengthUnit.aliasesLower;
     this.systems = LengthUnit.systems;
 
-    this.parent(options);
+    this.parent.call(this, options);
 };
 
 LengthUnit.prototype = new Measurement();

@@ -604,10 +604,10 @@ ResBundle.prototype = {
 	 * and IString instance. This means it cannot be formatted with the format()
 	 * method without being wrapped in an IString instance first.
 	 * 
-	 * @param {?string=|Array.<string>=} source the source string to translate
-	 * @param {?string=|Array.<string>=} key optional name of the key, if any
+	 * @param {?string|Array.<string>=} source the source string to translate
+	 * @param {?string|Array.<string>=} key optional name of the key, if any
 	 * @param {?string=} escapeMode escape mode, if any
-	 * @return {string|undefined} the translation of the given source/key or undefined 
+	 * @return {string|Array.<string>|undefined} the translation of the given source/key or undefined 
 	 * if the translation is not found and the source is undefined
 	 */
 	getStringJS: function(source, key, escapeMode) {

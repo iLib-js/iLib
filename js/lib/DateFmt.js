@@ -947,7 +947,7 @@ DateFmt.prototype = {
 	 * CLDR frequently, and possible orderings cannot be predicted. Your code should 
 	 * support all 6 possibilities, just in case.
 	 * 
-	 * @return {String} a string giving the date component order
+	 * @return {string} a string giving the date component order
 	 */
 	getDateComponentOrder: function() {
 	    return this.componentOrder;
@@ -1437,7 +1437,7 @@ DateFmt.prototype = {
 	 * constructed. If the types are not compatible, this formatter will
 	 * produce bogus results.
 	 * 
-	 * @param {IDate|Number|String|Date|JulianDay|null|undefined} dateLike a date-like object to format
+	 * @param {IDate|number|string|Date|JulianDay|null|undefined} dateLike a date-like object to format
 	 * @return {string} the formatted version of the given date instance
 	 */
 	format: function (dateLike) {
@@ -1490,8 +1490,8 @@ DateFmt.prototype = {
 	 * <li>longer than 2 years: "X years ago" or "in X years"
 	 * </ul>
 	 * 
-	 * @param {IDate|Number|String|Date|JulianDay|null|undefined} reference a date that the date parameter should be relative to
-	 * @param {IDate|Number|String|Date|JulianDay|null|undefined} date a date being formatted
+	 * @param {IDate|number|string|Date|JulianDay|null|undefined} reference a date that the date parameter should be relative to
+	 * @param {IDate|number|string|Date|JulianDay|null|undefined} date a date being formatted
 	 * @throws "Wrong calendar type" when the start or end dates are not the same
 	 * calendar type as the formatter itself
 	 * @return {string} the formatted relative date

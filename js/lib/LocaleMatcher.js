@@ -374,7 +374,7 @@ LocaleMatcher.prototype = {
      * likely "ja-JP" (Japanese for Japan), and the region containment info for Japan
      * is checked against the other locale's region containment info.
      *
-     * @param {String|Locale} otherLocale a locale specifier or a Locale instance to
+     * @param {string|Locale} otherLocale a locale specifier or a Locale instance to
      * compare against
      * @returns {string} the region specifier of the smallest region containing both the
      * current locale and other locale

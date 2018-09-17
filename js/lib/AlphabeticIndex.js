@@ -372,7 +372,7 @@ AlphabeticIndex.prototype.addElement = function(element) {
  * bucket), then the default position is at the end of
  * the list right before the underflow bucket.
  *
- * @param {Array.<String>} labels array of labels to add
+ * @param {Array.<string>} labels array of labels to add
  * in the order you would like to see them returned
  * @param {number=} start the position in the bucket
  * labels list to add these new labels
@@ -625,7 +625,7 @@ AlphabeticIndex.prototype.getBucketCount = function() {
  * will include the under- and overflow labels if
  * they are used in this index.
  *
- * @returns {Array.<String>} the array of bucket labels
+ * @returns {Array.<string>} the array of bucket labels
  * for this index in collation order
  */
 AlphabeticIndex.prototype.getBucketLabels = function() {
@@ -639,7 +639,7 @@ AlphabeticIndex.prototype.getBucketLabels = function() {
  * locale. This includes all bucket labels, even if those
  * buckets do not contain any elements.
  *
- * @returns {Array.<String>} the array of bucket labels
+ * @returns {Array.<string>} the array of bucket labels
  * for this index in collation order
  */
 AlphabeticIndex.prototype.getAllBucketLabels = function() {
