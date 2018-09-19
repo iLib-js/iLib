@@ -37,6 +37,9 @@ module.exports = function(grunt) {
             },
         },
         shell: {
+            copy_pkgJson: {
+                command: 'cp js/package.json .'
+            },
             mkli: {
                 command: 'cd js/data/locale; node ../../../tools/build/mkli.js' // create localeinfo.json
             },
@@ -125,7 +128,8 @@ module.exports = function(grunt) {
             }
         },
         clean: {
-            all : ['dist', 'export', 'js/output', 'js/locale', 'js/package.json', 'docs/demo/demo.tgz', 'docs/demo/scripts/ilib-demo.js' ]
+            all : ['dist', 'export', 'js/output', 'js/locale', 'js/package.json', 'docs/demo/demo.tgz', 'docs/demo/scripts/ilib-demo.js' ],
+            rm_lijson : ['js/**/localeinfo.json']
         },
         replace: {
             ilibVersion: {
@@ -133,6 +137,14 @@ module.exports = function(grunt) {
                 dest: 'js/output/js/',
                 replacements: [{
                     from: '// !macro ilibVersion',
+                    to: '"<%= pkg.version %>"'
+                }]
+            },
+            pkgVersion: {
+                src: ['js/package.json.template'],
+                dest: 'js/package.json',
+                replacements: [{
+                    from: '"@fullversion@"',
                     to: '"<%= pkg.version %>"'
                 }]
             }
@@ -155,8 +167,9 @@ module.exports = function(grunt) {
             api_doc: {
                 src: ['js/lib/*.js', 'README.md'], // !src/**/nls/**/*.js
                 options: {
-                    ignoreWarnings: true,
-                    destination: 'js/output/jsdoc'
+                    //ignoreWarnings: true,
+                    destination: 'js/output/jsdoc',
+                    private:true
                 }
             }
         },
@@ -164,16 +177,11 @@ module.exports = function(grunt) {
             run: {
                 // Target-specific file lists and/or options go here.
                   closurePath: 'tools/google-closure-compiler.r20150920',
-                  //js: 'js/lib/ilib.js',
-                  js: 'js/temp/ilib-ut.js',
-                  jsOutputFile: 'js/temp/ilib-ut-min.js',
+                  js: 'js/output/js/full-assembled-uncompiled-web/ilib-full.js',
+                  jsOutputFile: 'js/output/js/full-assembled-uncompiled-web/ilib-full-closure.js',
                   maxBuffer: 1000,
                   options: {
-                       compilation_level: 'SIMPLE_OPTIMIZATIONS',
-                       /*define: [
-                          '"DEBUG=false"',
-                           '"UI_DELAY=500"'
-                        ]*/
+                       compilation_level: 'SIMPLE_OPTIMIZATIONS'
                   }
             },
         },
@@ -184,14 +192,12 @@ module.exports = function(grunt) {
             }
         }
   });
-
     grunt.loadNpmTasks('grunt-mkdir');
     grunt.loadNpmTasks('grunt-move');
     grunt.loadNpmTasks('grunt-md5sum');
     grunt.loadNpmTasks('grunt-shell');
     grunt.loadNpmTasks('grunt-text-replace');
     grunt.loadNpmTasks('grunt-jsdoc');
-
     grunt.loadNpmTasks('grunt-closure-compiler');
 
     grunt.loadNpmTasks('grunt-contrib-clean');
@@ -199,24 +205,19 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-compress');
     grunt.loadNpmTasks('grunt-contrib-uglify');
 
+    grunt.registerTask('build_jsonWork', ['mkdir:prepare', 'replace:pkgVersion','shell:copy_pkgJson','shell:mkli', 'shell:touch_localeinfoStamp', 'shell:compressJson', 'shell:touch_compressJsonStamp', 'shell:gen_manifest_locale']);
+    grunt.registerTask('build_copyJson', ['mkdir:export', 'copy:export_locale']);
+    grunt.registerTask('build_core', ['webpack_assemble_core', 'webpack_assemble_core_compiled', 'webpack_assemble_core_dyndata', 'webpack_assemble_core_dyndata_compiled']);
+    grunt.registerTask('build_standard', ['webpack_assemble_standard', 'webpack_assemble_standard_compiled','webpack_assemble_standard_dyndata', 'webpack_assemble_standard_dyndata_compiled']);
+    grunt.registerTask('build_full', ['webpack_assemble_full', 'webpack_assemble_full_compiled','webpack_assemble_full_dyndata','webpack_assemble_full_dyndata_compiled' ]);
+    grunt.registerTask('build_uglify', ['uglifyFiles'/*, 'jsdoc:api_doc'*/]);
+    grunt.registerTask('build_export', ['mkdir:dist', 'copy:export_js_assemble','copy:export_dyncode', 'copy:export_jsdoc', 'copy:export_package','copy:export_package_lib', 'copy:export_package_locale']);
 
-    grunt.registerTask('build_step1', ['mkdir:prepare', 'shell:mkli', 'shell:touch_localeinfoStamp', 'shell:compressJson', 'shell:touch_compressJsonStamp', 'shell:gen_manifest_locale']);
-    grunt.registerTask('build_step2', ['mkdir:export', 'copy:export_locale']);
-    grunt.registerTask('build_step3', ['webpack_assemble_core', 'webpack_assemble_core_compiled', 'webpack_assemble_core_dyndata', 'webpack_assemble_core_dyndata_compiled']);
-    grunt.registerTask('build_step4', ['webpack_assemble_standard', 'webpack_assemble_standard_compiled','webpack_assemble_standard_dyndata', 'webpack_assemble_standard_dyndata_compiled']);
-    grunt.registerTask('build_step5', ['webpack_assemble_full', 'webpack_assemble_full_compiled','webpack_assemble_full_dyndata','webpack_assemble_full_dyndata_compiled' ]);
-    grunt.registerTask('build_step6', ['uglifyFiles', 'jsdoc:api_doc']);
-    grunt.registerTask('build_step7', ['mkdir:dist', 'copy:export_js_assemble','copy:export_dyncode', 'copy:export_jsdoc', 'copy:export_package','copy:export_package_lib', 'copy:export_package_locale']);
-
-
-    // Temp
+    grunt.registerTask('build_all', ['build_jsonWork', 'build_copyJson', 'build_core', 'build_standard', 'build_full', 'build_uglify', 'build_export']);
     grunt.registerTask('dist', ['compress', 'md5sum']);
-    grunt.registerTask('clean', ['clean:all']);
-    grunt.registerTask('default', ['test']);
-    grunt.registerTask('build', ['shell:mkli', 'shell:touch_localeinfoStamp', 'shell:compressJson', 'shell:touch_compressJsonStamp' ]);
-
-
     grunt.registerTask('uglifyFiles', ['replace:ilibVersion', 'shell:uglifyfile', 'shell:qmlizer', 'uglify:all']);
+    
+    grunt.registerTask('default', ['']);
 
     // Webpack Run
     /*
@@ -241,38 +242,28 @@ module.exports = function(grunt) {
     grunt.registerTask('webpack_assemble_full_compiled', ['shell:run_webpack:assembly full compiled web locales_default']);
     grunt.registerTask('webpack_assemble_full_dyndata', ['shell:run_webpack:dynamicdata full uncompiled web locales_default']);
     grunt.registerTask('webpack_assemble_full_dyndata_compiled', ['shell:run_webpack:dynamicdata full compiled web locales_default']);
-    
 
     grunt.registerTask('webpack_assemble_unittest', ['shell:run_webpack:assembly ut uncompiled web locales_unittest']);
     grunt.registerTask('webpack_assemble_unittest_compiled', ['shell:run_webpack:assembly ut compiled web locales_unittest']);
     
     grunt.registerTask('webpack_assemble_unittest_dyndata', ['shell:run_webpack:dynamicdata ut uncompiled web locales_unittest']);
     grunt.registerTask('webpack_assemble_unittest_dyndata_compiled', ['shell:run_webpack:dynamicdata ut compiled web locales_unittest']);
-
-    
     grunt.registerTask('webpack_assemble_unittest_node', ['shell:run_webpack:assembly ut uncompiled node locales_unittest']);
     
-    /*
-    ERROR in ilib-full-compiled.js from UglifyJs
-    Invalid syntax: 0dmy [ilib-full-compiled.js:40209,111]
-    */
     grunt.registerTask('webpack_assemble_unittest_node_compiled', ['shell:run_webpack:assembly ut compiled node locales_unittest']);
-
     grunt.registerTask('webpack_assemble_unittest_dyndata_node', ['shell:run_webpack:dynamicdata ut uncompiled node locales_unittest']);
     grunt.registerTask('webpack_assemble_unittest_dyndata_node_compiled', ['shell:run_webpack:dynamicdata ut compiled node locales_unittest']);
-
     grunt.registerTask('webpack_assemble_demo', ['shell:run_webpack:asembly demo uncompiled node locales_demo']);
 
-/*
-    ERROR in ilib-demo-compiled.js from UglifyJs
-    Invalid syntax: 0dmy [ilib-demo-compiled.js:40612,111]
-*/
     grunt.registerTask('webpack_assemble_demo_compiled', ['shell:run_webpack:assembly demo compiled node locales_demo']);
-
     grunt.registerTask('webpack_assemble_demo_dyndata', ['shell:run_webpack:dynamicdata demo uncompiled node locales_demo']);
     grunt.registerTask('webpack_assemble_demo_dyndata_compiled', ['shell:run_webpack:dynamicdata demo compiled node locales_demo']);
 
+
     // Test Run
+
+    grunt.registerTask('test_all_nu', ['test_dynamic_uncompiled_nu_sync','test_dynamic_uncompiled_nu_async','test_dynamic_compiled_nu_sync','test_dynamic_compiled_nu_async', 'test_assembled_uncompiled_nu_sync', 'test_assembled_uncompiled_nu_async', 'test_assembled_compiled_nu_sync', 'test_assembled_compiled_nu_async','test_dyndata_uncompiled_nu_sync', 'test_dyndata_uncompiled_nu_async', 'test_dyndata_compiled_nu_sync', 'test_dyndata_compiled_nu_async' ])
+
     grunt.registerTask('test_dynamic_uncompiled_nu_sync', ['shell:runNodeunitAll:all dynamic uncompiled sync']);
     grunt.registerTask('test_dynamic_uncompiled_nu_async', ['shell:runNodeunitAll:all dynamic uncompiled async']);
 
@@ -290,8 +281,6 @@ module.exports = function(grunt) {
 
     grunt.registerTask('test_dyndata_compiled_nu_sync', ['shell:runNodeunitAll:all dynamicdata compiled sync']);
     grunt.registerTask('test_dyndata_compiled_nu_async', ['shell:runNodeunitAll:all dynamicdata compiled async']);
-
-    grunt.registerTask('test_all_nu', ['test_dynamic_uncompiled_nu_sync','test_dynamic_uncompiled_nu_async','test_dynamic_compiled_nu_sync','test_dynamic_compiled_nu_async', 'test_assembled_uncompiled_nu_sync', 'test_assembled_uncompiled_nu_async', 'test_assembled_compiled_nu_sync', 'test_assembled_compiled_nu_async','test_dyndata_uncompiled_nu_sync', 'test_dyndata_uncompiled_nu_async', 'test_dyndata_compiled_nu_sync', 'test_dyndata_compiled_nu_async' ])
 
     grunt.registerTask('test_address_nu_sync', ['shell:runNodeunit:sync address']);
     grunt.registerTask('test_calendar_nu_sync', ['shell:runNodeunit:sync calendar']);
