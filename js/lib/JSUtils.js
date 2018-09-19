@@ -98,8 +98,8 @@ JSUtils.mapString = function (str, map) {
  * available, but use a slower implementation in older engines as well.
  * 
  * @static
- * @param {Array.<Object>} array array to search
- * @param {Object} obj object being sought. This should be of the same type as the
+ * @param {Array.<Object|string|number>} array array to search
+ * @param {Object|string|number} obj object being sought. This should be of the same type as the
  * members of the array being searched. If not, this function will not return
  * any results.
  * @return {number} index of the object in the array, or -1 if it is not in the array.

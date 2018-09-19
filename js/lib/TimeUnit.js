@@ -42,7 +42,7 @@ var TimeUnit = function (options) {
     this.aliasesLower = TimeUnit.aliasesLower;
     this.systems = TimeUnit.systems;
 
-    this.parent(options);
+    this.parent.call(this, options);
 };
 
 TimeUnit.prototype = new Measurement();

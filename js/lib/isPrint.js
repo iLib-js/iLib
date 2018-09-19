@@ -17,9 +17,8 @@
  * limitations under the License.
  */
 
-// !depends CType.js isCntrl.js
+// !depends isCntrl.js
 
-var CType = require("./CType.js");
 var isCntrl = require("./isCntrl.js");
 
 /**

@@ -1,5 +1,5 @@
 /*
- * gregratadie.js - Represent the RD date number in the Gregorian calendar
+ * GregRataDie.js - Represent the RD date number in the Gregorian calendar
  * 
  * Copyright © 2014-2015, JEDLSoft
  *
@@ -18,13 +18,11 @@
  */
 
 /* !depends 
-ilib.js
 GregorianCal.js
 RataDie.js
 MathUtils.js
 */
 
-var ilib = require("./ilib.js");
 var MathUtils = require("./MathUtils.js");
 var GregorianCal = require("./GregorianCal.js");
 var RataDie = require("./RataDie.js");
