@@ -22,7 +22,6 @@
 var ilib = require("./ilib.js");
 var SearchUtils = require("./SearchUtils.js");
 var Utils = require("./Utils.js");
-var Locale = require("./Locale.js");
 var IString = require("./IString.js");
 
 /**
@@ -81,7 +80,7 @@ var CType = {};
  * range
  */
 CType._inRange = function(num, rangeName, obj) {
-	var range, i;
+	var range;
 	if (num < 0 || !rangeName || !obj) {
 		return false;
 	}

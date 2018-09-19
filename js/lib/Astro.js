@@ -27,7 +27,6 @@
 
 var ilib = require("./ilib.js");
 var Utils = require("./Utils.js");
-var MathUtils = require("./MathUtils.js");
 var SearchUtils = require("./SearchUtils.js");
 
 var GregorianDate = require("./GregorianDate.js");
@@ -652,8 +651,7 @@ Astro._julianCenturies = function(jd) {
 Astro._solarLongitude = function(jd) {
 	var c = Astro._julianCenturies(jd),
 		longitude = 0,
-		len = ilib.data.astro._solarLongCoeff.length,
-		row;
+		len = ilib.data.astro._solarLongCoeff.length;
 	
 	for (var i = 0; i < len; i++) {
 		longitude += ilib.data.astro._solarLongCoeff[i] * 

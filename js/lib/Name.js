@@ -441,7 +441,7 @@ Name.prototype = {
 
             if (this.isAsianName) {
                 // all-asian names
-                if (this.useSpaces == false) {
+                if (this.useSpaces === false) {
                     name = name.replace(/\s+/g, ''); // eliminate all whitespaces
                 }
                 parts = name.trim().split('');

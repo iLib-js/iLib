@@ -63,14 +63,14 @@ var ResBundle = require("./ResBundle.js");
 var Country = function (options) {
 	var sync = true,
 	    loadParams = undefined,
-	    locale, localeinfo;
+	    locale;
 
 	if (options) {
 		if (options.locale) {
 			this.locale = (typeof(options.locale) === 'string') ? new Locale(options.locale) : options.locale;
 		}
 		if (typeof(options.sync) !== 'undefined') {
-			sync = options.sync;
+			sync = !!options.sync;
 		}
 		if (options.loadParams) {
 			loadParams = options.loadParams;
@@ -126,7 +126,7 @@ Country.getAvailableCode = function() {
 			name: "ctryreverse"
 		}).getResObj();
 
-	return Object.keys(countries);
+	return countries && Object.keys(countries);
 };
 
 /**

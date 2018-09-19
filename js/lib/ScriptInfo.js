@@ -62,7 +62,7 @@ var ScriptInfo = function(script, options) {
 	
 	if (options) {
 		if (typeof(options.sync) !== 'undefined') {
-			sync = (options.sync == true);
+			sync = !!options.sync;
 		}
 		
 		if (typeof(options.loadParams) !== 'undefined') {

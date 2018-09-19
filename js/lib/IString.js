@@ -814,7 +814,6 @@ IString.prototype = {
 	 */
 	formatChoice: function(argIndex, params) {
 		var choices = this.str.split("|");
-		var type = typeof(argIndex);
 		var limits = [];
 		var strings = [];
 		var i;

@@ -17,7 +17,6 @@
  * limitations under the License.
  */
 
-var ilib = require("./ilib.js");
 var EthiopicCal = require("./EthiopicCal.js");
 var RataDie = require("./RataDie.js");
 

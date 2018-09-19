@@ -17,7 +17,6 @@
  * limitations under the License.
  */
 
-var CType = require("./CType.js");
 var IString = require("./IString.js");
 var isAlpha = require("./isAlpha.js");
 var isDigit = require("./isDigit.js");

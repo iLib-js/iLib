@@ -20,18 +20,14 @@
 // !data dateformats sysres
 
 var ilib = require("./ilib.js");
-var Utils = require("./Utils.js");
 var JSUtils = require("./JSUtils.js");
 
 var Locale = require("./Locale.js");
-var LocaleInfo = require("./LocaleInfo.js");
 
-var IDate = require("./IDate.js");
 var CalendarFactory = require("./CalendarFactory.js");
 
 var DateFmt = require("./DateFmt.js");
 var IString = require("./IString.js");
-var TimeZone = require("./TimeZone.js");
 var GregorianCal = require("./GregorianCal.js");
 
 var DateFactory = require("./DateFactory.js");
@@ -141,7 +137,7 @@ var DateRngFmt = function(options) {
 			}
 		}
 		if (typeof(options.sync) !== 'undefined') {
-			sync = (options.sync == true);
+			sync = !!options.sync;
 		}
 		
 		loadParams = options.loadParams;

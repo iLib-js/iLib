@@ -28,10 +28,8 @@ var LocaleInfo = require("./LocaleInfo.js");
 
 var IDate = require("./IDate.js");
 var DateFactory = require("./DateFactory.js");
-var Calendar = require("./Calendar.js");
 var CalendarFactory = require("./CalendarFactory.js");
 
-var IString = require("./IString.js");
 var ResBundle = require("./ResBundle.js");
 var TimeZone = require("./TimeZone.js");
 var GregorianCal = require("./GregorianCal.js");
@@ -295,7 +293,7 @@ var ISet = require("./ISet.js");
  * @param {Object} options options governing the way this date formatter instance works
  */
 var DateFmt = function(options) {
-	var arr, i, bad, 
+	var arr, i, bad, c, comps,
 		sync = true, 
 		loadParams = undefined;
 	
@@ -336,7 +334,7 @@ var DateFmt = function(options) {
 	    var dateComps = new ISet();
 	    bad = false;
 	    for (i = 0; i < arr.length; i++) {
-	        var c = arr[i].toLowerCase();
+	        c = arr[i].toLowerCase();
 	        if (c === "e") c = "w"; // map ICU -> ilib
 	        if (c !== 'd' && c !== 'm' && c !== 'y' && c !== 'w' && c !== 'n') {
 	            // ignore time components and the era
@@ -349,7 +347,7 @@ var DateFmt = function(options) {
 	        }
 	    }
 	    if (!bad) {
-	        var comps = dateComps.asArray().sort(function (left, right) {
+	        comps = dateComps.asArray().sort(function (left, right) {
 	            return (left < right) ? -1 : ((right < left) ? 1 : 0);
 	        });
 	        this.dateComponents = comps.join("");
@@ -361,7 +359,7 @@ var DateFmt = function(options) {
 	    var timeComps = new ISet();
 	    this.badTime = false;
 	    for (i = 0; i < arr.length; i++) {
-	        var c = arr[i].toLowerCase();
+	        c = arr[i].toLowerCase();
 	        if (c !== 'h' && c !== 'm' && c !== 's' && c !== 'a' && c !== 'z') {
 	            // ignore the date components
 	            if (c !== 'd' && c !== 'm' && c !== 'y' && c !== 'w' && c !== 'e' && c !== 'n' && c !== 'g') {
@@ -373,7 +371,7 @@ var DateFmt = function(options) {
 	        }
 	    }
 	    if (!this.badTime) {
-	        var comps = timeComps.asArray().sort(function (left, right) {
+	        comps = timeComps.asArray().sort(function (left, right) {
 	            return (left < right) ? -1 : ((right < left) ? 1 : 0);
 	        });
 	        this.timeComponents = comps.join("");
@@ -932,7 +930,7 @@ DateFmt.prototype = {
 	 * CLDR frequently, and possible orderings cannot be predicted. Your code should 
 	 * support all 6 possibilities, just in case.
 	 * 
-	 * @return {String} a string giving the date component order
+	 * @return {string} a string giving the date component order
 	 */
 	getDateComponentOrder: function() {
 	    return this.componentOrder;
@@ -1422,7 +1420,7 @@ DateFmt.prototype = {
 	 * constructed. If the types are not compatible, this formatter will
 	 * produce bogus results.
 	 * 
-	 * @param {IDate|Number|String|Date|JulianDay|null|undefined} dateLike a date-like object to format
+	 * @param {IDate|number|string|Date|JulianDay|null|undefined} dateLike a date-like object to format
 	 * @return {string} the formatted version of the given date instance
 	 */
 	format: function (dateLike) {
@@ -1475,8 +1473,8 @@ DateFmt.prototype = {
 	 * <li>longer than 2 years: "X years ago" or "in X years"
 	 * </ul>
 	 * 
-	 * @param {IDate|Number|String|Date|JulianDay|null|undefined} reference a date that the date parameter should be relative to
-	 * @param {IDate|Number|String|Date|JulianDay|null|undefined} date a date being formatted
+	 * @param {IDate|number|string|Date|JulianDay|null|undefined} reference a date that the date parameter should be relative to
+	 * @param {IDate|number|string|Date|JulianDay|null|undefined} date a date being formatted
 	 * @throws "Wrong calendar type" when the start or end dates are not the same
 	 * calendar type as the formatter itself
 	 * @return {string} the formatted relative date
@@ -1485,7 +1483,7 @@ DateFmt.prototype = {
 		reference = DateFactory._dateToIlib(reference);
 		date = DateFactory._dateToIlib(date);
 
-		var referenceRd, dateRd, fmt, time, diff, absDiff, num;
+		var referenceRd, dateRd, fmt, diff, absDiff, num;
 
 		if (typeof(reference) !== 'object' || !reference.getCalendar || reference.getCalendar() !== this.calName ||
 			typeof(date) !== 'object' || !date.getCalendar || date.getCalendar() !== this.calName) {

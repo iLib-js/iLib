@@ -592,7 +592,7 @@ var PhoneHandlerFactory = function (locale, plan) {
 	switch (region) {
 	case 'US':
 		return new USStateHandler();
-		break;
+
 	default:
 		return new PhoneHandler();
 	}

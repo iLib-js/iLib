@@ -84,7 +84,7 @@ var ListFmt = function(options) {
 		}
 
 		if (typeof(options.sync) !== 'undefined') {
-			this.sync = (options.sync == true);
+			this.sync = !!options.sync;
 		}
 
 		if (options.length) {
@@ -120,7 +120,7 @@ var ListFmt = function(options) {
  * Format a list of strings as grammatical text that is appropriate 
  * for the locale of this formatter.
  * 
- * @param {Array.<String>} items an array of strings to format in
+ * @param {Array.<string>} items an array of strings to format in
  * order that you would like them to appear
  * @returns {string} a string containing the list of items that
  * is grammatically correct for the locale of this formatter

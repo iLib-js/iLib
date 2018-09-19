@@ -17,7 +17,6 @@
  * limitations under the License.
  */
 
-var ilib = require("./ilib.js");
 var MathUtils = require("./MathUtils.js");
 var Calendar = require("./Calendar.js");
 

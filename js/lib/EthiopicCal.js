@@ -17,8 +17,6 @@
  * limitations under the License.
  */
 
-var ilib = require("./ilib.js");
-var Utils = require("./Utils.js");
 var MathUtils = require("./MathUtils.js");
 
 var Calendar = require("./Calendar.js");
@@ -71,7 +69,6 @@ EthiopicCal.prototype.getMonLength = function(month, year) {
         case "object":
         case "undefined":
             return 30;
-            break;
     }    
 	if (m < 13) {
 		return 30;
@@ -93,7 +90,7 @@ EthiopicCal.prototype.isLeapYear = function(year) {
             y = parseInt(y, 10);
             break;
         case "object":
-            if (typeof(y.year) !== "number") { // in case it is an ilib.Date object
+            if (typeof(y.year) !== "number") { // in case it is an IDate object
                 return false;
             }
             y = y.year;

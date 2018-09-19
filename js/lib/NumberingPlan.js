@@ -21,7 +21,6 @@
 
 var ilib = require("./ilib.js");
 var Utils = require("./Utils.js");
-var JSUtils = require("./JSUtils.js");
 var Locale = require("./Locale.js");
 
 /**
@@ -70,7 +69,7 @@ var NumberingPlan = function (options) {
 		}
 		
 		if (typeof(options.sync) !== 'undefined') {
-			sync = (options.sync == true);
+			sync = !!options.sync;
 		}
 		
 		if (options.loadParams) {

@@ -29,7 +29,6 @@ var CalendarFactory = require("./CalendarFactory.js");
 // Statically depend on these even though we don't use them
 // to guarantee they are loaded into the cache already.
 var IDate = require("./IDate.js");
-var GregorianDate = require("./GregorianDate.js");
 
 /**
  * Factory method to create a new instance of a date subclass.<p>
@@ -104,7 +103,6 @@ var GregorianDate = require("./GregorianDate.js");
 var DateFactory = function(options) {
 	var locale,
 		type,
-		cons,
 		sync = true,
 		obj;
 

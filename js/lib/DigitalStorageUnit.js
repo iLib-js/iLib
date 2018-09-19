@@ -44,7 +44,7 @@ var DigitalStorageUnit = function (options) {
     this.aliasesLower = DigitalStorageUnit.aliasesLower;
     this.systems = DigitalStorageUnit.systems;
 
-    this.parent(options);
+    this.parent.call(this, options);
 };
 
 DigitalStorageUnit.prototype = new Measurement();

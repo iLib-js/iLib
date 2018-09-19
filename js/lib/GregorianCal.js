@@ -1,7 +1,7 @@
 /*
  * GregorianCal.js - Represent a Gregorian calendar object.
  * 
- * Copyright © 2012-2017, 2018, JEDLSoft
+ * Copyright © 2012-2018, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,7 +18,6 @@
  */
 
 
-var ilib = require("./ilib.js");
 var Utils = require("./Utils.js");
 var MathUtils = require("./MathUtils.js");
 var Calendar = require("./Calendar.js");

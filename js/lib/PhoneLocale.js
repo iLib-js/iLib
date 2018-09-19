@@ -58,7 +58,7 @@ var PhoneLocale = function(options) {
 		}
 
 		if (typeof(options.sync) !== 'undefined') {
-			sync = (options.sync == true);
+			sync = !!options.sync;
 		}
 		
 		if (options.loadParams) {

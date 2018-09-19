@@ -22,7 +22,6 @@
 var ilib = require("./ilib.js");
 var Utils = require("./Utils.js");
 var Locale = require("./Locale.js");
-var LocaleInfo = require("./LocaleInfo.js");
 var CType = require("./CType.js");
 var IString = require("./IString.js");
 var isIdeo = require("./isIdeo.js");
@@ -141,7 +140,7 @@ var AlphabeticIndex = function (options) {
         }
 
         if (typeof(options.sync) !== 'undefined') {
-            this.sync = (options.sync == true);
+            this.sync = !!options.sync;
         }
         if (options.loadParams) {
             this.loadParams = options.loadParams;
@@ -362,7 +361,7 @@ AlphabeticIndex.prototype.addElement = function(element) {
  * bucket), then the default position is at the end of
  * the list right before the underflow bucket.
  *
- * @param {Array.<String>} labels array of labels to add
+ * @param {Array.<string>} labels array of labels to add
  * in the order you would like to see them returned
  * @param {number=} start the position in the bucket
  * labels list to add these new labels
@@ -523,7 +522,7 @@ AlphabeticIndex.prototype.getBucket = function(element) {
     var firstChar;
     var collationValue;
     var charNum, firstBoundaryChar, endBoundaryChar, firstCharNum, endCharNum;
-    var validMapNum = -1;
+    var i, validMapNum = -1;
 
     if (!element) {
         return undefined;
@@ -532,7 +531,7 @@ AlphabeticIndex.prototype.getBucket = function(element) {
     firstChar = this._getFirstChar(element);
 
     if (this.inherit) {
-        for (var i = 0; i < this.mixedCollationMap.length; i++) {
+        for (i = 0; i < this.mixedCollationMap.length; i++) {
             if (this.mixedCollationMap[i].map[firstChar]) {
                 collationValue = this.mixedCollationMap[i].map[firstChar];
                 validMapNum = i;
@@ -561,7 +560,7 @@ AlphabeticIndex.prototype.getBucket = function(element) {
         charNum = IString.toCodePoint(firstChar, 0);
 
         if (this.inherit) {
-            for (var i=0; i < this.inherit.length; i++) {
+            for (i = 0; i < this.inherit.length; i++) {
                 firstBoundaryChar = this._getKeyByValue([this.mixedCollationMap[i].flowBoundaries[0]], i);
                 firstCharNum = IString.toCodePoint(firstBoundaryChar, 0);
 
@@ -615,7 +614,7 @@ AlphabeticIndex.prototype.getBucketCount = function() {
  * will include the under- and overflow labels if
  * they are used in this index.
  *
- * @returns {Array.<String>} the array of bucket labels
+ * @returns {Array.<string>} the array of bucket labels
  * for this index in collation order
  */
 AlphabeticIndex.prototype.getBucketLabels = function() {
@@ -629,7 +628,7 @@ AlphabeticIndex.prototype.getBucketLabels = function() {
  * locale. This includes all bucket labels, even if those
  * buckets do not contain any elements.
  *
- * @returns {Array.<String>} the array of bucket labels
+ * @returns {Array.<string>} the array of bucket labels
  * for this index in collation order
  */
 AlphabeticIndex.prototype.getAllBucketLabels = function() {

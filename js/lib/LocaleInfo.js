@@ -119,7 +119,7 @@ var LocaleInfo = function(locale, options) {
 	
 	if (options) {
 		if (typeof(options.sync) !== 'undefined') {
-			sync = (options.sync == true);
+			sync = !!options.sync;
 		}
 		
 		if (typeof(options.loadParams) !== 'undefined') {
@@ -172,6 +172,7 @@ LocaleInfo.defaultInfo = LocaleInfo.defaultInfo || {
         "pctFmt": "{n}%",
         "negativepctFmt": "-{n}%",
         "roundingMode": "halfdown",
+        "secGroupSize": null,
         "useNative": false
     },
     "paperSizes": {

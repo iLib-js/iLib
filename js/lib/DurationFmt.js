@@ -20,7 +20,6 @@
 // !data dateformats sysres
 
 var ilib = require("./ilib.js");
-var Utils = require("./Utils.js");
 var JSUtils = require("./JSUtils.js");
 var Locale = require("./Locale.js");
 var LocaleInfo = require("./LocaleInfo.js");
@@ -122,7 +121,7 @@ var DurationFmt = function(options) {
 		}
 		
 		if (typeof(options.sync) !== 'undefined') {
-			sync = (options.sync == true);
+			sync = !!options.sync;
 		}
 		
 		if (typeof(options.useNative) === 'boolean') {
@@ -349,7 +348,7 @@ DurationFmt.prototype._init = function(locinfo, options) {
  * undefined, an empty string is returned.
  */
 DurationFmt.prototype.format = function (components) {
-	var i, list, temp, fmt, secondlast = true, str = "";
+	var i, list, fmt, secondlast = true, str = "";
 	
 	list = DurationFmt.complist[this.style];
 	//for (i = 0; i < list.length; i++) {

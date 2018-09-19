@@ -17,7 +17,6 @@
  * limitations under the License.
  */
 
-var ilib = require("./ilib.js");
 var JSUtils = require("./JSUtils.js");
 var CopticCal = require("./CopticCal.js");
 var EthiopicRataDie = require("./EthiopicRataDie.js");

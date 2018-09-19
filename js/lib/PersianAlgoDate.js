@@ -25,7 +25,6 @@ var Locale = require("./Locale.js");
 var LocaleInfo = require("./LocaleInfo.js");
 var TimeZone = require("./TimeZone.js");
 var IDate = require("./IDate.js");
-var Calendar = require("./Calendar.js");
 
 var PersianAlgoCal = require("./PersianAlgoCal.js");
 var PersAlgoRataDie = require("./PersAlgoRataDie.js");

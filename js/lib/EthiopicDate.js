@@ -25,7 +25,6 @@ var Locale = require("./Locale.js");
 var LocaleInfo = require("./LocaleInfo.js");
 var IDate = require("./IDate.js");
 var TimeZone = require("./TimeZone.js");
-var Calendar = require("./Calendar.js");
 var EthiopicCal = require("./EthiopicCal.js");
 
 /**
@@ -231,7 +230,6 @@ EthiopicDate.prototype._calcYear = function(rd) {
  */
 EthiopicDate.prototype._calcDateComponents = function () {
 	var remainder,
-		cumulative,
 		rd = this.rd.getRataDie();
 
 	this.year = this._calcYear(rd);

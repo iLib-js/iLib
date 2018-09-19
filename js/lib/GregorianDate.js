@@ -23,10 +23,8 @@ var MathUtils = require("./MathUtils.js");
 
 var Locale = require("./Locale.js");
 var LocaleInfo = require("./LocaleInfo.js");
-var JulianDay = require("./JulianDay.js");
 var IDate = require("./IDate.js");
 var TimeZone = require("./TimeZone.js");
-var Calendar = require("./Calendar.js");
 
 var GregorianCal = require("./GregorianCal.js");
 var GregRataDie = require("./GregRataDie.js");

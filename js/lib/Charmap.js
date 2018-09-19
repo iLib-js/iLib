@@ -20,8 +20,6 @@
 // !data charmaps charset/US-ASCII charset/ISO-10646-UCS-2 charset/ISO-8859-1 charset/ISO-8859-15 charmaps/ISO-8859-15 charmaps/ISO-8859-1 charset/ISO-8859-1
 
 var ilib = require("./ilib.js");
-var Utils = require("./Utils.js");
-var Charset = require("./Charset.js");
 var JSUtils = require("./JSUtils.js");
 var IString = require("./IString.js");
 
@@ -96,9 +94,6 @@ var IString = require("./IString.js");
  * @param {Object=} options options which govern the construction of this instance
  */
 var Charmap = function(options) {
-	var sync = true,
-	    loadParams = undefined;
-	
 	if (options && options.noinstance) {
 	    return;
 	}
@@ -291,7 +286,7 @@ Charmap.prototype = {
     	
     	// use IString's iterator so that we take care of walking through
     	// the code points correctly, including the surrogate pairs
-    	var c, i = 0, j = 0, it = str.iterator();
+    	var c, i = 0, it = str.iterator();
     	var ret = new Uint8Array(str.length * this.expansionFactor);
     	
     	while (it.hasNext() && i < ret.length) {

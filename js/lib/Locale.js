@@ -645,18 +645,20 @@ Locale._isLanguageCode = function(str) {
  * @return {boolean} true if the string could syntactically be a language code.
  */
 Locale._isRegionCode = function (str) {
+    var i;
+    
 	if (typeof(str) === 'undefined' || str.length < 2 || str.length > 3) {
 		return false;
 	}
 	
 	if (str.length === 2) {
-		for (var i = 0; i < str.length; i++) {
+		for (i = 0; i < str.length; i++) {
 			if (Locale._notUpper(str.charAt(i))) {
 				return false;
 			}
 		}
 	} else {
-		for (var i = 0; i < str.length; i++) {
+		for (i = 0; i < str.length; i++) {
 			if (Locale._notDigit(str.charAt(i))) {
 				return false;
 			}

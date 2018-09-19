@@ -17,9 +17,7 @@
  * limitations under the License.
  */
 
-var ilib = require("./ilib.js");
 var Utils = require("./Utils.js");
-var Locale = require("./Locale.js");
 var Calendar = require("./Calendar.js");
 var EthiopicCal = require("./EthiopicCal.js");
 

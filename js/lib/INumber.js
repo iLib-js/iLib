@@ -18,13 +18,10 @@
  */
 
 var ilib = require("./ilib.js");
-var Utils = require("./Utils.js");
-var JSUtils = require("./JSUtils.js");
 
 var Locale = require("./Locale.js");
 var LocaleInfo = require("./LocaleInfo.js");
 
-var CType = require("./CType.js");
 var isDigit = require("./isDigit.js");
 var isSpace = require("./isSpace.js");
 
@@ -112,7 +109,7 @@ var INumber = function (str, options) {
 			}
 		}
 		if (typeof(options.sync) !== 'undefined') {
-			sync = (options.sync == true);
+			sync = !!options.sync;
 		}
 	} else {
 	    options = {sync: true};

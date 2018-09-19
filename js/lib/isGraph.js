@@ -17,7 +17,6 @@
  * limitations under the License.
  */
 
-var ilib = require("./ilib.js");
 var IString = require("./IString.js");
 var isSpace = require("./isSpace.js");
 var isCntrl = require("./isCntrl.js");

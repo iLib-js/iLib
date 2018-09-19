@@ -24,6 +24,7 @@ Locale.js
 IString.js
 NumFmt.js
 Utils.js
+ListFmt.js
 Measurement.js
 */
 
@@ -31,7 +32,6 @@ Measurement.js
 
 var ilib = require("./ilib.js");
 var Utils = require("./Utils.js");
-var JSUtils = require("./JSUtils.js");
 
 var Locale = require("./Locale.js");
 var IString = require("./IString.js");
