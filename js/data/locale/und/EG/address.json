@@ -42,36 +42,7 @@
                 "السويس",
                 "الأقصر",
                 "حلوان"
-            ],
-            "list": {
-                "DK": "Ad Daqahlīyah",
-                "BA": "Al Baḩr al Aḩmar",
-                "BH ": "Al Buḩayrah",
-                "FYM": "Al Fayyūm",
-                "GH": "Al Gharbīyah",
-                "ALX": "Al Iskandarīyah Alexandria",
-                "IS": "Al Ismāʿīlīyyah Ismailia",
-                "GZ": "Al Jīzah",
-                "MNF": "Al Minūfīyah",
-                "MN": "Al Minyā",
-                "C ": "Al Qāhirah",
-                "KB": "Al Qalyūbīyah",
-                "LX": "Al Uqşur",
-                "WAD": "Al Wādī al Jadīd",
-                "SHR": "Ash Sharqīyah",
-                "SUZ": "As Suways",
-                "ASN": "Aswān",
-                "AST": "Asyūţ",
-                "BNS": "Banī Suwayf Beni Suef",
-                "PTS": "Būr Sa‘īd",
-                "DT": "Dumyāţ",
-                "JS ": "Janūb Sīnā'",
-                "KFS": "Kafr ash Shaykh Kafr el-Sheikh",
-                "MT": "Maţrūḩ",
-                "KN": "Qinā",
-                "SIN": "Shamāl Sīnā'",
-                "SHG": "Sūhāj"
-            }
+            ]
         },
 		{
 			"name":"locality",

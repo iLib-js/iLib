@@ -31,6 +31,9 @@ var Locale = common.Locale;
 var mergeAndPrune = common.mergeAndPrune;
 var makeDirs = common.makeDirs;
 
+var ilib = require("../../js/lib/ilib-node.js");
+var Collator = require("../../js/lib/Collator.js");
+
 function usage() {
     console.log("Usage: gencountrynames [-h] CLDR_xml_dir locale_data_dir\n" +
             "Generate localized country names from the CLDR data.\n\n" +
@@ -117,14 +120,13 @@ function getCountryNames(localeData, pathname, locale) {
         }
 
         if (script) {
-
             if (!localeData[language]) {
                 localeData[language] = {};
             }
             if (!localeData[language][script]) {
                 localeData[language][script] = {};
             }
-            if (!localeData[language][script][country]) {
+            if (country && !localeData[language][script][country]) {
                 localeData[language][script][country] = {};
             }
             if (country) {
@@ -156,18 +158,53 @@ function getCountryNames(localeData, pathname, locale) {
     return data;
 }
 
-function filterRegions(regions, subdivisions) {
-    var ret = {};
+function sortRegions(regions, locale) {
+    // Do a locale-specific sort -- each country may sort
+    // their list of regions in a different way, and not just
+    // alphabetically.
+
+    var collator = new Collator({
+        locale: locale,
+        sensitivity: "case"
+    });
+    var langComparator = collator.getComparator();
+
+    for (country in regions) {
+        // If the region code is numeric, sort by the region code.
+        // Otherwise, sort by the translated region name
+        var comparator = regions[country].every(function(region) {
+                return !isNaN(Number(region.code));
+            }) ?
+            function(left, right) {
+                return Number(left.code) - Number(right.code);
+            } :
+            function(left, right) {
+                return langComparator(left.name, right.name);
+            };
+
+        regions[country].sort(function(left, right) {
+            return comparator(left, right);
+        });
+    }
+
+    return regions;
+}
+
+function filterRegions(subdivisions, locale) {
+    var region, country, regions = {};
 
     for (var i = 0; i < subdivisions.length; i++) {
         var type = subdivisions[i].type.toUpperCase();
-        var country = type.substring(0,2);
-        var region = type.substring(2);
-        if (!ret[country]) ret[country] = {};
-        ret[country][region] = subdivisions[i]["$t"];
+        country = type.substring(0,2);
+        region = type.substring(2);
+        if (!regions[country]) regions[country] = [];
+        regions[country].push({
+            code: region,
+            name: subdivisions[i]["$t"]
+        });
     }
 
-    return ret;
+    return regions;
 }
 
 function getRegionNames(localeData, pathname, locale) {
@@ -188,8 +225,6 @@ function getRegionNames(localeData, pathname, locale) {
             return undefined;
         }
 
-        var destdata = {};
-
         if (language && !localeData[language]) {
             localeData[language] = {};
         }
@@ -201,23 +236,23 @@ function getRegionNames(localeData, pathname, locale) {
                 if (!localeData[language][script][country]) {
                     localeData[language][script][country] = {};
                 }
-                localeData[language][script][country].data = filterRegions(destdata, data.ldml.localeDisplayNames.subdivisions.subdivision);
+                localeData[language][script][country].data = filterRegions(data.ldml.localeDisplayNames.subdivisions.subdivision);
             } else {
-                localeData[language][script].data = filterRegions(destdata, data.ldml.localeDisplayNames.subdivisions.subdivision);
+                localeData[language][script].data = filterRegions(data.ldml.localeDisplayNames.subdivisions.subdivision);
             }
         } else if (country) {
             if (!localeData[language][country]) {
                 localeData[language][country] = {};
             }
-            localeData[language][country].data = filterRegions(destdata, data.ldml.localeDisplayNames.subdivisions.subdivision);
+            localeData[language][country].data = filterRegions(data.ldml.localeDisplayNames.subdivisions.subdivision);
         } else if (language) {
-            localeData[language].data = filterRegions(destdata, data.ldml.localeDisplayNames.subdivisions.subdivision);
+            localeData[language].data = filterRegions(data.ldml.localeDisplayNames.subdivisions.subdivision);
         }
     } catch (e) {
         return undefined;
     }
 
-    return data;
+    return localeData;
 }
 
 function getMergedData(localeData, language, script, country) {
@@ -269,7 +304,7 @@ function anyProperties(data) {
     return false;
 }
 
-function writeResources(language, script, country, data, filePrefix) {
+function writeResources(language, script, country, data, filePrefix, writeReverse) {
     var pathname = calcLocalePath(language, script, country, "");
     var reverse = {};
 
@@ -279,24 +314,26 @@ function writeResources(language, script, country, data, filePrefix) {
         //data = sortObject(data);
         fs.writeFileSync(path.join(pathname, filePrefix + "names.json"), JSON.stringify(data, true, 4), "utf-8");
 
-        for (var ctry in data) {
-            if (ctry && data[ctry]) {
-                reverse[data[ctry]] = ctry;
+        if (writeReverse) {
+            for (var ctry in data) {
+                if (ctry && data[ctry]) {
+                    reverse[data[ctry]] = ctry;
+                }
             }
-        }
 
-        fs.writeFileSync(path.join(pathname, filePrefix + "reverse.json"), JSON.stringify(reverse, true, 4), "utf-8");
+            fs.writeFileSync(path.join(pathname, filePrefix + "reverse.json"), JSON.stringify(reverse, true, 4), "utf-8");
+        }
     } else {
         console.log("Skipping empty " + pathname);
     }
 }
 
 function writeCountryNameResources(language, script, country, data) {
-    writeResources(language, script, country, data, "ctry");
+    writeResources(language, script, country, data, "ctry", true);
 }
 
 function writeRegionNameResources(language, script, country, data) {
-    writeResources(language, script, country, data, "region");
+    writeResources(language, script, country, data, "region", false);
 }
 
 function sortObject(obj) {
@@ -312,6 +349,143 @@ function sortObject(obj) {
         sortedInfoObj[key] = obj[key];
     }
     return sortedInfoObj;
+}
+
+function mergeArrays(array1, array2) {
+    var set = {};
+    var ret = [];
+    for (var i = 0; i < array1.length; i++) {
+        set[array1[i].code] = array1[i].name;
+    }
+
+    for (var i = 0; i < array2.length; i++) {
+        set[array2[i].code] = array2[i].name;
+    }
+
+    for (var p in set) {
+        ret.push({
+            name: set[p],
+            code: p
+        });
+    }
+
+    return ret;
+}
+
+function mergeRegions(object1, object2) {
+    var prop = undefined,
+    newObj = {};
+    for (prop in object1) {
+        if (prop && typeof(object1[prop]) !== 'undefined') {
+            newObj[prop] = object1[prop];
+        }
+    }
+    for (prop in object2) {
+        if (prop && typeof(object2[prop]) !== 'undefined') {
+            // value of each prop should be an array
+            if (!common.isArray(object1[prop])) {
+                throw "Error: object1 contains a non-array";
+            }
+            if (!common.isArray(object2[prop])) {
+                throw "Error: object2 contains a non-array";
+            }
+            newObj[prop] = mergeArrays(object1[prop], object2[prop]);
+        }
+    }
+    return newObj;
+}
+
+function mergeByValue(object1, object2) {
+    var tmp = {};
+    for (var p in object1) {
+        tmp[object1[p]] = p;
+    }
+    for (p in object2) {
+        tmp[object2[p]] = p;
+    }
+
+    var ret = {};
+    for (p in tmp) {
+        ret[tmp[p]] = p;
+    }
+
+    return ret;
+}
+
+function mergeAndSortRegions(localeData) {
+    if (localeData) {
+        if (typeof(localeData.merged) === 'undefined') {
+            // special case for the top level
+            localeData.merged = localeData.data;
+        }
+        for (var prop in localeData) {
+            // util.print("merging " + prop + "\n");
+            if (prop && typeof(localeData[prop]) !== 'undefined' && prop !== 'data' && prop !== 'merged') {
+                // util.print(prop + " ");
+                localeData[prop].merged = mergeRegions(localeData.merged || {}, localeData[prop].data || {});
+                localeData[prop].data = sortRegions(localeData[prop].merged);
+                // util.print("recursing\n");
+                mergeAndSortRegions(localeData[prop]);
+            }
+        }
+    }
+}
+
+function sortCountries(localeData, locale) {
+    if (localeData) {
+        if (localeData.data) {
+            var loc = (locale === "root") ? "en-US" : locale;
+            var collator = new Collator({
+                locale: loc,
+                sensitivity: "case"
+            });
+            var langComparator = collator.getComparator();
+
+            var countries = [];
+            for (var country in localeData.data) {
+                countries.push({
+                    code: localeData.data[country],
+                    name: country
+                });
+            }
+
+            countries.sort(function(left, right) {
+                return langComparator(left.name, right.name);
+            });
+
+            localeData.data = {};
+            countries.forEach(function(country) {
+                localeData.data[country.name] = country.code;
+            });
+        }
+
+        for (var prop in localeData) {
+            // util.print("merging " + prop + "\n");
+            if (prop && typeof(localeData[prop]) !== 'undefined' && prop !== 'data' && prop !== 'merged') {
+                // util.print(prop + " ");
+                sortCountries(localeData[prop], (locale !== "root") ? locale + '-' + prop : prop);
+            }
+        }
+    }
+}
+
+function mergeCountries(localeData) {
+    if (localeData) {
+        if (typeof(localeData.merged) === 'undefined') {
+            // special case for the top level
+            localeData.merged = localeData.data;
+        }
+        for (var prop in localeData) {
+            // util.print("merging " + prop + "\n");
+            if (prop && typeof(localeData[prop]) !== 'undefined' && prop !== 'data' && prop !== 'merged') {
+                // util.print(prop + " ");
+                localeData[prop].merged = mergeByValue(localeData.merged || {}, localeData[prop].data || {});
+                localeData[prop].data = localeData[prop].merged;
+                // util.print("recursing\n");
+                mergeCountries(localeData[prop]);
+            }
+        }
+    }
 }
 
 var localeDirs, localeData = {}, regionData = {};
@@ -339,12 +513,15 @@ for (var i = 0; i < localeDirs.length; i++) {
 
 //find the system resources
 console.log("Merging and pruning locale data...");
-mergeAndPrune(localeData);
+localeData.data = localeData.en.data;
+
+mergeCountries(localeData);
+sortCountries(localeData, "root");
 
 // use English as the root language for regions
 regionData.data = regionData.en.data;
 
-mergeAndPrune(regionData);
+mergeAndSortRegions(regionData);
 console.log("Writing country and region name resources...");
 
 // now write out the system resources
@@ -379,16 +556,22 @@ for (language in regionData) {
                     script = subpart;
                     for (country in regionData[language][script]) {
                         if (country && regionData[language][script][country] && country !== 'data' && country !== 'merged') {
+                            sortRegions(regionData[language][script][country].data, new Locale(language, country, undefined, script));
                             writeRegionNameResources(language, script, country, regionData[language][script][country].data);
                         }
                     }
+                    sortRegions(regionData[language][script].data, new Locale(language, undefined, undefined, script));
                     writeRegionNameResources(language, script, undefined, regionData[language][script].data);
                 } else {
-                    writeRegionNameResources(language, undefined, subpart, regionData[language][subpart].data);
+                    country = subpart;
+                    sortRegions(regionData[language][country].data, new Locale(language, country, undefined, undefined));
+                    writeRegionNameResources(language, undefined, subpart, regionData[language][country].data);
                 }
             }
         }
+        sortRegions(regionData[language].data, new Locale(language, undefined, undefined, undefined));
         writeRegionNameResources(language, undefined, undefined, regionData[language].data);
     }
 }
+sortRegions(regionData.data, new Locale("en-US"));
 writeRegionNameResources(undefined, undefined, undefined, regionData.data);

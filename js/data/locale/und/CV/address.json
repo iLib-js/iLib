@@ -44,31 +44,7 @@
                 "tarrafal",
                 "tarrafal de são nicolau",
                 "tarrafal de sao nicolau"
-            ],
-            "list": {
-                "BV": "Boa Vista",
-                "BR": "Brava",
-                "MA": "Maio",
-                "MO": "Mosteiros",
-                "PA": "Paul",
-                "PN": "Porto Novo",
-                "PR": "Praia",
-                "RB": "Ribeira Brava",
-                "RG": "Ribeira Grande",
-                "RS": "Ribeira Grande de Santiago",
-                "SL": "Sal",
-                "CA": "Santa Catarina",
-                "CF": "Santa Catarina do Fogo",
-                "CR": "Santa Cruz",
-                "SD": "São Domingos",
-                "SF": "São Filipe",
-                "SO": "São Lourenço dos Órgãos",
-                "SM": "São Miguel",
-                "SS": "São Salvador do Mundo",
-                "SV": "São Vicente",
-                "TA": "Tarrafal",
-                "TS": "Tarrafal de São Nicolau"
-            }
+            ]
         },
         {
             "name": "locality",
