@@ -86,7 +86,7 @@ var AddressFmt = function(options) {
 		}
 		
 		if (typeof(options.sync) !== 'undefined') {
-			this.sync = (options.sync == true);
+			this.sync = !!options.sync;
 		}
 		
 		if (options.style) {
@@ -210,7 +210,7 @@ AddressFmt.prototype.format = function (address) {
 };
 
 
-/*
+/**
  * Return true if this is an asian locale.
  * @private
  * @returns {boolean} true if this is an asian locale, or false otherwise
@@ -219,7 +219,7 @@ function isAsianLocale(locale) {
     return locale.language === "zh" || locale.language === "ja" || locale.language === "ko";
 }
 
-/*
+/**
  * Invert the properties and values, filtering out all the regions. Regions either
  * have values with numbers (eg. "150" for Europe), or they are on a short list of
  * known regions with actual ISO codes.
@@ -347,11 +347,11 @@ function invertAndFilter(object) {
  *   })
  * });
  * 
- * @param {Locale|String=} locale the locale to translate the labels
+ * @param {Locale|string=} locale the locale to translate the labels
  * to. If not given, the locale of the formatter will be used.
- * @param {boolean} sync true if this method should load the data
+ * @param {boolean=} sync true if this method should load the data
  * synchronously, false if async
- * @param {Function} callback a callback to call when the data
+ * @param {Function=} callback a callback to call when the data
  * is ready
  * @returns {Array.<Object>} An array of rows of address components
  */

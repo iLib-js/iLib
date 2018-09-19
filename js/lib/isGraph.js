@@ -17,9 +17,8 @@
  * limitations under the License.
  */
 
-// !depends IString.js isSpace.js isCntrl.js ilib.js
+// !depends IString.js isSpace.js isCntrl.js
 
-var ilib = require("./ilib.js");
 var IString = require("./IString.js");
 var isSpace = require("./isSpace.js");
 var isCntrl = require("./isCntrl.js");

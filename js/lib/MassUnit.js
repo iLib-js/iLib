@@ -19,11 +19,9 @@
 
 /*
 !depends
-ilib.js
 Measurement.js
 */
 
-var ilib = require("./ilib.js");
 var Measurement = require("./Measurement.js");
 
 /**
@@ -44,7 +42,7 @@ var MassUnit = function (options) {
     this.aliasesLower = MassUnit.aliasesLower;
     this.systems = MassUnit.systems;
 
-    this.parent(options);
+    this.parent.call(this, options);
 };
 
 MassUnit.prototype = new Measurement();

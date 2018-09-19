@@ -17,13 +17,11 @@
  * limitations under the License.
  */
 
-// !depends ilib.js Utils.js Charset.js JSUtils.js IString.js
+// !depends ilib.js JSUtils.js IString.js
 
 // !data charset/US-ASCII charset/ISO-10646-UCS-2 charset/ISO-10646-UCS-4 charset/ISO-10646-Unicode-Latin1
 
 var ilib = require("./ilib.js");
-var Utils = require("./Utils.js");
-var Charset = require("./Charset.js");
 var JSUtils = require("./JSUtils.js");
 var IString = require("./IString.js");
 
@@ -98,9 +96,6 @@ var IString = require("./IString.js");
  * @param {Object=} options options which govern the construction of this instance
  */
 var Charmap = function(options) {
-	var sync = true,
-	    loadParams = undefined;
-	
 	if (options && options.noinstance) {
 	    return;
 	}
@@ -293,7 +288,7 @@ Charmap.prototype = {
     	
     	// use IString's iterator so that we take care of walking through
     	// the code points correctly, including the surrogate pairs
-    	var c, i = 0, j = 0, it = str.iterator();
+    	var c, i = 0, it = str.iterator();
     	var ret = new Uint8Array(str.length * this.expansionFactor);
     	
     	while (it.hasNext() && i < ret.length) {

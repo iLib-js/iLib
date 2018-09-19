@@ -81,7 +81,7 @@ var Charset = function(options) {
 		}
 		
 		if (typeof(options.sync) !== 'undefined') {
-			sync = (options.sync == true);
+			sync = !!options.sync;
 		}
 		
 		if (typeof(options.loadParams) !== 'undefined') {
@@ -153,7 +153,7 @@ Charset.prototype = {
      * Return the original name that this instance was constructed with before it was
      * normalized to the standard name returned by {@link #getName}.
      * 
-     * @returns {String} the original name that this instance was constructed with
+     * @returns {string} the original name that this instance was constructed with
      */
     getOriginalName: function() {
     	return this.originalName;
