@@ -1,3 +1,26 @@
+Release Notes for Version 14
+============================
+
+Build 001
+-------
+Published as version 14.0.0
+
+New Features:
+* Webpack support
+    * Pre-assembled builds of ilib now use webpack for bundling
+    * The assembly tool is now grandfathered
+    * The compiled versions of the pre-assembled files are minified with uglify-js
+    * You may use ilib in your own webpacked projects (in React or otherwise) using the
+      new ilib-webpack-loader and ilib-webpack-plugin.
+    * See the documentation in [the ilib-webpack-loader documentation](https://github.com/ilib-js/ilib-webpack-loader)
+      for more details on how to use the new webpack support
+    * Requires some changes in your code to include the right file names and/or to modify
+      your webpack.config.js to include ilib dynamically
+    * Nodejs versions less than 6 are no longer supported, as webpack does not work with them
+
+Bug Fixes
+
+
 Release Notes for Version 13
 ============================
 
@@ -7,9 +30,12 @@ Published as version 13.3.0
 
 New Features:
 * Update of the LocaleReference Test Website Documentation
-    * Added is-IS locale to a list.
+    * Added is-IS locale to the list.
     * Implemented way of publishing date automatically instead of manual fixing.
     * Updated Name of the Day and Months part. If normal and standAlone are different, It displays both.
+* Updated to work properly run test cases on QT/QML environment.
+  * Imeplemented simple version of nodeunit library to work in QT/QML environment.
+  * Confirmed that all of iLib cases are passed in QT 5.7 version.
 * Modified ilib.getTimeZone() to find the time zone from the Intl object if it is available. If not, it falls back
 to the previous behaviour of checking environment variables.
 * Added AddressFmt.getFormatInfo() method for returning info that a UI would need to construct an address input form

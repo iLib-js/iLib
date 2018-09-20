@@ -1,7 +1,7 @@
 /*
  * CharmapTable.js - A character set mapping class that maps using trie table
  * 
- * Copyright © 2014-2015,2018, JEDLSoft
+ * Copyright © 2014-2015, 2018, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,9 +17,7 @@
  * limitations under the License.
  */
 
-// !depends ilib.js Utils.js Charset.js Charmap.js IString.js
-
-// !data charmaps/ISO-8859-1 charset/ISO-8859-1
+// !data charmaps/ISO-8859-15 charset/ISO-8859-15
 
 var ilib = require("./ilib.js");
 var Utils = require("./Utils.js");

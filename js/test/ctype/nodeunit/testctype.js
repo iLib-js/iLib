@@ -1,7 +1,7 @@
 /*
  * testctype.js - test the character type information functions
  *
- * Copyright © 2012-2015,2017, JEDLSoft
+ * Copyright © 2012-2015, 2017-2018, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,61 +18,61 @@
  */
 
 if (typeof(isXdigit) === "undefined") {
-    var isXdigit = require("../.././../lib/isXdigit.js");
+    var isXdigit = require("../../../lib/isXdigit.js");
 }
 if (typeof(isUpper) === "undefined") {
-    var isUpper = require("../.././../lib/isUpper.js");
+    var isUpper = require("../../../lib/isUpper.js");
 }
 if (typeof(isSpace) === "undefined") {
-    var isSpace = require("../.././../lib/isSpace.js");
+    var isSpace = require("../../../lib/isSpace.js");
 }
 if (typeof(isScript) === "undefined") {
-    var isScript = require("../.././../lib/isScript.js");
+    var isScript = require("../../../lib/isScript.js");
 }
 if (typeof(isPunct) === "undefined") {
-    var isPunct = require("../.././../lib/isPunct.js");
+    var isPunct = require("../../../lib/isPunct.js");
 }
 if (typeof(isPrint) === "undefined") {
-    var isPrint = require("../.././../lib/isPrint.js");
+    var isPrint = require("../../../lib/isPrint.js");
 }
 if (typeof(isLower) === "undefined") {
-    var isLower = require("../.././../lib/isLower.js");
+    var isLower = require("../../../lib/isLower.js");
 }
 if (typeof(isIdeo) === "undefined") {
-    var isIdeo = require("../.././../lib/isIdeo.js");
+    var isIdeo = require("../../../lib/isIdeo.js");
 }
 if (typeof(isGraph) === "undefined") {
-    var isGraph = require("../.././../lib/isGraph.js");
+    var isGraph = require("../../../lib/isGraph.js");
 }
 if (typeof(isDigit) === "undefined") {
-    var isDigit = require("../.././../lib/isDigit.js");
+    var isDigit = require("../../../lib/isDigit.js");
 }
 if (typeof(isCntrl) === "undefined") {
-    var isCntrl = require("../.././../lib/isCntrl.js");
+    var isCntrl = require("../../../lib/isCntrl.js");
 }
 if (typeof(isBlank) === "undefined") {
-    var isBlank = require("../.././../lib/isBlank.js");
+    var isBlank = require("../../../lib/isBlank.js");
 }
 if (typeof(isAscii) === "undefined") {
-    var isAscii = require("../.././../lib/isAscii.js");
+    var isAscii = require("../../../lib/isAscii.js");
 }
 if (typeof(isAlpha) === "undefined") {
-    var isAlpha = require("../.././../lib/isAlpha.js");
+    var isAlpha = require("../../../lib/isAlpha.js");
 }
 if (typeof(isAlnum) === "undefined") {
-    var isAlnum = require("../.././../lib/isAlnum.js");
+    var isAlnum = require("../../../lib/isAlnum.js");
 }
 if (typeof(ilib) === "undefined") {
-    var ilib = require("../.././../lib/ilib.js");
+    var ilib = require("../../../lib/ilib.js");
 }
 if (typeof(Currency) === "undefined") {
-    var Currency = require("../.././../lib/Currency.js");
+    var Currency = require("../../../lib/Currency.js");
 }
 if (typeof(CType) === "undefined") {
-    var CType = require("../.././../lib/CType.js");
+    var CType = require("../../../lib/CType.js");
 }
 if (typeof(IString) === "undefined") {
-    var IString = require("../.././../lib/IString.js");
+    var IString = require("../../../lib/IString.js");
 }
 
 if (ilib.isDynData()) {
@@ -91,10 +91,6 @@ if (ilib.isDynData()) {
     isSpace._init(true);
     isUpper._init(true);
     isXdigit._init(true);
-}
-
-if (typeof(ilib) === "undefined") {
-    var ilib = require("../../../lib/ilib.js");
 }
 
 module.exports.testctype = {
@@ -608,22 +604,6 @@ module.exports.testctype = {
     testIsDigitEmpty: function(test) {
         test.expect(1);
         test.ok(!isDigit(''));
-        test.done();
-    },
-
-    testIsDigitNonLatin: function(test) {
-        test.expect(10);
-        // bengali digits
-        test.ok(isDigit("০"));
-        test.ok(isDigit('১'));
-        test.ok(isDigit('২'));
-        test.ok(isDigit('৩'));
-        test.ok(isDigit('৪'));
-        test.ok(isDigit('৫'));
-        test.ok(isDigit('৬'));
-        test.ok(isDigit('৭'));
-        test.ok(isDigit('৮'));
-        test.ok(isDigit('৯'));
         test.done();
     },
 

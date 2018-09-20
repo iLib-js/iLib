@@ -18,10 +18,10 @@
  */
 
 if (typeof(GregorianDate) === "undefined") {
-    var GregorianDate = require("../.././../lib/GregorianDate.js");
+    var GregorianDate = require("../../../lib/GregorianDate.js");
 }
 if (typeof(DateRngFmt) === "undefined") {
-    var DateRngFmt = require("../.././../lib/DateRngFmt.js");
+    var DateRngFmt = require("../../../lib/DateRngFmt.js");
 }
 /*
  * testdatefmtrange_en_GB.js - test the date range formatter object in German/Germany

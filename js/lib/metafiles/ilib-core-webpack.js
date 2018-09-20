@@ -1,6 +1,8 @@
 /**
+ * ilib-core-webpack.js - metafile that includes a minimal set of other js files
+ * 
  * @license
- * Copyright © 2012-2015, JEDLSoft
+ * Copyright © 2018, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,37 +18,17 @@
  * limitations under the License.
  */
 
-/*
- * ilib-standard-inc.js - metafile that includes a reasonable set of other js files
- */
+var ilib = require("../ilib.js");
 
-/* !depends
-ilib.js
-DateRngFmt.js
-IDate.js
-DateFactory.js
-GregorianCal.js
-GregorianDate.js
-ThaiSolarCal.js
-ThaiSolarDate.js
-PersianCal.js
-PersianDate.js
-EthiopicCal.js
-EthiopicDate.js
-INumber.js
-NumFmt.js
-JulianDay.js
-DateFmt.js
-Calendar.js
-CalendarFactory.js
-Utils.js
-Locale.js
-IString.js
-DurationFmt.js
-ResBundle.js
-LocaleInfo.js
-DateRngFmt.js
-ScriptInfo.js
-CaseMapper.js
-ListFmt.js
-*/
+ilib.JSUtils = require("../JSUtils.js");
+ilib.IString = require("../IString.js");
+ilib.ResBundle = require("../ResBundle.js");
+ilib.ScriptInfo = require("../ScriptInfo.js");
+
+//This unpacks the above classes to the global scope
+require("../ilib-unpack.js");
+
+// Must be at the end of meta file
+require("../ilib-getdata.js");
+
+module.exports = ilib;

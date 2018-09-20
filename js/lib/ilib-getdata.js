@@ -1,9 +1,8 @@
-/* jshint node: true */
-/*
- * ilib-test-dyn.js - glue code for node to load both code 
- * and the data dynamically 
+/**
+ * ilib-getdata.js - define the locale data for assembled or dynamic
  * 
- * Copyright © 2015, JEDLSoft
+ * @license
+ * Copyright © 2018, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,12 +18,14 @@
  * limitations under the License.
  */
 
-var NodeLoader = require("../lib/NodeLoader.js");
-var ilib = require("../lib/ilib.js");
-ilib.setLoaderCallback(NodeLoader(ilib));
+var ilib = require("./ilib.js");
 
-ilib._dyncode = false;
-ilib._dyndata = true;
+// The following will either require and then install the 
+// WebpackLoader to dynamically load locale data bundles,
+// or it will statically require all of the locale data that
+// this build needs so that it can be included into this
+// webpack bundle.
+
+// !defineLocaleData
 
 module.exports = ilib;
-

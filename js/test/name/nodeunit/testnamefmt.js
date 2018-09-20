@@ -18,10 +18,10 @@
  */
 
 if (typeof(NameFmt) === "undefined") {
-    var NameFmt = require("../.././../lib/NameFmt.js");
+    var NameFmt = require("../../../lib/NameFmt.js");
 }
 if (typeof(Name) === "undefined") {
-    var Name = require("../.././../lib/Name.js");
+    var Name = require("../../../lib/Name.js");
 }
 
 if (typeof(ilib) === "undefined") {

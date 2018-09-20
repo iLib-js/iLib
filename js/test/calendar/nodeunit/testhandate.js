@@ -18,10 +18,10 @@
  */
 
 if (typeof(HanRataDie) === "undefined") {
-    var HanRataDie = require("../.././../lib/HanRataDie.js");
+    var HanRataDie = require("../../../lib/HanRataDie.js");
 }
 if (typeof(HanDate) === "undefined") {
-    var HanDate = require("../.././../lib/HanDate.js");
+    var HanDate = require("../../../lib/HanDate.js");
 }
 
 var testDatesHan = [

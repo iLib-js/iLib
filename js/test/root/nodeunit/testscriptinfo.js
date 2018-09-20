@@ -18,7 +18,7 @@
  */
 
 if (typeof(ScriptInfo) === "undefined") {
-    var ScriptInfo = require("../.././../lib/ScriptInfo.js");
+    var ScriptInfo = require("../../../lib/ScriptInfo.js");
 }
 
 if (typeof(ilib) === "undefined") {

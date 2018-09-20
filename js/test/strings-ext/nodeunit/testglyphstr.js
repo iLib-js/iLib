@@ -18,7 +18,7 @@
  */
 
 if (typeof(GlyphString) === "undefined") {
-    var GlyphString = require("../.././../lib/GlyphString.js");
+    var GlyphString = require("../../../lib/GlyphString.js");
 }
 
 if (typeof(ilib) === "undefined") {

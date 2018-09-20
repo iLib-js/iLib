@@ -1,7 +1,7 @@
 /*
  * demo-date.js - define the scripts used by the demo
  * 
- * Copyright © 2012-2014, JEDLSoft
+ * Copyright © 2012-2014, 2018, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -31,21 +31,23 @@ function setCalendarValues(cal) {
 	});
 };
 
-function setTimeZoneValues(element, tz) {
-	var tzs = TimeZone.getAvailableIds();
-
-	tzs.sort();
-	
-	element.append($("<option></option>").attr({
-		value: "none",
-		"selected": true
-	}).text("none"));
-	
-	$.each(tzs, function(key, value) {
-		element.append($("<option></option>").attr({
-			value: value,
-			"selected": (value == tz)
-		}).text(value));
+function setTimeZoneValues(element, tz, cb) {
+	TimeZone.getAvailableIds(undefined, !ilib.isDynData(), function(tzs) {
+	    tzs.sort();
+	    
+	    element.append($("<option></option>").attr({
+	        value: "",
+	        "selected": true
+	    }).text("none"));
+	    
+	    $.each(tzs, function(key, value) {
+	        element.append($("<option></option>").attr({
+	            value: value,
+	            "selected": (value == tz)
+	        }).text(value));
+	    });
+	    
+	    if (typeof(cb) === "function") cb();
 	});
 };
 
@@ -57,96 +59,130 @@ function setupFormatPicker() {
 	$('#formatPane').show();
 };
 
-function setMonthValues(element, month, year) {
+function setMonthValues(element, month, year, cb) {
 	var calName = $("#calendarName").val(),
 		locale = $('#localeControl').val() || "en",
-		cal = CalendarFactory({
-			type: calName,
-			locale: locale
-		}),
-		sysres = new ResBundle({
-			name: "sysres",
-			locale: locale
-		}),
-		months = cal.getNumMonths(year),
+		sysres,
+		months,
 		monthName,
 		i;
-	
-	element.empty();
-	for (i = 1; i <= months; i++) {
-		monthName = sysres.getString(undefined, "MMMM"+i+'-'+calName) || sysres.getString(undefined, "MMMM"+i);
-		element.append($("<option></option>").attr({
-			"value": i,
-			"selected": (i == month)
-		}).text(i + " - " + monthName));
-	}
+
+    CalendarFactory({
+        type: calName,
+        locale: locale,
+        sync: !ilib.isDynData(),
+        onLoad: function(cal) {
+            new ResBundle({
+                name: "sysres",
+                locale: locale,
+                sync: !ilib.isDynData(),
+                onLoad: function(sysres) {
+                    months = cal.getNumMonths(year),
+                    element.empty();
+                    for (i = 1; i <= months; i++) {
+                        monthName = sysres.getString(undefined, "MMMM"+i+'-'+calName) || sysres.getString(undefined, "MMMM"+i);
+                        element.append($("<option></option>").attr({
+                            "value": i,
+                            "selected": (i === month)
+                        }).text(i + " - " + monthName));
+                        if (typeof(cb) === "function") cb();
+                    }
+                }
+            });
+        }
+    });
+    
 };
 
-function setDayValues(element, day, month, year) {
+function setDayValues(element, day, month, year, cb) {
 	var calName = $("#calendarName").val(),
 		locale = $('#localeControl').val() || "en",
-		cal = CalendarFactory({
-			type: calName,
-			locale: locale
-		}),
-		days = cal.getMonLength(month, year),
-		fmt = new DateFmt({
-			calendar: calName,
-			locale: locale,
-			type: "date",
-			date: "d",
-			timezone: "Etc/UTC"
-		}),
-		date = DateFactory({
-			calendar: calName,
-			locale: locale,
-			year: year,
-			month: month,
-			day: 1,
-			timezone: "Etc/UTC"
-		});
-	
-	element.empty();
-	for (var i = 1; i <= days; i++) {
-		date.setDays(i);
-		element.append($("<option></option>").attr({
-			"value": i,
-			"selected": (i == day)
-		}).text(fmt.format(date)));
-	}
+		cal,
+		days,
+		fmt,
+		date;
+
+    CalendarFactory({
+        type: calName,
+        locale: locale,
+        sync: !ilib.isDynData(),
+        onLoad: function(cal) {
+            days = cal.getMonLength(month, year);
+            new DateFmt({
+                calendar: calName,
+                locale: locale,
+                type: "date",
+                date: "d",
+                timezone: "Etc/UTC",
+                sync: !ilib.isDynData(),
+                onLoad: function(fmt) {
+                    DateFactory({
+                        calendar: calName,
+                        locale: locale,
+                        year: year,
+                        month: month,
+                        day: 1,
+                        timezone: "Etc/UTC",
+                        sync: !ilib.isDynData(),
+                        onLoad: function(date) {
+                            element.empty();
+                            for (var i = 1; i <= days; i++) {
+                                date.setDays(i);
+                                element.append($("<option></option>").attr({
+                                    "value": i,
+                                    "selected": (i == day)
+                                }).text(fmt.format(date)));
+                                if (typeof(cb) === "function") cb();
+                            }
+                        }
+                    });
+                }
+            });
+        }
+    });
 };
 
-function setHourValues(element, hour) {
+function setHourValues(element, hour, cb) {
 	var locale = $('#localeControl').val() || "en",
 		i,
-		calName = $("#calendarName").val(),
-		cal = CalendarFactory({
-			type: calName,
-			locale: locale,
-			calendar: calName
-		}),
-		fmt = new DateFmt({
-			calendar: calName,
-			locale: locale,
-			type: "time",
-			time: "ah",
-			timezone: "Etc/UTC"
-		}),
-		date = DateFactory({
-			calendar: calName,
-			locale: locale,
-			hour: 0,
-			timezone: "Etc/UTC"
-		});
-	
-	element.empty();
-	for (i = 0; i < 24; i++) {
-		date.setHours(i);
-		element.append($("<option></option>").attr({
-			"value": i,
-			"selected": (i == hour)
-		}).text(fmt.format(date)));
-	}
+		calName = $("#calendarName").val();
+
+    CalendarFactory({
+        type: calName,
+        locale: locale,
+        calendar: calName,
+        sync: !ilib.isDynData(),
+        onLoad: function(cal) {
+            new DateFmt({
+                calendar: calName,
+                locale: locale,
+                type: "time",
+                time: "ah",
+                timezone: "Etc/UTC",
+                sync: !ilib.isDynData(),
+                onLoad: function(fmt) {
+                    DateFactory({
+                        calendar: calName,
+                        locale: locale,
+                        hour: 0,
+                        timezone: "Etc/UTC",
+                        sync: !ilib.isDynData(),
+                        onLoad: function(date) {
+                            element.empty();
+                            for (i = 0; i < 24; i++) {
+                                date.setHours(i);
+                                element.append($("<option></option>").attr({
+                                    "value": i,
+                                    "selected": (i == hour)
+                                }).text(fmt.format(date)));
+                            }
+                            if (typeof(cb) === "function") cb();
+                        }
+                    });
+                }
+            });
+        }
+    });
 }
 
 function setMinutesSecondsValues(minuteElement, secondElement, minute, second) {
@@ -193,117 +229,133 @@ function setupCalendarPicker() {
 		year,
 		tzElement = $("#timezone");
 	
-	cal = CalendarFactory({
-		locale: locale
-	});
-	today = DateFactory({
-		calendar: cal.getType()
-	});
+	CalendarFactory({
+		locale: locale,
+		sync: !ilib.isDynData(),
+		onLoad: function(cal) {
+		    DateFactory({
+		        calendar: cal.getType(),
+		        sync: !ilib.isDynData(),
+		        onLoad: function(today) {
+		            setCalendarValues(cal.getType());
+		            calName.append($("<option></option>").attr("value", "julianday").text("julianday"));
+		            calName.append($("<option></option>").attr("value", "unixtime").text("unixtime"));
 
-	setCalendarValues(cal.getType());
-	calName.append($("<option></option>").attr("value", "julianday").text("julianday"));
-	calName.append($("<option></option>").attr("value", "unixtime").text("unixtime"));
+		            setMinutesSecondsValues(minuteElement, secondElement, today.minute, today.second);
+		            year = parseInt(yearElement.val());
+		            
+		            $('#localeControl').change(function () {
+		                var month = parseInt(monthElement.val()),
+		                    hour = parseInt(hourElement.val()),
+		                    year = parseInt(yearElement.val());
+		                setMonthValues(monthElement, month, year, function() {
+		                    setHourValues(hourElement, hour);
+		                });
+		            });
+		            
+		            $('#year').change(function () {
+		                var month = parseInt(monthElement.val()),
+		                    day = parseInt(dayElement.val()),
+		                    year = parseInt(yearElement.val());
 
-	setMinutesSecondsValues(minuteElement, secondElement, today.minute, today.second);
-	year = parseInt(yearElement.val());
-	
-	$('#localeControl').change(function () {
-		var month = parseInt(monthElement.val()),
-			hour = parseInt(hourElement.val()),
-			year = parseInt(yearElement.val());
-		setMonthValues(monthElement, month, year);
-		setHourValues(hourElement, hour);
-	});
-	
-	$('#year').change(function () {
-		var month = parseInt(monthElement.val()),
-			day = parseInt(dayElement.val()),
-			year = parseInt(yearElement.val());
+		                $('#cycle').val(Math.floor((year - 1) / 60));
+		                $('#cycleYear').val(MathUtils.amod(year, 60));
 
-		$('#cycle').val(Math.floor((year - 1) / 60));
-		$('#cycleYear').val(MathUtils.amod(year, 60));
-
-		setMonthValues(monthElement, month, year);
-		setDayValues(dayElement, day, month, year);
-	});
-	
-	calName.change(function() {
-		var name = calName.val(),
-			locale = $('#localeControl').val() || "en";
-		
-		if (name === "julianday") {
-			$('#yearMonthPicker').hide();
-			$('#calendarPicker').hide();
-			$('#jdpicker').show();
-			$('#utpicker').hide();
-			$('#chineseCyclesPicker').hide();
-		} else if (name === "unixtime") {
-			$('#yearMonthPicker').hide();
-			$('#calendarPicker').hide();
-			$('#jdpicker').hide();
-			$('#utpicker').show();
-			$('#chineseCyclesPicker').hide();
-		} else {
-			$('#jdpicker').hide();
-			$('#utpicker').hide();
-			$('#yearMonthPicker').show();
-			$('#calendarPicker').show();
-			if (name === "han") {
-				$('#chineseCyclesPicker').show();
-			} else {
-				$('#chineseCyclesPicker').hide();
-			}
-			cal = CalendarFactory({
-				type: name,
-				locale: locale
-			});
-			
-			var today = DateFactory({
-				calendar: name,
-				locale: locale
-			});
-			var yearElement = $('#year');
-			
-			if (name === "han") {
-				$('#cycle').val(today.getCycles());
-				$('#cycleYear').val(today.getCycleYears());
-			}
-	
-			yearElement.val(today.year);
-			
-			setMonthValues(monthElement, today.month, today.year);
-			setDayValues(dayElement, today.day, today.month, today.year);
-			setHourValues(hourElement, today.hour);
+		                setMonthValues(monthElement, month, year, function() {
+		                    setDayValues(dayElement, day, month, year);
+		                });
+		            });
+		            
+		            calName.change(function() {
+		                var name = calName.val(),
+		                    locale = $('#localeControl').val() || "en";
+		                
+		                if (name === "julianday") {
+		                    $('#yearMonthPicker').hide();
+		                    $('#calendarPicker').hide();
+		                    $('#jdpicker').show();
+		                    $('#utpicker').hide();
+		                    $('#chineseCyclesPicker').hide();
+		                } else if (name === "unixtime") {
+		                    $('#yearMonthPicker').hide();
+		                    $('#calendarPicker').hide();
+		                    $('#jdpicker').hide();
+		                    $('#utpicker').show();
+		                    $('#chineseCyclesPicker').hide();
+		                } else {
+		                    $('#jdpicker').hide();
+		                    $('#utpicker').hide();
+		                    $('#yearMonthPicker').show();
+		                    $('#calendarPicker').show();
+		                    if (name === "han") {
+		                        $('#chineseCyclesPicker').show();
+		                    } else {
+		                        $('#chineseCyclesPicker').hide();
+		                    }
+		                    CalendarFactory({
+		                        type: name,
+		                        locale: locale,
+		                        sync: !ilib.isDynData(),
+		                        onLoad: function(cal) {
+		                            DateFactory({
+		                                calendar: name,
+		                                locale: locale,
+		                                sync: !ilib.isDynData(),
+		                                onLoad: function(today) {
+		                                    var yearElement = $('#year');
+		                                    
+		                                    if (name === "han") {
+		                                        $('#cycle').val(today.getCycles());
+		                                        $('#cycleYear').val(today.getCycleYears());
+		                                    }
+		                            
+		                                    yearElement.val(today.year);
+		                                    
+		                                    setMonthValues(monthElement, today.month, today.year, function() {
+		                                        setDayValues(dayElement, today.day, today.month, today.year, function() {
+		                                            setHourValues(hourElement, today.hour);
+		                                        });
+		                                    });
+		                                }
+		                            });
+		                        }
+		                    });
+		                }
+		            });
+		            
+		            $('#cycle,#cycleYear').change(function() {
+		                var cycle = parseInt($('#cycle').val());
+		                var cycleYear = parseInt($('#cycleYear').val());
+		                var year = cycle * 60 + cycleYear;
+		                
+		                $('#year').val(year);
+		                $('#cycle').val(Math.floor((year - 1) / 60));
+		                $('#cycleYear').val(MathUtils.amod(year, 60));
+		            });
+		            
+		            monthElement.change(function() {
+		                var day = parseInt(dayElement.val());
+		                    month = parseInt(monthElement.val()),
+		                    year = parseInt(yearElement.val());
+		                setDayValues(dayElement, day, month, year);
+		            });
+		            
+		            yearElement.val(today.year);
+		            setMonthValues(monthElement, today.month, today.year, function() {
+		                setDayValues(dayElement, today.day, today.month, today.year, function() {
+		                    setHourValues(hourElement, today.hour, function() {
+		                        setTimeZoneValues(tzElement, undefined, function() {
+		                            $('#calendarPane').show();
+		                            $('#yearMonthPicker').show();
+		                            $('#calendarPicker').show();
+		                        });
+		                    });
+		                });
+		            });
+		        }
+		    });
 		}
 	});
-	
-	$('#cycle,#cycleYear').change(function() {
-		var cycle = parseInt($('#cycle').val());
-		var cycleYear = parseInt($('#cycleYear').val());
-		var year = cycle * 60 + cycleYear;
-		
-		$('#year').val(year);
-		$('#cycle').val(Math.floor((year - 1) / 60));
-		$('#cycleYear').val(MathUtils.amod(year, 60));
-	});
-	
-	monthElement.change(function() {
-		var day = parseInt(dayElement.val());
-			month = parseInt(monthElement.val()),
-			year = parseInt(yearElement.val());
-		setDayValues(dayElement, day, month, year);
-	});
-	
-	yearElement.val(today.year);
-	setMonthValues(monthElement, today.month, today.year);
-	setDayValues(dayElement, today.day, today.month, today.year);
-	setHourValues(hourElement, today.hour);
-
-	setTimeZoneValues(tzElement);
-	
-	$('#calendarPane').show();
-	$('#yearMonthPicker').show();
-	$('#calendarPicker').show();
 };
 
 function datePicker() {
@@ -331,16 +383,18 @@ function datePicker() {
 		var month = parseInt(monthElement.val()),
 			hour = parseInt(hourElement.val()),
 			year = parseInt(yearElement.val());
-		setMonthValues(monthElement, month, year);
-		setHourValues(hourElement, hour);
+		setMonthValues(monthElement, month, year, function() {
+		    setHourValues(hourElement, hour);
+		});
 	});
 	
 	$('#year').change(function () {
 		var month = parseInt(monthElement.val()),
 			day = parseInt(dayElement.val()),
 			year = parseInt(yearElement.val());
-		setMonthValues(monthElement, month, year);
-		setDayValues(dayElement, day, month, year);
+		setMonthValues(monthElement, month, year, function() {
+		    setDayValues(dayElement, day, month, year);
+		});
 	});
 	
 	
@@ -352,14 +406,12 @@ function datePicker() {
 	});
 	
 	yearElement.val(today.year);
-	setMonthValues(monthElement, today.month, today.year);
-	setDayValues(dayElement, today.day, today.month, today.year);
-
-
-	
-	$('#yearMonthPicker').show();
-	$('#dayPicker').show();
-	
+	setMonthValues(monthElement, today.month, today.year, function() {
+	    setDayValues(dayElement, today.day, today.month, today.year, function() {
+	        $('#yearMonthPicker').show();
+	        $('#dayPicker').show();
+	    });
+	});
 };
 
 function setupRangePicker(startname, endname, jdname, utname) {

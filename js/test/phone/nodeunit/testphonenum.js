@@ -18,13 +18,13 @@
  */
 
 if (typeof(ilib) === "undefined") {
-    var ilib = require("../.././../lib/ilib.js");
+    var ilib = require("../../../lib/ilib.js");
 }
 if (typeof(PhoneNumber) === "undefined") {
-    var PhoneNumber = require("../.././../lib/PhoneNumber.js");
+    var PhoneNumber = require("../../../lib/PhoneNumber.js");
 }
 if (typeof(PhoneHandlerFactory) === "undefined") {
-    var PhoneHandlerFactory = require("../.././../lib/PhoneHandlerFactory.js");
+    var PhoneHandlerFactory = require("../../../lib/PhoneHandlerFactory.js");
 }
 function mockLoaderPhoneNum(paths, sync, params, callback) {
     var data = [];
@@ -110,11 +110,6 @@ var lookAheadStates = {
         }
     ]
 };
-
-
-if (typeof(ilib) === "undefined") {
-    var ilib = require("../../../lib/ilib.js");
-}
 
 var oldLoader = ilib._load;
 

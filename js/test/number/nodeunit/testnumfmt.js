@@ -18,7 +18,7 @@
  */
 
 if (typeof(NumFmt) === "undefined") {
-    var NumFmt = require("../.././../lib/NumFmt.js");
+    var NumFmt = require("../../../lib/NumFmt.js");
 }
 
 if (typeof(ilib) === "undefined") {

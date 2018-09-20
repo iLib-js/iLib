@@ -1,7 +1,7 @@
 /*
  * testresources.js - test the Resources object
  * 
- * Copyright © 2012-2015,2017-2018, JEDLSoft
+ * Copyright © 2012-2015, 2017-2018, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,13 +18,13 @@
  */
 
 if (typeof(ilib) === "undefined") {
-    var ilib = require("../.././../lib/ilib.js");
+    var ilib = require("../../../lib/ilib.js");
 }
 if (typeof(ResBundle) === "undefined") {
-    var ResBundle = require("../.././../lib/ResBundle.js");
+    var ResBundle = require("../../../lib/ResBundle.js");
 }
 if (typeof(Locale) === "undefined") {
-    var Locale = require("../.././../lib/Locale.js");
+    var Locale = require("../../../lib/Locale.js");
 }
 
 ilib.data.strings = {
@@ -1270,13 +1270,13 @@ module.exports.testresources = {
        test.done();
     },
     
-    testResBundleConstructAsynchPreassembled: function(test) {
+    testResBundleConstructPreassembledCallback: function(test) {
         test.expect(6);
         var onloadcalled = false;
         ResBundle.resources = undefined;
         var rb = new ResBundle({
             locale: "fr-CA-govt",
-            sync: false,
+            sync: true,
             onLoad: function(rb) {
                 test.ok(typeof(rb) !== "undefined");
                 
@@ -1293,12 +1293,12 @@ module.exports.testresources = {
         test.done();
     },
     
-    testResBundleConstructAsynchPreassembledCached: function(test) {
+    testResBundleConstructPreassembledCachedCallback: function(test) {
         test.expect(6);
         var onloadcalled = false;
         var rb = new ResBundle({
             locale: "fr-CA-govt",
-            sync: false,
+            sync: true,
             onLoad: function(rb) {
                 test.ok(typeof(rb) !== "undefined");
                 

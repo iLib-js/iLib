@@ -2,7 +2,7 @@
 <!--
 build.xml - build everything in the ilib project
 
-Copyright © 2012-2017, JEDLSoft
+Copyright © 2012-2018, JEDLSoft
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -42,7 +42,7 @@ limitations under the License.
         <attribute name="target"/>
         <sequential>
             <subant target="@{target}"  >
-            	<property name="dist" value="${build.dist}"/>
+                <property name="dist" value="${build.dist}"/>
                 <fileset dir="." includes="*/build.xml"/>
             </subant>
         </sequential>
@@ -57,21 +57,28 @@ limitations under the License.
 		<iterate target="export"/>
 		<iterate target="all"/>
 	</target>
-		
-	<target name="clean" description="Remove all generated files to start from scratch">
-		<iterate target="clean"/>
-		<delete dir="${build.dist}"/>
-		<delete dir="${build.export}"/>
-	</target>
+
+    <target name="clean" description="Remove all generated files to start from scratch">
+        <delete dir="${build.dist}"/>
+        <delete dir="${build.export}"/>
+        <delete>
+            <fileset dir="${build.base}/docs/demo/scripts">
+                <include name="ilib-demo*"/>
+                <include name="ilib.*.js"/>
+            </fileset>
+        </delete>
+        <iterate target="clean"/>
+    </target>
 
 	<target name="dist" depends="all" description="Build the distribution package.">
 		<mkdir dir="${build.dist}" description="Dir to contain all the distribution outputs"/>
+		<mkdir dir="${build.export}" description="Dir to contain all the exported outputs"/>
 		<iterate target="export"/>
 		<zip destfile="${build.dist}/ilib-${version}.zip"
 			basedir="${build.export}"
 			includes="js/**,java/**,locale/**,qt/**"/>
 		<zip destfile="${build.dist}/ilib-${version}-doc.zip"
-			basedir="${build.export}/docs"/>
+			basedir="${build.export}/doc"/>
 		<zip destfile="${build.dist}/ilib-${version}-src.zip">
 			<zipfileset 
 				dir="${build.export}/src"
@@ -86,7 +93,7 @@ limitations under the License.
 		<tar destfile="${build.dist}/ilib-${version}.tgz" compression="gzip" 
 			basedir="${build.export}"
 			includes="js/**,java/**,locale/**,qt/**"/>
-		<tar destfile="${build.dist}/ilib-${version}-doc.tgz" compression="gzip" basedir="${build.export}/docs" />
+		<tar destfile="${build.dist}/ilib-${version}-doc.tgz" compression="gzip" basedir="${build.export}/doc" />
 		<tar destfile="${build.dist}/ilib-${version}-src.tgz" compression="gzip">
 			<fileset dir="${build.export}/src" includes="**"/>
 			<fileset dir="${build.export}"     includes="tools/**"/>

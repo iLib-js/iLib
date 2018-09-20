@@ -18,10 +18,10 @@
  */
 
 if (typeof(EthiopicRataDie) === "undefined") {
-    var EthiopicRataDie = require("../.././../lib/EthiopicRataDie.js");
+    var EthiopicRataDie = require("../../../lib/EthiopicRataDie.js");
 }
 if (typeof(EthiopicDate) === "undefined") {
-    var EthiopicDate = require("../.././../lib/EthiopicDate.js");
+    var EthiopicDate = require("../../../lib/EthiopicDate.js");
 }
 
 var testDatesEthiopic = [

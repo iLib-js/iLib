@@ -1,7 +1,7 @@
 /*
  * NormString.js - ilib normalized string subclass definition
- *
- * Copyright © 2013-2015, JEDLSoft
+ * 
+ * Copyright © 2013-2015, 2018, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,7 +17,7 @@
  * limitations under the License.
  */
 
-// !depends IString.js GlyphString.js Utils.js
+// !data ccc nfd nfc nfkd nfkc
 
 var ilib = require("./ilib.js");
 var Utils = require("./Utils.js");
@@ -71,7 +71,7 @@ NormString.prototype.constructor = NormString;
 /**
  * Initialize the normalized string routines statically. This
  * is intended to be called in a dynamic-load version of ilib
- * to load the data need to normalize strings before any instances
+ * to load the data needed to normalize strings before any instances
  * of NormString are created.<p>
  *
  * The options parameter may contain any of the following properties:
@@ -114,36 +114,37 @@ NormString.init = function(options) {
 
     var formDependencies = {
         "nfd": ["nfd"],
-        "nfc": ["nfd"],
+        "nfc": ["nfc", "nfd"],
         "nfkd": ["nfkd", "nfd"],
-        "nfkc": ["nfkd", "nfd"]
+        "nfkc": ["nfc", "nfkd", "nfd"]
     };
-    var files = ["normdata.json"];
+    var files = [];
     var forms = formDependencies[form];
-    for (var f in forms) {
-        files.push(forms[f] + "/" + script + ".json");
-    }
+    var toLoad = [];
+    forms.forEach(function(f) {
+        if (!ilib.data.norm[f] || JSUtils.isEmpty(ilib.data.norm[f])) {
+            files.push(f + "/" + script + ".json");
+            toLoad.push(f);
+        }
+    });
 
-    if (!ilib.data.norm || JSUtils.isEmpty(ilib.data.norm.ccc)) {
+    if (files.length || !ilib.data.ccc || JSUtils.isEmpty(ilib.data.ccc)) {
         Utils.loadData({
             object: "NormString",
-            name: "normdata.json",
+            name: "ccc.json",
             locale: "-",
             nonlocale: true,
             sync: sync,
             loadParams: loadParams,
-            callback: ilib.bind(this, function(normdata) {
-                if (!normdata) {
-                    ilib.data.cache.normdata = normdata;
-                }
-
-                if (JSUtils.isEmpty(ilib.data.norm.ccc) || JSUtils.isEmpty(ilib.data.norm.nfd) || JSUtils.isEmpty(ilib.data.norm.nfkd)) {
+            callback: ilib.bind(this, function(normdata){
+                ilib.data.ccc = normdata;
+                
+                if (files.length) {
                     //console.log("loading files " + JSON.stringify(files));
                     Utils._callLoadData(files, sync, loadParams, function(arr) {
-                        ilib.extend(ilib.data.norm, arr[0]);
-                        for (var i = 1; i < arr.length; i++) {
+                        for (var i = 0; i < arr.length; i++) {
                             if (typeof(arr[i]) !== 'undefined') {
-                                ilib.extend(ilib.data.norm[forms[i-1]], arr[i]);
+                                ilib.extend(ilib.data.norm[toLoad[i]], arr[i]);
                             }
                         }
                         if (options && typeof(options.onLoad) === 'function') {
@@ -305,10 +306,13 @@ NormString._expand = function (ch, canon, compat) {
  *
  * The normalization data is organized by normalization form and within there
  * by script. To include the normalization data for a particular script with
- * a particular normalization form, use the directive:
- *
+ * a particular normalization form, use the following require:
+ * 
  * <pre><code>
- * !depends &lt;form&gt;/&lt;script&gt;.js
+ * NormString.init({
+ *   form: "&lt;form&gt;",
+ *   script: "&lt;script&gt;"
+ * });
  * </code></pre>
  *
  * Where &lt;form&gt is the normalization form ("nfd", "nfc", "nfkd", or "nfkc"), and
@@ -316,7 +320,10 @@ NormString._expand = function (ch, canon, compat) {
  * support. Example: to load in the NFC data for Cyrillic, you would use:
  *
  * <pre><code>
- * !depends nfc/Cyrl.js
+ * NormString.init({
+ *   form: "nfc",
+ *   script: "Cyrl"
+ * });
  * </code></pre>
  *
  * Note that because certain normalization forms include others in their algorithm,
@@ -343,15 +350,15 @@ NormString._expand = function (ch, canon, compat) {
  * that are commonly used in many different scripts. Examples of characters in the
  * Common script are the ASCII punctuation characters, or the ASCII Arabic
  * numerals "0" through "9".<p>
- *
- * By default, none of the data for normalization is automatically
- * included in the preassembled iliball.js file.
+ * 
+ * By default, none of the data for normalization is automatically 
+ * included in the preassembled ilib files. (For size "full".) 
  * If you would like to normalize strings, you must assemble
  * your own copy of ilib and explicitly include the normalization data
- * for those scripts as per the instructions above. This normalization method will
- * produce output, even without the normalization data. However, the output will be
- * simply the same thing as its input for all scripts
- * except Korean Hangul and Jamo, which are decomposed and recomposed
+ * for those scripts. This normalization method will 
+ * produce output, even without the normalization data. However, the output will be 
+ * simply the same thing as its input for all scripts 
+ * except Korean Hangul and Jamo, which are decomposed and recomposed 
  * algorithmically and therefore do not rely on data.<p>
  *
  * If characters are encountered for which there are no normalization data, they
@@ -409,11 +416,11 @@ NormString.prototype.normalize = function (form) {
     // now put the combining marks in a fixed order by
     // sorting on the combining class
     function compareByCCC(left, right) {
-        return ilib.data.norm.ccc[left] - ilib.data.norm.ccc[right];
+        return ilib.data.ccc[left] - ilib.data.ccc[right];
     }
 
     function ccc(c) {
-        return ilib.data.norm.ccc[c] || 0;
+        return ilib.data.ccc[c] || 0;
     }
 
     function sortChars(arr, comp) {
@@ -451,11 +458,11 @@ NormString.prototype.normalize = function (form) {
 
     i = 0;
     while (i < cpArray.length) {
-        if (typeof(ilib.data.norm.ccc[cpArray[i]]) !== 'undefined' && ccc(cpArray[i]) !== 0) {
+        if (typeof(ilib.data.ccc[cpArray[i]]) !== 'undefined' && ccc(cpArray[i]) !== 0) {
             // found a non-starter... rearrange all the non-starters until the next starter
             end = i+1;
             while (end < cpArray.length &&
-                    typeof(ilib.data.norm.ccc[cpArray[end]]) !== 'undefined' &&
+                    typeof(ilib.data.ccc[cpArray[end]]) !== 'undefined' && 
                     ccc(cpArray[end]) !== 0) {
                 end++;
             }
@@ -471,17 +478,17 @@ NormString.prototype.normalize = function (form) {
     if (nfc) {
         i = 0;
         while (i < cpArray.length) {
-            if (typeof(ilib.data.norm.ccc[cpArray[i]]) === 'undefined' || ilib.data.norm.ccc[cpArray[i]] === 0) {
+            if (typeof(ilib.data.ccc[cpArray[i]]) === 'undefined' || ilib.data.ccc[cpArray[i]] === 0) {
                 // found a starter... find all the non-starters until the next starter. Must include
                 // the next starter because under some odd circumstances, two starters sometimes recompose
                 // together to form another character
                 end = i+1;
                 var notdone = true;
                 while (end < cpArray.length && notdone) {
-                    if (typeof(ilib.data.norm.ccc[cpArray[end]]) !== 'undefined' &&
-                        ilib.data.norm.ccc[cpArray[end]] !== 0) {
-                        if (ccc(cpArray[end-1]) < ccc(cpArray[end])) {
-                            // not blocked
+                    if (typeof(ilib.data.ccc[cpArray[end]]) !== 'undefined' && 
+                        ilib.data.ccc[cpArray[end]] !== 0) {
+                        if (ccc(cpArray[end-1]) < ccc(cpArray[end])) { 
+                            // not blocked 
                             testChar = GlyphString._compose(cpArray[i], cpArray[end]);
                             if (typeof(testChar) !== 'undefined') {
                                 cpArray[i] = testChar;
@@ -559,7 +566,7 @@ NormString.prototype.charIterator = function() {
          * @private
          */
         var ccc = function(c) {
-            return ilib.data.norm.ccc[c] || 0;
+            return ilib.data.ccc[c] || 0;
         };
 
         this.index = 0;
@@ -574,8 +581,8 @@ NormString.prototype.charIterator = function() {
 
             this.nextChar = undefined;
 
-            if (ilib.data.norm.ccc &&
-                    (typeof(ilib.data.norm.ccc[ch]) === 'undefined' || ccc(ch) === 0)) {
+            if (ilib.data.ccc &&
+                    (typeof(ilib.data.ccc[ch]) === 'undefined' || ccc(ch) === 0)) {
                 // found a starter... find all the non-starters until the next starter. Must include
                 // the next starter because under some odd circumstances, two starters sometimes recompose
                 // together to form another character
@@ -583,7 +590,7 @@ NormString.prototype.charIterator = function() {
                 while (it.hasNext() && notdone) {
                     this.nextChar = it.next();
                     nextCcc = ccc(this.nextChar);
-                    if (typeof(ilib.data.norm.ccc[this.nextChar]) !== 'undefined' && nextCcc !== 0) {
+                    if (typeof(ilib.data.ccc[this.nextChar]) !== 'undefined' && nextCcc !== 0) {
                         ch += this.nextChar;
                         this.nextChar = undefined;
                     } else {

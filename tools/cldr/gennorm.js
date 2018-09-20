@@ -2,7 +2,7 @@
  * gennorm.js - ilib tool to generate the json UNA normalization data from the Unicode 
  * data files
  * 
- * Copyright © 2013-2015, JEDLSoft
+ * Copyright © 2013-2018, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -27,6 +27,8 @@ var util = require('util');
 var uniData = require('./uniData.js');
 var unifile = require('./unifile.js');
 var common = require('./common.js');
+var iso15924 = require('iso-15924');
+
 var UnicodeData = uniData.UnicodeData;
 var CharacterInfo = uniData.CharacterInfo;
 var UnicodeFile = unifile.UnicodeFile;
@@ -35,7 +37,7 @@ var isMember = common.isMember;
 var coelesce = common.coelesce;
 
 function usage() {
-	util.print("Usage: gennorm [-h] UCD_dir [dataDir [codeDir]]\n" +
+	console.log("Usage: gennorm [-h] UCD_dir [dataDir [codeDir]]\n" +
 			"Generate the normalization data.\n\n" +
 			"-h or --help\n" +
 			"  this help\n" +
@@ -43,15 +45,15 @@ function usage() {
 			"  path to the Unicode Character Database files and the ISO-15924-file.txt script\n" +
 			"  code definition file downloaded from the Unicode site and untarred/uncompressed.\n" +
 			"dataDir\n" +
-			"  directory to output the normalization data json files. Default: current dir.\n" +
+			"  directory to output the normalization data json files. Default: current_dir/locale.\n" +
 			"codeDir\n" +
-			"  directory to output the generated code files. Default: current dir.\n");
+			"  directory to output the generated code files. Default: current_dir/lib.\n");
 	process.exit(1);
 }
 
 var unicodeDirName;
-var toDir = ".";
-var codeDir = ".";
+var toDir = "./locale";
+var codeDir = "./lib";
 
 process.argv.forEach(function (val, index, array) {
 	if (val === "-h" || val === "--help") {
@@ -74,7 +76,7 @@ if (process.argv.length > 3) {
 	}
 }
 
-util.print("gennorm - generate normalization data.\n" +
+console.log("gennorm - generate normalization data.\n" +
 		"Copyright (c) 2012 JEDLSoft\n");
 
 if (!fs.existsSync(unicodeDirName)) {
@@ -95,21 +97,23 @@ if (!fs.existsSync(exclusionFileName)) {
 	util.error("Could not find file " + exclusionFileName);
 	usage();
 }
-if (!fs.existsSync(scriptNamesFileName)) {
-	util.error("Could not find file " + scriptNamesFileName);
-	usage();
-}
 if (!fs.existsSync(scriptFileName)) {
 	util.error("Could not find file " + scriptFileName);
 	usage();
 }
 if (!fs.existsSync(toDir)) {
-	util.error("Could not access target data directory " + toDir);
-	usage();
+    mkdirs(toDir);
+    if (!fs.existsSync(toDir)) {
+        util.error("Could not access target data directory " + toDir);
+        usage();
+    }
 }
 if (!fs.existsSync(codeDir)) {
-	util.error("Could not access target code directory " + codeDir);
-	usage();
+    mkdirs(codeDir);
+    if (!fs.existsSync(codeDir)) {
+        util.error("Could not access target code directory " + codeDir);
+        usage();
+    }
 }
 var canonicalMappings = {};
 var canonicalDecomp = {};
@@ -155,7 +159,7 @@ for (var i = 0; i < len; i++ ) {
 		compositionExclusions.push((range.length > 1) ? [parseInt(range[0], 16), parseInt(range[1], 16)] : parseInt(fields[0], 16));
 	}
 }
-//util.print("Full exclusion table is:\n" + JSON.stringify(compositionExclusions));
+//console.log("Full exclusion table is:\n" + JSON.stringify(compositionExclusions));
 
 var ud = new UnicodeData({path: unicodeFileName});
 len = ud.length();
@@ -168,7 +172,7 @@ for (var i = 0; i < len; i++ ) {
 		if (!isMember(compositionExclusions, common.UTF16ToCodePoint(c))) {
 			canonicalComp[row.getDecomposition()] = c;	
 		//} else {
-		//	util.print("Composition from " + common.UTF16ToCodePoint(c) + " to " + common.UTF16ToCodePoint(row.getDecomposition()) + " is on the exclusion list.\n");
+		//	console.log("Composition from " + common.UTF16ToCodePoint(c) + " to " + common.UTF16ToCodePoint(row.getDecomposition()) + " is on the exclusion list.\n");
 		}
 	} else {
 		compatibilityMappings[c] = row.getDecomposition();
@@ -182,19 +186,9 @@ for (var i = 0; i < len; i++ ) {
 
 var fullToShortMap = {};
 
-var sn = new UnicodeFile({path: scriptNamesFileName});
-var len = sn.length();
-var longCode;
-
-for (var i = 0; i < len; i++ ) {
-	row = sn.get(i);
-
-	longCode = (row[4].length == 0) ? row[2] : row[4];
-	longCode = longCode.replace(/ +/g, '_');
-	if (longCode.length > 0) {
-		fullToShortMap[longCode.toLowerCase()] = row[0];
-	}
-}
+iso15924.forEach(function(script) {
+    fullToShortMap[(script.pva && script.pva.toLowerCase()) || script.name.toLowerCase()] = script.code;
+});
 
 var scriptsFile = new UnicodeFile({path: scriptFileName});
 var scriptName, rangeStart, rangeEnd;
@@ -233,68 +227,66 @@ function findScript(str) {
 }
 
 function genCode(script, form) {
-	var str =
-		"/*\n" +
-		" * " + script + ".js - include file for normalization data for a particular script\n" +
-		" * \n" +
-		" * Copyright © 2013 - 2015, JEDLSoft\n" +
-		" *\n" +
-		" * Licensed under the Apache License, Version 2.0 (the \"License\");\n" +
-		" * you may not use this file except in compliance with the License.\n" +
-		" * You may obtain a copy of the License at\n" +
-		" *\n" +
-		" *     http://www.apache.org/licenses/LICENSE-2.0\n" +
-		" *\n" +
-		" * Unless required by applicable law or agreed to in writing, software\n" +
-		" * distributed under the License is distributed on an \"AS IS\" BASIS,\n" +
-		" * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n" +
-		" *\n" +
-		" * See the License for the specific language governing permissions and\n" +
-		" * limitations under the License.\n" +
-		" */\n" +
-		"/* WARNING: THIS IS A FILE GENERATED BY gennorm.js. DO NOT EDIT BY HAND. */\n";
-	if (script !== "Zyyy" && script !== "all") {
-		// Zyyy cannot depend on itself, and all already includes Zyyy
-		str += "// !depends " + form + "/Zyyy.js\n";
-	}
-	switch (form) {
-		case 'nfd':
-			str += "// !data normdata nfd/" + script + "\n" +
-				"ilib.extend(ilib.data.norm, ilib.data.normdata);\n" +
-				"ilib.extend(ilib.data.norm.nfd, ilib.data.nfd_" + script + ");\n" +
-				"ilib.data.normdata = undefined;\n" +
-				"ilib.data.nfd_" + script + " = undefined;";
-			break;
-		case 'nfc':
-			str += "// !depends nfd/" + script + ".js\n" +
-				"// !data norm\n" +
-				"ilib.extend(ilib.data.norm, ilib.data.normdata);\n" +
-				"ilib.data.normdata = undefined;\n";
-			break;
-		case 'nfkd':
-			str += "// !depends nfd/" + script + ".js\n" +
-				"// !data normdata nfkd/" + script + "\n" +
-				"ilib.extend(ilib.data.norm, ilib.data.normdata);\n" +
-				"ilib.extend(ilib.data.norm.nfkd, ilib.data.nfkd_" + script + ");\n" +
-				"ilib.data.normdata = undefined;\n" +
-				"ilib.data.nfkd_" + script + " = undefined;";
-			break;
-		case 'nfkc':
-			str += "// !depends nfd/" + script + ".js nfkd/" + script + ".js\n" +
-				"// !data norm\n" +
-				"ilib.extend(ilib.data.norm, ilib.data.normdata);\n" +
-				"ilib.data.normdata = undefined;\n";
-			break;
-	}
-	
-	return str;
+    var str =
+        "/*\n" +
+        " * " + script + ".js - include file for normalization data for a particular script\n" +
+        " * \n" +
+        " * Copyright © 2013 - 2018, JEDLSoft\n" +
+        " *\n" +
+        " * Licensed under the Apache License, Version 2.0 (the \"License\");\n" +
+        " * you may not use this file except in compliance with the License.\n" +
+        " * You may obtain a copy of the License at\n" +
+        " *\n" +
+        " *     http://www.apache.org/licenses/LICENSE-2.0\n" +
+        " *\n" +
+        " * Unless required by applicable law or agreed to in writing, software\n" +
+        " * distributed under the License is distributed on an \"AS IS\" BASIS,\n" +
+        " * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n" +
+        " *\n" +
+        " * See the License for the specific language governing permissions and\n" +
+        " * limitations under the License.\n" +
+        " */\n" +
+        "/* WARNING: THIS IS A FILE GENERATED BY gennorm.js. DO NOT EDIT BY HAND. */\n";
+    switch (form) {
+        case 'nfd':
+            str += "// !data nfd/" + script;
+            if (script !== "Zyyy" && script !== "all") {
+                // Zyyy cannot depend on itself, and all already includes Zyyy
+                str += " nfd/Zyyy";
+            }
+            break;
+        case 'nfc':
+            str += "// !data nfc/" + script + " nfd/" + script;
+            if (script !== "Zyyy" && script !== "all") {
+                // Zyyy cannot depend on itself, and all already includes Zyyy
+                str += " nfc/Zyyy nfd/Zyyy";
+            }
+            break;
+        case 'nfkd':
+            str += "// !data nfkd/" + script + " nfd/" + script;
+            if (script !== "Zyyy" && script !== "all") {
+                // Zyyy cannot depend on itself, and all already includes Zyyy
+                str += " nfkd/Zyyy nfd/Zyyy";
+            }
+            break;
+        case 'nfkc':
+            str += "// !data nfc/" + script + " nfkd/" + script + " nfd/" + script;
+            if (script !== "Zyyy" && script !== "all") {
+                // Zyyy cannot depend on itself, and all already includes Zyyy
+                str += " nfc/Zyyy nfkd/Zyyy nfd/Zyyy";
+            }
+            break;
+    }
+
+    str += "\n";
+
+    return str;
 }
 
 var script;
 var nfdByScript = {};
 var nfcByScript = {};
 var nfkdByScript = {};
-var norm = {};
 
 // the Unicode data has only the binary decompositions. That is, the first of 
 // two chars of a decomposition may be itself decomposable. So, apply the 
@@ -345,7 +337,7 @@ function mkdirs(path) {
 }
 
 mkdirs(toDir + "/nfd");
-//mkdirs(toDir + "/nfc");
+mkdirs(toDir + "/nfc");
 mkdirs(toDir + "/nfkd");
 
 mkdirs(codeDir + "/nfd");
@@ -380,14 +372,11 @@ for (script in nfdByScript) {
 	}
 }
 
-/*
 fs.writeFile(toDir + "/nfc/all.json", JSON.stringify(canonicalComp, true, 4), function (err) {
 	if (err) {
 		throw err;
 	}
 });
-*/
-norm.nfc = canonicalComp;
 
 fs.writeFile(codeDir + "/nfc/all.js", genCode("all", "nfc"), function (err) {
 	if (err) {
@@ -397,13 +386,11 @@ fs.writeFile(codeDir + "/nfc/all.js", genCode("all", "nfc"), function (err) {
 
 for (script in nfcByScript) {
 	if (script && nfcByScript[script]) {
-		/*
 		fs.writeFile(toDir + "/nfc/" + script + ".json", JSON.stringify(nfcByScript[script], true, 4), function (err) {
 			if (err) {
 				throw err;
 			}
 		});
-		*/
 		fs.writeFile(codeDir + "/nfc/" + script + ".js", genCode(script, "nfc"), function (err) {
 			if (err) {
 				throw err;
@@ -455,8 +442,7 @@ for (script in nfkdByScript) {
 	}
 }
 
-norm.ccc = combiningMappings;
-fs.writeFile(toDir + "/normdata.json", JSON.stringify(norm, true, 4), function (err) {
+fs.writeFile(toDir + "/ccc.json", JSON.stringify(combiningMappings, true, 4), function (err) {
 	if (err) {
 		throw err;
 	}

@@ -1,7 +1,7 @@
 /*
- * Mapper.js - ilib string mapper class definition
+ * StringMapper.js - ilib string mapper class definition
  * 
- * Copyright © 2014-2015, JEDLSoft
+ * Copyright © 2014-2015, 2018, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,8 +16,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
-// !depends ilib.js IString.js Utils.js Locale.js
 
 var ilib = require("./ilib.js");
 var Utils = require("./Utils.js");
@@ -108,10 +106,6 @@ var StringMapper = function (options) {
 		sync: sync,
 		loadParams: loadParams, 
 		callback: ilib.bind(this, function (map) {
-			if (!map) {
-				var spec = this.locale.getSpec().replace(/-/g, "_");
-				ilib.data.cache.StringMapper[spec] = {};
-			}
 			this.mapData = map || {};
 			if (options && typeof(options.onLoad) === 'function') {
 				options.onLoad(this);

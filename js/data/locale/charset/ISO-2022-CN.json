@@ -3,6 +3,7 @@
 	"max": 2,
 	"scripts": ["Hans","Hani","Bopo","Latn"],
 	"locales": ["zh-Hans"],
+  "optional": true,
 	"escapes": {
 		"shifts": {
 			"to": {

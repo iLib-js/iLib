@@ -18,7 +18,7 @@
  */
 
 if (typeof(HebrewCal) === "undefined") {
-    var HebrewCal = require("../.././../lib/HebrewCal.js");
+    var HebrewCal = require("../../../lib/HebrewCal.js");
 }
 
 if (typeof(ilib) === "undefined") {

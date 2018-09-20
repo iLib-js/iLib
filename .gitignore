@@ -9,6 +9,7 @@ build.properties
 /js/package.json
 js/.ant-targets-build.xml
 **/localeinfo.json
+**/*.stamp
 /node_modules/*
 js/node_modules/*
 !/node_modules/nodeunit/

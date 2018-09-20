@@ -18,7 +18,7 @@
  */
 
 if (typeof(IslamicDate) === "undefined") {
-    var IslamicDate = require("../.././../lib/IslamicDate.js");
+    var IslamicDate = require("../../../lib/IslamicDate.js");
 }
 
 var testDatesIslamic = [

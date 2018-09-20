@@ -1,5 +1,5 @@
 /*
- * hebrew.js - Represent a Hebrew calendar object.
+ * HebrewCal.js - Represent a Hebrew calendar object.
  * 
  * Copyright © 2012-2015,2018, JEDLSoft
  *
@@ -16,9 +16,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
-
-/* !depends Calendar.js MathUtils.js */
 
 var MathUtils = require("./MathUtils.js");
 var Calendar = require("./Calendar.js");

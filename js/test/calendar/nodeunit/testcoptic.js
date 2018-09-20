@@ -18,7 +18,7 @@
  */
 
 if (typeof(CopticCal) === "undefined") {
-    var CopticCal = require("../.././../lib/CopticCal.js");
+    var CopticCal = require("../../../lib/CopticCal.js");
 }
 
 if (typeof(ilib) === "undefined") {

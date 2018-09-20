@@ -18,22 +18,22 @@
  */
 
 if (typeof(ilib) === "undefined") {
-    var ilib = require("../.././../lib/ilib.js");
+    var ilib = require("../../../lib/ilib.js");
 }
 if (typeof(TimeZone) === "undefined") {
-    var TimeZone = require("../.././../lib/TimeZone.js");
+    var TimeZone = require("../../../lib/TimeZone.js");
 }
 if (typeof(LocaleInfo) === "undefined") {
-    var LocaleInfo = require("../.././../lib/LocaleInfo.js");
+    var LocaleInfo = require("../../../lib/LocaleInfo.js");
 }
 if (typeof(IString) === "undefined") {
-    var IString = require("../.././../lib/IString.js");
+    var IString = require("../../../lib/IString.js");
 }
 if (typeof(GregorianDate) === "undefined") {
-    var GregorianDate = require("../.././../lib/GregorianDate.js");
+    var GregorianDate = require("../../../lib/GregorianDate.js");
 }
 if (typeof(DateFactory) === "undefined") {
-    var DateFactory = require("../.././../lib/DateFactory.js");
+    var DateFactory = require("../../../lib/DateFactory.js");
 }
 
 function getAvailableMocker(paths, sync, params, callback) {
@@ -51,8 +51,6 @@ getAvailableMocker.prototype.listAvailableFiles = function(sync, cb) {
 function mockLoaderTZ (paths, sync, params, callback) {
     var data = [];
     
-    data.push(ilib.data.localeinfo); // for the generic, shared stuff
-    paths.shift();
     paths.forEach(function (path) {
         data.push((path.indexOf('zz') === -1) ? undefined : {
             "clock": "24",
@@ -104,10 +102,6 @@ function mockLoaderTZ2(paths, sync, params, callback) {
 }
 
 var oldLoader = ilib._load;
-
-if (typeof(ilib) === "undefined") {
-    var ilib = require("../../../lib/ilib.js");
-}
 
 module.exports.testtimezone = {
     setUp: function(callback) {
@@ -1675,6 +1669,8 @@ module.exports.testtimezone = {
             return;
         }
         ilib.setLoaderCallback(mockLoaderTZ);
+        ilib.data.localeinfo_zz = ilib.data.localeinfo_und_YY = ilib.data.localeinfo_zz_YY = undefined;
+        ilib.clearCache();
         var tz = new TimeZone({locale: "zz-YY"});
         test.expect(2);
         test.ok(tz !== null);
@@ -1691,6 +1687,8 @@ module.exports.testtimezone = {
             return;
         }
         ilib.setLoaderCallback(mockLoaderTZ);
+        ilib.data.localeinfo_zz = ilib.data.localeinfo_und_YY = ilib.data.localeinfo_zz_YY = undefined;
+        ilib.clearCache();
         new TimeZone({
             locale: "zz-YY",
             sync: false,
@@ -1713,6 +1711,8 @@ module.exports.testtimezone = {
         }
         ilib.setLoaderCallback(mockLoaderTZ);
         var tz = new TimeZone({locale: "ww-WW"});
+        ilib.data.localeinfo_ww = ilib.data.localeinfo_und_WW = ilib.data.localeinfo_ww_WW = undefined;
+        ilib.clearCache();
         test.expect(2);
         test.ok(tz !== null);
         ilib.setLoaderCallback(oldLoader);
@@ -1728,6 +1728,8 @@ module.exports.testtimezone = {
             return;
         }
         ilib.setLoaderCallback(mockLoaderTZ);
+        ilib.data.localeinfo_ww = ilib.data.localeinfo_und_WW = ilib.data.localeinfo_ww_WW = undefined;
+        ilib.clearCache();
         new TimeZone({
             locale: "ww-WW",
             sync: false,

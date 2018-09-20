@@ -18,13 +18,13 @@
  */
 
 if (typeof(GregorianDate) === "undefined") {
-    var GregorianDate = require("../.././../lib/GregorianDate.js");
+    var GregorianDate = require("../../../lib/GregorianDate.js");
 }
 if (typeof(DateFmt) === "undefined") {
-    var DateFmt = require("../.././../lib/DateFmt.js");
+    var DateFmt = require("../../../lib/DateFmt.js");
 }
 if (typeof(DateFactory) === "undefined") {
-    var DateFactory = require("../.././../lib/DateFactory.js");
+    var DateFactory = require("../../../lib/DateFactory.js");
 }
 
 if (typeof(ilib) === "undefined") {

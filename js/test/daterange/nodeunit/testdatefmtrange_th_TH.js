@@ -18,10 +18,10 @@
  */
 
 if (typeof(ThaiSolarDate) === "undefined") {
-    var ThaiSolarDate = require("../.././../lib/ThaiSolarDate.js");
+    var ThaiSolarDate = require("../../../lib/ThaiSolarDate.js");
 }
 if (typeof(DateRngFmt) === "undefined") {
-    var DateRngFmt = require("../.././../lib/DateRngFmt.js");
+    var DateRngFmt = require("../../../lib/DateRngFmt.js");
 }
 if (typeof(ilib) === "undefined") {
     var ilib = require("../../../lib/ilib.js");

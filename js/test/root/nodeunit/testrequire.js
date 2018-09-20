@@ -2,7 +2,7 @@
  * testrequire.js - test the require function for whatever platform this test 
  * is running on
  * 
- * Copyright © 2015,2017, JEDLSoft
+ * Copyright © 2015, 2017-2018, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -21,7 +21,11 @@
 // !dependencies: false
 
 if (typeof(ilib) === "undefined") {
-    var ilib = require("../.././../lib/ilib.js");
+    var ilib = require("../../../lib/ilib.js");
+}
+
+if (typeof(Path) === "undefined") {
+    var Path = require("../../../lib/Path.js");
 }
 
 // make sure it thinks the current module's dir is the same as in the 
@@ -38,14 +42,6 @@ if (ilib._getPlatform() === "browser") {
     
     //var i = r.root.lastIndexOf('/');
     //r.root = r.root.substring(0, i) + "/test";
-}
-
-if (ilib.isDynCode() && typeof(path) === "undefined") {
-    var path = require("path");
-}
-
-if (typeof(ilib) === "undefined") {
-    var ilib = require("../../../lib/ilib.js");
 }
 
 module.exports.testrequire = {
@@ -122,12 +118,12 @@ module.exports.testrequire = {
             return;
         }
         
-        var dir = path.dirname(module.filename);
-        var Locale2 = require(path.join(dir, "../nodeunit/testfiles/locale2.js"));
+        var dir = Path.dirname(module.filename);
+        var Locale2 = require(Path.join(dir, "../nodeunit/testfiles/locale2.js"));
         test.expect(4);
         test.ok(typeof(Locale2) !== "undefined");
         
-        var DateFmt2 = require(path.join(dir, "../nodeunit/testfiles/datefmt2.js"));
+        var DateFmt2 = require(Path.join(dir, "../nodeunit/testfiles/datefmt2.js"));
         test.ok(typeof(DateFmt2) !== "undefined");
         var df = new DateFmt2({locale: "de-DE"});
         

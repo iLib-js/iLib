@@ -18,7 +18,7 @@
  */
 
 if (typeof(ThaiSolarCal) === "undefined") {
-    var ThaiSolarCal = require("../.././../lib/ThaiSolarCal.js");
+    var ThaiSolarCal = require("../../../lib/ThaiSolarCal.js");
 }
 
 if (typeof(ilib) === "undefined") {

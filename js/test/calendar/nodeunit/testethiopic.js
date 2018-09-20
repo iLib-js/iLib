@@ -18,7 +18,7 @@
  */
 
 if (typeof(EthiopicCal) === "undefined") {
-    var EthiopicCal = require("../.././../lib/EthiopicCal.js");
+    var EthiopicCal = require("../../../lib/EthiopicCal.js");
 }
 
 if (typeof(ilib) === "undefined") {

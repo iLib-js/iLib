@@ -18,7 +18,7 @@
  */
 
 if (typeof(CalendarFactory) === "undefined") {
-    var CalendarFactory = require("../.././../lib/CalendarFactory.js");
+    var CalendarFactory = require("../../../lib/CalendarFactory.js");
 }
 
 if (typeof(ilib) === "undefined") {

@@ -18,7 +18,7 @@
  */
 
 if (typeof(EnergyUnit) === "undefined") {
-    var EnergyUnit = require("../.././../lib/EnergyUnit.js");
+    var EnergyUnit = require("../../../lib/EnergyUnit.js");
 }
 
 if (typeof(ilib) === "undefined") {

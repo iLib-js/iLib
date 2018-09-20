@@ -18,7 +18,7 @@
  */
 
 if (typeof(FuelConsumptionUnit) === "undefined") {
-    var FuelConsumptionUnit = require("../.././../lib/FuelConsumptionUnit.js");
+    var FuelConsumptionUnit = require("../../../lib/FuelConsumptionUnit.js");
 }
 
 if (typeof(ilib) === "undefined") {

@@ -18,7 +18,7 @@
  */
 
 if (typeof(IslamicCal) === "undefined") {
-    var IslamicCal = require("../.././../lib/IslamicCal.js");
+    var IslamicCal = require("../../../lib/IslamicCal.js");
 }
 
 if (typeof(ilib) === "undefined") {

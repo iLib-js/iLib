@@ -18,7 +18,7 @@
  */
 
 if (typeof(VelocityUnit) === "undefined") {
-    var VelocityUnit = require("../.././../lib/VelocityUnit.js");
+    var VelocityUnit = require("../../../lib/VelocityUnit.js");
 }
 
 if (typeof(ilib) === "undefined") {

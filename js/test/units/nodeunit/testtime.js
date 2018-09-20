@@ -18,7 +18,7 @@
  */
 
 if (typeof(TimeUnit) === "undefined") {
-    var TimeUnit = require("../.././../lib/TimeUnit.js");
+    var TimeUnit = require("../../../lib/TimeUnit.js");
 }
 
 if (typeof(ilib) === "undefined") {

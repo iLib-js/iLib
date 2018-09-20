@@ -63,9 +63,9 @@ module.exports.testdatefmtasync = {
             calendar: "julian",
             sync: false,
             onLoad: function(fmt) {
-                test.ok(fmt !== null);
+                test.ok(fmt);
                 var cal = fmt.getCalendar();
-                test.ok(cal !== null);
+                test.ok(cal);
 
                 test.equal(cal, "julian");
                 test.done();

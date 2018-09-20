@@ -18,10 +18,10 @@
  */
 
 if (typeof(PersianDate) === "undefined") {
-    var PersianDate = require("../.././../lib/PersianDate.js");
+    var PersianDate = require("../../../lib/PersianDate.js");
 }
 if (typeof(PersRataDie) === "undefined") {
-    var PersRataDie = require("../.././../lib/PersRataDie.js");
+    var PersRataDie = require("../../../lib/PersRataDie.js");
 }
 
 var testDatesPersianPersianAstro = [

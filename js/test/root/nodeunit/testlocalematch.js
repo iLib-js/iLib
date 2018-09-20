@@ -18,7 +18,7 @@
  */
 
 if (typeof(LocaleMatcher) === "undefined") {
-    var LocaleMatcher = require("../.././../lib/LocaleMatcher.js");
+    var LocaleMatcher = require("../../../lib/LocaleMatcher.js");
 }
 
 if (typeof(ilib) === "undefined") {

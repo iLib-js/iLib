@@ -18,7 +18,7 @@
  */
 
 if (typeof(MeasurementFactory) === "undefined") {
-    var MeasurementFactory = require("../.././../lib/MeasurementFactory.js");
+    var MeasurementFactory = require("../../../lib/MeasurementFactory.js");
 }
 
 if (typeof(ilib) === "undefined") {

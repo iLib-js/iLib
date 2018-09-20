@@ -17,9 +17,6 @@
  * limitations under the License.
  */
 
-
-/* !depends Calendar.js MathUtils.js */
-
 var MathUtils = require("./MathUtils.js");
 var Calendar = require("./Calendar.js");
 

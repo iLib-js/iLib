@@ -18,7 +18,7 @@
  */
 
 if (typeof(Country) === "undefined") {
-    var Country = require("../.././../lib/Country.js");
+    var Country = require("../../../lib/Country.js");
 }
 
 if (typeof(ilib) === "undefined") {

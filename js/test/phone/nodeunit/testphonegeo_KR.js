@@ -18,10 +18,10 @@
  */
 
 if (typeof(PhoneNumber) === "undefined") {
-    var PhoneNumber = require("../.././../lib/PhoneNumber.js");
+    var PhoneNumber = require("../../../lib/PhoneNumber.js");
 }
 if (typeof(PhoneGeoLocator) === "undefined") {
-    var PhoneGeoLocator = require("../.././../lib/PhoneGeoLocator.js");
+    var PhoneGeoLocator = require("../../../lib/PhoneGeoLocator.js");
 }
 if (typeof(ilib) === "undefined") {
     var ilib = require("../../../lib/ilib.js");

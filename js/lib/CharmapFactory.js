@@ -2,7 +2,7 @@
  * CharmapFactory.js - Factory class to create the right subclasses of a charmap for any 
  * given chararacter set.
  * 
- * Copyright © 2015, JEDLSoft
+ * Copyright © 2015, 2018, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,14 +18,15 @@
  * limitations under the License.
  */
 
-/* !depends ilib.js JSUtils.js Charmap.js CharmapTable.js */
-// !data charset/ISO-8859-15 charmaps/ISO-8859-15
-
 var ilib = require("./ilib.js");
 var JSUtils = require("./JSUtils.js");
 
 var Charset = require("./Charset.js");
 var Charmap = require("./Charmap.js");
+
+function circumventWebpackCharmap(x) {
+    return "./" + x + ".js";
+}
 
 /**
  * Factory method to create a new instance of a character set mapping (charmap) 
@@ -152,7 +153,7 @@ var CharmapFactory = function(options) {
 			if (!Charmap._algorithms[name] && ilib.isDynCode()) {
 				// console.log("CharmapFactory: isDynCode. Doing require");
 				var entry = CharmapFactory._dynMap[name] || "CharmapTable";
-				cons = Charmap._algorithms[name] = require("./" + entry + ".js");
+				cons = Charmap._algorithms[name] = require(circumventWebpackCharmap(entry));
 			}
 			
 			if (!cons) {
@@ -161,8 +162,9 @@ var CharmapFactory = function(options) {
 			
 			// console.log("CharmapFactory: cons is "); console.dir(cons);
 			
-			// pass the same options through to the constructor so the subclass
-			// has the ability to do something with if it needs to
+			// Pass the same options through to the constructor so the subclass
+			// has the ability to do something with if it needs to. It should also call
+			// the onLoad callback when it is done.
 			instance = cons && new cons(JSUtils.merge(options || {}, {charset: charset}));
 		}
 	});

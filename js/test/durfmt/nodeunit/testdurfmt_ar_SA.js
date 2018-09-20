@@ -18,7 +18,7 @@
  */
 
 if (typeof(DurationFmt) === "undefined") {
-    var DurationFmt = require("../.././../lib/DurationFmt.js");
+    var DurationFmt = require("../../../lib/DurationFmt.js");
 }
 //test cases for ar-SA
 

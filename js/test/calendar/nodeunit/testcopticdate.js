@@ -18,13 +18,13 @@
  */
 
 if (typeof(ilib) === "undefined") {
-    var ilib = require("../.././../lib/ilib.js");
+    var ilib = require("../../../lib/ilib.js");
 }
 if (typeof(CopticRataDie) === "undefined") {
-    var CopticRataDie = require("../.././../lib/CopticRataDie.js");
+    var CopticRataDie = require("../../../lib/CopticRataDie.js");
 }
 if (typeof(CopticDate) === "undefined") {
-    var CopticDate = require("../.././../lib/CopticDate.js");
+    var CopticDate = require("../../../lib/CopticDate.js");
 }
 
 var testDatesCoptic = [
@@ -63,10 +63,6 @@ var testDatesCoptic = [
     [2465737.5, 1755,      3,    1,    0,    0,    0,    0,    3],
     [2486076.5, 1810,      11,    11,    0,    0,    0,    0,    0]
 ];
-
-if (typeof(ilib) === "undefined") {
-    var ilib = require("../../../lib/ilib.js");
-}
 
 module.exports.testcopticdate = {
     setUp: function(callback) {

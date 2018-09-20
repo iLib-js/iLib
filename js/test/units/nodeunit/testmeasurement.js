@@ -18,7 +18,7 @@
  */
 
 if (typeof(MeasurementFactory) === "undefined") {
-    var MeasurementFactory = require("../.././../lib/MeasurementFactory.js");
+    var MeasurementFactory = require("../../../lib/MeasurementFactory.js");
     var Measurement = require("../.././../lib/Measurement.js");
     var Locale = require("../.././../lib/Locale.js");
 }

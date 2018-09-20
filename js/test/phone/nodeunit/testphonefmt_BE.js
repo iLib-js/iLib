@@ -18,10 +18,10 @@
  */
 
 if (typeof(PhoneNumber) === "undefined") {
-    var PhoneNumber = require("../.././../lib/PhoneNumber.js");
+    var PhoneNumber = require("../../../lib/PhoneNumber.js");
 }
 if (typeof(PhoneFmt) === "undefined") {
-    var PhoneFmt = require("../.././../lib/PhoneFmt.js");
+    var PhoneFmt = require("../../../lib/PhoneFmt.js");
 }
  function testFormatBEStyle0() {
     var formatted,

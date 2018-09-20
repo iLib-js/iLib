@@ -18,13 +18,13 @@
  */
 
 if (typeof(PhoneNumber) === "undefined") {
-    var PhoneNumber = require("../.././../lib/PhoneNumber.js");
+    var PhoneNumber = require("../../../lib/PhoneNumber.js");
 }
 if (typeof(PhoneLocale) === "undefined") {
-    var PhoneLocale = require("../.././../lib/PhoneLocale.js");
+    var PhoneLocale = require("../../../lib/PhoneLocale.js");
 }
 if (typeof(NumberingPlan) === "undefined") {
-    var NumberingPlan = require("../.././../lib/NumberingPlan.js");
+    var NumberingPlan = require("../../../lib/NumberingPlan.js");
 }
 
 if (typeof(ilib) === "undefined") {

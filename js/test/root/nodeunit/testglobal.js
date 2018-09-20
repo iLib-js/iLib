@@ -1,7 +1,7 @@
 /*
  * testglobal.js - test the ilib static routines
- * 
- * Copyright © 2012-2015,2017, JEDLSoft
+ *
+ * Copyright © 2012-2015, 2017-2018, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,10 +18,10 @@
  */
 
 if (typeof(ilib) === "undefined") {
-    var ilib = require("../.././../lib/ilib.js");
+    var ilib = require("../../../lib/ilib.js");
 }
 if (typeof(Locale) === "undefined") {
-    var Locale = require("../.././../lib/Locale.js");
+    var Locale = require("../../../lib/Locale.js");
 }
 
 module.exports.testglobal = {
@@ -30,67 +30,6 @@ module.exports.testglobal = {
         callback();
     },
 
-    testNoStubsInModular: function(test) {
-        test.expect(55);
-        // make sure we don't have stubs defined in the modular tests
-        test.ok(typeof(ilib.CType) === "undefined");
-        test.ok(typeof(ilib._roundFnc) === "undefined");
-        test.ok(typeof(ilib.Date) === "undefined");
-        test.ok(typeof(ilib.Cal) === "undefined");
-        test.ok(typeof(ilib.Measurement) === "undefined");
-        test.ok(typeof(ilib.shallowCopy) === "undefined");
-        test.ok(typeof(ilib.deepCopy) === "undefined");
-        test.ok(typeof(ilib.mapString) === "undefined");
-        test.ok(typeof(ilib.indexOf) === "undefined");
-        test.ok(typeof(ilib.toHexString) === "undefined");
-        test.ok(typeof(ilib.isDate) === "undefined");
-        test.ok(typeof(ilib.merge) === "undefined");
-        test.ok(typeof(ilib.isEmpty) === "undefined");
-        test.ok(typeof(ilib.hashCode) === "undefined");
-        test.ok(typeof(ilib.Locale) === "undefined");
-        test.ok(typeof(ilib.mergeLocData) === "undefined");
-        test.ok(typeof(ilib.getLocFiles) === "undefined");
-        test.ok(typeof(ilib.loadData) === "undefined");
-        test.ok(typeof(ilib.LocaleInfo) === "undefined");
-        test.ok(typeof(ilib.signum) === "undefined");
-        test.ok(typeof(ilib.mod) === "undefined");
-        test.ok(typeof(ilib.amod) === "undefined");
-        test.ok(typeof(ilib.String) === "undefined");
-        test.ok(typeof(ilib.JulianDay) === "undefined");
-        test.ok(typeof(ilib.TimeZone) === "undefined");
-        test.ok(typeof(ilib.bsearch) === "undefined");
-        test.ok(typeof(ilib.bisectionSearch) === "undefined");
-        test.ok(typeof(ilib.ResBundle) === "undefined");
-        test.ok(typeof(ilib.DateFmt) === "undefined");
-        test.ok(typeof(ilib.DateRngFmt) === "undefined");
-        test.ok(typeof(ilib.Currency) === "undefined");
-        test.ok(typeof(ilib.Number) === "undefined");
-        test.ok(typeof(ilib.NumFmt) === "undefined");
-        test.ok(typeof(ilib.DurFmt) === "undefined");
-        test.ok(typeof(ilib.ScriptInfo) === "undefined");
-        test.ok(typeof(ilib.Name) === "undefined");
-        test.ok(typeof(ilib.NameFmt) === "undefined");
-        test.ok(typeof(ilib.Address) === "undefined");
-        test.ok(typeof(ilib.AddressFmt) === "undefined");
-        test.ok(typeof(ilib.GlyphString) === "undefined");
-        test.ok(typeof(ilib.NormString) === "undefined");
-        test.ok(typeof(ilib.CodePointSource) === "undefined");
-        test.ok(typeof(ilib.ElementIterator) === "undefined");
-        test.ok(typeof(ilib.Collator) === "undefined");
-        test.ok(typeof(ilib.LocaleMatcher) === "undefined");
-        test.ok(typeof(ilib.CaseMapper) === "undefined");
-        test.ok(typeof(ilib.NumPlan) === "undefined");
-        test.ok(typeof(ilib.PhoneLoc) === "undefined");
-        test.ok(typeof(ilib.StateHandler) === "undefined");
-        test.ok(typeof(ilib._handlerFactory) === "undefined");
-        test.ok(typeof(ilib.PhoneNumber) === "undefined");
-        test.ok(typeof(ilib.PhoneFmt) === "undefined");
-        test.ok(typeof(ilib.GeoLocator) === "undefined");
-        test.ok(typeof(ilib.Measurement) === "undefined");
-        test.ok(typeof(ilib.UnitFmt) === "undefined");
-        test.done();
-    },
-    
     testGetLocaleDefault: function(test) {
         test.expect(1);
         test.equal(ilib.getLocale(), "en-US");
@@ -131,7 +70,7 @@ module.exports.testglobal = {
     
     testGetVersion: function(test) {
         test.expect(1);
-        test.equal(ilib.getVersion().substring(0,4), "13.3");
+        test.equal(ilib.getVersion().substring(0,4), "14.0");
         test.done();
     },
     
@@ -243,6 +182,8 @@ module.exports.testglobal = {
                     env: {}
                 };
             }
+            if (!process.env) process.env = {};
+            
             var tmp = process.env.TZ;
             process.env.TZ = "America/Phoenix";
             
@@ -296,7 +237,8 @@ module.exports.testglobal = {
         }
         
         ilib.locale = undefined;
-    
+        if (!process.env) process.env = {};
+        
         process.env.LANG = "th-TH";
         
         test.expect(1);

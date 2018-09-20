@@ -18,13 +18,13 @@
  */
 
 if (typeof(ilib) === "undefined") {
-    var ilib = require("../.././../lib/ilib.js");
+    var ilib = require("../../../lib/ilib.js");
 }
 if (typeof(GregRataDie) === "undefined") {
-    var GregRataDie = require("../.././../lib/GregRataDie.js");
+    var GregRataDie = require("../../../lib/GregRataDie.js");
 }
 if (typeof(DateFactory) === "undefined") {
-    var DateFactory = require("../.././../lib/DateFactory.js");
+    var DateFactory = require("../../../lib/DateFactory.js");
 }
 
 var testDatesGregRD = [
@@ -63,10 +63,6 @@ var testDatesGregRD = [
     [2465737.5, 2038,  11,    10,  0,    0,      0,      0,           3],
     [2486076.5, 2094,  7,     18,  0,    0,      0,      0,           0]
 ];
-
-if (typeof(ilib) === "undefined") {
-    var ilib = require("../../../lib/ilib.js");
-}
 
 module.exports.testgregratadie = {
     setUp: function(callback) {

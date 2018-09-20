@@ -93,6 +93,8 @@ ISet.prototype.contains = function(element) {
 	return this.elements[element] || false;
 };
 
+ISet.prototype.has = ISet.prototype.contains; // for compatibility with ES6
+
 /**
  * Returns true if this set contains no elements.
  * @return {boolean}

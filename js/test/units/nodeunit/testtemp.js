@@ -18,7 +18,7 @@
  */
 
 if (typeof(TemperatureUnit) === "undefined") {
-    var TemperatureUnit = require("../.././../lib/TemperatureUnit.js");
+    var TemperatureUnit = require("../../../lib/TemperatureUnit.js");
 }
 
 if (typeof(ilib) === "undefined") {

@@ -18,8 +18,7 @@
  * limitations under the License.
  */
 
-// !depends IString.js CType.js Utils.js JSUtils.js
-// !data normdata ctype_m
+// !data ccc nfc ctype_m
 
 var ilib = require("./ilib.js");
 var Utils = require("./Utils.js");
@@ -109,19 +108,36 @@ var GlyphString = function (str, options) {
 	options = options || {sync: true};
 	
 	CType._load("ctype_m", options.sync, options.loadParams, ilib.bind(this, function() {
-		if (!ilib.data.norm || JSUtils.isEmpty(ilib.data.norm.ccc)) {
+		if (!ilib.data.ccc || JSUtils.isEmpty(ilib.data.ccc)) {
 			Utils.loadData({
 				object: "GlyphString", 
 				locale: "-", 
-				name: "normdata.json",
+				name: "ccc.json",
 				nonlocale: true,
 				sync: options.sync, 
 				loadParams: options.loadParams, 
 				callback: ilib.bind(this, function (norm) {
-					ilib.extend(ilib.data.norm, norm);
-					if (options && typeof(options.onLoad) === 'function') {
-						options.onLoad(this);
-					}
+					ilib.data.ccc = norm;
+					if (!ilib.data.norm.nfc || JSUtils.isEmpty(ilib.data.norm.nfc)) {
+			            Utils.loadData({
+			                object: "GlyphString", 
+			                locale: "-", 
+			                name: "nfc/all.json",
+			                nonlocale: true,
+			                sync: options.sync, 
+			                loadParams: options.loadParams, 
+			                callback: ilib.bind(this, function (norm) {
+			                    ilib.data.norm.nfc = norm;
+			                    if (options && typeof(options.onLoad) === 'function') {
+			                        options.onLoad(this);
+			                    }
+			                })
+			            });
+			        } else {
+			            if (options && typeof(options.onLoad) === 'function') {
+			                options.onLoad(this);
+			            }
+			        }
 				})
 			});
 		} else {
@@ -316,22 +332,22 @@ GlyphString.prototype.charIterator = function() {
 		};
 		this.next = function () {
 			var ch = this.nextChar || it.next(),
-				prevCcc = ilib.data.norm.ccc[ch],
+				prevCcc = ilib.data.ccc[ch],
 				nextCcc,
 				composed = ch;
 			
 			this.nextChar = undefined;
 			this.spacingCombining = false;
 			
-			if (ilib.data.norm.ccc && 
-					(typeof(ilib.data.norm.ccc[ch]) === 'undefined' || ilib.data.norm.ccc[ch] === 0)) {
+			if (ilib.data.ccc && 
+					(typeof(ilib.data.ccc[ch]) === 'undefined' || ilib.data.ccc[ch] === 0)) {
 				// found a starter... find all the non-starters until the next starter. Must include
 				// the next starter because under some odd circumstances, two starters sometimes recompose 
 				// together to form another character
 				var notdone = true;
 				while (it.hasNext() && notdone) {
 					this.nextChar = it.next();
-					nextCcc = ilib.data.norm.ccc[this.nextChar];
+					nextCcc = ilib.data.ccc[this.nextChar];
 					var codePoint = IString.toCodePoint(this.nextChar, 0);
 					// Mn characters are Marks that are non-spacing. These do not take more room than an accent, so they should be 
 					// considered part of the on-screen glyph, even if they are non-combining. Mc are marks that are spacing

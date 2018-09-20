@@ -19,10 +19,10 @@
  */
 
 if (typeof(Charset) === "undefined") {
-    var Charset = require("../.././../lib/Charset.js");
+    var Charset = require("../../../lib/Charset.js");
 }
 if (typeof(CharmapFactory) === "undefined") {
-    var CharmapFactory = require("../.././../lib/CharmapFactory.js");
+    var CharmapFactory = require("../../../lib/CharmapFactory.js");
 }
 
 var aliasesJP = {

@@ -19,7 +19,7 @@
 
 
 if (typeof(GregorianCal) === "undefined") {
-    var GregorianCal = require("../.././../lib/GregorianCal.js");
+    var GregorianCal = require("../../../lib/GregorianCal.js");
 }
 
 if (typeof(ilib) === "undefined") {
