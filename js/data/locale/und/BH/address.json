@@ -17,5 +17,8 @@
 		}
 		
 		
-	]
+	],
+    "fieldNames": {
+        "region": "Governorate"
+    }
 }

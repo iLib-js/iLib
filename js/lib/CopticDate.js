@@ -22,23 +22,16 @@ ilib.js
 IDate.js 
 CopticCal.js 
 MathUtils.js
-JSUtils.js
 Locale.js
-LocaleInfo.js 
-TimeZone.js
 EthiopicDate.js
 CopticRataDie.js
 */
 
 var ilib = require("./ilib.js");
 var MathUtils = require("./MathUtils.js");
-var JSUtils = require("./JSUtils.js");
 
 var Locale = require("./Locale.js");
-var LocaleInfo = require("./LocaleInfo.js");
 var IDate = require("./IDate.js");
-var TimeZone = require("./TimeZone.js");
-var Calendar = require("./Calendar.js");
 
 var EthiopicDate = require("./EthiopicDate.js");
 var CopticCal = require("./CopticCal.js");

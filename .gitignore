@@ -21,3 +21,4 @@ qt/FileReader/imports/
 qt/FileReader/release/
 qt/output/
 
+/node_modules/

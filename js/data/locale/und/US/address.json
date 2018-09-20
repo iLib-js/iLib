@@ -268,5 +268,9 @@
 			"pattern": "([A-zÀÁÈÉÌÍÑÒÓÙÚÜàáèéìíñòóùúü\\.\\-\\']+\\s*){1,2}$",
 			"matchGroup": 0
 		}
-	]
+	],
+    "fieldNames": {
+        "region": "State",
+        "postalCode": "Zip Code"
+    }
 }

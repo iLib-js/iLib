@@ -41,7 +41,7 @@ var AreaUnit = function (options) {
     this.aliasesLower = AreaUnit.aliasesLower;
     this.systems = AreaUnit.systems;
 
-    this.parent(options);
+    this.parent.call(this, options);
 };
 
 AreaUnit.prototype = new Measurement();

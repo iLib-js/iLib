@@ -10,13 +10,13 @@
             "line": "startAtLast",
             "pattern": "[0-9]{5}-[0-9]{3}"
         },
-         {
+        {
             "name": "country",
             "line": "startAtLast",
             "pattern": [
-		"Brazil",
-		"Brasil"
-		]
+                "Brazil",
+                "Brasil"
+            ]
         },
         {
             "name": "region",
@@ -64,8 +64,6 @@
                 "RS",
                 "Rondônia",
                 "RO",
-                "Rondônia",
-                "RO",
                 "Roraima",
                 "RR",
                 "São Paulo",
@@ -82,7 +80,10 @@
             "name": "locality",
             "line": "last",
             "pattern": "(([A-za-zÃÉZÁÇÊJXÍÓKÚWYÕÀÂÔãézáçêjxíókúwyõàâô.']+)? ?[A-za-zÃÉZÁÇÊJXÍÓKÚWYÕÀÂÔãézáçêjxíókúwyõàâô.']+( -)?)$",
-	    "matchGroup": 1
+            "matchGroup": 1
         }
-    ]
+    ],
+    "fieldNames": {
+        "region": "State"
+    }
 }

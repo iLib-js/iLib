@@ -32,7 +32,6 @@ JSUtils.js
 var ilib = require("./ilib.js");
 var Utils = require("./Utils.js");
 var JSUtils = require("./JSUtils.js");
-var Locale = require("./Locale.js");
 var NumberingPlan = require("./NumberingPlan.js");
 var PhoneLocale = require("./PhoneLocale.js");
 var PhoneHandlerFactory = require("./PhoneHandlerFactory.js");
@@ -425,7 +424,7 @@ PhoneNumber.parseImsi = function(imsi, options) {
 
 	if (options) {
 		if (typeof(options.sync) !== 'undefined') {
-			sync = (options.sync == true);
+			sync = !!options.sync;
 		}
 		
 		if (options.loadParams) {
@@ -470,7 +469,6 @@ PhoneNumber._parseImsi = function(data, imsi) {
 		currentState, 
 		end, 
 		handlerMethod,
-		state = 0,
 		newState,
 		fields = {},
 		lastLeaf,
@@ -1562,7 +1560,7 @@ PhoneNumber.prototype = {
 
 		if (options) {
 			if (typeof(options.sync) !== 'undefined') {
-				sync = (options.sync == true);
+				sync = !!options.sync;
 			}
 			
 			if (options.loadParams) {

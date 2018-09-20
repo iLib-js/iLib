@@ -43,7 +43,7 @@ var VolumeUnit = function (options) {
     this.aliasesLower = VolumeUnit.aliasesLower;
     this.systems = VolumeUnit.systems;
 
-    this.parent(options);
+    this.parent.call(this, options);
 };
 
 VolumeUnit.prototype = new Measurement();

@@ -42,7 +42,7 @@ var FuelConsumptionUnit = function(options) {
     this.aliasesLower = FuelConsumptionUnit.aliasesLower;
     this.systems = FuelConsumptionUnit.systems;
 
-    this.parent(options);
+    this.parent.call(this, options);
 };
 
 FuelConsumptionUnit.prototype = new Measurement();
@@ -152,7 +152,7 @@ FuelConsumptionUnit.aliases = {
  * to measurements of the same type.<p>
  *
  * @param {string} to The name of the units to convert to
- * @return {Measurement|undefined} the converted measurement
+ * @return {number|undefined} the converted measurement
  * or undefined if the requested units are for a different
  * measurement type
  */

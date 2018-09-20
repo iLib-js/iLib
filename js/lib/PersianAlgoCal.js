@@ -1,5 +1,5 @@
 /*
- * persian.js - Represent a Persian algorithmic calendar object.
+ * PersianAlgoCal.js - Represent a Persian algorithmic calendar object.
  * 
  * Copyright © 2014-2015,2018, JEDLSoft
  *
@@ -18,9 +18,8 @@
  */
 
 
-/* !depends ilib.js Calendar.js MathUtils.js */
+/* !depends Calendar.js MathUtils.js */
 
-var ilib = require("./ilib.js");
 var MathUtils = require("./MathUtils.js");
 var Calendar = require("./Calendar.js");
 

@@ -42,7 +42,7 @@ var EnergyUnit = function (options) {
     this.aliasesLower = EnergyUnit.aliasesLower;
     this.systems = EnergyUnit.systems;
 
-    this.parent(options);
+    this.parent.call(this, options);
 };
 
 EnergyUnit.prototype = new Measurement();
@@ -132,7 +132,6 @@ EnergyUnit.aliases = {
     "kW hours": "kilowatt-hour",
     "kW-hour": "kilowatt-hour",
     "kW-hours": "kilowatt-hour",
-    "kiloWh": "kilowatt-hour",
     "kWh": "kilowatt-hour",
     "giga joule": "gigajoule",
     "Gj": "gigajoule",
@@ -150,7 +149,6 @@ EnergyUnit.aliases = {
     "MW-hours": "megawatt-hour",
     "megaWh": "megawatt-hour",
     "MWh": "megawatt-hour",
-    "giga watt hour": "gigawatt-hour",
     "giga watt hour": "gigawatt-hour",
     "giga watt hours": "gigawatt-hour",
     "gigawatt hour": "gigawatt-hour",

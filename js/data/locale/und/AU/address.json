@@ -67,5 +67,9 @@
 			"pattern": "[A-z\\.\\-']+(\\s+[A-z\\.\\-']+)?$",
 			"matchGroup": 0
 		}
-	]
+	],
+    "fieldNames": {
+        "postalCode": "Post Code",
+        "region": "State"
+    }
 }

@@ -231,7 +231,7 @@ module.exports.testaddress_SG = {
             format: "asian"
         }, {locale: 'zh-SG'});
         
-        var expected = "新加坡共和國159088新加坡麟記路4＃06-07/08矽統科技大廈";
+        var expected = "新加坡共和國\n159088新加坡麟記路4＃06-07/08矽統科技大廈";
         var formatter = new AddressFmt({locale: 'zh-SG'});
         test.equal(formatter.format(parsedAddress), expected);
         test.done();

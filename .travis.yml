@@ -9,6 +9,7 @@ before_install:
   # Qt
   - sudo apt-add-repository --yes ppa:beineri/opt-qt551-trusty
   - sudo apt-get update -qq
+  - export TZ=America/Los_Angeles
 install:
   # Qt
   - sudo apt-get -y install qt55[QTPACKAGE]
