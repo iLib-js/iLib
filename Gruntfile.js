@@ -37,6 +37,9 @@ module.exports = function(grunt) {
             },
         },
         shell: {
+            node_option: {
+                command: 'echo export NODE_OPTIONS="--max-old-space-size=3072"'
+            },
             copy_pkgJson: {
                 command: 'cp js/package.json .'
             },
@@ -206,7 +209,7 @@ module.exports = function(grunt) {
 
     grunt.registerTask('build_jsonWork', ['mkdir:prepare', 'replace:pkgVersion','shell:copy_pkgJson','shell:mkli', 'shell:touch_localeinfoStamp', 'shell:compressJson', 'shell:touch_compressJsonStamp', 'shell:gen_manifest_locale']);
     grunt.registerTask('build_copyJson', ['mkdir:export', 'copy:export_locale']);
-    grunt.registerTask('build_core', ['webpack_assemble_core', 'webpack_assemble_core_compiled', 'webpack_assemble_core_dyndata', 'webpack_assemble_core_dyndata_compiled']);
+    grunt.registerTask('build_core', ['shell:node_option','webpack_assemble_core', 'webpack_assemble_core_compiled', 'webpack_assemble_core_dyndata', 'webpack_assemble_core_dyndata_compiled']);
     grunt.registerTask('build_standard', ['webpack_assemble_standard', 'webpack_assemble_standard_compiled','webpack_assemble_standard_dyndata', 'webpack_assemble_standard_dyndata_compiled']);
     grunt.registerTask('build_full', ['webpack_assemble_full', 'webpack_assemble_full_compiled','webpack_assemble_full_dyndata','webpack_assemble_full_dyndata_compiled' ]);
     grunt.registerTask('build_uglify', ['uglifyFiles'/*, 'jsdoc:api_doc'*/]);
