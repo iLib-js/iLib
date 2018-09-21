@@ -38,7 +38,7 @@ run_webpack()
                 echo "sizecompilation:$sizecompilation"
                 echo "target:$target"
 
-                webpack --env.assembly=$assembly --env.size=$size --env.compilation=$sizecompilation --env.target=$arg4
+                webpack --env.assembly=$assembly --env.size=$size --env.compilation=$sizecompilation --env.target=$target
         fi
         if [ 5 -eq $argsCount ]
         then
@@ -50,8 +50,7 @@ run_webpack()
                 echo "target:$target"
                 echo "localeOption:$localeOption"
                 echo "locales:$locales"
-                webpack --env.assembly=$assembly --env.size=$size --env.compilation=$sizecompilation --env.target=$arg4 --env.locales=$locales
-
+                webpack --env.assembly=$assembly --env.size=$size --env.compilation=$sizecompilation --env.target=$target --env.locales=$locales
         fi
 
 }

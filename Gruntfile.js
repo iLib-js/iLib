@@ -165,15 +165,15 @@ module.exports = function(grunt) {
         },
         jsdoc: {
             api_doc: {
-                src: ['js/lib/*.js', 'README.md'], // !src/**/nls/**/*.js
+                src: ['js/lib/*.js', 'README.md'],
                 options: {
-                    //ignoreWarnings: true,
+                    ignoreWarnings: true,
                     destination: 'js/output/jsdoc',
                     private:true
                 }
             }
         },
-        'closure-compiler': {
+        /*'closure-compiler': {
             run: {
                 // Target-specific file lists and/or options go here.
                   closurePath: 'tools/google-closure-compiler.r20150920',
@@ -184,7 +184,7 @@ module.exports = function(grunt) {
                        compilation_level: 'SIMPLE_OPTIMIZATIONS'
                   }
             },
-        },
+        },*/
         watch: {
             scripts: {
                 files: [],
@@ -198,7 +198,6 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-shell');
     grunt.loadNpmTasks('grunt-text-replace');
     grunt.loadNpmTasks('grunt-jsdoc');
-    grunt.loadNpmTasks('grunt-closure-compiler');
 
     grunt.loadNpmTasks('grunt-contrib-clean');
     grunt.loadNpmTasks('grunt-contrib-copy');
@@ -217,7 +216,9 @@ module.exports = function(grunt) {
     grunt.registerTask('dist', ['compress', 'md5sum']);
     grunt.registerTask('uglifyFiles', ['replace:ilibVersion', 'shell:uglifyfile', 'shell:qmlizer', 'uglify:all']);
     
-    grunt.registerTask('default', ['']);
+    grunt.registerTask('default', ['build_all']);
+    grunt.registerTask('unittest_build', ['webpack_assemble_unittest', 'webpack_assemble_unittest_compiled','webpack_assemble_unittest_dyndata','webpack_assemble_unittest_dyndata_compiled','webpack_assemble_unittest_node', 'webpack_assemble_unittest_node_compiled', 'webpack_assemble_unittest_dyndata_node', 'webpack_assemble_unittest_dyndata_node_compiled']);
+
 
     // Webpack Run
     /*
@@ -245,24 +246,23 @@ module.exports = function(grunt) {
 
     grunt.registerTask('webpack_assemble_unittest', ['shell:run_webpack:assembly ut uncompiled web locales_unittest']);
     grunt.registerTask('webpack_assemble_unittest_compiled', ['shell:run_webpack:assembly ut compiled web locales_unittest']);
-    
     grunt.registerTask('webpack_assemble_unittest_dyndata', ['shell:run_webpack:dynamicdata ut uncompiled web locales_unittest']);
     grunt.registerTask('webpack_assemble_unittest_dyndata_compiled', ['shell:run_webpack:dynamicdata ut compiled web locales_unittest']);
+
     grunt.registerTask('webpack_assemble_unittest_node', ['shell:run_webpack:assembly ut uncompiled node locales_unittest']);
-    
     grunt.registerTask('webpack_assemble_unittest_node_compiled', ['shell:run_webpack:assembly ut compiled node locales_unittest']);
     grunt.registerTask('webpack_assemble_unittest_dyndata_node', ['shell:run_webpack:dynamicdata ut uncompiled node locales_unittest']);
     grunt.registerTask('webpack_assemble_unittest_dyndata_node_compiled', ['shell:run_webpack:dynamicdata ut compiled node locales_unittest']);
+    
     grunt.registerTask('webpack_assemble_demo', ['shell:run_webpack:asembly demo uncompiled node locales_demo']);
-
     grunt.registerTask('webpack_assemble_demo_compiled', ['shell:run_webpack:assembly demo compiled node locales_demo']);
     grunt.registerTask('webpack_assemble_demo_dyndata', ['shell:run_webpack:dynamicdata demo uncompiled node locales_demo']);
     grunt.registerTask('webpack_assemble_demo_dyndata_compiled', ['shell:run_webpack:dynamicdata demo compiled node locales_demo']);
 
-
     // Test Run
 
     grunt.registerTask('test_all_nu', ['test_dynamic_uncompiled_nu_sync','test_dynamic_uncompiled_nu_async','test_dynamic_compiled_nu_sync','test_dynamic_compiled_nu_async', 'test_assembled_uncompiled_nu_sync', 'test_assembled_uncompiled_nu_async', 'test_assembled_compiled_nu_sync', 'test_assembled_compiled_nu_async','test_dyndata_uncompiled_nu_sync', 'test_dyndata_uncompiled_nu_async', 'test_dyndata_compiled_nu_sync', 'test_dyndata_compiled_nu_async' ])
+    grunt.registerTask('test_remote', ['shell:testRemote']);
 
     grunt.registerTask('test_dynamic_uncompiled_nu_sync', ['shell:runNodeunitAll:all dynamic uncompiled sync']);
     grunt.registerTask('test_dynamic_uncompiled_nu_async', ['shell:runNodeunitAll:all dynamic uncompiled async']);
@@ -329,7 +329,4 @@ module.exports = function(grunt) {
     grunt.registerTask('test_strings-ext_nu_debug', ['shell:runNodeunit:debug strings-ext']);
     grunt.registerTask('test_units_nu_debug', ['shell:runNodeunit:debug units']);
     grunt.registerTask('test_util_nu_debug', ['shell:runNodeunit:debug util']);
-
-    grunt.registerTask('test_Remote', ['shell:testRemote']);
-
 };
