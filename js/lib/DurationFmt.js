@@ -1,6 +1,6 @@
 /*
  * DurationFmt.js - Date formatter definition
- * 
+ *
  * Copyright © 2012-2015, 2018, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -132,131 +132,134 @@ var DurationFmt = function(options) {
 	}
 	options = options || {sync: true};
 
-    new ResBundle({
-        locale: this.locale,
-        name: "sysres",
+    new LocaleInfo(this.locale, {
         sync: sync,
         loadParams: loadParams,
-        onLoad: ilib.bind(this, function (sysres) {
-            IString.loadPlurals(options.sync, this.locale, options.loadParams, ilib.bind(this, function() {
-                switch (this.length) {
-                    case 'short':
-                        this.components = {
-                            year: sysres.getString("#{num}y"),
-                            month: sysres.getString("#{num}m", "durationShortMonths"),
-                            week: sysres.getString("#{num}w"),
-                            day: sysres.getString("#{num}d"),
-                            hour: sysres.getString("#{num}h"),
-                            minute: sysres.getString("#{num}m", "durationShortMinutes"),
-                            second: sysres.getString("#{num}s"),
-                            millisecond: sysres.getString("#{num}m", "durationShortMillis"),
-                            separator: sysres.getString(" ", "separatorShort"),
-                            finalSeparator: "" // not used at this length
-                        };
-                        break;
+        onLoad: ilib.bind(this, function (li) {
+            this.script = li.getScript();
+            new ResBundle({
+                locale: this.locale,
+                name: "sysres",
+                sync: sync,
+                loadParams: loadParams,
+                onLoad: ilib.bind(this, function (sysres) {
+                    IString.loadPlurals(sync, this.locale, loadParams, ilib.bind(this, function() {
+                        if (this.length === 'medium' && !(this.script === 'Latn' || this.script ==='Grek' || this.script ==='Cyrl')) {
+                            this.length = 'short';
+                        }
+                        switch (this.length) {
+                            case 'short':
+                                this.components = {
+                                year: sysres.getString("#{num}y"),
+                                month: sysres.getString("#{num}m", "durationShortMonths"),
+                                week: sysres.getString("#{num}w"),
+                                day: sysres.getString("#{num}d"),
+                                hour: sysres.getString("#{num}h"),
+                                minute: sysres.getString("#{num}m", "durationShortMinutes"),
+                                second: sysres.getString("#{num}s"),
+                                millisecond: sysres.getString("#{num}m", "durationShortMillis"),
+                                separator: sysres.getString(" ", "separatorShort"),
+                                finalSeparator: "" // not used at this length
+                            };
+                                break;
 
-                    case 'medium':
-                        this.components = {
-                            year: sysres.getString("1#1 yr|#{num} yrs", "durationMediumYears"),
-                            month: sysres.getString("1#1 mo|#{num} mos"),
-                            week: sysres.getString("1#1 wk|#{num} wks", "durationMediumWeeks"),
-                            day: sysres.getString("1#1 dy|#{num} dys"),
-                            hour: sysres.getString("1#1 hr|#{num} hrs", "durationMediumHours"),
-                            minute: sysres.getString("1#1 mi|#{num} min"),
-                            second: sysres.getString("1#1 se|#{num} sec"),
-                            millisecond: sysres.getString("#{num} ms", "durationMediumMillis"),
-                            separator: sysres.getString(" ", "separatorMedium"),
-                            finalSeparator: "" // not used at this length
-                        };
-                        break;
+                            case 'medium':
+                                this.components = {
+                                year: sysres.getString("1#1 yr|#{num} yrs", "durationMediumYears"),
+                                month: sysres.getString("1#1 mo|#{num} mos"),
+                                week: sysres.getString("1#1 wk|#{num} wks", "durationMediumWeeks"),
+                                day: sysres.getString("1#1 dy|#{num} dys"),
+                                hour: sysres.getString("1#1 hr|#{num} hrs", "durationMediumHours"),
+                                minute: sysres.getString("1#1 mi|#{num} min"),
+                                second: sysres.getString("1#1 se|#{num} sec"),
+                                millisecond: sysres.getString("#{num} ms", "durationMediumMillis"),
+                                separator: sysres.getString(" ", "separatorMedium"),
+                                finalSeparator: "" // not used at this length
+                            };
+                                break;
 
-                    case 'long':
-                        this.components = {
-                            year: sysres.getString("1#1 yr|#{num} yrs"),
-                            month: sysres.getString("1#1 mon|#{num} mons"),
-                            week: sysres.getString("1#1 wk|#{num} wks"),
-                            day: sysres.getString("1#1 day|#{num} days", "durationLongDays"),
-                            hour: sysres.getString("1#1 hr|#{num} hrs"),
-                            minute: sysres.getString("1#1 min|#{num} min"),
-                            second: sysres.getString("1#1 sec|#{num} sec"),
-                            millisecond: sysres.getString("#{num} ms"),
-                            separator: sysres.getString(", ", "separatorLong"),
-                            finalSeparator: "" // not used at this length
-                        };
-                        break;
+                            case 'long':
+                                this.components = {
+                                year: sysres.getString("1#1 yr|#{num} yrs"),
+                                month: sysres.getString("1#1 mon|#{num} mons"),
+                                week: sysres.getString("1#1 wk|#{num} wks"),
+                                day: sysres.getString("1#1 day|#{num} days", "durationLongDays"),
+                                hour: sysres.getString("1#1 hr|#{num} hrs"),
+                                minute: sysres.getString("1#1 min|#{num} min"),
+                                second: sysres.getString("1#1 sec|#{num} sec"),
+                                millisecond: sysres.getString("#{num} ms"),
+                                separator: sysres.getString(", ", "separatorLong"),
+                                finalSeparator: "" // not used at this length
+                            };
+                                break;
 
-                    case 'full':
-                        this.components = {
-                            year: sysres.getString("1#1 year|#{num} years"),
-                            month: sysres.getString("1#1 month|#{num} months"),
-                            week: sysres.getString("1#1 week|#{num} weeks"),
-                            day: sysres.getString("1#1 day|#{num} days"),
-                            hour: sysres.getString("1#1 hour|#{num} hours"),
-                            minute: sysres.getString("1#1 minute|#{num} minutes"),
-                            second: sysres.getString("1#1 second|#{num} seconds"),
-                            millisecond: sysres.getString("1#1 millisecond|#{num} milliseconds"),
-                            separator: sysres.getString(", ", "separatorFull"),
-                            finalSeparator: sysres.getString(" and ", "finalSeparatorFull")
-                        };
-                        break;
-                }
+                            case 'full':
+                                this.components = {
+                                year: sysres.getString("1#1 year|#{num} years"),
+                                month: sysres.getString("1#1 month|#{num} months"),
+                                week: sysres.getString("1#1 week|#{num} weeks"),
+                                day: sysres.getString("1#1 day|#{num} days"),
+                                hour: sysres.getString("1#1 hour|#{num} hours"),
+                                minute: sysres.getString("1#1 minute|#{num} minutes"),
+                                second: sysres.getString("1#1 second|#{num} seconds"),
+                                millisecond: sysres.getString("1#1 millisecond|#{num} milliseconds"),
+                                separator: sysres.getString(", ", "separatorFull"),
+                                finalSeparator: sysres.getString(" and ", "finalSeparatorFull")
+                            };
+                                break;
+                        }
 
-                if (this.style === 'clock') {
-                    new DateFmt({
-                        locale: this.locale,
-                        calendar: "gregorian",
-                        type: "time",
-                        time: "ms",
-                        sync: sync,
-                        loadParams: loadParams,
-                        useNative: this.useNative,
-                        onLoad: ilib.bind(this, function (fmtMS) {
-                            this.timeFmtMS = fmtMS;
+                        if (this.style === 'clock') {
                             new DateFmt({
                                 locale: this.locale,
                                 calendar: "gregorian",
                                 type: "time",
-                                time: "hm",
+                                time: "ms",
                                 sync: sync,
                                 loadParams: loadParams,
                                 useNative: this.useNative,
-                                onLoad: ilib.bind(this, function (fmtHM) {
-                                    this.timeFmtHM = fmtHM;
+                                onLoad: ilib.bind(this, function (fmtMS) {
+                                    this.timeFmtMS = fmtMS;
                                     new DateFmt({
                                         locale: this.locale,
                                         calendar: "gregorian",
                                         type: "time",
-                                        time: "hms",
+                                        time: "hm",
                                         sync: sync,
                                         loadParams: loadParams,
                                         useNative: this.useNative,
-                                        onLoad: ilib.bind(this, function (fmtHMS) {
-                                            this.timeFmtHMS = fmtHMS;
+                                        onLoad: ilib.bind(this, function (fmtHM) {
+                                            this.timeFmtHM = fmtHM;
+                                            new DateFmt({
+                                                locale: this.locale,
+                                                calendar: "gregorian",
+                                                type: "time",
+                                                time: "hms",
+                                                sync: sync,
+                                                loadParams: loadParams,
+                                                useNative: this.useNative,
+                                                onLoad: ilib.bind(this, function (fmtHMS) {
+                                                    this.timeFmtHMS = fmtHMS;
 
-                                            // munge with the template to make sure that the hours are not formatted mod 12
-                                            this.timeFmtHM.template = this.timeFmtHM.template.replace(/hh?/, 'H');
-                                            this.timeFmtHM.templateArr = this.timeFmtHM._tokenize(this.timeFmtHM.template);
-                                            this.timeFmtHMS.template = this.timeFmtHMS.template.replace(/hh?/, 'H');
-                                            this.timeFmtHMS.templateArr = this.timeFmtHMS._tokenize(this.timeFmtHMS.template);
+                                                    // munge with the template to make sure that the hours are not formatted mod 12
+                                                    this.timeFmtHM.template = this.timeFmtHM.template.replace(/hh?/, 'H');
+                                                    this.timeFmtHM.templateArr = this.timeFmtHM._tokenize(this.timeFmtHM.template);
+                                                    this.timeFmtHMS.template = this.timeFmtHMS.template.replace(/hh?/, 'H');
+                                                    this.timeFmtHMS.templateArr = this.timeFmtHMS._tokenize(this.timeFmtHMS.template);
 
-                                            this._init(this.timeFmtHM.locinfo, options);
+                                                    this._init(this.timeFmtHM.locinfo, options);
+                                                })
+                                            });
                                         })
                                     });
                                 })
                             });
-                        })
-                    });
-                    return;
-                }
-
-                new LocaleInfo(this.locale, {
-                    sync: sync,
-                    loadParams: loadParams,
-                    onLoad: ilib.bind(this, function (li) {
+                            return;
+                        }
                         this._init(li, options);
-                    })
-                });
-            }));
+                    }));
+                })
+            });
         })
     });
 };

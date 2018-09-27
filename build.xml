@@ -74,6 +74,7 @@ limitations under the License.
 		<mkdir dir="${build.dist}" description="Dir to contain all the distribution outputs"/>
 		<mkdir dir="${build.export}" description="Dir to contain all the exported outputs"/>
 		<iterate target="export"/>
+		<copy file="README.md" todir="${build.export}/package" />
 		<zip destfile="${build.dist}/ilib-${version}.zip"
 			basedir="${build.export}"
 			includes="js/**,java/**,locale/**,qt/**"/>
