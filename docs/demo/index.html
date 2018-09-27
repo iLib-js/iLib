@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <!--
-ilibTutorial.html - a demo of the ilib features
+index.html - a demo of the ilib features
 
-Copyright © 2012-2013, JEDLSoft
+Copyright © 2012-2013, 2018, JEDLSoft
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -26,7 +26,7 @@ limitations under the License.
 <script type="text/javascript" src="scripts/jquery-1.7.2.min.js"></script>
 <script type="text/javascript" src="scripts/jquery-ui-1.8.custom.min.js"></script>
 <script type="text/javascript" src="scripts/jqia2.support.js"></script>
-<script type="text/javascript" src="scripts/ilib-demo.js"></script>
+<script type="text/javascript" src="scripts/ilib.js"></script>
 <script type="text/javascript" src="scripts/demo-date.js"></script>
 <script type="text/javascript" src="scripts/resources.js"></script>
 <script type="text/javascript">
@@ -52,25 +52,43 @@ $(function() {
         locales = Locale.getAvailableLocales();
     
     // assume localized text display by default
+    // this call is synchronous because the resource bundle 
+    // is already included above in resources.js
     res = new ResBundle({
         name: "ilibTutorial"
     });
 
+    function pushLocale(map, li, name) {
+        if (li.getRegionName()) {
+            name += " - " + li.getRegionName(); 
+        }
+        map.push({id: li.getLocale(), name: name});
+    }
+    
     $.each(locales, function(i,locale) {
-    	name = res.getString(locale);
-    	if (!name || name === locale) {
-	    	var li = new LocaleInfo(locale);
-			name = li.getLanguageName();
-	        var script = li.getLocale().getScript();
-	        if (script) {
-	            var si = new ScriptInfo(script);
-	            name += " - " + si.getName(); 
-	        }
-			if (li.getRegionName()) {
-				name += " - " + li.getRegionName(); 
-			}
-		}
-	    localeMap.push({id: locale, name: name});
+        name = res.getString(locale);
+        if (!name || name === locale) {
+            new LocaleInfo(locale, {
+                sync: !ilib.isDynData(),
+                onLoad: function(li) {
+                    name = li.getLanguageName();
+                    var script = li.getLocale().getScript();
+                    if (script) {
+                        new ScriptInfo(script, {
+                            sync: !ilib.isDynData(),
+                            onLoad: function(si) {
+                                name += " - " + si.getName(); 
+                                pushLocale(localeMap, li, name);
+                            }
+                        });
+                    } else {
+                        pushLocale(localeMap, li, name);
+                    }
+                }
+            });
+        } else {
+            localeMap.push({id: locale, name: name});
+        }
     });
     
     localeMap.sort(function (left, right) {
@@ -96,7 +114,7 @@ $(function() {
         }
         
 		localeName = localeElement.val();
-	    if (localeName == '') {
+	    if (localeName === 'none') {
             localeName = "en-US";
         }
 
@@ -220,38 +238,9 @@ $(function() {
                 date : dateFmt,
                 time : timeFmt,
                 useNative : useNative,
-                timezone: timezone
+                timezone: timezone,
+                sync: !ilib.isDynData()
             };
-            
-            var date,
-                cal = CalendarFactory({
-                    locale: localeName,
-                    type: (calendar === "julianday" || calendar === "unixtime") ? "gregorian" : calendar
-                });
-                
-            if (calendar === 'julianday') {
-                date = cal.newDateInstance({
-                	julianday: $('#julianday').val(),
-                    timezone: "Etc/UTC"
-                });
-            } else if (calendar === 'unixtime') {
-                date = cal.newDateInstance({
-                	unixtime: $('#unixtime').val(),
-                    timezone: "Etc/UTC"
-                });
-            } else {
-                date = cal.newDateInstance({
-                	timezone: timezone,
-                    year: $('#year').val(),
-                    month: $('#month').val(),
-                    day: $('#day').val(),
-                    hour: $('#hour').val(),
-                    minute: $('#minute').val(),
-                    second: $('#second').val(),
-                    millisecond: $('#millisecond').val(),
-                    timezone: timezone
-                });
-            }
             
             if (clockFmt !== 'none') {
                 options.clock = clockFmt;
@@ -268,24 +257,68 @@ $(function() {
                     break;
             }
             
-            fmt = new DateFmt(options);
-            postFmtData = fmt.format(date);
-			var str1;
-			str1 = res.getString("The date is {date}");
-			str1 = str1.format({
-				date: fmt.format(date)
-			});
-			
-			//
-			// Apply conversion
-			//   
-			$('.testSubject').html("<b>" + postFmtData + "</b><br />"
-					// + res.getString("The date range is ") + "<b>" + rangeData + "</b><br />"
-					// + res.getString("The duration is ") + "<b>" + durationData + "</b><hr />"
-					// + str1 + "<br />"
-					//+ str2 + "<br />"
-					//+ str3
-                    );
+            var date;
+            CalendarFactory({
+                locale: localeName,
+                type: (calendar === "julianday" || calendar === "unixtime") ? "gregorian" : calendar,
+                sync: !ilib.isDynData(),
+                onLoad: function(cal) {
+                    var dfOptions;
+                    
+                    if (calendar === 'julianday') {
+                        dfOptions = {
+                            type: cal.getType(),
+                            julianday: $('#julianday').val(),
+                            timezone: "Etc/UTC"
+                        };
+                    } else if (calendar === 'unixtime') {
+                        dfOptions = {
+                            type: cal.getType(),
+                            unixtime: $('#unixtime').val(),
+                            timezone: "Etc/UTC"
+                        };
+                    } else {
+                        dfOptions = {
+                            type: cal.getType(),
+                            year: $('#year').val(),
+                            month: $('#month').val(),
+                            day: $('#day').val(),
+                            hour: $('#hour').val(),
+                            minute: $('#minute').val(),
+                            second: $('#second').val(),
+                            millisecond: $('#millisecond').val(),
+                            timezone: timezone
+                        };
+                    }
+
+                    dfOptions.sync = !ilib.isDynData();
+                    dfOptions.onLoad = function(date) {
+                        options.onLoad = function(fmt) {
+                            postFmtData = fmt.format(date);
+                            var str1;
+                            str1 = res.getString("The date is {date}");
+                            str1 = str1.format({
+                                date: fmt.format(date)
+                            });
+                            
+                            //
+                            // Apply conversion
+                            //   
+                            $('.testSubject').html("<b>" + postFmtData + "</b><br />"
+                                    // + res.getString("The date range is ") + "<b>" + rangeData + "</b><br />"
+                                    // + res.getString("The duration is ") + "<b>" + durationData + "</b><hr />"
+                                    // + str1 + "<br />"
+                                    //+ str2 + "<br />"
+                                    //+ str3
+                                    );
+                        };
+                        
+                        new DateFmt(options);
+                    };
+                    
+                    DateFactory(dfOptions);
+                }
+            });
             break;
         
         case 'CalendarConv':
@@ -306,18 +339,21 @@ $(function() {
             
             if (calendar === 'julianday') {
                 jd = $('#julianday').val();
-                date = cal.newDateInstance({
+                date = DateFactory({
+                    type: cal.getType(),
                     julianday: jd,
                     timezone: "Etc/UTC"
                 });
             } else if (calendar === 'unixtime') {
-                date = cal.newDateInstance({
+                date = DateFactory({
+                    type: cal.getType(),
                     unixtime: $('#unixtime').val(),
                     timezone: "Etc/UTC"
                 });
                 jd = date.getJulianDay();
             } else {
-                date = cal.newDateInstance({
+                date = DateFactory({
+                    type: cal.getType(),
                     year: $('#year').val(),
                     month: $('#month').val(),
                     day: $('#day').val(),
@@ -367,7 +403,8 @@ $(function() {
                     date: "mdy",
                     timezone: timezone
                 });
-                date = cal.newDateInstance({
+                date = DateFactory({
+                    type: cal.getType(),
                     julianday: jd,
                     timezone: timezone
                 });
@@ -397,17 +434,20 @@ $(function() {
                 output;
             
             if (calendar === 'julianday') {
-                date = cal.newDateInstance({
+                date = DateFactory({
+                    type: cal.getType(),
                     julianday: $('#julianday').val(),
                     timezone: "Etc/UTC"
                 });
             } else if (calendar === 'unixtime') {
-                date = cal.newDateInstance({
+                date = DateFactory({
+                    type: cal.getType(),
                     julianday: $('#unixtime').val(),
                     timezone: "Etc/UTC"
                 });
             } else {
-                date = cal.newDateInstance({
+                date = DateFactory({
+                    type: cal.getType(),
                     year: $('#year').val(),
                     month: $('#month').val(),
                     day: $('#day').val(),
@@ -451,14 +491,17 @@ $(function() {
                 dateLength = $('[name="dateLength"]:checked').val();
             
             if (calendar === 'julianday') {
-                sdate = cal.newDateInstance({
+                sdate = DateFactory({
+                    type: cal.getType(),
                     julianday: $('#sjulianday').val()
                 });
-                edate = cal.newDateInstance({
+                edate = DateFactory({
+                    type: cal.getType(),
                     julianday: $('#ejulianday').val()
                 });
             } else {
-                sdate = cal.newDateInstance({
+                sdate = DateFactory({
+                    type: cal.getType(),
                     year: $('#syear').val(),
                     month: $('#smonth').val(),
                     day: $('#sday').val(),
@@ -467,7 +510,8 @@ $(function() {
                     second: $('#ssecond').val(),
                     millisecond: $('#smillisecond').val()
                 });
-                edate = cal.newDateInstance({
+                edate = DateFactory({
+                    type: cal.getType(),
                     year: $('#eyear').val(),
                     month: $('#emonth').val(),
                     day: $('#eday').val(),
@@ -508,14 +552,17 @@ $(function() {
                 output;
             
             if (calendar === 'julianday') {
-                sdate = cal.newDateInstance({
+                sdate = DateFactory({
+                    type: cal.getType(),
                     julianday: $('#sjulianday').val()
                 });
-                edate = cal.newDateInstance({
+                edate = DateFactory({
+                    type: cal.getType(),
                     julianday: $('#ejulianday').val()
                 });
             } else {
-                sdate = cal.newDateInstance({
+                sdate = DateFactory({
+                    type: cal.getType(),
                     year: $('#syear').val(),
                     month: $('#smonth').val(),
                     day: $('#sday').val(),
@@ -524,7 +571,8 @@ $(function() {
                     second: $('#ssecond').val(),
                     millisecond: $('#smillisecond').val()
                 });
-                edate = cal.newDateInstance({
+                edate = DateFactory({
+                    type: cal.getType(),
                     year: $('#eyear').val(),
                     month: $('#emonth').val(),
                     day: $('#eday').val(),
@@ -638,12 +686,14 @@ $(function() {
 			    date = "";
 			
 		    if (calendar === 'julianday') {
-				date = cal.newDateInstance({
+				date = DateFactory({
+                    type: cal.getType(),
 		       		julianday: $('#julianday').val(),
 					timezone: "Etc/UTC"
 				});
 			} else {
-			    date = cal.newDateInstance({
+			    date = DateFactory({
+                    type: cal.getType(),
 					year: $('#year').val(),
 					month: $('#month').val(),
 					day: $('#dayPickerDay').val(),
@@ -721,17 +771,20 @@ $(function() {
             }
             
             if (calendar === 'julianday') {
-                date = cal.newDateInstance({
+                date = DateFactory({
+                    type: cal.getType(),
                     julianday: $('#julianday').val(),
                     timezone: "Etc/UTC"
                 });
             } else if (calendar === 'unixtime') {
-                date = cal.newDateInstance({
-                	unixtime: $('#unixtime').val(),
+                date = DateFactory({
+                    type: cal.getType(),
+                    unixtime: $('#unixtime').val(),
                     timezone: "Etc/UTC"
                 });
             } else {
-                date = cal.newDateInstance({
+                date = DateFactory({
+                    type: cal.getType(),
                     year: $('#year').val(),
                     month: $('#month').val(),
                     day: $('#day').val(),
@@ -891,17 +944,20 @@ $(function() {
                 output;
             
             if (calendar === 'julianday') {
-                date = cal.newDateInstance({
+                date = DateFactory({
+                    type: cal.getType(),
                     julianday: $('#julianday').val(),
                     timezone: "Etc/UTC"
                 });
             } else if (calendar === 'unixtime') {
-                date = cal.newDateInstance({
-                	unixtime: $('#unixtime').val(),
+                date = DateFactory({
+                    type: cal.getType(),
+                    unixtime: $('#unixtime').val(),
                     timezone: "Etc/UTC"
                 });
             } else {
-                date = cal.newDateInstance({
+                date = DateFactory({
+                    type: cal.getType(),
                     year: $('#year').val(),
                     month: $('#month').val(),
                     day: $('#day').val(),
@@ -943,17 +999,20 @@ $(function() {
                 output;
             
             if (calendar === 'julianday') {
-                date = cal.newDateInstance({
+                date = DateFactory({
+                    type: cal.getType(),
                     julianday: $('#julianday').val(),
                     timezone: "Etc/UTC"
                 });
             } else if (calendar === 'unixtime') {
-                date = cal.newDateInstance({
+                date = DateFactory({
+                    type: cal.getType(),
                 	unixtime: $('#unixtime').val(),
                     timezone: "Etc/UTC"
                 });
             } else {
-                date = cal.newDateInstance({
+                date = DateFactory({
+                    type: cal.getType(),
                     year: $('#year').val(),
                     month: $('#month').val(),
                     day: $('#day').val(),
@@ -992,17 +1051,20 @@ $(function() {
                 output;
             
             if (calendar === 'julianday') {
-                date = cal.newDateInstance({
+                date = DateFactory({
+                    type: cal.getType(),
                     julianday: $('#julianday').val(),
                     timezone: "Etc/UTC"
                 });
             } else if (calendar === 'unixtime') {
-                date = cal.newDateInstance({
-                	unixtime: $('#unixtime').val(),
+                date = DateFactory({
+                    type: cal.getType(),
+                    unixtime: $('#unixtime').val(),
                     timezone: "Etc/UTC"
                 });
             } else {
-                date = cal.newDateInstance({
+                date = DateFactory({
+                    type: cal.getType(),
                     year: $('#year').val(),
                     month: $('#month').val(),
                     day: $('#day').val(),
@@ -1574,7 +1636,7 @@ $(document).ready(function () {
                                 <div>
 	                                <input type="radio" name="clockFmt" id="clockFmt" value="12"/>12-hour clock
 	                                <input type="radio" name="clockFmt" id="clockFmt" value="24"/>24-hour clock
-	                                <input type="radio" name="clockFmt" id="clockFmt" value="none" checked="checked"/>Default to locale settings
+	                                <input type="radio" name="clockFmt" id="clockFmt" value="" checked="checked"/>Default to locale settings
                                 </div>
                             </div>
                             <div id="nativePane">
@@ -1583,7 +1645,7 @@ $(document).ready(function () {
 	                                <input type="radio" name="useNative" id="useNative" value="false" checked="checked"/>Western digits
 	                                <input type="radio" name="useNative" id="useNative" value="true"/>Native digits
                                 </div>
-                            </div>                          
+                            </div>
                         </div>
 						<div id="chineseCyclesPicker" style="display: none">
                             <div>

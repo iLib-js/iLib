@@ -1,5 +1,5 @@
 /*
- * DurFmt.js - Date formatter definition
+ * DurationFmt.js - Date formatter definition
  *
  * Copyright © 2012-2015, 2018, JEDLSoft
  *
@@ -17,20 +17,7 @@
  * limitations under the License.
  */
 
-/*
-!depends 
-ilib.js 
-Locale.js 
-DateFmt.js
-IString.js 
-ResBundle.js 
-LocaleInfo.js
-JSUtils.js
-ScriptInfo.js
-*/
-
 // !data dateformats sysres
-// !resbundle sysres
 
 var ilib = require("./ilib.js");
 var JSUtils = require("./JSUtils.js");

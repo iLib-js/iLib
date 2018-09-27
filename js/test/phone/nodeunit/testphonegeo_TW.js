@@ -17,10 +17,10 @@
  * limitations under the License.
  */
 if (typeof(PhoneNumber) === "undefined") {
-    var PhoneNumber = require("../.././../lib/PhoneNumber.js");
+    var PhoneNumber = require("../../../lib/PhoneNumber.js");
 }
 if (typeof(PhoneGeoLocator) === "undefined") {
-    var PhoneGeoLocator = require("../.././../lib/PhoneGeoLocator.js");
+    var PhoneGeoLocator = require("../../../lib/PhoneGeoLocator.js");
 }
 /* Calling from US*/
 if (typeof(ilib) === "undefined") {

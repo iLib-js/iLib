@@ -1,6 +1,6 @@
 {
     "name": "ilib",
-    "version": "13.3.1",
+    "version": "14.0.0",
     "main": "js/lib/ilib-node.js",
     "description": "iLib is a cross-engine library of internationalization (i18n) classes written in pure JS",
     "keywords": [
@@ -52,18 +52,29 @@
         "ringojs": ">=0.9",
         "nodejs": ">= 0.10"
     },
-    "scripts": {
-        "test": "ant test"
-    },
     "devDependencies": {
+        "babel-loader": "^7.1.2",
         "cldr-data": "^32.0.0",
         "ejs": "^2.5.2",
+        "grunt": "~0.4.5",
+        "grunt-contrib-nodeunit": "~0.4.1",
+        "grunt-contrib-uglify": "~0.5.0",
         "http-server": "^0.11.1",
-        "nodeunit": "0.12.0",
+        "ilib-webpack-loader": "^1.0.2",
+        "ilib-webpack-plugin": "^1.0.2",
+        "iso-15924": "^2.0.0",
+        "jsdoc2": "^2.4.0",
         "should": ">=11.1.0",
         "tap": "^10.0.2",
         "trireme": "^0.9.0",
         "uglify-js": "^3.3.0",
-        "xml2json": "^0.11.2"
+        "xml2json": "^0.11.2",
+        "uglifyjs-webpack-plugin": "^1.0.0",
+        "webpack": "^3.10.0"
+    },
+    "scripts": {
+        "test": "ant test",
+        "build.web": "webpack -p",
+        "watch": "webpack --watch"
     }
 }

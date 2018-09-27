@@ -18,7 +18,7 @@
  */
 
 if (typeof(Address) === "undefined") {
-    var Address = require("../.././../lib/Address.js");
+    var Address = require("../../../lib/Address.js");
 }
 if (typeof(AddressFmt) === "undefined") {
     var AddressFmt = require("../../../lib/AddressFmt.js");

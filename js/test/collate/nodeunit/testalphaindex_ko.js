@@ -25,7 +25,7 @@ if (typeof(AlphabeticIndex) === "undefined") {
 }
 
 if (typeof(isScript) === "undefined") {
-    var isScript = require("../.././../lib/isScript.js");
+    var isScript = require("../../../lib/isScript.js");
 }
 
 module.exports.testalphaindex_ko = {

@@ -18,7 +18,7 @@
  */
 
 if (typeof(CharmapFactory) === "undefined") {
-    var CharmapFactory = require("../.././../lib/CharmapFactory.js");
+    var CharmapFactory = require("../../../lib/CharmapFactory.js");
 }
 
 if (typeof(ilib) === "undefined") {

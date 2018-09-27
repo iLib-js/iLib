@@ -26,7 +26,7 @@ if (typeof(ResBundle) === "undefined") {
 if (typeof(Locale) === "undefined") {
     var Locale = require("../.././../lib/Locale.js");
 }
-if (ilib._getPlatform() === "nodejs") {
+if (ilib._getPlatform() === "nodejs" && ilib._dyndata && ilib._dyncode) {
     var path = require("path");
 }
 
@@ -71,9 +71,10 @@ module.exports.testresourcesasync = {
         test.expect(4);
 
         // clear this to be sure it is actually loading something
-        ilib.data.tester = undefined;
-        ilib.data.tester_es = undefined;
-        ilib.data.tester_es_MX = undefined;
+        ilib.data.strings = undefined;
+        ilib.data.strings_es = undefined;
+        ilib.data.strings_und_MX = undefined;
+        ilib.data.strings_es_MX = undefined;
 
         var base = path.relative(process.cwd(), path.resolve(__dirname, "../nodeunit/resources"));
 

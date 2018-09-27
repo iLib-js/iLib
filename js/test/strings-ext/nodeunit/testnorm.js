@@ -47,10 +47,6 @@ function toHexString(string) {
     return result.toUpperCase();
 }
 
-if (typeof(ilib) === "undefined") {
-    var ilib = require("../../../lib/ilib.js");
-}
-
 module.exports.testnorm = {
     setUp: function(callback) {
         ilib.clearCache();

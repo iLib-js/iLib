@@ -18,7 +18,7 @@
  */
 
 if (typeof(ThaiSolarDate) === "undefined") {
-    var ThaiSolarDate = require("../.././../lib/ThaiSolarDate.js");
+    var ThaiSolarDate = require("../../../lib/ThaiSolarDate.js");
 }
 
 var testDates = [

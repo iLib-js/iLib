@@ -18,7 +18,7 @@
  */
 
 if (typeof(INumber) === "undefined") {
-    var INumber = require("../.././../lib/INumber.js");
+    var INumber = require("../../../lib/INumber.js");
 }
 
 if (typeof(LocaleInfo) === "undefined") {

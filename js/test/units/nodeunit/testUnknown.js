@@ -18,7 +18,7 @@
  */
 
 if (typeof(UnknownUnit) === "undefined") {
-    var UnknownUnit = require("../.././../lib/UnknownUnit.js");
+    var UnknownUnit = require("../../../lib/UnknownUnit.js");
 }
 
 if (typeof(ilib) === "undefined") {

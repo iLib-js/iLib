@@ -18,13 +18,13 @@
  */
 
 if (typeof(JulianDate) === "undefined") {
-    var JulianDate = require("../.././../lib/JulianDate.js");
+    var JulianDate = require("../../../lib/JulianDate.js");
 }
 if (typeof(DateFmt) === "undefined") {
-    var DateFmt = require("../.././../lib/DateFmt.js");
+    var DateFmt = require("../../../lib/DateFmt.js");
 }
 if (typeof(CopticDate) === "undefined") {
-    var CopticDate = require("../.././../lib/CopticDate.js");
+    var CopticDate = require("../../../lib/CopticDate.js");
 }
 if (typeof(ilib) === "undefined") {
     var ilib = require("../../../lib/ilib.js");

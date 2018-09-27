@@ -18,7 +18,7 @@
  */
 
 if (typeof(AreaUnit) === "undefined") {
-    var AreaUnit = require("../.././../lib/AreaUnit.js");
+    var AreaUnit = require("../../../lib/AreaUnit.js");
 }
 
 if (typeof(ilib) === "undefined") {

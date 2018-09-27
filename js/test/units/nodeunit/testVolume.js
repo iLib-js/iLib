@@ -18,7 +18,7 @@
  */
 
 if (typeof(VolumeUnit) === "undefined") {
-    var VolumeUnit = require("../.././../lib/VolumeUnit.js");
+    var VolumeUnit = require("../../../lib/VolumeUnit.js");
 }
 
 if (typeof(ilib) === "undefined") {

@@ -18,38 +18,15 @@
  */
 
 if (typeof(ilib) === "undefined") {
-    var ilib = require("../.././../lib/ilib.js");
+    var ilib = require("../../../lib/ilib.js");
 }
 if (typeof(LocaleInfo) === "undefined") {
-    var LocaleInfo = require("../.././../lib/LocaleInfo.js");
+    var LocaleInfo = require("../../../lib/LocaleInfo.js");
 }
 
 function mockLoaderLI(paths, sync, params, callback) {
     var data = [];
     // for the generic, shared stuff
-    data.push(ilib.data.localeinfo || {
-        "calendar": "gregorian",
-        "clock": "24",
-        "currency": "USD",
-        "firstDayOfWeek": 1,
-        "numfmt": {
-            "script": "Latn",
-            "decimalChar": ",",
-            "groupChar": ".",
-            "prigroupSize": 3,
-            "pctFmt": "{n}%",
-            "pctChar": "%",
-            "roundingMode": "halfdown",
-            "exponential": "e",
-            "currencyFormats": {
-                "common": "{s}{n}",
-                "commonNegative": "{s}-{n}"
-            }
-        },
-        "timezone": "Etc/UTC",
-        "units": "metric"
-    });
-    paths.shift();
     paths.forEach(function (path) {
         if (path.search("fr/localeinfo.json$") !== -1) {
             data.push({
@@ -79,8 +56,8 @@ function mockLoaderLI(paths, sync, params, callback) {
                 "timezone": "Europe/Paris",
                 "locale": "FR"
             });
-        } else {
-            data.push((path.indexOf('zzz') === -1) ? undefined : {
+        } else if (path.search("yyy/localeinfo.json$") !== -1) {
+            data.push((path.indexOf('yyy') === -1) ? undefined : {
                 "clock": "24",
                 "units": "metric",
                 "calendar": "hebrew",
@@ -98,8 +75,33 @@ function mockLoaderLI(paths, sync, params, callback) {
                         "iso": "iso {s} {n}"
                     }
                 },
-                "locale": "zzz-ZZ"
+                "locale": "yyy-ZZ"
             });
+        } else if (path === "qq/localeinfo.json") {
+            data.push({
+                "calendar": "gregorian",
+                "clock": "24",
+                "currency": "USD",
+                "firstDayOfWeek": 1,
+                "numfmt": {
+                    "script": "Latn",
+                    "decimalChar": ",",
+                    "groupChar": ".",
+                    "prigroupSize": 3,
+                    "pctFmt": "{n}%",
+                    "pctChar": "%",
+                    "roundingMode": "halfdown",
+                    "exponential": "e",
+                    "currencyFormats": {
+                        "common": "{s}{n}",
+                        "commonNegative": "{s}-{n}"
+                    }
+                },
+                "timezone": "Etc/UTC",
+                "units": "metric"
+            });
+        } else {
+            data.push(undefined);
         }
     });
     if (typeof (callback) !== 'undefined') {
@@ -114,11 +116,6 @@ ilib.data.localeinfo_fr_FR_overseas = {
     "locale": "fr-FR-overseas",
     "timezone": "Pacific/Tahiti"
 };
-
-
-if (typeof(ilib) === "undefined") {
-    var ilib = require("../../../lib/ilib.js");
-}
 
 var oldLoader = ilib._load;
 
@@ -12430,8 +12427,10 @@ module.exports.testlocaleinfo = {
             test.done();
             return;
         }
+        ilib.data.localeinfo_yyy = ilib.data.localeinfo_und_ZX = ilib.data.localeinfo_yyy_ZX = undefined;
+        ilib.clearCache();
         ilib.setLoaderCallback(mockLoaderLI);
-        var info = new LocaleInfo("zzz-ZX", {
+        var info = new LocaleInfo("yyy-ZX", {
             sync: false,
             onLoad: function (li) {
                 test.expect(5);
@@ -12454,8 +12453,10 @@ module.exports.testlocaleinfo = {
             test.done();
             return;
         }
+        ilib.data.localeinfo_yyy = ilib.data.localeinfo_und_ZX = ilib.data.localeinfo_yyy_ZX = undefined;
+        ilib.clearCache();
         ilib.setLoaderCallback(mockLoaderLI);
-        var info = new LocaleInfo("zzz-ZX", {
+        var info = new LocaleInfo("yyy-ZX", {
             sync: true
         });
     
@@ -12477,14 +12478,16 @@ module.exports.testlocaleinfo = {
             test.done();
             return;
         }
+        test.expect(5);
+        ilib.data.localeinfo_qq = ilib.data.localeinfo_und_QQ = ilib.data.localeinfo_qq_QQ = undefined;
+        ilib.clearCache();
         ilib.setLoaderCallback(mockLoaderLI);
         var info = new LocaleInfo("qq-QQ", {
             sync: false,
             onLoad: function (li) {
-        test.expect(5);
                 test.ok(typeof(li) !== "undefined");
                 // should return the shared data only
-                test.equal(li.getCurrencyFormats().common, "{s} {n}");
+                test.equal(li.getCurrencyFormats().common, "{s}{n}");
                 test.equal(li.getFirstDayOfWeek(), 1);
                 test.equal(li.getPercentageSymbol(), "%");
             }
@@ -12497,7 +12500,9 @@ module.exports.testlocaleinfo = {
     testLocaleInfoMissingDataSynchNoDataNoLoader: function(test) {
         test.expect(5);
         var temp = ilib._load;
-    
+
+        ilib.data.localeinfo_xxx = ilib.data.localeinfo_und_QQ = ilib.data.localeinfo_xxx_QQ = undefined;
+        ilib.clearCache();
         ilib.setLoaderCallback(undefined);
         var info = new LocaleInfo("xxx-QQ", {
             sync: true,
@@ -12524,6 +12529,8 @@ module.exports.testlocaleinfo = {
             test.done();
             return;
         }
+        ilib.data.localeinfo_qq = ilib.data.localeinfo_und_QQ = ilib.data.localeinfo_xxx_QQ = undefined;
+        ilib.clearCache();
         ilib.setLoaderCallback(mockLoaderLI);
         var li = new LocaleInfo("qq-QQ", {
             sync: true
@@ -12534,7 +12541,7 @@ module.exports.testlocaleinfo = {
         test.expect(4);
         test.ok(typeof(li) !== "undefined");
         // should return the shared data only
-        test.equal(li.getCurrencyFormats().common, "{s} {n}");
+        test.equal(li.getCurrencyFormats().common, "{s}{n}");
         test.equal(li.getFirstDayOfWeek(), 1);
         test.equal(li.getPercentageSymbol(), "%");
         test.done();

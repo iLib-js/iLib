@@ -18,16 +18,16 @@
  */
 
 if (typeof(ilib) === "undefined") {
-    var ilib = require("../.././../lib/ilib.js");
+    var ilib = require("../../../lib/ilib.js");
 }
 if (typeof(RataDie) === "undefined") {
-    var RataDie = require("../.././../lib/RataDie.js");
+    var RataDie = require("../../../lib/RataDie.js");
 }
 if (typeof(HanCal) === "undefined") {
-    var HanCal = require("../.././../lib/HanCal.js");
+    var HanCal = require("../../../lib/HanCal.js");
 }
 if (typeof(Astro) === "undefined") {
-    var Astro = require("../.././../lib/Astro.js");
+    var Astro = require("../../../lib/Astro.js");
 }
 
 var testDatesChineseAstro1 = [
@@ -175,10 +175,6 @@ var testDatesChineseAstro2 = [
     [ 2465737.5,    744300.0,            744329.0,        false,        744325.5623915427],
     [ 2486076.5,    764646.0,            764676.0,        false,        764656.5644218596],
 ];
-
-if (typeof(ilib) === "undefined") {
-    var ilib = require("../../../lib/ilib.js");
-}
 
 module.exports.testhan = {
     setUp: function(callback) {

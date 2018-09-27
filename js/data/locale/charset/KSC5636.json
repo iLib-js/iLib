@@ -1,5 +1,6 @@
 {
 	"min": 1,
 	"max": 2,
-	"scripts": ["Kore", "Hang", "Latn"]
+	"scripts": ["Kore", "Hang", "Latn"],
+  "locales": ["ko"]
 }

@@ -18,10 +18,10 @@
  */
 
 if (typeof(ilib) === "undefined") {
-    var ilib = require("../.././../lib/ilib.js");
+    var ilib = require("../../../lib/ilib.js");
 }
 if (typeof(PhoneLocale) === "undefined") {
-    var PhoneLocale = require("../.././../lib/PhoneLocale.js");
+    var PhoneLocale = require("../../../lib/PhoneLocale.js");
 }
 
 function mockLoaderPhoneLoc(paths, sync, params, callback) {
@@ -36,10 +36,6 @@ function mockLoaderPhoneLoc(paths, sync, params, callback) {
         callback.call(this, data);    
     }
     return data;
-}
-
-if (typeof(ilib) === "undefined") {
-    var ilib = require("../../../lib/ilib.js");
 }
 
 var oldLoader = ilib._load;
@@ -133,5 +129,30 @@ module.exports.phoneloc = {
         test.ok(typeof(loc) !== "undefined");
         test.equal(loc.region, "US");
         test.done();
+    },
+    
+    testPhoneLocLoadLocaleDataSynch: function(test) {
+        if (ilib.isDynData()) {
+            // don't need to test loading on the dynamic load version because we are testing
+            // it via all the other tests already.
+            test.done();
+            return;
+        }
+        
+        var oldLoader = ilib._load;
+        ilib.setLoaderCallback(mockLoaderPhoneLoc);
+        test.expect(2);
+    
+        new PhoneLocale({
+            countryCode: "44",
+            sync: false,
+            onLoad: function (loc) {
+                ilib.setLoaderCallback(oldLoader);
+                test.ok(loc !== null);
+                test.equal(loc.getRegion(), "GB");                
+                test.done();
+            }
+        });
     }
+    
 };

@@ -18,7 +18,7 @@
  */
 
 if (typeof(PersianCal) === "undefined") {
-    var PersianCal = require("../.././../lib/PersianCal.js");
+    var PersianCal = require("../../../lib/PersianCal.js");
 }
 
 if (typeof(ilib) === "undefined") {

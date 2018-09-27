@@ -18,7 +18,7 @@
  */
 
 if (typeof(ListFmt) === "undefined") {
-    var ListFmt = require("../.././../lib/ListFmt.js");
+    var ListFmt = require("../../../lib/ListFmt.js");
 }
 
 if (typeof(ilib) === "undefined") {

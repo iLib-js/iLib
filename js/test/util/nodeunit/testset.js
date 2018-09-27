@@ -18,7 +18,7 @@
  */
 
 if (typeof(ISet) === "undefined") {
-    var ISet = require("../.././../lib/ISet.js");
+    var ISet = require("../../../lib/ISet.js");
 }
 
 // var inspect = require("../../../webapp/WEB-INF/app/core/inspect.js");

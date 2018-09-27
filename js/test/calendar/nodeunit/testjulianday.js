@@ -18,7 +18,7 @@
  */
 
 if (typeof(JulianDay) === "undefined") {
-    var JulianDay = require("../.././../lib/JulianDay.js");
+    var JulianDay = require("../../../lib/JulianDay.js");
 }
 
 if (typeof(ilib) === "undefined") {

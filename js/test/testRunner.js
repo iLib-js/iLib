@@ -25,7 +25,6 @@ var NodeLoader = require("../lib/NodeLoader.js");
 var AsyncNodeLoader = require("../lib/AsyncNodeLoader.js");
 
 var nodeunit = require("nodeunit");
-var reporter = nodeunit.reporters.minimal;
 
 var suiteDefinitions = {
 	"core": [
@@ -72,6 +71,8 @@ var compilation = "uncompiled";
 var size = "full";
 var suite = suiteDefinitions.full;
 var sync = true;
+var target = "node";
+var reporter;
 
 // Usage: testSuite.js [assembly_style [compilation_style [suite_name_or_collection [sync|async]]]]
 if (process.argv.length > 2) {
@@ -85,9 +86,11 @@ if (process.argv.length > 2) {
 			if (suiteDefinitions[size]) {
                 console.log("Only running set " + size);
                 suite = suiteDefinitions[size];
+                reporter = nodeunit.reporters.minimal;
 			} else if (suiteDefinitions.full.indexOf(size) > -1) {
                 console.log("Only running suite " + size);
                 suite = [size];
+                reporter = nodeunit.reporters["default"];
 			} else {
 			    if (size !== "all") {
 			        console.log("Suite " + size + " is unrecognized. Testing all suites by default.");
@@ -95,6 +98,7 @@ if (process.argv.length > 2) {
 			        console.log("Testing all suites.");
 			    }
                 suite = suiteDefinitions.full;
+                reporter = nodeunit.reporters.minimal;
 			}
 		}
 		compilation = process.argv[3];
@@ -109,8 +113,11 @@ if (process.argv.length > 2) {
 		// dynamicdata: pre-assembled code, but dynamically loaded locale data
 		// dynamic: dynamically loaded code and locale data
 		console.log("Assembly " + assembly + " is unknown. Using 'dynamic' by default.");
-		compilation = "dynamic";
+		assembly = "dynamic";
 	}
+} else {
+    console.log('Usage: testRunner.js [assembled|dynamicdata|dynamic [compiled|uncompiled [suite_name_or_collection [sync|async]]]]');
+    process.exit(1);
 }
 
 console.log("Running " + compilation + " " + assembly + " " + (sync ? "sync" : "async") + " suites: " + JSON.stringify(suite));
@@ -125,7 +132,10 @@ if (assembly === "dynamic") {
     ilib._dyncode = true; // indicate that we are using dynamically loaded code
     ilib._dyndata = true;
 } else {
-    var fileName = "../output/js/ilib-ut" + ((assembly === "dynamicdata") ? "-dyn" : "") + ((compilation === "compiled") ? "-compiled" : "") + ".js";
+    var dirName = ["ut", assembly, compilation, target].join("-");
+    var urlPath = path.join('../output/js', dirName);
+    
+    fileName = path.join(urlPath, "ilib-ut" + ((assembly === "dynamicdata") ? "-dyn" : "") + ((compilation === "compiled") ? "-compiled" : "") + ".js");
     console.log("loading in " + fileName);
     var script = fs.readFileSync(fileName, "utf-8");
     geval(script);
@@ -164,22 +174,19 @@ for (var i = 0; i < suite.length; i++) {
     var suiteFilesPath = path.join(suite[i], suiteFile);
     if (fs.existsSync(suiteFilesPath)) {
         suites = require("./" + suiteFilesPath).files.forEach(function(file) {
-            var filepath = path.join(suite[i], "nodeunit", file);
+            var subtest, filepath = path.join(suite[i], "nodeunit", file);
             if (!modules[suite[i]]) modules[suite[i]] = {};
             if (assembly === "dynamic") {
-                var test = require("./" + filepath);
-                for (var t in test) {
-                    modules[suite[i]][t] = test[t];
-                }
+                subtest = require("./" + filepath);
             } else {
                 global.module = { exports: {} };
                 var test = fs.readFileSync(filepath, "utf-8");
                 geval(test);
-                var subtest = global.module.exports;
-                if (subtest) {
-                    for (var t in subtest) {
-                        modules[suite[i]][t] = subtest[t];
-                    }
+                subtest = global.module.exports;
+            }
+            if (subtest) {
+                for (var t in subtest) {
+                    modules[suite[i]][t] = subtest[t];
                 }
             }
         });
@@ -189,4 +196,3 @@ for (var i = 0; i < suite.length; i++) {
 reporter.run(modules, undefined, function(err) {
     process.exitCode = err ? 1 : 0;
 });
-

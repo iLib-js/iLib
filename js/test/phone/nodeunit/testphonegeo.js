@@ -18,19 +18,19 @@
  */
 
 if (typeof(ilib) === "undefined") {
-    var ilib = require("../.././../lib/ilib.js");
+    var ilib = require("../../../lib/ilib.js");
 }
 if (typeof(PhoneNumber) === "undefined") {
-    var PhoneNumber = require("../.././../lib/PhoneNumber.js");
+    var PhoneNumber = require("../../../lib/PhoneNumber.js");
 }
 if (typeof(PhoneLocale) === "undefined") {
-    var PhoneLocale = require("../.././../lib/PhoneLocale.js");
+    var PhoneLocale = require("../../../lib/PhoneLocale.js");
 }
 if (typeof(PhoneGeoLocator) === "undefined") {
-    var PhoneGeoLocator = require("../.././../lib/PhoneGeoLocator.js");
+    var PhoneGeoLocator = require("../../../lib/PhoneGeoLocator.js");
 }
 if (typeof(NumberingPlan) === "undefined") {
-    var NumberingPlan = require("../.././../lib/NumberingPlan.js");
+    var NumberingPlan = require("../../../lib/NumberingPlan.js");
 }
 
 function mockLoaderGeo(paths, sync, params, callback) {
@@ -42,10 +42,6 @@ function mockLoaderGeo(paths, sync, params, callback) {
         callback.call(this, data);    
     }
     return data;
-}
-
-if (typeof(ilib) === "undefined") {
-    var ilib = require("../../../lib/ilib.js");
 }
 
 var oldLoader = ilib._load;

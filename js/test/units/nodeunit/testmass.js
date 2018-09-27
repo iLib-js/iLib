@@ -18,7 +18,7 @@
  */
 
 if (typeof(MassUnit) === "undefined") {
-    var MassUnit = require("../.././../lib/MassUnit.js");
+    var MassUnit = require("../../../lib/MassUnit.js");
 }
 
 if (typeof(ilib) === "undefined") {

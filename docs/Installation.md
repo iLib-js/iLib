@@ -1,16 +1,22 @@
 # Installation #
 
-iLib comes with a pre-assembled copy and a pre-assembled and pre-compiled copy of the iLib file called iliball.js and iliball-compiled.js. The compiled version is compiled with the Google Closure Compiler both to compress all the white space, comments, and symbols, and to verify syntax and data types.
+iLib comes with pre-assembled and pre-compiled copies of the iLib file of various sizes (core, standard, & full).
+The compiled versions are minified using uglify-js. This tool compresses all the white space, removes comments, and
+makes private symbol names shorter, saving a significant amount of bytes.
 
-These pre-made copies contain all iLib classes, and all the data for those classes for a number of popular locales. This might not be what you need. If you want a smaller version with a select subset of the classes, or if you need a different selection of locales, you will need to re-assemble your own copy of it. Fortunately, this is pretty easy to do with the assembly tool.
+These pre-assembled copies of iLib contain different numbers of the iLib classes and the data for those classes
+for a number of popular locales. However, this might be more than what your project needs. With the new webpack
+support, you can create your own custom version of ilib with a selected subset of the classes
+and the data only for those locales that your project needs. See the documentation for
+(ilib-webpack-loader)[https://github.com/ilib-js/ilib-webpack-loader] for details on how to do this.
 
-In order to run the assembly tool, you will need to install a few things and make them available in your path:
+In order to build this project from scratch, you will need to install a few things and make them available in your path:
 
 * A JDK. Either OpenJDK <http://openjdk.java.net> or the standard Sun JDK <http://www.oracle.com/technetwork/java/javase/downloads/> will work, version 1.6 or later
 * Apache ant <http://ant.apache.org/bindownload.cgi>
-* Nodejs 4.0 or later
-* You must install the following package from npm: npm install uglify-js
+* Nodejs 6.0 or later
+* Run "npm install" in the root to get all of the development dependencies.
+* Add "node_modules/.bin" to your shell PATH so that uglify and webpack, etc. are available
+* Optionally, if you are interested in the Qt support, install Qt 5.9.0 or later. The Qt support is not built by default.
 
 iLib comes with everything else needed to assemble your own copy of it.
-
-See the [iLib 1.0 Tutorial](iLib1.0JSTutorial.pdf) for more information on how to run the assembly tool.

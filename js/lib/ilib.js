@@ -47,7 +47,7 @@ ilib.getVersion = function () {
             // ignore
         }
     }
-    return ilib._ver() || "13.0"; 
+    return ilib._ver() || "14.0";
 };
 
 /**
@@ -138,7 +138,7 @@ ilib._getPlatform = function () {
     		}
     	} catch (e) {}
     	
-        if (typeof(process) !== 'undefined' && process.versions && process.versions.node && typeof(module) !== 'undefined') {
+        if (typeof(global) !== 'undefined' && global.process && global.process.versions && global.process.versions.node && typeof(module) !== 'undefined') {
             ilib._platform = "nodejs";
         } else if (typeof(Qt) !== 'undefined') {
         	ilib._platform = "qt";
@@ -194,6 +194,37 @@ ilib._getBrowser = function () {
 };
 
 /**
+ * Return the value of the top object in the system. This could be global
+ * for node, or window for browsers, etc.
+ * @private
+ * @static
+ * @return {Object|undefined} the top variable, or undefined if there is none on this
+ * platform
+ */
+ilib._top = function() {
+    if (typeof(this.top) === 'undefined') {
+        this.top = null;
+        switch (ilib._getPlatform()) {
+            case "rhino":
+                this.top = (function() {
+                  return (typeof global === 'object') ? global : this;
+                })();
+                break;
+            case "nodejs":
+            case "trireme":
+                this.top = typeof(global) !== 'undefined' ? global : this;
+                //console.log("ilib._top: top is " + (typeof(global) !== 'undefined' ? "global" : "this"));
+                break;
+            default:
+                this.top = window;
+                break;
+        }
+    }
+
+    return this.top || undefined;
+};
+
+/**
  * Return the value of a global variable given its name in a way that works 
  * correctly for the current platform.
  * @private
@@ -202,23 +233,7 @@ ilib._getBrowser = function () {
  * @return {*} the global variable, or undefined if it does not exist
  */
 ilib._global = function(name) {
-    switch (ilib._getPlatform()) {
-        case "rhino":
-            var top = (function() {
-              return (typeof global === 'object') ? global : this;
-            })();
-            break;
-        case "nodejs":
-        case "trireme":
-            top = typeof(global) !== 'undefined' ? global : this;
-            //console.log("ilib._global: top is " + (typeof(global) !== 'undefined' ? "global" : "this"));
-            break;
-        case "qt":
-        	return undefined;
-        default:
-        	top = window;
-        	break;
-    }
+    var top = this._top();
     try {
 		return top[name];
 	} catch (e) {
@@ -280,10 +295,10 @@ ilib.setLocale = function (spec) {
  */
 ilib.getLocale = function () {
     if (typeof(ilib.locale) !== 'string') {
-    	var lang, plat = ilib._getPlatform();
-    	switch (plat) {
-    		case 'browser':
-            	// running in a browser
+        var plat = ilib._getPlatform();
+        switch (plat) {
+            case 'browser':
+                // running in a browser
                 if(typeof(navigator.language) !== 'undefined') {
                     ilib.locale = navigator.language.substring(0,3) + navigator.language.substring(3,5).toUpperCase();  // FF/Opera/Chrome/Webkit    
                 }
@@ -291,65 +306,65 @@ ilib.getLocale = function () {
                     // IE on Windows
                     lang = typeof(navigator.browserLanguage) !== 'undefined' ? 
                         navigator.browserLanguage :
-                        (typeof(navigator.userLanguage) !== 'undefined' ? 
-                            navigator.userLanguage :
-                            (typeof(navigator.systemLanguage) !== 'undefined' ?
-                                navigator.systemLanguage :
-                                undefined));
+                            (typeof(navigator.userLanguage) !== 'undefined' ? 
+                                navigator.userLanguage :
+                                    (typeof(navigator.systemLanguage) !== 'undefined' ?
+                                        navigator.systemLanguage :
+                                            undefined));
                     if (typeof(lang) !== 'undefined' && lang) {
                         // for some reason, MS uses lower case region tags
                         ilib.locale = lang.substring(0,3) + lang.substring(3,5).toUpperCase();
                     }
                 }
                 break;
-    		case 'webos':
+            case 'webos':
                 // webOS
                 if (typeof(PalmSystem.locales) !== 'undefined' && 
-                		typeof(PalmSystem.locales.UI) != 'undefined' && 
-                		PalmSystem.locales.UI.length > 0) {
+                    typeof(PalmSystem.locales.UI) != 'undefined' && 
+                    PalmSystem.locales.UI.length > 0) {
                     ilib.locale = PalmSystem.locales.UI;
                 } else if (typeof(PalmSystem.locale) !== 'undefined') {
-                	ilib.locale = PalmSystem.locale;
+                    ilib.locale = PalmSystem.locale;
                 }
-    			break;
-    		case 'rhino':
+                break;
+            case 'rhino':
                 if (typeof(environment) !== 'undefined' && environment.user && typeof(environment.user.language) === 'string' && environment.user.language.length > 0) {
-                	// running under plain rhino
+                    // running under plain rhino
                     ilib.locale = environment.user.language;
                     if (typeof(environment.user.country) === 'string' && environment.user.country.length > 0) {
                         ilib.locale += '-' + environment.user.country;
                     }
                 }
                 break;
-    		case "trireme":
-            	// under trireme on rhino emulating nodejs
-            	lang = process.env.LANG || process.env.LANGUAGE || process.env.LC_ALL;
+            case "trireme":
+                // under trireme on rhino emulating nodejs
+                lang = process.env.LANG || process.env.LANGUAGE || process.env.LC_ALL;
                 // the LANG variable on unix is in the form "lang_REGION.CHARSET"
                 // where language and region are the correct ISO codes separated by
                 // an underscore. This translate it back to the BCP-47 form.
                 if (lang && typeof(lang) !== 'undefined') {
                     ilib.locale = lang.substring(0,2).toLowerCase() + '-' + lang.substring(3,5).toUpperCase();
                 }
-            	break;
-    		case 'nodejs':
+                break;
+            case 'nodejs':
                 // running under nodejs
-                lang = process.env.LANG || process.env.LC_ALL;
+                lang = global.process.env.LANG || global.process.env.LC_ALL;
                 // the LANG variable on unix is in the form "lang_REGION.CHARSET"
                 // where language and region are the correct ISO codes separated by
                 // an underscore. This translate it back to the BCP-47 form.
                 if (lang && typeof(lang) !== 'undefined') {
                     ilib.locale = lang.substring(0,2).toLowerCase() + '-' + lang.substring(3,5).toUpperCase();
                 }
-    			break;
-    		case 'qt':
-            	// running in the Javascript engine under Qt/QML
-            	var locobj = Qt.locale();
-            	lang = locobj.name && locobj.name.replace("_", "-") || "en-US";
-    			break;
-    	}
+                break;
+            case 'qt':
+                // running in the Javascript engine under Qt/QML
+                var locobj = Qt.locale();
+                var lang = locobj.name && locobj.name.replace("_", "-") || "en-US";
+                break;
+        }
         ilib.locale = typeof(ilib.locale) === 'string' && ilib.locale ? ilib.locale : 'en-US';
         if (ilib.locale === "en") {
-        	ilib.locale = "en-US"; // hack to get various platforms working correctly
+            ilib.locale = "en-US"; // hack to get various platforms working correctly
         }
     }
     return ilib.locale;
@@ -389,31 +404,33 @@ ilib.getTimeZone = function() {
             ilib.tz = ro && ro.timeZone;
         }
         
-        if (!ilib.tz) {
-            if (typeof(navigator) !== 'undefined' && typeof(navigator.timezone) !== 'undefined') {
+        switch (ilib._getPlatform()) {
+            case 'browser':
                 // running in a browser
-                if (navigator.timezone.length > 0) {
+                if (navigator.timezone && navigator.timezone.length > 0) {
                     ilib.tz = navigator.timezone;
                 }
-            } else if (typeof(PalmSystem) !== 'undefined' && typeof(PalmSystem.timezone) !== 'undefined') {
+                break;
+            case 'webos':
                 // running in webkit on webOS
-                if (PalmSystem.timezone.length > 0) {
+                if (PalmSystem.timezone && PalmSystem.timezone.length > 0) {
                     ilib.tz = PalmSystem.timezone;
                 }
-            } else if (typeof(environment) !== 'undefined' && typeof(environment.user) !== 'undefined') {
+                break;
+            case 'rhino':
                 // running under rhino
                 if (typeof(environment.user.timezone) !== 'undefined' && environment.user.timezone.length > 0) {
                     ilib.tz = environment.user.timezone;
                 }
-            } else if (typeof(process) !== 'undefined' && typeof(process.env) !== 'undefined') {
-                // running in nodejs
-                if (process.env.TZ && typeof(process.env.TZ) !== "undefined") {
-                    ilib.tz = process.env.TZ;
+                break;
+            case 'nodejs':
+                if (global.process.env && typeof(global.process.env.TZ) !== "undefined") {
+                    ilib.tz = global.process.env.TZ;
                 }
-            }
-            
-            ilib.tz = ilib.tz || "local";
+                break;
         }
+        
+        ilib.tz = ilib.tz || "local"; 
     }
 
     return ilib.tz;

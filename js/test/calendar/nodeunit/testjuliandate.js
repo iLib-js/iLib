@@ -18,7 +18,7 @@
  */
 
 if (typeof(JulianDate) === "undefined") {
-    var JulianDate = require("../.././../lib/JulianDate.js");
+    var JulianDate = require("../../../lib/JulianDate.js");
 }
 
 var testDatesJulian = [

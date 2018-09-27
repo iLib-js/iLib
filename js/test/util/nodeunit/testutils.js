@@ -18,22 +18,22 @@
  */
 
 if (typeof(ilib) === "undefined") {
-    var ilib = require("../.././../lib/ilib.js");
+    var ilib = require("../../../lib/ilib.js");
 }
 if (typeof(Utils) === "undefined") {
-    var Utils = require("../.././../lib/Utils.js");
+    var Utils = require("../../../lib/Utils.js");
 }
 if (typeof(SearchUtils) === "undefined") {
-    var SearchUtils = require("../.././../lib/SearchUtils.js");
+    var SearchUtils = require("../../../lib/SearchUtils.js");
 }
 if (typeof(MathUtils) === "undefined") {
-    var MathUtils = require("../.././../lib/MathUtils.js");
+    var MathUtils = require("../../../lib/MathUtils.js");
 }
 if (typeof(Locale) === "undefined") {
-    var Locale = require("../.././../lib/Locale.js");
+    var Locale = require("../../../lib/Locale.js");
 }
 if (typeof(JSUtils) === "undefined") {
-    var JSUtils = require("../.././../lib/JSUtils.js");
+    var JSUtils = require("../../../lib/JSUtils.js");
 }
 
 function strcmp(left, right) {
@@ -910,6 +910,41 @@ module.exports.testutils = {
         test.done();
     },
     
+    testGetSublocalesENUS: function(test) {
+        test.expect(1);
+
+        test.deepEqual(Utils.getSublocales("en-US"), ["root", "en", "und-US", "en-US"]);
+        test.done();
+    },
+
+    testGetSublocalesESUS: function(test) {
+        test.expect(1);
+
+        test.deepEqual(Utils.getSublocales("es-US"), ["root", "es", "und-US", "es-US"]);
+        test.done();
+    },
+
+    testGetSublocalesZHCN: function(test) {
+        test.expect(1);
+
+        test.deepEqual(Utils.getSublocales("zh-Hans-CN"), ["root", "zh", "und-CN", "zh-Hans", "zh-CN", "zh-Hans-CN"]);
+        test.done();
+    },
+
+    testGetSublocalesWithVariant: function(test) {
+        test.expect(1);
+
+        test.deepEqual(Utils.getSublocales("es-US-ASDF"), ["root", "es", "und-US", "es-US", "und-US-ASDF", "es-US-ASDF"]);
+        test.done();
+    },
+
+    testGetSublocalesWithScriptAndVariant: function(test) {
+        test.expect(1);
+
+        test.deepEqual(Utils.getSublocales("zh-Hans-CN-ASDF"), ["root", "zh", "und-CN", "zh-Hans", "zh-CN", "und-CN-ASDF", "zh-Hans-CN", "zh-CN-ASDF", "zh-Hans-CN-ASDF"]);
+        test.done();
+    },
+
     testMergeLocData: function(test) {
         test.expect(3);
         ilib.data.foobar = {
@@ -1024,7 +1059,7 @@ module.exports.testutils = {
     
         var locale = new Locale("de-DE-Latn-SAP");
         var m = Utils.mergeLocData("asdf", locale);
-        test.ok(typeof(m) === "undefined");
+        test.ok(m);
         
         // clean up for the other tests
         ilib.data.foobar = ilib.data.foobar_de = ilib.data.foobar_de_DE = ilib.data.foobar_de_Latn_DE = ilib.data.foobar_de_Latn_DE_SAP = undefined;
@@ -1053,7 +1088,7 @@ module.exports.testutils = {
     
         var locale = new Locale("de-DE-Latn-SAP");
         var m = Utils.mergeLocData(undefined, locale);
-        test.ok(typeof(m) === "undefined");
+        test.ok(m);
         
         // clean up for the other tests
         ilib.data.foobar = ilib.data.foobar_de = ilib.data.foobar_de_DE = ilib.data.foobar_de_Latn_DE = ilib.data.foobar_de_Latn_DE_SAP = undefined;
@@ -1265,12 +1300,12 @@ module.exports.testutils = {
     
     testGetLocFilesRegionVariant: function(test) {
         test.expect(2);
-        var locale = new Locale("US-govt");
+        var locale = new Locale("US-GOVT");
         var f = Utils.getLocFiles(locale, "localeinfo.json");
         var expected = [
             "localeinfo.json",
             "und/US/localeinfo.json",
-            "und/US/govt/localeinfo.json"
+            "und/US/GOVT/localeinfo.json"
         ];
         
         test.equal(f.length, expected.length);
@@ -1575,7 +1610,7 @@ module.exports.testutils = {
             test.done();
             return;
         }
-        
+        ilib.data.foo = ilib.data.foo_en = ilib.data.foo_und_US = ilib.data.foo_en_US = undefined;
         ilib.setLoaderCallback(mockLoaderUtil);
         Utils.loadData({
             name: "foo.json",
@@ -1600,7 +1635,7 @@ module.exports.testutils = {
             test.done();
             return;
         }
-        
+        ilib.data.foo = ilib.data.foo_en = ilib.data.foo_und_US = ilib.data.foo_en_US = undefined;
         ilib.setLoaderCallback(mockLoaderUtil);
         Utils.loadData({
             name: "foo.json",
@@ -1626,7 +1661,7 @@ module.exports.testutils = {
             test.done();
             return;
         }
-        
+        ilib.data.foo = ilib.data.foo_en = ilib.data.foo_und_US = ilib.data.foo_en_US = undefined;
         ilib.setLoaderCallback(mockLoaderUtil);
         Utils.loadData({
             name: "foo.json",
@@ -1652,7 +1687,7 @@ module.exports.testutils = {
             test.done();
             return;
         }
-        
+        ilib.data.foo = ilib.data.foo_en = ilib.data.foo_und_US = ilib.data.foo_en_US = undefined;
         ilib.setLoaderCallback(mockLoaderUtil);
         Utils.loadData({
             name: "foo.json",
@@ -1678,7 +1713,7 @@ module.exports.testutils = {
             test.done();
             return;
         }
-        
+        ilib.data.foo = ilib.data.foo_en = ilib.data.foo_und_US = ilib.data.foo_en_US = undefined;
         ilib.setLoaderCallback(mockLoaderUtil);
         Utils.loadData({
             name: "foo.json",
@@ -1706,6 +1741,7 @@ module.exports.testutils = {
         }
         
         ilib.clearCache();
+        ilib.data.foo = ilib.data.foo_en = ilib.data.foo_und_US = ilib.data.foo_en_US = undefined;
         ilib.setLoaderCallback(mockLoaderUtil);
         Utils.loadData({
             name: "foo.json",
@@ -1724,234 +1760,6 @@ module.exports.testutils = {
         });
     },
     
-    testLoadDataCached: function(test) {
-        if (ilib.isDynData()) {
-            // don't need to test loading on the dynamic load version because we are testing
-            // it via all the other tests already.
-            test.done();
-            return;
-        }
-        
-        ilib.setLoaderCallback(mockLoaderUtil);
-        Utils.loadData({
-            name: "foo.json",
-            object: "obj",
-            locale: "en-US",
-            type: "json",
-            loadParams: {},
-            sync: true,
-            callback: function (results) {
-                var cache = ilib.data.cache.obj;
-                for (var o in cache) {
-                    if (cache.hasOwnProperty(o)) {
-                        ilib.setLoaderCallback(oldLoader);
-                        var expected = {"a": "b", "c": "m", "e": "y"};
-                        test.deepEqual(cache[o], expected);
-                    }
-                }
-            }
-        });
-        test.done();
-    },
-    
-    testLoadDataCachedWithOtherName: function(test) {
-        if (ilib.isDynData()) {
-            // don't need to test loading on the dynamic load version because we are testing
-            // it via all the other tests already.
-            test.done();
-            return;
-        }
-        
-        ilib.setLoaderCallback(mockLoaderUtil);
-    
-        Utils.loadData({
-            name: "foo.json",
-            object: "obj",
-            locale: "en-US",
-            type: "json",
-            loadParams: {},
-            sync: true,
-            callback: function (results) {
-                var expected = {"a": "b", "c": "m", "e": "y"};
-                test.expect(2);
-                test.deepEqual(results, expected);
-    
-                Utils.loadData({
-                    name: "bar.json",
-                    object: "obj",
-                    locale: "en-US",
-                    type: "json",
-                    loadParams: {},
-                    sync: true,
-                    callback: function (results) {
-                        ilib.setLoaderCallback(oldLoader);
-                        var expected = {"a": "barb", "c": "barm", "e": "bary"};
-                        test.deepEqual(results, expected);
-                        test.done();
-                    }
-                });
-            }
-        });
-    },
-    
-    testLoadDataCachedWithLoadParamsMultipleFiles: function(test) {
-        if (ilib.isDynData()) {
-            // don't need to test loading on the dynamic load version because we are testing
-            // it via all the other tests already.
-            test.done();
-            return;
-        }
-        
-        ilib.setLoaderCallback(mockLoaderUtil);
-        Utils.loadData({
-            name: "foo.json",
-            object: "obj",
-            locale: "en-US",
-            type: "json",
-            loadParams: {},
-            sync: true,
-            callback: function (results) {
-                test.ok(typeof(results) !== "undefined");
-    
-                Utils.loadData({
-                    name: "foo.json",
-                    object: "obj",
-                    locale: "en-US",
-                    type: "json",
-                    loadParams: {
-                        // should cause it to load a different file
-                        root: "/usr/share/localization/myapp"
-                    },
-                    sync: true,
-                    callback: function (results) {
-                        ilib.setLoaderCallback(oldLoader);
-                        test.ok(typeof(results) !== "undefined");
-    
-                        var count = 0;
-                        var cache = ilib.data.cache.obj;
-                        for (var o in cache) {
-                            if (cache.hasOwnProperty(o)) {
-                                count++;
-                            }
-                        }
-                        
-                        test.equal(count, 2);
-                    }
-                });
-            }
-        });
-        test.done();
-    },
-    
-    testLoadDataCachedWithLoadParams: function(test) {
-        if (ilib.isDynData()) {
-            // don't need to test loading on the dynamic load version because we are testing
-            // it via all the other tests already.
-            test.done();
-            return;
-        }
-        
-        ilib.setLoaderCallback(mockLoaderUtil);
-        Utils.loadData({
-            name: "foo.json",
-            object: "obj",
-            locale: "en-US",
-            type: "json",
-            loadParams: {},
-            sync: true,
-            callback: function (results) {
-                var expected = {"a": "b", "c": "m", "e": "y"};
-                test.expect(2);
-                test.deepEqual(results, expected);
-                Utils.loadData({
-                    name: "foo.json",
-                    object: "obj",
-                    locale: "en-US",
-                    type: "json",
-                    loadParams: {
-                        // should cause it to load a different file
-                        root: "/usr/share/localization/myapp"
-                    },
-                    sync: true,
-                    callback: function (results) {
-                        ilib.setLoaderCallback(oldLoader);
-                        var expected = {"xxx": "yyy", "www": "xyz", "yyy": "vvv", "nnn": "mmm"};
-                        test.deepEqual(results, expected);
-                        test.done();
-                    }
-                });
-            }
-        });
-    },
-    
-    testLoadDataNoCache: function(test) {
-        if (ilib.isDynData()) {
-            // don't need to test loading on the dynamic load version because we are testing
-            // it via all the other tests already.
-            test.done();
-            return;
-        }
-        
-        ilib.clearCache();
-        ilib.setLoaderCallback(mockLoaderUtil);
-        Utils.loadData({
-            name: "foo.json",
-            locale: "en-US",
-            type: "json",
-            loadParams: {},
-            sync: true,
-            callback: function (results) {
-                ilib.setLoaderCallback(oldLoader);
-                // should not crash
-                var expected = {"a": "b", "c": "m", "e": "y"};
-                test.expect(1);
-                test.deepEqual(results, expected);
-                test.done();
-            }
-        });
-    },
-    
-    testLoadDataNotCachedWithLoadParams: function(test) {
-        if (ilib.isDynData()) {
-            // don't need to test loading on the dynamic load version because we are testing
-            // it via all the other tests already.
-            test.done();
-            return;
-        }
-        
-        ilib.clearCache();
-        ilib.setLoaderCallback(mockLoaderUtil);
-        Utils.loadData({
-            name: "foo.json",
-            locale: "en-US",
-            type: "json",
-            loadParams: {},
-            sync: true,
-            callback: function (results) {
-                var expected = {"a": "b", "c": "m", "e": "y"};
-                test.expect(2);
-                test.deepEqual(results, expected);
-    
-                Utils.loadData({
-                    name: "foo.json",
-                    locale: "en-US",
-                    type: "json",
-                    loadParams: {
-                        // should cause it to load a different file
-                        root: "/usr/share/localization/myapp"
-                    },
-                    sync: true,
-                    callback: function (results) {
-                        ilib.setLoaderCallback(oldLoader);
-                        var expected = {"xxx": "yyy", "www": "xyz", "yyy": "vvv", "nnn": "mmm"};
-                        test.deepEqual(results, expected);
-                        test.done();
-                    }
-                });
-            }
-        });
-    },
-    
     testLoadDataAsynch: function(test) {
         if (ilib.isDynData()) {
             // don't need to test loading on the dynamic load version because we are testing
@@ -1961,6 +1769,7 @@ module.exports.testutils = {
         }
         
         ilib.clearCache();
+        ilib.data.foo = ilib.data.foo_en = ilib.data.foo_und_US = ilib.data.foo_en_US = undefined;
         ilib.setLoaderCallback(mockLoaderUtil);
         Utils.loadData({
             name: "foo.json",
@@ -1987,6 +1796,7 @@ module.exports.testutils = {
             return;
         }
         ilib.clearCache();
+        ilib.data.foo = ilib.data.foo_en = ilib.data.foo_und_US = ilib.data.foo_en_US = undefined;
         ilib.setLoaderCallback(mockLoaderUtil);
         Utils.loadData({
             name: "foo.json",
@@ -2008,6 +1818,7 @@ module.exports.testutils = {
             return;
         }
         ilib.clearCache();
+        ilib.data.foo = ilib.data.foo_en = ilib.data.foo_und_US = ilib.data.foo_en_US = undefined;
         ilib.setLoaderCallback(mockLoaderUtil);
         Utils.loadData({
             name: "foo.html",
@@ -2028,6 +1839,7 @@ module.exports.testutils = {
             test.done();
             return;
         }
+        ilib.data.foo = ilib.data.foo_de = ilib.data.foo_und_DE = ilib.data.foo_de_DE = undefined;
         ilib.setLoaderCallback(mockLoaderUtil);
         Utils.loadData({
             name: "foo.html",
@@ -2049,6 +1861,7 @@ module.exports.testutils = {
             test.done();
             return;
         }
+        ilib.data.foo = ilib.data.foo_de = ilib.data.foo_und_DE = ilib.data.foo_de_DE = undefined;
         ilib.setLoaderCallback(mockLoaderUtil);
         Utils.loadData({
             name: "foo.html",
@@ -2070,6 +1883,7 @@ module.exports.testutils = {
             test.done();
             return;
         }
+        ilib.data.foo = ilib.data.foo_de = ilib.data.foo_und_DE = ilib.data.foo_de_DE = undefined;
         ilib.setLoaderCallback(mockLoaderUtil);
         Utils.loadData({
             name: "foo.html",
@@ -2091,6 +1905,7 @@ module.exports.testutils = {
             test.done();
             return;
         }
+        ilib.data.foo = ilib.data.foo_fr = ilib.data.foo_und_FR = ilib.data.foo_fr_FR = undefined;
         ilib.setLoaderCallback(mockLoaderUtil);
     
         Utils.loadData({
@@ -2113,6 +1928,7 @@ module.exports.testutils = {
             test.done();
             return;
         }
+        ilib.data.foo = ilib.data.foo_es = ilib.data.foo_und_ES = ilib.data.foo_es_ES = undefined;
         ilib.setLoaderCallback(mockLoaderUtil);
         Utils.loadData({
             name: "foo.html",
@@ -2134,6 +1950,7 @@ module.exports.testutils = {
             test.done();
             return;
         }
+        ilib.data.foo = ilib.data.foo_de = ilib.data.foo_und_DE = ilib.data.foo_de_DE = undefined;
         ilib.setLoaderCallback(mockLoaderUtil);
         Utils.loadData({
             name: "foo.html",
@@ -2154,6 +1971,7 @@ module.exports.testutils = {
             test.done();
             return;
         }
+        ilib.data.foo = ilib.data.foo_de = ilib.data.foo_und_DE = ilib.data.foo_de_DE = undefined;
         ilib.setLoaderCallback(mockLoaderUtil);
         Utils.loadData({
             name: "foo.json",

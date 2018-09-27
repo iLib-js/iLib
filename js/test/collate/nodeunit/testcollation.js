@@ -1,7 +1,7 @@
 /*
  * testcollation.js - test the Collator object
  * 
- * Copyright © 2013-2015,2017, JEDLSoft
+ * Copyright © 2013-2015, 2017-2018, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -28,10 +28,6 @@ if (typeof(Collator) === "undefined") {
 }
 if (typeof(CodePointSource) === "undefined") {
     var CodePointSource = require("../../../lib/CodePointSource.js");
-}
-
-if (typeof(ilib) === "undefined") {
-    var ilib = require("../../../lib/ilib.js");
 }
 
 module.exports.testcollation = {

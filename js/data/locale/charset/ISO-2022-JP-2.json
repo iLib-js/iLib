@@ -3,6 +3,7 @@
 	"max": 2,
 	"scripts": ["Jpan","Kana","Hira","Latn","Hang","Kore","Grek","Hani"],
 	"locales": ["ja"],
+  "optional": true,
 	"escapes": {
 		"to": {
 			"US-ASCII":         [27, 40, 66],

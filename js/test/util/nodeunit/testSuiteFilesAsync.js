@@ -1,6 +1,7 @@
-/**
- * @license
- * Copyright © 2012-2015, JEDLSoft
+/*
+ * testSuiteFiles.js - list the test files in this directory
+ * 
+ * Copyright © 2017, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,13 +17,8 @@
  * limitations under the License.
  */
 
-/*
- * ilib-core-inc.js - metafile that includes a minimal set of other js files for the minimal build
- */
-
-/* !depends
-JSUtils.js
-IString.js
-ResBundle.js
-ScriptInfo.js
-*/
+module.exports.files = [
+    "testset.js",
+    "testutils.js",
+    "testpath.js"
+];

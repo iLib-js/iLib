@@ -20,4 +20,5 @@
 module.exports.files = [
     "testset.js",
     "testutils.js",
+    "testpath.js"
 ];

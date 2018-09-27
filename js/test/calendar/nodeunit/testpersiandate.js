@@ -18,10 +18,10 @@
  */
 
 if (typeof(PersianAlgoDate) === "undefined") {
-    var PersianAlgoDate = require("../.././../lib/PersianAlgoDate.js");
+    var PersianAlgoDate = require("../../../lib/PersianAlgoDate.js");
 }
 if (typeof(PersAlgoRataDie) === "undefined") {
-    var PersAlgoRataDie = require("../.././../lib/PersAlgoRataDie.js");
+    var PersAlgoRataDie = require("../../../lib/PersAlgoRataDie.js");
 }
 
 var testDatesPersAlgoPersian = [

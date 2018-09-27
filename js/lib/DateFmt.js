@@ -17,22 +17,6 @@
  * limitations under the License.
  */
 
-/*
-!depends 
-ilib.js 
-Locale.js 
-IDate.js
-DateFactory.js  
-ResBundle.js 
-CalendarFactory.js
-LocaleInfo.js
-TimeZone.js
-GregorianCal.js
-JSUtils.js
-Utils.js
-ISet.js
-*/
-
 // !data dateformats sysres
 
 var ilib = require("./ilib.js");
@@ -631,7 +615,6 @@ DateFmt.prototype = {
                     var spec = this.locale.getSpec().replace(/-/g, '_');
                     if (!formats) {
                         formats = ilib.data.dateformats || DateFmt.defaultFmt;
-                        ilib.data.cache.DateFmt[spec] = formats;
                     }
                     
                     if (typeof(this.clock) === 'undefined') {

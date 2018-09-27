@@ -18,7 +18,7 @@
  */
 
 if (typeof(LengthUnit) === "undefined") {
-    var LengthUnit = require("../.././../lib/LengthUnit.js");
+    var LengthUnit = require("../../../lib/LengthUnit.js");
 }
 
 if (typeof(ilib) === "undefined") {

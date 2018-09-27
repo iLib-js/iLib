@@ -17,8 +17,6 @@
  * limitations under the License.
  */
 
-// !depends ilib.js Utils.js Locale.js MathUtils.js
-
 // !data plurals
 
 var ilib = require("./ilib.js");
@@ -174,28 +172,19 @@ IString.loadPlurals = function (sync, locale, loadParams, onLoad) {
 		loc = new Locale(ilib.getLocale());
 	}
 	var spec = loc.getLanguage();
-	if (!ilib.data["plurals_" + spec]) {
-		Utils.loadData({
-			name: "plurals.json",
-			object: "IString",
-			locale: loc,
-			sync: sync,
-			loadParams: loadParams,
-			callback: ilib.bind(this, function(plurals) {
-				if (!plurals) {
-					ilib.data.cache.IString[spec] = IString.plurals_default;
-				}
-				ilib.data["plurals_" + spec] = plurals || IString.plurals_default;
-				if (onLoad && typeof(onLoad) === 'function') {
-					onLoad(ilib.data["plurals_" + spec]);
-				}
-			})
-		});
-	} else {
-		if (onLoad && typeof(onLoad) === 'function') {
-			onLoad(ilib.data["plurals_" + spec]);
-		}
-	}
+	Utils.loadData({
+		name: "plurals.json",
+		object: "IString",
+		locale: loc,
+		sync: sync,
+		loadParams: loadParams,
+		callback: ilib.bind(this, function(plurals) {
+		    plurals = plurals || IString.plurals_default;
+			if (onLoad && typeof(onLoad) === 'function') {
+				onLoad(plurals);
+			}
+		})
+	});
 };
 
 /**
@@ -296,8 +285,7 @@ IString._fncs = {
 		var parts = [];
 		var numberDigits =  {};
 		var operandSymbol =  {};
-		var integerPart, decimalPartLength, decimalPart;
-
+		
 		if (numberToString.indexOf('.') !== -1) { //decimal
 			parts = numberToString.split('.', 2);
 			numberDigits.integerPart = parseInt(parts[0], 10);
@@ -651,7 +639,7 @@ IString.prototype = {
                         case "few":
                         case "many":
                             // CLDR locale-dependent number classes
-                            var ruleset = ilib.data["plurals_" + this.locale.getLanguage()];
+                            var ruleset = ilib.data["plurals_" + this.locale.getLanguage()]|| IString.plurals_default;
                             if (ruleset) {
                                 var rule = ruleset[limit];
                                 return IString._fncs.getValue(rule, operandValue);
@@ -830,7 +818,7 @@ IString.prototype = {
 		var strings = [];
 		var i;
 		var parts;
-		var arg;
+		var limit;
 		var result = undefined;
 		var defaultCase = "";
 

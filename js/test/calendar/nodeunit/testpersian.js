@@ -18,7 +18,7 @@
  */
 
 if (typeof(PersianAlgoCal) === "undefined") {
-    var PersianAlgoCal = require("../.././../lib/PersianAlgoCal.js");
+    var PersianAlgoCal = require("../../../lib/PersianAlgoCal.js");
 }
 
 if (typeof(ilib) === "undefined") {

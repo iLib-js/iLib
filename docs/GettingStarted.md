@@ -8,7 +8,7 @@ You can get iLib in one of a few ways:
 
 1. Download the already-assembled code from the [Files](builds) section of this project, unzip or untar, et voila
 1. Get the project [from github at [Code]. The master branch is always has the last stable build, the development branch is the latest approved code, and features are developed in the feature branches.
-1. Use npm to get the latest build: "npm install ilib"
+1. Use npm to get the latest build for node: "npm install ilib"
 
 ## Including iLib ##
 

@@ -21,40 +21,44 @@ if (typeof(ilib) === "undefined") {
     var ilib = require("../../../lib/ilib.js");
 }
 if (typeof(ThaiSolarDate) === "undefined") {
-    var ThaiSolarDate = require("../.././../lib/ThaiSolarDate.js");
+    var ThaiSolarDate = require("../../../lib/ThaiSolarDate.js");
 }
 if (typeof(PersianDate) === "undefined") {
-    var PersianDate = require("../.././../lib/PersianDate.js");
+    var PersianDate = require("../../../lib/PersianDate.js");
 }
 if (typeof(IslamicDate) === "undefined") {
-    var IslamicDate = require("../.././../lib/IslamicDate.js");
+    var IslamicDate = require("../../../lib/IslamicDate.js");
 }
 if (typeof(HebrewDate) === "undefined") {
-    var HebrewDate = require("../.././../lib/HebrewDate.js");
+    var HebrewDate = require("../../../lib/HebrewDate.js");
 }
 if (typeof(GregorianDate) === "undefined") {
-    var GregorianDate = require("../.././../lib/GregorianDate.js");
+    var GregorianDate = require("../../../lib/GregorianDate.js");
 }
 if (typeof(JulianDate) === "undefined") {
-    var JulianDate = require("../.././../lib/JulianDate.js");
+    var JulianDate = require("../../../lib/JulianDate.js");
 }
 if (typeof(DateFmt) === "undefined") {
-    var DateFmt = require("../.././../lib/DateFmt.js");
+    var DateFmt = require("../../../lib/DateFmt.js");
 }
 if (typeof(DateFactory) === "undefined") {
-    var DateFactory = require("../.././../lib/DateFactory.js");
+    var DateFactory = require("../../../lib/DateFactory.js");
 }
 
 function mockLoaderDF(paths, sync, params, callback) {
     var data = [];
     
-    if (paths[0].indexOf("localeinfo") !== -1) {
-        data.push(ilib.data.localeinfo); // for the generic, shared stuff
-        data.push(ilib.data.localeinfo_de);
-    } else {
-        data.push(ilib.data.dateformats); // for the generic, shared stuff
-        data.push(ilib.data.dateformats_de);
-    }
+    paths.forEach(function(path) {
+        if (path === "localeinfo.json") {
+            data.push(ilib.data.localeinfo); // for the generic, shared stuff
+        } else if (path.indexOf("localeinfo") !== -1) {
+            data.push(ilib.data.localeinfo_de);
+        } else if (path === "dateformats.json") {
+            data.push(ilib.data.dateformats); // for the generic, shared stuff
+        } else if (path.indexOf("dateformats") !== -1) {
+            data.push(ilib.data.dateformats_de);
+        }
+    });
 
     if (typeof(callback) !== 'undefined') {
         callback.call(this, data);  
@@ -63,10 +67,6 @@ function mockLoaderDF(paths, sync, params, callback) {
 }
 
 var oldLoader = ilib._load;
-
-if (typeof(ilib) === "undefined") {
-    var ilib = require("../../../lib/ilib.js");
-}
 
 module.exports.testdatefmt = {
     setUp: function(callback) {
@@ -2970,18 +2970,21 @@ module.exports.testdatefmt = {
         test.equal(fmt.format(date), "torsdag den 20. oktober 2011 kl. 13.45");
         test.done();
     },
-    
+
     testDateFmtGetDefault: function(test) {
         test.expect(4);
+        ilib.clearCache();
+        ilib.data.localeinfo_zz = undefined;
+
         var fmt = new DateFmt({locale: "zz-ZZ"});
         test.ok(fmt !== null);
-        
+
         test.equal(fmt.getLocale().toString(), "zz-ZZ");
         test.equal(fmt.getCalendar(), "gregorian");
         test.equal(fmt.getTemplate(), "d/M/yy");
         test.done();
     },
-    
+
     testDateFmtLoadLocaleDataSynch: function(test) {
         // don't need to test loading on the dynamic load version because we are testing
         // it via all the other tests already.
@@ -2990,18 +2993,21 @@ module.exports.testdatefmt = {
             return;
         }
         ilib.setLoaderCallback(mockLoaderDF);
-    
+        ilib.localeinfo_zz = ilib.localeinfo_und_ZZ = ilib.localeinfo_zz_ZZ = undefined;
+        ilib.dateformats_zz = ilib.dateformats_und_ZZ = ilib.dateformats_zz_ZZ = undefined;
+        ilib.clearCache();
+
         var fmt = new DateFmt({locale: "zz-ZZ"});
         ilib.setLoaderCallback(oldLoader);
         test.expect(4);
         test.ok(fmt !== null);
-        
+
         test.equal(fmt.getLocale().toString(), "zz-ZZ");
         test.equal(fmt.getCalendar(), "gregorian");
         test.equal(fmt.getTemplate(), "dd.MM.yy");
         test.done();
     },
-    
+
     testDateFmtLoadLocaleDataSynchCached: function(test) {
         if (ilib.isDynData()) {
             // don't need to test loading on the dynamic load version because we are testing
@@ -3010,18 +3016,78 @@ module.exports.testdatefmt = {
             return;
         }
         ilib.setLoaderCallback(mockLoaderDF);
-    
+
         var fmt = new DateFmt({locale: "zz-ZZ"});
         ilib.setLoaderCallback(oldLoader);
+        ilib.localeinfo_zz = ilib.localeinfo_und_ZZ = ilib.localeinfo_zz_ZZ = undefined;
+        ilib.dateformats_zz = ilib.dateformats_und_ZZ = ilib.dateformats_zz_ZZ = undefined;
+        ilib.clearCache();
+
         test.expect(4);
         test.ok(fmt !== null);
-        
+
         test.equal(fmt.getLocale().toString(), "zz-ZZ");
         test.equal(fmt.getCalendar(), "gregorian");
         test.equal(fmt.getTemplate(), "dd.MM.yy");
         test.done();
-    },    
-    
+    },
+
+    testDateFmtLoadLocaleDataAsynch: function(test) {
+        if (ilib.isDynData()) {
+            // don't need to test loading on the dynamic load version because we are testing
+            // it via all the other tests already.
+            test.done();
+            return;
+        }
+        ilib.setLoaderCallback(mockLoaderDF);
+        ilib.localeinfo_zz = ilib.localeinfo_und_ZZ = ilib.localeinfo_zz_ZZ = undefined;
+        ilib.dateformats_zz = ilib.dateformats_und_ZZ = ilib.dateformats_zz_ZZ = undefined;
+        ilib.clearCache();
+
+        new DateFmt({
+            locale: "zz-ZZ",
+            sync: false,
+            onLoad: function (fmt) {
+                ilib.setLoaderCallback(oldLoader);
+                test.expect(4);
+                test.ok(fmt !== null);
+
+                test.equal(fmt.getLocale().toString(), "zz-ZZ");
+                test.equal(fmt.getCalendar(), "gregorian");
+                test.equal(fmt.getTemplate(), "dd.MM.yy");
+                test.done();
+            }
+        });
+    },
+
+    testDateFmtLoadLocaleDataAsynchCached: function(test) {
+        if (ilib.isDynData()) {
+            // don't need to test loading on the dynamic load version because we are testing
+            // it via all the other tests already.
+            test.done();
+            return;
+        }
+        ilib.setLoaderCallback(mockLoaderDF);
+        ilib.localeinfo_zz = ilib.localeinfo_und_ZZ = ilib.localeinfo_zz_ZZ = undefined;
+        ilib.dateformats_zz = ilib.dateformats_und_ZZ = ilib.dateformats_zz_ZZ = undefined;
+        ilib.clearCache();
+
+        test.expect(4);
+        new DateFmt({
+            locale: "zz-ZZ",
+            sync: false,
+            onLoad: function (fmt) {
+                ilib.setLoaderCallback(oldLoader);
+                test.ok(fmt !== null);
+
+                test.equal(fmt.getLocale().toString(), "zz-ZZ");
+                test.equal(fmt.getCalendar(), "gregorian");
+                test.equal(fmt.getTemplate(), "dd.MM.yy");
+                test.done();
+            }
+        });
+    },
+
     testDateFmtTransitionToDSTRightBefore: function(test) {
         test.expect(2);
         var fmt = new DateFmt({

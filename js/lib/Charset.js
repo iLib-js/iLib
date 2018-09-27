@@ -1,7 +1,7 @@
 /*
  * Charset.js - Return information about a particular character set
  * 
- * Copyright © 2014-2015, JEDLSoft
+ * Copyright © 2014-2015, 2018, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,8 +17,7 @@
  * limitations under the License.
  */
 
-// !depends ilib.js Utils.js
-// !data charsetaliases charset/ISO-8859-1 charset/ISO-8859-15 charset/UTF-8
+// !data charset charsetaliases charset/ISO-8859-1 charset/ISO-8859-15 charset/UTF-8
 
 var ilib = require("./ilib.js");
 var Utils = require("./Utils.js");
@@ -63,8 +62,6 @@ var Utils = require("./Utils.js");
  * the onLoad callback immediately when the initialization is done. 
  * If the onLoad option is not given, this class will only attempt to load any
  * missing data synchronously.
- * 
- * Depends directive: !depends charset.js
  * 
  * @constructor
  * @see {ilib.setLoaderCallback} for information about registering a loader callback instance
