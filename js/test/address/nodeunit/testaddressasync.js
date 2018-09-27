@@ -27,6 +27,12 @@ if (typeof(ilib) === "undefined") {
     var ilib = require("../../../lib/ilib.js");
 }
 
+function searchRegions(array, regionCode) {
+    return array.find(function(region) {
+        return region.code === regionCode;
+    });
+}
+
 module.exports.testaddressasync = {
     setUp: function(callback) {
         ilib.clearCache();
@@ -390,6 +396,48 @@ module.exports.testaddressasync = {
                 test.equal(parsedAddress.countryCode, "IN");
                 test.ok(typeof(parsedAddress.postalCode) === "undefined");
                 test.done();
+            }
+        });
+    },
+    
+    testAddressFmtGetFormatInfoUSRightConstraints: function(test) {
+        test.expect(19);
+        new AddressFmt({
+            locale: 'en-US',
+            sync: false,
+            onLoad: function(formatter) {
+                formatter.getFormatInfo(undefined, false, function(info) {
+                    test.ok(info);
+
+                    test.equal(info[1][2].component, "postalCode");
+                    test.equal(info[1][2].constraint, "[0-9]{5}(-[0-9]{4})?");
+
+                    test.equal(info[1][1].component, "region");
+                    test.ok(info[1][1].constraint);
+                    var r = searchRegions(info[1][1].constraint, "AZ");
+                    test.equal(r.code, "AZ");
+                    test.equal(r.name, "Arizona");
+                    r = searchRegions(info[1][1].constraint, "MS");
+                    test.equal(r.code, "MS");
+                    test.equal(r.name, "Mississippi");
+                    r = searchRegions(info[1][1].constraint, "NY");
+                    test.equal(r.code, "NY");
+                    test.equal(r.name, "New York");
+
+                    test.equal(info[2][0].component, "country");
+                    test.ok(info[2][0].constraint);
+                    var r = searchRegions(info[2][0].constraint, "JP");
+                    test.equal(r.code, "JP");
+                    test.equal(r.name, "Japan");
+                    r = searchRegions(info[2][0].constraint, "CR");
+                    test.equal(r.code, "CR");
+                    test.equal(r.name, "Costa Rica");
+                    r = searchRegions(info[2][0].constraint, "ZA");
+                    test.equal(r.code, "ZA");
+                    test.equal(r.name, "South Africa");
+
+                    test.done();
+                });
             }
         });
     }

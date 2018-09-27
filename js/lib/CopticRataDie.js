@@ -18,13 +18,11 @@
  */
 
 /* !depends 
-ilib.js
 CopticCal.js 
 JSUtils.js
 EthiopicRataDie.js
 */
 
-var ilib = require("./ilib.js");
 var JSUtils = require("./JSUtils.js");
 var CopticCal = require("./CopticCal.js");
 var EthiopicRataDie = require("./EthiopicRataDie.js");

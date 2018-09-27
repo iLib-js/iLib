@@ -124,7 +124,7 @@ var Address = function (freeformAddress, options) {
 		}
 		
 		if (typeof(options.sync) !== 'undefined') {
-			this.sync = (options.sync == true);
+			this.sync = !!options.sync;
 		}
 		
 		if (options.loadParams) {
@@ -248,7 +248,7 @@ Address.prototype = {
 			object: "Address", 
 			locale: this.locale,
 			sync: this.sync, 
-			loadParams: this.loadParams, 
+			loadParams: JSUtils.merge(this.loadParams, {returnOne: true}),
 			callback: ilib.bind(this, function(ctrynames) {
 			    this.ctrynames = ctrynames;
 				this._determineDest(ctrynames, onLoad);

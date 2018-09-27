@@ -45,7 +45,7 @@ var DigitalSpeedUnit = function (options) {
     this.aliasesLower = DigitalSpeedUnit.aliasesLower;
     this.systems = DigitalSpeedUnit.systems;
 
-    this.parent(options);
+    this.parent.call(this, options);
 };
 
 DigitalSpeedUnit.prototype = new Measurement();

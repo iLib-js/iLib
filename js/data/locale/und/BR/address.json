@@ -74,35 +74,7 @@
                 "SE",
                 "Tocantins",
                 "TO"
-            ],
-            "list": {
-                "AC": "Acre",
-                "AL": "Alagoas",
-                "AP": "Amapá",
-                "AM": "Amazonas",
-                "BA": "Bahia",
-                "CE": "Ceará",
-                "GO": "Goiás",
-                "ES": "Espírito Santo",
-                "MA": "Maranhão",
-                "MT": "Mato Grosso",
-                "MS": "Mato Grosso do Sul",
-                "MG": "Minas Gerais",
-                "PA": "Pará",
-                "PB": "Paraíba",
-                "PR": "Paraná",
-                "PE": "Pernambuco",
-                "PI": "Piauí",
-                "RJ": "Rio de Janeiro",
-                "RN": "Rio Grande do Norte",
-                "RS": "Rio Grande do Sul",
-                "RO": "Rondônia",
-                "RR": "Roraima",
-                "SP": "São Paulo",
-                "SC": "Santa Catarina",
-                "SE": "Sergipe",
-                "TO": "Tocantins"
-            }
+            ]
         },
         {
             "name": "locality",
