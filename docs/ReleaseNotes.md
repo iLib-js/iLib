@@ -20,6 +20,7 @@ to the previous behaviour of checking environment variables.
     typically include the region
     * Returns a regular expression string to use for validation if the form element can be validated with a regexp
     * Returns the localized list of countries
+* Updated the time zone data to IANA tzdata 2018e release
 
 Bug Fixes:
 * Fixed an ar-IQ currency symbol.

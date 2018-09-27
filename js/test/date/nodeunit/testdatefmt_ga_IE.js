@@ -928,7 +928,7 @@ module.exports.testdatefmt_ga_IE = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "13:45 GMT/IST");
+        test.equal(fmt.format(date), "13:45 IST/GMT");
         test.done();
     },
 
@@ -951,7 +951,7 @@ module.exports.testdatefmt_ga_IE = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "13:45:37 GMT/IST");
+        test.equal(fmt.format(date), "13:45:37 IST/GMT");
         test.done();
     },
 
@@ -993,7 +993,7 @@ module.exports.testdatefmt_ga_IE = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "13:45:37 GMT/IST");
+        test.equal(fmt.format(date), "13:45:37 IST/GMT");
         test.done();
     },
 
@@ -1016,7 +1016,7 @@ module.exports.testdatefmt_ga_IE = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "13:45:37 GMT/IST");
+        test.equal(fmt.format(date), "13:45:37 IST/GMT");
         test.done();
     },
 
@@ -1156,7 +1156,7 @@ module.exports.testdatefmt_ga_IE = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "13:45 GMT/IST");
+        test.equal(fmt.format(date), "13:45 IST/GMT");
         test.done();
     },
 
@@ -1200,7 +1200,7 @@ module.exports.testdatefmt_ga_IE = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "13:45:37 GMT/IST");
+        test.equal(fmt.format(date), "13:45:37 IST/GMT");
         test.done();
     },
 
@@ -1224,7 +1224,7 @@ module.exports.testdatefmt_ga_IE = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "13:45:37 GMT/IST");
+        test.equal(fmt.format(date), "13:45:37 IST/GMT");
         test.done();
     },
 
@@ -1248,7 +1248,7 @@ module.exports.testdatefmt_ga_IE = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "13:45:37 GMT/IST");
+        test.equal(fmt.format(date), "13:45:37 IST/GMT");
         test.done();
     },
 
