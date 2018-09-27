@@ -17,5 +17,8 @@
 			"line": "startAtLast",
 			"pattern": "[0-9]{5}"
 		}
-	]
+	],
+    "fieldNames": {
+        "region": "State"
+    }
 }

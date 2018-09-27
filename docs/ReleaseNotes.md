@@ -1,6 +1,43 @@
 Release Notes for Version 13
 ============================
 
+Build 004
+-------
+Published as version 13.3.0
+
+New Features:
+* Update of the LocaleReference Test Website Documentation
+    * Added is-IS locale to a list.
+    * Implemented way of publishing date automatically instead of manual fixing.
+    * Updated Name of the Day and Months part. If normal and standAlone are different, It displays both.
+* Modified ilib.getTimeZone() to find the time zone from the Intl object if it is available. If not, it falls back
+to the previous behaviour of checking environment variables.
+* Added AddressFmt.getFormatInfo() method for returning info that a UI would need to construct an address input form
+    * Return info about the correct form elements for an address in the given country, and return them in the right 
+    order
+    * Return localized UI labels for the various form elements
+    * Returns the localized list of regions for the address form if addresses in that country
+    typically include the region
+    * Returns a regular expression string to use for validation if the form element can be validated with a regexp
+    * Returns the localized list of countries
+* Updated the time zone data to IANA tzdata 2018e release
+
+Bug Fixes:
+* Fixed an ar-IQ currency symbol.
+* Updated the medium format day of the week translation of the ar-EG locale.
+* Updated the month duration locale data in fr-CA correspond CLDR 33.
+* Updated the daterange locale data in fr-CA local office feedback.
+* Updated the week duration locale data in ku-Arab-IQ correspong local office feedback.
+* Updated the meridiems data in or-IN correspond CLDR 33.
+* Fixed a bug where dates with the time zone "local" do not switch to DST at the right time because the time was calculated
+in UTC instead of the "local" time zone. This affected TimeZone.inDaylightTime(). If an explicit time zone was given, then
+then the calculation worked fine. It's only the special time zone "local" which had this bug.
+* Removed all of test cases written in JSUnit and related files. It is already replaced with Nodeunit TestFramework.
+* Fixed unit tests related to the getTimeZone() method so that they work properly both when the Intl object is available and when it is not
+* Updated the DurationFmt class to use the short format whenever the medium format is requested when the script of the locale is something other than Latin, Greek, or Cyrillic
+    * Medium format is not specified in CLDR, so it was created algorithmically in ilib's CLDR processing tools from longer formats
+    * The algorithm to create it was not working properly for many non-alphabetic scripts, so it was deemed safer to use the short format whenever the medium format was requested
+
 Build 003
 -------
 Published as version 13.2.0

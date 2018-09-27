@@ -3,7 +3,7 @@
 	"formats": {
 		"default": {
 			"latin": "{streetAddress}\n{locality} {postalCode}\n{country}",
-			"asian": "{country}{postalCode}{locality}{streetAddress}"
+			"asian": "{country}\n{postalCode}{locality}{streetAddress}"
 		},
 		"nocountry": {
 			"asian": "{postalCode}{locality}{streetAddress}",
@@ -40,5 +40,9 @@
 				"matchGroup": 0
 			}
 		]
-	}
+	},
+    "fieldNames": {
+        "postalCode": "Post Code",
+        "locality": "Town"
+    }
 }

@@ -18,13 +18,11 @@
  */
 
 /* !depends 
-ilib.js
 JulianDay.js
 MathUtils.js
 JSUtils.js
 */
 
-var ilib = require("./ilib.js");
 var MathUtils = require("./MathUtils.js");
 var JSUtils = require("./JSUtils.js");
 var JulianDay = require("./JulianDay.js");

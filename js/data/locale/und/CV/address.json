@@ -9,24 +9,41 @@
             "name": "region",
             "line": "last",
             "pattern": [
-                "Boa Vista",
-                "Brava",
-                "Maio",
-                "Mosteiros",
-                "Paúl",
-                "Porto Novo",
-                "Praia",
-                "Ribeira Grande",
-                "Sal",
-                "Santa Catarina",
-                "Santa Cruz",
-                "São Domingos",
-                "São Filipe",
-                "São Miguel",
-                "São Nicolau",
-                "São Vicente",
-                "Tarrafal",
-                "Santiago"
+                "boa vista",
+                "brava",
+                "maio",
+                "mosteiros",
+                "paul",
+                "porto vovo",
+                "praia",
+                "ribeira brava",
+                "ribeira grande",
+                "ribeira grande de santiago",
+                "santiago",
+                "ribeira",
+                "sal",
+                "santa catarina",
+                "santa catarina de fogo",
+                "santa cruz",
+                "são domingos",
+                "sao domingos",
+                "são filipe",
+                "sao filipe",
+                "são lourenço dos órgãos",
+                "sao lourenco dos orgaos",
+                "são lourenço",
+                "sao lourenco",
+                "são miguel",
+                "sao miguel",
+                "são salvador do mundo",
+                "sao salvador do mundo",
+                "são nicolau",
+                "sao nicolau",
+                "são vicente",
+                "sao vicente",
+                "tarrafal",
+                "tarrafal de são nicolau",
+                "tarrafal de sao nicolau"
             ]
         },
         {
@@ -39,5 +56,8 @@
             "line": "last",
             "pattern": "([0-9]{4})"
         }
-    ]
+    ],
+    "fieldNames": {
+        "region": "Municipality"
+    }
 }

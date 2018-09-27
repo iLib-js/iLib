@@ -23,5 +23,8 @@
             "pattern": "(DK-)?[0-9]{4,5}",
             "matchGroup": 0
         }
-    ]
+    ],
+    "fieldNames": {
+        "region": "Region"
+    }
 }

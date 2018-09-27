@@ -399,6 +399,7 @@ TimeZone.prototype.getId = function () {
  * @return {string} the name of the time zone, abbreviated according to the style 
  */
 TimeZone.prototype.getDisplayName = function (date, style) {
+    var temp;
 	style = (this.isLocal || typeof(this.zone) === 'undefined') ? "rfc822" : (style || "standard");
 	switch (style) {
 		default:
@@ -407,17 +408,17 @@ TimeZone.prototype.getDisplayName = function (date, style) {
 				if (this.zone.f.indexOf("{c}") !== -1) {
 					var letter = "";
 					letter = this.inDaylightTime(date) ? this.zone.s && this.zone.s.c : this.zone.e && this.zone.e.c; 
-					var temp = new IString(this.zone.f);
+					temp = new IString(this.zone.f);
 					return temp.format({c: letter || ""});
 				}
 				return this.zone.f;
 			} 
-			var temp = "GMT" + this.zone.o;
+			temp = "GMT" + this.zone.o;
 			if (this.inDaylightTime(date)) {
 				temp += "+" + this.zone.s.v;
 			}
 			return temp;
-			break;
+
 		case 'rfc822':
 			var offset = this.getOffset(date), // includes the DST if applicable
 				ret = "UTC",
@@ -435,22 +436,22 @@ TimeZone.prototype.getDisplayName = function (date, style) {
 				}
 				ret += minute;
 			}
-			return ret; 
+			return ret;
+
 		case 'long':
 			if (this.zone.n) {
 				if (this.zone.n.indexOf("{c}") !== -1) {
 					var str = this.inDaylightTime(date) ? "Daylight" : "Standard"; 
-					var temp = new IString(this.zone.n);
+					temp = new IString(this.zone.n);
 					return temp.format({c: str || ""});
 				}
 				return this.zone.n;
 			}
-			var temp = "GMT" + this.zone.o;
+			temp = "GMT" + this.zone.o;
 			if (this.inDaylightTime(date)) {
 				temp += "+" + this.zone.s.v;
 			}
 			return temp;
-			break;
 	}
 };
 
@@ -803,12 +804,12 @@ TimeZone.prototype.inDaylightTime = function (date, wallTime) {
 		// check if the dst property is defined -- the intrinsic JS Date object doesn't work so
 		// well if we are in the overlap time at the end of DST, so we have to work around that
 		// problem by adding in the savings ourselves
-		var offset = 0;
+		var offset = this.offset * 60000;
 		if (typeof(date.dst) !== 'undefined' && !date.dst) {
-			offset = this.dstSavings * 60000;
+			offset += this.dstSavings * 60000;
 		}
-		
-		var d = new Date(date ? date.getTimeExtended() + offset: undefined);
+
+		var d = new Date(date ? date.getTimeExtended() - offset: undefined);
 		// the DST offset is always the one that is closest to positive infinity, no matter 
 		// if you are in the northern or southern hemisphere, east or west
 		var dst = Math.max(this.offsetJan1, this.offsetJun1);

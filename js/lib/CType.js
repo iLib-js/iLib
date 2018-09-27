@@ -17,14 +17,13 @@
  * limitations under the License.
  */
 
-// !depends ilib.js Locale.js SearchUtils.js Utils.js IString.js
+// !depends ilib.js SearchUtils.js Utils.js IString.js
 
 // !data ctype
 
 var ilib = require("./ilib.js");
 var SearchUtils = require("./SearchUtils.js");
 var Utils = require("./Utils.js");
-var Locale = require("./Locale.js");
 var IString = require("./IString.js");
 
 /**
@@ -83,7 +82,7 @@ var CType = {};
  * range
  */
 CType._inRange = function(num, rangeName, obj) {
-	var range, i;
+	var range;
 	if (num < 0 || !rangeName || !obj) {
 		return false;
 	}

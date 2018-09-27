@@ -96,7 +96,7 @@ var PhoneFmt = function(options) {
 		}
 
 		if (typeof(options.sync) !== 'undefined') {
-			this.sync = (options.sync == true);
+			this.sync = !!options.sync;
 		}
 
 		if (options.loadParams) {
@@ -238,7 +238,7 @@ PhoneFmt.prototype = {
 	
 		if (options) {
 			if (typeof(options.sync) !== 'undefined') {
-				sync = (options.sync == true);				
+				sync = !!options.sync;
 			}
 		
 			if (options.loadParams) {

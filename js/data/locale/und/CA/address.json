@@ -16,7 +16,12 @@
 			"line": "last",
 			"pattern": [
 				"new foundland",
-				"terre-neuve-et-labrador",
+				"newfoundland",
+				"new foundland and labrador",
+                "newfoundland and labrador",
+                "new foundland & labrador",
+                "newfoundland & labrador",
+                "terre-neuve-et-labrador",
 				"terre neuve et labrador",
 				"nfld",
 				"nl",
@@ -62,8 +67,12 @@
 				"nu",
 				"north west territories",
 				"northwest territories",
+                "north west territory",
+                "northwest territory",
 				"territoires du nord-ouest",
 				"territoires du nordouest",
+                "territoire du nord-ouest",
+                "territoire du nordouest",
 				"nwt",
 				"nt",
 				"yukon territory",
@@ -80,5 +89,8 @@
 			"pattern": "[\\wÀÁÂÄÇÈÉÊËÌÍÎÏÒÓÔÙÚÛàáâçèéêëìíîïòóôùúû\\.\\-']+$",
 			"matchGroup": 0
 		}
-	]
+	],
+    "fieldNames": {
+        "region": "Province or Territory"
+    }
 }

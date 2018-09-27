@@ -18,5 +18,8 @@
 			"pattern": "([0-9]{7})",
 			"matchGroup": 0
 		}
-	]
+	],
+    "fieldNames": {
+        "region": "Region"
+    }
 }

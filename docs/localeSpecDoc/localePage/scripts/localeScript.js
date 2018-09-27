@@ -46,32 +46,37 @@ $(function(){
 	var fmt =[];
 	var value =[];
 	var nameOfDay=[];
+	var weekNotAlone = [];
 	var nameOfMonth=[];
+	var monthNotAlone=[];
 	var monthID = [];
 	var weekID = [];
 	var fmtArray = [];
 	var length = ["full", "long", "medium", "short"];
 	var abbrLength = ["f", "l", "m", "s"];
 	var month = ["jan", "feb", "mar", "apr", "may","jun", "jul", "aug", "sep","oct","nov", "dec", "etc"];
+	var monthIter = ["MMMM", "MMM", "NN", "N"];
 	var week = ["sun", "mon", "tue", "wed", "thu", "fri","sat"];
+	var weekIter = ["EEEE", "EEE", "EE", "E"];
 
 	var dayCount = 0, monthCount = 0, fmtArrayCount;
 
 	for (i=0; i<7; i++) {
 		if (currentLocale === "am-ET") {
-			date[i] = new DateFactory({year: 2015, month: 8, day: i+7, type:li.getCalendar()});
+			date[i] = DateFactory({year: 2015, month: 8, day: i+7, type:li.getCalendar()});
 		} else if (currentLocale === "th-TH") {
-			date[i] = new DateFactory({year: 2015, month: 8, day: i+4, type:li.getCalendar()});
+			date[i] = DateFactory({year: 2015, month: 8, day: i+4, type:li.getCalendar()});
 		}
 		else {
-			date[i] = new DateFactory({year: 2015, month: 8, day: i+2, type:li.getCalendar()});
+			date[i] = DateFactory({year: 2015, month: 8, day: i+2, type:li.getCalendar()});
 		}
 		
 		for (j=0; j < 4; j++) {
 			fmt[j] = new DateFmt({locale: currentLocale, date:"w", length: length[j], useNative: false, timezone: 'local'});
 			value[i] = fmt[j].format(date[i]);
 			nameOfDay[dayCount] = value[i];
-			weekID[dayCount] = week[i]+length[j]
+			weekNotAlone[dayCount] = fmt[j].sysres.map[weekIter[j]+i];
+			weekID[dayCount] = week[i]+length[j];
 			dayCount++;
 		}
 	}
@@ -84,25 +89,36 @@ $(function(){
 	}
 
 	for (i=0; i < loopLength; i++) {
-		date[i] = new DateFactory({month: i+1, type:li.getCalendar()});
+		date[i] = DateFactory({month: i+1, type:li.getCalendar()});
 		for (j=0; j < 4; j++) {
 			fmt[j] = new DateFmt({locale: currentLocale, date:"m", length: length[j], useNative: false, timezone: 'local'});
 			value[i] = fmt[j].format(date[i]);
-			nameOfMonth[monthCount] = value[i]
-			monthID[monthCount] = month[i]+length[j]
+			nameOfMonth[monthCount] = value[i];
+			monthNotAlone[monthCount] = fmt[j].sysres.map[monthIter[j]+(i+1)];
+			monthID[monthCount] = month[i]+length[j];
 			monthCount++;
 		}
 	}
 	for (i=0; i < weekID.length +1; i++) {
-		$("#"+weekID[i]).text(nameOfDay[i]);
+		if(fmt[0].sysres.map.c0 !== undefined) {
+			$("#weekday").text('Weekday/Stand-Alone');
+			$("#"+weekID[i]).text(weekNotAlone[i] + ' / ' + nameOfDay[i]);
+		} else {
+			$("#"+weekID[i]).text(nameOfDay[i]);
+		}
 	}
 
 	for (i=0; i < monthID.length+1; i++) {
-		$("#"+monthID[i]).text(nameOfMonth[i]);	
+		if(fmt[0].sysres.map.L1 !== undefined) {
+			$("#month").text('Month/Stand-Alone');
+			$("#"+monthID[i]).text(monthNotAlone[i] + ' / ' + nameOfMonth[i]);
+		} else {
+			$("#"+monthID[i]).text(nameOfMonth[i]);
+		}
 	}
 
 	if (currentLocale === "am-ET" || currentLocale === "en-ET" ) {
-		$("#extraLength").text("13");	
+		$("#extraLength").text("13");
 	}
 	
 	var row = [];
@@ -196,8 +212,8 @@ $(function(){
 	}
 
 	//Date Range
-	var start = new DateFactory({year: 2011,month: 6,day: 20, hour: 13, minute: 45, second: 0, type:li.getCalendar()});
-	var end = new DateFactory({year: 2011,month: 6,day: 20, hour: 15, minute: 30, second: 0, type:li.getCalendar()});
+	var start = DateFactory({year: 2011,month: 6,day: 20, hour: 13, minute: 45, second: 0, type:li.getCalendar()});
+	var end = DateFactory({year: 2011,month: 6,day: 20, hour: 15, minute: 30, second: 0, type:li.getCalendar()});
 
 	for(i = 0,fmtArrayCount=0; i < 4; i++,fmtArrayCount++) {
 		fmt[i] = new DateRngFmt({locale: currentLocale, length: length[i]});
@@ -221,8 +237,8 @@ $(function(){
 		}
 	}
 
-    start = new DateFactory({year: 2011,month: 6,day: 20, hour: 13, minute: 45, second: 0, type:li.getCalendar()});
-	end = new DateFactory({year: 2011, month: 6, day: 22, hour: 15, minute: 30,second: 0,type: li.getCalendar()});
+    start = DateFactory({year: 2011,month: 6,day: 20, hour: 13, minute: 45, second: 0, type:li.getCalendar()});
+	end = DateFactory({year: 2011, month: 6, day: 22, hour: 15, minute: 30,second: 0,type: li.getCalendar()});
 
 	for(i = 0,fmtArrayCount=0; i < 4; i++,fmtArrayCount++) {
 		fmt[i] = new DateRngFmt({locale: currentLocale, length: length[i]});
@@ -246,8 +262,8 @@ $(function(){
 		}
 	}
 
-	start = new DateFactory({year: 2011,month: 6,day: 30, hour: 13, minute: 45, second: 0, type:li.getCalendar()});
-	end = new DateFactory({year: 2011, month: 7, day: 1, hour: 9, minute: 30,second: 0,type: li.getCalendar()});
+	start = DateFactory({year: 2011,month: 6,day: 30, hour: 13, minute: 45, second: 0, type:li.getCalendar()});
+	end = DateFactory({year: 2011, month: 7, day: 1, hour: 9, minute: 30,second: 0,type: li.getCalendar()});
 
 	for(i = 0,fmtArrayCount=0; i < 4; i++,fmtArrayCount++) {
 		fmt[i] = new DateRngFmt({locale: currentLocale, length: length[i]});
@@ -271,10 +287,10 @@ $(function(){
 		}
 	}
 
-    start = new DateFactory({year: 2011,month: 12, day: 30, hour: 13, minute: 45, second: 0, type:li.getCalendar()});
-    amStart = new DateFactory({year: 2011,month: 13, day: 30, hour: 13, minute: 45, second: 0, type:li.getCalendar()});
+    start = DateFactory({year: 2011,month: 12, day: 30, hour: 13, minute: 45, second: 0, type:li.getCalendar()});
+    amStart = DateFactory({year: 2011,month: 13, day: 30, hour: 13, minute: 45, second: 0, type:li.getCalendar()});
 
-	end = new DateFactory({year: 2012, month: 1, day: 1, hour: 5, minute: 30,second: 0,type: li.getCalendar()});
+	end = DateFactory({year: 2012, month: 1, day: 1, hour: 5, minute: 30,second: 0,type: li.getCalendar()});
 
 	for(i = 0,fmtArrayCount=0; i < 4; i++,fmtArrayCount++) {
 		fmt[i] = new DateRngFmt({locale: currentLocale, length: length[i]});
@@ -303,8 +319,8 @@ $(function(){
 		}
 	}
 
-	start = new DateFactory({year: 2011,month: 6,day: 20, hour: 13, minute: 45, second: 0, type:li.getCalendar()});
-	end = new DateFactory({year: 2011, month: 6, day: 28, hour: 5, minute: 30,second: 0,type: li.getCalendar()});
+	start = DateFactory({year: 2011,month: 6,day: 20, hour: 13, minute: 45, second: 0, type:li.getCalendar()});
+	end = DateFactory({year: 2011, month: 6, day: 28, hour: 5, minute: 30,second: 0,type: li.getCalendar()});
 
 	for(i = 0,fmtArrayCount=0; i < 4; i++,fmtArrayCount++) {
 		fmt[i] = new DateRngFmt({locale: currentLocale, length: length[i]});
@@ -328,8 +344,8 @@ $(function(){
 		}
 	}
 
-	start = new DateFactory({year: 2011,month: 6,day: 20, hour: 13, minute: 45, second: 0, type:li.getCalendar()});
-	end = new DateFactory({year: 2011, month: 11, day: 28, hour: 5, minute: 30,second: 0,type: li.getCalendar()});
+	start = DateFactory({year: 2011,month: 6,day: 20, hour: 13, minute: 45, second: 0, type:li.getCalendar()});
+	end = DateFactory({year: 2011, month: 11, day: 28, hour: 5, minute: 30,second: 0,type: li.getCalendar()});
 
 	for(i = 0,fmtArrayCount=0; i < 4; i++,fmtArrayCount++) {
 		fmt[i] = new DateRngFmt({locale: currentLocale, length: length[i]});
@@ -353,8 +369,8 @@ $(function(){
 		}
 	}
 
-	start = new DateFactory({year: 2011,month: 6,day: 20, hour: 13, minute: 45, second: 0, type:li.getCalendar()});
-	end = new DateFactory({year: 2012, month: 4, day: 28, hour: 5, minute: 30,second: 0,type: li.getCalendar()});
+	start = DateFactory({year: 2011,month: 6,day: 20, hour: 13, minute: 45, second: 0, type:li.getCalendar()});
+	end = DateFactory({year: 2012, month: 4, day: 28, hour: 5, minute: 30,second: 0,type: li.getCalendar()});
 
 	for(i = 0,fmtArrayCount=0; i < 4; i++,fmtArrayCount++) {
 		fmt[i] = new DateRngFmt({locale: currentLocale, length: length[i]});
@@ -378,8 +394,8 @@ $(function(){
 		}
 	}
 
-	start = new DateFactory({year: 2011,month: 6,day: 20, hour: 13, minute: 45, second: 0, type:li.getCalendar()});
-	end = new DateFactory({year: 2016, month: 4, day: 28, hour: 5, minute: 30,second: 0,type: li.getCalendar()});
+	start = DateFactory({year: 2011,month: 6,day: 20, hour: 13, minute: 45, second: 0, type:li.getCalendar()});
+	end = DateFactory({year: 2016, month: 4, day: 28, hour: 5, minute: 30,second: 0,type: li.getCalendar()});
 
 	for(i = 0,fmtArrayCount=0; i < 4; i++,fmtArrayCount++) {
 		fmt[i] = new DateRngFmt({locale: currentLocale, length: length[i]});
@@ -403,8 +419,8 @@ $(function(){
 		}
 	}
 
-	start = new DateFactory({year: 2011,month: 6,day: 20, hour: 13, minute: 45, second: 0, type:li.getCalendar()});
-	end = new DateFactory({year: 2032, month: 4, day: 28, hour: 5, minute: 30,second: 0,type: li.getCalendar()});
+	start = DateFactory({year: 2011,month: 6,day: 20, hour: 13, minute: 45, second: 0, type:li.getCalendar()});
+	end = DateFactory({year: 2032, month: 4, day: 28, hour: 5, minute: 30,second: 0,type: li.getCalendar()});
 
 	for(i = 0,fmtArrayCount=0; i < 4; i++,fmtArrayCount++) {
 		fmt[i] = new DateRngFmt({locale: currentLocale, length: length[i]});
@@ -547,6 +563,7 @@ $(function(){
 		"hu-HU" : [1,17],
 		"id-ID" : [1,2],
 		"it-IT" : [1,2],
+		"is-IS" : [1,2,11,21,31],
 		"it-CH" : [1,17],
 		"ja-JP" : [1,16],
 		"kn-IN" : [1,2],

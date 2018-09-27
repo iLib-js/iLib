@@ -37,7 +37,7 @@ function round(number, precision) {
  * be created using the {@link MeasurementFactory} function, which creates the
  * correct subclass based on the given parameters.<p>
  *
- * @param {Object] options options controlling the construction of this instance
+ * @param {Object=} options options controlling the construction of this instance
  * @private
  * @constructor
  */
@@ -86,8 +86,8 @@ Measurement.prototype = {
      * @returns {string} normalized name of the units
      */
     normalizeUnits: function(name) {
-        return Measurement.getUnitId(this.constructor, name) ||
-            Measurement.getUnitIdCaseInsensitive(this.constructor, name) ||
+        return (this.constructor && (Measurement.getUnitId(this.constructor, name) ||
+            Measurement.getUnitIdCaseInsensitive(this.constructor, name))) ||
             name;
     },
 
@@ -148,14 +148,15 @@ Measurement.prototype = {
      * the units of this measurement
      */
     getMeasurementSystem: function() {
-        if (JSUtils.indexOf(this.systems.uscustomary, this.unit) > -1) {
-            return "uscustomary";
+        if (this.unit) {
+            if (JSUtils.indexOf(this.systems.uscustomary, this.unit) > -1) {
+                return "uscustomary";
+            }
+    
+            if (JSUtils.indexOf(this.systems.imperial, this.unit) > -1) {
+                return "imperial";
+            }
         }
-
-        if (JSUtils.indexOf(this.systems.imperial, this.unit) > -1) {
-            return "imperial";
-        }
-
         return "metric";
     },
 
@@ -190,7 +191,7 @@ Measurement.prototype = {
      * to other measurements of the same type.<p>
      *
      * @param {string} to the name of the units to convert this measurement to
-     * @return {number} the amount corresponding to the requested unit
+     * @return {number|undefined} the amount corresponding to the requested unit
      */
     convert: function(to) {
         if (!to || typeof(this.ratios[this.normalizeUnits(to)]) === 'undefined') {
@@ -240,6 +241,7 @@ Measurement.prototype = {
      * fractions. Measurements can only be scaled to other measurements
      * of the same type.
      *
+     * @param {string=} measurementsystem the name of the system to scale to
      * @param {Object=} units mapping from the measurement system to the units to use
      * for this scaling. If this is not defined, this measurement type will use the
      * set of units that it knows about for the given measurement system
@@ -334,9 +336,9 @@ Measurement.prototype = {
      * convert this measure to
      * @param {Object} ratios the conversion ratios
      * table for the measurement type
-     * @param {function (number): number} constrain a function that constrains
+     * @param {function (number): number=} constrain a function that constrains
      * a number according to the display options
-     * @param {boolean} scale if true, rescale all of the units so that the
+     * @param {boolean=} scale if true, rescale all of the units so that the
      * largest unit is the largest one with a non-fractional number. If false, then
      * the current unit stays the largest unit.
      * @returns {Array.<{unit: String, amount: Number}>} the conversion
@@ -346,7 +348,7 @@ Measurement.prototype = {
     list: function(measures, ratios, constrain, scale) {
         var row = ratios[this.unit];
         var ret = [];
-        var remainder, i, scaled, index;
+        var scaled;
         var unit = this.unit;
         var amount = this.amount;
         constrain = constrain || round;
@@ -420,10 +422,8 @@ Measurement.prototype = {
      * Return the normalized units identifier for the given unit. This looks up the units
      * in the aliases list and returns the normalized unit id.
      *
-     * @static
-     * @param {Measurement} measurement the class of measure being searched
-     * @param {String} unit the unit to find
-     * @returns {String|undefined} the normalized identifier for the given unit, or
+     * @param {string} unit the unit to find
+     * @returns {string|undefined} the normalized identifier for the given unit, or
      * undefined if there is no such unit in this type of measurement
      */
     getUnitId: function(unit) {
@@ -446,14 +446,12 @@ Measurement.prototype = {
      * are case-sensitive. This should method be used as a last resort if no case-sensitive match
      * is found amongst all the different types of measurements.
      *
-     * @static
-     * @param {Measurement} measurement the class of measure being searched
-     * @param {String} unit the unit to find
-     * @returns {String|undefined} the normalized identifier for the given unit, or
+     * @param {string} unit the unit to find
+     * @returns {string|undefined} the normalized identifier for the given unit, or
      * undefined if there is no such unit in this type of measurement
      */
     getUnitIdCaseInsensitive: function(unit) {
-        if (!unit) return false;
+        if (!unit) return undefined;
 
         // try with the original case first, just in case that works
         var ret = this.getUnitId(unit);
@@ -473,9 +471,9 @@ Measurement.prototype = {
  * in the aliases list and returns the normalized unit id.
  *
  * @static
- * @param {Measurement} measurement the class of measure being searched
- * @param {String} unit the unit to find
- * @returns {String|undefined} the normalized identifier for the given unit, or
+ * @param {function(...)} measurement name of the the class of measure being searched
+ * @param {string} unit the unit to find
+ * @returns {string|undefined} the normalized identifier for the given unit, or
  * undefined if there is no such unit in this type of measurement
  */
 Measurement.getUnitId = function(measurement, unit) {
@@ -499,13 +497,13 @@ Measurement.getUnitId = function(measurement, unit) {
  * is found amongst all the different types of measurements.
  *
  * @static
- * @param {Measurement} measurement the class of measure being searched
- * @param {String} unit the unit to find
- * @returns {String|undefined} the normalized identifier for the given unit, or
+ * @param {function(...)} measurement name of the class of measure being searched
+ * @param {string} unit the unit to find
+ * @returns {string|undefined} the normalized identifier for the given unit, or
  * undefined if there is no such unit in this type of measurement
  */
 Measurement.getUnitIdCaseInsensitive = function(measurement, unit) {
-    if (!unit) return false;
+    if (!unit) return undefined;
     var u = unit.toLowerCase();
 
     // try this first, just in case
@@ -548,10 +546,12 @@ Measurement.getMeasurementSystemForLocale = function(locale) {
   var l = typeof(locale) === "object" ? locale : new Locale(locale);
   var region = l.getRegion();
 
-  if (JSUtils.indexOf(systems.uscustomary, region) > -1) {
-      return "uscustomary";
-  } else if (JSUtils.indexOf(systems.imperial, region) > -1) {
-      return "imperial";
+  if (region) {
+      if (JSUtils.indexOf(systems.uscustomary, region) > -1) {
+          return "uscustomary";
+      } else if (JSUtils.indexOf(systems.imperial, region) > -1) {
+          return "imperial";
+      }
   }
 
   return "metric";

@@ -18,30 +18,26 @@
  */
 
 /* !depends 
-Locale.js 
-ilib.js 
-INumber.js 
-isPunct.js 
-NormString.js 
-MathUtils.js 
+Locale.js
+ilib.js
+INumber.js
+isPunct.js
+NormString.js
 Utils.js
 JSUtils.js
-LocaleInfo.js 
 CodePointSource.js
 ElementIterator.js
+GlyphString.js
 */
 
 // !data collation
 
 var ilib = require("./ilib.js");
-var MathUtils = require("./MathUtils.js");
 var Utils = require("./Utils.js");
 var JSUtils = require("./JSUtils.js");
 var Locale = require("./Locale.js");
-var LocaleInfo = require("./LocaleInfo.js");
 var INumber = require("./INumber.js");
 var isPunct = require("./isPunct.js");
-var isDigit = require("./isDigit.js");
 var NormString = require("./NormString.js");
 var CodePointSource = require("./CodePointSource.js");
 var ElementIterator = require("./ElementIterator.js");
@@ -360,7 +356,7 @@ var Collator = function(options) {
 			this.ignorePunctuation = options.ignorePunctuation;
 		}
 		if (typeof(options.sync) !== 'undefined') {
-			sync = (options.sync == true);
+			sync = !!options.sync;
 		}
 		
 		loadParams = options.loadParams;
@@ -619,16 +615,15 @@ Collator.prototype = {
     _basicCompare: function(left, right) {
 		var l = (left instanceof NormString) ? left : new NormString(left),
 			r = (right instanceof NormString) ? right : new NormString(right),
-			lchar, 
-			rchar,
 			lelements,
-			relements;
+			relements,
+			diff;
 		
 		if (this.numeric) {
 			var lvalue = new INumber(left, {locale: this.locale});
 			var rvalue = new INumber(right, {locale: this.locale});
 			if (!isNaN(lvalue.valueOf()) && !isNaN(rvalue.valueOf())) {
-				var diff = lvalue.valueOf() - rvalue.valueOf();
+				diff = lvalue.valueOf() - rvalue.valueOf();
 				if (diff) {
 					return diff;
 				} else {
@@ -644,7 +639,7 @@ Collator.prototype = {
 		relements = new ElementIterator(new CodePointSource(r, this.ignorePunctuation), this.map, this.keysize);
 		
 		while (lelements.hasNext() && relements.hasNext()) {
-			var diff = lelements.next() - relements.next();
+			diff = lelements.next() - relements.next();
 			if (diff) {
 				return diff;
 			}

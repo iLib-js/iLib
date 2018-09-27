@@ -102,8 +102,8 @@
         },
         "range": {
             "c00": {
-                "f": "{sd} {sm} {sy} à {st} – {et}",
-                "l": "{sd} {sm} {sy} à {st} – {et}",
+                "f": "{sd} {sm} {sy} de {st} à {et}",
+                "l": "{sd} {sm} {sy} de {st} à {et}",
                 "m": "{sd} {sm} {sy} {st} – {et}",
                 "s": "{sy}-{sm}-{sd} {st} – {et}"
             },

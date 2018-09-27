@@ -42,7 +42,7 @@ var VelocityUnit = function (options) {
     this.aliasesLower = VelocityUnit.aliasesLower;
     this.systems = VelocityUnit.systems;
 
-    this.parent(options);
+    this.parent.call(this, options);
 };
 
 VelocityUnit.prototype = new Measurement();

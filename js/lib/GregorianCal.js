@@ -18,10 +18,8 @@
  */
 
 
-/* !depends ilib.js Calendar.js Utils.js MathUtils.js */
+/* !depends Calendar.js MathUtils.js */
 
-var ilib = require("./ilib.js");
-var Utils = require("./Utils.js");
 var MathUtils = require("./MathUtils.js");
 var Calendar = require("./Calendar.js");
 

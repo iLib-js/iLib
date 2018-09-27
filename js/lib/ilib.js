@@ -280,7 +280,7 @@ ilib.setLocale = function (spec) {
  */
 ilib.getLocale = function () {
     if (typeof(ilib.locale) !== 'string') {
-    	var plat = ilib._getPlatform();
+    	var lang, plat = ilib._getPlatform();
     	switch (plat) {
     		case 'browser':
             	// running in a browser
@@ -289,7 +289,7 @@ ilib.getLocale = function () {
                 }
                 if (!ilib.locale) {
                     // IE on Windows
-                    var lang = typeof(navigator.browserLanguage) !== 'undefined' ? 
+                    lang = typeof(navigator.browserLanguage) !== 'undefined' ? 
                         navigator.browserLanguage :
                         (typeof(navigator.userLanguage) !== 'undefined' ? 
                             navigator.userLanguage :
@@ -323,7 +323,7 @@ ilib.getLocale = function () {
                 break;
     		case "trireme":
             	// under trireme on rhino emulating nodejs
-            	var lang = process.env.LANG || process.env.LANGUAGE || process.env.LC_ALL;
+            	lang = process.env.LANG || process.env.LANGUAGE || process.env.LC_ALL;
                 // the LANG variable on unix is in the form "lang_REGION.CHARSET"
                 // where language and region are the correct ISO codes separated by
                 // an underscore. This translate it back to the BCP-47 form.
@@ -333,7 +333,7 @@ ilib.getLocale = function () {
             	break;
     		case 'nodejs':
                 // running under nodejs
-                var lang = process.env.LANG || process.env.LC_ALL;
+                lang = process.env.LANG || process.env.LC_ALL;
                 // the LANG variable on unix is in the form "lang_REGION.CHARSET"
                 // where language and region are the correct ISO codes separated by
                 // an underscore. This translate it back to the BCP-47 form.
@@ -344,7 +344,7 @@ ilib.getLocale = function () {
     		case 'qt':
             	// running in the Javascript engine under Qt/QML
             	var locobj = Qt.locale();
-            	var lang = locobj.name && locobj.name.replace("_", "-") || "en-US";
+            	lang = locobj.name && locobj.name.replace("_", "-") || "en-US";
     			break;
     	}
         ilib.locale = typeof(ilib.locale) === 'string' && ilib.locale ? ilib.locale : 'en-US';
@@ -384,29 +384,36 @@ ilib.setTimeZone = function (tz) {
  */
 ilib.getTimeZone = function() {
     if (typeof(ilib.tz) === 'undefined') {
-        if (typeof(navigator) !== 'undefined' && typeof(navigator.timezone) !== 'undefined') {
-            // running in a browser
-            if (navigator.timezone.length > 0) {
-                ilib.tz = navigator.timezone;
-            }
-        } else if (typeof(PalmSystem) !== 'undefined' && typeof(PalmSystem.timezone) !== 'undefined') {
-            // running in webkit on webOS
-            if (PalmSystem.timezone.length > 0) {
-                ilib.tz = PalmSystem.timezone;
-            }
-        } else if (typeof(environment) !== 'undefined' && typeof(environment.user) !== 'undefined') {
-            // running under rhino
-            if (typeof(environment.user.timezone) !== 'undefined' && environment.user.timezone.length > 0) {
-                ilib.tz = environment.user.timezone;
-            }
-        } else if (typeof(process) !== 'undefined' && typeof(process.env) !== 'undefined') {
-            // running in nodejs
-            if (process.env.TZ && typeof(process.env.TZ) !== "undefined") {
-                ilib.tz = process.env.TZ;
-            }
+        if (typeof(Intl) !== 'undefined' && typeof(Intl.DateTimeFormat) !== 'undefined') {
+            var ro = new Intl.DateTimeFormat().resolvedOptions();
+            ilib.tz = ro && ro.timeZone;
         }
         
-        ilib.tz = ilib.tz || "local"; 
+        if (!ilib.tz) {
+            if (typeof(navigator) !== 'undefined' && typeof(navigator.timezone) !== 'undefined') {
+                // running in a browser
+                if (navigator.timezone.length > 0) {
+                    ilib.tz = navigator.timezone;
+                }
+            } else if (typeof(PalmSystem) !== 'undefined' && typeof(PalmSystem.timezone) !== 'undefined') {
+                // running in webkit on webOS
+                if (PalmSystem.timezone.length > 0) {
+                    ilib.tz = PalmSystem.timezone;
+                }
+            } else if (typeof(environment) !== 'undefined' && typeof(environment.user) !== 'undefined') {
+                // running under rhino
+                if (typeof(environment.user.timezone) !== 'undefined' && environment.user.timezone.length > 0) {
+                    ilib.tz = environment.user.timezone;
+                }
+            } else if (typeof(process) !== 'undefined' && typeof(process.env) !== 'undefined') {
+                // running in nodejs
+                if (process.env.TZ && typeof(process.env.TZ) !== "undefined") {
+                    ilib.tz = process.env.TZ;
+                }
+            }
+            
+            ilib.tz = ilib.tz || "local";
+        }
     }
 
     return ilib.tz;
