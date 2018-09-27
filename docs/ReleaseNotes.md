@@ -33,6 +33,9 @@ in UTC instead of the "local" time zone. This affected TimeZone.inDaylightTime()
 then the calculation worked fine. It's only the special time zone "local" which had this bug.
 * Removed all of test cases written in JSUnit and related files. It is already replaced with Nodeunit TestFramework.
 * Fixed unit tests related to the getTimeZone() method so that they work properly both when the Intl object is available and when it is not
+* Updated the DurationFmt class to use the short format whenever the medium format is requested when the script of the locale is something other than Latin, Greek, or Cyrillic
+    * Medium format is not specified in CLDR, so it was created algorithmically in ilib's CLDR processing tools from longer formats
+    * The algorithm to create it was not working properly for many non-alphabetic scripts, so it was deemed safer to use the short format whenever the medium format was requested
 
 Build 003
 -------
