@@ -67,6 +67,7 @@ limitations under the License.
 	<target name="dist" depends="all" description="Build the distribution package.">
 		<mkdir dir="${build.dist}" description="Dir to contain all the distribution outputs"/>
 		<iterate target="export"/>
+		<copy file="README.md" todir="${build.export}/package" />
 		<zip destfile="${build.dist}/ilib-${version}.zip"
 			basedir="${build.export}"
 			includes="js/**,java/**,locale/**,qt/**"/>
