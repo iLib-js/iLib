@@ -27,6 +27,16 @@ Bug Fixes
 Release Notes for Version 13
 ============================
 
+Build 005
+-------
+Published as version 13.3.1 on npm only
+
+New Features:
+* No code or documentation changes
+
+Bug Fixes:
+* Forgot to include the README.md in the npm package. Now it is there. This is the only change from 13.3.0.
+
 Build 004
 -------
 Published as version 13.3.0
@@ -49,6 +59,7 @@ to the previous behaviour of checking environment variables.
     typically include the region
     * Returns a regular expression string to use for validation if the form element can be validated with a regexp
     * Returns the localized list of countries
+* Updated the time zone data to IANA tzdata 2018e release
 
 Bug Fixes:
 * Fixed an ar-IQ currency symbol.
@@ -62,6 +73,9 @@ in UTC instead of the "local" time zone. This affected TimeZone.inDaylightTime()
 then the calculation worked fine. It's only the special time zone "local" which had this bug.
 * Removed all of test cases written in JSUnit and related files. It is already replaced with Nodeunit TestFramework.
 * Fixed unit tests related to the getTimeZone() method so that they work properly both when the Intl object is available and when it is not
+* Updated the DurationFmt class to use the short format whenever the medium format is requested when the script of the locale is something other than Latin, Greek, or Cyrillic
+    * Medium format is not specified in CLDR, so it was created algorithmically in ilib's CLDR processing tools from longer formats
+    * The algorithm to create it was not working properly for many non-alphabetic scripts, so it was deemed safer to use the short format whenever the medium format was requested
 
 Build 003
 -------
