@@ -20,7 +20,7 @@ run_nodeunit_tests()
             echo "testType:$testType"
             echo "feature:$feature"
             
-            cd js/test/$feature/nodeunit
+            cd js/test/$feature
             node testSuite.js
 
             return 1
@@ -32,7 +32,7 @@ run_nodeunit_tests()
             echo "testType:$testType"
             echo "feature:$feature"
             
-            cd js/test/$feature/nodeunit
+            cd js/test/$feature
             node testSuiteAsync.js
 
             return 1
@@ -44,7 +44,7 @@ run_nodeunit_tests()
             echo "testType:$testType"
             echo "feature:$feature"
 
-            cd js/test/$feature/nodeunit
+            cd js/test/$feature
             node --inspect-brk testSuite.js
 
             return 1

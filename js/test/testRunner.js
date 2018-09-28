@@ -160,7 +160,7 @@ if (assembly === "dynamic") {
     
     if (suite.indexOf("strings-ext") > -1) {
         // special case for massive test data that we should only load if we need it
-        script = fs.readFileSync("strings-ext/nodeunit/normdata.js", "utf-8");
+        script = fs.readFileSync("strings-ext/normdata.js", "utf-8");
         geval(script);
     }
 }
@@ -170,11 +170,11 @@ var modules = {};
 
 for (var i = 0; i < suite.length; i++) {
     console.log("Adding suite: " + suite[i]);
-    var suiteFile = sync ? "nodeunit/testSuiteFiles.js" : "nodeunit/testSuiteFilesAsync.js";
+    var suiteFile = sync ? "testSuiteFiles.js" : "testSuiteFilesAsync.js";
     var suiteFilesPath = path.join(suite[i], suiteFile);
     if (fs.existsSync(suiteFilesPath)) {
         suites = require("./" + suiteFilesPath).files.forEach(function(file) {
-            var subtest, filepath = path.join(suite[i], "nodeunit", file);
+            var subtest, filepath = path.join(suite[i], file);
             if (!modules[suite[i]]) modules[suite[i]] = {};
             if (assembly === "dynamic") {
                 subtest = require("./" + filepath);
