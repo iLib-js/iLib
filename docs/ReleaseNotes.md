@@ -1,6 +1,16 @@
 Release Notes for Version 13
 ============================
 
+Build 005
+-------
+Published as version 13.3.1 on npm only
+
+New Features:
+* No code or documentation changes
+
+Bug Fixes:
+* Forgot to include the README.md in the npm package. Now it is there. This is the only change from 13.3.0.
+
 Build 004
 -------
 Published as version 13.3.0
