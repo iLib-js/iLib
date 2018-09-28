@@ -127,6 +127,7 @@ limitations under the License.
 		<sequential>
 		    <echo>executing webpack</echo>
 			<exec osfamily="unix" executable="webpack" dir="${build.base}" failifexecutionfails="@{failquit}" failonerror="@{failquit}">
+				<env key="NODE_OPTIONS" value="--max-old-space-size=3072"/>
 				<arg value="--env.assembly=@{assembly}"/>
 				<arg value="--env.size=@{size}"/>
 				<arg value="--env.compilation=@{compilation}"/>
@@ -135,6 +136,7 @@ limitations under the License.
 				<arg value="--env.ilibRoot=${build.base}"/>
 			</exec>
 			<exec osfamily="windows" executable="webpack.bat" dir="${build.base}" failifexecutionfails="@{failquit}"  failonerror="@{failquit}">
+				<env key="NODE_OPTIONS" value="--max-old-space-size=3072"/>
 				<arg value="--env.assembly=@{assembly}"/>
 				<arg value="--env.size=@{size}"/>
 				<arg value="--env.compilation=@{compilation}"/>
@@ -560,9 +562,11 @@ limitations under the License.
             <echo>Executing webpack</echo>
             <exec osfamily="unix" executable="webpack" dir="${build.demo}/scripts" failifexecutionfails="@{failquit}" failonerror="@{failquit}">
                 <env key="PATH" path="${env.PATH}:${nm.bin}"/>
+                <env key="NODE_OPTIONS" value="--max-old-space-size=3072"/>
             </exec>
             <exec osfamily="windows" executable="webpack.bat" dir="${build.demo}/scripts" failifexecutionfails="@{failquit}" failonerror="@{failquit}">
                 <env key="PATH" path="${env.PATH}:${nm.bin}"/>
+                <env key="NODE_OPTIONS" value="--max-old-space-size=3072"/>
             </exec>
         </sequential>
     </target>
@@ -571,9 +575,11 @@ limitations under the License.
             <echo>Executing webpack</echo>
             <exec osfamily="unix" executable="webpack" dir="${build.demo}/scripts" failifexecutionfails="@{failquit}" failonerror="@{failquit}">
                 <env key="PATH" path="${env.PATH}:${nm.bin}"/>
+                <env key="NODE_OPTIONS" value="--max-old-space-size=3072"/>
             </exec>
             <exec osfamily="windows" executable="webpack.bat" dir="${build.demo}/scripts" failifexecutionfails="@{failquit}" failonerror="@{failquit}">
                 <env key="PATH" path="${env.PATH}:${nm.bin}"/>
+                <env key="NODE_OPTIONS" value="--max-old-space-size=3072"/>
             </exec>
         </sequential>
     </target>
@@ -622,11 +628,11 @@ limitations under the License.
 		<sequential>
 			<exec osfamily="unix" executable="node" dir="${build.test}" failifexecutionfails="@{failquit}" failonerror="@{failquit}">
                 <env key="PATH" path="${env.PATH}:${nm.bin}"/>
-				<arg line="@{suite}/nodeunit/@{file}"/>
+				<arg line="@{suite}/@{file}"/>
 			</exec>
 			<exec osfamily="windows" executable="node.exe" dir="${build.test}" failifexecutionfails="@{failquit}"  failonerror="@{failquit}">
                 <env key="PATH" path="${env.PATH}:${nm.bin}"/>
-				<arg line="@{suite}/nodeunit/@{file}"/>
+				<arg line="@{suite}/@{file}"/>
 			</exec>
 		</sequential>
 	</macrodef>
@@ -653,151 +659,151 @@ limitations under the License.
 			<exec osfamily="unix" executable="node" dir="${build.test}" failifexecutionfails="@{failquit}" failonerror="@{failquit}">
                 <env key="PATH" path="${env.PATH}:${nm.bin}"/>
 				<arg line="--inspect-brk"/>
-				<arg line="@{suite}/nodeunit/testSuite.js"/>
+				<arg line="@{suite}/testSuite.js"/>
 			</exec>
 			<exec osfamily="windows" executable="node.exe" dir="${build.test}" failifexecutionfails="@{failquit}"  failonerror="@{failquit}">
                 <env key="PATH" path="${env.PATH}:${nm.bin}"/>
 				<arg line="--inspect-brk"/>
-				<arg line="@{suite}/nodeunit/testSuite.js"/>
+				<arg line="@{suite}/testSuite.js"/>
 			</exec>
 		</sequential>
 	</macrodef>
 
-	<target depends="update.package.json" name="test.address.nu">
+	<target depends="update.package.json" name="test.address">
 		<run-nodeunit-sync suite="address" failquit="true"/>
 		<run-nodeunit-async suite="address" failquit="true"/>
 	</target>
-	<target depends="update.package.json" name="test.calendar.nu">
+	<target depends="update.package.json" name="test.calendar">
 		<run-nodeunit-sync suite="calendar" failquit="true"/>
 		<run-nodeunit-async suite="calendar" failquit="true"/>
 	</target>
-	<target depends="update.package.json" name="test.collate.nu">
+	<target depends="update.package.json" name="test.collate">
 		<run-nodeunit-sync suite="collate" failquit="true"/>
 		<run-nodeunit-async suite="collate" failquit="true"/>
 	</target>
-	<target depends="update.package.json" name="test.ctype.nu">
+	<target depends="update.package.json" name="test.ctype">
 		<run-nodeunit-sync suite="ctype" failquit="true"/>
 		<run-nodeunit-async suite="ctype" failquit="true"/>
 	</target>
-	<target depends="update.package.json" name="test.date.nu">
+	<target depends="update.package.json" name="test.date">
 		<run-nodeunit-sync suite="date" failquit="true"/>
 		<run-nodeunit-async suite="date" failquit="true"/>
 	</target>
-	<target depends="update.package.json" name="test.daterange.nu">
+	<target depends="update.package.json" name="test.daterange">
 		<run-nodeunit-sync suite="daterange" failquit="true"/>
 		<run-nodeunit-async suite="daterange" failquit="true"/>
 	</target>
-	<target depends="update.package.json" name="test.durfmt.nu">
+	<target depends="update.package.json" name="test.durfmt">
 		<run-nodeunit-sync suite="durfmt" failquit="true"/>
 		<run-nodeunit-async suite="durfmt" failquit="true"/>
 	</target>
-	<target depends="update.package.json" name="test.maps.nu">
+	<target depends="update.package.json" name="test.maps">
 		<run-nodeunit-sync suite="maps" failquit="true"/>
 		<run-nodeunit-async suite="maps" failquit="true"/>
 	</target>
-	<target depends="update.package.json" name="test.name.nu">
+	<target depends="update.package.json" name="test.name">
 		<run-nodeunit-sync suite="name" failquit="true"/>
 		<run-nodeunit-async suite="name" failquit="true"/>
 	</target>
-	<target depends="update.package.json" name="test.number.nu">
+	<target depends="update.package.json" name="test.number">
 		<run-nodeunit-sync suite="number" failquit="true"/>
 		<run-nodeunit-async suite="number" failquit="true"/>
 	</target>
-	<target depends="update.package.json" name="test.phone.nu">
+	<target depends="update.package.json" name="test.phone">
 		<run-nodeunit-sync suite="phone" failquit="true"/>
 		<run-nodeunit-async suite="phone" failquit="true"/>
 	</target>
-	<target depends="update.package.json" name="test.root.nu">
+	<target depends="update.package.json" name="test.root">
 		<run-nodeunit-sync suite="root" failquit="true"/>
 		<run-nodeunit-async suite="root" failquit="true"/>
 	</target>
-	<target depends="update.package.json" name="test.strings-ext.nu">
+	<target depends="update.package.json" name="test.strings-ext">
 		<run-nodeunit-sync suite="strings-ext" failquit="true"/>
 		<run-nodeunit-async suite="strings-ext" failquit="true"/>
 	</target>
-	<target depends="update.package.json" name="test.units.nu">
+	<target depends="update.package.json" name="test.units">
 		<run-nodeunit-sync suite="units" failquit="true"/>
 		<run-nodeunit-async suite="units" failquit="true"/>
 	</target>
-	<target depends="update.package.json" name="test.util.nu">
+	<target depends="update.package.json" name="test.util">
 		<run-nodeunit-sync suite="util" failquit="true"/>
 	</target>
 
-	<target depends="update.package.json" name="debug.address.nu">
+	<target depends="update.package.json" name="debug.address">
 		<debug-nodeunit suite="address" failquit="true"/>
 	</target>
-	<target depends="update.package.json" name="debug.calendar.nu">
+	<target depends="update.package.json" name="debug.calendar">
 		<debug-nodeunit suite="calendar" failquit="true"/>
 	</target>
-	<target depends="update.package.json" name="debug.collate.nu">
+	<target depends="update.package.json" name="debug.collate">
 		<debug-nodeunit suite="collate" failquit="true"/>
 	</target>
-	<target depends="update.package.json" name="debug.ctype.nu">
+	<target depends="update.package.json" name="debug.ctype">
 		<debug-nodeunit suite="ctype" failquit="true"/>
 	</target>
-	<target depends="update.package.json" name="debug.date.nu">
+	<target depends="update.package.json" name="debug.date">
 		<debug-nodeunit suite="date" failquit="true"/>
 	</target>
-	<target depends="update.package.json" name="debug.daterange.nu">
+	<target depends="update.package.json" name="debug.daterange">
 		<debug-nodeunit suite="daterange" failquit="true"/>
 	</target>
-	<target depends="update.package.json" name="debug.durfmt.nu">
+	<target depends="update.package.json" name="debug.durfmt">
 		<debug-nodeunit suite="durfmt" failquit="true"/>
 	</target>
-	<target depends="update.package.json" name="debug.maps.nu">
+	<target depends="update.package.json" name="debug.maps">
 		<debug-nodeunit suite="maps" failquit="true"/>
 	</target>
-	<target depends="update.package.json" name="debug.name.nu">
+	<target depends="update.package.json" name="debug.name">
 		<debug-nodeunit suite="name" failquit="true"/>
 	</target>
-	<target depends="update.package.json" name="debug.number.nu">
+	<target depends="update.package.json" name="debug.number">
 		<debug-nodeunit suite="number" failquit="true"/>
 	</target>
-	<target depends="update.package.json" name="debug.phone.nu">
+	<target depends="update.package.json" name="debug.phone">
 		<debug-nodeunit suite="phone" failquit="true"/>
 	</target>
-	<target depends="update.package.json" name="debug.root.nu">
+	<target depends="update.package.json" name="debug.root">
 		<debug-nodeunit suite="root" failquit="true"/>
 	</target>
-	<target depends="update.package.json" name="debug.strings-ext.nu">
+	<target depends="update.package.json" name="debug.strings-ext">
 		<debug-nodeunit suite="strings-ext" failquit="true"/>
 	</target>
-	<target depends="update.package.json" name="debug.units.nu">
+	<target depends="update.package.json" name="debug.units">
 		<debug-nodeunit suite="units" failquit="true"/>
 	</target>
-	<target depends="update.package.json" name="debug.util.nu">
+	<target depends="update.package.json" name="debug.util">
 		<debug-nodeunit suite="util" failquit="true"/>
 	</target>
 
-	<target name="test.dynamic.uncompiled.nu" depends="prepare,gen.manifest.locale,update.package.json">
+	<target name="test.dynamic.uncompiled" depends="prepare,gen.manifest.locale,update.package.json">
         <run-nodeunit-all assembly="dynamic" compilation="uncompiled" sync="async" failquit="true"/>
 	    <run-nodeunit-all assembly="dynamic" compilation="uncompiled" sync="sync" failquit="true"/>
 	</target>
-	<target name="test.dynamic.compiled.nu" depends="prepare,gen.manifest.locale,update.package.json">
+	<target name="test.dynamic.compiled" depends="prepare,gen.manifest.locale,update.package.json">
 	    <run-nodeunit-all assembly="dynamic" compilation="compiled" sync="sync" failquit="true"/>
 		<run-nodeunit-all assembly="dynamic" compilation="compiled" sync="async" failquit="true"/>
 	</target>
-	<target name="test.assembled.uncompiled.nu" depends="update.package.json,assemble.unittest.assembled.node">
+	<target name="test.assembled.uncompiled" depends="update.package.json,assemble.unittest.assembled.node">
 	    <run-nodeunit-all assembly="assembled" compilation="uncompiled" sync="sync" failquit="true"/>
 		<run-nodeunit-all assembly="assembled" compilation="uncompiled" sync="async" failquit="true"/>
 	</target>
-	<target name="test.assembled.compiled.nu" depends="update.package.json,assemble.unittest.assembled.node">
+	<target name="test.assembled.compiled" depends="update.package.json,assemble.unittest.assembled.node">
 	    <run-nodeunit-all assembly="assembled" compilation="compiled" sync="sync" failquit="true"/>
 		<run-nodeunit-all assembly="assembled" compilation="compiled" sync="async" failquit="true"/>
 	</target>
-	<target name="test.dyndata.uncompiled.nu" depends="update.package.json,assemble.unittest.dyndata.node">
+	<target name="test.dyndata.uncompiled" depends="update.package.json,assemble.unittest.dyndata.node">
 	    <run-nodeunit-all assembly="dynamicdata" compilation="uncompiled" sync="sync" failquit="true"/>
 	    <run-nodeunit-all assembly="dynamicdata" compilation="uncompiled" sync="async" failquit="true"/>
 	</target>
-	<target name="test.dyndata.compiled.nu" depends="update.package.json,assemble.unittest.dyndata.node">
+	<target name="test.dyndata.compiled" depends="update.package.json,assemble.unittest.dyndata.node">
 	    <run-nodeunit-all assembly="dynamicdata" compilation="compiled" sync="sync" failquit="true"/>
 	    <run-nodeunit-all assembly="dynamicdata" compilation="compiled" sync="async" failquit="true"/>
 	</target>
 
-	<target name="test.compiled.nu" depends="test.dynamic.compiled.nu,test.assembled.compiled.nu,test.dyndata.compiled.nu"/>
-	<target name="test.uncompiled.nu" depends="test.dynamic.uncompiled.nu,test.assembled.uncompiled.nu,test.dyndata.uncompiled.nu"/>
+	<target name="test.compiled" depends="test.dynamic.compiled,test.assembled.compiled,test.dyndata.compiled"/>
+	<target name="test.uncompiled" depends="test.dynamic.uncompiled,test.assembled.uncompiled,test.dyndata.uncompiled"/>
 
-	<target name="test.all.nu" depends="test.dynamic.uncompiled.nu,test.dynamic.compiled.nu,test.assembled.uncompiled.nu,test.assembled.compiled.nu,test.dyndata.uncompiled.nu,test.dyndata.compiled.nu" />
+	<target name="test.all" depends="test.dynamic.uncompiled,test.dynamic.compiled,test.assembled.uncompiled,test.assembled.compiled,test.dyndata.uncompiled,test.dyndata.compiled" />
 
 	<macrodef name="runtests">
             <attribute name="assembly"/>
@@ -843,14 +849,14 @@ limitations under the License.
 		</sequential>
 	</macrodef>
 
-	<target name="test.core" depends="test.compiled.nu,test.uncompiled.nu"
+	<target name="test.core" depends="test.compiled,test.uncompiled"
 			description="run the tests">
 	</target>
 	<target name="core.junit.report" description="Generate a report on the junit tests">
 		<mkdir dir="${build.output.reports}/junit"/>
 	</target>
 	<!-- target name="test" depends="test.core"/ -->
-	<target name="test.only" depends="test.all.nu" description="Run all tests"/>
+	<target name="test.only" depends="test.all" description="Run all tests"/>
 	<target name="reports.only" depends="core.junit.report" description="Generate reports on previously run tests"/>
 	<target name="reports" depends="test.only,reports.only" description="Run all tests, then generate reports on the results"/>
 	<target name="test" depends="reports" description="Run all tests and build all reports"/>
