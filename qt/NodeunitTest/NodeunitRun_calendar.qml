@@ -13,7 +13,7 @@ QtObject {
             var runner = new TestRunner();
 
             var suiteDefinitions = {
-                "calendar": "/calendar/nodeunit/testSuiteFiles.js"
+                "calendar": "/calendar/testSuiteFiles.js"
             };
 
             var s, ts;
