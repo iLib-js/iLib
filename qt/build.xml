@@ -60,9 +60,6 @@ limitations under the License.
 			<exec osfamily="unix" executable="make" dir="${build.filereader}" failifexecutionfails="true" failonerror="false">
 				<arg line="clean"/>
 			</exec>
-			<exec osfamily="mac" executable="make" dir="${build.filereader}" failifexecutionfails="true" failonerror="false">
-				<arg line="clean"/>
-			</exec>
 			<exec osfamily="windows" executable="make.exe" dir="${build.filereader}" failifexecutionfails="true"  failonerror="false">
 				<arg line="clean"/>
 			</exec>
@@ -81,9 +78,6 @@ limitations under the License.
 			<exec osfamily="unix" executable="qmake" dir="${build.filereader}" failifexecutionfails="true" failonerror="true">
 				<arg value="filereader.pro"/>
 			</exec>
-			<exec osfamily="mac" executable="qmake" dir="${build.filereader}" failifexecutionfails="true" failonerror="true">
-				<arg value="filereader.pro"/>
-			</exec>
 			<exec osfamily="windows" executable="qmake.exe" dir="${build.filereader}" failifexecutionfails="true"  failonerror="true">
 				<arg value="filereader.pro"/>
 			</exec>
@@ -95,8 +89,6 @@ limitations under the License.
 	<!-- =================================================================== -->
 	<target name="filereader" depends="prepare" description="Build the file reader plugin">
 		<exec osfamily="unix" executable="make" dir="${build.filereader}" failifexecutionfails="true" failonerror="true">
-		</exec>
-		<exec osfamily="mac" executable="make" dir="${build.filereader}" failifexecutionfails="true" failonerror="true">
 		</exec>
 		<exec osfamily="windows" executable="make.exe" dir="${build.filereader}" failifexecutionfails="true"  failonerror="true">
 		</exec>
@@ -333,7 +325,7 @@ limitations under the License.
 		
 	<!-- Should not run the tests from an automated build, because qmlscene doesn't exit at the end. They should
 	     only be run by hand. -->
-	<target name="test" depends="" description="Run all tests and build all reports" />
+	<target name="test" description="Run all tests and build all reports" />
 	<target name="doc" />
 	
 </project>
