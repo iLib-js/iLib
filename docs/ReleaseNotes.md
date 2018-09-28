@@ -17,6 +17,9 @@ New Features:
     * Requires some changes in your code to include the right file names and/or to modify
       your webpack.config.js to include ilib dynamically
     * Nodejs versions less than 6 are no longer supported, as webpack does not work with them
+* Grunt support
+    * Support iLib build not to using ant
+    * Grunt task can do iLib build, running unittest, and  creat jsdoc
 
 Bug Fixes
 
