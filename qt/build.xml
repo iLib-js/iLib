@@ -323,4 +323,5 @@ limitations under the License.
         </sequential>
     </target>
 	<target name="test" description="Run all tests and build all reports" />
+    <target name="doc" />
 </project>
