@@ -38,7 +38,7 @@ limitations under the License.
 	<property name="build.output"					value="${build.base}/output"/>
 	<property name="build.output.qt"				value="${build.base}/output/qt"/>
 	<property name="build.filereader"				value="${build.base}/FileReader"/>
-	<property name="build.unittest"					value="${build.base}/UnitTest"/>
+	<property name="build.unittest"					value="${build.base}/NodeunitTest"/>
 
 	<!-- =================================================================== -->
 	<!-- Class paths                                                         -->
@@ -67,6 +67,13 @@ limitations under the License.
 		<delete dir="${build.filereader}/imports"/>
 		<delete dir="${build.output}"/>
 		<delete dir="${build.export}/qt"/>
+        <delete>
+            <fileset dir="${build.unittest}">
+                <include name="*.qmlc"/>
+                <include name="*.jsc"/>
+            </fileset>
+        </delete>
+
 		<delete>
 			<fileset dir="${build.filereader}" includes="Makefile*" />
 		</delete>
@@ -117,11 +124,11 @@ limitations under the License.
 	
 	<target name="test.all" depends="filereader" description="Run the unit tests in the qt test framework. Make sure you have Qt 5.4 or later, and it is the first Qt in your path.">
 		<sequential>
-			<exec osfamily="unix" executable="qmlscene" dir="${build.base}/NodeunitTest" failifexecutionfails="true" failonerror="true">
+			<exec osfamily="unix" executable="qmlscene" dir="${build.unittest}" failifexecutionfails="true" failonerror="true">
 				<env key="QML2_IMPORT_PATH" value="../FileReader/imports"/>
 				<arg line="NodeunitRunAll.qml"/>
 			</exec>
-			<exec osfamily="windows" executable="qmlscene.exe" dir="${build.base}/NodeunitTest" failifexecutionfails="true"  failonerror="true">
+			<exec osfamily="windows" executable="qmlscene.exe" dir="${build.unittest}" failifexecutionfails="true"  failonerror="true">
 				<env key="QML2_IMPORT_PATH" value="../FileReader/imports"/>
 				<arg line="NodeunitRunAll.qml"/>
 			</exec>
@@ -130,11 +137,11 @@ limitations under the License.
 
     <target name="test.address" depends="filereader" description="Run the address unit tests in the qt test framework.">
         <sequential>
-            <exec osfamily="unix" executable="qmlscene" dir="${build.base}/NodeunitTest" failifexecutionfails="true" failonerror="true">
+            <exec osfamily="unix" executable="qmlscene" dir="${build.unittest}" failifexecutionfails="true" failonerror="true">
                 <env key="QML2_IMPORT_PATH" value="../FileReader/imports"/>
                 <arg line="NodeunitRun_address.qml"/>
             </exec>
-            <exec osfamily="windows" executable="qmlscene.exe" dir="${build.base}/NodeunitTest" failifexecutionfails="true"  failonerror="true">
+            <exec osfamily="windows" executable="qmlscene.exe" dir="${build.unittest}" failifexecutionfails="true"  failonerror="true">
                 <env key="QML2_IMPORT_PATH" value="../FileReader/imports"/>
                 <arg line="NodeunitRun_address.qml"/>
             </exec>
