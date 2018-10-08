@@ -13,7 +13,7 @@ QtObject {
             var runner = new TestRunner();
 
             var suiteDefinitions = {
-                "durfmt": "/durfmt/nodeunit/testSuiteFiles.js"
+                "durfmt": "/durfmt/testSuiteFiles.js"
             };
 
             var s, ts;

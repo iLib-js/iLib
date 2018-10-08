@@ -13,7 +13,7 @@ QtObject {
             var runner = new TestRunner();
 
             var suiteDefinitions = {
-                "daterange": "/daterange/nodeunit/testSuiteFiles.js"
+                "daterange": "/daterange/testSuiteFiles.js"
             };
 
             var s, ts;

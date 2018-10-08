@@ -106,6 +106,8 @@ limitations under the License.
 		<delete file="${build.demo}/demo.tgz"/>
 		<delete file="${build.demo}/scripts/ilib-demo.js"/>
 		<delete file="${build.base}/package.json"/>
+		<delete file="${build.test}/nodeunit/nodeunit-qml.jsc"/>
+		<delete file="${build.lib}/ilib-qt.jsc"/>
 		<delete dir="${build.locale}"/>
 	</target>
 	<target name="prepare" depends="update.package.json" description="Prepare all directories that are needed before the project can be built">

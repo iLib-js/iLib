@@ -13,7 +13,7 @@ QtObject {
             var runner = new TestRunner();
 
             var suiteDefinitions = {
-                "maps": "/maps/nodeunit/testSuiteFiles.js"
+                "maps": "/maps/testSuiteFiles.js"
             };
 
             var s, ts;
