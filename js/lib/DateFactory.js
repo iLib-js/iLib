@@ -2,7 +2,7 @@
  * DateFactory.js - Factory class to create the right subclasses of a date for any 
  * calendar or locale.
  * 
- * Copyright © 2012-2015, JEDLSoft
+ * Copyright © 2012-2015, 2018, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,8 +17,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
-/* !depends ilib.js Locale.js LocaleInfo.js JulianDay.js JSUtils.js CalendarFactory.js IDate.js */
 
 var ilib = require("./ilib.js");
 var JSUtils = require("./JSUtils.js");
@@ -159,15 +157,23 @@ DateFactory._dynMap = {
 	"thaisolar":    "ThaiSolar"
 };
 
+function circumventWebPackDate(x) {
+	return "./" + x + "Date.js";
+}
+
+function circumventWebPackCal(x) {
+	return "./" + x + "Cal.js";
+}
+
 /**
  * Dynamically load the code for a calendar and calendar class if necessary.
  * @protected
  */
-DateFactory._dynLoadDate = function (name) {
+DateFactory._dynLoadDate = function (name, fnc) {
 	if (!IDate._constructors[name]) {
 		var entry = DateFactory._dynMap[name];
 		if (entry) {
-			IDate._constructors[name] = require("./" + entry + "Date.js");
+			IDate._constructors[name] = require(fnc(entry));
 		}
 	}
 	return IDate._constructors[name];
@@ -181,8 +187,8 @@ DateFactory._init = function(type, options) {
 	var cons;
 	
 	if (ilib.isDynCode()) {
-		DateFactory._dynLoadDate(type);
-		CalendarFactory._dynLoadCalendar(type);
+		DateFactory._dynLoadDate(type, circumventWebPackDate);
+		CalendarFactory._dynLoadCalendar(type, circumventWebPackCal);
 	}
 	
 	cons = IDate._constructors[type];

@@ -1,7 +1,7 @@
 /*
- * julian.js - Represent a Julian calendar object.
+ * JulianCal.js - Represent a Julian calendar object.
  * 
- * Copyright © 2012-2015,2018, JEDLSoft
+ * Copyright © 2012-2017, 2018, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,9 +16,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
-
-/* !depends Calendar.js MathUtils.js */
 
 var MathUtils = require("./MathUtils.js");
 var Calendar = require("./Calendar.js");

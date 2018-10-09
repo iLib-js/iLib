@@ -117,6 +117,8 @@ limitations under the License.
 		<mkdir dir="${build.output.coverage}"/>
 		<mkdir dir="${build.output.reports}"/>
 		<mkdir dir="${build.output.junit}"/>
+        <mkdir dir="${build.data}/locale"/>
+		<mkdir dir="${build.localedata}"/>
 	</target>
 
 	<!-- =================================================================== -->
@@ -130,8 +132,7 @@ limitations under the License.
 	<!-- =================================================================== -->
 	<!-- Create the core jar file                                            -->
 	<!-- =================================================================== -->
-	<target name="data">
-		<mkdir dir="${build.data}/locale"/>
+	<target name="data" depends="prepare">
 		<copy todir="${build.data}/locale">
 			<fileset dir="${build.localedata}">
 				<include name="**/plurals.json"/>
@@ -234,16 +235,22 @@ limitations under the License.
 		</antcall>
 	</target>
 	
-	<target name="dist.debug" depends="jars.debug" description="Create the distribution of the debug versions of the built objects">
+	<target name="dist.debug" depends="prepare,jars.debug" description="Create the distribution of the debug versions of the built objects">
 	</target>
 
-	<target name="dist.release" depends="jars.release" description="Create the distribution of the release versions of the built objects">
+	<target name="dist.release" depends="prepare,jars.release" description="Create the distribution of the release versions of the built objects">
 	</target>
 	
-	<target name="export" description="export all files that other subprojects may need before building">
+	<target name="export" depends="prepare,doc" description="export all files that other subprojects may need before building">
+        <mkdir dir="${build.export}/doc/javadoc"/>
+        <copy todir="${build.export}/doc/javadoc">
+            <fileset dir="${build.javadoc}">
+                <include name="**/*"/>
+            </fileset>
+        </copy>
 	</target>
 	
-	<target name="dist" depends="dist.release,doc" description="Distribute all built objects in preparation for running">
+	<target name="dist" depends="prepare,dist.release,export" description="Distribute all built objects in preparation for running">
 		<mkdir dir="${build.export}/java"/>
 		<copy todir="${build.export}/java">
 			<fileset dir="${build.output.release}/">
@@ -255,12 +262,6 @@ limitations under the License.
 				<include name="log4j-*.jar"/>
 				<include name="log4j.properties"/>
 				<include name="json-*.jar"/>
-			</fileset>
-		</copy>
-		<mkdir dir="${build.export}/doc/javadoc"/>
-		<copy todir="${build.export}/doc/javadoc">
-			<fileset dir="${build.javadoc}">
-				<include name="**/*"/>
 			</fileset>
 		</copy>
 		<mkdir dir="${build.export}/src/java"/>
@@ -362,7 +363,7 @@ limitations under the License.
                     sourcepath="${build.src}"
                     destdir="${build.javadoc}"
                     defaultexcludes="yes"
-        			excludepackagenames="**.tests"
+                    excludepackagenames="**.tests"
                     author="false"
                     use="true"
                     classPathRef="project.class.path.debug"

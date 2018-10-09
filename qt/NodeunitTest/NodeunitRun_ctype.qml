@@ -13,7 +13,7 @@ QtObject {
             var runner = new TestRunner();
 
             var suiteDefinitions = {
-                "ctype": "/ctype/nodeunit/testSuiteFiles.js"
+                "ctype": "/ctype/testSuiteFiles.js"
             };
 
             var s, ts;

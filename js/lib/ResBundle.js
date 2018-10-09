@@ -1,7 +1,7 @@
 /*
  * ResBundle.js - Resource bundle definition
  * 
- * Copyright © 2012-2016, JEDLSoft
+ * Copyright © 2012-2016, 2018, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,8 +16,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
-// !depends ilib.js Locale.js LocaleInfo.js IString.js Utils.js JSUtils.js
 
 // !data pseudomap
 
@@ -258,10 +256,6 @@ var ResBundle = function (options) {
 	
 	this.map = {};
 
-	if (!ilib.data.cache.ResBundle) {
-        ilib.data.cache.ResBundle = {};
-    }
-	
 	lookupLocale = this.locale.isPseudo() ? new Locale("en-US") : this.locale;
 	var object = "ResBundle-" + this.baseName; 
 
@@ -274,21 +268,11 @@ var ResBundle = function (options) {
 		callback: ilib.bind(this, function (map) {
 			if (!map) {
 				map = ilib.data[this.baseName] || {};
-				spec = lookupLocale.getSpec().replace(/-/g, '_');
-				ilib.data.cache[object][spec] = map;
 			}
 			this.map = map;
 			if (this.locale.isPseudo()) {
-				if (!ilib.data.cache.ResBundle.pseudomap) {
-				    ilib.data.cache.ResBundle.pseudomap = {};
-				}
-	
 				this._loadPseudo(this.locale, options.onLoad);
 			} else if (this.missing === "pseudo") {
-				if (!ilib.data.cache.ResBundle.pseudomap) {
-				    ilib.data.cache.ResBundle.pseudomap = {};
-				}
-	
 				new LocaleInfo(this.locale, {
 					sync: this.sync,
 					loadParams: this.loadParams,
@@ -338,12 +322,7 @@ ResBundle.prototype = {
 			sync: this.sync, 
 			loadParams: this.loadParams, 
 			callback: ilib.bind(this, function (map) {
-				if (!map || JSUtils.isEmpty(map)) {
-					map = ResBundle.defaultPseudo;
-					var spec = pseudoLocale.getSpec().replace(/-/g, '_');
-					ilib.data.cache.ResBundle.pseudomap[spec] = map;
-				}
-				this.pseudomap = map;
+				this.pseudomap = (!map || JSUtils.isEmpty(map)) ? ResBundle.defaultPseudo : map;
 				if (typeof(onLoad) === 'function') {
 					onLoad(this);
 				}	

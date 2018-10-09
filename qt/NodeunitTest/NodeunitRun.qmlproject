@@ -3,7 +3,7 @@
 import QmlProject 1.1
 
 Project {
-    mainFile: "NodeunitRun.qml"
+    mainFile: "NodeunitRunAll.qml"
 
     /* Include .qml, .js, and image files from current directory and subdirectories */
     QmlFiles {
@@ -16,5 +16,5 @@ Project {
         directory: "."
     }
     /* List of plugin directories passed to QML runtime */
-     importPaths: [ "../FS" ]
+     importPaths: [ "../FileReader/imports" ]
 }

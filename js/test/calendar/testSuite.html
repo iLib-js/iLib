@@ -1,0 +1,66 @@
+<!--
+testSuite.html - browser-based test suite for this directory
+
+Copyright © 2017-2018, JEDLSoft
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+
+See the License for the specific language governing permissions and
+limitations under the License.
+-->
+<html>
+  <head>
+    <title>Test Suite</title>
+    <link rel="stylesheet" href="/test/nodeunit/nodeunit.css" type="text/css" />
+    <script>
+        var module = {};
+    </script>
+    <script src="/test/nodeunit/nodeunit.js"></script>
+    <script src="/output/js/ut-assembled-uncompiled-web/ilib-ut.js"></script>
+    <script>
+        module = {
+            exports: {}
+        };
+    </script>
+    <script src="testastro.js"></script>
+    <script src="testcalasync.js"></script>
+    <script src="testcalendar.js"></script>
+    <script src="testcoptic.js"></script>
+    <script src="testcopticdate.js"></script>
+    <script src="testethiopic.js"></script>
+    <script src="testethiopicdate.js"></script>
+    <script src="testgregorian.js"></script>
+    <script src="testgregoriandate.js"></script>
+    <script src="testgregratadie.js"></script>
+    <script src="testhan.js"></script>
+    <script src="testhandate.js"></script>
+    <script src="testhebrew.js"></script>
+    <script src="testhebrewdate.js"></script>
+    <script src="testislamic.js"></script>
+    <script src="testislamicdate.js"></script>
+    <script src="testjulian.js"></script>
+    <script src="testjuliandate.js"></script>
+    <script src="testjulianday.js"></script>
+    <script src="testpersian.js"></script>
+    <script src="testpersianastro.js"></script>
+    <script src="testpersiandate.js"></script>
+    <script src="testpersiandateastro.js"></script>
+    <script src="testthaisolar.js"></script>
+    <script src="testthaisolardate.js"></script>
+    <script src="testtimezone.js"></script>
+  </head>
+  <body>
+    <h1 id="nodeunit-header">calendar Test Suite</h1>
+    <script>
+     nodeunit.run(module.exports);
+    </script>
+  </body>
+</html>

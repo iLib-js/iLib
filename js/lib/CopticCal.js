@@ -17,9 +17,6 @@
  * limitations under the License.
  */
 
-
-/* !depends Calendar.js Utils.js EthiopicCal.js */
-
 var Utils = require("./Utils.js");
 var Calendar = require("./Calendar.js");
 var EthiopicCal = require("./EthiopicCal.js");

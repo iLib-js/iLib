@@ -3,5 +3,6 @@
 	"max": 4,
 	"bigendian": false,
 	"scripts": ["*"],
-	"locales": ["*"]
+	"locales": ["*"],
+  "optional": true
 }

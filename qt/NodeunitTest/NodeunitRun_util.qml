@@ -13,7 +13,7 @@ QtObject {
             var runner = new TestRunner();
 
             var suiteDefinitions = {
-                "util": "/util/nodeunit/testSuiteFiles.js"
+                "util": "/util/testSuiteFiles.js"
             };
 
             var s, ts;

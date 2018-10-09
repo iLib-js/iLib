@@ -1,7 +1,7 @@
 /*
  * NameFmt.js - Format person names for display
  * 
- * Copyright © 2013-2015, JEDLSoft
+ * Copyright © 2013-2015, 2018, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,15 +16,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
-/* !depends 
-ilib.js
-Locale.js
-IString.js
-Name.js
-isPunct.js
-Utils.js
-*/
 
 // !data name
 
@@ -201,12 +192,7 @@ var NameFmt = function(options) {
 			sync: sync, 
 			loadParams: this.loadParams, 
 			callback: ilib.bind(this, function (info) {
-				if (!info) {
-					info = Name.defaultInfo;
-					var spec = this.locale.getSpec().replace(/-/g, "_");
-					ilib.data.cache.Name[spec] = info;
-				}
-				this.info = info;
+				this.info = info || Name.defaultInfo;;
 				this._init();
 				if (options && typeof(options.onLoad) === 'function') {
 					options.onLoad(this);

@@ -17,18 +17,6 @@
  * limitations under the License.
  */
 
-/* !depends 
-ilib.js
-IDate.js 
-GregorianCal.js 
-SearchUtils.js
-MathUtils.js
-Locale.js
-LocaleInfo.js 
-GregRataDie.js
-TimeZone.js
-*/
-
 var ilib = require("./ilib.js");
 var SearchUtils = require("./SearchUtils.js");
 var MathUtils = require("./MathUtils.js");

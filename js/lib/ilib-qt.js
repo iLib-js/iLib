@@ -62,13 +62,8 @@ requireClass.prototype.normalize = function(pathname) {
 	
 requireClass.prototype.require = function(parent, pathname, absolutePath) {
     //console.log("------------------------\nrequire: called with " + pathname);
-
-	if (pathname === "./runner.js") {
-		// special case to redirect to the qt runner instead
-		pathname = this.root + "/../../qt/UnitTest/runner.js";
-	} else if (pathname === "./TestSuiteModule.js") {
+	if (pathname === "./TestSuiteModule.js") {
 		// special case to redirect to qt instead
-        //pathname = this.root + "/../../qt/UnitTest/TestSuiteModule.js";
         pathname = this.root + "/../../qt/NodeunitTest/TestSuiteModule.js";
     } else if (pathname === "nodeunit") {
         //console.log(" [ilib-qt.js] Loading nodeunit-qml.js ");

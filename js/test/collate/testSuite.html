@@ -1,0 +1,67 @@
+<!--
+testSuite.html - browser-based test suite for this directory
+
+Copyright © 2017-2018, JEDLSoft
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+
+See the License for the specific language governing permissions and
+limitations under the License.
+-->
+<html>
+  <head>
+    <title>Test Suite</title>
+    <link rel="stylesheet" href="/test/nodeunit/nodeunit.css" type="text/css" />
+    <script>
+        var module = {};
+    </script>
+    <script src="/test/nodeunit/nodeunit.js"></script>
+    <script src="/output/js/ut-assembled-uncompiled-web/ilib-ut.js"></script>
+    <script>
+        module = {
+            exports: {}
+        };
+    </script>
+    <script src="testalphaindex.js"></script>
+    <script src="testalphaindex_de.js"></script>
+    <script src="testalphaindex_ko.js"></script>
+    <script src="testcollation.js"></script>
+    <script src="testcollation_cs.js"></script>
+    <script src="testcollation_da.js"></script>
+    <script src="testcollation_de.js"></script>
+    <script src="testcollation_el.js"></script>
+    <script src="testcollation_es.js"></script>
+    <script src="testcollation_et.js"></script>
+    <script src="testcollation_fi.js"></script>
+    <script src="testcollation_fo.js"></script>
+    <script src="testcollation_fr.js"></script>
+    <script src="testcollation_general.js"></script>
+    <script src="testcollation_he.js"></script>
+    <script src="testcollation_ja.js"></script>
+    <script src="testcollation_ko.js"></script>
+    <script src="testcollation_lt.js"></script>
+    <script src="testcollation_lv.js"></script>
+    <script src="testcollation_nb.js"></script>
+    <script src="testcollation_nn.js"></script>
+    <script src="testcollation_no.js"></script>
+    <script src="testcollation_ru.js"></script>
+    <script src="testcollation_sv.js"></script>
+    <script src="testcollation_tr.js"></script>
+    <script src="testcollation_zh-Hans.js"></script>
+    <script src="testcollation_zh-Hant.js"></script>
+  </head>
+  <body>
+    <h1 id="nodeunit-header">collate Test Suite</h1>
+    <script>
+     nodeunit.run(module.exports);
+    </script>
+  </body>
+</html>

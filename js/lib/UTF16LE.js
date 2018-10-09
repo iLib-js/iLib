@@ -18,8 +18,6 @@
  * limitations under the License.
  */
 
-// !depends Charmap.js
-
 // !data charset/UTF-16 charset/UTF-16LE
 
 var Charset = require("./Charset.js");

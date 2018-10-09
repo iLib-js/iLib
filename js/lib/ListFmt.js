@@ -1,7 +1,7 @@
 /*
  * ListFmt.js - Represent a list formatter.
  * 
- * Copyright © 2017, JEDLSoft
+ * Copyright © 2017-2018, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,12 +17,6 @@
  * limitations under the License.
  */
 
-/*
-!depends 
-ilib.js 
-Utils.js
-Locale.js 
-*/
 
 // !data list
 
@@ -108,7 +102,7 @@ var ListFmt = function(options) {
 
 	Utils.loadData({
 		name: "list.json",
-		object: ListFmt,
+		object: "ListFmt",
 		locale: this.locale, 
 		sync: this.sync,
 		loadParams: this.loadParams,

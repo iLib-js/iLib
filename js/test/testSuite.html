@@ -25,76 +25,76 @@ limitations under the License.
         var module = {};
     </script>
     <script src="/test/nodeunit/nodeunit.js"></script>
-    <script src="/output/js/ilib-ut.js"></script>
-	<script src="strings-ext/nodeunit/normdata.js"></script>
+    <script src="/output/js/ut-assembled-uncompiled-web/ilib-ut.js"></script>
+    <script src="strings-ext/normdata.js"></script>
     <script>
-	    var suites = {};
+        var suites = {};
         module = {
             exports: {}
         };
         function loadTests(suite) {
             for (var prop in module.exports.files) {
-                document.write("<scrip" + 't src="' + suite + "/nodeunit/" + module.exports.files[prop] + '"></scr' + "ipt>");
+                document.write("<scrip" + 't src="' + suite + "/" + module.exports.files[prop] + '"></scr' + "ipt>");
             }
         }
     </script>
-    <script src="root/nodeunit/testSuiteFiles.js"></script>
+    <script src="root/testSuiteFiles.js"></script>
 	<script>
 		loadTests("root");
 	</script>
-    <script src="name/nodeunit/testSuiteFiles.js"></script>
+    <script src="name/testSuiteFiles.js"></script>
 	<script>
 		loadTests("name");
 	</script>
-    <script src="date/nodeunit/testSuiteFiles.js"></script>
+    <script src="date/testSuiteFiles.js"></script>
 	<script>
 		loadTests("date");
 	</script>
-    <script src="daterange/nodeunit/testSuiteFiles.js"></script>
+    <script src="daterange/testSuiteFiles.js"></script>
 	<script>
 		loadTests("daterange");
 	</script>
-    <script src="durfmt/nodeunit/testSuiteFiles.js"></script>
+    <script src="durfmt/testSuiteFiles.js"></script>
 	<script>
 		loadTests("durfmt");
 	</script>
-    <script src="phone/nodeunit/testSuiteFiles.js"></script>
+    <script src="phone/testSuiteFiles.js"></script>
 	<script>
 		loadTests("phone");
 	</script>
-    <script src="ctype/nodeunit/testSuiteFiles.js"></script>
+    <script src="ctype/testSuiteFiles.js"></script>
 	<script>
 		loadTests("ctype");
 	</script>
-    <script src="collate/nodeunit/testSuiteFiles.js"></script>
+    <script src="collate/testSuiteFiles.js"></script>
 	<script>
 		loadTests("collate");
 	</script>
-    <script src="number/nodeunit/testSuiteFiles.js"></script>
+    <script src="number/testSuiteFiles.js"></script>
 	<script>
 		loadTests("number");
 	</script>
-    <script src="units/nodeunit/testSuiteFiles.js"></script>
+    <script src="units/testSuiteFiles.js"></script>
 	<script>
 		loadTests("units");
 	</script>
-    <script src="maps/nodeunit/testSuiteFiles.js"></script>
+    <script src="maps/testSuiteFiles.js"></script>
 	<script>
 		loadTests("maps");
 	</script>
-    <script src="strings-ext/nodeunit/testSuiteFiles.js"></script>
+    <script src="strings-ext/testSuiteFiles.js"></script>
 	<script>
 		loadTests("strings-ext");
 	</script>
-    <script src="util/nodeunit/testSuiteFiles.js"></script>
+    <script src="util/testSuiteFiles.js"></script>
 	<script>
 		loadTests("util");
 	</script>
-    <script src="calendar/nodeunit/testSuiteFiles.js"></script>
+    <script src="calendar/testSuiteFiles.js"></script>
 	<script>
 		loadTests("calendar");
 	</script>
-    <script src="address/nodeunit/testSuiteFiles.js"></script>
+    <script src="address/testSuiteFiles.js"></script>
 	<script>
 		loadTests("address");
 	</script>

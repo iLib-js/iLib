@@ -1,0 +1,119 @@
+<!--
+testSuite.html - browser-based test suite for this directory
+
+Copyright © 2017, JEDLSoft
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+
+See the License for the specific language governing permissions and
+limitations under the License.
+-->
+<html>
+  <head>
+    <title>Test Suite</title>
+    <link rel="stylesheet" href="/test/nodeunit/nodeunit.css" type="text/css" />
+    <script>
+        var module = {};
+    </script>
+    <script src="/test/nodeunit/nodeunit.js"></script>
+    <script src="/output/js/ut-assembled-uncompiled-web/ilib-ut.js"></script>
+    <script>
+        module = {
+            exports: {}
+        };
+    </script>
+    <script src="testdate.js"></script>
+    <script src="testdateasync.js"></script>
+    <script src="testdatefmt.js"></script>
+    <script src="testdatefmtasync.js"></script>
+    <script src="testdatefmt_af_NA.js"></script>
+    <script src="testdatefmt_af_ZA.js"></script>
+    <script src="testdatefmt_am_ET.js"></script>
+    <script src="testdatefmt_ar_EG.js"></script>
+    <script src="testdatefmt_ar_SA.js"></script>
+    <script src="testdatefmt_as_IN.js"></script>
+    <script src="testdatefmt_az_Latn_AZ.js"></script>
+    <script src="testdatefmt_bg.js"></script>
+    <script src="testdatefmt_bn_IN.js"></script>
+    <script src="testdatefmt_bs_Cyrl_BA.js"></script>
+    <script src="testdatefmt_bs_Latn_BA.js"></script>
+    <script src="testdatefmt_cop_EG.js"></script>
+    <script src="testdatefmt_cs_CZ.js"></script>
+    <script src="testdatefmt_da_DK.js"></script>
+    <script src="testdatefmt_de_DE.js"></script>
+    <script src="testdatefmt_el_GR.js"></script>
+    <script src="testdatefmt_en_CA.js"></script>
+    <script src="testdatefmt_en_GB.js"></script>
+    <script src="testdatefmt_en_IN.js"></script>
+    <script src="testdatefmt_en_US.js"></script>
+    <script src="testdatefmt_es_CO.js"></script>
+    <script src="testdatefmt_es_ES.js"></script>
+    <script src="testdatefmt_et_EE.js"></script>
+    <script src="testdatefmt_fa_IR.js"></script>
+    <script src="testdatefmt_fi_FI.js"></script>
+    <script src="testdatefmt_fr_CA.js"></script>
+    <script src="testdatefmt_fr_FR.js"></script>
+    <script src="testdatefmt_ga_IE.js"></script>
+    <script src="testdatefmt_gu_IN.js"></script>
+    <script src="testdatefmt_ha_Latn_NG.js"></script>
+    <script src="testdatefmt_he_IL.js"></script>
+    <script src="testdatefmt_hi_IN.js"></script>
+    <script src="testdatefmt_hr_HR.js"></script>
+    <script src="testdatefmt_id_ID.js"></script>
+    <script src="testdatefmt_it_IT.js"></script>
+    <script src="testdatefmt_ja_JP.js"></script>
+    <script src="testdatefmt_kk_Cyrl_KZ.js"></script>
+    <script src="testdatefmt_km_KH.js"></script>
+    <script src="testdatefmt_kn_IN.js"></script>
+    <script src="testdatefmt_ko_KR.js"></script>
+    <script src="testdatefmt_ku_Arab_IQ.js"></script>
+    <script src="testdatefmt_lt_LT.js"></script>
+    <script src="testdatefmt_lv_LV.js"></script>
+    <script src="testdatefmt_mk_MK.js"></script>
+    <script src="testdatefmt_ml_IN.js"></script>
+    <script src="testdatefmt_mn_Cyrl_MN.js"></script>
+    <script src="testdatefmt_mr_IN.js"></script>
+    <script src="testdatefmt_ms_MY.js"></script>
+    <script src="testdatefmt_nb_NO.js"></script>
+    <script src="testdatefmt_nl_NL.js"></script>
+    <script src="testdatefmt_or_IN.js"></script>
+    <script src="testdatefmt_pa_IN.js"></script>
+    <script src="testdatefmt_pl_PL.js"></script>
+    <script src="testdatefmt_pt_BR.js"></script>
+    <script src="testdatefmt_ro_RO.js"></script>
+    <script src="testdatefmt_ru_RU.js"></script>
+    <script src="testdatefmt_si_LK.js"></script>
+    <script src="testdatefmt_sk_SK.js"></script>
+    <script src="testdatefmt_sl_SI.js"></script>
+    <script src="testdatefmt_sq_AL.js"></script>
+    <script src="testdatefmt_sr_Latn_RS.js"></script>
+    <script src="testdatefmt_sv_SE.js"></script>
+    <script src="testdatefmt_sw_KE.js"></script>
+    <script src="testdatefmt_ta_IN.js"></script>
+    <script src="testdatefmt_te_IN.js"></script>
+    <script src="testdatefmt_th_TH.js"></script>
+    <script src="testdatefmt_tr_TR.js"></script>
+    <script src="testdatefmt_uk_UA.js"></script>
+    <script src="testdatefmt_ur_IN.js"></script>
+    <script src="testdatefmt_uz_Cyrl_UZ.js"></script>
+    <script src="testdatefmt_uz_Latn_UZ.js"></script>
+    <script src="testdatefmt_vi_VN.js"></script>
+    <script src="testdatefmt_zh_CN.js"></script>
+    <script src="testdatefmt_zh_Hant_HK.js"></script>
+    <script src="testdatefmt_zh_Hant_TW.js"></script>
+  </head>
+  <body>
+    <h1 id="nodeunit-header">date Test Suite</h1>
+    <script>
+     nodeunit.run(module.exports);
+    </script>
+  </body>
+</html>

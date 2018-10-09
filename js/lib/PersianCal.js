@@ -18,11 +18,6 @@
  */
 
 
-/* !depends 
-Calendar.js 
-PersRataDie.js 
-*/
-
 var Calendar = require("./Calendar.js");
 
 var PersRataDie = require("./PersRataDie.js");

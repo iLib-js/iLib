@@ -13,7 +13,7 @@ QtObject {
             var runner = new TestRunner();
 
             var suiteDefinitions = {
-                "collate": "/collate/nodeunit/testSuiteFiles.js"  /* It takes almost 11 minutes. */
+                "collate": "/collate/testSuiteFiles.js"  /* Note.It takes almost 11 minutes. */
             };
 
             var s, ts;

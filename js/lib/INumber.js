@@ -17,16 +17,6 @@
  * limitations under the License.
  */
 
-/*
-!depends 
-ilib.js 
-Locale.js 
-isDigit.js 
-isSpace.js
-LocaleInfo.js
-Currency.js
-*/
-
 var ilib = require("./ilib.js");
 
 var Locale = require("./Locale.js");

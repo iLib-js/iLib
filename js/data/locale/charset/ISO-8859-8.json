@@ -1,5 +1,6 @@
 {
 	"min": 1,
 	"max": 1,
-	"scripts": ["Hebr","Latn"]
+	"scripts": ["Hebr","Latn"],
+  "locales": ["he"]
 }

@@ -17,8 +17,6 @@
  * limitations under the License.
  */
 
-// !depends ilib.js Utils.js
-
 // !data scripts
 
 var ilib = require("./ilib.js");
@@ -75,15 +73,13 @@ var ScriptInfo = function(script, options) {
 	if (!ilib.data.scripts) {
 		Utils.loadData({
 			object: "ScriptInfo", 
-			locale: "-", 
+			nonlocale: true,
 			name: "scripts.json", 
 			sync: sync, 
 			loadParams: loadParams, 
 			callback: ilib.bind(this, function (info) {
 				if (!info) {
 					info = {"Latn":{"nb":215,"nm":"Latin","lid":"Latin","rtl":false,"ime":false,"casing":true}};
-					var spec = this.locale.getSpec().replace(/-/g, "_");
-					ilib.data.cache.ScriptInfo[spec] = info;
 				}
 				ilib.data.scripts = info;
 				this.info = script && ilib.data.scripts[script];

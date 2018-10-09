@@ -1,7 +1,7 @@
 /*
  * LocaleInfo.js - Encode locale-specific defaults
  * 
- * Copyright © 2012-2015, JEDLSoft
+ * Copyright © 2012-2015, 2018, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,8 +16,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
-// !depends ilib.js Locale.js Utils.js
 
 // !data localeinfo
 
@@ -129,10 +127,6 @@ var LocaleInfo = function(locale, options) {
 		}
 	}
 
-	if (!ilib.data.cache.LocaleInfo) {
-		ilib.data.cache.LocaleInfo = {};
-	}
-
 	Utils.loadData({
 		object: "LocaleInfo", 
 		locale: this.locale, 
@@ -140,12 +134,7 @@ var LocaleInfo = function(locale, options) {
 		sync: sync, 
 		loadParams: loadParams, 
 		callback: ilib.bind(this, function (info) {
-			if (!info) {
-				info = LocaleInfo.defaultInfo;
-				var spec = this.locale.getSpec().replace(/-/g, "_");
-				ilib.data.cache.LocaleInfo[spec] = info;
-			}
-			this.info = info;
+			this.info = info || LocaleInfo.defaultInfo;
 			if (options && typeof(options.onLoad) === 'function') {
 				options.onLoad(this);
 			}

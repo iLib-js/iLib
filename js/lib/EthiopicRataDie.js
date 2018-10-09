@@ -1,7 +1,7 @@
 /*
  * EthiopicRataDie.js - Represent an RD date in the Ethiopic calendar
  * 
- * Copyright © 2015, JEDLSoft
+ * Copyright © 2015, 2018, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,11 +16,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
-/* !depends 
-EthiopicCal.js
-RataDie.js
-*/
 
 var EthiopicCal = require("./EthiopicCal.js");
 var RataDie = require("./RataDie.js");

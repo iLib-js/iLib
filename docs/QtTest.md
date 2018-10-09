@@ -28,11 +28,18 @@ You might need to install package below:
  sudo apt-get install libglu1-mesa-dev
 ~~~~~
 
-2. When you faced an error as below,
+2. When you faced errors as below,
+
+
 ~~~~
 /bin/qmlscene: relocation error: symbol _ZN10QQmlEngine4exitEi, version Qt_5 not defined in file libQt5Qml.so.5 with link time reference
 ~~~~
-You might need to check `LD_LIBRARY_PATH`
+~~~~
+Failed to load platform plugin ”xcb“
+~~~~
+
+You might need to check `LD_LIBRARY_PATH`.
+I've set that option in `~/.bashrc file`.
 ~~~~
 export LD_LIBRARY_PATH=/home/goun/Qt5.9.0/5.9/gcc_64/lib
 ~~~~

@@ -17,13 +17,6 @@
  * limitations under the License.
  */
 
-/* !depends
-ilib.js
-HanCal.js
-MathUtils.js
-RataDie.js
-*/
-
 var ilib = require("./ilib.js");
 var MathUtils = require("./MathUtils.js");
 var HanCal = require("./HanCal.js");

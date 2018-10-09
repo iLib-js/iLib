@@ -25,8 +25,8 @@ limitations under the License.
         var module = {};
     </script>
     <script src="/test/nodeunit/nodeunit.js"></script>
-    <script src="/output/js/ilib-ut.js"></script>
-    <script src="strings-ext/nodeunit/normdata.js"></script>
+    <script src="/output/js/ut-dynamicdata-uncompiled-web/ilib-ut-dyn.js"></script>
+    <script src="strings-ext/normdata.js"></script>
     <script>
         var suites = {};
         module = {
@@ -34,63 +34,63 @@ limitations under the License.
         };
         function loadTests(suite) {
             for (var prop in module.exports.files) {
-                document.write("<scrip" + 't src="' + suite + "/nodeunit/" + module.exports.files[prop] + '"></scr' + "ipt>");
+                document.write("<scrip" + 't src="' + suite + "/" + module.exports.files[prop] + '"></scr' + "ipt>");
             }
         }
     </script>
-    <script src="root/nodeunit/testSuiteFilesAsync.js"></script>
+    <script src="root/testSuiteFilesAsync.js"></script>
 	<script>
 		loadTests("root");
 	</script>
-    <script src="name/nodeunit/testSuiteFilesAsync.js"></script>
+    <script src="name/testSuiteFilesAsync.js"></script>
 	<script>
 		loadTests("name");
 	</script>
-    <script src="date/nodeunit/testSuiteFilesAsync.js"></script>
+    <script src="date/testSuiteFilesAsync.js"></script>
 	<script>
 		loadTests("date");
 	</script>
-    <script src="daterange/nodeunit/testSuiteFilesAsync.js"></script>
+    <script src="daterange/testSuiteFilesAsync.js"></script>
 	<script>
 		loadTests("daterange");
 	</script>
-    <script src="durfmt/nodeunit/testSuiteFilesAsync.js"></script>
+    <script src="durfmt/testSuiteFilesAsync.js"></script>
 	<script>
 		loadTests("durfmt");
 	</script>
-    <script src="phone/nodeunit/testSuiteFilesAsync.js"></script>
+    <script src="phone/testSuiteFilesAsync.js"></script>
 	<script>
 		loadTests("phone");
 	</script>
-    <script src="ctype/nodeunit/testSuiteFilesAsync.js"></script>
+    <script src="ctype/testSuiteFilesAsync.js"></script>
 	<script>
 		loadTests("ctype");
 	</script>
-    <script src="collate/nodeunit/testSuiteFilesAsync.js"></script>
+    <script src="collate/testSuiteFilesAsync.js"></script>
 	<script>
 		loadTests("collate");
 	</script>
-    <script src="number/nodeunit/testSuiteFilesAsync.js"></script>
+    <script src="number/testSuiteFilesAsync.js"></script>
 	<script>
 		loadTests("number");
 	</script>
-    <script src="units/nodeunit/testSuiteFilesAsync.js"></script>
+    <script src="units/testSuiteFilesAsync.js"></script>
 	<script>
 		loadTests("units");
 	</script>
-    <script src="maps/nodeunit/testSuiteFilesAsync.js"></script>
+    <script src="maps/testSuiteFilesAsync.js"></script>
 	<script>
 		loadTests("maps");
 	</script>
-    <script src="strings-ext/nodeunit/testSuiteFilesAsync.js"></script>
+    <script src="strings-ext/testSuiteFilesAsync.js"></script>
 	<script>
 		loadTests("strings-ext");
 	</script>
-    <script src="calendar/nodeunit/testSuiteFilesAsync.js"></script>
+    <script src="calendar/testSuiteFilesAsync.js"></script>
 	<script>
 		loadTests("calendar");
 	</script>
-    <script src="address/nodeunit/testSuiteFilesAsync.js"></script>
+    <script src="address/testSuiteFilesAsync.js"></script>
 	<script>
 		loadTests("address");
 	</script>

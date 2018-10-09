@@ -17,8 +17,6 @@
  * limitations under the License.
  */
 
-// !depends Charmap.js IString.js
-
 // !data charset/UTF-8
 
 var Charset = require("./Charset.js");

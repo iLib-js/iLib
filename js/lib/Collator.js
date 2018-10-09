@@ -1,7 +1,7 @@
 /*
  * Collator.js - Collation routines
  * 
- * Copyright © 2013-2015, JEDLSoft
+ * Copyright © 2013-2015, 2018, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,19 +16,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
-/* !depends 
-Locale.js
-ilib.js
-INumber.js
-isPunct.js
-NormString.js
-Utils.js
-JSUtils.js
-CodePointSource.js
-ElementIterator.js
-GlyphString.js
-*/
 
 // !data collation
 
@@ -414,13 +401,12 @@ var Collator = function(options) {
 			object: "Collator", 
 			locale: this.locale, 
 			name: "collation.json",
+            replace: true,
 			sync: sync,
-			loadParams: loadParams, 
+			loadParams: loadParams,
 			callback: ilib.bind(this, function (collation) {
 				if (!collation) {
 					collation = ilib.data.collation;
-					var spec = this.locale.getSpec().replace(/-/g, '_');
-					ilib.data.cache.Collator[spec] = collation;
 				}
 				this._initCollation(collation);
 		        if (this.ignorePunctuation) {
