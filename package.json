@@ -89,5 +89,8 @@
         "test": "ant test",
         "build.web": "webpack -p",
         "watch": "webpack --watch"
+    },
+    "publishConfig": {
+        tag: "experimental"
     }
 }
