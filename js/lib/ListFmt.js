@@ -135,7 +135,7 @@ var ListFmt = function(options) {
 	
 	if (options) {
 	    if (options.type) {
-	        this.type = otions.type;
+	        this.type = options.type;
 	    }
 
 		if (options.locale) {
