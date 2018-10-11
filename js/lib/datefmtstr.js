@@ -1,6 +1,6 @@
 /*
  * datefmtstr.js - Date formatter strings
- * 
+ *
  * Copyright © 2012-2015, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -15,8 +15,8 @@
  *
  * See the License for the specific language governing permissions and
  * limitations under the License.
- * 
- * This file is not used with ilib. Its purpose is to list strings that can be 
+ *
+ * This file is not used with ilib. Its purpose is to list strings that can be
  * extracted with the localization tool for the purpose of localizing them. The
  * strings are looked up via dynamically generated keys, so the localization tool has
  * no way of finding and extracting them properly without this file.

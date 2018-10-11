@@ -1,6 +1,6 @@
 /*
  * IslamicCal.js - Represent a Islamic calendar object.
- * 
+ *
  * Copyright © 2012-2015, 2018, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -23,61 +23,61 @@ var Calendar = require("./Calendar.js");
 /**
  * @class
  * Construct a new Islamic calendar object. This class encodes information about
- * the civil Islamic calendar. The civil Islamic calendar is a tabular islamic 
- * calendar where the dates are calculated by arithmetic rules. This differs from 
- * the religious Islamic calendar which is used to mark the beginning of particular 
- * holidays. The religious calendar depends on the first sighting of the new 
- * crescent moon to determine the first day of the new month. Because humans and 
- * weather are both involved, the actual time of sighting varies, so it is not 
- * really possible to precalculate the religious calendar. Certain groups, such 
+ * the civil Islamic calendar. The civil Islamic calendar is a tabular islamic
+ * calendar where the dates are calculated by arithmetic rules. This differs from
+ * the religious Islamic calendar which is used to mark the beginning of particular
+ * holidays. The religious calendar depends on the first sighting of the new
+ * crescent moon to determine the first day of the new month. Because humans and
+ * weather are both involved, the actual time of sighting varies, so it is not
+ * really possible to precalculate the religious calendar. Certain groups, such
  * as the Islamic Society of North America, decreed in in 2007 that they will use
- * a calendar based on calculations rather than observations to determine the 
+ * a calendar based on calculations rather than observations to determine the
  * beginning of lunar months, and therefore the dates of holidays.<p>
- * 
+ *
  * @param {Object=} options Options governing the construction of this instance
  * @constructor
  * @extends Calendar
  */
 var IslamicCal = function(options) {
-	this.type = "islamic";
-    
+    this.type = "islamic";
+
     if (options && typeof(options.onLoad) === "function") {
         options.onLoad(this);
     }
 };
 
 /**
- * the lengths of each month 
+ * the lengths of each month
  * @private
  * @const
  * @type Array.<number>
  */
 IslamicCal.monthLengths = [
-	30,  /* Muharram */
-	29,  /* Saffar */
-	30,  /* Rabi'I */
-	29,  /* Rabi'II */
-	30,  /* Jumada I */
-	29,  /* Jumada II */
-	30,  /* Rajab */
-	29,  /* Sha'ban */
-	30,  /* Ramadan */
-	29,  /* Shawwal */
-	30,  /* Dhu al-Qa'da */
-	29   /* Dhu al-Hijja */
+    30,  /* Muharram */
+    29,  /* Saffar */
+    30,  /* Rabi'I */
+    29,  /* Rabi'II */
+    30,  /* Jumada I */
+    29,  /* Jumada II */
+    30,  /* Rajab */
+    29,  /* Sha'ban */
+    30,  /* Ramadan */
+    29,  /* Shawwal */
+    30,  /* Dhu al-Qa'da */
+    29   /* Dhu al-Hijja */
 ];
 
 
 /**
  * Return the number of months in the given year. The number of months in a year varies
- * for luni-solar calendars because in some years, an extra month is needed to extend the 
+ * for luni-solar calendars because in some years, an extra month is needed to extend the
  * days in a year to an entire solar year. The month is represented as a 1-based number
  * where 1=first month, 2=second month, etc.
- * 
+ *
  * @param {number} year a year for which the number of months is sought
  */
 IslamicCal.prototype.getNumMonths = function(year) {
-	return 12;
+    return 12;
 };
 
 /**
@@ -90,11 +90,11 @@ IslamicCal.prototype.getNumMonths = function(year) {
  * @return {number} the number of days within the given month in the given year
  */
 IslamicCal.prototype.getMonLength = function(month, year) {
-	if (month !== 12) {
-		return IslamicCal.monthLengths[month-1];
-	} else {
-		return this.isLeapYear(year) ? 30 : 29;
-	}
+    if (month !== 12) {
+        return IslamicCal.monthLengths[month-1];
+    } else {
+        return this.isLeapYear(year) ? 30 : 29;
+    }
 };
 
 /**
@@ -104,16 +104,16 @@ IslamicCal.prototype.getMonLength = function(month, year) {
  * @return {boolean} true if the given year is a leap year
  */
 IslamicCal.prototype.isLeapYear = function(year) {
-	return (MathUtils.mod((14 + 11 * year), 30) < 11);
+    return (MathUtils.mod((14 + 11 * year), 30) < 11);
 };
 
 /**
  * Return the type of this calendar.
- * 
- * @return {string} the name of the type of this calendar 
+ *
+ * @return {string} the name of the type of this calendar
  */
 IslamicCal.prototype.getType = function() {
-	return this.type;
+    return this.type;
 };
 
 

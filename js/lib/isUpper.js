@@ -34,22 +34,22 @@ var IString = require("./IString.js");
  * @return {boolean} true if the first character is upper-case.
  */
 var isUpper = function (ch) {
-	var num;
-	switch (typeof(ch)) {
-		case 'number':
-			num = ch;
-			break;
-		case 'string':
-			num = IString.toCodePoint(ch, 0);
-			break;
-		case 'undefined':
-			return false;
-		default:
-			num = ch._toCodePoint(0);
-			break;
-	}
+    var num;
+    switch (typeof(ch)) {
+        case 'number':
+            num = ch;
+            break;
+        case 'string':
+            num = IString.toCodePoint(ch, 0);
+            break;
+        case 'undefined':
+            return false;
+        default:
+            num = ch._toCodePoint(0);
+            break;
+    }
 
-	return ilib.data.ctype_l ? CType._inRange(num, 'Lu', ilib.data.ctype_l) : (num >= 0x41 && num <= 0x5A);
+    return ilib.data.ctype_l ? CType._inRange(num, 'Lu', ilib.data.ctype_l) : (num >= 0x41 && num <= 0x5A);
 };
 
 /**
@@ -59,7 +59,7 @@ var isUpper = function (ch) {
  * @param {function(*)|undefined} onLoad
  */
 isUpper._init = function (sync, loadParams, onLoad) {
-	CType._load("ctype_l", sync, loadParams, onLoad);
+    CType._load("ctype_l", sync, loadParams, onLoad);
 };
 
 module.exports = isUpper;

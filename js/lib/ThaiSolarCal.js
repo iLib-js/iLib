@@ -31,8 +31,8 @@ var GregorianCal = require("./GregorianCal.js");
  * @extends Calendar
  */
 var ThaiSolarCal = function(options) {
-	this.type = "thaisolar";
-    
+    this.type = "thaisolar";
+
     if (options && typeof(options.onLoad) === "function") {
         options.onLoad(this);
     }
@@ -49,10 +49,10 @@ ThaiSolarCal.prototype.constructor = ThaiSolarCal;
  * @return {boolean} true if the given year is a leap year
  */
 ThaiSolarCal.prototype.isLeapYear = function(year) {
-	var y = (typeof(year) === 'number' ? year : year.getYears());
-	y -= 543;
-	var centuries = MathUtils.mod(y, 400);
-	return (MathUtils.mod(y, 4) === 0 && centuries !== 100 && centuries !== 200 && centuries !== 300);
+    var y = (typeof(year) === 'number' ? year : year.getYears());
+    y -= 543;
+    var centuries = MathUtils.mod(y, 400);
+    return (MathUtils.mod(y, 4) === 0 && centuries !== 100 && centuries !== 200 && centuries !== 300);
 };
 
 

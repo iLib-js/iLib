@@ -1,6 +1,6 @@
 /*
  * isGraph.js - Character type is graph char
- * 
+ *
  * Copyright © 2012-2015, 2018, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -24,28 +24,28 @@ var isCntrl = require("./isCntrl.js");
 /**
  * Return whether or not the first character is any printable character
  * other than space.<p>
- * 
+ *
  * @static
  * @param {string|IString|number} ch character or code point to examine
  * @return {boolean} true if the first character is any printable character
- * other than space. 
+ * other than space.
  */
 var isGraph = function (ch) {
-	var num;
-	switch (typeof(ch)) {
-		case 'number':
-			num = ch;
-			break;
-		case 'string':
-			num = IString.toCodePoint(ch, 0);
-			break;
-		case 'undefined':
-			return false;
-		default:
-			num = ch._toCodePoint(0);
-			break;
-	}
-	return typeof(ch) !== 'undefined' && ch.length > 0 && !isSpace(num) && !isCntrl(num);
+    var num;
+    switch (typeof(ch)) {
+        case 'number':
+            num = ch;
+            break;
+        case 'string':
+            num = IString.toCodePoint(ch, 0);
+            break;
+        case 'undefined':
+            return false;
+        default:
+            num = ch._toCodePoint(0);
+            break;
+    }
+    return typeof(ch) !== 'undefined' && ch.length > 0 && !isSpace(num) && !isCntrl(num);
 };
 
 /**
@@ -55,9 +55,9 @@ var isGraph = function (ch) {
  * @param {function(*)|undefined} onLoad
  */
 isGraph._init = function (sync, loadParams, onLoad) {
-	isSpace._init(sync, loadParams, function () {
-		isCntrl._init(sync, loadParams, onLoad);
-	});
+    isSpace._init(sync, loadParams, function () {
+        isCntrl._init(sync, loadParams, onLoad);
+    });
 };
 
 module.exports = isGraph;

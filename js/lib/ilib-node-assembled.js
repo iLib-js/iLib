@@ -2,7 +2,7 @@
 /*
  * ilib-node-assembled.js - glue code for node to load it the old way
  * as one big assembled file
- * 
+ *
  * Copyright © 2015, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");

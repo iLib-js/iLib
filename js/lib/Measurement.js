@@ -152,7 +152,7 @@ Measurement.prototype = {
             if (JSUtils.indexOf(this.systems.uscustomary, this.unit) > -1) {
                 return "uscustomary";
             }
-    
+
             if (JSUtils.indexOf(this.systems.imperial, this.unit) > -1) {
                 return "imperial";
             }

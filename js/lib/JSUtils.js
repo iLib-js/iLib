@@ -32,14 +32,14 @@ var JSUtils = {};
  * @param {Object} target the target object to copy properties into
  */
 JSUtils.shallowCopy = function (source, target) {
-	var prop = undefined;
-	if (source && target) {
-		for (prop in source) {
-			if (prop !== undefined && typeof(source[prop]) !== 'undefined') {
-				target[prop] = source[prop];
-			}
-		}
-	}
+    var prop = undefined;
+    if (source && target) {
+        for (prop in source) {
+            if (prop !== undefined && typeof(source[prop]) !== 'undefined') {
+                target[prop] = source[prop];
+            }
+        }
+    }
 };
 
 /**
@@ -51,19 +51,19 @@ JSUtils.shallowCopy = function (source, target) {
  * @return {Object} a reference to the the "to" object
  */
 JSUtils.deepCopy = function(from, to) {
-	var prop;
+    var prop;
 
-	for (prop in from) {
-		if (prop) {
-			if (typeof(from[prop]) === 'object') {
-				to[prop] = {};
-				JSUtils.deepCopy(from[prop], to[prop]);
-			} else {
-				to[prop] = from[prop];
-			}
-		}
-	}
-	return to;
+    for (prop in from) {
+        if (prop) {
+            if (typeof(from[prop]) === 'object') {
+                to[prop] = {};
+                JSUtils.deepCopy(from[prop], to[prop]);
+            } else {
+                to[prop] = from[prop];
+            }
+        }
+    }
+    return to;
 };
 
 /**
@@ -77,16 +77,16 @@ JSUtils.deepCopy = function(from, to) {
  * @return {string} the source string where each character is mapped to alternate characters
  */
 JSUtils.mapString = function (str, map) {
-	var mapped = "";
-	if (map && str) {
-		for (var i = 0; i < str.length; i++) {
-			var c = str.charAt(i); // TODO use a char iterator?
-			mapped += map[c] || c;
-		}
-	} else {
-		mapped = str;
-	}
-	return mapped;
+    var mapped = "";
+    if (map && str) {
+        for (var i = 0; i < str.length; i++) {
+            var c = str.charAt(i); // TODO use a char iterator?
+            mapped += map[c] || c;
+        }
+    } else {
+        mapped = str;
+    }
+    return mapped;
 };
 
 /**
@@ -103,19 +103,19 @@ JSUtils.mapString = function (str, map) {
  * @return {number} index of the object in the array, or -1 if it is not in the array.
  */
 JSUtils.indexOf = function(array, obj) {
-	if (!array || !obj) {
-		return -1;
-	}
-	if (typeof(array.indexOf) === 'function') {
-		return array.indexOf(obj);
-	} else {
-		for (var i = 0; i < array.length; i++) {
-	        if (array[i] === obj) {
-	            return i;
-	        }
-	    }
-	    return -1;
-	}
+    if (!array || !obj) {
+        return -1;
+    }
+    if (typeof(array.indexOf) === 'function') {
+        return array.indexOf(obj);
+    } else {
+        for (var i = 0; i < array.length; i++) {
+            if (array[i] === obj) {
+                return i;
+            }
+        }
+        return -1;
+    }
 };
 
 /**
@@ -128,17 +128,17 @@ JSUtils.indexOf = function(array, obj) {
  * Default is false.
  */
 JSUtils.pad = function (str, length, right) {
-	if (typeof(str) !== 'string') {
-		str = "" + str;
-	}
-	var start = 0;
-	// take care of negative numbers
-	if (str.charAt(0) === '-') {
-		start++;
-	}
-	return (str.length >= length+start) ? str :
-		(right ? str + JSUtils.pad.zeros.substring(0,length-str.length+start) :
-			str.substring(0, start) + JSUtils.pad.zeros.substring(0,length-str.length+start) + str.substring(start));
+    if (typeof(str) !== 'string') {
+        str = "" + str;
+    }
+    var start = 0;
+    // take care of negative numbers
+    if (str.charAt(0) === '-') {
+        start++;
+    }
+    return (str.length >= length+start) ? str :
+        (right ? str + JSUtils.pad.zeros.substring(0,length-str.length+start) :
+            str.substring(0, start) + JSUtils.pad.zeros.substring(0,length-str.length+start) + str.substring(start));
 };
 
 /** @private */
@@ -155,18 +155,18 @@ JSUtils.pad.zeros = "00000000000000000000000000000000";
  * Unicode characters in the input string
  */
 JSUtils.toHexString = function(string, limit) {
-	var i,
-		result = "",
-		lim = (limit && limit < 9) ? limit : 4;
+    var i,
+        result = "",
+        lim = (limit && limit < 9) ? limit : 4;
 
-	if (!string) {
-		return "";
-	}
-	for (i = 0; i < string.length; i++) {
-		var ch = string.charCodeAt(i).toString(16);
-		result += JSUtils.pad(ch, lim);
-	}
-	return result.toUpperCase();
+    if (!string) {
+        return "";
+    }
+    for (i = 0; i < string.length; i++) {
+        var ch = string.charCodeAt(i).toString(16);
+        result += JSUtils.pad(ch, lim);
+    }
+    return result.toUpperCase();
 };
 
 /**
@@ -178,10 +178,10 @@ JSUtils.toHexString = function(string, limit) {
  * and false otherwise
  */
 JSUtils.isDate = function(object) {
-	if (typeof(object) === 'object') {
-		return Object.prototype.toString.call(object) === '[object Date]';
-	}
-	return false;
+    if (typeof(object) === 'object') {
+        return Object.prototype.toString.call(object) === '[object Date]';
+    }
+    return false;
 };
 
 /**
@@ -204,34 +204,34 @@ JSUtils.isDate = function(object) {
  * @return {Object} the merged object
  */
 JSUtils.merge = function (object1, object2, replace, name1, name2) {
-	var prop = undefined,
-		newObj = {};
-	for (prop in object1) {
-		if (prop && typeof(object1[prop]) !== 'undefined') {
-			newObj[prop] = object1[prop];
-		}
-	}
-	for (prop in object2) {
-		if (prop && typeof(object2[prop]) !== 'undefined') {
-			if (ilib.isArray(object1[prop]) && ilib.isArray(object2[prop])) {
-				if (typeof(replace) !== 'boolean' || !replace) {
-					newObj[prop] = [].concat(object1[prop]);
-					newObj[prop] = newObj[prop].concat(object2[prop]);
-				} else {
-					newObj[prop] = object2[prop];
-				}
-			} else if (typeof(object1[prop]) === 'object' && typeof(object2[prop]) === 'object') {
-				newObj[prop] = JSUtils.merge(object1[prop], object2[prop], replace);
-			} else {
-				// for debugging. Used to determine whether or not json files are overriding their parents unnecessarily
-				if (name1 && name2 && newObj[prop] == object2[prop]) {
-					console.log("Property " + prop + " in " + name1 + " is being overridden by the same value in " + name2);
-				}
-				newObj[prop] = object2[prop];
-			}
-		}
-	}
-	return newObj;
+    var prop = undefined,
+        newObj = {};
+    for (prop in object1) {
+        if (prop && typeof(object1[prop]) !== 'undefined') {
+            newObj[prop] = object1[prop];
+        }
+    }
+    for (prop in object2) {
+        if (prop && typeof(object2[prop]) !== 'undefined') {
+            if (ilib.isArray(object1[prop]) && ilib.isArray(object2[prop])) {
+                if (typeof(replace) !== 'boolean' || !replace) {
+                    newObj[prop] = [].concat(object1[prop]);
+                    newObj[prop] = newObj[prop].concat(object2[prop]);
+                } else {
+                    newObj[prop] = object2[prop];
+                }
+            } else if (typeof(object1[prop]) === 'object' && typeof(object2[prop]) === 'object') {
+                newObj[prop] = JSUtils.merge(object1[prop], object2[prop], replace);
+            } else {
+                // for debugging. Used to determine whether or not json files are overriding their parents unnecessarily
+                if (name1 && name2 && newObj[prop] == object2[prop]) {
+                    console.log("Property " + prop + " in " + name1 + " is being overridden by the same value in " + name2);
+                }
+                newObj[prop] = object2[prop];
+            }
+        }
+    }
+    return newObj;
 };
 
 /**
@@ -243,74 +243,74 @@ JSUtils.merge = function (object1, object2, replace, name1, name2) {
  * @return {boolean} true if the given object has no properties, false otherwise
  */
 JSUtils.isEmpty = function (obj) {
-	var prop = undefined;
+    var prop = undefined;
 
-	if (!obj) {
-		return true;
-	}
+    if (!obj) {
+        return true;
+    }
 
-	for (prop in obj) {
-		if (prop && typeof(obj[prop]) !== 'undefined') {
-			return false;
-		}
-	}
-	return true;
+    for (prop in obj) {
+        if (prop && typeof(obj[prop]) !== 'undefined') {
+            return false;
+        }
+    }
+    return true;
 };
 
 /**
  * @static
  */
 JSUtils.hashCode = function(obj) {
-	var hash = 0;
+    var hash = 0;
 
-	function addHash(hash, newValue) {
-		// co-prime numbers creates a nicely distributed hash
-		hash *= 65543;
-		hash += newValue;
-		hash %= 2147483647;
-		return hash;
-	}
+    function addHash(hash, newValue) {
+        // co-prime numbers creates a nicely distributed hash
+        hash *= 65543;
+        hash += newValue;
+        hash %= 2147483647;
+        return hash;
+    }
 
-	function stringHash(str) {
-		var hash = 0;
-		for (var i = 0; i < str.length; i++) {
-			hash = addHash(hash, str.charCodeAt(i));
-		}
-		return hash;
-	}
+    function stringHash(str) {
+        var hash = 0;
+        for (var i = 0; i < str.length; i++) {
+            hash = addHash(hash, str.charCodeAt(i));
+        }
+        return hash;
+    }
 
-	switch (typeof(obj)) {
-		case 'undefined':
-			hash = 0;
-			break;
-		case 'string':
-			hash = stringHash(obj);
-			break;
-		case 'function':
-		case 'number':
-		case 'xml':
-			hash = stringHash(String(obj));
-			break;
-		case 'boolean':
-			hash = obj ? 1 : 0;
-			break;
-		case 'object':
-			var props = [];
-			for (var p in obj) {
-				if (obj.hasOwnProperty(p)) {
-					props.push(p);
-				}
-			}
-			// make sure the order of the properties doesn't matter
-			props.sort();
-			for (var i = 0; i < props.length; i++) {
-				hash = addHash(hash, stringHash(props[i]));
-				hash = addHash(hash, JSUtils.hashCode(obj[props[i]]));
-			}
-			break;
-	}
+    switch (typeof(obj)) {
+        case 'undefined':
+            hash = 0;
+            break;
+        case 'string':
+            hash = stringHash(obj);
+            break;
+        case 'function':
+        case 'number':
+        case 'xml':
+            hash = stringHash(String(obj));
+            break;
+        case 'boolean':
+            hash = obj ? 1 : 0;
+            break;
+        case 'object':
+            var props = [];
+            for (var p in obj) {
+                if (obj.hasOwnProperty(p)) {
+                    props.push(p);
+                }
+            }
+            // make sure the order of the properties doesn't matter
+            props.sort();
+            for (var i = 0; i < props.length; i++) {
+                hash = addHash(hash, stringHash(props[i]));
+                hash = addHash(hash, JSUtils.hashCode(obj[props[i]]));
+            }
+            break;
+    }
 
-	return hash;
+    return hash;
 };
 
 /**

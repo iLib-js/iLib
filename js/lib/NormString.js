@@ -1,6 +1,6 @@
 /*
  * NormString.js - ilib normalized string subclass definition
- * 
+ *
  * Copyright © 2013-2015, 2018, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -138,7 +138,7 @@ NormString.init = function(options) {
             loadParams: loadParams,
             callback: ilib.bind(this, function(normdata){
                 ilib.data.ccc = normdata;
-                
+
                 if (files.length) {
                     //console.log("loading files " + JSON.stringify(files));
                     Utils._callLoadData(files, sync, loadParams, function(arr) {
@@ -307,7 +307,7 @@ NormString._expand = function (ch, canon, compat) {
  * The normalization data is organized by normalization form and within there
  * by script. To include the normalization data for a particular script with
  * a particular normalization form, use the following require:
- * 
+ *
  * <pre><code>
  * NormString.init({
  *   form: "&lt;form&gt;",
@@ -350,15 +350,15 @@ NormString._expand = function (ch, canon, compat) {
  * that are commonly used in many different scripts. Examples of characters in the
  * Common script are the ASCII punctuation characters, or the ASCII Arabic
  * numerals "0" through "9".<p>
- * 
- * By default, none of the data for normalization is automatically 
- * included in the preassembled ilib files. (For size "full".) 
+ *
+ * By default, none of the data for normalization is automatically
+ * included in the preassembled ilib files. (For size "full".)
  * If you would like to normalize strings, you must assemble
  * your own copy of ilib and explicitly include the normalization data
- * for those scripts. This normalization method will 
- * produce output, even without the normalization data. However, the output will be 
- * simply the same thing as its input for all scripts 
- * except Korean Hangul and Jamo, which are decomposed and recomposed 
+ * for those scripts. This normalization method will
+ * produce output, even without the normalization data. However, the output will be
+ * simply the same thing as its input for all scripts
+ * except Korean Hangul and Jamo, which are decomposed and recomposed
  * algorithmically and therefore do not rely on data.<p>
  *
  * If characters are encountered for which there are no normalization data, they
@@ -462,7 +462,7 @@ NormString.prototype.normalize = function (form) {
             // found a non-starter... rearrange all the non-starters until the next starter
             end = i+1;
             while (end < cpArray.length &&
-                    typeof(ilib.data.ccc[cpArray[end]]) !== 'undefined' && 
+                    typeof(ilib.data.ccc[cpArray[end]]) !== 'undefined' &&
                     ccc(cpArray[end]) !== 0) {
                 end++;
             }
@@ -485,10 +485,10 @@ NormString.prototype.normalize = function (form) {
                 end = i+1;
                 var notdone = true;
                 while (end < cpArray.length && notdone) {
-                    if (typeof(ilib.data.ccc[cpArray[end]]) !== 'undefined' && 
+                    if (typeof(ilib.data.ccc[cpArray[end]]) !== 'undefined' &&
                         ilib.data.ccc[cpArray[end]] !== 0) {
-                        if (ccc(cpArray[end-1]) < ccc(cpArray[end])) { 
-                            // not blocked 
+                        if (ccc(cpArray[end-1]) < ccc(cpArray[end])) {
+                            // not blocked
                             testChar = GlyphString._compose(cpArray[i], cpArray[end]);
                             if (typeof(testChar) !== 'undefined') {
                                 cpArray[i] = testChar;

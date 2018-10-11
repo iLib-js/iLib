@@ -1,6 +1,6 @@
 /*
  * Utils.js - Core utility routines
- * 
+ *
  * Copyright © 2012-2015, 2018, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -157,9 +157,9 @@ Utils.getSublocales = function(locale) {
 
 /**
  * Find and merge all the locale data for a particular prefix in the given locale
- * and return it as a single javascript object. This merges the data in the 
+ * and return it as a single javascript object. This merges the data in the
  * correct order:
- * 
+ *
  * <ol>
  * <li>shared data (usually English)
  * <li>data for language
@@ -167,10 +167,10 @@ Utils.getSublocales = function(locale) {
  * <li>data for language + region + script
  * <li>data for language + region + script + variant
  * </ol>
- * 
- * It is okay for any of the above to be missing. This function will just skip the 
+ *
+ * It is okay for any of the above to be missing. This function will just skip the
  * missing data.
- * 
+ *
  * @static
  * @param {string} prefix prefix under ilib.data of the data to merge
  * @param {Locale} locale locale of the data being sought
@@ -205,53 +205,53 @@ Utils.mergeLocData = function (prefix, locale, replaceArrays, returnOne) {
 /**
  * Return an array of relative path names for the
  * files that represent the data for the given locale.<p>
- * 
+ *
  * Note that to prevent the situation where a directory for
  * a language exists next to the directory for a region where
- * the language code and region code differ only by case, the 
- * plain region directories are located under the special 
+ * the language code and region code differ only by case, the
+ * plain region directories are located under the special
  * "undefined" language directory which has the ISO code "und".
- * The reason is that some platforms have case-insensitive 
- * file systems, and you cannot have 2 directories with the 
+ * The reason is that some platforms have case-insensitive
+ * file systems, and you cannot have 2 directories with the
  * same name which only differ by case. For example, "es" is
  * the ISO 639 code for the language "Spanish" and "ES" is
  * the ISO 3166 code for the region "Spain", so both the
  * directories cannot exist underneath "locale". The region
- * therefore will be loaded from "und/ES" instead.<p>  
- * 
+ * therefore will be loaded from "und/ES" instead.<p>
+ *
  * <h4>Variations</h4>
- * 
+ *
  * With only language and region specified, the following
  * sequence of paths will be generated:<p>
- * 
+ *
  * <pre>
  * language
  * und/region
  * language/region
  * </pre>
- * 
+ *
  * With only language and script specified:<p>
- * 
+ *
  * <pre>
  * language
  * language/script
  * </pre>
- * 
+ *
  * With only script and region specified:<p>
- * 
+ *
  * <pre>
- * und/region  
+ * und/region
  * </pre>
- * 
+ *
  * With only region and variant specified:<p>
- * 
+ *
  * <pre>
  * und/region
  * region/variant
  * </pre>
- * 
+ *
  * With only language, script, and region specified:<p>
- * 
+ *
  * <pre>
  * language
  * und/region
@@ -259,9 +259,9 @@ Utils.mergeLocData = function (prefix, locale, replaceArrays, returnOne) {
  * language/region
  * language/script/region
  * </pre>
- * 
+ *
  * With only language, region, and variant specified:<p>
- * 
+ *
  * <pre>
  * language
  * und/region
@@ -269,9 +269,9 @@ Utils.mergeLocData = function (prefix, locale, replaceArrays, returnOne) {
  * region/variant
  * language/region/variant
  * </pre>
- * 
+ *
  * With all parts specified:<p>
- * 
+ *
  * <pre>
  * language
  * und/region
@@ -282,7 +282,7 @@ Utils.mergeLocData = function (prefix, locale, replaceArrays, returnOne) {
  * language/region/variant
  * language/script/region/variant
  * </pre>
- * 
+ *
  * @static
  * @param {Locale} locale load the files for this locale
  * @param {string?} name the file name of each file to load without
@@ -305,17 +305,17 @@ Utils.getLocFiles = function(locale, name) {
  * @private
  */
 Utils._callLoadData = function (files, sync, params, callback) {
-	// console.log("Utils._callLoadData called");
-	if (typeof(ilib._load) === 'function') {
-		// console.log("Utils._callLoadData: calling as a regular function");
-		return ilib._load(files, sync, params, callback);
-	} else if (typeof(ilib._load) === 'object' && typeof(ilib._load.loadFiles) === 'function') {
-		// console.log("Utils._callLoadData: calling as an object");
-		return ilib._load.loadFiles(files, sync, params, callback);
-	}
-	
-	// console.log("Utils._callLoadData: not calling. Type is " + typeof(ilib._load) + " and instanceof says " + (ilib._load instanceof Loader));
-	return undefined;
+    // console.log("Utils._callLoadData called");
+    if (typeof(ilib._load) === 'function') {
+        // console.log("Utils._callLoadData: calling as a regular function");
+        return ilib._load(files, sync, params, callback);
+    } else if (typeof(ilib._load) === 'object' && typeof(ilib._load.loadFiles) === 'function') {
+        // console.log("Utils._callLoadData: calling as an object");
+        return ilib._load.loadFiles(files, sync, params, callback);
+    }
+
+    // console.log("Utils._callLoadData: not calling. Type is " + typeof(ilib._load) + " and instanceof says " + (ilib._load instanceof Loader));
+    return undefined;
 };
 
 /**

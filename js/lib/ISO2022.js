@@ -1,6 +1,6 @@
 /*
  * ISO2022.js - Implement the various ISO-2022 style mappings
- * 
+ *
  * Copyright © 2014-2015, 2018, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -23,7 +23,7 @@ var Charmap = require("./Charmap.js");
 /**
  * @class
  * Create a new ISO-2022 mapping instance
- * 
+ *
  * @constructor
  */
 var ISO2022 = function (options) {
@@ -31,7 +31,7 @@ var ISO2022 = function (options) {
     options = options || {sync: true};
     var name = options.name || "ISO-2022-JP";
     var sync = typeof(options.sync) === "boolean" ? options.sync : true;
-    
+
     if (typeof(options.charset) === "object" && options.charset instanceof Charset) {
         this.charset = options.charset;
         if (typeof(options.onLoad) === "function") {
@@ -57,11 +57,11 @@ ISO2022.prototype.parent = Charmap;
 ISO2022.prototype.constructor = ISO2022;
 
 ISO2022.prototype.mapToUnicode = function (bytes) {
-	// TODO: implement ISO 2022 mappings
+    // TODO: implement ISO 2022 mappings
 };
-	
+
 ISO2022.prototype.mapToNative = function(str) {
-	// TODO: implement ISO 2022 mappings
+    // TODO: implement ISO 2022 mappings
 };
 
 /*

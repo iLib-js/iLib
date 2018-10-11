@@ -1,6 +1,6 @@
 /**
  * ilib-core-webpack.js - metafile that includes a minimal set of other js files
- * 
+ *
  * @license
  * Copyright © 2018, JEDLSoft
  *

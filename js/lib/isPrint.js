@@ -1,6 +1,6 @@
 /*
  * isPrint.js - Character type is printable char
- * 
+ *
  * Copyright © 2012-2015, 2018, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -22,13 +22,13 @@ var isCntrl = require("./isCntrl.js");
 /**
  * Return whether or not the first character is any printable character,
  * including space.<p>
- * 
+ *
  * @static
  * @param {string|IString|number} ch character or code point to examine
  * @return {boolean} true if the first character is printable.
  */
 var isPrint = function (ch) {
-	return typeof(ch) !== 'undefined' && ch.length > 0 && !isCntrl(ch);
+    return typeof(ch) !== 'undefined' && ch.length > 0 && !isCntrl(ch);
 };
 
 /**
@@ -38,7 +38,7 @@ var isPrint = function (ch) {
  * @param {function(*)|undefined} onLoad
  */
 isPrint._init = function (sync, loadParams, onLoad) {
-	isCntrl._init(sync, loadParams, onLoad);
+    isCntrl._init(sync, loadParams, onLoad);
 };
 
 module.exports = isPrint;

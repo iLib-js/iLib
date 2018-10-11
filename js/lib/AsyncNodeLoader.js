@@ -1,7 +1,7 @@
 /*
  * AsyncAsyncNodeLoader.js - Loader implementation for nodejs with asynchronous calls.
  * Mostly this is used for testing the async calls
- * 
+ *
  * Copyright © 2018, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -21,7 +21,7 @@
 /**
  * @class
  * Implementation of async Loader for nodejs.
- * 
+ *
  * @constructor
  * @private
  */
@@ -47,7 +47,7 @@ module.exports = function (ilib) {
         //console.log("module.filename is " + module.filename + "\n");
         //console.log("base is defined as " + this.base + "\n");
 
-        this.includePath.push(path.join(this.root, "resources")); 	// always check the application's resources dir first
+        this.includePath.push(path.join(this.root, "resources"));     // always check the application's resources dir first
 
         // then a standard locale dir of a built version of ilib from npm
         this._exists(path.join(this.base, "locale"), "localeinfo.json");
@@ -71,8 +71,8 @@ module.exports = function (ilib) {
         var text;
         //console.log("AsyncNodeLoader._loadFile: loading " + pathname + (sync ? " sync" : " async"));
         try {
-            // on node, just secret load everything synchronously, even when asynchronous 
-            // load is requested, or else you will get crazy results where files are not read 
+            // on node, just secret load everything synchronously, even when asynchronous
+            // load is requested, or else you will get crazy results where files are not read
             // until a long time later when the run queue is free
             fs.readFile(pathname, "utf-8", function(err, text) {
                 if (typeof(cb) === 'function') {

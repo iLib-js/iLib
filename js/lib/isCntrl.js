@@ -1,6 +1,6 @@
 /*
  * isCntrl.js - Character type is control character
- * 
+ *
  * Copyright © 2012-2015, 2018, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -25,27 +25,27 @@ var IString = require("./IString.js");
 
 /**
  * Return whether or not the first character is a control character.<p>
- * 
+ *
  * @static
  * @param {string|IString|number} ch character or code point to examine
  * @return {boolean} true if the first character is a control character.
  */
 var isCntrl = function (ch) {
-	var num;
-	switch (typeof(ch)) {
-		case 'number':
-			num = ch;
-			break;
-		case 'string':
-			num = IString.toCodePoint(ch, 0);
-			break;
-		case 'undefined':
-			return false;
-		default:
-			num = ch._toCodePoint(0);
-			break;
-	}
-	return CType._inRange(num, 'Cc', ilib.data.ctype_c);
+    var num;
+    switch (typeof(ch)) {
+        case 'number':
+            num = ch;
+            break;
+        case 'string':
+            num = IString.toCodePoint(ch, 0);
+            break;
+        case 'undefined':
+            return false;
+        default:
+            num = ch._toCodePoint(0);
+            break;
+    }
+    return CType._inRange(num, 'Cc', ilib.data.ctype_c);
 };
 
 /**
@@ -55,7 +55,7 @@ var isCntrl = function (ch) {
  * @param {function(*)|undefined} onLoad
  */
 isCntrl._init = function (sync, loadParams, onLoad) {
-	CType._load("ctype_c", sync, loadParams, onLoad);
+    CType._load("ctype_c", sync, loadParams, onLoad);
 };
 
 module.exports = isCntrl;

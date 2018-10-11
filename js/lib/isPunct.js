@@ -32,33 +32,33 @@ var IString = require("./IString.js");
  * @return {boolean} true if the first character is punctuation.
  */
 var isPunct = function (ch) {
-	var num;
-	switch (typeof(ch)) {
-		case 'number':
-			num = ch;
-			break;
-		case 'string':
-			num = IString.toCodePoint(ch, 0);
-			break;
-		case 'undefined':
-			return false;
-		default:
-			num = ch._toCodePoint(0);
-			break;
-	}
+    var num;
+    switch (typeof(ch)) {
+        case 'number':
+            num = ch;
+            break;
+        case 'string':
+            num = IString.toCodePoint(ch, 0);
+            break;
+        case 'undefined':
+            return false;
+        default:
+            num = ch._toCodePoint(0);
+            break;
+    }
 
-	return ilib.data.ctype_p ?
-	    (CType._inRange(num, 'Pd', ilib.data.ctype_p) ||
-		CType._inRange(num, 'Ps', ilib.data.ctype_p) ||
-		CType._inRange(num, 'Pe', ilib.data.ctype_p) ||
-		CType._inRange(num, 'Pc', ilib.data.ctype_p) ||
-		CType._inRange(num, 'Po', ilib.data.ctype_p) ||
-		CType._inRange(num, 'Pi', ilib.data.ctype_p) ||
-		CType._inRange(num, 'Pf', ilib.data.ctype_p)) :
-		((num >= 0x21 && num <= 0x2F) ||
-		(num >= 0x3A && num <= 0x40) ||
-		(num >= 0x5B && num <= 0x60) ||
-		(num >= 0x7B && num <= 0x7E));
+    return ilib.data.ctype_p ?
+        (CType._inRange(num, 'Pd', ilib.data.ctype_p) ||
+        CType._inRange(num, 'Ps', ilib.data.ctype_p) ||
+        CType._inRange(num, 'Pe', ilib.data.ctype_p) ||
+        CType._inRange(num, 'Pc', ilib.data.ctype_p) ||
+        CType._inRange(num, 'Po', ilib.data.ctype_p) ||
+        CType._inRange(num, 'Pi', ilib.data.ctype_p) ||
+        CType._inRange(num, 'Pf', ilib.data.ctype_p)) :
+        ((num >= 0x21 && num <= 0x2F) ||
+        (num >= 0x3A && num <= 0x40) ||
+        (num >= 0x5B && num <= 0x60) ||
+        (num >= 0x7B && num <= 0x7E));
 };
 
 /**
@@ -68,7 +68,7 @@ var isPunct = function (ch) {
  * @param {function(*)|undefined} onLoad
  */
 isPunct._init = function (sync, loadParams, onLoad) {
-	CType._load("ctype_p", sync, loadParams, onLoad);
+    CType._load("ctype_p", sync, loadParams, onLoad);
 };
 
 module.exports = isPunct;

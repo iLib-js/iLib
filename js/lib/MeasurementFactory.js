@@ -74,13 +74,13 @@ var Measurement = require("./Measurement.js");
  * and stored as that number of base units.
  * For example, if an instance is constructed with 1 kg, this will be converted
  * automatically into 1000 g, as grams are the base unit and kg is merely a
- * commonly used scale of grams. 
+ * commonly used scale of grams.
  * </ul>
  *
- * Here are some examples of converting a length into new units. 
- * The first method is via this factory function by passing the old measurement 
+ * Here are some examples of converting a length into new units.
+ * The first method is via this factory function by passing the old measurement
  * in as the "amount" property.<p>
- * 
+ *
  * <pre>
  * var measurement1 = MeasurementFactory({
  *   amount: 5,
@@ -91,11 +91,11 @@ var Measurement = require("./Measurement.js");
  *   units: "miles"
  * });
  * </pre>
- * 
+ *
  * The value in measurement2 will end up being about 3.125 miles.<p>
- * 
+ *
  * The second method uses the convert method.<p>
- * 
+ *
  * <pre>
  * var measurement1 = MeasurementFactory({
  *   amount: 5,
@@ -106,7 +106,7 @@ var Measurement = require("./Measurement.js");
  * </pre>
  *
  * The value in measurement2 will again end up being about 3.125 miles.
- * 
+ *
  * @static
  * @param {Object=} options options that control the construction of this instance
  */
@@ -154,16 +154,16 @@ var MeasurementFactory = function(options) {
  * are case-insensitive.
  *
  * @static
- * @return {Array.<string>} an array of strings containing names of measurement 
+ * @return {Array.<string>} an array of strings containing names of measurement
  * units available
  */
 MeasurementFactory.getAvailableUnits = function () {
-	var units = [];
-	for (var c in Measurement._constructors) {
-		var measure = Measurement._constructors[c];
-		units = units.concat(measure.getMeasures());
-	}
-	return units;
+    var units = [];
+    for (var c in Measurement._constructors) {
+        var measure = Measurement._constructors[c];
+        units = units.concat(measure.getMeasures());
+    }
+    return units;
 };
 
 module.exports = MeasurementFactory;
