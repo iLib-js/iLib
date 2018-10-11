@@ -1,6 +1,6 @@
 {
     "name": "ilib",
-    "version": "14.0.0",
+    "version": "14.1.0",
     "main": "js/lib/ilib-node.js",
     "description": "iLib is a cross-engine library of internationalization (i18n) classes written in pure JS",
     "keywords": [
@@ -89,5 +89,8 @@
         "test": "ant test",
         "build.web": "webpack -p",
         "watch": "webpack --watch"
+    },
+    "publishConfig": {
+        tag: "experimental"
     }
 }
