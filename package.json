@@ -91,6 +91,6 @@
         "watch": "webpack --watch"
     },
     "publishConfig": {
-        tag: "experimental"
+        "tag": "experimental"
     }
 }
