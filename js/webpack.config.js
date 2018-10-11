@@ -43,7 +43,7 @@ module.exports = function(env, args) {
     if (compilationType !== "compiled" && compilationType !== "uncompiled") {
         compilationType = "uncompiled";
     }
-    
+
     if (target !== "web" && target !== "node") {
         // TODO add other targets here as necessary
         target = "web";
@@ -112,7 +112,7 @@ module.exports = function(env, args) {
     if (target !== "web") {
         ret.target = target;
     }
-    
+
     ret.output.filename = "ilib-" + size;
     if (assembly === "dynamicdata") {
         ret.output.filename += "-dyn";

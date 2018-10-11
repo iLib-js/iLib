@@ -1,6 +1,6 @@
 /**
  * ilib-standard-webpack.js - metafile that includes a reasonable set of other js files
- * 
+ *
  * @license
  * Copyright © 2018, JEDLSoft
  *

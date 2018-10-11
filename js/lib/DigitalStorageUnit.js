@@ -36,8 +36,8 @@ var JSUtils = require("./JSUtils.js");
  * the construction of this instance
  */
 var DigitalStorageUnit = function (options) {
-	this.unit = "byte";
-	this.amount = 0;
+    this.unit = "byte";
+    this.amount = 0;
 
     this.ratios = DigitalStorageUnit.ratios;
     this.aliases = DigitalStorageUnit.aliases;
@@ -53,7 +53,7 @@ DigitalStorageUnit.prototype.constructor = DigitalStorageUnit;
 
 DigitalStorageUnit.ratios = {
     /*            #    bit             byte            kb              kB              mb              mB              gb               gB               tb               tB               pb               pB   */
-	"bit":      [ 1,   1,              0.125,          0.0009765625,   1.220703125e-4, 9.536743164e-7, 1.192092896e-7, 9.313225746e-10, 1.164153218e-10, 9.094947017e-13, 1.136868377e-13, 8.881784197e-16, 1.110223025e-16 ],
+    "bit":      [ 1,   1,              0.125,          0.0009765625,   1.220703125e-4, 9.536743164e-7, 1.192092896e-7, 9.313225746e-10, 1.164153218e-10, 9.094947017e-13, 1.136868377e-13, 8.881784197e-16, 1.110223025e-16 ],
     "byte":     [ 2,   8,              1,              0.0078125,      0.0009765625,   7.629394531e-6, 9.536743164e-7, 7.450580597e-9,  9.313225746e-10, 7.275957614e-12, 9.094947017e-13, 7.105427358e-15, 8.881784197e-16 ],
     "kilobit":  [ 3,   1024,           128,            1,              0.125,          0.0009765625,   1.220703125e-4, 9.536743164e-7,  1.192092896e-7,  9.313225746e-10, 1.164153218e-10, 9.094947017e-13, 1.136868377e-13 ],
     "kilobyte": [ 4,   8192,           1024,           8,              1,              0.0078125,      0.0009765625,   7.629394531e-6,  9.536743164e-7,  7.450580597e-9,  9.313225746e-10, 7.275957614e-12, 9.094947017e-13 ],
@@ -69,7 +69,7 @@ DigitalStorageUnit.ratios = {
 
 /**
  * Return a new instance of this type of measurement.
- * 
+ *
  * @param {Object} params parameters to the constructor
  * @return {Measurement} a measurement subclass instance
  */
@@ -118,7 +118,7 @@ DigitalStorageUnit.byteSystem = [
  * @return {string} the name of the type of this measurement
  */
 DigitalStorageUnit.prototype.getMeasure = function() {
-	return "digitalStorage";
+    return "digitalStorage";
 };
 
 /**
@@ -165,7 +165,7 @@ DigitalStorageUnit.prototype.scale = function(measurementsystem, units) {
             mSystem = DigitalStorageUnit.bitSystem;
         }
     }
-    
+
     return this.newUnit(this.scaleUnits(mSystem));
 };
 
@@ -333,12 +333,12 @@ DigitalStorageUnit.aliases = {
 DigitalStorageUnit.convert = function(to, from, digitalStorage) {
     from = Measurement.getUnitIdCaseInsensitive(DigitalStorageUnit, from) || from;
     to = Measurement.getUnitIdCaseInsensitive(DigitalStorageUnit, to) || to;
-	var fromRow = DigitalStorageUnit.ratios[from];
-	var toRow = DigitalStorageUnit.ratios[to];
-	if (typeof(from) === 'undefined' || typeof(to) === 'undefined') {
-		return undefined;
-	}
-	var result = digitalStorage * fromRow[toRow[0]];
+    var fromRow = DigitalStorageUnit.ratios[from];
+    var toRow = DigitalStorageUnit.ratios[to];
+    if (typeof(from) === 'undefined' || typeof(to) === 'undefined') {
+        return undefined;
+    }
+    var result = digitalStorage * fromRow[toRow[0]];
     return result;
 };
 

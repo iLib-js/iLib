@@ -259,18 +259,18 @@ PersianDate.prototype._init2 = function (params) {
  */
 PersianDate.cumMonthLengths = [
     0,    // Farvardin
-	31,   // Ordibehesht
-	62,   // Khordad
-	93,   // Tir
-	124,  // Mordad
-	155,  // Shahrivar
-	186,  // Mehr
-	216,  // Aban
-	246,  // Azar
-	276,  // Dey
-	306,  // Bahman
-	336,  // Esfand
-	366
+    31,   // Ordibehesht
+    62,   // Khordad
+    93,   // Tir
+    124,  // Mordad
+    155,  // Shahrivar
+    186,  // Mehr
+    216,  // Aban
+    246,  // Azar
+    276,  // Dey
+    306,  // Bahman
+    336,  // Esfand
+    366
 ];
 
 /**
@@ -280,7 +280,7 @@ PersianDate.cumMonthLengths = [
  * @returns {RataDie} the new RD instance for the given params
  */
 PersianDate.prototype.newRd = function (params) {
-	return new PersRataDie(params);
+    return new PersRataDie(params);
 };
 
 /**
@@ -290,8 +290,8 @@ PersianDate.prototype.newRd = function (params) {
  * @returns {number} the year for the RD
  */
 PersianDate.prototype._calcYear = function(rd) {
-	var julianday = rd + this.rd.epoch;
-	return this.rd._getYear(julianday).year;
+    var julianday = rd + this.rd.epoch;
+    return this.rd._getYear(julianday).year;
 };
 
 /**
@@ -299,65 +299,65 @@ PersianDate.prototype._calcYear = function(rd) {
  * Calculate date components for the given RD date.
  */
 PersianDate.prototype._calcDateComponents = function () {
-	var remainder,
-		rd = this.rd.getRataDie();
+    var remainder,
+        rd = this.rd.getRataDie();
 
-	this.year = this._calcYear(rd);
+    this.year = this._calcYear(rd);
 
-	if (typeof(this.offset) === "undefined") {
-		// now offset the RD by the time zone, then recalculate in case we were
-		// near the year boundary
-		if (!this.tz) {
-			this.tz = new TimeZone({id: this.timezone});
-		}
-		this.offset = this.tz.getOffsetMillis(this) / 86400000;
-	}
+    if (typeof(this.offset) === "undefined") {
+        // now offset the RD by the time zone, then recalculate in case we were
+        // near the year boundary
+        if (!this.tz) {
+            this.tz = new TimeZone({id: this.timezone});
+        }
+        this.offset = this.tz.getOffsetMillis(this) / 86400000;
+    }
 
-	if (this.offset !== 0) {
-		rd += this.offset;
-		this.year = this._calcYear(rd);
-	}
+    if (this.offset !== 0) {
+        rd += this.offset;
+        this.year = this._calcYear(rd);
+    }
 
-	//console.log("PersDate.calcComponent: calculating for rd " + rd);
-	//console.log("PersDate.calcComponent: year is " + ret.year);
-	var yearStart = this.newRd({
-		year: this.year,
-		month: 1,
-		day: 1,
-		hour: 0,
-		minute: 0,
-		second: 0,
-		millisecond: 0
-	});
-	remainder = rd - yearStart.getRataDie() + 1;
+    //console.log("PersDate.calcComponent: calculating for rd " + rd);
+    //console.log("PersDate.calcComponent: year is " + ret.year);
+    var yearStart = this.newRd({
+        year: this.year,
+        month: 1,
+        day: 1,
+        hour: 0,
+        minute: 0,
+        second: 0,
+        millisecond: 0
+    });
+    remainder = rd - yearStart.getRataDie() + 1;
 
-	this.dayOfYear = remainder;
+    this.dayOfYear = remainder;
 
-	//console.log("PersDate.calcComponent: remainder is " + remainder);
+    //console.log("PersDate.calcComponent: remainder is " + remainder);
 
-	this.month = SearchUtils.bsearch(Math.floor(remainder), PersianDate.cumMonthLengths);
-	remainder -= PersianDate.cumMonthLengths[this.month-1];
+    this.month = SearchUtils.bsearch(Math.floor(remainder), PersianDate.cumMonthLengths);
+    remainder -= PersianDate.cumMonthLengths[this.month-1];
 
-	//console.log("PersDate.calcComponent: month is " + this.month + " and remainder is " + remainder);
+    //console.log("PersDate.calcComponent: month is " + this.month + " and remainder is " + remainder);
 
-	this.day = Math.floor(remainder);
-	remainder -= this.day;
+    this.day = Math.floor(remainder);
+    remainder -= this.day;
 
-	//console.log("PersDate.calcComponent: day is " + this.day + " and remainder is " + remainder);
+    //console.log("PersDate.calcComponent: day is " + this.day + " and remainder is " + remainder);
 
-	// now convert to milliseconds for the rest of the calculation
-	remainder = Math.round(remainder * 86400000);
+    // now convert to milliseconds for the rest of the calculation
+    remainder = Math.round(remainder * 86400000);
 
-	this.hour = Math.floor(remainder/3600000);
-	remainder -= this.hour * 3600000;
+    this.hour = Math.floor(remainder/3600000);
+    remainder -= this.hour * 3600000;
 
-	this.minute = Math.floor(remainder/60000);
-	remainder -= this.minute * 60000;
+    this.minute = Math.floor(remainder/60000);
+    remainder -= this.minute * 60000;
 
-	this.second = Math.floor(remainder/1000);
-	remainder -= this.second * 1000;
+    this.second = Math.floor(remainder/1000);
+    remainder -= this.second * 1000;
 
-	this.millisecond = remainder;
+    this.millisecond = remainder;
 };
 
 /**
@@ -367,8 +367,8 @@ PersianDate.prototype._calcDateComponents = function () {
  * @return {number} the day of the week
  */
 PersianDate.prototype.getDayOfWeek = function() {
-	var rd = Math.floor(this.getRataDie());
-	return MathUtils.mod(rd-3, 7);
+    var rd = Math.floor(this.getRataDie());
+    return MathUtils.mod(rd-3, 7);
 };
 
 /**
@@ -378,7 +378,7 @@ PersianDate.prototype.getDayOfWeek = function() {
  * @return {number} the ordinal day of the year
  */
 PersianDate.prototype.getDayOfYear = function() {
-	return PersianDate.cumMonthLengths[this.month-1] + this.day;
+    return PersianDate.cumMonthLengths[this.month-1] + this.day;
 };
 
 /**
@@ -391,7 +391,7 @@ PersianDate.prototype.getDayOfYear = function() {
  * common era
  */
 PersianDate.prototype.getEra = function() {
-	return (this.year < 1) ? -1 : 1;
+    return (this.year < 1) ? -1 : 1;
 };
 
 /**
@@ -400,7 +400,7 @@ PersianDate.prototype.getEra = function() {
  * @return {string} a string giving the name of the calendar
  */
 PersianDate.prototype.getCalendar = function() {
-	return "persian";
+    return "persian";
 };
 
 // register with the factory method

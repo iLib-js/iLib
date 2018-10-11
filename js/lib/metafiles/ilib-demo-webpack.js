@@ -1,7 +1,7 @@
 /**
- * ilib-demo-webpack.js - metafile that includes all of the other js files 
+ * ilib-demo-webpack.js - metafile that includes all of the other js files
  * for the demo site
- * 
+ *
  * @license
  * Copyright © 2018, JEDLSoft
  *

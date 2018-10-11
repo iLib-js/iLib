@@ -1,8 +1,8 @@
 /* jshint node: true */
 /*
- * ilib-node.js - glue code for node to load local ilib code and 
- * data dynamically 
- * 
+ * ilib-node.js - glue code for node to load local ilib code and
+ * data dynamically
+ *
  * Copyright © 2015, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");

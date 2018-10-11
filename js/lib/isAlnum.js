@@ -1,6 +1,6 @@
 /*
  * isAlnum.js - Character type is alphanumeric
- * 
+ *
  * Copyright © 2012-2015, 2018, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -23,27 +23,27 @@ var isDigit = require("./isDigit.js");
 
 /**
  * Return whether or not the first character is alphabetic or numeric.<p>
- * 
+ *
  * @static
  * @param {string|IString|number} ch character or code point to examine
  * @return {boolean} true if the first character is alphabetic or numeric
  */
 var isAlnum = function (ch) {
-	var num;
-	switch (typeof(ch)) {
-		case 'number':
-			num = ch;
-			break;
-		case 'string':
-			num = IString.toCodePoint(ch, 0);
-			break;
-		case 'undefined':
-			return false;
-		default:
-			num = ch._toCodePoint(0);
-			break;
-	}
-	return isAlpha(num) || isDigit(num);
+    var num;
+    switch (typeof(ch)) {
+        case 'number':
+            num = ch;
+            break;
+        case 'string':
+            num = IString.toCodePoint(ch, 0);
+            break;
+        case 'undefined':
+            return false;
+        default:
+            num = ch._toCodePoint(0);
+            break;
+    }
+    return isAlpha(num) || isDigit(num);
 };
 
 /**
@@ -53,9 +53,9 @@ var isAlnum = function (ch) {
  * @param {function(*)|undefined} onLoad
  */
 isAlnum._init = function (sync, loadParams, onLoad) {
-	isAlpha._init(sync, loadParams, function () {
-		isDigit._init(sync, loadParams, onLoad);
-	});
+    isAlpha._init(sync, loadParams, function () {
+        isDigit._init(sync, loadParams, onLoad);
+    });
 };
 
 module.exports = isAlnum;

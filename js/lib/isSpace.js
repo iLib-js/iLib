@@ -32,28 +32,28 @@ var IString = require("./IString.js");
  * @return {boolean} true if the first character is a whitespace character.
  */
 var isSpace = function (ch) {
-	var num;
-	switch (typeof(ch)) {
-		case 'number':
-			num = ch;
-			break;
-		case 'string':
-			num = IString.toCodePoint(ch, 0);
-			break;
-		case 'undefined':
-			return false;
-		default:
-			num = ch._toCodePoint(0);
-			break;
-	}
+    var num;
+    switch (typeof(ch)) {
+        case 'number':
+            num = ch;
+            break;
+        case 'string':
+            num = IString.toCodePoint(ch, 0);
+            break;
+        case 'undefined':
+            return false;
+        default:
+            num = ch._toCodePoint(0);
+            break;
+    }
 
-	return ilib.data.ctype && ilib.data.ctype_z ?
-	    (CType._inRange(num, 'space', ilib.data.ctype) ||
-		CType._inRange(num, 'Zs', ilib.data.ctype_z) ||
-		CType._inRange(num, 'Zl', ilib.data.ctype_z) ||
-		CType._inRange(num, 'Zp', ilib.data.ctype_z)) :
-		(ch === ' ' || num === 0xA0 ||
-		(num >= 0x09 && num <= 0x0D));
+    return ilib.data.ctype && ilib.data.ctype_z ?
+        (CType._inRange(num, 'space', ilib.data.ctype) ||
+        CType._inRange(num, 'Zs', ilib.data.ctype_z) ||
+        CType._inRange(num, 'Zl', ilib.data.ctype_z) ||
+        CType._inRange(num, 'Zp', ilib.data.ctype_z)) :
+        (ch === ' ' || num === 0xA0 ||
+        (num >= 0x09 && num <= 0x0D));
 };
 
 /**
@@ -63,9 +63,9 @@ var isSpace = function (ch) {
  * @param {function(*)|undefined} onLoad
  */
 isSpace._init = function (sync, loadParams, onLoad) {
-	CType._load("ctype_z", sync, loadParams, function () {
-		CType._init(sync, loadParams, onLoad);
-	});
+    CType._load("ctype_z", sync, loadParams, function () {
+        CType._init(sync, loadParams, onLoad);
+    });
 };
 
 module.exports = isSpace;

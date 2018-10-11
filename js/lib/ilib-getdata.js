@@ -1,6 +1,6 @@
 /**
  * ilib-getdata.js - define the locale data for assembled or dynamic
- * 
+ *
  * @license
  * Copyright © 2018, JEDLSoft
  *
@@ -20,7 +20,7 @@
 
 var ilib = require("./ilib.js");
 
-// The following will either require and then install the 
+// The following will either require and then install the
 // WebpackLoader to dynamically load locale data bundles,
 // or it will statically require all of the locale data that
 // this build needs so that it can be included into this

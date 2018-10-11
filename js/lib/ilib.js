@@ -1,6 +1,6 @@
 /*
  * ilib.js - define the ilib name space
- * 
+ *
  * Copyright © 2012-2018, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -20,7 +20,7 @@
 /**
  * @namespace The global namespace that contains general ilib functions useful
  * to all of ilib
- * 
+ *
  * @version // !macro ilibVersion
  */
 var ilib = ilib || {};
@@ -33,7 +33,7 @@ ilib._ver = function() {
 
 /**
  * Return the current version of ilib.
- * 
+ *
  * @static
  * @return {string} a version string for this instance of ilib
  */
@@ -54,13 +54,13 @@ ilib.getVersion = function () {
  * Place where resources and such are eventually assigned.
  */
 ilib.data = {
-	/** @type {{ccc:Object.<string,number>,nfd:Object.<string,string>,nfc:Object.<string,string>,nfkd:Object.<string,string>,nfkc:Object.<string,string>}} */
+    /** @type {{ccc:Object.<string,number>,nfd:Object.<string,string>,nfc:Object.<string,string>,nfkd:Object.<string,string>,nfkc:Object.<string,string>}} */
     norm: {
-    	ccc: {},
-    	nfd: {},
-    	nfc: {},
-    	nfkd: {},
-    	nfkc: {}
+        ccc: {},
+        nfd: {},
+        nfc: {},
+        nfkd: {},
+        nfkc: {}
     },
     zoneinfo: {
         "Etc/UTC":{"o":"0:0","f":"UTC"},
@@ -96,15 +96,15 @@ if (typeof(module) !== 'undefined') {
  * internationalization aspects of software. Instead of translating the text of the software
  * into a foreign language, as in the process of localization, the textual elements of an application
  * are replaced with an altered version of the original language.These specific alterations make
- * the original words appear readable, but include the most problematic characteristics of 
+ * the original words appear readable, but include the most problematic characteristics of
  * the world's languages: varying length of text or characters, language direction, and so on.
  * Regular Latin pseudo locale: eu-ES and RTL pseudo locale: ps-AF
- * 
+ *
  * @param {string|undefined|null} localename the locale specifier for the pseudo locale
  */
 ilib.setAsPseudoLocale = function (localename) {
    if (localename) {
-	   ilib.pseudoLocales.push(localename)
+       ilib.pseudoLocales.push(localename)
    }
 };
 
@@ -113,7 +113,7 @@ ilib.setAsPseudoLocale = function (localename) {
  * @static
  */
 ilib.clearPseudoLocales = function() {
-	ilib.pseudoLocales = [
+    ilib.pseudoLocales = [
         "zxx-XX",
         "zxx-Cyrl-XX",
         "zxx-Hans-XX",
@@ -131,23 +131,23 @@ ilib.clearPseudoLocales();
  */
 ilib._getPlatform = function () {
     if (!ilib._platform) {
-    	try {
-    		if (typeof(java.lang.Object) !== 'undefined') {
-    			ilib._platform = (typeof(process) !== 'undefined') ? "trireme" : "rhino";
-    			return ilib._platform;
-    		}
-    	} catch (e) {}
-    	
+        try {
+            if (typeof(java.lang.Object) !== 'undefined') {
+                ilib._platform = (typeof(process) !== 'undefined') ? "trireme" : "rhino";
+                return ilib._platform;
+            }
+        } catch (e) {}
+
         if (typeof(global) !== 'undefined' && global.process && global.process.versions && global.process.versions.node && typeof(module) !== 'undefined') {
             ilib._platform = "nodejs";
         } else if (typeof(Qt) !== 'undefined') {
-        	ilib._platform = "qt";
+            ilib._platform = "qt";
         } else if (typeof(window) !== 'undefined') {
             ilib._platform = (typeof(PalmSystem) !== 'undefined') ? "webos" : "browser";
         } else {
             ilib._platform = "unknown";
         }
-    }    
+    }
     return ilib._platform;
 };
 
@@ -155,42 +155,42 @@ ilib._getPlatform = function () {
  * If this ilib is running in a browser, return the name of that browser.
  * @private
  * @static
- * @return {string|undefined} the name of the browser that this is running in ("firefox", "chrome", "ie", 
+ * @return {string|undefined} the name of the browser that this is running in ("firefox", "chrome", "ie",
  * "safari", or "opera"), or undefined if this is not running in a browser or if
- * the browser name could not be determined 
+ * the browser name could not be determined
  */
 ilib._getBrowser = function () {
-	var browser = undefined;
-	if (ilib._getPlatform() === "browser") {
-		if (navigator && navigator.userAgent) {
-			if (navigator.userAgent.indexOf("Firefox") > -1) {
-				browser = "firefox";
-			}
-			if (navigator.userAgent.search(/Opera|OPR/) > -1 ) {
-				browser = "opera";
-			}
-			if (navigator.userAgent.indexOf("Chrome") > -1) {
-				browser = "chrome";
-			}
-			if (navigator.userAgent.indexOf(" .NET") > -1) {
-				browser = "ie";
-			}
-			if (navigator.userAgent.indexOf("Safari") > -1) {
-				// chrome also has the string Safari in its userAgent, but the chrome case is 
-				// already taken care of above
-				browser = "safari";
-			}
-            if (navigator.userAgent.indexOf("Edge") > -1) {                
+    var browser = undefined;
+    if (ilib._getPlatform() === "browser") {
+        if (navigator && navigator.userAgent) {
+            if (navigator.userAgent.indexOf("Firefox") > -1) {
+                browser = "firefox";
+            }
+            if (navigator.userAgent.search(/Opera|OPR/) > -1 ) {
+                browser = "opera";
+            }
+            if (navigator.userAgent.indexOf("Chrome") > -1) {
+                browser = "chrome";
+            }
+            if (navigator.userAgent.indexOf(" .NET") > -1) {
+                browser = "ie";
+            }
+            if (navigator.userAgent.indexOf("Safari") > -1) {
+                // chrome also has the string Safari in its userAgent, but the chrome case is
+                // already taken care of above
+                browser = "safari";
+            }
+            if (navigator.userAgent.indexOf("Edge") > -1) {
                 browser = "Edge";
             }
             if (navigator.userAgent.search(/iPad|iPhone|iPod/) > -1) {
-                // Due to constraints of the iOS platform, 
+                // Due to constraints of the iOS platform,
                 // all browser must be built on top of the WebKit rendering engine
                 browser = "iOS";
             }
-		}
-	}
-	return browser;
+        }
+    }
+    return browser;
 };
 
 /**
@@ -225,7 +225,7 @@ ilib._top = function() {
 };
 
 /**
- * Return the value of a global variable given its name in a way that works 
+ * Return the value of a global variable given its name in a way that works
  * correctly for the current platform.
  * @private
  * @static
@@ -235,10 +235,10 @@ ilib._top = function() {
 ilib._global = function(name) {
     var top = this._top();
     try {
-		return top[name];
-	} catch (e) {
-		return undefined;
-	}
+        return top[name];
+    } catch (e) {
+        return undefined;
+    }
 };
 
 /**
@@ -249,7 +249,7 @@ ilib._global = function(name) {
  * @return {boolean} true if the global variable is defined on this platform, false otherwise
  */
 ilib._isGlobal = function(name) {
-	return typeof(ilib._global(name)) !== 'undefined';
+    return typeof(ilib._global(name)) !== 'undefined';
 };
 
 /**
@@ -258,7 +258,7 @@ ilib._isGlobal = function(name) {
  * for garbage collecting.
  */
 ilib.clearCache = function() {
-	ilib.data.cache = {};
+    ilib.data.cache = {};
 };
 
 /**
@@ -266,10 +266,10 @@ ilib.clearCache = function() {
  * when no explicit locale is passed to any ilib class. If the default
  * locale is not set, ilib will attempt to use the locale of the
  * environment it is running in, if it can find that. If not, it will
- * default to the locale "en-US". If a type of parameter is string, 
+ * default to the locale "en-US". If a type of parameter is string,
  * ilib will take only well-formed BCP-47 tag  <p>
- * 
- * 
+ *
+ *
  * @static
  * @param {string|undefined|null} spec the locale specifier for the default locale
  */
@@ -282,14 +282,14 @@ ilib.setLocale = function (spec) {
 };
 
 /**
- * Return the default locale for all of ilib if one has been set. This 
- * locale will be used when no explicit locale is passed to any ilib 
+ * Return the default locale for all of ilib if one has been set. This
+ * locale will be used when no explicit locale is passed to any ilib
  * class. If the default
  * locale is not set, ilib will attempt to use the locale of the
  * environment it is running in, if it can find that. If not, it will
  * default to the locale "en-US".<p>
- * 
- * 
+ *
+ *
  * @static
  * @return {string} the locale specifier for the default locale
  */
@@ -300,13 +300,13 @@ ilib.getLocale = function () {
             case 'browser':
                 // running in a browser
                 if(typeof(navigator.language) !== 'undefined') {
-                    ilib.locale = navigator.language.substring(0,3) + navigator.language.substring(3,5).toUpperCase();  // FF/Opera/Chrome/Webkit    
+                    ilib.locale = navigator.language.substring(0,3) + navigator.language.substring(3,5).toUpperCase();  // FF/Opera/Chrome/Webkit
                 }
                 if (!ilib.locale) {
                     // IE on Windows
-                    lang = typeof(navigator.browserLanguage) !== 'undefined' ? 
+                    lang = typeof(navigator.browserLanguage) !== 'undefined' ?
                         navigator.browserLanguage :
-                            (typeof(navigator.userLanguage) !== 'undefined' ? 
+                            (typeof(navigator.userLanguage) !== 'undefined' ?
                                 navigator.userLanguage :
                                     (typeof(navigator.systemLanguage) !== 'undefined' ?
                                         navigator.systemLanguage :
@@ -319,8 +319,8 @@ ilib.getLocale = function () {
                 break;
             case 'webos':
                 // webOS
-                if (typeof(PalmSystem.locales) !== 'undefined' && 
-                    typeof(PalmSystem.locales.UI) != 'undefined' && 
+                if (typeof(PalmSystem.locales) !== 'undefined' &&
+                    typeof(PalmSystem.locales.UI) != 'undefined' &&
                     PalmSystem.locales.UI.length > 0) {
                     ilib.locale = PalmSystem.locales.UI;
                 } else if (typeof(PalmSystem.locale) !== 'undefined') {
@@ -376,8 +376,8 @@ ilib.getLocale = function () {
  * is not set, ilib will attempt to use the time zone of the
  * environment it is running in, if it can find that. If not, it will
  * default to the the UTC zone "Etc/UTC".<p>
- * 
- * 
+ *
+ *
  * @static
  * @param {string} tz the name of the time zone to set as the default time zone
  */
@@ -386,14 +386,14 @@ ilib.setTimeZone = function (tz) {
 };
 
 /**
- * Return the default time zone for all of ilib if one has been set. This 
- * time zone will be used when no explicit time zone is passed to any ilib 
+ * Return the default time zone for all of ilib if one has been set. This
+ * time zone will be used when no explicit time zone is passed to any ilib
  * class. If the default time zone
  * is not set, ilib will attempt to use the locale of the
  * environment it is running in, if it can find that. If not, it will
  * default to the the zone "local".<p>
- * 
- * 
+ *
+ *
  * @static
  * @return {string} the default time zone for ilib
  */
@@ -403,7 +403,7 @@ ilib.getTimeZone = function() {
             var ro = new Intl.DateTimeFormat().resolvedOptions();
             ilib.tz = ro && ro.timeZone;
         }
-        
+
         switch (ilib._getPlatform()) {
             case 'browser':
                 // running in a browser
@@ -429,8 +429,8 @@ ilib.getTimeZone = function() {
                 }
                 break;
         }
-        
-        ilib.tz = ilib.tz || "local"; 
+
+        ilib.tz = ilib.tz || "local";
     }
 
     return ilib.tz;
@@ -447,23 +447,23 @@ ilib.Loader = function() {};
 
 /**
  * Load a set of files from where-ever it is stored.<p>
- * 
- * This is the main function define a callback function for loading missing locale 
+ *
+ * This is the main function define a callback function for loading missing locale
  * data or resources.
  * If this copy of ilib is assembled without including the required locale data
- * or resources, then that data can be lazy loaded dynamically when it is 
+ * or resources, then that data can be lazy loaded dynamically when it is
  * needed by calling this method. Each ilib class will first
- * check for the existence of data under ilib.data, and if it is not there, 
+ * check for the existence of data under ilib.data, and if it is not there,
  * it will attempt to load it by calling this method of the laoder, and then place
  * it there.<p>
- * 
- * Suggested implementations of this method might load files 
- * directly from disk under nodejs or rhino, or within web pages, to load 
+ *
+ * Suggested implementations of this method might load files
+ * directly from disk under nodejs or rhino, or within web pages, to load
  * files from the server with XHR calls.<p>
- * 
- * The first parameter to this method, paths, is an array of relative paths within 
- * the ilib dir structure for the 
- * requested data. These paths will already have the locale spec integrated 
+ *
+ * The first parameter to this method, paths, is an array of relative paths within
+ * the ilib dir structure for the
+ * requested data. These paths will already have the locale spec integrated
  * into them, so no further tweaking needs to happen to load the data. Simply
  * load the named files. The second
  * parameter tells the loader whether to load the files synchronously or asynchronously.
@@ -471,28 +471,28 @@ ilib.Loader = function() {};
  * The third parameter gives extra parameters to the loader passed from the calling
  * code. This may contain any property/value pairs.  The last parameter, callback,
  * is a callback function to call when all of the data is finishing loading. Make
- * sure to call the callback with the context of "this" so that the caller has their 
+ * sure to call the callback with the context of "this" so that the caller has their
  * context back again.<p>
- * 
- * The loader function must be able to operate either synchronously or asychronously. 
+ *
+ * The loader function must be able to operate either synchronously or asychronously.
  * If the loader function is called with an undefined callback function, it is
  * expected to load the data synchronously, convert it to javascript
- * objects, and return the array of json objects as the return value of the 
- * function. If the loader 
- * function is called with a callback function, it may load the data 
+ * objects, and return the array of json objects as the return value of the
+ * function. If the loader
+ * function is called with a callback function, it may load the data
  * synchronously or asynchronously (doesn't matter which) as long as it calls
  * the callback function with the data converted to a javascript objects
- * when it becomes available. If a particular file could not be loaded, the 
+ * when it becomes available. If a particular file could not be loaded, the
  * loader function should put undefined into the corresponding entry in the
- * results array. 
+ * results array.
  * Note that it is important that all the data is loaded before the callback
  * is called.<p>
- * 
+ *
  * An example implementation for nodejs might be:
- * 
+ *
  * <pre>
  * var fs = require("fs");
- * 
+ *
  * var myLoader = function() {};
  * myLoader.prototype = new Loader();
  * myLoader.prototype.constructor = myLoader;
@@ -504,7 +504,7 @@ ilib.Loader = function() {};
  *            var json = fs.readFileSync(path, "utf-8");
  *            ret.push(json ? JSON.parse(json) : undefined);
  *        });
- *        
+ *
  *        return ret;
  *    }
  *    this.callback = callback;
@@ -528,18 +528,18 @@ ilib.Loader = function() {};
  *        });
  *     }
  * }
- * 
+ *
  * // bind to "this" so that "this" is relative to your own instance
  * ilib.setLoaderCallback(new myLoader());
  * </pre>
 
- * @param {Array.<string>} paths An array of paths to load from wherever the files are stored 
+ * @param {Array.<string>} paths An array of paths to load from wherever the files are stored
  * @param {Boolean} sync if true, load the files synchronously, and false means asynchronously
- * @param {Object} params an object with any extra parameters for the loader. These can be 
+ * @param {Object} params an object with any extra parameters for the loader. These can be
  * anything. The caller of the ilib class passes these parameters in. Presumably, the code that
- * calls ilib and the code that provides the loader are together and can have a private 
+ * calls ilib and the code that provides the loader are together and can have a private
  * agreement between them about what the parameters should contain.
- * @param {function(Object)} callback function to call when the files are all loaded. The 
+ * @param {function(Object)} callback function to call when the files are all loaded. The
  * parameter of the callback function is the contents of the files.
  */
 ilib.Loader.prototype.loadFiles = function (paths, sync, params, callback) {};
@@ -550,7 +550,7 @@ ilib.Loader.prototype.loadFiles = function (paths, sync, params, callback) {};
  * directories where files are loaded from and the values are an array
  * of strings containing the relative paths under the directory of each
  * file that can be loaded.<p>
- * 
+ *
  * Example:
  *  <pre>
  *  {
@@ -566,7 +566,7 @@ ilib.Loader.prototype.loadFiles = function (paths, sync, params, callback) {};
  *  }
  *  </pre>
  * @returns {Object} a hash containing directory names and
- * paths to file that can be loaded by this loader 
+ * paths to file that can be loaded by this loader
  */
 ilib.Loader.prototype.listAvailableFiles = function() {};
 
@@ -582,10 +582,10 @@ ilib.Loader.prototype.listAvailableFiles = function() {};
 ilib.Loader.prototype.isAvailable = function(path) {};
 
 /**
- * Set the custom loader used to load ilib's locale data in your environment. 
+ * Set the custom loader used to load ilib's locale data in your environment.
  * The instance passed in must implement the Loader interface. See the
- * Loader class documentation for more information about loaders. 
- * 
+ * Loader class documentation for more information about loaders.
+ *
  * @static
  * @param {ilib.Loader} loader class to call to access the requested data.
  * @return {boolean} true if the loader was installed correctly, or false
@@ -593,7 +593,7 @@ ilib.Loader.prototype.isAvailable = function(path) {};
  */
 ilib.setLoaderCallback = function(loader) {
     // only a basic check
-    if ((typeof(loader) === 'object' && typeof(loader.loadFiles) === 'function') || 
+    if ((typeof(loader) === 'object' && typeof(loader.loadFiles) === 'function') ||
             typeof(loader) === 'function' || typeof(loader) === 'undefined') {
         //console.log("setting callback loader to " + (loader ? loader.name : "undefined"));
         ilib._load = loader;
@@ -603,137 +603,137 @@ ilib.setLoaderCallback = function(loader) {
 };
 
 /**
- * Return the custom Loader instance currently in use with this instance 
+ * Return the custom Loader instance currently in use with this instance
  * of ilib. If there is no loader, this method returns undefined.
- * 
+ *
  * @protected
  * @static
- * @return {ilib.Loader|undefined} the loader instance currently in use, or 
+ * @return {ilib.Loader|undefined} the loader instance currently in use, or
  * undefined if there is no such loader
  */
 ilib.getLoader = function() {
-	return ilib._load;
+    return ilib._load;
 };
 
 /**
- * Test whether an object is an javascript array. 
- * 
+ * Test whether an object is an javascript array.
+ *
  * @static
  * @param {*} object The object to test
  * @return {boolean} return true if the object is an array
  * and false otherwise
  */
 ilib.isArray = function(object) {
-	if (typeof(object) === 'object') {
-		return Object.prototype.toString.call(object) === '[object Array]';
-	}
-	return false; 
+    if (typeof(object) === 'object') {
+        return Object.prototype.toString.call(object) === '[object Array]';
+    }
+    return false;
 };
 
 /**
  * Extend object1 by mixing in everything from object2 into it. The objects
  * are deeply extended, meaning that this method recursively descends the
  * tree in the objects and mixes them in at each level. Arrays are extended
- * by concatenating the elements of object2 onto those of object1.  
- * 
+ * by concatenating the elements of object2 onto those of object1.
+ *
  * @static
  * @param {Object} object1 the target object to extend
  * @param {Object=} object2 the object to mix in to object1
  * @return {Object} returns object1
  */
 ilib.extend = function (object1, object2) {
-	var prop = undefined;
-	if (object2) {
-		for (prop in object2) {
-			// don't extend object with undefined or functions
-			if (prop && typeof(object2[prop]) !== 'undefined' && typeof(object2[prop]) !== "function") {
-				if (ilib.isArray(object1[prop]) && ilib.isArray(object2[prop])) {
-					//console.log("Merging array prop " + prop);
-					object1[prop] = object1[prop].concat(object2[prop]);
-				} else if (typeof(object1[prop]) === 'object' && typeof(object2[prop]) === 'object') {
-					//console.log("Merging object prop " + prop);
-					if (prop !== "ilib") {
-						object1[prop] = ilib.extend(object1[prop], object2[prop]);
-					}
-				} else {
-					//console.log("Copying prop " + prop);
-					// for debugging. Used to determine whether or not json files are overriding their parents unnecessarily
-					object1[prop] = object2[prop];
-				}
-			}
-		}
-	}
-	return object1;
+    var prop = undefined;
+    if (object2) {
+        for (prop in object2) {
+            // don't extend object with undefined or functions
+            if (prop && typeof(object2[prop]) !== 'undefined' && typeof(object2[prop]) !== "function") {
+                if (ilib.isArray(object1[prop]) && ilib.isArray(object2[prop])) {
+                    //console.log("Merging array prop " + prop);
+                    object1[prop] = object1[prop].concat(object2[prop]);
+                } else if (typeof(object1[prop]) === 'object' && typeof(object2[prop]) === 'object') {
+                    //console.log("Merging object prop " + prop);
+                    if (prop !== "ilib") {
+                        object1[prop] = ilib.extend(object1[prop], object2[prop]);
+                    }
+                } else {
+                    //console.log("Copying prop " + prop);
+                    // for debugging. Used to determine whether or not json files are overriding their parents unnecessarily
+                    object1[prop] = object2[prop];
+                }
+            }
+        }
+    }
+    return object1;
 };
 
 ilib.extend2 = function (object1, object2) {
-	var prop = undefined;
-	if (object2) {
-		for (prop in object2) {
-			// don't extend object with undefined or functions
-			if (prop && typeof(object2[prop]) !== 'undefined') {
-				if (ilib.isArray(object1[prop]) && ilib.isArray(object2[prop])) {
-					//console.log("Merging array prop " + prop);
-					object1[prop] = object1[prop].concat(object2[prop]);
-				} else if (typeof(object1[prop]) === 'object' && typeof(object2[prop]) === 'object') {
-					//console.log("Merging object prop " + prop);
-					if (prop !== "ilib") {
-						object1[prop] = ilib.extend2(object1[prop], object2[prop]);
-					}
-				} else {
-					//console.log("Copying prop " + prop);
-					// for debugging. Used to determine whether or not json files are overriding their parents unnecessarily
-					object1[prop] = object2[prop];
-				}
-			}
-		}
-	}
-	return object1;
+    var prop = undefined;
+    if (object2) {
+        for (prop in object2) {
+            // don't extend object with undefined or functions
+            if (prop && typeof(object2[prop]) !== 'undefined') {
+                if (ilib.isArray(object1[prop]) && ilib.isArray(object2[prop])) {
+                    //console.log("Merging array prop " + prop);
+                    object1[prop] = object1[prop].concat(object2[prop]);
+                } else if (typeof(object1[prop]) === 'object' && typeof(object2[prop]) === 'object') {
+                    //console.log("Merging object prop " + prop);
+                    if (prop !== "ilib") {
+                        object1[prop] = ilib.extend2(object1[prop], object2[prop]);
+                    }
+                } else {
+                    //console.log("Copying prop " + prop);
+                    // for debugging. Used to determine whether or not json files are overriding their parents unnecessarily
+                    object1[prop] = object2[prop];
+                }
+            }
+        }
+    }
+    return object1;
 };
 
 /**
  * If Function.prototype.bind does not exist in this JS engine, this
  * function reimplements it in terms of older JS functions.
  * bind() doesn't exist in many older browsers.
- * 
+ *
  * @static
  * @param {Object} scope object that the method should operate on
  * @param {function(...)} method method to call
- * @return {function(...)|undefined} function that calls the given method 
+ * @return {function(...)|undefined} function that calls the given method
  * in the given scope with all of its arguments properly attached, or
  * undefined if there was a problem with the arguments
  */
 ilib.bind = function(scope, method/*, bound arguments*/){
-	if (!scope || !method) {
-		return undefined;
-	}
-	
-	/** @protected 
-	 * @param {Arguments} inArrayLike
-	 * @param {number=} inOffset
-	 */
-	function cloneArray(inArrayLike, inOffset) {
-		var arr = [];
-		for(var i = inOffset || 0, l = inArrayLike.length; i<l; i++){
-			arr.push(inArrayLike[i]);
-		}
-		return arr;
-	}
+    if (!scope || !method) {
+        return undefined;
+    }
 
-	if (typeof(method) === 'function') {
-		var func, args = cloneArray(arguments, 2);
-		if (typeof(method.bind) === 'function') {
-			func = method.bind.apply(method, [scope].concat(args));
-		} else {
-			func = function() {
-				var nargs = cloneArray(arguments);
-				// invoke with collected args
-				return method.apply(scope, args.concat(nargs));
-			};
-		}
-		return func;
-	}
-	return undefined;
+    /** @protected
+     * @param {Arguments} inArrayLike
+     * @param {number=} inOffset
+     */
+    function cloneArray(inArrayLike, inOffset) {
+        var arr = [];
+        for(var i = inOffset || 0, l = inArrayLike.length; i<l; i++){
+            arr.push(inArrayLike[i]);
+        }
+        return arr;
+    }
+
+    if (typeof(method) === 'function') {
+        var func, args = cloneArray(arguments, 2);
+        if (typeof(method.bind) === 'function') {
+            func = method.bind.apply(method, [scope].concat(args));
+        } else {
+            func = function() {
+                var nargs = cloneArray(arguments);
+                // invoke with collected args
+                return method.apply(scope, args.concat(nargs));
+            };
+        }
+        return func;
+    }
+    return undefined;
 };
 
 /**
@@ -744,12 +744,12 @@ ilib._dyncode = false;
 /**
  * Return true if this copy of ilib is using dynamically loaded code. It returns
  * false for pre-assembled code.
- * 
+ *
  * @static
  * @return {boolean} true if this ilib uses dynamically loaded code, and false otherwise
  */
 ilib.isDynCode = function() {
-	return ilib._dyncode;
+    return ilib._dyncode;
 };
 
 /**
@@ -760,12 +760,12 @@ ilib._dyndata = false;
 /**
  * Return true if this copy of ilib is using dynamically loaded locale data. It returns
  * false for pre-assembled data.
- * 
+ *
  * @static
  * @return {boolean} true if this ilib uses dynamically loaded locale data, and false otherwise
  */
 ilib.isDynData = function() {
-	return ilib._dyndata;
+    return ilib._dyndata;
 };
 
 ilib._loadtime = new Date().getTime();

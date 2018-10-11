@@ -73,17 +73,17 @@ var GregorianDate = require("./GregorianDate.js");
  * @param {Object=} params parameters that govern the settings and behaviour of this Persian RD date
  */
 var PersRataDie = function(params) {
-	this.rd = NaN;
-	Astro.initAstro(
-		params && typeof(params.sync) === 'boolean' ? params.sync : true,
-		params && params.loadParams,
-		ilib.bind(this, function (x) {
-		    RataDie.call(this, params);
-			if (params && typeof(params.callback) === 'function') {
-				params.callback(this);
-			}
-		})
-	);
+    this.rd = NaN;
+    Astro.initAstro(
+        params && typeof(params.sync) === 'boolean' ? params.sync : true,
+        params && params.loadParams,
+        ilib.bind(this, function (x) {
+            RataDie.call(this, params);
+            if (params && typeof(params.callback) === 'function') {
+                params.callback(this);
+            }
+        })
+    );
 };
 
 PersRataDie.prototype = new RataDie();
@@ -133,33 +133,33 @@ PersRataDie.prototype._tehranEquinox = function(year) {
  * @return {{year:number,equinox:number}} the year and the last equinox
  */
 PersRataDie.prototype._getYear = function(jd) {
-	var gd = new GregorianDate({julianday: jd});
+    var gd = new GregorianDate({julianday: jd});
     var guess = gd.getYears() - 2,
-    	nexteq,
-    	ret = {};
+        nexteq,
+        ret = {};
 
     //ret.equinox = Math.floor(this._tehranEquinox(guess));
     ret.equinox = this._tehranEquinox(guess);
-	while (ret.equinox > jd) {
-	    guess--;
-	    // ret.equinox = Math.floor(this._tehranEquinox(guess));
-	    ret.equinox = this._tehranEquinox(guess);
-	}
-	nexteq = ret.equinox - 1;
-	// if the equinox falls after noon, then the day after that is the start of the
-	// next year, so truncate the JD to get the noon of the day before the day with
-	//the equinox on it, then add 0.5 to get the midnight of that day
-	while (!(Math.floor(ret.equinox) + 0.5 <= jd && jd < Math.floor(nexteq) + 0.5)) {
-	    ret.equinox = nexteq;
-	    guess++;
-	    // nexteq = Math.floor(this._tehranEquinox(guess));
-	    nexteq = this._tehranEquinox(guess);
-	}
+    while (ret.equinox > jd) {
+        guess--;
+        // ret.equinox = Math.floor(this._tehranEquinox(guess));
+        ret.equinox = this._tehranEquinox(guess);
+    }
+    nexteq = ret.equinox - 1;
+    // if the equinox falls after noon, then the day after that is the start of the
+    // next year, so truncate the JD to get the noon of the day before the day with
+    //the equinox on it, then add 0.5 to get the midnight of that day
+    while (!(Math.floor(ret.equinox) + 0.5 <= jd && jd < Math.floor(nexteq) + 0.5)) {
+        ret.equinox = nexteq;
+        guess++;
+        // nexteq = Math.floor(this._tehranEquinox(guess));
+        nexteq = this._tehranEquinox(guess);
+    }
 
-	// Mean solar tropical year is 365.24219878 days
-	ret.year = Math.round((ret.equinox - this.epoch - 1) / 365.24219878) + 1;
+    // Mean solar tropical year is 365.24219878 days
+    ret.year = Math.round((ret.equinox - this.epoch - 1) / 365.24219878) + 1;
 
-	return ret;
+    return ret;
 };
 
 /**
@@ -186,13 +186,13 @@ PersRataDie.prototype._setDateComponents = function(date) {
                 (((date.month || 1) - 1) * 31) :
                 ((((date.month || 1) - 1) * 30) + 6)
             ) +
-    	    ((date.day || 1) - 1 + 0.5); // add 0.5 so that we convert JDs, which start at noon to RDs which start at midnight
+            ((date.day || 1) - 1 + 0.5); // add 0.5 so that we convert JDs, which start at noon to RDs which start at midnight
 
-	jd += ((date.hour || 0) * 3600000 +
-			(date.minute || 0) * 60000 +
-			(date.second || 0) * 1000 +
-			(date.millisecond || 0)) /
-			86400000;
+    jd += ((date.hour || 0) * 3600000 +
+            (date.minute || 0) * 60000 +
+            (date.second || 0) * 1000 +
+            (date.millisecond || 0)) /
+            86400000;
 
     this.rd = jd - this.epoch;
 };
@@ -207,7 +207,7 @@ PersRataDie.prototype._setDateComponents = function(date) {
  * @return {number} the rd of the day of the week
  */
 PersRataDie.prototype._onOrBefore = function(rd, dayOfWeek) {
-	return rd - MathUtils.mod(Math.floor(rd) - dayOfWeek - 3, 7);
+    return rd - MathUtils.mod(Math.floor(rd) - dayOfWeek - 3, 7);
 };
 
 module.exports = PersRataDie;

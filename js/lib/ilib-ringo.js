@@ -1,7 +1,7 @@
 /*
  * ilib-ringo.js - glue code for rhino apps to load inside of an app server
  * using ringojs
- * 
+ *
  * Copyright © 2015, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -18,7 +18,7 @@
  * limitations under the License.
  */
 
-// ringo already has a CommonJS require system, so we don't have to implement 
+// ringo already has a CommonJS require system, so we don't have to implement
 // our own like we do in plain jane rhino
 
 var RhinoLoader = require("../lib/RhinoLoader.js");
