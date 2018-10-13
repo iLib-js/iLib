@@ -47,7 +47,9 @@ module.exports = function (ilib) {
         //console.log("module.filename is " + module.filename + "\n");
         //console.log("base is defined as " + this.base + "\n");
 
-        this.includePath.push(path.join(this.root, "resources"));     // always check the application's resources dir first
+        // this.includePath.push(path.join(this.root, "resources"));     
+        this._exists(this.root, "resources"); // always check the application's resources dir first
+        this._exists(path.join(this.root, "locale"), "localeinfo.json");
 
         // then a standard locale dir of a built version of ilib from npm
         this._exists(path.join(this.base, "locale"), "localeinfo.json");

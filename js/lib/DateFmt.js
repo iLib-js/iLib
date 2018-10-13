@@ -19,7 +19,7 @@
 
 // !data dateformats sysres
 
-var ilib = require("./ilib.js");
+var ilib = require("../index");
 var Utils = require("./Utils.js");
 var JSUtils = require("./JSUtils.js");
 
@@ -432,7 +432,7 @@ var DateFmt = function(options) {
                 // If we are running in the dynamic code loading assembly of ilib, the following
                 // will attempt to dynamically load the calendar date class for this calendar. If
                 // it doesn't work, this just goes on and it will use Gregorian instead.
-                DateFactory._dynLoadDate(this.calName);
+                DateFactory._init(this.calName);
             }
 
             CalendarFactory({

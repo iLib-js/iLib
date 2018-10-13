@@ -19,7 +19,7 @@
 
 // !data address addressres regionnames
 
-var ilib = require("./ilib.js");
+var ilib = require("../index");
 var Utils = require("./Utils.js");
 var JSUtils = require("./JSUtils.js");
 
@@ -324,17 +324,14 @@ function invertAndFilter(object) {
  * new AddressFmt({
  *   locale: 'nl-NL', // for addresses in the Netherlands
  *   onLoad: ilib.bind(this, function(fmt) {
- *     fmt.getAddressFormatInfo({
- *       // The following is the locale of the UI you would like to see the labels
- *       // like "City" and "Postal Code" translated to. In this example, we
- *       // are showing an input form for Dutch addresses, but the labels are
- *       // written in US English.
- *       locale: "en-US",
- *       onLoad: ilib.bind(this, function(rows) {
- *         // iterate through the rows array and dynamically create the input
- *         // elements with the given labels
- *       })
- *     });
+ *     // The following is the locale of the UI you would like to see the labels
+ *     // like "City" and "Postal Code" translated to. In this example, we
+ *     // are showing an input form for Dutch addresses, but the labels are
+ *     // written in US English.
+ *     fmt.getAddressFormatInfo("en-US", true, ilib.bind(this, function(rows) {
+ *       // iterate through the rows array and dynamically create the input
+ *       // elements with the given labels
+ *     }));
  *   })
  * });
  *

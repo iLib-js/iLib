@@ -19,7 +19,7 @@
 
 // !data phoneloc
 
-var ilib = require("./ilib.js");
+var ilib = require("../index");
 var Utils = require("./Utils.js");
 var Locale = require("./Locale.js");
 

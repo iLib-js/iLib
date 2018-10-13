@@ -19,7 +19,7 @@
 
 // !data ctype
 
-var ilib = require("./ilib.js");
+var ilib = require("../index");
 var SearchUtils = require("./SearchUtils.js");
 var Utils = require("./Utils.js");
 var IString = require("./IString.js");
