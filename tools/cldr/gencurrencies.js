@@ -30,14 +30,12 @@ var mkdirs = common.makeDirs;
 var path = require("path");
 
 function usage() {
-    console.log("Usage: gencurrency [-h] CLDR_dir [toDir]\n" +
+    console.log("Usage: gencurrency [-h] [toDir]\n" +
         "Generate the currency.jf files for each country.\n\n" +
         "-h or --help\n" +
         "  this help\n" +
-        "CLDR_dir\n" +
-        "  directory with CLDR represented in json format downloaded from the Unicode site\n" +
         "toDir\n" +
-        "  directory to output the currency.jf json files. Default: current dir.\n");
+    "  directory to output the currency.jf json files. Default: current dir.\n");
     process.exit(1);
 }
 
@@ -60,13 +58,13 @@ function getDecimals(currency, fractions) {
             return Number(fractions[cur]._digits);
         }
     }
-/*
- * in CLDR, default _digits value is 2
- * "DEFAULT": {
- *       "_rounding": "0",
- *       "_digits": "2"
- * }
- */
+    /*
+     * in CLDR, default _digits value is 2
+     * "DEFAULT": {
+     *       "_rounding": "0",
+     *       "_digits": "2"
+     * }
+     */
     return 2;
 }
 
@@ -79,7 +77,7 @@ function getNameAndSign(currency, cldrData, ilibData) {
                 arr['sign'] = cldrData[cur]['symbol-alt-narrow'];
             } else if(cldrData[cur]['symbol-alt-variant'] !== undefined && cldrData[cur]['symbol-alt-narrow'] === undefined) {
                 arr['sign'] = cldrData[cur]['symbol-alt-variant'];
-            } else if(cldrData[cur]['symbol-alt-variant'] === undefined && cldrData[cur]['symbol-alt-narrow'] === undefined && ilibData[cur]['sign'] !== undefined) {
+            } else if(cldrData[cur]['symbol-alt-variant'] === undefined && cldrData[cur]['symbol-alt-narrow'] === undefined && ilibData && ilibData[cur] && ilibData[cur]['sign'] !== undefined) {
                 arr['sign'] = ilibData[cur]['sign'];
             } else {
                 arr['sign'] = cldrData[cur]['symbol'];
@@ -96,8 +94,8 @@ function getNameAndSign(currency, cldrData, ilibData) {
     return undefined;
 }
 
-var cldrDir, currencyDataFileName;
-var toDir = ".";
+var currencyDataFileName;
+var toDir = "tmp";
 
 process.argv.forEach(function (val, index, array) {
     if (val === "-h" || val === "--help") {
@@ -105,44 +103,31 @@ process.argv.forEach(function (val, index, array) {
     }
 });
 
-if (process.argv.length < 3) {
+if (process.argv.length < 2) {
     console.error('Error: not enough arguments');
     usage();
 }
 
-cldrDir = process.argv[2];
-
-if (process.argv.length > 3) {
-    toDir = process.argv[3];
+if (process.argv.length > 2) {
+    toDir = process.argv[2];
 }
 
 console.log("gencurrency - generate currency information files.\n" + "Copyright (c) 2016 LGE\n");
-console.log("CLDR dir: " + cldrDir + "\n");
 console.log("output dir: " + toDir + "\n");
 
-var ilibDataFileName = "../../js/data/locale/currency.json";
-var currencyDataFileName = path.join(cldrDir, "cldr-core/supplemental/currencyData.json");
-var currencyDisplayFileName = path.join(cldrDir, "cldr-numbers-full/main/en/currencies.json");
+var ilibDataFileName = path.join(toDir, "currency.json");
 
-if (!fs.existsSync(currencyDataFileName)) {
-    console.log("Could not access CLDR supplemental data file " + currencyDataFileName);
-    usage();
-}
-if (!fs.existsSync(currencyDisplayFileName)) {
-    console.log("Could not access CLDR region data file " + currencyDisplayFileName);
-    usage();
-}
 if (!fs.existsSync(toDir)) {
-    console.log("Could not access target directory " + toDir);
-    usage();
+    common.makeDirs(toDir);
 }
 
-var ilibDataString = fs.readFileSync(ilibDataFileName, "utf-8");
-var currencyDataString = fs.readFileSync(currencyDataFileName, "utf-8");
-var currencyDisplayString = fs.readFileSync(currencyDisplayFileName, "utf-8");
-var ilibData = JSON.parse(ilibDataString);
-var supplementalData = JSON.parse(currencyDataString);
-var mainData = JSON.parse(currencyDisplayString);
+var ilibData = {};
+if (fs.existsSync(ilibDataFileName)) {
+    var ilibDataString = fs.readFileSync(ilibDataFileName, "utf-8");
+    ilibData = JSON.parse(ilibDataString);
+}
+var supplementalData = require("cldr-data/supplemental/currencyData.json");
+var mainData = require("cldr-data/main/en/currencies.json");
 var currencyData = supplementalData.supplemental.currencyData;
 var currencyDispData = mainData.main['en'].numbers.currencies;
 var currencyObj = {}; // for saving currency.jf in each directory
@@ -186,7 +171,7 @@ var key;
 var primaryCur = [];
 
 keys.sort();
-// for currency that has large circulation
+//for currency that has large circulation
 for(var i = keys.length-1; i >= 0; i--) {
     if(keys[i] === "USD") {
         primaryCur.push(keys[i]);
