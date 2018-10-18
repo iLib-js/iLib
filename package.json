@@ -54,7 +54,7 @@
     },
     "devDependencies": {
         "babel-loader": "^7.1.2",
-        "cldr-data": "^32.0.0",
+        "cldr-data": "^34.0.0",
         "ejs": "^2.5.2",
         "grunt": "^1.0.3",
         "grunt-cli": "^1.2.0",
