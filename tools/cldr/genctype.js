@@ -1,7 +1,7 @@
 /*
- * genctype.js - ilib tool to generate the json ctype information from the Unicode 
+ * genctype.js - ilib tool to generate the json ctype information from the Unicode
  * data files
- * 
+ *
  * Copyright © 2013 - 2015, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -19,7 +19,7 @@
  */
 
 /*
- * This code is intended to be run under node.js 
+ * This code is intended to be run under node.js
  */
 
 var fs = require('fs');
@@ -133,7 +133,7 @@ for (letter in map) {
 
 /*
  *	List for updating blockName for ctype.json.
- *	Some names don't need to be re-named. 
+ *	Some names don't need to be re-named.
  */
 var blockNameMapping = {
     "basic latin": "latin",
@@ -336,22 +336,22 @@ var manuallyHandleRange = {
     "ascii": [
         [32, 127]
         ],
-        "digit": [ 
+        "digit": [
             [48, 57]
             ],
-            "xdigit": [ 
+            "xdigit": [
                 [48, 57],
                 [65, 70],
                 [97, 102]
                 ],
-                "blank": [ 
+                "blank": [
                     [9, 9],
                     [32, 32]
-                    ],	
+                    ],
                     "space": [
                         [9, 13],
-                        [32, 32], 
-                        [133], 
+                        [32, 32],
+                        [133],
                         [8232, 8233] //Line Separator, Paragraph Separator
                         ]
 };
@@ -433,7 +433,7 @@ for (rangeName in ctypeMap) {
 ctypeMap["ideograph"] = [];
 ctypeMap["ideoother"] = [];
 var ideographGroup = ["bopomofo", "cjk", "katakana",  "yi", "hangul","cjkcompatibility"];
-var ideootherGroup = ["bopomofo", "katakana", "hangul", 
+var ideootherGroup = ["bopomofo", "katakana", "hangul",
     "hiragana", "cjkcompatibility", "cjkradicals",
     "cjkpunct", "cjkstrokes"
     ];

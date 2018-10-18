@@ -1,6 +1,6 @@
 #/bin/sh
-# 
-# allscripts.sh - run all of the scripts 
+#
+# allscripts.sh - run all of the scripts
 #
 # Copyright © 2018, JEDLSoft
 #
