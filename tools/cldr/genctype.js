@@ -335,25 +335,25 @@ var blockNameMapping = {
 var manuallyHandleRange = {
     "ascii": [
         [32, 127]
-        ],
-        "digit": [
-            [48, 57]
-            ],
-            "xdigit": [
-                [48, 57],
-                [65, 70],
-                [97, 102]
-                ],
-                "blank": [
-                    [9, 9],
-                    [32, 32]
-                    ],
-                    "space": [
-                        [9, 13],
-                        [32, 32],
-                        [133],
-                        [8232, 8233] //Line Separator, Paragraph Separator
-                        ]
+    ],
+    "digit": [
+        [48, 57]
+    ],
+    "xdigit": [
+        [48, 57],
+        [65, 70],
+        [97, 102]
+    ],
+    "blank": [
+        [9, 9],
+        [32, 32]
+    ],
+    "space": [
+        [9, 13],
+        [32, 32],
+        [133],
+        [8232, 8233] //Line Separator, Paragraph Separator
+    ]
 };
 
 function sortKeys(x) {
