@@ -2037,16 +2037,16 @@ module.exports = {
             // already the minimum, so we don't need to do anything
             return;
         }
-
-        console.log("Promoting " + totals[0].name + "/" + filename + " to " + parentName + "\n");
+        
+        util.print("Promoting " + totals[0].name + "/" + filename + " to " + parentName + "\n");
         // promote a child as the new root, dropping the current root
         group.data = group[totals[0].name].data;
     },
 
     pruneFormatsChild: function(parent, child) {
-        console.log(".");
-
-        // first recursively prune all the grandchildren before pruning the child or else the child
+        util.print(".");
+        
+        // first recursively prune all the grandchildren before pruning the child or else the child 
         // will be too sparse to prune the grandchildren
         for (var localebit in child) {
             if (localebit !== "und" && localebit !== "data") {
@@ -2094,8 +2094,8 @@ module.exports = {
 
         // don't write out empty files!
         if (contents !== "{}") {
-            console.log(localeComponents.join("-") + " ");
-
+            util.print(localeComponents.join("-") + " ");
+            
             makeDirs(dir);
             fs.writeFileSync(filename, JSON.stringify(group.data, undefined, 4), 'utf8');
         }
