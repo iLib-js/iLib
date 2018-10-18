@@ -25,3 +25,4 @@ node genclockprefs.js
 node gencountrynames.js ../../../cldr/${CLDR_VERSION}
 node genctype.js ../../../ucd/${UCD_VERSION}
 node gencurrencies.js
+node gendatefmts2.js
