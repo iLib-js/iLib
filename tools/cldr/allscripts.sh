@@ -20,9 +20,19 @@
 
 CLDR_VERSION=34
 UCD_VERSION=12.0.0
+#TARGET=../../js/data/locale
+TARGET=
 
-node genclockprefs.js
+node genclockprefs.js $TARGET
 node gencountrynames.js ../../../cldr/${CLDR_VERSION}
 node genctype.js ../../../ucd/${UCD_VERSION}
-node gencurrencies.js
-node gendatefmts2.js
+node gencurrencies.js $TARGET
+node gendatefmts2.js $TARGET
+node gendelimiters.js $TARGET
+node genlangreg.js $TARGET
+node genlangscripts.js $TARGET
+node genlikelyloc.js $TARGET
+# this uses genlikelyloc's output, so it has to come after it
+node genlang2charset.js $TARGET
+node genlist.js $TARGET
+node genunits.js $TARGET

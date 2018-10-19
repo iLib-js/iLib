@@ -180,7 +180,7 @@ function dateOrder(fmt) {
     } else if (stripped.match(/y.*d.*M/)) {
         return "ydm";
     } else {
-        util.print("WARNING: unknown date order: " + fmt + "\n");
+        console.log("WARNING: unknown date order: " + fmt + "\n");
     }
 }
 
@@ -195,7 +195,7 @@ function dateOrder2(fmt) {
     } else if (stripped.match(/M.*d.*[Ec]/)) {
         return "mdw";
     } else {
-        util.print("WARNING: unknown date order: " + fmt + "\n");
+        console.log("WARNING: unknown date order: " + fmt + "\n");
     }
 }
 
@@ -210,7 +210,7 @@ function timeOrder(fmt) {
     } else if (stripped.match(/h.*a/)) {
         return "haz";
     } else {
-        util.print("WARNING: unknown time order: " + fmt + "\n");
+        console.log("WARNING: unknown time order: " + fmt + "\n");
     }
 }
 
@@ -369,13 +369,13 @@ module.exports = {
                     try {
                         obj = require(sourcePath);
                         if (obj) {
-                            util.print(dir + " ");
+                            console.log(dir + " ");
 
                             addDateFormat(formats, locale, obj);
                         }
                     } catch (err) {
-                        util.print("File " + sourcePath + " is not readable or does not contain valid JSON.\n");
-                        util.print(err + "\n");
+                        console.log("File " + sourcePath + " is not readable or does not contain valid JSON.\n");
+                        console.log(err + "\n");
                         process.exit(2);
                     }
                 }
@@ -538,17 +538,17 @@ module.exports = {
             if (y["full"] !== y["long"]) {
                 longPlus = longPlus.replace(y["long"], y["full"]);
             }
-            // util.print("Search for '" + longPlus + "' in '" + cldrFormats["full"] + "'\n");
+            // console.log("Search for '" + longPlus + "' in '" + cldrFormats["full"] + "'\n");
             i = cldrFormats["full"].indexOf(longPlus);
             if (i > -1) {
                 tmp = cldrFormats["full"].replace(longPlus, "{date}");
-                // util.print("tmp is " + tmp + "\n");
+                // console.log("tmp is " + tmp + "\n");
                 wTemplate = tmp;
             } else {
                 // didn't work. Next attempt: try searching for the w components and see if the dmy parts come before
                 // or after it in the format. If it comes before, take after the the first "d", "M", or "y" as the "dmy"
                 // part. If it comes after take everything up to the first "d", "M", or "y" as the "dmy" part.
-                // util.print("Not found. Trying positional method\n");
+                // console.log("Not found. Trying positional method\n");
 
                 // strip out the quoted parts so we don't accidentally match the characters inside the quotes
                 var full = cldrFormats["full"];
@@ -558,7 +558,7 @@ module.exports = {
                 if (scanForLastChars(full, "E") < min) {
                     wTemplate = full.substring(0, min) + "{date}";
                     longPlus = full.substring(min);
-                    // util.print("language " + language + " E found before date. Using wtemplate " + wTemplate + "\n");
+                    // console.log("language " + language + " E found before date. Using wtemplate " + wTemplate + "\n");
                 } else if (scanForChars(full, "E") > max) {
                     // scan backwards to find the last dmy char
                     i = full.length-1;
@@ -576,13 +576,13 @@ module.exports = {
                     }
                     wTemplate = "{date}" + full.substring(i+1);
                     longPlus = full.substring(0, i+1);
-                    // util.print("language " + language + " E found after date. Using wtemplate " + wTemplate + " and longPlus is " + longPlus + "\n");
+                    // console.log("language " + language + " E found after date. Using wtemplate " + wTemplate + " and longPlus is " + longPlus + "\n");
                     //} else {
                     // the w is in the middle of the dmy... not sure what to do about that!
-                    // util.print("failed. Using fallback.\n");
+                    // console.log("failed. Using fallback.\n");
                 }
             }
-            // util.print("wTemplate is " + wTemplate + "\n");
+            // console.log("wTemplate is " + wTemplate + "\n");
 
             calendar.date.dmwy["f"] = rtlify(correctedYear(cldrFormats["full"]));
             calendar.date.dmy["f"] = rtlify(correctedYear(longPlus));
@@ -616,18 +616,18 @@ module.exports = {
                 // the long format
                 switch (orders[len]) {
                     case "dmy":
-                        // util.print("Length " + len + " order dmy\n");
+                        // console.log("Length " + len + " order dmy\n");
                         calendar.date.my[lenAbbr] = rtlify(dmy.substring(scanForChars(dmy, "M")));
                         calendar.date.dm[lenAbbr] = rtlify(dmy.substring(0, scanForLastChars(dmy, "M")));
                         break;
                     case "mdy":
-                        // util.print("Length " + len + " order mdy\n");
+                        // console.log("Length " + len + " order mdy\n");
                         calendar.date.my[lenAbbr] = rtlify(dmy.substring(0, scanForLastChars(dmy, "M")) +
                             dmy.substring(scanForLastChars(dmy, "d")));
                         calendar.date.dm[lenAbbr] = rtlify(dmy.substring(0, scanForLastChars(dmy, "d")));
                         break;
                     case "ymd":
-                        // util.print("Length " + len + " order ymd\n");
+                        // console.log("Length " + len + " order ymd\n");
                         calendar.date.dm[lenAbbr] = rtlify(dmy.substring(scanForChars(dmy, "M")));
                         if (isAsianLang(language)) {
                             var firstd = scanForChars(dmy, "d");
@@ -641,7 +641,7 @@ module.exports = {
                         break;
 
                     case "ydm":
-                        // util.print("Length " + len + " order ydm\n");
+                        // console.log("Length " + len + " order ydm\n");
                         calendar.date.dm[lenAbbr] = rtlify(dmy.substring(scanForChars(dmy, "d")));
                         calendar.date.my[lenAbbr] = rtlify(dmy.substring(0, scanForChars(dmy, "d")) +
                             dmy.substring(scanForChars(dmy, "M")));
@@ -668,20 +668,20 @@ module.exports = {
 
                 switch (dateOrder2(dmw)) {
                     case "dmw":
-                        // util.print("Length " + len + " dw order dmw\n");
+                        // console.log("Length " + len + " dw order dmw\n");
                         calendar.date.dw[lenAbbr] = rtlify(dmw.substring(0, scanForChars(dmw, "M")) +
                             dmw.substring(scanForChars(dmw, "Ec")));
                         break;
                     case "wdm":
-                        // util.print("Length " + len + " dw order wdm\n");
+                        // console.log("Length " + len + " dw order wdm\n");
                         calendar.date.dw[lenAbbr] = rtlify(dmw.substring(0, scanForLastChars(dmw, "d")));
                         break;
                     case "mdw":
-                        // util.print("Length " + len + " dw order mdw\n");
+                        // console.log("Length " + len + " dw order mdw\n");
                         calendar.date.dw[lenAbbr] = rtlify(dmw.substring(scanForChars(dmw, "d")));
                         break;
                     case "wmd":
-                        // util.print("Length " + len + " dw order wmd\n");
+                        // console.log("Length " + len + " dw order wmd\n");
                         calendar.date.dw[lenAbbr] = rtlify(dmw.substring(0, scanForChars(dmw, "M")) +
                             dmw.substring(scanForChars(dmw, "d")));
                         break;
@@ -705,7 +705,7 @@ module.exports = {
                 var H, h;
 
                 if (longtime.indexOf("H") > -1) {
-                    // util.print("24-hour locale. Longtime: " + longtime + "\n");
+                    // console.log("24-hour locale. Longtime: " + longtime + "\n");
                     calendar.time["24"]["h"] = strippedLongTime.replace(/[^H]/g, "");
                     calendar.time["24"]["m"] = strippedLongTime.replace(/[^m]/g, "");
                     calendar.time["24"]["s"] = strippedLongTime.replace(/[^s]/g, "");
@@ -787,7 +787,7 @@ module.exports = {
 
                     calendar.time["12"]["ahmsz"] = rtlify(zTemplate.replace(/\{time\}/, aTemplate.replace(/\{time\}/, calendar.time["12"]["hms"])));
                 } else {
-                    // util.print("12-hour locale. Longtime: " + longtime + "\n");
+                    // console.log("12-hour locale. Longtime: " + longtime + "\n");
                     order = timeOrder(longtime);
 
                     calendar.time["12"]["h"] = longtime.replace(/[^h]/g, "");
@@ -2038,13 +2038,13 @@ module.exports = {
             return;
         }
 
-        util.print("Promoting " + totals[0].name + "/" + filename + " to " + parentName + "\n");
+        console.log("Promoting " + totals[0].name + "/" + filename + " to " + parentName + "\n");
         // promote a child as the new root, dropping the current root
         group.data = group[totals[0].name].data;
     },
 
     pruneFormatsChild: function(parent, child) {
-        util.print(".");
+        console.log(".");
 
         // first recursively prune all the grandchildren before pruning the child or else the child
         // will be too sparse to prune the grandchildren
@@ -2094,7 +2094,7 @@ module.exports = {
 
         // don't write out empty files!
         if (contents !== "{}") {
-            util.print(localeComponents.join("-") + " ");
+            console.log(localeComponents.join("-") + " ");
 
             makeDirs(dir);
             fs.writeFileSync(filename, JSON.stringify(group.data, undefined, 4), 'utf8');
