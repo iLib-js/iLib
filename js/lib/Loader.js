@@ -44,19 +44,21 @@ Loader.prototype._exists = function(dir, file) {
     var fullpath = Path.normalize(Path.join(dir, file));
     if (this.protocol !== "http://") {
         var text = this._loadFile(fullpath, true);
-        if (text) {
+        if (text && this.includePath.indexOf(text) === -1) {
             this.includePath.push(dir);
         }
     } else {
         // put the dir on the list now assuming it exists, and check for its availability
         // later so we can avoid the 404 errors eventually
-        this.includePath.push(dir);
-        this._loadFile(fullpath, false, ilib.bind(this, function(text) {
-            if (!text) {
-                //console.log("Loader._exists: removing " + dir + " from the include path because it doesn't exist.");
-                this.includePath = this.includePath.slice(-1);
-            }
-        }));
+        if (this.includePath.indexOf(dir) === -1) {
+            this.includePath.push(dir);
+            this._loadFile(fullpath, false, ilib.bind(this, function(text) {
+                if (!text) {
+                    //console.log("Loader._exists: removing " + dir + " from the include path because it doesn't exist.");
+                    this.includePath = this.includePath.slice(-1);
+                }
+            }));
+        }
     }
 };
 

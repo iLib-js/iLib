@@ -17,7 +17,7 @@
  * limitations under the License.
  */
 
-var ilib = require("./ilib.js");
+var ilib = require("../index");
 
 var Locale = require("./Locale.js");
 var LocaleInfo = require("./LocaleInfo.js");

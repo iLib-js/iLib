@@ -19,7 +19,7 @@
 
 // !data ctype_c
 
-var ilib = require("./ilib.js");
+var ilib = require("../index");
 var CType = require("./CType.js");
 var IString = require("./IString.js");
 

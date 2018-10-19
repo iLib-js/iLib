@@ -19,7 +19,7 @@
 
 // !data states idd mnc
 
-var ilib = require("./ilib.js");
+var ilib = require("../index");
 var Utils = require("./Utils.js");
 var JSUtils = require("./JSUtils.js");
 var NumberingPlan = require("./NumberingPlan.js");

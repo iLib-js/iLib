@@ -19,7 +19,7 @@
 
 // !data scriptToRange
 
-var ilib = require("./ilib.js");
+var ilib = require("../index");
 
 var CType = require("./CType.js");
 var IString = require("./IString.js");

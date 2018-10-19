@@ -18,7 +18,7 @@
  * limitations under the License.
  */
 
-var ilib = require("./ilib.js");
+var ilib = require("../index");
 var JSUtils = require("./JSUtils.js");
 
 var Locale = require("./Locale.js");
@@ -195,7 +195,7 @@ DateFactory._init = function(type, options) {
 
     // pass the same options through to the constructor so the subclass
     // has the ability to do something with if it needs to
-    if (!cons && typeof(options.onLoad) === "function") {
+    if (!cons && options && typeof(options.onLoad) === "function") {
         options.onLoad(undefined);
     }
     return cons && new cons(options);

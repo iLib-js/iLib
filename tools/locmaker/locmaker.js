@@ -28,7 +28,7 @@ var util = require('util');
 var path = require('path');
 
 // var clargs = require('command-line-args');
-var ilib = require("ilib");
+var ilib = require("../index");
 var Locale = require("ilib/lib/Locale");
 
 var DateFmt = require("ilib/lib/DateFmt");

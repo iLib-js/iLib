@@ -17,7 +17,7 @@
  * limitations under the License.
  */
 
-var ilib = require("./ilib.js");
+var ilib = require("../index");
 var JSUtils = require("./JSUtils.js");
 
 var IDate = require("./IDate.js");

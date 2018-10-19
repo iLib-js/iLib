@@ -19,7 +19,7 @@
 
 // !data charset charsetaliases charset/ISO-8859-1 charset/ISO-8859-15 charset/UTF-8
 
-var ilib = require("./ilib.js");
+var ilib = require("../index");
 var Utils = require("./Utils.js");
 
 /**
