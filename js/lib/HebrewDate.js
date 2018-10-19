@@ -17,7 +17,7 @@
  * limitations under the License.
  */
 
-var ilib = require("./ilib.js");
+var ilib = require("../index");
 var MathUtils = require("./MathUtils.js");
 
 var Locale = require("./Locale.js");
@@ -236,19 +236,19 @@ HebrewDate.prototype._init2 = function (params) {
  */
 HebrewDate.cumMonthLengthsReverse = [
 //  [days, monthnumber],
-	[0,   7],  /* Tishri - Jewish New Year (Rosh HaShanah) starts in month 7 */
-	[30,  8],  /* Heshvan */
-	[59,  9],  /* Kislev */
-	[88,  10], /* Teveth */
-	[117, 11], /* Shevat */
-	[147, 12], /* Adar I */
-	[176, 1],  /* Nisan */
-	[206, 2],  /* Iyyar */
-	[235, 3],  /* Sivan */
-	[265, 4],  /* Tammuz */
-	[294, 5],  /* Av */
-	[324, 6],  /* Elul */
-	[354, 7]   /* end of year sentinel value */
+    [0,   7],  /* Tishri - Jewish New Year (Rosh HaShanah) starts in month 7 */
+    [30,  8],  /* Heshvan */
+    [59,  9],  /* Kislev */
+    [88,  10], /* Teveth */
+    [117, 11], /* Shevat */
+    [147, 12], /* Adar I */
+    [176, 1],  /* Nisan */
+    [206, 2],  /* Iyyar */
+    [235, 3],  /* Sivan */
+    [265, 4],  /* Tammuz */
+    [294, 5],  /* Av */
+    [324, 6],  /* Elul */
+    [354, 7]   /* end of year sentinel value */
 ];
 
 /**
@@ -261,20 +261,20 @@ HebrewDate.cumMonthLengthsReverse = [
  */
 HebrewDate.cumMonthLengthsLeapReverse = [
 //  [days, monthnumber],
-	[0,   7],  /* Tishri - Jewish New Year (Rosh HaShanah) starts in month 7 */
-	[30,  8],  /* Heshvan */
-	[59,  9],  /* Kislev */
-	[88,  10], /* Teveth */
-	[117, 11], /* Shevat */
-	[147, 12], /* Adar I */
-	[177, 13], /* Adar II */
-	[206, 1],  /* Nisan */
-	[236, 2],  /* Iyyar */
-	[265, 3],  /* Sivan */
-	[295, 4],  /* Tammuz */
-	[324, 5],  /* Av */
-	[354, 6],  /* Elul */
-	[384, 7]   /* end of year sentinel value */
+    [0,   7],  /* Tishri - Jewish New Year (Rosh HaShanah) starts in month 7 */
+    [30,  8],  /* Heshvan */
+    [59,  9],  /* Kislev */
+    [88,  10], /* Teveth */
+    [117, 11], /* Shevat */
+    [147, 12], /* Adar I */
+    [177, 13], /* Adar II */
+    [206, 1],  /* Nisan */
+    [236, 2],  /* Iyyar */
+    [265, 3],  /* Sivan */
+    [295, 4],  /* Tammuz */
+    [324, 5],  /* Av */
+    [354, 6],  /* Elul */
+    [384, 7]   /* end of year sentinel value */
 ];
 
 /**
@@ -294,7 +294,7 @@ HebrewDate.GregorianDiff = 1373060.25;
  * @returns {RataDie} the new RD instance for the given params
  */
 HebrewDate.prototype.newRd = function (params) {
-	return new HebrewRataDie(params);
+    return new HebrewRataDie(params);
 };
 
 /**
@@ -304,22 +304,22 @@ HebrewDate.prototype.newRd = function (params) {
  * @returns {number} the year for the RD
  */
 HebrewDate.prototype._calcYear = function(rd) {
-	var year, approximation, nextNewYear;
+    var year, approximation, nextNewYear;
 
-	// divide by the average number of days per year in the Hebrew calendar
-	// to approximate the year, then tweak it to get the real year
-	approximation = Math.floor(rd / 365.246822206) + 1;
+    // divide by the average number of days per year in the Hebrew calendar
+    // to approximate the year, then tweak it to get the real year
+    approximation = Math.floor(rd / 365.246822206) + 1;
 
-	// console.log("HebrewDate._calcYear: approx is " + approximation);
+    // console.log("HebrewDate._calcYear: approx is " + approximation);
 
-	// search forward from approximation-1 for the year that actually contains this rd
-	year = approximation;
-	nextNewYear = HebrewCal.newYear(year);
-	while (rd >= nextNewYear) {
-		year++;
-		nextNewYear = HebrewCal.newYear(year);
-	}
-	return year - 1;
+    // search forward from approximation-1 for the year that actually contains this rd
+    year = approximation;
+    nextNewYear = HebrewCal.newYear(year);
+    while (rd >= nextNewYear) {
+        year++;
+        nextNewYear = HebrewCal.newYear(year);
+    }
+    return year - 1;
 };
 
 /**
@@ -327,92 +327,92 @@ HebrewDate.prototype._calcYear = function(rd) {
  * @protected
  */
 HebrewDate.prototype._calcDateComponents = function () {
-	var remainder,
-		i,
-		table,
-		target,
-		rd = this.rd.getRataDie();
+    var remainder,
+        i,
+        table,
+        target,
+        rd = this.rd.getRataDie();
 
-	// console.log("HebrewDate.calcComponents: calculating for rd " + rd);
+    // console.log("HebrewDate.calcComponents: calculating for rd " + rd);
 
-	if (typeof(this.offset) === "undefined") {
-		this.year = this._calcYear(rd);
+    if (typeof(this.offset) === "undefined") {
+        this.year = this._calcYear(rd);
 
-		// now offset the RD by the time zone, then recalculate in case we were
-		// near the year boundary
-		if (!this.tz) {
-			this.tz = new TimeZone({id: this.timezone});
-		}
-		this.offset = this.tz.getOffsetMillis(this) / 86400000;
-	}
+        // now offset the RD by the time zone, then recalculate in case we were
+        // near the year boundary
+        if (!this.tz) {
+            this.tz = new TimeZone({id: this.timezone});
+        }
+        this.offset = this.tz.getOffsetMillis(this) / 86400000;
+    }
 
-	if (this.offset !== 0) {
-		rd += this.offset;
-		this.year = this._calcYear(rd);
-	}
+    if (this.offset !== 0) {
+        rd += this.offset;
+        this.year = this._calcYear(rd);
+    }
 
-	// console.log("HebrewDate.calcComponents: year is " + this.year + " with starting rd " + thisNewYear);
+    // console.log("HebrewDate.calcComponents: year is " + this.year + " with starting rd " + thisNewYear);
 
-	remainder = rd - HebrewCal.newYear(this.year);
-	// console.log("HebrewDate.calcComponents: remainder is " + remainder);
+    remainder = rd - HebrewCal.newYear(this.year);
+    // console.log("HebrewDate.calcComponents: remainder is " + remainder);
 
-	// take out new years corrections so we get the right month when we look it up in the table
-	if (remainder >= 59) {
-		if (remainder >= 88) {
-			if (HebrewCal.longKislev(this.year)) {
-				remainder--;
-			}
-		}
-		if (HebrewCal.longHeshvan(this.year)) {
-			remainder--;
-		}
-	}
+    // take out new years corrections so we get the right month when we look it up in the table
+    if (remainder >= 59) {
+        if (remainder >= 88) {
+            if (HebrewCal.longKislev(this.year)) {
+                remainder--;
+            }
+        }
+        if (HebrewCal.longHeshvan(this.year)) {
+            remainder--;
+        }
+    }
 
-	// console.log("HebrewDate.calcComponents: after new years corrections, remainder is " + remainder);
+    // console.log("HebrewDate.calcComponents: after new years corrections, remainder is " + remainder);
 
-	table = this.cal.isLeapYear(this.year) ?
-			HebrewDate.cumMonthLengthsLeapReverse :
-			HebrewDate.cumMonthLengthsReverse;
+    table = this.cal.isLeapYear(this.year) ?
+            HebrewDate.cumMonthLengthsLeapReverse :
+            HebrewDate.cumMonthLengthsReverse;
 
-	i = 0;
-	target = Math.floor(remainder);
-	while (i+1 < table.length && target >= table[i+1][0]) {
-		i++;
-	}
+    i = 0;
+    target = Math.floor(remainder);
+    while (i+1 < table.length && target >= table[i+1][0]) {
+        i++;
+    }
 
-	this.month = table[i][1];
-	// console.log("HebrewDate.calcComponents: remainder is " + remainder);
-	remainder -= table[i][0];
+    this.month = table[i][1];
+    // console.log("HebrewDate.calcComponents: remainder is " + remainder);
+    remainder -= table[i][0];
 
-	// console.log("HebrewDate.calcComponents: month is " + this.month + " and remainder is " + remainder);
+    // console.log("HebrewDate.calcComponents: month is " + this.month + " and remainder is " + remainder);
 
-	this.day = Math.floor(remainder);
-	remainder -= this.day;
-	this.day++; // days are 1-based
+    this.day = Math.floor(remainder);
+    remainder -= this.day;
+    this.day++; // days are 1-based
 
-	// console.log("HebrewDate.calcComponents: day is " + this.day + " and remainder is " + remainder);
+    // console.log("HebrewDate.calcComponents: day is " + this.day + " and remainder is " + remainder);
 
-	// now convert to milliseconds for the rest of the calculation
-	remainder = Math.round(remainder * 86400000);
+    // now convert to milliseconds for the rest of the calculation
+    remainder = Math.round(remainder * 86400000);
 
-	this.hour = Math.floor(remainder/3600000);
-	remainder -= this.hour * 3600000;
+    this.hour = Math.floor(remainder/3600000);
+    remainder -= this.hour * 3600000;
 
-	// the hours from 0 to 6 are actually 18:00 to midnight of the previous
-	// gregorian day, so we have to adjust for that
-	if (this.hour >= 6) {
-		this.hour -= 6;
-	} else {
-		this.hour += 18;
-	}
+    // the hours from 0 to 6 are actually 18:00 to midnight of the previous
+    // gregorian day, so we have to adjust for that
+    if (this.hour >= 6) {
+        this.hour -= 6;
+    } else {
+        this.hour += 18;
+    }
 
-	this.minute = Math.floor(remainder/60000);
-	remainder -= this.minute * 60000;
+    this.minute = Math.floor(remainder/60000);
+    remainder -= this.minute * 60000;
 
-	this.second = Math.floor(remainder/1000);
-	remainder -= this.second * 1000;
+    this.second = Math.floor(remainder/1000);
+    remainder -= this.second * 1000;
 
-	this.millisecond = Math.floor(remainder);
+    this.millisecond = Math.floor(remainder);
 };
 
 /**
@@ -422,8 +422,8 @@ HebrewDate.prototype._calcDateComponents = function () {
  * @return {number} the day of the week
  */
 HebrewDate.prototype.getDayOfWeek = function() {
-	var rd = Math.floor(this.rd.getRataDie() + (this.offset || 0));
-	return MathUtils.mod(rd+1, 7);
+    var rd = Math.floor(this.rd.getRataDie() + (this.offset || 0));
+    return MathUtils.mod(rd+1, 7);
 };
 
 /**
@@ -434,12 +434,12 @@ HebrewDate.prototype.getDayOfWeek = function() {
  * @return {number} the halaqim parts of the current hour
  */
 HebrewDate.prototype.getHalaqim = function() {
-	if (this.parts < 0) {
-		// convert to ms first, then to parts
-		var h = this.minute * 60000 + this.second * 1000 + this.millisecond;
-		this.parts = (h * 0.0003);
-	}
-	return this.parts;
+    if (this.parts < 0) {
+        // convert to ms first, then to parts
+        var h = this.minute * 60000 + this.second * 1000 + this.millisecond;
+        this.parts = (h * 0.0003);
+    }
+    return this.parts;
 };
 
 /**
@@ -448,21 +448,21 @@ HebrewDate.prototype.getHalaqim = function() {
  * @return the rd of the first Sunday of the ISO year
  */
 HebrewDate.prototype.firstSunday = function (year) {
-	var tishri1 = this.newRd({
-		year: year,
-		month: 7,
-		day: 1,
-		hour: 18,
-		minute: 0,
-		second: 0,
-		millisecond: 0,
-		cal: this.cal
-	});
-	var firstThu = this.newRd({
-		rd: tishri1.onOrAfter(4),
-		cal: this.cal
-	});
-	return firstThu.before(0);
+    var tishri1 = this.newRd({
+        year: year,
+        month: 7,
+        day: 1,
+        hour: 18,
+        minute: 0,
+        second: 0,
+        millisecond: 0,
+        cal: this.cal
+    });
+    var firstThu = this.newRd({
+        rd: tishri1.onOrAfter(4),
+        cal: this.cal
+    });
+    return firstThu.before(0);
 };
 
 /**
@@ -472,18 +472,18 @@ HebrewDate.prototype.firstSunday = function (year) {
  * @return {number} the ordinal day of the year
  */
 HebrewDate.prototype.getDayOfYear = function() {
-	var table = this.cal.isLeapYear(this.year) ?
-				HebrewRataDie.cumMonthLengthsLeap :
-				HebrewRataDie.cumMonthLengths;
-	var days = table[this.month-1];
-	if ((this.month < 7 || this.month > 8) && HebrewCal.longHeshvan(this.year)) {
-		days++;
-	}
-	if ((this.month < 7 || this.month > 9) && HebrewCal.longKislev(this.year)) {
-		days++;
-	}
+    var table = this.cal.isLeapYear(this.year) ?
+                HebrewRataDie.cumMonthLengthsLeap :
+                HebrewRataDie.cumMonthLengths;
+    var days = table[this.month-1];
+    if ((this.month < 7 || this.month > 8) && HebrewCal.longHeshvan(this.year)) {
+        days++;
+    }
+    if ((this.month < 7 || this.month > 9) && HebrewCal.longKislev(this.year)) {
+        days++;
+    }
 
-	return days + this.day;
+    return days + this.day;
 };
 
 /**
@@ -501,26 +501,26 @@ HebrewDate.prototype.getDayOfYear = function() {
  * @return {number} the ordinal number of the week within the current month
  */
 HebrewDate.prototype.getWeekOfMonth = function(locale) {
-	var li = new LocaleInfo(locale),
-		first = this.newRd({
-			year: this.year,
-			month: this.month,
-			day: 1,
-			hour: 18,
-			minute: 0,
-			second: 0,
-			millisecond: 0
-		}),
-		rd = this.rd.getRataDie(),
-		weekStart = first.onOrAfter(li.getFirstDayOfWeek());
+    var li = new LocaleInfo(locale),
+        first = this.newRd({
+            year: this.year,
+            month: this.month,
+            day: 1,
+            hour: 18,
+            minute: 0,
+            second: 0,
+            millisecond: 0
+        }),
+        rd = this.rd.getRataDie(),
+        weekStart = first.onOrAfter(li.getFirstDayOfWeek());
 
-	if (weekStart - first.getRataDie() > 3) {
-		// if the first week has 4 or more days in it of the current month, then consider
-		// that week 1. Otherwise, it is week 0. To make it week 1, move the week start
-		// one week earlier.
-		weekStart -= 7;
-	}
-	return (rd < weekStart) ? 0 : Math.floor((rd - weekStart) / 7) + 1;
+    if (weekStart - first.getRataDie() > 3) {
+        // if the first week has 4 or more days in it of the current month, then consider
+        // that week 1. Otherwise, it is week 0. To make it week 1, move the week start
+        // one week earlier.
+        weekStart -= 7;
+    }
+    return (rd < weekStart) ? 0 : Math.floor((rd - weekStart) / 7) + 1;
 };
 
 /**
@@ -533,7 +533,7 @@ HebrewDate.prototype.getWeekOfMonth = function(locale) {
  * Hebrew era
  */
 HebrewDate.prototype.getEra = function() {
-	return (this.year < 1) ? -1 : 1;
+    return (this.year < 1) ? -1 : 1;
 };
 
 /**
@@ -542,7 +542,7 @@ HebrewDate.prototype.getEra = function() {
  * @return {string} a string giving the name of the calendar
  */
 HebrewDate.prototype.getCalendar = function() {
-	return "hebrew";
+    return "hebrew";
 };
 
 // register with the factory method

@@ -77,12 +77,12 @@ EnergyUnit.ratios = {
  * @return {string} the name of the type of this measurement
  */
 EnergyUnit.prototype.getMeasure = function() {
-	return "energy";
+    return "energy";
 };
 
 /**
  * Return a new instance of this type of measurement.
- *  
+ *
  * @param {Object} params parameters to the constructor
  * @return {Measurement} a measurement subclass instance
  */

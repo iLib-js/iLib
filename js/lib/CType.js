@@ -1,6 +1,6 @@
 /*
  * CType.js - Character type definitions
- * 
+ *
  * Copyright © 2012-2015, 2018, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -19,14 +19,14 @@
 
 // !data ctype
 
-var ilib = require("./ilib.js");
+var ilib = require("../index");
 var SearchUtils = require("./SearchUtils.js");
 var Utils = require("./Utils.js");
 var IString = require("./IString.js");
 
 /**
  * Provides a set of static routines that return information about characters.
- * These routines emulate the C-library ctype functions. The characters must be 
+ * These routines emulate the C-library ctype functions. The characters must be
  * encoded in utf-16, as no other charsets are currently supported. Only the first
  * character of the given string is tested.
  * @namespace
@@ -36,9 +36,9 @@ var CType = {};
 
 /**
  * Actual implementation for withinRange. Searches the given object for ranges.
- * The range names are taken from the Unicode range names in 
+ * The range names are taken from the Unicode range names in
  * http://www.unicode.org/Public/UNIDATA/extracted/DerivedGeneralCategory.txt
- * 
+ *
  * <ul>
  * <li>Cn - Unassigned
  * <li>Lu - Uppercase_Letter
@@ -71,7 +71,7 @@ var CType = {};
  * <li>Pi - Initial_Punctuation
  * <li>Pf - Final_Punctuation
  * </ul>
- * 
+ *
  * @protected
  * @param {number} num code point of the character to examine
  * @param {string} rangeName the name of the range to check
@@ -80,35 +80,35 @@ var CType = {};
  * range
  */
 CType._inRange = function(num, rangeName, obj) {
-	var range;
-	if (num < 0 || !rangeName || !obj) {
-		return false;
-	}
-	
-	range = obj[rangeName];
-	if (!range) {
-		return false;
-	}
-	
-	var compare = function(singlerange, target) {
-		if (singlerange.length === 1) {
-			return singlerange[0] - target;
-		} else {
-			return target < singlerange[0] ? singlerange[0] - target :
-				(target > singlerange[1] ? singlerange[1] - target : 0);
-		}
-	};
-	var result = SearchUtils.bsearch(num, range, compare);
-	return result < range.length && compare(range[result], num) === 0;
+    var range;
+    if (num < 0 || !rangeName || !obj) {
+        return false;
+    }
+
+    range = obj[rangeName];
+    if (!range) {
+        return false;
+    }
+
+    var compare = function(singlerange, target) {
+        if (singlerange.length === 1) {
+            return singlerange[0] - target;
+        } else {
+            return target < singlerange[0] ? singlerange[0] - target :
+                (target > singlerange[1] ? singlerange[1] - target : 0);
+        }
+    };
+    var result = SearchUtils.bsearch(num, range, compare);
+    return result < range.length && compare(range[result], num) === 0;
 };
 
 /**
  * Return whether or not the first character is within the named range
- * of Unicode characters. The valid list of range names are taken from 
+ * of Unicode characters. The valid list of range names are taken from
  * the Unicode 6.0 spec. Characters in all ranges of Unicode are supported,
- * including those supported in Javascript via UTF-16. Currently, this method 
+ * including those supported in Javascript via UTF-16. Currently, this method
  * supports the following range names:
- * 
+ *
  * <ul>
  * <li><i>ascii</i> - basic ASCII
  * <li><i>latin</i> - Latin, Latin Extended Additional, Latin-1 supplement, Latin Extended-C, Latin Extended-D, Latin Extended-E
@@ -134,7 +134,7 @@ CType._inRange = function(num, rangeName, obj) {
  * <li><i>osmanya</i>
  * <li><i>tifinagh</i>
  * <li><i>val</i>
- * <li><i>arabic</i> - Arabic, Arabic Supplement, Arabic Presentation Forms-A, 
+ * <li><i>arabic</i> - Arabic, Arabic Supplement, Arabic Presentation Forms-A,
  * Arabic Presentation Forms-B, Arabic Mathematical Alphabetic Symbols
  * <li><i>carlan</i>
  * <li><i>hebrew</i>
@@ -185,13 +185,13 @@ CType._inRange = function(num, rangeName, obj) {
  * <li><i>tagbanwa</i>
  * <li><i>bopomofo</i> - Bopomofo, Bopomofo Extended
  * <li><i>cjk</i> - the CJK unified ideographs (Han), CJK Unified Ideographs
- *  Extension A, CJK Unified Ideographs Extension B, CJK Unified Ideographs 
- *  Extension C, CJK Unified Ideographs Extension D, Ideographic Description 
+ *  Extension A, CJK Unified Ideographs Extension B, CJK Unified Ideographs
+ *  Extension C, CJK Unified Ideographs Extension D, Ideographic Description
  *  Characters (=isIdeo())
- * <li><i>cjkcompatibility</i> - CJK Compatibility, CJK Compatibility 
+ * <li><i>cjkcompatibility</i> - CJK Compatibility, CJK Compatibility
  * Ideographs, CJK Compatibility Forms, CJK Compatibility Ideographs Supplement
  * <li><i>cjkradicals</i> - the CJK radicals, KangXi radicals
- * <li><i>hangul</i> - Hangul Jamo, Hangul Syllables, Hangul Jamo Extended-A, 
+ * <li><i>hangul</i> - Hangul Jamo, Hangul Syllables, Hangul Jamo Extended-A,
  * Hangul Jamo Extended-B, Hangul Compatibility Jamo
  * <li><i>cjkpunct</i> - CJK symbols and punctuation
  * <li><i>cjkstrokes</i> - CJK strokes
@@ -201,7 +201,7 @@ CType._inRange = function(num, rangeName, obj) {
  * <li><i>lisu</i>
  * <li><i>yi</i> - Yi Syllables, Yi Radicals
  * <li><i>cherokee</i>
- * <li><i>canadian</i> - Unified Canadian Aboriginal Syllabics, Unified Canadian 
+ * <li><i>canadian</i> - Unified Canadian Aboriginal Syllabics, Unified Canadian
  * Aboriginal Syllabics Extended
  * <li><i>presentation</i> - Alphabetic presentation forms
  * <li><i>vertical</i> - Vertical Forms
@@ -210,7 +210,7 @@ CType._inRange = function(num, rangeName, obj) {
  * <li><i>box</i> - Box Drawing
  * <li><i>block</i> - Block Elements
  * <li><i>letterlike</i> - Letterlike symbols
- * <li><i>mathematical</i> - Mathematical alphanumeric symbols, Miscellaneous 
+ * <li><i>mathematical</i> - Mathematical alphanumeric symbols, Miscellaneous
  * Mathematical Symbols-A, Miscellaneous Mathematical Symbols-B
  * <li><i>enclosedalpha</i> - Enclosed alphanumerics, Enclosed Alphanumeric Supplement
  * <li><i>enclosedcjk</i> - Enclosed CJK letters and months, Enclosed Ideographic Supplement
@@ -219,7 +219,7 @@ CType._inRange = function(num, rangeName, obj) {
  * <li><i>controlpictures</i> - Control pictures
  * <li><i>misc</i> - Miscellaneous technical
  * <li><i>ocr</i> - Optical character recognition (OCR)
- * <li><i>combining</i> - Combining Diacritical Marks, Combining Diacritical Marks 
+ * <li><i>combining</i> - Combining Diacritical Marks, Combining Diacritical Marks
  * for Symbols, Combining Diacritical Marks Supplement, Combining Diacritical Marks Extended
  * <li><i>digits</i> - ASCII digits (=isDigit())
  * <li><i>indicnumber</i> - Common Indic Number Forms
@@ -227,8 +227,8 @@ CType._inRange = function(num, rangeName, obj) {
  * <li><i>supersub</i> - Superscripts and Subscripts
  * <li><i>arrows</i> - Arrows, Miscellaneous Symbols and Arrows, Supplemental Arrows-A,
  * Supplemental Arrows-B, Supplemental Arrows-C
- * <li><i>operators</i> - Mathematical operators, supplemental 
- * mathematical operators 
+ * <li><i>operators</i> - Mathematical operators, supplemental
+ * mathematical operators
  * <li><i>geometric</i> - Geometric shapes, Geometric shapes extended
  * <li><i>ancient</i> - Ancient symbols
  * <li><i>braille</i> - Braille patterns
@@ -238,7 +238,7 @@ CType._inRange = function(num, rangeName, obj) {
  * <li><i>yijing</i> - Yijing Hexagram Symbols
  * <li><i>specials</i>
  * <li><i>variations</i> - Variation Selectors, Variation Selectors Supplement
- * <li><i>privateuse</i> - Private Use Area, Supplementary Private Use Area-A, 
+ * <li><i>privateuse</i> - Private Use Area, Supplementary Private Use Area-A,
  * Supplementary Private Use Area-B
  * <li><i>supplementarya</i> - Supplementary private use area-A
  * <li><i>supplementaryb</i> - Supplementary private use area-B
@@ -263,8 +263,8 @@ CType._inRange = function(num, rangeName, obj) {
  * <li><i>pictographs</i> - miscellaneous symbols and pictographs, supplemental symbols and pictographs
  * <li><i>ornamentaldingbats</i> - ornamental dingbats
  * </ul><p>
- * 
- * 
+ *
+ *
  * @protected
  * @param {string|IString|number} ch character or code point to examine
  * @param {string} rangeName the name of the range to check
@@ -272,25 +272,25 @@ CType._inRange = function(num, rangeName, obj) {
  * range
  */
 CType.withinRange = function(ch, rangeName) {
-	if (!rangeName) {
-		return false;
-	}
-	var num;
-	switch (typeof(ch)) {
-		case 'number':
-			num = ch;
-			break;
-		case 'string':
-			num = IString.toCodePoint(ch, 0);
-			break;
-		case 'undefined':
-			return false;
-		default:
-			num = ch._toCodePoint(0);
-			break;
-	}
+    if (!rangeName) {
+        return false;
+    }
+    var num;
+    switch (typeof(ch)) {
+        case 'number':
+            num = ch;
+            break;
+        case 'string':
+            num = IString.toCodePoint(ch, 0);
+            break;
+        case 'undefined':
+            return false;
+        default:
+            num = ch._toCodePoint(0);
+            break;
+    }
 
-	return CType._inRange(num, rangeName.toLowerCase(), ilib.data.ctype);
+    return CType._inRange(num, rangeName.toLowerCase(), ilib.data.ctype);
 };
 
 /**
@@ -300,7 +300,7 @@ CType.withinRange = function(ch, rangeName) {
  * @param {function(*)|undefined} onLoad
  */
 CType._init = function(sync, loadParams, onLoad) {
-	CType._load("ctype", sync, loadParams, onLoad);
+    CType._load("ctype", sync, loadParams, onLoad);
 };
 
 /**
@@ -311,27 +311,27 @@ CType._init = function(sync, loadParams, onLoad) {
  * @param {function(*)|undefined} onLoad
  */
 CType._load = function (name, sync, loadParams, onLoad) {
-	if (!ilib.data[name]) {
-		var loadName = name ? name + ".json" : "CType.json";
-		Utils.loadData({
-			object: "CType",
-			name: loadName,
-			locale: "-",
-			nonlocale: true,
-			sync: sync,
-			loadParams: loadParams, 
-			callback: ilib.bind(this, function(ct) {
-				ilib.data[name] = ct;
-				if (onLoad && typeof(onLoad) === 'function') {
-					onLoad(ilib.data[name]);
-				}
-			})
-		});
-	} else {
-		if (onLoad && typeof(onLoad) === 'function') {
-			onLoad(ilib.data[name]);
-		}
-	}
+    if (!ilib.data[name]) {
+        var loadName = name ? name + ".json" : "CType.json";
+        Utils.loadData({
+            object: "CType",
+            name: loadName,
+            locale: "-",
+            nonlocale: true,
+            sync: sync,
+            loadParams: loadParams,
+            callback: ilib.bind(this, function(ct) {
+                ilib.data[name] = ct;
+                if (onLoad && typeof(onLoad) === 'function') {
+                    onLoad(ilib.data[name]);
+                }
+            })
+        });
+    } else {
+        if (onLoad && typeof(onLoad) === 'function') {
+            onLoad(ilib.data[name]);
+        }
+    }
 };
 
 module.exports = CType;

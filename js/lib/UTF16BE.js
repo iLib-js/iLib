@@ -1,7 +1,7 @@
 /*
  * UTF16BE.js - Implement Unicode Transformation Format 16-bit,
  * Big Endian mappings
- * 
+ *
  * Copyright © 2014-2015, 2018, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -64,35 +64,35 @@ UTF16BE.prototype._init = function(options) {
 };
 
 UTF16BE.prototype.mapToUnicode = function (bytes) {
-	// nodejs can't convert big-endian in native code,
-	// so we would have to flip each Uint16 ourselves.
-	// At that point, it's just quicker to convert 
-	// in JS code anyways
-	var ret = "";
-	for (var i = 0; i < bytes.length; i += 2) {
-		ret += String.fromCharCode(bytes[i] << 8 | bytes[i+1]);
-	}
-	
-	return ret;
+    // nodejs can't convert big-endian in native code,
+    // so we would have to flip each Uint16 ourselves.
+    // At that point, it's just quicker to convert
+    // in JS code anyways
+    var ret = "";
+    for (var i = 0; i < bytes.length; i += 2) {
+        ret += String.fromCharCode(bytes[i] << 8 | bytes[i+1]);
+    }
+
+    return ret;
 };
-	
+
 UTF16BE.prototype.mapToNative = function(str) {
-	// nodejs can't convert big-endian in native code,
-	// so we would have to flip each Uint16 ourselves.
-	// At that point, it's just quicker to convert 
-	// in JS code anyways
-	var ret = new Uint8Array(str.length * 2 + 2);
-	var c;
-	for (var i = 0; i < str.length; i++) {
-		c = str.charCodeAt(i);
-		ret[i*2] = (c >> 8) & 0xFF;
-		ret[i*2+1] = c & 0xFF;
-	}
-	// double null terminate it, just in case
-	ret[i*2+1] = 0;
-	ret[i*2+2] = 0;
-	
-	return ret;
+    // nodejs can't convert big-endian in native code,
+    // so we would have to flip each Uint16 ourselves.
+    // At that point, it's just quicker to convert
+    // in JS code anyways
+    var ret = new Uint8Array(str.length * 2 + 2);
+    var c;
+    for (var i = 0; i < str.length; i++) {
+        c = str.charCodeAt(i);
+        ret[i*2] = (c >> 8) & 0xFF;
+        ret[i*2+1] = c & 0xFF;
+    }
+    // double null terminate it, just in case
+    ret[i*2+1] = 0;
+    ret[i*2+2] = 0;
+
+    return ret;
 };
 
 Charmap._algorithms["UTF-16BE"] = UTF16BE;

@@ -1,6 +1,6 @@
 /**
  * ilib-full-webpack.js - metafile that includes all of the other js files
- * 
+ *
  * @license
  * Copyright © 2018, JEDLSoft
  *
@@ -115,8 +115,5 @@ ilib.DigitalSpeedUnit = require("../DigitalSpeedUnit.js");
 
 //This unpacks the above classes to the global scope
 require("../ilib-unpack.js");
-
-// Must be at the end of meta file
-require("../ilib-getdata.js");
 
 module.exports = ilib;

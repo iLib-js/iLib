@@ -1,9 +1,9 @@
 /* jshint node: true */
 /*
- * ilib-node-async.js - glue code for node to load local ilib code and 
+ * ilib-node-async.js - glue code for node to load local ilib code and
  * data dynamically and asynchronously. Intended to be used with the
  * unit tests.
- * 
+ *
  * Copyright © 2016, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");

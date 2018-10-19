@@ -19,7 +19,7 @@
 
 // !data ctype ctype_n
 
-var ilib = require("./ilib.js");
+var ilib = require("../index");
 var CType = require("./CType.js");
 var IString = require("./IString.js");
 
@@ -33,21 +33,21 @@ var IString = require("./IString.js");
  * Latin script.
  */
 var isDigit = function (ch) {
-	var num;
-	switch (typeof(ch)) {
-		case 'number':
-			num = ch;
-			break;
-		case 'string':
-			num = IString.toCodePoint(ch, 0);
-			break;
-		case 'undefined':
-			return false;
-		default:
-			num = ch._toCodePoint(0);
-			break;
-	}
-	return ilib.data.ctype ? CType._inRange(num, 'Nd', ilib.data.ctype_n) : (num >= 0x30 && num <= 0x39);
+    var num;
+    switch (typeof(ch)) {
+        case 'number':
+            num = ch;
+            break;
+        case 'string':
+            num = IString.toCodePoint(ch, 0);
+            break;
+        case 'undefined':
+            return false;
+        default:
+            num = ch._toCodePoint(0);
+            break;
+    }
+    return ilib.data.ctype ? CType._inRange(num, 'Nd', ilib.data.ctype_n) : (num >= 0x30 && num <= 0x39);
 };
 
 /**

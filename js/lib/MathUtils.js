@@ -27,13 +27,13 @@ var MathUtils = {};
  * @return {number} -1 if the number is negative, and 1 otherwise
  */
 MathUtils.signum = function (num) {
-	var n = num;
-	if (typeof(num) === 'string') {
-		n = parseInt(num, 10);
-	} else if (typeof(num) !== 'number') {
-		return 1;
-	}
-	return (n < 0) ? -1 : 1;
+    var n = num;
+    if (typeof(num) === 'string') {
+        n = parseInt(num, 10);
+    } else if (typeof(num) !== 'number') {
+        return 1;
+    }
+    return (n < 0) ? -1 : 1;
 };
 
 /**
@@ -43,7 +43,7 @@ MathUtils.signum = function (num) {
  * @return {number} rounded number
  */
 MathUtils.floor = function (num) {
-	return Math.floor(num);
+    return Math.floor(num);
 };
 
 /**
@@ -53,7 +53,7 @@ MathUtils.floor = function (num) {
  * @return {number} rounded number
  */
 MathUtils.ceiling = function (num) {
-	return Math.ceil(num);
+    return Math.ceil(num);
 };
 
 /**
@@ -63,7 +63,7 @@ MathUtils.ceiling = function (num) {
  * @return {number} rounded number
  */
 MathUtils.down = function (num) {
-	return (num < 0) ? Math.ceil(num) : Math.floor(num);
+    return (num < 0) ? Math.ceil(num) : Math.floor(num);
 };
 
 /**
@@ -73,7 +73,7 @@ MathUtils.down = function (num) {
  * @return {number} rounded number
  */
 MathUtils.up = function (num) {
-	return (num < 0) ? Math.floor(num) : Math.ceil(num);
+    return (num < 0) ? Math.floor(num) : Math.ceil(num);
 };
 
 /**
@@ -83,7 +83,7 @@ MathUtils.up = function (num) {
  * @return {number} rounded number
  */
 MathUtils.halfup = function (num) {
-	return (num < 0) ? Math.ceil(num - 0.5) : Math.floor(num + 0.5);
+    return (num < 0) ? Math.ceil(num - 0.5) : Math.floor(num + 0.5);
 };
 
 /**
@@ -93,7 +93,7 @@ MathUtils.halfup = function (num) {
  * @return {number} rounded number
  */
 MathUtils.halfdown = function (num) {
-	return (num < 0) ? Math.floor(num + 0.5) : Math.ceil(num - 0.5);
+    return (num < 0) ? Math.floor(num + 0.5) : Math.ceil(num - 0.5);
 };
 
 /**
@@ -103,7 +103,7 @@ MathUtils.halfdown = function (num) {
  * @return {number} rounded number
  */
 MathUtils.halfeven = function (num) {
-	return (Math.floor(num) % 2 === 0) ? Math.ceil(num - 0.5) : Math.floor(num + 0.5);
+    return (Math.floor(num) % 2 === 0) ? Math.ceil(num - 0.5) : Math.floor(num + 0.5);
 };
 
 /**
@@ -113,7 +113,7 @@ MathUtils.halfeven = function (num) {
  * @return {number} rounded number
  */
 MathUtils.halfodd = function (num) {
-	return (Math.floor(num) % 2 !== 0) ? Math.ceil(num - 0.5) : Math.floor(num + 0.5);
+    return (Math.floor(num) % 2 !== 0) ? Math.ceil(num - 0.5) : Math.floor(num + 0.5);
 };
 
 /**
@@ -129,11 +129,11 @@ MathUtils.halfodd = function (num) {
  * @return the remainder of dividing the dividend by the modulus.
  */
 MathUtils.mod = function (dividend, modulus) {
-	if (modulus == 0) {
-		return 0;
-	}
-	var x = dividend % modulus;
-	return (x < 0) ? x + modulus : x;
+    if (modulus == 0) {
+        return 0;
+    }
+    var x = dividend % modulus;
+    return (x < 0) ? x + modulus : x;
 };
 
 /**
@@ -151,11 +151,11 @@ MathUtils.mod = function (dividend, modulus) {
  * @return the remainder of dividing the dividend by the modulus.
  */
 MathUtils.amod = function (dividend, modulus) {
-	if (modulus == 0) {
-		return 0;
-	}
-	var x = dividend % modulus;
-	return (x <= 0) ? x + modulus : x;
+    if (modulus == 0) {
+        return 0;
+    }
+    var x = dividend % modulus;
+    return (x <= 0) ? x + modulus : x;
 };
 
 /**

@@ -34,8 +34,8 @@ var Measurement = require("./Measurement.js");
  * the construction of this instance
  */
 var MassUnit = function (options) {
-	this.unit = "gram";
-	this.amount = 0;
+    this.unit = "gram";
+    this.amount = 0;
 
     this.ratios = MassUnit.ratios;
     this.aliases = MassUnit.aliases;
@@ -151,7 +151,7 @@ MassUnit.systems = {
  * @return {string} the name of the type of this measurement
  */
 MassUnit.prototype.getMeasure = function() {
-	return "mass";
+    return "mass";
 };
 
 MassUnit.aliases = {

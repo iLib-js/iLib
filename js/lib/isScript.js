@@ -1,6 +1,6 @@
 /*
  * isScript.js - Character type is script
- * 
+ *
  * Copyright © 2012-2015, 2018, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -19,16 +19,16 @@
 
 // !data scriptToRange
 
-var ilib = require("./ilib.js");
+var ilib = require("../index");
 
 var CType = require("./CType.js");
 var IString = require("./IString.js");
 
 /**
- * Return whether or not the first character in the given string is 
+ * Return whether or not the first character in the given string is
  * in the given script. The script is given as the 4-letter ISO
  * 15924 script code.<p>
- * 
+ *
  * @static
  * @param {string|IString|number} ch character or code point to examine
  * @param {string} script the 4-letter ISO 15924 to query against
@@ -36,22 +36,22 @@ var IString = require("./IString.js");
  * false otherwise
  */
 var isScript = function (ch, script) {
-	var num;
-	switch (typeof(ch)) {
-		case 'number':
-			num = ch;
-			break;
-		case 'string':
-			num = IString.toCodePoint(ch, 0);
-			break;
-		case 'undefined':
-			return false;
-		default:
-			num = ch._toCodePoint(0);
-			break;
-	}
+    var num;
+    switch (typeof(ch)) {
+        case 'number':
+            num = ch;
+            break;
+        case 'string':
+            num = IString.toCodePoint(ch, 0);
+            break;
+        case 'undefined':
+            return false;
+        default:
+            num = ch._toCodePoint(0);
+            break;
+    }
 
-	return CType._inRange(num, script, ilib.data.scriptToRange);
+    return CType._inRange(num, script, ilib.data.scriptToRange);
 };
 
 /**
@@ -61,7 +61,7 @@ var isScript = function (ch, script) {
  * @param {function(*)|undefined} onLoad
  */
 isScript._init = function (sync, loadParams, onLoad) {
-	CType._load("scriptToRange", sync, loadParams, onLoad);
+    CType._load("scriptToRange", sync, loadParams, onLoad);
 };
 
 module.exports = isScript;

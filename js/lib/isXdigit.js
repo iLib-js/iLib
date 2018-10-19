@@ -19,7 +19,7 @@
 
 // !data ctype
 
-var ilib = require("./ilib.js");
+var ilib = require("../index");
 
 var CType = require("./CType.js");
 var IString = require("./IString.js");
@@ -34,23 +34,23 @@ var IString = require("./IString.js");
  * in the Latin script.
  */
 var isXdigit = function (ch) {
-	var num;
-	switch (typeof(ch)) {
-		case 'number':
-			num = ch;
-			break;
-		case 'string':
-			num = IString.toCodePoint(ch, 0);
-			break;
-		case 'undefined':
-			return false;
-		default:
-			num = ch._toCodePoint(0);
-			break;
-	}
+    var num;
+    switch (typeof(ch)) {
+        case 'number':
+            num = ch;
+            break;
+        case 'string':
+            num = IString.toCodePoint(ch, 0);
+            break;
+        case 'undefined':
+            return false;
+        default:
+            num = ch._toCodePoint(0);
+            break;
+    }
 
-	return ilib.data.ctype ? CType._inRange(num, 'xdigit', ilib.data.ctype) :
-	    ((num >= 0x30 && num <= 0x39) || (num >= 0x41 && num <= 0x46) || (num >= 0x61 && num <= 0x66));
+    return ilib.data.ctype ? CType._inRange(num, 'xdigit', ilib.data.ctype) :
+        ((num >= 0x30 && num <= 0x39) || (num >= 0x41 && num <= 0x46) || (num >= 0x61 && num <= 0x66));
 };
 
 /**
@@ -60,7 +60,7 @@ var isXdigit = function (ch) {
  * @param {function(*)|undefined} onLoad
  */
 isXdigit._init = function (sync, loadParams, onLoad) {
-	CType._init(sync, loadParams, onLoad);
+    CType._init(sync, loadParams, onLoad);
 };
 
 module.exports = isXdigit;

@@ -19,7 +19,7 @@
 
 // !data nfc nfkd
 
-var ilib = require("./ilib.js");
+var ilib = require("../index");
 var Utils = require("./Utils.js");
 var Locale = require("./Locale.js");
 var CType = require("./CType.js");
@@ -40,7 +40,7 @@ var NormString = require("./NormString.js");
  * list, organized by the first letter of the family name.<p>
  *
  * Example in English:<p>
- * 
+ *
  * Buckets: A B C D E F G H I J K L M N O P Q R S T U V W X Y Z #<p>
  *
  * <pre>

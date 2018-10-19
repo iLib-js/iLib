@@ -17,7 +17,7 @@
  * limitations under the License.
  */
 
-var ilib = require("./ilib.js");
+var ilib = require("../index");
 var SearchUtils = require("./SearchUtils.js");
 var MathUtils = require("./MathUtils.js");
 
@@ -251,7 +251,7 @@ GregorianDate.prototype._init2 = function (params) {
  * @returns {RataDie} the new RD instance for the given params
  */
 GregorianDate.prototype.newRd = function (params) {
-	return new GregRataDie(params);
+    return new GregRataDie(params);
 };
 
 /**
@@ -260,35 +260,35 @@ GregorianDate.prototype.newRd = function (params) {
  * @static
  */
 GregorianDate._calcYear = function(rd) {
-	var days400,
-		days100,
-		days4,
-		years400,
-		years100,
-		years4,
-		years1,
-		year;
+    var days400,
+        days100,
+        days4,
+        years400,
+        years100,
+        years4,
+        years1,
+        year;
 
-	years400 = Math.floor((rd - 1) / 146097);
-	days400 = MathUtils.mod((rd - 1), 146097);
-	years100 = Math.floor(days400 / 36524);
-	days100 = MathUtils.mod(days400, 36524);
-	years4 = Math.floor(days100 / 1461);
-	days4 = MathUtils.mod(days100, 1461);
-	years1 = Math.floor(days4 / 365);
+    years400 = Math.floor((rd - 1) / 146097);
+    days400 = MathUtils.mod((rd - 1), 146097);
+    years100 = Math.floor(days400 / 36524);
+    days100 = MathUtils.mod(days400, 36524);
+    years4 = Math.floor(days100 / 1461);
+    days4 = MathUtils.mod(days100, 1461);
+    years1 = Math.floor(days4 / 365);
 
-	year = 400 * years400 + 100 * years100 + 4 * years4 + years1;
-	if (years100 !== 4 && years1 !== 4) {
-		year++;
-	}
-	return year;
+    year = 400 * years400 + 100 * years100 + 4 * years4 + years1;
+    if (years100 !== 4 && years1 !== 4) {
+        year++;
+    }
+    return year;
 };
 
 /**
  * @private
  */
 GregorianDate.prototype._calcYear = function(rd) {
-	return GregorianDate._calcYear(rd);
+    return GregorianDate._calcYear(rd);
 };
 
 /**
@@ -296,113 +296,113 @@ GregorianDate.prototype._calcYear = function(rd) {
  * @private
  */
 GregorianDate.prototype._calcDateComponents = function () {
-	if (this.timezone === "local" && this.rd.getRataDie() >= -99280837 && this.rd.getRataDie() <= 100719163) {
-		// console.log("using js Date to calculate offset");
-		// use the intrinsic JS Date object to do the tz conversion for us, which
-		// guarantees that it follows the system tz database settings
-		var d = new Date(this.rd.getTimeExtended());
+    if (this.timezone === "local" && this.rd.getRataDie() >= -99280837 && this.rd.getRataDie() <= 100719163) {
+        // console.log("using js Date to calculate offset");
+        // use the intrinsic JS Date object to do the tz conversion for us, which
+        // guarantees that it follows the system tz database settings
+        var d = new Date(this.rd.getTimeExtended());
 
-		/**
-		 * Year in the Gregorian calendar.
-		 * @type number
-		 */
-		this.year = d.getFullYear();
+        /**
+         * Year in the Gregorian calendar.
+         * @type number
+         */
+        this.year = d.getFullYear();
 
-		/**
-		 * The month number, ranging from 1 (January) to 12 (December).
-		 * @type number
-		 */
-		this.month = d.getMonth()+1;
+        /**
+         * The month number, ranging from 1 (January) to 12 (December).
+         * @type number
+         */
+        this.month = d.getMonth()+1;
 
-		/**
-		 * The day of the month. This ranges from 1 to 31.
-		 * @type number
-		 */
-		this.day = d.getDate();
+        /**
+         * The day of the month. This ranges from 1 to 31.
+         * @type number
+         */
+        this.day = d.getDate();
 
-		/**
-		 * The hour of the day. This can be a number from 0 to 23, as times are
-		 * stored unambiguously in the 24-hour clock.
-		 * @type number
-		 */
-		this.hour = d.getHours();
+        /**
+         * The hour of the day. This can be a number from 0 to 23, as times are
+         * stored unambiguously in the 24-hour clock.
+         * @type number
+         */
+        this.hour = d.getHours();
 
-		/**
-		 * The minute of the hours. Ranges from 0 to 59.
-		 * @type number
-		 */
-		this.minute = d.getMinutes();
+        /**
+         * The minute of the hours. Ranges from 0 to 59.
+         * @type number
+         */
+        this.minute = d.getMinutes();
 
-		/**
-		 * The second of the minute. Ranges from 0 to 59.
-		 * @type number
-		 */
-		this.second = d.getSeconds();
+        /**
+         * The second of the minute. Ranges from 0 to 59.
+         * @type number
+         */
+        this.second = d.getSeconds();
 
-		/**
-		 * The millisecond of the second. Ranges from 0 to 999.
-		 * @type number
-		 */
-		this.millisecond = d.getMilliseconds();
+        /**
+         * The millisecond of the second. Ranges from 0 to 999.
+         * @type number
+         */
+        this.millisecond = d.getMilliseconds();
 
-		this.offset = -d.getTimezoneOffset() / 1440;
-	} else {
-		// console.log("using ilib to calculate offset. tz is " + this.timezone);
-		// console.log("GregDate._calcDateComponents: date is " + JSON.stringify(this) + " parent is " + JSON.stringify(this.parent) + " and parent.parent is " + JSON.stringify(this.parent.parent));
-		if (typeof(this.offset) === "undefined") {
-			// console.log("calculating offset");
-			this.year = this._calcYear(this.rd.getRataDie());
+        this.offset = -d.getTimezoneOffset() / 1440;
+    } else {
+        // console.log("using ilib to calculate offset. tz is " + this.timezone);
+        // console.log("GregDate._calcDateComponents: date is " + JSON.stringify(this) + " parent is " + JSON.stringify(this.parent) + " and parent.parent is " + JSON.stringify(this.parent.parent));
+        if (typeof(this.offset) === "undefined") {
+            // console.log("calculating offset");
+            this.year = this._calcYear(this.rd.getRataDie());
 
-			// now offset the RD by the time zone, then recalculate in case we were
-			// near the year boundary
-			if (!this.tz) {
-				this.tz = new TimeZone({id: this.timezone});
-			}
-			this.offset = this.tz.getOffsetMillis(this) / 86400000;
-		// } else {
-			// console.log("offset is already defined somehow. type is " + typeof(this.offset));
-			// console.trace("Stack is this one");
-		}
-		// console.log("offset is " + this.offset);
-		var rd = this.rd.getRataDie();
-		if (this.offset !== 0) {
-			rd += this.offset;
-		}
-		this.year = this._calcYear(rd);
+            // now offset the RD by the time zone, then recalculate in case we were
+            // near the year boundary
+            if (!this.tz) {
+                this.tz = new TimeZone({id: this.timezone});
+            }
+            this.offset = this.tz.getOffsetMillis(this) / 86400000;
+        // } else {
+            // console.log("offset is already defined somehow. type is " + typeof(this.offset));
+            // console.trace("Stack is this one");
+        }
+        // console.log("offset is " + this.offset);
+        var rd = this.rd.getRataDie();
+        if (this.offset !== 0) {
+            rd += this.offset;
+        }
+        this.year = this._calcYear(rd);
 
-		var yearStartRd = this.newRd({
-			year: this.year,
-			month: 1,
-			day: 1,
-			cal: this.cal
-		});
+        var yearStartRd = this.newRd({
+            year: this.year,
+            month: 1,
+            day: 1,
+            cal: this.cal
+        });
 
-		// remainder is days into the year
-		var remainder = rd - yearStartRd.getRataDie() + 1;
+        // remainder is days into the year
+        var remainder = rd - yearStartRd.getRataDie() + 1;
 
-		var cumulative = GregorianCal.prototype.isLeapYear.call(this.cal, this.year) ?
-			GregRataDie.cumMonthLengthsLeap :
-			GregRataDie.cumMonthLengths;
+        var cumulative = GregorianCal.prototype.isLeapYear.call(this.cal, this.year) ?
+            GregRataDie.cumMonthLengthsLeap :
+            GregRataDie.cumMonthLengths;
 
-		this.month = SearchUtils.bsearch(Math.floor(remainder), cumulative);
-		remainder = remainder - cumulative[this.month-1];
+        this.month = SearchUtils.bsearch(Math.floor(remainder), cumulative);
+        remainder = remainder - cumulative[this.month-1];
 
-		this.day = Math.floor(remainder);
-		remainder -= this.day;
-		// now convert to milliseconds for the rest of the calculation
-		remainder = Math.round(remainder * 86400000);
+        this.day = Math.floor(remainder);
+        remainder -= this.day;
+        // now convert to milliseconds for the rest of the calculation
+        remainder = Math.round(remainder * 86400000);
 
-		this.hour = Math.floor(remainder/3600000);
-		remainder -= this.hour * 3600000;
+        this.hour = Math.floor(remainder/3600000);
+        remainder -= this.hour * 3600000;
 
-		this.minute = Math.floor(remainder/60000);
-		remainder -= this.minute * 60000;
+        this.minute = Math.floor(remainder/60000);
+        remainder -= this.minute * 60000;
 
-		this.second = Math.floor(remainder/1000);
-		remainder -= this.second * 1000;
+        this.second = Math.floor(remainder/1000);
+        remainder -= this.second * 1000;
 
-		this.millisecond = Math.floor(remainder);
-	}
+        this.millisecond = Math.floor(remainder);
+    }
 };
 
 /**
@@ -412,8 +412,8 @@ GregorianDate.prototype._calcDateComponents = function () {
  * @return {number} the day of the week
  */
 GregorianDate.prototype.getDayOfWeek = function() {
-	var rd = Math.floor(this.rd.getRataDie() + (this.offset || 0));
-	return MathUtils.mod(rd, 7);
+    var rd = Math.floor(this.rd.getRataDie() + (this.offset || 0));
+    return MathUtils.mod(rd, 7);
 };
 
 /**
@@ -423,11 +423,11 @@ GregorianDate.prototype.getDayOfWeek = function() {
  * @return {number} the ordinal day of the year
  */
 GregorianDate.prototype.getDayOfYear = function() {
-	var cumulativeMap = this.cal.isLeapYear(this.year) ?
-		GregRataDie.cumMonthLengthsLeap :
-		GregRataDie.cumMonthLengths;
+    var cumulativeMap = this.cal.isLeapYear(this.year) ?
+        GregRataDie.cumMonthLengthsLeap :
+        GregRataDie.cumMonthLengths;
 
-	return cumulativeMap[this.month-1] + this.day;
+    return cumulativeMap[this.month-1] + this.day;
 };
 
 /**
@@ -441,7 +441,7 @@ GregorianDate.prototype.getDayOfYear = function() {
  * common era
  */
 GregorianDate.prototype.getEra = function() {
-	return (this.year < 1) ? -1 : 1;
+    return (this.year < 1) ? -1 : 1;
 };
 
 /**
@@ -450,7 +450,7 @@ GregorianDate.prototype.getEra = function() {
  * @return {string} a string giving the name of the calendar
  */
 GregorianDate.prototype.getCalendar = function() {
-	return "gregorian";
+    return "gregorian";
 };
 
 // register with the factory method

@@ -1,7 +1,7 @@
 /**
  * ilib-ut-webpack.js - metafile that includes all of the other js files that
  * the unit tests need
- * 
+ *
  * @license
  * Copyright © 2018, JEDLSoft
  *
@@ -149,8 +149,5 @@ ilib.RataDie = require("../RataDie.js");
 
 // This unpacks the above classes to the global scope
 require("../ilib-unpack.js");
-
-// Must be at the end of meta file
-require("../ilib-getdata.js");
 
 module.exports = ilib;

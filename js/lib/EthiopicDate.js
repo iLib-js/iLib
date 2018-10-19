@@ -17,7 +17,7 @@
  * limitations under the License.
  */
 
-var ilib = require("./ilib.js");
+var ilib = require("../index");
 var MathUtils = require("./MathUtils.js");
 
 var EthiopicRataDie = require("./EthiopicRataDie.js");
@@ -209,7 +209,7 @@ EthiopicDate.prototype._init = function (params) {
  * @returns {RataDie} the new RD instance for the given params
  */
 EthiopicDate.prototype.newRd = function (params) {
-	return new EthiopicRataDie(params);
+    return new EthiopicRataDie(params);
 };
 
 /**
@@ -219,9 +219,9 @@ EthiopicDate.prototype.newRd = function (params) {
  * @returns {number} the year for the RD
  */
 EthiopicDate.prototype._calcYear = function(rd) {
-	var year = Math.floor((4*(Math.floor(rd)-1) + 1463)/1461);
+    var year = Math.floor((4*(Math.floor(rd)-1) + 1463)/1461);
 
-	return year;
+    return year;
 };
 
 /**
@@ -229,56 +229,56 @@ EthiopicDate.prototype._calcYear = function(rd) {
  * @protected
  */
 EthiopicDate.prototype._calcDateComponents = function () {
-	var remainder,
-		rd = this.rd.getRataDie();
+    var remainder,
+        rd = this.rd.getRataDie();
 
-	this.year = this._calcYear(rd);
+    this.year = this._calcYear(rd);
 
-	if (typeof(this.offset) === "undefined") {
-		this.year = this._calcYear(rd);
+    if (typeof(this.offset) === "undefined") {
+        this.year = this._calcYear(rd);
 
-		// now offset the RD by the time zone, then recalculate in case we were
-		// near the year boundary
-		if (!this.tz) {
-			this.tz = new TimeZone({id: this.timezone});
-		}
-		this.offset = this.tz.getOffsetMillis(this) / 86400000;
-	}
+        // now offset the RD by the time zone, then recalculate in case we were
+        // near the year boundary
+        if (!this.tz) {
+            this.tz = new TimeZone({id: this.timezone});
+        }
+        this.offset = this.tz.getOffsetMillis(this) / 86400000;
+    }
 
-	if (this.offset !== 0) {
-		rd += this.offset;
-		this.year = this._calcYear(rd);
-	}
+    if (this.offset !== 0) {
+        rd += this.offset;
+        this.year = this._calcYear(rd);
+    }
 
-	var jan1 = this.newRd({
-		year: this.year,
-		month: 1,
-		day: 1,
-		hour: 0,
-		minute: 0,
-		second: 0,
-		millisecond: 0
-	});
-	remainder = rd + 1 - jan1.getRataDie();
+    var jan1 = this.newRd({
+        year: this.year,
+        month: 1,
+        day: 1,
+        hour: 0,
+        minute: 0,
+        second: 0,
+        millisecond: 0
+    });
+    remainder = rd + 1 - jan1.getRataDie();
 
-	this.month = Math.floor((remainder-1)/30) + 1;
-	remainder = remainder - (this.month-1) * 30;
+    this.month = Math.floor((remainder-1)/30) + 1;
+    remainder = remainder - (this.month-1) * 30;
 
-	this.day = Math.floor(remainder);
-	remainder -= this.day;
-	// now convert to milliseconds for the rest of the calculation
-	remainder = Math.round(remainder * 86400000);
+    this.day = Math.floor(remainder);
+    remainder -= this.day;
+    // now convert to milliseconds for the rest of the calculation
+    remainder = Math.round(remainder * 86400000);
 
-	this.hour = Math.floor(remainder/3600000);
-	remainder -= this.hour * 3600000;
+    this.hour = Math.floor(remainder/3600000);
+    remainder -= this.hour * 3600000;
 
-	this.minute = Math.floor(remainder/60000);
-	remainder -= this.minute * 60000;
+    this.minute = Math.floor(remainder/60000);
+    remainder -= this.minute * 60000;
 
-	this.second = Math.floor(remainder/1000);
-	remainder -= this.second * 1000;
+    this.second = Math.floor(remainder/1000);
+    remainder -= this.second * 1000;
 
-	this.millisecond = remainder;
+    this.millisecond = remainder;
 };
 
 /**
@@ -288,8 +288,8 @@ EthiopicDate.prototype._calcDateComponents = function () {
  * @return {number} the day of the week
  */
 EthiopicDate.prototype.getDayOfWeek = function() {
-	var rd = Math.floor(this.rd.getRataDie() + (this.offset || 0));
-	return MathUtils.mod(rd-4, 7);
+    var rd = Math.floor(this.rd.getRataDie() + (this.offset || 0));
+    return MathUtils.mod(rd-4, 7);
 };
 
 /**
@@ -298,7 +298,7 @@ EthiopicDate.prototype.getDayOfWeek = function() {
  * @return {string} a string giving the name of the calendar
  */
 EthiopicDate.prototype.getCalendar = function() {
-	return "ethiopic";
+    return "ethiopic";
 };
 
 //register with the factory method

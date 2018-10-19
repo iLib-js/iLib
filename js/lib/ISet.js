@@ -1,6 +1,6 @@
 /*
  * ISet.js - ilib Set class definition for platforms older than ES6
- * 
+ *
  * Copyright © 2015, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -23,65 +23,65 @@
  * elements array, or the first element added to the set. The type
  * may be "string" or "number", and all elements will be returned
  * as elements of that type.
- * 
+ *
  * @class
  * @param {Array.<string|number>=} elements initial elements to add to the set
  * @constructor
  */
 var ISet = function(elements) {
-	this.elements = {};
+    this.elements = {};
 
-	if (elements && elements.length) {
-		for (var i = 0; i < elements.length; i++) {
-			this.elements[elements[i]] = true;
-		}
-		
-		this.type = typeof(elements[0]);
-	}
+    if (elements && elements.length) {
+        for (var i = 0; i < elements.length; i++) {
+            this.elements[elements[i]] = true;
+        }
+
+        this.type = typeof(elements[0]);
+    }
 };
 
 /**
  * @private
  */
 ISet.prototype._addOne = function(element) {
-	if (this.isEmpty()) {
-		this.type = typeof(element);
-	}
-	
-	if (!this.elements[element]) {
-		this.elements[element] = true;
-		return true;
-	}
+    if (this.isEmpty()) {
+        this.type = typeof(element);
+    }
 
-	return false;
+    if (!this.elements[element]) {
+        this.elements[element] = true;
+        return true;
+    }
+
+    return false;
 };
 
 /**
- * Adds the specified element or array of elements to this set if it is or they are not 
+ * Adds the specified element or array of elements to this set if it is or they are not
  * already present.
- * 
+ *
  * @param {*|Array.<*>} element element or array of elements to add
  * @return {boolean} true if this set did not already contain the specified element[s]
  */
 ISet.prototype.add = function(element) {
-	var ret = false;
-	
-	if (typeof(element) === "object") {
-		for (var i = 0; i < element.length; i++) {
-			ret = this._addOne(element[i]) || ret;
-		}
-	} else {
-		ret = this._addOne(element);
-	}
-	
-	return ret;
+    var ret = false;
+
+    if (typeof(element) === "object") {
+        for (var i = 0; i < element.length; i++) {
+            ret = this._addOne(element[i]) || ret;
+        }
+    } else {
+        ret = this._addOne(element);
+    }
+
+    return ret;
 };
 
 /**
  * Removes all of the elements from this set.
  */
 ISet.prototype.clear = function() {
-	this.elements = {};
+    this.elements = {};
 };
 
 /**
@@ -90,7 +90,7 @@ ISet.prototype.clear = function() {
  * @return {boolean}
  */
 ISet.prototype.contains = function(element) {
-	return this.elements[element] || false;
+    return this.elements[element] || false;
 };
 
 ISet.prototype.has = ISet.prototype.contains; // for compatibility with ES6
@@ -100,7 +100,7 @@ ISet.prototype.has = ISet.prototype.contains; // for compatibility with ES6
  * @return {boolean}
  */
 ISet.prototype.isEmpty = function() {
-	return (Object.keys(this.elements).length === 0);
+    return (Object.keys(this.elements).length === 0);
 };
 
 /**
@@ -109,12 +109,12 @@ ISet.prototype.isEmpty = function() {
  * @return {boolean} true if the set contained the specified element
  */
 ISet.prototype.remove = function(element) {
-	if (this.elements[element]) {
-		delete this.elements[element];
-		return true;
-	}
-	
-	return false;
+    if (this.elements[element]) {
+        delete this.elements[element];
+        return true;
+    }
+
+    return false;
 };
 
 /**
@@ -122,18 +122,18 @@ ISet.prototype.remove = function(element) {
  * @return {Array.<*>} the set represented as a javascript array
  */
 ISet.prototype.asArray = function() {
-	var keys = Object.keys(this.elements);
-	
-	// keys is an array of strings. Convert to numbers if necessary
-	if (this.type === "number") {
-		var tmp = [];
-		for (var i = 0; i < keys.length; i++) {
-			tmp.push(Number(keys[i]).valueOf());
-		}
-		keys = tmp;
-	}
-	
-	return keys;
+    var keys = Object.keys(this.elements);
+
+    // keys is an array of strings. Convert to numbers if necessary
+    if (this.type === "number") {
+        var tmp = [];
+        for (var i = 0; i < keys.length; i++) {
+            tmp.push(Number(keys[i]).valueOf());
+        }
+        keys = tmp;
+    }
+
+    return keys;
 };
 
 /**
@@ -141,7 +141,7 @@ ISet.prototype.asArray = function() {
  * @return {string} the current set represented as json
  */
 ISet.prototype.toJson = function() {
-	return JSON.stringify(this.asArray());
+    return JSON.stringify(this.asArray());
 };
 
 /**
@@ -150,7 +150,7 @@ ISet.prototype.toJson = function() {
  * @return {*} the JS representation of this object
  */
 ISet.prototype.toJS = function() {
-	return this.asArray();
+    return this.asArray();
 };
 
 /**
@@ -158,7 +158,7 @@ ISet.prototype.toJS = function() {
  * @return {ISet|undefined} the current object, or undefined if the conversion did not work
  */
 ISet.prototype.fromJS = function(obj) {
-	return this.add(obj) ? this : undefined;
+    return this.add(obj) ? this : undefined;
 };
 
 module.exports = ISet;
