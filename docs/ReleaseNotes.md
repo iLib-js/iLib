@@ -1,6 +1,23 @@
 Release Notes for Version 14
 ============================
 
+Build 002
+-------
+Published as version 14.1.0
+
+New Features:
+* New top-level entry point
+    * You can now require("ilib") directly instead of requiring the file that installs the loader. (ie.
+      ilib/lib/ilib-node.js for node, or ilib/lib/ilib-qt.js for qt, etc.)
+    * The top-level entry point will figure out which environment it is running in and automatically install
+      the appropriate loader.
+    * Allows ilib to run in node or within a webpack bundle without changes
+    * Allows clients to just require ilib classes directly without first requiring the loader installer
+
+Bug Fixes
+* Restored a missing mapping from the the native name for "Japan" to the ISO code "JP" in the nativecountries.json
+    * Fixes address parsing for Japan
+
 Build 001
 -------
 Published as version 14.0.0
