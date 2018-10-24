@@ -1,5 +1,5 @@
 /**
- * ilib-getdata.js - define the locale data for assembled or dynamic
+ * ilib-webpack.js - define the locale data for assembled or dynamic
  *
  * @license
  * Copyright © 2018, JEDLSoft
