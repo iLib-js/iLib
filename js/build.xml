@@ -342,6 +342,7 @@ limitations under the License.
             <fileset dir="${build.lib}">
                 <include name="ilib-node*"/>
                 <include name="ilib-qt*"/>
+                <include name="ilib-webpack*"/>
                 <include name="ilib-unpack.js"/>
             </fileset>
             <fileset dir="${build.base}">
@@ -359,7 +360,7 @@ limitations under the License.
 			<arg value="-c"/>
 			<arg value="-v"/>
 			<fileset dir="${build.lib}" includes="*.js"  excludes="ilib.js,ilib-*.js,runner.js,externs.js,datefmtstr.js"/>
-			<fileset dir="${build.lib}" includes="ilib-node*.js,ilib-stubs*,ilib-web.js,ilib-qt.js"/>
+			<fileset dir="${build.lib}" includes="ilib-node*.js,ilib-webpack.js,ilib-stubs*,ilib-web.js,ilib-qt.js"/>
 			<mapper type="glob" from="*.js" to="*.js"/>
 		</apply>
 		<apply osfamily="unix" executable="node" dest="${build.output.dyncode}" parallel="false" force="true">

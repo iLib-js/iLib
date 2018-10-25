@@ -1,6 +1,16 @@
 Release Notes for Version 14
 ============================
 
+Build 003
+-------
+Published as version 14.1.1
+
+Bug Fixes
+* Worked around a problem with uglifyjs which optimized out a block of code that contained the comment that
+  the ilib-webpack-loader was looking for. The loader would replace that comment with dependencies on the
+  webpacked locale data files. Without that comment, no dependencies, and therefore no locale data and no
+  WebpackLoader code would be included in the final webpack bundle.
+
 Build 002
 -------
 Published as version 14.1.0
