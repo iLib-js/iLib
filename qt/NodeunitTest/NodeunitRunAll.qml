@@ -38,7 +38,7 @@ QtObject {
                 runner.addSuite(ts);
             }
             runner.runTests();
-             console.log("<<<<< End time of full test: " +  date.getHours() +":"+ date.getMinutes() +":"+ date.getSeconds()+ " >>>>>");
+            console.log("<<<<< End time of full test: " +  date.getHours() +":"+ date.getMinutes() +":"+ date.getSeconds()+ " >>>>>");
             console.log("\n *************************** All iLib tests on QML are done. ***********************************");
             Qt.quit();
         }
