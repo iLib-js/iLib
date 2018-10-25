@@ -287,28 +287,32 @@ limitations under the License.
 		<replace token="// !macro ilibVersion" value='"${version}"' preserveLastModified="true">
 		    <fileset dir="${build.output.js}" includes="ilib.js"/>
 		</replace>
-		<exec osfamily="unix" executable="uglifyjs" dir="${build.base}" failifexecutionfails="true">
+        <exec osfamily="unix" executable="uglifyjs" dir="${build.base}" failifexecutionfails="true">
             <env key="PATH" path="${env.PATH}:${nm.bin}"/>
-			<arg value="${build.output.js}/ilib.js"/>
-            <arg value="--comments"/>
-            <arg value="/\!(data|loadLocaleData|defineLocaleData|macro)/"/>
-			<arg value="-o"/>
-			<arg value="${build.output.dyncode}/ilib.js"/>
-			<arg value="--no-mangle-functions"/>
-            <arg value="-c"/>
-			<arg value="-v"/>
-		</exec>
-		<exec osfamily="windows" executable="uglifyjs" dir="${build.base}" failifexecutionfails="true">
-            <env key="PATH" path="${env.PATH}:${nm.bin}"/>
-			<arg value="${build.output.js}/ilib.js"/>
+            <arg value="${build.output.js}/ilib.js"/>
             <arg value="--comments"/>
             <arg value="/\!(data|loadLocaleData|defineLocaleData|macro)/"/>
             <arg value="-o"/>
-			<arg value="${build.output.dyncode}/ilib.js"/>
-			<arg value="--no-mangle-functions"/>
+            <arg value="${build.output.dyncode}/ilib.js"/>
+            <arg value="--no-mangle-functions"/>
             <arg value="-c"/>
-			<arg value="-v"/>
-		</exec>
+            <arg value="-v"/>
+            <arg value="--source-map"/>
+            <arg value="includeSources"/>
+        </exec>
+        <exec osfamily="windows" executable="uglifyjs" dir="${build.base}" failifexecutionfails="true">
+            <env key="PATH" path="${env.PATH}:${nm.bin}"/>
+            <arg value="${build.output.js}/ilib.js"/>
+            <arg value="--comments"/>
+            <arg value="/\!(data|loadLocaleData|defineLocaleData|macro)/"/>
+            <arg value="-o"/>
+            <arg value="${build.output.dyncode}/ilib.js"/>
+            <arg value="--no-mangle-functions"/>
+            <arg value="-c"/>
+            <arg value="-v"/>
+            <arg value="--source-map"/>
+            <arg value="includeSources"/>
+        </exec>
 		<exec osfamily="unix" executable="node" dir="${build.base}" failifexecutionfails="true">
             <env key="PATH" path="${env.PATH}:${nm.bin}"/>
 			<arg value="${build.tools.qmlizer}/qmlizer.js"/>
@@ -324,14 +328,16 @@ limitations under the License.
 
 		<!-- then do all the rest of them -->
 		<apply osfamily="unix" executable="uglifyjs" dest="${build.output.dyncode}" parallel="false">
-			<srcfile/>
-			<arg value="--comments"/>
-			<arg value="/\!(data|loadLocaleData|defineLocaleData|macro)/"/>
+            <srcfile/>
+            <arg value="--comments"/>
+            <arg value="/\!(data|loadLocaleData|defineLocaleData|macro)/"/>
             <arg value="-o"/>
-			<targetfile/>
-			<arg value="--no-mangle-functions"/>
+            <targetfile/>
+            <arg value="--no-mangle-functions"/>
             <arg value="-c"/>
-			<arg value="-v"/>
+            <arg value="-v"/>
+            <arg value="--source-map"/>
+            <arg value="includeSources"/>
             <fileset dir="${build.lib}">
                 <include name="*.js"/>
                 <exclude name="ilib.js"/>
@@ -348,21 +354,23 @@ limitations under the License.
             <fileset dir="${build.base}">
                 <include name="index.js"/>
             </fileset>
-			<mapper type="glob" from="*.js" to="*.js"/>
-		</apply>
-		<apply osfamily="windows" executable="uglifyjs.bat" dest="${build.output.dyncode}" parallel="false">
-			<srcfile/>
+            <mapper type="glob" from="*.js" to="*.js"/>
+        </apply>
+        <apply osfamily="windows" executable="uglifyjs.bat" dest="${build.output.dyncode}" parallel="false">
+            <srcfile/>
             <arg value="--comments"/>
             <arg value="/\!(data|loadLocaleData|defineLocaleData|macro)/"/>
             <arg value="-o"/>
-			<targetfile/>
-			<arg value="--no-mangle-functions"/>
-			<arg value="-c"/>
-			<arg value="-v"/>
-			<fileset dir="${build.lib}" includes="*.js"  excludes="ilib.js,ilib-*.js,runner.js,externs.js,datefmtstr.js"/>
-			<fileset dir="${build.lib}" includes="ilib-node*.js,ilib-webpack.js,ilib-stubs*,ilib-web.js,ilib-qt.js"/>
-			<mapper type="glob" from="*.js" to="*.js"/>
-		</apply>
+            <targetfile/>
+            <arg value="--no-mangle-functions"/>
+            <arg value="-c"/>
+            <arg value="-v"/>
+            <arg value="--source-map"/>
+            <arg value="includeSources"/>
+            <fileset dir="${build.lib}" includes="*.js"  excludes="ilib.js,ilib-*.js,runner.js,externs.js,datefmtstr.js"/>
+            <fileset dir="${build.lib}" includes="ilib-node*.js,ilib-webpack.js,ilib-stubs*,ilib-web.js,ilib-qt.js"/>
+            <mapper type="glob" from="*.js" to="*.js"/>
+        </apply>
 		<apply osfamily="unix" executable="node" dest="${build.output.dyncode}" parallel="false" force="true">
 			<arg value="${build.tools.qmlizer}/qmlizer.js"/>
 			<srcfile/>
@@ -439,25 +447,26 @@ limitations under the License.
 	<target name="dist" depends="update.package.json,assemble.core,assemble.standard,assemble.full,assemble.dynamic,doc" description="Create all distribution objects and exports them to the top level dir for packaging">
 		<mkdir dir="${build.export}/js/assembled"/>
 		<copy todir="${build.export}/js/assembled">
-			<fileset dir="${build.output.js}">
-				<include name="core-assembled-uncompiled-web/*.js"/>
-				<include name="core-assembled-compiled-web/*.js"/>
-				<include name="standard-assembled-uncompiled-web/*.js"/>
-				<include name="standard-assembled-compiled-web/*.js"/>
-				<include name="full-assembled-uncompiled-web/*.js"/>
-				<include name="full-assembled-compiled-web/*.js"/>
-				<include name="core-dynamicdata-uncompiled-web/*.js"/>
-				<include name="core-dynamicdata-compiled-web/*.js"/>
-				<include name="standard-dynamicdata-uncompiled-web/*.js"/>
-				<include name="standard-dynamicdata-compiled-web/*.js"/>
-				<include name="full-dynamicdata-uncompiled-web/*.js"/>
-				<include name="full-dynamicdata-compiled-web/*.js"/>
-			</fileset>
+            <fileset dir="${build.output.js}">
+                <include name="core-assembled-uncompiled-web/*.js"/>
+                <include name="core-assembled-compiled-web/*.js"/>
+                <include name="standard-assembled-uncompiled-web/*.js"/>
+                <include name="standard-assembled-compiled-web/*.js"/>
+                <include name="full-assembled-uncompiled-web/*.js"/>
+                <include name="full-assembled-compiled-web/*.js"/>
+                <include name="core-dynamicdata-uncompiled-web/*.js"/>
+                <include name="core-dynamicdata-compiled-web/*.js"/>
+                <include name="standard-dynamicdata-uncompiled-web/*.js"/>
+                <include name="standard-dynamicdata-compiled-web/*.js"/>
+                <include name="full-dynamicdata-uncompiled-web/*.js"/>
+                <include name="full-dynamicdata-compiled-web/*.js"/>
+            </fileset>
 		</copy>
 		<mkdir dir="${build.export}/js/dyncode"/>
 		<copy todir="${build.export}/js/dyncode">
 			<fileset dir="${build.output.dyncode}">
 				<include name="**/*.js"/>
+				<include name="**/*.js.map"/>
 			</fileset>
 		</copy>
 		<mkdir dir="${build.export}/doc/jsdoc"/>
@@ -470,7 +479,7 @@ limitations under the License.
 		<copy todir="${build.export}/src/js">
 			<fileset dir="${build.base}">
 				<include name="lib/**"/>
-				<include name="index.js"/>
+				<include name="index.js*"/>
 				<include name="build.xml"/>
 				<include name="build.properties"/>
 				<include name="data/locale/**/*.json"/>
@@ -513,7 +522,7 @@ limitations under the License.
 		</copy>
 		<copy todir="${build.export}/package">
             <fileset dir="${build.export}/js/dyncode">
-                <include name="index.js"/>
+                <include name="index.js*"/>
             </fileset>
 		</copy>
 		<copy todir="${build.export}/package/locale">

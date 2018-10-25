@@ -3,7 +3,10 @@ Release Notes for Version 14
 
 Build 003
 -------
-Published as version 14.1.1
+Published as version 14.2.0
+
+New Features:
+* Added source maps to the npm package so that you can debug into the original ilib code easily
 
 Bug Fixes:
 * Worked around a problem with uglifyjs which optimized out a block

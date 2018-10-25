@@ -1,6 +1,6 @@
 {
     "name": "ilib",
-    "version": "14.1.1",
+    "version": "14.2.0",
     "main": "js/lib/ilib-node.js",
     "description": "iLib is a cross-engine library of internationalization (i18n) classes written in pure JS",
     "keywords": [
@@ -50,7 +50,7 @@
     },
     "engines": {
         "ringojs": ">=0.9",
-        "nodejs": ">= 0.10"
+        "node": ">= 0.10"
     },
     "devDependencies": {
         "babel-loader": "^7.1.2",
@@ -61,7 +61,7 @@
         "grunt-contrib-clean": "^1.1.0",
         "grunt-contrib-compress": "^1.4.3",
         "grunt-contrib-copy": "^1.0.0",
-        "grunt-contrib-uglify": "^3.4.0",
+        "grunt-contrib-uglify": "~0.5.0",
         "grunt-eslint": "^21.0.0",
         "grunt-http-server": "^2.1.0",
         "grunt-jsdoc": "^2.2.1",
@@ -71,13 +71,13 @@
         "grunt-contrib-nodeunit": "~0.4.1",
         "grunt-shell": "^2.1.0",
         "grunt-text-replace": "^0.4.0",
-        "grunt-contrib-uglify": "~0.5.0",
         "http-server": "^0.11.1",
         "ilib-webpack-loader": "^1.0.2",
         "ilib-webpack-plugin": "^1.0.2",
         "iso-15924": "^2.0.0",
         "jsdoc2": "^2.4.0",
         "should": ">=11.1.0",
+        "source-map-loader": "^0.2.4",
         "tap": "^10.0.2",
         "trireme": "^0.9.0",
         "uglify-js": "^3.3.0",
