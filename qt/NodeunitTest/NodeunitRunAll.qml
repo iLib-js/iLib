@@ -11,6 +11,7 @@ QtObject {
             var TestSuite = TestSuiteModule.TestSuite;
             var TestRunner = TestRunnerModule.TestRunner;
             var runner = new TestRunner();
+            var date = new Date();
 
             var suiteDefinitions = {
                 "address": "/address/testSuiteFiles.js",
@@ -29,7 +30,7 @@ QtObject {
                 "units": "/units/testSuiteFiles.js",
                 "util": "/util/testSuiteFiles.js"
             };
-
+            console.log("<<<<< Start time of full test: " +  date.getHours() +":"+ date.getMinutes() +":"+ date.getSeconds()+ " >>>>>");
             var s, ts;
             for (s in suiteDefinitions) {
                 ts = new TestSuite(suiteDefinitions[s], s);
@@ -37,6 +38,7 @@ QtObject {
                 runner.addSuite(ts);
             }
             runner.runTests();
+             console.log("<<<<< End time of full test: " +  date.getHours() +":"+ date.getMinutes() +":"+ date.getSeconds()+ " >>>>>");
             console.log("\n *************************** All iLib tests on QML are done. ***********************************");
             Qt.quit();
         }
