@@ -93,6 +93,10 @@ module.exports = function(env, args) {
                         target: target
                     }
                 }
+            },{
+                test: /\.js$/,
+                use: ["source-map-loader"],
+                enforce: "pre"
             }]
         },
         plugins: [
@@ -126,6 +130,7 @@ module.exports = function(env, args) {
         ret.plugins.splice(0, 0, new UglifyJsPlugin({
             cache: true,
             parallel: 4,
+            sourceMap: true,
             uglifyOptions: {
                 compress: true,
                 warnings: true
