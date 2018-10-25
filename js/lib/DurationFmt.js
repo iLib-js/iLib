@@ -19,7 +19,7 @@
 
 // !data dateformats sysres
 
-var ilib = require("../index");
+var ilib = require("../index.js");
 var JSUtils = require("./JSUtils.js");
 var Locale = require("./Locale.js");
 var LocaleInfo = require("./LocaleInfo.js");

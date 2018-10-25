@@ -19,7 +19,7 @@
 
 // !data localeinfo zoneinfo
 
-var ilib = require("../index");
+var ilib = require("../index.js");
 var Utils = require("./Utils.js");
 var MathUtils = require("./MathUtils.js");
 var JSUtils = require("./JSUtils.js");

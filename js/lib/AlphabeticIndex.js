@@ -19,7 +19,7 @@
 
 // !data nfc nfkd
 
-var ilib = require("../index");
+var ilib = require("../index.js");
 var Utils = require("./Utils.js");
 var Locale = require("./Locale.js");
 var CType = require("./CType.js");

@@ -19,7 +19,7 @@
 
 // !data charmaps charset/US-ASCII charset/ISO-10646-UCS-2 charset/ISO-8859-1 charset/ISO-8859-15 charmaps/ISO-8859-15 charmaps/ISO-8859-1 charset/ISO-8859-1
 
-var ilib = require("../index");
+var ilib = require("../index.js");
 var JSUtils = require("./JSUtils.js");
 var IString = require("./IString.js");
 
