@@ -345,7 +345,24 @@ module.exports.testaddress = {
         test.equal(formatter.format(parsedAddress), expected);
         test.done();
     },
-    
+
+    testFormatAddressUnknownCountry: function(test) {
+        test.expect(1);
+        var parsedAddress = new Address({
+            streetAddress: "1234 Any Street",
+            locality: "Anytown",
+            region: "CA",
+            postalCode: "94085",
+            country: "Unknown",
+            countryCode: "XY"
+        }, {locale: 'en-XY'});
+
+        var expected = "1234 Any Street\nAnytown CA 94085\nUnknown";
+        var formatter = new AddressFmt({locale: 'en-XY', style: 'nocountry'});
+        test.equal(formatter.format(parsedAddress), expected);
+        test.done();
+    },
+
     // for DFISH-9927
     testParseAddressUnknownLocale: function(test) {
         test.expect(7);
@@ -1514,6 +1531,26 @@ module.exports.testaddress = {
         test.equal(info[3][0].component, "country");
         test.equal(info[3][0].label, "국가");
         test.done();
-    }
+    },
 
+    testAddressFmtGetFormatInfoUnknownCountry: function(test) {
+        test.expect(7);
+        var formatter = new AddressFmt({locale: 'en-XY'});
+
+        var info = formatter.getFormatInfo();
+
+        test.ok(info);
+
+        // test for generic data
+        test.equal(info[1][0].component, "locality");
+        test.equal(info[1][0].constraint, "([A-zÀÁÈÉÌÍÑÒÓÙÚÜàáèéìíñòóùúü\\.\\-\\']+\\s*){1,2}$");
+
+        test.equal(info[1][1].component, "region");
+        test.equal(info[1][1].constraint, "([A-zÀÁÈÉÌÍÑÒÓÙÚÜàáèéìíñòóùúü\\.\\-\\']+\\s*){1,2}$");
+
+        test.equal(info[1][2].component, "postalCode");
+        test.equal(info[1][2].constraint, "[0-9]+");
+
+        test.done();
+    }
 };
