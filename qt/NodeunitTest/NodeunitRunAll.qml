@@ -16,7 +16,7 @@ QtObject {
             var suiteDefinitions = {
                 "address": "/address/testSuiteFiles.js",
                 "calendar": "/calendar/testSuiteFiles.js",
-                "collate": "/collate/testSuiteFiles.js",  /* It takes almost 11 minutes. */
+                //"collate": "/collate/testSuiteFiles.js",  /* It takes almost 11 minutes. */
                 "ctype": "/ctype/testSuiteFiles.js",
                 "date": "/date/testSuiteFiles.js",
                 "daterange": "/daterange/testSuiteFiles.js",

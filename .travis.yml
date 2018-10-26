@@ -27,10 +27,10 @@ script:
 
   # iLib Full builde / Running nodeunit test.
   - ant test
-  #- which qmake
-  #- which qmlscene
-  #- cd qt/NodeunitTest
-  #- /usr/bin/qmlscene NodeunitRunAll.qml -I ../FileReader/imports/
+   which qmake
+   which qmlscene
+   cd qt/NodeunitTest
+   /usr/bin/qmlscene NodeunitRunAll.qml -I ../FileReader/imports/
 branches:
   only:
     - master
