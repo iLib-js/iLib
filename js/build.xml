@@ -129,7 +129,7 @@ limitations under the License.
 		<sequential>
 		    <echo>executing webpack</echo>
 			<exec osfamily="unix" executable="webpack" dir="${build.base}" failifexecutionfails="@{failquit}" failonerror="@{failquit}">
-				<env key="NODE_OPTIONS" value="--max-old-space-size=3072"/>
+				<env key="NODE_OPTIONS" value="--max-old-space-size=${webpack.heap.size}"/>
 				<arg value="--env.assembly=@{assembly}"/>
 				<arg value="--env.size=@{size}"/>
 				<arg value="--env.compilation=@{compilation}"/>
@@ -138,7 +138,7 @@ limitations under the License.
 				<arg value="--env.ilibRoot=${build.base}"/>
 			</exec>
 			<exec osfamily="windows" executable="webpack.bat" dir="${build.base}" failifexecutionfails="@{failquit}"  failonerror="@{failquit}">
-				<env key="NODE_OPTIONS" value="--max-old-space-size=3072"/>
+				<env key="NODE_OPTIONS" value="--max-old-space-size=${webpack.heap.size}"/>
 				<arg value="--env.assembly=@{assembly}"/>
 				<arg value="--env.size=@{size}"/>
 				<arg value="--env.compilation=@{compilation}"/>
@@ -583,11 +583,11 @@ limitations under the License.
             <echo>Executing webpack</echo>
             <exec osfamily="unix" executable="webpack" dir="${build.demo}/scripts" failifexecutionfails="@{failquit}" failonerror="@{failquit}">
                 <env key="PATH" path="${env.PATH}:${nm.bin}"/>
-                <env key="NODE_OPTIONS" value="--max-old-space-size=3072"/>
+                <env key="NODE_OPTIONS" value="--max-old-space-size=${webpack.heap.size}"/>
             </exec>
             <exec osfamily="windows" executable="webpack.bat" dir="${build.demo}/scripts" failifexecutionfails="@{failquit}" failonerror="@{failquit}">
                 <env key="PATH" path="${env.PATH}:${nm.bin}"/>
-                <env key="NODE_OPTIONS" value="--max-old-space-size=3072"/>
+                <env key="NODE_OPTIONS" value="--max-old-space-size=${webpack.heap.size}"/>
             </exec>
         </sequential>
     </target>
@@ -596,11 +596,11 @@ limitations under the License.
             <echo>Executing webpack</echo>
             <exec osfamily="unix" executable="webpack" dir="${build.demo}/scripts" failifexecutionfails="@{failquit}" failonerror="@{failquit}">
                 <env key="PATH" path="${env.PATH}:${nm.bin}"/>
-                <env key="NODE_OPTIONS" value="--max-old-space-size=3072"/>
+                <env key="NODE_OPTIONS" value="--max-old-space-size=${webpack.heap.size}"/>
             </exec>
             <exec osfamily="windows" executable="webpack.bat" dir="${build.demo}/scripts" failifexecutionfails="@{failquit}" failonerror="@{failquit}">
                 <env key="PATH" path="${env.PATH}:${nm.bin}"/>
-                <env key="NODE_OPTIONS" value="--max-old-space-size=3072"/>
+                <env key="NODE_OPTIONS" value="--max-old-space-size=${webpack.heap.size}"/>
             </exec>
         </sequential>
     </target>
