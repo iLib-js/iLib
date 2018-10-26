@@ -27,6 +27,8 @@ New Features:
 Bug Fixes
 * Restored a missing mapping from the the native name for "Japan" to the ISO code "JP" in the nativecountries.json
     * Fixes address parsing for Japan
+* Added the full file name including the file extension for requires of `index.js`. If file extention is missing, QT cannot load the file properly.
+* Added missing `index.js` require statement in MeasurementFactory
 
 Build 001
 -------

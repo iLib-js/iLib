@@ -17,7 +17,7 @@
  * limitations under the License.
  */
 
-var ilib = require("../index");
+var ilib = require("../index.js");
 var SearchUtils = require("./SearchUtils.js");
 var MathUtils = require("./MathUtils.js");
 var JSUtils = require("./JSUtils.js");

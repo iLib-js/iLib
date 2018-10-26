@@ -20,7 +20,7 @@
 
 // !data ccc nfc ctype_m
 
-var ilib = require("../index");
+var ilib = require("../index.js");
 var Utils = require("./Utils.js");
 var JSUtils = require("./JSUtils.js");
 
