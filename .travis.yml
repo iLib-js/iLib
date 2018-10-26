@@ -16,7 +16,7 @@ install:
   - sudo apt-get -y install qmlscene qt5-default qtdeclarative5-dev qtbase5-dev
   - npm install
   - export PATH=$PWD/node_modules/.bin:$PATH
-  - export NODE_OPTIONS="--max-old-space-size=3072"
+  - export NODE_OPTIONS="--max-old-space-size=4096"
 script:
   # [Error] module QtQuick is not installed
   - source /opt/qt55/bin/qt55-env.sh
