@@ -20,7 +20,7 @@
 
 // !data list
 
-var ilib = require("../index");
+var ilib = require("../index.js");
 var Utils = require("./Utils.js");
 var Locale = require("./Locale.js");
 

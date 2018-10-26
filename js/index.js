@@ -21,13 +21,7 @@ var ilib = require("./lib/ilib.js");
 
 if (!ilib._platform || (typeof(ilib._dyndata) !== 'boolean' && typeof(ilib._dyncode) !== 'boolean')) {
     if (typeof(__webpack_require__) !== 'undefined') {
-        // The following will either require and then install the
-        // WebpackLoader to dynamically load locale data bundles,
-        // or it will statically require all of the locale data that
-        // this build needs so that it can be included into this
-        // webpack bundle.
-
-        // !defineLocaleData
+        require("./lib/ilib-webpack.js");
     } else {
         switch (ilib._getPlatform()) {
             case 'webos':
@@ -37,7 +31,7 @@ if (!ilib._platform || (typeof(ilib._dyndata) !== 'boolean' && typeof(ilib._dync
 
             case 'qt':
                 require("./lib/ilib-qt.js");
-
+                break;
             case 'rhino':
                 require("./lib/ilib-rhino.js");
                 break;

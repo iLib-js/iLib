@@ -19,7 +19,7 @@
 
 // !data address addressres regionnames
 
-var ilib = require("../index");
+var ilib = require("../index.js");
 var Utils = require("./Utils.js");
 var JSUtils = require("./JSUtils.js");
 
@@ -27,6 +27,42 @@ var Locale = require("./Locale.js");
 var Address = require("./Address.js");
 var IString = require("./IString.js");
 var ResBundle = require("./ResBundle.js");
+
+// default generic data
+var defaultData = {
+    formats: {
+        "default": "{streetAddress}\n{locality} {region} {postalCode}\n{country}",
+        "nocountry": "{streetAddress}\n{locality} {region} {postalCode}"
+    },
+    startAt: "end",
+    fields: [
+        {
+            "name": "postalCode",
+            "line": "startAtLast",
+            "pattern": "[0-9]+",
+            "matchGroup": 0
+        },
+        {
+            "name": "region",
+            "line": "last",
+            "pattern": "([A-zÀÁÈÉÌÍÑÒÓÙÚÜàáèéìíñòóùúü\\.\\-\\']+\\s*){1,2}$",
+            "matchGroup": 0
+        },
+        {
+            "name": "locality",
+            "line": "last",
+            "pattern": "([A-zÀÁÈÉÌÍÑÒÓÙÚÜàáèéìíñòóùúü\\.\\-\\']+\\s*){1,2}$",
+            "matchGroup": 0
+        }
+    ],
+    fieldNames: {
+        "streetAddress": "Street Address",
+        "locality": "City",
+        "postalCode": "Zip Code",
+        "region": "State",
+        "country": "Country"
+    }
+};
 
 /**
  * @class
@@ -128,10 +164,16 @@ var AddressFmt = function(options) {
  * @private
  */
 AddressFmt.prototype._init = function () {
-    this.style = this.info && this.info.formats && this.info.formats[this.styleName];
+    if (!this.info) this.info = defaultData;
+
+    this.style = this.info.formats && this.info.formats[this.styleName];
 
     // use generic default -- should not happen, but just in case...
-    this.style = this.style || (this.info && this.info.formats && this.info.formats["default"]) || "{streetAddress}\n{locality} {region} {postalCode}\n{country}";
+    this.style = this.style || (this.info.formats && this.info.formats["default"]) || defaultData.formats["default"];
+
+    if (!this.info.fieldNames) {
+        this.info.fieldNames = defaultData.fieldNames;
+    }
 };
 
 /**
@@ -369,7 +411,7 @@ AddressFmt.prototype.getFormatInfo = function(locale, sync, callback) {
                 sync: this.sync,
                 loadParams: this.loadParams,
                 onLoad: ilib.bind(this, function (rb) {
-                    var type, format, fields = this.info.fields;
+                    var type, format, fields = this.info.fields || defaultData.fields;
                     if (this.info.multiformat) {
                         type = isAsianLocale(this.locale) ? "asian" : "latin";
                         fields = this.info.fields[type];

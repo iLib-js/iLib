@@ -25,7 +25,7 @@
  * September 1999.
  */
 
-var ilib = require("../index");
+var ilib = require("../index.js");
 var Utils = require("./Utils.js");
 var SearchUtils = require("./SearchUtils.js");
 

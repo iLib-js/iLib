@@ -19,7 +19,7 @@
 
 // !data scripts
 
-var ilib = require("../index");
+var ilib = require("../index.js");
 var Utils = require("./Utils.js");
 
 /**

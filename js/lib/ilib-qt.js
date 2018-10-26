@@ -72,7 +72,6 @@ requireClass.prototype.require = function(parent, pathname, absolutePath) {
         pathname = this.root + "/../test" + absolutePath;
         //console.log("[ilib-qt.js] Loading Test file...  "+ pathname);
     } else {
-
         if (parent && parent.charAt(0) !== '/') {
             // take care of relative parents (aren't all parents relatives? haha)
             parent = this.root + '/' + parent;
@@ -84,7 +83,7 @@ requireClass.prototype.require = function(parent, pathname, absolutePath) {
 
         var base = parent || (module.filename && this.dirname(module.filename)) || this.root;
 
-        //console.log("require: base is " + base);
+        //console.log("******** require: base is " + base);
 
         if (pathname.charAt(0) !== '/') {
             pathname = base + "/" + pathname;

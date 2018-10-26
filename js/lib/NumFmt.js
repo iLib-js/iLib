@@ -30,7 +30,7 @@ JSUtils.js
 
 // !data localeinfo currency
 
-var ilib = require("../index");
+var ilib = require("../index.js");
 var JSUtils = require("./JSUtils.js");
 var MathUtils = require("./MathUtils.js");
 

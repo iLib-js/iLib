@@ -25,8 +25,8 @@ script:
   # [Error] QFontDatabase: Cannot find font directory /usr/lib/x86_64-linux-gnu/fonts - is Qt installed correctly?
   - sudo ln -s /usr/share/fonts /usr/lib/x86_64-linux-gnu/fonts
 
-  # iLib Full builde / Running nodeunit test.
-  - ant test
+  # iLib full build / Run nodeunit tests
+  - ant clean test
   #- which qmake
   #- which qmlscene
   #- cd qt/NodeunitTest

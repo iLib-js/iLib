@@ -363,7 +363,7 @@ var nodeunit = (function(){
 
         function getFailureDetails(assertion) {
             if (assertion.error && assertion.error.name === "AssertionError") {
-                return "Expected that actual " + assertion.error.operator + " " + assertion.error.expected + ", but got " + assertion.error.actual + " instead.";
+                return "Expected that actual " + assertion.error.operator + " [[" + assertion.error.expected + "]] , but got [[" + assertion.error.actual + "]] instead.";
             } else if (assertion.message) {
                 return assertion.message;
             }
