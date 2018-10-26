@@ -16,6 +16,9 @@ Bug Fixes:
   of `index.js`. If file name extension is missing, QT cannot load that
   file properly.
 * Added missing `index.js` require statement in MeasurementFactory
+* AddressFmt.getFormatInfo would throw an exception for locales where the locale data was not available. Now,
+  it does not, and instead, it returns some hard-coded info by default that is roughly similar to the en-US
+  settings.
 
 Build 002
 -------
