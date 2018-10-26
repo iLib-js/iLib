@@ -1534,21 +1534,24 @@ module.exports.testaddress = {
     },
 
     testAddressFmtGetFormatInfoUnknownCountry: function(test) {
-        test.expect(7);
+        test.expect(10);
         var formatter = new AddressFmt({locale: 'en-XY'});
 
         var info = formatter.getFormatInfo();
 
         test.ok(info);
 
-        // test for generic data
+        // test for generic root data
         test.equal(info[1][0].component, "locality");
+        test.equal(info[1][0].label, "City");
         test.equal(info[1][0].constraint, "([A-zÀÁÈÉÌÍÑÒÓÙÚÜàáèéìíñòóùúü\\.\\-\\']+\\s*){1,2}$");
 
         test.equal(info[1][1].component, "region");
+        test.equal(info[1][1].label, "Province");
         test.equal(info[1][1].constraint, "([A-zÀÁÈÉÌÍÑÒÓÙÚÜàáèéìíñòóùúü\\.\\-\\']+\\s*){1,2}$");
 
         test.equal(info[1][2].component, "postalCode");
+        test.equal(info[1][2].label, "Postal Code");
         test.equal(info[1][2].constraint, "[0-9]+");
 
         test.done();
