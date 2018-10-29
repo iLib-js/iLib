@@ -1,9 +1,9 @@
 ### Checklist
 
-* [ ] This is passed all of the test cases on `Nodejs` and `Browser`
-* [ ] This is passed all of the test cases on `QT/QML`
 * [ ] At least one test case is included for this feature or bug fix
-* [ ] `ReleaseNotes` was added or is not needed
+* [ ] `ReleaseNotes` has added or is not needed
+* [ ] This PR has passed all of the test cases on `Nodejs` and `Browser
+* [ ] This PR has passed all of the test cases on `QT/QML`
 * [ ] This is an API breaking change
 
 ### Issue Resolved / Feature Added
@@ -12,7 +12,6 @@
 ### Resolution
 [//]: # (Does the code work as intended?)
 [//]: # (What is the impact of this change and *why* was it made?)
-
 
 ### Additional Considerations
 [//]: # (How should the change be tested?)
@@ -24,6 +23,3 @@
 
 ### Links
 [//]: # (Related issues, references)
-
-
-
