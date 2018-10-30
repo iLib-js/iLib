@@ -65,20 +65,19 @@ module.exports.testglyphstrasync = {
         var s = new GlyphString("aẬa", { // the accented A is a decomposed char with 2 accents
             sync: false,
             onLoad: function(s) {
+                var it = s.charIterator();
                 
+                test.ok(it.hasNext());
+                test.equal(it.next(), "a");
+                test.ok(it.hasNext());
+                test.equal(it.next(), "Ậ");
+                test.ok(it.hasNext());
+                test.equal(it.next(), "a");
+                test.ok(!it.hasNext());
+                test.equal(it.next(), undefined);
+                test.done();
             }
         });
-        var it = s.charIterator();
-        
-        test.ok(it.hasNext());
-        test.equal(it.next(), "a");
-        test.ok(it.hasNext());
-        test.equal(it.next(), "Ậ");
-        test.ok(it.hasNext());
-        test.equal(it.next(), "a");
-        test.ok(!it.hasNext());
-        test.equal(it.next(), undefined);
-        test.done();
     },
     
     testGlyphStrAsyncTruncateWithCombiningAccentsWholeGlyphs: function(test) {
