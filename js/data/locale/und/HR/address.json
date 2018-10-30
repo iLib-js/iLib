@@ -16,5 +16,8 @@
             "pattern": "((HR-)?[0-9]{5})"
         }
 	 
-    ]
+    ],
+    "fieldNames": {
+        "region": "County"
+    }
 }

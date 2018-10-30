@@ -16,5 +16,8 @@
             "pattern": "[AÁBDÐEÉFGHIÍJKLMNOÓPRSTUÚVXYÝÞÆÖaábdðeéfghiíjklmnoóprstuúvxyýþæö0-9\\.\\-']+"
         }
         
-    ]
+    ],
+    "fieldNames": {
+        "region": "Region"
+    }
 }

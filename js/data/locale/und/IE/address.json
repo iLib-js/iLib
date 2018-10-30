@@ -22,5 +22,8 @@
 			"line": "last",
 			"pattern": "[A-zÁÉÍÓÚáéíóú\\.\\-']+$"
 		}
-	]
+	],
+    "fieldNames": {
+        "region": "County"
+    }
 }

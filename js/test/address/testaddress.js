@@ -1555,5 +1555,120 @@ module.exports.testaddress = {
         test.equal(info[1][2].constraint, "[0-9]+");
 
         test.done();
-    }
+    },
+    
+    testAddressFmtGetFormatInfoRightRegionNameJA: function(test) {
+        test.expect(2);
+        var formatter = new AddressFmt({locale: 'ja-JP'});
+
+        var info = formatter.getFormatInfo();
+
+        test.ok(info);
+
+        for (var i = 0; i < info.length; i++) {
+            for (var j = 0; j < info[i].length; j++) {
+                if (info[i][j].component === "region") {
+                    test.equal(info[i][j], "Prefecture");
+                }
+            }
+        }
+
+        test.done();
+    },
+
+    testAddressFmtGetFormatInfoRightRegionNameJA: function(test) {
+        test.expect(2);
+        var formatter = new AddressFmt({locale: 'ja-JP'});
+
+        var info = formatter.getFormatInfo();
+
+        test.ok(info);
+
+        for (var i = 0; i < info.length; i++) {
+            for (var j = 0; j < info[i].length; j++) {
+                if (info[i][j].component === "region") {
+                    test.equal(info[i][j], "Prefecture");
+                }
+            }
+        }
+
+        test.done();
+    },
+
+    testAddressFmtGetFormatInfoRightRegionNameJA: function(test) {
+        test.expect(2);
+        var formatter = new AddressFmt({locale: 'ja-JP'});
+
+        var info = formatter.getFormatInfo("en");
+
+        test.ok(info);
+
+        for (var i = 0; i < info.length; i++) {
+            for (var j = 0; j < info[i].length; j++) {
+                if (info[i][j].component === "region") {
+                    test.equal(info[i][j].label, "Prefecture");
+                }
+            }
+        }
+
+        test.done();
+    },
+
+    testAddressFmtGetFormatInfoRightRegionNameJATranslated: function(test) {
+        test.expect(2);
+        var formatter = new AddressFmt({locale: 'ja-JP'});
+
+        var info = formatter.getFormatInfo();
+
+        test.ok(info);
+
+        for (var i = 0; i < info.length; i++) {
+            for (var j = 0; j < info[i].length; j++) {
+                if (info[i][j].component === "region") {
+                    test.equal(info[i][j].label, "都道府県");
+                }
+            }
+        }
+
+        test.done();
+    },
+
+    testAddressFmtGetFormatInfoRightRegionNameRU: function(test) {
+        test.expect(2);
+        var formatter = new AddressFmt({locale: 'ru-RU'});
+
+        var info = formatter.getFormatInfo("en");
+
+        test.ok(info);
+
+        for (var i = 0; i < info.length; i++) {
+            for (var j = 0; j < info[i].length; j++) {
+                if (info[i][j].component === "region") {
+                    test.equal(info[i][j].label, "Oblast");
+                }
+            }
+        }
+
+        test.done();
+    },
+
+    testAddressFmtGetFormatInfoRightRegionNameRUTranslated: function(test) {
+        test.expect(2);
+        var formatter = new AddressFmt({locale: 'ru-RU'});
+
+        var info = formatter.getFormatInfo();
+
+        test.ok(info);
+
+        for (var i = 0; i < info.length; i++) {
+            for (var j = 0; j < info[i].length; j++) {
+                if (info[i][j].component === "region") {
+                    test.equal(info[i][j].label, "Область");
+                }
+            }
+        }
+
+        test.done();
+    },
+
 };

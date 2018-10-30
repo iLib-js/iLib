@@ -103,5 +103,8 @@
 			"pattern": "(([Cc]\\.?[Pp]\\.?\\s+)?[0-9]{5})",
 			"matchGroup": 0
 		}
-	]
+	],
+    "fieldNames": {
+        "region": "State"
+    }
 }
