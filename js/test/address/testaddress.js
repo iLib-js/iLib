@@ -1556,7 +1556,7 @@ module.exports.testaddress = {
 
         test.done();
     },
-    
+
     testAddressFmtGetFormatInfoRightRegionNameJA: function(test) {
         test.expect(2);
         var formatter = new AddressFmt({locale: 'ja-JP'});
@@ -1669,6 +1669,5 @@ module.exports.testaddress = {
         }
 
         test.done();
-    },
-
+    }
 };
