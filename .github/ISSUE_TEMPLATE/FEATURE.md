@@ -9,6 +9,7 @@ about: Request a new feature or modification of an existing one
 [ ] New component
 [ ] New feature for existing component
 [ ] Modification of existing component or feature
+[ ] New locale
 [ ] Other
 
 ### Description

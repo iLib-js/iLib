@@ -18,6 +18,6 @@ about: File a bug report
 
 
 ### Reproduction Code
-[//]: # (Provide source code that demonstrates the bug.)
+[//]: # (Provide source code that demonstrates the bug and/or exact steps to reproduce.)
 
 ### Comments and Screen Shots
