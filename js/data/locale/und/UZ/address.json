@@ -31,7 +31,6 @@
 					"Surxondaryo",
 					"Tashkent"
                             ] 
-		
                 },
 		
 		{
@@ -39,7 +38,8 @@
 			"line": "last",
 			"pattern": "[A-z\\.\\-'\\s]+"
 		}
-
-		
-	]
+	],
+    "fieldNames": {
+        "region": "Oblast"
+    }
 }

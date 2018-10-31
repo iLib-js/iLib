@@ -158,5 +158,8 @@
 			"line": "startAtLast",
 			"pattern": "[0-9]{5}\\s*-?"
 		}
-	]	
+	],
+    "fieldNames": {
+        "region": "Autonomous Community"
+    }
 }

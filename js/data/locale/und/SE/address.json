@@ -19,5 +19,8 @@
             "matchGroup": 0
         }
         
-    ]
+    ],
+    "fieldNames": {
+        "region": "County"
+    }
 }

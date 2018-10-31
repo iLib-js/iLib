@@ -13,5 +13,8 @@
 	                "matchGroup": 1
 		}
 		
-	]
+	],
+    "fieldNames": {
+        "region": "Region"
+    }
 }

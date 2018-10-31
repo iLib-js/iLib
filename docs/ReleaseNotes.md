@@ -1,6 +1,15 @@
 Release Notes for Version 14
 ============================
 
+Build 004
+-------
+Published as version 14.1.2
+
+Bug Fixes:
+* Many of the countries of the world were missing data about the correct name of their top-level
+  administrative regions. These have been filled in now, and the names are returned properly from
+  AddressFmt.getFormatInfo()
+
 Build 003
 -------
 Published as version 14.1.1
