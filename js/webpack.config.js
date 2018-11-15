@@ -68,6 +68,16 @@ module.exports = function(env, args) {
         path.resolve(__dirname, urlPath) :
         path.resolve(__dirname, urlPath);
 
+    var options = {
+        locales: locales,
+        assembly: assembly,
+        compilation: compilationType,
+        size: size,
+        ilibRoot: ilibRoot,
+        target: target,
+        tempDir: path.join("ilib/js", urlPath) 
+    };
+
     var ret = {
         entry: './lib/metafiles/ilib-' + size + '-webpack.js',
         output: {
@@ -84,14 +94,7 @@ module.exports = function(env, args) {
                 exclude: /node_modules/, // ignore all files in the node_modules folder
                 use: {
                     loader: 'ilib-webpack-loader',
-                    options: {
-                        locales: locales,
-                        assembly: assembly,
-                        compilation: compilationType,
-                        size: size,
-                        ilibRoot: ilibRoot,
-                        target: target
-                    }
+                    options: options
                 }
             }]
         },
@@ -99,13 +102,7 @@ module.exports = function(env, args) {
             new webpack.DefinePlugin({
                 __VERSION__: JSON.stringify(require("./package.json").version)
             }),
-            new IlibWebpackPlugin({
-                locales: locales,
-                assembly: assembly,
-                compilation: compilationType,
-                size: size,
-                ilibRoot: ilibRoot
-            })
+            new IlibWebpackPlugin(options)
         ]
     };
 
