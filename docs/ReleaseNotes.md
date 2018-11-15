@@ -4,6 +4,7 @@ Release Notes for Version 14
 Build 004
 -------
 Published as version 14.1.2
+* Adopt a `JIT` plugin loader for grunt. Load time of Grunt does not slow down even if there are many plugins. instead of `grunt.loadNpmTasks`.
 
 Bug Fixes:
 * Many of the countries of the world were missing data about the correct name of their top-level

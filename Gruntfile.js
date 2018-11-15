@@ -1,5 +1,9 @@
 
 module.exports = function(grunt) {
+    require('jit-grunt')(grunt, {
+        replace: 'grunt-text-replace'
+    });
+
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
         mkdir: {
@@ -74,14 +78,6 @@ module.exports = function(grunt) {
                 command: 'cd js; ../node_modules/http-server/bin/http-server -p 9090 -o'
             },
             run_webpack: {
-                /*
-                <arg value="--env.assembly=@{assembly}"/>
-                <arg value="--env.size=@{size}"/>
-                <arg value="--env.compilation=@{compilation}"/>
-                <arg value="--env.locales=@{locales}"/>
-                <arg value="--env.target=@{target}"/>
-                <arg value="--env.ilibRoot=${build.base}"/>
-                */
                 command: options => './js/runWebpack.sh ' + options,
             }
         },
@@ -176,18 +172,6 @@ module.exports = function(grunt) {
                 }
             }
         },
-        /*'closure-compiler': {
-            run: {
-                // Target-specific file lists and/or options go here.
-                  closurePath: 'tools/google-closure-compiler.r20150920',
-                  js: 'js/output/js/full-assembled-uncompiled-web/ilib-full.js',
-                  jsOutputFile: 'js/output/js/full-assembled-uncompiled-web/ilib-full-closure.js',
-                  maxBuffer: 1000,
-                  options: {
-                       compilation_level: 'SIMPLE_OPTIMIZATIONS'
-                  }
-            },
-        },*/
         watch: {
             scripts: {
                 files: [],
@@ -195,17 +179,6 @@ module.exports = function(grunt) {
             }
         }
     });
-    grunt.loadNpmTasks('grunt-mkdir');
-    grunt.loadNpmTasks('grunt-move');
-    grunt.loadNpmTasks('grunt-md5sum');
-    grunt.loadNpmTasks('grunt-shell');
-    grunt.loadNpmTasks('grunt-text-replace');
-    grunt.loadNpmTasks('grunt-jsdoc');
-
-    grunt.loadNpmTasks('grunt-contrib-clean');
-    grunt.loadNpmTasks('grunt-contrib-copy');
-    grunt.loadNpmTasks('grunt-contrib-compress');
-    grunt.loadNpmTasks('grunt-contrib-uglify');
 
     grunt.registerTask('build_jsonWork', ['mkdir:prepare', 'replace:pkgVersion','shell:copy_pkgJson','shell:mkli', 'shell:touch_localeinfoStamp', 'shell:compressJson', 'shell:touch_compressJsonStamp', 'shell:gen_manifest_locale']);
     grunt.registerTask('build_copyJson', ['mkdir:export', 'copy:export_locale']);
