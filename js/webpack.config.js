@@ -75,7 +75,7 @@ module.exports = function(env, args) {
         size: size,
         ilibRoot: ilibRoot,
         target: target,
-        tempDir: path.join("ilib/js", urlPath) 
+        tempDir: path.join("ilib/js", urlPath)
     };
 
     var ret = {
