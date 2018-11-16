@@ -71,7 +71,6 @@
         "grunt-contrib-nodeunit": "~0.4.1",
         "grunt-shell": "^2.1.0",
         "grunt-text-replace": "^0.4.0",
-        "grunt-contrib-uglify": "~0.5.0",
         "http-server": "^0.11.1",
         "ilib-webpack-loader": "^1.0.2",
         "ilib-webpack-plugin": "^1.0.2",
