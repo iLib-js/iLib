@@ -7,6 +7,10 @@ Published as version 14.1.2
 * Adopt a `JIT` plugin loader for grunt. Load time of Grunt does not slow down even if there are many plugins. instead of `grunt.loadNpmTasks`.
 
 Bug Fixes:
+* Fix a few problems that prevented ilib from running on node version 10. Now version 10 is supported.
+* When the Intl object was available and the code extracted the time zone name from it, it used
+  to overwrite that name with some default data. Now it uses the name properly.
+* Fixed some unit tests that were not testing async operation properly.
 * Many of the countries of the world were missing data about the correct name of their top-level
   administrative regions. These have been filled in now, and the names are returned properly from
   AddressFmt.getFormatInfo()
