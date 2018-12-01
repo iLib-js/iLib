@@ -36,3 +36,4 @@ node genlikelyloc.js $TARGET
 node genlang2charset.js $TARGET
 node genlist.js $TARGET
 node genunits.js $TARGET
+node genweekdata.js $TARGET
