@@ -35,5 +35,7 @@ node genlikelyloc.js $TARGET
 # this uses genlikelyloc's output, so it has to come after it
 node genlang2charset.js $TARGET
 node genlist.js $TARGET
+
+node genpapersizes.js $TARGET
 node genunits.js $TARGET
 node genweekdata.js $TARGET
