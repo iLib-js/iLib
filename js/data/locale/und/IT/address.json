@@ -243,5 +243,8 @@
 			"pattern": "(I-|IT-)?([0-9]{5})",
 			"matchGroup": 0
 		}
-	]
+	],
+    "fieldNames": {
+        "region": "Region"
+    }
 }

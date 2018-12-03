@@ -24,5 +24,8 @@
 		
 		
 		
-	]	
+	],
+    "fieldNames": {
+        "region": "County"
+    }
 }

@@ -402,6 +402,7 @@ ilib.getTimeZone = function() {
         if (typeof(Intl) !== 'undefined' && typeof(Intl.DateTimeFormat) !== 'undefined') {
             var ro = new Intl.DateTimeFormat().resolvedOptions();
             ilib.tz = ro && ro.timeZone;
+            return ilib.tz;
         }
 
         switch (ilib._getPlatform()) {

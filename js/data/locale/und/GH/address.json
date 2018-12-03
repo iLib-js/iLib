@@ -14,5 +14,8 @@
 		}
 	
 		
-	]	
+	],
+    "fieldNames": {
+        "region": "Region"
+    }
 }

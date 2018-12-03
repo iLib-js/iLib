@@ -1,6 +1,6 @@
 {
     "name": "ilib",
-    "version": "14.1.1",
+    "version": "14.1.2",
     "main": "js/lib/ilib-node.js",
     "description": "iLib is a cross-engine library of internationalization (i18n) classes written in pure JS",
     "keywords": [
@@ -71,12 +71,12 @@
         "grunt-contrib-nodeunit": "~0.4.1",
         "grunt-shell": "^2.1.0",
         "grunt-text-replace": "^0.4.0",
-        "grunt-contrib-uglify": "~0.5.0",
         "http-server": "^0.11.1",
         "ilib-webpack-loader": "^1.0.2",
         "ilib-webpack-plugin": "^1.0.2",
         "iso-15924": "^2.0.0",
         "jsdoc2": "^2.4.0",
+        "nodeunit": "^0.11.0",
         "should": ">=11.1.0",
         "tap": "^10.0.2",
         "trireme": "^0.9.0",

@@ -70,6 +70,6 @@
 	],
     "fieldNames": {
         "postalCode": "Post Code",
-        "region": "State"
+        "region": "State or Territory"
     }
 }

@@ -104,6 +104,8 @@ module.exports.testglobal = {
             return;
         }
 
+        ilib._platform = undefined;
+        ilib.tz = undefined;
         var ro = new Intl.DateTimeFormat().resolvedOptions();
         var expected = ro && ro.timeZone;
         if (expected) {

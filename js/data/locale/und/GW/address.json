@@ -1,0 +1,27 @@
+{
+	"formats": {
+		"default": "{streetAddress} {region}\n{country}",
+		"nocountry": "{streetAddress} {region}"
+	},
+	"startAt": "end",
+	"fields": [
+		{
+			"name": "region",
+			"line": "last",
+			"pattern": [
+				"Bafatá",
+				"Biombo",
+				"Bissau",
+				"Bolama",
+				"Cacheu",
+				"Gabu",
+				"Oio",
+				"Quinara",
+				"Tombali"
+			]
+		}
+	],
+	"fieldNames": {
+		"region": "Region"
+	}
+}

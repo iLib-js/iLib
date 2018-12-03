@@ -18,6 +18,7 @@
 		}
 	],
     "fieldNames": {
+        "region": "Region",
         "postalCode": "Post Code",
         "locality": "Town"
     }
