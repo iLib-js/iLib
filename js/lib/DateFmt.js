@@ -1606,4 +1606,257 @@ DateFmt.prototype = {
     }
 };
 
+/**
+ * Return information about the date format that can be used
+ * by UI builders to display a locale-sensitive set of input fields
+ * based on the current formatter's settings.<p>
+ *
+ * The object returned by this method is an array of date
+ * format components. Each format component is an object
+ * that contains a "component" property and a "label" to display
+ * with it. The label is written in the given locale, or the
+ * locale of this formatter if the locale was not given.<p>
+ *
+ * Field separators such as slashes or dots, etc., are given
+ * as a object with no component property. It only contains
+ * a label property.<p>
+ *
+ * Optionally, if a format component is constrained to a
+ * particular pattern or to a fixed list of possible values, then
+ * the constraint rules are given in the "constraint" property.
+ * The values in the constraint property can be one of three types:
+ *
+ * <ol>
+ * <ul><i>array[2]&lt;number&gt;</i> - an array of size 2 of numbers
+ * that gives the start and end of a numeric range.
+ * <ul><i>array&lt;object&gt; - an array of valid string values
+ * given as objects that have "label" and "value" properties. The
+ * label is to be displayed to the user and the value is to be used
+ * to construct the new IDate object when the user has finished
+ * selecting the components and the form is being evaluated or
+ * submitted.
+ * <ul><i>object</i> - conditional constraints. In some cases,
+ * the list of possible values for the months
+ * or the days depends on which year and month is being
+ * displayed. When this happens, the constraint property is
+ * given as an object that gives the different sets of values
+ * depending on a property. For example, the list of month
+ * names in a Hebrew calendar depends on whether or not the
+ * year is a leap year. In leap years, there are 13 months,
+ * and in regular years, there are 12 months. The constraint
+ * property for Hebrew calendars is returned as an object
+ * that contains three properties, "condition", "leap",
+ * and "regular". The "condition" says what the condition is
+ * based on, and each of "leap" and "regular" are
+ * an array of strings that give the month names.
+ * It is up to the caller to create an IDate object for the
+ * given year and ask it whether or not it represents a
+ * leap year and display the correct list in the UI.
+ * </ol>
+ *
+ * Here is what the result would look like for a US short
+ * date/time format that includes the components of date, month,
+ * year, hour, minute, and meridiem:
+ * <pre>
+ * [
+ *   {
+ *     "component": "month",
+ *     "label": "Month",
+ *     "constraint": [1, 12]
+ *   },
+ *   {
+ *     "label": "/"
+ *   },
+ *   {
+ *     "component": "day",
+ *     "label": "Date",
+ *     "constraint": {
+ *       "leap": {
+ *          "1": [1, 31],
+ *          "2": [1, 29],
+ *          "3": [1, 31],
+ *          "4": [1, 30],
+ *          "5": [1, 31],
+ *          "6": [1, 30],
+ *          "7": [1, 31],
+ *          "8": [1, 31],
+ *          "9": [1, 30],
+ *          "10": [1, 31],
+ *          "11": [1, 30],
+ *          "12": [1, 31]
+ *       },
+ *       "regular": {
+ *          "1": [1, 31],
+ *          "2": [1, 28],
+ *          "3": [1, 31],
+ *          "4": [1, 30],
+ *          "5": [1, 31],
+ *          "6": [1, 30],
+ *          "7": [1, 31],
+ *          "8": [1, 31],
+ *          "9": [1, 30],
+ *          "10": [1, 31],
+ *          "11": [1, 30],
+ *          "12": [1, 31]
+ *       }
+ *     }
+ *   {
+ *     "label": "/"
+ *   },
+ *   {
+ *     "component": "year",
+ *     "label": "Year",
+ *     "constraint": "[0-9]+"
+ *   },
+ *   {
+ *     "label": " at "
+ *   },
+ *   {
+ *     "component": "hour",
+ *     "label": "Hour",
+ *     "constraint": [1, 12]
+ *   },
+ *   {
+ *     "label": ":"
+ *   },
+ *   {
+ *     "component": "minute",
+ *     "label": "Minute",
+ *     "constraint": [
+ *       "00",
+ *       "01",
+ *       "02",
+ *       "03",
+ *       "04",
+ *       "05",
+ *       "06",
+ *       "07",
+ *       "08",
+ *       "09",
+ *       "10",
+ *       "11",
+ *       ...
+ *       "59"
+ *     ]
+ *   },
+ *   {
+ *     "label": " "
+ *   },
+ *   {
+ *     "component": "meridiem",
+ *     "label": "AM/PM",
+ *     "constraint": ["AM", "PM"]
+ *   }
+ * ]
+ * </pre>
+ * <p>
+ * @example <caption>Example of calling the getFormatInfo method</caption>
+ *
+ * // the DateFmt should be created with the locale of the date you
+ * // would like the user to enter.
+ * new DateFmt({
+ *   locale: 'nl-NL', // for dates in the Netherlands
+ *   onLoad: ilib.bind(this, function(fmt) {
+ *     // The following is the locale of the UI you would like to see the labels
+ *     // like "Year" and "Minute" translated to. In this example, we
+ *     // are showing an input form for Dutch dates, but the labels are
+ *     // written in US English.
+ *     fmt.getFormatInfo("en-US", true, ilib.bind(this, function(components) {
+ *       // iterate through the component array and dynamically create the input
+ *       // elements with the given labels
+ *     }));
+ *   })
+ * });
+ *
+ * @param {Locale|string=} locale the locale to translate the labels
+ * to. If not given, the locale of the formatter will be used.
+ * @param {boolean=} sync true if this method should load the data
+ * synchronously, false if async
+ * @param {Function=} callback a callback to call when the data
+ * is ready
+ * @returns {Array.<Object>} An array date components
+ */
+DateFmt.prototype.getFormatInfo = function(locale, sync, callback) {
+    var info;
+    var loc = new Locale(this.locale);
+    if (locale) {
+        if (typeof(locale) === "string") {
+            locale = new Locale(locale);
+        }
+        loc.language = locale.getLanguage();
+        loc.spec = undefined;
+    }
+
+    Utils.loadData({
+        name: "regionnames.json",
+        object: "DateFmt",
+        locale: loc,
+        sync: this.sync,
+        loadParams: JSUtils.merge(this.loadParams, {returnOne: true}, true),
+        callback: ilib.bind(this, function(regions) {
+            this.regions = regions;
+
+            new ResBundle({
+                locale: loc,
+                name: "sysres",
+                sync: this.sync,
+                loadParams: this.loadParams,
+                onLoad: ilib.bind(this, function (rb) {
+                    var type, format, fields = this.info.fields || defaultData.fields;
+                    if (this.info.multiformat) {
+                        type = isAsianLocale(this.locale) ? "asian" : "latin";
+                        fields = this.info.fields[type];
+                    }
+
+                    if (typeof(this.style) === 'object') {
+                        format = this.style[type || "latin"];
+                    } else {
+                        format = this.style;
+                    }
+                    new Address(" ", {
+                        locale: loc,
+                        sync: this.sync,
+                        loadParams: this.loadParams,
+                        onLoad: ilib.bind(this, function(localeAddress) {
+                            var rows = format.split(/\n/g);
+                            info = rows.map(ilib.bind(this, function(row) {
+                                return row.split("}").filter(function(component) {
+                                    return component.length > 0;
+                                }).map(ilib.bind(this, function(component) {
+                                    var name = component.replace(/.*{/, "");
+                                    var obj = {
+                                        component: name,
+                                        label: rb.getStringJS(this.info.fieldNames[name])
+                                    };
+                                    var field = fields.filter(function(f) {
+                                        return f.name === name;
+                                    });
+                                    if (field && field[0] && field[0].pattern) {
+                                        if (typeof(field[0].pattern) === "string") {
+                                            obj.constraint = field[0].pattern;
+                                        }
+                                    }
+                                    if (name === "country") {
+                                        obj.constraint = invertAndFilter(localeAddress.ctrynames);
+                                    } else if (name === "region" && this.regions[loc.getRegion()]) {
+                                        obj.constraint = this.regions[loc.getRegion()];
+                                    }
+                                    return obj;
+                                }));
+                            }));
+
+                            if (callback && typeof(callback) === "function") {
+                                callback(info);
+                            }
+                        })
+                    });
+                })
+            });
+        })
+    });
+
+    return info;
+};
+
+
 module.exports = DateFmt;
