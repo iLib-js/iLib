@@ -1614,44 +1614,55 @@ DateFmt.prototype = {
  * The object returned by this method is an array of date
  * format components. Each format component is an object
  * that contains a "component" property and a "label" to display
- * with it. The label is written in the given locale, or the
- * locale of this formatter if the locale was not given.<p>
+ * with it. The component is the name of the property to use
+ * when constructing a new date with DateFactory(). The label
+ * is intended to be shown to the user and is written in the
+ * given locale, or the locale of this formatter if the
+ * locale was not given.<p>
  *
  * Field separators such as slashes or dots, etc., are given
- * as a object with no component property. It only contains
- * a label property.<p>
+ * as a object with no "component" property. They only contain
+ * a "label" property with a string value. A user interface
+ * may choose to omit these if desired.<p>
  *
  * Optionally, if a format component is constrained to a
- * particular pattern or to a fixed list of possible values, then
- * the constraint rules are given in the "constraint" property.
- * The values in the constraint property can be one of three types:
+ * particular pattern, range, or to a fixed list of possible
+ * values, then these constraint rules are given in the
+ * "constraint" property.
+ * The values in the constraint property can be one of these
+ * types:
  *
  * <ol>
  * <ul><i>array[2]&lt;number&gt;</i> - an array of size 2 of numbers
  * that gives the start and end of a numeric range.
  * <ul><i>array&lt;object&gt; - an array of valid string values
  * given as objects that have "label" and "value" properties. The
- * label is to be displayed to the user and the value is to be used
- * to construct the new IDate object when the user has finished
+ * label is intended to be displayed to the user and the value
+ * is to be used to construct the new date object when the
+ * user has finished
  * selecting the components and the form is being evaluated or
  * submitted.
  * <ul><i>object</i> - conditional constraints. In some cases,
  * the list of possible values for the months
  * or the days depends on which year and month is being
- * displayed. When this happens, the constraint property is
+ * displayed. When this happens, the "constraint" property is
  * given as an object that gives the different sets of values
- * depending on a property. For example, the list of month
+ * depending on a condition. The name of the condition is
+ * given in the "condition" property of this object.
+ * For example, the list of month
  * names in a Hebrew calendar depends on whether or not the
  * year is a leap year. In leap years, there are 13 months,
- * and in regular years, there are 12 months. The constraint
+ * and in regular years, there are 12 months. The "constraint"
  * property for Hebrew calendars is returned as an object
  * that contains three properties, "condition", "leap",
  * and "regular". The "condition" says what the condition is
- * based on, and each of "leap" and "regular" are
+ * based on (ie. whether or not it is a leap year), and
+ * each of "leap" and "regular" are
  * an array of strings that give the month names.
- * It is up to the caller to create an IDate object for the
+ * It is up to the caller to create an date object with
+ * the DateFactory() function for the
  * given year and ask it whether or not it represents a
- * leap year and display the correct list in the UI.
+ * leap year and then display the correct list in the UI.
  * </ol>
  *
  * Here is what the result would look like for a US short
@@ -1671,6 +1682,7 @@ DateFmt.prototype = {
  *     "component": "day",
  *     "label": "Date",
  *     "constraint": {
+ *       "condition": "leapyear",
  *       "leap": {
  *          "1": [1, 31],
  *          "2": [1, 29],
@@ -1750,6 +1762,10 @@ DateFmt.prototype = {
  * ]
  * </pre>
  * <p>
+ * Note that the "minute" component comes with a preformatted list of values
+ * as strings, even though the minute is really a number. The preformatting
+ * ensures that the leading zero is not lost for minutes less than 10.
+ *
  * @example <caption>Example of calling the getFormatInfo method</caption>
  *
  * // the DateFmt should be created with the locale of the date you
@@ -1771,7 +1787,8 @@ DateFmt.prototype = {
  * @param {Locale|string=} locale the locale to translate the labels
  * to. If not given, the locale of the formatter will be used.
  * @param {boolean=} sync true if this method should load the data
- * synchronously, false if async
+ * synchronously and return it immediately, false if async operation is
+ * needed.
  * @param {Function=} callback a callback to call when the data
  * is ready
  * @returns {Array.<Object>} An array date components
