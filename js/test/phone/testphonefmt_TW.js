@@ -1110,5 +1110,16 @@ module.exports.phonefmt_TW = {
         
         test.equal(formatted, expected);
         test.done();
+    },
+    testFormatTWiddPRefix3Digits: function(test) {
+        test.expect(1);
+        var formatted;
+        var parsed = new PhoneNumber("002", {locale: "zh-Hant-TW"});
+        var expected = "002";
+        var fmt = new PhoneFmt({locale: "zh-Hant-TW", style: "default"});
+        formatted = fmt.format(parsed, {partial: true});
+
+        test.equal(formatted, expected);
+        test.done();
     }
 };
