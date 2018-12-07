@@ -1,6 +1,14 @@
 Release Notes for Version 14
 ============================
 
+Build 005
+-------
+Published as version 14.1.3
+
+Bug Fixes:
+* Updated the Taiwan area code of PhoneNumber according to [Wikipedia](https://en.wikipedia.org/wiki/Telephone_numbers_in_Taiwan).
+
+
 Build 004
 -------
 Published as version 14.1.2

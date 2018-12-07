@@ -32,7 +32,7 @@
 		"extension":        [" X", " XX", " XXX", " XXXX", " XXXXX", " XXXXXX", " XXXXXXX"]
 	},
 	"default": {
-		"example":           "(039) 606-537 ",
+		"example":           "(03) 360-6537 ",
 		"partial": {
 			"iddPrefix":        ["X", "XX-", "XXX-"],
 			"countryCode":      ["X ", "XX ", "XXX "],

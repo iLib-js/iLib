@@ -28,38 +28,16 @@
 ^166	emergency	Master Clock Time
 ^168	emergency	Traffic Report
 
-2	area	Panchiao, Sanchung, Taipei, Yingge, Yungho, Jilong
-3	area	Tachi, Taoyuan
-32	area	Ruifang
-33	area	Daxi
-34	area	Chungli
-35	area	Xinzhu, Zhubei
-36	area	Hukou, Zhudong
-37	area	Zhunan, Miaoli
-38	area	Hualian
-39	area	Jiaoqi, Su'ao, Yilan, Luodong
-4	area	Wuri, Wufeng, Shalong, Zhanghua, Yuanlin
-42	area	Taichung
-43	area	Taichung
-44	area	Taichung
-45	area	Fengyuan, Houli
-458	area	Lishan
-46	area	Dadu, Dajia, Shalu, Qingshui, Rinan, Wuchi
-47	area	Lugang
-48	area	Shetou, Tianzhong, Yongjing
-49	area	Buli, Nantou, Riyuetan, Xincun, Zhongxing
-5	area	Dalin, Jiayi, Minxiong, Beigang 
-55	area	Touliu
-56	area	Huwei
-6	area	Makung, Shanhua
-62	area	Tainan
-66	area	Xinying
-67	area	Chiali
-69	area	Penghu
-7	area	Fengshan, Gangshan, Kaohsiung, Jiuqutang, Nanzi, Qishan, Zuoying
-8	area	Chaozhou, Pingdong, Mazu
-88	area	Donggang
-89	area	Taidong
-823	area	Jinmen
-826	area	Wu-chiu
-827	area	Tung-Sha Island
+2	area	Taipei City, New Taipei City, Keelung City
+3	area	Taoyuan City, Hsinchu County, Hualien County, Yilan County
+37	area	Miaoli County
+4	area	Taichung City, Changhua County
+49	area	Nantou County
+5	area	Chiayi City, Chiayi County, Yunlin County
+6	area	Tainan City, Penghu County
+7	area	Kaohsiung City
+8	area	Pingtung County
+82	area	Kinmen County
+89	area	Taitung County
+826	area	Wuqiu Township
+836	area	Lienchiang County

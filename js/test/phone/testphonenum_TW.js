@@ -32,12 +32,12 @@ module.exports.phonenum_TW = {
 
     testParseTWFull: function(test) {
         test.expect(2);
-        var parsed = new PhoneNumber("(039)606-5378", {locale: "zh-TW"});
+        var parsed = new PhoneNumber("(03)606-5378", {locale: "zh-TW"});
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = new PhoneNumber({
             trunkAccess: "0",
-            areaCode: "39",
+            areaCode: "3",
             subscriberNumber: "6065378"
         }, {locale: "zh-TW"});
         
@@ -60,13 +60,13 @@ module.exports.phonenum_TW = {
     
     testParseTWFullLongAreaCode: function(test) {
         test.expect(2);
-        var parsed = new PhoneNumber("0458-345-6789", {locale: "zh-TW"});
+        var parsed = new PhoneNumber("0836-24-789", {locale: "zh-TW"});
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = new PhoneNumber({
             trunkAccess: "0",
-            areaCode: "458",
-            subscriberNumber: "3456789"
+            areaCode: "836",
+            subscriberNumber: "24789"
         }, {locale: "zh-TW"});
         
         test.ok(parsed.equals(expected));
@@ -75,13 +75,13 @@ module.exports.phonenum_TW = {
     
     testParseTWIgnoreFormatting: function(test) {
         test.expect(2);
-        var parsed = new PhoneNumber("039-1234-5678", {locale: "zh-TW"});
+        var parsed = new PhoneNumber("03-1234-56789", {locale: "zh-TW"});
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = new PhoneNumber({
             trunkAccess: "0",
-            areaCode: "39",
-            subscriberNumber: "12345678"
+            areaCode: "3",
+            subscriberNumber: "123456789"
         }, {locale: "zh-TW"});
         
         test.ok(parsed.equals(expected));
@@ -90,12 +90,12 @@ module.exports.phonenum_TW = {
     
     testParseTWIgnoreCrap: function(test) {
         test.expect(2);
-        var parsed = new PhoneNumber("$039@1234&5678-", {locale: "zh-TW"});
+        var parsed = new PhoneNumber("$03@1234&5678-", {locale: "zh-TW"});
         test.ok(typeof(parsed) !== "undefined");
         
         var expected = new PhoneNumber({
             trunkAccess: "0",
-            areaCode: "39",
+            areaCode: "3",
             subscriberNumber: "12345678"
         }, {locale: "zh-TW"});
         
@@ -267,7 +267,8 @@ module.exports.phonenum_TW = {
         
         var expected = new PhoneNumber({
             trunkAccess: "0",
-            areaCode: "39"
+            areaCode: "3",
+            subscriberNumber: "9"
         }, {locale: "zh-TW"});
         
         test.ok(parsed.equals(expected));
@@ -280,8 +281,8 @@ module.exports.phonenum_TW = {
         
         var expected = new PhoneNumber({
             trunkAccess: "0",
-            areaCode: "39",
-            subscriberNumber: "1"
+            areaCode: "3",
+            subscriberNumber: "91"
         }, {locale: "zh-TW"});
         
         test.ok(parsed.equals(expected));
@@ -294,8 +295,8 @@ module.exports.phonenum_TW = {
         
         var expected = new PhoneNumber({
                 trunkAccess: "0",
-                areaCode: "39",
-                subscriberNumber: "12"
+                areaCode: "3",
+                subscriberNumber: "912"
         }, {locale: "zh-TW"});
         
         test.ok(parsed.equals(expected));
@@ -308,8 +309,8 @@ module.exports.phonenum_TW = {
         
         var expected = new PhoneNumber({
             trunkAccess: "0",
-            areaCode: "39",
-            subscriberNumber: "123"
+            areaCode: "3",
+            subscriberNumber: "9123"
         }, {locale: "zh-TW"});
         
         test.ok(parsed.equals(expected));
@@ -322,8 +323,8 @@ module.exports.phonenum_TW = {
         
         var expected = new PhoneNumber({
             trunkAccess: "0",
-            areaCode: "39",
-            subscriberNumber: "1234"
+            areaCode: "3",
+            subscriberNumber: "91234"
         }, {locale: "zh-TW"});
         
         test.ok(parsed.equals(expected));
@@ -336,8 +337,8 @@ module.exports.phonenum_TW = {
         
         var expected = new PhoneNumber({
             trunkAccess: "0",
-            areaCode: "39",
-            subscriberNumber: "12345"
+            areaCode: "3",
+            subscriberNumber: "912345"
         }, {locale: "zh-TW"});
         
         test.ok(parsed.equals(expected));
@@ -350,8 +351,8 @@ module.exports.phonenum_TW = {
         
         var expected = new PhoneNumber({
                 trunkAccess: "0",
-                areaCode: "39",
-                subscriberNumber: "123456"
+                areaCode: "3",
+                subscriberNumber: "9123456"
         }, {locale: "zh-TW"});
         
         test.ok(parsed.equals(expected));
@@ -364,8 +365,8 @@ module.exports.phonenum_TW = {
         
         var expected = new PhoneNumber({
                 trunkAccess: "0",
-                areaCode: "39",
-                subscriberNumber: "1234567"
+                areaCode: "3",
+                subscriberNumber: "91234567"
         }, {locale: "zh-TW"});
         
         test.ok(parsed.equals(expected));
@@ -379,8 +380,8 @@ module.exports.phonenum_TW = {
         
         var expected = new PhoneNumber({
                 trunkAccess: "0",
-                areaCode: "39",
-                subscriberNumber: "12345678"
+                areaCode: "3",
+                subscriberNumber: "912345678"
         }, {locale: "zh-TW"});
         
         test.ok(parsed.equals(expected));
@@ -394,8 +395,8 @@ module.exports.phonenum_TW = {
         
         var expected = new PhoneNumber({
                 trunkAccess: "0",
-                areaCode: "39",
-                subscriberNumber: "123456789"
+                areaCode: "3",
+                subscriberNumber: "9123456789"
         }, {locale: "zh-TW"});
         
         test.ok(parsed.equals(expected));
