@@ -1804,74 +1804,368 @@ DateFmt.prototype.getFormatInfo = function(locale, sync, callback) {
         loc.spec = undefined;
     }
 
-    Utils.loadData({
-        name: "regionnames.json",
-        object: "DateFmt",
+    function sequence(start, end, pad) {
+        var constraint = [];
+        for (var i = start; i <= end; i++) {
+            constraint.push(pad ? JSUtils.pad(i, 2) : String(i));
+        }
+        return constraint;
+    }
+    
+    new ResBundle({
         locale: loc,
+        name: "dateres",
         sync: this.sync,
-        loadParams: JSUtils.merge(this.loadParams, {returnOne: true}, true),
-        callback: ilib.bind(this, function(regions) {
-            this.regions = regions;
-
-            new ResBundle({
-                locale: loc,
-                name: "sysres",
-                sync: this.sync,
-                loadParams: this.loadParams,
-                onLoad: ilib.bind(this, function (rb) {
-                    var type, format, fields = this.info.fields || defaultData.fields;
-                    if (this.info.multiformat) {
-                        type = isAsianLocale(this.locale) ? "asian" : "latin";
-                        fields = this.info.fields[type];
-                    }
-
-                    if (typeof(this.style) === 'object') {
-                        format = this.style[type || "latin"];
-                    } else {
-                        format = this.style;
-                    }
-                    new Address(" ", {
-                        locale: loc,
-                        sync: this.sync,
-                        loadParams: this.loadParams,
-                        onLoad: ilib.bind(this, function(localeAddress) {
-                            var rows = format.split(/\n/g);
-                            info = rows.map(ilib.bind(this, function(row) {
-                                return row.split("}").filter(function(component) {
-                                    return component.length > 0;
-                                }).map(ilib.bind(this, function(component) {
-                                    var name = component.replace(/.*{/, "");
-                                    var obj = {
-                                        component: name,
-                                        label: rb.getStringJS(this.info.fieldNames[name])
-                                    };
-                                    var field = fields.filter(function(f) {
-                                        return f.name === name;
-                                    });
-                                    if (field && field[0] && field[0].pattern) {
-                                        if (typeof(field[0].pattern) === "string") {
-                                            obj.constraint = field[0].pattern;
-                                        }
-                                    }
-                                    if (name === "country") {
-                                        obj.constraint = invertAndFilter(localeAddress.ctrynames);
-                                    } else if (name === "region" && this.regions[loc.getRegion()]) {
-                                        obj.constraint = this.regions[loc.getRegion()];
-                                    }
-                                    return obj;
-                                }));
-                            }));
-
-                            if (callback && typeof(callback) === "function") {
-                                callback(info);
+        loadParams: this.loadParams,
+        onLoad: ilib.bind(this, function (rb) {
+            this.templateArr.map(ilib.bind(this, function(component) {
+                switch (component) {
+                    case 'd':
+                        return {
+                            component: "day",
+                            label: "Date",
+                            template: "D",
+                            constraint: {
+                                "condition": "isLeap",
+                                "regular": {
+                                    "1": sequence(1, 31),
+                                    "2": sequence(1, 28),
+                                    "3": sequence(1, 31),
+                                    "4": sequence(1, 30),
+                                    "5": sequence(1, 31),
+                                    "6": sequence(1, 30),
+                                    "7": sequence(1, 31),
+                                    "8": sequence(1, 31),
+                                    "9": sequence(1, 30),
+                                    "10": sequence(1, 31),
+                                    "11": sequence(1, 30),
+                                    "12": sequence(1, 31)
+                                },
+                                "leap": {
+                                    "1": sequence(1, 31),
+                                    "2": sequence(1, 29),
+                                    "3": sequence(1, 31),
+                                    "4": sequence(1, 30),
+                                    "5": sequence(1, 31),
+                                    "6": sequence(1, 30),
+                                    "7": sequence(1, 31),
+                                    "8": sequence(1, 31),
+                                    "9": sequence(1, 30),
+                                    "10": sequence(1, 31),
+                                    "11": sequence(1, 30),
+                                    "12": sequence(1, 31)
+                                }
                             }
-                        })
+                        };
+
+                    case 'dd':
+                        return {
+                            component: "day",
+                            label: "Date",
+                            template: "DD",
+                            constraint: {
+                                "condition": "isLeap",
+                                "regular": {
+                                    "1": sequence(1, 31, true),
+                                    "2": sequence(1, 28, true),
+                                    "3": sequence(1, 31, true),
+                                    "4": sequence(1, 30, true),
+                                    "5": sequence(1, 31, true),
+                                    "6": sequence(1, 30, true),
+                                    "7": sequence(1, 31, true),
+                                    "8": sequence(1, 31, true),
+                                    "9": sequence(1, 30, true),
+                                    "10": sequence(1, 31, true),
+                                    "11": sequence(1, 30, true),
+                                    "12": sequence(1, 31, true)
+                                },
+                                "leap": {
+                                    "1": sequence(1, 31, true),
+                                    "2": sequence(1, 29, true),
+                                    "3": sequence(1, 31, true),
+                                    "4": sequence(1, 30, true),
+                                    "5": sequence(1, 31, true),
+                                    "6": sequence(1, 30, true),
+                                    "7": sequence(1, 31, true),
+                                    "8": sequence(1, 31, true),
+                                    "9": sequence(1, 30, true),
+                                    "10": sequence(1, 31, true),
+                                    "11": sequence(1, 30, true),
+                                    "12": sequence(1, 31, true)
+                                }
+                            }
+                        };
+
+                    case 'yy':
+                        return {
+                            component: "year",
+                            label: "Year",
+                            template: "YY",
+                            constraint: "[0-9]{2}"
+                        };
+
+                    case 'yyyy':
+                        return {
+                            component: "year",
+                            label: "Year",
+                            template: "YYYY",
+                            constraint: "[0-9]{4}"
+                        };
+
+                    case 'M':
+                        return {
+                            component: "month",
+                            label: "Month",
+                            template: "M",
+                            constraint: "[0-9]{1,2}"
+                        };
+
+                    case 'MM':
+                        return {
+                            component: "month",
+                            label: "Month",
+                            template: "MM",
+                            constraint: "[0-9]+"
+                        };
+
+                    case 'h':
+                        return {
+                            component: "hour",
+                            label: "Hour",
+                            template: "H",
+                            constraint: ["12"].concat(sequence(1, 11))
+                        };
+
+                    case 'hh':
+                        return {
+                            component: "hour",
+                            label: "Hour",
+                            template: "HH",
+                            constraint: ["12"].concat(sequence(1, 11, true))
+                        };
+
+
+                    case 'K':
+                        return {
+                            component: "hour",
+                            label: "Hour",
+                            template: "H",
+                            constraint: concat(sequence(0, 11))
+                        };
+
+                    case 'KK':
+                        return {
+                            component: "hour",
+                            label: "Hour",
+                            template: "HH",
+                            constraint: concat(sequence(0, 11, true))
+                        };
+
+                    case 'H':
+                        return {
+                            component: "hour",
+                            label: "Hour",
+                            template: "H",
+                            constraint: [0, 23]
+                        };
+
+                    case 'HH':
+                        return {
+                            component: "hour",
+                            label: "Hour",
+                            template: "H",
+                            constraint: concat(sequence(0, 23, true))
+                        };
+
+                    case 'k':
+                        return {
+                            component: "hour",
+                            label: "Hour",
+                            template: "H",
+                            constraint: ["24"].concat(sequence(0, 23))
+                        };
+
+                    case 'kk':
+                        return {
+                            component: "hour",
+                            label: "Hour",
+                            template: "H",
+                            constraint: ["24"].concat(sequence(0, 23, true))
+                        };
+
+                    case 'm':
+                        return {
+                            component: "minute",
+                            label: "Minute",
+                            template: "mm",
+                            constraint: [0, 59]
+                        };
+
+                    case 'mm':
+                        return {
+                        component: "minute",
+                        label: "Minute",
+                        template: "mm",
+                        constraint: sequence(0, 59, true)
+                    };
+
+                    case 's':
+                        str += (date.second || "0");
+                        break;
+                    case 'ss':
+                        str += JSUtils.pad(date.second || "0", 2);
+                        break;
+                    case 'S':
+                        str += (date.millisecond || "0");
+                        break;
+                    case 'SSS':
+                        str += JSUtils.pad(date.millisecond || "0", 3);
+                        break;
+
+                    case 'N':
+                    case 'NN':
+                    case 'MMM':
+                    case 'MMMM':
+                    case 'L':
+                    case 'LL':
+                    case 'LLL':
+                    case 'LLLL':
+                        key = templateArr[i] + (date.month || 1);
+                        str += (this.sysres.getString(undefined, key + "-" + this.calName) || this.sysres.getString(undefined, key));
+                        break;
+
+                    case 'E':
+                    case 'EE':
+                    case 'EEE':
+                    case 'EEEE':
+                    case 'c':
+                    case 'cc':
+                    case 'ccc':
+                    case 'cccc':
+                        key = templateArr[i] + date.getDayOfWeek();
+                        //console.log("finding " + key + " in the resources");
+                        str += (this.sysres.getString(undefined, key + "-" + this.calName) || this.sysres.getString(undefined, key));
+                        break;
+
+                    case 'a':
+                        switch (this.meridiems) {
+                            case "chinese":
+                                if (date.hour < 6) {
+                                    key = "azh0";    // before dawn
+                                } else if (date.hour < 9) {
+                                    key = "azh1";    // morning
+                                } else if (date.hour < 12) {
+                                    key = "azh2";    // late morning/day before noon
+                                } else if (date.hour < 13) {
+                                    key = "azh3";    // noon hour/midday
+                                } else if (date.hour < 18) {
+                                    key = "azh4";    // afternoon
+                                } else if (date.hour < 21) {
+                                    key = "azh5";    // evening time/dusk
+                                } else {
+                                    key = "azh6";    // night time
+                                }
+                                break;
+                            case "ethiopic":
+                                if (date.hour < 6) {
+                                    key = "a0-ethiopic";    // morning
+                                } else if (date.hour === 6 && date.minute === 0) {
+                                    key = "a1-ethiopic";    // noon
+                                } else if (date.hour >= 6 && date.hour < 12) {
+                                    key = "a2-ethiopic";    // afternoon
+                                } else if (date.hour >= 12 && date.hour < 18) {
+                                    key = "a3-ethiopic";    // evening
+                                } else if (date.hour >= 18) {
+                                    key = "a4-ethiopic";    // night
+                                }
+                                break;
+                            default:
+                                key = date.hour < 12 ? "a0" : "a1";
+                            break;
+                        }
+                        //console.log("finding " + key + " in the resources");
+                        str += (this.sysres.getString(undefined, key + "-" + this.calName) || this.sysres.getString(undefined, key));
+                        break;
+
+                    case 'w':
+                        str += date.getWeekOfYear();
+                        break;
+                    case 'ww':
+                        str += JSUtils.pad(date.getWeekOfYear(), 2);
+                        break;
+
+                    case 'D':
+                        str += date.getDayOfYear();
+                        break;
+                    case 'DD':
+                        str += JSUtils.pad(date.getDayOfYear(), 2);
+                        break;
+                    case 'DDD':
+                        str += JSUtils.pad(date.getDayOfYear(), 3);
+                        break;
+                    case 'W':
+                        str += date.getWeekOfMonth(this.locale);
+                        break;
+
+                    case 'G':
+                        key = "G" + date.getEra();
+                        str += (this.sysres.getString(undefined, key + "-" + this.calName) || this.sysres.getString(undefined, key));
+                        break;
+
+                    case 'O':
+                        temp = this.sysres.getString("1#1st|2#2nd|3#3rd|21#21st|22#22nd|23#23rd|31#31st|#{num}th", "ordinalChoice");
+                        str += temp.formatChoice(date.day, {num: date.day});
+                        break;
+
+                    case 'z': // general time zone
+                        tz = this.getTimeZone(); // lazy-load the tz
+                        str += tz.getDisplayName(date, "standard");
+                        break;
+                    case 'Z': // RFC 822 time zone
+                        tz = this.getTimeZone(); // lazy-load the tz
+                        str += tz.getDisplayName(date, "rfc822");
+                        break;
+
+                    default:
+                        str += templateArr[i].replace(/'/g, "");
+                    break;
+                }
+
+            }));
+
+            var rows = format.split(/\n/g);
+            info = rows.map(ilib.bind(this, function(row) {
+                return row.split("}").filter(function(component) {
+                    return component.length > 0;
+                }).map(ilib.bind(this, function(component) {
+                    var name = component.replace(/.*{/, "");
+                    var obj = {
+                        component: name,
+                        label: rb.getStringJS(this.info.fieldNames[name])
+                    };
+                    var field = fields.filter(function(f) {
+                        return f.name === name;
                     });
-                })
-            });
+                    if (field && field[0] && field[0].pattern) {
+                        if (typeof(field[0].pattern) === "string") {
+                            obj.constraint = field[0].pattern;
+                        }
+                    }
+                    if (name === "country") {
+                        obj.constraint = invertAndFilter(localeAddress.ctrynames);
+                    } else if (name === "region" && this.regions[loc.getRegion()]) {
+                        obj.constraint = this.regions[loc.getRegion()];
+                    }
+                    return obj;
+                }));
+            }));
+
+            if (callback && typeof(callback) === "function") {
+                callback(info);
+            }
         })
     });
-
+ 
     return info;
 };
 
