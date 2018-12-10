@@ -1855,7 +1855,8 @@ DateFmt.prototype.getFormatInfo = function(locale, sync, callback) {
                                     "11": sequence(1, 30),
                                     "12": sequence(1, 31)
                                 }
-                            }
+                            },
+                            validation: "\\d{1,2}"
                         };
 
                     case 'dd':
@@ -1893,7 +1894,8 @@ DateFmt.prototype.getFormatInfo = function(locale, sync, callback) {
                                     "11": sequence(1, 30, true),
                                     "12": sequence(1, 31, true)
                                 }
-                            }
+                            },
+                            validation: "\\d{1,2}"
                         };
 
                     case 'yy':
@@ -1901,7 +1903,8 @@ DateFmt.prototype.getFormatInfo = function(locale, sync, callback) {
                             component: "year",
                             label: "Year",
                             template: "YY",
-                            constraint: "[0-9]{2}"
+                            constraint: "[0-9]{2}",
+                            validation: "\\d{2}"
                         };
 
                     case 'yyyy':
@@ -1909,7 +1912,8 @@ DateFmt.prototype.getFormatInfo = function(locale, sync, callback) {
                             component: "year",
                             label: "Year",
                             template: "YYYY",
-                            constraint: "[0-9]{4}"
+                            constraint: "[0-9]{4}",
+                            validation: "\\d{4}"
                         };
 
                     case 'M':
@@ -1917,7 +1921,8 @@ DateFmt.prototype.getFormatInfo = function(locale, sync, callback) {
                             component: "month",
                             label: "Month",
                             template: "M",
-                            constraint: "[0-9]{1,2}"
+                            constraint: [1, 12],
+                            validation: "\\d{1,2}"
                         };
 
                     case 'MM':
@@ -1925,7 +1930,8 @@ DateFmt.prototype.getFormatInfo = function(locale, sync, callback) {
                             component: "month",
                             label: "Month",
                             template: "MM",
-                            constraint: "[0-9]+"
+                            constraint: "[0-9]+",
+                            validation: "\\d{2}"
                         };
 
                     case 'h':
@@ -1933,7 +1939,8 @@ DateFmt.prototype.getFormatInfo = function(locale, sync, callback) {
                             component: "hour",
                             label: "Hour",
                             template: "H",
-                            constraint: ["12"].concat(sequence(1, 11))
+                            constraint: ["12"].concat(sequence(1, 11)),
+                            validation: "\\d{1,2}"
                         };
 
                     case 'hh':
@@ -1941,7 +1948,8 @@ DateFmt.prototype.getFormatInfo = function(locale, sync, callback) {
                             component: "hour",
                             label: "Hour",
                             template: "HH",
-                            constraint: ["12"].concat(sequence(1, 11, true))
+                            constraint: ["12"].concat(sequence(1, 11, true)),
+                            validation: "\\d{2}"
                         };
 
 
@@ -1950,7 +1958,8 @@ DateFmt.prototype.getFormatInfo = function(locale, sync, callback) {
                             component: "hour",
                             label: "Hour",
                             template: "H",
-                            constraint: concat(sequence(0, 11))
+                            constraint: concat(sequence(0, 11)),
+                            validation: "\\d{1,2}"
                         };
 
                     case 'KK':
@@ -1958,7 +1967,8 @@ DateFmt.prototype.getFormatInfo = function(locale, sync, callback) {
                             component: "hour",
                             label: "Hour",
                             template: "HH",
-                            constraint: concat(sequence(0, 11, true))
+                            constraint: concat(sequence(0, 11, true)),
+                            validation: "\\d{2}"
                         };
 
                     case 'H':
@@ -1966,7 +1976,8 @@ DateFmt.prototype.getFormatInfo = function(locale, sync, callback) {
                             component: "hour",
                             label: "Hour",
                             template: "H",
-                            constraint: [0, 23]
+                            constraint: [0, 23],
+                            validation: "\\d{1,2}"
                         };
 
                     case 'HH':
@@ -1974,7 +1985,8 @@ DateFmt.prototype.getFormatInfo = function(locale, sync, callback) {
                             component: "hour",
                             label: "Hour",
                             template: "H",
-                            constraint: concat(sequence(0, 23, true))
+                            constraint: concat(sequence(0, 23, true)),
+                            validation: "\\d{1,2}"
                         };
 
                     case 'k':
@@ -1982,7 +1994,8 @@ DateFmt.prototype.getFormatInfo = function(locale, sync, callback) {
                             component: "hour",
                             label: "Hour",
                             template: "H",
-                            constraint: ["24"].concat(sequence(0, 23))
+                            constraint: ["24"].concat(sequence(0, 23)),
+                            validation: "\\d{1,2}"
                         };
 
                     case 'kk':
@@ -1990,7 +2003,8 @@ DateFmt.prototype.getFormatInfo = function(locale, sync, callback) {
                             component: "hour",
                             label: "Hour",
                             template: "H",
-                            constraint: ["24"].concat(sequence(0, 23, true))
+                            constraint: ["24"].concat(sequence(0, 23, true)),
+                            validation: "\\d{1,2}"
                         };
 
                     case 'm':
@@ -1998,16 +2012,18 @@ DateFmt.prototype.getFormatInfo = function(locale, sync, callback) {
                             component: "minute",
                             label: "Minute",
                             template: "mm",
-                            constraint: [0, 59]
+                            constraint: [0, 59],
+                            validation: "\\d{1,2}"
                         };
 
                     case 'mm':
                         return {
-                        component: "minute",
-                        label: "Minute",
-                        template: "mm",
-                        constraint: sequence(0, 59, true)
-                    };
+                            component: "minute",
+                            label: "Minute",
+                            template: "mm",
+                            constraint: sequence(0, 59, true),
+                            validation: "\\d{2}"
+                        };
 
                     case 's':
                         str += (date.second || "0");
