@@ -2003,24 +2003,43 @@ DateFmt.prototype.getFormatInfo = function(locale, sync, callback) {
 
                     case 'mm':
                         return {
-                        component: "minute",
-                        label: "Minute",
-                        template: "mm",
-                        constraint: sequence(0, 59, true)
-                    };
+                            component: "minute",
+                            label: "Minute",
+                            template: "mm",
+                            constraint: sequence(0, 59, true)
+                        };
 
                     case 's':
-                        str += (date.second || "0");
-                        break;
+                        return {
+                            component: "second",
+                            label: "Second",
+                            template: "ss",
+                            constraint: [0, 59]
+                        };
+
                     case 'ss':
-                        str += JSUtils.pad(date.second || "0", 2);
-                        break;
+                        return {
+                            component: "second",
+                            label: "Second",
+                            template: "ss",
+                            constraint: sequence(0, 59, true)
+                        };
+
                     case 'S':
-                        str += (date.millisecond || "0");
-                        break;
+                        return {
+                            component: "millisecond",
+                            label: "Millisecond",
+                            template: "ms",
+                            constraint: [0, 999]
+                        };
+
                     case 'SSS':
-                        str += JSUtils.pad(date.millisecond || "0", 3);
-                        break;
+                        return {
+                            component: "millisecond",
+                            label: "Millisecond",
+                            template: "ms",
+                            constraint: sequence(0, 999, true)
+                        };
 
                     case 'N':
                     case 'NN':
@@ -2030,9 +2049,32 @@ DateFmt.prototype.getFormatInfo = function(locale, sync, callback) {
                     case 'LL':
                     case 'LLL':
                     case 'LLLL':
-                        key = templateArr[i] + (date.month || 1);
-                        str += (this.sysres.getString(undefined, key + "-" + this.calName) || this.sysres.getString(undefined, key));
-                        break;
+                        return {
+                            component: "month",
+                            label: "Month",
+                            template: "MMM",
+                            constraint: {
+                                "constraint": "isLeap",
+                                "leap": (function() {
+                                    var ret = [];
+                                    var months = this.cal.getNumMonths(undefined, true);
+                                    for (var i = 1; i < months; i++) {
+                                        var key = component + i;
+                                        ret.push((this.sysres.getString(undefined, key + "-" + this.calName) || this.sysres.getString(undefined, key)));
+                                    }
+                                    return ret;
+                                })(),
+                                "regular": (function() {
+                                    var ret = [];
+                                    var months = this.cal.getNumMonths(undefined, false);
+                                    for (var i = 1; i < months; i++) {
+                                        var key = component + i;
+                                        ret.push((this.sysres.getString(undefined, key + "-" + this.calName) || this.sysres.getString(undefined, key)));
+                                    }
+                                    return ret;
+                                })()
+                            }
+                        };
 
                     case 'E':
                     case 'EE':
