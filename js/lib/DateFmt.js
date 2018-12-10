@@ -1811,7 +1811,7 @@ DateFmt.prototype.getFormatInfo = function(locale, sync, callback) {
         }
         return constraint;
     }
-    
+
     new ResBundle({
         locale: loc,
         name: "dateres",
@@ -2030,7 +2030,8 @@ DateFmt.prototype.getFormatInfo = function(locale, sync, callback) {
                             component: "second",
                             label: "Second",
                             template: "ss",
-                            constraint: [0, 59]
+                            constraint: [0, 59],
+                            validation: "\\d{1,2}"
                         };
 
                     case 'ss':
@@ -2038,7 +2039,8 @@ DateFmt.prototype.getFormatInfo = function(locale, sync, callback) {
                             component: "second",
                             label: "Second",
                             template: "ss",
-                            constraint: sequence(0, 59, true)
+                            constraint: sequence(0, 59, true),
+                            validation: "\\d{2}"
                         };
 
                     case 'S':
@@ -2046,7 +2048,8 @@ DateFmt.prototype.getFormatInfo = function(locale, sync, callback) {
                             component: "millisecond",
                             label: "Millisecond",
                             template: "ms",
-                            constraint: [0, 999]
+                            constraint: [0, 999],
+                            validation: "\\d{1,3}"
                         };
 
                     case 'SSS':
@@ -2054,7 +2057,8 @@ DateFmt.prototype.getFormatInfo = function(locale, sync, callback) {
                             component: "millisecond",
                             label: "Millisecond",
                             template: "ms",
-                            constraint: sequence(0, 999, true)
+                            constraint: sequence(0, 999, true),
+                            validation: "\\d{3}"
                         };
 
                     case 'N':
@@ -2068,7 +2072,6 @@ DateFmt.prototype.getFormatInfo = function(locale, sync, callback) {
                         return {
                             component: "month",
                             label: "Month",
-                            template: "MMM",
                             constraint: {
                                 "constraint": "isLeap",
                                 "leap": (function() {
@@ -2100,75 +2103,109 @@ DateFmt.prototype.getFormatInfo = function(locale, sync, callback) {
                     case 'cc':
                     case 'ccc':
                     case 'cccc':
-                        key = templateArr[i] + date.getDayOfWeek();
-                        //console.log("finding " + key + " in the resources");
-                        str += (this.sysres.getString(undefined, key + "-" + this.calName) || this.sysres.getString(undefined, key));
+                        return {
+                            component: "dayofweek",
+                            label: "Day of Week",
+                            constraint: (function() {
+                                var ret = [];
+                                var months = this.cal.getNumMonths(undefined, true);
+                                for (var i = 0; i < 7; i++) {
+                                    key = component + i;
+                                    //console.log("finding " + key + " in the resources");
+                                    ret.push((this.sysres.getString(undefined, key + "-" + this.calName) || this.sysres.getString(undefined, key)));
+                                }
+                                return ret;
+                            })()
+                        };
                         break;
 
                     case 'a':
+                        var ret = {
+                            component: "meridiem",
+                            label: "AM/PM",
+                            template: "AM/PM",
+                            constraint: []
+                        };
                         switch (this.meridiems) {
                             case "chinese":
-                                if (date.hour < 6) {
-                                    key = "azh0";    // before dawn
-                                } else if (date.hour < 9) {
-                                    key = "azh1";    // morning
-                                } else if (date.hour < 12) {
-                                    key = "azh2";    // late morning/day before noon
-                                } else if (date.hour < 13) {
-                                    key = "azh3";    // noon hour/midday
-                                } else if (date.hour < 18) {
-                                    key = "azh4";    // afternoon
-                                } else if (date.hour < 21) {
-                                    key = "azh5";    // evening time/dusk
-                                } else {
-                                    key = "azh6";    // night time
+                                for (var i = 0; i < 7; i++) {
+                                    var key = "azh" + i;
+                                    ret.constraint.push(this.sysres.getString(undefined, key + "-" + this.calName) || this.sysres.getString(undefined, key));
                                 }
                                 break;
                             case "ethiopic":
-                                if (date.hour < 6) {
-                                    key = "a0-ethiopic";    // morning
-                                } else if (date.hour === 6 && date.minute === 0) {
-                                    key = "a1-ethiopic";    // noon
-                                } else if (date.hour >= 6 && date.hour < 12) {
-                                    key = "a2-ethiopic";    // afternoon
-                                } else if (date.hour >= 12 && date.hour < 18) {
-                                    key = "a3-ethiopic";    // evening
-                                } else if (date.hour >= 18) {
-                                    key = "a4-ethiopic";    // night
+                                for (var i = 0; i < 7; i++) {
+                                    var key = "a" + i + "-ethiopic";
+                                    ret.constraint.push(this.sysres.getString(undefined, key + "-" + this.calName) || this.sysres.getString(undefined, key));
                                 }
                                 break;
                             default:
-                                key = date.hour < 12 ? "a0" : "a1";
-                            break;
+                                ret.constraint.push(this.sysres.getString(undefined, "a0-" + this.calName) || this.sysres.getString(undefined, "a0"));
+                                ret.constraint.push(this.sysres.getString(undefined, "a1-" + this.calName) || this.sysres.getString(undefined, "a1"));
+                                break;
                         }
-                        //console.log("finding " + key + " in the resources");
-                        str += (this.sysres.getString(undefined, key + "-" + this.calName) || this.sysres.getString(undefined, key));
-                        break;
+                        return ret;
 
                     case 'w':
-                        str += date.getWeekOfYear();
-                        break;
+                        return {
+                            label: "Week of Year",
+                            value: function(date) {
+                                return date.getDayOfYear();
+                            }
+                        };
+
                     case 'ww':
-                        str += JSUtils.pad(date.getWeekOfYear(), 2);
-                        break;
+                        return {
+                            label: "Week of Year",
+                            value: function(date) {
+                                var temp = date.getWeekOfYear();
+                                return JSUtils.pad(temp, 2)
+                            }
+                        };
 
                     case 'D':
-                        str += date.getDayOfYear();
-                        break;
+                        return {
+                            label: "Day of Year",
+                            value: function(date) {
+                                return date.getDayOfYear();
+                            }
+                        };
+
                     case 'DD':
-                        str += JSUtils.pad(date.getDayOfYear(), 2);
-                        break;
+                        return {
+                            label: "Day of Year",
+                            value: function(date) {
+                                var temp = date.getDayOfYear();
+                                return JSUtils.pad(temp, 2)
+                            }
+                        };
+
                     case 'DDD':
-                        str += JSUtils.pad(date.getDayOfYear(), 3);
-                        break;
+                        return {
+                            label: "Day of Year",
+                            value: function(date) {
+                                var temp = date.getDayOfYear();
+                                return JSUtils.pad(temp, 3)
+                            }
+                        };
+
                     case 'W':
-                        str += date.getWeekOfMonth(this.locale);
-                        break;
+                        return {
+                            label: "Week of Month",
+                            value: function(date) {
+                                return date.getWeekOfMonth();
+                            }
+                        };
 
                     case 'G':
-                        key = "G" + date.getEra();
-                        str += (this.sysres.getString(undefined, key + "-" + this.calName) || this.sysres.getString(undefined, key));
-                        break;
+                        var ret = {
+                            component: "era",
+                            label: "Era",
+                            constraint: []
+                        };
+                        ret.constraint.push(this.sysres.getString(undefined, "G0-" + this.calName) || this.sysres.getString(undefined, "G0"));
+                        ret.constraint.push(this.sysres.getString(undefined, "G1-" + this.calName) || this.sysres.getString(undefined, "G1"));
+                        return ret;
 
                     case 'O':
                         temp = this.sysres.getString("1#1st|2#2nd|3#3rd|21#21st|22#22nd|23#23rd|31#31st|#{num}th", "ordinalChoice");
@@ -2185,8 +2222,9 @@ DateFmt.prototype.getFormatInfo = function(locale, sync, callback) {
                         break;
 
                     default:
-                        str += templateArr[i].replace(/'/g, "");
-                    break;
+                        return {
+                            label: component
+                        };
                 }
 
             }));
@@ -2223,7 +2261,7 @@ DateFmt.prototype.getFormatInfo = function(locale, sync, callback) {
             }
         })
     });
- 
+
     return info;
 };
 
