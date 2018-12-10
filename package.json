@@ -1,7 +1,7 @@
 {
     "name": "ilib",
     "version": "14.1.3",
-    "main": "js/lib/ilib-node.js",
+    "main": "js/index.js",
     "description": "iLib is a cross-engine library of internationalization (i18n) classes written in pure JS",
     "keywords": [
         "internationalization",
