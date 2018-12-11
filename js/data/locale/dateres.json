@@ -1,10 +1,1 @@
-{
-    "month": "Month",
-    "day": "Date",
-    "year": "Year",
-    "hour": "Hour",
-    "minute": "Minute",
-    "second": "Second",
-    "meridium": "AM/PM",
-    "timezone": "Time Zone"
-}
+{}

@@ -2248,13 +2248,15 @@ DateFmt.prototype.getFormatInfo = function(locale, sync, callback) {
                     set.add("Etc/GMT-14");
 
                     info = this._mapFormatInfo(set.asArray().sort());
+                    if (callback && typeof(callback) === "function") {
+                        callback(info);
+                    }
                 }));
             } else {
                 info = this._mapFormatInfo();
-            }
-
-            if (callback && typeof(callback) === "function") {
-                callback(info);
+                if (callback && typeof(callback) === "function") {
+                    callback(info);
+                }
             }
         })
     });
