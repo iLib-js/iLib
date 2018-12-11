@@ -3776,18 +3776,18 @@ module.exports.testdatefmt = {
 
             test.equal(info[0].component, "month");
             test.equal(info[0].label, "Month");
-            test.deepEquals(info[0].constraint, [1, 12]);
+            test.deepEqual(info[0].constraint, [1, 12]);
 
             test.ok(!info[1].component);
             test.equal(info[1].label, "/");
 
             test.equal(info[2].component, "day");
             test.equal(info[2].label, "Date");
-            test.deepEquals(info[2].constraint, {
-                "condition": "leapyear",
-                "leap": {
+            test.deepEqual(info[2].constraint, {
+                "condition": "isLeap",
+                "regular": {
                     "1": [1, 31],
-                    "2": [1, 29],
+                    "2": [1, 28],
                     "3": [1, 31],
                     "4": [1, 30],
                     "5": [1, 31],
@@ -3799,9 +3799,9 @@ module.exports.testdatefmt = {
                     "11": [1, 30],
                     "12": [1, 31]
                 },
-                "regular": {
+                "leap": {
                     "1": [1, 31],
-                    "2": [1, 28],
+                    "2": [1, 29],
                     "3": [1, 31],
                     "4": [1, 30],
                     "5": [1, 31],
@@ -3843,7 +3843,7 @@ module.exports.testdatefmt = {
 
             test.equal(info[0].component, "month");
             test.equal(info[0].label, "Month");
-            test.deepEquals(info[0].constraint, [
+            test.deepEqual(info[0].constraint, [
                 {label: "January", value: 1},
                 {label: "February", value: 2},
                 {label: "March", value: 3},
@@ -3863,11 +3863,11 @@ module.exports.testdatefmt = {
 
             test.equal(info[2].component, "day");
             test.equal(info[2].label, "Date");
-            test.deepEquals(info[2].constraint, {
-                "condition": "leapyear",
-                "leap": {
+            test.deepEqual(info[2].constraint, {
+                "condition": "isLeap",
+                "regular": {
                     "1": [1, 31],
-                    "2": [1, 29],
+                    "2": [1, 28],
                     "3": [1, 31],
                     "4": [1, 30],
                     "5": [1, 31],
@@ -3879,9 +3879,9 @@ module.exports.testdatefmt = {
                     "11": [1, 30],
                     "12": [1, 31]
                 },
-                "regular": {
+                "leap": {
                     "1": [1, 31],
-                    "2": [1, 28],
+                    "2": [1, 29],
                     "3": [1, 31],
                     "4": [1, 30],
                     "5": [1, 31],
