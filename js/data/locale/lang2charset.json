@@ -56,6 +56,11 @@
         "KOI-8",
         "windows-1251"
     ],
+    "cz": [
+        "IBM852",
+        "ISO-8859-2",
+        "windows-1250"
+    ],
     "da": [
         "EBCDIC-DK-NO-A",
         "EBCDIC-DK-NO",
@@ -94,22 +99,13 @@
     ],
     "en": [
         "ANSI_X3.110-1983",
-        "BS_4730",
-        "BS_viewdata",
-        "EBCDIC-CA-FR",
-        "EBCDIC-UK",
-        "EBCDIC-US",
         "IBM00858",
-        "IBM01146",
         "IBM437",
         "IBM850",
-        "IBM852",
         "IBM860",
         "ISO-8859-1",
         "ISO-8859-15",
-        "ISO-8859-2",
         "Mac-Roman",
-        "windows-1250",
         "windows-1252"
     ],
     "es": [
@@ -448,6 +444,16 @@
         "Mac-Roman",
         "windows-1250",
         "windows-1251",
+        "windows-1252"
+    ],
+    "roa": [
+        "IBM00858",
+        "IBM437",
+        "IBM850",
+        "IBM860",
+        "ISO-8859-1",
+        "ISO-8859-15",
+        "Mac-Roman",
         "windows-1252"
     ],
     "ru": [
