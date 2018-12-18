@@ -35,8 +35,10 @@ node genlikelyloc.js $TARGET
 # this uses genlikelyloc's output, so it has to come after it
 node genlang2charset.js $TARGET
 node genlist.js $TARGET
-
+node genmeasurementsystem.js $TARGET
 node gennumfmt.js $TARGET
 node genpapersizes.js $TARGET
+# node genplurals.js $TARGET   plurals need a rework before this can be uncommented
 node genunits.js $TARGET
 node genweekdata.js $TARGET
+
