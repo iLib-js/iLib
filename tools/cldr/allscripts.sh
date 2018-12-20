@@ -33,6 +33,7 @@ node genlangreg.js $TARGET
 node genlangscripts.js $TARGET
 node genlikelyloc.js $TARGET
 # this uses genlikelyloc's output, so it has to come after it
+cp -r ../../js/data/locale/charset $TARGET
 node genlang2charset.js $TARGET
 node genlist.js $TARGET
 node genmeasurementsystem.js $TARGET
