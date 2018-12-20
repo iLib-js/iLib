@@ -1359,6 +1359,10 @@
             "code": "54"
         },
         {
+            "name": "Huyện Rangamati",
+            "code": "56"
+        },
+        {
             "name": "Huyện Rangpur",
             "code": "55"
         },
@@ -1399,16 +1403,12 @@
             "code": "D"
         },
         {
-            "name": "Mymensingh Division",
+            "name": "Mymensingh",
             "code": "H"
         },
         {
             "name": "Rajshahi",
             "code": "E"
-        },
-        {
-            "name": "Rangamati Hill",
-            "code": "56"
         },
         {
             "name": "Rangpur",
@@ -2533,6 +2533,10 @@
     ],
     "CD": [
         {
+            "name": "Bắc Kivu",
+            "code": "NK"
+        },
+        {
             "name": "Bandundu",
             "code": "BN"
         },
@@ -2543,10 +2547,6 @@
         {
             "name": "Bas-Uélé",
             "code": "BU"
-        },
-        {
-            "name": "Bắc Kivu",
-            "code": "NK"
         },
         {
             "name": "Equateur",
@@ -2921,6 +2921,10 @@
             "code": "02"
         },
         {
+            "name": "Khu vực Zanzan",
+            "code": "ZZ"
+        },
+        {
             "name": "Lacs",
             "code": "07"
         },
@@ -3007,10 +3011,6 @@
         {
             "name": "Zanzan",
             "code": "08"
-        },
-        {
-            "name": "Zanzan²",
-            "code": "ZZ"
         }
     ],
     "CL": [
@@ -3119,140 +3119,140 @@
     ],
     "CN": [
         {
-            "name": "Bắc Kinh",
-            "code": "11"
-        },
-        {
-            "name": "Thiên Tân",
-            "code": "12"
-        },
-        {
-            "name": "Hà Bắc",
-            "code": "13"
-        },
-        {
-            "name": "Sơn Tây",
-            "code": "14"
-        },
-        {
-            "name": "Nội Mông",
-            "code": "15"
-        },
-        {
-            "name": "Liêu Ninh",
-            "code": "21"
-        },
-        {
-            "name": "Cát Lâm",
-            "code": "22"
-        },
-        {
-            "name": "Hắc Long Giang",
-            "code": "23"
-        },
-        {
-            "name": "Thượng Hải",
-            "code": "31"
-        },
-        {
-            "name": "Giang Tô",
-            "code": "32"
-        },
-        {
-            "name": "Chiết Giang",
-            "code": "33"
-        },
-        {
             "name": "An Huy",
-            "code": "34"
+            "code": "AH"
         },
         {
-            "name": "Phúc Kiến",
-            "code": "35"
-        },
-        {
-            "name": "Giang Tây",
-            "code": "36"
-        },
-        {
-            "name": "Sơn Đông",
-            "code": "37"
-        },
-        {
-            "name": "Hà Nam",
-            "code": "41"
-        },
-        {
-            "name": "Hồ Bắc",
-            "code": "42"
-        },
-        {
-            "name": "Hồ Nam",
-            "code": "43"
-        },
-        {
-            "name": "Quảng Đông",
-            "code": "44"
-        },
-        {
-            "name": "Quảng Tây",
-            "code": "45"
-        },
-        {
-            "name": "Hải Nam",
-            "code": "46"
-        },
-        {
-            "name": "Trùng Khánh",
-            "code": "50"
-        },
-        {
-            "name": "Tứ Xuyên",
-            "code": "51"
-        },
-        {
-            "name": "Quý Châu",
-            "code": "52"
-        },
-        {
-            "name": "Vân Nam",
-            "code": "53"
-        },
-        {
-            "name": "Khu tự trị Tây Tạng",
-            "code": "54"
-        },
-        {
-            "name": "Thiểm Tây",
-            "code": "61"
+            "name": "Bắc Kinh",
+            "code": "BJ"
         },
         {
             "name": "Cam Túc",
-            "code": "62"
+            "code": "GS"
         },
         {
-            "name": "Thanh Hải",
-            "code": "63"
+            "name": "Cát Lâm",
+            "code": "JL"
+        },
+        {
+            "name": "Chiết Giang",
+            "code": "ZJ"
+        },
+        {
+            "name": "Đài Loan",
+            "code": "TW"
+        },
+        {
+            "name": "Giang Tây",
+            "code": "JX"
+        },
+        {
+            "name": "Giang Tô",
+            "code": "JS"
+        },
+        {
+            "name": "Hà Bắc",
+            "code": "HE"
+        },
+        {
+            "name": "Hà Nam",
+            "code": "HA"
+        },
+        {
+            "name": "Hắc Long Giang",
+            "code": "HL"
+        },
+        {
+            "name": "Hải Nam",
+            "code": "HI"
+        },
+        {
+            "name": "Hồ Bắc",
+            "code": "HB"
+        },
+        {
+            "name": "Hồ Nam",
+            "code": "HN"
+        },
+        {
+            "name": "Hồng Kông",
+            "code": "HK"
+        },
+        {
+            "name": "Khu tự trị Tây Tạng",
+            "code": "XZ"
+        },
+        {
+            "name": "Liêu Ninh",
+            "code": "LN"
+        },
+        {
+            "name": "Ma Cao",
+            "code": "MO"
         },
         {
             "name": "Ninh Hạ",
-            "code": "64"
+            "code": "NX"
+        },
+        {
+            "name": "Nội Mông",
+            "code": "NM"
+        },
+        {
+            "name": "Phúc Kiến",
+            "code": "FJ"
+        },
+        {
+            "name": "Quảng Đông",
+            "code": "GD"
+        },
+        {
+            "name": "Quảng Tây",
+            "code": "GX"
+        },
+        {
+            "name": "Quý Châu",
+            "code": "GZ"
+        },
+        {
+            "name": "Sơn Đông",
+            "code": "SD"
+        },
+        {
+            "name": "Sơn Tây",
+            "code": "SX"
         },
         {
             "name": "Tân Cương",
-            "code": "65"
+            "code": "XJ"
         },
         {
-            "name": "Taiwan",
-            "code": "71"
+            "name": "Thanh Hải",
+            "code": "QH"
         },
         {
-            "name": "Hong Kong SAR China",
-            "code": "91"
+            "name": "Thiểm Tây",
+            "code": "SN"
         },
         {
-            "name": "Macau SAR China",
-            "code": "92"
+            "name": "Thiên Tân",
+            "code": "TJ"
+        },
+        {
+            "name": "Thượng Hải",
+            "code": "SH"
+        },
+        {
+            "name": "Trùng Khánh",
+            "code": "CQ"
+        },
+        {
+            "name": "Tứ Xuyên",
+            "code": "SC"
+        },
+        {
+            "name": "Vân Nam",
+            "code": "YN"
         }
     ],
     "CO": [
@@ -4921,10 +4921,6 @@
             "code": "BA"
         },
         {
-            "name": "Balears Province",
-            "code": "PM"
-        },
-        {
             "name": "Barcelona",
             "code": "B"
         },
@@ -4945,15 +4941,11 @@
             "code": "CA"
         },
         {
-            "name": "Canary Islands",
-            "code": "CN"
-        },
-        {
             "name": "Cantabria",
             "code": "CB"
         },
         {
-            "name": "Cantabria Province",
+            "name": "Cantabria²",
             "code": "S"
         },
         {
@@ -4981,16 +4973,16 @@
             "code": "CR"
         },
         {
-            "name": "Córdoba",
-            "code": "CO"
-        },
-        {
             "name": "Cộng đồng Madrid",
             "code": "MD"
         },
         {
             "name": "Cộng đồng Valencia",
             "code": "VC"
+        },
+        {
+            "name": "Córdoba",
+            "code": "CO"
         },
         {
             "name": "Cuenca",
@@ -5077,7 +5069,7 @@
             "code": "NC"
         },
         {
-            "name": "Navarra",
+            "name": "Navarra²",
             "code": "NA"
         },
         {
@@ -5095,6 +5087,10 @@
         {
             "name": "Quần đảo Baleares",
             "code": "IB"
+        },
+        {
+            "name": "Quần đảo Baleares²",
+            "code": "PM"
         },
         {
             "name": "Salamanca",
@@ -5200,10 +5196,6 @@
         }
     ],
     "FI": [
-        {
-            "name": "Åland Islands",
-            "code": "01"
-        },
         {
             "name": "Nam Karelia",
             "code": "02"
@@ -5431,16 +5423,12 @@
             "code": "13"
         },
         {
+            "name": "Bourgogne-Franche-Comté",
+            "code": "BFC"
+        },
+        {
             "name": "Bretagne",
             "code": "BRE"
-        },
-        {
-            "name": "Brittany",
-            "code": "E"
-        },
-        {
-            "name": "Burgundy-Franche-Comté",
-            "code": "BFC"
         },
         {
             "name": "Calvados",
@@ -5467,10 +5455,6 @@
             "code": "18"
         },
         {
-            "name": "Clipperton Island",
-            "code": "CP"
-        },
-        {
             "name": "Corrèze",
             "code": "19"
         },
@@ -5481,10 +5465,6 @@
         {
             "name": "Corse-du-Sud",
             "code": "2A"
-        },
-        {
-            "name": "Corsica",
-            "code": "H"
         },
         {
             "name": "Côte-d’Or",
@@ -5531,18 +5511,6 @@
             "code": "29"
         },
         {
-            "name": "French Guiana",
-            "code": "GF"
-        },
-        {
-            "name": "French Polynesia",
-            "code": "PF"
-        },
-        {
-            "name": "French Southern Territories",
-            "code": "TF"
-        },
-        {
             "name": "Gard",
             "code": "30"
         },
@@ -5555,16 +5523,12 @@
             "code": "33"
         },
         {
-            "name": "Grand-Est",
+            "name": "Grand Est",
             "code": "GES"
         },
         {
             "name": "Guadeloupe",
             "code": "GUA"
-        },
-        {
-            "name": "Guadeloupe²",
-            "code": "GP"
         },
         {
             "name": "Haut-Rhin",
@@ -5695,20 +5659,12 @@
             "code": "51"
         },
         {
-            "name": "Martinique",
-            "code": "MQ"
-        },
-        {
             "name": "Mayenne",
             "code": "53"
         },
         {
             "name": "Mayotte",
             "code": "MAY"
-        },
-        {
-            "name": "Mayotte²",
-            "code": "YT"
         },
         {
             "name": "Meurthe-et-Moselle",
@@ -5725,10 +5681,6 @@
         {
             "name": "Moselle",
             "code": "57"
-        },
-        {
-            "name": "New Caledonia",
-            "code": "NC"
         },
         {
             "name": "Nièvre",
@@ -5787,10 +5739,6 @@
             "code": "66"
         },
         {
-            "name": "Réunion",
-            "code": "RE"
-        },
-        {
             "name": "Rhône",
             "code": "69"
         },
@@ -5821,18 +5769,6 @@
         {
             "name": "Somme",
             "code": "80"
-        },
-        {
-            "name": "St. Barthélemy",
-            "code": "BL"
-        },
-        {
-            "name": "St. Martin",
-            "code": "MF"
-        },
-        {
-            "name": "St. Pierre & Miquelon",
-            "code": "PM"
         },
         {
             "name": "Tarn",
@@ -5869,10 +5805,6 @@
         {
             "name": "Vosges",
             "code": "88"
-        },
-        {
-            "name": "Wallis & Futuna",
-            "code": "WF"
         },
         {
             "name": "Yonne",
@@ -5971,6 +5903,14 @@
             "code": "ABC"
         },
         {
+            "name": "Bắc Ireland",
+            "code": "NIR"
+        },
+        {
+            "name": "Bắc Tyneside",
+            "code": "NTY"
+        },
+        {
             "name": "Ballymena",
             "code": "BLA"
         },
@@ -5989,14 +5929,6 @@
         {
             "name": "Bath and North East Somerset",
             "code": "BAS"
-        },
-        {
-            "name": "Bắc Ireland",
-            "code": "NIR"
-        },
-        {
-            "name": "Bắc Tyneside",
-            "code": "NTY"
         },
         {
             "name": "Bedford",
@@ -6139,6 +6071,14 @@
             "code": "CMA"
         },
         {
+            "name": "Đảo Anh",
+            "code": "GBN"
+        },
+        {
+            "name": "Đảo Wight",
+            "code": "IOW"
+        },
+        {
             "name": "Darlington",
             "code": "DAL"
         },
@@ -6197,14 +6137,6 @@
         {
             "name": "Durham",
             "code": "DUR"
-        },
-        {
-            "name": "Đảo Anh",
-            "code": "GBN"
-        },
-        {
-            "name": "Đảo Wight",
-            "code": "IOW"
         },
         {
             "name": "East Ayrshire",
@@ -7355,12 +7287,12 @@
             "code": "81"
         },
         {
-            "name": "Drama",
-            "code": "52"
-        },
-        {
             "name": "Đông Macedonia và Thrace",
             "code": "A"
+        },
+        {
+            "name": "Drama",
+            "code": "52"
         },
         {
             "name": "Epirus",
@@ -8115,14 +8047,6 @@
             "code": "AC"
         },
         {
-            "name": "Bali",
-            "code": "BA"
-        },
-        {
-            "name": "Banten",
-            "code": "BT"
-        },
-        {
             "name": "Bắc Kalimantan",
             "code": "KU"
         },
@@ -8137,6 +8061,14 @@
         {
             "name": "Bắc Sumatera",
             "code": "SU"
+        },
+        {
+            "name": "Bali",
+            "code": "BA"
+        },
+        {
+            "name": "Banten",
+            "code": "BT"
         },
         {
             "name": "Bengkulu",
@@ -10223,12 +10155,12 @@
             "code": "ATY"
         },
         {
-            "name": "Baikonur",
-            "code": "BAY"
-        },
-        {
             "name": "Bắc Kazakhstan",
             "code": "SEV"
+        },
+        {
+            "name": "Baikonur",
+            "code": "BAY"
         },
         {
             "name": "Đông Kazakhstan",
@@ -10321,20 +10253,20 @@
             "code": "XE"
         },
         {
-            "name": "Vientiane",
-            "code": "VT"
-        },
-        {
             "name": "Viêng Chăn",
             "code": "VI"
         },
         {
-            "name": "Xaisomboun",
-            "code": "XS"
+            "name": "Vientiane",
+            "code": "VT"
         },
         {
             "name": "Xayabury",
             "code": "XA"
+        },
+        {
+            "name": "Xaysomboun",
+            "code": "XS"
         },
         {
             "name": "Xiengkhuang",
@@ -11001,10 +10933,6 @@
             "code": "DI"
         },
         {
-            "name": "Diekirch²",
-            "code": "D"
-        },
-        {
             "name": "Echternach",
             "code": "EC"
         },
@@ -11017,16 +10945,8 @@
             "code": "GR"
         },
         {
-            "name": "Grevenmacher²",
-            "code": "G"
-        },
-        {
             "name": "Luxembourg",
             "code": "LU"
-        },
-        {
-            "name": "Luxembourg²",
-            "code": "L"
         },
         {
             "name": "Mersch",
@@ -12923,30 +12843,6 @@
     ],
     "MR": [
         {
-            "name": "Dakhlet Nouadhibou",
-            "code": "08"
-        },
-        {
-            "name": "Khu vực Adrar",
-            "code": "07"
-        },
-        {
-            "name": "Khu vực Assaba",
-            "code": "03"
-        },
-        {
-            "name": "Khu vực Brakna",
-            "code": "05"
-        },
-        {
-            "name": "Khu vực Gorgol",
-            "code": "04"
-        },
-        {
-            "name": "Khu vực Guidimaka",
-            "code": "10"
-        },
-        {
             "name": "Khu vực Hodh Ech Chargui",
             "code": "01"
         },
@@ -12955,32 +12851,52 @@
             "code": "02"
         },
         {
-            "name": "Khu vực Inchiri",
-            "code": "12"
+            "name": "Khu vực Assaba",
+            "code": "03"
         },
         {
-            "name": "Khu vực Tagant",
-            "code": "09"
+            "name": "Khu vực Gorgol",
+            "code": "04"
         },
         {
-            "name": "Khu vực Tiris Zemmour",
-            "code": "11"
+            "name": "Khu vực Brakna",
+            "code": "05"
         },
         {
             "name": "Khu vực Trarza",
             "code": "06"
         },
         {
-            "name": "Nouakchott",
-            "code": "NKC"
+            "name": "Khu vực Adrar",
+            "code": "07"
         },
         {
-            "name": "Nouakchott Nord",
-            "code": "14"
+            "name": "Dakhlet Nouadhibou",
+            "code": "08"
+        },
+        {
+            "name": "Khu vực Tagant",
+            "code": "09"
+        },
+        {
+            "name": "Khu vực Guidimaka",
+            "code": "10"
+        },
+        {
+            "name": "Khu vực Tiris Zemmour",
+            "code": "11"
+        },
+        {
+            "name": "Khu vực Inchiri",
+            "code": "12"
         },
         {
             "name": "Nouakchott Ouest",
             "code": "13"
+        },
+        {
+            "name": "Nouakchott Nord",
+            "code": "14"
         },
         {
             "name": "Nouakchott Sud",
@@ -13287,10 +13203,6 @@
             "code": "PL"
         },
         {
-            "name": "Quatre Bornes",
-            "code": "QB"
-        },
-        {
             "name": "Quận Flacq",
             "code": "FL"
         },
@@ -13321,6 +13233,10 @@
         {
             "name": "Quận Savanne",
             "code": "SA"
+        },
+        {
+            "name": "Quatre Bornes",
+            "code": "QB"
         },
         {
             "name": "Rodrigues",
@@ -14131,16 +14047,8 @@
     ],
     "NL": [
         {
-            "name": "Aruba",
-            "code": "AW"
-        },
-        {
             "name": "Bonaire",
             "code": "BQ1"
-        },
-        {
-            "name": "Curaçao",
-            "code": "CW"
         },
         {
             "name": "Drenthe",
@@ -14185,10 +14093,6 @@
         {
             "name": "Sint Eustatius",
             "code": "BQ3"
-        },
-        {
-            "name": "Sint Maarten",
-            "code": "SX"
         },
         {
             "name": "Utrecht",
@@ -14479,10 +14383,6 @@
             "code": "NSN"
         },
         {
-            "name": "North Island",
-            "code": "N"
-        },
-        {
             "name": "Northland",
             "code": "NTL"
         },
@@ -14495,23 +14395,11 @@
             "code": "TAS"
         },
         {
-            "name": "South Island",
-            "code": "S"
-        },
-        {
             "name": "Vùng Auckland",
             "code": "AUK"
         }
     ],
     "OM": [
-        {
-            "name": "Al Batinah",
-            "code": "BA"
-        },
-        {
-            "name": "Ash Sharqiyah",
-            "code": "SH"
-        },
         {
             "name": "Buraimi",
             "code": "BU"
@@ -14841,6 +14729,14 @@
             "code": "AUR"
         },
         {
+            "name": "Bắc Mindanao",
+            "code": "10"
+        },
+        {
+            "name": "Bắc Samar",
+            "code": "NSA"
+        },
+        {
             "name": "Bán đảo Zamboanga",
             "code": "09"
         },
@@ -14859,14 +14755,6 @@
         {
             "name": "Batangas",
             "code": "BTG"
-        },
-        {
-            "name": "Bắc Mindanao",
-            "code": "10"
-        },
-        {
-            "name": "Bắc Samar",
-            "code": "NSA"
         },
         {
             "name": "Benguet",
@@ -15611,12 +15499,12 @@
             "code": "SH"
         },
         {
-            "name": "Doha",
-            "code": "DA"
-        },
-        {
             "name": "Đô thị tự trị Umm Salal",
             "code": "US"
+        },
+        {
+            "name": "Doha",
+            "code": "DA"
         },
         {
             "name": "Madinat ash Shamal",
@@ -15777,12 +15665,12 @@
             "code": "TL"
         },
         {
-            "name": "Hạt Vaslui",
-            "code": "VS"
-        },
-        {
             "name": "Hạt Vâlcea",
             "code": "VL"
+        },
+        {
+            "name": "Hạt Vaslui",
+            "code": "VS"
         },
         {
             "name": "Maramureş",
@@ -15945,12 +15833,12 @@
             "code": "AST"
         },
         {
-            "name": "Bashkortostan",
-            "code": "BA"
-        },
-        {
             "name": "Bắc Osetiya-Alaniya",
             "code": "SE"
+        },
+        {
+            "name": "Bashkortostan",
+            "code": "BA"
         },
         {
             "name": "Belgorod",
@@ -16309,7 +16197,7 @@
             "code": "07"
         },
         {
-            "name": "Northern Borders",
+            "name": "Biên giới Phương Bắc",
             "code": "08"
         },
         {
@@ -16487,16 +16375,16 @@
             "code": "GD"
         },
         {
-            "name": "Bang West Darfur",
-            "code": "DW"
-        },
-        {
             "name": "Bắc Darfur",
             "code": "DN"
         },
         {
             "name": "Bắc Kurdufan",
             "code": "KN"
+        },
+        {
+            "name": "Bang West Darfur",
+            "code": "DW"
         },
         {
             "name": "Biển Đỏ",
@@ -16667,10 +16555,6 @@
         {
             "name": "Saint Helena",
             "code": "HL"
-        },
-        {
-            "name": "Tristan da Cunha",
-            "code": "TA"
         }
     ],
     "SI": [
@@ -17499,7 +17383,7 @@
             "code": "207"
         },
         {
-            "name": "Log–Dragomer",
+            "name": "Log-Dragomer",
             "code": "208"
         },
         {
@@ -19049,6 +18933,10 @@
     ],
     "TW": [
         {
+            "name": "Bành Hồ",
+            "code": "PEN"
+        },
+        {
             "name": "Bình Đông",
             "code": "PIF"
         },
@@ -19119,10 +19007,6 @@
         {
             "name": "Nghi Lan",
             "code": "ILA"
-        },
-        {
-            "name": "Penghu",
-            "code": "PEN"
         },
         {
             "name": "Tân Trúc",
@@ -19923,10 +19807,6 @@
             "code": "AK"
         },
         {
-            "name": "American Samoa",
-            "code": "AS"
-        },
-        {
             "name": "Arizona",
             "code": "AZ"
         },
@@ -19965,10 +19845,6 @@
         {
             "name": "Georgia",
             "code": "GA"
-        },
-        {
-            "name": "Guam",
-            "code": "GU"
         },
         {
             "name": "Hawaii",
@@ -20063,10 +19939,6 @@
             "code": "NM"
         },
         {
-            "name": "Northern Mariana Islands",
-            "code": "MP"
-        },
-        {
             "name": "Ohio",
             "code": "OH"
         },
@@ -20081,10 +19953,6 @@
         {
             "name": "Pennsylvania",
             "code": "PA"
-        },
-        {
-            "name": "Puerto Rico",
-            "code": "PR"
         },
         {
             "name": "Rhode Island",
@@ -20105,14 +19973,6 @@
         {
             "name": "Tiểu bang New York",
             "code": "NY"
-        },
-        {
-            "name": "U.S. Outlying Islands",
-            "code": "UM"
-        },
-        {
-            "name": "U.S. Virgin Islands",
-            "code": "VI"
         },
         {
             "name": "Utah",
@@ -20417,16 +20277,16 @@
             "code": "43"
         },
         {
-            "name": "Bạc Liêu",
-            "code": "55"
-        },
-        {
             "name": "Bắc Giang",
             "code": "54"
         },
         {
             "name": "Bắc Kạn",
             "code": "53"
+        },
+        {
+            "name": "Bạc Liêu",
+            "code": "55"
         },
         {
             "name": "Bắc Ninh",
@@ -20437,12 +20297,12 @@
             "code": "50"
         },
         {
-            "name": "Bình Dương",
-            "code": "57"
-        },
-        {
             "name": "Bình Định",
             "code": "31"
+        },
+        {
+            "name": "Bình Dương",
+            "code": "57"
         },
         {
             "name": "Bình Phước",
@@ -20457,12 +20317,12 @@
             "code": "59"
         },
         {
-            "name": "Cao Bằng",
-            "code": "04"
-        },
-        {
             "name": "Cần Thơ",
             "code": "CT"
+        },
+        {
+            "name": "Cao Bằng",
+            "code": "04"
         },
         {
             "name": "Đà Nẵng",
@@ -20541,16 +20401,16 @@
             "code": "01"
         },
         {
+            "name": "Lâm Đồng",
+            "code": "35"
+        },
+        {
             "name": "Lạng Sơn",
             "code": "09"
         },
         {
             "name": "Lào Cai",
             "code": "02"
-        },
-        {
-            "name": "Lâm Đồng",
-            "code": "35"
         },
         {
             "name": "Long An",

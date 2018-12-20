@@ -233,54 +233,6 @@
     ],
     "AL": [
         {
-            "name": "두러스 주",
-            "code": "02"
-        },
-        {
-            "name": "디버르 주",
-            "code": "09"
-        },
-        {
-            "name": "레저 주",
-            "code": "08"
-        },
-        {
-            "name": "베라트 주",
-            "code": "01"
-        },
-        {
-            "name": "블로러 주",
-            "code": "12"
-        },
-        {
-            "name": "슈코더르 주",
-            "code": "10"
-        },
-        {
-            "name": "엘바산 주",
-            "code": "03"
-        },
-        {
-            "name": "지로카스터르 주",
-            "code": "05"
-        },
-        {
-            "name": "코르처 주",
-            "code": "06"
-        },
-        {
-            "name": "쿠커스 주",
-            "code": "07"
-        },
-        {
-            "name": "티라나 주",
-            "code": "11"
-        },
-        {
-            "name": "피에르 주",
-            "code": "04"
-        },
-        {
             "name": "Berat",
             "code": "BR"
         },
@@ -423,6 +375,54 @@
         {
             "name": "Vlorë",
             "code": "VL"
+        },
+        {
+            "name": "두러스 주",
+            "code": "02"
+        },
+        {
+            "name": "디버르 주",
+            "code": "09"
+        },
+        {
+            "name": "레저 주",
+            "code": "08"
+        },
+        {
+            "name": "베라트 주",
+            "code": "01"
+        },
+        {
+            "name": "블로러 주",
+            "code": "12"
+        },
+        {
+            "name": "슈코더르 주",
+            "code": "10"
+        },
+        {
+            "name": "엘바산 주",
+            "code": "03"
+        },
+        {
+            "name": "지로카스터르 주",
+            "code": "05"
+        },
+        {
+            "name": "코르처 주",
+            "code": "06"
+        },
+        {
+            "name": "쿠커스 주",
+            "code": "07"
+        },
+        {
+            "name": "티라나 주",
+            "code": "11"
+        },
+        {
+            "name": "피에르 주",
+            "code": "04"
         }
     ],
     "AM": [
@@ -716,6 +716,10 @@
         }
     ],
     "AZ": [
+        {
+            "name": "Naftalan",
+            "code": "NA"
+        },
         {
             "name": "가자흐 구",
             "code": "QAZ"
@@ -1023,25 +1027,9 @@
         {
             "name": "흐즈 구",
             "code": "XIZ"
-        },
-        {
-            "name": "Naftalan",
-            "code": "NA"
         }
     ],
     "BA": [
-        {
-            "name": "보스니아 헤르체고비나 연방",
-            "code": "BIH"
-        },
-        {
-            "name": "브르치코 행정구",
-            "code": "BRC"
-        },
-        {
-            "name": "스릅스카 공화국",
-            "code": "SRP"
-        },
         {
             "name": "Bosnian Podrinje",
             "code": "05"
@@ -1081,6 +1069,18 @@
         {
             "name": "Zenica-Doboj",
             "code": "04"
+        },
+        {
+            "name": "보스니아 헤르체고비나 연방",
+            "code": "BIH"
+        },
+        {
+            "name": "브르치코 행정구",
+            "code": "BRC"
+        },
+        {
+            "name": "스릅스카 공화국",
+            "code": "SRP"
         }
     ],
     "BB": [
@@ -1125,63 +1125,11 @@
             "code": "10"
         },
         {
-            "name": "Saint Thomas",
+            "name": "세인트토머스 교구",
             "code": "11"
         }
     ],
     "BD": [
-        {
-            "name": "다카 구",
-            "code": "C"
-        },
-        {
-            "name": "라지샤히 구",
-            "code": "E"
-        },
-        {
-            "name": "라지샤히 지구",
-            "code": "54"
-        },
-        {
-            "name": "랑푸르 구",
-            "code": "F"
-        },
-        {
-            "name": "랑푸르 디스트릭트",
-            "code": "55"
-        },
-        {
-            "name": "마니가니 지구",
-            "code": "33"
-        },
-        {
-            "name": "마이멘싱 구",
-            "code": "H"
-        },
-        {
-            "name": "바리살 구",
-            "code": "A"
-        },
-        {
-            "name": "바리살 지구",
-            "code": "06"
-        },
-        {
-            "name": "실렛 구",
-            "code": "G"
-        },
-        {
-            "name": "실렛 지구",
-            "code": "60"
-        },
-        {
-            "name": "치타공 구",
-            "code": "B"
-        },
-        {
-            "name": "쿨나 구",
-            "code": "D"
-        },
         {
             "name": "Bagerhat",
             "code": "05"
@@ -1417,6 +1365,58 @@
         {
             "name": "Thakurgaon",
             "code": "64"
+        },
+        {
+            "name": "다카 구",
+            "code": "C"
+        },
+        {
+            "name": "라지샤히 구",
+            "code": "E"
+        },
+        {
+            "name": "라지샤히 지구",
+            "code": "54"
+        },
+        {
+            "name": "랑푸르 구",
+            "code": "F"
+        },
+        {
+            "name": "랑푸르 디스트릭트",
+            "code": "55"
+        },
+        {
+            "name": "마니가니 지구",
+            "code": "33"
+        },
+        {
+            "name": "마이멘싱 구",
+            "code": "H"
+        },
+        {
+            "name": "바리살 구",
+            "code": "A"
+        },
+        {
+            "name": "바리살 지구",
+            "code": "06"
+        },
+        {
+            "name": "실렛 구",
+            "code": "G"
+        },
+        {
+            "name": "실렛 지구",
+            "code": "60"
+        },
+        {
+            "name": "치타공 구",
+            "code": "B"
+        },
+        {
+            "name": "쿨나 구",
+            "code": "D"
         }
     ],
     "BE": [
@@ -2357,6 +2357,10 @@
     ],
     "BW": [
         {
+            "name": "Chobe",
+            "code": "CH"
+        },
+        {
             "name": "가보로네",
             "code": "GA"
         },
@@ -2415,10 +2419,6 @@
         {
             "name": "프랜시스타운",
             "code": "FR"
-        },
-        {
-            "name": "Chobe",
-            "code": "CH"
         }
     ],
     "BY": [
@@ -2533,6 +2533,34 @@
     ],
     "CD": [
         {
+            "name": "Bandundu",
+            "code": "BN"
+        },
+        {
+            "name": "Ituri",
+            "code": "IT"
+        },
+        {
+            "name": "Kasaï",
+            "code": "KS"
+        },
+        {
+            "name": "Kasaï-Occidental",
+            "code": "KW"
+        },
+        {
+            "name": "Katanga",
+            "code": "KA"
+        },
+        {
+            "name": "Kwango",
+            "code": "KG"
+        },
+        {
+            "name": "Orientale",
+            "code": "OR"
+        },
+        {
             "name": "남우방기 주",
             "code": "SU"
         },
@@ -2623,34 +2651,6 @@
         {
             "name": "탕가니카 주",
             "code": "TA"
-        },
-        {
-            "name": "Bandundu",
-            "code": "BN"
-        },
-        {
-            "name": "Ituri",
-            "code": "IT"
-        },
-        {
-            "name": "Kasaï",
-            "code": "KS"
-        },
-        {
-            "name": "Kasaï-Occidental",
-            "code": "KW"
-        },
-        {
-            "name": "Katanga",
-            "code": "KA"
-        },
-        {
-            "name": "Kwango",
-            "code": "KG"
-        },
-        {
-            "name": "Orientale",
-            "code": "OR"
         }
     ],
     "CF": [
@@ -2725,6 +2725,10 @@
     ],
     "CG": [
         {
+            "name": "Pointe-Noire",
+            "code": "16"
+        },
+        {
             "name": "니아리 주",
             "code": "9"
         },
@@ -2767,10 +2771,6 @@
         {
             "name": "플라토 주",
             "code": "14"
-        },
-        {
-            "name": "Pointe-Noire",
-            "code": "16"
         }
     ],
     "CH": [
@@ -2881,30 +2881,6 @@
     ],
     "CI": [
         {
-            "name": "뎅겔레 지구",
-            "code": "DN"
-        },
-        {
-            "name": "바사상드라 지구",
-            "code": "BS"
-        },
-        {
-            "name": "발레뒤방다마 지구",
-            "code": "VB"
-        },
-        {
-            "name": "사반 지구",
-            "code": "SV"
-        },
-        {
-            "name": "아비장",
-            "code": "AB"
-        },
-        {
-            "name": "야무수크로",
-            "code": "YM"
-        },
-        {
             "name": "Agnéby",
             "code": "16"
         },
@@ -3009,7 +2985,31 @@
             "code": "08"
         },
         {
-            "name": "Zanzan²",
+            "name": "뎅겔레 지구",
+            "code": "DN"
+        },
+        {
+            "name": "바사상드라 지구",
+            "code": "BS"
+        },
+        {
+            "name": "발레뒤방다마 지구",
+            "code": "VB"
+        },
+        {
+            "name": "사반 지구",
+            "code": "SV"
+        },
+        {
+            "name": "아비장",
+            "code": "AB"
+        },
+        {
+            "name": "야무수크로",
+            "code": "YM"
+        },
+        {
+            "name": "장잔 주",
             "code": "ZZ"
         }
     ],
@@ -3119,140 +3119,140 @@
     ],
     "CN": [
         {
-            "name": "베이징 시",
-            "code": "11"
-        },
-        {
-            "name": "톈진 시",
-            "code": "12"
-        },
-        {
-            "name": "허베이 성",
-            "code": "13"
-        },
-        {
-            "name": "산시 성",
-            "code": "14"
-        },
-        {
-            "name": "내몽골 자치구",
-            "code": "15"
-        },
-        {
-            "name": "랴오닝 성",
-            "code": "21"
-        },
-        {
-            "name": "지린 성",
-            "code": "22"
-        },
-        {
-            "name": "헤이룽장 성",
-            "code": "23"
-        },
-        {
-            "name": "상하이 시",
-            "code": "31"
-        },
-        {
-            "name": "장쑤 성",
-            "code": "32"
-        },
-        {
-            "name": "저장 성",
-            "code": "33"
-        },
-        {
-            "name": "안후이 성",
-            "code": "34"
-        },
-        {
-            "name": "푸젠 성",
-            "code": "35"
-        },
-        {
-            "name": "장시 성",
-            "code": "36"
-        },
-        {
-            "name": "산둥 성",
-            "code": "37"
-        },
-        {
-            "name": "허난 성",
-            "code": "41"
-        },
-        {
-            "name": "후베이 성",
-            "code": "42"
-        },
-        {
-            "name": "후난 성",
-            "code": "43"
+            "name": "간쑤 성",
+            "code": "GS"
         },
         {
             "name": "광둥 성",
-            "code": "44"
+            "code": "GD"
         },
         {
             "name": "광시 좡족 자치구",
-            "code": "45"
-        },
-        {
-            "name": "하이난 성",
-            "code": "46"
-        },
-        {
-            "name": "충칭 시",
-            "code": "50"
-        },
-        {
-            "name": "쓰촨 성",
-            "code": "51"
+            "code": "GX"
         },
         {
             "name": "구이저우 성",
-            "code": "52"
+            "code": "GZ"
         },
         {
-            "name": "윈난 성",
-            "code": "53"
-        },
-        {
-            "name": "티베트 자치구",
-            "code": "54"
-        },
-        {
-            "name": "산시 성²",
-            "code": "61"
-        },
-        {
-            "name": "간쑤 성",
-            "code": "62"
-        },
-        {
-            "name": "칭하이 성",
-            "code": "63"
+            "name": "내몽골 자치구",
+            "code": "NM"
         },
         {
             "name": "닝샤 후이족 자치구",
-            "code": "64"
+            "code": "NX"
+        },
+        {
+            "name": "랴오닝 성",
+            "code": "LN"
+        },
+        {
+            "name": "마카오",
+            "code": "MO"
+        },
+        {
+            "name": "베이징 시",
+            "code": "BJ"
+        },
+        {
+            "name": "산둥 성",
+            "code": "SD"
+        },
+        {
+            "name": "산시 성",
+            "code": "SX"
+        },
+        {
+            "name": "산시 성²",
+            "code": "SN"
+        },
+        {
+            "name": "상하이 시",
+            "code": "SH"
         },
         {
             "name": "신장 위구르 자치구",
-            "code": "65"
+            "code": "XJ"
         },
         {
-            "name": "Taiwan",
-            "code": "71"
+            "name": "쓰촨 성",
+            "code": "SC"
         },
         {
-            "name": "Hong Kong SAR China",
-            "code": "91"
+            "name": "안후이 성",
+            "code": "AH"
         },
         {
-            "name": "Macau SAR China",
-            "code": "92"
+            "name": "윈난 성",
+            "code": "YN"
+        },
+        {
+            "name": "장시 성",
+            "code": "JX"
+        },
+        {
+            "name": "장쑤 성",
+            "code": "JS"
+        },
+        {
+            "name": "저장 성",
+            "code": "ZJ"
+        },
+        {
+            "name": "지린 성",
+            "code": "JL"
+        },
+        {
+            "name": "충칭 시",
+            "code": "CQ"
+        },
+        {
+            "name": "칭하이 성",
+            "code": "QH"
+        },
+        {
+            "name": "타이완성",
+            "code": "TW"
+        },
+        {
+            "name": "톈진 시",
+            "code": "TJ"
+        },
+        {
+            "name": "티베트 자치구",
+            "code": "XZ"
+        },
+        {
+            "name": "푸젠 성",
+            "code": "FJ"
+        },
+        {
+            "name": "하이난 성",
+            "code": "HI"
+        },
+        {
+            "name": "허난 성",
+            "code": "HA"
+        },
+        {
+            "name": "허베이 성",
+            "code": "HE"
+        },
+        {
+            "name": "헤이룽장 성",
+            "code": "HL"
+        },
+        {
+            "name": "홍콩",
+            "code": "HK"
+        },
+        {
+            "name": "후난 성",
+            "code": "HN"
+        },
+        {
+            "name": "후베이 성",
+            "code": "HB"
         }
     ],
     "CO": [
@@ -3610,62 +3610,6 @@
         }
     ],
     "CZ": [
-        {
-            "name": "남모라바 주",
-            "code": "64"
-        },
-        {
-            "name": "남보헤미아 주",
-            "code": "31"
-        },
-        {
-            "name": "리베레츠 주",
-            "code": "51"
-        },
-        {
-            "name": "모라바슬레스코 주",
-            "code": "80"
-        },
-        {
-            "name": "비소치나 주",
-            "code": "63"
-        },
-        {
-            "name": "올로모우츠 주",
-            "code": "71"
-        },
-        {
-            "name": "우스티 주",
-            "code": "42"
-        },
-        {
-            "name": "중앙보헤미아 주",
-            "code": "20"
-        },
-        {
-            "name": "즐린 주",
-            "code": "72"
-        },
-        {
-            "name": "카를로비바리 주",
-            "code": "41"
-        },
-        {
-            "name": "파르두비체 주",
-            "code": "53"
-        },
-        {
-            "name": "프라하",
-            "code": "10"
-        },
-        {
-            "name": "플젠 주",
-            "code": "32"
-        },
-        {
-            "name": "흐라데츠크랄로베 주",
-            "code": "52"
-        },
         {
             "name": "Benešov",
             "code": "201"
@@ -4057,6 +4001,62 @@
         {
             "name": "Znojmo",
             "code": "647"
+        },
+        {
+            "name": "남모라바 주",
+            "code": "64"
+        },
+        {
+            "name": "남보헤미아 주",
+            "code": "31"
+        },
+        {
+            "name": "리베레츠 주",
+            "code": "51"
+        },
+        {
+            "name": "모라바슬레스코 주",
+            "code": "80"
+        },
+        {
+            "name": "비소치나 주",
+            "code": "63"
+        },
+        {
+            "name": "올로모우츠 주",
+            "code": "71"
+        },
+        {
+            "name": "우스티 주",
+            "code": "42"
+        },
+        {
+            "name": "중앙보헤미아 주",
+            "code": "20"
+        },
+        {
+            "name": "즐린 주",
+            "code": "72"
+        },
+        {
+            "name": "카를로비바리 주",
+            "code": "41"
+        },
+        {
+            "name": "파르두비체 주",
+            "code": "53"
+        },
+        {
+            "name": "프라하",
+            "code": "10"
+        },
+        {
+            "name": "플젠 주",
+            "code": "32"
+        },
+        {
+            "name": "흐라데츠크랄로베 주",
+            "code": "52"
         }
     ],
     "DE": [
@@ -4877,6 +4877,18 @@
     ],
     "ES": [
         {
+            "name": "Asturias Province",
+            "code": "O"
+        },
+        {
+            "name": "Madrid Province",
+            "code": "M"
+        },
+        {
+            "name": "Murcia",
+            "code": "MU"
+        },
+        {
             "name": "갈리시아 지방",
             "code": "GA"
         },
@@ -4895,6 +4907,10 @@
         {
             "name": "나바라 지방",
             "code": "NC"
+        },
+        {
+            "name": "나바라 지방²",
+            "code": "NA"
         },
         {
             "name": "라리오하 지방",
@@ -4955,6 +4971,10 @@
         {
             "name": "발레아레스 제도",
             "code": "IB"
+        },
+        {
+            "name": "발레아레스 제도²",
+            "code": "PM"
         },
         {
             "name": "발렌시아 주",
@@ -5093,6 +5113,10 @@
             "code": "CB"
         },
         {
+            "name": "칸타브리아 지방²",
+            "code": "S"
+        },
+        {
             "name": "코르도바 주",
             "code": "CO"
         },
@@ -5123,34 +5147,6 @@
         {
             "name": "하엔 주",
             "code": "J"
-        },
-        {
-            "name": "Asturias Province",
-            "code": "O"
-        },
-        {
-            "name": "Balears Province",
-            "code": "PM"
-        },
-        {
-            "name": "Canary Islands",
-            "code": "CN"
-        },
-        {
-            "name": "Cantabria Province",
-            "code": "S"
-        },
-        {
-            "name": "Madrid Province",
-            "code": "M"
-        },
-        {
-            "name": "Murcia",
-            "code": "MU"
-        },
-        {
-            "name": "Navarra",
-            "code": "NA"
         }
     ],
     "ET": [
@@ -5200,10 +5196,6 @@
         }
     ],
     "FI": [
-        {
-            "name": "Åland Islands",
-            "code": "01"
-        },
         {
             "name": "남카리알라 지역",
             "code": "02"
@@ -5374,6 +5366,18 @@
         }
     ],
     "FR": [
+        {
+            "name": "Guadeloupe",
+            "code": "GUA"
+        },
+        {
+            "name": "La Réunion",
+            "code": "LRE"
+        },
+        {
+            "name": "Mayotte",
+            "code": "MAY"
+        },
         {
             "name": "가르 주",
             "code": "30"
@@ -5809,78 +5813,6 @@
         {
             "name": "피레네조리앙탈 주",
             "code": "66"
-        },
-        {
-            "name": "Brittany",
-            "code": "E"
-        },
-        {
-            "name": "Clipperton Island",
-            "code": "CP"
-        },
-        {
-            "name": "Corsica",
-            "code": "H"
-        },
-        {
-            "name": "French Guiana",
-            "code": "GF"
-        },
-        {
-            "name": "French Polynesia",
-            "code": "PF"
-        },
-        {
-            "name": "French Southern Territories",
-            "code": "TF"
-        },
-        {
-            "name": "Guadeloupe",
-            "code": "GUA"
-        },
-        {
-            "name": "Guadeloupe²",
-            "code": "GP"
-        },
-        {
-            "name": "La Réunion",
-            "code": "LRE"
-        },
-        {
-            "name": "Martinique",
-            "code": "MQ"
-        },
-        {
-            "name": "Mayotte",
-            "code": "MAY"
-        },
-        {
-            "name": "Mayotte²",
-            "code": "YT"
-        },
-        {
-            "name": "New Caledonia",
-            "code": "NC"
-        },
-        {
-            "name": "Réunion",
-            "code": "RE"
-        },
-        {
-            "name": "St. Barthélemy",
-            "code": "BL"
-        },
-        {
-            "name": "St. Martin",
-            "code": "MF"
-        },
-        {
-            "name": "St. Pierre & Miquelon",
-            "code": "PM"
-        },
-        {
-            "name": "Wallis & Futuna",
-            "code": "WF"
         }
     ],
     "GA": [
@@ -5922,6 +5854,126 @@
         }
     ],
     "GB": [
+        {
+            "name": "Antrim",
+            "code": "ANT"
+        },
+        {
+            "name": "Antrim and Newtownabbey",
+            "code": "ANN"
+        },
+        {
+            "name": "Ards",
+            "code": "ARD"
+        },
+        {
+            "name": "Armagh",
+            "code": "ARM"
+        },
+        {
+            "name": "Ballymena",
+            "code": "BLA"
+        },
+        {
+            "name": "Ballymoney",
+            "code": "BLY"
+        },
+        {
+            "name": "Banbridge",
+            "code": "BNB"
+        },
+        {
+            "name": "Carrickfergus",
+            "code": "CKF"
+        },
+        {
+            "name": "Castlereagh",
+            "code": "CSR"
+        },
+        {
+            "name": "Coleraine",
+            "code": "CLR"
+        },
+        {
+            "name": "Cookstown",
+            "code": "CKT"
+        },
+        {
+            "name": "Craigavon",
+            "code": "CGV"
+        },
+        {
+            "name": "Derry",
+            "code": "DRY"
+        },
+        {
+            "name": "Derry and Strabane",
+            "code": "DRS"
+        },
+        {
+            "name": "Down",
+            "code": "DOW"
+        },
+        {
+            "name": "Dungannon and South Tyrone",
+            "code": "DGN"
+        },
+        {
+            "name": "Fermanagh",
+            "code": "FER"
+        },
+        {
+            "name": "Fermanagh and Omagh",
+            "code": "FMO"
+        },
+        {
+            "name": "Larne",
+            "code": "LRN"
+        },
+        {
+            "name": "Limavady",
+            "code": "LMV"
+        },
+        {
+            "name": "Lisburn",
+            "code": "LSB"
+        },
+        {
+            "name": "Lisburn and Castlereagh",
+            "code": "LBC"
+        },
+        {
+            "name": "Magherafelt",
+            "code": "MFT"
+        },
+        {
+            "name": "Moyle",
+            "code": "MYL"
+        },
+        {
+            "name": "Newport",
+            "code": "NWP"
+        },
+        {
+            "name": "Newry and Mourne",
+            "code": "NYM"
+        },
+        {
+            "name": "Newtownabbey",
+            "code": "NTA"
+        },
+        {
+            "name": "North Down",
+            "code": "NDN"
+        },
+        {
+            "name": "Omagh",
+            "code": "OMH"
+        },
+        {
+            "name": "Strabane",
+            "code": "STB"
+        },
         {
             "name": "게이츠헤드 도시 자치구",
             "code": "GAT"
@@ -5997,6 +6049,10 @@
         {
             "name": "노퍽 주",
             "code": "NFK"
+        },
+        {
+            "name": "뉴리",
+            "code": "NMD"
         },
         {
             "name": "뉴엄 구",
@@ -6411,6 +6467,14 @@
             "code": "AGB"
         },
         {
+            "name": "아르즈",
+            "code": "AND"
+        },
+        {
+            "name": "아마 구 밴브리지와 크레이가본",
+            "code": "ABC"
+        },
+        {
             "name": "아우터헤브리디스",
             "code": "ELS"
         },
@@ -6579,6 +6643,14 @@
             "code": "EAW"
         },
         {
+            "name": "중부 얼스터",
+            "code": "MUL"
+        },
+        {
+            "name": "중부와 동부 앤트림",
+            "code": "MEA"
+        },
+        {
             "name": "체셔웨스트 체스터",
             "code": "CHW"
         },
@@ -6629,6 +6701,10 @@
         {
             "name": "코번트리",
             "code": "COV"
+        },
+        {
+            "name": "코즈웨이 연안과 글렌스",
+            "code": "CCG"
         },
         {
             "name": "콘월 주",
@@ -6773,150 +6849,6 @@
         {
             "name": "힐링던 구",
             "code": "HIL"
-        },
-        {
-            "name": "Antrim",
-            "code": "ANT"
-        },
-        {
-            "name": "Antrim and Newtownabbey",
-            "code": "ANN"
-        },
-        {
-            "name": "Ards",
-            "code": "ARD"
-        },
-        {
-            "name": "Ards and North Down",
-            "code": "AND"
-        },
-        {
-            "name": "Armagh",
-            "code": "ARM"
-        },
-        {
-            "name": "Armagh, Banbridge and Craigavon",
-            "code": "ABC"
-        },
-        {
-            "name": "Ballymena",
-            "code": "BLA"
-        },
-        {
-            "name": "Ballymoney",
-            "code": "BLY"
-        },
-        {
-            "name": "Banbridge",
-            "code": "BNB"
-        },
-        {
-            "name": "Carrickfergus",
-            "code": "CKF"
-        },
-        {
-            "name": "Castlereagh",
-            "code": "CSR"
-        },
-        {
-            "name": "Causeway Coast and Glens",
-            "code": "CCG"
-        },
-        {
-            "name": "Coleraine",
-            "code": "CLR"
-        },
-        {
-            "name": "Cookstown",
-            "code": "CKT"
-        },
-        {
-            "name": "Craigavon",
-            "code": "CGV"
-        },
-        {
-            "name": "Derry",
-            "code": "DRY"
-        },
-        {
-            "name": "Derry and Strabane",
-            "code": "DRS"
-        },
-        {
-            "name": "Down",
-            "code": "DOW"
-        },
-        {
-            "name": "Dungannon and South Tyrone",
-            "code": "DGN"
-        },
-        {
-            "name": "Fermanagh",
-            "code": "FER"
-        },
-        {
-            "name": "Fermanagh and Omagh",
-            "code": "FMO"
-        },
-        {
-            "name": "Larne",
-            "code": "LRN"
-        },
-        {
-            "name": "Limavady",
-            "code": "LMV"
-        },
-        {
-            "name": "Lisburn",
-            "code": "LSB"
-        },
-        {
-            "name": "Lisburn and Castlereagh",
-            "code": "LBC"
-        },
-        {
-            "name": "Magherafelt",
-            "code": "MFT"
-        },
-        {
-            "name": "Mid and East Antrim",
-            "code": "MEA"
-        },
-        {
-            "name": "Mid Ulster",
-            "code": "MUL"
-        },
-        {
-            "name": "Moyle",
-            "code": "MYL"
-        },
-        {
-            "name": "Newport",
-            "code": "NWP"
-        },
-        {
-            "name": "Newry and Mourne",
-            "code": "NYM"
-        },
-        {
-            "name": "Newry, Mourne and Down",
-            "code": "NMD"
-        },
-        {
-            "name": "Newtownabbey",
-            "code": "NTA"
-        },
-        {
-            "name": "North Down",
-            "code": "NDN"
-        },
-        {
-            "name": "Omagh",
-            "code": "OMH"
-        },
-        {
-            "name": "Strabane",
-            "code": "STB"
         }
     ],
     "GD": [
@@ -7087,6 +7019,34 @@
     ],
     "GN": [
         {
+            "name": "Boké",
+            "code": "BK"
+        },
+        {
+            "name": "Faranah",
+            "code": "FA"
+        },
+        {
+            "name": "Forécariah",
+            "code": "FO"
+        },
+        {
+            "name": "Kankan",
+            "code": "KA"
+        },
+        {
+            "name": "Kindia",
+            "code": "KD"
+        },
+        {
+            "name": "Mamou",
+            "code": "MM"
+        },
+        {
+            "name": "Nzérékoré",
+            "code": "NZ"
+        },
+        {
             "name": "가우알 지방 행정 구역",
             "code": "GA"
         },
@@ -7221,34 +7181,6 @@
         {
             "name": "피타 지방 행정 구역",
             "code": "PI"
-        },
-        {
-            "name": "Boké",
-            "code": "BK"
-        },
-        {
-            "name": "Faranah",
-            "code": "FA"
-        },
-        {
-            "name": "Forécariah",
-            "code": "FO"
-        },
-        {
-            "name": "Kankan",
-            "code": "KA"
-        },
-        {
-            "name": "Kindia",
-            "code": "KD"
-        },
-        {
-            "name": "Mamou",
-            "code": "MM"
-        },
-        {
-            "name": "Nzérékoré",
-            "code": "NZ"
         }
     ],
     "GQ": [
@@ -7277,67 +7209,19 @@
             "code": "WN"
         },
         {
+            "name": "적도 기니 도서 지방",
+            "code": "I"
+        },
+        {
             "name": "중남부 주",
             "code": "CS"
         },
         {
             "name": "키에은템 주",
             "code": "KN"
-        },
-        {
-            "name": "Insular",
-            "code": "I"
         }
     ],
     "GR": [
-        {
-            "name": "남에게 주",
-            "code": "L"
-        },
-        {
-            "name": "동마케도니아 트라키 주",
-            "code": "A"
-        },
-        {
-            "name": "북에게 주",
-            "code": "K"
-        },
-        {
-            "name": "서그리스 주",
-            "code": "G"
-        },
-        {
-            "name": "서마케도니아 주",
-            "code": "C"
-        },
-        {
-            "name": "아토스 산",
-            "code": "69"
-        },
-        {
-            "name": "아티카 주",
-            "code": "I"
-        },
-        {
-            "name": "이피로스 주",
-            "code": "D"
-        },
-        {
-            "name": "중앙그리스 주",
-            "code": "H"
-        },
-        {
-            "name": "중앙마케도니아 주",
-            "code": "B"
-        },
-        {
-            "name": "테살리아",
-            "code": "E"
-        },
-        {
-            "name": "펠로폰네소스 주",
-            "code": "J"
-        },
         {
             "name": "Achaea",
             "code": "13"
@@ -7549,6 +7433,54 @@
         {
             "name": "Zakynthos",
             "code": "21"
+        },
+        {
+            "name": "남에게 주",
+            "code": "L"
+        },
+        {
+            "name": "동마케도니아 트라키 주",
+            "code": "A"
+        },
+        {
+            "name": "북에게 주",
+            "code": "K"
+        },
+        {
+            "name": "서그리스 주",
+            "code": "G"
+        },
+        {
+            "name": "서마케도니아 주",
+            "code": "C"
+        },
+        {
+            "name": "아토스 산",
+            "code": "69"
+        },
+        {
+            "name": "아티카 주",
+            "code": "I"
+        },
+        {
+            "name": "이피로스 주",
+            "code": "D"
+        },
+        {
+            "name": "중앙그리스 주",
+            "code": "H"
+        },
+        {
+            "name": "중앙마케도니아 주",
+            "code": "B"
+        },
+        {
+            "name": "테살리아",
+            "code": "E"
+        },
+        {
+            "name": "펠로폰네소스 주",
+            "code": "J"
         }
     ],
     "GT": [
@@ -7643,6 +7575,18 @@
     ],
     "GW": [
         {
+            "name": "Leste",
+            "code": "L"
+        },
+        {
+            "name": "Norte",
+            "code": "N"
+        },
+        {
+            "name": "Sul",
+            "code": "S"
+        },
+        {
             "name": "가부 주",
             "code": "GA"
         },
@@ -7677,18 +7621,6 @@
         {
             "name": "톰발리 주",
             "code": "TO"
-        },
-        {
-            "name": "Leste",
-            "code": "L"
-        },
-        {
-            "name": "Norte",
-            "code": "N"
-        },
-        {
-            "name": "Sul",
-            "code": "S"
         }
     ],
     "GY": [
@@ -7937,6 +7869,10 @@
     ],
     "HU": [
         {
+            "name": "Nagykanizsa",
+            "code": "NK"
+        },
+        {
             "name": "노그라드 주",
             "code": "NO"
         },
@@ -8103,13 +8039,13 @@
         {
             "name": "호드메죄바샤르헤이",
             "code": "HV"
-        },
-        {
-            "name": "Nagykanizsa",
-            "code": "NK"
         }
     ],
     "ID": [
+        {
+            "name": "Bali",
+            "code": "BA"
+        },
         {
             "name": "고론탈로 주",
             "code": "GO"
@@ -8269,10 +8205,6 @@
         {
             "name": "파푸아바랏 주",
             "code": "PB"
-        },
-        {
-            "name": "Bali",
-            "code": "BA"
         }
     ],
     "IE": [
@@ -9339,7 +9271,7 @@
             "code": "02"
         },
         {
-            "name": "Saint Thomas",
+            "name": "세인트토머스 교구",
             "code": "03"
         },
         {
@@ -10097,7 +10029,7 @@
             "code": "13"
         },
         {
-            "name": "Nampho",
+            "name": "남포특별시",
             "code": "14"
         }
     ],
@@ -10309,6 +10241,10 @@
             "code": "XE"
         },
         {
+            "name": "싸이솜분 주",
+            "code": "XS"
+        },
+        {
             "name": "씨앙쿠앙 주",
             "code": "XI"
         },
@@ -10335,13 +10271,13 @@
         {
             "name": "후아판 주",
             "code": "HO"
-        },
-        {
-            "name": "Xaisomboun",
-            "code": "XS"
         }
     ],
     "LB": [
+        {
+            "name": "Akkar",
+            "code": "AK"
+        },
         {
             "name": "나바티예 주",
             "code": "NA"
@@ -10355,6 +10291,10 @@
             "code": "JL"
         },
         {
+            "name": "바알베크헤르멜 주",
+            "code": "BH"
+        },
+        {
             "name": "베이루트 주",
             "code": "BA"
         },
@@ -10365,14 +10305,6 @@
         {
             "name": "북부 주",
             "code": "AS"
-        },
-        {
-            "name": "Akkar",
-            "code": "AK"
-        },
-        {
-            "name": "Baalbek-Hermel",
-            "code": "BH"
         }
     ],
     "LC": [
@@ -10707,46 +10639,6 @@
     ],
     "LT": [
         {
-            "name": "마리얌폴레 주",
-            "code": "MR"
-        },
-        {
-            "name": "빌뉴스 주",
-            "code": "VL"
-        },
-        {
-            "name": "샤울랴이 주",
-            "code": "SA"
-        },
-        {
-            "name": "알리투스 주",
-            "code": "AL"
-        },
-        {
-            "name": "우테나 주",
-            "code": "UT"
-        },
-        {
-            "name": "카우나스 주",
-            "code": "KU"
-        },
-        {
-            "name": "클라이페다 주",
-            "code": "KL"
-        },
-        {
-            "name": "타우라게 주",
-            "code": "TA"
-        },
-        {
-            "name": "텔샤이 주",
-            "code": "TE"
-        },
-        {
-            "name": "파네베지스 주",
-            "code": "PN"
-        },
-        {
             "name": "Akmenė",
             "code": "01"
         },
@@ -10985,6 +10877,46 @@
         {
             "name": "Zarasai",
             "code": "60"
+        },
+        {
+            "name": "마리얌폴레 주",
+            "code": "MR"
+        },
+        {
+            "name": "빌뉴스 주",
+            "code": "VL"
+        },
+        {
+            "name": "샤울랴이 주",
+            "code": "SA"
+        },
+        {
+            "name": "알리투스 주",
+            "code": "AL"
+        },
+        {
+            "name": "우테나 주",
+            "code": "UT"
+        },
+        {
+            "name": "카우나스 주",
+            "code": "KU"
+        },
+        {
+            "name": "클라이페다 주",
+            "code": "KL"
+        },
+        {
+            "name": "타우라게 주",
+            "code": "TA"
+        },
+        {
+            "name": "텔샤이 주",
+            "code": "TE"
+        },
+        {
+            "name": "파네베지스 주",
+            "code": "PN"
         }
     ],
     "LU": [
@@ -11035,21 +10967,13 @@
         {
             "name": "클레르보 주",
             "code": "CL"
-        },
-        {
-            "name": "Diekirch²",
-            "code": "D"
-        },
-        {
-            "name": "Grevenmacher²",
-            "code": "G"
-        },
-        {
-            "name": "Luxembourg²",
-            "code": "L"
         }
     ],
     "LV": [
+        {
+            "name": "Brocēni",
+            "code": "018"
+        },
         {
             "name": "가르칼네 시",
             "code": "031"
@@ -11521,10 +11445,6 @@
         {
             "name": "플랴비냐스 시",
             "code": "072"
-        },
-        {
-            "name": "Brocēni",
-            "code": "018"
         }
     ],
     "LY": [
@@ -11618,130 +11538,6 @@
         }
     ],
     "MA": [
-        {
-            "name": "가르브슈라르다베니흐센 지방",
-            "code": "02"
-        },
-        {
-            "name": "겔밈에스스마라 지방",
-            "code": "14"
-        },
-        {
-            "name": "구엘밈 프로빈스",
-            "code": "GUE"
-        },
-        {
-            "name": "대카사블랑카 지방",
-            "code": "08"
-        },
-        {
-            "name": "두칼라압다 지방",
-            "code": "10"
-        },
-        {
-            "name": "라바트",
-            "code": "RAB"
-        },
-        {
-            "name": "라바트살레젬무르자에르 지방",
-            "code": "07"
-        },
-        {
-            "name": "라윤부즈두르사키아엘함라 지방",
-            "code": "15"
-        },
-        {
-            "name": "마라케시",
-            "code": "MMD"
-        },
-        {
-            "name": "마라케시²",
-            "code": "MMN"
-        },
-        {
-            "name": "마라케시³",
-            "code": "SYB"
-        },
-        {
-            "name": "마라케시텐시프트엘하우즈 지방",
-            "code": "11"
-        },
-        {
-            "name": "메크네스",
-            "code": "MEK"
-        },
-        {
-            "name": "메크네스타필랄레트 지방",
-            "code": "06"
-        },
-        {
-            "name": "모하메디아",
-            "code": "MOH"
-        },
-        {
-            "name": "살레",
-            "code": "SAL"
-        },
-        {
-            "name": "샤위야와르디가 지방",
-            "code": "09"
-        },
-        {
-            "name": "수스마사드라 지방",
-            "code": "13"
-        },
-        {
-            "name": "아가디르",
-            "code": "AGD"
-        },
-        {
-            "name": "오리앙탈 지방",
-            "code": "04"
-        },
-        {
-            "name": "우에드 에드 다합 주",
-            "code": "OUD"
-        },
-        {
-            "name": "우지다",
-            "code": "OUJ"
-        },
-        {
-            "name": "웨드에드다하브라구이라 지방",
-            "code": "16"
-        },
-        {
-            "name": "카사블랑카",
-            "code": "CAS"
-        },
-        {
-            "name": "타들라아질랄 지방",
-            "code": "12"
-        },
-        {
-            "name": "타자알호세이마타우나트 지방",
-            "code": "03"
-        },
-        {
-            "name": "탕헤르",
-            "code": "TNG"
-        },
-        {
-            "name": "탕헤르테투안 지방",
-            "code": "01"
-        },
-        {
-            "name": "테마라",
-            "code": "SKH"
-        },
-        {
-            "name": "페스",
-            "code": "FES"
-        },
-        {
-            "name": "페스불만 지방",
-            "code": "05"
-        },
         {
             "name": "Al Haouz",
             "code": "HAO"
@@ -11933,41 +11729,133 @@
         {
             "name": "Zagora",
             "code": "ZAG"
+        },
+        {
+            "name": "가르브슈라르다베니흐센 지방",
+            "code": "02"
+        },
+        {
+            "name": "겔밈에스스마라 지방",
+            "code": "14"
+        },
+        {
+            "name": "구엘밈 프로빈스",
+            "code": "GUE"
+        },
+        {
+            "name": "대카사블랑카 지방",
+            "code": "08"
+        },
+        {
+            "name": "두칼라압다 지방",
+            "code": "10"
+        },
+        {
+            "name": "라바트",
+            "code": "RAB"
+        },
+        {
+            "name": "라바트살레젬무르자에르 지방",
+            "code": "07"
+        },
+        {
+            "name": "라윤부즈두르사키아엘함라 지방",
+            "code": "15"
+        },
+        {
+            "name": "마라케시",
+            "code": "MMD"
+        },
+        {
+            "name": "마라케시²",
+            "code": "MMN"
+        },
+        {
+            "name": "마라케시³",
+            "code": "SYB"
+        },
+        {
+            "name": "마라케시텐시프트엘하우즈 지방",
+            "code": "11"
+        },
+        {
+            "name": "메크네스",
+            "code": "MEK"
+        },
+        {
+            "name": "메크네스타필랄레트 지방",
+            "code": "06"
+        },
+        {
+            "name": "모하메디아",
+            "code": "MOH"
+        },
+        {
+            "name": "살레",
+            "code": "SAL"
+        },
+        {
+            "name": "샤위야와르디가 지방",
+            "code": "09"
+        },
+        {
+            "name": "수스마사드라 지방",
+            "code": "13"
+        },
+        {
+            "name": "아가디르",
+            "code": "AGD"
+        },
+        {
+            "name": "오리앙탈 지방",
+            "code": "04"
+        },
+        {
+            "name": "우에드 에드 다합 주",
+            "code": "OUD"
+        },
+        {
+            "name": "우지다",
+            "code": "OUJ"
+        },
+        {
+            "name": "웨드에드다하브라구이라 지방",
+            "code": "16"
+        },
+        {
+            "name": "카사블랑카",
+            "code": "CAS"
+        },
+        {
+            "name": "타들라아질랄 지방",
+            "code": "12"
+        },
+        {
+            "name": "타자알호세이마타우나트 지방",
+            "code": "03"
+        },
+        {
+            "name": "탕헤르",
+            "code": "TNG"
+        },
+        {
+            "name": "탕헤르테투안 지방",
+            "code": "01"
+        },
+        {
+            "name": "테마라",
+            "code": "SKH"
+        },
+        {
+            "name": "페스",
+            "code": "FES"
+        },
+        {
+            "name": "페스불만 지방",
+            "code": "05"
         }
     ],
     "MC": [
-        {
-            "name": "라르보토",
-            "code": "LA"
-        },
-        {
-            "name": "라콜",
-            "code": "CL"
-        },
-        {
-            "name": "라콩다민",
-            "code": "CO"
-        },
-        {
-            "name": "모나코빌",
-            "code": "MO"
-        },
-        {
-            "name": "모네게티",
-            "code": "MG"
-        },
-        {
-            "name": "몬테카를로",
-            "code": "MC"
-        },
-        {
-            "name": "생로망",
-            "code": "SR"
-        },
-        {
-            "name": "퐁비에유",
-            "code": "FO"
-        },
         {
             "name": "Jardin Exotique de Monaco",
             "code": "JE"
@@ -12003,6 +11891,38 @@
         {
             "name": "Vallon de la Rousse",
             "code": "VR"
+        },
+        {
+            "name": "라르보토",
+            "code": "LA"
+        },
+        {
+            "name": "라콜",
+            "code": "CL"
+        },
+        {
+            "name": "라콩다민",
+            "code": "CO"
+        },
+        {
+            "name": "모나코빌",
+            "code": "MO"
+        },
+        {
+            "name": "모네게티",
+            "code": "MG"
+        },
+        {
+            "name": "몬테카를로",
+            "code": "MC"
+        },
+        {
+            "name": "생로망",
+            "code": "SR"
+        },
+        {
+            "name": "퐁비에유",
+            "code": "FO"
         }
     ],
     "MD": [
@@ -12725,6 +12645,14 @@
     ],
     "ML": [
         {
+            "name": "Ménaka",
+            "code": "9"
+        },
+        {
+            "name": "Taoudénit",
+            "code": "10"
+        },
+        {
             "name": "가오 주",
             "code": "7"
         },
@@ -12759,14 +12687,6 @@
         {
             "name": "통북투 주",
             "code": "6"
-        },
-        {
-            "name": "Ménaka",
-            "code": "9"
-        },
-        {
-            "name": "Taoudénit",
-            "code": "10"
         }
     ],
     "MM": [
@@ -12923,58 +12843,6 @@
     ],
     "MR": [
         {
-            "name": "고르골 주",
-            "code": "04"
-        },
-        {
-            "name": "기디마카 주",
-            "code": "10"
-        },
-        {
-            "name": "남누악쇼트 주",
-            "code": "15"
-        },
-        {
-            "name": "다클레트누아디부 주",
-            "code": "08"
-        },
-        {
-            "name": "북누악쇼트 주",
-            "code": "14"
-        },
-        {
-            "name": "브라크나 주",
-            "code": "05"
-        },
-        {
-            "name": "서누악쇼트 주",
-            "code": "13"
-        },
-        {
-            "name": "아드라르 주 (모리타니)",
-            "code": "07"
-        },
-        {
-            "name": "아사바 주",
-            "code": "03"
-        },
-        {
-            "name": "인시리 주",
-            "code": "12"
-        },
-        {
-            "name": "타간트 주",
-            "code": "09"
-        },
-        {
-            "name": "트라르자 주",
-            "code": "06"
-        },
-        {
-            "name": "티리스젬무르 주",
-            "code": "11"
-        },
-        {
             "name": "호드에슈샤르기 주",
             "code": "01"
         },
@@ -12983,8 +12851,56 @@
             "code": "02"
         },
         {
-            "name": "Nouakchott",
-            "code": "NKC"
+            "name": "아사바 주",
+            "code": "03"
+        },
+        {
+            "name": "고르골 주",
+            "code": "04"
+        },
+        {
+            "name": "브라크나 주",
+            "code": "05"
+        },
+        {
+            "name": "트라르자 주",
+            "code": "06"
+        },
+        {
+            "name": "아드라르 주 (모리타니)",
+            "code": "07"
+        },
+        {
+            "name": "다클레트누아디부 주",
+            "code": "08"
+        },
+        {
+            "name": "타간트 주",
+            "code": "09"
+        },
+        {
+            "name": "기디마카 주",
+            "code": "10"
+        },
+        {
+            "name": "티리스젬무르 주",
+            "code": "11"
+        },
+        {
+            "name": "인시리 주",
+            "code": "12"
+        },
+        {
+            "name": "서누악쇼트 주",
+            "code": "13"
+        },
+        {
+            "name": "북누악쇼트 주",
+            "code": "14"
+        },
+        {
+            "name": "남누악쇼트 주",
+            "code": "15"
         }
     ],
     "MT": [
@@ -13333,6 +13249,34 @@
     ],
     "MV": [
         {
+            "name": "Central Province",
+            "code": "CE"
+        },
+        {
+            "name": "North Central Province",
+            "code": "NC"
+        },
+        {
+            "name": "North Province",
+            "code": "NO"
+        },
+        {
+            "name": "South Central Province",
+            "code": "SC"
+        },
+        {
+            "name": "South Province",
+            "code": "SU"
+        },
+        {
+            "name": "Upper North Province",
+            "code": "UN"
+        },
+        {
+            "name": "Upper South Province",
+            "code": "US"
+        },
+        {
             "name": "가푸달루 환초",
             "code": "28"
         },
@@ -13415,34 +13359,6 @@
         {
             "name": "하알리프 환초",
             "code": "07"
-        },
-        {
-            "name": "Central Province",
-            "code": "CE"
-        },
-        {
-            "name": "North Central Province",
-            "code": "NC"
-        },
-        {
-            "name": "North Province",
-            "code": "NO"
-        },
-        {
-            "name": "South Central Province",
-            "code": "SC"
-        },
-        {
-            "name": "South Province",
-            "code": "SU"
-        },
-        {
-            "name": "Upper North Province",
-            "code": "UN"
-        },
-        {
-            "name": "Upper South Province",
-            "code": "US"
         }
     ],
     "MW": [
@@ -13573,6 +13489,10 @@
     ],
     "MX": [
         {
+            "name": "Mexico City",
+            "code": "DIF"
+        },
+        {
             "name": "게레로 주",
             "code": "GRO"
         },
@@ -13699,10 +13619,6 @@
         {
             "name": "할리스코 주",
             "code": "JAL"
-        },
-        {
-            "name": "Mexico City",
-            "code": "DIF"
         }
     ],
     "MY": [
@@ -14189,18 +14105,6 @@
         {
             "name": "흐로닝언 주",
             "code": "GR"
-        },
-        {
-            "name": "Aruba",
-            "code": "AW"
-        },
-        {
-            "name": "Curaçao",
-            "code": "CW"
-        },
-        {
-            "name": "Sint Maarten",
-            "code": "SX"
         }
     ],
     "NO": [
@@ -14431,6 +14335,10 @@
             "code": "GIS"
         },
         {
+            "name": "넬슨 지방",
+            "code": "NSN"
+        },
+        {
             "name": "노스랜드 지방",
             "code": "NTL"
         },
@@ -14489,18 +14397,6 @@
         {
             "name": "호크스베이 지방",
             "code": "HKB"
-        },
-        {
-            "name": "Nelson",
-            "code": "NSN"
-        },
-        {
-            "name": "North Island",
-            "code": "N"
-        },
-        {
-            "name": "South Island",
-            "code": "S"
         }
     ],
     "OM": [
@@ -14547,14 +14443,6 @@
         {
             "name": "중부 주",
             "code": "WU"
-        },
-        {
-            "name": "Al Batinah",
-            "code": "BA"
-        },
-        {
-            "name": "Ash Sharqiyah",
-            "code": "SH"
         }
     ],
     "PA": [
@@ -14612,6 +14500,10 @@
         }
     ],
     "PE": [
+        {
+            "name": "El Callao",
+            "code": "CAL"
+        },
         {
             "name": "라리베르타드 주",
             "code": "LAL"
@@ -14711,10 +14603,6 @@
         {
             "name": "후닌 주",
             "code": "JUN"
-        },
-        {
-            "name": "El Callao",
-            "code": "CAL"
         }
     ],
     "PG": [
@@ -15591,6 +15479,10 @@
     ],
     "QA": [
         {
+            "name": "Ash Shīḩānīyah",
+            "code": "SH"
+        },
+        {
             "name": "도하",
             "code": "DA"
         },
@@ -15617,10 +15509,6 @@
         {
             "name": "움살랄",
             "code": "US"
-        },
-        {
-            "name": "Ash Shīḩānīyah",
-            "code": "SH"
         }
     ],
     "RO": [
@@ -16667,10 +16555,6 @@
         {
             "name": "어센션 섬",
             "code": "AC"
-        },
-        {
-            "name": "Tristan da Cunha",
-            "code": "TA"
         }
     ],
     "SI": [
@@ -17975,6 +17859,14 @@
     ],
     "TD": [
         {
+            "name": "Ennedi-Est",
+            "code": "EE"
+        },
+        {
+            "name": "Ennedi-Ouest",
+            "code": "EO"
+        },
+        {
             "name": "게라 주",
             "code": "GR"
         },
@@ -18057,14 +17949,6 @@
         {
             "name": "하제르라미 주",
             "code": "HL"
-        },
-        {
-            "name": "Ennedi-Est",
-            "code": "EE"
-        },
-        {
-            "name": "Ennedi-Ouest",
-            "code": "EO"
         }
     ],
     "TG": [
@@ -19049,6 +18933,10 @@
     ],
     "TW": [
         {
+            "name": "New Taipei",
+            "code": "NWT"
+        },
+        {
             "name": "가오슝 시",
             "code": "KHH"
         },
@@ -19131,10 +19019,6 @@
         {
             "name": "화롄 현",
             "code": "HUA"
-        },
-        {
-            "name": "New Taipei",
-            "code": "NWT"
         }
     ],
     "TZ": [
@@ -19370,6 +19254,46 @@
         }
     ],
     "UG": [
+        {
+            "name": "Bunyangabu",
+            "code": "430"
+        },
+        {
+            "name": "Butebo",
+            "code": "233"
+        },
+        {
+            "name": "Kagadi",
+            "code": "427"
+        },
+        {
+            "name": "Kakumiro",
+            "code": "428"
+        },
+        {
+            "name": "Kyotera",
+            "code": "125"
+        },
+        {
+            "name": "Namisindwa",
+            "code": "234"
+        },
+        {
+            "name": "Pakwach",
+            "code": "332"
+        },
+        {
+            "name": "Rubanda",
+            "code": "429"
+        },
+        {
+            "name": "Rukiga",
+            "code": "431"
+        },
+        {
+            "name": "Zombo",
+            "code": "331"
+        },
         {
             "name": "곰바 구",
             "code": "121"
@@ -19833,46 +19757,6 @@
         {
             "name": "호이마 구",
             "code": "403"
-        },
-        {
-            "name": "Bunyangabu",
-            "code": "430"
-        },
-        {
-            "name": "Butebo",
-            "code": "233"
-        },
-        {
-            "name": "Kagadi",
-            "code": "427"
-        },
-        {
-            "name": "Kakumiro",
-            "code": "428"
-        },
-        {
-            "name": "Kyotera",
-            "code": "125"
-        },
-        {
-            "name": "Namisindwa",
-            "code": "234"
-        },
-        {
-            "name": "Pakwach",
-            "code": "332"
-        },
-        {
-            "name": "Rubanda",
-            "code": "429"
-        },
-        {
-            "name": "Rukiga",
-            "code": "431"
-        },
-        {
-            "name": "Zombo",
-            "code": "331"
         }
     ],
     "UM": [
@@ -19914,6 +19798,10 @@
         }
     ],
     "US": [
+        {
+            "name": "Washington DC",
+            "code": "DC"
+        },
         {
             "name": "네바다 주",
             "code": "NV"
@@ -20113,34 +20001,6 @@
         {
             "name": "하와이 주",
             "code": "HI"
-        },
-        {
-            "name": "American Samoa",
-            "code": "AS"
-        },
-        {
-            "name": "Guam",
-            "code": "GU"
-        },
-        {
-            "name": "Northern Mariana Islands",
-            "code": "MP"
-        },
-        {
-            "name": "Puerto Rico",
-            "code": "PR"
-        },
-        {
-            "name": "U.S. Outlying Islands",
-            "code": "UM"
-        },
-        {
-            "name": "U.S. Virgin Islands",
-            "code": "VI"
-        },
-        {
-            "name": "Washington DC",
-            "code": "DC"
         }
     ],
     "UY": [
@@ -20919,6 +20779,14 @@
     ],
     "ZW": [
         {
+            "name": "Bulawayo",
+            "code": "BU"
+        },
+        {
+            "name": "Harare",
+            "code": "HA"
+        },
+        {
             "name": "남마타벨랜드 주",
             "code": "MS"
         },
@@ -20949,14 +20817,6 @@
         {
             "name": "중앙마쇼날랜드 주",
             "code": "MC"
-        },
-        {
-            "name": "Bulawayo",
-            "code": "BU"
-        },
-        {
-            "name": "Harare",
-            "code": "HA"
         }
     ]
 }

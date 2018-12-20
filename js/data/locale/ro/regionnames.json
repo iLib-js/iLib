@@ -937,8 +937,16 @@
             "code": "SAB"
         },
         {
+            "name": "Șabran",
+            "code": "SBN"
+        },
+        {
             "name": "Sadarak",
             "code": "SAD"
+        },
+        {
+            "name": "Șaki",
+            "code": "SA"
         },
         {
             "name": "Salyan",
@@ -977,24 +985,16 @@
             "code": "SIY"
         },
         {
+            "name": "Șirvan",
+            "code": "SR"
+        },
+        {
             "name": "Stepanakert",
             "code": "XA"
         },
         {
             "name": "Sumqayıt",
             "code": "SM"
-        },
-        {
-            "name": "Șabran",
-            "code": "SBN"
-        },
-        {
-            "name": "Șaki",
-            "code": "SA"
-        },
-        {
-            "name": "Șirvan",
-            "code": "SR"
         },
         {
             "name": "Tartar",
@@ -1171,7 +1171,7 @@
             "code": "10"
         },
         {
-            "name": "Chittagong Division",
+            "name": "Chittagong²",
             "code": "B"
         },
         {
@@ -1433,7 +1433,7 @@
             "code": "WBR"
         },
         {
-            "name": "Flanders",
+            "name": "Flandra",
             "code": "VLG"
         },
         {
@@ -2965,6 +2965,10 @@
             "code": "11"
         },
         {
+            "name": "Regiunea Zanzan",
+            "code": "ZZ"
+        },
+        {
             "name": "Sassandra-Marahoué",
             "code": "SM"
         },
@@ -3007,10 +3011,6 @@
         {
             "name": "Zanzan",
             "code": "08"
-        },
-        {
-            "name": "Zanzan²",
-            "code": "ZZ"
         }
     ],
     "CL": [
@@ -3119,140 +3119,140 @@
     ],
     "CN": [
         {
-            "name": "Beijing",
-            "code": "11"
-        },
-        {
-            "name": "Tianjin",
-            "code": "12"
-        },
-        {
-            "name": "Hebei",
-            "code": "13"
-        },
-        {
-            "name": "Shanxi",
-            "code": "14"
-        },
-        {
-            "name": "Mongolia Interioară",
-            "code": "15"
-        },
-        {
-            "name": "Liaoning",
-            "code": "21"
-        },
-        {
-            "name": "Jilin",
-            "code": "22"
-        },
-        {
-            "name": "Heilongjiang",
-            "code": "23"
-        },
-        {
-            "name": "Shanghai",
-            "code": "31"
-        },
-        {
-            "name": "Jiangsu",
-            "code": "32"
-        },
-        {
-            "name": "Zhejiang",
-            "code": "33"
-        },
-        {
             "name": "Anhui",
-            "code": "34"
+            "code": "AH"
         },
         {
-            "name": "Fujian",
-            "code": "35"
-        },
-        {
-            "name": "Jiangxi",
-            "code": "36"
-        },
-        {
-            "name": "Shandong",
-            "code": "37"
-        },
-        {
-            "name": "Henan",
-            "code": "41"
-        },
-        {
-            "name": "Hubei",
-            "code": "42"
-        },
-        {
-            "name": "Hunan",
-            "code": "43"
-        },
-        {
-            "name": "Guangdong",
-            "code": "44"
-        },
-        {
-            "name": "Guangxi",
-            "code": "45"
-        },
-        {
-            "name": "Hainan",
-            "code": "46"
+            "name": "Beijing",
+            "code": "BJ"
         },
         {
             "name": "Chongqing",
-            "code": "50"
+            "code": "CQ"
         },
         {
-            "name": "Sichuan",
-            "code": "51"
-        },
-        {
-            "name": "Guizhou",
-            "code": "52"
-        },
-        {
-            "name": "Yunnan",
-            "code": "53"
-        },
-        {
-            "name": "Regiunea autonomă Tibet",
-            "code": "54"
-        },
-        {
-            "name": "Shaanxi",
-            "code": "61"
+            "name": "Fujian",
+            "code": "FJ"
         },
         {
             "name": "Gansu",
-            "code": "62"
+            "code": "GS"
         },
         {
-            "name": "Qinghai",
-            "code": "63"
+            "name": "Guangdong",
+            "code": "GD"
+        },
+        {
+            "name": "Guangxi",
+            "code": "GX"
+        },
+        {
+            "name": "Guizhou",
+            "code": "GZ"
+        },
+        {
+            "name": "Hainan",
+            "code": "HI"
+        },
+        {
+            "name": "Hebei",
+            "code": "HE"
+        },
+        {
+            "name": "Heilongjiang",
+            "code": "HL"
+        },
+        {
+            "name": "Henan",
+            "code": "HA"
+        },
+        {
+            "name": "Hong Kong",
+            "code": "HK"
+        },
+        {
+            "name": "Hubei",
+            "code": "HB"
+        },
+        {
+            "name": "Hunan",
+            "code": "HN"
+        },
+        {
+            "name": "Jiangsu",
+            "code": "JS"
+        },
+        {
+            "name": "Jiangxi",
+            "code": "JX"
+        },
+        {
+            "name": "Jilin",
+            "code": "JL"
+        },
+        {
+            "name": "Liaoning",
+            "code": "LN"
+        },
+        {
+            "name": "Macao",
+            "code": "MO"
+        },
+        {
+            "name": "Mongolia Interioară",
+            "code": "NM"
         },
         {
             "name": "Ningxia",
-            "code": "64"
+            "code": "NX"
         },
         {
-            "name": "Xinjiang",
-            "code": "65"
+            "name": "Qinghai",
+            "code": "QH"
+        },
+        {
+            "name": "Regiunea autonomă Tibet",
+            "code": "XZ"
+        },
+        {
+            "name": "Shaanxi",
+            "code": "SN"
+        },
+        {
+            "name": "Shandong",
+            "code": "SD"
+        },
+        {
+            "name": "Shanghai",
+            "code": "SH"
+        },
+        {
+            "name": "Shanxi",
+            "code": "SX"
+        },
+        {
+            "name": "Sichuan",
+            "code": "SC"
         },
         {
             "name": "Taiwan",
-            "code": "71"
+            "code": "TW"
         },
         {
-            "name": "Hong Kong SAR China",
-            "code": "91"
+            "name": "Tianjin",
+            "code": "TJ"
         },
         {
-            "name": "Macau SAR China",
-            "code": "92"
+            "name": "Xinjiang",
+            "code": "XJ"
+        },
+        {
+            "name": "Yunnan",
+            "code": "YN"
+        },
+        {
+            "name": "Zhejiang",
+            "code": "ZJ"
         }
     ],
     "CO": [
@@ -3491,10 +3491,6 @@
             "code": "B"
         },
         {
-            "name": "Boa Vista",
-            "code": "BV"
-        },
-        {
             "name": "Brava",
             "code": "BR"
         },
@@ -3507,16 +3503,20 @@
             "code": "MO"
         },
         {
+            "name": "Municipalitatea Boa Vista, Capul Verde",
+            "code": "BV"
+        },
+        {
+            "name": "Municipalitatea Praia, Capul Verde",
+            "code": "PR"
+        },
+        {
             "name": "Paúl",
             "code": "PA"
         },
         {
             "name": "Porto Novo",
             "code": "PN"
-        },
-        {
-            "name": "Praia",
-            "code": "PR"
         },
         {
             "name": "Ribeira Brava",
@@ -3667,12 +3667,12 @@
             "code": "323"
         },
         {
-            "name": "Domažlice",
-            "code": "321"
+            "name": "Districtul Zlín",
+            "code": "724"
         },
         {
-            "name": "Frýdek-Místek",
-            "code": "802"
+            "name": "Domažlice",
+            "code": "321"
         },
         {
             "name": "Havlíčkův Brod",
@@ -3785,6 +3785,10 @@
         {
             "name": "Okres Trutnov",
             "code": "525"
+        },
+        {
+            "name": "Okresul Frýdek-Místek",
+            "code": "802"
         },
         {
             "name": "Olomouc",
@@ -4049,10 +4053,6 @@
         {
             "name": "Žďár nad Sázavou",
             "code": "635"
-        },
-        {
-            "name": "Zlín",
-            "code": "724"
         },
         {
             "name": "Znojmo",
@@ -4893,19 +4893,11 @@
             "code": "O"
         },
         {
-            "name": "Balears Province",
-            "code": "PM"
-        },
-        {
-            "name": "Canary Islands",
-            "code": "CN"
-        },
-        {
             "name": "Cantabria",
             "code": "CB"
         },
         {
-            "name": "Cantabria Province",
+            "name": "Cantabria²",
             "code": "S"
         },
         {
@@ -4941,6 +4933,10 @@
             "code": "IB"
         },
         {
+            "name": "Insulele Baleare²",
+            "code": "PM"
+        },
+        {
             "name": "La Rioja",
             "code": "LO"
         },
@@ -4969,7 +4965,7 @@
             "code": "NC"
         },
         {
-            "name": "Navarra",
+            "name": "Navarra²",
             "code": "NA"
         },
         {
@@ -5201,10 +5197,6 @@
     ],
     "FI": [
         {
-            "name": "Åland Islands",
-            "code": "01"
-        },
-        {
             "name": "Carelia de Sud",
             "code": "02"
         },
@@ -5435,10 +5427,6 @@
             "code": "BRE"
         },
         {
-            "name": "Brittany",
-            "code": "E"
-        },
-        {
             "name": "Burgundy-Franche-Comté",
             "code": "BFC"
         },
@@ -5467,20 +5455,12 @@
             "code": "18"
         },
         {
-            "name": "Clipperton Island",
-            "code": "CP"
-        },
-        {
             "name": "Corrèze",
             "code": "19"
         },
         {
             "name": "Corse-du-Sud",
             "code": "2A"
-        },
-        {
-            "name": "Corsica",
-            "code": "H"
         },
         {
             "name": "Corsica",
@@ -5531,18 +5511,6 @@
             "code": "29"
         },
         {
-            "name": "French Guiana",
-            "code": "GF"
-        },
-        {
-            "name": "French Polynesia",
-            "code": "PF"
-        },
-        {
-            "name": "French Southern Territories",
-            "code": "TF"
-        },
-        {
             "name": "Gard",
             "code": "30"
         },
@@ -5561,10 +5529,6 @@
         {
             "name": "Guadeloupe",
             "code": "GUA"
-        },
-        {
-            "name": "Guadeloupe²",
-            "code": "GP"
         },
         {
             "name": "Haut-Rhin",
@@ -5619,6 +5583,10 @@
             "code": "34"
         },
         {
+            "name": "Île-de-France",
+            "code": "IDF"
+        },
+        {
             "name": "Ille-et-Vilaine",
             "code": "35"
         },
@@ -5633,10 +5601,6 @@
         {
             "name": "Isère",
             "code": "38"
-        },
-        {
-            "name": "Île-de-France",
-            "code": "IDF"
         },
         {
             "name": "Jura",
@@ -5691,20 +5655,12 @@
             "code": "51"
         },
         {
-            "name": "Martinique",
-            "code": "MQ"
-        },
-        {
             "name": "Mayenne",
             "code": "53"
         },
         {
             "name": "Mayotte",
             "code": "MAY"
-        },
-        {
-            "name": "Mayotte²",
-            "code": "YT"
         },
         {
             "name": "Meurthe-et-Moselle",
@@ -5721,10 +5677,6 @@
         {
             "name": "Moselle",
             "code": "57"
-        },
-        {
-            "name": "New Caledonia",
-            "code": "NC"
         },
         {
             "name": "Nièvre",
@@ -5783,10 +5735,6 @@
             "code": "66"
         },
         {
-            "name": "Réunion",
-            "code": "RE"
-        },
-        {
             "name": "Rhône",
             "code": "69"
         },
@@ -5817,18 +5765,6 @@
         {
             "name": "Somme",
             "code": "80"
-        },
-        {
-            "name": "St. Barthélemy",
-            "code": "BL"
-        },
-        {
-            "name": "St. Martin",
-            "code": "MF"
-        },
-        {
-            "name": "St. Pierre & Miquelon",
-            "code": "PM"
         },
         {
             "name": "Tarn",
@@ -5869,10 +5805,6 @@
         {
             "name": "Vosges",
             "code": "88"
-        },
-        {
-            "name": "Wallis & Futuna",
-            "code": "WF"
         },
         {
             "name": "Yonne",
@@ -6695,12 +6627,12 @@
             "code": "SAW"
         },
         {
-            "name": "Scottish Borders",
-            "code": "SCB"
-        },
-        {
             "name": "Scoția",
             "code": "SCT"
+        },
+        {
+            "name": "Scottish Borders",
+            "code": "SCB"
         },
         {
             "name": "Sefton",
@@ -6811,6 +6743,10 @@
             "code": "TAM"
         },
         {
+            "name": "Țara Galilor",
+            "code": "WLS"
+        },
+        {
             "name": "Telford and Wrekin",
             "code": "TFW"
         },
@@ -6833,10 +6769,6 @@
         {
             "name": "Trafford",
             "code": "TRF"
-        },
-        {
-            "name": "Țara Galilor",
-            "code": "WLS"
         },
         {
             "name": "Vale of Glamorgan",
@@ -9819,10 +9751,6 @@
     ],
     "KG": [
         {
-            "name": "Batken",
-            "code": "B"
-        },
-        {
             "name": "Bișkek",
             "code": "GB"
         },
@@ -9837,6 +9765,10 @@
         {
             "name": "Osh Region",
             "code": "O"
+        },
+        {
+            "name": "Regiunea Batken",
+            "code": "B"
         },
         {
             "name": "Regiunea Ciui",
@@ -10065,15 +9997,15 @@
             "code": "03"
         },
         {
-            "name": "Chagang",
+            "name": "Provincia Chagang",
             "code": "04"
         },
         {
-            "name": "South Hwanghae",
+            "name": "Provincia Hwanghae de Sud",
             "code": "05"
         },
         {
-            "name": "North Hwanghae",
+            "name": "Provincia Hwanghae de Nord",
             "code": "06"
         },
         {
@@ -10085,7 +10017,7 @@
             "code": "08"
         },
         {
-            "name": "North Hamgyong",
+            "name": "Provincia Hamgyong de Nord",
             "code": "09"
         },
         {
@@ -10097,7 +10029,7 @@
             "code": "13"
         },
         {
-            "name": "Nampho",
+            "name": "Namp’o",
             "code": "14"
         }
     ],
@@ -11001,10 +10933,6 @@
             "code": "DI"
         },
         {
-            "name": "Diekirch²",
-            "code": "D"
-        },
-        {
             "name": "Echternach",
             "code": "EC"
         },
@@ -11015,14 +10943,6 @@
         {
             "name": "Grevenmacher",
             "code": "GR"
-        },
-        {
-            "name": "Grevenmacher²",
-            "code": "G"
-        },
-        {
-            "name": "Luxembourg²",
-            "code": "L"
         },
         {
             "name": "Luxemburg",
@@ -12039,12 +11959,12 @@
             "code": "CA"
         },
         {
-            "name": "raionul Cantemir",
-            "code": "CT"
-        },
-        {
             "name": "raionul Călărași",
             "code": "CL"
+        },
+        {
+            "name": "raionul Cantemir",
+            "code": "CT"
         },
         {
             "name": "raionul Căușeni",
@@ -12123,20 +12043,20 @@
             "code": "SI"
         },
         {
-            "name": "raionul Soroca",
-            "code": "SO"
-        },
-        {
-            "name": "raionul Strășeni",
-            "code": "ST"
-        },
-        {
             "name": "raionul Șoldănești",
             "code": "SD"
         },
         {
+            "name": "raionul Soroca",
+            "code": "SO"
+        },
+        {
             "name": "raionul Ștefan Vodă",
             "code": "SV"
+        },
+        {
+            "name": "raionul Strășeni",
+            "code": "ST"
         },
         {
             "name": "raionul Taraclia",
@@ -12467,7 +12387,7 @@
             "code": "21"
         },
         {
-            "name": "Debarca",
+            "name": "Comuna Debarca",
             "code": "22"
         },
         {
@@ -12923,46 +12843,6 @@
     ],
     "MR": [
         {
-            "name": "Nouakchott",
-            "code": "NKC"
-        },
-        {
-            "name": "Nouakchott Nord",
-            "code": "14"
-        },
-        {
-            "name": "Nouakchott Ouest",
-            "code": "13"
-        },
-        {
-            "name": "Nouakchott Sud",
-            "code": "15"
-        },
-        {
-            "name": "Regiunea Adrar",
-            "code": "07"
-        },
-        {
-            "name": "Regiunea Assaba",
-            "code": "03"
-        },
-        {
-            "name": "Regiunea Brakna",
-            "code": "05"
-        },
-        {
-            "name": "Regiunea Dakhlet Nouadhibou",
-            "code": "08"
-        },
-        {
-            "name": "Regiunea Gorgol",
-            "code": "04"
-        },
-        {
-            "name": "Regiunea Guidimaka",
-            "code": "10"
-        },
-        {
             "name": "Regiunea Hodh Ech Chargui",
             "code": "01"
         },
@@ -12971,20 +12851,56 @@
             "code": "02"
         },
         {
-            "name": "Regiunea Inchiri",
-            "code": "12"
+            "name": "Regiunea Assaba",
+            "code": "03"
+        },
+        {
+            "name": "Regiunea Gorgol",
+            "code": "04"
+        },
+        {
+            "name": "Regiunea Brakna",
+            "code": "05"
+        },
+        {
+            "name": "Regiunea Trarza",
+            "code": "06"
+        },
+        {
+            "name": "Regiunea Adrar",
+            "code": "07"
+        },
+        {
+            "name": "Regiunea Dakhlet Nouadhibou",
+            "code": "08"
         },
         {
             "name": "Regiunea Tagant",
             "code": "09"
         },
         {
+            "name": "Regiunea Guidimaka",
+            "code": "10"
+        },
+        {
             "name": "Regiunea Tiris Zemmour",
             "code": "11"
         },
         {
-            "name": "Regiunea Trarza",
-            "code": "06"
+            "name": "Regiunea Inchiri",
+            "code": "12"
+        },
+        {
+            "name": "Nouakchott Ouest",
+            "code": "13"
+        },
+        {
+            "name": "Nouakchott Nord",
+            "code": "14"
+        },
+        {
+            "name": "Nouakchott Sud",
+            "code": "15"
         }
     ],
     "MT": [
@@ -14131,20 +14047,12 @@
     ],
     "NL": [
         {
-            "name": "Aruba",
-            "code": "AW"
-        },
-        {
             "name": "Bonaire",
             "code": "BQ1"
         },
         {
             "name": "Brabantul de Nord",
             "code": "NB"
-        },
-        {
-            "name": "Curaçao",
-            "code": "CW"
         },
         {
             "name": "Drenthe",
@@ -14189,10 +14097,6 @@
         {
             "name": "Sint Eustatius",
             "code": "BQ3"
-        },
-        {
-            "name": "Sint Maarten",
-            "code": "SX"
         },
         {
             "name": "Utrecht",
@@ -14463,20 +14367,12 @@
             "code": "NSN"
         },
         {
-            "name": "North Island",
-            "code": "N"
-        },
-        {
             "name": "Northland",
             "code": "NTL"
         },
         {
             "name": "Otago",
             "code": "OTA"
-        },
-        {
-            "name": "South Island",
-            "code": "S"
         },
         {
             "name": "Southland",
@@ -14505,56 +14401,48 @@
     ],
     "OM": [
         {
-            "code": "DA",
-            "name": "Ad Dakhiliyah"
+            "name": "Ad Dakhiliyah",
+            "code": "DA"
         },
         {
-            "code": "ZA",
-            "name": "Ad Dhahirah"
+            "name": "Ad Dhahirah",
+            "code": "ZA"
         },
         {
-            "code": "BA",
-            "name": "Al Batinah"
+            "name": "Al Buraimi",
+            "code": "BU"
         },
         {
-            "code": "BU",
-            "name": "Al Buraimi"
+            "name": "Al Wusta",
+            "code": "WU"
         },
         {
-            "code": "WU",
-            "name": "Al Wusta"
+            "name": "Dhofar",
+            "code": "ZU"
         },
         {
-            "code": "SH",
-            "name": "Ash Sharqiyah"
+            "name": "guvernoratul Muscat",
+            "code": "MA"
         },
         {
-            "code": "ZU",
-            "name": "Dhofar"
+            "name": "Janub al Batinah",
+            "code": "BJ"
         },
         {
-            "code": "BJ",
-            "name": "Janub al Batinah"
+            "name": "Janub ash Sharqiyah",
+            "code": "SJ"
         },
         {
-            "code": "SJ",
-            "name": "Janub ash Sharqiyah"
+            "name": "Musandam",
+            "code": "MU"
         },
         {
-            "code": "MU",
-            "name": "Musandam"
+            "name": "Shamal al Batinah",
+            "code": "BS"
         },
         {
-            "code": "MA",
-            "name": "Muscat"
-        },
-        {
-            "code": "BS",
-            "name": "Shamal al Batinah"
-        },
-        {
-            "code": "SS",
-            "name": "Shamal ash Sharqiyah"
+            "name": "Shamal ash Sharqiyah",
+            "code": "SS"
         }
     ],
     "PA": [
@@ -15653,12 +15541,12 @@
             "code": "BT"
         },
         {
-            "name": "Brașov",
-            "code": "BV"
-        },
-        {
             "name": "Brăila",
             "code": "BR"
+        },
+        {
+            "name": "Brașov",
+            "code": "BV"
         },
         {
             "name": "București",
@@ -15669,12 +15557,12 @@
             "code": "BZ"
         },
         {
-            "name": "Caraș-Severin",
-            "code": "CS"
-        },
-        {
             "name": "Călărași",
             "code": "CL"
+        },
+        {
+            "name": "Caraș-Severin",
+            "code": "CS"
         },
         {
             "name": "Cluj",
@@ -15753,12 +15641,12 @@
             "code": "PH"
         },
         {
-            "name": "Satu Mare",
-            "code": "SM"
-        },
-        {
             "name": "Sălaj",
             "code": "SJ"
+        },
+        {
+            "name": "Satu Mare",
+            "code": "SM"
         },
         {
             "name": "Sibiu",
@@ -15781,12 +15669,12 @@
             "code": "TL"
         },
         {
-            "name": "Vaslui",
-            "code": "VS"
-        },
-        {
             "name": "Vâlcea",
             "code": "VL"
+        },
+        {
+            "name": "Vaslui",
+            "code": "VS"
         },
         {
             "name": "Vrancea",
@@ -16221,10 +16109,6 @@
             "code": "TA"
         },
         {
-            "name": "Tuva",
-            "code": "TY"
-        },
-        {
             "name": "Ținutul Altai",
             "code": "ALT"
         },
@@ -16251,6 +16135,10 @@
         {
             "name": "Ținutul Stavropol",
             "code": "STA"
+        },
+        {
+            "name": "Tuva",
+            "code": "TY"
         },
         {
             "name": "Udmurtia",
@@ -16667,10 +16555,6 @@
         {
             "name": "Insula Sfânta Elena",
             "code": "HL"
-        },
-        {
-            "name": "Tristan da Cunha",
-            "code": "TA"
         }
     ],
     "SI": [
@@ -19739,10 +19623,6 @@
             "code": "313"
         },
         {
-            "name": "Eastern",
-            "code": "E"
-        },
-        {
             "name": "Gomba",
             "code": "121"
         },
@@ -19843,6 +19723,10 @@
             "code": "332"
         },
         {
+            "name": "Regiunea Estică",
+            "code": "E"
+        },
+        {
             "name": "Rubanda",
             "code": "429"
         },
@@ -19923,10 +19807,6 @@
             "code": "AK"
         },
         {
-            "name": "American Samoa",
-            "code": "AS"
-        },
-        {
             "name": "Arizona",
             "code": "AZ"
         },
@@ -19973,10 +19853,6 @@
         {
             "name": "Georgia",
             "code": "GA"
-        },
-        {
-            "name": "Guam",
-            "code": "GU"
         },
         {
             "name": "Hawaii",
@@ -20067,10 +19943,6 @@
             "code": "NY"
         },
         {
-            "name": "Northern Mariana Islands",
-            "code": "MP"
-        },
-        {
             "name": "Ohio",
             "code": "OH"
         },
@@ -20087,10 +19959,6 @@
             "code": "PA"
         },
         {
-            "name": "Puerto Rico",
-            "code": "PR"
-        },
-        {
             "name": "Rhode Island",
             "code": "RI"
         },
@@ -20101,14 +19969,6 @@
         {
             "name": "Texas",
             "code": "TX"
-        },
-        {
-            "name": "U.S. Outlying Islands",
-            "code": "UM"
-        },
-        {
-            "name": "U.S. Virgin Islands",
-            "code": "VI"
         },
         {
             "name": "Utah",
@@ -20417,16 +20277,16 @@
             "code": "43"
         },
         {
-            "name": "Bạc Liêu",
-            "code": "55"
-        },
-        {
             "name": "Bắc Giang",
             "code": "54"
         },
         {
             "name": "Bắc Kạn",
             "code": "53"
+        },
+        {
+            "name": "Bạc Liêu",
+            "code": "55"
         },
         {
             "name": "Bắc Ninh",
@@ -20549,16 +20409,16 @@
             "code": "01"
         },
         {
+            "name": "Lâm Đồng",
+            "code": "35"
+        },
+        {
             "name": "Lạng Sơn",
             "code": "09"
         },
         {
             "name": "Lào Cai",
             "code": "02"
-        },
-        {
-            "name": "Lâm Đồng",
-            "code": "35"
         },
         {
             "name": "Long An",

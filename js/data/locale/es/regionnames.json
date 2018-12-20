@@ -1303,7 +1303,7 @@
             "code": "34"
         },
         {
-            "name": "Mymensingh Division",
+            "name": "Mymensingh²",
             "code": "H"
         },
         {
@@ -3009,7 +3009,7 @@
             "code": "08"
         },
         {
-            "name": "Zanzan²",
+            "name": "Zanzan",
             "code": "ZZ"
         }
     ],
@@ -3119,140 +3119,140 @@
     ],
     "CN": [
         {
-            "name": "Pekín",
-            "code": "11"
-        },
-        {
-            "name": "Tianjin",
-            "code": "12"
-        },
-        {
-            "name": "Hebei",
-            "code": "13"
-        },
-        {
-            "name": "Shanxi",
-            "code": "14"
-        },
-        {
-            "name": "Mongolia Interior",
-            "code": "15"
-        },
-        {
-            "name": "Liaoning",
-            "code": "21"
-        },
-        {
-            "name": "Jilin",
-            "code": "22"
-        },
-        {
-            "name": "Heilongjiang",
-            "code": "23"
-        },
-        {
-            "name": "Shanghái",
-            "code": "31"
-        },
-        {
-            "name": "Jiangsu",
-            "code": "32"
-        },
-        {
-            "name": "Zhejiang",
-            "code": "33"
-        },
-        {
             "name": "Anhui",
-            "code": "34"
-        },
-        {
-            "name": "Fujian",
-            "code": "35"
-        },
-        {
-            "name": "Jiangxi",
-            "code": "36"
-        },
-        {
-            "name": "Shandong",
-            "code": "37"
-        },
-        {
-            "name": "Henan",
-            "code": "41"
-        },
-        {
-            "name": "Hubei",
-            "code": "42"
-        },
-        {
-            "name": "Hunan",
-            "code": "43"
-        },
-        {
-            "name": "Provincia de Cantón",
-            "code": "44"
-        },
-        {
-            "name": "Guangxi",
-            "code": "45"
-        },
-        {
-            "name": "Hainan",
-            "code": "46"
+            "code": "AH"
         },
         {
             "name": "Chongqing",
-            "code": "50"
+            "code": "CQ"
         },
         {
-            "name": "Sichuan",
-            "code": "51"
-        },
-        {
-            "name": "Guizhou",
-            "code": "52"
-        },
-        {
-            "name": "Yunnan",
-            "code": "53"
-        },
-        {
-            "name": "Tíbet",
-            "code": "54"
-        },
-        {
-            "name": "Shaanxi",
-            "code": "61"
+            "name": "Fujian",
+            "code": "FJ"
         },
         {
             "name": "Gansu",
-            "code": "62"
+            "code": "GS"
         },
         {
-            "name": "Qinghai",
-            "code": "63"
+            "name": "Guangxi",
+            "code": "GX"
+        },
+        {
+            "name": "Guizhou",
+            "code": "GZ"
+        },
+        {
+            "name": "Hainan",
+            "code": "HI"
+        },
+        {
+            "name": "Hebei",
+            "code": "HE"
+        },
+        {
+            "name": "Heilongjiang",
+            "code": "HL"
+        },
+        {
+            "name": "Henan",
+            "code": "HA"
+        },
+        {
+            "name": "Hong Kong",
+            "code": "HK"
+        },
+        {
+            "name": "Hubei",
+            "code": "HB"
+        },
+        {
+            "name": "Hunan",
+            "code": "HN"
+        },
+        {
+            "name": "Jiangsu",
+            "code": "JS"
+        },
+        {
+            "name": "Jiangxi",
+            "code": "JX"
+        },
+        {
+            "name": "Jilin",
+            "code": "JL"
+        },
+        {
+            "name": "Liaoning",
+            "code": "LN"
+        },
+        {
+            "name": "Macao",
+            "code": "MO"
+        },
+        {
+            "name": "Mongolia Interior",
+            "code": "NM"
         },
         {
             "name": "Ningxia",
-            "code": "64"
+            "code": "NX"
+        },
+        {
+            "name": "Pekín",
+            "code": "BJ"
+        },
+        {
+            "name": "Provincia de Cantón",
+            "code": "GD"
+        },
+        {
+            "name": "Provincia de Taiwán",
+            "code": "TW"
+        },
+        {
+            "name": "Qinghai",
+            "code": "QH"
+        },
+        {
+            "name": "Shaanxi",
+            "code": "SN"
+        },
+        {
+            "name": "Shandong",
+            "code": "SD"
+        },
+        {
+            "name": "Shanghái",
+            "code": "SH"
+        },
+        {
+            "name": "Shanxi",
+            "code": "SX"
+        },
+        {
+            "name": "Sichuan",
+            "code": "SC"
         },
         {
             "name": "Sinkiang",
-            "code": "65"
+            "code": "XJ"
         },
         {
-            "name": "Taiwan",
-            "code": "71"
+            "name": "Tianjin",
+            "code": "TJ"
         },
         {
-            "name": "Hong Kong SAR China",
-            "code": "91"
+            "name": "Tíbet",
+            "code": "XZ"
         },
         {
-            "name": "Macau SAR China",
-            "code": "92"
+            "name": "Yunnan",
+            "code": "YN"
+        },
+        {
+            "name": "Zhejiang",
+            "code": "ZJ"
         }
     ],
     "CO": [
@@ -3611,68 +3611,112 @@
     ],
     "CZ": [
         {
-            "name": "Benešov",
-            "code": "201"
-        },
-        {
-            "name": "Beroun",
-            "code": "202"
-        },
-        {
-            "name": "Blansko",
-            "code": "641"
-        },
-        {
             "name": "Bohemia Central",
             "code": "20"
-        },
-        {
-            "name": "Břeclav",
-            "code": "644"
         },
         {
             "name": "Brno-město",
             "code": "642"
         },
         {
-            "name": "Brno-venkov",
+            "name": "Distrito de Benešov",
+            "code": "201"
+        },
+        {
+            "name": "Distrito de Beroun",
+            "code": "202"
+        },
+        {
+            "name": "Distrito de Blansko",
+            "code": "641"
+        },
+        {
+            "name": "Distrito de Břeclav",
+            "code": "644"
+        },
+        {
+            "name": "Distrito de Brno",
             "code": "643"
         },
         {
-            "name": "Bruntál",
+            "name": "Distrito de Bruntál",
             "code": "801"
         },
         {
-            "name": "Česká Lípa",
+            "name": "Distrito de Česká Lípa",
             "code": "511"
         },
         {
-            "name": "České Budějovice",
+            "name": "Distrito de České Budějovice",
             "code": "311"
         },
         {
-            "name": "Český Krumlov",
+            "name": "Distrito de Český Krumlov",
             "code": "312"
         },
         {
-            "name": "Cheb",
+            "name": "Distrito de Cheb",
             "code": "411"
         },
         {
-            "name": "Chomutov",
+            "name": "Distrito de Chomutov",
             "code": "422"
         },
         {
-            "name": "Chrudim",
+            "name": "Distrito de Chrudim",
             "code": "531"
         },
         {
-            "name": "Děčín",
+            "name": "Distrito de Ciudad de Pilsen",
+            "code": "323"
+        },
+        {
+            "name": "Distrito de Děčín",
             "code": "421"
+        },
+        {
+            "name": "Distrito de Domažlice",
+            "code": "321"
         },
         {
             "name": "Distrito de Frýdek-Místek",
             "code": "802"
+        },
+        {
+            "name": "Distrito de Havlíčkův Brod",
+            "code": "631"
+        },
+        {
+            "name": "Distrito de Hodonín",
+            "code": "645"
+        },
+        {
+            "name": "Distrito de Hradec Králové",
+            "code": "521"
+        },
+        {
+            "name": "Distrito de Jablonec nad Nisou",
+            "code": "512"
+        },
+        {
+            "name": "Distrito de Jeseník",
+            "code": "711"
+        },
+        {
+            "name": "Distrito de Jičín",
+            "code": "522"
+        },
+        {
+            "name": "Distrito de Jihlava",
+            "code": "632"
+        },
+        {
+            "name": "Distrito de Jindřichův Hradec",
+            "code": "313"
+        },
+        {
+            "name": "Distrito de Karviná",
+            "code": "803"
         },
         {
             "name": "Distrito de Kladno",
@@ -3687,136 +3731,188 @@
             "code": "204"
         },
         {
+            "name": "Distrito de Kroměříž",
+            "code": "721"
+        },
+        {
+            "name": "Distrito de Kutná Hora",
+            "code": "205"
+        },
+        {
+            "name": "Distrito de Liberec",
+            "code": "513"
+        },
+        {
+            "name": "Distrito de Litoměřice",
+            "code": "423"
+        },
+        {
             "name": "Distrito de Louny",
             "code": "424"
+        },
+        {
+            "name": "Distrito de Mělník",
+            "code": "206"
         },
         {
             "name": "Distrito de Mladá Boleslav",
             "code": "207"
         },
         {
+            "name": "Distrito de Most",
+            "code": "425"
+        },
+        {
+            "name": "Distrito de Náchod",
+            "code": "523"
+        },
+        {
+            "name": "Distrito de Nový Jičín",
+            "code": "804"
+        },
+        {
+            "name": "Distrito de Nymburk",
+            "code": "208"
+        },
+        {
+            "name": "Distrito de Olomouc",
+            "code": "712"
+        },
+        {
+            "name": "Distrito de Opava",
+            "code": "805"
+        },
+        {
+            "name": "Distrito de Ostrava",
+            "code": "806"
+        },
+        {
+            "name": "Distrito de Pardubice",
+            "code": "532"
+        },
+        {
             "name": "Distrito de Pelhřimov",
             "code": "633"
+        },
+        {
+            "name": "Distrito de Pilsen Norte",
+            "code": "325"
+        },
+        {
+            "name": "Distrito de Pilsen Sur",
+            "code": "324"
+        },
+        {
+            "name": "Distrito de Písek",
+            "code": "314"
+        },
+        {
+            "name": "Distrito de Prachatic",
+            "code": "315"
+        },
+        {
+            "name": "Distrito de Praga-Este",
+            "code": "209"
+        },
+        {
+            "name": "Distrito de Praga-Oeste",
+            "code": "20A"
+        },
+        {
+            "name": "Distrito de Přerov",
+            "code": "714"
+        },
+        {
+            "name": "Distrito de Příbram",
+            "code": "20B"
         },
         {
             "name": "Distrito de Prostějov",
             "code": "713"
         },
         {
-            "name": "Domažlice",
-            "code": "321"
+            "name": "Distrito de Rakovník",
+            "code": "20C"
         },
         {
-            "name": "Havlíčkův Brod",
-            "code": "631"
+            "name": "Distrito de Rokycany",
+            "code": "326"
         },
         {
-            "name": "Hodonín",
-            "code": "645"
+            "name": "Distrito de Rychnov nad Kněžnou",
+            "code": "524"
         },
         {
-            "name": "Hradec Králové",
-            "code": "521"
+            "name": "Distrito de Semily",
+            "code": "514"
         },
         {
-            "name": "Jablonec nad Nisou",
-            "code": "512"
+            "name": "Distrito de Sokolov",
+            "code": "413"
         },
         {
-            "name": "Jeseník",
-            "code": "711"
+            "name": "Distrito de Strakonice",
+            "code": "316"
         },
         {
-            "name": "Jičín",
-            "code": "522"
+            "name": "Distrito de Šumperk",
+            "code": "715"
         },
         {
-            "name": "Jihlava",
-            "code": "632"
+            "name": "Distrito de Svitavy",
+            "code": "533"
         },
         {
-            "name": "Jindřichův Hradec",
-            "code": "313"
+            "name": "Distrito de Tábor",
+            "code": "317"
+        },
+        {
+            "name": "Distrito de Tachov",
+            "code": "327"
+        },
+        {
+            "name": "Distrito de Teplice",
+            "code": "426"
+        },
+        {
+            "name": "Distrito de Třebíč",
+            "code": "634"
+        },
+        {
+            "name": "Distrito de Trutnov",
+            "code": "525"
+        },
+        {
+            "name": "Distrito de Uherské Hradiště",
+            "code": "722"
+        },
+        {
+            "name": "Distrito de Ústí nad Orlicí",
+            "code": "534"
+        },
+        {
+            "name": "Distrito de Vsetín",
+            "code": "723"
+        },
+        {
+            "name": "Distrito de Vyškov",
+            "code": "646"
+        },
+        {
+            "name": "Distrito de Žďár nad Sázavou",
+            "code": "635"
+        },
+        {
+            "name": "Distrito de Zlín",
+            "code": "724"
+        },
+        {
+            "name": "Distrito de Znojmo",
+            "code": "647"
         },
         {
             "name": "Karlovy Vary",
             "code": "412"
-        },
-        {
-            "name": "Karviná",
-            "code": "803"
-        },
-        {
-            "name": "Kroměříž",
-            "code": "721"
-        },
-        {
-            "name": "Kutná Hora",
-            "code": "205"
-        },
-        {
-            "name": "Liberec",
-            "code": "513"
-        },
-        {
-            "name": "Litoměřice",
-            "code": "423"
-        },
-        {
-            "name": "Mělník",
-            "code": "206"
-        },
-        {
-            "name": "Most",
-            "code": "425"
-        },
-        {
-            "name": "Náchod",
-            "code": "523"
-        },
-        {
-            "name": "Nový Jičín",
-            "code": "804"
-        },
-        {
-            "name": "Nymburk",
-            "code": "208"
-        },
-        {
-            "name": "Olomouc",
-            "code": "712"
-        },
-        {
-            "name": "Opava",
-            "code": "805"
-        },
-        {
-            "name": "Ostrava",
-            "code": "806"
-        },
-        {
-            "name": "Pardubice",
-            "code": "532"
-        },
-        {
-            "name": "Písek",
-            "code": "314"
-        },
-        {
-            "name": "Plzeň",
-            "code": "323"
-        },
-        {
-            "name": "Plzeň-North",
-            "code": "325"
-        },
-        {
-            "name": "Plzeň-South",
-            "code": "324"
-        },
-        {
-            "name": "Prachatice",
-            "code": "315"
         },
         {
             "name": "Praga",
@@ -3911,26 +4007,6 @@
             "code": "121"
         },
         {
-            "name": "Prague-East",
-            "code": "209"
-        },
-        {
-            "name": "Prague-West",
-            "code": "20A"
-        },
-        {
-            "name": "Přerov",
-            "code": "714"
-        },
-        {
-            "name": "Příbram",
-            "code": "20B"
-        },
-        {
-            "name": "Rakovník",
-            "code": "20C"
-        },
-        {
             "name": "Región de Bohemia Meridional",
             "code": "31"
         },
@@ -3979,84 +4055,8 @@
             "code": "72"
         },
         {
-            "name": "Rokycany",
-            "code": "326"
-        },
-        {
-            "name": "Rychnov nad Kněžnou",
-            "code": "524"
-        },
-        {
-            "name": "Semily",
-            "code": "514"
-        },
-        {
-            "name": "Sokolov",
-            "code": "413"
-        },
-        {
-            "name": "Strakonice",
-            "code": "316"
-        },
-        {
-            "name": "Šumperk",
-            "code": "715"
-        },
-        {
-            "name": "Svitavy",
-            "code": "533"
-        },
-        {
-            "name": "Tábor",
-            "code": "317"
-        },
-        {
-            "name": "Tachov",
-            "code": "327"
-        },
-        {
-            "name": "Teplice",
-            "code": "426"
-        },
-        {
-            "name": "Třebíč",
-            "code": "634"
-        },
-        {
-            "name": "Trutnov",
-            "code": "525"
-        },
-        {
-            "name": "Uherské Hradiště",
-            "code": "722"
-        },
-        {
             "name": "Ústí nad Labem",
             "code": "427"
-        },
-        {
-            "name": "Ústí nad Orlicí",
-            "code": "534"
-        },
-        {
-            "name": "Vsetín",
-            "code": "723"
-        },
-        {
-            "name": "Vyškov",
-            "code": "646"
-        },
-        {
-            "name": "Žďár nad Sázavou",
-            "code": "635"
-        },
-        {
-            "name": "Zlín",
-            "code": "724"
-        },
-        {
-            "name": "Znojmo",
-            "code": "647"
         }
     ],
     "DE": [
@@ -4889,23 +4889,11 @@
             "code": "AR"
         },
         {
-            "name": "Asturias Province",
-            "code": "O"
-        },
-        {
-            "name": "Balears Province",
-            "code": "PM"
-        },
-        {
-            "name": "Canary Islands",
-            "code": "CN"
-        },
-        {
             "name": "Cantabria",
             "code": "CB"
         },
         {
-            "name": "Cantabria Province",
+            "name": "Cantabria²",
             "code": "S"
         },
         {
@@ -4949,6 +4937,10 @@
             "code": "IB"
         },
         {
+            "name": "Islas Baleares²",
+            "code": "PM"
+        },
+        {
             "name": "La Rioja",
             "code": "LO"
         },
@@ -4961,16 +4953,12 @@
             "code": "ML"
         },
         {
-            "name": "Murcia",
-            "code": "MU"
-        },
-        {
-            "name": "Navarra",
-            "code": "NA"
-        },
-        {
             "name": "Navarra",
             "code": "NC"
+        },
+        {
+            "name": "Navarra²",
+            "code": "NA"
         },
         {
             "name": "País Vasco",
@@ -4991,6 +4979,10 @@
         {
             "name": "Provincia de Almería",
             "code": "AL"
+        },
+        {
+            "name": "provincia de Asturias",
+            "code": "O"
         },
         {
             "name": "Provincia de Ávila",
@@ -5083,6 +5075,10 @@
         {
             "name": "provincia de Málaga",
             "code": "MA"
+        },
+        {
+            "name": "provincia de Murcia",
+            "code": "MU"
         },
         {
             "name": "Provincia de Orense",
@@ -5200,10 +5196,6 @@
         }
     ],
     "FI": [
-        {
-            "name": "Åland Islands",
-            "code": "01"
-        },
         {
             "name": "Karelia del Sur",
             "code": "02"
@@ -5483,10 +5475,6 @@
             "code": "BRE"
         },
         {
-            "name": "Brittany",
-            "code": "E"
-        },
-        {
             "name": "Calvados",
             "code": "14"
         },
@@ -5511,10 +5499,6 @@
             "code": "18"
         },
         {
-            "name": "Clipperton Island",
-            "code": "CP"
-        },
-        {
             "name": "Córcega",
             "code": "COR"
         },
@@ -5525,10 +5509,6 @@
         {
             "name": "Corréze",
             "code": "19"
-        },
-        {
-            "name": "Corsica",
-            "code": "H"
         },
         {
             "name": "Côte-d’Or",
@@ -5575,18 +5555,6 @@
             "code": "29"
         },
         {
-            "name": "French Guiana",
-            "code": "GF"
-        },
-        {
-            "name": "French Polynesia",
-            "code": "PF"
-        },
-        {
-            "name": "French Southern Territories",
-            "code": "TF"
-        },
-        {
             "name": "Gard",
             "code": "30"
         },
@@ -5605,10 +5573,6 @@
         {
             "name": "Guadeloupe",
             "code": "GUA"
-        },
-        {
-            "name": "Guadeloupe²",
-            "code": "GP"
         },
         {
             "name": "Hauts-de-France",
@@ -5691,20 +5655,12 @@
             "code": "51"
         },
         {
-            "name": "Martinique",
-            "code": "MQ"
-        },
-        {
             "name": "Mayenne",
             "code": "53"
         },
         {
             "name": "Mayotte",
             "code": "MAY"
-        },
-        {
-            "name": "Mayotte²",
-            "code": "YT"
         },
         {
             "name": "Meurthe y Mosela",
@@ -5721,10 +5677,6 @@
         {
             "name": "Mosela",
             "code": "57"
-        },
-        {
-            "name": "New Caledonia",
-            "code": "NC"
         },
         {
             "name": "Nièvre",
@@ -5783,10 +5735,6 @@
             "code": "63"
         },
         {
-            "name": "Réunion",
-            "code": "RE"
-        },
-        {
             "name": "Ródano",
             "code": "69"
         },
@@ -5817,18 +5765,6 @@
         {
             "name": "Somme",
             "code": "80"
-        },
-        {
-            "name": "St. Barthélemy",
-            "code": "BL"
-        },
-        {
-            "name": "St. Martin",
-            "code": "MF"
-        },
-        {
-            "name": "St. Pierre & Miquelon",
-            "code": "PM"
         },
         {
             "name": "Tarn",
@@ -5869,10 +5805,6 @@
         {
             "name": "Vosgos",
             "code": "88"
-        },
-        {
-            "name": "Wallis & Futuna",
-            "code": "WF"
         },
         {
             "name": "Yonne",
@@ -5963,7 +5895,7 @@
             "code": "ARM"
         },
         {
-            "name": "Armagh, Banbridge and Craigavon",
+            "name": "Armagh",
             "code": "ABC"
         },
         {
@@ -6021,10 +5953,6 @@
         {
             "name": "Bracknell Forest",
             "code": "BRC"
-        },
-        {
-            "name": "Bradford",
-            "code": "BRD"
         },
         {
             "name": "Brent",
@@ -6103,6 +6031,10 @@
             "code": "LND"
         },
         {
+            "name": "Ciudad de Bradford",
+            "code": "BRD"
+        },
+        {
             "name": "Ciudad de Wakefield",
             "code": "WKF"
         },
@@ -6167,12 +6099,12 @@
             "code": "DRY"
         },
         {
-            "name": "Derry and Strabane",
-            "code": "DRS"
-        },
-        {
             "name": "Devon",
             "code": "DEV"
+        },
+        {
+            "name": "Distrito de Derry y Strabane",
+            "code": "DRS"
         },
         {
             "name": "Dorset",
@@ -6567,12 +6499,12 @@
             "code": "NWP"
         },
         {
-            "name": "Newry and Mourne",
-            "code": "NYM"
+            "name": "Newry",
+            "code": "NMD"
         },
         {
-            "name": "Newry, Mourne and Down",
-            "code": "NMD"
+            "name": "Newry and Mourne",
+            "code": "NYM"
         },
         {
             "name": "Newtownabbey",
@@ -9733,7 +9665,7 @@
             "code": "26"
         },
         {
-            "name": "Migori",
+            "name": "Condado de Migori",
             "code": "27"
         },
         {
@@ -10097,7 +10029,7 @@
             "code": "13"
         },
         {
-            "name": "Nampho",
+            "name": "Namp’o",
             "code": "14"
         }
     ],
@@ -10719,20 +10651,24 @@
             "code": "02"
         },
         {
-            "name": "Anykščiai",
-            "code": "04"
-        },
-        {
             "name": "Birštonas",
             "code": "05"
         },
         {
-            "name": "Biržai",
+            "name": "Ciudad Municipio de Kaunas",
+            "code": "15"
+        },
+        {
+            "name": "Distrito de Anykščiai",
+            "code": "04"
+        },
+        {
+            "name": "Distrito de Biržai",
             "code": "06"
         },
         {
-            "name": "Ciudad Municipio de Kaunas",
-            "code": "15"
+            "name": "Distrito de Ignalina",
+            "code": "09"
         },
         {
             "name": "Distrito de Jurbarkas",
@@ -10745,6 +10681,26 @@
         {
             "name": "Distrito de Kretinga",
             "code": "22"
+        },
+        {
+            "name": "Distrito de Kupiškis",
+            "code": "23"
+        },
+        {
+            "name": "Distrito de Molėtai",
+            "code": "27"
+        },
+        {
+            "name": "Distrito de Panevėžys",
+            "code": "33"
+        },
+        {
+            "name": "Distrito de Pasvalys",
+            "code": "34"
+        },
+        {
+            "name": "Distrito de Rokiškis",
+            "code": "40"
         },
         {
             "name": "Distrito de Šilalė",
@@ -10761,6 +10717,14 @@
         {
             "name": "Distrito de Tauragė",
             "code": "50"
+        },
+        {
+            "name": "Distrito de Utena",
+            "code": "54"
+        },
+        {
+            "name": "Distrito de Zarasai",
+            "code": "60"
         },
         {
             "name": "Distrito municipal de Kėdainiai",
@@ -10807,10 +10771,6 @@
             "code": "08"
         },
         {
-            "name": "Ignalina",
-            "code": "09"
-        },
-        {
             "name": "Joniškis",
             "code": "11"
         },
@@ -10831,10 +10791,6 @@
             "code": "20"
         },
         {
-            "name": "Kupiškis",
-            "code": "23"
-        },
-        {
             "name": "Lazdijai",
             "code": "24"
         },
@@ -10845,10 +10801,6 @@
         {
             "name": "Marijampolė²",
             "code": "MR"
-        },
-        {
-            "name": "Molėtai",
-            "code": "27"
         },
         {
             "name": "Municipio de Rietavas",
@@ -10873,14 +10825,6 @@
         {
             "name": "Panevėžio Municipality",
             "code": "32"
-        },
-        {
-            "name": "Panevėžys",
-            "code": "33"
-        },
-        {
-            "name": "Pasvalys",
-            "code": "34"
         },
         {
             "name": "Provincia de Alytus",
@@ -10923,10 +10867,6 @@
             "code": "37"
         },
         {
-            "name": "Rokiškis",
-            "code": "40"
-        },
-        {
             "name": "Šakiai",
             "code": "41"
         },
@@ -10959,10 +10899,6 @@
             "code": "53"
         },
         {
-            "name": "Utena",
-            "code": "54"
-        },
-        {
             "name": "Varėna",
             "code": "55"
         },
@@ -10981,10 +10917,6 @@
         {
             "name": "Visaginas",
             "code": "59"
-        },
-        {
-            "name": "Zarasai",
-            "code": "60"
         }
     ],
     "LU": [
@@ -11035,18 +10967,6 @@
         {
             "name": "Cantón de Wiltz",
             "code": "WI"
-        },
-        {
-            "name": "Diekirch²",
-            "code": "D"
-        },
-        {
-            "name": "Grevenmacher²",
-            "code": "G"
-        },
-        {
-            "name": "Luxembourg²",
-            "code": "L"
         }
     ],
     "LV": [
@@ -12285,7 +12205,7 @@
             "code": "ALK"
         },
         {
-            "name": "Arno",
+            "name": "Arno (isla)",
             "code": "ARN"
         },
         {
@@ -12923,68 +12843,64 @@
     ],
     "MR": [
         {
-            "name": "Adrar",
-            "code": "07"
-        },
-        {
-            "name": "Assaba",
-            "code": "03"
-        },
-        {
-            "name": "Brakna",
-            "code": "05"
-        },
-        {
-            "name": "Dajlet Nuadibú",
-            "code": "08"
-        },
-        {
-            "name": "Gorgol",
-            "code": "04"
-        },
-        {
-            "name": "Guidimaka",
-            "code": "10"
+            "name": "Hod Oriental",
+            "code": "01"
         },
         {
             "name": "Hod Occidental",
             "code": "02"
         },
         {
-            "name": "Hod Oriental",
-            "code": "01"
+            "name": "Assaba",
+            "code": "03"
         },
         {
-            "name": "Inchiri",
-            "code": "12"
+            "name": "Gorgol",
+            "code": "04"
         },
         {
-            "name": "Nouakchott",
-            "code": "NKC"
+            "name": "Brakna",
+            "code": "05"
         },
         {
-            "name": "Nouakchott Nord",
-            "code": "14"
+            "name": "Trarza",
+            "code": "06"
         },
         {
-            "name": "Nouakchott Ouest",
-            "code": "13"
+            "name": "Adrar",
+            "code": "07"
         },
         {
-            "name": "Nouakchott Sud",
-            "code": "15"
+            "name": "Dajlet Nuadibú",
+            "code": "08"
         },
         {
             "name": "Tagant",
             "code": "09"
         },
         {
+            "name": "Guidimaka",
+            "code": "10"
+        },
+        {
             "name": "Tiris Zemmur",
             "code": "11"
         },
         {
-            "name": "Trarza",
-            "code": "06"
+            "name": "Inchiri",
+            "code": "12"
+        },
+        {
+            "name": "Nouakchott Ouest",
+            "code": "13"
+        },
+        {
+            "name": "Nouakchott Nord",
+            "code": "14"
+        },
+        {
+            "name": "Nouakchott Sud",
+            "code": "15"
         }
     ],
     "MT": [
@@ -14131,20 +14047,12 @@
     ],
     "NL": [
         {
-            "name": "Aruba",
-            "code": "AW"
-        },
-        {
             "name": "Bonaire",
             "code": "BQ1"
         },
         {
             "name": "Brabante Septentrional",
             "code": "NB"
-        },
-        {
-            "name": "Curaçao",
-            "code": "CW"
         },
         {
             "name": "Drente",
@@ -14193,10 +14101,6 @@
         {
             "name": "San Eustaquio",
             "code": "BQ3"
-        },
-        {
-            "name": "Sint Maarten",
-            "code": "SX"
         },
         {
             "name": "Zelanda",
@@ -14459,10 +14363,6 @@
             "code": "NSN"
         },
         {
-            "name": "North Island",
-            "code": "N"
-        },
-        {
             "name": "Northland",
             "code": "NTL"
         },
@@ -14477,10 +14377,6 @@
         {
             "name": "Región de Wellington",
             "code": "WGN"
-        },
-        {
-            "name": "South Island",
-            "code": "S"
         },
         {
             "name": "Southland",
@@ -14509,16 +14405,12 @@
             "code": "ZA"
         },
         {
-            "name": "Al Batinah",
-            "code": "BA"
+            "name": "Al Batinah Norte gobernación",
+            "code": "BS"
         },
         {
             "name": "Al Batinah Sur gobernación",
             "code": "BJ"
-        },
-        {
-            "name": "Ash Sharqiyah",
-            "code": "SH"
         },
         {
             "name": "Ash Sharqiyah Sur Gobernación",
@@ -14551,10 +14443,6 @@
         {
             "name": "Musandam",
             "code": "MU"
-        },
-        {
-            "name": "Shamal al Batinah",
-            "code": "BS"
         }
     ],
     "PA": [
@@ -15839,6 +15727,10 @@
             "code": "09"
         },
         {
+            "name": "distrito de Kosovo",
+            "code": "25"
+        },
+        {
             "name": "Distrito de Mačva",
             "code": "08"
         },
@@ -15893,10 +15785,6 @@
         {
             "name": "Distrito de Zlatibor",
             "code": "16"
-        },
-        {
-            "name": "Kosovo",
-            "code": "25"
         },
         {
             "name": "Kosovo-Pomoravlje",
@@ -16667,10 +16555,6 @@
         {
             "name": "Isla Santa Elena",
             "code": "HL"
-        },
-        {
-            "name": "Tristan da Cunha",
-            "code": "TA"
         }
     ],
     "SI": [
@@ -17975,12 +17859,12 @@
     ],
     "TD": [
         {
-            "name": "Ennedi Ouest",
-            "code": "EO"
+            "name": "Ennedi Est",
+            "code": "EE"
         },
         {
-            "name": "Ennedi-Est",
-            "code": "EE"
+            "name": "Ennedi Ouest",
+            "code": "EO"
         },
         {
             "name": "Región de Barh El Gazel",
@@ -19097,6 +18981,10 @@
             "code": "HSZ"
         },
         {
+            "name": "Islas Pescadores",
+            "code": "PEN"
+        },
+        {
             "name": "Kaohsiung",
             "code": "KHH"
         },
@@ -19115,10 +19003,6 @@
         {
             "name": "New Taipei",
             "code": "NWT"
-        },
-        {
-            "name": "Penghu",
-            "code": "PEN"
         },
         {
             "name": "Taichung",
@@ -19923,10 +19807,6 @@
             "code": "AK"
         },
         {
-            "name": "American Samoa",
-            "code": "AS"
-        },
-        {
             "name": "Arizona",
             "code": "AZ"
         },
@@ -19973,10 +19853,6 @@
         {
             "name": "Georgia",
             "code": "GA"
-        },
-        {
-            "name": "Guam",
-            "code": "GU"
         },
         {
             "name": "Hawái",
@@ -20051,10 +19927,6 @@
             "code": "NV"
         },
         {
-            "name": "Northern Mariana Islands",
-            "code": "MP"
-        },
-        {
             "name": "Nueva Jersey",
             "code": "NJ"
         },
@@ -20087,10 +19959,6 @@
             "code": "PA"
         },
         {
-            "name": "Puerto Rico",
-            "code": "PR"
-        },
-        {
             "name": "Rhode Island",
             "code": "RI"
         },
@@ -20101,14 +19969,6 @@
         {
             "name": "Texas",
             "code": "TX"
-        },
-        {
-            "name": "U.S. Outlying Islands",
-            "code": "UM"
-        },
-        {
-            "name": "U.S. Virgin Islands",
-            "code": "VI"
         },
         {
             "name": "Utah",
@@ -20301,7 +20161,7 @@
             "code": "05"
         },
         {
-            "name": "Grenadines",
+            "name": "Granadinas (San Vicente y las Granadinas)",
             "code": "06"
         }
     ],
@@ -20749,10 +20609,6 @@
     ],
     "YE": [
         {
-            "name": "Arkhabil Suqutra",
-            "code": "SU"
-        },
-        {
             "name": "Gobernación de ‘Adan",
             "code": "AD"
         },
@@ -20823,6 +20679,10 @@
         {
             "name": "Gobernación de Shabwah",
             "code": "SH"
+        },
+        {
+            "name": "Gobernación de Socotra",
+            "code": "SU"
         },
         {
             "name": "Gobernación de Ta’izz",
