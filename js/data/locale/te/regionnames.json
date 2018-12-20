@@ -2985,12 +2985,12 @@
             "code": "08"
         },
         {
-            "name": "అబిద్ జాన్",
-            "code": "AB"
+            "name": "Zanzan²",
+            "code": "ZZ"
         },
         {
-            "name": "జంజన్ ప్రాంతం",
-            "code": "ZZ"
+            "name": "అబిద్ జాన్",
+            "code": "AB"
         },
         {
             "name": "డెంగీ జిల్లా",
@@ -3119,140 +3119,140 @@
     ],
     "CN": [
         {
-            "name": "Fujian",
-            "code": "FJ"
-        },
-        {
-            "name": "Taiwan",
-            "code": "TW"
-        },
-        {
-            "name": "అన్హూయి",
-            "code": "AH"
-        },
-        {
-            "name": "ఇన్నర్ మంగోలియా",
-            "code": "NM"
-        },
-        {
-            "name": "ఖింగాయ్",
-            "code": "QH"
-        },
-        {
-            "name": "గాన్సు",
-            "code": "GS"
-        },
-        {
-            "name": "గుయిజో",
-            "code": "GZ"
-        },
-        {
-            "name": "గువాంగ్జీ జువాంగ్ అటానమస్ ప్రాంతం",
-            "code": "GX"
-        },
-        {
-            "name": "గ్వాంగ్‌డాంగ్",
-            "code": "GD"
-        },
-        {
-            "name": "చాంగ్ కింగ్",
-            "code": "CQ"
-        },
-        {
-            "name": "జింజియాంగ్",
-            "code": "XJ"
-        },
-        {
-            "name": "జియాంగ్సీ",
-            "code": "JX"
-        },
-        {
-            "name": "జియాంగ్సు",
-            "code": "JS"
-        },
-        {
-            "name": "జిలిన్",
-            "code": "JL"
-        },
-        {
-            "name": "జీజంగ్",
-            "code": "ZJ"
-        },
-        {
-            "name": "టిబెట్ స్వాధికార ప్రాంతం",
-            "code": "XZ"
+            "name": "బీజింగ్",
+            "code": "11"
         },
         {
             "name": "టియాంజిన్",
-            "code": "TJ"
-        },
-        {
-            "name": "నింజీియా హూయి అటానమస్ ప్రాంతం",
-            "code": "NX"
-        },
-        {
-            "name": "బీజింగ్",
-            "code": "BJ"
-        },
-        {
-            "name": "మకావు",
-            "code": "MO"
-        },
-        {
-            "name": "యునాన్",
-            "code": "YN"
-        },
-        {
-            "name": "లియోవానింగ్",
-            "code": "LN"
-        },
-        {
-            "name": "షాంక్సి",
-            "code": "SX"
-        },
-        {
-            "name": "షాంక్సి²",
-            "code": "SN"
-        },
-        {
-            "name": "షాంఘై",
-            "code": "SH"
-        },
-        {
-            "name": "షాండాంగ్",
-            "code": "SD"
-        },
-        {
-            "name": "సిచువాన్",
-            "code": "SC"
-        },
-        {
-            "name": "హాంగ్‌కాంగ్",
-            "code": "HK"
-        },
-        {
-            "name": "హీలాంగ్‌జియాంగ్",
-            "code": "HL"
-        },
-        {
-            "name": "హునాన్",
-            "code": "HN"
-        },
-        {
-            "name": "హుబే",
-            "code": "HB"
-        },
-        {
-            "name": "హెనాన్",
-            "code": "HA"
+            "code": "12"
         },
         {
             "name": "హెబీ",
-            "code": "HE"
+            "code": "13"
+        },
+        {
+            "name": "షాంక్సి",
+            "code": "14"
+        },
+        {
+            "name": "ఇన్నర్ మంగోలియా",
+            "code": "15"
+        },
+        {
+            "name": "లియోవానింగ్",
+            "code": "21"
+        },
+        {
+            "name": "జిలిన్",
+            "code": "22"
+        },
+        {
+            "name": "హీలాంగ్‌జియాంగ్",
+            "code": "23"
+        },
+        {
+            "name": "షాంఘై",
+            "code": "31"
+        },
+        {
+            "name": "జియాంగ్సు",
+            "code": "32"
+        },
+        {
+            "name": "జీజంగ్",
+            "code": "33"
+        },
+        {
+            "name": "అన్హూయి",
+            "code": "34"
+        },
+        {
+            "name": "Fujian",
+            "code": "35"
+        },
+        {
+            "name": "జియాంగ్సీ",
+            "code": "36"
+        },
+        {
+            "name": "షాండాంగ్",
+            "code": "37"
+        },
+        {
+            "name": "హెనాన్",
+            "code": "41"
+        },
+        {
+            "name": "హుబే",
+            "code": "42"
+        },
+        {
+            "name": "హునాన్",
+            "code": "43"
+        },
+        {
+            "name": "గ్వాంగ్‌డాంగ్",
+            "code": "44"
+        },
+        {
+            "name": "గువాంగ్జీ జువాంగ్ అటానమస్ ప్రాంతం",
+            "code": "45"
         },
         {
             "name": "హైనన్",
-            "code": "HI"
+            "code": "46"
+        },
+        {
+            "name": "చాంగ్ కింగ్",
+            "code": "50"
+        },
+        {
+            "name": "సిచువాన్",
+            "code": "51"
+        },
+        {
+            "name": "గుయిజో",
+            "code": "52"
+        },
+        {
+            "name": "యునాన్",
+            "code": "53"
+        },
+        {
+            "name": "టిబెట్ స్వాధికార ప్రాంతం",
+            "code": "54"
+        },
+        {
+            "name": "షాంక్సి²",
+            "code": "61"
+        },
+        {
+            "name": "గాన్సు",
+            "code": "62"
+        },
+        {
+            "name": "ఖింగాయ్",
+            "code": "63"
+        },
+        {
+            "name": "నింజీియా హూయి అటానమస్ ప్రాంతం",
+            "code": "64"
+        },
+        {
+            "name": "జింజియాంగ్",
+            "code": "65"
+        },
+        {
+            "name": "Taiwan",
+            "code": "71"
+        },
+        {
+            "name": "Hong Kong SAR China",
+            "code": "91"
+        },
+        {
+            "name": "Macau SAR China",
+            "code": "92"
         }
     ],
     "CO": [
@@ -4889,8 +4889,20 @@
             "code": "O"
         },
         {
+            "name": "Balears Province",
+            "code": "PM"
+        },
+        {
             "name": "Basque Country",
             "code": "PV"
+        },
+        {
+            "name": "Canary Islands",
+            "code": "CN"
+        },
+        {
+            "name": "Cantabria Province",
+            "code": "S"
         },
         {
             "name": "Castile and León",
@@ -4927,6 +4939,10 @@
         {
             "name": "Murcia",
             "code": "MU"
+        },
+        {
+            "name": "Navarra",
+            "code": "NA"
         },
         {
             "name": "Segovia",
@@ -4985,10 +5001,6 @@
             "code": "CB"
         },
         {
-            "name": "కాంటాబ్రియా²",
-            "code": "S"
-        },
-        {
             "name": "కాడిజ్ ప్రావిన్స్",
             "code": "CA"
         },
@@ -5045,10 +5057,6 @@
             "code": "NC"
         },
         {
-            "name": "నవార్²",
-            "code": "NA"
-        },
-        {
             "name": "పాంటివెద్రా ప్రావిన్స్",
             "code": "PO"
         },
@@ -5067,10 +5075,6 @@
         {
             "name": "బాలియారిక్ దీవులు",
             "code": "IB"
-        },
-        {
-            "name": "బాలియారిక్ దీవులు²",
-            "code": "PM"
         },
         {
             "name": "బిస్కే",
@@ -5196,6 +5200,10 @@
         }
     ],
     "FI": [
+        {
+            "name": "Åland Islands",
+            "code": "01"
+        },
         {
             "name": "దక్షిణ కరేలియా",
             "code": "02"
@@ -5375,6 +5383,10 @@
             "code": "BRE"
         },
         {
+            "name": "Brittany",
+            "code": "E"
+        },
+        {
             "name": "Burgundy-Franche-Comté",
             "code": "BFC"
         },
@@ -5383,8 +5395,28 @@
             "code": "CVL"
         },
         {
+            "name": "Clipperton Island",
+            "code": "CP"
+        },
+        {
+            "name": "Corsica",
+            "code": "H"
+        },
+        {
             "name": "Corsica",
             "code": "COR"
+        },
+        {
+            "name": "French Guiana",
+            "code": "GF"
+        },
+        {
+            "name": "French Polynesia",
+            "code": "PF"
+        },
+        {
+            "name": "French Southern Territories",
+            "code": "TF"
         },
         {
             "name": "Grand-Est",
@@ -5393,6 +5425,10 @@
         {
             "name": "Guadeloupe",
             "code": "GUA"
+        },
+        {
+            "name": "Guadeloupe²",
+            "code": "GP"
         },
         {
             "name": "Hauts-de-France",
@@ -5407,8 +5443,20 @@
             "code": "LRE"
         },
         {
+            "name": "Martinique",
+            "code": "MQ"
+        },
+        {
             "name": "Mayotte",
             "code": "MAY"
+        },
+        {
+            "name": "Mayotte²",
+            "code": "YT"
+        },
+        {
+            "name": "New Caledonia",
+            "code": "NC"
         },
         {
             "name": "Normandie",
@@ -5429,6 +5477,26 @@
         {
             "name": "Provence-Alpes-Côte-d’Azur",
             "code": "PAC"
+        },
+        {
+            "name": "Réunion",
+            "code": "RE"
+        },
+        {
+            "name": "St. Barthélemy",
+            "code": "BL"
+        },
+        {
+            "name": "St. Martin",
+            "code": "MF"
+        },
+        {
+            "name": "St. Pierre & Miquelon",
+            "code": "PM"
+        },
+        {
+            "name": "Wallis & Futuna",
+            "code": "WF"
         },
         {
             "name": "అర్డెన్నెస్",
@@ -5855,12 +5923,16 @@
     ],
     "GB": [
         {
-            "name": ", పశ్చిమ బెర్క్ షైర్",
-            "code": "WBK"
+            "name": "Aberdeenshire",
+            "code": "ABD"
         },
         {
             "name": "Anglesey",
             "code": "AGY"
+        },
+        {
+            "name": "Angus",
+            "code": "ANS"
         },
         {
             "name": "Antrim",
@@ -5875,8 +5947,20 @@
             "code": "ARD"
         },
         {
+            "name": "Ards and North Down",
+            "code": "AND"
+        },
+        {
+            "name": "Argyll and Bute",
+            "code": "AGB"
+        },
+        {
             "name": "Armagh",
             "code": "ARM"
+        },
+        {
+            "name": "Armagh, Banbridge and Craigavon",
+            "code": "ABC"
         },
         {
             "name": "Ballymena",
@@ -5891,8 +5975,20 @@
             "code": "BNB"
         },
         {
+            "name": "Barking and Dagenham",
+            "code": "BDG"
+        },
+        {
+            "name": "Barnet",
+            "code": "BNE"
+        },
+        {
             "name": "Barnsley",
             "code": "BNS"
+        },
+        {
+            "name": "Bath and North East Somerset",
+            "code": "BAS"
         },
         {
             "name": "Bedford",
@@ -5907,6 +6003,18 @@
             "code": "BEX"
         },
         {
+            "name": "Blackburn with Darwen",
+            "code": "BBD"
+        },
+        {
+            "name": "Blackpool",
+            "code": "BPL"
+        },
+        {
+            "name": "Blaenau Gwent",
+            "code": "BGW"
+        },
+        {
             "name": "Bolton",
             "code": "BOL"
         },
@@ -5915,12 +6023,32 @@
             "code": "BMH"
         },
         {
+            "name": "Bracknell Forest",
+            "code": "BRC"
+        },
+        {
             "name": "Bradford",
             "code": "BRD"
         },
         {
+            "name": "Brent",
+            "code": "BEN"
+        },
+        {
+            "name": "Bridgend",
+            "code": "BGE"
+        },
+        {
+            "name": "Brighton and Hove",
+            "code": "BNH"
+        },
+        {
             "name": "Bromley",
             "code": "BRY"
+        },
+        {
+            "name": "Buckinghamshire",
+            "code": "BKM"
         },
         {
             "name": "Bury",
@@ -5935,12 +6063,48 @@
             "code": "CLD"
         },
         {
+            "name": "Cambridgeshire",
+            "code": "CAM"
+        },
+        {
+            "name": "Camden",
+            "code": "CMD"
+        },
+        {
+            "name": "Carmarthenshire",
+            "code": "CMN"
+        },
+        {
             "name": "Carrickfergus",
             "code": "CKF"
         },
         {
             "name": "Castlereagh",
             "code": "CSR"
+        },
+        {
+            "name": "Causeway Coast and Glens",
+            "code": "CCG"
+        },
+        {
+            "name": "Central Bedfordshire",
+            "code": "CBF"
+        },
+        {
+            "name": "Ceredigion",
+            "code": "CGN"
+        },
+        {
+            "name": "Cheshire East",
+            "code": "CHE"
+        },
+        {
+            "name": "Cheshire West and Chester",
+            "code": "CHW"
+        },
+        {
+            "name": "Clackmannanshire",
+            "code": "CLK"
         },
         {
             "name": "Coleraine",
@@ -5955,6 +6119,10 @@
             "code": "CKT"
         },
         {
+            "name": "Cornwall",
+            "code": "CON"
+        },
+        {
             "name": "Craigavon",
             "code": "CGV"
         },
@@ -5963,8 +6131,20 @@
             "code": "CRY"
         },
         {
+            "name": "Cumbria",
+            "code": "CMA"
+        },
+        {
             "name": "Darlington",
             "code": "DAL"
+        },
+        {
+            "name": "Denbighshire",
+            "code": "DEN"
+        },
+        {
+            "name": "Derbyshire",
+            "code": "DBY"
         },
         {
             "name": "Derry",
@@ -5975,8 +6155,16 @@
             "code": "DRS"
         },
         {
+            "name": "Devon",
+            "code": "DEV"
+        },
+        {
             "name": "Doncaster",
             "code": "DNC"
+        },
+        {
+            "name": "Dorset",
+            "code": "DOR"
         },
         {
             "name": "Down",
@@ -5987,20 +6175,60 @@
             "code": "DUD"
         },
         {
+            "name": "Dumfries and Galloway",
+            "code": "DGY"
+        },
+        {
             "name": "Dungannon and South Tyrone",
             "code": "DGN"
+        },
+        {
+            "name": "Durham",
+            "code": "DUR"
         },
         {
             "name": "Ealing",
             "code": "EAL"
         },
         {
+            "name": "East Ayrshire",
+            "code": "EAY"
+        },
+        {
+            "name": "East Dunbartonshire",
+            "code": "EDU"
+        },
+        {
+            "name": "East Lothian",
+            "code": "ELN"
+        },
+        {
             "name": "East Renfrewshire",
             "code": "ERW"
         },
         {
+            "name": "East Riding of Yorkshire",
+            "code": "ERY"
+        },
+        {
+            "name": "East Sussex",
+            "code": "ESX"
+        },
+        {
+            "name": "Enfield",
+            "code": "ENF"
+        },
+        {
             "name": "England and Wales",
             "code": "EAW"
+        },
+        {
+            "name": "Essex",
+            "code": "ESS"
+        },
+        {
+            "name": "Falkirk",
+            "code": "FAL"
         },
         {
             "name": "Fermanagh",
@@ -6011,8 +6239,20 @@
             "code": "FMO"
         },
         {
+            "name": "Fife",
+            "code": "FIF"
+        },
+        {
+            "name": "Flintshire",
+            "code": "FLN"
+        },
+        {
             "name": "Gateshead",
             "code": "GAT"
+        },
+        {
+            "name": "Gloucestershire",
+            "code": "GLS"
         },
         {
             "name": "Great Britain",
@@ -6023,12 +6263,24 @@
             "code": "GRE"
         },
         {
+            "name": "Gwynedd",
+            "code": "GWN"
+        },
+        {
             "name": "Hackney",
             "code": "HCK"
         },
         {
+            "name": "Halton",
+            "code": "HAL"
+        },
+        {
             "name": "Hammersmith and Fulham",
             "code": "HMF"
+        },
+        {
+            "name": "Hampshire",
+            "code": "HAM"
         },
         {
             "name": "Haringey",
@@ -6039,6 +6291,26 @@
             "code": "HRW"
         },
         {
+            "name": "Hartlepool",
+            "code": "HPL"
+        },
+        {
+            "name": "Havering",
+            "code": "HAV"
+        },
+        {
+            "name": "Herefordshire",
+            "code": "HEF"
+        },
+        {
+            "name": "Hertfordshire",
+            "code": "HRT"
+        },
+        {
+            "name": "Highland",
+            "code": "HLD"
+        },
+        {
             "name": "Hillingdon",
             "code": "HIL"
         },
@@ -6047,8 +6319,28 @@
             "code": "HNS"
         },
         {
+            "name": "Inverclyde",
+            "code": "IVC"
+        },
+        {
+            "name": "Isle of Wight",
+            "code": "IOW"
+        },
+        {
+            "name": "Isles of Scilly",
+            "code": "IOS"
+        },
+        {
             "name": "Islington",
             "code": "ISL"
+        },
+        {
+            "name": "Kensington and Chelsea",
+            "code": "KEC"
+        },
+        {
+            "name": "Kent",
+            "code": "KEN"
         },
         {
             "name": "Kingston upon Thames",
@@ -6059,8 +6351,16 @@
             "code": "KIR"
         },
         {
+            "name": "Knowsley",
+            "code": "KWL"
+        },
+        {
             "name": "Lambeth",
             "code": "LBH"
+        },
+        {
+            "name": "Lancashire",
+            "code": "LAN"
         },
         {
             "name": "Larne",
@@ -6071,12 +6371,20 @@
             "code": "LDS"
         },
         {
+            "name": "Leicestershire",
+            "code": "LEC"
+        },
+        {
             "name": "Lewisham",
             "code": "LEW"
         },
         {
             "name": "Limavady",
             "code": "LMV"
+        },
+        {
+            "name": "Lincolnshire",
+            "code": "LIN"
         },
         {
             "name": "Lisburn",
@@ -6087,12 +6395,64 @@
             "code": "LBC"
         },
         {
+            "name": "Luton",
+            "code": "LUT"
+        },
+        {
             "name": "Magherafelt",
             "code": "MFT"
         },
         {
+            "name": "Medway",
+            "code": "MDW"
+        },
+        {
+            "name": "Merthyr Tydfil",
+            "code": "MTY"
+        },
+        {
+            "name": "Merton",
+            "code": "MRT"
+        },
+        {
+            "name": "Mid and East Antrim",
+            "code": "MEA"
+        },
+        {
+            "name": "Mid Ulster",
+            "code": "MUL"
+        },
+        {
+            "name": "Middlesbrough",
+            "code": "MDB"
+        },
+        {
+            "name": "Midlothian",
+            "code": "MLN"
+        },
+        {
+            "name": "Milton Keynes",
+            "code": "MIK"
+        },
+        {
+            "name": "Monmouthshire",
+            "code": "MON"
+        },
+        {
+            "name": "Moray",
+            "code": "MRY"
+        },
+        {
             "name": "Moyle",
             "code": "MYL"
+        },
+        {
+            "name": "Neath Port Talbot",
+            "code": "NTL"
+        },
+        {
+            "name": "Newham",
+            "code": "NWM"
         },
         {
             "name": "Newport",
@@ -6103,12 +6463,60 @@
             "code": "NYM"
         },
         {
+            "name": "Newry, Mourne and Down",
+            "code": "NMD"
+        },
+        {
             "name": "Newtownabbey",
             "code": "NTA"
         },
         {
+            "name": "Norfolk",
+            "code": "NFK"
+        },
+        {
+            "name": "North Ayrshire",
+            "code": "NAY"
+        },
+        {
             "name": "North Down",
             "code": "NDN"
+        },
+        {
+            "name": "North East Lincolnshire",
+            "code": "NEL"
+        },
+        {
+            "name": "North Lanarkshire",
+            "code": "NLK"
+        },
+        {
+            "name": "North Lincolnshire",
+            "code": "NLN"
+        },
+        {
+            "name": "North Somerset",
+            "code": "NSM"
+        },
+        {
+            "name": "North Tyneside",
+            "code": "NTY"
+        },
+        {
+            "name": "North Yorkshire",
+            "code": "NYK"
+        },
+        {
+            "name": "Northamptonshire",
+            "code": "NTH"
+        },
+        {
+            "name": "Northumberland",
+            "code": "NBL"
+        },
+        {
+            "name": "Nottinghamshire",
+            "code": "NTT"
         },
         {
             "name": "Oldham",
@@ -6119,8 +6527,48 @@
             "code": "OMH"
         },
         {
+            "name": "Orkney Islands",
+            "code": "ORK"
+        },
+        {
             "name": "Outer Hebrides",
             "code": "ELS"
+        },
+        {
+            "name": "Oxfordshire",
+            "code": "OXF"
+        },
+        {
+            "name": "Pembrokeshire",
+            "code": "PEM"
+        },
+        {
+            "name": "Perth and Kinross",
+            "code": "PKN"
+        },
+        {
+            "name": "Poole",
+            "code": "POL"
+        },
+        {
+            "name": "Powys",
+            "code": "POW"
+        },
+        {
+            "name": "Reading",
+            "code": "RDG"
+        },
+        {
+            "name": "Redbridge",
+            "code": "RDB"
+        },
+        {
+            "name": "Redcar and Cleveland",
+            "code": "RCC"
+        },
+        {
+            "name": "Renfrewshire",
+            "code": "RFW"
         },
         {
             "name": "Rhondda Cynon Taf",
@@ -6139,6 +6587,10 @@
             "code": "ROT"
         },
         {
+            "name": "Rutland",
+            "code": "RUT"
+        },
+        {
             "name": "Saint Helens",
             "code": "SHN"
         },
@@ -6151,8 +6603,20 @@
             "code": "SAW"
         },
         {
+            "name": "Scottish Borders",
+            "code": "SCB"
+        },
+        {
             "name": "Sefton",
             "code": "SFT"
+        },
+        {
+            "name": "Shetland",
+            "code": "ZET"
+        },
+        {
+            "name": "Shropshire",
+            "code": "SHR"
         },
         {
             "name": "Slough",
@@ -6163,12 +6627,36 @@
             "code": "SOL"
         },
         {
+            "name": "Somerset",
+            "code": "SOM"
+        },
+        {
+            "name": "South Ayrshire",
+            "code": "SAY"
+        },
+        {
+            "name": "South Gloucestershire",
+            "code": "SGC"
+        },
+        {
+            "name": "South Lanarkshire",
+            "code": "SLK"
+        },
+        {
             "name": "South Tyneside",
             "code": "STY"
         },
         {
+            "name": "Southend-on-Sea",
+            "code": "SOS"
+        },
+        {
             "name": "Southwark",
             "code": "SWK"
+        },
+        {
+            "name": "Staffordshire",
+            "code": "STS"
         },
         {
             "name": "Stirling",
@@ -6179,36 +6667,104 @@
             "code": "SKP"
         },
         {
+            "name": "Stockton-on-Tees",
+            "code": "STT"
+        },
+        {
             "name": "Strabane",
             "code": "STB"
+        },
+        {
+            "name": "Suffolk",
+            "code": "SFK"
         },
         {
             "name": "Sunderland",
             "code": "SND"
         },
         {
+            "name": "Surrey",
+            "code": "SRY"
+        },
+        {
             "name": "Sutton",
             "code": "STN"
+        },
+        {
+            "name": "Swindon",
+            "code": "SWD"
         },
         {
             "name": "Tameside",
             "code": "TAM"
         },
         {
+            "name": "Telford and Wrekin",
+            "code": "TFW"
+        },
+        {
+            "name": "Thurrock",
+            "code": "THR"
+        },
+        {
+            "name": "Torbay",
+            "code": "TOB"
+        },
+        {
+            "name": "Torfaen",
+            "code": "TOF"
+        },
+        {
+            "name": "Tower Hamlets",
+            "code": "TWH"
+        },
+        {
             "name": "Trafford",
             "code": "TRF"
+        },
+        {
+            "name": "Vale of Glamorgan",
+            "code": "VGL"
         },
         {
             "name": "Wakefield",
             "code": "WKF"
         },
         {
+            "name": "Walsall",
+            "code": "WLL"
+        },
+        {
+            "name": "Waltham Forest",
+            "code": "WFT"
+        },
+        {
             "name": "Wandsworth",
             "code": "WND"
         },
         {
+            "name": "Warrington",
+            "code": "WRT"
+        },
+        {
+            "name": "Warwickshire",
+            "code": "WAR"
+        },
+        {
+            "name": "West Berkshire",
+            "code": "WBK"
+        },
+        {
             "name": "West Dunbartonshire",
             "code": "WDU"
+        },
+        {
+            "name": "West Lothian",
+            "code": "WLN"
+        },
+        {
+            "name": "West Sussex",
+            "code": "WSX"
         },
         {
             "name": "Wigan",
@@ -6219,96 +6775,44 @@
             "code": "WIL"
         },
         {
+            "name": "Windsor and Maidenhead",
+            "code": "WNM"
+        },
+        {
             "name": "Wirral",
             "code": "WRL"
         },
         {
-            "name": "అంగూస్",
-            "code": "ANS"
+            "name": "Wokingham",
+            "code": "WOK"
+        },
+        {
+            "name": "Worcestershire",
+            "code": "WOR"
+        },
+        {
+            "name": "Wrexham",
+            "code": "WRX"
         },
         {
             "name": "అబెర్డీన్",
             "code": "ABE"
         },
         {
-            "name": "అబెర్డీన్షైర్",
-            "code": "ABD"
-        },
-        {
-            "name": "ఆక్స్‌ఫర్డ్",
-            "code": "OXF"
-        },
-        {
-            "name": "ఆర్గిల్ అండ్ బుట్",
-            "code": "AGB"
-        },
-        {
-            "name": "ఆర్డ్స్ అండ్ నార్త్ డౌన్",
-            "code": "AND"
-        },
-        {
-            "name": "ఆర్మాఘ్",
-            "code": "ABC"
-        },
-        {
             "name": "ఇంగ్లండ్",
             "code": "ENG"
-        },
-        {
-            "name": "ఇన్వర్క్లైడ్",
-            "code": "IVC"
-        },
-        {
-            "name": "ఇస్లే అఫ్ వెయిట్",
-            "code": "IOW"
-        },
-        {
-            "name": "ఉత్తర ఆయర్షైర్",
-            "code": "NAY"
         },
         {
             "name": "ఉత్తర ఐర్లండ్",
             "code": "NIR"
         },
         {
-            "name": "ఉత్తర యార్క్ షైర్",
-            "code": "NYK"
-        },
-        {
-            "name": "ఉత్తర లానర్క్ షైర్",
-            "code": "NLK"
-        },
-        {
-            "name": "ఉత్తర లింకన్షైర్",
-            "code": "NLN"
-        },
-        {
-            "name": "ఉత్తర సోమర్సెట్",
-            "code": "NSM"
-        },
-        {
             "name": "ఎడిన్బర్గ్",
             "code": "EDH"
         },
         {
-            "name": "ఓర్క్నీకి ఐలాండ్",
-            "code": "ORK"
-        },
-        {
-            "name": "కాజ్వే కోస్ట్ మరియు గ్లెన్స్",
-            "code": "CCG"
-        },
-        {
             "name": "కార్డిఫ్",
             "code": "CRF"
-        },
-        {
-            "name": "కార్న్వాల్",
-            "code": "CON"
-        },
-        {
-            "name": "కార్మెర్థీన్షైర్",
-            "code": "CMN"
         },
         {
             "name": "కావెంట్రీ",
@@ -6319,296 +6823,48 @@
             "code": "KHL"
         },
         {
-            "name": "కుంబ్రియా",
-            "code": "CMA"
-        },
-        {
-            "name": "కెంట్",
-            "code": "KEN"
-        },
-        {
-            "name": "కెరెడిగియాన్",
-            "code": "CGN"
-        },
-        {
-            "name": "కేంబ్రిడ్జ్ షైర్",
-            "code": "CAM"
-        },
-        {
-            "name": "కౌంటీ దుర్హం",
-            "code": "DUR"
-        },
-        {
-            "name": "క్లాక్ మన్నన్ షైర్",
-            "code": "CLK"
-        },
-        {
-            "name": "గైనెడ్",
-            "code": "GWN"
-        },
-        {
             "name": "గ్లాస్గో",
             "code": "GLG"
-        },
-        {
-            "name": "గ్లోస్టర్ షైర్",
-            "code": "GLS"
-        },
-        {
-            "name": "చెషైర్ ఈస్ట్",
-            "code": "CHE"
-        },
-        {
-            "name": "చెషైర్ వెస్ట్ మరియు చెస్టర్",
-            "code": "CHW"
-        },
-        {
-            "name": "టార్ఫాన్ కౌంటీ బోరో",
-            "code": "TOF"
-        },
-        {
-            "name": "టెల్ఫోర్డ్ మరియు వర్కిన్",
-            "code": "TFW"
-        },
-        {
-            "name": "టొర్బాయ్",
-            "code": "TOB"
         },
         {
             "name": "డండీ",
             "code": "DND"
         },
         {
-            "name": "డంఫ్రీస్ మరియు గాల్లోవే",
-            "code": "DGY"
-        },
-        {
-            "name": "డర్బిషైర్",
-            "code": "DBY"
-        },
-        {
-            "name": "డెన్ బిగ్ షైర్",
-            "code": "DEN"
-        },
-        {
             "name": "డెర్బి",
             "code": "DER"
-        },
-        {
-            "name": "డెవన్",
-            "code": "DEV"
-        },
-        {
-            "name": "డోర్ సెట్",
-            "code": "DOR"
-        },
-        {
-            "name": "తుర్రోక్,",
-            "code": "THR"
-        },
-        {
-            "name": "తూర్పు అయిర్షైర్",
-            "code": "EAY"
-        },
-        {
-            "name": "తూర్పు డన్బర్టన్ షైర్",
-            "code": "EDU"
-        },
-        {
-            "name": "తూర్పు రైడింగ్ అఫ్ యార్క్ షైర్",
-            "code": "ERY"
-        },
-        {
-            "name": "తూర్పు ససెక్స్",
-            "code": "ESX"
-        },
-        {
-            "name": "దక్షణ అయిర్షైర్",
-            "code": "SAY"
-        },
-        {
-            "name": "దక్షిణ గ్లౌసెస్టర్షైర్",
-            "code": "SGC"
-        },
-        {
-            "name": "దక్షిణ లాన్కార్షైర్",
-            "code": "SLK"
-        },
-        {
-            "name": "నాటింగ్ హమ్ షైర్",
-            "code": "NTT"
         },
         {
             "name": "నాటింగ్‌హామ్",
             "code": "NGM"
         },
         {
-            "name": "నార్తంబర్లాండ్",
-            "code": "NBL"
-        },
-        {
-            "name": "నార్తాంప్టన్షైర్",
-            "code": "NTH"
-        },
-        {
-            "name": "నార్త్ ఈస్ట్ లింకన్ షైర్",
-            "code": "NEL"
-        },
-        {
-            "name": "నార్త్ టైన్సైడ్",
-            "code": "NTY"
-        },
-        {
-            "name": "నీత్ పోర్ట్ టాల్బోట్ కౌంటీ బోరో",
-            "code": "NTL"
-        },
-        {
-            "name": "నొస్లే",
-            "code": "KWL"
-        },
-        {
-            "name": "నోర్ఫోక్",
-            "code": "NFK"
-        },
-        {
             "name": "న్యూకాజిల్ అపాన్ టైన్",
             "code": "NET"
-        },
-        {
-            "name": "న్యూరి",
-            "code": "NMD"
-        },
-        {
-            "name": "పశ్చిమ లోథియన్",
-            "code": "ELN"
-        },
-        {
-            "name": "పశ్చిమ లోథియన్²",
-            "code": "WLN"
-        },
-        {
-            "name": "పావేస్",
-            "code": "POW"
         },
         {
             "name": "పీటర్ బరో",
             "code": "PTE"
         },
         {
-            "name": "పూలే",
-            "code": "POL"
-        },
-        {
-            "name": "పెర్త్ మరియు కిన్రోస్",
-            "code": "PKN"
-        },
-        {
             "name": "పోర్ట్స్ మౌత్",
             "code": "POR"
-        },
-        {
-            "name": "ప్రెంబ్రోక్ షైర్",
-            "code": "PEM"
         },
         {
             "name": "ప్లిమౌత్",
             "code": "PLY"
         },
         {
-            "name": "ఫాల్కిర్క్",
-            "code": "FAL"
-        },
-        {
-            "name": "ఫైప్",
-            "code": "FIF"
-        },
-        {
-            "name": "ఫ్లింట్షైర్",
-            "code": "FLN"
-        },
-        {
-            "name": "బకింగ్హంషైర్",
-            "code": "BKM"
-        },
-        {
             "name": "బర్మింగ్‌హామ్",
             "code": "BIR"
-        },
-        {
-            "name": "బాత్ మరియు తూర్పు సోమర్ సెట్",
-            "code": "BAS"
-        },
-        {
-            "name": "బ్రాక్ నెల్ ఫారెస్ట్",
-            "code": "BRC"
-        },
-        {
-            "name": "బ్రిడ్జెండ్ కౌంటీ బోరో",
-            "code": "BGE"
         },
         {
             "name": "బ్రిస్టల్",
             "code": "BST"
         },
         {
-            "name": "బ్రైటన్ అండ్ హోవ్",
-            "code": "BNH"
-        },
-        {
-            "name": "బ్లాక్ పూల్",
-            "code": "BPL"
-        },
-        {
-            "name": "బ్లాక్ బర్న్ విత్ డార్విన్",
-            "code": "BBD"
-        },
-        {
-            "name": "బ్లెనావు గ్వెంట్ కౌంటీ బోరో",
-            "code": "BGW"
-        },
-        {
-            "name": "మధ్య బెడ్ ఫోర్డ్ షైర్",
-            "code": "CBF"
-        },
-        {
-            "name": "మధ్య మరియు తూర్పు ఆంట్రిమ్,",
-            "code": "MEA"
-        },
-        {
             "name": "మాంచెస్టర్",
             "code": "MAN"
-        },
-        {
-            "name": "మిడిల్స్ బ్రఫ్",
-            "code": "MDB"
-        },
-        {
-            "name": "మిడ్ వే",
-            "code": "MDW"
-        },
-        {
-            "name": "మిడ్-ఉల్స్టర్",
-            "code": "MUL"
-        },
-        {
-            "name": "మిడ్లోథియాన్",
-            "code": "MLN"
-        },
-        {
-            "name": "మిల్టన్ కీన్స్",
-            "code": "MIK"
-        },
-        {
-            "name": "మెర్తిర్ టైడ్ఫిల్ కౌంటీ బోరో",
-            "code": "MTY"
-        },
-        {
-            "name": "మోన్మౌత్షైర్",
-            "code": "MON"
-        },
-        {
-            "name": "మోరే",
-            "code": "MRY"
         },
         {
             "name": "యార్క్",
@@ -6619,200 +6875,40 @@
             "code": "UKM"
         },
         {
-            "name": "యెస్సెక్ష్",
-            "code": "ESS"
-        },
-        {
-            "name": "రాయల్ బోరోగ్ అఫ్ కెన్సింగ్టన్ అండ్ చెల్సి",
-            "code": "KEC"
-        },
-        {
-            "name": "రీడింగ్",
-            "code": "RDG"
-        },
-        {
-            "name": "రూట్ల్యాండ్",
-            "code": "RUT"
-        },
-        {
-            "name": "రెడ్ కార్ మరియు క్లేవ్ ల్యాండ్",
-            "code": "RCC"
-        },
-        {
-            "name": "రెన్ ఫ్రెవ్ షైర్",
-            "code": "RFW"
-        },
-        {
             "name": "లండన్ నగరం",
             "code": "LND"
-        },
-        {
-            "name": "లండన్ బోరో అఫ్ రెడ్ బ్రిడ్జ్",
-            "code": "RDB"
-        },
-        {
-            "name": "లండన్ బోరో ఆఫ్ ఎన్ఫీల్డ్",
-            "code": "ENF"
-        },
-        {
-            "name": "లండన్ బోరో ఆఫ్ బార్నెట్",
-            "code": "BNE"
-        },
-        {
-            "name": "లండన్ బోరో ఆఫ్ హావరింగ్",
-            "code": "HAV"
-        },
-        {
-            "name": "లండన్ బోరోగ్ అఫ్ కామ్దేన్",
-            "code": "CMD"
-        },
-        {
-            "name": "లండన్ బోరోగ్ అఫ్ టవర్ హమ్లెట్స్",
-            "code": "TWH"
-        },
-        {
-            "name": "లండన్ బోరోగ్ అఫ్ న్యూహం",
-            "code": "NWM"
-        },
-        {
-            "name": "లండన్ బోరోగ్ అఫ్ బార్కింగ్ అండ్ డాగెంహం",
-            "code": "BDG"
-        },
-        {
-            "name": "లండన్ బోరోగ్ అఫ్ బ్రెంట్",
-            "code": "BEN"
-        },
-        {
-            "name": "లండన్ బోరోగ్ అఫ్ మెర్టన్",
-            "code": "MRT"
-        },
-        {
-            "name": "లండన్ బోరోగ్ అఫ్ వాల్తం ఫారెస్ట్",
-            "code": "WFT"
-        },
-        {
-            "name": "లాంక్షైర్",
-            "code": "LAN"
-        },
-        {
-            "name": "లింకన్షైర్",
-            "code": "LIN"
         },
         {
             "name": "లివర్‌పూల్",
             "code": "LIV"
         },
         {
-            "name": "లూటన్",
-            "code": "LUT"
-        },
-        {
-            "name": "లెసెస్టర్ షైర్",
-            "code": "LEC"
-        },
-        {
             "name": "లేస్టర్",
             "code": "LCE"
-        },
-        {
-            "name": "వకింగ్ హమ్",
-            "code": "WOK"
-        },
-        {
-            "name": "వర్రింగ్టన్",
-            "code": "WRT"
-        },
-        {
-            "name": "వార్ విక్ షైర్",
-            "code": "WAR"
-        },
-        {
-            "name": "వాల్సాల్",
-            "code": "WLL"
-        },
-        {
-            "name": "విండ్సర్ మరియు మైడెన్హెడ్",
-            "code": "WNM"
-        },
-        {
-            "name": "వెస్ట్ సస్సెక్స్",
-            "code": "WSX"
         },
         {
             "name": "వెస్ట్మిన్స్టర్ నగరం",
             "code": "WSM"
         },
         {
-            "name": "వేల్ ఆఫ్ గ్లామోర్గాన్",
-            "code": "VGL"
-        },
-        {
             "name": "వేల్స్",
             "code": "WLS"
-        },
-        {
-            "name": "వోర్సెస్టర్షైర్",
-            "code": "WOR"
         },
         {
             "name": "వోల్వెర్హాంప్టన్",
             "code": "WLV"
         },
         {
-            "name": "వ్రేక్స్హామ్ కౌంటీ బోరో",
-            "code": "WRX"
-        },
-        {
-            "name": "షెట్లాండ్",
-            "code": "ZET"
-        },
-        {
             "name": "షెఫీల్డ్",
             "code": "SHF"
-        },
-        {
-            "name": "ష్రాప్షైర్",
-            "code": "SHR"
-        },
-        {
-            "name": "సఫోల్క్",
-            "code": "SFK"
-        },
-        {
-            "name": "సర్రే",
-            "code": "SRY"
-        },
-        {
-            "name": "సిలెస్ అఫ్ సిల్లీ",
-            "code": "IOS"
-        },
-        {
-            "name": "సోమర్సెట్",
-            "code": "SOM"
         },
         {
             "name": "సౌతాంప్టన్",
             "code": "STH"
         },
         {
-            "name": "సౌత్ ఎండ్-ఆన్-సీ",
-            "code": "SOS"
-        },
-        {
-            "name": "స్కాటిష్ బార్దర్స్",
-            "code": "SCB"
-        },
-        {
             "name": "స్కాట్లాండ్",
             "code": "SCT"
-        },
-        {
-            "name": "స్టాక్టన్-ఆన్-టీస్",
-            "code": "STT"
-        },
-        {
-            "name": "స్టాఫోర్డ్ షైర్",
-            "code": "STS"
         },
         {
             "name": "స్టోక్ ఆన్ ట్రెంట్",
@@ -6821,34 +6917,6 @@
         {
             "name": "స్వాన్జీ",
             "code": "SWA"
-        },
-        {
-            "name": "స్వీడన్",
-            "code": "SWD"
-        },
-        {
-            "name": "హంప్ షైర్",
-            "code": "HAM"
-        },
-        {
-            "name": "హార్ట్లిపూల్",
-            "code": "HPL"
-        },
-        {
-            "name": "హాల్టన్",
-            "code": "HAL"
-        },
-        {
-            "name": "హెరె ఫోర్డ్ షైర్",
-            "code": "HEF"
-        },
-        {
-            "name": "హెర్ట్ ఫర్డ్ షైర్",
-            "code": "HRT"
-        },
-        {
-            "name": "హైలాండ్",
-            "code": "HLD"
         }
     ],
     "GD": [
@@ -9923,16 +9991,16 @@
             "code": "N"
         },
         {
+            "name": "Saint Kitts",
+            "code": "K"
+        },
+        {
             "name": "క్రైస్ట్ చర్చ్ నికోలా టౌన్ పారిష్",
             "code": "01"
         },
         {
             "name": "ట్రినిటీ పాల్మెటో పాయింట్ పారిష్",
             "code": "15"
-        },
-        {
-            "name": "సెయంట్ కిట్స్, నెవిస్",
-            "code": "K"
         },
         {
             "name": "సెయింట్ ఆన్ సాండీ పాయింట్ పారిష్",
@@ -10933,6 +11001,10 @@
             "name": "Diekirch"
         },
         {
+            "code": "D",
+            "name": "Diekirch²"
+        },
+        {
             "code": "EC",
             "name": "Echternach"
         },
@@ -10945,8 +11017,16 @@
             "name": "Grevenmacher"
         },
         {
+            "code": "G",
+            "name": "Grevenmacher²"
+        },
+        {
             "code": "LU",
             "name": "Luxembourg"
+        },
+        {
+            "code": "L",
+            "name": "Luxembourg²"
         },
         {
             "code": "ME",
@@ -12843,64 +12923,68 @@
     ],
     "MR": [
         {
-            "name": "హోద్ ఎక్ చార్గూ ప్రాంతం",
-            "code": "01"
-        },
-        {
-            "name": "హోద్ ఎల్ ఘార్బి ప్రాంతం",
-            "code": "02"
-        },
-        {
-            "name": "అసాబా ప్రాంతం",
-            "code": "03"
-        },
-        {
-            "name": "గోర్గోల్ ప్రాంతం",
-            "code": "04"
-        },
-        {
-            "name": "బ్రాక్నా ప్రాంతం",
-            "code": "05"
-        },
-        {
-            "name": "ట్రార్జా ప్రాంతం",
-            "code": "06"
-        },
-        {
-            "name": "అడ్రార్ ప్రాంతం",
-            "code": "07"
-        },
-        {
-            "name": "డాక్లెట్ నోవాధిబో",
-            "code": "08"
-        },
-        {
-            "name": "టాగంట్ ప్రాంతం",
-            "code": "09"
-        },
-        {
-            "name": "గుయిడిమాకా ప్రాంతం",
-            "code": "10"
-        },
-        {
-            "name": "టిరిస్ జెమ్మోర్ ప్రాంతం",
-            "code": "11"
-        },
-        {
-            "name": "ఇంచిరి ప్రాంతం",
-            "code": "12"
-        },
-        {
-            "name": "Nouakchott Ouest",
-            "code": "13"
+            "name": "Nouakchott",
+            "code": "NKC"
         },
         {
             "name": "Nouakchott Nord",
             "code": "14"
         },
         {
+            "name": "Nouakchott Ouest",
+            "code": "13"
+        },
+        {
             "name": "Nouakchott Sud",
             "code": "15"
+        },
+        {
+            "name": "అడ్రార్ ప్రాంతం",
+            "code": "07"
+        },
+        {
+            "name": "అసాబా ప్రాంతం",
+            "code": "03"
+        },
+        {
+            "name": "ఇంచిరి ప్రాంతం",
+            "code": "12"
+        },
+        {
+            "name": "గుయిడిమాకా ప్రాంతం",
+            "code": "10"
+        },
+        {
+            "name": "గోర్గోల్ ప్రాంతం",
+            "code": "04"
+        },
+        {
+            "name": "టాగంట్ ప్రాంతం",
+            "code": "09"
+        },
+        {
+            "name": "టిరిస్ జెమ్మోర్ ప్రాంతం",
+            "code": "11"
+        },
+        {
+            "name": "ట్రార్జా ప్రాంతం",
+            "code": "06"
+        },
+        {
+            "name": "డాక్లెట్ నోవాధిబో",
+            "code": "08"
+        },
+        {
+            "name": "బ్రాక్నా ప్రాంతం",
+            "code": "05"
+        },
+        {
+            "name": "హోద్ ఎక్ చార్గూ ప్రాంతం",
+            "code": "01"
+        },
+        {
+            "name": "హోద్ ఎల్ ఘార్బి ప్రాంతం",
+            "code": "02"
         }
     ],
     "MT": [
@@ -14047,8 +14131,20 @@
     ],
     "NL": [
         {
+            "name": "Aruba",
+            "code": "AW"
+        },
+        {
+            "name": "Curaçao",
+            "code": "CW"
+        },
+        {
             "name": "Saba",
             "code": "BQ2"
+        },
+        {
+            "name": "Sint Maarten",
+            "code": "SX"
         },
         {
             "name": "ఉత్తర బ్రాబంట్",
@@ -14335,6 +14431,14 @@
             "code": "NSN"
         },
         {
+            "name": "North Island",
+            "code": "N"
+        },
+        {
+            "name": "South Island",
+            "code": "S"
+        },
+        {
             "name": "అక్లాండ్ ప్రాంతం",
             "code": "AUK"
         },
@@ -14400,6 +14504,14 @@
         }
     ],
     "OM": [
+        {
+            "name": "Al Batinah",
+            "code": "BA"
+        },
+        {
+            "name": "Ash Sharqiyah",
+            "code": "SH"
+        },
         {
             "name": "Shamal al Batinah",
             "code": "BS"
@@ -16548,6 +16660,10 @@
         }
     ],
     "SH": [
+        {
+            "name": "Tristan da Cunha",
+            "code": "TA"
+        },
         {
             "name": "అసెన్షన్ దీవులు",
             "code": "AC"
@@ -19798,6 +19914,30 @@
         }
     ],
     "US": [
+        {
+            "name": "American Samoa",
+            "code": "AS"
+        },
+        {
+            "name": "Guam",
+            "code": "GU"
+        },
+        {
+            "name": "Northern Mariana Islands",
+            "code": "MP"
+        },
+        {
+            "name": "Puerto Rico",
+            "code": "PR"
+        },
+        {
+            "name": "U.S. Outlying Islands",
+            "code": "UM"
+        },
+        {
+            "name": "U.S. Virgin Islands",
+            "code": "VI"
+        },
         {
             "name": "అయోవా",
             "code": "IA"

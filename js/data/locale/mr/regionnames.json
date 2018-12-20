@@ -1421,6 +1421,10 @@
     ],
     "BE": [
         {
+            "name": "Flanders",
+            "code": "VLG"
+        },
+        {
             "name": "अँटवर्प",
             "code": "VAN"
         },
@@ -1439,10 +1443,6 @@
         {
             "name": "पूर्व फ्लांडर्स",
             "code": "VOV"
-        },
-        {
-            "name": "फ्लांडर्स",
-            "code": "VLG"
         },
         {
             "name": "फ्लाम्स ब्राबांत",
@@ -2453,6 +2453,10 @@
     ],
     "BZ": [
         {
+            "name": "Belize",
+            "code": "BZ"
+        },
+        {
             "name": "ऑरेंज वॉल्क जिल्हा",
             "code": "OW"
         },
@@ -2467,10 +2471,6 @@
         {
             "name": "टोलेडो जिल्हा",
             "code": "TOL"
-        },
-        {
-            "name": "बेलीझ जिल्हा",
-            "code": "BZ"
         },
         {
             "name": "स्टॅनन क्रीक जिल्हा",
@@ -2985,12 +2985,12 @@
             "code": "08"
         },
         {
-            "name": "आबिजान",
-            "code": "AB"
+            "name": "Zanzan²",
+            "code": "ZZ"
         },
         {
-            "name": "झानझन प्रदेश",
-            "code": "ZZ"
+            "name": "आबिजान",
+            "code": "AB"
         },
         {
             "name": "डिन्गुएले जिल्हा",
@@ -3119,140 +3119,140 @@
     ],
     "CN": [
         {
-            "name": "Taiwan",
-            "code": "TW"
-        },
-        {
-            "name": "आंतरिक मंगोलिया",
-            "code": "NM"
-        },
-        {
-            "name": "आंह्वी",
-            "code": "AH"
-        },
-        {
-            "name": "कान्सू",
-            "code": "GS"
-        },
-        {
-            "name": "क्वांगतोंग",
-            "code": "GD"
-        },
-        {
-            "name": "क्वांग्शी",
-            "code": "GX"
-        },
-        {
-            "name": "क्वीचौ",
-            "code": "GZ"
-        },
-        {
-            "name": "च-च्यांग",
-            "code": "ZJ"
-        },
-        {
-            "name": "चीलिन",
-            "code": "JL"
-        },
-        {
-            "name": "चोंगछिंग",
-            "code": "CQ"
-        },
-        {
-            "name": "च्यांग्शी",
-            "code": "JX"
-        },
-        {
-            "name": "च्यांग्सू",
-            "code": "JS"
-        },
-        {
-            "name": "छिंगहाय",
-            "code": "QH"
-        },
-        {
-            "name": "तिबेट स्वायत्त प्रदेश",
-            "code": "XZ"
+            "name": "बीजिंग",
+            "code": "11"
         },
         {
             "name": "त्यांजिन",
-            "code": "TJ"
-        },
-        {
-            "name": "निंग्स्या",
-            "code": "NX"
-        },
-        {
-            "name": "फूच्यान",
-            "code": "FJ"
-        },
-        {
-            "name": "बीजिंग",
-            "code": "BJ"
-        },
-        {
-            "name": "मकाओ",
-            "code": "MO"
-        },
-        {
-            "name": "युइन्नान",
-            "code": "YN"
-        },
-        {
-            "name": "ल्याओनिंग",
-            "code": "LN"
-        },
-        {
-            "name": "शांघाय",
-            "code": "SH"
-        },
-        {
-            "name": "शिंच्यांग",
-            "code": "XJ"
-        },
-        {
-            "name": "षा‘न्शी",
-            "code": "SN"
-        },
-        {
-            "name": "षांतोंग",
-            "code": "SD"
-        },
-        {
-            "name": "षान्शी",
-            "code": "SX"
-        },
-        {
-            "name": "स-च्वान",
-            "code": "SC"
-        },
-        {
-            "name": "हनान",
-            "code": "HA"
+            "code": "12"
         },
         {
             "name": "हपै",
-            "code": "HE"
+            "code": "13"
         },
         {
-            "name": "हाइनान",
-            "code": "HI"
+            "name": "षान्शी",
+            "code": "14"
         },
         {
-            "name": "हाँग काँग",
-            "code": "HK"
+            "name": "आंतरिक मंगोलिया",
+            "code": "15"
         },
         {
-            "name": "हूनान",
-            "code": "HN"
+            "name": "ल्याओनिंग",
+            "code": "21"
         },
         {
-            "name": "हूपै",
-            "code": "HB"
+            "name": "चीलिन",
+            "code": "22"
         },
         {
             "name": "हैलोंगच्यांग",
-            "code": "HL"
+            "code": "23"
+        },
+        {
+            "name": "शांघाय",
+            "code": "31"
+        },
+        {
+            "name": "च्यांग्सू",
+            "code": "32"
+        },
+        {
+            "name": "च-च्यांग",
+            "code": "33"
+        },
+        {
+            "name": "आंह्वी",
+            "code": "34"
+        },
+        {
+            "name": "फूच्यान",
+            "code": "35"
+        },
+        {
+            "name": "च्यांग्शी",
+            "code": "36"
+        },
+        {
+            "name": "षांतोंग",
+            "code": "37"
+        },
+        {
+            "name": "हनान",
+            "code": "41"
+        },
+        {
+            "name": "हूपै",
+            "code": "42"
+        },
+        {
+            "name": "हूनान",
+            "code": "43"
+        },
+        {
+            "name": "क्वांगतोंग",
+            "code": "44"
+        },
+        {
+            "name": "क्वांग्शी",
+            "code": "45"
+        },
+        {
+            "name": "हाइनान",
+            "code": "46"
+        },
+        {
+            "name": "चोंगछिंग",
+            "code": "50"
+        },
+        {
+            "name": "स-च्वान",
+            "code": "51"
+        },
+        {
+            "name": "क्वीचौ",
+            "code": "52"
+        },
+        {
+            "name": "युइन्नान",
+            "code": "53"
+        },
+        {
+            "name": "तिबेट स्वायत्त प्रदेश",
+            "code": "54"
+        },
+        {
+            "name": "षा‘न्शी",
+            "code": "61"
+        },
+        {
+            "name": "कान्सू",
+            "code": "62"
+        },
+        {
+            "name": "छिंगहाय",
+            "code": "63"
+        },
+        {
+            "name": "निंग्स्या",
+            "code": "64"
+        },
+        {
+            "name": "शिंच्यांग",
+            "code": "65"
+        },
+        {
+            "name": "Taiwan",
+            "code": "71"
+        },
+        {
+            "name": "Hong Kong SAR China",
+            "code": "91"
+        },
+        {
+            "name": "Macau SAR China",
+            "code": "92"
         }
     ],
     "CO": [
@@ -4881,6 +4881,18 @@
             "code": "O"
         },
         {
+            "name": "Balears Province",
+            "code": "PM"
+        },
+        {
+            "name": "Canary Islands",
+            "code": "CN"
+        },
+        {
+            "name": "Cantabria Province",
+            "code": "S"
+        },
+        {
             "name": "León",
             "code": "LE"
         },
@@ -4895,6 +4907,10 @@
         {
             "name": "Murcia",
             "code": "MU"
+        },
+        {
+            "name": "Navarra",
+            "code": "NA"
         },
         {
             "name": "Segovia",
@@ -4955,10 +4971,6 @@
         {
             "name": "कांताब्रिया",
             "code": "CB"
-        },
-        {
-            "name": "कांताब्रिया²",
-            "code": "S"
         },
         {
             "name": "कातालोनिया",
@@ -5029,10 +5041,6 @@
             "code": "NC"
         },
         {
-            "name": "नाबारा²",
-            "code": "NA"
-        },
-        {
             "name": "पाईज बास्को",
             "code": "PV"
         },
@@ -5059,10 +5067,6 @@
         {
             "name": "बालेआरिक द्वीपसमूह",
             "code": "IB"
-        },
-        {
-            "name": "बालेआरिक द्वीपसमूह²",
-            "code": "PM"
         },
         {
             "name": "बिस्के",
@@ -5196,6 +5200,10 @@
         }
     ],
     "FI": [
+        {
+            "name": "Åland Islands",
+            "code": "01"
+        },
         {
             "name": "दक्षिण केरेलिया",
             "code": "02"
@@ -5371,8 +5379,32 @@
             "code": "ARA"
         },
         {
+            "name": "Brittany",
+            "code": "E"
+        },
+        {
             "name": "Burgundy-Franche-Comté",
             "code": "BFC"
+        },
+        {
+            "name": "Clipperton Island",
+            "code": "CP"
+        },
+        {
+            "name": "Corsica",
+            "code": "H"
+        },
+        {
+            "name": "French Guiana",
+            "code": "GF"
+        },
+        {
+            "name": "French Polynesia",
+            "code": "PF"
+        },
+        {
+            "name": "French Southern Territories",
+            "code": "TF"
         },
         {
             "name": "Grand-Est",
@@ -5383,6 +5415,10 @@
             "code": "GUA"
         },
         {
+            "name": "Guadeloupe²",
+            "code": "GP"
+        },
+        {
             "name": "Hauts-de-France",
             "code": "HDF"
         },
@@ -5391,8 +5427,20 @@
             "code": "LRE"
         },
         {
+            "name": "Martinique",
+            "code": "MQ"
+        },
+        {
             "name": "Mayotte",
             "code": "MAY"
+        },
+        {
+            "name": "Mayotte²",
+            "code": "YT"
+        },
+        {
+            "name": "New Caledonia",
+            "code": "NC"
         },
         {
             "name": "Normandie",
@@ -5405,6 +5453,26 @@
         {
             "name": "Occitanie",
             "code": "OCC"
+        },
+        {
+            "name": "Réunion",
+            "code": "RE"
+        },
+        {
+            "name": "St. Barthélemy",
+            "code": "BL"
+        },
+        {
+            "name": "St. Martin",
+            "code": "MF"
+        },
+        {
+            "name": "St. Pierre & Miquelon",
+            "code": "PM"
+        },
+        {
+            "name": "Wallis & Futuna",
+            "code": "WF"
         },
         {
             "name": "अएन",
@@ -7667,6 +7735,10 @@
     ],
     "HN": [
         {
+            "name": "Comayagua",
+            "code": "CM"
+        },
+        {
             "name": "अटलांटिडा विभाग",
             "code": "AT"
         },
@@ -7697,10 +7769,6 @@
         {
             "name": "कोपन विभाग",
             "code": "CP"
-        },
-        {
-            "name": "कोमायागुआ प्रांत",
-            "code": "CM"
         },
         {
             "name": "कोर्तेस प्रांत",
@@ -10933,6 +11001,10 @@
             "name": "Diekirch"
         },
         {
+            "code": "D",
+            "name": "Diekirch²"
+        },
+        {
             "code": "EC",
             "name": "Echternach"
         },
@@ -10945,8 +11017,16 @@
             "name": "Grevenmacher"
         },
         {
+            "code": "G",
+            "name": "Grevenmacher²"
+        },
+        {
             "code": "LU",
             "name": "Luxembourg"
+        },
+        {
+            "code": "L",
+            "name": "Luxembourg²"
         },
         {
             "code": "ME",
@@ -12843,64 +12923,68 @@
     ],
     "MR": [
         {
-            "name": "होश एच चारगुई प्रदेश",
-            "code": "01"
-        },
-        {
-            "name": "होद एल गरबी प्रदेश",
-            "code": "02"
-        },
-        {
-            "name": "अस्साबा प्रदेश",
-            "code": "03"
-        },
-        {
-            "name": "गोर्गोल प्रदेश",
-            "code": "04"
-        },
-        {
-            "name": "ब्रकाना प्रदेश",
-            "code": "05"
-        },
-        {
-            "name": "ट्रॅझा प्रदेश",
-            "code": "06"
-        },
-        {
-            "name": "अदरर प्रदेश",
-            "code": "07"
-        },
-        {
-            "name": "दॅलेट नऊदबाउ",
-            "code": "08"
-        },
-        {
-            "name": "टागण प्रदेश",
-            "code": "09"
-        },
-        {
-            "name": "गुइदमक प्रदेश",
-            "code": "10"
-        },
-        {
-            "name": "तिरीस झमेर्स प्रांत",
-            "code": "11"
-        },
-        {
-            "name": "इंचिरी प्रदेश",
-            "code": "12"
-        },
-        {
-            "name": "Nouakchott Ouest",
-            "code": "13"
+            "name": "Nouakchott",
+            "code": "NKC"
         },
         {
             "name": "Nouakchott Nord",
             "code": "14"
         },
         {
+            "name": "Nouakchott Ouest",
+            "code": "13"
+        },
+        {
             "name": "Nouakchott Sud",
             "code": "15"
+        },
+        {
+            "name": "अदरर प्रदेश",
+            "code": "07"
+        },
+        {
+            "name": "अस्साबा प्रदेश",
+            "code": "03"
+        },
+        {
+            "name": "इंचिरी प्रदेश",
+            "code": "12"
+        },
+        {
+            "name": "गुइदमक प्रदेश",
+            "code": "10"
+        },
+        {
+            "name": "गोर्गोल प्रदेश",
+            "code": "04"
+        },
+        {
+            "name": "टागण प्रदेश",
+            "code": "09"
+        },
+        {
+            "name": "ट्रॅझा प्रदेश",
+            "code": "06"
+        },
+        {
+            "name": "तिरीस झमेर्स प्रांत",
+            "code": "11"
+        },
+        {
+            "name": "दॅलेट नऊदबाउ",
+            "code": "08"
+        },
+        {
+            "name": "ब्रकाना प्रदेश",
+            "code": "05"
+        },
+        {
+            "name": "होद एल गरबी प्रदेश",
+            "code": "02"
+        },
+        {
+            "name": "होश एच चारगुई प्रदेश",
+            "code": "01"
         }
     ],
     "MT": [
@@ -14047,8 +14131,20 @@
     ],
     "NL": [
         {
+            "name": "Aruba",
+            "code": "AW"
+        },
+        {
+            "name": "Curaçao",
+            "code": "CW"
+        },
+        {
             "name": "Saba",
             "code": "BQ2"
+        },
+        {
+            "name": "Sint Maarten",
+            "code": "SX"
         },
         {
             "name": "उट्रेख्त",
@@ -14335,6 +14431,14 @@
             "code": "NSN"
         },
         {
+            "name": "North Island",
+            "code": "N"
+        },
+        {
+            "name": "South Island",
+            "code": "S"
+        },
+        {
             "name": "ऑकलंड प्रदेश",
             "code": "AUK"
         },
@@ -14400,6 +14504,14 @@
         }
     ],
     "OM": [
+        {
+            "name": "Al Batinah",
+            "code": "BA"
+        },
+        {
+            "name": "Ash Sharqiyah",
+            "code": "SH"
+        },
         {
             "name": "Shamal al Batinah",
             "code": "BS"
@@ -16548,6 +16660,10 @@
         }
     ],
     "SH": [
+        {
+            "name": "Tristan da Cunha",
+            "code": "TA"
+        },
         {
             "name": "असेन्शन द्वीप",
             "code": "AC"
@@ -19798,6 +19914,30 @@
         }
     ],
     "US": [
+        {
+            "name": "American Samoa",
+            "code": "AS"
+        },
+        {
+            "name": "Guam",
+            "code": "GU"
+        },
+        {
+            "name": "Northern Mariana Islands",
+            "code": "MP"
+        },
+        {
+            "name": "Puerto Rico",
+            "code": "PR"
+        },
+        {
+            "name": "U.S. Outlying Islands",
+            "code": "UM"
+        },
+        {
+            "name": "U.S. Virgin Islands",
+            "code": "VI"
+        },
         {
             "name": "ॲरिझोना",
             "code": "AZ"

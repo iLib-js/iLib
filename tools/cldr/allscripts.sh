@@ -24,7 +24,10 @@ TARGET=../../js/data/locale
 #TARGET=tmp
 
 node genclockprefs.js $TARGET
-node gencountrynames.js ../../../cldr/${CLDR_VERSION} $TARGET
+# region codes changed in 34 ... can't have that because entries 
+# in databases depend on stable region codes! Commenting this out
+# for now so that we stay on 33
+# node gencountrynames.js ../../../cldr/${CLDR_VERSION} $TARGET
 node genctype.js ../../../ucd/${UCD_VERSION} $TARGET
 node gencurrencies.js $TARGET
 node gendatefmts2.js $TARGET
