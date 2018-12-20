@@ -46,6 +46,7 @@ function usage() {
 }
 
 var unicodeFileName;
+var fileName;
 var toDir = "tmp";
 
 process.argv.forEach(function (val, index, array) {
@@ -71,7 +72,7 @@ if (process.argv.length > 3) {
 }
 
 console.log("genctype - generate ctype data.\n" +
-    "Copyright (c) 2012 - 2015 JEDLSoft\n");
+    "Copyright (c) 2012 - 2015, 2018 JEDLSoft\n");
 
 if (!fs.existsSync(unicodeFileName)) {
     console.error("Could not access file " + unicodeFileName);
@@ -119,7 +120,9 @@ for (var i = 0; i < len; i++ ) {
 
 for (letter in map) {
     if (letter && map[letter]) {
-        fs.writeFile(toDir + "/ctype_" + letter + ".json", JSON.stringify(map[letter], true, 4), function (err) {
+        fileName = path.join(toDir, "/ctype_" + letter + ".json");
+        console.log(fileName);
+        fs.writeFile(fileName, JSON.stringify(map[letter], true, 4), function (err) {
             if (err) {
                 throw err;
             }
@@ -448,4 +451,8 @@ sortObject(listMap2);
 
 var sortedCtype = sortKeys(ctypeMap)
 var merged = common.merge(manuallyHandleRange, sortedCtype);
-fs.writeFile(toDir + "/ctype.json", JSON.stringify(merged, true, 4))
+fileName = path.join(toDir, "ctype.json");
+console.log(fileName);
+fs.writeFileSync(fileName, JSON.stringify(merged, true, 4))
+
+console.log("Done.");

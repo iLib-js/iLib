@@ -21,11 +21,11 @@
 CLDR_VERSION=34
 UCD_VERSION=12.0.0
 #TARGET=../../js/data/locale
-TARGET=
+TARGET=tmp
 
 node genclockprefs.js $TARGET
-node gencountrynames.js ../../../cldr/${CLDR_VERSION}
-node genctype.js ../../../ucd/${UCD_VERSION}
+node gencountrynames.js ../../../cldr/${CLDR_VERSION} $TARGET
+node genctype.js ../../../ucd/${UCD_VERSION} $TARGET
 node gencurrencies.js $TARGET
 node gendatefmts2.js $TARGET
 node gendelimiters.js $TARGET
