@@ -1607,6 +1607,423 @@ DateFmt.prototype = {
 };
 
 /**
+ * @private
+ */
+DateFmt.prototype._mapFormatInfo = function(tzinfo) {
+    function sequence(start, end, pad) {
+        var constraint = [];
+        for (var i = start; i <= end; i++) {
+            constraint.push(pad ? JSUtils.pad(i, 2) : String(i));
+        }
+        return constraint;
+    }
+
+    return this.templateArr.map(ilib.bind(this, function(component) {
+        switch (component) {
+            case 'd':
+                return {
+                    component: "day",
+                    label: "Date",
+                    template: "D",
+                    constraint: {
+                        "condition": "isLeap",
+                        "regular": {
+                            "1": [1, 31],
+                            "2": [1, 28],
+                            "3": [1, 31],
+                            "4": [1, 30],
+                            "5": [1, 31],
+                            "6": [1, 30],
+                            "7": [1, 31],
+                            "8": [1, 31],
+                            "9": [1, 30],
+                            "10": [1, 31],
+                            "11": [1, 30],
+                            "12": [1, 31]
+                        },
+                        "leap": {
+                            "1": [1, 31],
+                            "2": [1, 29],
+                            "3": [1, 31],
+                            "4": [1, 30],
+                            "5": [1, 31],
+                            "6": [1, 30],
+                            "7": [1, 31],
+                            "8": [1, 31],
+                            "9": [1, 30],
+                            "10": [1, 31],
+                            "11": [1, 30],
+                            "12": [1, 31]
+                        }
+                    },
+                    validation: "\\d{1,2}"
+                };
+
+            case 'dd':
+                return {
+                    component: "day",
+                    label: "Date",
+                    template: "DD",
+                    constraint: {
+                        "condition": "isLeap",
+                        "regular": {
+                            "1": sequence(1, 31, true),
+                            "2": sequence(1, 28, true),
+                            "3": sequence(1, 31, true),
+                            "4": sequence(1, 30, true),
+                            "5": sequence(1, 31, true),
+                            "6": sequence(1, 30, true),
+                            "7": sequence(1, 31, true),
+                            "8": sequence(1, 31, true),
+                            "9": sequence(1, 30, true),
+                            "10": sequence(1, 31, true),
+                            "11": sequence(1, 30, true),
+                            "12": sequence(1, 31, true)
+                        },
+                        "leap": {
+                            "1": sequence(1, 31, true),
+                            "2": sequence(1, 29, true),
+                            "3": sequence(1, 31, true),
+                            "4": sequence(1, 30, true),
+                            "5": sequence(1, 31, true),
+                            "6": sequence(1, 30, true),
+                            "7": sequence(1, 31, true),
+                            "8": sequence(1, 31, true),
+                            "9": sequence(1, 30, true),
+                            "10": sequence(1, 31, true),
+                            "11": sequence(1, 30, true),
+                            "12": sequence(1, 31, true)
+                        }
+                    },
+                    validation: "\\d{1,2}"
+                };
+
+            case 'yy':
+                return {
+                    component: "year",
+                    label: "Year",
+                    template: "YY",
+                    constraint: "[0-9]{2}",
+                    validation: "\\d{2}"
+                };
+
+            case 'yyyy':
+                return {
+                    component: "year",
+                    label: "Year",
+                    template: "YYYY",
+                    constraint: "[0-9]{4}",
+                    validation: "\\d{4}"
+                };
+
+            case 'M':
+                return {
+                    component: "month",
+                    label: "Month",
+                    template: "M",
+                    constraint: [1, 12],
+                    validation: "\\d{1,2}"
+                };
+
+            case 'MM':
+                return {
+                    component: "month",
+                    label: "Month",
+                    template: "MM",
+                    constraint: "[0-9]+",
+                    validation: "\\d{2}"
+                };
+
+            case 'h':
+                return {
+                    component: "hour",
+                    label: "Hour",
+                    template: "H",
+                    constraint: ["12"].concat(sequence(1, 11)),
+                    validation: "\\d{1,2}"
+                };
+
+            case 'hh':
+                return {
+                    component: "hour",
+                    label: "Hour",
+                    template: "HH",
+                    constraint: ["12"].concat(sequence(1, 11, true)),
+                    validation: "\\d{2}"
+                };
+
+
+            case 'K':
+                return {
+                    component: "hour",
+                    label: "Hour",
+                    template: "H",
+                    constraint: concat(sequence(0, 11)),
+                    validation: "\\d{1,2}"
+                };
+
+            case 'KK':
+                return {
+                    component: "hour",
+                    label: "Hour",
+                    template: "HH",
+                    constraint: concat(sequence(0, 11, true)),
+                    validation: "\\d{2}"
+                };
+
+            case 'H':
+                return {
+                    component: "hour",
+                    label: "Hour",
+                    template: "H",
+                    constraint: [0, 23],
+                    validation: "\\d{1,2}"
+                };
+
+            case 'HH':
+                return {
+                    component: "hour",
+                    label: "Hour",
+                    template: "H",
+                    constraint: concat(sequence(0, 23, true)),
+                    validation: "\\d{1,2}"
+                };
+
+            case 'k':
+                return {
+                    component: "hour",
+                    label: "Hour",
+                    template: "H",
+                    constraint: ["24"].concat(sequence(0, 23)),
+                    validation: "\\d{1,2}"
+                };
+
+            case 'kk':
+                return {
+                    component: "hour",
+                    label: "Hour",
+                    template: "H",
+                    constraint: ["24"].concat(sequence(0, 23, true)),
+                    validation: "\\d{1,2}"
+                };
+
+            case 'm':
+                return {
+                    component: "minute",
+                    label: "Minute",
+                    template: "mm",
+                    constraint: [0, 59],
+                    validation: "\\d{1,2}"
+                };
+
+            case 'mm':
+                return {
+                    component: "minute",
+                    label: "Minute",
+                    template: "mm",
+                    constraint: sequence(0, 59, true),
+                    validation: "\\d{2}"
+                };
+
+            case 's':
+                return {
+                    component: "second",
+                    label: "Second",
+                    template: "ss",
+                    constraint: [0, 59],
+                    validation: "\\d{1,2}"
+                };
+
+            case 'ss':
+                return {
+                    component: "second",
+                    label: "Second",
+                    template: "ss",
+                    constraint: sequence(0, 59, true),
+                    validation: "\\d{2}"
+                };
+
+            case 'S':
+                return {
+                    component: "millisecond",
+                    label: "Millisecond",
+                    template: "ms",
+                    constraint: [0, 999],
+                    validation: "\\d{1,3}"
+                };
+
+            case 'SSS':
+                return {
+                    component: "millisecond",
+                    label: "Millisecond",
+                    template: "ms",
+                    constraint: sequence(0, 999, true),
+                    validation: "\\d{3}"
+                };
+
+            case 'N':
+            case 'NN':
+            case 'MMM':
+            case 'MMMM':
+            case 'L':
+            case 'LL':
+            case 'LLL':
+            case 'LLLL':
+                return {
+                    component: "month",
+                    label: "Month",
+                    constraint: {
+                        "constraint": "isLeap",
+                        "leap": (function() {
+                            var ret = [];
+                            var months = this.cal.getNumMonths(undefined, true);
+                            for (var i = 1; i < months; i++) {
+                                var key = component + i;
+                                ret.push((this.sysres.getString(undefined, key + "-" + this.calName) || this.sysres.getString(undefined, key)));
+                            }
+                            return ret;
+                        })(),
+                        "regular": (function() {
+                            var ret = [];
+                            var months = this.cal.getNumMonths(undefined, false);
+                            for (var i = 1; i < months; i++) {
+                                var key = component + i;
+                                ret.push((this.sysres.getString(undefined, key + "-" + this.calName) || this.sysres.getString(undefined, key)));
+                            }
+                            return ret;
+                        })()
+                    }
+                };
+
+            case 'E':
+            case 'EE':
+            case 'EEE':
+            case 'EEEE':
+            case 'c':
+            case 'cc':
+            case 'ccc':
+            case 'cccc':
+                return {
+                    component: "dayofweek",
+                    label: "Day of Week",
+                    constraint: (function() {
+                        var ret = [];
+                        var months = this.cal.getNumMonths(undefined, true);
+                        for (var i = 0; i < 7; i++) {
+                            key = component + i;
+                            //console.log("finding " + key + " in the resources");
+                            ret.push((this.sysres.getString(undefined, key + "-" + this.calName) || this.sysres.getString(undefined, key)));
+                        }
+                        return ret;
+                    })()
+                };
+                break;
+
+            case 'a':
+                var ret = {
+                    component: "meridiem",
+                    label: "AM/PM",
+                    template: "AM/PM",
+                    constraint: []
+                };
+                switch (this.meridiems) {
+                    case "chinese":
+                        for (var i = 0; i < 7; i++) {
+                            var key = "azh" + i;
+                            ret.constraint.push(this.sysres.getString(undefined, key + "-" + this.calName) || this.sysres.getString(undefined, key));
+                        }
+                        break;
+                    case "ethiopic":
+                        for (var i = 0; i < 7; i++) {
+                            var key = "a" + i + "-ethiopic";
+                            ret.constraint.push(this.sysres.getString(undefined, key + "-" + this.calName) || this.sysres.getString(undefined, key));
+                        }
+                        break;
+                    default:
+                        ret.constraint.push(this.sysres.getString(undefined, "a0-" + this.calName) || this.sysres.getString(undefined, "a0"));
+                        ret.constraint.push(this.sysres.getString(undefined, "a1-" + this.calName) || this.sysres.getString(undefined, "a1"));
+                        break;
+                }
+                return ret;
+
+            case 'w':
+                return {
+                    label: "Week of Year",
+                    value: function(date) {
+                        return date.getDayOfYear();
+                    }
+                };
+
+            case 'ww':
+                return {
+                    label: "Week of Year",
+                    value: function(date) {
+                        var temp = date.getWeekOfYear();
+                        return JSUtils.pad(temp, 2)
+                    }
+                };
+
+            case 'D':
+                return {
+                    label: "Day of Year",
+                    value: function(date) {
+                        return date.getDayOfYear();
+                    }
+                };
+
+            case 'DD':
+                return {
+                    label: "Day of Year",
+                    value: function(date) {
+                        var temp = date.getDayOfYear();
+                        return JSUtils.pad(temp, 2)
+                    }
+                };
+
+            case 'DDD':
+                return {
+                    label: "Day of Year",
+                    value: function(date) {
+                        var temp = date.getDayOfYear();
+                        return JSUtils.pad(temp, 3)
+                    }
+                };
+
+            case 'W':
+                return {
+                    label: "Week of Month",
+                    value: function(date) {
+                        return date.getWeekOfMonth();
+                    }
+                };
+
+            case 'G':
+                var ret = {
+                    component: "era",
+                    label: "Era",
+                    constraint: []
+                };
+                ret.constraint.push(this.sysres.getString(undefined, "G0-" + this.calName) || this.sysres.getString(undefined, "G0"));
+                ret.constraint.push(this.sysres.getString(undefined, "G1-" + this.calName) || this.sysres.getString(undefined, "G1"));
+                return ret;
+
+            case 'z': // general time zone
+            case 'Z': // RFC 822 time zone
+                return {
+                    component: "timezone",
+                    label: "Time Zone",
+                    constraint: tzinfo
+                };
+
+            default:
+                return {
+                    label: component
+                };
+        }
+    }));
+};
+
+/**
  * Return information about the date format that can be used
  * by UI builders to display a locale-sensitive set of input fields
  * based on the current formatter's settings.<p>
@@ -1627,6 +2044,7 @@ DateFmt.prototype = {
  * <li><i>label</i> - a localized string to display for this
  * component as a label.
  * <li><i>template</i>
+ * </ul>
  * . The component is the name of the property to use
  * when constructing a new date with DateFactory(). The label
  * is intended to be shown to the user and is written in the
@@ -1817,460 +2235,42 @@ DateFmt.prototype.getFormatInfo = function(locale, sync, callback) {
         loc.spec = undefined;
     }
 
-    function sequence(start, end, pad) {
-        var constraint = [];
-        for (var i = start; i <= end; i++) {
-            constraint.push(pad ? JSUtils.pad(i, 2) : String(i));
-        }
-        return constraint;
-    }
-
     new ResBundle({
         locale: loc,
         name: "dateres",
         sync: this.sync,
         loadParams: this.loadParams,
         onLoad: ilib.bind(this, function (rb) {
-            this.templateArr.map(ilib.bind(this, function(component) {
-                switch (component) {
-                    case 'd':
-                        return {
-                            component: "day",
-                            label: "Date",
-                            template: "D",
-                            constraint: {
-                                "condition": "isLeap",
-                                "regular": {
-                                    "1": sequence(1, 31),
-                                    "2": sequence(1, 28),
-                                    "3": sequence(1, 31),
-                                    "4": sequence(1, 30),
-                                    "5": sequence(1, 31),
-                                    "6": sequence(1, 30),
-                                    "7": sequence(1, 31),
-                                    "8": sequence(1, 31),
-                                    "9": sequence(1, 30),
-                                    "10": sequence(1, 31),
-                                    "11": sequence(1, 30),
-                                    "12": sequence(1, 31)
-                                },
-                                "leap": {
-                                    "1": sequence(1, 31),
-                                    "2": sequence(1, 29),
-                                    "3": sequence(1, 31),
-                                    "4": sequence(1, 30),
-                                    "5": sequence(1, 31),
-                                    "6": sequence(1, 30),
-                                    "7": sequence(1, 31),
-                                    "8": sequence(1, 31),
-                                    "9": sequence(1, 30),
-                                    "10": sequence(1, 31),
-                                    "11": sequence(1, 30),
-                                    "12": sequence(1, 31)
-                                }
-                            },
-                            validation: "\\d{1,2}"
-                        };
-
-                    case 'dd':
-                        return {
-                            component: "day",
-                            label: "Date",
-                            template: "DD",
-                            constraint: {
-                                "condition": "isLeap",
-                                "regular": {
-                                    "1": sequence(1, 31, true),
-                                    "2": sequence(1, 28, true),
-                                    "3": sequence(1, 31, true),
-                                    "4": sequence(1, 30, true),
-                                    "5": sequence(1, 31, true),
-                                    "6": sequence(1, 30, true),
-                                    "7": sequence(1, 31, true),
-                                    "8": sequence(1, 31, true),
-                                    "9": sequence(1, 30, true),
-                                    "10": sequence(1, 31, true),
-                                    "11": sequence(1, 30, true),
-                                    "12": sequence(1, 31, true)
-                                },
-                                "leap": {
-                                    "1": sequence(1, 31, true),
-                                    "2": sequence(1, 29, true),
-                                    "3": sequence(1, 31, true),
-                                    "4": sequence(1, 30, true),
-                                    "5": sequence(1, 31, true),
-                                    "6": sequence(1, 30, true),
-                                    "7": sequence(1, 31, true),
-                                    "8": sequence(1, 31, true),
-                                    "9": sequence(1, 30, true),
-                                    "10": sequence(1, 31, true),
-                                    "11": sequence(1, 30, true),
-                                    "12": sequence(1, 31, true)
-                                }
-                            },
-                            validation: "\\d{1,2}"
-                        };
-
-                    case 'yy':
-                        return {
-                            component: "year",
-                            label: "Year",
-                            template: "YY",
-                            constraint: "[0-9]{2}",
-                            validation: "\\d{2}"
-                        };
-
-                    case 'yyyy':
-                        return {
-                            component: "year",
-                            label: "Year",
-                            template: "YYYY",
-                            constraint: "[0-9]{4}",
-                            validation: "\\d{4}"
-                        };
-
-                    case 'M':
-                        return {
-                            component: "month",
-                            label: "Month",
-                            template: "M",
-                            constraint: [1, 12],
-                            validation: "\\d{1,2}"
-                        };
-
-                    case 'MM':
-                        return {
-                            component: "month",
-                            label: "Month",
-                            template: "MM",
-                            constraint: "[0-9]+",
-                            validation: "\\d{2}"
-                        };
-
-                    case 'h':
-                        return {
-                            component: "hour",
-                            label: "Hour",
-                            template: "H",
-                            constraint: ["12"].concat(sequence(1, 11)),
-                            validation: "\\d{1,2}"
-                        };
-
-                    case 'hh':
-                        return {
-                            component: "hour",
-                            label: "Hour",
-                            template: "HH",
-                            constraint: ["12"].concat(sequence(1, 11, true)),
-                            validation: "\\d{2}"
-                        };
-
-
-                    case 'K':
-                        return {
-                            component: "hour",
-                            label: "Hour",
-                            template: "H",
-                            constraint: concat(sequence(0, 11)),
-                            validation: "\\d{1,2}"
-                        };
-
-                    case 'KK':
-                        return {
-                            component: "hour",
-                            label: "Hour",
-                            template: "HH",
-                            constraint: concat(sequence(0, 11, true)),
-                            validation: "\\d{2}"
-                        };
-
-                    case 'H':
-                        return {
-                            component: "hour",
-                            label: "Hour",
-                            template: "H",
-                            constraint: [0, 23],
-                            validation: "\\d{1,2}"
-                        };
-
-                    case 'HH':
-                        return {
-                            component: "hour",
-                            label: "Hour",
-                            template: "H",
-                            constraint: concat(sequence(0, 23, true)),
-                            validation: "\\d{1,2}"
-                        };
-
-                    case 'k':
-                        return {
-                            component: "hour",
-                            label: "Hour",
-                            template: "H",
-                            constraint: ["24"].concat(sequence(0, 23)),
-                            validation: "\\d{1,2}"
-                        };
-
-                    case 'kk':
-                        return {
-                            component: "hour",
-                            label: "Hour",
-                            template: "H",
-                            constraint: ["24"].concat(sequence(0, 23, true)),
-                            validation: "\\d{1,2}"
-                        };
-
-                    case 'm':
-                        return {
-                            component: "minute",
-                            label: "Minute",
-                            template: "mm",
-                            constraint: [0, 59],
-                            validation: "\\d{1,2}"
-                        };
-
-                    case 'mm':
-                        return {
-                            component: "minute",
-                            label: "Minute",
-                            template: "mm",
-                            constraint: sequence(0, 59, true),
-                            validation: "\\d{2}"
-                        };
-
-                    case 's':
-                        return {
-                            component: "second",
-                            label: "Second",
-                            template: "ss",
-                            constraint: [0, 59],
-                            validation: "\\d{1,2}"
-                        };
-
-                    case 'ss':
-                        return {
-                            component: "second",
-                            label: "Second",
-                            template: "ss",
-                            constraint: sequence(0, 59, true),
-                            validation: "\\d{2}"
-                        };
-
-                    case 'S':
-                        return {
-                            component: "millisecond",
-                            label: "Millisecond",
-                            template: "ms",
-                            constraint: [0, 999],
-                            validation: "\\d{1,3}"
-                        };
-
-                    case 'SSS':
-                        return {
-                            component: "millisecond",
-                            label: "Millisecond",
-                            template: "ms",
-                            constraint: sequence(0, 999, true),
-                            validation: "\\d{3}"
-                        };
-
-                    case 'N':
-                    case 'NN':
-                    case 'MMM':
-                    case 'MMMM':
-                    case 'L':
-                    case 'LL':
-                    case 'LLL':
-                    case 'LLLL':
-                        return {
-                            component: "month",
-                            label: "Month",
-                            constraint: {
-                                "constraint": "isLeap",
-                                "leap": (function() {
-                                    var ret = [];
-                                    var months = this.cal.getNumMonths(undefined, true);
-                                    for (var i = 1; i < months; i++) {
-                                        var key = component + i;
-                                        ret.push((this.sysres.getString(undefined, key + "-" + this.calName) || this.sysres.getString(undefined, key)));
-                                    }
-                                    return ret;
-                                })(),
-                                "regular": (function() {
-                                    var ret = [];
-                                    var months = this.cal.getNumMonths(undefined, false);
-                                    for (var i = 1; i < months; i++) {
-                                        var key = component + i;
-                                        ret.push((this.sysres.getString(undefined, key + "-" + this.calName) || this.sysres.getString(undefined, key)));
-                                    }
-                                    return ret;
-                                })()
-                            }
-                        };
-
-                    case 'E':
-                    case 'EE':
-                    case 'EEE':
-                    case 'EEEE':
-                    case 'c':
-                    case 'cc':
-                    case 'ccc':
-                    case 'cccc':
-                        return {
-                            component: "dayofweek",
-                            label: "Day of Week",
-                            constraint: (function() {
-                                var ret = [];
-                                var months = this.cal.getNumMonths(undefined, true);
-                                for (var i = 0; i < 7; i++) {
-                                    key = component + i;
-                                    //console.log("finding " + key + " in the resources");
-                                    ret.push((this.sysres.getString(undefined, key + "-" + this.calName) || this.sysres.getString(undefined, key)));
-                                }
-                                return ret;
-                            })()
-                        };
-                        break;
-
-                    case 'a':
-                        var ret = {
-                            component: "meridiem",
-                            label: "AM/PM",
-                            template: "AM/PM",
-                            constraint: []
-                        };
-                        switch (this.meridiems) {
-                            case "chinese":
-                                for (var i = 0; i < 7; i++) {
-                                    var key = "azh" + i;
-                                    ret.constraint.push(this.sysres.getString(undefined, key + "-" + this.calName) || this.sysres.getString(undefined, key));
-                                }
-                                break;
-                            case "ethiopic":
-                                for (var i = 0; i < 7; i++) {
-                                    var key = "a" + i + "-ethiopic";
-                                    ret.constraint.push(this.sysres.getString(undefined, key + "-" + this.calName) || this.sysres.getString(undefined, key));
-                                }
-                                break;
-                            default:
-                                ret.constraint.push(this.sysres.getString(undefined, "a0-" + this.calName) || this.sysres.getString(undefined, "a0"));
-                                ret.constraint.push(this.sysres.getString(undefined, "a1-" + this.calName) || this.sysres.getString(undefined, "a1"));
-                                break;
-                        }
-                        return ret;
-
-                    case 'w':
-                        return {
-                            label: "Week of Year",
-                            value: function(date) {
-                                return date.getDayOfYear();
-                            }
-                        };
-
-                    case 'ww':
-                        return {
-                            label: "Week of Year",
-                            value: function(date) {
-                                var temp = date.getWeekOfYear();
-                                return JSUtils.pad(temp, 2)
-                            }
-                        };
-
-                    case 'D':
-                        return {
-                            label: "Day of Year",
-                            value: function(date) {
-                                return date.getDayOfYear();
-                            }
-                        };
-
-                    case 'DD':
-                        return {
-                            label: "Day of Year",
-                            value: function(date) {
-                                var temp = date.getDayOfYear();
-                                return JSUtils.pad(temp, 2)
-                            }
-                        };
-
-                    case 'DDD':
-                        return {
-                            label: "Day of Year",
-                            value: function(date) {
-                                var temp = date.getDayOfYear();
-                                return JSUtils.pad(temp, 3)
-                            }
-                        };
-
-                    case 'W':
-                        return {
-                            label: "Week of Month",
-                            value: function(date) {
-                                return date.getWeekOfMonth();
-                            }
-                        };
-
-                    case 'G':
-                        var ret = {
-                            component: "era",
-                            label: "Era",
-                            constraint: []
-                        };
-                        ret.constraint.push(this.sysres.getString(undefined, "G0-" + this.calName) || this.sysres.getString(undefined, "G0"));
-                        ret.constraint.push(this.sysres.getString(undefined, "G1-" + this.calName) || this.sysres.getString(undefined, "G1"));
-                        return ret;
-
-                    case 'O':
-                        temp = this.sysres.getString("1#1st|2#2nd|3#3rd|21#21st|22#22nd|23#23rd|31#31st|#{num}th", "ordinalChoice");
-                        str += temp.formatChoice(date.day, {num: date.day});
-                        break;
-
-                    case 'z': // general time zone
-                        tz = this.getTimeZone(); // lazy-load the tz
-                        str += tz.getDisplayName(date, "standard");
-                        break;
-                    case 'Z': // RFC 822 time zone
-                        tz = this.getTimeZone(); // lazy-load the tz
-                        str += tz.getDisplayName(date, "rfc822");
-                        break;
-
-                    default:
-                        return {
-                            label: component
-                        };
+            var info, zone = false;
+            for (var i = 0; i < this.templateArr.length; i++) {
+                if (this.templateArr[i] === "z" || this.templateArr[i] === "Z") {
+                    zone = true;
+                    break;
                 }
+            }
 
-            }));
+            if (zone) {
+                TimeZone.getAvailableIds(undefined, sync, ilib.bind(this, function(tzinfo) {
+                    var set = new ISet(tzinfo);
+                    set.add("Etc/UTC");
+                    set.add("Etc/GMT");
+                    for (var j = 1; j < 13; j++) {
+                        set.add("Etc/GMT+" + j);
+                        set.add("Etc/GMT-" + j);
+                    }
+                    set.add("Etc/GMT-13");
+                    set.add("Etc/GMT-14");
 
-            var rows = format.split(/\n/g);
-            info = rows.map(ilib.bind(this, function(row) {
-                return row.split("}").filter(function(component) {
-                    return component.length > 0;
-                }).map(ilib.bind(this, function(component) {
-                    var name = component.replace(/.*{/, "");
-                    var obj = {
-                        component: name,
-                        label: rb.getStringJS(this.info.fieldNames[name])
-                    };
-                    var field = fields.filter(function(f) {
-                        return f.name === name;
-                    });
-                    if (field && field[0] && field[0].pattern) {
-                        if (typeof(field[0].pattern) === "string") {
-                            obj.constraint = field[0].pattern;
-                        }
+                    info = this._mapFormatInfo(set.asArray().sort());
+                    if (callback && typeof(callback) === "function") {
+                        callback(info);
                     }
-                    if (name === "country") {
-                        obj.constraint = invertAndFilter(localeAddress.ctrynames);
-                    } else if (name === "region" && this.regions[loc.getRegion()]) {
-                        obj.constraint = this.regions[loc.getRegion()];
-                    }
-                    return obj;
                 }));
-            }));
-
-            if (callback && typeof(callback) === "function") {
-                callback(info);
+            } else {
+                info = this._mapFormatInfo();
+                if (callback && typeof(callback) === "function") {
+                    callback(info);
+                }
             }
         })
     });

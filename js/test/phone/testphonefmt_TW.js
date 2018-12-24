@@ -36,8 +36,8 @@ module.exports.phonefmt_TW = {
     testFormatTWStyle0: function(test) {
         test.expect(1);
         var formatted;
-        var parsed = new PhoneNumber("039606537", {locale:"zh-TW"});
-        var expected = "(039) 606-537";
+        var parsed = new PhoneNumber("033606537", {locale:"zh-TW"});
+        var expected = "(03) 360-6537";
         
         var fmt = new PhoneFmt({locale: "zh-TW", style: "default"});
         formatted = fmt.format(parsed);
@@ -49,8 +49,8 @@ module.exports.phonefmt_TW = {
     testFormatTWStyle1: function(test) {
         test.expect(1);
         var formatted;
-        var parsed = new PhoneNumber("039606537", {locale: "zh-TW"});
-        var expected = "039 606 537";
+        var parsed = new PhoneNumber("033606537", {locale: "zh-TW"});
+        var expected = "03 360 6537";
         
         var fmt = new PhoneFmt({locale: "zh-TW", style: "括號"});
         formatted = fmt.format(parsed);
@@ -62,8 +62,8 @@ module.exports.phonefmt_TW = {
     testFormatTWStyle2: function(test) {
         test.expect(1);
         var formatted;
-        var parsed = new PhoneNumber("039606537", {locale: "zh-TW"});
-        var expected = "039-606-537";
+        var parsed = new PhoneNumber("033606537", {locale: "zh-TW"});
+        var expected = "03-360-6537";
         
         var fmt = new PhoneFmt({locale: "zh-TW", style: "破折號"});
         formatted = fmt.format(parsed);
@@ -75,8 +75,8 @@ module.exports.phonefmt_TW = {
     testFormatTWStyle3: function(test) {
         test.expect(1);
         var formatted;
-        var parsed = new PhoneNumber("039606537", {locale: "zh-TW"});
-        var expected = "(039) 606537";
+        var parsed = new PhoneNumber("033606537", {locale: "zh-TW"});
+        var expected = "(03) 3606537";
         
         var fmt = new PhoneFmt({locale: "zh-TW", style: "沒有空格"});
         formatted = fmt.format(parsed);
@@ -117,8 +117,8 @@ module.exports.phonefmt_TW = {
     testFormatTWLongAreaCode: function(test) {
         test.expect(1);
         var formatted;
-        var parsed = new PhoneNumber("04582410670", {locale:"zh-TW"});
-        var expected = "(0458) 241-0670";
+        var parsed = new PhoneNumber("083624067", {locale:"zh-TW"});
+        var expected = "(0836) 240-67";
         
         var fmt = new PhoneFmt({locale: "zh-TW", style: "default"});
         formatted = fmt.format(parsed);
@@ -236,7 +236,7 @@ module.exports.phonefmt_TW = {
         test.expect(1);
         var formatted;
         var parsed = new PhoneNumber("039", {locale:"zh-TW"});
-        var expected = "(039) ";
+        var expected = "(03) 9";
         
         var fmt = new PhoneFmt({locale: "zh-TW", style: "default"});
         formatted = fmt.format(parsed, {partial: true});
@@ -249,7 +249,7 @@ module.exports.phonefmt_TW = {
         test.expect(1);
         var formatted;
         var parsed = new PhoneNumber("0396", {locale:"zh-TW"});
-        var expected = "(039) 6";
+        var expected = "(03) 96";
         
         var fmt = new PhoneFmt({locale: "zh-TW", style: "default"});
         formatted = fmt.format(parsed, {partial: true});
@@ -262,7 +262,7 @@ module.exports.phonefmt_TW = {
         test.expect(1);
         var formatted;
         var parsed = new PhoneNumber("03961", {locale: "zh-TW"});
-        var expected = "(039) 61";
+        var expected = "(03) 961";
         
         var fmt = new PhoneFmt({locale: "zh-TW", style: "default"});
         formatted = fmt.format(parsed, {partial: true});
@@ -275,7 +275,7 @@ module.exports.phonefmt_TW = {
         test.expect(1);
         var formatted;
         var parsed = new PhoneNumber("039612", {locale: "zh-TW"});
-        var expected = "(039) 612";
+        var expected = "(03) 961-2";
         
         var fmt = new PhoneFmt({locale: "zh-TW", style: "default"});
         formatted = fmt.format(parsed, {partial: true});
@@ -288,7 +288,7 @@ module.exports.phonefmt_TW = {
         test.expect(1);
         var formatted;
         var parsed = new PhoneNumber("0396123", {locale: "zh-TW"});
-        var expected = "(039) 612-3";
+        var expected = "(03) 961-23";
         
         var fmt = new PhoneFmt({locale: "zh-TW", style: "default"});
         formatted = fmt.format(parsed, {partial: true});
@@ -301,7 +301,7 @@ module.exports.phonefmt_TW = {
         test.expect(1);
         var formatted;
         var parsed = new PhoneNumber("03961234", {locale: "zh-TW"});
-        var expected = "(039) 612-34";
+        var expected = "(03) 961-234";
         
         var fmt = new PhoneFmt({locale: "zh-TW", style: "default"});
         formatted = fmt.format(parsed, {partial: true});
@@ -314,7 +314,7 @@ module.exports.phonefmt_TW = {
         test.expect(1);
         var formatted;
         var parsed = new PhoneNumber("039612345", {locale: "zh-TW"});
-        var expected = "(039) 612-345";
+        var expected = "(03) 961-2345";
         
         var fmt = new PhoneFmt({locale: "zh-TW", style: "default"});
         formatted = fmt.format(parsed, {partial: true});
@@ -327,7 +327,7 @@ module.exports.phonefmt_TW = {
         test.expect(1);
         var formatted;
         var parsed = new PhoneNumber("0396123456", {locale: "zh-TW"});
-        var expected = "(039) 612-3456";
+        var expected = "(03) 9612-3456";
         
         var fmt = new PhoneFmt({locale: "zh-TW", style: "default"});
         formatted = fmt.format(parsed, {partial: true});
@@ -340,7 +340,7 @@ module.exports.phonefmt_TW = {
         test.expect(1);
         var formatted;
         var parsed = new PhoneNumber("03961234567", {locale: "zh-TW"});
-        var expected = "(039) 6123-4567";
+        var expected = "03961234567";
         
         var fmt = new PhoneFmt({locale: "zh-TW", style: "default"});
         formatted = fmt.format(parsed, {partial: true});
@@ -394,7 +394,7 @@ module.exports.phonefmt_TW = {
         test.expect(1);
         var formatted;
         var parsed = new PhoneNumber("039", {locale: "zh-TW"});
-        var expected = "(039) ";
+        var expected = "(03) 9";
         
         var fmt = new PhoneFmt({locale: "zh-TW", style: "default"});
         formatted = fmt.format(parsed, {partial: false});
@@ -407,7 +407,7 @@ module.exports.phonefmt_TW = {
         test.expect(1);
         var formatted;
         var parsed = new PhoneNumber("0396", {locale: "zh-TW"});
-        var expected = "(039) 6";
+        var expected = "(03) 96";
         
         var fmt = new PhoneFmt({locale: "zh-TW", style: "default"});
         formatted = fmt.format(parsed, {partial: false});
@@ -421,7 +421,7 @@ module.exports.phonefmt_TW = {
         var formatted;
         var parsed = new PhoneNumber("03961", {locale: "zh-TW"});
             
-        var expected = "(039) 61";
+        var expected = "(03) 961";
         
         var fmt = new PhoneFmt({locale: "zh-TW", style: "default"});
         formatted = fmt.format(parsed, {partial: false});
@@ -434,7 +434,7 @@ module.exports.phonefmt_TW = {
         test.expect(1);
         var formatted;
         var parsed = new PhoneNumber("039612", {locale: "zh-TW"});
-        var expected = "(039) 612";
+        var expected = "(03) 961-2";
         
         var fmt = new PhoneFmt({locale: "zh-TW", style: "default"});
         formatted = fmt.format(parsed, {partial: false});
@@ -447,7 +447,7 @@ module.exports.phonefmt_TW = {
         test.expect(1);
         var formatted;
         var parsed = new PhoneNumber("0396123", {locale: "zh-TW"});
-        var expected = "(039) 612-3";
+        var expected = "(03) 961-23";
         
         var fmt = new PhoneFmt({locale: "zh-TW", style: "default"});
         formatted = fmt.format(parsed, {partial: false});
@@ -460,7 +460,7 @@ module.exports.phonefmt_TW = {
         test.expect(1);
         var formatted;
         var parsed = new PhoneNumber("03961234", {locale: "zh-TW"});
-        var expected = "(039) 612-34";
+        var expected = "(03) 961-234";
         
         var fmt = new PhoneFmt({locale: "zh-TW", style: "default"});
         formatted = fmt.format(parsed, {partial: false});
@@ -473,7 +473,7 @@ module.exports.phonefmt_TW = {
         test.expect(1);
         var formatted;
         var parsed = new PhoneNumber("039612345", {locale: "zh-TW"});
-        var expected = "(039) 612-345";
+        var expected = "(03) 961-2345";
         
         var fmt = new PhoneFmt({locale: "zh-TW", style: "default"});
         formatted = fmt.format(parsed, {partial: false});
@@ -486,7 +486,7 @@ module.exports.phonefmt_TW = {
         test.expect(1);
         var formatted;
         var parsed = new PhoneNumber("0396123456", {locale: "zh-TW"});
-        var expected = "(039) 612-3456";
+        var expected = "(03) 9612-3456";
         
         var fmt = new PhoneFmt({locale: "zh-TW", style: "default"});
         formatted = fmt.format(parsed, {partial: false});
@@ -499,7 +499,7 @@ module.exports.phonefmt_TW = {
         test.expect(1);
         var formatted;
         var parsed = new PhoneNumber("03961234567", {locale: "zh-TW"});
-        var expected = "(039) 6123-4567";
+        var expected = "03961234567";
         
         var fmt = new PhoneFmt({locale: "zh-TW", style: "default"});
         formatted = fmt.format(parsed, {partial: false});
@@ -553,7 +553,7 @@ module.exports.phonefmt_TW = {
         test.expect(1);
         var formatted;
         var parsed = new PhoneNumber("039", {locale: "zh-TW"});
-        var expected = "039 ";
+        var expected = "03 9";
         
         var fmt = new PhoneFmt({locale: "zh-TW", style: "括號"});
         formatted = fmt.format(parsed, {partial: true});
@@ -566,7 +566,7 @@ module.exports.phonefmt_TW = {
         test.expect(1);
         var formatted;
         var parsed = new PhoneNumber("0396", {locale: "zh-TW"});
-        var expected = "039 6";
+        var expected = "03 96";
         
         var fmt = new PhoneFmt({locale: "zh-TW", style: "括號"});
         formatted = fmt.format(parsed, {partial: true});
@@ -579,7 +579,7 @@ module.exports.phonefmt_TW = {
         test.expect(1);
         var formatted;
         var parsed = new PhoneNumber("03961", {locale: "zh-TW"});
-        var expected = "039 61";
+        var expected = "03 961";
         
         var fmt = new PhoneFmt({locale: "zh-TW", style: "括號"});
         formatted = fmt.format(parsed, {partial: true});
@@ -592,7 +592,7 @@ module.exports.phonefmt_TW = {
         test.expect(1);
         var formatted;
         var parsed = new PhoneNumber("039612", {locale: "zh-TW"});
-        var expected = "039 612";
+        var expected = "03 961 2";
         
         var fmt = new PhoneFmt({locale: "zh-TW", style: "括號"});
         formatted = fmt.format(parsed, {partial: true});
@@ -605,7 +605,7 @@ module.exports.phonefmt_TW = {
         test.expect(1);
         var formatted;
         var parsed = new PhoneNumber("0396123", {locale: "zh-TW"});
-        var expected = "039 612 3";
+        var expected = "03 961 23";
         
         var fmt = new PhoneFmt({locale: "zh-TW", style: "括號"});
         formatted = fmt.format(parsed, {partial: true});
@@ -618,7 +618,7 @@ module.exports.phonefmt_TW = {
         test.expect(1);
         var formatted;
         var parsed = new PhoneNumber("03961234", {locale: "zh-TW"});
-        var expected = "039 612 34";
+        var expected = "03 961 234";
         
         var fmt = new PhoneFmt({locale: "zh-TW", style: "括號"});
         formatted = fmt.format(parsed, {partial: true});
@@ -631,7 +631,7 @@ module.exports.phonefmt_TW = {
         test.expect(1);
         var formatted;
         var parsed = new PhoneNumber("039612345", {locale: "zh-TW"});
-        var expected = "039 612 345";
+        var expected = "03 961 2345";
         
         var fmt = new PhoneFmt({locale: "zh-TW", style: "括號"});
         formatted = fmt.format(parsed, {partial: true});
@@ -644,7 +644,7 @@ module.exports.phonefmt_TW = {
         test.expect(1);
         var formatted;
         var parsed = new PhoneNumber("0396123456", {locale: "zh-TW"});
-        var expected = "039 612 3456";
+        var expected = "03 9612 3456";
         
         var fmt = new PhoneFmt({locale: "zh-TW", style: "括號"});
         formatted = fmt.format(parsed, {partial: true});
@@ -657,7 +657,7 @@ module.exports.phonefmt_TW = {
         test.expect(1);
         var formatted;
         var parsed = new PhoneNumber("03961234567", {locale: "zh-TW"});
-        var expected = "039 6123 4567";
+        var expected = "03961234567";
         
         var fmt = new PhoneFmt({locale: "zh-TW", style: "括號"});
         formatted = fmt.format(parsed, {partial: true});
@@ -711,7 +711,7 @@ module.exports.phonefmt_TW = {
         test.expect(1);
         var formatted;
         var parsed = new PhoneNumber("039", {locale: "zh-TW"});
-        var expected = "039-";
+        var expected = "03-9";
         
         var fmt = new PhoneFmt({locale: "zh-TW", style: "破折號"});
         formatted = fmt.format(parsed, {partial: true});
@@ -724,7 +724,7 @@ module.exports.phonefmt_TW = {
         test.expect(1);
         var formatted;
         var parsed = new PhoneNumber("0396", {locale: "zh-TW"});
-        var expected = "039-6";
+        var expected = "03-96";
         
         var fmt = new PhoneFmt({locale: "zh-TW", style: "破折號"});
         formatted = fmt.format(parsed, {partial: true});
@@ -737,7 +737,7 @@ module.exports.phonefmt_TW = {
         test.expect(1);
         var formatted;
         var parsed = new PhoneNumber("03961", {locale: "zh-TW"});
-        var expected = "039-61";
+        var expected = "03-961";
         
         var fmt = new PhoneFmt({locale: "zh-TW", style: "破折號"});
         formatted = fmt.format(parsed, {partial: true});
@@ -750,7 +750,7 @@ module.exports.phonefmt_TW = {
         test.expect(1);
         var formatted;
         var parsed = new PhoneNumber("039612", {locale: "zh-TW"});
-        var expected = "039-612";
+        var expected = "03-961-2";
         
         var fmt = new PhoneFmt({locale: "zh-TW", style: "破折號"});
         formatted = fmt.format(parsed, {partial: true});
@@ -763,7 +763,7 @@ module.exports.phonefmt_TW = {
         test.expect(1);
         var formatted;
         var parsed = new PhoneNumber("0396123", {locale: "zh-TW"});
-        var expected = "039-612-3";
+        var expected = "03-961-23";
         
         var fmt = new PhoneFmt({locale: "zh-TW", style: "破折號"});
         formatted = fmt.format(parsed, {partial: true});
@@ -776,7 +776,7 @@ module.exports.phonefmt_TW = {
         test.expect(1);
         var formatted;
         var parsed = new PhoneNumber("03961234", {locale: "zh-TW"});
-        var expected = "039-612-34";
+        var expected = "03-961-234";
         
         var fmt = new PhoneFmt({locale: "zh-TW", style: "破折號"});
         formatted = fmt.format(parsed, {partial: true});
@@ -789,7 +789,7 @@ module.exports.phonefmt_TW = {
         test.expect(1);
         var formatted;
         var parsed = new PhoneNumber("039612345", {locale: "zh-TW"});
-        var expected = "039-612-345";
+        var expected = "03-961-2345";
         
         var fmt = new PhoneFmt({locale: "zh-TW", style: "破折號"});
         formatted = fmt.format(parsed, {partial: true});
@@ -802,7 +802,7 @@ module.exports.phonefmt_TW = {
         test.expect(1);
         var formatted;
         var parsed = new PhoneNumber("0396123456", {locale: "zh-TW"});
-        var expected = "039-612-3456";
+        var expected = "03-9612-3456";
         
         var fmt = new PhoneFmt({locale: "zh-TW", style: "破折號"});
         formatted = fmt.format(parsed, {partial: true});
@@ -815,7 +815,7 @@ module.exports.phonefmt_TW = {
         test.expect(1);
         var formatted;
         var parsed = new PhoneNumber("03961234567", {locale: "zh-TW"});
-        var expected = "039-6123-4567";
+        var expected = "03961234567";
         
         var fmt = new PhoneFmt({locale: "zh-TW", style: "破折號"});
         formatted = fmt.format(parsed, {partial: true});
@@ -869,7 +869,7 @@ module.exports.phonefmt_TW = {
         test.expect(1);
         var formatted;
         var parsed = new PhoneNumber("039", {locale: "zh-TW"});
-        var expected = "(039) ";
+        var expected = "(03) 9";
         
         var fmt = new PhoneFmt({locale: "zh-TW", style: "沒有空格"});
         formatted = fmt.format(parsed, {partial: true});
@@ -882,7 +882,7 @@ module.exports.phonefmt_TW = {
         test.expect(1);
         var formatted;
         var parsed = new PhoneNumber("0396", {locale: "zh-TW"});
-        var expected = "(039) 6";
+        var expected = "(03) 96";
         
         var fmt = new PhoneFmt({locale: "zh-TW", style: "沒有空格"});
         formatted = fmt.format(parsed, {partial: true});
@@ -895,7 +895,7 @@ module.exports.phonefmt_TW = {
         test.expect(1);
         var formatted;
         var parsed = new PhoneNumber("03961", {locale: "zh-TW"});
-        var expected = "(039) 61";
+        var expected = "(03) 961";
         
         var fmt = new PhoneFmt({locale: "zh-TW", style: "沒有空格"});
         formatted = fmt.format(parsed, {partial: true});
@@ -908,7 +908,7 @@ module.exports.phonefmt_TW = {
         test.expect(1);
         var formatted;
         var parsed = new PhoneNumber("039612", {locale: "zh-TW"});
-        var expected = "(039) 612";
+        var expected = "(03) 9612";
         
         var fmt = new PhoneFmt({locale: "zh-TW", style: "沒有空格"});
         formatted = fmt.format(parsed, {partial: true});
@@ -921,7 +921,7 @@ module.exports.phonefmt_TW = {
         test.expect(1);
         var formatted;
         var parsed = new PhoneNumber("0396123", {locale: "zh-TW"});
-        var expected = "(039) 6123";
+        var expected = "(03) 96123";
         
         var fmt = new PhoneFmt({locale: "zh-TW", style: "沒有空格"});
         formatted = fmt.format(parsed, {partial: true});
@@ -934,7 +934,7 @@ module.exports.phonefmt_TW = {
         test.expect(1);
         var formatted;
         var parsed = new PhoneNumber("03961234", {locale: "zh-TW"});
-        var expected = "(039) 61234";
+        var expected = "(03) 961234";
         
         var fmt = new PhoneFmt({locale: "zh-TW", style: "沒有空格"});
         formatted = fmt.format(parsed, {partial: true});
@@ -947,7 +947,7 @@ module.exports.phonefmt_TW = {
         test.expect(1);
         var formatted;
         var parsed = new PhoneNumber("039612345", {locale: "zh-TW"});
-        var expected = "(039) 612345";
+        var expected = "(03) 9612345";
         
         var fmt = new PhoneFmt({locale: "zh-TW", style: "沒有空格"});
         formatted = fmt.format(parsed, {partial: true});
@@ -960,7 +960,7 @@ module.exports.phonefmt_TW = {
         test.expect(1);
         var formatted;
         var parsed = new PhoneNumber("0396123456", {locale: "zh-TW"});
-        var expected = "(039) 6123456";
+        var expected = "(03) 96123456";
         
         var fmt = new PhoneFmt({locale: "zh-TW", style: "沒有空格"});
         formatted = fmt.format(parsed, {partial: true});
@@ -973,7 +973,7 @@ module.exports.phonefmt_TW = {
         test.expect(1);
         var formatted;
         var parsed = new PhoneNumber("03961234567", {locale: "zh-TW"});
-        var expected = "(039) 61234567";
+        var expected = "03961234567";
         
         var fmt = new PhoneFmt({locale: "zh-TW", style: "沒有空格"});
         formatted = fmt.format(parsed, {partial: true});
@@ -1108,6 +1108,17 @@ module.exports.phonefmt_TW = {
         var fmt = new PhoneFmt({locale: "zh-TW", style: "default"});
         formatted = fmt.format(parsed, {partial: true});
         
+        test.equal(formatted, expected);
+        test.done();
+    },
+    testFormatTWiddPRefix3Digits: function(test) {
+        test.expect(1);
+        var formatted;
+        var parsed = new PhoneNumber("002", {locale: "zh-Hant-TW"});
+        var expected = "002";
+        var fmt = new PhoneFmt({locale: "zh-Hant-TW", style: "default"});
+        formatted = fmt.format(parsed, {partial: true});
+
         test.equal(formatted, expected);
         test.done();
     }

@@ -1,6 +1,15 @@
 Release Notes for Version 14
 ============================
 
+Build 005
+-------
+Published as version 14.1.3
+
+Bug Fixes:
+* Updated the Taiwan area code of PhoneNumber according to [Wikipedia](https://en.wikipedia.org/wiki/Telephone_numbers_in_Taiwan).
+* Changed 3 digit iddprefix PhoneNumber format of zh-Hant-TW as corresponding local office feedback.
+
+
 Build 004
 -------
 Published as version 14.1.2
