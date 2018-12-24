@@ -1613,8 +1613,21 @@ DateFmt.prototype = {
  *
  * The object returned by this method is an array of date
  * format components. Each format component is an object
- * that contains a "component" property and a "label" to display
- * with it. The component is the name of the property to use
+ * that contains properties that describe that component.
+ * The list of possible properties on each object are:
+ * 
+ * <ul>
+ * <li><i>component</i> - if this component describes a part
+ * of the date which can be entered by the user, the component
+ * property gives the name of that component. This can be used
+ * as a property name for the options of the DateFactory()
+ * function. For example, if the value of "component" is "year",
+ * then the value of the input field can be used as the "year"
+ * property when calling DateFactory().
+ * <li><i>label</i> - a localized string to display for this
+ * component as a label.
+ * <li><i>template</i>
+ * . The component is the name of the property to use
  * when constructing a new date with DateFactory(). The label
  * is intended to be shown to the user and is written in the
  * given locale, or the locale of this formatter if the
