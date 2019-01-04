@@ -5,7 +5,7 @@ iLib
 
 iLib is an internationalization library written in pure ES5 Javascript. It does not require any other libraries to function,
 and can run equally well in various older and newer browsers, on various OS's (including mobile), nodejs, webOS, Qt/QML, 
-RingoJS, React/Enact, or rhino.
+RingoJS, React/Enact, or rhino/nashorn.
 
 More elaborate documentation can be found [here](docs/index.md)
 
@@ -44,7 +44,7 @@ letter buckets (AlphabeticIndex)
 plus a lot more.
 
 Only need some of that? That's okay, there's a way to make smaller versions of ilib that only include the classes you need
-and only the locales you need.
+and only the locales you need using webpack.
 
 What Locales Does it Support?
 ------
@@ -68,15 +68,15 @@ ILib has been tested in the following environments:
     * Opera 12.16+
     * Safari 
     * Internet Explorer 8+
-* Rhino on JDK 1.7 and 1.8 with Trireme (0.8.5)
-* RingoJS 0.11
-* Qt 5.4
+* Rhino on JDK 1.7+ and 1.8 with Trireme (0.8.5)
+* RingoJS 0.11+
+* Qt 5.4+
 
 Those environments have been tested on the following platforms where possible:
 
 * Ubuntu 12.04+
 * Windows 7 & 8
-* Mac OSX
+* Mac OSX 10.04+
 * Android
 * iOS
 
@@ -88,7 +88,6 @@ Here is an example of using iLib to format the current date/time for Berlin, Ger
 works equally well with ringojs running on rhino in a Java-based app server. 
 
 ~~~~~
-var ilib=require("ilib");
 var DateFactory = require("ilib/lib/DateFactory.js");
 var DateFmt = require("ilib/lib/DateFmt.js");
 
@@ -108,6 +107,11 @@ Result would be:
 ~~~~~
 '07:45 06. Nov. 2014'
 ~~~~~
+
+Ilib in Browsers or Other Platforms
+-------
+
+If you would like to run ilib in your webapp, you can
 
 Where to Get it
 -------
