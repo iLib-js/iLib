@@ -1624,7 +1624,7 @@ DateFmt.prototype._mapFormatInfo = function(tzinfo) {
                 return {
                     component: "day",
                     label: "Date",
-                    template: "D",
+                    placeholder: "D",
                     constraint: {
                         "condition": "isLeap",
                         "regular": {
@@ -1663,7 +1663,7 @@ DateFmt.prototype._mapFormatInfo = function(tzinfo) {
                 return {
                     component: "day",
                     label: "Date",
-                    template: "DD",
+                    placeholder: "DD",
                     constraint: {
                         "condition": "isLeap",
                         "regular": {
@@ -1702,7 +1702,7 @@ DateFmt.prototype._mapFormatInfo = function(tzinfo) {
                 return {
                     component: "year",
                     label: "Year",
-                    template: "YY",
+                    placeholder: "YY",
                     constraint: "[0-9]{2}",
                     validation: "\\d{2}"
                 };
@@ -1711,7 +1711,7 @@ DateFmt.prototype._mapFormatInfo = function(tzinfo) {
                 return {
                     component: "year",
                     label: "Year",
-                    template: "YYYY",
+                    placeholder: "YYYY",
                     constraint: "[0-9]{4}",
                     validation: "\\d{4}"
                 };
@@ -1720,7 +1720,7 @@ DateFmt.prototype._mapFormatInfo = function(tzinfo) {
                 return {
                     component: "month",
                     label: "Month",
-                    template: "M",
+                    placeholder: "M",
                     constraint: [1, 12],
                     validation: "\\d{1,2}"
                 };
@@ -1729,7 +1729,7 @@ DateFmt.prototype._mapFormatInfo = function(tzinfo) {
                 return {
                     component: "month",
                     label: "Month",
-                    template: "MM",
+                    placeholder: "MM",
                     constraint: "[0-9]+",
                     validation: "\\d{2}"
                 };
@@ -1738,7 +1738,7 @@ DateFmt.prototype._mapFormatInfo = function(tzinfo) {
                 return {
                     component: "hour",
                     label: "Hour",
-                    template: "H",
+                    placeholder: "H",
                     constraint: ["12"].concat(sequence(1, 11)),
                     validation: "\\d{1,2}"
                 };
@@ -1747,7 +1747,7 @@ DateFmt.prototype._mapFormatInfo = function(tzinfo) {
                 return {
                     component: "hour",
                     label: "Hour",
-                    template: "HH",
+                    placeholder: "HH",
                     constraint: ["12"].concat(sequence(1, 11, true)),
                     validation: "\\d{2}"
                 };
@@ -1757,7 +1757,7 @@ DateFmt.prototype._mapFormatInfo = function(tzinfo) {
                 return {
                     component: "hour",
                     label: "Hour",
-                    template: "H",
+                    placeholder: "H",
                     constraint: concat(sequence(0, 11)),
                     validation: "\\d{1,2}"
                 };
@@ -1766,7 +1766,7 @@ DateFmt.prototype._mapFormatInfo = function(tzinfo) {
                 return {
                     component: "hour",
                     label: "Hour",
-                    template: "HH",
+                    placeholder: "HH",
                     constraint: concat(sequence(0, 11, true)),
                     validation: "\\d{2}"
                 };
@@ -1775,7 +1775,7 @@ DateFmt.prototype._mapFormatInfo = function(tzinfo) {
                 return {
                     component: "hour",
                     label: "Hour",
-                    template: "H",
+                    placeholder: "H",
                     constraint: [0, 23],
                     validation: "\\d{1,2}"
                 };
@@ -1784,7 +1784,7 @@ DateFmt.prototype._mapFormatInfo = function(tzinfo) {
                 return {
                     component: "hour",
                     label: "Hour",
-                    template: "H",
+                    placeholder: "H",
                     constraint: concat(sequence(0, 23, true)),
                     validation: "\\d{1,2}"
                 };
@@ -1793,7 +1793,7 @@ DateFmt.prototype._mapFormatInfo = function(tzinfo) {
                 return {
                     component: "hour",
                     label: "Hour",
-                    template: "H",
+                    placeholder: "H",
                     constraint: ["24"].concat(sequence(0, 23)),
                     validation: "\\d{1,2}"
                 };
@@ -1802,7 +1802,7 @@ DateFmt.prototype._mapFormatInfo = function(tzinfo) {
                 return {
                     component: "hour",
                     label: "Hour",
-                    template: "H",
+                    placeholder: "H",
                     constraint: ["24"].concat(sequence(0, 23, true)),
                     validation: "\\d{1,2}"
                 };
@@ -1811,7 +1811,7 @@ DateFmt.prototype._mapFormatInfo = function(tzinfo) {
                 return {
                     component: "minute",
                     label: "Minute",
-                    template: "mm",
+                    placeholder: "mm",
                     constraint: [0, 59],
                     validation: "\\d{1,2}"
                 };
@@ -1820,7 +1820,7 @@ DateFmt.prototype._mapFormatInfo = function(tzinfo) {
                 return {
                     component: "minute",
                     label: "Minute",
-                    template: "mm",
+                    placeholder: "mm",
                     constraint: sequence(0, 59, true),
                     validation: "\\d{2}"
                 };
@@ -1829,7 +1829,7 @@ DateFmt.prototype._mapFormatInfo = function(tzinfo) {
                 return {
                     component: "second",
                     label: "Second",
-                    template: "ss",
+                    placeholder: "ss",
                     constraint: [0, 59],
                     validation: "\\d{1,2}"
                 };
@@ -1838,7 +1838,7 @@ DateFmt.prototype._mapFormatInfo = function(tzinfo) {
                 return {
                     component: "second",
                     label: "Second",
-                    template: "ss",
+                    placeholder: "ss",
                     constraint: sequence(0, 59, true),
                     validation: "\\d{2}"
                 };
@@ -1847,7 +1847,7 @@ DateFmt.prototype._mapFormatInfo = function(tzinfo) {
                 return {
                     component: "millisecond",
                     label: "Millisecond",
-                    template: "ms",
+                    placeholder: "ms",
                     constraint: [0, 999],
                     validation: "\\d{1,3}"
                 };
@@ -1856,7 +1856,7 @@ DateFmt.prototype._mapFormatInfo = function(tzinfo) {
                 return {
                     component: "millisecond",
                     label: "Millisecond",
-                    template: "ms",
+                    placeholder: "ms",
                     constraint: sequence(0, 999, true),
                     validation: "\\d{3}"
                 };
@@ -1923,7 +1923,7 @@ DateFmt.prototype._mapFormatInfo = function(tzinfo) {
                 var ret = {
                     component: "meridiem",
                     label: "AM/PM",
-                    template: "AM/PM",
+                    placeholder: "AM/PM",
                     constraint: []
                 };
                 switch (this.meridiems) {
@@ -2040,11 +2040,24 @@ DateFmt.prototype._mapFormatInfo = function(tzinfo) {
  * Field separators such as slashes or dots, etc., are given
  * as a object with no "component" property. They only contain
  * a "label" property with a string value. A user interface
- * may choose to omit these if desired.<p>
+ * may choose to use them or omit these as needed.<p>
  *
- * Optionally, if a format component is constrained to a
+ * User interfaces can construct two different types of input
+ * forms: a constrained form and a free-form form. In a
+ * constrained form, things like the month are displayed as
+ * as a drop-down box containing a fixed list of month names.
+ * The user may only choose from that list. In a free-form
+ * form, the user is presented with text input fields in
+ * which they can either type whatever they want or type in
+ * a value from a constrained list of characters. This
+ * method returns info that can be used to create either
+ * type of form. It is up to the form element coder to
+ * decide which type they would like.<p>
+ *
+ * For a constrained form, some date format components
+ * must conform to a
  * particular pattern, range, or to a fixed list of possible
- * values, then these constraint rules are given in the
+ * values. These constraint rules are given in the
  * "constraint" property.
  * The values in the constraint property can be one of these
  * types:
@@ -2072,35 +2085,79 @@ DateFmt.prototype._mapFormatInfo = function(tzinfo) {
  * and in regular years, there are 12 months. The "constraint"
  * property for Hebrew calendars is returned as an object
  * that contains three properties, "condition", "leap",
- * and "regular". The "condition" says what the condition is
- * based on (ie. whether or not it is a leap year), and
+ * and "regular". The "condition" property is set to "isLeap"
+ * (ie. whether or not it is a leap year), and
  * each of "leap" and "regular" are
- * an array of strings that give the month names.
+ * an array of strings that give the month names in a leap
+ * year (13 months) and a regular year (12 months) respectively.
  * It is up to the caller to create an date object with
  * the DateFactory() function for the
  * given year and ask it whether or not it represents a
  * leap year and then display the correct list in the UI.
  * </ol>
  *
- * Here is what the result would look like for a US short
- * date/time format that includes the components of date, month,
- * year, hour, minute, and meridiem:
+ * For a free-form form, the user interface must validate the
+ * values that the user has typed into the text field. To aid
+ * with this, this method returns a validation property which
+ * contains either a regular expression or a function. The
+ * regular expression tests whether or not what the user has
+ * entered is valid. If the validation property is set to
+ * a function, this function would take a single
+ * parameter which is the text value of the input field, and
+ * it returns a boolean value: true if the input is valid,
+ * and false otherwise. If it does not make sense for a
+ * particular date format component to be free-form, such
+ * as the "AM/PM" choice for a time, then the validation
+ * property will be left off. UI builders should only allow
+ * free-form fields for those components that have a
+ * "validation" property. Otherwise, use a constrained
+ * input form element instead.<p>
+ *
+ * Some date format components do not represent values that
+ * a user may enter, but instead values that are calculated
+ * based on other date format components. For example, the
+ * day of the week is a
+ * property of a date that is calculated based on the day,
+ * month, and year that the user has entered. It would not
+ * make sense for the user to be able to choose a day of
+ * the week that does not correspond to the day, month, and
+ * year. To handle calculated
+ * date format components, this method returns a "value"
+ * property which is a function which returns
+ * the calculated value of the field. Its parameter is a date
+ * object that has been created from the other date format
+ * components.<p>
+ *
+ * @example Here is what the result would look like for a US short
+ * date/time format that includes the components of day of
+ * the week, date, month, year, hour, minute, and meridiem:
+ *
  * <pre>
  * [
  *   {
- *     "component": "month",
- *     "label": "Month",
- *     "constraint": [1, 12]
+ *     "label": "Day of Week",   // optional label
+ *     "value": function(date) { returns the calculated, localized day of week name }
  *   },
  *   {
- *     "label": "/"
+ *     "label": " "              // fixed field (optionally displayed in the UI)
+ *   }
+ *   {
+ *     "component": "month",     // property name to use when calling DateFactory() for this field
+ *     "label": "Month",         // label describing this field
+ *     "placeholder": "DD",      // the placeholder text for this field
+ *     "constraint": [1, 12],    // constraint rules for a drop-down box for the month
+ *     "validation": "\\d{1,2}"  // validation rule for a free-form text input
+ *   },
+ *   {
+ *     "label": "/"              // fixed field (optionally displayed in the UI)
  *   },
  *   {
  *     "component": "day",
  *     "label": "Date",
+ *     "placeholder": "DD",
  *     "constraint": {
- *       "condition": "leapyear",
- *       "leap": {
+ *       "condition": "isLeap ", // condition to switch upon
+ *       "leap": {               // if the condition is "leap year" use these constraints
  *          "1": [1, 31],
  *          "2": [1, 29],
  *          "3": [1, 31],
@@ -2128,14 +2185,16 @@ DateFmt.prototype._mapFormatInfo = function(tzinfo) {
  *          "11": [1, 30],
  *          "12": [1, 31]
  *       }
- *     }
+ *     },
+ *     "validation": "\\d{1,2}"
  *   {
  *     "label": "/"
  *   },
  *   {
  *     "component": "year",
  *     "label": "Year",
- *     "constraint": "[0-9]+"
+ *     "placeholder": "YYYY",
+ *     "validation": "[0-9]+"
  *   },
  *   {
  *     "label": " at "
@@ -2143,7 +2202,9 @@ DateFmt.prototype._mapFormatInfo = function(tzinfo) {
  *   {
  *     "component": "hour",
  *     "label": "Hour",
- *     "constraint": [1, 12]
+ *     "placeholder": "H",
+ *     "constraint": [1, 12],
+ *     "validation": "\\d{1,2}"
  *   },
  *   {
  *     "label": ":"
@@ -2166,7 +2227,9 @@ DateFmt.prototype._mapFormatInfo = function(tzinfo) {
  *       "11",
  *       ...
  *       "59"
- *     ]
+ *     ],
+ *     "placeholder": "mm",
+ *     "validation": "\\d{2}"
  *   },
  *   {
  *     "label": " "
@@ -2174,6 +2237,7 @@ DateFmt.prototype._mapFormatInfo = function(tzinfo) {
  *   {
  *     "component": "meridiem",
  *     "label": "AM/PM",
+ *     "placeholder": "AM/PM",
  *     "constraint": ["AM", "PM"]
  *   }
  * ]
@@ -2194,7 +2258,11 @@ DateFmt.prototype._mapFormatInfo = function(tzinfo) {
  *     // like "Year" and "Minute" translated to. In this example, we
  *     // are showing an input form for Dutch dates, but the labels are
  *     // written in US English.
- *     fmt.getFormatInfo("en-US", true, ilib.bind(this, function(components) {
+ *     fmt.getFormatInfo({
+ *       locale: "en-US",
+ *       sync: true,
+ *       style: "constrained",
+ *       callback: ilib.bind(this, function(components) {
  *       // iterate through the component array and dynamically create the input
  *       // elements with the given labels
  *     }));
@@ -2210,7 +2278,14 @@ DateFmt.prototype._mapFormatInfo = function(tzinfo) {
  * is ready
  * @returns {Array.<Object>} An array date components
  */
-DateFmt.prototype.getFormatInfo = function(locale, sync, callback) {
+DateFmt.prototype.getFormatInfo = function(options) {
+    var locale, sync = true, callback;
+
+    if (options) {
+        locale = options.locale;
+        sync = !!options.sync;
+        callback = options.callback;
+    }
     var info;
     var loc = new Locale(this.locale);
     if (locale) {
