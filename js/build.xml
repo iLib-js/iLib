@@ -50,7 +50,7 @@ limitations under the License.
 	<property name="build.config"					value="config"/>
 	<property name="log4j.config.file"				value="${build.config}/log4j.properties"/>
 	<property name="build.bin"						value="${build.base}/../bin"/>
-    <property name="nm.bin"                         value="${build.base}/../../node_modules/.bin"/>
+    <property name="nm.bin"                         value="${build.base}/../node_modules/.bin"/>
 	<property name="jar.ilib"					    value="ilib.jar"/>
 	<property name="locales.default"                value="en-AU,en-CA,en-GB,en-IN,en-NG,en-PH,en-PK,en-SG,en-US,en-ZA,de-DE,fr-CA,fr-FR,es-AR,es-ES,es-MX,id-ID,it-IT,ja-JP,ko-KR,pt-BR,ru-RU,tr-TR,vi-VN,zxx-XX,zh-Hans-CN,zh-Hant-HK,zh-Hant-TW,zh-Hans-SG"/>
     <property name="locales.unittest"               value="aa-DJ,af-NA,agq-CM,ak-GH,am-ET,ar-AE,ar-BH,ar-DJ,ar-DZ,ar-EG,ar-IQ,ar-JO,ar-KW,ar-LB,ar-LY,ar-MA,ar-MR,ar-OM,ar-QA,ar-SA,ar-SD,ar-SY,ar-TN,ar-YE,asa-TZ,as-IN,az-Latn-AZ,bas-CM,be-BY,bem-ZM,bg-BG,bh-IN,bm-ML,bn-IN,br-FR,bs-BS,bs-Cyrl-BA,bs-Latn-BA,bs-ME,ca-FR,cop-EG,cs-CZ,da-DK,de-AT,de-DE,el-GR,en-AM,en-AU,en-CA,en-ET,en-GB,en-GH,en-GM,en-HK,en-IE,en-IN,en-IS,en-KE,en-LK,en-LR,en-MW,en-MY,en-NG,en-NZ,en-PA,en-PH,en-PK,en-PR,en-RW,en-SD,en-SG,en-SL,en-TZ,en-UG,en-US,en-ZA,en-ZM,es-AR,es-BO,es-CL,es-CO,es-CR,es-DO,es-EC,es-ES,es-GQ,es-GT,es-HN,es-MX,es-NI,es-PA,es-PE,es-PR,es-PY,es-SV,es-US,es-UY,es-VE,et-EE,fa-AF,fa-IR,ff-SN,fi-FI,fj-FJ,fo-FO,fr-AD,fr-BE,fr-BF,fr-BJ,fr-CA,fr-CD,fr-CF,fr-CG,fr-CH,fr-CI,fr-CM,fr-DJ,fr-DZ,fr-FR,fr-GA,fr-GN,fr-LB,fr-LU,fr-MG,fr-ML,fr-RW,fr-SN,fr-TG,fr-YT,ga-IE,gl-ES,gu-IN,ha-Latn-NG,he-IL,hi-IN,hr-HR,hr-ME,hu-HU,hy-AZ,hy-AM,id-ID,id-MY,it-CH,it-IT,it-SM,ja-JP,ka-IR,kk-Cyrl-KZ,km-KH,kn-IN,ko-KR,ks-Arab-IN,ku-Arab-IQ,ku-Arab-IR,ku-IR,lg-UG,ln-CF,lt-LT,lv-LV,fr-Latn-MA,mi-CK,mk-MK,ml-IN,mm-MM,mn-CN,mn-Cyrl-MN,mr-IN,ms-BN,ms-MY,ne-NP,nl-BE,nl-NL,nb-NO,nn-NO,no-NO,no-SJ,om-ET,or-IN,os-RU,pa-Arab,pa-IN,pa-Arab-PK,pl-PL,ps-AF,pt-AO,pt-BR,pt-CV,pt-GW,pt-GQ,pt-MO,pt-MZ,pt-PT,pt-ST,pt-TL,ro-RO,ro-RS,ru-GE,ru-KG,ru-KZ,ru-RU,ru-TM,shi-Tfng-MA,si-LK,sk-SK,sl-SI,sl-SL,so-ET,so-SO,sq-AL,sq-ME,sq-MK,sr-Cyrl-BA,sr-Latn-BA,sr-Latn-RS,sr-Latn-ME,sr-RS,sr-Latn-RS,ss-ZA,st-LS,sv-FI,sv-SE,sw-KE,sw-UG,ta-IN,ta-LK,ta-MY,ta-SG,te-IN,th-TH,tr-TR,uk-UA,ur-IN,ur-PK,uz-AF,uz-Arab-AF,uz-Cyrl-UZ,uz-Latn-UZ,uz-UZ,vai-Latn-LR,vi-VN,zh-Hans-CN,zh-Hant-HK,zh-Hans-HK,zh-Hans-MY,zh-Hant-TW,zh-Hans-MO,zh-Hant-MO,zh-Hans-SG,zh-Hant-US,zu-ZA,zxx-Cyrl-XX,zxx-Hans-XX,zxx-Hebr-XX,zxx-XX"/>
@@ -136,6 +136,7 @@ limitations under the License.
 				<arg value="--env.locales=@{locales}"/>
 				<arg value="--env.target=@{target}"/>
 				<arg value="--env.ilibRoot=${build.base}"/>
+				<arg value="--env.tempDir=${build.output}"/>
 			</exec>
 			<exec osfamily="windows" executable="webpack.bat" dir="${build.base}" failifexecutionfails="@{failquit}"  failonerror="@{failquit}">
 				<env key="NODE_OPTIONS" value="--max-old-space-size=3072"/>
@@ -145,6 +146,7 @@ limitations under the License.
 				<arg value="--env.locales=@{locales}"/>
                 <arg value="--env.target=@{target}"/>
                 <arg value="--env.ilibRoot=${build.base}"/>
+                <arg value="--env.tempDir=${build.output}"/>
 			</exec>
 		</sequential>
 	</macrodef>
@@ -529,43 +531,31 @@ limitations under the License.
     </target>
     <target name="scan.demo">
         <sequential>
-            <echo>Scanning demo dir for ilib classes ${env.PATH}:${nm.bin}</echo>
-            <exec osfamily="unix" executable="ilib-scanner" dir="${build.demo}" failifexecutionfails="@{failquit}" failonerror="@{failquit}" searchpath="true">
+            <echo>Scanning demo dir for ilib classes</echo>
+            <exec osfamily="unix" executable="bash" dir="${build.demo}" failifexecutionfails="@{failquit}" failonerror="@{failquit}" searchpath="true">
                 <env key="PATH" path="${env.PATH}:${nm.bin}"/>
-                <arg value="scripts/ilib-include.js"/>
-                <arg value="--assembly=assembled"/>
-                <arg value="--compilation=compiled"/>
-                <arg value="--locales=${locales.demo}"/>
-                <arg value="--ilibRoot=${build.base}"/>
+                <arg value="-c"/>
+                <arg value="ilib-scanner scripts/ilib-include.js --assembly=assembled --compilation=compiled --locales=${locales.demo} --ilibRoot=${build.base}"/>
             </exec>
-            <exec osfamily="windows" executable="ilib-scanner.bat" dir="${build.demo}" failifexecutionfails="@{failquit}"  failonerror="@{failquit}" searchpath="true">
-                <env key="PATH" path="${env.PATH}:${nm.bin}"/>
-                <arg value="scripts/ilib-include.js"/>
-                <arg value="--assembly=assembled"/>
-                <arg value="--compilation=compiled"/>
-                <arg value="--locales=${locales.demo}"/>
-                <arg value="--ilibRoot=${build.base}"/>
+            <exec osfamily="windows" executable="cmd.exe" dir="${build.demo}" failifexecutionfails="@{failquit}"  failonerror="@{failquit}" searchpath="true">
+                <env key="Path" path="${env.PATH}:${nm.bin}"/>
+                <arg value="/c"/>
+                <arg value="ilib-scanner.bat scripts/ilib-include.js --assembly=assembled --compilation=compiled --locales=${locales.demo} --ilibRoot=${build.base}"/>
             </exec>
         </sequential>
     </target>
     <target name="scan.demo.dynamic">
         <sequential>
-            <echo>Scanning demo dir for ilib classes ${env.PATH}:${nm.bin}</echo>
+            <echo>Scanning demo dir for ilib classes</echo>
             <exec osfamily="unix" executable="ilib-scanner" dir="${build.demo}" failifexecutionfails="@{failquit}" failonerror="@{failquit}" searchpath="true">
                 <env key="PATH" path="${env.PATH}:${nm.bin}"/>
-                <arg value="scripts/ilib-include.js"/>
-                <arg value="--assembly=dynamicdata"/>
-                <arg value="--compilation=compiled"/>
-                <arg value="--locales=${locales.demo}"/>
-                <arg value="--ilibRoot=${build.base}"/>
+                <arg value="-c"/>
+                <arg value="ilib-scanner scripts/ilib-include.js --assembly=dynamicdata --compilation=compiled --locales=${locales.demo} --ilibRoot=${build.base}"/>
             </exec>
-            <exec osfamily="windows" executable="ilib-scanner.bat" dir="${build.demo}" failifexecutionfails="@{failquit}"  failonerror="@{failquit}" searchpath="true">
-                <env key="PATH" path="${env.PATH}:${nm.bin}"/>
-                <arg value="scripts/ilib-include.js"/>
-                <arg value="--assembly=dynamicdata"/>
-                <arg value="--compilation=compiled"/>
-                <arg value="--locales=${locales.demo}"/>
-                <arg value="--ilibRoot=${build.base}"/>
+            <exec osfamily="windows" executable="cmd.exe" dir="${build.demo}" failifexecutionfails="@{failquit}"  failonerror="@{failquit}" searchpath="true">
+                <env key="Path" path="${env.PATH}:${nm.bin}"/>
+                <arg value="/c"/>
+                <arg value="ilib-scanner.bat scripts/ilib-include.js --assembly=dynamicdata --compilation=compiled --locales=${locales.demo} --ilibRoot=${build.base}"/>
             </exec>
         </sequential>
     </target>
