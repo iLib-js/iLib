@@ -66,7 +66,7 @@ ILib has been tested in the following environments:
     * Chrome 28+
     * Firefox 35+
     * Opera 12.16+
-    * Safari 
+    * Safari 6+
     * Internet Explorer 8+
 * Rhino on JDK 1.7+ and 1.8 with Trireme (0.8.5)
 * RingoJS 0.11+
@@ -108,18 +108,77 @@ Result would be:
 '07:45 06. Nov. 2014'
 ~~~~~
 
-Ilib in Browsers or Other Platforms
+Other iLib Support
 -------
 
-If you would like to run ilib in your webapp, you can
+### Prepackaged iLib
+
+If you would like to run ilib in your webapp, you can use the pre-webpacked versions of
+ilib in the [releases](https://github.com/iLib-js/iLib/releases) page on github.
+
+### Webpack
+
+If you already use webpack for your own project, you can use the ilib webpack
+[loader](https://github.com/iLib-js/ilib-webpack-loader) and
+[plugin](https://github.com/iLib-js/ilib-webpack-plugin) to include ilib code and locale
+data into your own webpacked project. The advantage is that
+it will only include those ilib classes you are actually using and only the locale data
+for the locales you specify. That helps to minimize the file size of your webpack chunks.
+See the README documentation in the 
+[ilib webpack loader](https://github.com/iLib-js/ilib-webpack-loader)
+for more details.
+
+### No Webpack
+
+If you do not use webpack for your own project, and yet you still want a minimal version
+of ilib, you can use the [ilib scanner](https://github.com/iLib-js/ilib-scanner) to scan
+your webapp code and create a webpack config that will build this minimal version for
+you. You can just include the resulting js files in your webapp. See the README for 
+that project for details.
+
+### React
+
+If you are using React in your project and would like to include ilib classes, you can
+use the webpack loader and plugin mentioned above to do so.
+
+Additionally, there is a new library of React components called [react-ilib](https://github.com/iLib-js/react-ilib)
+that will eventually allow you to use all the ilib formatters as React components, such as an
+address formatting component that will output an address in the correct format per locale.
+It says "eventually" in the previous sentence because the project is new and there is
+a lot left to code.
+
+React-ilib will also include a number of new components
+that allow you to do localized input form elements. For example, a localized address
+form component will present all of the fields necessary for an address in a number of
+different locales, along with the localized field labels and placeholder texts. The
+result of a user filling out the form would be an ilib Address instance, ready to use!
+
+### ES6
+
+If you want to use ilib classes directly from ES6 instead of using React components, you 
+can do that with the [ilib-es6](https://github.com/iLib-js/ilib-es6) project. With this
+library, you can use ilib asynchronously with promises instead of node-style callbacks,
+and you can import the classes in regular ES6 style. This library also works nicely in
+React if you want to call the ilib classes directly instead of using react-ilib
+components.
+
+### Localizing Your Strings
+
+If you use ilib in your javascript project, you can use the [loctool](https://github.com/iLib-js/loctool)
+to extract the strings into XLIFF files that your translation vendor can translate
+directly. When you received the localized XLIFF files back again, you can then run
+the loctool again to generate localized assets, such as resource files that ilib's
+ResBundle class can use, or copies of HTML files with localized text in them. See the
+loctool documentation for more information.
 
 Where to Get it
 -------
 
-For node, you can simply install it using npm: 
+For node, you can simply install it using npm or yarn:
 
 ~~~~~
 npm install ilib
+yarn add ilib
 ~~~~~
 
 For ringojs, you can install it with the ringo package manager:
@@ -131,16 +190,16 @@ rp install ilib
 ILib is also available on github at https://github.com/iLib-js/iLib
 or official iLib builds in tar balls at https://github.com/iLib-js/iLib/releases
 
-If you want to create your own version of ilib with a smaller set of classes than the big list above, you'll have to
-get the source and build it yourself. This will require that you install java 1.7 or later, plus ant and nodejs.
+You can also build your own version from the sources using webpack. See the previous
+section about webpack for links.
 
 Copyright and License
 -------
 
-Copyright &copy; 2011-2018, JEDLSoft
+Copyright &copy; 2011-2019, JEDLSoft
 
-Licensed under the Apache License, Version 2.0 (the "License");
-you may not use this file except in compliance with the License.
+Ilib is licensed under the Apache License, Version 2.0 (the "License");
+you may not use this library except in compliance with the License.
 You may obtain a copy of the License at
 
 http://www.apache.org/licenses/LICENSE-2.0
