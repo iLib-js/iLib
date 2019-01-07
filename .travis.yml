@@ -8,24 +8,25 @@ env:
   - CXX=g++-4.8
 before_install:
   # Qt
-  - sudo apt-add-repository --yes ppa:beineri/opt-qt551-trusty
-  - sudo apt-get update -qq
+  #- sudo apt-add-repository --yes ppa:beineri/opt-qt551-trusty
+  #- sudo apt-get update -qq
   - export TZ=America/Los_Angeles
+  - export MYIP=$(dig -4 @resolver1.opendns.com ANY myip.opendns.com +short)
 install:
   # Qt
-  - sudo apt-get -y install qt55[QTPACKAGE]
-  - sudo apt-get -y install qmlscene qt5-default qtdeclarative5-dev qtbase5-dev
+  #- sudo apt-get -y install qt55[QTPACKAGE]
+  #- sudo apt-get -y install qmlscene qt5-default qtdeclarative5-dev qtbase5-dev
   - rm -rf node_modules
   - npm install
   - export PATH=$PWD/node_modules/.bin:$PATH
   - export NODE_OPTIONS="--max-old-space-size=3072"
 script:
   # [Error] module QtQuick is not installed
-  - source /opt/qt55/bin/qt55-env.sh
+  #- source /opt/qt55/bin/qt55-env.sh
   # [Error] [exec] QXcbConnection: Could not connect to display
-  - export QT_QPA_PLATFORM=offscreen
+  #- export QT_QPA_PLATFORM=offscreen
   # [Error] QFontDatabase: Cannot find font directory /usr/lib/x86_64-linux-gnu/fonts - is Qt installed correctly?
-  - sudo ln -s /usr/share/fonts /usr/lib/x86_64-linux-gnu/fonts
+  #- sudo ln -s /usr/share/fonts /usr/lib/x86_64-linux-gnu/fonts
 
   # iLib full build / Run nodeunit tests
   - ant clean test
@@ -37,5 +38,10 @@ branches:
   only:
     - master
     - development
+addons:
+  sauce_connect:
+    username: ehoogerbeets@gmail.com
+  jwt:
+    secure:
 sudo: required
 dist: trusty
