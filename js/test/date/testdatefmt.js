@@ -3769,58 +3769,61 @@ module.exports.testdatefmt = {
         });
         test.ok(fmt !== null);
 
-        fmt.getFormatInfo(undefined, true, function(info) {
-            test.ok(info);
+        fmt.getFormatInfo({
+            sync: true,
+            onLoad: function(info) {
+                test.ok(info);
 
-            test.equal(info.length, 5);
+                test.equal(info.length, 5);
 
-            test.equal(info[0].component, "month");
-            test.equal(info[0].label, "Month");
-            test.deepEqual(info[0].constraint, [1, 12]);
+                test.equal(info[0].component, "month");
+                test.equal(info[0].label, "Month");
+                test.deepEqual(info[0].constraint, [1, 12]);
 
-            test.ok(!info[1].component);
-            test.equal(info[1].label, "/");
+                test.ok(!info[1].component);
+                test.equal(info[1].label, "/");
 
-            test.equal(info[2].component, "day");
-            test.equal(info[2].label, "Date");
-            test.deepEqual(info[2].constraint, {
-                "condition": "isLeap",
-                "regular": {
-                    "1": [1, 31],
-                    "2": [1, 28],
-                    "3": [1, 31],
-                    "4": [1, 30],
-                    "5": [1, 31],
-                    "6": [1, 30],
-                    "7": [1, 31],
-                    "8": [1, 31],
-                    "9": [1, 30],
-                    "10": [1, 31],
-                    "11": [1, 30],
-                    "12": [1, 31]
-                },
-                "leap": {
-                    "1": [1, 31],
-                    "2": [1, 29],
-                    "3": [1, 31],
-                    "4": [1, 30],
-                    "5": [1, 31],
-                    "6": [1, 30],
-                    "7": [1, 31],
-                    "8": [1, 31],
-                    "9": [1, 30],
-                    "10": [1, 31],
-                    "11": [1, 30],
-                    "12": [1, 31]
-                }
-            });
+                test.equal(info[2].component, "day");
+                test.equal(info[2].label, "Date");
+                test.deepEqual(info[2].constraint, {
+                    "condition": "isLeap",
+                    "regular": {
+                        "1": [1, 31],
+                        "2": [1, 28],
+                        "3": [1, 31],
+                        "4": [1, 30],
+                        "5": [1, 31],
+                        "6": [1, 30],
+                        "7": [1, 31],
+                        "8": [1, 31],
+                        "9": [1, 30],
+                        "10": [1, 31],
+                        "11": [1, 30],
+                        "12": [1, 31]
+                    },
+                    "leap": {
+                        "1": [1, 31],
+                        "2": [1, 29],
+                        "3": [1, 31],
+                        "4": [1, 30],
+                        "5": [1, 31],
+                        "6": [1, 30],
+                        "7": [1, 31],
+                        "8": [1, 31],
+                        "9": [1, 30],
+                        "10": [1, 31],
+                        "11": [1, 30],
+                        "12": [1, 31]
+                    }
+                });
 
-            test.ok(!info[3].component);
-            test.equal(info[3].label, "/");
+                test.ok(!info[3].component);
+                test.equal(info[3].label, "/");
 
-            test.equal(info[4].component, "year");
-            test.equal(info[4].label, "Year");
-            test.equal(info[4].constraint, "[0-9]+");
+                test.equal(info[4].component, "year");
+                test.equal(info[4].label, "Year");
+                test.equal(info[4].constraint, "[0-9]+");
+            }
         });
 
         test.done();
@@ -3836,71 +3839,74 @@ module.exports.testdatefmt = {
         });
         test.ok(fmt !== null);
 
-        fmt.getFormatInfo(undefined, true, function(info) {
-            test.ok(info);
+        fmt.getFormatInfo({
+            sync: true,
+            onLoad: function(info) {
+                test.ok(info);
 
-            test.equal(info.length, 5);
+                test.equal(info.length, 5);
 
-            test.equal(info[0].component, "month");
-            test.equal(info[0].label, "Month");
-            test.deepEqual(info[0].constraint, [
-                {label: "January", value: 1},
-                {label: "February", value: 2},
-                {label: "March", value: 3},
-                {label: "April", value: 4},
-                {label: "May", value: 5},
-                {label: "June", value: 6},
-                {label: "July", value: 7},
-                {label: "August", value: 8},
-                {label: "September", value: 9},
-                {label: "October", value: 10},
-                {label: "November", value: 11},
-                {label: "December", value: 12},
-            ]);
+                test.equal(info[0].component, "month");
+                test.equal(info[0].label, "Month");
+                test.deepEqual(info[0].constraint, [
+                    {label: "January", value: 1},
+                    {label: "February", value: 2},
+                    {label: "March", value: 3},
+                    {label: "April", value: 4},
+                    {label: "May", value: 5},
+                    {label: "June", value: 6},
+                    {label: "July", value: 7},
+                    {label: "August", value: 8},
+                    {label: "September", value: 9},
+                    {label: "October", value: 10},
+                    {label: "November", value: 11},
+                    {label: "December", value: 12},
+                ]);
 
-            test.ok(!info[1].component);
-            test.equal(info[1].label, " ");
+                test.ok(!info[1].component);
+                test.equal(info[1].label, " ");
 
-            test.equal(info[2].component, "day");
-            test.equal(info[2].label, "Date");
-            test.deepEqual(info[2].constraint, {
-                "condition": "isLeap",
-                "regular": {
-                    "1": [1, 31],
-                    "2": [1, 28],
-                    "3": [1, 31],
-                    "4": [1, 30],
-                    "5": [1, 31],
-                    "6": [1, 30],
-                    "7": [1, 31],
-                    "8": [1, 31],
-                    "9": [1, 30],
-                    "10": [1, 31],
-                    "11": [1, 30],
-                    "12": [1, 31]
-                },
-                "leap": {
-                    "1": [1, 31],
-                    "2": [1, 29],
-                    "3": [1, 31],
-                    "4": [1, 30],
-                    "5": [1, 31],
-                    "6": [1, 30],
-                    "7": [1, 31],
-                    "8": [1, 31],
-                    "9": [1, 30],
-                    "10": [1, 31],
-                    "11": [1, 30],
-                    "12": [1, 31]
-                }
-            });
+                test.equal(info[2].component, "day");
+                test.equal(info[2].label, "Date");
+                test.deepEqual(info[2].constraint, {
+                    "condition": "isLeap",
+                    "regular": {
+                        "1": [1, 31],
+                        "2": [1, 28],
+                        "3": [1, 31],
+                        "4": [1, 30],
+                        "5": [1, 31],
+                        "6": [1, 30],
+                        "7": [1, 31],
+                        "8": [1, 31],
+                        "9": [1, 30],
+                        "10": [1, 31],
+                        "11": [1, 30],
+                        "12": [1, 31]
+                    },
+                    "leap": {
+                        "1": [1, 31],
+                        "2": [1, 29],
+                        "3": [1, 31],
+                        "4": [1, 30],
+                        "5": [1, 31],
+                        "6": [1, 30],
+                        "7": [1, 31],
+                        "8": [1, 31],
+                        "9": [1, 30],
+                        "10": [1, 31],
+                        "11": [1, 30],
+                        "12": [1, 31]
+                    }
+                });
 
-            test.ok(!info[3].component);
-            test.equal(info[3].label, ", ");
+                test.ok(!info[3].component);
+                test.equal(info[3].label, ", ");
 
-            test.equal(info[4].component, "year");
-            test.equal(info[4].label, "Year");
-            test.equal(info[4].constraint, "[0-9]+");
+                test.equal(info[4].component, "year");
+                test.equal(info[4].label, "Year");
+                test.equal(info[4].constraint, "[0-9]+");
+            }
         });
 
         test.done();

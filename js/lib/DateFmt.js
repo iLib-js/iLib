@@ -2027,11 +2027,43 @@ DateFmt.prototype._mapFormatInfo = function(tzinfo) {
  * Return information about the date format that can be used
  * by UI frameworks to display a locale-sensitive input form.<p>
  *
- * The object returned by this method is an array of date
+ * The options parameter is an object that can contain any of
+ * the following properties:
+ *
+ * <ul>
+ * <li><i>locale</i> - the locale to translate the labels
+ * to. If not given, the locale of the formatter will be used.
+ * The locale of the formatter specifies the format of the
+ * date input and which components are available and in what
+ * order, whereas this locale property only specifies the language
+ * used for the labels.
+ *
+ * <li><i>sync</i> - if true, this method should load the data
+ * synchronously. If false, load the data asynchronously and
+ * call the onLoad callback function when it is done. The onLoad
+ * parameter must be specified in order to receive the data.
+ *
+ * <li><i>onLoad</i> - a callback function to call when the data is fully
+ * loaded. When the onLoad option is given, this method will attempt to
+ * load any missing locale data using the ilib loader callback.
+ * When this method is done (even if the data is already preassembled), the
+ * onLoad function is called with the results as a parameter, so this
+ * callback can be used with preassembled or dynamic data loading or a
+ * mix of the two.
+ *
+ * <li><i>loadParams</i> - an object containing parameters to pass to the
+ * loader callback function when locale data is missing. The parameters are not
+ * interpretted or modified in any way. They are simply passed along. The object
+ * may contain any property/value pairs as long as the calling code is in
+ * agreement with the loader callback function as to what those parameters mean.
+ *</ul>
+ *
+ * The results object returned by this method or passed to the onLoad
+ * callback is an array of date
  * format components. Each format component is an object
  * that contains information that can be used to display
  * a field in an input form.
- * The list of possible properties on each object are:
+ * The list of possible properties on each component object are:
  *
  * <ul>
  * <li><i>component</i> - if this component describes a part
@@ -2312,12 +2344,13 @@ DateFmt.prototype._mapFormatInfo = function(tzinfo) {
  * @returns {Array.<Object>} An array date components
  */
 DateFmt.prototype.getFormatInfo = function(options) {
-    var locale, sync = true, callback;
+    var locale, sync = true, callback, loadParams;
 
     if (options) {
         locale = options.locale;
         sync = !!options.sync;
         callback = options.callback;
+        loadParams = options.loadParams;
     }
     var info;
     var loc = new Locale(this.locale);
@@ -2332,8 +2365,8 @@ DateFmt.prototype.getFormatInfo = function(options) {
     new ResBundle({
         locale: loc,
         name: "dateres",
-        sync: this.sync,
-        loadParams: this.loadParams,
+        sync: sync,
+        loadParams: loadParams,
         onLoad: ilib.bind(this, function (rb) {
             var info, zone = false;
             for (var i = 0; i < this.templateArr.length; i++) {
