@@ -2025,67 +2025,86 @@ DateFmt.prototype._mapFormatInfo = function(tzinfo) {
 
 /**
  * Return information about the date format that can be used
- * by UI builders to display a locale-sensitive set of input fields
- * based on the current formatter's settings.<p>
+ * by UI frameworks to display a locale-sensitive input form.<p>
  *
  * The object returned by this method is an array of date
  * format components. Each format component is an object
- * that contains properties that describe that component.
+ * that contains information that can be used to display
+ * a field in an input form.
  * The list of possible properties on each object are:
- * 
+ *
  * <ul>
  * <li><i>component</i> - if this component describes a part
- * of the date which can be entered by the user, the component
- * property gives the name of that component. This can be used
- * as a property name for the options of the DateFactory()
- * function. For example, if the value of "component" is "year",
+ * of the date format which can be entered by the user (as opposed
+ * to the fixed parts which cannot), then this property gives
+ * the name of that component when the value is used
+ * with the DateFactory() function to construct an IDate instance.
+ * For example, if the value of "component" is "year",
  * then the value of the input field can be used as the "year"
  * property when calling DateFactory().
- * <li><i>label</i> - a localized string to display for this
- * component as a label.
- * <li><i>template</i>
+ * <li><i>label</i> - a localized text to display for this
+ * component as a label. The text is localized to the given
+ * locale. If a locale is not given, then it uses the locale
+ * of the formatter.
+ * <li><i>placeholder</i> - the localized placeholder text to
+ * display in a free-form, empty text input field, which gives
+ * the user a hint as to what to enter in that field. The text
+ * is localized to the given
+ * locale. If a locale is not given, then it uses the locale
+ * of the formatter.
+ * <li><i>validation</i> - a regular expression or function
+ * that validates the input value of a free-form text input
+ * field. When the validation property is a regular expression,
+ * the expression matches when the value of the field is valid.
+ * When the validation property is a function, the function
+ * would take a single parameter which is the value of
+ * the input field. It returns a boolean value: true if the
+ * input is valid, and false otherwise.
+ * <li><i>constraint</i> - a rule that describes the constraints
+ * on valid values for this component. This is intended to be
+ * used with input fields such as drop-down boxes. Constraints
+ * are sometimes conditional. (See the description below.)
+ * <li><i>value</i> - a function that this the value of
+ * a calculated field. (See the description below.)
  * </ul>
- * . The component is the name of the property to use
- * when constructing a new date with DateFactory(). The label
- * is intended to be shown to the user and is written in the
- * given locale, or the locale of this formatter if the
- * locale was not given.<p>
  *
  * Field separators such as slashes or dots, etc., are given
  * as a object with no "component" property. They only contain
  * a "label" property with a string value. A user interface
- * may choose to use them or omit these as needed.<p>
+ * may choose to use these purely formatting components or ignore
+ * them as needed.<p>
  *
  * User interfaces can construct two different types of input
- * forms: a constrained form and a free-form form. In a
- * constrained form, things like the month are displayed as
+ * forms: constrained or free-form. In a constrained form,
+ * components such as the month are displayed as
  * as a drop-down box containing a fixed list of month names.
- * The user may only choose from that list. In a free-form
- * form, the user is presented with text input fields in
- * which they can either type whatever they want or type in
- * a value from a constrained list of characters. This
- * method returns info that can be used to create either
- * type of form. It is up to the form element coder to
- * decide which type they would like.<p>
+ * The user may only choose from that list and it is therefore
+ * impossible to choose an invalid value. In a free-form
+ * form, the user is presented with text input fields where
+ * they can type whatever they want. The resulting value should
+ * be validated using the validation rules before submitting
+ * the form. The getFormatInfo
+ * method returns information that can be used to create either
+ * type of form. It is up to the caller to
+ * decide which type of form to present to the user.<p>
  *
- * For a constrained form, some date format components
- * must conform to a
- * particular pattern, range, or to a fixed list of possible
- * values. These constraint rules are given in the
- * "constraint" property.
- * The values in the constraint property can be one of these
- * types:
+ * For a constrained form element, the input value
+ * must conform to a particular pattern, range, or a fixed
+ * list of possible values. The rule for this is given in
+ * the "constraint" property.
+ * The values of the constraint property can be one of the
+ * following types:
  *
  * <ol>
  * <ul><i>array[2]&lt;number&gt;</i> - an array of size 2 of numbers
- * that gives the start and end of a numeric range.
+ * that gives the start and end of a numeric range. The input must
+ * be between the start and end of the range, inclusive.
  * <ul><i>array&lt;object&gt; - an array of valid string values
  * given as objects that have "label" and "value" properties. The
  * label is intended to be displayed to the user and the value
  * is to be used to construct the new date object when the
- * user has finished
- * selecting the components and the form is being evaluated or
- * submitted.
+ * user has finished selecting the components and the form is
+ * being evaluated or submitted.
  * <ul><i>object</i> - conditional constraints. In some cases,
  * the list of possible values for the months
  * or the days depends on which year and month is being
@@ -2104,15 +2123,13 @@ DateFmt.prototype._mapFormatInfo = function(tzinfo) {
  * each of "leap" and "regular" are
  * an array of strings that give the month names in a leap
  * year (13 months) and a regular year (12 months) respectively.
- * It is up to the caller to create an date object with
- * the DateFactory() function for the
- * given year and ask it whether or not it represents a
+ * It is up to the caller to test if a particular year is a
  * leap year and then display the correct list in the UI.
  * </ol>
  *
  * For a free-form form, the user interface must validate the
  * values that the user has typed into the text field. To aid
- * with this, this method returns a validation property which
+ * with this, this method returns a "validation" property which
  * contains either a regular expression or a function. The
  * regular expression tests whether or not what the user has
  * entered is valid. If the validation property is set to
@@ -2140,7 +2157,9 @@ DateFmt.prototype._mapFormatInfo = function(tzinfo) {
  * property which is a function which returns
  * the calculated value of the field. Its parameter is a date
  * object that has been created from the other date format
- * components.<p>
+ * components. Its single parameter is an object that contains
+ * the other date input components, similar to what you might
+ * pass to the DateFactory function.<p>
  *
  * @example Here is what the result would look like for a US short
  * date/time format that includes the components of day of
@@ -2157,7 +2176,7 @@ DateFmt.prototype._mapFormatInfo = function(tzinfo) {
  *   }
  *   {
  *     "component": "month",     // property name to use when calling DateFactory() for this field
- *     "label": "Month",         // label describing this field
+ *     "label": "Month",         // label describing this field, in this case translated to English/US
  *     "placeholder": "DD",      // the placeholder text for this field
  *     "constraint": [1, 12],    // constraint rules for a drop-down box for the month
  *     "validation": "\\d{1,2}"  // validation rule for a free-form text input
@@ -2275,16 +2294,16 @@ DateFmt.prototype._mapFormatInfo = function(tzinfo) {
  *     fmt.getFormatInfo({
  *       locale: "en-US",
  *       sync: true,
- *       style: "constrained",
  *       callback: ilib.bind(this, function(components) {
  *       // iterate through the component array and dynamically create the input
- *       // elements with the given labels
+ *       // elements with the given labels and placeholders and such
  *     }));
  *   })
  * });
  *
  * @param {Locale|string=} locale the locale to translate the labels
- * to. If not given, the locale of the formatter will be used.
+ * to. This is distinct from the locale of the date being entered.
+ * If not given, the locale of the formatter will be used.
  * @param {boolean=} sync true if this method should load the data
  * synchronously and return it immediately, false if async operation is
  * needed.
