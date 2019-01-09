@@ -2,7 +2,7 @@
  * gendatefmts2.js - ilib tool to generate the dateformats.json files from
  * the CLDR data files
  *
- * Copyright © 2013-2018, JEDLSoft
+ * Copyright © 2013-2019, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -93,11 +93,11 @@ process.argv.forEach(function (val, index, array) {
     }
 });
 
-localeDirName = process.argv[3];
+localeDirName = process.argv[2];
 
 
-console.log("gendatefmts - generate date and time formats information files.\n" +
-"Copyright (c) 2013-2018 JEDLSoft\n");
+console.log("gendatefmts2 - generate date and time formats information files.\n" +
+"Copyright (c) 2013-2019 JEDLSoft\n");
 
 console.log("locale dir: " + localeDirName);
 
