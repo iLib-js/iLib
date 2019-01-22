@@ -1125,7 +1125,7 @@ module.exports.testscriptinfo = {
         test.equal(scinfo.getScriptDirection(), "ltr");
         test.done();
     },
-    testScriptInfo_si_SI: function(test) {
+    testScriptInfo_sl_SI: function(test) {
         test.expect(4);
         var li = new LocaleInfo("sl-SI");
         var scinfo = new ScriptInfo(li.getScript());
@@ -1815,7 +1815,7 @@ module.exports.testscriptinfo = {
         test.equal(scinfo.getScriptDirection(), "ltr");
         test.done();
     },
-    testScriptInfo_fr_GQ: function(test) {
+    testScriptInfo_fr_GA: function(test) {
         test.expect(4);
         var li = new LocaleInfo("fr-GA");
         var scinfo = new ScriptInfo(li.getScript());

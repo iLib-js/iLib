@@ -1127,7 +1127,7 @@ module.exports.testweekdata = {
         test.equal(info.getWeekEndEnd(), 0);
         test.done();
     },
-    testWeekData_si_SI: function(test) {
+    testWeekData_sl_SI: function(test) {
         test.expect(4);
         var info = new LocaleInfo("sl-SI");
         test.ok(info !== null);
@@ -1817,7 +1817,7 @@ module.exports.testweekdata = {
         test.equal(info.getWeekEndEnd(), 6);
         test.done();
     },
-    testWeekData_fr_GQ: function(test) {
+    testWeekData_fr_GA: function(test) {
         test.expect(4);
         var info = new LocaleInfo("fr-GA");
         test.ok(info !== null);

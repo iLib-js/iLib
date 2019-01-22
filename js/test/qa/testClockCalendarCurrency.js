@@ -1191,7 +1191,7 @@ module.exports.testclockcalendarcurrency = {
         
         test.done();
     },
-    testClockCurrency_si_SI: function(test) {
+    testClockCurrency_sl_SI: function(test) {
         test.expect(3);
         var info = new LocaleInfo("sl-SI");
         test.ok(info !== null);
@@ -1881,7 +1881,7 @@ module.exports.testclockcalendarcurrency = {
         
         test.done();
     },
-    testClockCurrency_fr_GQ: function(test) {
+    testClockCurrency_fr_GA: function(test) {
         test.expect(3);
         var info = new LocaleInfo("fr-GA");
         test.ok(info !== null);

@@ -4167,7 +4167,7 @@ module.exports.testmonthtranslate = {
         
         test.done();
     },
-    testMonthTranslate_si_SI: function(test) {
+    testMonthTranslate_sl_SI: function(test) {
         test.expect(24);
 
         // full, long: MMMM
@@ -6484,7 +6484,7 @@ module.exports.testmonthtranslate = {
         
         test.done();
     },
-    testMonthTranslate_fr_GQ: function(test) {
+    testMonthTranslate_fr_GA: function(test) {
         test.expect(24);
 
         for (i=0; i < 12; i++) {

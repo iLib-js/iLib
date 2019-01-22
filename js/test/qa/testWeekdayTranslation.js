@@ -6437,7 +6437,7 @@ module.exports.testweekdaytranslate = {
 
         test.done();
     },
-    testWeekdayTranslate_si_SI: function(test) {
+    testWeekdayTranslate_sl_SI: function(test) {
         test.expect(28);
 
         // full -> wide, long -> abbreviate
@@ -6445,52 +6445,52 @@ module.exports.testweekdaytranslate = {
         // short: narrow
 
         for (i=0; i < 7; i++) {
-            fmt[i] = new DateFmt({locale:"si-SI", date:"w", length: "full", useNative:false, timezone:"local"})
+            fmt[i] = new DateFmt({locale:"sl-SI", date:"w", length: "full", useNative:false, timezone:"local"})
             value[i] = fmt[i].format(DateFactory({year: 2015, month: 8, day:i+2, type:"gregorian"}));
         }
-        test.equal(value[0], "ඉරිදා");
-        test.equal(value[1], "සඳුදා");
-        test.equal(value[2], "අඟහරුවාදා");
-        test.equal(value[3], "බදාදා");
-        test.equal(value[4], "බ්‍රහස්පතින්දා");
-        test.equal(value[5], "සිකුරාදා");
-        test.equal(value[6], "සෙනසුරාදා");
+        test.equal(value[0], "nedelja");
+        test.equal(value[1], "ponedeljek");
+        test.equal(value[2], "torek");
+        test.equal(value[3], "sreda");
+        test.equal(value[4], "četrtek");
+        test.equal(value[5], "petek");
+        test.equal(value[6], "sobota");
 
         for (i=0; i < 7; i++) {
-            fmt[i] = new DateFmt({locale:"si-SI", date:"w", length: "long", useNative:false, timezone:"local"})
+            fmt[i] = new DateFmt({locale:"sl-SI", date:"w", length: "long", useNative:false, timezone:"local"})
             value[i] = fmt[i].format(DateFactory({year: 2015, month: 8, day:i+2, type:"gregorian"}));
         }
-        test.equal(value[0], "ඉරිදා");
-        test.equal(value[1], "සඳුදා");
-        test.equal(value[2], "අඟහ");
-        test.equal(value[3], "බදාදා");
-        test.equal(value[4], "බ්‍රහස්");
-        test.equal(value[5], "සිකු");
-        test.equal(value[6], "සෙන");
+        test.equal(value[0], "ned.");
+        test.equal(value[1], "pon.");
+        test.equal(value[2], "tor.");
+        test.equal(value[3], "sre.");
+        test.equal(value[4], "čet.");
+        test.equal(value[5], "pet.");
+        test.equal(value[6], "sob.");
 
         for (i=0; i < 7; i++) {
-            fmt[i] = new DateFmt({locale:"si-SI", date:"w", length: "medium", useNative:false, timezone:"local"})
+            fmt[i] = new DateFmt({locale:"sl-SI", date:"w", length: "medium", useNative:false, timezone:"local"})
             value[i] = fmt[i].format(DateFactory({year: 2015, month: 8, day:i+2, type:"gregorian"}));
         }
-        test.equal(value[0], "ඉරි");
-        test.equal(value[1], "සඳු");
-        test.equal(value[2], "අඟ");
-        test.equal(value[3], "බදා");
-        test.equal(value[4], "බ්‍රහ");
-        test.equal(value[5], "සිකු");
-        test.equal(value[6], "සෙන");
+        test.equal(value[0], "ned.");
+        test.equal(value[1], "pon.");
+        test.equal(value[2], "tor.");
+        test.equal(value[3], "sre.");
+        test.equal(value[4], "čet.");
+        test.equal(value[5], "pet.");
+        test.equal(value[6], "sob.");
 
         for (i=0; i < 7; i++) {
-            fmt[i] = new DateFmt({locale:"si-SI", date:"w", length: "short", useNative:false, timezone:"local"})
+            fmt[i] = new DateFmt({locale:"sl-SI", date:"w", length: "short", useNative:false, timezone:"local"})
             value[i] = fmt[i].format(DateFactory({year: 2015, month: 8, day:i+2, type:"gregorian"}));
         }
-        test.equal(value[0], "ඉ");
-        test.equal(value[1], "ස");
-        test.equal(value[2], "අ");
-        test.equal(value[3], "බ");
-        test.equal(value[4], "බ්‍ර");
-        test.equal(value[5], "සි");
-        test.equal(value[6], "සෙ");
+        test.equal(value[0], "n");
+        test.equal(value[1], "p");
+        test.equal(value[2], "t");
+        test.equal(value[3], "s");
+        test.equal(value[4], "č");
+        test.equal(value[5], "p");
+        test.equal(value[6], "s");
 
         test.done();
     },
@@ -10349,11 +10349,11 @@ module.exports.testweekdaytranslate = {
         
         test.done();
     },
-    testWeekdayTranslate_fr_GQ: function(test) {
+    testWeekdayTranslate_fr_GA: function(test) {
         test.expect(28);
 
         for (i=0; i < 7; i++) {
-            fmt[i] = new DateFmt({locale:"fr-GQ", date:"w", length: "full", useNative:false, timezone:"local"})
+            fmt[i] = new DateFmt({locale:"fr-GA", date:"w", length: "full", useNative:false, timezone:"local"})
             value[i] = fmt[i].format(DateFactory({year: 2015, month: 8, day:i+2, type:"gregorian"}));
         }
         test.equal(value[0], "dimanche");
@@ -10365,7 +10365,7 @@ module.exports.testweekdaytranslate = {
         test.equal(value[6], "samedi");
 
         for (i=0; i < 7; i++) {
-            fmt[i] = new DateFmt({locale:"fr-GQ", date:"w", length: "long", useNative:false, timezone:"local"})
+            fmt[i] = new DateFmt({locale:"fr-GA", date:"w", length: "long", useNative:false, timezone:"local"})
             value[i] = fmt[i].format(DateFactory({year: 2015, month: 8, day:i+2, type:"gregorian"}));
         }
         test.equal(value[0], "dim.");
@@ -10377,7 +10377,7 @@ module.exports.testweekdaytranslate = {
         test.equal(value[6], "sam.");
 
         for (i=0; i < 7; i++) {
-            fmt[i] = new DateFmt({locale:"fr-GQ", date:"w", length: "medium", useNative:false, timezone:"local"})
+            fmt[i] = new DateFmt({locale:"fr-GA", date:"w", length: "medium", useNative:false, timezone:"local"})
             value[i] = fmt[i].format(DateFactory({year: 2015, month: 8, day:i+2, type:"gregorian"}));
         }
         test.equal(value[0], "di");
@@ -10389,7 +10389,7 @@ module.exports.testweekdaytranslate = {
         test.equal(value[6], "sa");
 
         for (i=0; i < 7; i++) {
-            fmt[i] = new DateFmt({locale:"fr-GQ", date:"w", length: "short", useNative:false, timezone:"local"})
+            fmt[i] = new DateFmt({locale:"fr-GA", date:"w", length: "short", useNative:false, timezone:"local"})
             value[i] = fmt[i].format(DateFactory({year: 2015, month: 8, day:i+2, type:"gregorian"}));
         }
         test.equal(value[0], "D");

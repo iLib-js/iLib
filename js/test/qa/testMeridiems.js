@@ -1138,7 +1138,7 @@ module.exports.testmeridiems = {
         
         test.done();
     },
-    testMeridiem_si_SI: function(test) {
+    testMeridiem_sl_SI: function(test) {
         test.expect(3);
         var fmt = DateFmt.getMeridiemsRange({locale:"sl-SI"});
         test.ok(fmt !== null);
@@ -1845,7 +1845,7 @@ module.exports.testmeridiems = {
         
         test.done();
     },
-    testMeridiem_fr_GQ: function(test) {
+    testMeridiem_fr_GA: function(test) {
         test.expect(3);
         var fmt = DateFmt.getMeridiemsRange({locale:"fr-GA"});
         test.ok(fmt !== null);
