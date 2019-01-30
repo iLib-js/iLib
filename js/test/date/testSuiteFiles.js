@@ -18,10 +18,15 @@
  */
 
 module.exports.files = [
+    "testclock.js",
+    "testcalendar.js",
     "testdate.js",
     "testdateasync.js",
     "testdatefmt.js",
     "testdatefmtasync.js",
+    "testDayOfWeek.js",
+    "testMeridiems.js",
+    "testMonthTranslation.js",
     "testdatefmt_af_NA.js",
     "testdatefmt_af_ZA.js",
     "testdatefmt_am_ET.js",
@@ -97,4 +102,5 @@ module.exports.files = [
     "testdatefmt_zh_CN.js",
     "testdatefmt_zh_Hant_HK.js",
     "testdatefmt_zh_Hant_TW.js",
+    "testWeekdayTranslation.js"
 ];
