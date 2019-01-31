@@ -711,13 +711,13 @@ module.exports.testWeekdayTranslation = {
             fmt[i] = new DateFmt({locale:"de-CH", date:"w", length: "medium", useNative:false, timezone:"local"})
             value[i] = fmt[i].format(DateFactory({year: 2015, month: 8, day:i+2, type:"gregorian"}));
         }
-        test.equal(value[0], "So");
-        test.equal(value[1], "Mo");
-        test.equal(value[2], "Di");
-        test.equal(value[3], "Mi");
-        test.equal(value[4], "Do");
-        test.equal(value[5], "Fr");
-        test.equal(value[6], "Sa");
+        test.equal(value[0], "So.");
+        test.equal(value[1], "Mo.");
+        test.equal(value[2], "Di.");
+        test.equal(value[3], "Mi.");
+        test.equal(value[4], "Do.");
+        test.equal(value[5], "Fr.");
+        test.equal(value[6], "Sa.");
 
         for (i=0; i < 7; i++) {
             fmt[i] = new DateFmt({locale:"de-CH", date:"w", length: "short", useNative:false, timezone:"local"})
@@ -1054,26 +1054,26 @@ module.exports.testWeekdayTranslation = {
             value[i] = fmt[i].format(DateFactory({year: 2015, month: 8, day:i+2, type:"gregorian"}));
         }
 
-        test.equal(value[0], "Sun");
-        test.equal(value[1], "Mon");
-        test.equal(value[2], "Tue");
-        test.equal(value[3], "Wed");
-        test.equal(value[4], "Thu");
-        test.equal(value[5], "Fri");
-        test.equal(value[6], "Sat");
+        test.equal(value[0], "Sun.");
+        test.equal(value[1], "Mon.");
+        test.equal(value[2], "Tue.");
+        test.equal(value[3], "Wed.");
+        test.equal(value[4], "Thu.");
+        test.equal(value[5], "Fri.");
+        test.equal(value[6], "Sat.");
 
         for (i=0; i < 7; i++) {
             fmt[i] = new DateFmt({locale:"en-AU", date:"w", length: "medium", useNative:false, timezone:"local"});
             value[i] = fmt[i].format(DateFactory({year: 2015, month: 8, day:i+2, type:"gregorian"}));
         }
 
-        test.equal(value[0], "Su");
-        test.equal(value[1], "Mon");
-        test.equal(value[2], "Tu");
-        test.equal(value[3], "Wed");
-        test.equal(value[4], "Th");
-        test.equal(value[5], "Fri");
-        test.equal(value[6], "Sat");
+        test.equal(value[0], "Su.");
+        test.equal(value[1], "Mon.");
+        test.equal(value[2], "Tu.");
+        test.equal(value[3], "Wed.");
+        test.equal(value[4], "Th.");
+        test.equal(value[5], "Fri.");
+        test.equal(value[6], "Sat.");
 
         for (i=0; i < 7; i++) {
             fmt[i] = new DateFmt({locale:"en-AU", date:"w", length: "short", useNative:false, timezone:"local"});
@@ -5687,45 +5687,43 @@ module.exports.testWeekdayTranslation = {
         // medium: short
         // short: narrow
 
-        //// LG Overriding data ////
-
         for (i=0; i < 7; i++) {
             fmt[i] = new DateFmt({locale:"pl-PL", date:"w", length: "full", useNative:false, timezone:"local"})
             value[i] = fmt[i].format(DateFactory({year: 2015, month: 8, day:i+2, type:"gregorian"}));
         }
         
-        test.equal(value[0], "Niedziela");
-        test.equal(value[1], "Poniedziałek");
-        test.equal(value[2], "Wtorek");
-        test.equal(value[3], "Środa");
-        test.equal(value[4], "Czwartek");
-        test.equal(value[5], "Piątek");
-        test.equal(value[6], "Sobota");
+        test.equal(value[0], "niedziela");
+        test.equal(value[1], "poniedziałek");
+        test.equal(value[2], "wtorek");
+        test.equal(value[3], "środa");
+        test.equal(value[4], "czwartek");
+        test.equal(value[5], "piątek");
+        test.equal(value[6], "sobota");
 
         for (i=0; i < 7; i++) {
             fmt[i] = new DateFmt({locale:"pl-PL", date:"w", length: "long", useNative:false, timezone:"local"})
             value[i] = fmt[i].format(DateFactory({year: 2015, month: 8, day:i+2, type:"gregorian"}));
         }
-        test.equal(value[0], "Niedz.");
-        test.equal(value[1], "Pon.");
-        test.equal(value[2], "Wt.");
-        test.equal(value[3], "Śr.");
-        test.equal(value[4], "Czw.");
-        test.equal(value[5], "Pt.");
-        test.equal(value[6], "Sob.");
+        test.equal(value[0], "niedz.");
+        test.equal(value[1], "pon.");
+        test.equal(value[2], "wt.");
+        test.equal(value[3], "śr.");
+        test.equal(value[4], "czw.");
+        test.equal(value[5], "pt.");
+        test.equal(value[6], "sob.");
 
         for (i=0; i < 7; i++) {
             fmt[i] = new DateFmt({locale:"pl-PL", date:"w", length: "medium", useNative:false, timezone:"local"})
             value[i] = fmt[i].format(DateFactory({year: 2015, month: 8, day:i+2, type:"gregorian"}));
         }
 
-        test.equal(value[0], "Nie");
-        test.equal(value[1], "Pon");
-        test.equal(value[2], "Wto");
-        test.equal(value[3], "Śro");
-        test.equal(value[4], "Czw");
-        test.equal(value[5], "Pią");
-        test.equal(value[6], "Sob");
+        test.equal(value[0], "nie");
+        test.equal(value[1], "pon");
+        test.equal(value[2], "wto");
+        test.equal(value[3], "śro");
+        test.equal(value[4], "czw");
+        test.equal(value[5], "pią");
+        test.equal(value[6], "sob");
 
         for (i=0; i < 7; i++) {
             fmt[i] = new DateFmt({locale:"pl-PL", date:"w", length: "short", useNative:false, timezone:"local"})
@@ -11112,7 +11110,7 @@ module.exports.testWeekdayTranslation = {
     },
     testWeekdayTranslation_zh_Hans_MY: function(test) {
         test.expect(28);
-                                                                                                                                                                                                                                                                                                                                                                                                
+
         for (i=0; i < 7; i++) {
             fmt[i] = new DateFmt({locale:"zh-Hans-MY", date:"w", length: "full", useNative:false, timezone:"local"})
             value[i] = fmt[i].format(DateFactory({year: 2015, month: 8, day:i+2, type:"gregorian"}));

@@ -102,5 +102,6 @@ module.exports.files = [
     "testdatefmt_zh_CN.js",
     "testdatefmt_zh_Hant_HK.js",
     "testdatefmt_zh_Hant_TW.js",
+    "testDayOfWeek.js",
     "testWeekdayTranslation.js"
 ];
