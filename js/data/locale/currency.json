@@ -21,7 +21,7 @@
     },
     "PKR": {
         "name": "Pakistani Rupee",
-        "decimals": 0,
+        "decimals": 2,
         "sign": "Rs"
     },
     "KRW": {
@@ -61,7 +61,7 @@
     },
     "AMD": {
         "name": "Armenian Dram",
-        "decimals": 0,
+        "decimals": 2,
         "sign": "դր."
     },
     "ANG": {
@@ -196,7 +196,7 @@
     },
     "COP": {
         "name": "Colombian Peso",
-        "decimals": 0,
+        "decimals": 2,
         "sign": "$"
     },
     "CRC": {
@@ -306,7 +306,7 @@
     },
     "GYD": {
         "name": "Guyanaese Dollar",
-        "decimals": 0,
+        "decimals": 2,
         "sign": "$"
     },
     "HKD": {
@@ -336,7 +336,7 @@
     },
     "IDR": {
         "name": "Indonesian Rupiah",
-        "decimals": 0,
+        "decimals": 2,
         "sign": "Rp"
     },
     "ILS": {
@@ -471,7 +471,7 @@
     },
     "MNT": {
         "name": "Mongolian Tugrik",
-        "decimals": 0,
+        "decimals": 2,
         "sign": "₮"
     },
     "MOP": {
@@ -479,14 +479,14 @@
         "decimals": 2,
         "sign": "P"
     },
-    "MRO": {
+    "MRU": {
         "name": "Mauritanian Ouguiya",
-        "decimals": 0,
-        "sign": "UM"
+        "decimals": 2,
+        "sign": "MRU"
     },
     "MUR": {
         "name": "Mauritian Rupee",
-        "decimals": 0,
+        "decimals": 2,
         "sign": "Rs"
     },
     "MVR": {
@@ -645,7 +645,7 @@
         "sign": "£"
     },
     "STN": {
-        "name": "São Tomé & Príncipe Dobra (2018)",
+        "name": "São Tomé & Príncipe Dobra",
         "decimals": 2,
         "sign": "Db"
     },
@@ -701,7 +701,7 @@
     },
     "TZS": {
         "name": "Tanzanian Shilling",
-        "decimals": 0,
+        "decimals": 2,
         "sign": "Sh"
     },
     "UAH": {
@@ -721,13 +721,13 @@
     },
     "UZS": {
         "name": "Uzbekistani Som",
-        "decimals": 0,
+        "decimals": 2,
         "sign": "лв"
     },
-    "VEF": {
+    "VES": {
         "name": "Venezuelan Bolívar",
         "decimals": 2,
-        "sign": "Bs"
+        "sign": "VES"
     },
     "VND": {
         "name": "Vietnamese Dong",
