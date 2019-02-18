@@ -69,7 +69,7 @@ module.exports.testWeekdayTranslation = {
         }
         
         test.equal(value[0], "أحد");
-        test.equal(value[1], "اثنين");  ///// LG Overriding ///////
+        test.equal(value[1], "إثنين");
         test.equal(value[2], "ثلاثاء");
         test.equal(value[3], "أربعاء");
         test.equal(value[4], "خميس");
@@ -139,14 +139,14 @@ module.exports.testWeekdayTranslation = {
             fmt[i] = new DateFmt({locale:"ar-IQ", date:"w", length: "short", useNative:false, timezone:"local"});
             value[i] = fmt[i].format(DateFactory({year: 2015, month: 8, day:i+2, type:"gregorian"}));
         }
-        //// LG Overriding //// 
-        test.equal(value[0], "الأحد");
-        test.equal(value[1], "الاثنين");
-        test.equal(value[2], "الثلاثاء");
-        test.equal(value[3], "الأربعاء");
-        test.equal(value[4], "الخميس");
-        test.equal(value[5], "الجمعة");
-        test.equal(value[6], "السبت");
+        
+        test.equal(value[0], "ح");
+        test.equal(value[1], "ن");
+        test.equal(value[2], "ث");
+        test.equal(value[3], "ر");
+        test.equal(value[4], "خ");
+        test.equal(value[5], "ج");
+        test.equal(value[6], "س");
 
         test.done();
     },
@@ -2742,15 +2742,14 @@ module.exports.testWeekdayTranslation = {
             fmt[i] = new DateFmt({locale:"es-CO", date:"w", length: "short", useNative:false, timezone:"local"});
             value[i] = fmt[i].format(DateFactory({year: 2015, month: 8, day:i+2, type:"gregorian"}));
         }
-
-        ////  LG Overriding data. ////
-        test.equal(value[0], "DO");
-        test.equal(value[1], "LU");
-        test.equal(value[2], "MA");
-        test.equal(value[3], "MI");
-        test.equal(value[4], "JU");
-        test.equal(value[5], "VI");
-        test.equal(value[6], "SA");
+        
+        test.equal(value[0], "D");
+        test.equal(value[1], "L");
+        test.equal(value[2], "M");
+        test.equal(value[3], "M");
+        test.equal(value[4], "J");
+        test.equal(value[5], "V");
+        test.equal(value[6], "S");
         
         test.done();
     },
@@ -3805,33 +3804,30 @@ module.exports.testWeekdayTranslation = {
         test.equal(value[5], "جمعه");
         test.equal(value[6], "شنبه");
 
-        ////// LG Overriding //////
         for (i=0; i < 7; i++) {
             fmt[i] = new DateFmt({locale:"fa-IR", date:"w", length: "medium", useNative:false, timezone:"local"});
             value[i] = fmt[i].format(DateFactory({year: 2015, month: 8, day:i+2, type:"persian"}));
         }
-        test.equal(value[0], "یکشنبه");
-        test.equal(value[1], "دوشنبه");
-        test.equal(value[2], "سه‌شنبه");
-        test.equal(value[3], "چهارشنبه");
-        test.equal(value[4], "پنجشنبه");
-        test.equal(value[5], "جمعه");
-        test.equal(value[6], "شنبه");
+        test.equal(value[0], "۱ش");
+        test.equal(value[1], "۲ش");
+        test.equal(value[2], "۳ش");
+        test.equal(value[3], "۴ش");
+        test.equal(value[4], "۵ش");
+        test.equal(value[5], "ج");
+        test.equal(value[6], "ش");
 
         for (i=0; i < 7; i++) {
             fmt[i] = new DateFmt({locale:"fa-IR", date:"w", length: "short", useNative:false, timezone:"local"});
             value[i] = fmt[i].format(DateFactory({year: 2015, month: 8, day:i+2, type:"persian"}));
         }
 
-        ////// LG Overriding //////
-
-        test.equal(value[0],"یکشنبه");
-        test.equal(value[1], "دوشنبه");
-        test.equal(value[2], "سه‌شنبه");
-        test.equal(value[3], "چهارشنبه");
-        test.equal(value[4], "پنجشنبه");
-        test.equal(value[5], "جمعه");
-        test.equal(value[6], "شنبه");
+        test.equal(value[0], "ی");
+        test.equal(value[1], "د");
+        test.equal(value[2], "س");
+        test.equal(value[3], "چ");
+        test.equal(value[4], "پ");
+        test.equal(value[5], "ج");
+        test.equal(value[6], "ش");
         
         test.done();
     },
@@ -6046,14 +6042,13 @@ module.exports.testWeekdayTranslation = {
             value[i] = fmt[i].format(DateFactory({year: 2015, month: 8, day:i+2, type:"gregorian"}));
         }
 
-        //// LG Overriding //// 
-        test.equal(value[0], "воскр.");
-        test.equal(value[1], "понед.");
-        test.equal(value[2], "вторн.");
-        test.equal(value[3], "среда");
-        test.equal(value[4], "четв.");
-        test.equal(value[5], "пятн.");
-        test.equal(value[6], "субб.");
+        test.equal(value[0], "вс");
+        test.equal(value[1], "пн");
+        test.equal(value[2], "вт");
+        test.equal(value[3], "ср");
+        test.equal(value[4], "чт");
+        test.equal(value[5], "пт");
+        test.equal(value[6], "сб");
 
         for (i=0; i < 7; i++) {
             fmt[i] = new DateFmt({locale:"ru-BY", date:"w", length: "medium", useNative:false, timezone:"local"})
@@ -6071,13 +6066,13 @@ module.exports.testWeekdayTranslation = {
             fmt[i] = new DateFmt({locale:"ru-BY", date:"w", length: "short", useNative:false, timezone:"local"})
             value[i] = fmt[i].format(DateFactory({year: 2015, month: 8, day:i+2, type:"gregorian"}));
         }
-        test.equal(value[0], "вс");
-        test.equal(value[1], "пн");
-        test.equal(value[2], "вт");
-        test.equal(value[3], "ср");
-        test.equal(value[4], "чт");
-        test.equal(value[5], "пт");
-        test.equal(value[6], "сб");
+        test.equal(value[0], "В");
+        test.equal(value[1], "П");
+        test.equal(value[2], "В");
+        test.equal(value[3], "С");
+        test.equal(value[4], "Ч");
+        test.equal(value[5], "П");
+        test.equal(value[6], "С");
         
         test.done();
     },
@@ -6105,14 +6100,13 @@ module.exports.testWeekdayTranslation = {
             value[i] = fmt[i].format(DateFactory({year: 2015, month: 8, day:i+2, type:"gregorian"}));
         }
 
-        //// LG Overriding //// 
-        test.equal(value[0], "воскр.");
-        test.equal(value[1], "понед.");
-        test.equal(value[2], "вторн.");
-        test.equal(value[3], "среда");
-        test.equal(value[4], "четв.");
-        test.equal(value[5], "пятн.");
-        test.equal(value[6], "субб.");
+        test.equal(value[0], "вс");
+        test.equal(value[1], "пн");
+        test.equal(value[2], "вт");
+        test.equal(value[3], "ср");
+        test.equal(value[4], "чт");
+        test.equal(value[5], "пт");
+        test.equal(value[6], "сб");
 
         for (i=0; i < 7; i++) {
             fmt[i] = new DateFmt({locale:"ru-KG", date:"w", length: "medium", useNative:false, timezone:"local"})
@@ -6130,13 +6124,13 @@ module.exports.testWeekdayTranslation = {
             fmt[i] = new DateFmt({locale:"ru-KG", date:"w", length: "short", useNative:false, timezone:"local"})
             value[i] = fmt[i].format(DateFactory({year: 2015, month: 8, day:i+2, type:"gregorian"}));
         }
-        test.equal(value[0], "вс");
-        test.equal(value[1], "пн");
-        test.equal(value[2], "вт");
-        test.equal(value[3], "ср");
-        test.equal(value[4], "чт");
-        test.equal(value[5], "пт");
-        test.equal(value[6], "сб");
+        test.equal(value[0], "В");
+        test.equal(value[1], "П");
+        test.equal(value[2], "В");
+        test.equal(value[3], "С");
+        test.equal(value[4], "Ч");
+        test.equal(value[5], "П");
+        test.equal(value[6], "С");
         
         test.done();
     },
@@ -6164,14 +6158,13 @@ module.exports.testWeekdayTranslation = {
             value[i] = fmt[i].format(DateFactory({year: 2015, month: 8, day:i+2, type:"gregorian"}));
         }
 
-        //// LG Overriding //// 
-        test.equal(value[0], "воскр.");
-        test.equal(value[1], "понед.");
-        test.equal(value[2], "вторн.");
-        test.equal(value[3], "среда");
-        test.equal(value[4], "четв.");
-        test.equal(value[5], "пятн.");
-        test.equal(value[6], "субб.");
+        test.equal(value[0], "вс");
+        test.equal(value[1], "пн");
+        test.equal(value[2], "вт");
+        test.equal(value[3], "ср");
+        test.equal(value[4], "чт");
+        test.equal(value[5], "пт");
+        test.equal(value[6], "сб");
 
         for (i=0; i < 7; i++) {
             fmt[i] = new DateFmt({locale:"ru-KZ", date:"w", length: "medium", useNative:false, timezone:"local"})
@@ -6189,13 +6182,13 @@ module.exports.testWeekdayTranslation = {
             fmt[i] = new DateFmt({locale:"ru-KZ", date:"w", length: "short", useNative:false, timezone:"local"})
             value[i] = fmt[i].format(DateFactory({year: 2015, month: 8, day:i+2, type:"gregorian"}));
         }
-        test.equal(value[0], "вс");
-        test.equal(value[1], "пн");
-        test.equal(value[2], "вт");
-        test.equal(value[3], "ср");
-        test.equal(value[4], "чт");
-        test.equal(value[5], "пт");
-        test.equal(value[6], "сб");
+        test.equal(value[0], "В");
+        test.equal(value[1], "П");
+        test.equal(value[2], "В");
+        test.equal(value[3], "С");
+        test.equal(value[4], "Ч");
+        test.equal(value[5], "П");
+        test.equal(value[6], "С");
         
         test.done();
     },
@@ -6221,14 +6214,13 @@ module.exports.testWeekdayTranslation = {
             value[i] = fmt[i].format(DateFactory({year: 2015, month: 8, day:i+2, type:"gregorian"}));
         }
 
-        //// LG Overriding //// 
-        test.equal(value[0], "воскр.");
-        test.equal(value[1], "понед.");
-        test.equal(value[2], "вторн.");
-        test.equal(value[3], "среда");
-        test.equal(value[4], "четв.");
-        test.equal(value[5], "пятн.");
-        test.equal(value[6], "субб.");
+        test.equal(value[0], "вс");
+        test.equal(value[1], "пн");
+        test.equal(value[2], "вт");
+        test.equal(value[3], "ср");
+        test.equal(value[4], "чт");
+        test.equal(value[5], "пт");
+        test.equal(value[6], "сб");
 
         for (i=0; i < 7; i++) {
             fmt[i] = new DateFmt({locale:"ru-GE", date:"w", length: "medium", useNative:false, timezone:"local"})
@@ -6246,13 +6238,13 @@ module.exports.testWeekdayTranslation = {
             fmt[i] = new DateFmt({locale:"ru-GE", date:"w", length: "short", useNative:false, timezone:"local"})
             value[i] = fmt[i].format(DateFactory({year: 2015, month: 8, day:i+2, type:"gregorian"}));
         }
-        test.equal(value[0], "вс");
-        test.equal(value[1], "пн");
-        test.equal(value[2], "вт");
-        test.equal(value[3], "ср");
-        test.equal(value[4], "чт");
-        test.equal(value[5], "пт");
-        test.equal(value[6], "сб");
+        test.equal(value[0], "В");
+        test.equal(value[1], "П");
+        test.equal(value[2], "В");
+        test.equal(value[3], "С");
+        test.equal(value[4], "Ч");
+        test.equal(value[5], "П");
+        test.equal(value[6], "С");
         
         test.done();
     },
@@ -6280,14 +6272,13 @@ module.exports.testWeekdayTranslation = {
             value[i] = fmt[i].format(DateFactory({year: 2015, month: 8, day:i+2, type:"gregorian"}));
         }
 
-        //// LG Overriding //// 
-        test.equal(value[0], "воскр.");
-        test.equal(value[1], "понед.");
-        test.equal(value[2], "вторн.");
-        test.equal(value[3], "среда");
-        test.equal(value[4], "четв.");
-        test.equal(value[5], "пятн.");
-        test.equal(value[6], "субб.");
+        test.equal(value[0], "вс");
+        test.equal(value[1], "пн");
+        test.equal(value[2], "вт");
+        test.equal(value[3], "ср");
+        test.equal(value[4], "чт");
+        test.equal(value[5], "пт");
+        test.equal(value[6], "сб");
 
         for (i=0; i < 7; i++) {
             fmt[i] = new DateFmt({locale:"ru-RU", date:"w", length: "medium", useNative:false, timezone:"local"})
@@ -6305,13 +6296,13 @@ module.exports.testWeekdayTranslation = {
             fmt[i] = new DateFmt({locale:"ru-RU", date:"w", length: "short", useNative:false, timezone:"local"})
             value[i] = fmt[i].format(DateFactory({year: 2015, month: 8, day:i+2, type:"gregorian"}));
         }
-        test.equal(value[0], "вс");
-        test.equal(value[1], "пн");
-        test.equal(value[2], "вт");
-        test.equal(value[3], "ср");
-        test.equal(value[4], "чт");
-        test.equal(value[5], "пт");
-        test.equal(value[6], "сб");
+        test.equal(value[0], "В");
+        test.equal(value[1], "П");
+        test.equal(value[2], "В");
+        test.equal(value[3], "С");
+        test.equal(value[4], "Ч");
+        test.equal(value[5], "П");
+        test.equal(value[6], "С");
         
         test.done();
     },

@@ -20,13 +20,6 @@
 if (typeof(DateFmt) === "undefined") {
     var DateFmt = require("../../lib/DateFmt.js");
 }
-
-/*
-    LG Overriding
-    India locale (bn-IN,gu-IN, kn-IN, ml-IN, mr-IN,or-IN,pa-IN, ta-IN, te-IN, ur-IN, as-IN, hi-IN) 
-    --> AM, PM
-*/
-
 module.exports.testmeridiems = {
     testMeridiem_ar_EG: function(test) {
         test.expect(3);
@@ -63,9 +56,8 @@ module.exports.testmeridiems = {
         var fmt = DateFmt.getMeridiemsRange({locale:"as-IN"});
         test.ok(fmt !== null);
 
-        //// LG Overriding (AM, PM) ///
-        test.equal(fmt[0].name, "AM");
-        test.equal(fmt[1].name, "PM");
+        test.equal(fmt[0].name, "পূৰ্বাহ্ন");
+        test.equal(fmt[1].name, "অপৰাহ্ন");
         
         test.done();
     },
@@ -95,8 +87,7 @@ module.exports.testmeridiems = {
         test.ok(fmt !== null);
 
         test.equal(fmt[0].name, "prijepodne");
-        //// LG Overriding ////
-        test.equal(fmt[1].name, "poslijepodne");
+        test.equal(fmt[1].name, "popodne");
         
         test.done();
     },
@@ -106,8 +97,7 @@ module.exports.testmeridiems = {
         test.ok(fmt !== null);
 
         test.equal(fmt[0].name, "prijepodne");
-        //// LG Overriding ////
-        test.equal(fmt[1].name, "poslijepodne");
+        test.equal(fmt[1].name, "popodne");
         
         test.done();
     },
@@ -136,8 +126,8 @@ module.exports.testmeridiems = {
         var fmt = DateFmt.getMeridiemsRange({locale:"de-AT"});
         test.ok(fmt !== null);
 
-        test.equal(fmt[0].name, "AM");
-        test.equal(fmt[1].name, "PM");
+        test.equal(fmt[0].name, "AM"); //// CLDR 34 change
+        test.equal(fmt[1].name, "PM"); //// CLDR 34 change
         
         test.done();
     },
@@ -765,11 +755,9 @@ module.exports.testmeridiems = {
         test.expect(3);
         var fmt = DateFmt.getMeridiemsRange({locale:"hi-IN"});
         test.ok(fmt !== null);
-
-        //// LG Overriding (AM, PM) ///
-        test.equal(fmt[0].name, "AM");
-        test.equal(fmt[1].name, "PM");
         
+        test.equal(fmt[0].name, "पूर्वाह्न");
+        test.equal(fmt[1].name, "अपराह्न");
         test.done();
     },
     testMeridiem_hr_HR: function(test) {
@@ -866,11 +854,9 @@ module.exports.testmeridiems = {
         test.expect(3);
         var fmt = DateFmt.getMeridiemsRange({locale:"kn-IN"});
         test.ok(fmt !== null);
-
-        //// LG Overriding (AM, PM) ///
-        test.equal(fmt[0].name, "AM");
-        test.equal(fmt[1].name, "PM");
         
+        test.equal(fmt[0].name, "ಪೂರ್ವಾಹ್ನ");
+        test.equal(fmt[1].name, "ಅಪರಾಹ್ನ");
         test.done();
     },
     testMeridiem_ko_KR: function(test) {
@@ -938,8 +924,8 @@ module.exports.testmeridiems = {
         var fmt = DateFmt.getMeridiemsRange({locale:"mr-IN"});
         test.ok(fmt !== null);
 
-        test.equal(fmt[0].name, "AM");
-        test.equal(fmt[1].name, "PM");
+        test.equal(fmt[0].name, "म.पू.");
+        test.equal(fmt[1].name, "म.उ.");
         
         test.done();
     },
@@ -988,8 +974,8 @@ module.exports.testmeridiems = {
         var fmt = DateFmt.getMeridiemsRange({locale:"pa-Guru-IN"});
         test.ok(fmt !== null);
 
-        test.equal(fmt[0].name, "AM");
-        test.equal(fmt[1].name, "PM");
+        test.equal(fmt[0].name, "ਪੂ.ਦੁ.");
+        test.equal(fmt[1].name, "ਬਾ.ਦੁ.");
         
         test.done();
     },
@@ -1137,9 +1123,8 @@ module.exports.testmeridiems = {
         test.expect(3);
         var fmt = DateFmt.getMeridiemsRange({locale:"sq-AL"});
         test.ok(fmt !== null);
-        ////// LG overriding ////
-        test.equal(fmt[0].name, "të paradites");
-        test.equal(fmt[1].name, "të pasdites");
+        test.equal(fmt[0].name, "e paradites");
+        test.equal(fmt[1].name, "e pasdites");
         
         test.done();
     },
@@ -1147,9 +1132,8 @@ module.exports.testmeridiems = {
         test.expect(3);
         var fmt = DateFmt.getMeridiemsRange({locale:"sq-ME"});
         test.ok(fmt !== null);
-         ////// LG overriding ////
-        test.equal(fmt[0].name, "të paradites");
-        test.equal(fmt[1].name, "të pasdites");
+        test.equal(fmt[0].name, "e paradites");
+        test.equal(fmt[1].name, "e pasdites");
         
         test.done();
     },
@@ -1178,8 +1162,8 @@ module.exports.testmeridiems = {
         var fmt = DateFmt.getMeridiemsRange({locale:"ta-IN"});
         test.ok(fmt !== null);
 
-        test.equal(fmt[0].name, "AM");
-        test.equal(fmt[1].name, "PM");
+        test.equal(fmt[0].name, "முற்பகல்");
+        test.equal(fmt[1].name, "பிற்பகல்");
         
         test.done();
     },
@@ -1914,10 +1898,9 @@ module.exports.testmeridiems = {
         test.expect(3);
         var fmt = DateFmt.getMeridiemsRange({locale:"pa-PK"});
         test.ok(fmt !== null);
-
-        //// LG Overriding data (AM, PM) ////
-        test.equal(fmt[0].name, "AM");
-        test.equal(fmt[1].name, "PM");
+        
+        test.equal(fmt[0].name,  "ਪੂ.ਦੁ.");
+        test.equal(fmt[1].name,  "ਬਾ.ਦੁ.");
         
         test.done();
     },

@@ -3721,36 +3721,35 @@ module.exports.testmonthtranslation = {
             value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
         }
 
-        //// LG Overriding data ////
-        test.equal(value[0], "Styczeń");
-        test.equal(value[1], "Luty");
-        test.equal(value[2], "Marzec");
-        test.equal(value[3], "Kwiecień");
-        test.equal(value[4], "Maj");
-        test.equal(value[5], "Czerwiec");
-        test.equal(value[6], "Lipiec");
-        test.equal(value[7], "Sierpień");
-        test.equal(value[8], "Wrzesień");
-        test.equal(value[9], "Październik");
-        test.equal(value[10], "Listopad");
-        test.equal(value[11], "Grudzień");
+        test.equal(value[0], "styczeń");
+        test.equal(value[1], "luty");
+        test.equal(value[2], "marzec");
+        test.equal(value[3], "kwiecień");
+        test.equal(value[4], "maj");
+        test.equal(value[5], "czerwiec");
+        test.equal(value[6], "lipiec");
+        test.equal(value[7], "sierpień");
+        test.equal(value[8], "wrzesień");
+        test.equal(value[9], "październik");
+        test.equal(value[10], "listopad");
+        test.equal(value[11], "grudzień");
 
         for (i=0; i < 12; i++) {
             fmt[i] = new DateFmt({locale:"pl-PL", date:"m", length: "medium", useNative:false, timezone:"local"})
             value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
         }
-        test.equal(value[0], "Sty");
-        test.equal(value[1], "Lut");
-        test.equal(value[2], "Mar");
-        test.equal(value[3], "Kwi");
-        test.equal(value[4], "Maj");
-        test.equal(value[5], "Cze");
-        test.equal(value[6], "Lip");
-        test.equal(value[7], "Sie");
-        test.equal(value[8], "Wrz");
-        test.equal(value[9], "Paź");
-        test.equal(value[10], "Lis");
-        test.equal(value[11], "Gru");
+        test.equal(value[0], "sty");
+        test.equal(value[1], "lut");
+        test.equal(value[2], "mar");
+        test.equal(value[3], "kwi");
+        test.equal(value[4], "maj");
+        test.equal(value[5], "cze");
+        test.equal(value[6], "lip");
+        test.equal(value[7], "sie");
+        test.equal(value[8], "wrz");
+        test.equal(value[9], "paź");
+        test.equal(value[10], "lis");
+        test.equal(value[11], "gru");
         
         test.done();
     },

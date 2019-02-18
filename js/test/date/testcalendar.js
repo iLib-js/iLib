@@ -39,7 +39,7 @@ module.exports.testcalendar = {
         "tr-CY","tr-TR","uk-UA","ur-IN","ur-PK","uz-Cyrl-UZ","uz-Latn-UZ","vi-VN","zh-Hans-CN","zh-Hans-SG","zh-Hant-HK",
         "zh-Hans-MY","zh-Hant-TW","af-ZA","ha-Latn-NG","or-IN","en-GE","en-CN","en-MX","en-TW","es-CA"];
 
-        console.log("localeList.length: ", localeList.length);
+        //console.log("localeList.length: ", localeList.length);
         for (var i=0; i < localeList.length;i++) {
             var info = new LocaleInfo(localeList[i]);
             test.equal(info.getCalendar(), "gregorian");
