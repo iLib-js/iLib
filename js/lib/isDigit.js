@@ -1,7 +1,7 @@
 /*
  * isDigit.js - Character type is digit
  *
- * Copyright © 2012-2015, 2018, JEDLSoft
+ * Copyright © 2012-2015, 2018-2019, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,7 +19,7 @@
 
 // !data ctype ctype_n
 
-var ilib = require("../index.js");
+var ilib = require("./index.js");
 var CType = require("./CType.js");
 var IString = require("./IString.js");
 

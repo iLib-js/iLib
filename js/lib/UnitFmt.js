@@ -1,7 +1,7 @@
 /*
  * UnitFmt.js - Unit formatter class
  *
- * Copyright © 2014-2015, 2018 JEDLSoft
+ * Copyright © 2014-2015, 2018-2019 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -30,7 +30,7 @@ Measurement.js
 
 // !data unitfmt
 
-var ilib = require("../index.js");
+var ilib = require("./index.js");
 var Utils = require("./Utils.js");
 
 var Locale = require("./Locale.js");

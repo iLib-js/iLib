@@ -1,7 +1,7 @@
 /*
  * Country.js - Country class to get country name corresponding to country code in locale assigned
  *
- * Copyright © 2017, 2018, LGE
+ * Copyright © 2017-2019, LGE
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,7 +19,7 @@
 
 // !data ctryreverse
 
-var ilib = require("../index.js");
+var ilib = require("./index.js");
 var Utils = require("./Utils.js");
 var Locale = require("./Locale.js");
 var LocaleInfo = require("./LocaleInfo.js");

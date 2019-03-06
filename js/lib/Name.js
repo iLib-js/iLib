@@ -1,7 +1,7 @@
 /*
  * Name.js - Person name parser
  *
- * Copyright © 2013-2015, 2018, JEDLSoft
+ * Copyright © 2013-2015, 2018-2019, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -25,7 +25,7 @@
 // http://www.mentalfloss.com/blogs/archives/59277
 // other countries with first name restrictions: Norway, China, New Zealand, Japan, Sweden, Germany, Hungary
 
-var ilib = require("../index.js");
+var ilib = require("./index.js");
 var Utils = require("./Utils.js");
 var JSUtils = require("./JSUtils.js");
 

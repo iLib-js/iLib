@@ -2,7 +2,7 @@
  * MeasurementFactory.js - Function to instantiate the appropriate subclasses of
  * the Measurement class.
  *
- * Copyright © 2015, 2018, JEDLSoft
+ * Copyright © 2015, 2018-2019, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -37,7 +37,7 @@ Measurement.js
 
 // TODO: make these dependencies dynamic or at least generate them in the build
 // These will each add themselves to Measurement._constructors[]
-var ilib = require("../index.js");
+var ilib = require("./index.js");
 var UnknownUnit = require("./UnknownUnit.js");
 var AreaUnit = require("./AreaUnit.js");
 var DigitalStorageUnit = require("./DigitalStorageUnit.js");

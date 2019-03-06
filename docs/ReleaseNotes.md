@@ -1,6 +1,14 @@
 Release Notes for Version 14
 ============================
 
+Build 006
+-------
+Published as version 14.1.4
+
+Bug Fixes:
+* Moved index.js into lib/index.js for enyojs. The way enyo loads ilib does not allow for js files that are outside
+of the lib directory.
+
 Build 005
 -------
 Published as version 14.1.3

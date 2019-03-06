@@ -1,7 +1,7 @@
 /*
  * EthiopicDate.js - Represent a date in the Ethiopic calendar
  *
- * Copyright © 2015, 2018, JEDLSoft
+ * Copyright © 2015, 2018-2019, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,7 +17,7 @@
  * limitations under the License.
  */
 
-var ilib = require("../index.js");
+var ilib = require("./index.js");
 var MathUtils = require("./MathUtils.js");
 
 var EthiopicRataDie = require("./EthiopicRataDie.js");

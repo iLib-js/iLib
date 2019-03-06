@@ -2,7 +2,7 @@
  * CharmapFactory.js - Factory class to create the right subclasses of a charmap for any
  * given chararacter set.
  *
- * Copyright © 2015, 2018, JEDLSoft
+ * Copyright © 2015, 2018-2019, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,7 +18,7 @@
  * limitations under the License.
  */
 
-var ilib = require("../index.js");
+var ilib = require("./index.js");
 var JSUtils = require("./JSUtils.js");
 
 var Charset = require("./Charset.js");

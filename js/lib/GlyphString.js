@@ -2,7 +2,7 @@
  * GlyphString.js - ilib string subclass that allows you to access
  * whole glyphs at a time
  *
- * Copyright © 2015-2018, JEDLSoft
+ * Copyright © 2015-2019, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -20,7 +20,7 @@
 
 // !data ccc nfc ctype_m
 
-var ilib = require("../index.js");
+var ilib = require("./index.js");
 var Utils = require("./Utils.js");
 var JSUtils = require("./JSUtils.js");
 

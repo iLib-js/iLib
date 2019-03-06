@@ -1,7 +1,7 @@
 /*
  * LocaleInfo.js - Encode locale-specific defaults
  *
- * Copyright © 2012-2015, 2018, JEDLSoft
+ * Copyright © 2012-2015, 2018-2019, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,7 +19,7 @@
 
 // !data localeinfo
 
-var ilib = require("../index.js");
+var ilib = require("./index.js");
 var Utils = require("./Utils.js");
 var Locale = require("./Locale.js");
 

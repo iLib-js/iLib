@@ -2,7 +2,7 @@
  * DateFactory.js - Factory class to create the right subclasses of a date for any
  * calendar or locale.
  *
- * Copyright © 2012-2015, 2018, JEDLSoft
+ * Copyright © 2012-2015, 2018-2019, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,7 +18,7 @@
  * limitations under the License.
  */
 
-var ilib = require("../index.js");
+var ilib = require("./index.js");
 var JSUtils = require("./JSUtils.js");
 
 var Locale = require("./Locale.js");
