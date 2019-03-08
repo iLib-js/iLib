@@ -1069,7 +1069,7 @@ module.exports.testweekdata = {
         test.equal(info.getWeekEndEnd(), 0);
         test.done();
     },
-    testWeekData_ku_KZ: function(test) {
+    testWeekData_ru_KZ: function(test) {
         test.expect(4);
         var info = new LocaleInfo("ru-KZ");
         test.ok(info !== null);

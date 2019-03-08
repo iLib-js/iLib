@@ -1276,7 +1276,7 @@ module.exports.testscriptinfo = {
         test.equal(scinfo.getScriptDirection(), "ltr");
         test.done();
     },
-    testScriptInfo_ku_KZ: function(test) {
+    testScriptInfo_ru_KZ: function(test) {
         test.expect(4);
         var li = new LocaleInfo("ru-KZ");
         var scinfo = new ScriptInfo(li.getScript());

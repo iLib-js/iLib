@@ -1094,7 +1094,7 @@ module.exports.testcurrency = {
         
         test.done();
     },
-    testCurrency_ku_KZ: function(test) {
+    testCurrency_ru_KZ: function(test) {
         test.expect(2);
         var info = new LocaleInfo("ru-KZ");
         test.ok(info !== null);

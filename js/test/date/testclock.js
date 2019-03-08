@@ -965,7 +965,7 @@ module.exports.testclock = {
         
         test.done();
     },
-    testClock_ku_KZ: function(test) {
+    testClock_ru_KZ: function(test) {
         test.expect(2);
         var info = new LocaleInfo("ru-KZ");
         test.ok(info !== null);
