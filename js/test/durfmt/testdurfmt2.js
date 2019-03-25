@@ -397,7 +397,7 @@ module.exports.testdurfmt2 = {
         }
 
         test.equal(textformatted_1[0], '1 godina, 1 mjesec, 1 sedmica i 1 dan');
-        test.equal(textformatted_1[1], '1 god., 1 mj., 1 sedm., 1 dan'); // LG Overriding (week)
+        test.equal(textformatted_1[1], '1 god., 1 mj., 1 sedm., 1 dan');
         // [bug] test.equal(textformatted_1[2], '1y, 1m, 1w, 1d');
         test.equal(textformatted_1[3], '1 god., 1 mj., 1 sedm., 1 d.');
     
@@ -409,7 +409,7 @@ module.exports.testdurfmt2 = {
         test.equal(textformatted_5[0], '5 godina, 5 mjeseci, 5 sedmica i 5 dana');
         test.equal(textformatted_5[1], '5 god., 5 mj., 5 sedm., 5 dana');
         // [bug] test.equal(textformatted_5[2], '5y, 5m, 5w, 5d');
-        test.equal(textformatted_5[3], '5 god., 5 mj., 5 sedm., 5 d.'); // LG Overriding (week)
+        test.equal(textformatted_5[3], '5 god., 5 mj., 5 sedm., 5 d.');
 
         test.equal(clockformatted_1[0], '1 sat, 1 minuta i 1 sekunda');
         test.equal(clockformatted_1[1], '1 h, 1 min., 1 sek.');
@@ -417,7 +417,7 @@ module.exports.testdurfmt2 = {
         test.equal(clockformatted_1[3], '1 h, 1 m, 1 s');
     
         test.equal(clockformatted_4[0], '4 sata, 4 minute i 4 sekunde');
-        test.equal(clockformatted_4[1], '4 h, 4 min., 4 sek.'); // LG Overriding (second)
+        test.equal(clockformatted_4[1], '4 h, 4 min., 4 sek.');
         // [bug] test.equal(clockformatted_4[2], '4h, 4m, 4s');
         test.equal(clockformatted_4[3], '4 h, 4 m, 4 s');
 
@@ -444,32 +444,32 @@ module.exports.testdurfmt2 = {
         }
 
         test.equal(textformatted_1[0], '1 godina, 1 mjesec, 1 sedmica i 1 dan');
-        test.equal(textformatted_1[1], '1 god., 1 mj., 1 sed., 1 dan'); // LG Overriding (week)
+        test.equal(textformatted_1[1], '1 god., 1 mj., 1 sedm., 1 dan');
         // [bug] test.equal(textformatted_1[2], '1y, 1m, 1w, 1d');
-        test.equal(textformatted_1[3], '1 god., 1 mj., 1 sed., 1 d.');
+        test.equal(textformatted_1[3], '1 god., 1 mj., 1 sedm., 1 d.');
     
         test.equal(textformatted_2[0], '2 godine, 2 mjeseca, 2 sedmice i 2 dana');
-        test.equal(textformatted_2[1], '2 god., 2 mj., 2 sed., 2 dana');
+        test.equal(textformatted_2[1], '2 god., 2 mj., 2 sedm., 2 dana');
         // [bug] test.equal(textformatted_2[2], '2y, 2m, 2w, 2d');
-        test.equal(textformatted_2[3], '2 god., 2 mj., 2 sed., 2 d.');
+        test.equal(textformatted_2[3], '2 god., 2 mj., 2 sedm., 2 d.');
 
         test.equal(textformatted_20[0], '20 godina, 20 mjeseci, 20 sedmica i 20 dana');
-        test.equal(textformatted_20[1], '20 god., 20 mj., 20 sed., 20 dana');
+        test.equal(textformatted_20[1], '20 god., 20 mj., 20 sedm., 20 dana');
         // [bug] test.equal(textformatted_20[2], '20y, 20m, 20w, 20d');
-        test.equal(textformatted_20[3], '20 god., 20 mj., 20 sed., 20 d.'); // LG Overriding (week)
+        test.equal(textformatted_20[3], '20 god., 20 mj., 20 sedm., 20 d.');
 
         test.equal(clockformatted_1[0], '1 sat, 1 minuta i 1 sekunda');
-        test.equal(clockformatted_1[1], '1 h, 1 min., 1 s');
+        test.equal(clockformatted_1[1], '1 h, 1 min., 1 sek.');
         // [bug] test.equal(clockformatted_1[2], '1h, 1m, 1s');
         test.equal(clockformatted_1[3], '1 h, 1 m, 1 s');
     
         test.equal(clockformatted_2[0], '2 sata, 2 minute i 2 sekunde');
-        test.equal(clockformatted_2[1], '2 h, 2 min., 2 s'); // LG Overriding (second)
+        test.equal(clockformatted_2[1], '2 h, 2 min., 2 sek.');
         // [bug] test.equal(clockformatted_2[2], '2h, 2m, 2s');
         test.equal(clockformatted_2[3], '2 h, 2 m, 2 s');
 
         test.equal(clockformatted_20[0], '20 sati, 20 minuta i 20 sekundi');
-        test.equal(clockformatted_20[1], '20 h, 20 min., 20 s');
+        test.equal(clockformatted_20[1], '20 h, 20 min., 20 sek.');
         // [bug] test.equal(clockformatted_20[2], '20h, 20m, 20s');
         test.equal(clockformatted_20[3], '20 h, 20 m, 20 s');
 
@@ -886,7 +886,7 @@ module.exports.testdurfmt2 = {
         test.equal(textformatted_1[3], '1 y 1 m 1 w 1 d');
     
         test.equal(textformatted_2[0], '2 years, 2 months, 2 weeks, 2 days');
-        test.equal(textformatted_2[1], '2 yrs., 2 mos., 2 wks., 2 days'); // CLDr 34 change (month)
+        test.equal(textformatted_2[1], '2 yrs., 2 mos., 2 wks., 2 days'); // CLDR 34 change (month)
         // [bug] test.equal(textformatted_2[2], '2 y, 2 m, 2w, 2d');
         test.equal(textformatted_2[3], '2 y 2 m 2 w 2 d');
 
@@ -1770,26 +1770,25 @@ module.exports.testdurfmt2 = {
         }
 
         test.equal(textformatted_1[0], '1 año, 1 mes, 1 semana y 1 día');
-        test.equal(textformatted_1[1], '1 año, 1 mes, 1 sem., 1 día'); // LG Overriding (year)
+        test.equal(textformatted_1[1], '1 a., 1 mes, 1 sem., 1 día');
         // [bug]  test.equal(textformatted_1[2], '1 a. 1 mes 1sem. 1d.');
-        test.equal(textformatted_1[3], '1 año 1 mes 1 sem. 1 día'); // LG Overriding (year)
-                                        
+        test.equal(textformatted_1[3], '1 a. 1 mes 1 sem. 1 día');
 
         test.equal(textformatted_16[0], '16 años, 16 meses, 16 semanas y 16 días');
-        test.equal(textformatted_16[1], '16 años, 16 meses, 16 sems., 16 días'); // LG Overriding
+        test.equal(textformatted_16[1], '16 a., 16 meses, 16 sems., 16 días');
                                         
         // [bug]  test.equal(textformatted_16[2], '16 años 16 meses 16 sems. 16 días');
-        test.equal(textformatted_16[3], '16 años 16 meses 16 sems. 16 días');
+        test.equal(textformatted_16[3], '16 a. 16 meses 16 sems. 16 días');
                                          
         test.equal(clockformatted_1[0], '1 hora, 1 minuto y 1 segundo');
-        test.equal(clockformatted_1[1], '1 hr, 1 min, 1 seg.');
+        test.equal(clockformatted_1[1], '1 h, 1 min, 1 s');
         // [bug]  test.equal(clockformatted_1[2], '1 hr, 1 min, 1 s');
-        test.equal(clockformatted_1[3], '1 hr 1 min 1 seg.');// LG Overriding
+        test.equal(clockformatted_1[3], '1 h 1 min 1 s');
     
         test.equal(clockformatted_16[0], '16 horas, 16 minutos y 16 segundos');
-        test.equal(clockformatted_16[1], '16 hrs, 16 min, 16 seg.');// LG Overriding
+        test.equal(clockformatted_16[1], '16 h, 16 min, 16 s');
         // [bug]  test.equal(clockformatted_16[2], '16 hrs, 16 min, 16 s' );
-        test.equal(clockformatted_16[3], '16 hrs 16 min 16 seg.');// LG Overriding
+        test.equal(clockformatted_16[3], '16 h 16 min 16 s');
                                          
         test.done();
     },
@@ -4848,9 +4847,9 @@ module.exports.testdurfmt2 = {
         test.equal(textformatted_1[3], '1年1个月1周1天');
 
         test.equal(clockformatted_1[0], '1小时1分钟1秒钟');
-        test.equal(clockformatted_1[1], '1小时1分1秒'); // LG Overriding (min)
+        test.equal(clockformatted_1[1], '1小时1分钟1秒');
         // [bug] test.equal(clockformatted_1[2], '1h, 1m, 1s');
-        test.equal(clockformatted_1[3], '1小时1分1秒'); // LG Overriding (min)
+        test.equal(clockformatted_1[3], '1小时1分钟1秒');
 
         test.done();
     },
@@ -7475,7 +7474,6 @@ module.exports.testdurfmt2 = {
         test.equal(clockformatted_2[1], '‏2 j, 2 min, 2 saat');
         // [bug] test.equal(clockformatted_2[2], '2h, 2m, 2s');
         test.equal(clockformatted_2[3], '‏2 j 2 min 2 s');
-
 
         test.done();
     },
