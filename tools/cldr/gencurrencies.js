@@ -1,7 +1,8 @@
 /*
- * gencurrency.js - ilib tool to generate the json data about currency
+ * gencurrencies.js - ilib tool to generate the json data about currency
+ * the CLDR data files
  *
- * Copyright © 2016, 2018 LGE
+ * Copyright © 2016, 2018-2019, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -43,7 +44,7 @@ function getUsingCurrency(object) {
     var i, curObj, cur, ret = [];
     for (i = 0; i < object.length; i++) {
         for (curObj in object[i]) {
-            if(object[i][curObj]._to === undefined && object[i][curObj]._from !== undefined) {
+            if(object[i][curObj]._to === undefined && object[i][curObj]._from !== undefined && object[i][curObj]._tender === undefined) {
                 ret.push(curObj);
             }
         }
