@@ -52,6 +52,7 @@
         "ringojs": ">=0.9",
         "nodejs": ">= 0.10"
     },
+    "cldr-data-coverage": "full",
     "devDependencies": {
         "babel-loader": "^7.1.5",
         "cldr-data": "^34.0.0",
