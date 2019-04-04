@@ -1325,7 +1325,7 @@ module.exports.testnumfmt = {
     
         test.ok(fmt);
     
-        test.equal(fmt.format(1234567.745), "1 234 567,745");
+        test.equal(fmt.format(1234567.745), "1 234 567,745");
         test.done();
     },
     
@@ -2470,7 +2470,7 @@ module.exports.testnumfmt = {
     
         test.ok(fmt);
     
-        test.equal(fmt.format(100110.57), "₹ ୧,୦୦,୧୧୦.୫୭");
+        test.equal(fmt.format(100110.57), "₹୧,୦୦,୧୧୦.୫୭");
         test.done();
     },
     
@@ -2485,7 +2485,7 @@ module.exports.testnumfmt = {
     
         test.ok(fmt);
     
-        test.equal(fmt.format(-100110.57), "-₹ ୧,୦୦,୧୧୦.୫୭");
+        test.equal(fmt.format(-100110.57), "-₹୧,୦୦,୧୧୦.୫୭");
         test.done();
     },
     
@@ -2500,7 +2500,7 @@ module.exports.testnumfmt = {
     
         test.ok(fmt);
     
-        test.equal(fmt.format(100110.57), "₹ 1,00,110.57");
+        test.equal(fmt.format(100110.57), "₹1,00,110.57");
         test.done();
     },
     
@@ -3508,7 +3508,7 @@ module.exports.testnumfmt = {
     
         test.ok(fmt);
     
-        test.equal(fmt.format(-123456.785), "-123 456,78");
+        test.equal(fmt.format(-123456.785), '-123 456,78');
         test.done();
     },
     
@@ -3521,7 +3521,7 @@ module.exports.testnumfmt = {
     
         test.ok(fmt);
     
-        test.equal(fmt.format(-111123456.785), "-111 123 456,78");
+        test.equal(fmt.format(-111123456.785), "-111 123 456,78");
         test.done();
     },
     
@@ -3535,7 +3535,7 @@ module.exports.testnumfmt = {
     
         test.ok(fmt);
     
-        test.equal(fmt.format(100110.57), "100 110,57 $");
+        test.equal(fmt.format(100110.57), "100 110,57 $");
         test.done();
     },
     
@@ -3549,7 +3549,7 @@ module.exports.testnumfmt = {
     
         test.ok(fmt);
     
-        test.equal(fmt.format(100110.57), "100 110,57 €");
+        test.equal(fmt.format(100110.57), "100 110,57 €");
         test.done();
     },
     
@@ -3709,7 +3709,7 @@ module.exports.testnumfmt = {
     
         test.ok(fmt);
     
-        test.equal(fmt.format(100110.57), "$ 100.111");
+        test.equal(fmt.format(100110.57), "$ 100.110,57");
         test.done();
     },
     testNumFmtPercentageFormatRegular_es_CO: function(test) {
@@ -4310,7 +4310,7 @@ module.exports.testnumfmt = {
     
         test.ok(fmt);
     
-        test.equal(fmt.format(57.8), "٥٧٫٨ ٪؜");
+        test.equal(fmt.format(57.8), "٥٧٫٨٪؜");
         test.done();
     },
     testNumFmtPercentageFormatNegative_ar_SA: function(test) {
@@ -4322,7 +4322,7 @@ module.exports.testnumfmt = {
     
         test.ok(fmt);
     
-        test.equal(fmt.format(-57.8), "؜-٥٧٫٨ ٪؜" );
+        test.equal(fmt.format(-57.8), "؜-٥٧٫٨٪؜" );
         test.done();
     },
     
@@ -4712,7 +4712,7 @@ module.exports.testnumfmt = {
     
         test.ok(fmt);
     
-        test.equal(fmt.format(57.8), "57,8%");
+        test.equal(fmt.format(57.8), "57,8 %");
         test.done();
     },
     
@@ -4740,7 +4740,7 @@ module.exports.testnumfmt = {
     
         test.ok(fmt);
     
-        test.equal(fmt.format(100110.57), "Rp100.111");
+        test.equal(fmt.format(100110.57), "Rp100.110,57");
         test.done();
     },
     testNumFmtPercentageFormatRegular_id_ID: function(test) {
@@ -4961,7 +4961,7 @@ module.exports.testnumfmt = {
     
         test.ok(fmt);
     
-        test.equal(fmt.format(100110.57), "₮100,111");
+        test.equal(fmt.format(100110.57), "₮100,110.57");
         test.done();
     },
     testNumFmtPercentageFormatRegular_ms_MY: function(test) {
@@ -5186,7 +5186,7 @@ module.exports.testnumfmt = {
     
         test.ok(fmt);
     
-        test.equal(fmt.format(-100110.57), "-₮100,111");
+        test.equal(fmt.format(-100110.57), "-₮100,110.57");
         test.done();
     },
     
@@ -5627,7 +5627,7 @@ module.exports.testnumfmt = {
     
         test.ok(fmt);
     
-        test.equal(fmt.format(100110.57), "Rs100,111");
+        test.equal(fmt.format(100110.57), "Rs100,110.57");
         test.done();
     },
     
@@ -5654,7 +5654,7 @@ module.exports.testnumfmt = {
     
         test.ok(fmt);
     
-        test.equal(fmt.format(-100110.57), "-Rs100,111");
+        test.equal(fmt.format(-100110.57), "-Rs100,110.57");
         test.done();
     },
     
@@ -5956,7 +5956,7 @@ module.exports.testnumfmt = {
     
         test.ok(fmt);
     
-        test.equal(fmt.format(100110.57), "Sh100,111");
+        test.equal(fmt.format(100110.57), "Sh100,110.57");
         test.done();
     },
     testNumFmtPercentageFormatRegular_en_TZ: function(test) {
@@ -5982,7 +5982,7 @@ module.exports.testnumfmt = {
     
         test.ok(fmt);
     
-        test.equal(fmt.format(-100110.57), "-Sh100,111");
+        test.equal(fmt.format(-100110.57), "-Sh100,110.57");
         test.done();
     },
     
@@ -6396,7 +6396,7 @@ module.exports.testnumfmt = {
     
         test.ok(fmt);
     
-        test.equal(fmt.format(100110.57), "AZN 100.110,57");
+        test.equal(fmt.format(100110.57), "100.110,57 AZN");
         test.done();
     },
     testNumFmtPercentageFormatRegular_az_Latn_AZ: function(test) {
@@ -6422,7 +6422,7 @@ module.exports.testnumfmt = {
     
         test.ok(fmt);
     
-        test.equal(fmt.format(-100110.57), "-AZN 100.110,57");
+        test.equal(fmt.format(-100110.57), "-100.110,57 AZN");
         test.done();
     },
     
@@ -6561,7 +6561,7 @@ module.exports.testnumfmt = {
     
         test.ok(fmt);
     
-        test.equal(fmt.format(100110.57), "Sh100,110.57");
+        test.equal(fmt.format(100110.57), "Sh 100,110.57");
         test.done();
     },
     testNumFmtPercentageFormatRegular_sw_KE: function(test) {
@@ -6587,7 +6587,7 @@ module.exports.testnumfmt = {
     
         test.ok(fmt);
     
-        test.equal(fmt.format(-100110.57), "-Sh100,110.57");
+        test.equal(fmt.format(-100110.57), "-Sh 100,110.57");
         test.done();
     },
     
@@ -6671,18 +6671,7 @@ module.exports.testnumfmt = {
         test.done();
     },
     
-    testNumFmt_fr_FR: function(test) {
-        test.expect(2);
-        var fmt = new NumFmt({
-            locale: "fr-FR",
-            maxFractionDigits: 2
-        });
     
-        test.ok(fmt);
-    
-        test.equal(fmt.format(-123456.785), "-123 456,78");
-        test.done();
-    },
     
     testNumFmt_fr_CA: function(test) {
         test.expect(2);
@@ -6842,7 +6831,7 @@ module.exports.testnumfmt = {
 
         test.ok(fmt);
 
-        test.equal(fmt.format(-123456.785), "-123 456,8");
+        test.equal(fmt.format(-123456.785), "-123 456,8");
         test.done();
     },
     
