@@ -1585,8 +1585,8 @@ module.exports.testweekdata = {
         test.ok(info !== null);
 
         test.equal(info.getFirstDayOfWeek(), 1);
-        test.equal(info.getWeekEndStart(), 6);
-        test.equal(info.getWeekEndEnd(), 0);
+        test.equal(info.getWeekEndStart(), 6); // CLDR 34 change
+        test.equal(info.getWeekEndEnd(), 0);  // CLDR 34 change
         test.done();
     },
     testWeekData_ar_YE: function(test) {
