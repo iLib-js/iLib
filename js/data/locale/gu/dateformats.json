@@ -1,6 +1,11 @@
 {
     "gregorian": {
-        "order": "{date} {time}",
+        "order": {
+            "f": "{date} એ {time} વાગ્યે",
+            "l": "{date} એ {time} વાગ્યે",
+            "m": "{date} {time}",
+            "s": "{date} {time}"
+        },
         "date": {
             "dmwy": {
                 "f": "EEEE, d MMMM, yyyy",
@@ -97,26 +102,26 @@
         },
         "range": {
             "c00": {
-                "f": "{sd} {sm}, {sy} {st} – {et}",
-                "l": "{sd} {sm}, {sy} {st} – {et}",
+                "f": "{sd} {sm}, {sy} એ {st} વાગ્યે – {et}",
+                "l": "{sd} {sm}, {sy} એ {st} વાગ્યે – {et}",
                 "m": "{sd} {sm}, {sy} {st} – {et}",
                 "s": "{sd}/{sm}/{sy} {st} – {et}"
             },
             "c01": {
-                "f": "{sd} {sm}, {sy} {st} – {ed} {em}, {ey} {et}",
-                "l": "{sd} {sm}, {sy} {st} – {ed} {em}, {ey} {et}",
+                "f": "{sd} {sm}, {sy} એ {st} વાગ્યે – {ed} {em}, {ey} એ {et} વાગ્યે",
+                "l": "{sd} {sm}, {sy} એ {st} વાગ્યે – {ed} {em}, {ey} એ {et} વાગ્યે",
                 "m": "{sd} {sm}, {sy} {st} – {ed} {em}, {ey} {et}",
                 "s": "{sd}/{sm}/{sy} {st} – {ed}/{em}/{ey} {et}"
             },
             "c02": {
-                "f": "{sd} {sm}, {sy} {st} – {ed} {em}, {ey} {et}",
-                "l": "{sd} {sm}, {sy} {st} – {ed} {em}, {ey} {et}",
+                "f": "{sd} {sm}, {sy} એ {st} વાગ્યે – {ed} {em}, {ey} એ {et} વાગ્યે",
+                "l": "{sd} {sm}, {sy} એ {st} વાગ્યે – {ed} {em}, {ey} એ {et} વાગ્યે",
                 "m": "{sd} {sm}, {sy} {st} – {ed} {em}, {ey} {et}",
                 "s": "{sd}/{sm}/{sy} {st} – {ed}/{em}/{ey} {et}"
             },
             "c03": {
-                "f": "{sd} {sm}, {sy} {st} – {ed} {em}, {ey} {et}",
-                "l": "{sd} {sm}, {sy} {st} – {ed} {em}, {ey} {et}",
+                "f": "{sd} {sm}, {sy} એ {st} વાગ્યે – {ed} {em}, {ey} એ {et} વાગ્યે",
+                "l": "{sd} {sm}, {sy} એ {st} વાગ્યે – {ed} {em}, {ey} એ {et} વાગ્યે",
                 "m": "{sd} {sm}, {sy} {st} – {ed} {em}, {ey} {et}",
                 "s": "{sd}/{sm}/{sy} {st} – {ed}/{em}/{ey} {et}"
             },
