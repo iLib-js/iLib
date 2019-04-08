@@ -25,10 +25,10 @@ if (!ilib._platform || (typeof(ilib._dyndata) !== 'boolean' && typeof(ilib._dync
     } else {
         switch (ilib._getPlatform()) {
             case 'webos':
+                break;
             case 'nodejs':
                 require("./lib/ilib-node.js");
                 break;
-
             case 'qt':
                 require("./lib/ilib-qt.js");
                 break;
