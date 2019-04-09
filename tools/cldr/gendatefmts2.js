@@ -238,7 +238,7 @@ list.forEach(function (file) {
     newFormats = aux.createRelativeFormatResources(dateFields.main[file].dates.fields, language, script);
     //console.log("Relative format data is " + JSON.stringify(newFormats, undefined, 4) + "\n");
     group = aux.getFormatGroup(systemResources, localeComponents);
-    // group.data = merge(group.data || {}, newFormats);
+    group.data = merge(group.data || {}, newFormats);
 
     // separator
     seperator = require(path.join(sourceDir, "listPatterns.json"));
