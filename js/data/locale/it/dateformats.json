@@ -10,25 +10,25 @@
             "dmwy": {
                 "f": "EEEE d MMMM yyyy",
                 "l": "EEE d MMMM yyyy",
-                "m": "EE d MMM yyyy",
+                "m": "EE dd MMM yyyy",
                 "s": "E dd/MM/yy"
             },
             "dmy": {
                 "f": "d MMMM yyyy",
                 "l": "d MMMM yyyy",
-                "m": "d MMM yyyy",
+                "m": "dd MMM yyyy",
                 "s": "dd/MM/yy"
             },
             "dmw": {
                 "f": "EEEE d MMMM",
                 "l": "EEE d MMMM",
-                "m": "EE d MMM",
+                "m": "EE dd MMM",
                 "s": "E dd/MM"
             },
             "dm": {
                 "f": "d MMMM",
                 "l": "d MMMM",
-                "m": "d MMM",
+                "m": "dd MMM",
                 "s": "dd/MM"
             },
             "my": {
@@ -40,7 +40,7 @@
             "dw": {
                 "f": "EEEE d",
                 "l": "EEE d",
-                "m": "EE d",
+                "m": "EE dd",
                 "s": "E dd"
             },
             "w": {
@@ -52,7 +52,7 @@
             "d": {
                 "f": "d",
                 "l": "d",
-                "m": "d",
+                "m": "dd",
                 "s": "dd"
             },
             "m": {

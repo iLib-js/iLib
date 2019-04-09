@@ -70,19 +70,19 @@
         },
         "time": {
             "12": {
-                "h": "hh",
+                "h": "h",
                 "m": "mm",
                 "s": "ss",
-                "ah": "h 'h' a",
-                "hm": "hh 'h' mm",
-                "ms": "mm 'min' ss",
-                "ahm": "hh 'h' mm a",
-                "hms": "hh 'h' mm 'min' ss 's'",
-                "hmz": "hh 'h' mm z",
-                "ahmz": "hh 'h' mm a z",
-                "ahms": "hh 'h' mm 'min' ss 's' a",
-                "hmsz": "hh 'h' mm 'min' ss 's' z",
-                "ahmsz": "hh 'h' mm 'min' ss 's' a z"
+                "ah": "h a",
+                "hm": "h 'h' mm",
+                "ms": "mm:ss",
+                "ahm": "h 'h' mm a",
+                "hms": "h:mm:ss",
+                "hmz": "h 'h' mm z",
+                "ahmz": "h 'h' mm a z",
+                "ahms": "h:mm:ss a",
+                "hmsz": "h:mm:ss z",
+                "ahmsz": "h:mm:ss a z"
             },
             "24": {
                 "h": "HH",
@@ -90,20 +90,20 @@
                 "s": "ss",
                 "ah": "HH",
                 "hm": "HH 'h' mm",
-                "ms": "mm 'min' ss",
+                "ms": "mm:ss",
                 "ahm": "HH 'h' mm",
-                "hms": "HH 'h' mm 'min' ss 's'",
+                "hms": "HH:mm:ss",
                 "hmz": "HH 'h' mm z",
                 "ahmz": "HH 'h' mm z",
-                "ahms": "HH 'h' mm 'min' ss 's'",
-                "hmsz": "HH 'h' mm 'min' ss 's' z",
-                "ahmsz": "HH 'h' mm 'min' ss 's' z"
+                "ahms": "HH:mm:ss",
+                "hmsz": "HH:mm:ss z",
+                "ahmsz": "HH:mm:ss z"
             }
         },
         "range": {
             "c00": {
-                "f": "{sd} {sm} {sy} à {st} – {et}",
-                "l": "{sd} {sm} {sy} à {st} – {et}",
+                "f": "{sd} {sm} {sy} de {st} à {et}",
+                "l": "{sd} {sm} {sy} de {st} à {et}",
                 "m": "{sd} {sm} {sy} {st} – {et}",
                 "s": "{sy}-{sm}-{sd} {st} – {et}"
             },

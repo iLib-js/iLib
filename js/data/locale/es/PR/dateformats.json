@@ -128,7 +128,7 @@
             "c10": {
                 "f": "{sd} – {ed} de {em} de {ey}",
                 "l": "{sd} – {ed} de {em} de {ey}",
-                "m": "{sm}/{sd}/{sy} – /{ed}/{ey}",
+                "m": "{sm}/{sd} – {ed}/{ey}",
                 "s": "{sm}/{sd}/{sy} – {em}/{ed}/{ey}"
             },
             "c11": {

@@ -11,31 +11,31 @@
                 "f": "‏yyyy MMMM d, EEEE",
                 "l": "‏d MMMM yyyy, EEE",
                 "m": "‏d MMM yyyy, EE",
-                "s": "‏yyyy/M/d, E"
+                "s": "‏yyyy‏/M‏/d, E"
             },
             "dmy": {
                 "f": "‏yyyy MMMM d",
                 "l": "‏d MMMM yyyy",
                 "m": "‏d MMM yyyy",
-                "s": "‏yyyy/M/d"
+                "s": "‏yyyy‏/M‏/d"
             },
             "dmw": {
                 "f": "MMMM d, EEEE",
                 "l": "‏d MMMM, EEE",
                 "m": "‏d MMM, EE",
-                "s": "‏M/d, E"
+                "s": "‏M‏/d, E"
             },
             "dm": {
                 "f": "MMMM d",
                 "l": "‏d MMMM",
                 "m": "‏d MMM",
-                "s": "‏M/d"
+                "s": "‏M‏/d"
             },
             "my": {
                 "f": "‏yyyy LLLL",
                 "l": "LLLL yyyy",
                 "m": "LLL yyyy",
-                "s": "‏yyyy/M"
+                "s": "‏yyyy‏/M"
             },
             "dw": {
                 "f": "‏d, EEEE",
@@ -117,49 +117,49 @@
                 "f": "‏{sy} {sm} {sd}، ساعت {st} – {et}",
                 "l": "‏{sd} {sm} {sy}، ساعت {st} – {et}",
                 "m": "‏{sd} {sm} {sy}،‏ {st} – {et}",
-                "s": "‏{sy}/{sm}/{sd}،‏ {st} – {et}"
+                "s": "‏{sy}‏/{sm}‏/{sd}،‏ {st} – {et}"
             },
             "c01": {
-                "f": "‏{sy} {sm} {sd}، ساعت {st} – ‏{ey} {em} {ed}، ساعت {et}",
+                "f": "‏{sy} {sm} {sd}، ساعت {st} – {ey} {em} {ed}، ساعت {et}",
                 "l": "‏{sd} {sm} {sy}، ساعت {st} – ‏{ed} {em} {ey}، ساعت {et}",
                 "m": "‏{sd} {sm} {sy}،‏ {st} – ‏{ed} {em} {ey}،‏ {et}",
-                "s": "‏{sy}/{sm}/{sd}،‏ {st} – ‏{ey}/{em}/{ed}،‏ {et}"
+                "s": "‏{sy}‏/{sm}‏/{sd}،‏ {st} – ‏{ey}‏/{em}‏/{ed}،‏ {et}"
             },
             "c02": {
-                "f": "‏{sy} {sm} {sd}، ساعت {st} – ‏{ey} {em} {ed}، ساعت {et}",
+                "f": "‏{sy} {sm} {sd}، ساعت {st} – {ey} {em} {ed}، ساعت {et}",
                 "l": "‏{sd} {sm} {sy}، ساعت {st} – ‏{ed} {em} {ey}، ساعت {et}",
                 "m": "‏{sd} {sm} {sy}،‏ {st} – ‏{ed} {em} {ey}،‏ {et}",
-                "s": "‏{sy}/{sm}/{sd}،‏ {st} – ‏{ey}/{em}/{ed}،‏ {et}"
+                "s": "‏{sy}‏/{sm}‏/{sd}،‏ {st} – ‏{ey}‏/{em}‏/{ed}،‏ {et}"
             },
             "c03": {
-                "f": "‏{sy} {sm} {sd}، ساعت {st} – ‏{ey} {em} {ed}، ساعت {et}",
+                "f": "‏{sy} {sm} {sd}، ساعت {st} – {ey} {em} {ed}، ساعت {et}",
                 "l": "‏{sd} {sm} {sy}، ساعت {st} – ‏{ed} {em} {ey}، ساعت {et}",
                 "m": "‏{sd} {sm} {sy}،‏ {st} – ‏{ed} {em} {ey}،‏ {et}",
-                "s": "‏{sy}/{sm}/{sd}،‏ {st} – ‏{ey}/{em}/{ed}،‏ {et}"
+                "s": "‏{sy}‏/{sm}‏/{sd}،‏ {st} – ‏{ey}‏/{em}‏/{ed}،‏ {et}"
             },
             "c10": {
                 "f": "‏{sy} {sm} {sd} – {ed}",
                 "l": "‏{sd} – ‏{ed} {em} {ey}",
                 "m": "‏{sd} – ‏{ed} {em} {ey}",
-                "s": "‏{sy}/{sm}/{sd} – {ed}"
+                "s": "‏{sy}‏/{sm}‏/{sd} – {ed}"
             },
             "c11": {
-                "f": "‏{sy} {sm} {sd} – ‏{em} {ed}",
+                "f": "‏{sy} {sm} {sd} – {em} {ed}",
                 "l": "‏{sd} {sm} – ‏{ed} {em} {ey}",
                 "m": "‏{sd} {sm} – ‏{ed} {em} {ey}",
-                "s": "‏{sy}/{sm}/{sd} – ‏{ey}/{em}/{ed}"
+                "s": "‏{sy}‏/{sm}‏/{sd} – ‏{ey}‏/{em}‏/{ed}"
             },
             "c12": {
-                "f": "‏{sy} {sm} {sd} – ‏{ey} {em} {ed}",
+                "f": "‏{sy} {sm} {sd} – {ey} {em} {ed}",
                 "l": "‏{sd} {sm} {sy} – ‏{ed} {em} {ey}",
                 "m": "‏{sd} {sm} {sy} – ‏{ed} {em} {ey}",
-                "s": "‏{sy}/{sm}/{sd} – ‏{ey}/{em}/{ed}"
+                "s": "‏{sy}‏/{sm}‏/{sd} – ‏{ey}‏/{em}‏/{ed}"
             },
             "c20": {
-                "f": "‏{sy} {sm} – ‏{ey} {em}",
-                "l": "{sm} {sy} – {em} {ey}",
-                "m": "{sm} {sy} – {em} {ey}",
-                "s": "‏{sy}/{sm} – ‏{ey}/{em}"
+                "f": "‏{sy} {sm} – {ey} {em}",
+                "l": "‏{sm} {sy} – {em} {ey}",
+                "m": "‏{sm} {sy} – {em} {ey}",
+                "s": "‏{sy}‏/{sm} – ‏{ey}‏/{em}"
             },
             "c30": {
                 "f": "‏{sy} – {ey}",
