@@ -726,8 +726,8 @@ module.exports.testmeridiems = {
         var fmt = DateFmt.getMeridiemsRange({locale:"ga-IE"});
         test.ok(fmt !== null);
 
-        test.equal(fmt[0].name, "a.m.");
-        test.equal(fmt[1].name, "p.m.");
+        test.equal(fmt[0].name, "r.n.");
+        test.equal(fmt[1].name, "i.n.");
         
         test.done();
     },
@@ -874,8 +874,8 @@ module.exports.testmeridiems = {
         var fmt = DateFmt.getMeridiemsRange({locale:"ku-IQ"});
         test.ok(fmt !== null);
 
-        test.equal(fmt[0].name, "ﺏ.ﻥ");
-        test.equal(fmt[1].name, "ﺩ.ﻥ");
+        test.equal(fmt[0].name, "ب.ن");
+        test.equal(fmt[1].name, "د.ن");
         
         test.done();
     },

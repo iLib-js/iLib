@@ -201,8 +201,8 @@ module.exports.testdatetimeformat = {
         }
         test.equal(value[0], "EEEE, d. MMMM yyyy.");
         test.equal(value[1], "EEE, d. MMMM yyyy.");
-        test.equal(value[2], "EE, d. MMM yyyy.");
-        test.equal(value[3], "E, d. M. yyyy.");
+        test.equal(value[2], "EE, d. MMM yyyy."); // CLDR 34 change
+        test.equal(value[3], "E, d. M. yyyy."); // CLDR 34 change
 
         for (i=0; i < 4; i++) {
             fmt[i] = new DateFmt({locale:"bs-Latn-BA", type:"datetime", date:"dmwy", length: length[i], useNative:false, timezone:"local"})

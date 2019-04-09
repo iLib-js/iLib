@@ -2397,18 +2397,20 @@ module.exports.testmonthtranslation = {
             fmt[i] = new DateFmt({locale:"fa-AF", date:"m", length: "full", useNative:false, timezone:"local"});
             value[i] = fmt[i].format(DateFactory({month:i+1, type:"persian"}));
         }
-        test.equal(value[0], "حمل");
-        test.equal(value[1], "ثور");
-        test.equal(value[2], "جوزا");
-        test.equal(value[3], "سرطان");
-        test.equal(value[4], "اسد");
-        test.equal(value[5], "سنبلهٔ");
-        test.equal(value[6], "میزان");
-        test.equal(value[7], "عقرب");
-        test.equal(value[8], "قوس");
-        test.equal(value[9], "جدی");
-        test.equal(value[10], "دلو");
-        test.equal(value[11], "حوت");
+        // full/long length: standAlone Format _ LLLL*
+
+        test.equal(value[0], "فروردین");
+        test.equal(value[1], "اردیبهشت");
+        test.equal(value[2], "خرداد");
+        test.equal(value[3], "تیر");
+        test.equal(value[4], "مرداد");
+        test.equal(value[5], "شهریور");
+        test.equal(value[6], "مهر");
+        test.equal(value[7], "آبان");
+        test.equal(value[8], "آذر");
+        test.equal(value[9], "دی");
+        test.equal(value[10], "بهمن");
+        test.equal(value[11], "اسفند");
 
         for (i=0; i < 12; i++) {
             fmt[i] = new DateFmt({locale:"fa-AF", date:"m", length: "medium", useNative:false, timezone:"local"});
