@@ -768,7 +768,7 @@ module.exports.testdatefmt_uz_Cyrl_UZ = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "Сентябр, 2011");
+        test.equal(fmt.format(date), "сентябр, 2011");
         test.done();
     },
 

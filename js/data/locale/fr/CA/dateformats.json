@@ -90,7 +90,7 @@
                 "s": "ss",
                 "ah": "HH",
                 "hm": "HH 'h' mm",
-                "ms": "mm 'min' ss",
+                "ms": "mm 'min' ss 's'",
                 "ahm": "HH 'h' mm",
                 "hms": "HH 'h' mm 'min' ss 's'",
                 "hmz": "HH 'h' mm z",
