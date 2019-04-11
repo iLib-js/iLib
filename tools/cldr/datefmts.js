@@ -45,7 +45,6 @@ var rtlLanguages = [
     "fa",
     "gba",
     "grc",
-    "ha",
     "he",
     "jpr",
     "jrb",
@@ -1673,7 +1672,7 @@ module.exports = {
                 "month": "1#1 mon|#{num} mons",
                 "year": "1#1 yr|#{num} yrs"
             },
-            /*"durationPropertiesMedium" : {
+            "durationPropertiesMedium" : {
                 "millisecond": "durationMediumMillis",
                 "second": "1#1 se|#{num} sec",
                 "minute": "1#1 mi|#{num} min",
@@ -1682,7 +1681,7 @@ module.exports = {
                 "week": "durationMediumWeeks",
                 "month": "1#1 mo|#{num} mos",
                 "year": "durationMediumYears"
-            },*/
+            },
             "durationPropertiesShort" : {
                 "millisecond": "durationShortMillis",
                 "second": "#{num}s",
@@ -1712,11 +1711,11 @@ module.exports = {
                     result = module.exports.createDurationResourceDetail(unit, durationObject[prop], "long", language, script);
                     sysres.push(result);
                     break;
-                    /*case "durationPropertiesMedium":
-                    unit = table.short;
+                    case "durationPropertiesMedium":
+                    unit = table.narrow;
                     result = module.exports.createDurationResourceDetail(unit, durationObject[prop], "medium", language, script);
                     sysres.push(result);
-                break;*/
+                break;
                 case "durationPropertiesShort":
                     unit = table.narrow;
                     result = module.exports.createDurationResourceDetail(unit, durationObject[prop], "short", language, script);
