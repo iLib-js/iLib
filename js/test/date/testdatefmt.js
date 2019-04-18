@@ -2581,7 +2581,7 @@ module.exports.testdatefmt = {
             timezone: "Etc/UTC"
         });
         
-        test.equal(fmt.format(date), "7:28 PM");
+        test.equal(fmt.format(date), "7:28 p.m.");
         test.done();
     },
     
@@ -2607,7 +2607,7 @@ module.exports.testdatefmt = {
         });
         
         // St. John's is -3:30 from UTC, plus 1 hour DST
-        test.equal(fmt.format(date), "7:28 PM");
+        test.equal(fmt.format(date), "7:28 p.m.");
         test.done();
     },
     
@@ -2627,7 +2627,7 @@ module.exports.testdatefmt = {
         });
     
         // Kathmandu is 5:45 ahead of UTC, no DST
-        test.equal(fmt.format(date), "3:43 AM");
+        test.equal(fmt.format(date), "3:43 a.m.");
         test.done();
     },
     
@@ -2653,7 +2653,7 @@ module.exports.testdatefmt = {
         });
         
         // Kathmandu is 5:45 ahead of UTC, no DST
-        test.equal(fmt.format(date), "3:43 AM");
+        test.equal(fmt.format(date), "3:43 a.m.");
         test.done();
     },
     
@@ -2680,7 +2680,7 @@ module.exports.testdatefmt = {
             millisecond: 0
         });
         
-        test.equal(fmt.format(date), "Tuesday, 20 September 2011 at 1:45 PM");
+        test.equal(fmt.format(date), "Tuesday, 20 September 2011 at 1:45 pm");
         test.done();
     },
     
@@ -2706,7 +2706,7 @@ module.exports.testdatefmt = {
             millisecond: 0
         });
         
-        test.equal(fmt.format(date), "Tuesday, 20 September 2011 at 1:45 PM");
+        test.equal(fmt.format(date), "Tuesday, 20 September 2011 at 1:45 pm");
         test.done();
     },
     
@@ -2732,7 +2732,7 @@ module.exports.testdatefmt = {
             millisecond: 0
         });
         
-        test.equal(fmt.format(date), "Tuesday, 20 September 2011 at 1:45 PM");
+        test.equal(fmt.format(date), "Tuesday, 20 September 2011 at 1:45 pm");
         test.done();
     },
     
@@ -3633,8 +3633,8 @@ module.exports.testdatefmt = {
         var fmt = DateFmt.getMeridiemsRange({locale: "as-IN"});
         test.ok(fmt !== null);
     
-        test.equal(fmt[0].name, "পূৰ্বাহ্ণ");
-        test.equal(fmt[1].name, "অপৰাহ্ণ");
+        test.equal(fmt[0].name, 'পূৰ্বাহ্ন');
+        test.equal(fmt[1].name,  'অপৰাহ্ন');
         test.done();
     },
     testDateFmtGetMeridiemsRangeName_with_hi_IN_locale: function(test) {
