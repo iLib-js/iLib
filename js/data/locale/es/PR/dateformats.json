@@ -128,13 +128,13 @@
             "c10": {
                 "f": "{sd} – {ed} de {em} de {ey}",
                 "l": "{sd} – {ed} de {em} de {ey}",
-                "m": "{sm}/{sd}/{sy} – /{ed}/{ey}",
+                "m": "{sm}/{sd} – {ed}/{ey}",
                 "s": "{sm}/{sd}/{sy} – {em}/{ed}/{ey}"
             },
             "c11": {
                 "f": "{sd} de {sm} – {ed} de {em} de {ey}",
                 "l": "{sd} de {sm} – {ed} de {em} de {ey}",
-                "m": "{sm}/{sd}/{sy} – {em}/{ed}/{ey}",
+                "m": "{sm}/{sd} – {em}/{ed}/{ey}",
                 "s": "{sm}/{sd}/{sy} – {em}/{ed}/{ey}"
             },
             "c12": {

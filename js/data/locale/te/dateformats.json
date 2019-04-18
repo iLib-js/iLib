@@ -102,8 +102,8 @@
         },
         "range": {
             "c00": {
-                "f": "{sd}, {sm} {sy} {st}కి – {et}",
-                "l": "{sd} {sm}, {sy} {st}కి – {et}",
+                "f": "{sd}, {sm} {sy} {st}కి – {et}కి",
+                "l": "{sd} {sm}, {sy} {st}కి – {et}కి",
                 "m": "{sd} {sm}, {sy} {st} – {et}",
                 "s": "{sd}-{sm}-{sy} {st} – {et}"
             },
