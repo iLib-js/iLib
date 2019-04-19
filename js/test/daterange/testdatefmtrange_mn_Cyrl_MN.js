@@ -56,7 +56,7 @@ module.exports.testdatefmtrange_mn_Cyrl_MN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "2011-12-31, 13:45 – 14:30");
+        test.equal(fmt.format(start, end), '2011.12.31 13:45 – 14:30');
         test.done();
     },
     testDateRngFmtMNRangeinDayMedium: function(test) {
@@ -82,7 +82,7 @@ module.exports.testdatefmtrange_mn_Cyrl_MN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "2011 12-р сар 31 13:45 – 14:30");
+        test.equal(fmt.format(start, end), '2011 оны 12-р сарын 31 13:45 – 14:30');
         test.done();
     },
     testDateRngFmtMNRangeinDayLong: function(test) {
@@ -108,7 +108,7 @@ module.exports.testdatefmtrange_mn_Cyrl_MN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "2011оны Арван хоёрдугаар сарсарын 31өдөр 13:45 – 14:30");
+        test.equal(fmt.format(start, end), '2011.12.31 13:45 – 14:30');
         test.done();
     },
     testDateRngFmtMNRangeinDayFull: function(test) {
@@ -134,7 +134,7 @@ module.exports.testdatefmtrange_mn_Cyrl_MN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "2011 оны 12 сарын 31 13:45 – 14:30");
+        test.equal(fmt.format(start, end), '2011.12.31 13:45 – 14:30');
         test.done();
     },
     
@@ -161,7 +161,7 @@ module.exports.testdatefmtrange_mn_Cyrl_MN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "2011-12-30, 13:45 – 2011-12-31, 14:30");
+        test.equal(fmt.format(start, end), '2011.12.30 13:45 – 2011.12.31 14:30');
         test.done();
     },
     testDateRngFmtMNRangeNextDayMedium: function(test) {
@@ -187,7 +187,7 @@ module.exports.testdatefmtrange_mn_Cyrl_MN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "2011 12-р сар 30 13:45 – 2011 12-р сар 31 14:30");
+        test.equal(fmt.format(start, end), '2011 оны 12-р сарын 30 13:45 – 2011 оны 12-р сарын 31 14:30');
         test.done();
     },
     testDateRngFmtMNRangeNextDayLong: function(test) {
@@ -213,7 +213,7 @@ module.exports.testdatefmtrange_mn_Cyrl_MN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "2011оны Арван хоёрдугаар сарсарын 30өдөр 13:45 – 2011оны Арван хоёрдугаар сарсарын 31өдөр 14:30");
+        test.equal(fmt.format(start, end), '2011.12.30 13:45 – 2011.12.31 14:30');
         test.done();
     },
     testDateRngFmtMNRangeNextDayFull: function(test) {
@@ -239,7 +239,7 @@ module.exports.testdatefmtrange_mn_Cyrl_MN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "2011 оны 12 сарын 30 13:45 – 2011 оны 12 сарын 31 14:30");
+        test.equal(fmt.format(start, end), '2011.12.30 13:45 – 2011.12.31 14:30');
         test.done();
     },
     
@@ -266,7 +266,7 @@ module.exports.testdatefmtrange_mn_Cyrl_MN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "2011-12-20 – 31");
+        test.equal(fmt.format(start, end), '2011.12.20 – 31');
         test.done();
     },
     testDateRngFmtMNRangeMultiDayMedium: function(test) {
@@ -292,7 +292,7 @@ module.exports.testdatefmtrange_mn_Cyrl_MN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "2011 12-р сар 20 – 31");
+        test.equal(fmt.format(start, end), '2011 оны 12-р сарын 20 – 31');
         test.done();
     },
     testDateRngFmtMNRangeMultiDayLong: function(test) {
@@ -318,7 +318,7 @@ module.exports.testdatefmtrange_mn_Cyrl_MN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "2011оны Арван хоёрдугаар сарсарын 20өдөр – 31");
+        test.equal(fmt.format(start, end), '2011.12.20 – 31');
         test.done();
     },
     testDateRngFmtMNRangeMultiDayFull: function(test) {
@@ -344,7 +344,7 @@ module.exports.testdatefmtrange_mn_Cyrl_MN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "2011 оны 12 сарын 20 – 31");
+        test.equal(fmt.format(start, end), '2011.12.20 – 31');
         test.done();
     },
     
@@ -371,7 +371,7 @@ module.exports.testdatefmtrange_mn_Cyrl_MN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "2011-11-20 – 2011-12-31");
+        test.equal(fmt.format(start, end), '2011.11.20 – 2011.12.31');
         test.done();
     },
     testDateRngFmtMNRangeNextMonthMedium: function(test) {
@@ -397,7 +397,7 @@ module.exports.testdatefmtrange_mn_Cyrl_MN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "2011 11-р сар 20 – 2011 12-р сар 31");
+        test.equal(fmt.format(start, end), '2011 оны 11-р сарын 20 – 2011 оны 12-р сарын 31');
         test.done();
     },
     testDateRngFmtMNRangeNextMonthLong: function(test) {
@@ -423,7 +423,7 @@ module.exports.testdatefmtrange_mn_Cyrl_MN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "2011оны Арван нэгдүгээр сарсарын 20өдөр – Арван хоёрдугаар сарсарын 31өдөр");
+        test.equal(fmt.format(start, end), '2011.11.20 – 12.31');
         test.done();
     },
     testDateRngFmtMNRangeNextMonthFull: function(test) {
@@ -449,7 +449,7 @@ module.exports.testdatefmtrange_mn_Cyrl_MN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "2011 оны 11 сарын 20 – 12 сарын 31");
+        test.equal(fmt.format(start, end), '2011.11.20 – 12.31');
         test.done();
     },
     
@@ -476,7 +476,7 @@ module.exports.testdatefmtrange_mn_Cyrl_MN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "2011-11-20 – 2012-01-31");
+        test.equal(fmt.format(start, end), '2011.11.20 – 2012.01.31');
         test.done();
     },
     testDateRngFmtMNRangeNextYearMedium: function(test) {
@@ -502,7 +502,7 @@ module.exports.testdatefmtrange_mn_Cyrl_MN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "2011 11-р сар 20 – 2012 1-р сар 31");
+        test.equal(fmt.format(start, end), '2011 оны 11-р сарын 20 – 2012 оны 1-р сарын 31');
         test.done();
     },
     testDateRngFmtMNRangeNextYearLong: function(test) {
@@ -528,7 +528,7 @@ module.exports.testdatefmtrange_mn_Cyrl_MN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "2011оны Арван нэгдүгээр сарсарын 20өдөр – 2012оны Нэгдүгээр сарсарын 31өдөр");
+        test.equal(fmt.format(start, end), '2011.11.20 – 2012.01.31');
         test.done();
     },
     testDateRngFmtMNRangeNextYearFull: function(test) {
@@ -554,7 +554,7 @@ module.exports.testdatefmtrange_mn_Cyrl_MN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "2011 оны 11 сарын 20 – 2012 оны 01 сарын 31");
+        test.equal(fmt.format(start, end), '2011.11.20 – 2012.01.31');
         test.done();
     },
     
@@ -581,7 +581,7 @@ module.exports.testdatefmtrange_mn_Cyrl_MN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "2011-11 – 2014-01");
+        test.equal(fmt.format(start, end), '2011.11 – 2014.01');
         test.done();
     },
     testDateRngFmtMNRangeMultiYearMedium: function(test) {
@@ -607,7 +607,7 @@ module.exports.testdatefmtrange_mn_Cyrl_MN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "2011 11-р сар – 2014 1-р сар");
+        test.equal(fmt.format(start, end), '2011 оны 11-р сарын – 2014 оны 1-р сарын');
         test.done();
     },
     testDateRngFmtMNRangeMultiYearLong: function(test) {
@@ -633,7 +633,7 @@ module.exports.testdatefmtrange_mn_Cyrl_MN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "2011оны Арван нэгдүгээр сар – 2014оны Нэгдүгээр сар");
+        test.equal(fmt.format(start, end), '2011.11 – 2014.01');
         test.done();
     },
     testDateRngFmtMNRangeMultiYearFull: function(test) {
@@ -659,7 +659,7 @@ module.exports.testdatefmtrange_mn_Cyrl_MN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "2011 оны 11 – 2014 оны 01");
+        test.equal(fmt.format(start, end), '2011.11 – 2014.01');
         test.done();
     },
     testDateRngFmtMNManyYearsFull: function(test) {
