@@ -160,5 +160,13 @@
     "#{num}d ago": "#{num}天前",
     "#{num}w ago": "#{num}周前",
     "#{num}mo ago": "#{num}个月前",
-    "#{num}y ago": "#{num}年前"
+    "#{num}y ago": "#{num}年前",
+    "separatorFull": "",
+    "finalSeparatorFull": "",
+    "separatorLong": "",
+    "finalSeparatorLong": "",
+    "separatorMedium": "",
+    "finalSeparatorMedium": "",
+    "separatorShort": "",
+    "finalSeparatorShort": ""
 }

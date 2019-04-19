@@ -158,5 +158,7 @@
     "separatorLong": " ",
     "finalSeparatorLong": " ",
     "separatorMedium": " ",
-    "finalSeparatorMedium": " "
+    "finalSeparatorMedium": " ",
+    "separatorShort": "",
+    "finalSeparatorShort": ""
 }
