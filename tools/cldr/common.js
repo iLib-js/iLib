@@ -715,7 +715,7 @@ exports.prune = function prune(parent, child) {
 				//if (prop !== child[prop]) {
 					//ret[prop] = child[prop];
 				//}
-			} else if (!parent || (parent[prop] !== child[prop] && child[prop].toString().length > 0)) {
+			} else if (!parent || (parent[prop] !== child[prop] && child[prop].toString().length !== undefined)) {
 				ret[prop] = child[prop];
 			}
 		}
