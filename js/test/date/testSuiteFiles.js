@@ -28,6 +28,7 @@ module.exports.files = [
     "testDayOfWeek.js",
     "testMeridiems.js",
     "testMonthTranslation.js",
+    "testWeekdayTranslation.js",
     "testdatefmt_af_NA.js",
     "testdatefmt_af_ZA.js",
     "testdatefmt_am_ET.js",
@@ -68,7 +69,7 @@ module.exports.files = [
     "testdatefmt_km_KH.js",
     "testdatefmt_kn_IN.js",
     "testdatefmt_ko_KR.js",
-    "testdatefmt_ku_Arab_IQ.js",
+    //"testdatefmt_ku_Arab_IQ.js",
     "testdatefmt_lt_LT.js",
     "testdatefmt_lv_LV.js",
     "testdatefmt_mk_MK.js",
@@ -102,7 +103,5 @@ module.exports.files = [
     "testdatefmt_vi_VN.js",
     "testdatefmt_zh_CN.js",
     "testdatefmt_zh_Hant_HK.js",
-    "testdatefmt_zh_Hant_TW.js",
-    "testDayOfWeek.js",
-    "testWeekdayTranslation.js"
+    "testdatefmt_zh_Hant_TW.js"
 ];
