@@ -142,8 +142,10 @@ ilib._getPlatform = function () {
             ilib._platform = "nodejs";
         } else if (typeof(Qt) !== 'undefined') {
             ilib._platform = "qt";
+        } else if (typeof(PalmSystem) !== 'undefined') {
+            ilib._platform = (typeof(window) !== 'undefined') ? "webos-webapp" : "webos";
         } else if (typeof(window) !== 'undefined') {
-            ilib._platform = (typeof(PalmSystem) !== 'undefined') ? "webos" : "browser";
+            ilib._platform = "browser";
         } else {
             ilib._platform = "unknown";
         }
@@ -317,6 +319,7 @@ ilib.getLocale = function () {
                     }
                 }
                 break;
+            case 'webos-webapp':
             case 'webos':
                 // webOS
                 if (typeof(PalmSystem.locales) !== 'undefined' &&
@@ -412,6 +415,7 @@ ilib.getTimeZone = function() {
                     ilib.tz = navigator.timezone;
                 }
                 break;
+            case 'webos-webapp':
             case 'webos':
                 // running in webkit on webOS
                 if (PalmSystem.timezone && PalmSystem.timezone.length > 0) {
