@@ -3245,11 +3245,7 @@ module.exports.testdurfmt2 = {
 
         test.done();
     },
-    /*
-    * Regarding ku-IQ test, Better not to update. CLDR provides latin value instead arabic.
-    * Just test current iLib data.
-    */
-    /*testDurFmt_ku_IQ: function(test) {
+    testDurFmt_ku_IQ: function(test) {
         test.expect(16);
         // 1 2
         for (var i=0; i<4; i++) {
@@ -3283,7 +3279,7 @@ module.exports.testdurfmt2 = {
         test.equal(clockformatted_2[3], '‏2ک 2خ 2چ' );
 
         test.done();
-    },*/
+    },
     testDurFmt_lt_LT: function(test) {
         test.expect(18);
         // 21 9 11

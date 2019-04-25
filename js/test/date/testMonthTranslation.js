@@ -3291,7 +3291,7 @@ module.exports.testmonthtranslation = {
         test.done();
     },
     testMonthTranslate_ku_IQ: function(test) {
-        test.expect(12);
+        test.expect(24);
 
         // full, long: MMMM
         // medium: MMM
@@ -3314,8 +3314,6 @@ module.exports.testmonthtranslation = {
         test.equal(value[10], "تشرینی دووەم");
         test.equal(value[11], "کانونی یەکەم");
 
-/*      Re-test after dateformat.json is updated.
-
         for (i=0; i < 12; i++) {
             fmt[i] = new DateFmt({locale:"ku-IQ", date:"m", length: "medium", useNative:false, timezone:"local"});
             value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
@@ -3332,7 +3330,7 @@ module.exports.testmonthtranslation = {
         test.equal(value[9], "تشرینی یەکەم");
         test.equal(value[10], "تشرینی دووەم");
         test.equal(value[11], "کانونی یەکەم");
-  */
+
         test.done();
     },
     testMonthTranslate_lt_LT: function(test) {

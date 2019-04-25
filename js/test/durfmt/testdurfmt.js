@@ -5058,7 +5058,7 @@ module.exports.testdurfmt = {
         test.equal(duration.toString(), "1년 1개월 1주 1일 1시간 1분 1초 1밀리초");
         test.done();
     },
-/*
+
     testDurFmtKUFormatShortDefaultStyle: function(test) {
         test.expect(2);
         var fmt = new DurationFmt({
@@ -5076,7 +5076,7 @@ module.exports.testdurfmt = {
             minute: 1,
             second: 1
         });
-        test.equal(duration.toString(), "‏1س 1م 1ﻪـ 1ر 1ک 1خ 1چ");
+        test.equal(duration.toString(), '‏١س ١م ١ﻪـ ١ر ١ک ١خ ١چ');
         test.done();
     },
 
@@ -5098,7 +5098,7 @@ module.exports.testdurfmt = {
             minute: 1,
             second: 1
         });
-        test.equal(duration.toString(), "‏1س 1م 1ﻪـ 1ر 1ک 1خ 1چ");
+        test.equal(duration.toString(), '‏١س ١م ١ﻪـ ١ر ١ک ١خ ١چ');
 
         test.done();
     },
@@ -5121,7 +5121,7 @@ module.exports.testdurfmt = {
             minute: 1,
             second: 1
         });
-        test.equal(duration.toString(), "‏1س 1م 1ﻪـ 1ر 01:01:01");
+        test.equal(duration.toString(), '‏١س ١م ١ﻪـ ١ر ‏١:٠١:٠١');
         test.done();
     },
 
@@ -5142,7 +5142,7 @@ module.exports.testdurfmt = {
             minute: 1,
             second: 1
         });
-        test.equal(duration.toString(), "‏1س 1م 1ﻪـ 1ر 1ک 1خ 1چ");
+        test.equal(duration.toString(), '‏١س ١م ١ﻪـ ١ر ١ک ١خ ١چ');
         test.done();
     },
 
@@ -5163,7 +5163,7 @@ module.exports.testdurfmt = {
             minute: 1,
             second: 1
         });
-        test.equal(duration.toString(), "‏1 ساڵ 1 مانگ 1 هەفتە 1 رۆژ 1 کاتژ 1 خول 1 چرک");
+        test.equal(duration.toString(), '‏١ ساڵ ١ مانگ ١ هەفتە ١ رۆژ ١ کاتژ ١ خول ١ چرک');
         test.done();
     },
 
@@ -5184,10 +5184,10 @@ module.exports.testdurfmt = {
             minute: 1,
             second: 1
         });
-        test.equal(duration.toString(), "‏1 ساڵ, 1 مانگ, 1 هەفتە, 1 رۆژ, 1 کاتژمێر, 1 خولەک,  1 چرکە");
+        test.equal(duration.toString(), '‏١ ساڵ, ١ مانگ, ١ هەفتە, ١ رۆژ, ١ کاتژمێر, ١ خولەک,  ١ چرکە');
         test.done();
     },
-*/
+
     //test cases for lt-LT
 
     testDurFmtLTFormatShortDefaultStyle: function(test) {
