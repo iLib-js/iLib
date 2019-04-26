@@ -153,7 +153,7 @@
     "julian": "gregorian",
     "thaisolar": "gregorian",
     "persian": "gregorian",
-    "persian–algo": "gregorian",
+    "persian-algo": "gregorian",
     "han": "gregorian",
     "ethiopic": {
         "order": {
