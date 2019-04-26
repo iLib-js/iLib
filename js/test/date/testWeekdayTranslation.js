@@ -3723,8 +3723,8 @@ module.exports.testWeekdayTranslation = {
         // short: narrow
 
         for (i=0; i < 7; i++) {
-            fmt[i] = new DateFmt({locale:"fa-AF", date:"w", length: "full", useNative:false, timezone:"local"});
-            value[i] = fmt[i].format(DateFactory({year: 2015, month: 8, day:i+2, type:"persian-algo"}));
+            fmt[i] = new DateFmt({locale:"fa-AF", date:"w", length: "full", useNative:false, timezone: "Etc/UTC"});
+            value[i] = fmt[i].format(DateFactory({year: 2015, month: 8, day:i+2, type:"persian-algo", timezone: "Etc/UTC"}));
         }
         test.equal(value[0], "یکشنبه");
         test.equal(value[1], "دوشنبه");
@@ -3735,8 +3735,8 @@ module.exports.testWeekdayTranslation = {
         test.equal(value[6], "شنبه");
 
         for (i=0; i < 7; i++) {
-            fmt[i] = new DateFmt({locale:"fa-AF", date:"w", length: "long", useNative:false, timezone:"local"});
-            value[i] = fmt[i].format(DateFactory({year: 2015, month: 8, day:i+2, type:"persian-algo"}));
+            fmt[i] = new DateFmt({locale:"fa-AF", date:"w", length: "long", useNative:false, timezone: "Etc/UTC"});
+            value[i] = fmt[i].format(DateFactory({year: 2015, month: 8, day:i+2, type:"persian-algo", timezone: "Etc/UTC"}));
         }
         test.equal(value[0], "یکشنبه");
         test.equal(value[1], "دوشنبه");
@@ -3747,8 +3747,8 @@ module.exports.testWeekdayTranslation = {
         test.equal(value[6], "شنبه");
 
         for (i=0; i < 7; i++) {
-            fmt[i] = new DateFmt({locale:"fa-AF", date:"w", length: "medium", useNative:false, timezone:"local"});
-            value[i] = fmt[i].format(DateFactory({year: 2015, month: 8, day:i+2, type:"persian-algo"}));
+            fmt[i] = new DateFmt({locale:"fa-AF", date:"w", length: "medium", useNative:false, timezone: "Etc/UTC"});
+            value[i] = fmt[i].format(DateFactory({year: 2015, month: 8, day:i+2, type:"persian-algo", timezone: "Etc/UTC"}));
         }
         test.equal(value[0], "۱ش");
         test.equal(value[1], "۲ش");
@@ -3759,8 +3759,8 @@ module.exports.testWeekdayTranslation = {
         test.equal(value[6], "ش");
 
         for (i=0; i < 7; i++) {
-            fmt[i] = new DateFmt({locale:"fa-AF", date:"w", length: "short", useNative:false, timezone:"local"});
-            value[i] = fmt[i].format(DateFactory({year: 2015, month: 8, day:i+2, type:"persian-algo"}));
+            fmt[i] = new DateFmt({locale:"fa-AF", date:"w", length: "short", useNative:false, timezone: "Etc/UTC"});
+            value[i] = fmt[i].format(DateFactory({year: 2015, month: 8, day:i+2, type:"persian-algo", timezone: "Etc/UTC"}));
         }
         test.equal(value[0], "ی");
         test.equal(value[1], "د");
@@ -3781,8 +3781,8 @@ module.exports.testWeekdayTranslation = {
         // short: narrow
 
         for (i=0; i < 7; i++) {
-            fmt[i] = new DateFmt({locale:"fa-IR", date:"w", length: "full", useNative:false, timezone:"local"});
-            value[i] = fmt[i].format(DateFactory({year: 2015, month: 8, day:i+2, type:"persian-algo"}));
+            fmt[i] = new DateFmt({locale:"fa-IR", date:"w", length: "full", useNative:false, timezone: "Etc/UTC"});
+            value[i] = fmt[i].format(DateFactory({year: 2015, month: 8, day:i+2, type:"persian-algo", timezone: "Etc/UTC"}));
         }
         test.equal(value[0], "یکشنبه");
         test.equal(value[1], "دوشنبه");
@@ -3793,8 +3793,8 @@ module.exports.testWeekdayTranslation = {
         test.equal(value[6], "شنبه");
 
         for (i=0; i < 7; i++) {
-            fmt[i] = new DateFmt({locale:"fa-IR", date:"w", length: "long", useNative:false, timezone:"local"});
-            value[i] = fmt[i].format(DateFactory({year: 2015, month: 8, day:i+2, type:"persian-algo"}));
+            fmt[i] = new DateFmt({locale:"fa-IR", date:"w", length: "long", useNative:false, timezone: "Etc/UTC"});
+            value[i] = fmt[i].format(DateFactory({year: 2015, month: 8, day:i+2, type:"persian-algo", timezone: "Etc/UTC"}));
         }
         test.equal(value[0], "یکشنبه");
         test.equal(value[1], "دوشنبه");
@@ -3805,8 +3805,8 @@ module.exports.testWeekdayTranslation = {
         test.equal(value[6], "شنبه");
 
         for (i=0; i < 7; i++) {
-            fmt[i] = new DateFmt({locale:"fa-IR", date:"w", length: "medium", useNative:false, timezone:"local"});
-            value[i] = fmt[i].format(DateFactory({year: 2015, month: 8, day:i+2, type:"persian-algo"}));
+            fmt[i] = new DateFmt({locale:"fa-IR", date:"w", length: "medium", useNative:false, timezone: "Etc/UTC"});
+            value[i] = fmt[i].format(DateFactory({year: 2015, month: 8, day:i+2, type:"persian-algo", timezone: "Etc/UTC"}));
         }
         test.equal(value[0], "۱ش");
         test.equal(value[1], "۲ش");
@@ -3817,8 +3817,8 @@ module.exports.testWeekdayTranslation = {
         test.equal(value[6], "ش");
 
         for (i=0; i < 7; i++) {
-            fmt[i] = new DateFmt({locale:"fa-IR", date:"w", length: "short", useNative:false, timezone:"local"});
-            value[i] = fmt[i].format(DateFactory({year: 2015, month: 8, day:i+2, type:"persian-algo"}));
+            fmt[i] = new DateFmt({locale:"fa-IR", date:"w", length: "short", useNative:false, timezone: "Etc/UTC"});
+            value[i] = fmt[i].format(DateFactory({year: 2015, month: 8, day:i+2, type:"persian-algo", timezone: "Etc/UTC"}));
         }
 
         test.equal(value[0], "ی");
