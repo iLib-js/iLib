@@ -3716,11 +3716,23 @@ module.exports.testWeekdayTranslation = {
         test.done();
     },
     testWeekdayTranslation_fa_AF: function(test) {
-        test.expect(28);
+        test.expect(35);
 
         // full -> wide, long -> abbreviate
         // medium: short
         // short: narrow
+        for (i=0; i < 7; i++) {
+            fmt[i] = new DateFmt({locale:"fa-AF", date:"w", length: "full", useNative:false, timezone: "Etc/UTC"});
+            value[i] = fmt[i].format(DateFactory({year: 2015, month: 8, day:i+1, type:"persian", timezone: "Etc/UTC"}));
+        }
+        test.equal(value[0], "یکشنبه");
+        test.equal(value[1], "دوشنبه");
+        test.equal(value[2], "سه‌شنبه");
+        test.equal(value[3], "چهارشنبه");
+        test.equal(value[4], "پنجشنبه");
+        test.equal(value[5], "جمعه");
+        test.equal(value[6], "شنبه");
+
 
         for (i=0; i < 7; i++) {
             fmt[i] = new DateFmt({locale:"fa-AF", date:"w", length: "full", useNative:false, timezone: "Etc/UTC"});
@@ -3774,11 +3786,29 @@ module.exports.testWeekdayTranslation = {
     },
     
     testWeekdayTranslation_fa_IR: function(test) {
-        test.expect(28);
+        test.expect(35);
 
         // full -> wide, long -> abbreviate
         // medium: short
         // short: narrow
+
+        for (i=0; i < 7; i++) {
+            fmt[i] = new DateFmt({locale:"fa-IR", date:"w", length: "full", useNative:false, timezone: "Etc/UTC"});
+            value[i] = fmt[i].format(DateFactory({year: 2015, month: 8, day:i+1, type:"persian", timezone: "Etc/UTC"}));
+        }
+        test.equal(value[0], "یکشنبه");
+        test.equal(value[1], "دوشنبه");
+        test.equal(value[2], "سه‌شنبه");
+        test.equal(value[3], "چهارشنبه");
+        test.equal(value[4], "پنجشنبه");
+        test.equal(value[5], "جمعه");
+        test.equal(value[6], "شنبه");
+
+        /*
+        * Between calendar 'persian' and 'persian-algo' They do calculate differently some times.
+        * The leap year structure is different.  Sometimes, these two calendars differ by a day, and sometimes not.
+        * It will take over 10,500 years before the two calendars are permanently off by one whole day.
+        */
 
         for (i=0; i < 7; i++) {
             fmt[i] = new DateFmt({locale:"fa-IR", date:"w", length: "full", useNative:false, timezone: "Etc/UTC"});
