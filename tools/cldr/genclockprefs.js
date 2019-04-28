@@ -164,8 +164,15 @@ function getClockPrefs(locale) {
     };
     // always read the gregorian calendar settings to make it easy, because none of the locales use different
     // time formats depending on the calendar
-    var greg = require(path.join("cldr-data/main", locale, "ca-gregorian.json"));
-    var timeformat = greg.main[locale].dates.calendars.gregorian.timeFormats.short;
+    var greg, timeformat;
+    if (locale.substring(0,2) === "ku") {
+        greg = require(path.join("cldr-data/main", "ckb", "ca-gregorian.json"));
+        timeformat = greg.main["ckb"].dates.calendars.gregorian.timeFormats.short;
+    } else {
+        greg = require(path.join("cldr-data/main", locale, "ca-gregorian.json"));
+        timeformat = greg.main[locale].dates.calendars.gregorian.timeFormats.short;
+    }
+
     if (timeformat.indexOf("H") != -1) {
         clockprefs["clock"] = "24";
     } else if (timeformat.indexOf("h") != -1) {
