@@ -30,7 +30,7 @@ var makeDirs = common.makeDirs;
 var cldrData = require("cldr-data");
 
 function usage() {
-    console.log("Usage: genunits [-h] locale_data_dir\n" +
+    console.log("Usage: genunits [-h] [ locale_data_dir ]\n" +
             "Generate unit formats from the CLDR data.\n\n" +
             "-h or --help\n" +
             "  this help\n" +
@@ -39,7 +39,6 @@ function usage() {
     process.exit(1);
 }
 
-var cldrDirName;
 var localeDirName;
 
 process.argv.forEach(function (val, index, array) {
@@ -48,12 +47,7 @@ process.argv.forEach(function (val, index, array) {
     }
 });
 
-if (process.argv.length < 3) {
-    util.error('Error: not enough arguments');
-    usage();
-}
-
-localeDirName = process.argv[2];
+localeDirName = process.argv[2] || "tmp";
 
 console.log("genunits - tool to generate the json data about unit formats from the CLDR data.\n" +
         "Copyright (c) 2013, 2018 JEDLSoft\n");
@@ -61,8 +55,7 @@ console.log("genunits - tool to generate the json data about unit formats from t
 console.log("locale dir: " + localeDirName + "\n");
 
 if (!fs.existsSync(localeDirName)) {
-    util.error("Could not access locale data directory " + localeDirName);
-    usage();
+    common.makeDirs(localeDirName);
 }
 
 function calcLocalePath(language, script, region) {
@@ -81,7 +74,7 @@ function calcLocalePath(language, script, region) {
 
 function writeUnits(data, language, script, region) {
     var path = calcLocalePath(language, script, region);
-    console.log("Writing " + path);
+    console.log("Writing " + path + "unitfmt.json");
     makeDirs(path);
     fs.writeFileSync(path + "unitfmt.json", JSON.stringify(data, true, 4), "utf-8");
 }
