@@ -1,0 +1,8 @@
+{
+    "scripts": [
+        "Cyrl",
+        "Grek",
+        "Latn"
+    ],
+    "generated": true
+}

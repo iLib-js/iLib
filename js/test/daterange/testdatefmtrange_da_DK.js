@@ -56,7 +56,7 @@ module.exports.testdatefmtrange_da_DK = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "31/12/2011 13.45 – 14.30");
+        test.equal(fmt.format(start, end), '31.12.2011 13.45 – 14.30');
         test.done();
     },
     testDateRngFmtDKRangeInDayMedium: function(test) {
@@ -161,7 +161,7 @@ module.exports.testdatefmtrange_da_DK = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "30/12/2011 13.45 – 31/12/2011 14.30");
+        test.equal(fmt.format(start, end), '30.12.2011 13.45 – 31.12.2011 14.30');
         test.done();
     },
     testDateRngFmtDKRangeNextDayMedium: function(test) {
@@ -266,7 +266,7 @@ module.exports.testdatefmtrange_da_DK = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "20 – 31/12/2011");
+        test.equal(fmt.format(start, end), '20 – 31.12.2011');
         test.done();
     },
     testDateRngFmtDKRangeMultiDayMedium: function(test) {
@@ -371,7 +371,7 @@ module.exports.testdatefmtrange_da_DK = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "20/11 – 31/12/2011");
+        test.equal(fmt.format(start, end), '20.11 – 31.12.2011');
         test.done();
     },
     testDateRngFmtDKRangeNextMonthMedium: function(test) {
@@ -476,7 +476,7 @@ module.exports.testdatefmtrange_da_DK = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "20/11/2011 – 31/01/2012");
+        test.equal(fmt.format(start, end), '20.11.2011 – 31.01.2012');
         test.done();
     },
     testDateRngFmtDKRangeNextYearMedium: function(test) {
@@ -581,7 +581,7 @@ module.exports.testdatefmtrange_da_DK = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "11/2011 – 01/2014");
+        test.equal(fmt.format(start, end), '11.2011 – 01.2014');
         test.done();
     },
     testDateRngFmtDKRangeMultiYearMedium: function(test) {

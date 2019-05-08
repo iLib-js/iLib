@@ -3,13 +3,20 @@ Release Notes for Version 14
 
 Build 005
 -------
-Published as version 14.1.3
+Published as version 14.2.0
+
+New Features:
+* Updated all locale data (except region names) to CLDR 34 and Unicode Character Database 12.0
+    * Region names were not updated because CLDR changed the codes assigned to each region, which
+    would break anything that was depending on these names to be stable. We'll have to figure
+    out some work-around for this later.
 
 Bug Fixes:
 * Updated the Taiwan area code of PhoneNumber according to [Wikipedia](https://en.wikipedia.org/wiki/Telephone_numbers_in_Taiwan).
 * Changed 3 digit iddprefix PhoneNumber format of zh-Hant-TW as corresponding local office feedback.
 * Rollback `js/ilib-web.js` file to support pure Web Application.
 * Added a new platform return type as 'webos-webapp'. If platform type is `webos-webapp`, The iLib won't load any loader as default.
+
 
 Build 004
 -------

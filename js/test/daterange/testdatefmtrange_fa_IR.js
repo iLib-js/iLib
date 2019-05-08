@@ -826,7 +826,7 @@ module.exports.testdatefmtrange_fa_IR = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "‏۱۳۹۳‏/۱۲‏/۳۱،‏ ‏۱۳:۴۵ – ‏۱۴:۳۰");
+        test.equal(fmt.format(start, end), '‏۱۳۹۳/۱۲/۳۱،‏ ‏۱۳:۴۵ – ‏۱۴:۳۰');
         test.done();
     },
     testDateRngFmtPersRangeinDayMedium_fa_IR: function(test) {
@@ -947,7 +947,7 @@ module.exports.testdatefmtrange_fa_IR = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "‏۱۳۹۳‏/۱۲‏/۳۰،‏ ‏۱۳:۴۵ – ‏۱۳۹۳‏/۱۲‏/۳۱،‏ ‏۱۴:۳۰");
+        test.equal(fmt.format(start, end), '‏۱۳۹۳/۱۲/۳۰،‏ ‏۱۳:۴۵ – ‏۱۳۹۳/۱۲/۳۱،‏ ‏۱۴:۳۰');
         test.done();
     },
     testDateRngFmtPersRangeNextDayMedium_fa_IR: function(test) {
@@ -1037,7 +1037,7 @@ module.exports.testdatefmtrange_fa_IR = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "‏۱۳۹۳ اسفند ۳۰، ساعت ‏۱۳:۴۵ – ۱۳۹۳ اسفند ۳۱، ساعت ‏۱۴:۳۰");
+        test.equal(fmt.format(start, end), '‏۱۳۹۳ اسفند ۳۰، ساعت ‏۱۳:۴۵ – ‏۱۳۹۳ اسفند ۳۱، ساعت ‏۱۴:۳۰');
         test.done();
     },
     
@@ -1068,7 +1068,7 @@ module.exports.testdatefmtrange_fa_IR = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "‏۱۳۹۳‏/۱۲‏/۲۰ – ۳۱");
+        test.equal(fmt.format(start, end), '‏۱۳۹۳/۱۲/۲۰ – ۳۱');
         test.done();
     },
     testDateRngFmtPersRangeMultiDayMedium_fa_IR: function(test) {
@@ -1189,7 +1189,7 @@ module.exports.testdatefmtrange_fa_IR = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "‏۱۳۹۳‏/۱۱‏/۲۰ – ‏۱۳۹۳‏/۱۲‏/۳۱");
+        test.equal(fmt.format(start, end), '‏۱۳۹۳/۱۱/۲۰ – ‏۱۳۹۳/۱۲/۳۱');
         test.done();
     },
     testDateRngFmtPersRangeNextMonthMedium_fa_IR: function(test) {
@@ -1279,7 +1279,7 @@ module.exports.testdatefmtrange_fa_IR = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "‏۱۳۹۳ بهمن ۲۰ – اسفند ۳۱");
+        test.equal(fmt.format(start, end), '‏۱۳۹۳ بهمن ۲۰ – ‏اسفند ۳۱');
         test.done();
     },
     
@@ -1310,7 +1310,7 @@ module.exports.testdatefmtrange_fa_IR = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "‏۱۳۹۳‏/۱۱‏/۲۰ – ‏۱۳۹۴‏/۱‏/۳۱");
+        test.equal(fmt.format(start, end), '‏۱۳۹۳/۱۱/۲۰ – ‏۱۳۹۴/۱/۳۱');
         test.done();
     },
     testDateRngFmtPersRangeNextYearMedium_fa_IR: function(test) {
@@ -1400,7 +1400,7 @@ module.exports.testdatefmtrange_fa_IR = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "‏۱۳۹۳ بهمن ۲۰ – ۱۳۹۴ فروردین ۳۱");
+        test.equal(fmt.format(start, end), '‏۱۳۹۳ بهمن ۲۰ – ‏۱۳۹۴ فروردین ۳۱');
         test.done();
     },
     
@@ -1431,7 +1431,7 @@ module.exports.testdatefmtrange_fa_IR = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "‏۱۳۹۳‏/۱۱ – ‏۱۳۹۶‏/۱");
+        test.equal(fmt.format(start, end), '‏۱۳۹۳/۱۱ – ‏۱۳۹۶/۱');
         test.done();
     },
     testDateRngFmtPersRangeMultiYearMedium_fa_IR: function(test) {
@@ -1461,7 +1461,7 @@ module.exports.testdatefmtrange_fa_IR = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "‏بهمن ۱۳۹۳ – فروردین ۱۳۹۶");
+        test.equal(fmt.format(start, end), 'بهمن ۱۳۹۳ – فروردین ۱۳۹۶');
         test.done();
     },
     testDateRngFmtPersRangeMultiYearLong_fa_IR: function(test) {
@@ -1491,7 +1491,7 @@ module.exports.testdatefmtrange_fa_IR = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "‏بهمن ۱۳۹۳ – فروردین ۱۳۹۶");
+        test.equal(fmt.format(start, end), 'بهمن ۱۳۹۳ – فروردین ۱۳۹۶');
         test.done();
     },
     testDateRngFmtPersRangeMultiYearFull_fa_IR: function(test) {
@@ -1521,7 +1521,7 @@ module.exports.testdatefmtrange_fa_IR = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "‏۱۳۹۳ بهمن – ۱۳۹۶ فروردین");
+        test.equal(fmt.format(start, end), '‏۱۳۹۳ بهمن – ‏۱۳۹۶ فروردین');
         test.done();
     },
     testDateRngFmtPersManyYearsFull_fa_IR: function(test) {

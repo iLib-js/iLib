@@ -60,7 +60,7 @@ module.exports.testdatefmt_mn_Cyrl_MN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "2011-09-29");
+        test.equal(fmt.format(date), "2011.09.29");
         test.done();
     },
 
@@ -79,7 +79,7 @@ module.exports.testdatefmt_mn_Cyrl_MN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "2011 9-р сар 29");
+        test.equal(fmt.format(date), "2011 оны 9-р сарын 29");
         test.done();
     },
 
@@ -98,7 +98,7 @@ module.exports.testdatefmt_mn_Cyrl_MN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "2011оны Есдүгээр сарсарын 29өдөр");
+        test.equal(fmt.format(date), "2011.09.29");
         test.done();
     },
 
@@ -117,7 +117,7 @@ module.exports.testdatefmt_mn_Cyrl_MN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "2011 оны 09 сарын 29");
+        test.equal(fmt.format(date), "2011.09.29");
         test.done();
     },
 
@@ -212,7 +212,7 @@ module.exports.testdatefmt_mn_Cyrl_MN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "2011-09-29, 13:45");
+        test.equal(fmt.format(date), "2011.09.29 13:45");
         test.done();
     },
 
@@ -231,7 +231,7 @@ module.exports.testdatefmt_mn_Cyrl_MN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "2011 9-р сар 29 13:45");
+        test.equal(fmt.format(date), "2011 оны 9-р сарын 29 13:45");
         test.done();
     },
 
@@ -250,7 +250,7 @@ module.exports.testdatefmt_mn_Cyrl_MN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "2011оны Есдүгээр сарсарын 29өдөр 13:45");
+        test.equal(fmt.format(date), "2011.09.29 13:45");
         test.done();
     },
 
@@ -269,7 +269,7 @@ module.exports.testdatefmt_mn_Cyrl_MN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "2011 оны 09 сарын 29 13:45");
+        test.equal(fmt.format(date), "2011.09.29 13:45");
         test.done();
     },
 
@@ -481,7 +481,7 @@ module.exports.testdatefmt_mn_Cyrl_MN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "2011-09-29");
+        test.equal(fmt.format(date), "2011.09.29");
         test.done();
     },
 
@@ -519,7 +519,7 @@ module.exports.testdatefmt_mn_Cyrl_MN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "2011-09-29, 13:45");
+        test.equal(fmt.format(date), "2011.09.29 13:45");
         test.done();
     },
 
@@ -558,7 +558,7 @@ module.exports.testdatefmt_mn_Cyrl_MN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "09");
+        test.equal(fmt.format(date), "9");
         test.done();
     },
 
@@ -615,7 +615,7 @@ module.exports.testdatefmt_mn_Cyrl_MN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "09-29");
+        test.equal(fmt.format(date), "09.29");
         test.done();
     },
 
@@ -634,7 +634,7 @@ module.exports.testdatefmt_mn_Cyrl_MN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "2011-09");
+        test.equal(fmt.format(date), "2011.09");
         test.done();
     },
 
@@ -653,7 +653,7 @@ module.exports.testdatefmt_mn_Cyrl_MN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "2011-09-29");
+        test.equal(fmt.format(date), "2011.09.29");
         test.done();
     },
 
@@ -672,7 +672,7 @@ module.exports.testdatefmt_mn_Cyrl_MN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "Пү, 09-29");
+        test.equal(fmt.format(date), "09.29, Пү");
         test.done();
     },
 
@@ -691,7 +691,7 @@ module.exports.testdatefmt_mn_Cyrl_MN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "Пү, 2011-09-29");
+        test.equal(fmt.format(date), "2011.09.29, Пү");
         test.done();
     },
 
@@ -730,7 +730,7 @@ module.exports.testdatefmt_mn_Cyrl_MN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "09");
+        test.equal(fmt.format(date), "9");
         test.done();
     },
 
@@ -768,7 +768,7 @@ module.exports.testdatefmt_mn_Cyrl_MN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "09 сарын 29");
+        test.equal(fmt.format(date), "09.29");
         test.done();
     },
 
@@ -787,7 +787,7 @@ module.exports.testdatefmt_mn_Cyrl_MN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "2011 оны 09");
+        test.equal(fmt.format(date), "2011.09");
         test.done();
     },
 
@@ -806,7 +806,7 @@ module.exports.testdatefmt_mn_Cyrl_MN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "2011 оны 09 сарын 29");
+        test.equal(fmt.format(date), "2011.09.29");
         test.done();
     },
 
@@ -825,7 +825,7 @@ module.exports.testdatefmt_mn_Cyrl_MN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "пүрэв, 09 сарын 29");
+        test.equal(fmt.format(date), "09.29, пүрэв");
         test.done();
     },
 
@@ -844,7 +844,7 @@ module.exports.testdatefmt_mn_Cyrl_MN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "пүрэв, 2011 оны 09 сарын 29");
+        test.equal(fmt.format(date), "2011.09.29, пүрэв");
         test.done();
     },
 
@@ -1002,7 +1002,7 @@ module.exports.testdatefmt_mn_Cyrl_MN = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "13:45 +08/+09");
+        test.equal(fmt.format(date), "13:45 (+08/+09)");
         test.done();
     },
 
@@ -1026,7 +1026,7 @@ module.exports.testdatefmt_mn_Cyrl_MN = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "13:45 +08/+09");
+        test.equal(fmt.format(date), "13:45 (+08/+09)");
         test.done();
     },
 
@@ -1069,7 +1069,7 @@ module.exports.testdatefmt_mn_Cyrl_MN = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "13:45:37 +08/+09");
+        test.equal(fmt.format(date), "13:45:37 (+08/+09)");
         test.done();
     },
 
@@ -1093,7 +1093,7 @@ module.exports.testdatefmt_mn_Cyrl_MN = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "13:45:37 +08/+09");
+        test.equal(fmt.format(date), "13:45:37 (+08/+09)");
         test.done();
     },
 
@@ -1252,7 +1252,7 @@ module.exports.testdatefmt_mn_Cyrl_MN = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "13:45 +08/+09");
+        test.equal(fmt.format(date), "13:45 (+08/+09)");
         test.done();
     },
 
@@ -1277,7 +1277,7 @@ module.exports.testdatefmt_mn_Cyrl_MN = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "13:45 +08/+09");
+        test.equal(fmt.format(date), "13:45 (+08/+09)");
         test.done();
     },
 
@@ -1321,7 +1321,7 @@ module.exports.testdatefmt_mn_Cyrl_MN = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "13:45:37 +08/+09");
+        test.equal(fmt.format(date), "13:45:37 (+08/+09)");
         test.done();
     },
 
@@ -1346,7 +1346,7 @@ module.exports.testdatefmt_mn_Cyrl_MN = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "13:45:37 +08/+09");
+        test.equal(fmt.format(date), "13:45:37 (+08/+09)");
         test.done();
     },
 
@@ -1371,7 +1371,7 @@ module.exports.testdatefmt_mn_Cyrl_MN = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "13:45:37 +08/+09");
+        test.equal(fmt.format(date), "13:45:37 (+08/+09)");
         test.done();
     },
 
@@ -1626,7 +1626,7 @@ module.exports.testdatefmt_mn_Cyrl_MN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.formatRelative(reference, date), "9 7х-ийн дараа");
+        test.equal(fmt.formatRelative(reference, date), "9 долоо хоногийн дараа");
         test.done();
     },
     testDateFmtFormatRelativeWithinQuarterBefore_mn_Cyrl_MN: function(test) {
@@ -1654,7 +1654,7 @@ module.exports.testdatefmt_mn_Cyrl_MN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.formatRelative(reference, date), "9 7х-ийн өмнө");
+        test.equal(fmt.formatRelative(reference, date), "9 долоо хоногийн өмнө");
         test.done();
     },
 

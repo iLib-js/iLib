@@ -503,7 +503,7 @@ module.exports.testdatefmtrange_kn_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "ನವೆಂ 20, 2011 – ಜನ 31, 2012");
+        test.equal(fmt.format(start, end), 'ನವೆಂ 20, 2011 – ಜನವರಿ 31, 2012');
         test.done();
     },
     testDateRngFmtRangeNextYearLong_kn_IN: function(test) {
@@ -608,7 +608,7 @@ module.exports.testdatefmtrange_kn_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "ನವೆಂ, 2011 – ಜನ, 2014");
+        test.equal(fmt.format(start, end), 'ನವೆಂ, 2011 – ಜನವರಿ, 2014');
         test.done();
     },
     testDateRngFmtRangeMultiYearLong_kn_IN: function(test) {

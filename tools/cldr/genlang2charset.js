@@ -54,6 +54,10 @@ if (process.argv[2]) {
     localeDir = process.argv[2];
 }
 
+//trick to get ilib to load the right data
+ilib._load._exists(localeDir, "localematch.json");
+
+
 console.log("genlang2charset - generate language to charset mapping data.\n" +
         "Copyright (c) 2018 JEDLSoft\n");
 
@@ -79,7 +83,7 @@ var map = {};
 files.filter(function(file) {
     return file && file.endsWith(".json");
 }).forEach(function(file) {
-    var data = require(path.join(charsetsDir, file));
+    var data = JSON.parse(fs.readFileSync(path.join(charsetsDir, file), "utf-8"));
     var charset = path.basename(file, ".json");
     if (data && data.locales) {
         data.locales.forEach(function(locale) {

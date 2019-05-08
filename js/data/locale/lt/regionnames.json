@@ -337,12 +337,12 @@
             "code": "KB"
         },
         {
-            "name": "Lezhë",
-            "code": "LE"
-        },
-        {
             "name": "Ležės apskritis",
             "code": "08"
+        },
+        {
+            "name": "Lezhë",
+            "code": "LE"
         },
         {
             "name": "Librazhd",
@@ -393,12 +393,12 @@
             "code": "SH"
         },
         {
-            "name": "Skrapar",
-            "code": "SK"
-        },
-        {
             "name": "Škoderio apskritis",
             "code": "10"
+        },
+        {
+            "name": "Skrapar",
+            "code": "SK"
         },
         {
             "name": "Tepelenë",
@@ -455,12 +455,12 @@
             "code": "LO"
         },
         {
-            "name": "Siuniko sritis",
-            "code": "SU"
-        },
-        {
             "name": "Širako sritis",
             "code": "SH"
+        },
+        {
+            "name": "Siuniko sritis",
+            "code": "SU"
         },
         {
             "name": "Tavušo sritis",
@@ -793,6 +793,10 @@
             "code": "QOB"
         },
         {
+            "name": "Goranboy",
+            "code": "GOR"
+        },
+        {
             "name": "Goychay",
             "code": "GOY"
         },
@@ -801,20 +805,8 @@
             "code": "GYG"
         },
         {
-            "name": "Goranboy",
-            "code": "GOR"
-        },
-        {
             "name": "Hajigabul",
             "code": "HAC"
-        },
-        {
-            "name": "Yardymli",
-            "code": "YAR"
-        },
-        {
-            "name": "Yevlakh District",
-            "code": "YEV"
         },
         {
             "name": "Imishli",
@@ -961,6 +953,10 @@
             "code": "SMX"
         },
         {
+            "name": "Šekis",
+            "code": "SA"
+        },
+        {
             "name": "Shabran",
             "code": "SBN"
         },
@@ -993,16 +989,12 @@
             "code": "SIY"
         },
         {
-            "name": "Sumgajitas",
-            "code": "SM"
-        },
-        {
-            "name": "Šekis",
-            "code": "SA"
-        },
-        {
             "name": "Širvanas",
             "code": "SR"
+        },
+        {
+            "name": "Sumgajitas",
+            "code": "SM"
         },
         {
             "name": "Tartar",
@@ -1015,6 +1007,14 @@
         {
             "name": "Ujar",
             "code": "UCA"
+        },
+        {
+            "name": "Yardymli",
+            "code": "YAR"
+        },
+        {
+            "name": "Yevlakh District",
+            "code": "YEV"
         },
         {
             "name": "Zangilan",
@@ -1175,16 +1175,16 @@
             "code": "12"
         },
         {
+            "name": "Čitagongo sritis",
+            "code": "B"
+        },
+        {
             "name": "Comilla",
             "code": "08"
         },
         {
             "name": "Cox’s Bazar",
             "code": "11"
-        },
-        {
-            "name": "Čitagongo sritis",
-            "code": "B"
         },
         {
             "name": "Dakos sritis",
@@ -1295,6 +1295,10 @@
             "code": "39"
         },
         {
+            "name": "Munšigandžas",
+            "code": "35"
+        },
+        {
             "name": "Mymensingh",
             "code": "34"
         },
@@ -1303,20 +1307,16 @@
             "code": "H"
         },
         {
-            "name": "Munšigandžas",
-            "code": "35"
-        },
-        {
             "name": "Naogaon",
             "code": "48"
         },
         {
-            "name": "Narayanganj",
-            "code": "40"
-        },
-        {
             "name": "Narail",
             "code": "43"
+        },
+        {
+            "name": "Narayanganj",
+            "code": "40"
         },
         {
             "name": "Narsingdi",
@@ -1387,16 +1387,16 @@
             "code": "58"
         },
         {
+            "name": "Šerpuras",
+            "code": "57"
+        },
+        {
             "name": "Shariatpur",
             "code": "62"
         },
         {
             "name": "Silhato sritis",
             "code": "G"
-        },
-        {
-            "name": "Sylhet",
-            "code": "60"
         },
         {
             "name": "Sirajganj",
@@ -1407,8 +1407,8 @@
             "code": "61"
         },
         {
-            "name": "Šerpuras",
-            "code": "57"
+            "name": "Sylhet",
+            "code": "60"
         },
         {
             "name": "Tangail",
@@ -1531,14 +1531,6 @@
             "code": "HOU"
         },
         {
-            "name": "Yagha",
-            "code": "YAG"
-        },
-        {
-            "name": "Yatenga",
-            "code": "YAT"
-        },
-        {
             "name": "Ioba",
             "code": "IOB"
         },
@@ -1599,12 +1591,12 @@
             "code": "NAO"
         },
         {
-            "name": "Nayala",
-            "code": "NAY"
-        },
-        {
             "name": "Namentenga",
             "code": "NAM"
+        },
+        {
+            "name": "Nayala",
+            "code": "NAY"
         },
         {
             "name": "Noumbiel",
@@ -1651,6 +1643,10 @@
             "code": "SEN"
         },
         {
+            "name": "Šiaurės regionas",
+            "code": "10"
+        },
+        {
             "name": "Sissili",
             "code": "SIS"
         },
@@ -1661,10 +1657,6 @@
         {
             "name": "Sourou",
             "code": "SOR"
-        },
-        {
-            "name": "Šiaurės regionas",
-            "code": "10"
         },
         {
             "name": "Tapoa",
@@ -1693,6 +1685,14 @@
         {
             "name": "Vidurio Vakarų regionas",
             "code": "06"
+        },
+        {
+            "name": "Yagha",
+            "code": "YAG"
+        },
+        {
+            "name": "Yatenga",
+            "code": "YAT"
         },
         {
             "name": "Ziro",
@@ -2217,12 +2217,12 @@
             "code": "CI"
         },
         {
-            "name": "Mayaguana",
-            "code": "MG"
-        },
-        {
             "name": "Mangrove Cay",
             "code": "MC"
+        },
+        {
+            "name": "Mayaguana",
+            "code": "MG"
         },
         {
             "name": "Moore’s Island",
@@ -2409,16 +2409,16 @@
             "code": "SP"
         },
         {
-            "name": "Sowa Town",
-            "code": "ST"
-        },
-        {
             "name": "Šiaurės rytų rajonas",
             "code": "NE"
         },
         {
             "name": "Šiaurės vakarų rajonas",
             "code": "NW"
+        },
+        {
+            "name": "Sowa Town",
+            "code": "ST"
         }
     ],
     "BY": [
@@ -2629,12 +2629,12 @@
             "code": "SA"
         },
         {
-            "name": "Sud-Ubangi",
-            "code": "SU"
-        },
-        {
             "name": "Šiaurės Kivu",
             "code": "NK"
+        },
+        {
+            "name": "Sud-Ubangi",
+            "code": "SU"
         },
         {
             "name": "Tanganyika",
@@ -2839,12 +2839,12 @@
             "code": "OW"
         },
         {
-            "name": "Sankt Galeno kantonas",
-            "code": "SG"
-        },
-        {
             "name": "Šafhauzeno kantonas",
             "code": "SH"
+        },
+        {
+            "name": "Sankt Galeno kantonas",
+            "code": "SG"
         },
         {
             "name": "Švico kantonas",
@@ -2871,12 +2871,12 @@
             "code": "VD"
         },
         {
-            "name": "Zoloturno kantonas",
-            "code": "SO"
-        },
-        {
             "name": "Ženevos kantonas",
             "code": "GE"
+        },
+        {
+            "name": "Zoloturno kantonas",
+            "code": "SO"
         }
     ],
     "CI": [
@@ -2953,16 +2953,16 @@
             "code": "12"
         },
         {
+            "name": "Montagnes",
+            "code": "MG"
+        },
+        {
             "name": "Moyen-Cavally",
             "code": "19"
         },
         {
             "name": "Moyen-Comoé",
             "code": "05"
-        },
-        {
-            "name": "Montagnes",
-            "code": "MG"
         },
         {
             "name": "N’zi-Comoé",
@@ -3361,12 +3361,12 @@
             "code": "CES"
         },
         {
-            "name": "Sukrės departamentas",
-            "code": "SUC"
-        },
-        {
             "name": "Šiaurės Santandero departamentas",
             "code": "NSA"
+        },
+        {
+            "name": "Sukrės departamentas",
+            "code": "SUC"
         },
         {
             "name": "Tolimos departamentas",
@@ -3639,18 +3639,6 @@
             "code": "801"
         },
         {
-            "name": "Chebo rajonas",
-            "code": "411"
-        },
-        {
-            "name": "Chomutov",
-            "code": "422"
-        },
-        {
-            "name": "Chrudimo rajonas",
-            "code": "531"
-        },
-        {
             "name": "Česka Lypos rajonas",
             "code": "511"
         },
@@ -3661,6 +3649,18 @@
         {
             "name": "Český Krumlov",
             "code": "312"
+        },
+        {
+            "name": "Chebo rajonas",
+            "code": "411"
+        },
+        {
+            "name": "Chomutov",
+            "code": "422"
+        },
+        {
+            "name": "Chrudimo rajonas",
+            "code": "531"
         },
         {
             "name": "Děčín",
@@ -3779,12 +3779,12 @@
             "code": "523"
         },
         {
-            "name": "Nymburk",
-            "code": "208"
-        },
-        {
             "name": "Novy Jičyno rajonas",
             "code": "804"
+        },
+        {
+            "name": "Nymburk",
+            "code": "208"
         },
         {
             "name": "Olomouco kraštas",
@@ -3983,12 +3983,12 @@
             "code": "316"
         },
         {
-            "name": "Svitavų rajonas",
-            "code": "533"
-        },
-        {
             "name": "Šumperko rajonas",
             "code": "715"
+        },
+        {
+            "name": "Svitavų rajonas",
+            "code": "533"
         },
         {
             "name": "Tábor",
@@ -4031,16 +4031,20 @@
             "code": "20"
         },
         {
-            "name": "Vysočinos kraštas",
-            "code": "63"
+            "name": "Vsetín",
+            "code": "723"
         },
         {
             "name": "Vyškov",
             "code": "646"
         },
         {
-            "name": "Vsetín",
-            "code": "723"
+            "name": "Vysočinos kraštas",
+            "code": "63"
+        },
+        {
+            "name": "Žďár nad Sázavou",
+            "code": "635"
         },
         {
             "name": "Zlín",
@@ -4053,10 +4057,6 @@
         {
             "name": "Znojmo",
             "code": "647"
-        },
-        {
-            "name": "Žďár nad Sázavou",
-            "code": "635"
         }
     ],
     "DE": [
@@ -4833,20 +4833,20 @@
             "code": "BA"
         },
         {
-            "name": "Sohago muchafaza",
-            "code": "SHG"
-        },
-        {
-            "name": "Sueco muchafaza",
-            "code": "SUZ"
-        },
-        {
             "name": "Šarkijos muchafaza",
             "code": "SHR"
         },
         {
             "name": "Šiaurės Sinajaus muchafaza",
             "code": "SIN"
+        },
+        {
+            "name": "Sohago muchafaza",
+            "code": "SHG"
+        },
+        {
+            "name": "Sueco muchafaza",
+            "code": "SUZ"
         }
     ],
     "ER": [
@@ -5331,12 +5331,12 @@
             "code": "12"
         },
         {
-            "name": "Rytinis Fidžio padalinys",
-            "code": "E"
-        },
-        {
             "name": "Rotuma",
             "code": "R"
+        },
+        {
+            "name": "Rytinis Fidžio padalinys",
+            "code": "E"
         },
         {
             "name": "Serua",
@@ -5361,16 +5361,16 @@
             "code": "TRK"
         },
         {
-            "name": "Yap",
-            "code": "YAP"
-        },
-        {
             "name": "Kosraė",
             "code": "KSA"
         },
         {
             "name": "Pohnpei",
             "code": "PNI"
+        },
+        {
+            "name": "Yap",
+            "code": "YAP"
         }
     ],
     "FR": [
@@ -5651,14 +5651,6 @@
             "code": "PDL"
         },
         {
-            "name": "Mayotte",
-            "code": "MAY"
-        },
-        {
-            "name": "Mayotte²",
-            "code": "YT"
-        },
-        {
             "name": "Majenas",
             "code": "53"
         },
@@ -5677,6 +5669,14 @@
         {
             "name": "Martinique",
             "code": "MQ"
+        },
+        {
+            "name": "Mayotte",
+            "code": "MAY"
+        },
+        {
+            "name": "Mayotte²",
+            "code": "YT"
         },
         {
             "name": "Menas ir Luara",
@@ -5743,12 +5743,12 @@
             "code": "06"
         },
         {
-            "name": "Pajūrio Sena",
-            "code": "76"
-        },
-        {
             "name": "Pajūrio Šaranta",
             "code": "17"
+        },
+        {
+            "name": "Pajūrio Sena",
+            "code": "76"
         },
         {
             "name": "Paryžius",
@@ -5771,16 +5771,20 @@
             "code": "RE"
         },
         {
-            "name": "Rytų Pirėnai",
-            "code": "66"
-        },
-        {
             "name": "Rona",
             "code": "69"
         },
         {
             "name": "Ronos delta",
             "code": "13"
+        },
+        {
+            "name": "Rytų Pirėnai",
+            "code": "66"
+        },
+        {
+            "name": "Šaranta",
+            "code": "16"
         },
         {
             "name": "Sartas",
@@ -5797,6 +5801,14 @@
         {
             "name": "Sena-Sen Deni",
             "code": "93"
+        },
+        {
+            "name": "Šeras",
+            "code": "18"
+        },
+        {
+            "name": "Šiaurė",
+            "code": "59"
         },
         {
             "name": "Soma",
@@ -5817,18 +5829,6 @@
         {
             "name": "St. Pierre & Miquelon",
             "code": "PM"
-        },
-        {
-            "name": "Šaranta",
-            "code": "16"
-        },
-        {
-            "name": "Šeras",
-            "code": "18"
-        },
-        {
-            "name": "Šiaurė",
-            "code": "59"
         },
         {
             "name": "Tarnas",
@@ -6479,16 +6479,16 @@
             "code": "MIK"
         },
         {
-            "name": "Moyle",
-            "code": "MYL"
-        },
-        {
             "name": "Monmutšyras",
             "code": "MON"
         },
         {
             "name": "Morėjus",
             "code": "MRY"
+        },
+        {
+            "name": "Moyle",
+            "code": "MYL"
         },
         {
             "name": "Newham",
@@ -6639,6 +6639,22 @@
             "code": "RIC"
         },
         {
+            "name": "Rochdale",
+            "code": "RCH"
+        },
+        {
+            "name": "Ronda-Kinonas-Tafas",
+            "code": "RCT"
+        },
+        {
+            "name": "Rotherham",
+            "code": "ROT"
+        },
+        {
+            "name": "Rutlandas",
+            "code": "RUT"
+        },
+        {
             "name": "Rytų Danbartonšyras",
             "code": "EDU"
         },
@@ -6663,22 +6679,6 @@
             "code": "ESX"
         },
         {
-            "name": "Rochdale",
-            "code": "RCH"
-        },
-        {
-            "name": "Ronda-Kinonas-Tafas",
-            "code": "RCT"
-        },
-        {
-            "name": "Rotherham",
-            "code": "ROT"
-        },
-        {
-            "name": "Rutlandas",
-            "code": "RUT"
-        },
-        {
             "name": "Safolkas",
             "code": "SFK"
         },
@@ -6699,12 +6699,44 @@
             "code": "STH"
         },
         {
+            "name": "Šefildas",
+            "code": "SHF"
+        },
+        {
             "name": "Sefton",
             "code": "SFT"
         },
         {
+            "name": "Šetlando salos",
+            "code": "ZET"
+        },
+        {
+            "name": "Šiaurės Airija",
+            "code": "NIR"
+        },
+        {
+            "name": "Šiaurės Eršyras",
+            "code": "NAY"
+        },
+        {
+            "name": "Šiaurės Jorkšyras",
+            "code": "NYK"
+        },
+        {
+            "name": "Šiaurės Lanarkšyras",
+            "code": "NLK"
+        },
+        {
             "name": "Silio salos",
             "code": "IOS"
+        },
+        {
+            "name": "Škotija",
+            "code": "SCT"
+        },
+        {
+            "name": "Škotų Sienos",
+            "code": "SCB"
         },
         {
             "name": "Slau",
@@ -6729,6 +6761,10 @@
         {
             "name": "Southwark",
             "code": "SWK"
+        },
+        {
+            "name": "Šropšyras",
+            "code": "SHR"
         },
         {
             "name": "Stafordšyras",
@@ -6773,42 +6809,6 @@
         {
             "name": "Swindon",
             "code": "SWD"
-        },
-        {
-            "name": "Šefildas",
-            "code": "SHF"
-        },
-        {
-            "name": "Šetlando salos",
-            "code": "ZET"
-        },
-        {
-            "name": "Šiaurės Airija",
-            "code": "NIR"
-        },
-        {
-            "name": "Šiaurės Eršyras",
-            "code": "NAY"
-        },
-        {
-            "name": "Šiaurės Jorkšyras",
-            "code": "NYK"
-        },
-        {
-            "name": "Šiaurės Lanarkšyras",
-            "code": "NLK"
-        },
-        {
-            "name": "Škotija",
-            "code": "SCT"
-        },
-        {
-            "name": "Škotų Sienos",
-            "code": "SCB"
-        },
-        {
-            "name": "Šropšyras",
-            "code": "SHR"
         },
         {
             "name": "Tameside",
@@ -7147,10 +7147,6 @@
             "code": "GU"
         },
         {
-            "name": "Yomou",
-            "code": "YO"
-        },
-        {
             "name": "Kankan",
             "code": "KA"
         },
@@ -7249,6 +7245,10 @@
         {
             "name": "Tougué",
             "code": "TO"
+        },
+        {
+            "name": "Yomou",
+            "code": "YO"
         }
     ],
     "GQ": [
@@ -7347,10 +7347,6 @@
             "code": "85"
         },
         {
-            "name": "Cyclades",
-            "code": "82"
-        },
-        {
             "name": "Corfu",
             "code": "22"
         },
@@ -7361,6 +7357,10 @@
         {
             "name": "Crete",
             "code": "M"
+        },
+        {
+            "name": "Cyclades",
+            "code": "82"
         },
         {
             "name": "Dodecanese",
@@ -8029,12 +8029,12 @@
             "code": "NK"
         },
         {
-            "name": "Nyredhaza",
-            "code": "NY"
-        },
-        {
             "name": "Nogradas",
             "code": "NO"
+        },
+        {
+            "name": "Nyredhaza",
+            "code": "NY"
         },
         {
             "name": "Pėčas",
@@ -8047,6 +8047,10 @@
         {
             "name": "Sabolčas-Satmaras-Beregas",
             "code": "SZ"
+        },
+        {
+            "name": "Šalgotarjanas",
+            "code": "ST"
         },
         {
             "name": "Segedas",
@@ -8067,10 +8071,6 @@
         {
             "name": "Sombathėjus",
             "code": "SH"
-        },
-        {
-            "name": "Šalgotarjanas",
-            "code": "ST"
         },
         {
             "name": "Šomodis",
@@ -8227,14 +8227,6 @@
             "code": "NT"
         },
         {
-            "name": "Sulavesis",
-            "code": "SL"
-        },
-        {
-            "name": "Sumatra",
-            "code": "SM"
-        },
-        {
             "name": "Šiaurės Molukai",
             "code": "MU"
         },
@@ -8245,6 +8237,14 @@
         {
             "name": "Šiaurės Sumatra",
             "code": "SU"
+        },
+        {
+            "name": "Sulavesis",
+            "code": "SL"
+        },
+        {
+            "name": "Sumatra",
+            "code": "SM"
         },
         {
             "name": "Vakarų Java",
@@ -10231,12 +10231,12 @@
             "code": "KAR"
         },
         {
-            "name": "Kyzylordos sritis",
-            "code": "KZY"
-        },
-        {
             "name": "Kostanajaus sritis",
             "code": "KUS"
+        },
+        {
+            "name": "Kyzylordos sritis",
+            "code": "KZY"
         },
         {
             "name": "Mangyštau sritis",
@@ -10887,10 +10887,6 @@
             "code": "40"
         },
         {
-            "name": "Skuodo rajono savivaldybė",
-            "code": "48"
-        },
-        {
             "name": "Šakių rajono savivaldybė",
             "code": "41"
         },
@@ -10921,6 +10917,10 @@
         {
             "name": "Širvintų rajono savivaldybė",
             "code": "47"
+        },
+        {
+            "name": "Skuodo rajono savivaldybė",
+            "code": "48"
         },
         {
             "name": "Švenčionių rajono savivaldybė",
@@ -11283,16 +11283,8 @@
             "code": "LPX"
         },
         {
-            "name": "Lygatnės savivaldybė",
-            "code": "055"
-        },
-        {
             "name": "Limbažių savivaldybė",
             "code": "054"
-        },
-        {
-            "name": "Lyvanų savivaldybė",
-            "code": "056"
         },
         {
             "name": "Lubanos savivaldybė",
@@ -11301,6 +11293,14 @@
         {
             "name": "Ludzos savivaldybė",
             "code": "058"
+        },
+        {
+            "name": "Lygatnės savivaldybė",
+            "code": "055"
+        },
+        {
+            "name": "Lyvanų savivaldybė",
+            "code": "056"
         },
         {
             "name": "Maduonos savivaldybė",
@@ -11375,10 +11375,6 @@
             "code": "078"
         },
         {
-            "name": "Ryga",
-            "code": "RIX"
-        },
-        {
             "name": "Rucavos savivaldybė",
             "code": "081"
         },
@@ -11401,6 +11397,10 @@
         {
             "name": "Ruopažų savivaldybė",
             "code": "080"
+        },
+        {
+            "name": "Ryga",
+            "code": "RIX"
         },
         {
             "name": "Salacgryvos savivaldybė",
@@ -11431,12 +11431,12 @@
             "code": "091"
         },
         {
-            "name": "Skryverų savivaldybė",
-            "code": "092"
-        },
-        {
             "name": "Skrundos savivaldybė",
             "code": "093"
+        },
+        {
+            "name": "Skryverų savivaldybė",
+            "code": "092"
         },
         {
             "name": "Smiltenės savivaldybė",
@@ -11851,6 +11851,10 @@
             "code": "SAL"
         },
         {
+            "name": "Šauijos-Urdigo regionas",
+            "code": "09"
+        },
+        {
             "name": "Sefrou",
             "code": "SEF"
         },
@@ -11865,10 +11869,6 @@
         {
             "name": "Suso-Masa-Dra regionas",
             "code": "13"
-        },
-        {
-            "name": "Šauijos-Urdigo regionas",
-            "code": "09"
         },
         {
             "name": "Tadlo-Azilalo regionas",
@@ -12123,20 +12123,20 @@
             "code": "SI"
         },
         {
-            "name": "Sorokos rajonas",
-            "code": "SO"
-        },
-        {
-            "name": "Strešenio rajonas",
-            "code": "ST"
-        },
-        {
             "name": "Šoldeneščio rajonas",
             "code": "SD"
         },
         {
+            "name": "Sorokos rajonas",
+            "code": "SO"
+        },
+        {
             "name": "Štefan Vodės rajonas",
             "code": "SV"
+        },
+        {
+            "name": "Strešenio rajonas",
+            "code": "ST"
         },
         {
             "name": "Taraklijos rajonas",
@@ -13927,12 +13927,12 @@
             "code": "AN"
         },
         {
-            "name": "Bayelsa",
-            "code": "BY"
-        },
-        {
             "name": "Bauchi",
             "code": "BA"
+        },
+        {
+            "name": "Bayelsa",
+            "code": "BY"
         },
         {
             "name": "Benue",
@@ -13979,10 +13979,6 @@
             "code": "IM"
         },
         {
-            "name": "Yobe",
-            "code": "YO"
-        },
-        {
             "name": "Jigawa",
             "code": "JI"
         },
@@ -14027,16 +14023,16 @@
             "code": "OG"
         },
         {
-            "name": "Oyo",
-            "code": "OY"
-        },
-        {
             "name": "Ondo",
             "code": "ON"
         },
         {
             "name": "Osun",
             "code": "OS"
+        },
+        {
+            "name": "Oyo",
+            "code": "OY"
         },
         {
             "name": "Plateau",
@@ -14053,6 +14049,10 @@
         {
             "name": "Taraba",
             "code": "TA"
+        },
+        {
+            "name": "Yobe",
+            "code": "YO"
         },
         {
             "name": "Zamfara",
@@ -14179,20 +14179,20 @@
             "code": "BQ2"
         },
         {
-            "name": "Sint Eustatijus",
-            "code": "BQ3"
-        },
-        {
-            "name": "Sint Maarten",
-            "code": "SX"
-        },
-        {
             "name": "Šiaurės Brabantas",
             "code": "NB"
         },
         {
             "name": "Šiaurės Olandija",
             "code": "NH"
+        },
+        {
+            "name": "Sint Eustatijus",
+            "code": "BQ3"
+        },
+        {
+            "name": "Sint Maarten",
+            "code": "SX"
         },
         {
             "name": "Utrechto provincija",
@@ -15105,16 +15105,16 @@
             "code": "QUI"
         },
         {
-            "name": "Rytų Visajai",
-            "code": "08"
-        },
-        {
             "name": "Rizal",
             "code": "RIZ"
         },
         {
             "name": "Romblon",
             "code": "ROM"
+        },
+        {
+            "name": "Rytų Visajai",
+            "code": "08"
         },
         {
             "name": "Samar",
@@ -15127,6 +15127,10 @@
         {
             "name": "Sebu",
             "code": "CEB"
+        },
+        {
+            "name": "Šiaurinis Mindanao",
+            "code": "10"
         },
         {
             "name": "Siquijor",
@@ -15163,10 +15167,6 @@
         {
             "name": "Surigao del Sur",
             "code": "SUR"
-        },
-        {
-            "name": "Šiaurinis Mindanao",
-            "code": "10"
         },
         {
             "name": "Tarlac",
@@ -15257,12 +15257,12 @@
             "code": "LD"
         },
         {
-            "name": "Mazovijos vaivadija",
-            "code": "MZ"
-        },
-        {
             "name": "Mažosios Lenkijos vaivadija",
             "code": "MA"
+        },
+        {
+            "name": "Mazovijos vaivadija",
+            "code": "MZ"
         },
         {
             "name": "Opolės vaivadija",
@@ -15965,6 +15965,14 @@
             "code": "BU"
         },
         {
+            "name": "Čečėnija",
+            "code": "CE"
+        },
+        {
+            "name": "Čeliabinsko sritis",
+            "code": "CHE"
+        },
+        {
             "name": "Chabarovsko kraštas",
             "code": "KHA"
         },
@@ -15975,14 +15983,6 @@
         {
             "name": "Chantų Mansija",
             "code": "KHM"
-        },
-        {
-            "name": "Čečėnija",
-            "code": "CE"
-        },
-        {
-            "name": "Čeliabinsko sritis",
-            "code": "CHE"
         },
         {
             "name": "Čiukčių autonominė apygarda",
@@ -16177,6 +16177,10 @@
             "code": "SAR"
         },
         {
+            "name": "Šiaurės Osetija",
+            "code": "SE"
+        },
+        {
             "name": "Smolensko sritis",
             "code": "SMO"
         },
@@ -16187,10 +16191,6 @@
         {
             "name": "Sverdlovsko sritis",
             "code": "SVE"
-        },
-        {
-            "name": "Šiaurės Osetija",
-            "code": "SE"
         },
         {
             "name": "Tambovo sritis",
@@ -17677,10 +17677,6 @@
             "name": "Awdal"
         },
         {
-            "code": "BY",
-            "name": "Bay, Somalia"
-        },
-        {
             "code": "BK",
             "name": "Bakool"
         },
@@ -17691,6 +17687,10 @@
         {
             "code": "BR",
             "name": "Bari"
+        },
+        {
+            "code": "BY",
+            "name": "Bay, Somalia"
         },
         {
             "code": "GA",
@@ -18031,12 +18031,12 @@
             "code": "SA"
         },
         {
-            "name": "Silos regionas",
-            "code": "SI"
-        },
-        {
             "name": "Šario–Bagirmio regionas",
             "code": "CB"
+        },
+        {
+            "name": "Silos regionas",
+            "code": "SI"
         },
         {
             "name": "Tandžilės regionas",
@@ -18143,14 +18143,6 @@
             "code": "86"
         },
         {
-            "name": "Yala",
-            "code": "95"
-        },
-        {
-            "name": "Yasothon",
-            "code": "35"
-        },
-        {
             "name": "Kalasin",
             "code": "46"
         },
@@ -18255,16 +18247,16 @@
             "code": "94"
         },
         {
-            "name": "Phayao",
-            "code": "56"
-        },
-        {
             "name": "Phang Nga",
             "code": "82"
         },
         {
             "name": "Phatthalung",
             "code": "93"
+        },
+        {
+            "name": "Phayao",
+            "code": "56"
         },
         {
             "name": "Phetchabun",
@@ -18303,16 +18295,16 @@
             "code": "77"
         },
         {
-            "name": "Rayong",
-            "code": "21"
-        },
-        {
             "name": "Ranong",
             "code": "85"
         },
         {
             "name": "Ratchaburi",
             "code": "70"
+        },
+        {
+            "name": "Rayong",
+            "code": "21"
         },
         {
             "name": "Roi Et",
@@ -18401,6 +18393,14 @@
         {
             "name": "Uttaradit",
             "code": "53"
+        },
+        {
+            "name": "Yala",
+            "code": "95"
+        },
+        {
+            "name": "Yasothon",
+            "code": "35"
         }
     ],
     "TJ": [
@@ -18957,12 +18957,12 @@
             "code": "ARI"
         },
         {
-            "name": "Couva-Tabaquite-Talparo",
-            "code": "CTT"
-        },
-        {
             "name": "Čaguanasas",
             "code": "CHA"
+        },
+        {
+            "name": "Couva-Tabaquite-Talparo",
+            "code": "CTT"
         },
         {
             "name": "Diego Martin",
@@ -19049,6 +19049,10 @@
     ],
     "TW": [
         {
+            "name": "Džanghua apskritis",
+            "code": "CHA"
+        },
+        {
             "name": "Dziaji",
             "code": "CYQ"
         },
@@ -19063,10 +19067,6 @@
         {
             "name": "Dzinmenas",
             "code": "KIN"
-        },
-        {
-            "name": "Džanghua apskritis",
-            "code": "CHA"
         },
         {
             "name": "Gaosiongas",
@@ -19427,10 +19427,6 @@
             "name": "Buhweju"
         },
         {
-            "code": "226",
-            "name": "Buyende"
-        },
-        {
             "code": "117",
             "name": "Buikwe"
         },
@@ -19487,6 +19483,10 @@
             "name": "Buvuma"
         },
         {
+            "code": "226",
+            "name": "Buyende"
+        },
+        {
             "code": "C",
             "name": "Central"
         },
@@ -19523,10 +19523,6 @@
             "name": "Isingiro"
         },
         {
-            "code": "313",
-            "name": "Yumbe"
-        },
-        {
             "code": "204",
             "name": "Jinja"
         },
@@ -19549,10 +19545,6 @@
         {
             "code": "427",
             "name": "Kagadi"
-        },
-        {
-            "code": "112",
-            "name": "Kayunga"
         },
         {
             "code": "428",
@@ -19599,8 +19591,8 @@
             "name": "Katakwi"
         },
         {
-            "code": "123",
-            "name": "Kyankwanzi"
+            "code": "112",
+            "name": "Kayunga"
         },
         {
             "code": "407",
@@ -19615,24 +19607,12 @@
             "name": "Kibuku"
         },
         {
-            "code": "422",
-            "name": "Kyegegwa"
-        },
-        {
-            "code": "415",
-            "name": "Kyenjojo"
-        },
-        {
-            "code": "125",
-            "name": "Kyotera"
+            "code": "419",
+            "name": "Kiruhura"
         },
         {
             "code": "421",
             "name": "Kiryandongo"
-        },
-        {
-            "code": "419",
-            "name": "Kiruhura"
         },
         {
             "code": "408",
@@ -19663,12 +19643,24 @@
             "name": "Kween"
         },
         {
-            "code": "326",
-            "name": "Lamwo"
+            "code": "123",
+            "name": "Kyankwanzi"
         },
         {
-            "code": "114",
-            "name": "Lyantonde"
+            "code": "422",
+            "name": "Kyegegwa"
+        },
+        {
+            "code": "415",
+            "name": "Kyenjojo"
+        },
+        {
+            "code": "125",
+            "name": "Kyotera"
+        },
+        {
+            "code": "326",
+            "name": "Lamwo"
         },
         {
             "code": "307",
@@ -19687,8 +19679,8 @@
             "name": "Lwengo"
         },
         {
-            "code": "214",
-            "name": "Mayuge"
+            "code": "114",
+            "name": "Lyantonde"
         },
         {
             "code": "223",
@@ -19707,6 +19699,10 @@
             "name": "Masindi"
         },
         {
+            "code": "214",
+            "name": "Mayuge"
+        },
+        {
             "code": "209",
             "name": "Mbale"
         },
@@ -19715,20 +19711,20 @@
             "name": "Mbarara"
         },
         {
-            "code": "115",
-            "name": "Mityana"
-        },
-        {
             "code": "423",
             "name": "Mitooma"
         },
         {
-            "code": "309",
-            "name": "Moyo"
+            "code": "115",
+            "name": "Mityana"
         },
         {
             "code": "308",
             "name": "Moroto"
+        },
+        {
+            "code": "309",
+            "name": "Moyo"
         },
         {
             "code": "106",
@@ -19795,12 +19791,12 @@
             "name": "Nwoya"
         },
         {
-            "code": "321",
-            "name": "Oyam"
-        },
-        {
             "code": "329",
             "name": "Otuke"
+        },
+        {
+            "code": "321",
+            "name": "Oyam"
         },
         {
             "code": "312",
@@ -19865,6 +19861,10 @@
         {
             "code": "W",
             "name": "Western"
+        },
+        {
+            "code": "313",
+            "name": "Yumbe"
         },
         {
             "code": "331",
@@ -20263,12 +20263,12 @@
             "code": "SA"
         },
         {
-            "name": "Syrdarjos vilajetas",
-            "code": "SI"
-        },
-        {
             "name": "Surchandarjos vilajetas",
             "code": "SU"
+        },
+        {
+            "name": "Syrdarjos vilajetas",
+            "code": "SI"
         },
         {
             "name": "Taškentas",
@@ -20529,10 +20529,6 @@
             "code": "66"
         },
         {
-            "name": "Yên Bái",
-            "code": "06"
-        },
-        {
             "name": "Kantas",
             "code": "CT"
         },
@@ -20589,12 +20585,12 @@
             "code": "36"
         },
         {
-            "name": "Phú Yên",
-            "code": "32"
-        },
-        {
             "name": "Phú Thọ",
             "code": "68"
+        },
+        {
+            "name": "Phú Yên",
+            "code": "32"
         },
         {
             "name": "Quảng Nam",
@@ -20659,6 +20655,10 @@
         {
             "name": "Vĩnh Phúc",
             "code": "70"
+        },
+        {
+            "name": "Yên Bái",
+            "code": "06"
         }
     ],
     "VU": [

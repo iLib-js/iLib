@@ -1,6 +1,11 @@
 {
     "gregorian": {
-        "order": "{date} {time}",
+        "order": {
+            "f": "{date} {time}కి",
+            "l": "{date} {time}కి",
+            "m": "{date} {time}",
+            "s": "{date} {time}"
+        },
         "date": {
             "dmwy": {
                 "f": "d, MMMM yyyy, EEEE",
@@ -97,26 +102,26 @@
         },
         "range": {
             "c00": {
-                "f": "{sd}, {sm} {sy} {st} – {et}",
-                "l": "{sd} {sm}, {sy} {st} – {et}",
+                "f": "{sd}, {sm} {sy} {st}కి – {et}కి",
+                "l": "{sd} {sm}, {sy} {st}కి – {et}కి",
                 "m": "{sd} {sm}, {sy} {st} – {et}",
                 "s": "{sd}-{sm}-{sy} {st} – {et}"
             },
             "c01": {
-                "f": "{sd}, {sm} {sy} {st} – {ed}, {em} {ey} {et}",
-                "l": "{sd} {sm}, {sy} {st} – {ed} {em}, {ey} {et}",
+                "f": "{sd}, {sm} {sy} {st}కి – {ed}, {em} {ey} {et}కి",
+                "l": "{sd} {sm}, {sy} {st}కి – {ed} {em}, {ey} {et}కి",
                 "m": "{sd} {sm}, {sy} {st} – {ed} {em}, {ey} {et}",
                 "s": "{sd}-{sm}-{sy} {st} – {ed}-{em}-{ey} {et}"
             },
             "c02": {
-                "f": "{sd}, {sm} {sy} {st} – {ed}, {em} {ey} {et}",
-                "l": "{sd} {sm}, {sy} {st} – {ed} {em}, {ey} {et}",
+                "f": "{sd}, {sm} {sy} {st}కి – {ed}, {em} {ey} {et}కి",
+                "l": "{sd} {sm}, {sy} {st}కి – {ed} {em}, {ey} {et}కి",
                 "m": "{sd} {sm}, {sy} {st} – {ed} {em}, {ey} {et}",
                 "s": "{sd}-{sm}-{sy} {st} – {ed}-{em}-{ey} {et}"
             },
             "c03": {
-                "f": "{sd}, {sm} {sy} {st} – {ed}, {em} {ey} {et}",
-                "l": "{sd} {sm}, {sy} {st} – {ed} {em}, {ey} {et}",
+                "f": "{sd}, {sm} {sy} {st}కి – {ed}, {em} {ey} {et}కి",
+                "l": "{sd} {sm}, {sy} {st}కి – {ed} {em}, {ey} {et}కి",
                 "m": "{sd} {sm}, {sy} {st} – {ed} {em}, {ey} {et}",
                 "s": "{sd}-{sm}-{sy} {st} – {ed}-{em}-{ey} {et}"
             },

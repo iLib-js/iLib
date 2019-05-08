@@ -56,7 +56,7 @@ module.exports.testdatefmtrange_bs_Latn_BA = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "31.12.11. 13:45 – 14:30");
+        test.equal(fmt.format(start, end), '31. 12. 2011. 13:45 – 14:30');
         test.done();
     },
     testDateRngFmtBARangeInDayMedium: function(test) {
@@ -82,7 +82,7 @@ module.exports.testdatefmtrange_bs_Latn_BA = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "31. dec. 2011. 13:45 – 14:30");
+        test.equal(fmt.format(start, end), '31. dec 2011. 13:45 – 14:30');
         test.done();
     },
     testDateRngFmtBARangeInDayLong: function(test) {
@@ -161,7 +161,7 @@ module.exports.testdatefmtrange_bs_Latn_BA = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "30.12.11. 13:45 – 31.12.11. 14:30");
+        test.equal(fmt.format(start, end), '30. 12. 2011. 13:45 – 31. 12. 2011. 14:30');
         test.done();
     },
     testDateRngFmtBARangeNextDayMedium: function(test) {
@@ -187,7 +187,7 @@ module.exports.testdatefmtrange_bs_Latn_BA = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "30. dec. 2011. 13:45 – 31. dec. 2011. 14:30");
+        test.equal(fmt.format(start, end), '30. dec 2011. 13:45 – 31. dec 2011. 14:30');
         test.done();
     },
     testDateRngFmtBARangeNextDayLong: function(test) {
@@ -266,7 +266,7 @@ module.exports.testdatefmtrange_bs_Latn_BA = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "20 – 31.12.11.");
+        test.equal(fmt.format(start, end), '20 – 31. 12. 2011.');
         test.done();
     },
     testDateRngFmtBARangeMultiDayMedium: function(test) {
@@ -292,7 +292,7 @@ module.exports.testdatefmtrange_bs_Latn_BA = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "20 – 31. dec. 2011.");
+        test.equal(fmt.format(start, end), '20 – 31. dec 2011.');
         test.done();
     },
     testDateRngFmtBARangeMultiDayLong: function(test) {
@@ -371,7 +371,7 @@ module.exports.testdatefmtrange_bs_Latn_BA = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "20.11 – 31.12.11.");
+        test.equal(fmt.format(start, end), '20. 11 – 31. 12. 2011.');
         test.done();
     },
     testDateRngFmtBARangeNextMonthMedium: function(test) {
@@ -397,7 +397,7 @@ module.exports.testdatefmtrange_bs_Latn_BA = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "20. nov – 31. dec. 2011.");
+        test.equal(fmt.format(start, end), '20. nov – 31. dec 2011.');
         test.done();
     },
     testDateRngFmtBARangeNextMonthLong: function(test) {
@@ -476,7 +476,7 @@ module.exports.testdatefmtrange_bs_Latn_BA = {
             second: 0,
             millisecond: 0
         });           
-        test.equal(fmt.format(start, end), "20.11.11. – 31.1.12.");
+        test.equal(fmt.format(start, end), '20. 11. 2011. – 31. 1. 2012.');
         test.done();
     },
     testDateRngFmtBARangeNextYearMedium: function(test) {
@@ -502,7 +502,7 @@ module.exports.testdatefmtrange_bs_Latn_BA = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "20. nov. 2011. – 31. jan. 2012.");
+        test.equal(fmt.format(start, end), '20. nov 2011. – 31. jan 2012.');
         test.done();
     },
     testDateRngFmtBARangeNextYearLong: function(test) {
@@ -581,7 +581,7 @@ module.exports.testdatefmtrange_bs_Latn_BA = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "11.11. – 1.14.");
+        test.equal(fmt.format(start, end), '11. 2011. – 1. 2014.');
         test.done();
     },
     testDateRngFmtBARangeMultiYearMedium: function(test) {
@@ -607,7 +607,7 @@ module.exports.testdatefmtrange_bs_Latn_BA = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "nov. 2011. – jan. 2014.");
+        test.equal(fmt.format(start, end), 'nov 2011. – jan 2014.');
         test.done();
     },
     testDateRngFmtBARangeMultiYearLong: function(test) {
