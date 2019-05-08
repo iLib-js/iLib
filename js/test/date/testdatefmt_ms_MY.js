@@ -204,7 +204,7 @@ module.exports.testdatefmt_ms_MY = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "29/09/11 1:45 PTG");
+        test.equal(fmt.format(date), "29/09/11, 1:45 PTG");
         test.done();
     },
     
@@ -223,7 +223,7 @@ module.exports.testdatefmt_ms_MY = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "29 Sep 2011 1:45 PTG");
+        test.equal(fmt.format(date), "29 Sep 2011, 1:45 PTG");
         test.done();
     },
     
@@ -492,7 +492,7 @@ module.exports.testdatefmt_ms_MY = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "29/09/11 1:45 PTG");
+        test.equal(fmt.format(date), "29/09/11, 1:45 PTG");
         test.done();
     },
     

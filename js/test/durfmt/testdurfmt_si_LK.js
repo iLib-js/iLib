@@ -47,7 +47,7 @@ module.exports.testdurfmt_si_LK = {
             minute: 1,
             second: 1
         });
-        test.equal(duration.toString(), "ව 1, මා 1, ස 1, දි 1, පැ 1, මි 1, ත 1");
+        test.equal(duration.toString(), 'ව 1, මා 1, ස 1, දි 1, පැය 1, මි 1, ත 1');
         test.done();
     },
     
@@ -69,7 +69,7 @@ module.exports.testdurfmt_si_LK = {
             minute: 1,
             second: 1
         });
-        test.equal(duration.toString(), "ව 1, මා 1, ස 1, දි 1, පැ 1, මි 1, ත 1");
+        test.equal(duration.toString(), 'ව 1, මා 1, ස 1, දි 1, පැය 1, මි 1, ත 1');
         test.done();
     },
     
@@ -112,7 +112,7 @@ module.exports.testdurfmt_si_LK = {
             minute: 1,
             second: 1
         });
-        test.equal(duration.toString(), "ව 1, මා 1, ස 1, දි 1, පැ 1, මි 1, ත 1");
+        test.equal(duration.toString(), 'ව 1, මා 1, ස 1, දි 1, පැය 1, මි 1, ත 1');
         test.done();
     },
     

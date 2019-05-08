@@ -1445,6 +1445,10 @@
             "code": "VOV"
         },
         {
+            "name": "Länsi-Flanderi",
+            "code": "VWV"
+        },
+        {
             "name": "Liègen pronssi",
             "code": "WLG"
         },
@@ -1455,10 +1459,6 @@
         {
             "name": "Luxembourgin lääni",
             "code": "WLX"
-        },
-        {
-            "name": "Länsi-Flanderi",
-            "code": "VWV"
         },
         {
             "name": "Namurin lääni",
@@ -2225,12 +2225,12 @@
             "code": "CE"
         },
         {
-            "name": "Long",
-            "code": "LI"
-        },
-        {
             "name": "Länsi Grand Bahama",
             "code": "WG"
+        },
+        {
+            "name": "Long",
+            "code": "LI"
         },
         {
             "name": "Mangrove Cay",
@@ -2553,12 +2553,12 @@
             "code": "SU"
         },
         {
-            "name": "Ituri",
-            "code": "IT"
-        },
-        {
             "name": "Itä-Kasai",
             "code": "KE"
+        },
+        {
+            "name": "Ituri",
+            "code": "IT"
         },
         {
             "name": "Kasaï",
@@ -3771,6 +3771,10 @@
             "code": "424"
         },
         {
+            "name": "Määrin-Sleesian lääni",
+            "code": "80"
+        },
+        {
             "name": "Mělník",
             "code": "206"
         },
@@ -3781,10 +3785,6 @@
         {
             "name": "Most",
             "code": "425"
-        },
-        {
-            "name": "Määrin-Sleesian lääni",
-            "code": "80"
         },
         {
             "name": "Náchod",
@@ -5070,19 +5070,19 @@
         },
         {
             "name": "Murcia",
-            "code": "MC"
-        },
-        {
-            "name": "Murcia",
             "code": "MU"
         },
         {
-            "name": "Navarra",
-            "code": "NA"
+            "name": "Murcia",
+            "code": "MC"
         },
         {
             "name": "Navarra",
             "code": "NC"
+        },
+        {
+            "name": "Navarra",
+            "code": "NA"
         },
         {
             "name": "Ourense",
@@ -6407,6 +6407,14 @@
             "code": "LAN"
         },
         {
+            "name": "Länsi-Dunbartonshire",
+            "code": "WDU"
+        },
+        {
+            "name": "Länsi-Lothian",
+            "code": "WLN"
+        },
+        {
             "name": "Larne",
             "code": "LRN"
         },
@@ -6453,14 +6461,6 @@
         {
             "name": "Luton",
             "code": "LUT"
-        },
-        {
-            "name": "Länsi-Dunbartonshire",
-            "code": "WDU"
-        },
-        {
-            "name": "Länsi-Lothian",
-            "code": "WLN"
         },
         {
             "name": "Magherafelt",
@@ -7224,11 +7224,11 @@
         },
         {
             "name": "Nzérékoré",
-            "code": "NZ"
+            "code": "N"
         },
         {
             "name": "Nzérékoré",
-            "code": "N"
+            "code": "NZ"
         },
         {
             "name": "Pitan prefektuuri",
@@ -7451,6 +7451,14 @@
             "code": "16"
         },
         {
+            "name": "Länsi-Kreikka",
+            "code": "G"
+        },
+        {
+            "name": "Länsi-Makedonia",
+            "code": "C"
+        },
+        {
             "name": "Larissa",
             "code": "42"
         },
@@ -7465,14 +7473,6 @@
         {
             "name": "Lesbos",
             "code": "83"
-        },
-        {
-            "name": "Länsi-Kreikka",
-            "code": "G"
-        },
-        {
-            "name": "Länsi-Makedonia",
-            "code": "C"
         },
         {
             "name": "Magnesia",
@@ -14031,12 +14031,12 @@
             "code": "OY"
         },
         {
-            "name": "Plateau",
-            "code": "PL"
-        },
-        {
             "name": "Pääkaupunkiterritorio",
             "code": "FC"
+        },
+        {
+            "name": "Plateau",
+            "code": "PL"
         },
         {
             "name": "Rivers",
@@ -14335,12 +14335,12 @@
             "code": "KO"
         },
         {
-            "name": "Lumbini",
-            "code": "LU"
-        },
-        {
             "name": "Läntinen kehitysalue",
             "code": "3"
+        },
+        {
+            "name": "Lumbini",
+            "code": "LU"
         },
         {
             "name": "Mahakali",
@@ -15025,12 +15025,12 @@
             "code": "LAS"
         },
         {
-            "name": "Leyte",
-            "code": "LEY"
-        },
-        {
             "name": "Länsi-Visayas",
             "code": "06"
+        },
+        {
+            "name": "Leyte",
+            "code": "LEY"
         },
         {
             "name": "Maguindanao",
@@ -15253,6 +15253,10 @@
             "code": "KP"
         },
         {
+            "name": "Länsi-Pommerin voivodikunta",
+            "code": "ZP"
+        },
+        {
             "name": "Łódźin voivodikunta",
             "code": "LD"
         },
@@ -15263,10 +15267,6 @@
         {
             "name": "Lubuszin voivodikunta",
             "code": "LB"
-        },
-        {
-            "name": "Länsi-Pommerin voivodikunta",
-            "code": "ZP"
         },
         {
             "name": "Masovian voivodikunta",
@@ -16557,12 +16557,12 @@
             "code": "K"
         },
         {
-            "name": "Gotlannin lääni",
-            "code": "I"
-        },
-        {
             "name": "Gävleborgin lääni",
             "code": "X"
+        },
+        {
+            "name": "Gotlannin lääni",
+            "code": "I"
         },
         {
             "name": "Hallandin lääni",
@@ -16595,6 +16595,10 @@
         {
             "name": "Norrbottenin lääni",
             "code": "BD"
+        },
+        {
+            "name": "Örebron lääni",
+            "code": "T"
         },
         {
             "name": "Skånen lääni",
@@ -16631,10 +16635,6 @@
         {
             "name": "Västmanlandin lääni",
             "code": "U"
-        },
-        {
-            "name": "Örebron lääni",
-            "code": "T"
         }
     ],
     "SG": [
@@ -19999,12 +19999,12 @@
             "code": "KY"
         },
         {
-            "name": "Louisiana",
-            "code": "LA"
-        },
-        {
             "name": "Länsi-Virginia",
             "code": "WV"
+        },
+        {
+            "name": "Louisiana",
+            "code": "LA"
         },
         {
             "name": "Maine",
@@ -20375,12 +20375,12 @@
             "code": "O"
         },
         {
-            "name": "Portuguesa",
-            "code": "P"
-        },
-        {
             "name": "Pääkaupunkialue",
             "code": "A"
+        },
+        {
+            "name": "Portuguesa",
+            "code": "P"
         },
         {
             "name": "Sucre",

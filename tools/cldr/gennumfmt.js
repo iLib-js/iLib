@@ -297,7 +297,7 @@ function getNumberFormats_num_system(def_num_system, data) {
         //console.log("cur_fmt      is  ...................." + cur_fmt + "===================" + "\n");
         var curFmt = cur_fmt.replace(/[0#,\.]+/, "{n}");
         curFmt = curFmt.replace(/¤/g, "{s}");
-        symbol_format_data.currencyFormats.common = curFmt;
+        symbol_format_data.currencyFormats.common = curFmt.trim();
 
         var negative_cur_format = currency_format.substring(index_of_semi_colon + 1, currency_format.length);
         var curfmtnegative = negative_cur_format.replace(/[0#,\.]+/, "{n}");
@@ -306,8 +306,8 @@ function getNumberFormats_num_system(def_num_system, data) {
     } else {
         curFmt = currency_format.replace(/[0#,\.]+/, "{n}");
         curFmt = curFmt.replace(/¤/g, "{s}");
-        symbol_format_data.currencyFormats.common = curFmt;
-        symbol_format_data.currencyFormats.commonNegative = minus_sign + curFmt;
+        symbol_format_data.currencyFormats.common = curFmt.trim();
+        symbol_format_data.currencyFormats.commonNegative = minus_sign + curFmt.trim();
     }
 
         //symbol_format_data["curFmt"]=curFmt;
@@ -315,10 +315,10 @@ function getNumberFormats_num_system(def_num_system, data) {
         index_of_semi_colon = decimal_fmt.indexOf(";");
         var negative_num_format = decimal_fmt.substring(index_of_semi_colon + 1, decimal_fmt.length);
         var numfmtnegative = negative_num_format.replace(/[0#,\.]+/, "{n}");
-        symbol_format_data["negativenumFmt"] = numfmtnegative;
+        symbol_format_data["negativenumFmt"] = numfmtnegative.trim();
     } else {
         var numfmtnegative = decimal_fmt.replace(/[0#,\.]+/, "{n}");
-        symbol_format_data["negativenumFmt"] = minus_sign +  numfmtnegative;
+        symbol_format_data["negativenumFmt"] = minus_sign +  numfmtnegative.trim();
     }
 
     if (percent_format.indexOf(";") != -1) {

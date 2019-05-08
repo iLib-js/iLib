@@ -61,7 +61,7 @@ module.exports.testlistfmt_hi_IN = {
     
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["एक", "दो", "तीन"]), "एक, दो, और तीन");
+        test.equal(fmt.format(["एक", "दो", "तीन"]), "एक, दो और तीन");
         test.done();
     },
     
@@ -72,7 +72,7 @@ module.exports.testlistfmt_hi_IN = {
     
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["एक", "दो", "तीन", "चार"]), "एक, दो, तीन, और चार");
+        test.equal(fmt.format(["एक", "दो", "तीन", "चार"]), "एक, दो, तीन और चार");
         test.done();
     },
     testListFmtUnitStylehiINNumberFormatOne: function(test) {

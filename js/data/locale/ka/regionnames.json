@@ -31,6 +31,14 @@
     ],
     "AE": [
         {
+            "name": "Fujairah",
+            "code": "FU"
+        },
+        {
+            "name": "Ras al-Khaimah",
+            "code": "RK"
+        },
+        {
             "name": "აბუ-დაბის საამირო",
             "code": "AZ"
         },
@@ -49,14 +57,6 @@
         {
             "name": "შარჯის საამირო",
             "code": "SH"
-        },
-        {
-            "name": "Fujairah",
-            "code": "FU"
-        },
-        {
-            "name": "Ras al-Khaimah",
-            "code": "RK"
         }
     ],
     "AF": [
@@ -233,22 +233,6 @@
     ],
     "AL": [
         {
-            "name": "ბერატის ოლქი",
-            "code": "01"
-        },
-        {
-            "name": "გიროკასტრის ოლქი",
-            "code": "05"
-        },
-        {
-            "name": "დიბრის ოლქი",
-            "code": "09"
-        },
-        {
-            "name": "ვლორის ოლქი",
-            "code": "12"
-        },
-        {
             "name": "Berat",
             "code": "BR"
         },
@@ -423,6 +407,22 @@
         {
             "name": "Vlorë",
             "code": "VL"
+        },
+        {
+            "name": "ბერატის ოლქი",
+            "code": "01"
+        },
+        {
+            "name": "გიროკასტრის ოლქი",
+            "code": "05"
+        },
+        {
+            "name": "დიბრის ოლქი",
+            "code": "09"
+        },
+        {
+            "name": "ვლორის ოლქი",
+            "code": "12"
         }
     ],
     "AM": [
@@ -717,86 +717,6 @@
     ],
     "AZ": [
         {
-            "name": "აღდამის რაიონი",
-            "code": "AGM"
-        },
-        {
-            "name": "აღსუს რაიონი",
-            "code": "AGU"
-        },
-        {
-            "name": "ბაქო",
-            "code": "BA"
-        },
-        {
-            "name": "ბელაქანის რაიონი",
-            "code": "BAL"
-        },
-        {
-            "name": "განჯა",
-            "code": "GA"
-        },
-        {
-            "name": "გობუსტანის რაიონი",
-            "code": "QOB"
-        },
-        {
-            "name": "ზაქათალის რაიონი",
-            "code": "ZAQ"
-        },
-        {
-            "name": "კახის რაიონი",
-            "code": "QAX"
-        },
-        {
-            "name": "ლენქორანი",
-            "code": "LAN"
-        },
-        {
-            "name": "მინგეჩაური",
-            "code": "MI"
-        },
-        {
-            "name": "ნახიჩევანი",
-            "code": "NV"
-        },
-        {
-            "name": "ნახიჩევანის ავტონომიური რესპუბლიკა",
-            "code": "NX"
-        },
-        {
-            "name": "ორდუბადის რაიონი",
-            "code": "ORD"
-        },
-        {
-            "name": "შამქირის რაიონი",
-            "code": "SKR"
-        },
-        {
-            "name": "შარურის რაიონი",
-            "code": "SAR"
-        },
-        {
-            "name": "შაქი",
-            "code": "SA"
-        },
-        {
-            "name": "შემახის რაიონი",
-            "code": "SMI"
-        },
-        {
-            "name": "შირვანი",
-            "code": "SR"
-        },
-        {
-            "name": "ხანქენდი",
-            "code": "XA"
-        },
-        {
-            "name": "ჯულფის რაიონი",
-            "code": "CUL"
-        },
-        {
             "name": "Absheron",
             "code": "ABS"
         },
@@ -1027,21 +947,89 @@
         {
             "name": "Zardab",
             "code": "ZAR"
+        },
+        {
+            "name": "აღდამის რაიონი",
+            "code": "AGM"
+        },
+        {
+            "name": "აღსუს რაიონი",
+            "code": "AGU"
+        },
+        {
+            "name": "ბაქო",
+            "code": "BA"
+        },
+        {
+            "name": "ბელაქანის რაიონი",
+            "code": "BAL"
+        },
+        {
+            "name": "განჯა",
+            "code": "GA"
+        },
+        {
+            "name": "გობუსტანის რაიონი",
+            "code": "QOB"
+        },
+        {
+            "name": "ზაქათალის რაიონი",
+            "code": "ZAQ"
+        },
+        {
+            "name": "კახის რაიონი",
+            "code": "QAX"
+        },
+        {
+            "name": "ლენქორანი",
+            "code": "LAN"
+        },
+        {
+            "name": "მინგეჩაური",
+            "code": "MI"
+        },
+        {
+            "name": "ნახიჩევანი",
+            "code": "NV"
+        },
+        {
+            "name": "ნახიჩევანის ავტონომიური რესპუბლიკა",
+            "code": "NX"
+        },
+        {
+            "name": "ორდუბადის რაიონი",
+            "code": "ORD"
+        },
+        {
+            "name": "შამქირის რაიონი",
+            "code": "SKR"
+        },
+        {
+            "name": "შარურის რაიონი",
+            "code": "SAR"
+        },
+        {
+            "name": "შაქი",
+            "code": "SA"
+        },
+        {
+            "name": "შემახის რაიონი",
+            "code": "SMI"
+        },
+        {
+            "name": "შირვანი",
+            "code": "SR"
+        },
+        {
+            "name": "ხანქენდი",
+            "code": "XA"
+        },
+        {
+            "name": "ჯულფის რაიონი",
+            "code": "CUL"
         }
     ],
     "BA": [
-        {
-            "name": "ბოსნია და ჰერცეგოვინის ფედერაცია",
-            "code": "BIH"
-        },
-        {
-            "name": "ბოსნიელთა რესპუბლიკა",
-            "code": "SRP"
-        },
-        {
-            "name": "ბრჩკოს ოლქი",
-            "code": "BRC"
-        },
         {
             "name": "Bosnian Podrinje",
             "code": "05"
@@ -1081,6 +1069,18 @@
         {
             "name": "Zenica-Doboj",
             "code": "04"
+        },
+        {
+            "name": "ბოსნია და ჰერცეგოვინის ფედერაცია",
+            "code": "BIH"
+        },
+        {
+            "name": "ბოსნიელთა რესპუბლიკა",
+            "code": "SRP"
+        },
+        {
+            "name": "ბრჩკოს ოლქი",
+            "code": "BRC"
         }
     ],
     "BB": [
@@ -1845,6 +1845,10 @@
     ],
     "BI": [
         {
+            "name": "Rumonge",
+            "code": "RM"
+        },
+        {
             "name": "ბუბანზის პროვინცია",
             "code": "BB"
         },
@@ -1911,10 +1915,6 @@
         {
             "name": "ჩიბიტოკეს პროვინცია",
             "code": "CI"
-        },
-        {
-            "name": "Rumonge",
-            "code": "RM"
         }
     ],
     "BJ": [
@@ -2149,6 +2149,66 @@
     ],
     "BS": [
         {
+            "name": "Bimini",
+            "code": "BI"
+        },
+        {
+            "name": "Cat Island",
+            "code": "CI"
+        },
+        {
+            "name": "Exuma",
+            "code": "EX"
+        },
+        {
+            "name": "Hope Town",
+            "code": "HT"
+        },
+        {
+            "name": "Inagua",
+            "code": "IN"
+        },
+        {
+            "name": "Long Island",
+            "code": "LI"
+        },
+        {
+            "name": "Mayaguana",
+            "code": "MG"
+        },
+        {
+            "name": "Moore’s Island",
+            "code": "MI"
+        },
+        {
+            "name": "North Andros",
+            "code": "NS"
+        },
+        {
+            "name": "North Eleuthera",
+            "code": "NE"
+        },
+        {
+            "name": "Ragged Island",
+            "code": "RI"
+        },
+        {
+            "name": "Rum Cay",
+            "code": "RC"
+        },
+        {
+            "name": "South Andros",
+            "code": "SA"
+        },
+        {
+            "name": "Spanish Wells",
+            "code": "SW"
+        },
+        {
+            "name": "West Grand Bahama",
+            "code": "WG"
+        },
+        {
             "name": "აკლინსი",
             "code": "AK"
         },
@@ -2211,66 +2271,6 @@
         {
             "name": "ჰარბორ-აილენდი",
             "code": "HI"
-        },
-        {
-            "name": "Bimini",
-            "code": "BI"
-        },
-        {
-            "name": "Cat Island",
-            "code": "CI"
-        },
-        {
-            "name": "Exuma",
-            "code": "EX"
-        },
-        {
-            "name": "Hope Town",
-            "code": "HT"
-        },
-        {
-            "name": "Inagua",
-            "code": "IN"
-        },
-        {
-            "name": "Long Island",
-            "code": "LI"
-        },
-        {
-            "name": "Mayaguana",
-            "code": "MG"
-        },
-        {
-            "name": "Moore’s Island",
-            "code": "MI"
-        },
-        {
-            "name": "North Andros",
-            "code": "NS"
-        },
-        {
-            "name": "North Eleuthera",
-            "code": "NE"
-        },
-        {
-            "name": "Ragged Island",
-            "code": "RI"
-        },
-        {
-            "name": "Rum Cay",
-            "code": "RC"
-        },
-        {
-            "name": "South Andros",
-            "code": "SA"
-        },
-        {
-            "name": "Spanish Wells",
-            "code": "SW"
-        },
-        {
-            "name": "West Grand Bahama",
-            "code": "WG"
         }
     ],
     "BT": [
@@ -2357,6 +2357,26 @@
     ],
     "BW": [
         {
+            "name": "Chobe",
+            "code": "CH"
+        },
+        {
+            "name": "Jwaneng",
+            "code": "JW"
+        },
+        {
+            "name": "Lobatse",
+            "code": "LO"
+        },
+        {
+            "name": "Selibe Phikwe",
+            "code": "SP"
+        },
+        {
+            "name": "Sowa Town",
+            "code": "ST"
+        },
+        {
             "name": "გაბორონე",
             "code": "GA"
         },
@@ -2399,26 +2419,6 @@
         {
             "name": "ცენტრალური ოლქი",
             "code": "CE"
-        },
-        {
-            "name": "Chobe",
-            "code": "CH"
-        },
-        {
-            "name": "Jwaneng",
-            "code": "JW"
-        },
-        {
-            "name": "Lobatse",
-            "code": "LO"
-        },
-        {
-            "name": "Selibe Phikwe",
-            "code": "SP"
-        },
-        {
-            "name": "Sowa Town",
-            "code": "ST"
         }
     ],
     "BY": [
@@ -2533,6 +2533,42 @@
     ],
     "CD": [
         {
+            "name": "Bandundu",
+            "code": "BN"
+        },
+        {
+            "name": "Ituri",
+            "code": "IT"
+        },
+        {
+            "name": "Kasaï",
+            "code": "KS"
+        },
+        {
+            "name": "Kasaï Central",
+            "code": "KC"
+        },
+        {
+            "name": "Kasaï-Occidental",
+            "code": "KW"
+        },
+        {
+            "name": "Katanga",
+            "code": "KA"
+        },
+        {
+            "name": "Kwango",
+            "code": "KG"
+        },
+        {
+            "name": "Lomami",
+            "code": "LO"
+        },
+        {
+            "name": "Orientale",
+            "code": "OR"
+        },
+        {
             "name": "აღმოსავლეთ კასაის პროვინცია",
             "code": "KE"
         },
@@ -2615,45 +2651,13 @@
         {
             "name": "ცენტრალური კონგოს პროვინცია",
             "code": "BC"
-        },
-        {
-            "name": "Bandundu",
-            "code": "BN"
-        },
-        {
-            "name": "Ituri",
-            "code": "IT"
-        },
-        {
-            "name": "Kasaï",
-            "code": "KS"
-        },
-        {
-            "name": "Kasaï Central",
-            "code": "KC"
-        },
-        {
-            "name": "Kasaï-Occidental",
-            "code": "KW"
-        },
-        {
-            "name": "Katanga",
-            "code": "KA"
-        },
-        {
-            "name": "Kwango",
-            "code": "KG"
-        },
-        {
-            "name": "Lomami",
-            "code": "LO"
-        },
-        {
-            "name": "Orientale",
-            "code": "OR"
         }
     ],
     "CF": [
+        {
+            "name": "Ouaka",
+            "code": "UK"
+        },
         {
             "name": "ბამინგი-ბანგორანი",
             "code": "BB"
@@ -2717,13 +2721,13 @@
         {
             "name": "ქვემო კოტო",
             "code": "BK"
-        },
-        {
-            "name": "Ouaka",
-            "code": "UK"
         }
     ],
     "CG": [
+        {
+            "name": "Pointe-Noire",
+            "code": "16"
+        },
         {
             "name": "ბრაზავილი",
             "code": "BZV"
@@ -2767,10 +2771,6 @@
         {
             "name": "სანგის დეპარტამენტი",
             "code": "13"
-        },
-        {
-            "name": "Pointe-Noire",
-            "code": "16"
         }
     ],
     "CH": [
@@ -2880,14 +2880,6 @@
         }
     ],
     "CI": [
-        {
-            "name": "აბიჯანი",
-            "code": "AB"
-        },
-        {
-            "name": "იამუსუკრო",
-            "code": "YM"
-        },
         {
             "name": "Agnéby",
             "code": "16"
@@ -3011,9 +3003,21 @@
         {
             "name": "Zanzan²",
             "code": "ZZ"
+        },
+        {
+            "name": "აბიჯანი",
+            "code": "AB"
+        },
+        {
+            "name": "იამუსუკრო",
+            "code": "YM"
         }
     ],
     "CL": [
+        {
+            "name": "Libertador General Bernardo O’Higgins",
+            "code": "LI"
+        },
         {
             "name": "აისენი",
             "code": "AI"
@@ -3069,10 +3073,6 @@
         {
             "name": "ტარაპაკა",
             "code": "TA"
-        },
-        {
-            "name": "Libertador General Bernardo O’Higgins",
-            "code": "LI"
         }
     ],
     "CM": [
@@ -3611,6 +3611,102 @@
     ],
     "CZ": [
         {
+            "name": "Brno-město",
+            "code": "642"
+        },
+        {
+            "name": "Ostrava",
+            "code": "806"
+        },
+        {
+            "name": "Plzeň",
+            "code": "323"
+        },
+        {
+            "name": "Prague 1",
+            "code": "101"
+        },
+        {
+            "name": "Prague 10",
+            "code": "110"
+        },
+        {
+            "name": "Prague 11",
+            "code": "111"
+        },
+        {
+            "name": "Prague 12",
+            "code": "112"
+        },
+        {
+            "name": "Prague 13",
+            "code": "113"
+        },
+        {
+            "name": "Prague 14",
+            "code": "114"
+        },
+        {
+            "name": "Prague 15",
+            "code": "115"
+        },
+        {
+            "name": "Prague 16",
+            "code": "116"
+        },
+        {
+            "name": "Prague 17",
+            "code": "117"
+        },
+        {
+            "name": "Prague 18",
+            "code": "118"
+        },
+        {
+            "name": "Prague 19",
+            "code": "119"
+        },
+        {
+            "name": "Prague 2",
+            "code": "102"
+        },
+        {
+            "name": "Prague 20",
+            "code": "120"
+        },
+        {
+            "name": "Prague 21",
+            "code": "121"
+        },
+        {
+            "name": "Prague 22",
+            "code": "122"
+        },
+        {
+            "name": "Prague 3",
+            "code": "103"
+        },
+        {
+            "name": "Prague 5",
+            "code": "105"
+        },
+        {
+            "name": "Prague 6",
+            "code": "106"
+        },
+        {
+            "name": "Prague 7",
+            "code": "107"
+        },
+        {
+            "name": "Prague 8",
+            "code": "108"
+        },
+        {
+            "name": "Prague 9",
+            "code": "109"
+        },
+        {
             "name": "ბენეშოვის რაიონი",
             "code": "201"
         },
@@ -3961,102 +4057,6 @@
         {
             "name": "ჰრადეც-კრალოვეს რაიონი",
             "code": "521"
-        },
-        {
-            "name": "Brno-město",
-            "code": "642"
-        },
-        {
-            "name": "Ostrava",
-            "code": "806"
-        },
-        {
-            "name": "Plzeň",
-            "code": "323"
-        },
-        {
-            "name": "Prague 1",
-            "code": "101"
-        },
-        {
-            "name": "Prague 10",
-            "code": "110"
-        },
-        {
-            "name": "Prague 11",
-            "code": "111"
-        },
-        {
-            "name": "Prague 12",
-            "code": "112"
-        },
-        {
-            "name": "Prague 13",
-            "code": "113"
-        },
-        {
-            "name": "Prague 14",
-            "code": "114"
-        },
-        {
-            "name": "Prague 15",
-            "code": "115"
-        },
-        {
-            "name": "Prague 16",
-            "code": "116"
-        },
-        {
-            "name": "Prague 17",
-            "code": "117"
-        },
-        {
-            "name": "Prague 18",
-            "code": "118"
-        },
-        {
-            "name": "Prague 19",
-            "code": "119"
-        },
-        {
-            "name": "Prague 2",
-            "code": "102"
-        },
-        {
-            "name": "Prague 20",
-            "code": "120"
-        },
-        {
-            "name": "Prague 21",
-            "code": "121"
-        },
-        {
-            "name": "Prague 22",
-            "code": "122"
-        },
-        {
-            "name": "Prague 3",
-            "code": "103"
-        },
-        {
-            "name": "Prague 5",
-            "code": "105"
-        },
-        {
-            "name": "Prague 6",
-            "code": "106"
-        },
-        {
-            "name": "Prague 7",
-            "code": "107"
-        },
-        {
-            "name": "Prague 8",
-            "code": "108"
-        },
-        {
-            "name": "Prague 9",
-            "code": "109"
         }
     ],
     "DE": [
@@ -4877,6 +4877,34 @@
     ],
     "ES": [
         {
+            "name": "Asturias Province",
+            "code": "O"
+        },
+        {
+            "name": "Balears Province",
+            "code": "PM"
+        },
+        {
+            "name": "Canary Islands",
+            "code": "CN"
+        },
+        {
+            "name": "Cantabria Province",
+            "code": "S"
+        },
+        {
+            "name": "Madrid Province",
+            "code": "M"
+        },
+        {
+            "name": "Murcia",
+            "code": "MU"
+        },
+        {
+            "name": "Navarra",
+            "code": "NA"
+        },
+        {
             "name": "ავილის პროვინცია",
             "code": "AV"
         },
@@ -5123,34 +5151,6 @@
         {
             "name": "ხერონის პროვინცია",
             "code": "GI"
-        },
-        {
-            "name": "Asturias Province",
-            "code": "O"
-        },
-        {
-            "name": "Balears Province",
-            "code": "PM"
-        },
-        {
-            "name": "Canary Islands",
-            "code": "CN"
-        },
-        {
-            "name": "Cantabria Province",
-            "code": "S"
-        },
-        {
-            "name": "Madrid Province",
-            "code": "M"
-        },
-        {
-            "name": "Murcia",
-            "code": "MU"
-        },
-        {
-            "name": "Navarra",
-            "code": "NA"
         }
     ],
     "ET": [
@@ -5279,42 +5279,6 @@
     ],
     "FJ": [
         {
-            "name": "აღმოსავლეთის ოლქი",
-            "code": "E"
-        },
-        {
-            "name": "დასავლეთის ოლქი",
-            "code": "W"
-        },
-        {
-            "name": "მბის პროვინცია",
-            "code": "01"
-        },
-        {
-            "name": "ნაიტასირის პროვინცია",
-            "code": "09"
-        },
-        {
-            "name": "რევის პროვინცია",
-            "code": "12"
-        },
-        {
-            "name": "როტუმა",
-            "code": "R"
-        },
-        {
-            "name": "სერუის პროვინცია",
-            "code": "13"
-        },
-        {
-            "name": "ჩრდილოეთის ოლქი",
-            "code": "N"
-        },
-        {
-            "name": "ცენტრალური ოლქი",
-            "code": "C"
-        },
-        {
             "name": "Bua",
             "code": "02"
         },
@@ -5353,6 +5317,42 @@
         {
             "name": "Tailevu",
             "code": "14"
+        },
+        {
+            "name": "აღმოსავლეთის ოლქი",
+            "code": "E"
+        },
+        {
+            "name": "დასავლეთის ოლქი",
+            "code": "W"
+        },
+        {
+            "name": "მბის პროვინცია",
+            "code": "01"
+        },
+        {
+            "name": "ნაიტასირის პროვინცია",
+            "code": "09"
+        },
+        {
+            "name": "რევის პროვინცია",
+            "code": "12"
+        },
+        {
+            "name": "როტუმა",
+            "code": "R"
+        },
+        {
+            "name": "სერუის პროვინცია",
+            "code": "13"
+        },
+        {
+            "name": "ჩრდილოეთის ოლქი",
+            "code": "N"
+        },
+        {
+            "name": "ცენტრალური ოლქი",
+            "code": "C"
         }
     ],
     "FM": [
@@ -5374,6 +5374,118 @@
         }
     ],
     "FR": [
+        {
+            "name": "Auvergne-Rhône-Alpes",
+            "code": "ARA"
+        },
+        {
+            "name": "Brittany",
+            "code": "E"
+        },
+        {
+            "name": "Burgundy-Franche-Comté",
+            "code": "BFC"
+        },
+        {
+            "name": "Clipperton Island",
+            "code": "CP"
+        },
+        {
+            "name": "Corsica",
+            "code": "H"
+        },
+        {
+            "name": "Côte-d’Or",
+            "code": "21"
+        },
+        {
+            "name": "Côtes-d’Armor",
+            "code": "22"
+        },
+        {
+            "name": "French Guiana",
+            "code": "GF"
+        },
+        {
+            "name": "French Polynesia",
+            "code": "PF"
+        },
+        {
+            "name": "French Southern Territories",
+            "code": "TF"
+        },
+        {
+            "name": "Grand-Est",
+            "code": "GES"
+        },
+        {
+            "name": "Guadeloupe",
+            "code": "GUA"
+        },
+        {
+            "name": "Guadeloupe²",
+            "code": "GP"
+        },
+        {
+            "name": "Hauts-de-France",
+            "code": "HDF"
+        },
+        {
+            "name": "La Réunion",
+            "code": "LRE"
+        },
+        {
+            "name": "Martinique",
+            "code": "MQ"
+        },
+        {
+            "name": "Mayotte",
+            "code": "MAY"
+        },
+        {
+            "name": "Mayotte²",
+            "code": "YT"
+        },
+        {
+            "name": "New Caledonia",
+            "code": "NC"
+        },
+        {
+            "name": "Normandie",
+            "code": "NOR"
+        },
+        {
+            "name": "Nouvelle-Aquitaine",
+            "code": "NAQ"
+        },
+        {
+            "name": "Occitanie",
+            "code": "OCC"
+        },
+        {
+            "name": "Réunion",
+            "code": "RE"
+        },
+        {
+            "name": "St. Barthélemy",
+            "code": "BL"
+        },
+        {
+            "name": "St. Martin",
+            "code": "MF"
+        },
+        {
+            "name": "St. Pierre & Miquelon",
+            "code": "PM"
+        },
+        {
+            "name": "Val-d’Oise",
+            "code": "95"
+        },
+        {
+            "name": "Wallis & Futuna",
+            "code": "WF"
+        },
         {
             "name": "ავერონი",
             "code": "12"
@@ -5769,118 +5881,6 @@
         {
             "name": "ცენტრი",
             "code": "CVL"
-        },
-        {
-            "name": "Auvergne-Rhône-Alpes",
-            "code": "ARA"
-        },
-        {
-            "name": "Brittany",
-            "code": "E"
-        },
-        {
-            "name": "Burgundy-Franche-Comté",
-            "code": "BFC"
-        },
-        {
-            "name": "Clipperton Island",
-            "code": "CP"
-        },
-        {
-            "name": "Corsica",
-            "code": "H"
-        },
-        {
-            "name": "Côte-d’Or",
-            "code": "21"
-        },
-        {
-            "name": "Côtes-d’Armor",
-            "code": "22"
-        },
-        {
-            "name": "French Guiana",
-            "code": "GF"
-        },
-        {
-            "name": "French Polynesia",
-            "code": "PF"
-        },
-        {
-            "name": "French Southern Territories",
-            "code": "TF"
-        },
-        {
-            "name": "Grand-Est",
-            "code": "GES"
-        },
-        {
-            "name": "Guadeloupe",
-            "code": "GUA"
-        },
-        {
-            "name": "Guadeloupe²",
-            "code": "GP"
-        },
-        {
-            "name": "Hauts-de-France",
-            "code": "HDF"
-        },
-        {
-            "name": "La Réunion",
-            "code": "LRE"
-        },
-        {
-            "name": "Martinique",
-            "code": "MQ"
-        },
-        {
-            "name": "Mayotte",
-            "code": "MAY"
-        },
-        {
-            "name": "Mayotte²",
-            "code": "YT"
-        },
-        {
-            "name": "New Caledonia",
-            "code": "NC"
-        },
-        {
-            "name": "Normandie",
-            "code": "NOR"
-        },
-        {
-            "name": "Nouvelle-Aquitaine",
-            "code": "NAQ"
-        },
-        {
-            "name": "Occitanie",
-            "code": "OCC"
-        },
-        {
-            "name": "Réunion",
-            "code": "RE"
-        },
-        {
-            "name": "St. Barthélemy",
-            "code": "BL"
-        },
-        {
-            "name": "St. Martin",
-            "code": "MF"
-        },
-        {
-            "name": "St. Pierre & Miquelon",
-            "code": "PM"
-        },
-        {
-            "name": "Val-d’Oise",
-            "code": "95"
-        },
-        {
-            "name": "Wallis & Futuna",
-            "code": "WF"
         }
     ],
     "GA": [
@@ -5922,210 +5922,6 @@
         }
     ],
     "GB": [
-        {
-            "name": "აბერდინი",
-            "code": "ABE"
-        },
-        {
-            "name": "ანგუსი",
-            "code": "ANS"
-        },
-        {
-            "name": "ბექსლი",
-            "code": "BEX"
-        },
-        {
-            "name": "ბირმინგემი",
-            "code": "BIR"
-        },
-        {
-            "name": "ბლეკპული",
-            "code": "BPL"
-        },
-        {
-            "name": "ბორნმუთი",
-            "code": "BMH"
-        },
-        {
-            "name": "ბრისტოლი",
-            "code": "BST"
-        },
-        {
-            "name": "ბრომლი",
-            "code": "BRY"
-        },
-        {
-            "name": "გაერთიანებული სამეფო",
-            "code": "UKM"
-        },
-        {
-            "name": "გლაზგო",
-            "code": "GLG"
-        },
-        {
-            "name": "დანდი",
-            "code": "DND"
-        },
-        {
-            "name": "დასავლეთი სასექსი",
-            "code": "WSX"
-        },
-        {
-            "name": "დიდი ბრიტანეთი",
-            "code": "GBN"
-        },
-        {
-            "name": "დორსეტი",
-            "code": "DOR"
-        },
-        {
-            "name": "ედინბურგი",
-            "code": "EDH"
-        },
-        {
-            "name": "ენფილდი",
-            "code": "ENF"
-        },
-        {
-            "name": "ვულვერჰემპტონი",
-            "code": "WLV"
-        },
-        {
-            "name": "ინგლისი",
-            "code": "ENG"
-        },
-        {
-            "name": "იორკი",
-            "code": "YOR"
-        },
-        {
-            "name": "კარდიფი",
-            "code": "CRF"
-        },
-        {
-            "name": "კემდენი",
-            "code": "CMD"
-        },
-        {
-            "name": "კენსინგტონი და ჩელსი",
-            "code": "KEC"
-        },
-        {
-            "name": "კენტი",
-            "code": "KEN"
-        },
-        {
-            "name": "კოვენტრი",
-            "code": "COV"
-        },
-        {
-            "name": "ლანკაშირი",
-            "code": "LAN"
-        },
-        {
-            "name": "ლესტერი",
-            "code": "LCE"
-        },
-        {
-            "name": "ლივერპული",
-            "code": "LIV"
-        },
-        {
-            "name": "ლონდონის სიტი",
-            "code": "LND"
-        },
-        {
-            "name": "ლუიშემი",
-            "code": "LEW"
-        },
-        {
-            "name": "მანჩესტერი",
-            "code": "MAN"
-        },
-        {
-            "name": "მიდლზბრო",
-            "code": "MDB"
-        },
-        {
-            "name": "ნიუკასლ-აპონ-ტაინი",
-            "code": "NET"
-        },
-        {
-            "name": "ნოტინგემი",
-            "code": "NGM"
-        },
-        {
-            "name": "ოქსფორდშირი",
-            "code": "OXF"
-        },
-        {
-            "name": "პორტსმუთი",
-            "code": "POR"
-        },
-        {
-            "name": "საუთუარკი",
-            "code": "SWK"
-        },
-        {
-            "name": "საუთჰემპტონი",
-            "code": "STH"
-        },
-        {
-            "name": "საფოლკი",
-            "code": "SFK"
-        },
-        {
-            "name": "სლაუ",
-            "code": "SLG"
-        },
-        {
-            "name": "სომერსეტი",
-            "code": "SOM"
-        },
-        {
-            "name": "სტაფორდშირი",
-            "code": "STS"
-        },
-        {
-            "name": "სტოკ-ონ-ტრენტი",
-            "code": "STE"
-        },
-        {
-            "name": "სურეი",
-            "code": "SRY"
-        },
-        {
-            "name": "უაიტი",
-            "code": "IOW"
-        },
-        {
-            "name": "უელსი",
-            "code": "WLS"
-        },
-        {
-            "name": "შეფილდი",
-            "code": "SHF"
-        },
-        {
-            "name": "შოტლანდია",
-            "code": "SCT"
-        },
-        {
-            "name": "ჩრდილოეთი ირლანდია",
-            "code": "NIR"
-        },
-        {
-            "name": "ჰაკნი",
-            "code": "HCK"
-        },
-        {
-            "name": "ჰალი",
-            "code": "KHL"
-        },
-        {
-            "name": "ჰერტფორდშირი",
-            "code": "HRT"
-        },
         {
             "name": "Aberdeenshire",
             "code": "ABD"
@@ -6917,6 +6713,210 @@
         {
             "name": "Wrexham",
             "code": "WRX"
+        },
+        {
+            "name": "აბერდინი",
+            "code": "ABE"
+        },
+        {
+            "name": "ანგუსი",
+            "code": "ANS"
+        },
+        {
+            "name": "ბექსლი",
+            "code": "BEX"
+        },
+        {
+            "name": "ბირმინგემი",
+            "code": "BIR"
+        },
+        {
+            "name": "ბლეკპული",
+            "code": "BPL"
+        },
+        {
+            "name": "ბორნმუთი",
+            "code": "BMH"
+        },
+        {
+            "name": "ბრისტოლი",
+            "code": "BST"
+        },
+        {
+            "name": "ბრომლი",
+            "code": "BRY"
+        },
+        {
+            "name": "გაერთიანებული სამეფო",
+            "code": "UKM"
+        },
+        {
+            "name": "გლაზგო",
+            "code": "GLG"
+        },
+        {
+            "name": "დანდი",
+            "code": "DND"
+        },
+        {
+            "name": "დასავლეთი სასექსი",
+            "code": "WSX"
+        },
+        {
+            "name": "დიდი ბრიტანეთი",
+            "code": "GBN"
+        },
+        {
+            "name": "დორსეტი",
+            "code": "DOR"
+        },
+        {
+            "name": "ედინბურგი",
+            "code": "EDH"
+        },
+        {
+            "name": "ენფილდი",
+            "code": "ENF"
+        },
+        {
+            "name": "ვულვერჰემპტონი",
+            "code": "WLV"
+        },
+        {
+            "name": "ინგლისი",
+            "code": "ENG"
+        },
+        {
+            "name": "იორკი",
+            "code": "YOR"
+        },
+        {
+            "name": "კარდიფი",
+            "code": "CRF"
+        },
+        {
+            "name": "კემდენი",
+            "code": "CMD"
+        },
+        {
+            "name": "კენსინგტონი და ჩელსი",
+            "code": "KEC"
+        },
+        {
+            "name": "კენტი",
+            "code": "KEN"
+        },
+        {
+            "name": "კოვენტრი",
+            "code": "COV"
+        },
+        {
+            "name": "ლანკაშირი",
+            "code": "LAN"
+        },
+        {
+            "name": "ლესტერი",
+            "code": "LCE"
+        },
+        {
+            "name": "ლივერპული",
+            "code": "LIV"
+        },
+        {
+            "name": "ლონდონის სიტი",
+            "code": "LND"
+        },
+        {
+            "name": "ლუიშემი",
+            "code": "LEW"
+        },
+        {
+            "name": "მანჩესტერი",
+            "code": "MAN"
+        },
+        {
+            "name": "მიდლზბრო",
+            "code": "MDB"
+        },
+        {
+            "name": "ნიუკასლ-აპონ-ტაინი",
+            "code": "NET"
+        },
+        {
+            "name": "ნოტინგემი",
+            "code": "NGM"
+        },
+        {
+            "name": "ოქსფორდშირი",
+            "code": "OXF"
+        },
+        {
+            "name": "პორტსმუთი",
+            "code": "POR"
+        },
+        {
+            "name": "საუთუარკი",
+            "code": "SWK"
+        },
+        {
+            "name": "საუთჰემპტონი",
+            "code": "STH"
+        },
+        {
+            "name": "საფოლკი",
+            "code": "SFK"
+        },
+        {
+            "name": "სლაუ",
+            "code": "SLG"
+        },
+        {
+            "name": "სომერსეტი",
+            "code": "SOM"
+        },
+        {
+            "name": "სტაფორდშირი",
+            "code": "STS"
+        },
+        {
+            "name": "სტოკ-ონ-ტრენტი",
+            "code": "STE"
+        },
+        {
+            "name": "სურეი",
+            "code": "SRY"
+        },
+        {
+            "name": "უაიტი",
+            "code": "IOW"
+        },
+        {
+            "name": "უელსი",
+            "code": "WLS"
+        },
+        {
+            "name": "შეფილდი",
+            "code": "SHF"
+        },
+        {
+            "name": "შოტლანდია",
+            "code": "SCT"
+        },
+        {
+            "name": "ჩრდილოეთი ირლანდია",
+            "code": "NIR"
+        },
+        {
+            "name": "ჰაკნი",
+            "code": "HCK"
+        },
+        {
+            "name": "ჰალი",
+            "code": "KHL"
+        },
+        {
+            "name": "ჰერტფორდშირი",
+            "code": "HRT"
         }
     ],
     "GD": [
@@ -7001,10 +7001,6 @@
     ],
     "GH": [
         {
-            "name": "აშანტის რეგიონი",
-            "code": "AH"
-        },
-        {
             "name": "Brong-Ahafo",
             "code": "BA"
         },
@@ -7039,13 +7035,13 @@
         {
             "name": "Western",
             "code": "WP"
+        },
+        {
+            "name": "აშანტის რეგიონი",
+            "code": "AH"
         }
     ],
     "GL": [
-        {
-            "name": "კაასუიტსუპი",
-            "code": "QA"
-        },
         {
             "name": "Kujalleq",
             "code": "KU"
@@ -7057,13 +7053,13 @@
         {
             "name": "Sermersooq",
             "code": "SM"
+        },
+        {
+            "name": "კაასუიტსუპი",
+            "code": "QA"
         }
     ],
     "GM": [
-        {
-            "name": "ბანჯული",
-            "code": "B"
-        },
         {
             "name": "Central River Division",
             "code": "M"
@@ -7083,13 +7079,13 @@
         {
             "name": "West Coast Division",
             "code": "W"
+        },
+        {
+            "name": "ბანჯული",
+            "code": "B"
         }
     ],
     "GN": [
-        {
-            "name": "კონაკრი",
-            "code": "C"
-        },
         {
             "name": "Beyla",
             "code": "BE"
@@ -7249,9 +7245,21 @@
         {
             "name": "Yomou",
             "code": "YO"
+        },
+        {
+            "name": "კონაკრი",
+            "code": "C"
         }
     ],
     "GQ": [
+        {
+            "name": "Insular",
+            "code": "I"
+        },
+        {
+            "name": "Río Muni",
+            "code": "C"
+        },
         {
             "name": "ანობონის პროვინცია",
             "code": "AN"
@@ -7279,61 +7287,9 @@
         {
             "name": "ცენტრო-სურის პროვინცია",
             "code": "CS"
-        },
-        {
-            "name": "Insular",
-            "code": "I"
-        },
-        {
-            "name": "Río Muni",
-            "code": "C"
         }
     ],
     "GR": [
-        {
-            "name": "აიონ-ოროსი",
-            "code": "69"
-        },
-        {
-            "name": "ატიკა",
-            "code": "I"
-        },
-        {
-            "name": "აღმოსავლეთი მაკედონია და თრაკია",
-            "code": "A"
-        },
-        {
-            "name": "დასავლეთი მაკედონია",
-            "code": "C"
-        },
-        {
-            "name": "დასავლეთი საბერძნეთი",
-            "code": "G"
-        },
-        {
-            "name": "ეპირი",
-            "code": "D"
-        },
-        {
-            "name": "თესალია",
-            "code": "E"
-        },
-        {
-            "name": "პელოპონესის პერიფერია",
-            "code": "J"
-        },
-        {
-            "name": "სამხრეთ ეგეოსის კუნძულები",
-            "code": "L"
-        },
-        {
-            "name": "ჩრდილოეთ ეგეოსის კუნძულები",
-            "code": "K"
-        },
-        {
-            "name": "ცენტრალური მაკედონია",
-            "code": "B"
-        },
         {
             "name": "Achaea",
             "code": "13"
@@ -7549,6 +7505,50 @@
         {
             "name": "Zakynthos",
             "code": "21"
+        },
+        {
+            "name": "აიონ-ოროსი",
+            "code": "69"
+        },
+        {
+            "name": "ატიკა",
+            "code": "I"
+        },
+        {
+            "name": "აღმოსავლეთი მაკედონია და თრაკია",
+            "code": "A"
+        },
+        {
+            "name": "დასავლეთი მაკედონია",
+            "code": "C"
+        },
+        {
+            "name": "დასავლეთი საბერძნეთი",
+            "code": "G"
+        },
+        {
+            "name": "ეპირი",
+            "code": "D"
+        },
+        {
+            "name": "თესალია",
+            "code": "E"
+        },
+        {
+            "name": "პელოპონესის პერიფერია",
+            "code": "J"
+        },
+        {
+            "name": "სამხრეთ ეგეოსის კუნძულები",
+            "code": "L"
+        },
+        {
+            "name": "ჩრდილოეთ ეგეოსის კუნძულები",
+            "code": "K"
+        },
+        {
+            "name": "ცენტრალური მაკედონია",
+            "code": "B"
         }
     ],
     "GT": [
@@ -7643,10 +7643,6 @@
     ],
     "GW": [
         {
-            "name": "ბისაუ",
-            "code": "BS"
-        },
-        {
             "name": "Bafatá",
             "code": "BA"
         },
@@ -7689,6 +7685,10 @@
         {
             "name": "Tombali",
             "code": "TO"
+        },
+        {
+            "name": "ბისაუ",
+            "code": "BS"
         }
     ],
     "GY": [
@@ -7937,6 +7937,10 @@
     ],
     "HU": [
         {
+            "name": "Szekszárd",
+            "code": "SS"
+        },
+        {
             "name": "ბარანიის მედიე",
             "code": "BA"
         },
@@ -8103,13 +8107,21 @@
         {
             "name": "ჰოდმეზევაშარჰეი",
             "code": "HV"
-        },
-        {
-            "name": "Szekszárd",
-            "code": "SS"
         }
     ],
     "ID": [
+        {
+            "name": "Bali",
+            "code": "BA"
+        },
+        {
+            "name": "Kalimantan",
+            "code": "KA"
+        },
+        {
+            "name": "North Kalimantan",
+            "code": "KU"
+        },
         {
             "name": "აღმოსავლეთი იავა",
             "code": "JI"
@@ -8261,18 +8273,6 @@
         {
             "name": "ჯოკიაკარტის სპეციალური რეგიონი",
             "code": "YO"
-        },
-        {
-            "name": "Bali",
-            "code": "BA"
-        },
-        {
-            "name": "Kalimantan",
-            "code": "KA"
-        },
-        {
-            "name": "North Kalimantan",
-            "code": "KU"
         }
     ],
     "IE": [
@@ -8399,6 +8399,14 @@
     ],
     "IL": [
         {
+            "name": "Jerusalem",
+            "code": "JM"
+        },
+        {
+            "name": "Tel Aviv District",
+            "code": "TA"
+        },
+        {
             "name": "სამხრეთი რაიონი",
             "code": "D"
         },
@@ -8413,14 +8421,6 @@
         {
             "name": "ხაიფის რაიონი",
             "code": "HA"
-        },
-        {
-            "name": "Jerusalem",
-            "code": "JM"
-        },
-        {
-            "name": "Tel Aviv District",
-            "code": "TA"
         }
     ],
     "IN": [
@@ -8808,6 +8808,18 @@
         }
     ],
     "IT": [
+        {
+            "name": "Aosta Valley",
+            "code": "23"
+        },
+        {
+            "name": "Genoa",
+            "code": "GE"
+        },
+        {
+            "name": "L’Aquila",
+            "code": "AQ"
+        },
         {
             "name": "აბრუცი",
             "code": "65"
@@ -9315,18 +9327,6 @@
         {
             "name": "ფროზინონეს პროვინცია",
             "code": "FR"
-        },
-        {
-            "name": "Aosta Valley",
-            "code": "23"
-        },
-        {
-            "name": "Genoa",
-            "code": "GE"
-        },
-        {
-            "name": "L’Aquila",
-            "code": "AQ"
         }
     ],
     "JM": [
@@ -10707,6 +10707,74 @@
     ],
     "LT": [
         {
+            "name": "Alytus Municipality",
+            "code": "02"
+        },
+        {
+            "name": "Birštonas",
+            "code": "05"
+        },
+        {
+            "name": "Druskininkai",
+            "code": "07"
+        },
+        {
+            "name": "Elektrėnai",
+            "code": "08"
+        },
+        {
+            "name": "Kalvarija",
+            "code": "14"
+        },
+        {
+            "name": "Kauno Municipality",
+            "code": "15"
+        },
+        {
+            "name": "Kazlų Rūda",
+            "code": "17"
+        },
+        {
+            "name": "Klaipėdos Municipality",
+            "code": "20"
+        },
+        {
+            "name": "Marijampolė",
+            "code": "25"
+        },
+        {
+            "name": "Neringa",
+            "code": "28"
+        },
+        {
+            "name": "Pagėgiai",
+            "code": "29"
+        },
+        {
+            "name": "Palanga",
+            "code": "31"
+        },
+        {
+            "name": "Panevėžio Municipality",
+            "code": "32"
+        },
+        {
+            "name": "Rietavas",
+            "code": "39"
+        },
+        {
+            "name": "Šiaulių Municipality",
+            "code": "43"
+        },
+        {
+            "name": "Vilniaus Municipality",
+            "code": "57"
+        },
+        {
+            "name": "Visaginas",
+            "code": "59"
+        },
+        {
             "name": "აკმიანის რაიონი",
             "code": "01"
         },
@@ -10917,74 +10985,6 @@
         {
             "name": "შირვინტოსის რაიონი",
             "code": "47"
-        },
-        {
-            "name": "Alytus Municipality",
-            "code": "02"
-        },
-        {
-            "name": "Birštonas",
-            "code": "05"
-        },
-        {
-            "name": "Druskininkai",
-            "code": "07"
-        },
-        {
-            "name": "Elektrėnai",
-            "code": "08"
-        },
-        {
-            "name": "Kalvarija",
-            "code": "14"
-        },
-        {
-            "name": "Kauno Municipality",
-            "code": "15"
-        },
-        {
-            "name": "Kazlų Rūda",
-            "code": "17"
-        },
-        {
-            "name": "Klaipėdos Municipality",
-            "code": "20"
-        },
-        {
-            "name": "Marijampolė",
-            "code": "25"
-        },
-        {
-            "name": "Neringa",
-            "code": "28"
-        },
-        {
-            "name": "Pagėgiai",
-            "code": "29"
-        },
-        {
-            "name": "Palanga",
-            "code": "31"
-        },
-        {
-            "name": "Panevėžio Municipality",
-            "code": "32"
-        },
-        {
-            "name": "Rietavas",
-            "code": "39"
-        },
-        {
-            "name": "Šiaulių Municipality",
-            "code": "43"
-        },
-        {
-            "name": "Vilniaus Municipality",
-            "code": "57"
-        },
-        {
-            "name": "Visaginas",
-            "code": "59"
         }
     ],
     "LU": [
@@ -11619,38 +11619,6 @@
     ],
     "MA": [
         {
-            "name": "კასაბლანკა",
-            "code": "CAS"
-        },
-        {
-            "name": "მარაკეში",
-            "code": "MMD"
-        },
-        {
-            "name": "მარაკეში²",
-            "code": "MMN"
-        },
-        {
-            "name": "მარაკეში³",
-            "code": "SYB"
-        },
-        {
-            "name": "მეკნესი",
-            "code": "MEK"
-        },
-        {
-            "name": "რაბატი",
-            "code": "RAB"
-        },
-        {
-            "name": "ტანჟერი",
-            "code": "TNG"
-        },
-        {
-            "name": "ფესი",
-            "code": "FES"
-        },
-        {
             "name": "Agadir-Ida Ou Tanane",
             "code": "AGD"
         },
@@ -11933,13 +11901,41 @@
         {
             "name": "Zagora",
             "code": "ZAG"
+        },
+        {
+            "name": "კასაბლანკა",
+            "code": "CAS"
+        },
+        {
+            "name": "მარაკეში",
+            "code": "MMD"
+        },
+        {
+            "name": "მარაკეში²",
+            "code": "MMN"
+        },
+        {
+            "name": "მარაკეში³",
+            "code": "SYB"
+        },
+        {
+            "name": "მეკნესი",
+            "code": "MEK"
+        },
+        {
+            "name": "რაბატი",
+            "code": "RAB"
+        },
+        {
+            "name": "ტანჟერი",
+            "code": "TNG"
+        },
+        {
+            "name": "ფესი",
+            "code": "FES"
         }
     ],
     "MC": [
-        {
-            "name": "მონტე-კარლო",
-            "code": "MC"
-        },
         {
             "name": "Fontvieille",
             "code": "FO"
@@ -12003,9 +11999,17 @@
         {
             "name": "Vallon de la Rousse",
             "code": "VR"
+        },
+        {
+            "name": "მონტე-კარლო",
+            "code": "MC"
         }
     ],
     "MD": [
+        {
+            "name": "Transnistria",
+            "code": "SN"
+        },
         {
             "name": "ანენი-ნოის რაიონი",
             "code": "AN"
@@ -12149,10 +12153,6 @@
         {
             "name": "ჰინჩეშტის რაიონი",
             "code": "HI"
-        },
-        {
-            "name": "Transnistria",
-            "code": "SN"
         }
     ],
     "ME": [
@@ -12277,22 +12277,6 @@
     ],
     "MH": [
         {
-            "name": "კვაჯალეინი",
-            "code": "KWA"
-        },
-        {
-            "name": "მაჯურო",
-            "code": "MAJ"
-        },
-        {
-            "name": "რალიკის ჯაჭვი",
-            "code": "L"
-        },
-        {
-            "name": "რატაკის ჯაჭვი",
-            "code": "T"
-        },
-        {
             "name": "Ailinglaplap Atoll",
             "code": "ALL"
         },
@@ -12379,6 +12363,22 @@
         {
             "name": "Wotje Atoll",
             "code": "WTJ"
+        },
+        {
+            "name": "კვაჯალეინი",
+            "code": "KWA"
+        },
+        {
+            "name": "მაჯურო",
+            "code": "MAJ"
+        },
+        {
+            "name": "რალიკის ჯაჭვი",
+            "code": "L"
+        },
+        {
+            "name": "რატაკის ჯაჭვი",
+            "code": "T"
         }
     ],
     "MK": [
@@ -12725,10 +12725,6 @@
     ],
     "ML": [
         {
-            "name": "ბამაკო",
-            "code": "BKO"
-        },
-        {
             "name": "Gao",
             "code": "7"
         },
@@ -12767,6 +12763,10 @@
         {
             "name": "Tombouctou",
             "code": "6"
+        },
+        {
+            "name": "ბამაკო",
+            "code": "BKO"
         }
     ],
     "MM": [
@@ -13263,6 +13263,22 @@
     ],
     "MU": [
         {
+            "name": "Beau-Bassin Rose-Hill",
+            "code": "BR"
+        },
+        {
+            "name": "Curepipe",
+            "code": "CU"
+        },
+        {
+            "name": "Quatre Bornes",
+            "code": "QB"
+        },
+        {
+            "name": "Vacoas-Phoenix",
+            "code": "VP"
+        },
+        {
             "name": "აგალეგა",
             "code": "AG"
         },
@@ -13313,29 +13329,9 @@
         {
             "name": "ფლაკი",
             "code": "FL"
-        },
-        {
-            "name": "Beau-Bassin Rose-Hill",
-            "code": "BR"
-        },
-        {
-            "name": "Curepipe",
-            "code": "CU"
-        },
-        {
-            "name": "Quatre Bornes",
-            "code": "QB"
-        },
-        {
-            "name": "Vacoas-Phoenix",
-            "code": "VP"
         }
     ],
     "MV": [
-        {
-            "name": "მალე",
-            "code": "MLE"
-        },
         {
             "name": "Addu",
             "code": "01"
@@ -13443,6 +13439,10 @@
         {
             "name": "Vaavu",
             "code": "04"
+        },
+        {
+            "name": "მალე",
+            "code": "MLE"
         }
     ],
     "MW": [
@@ -13573,6 +13573,10 @@
     ],
     "MX": [
         {
+            "name": "Mexico City",
+            "code": "DIF"
+        },
+        {
             "name": "აგუასკალიენტესის შტატი",
             "code": "AGU"
         },
@@ -13699,10 +13703,6 @@
         {
             "name": "ხალისკო",
             "code": "JAL"
-        },
-        {
-            "name": "Mexico City",
-            "code": "DIF"
         }
     ],
     "MY": [
@@ -13911,54 +13911,6 @@
     ],
     "NG": [
         {
-            "name": "აბიის შტატი",
-            "code": "AB"
-        },
-        {
-            "name": "ადამავის შტატი",
-            "code": "AD"
-        },
-        {
-            "name": "აკვა-იბომის შტატი",
-            "code": "AK"
-        },
-        {
-            "name": "ანამბრის შტატი",
-            "code": "AN"
-        },
-        {
-            "name": "ბაიელსის შტატი",
-            "code": "BY"
-        },
-        {
-            "name": "ბაუჩის შტატი",
-            "code": "BA"
-        },
-        {
-            "name": "ბენუეს შტატი",
-            "code": "BE"
-        },
-        {
-            "name": "ბორნოს შტატი",
-            "code": "BO"
-        },
-        {
-            "name": "გომბეს შტატი",
-            "code": "GO"
-        },
-        {
-            "name": "დელტის შტატი",
-            "code": "DE"
-        },
-        {
-            "name": "ებონიის შტატი",
-            "code": "EB"
-        },
-        {
-            "name": "ედოს შტატი",
-            "code": "ED"
-        },
-        {
             "name": "Cross River",
             "code": "CR"
         },
@@ -14057,6 +14009,54 @@
         {
             "name": "Zamfara",
             "code": "ZA"
+        },
+        {
+            "name": "აბიის შტატი",
+            "code": "AB"
+        },
+        {
+            "name": "ადამავის შტატი",
+            "code": "AD"
+        },
+        {
+            "name": "აკვა-იბომის შტატი",
+            "code": "AK"
+        },
+        {
+            "name": "ანამბრის შტატი",
+            "code": "AN"
+        },
+        {
+            "name": "ბაიელსის შტატი",
+            "code": "BY"
+        },
+        {
+            "name": "ბაუჩის შტატი",
+            "code": "BA"
+        },
+        {
+            "name": "ბენუეს შტატი",
+            "code": "BE"
+        },
+        {
+            "name": "ბორნოს შტატი",
+            "code": "BO"
+        },
+        {
+            "name": "გომბეს შტატი",
+            "code": "GO"
+        },
+        {
+            "name": "დელტის შტატი",
+            "code": "DE"
+        },
+        {
+            "name": "ებონიის შტატი",
+            "code": "EB"
+        },
+        {
+            "name": "ედოს შტატი",
+            "code": "ED"
         }
     ],
     "NI": [
@@ -14131,6 +14131,18 @@
     ],
     "NL": [
         {
+            "name": "Aruba",
+            "code": "AW"
+        },
+        {
+            "name": "Curaçao",
+            "code": "CW"
+        },
+        {
+            "name": "Sint Maarten",
+            "code": "SX"
+        },
+        {
             "name": "ბონეირი",
             "code": "BQ1"
         },
@@ -14189,18 +14201,6 @@
         {
             "name": "ჩრდილოეთი ჰოლანდია",
             "code": "NH"
-        },
-        {
-            "name": "Aruba",
-            "code": "AW"
-        },
-        {
-            "name": "Curaçao",
-            "code": "CW"
-        },
-        {
-            "name": "Sint Maarten",
-            "code": "SX"
         }
     ],
     "NO": [
@@ -14427,6 +14427,18 @@
     ],
     "NZ": [
         {
+            "name": "Nelson",
+            "code": "NSN"
+        },
+        {
+            "name": "North Island",
+            "code": "N"
+        },
+        {
+            "name": "South Island",
+            "code": "S"
+        },
+        {
             "name": "ბეი-ოვ-პლენტის რეგიონი",
             "code": "BOP"
         },
@@ -14489,18 +14501,6 @@
         {
             "name": "ჰოკს-ბეის რეგიონი",
             "code": "HKB"
-        },
-        {
-            "name": "Nelson",
-            "code": "NSN"
-        },
-        {
-            "name": "North Island",
-            "code": "N"
-        },
-        {
-            "name": "South Island",
-            "code": "S"
         }
     ],
     "OM": [
@@ -14559,6 +14559,10 @@
     ],
     "PA": [
         {
+            "name": "West Panamá",
+            "code": "10"
+        },
+        {
             "name": "ბოკას-დელ-ტოროს პროვინცია",
             "code": "1"
         },
@@ -14605,10 +14609,6 @@
         {
             "name": "ჩირიკის პროვინცია",
             "code": "4"
-        },
-        {
-            "name": "West Panamá",
-            "code": "10"
         }
     ],
     "PE": [
@@ -14808,10 +14808,6 @@
         }
     ],
     "PH": [
-        {
-            "name": "ლაგუნა",
-            "code": "LAG"
-        },
         {
             "name": "Abra",
             "code": "ABR"
@@ -15199,9 +15195,25 @@
         {
             "name": "Zamboanga Sibugay",
             "code": "ZSI"
+        },
+        {
+            "name": "ლაგუნა",
+            "code": "LAG"
         }
     ],
     "PK": [
+        {
+            "name": "Azad Kashmir",
+            "code": "JK"
+        },
+        {
+            "name": "Federally Administered Tribal Areas",
+            "code": "TA"
+        },
+        {
+            "name": "Islamabad",
+            "code": "IS"
+        },
         {
             "name": "ბელუჯისტანი",
             "code": "BA"
@@ -15221,18 +15233,6 @@
         {
             "name": "ხაიბერ-პახტუნხვა",
             "code": "KP"
-        },
-        {
-            "name": "Azad Kashmir",
-            "code": "JK"
-        },
-        {
-            "name": "Federally Administered Tribal Areas",
-            "code": "TA"
-        },
-        {
-            "name": "Islamabad",
-            "code": "IS"
         }
     ],
     "PL": [
@@ -15591,10 +15591,6 @@
     ],
     "QA": [
         {
-            "name": "დოჰა",
-            "code": "DA"
-        },
-        {
             "name": "Al Daayen",
             "code": "ZA"
         },
@@ -15621,6 +15617,10 @@
         {
             "name": "Umm Salal",
             "code": "US"
+        },
+        {
+            "name": "დოჰა",
+            "code": "DA"
         }
     ],
     "RO": [
@@ -15795,6 +15795,14 @@
     ],
     "RS": [
         {
+            "name": "Kosovo-Metohija",
+            "code": "KM"
+        },
+        {
+            "name": "Kosovska Mitrovica",
+            "code": "28"
+        },
+        {
             "name": "ბელგრადი",
             "code": "00"
         },
@@ -15913,14 +15921,6 @@
         {
             "name": "ჩრდილო-ბაჩის რაიონი",
             "code": "01"
-        },
-        {
-            "name": "Kosovo-Metohija",
-            "code": "KM"
-        },
-        {
-            "name": "Kosovska Mitrovica",
-            "code": "28"
         }
     ],
     "RU": [
@@ -16479,6 +16479,10 @@
     ],
     "SD": [
         {
+            "name": "West Kurdufan",
+            "code": "GK"
+        },
+        {
             "name": "ალ-ქადარიფის შტატი",
             "code": "GD"
         },
@@ -16545,21 +16549,9 @@
         {
             "name": "ხარტუმის შტატი",
             "code": "KH"
-        },
-        {
-            "name": "West Kurdufan",
-            "code": "GK"
         }
     ],
     "SE": [
-        {
-            "name": "სკონე",
-            "code": "M"
-        },
-        {
-            "name": "სტოკჰოლმი",
-            "code": "AB"
-        },
         {
             "name": "Blekinge",
             "code": "K"
@@ -16635,6 +16627,14 @@
         {
             "name": "Västra Götaland",
             "code": "O"
+        },
+        {
+            "name": "სკონე",
+            "code": "M"
+        },
+        {
+            "name": "სტოკჰოლმი",
+            "code": "AB"
         }
     ],
     "SG": [
@@ -16661,16 +16661,16 @@
     ],
     "SH": [
         {
+            "name": "Tristan da Cunha",
+            "code": "TA"
+        },
+        {
             "name": "ამაღლების კუნძული",
             "code": "AC"
         },
         {
             "name": "წმინდა ელენეს კუნძული",
             "code": "HL"
-        },
-        {
-            "name": "Tristan da Cunha",
-            "code": "TA"
         }
     ],
     "SI": [
@@ -17975,10 +17975,6 @@
     ],
     "TD": [
         {
-            "name": "ნჯამენა",
-            "code": "ND"
-        },
-        {
             "name": "Bahr el Gazel",
             "code": "BG"
         },
@@ -18065,6 +18061,10 @@
         {
             "name": "Wadi Fira",
             "code": "WF"
+        },
+        {
+            "name": "ნჯამენა",
+            "code": "ND"
         }
     ],
     "TG": [
@@ -18090,106 +18090,6 @@
         }
     ],
     "TH": [
-        {
-            "name": "ბანგკოკი",
-            "code": "10"
-        },
-        {
-            "name": "კანჩანაბურის პროვინცია",
-            "code": "71"
-        },
-        {
-            "name": "ლამპანგის პროვინცია",
-            "code": "52"
-        },
-        {
-            "name": "ლამფუნის პროვინცია",
-            "code": "51"
-        },
-        {
-            "name": "მეჰონგსონის პროვინცია",
-            "code": "58"
-        },
-        {
-            "name": "ნანის პროვინცია",
-            "code": "55"
-        },
-        {
-            "name": "პრაჩინბურის პროვინცია",
-            "code": "25"
-        },
-        {
-            "name": "პრაჩუაპქირიქანის პროვინცია",
-            "code": "77"
-        },
-        {
-            "name": "რაიონგის პროვინცია",
-            "code": "21"
-        },
-        {
-            "name": "რანონგის პროვინცია",
-            "code": "85"
-        },
-        {
-            "name": "რატჩაბურის პროვინცია",
-            "code": "70"
-        },
-        {
-            "name": "საკეოს პროვინცია",
-            "code": "27"
-        },
-        {
-            "name": "ტაკის პროვინცია",
-            "code": "63"
-        },
-        {
-            "name": "ტრატის პროვინცია",
-            "code": "23"
-        },
-        {
-            "name": "უტარადიტის პროვინცია",
-            "code": "53"
-        },
-        {
-            "name": "ფაიაუს პროვინცია",
-            "code": "56"
-        },
-        {
-            "name": "ფეტჩაბურის პროვინცია",
-            "code": "76"
-        },
-        {
-            "name": "ფიტსანულოკის პროვინცია",
-            "code": "65"
-        },
-        {
-            "name": "ფრეს პროვინცია",
-            "code": "54"
-        },
-        {
-            "name": "ფხუკეტის პროვინცია",
-            "code": "83"
-        },
-        {
-            "name": "ჩანთაბურის პროვინცია",
-            "code": "22"
-        },
-        {
-            "name": "ჩაჩენგსაოს პროვინცია",
-            "code": "24"
-        },
-        {
-            "name": "ჩიანგმაის პროვინცია",
-            "code": "50"
-        },
-        {
-            "name": "ჩიანგრაის პროვინცია",
-            "code": "57"
-        },
-        {
-            "name": "ჩონბურის პროვინცია",
-            "code": "20"
-        },
         {
             "name": "Amnat Charoen",
             "code": "37"
@@ -18401,6 +18301,106 @@
         {
             "name": "Yasothon",
             "code": "35"
+        },
+        {
+            "name": "ბანგკოკი",
+            "code": "10"
+        },
+        {
+            "name": "კანჩანაბურის პროვინცია",
+            "code": "71"
+        },
+        {
+            "name": "ლამპანგის პროვინცია",
+            "code": "52"
+        },
+        {
+            "name": "ლამფუნის პროვინცია",
+            "code": "51"
+        },
+        {
+            "name": "მეჰონგსონის პროვინცია",
+            "code": "58"
+        },
+        {
+            "name": "ნანის პროვინცია",
+            "code": "55"
+        },
+        {
+            "name": "პრაჩინბურის პროვინცია",
+            "code": "25"
+        },
+        {
+            "name": "პრაჩუაპქირიქანის პროვინცია",
+            "code": "77"
+        },
+        {
+            "name": "რაიონგის პროვინცია",
+            "code": "21"
+        },
+        {
+            "name": "რანონგის პროვინცია",
+            "code": "85"
+        },
+        {
+            "name": "რატჩაბურის პროვინცია",
+            "code": "70"
+        },
+        {
+            "name": "საკეოს პროვინცია",
+            "code": "27"
+        },
+        {
+            "name": "ტაკის პროვინცია",
+            "code": "63"
+        },
+        {
+            "name": "ტრატის პროვინცია",
+            "code": "23"
+        },
+        {
+            "name": "უტარადიტის პროვინცია",
+            "code": "53"
+        },
+        {
+            "name": "ფაიაუს პროვინცია",
+            "code": "56"
+        },
+        {
+            "name": "ფეტჩაბურის პროვინცია",
+            "code": "76"
+        },
+        {
+            "name": "ფიტსანულოკის პროვინცია",
+            "code": "65"
+        },
+        {
+            "name": "ფრეს პროვინცია",
+            "code": "54"
+        },
+        {
+            "name": "ფხუკეტის პროვინცია",
+            "code": "83"
+        },
+        {
+            "name": "ჩანთაბურის პროვინცია",
+            "code": "22"
+        },
+        {
+            "name": "ჩაჩენგსაოს პროვინცია",
+            "code": "24"
+        },
+        {
+            "name": "ჩიანგმაის პროვინცია",
+            "code": "50"
+        },
+        {
+            "name": "ჩიანგრაის პროვინცია",
+            "code": "57"
+        },
+        {
+            "name": "ჩონბურის პროვინცია",
+            "code": "20"
         }
     ],
     "TJ": [
@@ -18953,26 +18953,6 @@
     ],
     "TT": [
         {
-            "name": "არიმა",
-            "code": "ARI"
-        },
-        {
-            "name": "პოინტ-ფორტინი",
-            "code": "PTF"
-        },
-        {
-            "name": "პორტ-ოვ-სპეინი",
-            "code": "POS"
-        },
-        {
-            "name": "ტობაგო",
-            "code": "TOB"
-        },
-        {
-            "name": "ჩაგუანასი",
-            "code": "CHA"
-        },
-        {
             "name": "Couva-Tabaquite-Talparo",
             "code": "CTT"
         },
@@ -19011,6 +18991,26 @@
         {
             "name": "Tunapuna-Piarco",
             "code": "TUP"
+        },
+        {
+            "name": "არიმა",
+            "code": "ARI"
+        },
+        {
+            "name": "პოინტ-ფორტინი",
+            "code": "PTF"
+        },
+        {
+            "name": "პორტ-ოვ-სპეინი",
+            "code": "POS"
+        },
+        {
+            "name": "ტობაგო",
+            "code": "TOB"
+        },
+        {
+            "name": "ჩაგუანასი",
+            "code": "CHA"
         }
     ],
     "TV": [
@@ -19048,14 +19048,6 @@
         }
     ],
     "TW": [
-        {
-            "name": "კაოჰსიუნგი",
-            "code": "KHH"
-        },
-        {
-            "name": "ტაიბეი",
-            "code": "TPE"
-        },
         {
             "name": "Changhua",
             "code": "CHA"
@@ -19135,6 +19127,14 @@
         {
             "name": "Yunlin",
             "code": "YUN"
+        },
+        {
+            "name": "კაოჰსიუნგი",
+            "code": "KHH"
+        },
+        {
+            "name": "ტაიბეი",
+            "code": "TPE"
         }
     ],
     "TZ": [
@@ -19370,22 +19370,6 @@
         }
     ],
     "UG": [
-        {
-            "name": "აღმოსავლეთის რეგიონი",
-            "code": "E"
-        },
-        {
-            "name": "დასავლეთის რეგიონი",
-            "code": "W"
-        },
-        {
-            "name": "ჩრდილოეთის რეგიონი",
-            "code": "N"
-        },
-        {
-            "name": "ცენტრალური რეგიონი",
-            "code": "C"
-        },
         {
             "name": "Abim",
             "code": "314"
@@ -19873,6 +19857,22 @@
         {
             "name": "Zombo²",
             "code": "330"
+        },
+        {
+            "name": "აღმოსავლეთის რეგიონი",
+            "code": "E"
+        },
+        {
+            "name": "დასავლეთის რეგიონი",
+            "code": "W"
+        },
+        {
+            "name": "ჩრდილოეთის რეგიონი",
+            "code": "N"
+        },
+        {
+            "name": "ცენტრალური რეგიონი",
+            "code": "C"
         }
     ],
     "UM": [
@@ -19914,6 +19914,30 @@
         }
     ],
     "US": [
+        {
+            "name": "American Samoa",
+            "code": "AS"
+        },
+        {
+            "name": "Guam",
+            "code": "GU"
+        },
+        {
+            "name": "Northern Mariana Islands",
+            "code": "MP"
+        },
+        {
+            "name": "Puerto Rico",
+            "code": "PR"
+        },
+        {
+            "name": "U.S. Outlying Islands",
+            "code": "UM"
+        },
+        {
+            "name": "U.S. Virgin Islands",
+            "code": "VI"
+        },
         {
             "name": "აიდაჰო",
             "code": "ID"
@@ -20117,30 +20141,6 @@
         {
             "name": "ჰავაის შტატი",
             "code": "HI"
-        },
-        {
-            "name": "American Samoa",
-            "code": "AS"
-        },
-        {
-            "name": "Guam",
-            "code": "GU"
-        },
-        {
-            "name": "Northern Mariana Islands",
-            "code": "MP"
-        },
-        {
-            "name": "Puerto Rico",
-            "code": "PR"
-        },
-        {
-            "name": "U.S. Outlying Islands",
-            "code": "UM"
-        },
-        {
-            "name": "U.S. Virgin Islands",
-            "code": "VI"
         }
     ],
     "UY": [
@@ -20223,18 +20223,6 @@
     ],
     "UZ": [
         {
-            "name": "სურხანდარიის ოლქი",
-            "code": "SU"
-        },
-        {
-            "name": "ტაშკენტი",
-            "code": "TK"
-        },
-        {
-            "name": "ყარაყალპაკეთის რესპუბლიკა",
-            "code": "QR"
-        },
-        {
             "name": "Andijan",
             "code": "AN"
         },
@@ -20277,6 +20265,18 @@
         {
             "name": "Xorazm",
             "code": "XO"
+        },
+        {
+            "name": "სურხანდარიის ოლქი",
+            "code": "SU"
+        },
+        {
+            "name": "ტაშკენტი",
+            "code": "TK"
+        },
+        {
+            "name": "ყარაყალპაკეთის რესპუბლიკა",
+            "code": "QR"
         }
     ],
     "VC": [
@@ -20408,14 +20408,6 @@
         }
     ],
     "VN": [
-        {
-            "name": "ხოშიმინი",
-            "code": "SG"
-        },
-        {
-            "name": "ჰანოი",
-            "code": "HN"
-        },
         {
             "name": "An Giang",
             "code": "44"
@@ -20659,6 +20651,14 @@
         {
             "name": "Yên Bái",
             "code": "06"
+        },
+        {
+            "name": "ხოშიმინი",
+            "code": "SG"
+        },
+        {
+            "name": "ჰანოი",
+            "code": "HN"
         }
     ],
     "VU": [
@@ -20689,16 +20689,16 @@
     ],
     "WF": [
         {
+            "name": "Uvea",
+            "code": "UV"
+        },
+        {
             "name": "ალო",
             "code": "AL"
         },
         {
             "name": "სიგავი",
             "code": "SG"
-        },
-        {
-            "name": "Uvea",
-            "code": "UV"
         }
     ],
     "WS": [
@@ -20748,6 +20748,10 @@
         }
     ],
     "YE": [
+        {
+            "name": "Arkhabil Suqutra",
+            "code": "SU"
+        },
         {
             "name": "აბიანის მუჰაფაზა",
             "code": "AB"
@@ -20831,10 +20835,6 @@
         {
             "name": "ჰოდეიდის მუჰაფაზა",
             "code": "HU"
-        },
-        {
-            "name": "Arkhabil Suqutra",
-            "code": "SU"
         }
     ],
     "ZA": [
@@ -20919,6 +20919,14 @@
     ],
     "ZW": [
         {
+            "name": "Bulawayo",
+            "code": "BU"
+        },
+        {
+            "name": "Harare",
+            "code": "HA"
+        },
+        {
             "name": "აღმოსავლეთი მაშონალენდი",
             "code": "ME"
         },
@@ -20949,14 +20957,6 @@
         {
             "name": "ცენტრალური მაშონალენდი",
             "code": "MC"
-        },
-        {
-            "name": "Bulawayo",
-            "code": "BU"
-        },
-        {
-            "name": "Harare",
-            "code": "HA"
         }
     ]
 }

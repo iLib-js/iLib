@@ -513,7 +513,7 @@ module.exports.testdatefmtrange = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "06/20/2011 – 11/28/2011");
+        test.equal(fmt.format(start, end), '06/20 – 11/28/2011');
         test.done();
     },
     
@@ -567,7 +567,7 @@ module.exports.testdatefmtrange = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "06/20/2011 – 11/28/2011");
+        test.equal(fmt.format(start, end), '06/20 – 11/28/2011');
         test.done();
     },
     
@@ -703,7 +703,7 @@ module.exports.testdatefmtrange = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "2011-06-20, 1:45 PM – 4:30 PM");
+        test.equal(fmt.format(start, end), '2011-06-20, 1:45 p.m. – 4:30 p.m.');
         test.done();
     },
     

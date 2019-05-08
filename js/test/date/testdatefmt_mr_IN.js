@@ -1507,7 +1507,7 @@ module.exports.testdatefmt_mr_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.formatRelative(reference, date), "4 दिवसांमध्ये");
+        test.equal(fmt.formatRelative(reference, date), "येत्या 4 दिवसांमध्ये");
         test.done();
     },
     testDateFmtFormatRelativeWithinFortnightBefore_mr_IN: function(test) {
@@ -1621,7 +1621,7 @@ module.exports.testdatefmt_mr_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.formatRelative(reference, date), "16 महिन्यांमध्ये");
+        test.equal(fmt.formatRelative(reference, date), "येत्या 16 महिन्यांमध्ये");
         test.done();
     },
     testDateFmtFormatRelativeWithinTwoYearsBefore_mr_IN: function(test) {
@@ -1678,7 +1678,7 @@ module.exports.testdatefmt_mr_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.formatRelative(reference, date), "14 वर्षांमध्ये");
+        test.equal(fmt.formatRelative(reference, date), "येत्या 14 वर्षांमध्ये");
         test.done();
     },
     testDateFmtFormatRelativeYearsBefore_mr_IN: function(test) {

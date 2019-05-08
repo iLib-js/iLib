@@ -188,7 +188,7 @@ module.exports.testdatefmtrangeasync = {
                             millisecond: 0,
                             sync: false,
                             onLoad: function(end) {
-                                test.equal(fmt.format(start, end), "06/20/2011 – 11/28/2011");
+                                test.equal(fmt.format(start, end), "06/20 – 11/28/2011");
                                 test.done();
                             }
                         });

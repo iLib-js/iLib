@@ -110,7 +110,7 @@ module.exports.testdatefmtrange_gu_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "31 ડિસેમ્બર, 2011 01:45 PM – 02:30 PM");
+        test.equal(fmt.format(start, end), '31 ડિસેમ્બર, 2011 એ 01:45 PM વાગ્યે – 02:30 PM વાગ્યે');
         test.done();
     },
     testDateRngFmtguINRangeinDayFull: function(test) {
@@ -136,7 +136,7 @@ module.exports.testdatefmtrange_gu_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "31 ડિસેમ્બર, 2011 01:45 PM – 02:30 PM");
+        test.equal(fmt.format(start, end), '31 ડિસેમ્બર, 2011 એ 01:45 PM વાગ્યે – 02:30 PM વાગ્યે');
         test.done();
     },
     
@@ -215,7 +215,7 @@ module.exports.testdatefmtrange_gu_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "30 ડિસેમ્બર, 2011 01:45 PM – 31 ડિસેમ્બર, 2011 02:30 PM");
+        test.equal(fmt.format(start, end), '30 ડિસેમ્બર, 2011 એ 01:45 PM વાગ્યે – 31 ડિસેમ્બર, 2011 એ 02:30 PM વાગ્યે');
         test.done();
     },
     testDateRngFmtguINRangeNextDayFull: function(test) {
@@ -241,7 +241,7 @@ module.exports.testdatefmtrange_gu_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "30 ડિસેમ્બર, 2011 01:45 PM – 31 ડિસેમ્બર, 2011 02:30 PM");
+        test.equal(fmt.format(start, end), '30 ડિસેમ્બર, 2011 એ 01:45 PM વાગ્યે – 31 ડિસેમ્બર, 2011 એ 02:30 PM વાગ્યે');
         test.done();
     },
     

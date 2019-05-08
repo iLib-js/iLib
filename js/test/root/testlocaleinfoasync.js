@@ -108,7 +108,7 @@ module.exports.testlocaleinfoasync = {
             onLoad: function(info) {
                 test.ok(info !== null);
                 test.equal(info.getDecimalSeparator(), ",");
-                test.equal(info.getGroupingSeparator(), " ");
+                test.equal(info.getGroupingSeparator(), ' ');
                 test.equal(info.getPercentageFormat(), "{n} %");
                 test.equal(info.getCurrencyFormats().common, "{n} {s}");
                 test.done();

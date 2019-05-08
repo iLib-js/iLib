@@ -47,7 +47,7 @@ module.exports.testdurfmt_or_IN = {
             minute: 1,
             second: 1
         });
-        test.equal(duration.toString(), "1 y, 1 m, 1 w, 1 d, 1 h, 1 min, 1 s");
+        test.equal(duration.toString(), '1ବର୍ଷ 1ମାସ 1ସପ୍ 1ଦିନ 1ଘଣ୍ଟା 1ମିନିଟ୍‌ 1ସେକ୍');
         test.done();
     },
     
@@ -69,7 +69,7 @@ module.exports.testdurfmt_or_IN = {
             minute: 1,
             second: 1
         });
-        test.equal(duration.toString(), "1 y, 1 m, 1 w, 1 d, 1 h, 1 min, 1 s");
+        test.equal(duration.toString(), '1ବର୍ଷ 1ମାସ 1ସପ୍ 1ଦିନ 1ଘଣ୍ଟା 1ମିନିଟ୍‌ 1ସେକ୍');
         test.done();
     },
     
@@ -91,7 +91,7 @@ module.exports.testdurfmt_or_IN = {
             minute: 1,
             second: 1
         });
-        test.equal(duration.toString(), "1 y, 1 m, 1 w, 1 d, 1:01:01");
+        test.equal(duration.toString(), '1ବର୍ଷ 1ମାସ 1ସପ୍ 1ଦିନ 1:01:01');
         test.done();
     },
     
@@ -112,7 +112,7 @@ module.exports.testdurfmt_or_IN = {
             minute: 1,
             second: 1
         });
-        test.equal(duration.toString(), "1 y, 1 m, 1 w, 1 d, 1 h, 1 min, 1 s");
+        test.equal(duration.toString(), '1ବର୍ଷ 1ମାସ 1ସପ୍ 1ଦିନ 1ଘଣ୍ଟା 1ମିନିଟ୍‌ 1ସେକ୍' );
         test.done();
     },
     
@@ -133,7 +133,7 @@ module.exports.testdurfmt_or_IN = {
             minute: 1,
             second: 1
         });
-        test.equal(duration.toString(), "1 y, 1 m, 1 w, 1 d, 1 h, 1 min, 1 s");
+        test.equal(duration.toString(), '1 ବର୍ଷ, 1 ମାସ, 1 ସପ୍ତାହ, 1 ଦିନ, 1 ଘଣ୍ଟା, 1 ମିନିଟ୍‌, 1 ସେକେଣ୍ଡ');
         test.done();
     },
     
@@ -154,7 +154,7 @@ module.exports.testdurfmt_or_IN = {
             minute: 1,
             second: 1
         });
-        test.equal(duration.toString(), "1 y, 1 m, 1 w, 1 d, 1 h, 1 min, 1 s");
+        test.equal(duration.toString(), '1 ବର୍ଷ, 1 ମାସ, 1 ସପ୍ତାହ, 1 ଦିନ, 1 ଘଣ୍ଟା, 1 ମିନିଟ୍‌, 1 ସେକେଣ୍ଡ');
         test.done();
     },
     
@@ -177,7 +177,7 @@ module.exports.testdurfmt_or_IN = {
                     minute: 2,
                     second: 2
                 });
-                test.equal(duration.toString(), "2 y, 2 m, 2 w, 2 d, 2 h, 2 min, 2 s");
+                test.equal(duration.toString(), '2 ବର୍ଷ, 2 ମାସ, 2 ସପ୍ତାହ, 2 ଦିନ, 2 ଘଣ୍ଟା, 2 ମିନିଟ୍, 2 ସେକେଣ୍ଡ');
                 test.done();
             }
         });
@@ -202,7 +202,7 @@ module.exports.testdurfmt_or_IN = {
                     minute: 1,
                     second: 1
                 });
-                test.equal(duration.toString(), "1 y, 1 m, 1 w, 1 d, 1:01:01");
+                test.equal(duration.toString(), '1ବର୍ଷ 1ମାସ 1ସପ୍ 1ଦିନ 1:01:01');
                 test.done();
             }
         });

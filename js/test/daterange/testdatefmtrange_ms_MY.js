@@ -57,7 +57,7 @@ module.exports.testdatefmtrange_ms_MY = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "31/12/11 1:00 PTG – 2:00 PTG");
+        test.equal(fmt.format(start, end), '31/12/11, 1:00 PTG – 2:00 PTG');
         test.done();
     },
     testDateRngFmtMYRangeInDayMedium: function(test) {
@@ -83,7 +83,7 @@ module.exports.testdatefmtrange_ms_MY = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "31 Dis 2011 1:00 PTG – 2:00 PTG");
+        test.equal(fmt.format(start, end), '31 Dis 2011, 1:00 PTG – 2:00 PTG');
         test.done();
     },
     testDateRngFmtMYRangeInDayLong: function(test) {
@@ -162,7 +162,7 @@ module.exports.testdatefmtrange_ms_MY = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "30/12/11 1:00 PTG – 31/12/11 2:00 PTG");
+        test.equal(fmt.format(start, end), "30/12/11, 1:00 PTG – 31/12/11, 2:00 PTG");
         test.done();
     },
     testDateRngFmtMYRangeNextDayMedium: function(test) {
@@ -188,7 +188,7 @@ module.exports.testdatefmtrange_ms_MY = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "30 Dis 2011 1:00 PTG – 31 Dis 2011 2:00 PTG");
+        test.equal(fmt.format(start, end), '30 Dis 2011, 1:00 PTG – 31 Dis 2011, 2:00 PTG');
         test.done();
     },
     testDateRngFmtMYRangeNextDayLong: function(test) {

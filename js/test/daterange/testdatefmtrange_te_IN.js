@@ -109,7 +109,7 @@ module.exports.testdatefmtrange_te_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "31 డిసెంబర్, 2011 1:45 PM – 2:30 PM");
+        test.equal(fmt.format(start, end), '31 డిసెంబర్, 2011 1:45 PMకి – 2:30 PMకి');
         test.done();
     },
     testDateRngFmtRangeinDayFull_te_IN: function(test) {
@@ -135,7 +135,7 @@ module.exports.testdatefmtrange_te_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "31, డిసెంబర్ 2011 1:45 PM – 2:30 PM");
+        test.equal(fmt.format(start, end), '31, డిసెంబర్ 2011 1:45 PMకి – 2:30 PMకి');
         test.done();
     },
     
@@ -214,7 +214,7 @@ module.exports.testdatefmtrange_te_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "30 డిసెంబర్, 2011 1:45 PM – 31 డిసెంబర్, 2011 2:30 PM");
+        test.equal(fmt.format(start, end), '30 డిసెంబర్, 2011 1:45 PMకి – 31 డిసెంబర్, 2011 2:30 PMకి');
         test.done();
     },
     testDateRngFmtRangeNextDayFull_te_IN: function(test) {
@@ -240,7 +240,7 @@ module.exports.testdatefmtrange_te_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "30, డిసెంబర్ 2011 1:45 PM – 31, డిసెంబర్ 2011 2:30 PM");
+        test.equal(fmt.format(start, end), '30, డిసెంబర్ 2011 1:45 PMకి – 31, డిసెంబర్ 2011 2:30 PMకి');
         test.done();
     },
     

@@ -83,7 +83,7 @@ module.exports.testdatefmtrange_hi_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "31/12/2011, 1:45 अपराह्न – 2:30 अपराह्न");
+        test.equal(fmt.format(start, end), '31 दिस॰ 2011, 1:45 अपराह्न – 2:30 अपराह्न');
         test.done();
     },
     testDateRngFmtRangeinDayLong_hi_IN: function(test) {
@@ -188,7 +188,7 @@ module.exports.testdatefmtrange_hi_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "30/12/2011, 1:45 अपराह्न – 31/12/2011, 2:30 अपराह्न");
+        test.equal(fmt.format(start, end), '30 दिस॰ 2011, 1:45 अपराह्न – 31 दिस॰ 2011, 2:30 अपराह्न');
         test.done();
     },
     testDateRngFmtRangeNextDayLong_hi_IN: function(test) {
@@ -293,7 +293,7 @@ module.exports.testdatefmtrange_hi_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "20 – 31/12/2011");
+        test.equal(fmt.format(start, end), '20 – 31 दिस॰ 2011');
         test.done();
     },
     testDateRngFmtRangeMultiDayLong_hi_IN: function(test) {
@@ -398,7 +398,7 @@ module.exports.testdatefmtrange_hi_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "20/11 – 31/12/2011");
+        test.equal(fmt.format(start, end), '20 नव॰ – 31 दिस॰ 2011');
         test.done();
     },
     testDateRngFmtRangeNextMonthLong_hi_IN: function(test) {
@@ -503,7 +503,7 @@ module.exports.testdatefmtrange_hi_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "20/11/2011 – 31/01/2012");
+        test.equal(fmt.format(start, end), '20 नव॰ 2011 – 31 जन॰ 2012');
         test.done();
     },
     testDateRngFmtRangeNextYearLong_hi_IN: function(test) {
@@ -608,7 +608,7 @@ module.exports.testdatefmtrange_hi_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "11/2011 – 01/2014");
+        test.equal(fmt.format(start, end), 'नव॰ 2011 – जन॰ 2014');
         test.done();
     },
     testDateRngFmtRangeMultiYearLong_hi_IN: function(test) {

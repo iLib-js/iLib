@@ -108,7 +108,7 @@ module.exports.testdatefmtrange_fr_CA = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "31 décembre 2011 de 13 h 45 à 14 h 30");
+        test.equal(fmt.format(start, end), '31 décembre 2011 à 13 h 45 – 14 h 30');
         test.done();
     },
     testDateRngFmtCARangeInDayFull: function(test) {
@@ -134,7 +134,7 @@ module.exports.testdatefmtrange_fr_CA = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "31 décembre 2011 de 13 h 45 à 14 h 30");
+        test.equal(fmt.format(start, end), '31 décembre 2011 à 13 h 45 – 14 h 30');
         test.done();
     },
     

@@ -1,7 +1,7 @@
 {
     "scripts": [
-        "Hant",
-        "Hans"
+        "Hans",
+        "Hant"
     ],
     "generated": true
 }

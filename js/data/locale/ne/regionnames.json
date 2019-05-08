@@ -31,10 +31,6 @@
     ],
     "AE": [
         {
-            "name": "दुबईको अमिरात",
-            "code": "DU"
-        },
-        {
             "name": "Abu Dhabi",
             "code": "AZ"
         },
@@ -57,25 +53,13 @@
         {
             "name": "Umm al-Quwain",
             "code": "UQ"
+        },
+        {
+            "name": "दुबईको अमिरात",
+            "code": "DU"
         }
     ],
     "AF": [
-        {
-            "name": "कुन्डुज",
-            "code": "KDZ"
-        },
-        {
-            "name": "पर्वान",
-            "code": "PAR"
-        },
-        {
-            "name": "फर्याब",
-            "code": "FYB"
-        },
-        {
-            "name": "समन्गन",
-            "code": "SAM"
-        },
         {
             "name": "Badakhshan",
             "code": "BDS"
@@ -195,6 +179,22 @@
         {
             "name": "Zabul",
             "code": "ZAB"
+        },
+        {
+            "name": "कुन्डुज",
+            "code": "KDZ"
+        },
+        {
+            "name": "पर्वान",
+            "code": "PAR"
+        },
+        {
+            "name": "फर्याब",
+            "code": "FYB"
+        },
+        {
+            "name": "समन्गन",
+            "code": "SAM"
         }
     ],
     "AG": [
@@ -232,10 +232,6 @@
         }
     ],
     "AL": [
-        {
-            "name": "कोर्से काउन्टी",
-            "code": "06"
-        },
         {
             "name": "Berat",
             "code": "BR"
@@ -423,6 +419,10 @@
         {
             "name": "Vlorë County",
             "code": "12"
+        },
+        {
+            "name": "कोर्से काउन्टी",
+            "code": "06"
         }
     ],
     "AM": [
@@ -547,14 +547,6 @@
     ],
     "AR": [
         {
-            "name": "चाको क्षेत्र",
-            "code": "H"
-        },
-        {
-            "name": "ब्यूनस आयर्स",
-            "code": "C"
-        },
-        {
             "name": "Buenos Aires Province",
             "code": "B"
         },
@@ -641,6 +633,14 @@
         {
             "name": "Tucumán",
             "code": "T"
+        },
+        {
+            "name": "चाको क्षेत्र",
+            "code": "H"
+        },
+        {
+            "name": "ब्यूनस आयर्स",
+            "code": "C"
         }
     ],
     "AT": [
@@ -683,6 +683,10 @@
     ],
     "AU": [
         {
+            "name": "Northern Territory",
+            "code": "NT"
+        },
+        {
             "name": "अस्ट्रेलियन राजधानी क्षेत्र",
             "code": "ACT"
         },
@@ -709,10 +713,6 @@
         {
             "name": "भिक्टोरिया",
             "code": "VIC"
-        },
-        {
-            "name": "Northern Territory",
-            "code": "NT"
         }
     ],
     "AZ": [
@@ -1131,10 +1131,6 @@
     ],
     "BD": [
         {
-            "name": "गाजीपुर जिल्ला",
-            "code": "18"
-        },
-        {
             "name": "Bagerhat",
             "code": "05"
         },
@@ -1417,17 +1413,13 @@
         {
             "name": "Thakurgaon",
             "code": "64"
+        },
+        {
+            "name": "गाजीपुर जिल्ला",
+            "code": "18"
         }
     ],
     "BE": [
-        {
-            "name": "ब्रसेल्स राजधानी क्षेत्र",
-            "code": "BRU"
-        },
-        {
-            "name": "वालुन क्षेत्र",
-            "code": "WAL"
-        },
         {
             "name": "Antwerp",
             "code": "VAN"
@@ -1471,6 +1463,14 @@
         {
             "name": "West Flanders",
             "code": "VWV"
+        },
+        {
+            "name": "ब्रसेल्स राजधानी क्षेत्र",
+            "code": "BRU"
+        },
+        {
+            "name": "वालुन क्षेत्र",
+            "code": "WAL"
         }
     ],
     "BF": [
@@ -2039,14 +2039,6 @@
     ],
     "BR": [
         {
-            "name": "अलागोआस",
-            "code": "AL"
-        },
-        {
-            "name": "साँओ पाउलो",
-            "code": "SP"
-        },
-        {
             "name": "Acre",
             "code": "AC"
         },
@@ -2145,6 +2137,14 @@
         {
             "name": "Tocantins",
             "code": "TO"
+        },
+        {
+            "name": "अलागोआस",
+            "code": "AL"
+        },
+        {
+            "name": "साँओ पाउलो",
+            "code": "SP"
         }
     ],
     "BS": [
@@ -2275,10 +2275,6 @@
     ],
     "BT": [
         {
-            "name": "थिम्फू जिल्ला",
-            "code": "15"
-        },
-        {
             "name": "Bumthang",
             "code": "33"
         },
@@ -2353,6 +2349,10 @@
         {
             "name": "Zhemgang",
             "code": "34"
+        },
+        {
+            "name": "थिम्फू जिल्ला",
+            "code": "15"
         }
     ],
     "BW": [
@@ -2423,14 +2423,6 @@
     ],
     "BY": [
         {
-            "name": "मिन्स्क",
-            "code": "HM"
-        },
-        {
-            "name": "मोगिलेभ क्षेत्र",
-            "code": "MA"
-        },
-        {
             "name": "Brest",
             "code": "BR"
         },
@@ -2449,6 +2441,14 @@
         {
             "name": "Vitebsk",
             "code": "VI"
+        },
+        {
+            "name": "मिन्स्क",
+            "code": "HM"
+        },
+        {
+            "name": "मोगिलेभ क्षेत्र",
+            "code": "MA"
         }
     ],
     "BZ": [
@@ -2478,10 +2478,6 @@
         }
     ],
     "CA": [
-        {
-            "name": "क्युबेक",
-            "code": "QC"
-        },
         {
             "name": "Alberta",
             "code": "AB"
@@ -2529,6 +2525,10 @@
         {
             "name": "Yukon",
             "code": "YT"
+        },
+        {
+            "name": "क्युबेक",
+            "code": "QC"
         }
     ],
     "CD": [
@@ -2775,10 +2775,6 @@
     ],
     "CH": [
         {
-            "name": "ओब्वाल्डेन",
-            "code": "OW"
-        },
-        {
             "name": "Aargau",
             "code": "AG"
         },
@@ -2877,6 +2873,10 @@
         {
             "name": "Zürich",
             "code": "ZH"
+        },
+        {
+            "name": "ओब्वाल्डेन",
+            "code": "OW"
         }
     ],
     "CI": [
@@ -3611,10 +3611,6 @@
     ],
     "CZ": [
         {
-            "name": "प्राग",
-            "code": "10"
-        },
-        {
             "name": "Benešov",
             "code": "201"
         },
@@ -4057,9 +4053,29 @@
         {
             "name": "Znojmo",
             "code": "647"
+        },
+        {
+            "name": "प्राग",
+            "code": "10"
         }
     ],
     "DE": [
+        {
+            "name": "Baden-Württemberg",
+            "code": "BW"
+        },
+        {
+            "name": "Lower Saxony",
+            "code": "NI"
+        },
+        {
+            "name": "Mecklenburg-Vorpommern",
+            "code": "MV"
+        },
+        {
+            "name": "Saxony-Anhalt",
+            "code": "ST"
+        },
         {
             "name": "उत्तरी राइन",
             "code": "NW"
@@ -4107,22 +4123,6 @@
         {
             "name": "ह्याम्बर्ग",
             "code": "HH"
-        },
-        {
-            "name": "Baden-Württemberg",
-            "code": "BW"
-        },
-        {
-            "name": "Lower Saxony",
-            "code": "NI"
-        },
-        {
-            "name": "Mecklenburg-Vorpommern",
-            "code": "MV"
-        },
-        {
-            "name": "Saxony-Anhalt",
-            "code": "ST"
         }
     ],
     "DJ": [
@@ -4877,10 +4877,6 @@
     ],
     "ES": [
         {
-            "name": "सेउटा",
-            "code": "CE"
-        },
-        {
             "name": "A Coruña",
             "code": "C"
         },
@@ -5151,6 +5147,10 @@
         {
             "name": "Zaragoza",
             "code": "Z"
+        },
+        {
+            "name": "सेउटा",
+            "code": "CE"
         }
     ],
     "ET": [
@@ -5375,18 +5375,6 @@
     ],
     "FR": [
         {
-            "name": "एस्सोन्मे",
-            "code": "91"
-        },
-        {
-            "name": "पेरिस",
-            "code": "75"
-        },
-        {
-            "name": "साभोए",
-            "code": "73"
-        },
-        {
             "name": "Ain",
             "code": "01"
         },
@@ -5444,11 +5432,11 @@
         },
         {
             "name": "Brittany",
-            "code": "E"
+            "code": "BRE"
         },
         {
             "name": "Brittany",
-            "code": "BRE"
+            "code": "E"
         },
         {
             "name": "Burgundy-Franche-Comté",
@@ -5492,11 +5480,11 @@
         },
         {
             "name": "Corsica",
-            "code": "COR"
+            "code": "H"
         },
         {
             "name": "Corsica",
-            "code": "H"
+            "code": "COR"
         },
         {
             "name": "Côte-d’Or",
@@ -5881,6 +5869,18 @@
         {
             "name": "Yvelines",
             "code": "78"
+        },
+        {
+            "name": "एस्सोन्मे",
+            "code": "91"
+        },
+        {
+            "name": "पेरिस",
+            "code": "75"
+        },
+        {
+            "name": "साभोए",
+            "code": "73"
         }
     ],
     "GA": [
@@ -5922,54 +5922,6 @@
         }
     ],
     "GB": [
-        {
-            "name": "अक्सफोर्डसायर",
-            "code": "OXF"
-        },
-        {
-            "name": "इंग्ल्याण्ड",
-            "code": "ENG"
-        },
-        {
-            "name": "उत्तरी आयरल्यान्ड",
-            "code": "NIR"
-        },
-        {
-            "name": "कम्ब्रिआ",
-            "code": "CMA"
-        },
-        {
-            "name": "ग्रेट ब्रिटेन",
-            "code": "GBN"
-        },
-        {
-            "name": "ग्रेनिच",
-            "code": "GRE"
-        },
-        {
-            "name": "म्यानचेस्टर",
-            "code": "MAN"
-        },
-        {
-            "name": "लिङकनसायर",
-            "code": "LIN"
-        },
-        {
-            "name": "लिभरपुल",
-            "code": "LIV"
-        },
-        {
-            "name": "वेल्स",
-            "code": "WLS"
-        },
-        {
-            "name": "संयुक्त अधिराज्य",
-            "code": "UKM"
-        },
-        {
-            "name": "स्कटल्याण्ड",
-            "code": "SCT"
-        },
         {
             "name": "Aberdeen",
             "code": "ABE"
@@ -6917,6 +6869,54 @@
         {
             "name": "York",
             "code": "YOR"
+        },
+        {
+            "name": "अक्सफोर्डसायर",
+            "code": "OXF"
+        },
+        {
+            "name": "इंग्ल्याण्ड",
+            "code": "ENG"
+        },
+        {
+            "name": "उत्तरी आयरल्यान्ड",
+            "code": "NIR"
+        },
+        {
+            "name": "कम्ब्रिआ",
+            "code": "CMA"
+        },
+        {
+            "name": "ग्रेट ब्रिटेन",
+            "code": "GBN"
+        },
+        {
+            "name": "ग्रेनिच",
+            "code": "GRE"
+        },
+        {
+            "name": "म्यानचेस्टर",
+            "code": "MAN"
+        },
+        {
+            "name": "लिङकनसायर",
+            "code": "LIN"
+        },
+        {
+            "name": "लिभरपुल",
+            "code": "LIV"
+        },
+        {
+            "name": "वेल्स",
+            "code": "WLS"
+        },
+        {
+            "name": "संयुक्त अधिराज्य",
+            "code": "UKM"
+        },
+        {
+            "name": "स्कटल्याण्ड",
+            "code": "SCT"
         }
     ],
     "GD": [
@@ -6950,10 +6950,6 @@
         }
     ],
     "GE": [
-        {
-            "name": "तिब्लिसी",
-            "code": "TB"
-        },
         {
             "name": "Abkhazia",
             "code": "AB"
@@ -6997,6 +6993,10 @@
         {
             "name": "Shida Kartli",
             "code": "SK"
+        },
+        {
+            "name": "तिब्लिसी",
+            "code": "TB"
         }
     ],
     "GH": [
@@ -7937,10 +7937,6 @@
     ],
     "HU": [
         {
-            "name": "बुडापेस्ट",
-            "code": "BU"
-        },
-        {
             "name": "Bács-Kiskun",
             "code": "BK"
         },
@@ -8107,21 +8103,13 @@
         {
             "name": "Zalaegerszeg",
             "code": "ZE"
+        },
+        {
+            "name": "बुडापेस्ट",
+            "code": "BU"
         }
     ],
     "ID": [
-        {
-            "name": "जाकार्ता",
-            "code": "JK"
-        },
-        {
-            "name": "पूर्वी जाभा क्षेत्र",
-            "code": "JI"
-        },
-        {
-            "name": "ल्याम्पुङ क्षेत्र",
-            "code": "LA"
-        },
         {
             "name": "Aceh",
             "code": "AC"
@@ -8273,6 +8261,18 @@
         {
             "name": "Yogyakarta",
             "code": "YO"
+        },
+        {
+            "name": "जाकार्ता",
+            "code": "JK"
+        },
+        {
+            "name": "पूर्वी जाभा क्षेत्र",
+            "code": "JI"
+        },
+        {
+            "name": "ल्याम्पुङ क्षेत्र",
+            "code": "LA"
         }
     ],
     "IE": [
@@ -8809,18 +8809,6 @@
     ],
     "IT": [
         {
-            "name": "पियडमोन्ट",
-            "code": "21"
-        },
-        {
-            "name": "बासिलिकाटा",
-            "code": "77"
-        },
-        {
-            "name": "मान्टुआ क्षेत्र",
-            "code": "MN"
-        },
-        {
             "name": "Abruzzo",
             "code": "65"
         },
@@ -9327,6 +9315,18 @@
         {
             "name": "Viterbo",
             "code": "VT"
+        },
+        {
+            "name": "पियडमोन्ट",
+            "code": "21"
+        },
+        {
+            "name": "बासिलिकाटा",
+            "code": "77"
+        },
+        {
+            "name": "मान्टुआ क्षेत्र",
+            "code": "MN"
         }
     ],
     "JM": [
@@ -10199,10 +10199,6 @@
     ],
     "KZ": [
         {
-            "name": "अस्टाना",
-            "code": "AST"
-        },
-        {
             "name": "Akmola",
             "code": "AKM"
         },
@@ -10265,6 +10261,10 @@
         {
             "name": "West Kazakhstan",
             "code": "ZAP"
+        },
+        {
+            "name": "अस्टाना",
+            "code": "AST"
         }
     ],
     "LA": [
@@ -11619,30 +11619,6 @@
     ],
     "MA": [
         {
-            "name": "फेस एल बाली",
-            "code": "FES"
-        },
-        {
-            "name": "मर्राकेशको मदिना",
-            "code": "MMD"
-        },
-        {
-            "name": "मर्राकेशको मदिना²",
-            "code": "MMN"
-        },
-        {
-            "name": "मर्राकेशको मदिना³",
-            "code": "SYB"
-        },
-        {
-            "name": "मेकनेस",
-            "code": "MEK"
-        },
-        {
-            "name": "रबाट",
-            "code": "RAB"
-        },
-        {
             "name": "Agadir-Ida Ou Tanane",
             "code": "AGD"
         },
@@ -11933,6 +11909,30 @@
         {
             "name": "Zagora",
             "code": "ZAG"
+        },
+        {
+            "name": "फेस एल बाली",
+            "code": "FES"
+        },
+        {
+            "name": "मर्राकेशको मदिना",
+            "code": "MMD"
+        },
+        {
+            "name": "मर्राकेशको मदिना²",
+            "code": "MMN"
+        },
+        {
+            "name": "मर्राकेशको मदिना³",
+            "code": "SYB"
+        },
+        {
+            "name": "मेकनेस",
+            "code": "MEK"
+        },
+        {
+            "name": "रबाट",
+            "code": "RAB"
         }
     ],
     "MC": [
@@ -13333,10 +13333,6 @@
     ],
     "MV": [
         {
-            "name": "माले",
-            "code": "MLE"
-        },
-        {
             "name": "Addu",
             "code": "01"
         },
@@ -13443,6 +13439,10 @@
         {
             "name": "Vaavu",
             "code": "04"
+        },
+        {
+            "name": "माले",
+            "code": "MLE"
         }
     ],
     "MW": [
@@ -13573,14 +13573,6 @@
     ],
     "MX": [
         {
-            "name": "चिहुवाहुवा",
-            "code": "CHH"
-        },
-        {
-            "name": "सिनालोआ",
-            "code": "SIN"
-        },
-        {
             "name": "Aguascalientes",
             "code": "AGU"
         },
@@ -13703,6 +13695,14 @@
         {
             "name": "Zacatecas",
             "code": "ZAC"
+        },
+        {
+            "name": "चिहुवाहुवा",
+            "code": "CHH"
+        },
+        {
+            "name": "सिनालोआ",
+            "code": "SIN"
         }
     ],
     "MY": [
@@ -14131,6 +14131,34 @@
     ],
     "NL": [
         {
+            "name": "Aruba",
+            "code": "AW"
+        },
+        {
+            "name": "Bonaire",
+            "code": "BQ1"
+        },
+        {
+            "name": "Curaçao",
+            "code": "CW"
+        },
+        {
+            "name": "North Brabant",
+            "code": "NB"
+        },
+        {
+            "name": "Saba",
+            "code": "BQ2"
+        },
+        {
+            "name": "Sint Eustatius",
+            "code": "BQ3"
+        },
+        {
+            "name": "Sint Maarten",
+            "code": "SX"
+        },
+        {
             "name": "उट्रेच्ट",
             "code": "UT"
         },
@@ -14173,34 +14201,6 @@
         {
             "name": "लिमबर्ग",
             "code": "LI"
-        },
-        {
-            "name": "Aruba",
-            "code": "AW"
-        },
-        {
-            "name": "Bonaire",
-            "code": "BQ1"
-        },
-        {
-            "name": "Curaçao",
-            "code": "CW"
-        },
-        {
-            "name": "North Brabant",
-            "code": "NB"
-        },
-        {
-            "name": "Saba",
-            "code": "BQ2"
-        },
-        {
-            "name": "Sint Eustatius",
-            "code": "BQ3"
-        },
-        {
-            "name": "Sint Maarten",
-            "code": "SX"
         }
     ],
     "NO": [
@@ -14809,10 +14809,6 @@
     ],
     "PH": [
         {
-            "name": "बोहोल",
-            "code": "BOH"
-        },
-        {
             "name": "Abra",
             "code": "ABR"
         },
@@ -15199,9 +15195,25 @@
         {
             "name": "Zamboanga Sibugay",
             "code": "ZSI"
+        },
+        {
+            "name": "बोहोल",
+            "code": "BOH"
         }
     ],
     "PK": [
+        {
+            "name": "Federally Administered Tribal Areas",
+            "code": "TA"
+        },
+        {
+            "name": "Islamabad",
+            "code": "IS"
+        },
+        {
+            "name": "Khyber Pakhtunkhwa",
+            "code": "KP"
+        },
         {
             "name": "आजाद कश्मीर",
             "code": "JK"
@@ -15221,18 +15233,6 @@
         {
             "name": "सिन्ध",
             "code": "SD"
-        },
-        {
-            "name": "Federally Administered Tribal Areas",
-            "code": "TA"
-        },
-        {
-            "name": "Islamabad",
-            "code": "IS"
-        },
-        {
-            "name": "Khyber Pakhtunkhwa",
-            "code": "KP"
         }
     ],
     "PL": [
@@ -15591,10 +15591,6 @@
     ],
     "QA": [
         {
-            "name": "दोहा",
-            "code": "DA"
-        },
-        {
             "name": "Al Daayen",
             "code": "ZA"
         },
@@ -15621,13 +15617,13 @@
         {
             "name": "Umm Salal",
             "code": "US"
+        },
+        {
+            "name": "दोहा",
+            "code": "DA"
         }
     ],
     "RO": [
-        {
-            "name": "बुखारेस्ट",
-            "code": "B"
-        },
         {
             "name": "Alba",
             "code": "AB"
@@ -15791,6 +15787,10 @@
         {
             "name": "Vrancea",
             "code": "VN"
+        },
+        {
+            "name": "बुखारेस्ट",
+            "code": "B"
         }
     ],
     "RS": [
@@ -15924,34 +15924,6 @@
         }
     ],
     "RU": [
-        {
-            "name": "कोस्त्रोमा ओब्लास्ट",
-            "code": "KOS"
-        },
-        {
-            "name": "खाबारोभ्स्क क्राइ",
-            "code": "KHA"
-        },
-        {
-            "name": "टुभा गणतन्त्र",
-            "code": "TY"
-        },
-        {
-            "name": "ब्रान्स्क ओब्लास्ट",
-            "code": "BRY"
-        },
-        {
-            "name": "मस्को",
-            "code": "MOW"
-        },
-        {
-            "name": "लेलिनग्राड ओब्लास्ट",
-            "code": "LEN"
-        },
-        {
-            "name": "सेन्ट पिटर्सवर्ग",
-            "code": "SPE"
-        },
         {
             "name": "Adygea",
             "code": "AD"
@@ -16255,6 +16227,34 @@
         {
             "name": "Zabaykalsky Krai",
             "code": "ZAB"
+        },
+        {
+            "name": "कोस्त्रोमा ओब्लास्ट",
+            "code": "KOS"
+        },
+        {
+            "name": "खाबारोभ्स्क क्राइ",
+            "code": "KHA"
+        },
+        {
+            "name": "टुभा गणतन्त्र",
+            "code": "TY"
+        },
+        {
+            "name": "ब्रान्स्क ओब्लास्ट",
+            "code": "BRY"
+        },
+        {
+            "name": "मस्को",
+            "code": "MOW"
+        },
+        {
+            "name": "लेलिनग्राड ओब्लास्ट",
+            "code": "LEN"
+        },
+        {
+            "name": "सेन्ट पिटर्सवर्ग",
+            "code": "SPE"
         }
     ],
     "RW": [
@@ -18091,22 +18091,6 @@
     ],
     "TH": [
         {
-            "name": "पटाया",
-            "code": "S"
-        },
-        {
-            "name": "फुकेट प्रदेश",
-            "code": "83"
-        },
-        {
-            "name": "बैङ्कक",
-            "code": "10"
-        },
-        {
-            "name": "समुद्सोंग्ख्रम",
-            "code": "75"
-        },
-        {
             "name": "Amnat Charoen",
             "code": "37"
         },
@@ -18401,6 +18385,22 @@
         {
             "name": "Yasothon",
             "code": "35"
+        },
+        {
+            "name": "पटाया",
+            "code": "S"
+        },
+        {
+            "name": "फुकेट प्रदेश",
+            "code": "83"
+        },
+        {
+            "name": "बैङ्कक",
+            "code": "10"
+        },
+        {
+            "name": "समुद्सोंग्ख्रम",
+            "code": "75"
         }
     ],
     "TJ": [
@@ -19049,10 +19049,6 @@
     ],
     "TW": [
         {
-            "name": "ताइपेइ",
-            "code": "TPE"
-        },
-        {
             "name": "Changhua",
             "code": "CHA"
         },
@@ -19135,6 +19131,10 @@
         {
             "name": "Yunlin",
             "code": "YUN"
+        },
+        {
+            "name": "ताइपेइ",
+            "code": "TPE"
         }
     ],
     "TZ": [
@@ -19915,6 +19915,30 @@
     ],
     "US": [
         {
+            "name": "American Samoa",
+            "code": "AS"
+        },
+        {
+            "name": "Guam",
+            "code": "GU"
+        },
+        {
+            "name": "Northern Mariana Islands",
+            "code": "MP"
+        },
+        {
+            "name": "Puerto Rico",
+            "code": "PR"
+        },
+        {
+            "name": "U.S. Outlying Islands",
+            "code": "UM"
+        },
+        {
+            "name": "U.S. Virgin Islands",
+            "code": "VI"
+        },
+        {
             "name": "अलाबामा",
             "code": "AL"
         },
@@ -20117,30 +20141,6 @@
         {
             "name": "हवाई",
             "code": "HI"
-        },
-        {
-            "name": "American Samoa",
-            "code": "AS"
-        },
-        {
-            "name": "Guam",
-            "code": "GU"
-        },
-        {
-            "name": "Northern Mariana Islands",
-            "code": "MP"
-        },
-        {
-            "name": "Puerto Rico",
-            "code": "PR"
-        },
-        {
-            "name": "U.S. Outlying Islands",
-            "code": "UM"
-        },
-        {
-            "name": "U.S. Virgin Islands",
-            "code": "VI"
         }
     ],
     "UY": [
@@ -20223,10 +20223,6 @@
     ],
     "UZ": [
         {
-            "name": "ट्यासकेन्ट",
-            "code": "TK"
-        },
-        {
             "name": "Andijan",
             "code": "AN"
         },
@@ -20277,6 +20273,10 @@
         {
             "name": "Xorazm",
             "code": "XO"
+        },
+        {
+            "name": "ट्यासकेन्ट",
+            "code": "TK"
         }
     ],
     "VC": [
@@ -20408,10 +20408,6 @@
         }
     ],
     "VN": [
-        {
-            "name": "हनोइ",
-            "code": "HN"
-        },
         {
             "name": "An Giang",
             "code": "44"
@@ -20659,6 +20655,10 @@
         {
             "name": "Yên Bái",
             "code": "06"
+        },
+        {
+            "name": "हनोइ",
+            "code": "HN"
         }
     ],
     "VU": [
@@ -20753,10 +20753,6 @@
             "code": "AD"
         },
         {
-            "name": "साना",
-            "code": "SA"
-        },
-        {
             "name": "Abyan",
             "code": "AB"
         },
@@ -20835,6 +20831,10 @@
         {
             "name": "Taiz",
             "code": "TA"
+        },
+        {
+            "name": "साना",
+            "code": "SA"
         }
     ],
     "ZA": [

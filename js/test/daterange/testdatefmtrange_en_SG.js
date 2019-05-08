@@ -56,7 +56,7 @@ module.exports.testdatefmtrange_en_SG = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "31/12/11, 1:45 PM – 2:30 PM");
+        test.equal(fmt.format(start, end), '31/12/11, 1:45 pm – 2:30 pm');
         test.done();
     },
     testDateRngFmtSGInDayMedium: function(test) {
@@ -82,7 +82,7 @@ module.exports.testdatefmtrange_en_SG = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "31 Dec 2011, 1:45 PM – 2:30 PM");
+        test.equal(fmt.format(start, end), '31 Dec 2011, 1:45 pm – 2:30 pm');
         test.done();
     },
     testDateRngFmtSGInDayLong: function(test) {
@@ -108,7 +108,7 @@ module.exports.testdatefmtrange_en_SG = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "31 December 2011 at 1:45 PM – 2:30 PM");
+        test.equal(fmt.format(start, end), '31 December 2011 at 1:45 pm – 2:30 pm');
         test.done();
     },
     testDateRngFmtSGInDayFull: function(test) {
@@ -134,7 +134,7 @@ module.exports.testdatefmtrange_en_SG = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "31 December 2011 at 1:45 PM – 2:30 PM");
+        test.equal(fmt.format(start, end), '31 December 2011 at 1:45 pm – 2:30 pm');
         test.done();
     },
     
@@ -161,7 +161,7 @@ module.exports.testdatefmtrange_en_SG = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "30/12/11, 1:45 PM – 31/12/11, 2:30 PM");
+        test.equal(fmt.format(start, end), '30/12/11, 1:45 pm – 31/12/11, 2:30 pm');
         test.done();
     },
     testDateRngFmtSGNextDayMedium: function(test) {
@@ -187,7 +187,7 @@ module.exports.testdatefmtrange_en_SG = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "30 Dec 2011, 1:45 PM – 31 Dec 2011, 2:30 PM");
+        test.equal(fmt.format(start, end), '30 Dec 2011, 1:45 pm – 31 Dec 2011, 2:30 pm');
         test.done();
     },
     testDateRngFmtSGNextDayLong: function(test) {
@@ -213,7 +213,7 @@ module.exports.testdatefmtrange_en_SG = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "30 December 2011 at 1:45 PM – 31 December 2011 at 2:30 PM");
+        test.equal(fmt.format(start, end), '30 December 2011 at 1:45 pm – 31 December 2011 at 2:30 pm');
         test.done();
     },
     testDateRngFmtSGNextDayFull: function(test) {
@@ -239,7 +239,7 @@ module.exports.testdatefmtrange_en_SG = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "30 December 2011 at 1:45 PM – 31 December 2011 at 2:30 PM");
+        test.equal(fmt.format(start, end), '30 December 2011 at 1:45 pm – 31 December 2011 at 2:30 pm');
         test.done();
     },
     

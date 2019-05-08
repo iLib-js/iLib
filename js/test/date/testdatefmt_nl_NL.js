@@ -60,7 +60,7 @@ module.exports.testdatefmt_nl_NL = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "29-09-11");
+        test.equal(fmt.format(date), "29-09-2011");
         test.done();
     },
     
@@ -212,7 +212,7 @@ module.exports.testdatefmt_nl_NL = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "29-09-11 13:45");
+        test.equal(fmt.format(date), "29-09-2011 13:45");
         test.done();
     },
     
@@ -481,7 +481,7 @@ module.exports.testdatefmt_nl_NL = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "29-09-11");
+        test.equal(fmt.format(date), "29-09-2011");
         test.done();
     },
     
@@ -519,7 +519,7 @@ module.exports.testdatefmt_nl_NL = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "29-09-11 13:45");
+        test.equal(fmt.format(date), "29-09-2011 13:45");
         test.done();
     },
     
@@ -539,7 +539,7 @@ module.exports.testdatefmt_nl_NL = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "11");
+        test.equal(fmt.format(date), "2011");
         test.done();
     },
     
@@ -634,7 +634,7 @@ module.exports.testdatefmt_nl_NL = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "09-11");
+        test.equal(fmt.format(date), "09-2011");
         test.done();
     },
     
@@ -653,7 +653,7 @@ module.exports.testdatefmt_nl_NL = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "29-09-11");
+        test.equal(fmt.format(date), "29-09-2011");
         test.done();
     },
     
@@ -691,7 +691,7 @@ module.exports.testdatefmt_nl_NL = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "D 29-09-11");
+        test.equal(fmt.format(date), "D 29-09-2011");
         test.done();
     },
     

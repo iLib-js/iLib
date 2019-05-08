@@ -309,12 +309,12 @@
             "code": "ER"
         },
         {
-            "name": "Korçë",
-            "code": "KO"
-        },
-        {
             "name": "Korčanski okrug",
             "code": "06"
+        },
+        {
+            "name": "Korçë",
+            "code": "KO"
         },
         {
             "name": "Krujë",
@@ -345,12 +345,12 @@
             "code": "LB"
         },
         {
-            "name": "Lushnjë",
-            "code": "LU"
-        },
-        {
             "name": "Lješki okrug",
             "code": "08"
+        },
+        {
+            "name": "Lushnjë",
+            "code": "LU"
         },
         {
             "name": "Malësi e Madhe",
@@ -455,12 +455,12 @@
             "code": "LO"
         },
         {
-            "name": "Sjunik",
-            "code": "SU"
-        },
-        {
             "name": "Širak",
             "code": "SH"
+        },
+        {
+            "name": "Sjunik",
+            "code": "SU"
         },
         {
             "name": "Tavuš",
@@ -3635,18 +3635,6 @@
             "code": "801"
         },
         {
-            "name": "Cheb",
-            "code": "411"
-        },
-        {
-            "name": "Chomutov",
-            "code": "422"
-        },
-        {
-            "name": "Chrudim",
-            "code": "531"
-        },
-        {
             "name": "Česká Lípa",
             "code": "511"
         },
@@ -3657,6 +3645,18 @@
         {
             "name": "Český Krumlov",
             "code": "312"
+        },
+        {
+            "name": "Cheb",
+            "code": "411"
+        },
+        {
+            "name": "Chomutov",
+            "code": "422"
+        },
+        {
+            "name": "Chrudim",
+            "code": "531"
         },
         {
             "name": "Děčín",
@@ -3987,12 +3987,12 @@
             "code": "316"
         },
         {
-            "name": "Svitavy",
-            "code": "533"
-        },
-        {
             "name": "Šumperk",
             "code": "715"
+        },
+        {
+            "name": "Svitavy",
+            "code": "533"
         },
         {
             "name": "Tábor",
@@ -4035,12 +4035,16 @@
             "code": "723"
         },
         {
+            "name": "Vyškov",
+            "code": "646"
+        },
+        {
             "name": "Vysočina",
             "code": "63"
         },
         {
-            "name": "Vyškov",
-            "code": "646"
+            "name": "Žďár nad Sázavou",
+            "code": "635"
         },
         {
             "name": "Zlín",
@@ -4053,10 +4057,6 @@
         {
             "name": "Znojmo",
             "code": "647"
-        },
-        {
-            "name": "Žďár nad Sázavou",
-            "code": "635"
         }
     ],
     "DE": [
@@ -6707,6 +6707,10 @@
             "code": "NLK"
         },
         {
+            "name": "Škotska",
+            "code": "SCT"
+        },
+        {
             "name": "Slough",
             "code": "SLG"
         },
@@ -6785,10 +6789,6 @@
         {
             "name": "Swindon",
             "code": "SWD"
-        },
-        {
-            "name": "Škotska",
-            "code": "SCT"
         },
         {
             "name": "Tameside",
@@ -8053,6 +8053,14 @@
             "code": "SD"
         },
         {
+            "name": "Šomođska županija",
+            "code": "SO"
+        },
+        {
+            "name": "Šopron",
+            "code": "SN"
+        },
+        {
             "name": "Stolni Biograd",
             "code": "SF"
         },
@@ -8067,14 +8075,6 @@
         {
             "name": "Szolnok",
             "code": "SK"
-        },
-        {
-            "name": "Šomođska županija",
-            "code": "SO"
-        },
-        {
-            "name": "Šopron",
-            "code": "SN"
         },
         {
             "name": "Tatabánya",
@@ -10907,10 +10907,6 @@
             "code": "40"
         },
         {
-            "name": "Skuodas",
-            "code": "48"
-        },
-        {
             "name": "Šakiai",
             "code": "41"
         },
@@ -10937,6 +10933,10 @@
         {
             "name": "Širvintos",
             "code": "47"
+        },
+        {
+            "name": "Skuodas",
+            "code": "48"
         },
         {
             "name": "Švenčionys",
@@ -11203,16 +11203,16 @@
             "code": "037"
         },
         {
+            "name": "Jaunjelgava",
+            "code": "038"
+        },
+        {
             "name": "Jaunpiebalga",
             "code": "039"
         },
         {
             "name": "Jaunpils",
             "code": "040"
-        },
-        {
-            "name": "Jaunjelgava",
-            "code": "038"
         },
         {
             "name": "Jēkabpils",
@@ -15277,12 +15277,12 @@
             "code": "PK"
         },
         {
-            "name": "Svetokriško vojvodstvo",
-            "code": "SK"
-        },
-        {
             "name": "Šlesko vojvodstvo",
             "code": "SL"
+        },
+        {
+            "name": "Svetokriško vojvodstvo",
+            "code": "SK"
         },
         {
             "name": "Varminsko-mazursko vojvodstvo",
@@ -20437,12 +20437,12 @@
             "code": "50"
         },
         {
-            "name": "Bình Dương",
-            "code": "57"
-        },
-        {
             "name": "Bình Định",
             "code": "31"
+        },
+        {
+            "name": "Bình Dương",
+            "code": "57"
         },
         {
             "name": "Bình Phước",

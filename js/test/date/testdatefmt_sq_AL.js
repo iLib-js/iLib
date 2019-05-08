@@ -557,7 +557,7 @@ module.exports.testdatefmt_sq_AL = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "S");
+        test.equal(fmt.format(date), "9");
         test.done();
     },
     
@@ -671,7 +671,7 @@ module.exports.testdatefmt_sq_AL = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "E, 29.9");
+        test.equal(fmt.format(date), "e, 29.9");
         test.done();
     },
     
@@ -690,7 +690,7 @@ module.exports.testdatefmt_sq_AL = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "E, 29.9.11");
+        test.equal(fmt.format(date), "e, 29.9.11");
         test.done();
     },
     
@@ -729,7 +729,7 @@ module.exports.testdatefmt_sq_AL = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "Shtator");
+        test.equal(fmt.format(date), "shtator");
         test.done();
     },
     
@@ -786,7 +786,7 @@ module.exports.testdatefmt_sq_AL = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "Shtator 2011");
+        test.equal(fmt.format(date), "shtator 2011");
         test.done();
     },
     

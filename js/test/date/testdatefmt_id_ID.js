@@ -1401,7 +1401,7 @@ module.exports.testdatefmt_id_ID = {
             second: 30,
             millisecond: 0
         });
-        test.equal(fmt.formatRelative(reference, date), "Dalam 30 detik");
+        test.equal(fmt.formatRelative(reference, date), "dalam 30 detik");
         test.done();
     },
     testDateFmtFormatRelativeWithinMinuteBefore_id_ID: function(test) {
@@ -1457,7 +1457,7 @@ module.exports.testdatefmt_id_ID = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.formatRelative(reference, date), "Dalam 10 menit");
+        test.equal(fmt.formatRelative(reference, date), "dalam 10 menit");
         test.done();
     },
     testDateFmtFormatRelativeWithinHourBefore_id_ID: function(test) {
@@ -1513,7 +1513,7 @@ module.exports.testdatefmt_id_ID = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.formatRelative(reference, date), "Dalam 4 jam");
+        test.equal(fmt.formatRelative(reference, date), "dalam 4 jam");
         test.done();
     },
     testDateFmtFormatRelativeWithinDayBefore_id_ID: function(test) {
@@ -1570,7 +1570,7 @@ module.exports.testdatefmt_id_ID = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.formatRelative(reference, date), "Dalam 4 hari");
+        test.equal(fmt.formatRelative(reference, date), "dalam 4 hari");
         test.done();
     },
     testDateFmtFormatRelativeWithinFortnightBefore_id_ID: function(test) {
@@ -1627,7 +1627,7 @@ module.exports.testdatefmt_id_ID = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.formatRelative(reference, date), "Dalam 9 minggu");
+        test.equal(fmt.formatRelative(reference, date), "dalam 9 minggu");
         test.done();
     },
     testDateFmtFormatRelativeWithinQuarterBefore_id_ID: function(test) {
@@ -1684,7 +1684,7 @@ module.exports.testdatefmt_id_ID = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.formatRelative(reference, date), "Dalam 16 bulan");
+        test.equal(fmt.formatRelative(reference, date), "dalam 16 bulan");
         test.done();
     },
     testDateFmtFormatRelativeWithinTwoYearsBefore_id_ID: function(test) {
@@ -1741,7 +1741,7 @@ module.exports.testdatefmt_id_ID = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.formatRelative(reference, date), "Dalam 14 tahun");
+        test.equal(fmt.formatRelative(reference, date), "dalam 14 tahun");
         test.done();
     },
     testDateFmtFormatRelativeYearsBefore_id_ID: function(test) {

@@ -1450,7 +1450,7 @@ module.exports.testdatefmt_bn_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.formatRelative(reference, date), "10 মিনিট পূর্বে");
+        test.equal(fmt.formatRelative(reference, date), '10 মিনিট আগে');
         test.done();
     },
     testDateFmtFormatRelativeWithinDayAfter_bn_IN: function(test) {

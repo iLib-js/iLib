@@ -60,7 +60,7 @@ module.exports.testdatefmt_da_DK = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "29/09/2011");
+        test.equal(fmt.format(date), "29.09.2011");
         test.done();
     },
     
@@ -212,7 +212,7 @@ module.exports.testdatefmt_da_DK = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "29/09/2011 13.45");
+        test.equal(fmt.format(date), "29.09.2011 13.45");
         test.done();
     },
     
@@ -480,7 +480,7 @@ module.exports.testdatefmt_da_DK = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "29/09/2011");
+        test.equal(fmt.format(date), "29.09.2011");
         test.done();
     },
     
@@ -518,7 +518,7 @@ module.exports.testdatefmt_da_DK = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "29/09/2011 13.45");
+        test.equal(fmt.format(date), "29.09.2011 13.45");
         test.done();
     },
     
@@ -614,7 +614,7 @@ module.exports.testdatefmt_da_DK = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "29/09");
+        test.equal(fmt.format(date), "29.09");
         test.done();
     },
     
@@ -633,7 +633,7 @@ module.exports.testdatefmt_da_DK = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "09/2011");
+        test.equal(fmt.format(date), "09.2011");
         test.done();
     },
     
@@ -652,7 +652,7 @@ module.exports.testdatefmt_da_DK = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "29/09/2011");
+        test.equal(fmt.format(date), "29.09.2011");
         test.done();
     },
     
@@ -671,7 +671,7 @@ module.exports.testdatefmt_da_DK = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "T den 29/09");
+        test.equal(fmt.format(date), "T den 29.09");
         test.done();
     },
     
@@ -690,7 +690,7 @@ module.exports.testdatefmt_da_DK = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "T den 29/09/2011");
+        test.equal(fmt.format(date), "T den 29.09.2011");
         test.done();
     },
     

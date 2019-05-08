@@ -57,7 +57,7 @@ module.exports.testdatefmtrange_as_IN = {
             second: 0,
             millisecond: 0
         });           
-        test.equal(fmt.format(start, end), "২০১১-১২-৩১ ১৩:৪৫ – ১৪:৩০");
+        test.equal(fmt.format(start, end), '৩১-১২-২০১১ অপৰাহ্ন ১.৪৫ – অপৰাহ্ন ২.৩০');
         test.done();
     },
     testDateRngFmtasINRangeinDayMedium: function(test) {
@@ -83,7 +83,7 @@ module.exports.testdatefmtrange_as_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "২০১১ ডিসে ৩১ ১৩:৪৫ – ১৪:৩০");
+        test.equal(fmt.format(start, end), '৩১-১২-২০১১ অপৰাহ্ন ১.৪৫ – অপৰাহ্ন ২.৩০');
         test.done();
     },
     testDateRngFmtasINRangeinDayLong: function(test) {
@@ -109,7 +109,7 @@ module.exports.testdatefmtrange_as_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "২০১১ ডিচেম্বৰ ৩১ ১৩:৪৫ – ১৪:৩০");
+        test.equal(fmt.format(start, end), '৩১ ডিচেম্বৰ, ২০১১ অপৰাহ্ন ১.৪৫ – অপৰাহ্ন ২.৩০');
         test.done();
     },
     testDateRngFmtasINRangeinDayFull: function(test) {
@@ -135,7 +135,7 @@ module.exports.testdatefmtrange_as_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "২০১১ ডিচেম্বৰ ৩১ ১৩:৪৫ – ১৪:৩০");
+        test.equal(fmt.format(start, end), '৩১ ডিচেম্বৰ, ২০১১ অপৰাহ্ন ১.৪৫ – অপৰাহ্ন ২.৩০');
         test.done();
     },
     
@@ -162,7 +162,7 @@ module.exports.testdatefmtrange_as_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "২০১১-১২-৩০ ১৩:৪৫ – ২০১১-১২-৩১ ১৪:৩০");
+        test.equal(fmt.format(start, end), '৩০-১২-২০১১ অপৰাহ্ন ১.৪৫ – ৩১-১২-২০১১ অপৰাহ্ন ২.৩০');
         test.done();
     },
     testDateRngFmtasINRangeNextDayMedium: function(test) {
@@ -188,7 +188,7 @@ module.exports.testdatefmtrange_as_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "২০১১ ডিসে ৩০ ১৩:৪৫ – ২০১১ ডিসে ৩১ ১৪:৩০");
+        test.equal(fmt.format(start, end), '৩০-১২-২০১১ অপৰাহ্ন ১.৪৫ – ৩১-১২-২০১১ অপৰাহ্ন ২.৩০');
         test.done();
     },
     testDateRngFmtasINRangeNextDayLong: function(test) {
@@ -214,7 +214,7 @@ module.exports.testdatefmtrange_as_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "২০১১ ডিচেম্বৰ ৩০ ১৩:৪৫ – ২০১১ ডিচেম্বৰ ৩১ ১৪:৩০");
+        test.equal(fmt.format(start, end), '৩০ ডিচেম্বৰ, ২০১১ অপৰাহ্ন ১.৪৫ – ৩১ ডিচেম্বৰ, ২০১১ অপৰাহ্ন ২.৩০' );
         test.done();
     },
     testDateRngFmtasINRangeNextDayFull: function(test) {
@@ -240,7 +240,7 @@ module.exports.testdatefmtrange_as_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "২০১১ ডিচেম্বৰ ৩০ ১৩:৪৫ – ২০১১ ডিচেম্বৰ ৩১ ১৪:৩০");
+        test.equal(fmt.format(start, end), '৩০ ডিচেম্বৰ, ২০১১ অপৰাহ্ন ১.৪৫ – ৩১ ডিচেম্বৰ, ২০১১ অপৰাহ্ন ২.৩০');
         test.done();
     },
     
@@ -267,7 +267,7 @@ module.exports.testdatefmtrange_as_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "২০১১-১২-২০ – ৩১");
+        test.equal(fmt.format(start, end), '২০ – ৩১-১২-২০১১');
         test.done();
     },
     testDateRngFmtasINRangeMultiDayMedium: function(test) {
@@ -293,7 +293,7 @@ module.exports.testdatefmtrange_as_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "২০১১ ডিসে ২০ – ৩১");
+        test.equal(fmt.format(start, end), '২০ – ৩১-১২-২০১১');
         test.done();
     },
     testDateRngFmtasINRangeMultiDayLong: function(test) {
@@ -319,7 +319,7 @@ module.exports.testdatefmtrange_as_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "২০১১ ডিচেম্বৰ ২০ – ৩১");
+        test.equal(fmt.format(start, end), '২০ – ৩১ ডিচেম্বৰ, ২০১১');
         test.done();
     },
     testDateRngFmtasINRangeMultiDayFull: function(test) {
@@ -345,7 +345,7 @@ module.exports.testdatefmtrange_as_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "২০১১ ডিচেম্বৰ ২০ – ৩১");
+        test.equal(fmt.format(start, end), '২০ – ৩১ ডিচেম্বৰ, ২০১১');
         test.done();
     },
     
@@ -372,7 +372,7 @@ module.exports.testdatefmtrange_as_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "২০১১-১১-২০ – ২০১১-১২-৩১");
+        test.equal(fmt.format(start, end), '২০-১১ – ৩১-১২-২০১১');
         test.done();
     },
     testDateRngFmtasINRangeNextMonthMedium: function(test) {
@@ -398,7 +398,7 @@ module.exports.testdatefmtrange_as_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "২০১১ নভে ২০ – ২০১১ ডিসে ৩১");
+        test.equal(fmt.format(start, end), '২০-১১ – ৩১-১২-২০১১');
         test.done();
     },
     testDateRngFmtasINRangeNextMonthLong: function(test) {
@@ -424,7 +424,7 @@ module.exports.testdatefmtrange_as_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "২০১১ নৱেম্বৰ ২০ – ডিচেম্বৰ ৩১");
+        test.equal(fmt.format(start, end), '২০ নৱেম্বৰ – ৩১ ডিচেম্বৰ, ২০১১');
         test.done();
     },
     testDateRngFmtasINRangeNextMonthFull: function(test) {
@@ -450,7 +450,7 @@ module.exports.testdatefmtrange_as_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "২০১১ নৱেম্বৰ ২০ – ডিচেম্বৰ ৩১");
+        test.equal(fmt.format(start, end), '২০ নৱেম্বৰ – ৩১ ডিচেম্বৰ, ২০১১');
         test.done();
     },
     
@@ -477,7 +477,7 @@ module.exports.testdatefmtrange_as_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "২০১১-১১-২০ – ২০১২-০১-৩১");
+        test.equal(fmt.format(start, end), '২০-১১-২০১১ – ৩১-১-২০১২');
         test.done();
     },
     testDateRngFmtasINRangeNextYearMedium: function(test) {
@@ -503,7 +503,7 @@ module.exports.testdatefmtrange_as_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "২০১১ নভে ২০ – ২০১২ জানু ৩১");
+        test.equal(fmt.format(start, end), '২০-১১-২০১১ – ৩১-০১-২০১২');
         test.done();
     },
     testDateRngFmtasINRangeNextYearLong: function(test) {
@@ -529,7 +529,7 @@ module.exports.testdatefmtrange_as_IN = {
             second: 0,
             millisecond: 0
         });           
-        test.equal(fmt.format(start, end), "২০১১ নৱেম্বৰ ২০ – ২০১২ জানুৱাৰী ৩১");
+        test.equal(fmt.format(start, end), '২০ নৱেম্বৰ, ২০১১ – ৩১ জানুৱাৰী, ২০১২');
         test.done();
     },
     testDateRngFmtasINRangeNextYearFull: function(test) {
@@ -555,7 +555,7 @@ module.exports.testdatefmtrange_as_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "২০১১ নৱেম্বৰ ২০ – ২০১২ জানুৱাৰী ৩১");
+        test.equal(fmt.format(start, end), '২০ নৱেম্বৰ, ২০১১ – ৩১ জানুৱাৰী, ২০১২');
         test.done();
     },
     
@@ -582,7 +582,7 @@ module.exports.testdatefmtrange_as_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "২০১১-১১ – ২০১৪-০১");
+        test.equal(fmt.format(start, end), '১১-২০১১ – ১-২০১৪');
         test.done();
     },
     testDateRngFmtasINRangeMultiYearMedium: function(test) {
@@ -608,7 +608,7 @@ module.exports.testdatefmtrange_as_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "২০১১ নভে – ২০১৪ জানু");
+        test.equal(fmt.format(start, end), '১১-২০১১ – ০১-২০১৪');
         test.done();
     },
     testDateRngFmtasINRangeMultiYearLong: function(test) {
@@ -634,7 +634,7 @@ module.exports.testdatefmtrange_as_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "২০১১ নৱেম্বৰ – ২০১৪ জানুৱাৰী");
+        test.equal(fmt.format(start, end), 'নৱেম্বৰ, ২০১১ – জানুৱাৰী, ২০১৪');
         test.done();
     },
     testDateRngFmtasINRangeMultiYearFull: function(test) {
@@ -660,7 +660,7 @@ module.exports.testdatefmtrange_as_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "২০১১ নৱেম্বৰ – ২০১৪ জানুৱাৰী");
+        test.equal(fmt.format(start, end), 'নৱেম্বৰ, ২০১১ – জানুৱাৰী, ২০১৪');
         test.done();
     },
     testDateRngFmtasINManyYearsFull: function(test) {

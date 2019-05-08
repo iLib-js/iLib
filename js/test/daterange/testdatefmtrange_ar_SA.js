@@ -56,7 +56,7 @@ module.exports.testdatefmtrange_ar_SA = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "‏٣١‏/١٢‏/٢٠١١ ‏١:٤٥ م – ‏٢:٣٠ م");
+        test.equal(fmt.format(start, end), '‏٣١/١٢/٢٠١١ ‏١:٤٥ م – ‏٢:٣٠ م');
         test.done();
     },
     testDateRngFmtSARangeinDayMedium: function(test) {
@@ -82,7 +82,7 @@ module.exports.testdatefmtrange_ar_SA = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "‏٣١‏/١٢/‏٢٠١١ ‏١:٤٥ م – ‏٢:٣٠ م");
+        test.equal(fmt.format(start, end), '‏٣١/١٢/٢٠١١ ‏١:٤٥ م – ‏٢:٣٠ م');
         test.done();
     },
     testDateRngFmtSARangeinDayLong: function(test) {
@@ -108,7 +108,7 @@ module.exports.testdatefmtrange_ar_SA = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "‏٣١ ديسمبر، ٢٠١١ ‏١:٤٥ م – ‏٢:٣٠ م");
+        test.equal(fmt.format(start, end), '‏٣١ ديسمبر ٢٠١١ ‏١:٤٥ م – ‏٢:٣٠ م');
         test.done();
     },
     testDateRngFmtSARangeinDayFull: function(test) {
@@ -134,7 +134,7 @@ module.exports.testdatefmtrange_ar_SA = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "‏٣١ ديسمبر، ٢٠١١ ‏١:٤٥ م – ‏٢:٣٠ م");
+        test.equal(fmt.format(start, end), '‏٣١ ديسمبر ٢٠١١ ‏١:٤٥ م – ‏٢:٣٠ م');
         test.done();
     },
     
@@ -161,7 +161,7 @@ module.exports.testdatefmtrange_ar_SA = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "‏٣٠‏/١٢‏/٢٠١١ ‏١:٤٥ م – ‏٣١‏/١٢‏/٢٠١١ ‏٢:٣٠ م");
+        test.equal(fmt.format(start, end), '‏٣٠/١٢/٢٠١١ ‏١:٤٥ م – ‏٣١/١٢/٢٠١١ ‏٢:٣٠ م');
         test.done();
     },
     testDateRngFmtSARangeNextDayMedium: function(test) {
@@ -187,7 +187,7 @@ module.exports.testdatefmtrange_ar_SA = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "‏٣٠‏/١٢‏/٢٠١١ ‏١:٤٥ م – ‏٣١‏/١٢‏/٢٠١١ ‏٢:٣٠ م");
+        test.equal(fmt.format(start, end), '‏٣٠/١٢/٢٠١١ ‏١:٤٥ م – ‏٣١/١٢/٢٠١١ ‏٢:٣٠ م');
         test.done();
     },
     testDateRngFmtSARangeNextDayLong: function(test) {
@@ -213,7 +213,7 @@ module.exports.testdatefmtrange_ar_SA = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "‏٣٠ ديسمبر، ٢٠١١ ‏١:٤٥ م – ‏٣١ ديسمبر، ٢٠١١ ‏٢:٣٠ م");
+        test.equal(fmt.format(start, end), '‏٣٠ ديسمبر ٢٠١١ ‏١:٤٥ م – ‏٣١ ديسمبر ٢٠١١ ‏٢:٣٠ م');
         test.done();
     },
     testDateRngFmtSARangeNextDayFull: function(test) {
@@ -239,7 +239,7 @@ module.exports.testdatefmtrange_ar_SA = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "‏٣٠ ديسمبر، ٢٠١١ ‏١:٤٥ م – ‏٣١ ديسمبر، ٢٠١١ ‏٢:٣٠ م");
+        test.equal(fmt.format(start, end), '‏٣٠ ديسمبر ٢٠١١ ‏١:٤٥ م – ‏٣١ ديسمبر ٢٠١١ ‏٢:٣٠ م');
         test.done();
     },
     
@@ -266,7 +266,7 @@ module.exports.testdatefmtrange_ar_SA = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "‏٢٠ – ‏٣١‏/١٢‏/٢٠١١");
+        test.equal(fmt.format(start, end), '‏٢٠ – ‏٣١/١٢/٢٠١١');
         test.done();
     },
     testDateRngFmtSARangeMultiDayMedium: function(test) {
@@ -292,7 +292,7 @@ module.exports.testdatefmtrange_ar_SA = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "‏٢٠ – ‏٣١‏/١٢‏/٢٠١١");
+        test.equal(fmt.format(start, end),  '‏٢٠ – ‏٣١/١٢/٢٠١١');
         test.done();
     },
     testDateRngFmtSARangeMultiDayLong: function(test) {
@@ -318,7 +318,7 @@ module.exports.testdatefmtrange_ar_SA = {
             second: 0,
             millisecond: 0
         });       
-        test.equal(fmt.format(start, end), "‏٢٠ – ‏٣١ ديسمبر، ٢٠١١");
+        test.equal(fmt.format(start, end), '‏٢٠ – ‏٣١ ديسمبر ٢٠١١');
         test.done();
     },
     testDateRngFmtSARangeMultiDayFull: function(test) {
@@ -344,7 +344,7 @@ module.exports.testdatefmtrange_ar_SA = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "‏٢٠ – ‏٣١ ديسمبر، ٢٠١١");
+        test.equal(fmt.format(start, end), '‏٢٠ – ‏٣١ ديسمبر ٢٠١١');
         test.done();
     },
     
@@ -371,7 +371,7 @@ module.exports.testdatefmtrange_ar_SA = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "‏٢٠‏/١١ – ‏٣١‏/١٢‏/٢٠١١");
+        test.equal(fmt.format(start, end), '‏٢٠/١١ – ‏٣١/١٢/٢٠١١');
         test.done();
     },
     testDateRngFmtSARangeNextMonthMedium: function(test) {
@@ -397,7 +397,7 @@ module.exports.testdatefmtrange_ar_SA = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "‏٢٠‏/١١ – ‏٣١‏/١٢‏/٢٠١١");
+        test.equal(fmt.format(start, end), '‏٢٠/١١ – ‏٣١/١٢/٢٠١١');
         test.done();
     },
     testDateRngFmtSARangeNextMonthLong: function(test) {
@@ -423,7 +423,7 @@ module.exports.testdatefmtrange_ar_SA = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "‏٢٠ نوفمبر – ‏٣١ ديسمبر، ٢٠١١");
+        test.equal(fmt.format(start, end), '‏٢٠ نوفمبر – ‏٣١ ديسمبر ٢٠١١');
         test.done();
     
     },
@@ -450,7 +450,7 @@ module.exports.testdatefmtrange_ar_SA = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "‏٢٠ نوفمبر – ‏٣١ ديسمبر، ٢٠١١");
+        test.equal(fmt.format(start, end), '‏٢٠ نوفمبر – ‏٣١ ديسمبر ٢٠١١');
         test.done();
     },
     
@@ -477,7 +477,7 @@ module.exports.testdatefmtrange_ar_SA = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "‏٢٠‏/١١‏/٢٠١١ – ‏٣١‏/١‏/٢٠١٢");
+        test.equal(fmt.format(start, end), '‏٢٠/١١/٢٠١١ – ‏٣١/١/٢٠١٢');
         test.done();
     },
     testDateRngFmtSARangeNextYearMedium: function(test) {
@@ -503,7 +503,7 @@ module.exports.testdatefmtrange_ar_SA = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "‏٢٠‏/١١‏/٢٠١١ – ‏٣١‏/٠١‏/٢٠١٢");
+        test.equal(fmt.format(start, end), '‏٢٠/١١/٢٠١١ – ‏٣١/٠١/٢٠١٢');
         test.done();
     },
     testDateRngFmtSARangeNextYearLong: function(test) {
@@ -529,7 +529,7 @@ module.exports.testdatefmtrange_ar_SA = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "‏٢٠ نوفمبر، ٢٠١١ – ‏٣١ يناير، ٢٠١٢");
+        test.equal(fmt.format(start, end), '‏٢٠ نوفمبر ٢٠١١ – ‏٣١ يناير ٢٠١٢');
         test.done();
     },
     testDateRngFmtSARangeNextYearFull: function(test) {
@@ -555,7 +555,7 @@ module.exports.testdatefmtrange_ar_SA = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "‏٢٠ نوفمبر، ٢٠١١ – ‏٣١ يناير، ٢٠١٢");
+        test.equal(fmt.format(start, end), '‏٢٠ نوفمبر ٢٠١١ – ‏٣١ يناير ٢٠١٢');
         test.done();
     },
     
@@ -582,7 +582,7 @@ module.exports.testdatefmtrange_ar_SA = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "‏١١‏/٢٠١١ – ‏١‏/٢٠١٤");
+        test.equal(fmt.format(start, end), '‏١١/٢٠١١ – ‏١/٢٠١٤');
         test.done();
     },
     testDateRngFmtSARangeMultiYearMedium: function(test) {
@@ -608,7 +608,7 @@ module.exports.testdatefmtrange_ar_SA = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "‏١١‏/٢٠١١ – ‏٠١‏/٢٠١٤");
+        test.equal(fmt.format(start, end), '‏١١/٢٠١١ – ‏٠١/٢٠١٤');
         test.done();
     },
     testDateRngFmtSARangeMultiYearLong: function(test) {
@@ -634,7 +634,7 @@ module.exports.testdatefmtrange_ar_SA = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "نوفمبر، ٢٠١١ – يناير، ٢٠١٤");
+        test.equal(fmt.format(start, end), 'نوفمبر ٢٠١١ – يناير ٢٠١٤');
         test.done();
     },
     testDateRngFmtSARangeMultiYearFull: function(test) {
@@ -660,7 +660,7 @@ module.exports.testdatefmtrange_ar_SA = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "نوفمبر، ٢٠١١ – يناير، ٢٠١٤");
+        test.equal(fmt.format(start, end), 'نوفمبر ٢٠١١ – يناير ٢٠١٤');
         test.done();
     },
     testDateRngFmtSAManyYearsFull: function(test) {
