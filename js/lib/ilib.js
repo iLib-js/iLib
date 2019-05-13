@@ -142,6 +142,7 @@ ilib._getPlatform = function () {
             ilib._platform = "nodejs";
         } else if (typeof(Qt) !== 'undefined') {
             ilib._platform = "qt";
+            ilib._cacheMerged = true; // qt is too slow, so we need to cache the already-merged locale data
         } else if (typeof(PalmSystem) !== 'undefined') {
             ilib._platform = (typeof(window) !== 'undefined') ? "webos-webapp" : "webos";
         } else if (typeof(window) !== 'undefined') {
@@ -772,5 +773,27 @@ ilib._dyndata = false;
 ilib.isDynData = function() {
     return ilib._dyndata;
 };
+
+/**
+ * When true, this will cause ilib to cache merged locale data. Merged data is created
+ * whenever a locale is specified where the data for a locale data resides in various
+ * files, and these need to be merged together to create the overall data for that locale.<p>
+ *
+ * For example, if the ilib locale is "fr-CA", the final locale data is assembled from the
+ * following locale parts:
+ *
+ * <ul>
+ * <li>root - the root/default locale data shared by every locale
+ * <li>fr - the locale data shared by every flavour of French (eg. translations or date formats)
+ * <li>und/CA - the language-independent locale data for Canada (eg. time zone or official currency)
+ * <li>fr/CA - the locale data that is unique to French for Canada (eg. date or currency formats)
+ * </ul>
+ *
+ * On some platforms, the data loaded from disk is cached and then merged each time it is
+ * needed to create the whole locale data for the current locale. In other platforms, the
+ * merging is too slow, so the already-merged data is cached as well after the first time it
+ * is requested. In this way, we sacrifice the memory footprint for the sake of speed.
+ */
+ilib._cacheMerged = false;
 
 ilib._loadtime = new Date().getTime();

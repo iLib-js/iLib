@@ -35,6 +35,9 @@ if (typeof(Locale) === "undefined") {
 if (typeof(JSUtils) === "undefined") {
     var JSUtils = require("../../lib/JSUtils.js");
 }
+if (typeof(ISet) === "undefined") {
+    var ISet = require("../../lib/ISet.js");
+}
 
 function strcmp(left, right) {
     return left.localeCompare(right);
@@ -113,9 +116,29 @@ function mockLoaderUtil(paths, sync, params, callback) {
     }
 
     if (typeof(callback) !== 'undefined') {
-        callback.call(this, data);  
+        callback.call(this, data);
     }
-    
+
+    return data;
+}
+
+var set = new ISet();
+
+function mockLoaderNoMulti(paths, sync, params, callback) {
+    var data = new Array(paths && paths.length || 0);
+
+    for (var i = 0; i < paths.length; i++) {
+        var path = paths[i];
+        if (set.has(path)) {
+            throw "Cache miss";
+        }
+        set.add(path);
+    }
+
+    if (typeof(callback) !== 'undefined') {
+        callback.call(this, data);
+    }
+
     return data;
 }
 
@@ -1986,6 +2009,70 @@ module.exports.testutils = {
         });
     },
     
+    testLoadDataCacheResult: function(test) {
+        ilib.data.foo = ilib.data.foo_de = ilib.data.foo_und_DE = ilib.data.foo_de_DE = undefined;
+        ilib.setLoaderCallback(mockLoaderNoMulti);
+        try {
+            test.expect(2);
+            Utils.loadData({
+                name: "foo.json",
+                locale: "de-DE",
+                callback: function (results) {
+                    test.ok(results);
+                    Utils.loadData({
+                        name: "foo.json",
+                        locale: "de-DE",
+                        callback: function (results2) {
+                            // if there is a cache miss when it attempts to load a file from disk twice
+                            // then the mock loader will throw an exception
+                            test.ok(results2);
+                            test.done();
+                        }
+                    });
+                }
+            });
+        } catch (e) {
+            console.log("Exception caught: " + e.stack);
+            test.fail(e);
+            test.done();
+        }
+    },
+
+    testLoadDataCacheResultAlreadyMerged: function(test) {
+        ilib.data.foo = ilib.data.foo_de = ilib.data.foo_und_DE = ilib.data.foo_de_DE = undefined;
+        ilib.setLoaderCallback(mockLoaderNoMulti);
+        var cacheMerged = ilib._cacheMerged;
+        set = new ISet(); // clear the mock loader's cache
+        try {
+            test.expect(2);
+            ilib._cacheMerged = true;
+            Utils.loadData({
+                name: "foo.json",
+                locale: "de-DE",
+                callback: function (results) {
+                    test.ok(results);
+                    Utils.loadData({
+                        name: "foo.json",
+                        locale: "de-DE",
+                        callback: function (results2) {
+                            // if there is a cache miss when it attempts to load a file from disk twice
+                            // then the mock loader will throw an exception
+                            test.ok(results2);
+                            ilib._cacheMerged = cacheMerged;
+                            test.done();
+                        }
+                    });
+                }
+            });
+        } catch (e) {
+            console.log("Exception caught: " + e.stack);
+            test.fail(e);
+            test.done();
+        } finally {
+            ilib._cacheMerged = cacheMerged;
+        }
+    },
+
     testMapStringDigits: function(test) {
         test.expect(1);
         var map = "abcdefghij".split("");
