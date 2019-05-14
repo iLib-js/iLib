@@ -384,6 +384,8 @@ Utils.loadData = function(params) {
         throw "Utils.loadData called without a callback. It must have a callback to work.";
     }
 
+    if (ilib._getPlatform() === "qt") ilib._cacheMerged = true;
+
     if (params.name) {
         name = params.name;
     }
