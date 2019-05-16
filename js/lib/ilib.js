@@ -794,6 +794,7 @@ ilib.isDynData = function() {
  * merging is too slow, so the already-merged data is cached as well after the first time it
  * is requested. In this way, we sacrifice the memory footprint for the sake of speed.
  */
-ilib._cacheMerged = false;
+
+ilib._cacheMerged = (ilib._getPlatform() === 'qt');
 
 ilib._loadtime = new Date().getTime();
