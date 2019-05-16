@@ -25,6 +25,20 @@ if (typeof(DurationFmt) === "undefined") {
     var DurationFmt = require("../../lib/DurationFmt.js");
 }
 
+function setVariable() {
+    var obj = {};
+    var length = [];
+
+    length[0] = "full";
+    length[1] = "long";
+    length[2] = "medium";
+    length[3] = "short";
+
+    obj.fullLength = length;
+
+    return obj;
+}
+
 module.exports.testdurfmt2 = {
     setUp: function(callback) {
         ilib.clearCache();
@@ -32,13 +46,9 @@ module.exports.testdurfmt2 = {
     },
     testDurFmt_ar_EG: function(test) {
         test.expect(40);
-
-        var length = [], textfmt;
-
-        length[0] = "full";
-        length[1] = "long";
-        length[2] = "medium";
-        length[3] = "short";
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
 
         var textformatted_1 = [],textformatted_2 = [],textformatted_3 = [], textformatted_11 = [], textformatted_100 = [];
         var clockformatted_1 = [],clockformatted_2 = [], clockformatted_3 = [], clockformatted_11 = [], clockformatted_100 = [];
@@ -115,12 +125,9 @@ module.exports.testdurfmt2 = {
     testDurFmt_ar_IQ: function(test) {
         test.expect(40);
         // 1 2 3 11 100
-        var length = [], textfmt;
-
-        length[0] = "full";
-        length[1] = "long";
-        length[2] = "medium";
-        length[3] = "short";
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
 
         var textformatted_1 = [],textformatted_2 = [],textformatted_3 = [], textformatted_11 = [], textformatted_100 = [];
         var clockformatted_1 = [],clockformatted_2 = [], clockformatted_3 = [], clockformatted_11 = [], clockformatted_100 = [];
@@ -196,12 +203,9 @@ module.exports.testdurfmt2 = {
     testDurFmt_ar_MA: function(test) {
         test.expect(40);
         // 1 2 3 11 100
-        var length = [], textfmt;
-
-        length[0] = "full";
-        length[1] = "long";
-        length[2] = "medium";
-        length[3] = "short";
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
 
         var textformatted_1 = [],textformatted_2 = [],textformatted_3 = [], textformatted_11 = [], textformatted_100 = [];
         var clockformatted_1 = [],clockformatted_2 = [], clockformatted_3 = [], clockformatted_11 = [], clockformatted_100 = [];
@@ -277,12 +281,9 @@ module.exports.testdurfmt2 = {
     testDurFmt_as_IN: function(test) {
         test.expect(16);
 
-        var length = [], textfmt;
-
-        length[0] = "full";
-        length[1] = "long";
-        length[2] = "medium";
-        length[3] = "short";
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
 
         var textformatted_1 = [],textformatted_2 = [];
         var clockformatted_1 = [],clockformatted_2 = [];
@@ -323,12 +324,9 @@ module.exports.testdurfmt2 = {
     testDurFmt_bg_BG: function(test) {
         test.expect(16);
 
-        var length = [], textfmt;
-
-        length[0] = "full";
-        length[1] = "long";
-        length[2] = "medium";
-        length[3] = "short";
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
 
         var textformatted_1 = [],textformatted_2 = [];
         var clockformatted_1 = [],clockformatted_2 = [];
@@ -368,12 +366,9 @@ module.exports.testdurfmt2 = {
     testDurFmt_bn_IN: function(test) {
         test.expect(16);
 
-        var length = [], textfmt;
-
-        length[0] = "full";
-        length[1] = "long";
-        length[2] = "medium";
-        length[3] = "short";
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
 
         var textformatted_1 = [],textformatted_18 = [];
         var clockformatted_1 = [],clockformatted_18 = [];
@@ -414,12 +409,9 @@ module.exports.testdurfmt2 = {
         test.expect(24);
         //1,4,5
 
-        var length = [], textfmt;
-
-        length[0] = "full";
-        length[1] = "long";
-        length[2] = "medium";
-        length[3] = "short";
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
 
         var textformatted_1 = [],textformatted_4 = [], textformatted_5 = [];
         var clockformatted_1 = [],clockformatted_4 = [], clockformatted_5 = [];
@@ -471,12 +463,9 @@ module.exports.testdurfmt2 = {
     testDurFmt_bs_Latn_ME: function(test) {
         test.expect(24);
         // 1,2,20
-        var length = [], textfmt;
-
-        length[0] = "full";
-        length[1] = "long";
-        length[2] = "medium";
-        length[3] = "short";
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
 
         var textformatted_1 = [],textformatted_2 = [], textformatted_20 = [];
         var clockformatted_1 = [],clockformatted_2 = [], clockformatted_20 = [];
@@ -528,12 +517,9 @@ module.exports.testdurfmt2 = {
     testDurFmt_cs_CZ: function(test) {
         test.expect(24);
         // 1,2,5
-        var length = [], textfmt;
-
-        length[0] = "full";
-        length[1] = "long";
-        length[2] = "medium";
-        length[3] = "short";
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
 
         var textformatted_1 = [],textformatted_2 = [], textformatted_5 = [];
         var clockformatted_1 = [],clockformatted_2 = [], clockformatted_5 = [];
@@ -585,12 +571,9 @@ module.exports.testdurfmt2 = {
     testDurFmt_da_DK: function(test) {
         test.expect(16);
         // 1,2
-        var length = [], textfmt;
-
-        length[0] = "full";
-        length[1] = "long";
-        length[2] = "medium";
-        length[3] = "short";
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
 
         var textformatted_1 = [],textformatted_2 = [];
         var clockformatted_1 = [],clockformatted_2 = [];
@@ -630,12 +613,9 @@ module.exports.testdurfmt2 = {
     testDurFmt_de_AT: function(test) {
         test.expect(16);
         // 1,2
-        var length = [], textfmt;
-
-        length[0] = "full";
-        length[1] = "long";
-        length[2] = "medium";
-        length[3] = "short";
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
 
         var textformatted_1 = [],textformatted_2 = [];
         var clockformatted_1 = [],clockformatted_2 = [];
@@ -675,12 +655,9 @@ module.exports.testdurfmt2 = {
     testDurFmt_de_CH: function(test) {
         test.expect(16);
         // 1,2
-        var length = [], textfmt;
-
-        length[0] = "full";
-        length[1] = "long";
-        length[2] = "medium";
-        length[3] = "short";
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
 
         var textformatted_1 = [],textformatted_2 = [];
         var clockformatted_1 = [],clockformatted_2 = [];
@@ -719,12 +696,9 @@ module.exports.testdurfmt2 = {
     testDurFmt_de_DE: function(test) {
         test.expect(16);
         // 1,16
-        var length = [], textfmt;
-
-        length[0] = "full";
-        length[1] = "long";
-        length[2] = "medium";
-        length[3] = "short";
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
 
         var textformatted_1 = [],textformatted_16 = [];
         var clockformatted_1 = [],clockformatted_16 = [];
@@ -763,12 +737,9 @@ module.exports.testdurfmt2 = {
     testDurFmt_de_LU: function(test) {
         test.expect(16);
         // 1,17
-        var length = [], textfmt;
-
-        length[0] = "full";
-        length[1] = "long";
-        length[2] = "medium";
-        length[3] = "short";
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
 
         var textformatted_1 = [],textformatted_17 = [];
         var clockformatted_1 = [],clockformatted_17 = [];
@@ -807,12 +778,9 @@ module.exports.testdurfmt2 = {
     testDurFmt_el_CY: function(test) {
         test.expect(16);
         // 1,2
-        var length = [], textfmt;
-
-        length[0] = "full";
-        length[1] = "long";
-        length[2] = "medium";
-        length[3] = "short";
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
 
         var textformatted_1 = [],textformatted_2 = [];
         var clockformatted_1 = [],clockformatted_2 = [];
@@ -852,12 +820,9 @@ module.exports.testdurfmt2 = {
     testDurFmt_el_GR: function(test) {
         test.expect(16);
         // 1,17
-        var length = [], textfmt;
-
-        length[0] = "full";
-        length[1] = "long";
-        length[2] = "medium";
-        length[3] = "short";
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
 
         var textformatted_1 = [],textformatted_17 = [];
         var clockformatted_1 = [],clockformatted_17 = [];
@@ -897,12 +862,9 @@ module.exports.testdurfmt2 = {
     testDurFmt_en_AM: function(test) {
         test.expect(16);
         // 1,2
-        var length = [], textfmt;
-
-        length[0] = "full";
-        length[1] = "long";
-        length[2] = "medium";
-        length[3] = "short";
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
 
         var textformatted_1 = [],textformatted_2 = [];
         var clockformatted_1 = [],clockformatted_2 = [];
@@ -942,12 +904,9 @@ module.exports.testdurfmt2 = {
     testDurFmt_en_AU: function(test) {
         test.expect(16);
         // 1.16
-        var length = [], textfmt;
-
-        length[0] = "full";
-        length[1] = "long";
-        length[2] = "medium";
-        length[3] = "short";
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
 
         var textformatted_1 = [],textformatted_16 = [];
         var clockformatted_1 = [],clockformatted_16 = [];
@@ -986,12 +945,9 @@ module.exports.testdurfmt2 = {
     testDurFmt_en_AZ: function(test) {
         test.expect(16);
         // 1,17
-        var length = [], textfmt;
-
-        length[0] = "full";
-        length[1] = "long";
-        length[2] = "medium";
-        length[3] = "short";
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
 
         var textformatted_1 = [],textformatted_17 = [];
         var clockformatted_1 = [],clockformatted_17 = [];
@@ -1030,12 +986,9 @@ module.exports.testdurfmt2 = {
     testDurFmt_en_CA: function(test) {
         test.expect(16);
         // 1,2
-        var length = [], textfmt;
-
-        length[0] = "full";
-        length[1] = "long";
-        length[2] = "medium";
-        length[3] = "short";
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
 
         var textformatted_1 = [],textformatted_2 = [];
         var clockformatted_1 = [],clockformatted_2 = [];
@@ -1075,12 +1028,9 @@ module.exports.testdurfmt2 = {
     testDurFmt_en_GB: function(test) {
         test.expect(16);
         // 1,2
-        var length = [], textfmt;
-
-        length[0] = "full";
-        length[1] = "long";
-        length[2] = "medium";
-        length[3] = "short";
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
 
         var textformatted_1 = [],textformatted_2 = [];
         var clockformatted_1 = [],clockformatted_2 = [];
@@ -1120,12 +1070,9 @@ module.exports.testdurfmt2 = {
     testDurFmt_en_GH: function(test) {
         test.expect(16);
         // 1,2
-        var length = [], textfmt;
-
-        length[0] = "full";
-        length[1] = "long";
-        length[2] = "medium";
-        length[3] = "short";
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
 
         var textformatted_1 = [],textformatted_2 = [];
         var clockformatted_1 = [],clockformatted_2 = [];
@@ -1165,12 +1112,9 @@ module.exports.testdurfmt2 = {
     testDurFmt_en_HK: function(test) {
         test.expect(16);
         // 1,2
-        var length = [], textfmt;
-
-        length[0] = "full";
-        length[1] = "long";
-        length[2] = "medium";
-        length[3] = "short";
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
 
         var textformatted_1 = [],textformatted_2 = [];
         var clockformatted_1 = [],clockformatted_2 = [];
@@ -1209,12 +1153,9 @@ module.exports.testdurfmt2 = {
     testDurFmt_en_IE: function(test) {
         test.expect(16);
         // 1,2
-        var length = [], textfmt;
-
-        length[0] = "full";
-        length[1] = "long";
-        length[2] = "medium";
-        length[3] = "short";
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
 
         var textformatted_1 = [],textformatted_2 = [];
         var clockformatted_1 = [],clockformatted_2 = [];
@@ -1253,12 +1194,9 @@ module.exports.testdurfmt2 = {
     testDurFmt_en_IN: function(test) {
         test.expect(16);
         // 1,2
-        var length = [], textfmt;
-
-        length[0] = "full";
-        length[1] = "long";
-        length[2] = "medium";
-        length[3] = "short";
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
 
         var textformatted_1 = [],textformatted_2 = [];
         var clockformatted_1 = [],clockformatted_2 = [];
@@ -1298,12 +1236,9 @@ module.exports.testdurfmt2 = {
     testDurFmt_en_IS: function(test) {
         test.expect(16);
         // 1,2
-        var length = [], textfmt;
-
-        length[0] = "full";
-        length[1] = "long";
-        length[2] = "medium";
-        length[3] = "short";
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
 
         var textformatted_1 = [],textformatted_2 = [];
         var clockformatted_1 = [],clockformatted_2 = [];
@@ -1341,12 +1276,9 @@ module.exports.testdurfmt2 = {
     testDurFmt_en_JP: function(test) {
         test.expect(16);
         // 1,2
-        var length = [], textfmt;
-
-        length[0] = "full";
-        length[1] = "long";
-        length[2] = "medium";
-        length[3] = "short";
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
 
         var textformatted_1 = [],textformatted_2 = [];
         var clockformatted_1 = [],clockformatted_2 = [];
@@ -1384,12 +1316,9 @@ module.exports.testdurfmt2 = {
     testDurFmt_en_KE: function(test) {
         test.expect(16);
         // 1,2
-        var length = [], textfmt;
-
-        length[0] = "full";
-        length[1] = "long";
-        length[2] = "medium";
-        length[3] = "short";
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
 
         var textformatted_1 = [],textformatted_2 = [];
         var clockformatted_1 = [],clockformatted_2 = [];
@@ -1427,12 +1356,9 @@ module.exports.testdurfmt2 = {
     testDurFmt_en_KR: function(test) {
         test.expect(16);
         // 1,2
-        var length = [], textfmt;
-
-        length[0] = "full";
-        length[1] = "long";
-        length[2] = "medium";
-        length[3] = "short";
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
 
         var textformatted_1 = [],textformatted_2 = [];
         var clockformatted_1 = [],clockformatted_2 = [];
@@ -1470,12 +1396,9 @@ module.exports.testdurfmt2 = {
     testDurFmt_en_LK: function(test) {
         test.expect(16);
         // 1 2
-        var length = [], textfmt;
-
-        length[0] = "full";
-        length[1] = "long";
-        length[2] = "medium";
-        length[3] = "short";
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
 
         var textformatted_1 = [],textformatted_2 = [];
         var clockformatted_1 = [],clockformatted_2 = [];
@@ -1514,12 +1437,9 @@ module.exports.testdurfmt2 = {
     testDurFmt_en_MM: function(test) {
         test.expect(16);
         // 1 2
-        var length = [], textfmt;
-
-        length[0] = "full";
-        length[1] = "long";
-        length[2] = "medium";
-        length[3] = "short";
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
 
         var textformatted_1 = [],textformatted_2 = [];
         var clockformatted_1 = [],clockformatted_2 = [];
@@ -1557,12 +1477,9 @@ module.exports.testdurfmt2 = {
     testDurFmt_en_MW: function(test) {
         test.expect(16);
         // 1 2
-        var length = [], textfmt;
-
-        length[0] = "full";
-        length[1] = "long";
-        length[2] = "medium";
-        length[3] = "short";
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
 
         var textformatted_1 = [],textformatted_2 = [];
         var clockformatted_1 = [],clockformatted_2 = [];
@@ -1600,12 +1517,9 @@ module.exports.testdurfmt2 = {
     testDurFmt_en_MY: function(test) {
         test.expect(16);
         // 1 2
-        var length = [], textfmt;
-
-        length[0] = "full";
-        length[1] = "long";
-        length[2] = "medium";
-        length[3] = "short";
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
 
         var textformatted_1 = [],textformatted_2 = [];
         var clockformatted_1 = [],clockformatted_2 = [];
@@ -1643,12 +1557,9 @@ module.exports.testdurfmt2 = {
     testDurFmt_en_NG: function(test) {
         test.expect(16);
         // 1 2
-        var length = [], textfmt;
-
-        length[0] = "full";
-        length[1] = "long";
-        length[2] = "medium";
-        length[3] = "short";
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
 
         var textformatted_1 = [],textformatted_2 = [];
         var clockformatted_1 = [],clockformatted_2 = [];
@@ -1686,12 +1597,9 @@ module.exports.testdurfmt2 = {
     testDurFmt_en_NZ: function(test) {
         test.expect(16);
         // 1 2
-        var length = [], textfmt;
-
-        length[0] = "full";
-        length[1] = "long";
-        length[2] = "medium";
-        length[3] = "short";
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
 
         var textformatted_1 = [],textformatted_2 = [];
         var clockformatted_1 = [],clockformatted_2 = [];
@@ -1729,12 +1637,9 @@ module.exports.testdurfmt2 = {
     testDurFmt_en_PH: function(test) {
         test.expect(16);
         // 1 2
-        var length = [], textfmt;
-
-        length[0] = "full";
-        length[1] = "long";
-        length[2] = "medium";
-        length[3] = "short";
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
 
         var textformatted_1 = [],textformatted_2 = [];
         var clockformatted_1 = [],clockformatted_2 = [];
@@ -1772,12 +1677,9 @@ module.exports.testdurfmt2 = {
     testDurFmt_en_PR: function(test) {
         test.expect(16);
         // 1 2
-        var length = [], textfmt;
-
-        length[0] = "full";
-        length[1] = "long";
-        length[2] = "medium";
-        length[3] = "short";
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
 
         var textformatted_1 = [],textformatted_2 = [];
         var clockformatted_1 = [],clockformatted_2 = [];
@@ -1815,12 +1717,9 @@ module.exports.testdurfmt2 = {
     testDurFmt_en_SG: function(test) {
         test.expect(16);
         // 1 2
-        var length = [], textfmt;
-
-        length[0] = "full";
-        length[1] = "long";
-        length[2] = "medium";
-        length[3] = "short";
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
 
         var textformatted_1 = [],textformatted_2 = [];
         var clockformatted_1 = [],clockformatted_2 = [];
@@ -1859,12 +1758,9 @@ module.exports.testdurfmt2 = {
     testDurFmt_en_US: function(test) {
         test.expect(16);
         // 1 2
-        var length = [], textfmt;
-
-        length[0] = "full";
-        length[1] = "long";
-        length[2] = "medium";
-        length[3] = "short";
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
 
         var textformatted_1 = [],textformatted_2 = [];
         var clockformatted_1 = [],clockformatted_2 = [];
@@ -1903,12 +1799,9 @@ module.exports.testdurfmt2 = {
     testDurFmt_en_UG: function(test) {
         test.expect(16);
         // 1 2 
-        var length = [], textfmt;
-
-        length[0] = "full";
-        length[1] = "long";
-        length[2] = "medium";
-        length[3] = "short";
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
 
         var textformatted_1 = [],textformatted_2 = [];
         var clockformatted_1 = [],clockformatted_2 = [];
@@ -1946,12 +1839,9 @@ module.exports.testdurfmt2 = {
     testDurFmt_en_ZA: function(test) {
         test.expect(16);
         // 1 2
-        var length = [], textfmt;
-
-        length[0] = "full";
-        length[1] = "long";
-        length[2] = "medium";
-        length[3] = "short";
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
 
         var textformatted_1 = [],textformatted_2 = [];
         var clockformatted_1 = [],clockformatted_2 = [];
@@ -1989,12 +1879,9 @@ module.exports.testdurfmt2 = {
     testDurFmt_en_ZM: function(test) {
         test.expect(16);
         // 1 2
-        var length = [], textfmt;
-
-        length[0] = "full";
-        length[1] = "long";
-        length[2] = "medium";
-        length[3] = "short";
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
 
         var textformatted_1 = [],textformatted_2 = [];
         var clockformatted_1 = [],clockformatted_2 = [];
@@ -2032,12 +1919,9 @@ module.exports.testdurfmt2 = {
     testDurFmt_es_AR: function(test) {
         test.expect(16);
         // 1 2
-        var length = [], textfmt;
-
-        length[0] = "full";
-        length[1] = "long";
-        length[2] = "medium";
-        length[3] = "short";
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
 
         var textformatted_1 = [],textformatted_2 = [];
         var clockformatted_1 = [],clockformatted_2 = [];
@@ -2075,12 +1959,9 @@ module.exports.testdurfmt2 = {
     testDurFmt_es_BO: function(test) {
         test.expect(16);
         // 1 16
-        var length = [], textfmt;
-
-        length[0] = "full";
-        length[1] = "long";
-        length[2] = "medium";
-        length[3] = "short";
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
 
         var textformatted_1 = [],textformatted_16 = [];
         var clockformatted_1 = [],clockformatted_16 = [];
@@ -2119,12 +2000,9 @@ module.exports.testdurfmt2 = {
     testDurFmt_es_CL: function(test) {
         test.expect(16);
         // 1 2
-        var length = [], textfmt;
-
-        length[0] = "full";
-        length[1] = "long";
-        length[2] = "medium";
-        length[3] = "short";
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
 
         var textformatted_1 = [],textformatted_2 = [];
         var clockformatted_1 = [],clockformatted_2 = [];
@@ -2162,12 +2040,9 @@ module.exports.testdurfmt2 = {
     testDurFmt_es_CO: function(test) {
         test.expect(16);
         // 1 16
-        var length = [], textfmt;
-
-        length[0] = "full";
-        length[1] = "long";
-        length[2] = "medium";
-        length[3] = "short";
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
 
         var textformatted_1 = [],textformatted_16 = [];
         var clockformatted_1 = [],clockformatted_16 = [];
@@ -2206,12 +2081,9 @@ module.exports.testdurfmt2 = {
     testDurFmt_es_DO: function(test) {
         test.expect(16);
         // 1 2
-        var length = [], textfmt;
-
-        length[0] = "full";
-        length[1] = "long";
-        length[2] = "medium";
-        length[3] = "short";
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
 
         var textformatted_1 = [],textformatted_2 = [];
         var clockformatted_1 = [],clockformatted_2 = [];
@@ -2249,12 +2121,9 @@ module.exports.testdurfmt2 = {
     testDurFmt_es_EC: function(test) {
         test.expect(16);
         // 1 16
-        var length = [], textfmt;
-
-        length[0] = "full";
-        length[1] = "long";
-        length[2] = "medium";
-        length[3] = "short";
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
 
         var textformatted_1 = [],textformatted_16 = [];
         var clockformatted_1 = [],clockformatted_16 = [];
@@ -2293,12 +2162,9 @@ module.exports.testdurfmt2 = {
     testDurFmt_es_ES: function(test) {
         test.expect(16);
         // 1 2
-        var length = [], textfmt;
-
-        length[0] = "full";
-        length[1] = "long";
-        length[2] = "medium";
-        length[3] = "short";
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
 
         var textformatted_1 = [],textformatted_2 = [];
         var clockformatted_1 = [],clockformatted_2 = [];
@@ -2336,12 +2202,9 @@ module.exports.testdurfmt2 = {
     testDurFmt_es_GT: function(test) {
         test.expect(16);
         // 1 16
-        var length = [], textfmt;
-
-        length[0] = "full";
-        length[1] = "long";
-        length[2] = "medium";
-        length[3] = "short";
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
 
         var textformatted_1 = [],textformatted_16 = [];
         var clockformatted_1 = [],clockformatted_16 = [];
@@ -2380,12 +2243,9 @@ module.exports.testdurfmt2 = {
     testDurFmt_es_HN: function(test) {
         test.expect(16);
         // 1 17
-        var length = [], textfmt;
-
-        length[0] = "full";
-        length[1] = "long";
-        length[2] = "medium";
-        length[3] = "short";
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
 
         var textformatted_1 = [],textformatted_17 = [];
         var clockformatted_1 = [],clockformatted_17 = [];
@@ -2424,12 +2284,9 @@ module.exports.testdurfmt2 = {
     testDurFmt_es_MX: function(test) {
         test.expect(16);
         // 1 2
-        var length = [], textfmt;
-
-        length[0] = "full";
-        length[1] = "long";
-        length[2] = "medium";
-        length[3] = "short";
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
 
         var textformatted_1 = [],textformatted_2 = [];
         var clockformatted_1 = [],clockformatted_2 = [];
@@ -2467,12 +2324,9 @@ module.exports.testdurfmt2 = {
     testDurFmt_es_NI: function(test) {
         test.expect(16);
         // 1 16
-        var length = [], textfmt;
-
-        length[0] = "full";
-        length[1] = "long";
-        length[2] = "medium";
-        length[3] = "short";
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
 
         var textformatted_1 = [],textformatted_16 = [];
         var clockformatted_1 = [],clockformatted_16 = [];
@@ -2510,12 +2364,9 @@ module.exports.testdurfmt2 = {
     },
     testDurFmt_es_PA: function(test) {
         test.expect(16);
-        var length = [], textfmt;
-
-        length[0] = "full";
-        length[1] = "long";
-        length[2] = "medium";
-        length[3] = "short";
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
 
         var textformatted_1 = [],textformatted_17 = [];
         var clockformatted_1 = [],clockformatted_17 = [];
@@ -2555,12 +2406,9 @@ module.exports.testdurfmt2 = {
     testDurFmt_es_PE: function(test) {
         test.expect(16);
         // 1 16
-        var length = [], textfmt;
-
-        length[0] = "full";
-        length[1] = "long";
-        length[2] = "medium";
-        length[3] = "short";
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
 
         var textformatted_1 = [],textformatted_16 = [];
         var clockformatted_1 = [],clockformatted_16 = [];
@@ -2599,12 +2447,9 @@ module.exports.testdurfmt2 = {
     testDurFmt_es_PR: function(test) {
         test.expect(16);
         // 1 2
-        var length = [], textfmt;
-
-        length[0] = "full";
-        length[1] = "long";
-        length[2] = "medium";
-        length[3] = "short";
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
 
         var textformatted_1 = [],textformatted_2 = [];
         var clockformatted_1 = [],clockformatted_2 = [];
@@ -2642,12 +2487,9 @@ module.exports.testdurfmt2 = {
     testDurFmt_es_PY: function(test) {
         test.expect(16);
         // 1 2
-        var length = [], textfmt;
-
-        length[0] = "full";
-        length[1] = "long";
-        length[2] = "medium";
-        length[3] = "short";
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
 
         var textformatted_1 = [],textformatted_2 = [];
         var clockformatted_1 = [],clockformatted_2 = [];
@@ -2685,12 +2527,9 @@ module.exports.testdurfmt2 = {
     testDurFmt_es_SV: function(test) {
         test.expect(16);
         // 1 17
-        var length = [], textfmt;
-
-        length[0] = "full";
-        length[1] = "long";
-        length[2] = "medium";
-        length[3] = "short";
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
 
         var textformatted_1 = [],textformatted_17 = [];
         var clockformatted_1 = [],clockformatted_17 = [];
@@ -2729,12 +2568,9 @@ module.exports.testdurfmt2 = {
     testDurFmt_es_US: function(test) {
         test.expect(16);
         // 1 17
-        var length = [], textfmt;
-
-        length[0] = "full";
-        length[1] = "long";
-        length[2] = "medium";
-        length[3] = "short";
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
 
         var textformatted_1 = [],textformatted_17 = [];
         var clockformatted_1 = [],clockformatted_17 = [];
@@ -2773,12 +2609,9 @@ module.exports.testdurfmt2 = {
     testDurFmt_es_UY: function(test) {
         test.expect(16);
         // 1 2
-        var length = [], textfmt;
-
-        length[0] = "full";
-        length[1] = "long";
-        length[2] = "medium";
-        length[3] = "short";
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
 
         var textformatted_1 = [],textformatted_2 = [];
         var clockformatted_1 = [],clockformatted_2 = [];
@@ -2816,12 +2649,9 @@ module.exports.testdurfmt2 = {
     testDurFmt_es_VE: function(test) {
         test.expect(16);
         // 1 16
-        var length = [], textfmt;
-
-        length[0] = "full";
-        length[1] = "long";
-        length[2] = "medium";
-        length[3] = "short";
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
 
         var textformatted_1 = [],textformatted_16 = [];
         var clockformatted_1 = [],clockformatted_16 = [];
@@ -2860,12 +2690,9 @@ module.exports.testdurfmt2 = {
     testDurFmt_et_EE: function(test) {
         test.expect(16);
         // 1 2
-        var length = [], textfmt;
-
-        length[0] = "full";
-        length[1] = "long";
-        length[2] = "medium";
-        length[3] = "short";
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
 
         var textformatted_1 = [],textformatted_2 = [];
         var clockformatted_1 = [],clockformatted_2 = [];
@@ -2904,12 +2731,9 @@ module.exports.testdurfmt2 = {
     testDurFmt_fa_AF: function(test) {
         test.expect(16);
         // 1 2
-        var length = [], textfmt;
-
-        length[0] = "full";
-        length[1] = "long";
-        length[2] = "medium";
-        length[3] = "short";
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
 
         var textformatted_1 = [],textformatted_2 = [];
         var clockformatted_1 = [],clockformatted_2 = [];
@@ -2948,12 +2772,9 @@ module.exports.testdurfmt2 = {
     testDurFmt_fa_IR: function(test) {
         test.expect(16);
         // 1 18
-        var length = [], textfmt;
-
-        length[0] = "full";
-        length[1] = "long";
-        length[2] = "medium";
-        length[3] = "short";
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
 
         var textformatted_1 = [],textformatted_18 = [];
         var clockformatted_1 = [],clockformatted_18 = [];
@@ -2993,12 +2814,9 @@ module.exports.testdurfmt2 = {
     testDurFmt_fi_FI: function(test) {
         test.expect(16);
         // 1 17
-        var length = [], textfmt;
-
-        length[0] = "full";
-        length[1] = "long";
-        length[2] = "medium";
-        length[3] = "short";
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
 
         var textformatted_1 = [],textformatted_17 = [];
         var clockformatted_1 = [],clockformatted_17 = [];
@@ -3038,12 +2856,9 @@ module.exports.testdurfmt2 = {
     testDurFmt_fr_BE: function(test) {
         test.expect(16);
         // 1 16
-        var length = [], textfmt;
-
-        length[0] = "full";
-        length[1] = "long";
-        length[2] = "medium";
-        length[3] = "short";
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
 
         var textformatted_1 = [],textformatted_16 = [];
         var clockformatted_1 = [],clockformatted_16 = [];
@@ -3082,12 +2897,9 @@ module.exports.testdurfmt2 = {
     testDurFmt_fr_CA: function(test) {
         test.expect(16);
         // 1 17
-        var length = [], textfmt;
-
-        length[0] = "full";
-        length[1] = "long";
-        length[2] = "medium";
-        length[3] = "short";
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
 
         var textformatted_1 = [],textformatted_17 = [];
         var clockformatted_1 = [],clockformatted_17 = [];
@@ -3126,12 +2938,9 @@ module.exports.testdurfmt2 = {
     testDurFmt_fr_CH: function(test) {
         test.expect(16);
         // 1 17
-        var length = [], textfmt;
-
-        length[0] = "full";
-        length[1] = "long";
-        length[2] = "medium";
-        length[3] = "short";
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
 
         var textformatted_1 = [],textformatted_17 = [];
         var clockformatted_1 = [],clockformatted_17 = [];
@@ -3170,12 +2979,9 @@ module.exports.testdurfmt2 = {
     testDurFmt_fr_FR: function(test) {
         test.expect(16);
         // 1 17
-        var length = [], textfmt;
-
-        length[0] = "full";
-        length[1] = "long";
-        length[2] = "medium";
-        length[3] = "short";
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
 
         var textformatted_1 = [],textformatted_17 = [];
         var clockformatted_1 = [],clockformatted_17 = [];
@@ -3216,12 +3022,9 @@ module.exports.testdurfmt2 = {
     testDurFmt_fr_LU: function(test) {
         test.expect(16);
         // 1 16
-        var length = [], textfmt;
-
-        length[0] = "full";
-        length[1] = "long";
-        length[2] = "medium";
-        length[3] = "short";
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
 
         var textformatted_1 = [],textformatted_16 = [];
         var clockformatted_1 = [],clockformatted_16 = [];
@@ -3262,12 +3065,9 @@ module.exports.testdurfmt2 = {
         test.expect(40);
         // 1 2 3 7 11
 
-        var length = [], textfmt;
-
-        length[0] = "full";
-        length[1] = "long";
-        length[2] = "medium";
-        length[3] = "short";
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
 
         var textformatted_1 = [],textformatted_2 = [],textformatted_3 = [],textformatted_7 = [],textformatted_11 = [];
         var clockformatted_1 = [],clockformatted_2 = [],clockformatted_3 = [],clockformatted_7 = [],clockformatted_11 = [];
@@ -3343,12 +3143,9 @@ module.exports.testdurfmt2 = {
     testDurFmt_gu_IN: function(test) {
         test.expect(16);
         // 1 2
-        var length = [], textfmt;
-
-        length[0] = "full";
-        length[1] = "long";
-        length[2] = "medium";
-        length[3] = "short";
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
 
         var textformatted_1 = [],textformatted_2 = [];
         var clockformatted_1 = [],clockformatted_2 = [];
@@ -3387,12 +3184,9 @@ module.exports.testdurfmt2 = {
     testDurFmt_he_IL: function(test) {
         test.expect(32);
         // 1 2 20 19
-        var length = [], textfmt;
-
-        length[0] = "full";
-        length[1] = "long";
-        length[2] = "medium";
-        length[3] = "short";
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
 
         var textformatted_1 = [],textformatted_2 = [],textformatted_20 = [],textformatted_19 = [];
         var clockformatted_1 = [],clockformatted_2 = [],clockformatted_20 = [],clockformatted_19 = [];
@@ -3459,12 +3253,9 @@ module.exports.testdurfmt2 = {
         test.expect(16);
         // 1 2
         // 1 2
-        var length = [], textfmt;
-
-        length[0] = "full";
-        length[1] = "long";
-        length[2] = "medium";
-        length[3] = "short";
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
 
         var textformatted_1 = [],textformatted_2 = [];
         var clockformatted_1 = [],clockformatted_2 = [];
@@ -3505,12 +3296,9 @@ module.exports.testdurfmt2 = {
     testDurFmt_hr_HR: function(test) {
         test.expect(24);
         // 1 2 5
-        var length = [], textfmt;
-
-        length[0] = "full";
-        length[1] = "long";
-        length[2] = "medium";
-        length[3] = "short";
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
 
         var textformatted_1 = [],textformatted_2 = [], textformatted_5 =[];
         var clockformatted_1 = [],clockformatted_2 = [], clockformatted_5 = [];
@@ -3562,12 +3350,9 @@ module.exports.testdurfmt2 = {
     testDurFmt_hr_ME: function(test) {
         test.expect(24);
         // 1 4 19
-        var length = [], textfmt;
-
-        length[0] = "full";
-        length[1] = "long";
-        length[2] = "medium";
-        length[3] = "short";
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
 
         var textformatted_1 = [],textformatted_4 = [], textformatted_19 = [];
         var clockformatted_1 = [],clockformatted_4 = [], clockformatted_19 = [];
@@ -3619,12 +3404,9 @@ module.exports.testdurfmt2 = {
     testDurFmt_hr_HU: function(test) {
         test.expect(24);
         // 1 2 5
-        var length = [], textfmt;
-
-        length[0] = "full";
-        length[1] = "long";
-        length[2] = "medium";
-        length[3] = "short";
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
 
         var textformatted_1 = [],textformatted_2 = [], textformatted_5 = [];
         var clockformatted_1 = [],clockformatted_2 = [], clockformatted_5 = [];
@@ -3676,12 +3458,9 @@ module.exports.testdurfmt2 = {
     testDurFmt_id_ID: function(test) {
         test.expect(16);
         // 1 2
-        var length = [], textfmt;
-
-        length[0] = "full";
-        length[1] = "long";
-        length[2] = "medium";
-        length[3] = "short";
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
 
         var textformatted_1 = [],textformatted_2 = [];
         var clockformatted_1 = [],clockformatted_2 = [];
@@ -3721,12 +3500,9 @@ module.exports.testdurfmt2 = {
     testDurFmt_is_IS: function(test) {
         test.expect(16);
         // 1 17
-        var length = [], textfmt;
-
-        length[0] = "full";
-        length[1] = "long";
-        length[2] = "medium";
-        length[3] = "short";
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
 
         var textformatted_1 = [],textformatted_17 = [];
         var clockformatted_1 = [],clockformatted_17 = [];
@@ -3766,12 +3542,9 @@ module.exports.testdurfmt2 = {
     testDurFmt_it_CH: function(test) {
         test.expect(16);
         // 1 17
-        var length = [], textfmt;
-
-        length[0] = "full";
-        length[1] = "long";
-        length[2] = "medium";
-        length[3] = "short";
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
 
         var textformatted_1 = [],textformatted_17 = [];
         var clockformatted_1 = [],clockformatted_17 = [];
@@ -3811,12 +3584,9 @@ module.exports.testdurfmt2 = {
     testDurFmt_it_IT: function(test) {
         test.expect(16);
         // 1 2
-        var length = [], textfmt;
-
-        length[0] = "full";
-        length[1] = "long";
-        length[2] = "medium";
-        length[3] = "short";
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
 
         var textformatted_1 = [],textformatted_2 = [];
         var clockformatted_1 = [],clockformatted_2 = [];
@@ -3856,12 +3626,9 @@ module.exports.testdurfmt2 = {
     testDurFmt_ja_JP: function(test) {
         test.expect(16);
         // 1 16
-        var length = [], textfmt;
-
-        length[0] = "full";
-        length[1] = "long";
-        length[2] = "medium";
-        length[3] = "short";
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
 
         var textformatted_1 = [],textformatted_16 = [];
         var clockformatted_1 = [],clockformatted_16 = [];
@@ -3901,12 +3668,9 @@ module.exports.testdurfmt2 = {
     testDurFmt_kk_KZ: function(test) {
         test.expect(16);
         // 1 2
-        var length = [], textfmt;
-
-        length[0] = "full";
-        length[1] = "long";
-        length[2] = "medium";
-        length[3] = "short";
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
 
         var textformatted_1 = [],textformatted_2 = [];
         var clockformatted_1 = [],clockformatted_2 = [];
@@ -3946,12 +3710,9 @@ module.exports.testdurfmt2 = {
     testDurFmt_kn_IN: function(test) {
         test.expect(16);
         // 1 2
-        var length = [], textfmt;
-
-        length[0] = "full";
-        length[1] = "long";
-        length[2] = "medium";
-        length[3] = "short";
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
 
         var textformatted_1 = [],textformatted_2 = [];
         var clockformatted_1 = [],clockformatted_2 = [];
@@ -3991,12 +3752,9 @@ module.exports.testdurfmt2 = {
     testDurFmt_ko_KR: function(test) {
         test.expect(16);
         // 1 2
-        var length = [], textfmt;
-
-        length[0] = "full";
-        length[1] = "long";
-        length[2] = "medium";
-        length[3] = "short";
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
 
         var textformatted_1 = [],textformatted_2 = [];
         var clockformatted_1 = [],clockformatted_2 = [];
@@ -4036,12 +3794,9 @@ module.exports.testdurfmt2 = {
     testDurFmt_ku_IQ: function(test) {
         test.expect(16);
         // 1 2
-        var length = [], textfmt;
-
-        length[0] = "full";
-        length[1] = "long";
-        length[2] = "medium";
-        length[3] = "short";
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
 
         var textformatted_1 = [],textformatted_2 = [];
         var clockformatted_1 = [],clockformatted_2 = [];
@@ -4081,12 +3836,9 @@ module.exports.testdurfmt2 = {
     testDurFmt_lt_LT: function(test) {
         test.expect(24);
         // 21 9 11
-        var length = [], textfmt;
-
-        length[0] = "full";
-        length[1] = "long";
-        length[2] = "medium";
-        length[3] = "short";
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
 
         var textformatted_21 = [],textformatted_9 = [],textformatted_11 = [];
         var clockformatted_21 = [],clockformatted_9 = [],clockformatted_11 = [];
@@ -4138,12 +3890,9 @@ module.exports.testdurfmt2 = {
     testDurFmt_lv_LV: function(test) {
         test.expect(16);
         // 21 9
-        var length = [], textfmt;
-
-        length[0] = "full";
-        length[1] = "long";
-        length[2] = "medium";
-        length[3] = "short";
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
 
         var textformatted_21 = [],textformatted_9 = [];
         var clockformatted_21 = [],clockformatted_9 = [];
@@ -4183,12 +3932,9 @@ module.exports.testdurfmt2 = {
     testDurFmt_mk_MK: function(test) {
         test.expect(16);
         // 1 2
-        var length = [], textfmt;
-
-        length[0] = "full";
-        length[1] = "long";
-        length[2] = "medium";
-        length[3] = "short";
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
 
         var textformatted_1 = [],textformatted_2 = [];
         var clockformatted_1 = [],clockformatted_2 = [];
@@ -4230,12 +3976,9 @@ module.exports.testdurfmt2 = {
     testDurFmt_ml_IN: function(test) {
         test.expect(16);
         // 1 2
-        var length = [], textfmt;
-
-        length[0] = "full";
-        length[1] = "long";
-        length[2] = "medium";
-        length[3] = "short";
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
 
         var textformatted_1 = [],textformatted_2 = [];
         var clockformatted_1 = [],clockformatted_2 = [];
@@ -4275,12 +4018,9 @@ module.exports.testdurfmt2 = {
     testDurFmt_mr_IN: function(test) {
         test.expect(16);
         // 1 18
-        var length = [], textfmt;
-
-        length[0] = "full";
-        length[1] = "long";
-        length[2] = "medium";
-        length[3] = "short";
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
 
         var textformatted_1 = [],textformatted_18 = [];
         var clockformatted_1 = [],clockformatted_18 = [];
@@ -4320,12 +4060,9 @@ module.exports.testdurfmt2 = {
     testDurFmt_ms_MY: function(test) {
         test.expect(16);
         // 1 2
-        var length = [], textfmt;
-
-        length[0] = "full";
-        length[1] = "long";
-        length[2] = "medium";
-        length[3] = "short";
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
 
         var textformatted_1 = [],textformatted_2 = [];
         var clockformatted_1 = [],clockformatted_2 = [];
@@ -4365,12 +4102,9 @@ module.exports.testdurfmt2 = {
     testDurFmt_nb_NO: function(test) {
         test.expect(16);
         // 1 2
-        var length = [], textfmt;
-
-        length[0] = "full";
-        length[1] = "long";
-        length[2] = "medium";
-        length[3] = "short";
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
 
         var textformatted_1 = [],textformatted_2 = [];
         var clockformatted_1 = [],clockformatted_2 = [];
@@ -4410,12 +4144,9 @@ module.exports.testdurfmt2 = {
     testDurFmt_nl_BE: function(test) {
         test.expect(16);
         // 1 2
-        var length = [], textfmt;
-
-        length[0] = "full";
-        length[1] = "long";
-        length[2] = "medium";
-        length[3] = "short";
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
 
         var textformatted_1 = [],textformatted_2 = [];
         var clockformatted_1 = [],clockformatted_2 = [];
@@ -4455,12 +4186,9 @@ module.exports.testdurfmt2 = {
     testDurFmt_nl_NL: function(test) {
         test.expect(16);
         // 1 2
-        var length = [], textfmt;
-
-        length[0] = "full";
-        length[1] = "long";
-        length[2] = "medium";
-        length[3] = "short";
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
 
         var textformatted_1 = [],textformatted_2 = [];
         var clockformatted_1 = [],clockformatted_2 = [];
@@ -4500,12 +4228,9 @@ module.exports.testdurfmt2 = {
     testDurFmt_pa_Guru_IN: function(test) {
         test.expect(16);
         // 1 2
-        var length = [], textfmt;
-
-        length[0] = "full";
-        length[1] = "long";
-        length[2] = "medium";
-        length[3] = "short";
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
 
         var textformatted_1 = [],textformatted_2 = [];
         var clockformatted_1 = [],clockformatted_2 = [];
@@ -4545,12 +4270,9 @@ module.exports.testdurfmt2 = {
     testDurFmt_pl_PL: function(test) {
         test.expect(24);
         // 1 2 5
-        var length = [], textfmt;
-
-        length[0] = "full";
-        length[1] = "long";
-        length[2] = "medium";
-        length[3] = "short";
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
 
         var textformatted_1 = [],textformatted_2 = [], textformatted_5 =[];
         var clockformatted_1 = [],clockformatted_2 = [], clockformatted_5 = [];
@@ -4602,12 +4324,9 @@ module.exports.testdurfmt2 = {
     testDurFmt_pt_BR: function(test) {
         test.expect(16);
         // 1 2
-        var length = [], textfmt;
-
-        length[0] = "full";
-        length[1] = "long";
-        length[2] = "medium";
-        length[3] = "short";
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
 
         var textformatted_1 = [],textformatted_2 = [];
         var clockformatted_1 = [],clockformatted_2 = [];
@@ -4646,12 +4365,9 @@ module.exports.testdurfmt2 = {
     testDurFmt_pt_PT: function(test) {
         test.expect(16);
         // 1 17
-        var length = [], textfmt;
-
-        length[0] = "full";
-        length[1] = "long";
-        length[2] = "medium";
-        length[3] = "short";
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
 
         var textformatted_1 = [],textformatted_17 = [];
         var clockformatted_1 = [],clockformatted_17 = [];
@@ -4690,12 +4406,9 @@ module.exports.testdurfmt2 = {
     testDurFmt_ro_RO: function(test) {
         test.expect(24);
         // 1 2 20
-        var length = [], textfmt;
-
-        length[0] = "full";
-        length[1] = "long";
-        length[2] = "medium";
-        length[3] = "short";
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
 
         var textformatted_1 = [],textformatted_2 = [], textformatted_20 =[];
         var clockformatted_1 = [],clockformatted_2 = [], clockformatted_20 =[];
@@ -4748,12 +4461,9 @@ module.exports.testdurfmt2 = {
         test.expect(24);
         // 1 4 20
 
-        var length = [], textfmt;
-
-        length[0] = "full";
-        length[1] = "long";
-        length[2] = "medium";
-        length[3] = "short";
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
 
         var textformatted_1 = [],textformatted_4 = [], textformatted_20 = [];
         var clockformatted_1 = [],clockformatted_4 = [], clockformatted_20 = [];
@@ -4805,12 +4515,9 @@ module.exports.testdurfmt2 = {
     testDurFmt_sr_Latn_RS: function(test) {
         test.expect(24);
         // 1 2 5
-        var length = [], textfmt;
-
-        length[0] = "full";
-        length[1] = "long";
-        length[2] = "medium";
-        length[3] = "short";
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
 
         var textformatted_1 = [],textformatted_2 = [], textformatted_5 =[];
         var clockformatted_1 = [],clockformatted_2 = [], clockformatted_5 = [];
@@ -4862,12 +4569,9 @@ module.exports.testdurfmt2 = {
     testDurFmt_ru_BY: function(test) {
         test.expect(24);
         // 1 2 5
-        var length = [], textfmt;
-
-        length[0] = "full";
-        length[1] = "long";
-        length[2] = "medium";
-        length[3] = "short";
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
 
         var textformatted_1 = [],textformatted_2 = [], textformatted_5 =[];
         var clockformatted_1 = [],clockformatted_2 = [], clockformatted_5 = [];
@@ -4919,12 +4623,9 @@ module.exports.testdurfmt2 = {
     testDurFmt_ru_KG: function(test) {
         test.expect(24);
         // 41 24 25
-        var length = [], textfmt;
-
-        length[0] = "full";
-        length[1] = "long";
-        length[2] = "medium";
-        length[3] = "short";
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
 
         var textformatted_41 = [],textformatted_24 = [], textformatted_25 =[];
         var clockformatted_41 = [],clockformatted_24 = [], clockformatted_25 = [];
@@ -4976,12 +4677,9 @@ module.exports.testdurfmt2 = {
     testDurFmt_ru_KZ: function(test) {
         test.expect(24);
         // 31 22 20
-        var length = [], textfmt;
-
-        length[0] = "full";
-        length[1] = "long";
-        length[2] = "medium";
-        length[3] = "short";
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
 
         var textformatted_31 = [],textformatted_22 = [], textformatted_20 =[];
         var clockformatted_31 = [],clockformatted_22 = [], clockformatted_20 = [];
@@ -5034,12 +4732,9 @@ module.exports.testdurfmt2 = {
     testDurFmt_ru_GE: function(test) {
         test.expect(24);
         // 21 4 19
-        var length = [], textfmt;
-
-        length[0] = "full";
-        length[1] = "long";
-        length[2] = "medium";
-        length[3] = "short";
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
 
         var textformatted_21 = [],textformatted_4 = [], textformatted_19 =[];
         var clockformatted_21 = [],clockformatted_4 = [], clockformatted_19 = [];
@@ -5091,12 +4786,9 @@ module.exports.testdurfmt2 = {
     testDurFmt_ru_RU: function(test) {
         test.expect(24);
         // 31 32 19
-        var length = [], textfmt;
-
-        length[0] = "full";
-        length[1] = "long";
-        length[2] = "medium";
-        length[3] = "short";
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
 
         var textformatted_31 = [],textformatted_32 = [], textformatted_19 =[];
         var clockformatted_31 = [],clockformatted_32 = [], clockformatted_19 = [];
@@ -5148,12 +4840,9 @@ module.exports.testdurfmt2 = {
     testDurFmt_ru_UA: function(test) {
         test.expect(24);
         // 1 2 5
-        var length = [], textfmt;
-
-        length[0] = "full";
-        length[1] = "long";
-        length[2] = "medium";
-        length[3] = "short";
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
 
         var textformatted_1 = [],textformatted_2 = [], textformatted_5 =[];
         var clockformatted_1 = [],clockformatted_2 = [], clockformatted_5 = [];
@@ -5205,12 +4894,9 @@ module.exports.testdurfmt2 = {
     testDurFmt_sk_SK: function(test) {
         test.expect(24);
         // 1 2 5
-        var length = [], textfmt;
-
-        length[0] = "full";
-        length[1] = "long";
-        length[2] = "medium";
-        length[3] = "short";
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
 
         var textformatted_1 = [],textformatted_2 = [], textformatted_5 =[];
         var clockformatted_1 = [],clockformatted_2 = [], clockformatted_5 = [];
@@ -5262,12 +4948,9 @@ module.exports.testdurfmt2 = {
     testDurFmt_sl_SI: function(test) {
         test.expect(32);
         // 1 2 3 5
-        var length = [], textfmt;
-
-        length[0] = "full";
-        length[1] = "long";
-        length[2] = "medium";
-        length[3] = "short";
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
 
         var textformatted_1 = [],textformatted_2 = [], textformatted_3 = [],textformatted_5 = [];
         var clockformatted_1 = [],clockformatted_2 = [], clockformatted_3 = [],clockformatted_5 = [];
@@ -5331,12 +5014,9 @@ module.exports.testdurfmt2 = {
     testDurFmt_sq_AL: function(test) {
         test.expect(16);
         // 1 16
-        var length = [], textfmt;
-
-        length[0] = "full";
-        length[1] = "long";
-        length[2] = "medium";
-        length[3] = "short";
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
 
         var textformatted_1 = [],textformatted_16 = [];
         var clockformatted_1 = [],clockformatted_16 = [];
@@ -5376,12 +5056,9 @@ module.exports.testdurfmt2 = {
     testDurFmt_sq_ME: function(test) {
         test.expect(16);
         // 1 17
-        var length = [], textfmt;
-
-        length[0] = "full";
-        length[1] = "long";
-        length[2] = "medium";
-        length[3] = "short";
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
 
         var textformatted_1 = [],textformatted_17 = [];
         var clockformatted_1 = [],clockformatted_17 = [];
@@ -5421,12 +5098,9 @@ module.exports.testdurfmt2 = {
     testDurFmt_sv_FI: function(test) {
         test.expect(16);
         // 1 2
-        var length = [], textfmt;
-
-        length[0] = "full";
-        length[1] = "long";
-        length[2] = "medium";
-        length[3] = "short";
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
 
         var textformatted_1 = [],textformatted_2 = [];
         var clockformatted_1 = [],clockformatted_2 = [];
@@ -5466,12 +5140,9 @@ module.exports.testdurfmt2 = {
     testDurFmt_sv_SE: function(test) {
         test.expect(16);
         // 1 17
-        var length = [], textfmt;
-
-        length[0] = "full";
-        length[1] = "long";
-        length[2] = "medium";
-        length[3] = "short";
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
 
         var textformatted_1 = [],textformatted_17 = [];
         var clockformatted_1 = [],clockformatted_17 = [];
@@ -5511,12 +5182,9 @@ module.exports.testdurfmt2 = {
     testDurFmt_ta_IN: function(test) {
         test.expect(16);
         // 1 2
-        var length = [], textfmt;
-
-        length[0] = "full";
-        length[1] = "long";
-        length[2] = "medium";
-        length[3] = "short";
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
 
         var textformatted_1 = [],textformatted_2 = [];
         var clockformatted_1 = [],clockformatted_2 = [];
@@ -5556,12 +5224,9 @@ module.exports.testdurfmt2 = {
     testDurFmt_te_IN: function(test) {
         test.expect(16);
         // 1 16
-        var length = [], textfmt;
-
-        length[0] = "full";
-        length[1] = "long";
-        length[2] = "medium";
-        length[3] = "short";
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
 
         var textformatted_1 = [],textformatted_16 = [];
         var clockformatted_1 = [],clockformatted_16 = [];
@@ -5601,12 +5266,9 @@ module.exports.testdurfmt2 = {
     testDurFmt_th_TH: function(test) {
         test.expect(16);
         // 1 16
-        var length = [], textfmt;
-
-        length[0] = "full";
-        length[1] = "long";
-        length[2] = "medium";
-        length[3] = "short";
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
 
         var textformatted_1 = [],textformatted_16 = [];
         var clockformatted_1 = [],clockformatted_16 = [];
@@ -5646,12 +5308,9 @@ module.exports.testdurfmt2 = {
     testDurFmt_tr_AM: function(test) {
         test.expect(16);
         // 1 2
-        var length = [], textfmt;
-
-        length[0] = "full";
-        length[1] = "long";
-        length[2] = "medium";
-        length[3] = "short";
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
 
         var textformatted_1 = [],textformatted_2 = [];
         var clockformatted_1 = [],clockformatted_2 = [];
@@ -5691,12 +5350,9 @@ module.exports.testdurfmt2 = {
     testDurFmt_tr_AZ: function(test) {
         test.expect(16);
         // 1 16
-        var length = [], textfmt;
-
-        length[0] = "full";
-        length[1] = "long";
-        length[2] = "medium";
-        length[3] = "short";
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
 
         var textformatted_1 = [],textformatted_16 = [];
         var clockformatted_1 = [],clockformatted_16 = [];
@@ -5736,12 +5392,9 @@ module.exports.testdurfmt2 = {
     testDurFmt_tr_CY: function(test) {
         test.expect(16);
         // 1 17
-        var length = [], textfmt;
-
-        length[0] = "full";
-        length[1] = "long";
-        length[2] = "medium";
-        length[3] = "short";
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
 
         var textformatted_1 = [],textformatted_17 = [];
         var clockformatted_1 = [],clockformatted_17 = [];
@@ -5781,12 +5434,9 @@ module.exports.testdurfmt2 = {
     testDurFmt_tr_TR: function(test) {
         test.expect(16);
         // 1 2
-        var length = [], textfmt;
-
-        length[0] = "full";
-        length[1] = "long";
-        length[2] = "medium";
-        length[3] = "short";
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
 
         var textformatted_1 = [],textformatted_2 = [];
         var clockformatted_1 = [],clockformatted_2 = [];
@@ -5826,12 +5476,9 @@ module.exports.testdurfmt2 = {
     testDurFmt_uk_UA: function(test) {
         test.expect(24);
         // 1 2 5
-        var length = [], textfmt;
-
-        length[0] = "full";
-        length[1] = "long";
-        length[2] = "medium";
-        length[3] = "short";
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
 
         var textformatted_1 = [],textformatted_2 = [], textformatted_5 = [];
         var clockformatted_1 = [],clockformatted_2 = [], clockformatted_5 = [];
@@ -5883,12 +5530,9 @@ module.exports.testdurfmt2 = {
     testDurFmt_ur_IN: function(test) {
         test.expect(16);
         // 1 2
-        var length = [], textfmt;
-
-        length[0] = "full";
-        length[1] = "long";
-        length[2] = "medium";
-        length[3] = "short";
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
 
         var textformatted_1 = [],textformatted_2 = [];
         var clockformatted_1 = [],clockformatted_2 = [];
@@ -5928,12 +5572,9 @@ module.exports.testdurfmt2 = {
     testDurFmt_uz_Latn_UZ: function(test) {
         test.expect(16);
         // 1 2
-        var length = [], textfmt;
-
-        length[0] = "full";
-        length[1] = "long";
-        length[2] = "medium";
-        length[3] = "short";
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
 
         var textformatted_1 = [],textformatted_2 = [];
         var clockformatted_1 = [],clockformatted_2 = [];
@@ -5973,12 +5614,9 @@ module.exports.testdurfmt2 = {
     testDurFmt_vi_VN: function(test) {
         test.expect(16);
         // 1 2
-        var length = [], textfmt;
-
-        length[0] = "full";
-        length[1] = "long";
-        length[2] = "medium";
-        length[3] = "short";
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
 
         var textformatted_1 = [],textformatted_2 = [];
         var clockformatted_1 = [],clockformatted_2 = [];
@@ -6018,12 +5656,9 @@ module.exports.testdurfmt2 = {
     testDurFmt_zh_Hans_CN: function(test) {
         test.expect(8);;
         // 1
-        var length = [], textfmt;
-
-        length[0] = "full";
-        length[1] = "long";
-        length[2] = "medium";
-        length[3] = "short";
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
 
         var textformatted_1 = [];
         var clockformatted_1 = [];
@@ -6048,12 +5683,9 @@ module.exports.testdurfmt2 = {
     },
     testDurFmt_zh_Hant_HK: function(test) {
         test.expect(8);;
-        var length = [], textfmt;
-
-        length[0] = "full";
-        length[1] = "long";
-        length[2] = "medium";
-        length[3] = "short";
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
 
         var textformatted_2 = [];
         var clockformatted_2 = [];
@@ -6081,12 +5713,9 @@ module.exports.testdurfmt2 = {
     testDurFmt_zh_Hant_TW: function(test) {
         test.expect(8);;
         // 1
-        var length = [], textfmt;
-
-        length[0] = "full";
-        length[1] = "long";
-        length[2] = "medium";
-        length[3] = "short";
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
 
         var textformatted_1 = [];
         var clockformatted_1 = [];
@@ -6112,12 +5741,9 @@ module.exports.testdurfmt2 = {
     testDurFmt_en_GE: function(test) {
         test.expect(16);
         // 1 2
-        var length = [], textfmt;
-
-        length[0] = "full";
-        length[1] = "long";
-        length[2] = "medium";
-        length[3] = "short";
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
 
         var textformatted_1 = [],textformatted_2 = [];
         var clockformatted_1 = [],clockformatted_2 = [];
@@ -6156,12 +5782,9 @@ module.exports.testdurfmt2 = {
     testDurFmt_en_CN: function(test) {
         test.expect(16);
         // 1 2
-        var length = [], textfmt;
-
-        length[0] = "full";
-        length[1] = "long";
-        length[2] = "medium";
-        length[3] = "short";
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
 
         var textformatted_1 = [],textformatted_2 = [];
         var clockformatted_1 = [],clockformatted_2 = [];
@@ -6200,12 +5823,9 @@ module.exports.testdurfmt2 = {
     testDurFmt_en_MX: function(test) {
         test.expect(16);
         // 1 2
-        var length = [], textfmt;
-
-        length[0] = "full";
-        length[1] = "long";
-        length[2] = "medium";
-        length[3] = "short";
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
 
         var textformatted_1 = [],textformatted_2 = [];
         var clockformatted_1 = [],clockformatted_2 = [];
@@ -6244,12 +5864,9 @@ module.exports.testdurfmt2 = {
     testDurFmt_en_TW: function(test) {
         test.expect(16);
         // 1 2
-        var length = [], textfmt;
-
-        length[0] = "full";
-        length[1] = "long";
-        length[2] = "medium";
-        length[3] = "short";
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
 
         var textformatted_1 = [],textformatted_2 = [];
         var clockformatted_1 = [],clockformatted_2 = [];
@@ -6288,12 +5905,9 @@ module.exports.testdurfmt2 = {
     testDurFmt_mn_MN: function(test) {
         test.expect(16);
         // 1 2
-        var length = [], textfmt;
-
-        length[0] = "full";
-        length[1] = "long";
-        length[2] = "medium";
-        length[3] = "short";
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
 
         var textformatted_1 = [],textformatted_2 = [];
         var clockformatted_1 = [],clockformatted_2 = [];
@@ -6333,12 +5947,9 @@ module.exports.testdurfmt2 = {
     testDurFmt_es_CA: function(test) {
         test.expect(16);
         // 1 17
-        var length = [], textfmt;
-
-        length[0] = "full";
-        length[1] = "long";
-        length[2] = "medium";
-        length[3] = "short";
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
 
         var textformatted_1 = [],textformatted_17 = [];
         var clockformatted_1 = [],clockformatted_17 = [];
@@ -6377,12 +5988,9 @@ module.exports.testdurfmt2 = {
     testDurFmt_af_ZA: function(test) {
         test.expect(16);
         // 1 2
-        var length = [], textfmt;
-
-        length[0] = "full";
-        length[1] = "long";
-        length[2] = "medium";
-        length[3] = "short";
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
 
         var textformatted_1 = [],textformatted_2 = [];
         var clockformatted_1 = [],clockformatted_2 = [];
@@ -6422,12 +6030,9 @@ module.exports.testdurfmt2 = {
     testDurFmt_am_ET: function(test) {
         test.expect(16);
         // 1 18
-        var length = [], textfmt;
-
-        length[0] = "full";
-        length[1] = "long";
-        length[2] = "medium";
-        length[3] = "short";
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
 
         var textformatted_1 = [],textformatted_18 = [];
         var clockformatted_1 = [],clockformatted_18 = [];
@@ -6467,12 +6072,9 @@ module.exports.testdurfmt2 = {
     testDurFmt_ha_Latn_NG: function(test) {
         test.expect(16);
         // 1 2
-        var length = [], textfmt;
-
-        length[0] = "full";
-        length[1] = "long";
-        length[2] = "medium";
-        length[3] = "short";
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
 
         var textformatted_1 = [],textformatted_2 = [];
         var clockformatted_1 = [],clockformatted_2 = [];
@@ -6512,12 +6114,9 @@ module.exports.testdurfmt2 = {
     testDurFmt_or_IN: function(test) {
         test.expect(16);
         // 1 17
-        var length = [], textfmt;
-
-        length[0] = "full";
-        length[1] = "long";
-        length[2] = "medium";
-        length[3] = "short";
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
 
         var textformatted_1 = [],textformatted_17 = [];
         var clockformatted_1 = [],clockformatted_17 = [];
@@ -6559,12 +6158,9 @@ module.exports.testdurfmt2 = {
     testDurFmt_az_Latn_AZ: function(test) {
         test.expect(16);
         // 1 19
-        var length = [], textfmt;
-
-        length[0] = "full";
-        length[1] = "long";
-        length[2] = "medium";
-        length[3] = "short";
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
 
         var textformatted_1 = [],textformatted_19 = [];
         var clockformatted_1 = [],clockformatted_19 = [];
@@ -6604,12 +6200,9 @@ module.exports.testdurfmt2 = {
     testDurFmt_km_KH: function(test) {
         test.expect(16);
         // 1 23
-        var length = [], textfmt;
-
-        length[0] = "full";
-        length[1] = "long";
-        length[2] = "medium";
-        length[3] = "short";
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
 
         var textformatted_1 = [],textformatted_23 = [];
         var clockformatted_1 = [],clockformatted_23 = [];
@@ -6650,12 +6243,9 @@ module.exports.testdurfmt2 = {
     testDurFmt_si_LK: function(test) {
         test.expect(16);
         // 1 2
-        var length = [], textfmt;
-
-        length[0] = "full";
-        length[1] = "long";
-        length[2] = "medium";
-        length[3] = "short";
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
 
         var textformatted_1 = [],textformatted_2 = [];
         var clockformatted_1 = [],clockformatted_2 = [];
@@ -6694,12 +6284,9 @@ module.exports.testdurfmt2 = {
     testDurFmt_ar_AE: function(test) {
         test.expect(40);
         // 1 2 3 11 100
-        var length = [], textfmt;
-
-        length[0] = "full";
-        length[1] = "long";
-        length[2] = "medium";
-        length[3] = "short";
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
 
         var textformatted_1 = [],textformatted_2 = [],textformatted_3 = [], textformatted_11 = [], textformatted_100 = [];
         var clockformatted_1 = [],clockformatted_2 = [], clockformatted_3 = [], clockformatted_11 = [], clockformatted_100 = [];
@@ -6775,12 +6362,9 @@ module.exports.testdurfmt2 = {
     testDurFmt_ar_BH: function(test) {
         test.expect(40);
         // 1 2 3 11 100
-        var length = [], textfmt;
-
-        length[0] = "full";
-        length[1] = "long";
-        length[2] = "medium";
-        length[3] = "short";
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
 
         var textformatted_1 = [],textformatted_2 = [],textformatted_3 = [], textformatted_11 = [], textformatted_100 = [];
         var clockformatted_1 = [],clockformatted_2 = [], clockformatted_3 = [], clockformatted_11 = [], clockformatted_100 = [];
@@ -6856,12 +6440,9 @@ module.exports.testdurfmt2 = {
     testDurFmt_ar_DJ: function(test) {
         test.expect(40);
         // 1 2 3 11 100
-        var length = [], textfmt;
-
-        length[0] = "full";
-        length[1] = "long";
-        length[2] = "medium";
-        length[3] = "short";
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
 
         var textformatted_1 = [],textformatted_2 = [],textformatted_3 = [], textformatted_11 = [], textformatted_100 = [];
         var clockformatted_1 = [],clockformatted_2 = [], clockformatted_3 = [], clockformatted_11 = [], clockformatted_100 = [];
@@ -6938,12 +6519,9 @@ module.exports.testdurfmt2 = {
     testDurFmt_ar_DZ: function(test) {
         test.expect(40);
         // 1 2 3 11 100
-        var length = [], textfmt;
-
-        length[0] = "full";
-        length[1] = "long";
-        length[2] = "medium";
-        length[3] = "short";
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
 
         var textformatted_1 = [],textformatted_2 = [],textformatted_3 = [], textformatted_11 = [], textformatted_100 = [];
         var clockformatted_1 = [],clockformatted_2 = [], clockformatted_3 = [], clockformatted_11 = [], clockformatted_100 = [];
@@ -7020,12 +6598,9 @@ module.exports.testdurfmt2 = {
     testDurFmt_ar_JO: function(test) {
         test.expect(40);
         
-        var length = [], textfmt;
-
-        length[0] = "full";
-        length[1] = "long";
-        length[2] = "medium";
-        length[3] = "short";
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
 
         var textformatted_1 = [],textformatted_2 = [],textformatted_3 = [], textformatted_11 = [], textformatted_100 = [];
         var clockformatted_1 = [],clockformatted_2 = [], clockformatted_3 = [], clockformatted_11 = [], clockformatted_100 = [];
@@ -7101,12 +6676,9 @@ module.exports.testdurfmt2 = {
     testDurFmt_ar_KW: function(test) {
         test.expect(40);
         // 1 2 3 11 100
-        var length = [], textfmt;
-
-        length[0] = "full";
-        length[1] = "long";
-        length[2] = "medium";
-        length[3] = "short";
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
 
         var textformatted_1 = [],textformatted_2 = [],textformatted_3 = [], textformatted_11 = [], textformatted_100 = [];
         var clockformatted_1 = [],clockformatted_2 = [], clockformatted_3 = [], clockformatted_11 = [], clockformatted_100 = [];
@@ -7183,12 +6755,9 @@ module.exports.testdurfmt2 = {
     testDurFmt_ar_LB: function(test) {
         test.expect(40);
         // 1 2 3 11 100
-        var length = [], textfmt;
-
-        length[0] = "full";
-        length[1] = "long";
-        length[2] = "medium";
-        length[3] = "short";
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
 
         var textformatted_1 = [],textformatted_2 = [],textformatted_3 = [], textformatted_11 = [], textformatted_100 = [];
         var clockformatted_1 = [],clockformatted_2 = [], clockformatted_3 = [], clockformatted_11 = [], clockformatted_100 = [];
@@ -7265,12 +6834,9 @@ module.exports.testdurfmt2 = {
     testDurFmt_ar_LY: function(test) {
         test.expect(40);
         // 1 2 3 11 100
-        var length = [], textfmt;
-
-        length[0] = "full";
-        length[1] = "long";
-        length[2] = "medium";
-        length[3] = "short";
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
 
         var textformatted_1 = [],textformatted_2 = [],textformatted_3 = [], textformatted_11 = [], textformatted_100 = [];
         var clockformatted_1 = [],clockformatted_2 = [], clockformatted_3 = [], clockformatted_11 = [], clockformatted_100 = [];
@@ -7346,12 +6912,9 @@ module.exports.testdurfmt2 = {
     testDurFmt_ar_MR: function(test) {
         test.expect(40);
         // 1 2 3 11 100
-        var length = [], textfmt;
-
-        length[0] = "full";
-        length[1] = "long";
-        length[2] = "medium";
-        length[3] = "short";
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
 
         var textformatted_1 = [],textformatted_2 = [],textformatted_3 = [], textformatted_11 = [], textformatted_100 = [];
         var clockformatted_1 = [],clockformatted_2 = [], clockformatted_3 = [], clockformatted_11 = [], clockformatted_100 = [];
@@ -7427,12 +6990,9 @@ module.exports.testdurfmt2 = {
     testDurFmt_ar_OM: function(test) {
         test.expect(40);
         // 1 2 3 11 100
-        var length = [], textfmt;
-
-        length[0] = "full";
-        length[1] = "long";
-        length[2] = "medium";
-        length[3] = "short";
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
 
         var textformatted_1 = [],textformatted_2 = [],textformatted_3 = [], textformatted_11 = [], textformatted_100 = [];
         var clockformatted_1 = [],clockformatted_2 = [], clockformatted_3 = [], clockformatted_11 = [], clockformatted_100 = [];
@@ -7508,12 +7068,9 @@ module.exports.testdurfmt2 = {
     testDurFmt_ar_QA: function(test) {
         test.expect(40);
         // 1 2 3 11 100
-        var length = [], textfmt;
-
-        length[0] = "full";
-        length[1] = "long";
-        length[2] = "medium";
-        length[3] = "short";
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
 
         var textformatted_1 = [],textformatted_2 = [],textformatted_3 = [], textformatted_11 = [], textformatted_100 = [];
         var clockformatted_1 = [],clockformatted_2 = [], clockformatted_3 = [], clockformatted_11 = [], clockformatted_100 = [];
@@ -7589,12 +7146,9 @@ module.exports.testdurfmt2 = {
     testDurFmt_ar_SA: function(test) {
         test.expect(40);
         // 1 2 3 11 100
-        var length = [], textfmt;
-
-        length[0] = "full";
-        length[1] = "long";
-        length[2] = "medium";
-        length[3] = "short";
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
 
         var textformatted_1 = [],textformatted_2 = [],textformatted_3 = [], textformatted_11 = [], textformatted_100 = [];
         var clockformatted_1 = [],clockformatted_2 = [], clockformatted_3 = [], clockformatted_11 = [], clockformatted_100 = [];
@@ -7670,12 +7224,9 @@ module.exports.testdurfmt2 = {
     testDurFmt_ar_SD: function(test) {
         test.expect(40);
         // 1 2 3 11 100
-        var length = [], textfmt;
-
-        length[0] = "full";
-        length[1] = "long";
-        length[2] = "medium";
-        length[3] = "short";
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
 
         var textformatted_1 = [],textformatted_2 = [],textformatted_3 = [], textformatted_11 = [], textformatted_100 = [];
         var clockformatted_1 = [],clockformatted_2 = [], clockformatted_3 = [], clockformatted_11 = [], clockformatted_100 = [];
@@ -7751,12 +7302,9 @@ module.exports.testdurfmt2 = {
     testDurFmt_ar_SY: function(test) {
         test.expect(40);
         // 1 2 3 11 100
-        var length = [], textfmt;
-
-        length[0] = "full";
-        length[1] = "long";
-        length[2] = "medium";
-        length[3] = "short";
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
 
         var textformatted_1 = [],textformatted_2 = [],textformatted_3 = [], textformatted_11 = [], textformatted_100 = [];
         var clockformatted_1 = [],clockformatted_2 = [], clockformatted_3 = [], clockformatted_11 = [], clockformatted_100 = [];
@@ -7832,12 +7380,9 @@ module.exports.testdurfmt2 = {
     testDurFmt_ar_TN: function(test) {
         test.expect(40);
         // 1 2 3 11 100
-        var length = [], textfmt;
-
-        length[0] = "full";
-        length[1] = "long";
-        length[2] = "medium";
-        length[3] = "short";
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
 
         var textformatted_1 = [],textformatted_2 = [],textformatted_3 = [], textformatted_11 = [], textformatted_100 = [];
         var clockformatted_1 = [],clockformatted_2 = [], clockformatted_3 = [], clockformatted_11 = [], clockformatted_100 = [];
@@ -7913,12 +7458,9 @@ module.exports.testdurfmt2 = {
     testDurFmt_ar_YE: function(test) {
         test.expect(40);
         // 1 2 3 11 100
-        var length = [], textfmt;
-
-        length[0] = "full";
-        length[1] = "long";
-        length[2] = "medium";
-        length[3] = "short";
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
 
         var textformatted_1 = [],textformatted_2 = [],textformatted_3 = [], textformatted_11 = [], textformatted_100 = [];
         var clockformatted_1 = [],clockformatted_2 = [], clockformatted_3 = [], clockformatted_11 = [], clockformatted_100 = [];
@@ -7994,12 +7536,9 @@ module.exports.testdurfmt2 = {
     testDurFmt_en_ET: function(test) {
         test.expect(16);
         // 1 2
-        var length = [], textfmt;
-
-        length[0] = "full";
-        length[1] = "long";
-        length[2] = "medium";
-        length[3] = "short";
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
 
         var textformatted_1 = [],textformatted_2 = [];
         var clockformatted_1 = [],clockformatted_2 = [];
@@ -8038,12 +7577,9 @@ module.exports.testdurfmt2 = {
     testDurFmt_en_GM: function(test) {
         test.expect(16);
         // 1 2
-        var length = [], textfmt;
-
-        length[0] = "full";
-        length[1] = "long";
-        length[2] = "medium";
-        length[3] = "short";
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
 
         var textformatted_1 = [],textformatted_2 = [];
         var clockformatted_1 = [],clockformatted_2 = [];
@@ -8083,12 +7619,9 @@ module.exports.testdurfmt2 = {
     testDurFmt_en_LR: function(test) {
         test.expect(16);
         // 1 2
-        var length = [], textfmt;
-
-        length[0] = "full";
-        length[1] = "long";
-        length[2] = "medium";
-        length[3] = "short";
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
 
         var textformatted_1 = [],textformatted_2 = [];
         var clockformatted_1 = [],clockformatted_2 = [];
@@ -8127,12 +7660,9 @@ module.exports.testdurfmt2 = {
     testDurFmt_en_PK: function(test) {
         test.expect(16);
         // 1 2
-        var length = [], textfmt;
-
-        length[0] = "full";
-        length[1] = "long";
-        length[2] = "medium";
-        length[3] = "short";
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
 
         var textformatted_1 = [],textformatted_2 = [];
         var clockformatted_1 = [],clockformatted_2 = [];
@@ -8171,12 +7701,9 @@ module.exports.testdurfmt2 = {
     testDurFmt_en_RW: function(test) {
         test.expect(16);
         // 1 2
-        var length = [], textfmt;
-
-        length[0] = "full";
-        length[1] = "long";
-        length[2] = "medium";
-        length[3] = "short";
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
 
         var textformatted_1 = [],textformatted_2 = [];
         var clockformatted_1 = [],clockformatted_2 = [];
@@ -8215,12 +7742,9 @@ module.exports.testdurfmt2 = {
     testDurFmt_en_SD: function(test) {
         test.expect(16);
         // 1 2
-        var length = [], textfmt;
-
-        length[0] = "full";
-        length[1] = "long";
-        length[2] = "medium";
-        length[3] = "short";
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
 
         var textformatted_1 = [],textformatted_2 = [];
         var clockformatted_1 = [],clockformatted_2 = [];
@@ -8259,12 +7783,9 @@ module.exports.testdurfmt2 = {
     testDurFmt_en_SL: function(test) {
         test.expect(16);
         // 1 2
-        var length = [], textfmt;
-
-        length[0] = "full";
-        length[1] = "long";
-        length[2] = "medium";
-        length[3] = "short";
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
 
         var textformatted_1 = [],textformatted_2 = [];
         var clockformatted_1 = [],clockformatted_2 = [];
@@ -8303,12 +7824,9 @@ module.exports.testdurfmt2 = {
     testDurFmt_en_TZ: function(test) {
         test.expect(16);
         // 1 2
-        var length = [], textfmt;
-
-        length[0] = "full";
-        length[1] = "long";
-        length[2] = "medium";
-        length[3] = "short";
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
 
         var textformatted_1 = [],textformatted_2 = [];
         var clockformatted_1 = [],clockformatted_2 = [];
@@ -8347,12 +7865,9 @@ module.exports.testdurfmt2 = {
     testDurFmt_es_CR: function(test) {
         test.expect(16);
         // 1 17
-        var length = [], textfmt;
-
-        length[0] = "full";
-        length[1] = "long";
-        length[2] = "medium";
-        length[3] = "short";
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
 
         var textformatted_1 = [],textformatted_17 = [];
         var clockformatted_1 = [],clockformatted_17 = [];
@@ -8391,12 +7906,9 @@ module.exports.testdurfmt2 = {
     testDurFmt_es_GQ: function(test) {
         test.expect(16);
         // 1 2
-        var length = [], textfmt;
-
-        length[0] = "full";
-        length[1] = "long";
-        length[2] = "medium";
-        length[3] = "short";
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
 
         var textformatted_1 = [],textformatted_2 = [];
         var clockformatted_1 = [],clockformatted_2 = [];
@@ -8435,12 +7947,9 @@ module.exports.testdurfmt2 = {
     testDurFmt_es_PH: function(test) {
         test.expect(16);
         // 1 17
-        var length = [], textfmt;
-
-        length[0] = "full";
-        length[1] = "long";
-        length[2] = "medium";
-        length[3] = "short";
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
 
         var textformatted_1 = [],textformatted_17 = [];
         var clockformatted_1 = [],clockformatted_17 = [];
@@ -8479,12 +7988,9 @@ module.exports.testdurfmt2 = {
     testDurFmt_fr_BF: function(test) {
         test.expect(16);
         // 1 2
-        var length = [], textfmt;
-
-        length[0] = "full";
-        length[1] = "long";
-        length[2] = "medium";
-        length[3] = "short";
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
 
         var textformatted_1 = [],textformatted_2 = [];
         var clockformatted_1 = [],clockformatted_2 = [];
@@ -8525,12 +8031,9 @@ module.exports.testdurfmt2 = {
     testDurFmt_fr_BJ: function(test) {
         test.expect(16);
         // 1 17
-        var length = [], textfmt;
-
-        length[0] = "full";
-        length[1] = "long";
-        length[2] = "medium";
-        length[3] = "short";
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
 
         var textformatted_1 = [],textformatted_17 = [];
         var clockformatted_1 = [],clockformatted_17 = [];
@@ -8569,12 +8072,9 @@ module.exports.testdurfmt2 = {
     testDurFmt_fr_CD: function(test) {
         test.expect(16);
         // 1 17
-        var length = [], textfmt;
-
-        length[0] = "full";
-        length[1] = "long";
-        length[2] = "medium";
-        length[3] = "short";
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
 
         var textformatted_1 = [],textformatted_17 = [];
         var clockformatted_1 = [],clockformatted_17 = [];
@@ -8614,12 +8114,9 @@ module.exports.testdurfmt2 = {
     testDurFmt_fr_CF: function(test) {
         test.expect(16);
         // 1 2
-        var length = [], textfmt;
-
-        length[0] = "full";
-        length[1] = "long";
-        length[2] = "medium";
-        length[3] = "short";
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
 
         var textformatted_1 = [],textformatted_2 = [];
         var clockformatted_1 = [],clockformatted_2 = [];
@@ -8658,12 +8155,9 @@ module.exports.testdurfmt2 = {
     testDurFmt_fr_CG: function(test) {
         test.expect(16);
         // 1 16
-        var length = [], textfmt;
-
-        length[0] = "full";
-        length[1] = "long";
-        length[2] = "medium";
-        length[3] = "short";
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
 
         var textformatted_1 = [],textformatted_16 = [];
         var clockformatted_1 = [],clockformatted_16 = [];
@@ -8702,12 +8196,9 @@ module.exports.testdurfmt2 = {
     testDurFmt_fr_CI: function(test) {
         test.expect(16);
         // 1 17
-        var length = [], textfmt;
-
-        length[0] = "full";
-        length[1] = "long";
-        length[2] = "medium";
-        length[3] = "short";
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
 
         var textformatted_1 = [],textformatted_17 = [];
         var clockformatted_1 = [],clockformatted_17 = [];
@@ -8746,12 +8237,9 @@ module.exports.testdurfmt2 = {
     testDurFmt_fr_CM: function(test) {
         test.expect(16);
         // 1 16
-        var length = [], textfmt;
-
-        length[0] = "full";
-        length[1] = "long";
-        length[2] = "medium";
-        length[3] = "short";
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
 
         var textformatted_1 = [],textformatted_16 = [];
         var clockformatted_1 = [],clockformatted_16 = [];
@@ -8790,12 +8278,9 @@ module.exports.testdurfmt2 = {
     testDurFmt_fr_GQ: function(test) {
         test.expect(16);
         // 1 16
-        var length = [], textfmt;
-
-        length[0] = "full";
-        length[1] = "long";
-        length[2] = "medium";
-        length[3] = "short";
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
 
         var textformatted_1 = [],textformatted_16 = [];
         var clockformatted_1 = [],clockformatted_16 = [];
@@ -8834,12 +8319,9 @@ module.exports.testdurfmt2 = {
     testDurFmt_fr_DJ: function(test) {
         test.expect(16);
         // 1 2
-        var length = [], textfmt;
-
-        length[0] = "full";
-        length[1] = "long";
-        length[2] = "medium";
-        length[3] = "short";
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
 
         var textformatted_1 = [],textformatted_2 = [];
         var clockformatted_1 = [],clockformatted_2 = [];
@@ -8878,12 +8360,9 @@ module.exports.testdurfmt2 = {
     testDurFmt_fr_DZ: function(test) {
         test.expect(16);
         // 1 2
-        var length = [], textfmt;
-
-        length[0] = "full";
-        length[1] = "long";
-        length[2] = "medium";
-        length[3] = "short";
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
 
         var textformatted_1 = [],textformatted_2 = [];
         var clockformatted_1 = [],clockformatted_2 = [];
@@ -8922,12 +8401,9 @@ module.exports.testdurfmt2 = {
     testDurFmt_fr_GA: function(test) {
         test.expect(16);
         // 1 2
-        var length = [], textfmt;
-
-        length[0] = "full";
-        length[1] = "long";
-        length[2] = "medium";
-        length[3] = "short";
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
 
         var textformatted_1 = [],textformatted_2 = [];
         var clockformatted_1 = [],clockformatted_2 = [];
@@ -8966,12 +8442,9 @@ module.exports.testdurfmt2 = {
     testDurFmt_fr_GN: function(test) {
         test.expect(16);
         // 1 16
-        var length = [], textfmt;
-
-        length[0] = "full";
-        length[1] = "long";
-        length[2] = "medium";
-        length[3] = "short";
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
 
         var textformatted_1 = [],textformatted_16 = [];
         var clockformatted_1 = [],clockformatted_16 = [];
@@ -9010,12 +8483,9 @@ module.exports.testdurfmt2 = {
     testDurFmt_fr_LB: function(test) {
         test.expect(16);
         // 1 2
-        var length = [], textfmt;
-
-        length[0] = "full";
-        length[1] = "long";
-        length[2] = "medium";
-        length[3] = "short";
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
 
         var textformatted_1 = [],textformatted_2 = [];
         var clockformatted_1 = [],clockformatted_2 = [];
@@ -9054,12 +8524,9 @@ module.exports.testdurfmt2 = {
     testDurFmt_fr_ML: function(test) {
         test.expect(16);
         // 1 17
-        var length = [], textfmt;
-
-        length[0] = "full";
-        length[1] = "long";
-        length[2] = "medium";
-        length[3] = "short";
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
 
         var textformatted_1 = [],textformatted_17 = [];
         var clockformatted_1 = [],clockformatted_17 = [];
@@ -9098,12 +8565,9 @@ module.exports.testdurfmt2 = {
     testDurFmt_fr_RW: function(test) {
         test.expect(16);
         // 1 2
-        var length = [], textfmt;
-
-        length[0] = "full";
-        length[1] = "long";
-        length[2] = "medium";
-        length[3] = "short";
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
 
         var textformatted_1 = [],textformatted_2 = [];
         var clockformatted_1 = [],clockformatted_2 = [];
@@ -9142,12 +8606,9 @@ module.exports.testdurfmt2 = {
     testDurFmt_fr_SN: function(test) {
         test.expect(16);
         // 1 16
-        var length = [], textfmt;
-
-        length[0] = "full";
-        length[1] = "long";
-        length[2] = "medium";
-        length[3] = "short";
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
 
         var textformatted_1 = [],textformatted_16 = [];
         var clockformatted_1 = [],clockformatted_16 = [];
@@ -9186,12 +8647,9 @@ module.exports.testdurfmt2 = {
     testDurFmt_fr_TG: function(test) {
         test.expect(16);
         // 1 2
-        var length = [], textfmt;
-
-        length[0] = "full";
-        length[1] = "long";
-        length[2] = "medium";
-        length[3] = "short";
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
 
         var textformatted_1 = [],textformatted_2 = [];
         var clockformatted_1 = [],clockformatted_2 = [];
@@ -9230,12 +8688,9 @@ module.exports.testdurfmt2 = {
     testDurFmt_ms_SG: function(test) {
         test.expect(16);
         // 1 2
-        var length = [], textfmt;
-
-        length[0] = "full";
-        length[1] = "long";
-        length[2] = "medium";
-        length[3] = "short";
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
 
         var textformatted_1 = [],textformatted_2 = [];
         var clockformatted_1 = [],clockformatted_2 = [];
@@ -9275,12 +8730,9 @@ module.exports.testdurfmt2 = {
     testDurFmt_pa_PK: function(test) {
         test.expect(16);
         // 1 18
-        var length = [], textfmt;
-
-        length[0] = "full";
-        length[1] = "long";
-        length[2] = "medium";
-        length[3] = "short";
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
 
         var textformatted_1 = [],textformatted_18 = [];
         var clockformatted_1 = [],clockformatted_18 = [];
@@ -9320,12 +8772,9 @@ module.exports.testdurfmt2 = {
     testDurFmt_pt_AO: function(test) {
         test.expect(16);
         // 1 2
-        var length = [], textfmt;
-
-        length[0] = "full";
-        length[1] = "long";
-        length[2] = "medium";
-        length[3] = "short";
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
 
         var textformatted_1 = [],textformatted_2 = [];
         var clockformatted_1 = [],clockformatted_2 = [];
@@ -9364,12 +8813,9 @@ module.exports.testdurfmt2 = {
     testDurFmt_pt_GQ: function(test) {
         test.expect(16);
         // 1 2
-        var length = [], textfmt;
-
-        length[0] = "full";
-        length[1] = "long";
-        length[2] = "medium";
-        length[3] = "short";
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
 
         var textformatted_1 = [],textformatted_2 = [];
         var clockformatted_1 = [],clockformatted_2 = [];
@@ -9408,12 +8854,9 @@ module.exports.testdurfmt2 = {
     testDurFmt_pt_CV: function(test) {
         test.expect(16);
         // 1 18
-        var length = [], textfmt;
-
-        length[0] = "full";
-        length[1] = "long";
-        length[2] = "medium";
-        length[3] = "short";
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
 
         var textformatted_1 = [],textformatted_18 = [];
         var clockformatted_1 = [],clockformatted_18 = [];
@@ -9452,12 +8895,9 @@ module.exports.testdurfmt2 = {
     testDurFmt_ur_PK: function(test) {
         test.expect(16);
         // 1 17
-        var length = [], textfmt;
-
-        length[0] = "full";
-        length[1] = "long";
-        length[2] = "medium";
-        length[3] = "short";
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
 
         var textformatted_1 = [],textformatted_17 = [];
         var clockformatted_1 = [],clockformatted_17 = [];
@@ -9496,12 +8936,9 @@ module.exports.testdurfmt2 = {
     testDurFmt_zh_Hans_SG: function(test) {
         test.expect(8);;
         // 16
-        var length = [], textfmt;
-
-        length[0] = "full";
-        length[1] = "long";
-        length[2] = "medium";
-        length[3] = "short";
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
 
         var textformatted_16 = [];
         var clockformatted_16 = [];
@@ -9527,12 +8964,9 @@ module.exports.testdurfmt2 = {
     testDurFmt_zh_Hans_MY: function(test) {
         test.expect(8);;
         // 15
-        var length = [], textfmt;
-
-        length[0] = "full";
-        length[1] = "long";
-        length[2] = "medium";
-        length[3] = "short";
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
 
         var textformatted_15 = [];
         var clockformatted_15 = [];
