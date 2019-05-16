@@ -911,10 +911,6 @@ module.exports = {
                 "c30": {}
             };
 
-            /*if (language === 'lt') {
-                console.log("language: " + language + "\n");
-            }*/
-
             for (i = 0; i < lengths.length; i++) {
                 var len = lengths[i];
                 var lenAbbr = len.charAt(0);
@@ -1057,6 +1053,8 @@ module.exports = {
                             case "mdy":
                                 //console.log("{date}{time}, mdy");
 
+
+
                                 cFmt0 = replaceFormates(cFmt0, "{date}", calendar.date[dmyiLib][lenAbbr]);
                                 cFmt0 = replaceFormates(cFmt0, startTime);
                                 cFmt0 = replaceFormates(cFmt0,"{time}", "{st}");
@@ -1083,7 +1081,7 @@ module.exports = {
                                     cFmt10 = cFmt10.replace(regExp,"{ey}").replace(/M+/, "{em}").replace(regExp2,"{ed}");
                                 } else {
                                     cFmt10 = replaceFormates(cFmt10, startTime);
-                                    cFmt10 = cFmt10.replace(/ {sy}/,"");
+                                    cFmt10 = cFmt10.replace(/[\s\/]{sy}/,"");
                                     cFmt10 = replaceFormates(cFmt10,"{date}", calendar.date[dmyiLib][lenAbbr]);
                                     cFmt10 = cFmt10.replace(regExp,"{ey}").replace(/M+/, "").replace(regExp2,"{ed}");
                                     cFmt10 = cFmt10.replace(/}, –/, "} –").replace("– /{",  "– {" );
@@ -1094,7 +1092,7 @@ module.exports = {
 
                                 cFmt11 = dateOnlyTemplate;
                                 cFmt11 = replaceFormates(cFmt11, startTime);
-                                cFmt11 = cFmt11.replace(/[\,][s\s\-\.\/^\u200f]{sy}/,"");
+                                cFmt11 = cFmt11.replace(/[\,][s\s\-\.\/^\u200f]{sy}/,"").replace(/[\/]{sy}/,"");
                                 cFmt11 = replaceFormates(cFmt11,"{date}", calendar.date[dmyiLib][lenAbbr]);
                                 cFmt11 = cFmt11.replace(regExp,"{ey}").replace(/M+/, "{em}").replace(regExp2,"{ed}");
                                 cFmt11 = cFmt11.replace(/\'/g,"").replace(/\s\s/g," ");
