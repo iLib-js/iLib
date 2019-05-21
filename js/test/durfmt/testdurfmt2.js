@@ -27,15 +27,8 @@ if (typeof(DurationFmt) === "undefined") {
 
 function setVariable() {
     var obj = {};
-    var length = [];
-
-    length[0] = "full";
-    length[1] = "long";
-    length[2] = "medium";
-    length[3] = "short";
-
+    var length = ["full", "long", "medium", "short"];
     obj.fullLength = length;
-
     return obj;
 }
 

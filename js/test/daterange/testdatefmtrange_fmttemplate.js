@@ -26,17 +26,8 @@ if (typeof(ilib) === "undefined") {
 
 function setVariables() {
     var obj = {};
-    var length = [], abbrLength = [];
-
-    length[0] = "full";
-    length[1] = "long";
-    length[2] = "medium";
-    length[3] = "short";
-
-    abbrLength[0] = "f";
-    abbrLength[1] = "l";
-    abbrLength[2] = "m";
-    abbrLength[3] = "s";
+    var length = ["full", "long", "medium", "short"];
+    var abbrLength = ["f", "l", "m", "s"];
 
     obj.fullLength = length;
     obj.abbrLength = abbrLength;
