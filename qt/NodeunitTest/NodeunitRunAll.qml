@@ -41,7 +41,7 @@ QtObject {
             var endTime = new Date();
             var timeGap = (endTime.getTime() - startTime.getTime())/1000;
             console.log("<<<<< End time of full test: " +  endTime.getHours() +":"+ endTime.getMinutes() +":"+ endTime.getSeconds()+ " >>>>>");
-            console.log("<<<<< Total Elapse Time: " + timeGap  +   "  s  >>>>>");
+            console.log("<<<<< Total Elapse Time: " + timeGap  +   " seconds  >>>>>");
 
             console.log("\n *************************** All iLib tests on QML are done. ***********************************");
             Qt.quit();
