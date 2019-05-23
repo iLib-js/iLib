@@ -795,6 +795,6 @@ ilib.isDynData = function() {
  * is requested. In this way, we sacrifice the memory footprint for the sake of speed.
  */
 
-ilib._cacheMerged = (ilib._getPlatform() === 'qt');
+ilib._cacheMerged = false;
 
 ilib._loadtime = new Date().getTime();

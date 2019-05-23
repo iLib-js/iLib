@@ -75,6 +75,14 @@ var sync = true;
 var target = "node";
 var reporter;
 
+if (process.argv.length >= 2 &&
+    (process.argv[2] === "help" ||
+     process.argv[2] === "-h" ||
+     process.argv[2] === "--help")) {
+    console.log("Usage: testRunner.js [assembly_style [compilation_style [suite_name_or_collection [sync|async]]]]");
+    process.exit(0);
+}
+
 // Usage: testSuite.js [assembly_style [compilation_style [suite_name_or_collection [sync|async]]]]
 if (process.argv.length > 2) {
 	if (process.argv.length > 3) {
