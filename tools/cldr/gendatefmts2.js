@@ -30,6 +30,29 @@ var Locale = common.Locale;
 var mergeAndPrune = common.mergeAndPrune;
 var makeDirs = common.makeDirs;
 
+var hardCodeData = {
+    "zh": {
+        "azh0": "凌晨",
+        "azh1": "早上",
+        "azh2": "上午",
+        "azh3": "正午",
+        "azh4": "下午",
+        "azh5": "傍晚",
+        "azh6": "晚上",
+        "ordinalChoice": "#{num}天"
+    },
+    "am": {
+      "a0-ethiopic": "ጥዋት",
+      "a1-ethiopic": "ቀትር",
+      "a2-ethiopic": "ከሰዓት",
+      "a3-ethiopic": "ከምሽቱ",
+      "a4-ethiopic": "ከሌሊቱ",
+    },
+    "de": {
+        "ordinalChoice": "#{num}."
+    }
+}
+
 var aux = require("./datefmts.js");
 
 function usage() {
@@ -246,6 +269,11 @@ list.forEach(function (file) {
     //console.log("listPattern data is " + JSON.stringify(newFormats, undefined, 4) + "\n");
     group = aux.getFormatGroup(systemResources, localeComponents);
     group.data = merge(group.data || {}, newFormats);
+
+    if (hardCodeData.hasOwnProperty(language)) {
+        group.data = merge(group.data || {}, hardCodeData[language]);
+    }
+
 });
 
 console.log("\nMerging formats forward ...\n");
