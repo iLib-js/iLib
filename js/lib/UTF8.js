@@ -100,7 +100,7 @@ UTF8.prototype.validate = function(bytes) {
 UTF8.prototype.mapToUnicode = function (bytes) {
     if (typeof(Buffer) !== "undefined") {
         // nodejs can convert it quickly in native code
-        var b = new Buffer(bytes);
+        var b = Buffer.from(bytes);
         return b.toString("utf8");
     }
     // otherwise we have to implement it in pure JS
@@ -148,7 +148,7 @@ UTF8.prototype.mapToUnicode = function (bytes) {
 UTF8.prototype.mapToNative = function(str) {
     if (typeof(Buffer) !== "undefined") {
         // nodejs can convert it quickly in native code
-        var b = new Buffer(str, "utf8");
+        var b = Buffer.from(str, "utf8");
         return new Uint8Array(b);
     }
     // otherwise we have to implement it in pure JS
