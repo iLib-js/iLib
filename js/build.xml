@@ -125,10 +125,11 @@ limitations under the License.
         <attribute name="size"/>
         <attribute name="compilation" default="uncompiled"/>
         <attribute name="locales" default="${locales.default}"/>
-		<attribute name="target" default="web"/>
+        <attribute name="target" default="web"/>
+        <attribute name="mode" default="production"/>
 		<sequential>
 		    <echo>executing webpack</echo>
-			<exec osfamily="unix" executable="webpack" dir="${build.base}" failifexecutionfails="@{failquit}" failonerror="@{failquit}">
+			<exec osfamily="unix" executable="webpack-cli" dir="${build.base}" failifexecutionfails="@{failquit}" failonerror="@{failquit}">
 				<env key="NODE_OPTIONS" value="--max-old-space-size=3072"/>
 				<arg value="--env.assembly=@{assembly}"/>
 				<arg value="--env.size=@{size}"/>
@@ -137,8 +138,9 @@ limitations under the License.
 				<arg value="--env.target=@{target}"/>
 				<arg value="--env.ilibRoot=${build.base}"/>
 				<arg value="--env.tempDir=${build.output}"/>
+                <arg value="--mode=@{mode}"/>
 			</exec>
-			<exec osfamily="windows" executable="webpack.bat" dir="${build.base}" failifexecutionfails="@{failquit}"  failonerror="@{failquit}">
+			<exec osfamily="windows" executable="webpack-cli.bat" dir="${build.base}" failifexecutionfails="@{failquit}"  failonerror="@{failquit}">
 				<env key="NODE_OPTIONS" value="--max-old-space-size=3072"/>
 				<arg value="--env.assembly=@{assembly}"/>
 				<arg value="--env.size=@{size}"/>
@@ -147,6 +149,7 @@ limitations under the License.
                 <arg value="--env.target=@{target}"/>
                 <arg value="--env.ilibRoot=${build.base}"/>
                 <arg value="--env.tempDir=${build.output}"/>
+                <arg value="--mode=@{mode}"/>
 			</exec>
 		</sequential>
 	</macrodef>
@@ -225,8 +228,8 @@ limitations under the License.
 		</uptodate>
 	</target>
     <target name="assemble.unittest.assembled" depends="prepare,gen.manifest.locale,update.package.json,testilibut" unless="ilib-ut.not.needed" description="assembles only the locales needed for the unit tests">
-        <runassemble size="ut" locales="${locales.unittest}"/>
-        <runassemble size="ut" compilation="compiled" locales="${locales.unittest}"/>
+        <runassemble size="ut" locales="${locales.unittest}" mode="development"/>
+        <runassemble size="ut" compilation="compiled" locales="${locales.unittest}" mode="development"/>
     </target>
     <target name="testilibut.dyndata" description="test whether or not the ilib-ut single file needs to be rebuilt">
         <uptodate property="ilib-ut.dyndata.not.needed" targetfile="${build.output.js}/ut-dynamicdata-uncompiled-web/ilib-ut-dyn.js">
@@ -236,8 +239,8 @@ limitations under the License.
         </uptodate>
     </target>
     <target name="assemble.unittest.dyndata" depends="prepare,gen.manifest.locale,update.package.json,testilibut.dyndata" unless="ilib-ut.dyndata.not.needed" description="assembles only the locales needed for the unit tests">
-        <runassemble assembly="dynamicdata" size="ut" locales="${locales.unittest}"/>
-        <runassemble assembly="dynamicdata" size="ut" compilation="compiled" locales="${locales.unittest}"/>
+        <runassemble assembly="dynamicdata" size="ut" locales="${locales.unittest}" mode="development"/>
+        <runassemble assembly="dynamicdata" size="ut" compilation="compiled" locales="${locales.unittest}" mode="development"/>
     </target>
 
    <target name="testilibut.node" description="test whether or not the ilib-ut single file needs to be rebuilt">
@@ -248,8 +251,8 @@ limitations under the License.
         </uptodate>
     </target>
 	<target name="assemble.unittest.assembled.node" depends="prepare,gen.manifest.locale,update.package.json,testilibut.node" unless="ilib-ut.node.not.needed" description="assembles only the locales needed for the unit tests">
-        <runassemble size="ut" locales="${locales.unittest}" target="node"/>
-        <runassemble size="ut" locales="${locales.unittest}" compilation="compiled" target="node"/>
+        <runassemble size="ut" locales="${locales.unittest}" target="node" mode="development"/>
+        <runassemble size="ut" locales="${locales.unittest}" compilation="compiled" target="node" mode="development"/>
     </target>
    <target name="testilibut.dyndata.node" description="test whether or not the ilib-ut single file needs to be rebuilt">
         <uptodate property="ilib-ut.dyndata.node.not.needed" targetfile="${build.output.js}/ut-dynamicdata-uncompiled-node/ilib-ut-dyn.js">
@@ -259,8 +262,8 @@ limitations under the License.
         </uptodate>
     </target>
     <target name="assemble.unittest.dyndata.node" depends="prepare,gen.manifest.locale,update.package.json,testilibut.dyndata.node" unless="ilib-ut.dyndata.node.not.needed" description="assembles only the locales needed for the unit tests">
-        <runassemble assembly="dynamicdata" size="ut" locales="${locales.unittest}" target="node"/>
-        <runassemble assembly="dynamicdata" size="ut" compilation="compiled" locales="${locales.unittest}" target="node"/>
+        <runassemble assembly="dynamicdata" size="ut" locales="${locales.unittest}" target="node" mode="development"/>
+        <runassemble assembly="dynamicdata" size="ut" compilation="compiled" locales="${locales.unittest}" target="node" mode="development"/>
     </target>
     <target name="assemble.unittest" depends="assemble.unittest.assembled,assemble.unittest.dyndata,assemble.unittest.assembled.node,assemble.unittest.dyndata.node"/>
 
@@ -536,12 +539,12 @@ limitations under the License.
             <exec osfamily="unix" executable="bash" dir="${build.demo}" failifexecutionfails="@{failquit}" failonerror="@{failquit}" searchpath="true">
                 <env key="PATH" path="${env.PATH}:${nm.bin}"/>
                 <arg value="-c"/>
-                <arg value="ilib-scanner scripts/ilib-include.js --assembly=assembled --compilation=compiled --locales=${locales.demo} --ilibRoot=${build.base}"/>
+                <arg value="ilib-scanner scripts/ilib-include.js --assembly=assembled --compilation=compiled --locales=${locales.demo} --ilibRoot=${build.base} --mode=production"/>
             </exec>
             <exec osfamily="windows" executable="cmd.exe" dir="${build.demo}" failifexecutionfails="@{failquit}"  failonerror="@{failquit}" searchpath="true">
                 <env key="Path" path="${env.PATH}:${nm.bin}"/>
                 <arg value="/c"/>
-                <arg value="ilib-scanner.bat scripts/ilib-include.js --assembly=assembled --compilation=compiled --locales=${locales.demo} --ilibRoot=${build.base}"/>
+                <arg value="ilib-scanner.bat scripts/ilib-include.js --assembly=assembled --compilation=compiled --locales=${locales.demo} --ilibRoot=${build.base} --mode=production"/>
             </exec>
         </sequential>
     </target>
@@ -551,23 +554,23 @@ limitations under the License.
             <exec osfamily="unix" executable="ilib-scanner" dir="${build.demo}" failifexecutionfails="@{failquit}" failonerror="@{failquit}" searchpath="true">
                 <env key="PATH" path="${env.PATH}:${nm.bin}"/>
                 <arg value="-c"/>
-                <arg value="ilib-scanner scripts/ilib-include.js --assembly=dynamicdata --compilation=compiled --locales=${locales.demo} --ilibRoot=${build.base}"/>
+                <arg value="ilib-scanner scripts/ilib-include.js --assembly=dynamicdata --compilation=compiled --locales=${locales.demo} --ilibRoot=${build.base} --mode=production"/>
             </exec>
             <exec osfamily="windows" executable="cmd.exe" dir="${build.demo}" failifexecutionfails="@{failquit}"  failonerror="@{failquit}" searchpath="true">
                 <env key="Path" path="${env.PATH}:${nm.bin}"/>
                 <arg value="/c"/>
-                <arg value="ilib-scanner.bat scripts/ilib-include.js --assembly=dynamicdata --compilation=compiled --locales=${locales.demo} --ilibRoot=${build.base}"/>
+                <arg value="ilib-scanner.bat scripts/ilib-include.js --assembly=dynamicdata --compilation=compiled --locales=${locales.demo} --ilibRoot=${build.base} --mode=production"/>
             </exec>
         </sequential>
     </target>
     <target name="build.demo" depends="scan.demo">
        <sequential>
             <echo>Executing webpack</echo>
-            <exec osfamily="unix" executable="webpack" dir="${build.demo}/scripts" failifexecutionfails="@{failquit}" failonerror="@{failquit}">
+            <exec osfamily="unix" executable="webpack-cli" dir="${build.demo}/scripts" failifexecutionfails="@{failquit}" failonerror="@{failquit}">
                 <env key="PATH" path="${env.PATH}:${nm.bin}"/>
                 <env key="NODE_OPTIONS" value="--max-old-space-size=3072"/>
             </exec>
-            <exec osfamily="windows" executable="webpack.bat" dir="${build.demo}/scripts" failifexecutionfails="@{failquit}" failonerror="@{failquit}">
+            <exec osfamily="windows" executable="webpack-cli.bat" dir="${build.demo}/scripts" failifexecutionfails="@{failquit}" failonerror="@{failquit}">
                 <env key="PATH" path="${env.PATH}:${nm.bin}"/>
                 <env key="NODE_OPTIONS" value="--max-old-space-size=3072"/>
             </exec>
@@ -576,11 +579,11 @@ limitations under the License.
     <target name="build.demo.dynamic" depends="scan.demo.dynamic">
        <sequential>
             <echo>Executing webpack</echo>
-            <exec osfamily="unix" executable="webpack" dir="${build.demo}/scripts" failifexecutionfails="@{failquit}" failonerror="@{failquit}">
+            <exec osfamily="unix" executable="webpack-cli" dir="${build.demo}/scripts" failifexecutionfails="@{failquit}" failonerror="@{failquit}">
                 <env key="PATH" path="${env.PATH}:${nm.bin}"/>
                 <env key="NODE_OPTIONS" value="--max-old-space-size=3072"/>
             </exec>
-            <exec osfamily="windows" executable="webpack.bat" dir="${build.demo}/scripts" failifexecutionfails="@{failquit}" failonerror="@{failquit}">
+            <exec osfamily="windows" executable="webpack-cli.bat" dir="${build.demo}/scripts" failifexecutionfails="@{failquit}" failonerror="@{failquit}">
                 <env key="PATH" path="${env.PATH}:${nm.bin}"/>
                 <env key="NODE_OPTIONS" value="--max-old-space-size=3072"/>
             </exec>
