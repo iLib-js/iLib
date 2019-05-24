@@ -346,6 +346,7 @@ limitations under the License.
                 <include name="ilib-qt*"/>
                 <include name="ilib-webpack*"/>
                 <include name="ilib-unpack.js"/>
+                <include name="ilib-web.js"/>
             </fileset>
             <fileset dir="${build.base}">
                 <include name="index.js"/>

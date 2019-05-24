@@ -17,6 +17,7 @@ Bug Fixes:
 * Rollback `js/ilib-web.js` file to support pure Web Application.
 * Added a new platform return type as 'webos-webapp'. If platform type is `webos-webapp`, The iLib won't load any loader as default.
 * Added a new platform return type as 'webos-webapp'. If platform type is `webos-webapp`, The iLib won't load any loader as default.
+* Implemented to include automatically Json data which doesn't exist in CLDR in cldrtool script.
 * Update some testfiles in order to test properly on QT/QML.
 
 
