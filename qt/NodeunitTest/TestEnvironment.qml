@@ -23,10 +23,10 @@ QtObject {
         testSuites = require("qmltest", path);
 
         for (i=0; i < testSuites["files"].length; i++) {
+            //console.log("fileNames...." + testSuites["files"][i]);
             runTest = require("qmltest", "/" + moduleName + "/"+ testSuites["files"][i]);
+            Nodeunit.nodeunit.run(runTest)
         }
-
-        Nodeunit.nodeunit.run(runTest)
         Nodeunit.nodeunit.finish();
     }
 }
