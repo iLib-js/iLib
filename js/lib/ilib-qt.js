@@ -140,3 +140,4 @@ var ilib = require("../lib/ilib.js");
 
 ilib._dyncode = true; // indicate that we are using dynamically loaded code
 ilib._dyndata = true;
+ilib._cacheMerged = true; // cache merged locale data for performance
