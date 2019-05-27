@@ -18,6 +18,11 @@ Bug Fixes:
 * Added a new platform return type as 'webos-webapp'. If platform type is `webos-webapp`, The iLib won't load any loader as default.
 * Added a new platform return type as 'webos-webapp'. If platform type is `webos-webapp`, The iLib won't load any loader as default.
 * Implemented to include automatically Json data which doesn't exist in CLDR in cldrtool script.
+* Improved the speed of JSUtils.shallowCopy() by using Object.assign if it is available
+* Improved the speed of ilib on QT by re-introducing the concept of caching the already-merged locale data. This
+  trades memory footprint for speed, since merging the locale data is slow on QT and the already merged data is just a duplicate of the
+  locale data already loaded and cached from locale data files. Other platforms may use this form of caching as
+  well if desired by setting ilib._cacheMerged to true, though it only makes a minimal difference in terms of speed.
 * Update some testfiles in order to test properly on QT/QML.
 
 
