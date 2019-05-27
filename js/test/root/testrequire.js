@@ -51,7 +51,7 @@ module.exports.testrequire = {
     },
 
     testRequireSingleFile: function(test) {
-        if (!ilib.isDynCode()) {
+        if (!ilib.isDynCode() || ilib._getPlatform() === "qt") {
             // can't test the require function unless you're 
             // in dynamic code loading mode
             test.done();
@@ -66,7 +66,7 @@ module.exports.testrequire = {
     },
     
     testRequireDoNotReloadSameFile: function(test) {
-        if (!ilib.isDynCode()) {
+        if (!ilib.isDynCode() || ilib._getPlatform() === "qt") {
             // can't test the require function unless you're 
             // in dynamic code loading mode
             test.done();
@@ -92,7 +92,7 @@ module.exports.testrequire = {
     },
     
     testRequireRunCode1: function(test) {
-        if (!ilib.isDynCode()) {
+        if (!ilib.isDynCode() || ilib._getPlatform() === "qt") {
             // can't test the require function unless you're 
             // in dynamic code loading mode
             test.done();
@@ -111,7 +111,7 @@ module.exports.testrequire = {
     },
     
     testRequireRunCode2: function(test) {
-        if (!ilib.isDynCode()) {
+        if (!ilib.isDynCode() || ilib._getPlatform() === "qt" ) {
             // can't test the require function unless you're 
             // in dynamic code loading mode
             test.done();

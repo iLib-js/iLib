@@ -69,6 +69,10 @@ module.exports.testglobal = {
     },
     
     testGetVersion: function(test) {
+        if (ilib._getPlatform() === "qt" ) {
+            test.done();
+            return;
+        }
         test.expect(1);
         test.equal(ilib.getVersion().substring(0,4), "14.1");
         test.done();
