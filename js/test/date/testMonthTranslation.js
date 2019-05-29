@@ -25,15 +25,12 @@ if (typeof(DateFmt) === "undefined") {
     var DateFmt = require("../../lib/DateFmt.js");
 }
 
-var fmt, value;
-
 /*
     Asian Language : zh, ko, ja -> M+ --> M
 */
 
 module.exports.testmonthtranslation = {
     setUp: function(callback) {
-        fmt = [], value = [];
         callback();
     },
     testMonthTranslate_ar_EG: function(test) {
@@ -42,10 +39,10 @@ module.exports.testmonthtranslation = {
         // full, long: MMMM
         // medium: MM
         // short: M
-
-        for (var i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"ar-EG", date:"m", length: "full", useNative:false, timezone:"local"});
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+        var value = [],i;
+        var fmt = new DateFmt({locale:"ar-EG", date:"m", length: "full", useNative:false, timezone:"local"});
+        for (i=0; i < 12; i++) {
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
         test.equal(value[0], "يناير");
         test.equal(value[1],"فبراير");
@@ -62,17 +59,17 @@ module.exports.testmonthtranslation = {
         
         test.done();
     },
-    
+
     testMonthTranslate_ar_IQ: function(test) {
         test.expect(12);
 
         // full, long: MMMM
         // medium: MM
         // short: M
-        
+        var fmt = new DateFmt({locale:"ar-IQ", date:"m", length: "full", useNative:false, timezone:"local"});
+        var value = [], i;
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"ar-IQ", date:"m", length: "full", useNative:false, timezone:"local"});
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
 
         test.equal(value[0], "كانون الثاني");
@@ -96,11 +93,12 @@ module.exports.testmonthtranslation = {
         // full, long: MMMM
         // medium: MM
         // short: M
-        
+        var fmt = new DateFmt({locale:"ar-MA", date:"m", length: "full", useNative:false, timezone:"local"})
+        var value = [], i;
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"ar-MA", date:"m", length: "full", useNative:false, timezone:"local"})
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
+
         test.equal(value[0], "يناير");
         test.equal(value[1], "فبراير");
         test.equal(value[2], "مارس");
@@ -122,10 +120,10 @@ module.exports.testmonthtranslation = {
         // full, long: MMMM
         // medium: MM
         // short: M
-
+        var fmt = new DateFmt({locale:"as-IN", date:"m", length: "full", useNative:false, timezone:"local"});
+        var value = [], i;
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"as-IN", date:"m", length: "full", useNative:false, timezone:"local"});
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
         test.equal(value[0], "জানুৱাৰী");
         test.equal(value[1], "ফেব্ৰুৱাৰী");
@@ -145,9 +143,10 @@ module.exports.testmonthtranslation = {
     testMonthTranslate_bg_BG: function(test) {
         test.expect(12);
 
+        var fmt = new DateFmt({locale:"bg-BG", date:"m", length: "full", useNative:false, timezone:"local"})
+        var value = [], i;
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"bg-BG", date:"m", length: "full", useNative:false, timezone:"local"})
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
         test.equal(value[0], "януари");
         test.equal(value[1], "февруари");
@@ -170,10 +169,10 @@ module.exports.testmonthtranslation = {
 
         // full, long: MMMM
         // medium: MMM
-
+        var fmt = new DateFmt({locale:"bn-IN", date:"m", length: "full", useNative:false, timezone:"local"});
+        var value = [], i;
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"bn-IN", date:"m", length: "full", useNative:false, timezone:"local"});
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
 
         test.equal(value[0], "জানুয়ারী");
@@ -189,9 +188,10 @@ module.exports.testmonthtranslation = {
         test.equal(value[10], "নভেম্বর");
         test.equal(value[11], "ডিসেম্বর");
 
+        var fmt = new DateFmt({locale:"bn-IN", date:"m", length: "medium", useNative:false, timezone:"local"});
+
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"bn-IN", date:"m", length: "medium", useNative:false, timezone:"local"});
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
 
         test.equal(value[0], "জানু");
@@ -216,9 +216,11 @@ module.exports.testmonthtranslation = {
         // full, long: MMMM
         // medium: MMM
 
+        var value = [], i;
+        var fmt = new DateFmt({locale:"bs-Latn-BA", date:"m", length: "full", useNative:false, timezone:"local"})
+
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"bs-Latn-BA", date:"m", length: "full", useNative:false, timezone:"local"})
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
         test.equal(value[0], "januar");
         test.equal(value[1], "februar");
@@ -233,9 +235,10 @@ module.exports.testmonthtranslation = {
         test.equal(value[10], "novembar");
         test.equal(value[11], "decembar");
 
+        var fmt = new DateFmt({locale:"bs-Latn-BA", date:"m", length: "medium", useNative:false, timezone:"local"});
+
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"bs-Latn-BA", date:"m", length: "medium", useNative:false, timezone:"local"});
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
 
         test.equal(value[0], "jan");
@@ -259,9 +262,11 @@ module.exports.testmonthtranslation = {
         // full, long: MMMM
         // medium: MMM
 
+        var value = [], i;
+        var fmt = new DateFmt({locale:"bs-Latn-ME", date:"m", length: "full", useNative:false, timezone:"local"})
+
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"bs-Latn-ME", date:"m", length: "full", useNative:false, timezone:"local"})
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
 
         test.equal(value[0], "januar");
@@ -277,9 +282,9 @@ module.exports.testmonthtranslation = {
         test.equal(value[10], "novembar");
         test.equal(value[11], "decembar");
 
+        var fmt = new DateFmt({locale:"bs-Latn-ME", date:"m", length: "medium", useNative:false, timezone:"local"});
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"bs-Latn-ME", date:"m", length: "medium", useNative:false, timezone:"local"});
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
 
         test.equal(value[0], "jan");
@@ -304,9 +309,10 @@ module.exports.testmonthtranslation = {
         // medium: M
         // short: MM
 
+        var value = [], i;
+        var fmt = new DateFmt({locale:"cs-CZ", date:"m", length: "full", useNative:false, timezone:"local"})
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"cs-CZ", date:"m", length: "full", useNative:false, timezone:"local"})
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
         test.equal(value[0], "leden"); //standAlone
         test.equal(value[1], "únor");
@@ -330,9 +336,10 @@ module.exports.testmonthtranslation = {
         // medium: MMM
         // short: MM
 
+        var value = [], i;
+        var fmt = new DateFmt({locale:"da-DK", date:"m", length: "full", useNative:false, timezone:"local"})
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"da-DK", date:"m", length: "full", useNative:false, timezone:"local"})
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
 
         test.equal(value[0], "januar");
@@ -348,9 +355,9 @@ module.exports.testmonthtranslation = {
         test.equal(value[10], "november");
         test.equal(value[11], "december");
 
+        var fmt = new DateFmt({locale:"da-DK", date:"m", length: "medium", useNative:false, timezone:"local"})
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"da-DK", date:"m", length: "medium", useNative:false, timezone:"local"})
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
         
         test.equal(value[0], "jan.");
@@ -375,9 +382,10 @@ module.exports.testmonthtranslation = {
         // medium: MM
         // short: MM
 
+        var value = [], i;
+        var fmt = new DateFmt({locale:"de-AT", date:"m", length: "full", useNative:false, timezone:"local"})
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"de-AT", date:"m", length: "full", useNative:false, timezone:"local"})
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
         test.equal(value[0], "Jänner");
         test.equal(value[1], "Februar");
@@ -401,9 +409,10 @@ module.exports.testmonthtranslation = {
         // medium: MM
         // short: MM
 
+        var value = [], i;
+        var fmt = new DateFmt({locale:"de-CH", date:"m", length: "full", useNative:false, timezone:"local"})
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"de-CH", date:"m", length: "full", useNative:false, timezone:"local"})
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
         test.equal(value[0], "Januar");
         test.equal(value[1], "Februar");
@@ -427,9 +436,10 @@ module.exports.testmonthtranslation = {
         // medium: MM
         // short: MM
 
+        var value = [], i;
+        var fmt = new DateFmt({locale:"de-DE", date:"m", length: "full", useNative:false, timezone:"local"})
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"de-DE", date:"m", length: "full", useNative:false, timezone:"local"})
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
         test.equal(value[0], "Januar");
         test.equal(value[1], "Februar");
@@ -454,9 +464,10 @@ module.exports.testmonthtranslation = {
         // medium: MM
         // short: MM
 
+        var value = [], i;
+        var fmt = new DateFmt({locale:"de-LU", date:"m", length: "full", useNative:false, timezone:"local"})
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"de-LU", date:"m", length: "full", useNative:false, timezone:"local"})
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
 
         test.equal(value[0], "Januar");
@@ -481,9 +492,10 @@ module.exports.testmonthtranslation = {
         // medium: MMM
         // short: M
 
+        var value = [], i;
+        var fmt = new DateFmt({locale:"el-CY", date:"m", length: "full", useNative:false, timezone:"local"})
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"el-CY", date:"m", length: "full", useNative:false, timezone:"local"})
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
 
         test.equal(value[0], "Ιανουάριος"); //standAlone
@@ -499,9 +511,9 @@ module.exports.testmonthtranslation = {
         test.equal(value[10], "Νοέμβριος");
         test.equal(value[11], "Δεκέμβριος");
 
+        var fmt = new DateFmt({locale:"el-CY", date:"m", length: "medium", useNative:false, timezone:"local"})
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"el-CY", date:"m", length: "medium", useNative:false, timezone:"local"})
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
         
         test.equal(value[0], "Ιαν");
@@ -526,9 +538,10 @@ module.exports.testmonthtranslation = {
         // medium: MMM
         // short: M
 
+        var value = [], i;
+        var fmt = new DateFmt({locale:"el-GR", date:"m", length: "full", useNative:false, timezone:"local"})
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"el-GR", date:"m", length: "full", useNative:false, timezone:"local"})
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
 
         test.equal(value[0], "Ιανουάριος"); //standAlone
@@ -544,9 +557,9 @@ module.exports.testmonthtranslation = {
         test.equal(value[10], "Νοέμβριος");
         test.equal(value[11], "Δεκέμβριος");
 
+        var fmt = new DateFmt({locale:"el-GR", date:"m", length: "medium", useNative:false, timezone:"local"})
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"el-GR", date:"m", length: "medium", useNative:false, timezone:"local"})
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
         
         test.equal(value[0], "Ιαν");
@@ -571,9 +584,10 @@ module.exports.testmonthtranslation = {
         // medium: MMM
         // short: M
 
+        var value = [], i;
+        var fmt = new DateFmt({locale:"en-AM", date:"m", length: "full", useNative:false, timezone:"local"})
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"en-AM", date:"m", length: "full", useNative:false, timezone:"local"})
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
 
         test.equal(value[0], "January");
@@ -589,9 +603,9 @@ module.exports.testmonthtranslation = {
         test.equal(value[10], "November");
         test.equal(value[11], "December");
 
+        var fmt = new DateFmt({locale:"en-AM", date:"m", length: "medium", useNative:false, timezone:"local"})
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"en-AM", date:"m", length: "medium", useNative:false, timezone:"local"})
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
         
         test.equal(value[0], "Jan");
@@ -616,9 +630,10 @@ module.exports.testmonthtranslation = {
         // medium: MMM
         // short: M
 
+        var value = [], i;
+        var fmt = new DateFmt({locale:"en-AU", date:"m", length: "full", useNative:false, timezone:"local"})
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"en-AU", date:"m", length: "full", useNative:false, timezone:"local"})
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
 
         test.equal(value[0], "January");
@@ -634,9 +649,9 @@ module.exports.testmonthtranslation = {
         test.equal(value[10], "November");
         test.equal(value[11], "December");
 
+        var fmt = new DateFmt({locale:"en-AU", date:"m", length: "medium", useNative:false, timezone:"local"})
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"en-AU", date:"m", length: "medium", useNative:false, timezone:"local"})
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
         
         test.equal(value[0], "Jan");
@@ -657,9 +672,10 @@ module.exports.testmonthtranslation = {
     testMonthTranslate_en_AZ: function(test) {
         test.expect(24);
 
+        var value = [], i;
+        var fmt = new DateFmt({locale:"en-AZ", date:"m", length: "full", useNative:false, timezone:"local"})
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"en-AZ", date:"m", length: "full", useNative:false, timezone:"local"})
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
         test.equal(value[0], "January");
         test.equal(value[1], "February");
@@ -674,9 +690,9 @@ module.exports.testmonthtranslation = {
         test.equal(value[10], "November");
         test.equal(value[11], "December");
 
+        var fmt = new DateFmt({locale:"en-AZ", date:"m", length: "medium", useNative:false, timezone:"local"})
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"en-AZ", date:"m", length: "medium", useNative:false, timezone:"local"})
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
         
         test.equal(value[0], "Jan");
@@ -701,9 +717,10 @@ module.exports.testmonthtranslation = {
         // medium: MMM
         // short: MM
 
+        var value = [], i;
+        var fmt = new DateFmt({locale:"en-CA", date:"m", length: "full", useNative:false, timezone:"local"})
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"en-CA", date:"m", length: "full", useNative:false, timezone:"local"})
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
         test.equal(value[0], "January");
         test.equal(value[1], "February");
@@ -718,9 +735,9 @@ module.exports.testmonthtranslation = {
         test.equal(value[10], "November");
         test.equal(value[11], "December");
 
+        var fmt = new DateFmt({locale:"en-CA", date:"m", length: "medium", useNative:false, timezone:"local"})
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"en-CA", date:"m", length: "medium", useNative:false, timezone:"local"})
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
         
         test.equal(value[0], "Jan.");
@@ -745,9 +762,10 @@ module.exports.testmonthtranslation = {
         // medium: MMM
         // short: MM
 
+        var value = [], i;
+        var fmt = new DateFmt({locale:"en-GB", date:"m", length: "full", useNative:false, timezone:"local"})
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"en-GB", date:"m", length: "full", useNative:false, timezone:"local"})
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
         test.equal(value[0], "January");
         test.equal(value[1], "February");
@@ -762,9 +780,9 @@ module.exports.testmonthtranslation = {
         test.equal(value[10], "November");
         test.equal(value[11], "December");
 
+        var fmt = new DateFmt({locale:"en-GB", date:"m", length: "medium", useNative:false, timezone:"local"})
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"en-GB", date:"m", length: "medium", useNative:false, timezone:"local"})
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
         
         test.equal(value[0], "Jan");
@@ -789,9 +807,10 @@ module.exports.testmonthtranslation = {
         // medium: MMM
         // short: MM
 
+        var value = [], i;
+        var fmt = new DateFmt({locale:"en-GH", date:"m", length: "full", useNative:false, timezone:"local"})
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"en-GH", date:"m", length: "full", useNative:false, timezone:"local"})
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
         test.equal(value[0], "January");
         test.equal(value[1], "February");
@@ -806,9 +825,9 @@ module.exports.testmonthtranslation = {
         test.equal(value[10], "November");
         test.equal(value[11], "December");
 
+        var fmt = new DateFmt({locale:"en-GH", date:"m", length: "medium", useNative:false, timezone:"local"})
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"en-GH", date:"m", length: "medium", useNative:false, timezone:"local"})
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
         
         test.equal(value[0], "Jan");
@@ -833,9 +852,10 @@ module.exports.testmonthtranslation = {
         // medium: MMM
         // short: M
 
+        var value = [], i;
+        var fmt = new DateFmt({locale:"en-HK", date:"m", length: "full", useNative:false, timezone:"local"})
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"en-HK", date:"m", length: "full", useNative:false, timezone:"local"})
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
         test.equal(value[0], "January");
         test.equal(value[1], "February");
@@ -850,9 +870,9 @@ module.exports.testmonthtranslation = {
         test.equal(value[10], "November");
         test.equal(value[11], "December");
 
+        var fmt = new DateFmt({locale:"en-HK", date:"m", length: "medium", useNative:false, timezone:"local"})
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"en-HK", date:"m", length: "medium", useNative:false, timezone:"local"})
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
         
         test.equal(value[0], "Jan");
@@ -877,9 +897,10 @@ module.exports.testmonthtranslation = {
         // medium: MMM
         // short: MM
 
+        var value = [], i;
+        var fmt = new DateFmt({locale:"en-IE", date:"m", length: "full", useNative:false, timezone:"local"})
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"en-IE", date:"m", length: "full", useNative:false, timezone:"local"})
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
 
         test.equal(value[0], "January");
@@ -895,9 +916,9 @@ module.exports.testmonthtranslation = {
         test.equal(value[10], "November");
         test.equal(value[11], "December");
 
+        var fmt = new DateFmt({locale:"en-IE", date:"m", length: "medium", useNative:false, timezone:"local"})
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"en-IE", date:"m", length: "medium", useNative:false, timezone:"local"})
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
         
         test.equal(value[0], "Jan");
@@ -922,9 +943,10 @@ module.exports.testmonthtranslation = {
         // medium: MMM
         // short: MM
 
+        var value = [], i;
+        var fmt = new DateFmt({locale:"en-IN", date:"m", length: "full", useNative:false, timezone:"local"});
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"en-IN", date:"m", length: "full", useNative:false, timezone:"local"});
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
 
         test.equal(value[0], "January");
@@ -940,9 +962,9 @@ module.exports.testmonthtranslation = {
         test.equal(value[10], "November");
         test.equal(value[11], "December");
 
+        var fmt = new DateFmt({locale:"en-IN", date:"m", length: "medium", useNative:false, timezone:"local"})
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"en-IN", date:"m", length: "medium", useNative:false, timezone:"local"})
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
         
         test.equal(value[0], "Jan");
@@ -965,9 +987,10 @@ module.exports.testmonthtranslation = {
 
         // Same as en-US
 
+        var value = [], i;
+        var fmt = new DateFmt({locale:"en-IS", date:"m", length: "full", useNative:false, timezone:"local"})
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"en-IS", date:"m", length: "full", useNative:false, timezone:"local"})
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
 
         test.equal(value[0], "January");
@@ -990,9 +1013,10 @@ module.exports.testmonthtranslation = {
 
         // Same as en-US
 
+        var value = [], i;
+        var fmt = new DateFmt({locale:"en-JP", date:"m", length: "full", useNative:false, timezone:"local"})
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"en-JP", date:"m", length: "full", useNative:false, timezone:"local"})
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
 
         test.equal(value[0], "January");
@@ -1017,9 +1041,10 @@ module.exports.testmonthtranslation = {
         // medium: MMM
         // short: MM
 
+        var value = [], i;
+        var fmt = new DateFmt({locale:"en-KE", date:"m", length: "full", useNative:false, timezone:"local"})
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"en-KE", date:"m", length: "full", useNative:false, timezone:"local"})
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
 
         test.equal(value[0], "January");
@@ -1035,9 +1060,9 @@ module.exports.testmonthtranslation = {
         test.equal(value[10], "November");
         test.equal(value[11], "December");
 
+        var fmt = new DateFmt({locale:"en-KE", date:"m", length: "medium", useNative:false, timezone:"local"})
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"en-KE", date:"m", length: "medium", useNative:false, timezone:"local"})
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
         test.equal(value[0], "Jan");
         test.equal(value[1], "Feb");
@@ -1059,9 +1084,10 @@ module.exports.testmonthtranslation = {
 
         // Same as en-US
 
+        var value = [], i;
+        var fmt = new DateFmt({locale:"en-KR", date:"m", length: "full", useNative:false, timezone:"local"})
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"en-KR", date:"m", length: "full", useNative:false, timezone:"local"})
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
 
         test.equal(value[0], "January");
@@ -1084,9 +1110,10 @@ module.exports.testmonthtranslation = {
 
         // Same as en-US
 
+        var value = [], i;
+        var fmt = new DateFmt({locale:"en-LK", date:"m", length: "full", useNative:false, timezone:"local"})
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"en-LK", date:"m", length: "full", useNative:false, timezone:"local"})
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
 
         test.equal(value[0], "January");
@@ -1109,9 +1136,10 @@ module.exports.testmonthtranslation = {
 
         // Same as en-US
 
+        var value = [], i;
+        var fmt = new DateFmt({locale:"en-MM", date:"m", length: "full", useNative:false, timezone:"local"})
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"en-MM", date:"m", length: "full", useNative:false, timezone:"local"})
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
 
         test.equal(value[0], "January");
@@ -1136,9 +1164,10 @@ module.exports.testmonthtranslation = {
         // medium: MMM
         // short: MM
 
+        var value = [], i;
+        var fmt = new DateFmt({locale:"en-MW", date:"m", length: "full", useNative:false, timezone:"local"})
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"en-MW", date:"m", length: "full", useNative:false, timezone:"local"})
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
 
         test.equal(value[0], "January");
@@ -1154,9 +1183,9 @@ module.exports.testmonthtranslation = {
         test.equal(value[10], "November");
         test.equal(value[11], "December");
 
+        var fmt = new DateFmt({locale:"en-MW", date:"m", length: "medium", useNative:false, timezone:"local"})
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"en-MW", date:"m", length: "medium", useNative:false, timezone:"local"})
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
         test.equal(value[0], "Jan");
         test.equal(value[1], "Feb");
@@ -1180,9 +1209,10 @@ module.exports.testmonthtranslation = {
         // medium: MMM
         // short: MM
 
+        var value = [], i;
+        var fmt = new DateFmt({locale:"en-MY", date:"m", length: "full", useNative:false, timezone:"local"})
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"en-MY", date:"m", length: "full", useNative:false, timezone:"local"})
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
         test.equal(value[0], "January");
         test.equal(value[1], "February");
@@ -1197,9 +1227,9 @@ module.exports.testmonthtranslation = {
         test.equal(value[10], "November");
         test.equal(value[11], "December");
 
+        var fmt = new DateFmt({locale:"en-MY", date:"m", length: "medium", useNative:false, timezone:"local"})
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"en-MY", date:"m", length: "medium", useNative:false, timezone:"local"})
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
         test.equal(value[0], "Jan");
         test.equal(value[1], "Feb");
@@ -1223,9 +1253,10 @@ module.exports.testmonthtranslation = {
         // medium: MMM
         // short: MM
 
+        var value = [], i;
+        var fmt = new DateFmt({locale:"en-NG", date:"m", length: "full", useNative:false, timezone:"local"})
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"en-NG", date:"m", length: "full", useNative:false, timezone:"local"})
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
         test.equal(value[0], "January");
         test.equal(value[1], "February");
@@ -1240,9 +1271,9 @@ module.exports.testmonthtranslation = {
         test.equal(value[10], "November");
         test.equal(value[11], "December");
 
+        var fmt = new DateFmt({locale:"en-NG", date:"m", length: "medium", useNative:false, timezone:"local"})
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"en-NG", date:"m", length: "medium", useNative:false, timezone:"local"})
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
         test.equal(value[0], "Jan");
         test.equal(value[1], "Feb");
@@ -1266,9 +1297,10 @@ module.exports.testmonthtranslation = {
         // medium: MM
         // short: MM
 
+        var value = [], i;
+        var fmt = new DateFmt({locale:"en-NZ", date:"m", length: "full", useNative:false, timezone:"local"})
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"en-NZ", date:"m", length: "full", useNative:false, timezone:"local"})
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
         test.equal(value[0], "January");
         test.equal(value[1], "February");
@@ -1292,9 +1324,10 @@ module.exports.testmonthtranslation = {
         // medium: MMM
         // short: MM
 
+        var value = [], i;
+        var fmt = new DateFmt({locale:"en-PH", date:"m", length: "full", useNative:false, timezone:"local"})
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"en-PH", date:"m", length: "full", useNative:false, timezone:"local"})
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
         test.equal(value[0], "January");
         test.equal(value[1], "February");
@@ -1309,9 +1342,9 @@ module.exports.testmonthtranslation = {
         test.equal(value[10], "November");
         test.equal(value[11], "December");
 
+        var fmt = new DateFmt({locale:"en-PH", date:"m", length: "medium", useNative:false, timezone:"local"})
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"en-PH", date:"m", length: "medium", useNative:false, timezone:"local"})
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
         test.equal(value[0], "Jan");
         test.equal(value[1], "Feb");
@@ -1335,9 +1368,10 @@ module.exports.testmonthtranslation = {
         // medium: MMM
         // short: M
 
+        var value = [], i;
+        var fmt = new DateFmt({locale:"en-PR", date:"m", length: "full", useNative:false, timezone:"local"})
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"en-PR", date:"m", length: "full", useNative:false, timezone:"local"})
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
 
         test.equal(value[0], "January");
@@ -1353,9 +1387,9 @@ module.exports.testmonthtranslation = {
         test.equal(value[10], "November");
         test.equal(value[11], "December");
 
+        var fmt = new DateFmt({locale:"en-PR", date:"m", length: "medium", useNative:false, timezone:"local"})
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"en-PR", date:"m", length: "medium", useNative:false, timezone:"local"})
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
         
         test.equal(value[0], "Jan");
@@ -1380,9 +1414,10 @@ module.exports.testmonthtranslation = {
         // medium: MMM
         // short: M
 
+        var value = [], i;
+        var fmt = new DateFmt({locale:"en-SG", date:"m", length: "full", useNative:false, timezone:"local"})
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"en-SG", date:"m", length: "full", useNative:false, timezone:"local"})
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
 
         test.equal(value[0], "January");
@@ -1398,9 +1433,9 @@ module.exports.testmonthtranslation = {
         test.equal(value[10], "November");
         test.equal(value[11], "December");
 
+        var fmt = new DateFmt({locale:"en-SG", date:"m", length: "medium", useNative:false, timezone:"local"})
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"en-SG", date:"m", length: "medium", useNative:false, timezone:"local"})
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
         
         test.equal(value[0], "Jan");
@@ -1425,9 +1460,10 @@ module.exports.testmonthtranslation = {
         // medium: MMM
         // short: M
 
+        var value = [], i;
+        var fmt = new DateFmt({locale:"en-US", date:"m", length: "full", useNative:false, timezone:"local"})
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"en-US", date:"m", length: "full", useNative:false, timezone:"local"})
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
 
         test.equal(value[0], "January");
@@ -1443,9 +1479,9 @@ module.exports.testmonthtranslation = {
         test.equal(value[10], "November");
         test.equal(value[11], "December");
 
+        var fmt = new DateFmt({locale:"en-US", date:"m", length: "medium", useNative:false, timezone:"local"})
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"en-US", date:"m", length: "medium", useNative:false, timezone:"local"})
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
         
         test.equal(value[0], "Jan");
@@ -1471,9 +1507,10 @@ module.exports.testmonthtranslation = {
         // medium: MMM
         // short: MM
 
+        var value = [], i;
+        var fmt = new DateFmt({locale:"en-UG", date:"m", length: "full", useNative:false, timezone:"local"})
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"en-UG", date:"m", length: "full", useNative:false, timezone:"local"})
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
 
         test.equal(value[0], "January");
@@ -1489,9 +1526,9 @@ module.exports.testmonthtranslation = {
         test.equal(value[10], "November");
         test.equal(value[11], "December");
 
+        var fmt = new DateFmt({locale:"en-UG", date:"m", length: "medium", useNative:false, timezone:"local"})
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"en-UG", date:"m", length: "medium", useNative:false, timezone:"local"})
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
         
         test.equal(value[0], "Jan");
@@ -1516,9 +1553,10 @@ module.exports.testmonthtranslation = {
         // medium: MMM
         // short: MM
 
+        var value = [], i;
+        var fmt = new DateFmt({locale:"en-ZA", date:"m", length: "full", useNative:false, timezone:"local"})
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"en-ZA", date:"m", length: "full", useNative:false, timezone:"local"})
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
 
         test.equal(value[0], "January");
@@ -1534,9 +1572,9 @@ module.exports.testmonthtranslation = {
         test.equal(value[10], "November");
         test.equal(value[11], "December");
 
+        var fmt = new DateFmt({locale:"en-ZA", date:"m", length: "medium", useNative:false, timezone:"local"})
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"en-ZA", date:"m", length: "medium", useNative:false, timezone:"local"})
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
         
         test.equal(value[0], "Jan");
@@ -1561,9 +1599,10 @@ module.exports.testmonthtranslation = {
         // medium: MMM
         // short: MM
 
+        var value = [], i;
+        var fmt = new DateFmt({locale:"en-ZM", date:"m", length: "full", useNative:false, timezone:"local"})
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"en-ZM", date:"m", length: "full", useNative:false, timezone:"local"})
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
 
         test.equal(value[0], "January");
@@ -1579,9 +1618,9 @@ module.exports.testmonthtranslation = {
         test.equal(value[10], "November");
         test.equal(value[11], "December");
 
+        var fmt = new DateFmt({locale:"en-ZM", date:"m", length: "medium", useNative:false, timezone:"local"})
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"en-ZM", date:"m", length: "medium", useNative:false, timezone:"local"})
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
         
         test.equal(value[0], "Jan");
@@ -1606,9 +1645,10 @@ module.exports.testmonthtranslation = {
         // medium: MMM
         // short: M
 
+        var value = [], i;
+        var fmt = new DateFmt({locale:"es-AR", date:"m", length: "full", useNative:false, timezone:"local"})
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"es-AR", date:"m", length: "full", useNative:false, timezone:"local"})
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
         test.equal(value[0], "enero");
         test.equal(value[1], "febrero");
@@ -1623,9 +1663,9 @@ module.exports.testmonthtranslation = {
         test.equal(value[10], "noviembre");
         test.equal(value[11], "diciembre");
 
+        var fmt = new DateFmt({locale:"es-AR", date:"m", length: "medium", useNative:false, timezone:"local"})
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"es-AR", date:"m", length: "medium", useNative:false, timezone:"local"})
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
         test.equal(value[0], "ene.");
         test.equal(value[1], "feb.");
@@ -1650,9 +1690,10 @@ module.exports.testmonthtranslation = {
         // medium: MMM
         // short: M
 
+        var value = [], i;
+        var fmt = new DateFmt({locale:"es-BO", date:"m", length: "full", useNative:false, timezone:"local"})
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"es-BO", date:"m", length: "full", useNative:false, timezone:"local"})
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
 
         test.equal(value[0], "enero");
@@ -1668,9 +1709,9 @@ module.exports.testmonthtranslation = {
         test.equal(value[10], "noviembre");
         test.equal(value[11], "diciembre");
 
+        var fmt = new DateFmt({locale:"es-BO", date:"m", length: "medium", useNative:false, timezone:"local"})
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"es-BO", date:"m", length: "medium", useNative:false, timezone:"local"})
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
         
         test.equal(value[0], "ene.");
@@ -1695,9 +1736,10 @@ module.exports.testmonthtranslation = {
         // medium: MM
         // short: MM
 
+        var value = [], i;
+        var fmt = new DateFmt({locale:"es-CL", date:"m", length: "full", useNative:false, timezone:"local"});
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"es-CL", date:"m", length: "full", useNative:false, timezone:"local"})
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
 
         test.equal(value[0], "enero");
@@ -1722,9 +1764,10 @@ module.exports.testmonthtranslation = {
         // medium: MM
         // short: MM
 
+        var value = [], i;
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"es-CO", date:"m", length: "full", useNative:false, timezone:"local"})
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            var fmt = new DateFmt({locale:"es-CO", date:"m", length: "full", useNative:false, timezone:"local"})
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
 
         test.equal(value[0], "enero");
@@ -1749,9 +1792,10 @@ module.exports.testmonthtranslation = {
         // medium: MMM
         // short: M
 
+        var value = [], i;
+        var fmt = new DateFmt({locale:"es-DO", date:"m", length: "full", useNative:false, timezone:"local"})
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"es-DO", date:"m", length: "full", useNative:false, timezone:"local"})
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
 
         test.equal(value[0], "enero");
@@ -1767,9 +1811,9 @@ module.exports.testmonthtranslation = {
         test.equal(value[10], "noviembre");
         test.equal(value[11], "diciembre");
 
+        var fmt = new DateFmt({locale:"es-DO", date:"m", length: "medium", useNative:false, timezone:"local"})
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"es-DO", date:"m", length: "medium", useNative:false, timezone:"local"})
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
         
         test.equal(value[0], "ene.");
@@ -1795,9 +1839,10 @@ module.exports.testmonthtranslation = {
         // medium: MMM
         // short: M
         
+        var value = [], i;
+        var fmt = new DateFmt({locale:"es-EC", date:"m", length: "full", useNative:false, timezone:"local"})
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"es-EC", date:"m", length: "full", useNative:false, timezone:"local"})
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
 
         test.equal(value[0], "enero");
@@ -1813,9 +1858,9 @@ module.exports.testmonthtranslation = {
         test.equal(value[10], "noviembre");
         test.equal(value[11], "diciembre");
 
+        var fmt = new DateFmt({locale:"es-EC", date:"m", length: "medium", useNative:false, timezone:"local"})
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"es-EC", date:"m", length: "medium", useNative:false, timezone:"local"})
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
         
         test.equal(value[0], "ene.");
@@ -1839,9 +1884,10 @@ module.exports.testmonthtranslation = {
         // medium: MMM
         // short: M
 
+        var value = [], i;
+        var fmt = new DateFmt({locale:"es-ES", date:"m", length: "full", useNative:false, timezone:"local"})
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"es-ES", date:"m", length: "full", useNative:false, timezone:"local"})
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
 
         test.equal(value[0], "enero");
@@ -1857,9 +1903,9 @@ module.exports.testmonthtranslation = {
         test.equal(value[10], "noviembre");
         test.equal(value[11], "diciembre");
 
+        var fmt = new DateFmt({locale:"es-ES", date:"m", length: "medium", useNative:false, timezone:"local"})
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"es-ES", date:"m", length: "medium", useNative:false, timezone:"local"})
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
         
         test.equal(value[0], "ene.");
@@ -1884,9 +1930,10 @@ module.exports.testmonthtranslation = {
         // medium: MM
         // short: MM
 
+        var value = [], i;
+        var fmt = new DateFmt({locale:"es-GT", date:"m", length: "full", useNative:false, timezone:"local"})
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"es-GT", date:"m", length: "full", useNative:false, timezone:"local"})
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
         test.equal(value[0], "enero");
         test.equal(value[1], "febrero");
@@ -1910,9 +1957,10 @@ module.exports.testmonthtranslation = {
         // medium: MMM
         // short: M
 
+        var value = [], i;
+        var fmt = new DateFmt({locale:"es-HN", date:"m", length: "full", useNative:false, timezone:"local"})
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"es-HN", date:"m", length: "full", useNative:false, timezone:"local"})
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
         test.equal(value[0], "enero");
         test.equal(value[1], "febrero");
@@ -1927,9 +1975,9 @@ module.exports.testmonthtranslation = {
         test.equal(value[10], "noviembre");
         test.equal(value[11], "diciembre");
 
+        var fmt = new DateFmt({locale:"es-HN", date:"m", length: "medium", useNative:false, timezone:"local"})
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"es-HN", date:"m", length: "medium", useNative:false, timezone:"local"})
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
         test.equal(value[0], "ene.");
         test.equal(value[1], "feb.");
@@ -1953,9 +2001,10 @@ module.exports.testmonthtranslation = {
         // medium: MMM
         // short: MM
 
+        var value = [], i;
+        var fmt = new DateFmt({locale:"es-MX", date:"m", length: "full", useNative:false, timezone:"local"})
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"es-MX", date:"m", length: "full", useNative:false, timezone:"local"})
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
         test.equal(value[0], "enero");
         test.equal(value[1], "febrero");
@@ -1970,9 +2019,9 @@ module.exports.testmonthtranslation = {
         test.equal(value[10], "noviembre");
         test.equal(value[11], "diciembre");
 
+        var fmt = new DateFmt({locale:"es-MX", date:"m", length: "medium", useNative:false, timezone:"local"})
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"es-MX", date:"m", length: "medium", useNative:false, timezone:"local"})
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
         test.equal(value[0], "ene");
         test.equal(value[1], "feb");
@@ -1996,9 +2045,10 @@ module.exports.testmonthtranslation = {
         // medium: MMM
         // short: M
 
+        var value = [], i;
+        var fmt = new DateFmt({locale:"es-NI", date:"m", length: "full", useNative:false, timezone:"local"})
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"es-NI", date:"m", length: "full", useNative:false, timezone:"local"})
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
         test.equal(value[0], "enero");
         test.equal(value[1], "febrero");
@@ -2013,9 +2063,9 @@ module.exports.testmonthtranslation = {
         test.equal(value[10], "noviembre");
         test.equal(value[11], "diciembre");
 
+        var fmt = new DateFmt({locale:"es-NI", date:"m", length: "medium", useNative:false, timezone:"local"})
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"es-NI", date:"m", length: "medium", useNative:false, timezone:"local"})
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
         test.equal(value[0], "ene.");
         test.equal(value[1], "feb.");
@@ -2039,9 +2089,10 @@ module.exports.testmonthtranslation = {
         // medium: MM
         // short: MM
 
+        var value = [], i;
+        var fmt = new DateFmt({locale:"es-PA", date:"m", length: "full", useNative:false, timezone:"local"})
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"es-PA", date:"m", length: "full", useNative:false, timezone:"local"})
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
         test.equal(value[0], "enero");
         test.equal(value[1], "febrero");
@@ -2065,9 +2116,10 @@ module.exports.testmonthtranslation = {
         // medium: MMM
         // short: MM
 
+        var value = [], i;
+        var fmt = new DateFmt({locale:"es-PE", date:"m", length: "full", useNative:false, timezone:"local"})
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"es-PE", date:"m", length: "full", useNative:false, timezone:"local"})
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
         test.equal(value[0], "Enero");
         test.equal(value[1], "Febrero");
@@ -2082,9 +2134,9 @@ module.exports.testmonthtranslation = {
         test.equal(value[10], "Noviembre");
         test.equal(value[11], "Diciembre");
 
+        var fmt = new DateFmt({locale:"es-PE", date:"m", length: "medium", useNative:false, timezone:"local"})
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"es-PE", date:"m", length: "medium", useNative:false, timezone:"local"})
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
         test.equal(value[0], "Ene.");
         test.equal(value[1], "Feb.");
@@ -2108,9 +2160,10 @@ module.exports.testmonthtranslation = {
         // medium: MM
         // short: MM
 
+        var value = [], i;
+        var fmt = new DateFmt({locale:"es-PR", date:"m", length: "full", useNative:false, timezone:"local"})
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"es-PR", date:"m", length: "full", useNative:false, timezone:"local"})
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
         test.equal(value[0], "enero");
         test.equal(value[1], "febrero");
@@ -2134,9 +2187,10 @@ module.exports.testmonthtranslation = {
         // medium: MMM
         // short: M
 
+        var value = [], i;
+        var fmt = new DateFmt({locale:"es-PY", date:"m", length: "full", useNative:false, timezone:"local"})
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"es-PY", date:"m", length: "full", useNative:false, timezone:"local"})
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
         test.equal(value[0], "enero");
         test.equal(value[1], "febrero");
@@ -2151,9 +2205,9 @@ module.exports.testmonthtranslation = {
         test.equal(value[10], "noviembre");
         test.equal(value[11], "diciembre");
 
+        var fmt = new DateFmt({locale:"es-PY", date:"m", length: "medium", useNative:false, timezone:"local"})
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"es-PY", date:"m", length: "medium", useNative:false, timezone:"local"})
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
         test.equal(value[0], "ene.");
         test.equal(value[1], "feb.");
@@ -2177,9 +2231,10 @@ module.exports.testmonthtranslation = {
         // medium: MMM
         // short: M
 
+        var value = [], i;
+        var fmt = new DateFmt({locale:"es-SV", date:"m", length: "full", useNative:false, timezone:"local"})
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"es-SV", date:"m", length: "full", useNative:false, timezone:"local"})
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
         test.equal(value[0], "enero");
         test.equal(value[1], "febrero");
@@ -2194,9 +2249,9 @@ module.exports.testmonthtranslation = {
         test.equal(value[10], "noviembre");
         test.equal(value[11], "diciembre");
 
+        var fmt = new DateFmt({locale:"es-SV", date:"m", length: "medium", useNative:false, timezone:"local"})
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"es-SV", date:"m", length: "medium", useNative:false, timezone:"local"})
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
         test.equal(value[0], "ene.");
         test.equal(value[1], "feb.");
@@ -2220,9 +2275,10 @@ module.exports.testmonthtranslation = {
         // medium: MMM
         // short: M
 
+        var value = [], i;
+        var fmt = new DateFmt({locale:"es-US", date:"m", length: "full", useNative:false, timezone:"local"})
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"es-US", date:"m", length: "full", useNative:false, timezone:"local"})
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
         test.equal(value[0], "enero");
         test.equal(value[1], "febrero");
@@ -2237,9 +2293,9 @@ module.exports.testmonthtranslation = {
         test.equal(value[10], "noviembre");
         test.equal(value[11], "diciembre");
 
+        var fmt = new DateFmt({locale:"es-US", date:"m", length: "medium", useNative:false, timezone:"local"})
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"es-US", date:"m", length: "medium", useNative:false, timezone:"local"})
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
         test.equal(value[0], "ene.");
         test.equal(value[1], "feb.");
@@ -2263,9 +2319,10 @@ module.exports.testmonthtranslation = {
         // medium: MMM
         // short: M
 
+        var value = [], i;
+        var fmt = new DateFmt({locale:"es-UY", date:"m", length: "full", useNative:false, timezone:"local"})
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"es-UY", date:"m", length: "full", useNative:false, timezone:"local"})
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
         test.equal(value[0], "Enero");
         test.equal(value[1], "Febrero");
@@ -2280,9 +2337,9 @@ module.exports.testmonthtranslation = {
         test.equal(value[10], "Noviembre");
         test.equal(value[11], "Diciembre");
 
+        var fmt = new DateFmt({locale:"es-UY", date:"m", length: "medium", useNative:false, timezone:"local"})
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"es-UY", date:"m", length: "medium", useNative:false, timezone:"local"})
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
         test.equal(value[0], "Ene.");
         test.equal(value[1], "Feb.");
@@ -2306,9 +2363,10 @@ module.exports.testmonthtranslation = {
         // medium: MMM
         // short: M
 
+        var value = [], i;
+        var fmt = new DateFmt({locale:"es-VE", date:"m", length: "full", useNative:false, timezone:"local"})
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"es-VE", date:"m", length: "full", useNative:false, timezone:"local"})
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
         test.equal(value[0], "enero");
         test.equal(value[1], "febrero");
@@ -2323,9 +2381,10 @@ module.exports.testmonthtranslation = {
         test.equal(value[10], "noviembre");
         test.equal(value[11], "diciembre");
 
+        var fmt = new DateFmt({locale:"es-VE", date:"m", length: "medium", useNative:false, timezone:"local"})
+
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"es-VE", date:"m", length: "medium", useNative:false, timezone:"local"})
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
         test.equal(value[0], "ene.");
         test.equal(value[1], "feb.");
@@ -2350,9 +2409,10 @@ module.exports.testmonthtranslation = {
         // medium: MMM
         // short: MM
 
+        var value = [], i;
+        var fmt = new DateFmt({locale:"et-EE", date:"m", length: "full", useNative:false, timezone:"local"})
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"et-EE", date:"m", length: "full", useNative:false, timezone:"local"})
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
         test.equal(value[0], "jaanuar");
         test.equal(value[1], "veebruar");
@@ -2367,9 +2427,10 @@ module.exports.testmonthtranslation = {
         test.equal(value[10], "november");
         test.equal(value[11], "detsember");
 
+        var fmt = new DateFmt({locale:"et-EE", date:"m", length: "medium", useNative:false, timezone:"local"})
+
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"et-EE", date:"m", length: "medium", useNative:false, timezone:"local"})
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
         test.equal(value[0], "jaan");
         test.equal(value[1], "veebr");
@@ -2393,9 +2454,10 @@ module.exports.testmonthtranslation = {
         // medium: MMM
         // short: M
 
+        var value = [], i;
+        var fmt = new DateFmt({locale:"fa-AF", date:"m", length: "full", useNative:false, timezone:"local"});
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"fa-AF", date:"m", length: "full", useNative:false, timezone:"local"});
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"persian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"persian"}));
         }
         // full/long length: standAlone Format _ LLLL*
 
@@ -2412,9 +2474,10 @@ module.exports.testmonthtranslation = {
         test.equal(value[10], "بهمن");
         test.equal(value[11], "اسفند");
 
+        var fmt = new DateFmt({locale:"fa-AF", date:"m", length: "medium", useNative:false, timezone:"local"});
+
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"fa-AF", date:"m", length: "medium", useNative:false, timezone:"local"});
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"persian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"persian"}));
         }
         test.equal(value[0], "فروردین");
         test.equal(value[1], "اردیبهشت");
@@ -2439,9 +2502,10 @@ module.exports.testmonthtranslation = {
         // medium: MMM
         // short: M
 
+        var value = [], i;
+        var fmt = new DateFmt({locale:"fa-IR", date:"m", length: "full", useNative:false, timezone:"local"});
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"fa-IR", date:"m", length: "full", useNative:false, timezone:"local"});
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"persian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"persian"}));
         }
         test.equal(value[0], "فروردین");
         test.equal(value[1], "اردیبهشت");
@@ -2456,9 +2520,10 @@ module.exports.testmonthtranslation = {
         test.equal(value[10], "بهمن");
         test.equal(value[11], "اسفند");
 
+        var fmt = new DateFmt({locale:"fa-IR", date:"m", length: "medium", useNative:false, timezone:"local"});
+
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"fa-IR", date:"m", length: "medium", useNative:false, timezone:"local"});
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"persian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"persian"}));
         }
         test.equal(value[0], "فروردین");
         test.equal(value[1], "اردیبهشت");
@@ -2482,9 +2547,10 @@ module.exports.testmonthtranslation = {
         // medium: M
         // short: M
 
+        var value = [], i;
+        var fmt = new DateFmt({locale:"fi-FI", date:"m", length: "full", useNative:false, timezone:"local"})
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"fi-FI", date:"m", length: "full", useNative:false, timezone:"local"})
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
         test.equal(value[0], "tammikuu");
         test.equal(value[1], "helmikuu");
@@ -2508,9 +2574,10 @@ module.exports.testmonthtranslation = {
         // medium: MMM
         // short: MM
 
+        var value = [], i;
+        var fmt = new DateFmt({locale:"fr-BE", date:"m", length: "full", useNative:false, timezone:"local"})
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"fr-BE", date:"m", length: "full", useNative:false, timezone:"local"})
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
         test.equal(value[0], "janvier");
         test.equal(value[1], "février");
@@ -2525,9 +2592,10 @@ module.exports.testmonthtranslation = {
         test.equal(value[10], "novembre");
         test.equal(value[11], "décembre");
 
+        var fmt = new DateFmt({locale:"fr-BE", date:"m", length: "medium", useNative:false, timezone:"local"})
+
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"fr-BE", date:"m", length: "medium", useNative:false, timezone:"local"})
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
         test.equal(value[0], "janv.");
         test.equal(value[1], "févr.");
@@ -2551,9 +2619,10 @@ module.exports.testmonthtranslation = {
         // medium: MMM
         // short: MM
 
+        var value = [], i;
+        var fmt = new DateFmt({locale:"fr-CA", date:"m", length: "full", useNative:false, timezone:"local"})
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"fr-CA", date:"m", length: "full", useNative:false, timezone:"local"})
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
         test.equal(value[0], "janvier");
         test.equal(value[1], "février");
@@ -2568,9 +2637,10 @@ module.exports.testmonthtranslation = {
         test.equal(value[10], "novembre");
         test.equal(value[11], "décembre");
 
+        var fmt = new DateFmt({locale:"fr-CA", date:"m", length: "medium", useNative:false, timezone:"local"})
+
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"fr-CA", date:"m", length: "medium", useNative:false, timezone:"local"})
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
         test.equal(value[0], "janv.");
         test.equal(value[1], "févr.");
@@ -2593,9 +2663,10 @@ module.exports.testmonthtranslation = {
         // medium: MMM
         // short: MM
 
+        var value = [], i;
+        var fmt = new DateFmt({locale:"fr-CH", date:"m", length: "full", useNative:false, timezone:"local"})
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"fr-CH", date:"m", length: "full", useNative:false, timezone:"local"})
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
         test.equal(value[0], "janvier");
         test.equal(value[1], "février");
@@ -2610,9 +2681,10 @@ module.exports.testmonthtranslation = {
         test.equal(value[10], "novembre");
         test.equal(value[11], "décembre");
 
+        var fmt = new DateFmt({locale:"fr-CH", date:"m", length: "medium", useNative:false, timezone:"local"})
+
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"fr-CH", date:"m", length: "medium", useNative:false, timezone:"local"})
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
         test.equal(value[0], "janv.");
         test.equal(value[1], "févr.");
@@ -2636,9 +2708,10 @@ module.exports.testmonthtranslation = {
         // medium: MMM
         // short: MM
 
+        var value = [], i;
+        var fmt = new DateFmt({locale:"fr-FR", date:"m", length: "full", useNative:false, timezone:"local"})
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"fr-FR", date:"m", length: "full", useNative:false, timezone:"local"})
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
         test.equal(value[0], "janvier");
         test.equal(value[1], "février");
@@ -2653,9 +2726,10 @@ module.exports.testmonthtranslation = {
         test.equal(value[10], "novembre");
         test.equal(value[11], "décembre");
 
+        var fmt = new DateFmt({locale:"fr-FR", date:"m", length: "medium", useNative:false, timezone:"local"})
+
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"fr-FR", date:"m", length: "medium", useNative:false, timezone:"local"})
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
         test.equal(value[0], "janv.");
         test.equal(value[1], "févr.");
@@ -2679,9 +2753,10 @@ module.exports.testmonthtranslation = {
         // medium: MMM
         // short: MM
 
+        var value = [], i;
+        var fmt = new DateFmt({locale:"fr-LU", date:"m", length: "full", useNative:false, timezone:"local"})
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"fr-LU", date:"m", length: "full", useNative:false, timezone:"local"})
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
         test.equal(value[0], "janvier");
         test.equal(value[1], "février");
@@ -2696,9 +2771,10 @@ module.exports.testmonthtranslation = {
         test.equal(value[10], "novembre");
         test.equal(value[11], "décembre");
 
+        var fmt = new DateFmt({locale:"fr-LU", date:"m", length: "medium", useNative:false, timezone:"local"})
+
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"fr-LU", date:"m", length: "medium", useNative:false, timezone:"local"})
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
         test.equal(value[0], "janv.");
         test.equal(value[1], "févr.");
@@ -2722,9 +2798,10 @@ module.exports.testmonthtranslation = {
         // medium: MMM
         // short: MM
 
+        var value = [], i;
+        var fmt = new DateFmt({locale:"ga-IE", date:"m", length: "full", useNative:false, timezone:"local"})
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"ga-IE", date:"m", length: "full", useNative:false, timezone:"local"})
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
         test.equal(value[0], "Eanáir");
         test.equal(value[1], "Feabhra");
@@ -2739,9 +2816,10 @@ module.exports.testmonthtranslation = {
         test.equal(value[10], "Samhain");
         test.equal(value[11], "Nollaig");
 
+        var fmt = new DateFmt({locale:"ga-IE", date:"m", length: "medium", useNative:false, timezone:"local"})
+
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"ga-IE", date:"m", length: "medium", useNative:false, timezone:"local"})
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
         test.equal(value[0], "Ean");
         test.equal(value[1], "Feabh");
@@ -2765,9 +2843,10 @@ module.exports.testmonthtranslation = {
         // medium: MMM
         // short: M
 
+        var value = [], i;
+        var fmt = new DateFmt({locale:"gu-IN", date:"m", length: "full", useNative:false, timezone:"local"});
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"gu-IN", date:"m", length: "full", useNative:false, timezone:"local"});
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
         test.equal(value[0], "જાન્યુઆરી");
         test.equal(value[1], "ફેબ્રુઆરી");
@@ -2782,9 +2861,10 @@ module.exports.testmonthtranslation = {
         test.equal(value[10], "નવેમ્બર");
         test.equal(value[11], "ડિસેમ્બર");
 
+        var fmt = new DateFmt({locale:"gu-IN", date:"m", length: "medium", useNative:false, timezone:"local"});
+
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"gu-IN", date:"m", length: "medium", useNative:false, timezone:"local"});
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
         test.equal(value[0], "જાન્યુ");
         test.equal(value[1], "ફેબ્રુ");
@@ -2808,9 +2888,10 @@ module.exports.testmonthtranslation = {
         // medium: MMM
         // short: M
 
+        var value = [], i;
+        var fmt = new DateFmt({locale:"he-IL", date:"m", length: "full", useNative:false, timezone:"local"});
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"he-IL", date:"m", length: "full", useNative:false, timezone:"local"});
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
         test.equal(value[0], "ינואר");
         test.equal(value[1], "פברואר");
@@ -2825,9 +2906,10 @@ module.exports.testmonthtranslation = {
         test.equal(value[10], "נובמבר");
         test.equal(value[11], "דצמבר");
 
+        var fmt = new DateFmt({locale:"he-IL", date:"m", length: "medium", useNative:false, timezone:"local"});
+
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"he-IL", date:"m", length: "medium", useNative:false, timezone:"local"});
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
         test.equal(value[0], "ינו׳");
         test.equal(value[1], "פבר׳");
@@ -2851,9 +2933,10 @@ module.exports.testmonthtranslation = {
         // medium: MMM
         // short: M
 
+        var value = [], i;
+        var fmt = new DateFmt({locale:"hi-IN", date:"m", length: "full", useNative:false, timezone:"local"});
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"hi-IN", date:"m", length: "full", useNative:false, timezone:"local"});
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
         test.equal(value[0], "जनवरी");
         test.equal(value[1], "फ़रवरी");
@@ -2868,9 +2951,10 @@ module.exports.testmonthtranslation = {
         test.equal(value[10], "नवंबर");
         test.equal(value[11], "दिसंबर");
 
+        var fmt = new DateFmt({locale:"hi-IN", date:"m", length: "medium", useNative:false, timezone:"local"});
+
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"hi-IN", date:"m", length: "medium", useNative:false, timezone:"local"});
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
         test.equal(value[0], "जन॰");
         test.equal(value[1], "फ़र॰");
@@ -2894,9 +2978,10 @@ module.exports.testmonthtranslation = {
         // medium: MMM
         // short: MM
 
+        var value = [], i;
+        var fmt = new DateFmt({locale:"hr-HR", date:"m", length: "full", useNative:false, timezone:"local"})
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"hr-HR", date:"m", length: "full", useNative:false, timezone:"local"})
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
         test.equal(value[0], "siječanj");
         test.equal(value[1], "veljača");
@@ -2911,9 +2996,10 @@ module.exports.testmonthtranslation = {
         test.equal(value[10], "studeni");
         test.equal(value[11], "prosinac");
 
+        var fmt = new DateFmt({locale:"hr-HR", date:"m", length: "medium", useNative:false, timezone:"local"})
+
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"hr-HR", date:"m", length: "medium", useNative:false, timezone:"local"})
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
         test.equal(value[0], "sij");
         test.equal(value[1], "velj");
@@ -2935,9 +3021,10 @@ module.exports.testmonthtranslation = {
 
         // Same as hr-HR
 
+        var value = [], i;
+        var fmt = new DateFmt({locale:"hr-ME", date:"m", length: "full", useNative:false, timezone:"local"})
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"hr-ME", date:"m", length: "full", useNative:false, timezone:"local"})
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
         test.equal(value[0], "siječanj");
         test.equal(value[1], "veljača");
@@ -2959,9 +3046,10 @@ module.exports.testmonthtranslation = {
 
         // Same as hr-HR
 
+        var value = [], i;
+        var fmt = new DateFmt({locale:"hr-HU", date:"m", length: "full", useNative:false, timezone:"local"})
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"hr-HU", date:"m", length: "full", useNative:false, timezone:"local"})
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
         test.equal(value[0], "siječanj");
         test.equal(value[1], "veljača");
@@ -2985,9 +3073,10 @@ module.exports.testmonthtranslation = {
         // medium: MMM
         // short: MM
 
+        var value = [], i;
+        var fmt = new DateFmt({locale:"id-ID", date:"m", length: "full", useNative:false, timezone:"local"})
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"id-ID", date:"m", length: "full", useNative:false, timezone:"local"})
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
 
         test.equal(value[0], "Januari");
@@ -3003,9 +3092,10 @@ module.exports.testmonthtranslation = {
         test.equal(value[10], "November");
         test.equal(value[11], "Desember");
 
+        var fmt = new DateFmt({locale:"id-ID", date:"m", length: "medium", useNative:false, timezone:"local"})
+
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"id-ID", date:"m", length: "medium", useNative:false, timezone:"local"})
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
 
         test.equal(value[0], "Jan");
@@ -3030,9 +3120,10 @@ module.exports.testmonthtranslation = {
         // medium: MMM
         // short: M
 
+        var value = [], i;
+        var fmt = new DateFmt({locale:"is-IS", date:"m", length: "full", useNative:false, timezone:"local"})
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"is-IS", date:"m", length: "full", useNative:false, timezone:"local"})
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
         test.equal(value[0], "janúar");
         test.equal(value[1], "febrúar");
@@ -3047,9 +3138,10 @@ module.exports.testmonthtranslation = {
         test.equal(value[10], "nóvember");
         test.equal(value[11], "desember");
 
+        var fmt = new DateFmt({locale:"is-IS", date:"m", length: "medium", useNative:false, timezone:"local"})
+
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"is-IS", date:"m", length: "medium", useNative:false, timezone:"local"})
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
         test.equal(value[0], "jan.");
         test.equal(value[1], "feb.");
@@ -3073,9 +3165,10 @@ module.exports.testmonthtranslation = {
         // medium: MMM
         // short: MM
 
+        var value = [], i;
+        var fmt = new DateFmt({locale:"it-CH", date:"m", length: "full", useNative:false, timezone:"local"})
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"it-CH", date:"m", length: "full", useNative:false, timezone:"local"})
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
         test.equal(value[0], "gennaio");
         test.equal(value[1], "febbraio");
@@ -3090,9 +3183,10 @@ module.exports.testmonthtranslation = {
         test.equal(value[10], "novembre");
         test.equal(value[11], "dicembre");
 
+        var fmt = new DateFmt({locale:"it-CH", date:"m", length: "medium", useNative:false, timezone:"local"})
+
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"it-CH", date:"m", length: "medium", useNative:false, timezone:"local"})
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
         test.equal(value[0], "gen");
         test.equal(value[1], "feb");
@@ -3116,9 +3210,10 @@ module.exports.testmonthtranslation = {
         // medium: MMM
         // short: MM
 
+        var value = [], i;
+        var fmt = new DateFmt({locale:"it-IT", date:"m", length: "full", useNative:false, timezone:"local"})
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"it-IT", date:"m", length: "full", useNative:false, timezone:"local"})
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
 
         test.equal(value[0], "gennaio");
@@ -3134,9 +3229,10 @@ module.exports.testmonthtranslation = {
         test.equal(value[10], "novembre");
         test.equal(value[11], "dicembre");
 
+        var fmt = new DateFmt({locale:"it-IT", date:"m", length: "medium", useNative:false, timezone:"local"})
+
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"it-IT", date:"m", length: "medium", useNative:false, timezone:"local"})
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
 
         test.equal(value[0], "gen");
@@ -3157,9 +3253,10 @@ module.exports.testmonthtranslation = {
     testMonthTranslate_ja_JP: function(test) {
         test.expect(12);
 
+        var value = [], i;
+        var fmt = new DateFmt({locale:"ja-JP", date:"m", length: "full", useNative:false, timezone:"local"})
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"ja-JP", date:"m", length: "full", useNative:false, timezone:"local"})
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
         test.equal(value[0], "1月");
         test.equal(value[1], "2月");
@@ -3183,9 +3280,10 @@ module.exports.testmonthtranslation = {
         // medium: MMM
         // short: MM
 
+        var value = [], i;
+        var fmt = new DateFmt({locale:"kk-KZ", date:"m", length: "full", useNative:false, timezone:"local"})
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"kk-KZ", date:"m", length: "full", useNative:false, timezone:"local"})
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
         test.equal(value[0], "Қаңтар");
         test.equal(value[1], "Ақпан");
@@ -3200,9 +3298,10 @@ module.exports.testmonthtranslation = {
         test.equal(value[10], "Қараша");
         test.equal(value[11], "Желтоқсан");
 
+        var fmt = new DateFmt({locale:"kk-KZ", date:"m", length: "medium", useNative:false, timezone:"local"})
+
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"kk-KZ", date:"m", length: "medium", useNative:false, timezone:"local"})
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
         test.equal(value[0], "қаң.");
         test.equal(value[1], "ақп.");
@@ -3226,9 +3325,10 @@ module.exports.testmonthtranslation = {
         // medium: MMM
         // short: M
 
+        var value = [], i;
+        var fmt = new DateFmt({locale:"kn-IN", date:"m", length: "full", useNative:false, timezone:"local"});
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"kn-IN", date:"m", length: "full", useNative:false, timezone:"local"});
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
 
         test.equal(value[0],"ಜನವರಿ" );
@@ -3244,9 +3344,10 @@ module.exports.testmonthtranslation = {
         test.equal(value[10], "ನವೆಂಬರ್");
         test.equal(value[11],"ಡಿಸೆಂಬರ್");
 
+        var fmt = new DateFmt({locale:"kn-IN", date:"m", length: "medium", useNative:false, timezone:"local"});
+
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"kn-IN", date:"m", length: "medium", useNative:false, timezone:"local"});
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
 
         test.equal(value[0], "ಜನವರಿ"  );
@@ -3271,9 +3372,10 @@ module.exports.testmonthtranslation = {
         // medium: MM
         // short: MM
 
+        var value = [], i;
+        var fmt = new DateFmt({locale:"ko-KR", date:"m", length: "full", useNative:false, timezone:"local"})
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"ko-KR", date:"m", length: "full", useNative:false, timezone:"local"})
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
         test.equal(value[0], "1월");
         test.equal(value[1], "2월");
@@ -3297,9 +3399,10 @@ module.exports.testmonthtranslation = {
         // medium: MMM
         // short: MM
 
+        var value = [], i;
+        var fmt = new DateFmt({locale:"ku-IQ", date:"m", length: "full", useNative:false, timezone:"local"});
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"ku-IQ", date:"m", length: "full", useNative:false, timezone:"local"});
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
         test.equal(value[0], "کانوونی دووەم");
         test.equal(value[1], "شوبات");
@@ -3314,9 +3417,10 @@ module.exports.testmonthtranslation = {
         test.equal(value[10], "تشرینی دووەم");
         test.equal(value[11], "کانونی یەکەم");
 
+        var fmt = new DateFmt({locale:"ku-IQ", date:"m", length: "medium", useNative:false, timezone:"local"});
+
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"ku-IQ", date:"m", length: "medium", useNative:false, timezone:"local"});
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
         test.equal(value[0], "کانوونی دووەم");
         test.equal(value[1], "شوبات");
@@ -3340,9 +3444,10 @@ module.exports.testmonthtranslation = {
         // medium: MM
         // short: MM
 
+        var value = [], i;
+        var fmt = new DateFmt({locale:"lt-LT", date:"m", length: "full", useNative:false, timezone:"local"})
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"lt-LT", date:"m", length: "full", useNative:false, timezone:"local"})
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
         test.equal(value[0], "sausis");
         test.equal(value[1], "vasaris");
@@ -3366,9 +3471,10 @@ module.exports.testmonthtranslation = {
         // medium: MMM
         // short: MM
 
+        var value = [], i;
+        var fmt = new DateFmt({locale:"lv-LV", date:"m", length: "full", useNative:false, timezone:"local"})
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"lv-LV", date:"m", length: "full", useNative:false, timezone:"local"})
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
         test.equal(value[0], "janvāris");
         test.equal(value[1], "februāris");
@@ -3383,9 +3489,10 @@ module.exports.testmonthtranslation = {
         test.equal(value[10], "novembris");
         test.equal(value[11], "decembris");
 
+        var fmt = new DateFmt({locale:"lv-LV", date:"m", length: "medium", useNative:false, timezone:"local"})
+
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"lv-LV", date:"m", length: "medium", useNative:false, timezone:"local"})
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
         test.equal(value[0], "janv.");
         test.equal(value[1], "febr.");
@@ -3409,9 +3516,10 @@ module.exports.testmonthtranslation = {
         // medium: M
         // short: M
 
+        var value = [], i;
+        var fmt = new DateFmt({locale:"mk-MK", date:"m", length: "full", useNative:false, timezone:"local"})
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"mk-MK", date:"m", length: "full", useNative:false, timezone:"local"})
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
         test.equal(value[0], "јануари");
         test.equal(value[1], "февруари");
@@ -3435,9 +3543,10 @@ module.exports.testmonthtranslation = {
         // medium: MMM
         // short: M
 
+        var value = [], i;
+        var fmt = new DateFmt({locale:"ml-IN", date:"m", length: "full", useNative:false, timezone:"local"});
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"ml-IN", date:"m", length: "full", useNative:false, timezone:"local"});
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
         test.equal(value[0], "ജനുവരി");
         test.equal(value[1], "ഫെബ്രുവരി");
@@ -3452,9 +3561,10 @@ module.exports.testmonthtranslation = {
         test.equal(value[10],"നവംബർ");
         test.equal(value[11],"ഡിസംബർ");
         
+        var fmt = new DateFmt({locale:"ml-IN", date:"m", length: "medium", useNative:false, timezone:"local"});
+
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"ml-IN", date:"m", length: "medium", useNative:false, timezone:"local"});
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
         test.equal(value[0], "ജനു");
         test.equal(value[1], "ഫെബ്രു");
@@ -3474,9 +3584,10 @@ module.exports.testmonthtranslation = {
     testMonthTranslate_mr_IN: function(test) {
         test.expect(12);
 
+        var value = [], i;
+        var fmt = new DateFmt({locale:"mr-IN", date:"m", length: "full", useNative:false, timezone:"local"});
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"mr-IN", date:"m", length: "full", useNative:false, timezone:"local"});
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
 
         test.equal(value[0],"जानेवारी");
@@ -3501,9 +3612,10 @@ module.exports.testmonthtranslation = {
         // medium: MMM
         // short: MM
 
+        var value = [], i;
+        var fmt = new DateFmt({locale:"ms-MY", date:"m", length: "full", useNative:false, timezone:"local"})
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"ms-MY", date:"m", length: "full", useNative:false, timezone:"local"})
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
         test.equal(value[0], "Januari");
         test.equal(value[1], "Februari");
@@ -3518,9 +3630,10 @@ module.exports.testmonthtranslation = {
         test.equal(value[10], "November");
         test.equal(value[11], "Disember");
 
+        var fmt = new DateFmt({locale:"ms-MY", date:"m", length: "medium", useNative:false, timezone:"local"})
+
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"ms-MY", date:"m", length: "medium", useNative:false, timezone:"local"})
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
         test.equal(value[0], "Jan");
         test.equal(value[1], "Feb");
@@ -3544,9 +3657,10 @@ module.exports.testmonthtranslation = {
         // medium: MMM
         // short: MM
 
+        var value = [], i;
+        var fmt = new DateFmt({locale:"nb-NO", date:"m", length: "full", useNative:false, timezone:"local"})
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"nb-NO", date:"m", length: "full", useNative:false, timezone:"local"})
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
         test.equal(value[0], "januar");
         test.equal(value[1], "februar");
@@ -3561,9 +3675,10 @@ module.exports.testmonthtranslation = {
         test.equal(value[10], "november");
         test.equal(value[11], "desember");
 
+        var fmt = new DateFmt({locale:"nb-NO", date:"m", length: "medium", useNative:false, timezone:"local"})
+
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"nb-NO", date:"m", length: "medium", useNative:false, timezone:"local"})
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
         test.equal(value[0], "jan.");
         test.equal(value[1], "feb.");
@@ -3587,9 +3702,10 @@ module.exports.testmonthtranslation = {
         // medium: MMM
         // short: MM
 
+        var value = [], i;
+        var fmt = new DateFmt({locale:"nl-BE", date:"m", length: "full", useNative:false, timezone:"local"})
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"nl-BE", date:"m", length: "full", useNative:false, timezone:"local"})
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
         test.equal(value[0], "januari");
         test.equal(value[1], "februari");
@@ -3604,9 +3720,10 @@ module.exports.testmonthtranslation = {
         test.equal(value[10], "november");
         test.equal(value[11], "december");
 
+        var fmt = new DateFmt({locale:"nl-BE", date:"m", length: "medium", useNative:false, timezone:"local"})
+
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"nl-BE", date:"m", length: "medium", useNative:false, timezone:"local"})
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
         test.equal(value[0], "jan.");
         test.equal(value[1], "feb.");
@@ -3630,9 +3747,10 @@ module.exports.testmonthtranslation = {
         // medium: MMM
         // short: MM
 
+        var value = [], i;
+        var fmt = new DateFmt({locale:"nl-NL", date:"m", length: "full", useNative:false, timezone:"local"})
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"nl-NL", date:"m", length: "full", useNative:false, timezone:"local"})
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
         test.equal(value[0], "januari");
         test.equal(value[1], "februari");
@@ -3647,9 +3765,10 @@ module.exports.testmonthtranslation = {
         test.equal(value[10], "november");
         test.equal(value[11], "december");
 
+        var fmt = new DateFmt({locale:"nl-NL", date:"m", length: "medium", useNative:false, timezone:"local"})
+
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"nl-NL", date:"m", length: "medium", useNative:false, timezone:"local"})
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
         test.equal(value[0], "jan.");
         test.equal(value[1], "feb.");
@@ -3673,9 +3792,10 @@ module.exports.testmonthtranslation = {
         // medium: MMM
         // short: M
 
+        var value = [], i;
+        var fmt = new DateFmt({locale:"pa-Guru-IN", date:"m", length: "full", useNative:false, timezone:"local"});
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"pa-Guru-IN", date:"m", length: "full", useNative:false, timezone:"local"});
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
         test.equal(value[0], "ਜਨਵਰੀ");
         test.equal(value[1], "ਫ਼ਰਵਰੀ");
@@ -3690,9 +3810,10 @@ module.exports.testmonthtranslation = {
         test.equal(value[10], "ਨਵੰਬਰ");
         test.equal(value[11], "ਦਸੰਬਰ");
 
+        var fmt = new DateFmt({locale:"pa-Guru-IN", date:"m", length: "medium", useNative:false, timezone:"local"});
+
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"pa-Guru-IN", date:"m", length: "medium", useNative:false, timezone:"local"});
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
         test.equal(value[0], "ਜਨ");
         test.equal(value[1], "ਫ਼ਰ");
@@ -3716,9 +3837,10 @@ module.exports.testmonthtranslation = {
         // medium: MMM
         // short: MM
 
+        var value = [], i;
+        var fmt = new DateFmt({locale:"pl-PL", date:"m", length: "full", useNative:false, timezone:"local"})
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"pl-PL", date:"m", length: "full", useNative:false, timezone:"local"})
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
 
         test.equal(value[0], "styczeń");
@@ -3734,9 +3856,10 @@ module.exports.testmonthtranslation = {
         test.equal(value[10], "listopad");
         test.equal(value[11], "grudzień");
 
+        var fmt = new DateFmt({locale:"pl-PL", date:"m", length: "medium", useNative:false, timezone:"local"})
+
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"pl-PL", date:"m", length: "medium", useNative:false, timezone:"local"})
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
         test.equal(value[0], "sty");
         test.equal(value[1], "lut");
@@ -3758,9 +3881,10 @@ module.exports.testmonthtranslation = {
 
         // Same as pt-PT
 
+        var value = [], i;
+        var fmt = new DateFmt({locale:"pt-BR", date:"m", length: "full", useNative:false, timezone:"local"})
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"pt-BR", date:"m", length: "full", useNative:false, timezone:"local"})
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
         test.equal(value[0], "janeiro");
         test.equal(value[1], "fevereiro");
@@ -3784,9 +3908,10 @@ module.exports.testmonthtranslation = {
         // medium: MM
         // short: MM
 
+        var value = [], i;
+        var fmt = new DateFmt({locale:"pt-PT", date:"m", length: "full", useNative:false, timezone:"local"})
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"pt-PT", date:"m", length: "full", useNative:false, timezone:"local"})
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
         test.equal(value[0], "janeiro");
         test.equal(value[1], "fevereiro");
@@ -3810,9 +3935,10 @@ module.exports.testmonthtranslation = {
         // medium: MMM
         // short: MM
 
+        var value = [], i;
+        var fmt = new DateFmt({locale:"ro-RO", date:"m", length: "full", useNative:false, timezone:"local"})
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"ro-RO", date:"m", length: "full", useNative:false, timezone:"local"})
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
         test.equal(value[0], "ianuarie");
         test.equal(value[1], "februarie");
@@ -3827,9 +3953,10 @@ module.exports.testmonthtranslation = {
         test.equal(value[10], "noiembrie");
         test.equal(value[11], "decembrie");
 
+        var fmt = new DateFmt({locale:"ro-RO", date:"m", length: "medium", useNative:false, timezone:"local"})
+
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"ro-RO", date:"m", length: "medium", useNative:false, timezone:"local"})
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
         test.equal(value[0], "ian.");
         test.equal(value[1], "feb.");
@@ -3853,9 +3980,10 @@ module.exports.testmonthtranslation = {
         // medium: MM
         // short: M
 
+        var value = [], i;
+        var fmt = new DateFmt({locale:"sr-Cyrl-RS", date:"m", length: "full", useNative:false, timezone:"local"})
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"sr-Cyrl-RS", date:"m", length: "full", useNative:false, timezone:"local"})
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
         test.equal(value[0], "јануар");
         test.equal(value[1], "фебруар");
@@ -3879,9 +4007,10 @@ module.exports.testmonthtranslation = {
         // medium: MM
         // short: M
 
+        var value = [], i;
+        var fmt = new DateFmt({locale:"sr-Latn-RS", date:"m", length: "full", useNative:false, timezone:"local"})
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"sr-Latn-RS", date:"m", length: "full", useNative:false, timezone:"local"})
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
         test.equal(value[0], "januar");
         test.equal(value[1], "februar");
@@ -3905,9 +4034,10 @@ module.exports.testmonthtranslation = {
         // medium: MMM
         // short: MM
 
+        var value = [], i;
+        var fmt = new DateFmt({locale:"ru-BY", date:"m", length: "full", useNative:false, timezone:"local"})
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"ru-BY", date:"m", length: "full", useNative:false, timezone:"local"})
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
         test.equal(value[0], "январь");
         test.equal(value[1], "февраль");
@@ -3922,9 +4052,10 @@ module.exports.testmonthtranslation = {
         test.equal(value[10], "ноябрь");
         test.equal(value[11], "декабрь");
 
+        var fmt = new DateFmt({locale:"ru-BY", date:"m", length: "medium", useNative:false, timezone:"local"})
+
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"ru-BY", date:"m", length: "medium", useNative:false, timezone:"local"})
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
         test.equal(value[0], "янв.");
         test.equal(value[1], "февр.");
@@ -3948,9 +4079,10 @@ module.exports.testmonthtranslation = {
         // medium: MMM
         // short: MM
 
+        var value = [], i;
+        var fmt = new DateFmt({locale:"ru-KG", date:"m", length: "full", useNative:false, timezone:"local"})
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"ru-KG", date:"m", length: "full", useNative:false, timezone:"local"})
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
         test.equal(value[0], "январь");
         test.equal(value[1], "февраль");
@@ -3965,9 +4097,10 @@ module.exports.testmonthtranslation = {
         test.equal(value[10], "ноябрь");
         test.equal(value[11], "декабрь");
 
+        var fmt = new DateFmt({locale:"ru-KG", date:"m", length: "medium", useNative:false, timezone:"local"})
+
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"ru-KG", date:"m", length: "medium", useNative:false, timezone:"local"})
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
         test.equal(value[0], "янв.");
         test.equal(value[1], "февр.");
@@ -3991,9 +4124,10 @@ module.exports.testmonthtranslation = {
         // medium: MMM
         // short: MM
 
+        var value = [], i;
+        var fmt = new DateFmt({locale:"ru-KZ", date:"m", length: "full", useNative:false, timezone:"local"})
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"ru-KZ", date:"m", length: "full", useNative:false, timezone:"local"})
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
         test.equal(value[0], "январь");
         test.equal(value[1], "февраль");
@@ -4008,9 +4142,10 @@ module.exports.testmonthtranslation = {
         test.equal(value[10], "ноябрь");
         test.equal(value[11], "декабрь");
 
+        var fmt = new DateFmt({locale:"ru-KZ", date:"m", length: "medium", useNative:false, timezone:"local"})
+
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"ru-KZ", date:"m", length: "medium", useNative:false, timezone:"local"})
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
         test.equal(value[0], "янв.");
         test.equal(value[1], "февр.");
@@ -4032,9 +4167,10 @@ module.exports.testmonthtranslation = {
 
         // Same as ru-RU
 
+        var value = [], i;
+        var fmt = new DateFmt({locale:"ru-GE", date:"m", length: "full", useNative:false, timezone:"local"})
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"ru-GE", date:"m", length: "full", useNative:false, timezone:"local"})
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
         test.equal(value[0], "январь");
         test.equal(value[1], "февраль");
@@ -4058,9 +4194,10 @@ module.exports.testmonthtranslation = {
         // medium: MMM
         // short: MM
 
+        var value = [], i;
+        var fmt = new DateFmt({locale:"ru-RU", date:"m", length: "full", useNative:false, timezone:"local"})
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"ru-RU", date:"m", length: "full", useNative:false, timezone:"local"})
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
         test.equal(value[0], "январь");
         test.equal(value[1], "февраль");
@@ -4075,9 +4212,10 @@ module.exports.testmonthtranslation = {
         test.equal(value[10], "ноябрь");
         test.equal(value[11], "декабрь");
 
+        var fmt = new DateFmt({locale:"ru-RU", date:"m", length: "medium", useNative:false, timezone:"local"})
+
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"ru-RU", date:"m", length: "medium", useNative:false, timezone:"local"})
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
         test.equal(value[0], "янв.");
         test.equal(value[1], "февр.");
@@ -4101,9 +4239,10 @@ module.exports.testmonthtranslation = {
         // medium: MMM
         // short: MM
 
+        var value = [], i;
+        var fmt = new DateFmt({locale:"ru-UA", date:"m", length: "full", useNative:false, timezone:"local"})
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"ru-UA", date:"m", length: "full", useNative:false, timezone:"local"})
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
         test.equal(value[0], "январь");
         test.equal(value[1], "февраль");
@@ -4118,9 +4257,10 @@ module.exports.testmonthtranslation = {
         test.equal(value[10], "ноябрь");
         test.equal(value[11], "декабрь");
 
+        var fmt = new DateFmt({locale:"ru-UA", date:"m", length: "medium", useNative:false, timezone:"local"})
+
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"ru-UA", date:"m", length: "medium", useNative:false, timezone:"local"})
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
         test.equal(value[0], "янв.");
         test.equal(value[1], "февр.");
@@ -4144,9 +4284,10 @@ module.exports.testmonthtranslation = {
         // medium: M
         // short: M
 
+        var value = [], i;
+        var fmt = new DateFmt({locale:"sk-SK", date:"m", length: "full", useNative:false, timezone:"local"})
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"sk-SK", date:"m", length: "full", useNative:false, timezone:"local"})
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
         test.equal(value[0], "január");
         test.equal(value[1], "február");
@@ -4170,9 +4311,10 @@ module.exports.testmonthtranslation = {
         // medium: MMM
         // short: MM
 
+        var value = [], i;
+        var fmt = new DateFmt({locale:"sl-SI", date:"m", length: "full", useNative:false, timezone:"local"})
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"sl-SI", date:"m", length: "full", useNative:false, timezone:"local"})
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
         test.equal(value[0], "januar");
         test.equal(value[1], "februar");
@@ -4187,9 +4329,10 @@ module.exports.testmonthtranslation = {
         test.equal(value[10], "november");
         test.equal(value[11], "december");
 
+        var fmt = new DateFmt({locale:"sl-SI", date:"m", length: "medium", useNative:false, timezone:"local"})
+
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"sl-SI", date:"m", length: "medium", useNative:false, timezone:"local"})
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
         test.equal(value[0], "jan.");
         test.equal(value[1], "feb.");
@@ -4213,9 +4356,10 @@ module.exports.testmonthtranslation = {
         // medium: MMM
         // short: M
 
+        var value = [], i;
+        var fmt = new DateFmt({locale:"sq-AL", date:"m", length: "full", useNative:false, timezone:"local"})
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"sq-AL", date:"m", length: "full", useNative:false, timezone:"local"})
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
         test.equal(value[0], "janar");
         test.equal(value[1], "shkurt");
@@ -4230,9 +4374,10 @@ module.exports.testmonthtranslation = {
         test.equal(value[10], "nëntor");
         test.equal(value[11], "dhjetor");
 
+        var fmt = new DateFmt({locale:"sq-AL", date:"m", length: "medium", useNative:false, timezone:"local"})
+
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"sq-AL", date:"m", length: "medium", useNative:false, timezone:"local"})
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
         test.equal(value[0], "jan");
         test.equal(value[1], "shk");
@@ -4258,9 +4403,10 @@ module.exports.testmonthtranslation = {
         // medium: MMM
         // short: M
 
+        var value = [], i;
+        var fmt = new DateFmt({locale:"sq-ME", date:"m", length: "full", useNative:false, timezone:"local"})
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"sq-ME", date:"m", length: "full", useNative:false, timezone:"local"})
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
         test.equal(value[0], "janar");
         test.equal(value[1], "shkurt");
@@ -4275,9 +4421,10 @@ module.exports.testmonthtranslation = {
         test.equal(value[10], "nëntor");
         test.equal(value[11], "dhjetor");
 
+        var fmt = new DateFmt({locale:"sq-ME", date:"m", length: "medium", useNative:false, timezone:"local"})
+
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"sq-ME", date:"m", length: "medium", useNative:false, timezone:"local"})
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
         test.equal(value[0], "jan");
         test.equal(value[1], "shk");
@@ -4301,9 +4448,10 @@ module.exports.testmonthtranslation = {
         // medium: MMM
         // short: MM
 
+        var value = [], i;
+        var fmt = new DateFmt({locale:"sv-FI", date:"m", length: "full", useNative:false, timezone:"local"})
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"sv-FI", date:"m", length: "full", useNative:false, timezone:"local"})
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
         test.equal(value[0], "januari");
         test.equal(value[1], "februari");
@@ -4318,9 +4466,10 @@ module.exports.testmonthtranslation = {
         test.equal(value[10], "november");
         test.equal(value[11], "december");
 
+        var fmt = new DateFmt({locale:"sv-FI", date:"m", length: "medium", useNative:false, timezone:"local"})
+
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"sv-FI", date:"m", length: "medium", useNative:false, timezone:"local"})
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
         test.equal(value[0], "jan.");
         test.equal(value[1], "feb.");
@@ -4344,9 +4493,10 @@ module.exports.testmonthtranslation = {
         // medium: MMM
         // short: MM
 
+        var value = [], i;
+        var fmt = new DateFmt({locale:"sv-SE", date:"m", length: "full", useNative:false, timezone:"local"})
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"sv-SE", date:"m", length: "full", useNative:false, timezone:"local"})
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
         test.equal(value[0], "januari");
         test.equal(value[1], "februari");
@@ -4361,9 +4511,10 @@ module.exports.testmonthtranslation = {
         test.equal(value[10], "november");
         test.equal(value[11], "december");
 
+        var fmt = new DateFmt({locale:"sv-SE", date:"m", length: "medium", useNative:false, timezone:"local"})
+
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"sv-SE", date:"m", length: "medium", useNative:false, timezone:"local"})
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
         test.equal(value[0], "jan.");
         test.equal(value[1], "feb.");
@@ -4387,9 +4538,10 @@ module.exports.testmonthtranslation = {
         // medium: MMM
         // short: M
 
+        var value = [], i;
+        var fmt = new DateFmt({locale:"ta-IN", date:"m", length: "full", useNative:false, timezone:"local"});
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"ta-IN", date:"m", length: "full", useNative:false, timezone:"local"});
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
         test.equal(value[0],"ஜனவரி" );
         test.equal(value[1], "பிப்ரவரி");
@@ -4404,9 +4556,10 @@ module.exports.testmonthtranslation = {
         test.equal(value[10], "நவம்பர்");
         test.equal(value[11], "டிசம்பர்");
 
+        var fmt = new DateFmt({locale:"ta-IN", date:"m", length: "medium", useNative:false, timezone:"local"});
+
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"ta-IN", date:"m", length: "medium", useNative:false, timezone:"local"});
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
         test.equal(value[0],"ஜன.");
         test.equal(value[1],"பிப்.");
@@ -4430,9 +4583,10 @@ module.exports.testmonthtranslation = {
         // medium: MMM
         // short: MM
 
+        var value = [], i;
+        var fmt = new DateFmt({locale:"te-IN", date:"m", length: "full", useNative:false, timezone:"local"});
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"te-IN", date:"m", length: "full", useNative:false, timezone:"local"});
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
         test.equal(value[0],"జనవరి");
         test.equal(value[1], "ఫిబ్రవరి");
@@ -4447,9 +4601,10 @@ module.exports.testmonthtranslation = {
         test.equal(value[10], "నవంబర్");
         test.equal(value[11], "డిసెంబర్");
 
+        var fmt = new DateFmt({locale:"te-IN", date:"m", length: "medium", useNative:false, timezone:"local"});
+
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"te-IN", date:"m", length: "medium", useNative:false, timezone:"local"});
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
         
         test.equal(value[0],"జన");
@@ -4473,9 +4628,10 @@ module.exports.testmonthtranslation = {
         // medium: MMM
         // short: M
 
+        var value = [], i;
+        var fmt = new DateFmt({locale:"th-TH", date:"m", length: "full", useNative:false, timezone:"local"})
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"th-TH", date:"m", length: "full", useNative:false, timezone:"local"})
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"thaisolar"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"thaisolar"}));
         }
         test.equal(value[0], "มกราคม");
         test.equal(value[1], "กุมภาพันธ์");
@@ -4490,9 +4646,10 @@ module.exports.testmonthtranslation = {
         test.equal(value[10], "พฤศจิกายน");
         test.equal(value[11], "ธันวาคม");
 
+        var fmt = new DateFmt({locale:"th-TH", date:"m", length: "medium", useNative:false, timezone:"local"})
+
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"th-TH", date:"m", length: "medium", useNative:false, timezone:"local"})
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"thaisolar"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"thaisolar"}));
         }
         test.equal(value[0], "ม.ค.");
         test.equal(value[1], "ก.พ.");
@@ -4515,9 +4672,10 @@ module.exports.testmonthtranslation = {
         // medium: MMM
         // short: MM
 
+        var value = [], i;
+        var fmt = new DateFmt({locale:"tr-AM", date:"m", length: "full", useNative:false, timezone:"local"})
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"tr-AM", date:"m", length: "full", useNative:false, timezone:"local"})
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
         test.equal(value[0], "Ocak");
         test.equal(value[1], "Şubat");
@@ -4532,9 +4690,10 @@ module.exports.testmonthtranslation = {
         test.equal(value[10], "Kasım");
         test.equal(value[11], "Aralık");
 
+        var fmt = new DateFmt({locale:"tr-AM", date:"m", length: "medium", useNative:false, timezone:"local"})
+
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"tr-AM", date:"m", length: "medium", useNative:false, timezone:"local"})
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
         test.equal(value[0], "Oca");
         test.equal(value[1], "Şub");
@@ -4556,9 +4715,10 @@ module.exports.testmonthtranslation = {
 
         // Same as tr-TR
 
+        var value = [], i;
+        var fmt = new DateFmt({locale:"tr-AZ", date:"m", length: "full", useNative:false, timezone:"local"})
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"tr-AZ", date:"m", length: "full", useNative:false, timezone:"local"})
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
         test.equal(value[0], "Ocak");
         test.equal(value[1], "Şubat");
@@ -4582,9 +4742,10 @@ module.exports.testmonthtranslation = {
         // medium: MMM
         // short: MM
 
+        var value = [], i;
+        var fmt = new DateFmt({locale:"tr-CY", date:"m", length: "full", useNative:false, timezone:"local"})
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"tr-CY", date:"m", length: "full", useNative:false, timezone:"local"})
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
         test.equal(value[0], "Ocak");
         test.equal(value[1], "Şubat");
@@ -4599,9 +4760,10 @@ module.exports.testmonthtranslation = {
         test.equal(value[10], "Kasım");
         test.equal(value[11], "Aralık");
 
+        var fmt = new DateFmt({locale:"tr-CY", date:"m", length: "medium", useNative:false, timezone:"local"})
+
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"tr-CY", date:"m", length: "medium", useNative:false, timezone:"local"})
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
         test.equal(value[0], "Oca");
         test.equal(value[1], "Şub");
@@ -4625,9 +4787,10 @@ module.exports.testmonthtranslation = {
         // medium: MMM
         // short: MM
 
+        var value = [], i;
+        var fmt = new DateFmt({locale:"tr-TR", date:"m", length: "full", useNative:false, timezone:"local"})
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"tr-TR", date:"m", length: "full", useNative:false, timezone:"local"})
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
         test.equal(value[0], "Ocak");
         test.equal(value[1], "Şubat");
@@ -4642,9 +4805,10 @@ module.exports.testmonthtranslation = {
         test.equal(value[10], "Kasım");
         test.equal(value[11], "Aralık");
 
+        var fmt = new DateFmt({locale:"tr-TR", date:"m", length: "medium", useNative:false, timezone:"local"})
+
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"tr-TR", date:"m", length: "medium", useNative:false, timezone:"local"})
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
         test.equal(value[0], "Oca");
         test.equal(value[1], "Şub");
@@ -4668,9 +4832,10 @@ module.exports.testmonthtranslation = {
         // medium: MMM
         // short: MM
 
+        var value = [], i;
+        var fmt = new DateFmt({locale:"uk-UA", date:"m", length: "full", useNative:false, timezone:"local"})
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"uk-UA", date:"m", length: "full", useNative:false, timezone:"local"})
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
         test.equal(value[0], "січень");
         test.equal(value[1], "лютий");
@@ -4685,10 +4850,10 @@ module.exports.testmonthtranslation = {
         test.equal(value[10], "листопад");
         test.equal(value[11], "грудень");
 
+        var fmt = new DateFmt({locale:"uk-UA", date:"m", length: "medium", useNative:false, timezone:"local"})
 
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"uk-UA", date:"m", length: "medium", useNative:false, timezone:"local"})
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
         test.equal(value[0], "січ");
         test.equal(value[1], "лют");
@@ -4712,9 +4877,10 @@ module.exports.testmonthtranslation = {
         // medium: MMM
         // short: M
 
+        var value = [], i;
+        var fmt = new DateFmt({locale:"ur-IN", date:"m", length: "full", useNative:false, timezone:"local"});
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"ur-IN", date:"m", length: "full", useNative:false, timezone:"local"});
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
         test.equal(value[0], "جنوری");
         test.equal(value[1],"فروری" );
@@ -4729,9 +4895,10 @@ module.exports.testmonthtranslation = {
         test.equal(value[10],"نومبر");
         test.equal(value[11],"دسمبر");
 
-       for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"ur-IN", date:"m", length: "medium", useNative:false, timezone:"local"});
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+        var fmt = new DateFmt({locale:"ur-IN", date:"m", length: "medium", useNative:false, timezone:"local"});
+
+        for (i=0; i < 12; i++) {
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
 
         test.equal(value[0],"جنوری");
@@ -4756,9 +4923,10 @@ module.exports.testmonthtranslation = {
         // medium: MMM
         // short: MM
 
+        var value = [], i;
+        var fmt = new DateFmt({locale:"uz-Latn-UZ", date:"m", length: "full", useNative:false, timezone:"local"})
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"uz-Latn-UZ", date:"m", length: "full", useNative:false, timezone:"local"})
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
         test.equal(value[0], "Yanvar");
         test.equal(value[1], "Fevral");
@@ -4773,9 +4941,10 @@ module.exports.testmonthtranslation = {
         test.equal(value[10], "Noyabr");
         test.equal(value[11], "Dekabr");
 
+        var fmt = new DateFmt({locale:"uz-Latn-UZ", date:"m", length: "medium", useNative:false, timezone:"local"})
+
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"uz-Latn-UZ", date:"m", length: "medium", useNative:false, timezone:"local"})
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
         test.equal(value[0], "Yan");
         test.equal(value[1], "Fev");
@@ -4799,9 +4968,10 @@ module.exports.testmonthtranslation = {
         // medium: MMM
         // short: MM
 
+        var value = [], i;
+        var fmt = new DateFmt({locale:"vi-VN", date:"m", length: "full", useNative:false, timezone:"local"})
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"vi-VN", date:"m", length: "full", useNative:false, timezone:"local"})
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
         test.equal(value[0], "Tháng 1");
         test.equal(value[1], "Tháng 2");
@@ -4816,9 +4986,10 @@ module.exports.testmonthtranslation = {
         test.equal(value[10], "Tháng 11");
         test.equal(value[11], "Tháng 12");
         
+        var fmt = new DateFmt({locale:"vi-VN", date:"m", length: "medium", useNative:false, timezone:"local"})
+
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"vi-VN", date:"m", length: "medium", useNative:false, timezone:"local"})
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
         test.equal(value[0], "Thg 1");
         test.equal(value[1], "Thg 2");
@@ -4837,9 +5008,10 @@ module.exports.testmonthtranslation = {
     testMonthTranslate_zh_Hans_CN: function(test) {
         test.expect(12);
 
+        var value = [], i;
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"zh-Hans-CN", date:"m", length: "full", useNative:false, timezone:"local"})
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            var fmt = new DateFmt({locale:"zh-Hans-CN", date:"m", length: "full", useNative:false, timezone:"local"})
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
         test.equal(value[0], "1月");
         test.equal(value[1], "2月");
@@ -4859,9 +5031,10 @@ module.exports.testmonthtranslation = {
     testMonthTranslate_zh_Hant_HK: function(test) {
         test.expect(12);
 
+        var value = [], i;
+        var fmt = new DateFmt({locale:"zh-Hant-HK", date:"m", length: "full", useNative:false, timezone:"local"})
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"zh-Hant-HK", date:"m", length: "full", useNative:false, timezone:"local"})
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
         test.equal(value[0], "1月");
         test.equal(value[1], "2月");
@@ -4881,9 +5054,10 @@ module.exports.testmonthtranslation = {
     testMonthTranslate_zh_Hant_TW: function(test) {
         test.expect(12);
 
+        var value = [], i;
+        var fmt = new DateFmt({locale:"zh-Hant-TW", date:"m", length: "full", useNative:false, timezone:"local"})
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"zh-Hant-TW", date:"m", length: "full", useNative:false, timezone:"local"})
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
         test.equal(value[0], "1月");
         test.equal(value[1], "2月");
@@ -4905,9 +5079,10 @@ module.exports.testmonthtranslation = {
 
         // Same as en-US
 
+        var value = [], i;
+        var fmt = new DateFmt({locale:"en-GE", date:"m", length: "full", useNative:false, timezone:"local"})
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"en-GE", date:"m", length: "full", useNative:false, timezone:"local"})
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
         test.equal(value[0], "January");
         test.equal(value[1], "February");
@@ -4929,9 +5104,10 @@ module.exports.testmonthtranslation = {
 
         // Same as en-US
 
+        var value = [], i;
+        var fmt = new DateFmt({locale:"en-CN", date:"m", length: "full", useNative:false, timezone:"local"})
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"en-CN", date:"m", length: "full", useNative:false, timezone:"local"})
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
 
         test.equal(value[0], "January");
@@ -4954,9 +5130,10 @@ module.exports.testmonthtranslation = {
 
         // Same as en-US
 
+        var value = [], i;
+        var fmt = new DateFmt({locale:"en-MX", date:"m", length: "full", useNative:false, timezone:"local"})
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"en-MX", date:"m", length: "full", useNative:false, timezone:"local"})
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
         test.equal(value[0], "January");
         test.equal(value[1], "February");
@@ -4978,9 +5155,10 @@ module.exports.testmonthtranslation = {
 
         // Same as en-US
 
+        var value = [], i;
+        var fmt = new DateFmt({locale:"en-TW", date:"m", length: "full", useNative:false, timezone:"local"})
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"en-TW", date:"m", length: "full", useNative:false, timezone:"local"})
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
 
         test.equal(value[0], "January");
@@ -5005,9 +5183,10 @@ module.exports.testmonthtranslation = {
         // medium: MMM
         // short: MM
 
+        var value = [], i;
+        var fmt = new DateFmt({locale:"mn-MN", date:"m", length: "medium", useNative:false, timezone:"local"})
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"mn-MN", date:"m", length: "medium", useNative:false, timezone:"local"})
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
         test.equal(value[0], "1-р сар");
         test.equal(value[1], "2-р сар");
@@ -5029,9 +5208,10 @@ module.exports.testmonthtranslation = {
 
         // Same as es-ES
 
+        var value = [], i;
+        var fmt = new DateFmt({locale:"es-CA", date:"m", length: "full", useNative:false, timezone:"local"})
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"es-CA", date:"m", length: "full", useNative:false, timezone:"local"})
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
         test.equal(value[0], "enero");
         test.equal(value[1], "febrero");
@@ -5055,9 +5235,10 @@ module.exports.testmonthtranslation = {
         // medium: MMM
         // short: MM
 
+        var value = [], i;
+        var fmt = new DateFmt({locale:"af-ZA", date:"m", length: "full", useNative:false, timezone:"local"})
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"af-ZA", date:"m", length: "full", useNative:false, timezone:"local"})
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
         test.equal(value[0], "Januarie");
         test.equal(value[1], "Februarie");
@@ -5072,9 +5253,10 @@ module.exports.testmonthtranslation = {
         test.equal(value[10], "November");
         test.equal(value[11], "Desember");
 
+        var fmt = new DateFmt({locale:"af-ZA", date:"m", length: "medium", useNative:false, timezone:"local"})
+
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"af-ZA", date:"m", length: "medium", useNative:false, timezone:"local"})
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
         test.equal(value[0], "Jan.");
         test.equal(value[1], "Feb.");
@@ -5097,10 +5279,10 @@ module.exports.testmonthtranslation = {
         // full, long: MMMM
         // medium: MMM
         // short: MM
-
+        var value = [], i;
+        var fmt = new DateFmt({locale:"am-ET", date:"m", length: "full", useNative:false, timezone:"local"})
         for (i=0; i < 13; i++) {
-            fmt[i] = new DateFmt({locale:"am-ET", date:"m", length: "full", useNative:false, timezone:"local"})
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"ethiopic"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"ethiopic"}));
         }
         test.equal(value[0], "መስከረም");
         test.equal(value[1], "ጥቅምት");
@@ -5116,9 +5298,9 @@ module.exports.testmonthtranslation = {
         test.equal(value[11], "ነሐሴ");
         test.equal(value[12], "ጳጉሜን");
 
+        var fmt = new DateFmt({locale:"am-ET", date:"m", length: "medium", useNative:false, timezone:"local"})
         for (i=0; i < 13; i++) {
-            fmt[i] = new DateFmt({locale:"am-ET", date:"m", length: "medium", useNative:false, timezone:"local"})
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"ethiopic"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"ethiopic"}));
         }
         test.equal(value[0], "መስከረም");
         test.equal(value[1], "ጥቅምት");
@@ -5142,9 +5324,10 @@ module.exports.testmonthtranslation = {
         // medium: MMM
         // short: M
 
+        var value = [], i;
+        var fmt = new DateFmt({locale:"ha-Latn-NG", date:"m", length: "full", useNative:false, timezone:"local"})
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"ha-Latn-NG", date:"m", length: "full", useNative:false, timezone:"local"})
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
         test.equal(value[0], "Janairu");
         test.equal(value[1], "Faburairu");
@@ -5159,9 +5342,10 @@ module.exports.testmonthtranslation = {
         test.equal(value[10], "Nuwamba");
         test.equal(value[11], "Disamba");
 
+        var fmt = new DateFmt({locale:"ha-Latn-NG", date:"m", length: "medium", useNative:false, timezone:"local"})
+
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"ha-Latn-NG", date:"m", length: "medium", useNative:false, timezone:"local"})
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
         test.equal(value[0], "Jan");
         test.equal(value[1], "Fab");
@@ -5185,9 +5369,10 @@ module.exports.testmonthtranslation = {
         // medium: MMM
         // short: M
 
+        var value = [], i;
+        var fmt = new DateFmt({locale:"or-IN", date:"m", length: "full", useNative:false, timezone:"local"});
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"or-IN", date:"m", length: "full", useNative:false, timezone:"local"});
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
         test.equal(value[0], "ଜାନୁଆରୀ");
         test.equal(value[1], "ଫେବୃଆରୀ");
@@ -5202,9 +5387,10 @@ module.exports.testmonthtranslation = {
         test.equal(value[10], "ନଭେମ୍ବର");
         test.equal(value[11], "ଡିସେମ୍ବର");
 
+        var fmt = new DateFmt({locale:"or-IN", date:"m", length: "medium", useNative:false, timezone:"local"});
+
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"or-IN", date:"m", length: "medium", useNative:false, timezone:"local"});
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
         
         test.equal(value[0],"ଜାନୁଆରୀ");
@@ -5229,9 +5415,10 @@ module.exports.testmonthtranslation = {
         // medium: MMM
         // short: MM
 
+        var value = [], i;
+        var fmt = new DateFmt({locale:"az-Latn-AZ", date:"m", length: "full", useNative:false, timezone:"local"})
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"az-Latn-AZ", date:"m", length: "full", useNative:false, timezone:"local"})
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
         test.equal(value[0], "Yanvar");
         test.equal(value[1], "Fevral");
@@ -5246,9 +5433,10 @@ module.exports.testmonthtranslation = {
         test.equal(value[10], "Noyabr");
         test.equal(value[11], "Dekabr");
 
+        var fmt = new DateFmt({locale:"az-Latn-AZ", date:"m", length: "medium", useNative:false, timezone:"local"})
+
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"az-Latn-AZ", date:"m", length: "medium", useNative:false, timezone:"local"})
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
         test.equal(value[0], "yan");
         test.equal(value[1], "fev");
@@ -5272,9 +5460,10 @@ module.exports.testmonthtranslation = {
         // medium: MMM
         // short: M
 
+        var value = [], i;
+        var fmt = new DateFmt({locale:"km-KH", date:"m", length: "full", useNative:false, timezone:"local"})
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"km-KH", date:"m", length: "full", useNative:false, timezone:"local"})
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
         test.equal(value[0], "មករា");
         test.equal(value[1], "កុម្ភៈ");
@@ -5289,9 +5478,10 @@ module.exports.testmonthtranslation = {
         test.equal(value[10], "វិច្ឆិកា");
         test.equal(value[11], "ធ្នូ");
 
+        var fmt = new DateFmt({locale:"km-KH", date:"m", length: "medium", useNative:false, timezone:"local"})
+
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"km-KH", date:"m", length: "medium", useNative:false, timezone:"local"})
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
         test.equal(value[0], "មករា");
         test.equal(value[1], "កុម្ភៈ");
@@ -5315,9 +5505,10 @@ module.exports.testmonthtranslation = {
         // medium: MMM
         // short: MM
 
+        var value = [], i;
+        var fmt = new DateFmt({locale:"si-LK", date:"m", length: "full", useNative:false, timezone:"local"})
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"si-LK", date:"m", length: "full", useNative:false, timezone:"local"})
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
         test.equal(value[0], "ජනවාරි");
         test.equal(value[1], "පෙබරවාරි");
@@ -5332,9 +5523,10 @@ module.exports.testmonthtranslation = {
         test.equal(value[10], "නොවැම්බර්");
         test.equal(value[11], "දෙසැම්බර්");
 
+        var fmt = new DateFmt({locale:"si-LK", date:"m", length: "medium", useNative:false, timezone:"local"})
+
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"si-LK", date:"m", length: "medium", useNative:false, timezone:"local"})
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
         test.equal(value[0], "ජන");
         test.equal(value[1], "පෙබ");
@@ -5358,9 +5550,10 @@ module.exports.testmonthtranslation = {
         // medium: MM
         // short: M
 
+        var value = [], i;
+        var fmt = new DateFmt({locale:"ar-AE", date:"m", length: "full", useNative:false, timezone:"local"});
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"ar-AE", date:"m", length: "full", useNative:false, timezone:"local"});
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
         test.equal(value[0], "يناير");
         test.equal(value[1], "فبراير");
@@ -5384,9 +5577,10 @@ module.exports.testmonthtranslation = {
         // medium: MM
         // short: M
 
+        var value = [], i;
+        var fmt = new DateFmt({locale:"ar-BH", date:"m", length: "full", useNative:false, timezone:"local"});
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"ar-BH", date:"m", length: "full", useNative:false, timezone:"local"});
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
         test.equal(value[0], "يناير");
         test.equal(value[1], "فبراير");
@@ -5410,9 +5604,10 @@ module.exports.testmonthtranslation = {
         // medium: MM
         // short: M
 
+        var value = [], i;
+        var fmt = new DateFmt({locale:"ar-DJ", date:"m", length: "full", useNative:false, timezone:"local"})
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"ar-DJ", date:"m", length: "full", useNative:false, timezone:"local"})
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
         test.equal(value[0], "يناير");
         test.equal(value[1], "فبراير");
@@ -5436,9 +5631,10 @@ module.exports.testmonthtranslation = {
         // medium: MM
         // short: M
 
+        var value = [], i;
+        var fmt = new DateFmt({locale:"ar-DZ", date:"m", length: "full", useNative:false, timezone:"local"});
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"ar-DZ", date:"m", length: "full", useNative:false, timezone:"local"});
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
         test.equal(value[0], "جانفي");
         test.equal(value[1], "فيفري");
@@ -5462,9 +5658,10 @@ module.exports.testmonthtranslation = {
         // medium: MM
         // short: M
 
+        var value = [], i;
+        var fmt = new DateFmt({locale:"ar-JO", date:"m", length: "full", useNative:false, timezone:"local"});
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"ar-JO", date:"m", length: "full", useNative:false, timezone:"local"});
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
         test.equal(value[0], "كانون الثاني");
         test.equal(value[1], "شباط");
@@ -5488,9 +5685,10 @@ module.exports.testmonthtranslation = {
         // medium: MM
         // short: M
 
+        var value = [], i;
+        var fmt = new DateFmt({locale:"ar-KW", date:"m", length: "full", useNative:false, timezone:"local"});
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"ar-KW", date:"m", length: "full", useNative:false, timezone:"local"});
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
         test.equal(value[0], "يناير");
         test.equal(value[1], "فبراير");
@@ -5514,9 +5712,10 @@ module.exports.testmonthtranslation = {
         // medium: MM
         // short: M
 
+        var value = [], i;
+        var fmt = new DateFmt({locale:"ar-LB", date:"m", length: "full", useNative:false, timezone:"local"})
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"ar-LB", date:"m", length: "full", useNative:false, timezone:"local"})
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
         test.equal(value[0], "كانون الثاني");
         test.equal(value[1], "شباط");
@@ -5540,9 +5739,10 @@ module.exports.testmonthtranslation = {
         // medium: MM
         // short: M
 
+        var value = [], i;
+        var fmt = new DateFmt({locale:"ar-LY", date:"m", length: "full", useNative:false, timezone:"local"});
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"ar-LY", date:"m", length: "full", useNative:false, timezone:"local"});
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
         test.equal(value[0], "يناير");
         test.equal(value[1], "فبراير");
@@ -5566,9 +5766,10 @@ module.exports.testmonthtranslation = {
         // medium: MM
         // short: M
 
+        var value = [], i;
+        var fmt = new DateFmt({locale:"ar-MR", date:"m", length: "full", useNative:false, timezone:"local"})
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"ar-MR", date:"m", length: "full", useNative:false, timezone:"local"})
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
         test.equal(value[0], "يناير");
         test.equal(value[1], "فبراير");
@@ -5592,9 +5793,10 @@ module.exports.testmonthtranslation = {
         // medium: MM
         // short: M
 
+        var value = [], i;
+        var fmt = new DateFmt({locale:"ar-OM", date:"m", length: "full", useNative:false, timezone:"local"});
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"ar-OM", date:"m", length: "full", useNative:false, timezone:"local"});
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
         test.equal(value[0], "يناير");
         test.equal(value[1], "فبراير");
@@ -5618,9 +5820,10 @@ module.exports.testmonthtranslation = {
         // medium: MM
         // short: M
 
+        var value = [], i;
+        var fmt = new DateFmt({locale:"ar-QA", date:"m", length: "full", useNative:false, timezone:"local"});
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"ar-QA", date:"m", length: "full", useNative:false, timezone:"local"});
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
         test.equal(value[0], "يناير");
         test.equal(value[1], "فبراير");
@@ -5644,9 +5847,10 @@ module.exports.testmonthtranslation = {
         // medium: MM
         // short: M
 
+        var value = [], i;
+        var fmt = new DateFmt({locale:"ar-SA", date:"m", length: "full", useNative:false, timezone:"local"});
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"ar-SA", date:"m", length: "full", useNative:false, timezone:"local"});
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
         test.equal(value[0], "يناير");
         test.equal(value[1], "فبراير");
@@ -5670,9 +5874,10 @@ module.exports.testmonthtranslation = {
         // medium: MM
         // short: M
 
+        var value = [], i;
+        var fmt = new DateFmt({locale:"ar-SD", date:"m", length: "full", useNative:false, timezone:"local"});
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"ar-SD", date:"m", length: "full", useNative:false, timezone:"local"});
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
         test.equal(value[0], "يناير");
         test.equal(value[1], "فبراير");
@@ -5696,9 +5901,10 @@ module.exports.testmonthtranslation = {
         // medium: MM
         // short: M
 
+        var value = [], i;
+        var fmt = new DateFmt({locale:"ar-SY", date:"m", length: "full", useNative:false, timezone:"local"});
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"ar-SY", date:"m", length: "full", useNative:false, timezone:"local"});
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
         test.equal(value[0], "كانون الثاني");
         test.equal(value[1], "شباط");
@@ -5722,9 +5928,10 @@ module.exports.testmonthtranslation = {
         // medium: MM
         // short: M
 
+        var value = [], i;
+        var fmt = new DateFmt({locale:"ar-TN", date:"m", length: "full", useNative:false, timezone:"local"})
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"ar-TN", date:"m", length: "full", useNative:false, timezone:"local"})
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
         test.equal(value[0], "جانفي");
         test.equal(value[1], "فيفري");
@@ -5748,9 +5955,10 @@ module.exports.testmonthtranslation = {
         // medium: MM
         // short: M
 
+        var value = [], i;
+        var fmt = new DateFmt({locale:"ar-YE", date:"m", length: "full", useNative:false, timezone:"local"});
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"ar-YE", date:"m", length: "full", useNative:false, timezone:"local"});
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
         test.equal(value[0], "يناير");
         test.equal(value[1], "فبراير");
@@ -5773,10 +5981,10 @@ module.exports.testmonthtranslation = {
         // full, long: MMMM
         // medium: MMM
         // short: M
-
+        var value = [], i;
+        var fmt = new DateFmt({locale:"en-ET", date:"m", length: "full", useNative:false, timezone:"local"})
         for (i=0; i < 13; i++) {
-            fmt[i] = new DateFmt({locale:"en-ET", date:"m", length: "full", useNative:false, timezone:"local"})
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"ethiopic"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"ethiopic"}));
         }
         test.equal(value[0], "Meskerem");
         test.equal(value[1], "Tekemt");
@@ -5792,9 +6000,10 @@ module.exports.testmonthtranslation = {
         test.equal(value[11], "Nehasse");
         test.equal(value[12], "Pagumen");
 
+        var fmt = new DateFmt({locale:"en-ET", date:"m", length: "medium", useNative:false, timezone:"local"})
+
         for (i=0; i < 13; i++) {
-            fmt[i] = new DateFmt({locale:"en-ET", date:"m", length: "medium", useNative:false, timezone:"local"})
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"ethiopic"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"ethiopic"}));
         }
         test.equal(value[0], "Meskerem");
         test.equal(value[1], "Tekemt");
@@ -5815,9 +6024,11 @@ module.exports.testmonthtranslation = {
     testMonthTranslate_en_GM: function(test) {
         test.expect(12);
 
+        var value = [], i;
+        var fmt = new DateFmt({locale:"en-GM", date:"m", length: "full", useNative:false, timezone:"local"})
+
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"en-GM", date:"m", length: "full", useNative:false, timezone:"local"})
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
         test.equal(value[0], "January");
         test.equal(value[1], "February");
@@ -5837,9 +6048,10 @@ module.exports.testmonthtranslation = {
     testMonthTranslate_en_LR: function(test) {
         test.expect(12);
 
+        var value = [], i;
+        var fmt = new DateFmt({locale:"en-LR", date:"m", length: "full", useNative:false, timezone:"local"})
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"en-LR", date:"m", length: "full", useNative:false, timezone:"local"})
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
         test.equal(value[0], "January");
         test.equal(value[1], "February");
@@ -5859,9 +6071,10 @@ module.exports.testmonthtranslation = {
     testMonthTranslate_en_PK: function(test) {
         test.expect(12);
 
+        var value = [], i;
+        var fmt = new DateFmt({locale:"en-PK", date:"m", length: "full", useNative:false, timezone:"local"})
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"en-PK", date:"m", length: "full", useNative:false, timezone:"local"})
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
         test.equal(value[0], "January");
         test.equal(value[1], "February");
@@ -5881,9 +6094,10 @@ module.exports.testmonthtranslation = {
     testMonthTranslate_en_RW: function(test) {
         test.expect(12);
 
+        var value = [], i;
+        var fmt = new DateFmt({locale:"en-RW", date:"m", length: "full", useNative:false, timezone:"local"})
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"en-RW", date:"m", length: "full", useNative:false, timezone:"local"})
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
         test.equal(value[0], "January");
         test.equal(value[1], "February");
@@ -5903,9 +6117,10 @@ module.exports.testmonthtranslation = {
     testMonthTranslate_en_SD: function(test) {
         test.expect(12);
 
+        var value = [], i;
+        var fmt = new DateFmt({locale:"en-SD", date:"m", length: "full", useNative:false, timezone:"local"});
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"en-SD", date:"m", length: "full", useNative:false, timezone:"local"});
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
         test.equal(value[0], "January");
         test.equal(value[1], "February");
@@ -5925,9 +6140,10 @@ module.exports.testmonthtranslation = {
     testMonthTranslate_en_SL: function(test) {
         test.expect(12);
 
+        var value = [], i;
+        var fmt = new DateFmt({locale:"en-SL", date:"m", length: "full", useNative:false, timezone:"local"})
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"en-SL", date:"m", length: "full", useNative:false, timezone:"local"})
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
         test.equal(value[0], "January");
         test.equal(value[1], "February");
@@ -5947,9 +6163,10 @@ module.exports.testmonthtranslation = {
     testMonthTranslate_en_TZ: function(test) {
         test.expect(12);
 
+        var value = [], i;
+        var fmt = new DateFmt({locale:"en-TZ", date:"m", length: "full", useNative:false, timezone:"local"})
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"en-TZ", date:"m", length: "full", useNative:false, timezone:"local"})
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
         test.equal(value[0], "January");
         test.equal(value[1], "February");
@@ -5973,9 +6190,10 @@ module.exports.testmonthtranslation = {
         // medium: MMM
         // short: M
 
+        var value = [], i;
+        var fmt = new DateFmt({locale:"es-CR", date:"m", length: "full", useNative:false, timezone:"local"})
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"es-CR", date:"m", length: "full", useNative:false, timezone:"local"})
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
         test.equal(value[0], "enero");
         test.equal(value[1], "febrero");
@@ -5990,9 +6208,10 @@ module.exports.testmonthtranslation = {
         test.equal(value[10], "noviembre");
         test.equal(value[11], "diciembre");
 
+        var fmt = new DateFmt({locale:"es-CR", date:"m", length: "medium", useNative:false, timezone:"local"})
+
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"es-CR", date:"m", length: "medium", useNative:false, timezone:"local"})
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
         test.equal(value[0], "ene.");
         test.equal(value[1], "feb.");
@@ -6012,9 +6231,10 @@ module.exports.testmonthtranslation = {
     testMonthTranslate_es_GQ: function(test) {
         test.expect(24);
 
+        var value = [], i;
+        var fmt = new DateFmt({locale:"es-GQ", date:"m", length: "full", useNative:false, timezone:"local"})
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"es-GQ", date:"m", length: "full", useNative:false, timezone:"local"})
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
         test.equal(value[0], "enero");
         test.equal(value[1], "febrero");
@@ -6029,9 +6249,10 @@ module.exports.testmonthtranslation = {
         test.equal(value[10], "noviembre");
         test.equal(value[11], "diciembre");
 
+        var fmt = new DateFmt({locale:"es-GQ", date:"m", length: "medium", useNative:false, timezone:"local"})
+
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"es-GQ", date:"m", length: "medium", useNative:false, timezone:"local"})
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
         test.equal(value[0], "ene.");
         test.equal(value[1], "feb.");
@@ -6051,9 +6272,10 @@ module.exports.testmonthtranslation = {
     testMonthTranslate_es_PH: function(test) {
         test.expect(24);
 
+        var value = [], i;
+        var fmt = new DateFmt({locale:"es-PH", date:"m", length: "full", useNative:false, timezone:"local"})
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"es-PH", date:"m", length: "full", useNative:false, timezone:"local"})
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
         test.equal(value[0], "enero");
         test.equal(value[1], "febrero");
@@ -6068,9 +6290,10 @@ module.exports.testmonthtranslation = {
         test.equal(value[10], "noviembre");
         test.equal(value[11], "diciembre");
 
+        var fmt = new DateFmt({locale:"es-PH", date:"m", length: "medium", useNative:false, timezone:"local"})
+
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"es-PH", date:"m", length: "medium", useNative:false, timezone:"local"})
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
         test.equal(value[0], "ene.");
         test.equal(value[1], "feb.");
@@ -6094,9 +6317,10 @@ module.exports.testmonthtranslation = {
         // medium: MMM
         // short: MM
 
+        var value = [], i;
+        var fmt = new DateFmt({locale:"fr-BF", date:"m", length: "full", useNative:false, timezone:"local"})
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"fr-BF", date:"m", length: "full", useNative:false, timezone:"local"})
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
         test.equal(value[0], "janvier");
         test.equal(value[1], "février");
@@ -6111,9 +6335,10 @@ module.exports.testmonthtranslation = {
         test.equal(value[10], "novembre");
         test.equal(value[11], "décembre");
 
+        var fmt = new DateFmt({locale:"fr-BF", date:"m", length: "medium", useNative:false, timezone:"local"})
+
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"fr-BF", date:"m", length: "medium", useNative:false, timezone:"local"})
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
         test.equal(value[0], "janv.");
         test.equal(value[1], "févr.");
@@ -6133,9 +6358,10 @@ module.exports.testmonthtranslation = {
     testMonthTranslate_fr_BJ: function(test) {
         test.expect(24);
 
+        var value = [], i;
+        var fmt = new DateFmt({locale:"fr-BJ", date:"m", length: "full", useNative:false, timezone:"local"})
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"fr-BJ", date:"m", length: "full", useNative:false, timezone:"local"})
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
         test.equal(value[0], "janvier");
         test.equal(value[1], "février");
@@ -6150,9 +6376,10 @@ module.exports.testmonthtranslation = {
         test.equal(value[10], "novembre");
         test.equal(value[11], "décembre");
 
+        var fmt = new DateFmt({locale:"fr-BJ", date:"m", length: "medium", useNative:false, timezone:"local"})
+
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"fr-BJ", date:"m", length: "medium", useNative:false, timezone:"local"})
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
         test.equal(value[0], "janv.");
         test.equal(value[1], "févr.");
@@ -6171,9 +6398,10 @@ module.exports.testmonthtranslation = {
     testMonthTranslate_fr_CD: function(test) {
         test.expect(24);
 
+        var value = [], i;
+        var fmt = new DateFmt({locale:"fr-CD", date:"m", length: "full", useNative:false, timezone:"local"})
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"fr-CD", date:"m", length: "full", useNative:false, timezone:"local"})
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
         test.equal(value[0], "janvier");
         test.equal(value[1], "février");
@@ -6188,9 +6416,10 @@ module.exports.testmonthtranslation = {
         test.equal(value[10], "novembre");
         test.equal(value[11], "décembre");
 
+        var fmt = new DateFmt({locale:"fr-CD", date:"m", length: "medium", useNative:false, timezone:"local"})
+
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"fr-CD", date:"m", length: "medium", useNative:false, timezone:"local"})
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
         test.equal(value[0], "janv.");
         test.equal(value[1], "févr.");
@@ -6210,9 +6439,10 @@ module.exports.testmonthtranslation = {
     testMonthTranslate_fr_CF: function(test) {
         test.expect(24);
         
+        var value = [], i;
+        var fmt = new DateFmt({locale:"fr-CF", date:"m", length: "full", useNative:false, timezone:"local"})
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"fr-CF", date:"m", length: "full", useNative:false, timezone:"local"})
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
         test.equal(value[0], "janvier");
         test.equal(value[1], "février");
@@ -6227,9 +6457,10 @@ module.exports.testmonthtranslation = {
         test.equal(value[10], "novembre");
         test.equal(value[11], "décembre");
 
+        var fmt = new DateFmt({locale:"fr-CF", date:"m", length: "medium", useNative:false, timezone:"local"})
+
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"fr-CF", date:"m", length: "medium", useNative:false, timezone:"local"})
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
         test.equal(value[0], "janv.");
         test.equal(value[1], "févr.");
@@ -6249,9 +6480,10 @@ module.exports.testmonthtranslation = {
     testMonthTranslate_fr_CG: function(test) {
         test.expect(24);
 
+        var value = [], i;
+        var fmt = new DateFmt({locale:"fr-CG", date:"m", length: "full", useNative:false, timezone:"local"})
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"fr-CG", date:"m", length: "full", useNative:false, timezone:"local"})
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
         test.equal(value[0], "janvier");
         test.equal(value[1], "février");
@@ -6266,9 +6498,10 @@ module.exports.testmonthtranslation = {
         test.equal(value[10], "novembre");
         test.equal(value[11], "décembre");
 
+        var fmt = new DateFmt({locale:"fr-CG", date:"m", length: "medium", useNative:false, timezone:"local"})
+
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"fr-CG", date:"m", length: "medium", useNative:false, timezone:"local"})
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
         test.equal(value[0], "janv.");
         test.equal(value[1], "févr.");
@@ -6288,9 +6521,10 @@ module.exports.testmonthtranslation = {
     testMonthTranslate_fr_CI: function(test) {
         test.expect(24);
 
+        var value = [], i;
+        var fmt = new DateFmt({locale:"fr-CI", date:"m", length: "full", useNative:false, timezone:"local"})
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"fr-CI", date:"m", length: "full", useNative:false, timezone:"local"})
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
         test.equal(value[0], "janvier");
         test.equal(value[1], "février");
@@ -6305,9 +6539,10 @@ module.exports.testmonthtranslation = {
         test.equal(value[10], "novembre");
         test.equal(value[11], "décembre");
 
+        var fmt = new DateFmt({locale:"fr-CI", date:"m", length: "medium", useNative:false, timezone:"local"})
+
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"fr-CI", date:"m", length: "medium", useNative:false, timezone:"local"})
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
         test.equal(value[0], "janv.");
         test.equal(value[1], "févr.");
@@ -6327,9 +6562,10 @@ module.exports.testmonthtranslation = {
     testMonthTranslate_fr_CM: function(test) {
         test.expect(24);
 
+        var value = [], i;
+        var fmt = new DateFmt({locale:"fr-CM", date:"m", length: "full", useNative:false, timezone:"local"})
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"fr-CM", date:"m", length: "full", useNative:false, timezone:"local"})
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
         test.equal(value[0], "janvier");
         test.equal(value[1], "février");
@@ -6344,9 +6580,10 @@ module.exports.testmonthtranslation = {
         test.equal(value[10], "novembre");
         test.equal(value[11], "décembre");
 
+        var fmt = new DateFmt({locale:"fr-CM", date:"m", length: "medium", useNative:false, timezone:"local"})
+
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"fr-CM", date:"m", length: "medium", useNative:false, timezone:"local"})
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
         test.equal(value[0], "janv.");
         test.equal(value[1], "févr.");
@@ -6366,9 +6603,10 @@ module.exports.testmonthtranslation = {
     testMonthTranslate_fr_GQ: function(test) {
         test.expect(24);
 
+        var value = [], i;
+        var fmt = new DateFmt({locale:"fr-GQ", date:"m", length: "full", useNative:false, timezone:"local"})
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"fr-GQ", date:"m", length: "full", useNative:false, timezone:"local"})
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
         test.equal(value[0], "janvier");
         test.equal(value[1], "février");
@@ -6383,9 +6621,10 @@ module.exports.testmonthtranslation = {
         test.equal(value[10], "novembre");
         test.equal(value[11], "décembre");
 
+        var fmt = new DateFmt({locale:"fr-GQ", date:"m", length: "medium", useNative:false, timezone:"local"})
+
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"fr-GQ", date:"m", length: "medium", useNative:false, timezone:"local"})
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
         test.equal(value[0], "janv.");
         test.equal(value[1], "févr.");
@@ -6405,9 +6644,10 @@ module.exports.testmonthtranslation = {
     testMonthTranslate_fr_DJ: function(test) {
         test.expect(24);
 
+        var value = [], i;
+        var fmt = new DateFmt({locale:"fr-DJ", date:"m", length: "full", useNative:false, timezone:"local"})
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"fr-DJ", date:"m", length: "full", useNative:false, timezone:"local"})
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
         test.equal(value[0], "janvier");
         test.equal(value[1], "février");
@@ -6422,9 +6662,10 @@ module.exports.testmonthtranslation = {
         test.equal(value[10], "novembre");
         test.equal(value[11], "décembre");
 
+        var fmt = new DateFmt({locale:"fr-DJ", date:"m", length: "medium", useNative:false, timezone:"local"})
+
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"fr-DJ", date:"m", length: "medium", useNative:false, timezone:"local"})
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
         test.equal(value[0], "janv.");
         test.equal(value[1], "févr.");
@@ -6444,9 +6685,10 @@ module.exports.testmonthtranslation = {
     testMonthTranslate_fr_DZ: function(test) {
         test.expect(24);
 
+        var value = [], i;
+        var fmt = new DateFmt({locale:"fr-DZ", date:"m", length: "full", useNative:false, timezone:"local"});
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"fr-DZ", date:"m", length: "full", useNative:false, timezone:"local"});
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
         test.equal(value[0], "janvier");
         test.equal(value[1], "février");
@@ -6461,9 +6703,10 @@ module.exports.testmonthtranslation = {
         test.equal(value[10], "novembre");
         test.equal(value[11], "décembre");
 
+        var fmt = new DateFmt({locale:"fr-DZ", date:"m", length: "medium", useNative:false, timezone:"local"})
+
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"fr-DZ", date:"m", length: "medium", useNative:false, timezone:"local"})
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
         test.equal(value[0], "janv.");
         test.equal(value[1], "févr.");
@@ -6483,9 +6726,10 @@ module.exports.testmonthtranslation = {
     testMonthTranslate_fr_GA: function(test) {
         test.expect(24);
 
+        var value = [], i;
+        var fmt = new DateFmt({locale:"fr-GA", date:"m", length: "full", useNative:false, timezone:"local"})
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"fr-GA", date:"m", length: "full", useNative:false, timezone:"local"})
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
         test.equal(value[0], "janvier");
         test.equal(value[1], "février");
@@ -6500,9 +6744,10 @@ module.exports.testmonthtranslation = {
         test.equal(value[10], "novembre");
         test.equal(value[11], "décembre");
 
+        var fmt = new DateFmt({locale:"fr-GA", date:"m", length: "medium", useNative:false, timezone:"local"})
+
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"fr-GA", date:"m", length: "medium", useNative:false, timezone:"local"})
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
         test.equal(value[0], "janv.");
         test.equal(value[1], "févr.");
@@ -6522,9 +6767,10 @@ module.exports.testmonthtranslation = {
     testMonthTranslate_fr_GN: function(test) {
         test.expect(24);
 
+        var value = [], i;
+        var fmt = new DateFmt({locale:"fr-GN", date:"m", length: "full", useNative:false, timezone:"local"})
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"fr-GN", date:"m", length: "full", useNative:false, timezone:"local"})
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
         test.equal(value[0], "janvier");
         test.equal(value[1], "février");
@@ -6539,9 +6785,10 @@ module.exports.testmonthtranslation = {
         test.equal(value[10], "novembre");
         test.equal(value[11], "décembre");
 
+        var fmt = new DateFmt({locale:"fr-GN", date:"m", length: "medium", useNative:false, timezone:"local"})
+
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"fr-GN", date:"m", length: "medium", useNative:false, timezone:"local"})
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
         test.equal(value[0], "janv.");
         test.equal(value[1], "févr.");
@@ -6561,9 +6808,10 @@ module.exports.testmonthtranslation = {
     testMonthTranslate_fr_LB: function(test) {
         test.expect(24);
 
+        var value = [], i;
+        var fmt = new DateFmt({locale:"fr-LB", date:"m", length: "full", useNative:false, timezone:"local"})
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"fr-LB", date:"m", length: "full", useNative:false, timezone:"local"})
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
         test.equal(value[0], "janvier");
         test.equal(value[1], "février");
@@ -6578,9 +6826,10 @@ module.exports.testmonthtranslation = {
         test.equal(value[10], "novembre");
         test.equal(value[11], "décembre");
 
+        var fmt = new DateFmt({locale:"fr-LB", date:"m", length: "medium", useNative:false, timezone:"local"})
+
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"fr-LB", date:"m", length: "medium", useNative:false, timezone:"local"})
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
         test.equal(value[0], "janv.");
         test.equal(value[1], "févr.");
@@ -6600,9 +6849,10 @@ module.exports.testmonthtranslation = {
     testMonthTranslate_fr_ML: function(test) {
         test.expect(24);
 
+        var value = [], i;
+        var fmt = new DateFmt({locale:"fr-ML", date:"m", length: "full", useNative:false, timezone:"local"})
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"fr-ML", date:"m", length: "full", useNative:false, timezone:"local"})
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
         test.equal(value[0], "janvier");
         test.equal(value[1], "février");
@@ -6617,9 +6867,10 @@ module.exports.testmonthtranslation = {
         test.equal(value[10], "novembre");
         test.equal(value[11], "décembre");
 
+        var fmt = new DateFmt({locale:"fr-ML", date:"m", length: "medium", useNative:false, timezone:"local"})
+
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"fr-ML", date:"m", length: "medium", useNative:false, timezone:"local"})
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
         test.equal(value[0], "janv.");
         test.equal(value[1], "févr.");
@@ -6639,9 +6890,10 @@ module.exports.testmonthtranslation = {
     testMonthTranslate_fr_RW: function(test) {
         test.expect(24);
 
+        var value = [], i;
+        var fmt = new DateFmt({locale:"fr-RW", date:"m", length: "full", useNative:false, timezone:"local"})
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"fr-RW", date:"m", length: "full", useNative:false, timezone:"local"})
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
         test.equal(value[0], "janvier");
         test.equal(value[1], "février");
@@ -6656,9 +6908,10 @@ module.exports.testmonthtranslation = {
         test.equal(value[10], "novembre");
         test.equal(value[11], "décembre");
 
+        var fmt = new DateFmt({locale:"fr-RW", date:"m", length: "medium", useNative:false, timezone:"local"})
+
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"fr-RW", date:"m", length: "medium", useNative:false, timezone:"local"})
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
         test.equal(value[0], "janv.");
         test.equal(value[1], "févr.");
@@ -6678,9 +6931,10 @@ module.exports.testmonthtranslation = {
     testMonthTranslate_fr_SN: function(test) {
         test.expect(24);
 
+        var value = [], i;
+        var fmt = new DateFmt({locale:"fr-SN", date:"m", length: "full", useNative:false, timezone:"local"})
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"fr-SN", date:"m", length: "full", useNative:false, timezone:"local"})
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
         test.equal(value[0], "janvier");
         test.equal(value[1], "février");
@@ -6695,9 +6949,10 @@ module.exports.testmonthtranslation = {
         test.equal(value[10], "novembre");
         test.equal(value[11], "décembre");
 
+        var fmt = new DateFmt({locale:"fr-SN", date:"m", length: "medium", useNative:false, timezone:"local"})
+
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"fr-SN", date:"m", length: "medium", useNative:false, timezone:"local"})
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
         test.equal(value[0], "janv.");
         test.equal(value[1], "févr.");
@@ -6717,9 +6972,10 @@ module.exports.testmonthtranslation = {
     testMonthTranslate_fr_TG: function(test) {
         test.expect(24);
 
+        var value = [], i;
+        var fmt = new DateFmt({locale:"fr-TG", date:"m", length: "full", useNative:false, timezone:"local"})
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"fr-TG", date:"m", length: "full", useNative:false, timezone:"local"})
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
         test.equal(value[0], "janvier");
         test.equal(value[1], "février");
@@ -6734,9 +6990,10 @@ module.exports.testmonthtranslation = {
         test.equal(value[10], "novembre");
         test.equal(value[11], "décembre");
 
+        var fmt = new DateFmt({locale:"fr-TG", date:"m", length: "medium", useNative:false, timezone:"local"})
+
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"fr-TG", date:"m", length: "medium", useNative:false, timezone:"local"})
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
         test.equal(value[0], "janv.");
         test.equal(value[1], "févr.");
@@ -6760,9 +7017,10 @@ module.exports.testmonthtranslation = {
         // medium: MMM
         // short: MM
 
+        var value = [], i;
+        var fmt = new DateFmt({locale:"ms-Latn-SG", date:"m", length: "full", useNative:false, timezone:"local"})
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"ms-Latn-SG", date:"m", length: "full", useNative:false, timezone:"local"})
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
         test.equal(value[0], "Januari");
         test.equal(value[1], "Februari");
@@ -6777,9 +7035,10 @@ module.exports.testmonthtranslation = {
         test.equal(value[10], "November");
         test.equal(value[11], "Disember");
 
+        var fmt = new DateFmt({locale:"ms-Latn-SG", date:"m", length: "medium", useNative:false, timezone:"local"})
+
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"ms-Latn-SG", date:"m", length: "medium", useNative:false, timezone:"local"})
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
         test.equal(value[0], "Jan");
         test.equal(value[1], "Feb");
@@ -6803,9 +7062,10 @@ module.exports.testmonthtranslation = {
         // medium: MMM
         // short: M
 
+        var value = [], i;
+        var fmt = new DateFmt({locale:"pa-PK", date:"m", length: "full", useNative:false, timezone:"local"})
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"pa-PK", date:"m", length: "full", useNative:false, timezone:"local"})
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
         test.equal(value[0], "ਜਨਵਰੀ");
         test.equal(value[1], "ਫ਼ਰਵਰੀ");
@@ -6820,9 +7080,10 @@ module.exports.testmonthtranslation = {
         test.equal(value[10], "ਨਵੰਬਰ");
         test.equal(value[11], "ਦਸੰਬਰ");
 
+        var fmt = new DateFmt({locale:"pa-PK", date:"m", length: "medium", useNative:false, timezone:"local"})
+
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"pa-PK", date:"m", length: "medium", useNative:false, timezone:"local"})
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
         test.equal(value[0], "ਜਨ");
         test.equal(value[1], "ਫ਼ਰ");
@@ -6846,9 +7107,10 @@ module.exports.testmonthtranslation = {
         // medium: MM
         // short: MM
 
+        var value = [], i;
+        var fmt = new DateFmt({locale:"pt-AO", date:"m", length: "full", useNative:false, timezone:"local"})
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"pt-AO", date:"m", length: "full", useNative:false, timezone:"local"})
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
         test.equal(value[0], "janeiro");
         test.equal(value[1], "fevereiro");
@@ -6872,9 +7134,10 @@ module.exports.testmonthtranslation = {
         // medium: MM
         // short: MM
 
+        var value = [], i;
+        var fmt = new DateFmt({locale:"pt-GQ", date:"m", length: "full", useNative:false, timezone:"local"})
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"pt-GQ", date:"m", length: "full", useNative:false, timezone:"local"})
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
         test.equal(value[0], "janeiro");
         test.equal(value[1], "fevereiro");
@@ -6898,9 +7161,10 @@ module.exports.testmonthtranslation = {
         // medium: MM
         // short: MM
 
+        var value = [], i;
+        var fmt = new DateFmt({locale:"pt-CV", date:"m", length: "full", useNative:false, timezone:"local"})
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"pt-CV", date:"m", length: "full", useNative:false, timezone:"local"})
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
         test.equal(value[0], "janeiro");
         test.equal(value[1], "fevereiro");
@@ -6924,9 +7188,10 @@ module.exports.testmonthtranslation = {
         // medium: MMM
         // short: M
 
+        var value = [], i;
+        var fmt = new DateFmt({locale:"ur-PK", date:"m", length: "full", useNative:false, timezone:"local"})
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"ur-PK", date:"m", length: "full", useNative:false, timezone:"local"})
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
         test.equal(value[0], "جنوری");
         test.equal(value[1], "فروری");
@@ -6941,9 +7206,10 @@ module.exports.testmonthtranslation = {
         test.equal(value[10], "نومبر");
         test.equal(value[11], "دسمبر");
 
+        var fmt = new DateFmt({locale:"ur-PK", date:"m", length: "medium", useNative:false, timezone:"local"})
+
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"ur-PK", date:"m", length: "medium", useNative:false, timezone:"local"})
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
         test.equal(value[0], "جنوری");
         test.equal(value[1], "فروری");
@@ -6963,9 +7229,10 @@ module.exports.testmonthtranslation = {
     testMonthTranslate_zh_Hans_SG: function(test) {
         test.expect(12);
 
+        var value = [], i;
+        var fmt = new DateFmt({locale:"zh-Hans-SG", date:"m", length: "full", useNative:false, timezone:"local"})
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"zh-Hans-SG", date:"m", length: "full", useNative:false, timezone:"local"})
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
         test.equal(value[0], "1月");
         test.equal(value[1], "2月");
@@ -6985,9 +7252,10 @@ module.exports.testmonthtranslation = {
     testMonthTranslate_zh_Hans_MY: function(test) {
         test.expect(12);
 
+        var value = [], i;
+        var fmt = new DateFmt({locale:"zh-Hans-MY", date:"m", length: "full", useNative:false, timezone:"local"})
         for (i=0; i < 12; i++) {
-            fmt[i] = new DateFmt({locale:"zh-Hans-MY", date:"m", length: "full", useNative:false, timezone:"local"})
-            value[i] = fmt[i].format(DateFactory({month:i+1, type:"gregorian"}));
+            value[i] = fmt.format(DateFactory({month:i+1, type:"gregorian"}));
         }
         test.equal(value[0], "1月");
         test.equal(value[1], "2月");

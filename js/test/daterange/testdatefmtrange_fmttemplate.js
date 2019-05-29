@@ -24,40 +24,47 @@ if (typeof(ilib) === "undefined") {
     var ilib = require("../../lib/ilib.js");
 }
 
+function setVariables() {
+    var obj = {};
+    var length = ["full", "long", "medium", "short"];
+    var abbrLength = ["f", "l", "m", "s"];
+
+    obj.fullLength = length;
+    obj.abbrLength = abbrLength;
+
+    return obj;
+}
+
 module.exports.testdaterangefmt = {
     setUp: function(callback) {
         ilib.clearCache();
-
-        length = ["full", "long", "medium", "short"];
-        abbrLength = ["f", "l", "m", "s"];
-
-        fmt = [];
-        templatec00 = [];
-        templatec01 = [];
-        templatec02 = [];
-        templatec03 = [];
-        templatec10 = [];
-        templatec11 = [];
-        templatec12 = [];
-        templatec20 = [];
-        templatec30 = [];
-        
         callback();
     },
     testDateRngFmt_ar_EG: function(test) {
         test.expect(36);
 
-        for (i=0; i < 4; i++) {
-            fmt[i] = new DateRngFmt({locale:"ar-EG", length: length[i]})
-            templatec00[i] = fmt[i].dateFmt.formats.range["c00"][abbrLength[i]];
-            templatec01[i] = fmt[i].dateFmt.formats.range["c01"][abbrLength[i]];
-            templatec02[i] = fmt[i].dateFmt.formats.range["c02"][abbrLength[i]];
-            templatec03[i] = fmt[i].dateFmt.formats.range["c03"][abbrLength[i]];
-            templatec10[i] = fmt[i].dateFmt.formats.range["c10"][abbrLength[i]];
-            templatec11[i] = fmt[i].dateFmt.formats.range["c11"][abbrLength[i]];
-            templatec12[i] = fmt[i].dateFmt.formats.range["c12"][abbrLength[i]];
-            templatec20[i] = fmt[i].dateFmt.formats.range["c20"][abbrLength[i]];
-            templatec30[i] = fmt[i].dateFmt.formats.range["c30"][abbrLength[i]];
+        var fmt;
+        var data = setVariables();
+
+        var length = data["fullLength"];
+        var abbrLength = data["abbrLength"];
+
+
+        var templatec00 = [], templatec01 = [],templatec02 = [],templatec03 = [];
+        var templatec10 = [], templatec11 = [],templatec12 = [],templatec20 = [];
+        var templatec30 = [];
+
+        for (var i=0; i < 4; i++) {
+            fmt = new DateRngFmt({locale:"ar-EG", length: length[i]});
+            templatec00.push(fmt.dateFmt.formats.range["c00"][abbrLength[i]]);
+            templatec01.push(fmt.dateFmt.formats.range["c01"][abbrLength[i]]);
+            templatec02.push(fmt.dateFmt.formats.range["c02"][abbrLength[i]]);
+            templatec03.push(fmt.dateFmt.formats.range["c03"][abbrLength[i]]);
+            templatec10.push(fmt.dateFmt.formats.range["c10"][abbrLength[i]]);
+            templatec11.push(fmt.dateFmt.formats.range["c11"][abbrLength[i]]);
+            templatec12.push(fmt.dateFmt.formats.range["c12"][abbrLength[i]]);
+            templatec20.push(fmt.dateFmt.formats.range["c20"][abbrLength[i]]);
+            templatec30.push(fmt.dateFmt.formats.range["c30"][abbrLength[i]]);
         }
 
         test.equal(templatec00[0], '‏{sd} {sm} {sy} {st} – {et}'); // CLDR 34 change
@@ -109,19 +116,25 @@ module.exports.testdaterangefmt = {
     },
     testDateRngFmt_ar_IQ: function(test) {
         test.expect(36);
+        var fmt;
+        var data = setVariables();
+        var length = data["fullLength"];
+        var abbrLength = data["abbrLength"];
 
-        for (i=0; i < 4; i++) {
-            fmt[i] = new DateRngFmt({locale:"ar-IQ", length: length[i]})
-            templatec00[i] = fmt[i].dateFmt.formats.range["c00"][abbrLength[i]];
-            templatec01[i] = fmt[i].dateFmt.formats.range["c01"][abbrLength[i]];
-            templatec02[i] = fmt[i].dateFmt.formats.range["c02"][abbrLength[i]];
-            templatec03[i] = fmt[i].dateFmt.formats.range["c03"][abbrLength[i]];
-            templatec10[i] = fmt[i].dateFmt.formats.range["c10"][abbrLength[i]];
-
-            templatec11[i] = fmt[i].dateFmt.formats.range["c11"][abbrLength[i]];
-            templatec12[i] = fmt[i].dateFmt.formats.range["c12"][abbrLength[i]];
-            templatec20[i] = fmt[i].dateFmt.formats.range["c20"][abbrLength[i]];
-            templatec30[i] = fmt[i].dateFmt.formats.range["c30"][abbrLength[i]];
+        var templatec00 = [],templatec01 = [],templatec02 = [],templatec03 = [];
+        var templatec10 = [],templatec11 = [],templatec12 = [],templatec20 = [];
+        var templatec30 = [];
+        for (var i=0; i < 4; i++) {
+            fmt = new DateRngFmt({locale:"ar-IQ", length: length[i]});
+            templatec00.push(fmt.dateFmt.formats.range["c00"][abbrLength[i]]);
+            templatec01.push(fmt.dateFmt.formats.range["c01"][abbrLength[i]]);
+            templatec02.push(fmt.dateFmt.formats.range["c02"][abbrLength[i]]);
+            templatec03.push(fmt.dateFmt.formats.range["c03"][abbrLength[i]]);
+            templatec10.push(fmt.dateFmt.formats.range["c10"][abbrLength[i]]);
+            templatec11.push(fmt.dateFmt.formats.range["c11"][abbrLength[i]]);
+            templatec12.push(fmt.dateFmt.formats.range["c12"][abbrLength[i]]);
+            templatec20.push(fmt.dateFmt.formats.range["c20"][abbrLength[i]]);
+            templatec30.push(fmt.dateFmt.formats.range["c30"][abbrLength[i]]);
         }
 
         test.equal(templatec00[0], '‏{sd} {sm} {sy} {st} – {et}');
@@ -173,18 +186,25 @@ module.exports.testdaterangefmt = {
     },
     testDateRngFmt_ar_MA: function(test) {
         test.expect(36);
-        for (i=0; i < 4; i++) {
-            fmt[i] = new DateRngFmt({locale:"ar-MA", length: length[i]})
-            templatec00[i] = fmt[i].dateFmt.formats.range["c00"][abbrLength[i]];
-            templatec01[i] = fmt[i].dateFmt.formats.range["c01"][abbrLength[i]];
-            templatec02[i] = fmt[i].dateFmt.formats.range["c02"][abbrLength[i]];
-            templatec03[i] = fmt[i].dateFmt.formats.range["c03"][abbrLength[i]];
-            templatec10[i] = fmt[i].dateFmt.formats.range["c10"][abbrLength[i]];
+        var fmt;
+        var data = setVariables();
+        var length = data["fullLength"];
+        var abbrLength = data["abbrLength"];
 
-            templatec11[i] = fmt[i].dateFmt.formats.range["c11"][abbrLength[i]];
-            templatec12[i] = fmt[i].dateFmt.formats.range["c12"][abbrLength[i]];
-            templatec20[i] = fmt[i].dateFmt.formats.range["c20"][abbrLength[i]];
-            templatec30[i] = fmt[i].dateFmt.formats.range["c30"][abbrLength[i]];
+        var templatec00 = [],templatec01 = [],templatec02 = [],templatec03 = [];
+        var templatec10 = [],templatec11 = [],templatec12 = [],templatec20 = [];
+        var templatec30 = [];
+        for (var i=0; i < 4; i++) {
+            fmt = new DateRngFmt({locale:"ar-MA", length: length[i]})
+            templatec00.push(fmt.dateFmt.formats.range["c00"][abbrLength[i]]);
+            templatec01.push(fmt.dateFmt.formats.range["c01"][abbrLength[i]]);
+            templatec02.push(fmt.dateFmt.formats.range["c02"][abbrLength[i]]);
+            templatec03.push(fmt.dateFmt.formats.range["c03"][abbrLength[i]]);
+            templatec10.push(fmt.dateFmt.formats.range["c10"][abbrLength[i]]);
+            templatec11.push(fmt.dateFmt.formats.range["c11"][abbrLength[i]]);
+            templatec12.push(fmt.dateFmt.formats.range["c12"][abbrLength[i]]);
+            templatec20.push(fmt.dateFmt.formats.range["c20"][abbrLength[i]]);
+            templatec30.push(fmt.dateFmt.formats.range["c30"][abbrLength[i]]);
         }
 
          // Bug
@@ -237,18 +257,26 @@ module.exports.testdaterangefmt = {
     },
     testDateRngFmt_as_IN: function(test) {
         test.expect(36);
-        for (i=0; i < 4; i++) {
-            fmt[i] = new DateRngFmt({locale:"as-IN", length: length[i]})
-            templatec00[i] = fmt[i].dateFmt.formats.range["c00"][abbrLength[i]];
-            templatec01[i] = fmt[i].dateFmt.formats.range["c01"][abbrLength[i]];
-            templatec02[i] = fmt[i].dateFmt.formats.range["c02"][abbrLength[i]];
-            templatec03[i] = fmt[i].dateFmt.formats.range["c03"][abbrLength[i]];
-            templatec10[i] = fmt[i].dateFmt.formats.range["c10"][abbrLength[i]];
+        var fmt;
+        var data = setVariables();
+        var length = data["fullLength"];
+        var abbrLength = data["abbrLength"];
 
-            templatec11[i] = fmt[i].dateFmt.formats.range["c11"][abbrLength[i]];
-            templatec12[i] = fmt[i].dateFmt.formats.range["c12"][abbrLength[i]];
-            templatec20[i] = fmt[i].dateFmt.formats.range["c20"][abbrLength[i]];
-            templatec30[i] = fmt[i].dateFmt.formats.range["c30"][abbrLength[i]];
+        var templatec00 = [],templatec01 = [],templatec02 = [],templatec03 = [];
+        var templatec10 = [],templatec11 = [],templatec12 = [],templatec20 = [];
+        var templatec30 = [];
+        for (var i=0; i < 4; i++) {
+            fmt = new DateRngFmt({locale:"as-IN", length: length[i]})
+            templatec00.push(fmt.dateFmt.formats.range["c00"][abbrLength[i]]);
+            templatec01.push(fmt.dateFmt.formats.range["c01"][abbrLength[i]]);
+            templatec02.push(fmt.dateFmt.formats.range["c02"][abbrLength[i]]);
+            templatec03.push(fmt.dateFmt.formats.range["c03"][abbrLength[i]]);
+            templatec10.push(fmt.dateFmt.formats.range["c10"][abbrLength[i]]);
+
+            templatec11.push(fmt.dateFmt.formats.range["c11"][abbrLength[i]]);
+            templatec12.push(fmt.dateFmt.formats.range["c12"][abbrLength[i]]);
+            templatec20.push(fmt.dateFmt.formats.range["c20"][abbrLength[i]]);
+            templatec30.push(fmt.dateFmt.formats.range["c30"][abbrLength[i]]);
         }
 
         test.equal(templatec00[0], '{sd} {sm}, {sy} {st} – {et}');
@@ -300,18 +328,25 @@ module.exports.testdaterangefmt = {
     },
     testDateRngFmt_bg_BG: function(test) {
         test.expect(36);
-        //dmy
-        for (i=0; i < 4; i++) {
-            fmt[i] = new DateRngFmt({locale:"bg-BG", length: length[i]})
-            templatec00[i] = fmt[i].dateFmt.formats.range["c00"][abbrLength[i]];
-            templatec01[i] = fmt[i].dateFmt.formats.range["c01"][abbrLength[i]];
-            templatec02[i] = fmt[i].dateFmt.formats.range["c02"][abbrLength[i]];
-            templatec03[i] = fmt[i].dateFmt.formats.range["c03"][abbrLength[i]];
-            templatec10[i] = fmt[i].dateFmt.formats.range["c10"][abbrLength[i]];
-            templatec11[i] = fmt[i].dateFmt.formats.range["c11"][abbrLength[i]];
-            templatec12[i] = fmt[i].dateFmt.formats.range["c12"][abbrLength[i]];
-            templatec20[i] = fmt[i].dateFmt.formats.range["c20"][abbrLength[i]];
-            templatec30[i] = fmt[i].dateFmt.formats.range["c30"][abbrLength[i]];
+        var fmt;
+        var data = setVariables();
+        var length = data["fullLength"];
+        var abbrLength = data["abbrLength"];
+
+        var templatec00 = [],templatec01 = [],templatec02 = [],templatec03 = [];
+        var templatec10 = [],templatec11 = [],templatec12 = [],templatec20 = [];
+        var templatec30 = [];
+        for (var i=0; i < 4; i++) {
+            fmt = new DateRngFmt({locale:"bg-BG", length: length[i]})
+            templatec00.push(fmt.dateFmt.formats.range["c00"][abbrLength[i]]);
+            templatec01.push(fmt.dateFmt.formats.range["c01"][abbrLength[i]]);
+            templatec02.push(fmt.dateFmt.formats.range["c02"][abbrLength[i]]);
+            templatec03.push(fmt.dateFmt.formats.range["c03"][abbrLength[i]]);
+            templatec10.push(fmt.dateFmt.formats.range["c10"][abbrLength[i]]);
+            templatec11.push(fmt.dateFmt.formats.range["c11"][abbrLength[i]]);
+            templatec12.push(fmt.dateFmt.formats.range["c12"][abbrLength[i]]);
+            templatec20.push(fmt.dateFmt.formats.range["c20"][abbrLength[i]]);
+            templatec30.push(fmt.dateFmt.formats.range["c30"][abbrLength[i]]);
         }
 
         test.equal(templatec00[0], '{sd} {sm} {sy} г., {st} – {et}');
@@ -364,18 +399,25 @@ module.exports.testdaterangefmt = {
     },
     testDateRngFmt_bn_IN: function(test) {
         test.expect(36);
-        //dmy
-        for (i=0; i < 4; i++) {
-            fmt[i] = new DateRngFmt({locale:"bn-IN", length: length[i]})
-            templatec00[i] = fmt[i].dateFmt.formats.range["c00"][abbrLength[i]];
-            templatec01[i] = fmt[i].dateFmt.formats.range["c01"][abbrLength[i]];
-            templatec02[i] = fmt[i].dateFmt.formats.range["c02"][abbrLength[i]];
-            templatec03[i] = fmt[i].dateFmt.formats.range["c03"][abbrLength[i]];
-            templatec10[i] = fmt[i].dateFmt.formats.range["c10"][abbrLength[i]];
-            templatec11[i] = fmt[i].dateFmt.formats.range["c11"][abbrLength[i]];
-            templatec12[i] = fmt[i].dateFmt.formats.range["c12"][abbrLength[i]];
-            templatec20[i] = fmt[i].dateFmt.formats.range["c20"][abbrLength[i]];
-            templatec30[i] = fmt[i].dateFmt.formats.range["c30"][abbrLength[i]];
+        var fmt;
+        var data = setVariables();
+        var length = data["fullLength"];
+        var abbrLength = data["abbrLength"];
+
+        var templatec00 = [],templatec01 = [],templatec02 = [],templatec03 = [];
+        var templatec10 = [],templatec11 = [],templatec12 = [],templatec20 = [];
+        var templatec30 = [];
+        for (var i=0; i < 4; i++) {
+            fmt = new DateRngFmt({locale:"bn-IN", length: length[i]})
+            templatec00.push(fmt.dateFmt.formats.range["c00"][abbrLength[i]]);
+            templatec01.push(fmt.dateFmt.formats.range["c01"][abbrLength[i]]);
+            templatec02.push(fmt.dateFmt.formats.range["c02"][abbrLength[i]]);
+            templatec03.push(fmt.dateFmt.formats.range["c03"][abbrLength[i]]);
+            templatec10.push(fmt.dateFmt.formats.range["c10"][abbrLength[i]]);
+            templatec11.push(fmt.dateFmt.formats.range["c11"][abbrLength[i]]);
+            templatec12.push(fmt.dateFmt.formats.range["c12"][abbrLength[i]]);
+            templatec20.push(fmt.dateFmt.formats.range["c20"][abbrLength[i]]);
+            templatec30.push(fmt.dateFmt.formats.range["c30"][abbrLength[i]]);
         }
 
         test.equal(templatec00[0], '{sd} {sm}, {sy} {st} – {et}');
@@ -427,19 +469,27 @@ module.exports.testdaterangefmt = {
     },
     testDateRngFmt_bs_Latn_BA: function(test) {
         test.expect(36);
+        var fmt;
+        var data = setVariables();
+        var length = data["fullLength"];
+        var abbrLength = data["abbrLength"];
+
+        var templatec00 = [],templatec01 = [],templatec02 = [],templatec03 = [];
+        var templatec10 = [],templatec11 = [],templatec12 = [],templatec20 = [];
+        var templatec30 = [];
 
         //dmy
-        for (i=0; i < 4; i++) {
-            fmt[i] = new DateRngFmt({locale:"bs-Latn-BA", length: length[i]})
-            templatec00[i] = fmt[i].dateFmt.formats.range["c00"][abbrLength[i]];
-            templatec01[i] = fmt[i].dateFmt.formats.range["c01"][abbrLength[i]];
-            templatec02[i] = fmt[i].dateFmt.formats.range["c02"][abbrLength[i]];
-            templatec03[i] = fmt[i].dateFmt.formats.range["c03"][abbrLength[i]];
-            templatec10[i] = fmt[i].dateFmt.formats.range["c10"][abbrLength[i]];
-            templatec11[i] = fmt[i].dateFmt.formats.range["c11"][abbrLength[i]];
-            templatec12[i] = fmt[i].dateFmt.formats.range["c12"][abbrLength[i]];
-            templatec20[i] = fmt[i].dateFmt.formats.range["c20"][abbrLength[i]];
-            templatec30[i] = fmt[i].dateFmt.formats.range["c30"][abbrLength[i]];
+        for (var i=0; i < 4; i++) {
+            fmt = new DateRngFmt({locale:"bs-Latn-BA", length: length[i]});
+            templatec00.push(fmt.dateFmt.formats.range["c00"][abbrLength[i]]);
+            templatec01.push(fmt.dateFmt.formats.range["c01"][abbrLength[i]]);
+            templatec02.push(fmt.dateFmt.formats.range["c02"][abbrLength[i]]);
+            templatec03.push(fmt.dateFmt.formats.range["c03"][abbrLength[i]]);
+            templatec10.push(fmt.dateFmt.formats.range["c10"][abbrLength[i]]);
+            templatec11.push(fmt.dateFmt.formats.range["c11"][abbrLength[i]]);
+            templatec12.push(fmt.dateFmt.formats.range["c12"][abbrLength[i]]);
+            templatec20.push(fmt.dateFmt.formats.range["c20"][abbrLength[i]]);
+            templatec30.push(fmt.dateFmt.formats.range["c30"][abbrLength[i]]);
         }
 
         test.equal(templatec00[0], '{sd}. {sm} {sy}. u {st} – {et}');
@@ -491,18 +541,25 @@ module.exports.testdaterangefmt = {
     },
     testDateRngFmt_bs_Latn_ME: function(test) {
         test.expect(36);
-        //dmy
-        for (i=0; i < 4; i++) {
-            fmt[i] = new DateRngFmt({locale:"bs-Latn-ME", length: length[i]})
-            templatec00[i] = fmt[i].dateFmt.formats.range["c00"][abbrLength[i]];
-            templatec01[i] = fmt[i].dateFmt.formats.range["c01"][abbrLength[i]];
-            templatec02[i] = fmt[i].dateFmt.formats.range["c02"][abbrLength[i]];
-            templatec03[i] = fmt[i].dateFmt.formats.range["c03"][abbrLength[i]];
-            templatec10[i] = fmt[i].dateFmt.formats.range["c10"][abbrLength[i]];
-            templatec11[i] = fmt[i].dateFmt.formats.range["c11"][abbrLength[i]];
-            templatec12[i] = fmt[i].dateFmt.formats.range["c12"][abbrLength[i]];
-            templatec20[i] = fmt[i].dateFmt.formats.range["c20"][abbrLength[i]];
-            templatec30[i] = fmt[i].dateFmt.formats.range["c30"][abbrLength[i]];
+        var fmt;
+        var data = setVariables();
+        var length = data["fullLength"];
+        var abbrLength = data["abbrLength"];
+
+        var templatec00 = [],templatec01 = [],templatec02 = [],templatec03 = [];
+        var templatec10 = [],templatec11 = [],templatec12 = [],templatec20 = [];
+        var templatec30 = [];
+        for (var i=0; i < 4; i++) {
+            fmt = new DateRngFmt({locale:"bs-Latn-ME", length: length[i]})
+            templatec00.push(fmt.dateFmt.formats.range["c00"][abbrLength[i]]);
+            templatec01.push(fmt.dateFmt.formats.range["c01"][abbrLength[i]]);
+            templatec02.push(fmt.dateFmt.formats.range["c02"][abbrLength[i]]);
+            templatec03.push(fmt.dateFmt.formats.range["c03"][abbrLength[i]]);
+            templatec10.push(fmt.dateFmt.formats.range["c10"][abbrLength[i]]);
+            templatec11.push(fmt.dateFmt.formats.range["c11"][abbrLength[i]]);
+            templatec12.push(fmt.dateFmt.formats.range["c12"][abbrLength[i]]);
+            templatec20.push(fmt.dateFmt.formats.range["c20"][abbrLength[i]]);
+            templatec30.push(fmt.dateFmt.formats.range["c30"][abbrLength[i]]);
         }
 
         test.equal(templatec00[0], '{sd}. {sm} {sy}. u {st} – {et}');
@@ -554,19 +611,26 @@ module.exports.testdaterangefmt = {
     },
     testDateRngFmt_cs_CZ: function(test) {
         test.expect(36);
-        //dmy
-        for (i=0; i < 4; i++) {
-            fmt[i] = new DateRngFmt({locale:"cs-CZ", length: length[i]})
-            templatec00[i] = fmt[i].dateFmt.formats.range["c00"][abbrLength[i]];
-            templatec01[i] = fmt[i].dateFmt.formats.range["c01"][abbrLength[i]];
-            templatec02[i] = fmt[i].dateFmt.formats.range["c02"][abbrLength[i]];
-            templatec03[i] = fmt[i].dateFmt.formats.range["c03"][abbrLength[i]];
-            templatec10[i] = fmt[i].dateFmt.formats.range["c10"][abbrLength[i]];
+        var fmt;
+        var data = setVariables();
+        var length = data["fullLength"];
+        var abbrLength = data["abbrLength"];
 
-            templatec11[i] = fmt[i].dateFmt.formats.range["c11"][abbrLength[i]];
-            templatec12[i] = fmt[i].dateFmt.formats.range["c12"][abbrLength[i]];
-            templatec20[i] = fmt[i].dateFmt.formats.range["c20"][abbrLength[i]];
-            templatec30[i] = fmt[i].dateFmt.formats.range["c30"][abbrLength[i]];
+        var templatec00 = [],templatec01 = [],templatec02 = [],templatec03 = [];
+        var templatec10 = [],templatec11 = [],templatec12 = [],templatec20 = [];
+        var templatec30 = [];
+        for (var i=0; i < 4; i++) {
+            fmt = new DateRngFmt({locale:"cs-CZ", length: length[i]})
+            templatec00.push(fmt.dateFmt.formats.range["c00"][abbrLength[i]]);
+            templatec01.push(fmt.dateFmt.formats.range["c01"][abbrLength[i]]);
+            templatec02.push(fmt.dateFmt.formats.range["c02"][abbrLength[i]]);
+            templatec03.push(fmt.dateFmt.formats.range["c03"][abbrLength[i]]);
+            templatec10.push(fmt.dateFmt.formats.range["c10"][abbrLength[i]]);
+
+            templatec11.push(fmt.dateFmt.formats.range["c11"][abbrLength[i]]);
+            templatec12.push(fmt.dateFmt.formats.range["c12"][abbrLength[i]]);
+            templatec20.push(fmt.dateFmt.formats.range["c20"][abbrLength[i]]);
+            templatec30.push(fmt.dateFmt.formats.range["c30"][abbrLength[i]]);
         }
         test.equal(templatec00[0], '{sd}. {sm} {sy} {st} – {et}');
         test.equal(templatec00[1], '{sd}. {sm} {sy} {st} – {et}');
@@ -618,19 +682,26 @@ module.exports.testdaterangefmt = {
     },
     testDateRngFmt_da_DK: function(test) {
         test.expect(36);
-        //dmy
-        for (i=0; i < 4; i++) {
-            fmt[i] = new DateRngFmt({locale:"da-DK", length: length[i]})
-            templatec00[i] = fmt[i].dateFmt.formats.range["c00"][abbrLength[i]];
-            templatec01[i] = fmt[i].dateFmt.formats.range["c01"][abbrLength[i]];
-            templatec02[i] = fmt[i].dateFmt.formats.range["c02"][abbrLength[i]];
-            templatec03[i] = fmt[i].dateFmt.formats.range["c03"][abbrLength[i]];
-            templatec10[i] = fmt[i].dateFmt.formats.range["c10"][abbrLength[i]];
+        var fmt;
+        var data = setVariables();
+        var length = data["fullLength"];
+        var abbrLength = data["abbrLength"];
 
-            templatec11[i] = fmt[i].dateFmt.formats.range["c11"][abbrLength[i]];
-            templatec12[i] = fmt[i].dateFmt.formats.range["c12"][abbrLength[i]];
-            templatec20[i] = fmt[i].dateFmt.formats.range["c20"][abbrLength[i]];
-            templatec30[i] = fmt[i].dateFmt.formats.range["c30"][abbrLength[i]];
+        var templatec00 = [],templatec01 = [],templatec02 = [],templatec03 = [];
+        var templatec10 = [],templatec11 = [],templatec12 = [],templatec20 = [];
+        var templatec30 = [];
+        for (var i=0; i < 4; i++) {
+            fmt = new DateRngFmt({locale:"da-DK", length: length[i]})
+            templatec00.push(fmt.dateFmt.formats.range["c00"][abbrLength[i]]);
+            templatec01.push(fmt.dateFmt.formats.range["c01"][abbrLength[i]]);
+            templatec02.push(fmt.dateFmt.formats.range["c02"][abbrLength[i]]);
+            templatec03.push(fmt.dateFmt.formats.range["c03"][abbrLength[i]]);
+            templatec10.push(fmt.dateFmt.formats.range["c10"][abbrLength[i]]);
+
+            templatec11.push(fmt.dateFmt.formats.range["c11"][abbrLength[i]]);
+            templatec12.push(fmt.dateFmt.formats.range["c12"][abbrLength[i]]);
+            templatec20.push(fmt.dateFmt.formats.range["c20"][abbrLength[i]]);
+            templatec30.push(fmt.dateFmt.formats.range["c30"][abbrLength[i]]);
         }
 
         test.equal(templatec00[0], '{sd}. {sm} {sy} kl. {st} – {et}');
@@ -682,18 +753,25 @@ module.exports.testdaterangefmt = {
     },
     testDateRngFmt_de_AT: function(test) {
         test.expect(36);
-        //dmy
-        for (i=0; i < 4; i++) {
-            fmt[i] = new DateRngFmt({locale:"de-AT", length: length[i]})
-            templatec00[i] = fmt[i].dateFmt.formats.range["c00"][abbrLength[i]];
-            templatec01[i] = fmt[i].dateFmt.formats.range["c01"][abbrLength[i]];
-            templatec02[i] = fmt[i].dateFmt.formats.range["c02"][abbrLength[i]];
-            templatec03[i] = fmt[i].dateFmt.formats.range["c03"][abbrLength[i]];
-            templatec10[i] = fmt[i].dateFmt.formats.range["c10"][abbrLength[i]];
-            templatec11[i] = fmt[i].dateFmt.formats.range["c11"][abbrLength[i]];
-            templatec12[i] = fmt[i].dateFmt.formats.range["c12"][abbrLength[i]];
-            templatec20[i] = fmt[i].dateFmt.formats.range["c20"][abbrLength[i]];
-            templatec30[i] = fmt[i].dateFmt.formats.range["c30"][abbrLength[i]];
+        var fmt;
+        var data = setVariables();
+        var length = data["fullLength"];
+        var abbrLength = data["abbrLength"];
+
+        var templatec00 = [],templatec01 = [],templatec02 = [],templatec03 = [];
+        var templatec10 = [],templatec11 = [],templatec12 = [],templatec20 = [];
+        var templatec30 = [];
+        for (var i=0; i < 4; i++) {
+            fmt = new DateRngFmt({locale:"de-AT", length: length[i]})
+            templatec00.push(fmt.dateFmt.formats.range["c00"][abbrLength[i]]);
+            templatec01.push(fmt.dateFmt.formats.range["c01"][abbrLength[i]]);
+            templatec02.push(fmt.dateFmt.formats.range["c02"][abbrLength[i]]);
+            templatec03.push(fmt.dateFmt.formats.range["c03"][abbrLength[i]]);
+            templatec10.push(fmt.dateFmt.formats.range["c10"][abbrLength[i]]);
+            templatec11.push(fmt.dateFmt.formats.range["c11"][abbrLength[i]]);
+            templatec12.push(fmt.dateFmt.formats.range["c12"][abbrLength[i]]);
+            templatec20.push(fmt.dateFmt.formats.range["c20"][abbrLength[i]]);
+            templatec30.push(fmt.dateFmt.formats.range["c30"][abbrLength[i]]);
         }
 
         test.equal(templatec00[0], '{sd}. {sm} {sy} um {st} – {et}');
@@ -745,19 +823,26 @@ module.exports.testdaterangefmt = {
     },
     testDateRngFmt_de_CH: function(test) {
         test.expect(36);
-        //dmy
-        for (i=0; i < 4; i++) {
-            fmt[i] = new DateRngFmt({locale:"de-CH", length: length[i]})
-            templatec00[i] = fmt[i].dateFmt.formats.range["c00"][abbrLength[i]];
-            templatec01[i] = fmt[i].dateFmt.formats.range["c01"][abbrLength[i]];
-            templatec02[i] = fmt[i].dateFmt.formats.range["c02"][abbrLength[i]];
-            templatec03[i] = fmt[i].dateFmt.formats.range["c03"][abbrLength[i]];
-            templatec10[i] = fmt[i].dateFmt.formats.range["c10"][abbrLength[i]];
+        var fmt;
+        var data = setVariables();
+        var length = data["fullLength"];
+        var abbrLength = data["abbrLength"];
 
-            templatec11[i] = fmt[i].dateFmt.formats.range["c11"][abbrLength[i]];
-            templatec12[i] = fmt[i].dateFmt.formats.range["c12"][abbrLength[i]];
-            templatec20[i] = fmt[i].dateFmt.formats.range["c20"][abbrLength[i]];
-            templatec30[i] = fmt[i].dateFmt.formats.range["c30"][abbrLength[i]];
+        var templatec00 = [],templatec01 = [],templatec02 = [],templatec03 = [];
+        var templatec10 = [],templatec11 = [],templatec12 = [],templatec20 = [];
+        var templatec30 = [];
+        for (var i=0; i < 4; i++) {
+            fmt = new DateRngFmt({locale:"de-CH", length: length[i]})
+            templatec00.push(fmt.dateFmt.formats.range["c00"][abbrLength[i]]);
+            templatec01.push(fmt.dateFmt.formats.range["c01"][abbrLength[i]]);
+            templatec02.push(fmt.dateFmt.formats.range["c02"][abbrLength[i]]);
+            templatec03.push(fmt.dateFmt.formats.range["c03"][abbrLength[i]]);
+            templatec10.push(fmt.dateFmt.formats.range["c10"][abbrLength[i]]);
+
+            templatec11.push(fmt.dateFmt.formats.range["c11"][abbrLength[i]]);
+            templatec12.push(fmt.dateFmt.formats.range["c12"][abbrLength[i]]);
+            templatec20.push(fmt.dateFmt.formats.range["c20"][abbrLength[i]]);
+            templatec30.push(fmt.dateFmt.formats.range["c30"][abbrLength[i]]);
         }
 
         test.equal(templatec00[0], '{sd}. {sm} {sy} um {st} – {et}');
@@ -809,19 +894,26 @@ module.exports.testdaterangefmt = {
     },
     testDateRngFmt_de_DE: function(test) {
         test.expect(36);
-        //dmy
-        for (i=0; i < 4; i++) {
-            fmt[i] = new DateRngFmt({locale:"de-DE", length: length[i]})
-            templatec00[i] = fmt[i].dateFmt.formats.range["c00"][abbrLength[i]];
-            templatec01[i] = fmt[i].dateFmt.formats.range["c01"][abbrLength[i]];
-            templatec02[i] = fmt[i].dateFmt.formats.range["c02"][abbrLength[i]];
-            templatec03[i] = fmt[i].dateFmt.formats.range["c03"][abbrLength[i]];
-            templatec10[i] = fmt[i].dateFmt.formats.range["c10"][abbrLength[i]];
+        var fmt;
+        var data = setVariables();
+        var length = data["fullLength"];
+        var abbrLength = data["abbrLength"];
 
-            templatec11[i] = fmt[i].dateFmt.formats.range["c11"][abbrLength[i]];
-            templatec12[i] = fmt[i].dateFmt.formats.range["c12"][abbrLength[i]];
-            templatec20[i] = fmt[i].dateFmt.formats.range["c20"][abbrLength[i]];
-            templatec30[i] = fmt[i].dateFmt.formats.range["c30"][abbrLength[i]];
+        var templatec00 = [],templatec01 = [],templatec02 = [],templatec03 = [];
+        var templatec10 = [],templatec11 = [],templatec12 = [],templatec20 = [];
+        var templatec30 = [];
+        for (var i=0; i < 4; i++) {
+            fmt = new DateRngFmt({locale:"de-DE", length: length[i]})
+            templatec00.push(fmt.dateFmt.formats.range["c00"][abbrLength[i]]);
+            templatec01.push(fmt.dateFmt.formats.range["c01"][abbrLength[i]]);
+            templatec02.push(fmt.dateFmt.formats.range["c02"][abbrLength[i]]);
+            templatec03.push(fmt.dateFmt.formats.range["c03"][abbrLength[i]]);
+            templatec10.push(fmt.dateFmt.formats.range["c10"][abbrLength[i]]);
+
+            templatec11.push(fmt.dateFmt.formats.range["c11"][abbrLength[i]]);
+            templatec12.push(fmt.dateFmt.formats.range["c12"][abbrLength[i]]);
+            templatec20.push(fmt.dateFmt.formats.range["c20"][abbrLength[i]]);
+            templatec30.push(fmt.dateFmt.formats.range["c30"][abbrLength[i]]);
         }
 
         test.equal(templatec00[0], '{sd}. {sm} {sy} um {st} – {et}');
@@ -873,19 +965,26 @@ module.exports.testdaterangefmt = {
     },
     testDateRngFmt_de_LU: function(test) {
         test.expect(36);
-        //dmy
-        for (i=0; i < 4; i++) {
-            fmt[i] = new DateRngFmt({locale:"de-LU", length: length[i]})
-            templatec00[i] = fmt[i].dateFmt.formats.range["c00"][abbrLength[i]];
-            templatec01[i] = fmt[i].dateFmt.formats.range["c01"][abbrLength[i]];
-            templatec02[i] = fmt[i].dateFmt.formats.range["c02"][abbrLength[i]];
-            templatec03[i] = fmt[i].dateFmt.formats.range["c03"][abbrLength[i]];
-            templatec10[i] = fmt[i].dateFmt.formats.range["c10"][abbrLength[i]];
+        var fmt;
+        var data = setVariables();
+        var length = data["fullLength"];
+        var abbrLength = data["abbrLength"];
 
-            templatec11[i] = fmt[i].dateFmt.formats.range["c11"][abbrLength[i]];
-            templatec12[i] = fmt[i].dateFmt.formats.range["c12"][abbrLength[i]];
-            templatec20[i] = fmt[i].dateFmt.formats.range["c20"][abbrLength[i]];
-            templatec30[i] = fmt[i].dateFmt.formats.range["c30"][abbrLength[i]];
+        var templatec00 = [],templatec01 = [],templatec02 = [],templatec03 = [];
+        var templatec10 = [],templatec11 = [],templatec12 = [],templatec20 = [];
+        var templatec30 = [];
+        for (var i=0; i < 4; i++) {
+            fmt = new DateRngFmt({locale:"de-LU", length: length[i]})
+            templatec00.push(fmt.dateFmt.formats.range["c00"][abbrLength[i]]);
+            templatec01.push(fmt.dateFmt.formats.range["c01"][abbrLength[i]]);
+            templatec02.push(fmt.dateFmt.formats.range["c02"][abbrLength[i]]);
+            templatec03.push(fmt.dateFmt.formats.range["c03"][abbrLength[i]]);
+            templatec10.push(fmt.dateFmt.formats.range["c10"][abbrLength[i]]);
+
+            templatec11.push(fmt.dateFmt.formats.range["c11"][abbrLength[i]]);
+            templatec12.push(fmt.dateFmt.formats.range["c12"][abbrLength[i]]);
+            templatec20.push(fmt.dateFmt.formats.range["c20"][abbrLength[i]]);
+            templatec30.push(fmt.dateFmt.formats.range["c30"][abbrLength[i]]);
         }
 
         test.equal(templatec00[0], '{sd}. {sm} {sy} um {st} – {et}');
@@ -936,19 +1035,26 @@ module.exports.testdaterangefmt = {
     },
     testDateRngFmt_el_CY: function(test) {
         test.expect(36);
-        //dmy
-        for (i=0; i < 4; i++) {
-            fmt[i] = new DateRngFmt({locale:"el-CY", length: length[i]})
-            templatec00[i] = fmt[i].dateFmt.formats.range["c00"][abbrLength[i]];
-            templatec01[i] = fmt[i].dateFmt.formats.range["c01"][abbrLength[i]];
-            templatec02[i] = fmt[i].dateFmt.formats.range["c02"][abbrLength[i]];
-            templatec03[i] = fmt[i].dateFmt.formats.range["c03"][abbrLength[i]];
-            templatec10[i] = fmt[i].dateFmt.formats.range["c10"][abbrLength[i]];
+        var fmt;
+        var data = setVariables();
+        var length = data["fullLength"];
+        var abbrLength = data["abbrLength"];
 
-            templatec11[i] = fmt[i].dateFmt.formats.range["c11"][abbrLength[i]];
-            templatec12[i] = fmt[i].dateFmt.formats.range["c12"][abbrLength[i]];
-            templatec20[i] = fmt[i].dateFmt.formats.range["c20"][abbrLength[i]];
-            templatec30[i] = fmt[i].dateFmt.formats.range["c30"][abbrLength[i]];
+        var templatec00 = [],templatec01 = [],templatec02 = [],templatec03 = [];
+        var templatec10 = [],templatec11 = [],templatec12 = [],templatec20 = [];
+        var templatec30 = [];
+        for (var i=0; i < 4; i++) {
+            fmt = new DateRngFmt({locale:"el-CY", length: length[i]})
+            templatec00.push(fmt.dateFmt.formats.range["c00"][abbrLength[i]]);
+            templatec01.push(fmt.dateFmt.formats.range["c01"][abbrLength[i]]);
+            templatec02.push(fmt.dateFmt.formats.range["c02"][abbrLength[i]]);
+            templatec03.push(fmt.dateFmt.formats.range["c03"][abbrLength[i]]);
+            templatec10.push(fmt.dateFmt.formats.range["c10"][abbrLength[i]]);
+
+            templatec11.push(fmt.dateFmt.formats.range["c11"][abbrLength[i]]);
+            templatec12.push(fmt.dateFmt.formats.range["c12"][abbrLength[i]]);
+            templatec20.push(fmt.dateFmt.formats.range["c20"][abbrLength[i]]);
+            templatec30.push(fmt.dateFmt.formats.range["c30"][abbrLength[i]]);
         }
 
         test.equal(templatec00[0], '{sd} {sm} {sy} - {st} – {et}');
@@ -1000,19 +1106,26 @@ module.exports.testdaterangefmt = {
     },
     testDateRngFmt_el_GR: function(test) {
         test.expect(36);
-        //dmy
-        for (i=0; i < 4; i++) {
-            fmt[i] = new DateRngFmt({locale:"el-GR", length: length[i]})
-            templatec00[i] = fmt[i].dateFmt.formats.range["c00"][abbrLength[i]];
-            templatec01[i] = fmt[i].dateFmt.formats.range["c01"][abbrLength[i]];
-            templatec02[i] = fmt[i].dateFmt.formats.range["c02"][abbrLength[i]];
-            templatec03[i] = fmt[i].dateFmt.formats.range["c03"][abbrLength[i]];
-            templatec10[i] = fmt[i].dateFmt.formats.range["c10"][abbrLength[i]];
+        var fmt;
+        var data = setVariables();
+        var length = data["fullLength"];
+        var abbrLength = data["abbrLength"];
 
-            templatec11[i] = fmt[i].dateFmt.formats.range["c11"][abbrLength[i]];
-            templatec12[i] = fmt[i].dateFmt.formats.range["c12"][abbrLength[i]];
-            templatec20[i] = fmt[i].dateFmt.formats.range["c20"][abbrLength[i]];
-            templatec30[i] = fmt[i].dateFmt.formats.range["c30"][abbrLength[i]];
+        var templatec00 = [],templatec01 = [],templatec02 = [],templatec03 = [];
+        var templatec10 = [],templatec11 = [],templatec12 = [],templatec20 = [];
+        var templatec30 = [];
+        for (var i=0; i < 4; i++) {
+            fmt = new DateRngFmt({locale:"el-GR", length: length[i]})
+            templatec00.push(fmt.dateFmt.formats.range["c00"][abbrLength[i]]);
+            templatec01.push(fmt.dateFmt.formats.range["c01"][abbrLength[i]]);
+            templatec02.push(fmt.dateFmt.formats.range["c02"][abbrLength[i]]);
+            templatec03.push(fmt.dateFmt.formats.range["c03"][abbrLength[i]]);
+            templatec10.push(fmt.dateFmt.formats.range["c10"][abbrLength[i]]);
+
+            templatec11.push(fmt.dateFmt.formats.range["c11"][abbrLength[i]]);
+            templatec12.push(fmt.dateFmt.formats.range["c12"][abbrLength[i]]);
+            templatec20.push(fmt.dateFmt.formats.range["c20"][abbrLength[i]]);
+            templatec30.push(fmt.dateFmt.formats.range["c30"][abbrLength[i]]);
         }
 
         test.equal(templatec00[0], '{sd} {sm} {sy} - {st} – {et}');
@@ -1064,19 +1177,28 @@ module.exports.testdaterangefmt = {
     },
     testDateRngFmt_en_AM: function(test) {
         test.expect(36);
-        //mdy
-        for (i=0; i < 4; i++) {
-            fmt[i] = new DateRngFmt({locale:"en-AM", length: length[i]})
-            templatec00[i] = fmt[i].dateFmt.formats.range["c00"][abbrLength[i]];
-            templatec01[i] = fmt[i].dateFmt.formats.range["c01"][abbrLength[i]];
-            templatec02[i] = fmt[i].dateFmt.formats.range["c02"][abbrLength[i]];
-            templatec03[i] = fmt[i].dateFmt.formats.range["c03"][abbrLength[i]];
-            templatec10[i] = fmt[i].dateFmt.formats.range["c10"][abbrLength[i]];
+        var fmt;
+        var data = setVariables();
+        var length = data["fullLength"];
+        var abbrLength = data["abbrLength"];
 
-            templatec11[i] = fmt[i].dateFmt.formats.range["c11"][abbrLength[i]];
-            templatec12[i] = fmt[i].dateFmt.formats.range["c12"][abbrLength[i]];
-            templatec20[i] = fmt[i].dateFmt.formats.range["c20"][abbrLength[i]];
-            templatec30[i] = fmt[i].dateFmt.formats.range["c30"][abbrLength[i]];
+        var templatec00 = [],templatec01 = [],templatec02 = [],templatec03 = [];
+        var templatec10 = [],templatec11 = [],templatec12 = [],templatec20 = [];
+        var templatec30 = [];
+
+        //mdy
+        for (var i=0; i < 4; i++) {
+            fmt = new DateRngFmt({locale:"en-AM", length: length[i]})
+            templatec00.push(fmt.dateFmt.formats.range["c00"][abbrLength[i]]);
+            templatec01.push(fmt.dateFmt.formats.range["c01"][abbrLength[i]]);
+            templatec02.push(fmt.dateFmt.formats.range["c02"][abbrLength[i]]);
+            templatec03.push(fmt.dateFmt.formats.range["c03"][abbrLength[i]]);
+            templatec10.push(fmt.dateFmt.formats.range["c10"][abbrLength[i]]);
+
+            templatec11.push(fmt.dateFmt.formats.range["c11"][abbrLength[i]]);
+            templatec12.push(fmt.dateFmt.formats.range["c12"][abbrLength[i]]);
+            templatec20.push(fmt.dateFmt.formats.range["c20"][abbrLength[i]]);
+            templatec30.push(fmt.dateFmt.formats.range["c30"][abbrLength[i]]);
         }
 
         test.equal(templatec00[0], '{sm} {sd}, {sy} at {st} – {et}');
@@ -1128,19 +1250,26 @@ module.exports.testdaterangefmt = {
     },
     testDateRngFmt_en_AU: function(test) {
         test.expect(36);
-        //dmy
-        for (i=0; i < 4; i++) {
-            fmt[i] = new DateRngFmt({locale:"en-AU", length: length[i]})
-            templatec00[i] = fmt[i].dateFmt.formats.range["c00"][abbrLength[i]];
-            templatec01[i] = fmt[i].dateFmt.formats.range["c01"][abbrLength[i]];
-            templatec02[i] = fmt[i].dateFmt.formats.range["c02"][abbrLength[i]];
-            templatec03[i] = fmt[i].dateFmt.formats.range["c03"][abbrLength[i]];
-            templatec10[i] = fmt[i].dateFmt.formats.range["c10"][abbrLength[i]];
+        var fmt;
+        var data = setVariables();
+        var length = data["fullLength"];
+        var abbrLength = data["abbrLength"];
 
-            templatec11[i] = fmt[i].dateFmt.formats.range["c11"][abbrLength[i]];
-            templatec12[i] = fmt[i].dateFmt.formats.range["c12"][abbrLength[i]];
-            templatec20[i] = fmt[i].dateFmt.formats.range["c20"][abbrLength[i]];
-            templatec30[i] = fmt[i].dateFmt.formats.range["c30"][abbrLength[i]];
+        var templatec00 = [],templatec01 = [],templatec02 = [],templatec03 = [];
+        var templatec10 = [],templatec11 = [],templatec12 = [],templatec20 = [];
+        var templatec30 = [];
+        for (var i=0; i < 4; i++) {
+            fmt = new DateRngFmt({locale:"en-AU", length: length[i]})
+            templatec00.push(fmt.dateFmt.formats.range["c00"][abbrLength[i]]);
+            templatec01.push(fmt.dateFmt.formats.range["c01"][abbrLength[i]]);
+            templatec02.push(fmt.dateFmt.formats.range["c02"][abbrLength[i]]);
+            templatec03.push(fmt.dateFmt.formats.range["c03"][abbrLength[i]]);
+            templatec10.push(fmt.dateFmt.formats.range["c10"][abbrLength[i]]);
+
+            templatec11.push(fmt.dateFmt.formats.range["c11"][abbrLength[i]]);
+            templatec12.push(fmt.dateFmt.formats.range["c12"][abbrLength[i]]);
+            templatec20.push(fmt.dateFmt.formats.range["c20"][abbrLength[i]]);
+            templatec30.push(fmt.dateFmt.formats.range["c30"][abbrLength[i]]);
         }
 
         test.equal(templatec00[0], '{sd} {sm} {sy} at {st} – {et}');
@@ -1192,21 +1321,28 @@ module.exports.testdaterangefmt = {
     },
     testDateRngFmt_en_AZ: function(test) {
         test.expect(36);
-        //mdy
+        var fmt;        //mdy
         //same as en-US
 
-        for (i=0; i < 4; i++) {
-            fmt[i] = new DateRngFmt({locale:"en-AZ", length: length[i]})
-            templatec00[i] = fmt[i].dateFmt.formats.range["c00"][abbrLength[i]];
-            templatec01[i] = fmt[i].dateFmt.formats.range["c01"][abbrLength[i]];
-            templatec02[i] = fmt[i].dateFmt.formats.range["c02"][abbrLength[i]];
-            templatec03[i] = fmt[i].dateFmt.formats.range["c03"][abbrLength[i]];
-            templatec10[i] = fmt[i].dateFmt.formats.range["c10"][abbrLength[i]];
+        var data = setVariables();
+        var length = data["fullLength"];
+        var abbrLength = data["abbrLength"];
 
-            templatec11[i] = fmt[i].dateFmt.formats.range["c11"][abbrLength[i]];
-            templatec12[i] = fmt[i].dateFmt.formats.range["c12"][abbrLength[i]];
-            templatec20[i] = fmt[i].dateFmt.formats.range["c20"][abbrLength[i]];
-            templatec30[i] = fmt[i].dateFmt.formats.range["c30"][abbrLength[i]];
+        var templatec00 = [],templatec01 = [],templatec02 = [],templatec03 = [];
+        var templatec10 = [],templatec11 = [],templatec12 = [],templatec20 = [];
+        var templatec30 = [];
+        for (var i=0; i < 4; i++) {
+            fmt = new DateRngFmt({locale:"en-AZ", length: length[i]})
+            templatec00.push(fmt.dateFmt.formats.range["c00"][abbrLength[i]]);
+            templatec01.push(fmt.dateFmt.formats.range["c01"][abbrLength[i]]);
+            templatec02.push(fmt.dateFmt.formats.range["c02"][abbrLength[i]]);
+            templatec03.push(fmt.dateFmt.formats.range["c03"][abbrLength[i]]);
+            templatec10.push(fmt.dateFmt.formats.range["c10"][abbrLength[i]]);
+
+            templatec11.push(fmt.dateFmt.formats.range["c11"][abbrLength[i]]);
+            templatec12.push(fmt.dateFmt.formats.range["c12"][abbrLength[i]]);
+            templatec20.push(fmt.dateFmt.formats.range["c20"][abbrLength[i]]);
+            templatec30.push(fmt.dateFmt.formats.range["c30"][abbrLength[i]]);
         }
 
         test.equal(templatec00[0], '{sm} {sd}, {sy} at {st} – {et}');
@@ -1258,21 +1394,28 @@ module.exports.testdaterangefmt = {
     },
     testDateRngFmt_en_CA: function(test) {
         test.expect(36);
-        // mdy
+        var fmt;        // mdy
         // ymd(short)
 
-        for (i=0; i < 4; i++) {
-            fmt[i] = new DateRngFmt({locale:"en-CA", length: length[i]})
-            templatec00[i] = fmt[i].dateFmt.formats.range["c00"][abbrLength[i]];
-            templatec01[i] = fmt[i].dateFmt.formats.range["c01"][abbrLength[i]];
-            templatec02[i] = fmt[i].dateFmt.formats.range["c02"][abbrLength[i]];
-            templatec03[i] = fmt[i].dateFmt.formats.range["c03"][abbrLength[i]];
-            templatec10[i] = fmt[i].dateFmt.formats.range["c10"][abbrLength[i]];
+        var data = setVariables();
+        var length = data["fullLength"];
+        var abbrLength = data["abbrLength"];
 
-            templatec11[i] = fmt[i].dateFmt.formats.range["c11"][abbrLength[i]];
-            templatec12[i] = fmt[i].dateFmt.formats.range["c12"][abbrLength[i]];
-            templatec20[i] = fmt[i].dateFmt.formats.range["c20"][abbrLength[i]];
-            templatec30[i] = fmt[i].dateFmt.formats.range["c30"][abbrLength[i]];
+        var templatec00 = [],templatec01 = [],templatec02 = [],templatec03 = [];
+        var templatec10 = [],templatec11 = [],templatec12 = [],templatec20 = [];
+        var templatec30 = [];
+        for (var i=0; i < 4; i++) {
+            fmt = new DateRngFmt({locale:"en-CA", length: length[i]})
+            templatec00.push(fmt.dateFmt.formats.range["c00"][abbrLength[i]]);
+            templatec01.push(fmt.dateFmt.formats.range["c01"][abbrLength[i]]);
+            templatec02.push(fmt.dateFmt.formats.range["c02"][abbrLength[i]]);
+            templatec03.push(fmt.dateFmt.formats.range["c03"][abbrLength[i]]);
+            templatec10.push(fmt.dateFmt.formats.range["c10"][abbrLength[i]]);
+
+            templatec11.push(fmt.dateFmt.formats.range["c11"][abbrLength[i]]);
+            templatec12.push(fmt.dateFmt.formats.range["c12"][abbrLength[i]]);
+            templatec20.push(fmt.dateFmt.formats.range["c20"][abbrLength[i]]);
+            templatec30.push(fmt.dateFmt.formats.range["c30"][abbrLength[i]]);
         }
 
         test.equal(templatec00[0], '{sm} {sd}, {sy} at {st} – {et}');
@@ -1324,19 +1467,26 @@ module.exports.testdaterangefmt = {
     },
     testDateRngFmt_en_GB: function(test) {
         test.expect(36);
-        //dmy
-        for (i=0; i < 4; i++) {
-            fmt[i] = new DateRngFmt({locale:"en-GB", length: length[i]})
-            templatec00[i] = fmt[i].dateFmt.formats.range["c00"][abbrLength[i]];
-            templatec01[i] = fmt[i].dateFmt.formats.range["c01"][abbrLength[i]];
-            templatec02[i] = fmt[i].dateFmt.formats.range["c02"][abbrLength[i]];
-            templatec03[i] = fmt[i].dateFmt.formats.range["c03"][abbrLength[i]];
-            templatec10[i] = fmt[i].dateFmt.formats.range["c10"][abbrLength[i]];
+        var fmt;
+        var data = setVariables();
+        var length = data["fullLength"];
+        var abbrLength = data["abbrLength"];
 
-            templatec11[i] = fmt[i].dateFmt.formats.range["c11"][abbrLength[i]];
-            templatec12[i] = fmt[i].dateFmt.formats.range["c12"][abbrLength[i]];
-            templatec20[i] = fmt[i].dateFmt.formats.range["c20"][abbrLength[i]];
-            templatec30[i] = fmt[i].dateFmt.formats.range["c30"][abbrLength[i]];
+        var templatec00 = [],templatec01 = [],templatec02 = [],templatec03 = [];
+        var templatec10 = [],templatec11 = [],templatec12 = [],templatec20 = [];
+        var templatec30 = [];
+        for (var i=0; i < 4; i++) {
+            fmt = new DateRngFmt({locale:"en-GB", length: length[i]})
+            templatec00.push(fmt.dateFmt.formats.range["c00"][abbrLength[i]]);
+            templatec01.push(fmt.dateFmt.formats.range["c01"][abbrLength[i]]);
+            templatec02.push(fmt.dateFmt.formats.range["c02"][abbrLength[i]]);
+            templatec03.push(fmt.dateFmt.formats.range["c03"][abbrLength[i]]);
+            templatec10.push(fmt.dateFmt.formats.range["c10"][abbrLength[i]]);
+
+            templatec11.push(fmt.dateFmt.formats.range["c11"][abbrLength[i]]);
+            templatec12.push(fmt.dateFmt.formats.range["c12"][abbrLength[i]]);
+            templatec20.push(fmt.dateFmt.formats.range["c20"][abbrLength[i]]);
+            templatec30.push(fmt.dateFmt.formats.range["c30"][abbrLength[i]]);
         }
 
         test.equal(templatec00[0], '{sd} {sm} {sy} at {st} – {et}');
@@ -1388,19 +1538,26 @@ module.exports.testdaterangefmt = {
     },
     testDateRngFmt_en_GH: function(test) {
         test.expect(36);
-        //dmy
-        for (i=0; i < 4; i++) {
-            fmt[i] = new DateRngFmt({locale:"en-GH", length: length[i]})
-            templatec00[i] = fmt[i].dateFmt.formats.range["c00"][abbrLength[i]];
-            templatec01[i] = fmt[i].dateFmt.formats.range["c01"][abbrLength[i]];
-            templatec02[i] = fmt[i].dateFmt.formats.range["c02"][abbrLength[i]];
-            templatec03[i] = fmt[i].dateFmt.formats.range["c03"][abbrLength[i]];
-            templatec10[i] = fmt[i].dateFmt.formats.range["c10"][abbrLength[i]];
+        var fmt;
+        var data = setVariables();
+        var length = data["fullLength"];
+        var abbrLength = data["abbrLength"];
 
-            templatec11[i] = fmt[i].dateFmt.formats.range["c11"][abbrLength[i]];
-            templatec12[i] = fmt[i].dateFmt.formats.range["c12"][abbrLength[i]];
-            templatec20[i] = fmt[i].dateFmt.formats.range["c20"][abbrLength[i]];
-            templatec30[i] = fmt[i].dateFmt.formats.range["c30"][abbrLength[i]];
+        var templatec00 = [],templatec01 = [],templatec02 = [],templatec03 = [];
+        var templatec10 = [],templatec11 = [],templatec12 = [],templatec20 = [];
+        var templatec30 = [];
+        for (var i=0; i < 4; i++) {
+            fmt = new DateRngFmt({locale:"en-GH", length: length[i]})
+            templatec00.push(fmt.dateFmt.formats.range["c00"][abbrLength[i]]);
+            templatec01.push(fmt.dateFmt.formats.range["c01"][abbrLength[i]]);
+            templatec02.push(fmt.dateFmt.formats.range["c02"][abbrLength[i]]);
+            templatec03.push(fmt.dateFmt.formats.range["c03"][abbrLength[i]]);
+            templatec10.push(fmt.dateFmt.formats.range["c10"][abbrLength[i]]);
+
+            templatec11.push(fmt.dateFmt.formats.range["c11"][abbrLength[i]]);
+            templatec12.push(fmt.dateFmt.formats.range["c12"][abbrLength[i]]);
+            templatec20.push(fmt.dateFmt.formats.range["c20"][abbrLength[i]]);
+            templatec30.push(fmt.dateFmt.formats.range["c30"][abbrLength[i]]);
         }
 
         test.equal(templatec00[0], '{sd} {sm} {sy} at {st} – {et}');
@@ -1452,19 +1609,26 @@ module.exports.testdaterangefmt = {
     },
     testDateRngFmt_en_HK: function(test) {
         test.expect(36);
-        //dmy
-        for (i=0; i < 4; i++) {
-            fmt[i] = new DateRngFmt({locale:"en-HK", length: length[i]})
-            templatec00[i] = fmt[i].dateFmt.formats.range["c00"][abbrLength[i]];
-            templatec01[i] = fmt[i].dateFmt.formats.range["c01"][abbrLength[i]];
-            templatec02[i] = fmt[i].dateFmt.formats.range["c02"][abbrLength[i]];
-            templatec03[i] = fmt[i].dateFmt.formats.range["c03"][abbrLength[i]];
-            templatec10[i] = fmt[i].dateFmt.formats.range["c10"][abbrLength[i]];
+        var fmt;
+        var data = setVariables();
+        var length = data["fullLength"];
+        var abbrLength = data["abbrLength"];
 
-            templatec11[i] = fmt[i].dateFmt.formats.range["c11"][abbrLength[i]];
-            templatec12[i] = fmt[i].dateFmt.formats.range["c12"][abbrLength[i]];
-            templatec20[i] = fmt[i].dateFmt.formats.range["c20"][abbrLength[i]];
-            templatec30[i] = fmt[i].dateFmt.formats.range["c30"][abbrLength[i]];
+        var templatec00 = [],templatec01 = [],templatec02 = [],templatec03 = [];
+        var templatec10 = [],templatec11 = [],templatec12 = [],templatec20 = [];
+        var templatec30 = [];
+        for (var i=0; i < 4; i++) {
+            fmt = new DateRngFmt({locale:"en-HK", length: length[i]})
+            templatec00.push(fmt.dateFmt.formats.range["c00"][abbrLength[i]]);
+            templatec01.push(fmt.dateFmt.formats.range["c01"][abbrLength[i]]);
+            templatec02.push(fmt.dateFmt.formats.range["c02"][abbrLength[i]]);
+            templatec03.push(fmt.dateFmt.formats.range["c03"][abbrLength[i]]);
+            templatec10.push(fmt.dateFmt.formats.range["c10"][abbrLength[i]]);
+
+            templatec11.push(fmt.dateFmt.formats.range["c11"][abbrLength[i]]);
+            templatec12.push(fmt.dateFmt.formats.range["c12"][abbrLength[i]]);
+            templatec20.push(fmt.dateFmt.formats.range["c20"][abbrLength[i]]);
+            templatec30.push(fmt.dateFmt.formats.range["c30"][abbrLength[i]]);
         }
 
         test.equal(templatec00[0], '{sd} {sm} {sy} at {st} – {et}');
@@ -1516,19 +1680,26 @@ module.exports.testdaterangefmt = {
     },
     testDateRngFmt_en_IE: function(test) {
         test.expect(36);
-        //dmy
-        for (i=0; i < 4; i++) {
-            fmt[i] = new DateRngFmt({locale:"en-IE", length: length[i]})
-            templatec00[i] = fmt[i].dateFmt.formats.range["c00"][abbrLength[i]];
-            templatec01[i] = fmt[i].dateFmt.formats.range["c01"][abbrLength[i]];
-            templatec02[i] = fmt[i].dateFmt.formats.range["c02"][abbrLength[i]];
-            templatec03[i] = fmt[i].dateFmt.formats.range["c03"][abbrLength[i]];
-            templatec10[i] = fmt[i].dateFmt.formats.range["c10"][abbrLength[i]];
+        var fmt;
+        var data = setVariables();
+        var length = data["fullLength"];
+        var abbrLength = data["abbrLength"];
 
-            templatec11[i] = fmt[i].dateFmt.formats.range["c11"][abbrLength[i]];
-            templatec12[i] = fmt[i].dateFmt.formats.range["c12"][abbrLength[i]];
-            templatec20[i] = fmt[i].dateFmt.formats.range["c20"][abbrLength[i]];
-            templatec30[i] = fmt[i].dateFmt.formats.range["c30"][abbrLength[i]];
+        var templatec00 = [],templatec01 = [],templatec02 = [],templatec03 = [];
+        var templatec10 = [],templatec11 = [],templatec12 = [],templatec20 = [];
+        var templatec30 = [];
+        for (var i=0; i < 4; i++) {
+            fmt = new DateRngFmt({locale:"en-IE", length: length[i]})
+            templatec00.push(fmt.dateFmt.formats.range["c00"][abbrLength[i]]);
+            templatec01.push(fmt.dateFmt.formats.range["c01"][abbrLength[i]]);
+            templatec02.push(fmt.dateFmt.formats.range["c02"][abbrLength[i]]);
+            templatec03.push(fmt.dateFmt.formats.range["c03"][abbrLength[i]]);
+            templatec10.push(fmt.dateFmt.formats.range["c10"][abbrLength[i]]);
+
+            templatec11.push(fmt.dateFmt.formats.range["c11"][abbrLength[i]]);
+            templatec12.push(fmt.dateFmt.formats.range["c12"][abbrLength[i]]);
+            templatec20.push(fmt.dateFmt.formats.range["c20"][abbrLength[i]]);
+            templatec30.push(fmt.dateFmt.formats.range["c30"][abbrLength[i]]);
         }
 
         test.equal(templatec00[0], '{sd} {sm} {sy} at {st} – {et}');
@@ -1580,19 +1751,26 @@ module.exports.testdaterangefmt = {
     },
     testDateRngFmt_en_IN: function(test) {
         test.expect(36);
-        //dmy
-        for (i=0; i < 4; i++) {
-            fmt[i] = new DateRngFmt({locale:"en-IN", length: length[i]})
-            templatec00[i] = fmt[i].dateFmt.formats.range["c00"][abbrLength[i]];
-            templatec01[i] = fmt[i].dateFmt.formats.range["c01"][abbrLength[i]];
-            templatec02[i] = fmt[i].dateFmt.formats.range["c02"][abbrLength[i]];
-            templatec03[i] = fmt[i].dateFmt.formats.range["c03"][abbrLength[i]];
-            templatec10[i] = fmt[i].dateFmt.formats.range["c10"][abbrLength[i]];
+        var fmt;
+        var data = setVariables();
+        var length = data["fullLength"];
+        var abbrLength = data["abbrLength"];
 
-            templatec11[i] = fmt[i].dateFmt.formats.range["c11"][abbrLength[i]];
-            templatec12[i] = fmt[i].dateFmt.formats.range["c12"][abbrLength[i]];
-            templatec20[i] = fmt[i].dateFmt.formats.range["c20"][abbrLength[i]];
-            templatec30[i] = fmt[i].dateFmt.formats.range["c30"][abbrLength[i]];
+        var templatec00 = [],templatec01 = [],templatec02 = [],templatec03 = [];
+        var templatec10 = [],templatec11 = [],templatec12 = [],templatec20 = [];
+        var templatec30 = [];
+        for (var i=0; i < 4; i++) {
+            fmt = new DateRngFmt({locale:"en-IN", length: length[i]})
+            templatec00.push(fmt.dateFmt.formats.range["c00"][abbrLength[i]]);
+            templatec01.push(fmt.dateFmt.formats.range["c01"][abbrLength[i]]);
+            templatec02.push(fmt.dateFmt.formats.range["c02"][abbrLength[i]]);
+            templatec03.push(fmt.dateFmt.formats.range["c03"][abbrLength[i]]);
+            templatec10.push(fmt.dateFmt.formats.range["c10"][abbrLength[i]]);
+
+            templatec11.push(fmt.dateFmt.formats.range["c11"][abbrLength[i]]);
+            templatec12.push(fmt.dateFmt.formats.range["c12"][abbrLength[i]]);
+            templatec20.push(fmt.dateFmt.formats.range["c20"][abbrLength[i]]);
+            templatec30.push(fmt.dateFmt.formats.range["c30"][abbrLength[i]]);
         }
 
         test.equal(templatec00[0], '{sd} {sm}, {sy} at {st} – {et}');
@@ -1644,19 +1822,26 @@ module.exports.testdaterangefmt = {
     },
     testDateRngFmt_en_IS: function(test) {
         test.expect(36);
-        //dmy
-        for (i=0; i < 4; i++) {
-            fmt[i] = new DateRngFmt({locale:"en-IS", length: length[i]})
-            templatec00[i] = fmt[i].dateFmt.formats.range["c00"][abbrLength[i]];
-            templatec01[i] = fmt[i].dateFmt.formats.range["c01"][abbrLength[i]];
-            templatec02[i] = fmt[i].dateFmt.formats.range["c02"][abbrLength[i]];
-            templatec03[i] = fmt[i].dateFmt.formats.range["c03"][abbrLength[i]];
-            templatec10[i] = fmt[i].dateFmt.formats.range["c10"][abbrLength[i]];
+        var fmt;
+        var data = setVariables();
+        var length = data["fullLength"];
+        var abbrLength = data["abbrLength"];
 
-            templatec11[i] = fmt[i].dateFmt.formats.range["c11"][abbrLength[i]];
-            templatec12[i] = fmt[i].dateFmt.formats.range["c12"][abbrLength[i]];
-            templatec20[i] = fmt[i].dateFmt.formats.range["c20"][abbrLength[i]];
-            templatec30[i] = fmt[i].dateFmt.formats.range["c30"][abbrLength[i]];
+        var templatec00 = [],templatec01 = [],templatec02 = [],templatec03 = [];
+        var templatec10 = [],templatec11 = [],templatec12 = [],templatec20 = [];
+        var templatec30 = [];
+        for (var i=0; i < 4; i++) {
+            fmt = new DateRngFmt({locale:"en-IS", length: length[i]})
+            templatec00.push(fmt.dateFmt.formats.range["c00"][abbrLength[i]]);
+            templatec01.push(fmt.dateFmt.formats.range["c01"][abbrLength[i]]);
+            templatec02.push(fmt.dateFmt.formats.range["c02"][abbrLength[i]]);
+            templatec03.push(fmt.dateFmt.formats.range["c03"][abbrLength[i]]);
+            templatec10.push(fmt.dateFmt.formats.range["c10"][abbrLength[i]]);
+
+            templatec11.push(fmt.dateFmt.formats.range["c11"][abbrLength[i]]);
+            templatec12.push(fmt.dateFmt.formats.range["c12"][abbrLength[i]]);
+            templatec20.push(fmt.dateFmt.formats.range["c20"][abbrLength[i]]);
+            templatec30.push(fmt.dateFmt.formats.range["c30"][abbrLength[i]]);
         }
 
         test.equal(templatec00[0], '{sm} {sd}, {sy} at {st} – {et}');
@@ -1708,19 +1893,26 @@ module.exports.testdaterangefmt = {
     },
     testDateRngFmt_en_JP: function(test) {
         test.expect(36);
-        //mdy
-        for (i=0; i < 4; i++) {
-            fmt[i] = new DateRngFmt({locale:"en-JP", length: length[i]})
-            templatec00[i] = fmt[i].dateFmt.formats.range["c00"][abbrLength[i]];
-            templatec01[i] = fmt[i].dateFmt.formats.range["c01"][abbrLength[i]];
-            templatec02[i] = fmt[i].dateFmt.formats.range["c02"][abbrLength[i]];
-            templatec03[i] = fmt[i].dateFmt.formats.range["c03"][abbrLength[i]];
-            templatec10[i] = fmt[i].dateFmt.formats.range["c10"][abbrLength[i]];
+        var fmt;
+        var data = setVariables();
+        var length = data["fullLength"];
+        var abbrLength = data["abbrLength"];
 
-            templatec11[i] = fmt[i].dateFmt.formats.range["c11"][abbrLength[i]];
-            templatec12[i] = fmt[i].dateFmt.formats.range["c12"][abbrLength[i]];
-            templatec20[i] = fmt[i].dateFmt.formats.range["c20"][abbrLength[i]];
-            templatec30[i] = fmt[i].dateFmt.formats.range["c30"][abbrLength[i]];
+        var templatec00 = [],templatec01 = [],templatec02 = [],templatec03 = [];
+        var templatec10 = [],templatec11 = [],templatec12 = [],templatec20 = [];
+        var templatec30 = [];
+        for (var i=0; i < 4; i++) {
+            fmt = new DateRngFmt({locale:"en-JP", length: length[i]})
+            templatec00.push(fmt.dateFmt.formats.range["c00"][abbrLength[i]]);
+            templatec01.push(fmt.dateFmt.formats.range["c01"][abbrLength[i]]);
+            templatec02.push(fmt.dateFmt.formats.range["c02"][abbrLength[i]]);
+            templatec03.push(fmt.dateFmt.formats.range["c03"][abbrLength[i]]);
+            templatec10.push(fmt.dateFmt.formats.range["c10"][abbrLength[i]]);
+
+            templatec11.push(fmt.dateFmt.formats.range["c11"][abbrLength[i]]);
+            templatec12.push(fmt.dateFmt.formats.range["c12"][abbrLength[i]]);
+            templatec20.push(fmt.dateFmt.formats.range["c20"][abbrLength[i]]);
+            templatec30.push(fmt.dateFmt.formats.range["c30"][abbrLength[i]]);
         }
 
         test.equal(templatec00[0], '{sm} {sd}, {sy} at {st} – {et}');
@@ -1772,19 +1964,26 @@ module.exports.testdaterangefmt = {
     },
     testDateRngFmt_en_KE: function(test) {
         test.expect(36);
-        //dmy
-        for (i=0; i < 4; i++) {
-            fmt[i] = new DateRngFmt({locale:"en-KE", length: length[i]})
-            templatec00[i] = fmt[i].dateFmt.formats.range["c00"][abbrLength[i]];
-            templatec01[i] = fmt[i].dateFmt.formats.range["c01"][abbrLength[i]];
-            templatec02[i] = fmt[i].dateFmt.formats.range["c02"][abbrLength[i]];
-            templatec03[i] = fmt[i].dateFmt.formats.range["c03"][abbrLength[i]];
-            templatec10[i] = fmt[i].dateFmt.formats.range["c10"][abbrLength[i]];
+        var fmt;
+        var data = setVariables();
+        var length = data["fullLength"];
+        var abbrLength = data["abbrLength"];
 
-            templatec11[i] = fmt[i].dateFmt.formats.range["c11"][abbrLength[i]];
-            templatec12[i] = fmt[i].dateFmt.formats.range["c12"][abbrLength[i]];
-            templatec20[i] = fmt[i].dateFmt.formats.range["c20"][abbrLength[i]];
-            templatec30[i] = fmt[i].dateFmt.formats.range["c30"][abbrLength[i]];
+        var templatec00 = [],templatec01 = [],templatec02 = [],templatec03 = [];
+        var templatec10 = [],templatec11 = [],templatec12 = [],templatec20 = [];
+        var templatec30 = [];
+        for (var i=0; i < 4; i++) {
+            fmt = new DateRngFmt({locale:"en-KE", length: length[i]})
+            templatec00.push(fmt.dateFmt.formats.range["c00"][abbrLength[i]]);
+            templatec01.push(fmt.dateFmt.formats.range["c01"][abbrLength[i]]);
+            templatec02.push(fmt.dateFmt.formats.range["c02"][abbrLength[i]]);
+            templatec03.push(fmt.dateFmt.formats.range["c03"][abbrLength[i]]);
+            templatec10.push(fmt.dateFmt.formats.range["c10"][abbrLength[i]]);
+
+            templatec11.push(fmt.dateFmt.formats.range["c11"][abbrLength[i]]);
+            templatec12.push(fmt.dateFmt.formats.range["c12"][abbrLength[i]]);
+            templatec20.push(fmt.dateFmt.formats.range["c20"][abbrLength[i]]);
+            templatec30.push(fmt.dateFmt.formats.range["c30"][abbrLength[i]]);
         }
 
         test.equal(templatec00[0], '{sd} {sm} {sy} at {st} – {et}');
@@ -1836,19 +2035,26 @@ module.exports.testdaterangefmt = {
     },
     testDateRngFmt_en_KR: function(test) {
         test.expect(36);
-        //mdy
-        for (i=0; i < 4; i++) {
-            fmt[i] = new DateRngFmt({locale:"en-KR", length: length[i]})
-            templatec00[i] = fmt[i].dateFmt.formats.range["c00"][abbrLength[i]];
-            templatec01[i] = fmt[i].dateFmt.formats.range["c01"][abbrLength[i]];
-            templatec02[i] = fmt[i].dateFmt.formats.range["c02"][abbrLength[i]];
-            templatec03[i] = fmt[i].dateFmt.formats.range["c03"][abbrLength[i]];
-            templatec10[i] = fmt[i].dateFmt.formats.range["c10"][abbrLength[i]];
+        var fmt;
+        var data = setVariables();
+        var length = data["fullLength"];
+        var abbrLength = data["abbrLength"];
 
-            templatec11[i] = fmt[i].dateFmt.formats.range["c11"][abbrLength[i]];
-            templatec12[i] = fmt[i].dateFmt.formats.range["c12"][abbrLength[i]];
-            templatec20[i] = fmt[i].dateFmt.formats.range["c20"][abbrLength[i]];
-            templatec30[i] = fmt[i].dateFmt.formats.range["c30"][abbrLength[i]];
+        var templatec00 = [],templatec01 = [],templatec02 = [],templatec03 = [];
+        var templatec10 = [],templatec11 = [],templatec12 = [],templatec20 = [];
+        var templatec30 = [];
+        for (var i=0; i < 4; i++) {
+            fmt = new DateRngFmt({locale:"en-KR", length: length[i]})
+            templatec00.push(fmt.dateFmt.formats.range["c00"][abbrLength[i]]);
+            templatec01.push(fmt.dateFmt.formats.range["c01"][abbrLength[i]]);
+            templatec02.push(fmt.dateFmt.formats.range["c02"][abbrLength[i]]);
+            templatec03.push(fmt.dateFmt.formats.range["c03"][abbrLength[i]]);
+            templatec10.push(fmt.dateFmt.formats.range["c10"][abbrLength[i]]);
+
+            templatec11.push(fmt.dateFmt.formats.range["c11"][abbrLength[i]]);
+            templatec12.push(fmt.dateFmt.formats.range["c12"][abbrLength[i]]);
+            templatec20.push(fmt.dateFmt.formats.range["c20"][abbrLength[i]]);
+            templatec30.push(fmt.dateFmt.formats.range["c30"][abbrLength[i]]);
         }
 
         test.equal(templatec00[0], '{sm} {sd}, {sy} at {st} – {et}');
@@ -1900,19 +2106,26 @@ module.exports.testdaterangefmt = {
     },
     testDateRngFmt_en_LK: function(test) {
         test.expect(36);
-        //mdy
-        for (i=0; i < 4; i++) {
-            fmt[i] = new DateRngFmt({locale:"en-LK", length: length[i]})
-            templatec00[i] = fmt[i].dateFmt.formats.range["c00"][abbrLength[i]];
-            templatec01[i] = fmt[i].dateFmt.formats.range["c01"][abbrLength[i]];
-            templatec02[i] = fmt[i].dateFmt.formats.range["c02"][abbrLength[i]];
-            templatec03[i] = fmt[i].dateFmt.formats.range["c03"][abbrLength[i]];
-            templatec10[i] = fmt[i].dateFmt.formats.range["c10"][abbrLength[i]];
+        var fmt;        //mdy
+        var data = setVariables();
+        var length = data["fullLength"];
+        var abbrLength = data["abbrLength"];
 
-            templatec11[i] = fmt[i].dateFmt.formats.range["c11"][abbrLength[i]];
-            templatec12[i] = fmt[i].dateFmt.formats.range["c12"][abbrLength[i]];
-            templatec20[i] = fmt[i].dateFmt.formats.range["c20"][abbrLength[i]];
-            templatec30[i] = fmt[i].dateFmt.formats.range["c30"][abbrLength[i]];
+        var templatec00 = [],templatec01 = [],templatec02 = [],templatec03 = [];
+        var templatec10 = [],templatec11 = [],templatec12 = [],templatec20 = [];
+        var templatec30 = [];
+        for (var i=0; i < 4; i++) {
+            fmt = new DateRngFmt({locale:"en-LK", length: length[i]})
+            templatec00.push(fmt.dateFmt.formats.range["c00"][abbrLength[i]]);
+            templatec01.push(fmt.dateFmt.formats.range["c01"][abbrLength[i]]);
+            templatec02.push(fmt.dateFmt.formats.range["c02"][abbrLength[i]]);
+            templatec03.push(fmt.dateFmt.formats.range["c03"][abbrLength[i]]);
+            templatec10.push(fmt.dateFmt.formats.range["c10"][abbrLength[i]]);
+
+            templatec11.push(fmt.dateFmt.formats.range["c11"][abbrLength[i]]);
+            templatec12.push(fmt.dateFmt.formats.range["c12"][abbrLength[i]]);
+            templatec20.push(fmt.dateFmt.formats.range["c20"][abbrLength[i]]);
+            templatec30.push(fmt.dateFmt.formats.range["c30"][abbrLength[i]]);
         }
 
         test.equal(templatec00[0], '{sm} {sd}, {sy} at {st} – {et}');
@@ -1964,19 +2177,26 @@ module.exports.testdaterangefmt = {
     },
     testDateRngFmt_en_MM: function(test) {
         test.expect(36);
-        //mdy
-        for (i=0; i < 4; i++) {
-            fmt[i] = new DateRngFmt({locale:"en-MM", length: length[i]})
-            templatec00[i] = fmt[i].dateFmt.formats.range["c00"][abbrLength[i]];
-            templatec01[i] = fmt[i].dateFmt.formats.range["c01"][abbrLength[i]];
-            templatec02[i] = fmt[i].dateFmt.formats.range["c02"][abbrLength[i]];
-            templatec03[i] = fmt[i].dateFmt.formats.range["c03"][abbrLength[i]];
-            templatec10[i] = fmt[i].dateFmt.formats.range["c10"][abbrLength[i]];
+        var fmt;
+        var data = setVariables();
+        var length = data["fullLength"];
+        var abbrLength = data["abbrLength"];
 
-            templatec11[i] = fmt[i].dateFmt.formats.range["c11"][abbrLength[i]];
-            templatec12[i] = fmt[i].dateFmt.formats.range["c12"][abbrLength[i]];
-            templatec20[i] = fmt[i].dateFmt.formats.range["c20"][abbrLength[i]];
-            templatec30[i] = fmt[i].dateFmt.formats.range["c30"][abbrLength[i]];
+        var templatec00 = [],templatec01 = [],templatec02 = [],templatec03 = [];
+        var templatec10 = [],templatec11 = [],templatec12 = [],templatec20 = [];
+        var templatec30 = [];
+        for (var i=0; i < 4; i++) {
+            fmt = new DateRngFmt({locale:"en-MM", length: length[i]})
+            templatec00.push(fmt.dateFmt.formats.range["c00"][abbrLength[i]]);
+            templatec01.push(fmt.dateFmt.formats.range["c01"][abbrLength[i]]);
+            templatec02.push(fmt.dateFmt.formats.range["c02"][abbrLength[i]]);
+            templatec03.push(fmt.dateFmt.formats.range["c03"][abbrLength[i]]);
+            templatec10.push(fmt.dateFmt.formats.range["c10"][abbrLength[i]]);
+
+            templatec11.push(fmt.dateFmt.formats.range["c11"][abbrLength[i]]);
+            templatec12.push(fmt.dateFmt.formats.range["c12"][abbrLength[i]]);
+            templatec20.push(fmt.dateFmt.formats.range["c20"][abbrLength[i]]);
+            templatec30.push(fmt.dateFmt.formats.range["c30"][abbrLength[i]]);
         }
 
         test.equal(templatec00[0], '{sm} {sd}, {sy} at {st} – {et}');
@@ -2027,19 +2247,26 @@ module.exports.testdaterangefmt = {
     },
     testDateRngFmt_en_MW: function(test) {
         test.expect(36);
-        //dmy
-        for (i=0; i < 4; i++) {
-            fmt[i] = new DateRngFmt({locale:"en-MW", length: length[i]})
-            templatec00[i] = fmt[i].dateFmt.formats.range["c00"][abbrLength[i]];
-            templatec01[i] = fmt[i].dateFmt.formats.range["c01"][abbrLength[i]];
-            templatec02[i] = fmt[i].dateFmt.formats.range["c02"][abbrLength[i]];
-            templatec03[i] = fmt[i].dateFmt.formats.range["c03"][abbrLength[i]];
-            templatec10[i] = fmt[i].dateFmt.formats.range["c10"][abbrLength[i]];
+        var fmt;
+        var data = setVariables();
+        var length = data["fullLength"];
+        var abbrLength = data["abbrLength"];
 
-            templatec11[i] = fmt[i].dateFmt.formats.range["c11"][abbrLength[i]];
-            templatec12[i] = fmt[i].dateFmt.formats.range["c12"][abbrLength[i]];
-            templatec20[i] = fmt[i].dateFmt.formats.range["c20"][abbrLength[i]];
-            templatec30[i] = fmt[i].dateFmt.formats.range["c30"][abbrLength[i]];
+        var templatec00 = [],templatec01 = [],templatec02 = [],templatec03 = [];
+        var templatec10 = [],templatec11 = [],templatec12 = [],templatec20 = [];
+        var templatec30 = [];
+        for (var i=0; i < 4; i++) {
+            fmt = new DateRngFmt({locale:"en-MW", length: length[i]})
+            templatec00.push(fmt.dateFmt.formats.range["c00"][abbrLength[i]]);
+            templatec01.push(fmt.dateFmt.formats.range["c01"][abbrLength[i]]);
+            templatec02.push(fmt.dateFmt.formats.range["c02"][abbrLength[i]]);
+            templatec03.push(fmt.dateFmt.formats.range["c03"][abbrLength[i]]);
+            templatec10.push(fmt.dateFmt.formats.range["c10"][abbrLength[i]]);
+
+            templatec11.push(fmt.dateFmt.formats.range["c11"][abbrLength[i]]);
+            templatec12.push(fmt.dateFmt.formats.range["c12"][abbrLength[i]]);
+            templatec20.push(fmt.dateFmt.formats.range["c20"][abbrLength[i]]);
+            templatec30.push(fmt.dateFmt.formats.range["c30"][abbrLength[i]]);
         }
 
         test.equal(templatec00[0], '{sd} {sm} {sy} at {st} – {et}');
@@ -2091,19 +2318,26 @@ module.exports.testdaterangefmt = {
     },
     testDateRngFmt_en_MY: function(test) {
         test.expect(36);
-        //dmy
-        for (i=0; i < 4; i++) {
-            fmt[i] = new DateRngFmt({locale:"en-MY", length: length[i]})
-            templatec00[i] = fmt[i].dateFmt.formats.range["c00"][abbrLength[i]];
-            templatec01[i] = fmt[i].dateFmt.formats.range["c01"][abbrLength[i]];
-            templatec02[i] = fmt[i].dateFmt.formats.range["c02"][abbrLength[i]];
-            templatec03[i] = fmt[i].dateFmt.formats.range["c03"][abbrLength[i]];
-            templatec10[i] = fmt[i].dateFmt.formats.range["c10"][abbrLength[i]];
+        var fmt;
+        var data = setVariables();
+        var length = data["fullLength"];
+        var abbrLength = data["abbrLength"];
 
-            templatec11[i] = fmt[i].dateFmt.formats.range["c11"][abbrLength[i]];
-            templatec12[i] = fmt[i].dateFmt.formats.range["c12"][abbrLength[i]];
-            templatec20[i] = fmt[i].dateFmt.formats.range["c20"][abbrLength[i]];
-            templatec30[i] = fmt[i].dateFmt.formats.range["c30"][abbrLength[i]];
+        var templatec00 = [],templatec01 = [],templatec02 = [],templatec03 = [];
+        var templatec10 = [],templatec11 = [],templatec12 = [],templatec20 = [];
+        var templatec30 = [];
+        for (var i=0; i < 4; i++) {
+            fmt = new DateRngFmt({locale:"en-MY", length: length[i]})
+            templatec00.push(fmt.dateFmt.formats.range["c00"][abbrLength[i]]);
+            templatec01.push(fmt.dateFmt.formats.range["c01"][abbrLength[i]]);
+            templatec02.push(fmt.dateFmt.formats.range["c02"][abbrLength[i]]);
+            templatec03.push(fmt.dateFmt.formats.range["c03"][abbrLength[i]]);
+            templatec10.push(fmt.dateFmt.formats.range["c10"][abbrLength[i]]);
+
+            templatec11.push(fmt.dateFmt.formats.range["c11"][abbrLength[i]]);
+            templatec12.push(fmt.dateFmt.formats.range["c12"][abbrLength[i]]);
+            templatec20.push(fmt.dateFmt.formats.range["c20"][abbrLength[i]]);
+            templatec30.push(fmt.dateFmt.formats.range["c30"][abbrLength[i]]);
         }
 
         test.equal(templatec00[0], '{sd} {sm} {sy} at {st} – {et}');
@@ -2155,19 +2389,26 @@ module.exports.testdaterangefmt = {
     },
     testDateRngFmt_en_NG: function(test) {
         test.expect(36);
-        //dmy
-        for (i=0; i < 4; i++) {
-            fmt[i] = new DateRngFmt({locale:"en-NG", length: length[i]})
-            templatec00[i] = fmt[i].dateFmt.formats.range["c00"][abbrLength[i]];
-            templatec01[i] = fmt[i].dateFmt.formats.range["c01"][abbrLength[i]];
-            templatec02[i] = fmt[i].dateFmt.formats.range["c02"][abbrLength[i]];
-            templatec03[i] = fmt[i].dateFmt.formats.range["c03"][abbrLength[i]];
-            templatec10[i] = fmt[i].dateFmt.formats.range["c10"][abbrLength[i]];
+        var fmt;
+        var data = setVariables();
+        var length = data["fullLength"];
+        var abbrLength = data["abbrLength"];
 
-            templatec11[i] = fmt[i].dateFmt.formats.range["c11"][abbrLength[i]];
-            templatec12[i] = fmt[i].dateFmt.formats.range["c12"][abbrLength[i]];
-            templatec20[i] = fmt[i].dateFmt.formats.range["c20"][abbrLength[i]];
-            templatec30[i] = fmt[i].dateFmt.formats.range["c30"][abbrLength[i]];
+        var templatec00 = [],templatec01 = [],templatec02 = [],templatec03 = [];
+        var templatec10 = [],templatec11 = [],templatec12 = [],templatec20 = [];
+        var templatec30 = [];
+        for (var i=0; i < 4; i++) {
+            fmt = new DateRngFmt({locale:"en-NG", length: length[i]})
+            templatec00.push(fmt.dateFmt.formats.range["c00"][abbrLength[i]]);
+            templatec01.push(fmt.dateFmt.formats.range["c01"][abbrLength[i]]);
+            templatec02.push(fmt.dateFmt.formats.range["c02"][abbrLength[i]]);
+            templatec03.push(fmt.dateFmt.formats.range["c03"][abbrLength[i]]);
+            templatec10.push(fmt.dateFmt.formats.range["c10"][abbrLength[i]]);
+
+            templatec11.push(fmt.dateFmt.formats.range["c11"][abbrLength[i]]);
+            templatec12.push(fmt.dateFmt.formats.range["c12"][abbrLength[i]]);
+            templatec20.push(fmt.dateFmt.formats.range["c20"][abbrLength[i]]);
+            templatec30.push(fmt.dateFmt.formats.range["c30"][abbrLength[i]]);
         }
 
         test.equal(templatec00[0], '{sd} {sm} {sy} at {st} – {et}');
@@ -2219,19 +2460,27 @@ module.exports.testdaterangefmt = {
     },
     testDateRngFmt_en_NZ: function(test) {
         test.expect(36);
-        ////dmy
-        for (i=0; i < 4; i++) {
-            fmt[i] = new DateRngFmt({locale:"en-NZ", length: length[i]})
-            templatec00[i] = fmt[i].dateFmt.formats.range["c00"][abbrLength[i]];
-            templatec01[i] = fmt[i].dateFmt.formats.range["c01"][abbrLength[i]];
-            templatec02[i] = fmt[i].dateFmt.formats.range["c02"][abbrLength[i]];
-            templatec03[i] = fmt[i].dateFmt.formats.range["c03"][abbrLength[i]];
-            templatec10[i] = fmt[i].dateFmt.formats.range["c10"][abbrLength[i]];
+        var fmt;        ////dmy
 
-            templatec11[i] = fmt[i].dateFmt.formats.range["c11"][abbrLength[i]];
-            templatec12[i] = fmt[i].dateFmt.formats.range["c12"][abbrLength[i]];
-            templatec20[i] = fmt[i].dateFmt.formats.range["c20"][abbrLength[i]];
-            templatec30[i] = fmt[i].dateFmt.formats.range["c30"][abbrLength[i]];
+        var data = setVariables();
+        var length = data["fullLength"];
+        var abbrLength = data["abbrLength"];
+
+        var templatec00 = [],templatec01 = [],templatec02 = [],templatec03 = [];
+        var templatec10 = [],templatec11 = [],templatec12 = [],templatec20 = [];
+        var templatec30 = [];
+        for (var i=0; i < 4; i++) {
+            fmt = new DateRngFmt({locale:"en-NZ", length: length[i]})
+            templatec00.push(fmt.dateFmt.formats.range["c00"][abbrLength[i]]);
+            templatec01.push(fmt.dateFmt.formats.range["c01"][abbrLength[i]]);
+            templatec02.push(fmt.dateFmt.formats.range["c02"][abbrLength[i]]);
+            templatec03.push(fmt.dateFmt.formats.range["c03"][abbrLength[i]]);
+            templatec10.push(fmt.dateFmt.formats.range["c10"][abbrLength[i]]);
+
+            templatec11.push(fmt.dateFmt.formats.range["c11"][abbrLength[i]]);
+            templatec12.push(fmt.dateFmt.formats.range["c12"][abbrLength[i]]);
+            templatec20.push(fmt.dateFmt.formats.range["c20"][abbrLength[i]]);
+            templatec30.push(fmt.dateFmt.formats.range["c30"][abbrLength[i]]);
         }
 
         test.equal(templatec00[0], '{sd} {sm} {sy} at {st} – {et}');
@@ -2283,19 +2532,26 @@ module.exports.testdaterangefmt = {
     },
     testDateRngFmt_en_PH: function(test) {
         test.expect(36);
-        //dmy
-        for (i=0; i < 4; i++) {
-            fmt[i] = new DateRngFmt({locale:"en-PH", length: length[i]})
-            templatec00[i] = fmt[i].dateFmt.formats.range["c00"][abbrLength[i]];
-            templatec01[i] = fmt[i].dateFmt.formats.range["c01"][abbrLength[i]];
-            templatec02[i] = fmt[i].dateFmt.formats.range["c02"][abbrLength[i]];
-            templatec03[i] = fmt[i].dateFmt.formats.range["c03"][abbrLength[i]];
-            templatec10[i] = fmt[i].dateFmt.formats.range["c10"][abbrLength[i]];
+        var fmt;
+        var data = setVariables();
+        var length = data["fullLength"];
+        var abbrLength = data["abbrLength"];
 
-            templatec11[i] = fmt[i].dateFmt.formats.range["c11"][abbrLength[i]];
-            templatec12[i] = fmt[i].dateFmt.formats.range["c12"][abbrLength[i]];
-            templatec20[i] = fmt[i].dateFmt.formats.range["c20"][abbrLength[i]];
-            templatec30[i] = fmt[i].dateFmt.formats.range["c30"][abbrLength[i]];
+        var templatec00 = [],templatec01 = [],templatec02 = [],templatec03 = [];
+        var templatec10 = [],templatec11 = [],templatec12 = [],templatec20 = [];
+        var templatec30 = [];
+        for (var i=0; i < 4; i++) {
+            fmt = new DateRngFmt({locale:"en-PH", length: length[i]})
+            templatec00.push(fmt.dateFmt.formats.range["c00"][abbrLength[i]]);
+            templatec01.push(fmt.dateFmt.formats.range["c01"][abbrLength[i]]);
+            templatec02.push(fmt.dateFmt.formats.range["c02"][abbrLength[i]]);
+            templatec03.push(fmt.dateFmt.formats.range["c03"][abbrLength[i]]);
+            templatec10.push(fmt.dateFmt.formats.range["c10"][abbrLength[i]]);
+
+            templatec11.push(fmt.dateFmt.formats.range["c11"][abbrLength[i]]);
+            templatec12.push(fmt.dateFmt.formats.range["c12"][abbrLength[i]]);
+            templatec20.push(fmt.dateFmt.formats.range["c20"][abbrLength[i]]);
+            templatec30.push(fmt.dateFmt.formats.range["c30"][abbrLength[i]]);
         }
 
         test.equal(templatec00[0], '{sd} {sm} {sy} at {st} – {et}');
@@ -2347,19 +2603,26 @@ module.exports.testdaterangefmt = {
     },
     testDateRngFmt_en_PR: function(test) {
         test.expect(36);
-        //mdy
-        for (i=0; i < 4; i++) {
-            fmt[i] = new DateRngFmt({locale:"en-PR", length: length[i]})
-            templatec00[i] = fmt[i].dateFmt.formats.range["c00"][abbrLength[i]];
-            templatec01[i] = fmt[i].dateFmt.formats.range["c01"][abbrLength[i]];
-            templatec02[i] = fmt[i].dateFmt.formats.range["c02"][abbrLength[i]];
-            templatec03[i] = fmt[i].dateFmt.formats.range["c03"][abbrLength[i]];
-            templatec10[i] = fmt[i].dateFmt.formats.range["c10"][abbrLength[i]];
+        var fmt;
+        var data = setVariables();
+        var length = data["fullLength"];
+        var abbrLength = data["abbrLength"];
 
-            templatec11[i] = fmt[i].dateFmt.formats.range["c11"][abbrLength[i]];
-            templatec12[i] = fmt[i].dateFmt.formats.range["c12"][abbrLength[i]];
-            templatec20[i] = fmt[i].dateFmt.formats.range["c20"][abbrLength[i]];
-            templatec30[i] = fmt[i].dateFmt.formats.range["c30"][abbrLength[i]];
+        var templatec00 = [],templatec01 = [],templatec02 = [],templatec03 = [];
+        var templatec10 = [],templatec11 = [],templatec12 = [],templatec20 = [];
+        var templatec30 = [];
+        for (var i=0; i < 4; i++) {
+            fmt = new DateRngFmt({locale:"en-PR", length: length[i]})
+            templatec00.push(fmt.dateFmt.formats.range["c00"][abbrLength[i]]);
+            templatec01.push(fmt.dateFmt.formats.range["c01"][abbrLength[i]]);
+            templatec02.push(fmt.dateFmt.formats.range["c02"][abbrLength[i]]);
+            templatec03.push(fmt.dateFmt.formats.range["c03"][abbrLength[i]]);
+            templatec10.push(fmt.dateFmt.formats.range["c10"][abbrLength[i]]);
+
+            templatec11.push(fmt.dateFmt.formats.range["c11"][abbrLength[i]]);
+            templatec12.push(fmt.dateFmt.formats.range["c12"][abbrLength[i]]);
+            templatec20.push(fmt.dateFmt.formats.range["c20"][abbrLength[i]]);
+            templatec30.push(fmt.dateFmt.formats.range["c30"][abbrLength[i]]);
         }
 
         test.equal(templatec00[0], '{sm} {sd}, {sy} at {st} – {et}');
@@ -2411,19 +2674,26 @@ module.exports.testdaterangefmt = {
     },
     testDateRngFmt_en_SG: function(test) {
         test.expect(36);
-        //dmy
-        for (i=0; i < 4; i++) {
-            fmt[i] = new DateRngFmt({locale:"en-SG", length: length[i]})
-            templatec00[i] = fmt[i].dateFmt.formats.range["c00"][abbrLength[i]];
-            templatec01[i] = fmt[i].dateFmt.formats.range["c01"][abbrLength[i]];
-            templatec02[i] = fmt[i].dateFmt.formats.range["c02"][abbrLength[i]];
-            templatec03[i] = fmt[i].dateFmt.formats.range["c03"][abbrLength[i]];
-            templatec10[i] = fmt[i].dateFmt.formats.range["c10"][abbrLength[i]];
+        var fmt;
+        var data = setVariables();
+        var length = data["fullLength"];
+        var abbrLength = data["abbrLength"];
 
-            templatec11[i] = fmt[i].dateFmt.formats.range["c11"][abbrLength[i]];
-            templatec12[i] = fmt[i].dateFmt.formats.range["c12"][abbrLength[i]];
-            templatec20[i] = fmt[i].dateFmt.formats.range["c20"][abbrLength[i]];
-            templatec30[i] = fmt[i].dateFmt.formats.range["c30"][abbrLength[i]];
+        var templatec00 = [],templatec01 = [],templatec02 = [],templatec03 = [];
+        var templatec10 = [],templatec11 = [],templatec12 = [],templatec20 = [];
+        var templatec30 = [];
+        for (var i=0; i < 4; i++) {
+            fmt = new DateRngFmt({locale:"en-SG", length: length[i]})
+            templatec00.push(fmt.dateFmt.formats.range["c00"][abbrLength[i]]);
+            templatec01.push(fmt.dateFmt.formats.range["c01"][abbrLength[i]]);
+            templatec02.push(fmt.dateFmt.formats.range["c02"][abbrLength[i]]);
+            templatec03.push(fmt.dateFmt.formats.range["c03"][abbrLength[i]]);
+            templatec10.push(fmt.dateFmt.formats.range["c10"][abbrLength[i]]);
+
+            templatec11.push(fmt.dateFmt.formats.range["c11"][abbrLength[i]]);
+            templatec12.push(fmt.dateFmt.formats.range["c12"][abbrLength[i]]);
+            templatec20.push(fmt.dateFmt.formats.range["c20"][abbrLength[i]]);
+            templatec30.push(fmt.dateFmt.formats.range["c30"][abbrLength[i]]);
         }
 
         test.equal(templatec00[0], '{sd} {sm} {sy} at {st} – {et}');
@@ -2475,19 +2745,26 @@ module.exports.testdaterangefmt = {
     },
     testDateRngFmt_en_US: function(test) {
         test.expect(36);
-        //mdy
-        for (i=0; i < 4; i++) {
-            fmt[i] = new DateRngFmt({locale:"en-US", length: length[i]})
-            templatec00[i] = fmt[i].dateFmt.formats.range["c00"][abbrLength[i]];
-            templatec01[i] = fmt[i].dateFmt.formats.range["c01"][abbrLength[i]];
-            templatec02[i] = fmt[i].dateFmt.formats.range["c02"][abbrLength[i]];
-            templatec03[i] = fmt[i].dateFmt.formats.range["c03"][abbrLength[i]];
-            templatec10[i] = fmt[i].dateFmt.formats.range["c10"][abbrLength[i]];
+        var fmt;
+        var data = setVariables();
+        var length = data["fullLength"];
+        var abbrLength = data["abbrLength"];
 
-            templatec11[i] = fmt[i].dateFmt.formats.range["c11"][abbrLength[i]];
-            templatec12[i] = fmt[i].dateFmt.formats.range["c12"][abbrLength[i]];
-            templatec20[i] = fmt[i].dateFmt.formats.range["c20"][abbrLength[i]];
-            templatec30[i] = fmt[i].dateFmt.formats.range["c30"][abbrLength[i]];
+        var templatec00 = [],templatec01 = [],templatec02 = [],templatec03 = [];
+        var templatec10 = [],templatec11 = [],templatec12 = [],templatec20 = [];
+        var templatec30 = [];
+        for (var i=0; i < 4; i++) {
+            fmt = new DateRngFmt({locale:"en-US", length: length[i]})
+            templatec00.push(fmt.dateFmt.formats.range["c00"][abbrLength[i]]);
+            templatec01.push(fmt.dateFmt.formats.range["c01"][abbrLength[i]]);
+            templatec02.push(fmt.dateFmt.formats.range["c02"][abbrLength[i]]);
+            templatec03.push(fmt.dateFmt.formats.range["c03"][abbrLength[i]]);
+            templatec10.push(fmt.dateFmt.formats.range["c10"][abbrLength[i]]);
+
+            templatec11.push(fmt.dateFmt.formats.range["c11"][abbrLength[i]]);
+            templatec12.push(fmt.dateFmt.formats.range["c12"][abbrLength[i]]);
+            templatec20.push(fmt.dateFmt.formats.range["c20"][abbrLength[i]]);
+            templatec30.push(fmt.dateFmt.formats.range["c30"][abbrLength[i]]);
         }
 
         test.equal(templatec00[0], '{sm} {sd}, {sy} at {st} – {et}');
@@ -2539,19 +2816,26 @@ module.exports.testdaterangefmt = {
     },
     testDateRngFmt_en_UG: function(test) {
         test.expect(36);
-        //dmy
-        for (i=0; i < 4; i++) {
-            fmt[i] = new DateRngFmt({locale:"en-UG", length: length[i]})
-            templatec00[i] = fmt[i].dateFmt.formats.range["c00"][abbrLength[i]];
-            templatec01[i] = fmt[i].dateFmt.formats.range["c01"][abbrLength[i]];
-            templatec02[i] = fmt[i].dateFmt.formats.range["c02"][abbrLength[i]];
-            templatec03[i] = fmt[i].dateFmt.formats.range["c03"][abbrLength[i]];
-            templatec10[i] = fmt[i].dateFmt.formats.range["c10"][abbrLength[i]];
+        var fmt;
+        var data = setVariables();
+        var length = data["fullLength"];
+        var abbrLength = data["abbrLength"];
 
-            templatec11[i] = fmt[i].dateFmt.formats.range["c11"][abbrLength[i]];
-            templatec12[i] = fmt[i].dateFmt.formats.range["c12"][abbrLength[i]];
-            templatec20[i] = fmt[i].dateFmt.formats.range["c20"][abbrLength[i]];
-            templatec30[i] = fmt[i].dateFmt.formats.range["c30"][abbrLength[i]];
+        var templatec00 = [],templatec01 = [],templatec02 = [],templatec03 = [];
+        var templatec10 = [],templatec11 = [],templatec12 = [],templatec20 = [];
+        var templatec30 = [];
+        for (var i=0; i < 4; i++) {
+            fmt = new DateRngFmt({locale:"en-UG", length: length[i]})
+            templatec00.push(fmt.dateFmt.formats.range["c00"][abbrLength[i]]);
+            templatec01.push(fmt.dateFmt.formats.range["c01"][abbrLength[i]]);
+            templatec02.push(fmt.dateFmt.formats.range["c02"][abbrLength[i]]);
+            templatec03.push(fmt.dateFmt.formats.range["c03"][abbrLength[i]]);
+            templatec10.push(fmt.dateFmt.formats.range["c10"][abbrLength[i]]);
+
+            templatec11.push(fmt.dateFmt.formats.range["c11"][abbrLength[i]]);
+            templatec12.push(fmt.dateFmt.formats.range["c12"][abbrLength[i]]);
+            templatec20.push(fmt.dateFmt.formats.range["c20"][abbrLength[i]]);
+            templatec30.push(fmt.dateFmt.formats.range["c30"][abbrLength[i]]);
         }
 
         test.equal(templatec00[0], '{sd} {sm} {sy} at {st} – {et}');
@@ -2603,19 +2887,26 @@ module.exports.testdaterangefmt = {
     },
     testDateRngFmt_en_ZA: function(test) {
         test.expect(36);
-        ////dmy
-        for (i=0; i < 4; i++) {
-            fmt[i] = new DateRngFmt({locale:"en-ZA", length: length[i]})
-            templatec00[i] = fmt[i].dateFmt.formats.range["c00"][abbrLength[i]];
-            templatec01[i] = fmt[i].dateFmt.formats.range["c01"][abbrLength[i]];
-            templatec02[i] = fmt[i].dateFmt.formats.range["c02"][abbrLength[i]];
-            templatec03[i] = fmt[i].dateFmt.formats.range["c03"][abbrLength[i]];
-            templatec10[i] = fmt[i].dateFmt.formats.range["c10"][abbrLength[i]];
+        var fmt;        ////dmy
+        var data = setVariables();
+        var length = data["fullLength"];
+        var abbrLength = data["abbrLength"];
 
-            templatec11[i] = fmt[i].dateFmt.formats.range["c11"][abbrLength[i]];
-            templatec12[i] = fmt[i].dateFmt.formats.range["c12"][abbrLength[i]];
-            templatec20[i] = fmt[i].dateFmt.formats.range["c20"][abbrLength[i]];
-            templatec30[i] = fmt[i].dateFmt.formats.range["c30"][abbrLength[i]];
+        var templatec00 = [],templatec01 = [],templatec02 = [],templatec03 = [];
+        var templatec10 = [],templatec11 = [],templatec12 = [],templatec20 = [];
+        var templatec30 = [];
+        for (var i=0; i < 4; i++) {
+            fmt = new DateRngFmt({locale:"en-ZA", length: length[i]})
+            templatec00.push(fmt.dateFmt.formats.range["c00"][abbrLength[i]]);
+            templatec01.push(fmt.dateFmt.formats.range["c01"][abbrLength[i]]);
+            templatec02.push(fmt.dateFmt.formats.range["c02"][abbrLength[i]]);
+            templatec03.push(fmt.dateFmt.formats.range["c03"][abbrLength[i]]);
+            templatec10.push(fmt.dateFmt.formats.range["c10"][abbrLength[i]]);
+
+            templatec11.push(fmt.dateFmt.formats.range["c11"][abbrLength[i]]);
+            templatec12.push(fmt.dateFmt.formats.range["c12"][abbrLength[i]]);
+            templatec20.push(fmt.dateFmt.formats.range["c20"][abbrLength[i]]);
+            templatec30.push(fmt.dateFmt.formats.range["c30"][abbrLength[i]]);
         }
 
         test.equal(templatec00[0], '{sd} {sm} {sy} at {st} – {et}');
@@ -2667,19 +2958,26 @@ module.exports.testdaterangefmt = {
     },
     testDateRngFmt_en_ZM: function(test) {
         test.expect(36);
-        //dmy
-        for (i=0; i < 4; i++) {
-            fmt[i] = new DateRngFmt({locale:"en-ZM", length: length[i]})
-            templatec00[i] = fmt[i].dateFmt.formats.range["c00"][abbrLength[i]];
-            templatec01[i] = fmt[i].dateFmt.formats.range["c01"][abbrLength[i]];
-            templatec02[i] = fmt[i].dateFmt.formats.range["c02"][abbrLength[i]];
-            templatec03[i] = fmt[i].dateFmt.formats.range["c03"][abbrLength[i]];
-            templatec10[i] = fmt[i].dateFmt.formats.range["c10"][abbrLength[i]];
+        var fmt;
+        var data = setVariables();
+        var length = data["fullLength"];
+        var abbrLength = data["abbrLength"];
 
-            templatec11[i] = fmt[i].dateFmt.formats.range["c11"][abbrLength[i]];
-            templatec12[i] = fmt[i].dateFmt.formats.range["c12"][abbrLength[i]];
-            templatec20[i] = fmt[i].dateFmt.formats.range["c20"][abbrLength[i]];
-            templatec30[i] = fmt[i].dateFmt.formats.range["c30"][abbrLength[i]];
+        var templatec00 = [],templatec01 = [],templatec02 = [],templatec03 = [];
+        var templatec10 = [],templatec11 = [],templatec12 = [],templatec20 = [];
+        var templatec30 = [];
+        for (var i=0; i < 4; i++) {
+            fmt = new DateRngFmt({locale:"en-ZM", length: length[i]})
+            templatec00.push(fmt.dateFmt.formats.range["c00"][abbrLength[i]]);
+            templatec01.push(fmt.dateFmt.formats.range["c01"][abbrLength[i]]);
+            templatec02.push(fmt.dateFmt.formats.range["c02"][abbrLength[i]]);
+            templatec03.push(fmt.dateFmt.formats.range["c03"][abbrLength[i]]);
+            templatec10.push(fmt.dateFmt.formats.range["c10"][abbrLength[i]]);
+
+            templatec11.push(fmt.dateFmt.formats.range["c11"][abbrLength[i]]);
+            templatec12.push(fmt.dateFmt.formats.range["c12"][abbrLength[i]]);
+            templatec20.push(fmt.dateFmt.formats.range["c20"][abbrLength[i]]);
+            templatec30.push(fmt.dateFmt.formats.range["c30"][abbrLength[i]]);
         }
 
         test.equal(templatec00[0], '{sd} {sm} {sy} at {st} – {et}');
@@ -2731,19 +3029,26 @@ module.exports.testdaterangefmt = {
     },
     testDateRngFmt_es_AR: function(test) {
         test.expect(36);
-        //dmy
-        for (i=0; i < 4; i++) {
-            fmt[i] = new DateRngFmt({locale:"es-AR", length: length[i]})
-            templatec00[i] = fmt[i].dateFmt.formats.range["c00"][abbrLength[i]];
-            templatec01[i] = fmt[i].dateFmt.formats.range["c01"][abbrLength[i]];
-            templatec02[i] = fmt[i].dateFmt.formats.range["c02"][abbrLength[i]];
-            templatec03[i] = fmt[i].dateFmt.formats.range["c03"][abbrLength[i]];
-            templatec10[i] = fmt[i].dateFmt.formats.range["c10"][abbrLength[i]];
+        var fmt;
+        var data = setVariables();
+        var length = data["fullLength"];
+        var abbrLength = data["abbrLength"];
 
-            templatec11[i] = fmt[i].dateFmt.formats.range["c11"][abbrLength[i]];
-            templatec12[i] = fmt[i].dateFmt.formats.range["c12"][abbrLength[i]];
-            templatec20[i] = fmt[i].dateFmt.formats.range["c20"][abbrLength[i]];
-            templatec30[i] = fmt[i].dateFmt.formats.range["c30"][abbrLength[i]];
+        var templatec00 = [],templatec01 = [],templatec02 = [],templatec03 = [];
+        var templatec10 = [],templatec11 = [],templatec12 = [],templatec20 = [];
+        var templatec30 = [];
+        for (var i=0; i < 4; i++) {
+            fmt = new DateRngFmt({locale:"es-AR", length: length[i]})
+            templatec00.push(fmt.dateFmt.formats.range["c00"][abbrLength[i]]);
+            templatec01.push(fmt.dateFmt.formats.range["c01"][abbrLength[i]]);
+            templatec02.push(fmt.dateFmt.formats.range["c02"][abbrLength[i]]);
+            templatec03.push(fmt.dateFmt.formats.range["c03"][abbrLength[i]]);
+            templatec10.push(fmt.dateFmt.formats.range["c10"][abbrLength[i]]);
+
+            templatec11.push(fmt.dateFmt.formats.range["c11"][abbrLength[i]]);
+            templatec12.push(fmt.dateFmt.formats.range["c12"][abbrLength[i]]);
+            templatec20.push(fmt.dateFmt.formats.range["c20"][abbrLength[i]]);
+            templatec30.push(fmt.dateFmt.formats.range["c30"][abbrLength[i]]);
         }
 
         test.equal(templatec00[0], '{sd} de {sm} de {sy}, {st} – {et}');
@@ -2795,19 +3100,26 @@ module.exports.testdaterangefmt = {
     },
     testDateRngFmt_es_BO: function(test) {
         test.expect(36);
-        //dmy
-        for (i=0; i < 4; i++) {
-            fmt[i] = new DateRngFmt({locale:"es-BO", length: length[i]})
-            templatec00[i] = fmt[i].dateFmt.formats.range["c00"][abbrLength[i]];
-            templatec01[i] = fmt[i].dateFmt.formats.range["c01"][abbrLength[i]];
-            templatec02[i] = fmt[i].dateFmt.formats.range["c02"][abbrLength[i]];
-            templatec03[i] = fmt[i].dateFmt.formats.range["c03"][abbrLength[i]];
-            templatec10[i] = fmt[i].dateFmt.formats.range["c10"][abbrLength[i]];
+        var fmt;
+        var data = setVariables();
+        var length = data["fullLength"];
+        var abbrLength = data["abbrLength"];
 
-            templatec11[i] = fmt[i].dateFmt.formats.range["c11"][abbrLength[i]];
-            templatec12[i] = fmt[i].dateFmt.formats.range["c12"][abbrLength[i]];
-            templatec20[i] = fmt[i].dateFmt.formats.range["c20"][abbrLength[i]];
-            templatec30[i] = fmt[i].dateFmt.formats.range["c30"][abbrLength[i]];
+        var templatec00 = [],templatec01 = [],templatec02 = [],templatec03 = [];
+        var templatec10 = [],templatec11 = [],templatec12 = [],templatec20 = [];
+        var templatec30 = [];
+        for (var i=0; i < 4; i++) {
+            fmt = new DateRngFmt({locale:"es-BO", length: length[i]})
+            templatec00.push(fmt.dateFmt.formats.range["c00"][abbrLength[i]]);
+            templatec01.push(fmt.dateFmt.formats.range["c01"][abbrLength[i]]);
+            templatec02.push(fmt.dateFmt.formats.range["c02"][abbrLength[i]]);
+            templatec03.push(fmt.dateFmt.formats.range["c03"][abbrLength[i]]);
+            templatec10.push(fmt.dateFmt.formats.range["c10"][abbrLength[i]]);
+
+            templatec11.push(fmt.dateFmt.formats.range["c11"][abbrLength[i]]);
+            templatec12.push(fmt.dateFmt.formats.range["c12"][abbrLength[i]]);
+            templatec20.push(fmt.dateFmt.formats.range["c20"][abbrLength[i]]);
+            templatec30.push(fmt.dateFmt.formats.range["c30"][abbrLength[i]]);
         }
 
         test.equal(templatec00[0], '{sd} de {sm} de {sy}, {st} – {et}');
@@ -2859,19 +3171,26 @@ module.exports.testdaterangefmt = {
     },
     testDateRngFmt_es_CL: function(test) {
         test.expect(36);
-        //dmy
-        for (i=0; i < 4; i++) {
-            fmt[i] = new DateRngFmt({locale:"es-CL", length: length[i]})
-            templatec00[i] = fmt[i].dateFmt.formats.range["c00"][abbrLength[i]];
-            templatec01[i] = fmt[i].dateFmt.formats.range["c01"][abbrLength[i]];
-            templatec02[i] = fmt[i].dateFmt.formats.range["c02"][abbrLength[i]];
-            templatec03[i] = fmt[i].dateFmt.formats.range["c03"][abbrLength[i]];
-            templatec10[i] = fmt[i].dateFmt.formats.range["c10"][abbrLength[i]];
+        var fmt;
+        var data = setVariables();
+        var length = data["fullLength"];
+        var abbrLength = data["abbrLength"];
 
-            templatec11[i] = fmt[i].dateFmt.formats.range["c11"][abbrLength[i]];
-            templatec12[i] = fmt[i].dateFmt.formats.range["c12"][abbrLength[i]];
-            templatec20[i] = fmt[i].dateFmt.formats.range["c20"][abbrLength[i]];
-            templatec30[i] = fmt[i].dateFmt.formats.range["c30"][abbrLength[i]];
+        var templatec00 = [],templatec01 = [],templatec02 = [],templatec03 = [];
+        var templatec10 = [],templatec11 = [],templatec12 = [],templatec20 = [];
+        var templatec30 = [];
+        for (var i=0; i < 4; i++) {
+            fmt = new DateRngFmt({locale:"es-CL", length: length[i]})
+            templatec00.push(fmt.dateFmt.formats.range["c00"][abbrLength[i]]);
+            templatec01.push(fmt.dateFmt.formats.range["c01"][abbrLength[i]]);
+            templatec02.push(fmt.dateFmt.formats.range["c02"][abbrLength[i]]);
+            templatec03.push(fmt.dateFmt.formats.range["c03"][abbrLength[i]]);
+            templatec10.push(fmt.dateFmt.formats.range["c10"][abbrLength[i]]);
+
+            templatec11.push(fmt.dateFmt.formats.range["c11"][abbrLength[i]]);
+            templatec12.push(fmt.dateFmt.formats.range["c12"][abbrLength[i]]);
+            templatec20.push(fmt.dateFmt.formats.range["c20"][abbrLength[i]]);
+            templatec30.push(fmt.dateFmt.formats.range["c30"][abbrLength[i]]);
         }
 
         test.equal(templatec00[0], '{sd} de {sm} de {sy}, {st} – {et}');
@@ -2923,19 +3242,26 @@ module.exports.testdaterangefmt = {
     },
     testDateRngFmt_es_CO: function(test) {
         test.expect(36);
-        //dmy
-        for (i=0; i < 4; i++) {
-            fmt[i] = new DateRngFmt({locale:"es-CO", length: length[i]})
-            templatec00[i] = fmt[i].dateFmt.formats.range["c00"][abbrLength[i]];
-            templatec01[i] = fmt[i].dateFmt.formats.range["c01"][abbrLength[i]];
-            templatec02[i] = fmt[i].dateFmt.formats.range["c02"][abbrLength[i]];
-            templatec03[i] = fmt[i].dateFmt.formats.range["c03"][abbrLength[i]];
-            templatec10[i] = fmt[i].dateFmt.formats.range["c10"][abbrLength[i]];
+        var fmt;
+        var data = setVariables();
+        var length = data["fullLength"];
+        var abbrLength = data["abbrLength"];
 
-            templatec11[i] = fmt[i].dateFmt.formats.range["c11"][abbrLength[i]];
-            templatec12[i] = fmt[i].dateFmt.formats.range["c12"][abbrLength[i]];
-            templatec20[i] = fmt[i].dateFmt.formats.range["c20"][abbrLength[i]];
-            templatec30[i] = fmt[i].dateFmt.formats.range["c30"][abbrLength[i]];
+        var templatec00 = [],templatec01 = [],templatec02 = [],templatec03 = [];
+        var templatec10 = [],templatec11 = [],templatec12 = [],templatec20 = [];
+        var templatec30 = [];
+        for (var i=0; i < 4; i++) {
+            fmt = new DateRngFmt({locale:"es-CO", length: length[i]})
+            templatec00.push(fmt.dateFmt.formats.range["c00"][abbrLength[i]]);
+            templatec01.push(fmt.dateFmt.formats.range["c01"][abbrLength[i]]);
+            templatec02.push(fmt.dateFmt.formats.range["c02"][abbrLength[i]]);
+            templatec03.push(fmt.dateFmt.formats.range["c03"][abbrLength[i]]);
+            templatec10.push(fmt.dateFmt.formats.range["c10"][abbrLength[i]]);
+
+            templatec11.push(fmt.dateFmt.formats.range["c11"][abbrLength[i]]);
+            templatec12.push(fmt.dateFmt.formats.range["c12"][abbrLength[i]]);
+            templatec20.push(fmt.dateFmt.formats.range["c20"][abbrLength[i]]);
+            templatec30.push(fmt.dateFmt.formats.range["c30"][abbrLength[i]]);
         }
 
         test.equal(templatec00[0], '{sd} de {sm} de {sy}, {st} – {et}');
@@ -2987,73 +3313,65 @@ module.exports.testdaterangefmt = {
     },
     testDateRngFmt_es_DO: function(test) {
         test.expect(36);
-        //dmy
-        for (i=0; i < 4; i++) {
-            fmt[i] = new DateRngFmt({locale:"es-DO", length: length[i]})
-            templatec00[i] = fmt[i].dateFmt.formats.range["c00"][abbrLength[i]];
-            templatec01[i] = fmt[i].dateFmt.formats.range["c01"][abbrLength[i]];
-            templatec02[i] = fmt[i].dateFmt.formats.range["c02"][abbrLength[i]];
-            templatec03[i] = fmt[i].dateFmt.formats.range["c03"][abbrLength[i]];
-            templatec10[i] = fmt[i].dateFmt.formats.range["c10"][abbrLength[i]];
+        var fmt;
+        var data = setVariables();
+        var length = data["fullLength"];
+        var abbrLength = data["abbrLength"];
 
-            templatec11[i] = fmt[i].dateFmt.formats.range["c11"][abbrLength[i]];
-            templatec12[i] = fmt[i].dateFmt.formats.range["c12"][abbrLength[i]];
-            templatec20[i] = fmt[i].dateFmt.formats.range["c20"][abbrLength[i]];
-            templatec30[i] = fmt[i].dateFmt.formats.range["c30"][abbrLength[i]];
-        }
-
-        for (i=0; i < 4; i++) {
-            fmt[i] = new DateRngFmt({locale:"es-BO", length: length[i]})
-            templatec00[i] = fmt[i].dateFmt.formats.range["c00"][abbrLength[i]];
-            templatec01[i] = fmt[i].dateFmt.formats.range["c01"][abbrLength[i]];
-            templatec02[i] = fmt[i].dateFmt.formats.range["c02"][abbrLength[i]];
-            templatec03[i] = fmt[i].dateFmt.formats.range["c03"][abbrLength[i]];
-            templatec10[i] = fmt[i].dateFmt.formats.range["c10"][abbrLength[i]];
-
-            templatec11[i] = fmt[i].dateFmt.formats.range["c11"][abbrLength[i]];
-            templatec12[i] = fmt[i].dateFmt.formats.range["c12"][abbrLength[i]];
-            templatec20[i] = fmt[i].dateFmt.formats.range["c20"][abbrLength[i]];
-            templatec30[i] = fmt[i].dateFmt.formats.range["c30"][abbrLength[i]];
+        var templatec00 = [],templatec01 = [],templatec02 = [],templatec03 = [];
+        var templatec10 = [],templatec11 = [],templatec12 = [],templatec20 = [];
+        var templatec30 = [];
+        for (var i=0; i < 4; i++) {
+            fmt = new DateRngFmt({locale:"es-DO", length: length[i]})
+            templatec00.push(fmt.dateFmt.formats.range["c00"][abbrLength[i]]);
+            templatec01.push(fmt.dateFmt.formats.range["c01"][abbrLength[i]]);
+            templatec02.push(fmt.dateFmt.formats.range["c02"][abbrLength[i]]);
+            templatec03.push(fmt.dateFmt.formats.range["c03"][abbrLength[i]]);
+            templatec10.push(fmt.dateFmt.formats.range["c10"][abbrLength[i]]);
+            templatec11.push(fmt.dateFmt.formats.range["c11"][abbrLength[i]]);
+            templatec12.push(fmt.dateFmt.formats.range["c12"][abbrLength[i]]);
+            templatec20.push(fmt.dateFmt.formats.range["c20"][abbrLength[i]]);
+            templatec30.push(fmt.dateFmt.formats.range["c30"][abbrLength[i]]);
         }
 
         test.equal(templatec00[0], '{sd} de {sm} de {sy}, {st} – {et}');
         test.equal(templatec00[1], '{sd} de {sm} de {sy}, {st} – {et}');
-        test.equal(templatec00[2], '{sd} {sm} de {sy} {st} – {et}');
+        test.equal(templatec00[2], '{sd} {sm} {sy} {st} – {et}');
         test.equal(templatec00[3], '{sd}/{sm}/{sy} {st} – {et}');
 
         test.equal(templatec01[0], '{sd} de {sm} de {sy}, {st} – {ed} de {em} de {ey}, {et}');
         test.equal(templatec01[1], '{sd} de {sm} de {sy}, {st} – {ed} de {em} de {ey}, {et}');
-        test.equal(templatec01[2], '{sd} {sm} de {sy} {st} – {ed} {em} de {ey} {et}');
+        test.equal(templatec01[2], '{sd} {sm} {sy} {st} – {ed} {em} {ey} {et}');
         test.equal(templatec01[3], '{sd}/{sm}/{sy} {st} – {ed}/{em}/{ey} {et}');
 
         test.equal(templatec02[1], '{sd} de {sm} de {sy}, {st} – {ed} de {em} de {ey}, {et}');
         test.equal(templatec02[0], '{sd} de {sm} de {sy}, {st} – {ed} de {em} de {ey}, {et}');
-        test.equal(templatec02[2], '{sd} {sm} de {sy} {st} – {ed} {em} de {ey} {et}');
+        test.equal(templatec02[2], '{sd} {sm} {sy} {st} – {ed} {em} {ey} {et}');
         test.equal(templatec02[3], '{sd}/{sm}/{sy} {st} – {ed}/{em}/{ey} {et}');
 
         test.equal(templatec03[0], '{sd} de {sm} de {sy}, {st} – {ed} de {em} de {ey}, {et}');
         test.equal(templatec03[1], '{sd} de {sm} de {sy}, {st} – {ed} de {em} de {ey}, {et}');
-        test.equal(templatec03[2], '{sd} {sm} de {sy} {st} – {ed} {em} de {ey} {et}');
+        test.equal(templatec03[2], '{sd} {sm} {sy} {st} – {ed} {em} {ey} {et}');
         test.equal(templatec03[3], '{sd}/{sm}/{sy} {st} – {ed}/{em}/{ey} {et}');
 
         test.equal(templatec10[0], '{sd} – {ed} de {em} de {ey}');
         test.equal(templatec10[1], '{sd} – {ed} de {em} de {ey}');
-        test.equal(templatec10[2], '{sd} – {ed} {em} de {ey}');
+        test.equal(templatec10[2], '{sd} – {ed} {em} {ey}');
         test.equal(templatec10[3], '{sd} – {ed}/{em}/{ey}');
 
         test.equal(templatec11[0], '{sd} de {sm} – {ed} de {em} de {ey}');
         test.equal(templatec11[1], '{sd} de {sm} – {ed} de {em} de {ey}');
-        test.equal(templatec11[2], '{sd} {sm} – {ed} {em} de {ey}');
+        test.equal(templatec11[2], '{sd} {sm} – {ed} {em} {ey}');
         test.equal(templatec11[3], '{sd}/{sm} – {ed}/{em}/{ey}');
 
         test.equal(templatec12[0], '{sd} de {sm} de {sy} – {ed} de {em} de {ey}');
         test.equal(templatec12[1], '{sd} de {sm} de {sy} – {ed} de {em} de {ey}');
-        test.equal(templatec12[2], '{sd} {sm} de {sy} – {ed} {em} de {ey}');
+        test.equal(templatec12[2], '{sd} {sm} {sy} – {ed} {em} {ey}');
         test.equal(templatec12[3], '{sd}/{sm}/{sy} – {ed}/{em}/{ey}');
 
         test.equal(templatec20[0], '{sm} de {sy} – {em} de {ey}');
         test.equal(templatec20[1], '{sm} de {sy} – {em} de {ey}');
-        test.equal(templatec20[2], '{sm} de {sy} – {em} de {ey}');
+        test.equal(templatec20[2], '{sm} {sy} – {em} {ey}');
         test.equal(templatec20[3], '{sm}/{sy} – {em}/{ey}');
 
         test.equal(templatec30[0], "{sy} – {ey}");
@@ -3065,19 +3383,26 @@ module.exports.testdaterangefmt = {
     },
     testDateRngFmt_es_EC: function(test) {
         test.expect(36);
-        //dmy
-        for (i=0; i < 4; i++) {
-            fmt[i] = new DateRngFmt({locale:"es-EC", length: length[i]})
-            templatec00[i] = fmt[i].dateFmt.formats.range["c00"][abbrLength[i]];
-            templatec01[i] = fmt[i].dateFmt.formats.range["c01"][abbrLength[i]];
-            templatec02[i] = fmt[i].dateFmt.formats.range["c02"][abbrLength[i]];
-            templatec03[i] = fmt[i].dateFmt.formats.range["c03"][abbrLength[i]];
-            templatec10[i] = fmt[i].dateFmt.formats.range["c10"][abbrLength[i]];
+        var fmt;
+        var data = setVariables();
+        var length = data["fullLength"];
+        var abbrLength = data["abbrLength"];
 
-            templatec11[i] = fmt[i].dateFmt.formats.range["c11"][abbrLength[i]];
-            templatec12[i] = fmt[i].dateFmt.formats.range["c12"][abbrLength[i]];
-            templatec20[i] = fmt[i].dateFmt.formats.range["c20"][abbrLength[i]];
-            templatec30[i] = fmt[i].dateFmt.formats.range["c30"][abbrLength[i]];
+        var templatec00 = [],templatec01 = [],templatec02 = [],templatec03 = [];
+        var templatec10 = [],templatec11 = [],templatec12 = [],templatec20 = [];
+        var templatec30 = [];
+        for (var i=0; i < 4; i++) {
+            fmt = new DateRngFmt({locale:"es-EC", length: length[i]})
+            templatec00.push(fmt.dateFmt.formats.range["c00"][abbrLength[i]]);
+            templatec01.push(fmt.dateFmt.formats.range["c01"][abbrLength[i]]);
+            templatec02.push(fmt.dateFmt.formats.range["c02"][abbrLength[i]]);
+            templatec03.push(fmt.dateFmt.formats.range["c03"][abbrLength[i]]);
+            templatec10.push(fmt.dateFmt.formats.range["c10"][abbrLength[i]]);
+
+            templatec11.push(fmt.dateFmt.formats.range["c11"][abbrLength[i]]);
+            templatec12.push(fmt.dateFmt.formats.range["c12"][abbrLength[i]]);
+            templatec20.push(fmt.dateFmt.formats.range["c20"][abbrLength[i]]);
+            templatec30.push(fmt.dateFmt.formats.range["c30"][abbrLength[i]]);
         }
 
         test.equal(templatec00[0], '{sd} de {sm} de {sy}, {st} – {et}');
@@ -3129,19 +3454,26 @@ module.exports.testdaterangefmt = {
     },
     testDateRngFmt_es_ES: function(test) {
         test.expect(36);
-        //dmy
-        for (i=0; i < 4; i++) {
-            fmt[i] = new DateRngFmt({locale:"es-ES", length: length[i]})
-            templatec00[i] = fmt[i].dateFmt.formats.range["c00"][abbrLength[i]];
-            templatec01[i] = fmt[i].dateFmt.formats.range["c01"][abbrLength[i]];
-            templatec02[i] = fmt[i].dateFmt.formats.range["c02"][abbrLength[i]];
-            templatec03[i] = fmt[i].dateFmt.formats.range["c03"][abbrLength[i]];
-            templatec10[i] = fmt[i].dateFmt.formats.range["c10"][abbrLength[i]];
+        var fmt;
+        var data = setVariables();
+        var length = data["fullLength"];
+        var abbrLength = data["abbrLength"];
 
-            templatec11[i] = fmt[i].dateFmt.formats.range["c11"][abbrLength[i]];
-            templatec12[i] = fmt[i].dateFmt.formats.range["c12"][abbrLength[i]];
-            templatec20[i] = fmt[i].dateFmt.formats.range["c20"][abbrLength[i]];
-            templatec30[i] = fmt[i].dateFmt.formats.range["c30"][abbrLength[i]];
+        var templatec00 = [],templatec01 = [],templatec02 = [],templatec03 = [];
+        var templatec10 = [],templatec11 = [],templatec12 = [],templatec20 = [];
+        var templatec30 = [];
+        for (var i=0; i < 4; i++) {
+            fmt = new DateRngFmt({locale:"es-ES", length: length[i]})
+            templatec00.push(fmt.dateFmt.formats.range["c00"][abbrLength[i]]);
+            templatec01.push(fmt.dateFmt.formats.range["c01"][abbrLength[i]]);
+            templatec02.push(fmt.dateFmt.formats.range["c02"][abbrLength[i]]);
+            templatec03.push(fmt.dateFmt.formats.range["c03"][abbrLength[i]]);
+            templatec10.push(fmt.dateFmt.formats.range["c10"][abbrLength[i]]);
+
+            templatec11.push(fmt.dateFmt.formats.range["c11"][abbrLength[i]]);
+            templatec12.push(fmt.dateFmt.formats.range["c12"][abbrLength[i]]);
+            templatec20.push(fmt.dateFmt.formats.range["c20"][abbrLength[i]]);
+            templatec30.push(fmt.dateFmt.formats.range["c30"][abbrLength[i]]);
         }
 
         test.equal(templatec00[0], '{sd} de {sm} de {sy}, {st} – {et}');
@@ -3193,19 +3525,26 @@ module.exports.testdaterangefmt = {
     },
     testDateRngFmt_es_GT: function(test) {
         test.expect(36);
-        //dmy
-        for (i=0; i < 4; i++) {
-            fmt[i] = new DateRngFmt({locale:"es-GT", length: length[i]})
-            templatec00[i] = fmt[i].dateFmt.formats.range["c00"][abbrLength[i]];
-            templatec01[i] = fmt[i].dateFmt.formats.range["c01"][abbrLength[i]];
-            templatec02[i] = fmt[i].dateFmt.formats.range["c02"][abbrLength[i]];
-            templatec03[i] = fmt[i].dateFmt.formats.range["c03"][abbrLength[i]];
-            templatec10[i] = fmt[i].dateFmt.formats.range["c10"][abbrLength[i]];
+        var fmt;
+        var data = setVariables();
+        var length = data["fullLength"];
+        var abbrLength = data["abbrLength"];
 
-            templatec11[i] = fmt[i].dateFmt.formats.range["c11"][abbrLength[i]];
-            templatec12[i] = fmt[i].dateFmt.formats.range["c12"][abbrLength[i]];
-            templatec20[i] = fmt[i].dateFmt.formats.range["c20"][abbrLength[i]];
-            templatec30[i] = fmt[i].dateFmt.formats.range["c30"][abbrLength[i]];
+        var templatec00 = [],templatec01 = [],templatec02 = [],templatec03 = [];
+        var templatec10 = [],templatec11 = [],templatec12 = [],templatec20 = [];
+        var templatec30 = [];
+        for (var i=0; i < 4; i++) {
+            fmt = new DateRngFmt({locale:"es-GT", length: length[i]})
+            templatec00.push(fmt.dateFmt.formats.range["c00"][abbrLength[i]]);
+            templatec01.push(fmt.dateFmt.formats.range["c01"][abbrLength[i]]);
+            templatec02.push(fmt.dateFmt.formats.range["c02"][abbrLength[i]]);
+            templatec03.push(fmt.dateFmt.formats.range["c03"][abbrLength[i]]);
+            templatec10.push(fmt.dateFmt.formats.range["c10"][abbrLength[i]]);
+
+            templatec11.push(fmt.dateFmt.formats.range["c11"][abbrLength[i]]);
+            templatec12.push(fmt.dateFmt.formats.range["c12"][abbrLength[i]]);
+            templatec20.push(fmt.dateFmt.formats.range["c20"][abbrLength[i]]);
+            templatec30.push(fmt.dateFmt.formats.range["c30"][abbrLength[i]]);
         }
 
         test.equal(templatec00[0], '{sd} de {sm} de {sy}, {st} – {et}');
@@ -3257,19 +3596,26 @@ module.exports.testdaterangefmt = {
     },
     testDateRngFmt_es_HN: function(test) {
         test.expect(36);
-        //dmy
-        for (i=0; i < 4; i++) {
-            fmt[i] = new DateRngFmt({locale:"es-HN", length: length[i]})
-            templatec00[i] = fmt[i].dateFmt.formats.range["c00"][abbrLength[i]];
-            templatec01[i] = fmt[i].dateFmt.formats.range["c01"][abbrLength[i]];
-            templatec02[i] = fmt[i].dateFmt.formats.range["c02"][abbrLength[i]];
-            templatec03[i] = fmt[i].dateFmt.formats.range["c03"][abbrLength[i]];
-            templatec10[i] = fmt[i].dateFmt.formats.range["c10"][abbrLength[i]];
+        var fmt;
+        var data = setVariables();
+        var length = data["fullLength"];
+        var abbrLength = data["abbrLength"];
 
-            templatec11[i] = fmt[i].dateFmt.formats.range["c11"][abbrLength[i]];
-            templatec12[i] = fmt[i].dateFmt.formats.range["c12"][abbrLength[i]];
-            templatec20[i] = fmt[i].dateFmt.formats.range["c20"][abbrLength[i]];
-            templatec30[i] = fmt[i].dateFmt.formats.range["c30"][abbrLength[i]];
+        var templatec00 = [],templatec01 = [],templatec02 = [],templatec03 = [];
+        var templatec10 = [],templatec11 = [],templatec12 = [],templatec20 = [];
+        var templatec30 = [];
+        for (var i=0; i < 4; i++) {
+            fmt = new DateRngFmt({locale:"es-HN", length: length[i]})
+            templatec00.push(fmt.dateFmt.formats.range["c00"][abbrLength[i]]);
+            templatec01.push(fmt.dateFmt.formats.range["c01"][abbrLength[i]]);
+            templatec02.push(fmt.dateFmt.formats.range["c02"][abbrLength[i]]);
+            templatec03.push(fmt.dateFmt.formats.range["c03"][abbrLength[i]]);
+            templatec10.push(fmt.dateFmt.formats.range["c10"][abbrLength[i]]);
+
+            templatec11.push(fmt.dateFmt.formats.range["c11"][abbrLength[i]]);
+            templatec12.push(fmt.dateFmt.formats.range["c12"][abbrLength[i]]);
+            templatec20.push(fmt.dateFmt.formats.range["c20"][abbrLength[i]]);
+            templatec30.push(fmt.dateFmt.formats.range["c30"][abbrLength[i]]);
         }
 
         test.equal(templatec00[0], '{sd} de {sm} de {sy}, {st} – {et}');
@@ -3321,20 +3667,27 @@ module.exports.testdaterangefmt = {
     },
     testDateRngFmt_es_MX: function(test) {
         test.expect(36);
-        //dmy
+        var fmt;        //dmy
         // medium dateformat CLDR 34 change
-        for (i=0; i < 4; i++) {
-            fmt[i] = new DateRngFmt({locale:"es-MX", length: length[i]})
-            templatec00[i] = fmt[i].dateFmt.formats.range["c00"][abbrLength[i]];
-            templatec01[i] = fmt[i].dateFmt.formats.range["c01"][abbrLength[i]];
-            templatec02[i] = fmt[i].dateFmt.formats.range["c02"][abbrLength[i]];
-            templatec03[i] = fmt[i].dateFmt.formats.range["c03"][abbrLength[i]];
-            templatec10[i] = fmt[i].dateFmt.formats.range["c10"][abbrLength[i]];
+        var data = setVariables();
+        var length = data["fullLength"];
+        var abbrLength = data["abbrLength"];
 
-            templatec11[i] = fmt[i].dateFmt.formats.range["c11"][abbrLength[i]];
-            templatec12[i] = fmt[i].dateFmt.formats.range["c12"][abbrLength[i]];
-            templatec20[i] = fmt[i].dateFmt.formats.range["c20"][abbrLength[i]];
-            templatec30[i] = fmt[i].dateFmt.formats.range["c30"][abbrLength[i]];
+        var templatec00 = [],templatec01 = [],templatec02 = [],templatec03 = [];
+        var templatec10 = [],templatec11 = [],templatec12 = [],templatec20 = [];
+        var templatec30 = [];
+        for (var i=0; i < 4; i++) {
+            fmt = new DateRngFmt({locale:"es-MX", length: length[i]})
+            templatec00.push(fmt.dateFmt.formats.range["c00"][abbrLength[i]]);
+            templatec01.push(fmt.dateFmt.formats.range["c01"][abbrLength[i]]);
+            templatec02.push(fmt.dateFmt.formats.range["c02"][abbrLength[i]]);
+            templatec03.push(fmt.dateFmt.formats.range["c03"][abbrLength[i]]);
+            templatec10.push(fmt.dateFmt.formats.range["c10"][abbrLength[i]]);
+
+            templatec11.push(fmt.dateFmt.formats.range["c11"][abbrLength[i]]);
+            templatec12.push(fmt.dateFmt.formats.range["c12"][abbrLength[i]]);
+            templatec20.push(fmt.dateFmt.formats.range["c20"][abbrLength[i]]);
+            templatec30.push(fmt.dateFmt.formats.range["c30"][abbrLength[i]]);
         }
 
         test.equal(templatec00[0], '{sd} de {sm} de {sy}, {st} – {et}');
@@ -3386,19 +3739,26 @@ module.exports.testdaterangefmt = {
     },
     testDateRngFmt_es_NI: function(test) {
         test.expect(36);
-        //dmy
-        for (i=0; i < 4; i++) {
-            fmt[i] = new DateRngFmt({locale:"es-NI", length: length[i]})
-            templatec00[i] = fmt[i].dateFmt.formats.range["c00"][abbrLength[i]];
-            templatec01[i] = fmt[i].dateFmt.formats.range["c01"][abbrLength[i]];
-            templatec02[i] = fmt[i].dateFmt.formats.range["c02"][abbrLength[i]];
-            templatec03[i] = fmt[i].dateFmt.formats.range["c03"][abbrLength[i]];
-            templatec10[i] = fmt[i].dateFmt.formats.range["c10"][abbrLength[i]];
+        var fmt;
+        var data = setVariables();
+        var length = data["fullLength"];
+        var abbrLength = data["abbrLength"];
 
-            templatec11[i] = fmt[i].dateFmt.formats.range["c11"][abbrLength[i]];
-            templatec12[i] = fmt[i].dateFmt.formats.range["c12"][abbrLength[i]];
-            templatec20[i] = fmt[i].dateFmt.formats.range["c20"][abbrLength[i]];
-            templatec30[i] = fmt[i].dateFmt.formats.range["c30"][abbrLength[i]];
+        var templatec00 = [],templatec01 = [],templatec02 = [],templatec03 = [];
+        var templatec10 = [],templatec11 = [],templatec12 = [],templatec20 = [];
+        var templatec30 = [];
+        for (var i=0; i < 4; i++) {
+            fmt = new DateRngFmt({locale:"es-NI", length: length[i]})
+            templatec00.push(fmt.dateFmt.formats.range["c00"][abbrLength[i]]);
+            templatec01.push(fmt.dateFmt.formats.range["c01"][abbrLength[i]]);
+            templatec02.push(fmt.dateFmt.formats.range["c02"][abbrLength[i]]);
+            templatec03.push(fmt.dateFmt.formats.range["c03"][abbrLength[i]]);
+            templatec10.push(fmt.dateFmt.formats.range["c10"][abbrLength[i]]);
+
+            templatec11.push(fmt.dateFmt.formats.range["c11"][abbrLength[i]]);
+            templatec12.push(fmt.dateFmt.formats.range["c12"][abbrLength[i]]);
+            templatec20.push(fmt.dateFmt.formats.range["c20"][abbrLength[i]]);
+            templatec30.push(fmt.dateFmt.formats.range["c30"][abbrLength[i]]);
         }
 
         test.equal(templatec00[0], '{sd} de {sm} de {sy}, {st} – {et}');
@@ -3450,20 +3810,27 @@ module.exports.testdaterangefmt = {
     },
     testDateRngFmt_es_PA: function(test) {
         test.expect(36);
-        // dmy
+        var fmt;        // dmy
         // mdy (shor,medium)
-        for (i=0; i < 4; i++) {
-            fmt[i] = new DateRngFmt({locale:"es-PA", length: length[i]})
-            templatec00[i] = fmt[i].dateFmt.formats.range["c00"][abbrLength[i]];
-            templatec01[i] = fmt[i].dateFmt.formats.range["c01"][abbrLength[i]];
-            templatec02[i] = fmt[i].dateFmt.formats.range["c02"][abbrLength[i]];
-            templatec03[i] = fmt[i].dateFmt.formats.range["c03"][abbrLength[i]];
-            templatec10[i] = fmt[i].dateFmt.formats.range["c10"][abbrLength[i]];
+        var data = setVariables();
+        var length = data["fullLength"];
+        var abbrLength = data["abbrLength"];
 
-            templatec11[i] = fmt[i].dateFmt.formats.range["c11"][abbrLength[i]];
-            templatec12[i] = fmt[i].dateFmt.formats.range["c12"][abbrLength[i]];
-            templatec20[i] = fmt[i].dateFmt.formats.range["c20"][abbrLength[i]];
-            templatec30[i] = fmt[i].dateFmt.formats.range["c30"][abbrLength[i]];
+        var templatec00 = [],templatec01 = [],templatec02 = [],templatec03 = [];
+        var templatec10 = [],templatec11 = [],templatec12 = [],templatec20 = [];
+        var templatec30 = [];
+        for (var i=0; i < 4; i++) {
+            fmt = new DateRngFmt({locale:"es-PA", length: length[i]})
+            templatec00.push(fmt.dateFmt.formats.range["c00"][abbrLength[i]]);
+            templatec01.push(fmt.dateFmt.formats.range["c01"][abbrLength[i]]);
+            templatec02.push(fmt.dateFmt.formats.range["c02"][abbrLength[i]]);
+            templatec03.push(fmt.dateFmt.formats.range["c03"][abbrLength[i]]);
+            templatec10.push(fmt.dateFmt.formats.range["c10"][abbrLength[i]]);
+
+            templatec11.push(fmt.dateFmt.formats.range["c11"][abbrLength[i]]);
+            templatec12.push(fmt.dateFmt.formats.range["c12"][abbrLength[i]]);
+            templatec20.push(fmt.dateFmt.formats.range["c20"][abbrLength[i]]);
+            templatec30.push(fmt.dateFmt.formats.range["c30"][abbrLength[i]]);
         }
 
         test.equal(templatec00[0], '{sd} de {sm} de {sy}, {st} – {et}');
@@ -3515,19 +3882,26 @@ module.exports.testdaterangefmt = {
     },
     testDateRngFmt_es_PE: function(test) {
         test.expect(36);
-        //dmy
-        for (i=0; i < 4; i++) {
-            fmt[i] = new DateRngFmt({locale:"es-PE", length: length[i]})
-            templatec00[i] = fmt[i].dateFmt.formats.range["c00"][abbrLength[i]];
-            templatec01[i] = fmt[i].dateFmt.formats.range["c01"][abbrLength[i]];
-            templatec02[i] = fmt[i].dateFmt.formats.range["c02"][abbrLength[i]];
-            templatec03[i] = fmt[i].dateFmt.formats.range["c03"][abbrLength[i]];
-            templatec10[i] = fmt[i].dateFmt.formats.range["c10"][abbrLength[i]];
+        var fmt;
+        var data = setVariables();
+        var length = data["fullLength"];
+        var abbrLength = data["abbrLength"];
 
-            templatec11[i] = fmt[i].dateFmt.formats.range["c11"][abbrLength[i]];
-            templatec12[i] = fmt[i].dateFmt.formats.range["c12"][abbrLength[i]];
-            templatec20[i] = fmt[i].dateFmt.formats.range["c20"][abbrLength[i]];
-            templatec30[i] = fmt[i].dateFmt.formats.range["c30"][abbrLength[i]];
+        var templatec00 = [],templatec01 = [],templatec02 = [],templatec03 = [];
+        var templatec10 = [],templatec11 = [],templatec12 = [],templatec20 = [];
+        var templatec30 = [];
+        for (var i=0; i < 4; i++) {
+            fmt = new DateRngFmt({locale:"es-PE", length: length[i]})
+            templatec00.push(fmt.dateFmt.formats.range["c00"][abbrLength[i]]);
+            templatec01.push(fmt.dateFmt.formats.range["c01"][abbrLength[i]]);
+            templatec02.push(fmt.dateFmt.formats.range["c02"][abbrLength[i]]);
+            templatec03.push(fmt.dateFmt.formats.range["c03"][abbrLength[i]]);
+            templatec10.push(fmt.dateFmt.formats.range["c10"][abbrLength[i]]);
+
+            templatec11.push(fmt.dateFmt.formats.range["c11"][abbrLength[i]]);
+            templatec12.push(fmt.dateFmt.formats.range["c12"][abbrLength[i]]);
+            templatec20.push(fmt.dateFmt.formats.range["c20"][abbrLength[i]]);
+            templatec30.push(fmt.dateFmt.formats.range["c30"][abbrLength[i]]);
         }
 
         test.equal(templatec00[0], '{sd} de {sm} de {sy}, {st} – {et}');
@@ -3579,20 +3953,28 @@ module.exports.testdaterangefmt = {
     },
     testDateRngFmt_es_PR: function(test) {
         test.expect(36);
-        //dmy
+        var fmt;        //dmy
         //mdy (short,medium)
-        for (i=0; i < 4; i++) {
-            fmt[i] = new DateRngFmt({locale:"es-PR", length: length[i]})
-            templatec00[i] = fmt[i].dateFmt.formats.range["c00"][abbrLength[i]];
-            templatec01[i] = fmt[i].dateFmt.formats.range["c01"][abbrLength[i]];
-            templatec02[i] = fmt[i].dateFmt.formats.range["c02"][abbrLength[i]];
-            templatec03[i] = fmt[i].dateFmt.formats.range["c03"][abbrLength[i]];
-            templatec10[i] = fmt[i].dateFmt.formats.range["c10"][abbrLength[i]];
 
-            templatec11[i] = fmt[i].dateFmt.formats.range["c11"][abbrLength[i]];
-            templatec12[i] = fmt[i].dateFmt.formats.range["c12"][abbrLength[i]];
-            templatec20[i] = fmt[i].dateFmt.formats.range["c20"][abbrLength[i]];
-            templatec30[i] = fmt[i].dateFmt.formats.range["c30"][abbrLength[i]];
+        var data = setVariables();
+        var length = data["fullLength"];
+        var abbrLength = data["abbrLength"];
+
+        var templatec00 = [],templatec01 = [],templatec02 = [],templatec03 = [];
+        var templatec10 = [],templatec11 = [],templatec12 = [],templatec20 = [];
+        var templatec30 = [];
+        for (var i=0; i < 4; i++) {
+            fmt = new DateRngFmt({locale:"es-PR", length: length[i]})
+            templatec00.push(fmt.dateFmt.formats.range["c00"][abbrLength[i]]);
+            templatec01.push(fmt.dateFmt.formats.range["c01"][abbrLength[i]]);
+            templatec02.push(fmt.dateFmt.formats.range["c02"][abbrLength[i]]);
+            templatec03.push(fmt.dateFmt.formats.range["c03"][abbrLength[i]]);
+            templatec10.push(fmt.dateFmt.formats.range["c10"][abbrLength[i]]);
+
+            templatec11.push(fmt.dateFmt.formats.range["c11"][abbrLength[i]]);
+            templatec12.push(fmt.dateFmt.formats.range["c12"][abbrLength[i]]);
+            templatec20.push(fmt.dateFmt.formats.range["c20"][abbrLength[i]]);
+            templatec30.push(fmt.dateFmt.formats.range["c30"][abbrLength[i]]);
         }
 
         test.equal(templatec00[0], '{sd} de {sm} de {sy}, {st} – {et}');
@@ -3644,19 +4026,26 @@ module.exports.testdaterangefmt = {
     },
     testDateRngFmt_es_PY: function(test) {
         test.expect(36);
-        //dmy
-        for (i=0; i < 4; i++) {
-            fmt[i] = new DateRngFmt({locale:"es-PY", length: length[i]})
-            templatec00[i] = fmt[i].dateFmt.formats.range["c00"][abbrLength[i]];
-            templatec01[i] = fmt[i].dateFmt.formats.range["c01"][abbrLength[i]];
-            templatec02[i] = fmt[i].dateFmt.formats.range["c02"][abbrLength[i]];
-            templatec03[i] = fmt[i].dateFmt.formats.range["c03"][abbrLength[i]];
-            templatec10[i] = fmt[i].dateFmt.formats.range["c10"][abbrLength[i]];
+        var fmt;
+        var data = setVariables();
+        var length = data["fullLength"];
+        var abbrLength = data["abbrLength"];
 
-            templatec11[i] = fmt[i].dateFmt.formats.range["c11"][abbrLength[i]];
-            templatec12[i] = fmt[i].dateFmt.formats.range["c12"][abbrLength[i]];
-            templatec20[i] = fmt[i].dateFmt.formats.range["c20"][abbrLength[i]];
-            templatec30[i] = fmt[i].dateFmt.formats.range["c30"][abbrLength[i]];
+        var templatec00 = [],templatec01 = [],templatec02 = [],templatec03 = [];
+        var templatec10 = [],templatec11 = [],templatec12 = [],templatec20 = [];
+        var templatec30 = [];
+        for (var i=0; i < 4; i++) {
+            fmt = new DateRngFmt({locale:"es-PY", length: length[i]})
+            templatec00.push(fmt.dateFmt.formats.range["c00"][abbrLength[i]]);
+            templatec01.push(fmt.dateFmt.formats.range["c01"][abbrLength[i]]);
+            templatec02.push(fmt.dateFmt.formats.range["c02"][abbrLength[i]]);
+            templatec03.push(fmt.dateFmt.formats.range["c03"][abbrLength[i]]);
+            templatec10.push(fmt.dateFmt.formats.range["c10"][abbrLength[i]]);
+
+            templatec11.push(fmt.dateFmt.formats.range["c11"][abbrLength[i]]);
+            templatec12.push(fmt.dateFmt.formats.range["c12"][abbrLength[i]]);
+            templatec20.push(fmt.dateFmt.formats.range["c20"][abbrLength[i]]);
+            templatec30.push(fmt.dateFmt.formats.range["c30"][abbrLength[i]]);
         }
 
         test.equal(templatec00[0], '{sd} de {sm} de {sy}, {st} – {et}');
@@ -3708,19 +4097,26 @@ module.exports.testdaterangefmt = {
     },
     testDateRngFmt_es_SV: function(test) {
         test.expect(36);
-        //dmy
-        for (i=0; i < 4; i++) {
-            fmt[i] = new DateRngFmt({locale:"es-SV", length: length[i]})
-            templatec00[i] = fmt[i].dateFmt.formats.range["c00"][abbrLength[i]];
-            templatec01[i] = fmt[i].dateFmt.formats.range["c01"][abbrLength[i]];
-            templatec02[i] = fmt[i].dateFmt.formats.range["c02"][abbrLength[i]];
-            templatec03[i] = fmt[i].dateFmt.formats.range["c03"][abbrLength[i]];
-            templatec10[i] = fmt[i].dateFmt.formats.range["c10"][abbrLength[i]];
+        var fmt;
+        var data = setVariables();
+        var length = data["fullLength"];
+        var abbrLength = data["abbrLength"];
 
-            templatec11[i] = fmt[i].dateFmt.formats.range["c11"][abbrLength[i]];
-            templatec12[i] = fmt[i].dateFmt.formats.range["c12"][abbrLength[i]];
-            templatec20[i] = fmt[i].dateFmt.formats.range["c20"][abbrLength[i]];
-            templatec30[i] = fmt[i].dateFmt.formats.range["c30"][abbrLength[i]];
+        var templatec00 = [],templatec01 = [],templatec02 = [],templatec03 = [];
+        var templatec10 = [],templatec11 = [],templatec12 = [],templatec20 = [];
+        var templatec30 = [];
+        for (var i=0; i < 4; i++) {
+            fmt = new DateRngFmt({locale:"es-SV", length: length[i]})
+            templatec00.push(fmt.dateFmt.formats.range["c00"][abbrLength[i]]);
+            templatec01.push(fmt.dateFmt.formats.range["c01"][abbrLength[i]]);
+            templatec02.push(fmt.dateFmt.formats.range["c02"][abbrLength[i]]);
+            templatec03.push(fmt.dateFmt.formats.range["c03"][abbrLength[i]]);
+            templatec10.push(fmt.dateFmt.formats.range["c10"][abbrLength[i]]);
+
+            templatec11.push(fmt.dateFmt.formats.range["c11"][abbrLength[i]]);
+            templatec12.push(fmt.dateFmt.formats.range["c12"][abbrLength[i]]);
+            templatec20.push(fmt.dateFmt.formats.range["c20"][abbrLength[i]]);
+            templatec30.push(fmt.dateFmt.formats.range["c30"][abbrLength[i]]);
         }
 
         test.equal(templatec00[0], '{sd} de {sm} de {sy}, {st} – {et}');
@@ -3772,19 +4168,26 @@ module.exports.testdaterangefmt = {
     },
     testDateRngFmt_es_US: function(test) {
         test.expect(36);
-        //dmy
-        for (i=0; i < 4; i++) {
-            fmt[i] = new DateRngFmt({locale:"es-US", length: length[i]})
-            templatec00[i] = fmt[i].dateFmt.formats.range["c00"][abbrLength[i]];
-            templatec01[i] = fmt[i].dateFmt.formats.range["c01"][abbrLength[i]];
-            templatec02[i] = fmt[i].dateFmt.formats.range["c02"][abbrLength[i]];
-            templatec03[i] = fmt[i].dateFmt.formats.range["c03"][abbrLength[i]];
-            templatec10[i] = fmt[i].dateFmt.formats.range["c10"][abbrLength[i]];
+        var fmt;
+        var data = setVariables();
+        var length = data["fullLength"];
+        var abbrLength = data["abbrLength"];
 
-            templatec11[i] = fmt[i].dateFmt.formats.range["c11"][abbrLength[i]];
-            templatec12[i] = fmt[i].dateFmt.formats.range["c12"][abbrLength[i]];
-            templatec20[i] = fmt[i].dateFmt.formats.range["c20"][abbrLength[i]];
-            templatec30[i] = fmt[i].dateFmt.formats.range["c30"][abbrLength[i]];
+        var templatec00 = [],templatec01 = [],templatec02 = [],templatec03 = [];
+        var templatec10 = [],templatec11 = [],templatec12 = [],templatec20 = [];
+        var templatec30 = [];
+        for (var i=0; i < 4; i++) {
+            fmt = new DateRngFmt({locale:"es-US", length: length[i]})
+            templatec00.push(fmt.dateFmt.formats.range["c00"][abbrLength[i]]);
+            templatec01.push(fmt.dateFmt.formats.range["c01"][abbrLength[i]]);
+            templatec02.push(fmt.dateFmt.formats.range["c02"][abbrLength[i]]);
+            templatec03.push(fmt.dateFmt.formats.range["c03"][abbrLength[i]]);
+            templatec10.push(fmt.dateFmt.formats.range["c10"][abbrLength[i]]);
+
+            templatec11.push(fmt.dateFmt.formats.range["c11"][abbrLength[i]]);
+            templatec12.push(fmt.dateFmt.formats.range["c12"][abbrLength[i]]);
+            templatec20.push(fmt.dateFmt.formats.range["c20"][abbrLength[i]]);
+            templatec30.push(fmt.dateFmt.formats.range["c30"][abbrLength[i]]);
         }
 
         test.equal(templatec00[0], '{sd} de {sm} de {sy}, {st} – {et}');
@@ -3836,19 +4239,26 @@ module.exports.testdaterangefmt = {
     },
     testDateRngFmt_es_UY: function(test) {
         test.expect(36);
-        //dmy
-        for (i=0; i < 4; i++) {
-            fmt[i] = new DateRngFmt({locale:"es-UY", length: length[i]})
-            templatec00[i] = fmt[i].dateFmt.formats.range["c00"][abbrLength[i]];
-            templatec01[i] = fmt[i].dateFmt.formats.range["c01"][abbrLength[i]];
-            templatec02[i] = fmt[i].dateFmt.formats.range["c02"][abbrLength[i]];
-            templatec03[i] = fmt[i].dateFmt.formats.range["c03"][abbrLength[i]];
-            templatec10[i] = fmt[i].dateFmt.formats.range["c10"][abbrLength[i]];
+        var fmt;
+        var data = setVariables();
+        var length = data["fullLength"];
+        var abbrLength = data["abbrLength"];
 
-            templatec11[i] = fmt[i].dateFmt.formats.range["c11"][abbrLength[i]];
-            templatec12[i] = fmt[i].dateFmt.formats.range["c12"][abbrLength[i]];
-            templatec20[i] = fmt[i].dateFmt.formats.range["c20"][abbrLength[i]];
-            templatec30[i] = fmt[i].dateFmt.formats.range["c30"][abbrLength[i]];
+        var templatec00 = [],templatec01 = [],templatec02 = [],templatec03 = [];
+        var templatec10 = [],templatec11 = [],templatec12 = [],templatec20 = [];
+        var templatec30 = [];
+        for (var i=0; i < 4; i++) {
+            fmt = new DateRngFmt({locale:"es-UY", length: length[i]})
+            templatec00.push(fmt.dateFmt.formats.range["c00"][abbrLength[i]]);
+            templatec01.push(fmt.dateFmt.formats.range["c01"][abbrLength[i]]);
+            templatec02.push(fmt.dateFmt.formats.range["c02"][abbrLength[i]]);
+            templatec03.push(fmt.dateFmt.formats.range["c03"][abbrLength[i]]);
+            templatec10.push(fmt.dateFmt.formats.range["c10"][abbrLength[i]]);
+
+            templatec11.push(fmt.dateFmt.formats.range["c11"][abbrLength[i]]);
+            templatec12.push(fmt.dateFmt.formats.range["c12"][abbrLength[i]]);
+            templatec20.push(fmt.dateFmt.formats.range["c20"][abbrLength[i]]);
+            templatec30.push(fmt.dateFmt.formats.range["c30"][abbrLength[i]]);
         }
 
         test.equal(templatec00[0], '{sd} de {sm} de {sy}, {st} – {et}');
@@ -3900,19 +4310,26 @@ module.exports.testdaterangefmt = {
     },
     testDateRngFmt_es_VE: function(test) {
         test.expect(36);
-        //dmy
-        for (i=0; i < 4; i++) {
-            fmt[i] = new DateRngFmt({locale:"es-VE", length: length[i]})
-            templatec00[i] = fmt[i].dateFmt.formats.range["c00"][abbrLength[i]];
-            templatec01[i] = fmt[i].dateFmt.formats.range["c01"][abbrLength[i]];
-            templatec02[i] = fmt[i].dateFmt.formats.range["c02"][abbrLength[i]];
-            templatec03[i] = fmt[i].dateFmt.formats.range["c03"][abbrLength[i]];
-            templatec10[i] = fmt[i].dateFmt.formats.range["c10"][abbrLength[i]];
+        var fmt;
+        var data = setVariables();
+        var length = data["fullLength"];
+        var abbrLength = data["abbrLength"];
 
-            templatec11[i] = fmt[i].dateFmt.formats.range["c11"][abbrLength[i]];
-            templatec12[i] = fmt[i].dateFmt.formats.range["c12"][abbrLength[i]];
-            templatec20[i] = fmt[i].dateFmt.formats.range["c20"][abbrLength[i]];
-            templatec30[i] = fmt[i].dateFmt.formats.range["c30"][abbrLength[i]];
+        var templatec00 = [],templatec01 = [],templatec02 = [],templatec03 = [];
+        var templatec10 = [],templatec11 = [],templatec12 = [],templatec20 = [];
+        var templatec30 = [];
+        for (var i=0; i < 4; i++) {
+            fmt = new DateRngFmt({locale:"es-VE", length: length[i]})
+            templatec00.push(fmt.dateFmt.formats.range["c00"][abbrLength[i]]);
+            templatec01.push(fmt.dateFmt.formats.range["c01"][abbrLength[i]]);
+            templatec02.push(fmt.dateFmt.formats.range["c02"][abbrLength[i]]);
+            templatec03.push(fmt.dateFmt.formats.range["c03"][abbrLength[i]]);
+            templatec10.push(fmt.dateFmt.formats.range["c10"][abbrLength[i]]);
+
+            templatec11.push(fmt.dateFmt.formats.range["c11"][abbrLength[i]]);
+            templatec12.push(fmt.dateFmt.formats.range["c12"][abbrLength[i]]);
+            templatec20.push(fmt.dateFmt.formats.range["c20"][abbrLength[i]]);
+            templatec30.push(fmt.dateFmt.formats.range["c30"][abbrLength[i]]);
         }
 
         test.equal(templatec00[0], '{sd} de {sm} de {sy}, {st} – {et}');
@@ -3964,19 +4381,26 @@ module.exports.testdaterangefmt = {
     },
     testDateRngFmt_et_EE: function(test) {
         test.expect(36);
-        //dmy
-        for (i=0; i < 4; i++) {
-            fmt[i] = new DateRngFmt({locale:"et-EE", length: length[i]})
-            templatec00[i] = fmt[i].dateFmt.formats.range["c00"][abbrLength[i]];
-            templatec01[i] = fmt[i].dateFmt.formats.range["c01"][abbrLength[i]];
-            templatec02[i] = fmt[i].dateFmt.formats.range["c02"][abbrLength[i]];
-            templatec03[i] = fmt[i].dateFmt.formats.range["c03"][abbrLength[i]];
-            templatec10[i] = fmt[i].dateFmt.formats.range["c10"][abbrLength[i]];
+        var fmt;
+        var data = setVariables();
+        var length = data["fullLength"];
+        var abbrLength = data["abbrLength"];
 
-            templatec11[i] = fmt[i].dateFmt.formats.range["c11"][abbrLength[i]];
-            templatec12[i] = fmt[i].dateFmt.formats.range["c12"][abbrLength[i]];
-            templatec20[i] = fmt[i].dateFmt.formats.range["c20"][abbrLength[i]];
-            templatec30[i] = fmt[i].dateFmt.formats.range["c30"][abbrLength[i]];
+        var templatec00 = [],templatec01 = [],templatec02 = [],templatec03 = [];
+        var templatec10 = [],templatec11 = [],templatec12 = [],templatec20 = [];
+        var templatec30 = [];
+        for (var i=0; i < 4; i++) {
+            fmt = new DateRngFmt({locale:"et-EE", length: length[i]})
+            templatec00.push(fmt.dateFmt.formats.range["c00"][abbrLength[i]]);
+            templatec01.push(fmt.dateFmt.formats.range["c01"][abbrLength[i]]);
+            templatec02.push(fmt.dateFmt.formats.range["c02"][abbrLength[i]]);
+            templatec03.push(fmt.dateFmt.formats.range["c03"][abbrLength[i]]);
+            templatec10.push(fmt.dateFmt.formats.range["c10"][abbrLength[i]]);
+
+            templatec11.push(fmt.dateFmt.formats.range["c11"][abbrLength[i]]);
+            templatec12.push(fmt.dateFmt.formats.range["c12"][abbrLength[i]]);
+            templatec20.push(fmt.dateFmt.formats.range["c20"][abbrLength[i]]);
+            templatec30.push(fmt.dateFmt.formats.range["c30"][abbrLength[i]]);
         }
 
         test.equal(templatec00[0], '{sd}. {sm} {sy} {st} – {et}');
@@ -4028,23 +4452,31 @@ module.exports.testdaterangefmt = {
     },
     testDateRngFmt_fa_AF: function(test) {
         test.expect(36);
+        var fmt;
+        var data = setVariables();
+        var length = data["fullLength"];
+        var abbrLength = data["abbrLength"];
+
+        var templatec00 = [],templatec01 = [],templatec02 = [],templatec03 = [];
+        var templatec10 = [],templatec11 = [],templatec12 = [],templatec20 = [];
+        var templatec30 = [];
+
 
         //// Same as fa-IR
         // ymd (full, short)
         // dmy (long, medium)
+        for (var i=0; i < 4; i++) {
+            fmt = new DateRngFmt({locale:"fa-AF", length: length[i]})
+            templatec00.push(fmt.dateFmt.formats.range["c00"][abbrLength[i]]);
+            templatec01.push(fmt.dateFmt.formats.range["c01"][abbrLength[i]]);
+            templatec02.push(fmt.dateFmt.formats.range["c02"][abbrLength[i]]);
+            templatec03.push(fmt.dateFmt.formats.range["c03"][abbrLength[i]]);
+            templatec10.push(fmt.dateFmt.formats.range["c10"][abbrLength[i]]);
 
-        for (i=0; i < 4; i++) {
-            fmt[i] = new DateRngFmt({locale:"fa-AF", length: length[i]})
-            templatec00[i] = fmt[i].dateFmt.formats.range["c00"][abbrLength[i]];
-            templatec01[i] = fmt[i].dateFmt.formats.range["c01"][abbrLength[i]];
-            templatec02[i] = fmt[i].dateFmt.formats.range["c02"][abbrLength[i]];
-            templatec03[i] = fmt[i].dateFmt.formats.range["c03"][abbrLength[i]];
-            templatec10[i] = fmt[i].dateFmt.formats.range["c10"][abbrLength[i]];
-
-            templatec11[i] = fmt[i].dateFmt.formats.range["c11"][abbrLength[i]];
-            templatec12[i] = fmt[i].dateFmt.formats.range["c12"][abbrLength[i]];
-            templatec20[i] = fmt[i].dateFmt.formats.range["c20"][abbrLength[i]];
-            templatec30[i] = fmt[i].dateFmt.formats.range["c30"][abbrLength[i]];
+            templatec11.push(fmt.dateFmt.formats.range["c11"][abbrLength[i]]);
+            templatec12.push(fmt.dateFmt.formats.range["c12"][abbrLength[i]]);
+            templatec20.push(fmt.dateFmt.formats.range["c20"][abbrLength[i]]);
+            templatec30.push(fmt.dateFmt.formats.range["c30"][abbrLength[i]]);
         }
 
         test.equal(templatec00[0], '‏{sy} {sm} {sd}، ساعت {st} – {et}');
@@ -4096,21 +4528,29 @@ module.exports.testdaterangefmt = {
     },
     testDateRngFmt_fa_IR: function(test) {
         test.expect(36);
-
+        var fmt;
         // ymd (full, short)
         // dmy (long, medium)
-        for (i=0; i < 4; i++) {
-            fmt[i] = new DateRngFmt({locale:"fa-IR", length: length[i]})
-            templatec00[i] = fmt[i].dateFmt.formats.range["c00"][abbrLength[i]];
-            templatec01[i] = fmt[i].dateFmt.formats.range["c01"][abbrLength[i]];
-            templatec02[i] = fmt[i].dateFmt.formats.range["c02"][abbrLength[i]];
-            templatec03[i] = fmt[i].dateFmt.formats.range["c03"][abbrLength[i]];
-            templatec10[i] = fmt[i].dateFmt.formats.range["c10"][abbrLength[i]];
 
-            templatec11[i] = fmt[i].dateFmt.formats.range["c11"][abbrLength[i]];
-            templatec12[i] = fmt[i].dateFmt.formats.range["c12"][abbrLength[i]];
-            templatec20[i] = fmt[i].dateFmt.formats.range["c20"][abbrLength[i]];
-            templatec30[i] = fmt[i].dateFmt.formats.range["c30"][abbrLength[i]];
+        var data = setVariables();
+        var length = data["fullLength"];
+        var abbrLength = data["abbrLength"];
+
+        var templatec00 = [],templatec01 = [],templatec02 = [],templatec03 = [];
+        var templatec10 = [],templatec11 = [],templatec12 = [],templatec20 = [];
+        var templatec30 = [];
+        for (var i=0; i < 4; i++) {
+            fmt = new DateRngFmt({locale:"fa-IR", length: length[i]})
+            templatec00.push(fmt.dateFmt.formats.range["c00"][abbrLength[i]]);
+            templatec01.push(fmt.dateFmt.formats.range["c01"][abbrLength[i]]);
+            templatec02.push(fmt.dateFmt.formats.range["c02"][abbrLength[i]]);
+            templatec03.push(fmt.dateFmt.formats.range["c03"][abbrLength[i]]);
+            templatec10.push(fmt.dateFmt.formats.range["c10"][abbrLength[i]]);
+
+            templatec11.push(fmt.dateFmt.formats.range["c11"][abbrLength[i]]);
+            templatec12.push(fmt.dateFmt.formats.range["c12"][abbrLength[i]]);
+            templatec20.push(fmt.dateFmt.formats.range["c20"][abbrLength[i]]);
+            templatec30.push(fmt.dateFmt.formats.range["c30"][abbrLength[i]]);
         }
 
         test.equal(templatec00[0], '‏{sy} {sm} {sd}، ساعت {st} – {et}');
@@ -4162,19 +4602,26 @@ module.exports.testdaterangefmt = {
     },
     testDateRngFmt_fi_FI: function(test) {
         test.expect(36);
-        //dmy
-        for (i=0; i < 4; i++) {
-            fmt[i] = new DateRngFmt({locale:"fi-FI", length: length[i]})
-            templatec00[i] = fmt[i].dateFmt.formats.range["c00"][abbrLength[i]];
-            templatec01[i] = fmt[i].dateFmt.formats.range["c01"][abbrLength[i]];
-            templatec02[i] = fmt[i].dateFmt.formats.range["c02"][abbrLength[i]];
-            templatec03[i] = fmt[i].dateFmt.formats.range["c03"][abbrLength[i]];
-            templatec10[i] = fmt[i].dateFmt.formats.range["c10"][abbrLength[i]];
+        var fmt;
+        var data = setVariables();
+        var length = data["fullLength"];
+        var abbrLength = data["abbrLength"];
 
-            templatec11[i] = fmt[i].dateFmt.formats.range["c11"][abbrLength[i]];
-            templatec12[i] = fmt[i].dateFmt.formats.range["c12"][abbrLength[i]];
-            templatec20[i] = fmt[i].dateFmt.formats.range["c20"][abbrLength[i]];
-            templatec30[i] = fmt[i].dateFmt.formats.range["c30"][abbrLength[i]];
+        var templatec00 = [],templatec01 = [],templatec02 = [],templatec03 = [];
+        var templatec10 = [],templatec11 = [],templatec12 = [],templatec20 = [];
+        var templatec30 = [];
+        for (var i=0; i < 4; i++) {
+            fmt = new DateRngFmt({locale:"fi-FI", length: length[i]})
+            templatec00.push(fmt.dateFmt.formats.range["c00"][abbrLength[i]]);
+            templatec01.push(fmt.dateFmt.formats.range["c01"][abbrLength[i]]);
+            templatec02.push(fmt.dateFmt.formats.range["c02"][abbrLength[i]]);
+            templatec03.push(fmt.dateFmt.formats.range["c03"][abbrLength[i]]);
+            templatec10.push(fmt.dateFmt.formats.range["c10"][abbrLength[i]]);
+
+            templatec11.push(fmt.dateFmt.formats.range["c11"][abbrLength[i]]);
+            templatec12.push(fmt.dateFmt.formats.range["c12"][abbrLength[i]]);
+            templatec20.push(fmt.dateFmt.formats.range["c20"][abbrLength[i]]);
+            templatec30.push(fmt.dateFmt.formats.range["c30"][abbrLength[i]]);
         }
 
         test.equal(templatec00[0], '{sd}. {sm} {sy} klo {st} – {et}');
@@ -4226,19 +4673,26 @@ module.exports.testdaterangefmt = {
     },
     testDateRngFmt_fr_BE: function(test) {
         test.expect(36);
-        //dmy
-        for (i=0; i < 4; i++) {
-            fmt[i] = new DateRngFmt({locale:"fr-BE", length: length[i]})
-            templatec00[i] = fmt[i].dateFmt.formats.range["c00"][abbrLength[i]];
-            templatec01[i] = fmt[i].dateFmt.formats.range["c01"][abbrLength[i]];
-            templatec02[i] = fmt[i].dateFmt.formats.range["c02"][abbrLength[i]];
-            templatec03[i] = fmt[i].dateFmt.formats.range["c03"][abbrLength[i]];
-            templatec10[i] = fmt[i].dateFmt.formats.range["c10"][abbrLength[i]];
+        var fmt;
+        var data = setVariables();
+        var length = data["fullLength"];
+        var abbrLength = data["abbrLength"];
 
-            templatec11[i] = fmt[i].dateFmt.formats.range["c11"][abbrLength[i]];
-            templatec12[i] = fmt[i].dateFmt.formats.range["c12"][abbrLength[i]];
-            templatec20[i] = fmt[i].dateFmt.formats.range["c20"][abbrLength[i]];
-            templatec30[i] = fmt[i].dateFmt.formats.range["c30"][abbrLength[i]];
+        var templatec00 = [],templatec01 = [],templatec02 = [],templatec03 = [];
+        var templatec10 = [],templatec11 = [],templatec12 = [],templatec20 = [];
+        var templatec30 = [];
+        for (var i=0; i < 4; i++) {
+            fmt = new DateRngFmt({locale:"fr-BE", length: length[i]})
+            templatec00.push(fmt.dateFmt.formats.range["c00"][abbrLength[i]]);
+            templatec01.push(fmt.dateFmt.formats.range["c01"][abbrLength[i]]);
+            templatec02.push(fmt.dateFmt.formats.range["c02"][abbrLength[i]]);
+            templatec03.push(fmt.dateFmt.formats.range["c03"][abbrLength[i]]);
+            templatec10.push(fmt.dateFmt.formats.range["c10"][abbrLength[i]]);
+
+            templatec11.push(fmt.dateFmt.formats.range["c11"][abbrLength[i]]);
+            templatec12.push(fmt.dateFmt.formats.range["c12"][abbrLength[i]]);
+            templatec20.push(fmt.dateFmt.formats.range["c20"][abbrLength[i]]);
+            templatec30.push(fmt.dateFmt.formats.range["c30"][abbrLength[i]]);
         }
 
         test.equal(templatec00[0], '{sd} {sm} {sy} à {st} – {et}');
@@ -4290,20 +4744,28 @@ module.exports.testdaterangefmt = {
     },
     testDateRngFmt_fr_CA: function(test) {
         test.expect(36);
-        //dmy
+        var fmt;        //dmy
         //ymd (short)
-        for (i=0; i < 4; i++) {
-            fmt[i] = new DateRngFmt({locale:"fr-CA", length: length[i]})
-            templatec00[i] = fmt[i].dateFmt.formats.range["c00"][abbrLength[i]];
-            templatec01[i] = fmt[i].dateFmt.formats.range["c01"][abbrLength[i]];
-            templatec02[i] = fmt[i].dateFmt.formats.range["c02"][abbrLength[i]];
-            templatec03[i] = fmt[i].dateFmt.formats.range["c03"][abbrLength[i]];
-            templatec10[i] = fmt[i].dateFmt.formats.range["c10"][abbrLength[i]];
 
-            templatec11[i] = fmt[i].dateFmt.formats.range["c11"][abbrLength[i]];
-            templatec12[i] = fmt[i].dateFmt.formats.range["c12"][abbrLength[i]];
-            templatec20[i] = fmt[i].dateFmt.formats.range["c20"][abbrLength[i]];
-            templatec30[i] = fmt[i].dateFmt.formats.range["c30"][abbrLength[i]];
+        var data = setVariables();
+        var length = data["fullLength"];
+        var abbrLength = data["abbrLength"];
+
+        var templatec00 = [],templatec01 = [],templatec02 = [],templatec03 = [];
+        var templatec10 = [],templatec11 = [],templatec12 = [],templatec20 = [];
+        var templatec30 = [];
+        for (var i=0; i < 4; i++) {
+            fmt = new DateRngFmt({locale:"fr-CA", length: length[i]})
+            templatec00.push(fmt.dateFmt.formats.range["c00"][abbrLength[i]]);
+            templatec01.push(fmt.dateFmt.formats.range["c01"][abbrLength[i]]);
+            templatec02.push(fmt.dateFmt.formats.range["c02"][abbrLength[i]]);
+            templatec03.push(fmt.dateFmt.formats.range["c03"][abbrLength[i]]);
+            templatec10.push(fmt.dateFmt.formats.range["c10"][abbrLength[i]]);
+
+            templatec11.push(fmt.dateFmt.formats.range["c11"][abbrLength[i]]);
+            templatec12.push(fmt.dateFmt.formats.range["c12"][abbrLength[i]]);
+            templatec20.push(fmt.dateFmt.formats.range["c20"][abbrLength[i]]);
+            templatec30.push(fmt.dateFmt.formats.range["c30"][abbrLength[i]]);
         }
 
         test.equal(templatec00[0], '{sd} {sm} {sy} à {st} – {et}'); // Bug
@@ -4355,19 +4817,26 @@ module.exports.testdaterangefmt = {
     },
     testDateRngFmt_fr_CH: function(test) {
         test.expect(36);
-        //dmy
-        for (i=0; i < 4; i++) {
-            fmt[i] = new DateRngFmt({locale:"fr-CH", length: length[i]})
-            templatec00[i] = fmt[i].dateFmt.formats.range["c00"][abbrLength[i]];
-            templatec01[i] = fmt[i].dateFmt.formats.range["c01"][abbrLength[i]];
-            templatec02[i] = fmt[i].dateFmt.formats.range["c02"][abbrLength[i]];
-            templatec03[i] = fmt[i].dateFmt.formats.range["c03"][abbrLength[i]];
-            templatec10[i] = fmt[i].dateFmt.formats.range["c10"][abbrLength[i]];
+        var fmt;
+        var data = setVariables();
+        var length = data["fullLength"];
+        var abbrLength = data["abbrLength"];
 
-            templatec11[i] = fmt[i].dateFmt.formats.range["c11"][abbrLength[i]];
-            templatec12[i] = fmt[i].dateFmt.formats.range["c12"][abbrLength[i]];
-            templatec20[i] = fmt[i].dateFmt.formats.range["c20"][abbrLength[i]];
-            templatec30[i] = fmt[i].dateFmt.formats.range["c30"][abbrLength[i]];
+        var templatec00 = [],templatec01 = [],templatec02 = [],templatec03 = [];
+        var templatec10 = [],templatec11 = [],templatec12 = [],templatec20 = [];
+        var templatec30 = [];
+        for (var i=0; i < 4; i++) {
+            fmt = new DateRngFmt({locale:"fr-CH", length: length[i]})
+            templatec00.push(fmt.dateFmt.formats.range["c00"][abbrLength[i]]);
+            templatec01.push(fmt.dateFmt.formats.range["c01"][abbrLength[i]]);
+            templatec02.push(fmt.dateFmt.formats.range["c02"][abbrLength[i]]);
+            templatec03.push(fmt.dateFmt.formats.range["c03"][abbrLength[i]]);
+            templatec10.push(fmt.dateFmt.formats.range["c10"][abbrLength[i]]);
+
+            templatec11.push(fmt.dateFmt.formats.range["c11"][abbrLength[i]]);
+            templatec12.push(fmt.dateFmt.formats.range["c12"][abbrLength[i]]);
+            templatec20.push(fmt.dateFmt.formats.range["c20"][abbrLength[i]]);
+            templatec30.push(fmt.dateFmt.formats.range["c30"][abbrLength[i]]);
         }
 
         test.equal(templatec00[0], '{sd} {sm} {sy} à {st} – {et}');
@@ -4419,19 +4888,26 @@ module.exports.testdaterangefmt = {
     },
     testDateRngFmt_fr_FR: function(test) {
         test.expect(36);
-        //dmy
-        for (i=0; i < 4; i++) {
-            fmt[i] = new DateRngFmt({locale:"fr-FR", length: length[i]})
-            templatec00[i] = fmt[i].dateFmt.formats.range["c00"][abbrLength[i]];
-            templatec01[i] = fmt[i].dateFmt.formats.range["c01"][abbrLength[i]];
-            templatec02[i] = fmt[i].dateFmt.formats.range["c02"][abbrLength[i]];
-            templatec03[i] = fmt[i].dateFmt.formats.range["c03"][abbrLength[i]];
-            templatec10[i] = fmt[i].dateFmt.formats.range["c10"][abbrLength[i]];
+        var fmt;
+        var data = setVariables();
+        var length = data["fullLength"];
+        var abbrLength = data["abbrLength"];
 
-            templatec11[i] = fmt[i].dateFmt.formats.range["c11"][abbrLength[i]];
-            templatec12[i] = fmt[i].dateFmt.formats.range["c12"][abbrLength[i]];
-            templatec20[i] = fmt[i].dateFmt.formats.range["c20"][abbrLength[i]];
-            templatec30[i] = fmt[i].dateFmt.formats.range["c30"][abbrLength[i]];
+        var templatec00 = [],templatec01 = [],templatec02 = [],templatec03 = [];
+        var templatec10 = [],templatec11 = [],templatec12 = [],templatec20 = [];
+        var templatec30 = [];
+        for (var i=0; i < 4; i++) {
+            fmt = new DateRngFmt({locale:"fr-FR", length: length[i]})
+            templatec00.push(fmt.dateFmt.formats.range["c00"][abbrLength[i]]);
+            templatec01.push(fmt.dateFmt.formats.range["c01"][abbrLength[i]]);
+            templatec02.push(fmt.dateFmt.formats.range["c02"][abbrLength[i]]);
+            templatec03.push(fmt.dateFmt.formats.range["c03"][abbrLength[i]]);
+            templatec10.push(fmt.dateFmt.formats.range["c10"][abbrLength[i]]);
+
+            templatec11.push(fmt.dateFmt.formats.range["c11"][abbrLength[i]]);
+            templatec12.push(fmt.dateFmt.formats.range["c12"][abbrLength[i]]);
+            templatec20.push(fmt.dateFmt.formats.range["c20"][abbrLength[i]]);
+            templatec30.push(fmt.dateFmt.formats.range["c30"][abbrLength[i]]);
         }
 
         test.equal(templatec00[0], '{sd} {sm} {sy} à {st} – {et}');
@@ -4483,19 +4959,26 @@ module.exports.testdaterangefmt = {
     },
     testDateRngFmt_fr_LU: function(test) {
         test.expect(36);
-        //dmy
-        for (i=0; i < 4; i++) {
-            fmt[i] = new DateRngFmt({locale:"fr-LU", length: length[i]})
-            templatec00[i] = fmt[i].dateFmt.formats.range["c00"][abbrLength[i]];
-            templatec01[i] = fmt[i].dateFmt.formats.range["c01"][abbrLength[i]];
-            templatec02[i] = fmt[i].dateFmt.formats.range["c02"][abbrLength[i]];
-            templatec03[i] = fmt[i].dateFmt.formats.range["c03"][abbrLength[i]];
-            templatec10[i] = fmt[i].dateFmt.formats.range["c10"][abbrLength[i]];
+        var fmt;
+        var data = setVariables();
+        var length = data["fullLength"];
+        var abbrLength = data["abbrLength"];
 
-            templatec11[i] = fmt[i].dateFmt.formats.range["c11"][abbrLength[i]];
-            templatec12[i] = fmt[i].dateFmt.formats.range["c12"][abbrLength[i]];
-            templatec20[i] = fmt[i].dateFmt.formats.range["c20"][abbrLength[i]];
-            templatec30[i] = fmt[i].dateFmt.formats.range["c30"][abbrLength[i]];
+        var templatec00 = [],templatec01 = [],templatec02 = [],templatec03 = [];
+        var templatec10 = [],templatec11 = [],templatec12 = [],templatec20 = [];
+        var templatec30 = [];
+        for (var i=0; i < 4; i++) {
+            fmt = new DateRngFmt({locale:"fr-LU", length: length[i]})
+            templatec00.push(fmt.dateFmt.formats.range["c00"][abbrLength[i]]);
+            templatec01.push(fmt.dateFmt.formats.range["c01"][abbrLength[i]]);
+            templatec02.push(fmt.dateFmt.formats.range["c02"][abbrLength[i]]);
+            templatec03.push(fmt.dateFmt.formats.range["c03"][abbrLength[i]]);
+            templatec10.push(fmt.dateFmt.formats.range["c10"][abbrLength[i]]);
+
+            templatec11.push(fmt.dateFmt.formats.range["c11"][abbrLength[i]]);
+            templatec12.push(fmt.dateFmt.formats.range["c12"][abbrLength[i]]);
+            templatec20.push(fmt.dateFmt.formats.range["c20"][abbrLength[i]]);
+            templatec30.push(fmt.dateFmt.formats.range["c30"][abbrLength[i]]);
         }
 
         test.equal(templatec00[0], '{sd} {sm} {sy} à {st} – {et}');
@@ -4547,19 +5030,26 @@ module.exports.testdaterangefmt = {
     },
     testDateRngFmt_ga_IE: function(test) {
         test.expect(36);
-        //dmy
-        for (i=0; i < 4; i++) {
-            fmt[i] = new DateRngFmt({locale:"ga-IE", length: length[i]})
-            templatec00[i] = fmt[i].dateFmt.formats.range["c00"][abbrLength[i]];
-            templatec01[i] = fmt[i].dateFmt.formats.range["c01"][abbrLength[i]];
-            templatec02[i] = fmt[i].dateFmt.formats.range["c02"][abbrLength[i]];
-            templatec03[i] = fmt[i].dateFmt.formats.range["c03"][abbrLength[i]];
-            templatec10[i] = fmt[i].dateFmt.formats.range["c10"][abbrLength[i]];
+        var fmt;
+        var data = setVariables();
+        var length = data["fullLength"];
+        var abbrLength = data["abbrLength"];
 
-            templatec11[i] = fmt[i].dateFmt.formats.range["c11"][abbrLength[i]];
-            templatec12[i] = fmt[i].dateFmt.formats.range["c12"][abbrLength[i]];
-            templatec20[i] = fmt[i].dateFmt.formats.range["c20"][abbrLength[i]];
-            templatec30[i] = fmt[i].dateFmt.formats.range["c30"][abbrLength[i]];
+        var templatec00 = [],templatec01 = [],templatec02 = [],templatec03 = [];
+        var templatec10 = [],templatec11 = [],templatec12 = [],templatec20 = [];
+        var templatec30 = [];
+        for (var i=0; i < 4; i++) {
+            fmt = new DateRngFmt({locale:"ga-IE", length: length[i]})
+            templatec00.push(fmt.dateFmt.formats.range["c00"][abbrLength[i]]);
+            templatec01.push(fmt.dateFmt.formats.range["c01"][abbrLength[i]]);
+            templatec02.push(fmt.dateFmt.formats.range["c02"][abbrLength[i]]);
+            templatec03.push(fmt.dateFmt.formats.range["c03"][abbrLength[i]]);
+            templatec10.push(fmt.dateFmt.formats.range["c10"][abbrLength[i]]);
+
+            templatec11.push(fmt.dateFmt.formats.range["c11"][abbrLength[i]]);
+            templatec12.push(fmt.dateFmt.formats.range["c12"][abbrLength[i]]);
+            templatec20.push(fmt.dateFmt.formats.range["c20"][abbrLength[i]]);
+            templatec30.push(fmt.dateFmt.formats.range["c30"][abbrLength[i]]);
         }
 
         test.equal(templatec00[0], '{sd} {sm} {sy} {st} – {et}');
@@ -4611,19 +5101,26 @@ module.exports.testdaterangefmt = {
     },
     testDateRngFmt_gu_IN: function(test) {
         test.expect(36);
-        //dmy
-        for (i=0; i < 4; i++) {
-            fmt[i] = new DateRngFmt({locale:"gu-IN", length: length[i]})
-            templatec00[i] = fmt[i].dateFmt.formats.range["c00"][abbrLength[i]];
-            templatec01[i] = fmt[i].dateFmt.formats.range["c01"][abbrLength[i]];
-            templatec02[i] = fmt[i].dateFmt.formats.range["c02"][abbrLength[i]];
-            templatec03[i] = fmt[i].dateFmt.formats.range["c03"][abbrLength[i]];
-            templatec10[i] = fmt[i].dateFmt.formats.range["c10"][abbrLength[i]];
+        var fmt;
+        var data = setVariables();
+        var length = data["fullLength"];
+        var abbrLength = data["abbrLength"];
 
-            templatec11[i] = fmt[i].dateFmt.formats.range["c11"][abbrLength[i]];
-            templatec12[i] = fmt[i].dateFmt.formats.range["c12"][abbrLength[i]];
-            templatec20[i] = fmt[i].dateFmt.formats.range["c20"][abbrLength[i]];
-            templatec30[i] = fmt[i].dateFmt.formats.range["c30"][abbrLength[i]];
+        var templatec00 = [],templatec01 = [],templatec02 = [],templatec03 = [];
+        var templatec10 = [],templatec11 = [],templatec12 = [],templatec20 = [];
+        var templatec30 = [];
+        for (var i=0; i < 4; i++) {
+            fmt = new DateRngFmt({locale:"gu-IN", length: length[i]})
+            templatec00.push(fmt.dateFmt.formats.range["c00"][abbrLength[i]]);
+            templatec01.push(fmt.dateFmt.formats.range["c01"][abbrLength[i]]);
+            templatec02.push(fmt.dateFmt.formats.range["c02"][abbrLength[i]]);
+            templatec03.push(fmt.dateFmt.formats.range["c03"][abbrLength[i]]);
+            templatec10.push(fmt.dateFmt.formats.range["c10"][abbrLength[i]]);
+
+            templatec11.push(fmt.dateFmt.formats.range["c11"][abbrLength[i]]);
+            templatec12.push(fmt.dateFmt.formats.range["c12"][abbrLength[i]]);
+            templatec20.push(fmt.dateFmt.formats.range["c20"][abbrLength[i]]);
+            templatec30.push(fmt.dateFmt.formats.range["c30"][abbrLength[i]]);
         }
 
         test.equal(templatec00[0], '{sd} {sm}, {sy} એ {st} વાગ્યે – {et} વાગ્યે'); // CLDR 34 change
@@ -4676,19 +5173,26 @@ module.exports.testdaterangefmt = {
     },
     testDateRngFmt_he_IL: function(test) {
         test.expect(36);
-        //dmy
-        for (i=0; i < 4; i++) {
-            fmt[i] = new DateRngFmt({locale:"he-IL", length: length[i]})
-            templatec00[i] = fmt[i].dateFmt.formats.range["c00"][abbrLength[i]];
-            templatec01[i] = fmt[i].dateFmt.formats.range["c01"][abbrLength[i]];
-            templatec02[i] = fmt[i].dateFmt.formats.range["c02"][abbrLength[i]];
-            templatec03[i] = fmt[i].dateFmt.formats.range["c03"][abbrLength[i]];
-            templatec10[i] = fmt[i].dateFmt.formats.range["c10"][abbrLength[i]];
+        var fmt;
+        var data = setVariables();
+        var length = data["fullLength"];
+        var abbrLength = data["abbrLength"];
 
-            templatec11[i] = fmt[i].dateFmt.formats.range["c11"][abbrLength[i]];
-            templatec12[i] = fmt[i].dateFmt.formats.range["c12"][abbrLength[i]];
-            templatec20[i] = fmt[i].dateFmt.formats.range["c20"][abbrLength[i]];
-            templatec30[i] = fmt[i].dateFmt.formats.range["c30"][abbrLength[i]];
+        var templatec00 = [],templatec01 = [],templatec02 = [],templatec03 = [];
+        var templatec10 = [],templatec11 = [],templatec12 = [],templatec20 = [];
+        var templatec30 = [];
+        for (var i=0; i < 4; i++) {
+            fmt = new DateRngFmt({locale:"he-IL", length: length[i]})
+            templatec00.push(fmt.dateFmt.formats.range["c00"][abbrLength[i]]);
+            templatec01.push(fmt.dateFmt.formats.range["c01"][abbrLength[i]]);
+            templatec02.push(fmt.dateFmt.formats.range["c02"][abbrLength[i]]);
+            templatec03.push(fmt.dateFmt.formats.range["c03"][abbrLength[i]]);
+            templatec10.push(fmt.dateFmt.formats.range["c10"][abbrLength[i]]);
+
+            templatec11.push(fmt.dateFmt.formats.range["c11"][abbrLength[i]]);
+            templatec12.push(fmt.dateFmt.formats.range["c12"][abbrLength[i]]);
+            templatec20.push(fmt.dateFmt.formats.range["c20"][abbrLength[i]]);
+            templatec30.push(fmt.dateFmt.formats.range["c30"][abbrLength[i]]);
         }
 
         test.equal(templatec00[0], '‏{sd} ב{sm} {sy} בשעה {st} – {et}');
@@ -4740,19 +5244,26 @@ module.exports.testdaterangefmt = {
     },
     testDateRngFmt_hi_IN: function(test) {
         test.expect(36);
-        //dmy
-        for (i=0; i < 4; i++) {
-            fmt[i] = new DateRngFmt({locale:"hi-IN", length: length[i]})
-            templatec00[i] = fmt[i].dateFmt.formats.range["c00"][abbrLength[i]];
-            templatec01[i] = fmt[i].dateFmt.formats.range["c01"][abbrLength[i]];
-            templatec02[i] = fmt[i].dateFmt.formats.range["c02"][abbrLength[i]];
-            templatec03[i] = fmt[i].dateFmt.formats.range["c03"][abbrLength[i]];
-            templatec10[i] = fmt[i].dateFmt.formats.range["c10"][abbrLength[i]];
+        var fmt;
+        var data = setVariables();
+        var length = data["fullLength"];
+        var abbrLength = data["abbrLength"];
 
-            templatec11[i] = fmt[i].dateFmt.formats.range["c11"][abbrLength[i]];
-            templatec12[i] = fmt[i].dateFmt.formats.range["c12"][abbrLength[i]];
-            templatec20[i] = fmt[i].dateFmt.formats.range["c20"][abbrLength[i]];
-            templatec30[i] = fmt[i].dateFmt.formats.range["c30"][abbrLength[i]];
+        var templatec00 = [],templatec01 = [],templatec02 = [],templatec03 = [];
+        var templatec10 = [],templatec11 = [],templatec12 = [],templatec20 = [];
+        var templatec30 = [];
+        for (var i=0; i < 4; i++) {
+            fmt = new DateRngFmt({locale:"hi-IN", length: length[i]})
+            templatec00.push(fmt.dateFmt.formats.range["c00"][abbrLength[i]]);
+            templatec01.push(fmt.dateFmt.formats.range["c01"][abbrLength[i]]);
+            templatec02.push(fmt.dateFmt.formats.range["c02"][abbrLength[i]]);
+            templatec03.push(fmt.dateFmt.formats.range["c03"][abbrLength[i]]);
+            templatec10.push(fmt.dateFmt.formats.range["c10"][abbrLength[i]]);
+
+            templatec11.push(fmt.dateFmt.formats.range["c11"][abbrLength[i]]);
+            templatec12.push(fmt.dateFmt.formats.range["c12"][abbrLength[i]]);
+            templatec20.push(fmt.dateFmt.formats.range["c20"][abbrLength[i]]);
+            templatec30.push(fmt.dateFmt.formats.range["c30"][abbrLength[i]]);
         }
 
         test.equal(templatec00[0], '{sd} {sm} {sy} को {st} – {et}');
@@ -4804,19 +5315,26 @@ module.exports.testdaterangefmt = {
     },
     testDateRngFmt_hr_HR: function(test) {
         test.expect(36);
-        //dmy
-        for (i=0; i < 4; i++) {
-            fmt[i] = new DateRngFmt({locale:"hr-HR", length: length[i]})
-            templatec00[i] = fmt[i].dateFmt.formats.range["c00"][abbrLength[i]];
-            templatec01[i] = fmt[i].dateFmt.formats.range["c01"][abbrLength[i]];
-            templatec02[i] = fmt[i].dateFmt.formats.range["c02"][abbrLength[i]];
-            templatec03[i] = fmt[i].dateFmt.formats.range["c03"][abbrLength[i]];
-            templatec10[i] = fmt[i].dateFmt.formats.range["c10"][abbrLength[i]];
+        var fmt;
+        var data = setVariables();
+        var length = data["fullLength"];
+        var abbrLength = data["abbrLength"];
 
-            templatec11[i] = fmt[i].dateFmt.formats.range["c11"][abbrLength[i]];
-            templatec12[i] = fmt[i].dateFmt.formats.range["c12"][abbrLength[i]];
-            templatec20[i] = fmt[i].dateFmt.formats.range["c20"][abbrLength[i]];
-            templatec30[i] = fmt[i].dateFmt.formats.range["c30"][abbrLength[i]];
+        var templatec00 = [],templatec01 = [],templatec02 = [],templatec03 = [];
+        var templatec10 = [],templatec11 = [],templatec12 = [],templatec20 = [];
+        var templatec30 = [];
+        for (var i=0; i < 4; i++) {
+            fmt = new DateRngFmt({locale:"hr-HR", length: length[i]})
+            templatec00.push(fmt.dateFmt.formats.range["c00"][abbrLength[i]]);
+            templatec01.push(fmt.dateFmt.formats.range["c01"][abbrLength[i]]);
+            templatec02.push(fmt.dateFmt.formats.range["c02"][abbrLength[i]]);
+            templatec03.push(fmt.dateFmt.formats.range["c03"][abbrLength[i]]);
+            templatec10.push(fmt.dateFmt.formats.range["c10"][abbrLength[i]]);
+
+            templatec11.push(fmt.dateFmt.formats.range["c11"][abbrLength[i]]);
+            templatec12.push(fmt.dateFmt.formats.range["c12"][abbrLength[i]]);
+            templatec20.push(fmt.dateFmt.formats.range["c20"][abbrLength[i]]);
+            templatec30.push(fmt.dateFmt.formats.range["c30"][abbrLength[i]]);
         }
 
         test.equal(templatec00[0], '{sd}. {sm} {sy}. u {st} – {et}');
@@ -4868,19 +5386,26 @@ module.exports.testdaterangefmt = {
     },
     testDateRngFmt_hr_ME: function(test) {
         test.expect(36);
-        //dmy
-        for (i=0; i < 4; i++) {
-            fmt[i] = new DateRngFmt({locale:"hr-ME", length: length[i]})
-            templatec00[i] = fmt[i].dateFmt.formats.range["c00"][abbrLength[i]];
-            templatec01[i] = fmt[i].dateFmt.formats.range["c01"][abbrLength[i]];
-            templatec02[i] = fmt[i].dateFmt.formats.range["c02"][abbrLength[i]];
-            templatec03[i] = fmt[i].dateFmt.formats.range["c03"][abbrLength[i]];
-            templatec10[i] = fmt[i].dateFmt.formats.range["c10"][abbrLength[i]];
+        var fmt;
+        var data = setVariables();
+        var length = data["fullLength"];
+        var abbrLength = data["abbrLength"];
 
-            templatec11[i] = fmt[i].dateFmt.formats.range["c11"][abbrLength[i]];
-            templatec12[i] = fmt[i].dateFmt.formats.range["c12"][abbrLength[i]];
-            templatec20[i] = fmt[i].dateFmt.formats.range["c20"][abbrLength[i]];
-            templatec30[i] = fmt[i].dateFmt.formats.range["c30"][abbrLength[i]];
+        var templatec00 = [],templatec01 = [],templatec02 = [],templatec03 = [];
+        var templatec10 = [],templatec11 = [],templatec12 = [],templatec20 = [];
+        var templatec30 = [];
+        for (var i=0; i < 4; i++) {
+            fmt = new DateRngFmt({locale:"hr-ME", length: length[i]})
+            templatec00.push(fmt.dateFmt.formats.range["c00"][abbrLength[i]]);
+            templatec01.push(fmt.dateFmt.formats.range["c01"][abbrLength[i]]);
+            templatec02.push(fmt.dateFmt.formats.range["c02"][abbrLength[i]]);
+            templatec03.push(fmt.dateFmt.formats.range["c03"][abbrLength[i]]);
+            templatec10.push(fmt.dateFmt.formats.range["c10"][abbrLength[i]]);
+
+            templatec11.push(fmt.dateFmt.formats.range["c11"][abbrLength[i]]);
+            templatec12.push(fmt.dateFmt.formats.range["c12"][abbrLength[i]]);
+            templatec20.push(fmt.dateFmt.formats.range["c20"][abbrLength[i]]);
+            templatec30.push(fmt.dateFmt.formats.range["c30"][abbrLength[i]]);
         }
 
         test.equal(templatec00[0], '{sd}. {sm} {sy}. u {st} – {et}');
@@ -4932,19 +5457,26 @@ module.exports.testdaterangefmt = {
     },
     testDateRngFmt_hr_HU: function(test) {
         test.expect(36);
-        //dmy
-        for (i=0; i < 4; i++) {
-            fmt[i] = new DateRngFmt({locale:"hr-HU", length: length[i]})
-            templatec00[i] = fmt[i].dateFmt.formats.range["c00"][abbrLength[i]];
-            templatec01[i] = fmt[i].dateFmt.formats.range["c01"][abbrLength[i]];
-            templatec02[i] = fmt[i].dateFmt.formats.range["c02"][abbrLength[i]];
-            templatec03[i] = fmt[i].dateFmt.formats.range["c03"][abbrLength[i]];
-            templatec10[i] = fmt[i].dateFmt.formats.range["c10"][abbrLength[i]];
+        var fmt;
+        var data = setVariables();
+        var length = data["fullLength"];
+        var abbrLength = data["abbrLength"];
 
-            templatec11[i] = fmt[i].dateFmt.formats.range["c11"][abbrLength[i]];
-            templatec12[i] = fmt[i].dateFmt.formats.range["c12"][abbrLength[i]];
-            templatec20[i] = fmt[i].dateFmt.formats.range["c20"][abbrLength[i]];
-            templatec30[i] = fmt[i].dateFmt.formats.range["c30"][abbrLength[i]];
+        var templatec00 = [],templatec01 = [],templatec02 = [],templatec03 = [];
+        var templatec10 = [],templatec11 = [],templatec12 = [],templatec20 = [];
+        var templatec30 = [];
+        for (var i=0; i < 4; i++) {
+            fmt = new DateRngFmt({locale:"hr-HU", length: length[i]})
+            templatec00.push(fmt.dateFmt.formats.range["c00"][abbrLength[i]]);
+            templatec01.push(fmt.dateFmt.formats.range["c01"][abbrLength[i]]);
+            templatec02.push(fmt.dateFmt.formats.range["c02"][abbrLength[i]]);
+            templatec03.push(fmt.dateFmt.formats.range["c03"][abbrLength[i]]);
+            templatec10.push(fmt.dateFmt.formats.range["c10"][abbrLength[i]]);
+
+            templatec11.push(fmt.dateFmt.formats.range["c11"][abbrLength[i]]);
+            templatec12.push(fmt.dateFmt.formats.range["c12"][abbrLength[i]]);
+            templatec20.push(fmt.dateFmt.formats.range["c20"][abbrLength[i]]);
+            templatec30.push(fmt.dateFmt.formats.range["c30"][abbrLength[i]]);
         }
 
         test.equal(templatec00[0], '{sd}. {sm} {sy}. u {st} – {et}');
@@ -4996,19 +5528,26 @@ module.exports.testdaterangefmt = {
     },
     testDateRngFmt_id_ID: function(test) {
         test.expect(36);
-        //dmy
-        for (i=0; i < 4; i++) {
-            fmt[i] = new DateRngFmt({locale:"id-ID", length: length[i]})
-            templatec00[i] = fmt[i].dateFmt.formats.range["c00"][abbrLength[i]];
-            templatec01[i] = fmt[i].dateFmt.formats.range["c01"][abbrLength[i]];
-            templatec02[i] = fmt[i].dateFmt.formats.range["c02"][abbrLength[i]];
-            templatec03[i] = fmt[i].dateFmt.formats.range["c03"][abbrLength[i]];
-            templatec10[i] = fmt[i].dateFmt.formats.range["c10"][abbrLength[i]];
+        var fmt;
+        var data = setVariables();
+        var length = data["fullLength"];
+        var abbrLength = data["abbrLength"];
 
-            templatec11[i] = fmt[i].dateFmt.formats.range["c11"][abbrLength[i]];
-            templatec12[i] = fmt[i].dateFmt.formats.range["c12"][abbrLength[i]];
-            templatec20[i] = fmt[i].dateFmt.formats.range["c20"][abbrLength[i]];
-            templatec30[i] = fmt[i].dateFmt.formats.range["c30"][abbrLength[i]];
+        var templatec00 = [],templatec01 = [],templatec02 = [],templatec03 = [];
+        var templatec10 = [],templatec11 = [],templatec12 = [],templatec20 = [];
+        var templatec30 = [];
+        for (var i=0; i < 4; i++) {
+            fmt = new DateRngFmt({locale:"id-ID", length: length[i]})
+            templatec00.push(fmt.dateFmt.formats.range["c00"][abbrLength[i]]);
+            templatec01.push(fmt.dateFmt.formats.range["c01"][abbrLength[i]]);
+            templatec02.push(fmt.dateFmt.formats.range["c02"][abbrLength[i]]);
+            templatec03.push(fmt.dateFmt.formats.range["c03"][abbrLength[i]]);
+            templatec10.push(fmt.dateFmt.formats.range["c10"][abbrLength[i]]);
+
+            templatec11.push(fmt.dateFmt.formats.range["c11"][abbrLength[i]]);
+            templatec12.push(fmt.dateFmt.formats.range["c12"][abbrLength[i]]);
+            templatec20.push(fmt.dateFmt.formats.range["c20"][abbrLength[i]]);
+            templatec30.push(fmt.dateFmt.formats.range["c30"][abbrLength[i]]);
         }
 
         test.equal(templatec00[0], '{sd} {sm} {sy} {st} – {et}');
@@ -5060,19 +5599,26 @@ module.exports.testdaterangefmt = {
     },
     testDateRngFmt_is_IS: function(test) {
         test.expect(36);
-        //dmy
-        for (i=0; i < 4; i++) {
-            fmt[i] = new DateRngFmt({locale:"is-IS", length: length[i]})
-            templatec00[i] = fmt[i].dateFmt.formats.range["c00"][abbrLength[i]];
-            templatec01[i] = fmt[i].dateFmt.formats.range["c01"][abbrLength[i]];
-            templatec02[i] = fmt[i].dateFmt.formats.range["c02"][abbrLength[i]];
-            templatec03[i] = fmt[i].dateFmt.formats.range["c03"][abbrLength[i]];
-            templatec10[i] = fmt[i].dateFmt.formats.range["c10"][abbrLength[i]];
+        var fmt;
+        var data = setVariables();
+        var length = data["fullLength"];
+        var abbrLength = data["abbrLength"];
 
-            templatec11[i] = fmt[i].dateFmt.formats.range["c11"][abbrLength[i]];
-            templatec12[i] = fmt[i].dateFmt.formats.range["c12"][abbrLength[i]];
-            templatec20[i] = fmt[i].dateFmt.formats.range["c20"][abbrLength[i]];
-            templatec30[i] = fmt[i].dateFmt.formats.range["c30"][abbrLength[i]];
+        var templatec00 = [],templatec01 = [],templatec02 = [],templatec03 = [];
+        var templatec10 = [],templatec11 = [],templatec12 = [],templatec20 = [];
+        var templatec30 = [];
+        for (var i=0; i < 4; i++) {
+            fmt = new DateRngFmt({locale:"is-IS", length: length[i]})
+            templatec00.push(fmt.dateFmt.formats.range["c00"][abbrLength[i]]);
+            templatec01.push(fmt.dateFmt.formats.range["c01"][abbrLength[i]]);
+            templatec02.push(fmt.dateFmt.formats.range["c02"][abbrLength[i]]);
+            templatec03.push(fmt.dateFmt.formats.range["c03"][abbrLength[i]]);
+            templatec10.push(fmt.dateFmt.formats.range["c10"][abbrLength[i]]);
+
+            templatec11.push(fmt.dateFmt.formats.range["c11"][abbrLength[i]]);
+            templatec12.push(fmt.dateFmt.formats.range["c12"][abbrLength[i]]);
+            templatec20.push(fmt.dateFmt.formats.range["c20"][abbrLength[i]]);
+            templatec30.push(fmt.dateFmt.formats.range["c30"][abbrLength[i]]);
         }
 
         test.equal(templatec00[0], '{sd}. {sm} {sy} kl. {st} – {et}');
@@ -5124,19 +5670,26 @@ module.exports.testdaterangefmt = {
     },
     testDateRngFmt_it_CH: function(test) {
         test.expect(36);
-        //dmy
-        for (i=0; i < 4; i++) {
-            fmt[i] = new DateRngFmt({locale:"it-CH", length: length[i]})
-            templatec00[i] = fmt[i].dateFmt.formats.range["c00"][abbrLength[i]];
-            templatec01[i] = fmt[i].dateFmt.formats.range["c01"][abbrLength[i]];
-            templatec02[i] = fmt[i].dateFmt.formats.range["c02"][abbrLength[i]];
-            templatec03[i] = fmt[i].dateFmt.formats.range["c03"][abbrLength[i]];
-            templatec10[i] = fmt[i].dateFmt.formats.range["c10"][abbrLength[i]];
+        var fmt;
+        var data = setVariables();
+        var length = data["fullLength"];
+        var abbrLength = data["abbrLength"];
 
-            templatec11[i] = fmt[i].dateFmt.formats.range["c11"][abbrLength[i]];
-            templatec12[i] = fmt[i].dateFmt.formats.range["c12"][abbrLength[i]];
-            templatec20[i] = fmt[i].dateFmt.formats.range["c20"][abbrLength[i]];
-            templatec30[i] = fmt[i].dateFmt.formats.range["c30"][abbrLength[i]];
+        var templatec00 = [],templatec01 = [],templatec02 = [],templatec03 = [];
+        var templatec10 = [],templatec11 = [],templatec12 = [],templatec20 = [];
+        var templatec30 = [];
+        for (var i=0; i < 4; i++) {
+            fmt = new DateRngFmt({locale:"it-CH", length: length[i]})
+            templatec00.push(fmt.dateFmt.formats.range["c00"][abbrLength[i]]);
+            templatec01.push(fmt.dateFmt.formats.range["c01"][abbrLength[i]]);
+            templatec02.push(fmt.dateFmt.formats.range["c02"][abbrLength[i]]);
+            templatec03.push(fmt.dateFmt.formats.range["c03"][abbrLength[i]]);
+            templatec10.push(fmt.dateFmt.formats.range["c10"][abbrLength[i]]);
+
+            templatec11.push(fmt.dateFmt.formats.range["c11"][abbrLength[i]]);
+            templatec12.push(fmt.dateFmt.formats.range["c12"][abbrLength[i]]);
+            templatec20.push(fmt.dateFmt.formats.range["c20"][abbrLength[i]]);
+            templatec30.push(fmt.dateFmt.formats.range["c30"][abbrLength[i]]);
         }
 
         test.equal(templatec00[0], '{sd} {sm} {sy} {st} – {et}');
@@ -5188,19 +5741,26 @@ module.exports.testdaterangefmt = {
     },
     testDateRngFmt_it_IT: function(test) {
         test.expect(36);
-        //dmy
-        for (i=0; i < 4; i++) {
-            fmt[i] = new DateRngFmt({locale:"it-IT", length: length[i]})
-            templatec00[i] = fmt[i].dateFmt.formats.range["c00"][abbrLength[i]];
-            templatec01[i] = fmt[i].dateFmt.formats.range["c01"][abbrLength[i]];
-            templatec02[i] = fmt[i].dateFmt.formats.range["c02"][abbrLength[i]];
-            templatec03[i] = fmt[i].dateFmt.formats.range["c03"][abbrLength[i]];
-            templatec10[i] = fmt[i].dateFmt.formats.range["c10"][abbrLength[i]];
+        var fmt;
+        var data = setVariables();
+        var length = data["fullLength"];
+        var abbrLength = data["abbrLength"];
 
-            templatec11[i] = fmt[i].dateFmt.formats.range["c11"][abbrLength[i]];
-            templatec12[i] = fmt[i].dateFmt.formats.range["c12"][abbrLength[i]];
-            templatec20[i] = fmt[i].dateFmt.formats.range["c20"][abbrLength[i]];
-            templatec30[i] = fmt[i].dateFmt.formats.range["c30"][abbrLength[i]];
+        var templatec00 = [],templatec01 = [],templatec02 = [],templatec03 = [];
+        var templatec10 = [],templatec11 = [],templatec12 = [],templatec20 = [];
+        var templatec30 = [];
+        for (var i=0; i < 4; i++) {
+            fmt = new DateRngFmt({locale:"it-IT", length: length[i]})
+            templatec00.push(fmt.dateFmt.formats.range["c00"][abbrLength[i]]);
+            templatec01.push(fmt.dateFmt.formats.range["c01"][abbrLength[i]]);
+            templatec02.push(fmt.dateFmt.formats.range["c02"][abbrLength[i]]);
+            templatec03.push(fmt.dateFmt.formats.range["c03"][abbrLength[i]]);
+            templatec10.push(fmt.dateFmt.formats.range["c10"][abbrLength[i]]);
+
+            templatec11.push(fmt.dateFmt.formats.range["c11"][abbrLength[i]]);
+            templatec12.push(fmt.dateFmt.formats.range["c12"][abbrLength[i]]);
+            templatec20.push(fmt.dateFmt.formats.range["c20"][abbrLength[i]]);
+            templatec30.push(fmt.dateFmt.formats.range["c30"][abbrLength[i]]);
         }
 
         test.equal(templatec00[0], '{sd} {sm} {sy} {st} – {et}');
@@ -5252,19 +5812,28 @@ module.exports.testdaterangefmt = {
     },
     testDateRngFmt_ja_JP: function(test) {
         test.expect(36);
-        //ymd
-        for (i=0; i < 4; i++) {
-            fmt[i] = new DateRngFmt({locale:"ja-JP", length: length[i]})
-            templatec00[i] = fmt[i].dateFmt.formats.range["c00"][abbrLength[i]];
-            templatec01[i] = fmt[i].dateFmt.formats.range["c01"][abbrLength[i]];
-            templatec02[i] = fmt[i].dateFmt.formats.range["c02"][abbrLength[i]];
-            templatec03[i] = fmt[i].dateFmt.formats.range["c03"][abbrLength[i]];
-            templatec10[i] = fmt[i].dateFmt.formats.range["c10"][abbrLength[i]];
+        var fmt;
+        var data = setVariables();
+        var length = data["fullLength"];
+        var abbrLength = data["abbrLength"];
 
-            templatec11[i] = fmt[i].dateFmt.formats.range["c11"][abbrLength[i]];
-            templatec12[i] = fmt[i].dateFmt.formats.range["c12"][abbrLength[i]];
-            templatec20[i] = fmt[i].dateFmt.formats.range["c20"][abbrLength[i]];
-            templatec30[i] = fmt[i].dateFmt.formats.range["c30"][abbrLength[i]];
+        var templatec00 = [],templatec01 = [],templatec02 = [],templatec03 = [];
+        var templatec10 = [],templatec11 = [],templatec12 = [],templatec20 = [];
+        var templatec30 = [];
+
+        //ymd
+        for (var i=0; i < 4; i++) {
+            fmt = new DateRngFmt({locale:"ja-JP", length: length[i]})
+            templatec00.push(fmt.dateFmt.formats.range["c00"][abbrLength[i]]);
+            templatec01.push(fmt.dateFmt.formats.range["c01"][abbrLength[i]]);
+            templatec02.push(fmt.dateFmt.formats.range["c02"][abbrLength[i]]);
+            templatec03.push(fmt.dateFmt.formats.range["c03"][abbrLength[i]]);
+            templatec10.push(fmt.dateFmt.formats.range["c10"][abbrLength[i]]);
+
+            templatec11.push(fmt.dateFmt.formats.range["c11"][abbrLength[i]]);
+            templatec12.push(fmt.dateFmt.formats.range["c12"][abbrLength[i]]);
+            templatec20.push(fmt.dateFmt.formats.range["c20"][abbrLength[i]]);
+            templatec30.push(fmt.dateFmt.formats.range["c30"][abbrLength[i]]);
         }
 
         test.equal(templatec00[0], '{sy}年{sm}月{sd}日 {st} – {et}');
@@ -5316,21 +5885,27 @@ module.exports.testdaterangefmt = {
     },
     testDateRngFmt_kk_KZ: function(test) {
         test.expect(36);
-        //ydm
+        var fmt;        //ydm
         // dmy (short)
+        var data = setVariables();
+        var length = data["fullLength"];
+        var abbrLength = data["abbrLength"];
 
-        for (i=0; i < 4; i++) {
-            fmt[i] = new DateRngFmt({locale:"kk-KZ", length: length[i]})
-            templatec00[i] = fmt[i].dateFmt.formats.range["c00"][abbrLength[i]];
-            templatec01[i] = fmt[i].dateFmt.formats.range["c01"][abbrLength[i]];
-            templatec02[i] = fmt[i].dateFmt.formats.range["c02"][abbrLength[i]];
-            templatec03[i] = fmt[i].dateFmt.formats.range["c03"][abbrLength[i]];
-            templatec10[i] = fmt[i].dateFmt.formats.range["c10"][abbrLength[i]];
+        var templatec00 = [],templatec01 = [],templatec02 = [],templatec03 = [];
+        var templatec10 = [],templatec11 = [],templatec12 = [],templatec20 = [];
+        var templatec30 = [];
+        for (var i=0; i < 4; i++) {
+            fmt = new DateRngFmt({locale:"kk-KZ", length: length[i]})
+            templatec00.push(fmt.dateFmt.formats.range["c00"][abbrLength[i]]);
+            templatec01.push(fmt.dateFmt.formats.range["c01"][abbrLength[i]]);
+            templatec02.push(fmt.dateFmt.formats.range["c02"][abbrLength[i]]);
+            templatec03.push(fmt.dateFmt.formats.range["c03"][abbrLength[i]]);
+            templatec10.push(fmt.dateFmt.formats.range["c10"][abbrLength[i]]);
 
-            templatec11[i] = fmt[i].dateFmt.formats.range["c11"][abbrLength[i]];
-            templatec12[i] = fmt[i].dateFmt.formats.range["c12"][abbrLength[i]];
-            templatec20[i] = fmt[i].dateFmt.formats.range["c20"][abbrLength[i]];
-            templatec30[i] = fmt[i].dateFmt.formats.range["c30"][abbrLength[i]];
+            templatec11.push(fmt.dateFmt.formats.range["c11"][abbrLength[i]]);
+            templatec12.push(fmt.dateFmt.formats.range["c12"][abbrLength[i]]);
+            templatec20.push(fmt.dateFmt.formats.range["c20"][abbrLength[i]]);
+            templatec30.push(fmt.dateFmt.formats.range["c30"][abbrLength[i]]);
         }
 
         test.equal(templatec00[0], '{sy} ж. {sd} {sm}, {st} – {et}');
@@ -5382,20 +5957,27 @@ module.exports.testdaterangefmt = {
     },
     testDateRngFmt_kn_IN: function(test) {
         test.expect(36);
-        //mdy
+        var fmt;        //mdy
         //dmy (short)
-        for (i=0; i < 4; i++) {
-            fmt[i] = new DateRngFmt({locale:"kn-IN", length: length[i]})
-            templatec00[i] = fmt[i].dateFmt.formats.range["c00"][abbrLength[i]];
-            templatec01[i] = fmt[i].dateFmt.formats.range["c01"][abbrLength[i]];
-            templatec02[i] = fmt[i].dateFmt.formats.range["c02"][abbrLength[i]];
-            templatec03[i] = fmt[i].dateFmt.formats.range["c03"][abbrLength[i]];
-            templatec10[i] = fmt[i].dateFmt.formats.range["c10"][abbrLength[i]];
+        var data = setVariables();
+        var length = data["fullLength"];
+        var abbrLength = data["abbrLength"];
 
-            templatec11[i] = fmt[i].dateFmt.formats.range["c11"][abbrLength[i]];
-            templatec12[i] = fmt[i].dateFmt.formats.range["c12"][abbrLength[i]];
-            templatec20[i] = fmt[i].dateFmt.formats.range["c20"][abbrLength[i]];
-            templatec30[i] = fmt[i].dateFmt.formats.range["c30"][abbrLength[i]];
+        var templatec00 = [],templatec01 = [],templatec02 = [],templatec03 = [];
+        var templatec10 = [],templatec11 = [],templatec12 = [],templatec20 = [];
+        var templatec30 = [];
+        for (var i=0; i < 4; i++) {
+            fmt = new DateRngFmt({locale:"kn-IN", length: length[i]})
+            templatec00.push(fmt.dateFmt.formats.range["c00"][abbrLength[i]]);
+            templatec01.push(fmt.dateFmt.formats.range["c01"][abbrLength[i]]);
+            templatec02.push(fmt.dateFmt.formats.range["c02"][abbrLength[i]]);
+            templatec03.push(fmt.dateFmt.formats.range["c03"][abbrLength[i]]);
+            templatec10.push(fmt.dateFmt.formats.range["c10"][abbrLength[i]]);
+
+            templatec11.push(fmt.dateFmt.formats.range["c11"][abbrLength[i]]);
+            templatec12.push(fmt.dateFmt.formats.range["c12"][abbrLength[i]]);
+            templatec20.push(fmt.dateFmt.formats.range["c20"][abbrLength[i]]);
+            templatec30.push(fmt.dateFmt.formats.range["c30"][abbrLength[i]]);
         }
 
 
@@ -5448,19 +6030,28 @@ module.exports.testdaterangefmt = {
     },
     testDateRngFmt_ko_KR: function(test) {
         test.expect(36);
-        //ymd
-        for (i=0; i < 4; i++) {
-            fmt[i] = new DateRngFmt({locale:"ko-KR", length: length[i]})
-            templatec00[i] = fmt[i].dateFmt.formats.range["c00"][abbrLength[i]];
-            templatec01[i] = fmt[i].dateFmt.formats.range["c01"][abbrLength[i]];
-            templatec02[i] = fmt[i].dateFmt.formats.range["c02"][abbrLength[i]];
-            templatec03[i] = fmt[i].dateFmt.formats.range["c03"][abbrLength[i]];
-            templatec10[i] = fmt[i].dateFmt.formats.range["c10"][abbrLength[i]];
+        var fmt;
+        var data = setVariables();
+        var length = data["fullLength"];
+        var abbrLength = data["abbrLength"];
 
-            templatec11[i] = fmt[i].dateFmt.formats.range["c11"][abbrLength[i]];
-            templatec12[i] = fmt[i].dateFmt.formats.range["c12"][abbrLength[i]];
-            templatec20[i] = fmt[i].dateFmt.formats.range["c20"][abbrLength[i]];
-            templatec30[i] = fmt[i].dateFmt.formats.range["c30"][abbrLength[i]];
+        var templatec00 = [],templatec01 = [],templatec02 = [],templatec03 = [];
+        var templatec10 = [],templatec11 = [],templatec12 = [],templatec20 = [];
+        var templatec30 = [];
+
+        //ymd
+        for (var i=0; i < 4; i++) {
+            fmt = new DateRngFmt({locale:"ko-KR", length: length[i]})
+            templatec00.push(fmt.dateFmt.formats.range["c00"][abbrLength[i]]);
+            templatec01.push(fmt.dateFmt.formats.range["c01"][abbrLength[i]]);
+            templatec02.push(fmt.dateFmt.formats.range["c02"][abbrLength[i]]);
+            templatec03.push(fmt.dateFmt.formats.range["c03"][abbrLength[i]]);
+            templatec10.push(fmt.dateFmt.formats.range["c10"][abbrLength[i]]);
+
+            templatec11.push(fmt.dateFmt.formats.range["c11"][abbrLength[i]]);
+            templatec12.push(fmt.dateFmt.formats.range["c12"][abbrLength[i]]);
+            templatec20.push(fmt.dateFmt.formats.range["c20"][abbrLength[i]]);
+            templatec30.push(fmt.dateFmt.formats.range["c30"][abbrLength[i]]);
         }
 
         test.equal(templatec00[0], '{sy}년 {sm}월 {sd}일 {st} – {et}');
@@ -5512,20 +6103,28 @@ module.exports.testdaterangefmt = {
     },
     testDateRngFmt_ku_IQ: function(test) {
         test.expect(36);
-        //ymd (full, medium, short)
+        var fmt;        //ymd (full, medium, short)
         //dmy (long)
-        for (i=0; i < 4; i++) {
-            fmt[i] = new DateRngFmt({locale:"ku-IQ", length: length[i]})
-            templatec00[i] = fmt[i].dateFmt.formats.range["c00"][abbrLength[i]];
-            templatec01[i] = fmt[i].dateFmt.formats.range["c01"][abbrLength[i]];
-            templatec02[i] = fmt[i].dateFmt.formats.range["c02"][abbrLength[i]];
-            templatec03[i] = fmt[i].dateFmt.formats.range["c03"][abbrLength[i]];
-            templatec10[i] = fmt[i].dateFmt.formats.range["c10"][abbrLength[i]];
 
-            templatec11[i] = fmt[i].dateFmt.formats.range["c11"][abbrLength[i]];
-            templatec12[i] = fmt[i].dateFmt.formats.range["c12"][abbrLength[i]];
-            templatec20[i] = fmt[i].dateFmt.formats.range["c20"][abbrLength[i]];
-            templatec30[i] = fmt[i].dateFmt.formats.range["c30"][abbrLength[i]];
+        var data = setVariables();
+        var length = data["fullLength"];
+        var abbrLength = data["abbrLength"];
+
+        var templatec00 = [],templatec01 = [],templatec02 = [],templatec03 = [];
+        var templatec10 = [],templatec11 = [],templatec12 = [],templatec20 = [];
+        var templatec30 = [];
+        for (var i=0; i < 4; i++) {
+            fmt = new DateRngFmt({locale:"ku-IQ", length: length[i]})
+            templatec00.push(fmt.dateFmt.formats.range["c00"][abbrLength[i]]);
+            templatec01.push(fmt.dateFmt.formats.range["c01"][abbrLength[i]]);
+            templatec02.push(fmt.dateFmt.formats.range["c02"][abbrLength[i]]);
+            templatec03.push(fmt.dateFmt.formats.range["c03"][abbrLength[i]]);
+            templatec10.push(fmt.dateFmt.formats.range["c10"][abbrLength[i]]);
+
+            templatec11.push(fmt.dateFmt.formats.range["c11"][abbrLength[i]]);
+            templatec12.push(fmt.dateFmt.formats.range["c12"][abbrLength[i]]);
+            templatec20.push(fmt.dateFmt.formats.range["c20"][abbrLength[i]]);
+            templatec30.push(fmt.dateFmt.formats.range["c30"][abbrLength[i]]);
         }
 
         test.equal(templatec00[0], '‏{sy} {sm} {sd} {st} – {et}');
@@ -5577,19 +6176,28 @@ module.exports.testdaterangefmt = {
     },
     testDateRngFmt_lt_LT: function(test) {
         test.expect(36);
-        //ymd
-        for (i=0; i < 4; i++) {
-            fmt[i] = new DateRngFmt({locale:"lt-LT", length: length[i]})
-            templatec00[i] = fmt[i].dateFmt.formats.range["c00"][abbrLength[i]];
-            templatec01[i] = fmt[i].dateFmt.formats.range["c01"][abbrLength[i]];
-            templatec02[i] = fmt[i].dateFmt.formats.range["c02"][abbrLength[i]];
-            templatec03[i] = fmt[i].dateFmt.formats.range["c03"][abbrLength[i]];
-            templatec10[i] = fmt[i].dateFmt.formats.range["c10"][abbrLength[i]];
+        var fmt;
+        var data = setVariables();
+        var length = data["fullLength"];
+        var abbrLength = data["abbrLength"];
 
-            templatec11[i] = fmt[i].dateFmt.formats.range["c11"][abbrLength[i]];
-            templatec12[i] = fmt[i].dateFmt.formats.range["c12"][abbrLength[i]];
-            templatec20[i] = fmt[i].dateFmt.formats.range["c20"][abbrLength[i]];
-            templatec30[i] = fmt[i].dateFmt.formats.range["c30"][abbrLength[i]];
+        var templatec00 = [],templatec01 = [],templatec02 = [],templatec03 = [];
+        var templatec10 = [],templatec11 = [],templatec12 = [],templatec20 = [];
+        var templatec30 = [];
+
+        //ymd
+        for (var i=0; i < 4; i++) {
+            fmt = new DateRngFmt({locale:"lt-LT", length: length[i]})
+            templatec00.push(fmt.dateFmt.formats.range["c00"][abbrLength[i]]);
+            templatec01.push(fmt.dateFmt.formats.range["c01"][abbrLength[i]]);
+            templatec02.push(fmt.dateFmt.formats.range["c02"][abbrLength[i]]);
+            templatec03.push(fmt.dateFmt.formats.range["c03"][abbrLength[i]]);
+            templatec10.push(fmt.dateFmt.formats.range["c10"][abbrLength[i]]);
+
+            templatec11.push(fmt.dateFmt.formats.range["c11"][abbrLength[i]]);
+            templatec12.push(fmt.dateFmt.formats.range["c12"][abbrLength[i]]);
+            templatec20.push(fmt.dateFmt.formats.range["c20"][abbrLength[i]]);
+            templatec30.push(fmt.dateFmt.formats.range["c30"][abbrLength[i]]);
         }
 
         test.equal(templatec00[0], '{sy} m. {sm} {sd} d. {st} – {et}');
@@ -5641,20 +6249,28 @@ module.exports.testdaterangefmt = {
     },
     testDateRngFmt_lv_LV: function(test) {
         test.expect(36);
-        //ydm
+        var fmt;        //ydm
         //dmy (short)
-        for (i=0; i < 4; i++) {
-            fmt[i] = new DateRngFmt({locale:"lv-LV", length: length[i]})
-            templatec00[i] = fmt[i].dateFmt.formats.range["c00"][abbrLength[i]];
-            templatec01[i] = fmt[i].dateFmt.formats.range["c01"][abbrLength[i]];
-            templatec02[i] = fmt[i].dateFmt.formats.range["c02"][abbrLength[i]];
-            templatec03[i] = fmt[i].dateFmt.formats.range["c03"][abbrLength[i]];
-            templatec10[i] = fmt[i].dateFmt.formats.range["c10"][abbrLength[i]];
 
-            templatec11[i] = fmt[i].dateFmt.formats.range["c11"][abbrLength[i]];
-            templatec12[i] = fmt[i].dateFmt.formats.range["c12"][abbrLength[i]];
-            templatec20[i] = fmt[i].dateFmt.formats.range["c20"][abbrLength[i]];
-            templatec30[i] = fmt[i].dateFmt.formats.range["c30"][abbrLength[i]];
+        var data = setVariables();
+        var length = data["fullLength"];
+        var abbrLength = data["abbrLength"];
+
+        var templatec00 = [],templatec01 = [],templatec02 = [],templatec03 = [];
+        var templatec10 = [],templatec11 = [],templatec12 = [],templatec20 = [];
+        var templatec30 = [];
+        for (var i=0; i < 4; i++) {
+            fmt = new DateRngFmt({locale:"lv-LV", length: length[i]})
+            templatec00.push(fmt.dateFmt.formats.range["c00"][abbrLength[i]]);
+            templatec01.push(fmt.dateFmt.formats.range["c01"][abbrLength[i]]);
+            templatec02.push(fmt.dateFmt.formats.range["c02"][abbrLength[i]]);
+            templatec03.push(fmt.dateFmt.formats.range["c03"][abbrLength[i]]);
+            templatec10.push(fmt.dateFmt.formats.range["c10"][abbrLength[i]]);
+
+            templatec11.push(fmt.dateFmt.formats.range["c11"][abbrLength[i]]);
+            templatec12.push(fmt.dateFmt.formats.range["c12"][abbrLength[i]]);
+            templatec20.push(fmt.dateFmt.formats.range["c20"][abbrLength[i]]);
+            templatec30.push(fmt.dateFmt.formats.range["c30"][abbrLength[i]]);
         }
 
         test.equal(templatec00[0], '{sy}. gada {sd}. {sm} {st} – {et}');
@@ -5706,19 +6322,26 @@ module.exports.testdaterangefmt = {
     },
     testDateRngFmt_mk_MK: function(test) {
         test.expect(36);
-        //dmy
-        for (i=0; i < 4; i++) {
-            fmt[i] = new DateRngFmt({locale:"mk-MK", length: length[i]})
-            templatec00[i] = fmt[i].dateFmt.formats.range["c00"][abbrLength[i]];
-            templatec01[i] = fmt[i].dateFmt.formats.range["c01"][abbrLength[i]];
-            templatec02[i] = fmt[i].dateFmt.formats.range["c02"][abbrLength[i]];
-            templatec03[i] = fmt[i].dateFmt.formats.range["c03"][abbrLength[i]];
-            templatec10[i] = fmt[i].dateFmt.formats.range["c10"][abbrLength[i]];
+        var fmt;
+        var data = setVariables();
+        var length = data["fullLength"];
+        var abbrLength = data["abbrLength"];
 
-            templatec11[i] = fmt[i].dateFmt.formats.range["c11"][abbrLength[i]];
-            templatec12[i] = fmt[i].dateFmt.formats.range["c12"][abbrLength[i]];
-            templatec20[i] = fmt[i].dateFmt.formats.range["c20"][abbrLength[i]];
-            templatec30[i] = fmt[i].dateFmt.formats.range["c30"][abbrLength[i]];
+        var templatec00 = [],templatec01 = [],templatec02 = [],templatec03 = [];
+        var templatec10 = [],templatec11 = [],templatec12 = [],templatec20 = [];
+        var templatec30 = [];
+        for (var i=0; i < 4; i++) {
+            fmt = new DateRngFmt({locale:"mk-MK", length: length[i]})
+            templatec00.push(fmt.dateFmt.formats.range["c00"][abbrLength[i]]);
+            templatec01.push(fmt.dateFmt.formats.range["c01"][abbrLength[i]]);
+            templatec02.push(fmt.dateFmt.formats.range["c02"][abbrLength[i]]);
+            templatec03.push(fmt.dateFmt.formats.range["c03"][abbrLength[i]]);
+            templatec10.push(fmt.dateFmt.formats.range["c10"][abbrLength[i]]);
+
+            templatec11.push(fmt.dateFmt.formats.range["c11"][abbrLength[i]]);
+            templatec12.push(fmt.dateFmt.formats.range["c12"][abbrLength[i]]);
+            templatec20.push(fmt.dateFmt.formats.range["c20"][abbrLength[i]]);
+            templatec30.push(fmt.dateFmt.formats.range["c30"][abbrLength[i]]);
         }
 
         test.equal(templatec00[0], '{sd} {sm} {sy} {st} – {et}');
@@ -5770,20 +6393,28 @@ module.exports.testdaterangefmt = {
     },
     testDateRngFmt_ml_IN: function(test) {
         test.expect(36);
-        //ymd
+        var fmt;        //ymd
         //dmy(short)
-        for (i=0; i < 4; i++) {
-            fmt[i] = new DateRngFmt({locale:"ml-IN", length: length[i]})
-            templatec00[i] = fmt[i].dateFmt.formats.range["c00"][abbrLength[i]];
-            templatec01[i] = fmt[i].dateFmt.formats.range["c01"][abbrLength[i]];
-            templatec02[i] = fmt[i].dateFmt.formats.range["c02"][abbrLength[i]];
-            templatec03[i] = fmt[i].dateFmt.formats.range["c03"][abbrLength[i]];
-            templatec10[i] = fmt[i].dateFmt.formats.range["c10"][abbrLength[i]];
 
-            templatec11[i] = fmt[i].dateFmt.formats.range["c11"][abbrLength[i]];
-            templatec12[i] = fmt[i].dateFmt.formats.range["c12"][abbrLength[i]];
-            templatec20[i] = fmt[i].dateFmt.formats.range["c20"][abbrLength[i]];
-            templatec30[i] = fmt[i].dateFmt.formats.range["c30"][abbrLength[i]];
+        var data = setVariables();
+        var length = data["fullLength"];
+        var abbrLength = data["abbrLength"];
+
+        var templatec00 = [],templatec01 = [],templatec02 = [],templatec03 = [];
+        var templatec10 = [],templatec11 = [],templatec12 = [],templatec20 = [];
+        var templatec30 = [];
+        for (var i=0; i < 4; i++) {
+            fmt = new DateRngFmt({locale:"ml-IN", length: length[i]})
+            templatec00.push(fmt.dateFmt.formats.range["c00"][abbrLength[i]]);
+            templatec01.push(fmt.dateFmt.formats.range["c01"][abbrLength[i]]);
+            templatec02.push(fmt.dateFmt.formats.range["c02"][abbrLength[i]]);
+            templatec03.push(fmt.dateFmt.formats.range["c03"][abbrLength[i]]);
+            templatec10.push(fmt.dateFmt.formats.range["c10"][abbrLength[i]]);
+
+            templatec11.push(fmt.dateFmt.formats.range["c11"][abbrLength[i]]);
+            templatec12.push(fmt.dateFmt.formats.range["c12"][abbrLength[i]]);
+            templatec20.push(fmt.dateFmt.formats.range["c20"][abbrLength[i]]);
+            templatec30.push(fmt.dateFmt.formats.range["c30"][abbrLength[i]]);
         }
 
         test.equal(templatec00[0], '{sy}, {sm} {sd} {st} – {et}');
@@ -5835,19 +6466,26 @@ module.exports.testdaterangefmt = {
     },
     testDateRngFmt_mr_IN: function(test) {
         test.expect(36);
-        //dmy
-        for (i=0; i < 4; i++) {
-            fmt[i] = new DateRngFmt({locale:"mr-IN", length: length[i]})
-            templatec00[i] = fmt[i].dateFmt.formats.range["c00"][abbrLength[i]];
-            templatec01[i] = fmt[i].dateFmt.formats.range["c01"][abbrLength[i]];
-            templatec02[i] = fmt[i].dateFmt.formats.range["c02"][abbrLength[i]];
-            templatec03[i] = fmt[i].dateFmt.formats.range["c03"][abbrLength[i]];
-            templatec10[i] = fmt[i].dateFmt.formats.range["c10"][abbrLength[i]];
+        var fmt;
+        var data = setVariables();
+        var length = data["fullLength"];
+        var abbrLength = data["abbrLength"];
 
-            templatec11[i] = fmt[i].dateFmt.formats.range["c11"][abbrLength[i]];
-            templatec12[i] = fmt[i].dateFmt.formats.range["c12"][abbrLength[i]];
-            templatec20[i] = fmt[i].dateFmt.formats.range["c20"][abbrLength[i]];
-            templatec30[i] = fmt[i].dateFmt.formats.range["c30"][abbrLength[i]];
+        var templatec00 = [],templatec01 = [],templatec02 = [],templatec03 = [];
+        var templatec10 = [],templatec11 = [],templatec12 = [],templatec20 = [];
+        var templatec30 = [];
+        for (var i=0; i < 4; i++) {
+            fmt = new DateRngFmt({locale:"mr-IN", length: length[i]})
+            templatec00.push(fmt.dateFmt.formats.range["c00"][abbrLength[i]]);
+            templatec01.push(fmt.dateFmt.formats.range["c01"][abbrLength[i]]);
+            templatec02.push(fmt.dateFmt.formats.range["c02"][abbrLength[i]]);
+            templatec03.push(fmt.dateFmt.formats.range["c03"][abbrLength[i]]);
+            templatec10.push(fmt.dateFmt.formats.range["c10"][abbrLength[i]]);
+
+            templatec11.push(fmt.dateFmt.formats.range["c11"][abbrLength[i]]);
+            templatec12.push(fmt.dateFmt.formats.range["c12"][abbrLength[i]]);
+            templatec20.push(fmt.dateFmt.formats.range["c20"][abbrLength[i]]);
+            templatec30.push(fmt.dateFmt.formats.range["c30"][abbrLength[i]]);
         }
 
         test.equal(templatec00[0], '{sd} {sm}, {sy} रोजी {st} – {et}');
@@ -5899,19 +6537,26 @@ module.exports.testdaterangefmt = {
     },
     testDateRngFmt_ms_MY: function(test) {
         test.expect(36);
-        //dmy
-        for (i=0; i < 4; i++) {
-            fmt[i] = new DateRngFmt({locale:"ms-MY", length: length[i]})
-            templatec00[i] = fmt[i].dateFmt.formats.range["c00"][abbrLength[i]];
-            templatec01[i] = fmt[i].dateFmt.formats.range["c01"][abbrLength[i]];
-            templatec02[i] = fmt[i].dateFmt.formats.range["c02"][abbrLength[i]];
-            templatec03[i] = fmt[i].dateFmt.formats.range["c03"][abbrLength[i]];
-            templatec10[i] = fmt[i].dateFmt.formats.range["c10"][abbrLength[i]];
+        var fmt;
+        var data = setVariables();
+        var length = data["fullLength"];
+        var abbrLength = data["abbrLength"];
 
-            templatec11[i] = fmt[i].dateFmt.formats.range["c11"][abbrLength[i]];
-            templatec12[i] = fmt[i].dateFmt.formats.range["c12"][abbrLength[i]];
-            templatec20[i] = fmt[i].dateFmt.formats.range["c20"][abbrLength[i]];
-            templatec30[i] = fmt[i].dateFmt.formats.range["c30"][abbrLength[i]];
+        var templatec00 = [],templatec01 = [],templatec02 = [],templatec03 = [];
+        var templatec10 = [],templatec11 = [],templatec12 = [],templatec20 = [];
+        var templatec30 = [];
+        for (var i=0; i < 4; i++) {
+            fmt = new DateRngFmt({locale:"ms-MY", length: length[i]})
+            templatec00.push(fmt.dateFmt.formats.range["c00"][abbrLength[i]]);
+            templatec01.push(fmt.dateFmt.formats.range["c01"][abbrLength[i]]);
+            templatec02.push(fmt.dateFmt.formats.range["c02"][abbrLength[i]]);
+            templatec03.push(fmt.dateFmt.formats.range["c03"][abbrLength[i]]);
+            templatec10.push(fmt.dateFmt.formats.range["c10"][abbrLength[i]]);
+
+            templatec11.push(fmt.dateFmt.formats.range["c11"][abbrLength[i]]);
+            templatec12.push(fmt.dateFmt.formats.range["c12"][abbrLength[i]]);
+            templatec20.push(fmt.dateFmt.formats.range["c20"][abbrLength[i]]);
+            templatec30.push(fmt.dateFmt.formats.range["c30"][abbrLength[i]]);
         }
 
         test.equal(templatec00[0], '{sd} {sm} {sy} {st} – {et}');
@@ -5963,19 +6608,26 @@ module.exports.testdaterangefmt = {
     },
     testDateRngFmt_nb_NO: function(test) {
         test.expect(36);
-        //dmy
-        for (i=0; i < 4; i++) {
-            fmt[i] = new DateRngFmt({locale:"nb-NO", length: length[i]})
-            templatec00[i] = fmt[i].dateFmt.formats.range["c00"][abbrLength[i]];
-            templatec01[i] = fmt[i].dateFmt.formats.range["c01"][abbrLength[i]];
-            templatec02[i] = fmt[i].dateFmt.formats.range["c02"][abbrLength[i]];
-            templatec03[i] = fmt[i].dateFmt.formats.range["c03"][abbrLength[i]];
-            templatec10[i] = fmt[i].dateFmt.formats.range["c10"][abbrLength[i]];
+        var fmt;
+        var data = setVariables();
+        var length = data["fullLength"];
+        var abbrLength = data["abbrLength"];
 
-            templatec11[i] = fmt[i].dateFmt.formats.range["c11"][abbrLength[i]];
-            templatec12[i] = fmt[i].dateFmt.formats.range["c12"][abbrLength[i]];
-            templatec20[i] = fmt[i].dateFmt.formats.range["c20"][abbrLength[i]];
-            templatec30[i] = fmt[i].dateFmt.formats.range["c30"][abbrLength[i]];
+        var templatec00 = [],templatec01 = [],templatec02 = [],templatec03 = [];
+        var templatec10 = [],templatec11 = [],templatec12 = [],templatec20 = [];
+        var templatec30 = [];
+        for (var i=0; i < 4; i++) {
+            fmt = new DateRngFmt({locale:"nb-NO", length: length[i]})
+            templatec00.push(fmt.dateFmt.formats.range["c00"][abbrLength[i]]);
+            templatec01.push(fmt.dateFmt.formats.range["c01"][abbrLength[i]]);
+            templatec02.push(fmt.dateFmt.formats.range["c02"][abbrLength[i]]);
+            templatec03.push(fmt.dateFmt.formats.range["c03"][abbrLength[i]]);
+            templatec10.push(fmt.dateFmt.formats.range["c10"][abbrLength[i]]);
+
+            templatec11.push(fmt.dateFmt.formats.range["c11"][abbrLength[i]]);
+            templatec12.push(fmt.dateFmt.formats.range["c12"][abbrLength[i]]);
+            templatec20.push(fmt.dateFmt.formats.range["c20"][abbrLength[i]]);
+            templatec30.push(fmt.dateFmt.formats.range["c30"][abbrLength[i]]);
         }
 
         test.equal(templatec00[0], '{sd}. {sm} {sy} {st} – {et}');
@@ -6027,19 +6679,26 @@ module.exports.testdaterangefmt = {
     },
     testDateRngFmt_nl_BE: function(test) {
         test.expect(36);
-        //dmy
-        for (i=0; i < 4; i++) {
-            fmt[i] = new DateRngFmt({locale:"nl-BE", length: length[i]})
-            templatec00[i] = fmt[i].dateFmt.formats.range["c00"][abbrLength[i]];
-            templatec01[i] = fmt[i].dateFmt.formats.range["c01"][abbrLength[i]];
-            templatec02[i] = fmt[i].dateFmt.formats.range["c02"][abbrLength[i]];
-            templatec03[i] = fmt[i].dateFmt.formats.range["c03"][abbrLength[i]];
-            templatec10[i] = fmt[i].dateFmt.formats.range["c10"][abbrLength[i]];
+        var fmt;
+        var data = setVariables();
+        var length = data["fullLength"];
+        var abbrLength = data["abbrLength"];
 
-            templatec11[i] = fmt[i].dateFmt.formats.range["c11"][abbrLength[i]];
-            templatec12[i] = fmt[i].dateFmt.formats.range["c12"][abbrLength[i]];
-            templatec20[i] = fmt[i].dateFmt.formats.range["c20"][abbrLength[i]];
-            templatec30[i] = fmt[i].dateFmt.formats.range["c30"][abbrLength[i]];
+        var templatec00 = [],templatec01 = [],templatec02 = [],templatec03 = [];
+        var templatec10 = [],templatec11 = [],templatec12 = [],templatec20 = [];
+        var templatec30 = [];
+        for (var i=0; i < 4; i++) {
+            fmt = new DateRngFmt({locale:"nl-BE", length: length[i]})
+            templatec00.push(fmt.dateFmt.formats.range["c00"][abbrLength[i]]);
+            templatec01.push(fmt.dateFmt.formats.range["c01"][abbrLength[i]]);
+            templatec02.push(fmt.dateFmt.formats.range["c02"][abbrLength[i]]);
+            templatec03.push(fmt.dateFmt.formats.range["c03"][abbrLength[i]]);
+            templatec10.push(fmt.dateFmt.formats.range["c10"][abbrLength[i]]);
+
+            templatec11.push(fmt.dateFmt.formats.range["c11"][abbrLength[i]]);
+            templatec12.push(fmt.dateFmt.formats.range["c12"][abbrLength[i]]);
+            templatec20.push(fmt.dateFmt.formats.range["c20"][abbrLength[i]]);
+            templatec30.push(fmt.dateFmt.formats.range["c30"][abbrLength[i]]);
         }
 
         test.equal(templatec00[0], '{sd} {sm} {sy} om {st} – {et}');
@@ -6091,19 +6750,26 @@ module.exports.testdaterangefmt = {
     },
     testDateRngFmt_nl_NL: function(test) {
         test.expect(36);
-        //dmy
-        for (i=0; i < 4; i++) {
-            fmt[i] = new DateRngFmt({locale:"nl-NL", length: length[i]})
-            templatec00[i] = fmt[i].dateFmt.formats.range["c00"][abbrLength[i]];
-            templatec01[i] = fmt[i].dateFmt.formats.range["c01"][abbrLength[i]];
-            templatec02[i] = fmt[i].dateFmt.formats.range["c02"][abbrLength[i]];
-            templatec03[i] = fmt[i].dateFmt.formats.range["c03"][abbrLength[i]];
-            templatec10[i] = fmt[i].dateFmt.formats.range["c10"][abbrLength[i]];
+        var fmt;
+        var data = setVariables();
+        var length = data["fullLength"];
+        var abbrLength = data["abbrLength"];
 
-            templatec11[i] = fmt[i].dateFmt.formats.range["c11"][abbrLength[i]];
-            templatec12[i] = fmt[i].dateFmt.formats.range["c12"][abbrLength[i]];
-            templatec20[i] = fmt[i].dateFmt.formats.range["c20"][abbrLength[i]];
-            templatec30[i] = fmt[i].dateFmt.formats.range["c30"][abbrLength[i]];
+        var templatec00 = [],templatec01 = [],templatec02 = [],templatec03 = [];
+        var templatec10 = [],templatec11 = [],templatec12 = [],templatec20 = [];
+        var templatec30 = [];
+        for (var i=0; i < 4; i++) {
+            fmt = new DateRngFmt({locale:"nl-NL", length: length[i]})
+            templatec00.push(fmt.dateFmt.formats.range["c00"][abbrLength[i]]);
+            templatec01.push(fmt.dateFmt.formats.range["c01"][abbrLength[i]]);
+            templatec02.push(fmt.dateFmt.formats.range["c02"][abbrLength[i]]);
+            templatec03.push(fmt.dateFmt.formats.range["c03"][abbrLength[i]]);
+            templatec10.push(fmt.dateFmt.formats.range["c10"][abbrLength[i]]);
+
+            templatec11.push(fmt.dateFmt.formats.range["c11"][abbrLength[i]]);
+            templatec12.push(fmt.dateFmt.formats.range["c12"][abbrLength[i]]);
+            templatec20.push(fmt.dateFmt.formats.range["c20"][abbrLength[i]]);
+            templatec30.push(fmt.dateFmt.formats.range["c30"][abbrLength[i]]);
         }
 
         test.equal(templatec00[0], '{sd} {sm} {sy} om {st} – {et}');
@@ -6156,19 +6822,26 @@ module.exports.testdaterangefmt = {
     },
     testDateRngFmt_pa_Guru_IN: function(test) {
         test.expect(36);
-        //dmy
-        for (i=0; i < 4; i++) {
-            fmt[i] = new DateRngFmt({locale:"pa-Guru-IN", length: length[i]})
+        var fmt;
+        var data = setVariables();
+        var length = data["fullLength"];
+        var abbrLength = data["abbrLength"];
 
-            templatec00[i] = fmt[i].dateFmt.formats.range["c00"][abbrLength[i]];
-            templatec01[i] = fmt[i].dateFmt.formats.range["c01"][abbrLength[i]];
-            templatec02[i] = fmt[i].dateFmt.formats.range["c02"][abbrLength[i]];
-            templatec03[i] = fmt[i].dateFmt.formats.range["c03"][abbrLength[i]];
-            templatec10[i] = fmt[i].dateFmt.formats.range["c10"][abbrLength[i]];
-            templatec11[i] = fmt[i].dateFmt.formats.range["c11"][abbrLength[i]];
-            templatec12[i] = fmt[i].dateFmt.formats.range["c12"][abbrLength[i]];
-            templatec20[i] = fmt[i].dateFmt.formats.range["c20"][abbrLength[i]];
-            templatec30[i] = fmt[i].dateFmt.formats.range["c30"][abbrLength[i]];
+        var templatec00 = [],templatec01 = [],templatec02 = [],templatec03 = [];
+        var templatec10 = [],templatec11 = [],templatec12 = [],templatec20 = [];
+        var templatec30 = [];
+        for (var i=0; i < 4; i++) {
+            fmt = new DateRngFmt({locale:"pa-Guru-IN", length: length[i]})
+
+            templatec00.push(fmt.dateFmt.formats.range["c00"][abbrLength[i]]);
+            templatec01.push(fmt.dateFmt.formats.range["c01"][abbrLength[i]]);
+            templatec02.push(fmt.dateFmt.formats.range["c02"][abbrLength[i]]);
+            templatec03.push(fmt.dateFmt.formats.range["c03"][abbrLength[i]]);
+            templatec10.push(fmt.dateFmt.formats.range["c10"][abbrLength[i]]);
+            templatec11.push(fmt.dateFmt.formats.range["c11"][abbrLength[i]]);
+            templatec12.push(fmt.dateFmt.formats.range["c12"][abbrLength[i]]);
+            templatec20.push(fmt.dateFmt.formats.range["c20"][abbrLength[i]]);
+            templatec30.push(fmt.dateFmt.formats.range["c30"][abbrLength[i]]);
         }
 
         test.equal(templatec00[0], '{sd} {sm} {sy} {st} – {et}');
@@ -6220,19 +6893,26 @@ module.exports.testdaterangefmt = {
     },
     testDateRngFmt_pl_PL: function(test) {
         test.expect(36);
-        //dmy
-        for (i=0; i < 4; i++) {
-            fmt[i] = new DateRngFmt({locale:"pl-PL", length: length[i]})
-            templatec00[i] = fmt[i].dateFmt.formats.range["c00"][abbrLength[i]];
-            templatec01[i] = fmt[i].dateFmt.formats.range["c01"][abbrLength[i]];
-            templatec02[i] = fmt[i].dateFmt.formats.range["c02"][abbrLength[i]];
-            templatec03[i] = fmt[i].dateFmt.formats.range["c03"][abbrLength[i]];
-            templatec10[i] = fmt[i].dateFmt.formats.range["c10"][abbrLength[i]];
+        var fmt;
+        var data = setVariables();
+        var length = data["fullLength"];
+        var abbrLength = data["abbrLength"];
 
-            templatec11[i] = fmt[i].dateFmt.formats.range["c11"][abbrLength[i]];
-            templatec12[i] = fmt[i].dateFmt.formats.range["c12"][abbrLength[i]];
-            templatec20[i] = fmt[i].dateFmt.formats.range["c20"][abbrLength[i]];
-            templatec30[i] = fmt[i].dateFmt.formats.range["c30"][abbrLength[i]];
+        var templatec00 = [],templatec01 = [],templatec02 = [],templatec03 = [];
+        var templatec10 = [],templatec11 = [],templatec12 = [],templatec20 = [];
+        var templatec30 = [];
+        for (var i=0; i < 4; i++) {
+            fmt = new DateRngFmt({locale:"pl-PL", length: length[i]})
+            templatec00.push(fmt.dateFmt.formats.range["c00"][abbrLength[i]]);
+            templatec01.push(fmt.dateFmt.formats.range["c01"][abbrLength[i]]);
+            templatec02.push(fmt.dateFmt.formats.range["c02"][abbrLength[i]]);
+            templatec03.push(fmt.dateFmt.formats.range["c03"][abbrLength[i]]);
+            templatec10.push(fmt.dateFmt.formats.range["c10"][abbrLength[i]]);
+
+            templatec11.push(fmt.dateFmt.formats.range["c11"][abbrLength[i]]);
+            templatec12.push(fmt.dateFmt.formats.range["c12"][abbrLength[i]]);
+            templatec20.push(fmt.dateFmt.formats.range["c20"][abbrLength[i]]);
+            templatec30.push(fmt.dateFmt.formats.range["c30"][abbrLength[i]]);
         }
 
         test.equal(templatec00[0], '{sd} {sm} {sy} {st} – {et}');
@@ -6284,19 +6964,26 @@ module.exports.testdaterangefmt = {
     },
     testDateRngFmt_pt_BR: function(test) {
         test.expect(36);
-        //dmy
-        for (i=0; i < 4; i++) {
-            fmt[i] = new DateRngFmt({locale:"pt-BR", length: length[i]})
-            templatec00[i] = fmt[i].dateFmt.formats.range["c00"][abbrLength[i]];
-            templatec01[i] = fmt[i].dateFmt.formats.range["c01"][abbrLength[i]];
-            templatec02[i] = fmt[i].dateFmt.formats.range["c02"][abbrLength[i]];
-            templatec03[i] = fmt[i].dateFmt.formats.range["c03"][abbrLength[i]];
-            templatec10[i] = fmt[i].dateFmt.formats.range["c10"][abbrLength[i]];
+        var fmt;
+        var data = setVariables();
+        var length = data["fullLength"];
+        var abbrLength = data["abbrLength"];
 
-            templatec11[i] = fmt[i].dateFmt.formats.range["c11"][abbrLength[i]];
-            templatec12[i] = fmt[i].dateFmt.formats.range["c12"][abbrLength[i]];
-            templatec20[i] = fmt[i].dateFmt.formats.range["c20"][abbrLength[i]];
-            templatec30[i] = fmt[i].dateFmt.formats.range["c30"][abbrLength[i]];
+        var templatec00 = [],templatec01 = [],templatec02 = [],templatec03 = [];
+        var templatec10 = [],templatec11 = [],templatec12 = [],templatec20 = [];
+        var templatec30 = [];
+        for (var i=0; i < 4; i++) {
+            fmt = new DateRngFmt({locale:"pt-BR", length: length[i]})
+            templatec00.push(fmt.dateFmt.formats.range["c00"][abbrLength[i]]);
+            templatec01.push(fmt.dateFmt.formats.range["c01"][abbrLength[i]]);
+            templatec02.push(fmt.dateFmt.formats.range["c02"][abbrLength[i]]);
+            templatec03.push(fmt.dateFmt.formats.range["c03"][abbrLength[i]]);
+            templatec10.push(fmt.dateFmt.formats.range["c10"][abbrLength[i]]);
+
+            templatec11.push(fmt.dateFmt.formats.range["c11"][abbrLength[i]]);
+            templatec12.push(fmt.dateFmt.formats.range["c12"][abbrLength[i]]);
+            templatec20.push(fmt.dateFmt.formats.range["c20"][abbrLength[i]]);
+            templatec30.push(fmt.dateFmt.formats.range["c30"][abbrLength[i]]);
         }
 
         test.equal(templatec00[0], '{sd} de {sm} de {sy} {st} – {et}');
@@ -6348,19 +7035,26 @@ module.exports.testdaterangefmt = {
     },
     testDateRngFmt_pt_PT: function(test) {
         test.expect(36);
-        //dmy
-        for (i=0; i < 4; i++) {
-            fmt[i] = new DateRngFmt({locale:"pt-PT", length: length[i]})
-            templatec00[i] = fmt[i].dateFmt.formats.range["c00"][abbrLength[i]];
-            templatec01[i] = fmt[i].dateFmt.formats.range["c01"][abbrLength[i]];
-            templatec02[i] = fmt[i].dateFmt.formats.range["c02"][abbrLength[i]];
-            templatec03[i] = fmt[i].dateFmt.formats.range["c03"][abbrLength[i]];
-            templatec10[i] = fmt[i].dateFmt.formats.range["c10"][abbrLength[i]];
+        var fmt;
+        var data = setVariables();
+        var length = data["fullLength"];
+        var abbrLength = data["abbrLength"];
 
-            templatec11[i] = fmt[i].dateFmt.formats.range["c11"][abbrLength[i]];
-            templatec12[i] = fmt[i].dateFmt.formats.range["c12"][abbrLength[i]];
-            templatec20[i] = fmt[i].dateFmt.formats.range["c20"][abbrLength[i]];
-            templatec30[i] = fmt[i].dateFmt.formats.range["c30"][abbrLength[i]];
+        var templatec00 = [],templatec01 = [],templatec02 = [],templatec03 = [];
+        var templatec10 = [],templatec11 = [],templatec12 = [],templatec20 = [];
+        var templatec30 = [];
+        for (var i=0; i < 4; i++) {
+            fmt = new DateRngFmt({locale:"pt-PT", length: length[i]})
+            templatec00.push(fmt.dateFmt.formats.range["c00"][abbrLength[i]]);
+            templatec01.push(fmt.dateFmt.formats.range["c01"][abbrLength[i]]);
+            templatec02.push(fmt.dateFmt.formats.range["c02"][abbrLength[i]]);
+            templatec03.push(fmt.dateFmt.formats.range["c03"][abbrLength[i]]);
+            templatec10.push(fmt.dateFmt.formats.range["c10"][abbrLength[i]]);
+
+            templatec11.push(fmt.dateFmt.formats.range["c11"][abbrLength[i]]);
+            templatec12.push(fmt.dateFmt.formats.range["c12"][abbrLength[i]]);
+            templatec20.push(fmt.dateFmt.formats.range["c20"][abbrLength[i]]);
+            templatec30.push(fmt.dateFmt.formats.range["c30"][abbrLength[i]]);
         }
 
         test.equal(templatec00[0], '{sd} de {sm} de {sy} às {st} – {et}');
@@ -6412,19 +7106,26 @@ module.exports.testdaterangefmt = {
     },
     testDateRngFmt_ro_RO: function(test) {
         test.expect(36);
-        //dmy
-        for (i=0; i < 4; i++) {
-            fmt[i] = new DateRngFmt({locale:"ro-RO", length: length[i]})
-            templatec00[i] = fmt[i].dateFmt.formats.range["c00"][abbrLength[i]];
-            templatec01[i] = fmt[i].dateFmt.formats.range["c01"][abbrLength[i]];
-            templatec02[i] = fmt[i].dateFmt.formats.range["c02"][abbrLength[i]];
-            templatec03[i] = fmt[i].dateFmt.formats.range["c03"][abbrLength[i]];
-            templatec10[i] = fmt[i].dateFmt.formats.range["c10"][abbrLength[i]];
+        var fmt;
+        var data = setVariables();
+        var length = data["fullLength"];
+        var abbrLength = data["abbrLength"];
 
-            templatec11[i] = fmt[i].dateFmt.formats.range["c11"][abbrLength[i]];
-            templatec12[i] = fmt[i].dateFmt.formats.range["c12"][abbrLength[i]];
-            templatec20[i] = fmt[i].dateFmt.formats.range["c20"][abbrLength[i]];
-            templatec30[i] = fmt[i].dateFmt.formats.range["c30"][abbrLength[i]];
+        var templatec00 = [],templatec01 = [],templatec02 = [],templatec03 = [];
+        var templatec10 = [],templatec11 = [],templatec12 = [],templatec20 = [];
+        var templatec30 = [];
+        for (var i=0; i < 4; i++) {
+            fmt = new DateRngFmt({locale:"ro-RO", length: length[i]})
+            templatec00.push(fmt.dateFmt.formats.range["c00"][abbrLength[i]]);
+            templatec01.push(fmt.dateFmt.formats.range["c01"][abbrLength[i]]);
+            templatec02.push(fmt.dateFmt.formats.range["c02"][abbrLength[i]]);
+            templatec03.push(fmt.dateFmt.formats.range["c03"][abbrLength[i]]);
+            templatec10.push(fmt.dateFmt.formats.range["c10"][abbrLength[i]]);
+
+            templatec11.push(fmt.dateFmt.formats.range["c11"][abbrLength[i]]);
+            templatec12.push(fmt.dateFmt.formats.range["c12"][abbrLength[i]]);
+            templatec20.push(fmt.dateFmt.formats.range["c20"][abbrLength[i]]);
+            templatec30.push(fmt.dateFmt.formats.range["c30"][abbrLength[i]]);
         }
 
         test.equal(templatec00[0], '{sd} {sm} {sy}, {st} – {et}');
@@ -6476,19 +7177,26 @@ module.exports.testdaterangefmt = {
     },
     testDateRngFmt_sr_Cyrl_RS: function(test) {
         test.expect(36);
-        //dmy
-        for (i=0; i < 4; i++) {
-            fmt[i] = new DateRngFmt({locale:"sr-Cyrl-RS", length: length[i]})
-            templatec00[i] = fmt[i].dateFmt.formats.range["c00"][abbrLength[i]];
-            templatec01[i] = fmt[i].dateFmt.formats.range["c01"][abbrLength[i]];
-            templatec02[i] = fmt[i].dateFmt.formats.range["c02"][abbrLength[i]];
-            templatec03[i] = fmt[i].dateFmt.formats.range["c03"][abbrLength[i]];
-            templatec10[i] = fmt[i].dateFmt.formats.range["c10"][abbrLength[i]];
+        var fmt;
+        var data = setVariables();
+        var length = data["fullLength"];
+        var abbrLength = data["abbrLength"];
 
-            templatec11[i] = fmt[i].dateFmt.formats.range["c11"][abbrLength[i]];
-            templatec12[i] = fmt[i].dateFmt.formats.range["c12"][abbrLength[i]];
-            templatec20[i] = fmt[i].dateFmt.formats.range["c20"][abbrLength[i]];
-            templatec30[i] = fmt[i].dateFmt.formats.range["c30"][abbrLength[i]];
+        var templatec00 = [],templatec01 = [],templatec02 = [],templatec03 = [];
+        var templatec10 = [],templatec11 = [],templatec12 = [],templatec20 = [];
+        var templatec30 = [];
+        for (var i=0; i < 4; i++) {
+            fmt = new DateRngFmt({locale:"sr-Cyrl-RS", length: length[i]})
+            templatec00.push(fmt.dateFmt.formats.range["c00"][abbrLength[i]]);
+            templatec01.push(fmt.dateFmt.formats.range["c01"][abbrLength[i]]);
+            templatec02.push(fmt.dateFmt.formats.range["c02"][abbrLength[i]]);
+            templatec03.push(fmt.dateFmt.formats.range["c03"][abbrLength[i]]);
+            templatec10.push(fmt.dateFmt.formats.range["c10"][abbrLength[i]]);
+
+            templatec11.push(fmt.dateFmt.formats.range["c11"][abbrLength[i]]);
+            templatec12.push(fmt.dateFmt.formats.range["c12"][abbrLength[i]]);
+            templatec20.push(fmt.dateFmt.formats.range["c20"][abbrLength[i]]);
+            templatec30.push(fmt.dateFmt.formats.range["c30"][abbrLength[i]]);
         }
 
         test.equal(templatec00[0], '{sd}. {sm} {sy}. {st} – {et}');
@@ -6540,20 +7248,27 @@ module.exports.testdaterangefmt = {
     },
     testDateRngFmt_sr_Latn_RS: function(test) {
         test.expect(36);
-        //dmy
-        for (i=0; i < 4; i++) {
-            fmt[i] = new DateRngFmt({locale:"sr-Latn-RS", length: length[i]})
+        var fmt;
+        var data = setVariables();
+        var length = data["fullLength"];
+        var abbrLength = data["abbrLength"];
 
-            templatec00[i] = fmt[i].dateFmt.formats.range["c00"][abbrLength[i]];
-            templatec01[i] = fmt[i].dateFmt.formats.range["c01"][abbrLength[i]];
-            templatec02[i] = fmt[i].dateFmt.formats.range["c02"][abbrLength[i]];
-            templatec03[i] = fmt[i].dateFmt.formats.range["c03"][abbrLength[i]];
-            templatec10[i] = fmt[i].dateFmt.formats.range["c10"][abbrLength[i]];
+        var templatec00 = [],templatec01 = [],templatec02 = [],templatec03 = [];
+        var templatec10 = [],templatec11 = [],templatec12 = [],templatec20 = [];
+        var templatec30 = [];
+        for (var i=0; i < 4; i++) {
+            fmt = new DateRngFmt({locale:"sr-Latn-RS", length: length[i]})
 
-            templatec11[i] = fmt[i].dateFmt.formats.range["c11"][abbrLength[i]];
-            templatec12[i] = fmt[i].dateFmt.formats.range["c12"][abbrLength[i]];
-            templatec20[i] = fmt[i].dateFmt.formats.range["c20"][abbrLength[i]];
-            templatec30[i] = fmt[i].dateFmt.formats.range["c30"][abbrLength[i]];
+            templatec00.push(fmt.dateFmt.formats.range["c00"][abbrLength[i]]);
+            templatec01.push(fmt.dateFmt.formats.range["c01"][abbrLength[i]]);
+            templatec02.push(fmt.dateFmt.formats.range["c02"][abbrLength[i]]);
+            templatec03.push(fmt.dateFmt.formats.range["c03"][abbrLength[i]]);
+            templatec10.push(fmt.dateFmt.formats.range["c10"][abbrLength[i]]);
+
+            templatec11.push(fmt.dateFmt.formats.range["c11"][abbrLength[i]]);
+            templatec12.push(fmt.dateFmt.formats.range["c12"][abbrLength[i]]);
+            templatec20.push(fmt.dateFmt.formats.range["c20"][abbrLength[i]]);
+            templatec30.push(fmt.dateFmt.formats.range["c30"][abbrLength[i]]);
         }
 
         test.equal(templatec00[0], '{sd}. {sm} {sy}. {st} – {et}');
@@ -6604,18 +7319,25 @@ module.exports.testdaterangefmt = {
     },
     testDateRngFmt_ru_BY: function(test) {
         test.expect(36);
-        //dmy
-        for (i=0; i < 4; i++) {
-            fmt[i] = new DateRngFmt({locale:"ru-BY", length: length[i]})
-            templatec00[i] = fmt[i].dateFmt.formats.range["c00"][abbrLength[i]];
-            templatec01[i] = fmt[i].dateFmt.formats.range["c01"][abbrLength[i]];
-            templatec02[i] = fmt[i].dateFmt.formats.range["c02"][abbrLength[i]];
-            templatec03[i] = fmt[i].dateFmt.formats.range["c03"][abbrLength[i]];
-            templatec10[i] = fmt[i].dateFmt.formats.range["c10"][abbrLength[i]];
-            templatec11[i] = fmt[i].dateFmt.formats.range["c11"][abbrLength[i]];
-            templatec12[i] = fmt[i].dateFmt.formats.range["c12"][abbrLength[i]];
-            templatec20[i] = fmt[i].dateFmt.formats.range["c20"][abbrLength[i]];
-            templatec30[i] = fmt[i].dateFmt.formats.range["c30"][abbrLength[i]];
+        var fmt;
+        var data = setVariables();
+        var length = data["fullLength"];
+        var abbrLength = data["abbrLength"];
+
+        var templatec00 = [],templatec01 = [],templatec02 = [],templatec03 = [];
+        var templatec10 = [],templatec11 = [],templatec12 = [],templatec20 = [];
+        var templatec30 = [];
+        for (var i=0; i < 4; i++) {
+            fmt = new DateRngFmt({locale:"ru-BY", length: length[i]})
+            templatec00.push(fmt.dateFmt.formats.range["c00"][abbrLength[i]]);
+            templatec01.push(fmt.dateFmt.formats.range["c01"][abbrLength[i]]);
+            templatec02.push(fmt.dateFmt.formats.range["c02"][abbrLength[i]]);
+            templatec03.push(fmt.dateFmt.formats.range["c03"][abbrLength[i]]);
+            templatec10.push(fmt.dateFmt.formats.range["c10"][abbrLength[i]]);
+            templatec11.push(fmt.dateFmt.formats.range["c11"][abbrLength[i]]);
+            templatec12.push(fmt.dateFmt.formats.range["c12"][abbrLength[i]]);
+            templatec20.push(fmt.dateFmt.formats.range["c20"][abbrLength[i]]);
+            templatec30.push(fmt.dateFmt.formats.range["c30"][abbrLength[i]]);
         }
 
         test.equal(templatec00[0], '{sd} {sm} {sy} г., {st} – {et}');
@@ -6667,18 +7389,25 @@ module.exports.testdaterangefmt = {
     },
     testDateRngFmt_ru_KG: function(test) {
         test.expect(36);
-        //dmy
-        for (i=0; i < 4; i++) {
-            fmt[i] = new DateRngFmt({locale:"ru-KG", length: length[i]})
-            templatec00[i] = fmt[i].dateFmt.formats.range["c00"][abbrLength[i]];
-            templatec01[i] = fmt[i].dateFmt.formats.range["c01"][abbrLength[i]];
-            templatec02[i] = fmt[i].dateFmt.formats.range["c02"][abbrLength[i]];
-            templatec03[i] = fmt[i].dateFmt.formats.range["c03"][abbrLength[i]];
-            templatec10[i] = fmt[i].dateFmt.formats.range["c10"][abbrLength[i]];
-            templatec11[i] = fmt[i].dateFmt.formats.range["c11"][abbrLength[i]];
-            templatec12[i] = fmt[i].dateFmt.formats.range["c12"][abbrLength[i]];
-            templatec20[i] = fmt[i].dateFmt.formats.range["c20"][abbrLength[i]];
-            templatec30[i] = fmt[i].dateFmt.formats.range["c30"][abbrLength[i]];
+        var fmt;
+        var data = setVariables();
+        var length = data["fullLength"];
+        var abbrLength = data["abbrLength"];
+
+        var templatec00 = [],templatec01 = [],templatec02 = [],templatec03 = [];
+        var templatec10 = [],templatec11 = [],templatec12 = [],templatec20 = [];
+        var templatec30 = [];
+        for (var i=0; i < 4; i++) {
+            fmt = new DateRngFmt({locale:"ru-KG", length: length[i]})
+            templatec00.push(fmt.dateFmt.formats.range["c00"][abbrLength[i]]);
+            templatec01.push(fmt.dateFmt.formats.range["c01"][abbrLength[i]]);
+            templatec02.push(fmt.dateFmt.formats.range["c02"][abbrLength[i]]);
+            templatec03.push(fmt.dateFmt.formats.range["c03"][abbrLength[i]]);
+            templatec10.push(fmt.dateFmt.formats.range["c10"][abbrLength[i]]);
+            templatec11.push(fmt.dateFmt.formats.range["c11"][abbrLength[i]]);
+            templatec12.push(fmt.dateFmt.formats.range["c12"][abbrLength[i]]);
+            templatec20.push(fmt.dateFmt.formats.range["c20"][abbrLength[i]]);
+            templatec30.push(fmt.dateFmt.formats.range["c30"][abbrLength[i]]);
         }
 
         test.equal(templatec00[0], '{sd} {sm} {sy} г., {st} – {et}');
@@ -6730,19 +7459,26 @@ module.exports.testdaterangefmt = {
     },
     testDateRngFmt_ru_KZ: function(test) {
         test.expect(36);
-        //dmy
-        for (i=0; i < 4; i++) {
-            fmt[i] = new DateRngFmt({locale:"ru-KZ", length: length[i]})
-            templatec00[i] = fmt[i].dateFmt.formats.range["c00"][abbrLength[i]];
-            templatec01[i] = fmt[i].dateFmt.formats.range["c01"][abbrLength[i]];
-            templatec02[i] = fmt[i].dateFmt.formats.range["c02"][abbrLength[i]];
-            templatec03[i] = fmt[i].dateFmt.formats.range["c03"][abbrLength[i]];
-            templatec10[i] = fmt[i].dateFmt.formats.range["c10"][abbrLength[i]];
+        var fmt;
+        var data = setVariables();
+        var length = data["fullLength"];
+        var abbrLength = data["abbrLength"];
 
-            templatec11[i] = fmt[i].dateFmt.formats.range["c11"][abbrLength[i]];
-            templatec12[i] = fmt[i].dateFmt.formats.range["c12"][abbrLength[i]];
-            templatec20[i] = fmt[i].dateFmt.formats.range["c20"][abbrLength[i]];
-            templatec30[i] = fmt[i].dateFmt.formats.range["c30"][abbrLength[i]];
+        var templatec00 = [],templatec01 = [],templatec02 = [],templatec03 = [];
+        var templatec10 = [],templatec11 = [],templatec12 = [],templatec20 = [];
+        var templatec30 = [];
+        for (var i=0; i < 4; i++) {
+            fmt = new DateRngFmt({locale:"ru-KZ", length: length[i]})
+            templatec00.push(fmt.dateFmt.formats.range["c00"][abbrLength[i]]);
+            templatec01.push(fmt.dateFmt.formats.range["c01"][abbrLength[i]]);
+            templatec02.push(fmt.dateFmt.formats.range["c02"][abbrLength[i]]);
+            templatec03.push(fmt.dateFmt.formats.range["c03"][abbrLength[i]]);
+            templatec10.push(fmt.dateFmt.formats.range["c10"][abbrLength[i]]);
+
+            templatec11.push(fmt.dateFmt.formats.range["c11"][abbrLength[i]]);
+            templatec12.push(fmt.dateFmt.formats.range["c12"][abbrLength[i]]);
+            templatec20.push(fmt.dateFmt.formats.range["c20"][abbrLength[i]]);
+            templatec30.push(fmt.dateFmt.formats.range["c30"][abbrLength[i]]);
         }
 
         test.equal(templatec00[0], '{sd} {sm} {sy} г., {st} – {et}');
@@ -6794,19 +7530,26 @@ module.exports.testdaterangefmt = {
     },
     testDateRngFmt_ru_GE: function(test) {
         test.expect(36);
-        //dmy
-        for (i=0; i < 4; i++) {
-            fmt[i] = new DateRngFmt({locale:"ru-GE", length: length[i]})
-            templatec00[i] = fmt[i].dateFmt.formats.range["c00"][abbrLength[i]];
-            templatec01[i] = fmt[i].dateFmt.formats.range["c01"][abbrLength[i]];
-            templatec02[i] = fmt[i].dateFmt.formats.range["c02"][abbrLength[i]];
-            templatec03[i] = fmt[i].dateFmt.formats.range["c03"][abbrLength[i]];
-            templatec10[i] = fmt[i].dateFmt.formats.range["c10"][abbrLength[i]];
+        var fmt;
+        var data = setVariables();
+        var length = data["fullLength"];
+        var abbrLength = data["abbrLength"];
 
-            templatec11[i] = fmt[i].dateFmt.formats.range["c11"][abbrLength[i]];
-            templatec12[i] = fmt[i].dateFmt.formats.range["c12"][abbrLength[i]];
-            templatec20[i] = fmt[i].dateFmt.formats.range["c20"][abbrLength[i]];
-            templatec30[i] = fmt[i].dateFmt.formats.range["c30"][abbrLength[i]];
+        var templatec00 = [],templatec01 = [],templatec02 = [],templatec03 = [];
+        var templatec10 = [],templatec11 = [],templatec12 = [],templatec20 = [];
+        var templatec30 = [];
+        for (var i=0; i < 4; i++) {
+            fmt = new DateRngFmt({locale:"ru-GE", length: length[i]})
+            templatec00.push(fmt.dateFmt.formats.range["c00"][abbrLength[i]]);
+            templatec01.push(fmt.dateFmt.formats.range["c01"][abbrLength[i]]);
+            templatec02.push(fmt.dateFmt.formats.range["c02"][abbrLength[i]]);
+            templatec03.push(fmt.dateFmt.formats.range["c03"][abbrLength[i]]);
+            templatec10.push(fmt.dateFmt.formats.range["c10"][abbrLength[i]]);
+
+            templatec11.push(fmt.dateFmt.formats.range["c11"][abbrLength[i]]);
+            templatec12.push(fmt.dateFmt.formats.range["c12"][abbrLength[i]]);
+            templatec20.push(fmt.dateFmt.formats.range["c20"][abbrLength[i]]);
+            templatec30.push(fmt.dateFmt.formats.range["c30"][abbrLength[i]]);
         }
 
         test.equal(templatec00[0], '{sd} {sm} {sy} г., {st} – {et}');
@@ -6858,19 +7601,26 @@ module.exports.testdaterangefmt = {
     },
     testDateRngFmt_ru_RU: function(test) {
         test.expect(36);
-        //dmy
-        for (i=0; i < 4; i++) {
-            fmt[i] = new DateRngFmt({locale:"ru-RU", length: length[i]})
-            templatec00[i] = fmt[i].dateFmt.formats.range["c00"][abbrLength[i]];
-            templatec01[i] = fmt[i].dateFmt.formats.range["c01"][abbrLength[i]];
-            templatec02[i] = fmt[i].dateFmt.formats.range["c02"][abbrLength[i]];
-            templatec03[i] = fmt[i].dateFmt.formats.range["c03"][abbrLength[i]];
-            templatec10[i] = fmt[i].dateFmt.formats.range["c10"][abbrLength[i]];
+        var fmt;
+        var data = setVariables();
+        var length = data["fullLength"];
+        var abbrLength = data["abbrLength"];
 
-            templatec11[i] = fmt[i].dateFmt.formats.range["c11"][abbrLength[i]];
-            templatec12[i] = fmt[i].dateFmt.formats.range["c12"][abbrLength[i]];
-            templatec20[i] = fmt[i].dateFmt.formats.range["c20"][abbrLength[i]];
-            templatec30[i] = fmt[i].dateFmt.formats.range["c30"][abbrLength[i]];
+        var templatec00 = [],templatec01 = [],templatec02 = [],templatec03 = [];
+        var templatec10 = [],templatec11 = [],templatec12 = [],templatec20 = [];
+        var templatec30 = [];
+        for (var i=0; i < 4; i++) {
+            fmt = new DateRngFmt({locale:"ru-RU", length: length[i]})
+            templatec00.push(fmt.dateFmt.formats.range["c00"][abbrLength[i]]);
+            templatec01.push(fmt.dateFmt.formats.range["c01"][abbrLength[i]]);
+            templatec02.push(fmt.dateFmt.formats.range["c02"][abbrLength[i]]);
+            templatec03.push(fmt.dateFmt.formats.range["c03"][abbrLength[i]]);
+            templatec10.push(fmt.dateFmt.formats.range["c10"][abbrLength[i]]);
+
+            templatec11.push(fmt.dateFmt.formats.range["c11"][abbrLength[i]]);
+            templatec12.push(fmt.dateFmt.formats.range["c12"][abbrLength[i]]);
+            templatec20.push(fmt.dateFmt.formats.range["c20"][abbrLength[i]]);
+            templatec30.push(fmt.dateFmt.formats.range["c30"][abbrLength[i]]);
         }
 
         test.equal(templatec00[0], '{sd} {sm} {sy} г., {st} – {et}');
@@ -6923,19 +7673,26 @@ module.exports.testdaterangefmt = {
     },
     testDateRngFmt_ru_UA: function(test) {
         test.expect(36);
-        //dmy
-        for (i=0; i < 4; i++) {
-            fmt[i] = new DateRngFmt({locale:"ru-UA", length: length[i]})
-            templatec00[i] = fmt[i].dateFmt.formats.range["c00"][abbrLength[i]];
-            templatec01[i] = fmt[i].dateFmt.formats.range["c01"][abbrLength[i]];
-            templatec02[i] = fmt[i].dateFmt.formats.range["c02"][abbrLength[i]];
-            templatec03[i] = fmt[i].dateFmt.formats.range["c03"][abbrLength[i]];
-            templatec10[i] = fmt[i].dateFmt.formats.range["c10"][abbrLength[i]];
+        var fmt;
+        var data = setVariables();
+        var length = data["fullLength"];
+        var abbrLength = data["abbrLength"];
 
-            templatec11[i] = fmt[i].dateFmt.formats.range["c11"][abbrLength[i]];
-            templatec12[i] = fmt[i].dateFmt.formats.range["c12"][abbrLength[i]];
-            templatec20[i] = fmt[i].dateFmt.formats.range["c20"][abbrLength[i]];
-            templatec30[i] = fmt[i].dateFmt.formats.range["c30"][abbrLength[i]];
+        var templatec00 = [],templatec01 = [],templatec02 = [],templatec03 = [];
+        var templatec10 = [],templatec11 = [],templatec12 = [],templatec20 = [];
+        var templatec30 = [];
+        for (var i=0; i < 4; i++) {
+            fmt = new DateRngFmt({locale:"ru-UA", length: length[i]})
+            templatec00.push(fmt.dateFmt.formats.range["c00"][abbrLength[i]]);
+            templatec01.push(fmt.dateFmt.formats.range["c01"][abbrLength[i]]);
+            templatec02.push(fmt.dateFmt.formats.range["c02"][abbrLength[i]]);
+            templatec03.push(fmt.dateFmt.formats.range["c03"][abbrLength[i]]);
+            templatec10.push(fmt.dateFmt.formats.range["c10"][abbrLength[i]]);
+
+            templatec11.push(fmt.dateFmt.formats.range["c11"][abbrLength[i]]);
+            templatec12.push(fmt.dateFmt.formats.range["c12"][abbrLength[i]]);
+            templatec20.push(fmt.dateFmt.formats.range["c20"][abbrLength[i]]);
+            templatec30.push(fmt.dateFmt.formats.range["c30"][abbrLength[i]]);
         }
 
         test.equal(templatec00[0], '{sd} {sm} {sy} г., {st} – {et}');
@@ -6987,19 +7744,26 @@ module.exports.testdaterangefmt = {
     },
     testDateRngFmt_sk_SK: function(test) {
         test.expect(36);
-        //dmy
-        for (i=0; i < 4; i++) {
-            fmt[i] = new DateRngFmt({locale:"sk-SK", length: length[i]})
-            templatec00[i] = fmt[i].dateFmt.formats.range["c00"][abbrLength[i]];
-            templatec01[i] = fmt[i].dateFmt.formats.range["c01"][abbrLength[i]];
-            templatec02[i] = fmt[i].dateFmt.formats.range["c02"][abbrLength[i]];
-            templatec03[i] = fmt[i].dateFmt.formats.range["c03"][abbrLength[i]];
-            templatec10[i] = fmt[i].dateFmt.formats.range["c10"][abbrLength[i]];
+        var fmt;
+        var data = setVariables();
+        var length = data["fullLength"];
+        var abbrLength = data["abbrLength"];
 
-            templatec11[i] = fmt[i].dateFmt.formats.range["c11"][abbrLength[i]];
-            templatec12[i] = fmt[i].dateFmt.formats.range["c12"][abbrLength[i]];
-            templatec20[i] = fmt[i].dateFmt.formats.range["c20"][abbrLength[i]];
-            templatec30[i] = fmt[i].dateFmt.formats.range["c30"][abbrLength[i]];
+        var templatec00 = [],templatec01 = [],templatec02 = [],templatec03 = [];
+        var templatec10 = [],templatec11 = [],templatec12 = [],templatec20 = [];
+        var templatec30 = [];
+        for (var i=0; i < 4; i++) {
+            fmt = new DateRngFmt({locale:"sk-SK", length: length[i]})
+            templatec00.push(fmt.dateFmt.formats.range["c00"][abbrLength[i]]);
+            templatec01.push(fmt.dateFmt.formats.range["c01"][abbrLength[i]]);
+            templatec02.push(fmt.dateFmt.formats.range["c02"][abbrLength[i]]);
+            templatec03.push(fmt.dateFmt.formats.range["c03"][abbrLength[i]]);
+            templatec10.push(fmt.dateFmt.formats.range["c10"][abbrLength[i]]);
+
+            templatec11.push(fmt.dateFmt.formats.range["c11"][abbrLength[i]]);
+            templatec12.push(fmt.dateFmt.formats.range["c12"][abbrLength[i]]);
+            templatec20.push(fmt.dateFmt.formats.range["c20"][abbrLength[i]]);
+            templatec30.push(fmt.dateFmt.formats.range["c30"][abbrLength[i]]);
         }
 
         test.equal(templatec00[0], '{sd}. {sm} {sy}, {st} – {et}');
@@ -7051,19 +7815,26 @@ module.exports.testdaterangefmt = {
     },
     testDateRngFmt_sl_SI: function(test) {
         test.expect(36);
-        //dmy
-        for (i=0; i < 4; i++) {
-            fmt[i] = new DateRngFmt({locale:"sl-SI", length: length[i]})
-            templatec00[i] = fmt[i].dateFmt.formats.range["c00"][abbrLength[i]];
-            templatec01[i] = fmt[i].dateFmt.formats.range["c01"][abbrLength[i]];
-            templatec02[i] = fmt[i].dateFmt.formats.range["c02"][abbrLength[i]];
-            templatec03[i] = fmt[i].dateFmt.formats.range["c03"][abbrLength[i]];
-            templatec10[i] = fmt[i].dateFmt.formats.range["c10"][abbrLength[i]];
+        var fmt;
+        var data = setVariables();
+        var length = data["fullLength"];
+        var abbrLength = data["abbrLength"];
 
-            templatec11[i] = fmt[i].dateFmt.formats.range["c11"][abbrLength[i]];
-            templatec12[i] = fmt[i].dateFmt.formats.range["c12"][abbrLength[i]];
-            templatec20[i] = fmt[i].dateFmt.formats.range["c20"][abbrLength[i]];
-            templatec30[i] = fmt[i].dateFmt.formats.range["c30"][abbrLength[i]];
+        var templatec00 = [],templatec01 = [],templatec02 = [],templatec03 = [];
+        var templatec10 = [],templatec11 = [],templatec12 = [],templatec20 = [];
+        var templatec30 = [];
+        for (var i=0; i < 4; i++) {
+            fmt = new DateRngFmt({locale:"sl-SI", length: length[i]})
+            templatec00.push(fmt.dateFmt.formats.range["c00"][abbrLength[i]]);
+            templatec01.push(fmt.dateFmt.formats.range["c01"][abbrLength[i]]);
+            templatec02.push(fmt.dateFmt.formats.range["c02"][abbrLength[i]]);
+            templatec03.push(fmt.dateFmt.formats.range["c03"][abbrLength[i]]);
+            templatec10.push(fmt.dateFmt.formats.range["c10"][abbrLength[i]]);
+
+            templatec11.push(fmt.dateFmt.formats.range["c11"][abbrLength[i]]);
+            templatec12.push(fmt.dateFmt.formats.range["c12"][abbrLength[i]]);
+            templatec20.push(fmt.dateFmt.formats.range["c20"][abbrLength[i]]);
+            templatec30.push(fmt.dateFmt.formats.range["c30"][abbrLength[i]]);
         }
 
         test.equal(templatec00[0], '{sd}. {sm} {sy} {st} – {et}');
@@ -7115,19 +7886,26 @@ module.exports.testdaterangefmt = {
     },
     testDateRngFmt_sq_AL: function(test) {
         test.expect(36);
-        //dmy
-        for (i=0; i < 4; i++) {
-            fmt[i] = new DateRngFmt({locale:"sq-AL", length: length[i]})
-            templatec00[i] = fmt[i].dateFmt.formats.range["c00"][abbrLength[i]];
-            templatec01[i] = fmt[i].dateFmt.formats.range["c01"][abbrLength[i]];
-            templatec02[i] = fmt[i].dateFmt.formats.range["c02"][abbrLength[i]];
-            templatec03[i] = fmt[i].dateFmt.formats.range["c03"][abbrLength[i]];
-            templatec10[i] = fmt[i].dateFmt.formats.range["c10"][abbrLength[i]];
+        var fmt;
+        var data = setVariables();
+        var length = data["fullLength"];
+        var abbrLength = data["abbrLength"];
 
-            templatec11[i] = fmt[i].dateFmt.formats.range["c11"][abbrLength[i]];
-            templatec12[i] = fmt[i].dateFmt.formats.range["c12"][abbrLength[i]];
-            templatec20[i] = fmt[i].dateFmt.formats.range["c20"][abbrLength[i]];
-            templatec30[i] = fmt[i].dateFmt.formats.range["c30"][abbrLength[i]];
+        var templatec00 = [],templatec01 = [],templatec02 = [],templatec03 = [];
+        var templatec10 = [],templatec11 = [],templatec12 = [],templatec20 = [];
+        var templatec30 = [];
+        for (var i=0; i < 4; i++) {
+            fmt = new DateRngFmt({locale:"sq-AL", length: length[i]})
+            templatec00.push(fmt.dateFmt.formats.range["c00"][abbrLength[i]]);
+            templatec01.push(fmt.dateFmt.formats.range["c01"][abbrLength[i]]);
+            templatec02.push(fmt.dateFmt.formats.range["c02"][abbrLength[i]]);
+            templatec03.push(fmt.dateFmt.formats.range["c03"][abbrLength[i]]);
+            templatec10.push(fmt.dateFmt.formats.range["c10"][abbrLength[i]]);
+
+            templatec11.push(fmt.dateFmt.formats.range["c11"][abbrLength[i]]);
+            templatec12.push(fmt.dateFmt.formats.range["c12"][abbrLength[i]]);
+            templatec20.push(fmt.dateFmt.formats.range["c20"][abbrLength[i]]);
+            templatec30.push(fmt.dateFmt.formats.range["c30"][abbrLength[i]]);
         }
 
         test.equal(templatec00[0], '{sd} {sm} {sy} në {st} – {et}');
@@ -7179,19 +7957,26 @@ module.exports.testdaterangefmt = {
     },
     testDateRngFmt_sq_ME: function(test) {
         test.expect(36);
-        //dmy
-        for (i=0; i < 4; i++) {
-            fmt[i] = new DateRngFmt({locale:"sq-ME", length: length[i]})
-            templatec00[i] = fmt[i].dateFmt.formats.range["c00"][abbrLength[i]];
-            templatec01[i] = fmt[i].dateFmt.formats.range["c01"][abbrLength[i]];
-            templatec02[i] = fmt[i].dateFmt.formats.range["c02"][abbrLength[i]];
-            templatec03[i] = fmt[i].dateFmt.formats.range["c03"][abbrLength[i]];
-            templatec10[i] = fmt[i].dateFmt.formats.range["c10"][abbrLength[i]];
+        var fmt;
+        var data = setVariables();
+        var length = data["fullLength"];
+        var abbrLength = data["abbrLength"];
 
-            templatec11[i] = fmt[i].dateFmt.formats.range["c11"][abbrLength[i]];
-            templatec12[i] = fmt[i].dateFmt.formats.range["c12"][abbrLength[i]];
-            templatec20[i] = fmt[i].dateFmt.formats.range["c20"][abbrLength[i]];
-            templatec30[i] = fmt[i].dateFmt.formats.range["c30"][abbrLength[i]];
+        var templatec00 = [],templatec01 = [],templatec02 = [],templatec03 = [];
+        var templatec10 = [],templatec11 = [],templatec12 = [],templatec20 = [];
+        var templatec30 = [];
+        for (var i=0; i < 4; i++) {
+            fmt = new DateRngFmt({locale:"sq-ME", length: length[i]})
+            templatec00.push(fmt.dateFmt.formats.range["c00"][abbrLength[i]]);
+            templatec01.push(fmt.dateFmt.formats.range["c01"][abbrLength[i]]);
+            templatec02.push(fmt.dateFmt.formats.range["c02"][abbrLength[i]]);
+            templatec03.push(fmt.dateFmt.formats.range["c03"][abbrLength[i]]);
+            templatec10.push(fmt.dateFmt.formats.range["c10"][abbrLength[i]]);
+
+            templatec11.push(fmt.dateFmt.formats.range["c11"][abbrLength[i]]);
+            templatec12.push(fmt.dateFmt.formats.range["c12"][abbrLength[i]]);
+            templatec20.push(fmt.dateFmt.formats.range["c20"][abbrLength[i]]);
+            templatec30.push(fmt.dateFmt.formats.range["c30"][abbrLength[i]]);
         }
 
         test.equal(templatec00[0], '{sd} {sm} {sy} në {st} – {et}');
@@ -7243,19 +8028,26 @@ module.exports.testdaterangefmt = {
     },
     testDateRngFmt_sv_FI: function(test) {
         test.expect(36);
-        //dmy
-        for (i=0; i < 4; i++) {
-            fmt[i] = new DateRngFmt({locale:"sv-FI", length: length[i]})
-            templatec00[i] = fmt[i].dateFmt.formats.range["c00"][abbrLength[i]];
-            templatec01[i] = fmt[i].dateFmt.formats.range["c01"][abbrLength[i]];
-            templatec02[i] = fmt[i].dateFmt.formats.range["c02"][abbrLength[i]];
-            templatec03[i] = fmt[i].dateFmt.formats.range["c03"][abbrLength[i]];
-            templatec10[i] = fmt[i].dateFmt.formats.range["c10"][abbrLength[i]];
+        var fmt;
+        var data = setVariables();
+        var length = data["fullLength"];
+        var abbrLength = data["abbrLength"];
 
-            templatec11[i] = fmt[i].dateFmt.formats.range["c11"][abbrLength[i]];
-            templatec12[i] = fmt[i].dateFmt.formats.range["c12"][abbrLength[i]];
-            templatec20[i] = fmt[i].dateFmt.formats.range["c20"][abbrLength[i]];
-            templatec30[i] = fmt[i].dateFmt.formats.range["c30"][abbrLength[i]];
+        var templatec00 = [],templatec01 = [],templatec02 = [],templatec03 = [];
+        var templatec10 = [],templatec11 = [],templatec12 = [],templatec20 = [];
+        var templatec30 = [];
+        for (var i=0; i < 4; i++) {
+            fmt = new DateRngFmt({locale:"sv-FI", length: length[i]})
+            templatec00.push(fmt.dateFmt.formats.range["c00"][abbrLength[i]]);
+            templatec01.push(fmt.dateFmt.formats.range["c01"][abbrLength[i]]);
+            templatec02.push(fmt.dateFmt.formats.range["c02"][abbrLength[i]]);
+            templatec03.push(fmt.dateFmt.formats.range["c03"][abbrLength[i]]);
+            templatec10.push(fmt.dateFmt.formats.range["c10"][abbrLength[i]]);
+
+            templatec11.push(fmt.dateFmt.formats.range["c11"][abbrLength[i]]);
+            templatec12.push(fmt.dateFmt.formats.range["c12"][abbrLength[i]]);
+            templatec20.push(fmt.dateFmt.formats.range["c20"][abbrLength[i]]);
+            templatec30.push(fmt.dateFmt.formats.range["c30"][abbrLength[i]]);
         }
 
         test.equal(templatec00[0], '{sd} {sm} {sy} {st} – {et}');
@@ -7307,20 +8099,28 @@ module.exports.testdaterangefmt = {
     },
     testDateRngFmt_sv_SE: function(test) {
         test.expect(36);
-        //dmy
+        var fmt;        //dmy
         //ymd(short )
-        for (i=0; i < 4; i++) {
-            fmt[i] = new DateRngFmt({locale:"sv-SE", length: length[i]})
-            templatec00[i] = fmt[i].dateFmt.formats.range["c00"][abbrLength[i]];
-            templatec01[i] = fmt[i].dateFmt.formats.range["c01"][abbrLength[i]];
-            templatec02[i] = fmt[i].dateFmt.formats.range["c02"][abbrLength[i]];
-            templatec03[i] = fmt[i].dateFmt.formats.range["c03"][abbrLength[i]];
-            templatec10[i] = fmt[i].dateFmt.formats.range["c10"][abbrLength[i]];
 
-            templatec11[i] = fmt[i].dateFmt.formats.range["c11"][abbrLength[i]];
-            templatec12[i] = fmt[i].dateFmt.formats.range["c12"][abbrLength[i]];
-            templatec20[i] = fmt[i].dateFmt.formats.range["c20"][abbrLength[i]];
-            templatec30[i] = fmt[i].dateFmt.formats.range["c30"][abbrLength[i]];
+        var data = setVariables();
+        var length = data["fullLength"];
+        var abbrLength = data["abbrLength"];
+
+        var templatec00 = [],templatec01 = [],templatec02 = [],templatec03 = [];
+        var templatec10 = [],templatec11 = [],templatec12 = [],templatec20 = [];
+        var templatec30 = [];
+        for (var i=0; i < 4; i++) {
+            fmt = new DateRngFmt({locale:"sv-SE", length: length[i]})
+            templatec00.push(fmt.dateFmt.formats.range["c00"][abbrLength[i]]);
+            templatec01.push(fmt.dateFmt.formats.range["c01"][abbrLength[i]]);
+            templatec02.push(fmt.dateFmt.formats.range["c02"][abbrLength[i]]);
+            templatec03.push(fmt.dateFmt.formats.range["c03"][abbrLength[i]]);
+            templatec10.push(fmt.dateFmt.formats.range["c10"][abbrLength[i]]);
+
+            templatec11.push(fmt.dateFmt.formats.range["c11"][abbrLength[i]]);
+            templatec12.push(fmt.dateFmt.formats.range["c12"][abbrLength[i]]);
+            templatec20.push(fmt.dateFmt.formats.range["c20"][abbrLength[i]]);
+            templatec30.push(fmt.dateFmt.formats.range["c30"][abbrLength[i]]);
         }
 
         test.equal(templatec00[0], '{sd} {sm} {sy} {st} – {et}');
@@ -7372,19 +8172,26 @@ module.exports.testdaterangefmt = {
     },
     testDateRngFmt_ta_IN: function(test) {
         test.expect(36);
-        //dmy
-        for (i=0; i < 4; i++) {
-            fmt[i] = new DateRngFmt({locale:"ta-IN", length: length[i]})
-            templatec00[i] = fmt[i].dateFmt.formats.range["c00"][abbrLength[i]];
-            templatec01[i] = fmt[i].dateFmt.formats.range["c01"][abbrLength[i]];
-            templatec02[i] = fmt[i].dateFmt.formats.range["c02"][abbrLength[i]];
-            templatec03[i] = fmt[i].dateFmt.formats.range["c03"][abbrLength[i]];
-            templatec10[i] = fmt[i].dateFmt.formats.range["c10"][abbrLength[i]];
+        var fmt;
+        var data = setVariables();
+        var length = data["fullLength"];
+        var abbrLength = data["abbrLength"];
 
-            templatec11[i] = fmt[i].dateFmt.formats.range["c11"][abbrLength[i]];
-            templatec12[i] = fmt[i].dateFmt.formats.range["c12"][abbrLength[i]];
-            templatec20[i] = fmt[i].dateFmt.formats.range["c20"][abbrLength[i]];
-            templatec30[i] = fmt[i].dateFmt.formats.range["c30"][abbrLength[i]];
+        var templatec00 = [],templatec01 = [],templatec02 = [],templatec03 = [];
+        var templatec10 = [],templatec11 = [],templatec12 = [],templatec20 = [];
+        var templatec30 = [];
+        for (var i=0; i < 4; i++) {
+            fmt = new DateRngFmt({locale:"ta-IN", length: length[i]})
+            templatec00.push(fmt.dateFmt.formats.range["c00"][abbrLength[i]]);
+            templatec01.push(fmt.dateFmt.formats.range["c01"][abbrLength[i]]);
+            templatec02.push(fmt.dateFmt.formats.range["c02"][abbrLength[i]]);
+            templatec03.push(fmt.dateFmt.formats.range["c03"][abbrLength[i]]);
+            templatec10.push(fmt.dateFmt.formats.range["c10"][abbrLength[i]]);
+
+            templatec11.push(fmt.dateFmt.formats.range["c11"][abbrLength[i]]);
+            templatec12.push(fmt.dateFmt.formats.range["c12"][abbrLength[i]]);
+            templatec20.push(fmt.dateFmt.formats.range["c20"][abbrLength[i]]);
+            templatec30.push(fmt.dateFmt.formats.range["c30"][abbrLength[i]]);
         }
 
         test.equal(templatec00[0], '{sd} {sm}, {sy} அன்று {st} – {et}');
@@ -7438,19 +8245,26 @@ module.exports.testdaterangefmt = {
     },
     testDateRngFmt_te_IN: function(test) {
         test.expect(36);
-        //dmy
-        for (i=0; i < 4; i++) {
-            fmt[i] = new DateRngFmt({locale:"te-IN", length: length[i]})
-            templatec00[i] = fmt[i].dateFmt.formats.range["c00"][abbrLength[i]];
-            templatec01[i] = fmt[i].dateFmt.formats.range["c01"][abbrLength[i]];
-            templatec02[i] = fmt[i].dateFmt.formats.range["c02"][abbrLength[i]];
-            templatec03[i] = fmt[i].dateFmt.formats.range["c03"][abbrLength[i]];
-            templatec10[i] = fmt[i].dateFmt.formats.range["c10"][abbrLength[i]];
+        var fmt;
+        var data = setVariables();
+        var length = data["fullLength"];
+        var abbrLength = data["abbrLength"];
 
-            templatec11[i] = fmt[i].dateFmt.formats.range["c11"][abbrLength[i]];
-            templatec12[i] = fmt[i].dateFmt.formats.range["c12"][abbrLength[i]];
-            templatec20[i] = fmt[i].dateFmt.formats.range["c20"][abbrLength[i]];
-            templatec30[i] = fmt[i].dateFmt.formats.range["c30"][abbrLength[i]];
+        var templatec00 = [],templatec01 = [],templatec02 = [],templatec03 = [];
+        var templatec10 = [],templatec11 = [],templatec12 = [],templatec20 = [];
+        var templatec30 = [];
+        for (var i=0; i < 4; i++) {
+            fmt = new DateRngFmt({locale:"te-IN", length: length[i]})
+            templatec00.push(fmt.dateFmt.formats.range["c00"][abbrLength[i]]);
+            templatec01.push(fmt.dateFmt.formats.range["c01"][abbrLength[i]]);
+            templatec02.push(fmt.dateFmt.formats.range["c02"][abbrLength[i]]);
+            templatec03.push(fmt.dateFmt.formats.range["c03"][abbrLength[i]]);
+            templatec10.push(fmt.dateFmt.formats.range["c10"][abbrLength[i]]);
+
+            templatec11.push(fmt.dateFmt.formats.range["c11"][abbrLength[i]]);
+            templatec12.push(fmt.dateFmt.formats.range["c12"][abbrLength[i]]);
+            templatec20.push(fmt.dateFmt.formats.range["c20"][abbrLength[i]]);
+            templatec30.push(fmt.dateFmt.formats.range["c30"][abbrLength[i]]);
         }
 
         test.equal(templatec00[0], '{sd}, {sm} {sy} {st}కి – {et}కి'); // CLDR 34 change
@@ -7504,19 +8318,26 @@ module.exports.testdaterangefmt = {
     },
     testDateRngFmt_th_TH: function(test) {
         test.expect(36);
-        //dmy
-        for (i=0; i < 4; i++) {
-            fmt[i] = new DateRngFmt({locale:"th-TH", length: length[i]})
-            templatec00[i] = fmt[i].dateFmt.formats.range["c00"][abbrLength[i]];
-            templatec01[i] = fmt[i].dateFmt.formats.range["c01"][abbrLength[i]];
-            templatec02[i] = fmt[i].dateFmt.formats.range["c02"][abbrLength[i]];
-            templatec03[i] = fmt[i].dateFmt.formats.range["c03"][abbrLength[i]];
-            templatec10[i] = fmt[i].dateFmt.formats.range["c10"][abbrLength[i]];
+        var fmt;
+        var data = setVariables();
+        var length = data["fullLength"];
+        var abbrLength = data["abbrLength"];
 
-            templatec11[i] = fmt[i].dateFmt.formats.range["c11"][abbrLength[i]];
-            templatec12[i] = fmt[i].dateFmt.formats.range["c12"][abbrLength[i]];
-            templatec20[i] = fmt[i].dateFmt.formats.range["c20"][abbrLength[i]];
-            templatec30[i] = fmt[i].dateFmt.formats.range["c30"][abbrLength[i]];
+        var templatec00 = [],templatec01 = [],templatec02 = [],templatec03 = [];
+        var templatec10 = [],templatec11 = [],templatec12 = [],templatec20 = [];
+        var templatec30 = [];
+        for (var i=0; i < 4; i++) {
+            fmt = new DateRngFmt({locale:"th-TH", length: length[i]})
+            templatec00.push(fmt.dateFmt.formats.range["c00"][abbrLength[i]]);
+            templatec01.push(fmt.dateFmt.formats.range["c01"][abbrLength[i]]);
+            templatec02.push(fmt.dateFmt.formats.range["c02"][abbrLength[i]]);
+            templatec03.push(fmt.dateFmt.formats.range["c03"][abbrLength[i]]);
+            templatec10.push(fmt.dateFmt.formats.range["c10"][abbrLength[i]]);
+
+            templatec11.push(fmt.dateFmt.formats.range["c11"][abbrLength[i]]);
+            templatec12.push(fmt.dateFmt.formats.range["c12"][abbrLength[i]]);
+            templatec20.push(fmt.dateFmt.formats.range["c20"][abbrLength[i]]);
+            templatec30.push(fmt.dateFmt.formats.range["c30"][abbrLength[i]]);
         }
 
         test.equal(templatec00[0], '{sd} {sm} {sy} {st} – {et}');
@@ -7568,19 +8389,26 @@ module.exports.testdaterangefmt = {
     },
     testDateRngFmt_tr_AM: function(test) {
         test.expect(36);
-        //dmy
-        for (i=0; i < 4; i++) {
-            fmt[i] = new DateRngFmt({locale:"tr-AM", length: length[i]})
-            templatec00[i] = fmt[i].dateFmt.formats.range["c00"][abbrLength[i]];
-            templatec01[i] = fmt[i].dateFmt.formats.range["c01"][abbrLength[i]];
-            templatec02[i] = fmt[i].dateFmt.formats.range["c02"][abbrLength[i]];
-            templatec03[i] = fmt[i].dateFmt.formats.range["c03"][abbrLength[i]];
-            templatec10[i] = fmt[i].dateFmt.formats.range["c10"][abbrLength[i]];
+        var fmt;
+        var data = setVariables();
+        var length = data["fullLength"];
+        var abbrLength = data["abbrLength"];
 
-            templatec11[i] = fmt[i].dateFmt.formats.range["c11"][abbrLength[i]];
-            templatec12[i] = fmt[i].dateFmt.formats.range["c12"][abbrLength[i]];
-            templatec20[i] = fmt[i].dateFmt.formats.range["c20"][abbrLength[i]];
-            templatec30[i] = fmt[i].dateFmt.formats.range["c30"][abbrLength[i]];
+        var templatec00 = [],templatec01 = [],templatec02 = [],templatec03 = [];
+        var templatec10 = [],templatec11 = [],templatec12 = [],templatec20 = [];
+        var templatec30 = [];
+        for (var i=0; i < 4; i++) {
+            fmt = new DateRngFmt({locale:"tr-AM", length: length[i]})
+            templatec00.push(fmt.dateFmt.formats.range["c00"][abbrLength[i]]);
+            templatec01.push(fmt.dateFmt.formats.range["c01"][abbrLength[i]]);
+            templatec02.push(fmt.dateFmt.formats.range["c02"][abbrLength[i]]);
+            templatec03.push(fmt.dateFmt.formats.range["c03"][abbrLength[i]]);
+            templatec10.push(fmt.dateFmt.formats.range["c10"][abbrLength[i]]);
+
+            templatec11.push(fmt.dateFmt.formats.range["c11"][abbrLength[i]]);
+            templatec12.push(fmt.dateFmt.formats.range["c12"][abbrLength[i]]);
+            templatec20.push(fmt.dateFmt.formats.range["c20"][abbrLength[i]]);
+            templatec30.push(fmt.dateFmt.formats.range["c30"][abbrLength[i]]);
         }
 
         test.equal(templatec00[0], '{sd} {sm} {sy} {st} – {et}');
@@ -7632,19 +8460,26 @@ module.exports.testdaterangefmt = {
     },
     testDateRngFmt_tr_AZ: function(test) {
         test.expect(36);
-        //dmy
-        for (i=0; i < 4; i++) {
-            fmt[i] = new DateRngFmt({locale:"tr-AZ", length: length[i]})
-            templatec00[i] = fmt[i].dateFmt.formats.range["c00"][abbrLength[i]];
-            templatec01[i] = fmt[i].dateFmt.formats.range["c01"][abbrLength[i]];
-            templatec02[i] = fmt[i].dateFmt.formats.range["c02"][abbrLength[i]];
-            templatec03[i] = fmt[i].dateFmt.formats.range["c03"][abbrLength[i]];
-            templatec10[i] = fmt[i].dateFmt.formats.range["c10"][abbrLength[i]];
+        var fmt;
+        var data = setVariables();
+        var length = data["fullLength"];
+        var abbrLength = data["abbrLength"];
 
-            templatec11[i] = fmt[i].dateFmt.formats.range["c11"][abbrLength[i]];
-            templatec12[i] = fmt[i].dateFmt.formats.range["c12"][abbrLength[i]];
-            templatec20[i] = fmt[i].dateFmt.formats.range["c20"][abbrLength[i]];
-            templatec30[i] = fmt[i].dateFmt.formats.range["c30"][abbrLength[i]];
+        var templatec00 = [],templatec01 = [],templatec02 = [],templatec03 = [];
+        var templatec10 = [],templatec11 = [],templatec12 = [],templatec20 = [];
+        var templatec30 = [];
+        for (var i=0; i < 4; i++) {
+            fmt = new DateRngFmt({locale:"tr-AZ", length: length[i]})
+            templatec00.push(fmt.dateFmt.formats.range["c00"][abbrLength[i]]);
+            templatec01.push(fmt.dateFmt.formats.range["c01"][abbrLength[i]]);
+            templatec02.push(fmt.dateFmt.formats.range["c02"][abbrLength[i]]);
+            templatec03.push(fmt.dateFmt.formats.range["c03"][abbrLength[i]]);
+            templatec10.push(fmt.dateFmt.formats.range["c10"][abbrLength[i]]);
+
+            templatec11.push(fmt.dateFmt.formats.range["c11"][abbrLength[i]]);
+            templatec12.push(fmt.dateFmt.formats.range["c12"][abbrLength[i]]);
+            templatec20.push(fmt.dateFmt.formats.range["c20"][abbrLength[i]]);
+            templatec30.push(fmt.dateFmt.formats.range["c30"][abbrLength[i]]);
         }
 
         test.equal(templatec00[0], '{sd} {sm} {sy} {st} – {et}');
@@ -7696,19 +8531,26 @@ module.exports.testdaterangefmt = {
     },
     testDateRngFmt_tr_CY: function(test) {
         test.expect(36);
-        //dmy
-        for (i=0; i < 4; i++) {
-            fmt[i] = new DateRngFmt({locale:"tr-CY", length: length[i]})
-            templatec00[i] = fmt[i].dateFmt.formats.range["c00"][abbrLength[i]];
-            templatec01[i] = fmt[i].dateFmt.formats.range["c01"][abbrLength[i]];
-            templatec02[i] = fmt[i].dateFmt.formats.range["c02"][abbrLength[i]];
-            templatec03[i] = fmt[i].dateFmt.formats.range["c03"][abbrLength[i]];
-            templatec10[i] = fmt[i].dateFmt.formats.range["c10"][abbrLength[i]];
+        var fmt;
+        var data = setVariables();
+        var length = data["fullLength"];
+        var abbrLength = data["abbrLength"];
 
-            templatec11[i] = fmt[i].dateFmt.formats.range["c11"][abbrLength[i]];
-            templatec12[i] = fmt[i].dateFmt.formats.range["c12"][abbrLength[i]];
-            templatec20[i] = fmt[i].dateFmt.formats.range["c20"][abbrLength[i]];
-            templatec30[i] = fmt[i].dateFmt.formats.range["c30"][abbrLength[i]];
+        var templatec00 = [],templatec01 = [],templatec02 = [],templatec03 = [];
+        var templatec10 = [],templatec11 = [],templatec12 = [],templatec20 = [];
+        var templatec30 = [];
+        for (var i=0; i < 4; i++) {
+            fmt = new DateRngFmt({locale:"tr-CY", length: length[i]})
+            templatec00.push(fmt.dateFmt.formats.range["c00"][abbrLength[i]]);
+            templatec01.push(fmt.dateFmt.formats.range["c01"][abbrLength[i]]);
+            templatec02.push(fmt.dateFmt.formats.range["c02"][abbrLength[i]]);
+            templatec03.push(fmt.dateFmt.formats.range["c03"][abbrLength[i]]);
+            templatec10.push(fmt.dateFmt.formats.range["c10"][abbrLength[i]]);
+
+            templatec11.push(fmt.dateFmt.formats.range["c11"][abbrLength[i]]);
+            templatec12.push(fmt.dateFmt.formats.range["c12"][abbrLength[i]]);
+            templatec20.push(fmt.dateFmt.formats.range["c20"][abbrLength[i]]);
+            templatec30.push(fmt.dateFmt.formats.range["c30"][abbrLength[i]]);
         }
 
         test.equal(templatec00[0], '{sd} {sm} {sy} {st} – {et}');
@@ -7760,19 +8602,26 @@ module.exports.testdaterangefmt = {
     },
     testDateRngFmt_tr_TR: function(test) {
         test.expect(36);
-        //dmy
-        for (i=0; i < 4; i++) {
-            fmt[i] = new DateRngFmt({locale:"tr-TR", length: length[i]})
-            templatec00[i] = fmt[i].dateFmt.formats.range["c00"][abbrLength[i]];
-            templatec01[i] = fmt[i].dateFmt.formats.range["c01"][abbrLength[i]];
-            templatec02[i] = fmt[i].dateFmt.formats.range["c02"][abbrLength[i]];
-            templatec03[i] = fmt[i].dateFmt.formats.range["c03"][abbrLength[i]];
-            templatec10[i] = fmt[i].dateFmt.formats.range["c10"][abbrLength[i]];
+        var fmt;
+        var data = setVariables();
+        var length = data["fullLength"];
+        var abbrLength = data["abbrLength"];
 
-            templatec11[i] = fmt[i].dateFmt.formats.range["c11"][abbrLength[i]];
-            templatec12[i] = fmt[i].dateFmt.formats.range["c12"][abbrLength[i]];
-            templatec20[i] = fmt[i].dateFmt.formats.range["c20"][abbrLength[i]];
-            templatec30[i] = fmt[i].dateFmt.formats.range["c30"][abbrLength[i]];
+        var templatec00 = [],templatec01 = [],templatec02 = [],templatec03 = [];
+        var templatec10 = [],templatec11 = [],templatec12 = [],templatec20 = [];
+        var templatec30 = [];
+        for (var i=0; i < 4; i++) {
+            fmt = new DateRngFmt({locale:"tr-TR", length: length[i]})
+            templatec00.push(fmt.dateFmt.formats.range["c00"][abbrLength[i]]);
+            templatec01.push(fmt.dateFmt.formats.range["c01"][abbrLength[i]]);
+            templatec02.push(fmt.dateFmt.formats.range["c02"][abbrLength[i]]);
+            templatec03.push(fmt.dateFmt.formats.range["c03"][abbrLength[i]]);
+            templatec10.push(fmt.dateFmt.formats.range["c10"][abbrLength[i]]);
+
+            templatec11.push(fmt.dateFmt.formats.range["c11"][abbrLength[i]]);
+            templatec12.push(fmt.dateFmt.formats.range["c12"][abbrLength[i]]);
+            templatec20.push(fmt.dateFmt.formats.range["c20"][abbrLength[i]]);
+            templatec30.push(fmt.dateFmt.formats.range["c30"][abbrLength[i]]);
         }
 
         test.equal(templatec00[0], '{sd} {sm} {sy} {st} – {et}');
@@ -7824,19 +8673,26 @@ module.exports.testdaterangefmt = {
     },
     testDateRngFmt_uk_UA: function(test) {
         test.expect(36);
-        //dmy
-        for (i=0; i < 4; i++) {
-            fmt[i] = new DateRngFmt({locale:"uk-UA", length: length[i]})
-            templatec00[i] = fmt[i].dateFmt.formats.range["c00"][abbrLength[i]];
-            templatec01[i] = fmt[i].dateFmt.formats.range["c01"][abbrLength[i]];
-            templatec02[i] = fmt[i].dateFmt.formats.range["c02"][abbrLength[i]];
-            templatec03[i] = fmt[i].dateFmt.formats.range["c03"][abbrLength[i]];
-            templatec10[i] = fmt[i].dateFmt.formats.range["c10"][abbrLength[i]];
+        var fmt;
+        var data = setVariables();
+        var length = data["fullLength"];
+        var abbrLength = data["abbrLength"];
 
-            templatec11[i] = fmt[i].dateFmt.formats.range["c11"][abbrLength[i]];
-            templatec12[i] = fmt[i].dateFmt.formats.range["c12"][abbrLength[i]];
-            templatec20[i] = fmt[i].dateFmt.formats.range["c20"][abbrLength[i]];
-            templatec30[i] = fmt[i].dateFmt.formats.range["c30"][abbrLength[i]];
+        var templatec00 = [],templatec01 = [],templatec02 = [],templatec03 = [];
+        var templatec10 = [],templatec11 = [],templatec12 = [],templatec20 = [];
+        var templatec30 = [];
+        for (var i=0; i < 4; i++) {
+            fmt = new DateRngFmt({locale:"uk-UA", length: length[i]})
+            templatec00.push(fmt.dateFmt.formats.range["c00"][abbrLength[i]]);
+            templatec01.push(fmt.dateFmt.formats.range["c01"][abbrLength[i]]);
+            templatec02.push(fmt.dateFmt.formats.range["c02"][abbrLength[i]]);
+            templatec03.push(fmt.dateFmt.formats.range["c03"][abbrLength[i]]);
+            templatec10.push(fmt.dateFmt.formats.range["c10"][abbrLength[i]]);
+
+            templatec11.push(fmt.dateFmt.formats.range["c11"][abbrLength[i]]);
+            templatec12.push(fmt.dateFmt.formats.range["c12"][abbrLength[i]]);
+            templatec20.push(fmt.dateFmt.formats.range["c20"][abbrLength[i]]);
+            templatec30.push(fmt.dateFmt.formats.range["c30"][abbrLength[i]]);
         }
 
         test.equal(templatec00[0], '{sd} {sm} {sy} р. о {st} – {et}');
@@ -7888,19 +8744,26 @@ module.exports.testdaterangefmt = {
     },
     testDateRngFmt_ur_IN: function(test) {
         test.expect(36);
-        //dmy
-        for (i=0; i < 4; i++) {
-            fmt[i] = new DateRngFmt({locale:"ur-IN", length: length[i]})
-            templatec00[i] = fmt[i].dateFmt.formats.range["c00"][abbrLength[i]];
-            templatec01[i] = fmt[i].dateFmt.formats.range["c01"][abbrLength[i]];
-            templatec02[i] = fmt[i].dateFmt.formats.range["c02"][abbrLength[i]];
-            templatec03[i] = fmt[i].dateFmt.formats.range["c03"][abbrLength[i]];
-            templatec10[i] = fmt[i].dateFmt.formats.range["c10"][abbrLength[i]];
+        var fmt;
+        var data = setVariables();
+        var length = data["fullLength"];
+        var abbrLength = data["abbrLength"];
 
-            templatec11[i] = fmt[i].dateFmt.formats.range["c11"][abbrLength[i]];
-            templatec12[i] = fmt[i].dateFmt.formats.range["c12"][abbrLength[i]];
-            templatec20[i] = fmt[i].dateFmt.formats.range["c20"][abbrLength[i]];
-            templatec30[i] = fmt[i].dateFmt.formats.range["c30"][abbrLength[i]];
+        var templatec00 = [],templatec01 = [],templatec02 = [],templatec03 = [];
+        var templatec10 = [],templatec11 = [],templatec12 = [],templatec20 = [];
+        var templatec30 = [];
+        for (var i=0; i < 4; i++) {
+            fmt = new DateRngFmt({locale:"ur-IN", length: length[i]})
+            templatec00.push(fmt.dateFmt.formats.range["c00"][abbrLength[i]]);
+            templatec01.push(fmt.dateFmt.formats.range["c01"][abbrLength[i]]);
+            templatec02.push(fmt.dateFmt.formats.range["c02"][abbrLength[i]]);
+            templatec03.push(fmt.dateFmt.formats.range["c03"][abbrLength[i]]);
+            templatec10.push(fmt.dateFmt.formats.range["c10"][abbrLength[i]]);
+
+            templatec11.push(fmt.dateFmt.formats.range["c11"][abbrLength[i]]);
+            templatec12.push(fmt.dateFmt.formats.range["c12"][abbrLength[i]]);
+            templatec20.push(fmt.dateFmt.formats.range["c20"][abbrLength[i]]);
+            templatec30.push(fmt.dateFmt.formats.range["c30"][abbrLength[i]]);
         }
 
         test.equal(templatec00[0], '‏{sd} {sm}، {sy} {st} – {et}');
@@ -7952,19 +8815,26 @@ module.exports.testdaterangefmt = {
     },
     testDateRngFmt_uz_Latn_UZ: function(test) {
         test.expect(36);
-        //dmy
-        for (i=0; i < 4; i++) {
-            fmt[i] = new DateRngFmt({locale:"uz-Latn-UZ", length: length[i]})
-            templatec00[i] = fmt[i].dateFmt.formats.range["c00"][abbrLength[i]];
-            templatec01[i] = fmt[i].dateFmt.formats.range["c01"][abbrLength[i]];
-            templatec02[i] = fmt[i].dateFmt.formats.range["c02"][abbrLength[i]];
-            templatec03[i] = fmt[i].dateFmt.formats.range["c03"][abbrLength[i]];
-            templatec10[i] = fmt[i].dateFmt.formats.range["c10"][abbrLength[i]];
+        var fmt;
+        var data = setVariables();
+        var length = data["fullLength"];
+        var abbrLength = data["abbrLength"];
 
-            templatec11[i] = fmt[i].dateFmt.formats.range["c11"][abbrLength[i]];
-            templatec12[i] = fmt[i].dateFmt.formats.range["c12"][abbrLength[i]];
-            templatec20[i] = fmt[i].dateFmt.formats.range["c20"][abbrLength[i]];
-            templatec30[i] = fmt[i].dateFmt.formats.range["c30"][abbrLength[i]];
+        var templatec00 = [],templatec01 = [],templatec02 = [],templatec03 = [];
+        var templatec10 = [],templatec11 = [],templatec12 = [],templatec20 = [];
+        var templatec30 = [];
+        for (var i=0; i < 4; i++) {
+            fmt = new DateRngFmt({locale:"uz-Latn-UZ", length: length[i]})
+            templatec00.push(fmt.dateFmt.formats.range["c00"][abbrLength[i]]);
+            templatec01.push(fmt.dateFmt.formats.range["c01"][abbrLength[i]]);
+            templatec02.push(fmt.dateFmt.formats.range["c02"][abbrLength[i]]);
+            templatec03.push(fmt.dateFmt.formats.range["c03"][abbrLength[i]]);
+            templatec10.push(fmt.dateFmt.formats.range["c10"][abbrLength[i]]);
+
+            templatec11.push(fmt.dateFmt.formats.range["c11"][abbrLength[i]]);
+            templatec12.push(fmt.dateFmt.formats.range["c12"][abbrLength[i]]);
+            templatec20.push(fmt.dateFmt.formats.range["c20"][abbrLength[i]]);
+            templatec30.push(fmt.dateFmt.formats.range["c30"][abbrLength[i]]);
         }
 
         test.equal(templatec00[0], '{sd}-{sm}, {sy}, {st} – {et}');
@@ -8016,19 +8886,26 @@ module.exports.testdaterangefmt = {
     },
     testDateRngFmt_vi_VN: function(test) {
         test.expect(36);
-        //dmy
-        for (i=0; i < 4; i++) {
-            fmt[i] = new DateRngFmt({locale:"vi-VN", length: length[i]})
-            templatec00[i] = fmt[i].dateFmt.formats.range["c00"][abbrLength[i]];
-            templatec01[i] = fmt[i].dateFmt.formats.range["c01"][abbrLength[i]];
-            templatec02[i] = fmt[i].dateFmt.formats.range["c02"][abbrLength[i]];
-            templatec03[i] = fmt[i].dateFmt.formats.range["c03"][abbrLength[i]];
-            templatec10[i] = fmt[i].dateFmt.formats.range["c10"][abbrLength[i]];
+        var fmt;
+        var data = setVariables();
+        var length = data["fullLength"];
+        var abbrLength = data["abbrLength"];
 
-            templatec11[i] = fmt[i].dateFmt.formats.range["c11"][abbrLength[i]];
-            templatec12[i] = fmt[i].dateFmt.formats.range["c12"][abbrLength[i]];
-            templatec20[i] = fmt[i].dateFmt.formats.range["c20"][abbrLength[i]];
-            templatec30[i] = fmt[i].dateFmt.formats.range["c30"][abbrLength[i]];
+        var templatec00 = [],templatec01 = [],templatec02 = [],templatec03 = [];
+        var templatec10 = [],templatec11 = [],templatec12 = [],templatec20 = [];
+        var templatec30 = [];
+        for (var i=0; i < 4; i++) {
+            fmt = new DateRngFmt({locale:"vi-VN", length: length[i]})
+            templatec00.push(fmt.dateFmt.formats.range["c00"][abbrLength[i]]);
+            templatec01.push(fmt.dateFmt.formats.range["c01"][abbrLength[i]]);
+            templatec02.push(fmt.dateFmt.formats.range["c02"][abbrLength[i]]);
+            templatec03.push(fmt.dateFmt.formats.range["c03"][abbrLength[i]]);
+            templatec10.push(fmt.dateFmt.formats.range["c10"][abbrLength[i]]);
+
+            templatec11.push(fmt.dateFmt.formats.range["c11"][abbrLength[i]]);
+            templatec12.push(fmt.dateFmt.formats.range["c12"][abbrLength[i]]);
+            templatec20.push(fmt.dateFmt.formats.range["c20"][abbrLength[i]]);
+            templatec30.push(fmt.dateFmt.formats.range["c30"][abbrLength[i]]);
         }
 
         test.equal(templatec00[0], '{st} – {et} {sd} {sm}, {sy}');
@@ -8080,20 +8957,29 @@ module.exports.testdaterangefmt = {
     },
     testDateRngFmt_zh_Hans_CN: function(test) {
         test.expect(36);
-        //ymd
-        for (i=0; i < 4; i++) {
-            fmt[i] = new DateRngFmt({locale:"zh-Hans-CN", length: length[i]})
-        
-            templatec00[i] = fmt[i].dateFmt.formats.range["c00"][abbrLength[i]];
-            templatec01[i] = fmt[i].dateFmt.formats.range["c01"][abbrLength[i]];
-            templatec02[i] = fmt[i].dateFmt.formats.range["c02"][abbrLength[i]];
-            templatec03[i] = fmt[i].dateFmt.formats.range["c03"][abbrLength[i]];
-            templatec10[i] = fmt[i].dateFmt.formats.range["c10"][abbrLength[i]];
+        var fmt;
+        var data = setVariables();
+        var length = data["fullLength"];
+        var abbrLength = data["abbrLength"];
 
-            templatec11[i] = fmt[i].dateFmt.formats.range["c11"][abbrLength[i]];
-            templatec12[i] = fmt[i].dateFmt.formats.range["c12"][abbrLength[i]];
-            templatec20[i] = fmt[i].dateFmt.formats.range["c20"][abbrLength[i]];
-            templatec30[i] = fmt[i].dateFmt.formats.range["c30"][abbrLength[i]];
+        var templatec00 = [],templatec01 = [],templatec02 = [],templatec03 = [];
+        var templatec10 = [],templatec11 = [],templatec12 = [],templatec20 = [];
+        var templatec30 = [];
+
+        //ymd
+        for (var i=0; i < 4; i++) {
+            fmt = new DateRngFmt({locale:"zh-Hans-CN", length: length[i]})
+
+            templatec00.push(fmt.dateFmt.formats.range["c00"][abbrLength[i]]);
+            templatec01.push(fmt.dateFmt.formats.range["c01"][abbrLength[i]]);
+            templatec02.push(fmt.dateFmt.formats.range["c02"][abbrLength[i]]);
+            templatec03.push(fmt.dateFmt.formats.range["c03"][abbrLength[i]]);
+            templatec10.push(fmt.dateFmt.formats.range["c10"][abbrLength[i]]);
+
+            templatec11.push(fmt.dateFmt.formats.range["c11"][abbrLength[i]]);
+            templatec12.push(fmt.dateFmt.formats.range["c12"][abbrLength[i]]);
+            templatec20.push(fmt.dateFmt.formats.range["c20"][abbrLength[i]]);
+            templatec30.push(fmt.dateFmt.formats.range["c30"][abbrLength[i]]);
         }
 
         test.equal(templatec00[0], '{sy}年{sm}月{sd}日 {st} – {et}');
@@ -8145,19 +9031,28 @@ module.exports.testdaterangefmt = {
     },
     testDateRngFmt_zh_Hant_HK: function(test) {
         test.expect(36);
+        var fmt;
+        var data = setVariables();
+        var length = data["fullLength"];
+        var abbrLength = data["abbrLength"];
+
+        var templatec00 = [],templatec01 = [],templatec02 = [],templatec03 = [];
+        var templatec10 = [],templatec11 = [],templatec12 = [],templatec20 = [];
+        var templatec30 = [];
+
         //ymd
-        for (i=0; i < 4; i++) {
-            fmt[i] = new DateRngFmt({locale:"zh-Hant-HK", length: length[i]})
-        
-            templatec00[i] = fmt[i].dateFmt.formats.range["c00"][abbrLength[i]];
-            templatec01[i] = fmt[i].dateFmt.formats.range["c01"][abbrLength[i]];
-            templatec02[i] = fmt[i].dateFmt.formats.range["c02"][abbrLength[i]];
-            templatec03[i] = fmt[i].dateFmt.formats.range["c03"][abbrLength[i]];
-            templatec10[i] = fmt[i].dateFmt.formats.range["c10"][abbrLength[i]];
-            templatec11[i] = fmt[i].dateFmt.formats.range["c11"][abbrLength[i]];
-            templatec12[i] = fmt[i].dateFmt.formats.range["c12"][abbrLength[i]];
-            templatec20[i] = fmt[i].dateFmt.formats.range["c20"][abbrLength[i]];
-            templatec30[i] = fmt[i].dateFmt.formats.range["c30"][abbrLength[i]];
+        for (var i=0; i < 4; i++) {
+            fmt = new DateRngFmt({locale:"zh-Hant-HK", length: length[i]})
+
+            templatec00.push(fmt.dateFmt.formats.range["c00"][abbrLength[i]]);
+            templatec01.push(fmt.dateFmt.formats.range["c01"][abbrLength[i]]);
+            templatec02.push(fmt.dateFmt.formats.range["c02"][abbrLength[i]]);
+            templatec03.push(fmt.dateFmt.formats.range["c03"][abbrLength[i]]);
+            templatec10.push(fmt.dateFmt.formats.range["c10"][abbrLength[i]]);
+            templatec11.push(fmt.dateFmt.formats.range["c11"][abbrLength[i]]);
+            templatec12.push(fmt.dateFmt.formats.range["c12"][abbrLength[i]]);
+            templatec20.push(fmt.dateFmt.formats.range["c20"][abbrLength[i]]);
+            templatec30.push(fmt.dateFmt.formats.range["c30"][abbrLength[i]]);
         }
 
         test.equal(templatec00[0], '{sy}年{sm}月{sd}日 {st} – {et}');
@@ -8209,19 +9104,28 @@ module.exports.testdaterangefmt = {
     },
     testDateRngFmt_zh_Hant_TW: function(test) {
         test.expect(36);
+        var fmt;
+        var data = setVariables();
+        var length = data["fullLength"];
+        var abbrLength = data["abbrLength"];
+
+        var templatec00 = [],templatec01 = [],templatec02 = [],templatec03 = [];
+        var templatec10 = [],templatec11 = [],templatec12 = [],templatec20 = [];
+        var templatec30 = [];
+
         //ymd
-        for (i=0; i < 4; i++) {
-            fmt[i] = new DateRngFmt({locale:"zh-Hant-TW", length: length[i]})
-        
-            templatec00[i] = fmt[i].dateFmt.formats.range["c00"][abbrLength[i]];
-            templatec01[i] = fmt[i].dateFmt.formats.range["c01"][abbrLength[i]];
-            templatec02[i] = fmt[i].dateFmt.formats.range["c02"][abbrLength[i]];
-            templatec03[i] = fmt[i].dateFmt.formats.range["c03"][abbrLength[i]];
-            templatec10[i] = fmt[i].dateFmt.formats.range["c10"][abbrLength[i]];
-            templatec11[i] = fmt[i].dateFmt.formats.range["c11"][abbrLength[i]];
-            templatec12[i] = fmt[i].dateFmt.formats.range["c12"][abbrLength[i]];
-            templatec20[i] = fmt[i].dateFmt.formats.range["c20"][abbrLength[i]];
-            templatec30[i] = fmt[i].dateFmt.formats.range["c30"][abbrLength[i]];
+        for (var i=0; i < 4; i++) {
+            fmt = new DateRngFmt({locale:"zh-Hant-TW", length: length[i]})
+
+            templatec00.push(fmt.dateFmt.formats.range["c00"][abbrLength[i]]);
+            templatec01.push(fmt.dateFmt.formats.range["c01"][abbrLength[i]]);
+            templatec02.push(fmt.dateFmt.formats.range["c02"][abbrLength[i]]);
+            templatec03.push(fmt.dateFmt.formats.range["c03"][abbrLength[i]]);
+            templatec10.push(fmt.dateFmt.formats.range["c10"][abbrLength[i]]);
+            templatec11.push(fmt.dateFmt.formats.range["c11"][abbrLength[i]]);
+            templatec12.push(fmt.dateFmt.formats.range["c12"][abbrLength[i]]);
+            templatec20.push(fmt.dateFmt.formats.range["c20"][abbrLength[i]]);
+            templatec30.push(fmt.dateFmt.formats.range["c30"][abbrLength[i]]);
         }
 
         test.equal(templatec00[0], '{sy}年{sm}月{sd}日 {st} – {et}');
@@ -8273,19 +9177,26 @@ module.exports.testdaterangefmt = {
     },
     testDateRngFmt_en_GE: function(test) {
         test.expect(36);
-        //mdy
-        for (i=0; i < 4; i++) {
-            fmt[i] = new DateRngFmt({locale:"en-GE", length: length[i]})
-            templatec00[i] = fmt[i].dateFmt.formats.range["c00"][abbrLength[i]];
-            templatec01[i] = fmt[i].dateFmt.formats.range["c01"][abbrLength[i]];
-            templatec02[i] = fmt[i].dateFmt.formats.range["c02"][abbrLength[i]];
-            templatec03[i] = fmt[i].dateFmt.formats.range["c03"][abbrLength[i]];
-            templatec10[i] = fmt[i].dateFmt.formats.range["c10"][abbrLength[i]];
+        var fmt;
+        var data = setVariables();
+        var length = data["fullLength"];
+        var abbrLength = data["abbrLength"];
 
-            templatec11[i] = fmt[i].dateFmt.formats.range["c11"][abbrLength[i]];
-            templatec12[i] = fmt[i].dateFmt.formats.range["c12"][abbrLength[i]];
-            templatec20[i] = fmt[i].dateFmt.formats.range["c20"][abbrLength[i]];
-            templatec30[i] = fmt[i].dateFmt.formats.range["c30"][abbrLength[i]];
+        var templatec00 = [],templatec01 = [],templatec02 = [],templatec03 = [];
+        var templatec10 = [],templatec11 = [],templatec12 = [],templatec20 = [];
+        var templatec30 = [];
+        for (var i=0; i < 4; i++) {
+            fmt = new DateRngFmt({locale:"en-GE", length: length[i]})
+            templatec00.push(fmt.dateFmt.formats.range["c00"][abbrLength[i]]);
+            templatec01.push(fmt.dateFmt.formats.range["c01"][abbrLength[i]]);
+            templatec02.push(fmt.dateFmt.formats.range["c02"][abbrLength[i]]);
+            templatec03.push(fmt.dateFmt.formats.range["c03"][abbrLength[i]]);
+            templatec10.push(fmt.dateFmt.formats.range["c10"][abbrLength[i]]);
+
+            templatec11.push(fmt.dateFmt.formats.range["c11"][abbrLength[i]]);
+            templatec12.push(fmt.dateFmt.formats.range["c12"][abbrLength[i]]);
+            templatec20.push(fmt.dateFmt.formats.range["c20"][abbrLength[i]]);
+            templatec30.push(fmt.dateFmt.formats.range["c30"][abbrLength[i]]);
         }
 
         test.equal(templatec00[0], '{sm} {sd}, {sy} at {st} – {et}');
@@ -8337,19 +9248,26 @@ module.exports.testdaterangefmt = {
     },
     testDateRngFmt_en_CN: function(test) {
         test.expect(36);
-        //mdy
-        for (i=0; i < 4; i++) {
-            fmt[i] = new DateRngFmt({locale:"en-CN", length: length[i]})
-            templatec00[i] = fmt[i].dateFmt.formats.range["c00"][abbrLength[i]];
-            templatec01[i] = fmt[i].dateFmt.formats.range["c01"][abbrLength[i]];
-            templatec02[i] = fmt[i].dateFmt.formats.range["c02"][abbrLength[i]];
-            templatec03[i] = fmt[i].dateFmt.formats.range["c03"][abbrLength[i]];
-            templatec10[i] = fmt[i].dateFmt.formats.range["c10"][abbrLength[i]];
+        var fmt;
+        var data = setVariables();
+        var length = data["fullLength"];
+        var abbrLength = data["abbrLength"];
 
-            templatec11[i] = fmt[i].dateFmt.formats.range["c11"][abbrLength[i]];
-            templatec12[i] = fmt[i].dateFmt.formats.range["c12"][abbrLength[i]];
-            templatec20[i] = fmt[i].dateFmt.formats.range["c20"][abbrLength[i]];
-            templatec30[i] = fmt[i].dateFmt.formats.range["c30"][abbrLength[i]];
+        var templatec00 = [],templatec01 = [],templatec02 = [],templatec03 = [];
+        var templatec10 = [],templatec11 = [],templatec12 = [],templatec20 = [];
+        var templatec30 = [];
+        for (var i=0; i < 4; i++) {
+            fmt = new DateRngFmt({locale:"en-CN", length: length[i]})
+            templatec00.push(fmt.dateFmt.formats.range["c00"][abbrLength[i]]);
+            templatec01.push(fmt.dateFmt.formats.range["c01"][abbrLength[i]]);
+            templatec02.push(fmt.dateFmt.formats.range["c02"][abbrLength[i]]);
+            templatec03.push(fmt.dateFmt.formats.range["c03"][abbrLength[i]]);
+            templatec10.push(fmt.dateFmt.formats.range["c10"][abbrLength[i]]);
+
+            templatec11.push(fmt.dateFmt.formats.range["c11"][abbrLength[i]]);
+            templatec12.push(fmt.dateFmt.formats.range["c12"][abbrLength[i]]);
+            templatec20.push(fmt.dateFmt.formats.range["c20"][abbrLength[i]]);
+            templatec30.push(fmt.dateFmt.formats.range["c30"][abbrLength[i]]);
         }
 
         test.equal(templatec00[0], '{sm} {sd}, {sy} at {st} – {et}');
@@ -8401,19 +9319,26 @@ module.exports.testdaterangefmt = {
     },
     testDateRngFmt_en_MX: function(test) {
         test.expect(36);
-        //mdy
-        for (i=0; i < 4; i++) {
-            fmt[i] = new DateRngFmt({locale:"en-MX", length: length[i]})
-            templatec00[i] = fmt[i].dateFmt.formats.range["c00"][abbrLength[i]];
-            templatec01[i] = fmt[i].dateFmt.formats.range["c01"][abbrLength[i]];
-            templatec02[i] = fmt[i].dateFmt.formats.range["c02"][abbrLength[i]];
-            templatec03[i] = fmt[i].dateFmt.formats.range["c03"][abbrLength[i]];
-            templatec10[i] = fmt[i].dateFmt.formats.range["c10"][abbrLength[i]];
+        var fmt;
+        var data = setVariables();
+        var length = data["fullLength"];
+        var abbrLength = data["abbrLength"];
 
-            templatec11[i] = fmt[i].dateFmt.formats.range["c11"][abbrLength[i]];
-            templatec12[i] = fmt[i].dateFmt.formats.range["c12"][abbrLength[i]];
-            templatec20[i] = fmt[i].dateFmt.formats.range["c20"][abbrLength[i]];
-            templatec30[i] = fmt[i].dateFmt.formats.range["c30"][abbrLength[i]];
+        var templatec00 = [],templatec01 = [],templatec02 = [],templatec03 = [];
+        var templatec10 = [],templatec11 = [],templatec12 = [],templatec20 = [];
+        var templatec30 = [];
+        for (var i=0; i < 4; i++) {
+            fmt = new DateRngFmt({locale:"en-MX", length: length[i]})
+            templatec00.push(fmt.dateFmt.formats.range["c00"][abbrLength[i]]);
+            templatec01.push(fmt.dateFmt.formats.range["c01"][abbrLength[i]]);
+            templatec02.push(fmt.dateFmt.formats.range["c02"][abbrLength[i]]);
+            templatec03.push(fmt.dateFmt.formats.range["c03"][abbrLength[i]]);
+            templatec10.push(fmt.dateFmt.formats.range["c10"][abbrLength[i]]);
+
+            templatec11.push(fmt.dateFmt.formats.range["c11"][abbrLength[i]]);
+            templatec12.push(fmt.dateFmt.formats.range["c12"][abbrLength[i]]);
+            templatec20.push(fmt.dateFmt.formats.range["c20"][abbrLength[i]]);
+            templatec30.push(fmt.dateFmt.formats.range["c30"][abbrLength[i]]);
         }
 
         test.equal(templatec00[0], '{sm} {sd}, {sy} at {st} – {et}');
@@ -8465,19 +9390,26 @@ module.exports.testdaterangefmt = {
     },
     testDateRngFmt_en_TW: function(test) {
         test.expect(36);
-        //mdy
-        for (i=0; i < 4; i++) {
-            fmt[i] = new DateRngFmt({locale:"en-TW", length: length[i]})
-            templatec00[i] = fmt[i].dateFmt.formats.range["c00"][abbrLength[i]];
-            templatec01[i] = fmt[i].dateFmt.formats.range["c01"][abbrLength[i]];
-            templatec02[i] = fmt[i].dateFmt.formats.range["c02"][abbrLength[i]];
-            templatec03[i] = fmt[i].dateFmt.formats.range["c03"][abbrLength[i]];
-            templatec10[i] = fmt[i].dateFmt.formats.range["c10"][abbrLength[i]];
+        var fmt;
+        var data = setVariables();
+        var length = data["fullLength"];
+        var abbrLength = data["abbrLength"];
 
-            templatec11[i] = fmt[i].dateFmt.formats.range["c11"][abbrLength[i]];
-            templatec12[i] = fmt[i].dateFmt.formats.range["c12"][abbrLength[i]];
-            templatec20[i] = fmt[i].dateFmt.formats.range["c20"][abbrLength[i]];
-            templatec30[i] = fmt[i].dateFmt.formats.range["c30"][abbrLength[i]];
+        var templatec00 = [],templatec01 = [],templatec02 = [],templatec03 = [];
+        var templatec10 = [],templatec11 = [],templatec12 = [],templatec20 = [];
+        var templatec30 = [];
+        for (var i=0; i < 4; i++) {
+            fmt = new DateRngFmt({locale:"en-TW", length: length[i]})
+            templatec00.push(fmt.dateFmt.formats.range["c00"][abbrLength[i]]);
+            templatec01.push(fmt.dateFmt.formats.range["c01"][abbrLength[i]]);
+            templatec02.push(fmt.dateFmt.formats.range["c02"][abbrLength[i]]);
+            templatec03.push(fmt.dateFmt.formats.range["c03"][abbrLength[i]]);
+            templatec10.push(fmt.dateFmt.formats.range["c10"][abbrLength[i]]);
+
+            templatec11.push(fmt.dateFmt.formats.range["c11"][abbrLength[i]]);
+            templatec12.push(fmt.dateFmt.formats.range["c12"][abbrLength[i]]);
+            templatec20.push(fmt.dateFmt.formats.range["c20"][abbrLength[i]]);
+            templatec30.push(fmt.dateFmt.formats.range["c30"][abbrLength[i]]);
         }
 
         test.equal(templatec00[0], '{sm} {sd}, {sy} at {st} – {et}');
@@ -8529,19 +9461,28 @@ module.exports.testdaterangefmt = {
     },
     testDateRngFmt_mn_MN: function(test) {
         test.expect(36);
-        //ymd
-        for (i=0; i < 4; i++) {
-            fmt[i] = new DateRngFmt({locale:"mn-Cyrl-MN", length: length[i]})
-            templatec00[i] = fmt[i].dateFmt.formats.range["c00"][abbrLength[i]];
-            templatec01[i] = fmt[i].dateFmt.formats.range["c01"][abbrLength[i]];
-            templatec02[i] = fmt[i].dateFmt.formats.range["c02"][abbrLength[i]];
-            templatec03[i] = fmt[i].dateFmt.formats.range["c03"][abbrLength[i]];
-            templatec10[i] = fmt[i].dateFmt.formats.range["c10"][abbrLength[i]];
+        var fmt;
+        var data = setVariables();
+        var length = data["fullLength"];
+        var abbrLength = data["abbrLength"];
 
-            templatec11[i] = fmt[i].dateFmt.formats.range["c11"][abbrLength[i]];
-            templatec12[i] = fmt[i].dateFmt.formats.range["c12"][abbrLength[i]];
-            templatec20[i] = fmt[i].dateFmt.formats.range["c20"][abbrLength[i]];
-            templatec30[i] = fmt[i].dateFmt.formats.range["c30"][abbrLength[i]];
+        var templatec00 = [],templatec01 = [],templatec02 = [],templatec03 = [];
+        var templatec10 = [],templatec11 = [],templatec12 = [],templatec20 = [];
+        var templatec30 = [];
+
+        //ymd
+        for (var i=0; i < 4; i++) {
+            fmt = new DateRngFmt({locale:"mn-Cyrl-MN", length: length[i]})
+            templatec00.push(fmt.dateFmt.formats.range["c00"][abbrLength[i]]);
+            templatec01.push(fmt.dateFmt.formats.range["c01"][abbrLength[i]]);
+            templatec02.push(fmt.dateFmt.formats.range["c02"][abbrLength[i]]);
+            templatec03.push(fmt.dateFmt.formats.range["c03"][abbrLength[i]]);
+            templatec10.push(fmt.dateFmt.formats.range["c10"][abbrLength[i]]);
+
+            templatec11.push(fmt.dateFmt.formats.range["c11"][abbrLength[i]]);
+            templatec12.push(fmt.dateFmt.formats.range["c12"][abbrLength[i]]);
+            templatec20.push(fmt.dateFmt.formats.range["c20"][abbrLength[i]]);
+            templatec30.push(fmt.dateFmt.formats.range["c30"][abbrLength[i]]);
         }
 
         test.equal(templatec00[0], '{sy}.{sm}.{sd} {st} – {et}');
@@ -8594,19 +9535,26 @@ module.exports.testdaterangefmt = {
     },
     testDateRngFmt_es_CA: function(test) {
         test.expect(36);
-        //dmy
-        for (i=0; i < 4; i++) {
-            fmt[i] = new DateRngFmt({locale:"es-CA", length: length[i]})
-            templatec00[i] = fmt[i].dateFmt.formats.range["c00"][abbrLength[i]];
-            templatec01[i] = fmt[i].dateFmt.formats.range["c01"][abbrLength[i]];
-            templatec02[i] = fmt[i].dateFmt.formats.range["c02"][abbrLength[i]];
-            templatec03[i] = fmt[i].dateFmt.formats.range["c03"][abbrLength[i]];
-            templatec10[i] = fmt[i].dateFmt.formats.range["c10"][abbrLength[i]];
+        var fmt;
+        var data = setVariables();
+        var length = data["fullLength"];
+        var abbrLength = data["abbrLength"];
 
-            templatec11[i] = fmt[i].dateFmt.formats.range["c11"][abbrLength[i]];
-            templatec12[i] = fmt[i].dateFmt.formats.range["c12"][abbrLength[i]];
-            templatec20[i] = fmt[i].dateFmt.formats.range["c20"][abbrLength[i]];
-            templatec30[i] = fmt[i].dateFmt.formats.range["c30"][abbrLength[i]];
+        var templatec00 = [],templatec01 = [],templatec02 = [],templatec03 = [];
+        var templatec10 = [],templatec11 = [],templatec12 = [],templatec20 = [];
+        var templatec30 = [];
+        for (var i=0; i < 4; i++) {
+            fmt = new DateRngFmt({locale:"es-CA", length: length[i]})
+            templatec00.push(fmt.dateFmt.formats.range["c00"][abbrLength[i]]);
+            templatec01.push(fmt.dateFmt.formats.range["c01"][abbrLength[i]]);
+            templatec02.push(fmt.dateFmt.formats.range["c02"][abbrLength[i]]);
+            templatec03.push(fmt.dateFmt.formats.range["c03"][abbrLength[i]]);
+            templatec10.push(fmt.dateFmt.formats.range["c10"][abbrLength[i]]);
+
+            templatec11.push(fmt.dateFmt.formats.range["c11"][abbrLength[i]]);
+            templatec12.push(fmt.dateFmt.formats.range["c12"][abbrLength[i]]);
+            templatec20.push(fmt.dateFmt.formats.range["c20"][abbrLength[i]]);
+            templatec30.push(fmt.dateFmt.formats.range["c30"][abbrLength[i]]);
         }
 
         test.equal(templatec00[0], '{sd} de {sm} de {sy}, {st} – {et}');
@@ -8658,20 +9606,29 @@ module.exports.testdaterangefmt = {
     },
     testDateRngFmt_af_ZA: function(test) {
         test.expect(36);
+        var fmt;
+        var data = setVariables();
+        var length = data["fullLength"];
+        var abbrLength = data["abbrLength"];
+
+        var templatec00 = [],templatec01 = [],templatec02 = [],templatec03 = [];
+        var templatec10 = [],templatec11 = [],templatec12 = [],templatec20 = [];
+        var templatec30 = [];
+
         //dmy
         //ymd(short)
-        for (i=0; i < 4; i++) {
-            fmt[i] = new DateRngFmt({locale:"af-ZA", length: length[i]})
-            templatec00[i] = fmt[i].dateFmt.formats.range["c00"][abbrLength[i]];
-            templatec01[i] = fmt[i].dateFmt.formats.range["c01"][abbrLength[i]];
-            templatec02[i] = fmt[i].dateFmt.formats.range["c02"][abbrLength[i]];
-            templatec03[i] = fmt[i].dateFmt.formats.range["c03"][abbrLength[i]];
-            templatec10[i] = fmt[i].dateFmt.formats.range["c10"][abbrLength[i]];
+        for (var i=0; i < 4; i++) {
+            fmt = new DateRngFmt({locale:"af-ZA", length: length[i]})
+            templatec00.push(fmt.dateFmt.formats.range["c00"][abbrLength[i]]);
+            templatec01.push(fmt.dateFmt.formats.range["c01"][abbrLength[i]]);
+            templatec02.push(fmt.dateFmt.formats.range["c02"][abbrLength[i]]);
+            templatec03.push(fmt.dateFmt.formats.range["c03"][abbrLength[i]]);
+            templatec10.push(fmt.dateFmt.formats.range["c10"][abbrLength[i]]);
 
-            templatec11[i] = fmt[i].dateFmt.formats.range["c11"][abbrLength[i]];
-            templatec12[i] = fmt[i].dateFmt.formats.range["c12"][abbrLength[i]];
-            templatec20[i] = fmt[i].dateFmt.formats.range["c20"][abbrLength[i]];
-            templatec30[i] = fmt[i].dateFmt.formats.range["c30"][abbrLength[i]];
+            templatec11.push(fmt.dateFmt.formats.range["c11"][abbrLength[i]]);
+            templatec12.push(fmt.dateFmt.formats.range["c12"][abbrLength[i]]);
+            templatec20.push(fmt.dateFmt.formats.range["c20"][abbrLength[i]]);
+            templatec30.push(fmt.dateFmt.formats.range["c30"][abbrLength[i]]);
         }
 
         test.equal(templatec00[0], '{sd} {sm} {sy} {st} – {et}');
@@ -8722,20 +9679,28 @@ module.exports.testdaterangefmt = {
     },
     testDateRngFmt_am_ET: function(test) {
         test.expect(36);
+        var fmt;
+        var data = setVariables();
+        var length = data["fullLength"];
+        var abbrLength = data["abbrLength"];
+
+        var templatec00 = [],templatec01 = [],templatec02 = [],templatec03 = [];
+        var templatec10 = [],templatec11 = [],templatec12 = [],templatec20 = [];
+        var templatec30 = [];
 
         //dmy
-        for (i=0; i < 4; i++) {
-            fmt[i] = new DateRngFmt({locale:"am-ET", length: length[i]})
-            templatec00[i] = fmt[i].dateFmt.formats.range["c00"][abbrLength[i]];
-            templatec01[i] = fmt[i].dateFmt.formats.range["c01"][abbrLength[i]];
-            templatec02[i] = fmt[i].dateFmt.formats.range["c02"][abbrLength[i]];
-            templatec03[i] = fmt[i].dateFmt.formats.range["c03"][abbrLength[i]];
-            templatec10[i] = fmt[i].dateFmt.formats.range["c10"][abbrLength[i]];
+        for (var i=0; i < 4; i++) {
+            fmt = new DateRngFmt({locale:"am-ET", length: length[i]})
+            templatec00.push(fmt.dateFmt.formats.range["c00"][abbrLength[i]]);
+            templatec01.push(fmt.dateFmt.formats.range["c01"][abbrLength[i]]);
+            templatec02.push(fmt.dateFmt.formats.range["c02"][abbrLength[i]]);
+            templatec03.push(fmt.dateFmt.formats.range["c03"][abbrLength[i]]);
+            templatec10.push(fmt.dateFmt.formats.range["c10"][abbrLength[i]]);
 
-            templatec11[i] = fmt[i].dateFmt.formats.range["c11"][abbrLength[i]];
-            templatec12[i] = fmt[i].dateFmt.formats.range["c12"][abbrLength[i]];
-            templatec20[i] = fmt[i].dateFmt.formats.range["c20"][abbrLength[i]];
-            templatec30[i] = fmt[i].dateFmt.formats.range["c30"][abbrLength[i]];
+            templatec11.push(fmt.dateFmt.formats.range["c11"][abbrLength[i]]);
+            templatec12.push(fmt.dateFmt.formats.range["c12"][abbrLength[i]]);
+            templatec20.push(fmt.dateFmt.formats.range["c20"][abbrLength[i]]);
+            templatec30.push(fmt.dateFmt.formats.range["c30"][abbrLength[i]]);
         }
 
         test.equal(templatec00[0], '{sd} {sm} {sy} {st} – {et}');
@@ -8787,18 +9752,25 @@ module.exports.testdaterangefmt = {
     },
     testDateRngFmt_ha_Latn_NG: function(test) {
         test.expect(36);
-        //dmy
-        for (i=0; i < 4; i++) {
-            fmt[i] = new DateRngFmt({locale:"ha-Latn-NG", length: length[i]})
-            templatec00[i] = fmt[i].dateFmt.formats.range["c00"][abbrLength[i]];
-            templatec01[i] = fmt[i].dateFmt.formats.range["c01"][abbrLength[i]];
-            templatec02[i] = fmt[i].dateFmt.formats.range["c02"][abbrLength[i]];
-            templatec03[i] = fmt[i].dateFmt.formats.range["c03"][abbrLength[i]];
-            templatec10[i] = fmt[i].dateFmt.formats.range["c10"][abbrLength[i]];
-            templatec11[i] = fmt[i].dateFmt.formats.range["c11"][abbrLength[i]];
-            templatec12[i] = fmt[i].dateFmt.formats.range["c12"][abbrLength[i]];
-            templatec20[i] = fmt[i].dateFmt.formats.range["c20"][abbrLength[i]];
-            templatec30[i] = fmt[i].dateFmt.formats.range["c30"][abbrLength[i]];
+        var fmt;
+        var data = setVariables();
+        var length = data["fullLength"];
+        var abbrLength = data["abbrLength"];
+
+        var templatec00 = [],templatec01 = [],templatec02 = [],templatec03 = [];
+        var templatec10 = [],templatec11 = [],templatec12 = [],templatec20 = [];
+        var templatec30 = [];
+        for (var i=0; i < 4; i++) {
+            fmt = new DateRngFmt({locale:"ha-Latn-NG", length: length[i]})
+            templatec00.push(fmt.dateFmt.formats.range["c00"][abbrLength[i]]);
+            templatec01.push(fmt.dateFmt.formats.range["c01"][abbrLength[i]]);
+            templatec02.push(fmt.dateFmt.formats.range["c02"][abbrLength[i]]);
+            templatec03.push(fmt.dateFmt.formats.range["c03"][abbrLength[i]]);
+            templatec10.push(fmt.dateFmt.formats.range["c10"][abbrLength[i]]);
+            templatec11.push(fmt.dateFmt.formats.range["c11"][abbrLength[i]]);
+            templatec12.push(fmt.dateFmt.formats.range["c12"][abbrLength[i]]);
+            templatec20.push(fmt.dateFmt.formats.range["c20"][abbrLength[i]]);
+            templatec30.push(fmt.dateFmt.formats.range["c30"][abbrLength[i]]);
         }
 
         test.equal(templatec00[0], '{sd} {sm}, {sy} {st} – {et}');
@@ -8850,19 +9822,26 @@ module.exports.testdaterangefmt = {
     },
     testDateRngFmt_or_IN: function(test) {
         test.expect(36);
-        //mdy
-        for (i=0; i < 4; i++) {
-            fmt[i] = new DateRngFmt({locale:"or-IN", length: length[i]})
-            templatec00[i] = fmt[i].dateFmt.formats.range["c00"][abbrLength[i]];
-            templatec01[i] = fmt[i].dateFmt.formats.range["c01"][abbrLength[i]];
-            templatec02[i] = fmt[i].dateFmt.formats.range["c02"][abbrLength[i]];
-            templatec03[i] = fmt[i].dateFmt.formats.range["c03"][abbrLength[i]];
-            templatec10[i] = fmt[i].dateFmt.formats.range["c10"][abbrLength[i]];
+        var fmt;
+        var data = setVariables();
+        var length = data["fullLength"];
+        var abbrLength = data["abbrLength"];
 
-            templatec11[i] = fmt[i].dateFmt.formats.range["c11"][abbrLength[i]];
-            templatec12[i] = fmt[i].dateFmt.formats.range["c12"][abbrLength[i]];
-            templatec20[i] = fmt[i].dateFmt.formats.range["c20"][abbrLength[i]];
-            templatec30[i] = fmt[i].dateFmt.formats.range["c30"][abbrLength[i]];
+        var templatec00 = [],templatec01 = [],templatec02 = [],templatec03 = [];
+        var templatec10 = [],templatec11 = [],templatec12 = [],templatec20 = [];
+        var templatec30 = [];
+        for (var i=0; i < 4; i++) {
+            fmt = new DateRngFmt({locale:"or-IN", length: length[i]})
+            templatec00.push(fmt.dateFmt.formats.range["c00"][abbrLength[i]]);
+            templatec01.push(fmt.dateFmt.formats.range["c01"][abbrLength[i]]);
+            templatec02.push(fmt.dateFmt.formats.range["c02"][abbrLength[i]]);
+            templatec03.push(fmt.dateFmt.formats.range["c03"][abbrLength[i]]);
+            templatec10.push(fmt.dateFmt.formats.range["c10"][abbrLength[i]]);
+
+            templatec11.push(fmt.dateFmt.formats.range["c11"][abbrLength[i]]);
+            templatec12.push(fmt.dateFmt.formats.range["c12"][abbrLength[i]]);
+            templatec20.push(fmt.dateFmt.formats.range["c20"][abbrLength[i]]);
+            templatec30.push(fmt.dateFmt.formats.range["c30"][abbrLength[i]]);
         }
         //// CLDR 34 change ////
         test.equal(templatec00[0], '{st} – {et} ଠାରେ {sm} {sd}, {sy}');
@@ -8913,18 +9892,25 @@ module.exports.testdaterangefmt = {
     },
     testDateRngFmt_az_Latn_AZ: function(test) {
         test.expect(36);
-        //dmy
-        for (i=0; i < 4; i++) {
-            fmt[i] = new DateRngFmt({locale:"az-Latn-AZ", length: length[i]})
-            templatec00[i] = fmt[i].dateFmt.formats.range["c00"][abbrLength[i]];
-            templatec01[i] = fmt[i].dateFmt.formats.range["c01"][abbrLength[i]];
-            templatec02[i] = fmt[i].dateFmt.formats.range["c02"][abbrLength[i]];
-            templatec03[i] = fmt[i].dateFmt.formats.range["c03"][abbrLength[i]];
-            templatec10[i] = fmt[i].dateFmt.formats.range["c10"][abbrLength[i]];
-            templatec11[i] = fmt[i].dateFmt.formats.range["c11"][abbrLength[i]];
-            templatec12[i] = fmt[i].dateFmt.formats.range["c12"][abbrLength[i]];
-            templatec20[i] = fmt[i].dateFmt.formats.range["c20"][abbrLength[i]];
-            templatec30[i] = fmt[i].dateFmt.formats.range["c30"][abbrLength[i]];
+        var fmt;
+        var data = setVariables();
+        var length = data["fullLength"];
+        var abbrLength = data["abbrLength"];
+
+        var templatec00 = [],templatec01 = [],templatec02 = [],templatec03 = [];
+        var templatec10 = [],templatec11 = [],templatec12 = [],templatec20 = [];
+        var templatec30 = [];
+        for (var i=0; i < 4; i++) {
+            fmt = new DateRngFmt({locale:"az-Latn-AZ", length: length[i]})
+            templatec00.push(fmt.dateFmt.formats.range["c00"][abbrLength[i]]);
+            templatec01.push(fmt.dateFmt.formats.range["c01"][abbrLength[i]]);
+            templatec02.push(fmt.dateFmt.formats.range["c02"][abbrLength[i]]);
+            templatec03.push(fmt.dateFmt.formats.range["c03"][abbrLength[i]]);
+            templatec10.push(fmt.dateFmt.formats.range["c10"][abbrLength[i]]);
+            templatec11.push(fmt.dateFmt.formats.range["c11"][abbrLength[i]]);
+            templatec12.push(fmt.dateFmt.formats.range["c12"][abbrLength[i]]);
+            templatec20.push(fmt.dateFmt.formats.range["c20"][abbrLength[i]]);
+            templatec30.push(fmt.dateFmt.formats.range["c30"][abbrLength[i]]);
         }
 
         test.equal(templatec00[0], '{sd} {sm} {sy} {st} – {et}');
@@ -8976,19 +9962,26 @@ module.exports.testdaterangefmt = {
     },
     testDateRngFmt_km_KH: function(test) {
         test.expect(36);
-        //dmy
-        for (i=0; i < 4; i++) {
-            fmt[i] = new DateRngFmt({locale:"km-KH", length: length[i]})
-            templatec00[i] = fmt[i].dateFmt.formats.range["c00"][abbrLength[i]];
-            templatec01[i] = fmt[i].dateFmt.formats.range["c01"][abbrLength[i]];
-            templatec02[i] = fmt[i].dateFmt.formats.range["c02"][abbrLength[i]];
-            templatec03[i] = fmt[i].dateFmt.formats.range["c03"][abbrLength[i]];
-            templatec10[i] = fmt[i].dateFmt.formats.range["c10"][abbrLength[i]];
+        var fmt;
+        var data = setVariables();
+        var length = data["fullLength"];
+        var abbrLength = data["abbrLength"];
 
-            templatec11[i] = fmt[i].dateFmt.formats.range["c11"][abbrLength[i]];
-            templatec12[i] = fmt[i].dateFmt.formats.range["c12"][abbrLength[i]];
-            templatec20[i] = fmt[i].dateFmt.formats.range["c20"][abbrLength[i]];
-            templatec30[i] = fmt[i].dateFmt.formats.range["c30"][abbrLength[i]];
+        var templatec00 = [],templatec01 = [],templatec02 = [],templatec03 = [];
+        var templatec10 = [],templatec11 = [],templatec12 = [],templatec20 = [];
+        var templatec30 = [];
+        for (var i=0; i < 4; i++) {
+            fmt = new DateRngFmt({locale:"km-KH", length: length[i]})
+            templatec00.push(fmt.dateFmt.formats.range["c00"][abbrLength[i]]);
+            templatec01.push(fmt.dateFmt.formats.range["c01"][abbrLength[i]]);
+            templatec02.push(fmt.dateFmt.formats.range["c02"][abbrLength[i]]);
+            templatec03.push(fmt.dateFmt.formats.range["c03"][abbrLength[i]]);
+            templatec10.push(fmt.dateFmt.formats.range["c10"][abbrLength[i]]);
+
+            templatec11.push(fmt.dateFmt.formats.range["c11"][abbrLength[i]]);
+            templatec12.push(fmt.dateFmt.formats.range["c12"][abbrLength[i]]);
+            templatec20.push(fmt.dateFmt.formats.range["c20"][abbrLength[i]]);
+            templatec30.push(fmt.dateFmt.formats.range["c30"][abbrLength[i]]);
         }
 
         test.equal(templatec00[0], '{sd} {sm} {sy} នៅ​ម៉ោង {st} – {et}');
@@ -9040,19 +10033,28 @@ module.exports.testdaterangefmt = {
     },
     testDateRngFmt_si_LK: function(test) {
         test.expect(36);
-        //ymd
-        for (i=0; i < 4; i++) {
-            fmt[i] = new DateRngFmt({locale:"si-LK", length: length[i]})
-            templatec00[i] = fmt[i].dateFmt.formats.range["c00"][abbrLength[i]];
-            templatec01[i] = fmt[i].dateFmt.formats.range["c01"][abbrLength[i]];
-            templatec02[i] = fmt[i].dateFmt.formats.range["c02"][abbrLength[i]];
-            templatec03[i] = fmt[i].dateFmt.formats.range["c03"][abbrLength[i]];
-            templatec10[i] = fmt[i].dateFmt.formats.range["c10"][abbrLength[i]];
+        var fmt;
+        var data = setVariables();
+        var length = data["fullLength"];
+        var abbrLength = data["abbrLength"];
 
-            templatec11[i] = fmt[i].dateFmt.formats.range["c11"][abbrLength[i]];
-            templatec12[i] = fmt[i].dateFmt.formats.range["c12"][abbrLength[i]];
-            templatec20[i] = fmt[i].dateFmt.formats.range["c20"][abbrLength[i]];
-            templatec30[i] = fmt[i].dateFmt.formats.range["c30"][abbrLength[i]];
+        var templatec00 = [],templatec01 = [],templatec02 = [],templatec03 = [];
+        var templatec10 = [],templatec11 = [],templatec12 = [],templatec20 = [];
+        var templatec30 = [];
+
+        //ymd
+        for (var i=0; i < 4; i++) {
+            fmt = new DateRngFmt({locale:"si-LK", length: length[i]})
+            templatec00.push(fmt.dateFmt.formats.range["c00"][abbrLength[i]]);
+            templatec01.push(fmt.dateFmt.formats.range["c01"][abbrLength[i]]);
+            templatec02.push(fmt.dateFmt.formats.range["c02"][abbrLength[i]]);
+            templatec03.push(fmt.dateFmt.formats.range["c03"][abbrLength[i]]);
+            templatec10.push(fmt.dateFmt.formats.range["c10"][abbrLength[i]]);
+
+            templatec11.push(fmt.dateFmt.formats.range["c11"][abbrLength[i]]);
+            templatec12.push(fmt.dateFmt.formats.range["c12"][abbrLength[i]]);
+            templatec20.push(fmt.dateFmt.formats.range["c20"][abbrLength[i]]);
+            templatec30.push(fmt.dateFmt.formats.range["c30"][abbrLength[i]]);
         }
 
         test.equal(templatec00[0], '{sy} {sm} {sd} {st} – {et}');
@@ -9104,19 +10106,26 @@ module.exports.testdaterangefmt = {
     },
     testDateRngFmt_ar_AE: function(test) {
         test.expect(36);
-        //dmy
-        for (i=0; i < 4; i++) {
-            fmt[i] = new DateRngFmt({locale:"ar-AE", length: length[i]})
-            templatec00[i] = fmt[i].dateFmt.formats.range["c00"][abbrLength[i]];
-            templatec01[i] = fmt[i].dateFmt.formats.range["c01"][abbrLength[i]];
-            templatec02[i] = fmt[i].dateFmt.formats.range["c02"][abbrLength[i]];
-            templatec03[i] = fmt[i].dateFmt.formats.range["c03"][abbrLength[i]];
-            templatec10[i] = fmt[i].dateFmt.formats.range["c10"][abbrLength[i]];
+        var fmt;
+        var data = setVariables();
+        var length = data["fullLength"];
+        var abbrLength = data["abbrLength"];
 
-            templatec11[i] = fmt[i].dateFmt.formats.range["c11"][abbrLength[i]];
-            templatec12[i] = fmt[i].dateFmt.formats.range["c12"][abbrLength[i]];
-            templatec20[i] = fmt[i].dateFmt.formats.range["c20"][abbrLength[i]];
-            templatec30[i] = fmt[i].dateFmt.formats.range["c30"][abbrLength[i]];
+        var templatec00 = [],templatec01 = [],templatec02 = [],templatec03 = [];
+        var templatec10 = [],templatec11 = [],templatec12 = [],templatec20 = [];
+        var templatec30 = [];
+        for (var i=0; i < 4; i++) {
+            fmt = new DateRngFmt({locale:"ar-AE", length: length[i]})
+            templatec00.push(fmt.dateFmt.formats.range["c00"][abbrLength[i]]);
+            templatec01.push(fmt.dateFmt.formats.range["c01"][abbrLength[i]]);
+            templatec02.push(fmt.dateFmt.formats.range["c02"][abbrLength[i]]);
+            templatec03.push(fmt.dateFmt.formats.range["c03"][abbrLength[i]]);
+            templatec10.push(fmt.dateFmt.formats.range["c10"][abbrLength[i]]);
+
+            templatec11.push(fmt.dateFmt.formats.range["c11"][abbrLength[i]]);
+            templatec12.push(fmt.dateFmt.formats.range["c12"][abbrLength[i]]);
+            templatec20.push(fmt.dateFmt.formats.range["c20"][abbrLength[i]]);
+            templatec30.push(fmt.dateFmt.formats.range["c30"][abbrLength[i]]);
         }
 
         test.equal(templatec00[0], '‏{sd} {sm} {sy} {st} – {et}');
@@ -9168,19 +10177,26 @@ module.exports.testdaterangefmt = {
     },
     testDateRngFmt_ar_BH: function(test) {
         test.expect(36);
-        //dmy
-        for (i=0; i < 4; i++) {
-            fmt[i] = new DateRngFmt({locale:"ar-BH", length: length[i]})
-            templatec00[i] = fmt[i].dateFmt.formats.range["c00"][abbrLength[i]];
-            templatec01[i] = fmt[i].dateFmt.formats.range["c01"][abbrLength[i]];
-            templatec02[i] = fmt[i].dateFmt.formats.range["c02"][abbrLength[i]];
-            templatec03[i] = fmt[i].dateFmt.formats.range["c03"][abbrLength[i]];
-            templatec10[i] = fmt[i].dateFmt.formats.range["c10"][abbrLength[i]];
+        var fmt;
+        var data = setVariables();
+        var length = data["fullLength"];
+        var abbrLength = data["abbrLength"];
 
-            templatec11[i] = fmt[i].dateFmt.formats.range["c11"][abbrLength[i]];
-            templatec12[i] = fmt[i].dateFmt.formats.range["c12"][abbrLength[i]];
-            templatec20[i] = fmt[i].dateFmt.formats.range["c20"][abbrLength[i]];
-            templatec30[i] = fmt[i].dateFmt.formats.range["c30"][abbrLength[i]];
+        var templatec00 = [],templatec01 = [],templatec02 = [],templatec03 = [];
+        var templatec10 = [],templatec11 = [],templatec12 = [],templatec20 = [];
+        var templatec30 = [];
+        for (var i=0; i < 4; i++) {
+            fmt = new DateRngFmt({locale:"ar-BH", length: length[i]})
+            templatec00.push(fmt.dateFmt.formats.range["c00"][abbrLength[i]]);
+            templatec01.push(fmt.dateFmt.formats.range["c01"][abbrLength[i]]);
+            templatec02.push(fmt.dateFmt.formats.range["c02"][abbrLength[i]]);
+            templatec03.push(fmt.dateFmt.formats.range["c03"][abbrLength[i]]);
+            templatec10.push(fmt.dateFmt.formats.range["c10"][abbrLength[i]]);
+
+            templatec11.push(fmt.dateFmt.formats.range["c11"][abbrLength[i]]);
+            templatec12.push(fmt.dateFmt.formats.range["c12"][abbrLength[i]]);
+            templatec20.push(fmt.dateFmt.formats.range["c20"][abbrLength[i]]);
+            templatec30.push(fmt.dateFmt.formats.range["c30"][abbrLength[i]]);
         }
 
         test.equal(templatec00[0], '‏{sd} {sm} {sy} {st} – {et}');
@@ -9232,19 +10248,26 @@ module.exports.testdaterangefmt = {
     },
     testDateRngFmt_ar_DJ: function(test) {
         test.expect(36);
-        //dmy
-        for (i=0; i < 4; i++) {
-            fmt[i] = new DateRngFmt({locale:"ar-DJ", length: length[i]})
-            templatec00[i] = fmt[i].dateFmt.formats.range["c00"][abbrLength[i]];
-            templatec01[i] = fmt[i].dateFmt.formats.range["c01"][abbrLength[i]];
-            templatec02[i] = fmt[i].dateFmt.formats.range["c02"][abbrLength[i]];
-            templatec03[i] = fmt[i].dateFmt.formats.range["c03"][abbrLength[i]];
-            templatec10[i] = fmt[i].dateFmt.formats.range["c10"][abbrLength[i]];
+        var fmt;
+        var data = setVariables();
+        var length = data["fullLength"];
+        var abbrLength = data["abbrLength"];
 
-            templatec11[i] = fmt[i].dateFmt.formats.range["c11"][abbrLength[i]];
-            templatec12[i] = fmt[i].dateFmt.formats.range["c12"][abbrLength[i]];
-            templatec20[i] = fmt[i].dateFmt.formats.range["c20"][abbrLength[i]];
-            templatec30[i] = fmt[i].dateFmt.formats.range["c30"][abbrLength[i]];
+        var templatec00 = [],templatec01 = [],templatec02 = [],templatec03 = [];
+        var templatec10 = [],templatec11 = [],templatec12 = [],templatec20 = [];
+        var templatec30 = [];
+        for (var i=0; i < 4; i++) {
+            fmt = new DateRngFmt({locale:"ar-DJ", length: length[i]})
+            templatec00.push(fmt.dateFmt.formats.range["c00"][abbrLength[i]]);
+            templatec01.push(fmt.dateFmt.formats.range["c01"][abbrLength[i]]);
+            templatec02.push(fmt.dateFmt.formats.range["c02"][abbrLength[i]]);
+            templatec03.push(fmt.dateFmt.formats.range["c03"][abbrLength[i]]);
+            templatec10.push(fmt.dateFmt.formats.range["c10"][abbrLength[i]]);
+
+            templatec11.push(fmt.dateFmt.formats.range["c11"][abbrLength[i]]);
+            templatec12.push(fmt.dateFmt.formats.range["c12"][abbrLength[i]]);
+            templatec20.push(fmt.dateFmt.formats.range["c20"][abbrLength[i]]);
+            templatec30.push(fmt.dateFmt.formats.range["c30"][abbrLength[i]]);
         }
 
         test.equal(templatec00[0], '‏{sd} {sm} {sy} {st} – {et}');
@@ -9296,19 +10319,26 @@ module.exports.testdaterangefmt = {
     },
     testDateRngFmt_ar_DZ: function(test) {
         test.expect(36);
-        //dmy
-        for (i=0; i < 4; i++) {
-            fmt[i] = new DateRngFmt({locale:"ar-DZ", length: length[i]})
-            templatec00[i] = fmt[i].dateFmt.formats.range["c00"][abbrLength[i]];
-            templatec01[i] = fmt[i].dateFmt.formats.range["c01"][abbrLength[i]];
-            templatec02[i] = fmt[i].dateFmt.formats.range["c02"][abbrLength[i]];
-            templatec03[i] = fmt[i].dateFmt.formats.range["c03"][abbrLength[i]];
-            templatec10[i] = fmt[i].dateFmt.formats.range["c10"][abbrLength[i]];
+        var fmt;
+        var data = setVariables();
+        var length = data["fullLength"];
+        var abbrLength = data["abbrLength"];
 
-            templatec11[i] = fmt[i].dateFmt.formats.range["c11"][abbrLength[i]];
-            templatec12[i] = fmt[i].dateFmt.formats.range["c12"][abbrLength[i]];
-            templatec20[i] = fmt[i].dateFmt.formats.range["c20"][abbrLength[i]];
-            templatec30[i] = fmt[i].dateFmt.formats.range["c30"][abbrLength[i]];
+        var templatec00 = [],templatec01 = [],templatec02 = [],templatec03 = [];
+        var templatec10 = [],templatec11 = [],templatec12 = [],templatec20 = [];
+        var templatec30 = [];
+        for (var i=0; i < 4; i++) {
+            fmt = new DateRngFmt({locale:"ar-DZ", length: length[i]})
+            templatec00.push(fmt.dateFmt.formats.range["c00"][abbrLength[i]]);
+            templatec01.push(fmt.dateFmt.formats.range["c01"][abbrLength[i]]);
+            templatec02.push(fmt.dateFmt.formats.range["c02"][abbrLength[i]]);
+            templatec03.push(fmt.dateFmt.formats.range["c03"][abbrLength[i]]);
+            templatec10.push(fmt.dateFmt.formats.range["c10"][abbrLength[i]]);
+
+            templatec11.push(fmt.dateFmt.formats.range["c11"][abbrLength[i]]);
+            templatec12.push(fmt.dateFmt.formats.range["c12"][abbrLength[i]]);
+            templatec20.push(fmt.dateFmt.formats.range["c20"][abbrLength[i]]);
+            templatec30.push(fmt.dateFmt.formats.range["c30"][abbrLength[i]]);
         }
 
         test.equal(templatec00[0], '‏{sd} {sm} {sy} {st} – {et}');
@@ -9360,19 +10390,26 @@ module.exports.testdaterangefmt = {
     },
     testDateRngFmt_ar_JO: function(test) {
         test.expect(36);
-        //dmy
-        for (i=0; i < 4; i++) {
-            fmt[i] = new DateRngFmt({locale:"ar-JO", length: length[i]})
-            templatec00[i] = fmt[i].dateFmt.formats.range["c00"][abbrLength[i]];
-            templatec01[i] = fmt[i].dateFmt.formats.range["c01"][abbrLength[i]];
-            templatec02[i] = fmt[i].dateFmt.formats.range["c02"][abbrLength[i]];
-            templatec03[i] = fmt[i].dateFmt.formats.range["c03"][abbrLength[i]];
-            templatec10[i] = fmt[i].dateFmt.formats.range["c10"][abbrLength[i]];
+        var fmt;
+        var data = setVariables();
+        var length = data["fullLength"];
+        var abbrLength = data["abbrLength"];
 
-            templatec11[i] = fmt[i].dateFmt.formats.range["c11"][abbrLength[i]];
-            templatec12[i] = fmt[i].dateFmt.formats.range["c12"][abbrLength[i]];
-            templatec20[i] = fmt[i].dateFmt.formats.range["c20"][abbrLength[i]];
-            templatec30[i] = fmt[i].dateFmt.formats.range["c30"][abbrLength[i]];
+        var templatec00 = [],templatec01 = [],templatec02 = [],templatec03 = [];
+        var templatec10 = [],templatec11 = [],templatec12 = [],templatec20 = [];
+        var templatec30 = [];
+        for (var i=0; i < 4; i++) {
+            fmt = new DateRngFmt({locale:"ar-JO", length: length[i]})
+            templatec00.push(fmt.dateFmt.formats.range["c00"][abbrLength[i]]);
+            templatec01.push(fmt.dateFmt.formats.range["c01"][abbrLength[i]]);
+            templatec02.push(fmt.dateFmt.formats.range["c02"][abbrLength[i]]);
+            templatec03.push(fmt.dateFmt.formats.range["c03"][abbrLength[i]]);
+            templatec10.push(fmt.dateFmt.formats.range["c10"][abbrLength[i]]);
+
+            templatec11.push(fmt.dateFmt.formats.range["c11"][abbrLength[i]]);
+            templatec12.push(fmt.dateFmt.formats.range["c12"][abbrLength[i]]);
+            templatec20.push(fmt.dateFmt.formats.range["c20"][abbrLength[i]]);
+            templatec30.push(fmt.dateFmt.formats.range["c30"][abbrLength[i]]);
         }
 
         test.equal(templatec00[0], '‏{sd} {sm} {sy} {st} – {et}');
@@ -9424,19 +10461,26 @@ module.exports.testdaterangefmt = {
     },
     testDateRngFmt_ar_KW: function(test) {
         test.expect(36);
-        //dmy
-        for (i=0; i < 4; i++) {
-            fmt[i] = new DateRngFmt({locale:"ar-KW", length: length[i]})
-            templatec00[i] = fmt[i].dateFmt.formats.range["c00"][abbrLength[i]];
-            templatec01[i] = fmt[i].dateFmt.formats.range["c01"][abbrLength[i]];
-            templatec02[i] = fmt[i].dateFmt.formats.range["c02"][abbrLength[i]];
-            templatec03[i] = fmt[i].dateFmt.formats.range["c03"][abbrLength[i]];
-            templatec10[i] = fmt[i].dateFmt.formats.range["c10"][abbrLength[i]];
+        var fmt;
+        var data = setVariables();
+        var length = data["fullLength"];
+        var abbrLength = data["abbrLength"];
 
-            templatec11[i] = fmt[i].dateFmt.formats.range["c11"][abbrLength[i]];
-            templatec12[i] = fmt[i].dateFmt.formats.range["c12"][abbrLength[i]];
-            templatec20[i] = fmt[i].dateFmt.formats.range["c20"][abbrLength[i]];
-            templatec30[i] = fmt[i].dateFmt.formats.range["c30"][abbrLength[i]];
+        var templatec00 = [],templatec01 = [],templatec02 = [],templatec03 = [];
+        var templatec10 = [],templatec11 = [],templatec12 = [],templatec20 = [];
+        var templatec30 = [];
+        for (var i=0; i < 4; i++) {
+            fmt = new DateRngFmt({locale:"ar-KW", length: length[i]})
+            templatec00.push(fmt.dateFmt.formats.range["c00"][abbrLength[i]]);
+            templatec01.push(fmt.dateFmt.formats.range["c01"][abbrLength[i]]);
+            templatec02.push(fmt.dateFmt.formats.range["c02"][abbrLength[i]]);
+            templatec03.push(fmt.dateFmt.formats.range["c03"][abbrLength[i]]);
+            templatec10.push(fmt.dateFmt.formats.range["c10"][abbrLength[i]]);
+
+            templatec11.push(fmt.dateFmt.formats.range["c11"][abbrLength[i]]);
+            templatec12.push(fmt.dateFmt.formats.range["c12"][abbrLength[i]]);
+            templatec20.push(fmt.dateFmt.formats.range["c20"][abbrLength[i]]);
+            templatec30.push(fmt.dateFmt.formats.range["c30"][abbrLength[i]]);
         }
 
         test.equal(templatec00[0], '‏{sd} {sm} {sy} {st} – {et}');
@@ -9488,19 +10532,26 @@ module.exports.testdaterangefmt = {
     },
     testDateRngFmt_ar_LB: function(test) {
         test.expect(36);
-        //dmy
-        for (i=0; i < 4; i++) {
-            fmt[i] = new DateRngFmt({locale:"ar-LB", length: length[i]})
-            templatec00[i] = fmt[i].dateFmt.formats.range["c00"][abbrLength[i]];
-            templatec01[i] = fmt[i].dateFmt.formats.range["c01"][abbrLength[i]];
-            templatec02[i] = fmt[i].dateFmt.formats.range["c02"][abbrLength[i]];
-            templatec03[i] = fmt[i].dateFmt.formats.range["c03"][abbrLength[i]];
-            templatec10[i] = fmt[i].dateFmt.formats.range["c10"][abbrLength[i]];
+        var fmt;
+        var data = setVariables();
+        var length = data["fullLength"];
+        var abbrLength = data["abbrLength"];
 
-            templatec11[i] = fmt[i].dateFmt.formats.range["c11"][abbrLength[i]];
-            templatec12[i] = fmt[i].dateFmt.formats.range["c12"][abbrLength[i]];
-            templatec20[i] = fmt[i].dateFmt.formats.range["c20"][abbrLength[i]];
-            templatec30[i] = fmt[i].dateFmt.formats.range["c30"][abbrLength[i]];
+        var templatec00 = [],templatec01 = [],templatec02 = [],templatec03 = [];
+        var templatec10 = [],templatec11 = [],templatec12 = [],templatec20 = [];
+        var templatec30 = [];
+        for (var i=0; i < 4; i++) {
+            fmt = new DateRngFmt({locale:"ar-LB", length: length[i]})
+            templatec00.push(fmt.dateFmt.formats.range["c00"][abbrLength[i]]);
+            templatec01.push(fmt.dateFmt.formats.range["c01"][abbrLength[i]]);
+            templatec02.push(fmt.dateFmt.formats.range["c02"][abbrLength[i]]);
+            templatec03.push(fmt.dateFmt.formats.range["c03"][abbrLength[i]]);
+            templatec10.push(fmt.dateFmt.formats.range["c10"][abbrLength[i]]);
+
+            templatec11.push(fmt.dateFmt.formats.range["c11"][abbrLength[i]]);
+            templatec12.push(fmt.dateFmt.formats.range["c12"][abbrLength[i]]);
+            templatec20.push(fmt.dateFmt.formats.range["c20"][abbrLength[i]]);
+            templatec30.push(fmt.dateFmt.formats.range["c30"][abbrLength[i]]);
         }
 
         test.equal(templatec00[0], '‏{sd} {sm} {sy} {st} – {et}');
@@ -9552,19 +10603,26 @@ module.exports.testdaterangefmt = {
     },
     testDateRngFmt_ar_LY: function(test) {
         test.expect(36);
-        //dmy
-        for (i=0; i < 4; i++) {
-            fmt[i] = new DateRngFmt({locale:"ar-LY", length: length[i]})
-            templatec00[i] = fmt[i].dateFmt.formats.range["c00"][abbrLength[i]];
-            templatec01[i] = fmt[i].dateFmt.formats.range["c01"][abbrLength[i]];
-            templatec02[i] = fmt[i].dateFmt.formats.range["c02"][abbrLength[i]];
-            templatec03[i] = fmt[i].dateFmt.formats.range["c03"][abbrLength[i]];
-            templatec10[i] = fmt[i].dateFmt.formats.range["c10"][abbrLength[i]];
+        var fmt;
+        var data = setVariables();
+        var length = data["fullLength"];
+        var abbrLength = data["abbrLength"];
 
-            templatec11[i] = fmt[i].dateFmt.formats.range["c11"][abbrLength[i]];
-            templatec12[i] = fmt[i].dateFmt.formats.range["c12"][abbrLength[i]];
-            templatec20[i] = fmt[i].dateFmt.formats.range["c20"][abbrLength[i]];
-            templatec30[i] = fmt[i].dateFmt.formats.range["c30"][abbrLength[i]];
+        var templatec00 = [],templatec01 = [],templatec02 = [],templatec03 = [];
+        var templatec10 = [],templatec11 = [],templatec12 = [],templatec20 = [];
+        var templatec30 = [];
+        for (var i=0; i < 4; i++) {
+            fmt = new DateRngFmt({locale:"ar-LY", length: length[i]})
+            templatec00.push(fmt.dateFmt.formats.range["c00"][abbrLength[i]]);
+            templatec01.push(fmt.dateFmt.formats.range["c01"][abbrLength[i]]);
+            templatec02.push(fmt.dateFmt.formats.range["c02"][abbrLength[i]]);
+            templatec03.push(fmt.dateFmt.formats.range["c03"][abbrLength[i]]);
+            templatec10.push(fmt.dateFmt.formats.range["c10"][abbrLength[i]]);
+
+            templatec11.push(fmt.dateFmt.formats.range["c11"][abbrLength[i]]);
+            templatec12.push(fmt.dateFmt.formats.range["c12"][abbrLength[i]]);
+            templatec20.push(fmt.dateFmt.formats.range["c20"][abbrLength[i]]);
+            templatec30.push(fmt.dateFmt.formats.range["c30"][abbrLength[i]]);
         }
 
         test.equal(templatec00[0], '‏{sd} {sm} {sy} {st} – {et}');
@@ -9616,19 +10674,26 @@ module.exports.testdaterangefmt = {
     },
     testDateRngFmt_ar_MR: function(test) {
         test.expect(36);
-        //dmy
-        for (i=0; i < 4; i++) {
-            fmt[i] = new DateRngFmt({locale:"ar-MR", length: length[i]})
-            templatec00[i] = fmt[i].dateFmt.formats.range["c00"][abbrLength[i]];
-            templatec01[i] = fmt[i].dateFmt.formats.range["c01"][abbrLength[i]];
-            templatec02[i] = fmt[i].dateFmt.formats.range["c02"][abbrLength[i]];
-            templatec03[i] = fmt[i].dateFmt.formats.range["c03"][abbrLength[i]];
-            templatec10[i] = fmt[i].dateFmt.formats.range["c10"][abbrLength[i]];
+        var fmt;
+        var data = setVariables();
+        var length = data["fullLength"];
+        var abbrLength = data["abbrLength"];
 
-            templatec11[i] = fmt[i].dateFmt.formats.range["c11"][abbrLength[i]];
-            templatec12[i] = fmt[i].dateFmt.formats.range["c12"][abbrLength[i]];
-            templatec20[i] = fmt[i].dateFmt.formats.range["c20"][abbrLength[i]];
-            templatec30[i] = fmt[i].dateFmt.formats.range["c30"][abbrLength[i]];
+        var templatec00 = [],templatec01 = [],templatec02 = [],templatec03 = [];
+        var templatec10 = [],templatec11 = [],templatec12 = [],templatec20 = [];
+        var templatec30 = [];
+        for (var i=0; i < 4; i++) {
+            fmt = new DateRngFmt({locale:"ar-MR", length: length[i]})
+            templatec00.push(fmt.dateFmt.formats.range["c00"][abbrLength[i]]);
+            templatec01.push(fmt.dateFmt.formats.range["c01"][abbrLength[i]]);
+            templatec02.push(fmt.dateFmt.formats.range["c02"][abbrLength[i]]);
+            templatec03.push(fmt.dateFmt.formats.range["c03"][abbrLength[i]]);
+            templatec10.push(fmt.dateFmt.formats.range["c10"][abbrLength[i]]);
+
+            templatec11.push(fmt.dateFmt.formats.range["c11"][abbrLength[i]]);
+            templatec12.push(fmt.dateFmt.formats.range["c12"][abbrLength[i]]);
+            templatec20.push(fmt.dateFmt.formats.range["c20"][abbrLength[i]]);
+            templatec30.push(fmt.dateFmt.formats.range["c30"][abbrLength[i]]);
         }
 
         test.equal(templatec00[0], '‏{sd} {sm} {sy} {st} – {et}');
@@ -9680,19 +10745,26 @@ module.exports.testdaterangefmt = {
     },
     testDateRngFmt_ar_OM: function(test) {
         test.expect(36);
-        //dmy
-        for (i=0; i < 4; i++) {
-            fmt[i] = new DateRngFmt({locale:"ar-OM", length: length[i]})
-            templatec00[i] = fmt[i].dateFmt.formats.range["c00"][abbrLength[i]];
-            templatec01[i] = fmt[i].dateFmt.formats.range["c01"][abbrLength[i]];
-            templatec02[i] = fmt[i].dateFmt.formats.range["c02"][abbrLength[i]];
-            templatec03[i] = fmt[i].dateFmt.formats.range["c03"][abbrLength[i]];
-            templatec10[i] = fmt[i].dateFmt.formats.range["c10"][abbrLength[i]];
+        var fmt;
+        var data = setVariables();
+        var length = data["fullLength"];
+        var abbrLength = data["abbrLength"];
 
-            templatec11[i] = fmt[i].dateFmt.formats.range["c11"][abbrLength[i]];
-            templatec12[i] = fmt[i].dateFmt.formats.range["c12"][abbrLength[i]];
-            templatec20[i] = fmt[i].dateFmt.formats.range["c20"][abbrLength[i]];
-            templatec30[i] = fmt[i].dateFmt.formats.range["c30"][abbrLength[i]];
+        var templatec00 = [],templatec01 = [],templatec02 = [],templatec03 = [];
+        var templatec10 = [],templatec11 = [],templatec12 = [],templatec20 = [];
+        var templatec30 = [];
+        for (var i=0; i < 4; i++) {
+            fmt = new DateRngFmt({locale:"ar-OM", length: length[i]})
+            templatec00.push(fmt.dateFmt.formats.range["c00"][abbrLength[i]]);
+            templatec01.push(fmt.dateFmt.formats.range["c01"][abbrLength[i]]);
+            templatec02.push(fmt.dateFmt.formats.range["c02"][abbrLength[i]]);
+            templatec03.push(fmt.dateFmt.formats.range["c03"][abbrLength[i]]);
+            templatec10.push(fmt.dateFmt.formats.range["c10"][abbrLength[i]]);
+
+            templatec11.push(fmt.dateFmt.formats.range["c11"][abbrLength[i]]);
+            templatec12.push(fmt.dateFmt.formats.range["c12"][abbrLength[i]]);
+            templatec20.push(fmt.dateFmt.formats.range["c20"][abbrLength[i]]);
+            templatec30.push(fmt.dateFmt.formats.range["c30"][abbrLength[i]]);
         }
 
         test.equal(templatec00[0], '‏{sd} {sm} {sy} {st} – {et}');
@@ -9744,19 +10816,26 @@ module.exports.testdaterangefmt = {
     },
     testDateRngFmt_ar_QA: function(test) {
         test.expect(36);
-        //dmy
-        for (i=0; i < 4; i++) {
-            fmt[i] = new DateRngFmt({locale:"ar-QA", length: length[i]})
-            templatec00[i] = fmt[i].dateFmt.formats.range["c00"][abbrLength[i]];
-            templatec01[i] = fmt[i].dateFmt.formats.range["c01"][abbrLength[i]];
-            templatec02[i] = fmt[i].dateFmt.formats.range["c02"][abbrLength[i]];
-            templatec03[i] = fmt[i].dateFmt.formats.range["c03"][abbrLength[i]];
-            templatec10[i] = fmt[i].dateFmt.formats.range["c10"][abbrLength[i]];
+        var fmt;
+        var data = setVariables();
+        var length = data["fullLength"];
+        var abbrLength = data["abbrLength"];
 
-            templatec11[i] = fmt[i].dateFmt.formats.range["c11"][abbrLength[i]];
-            templatec12[i] = fmt[i].dateFmt.formats.range["c12"][abbrLength[i]];
-            templatec20[i] = fmt[i].dateFmt.formats.range["c20"][abbrLength[i]];
-            templatec30[i] = fmt[i].dateFmt.formats.range["c30"][abbrLength[i]];
+        var templatec00 = [],templatec01 = [],templatec02 = [],templatec03 = [];
+        var templatec10 = [],templatec11 = [],templatec12 = [],templatec20 = [];
+        var templatec30 = [];
+        for (var i=0; i < 4; i++) {
+            fmt = new DateRngFmt({locale:"ar-QA", length: length[i]})
+            templatec00.push(fmt.dateFmt.formats.range["c00"][abbrLength[i]]);
+            templatec01.push(fmt.dateFmt.formats.range["c01"][abbrLength[i]]);
+            templatec02.push(fmt.dateFmt.formats.range["c02"][abbrLength[i]]);
+            templatec03.push(fmt.dateFmt.formats.range["c03"][abbrLength[i]]);
+            templatec10.push(fmt.dateFmt.formats.range["c10"][abbrLength[i]]);
+
+            templatec11.push(fmt.dateFmt.formats.range["c11"][abbrLength[i]]);
+            templatec12.push(fmt.dateFmt.formats.range["c12"][abbrLength[i]]);
+            templatec20.push(fmt.dateFmt.formats.range["c20"][abbrLength[i]]);
+            templatec30.push(fmt.dateFmt.formats.range["c30"][abbrLength[i]]);
         }
 
         test.equal(templatec00[0], '‏{sd} {sm} {sy} {st} – {et}');
@@ -9808,19 +10887,26 @@ module.exports.testdaterangefmt = {
     },
     testDateRngFmt_ar_SA: function(test) {
         test.expect(36);
-        //dmy
-        for (i=0; i < 4; i++) {
-            fmt[i] = new DateRngFmt({locale:"ar-SA", length: length[i]})
-            templatec00[i] = fmt[i].dateFmt.formats.range["c00"][abbrLength[i]];
-            templatec01[i] = fmt[i].dateFmt.formats.range["c01"][abbrLength[i]];
-            templatec02[i] = fmt[i].dateFmt.formats.range["c02"][abbrLength[i]];
-            templatec03[i] = fmt[i].dateFmt.formats.range["c03"][abbrLength[i]];
-            templatec10[i] = fmt[i].dateFmt.formats.range["c10"][abbrLength[i]];
+        var fmt;
+        var data = setVariables();
+        var length = data["fullLength"];
+        var abbrLength = data["abbrLength"];
 
-            templatec11[i] = fmt[i].dateFmt.formats.range["c11"][abbrLength[i]];
-            templatec12[i] = fmt[i].dateFmt.formats.range["c12"][abbrLength[i]];
-            templatec20[i] = fmt[i].dateFmt.formats.range["c20"][abbrLength[i]];
-            templatec30[i] = fmt[i].dateFmt.formats.range["c30"][abbrLength[i]];
+        var templatec00 = [],templatec01 = [],templatec02 = [],templatec03 = [];
+        var templatec10 = [],templatec11 = [],templatec12 = [],templatec20 = [];
+        var templatec30 = [];
+        for (var i=0; i < 4; i++) {
+            fmt = new DateRngFmt({locale:"ar-SA", length: length[i]})
+            templatec00.push(fmt.dateFmt.formats.range["c00"][abbrLength[i]]);
+            templatec01.push(fmt.dateFmt.formats.range["c01"][abbrLength[i]]);
+            templatec02.push(fmt.dateFmt.formats.range["c02"][abbrLength[i]]);
+            templatec03.push(fmt.dateFmt.formats.range["c03"][abbrLength[i]]);
+            templatec10.push(fmt.dateFmt.formats.range["c10"][abbrLength[i]]);
+
+            templatec11.push(fmt.dateFmt.formats.range["c11"][abbrLength[i]]);
+            templatec12.push(fmt.dateFmt.formats.range["c12"][abbrLength[i]]);
+            templatec20.push(fmt.dateFmt.formats.range["c20"][abbrLength[i]]);
+            templatec30.push(fmt.dateFmt.formats.range["c30"][abbrLength[i]]);
         }
 
         test.equal(templatec00[0], '‏{sd} {sm} {sy} {st} – {et}');
@@ -9872,19 +10958,26 @@ module.exports.testdaterangefmt = {
     },
     testDateRngFmt_ar_SD: function(test) {
         test.expect(36);
-        //dmy
-        for (i=0; i < 4; i++) {
-            fmt[i] = new DateRngFmt({locale:"ar-SD", length: length[i]})
-            templatec00[i] = fmt[i].dateFmt.formats.range["c00"][abbrLength[i]];
-            templatec01[i] = fmt[i].dateFmt.formats.range["c01"][abbrLength[i]];
-            templatec02[i] = fmt[i].dateFmt.formats.range["c02"][abbrLength[i]];
-            templatec03[i] = fmt[i].dateFmt.formats.range["c03"][abbrLength[i]];
-            templatec10[i] = fmt[i].dateFmt.formats.range["c10"][abbrLength[i]];
+        var fmt;
+        var data = setVariables();
+        var length = data["fullLength"];
+        var abbrLength = data["abbrLength"];
 
-            templatec11[i] = fmt[i].dateFmt.formats.range["c11"][abbrLength[i]];
-            templatec12[i] = fmt[i].dateFmt.formats.range["c12"][abbrLength[i]];
-            templatec20[i] = fmt[i].dateFmt.formats.range["c20"][abbrLength[i]];
-            templatec30[i] = fmt[i].dateFmt.formats.range["c30"][abbrLength[i]];
+        var templatec00 = [],templatec01 = [],templatec02 = [],templatec03 = [];
+        var templatec10 = [],templatec11 = [],templatec12 = [],templatec20 = [];
+        var templatec30 = [];
+        for (var i=0; i < 4; i++) {
+            fmt = new DateRngFmt({locale:"ar-SD", length: length[i]})
+            templatec00.push(fmt.dateFmt.formats.range["c00"][abbrLength[i]]);
+            templatec01.push(fmt.dateFmt.formats.range["c01"][abbrLength[i]]);
+            templatec02.push(fmt.dateFmt.formats.range["c02"][abbrLength[i]]);
+            templatec03.push(fmt.dateFmt.formats.range["c03"][abbrLength[i]]);
+            templatec10.push(fmt.dateFmt.formats.range["c10"][abbrLength[i]]);
+
+            templatec11.push(fmt.dateFmt.formats.range["c11"][abbrLength[i]]);
+            templatec12.push(fmt.dateFmt.formats.range["c12"][abbrLength[i]]);
+            templatec20.push(fmt.dateFmt.formats.range["c20"][abbrLength[i]]);
+            templatec30.push(fmt.dateFmt.formats.range["c30"][abbrLength[i]]);
         }
 
         test.equal(templatec00[0], '‏{sd} {sm} {sy} {st} – {et}');
@@ -9936,19 +11029,26 @@ module.exports.testdaterangefmt = {
     },
     testDateRngFmt_ar_SY: function(test) {
         test.expect(36);
-        //dmy
-        for (i=0; i < 4; i++) {
-            fmt[i] = new DateRngFmt({locale:"ar-SY", length: length[i]})
-            templatec00[i] = fmt[i].dateFmt.formats.range["c00"][abbrLength[i]];
-            templatec01[i] = fmt[i].dateFmt.formats.range["c01"][abbrLength[i]];
-            templatec02[i] = fmt[i].dateFmt.formats.range["c02"][abbrLength[i]];
-            templatec03[i] = fmt[i].dateFmt.formats.range["c03"][abbrLength[i]];
-            templatec10[i] = fmt[i].dateFmt.formats.range["c10"][abbrLength[i]];
+        var fmt;
+        var data = setVariables();
+        var length = data["fullLength"];
+        var abbrLength = data["abbrLength"];
 
-            templatec11[i] = fmt[i].dateFmt.formats.range["c11"][abbrLength[i]];
-            templatec12[i] = fmt[i].dateFmt.formats.range["c12"][abbrLength[i]];
-            templatec20[i] = fmt[i].dateFmt.formats.range["c20"][abbrLength[i]];
-            templatec30[i] = fmt[i].dateFmt.formats.range["c30"][abbrLength[i]];
+        var templatec00 = [],templatec01 = [],templatec02 = [],templatec03 = [];
+        var templatec10 = [],templatec11 = [],templatec12 = [],templatec20 = [];
+        var templatec30 = [];
+        for (var i=0; i < 4; i++) {
+            fmt = new DateRngFmt({locale:"ar-SY", length: length[i]})
+            templatec00.push(fmt.dateFmt.formats.range["c00"][abbrLength[i]]);
+            templatec01.push(fmt.dateFmt.formats.range["c01"][abbrLength[i]]);
+            templatec02.push(fmt.dateFmt.formats.range["c02"][abbrLength[i]]);
+            templatec03.push(fmt.dateFmt.formats.range["c03"][abbrLength[i]]);
+            templatec10.push(fmt.dateFmt.formats.range["c10"][abbrLength[i]]);
+
+            templatec11.push(fmt.dateFmt.formats.range["c11"][abbrLength[i]]);
+            templatec12.push(fmt.dateFmt.formats.range["c12"][abbrLength[i]]);
+            templatec20.push(fmt.dateFmt.formats.range["c20"][abbrLength[i]]);
+            templatec30.push(fmt.dateFmt.formats.range["c30"][abbrLength[i]]);
         }
 
         test.equal(templatec00[0], '‏{sd} {sm} {sy} {st} – {et}');
@@ -10000,19 +11100,26 @@ module.exports.testdaterangefmt = {
     },
     testDateRngFmt_ar_TN: function(test) {
         test.expect(36);
-        //dmy
-        for (i=0; i < 4; i++) {
-            fmt[i] = new DateRngFmt({locale:"ar-TN", length: length[i]})
-            templatec00[i] = fmt[i].dateFmt.formats.range["c00"][abbrLength[i]];
-            templatec01[i] = fmt[i].dateFmt.formats.range["c01"][abbrLength[i]];
-            templatec02[i] = fmt[i].dateFmt.formats.range["c02"][abbrLength[i]];
-            templatec03[i] = fmt[i].dateFmt.formats.range["c03"][abbrLength[i]];
-            templatec10[i] = fmt[i].dateFmt.formats.range["c10"][abbrLength[i]];
+        var fmt;
+        var data = setVariables();
+        var length = data["fullLength"];
+        var abbrLength = data["abbrLength"];
 
-            templatec11[i] = fmt[i].dateFmt.formats.range["c11"][abbrLength[i]];
-            templatec12[i] = fmt[i].dateFmt.formats.range["c12"][abbrLength[i]];
-            templatec20[i] = fmt[i].dateFmt.formats.range["c20"][abbrLength[i]];
-            templatec30[i] = fmt[i].dateFmt.formats.range["c30"][abbrLength[i]];
+        var templatec00 = [],templatec01 = [],templatec02 = [],templatec03 = [];
+        var templatec10 = [],templatec11 = [],templatec12 = [],templatec20 = [];
+        var templatec30 = [];
+        for (var i=0; i < 4; i++) {
+            fmt = new DateRngFmt({locale:"ar-TN", length: length[i]})
+            templatec00.push(fmt.dateFmt.formats.range["c00"][abbrLength[i]]);
+            templatec01.push(fmt.dateFmt.formats.range["c01"][abbrLength[i]]);
+            templatec02.push(fmt.dateFmt.formats.range["c02"][abbrLength[i]]);
+            templatec03.push(fmt.dateFmt.formats.range["c03"][abbrLength[i]]);
+            templatec10.push(fmt.dateFmt.formats.range["c10"][abbrLength[i]]);
+
+            templatec11.push(fmt.dateFmt.formats.range["c11"][abbrLength[i]]);
+            templatec12.push(fmt.dateFmt.formats.range["c12"][abbrLength[i]]);
+            templatec20.push(fmt.dateFmt.formats.range["c20"][abbrLength[i]]);
+            templatec30.push(fmt.dateFmt.formats.range["c30"][abbrLength[i]]);
         }
 
         test.equal(templatec00[0], '‏{sd} {sm} {sy} {st} – {et}');
@@ -10064,19 +11171,26 @@ module.exports.testdaterangefmt = {
     },
     testDateRngFmt_ar_YE: function(test) {
         test.expect(36);
-        //dmy
-        for (i=0; i < 4; i++) {
-            fmt[i] = new DateRngFmt({locale:"ar-YE", length: length[i]})
-            templatec00[i] = fmt[i].dateFmt.formats.range["c00"][abbrLength[i]];
-            templatec01[i] = fmt[i].dateFmt.formats.range["c01"][abbrLength[i]];
-            templatec02[i] = fmt[i].dateFmt.formats.range["c02"][abbrLength[i]];
-            templatec03[i] = fmt[i].dateFmt.formats.range["c03"][abbrLength[i]];
-            templatec10[i] = fmt[i].dateFmt.formats.range["c10"][abbrLength[i]];
+        var fmt;
+        var data = setVariables();
+        var length = data["fullLength"];
+        var abbrLength = data["abbrLength"];
 
-            templatec11[i] = fmt[i].dateFmt.formats.range["c11"][abbrLength[i]];
-            templatec12[i] = fmt[i].dateFmt.formats.range["c12"][abbrLength[i]];
-            templatec20[i] = fmt[i].dateFmt.formats.range["c20"][abbrLength[i]];
-            templatec30[i] = fmt[i].dateFmt.formats.range["c30"][abbrLength[i]];
+        var templatec00 = [],templatec01 = [],templatec02 = [],templatec03 = [];
+        var templatec10 = [],templatec11 = [],templatec12 = [],templatec20 = [];
+        var templatec30 = [];
+        for (var i=0; i < 4; i++) {
+            fmt = new DateRngFmt({locale:"ar-YE", length: length[i]})
+            templatec00.push(fmt.dateFmt.formats.range["c00"][abbrLength[i]]);
+            templatec01.push(fmt.dateFmt.formats.range["c01"][abbrLength[i]]);
+            templatec02.push(fmt.dateFmt.formats.range["c02"][abbrLength[i]]);
+            templatec03.push(fmt.dateFmt.formats.range["c03"][abbrLength[i]]);
+            templatec10.push(fmt.dateFmt.formats.range["c10"][abbrLength[i]]);
+
+            templatec11.push(fmt.dateFmt.formats.range["c11"][abbrLength[i]]);
+            templatec12.push(fmt.dateFmt.formats.range["c12"][abbrLength[i]]);
+            templatec20.push(fmt.dateFmt.formats.range["c20"][abbrLength[i]]);
+            templatec30.push(fmt.dateFmt.formats.range["c30"][abbrLength[i]]);
         }
 
         test.equal(templatec00[0], '‏{sd} {sm} {sy} {st} – {et}');
@@ -10128,19 +11242,26 @@ module.exports.testdaterangefmt = {
     },
     testDateRngFmt_en_ET: function(test) {
         test.expect(36);
-        //mdy
-        for (i=0; i < 4; i++) {
-            fmt[i] = new DateRngFmt({locale:"en-ET", length: length[i]})
-            templatec00[i] = fmt[i].dateFmt.formats.range["c00"][abbrLength[i]];
-            templatec01[i] = fmt[i].dateFmt.formats.range["c01"][abbrLength[i]];
-            templatec02[i] = fmt[i].dateFmt.formats.range["c02"][abbrLength[i]];
-            templatec03[i] = fmt[i].dateFmt.formats.range["c03"][abbrLength[i]];
-            templatec10[i] = fmt[i].dateFmt.formats.range["c10"][abbrLength[i]];
+        var fmt;
+        var data = setVariables();
+        var length = data["fullLength"];
+        var abbrLength = data["abbrLength"];
 
-            templatec11[i] = fmt[i].dateFmt.formats.range["c11"][abbrLength[i]];
-            templatec12[i] = fmt[i].dateFmt.formats.range["c12"][abbrLength[i]];
-            templatec20[i] = fmt[i].dateFmt.formats.range["c20"][abbrLength[i]];
-            templatec30[i] = fmt[i].dateFmt.formats.range["c30"][abbrLength[i]];
+        var templatec00 = [],templatec01 = [],templatec02 = [],templatec03 = [];
+        var templatec10 = [],templatec11 = [],templatec12 = [],templatec20 = [];
+        var templatec30 = [];
+        for (var i=0; i < 4; i++) {
+            fmt = new DateRngFmt({locale:"en-ET", length: length[i]})
+            templatec00.push(fmt.dateFmt.formats.range["c00"][abbrLength[i]]);
+            templatec01.push(fmt.dateFmt.formats.range["c01"][abbrLength[i]]);
+            templatec02.push(fmt.dateFmt.formats.range["c02"][abbrLength[i]]);
+            templatec03.push(fmt.dateFmt.formats.range["c03"][abbrLength[i]]);
+            templatec10.push(fmt.dateFmt.formats.range["c10"][abbrLength[i]]);
+
+            templatec11.push(fmt.dateFmt.formats.range["c11"][abbrLength[i]]);
+            templatec12.push(fmt.dateFmt.formats.range["c12"][abbrLength[i]]);
+            templatec20.push(fmt.dateFmt.formats.range["c20"][abbrLength[i]]);
+            templatec30.push(fmt.dateFmt.formats.range["c30"][abbrLength[i]]);
         }
 
         test.equal(templatec00[0], '{sm} {sd}, {sy} at {st} – {et}');
@@ -10192,19 +11313,26 @@ module.exports.testdaterangefmt = {
     },
     testDateRngFmt_en_GM: function(test) {
         test.expect(36);
-        //dmy
-        for (i=0; i < 4; i++) {
-            fmt[i] = new DateRngFmt({locale:"en-GM", length: length[i]})
-            templatec00[i] = fmt[i].dateFmt.formats.range["c00"][abbrLength[i]];
-            templatec01[i] = fmt[i].dateFmt.formats.range["c01"][abbrLength[i]];
-            templatec02[i] = fmt[i].dateFmt.formats.range["c02"][abbrLength[i]];
-            templatec03[i] = fmt[i].dateFmt.formats.range["c03"][abbrLength[i]];
-            templatec10[i] = fmt[i].dateFmt.formats.range["c10"][abbrLength[i]];
+        var fmt;
+        var data = setVariables();
+        var length = data["fullLength"];
+        var abbrLength = data["abbrLength"];
 
-            templatec11[i] = fmt[i].dateFmt.formats.range["c11"][abbrLength[i]];
-            templatec12[i] = fmt[i].dateFmt.formats.range["c12"][abbrLength[i]];
-            templatec20[i] = fmt[i].dateFmt.formats.range["c20"][abbrLength[i]];
-            templatec30[i] = fmt[i].dateFmt.formats.range["c30"][abbrLength[i]];
+        var templatec00 = [],templatec01 = [],templatec02 = [],templatec03 = [];
+        var templatec10 = [],templatec11 = [],templatec12 = [],templatec20 = [];
+        var templatec30 = [];
+        for (var i=0; i < 4; i++) {
+            fmt = new DateRngFmt({locale:"en-GM", length: length[i]})
+            templatec00.push(fmt.dateFmt.formats.range["c00"][abbrLength[i]]);
+            templatec01.push(fmt.dateFmt.formats.range["c01"][abbrLength[i]]);
+            templatec02.push(fmt.dateFmt.formats.range["c02"][abbrLength[i]]);
+            templatec03.push(fmt.dateFmt.formats.range["c03"][abbrLength[i]]);
+            templatec10.push(fmt.dateFmt.formats.range["c10"][abbrLength[i]]);
+
+            templatec11.push(fmt.dateFmt.formats.range["c11"][abbrLength[i]]);
+            templatec12.push(fmt.dateFmt.formats.range["c12"][abbrLength[i]]);
+            templatec20.push(fmt.dateFmt.formats.range["c20"][abbrLength[i]]);
+            templatec30.push(fmt.dateFmt.formats.range["c30"][abbrLength[i]]);
         }
 
         test.equal(templatec00[0], '{sd} {sm} {sy} at {st} – {et}');
@@ -10256,19 +11384,26 @@ module.exports.testdaterangefmt = {
     },
     testDateRngFmt_en_LR: function(test) {
         test.expect(36);
-        //dmy
-        for (i=0; i < 4; i++) {
-            fmt[i] = new DateRngFmt({locale:"en-LR", length: length[i]})
-            templatec00[i] = fmt[i].dateFmt.formats.range["c00"][abbrLength[i]];
-            templatec01[i] = fmt[i].dateFmt.formats.range["c01"][abbrLength[i]];
-            templatec02[i] = fmt[i].dateFmt.formats.range["c02"][abbrLength[i]];
-            templatec03[i] = fmt[i].dateFmt.formats.range["c03"][abbrLength[i]];
-            templatec10[i] = fmt[i].dateFmt.formats.range["c10"][abbrLength[i]];
+        var fmt;
+        var data = setVariables();
+        var length = data["fullLength"];
+        var abbrLength = data["abbrLength"];
 
-            templatec11[i] = fmt[i].dateFmt.formats.range["c11"][abbrLength[i]];
-            templatec12[i] = fmt[i].dateFmt.formats.range["c12"][abbrLength[i]];
-            templatec20[i] = fmt[i].dateFmt.formats.range["c20"][abbrLength[i]];
-            templatec30[i] = fmt[i].dateFmt.formats.range["c30"][abbrLength[i]];
+        var templatec00 = [],templatec01 = [],templatec02 = [],templatec03 = [];
+        var templatec10 = [],templatec11 = [],templatec12 = [],templatec20 = [];
+        var templatec30 = [];
+        for (var i=0; i < 4; i++) {
+            fmt = new DateRngFmt({locale:"en-LR", length: length[i]})
+            templatec00.push(fmt.dateFmt.formats.range["c00"][abbrLength[i]]);
+            templatec01.push(fmt.dateFmt.formats.range["c01"][abbrLength[i]]);
+            templatec02.push(fmt.dateFmt.formats.range["c02"][abbrLength[i]]);
+            templatec03.push(fmt.dateFmt.formats.range["c03"][abbrLength[i]]);
+            templatec10.push(fmt.dateFmt.formats.range["c10"][abbrLength[i]]);
+
+            templatec11.push(fmt.dateFmt.formats.range["c11"][abbrLength[i]]);
+            templatec12.push(fmt.dateFmt.formats.range["c12"][abbrLength[i]]);
+            templatec20.push(fmt.dateFmt.formats.range["c20"][abbrLength[i]]);
+            templatec30.push(fmt.dateFmt.formats.range["c30"][abbrLength[i]]);
         }
 
         test.equal(templatec00[0], '{sd} {sm} {sy} at {st} – {et}');
@@ -10320,18 +11455,25 @@ module.exports.testdaterangefmt = {
     },
     testDateRngFmt_en_PK: function(test) {
         test.expect(36);
-        //dmy
-        for (i=0; i < 4; i++) {
-            fmt[i] = new DateRngFmt({locale:"en-PK", length: length[i]})
-            templatec00[i] = fmt[i].dateFmt.formats.range["c00"][abbrLength[i]];
-            templatec01[i] = fmt[i].dateFmt.formats.range["c01"][abbrLength[i]];
-            templatec02[i] = fmt[i].dateFmt.formats.range["c02"][abbrLength[i]];
-            templatec03[i] = fmt[i].dateFmt.formats.range["c03"][abbrLength[i]];
-            templatec10[i] = fmt[i].dateFmt.formats.range["c10"][abbrLength[i]];
-            templatec11[i] = fmt[i].dateFmt.formats.range["c11"][abbrLength[i]];
-            templatec12[i] = fmt[i].dateFmt.formats.range["c12"][abbrLength[i]];
-            templatec20[i] = fmt[i].dateFmt.formats.range["c20"][abbrLength[i]];
-            templatec30[i] = fmt[i].dateFmt.formats.range["c30"][abbrLength[i]];
+        var fmt;
+        var data = setVariables();
+        var length = data["fullLength"];
+        var abbrLength = data["abbrLength"];
+
+        var templatec00 = [],templatec01 = [],templatec02 = [],templatec03 = [];
+        var templatec10 = [],templatec11 = [],templatec12 = [],templatec20 = [];
+        var templatec30 = [];
+        for (var i=0; i < 4; i++) {
+            fmt = new DateRngFmt({locale:"en-PK", length: length[i]})
+            templatec00.push(fmt.dateFmt.formats.range["c00"][abbrLength[i]]);
+            templatec01.push(fmt.dateFmt.formats.range["c01"][abbrLength[i]]);
+            templatec02.push(fmt.dateFmt.formats.range["c02"][abbrLength[i]]);
+            templatec03.push(fmt.dateFmt.formats.range["c03"][abbrLength[i]]);
+            templatec10.push(fmt.dateFmt.formats.range["c10"][abbrLength[i]]);
+            templatec11.push(fmt.dateFmt.formats.range["c11"][abbrLength[i]]);
+            templatec12.push(fmt.dateFmt.formats.range["c12"][abbrLength[i]]);
+            templatec20.push(fmt.dateFmt.formats.range["c20"][abbrLength[i]]);
+            templatec30.push(fmt.dateFmt.formats.range["c30"][abbrLength[i]]);
         }
 
         test.equal(templatec00[0], '{sd} {sm} {sy} at {st} – {et}');
@@ -10383,19 +11525,26 @@ module.exports.testdaterangefmt = {
     },
     testDateRngFmt_en_RW: function(test) {
         test.expect(36);
-        //dmy
-        for (i=0; i < 4; i++) {
-            fmt[i] = new DateRngFmt({locale:"en-RW", length: length[i]})
-            templatec00[i] = fmt[i].dateFmt.formats.range["c00"][abbrLength[i]];
-            templatec01[i] = fmt[i].dateFmt.formats.range["c01"][abbrLength[i]];
-            templatec02[i] = fmt[i].dateFmt.formats.range["c02"][abbrLength[i]];
-            templatec03[i] = fmt[i].dateFmt.formats.range["c03"][abbrLength[i]];
-            templatec10[i] = fmt[i].dateFmt.formats.range["c10"][abbrLength[i]];
+        var fmt;
+        var data = setVariables();
+        var length = data["fullLength"];
+        var abbrLength = data["abbrLength"];
 
-            templatec11[i] = fmt[i].dateFmt.formats.range["c11"][abbrLength[i]];
-            templatec12[i] = fmt[i].dateFmt.formats.range["c12"][abbrLength[i]];
-            templatec20[i] = fmt[i].dateFmt.formats.range["c20"][abbrLength[i]];
-            templatec30[i] = fmt[i].dateFmt.formats.range["c30"][abbrLength[i]];
+        var templatec00 = [],templatec01 = [],templatec02 = [],templatec03 = [];
+        var templatec10 = [],templatec11 = [],templatec12 = [],templatec20 = [];
+        var templatec30 = [];
+        for (var i=0; i < 4; i++) {
+            fmt = new DateRngFmt({locale:"en-RW", length: length[i]})
+            templatec00.push(fmt.dateFmt.formats.range["c00"][abbrLength[i]]);
+            templatec01.push(fmt.dateFmt.formats.range["c01"][abbrLength[i]]);
+            templatec02.push(fmt.dateFmt.formats.range["c02"][abbrLength[i]]);
+            templatec03.push(fmt.dateFmt.formats.range["c03"][abbrLength[i]]);
+            templatec10.push(fmt.dateFmt.formats.range["c10"][abbrLength[i]]);
+
+            templatec11.push(fmt.dateFmt.formats.range["c11"][abbrLength[i]]);
+            templatec12.push(fmt.dateFmt.formats.range["c12"][abbrLength[i]]);
+            templatec20.push(fmt.dateFmt.formats.range["c20"][abbrLength[i]]);
+            templatec30.push(fmt.dateFmt.formats.range["c30"][abbrLength[i]]);
         }
 
         test.equal(templatec00[0], '{sd} {sm} {sy} at {st} – {et}');
@@ -10447,19 +11596,26 @@ module.exports.testdaterangefmt = {
     },
     testDateRngFmt_en_SD: function(test) {
         test.expect(36);
-        //dmy
-        for (i=0; i < 4; i++) {
-            fmt[i] = new DateRngFmt({locale:"en-SD", length: length[i]})
-            templatec00[i] = fmt[i].dateFmt.formats.range["c00"][abbrLength[i]];
-            templatec01[i] = fmt[i].dateFmt.formats.range["c01"][abbrLength[i]];
-            templatec02[i] = fmt[i].dateFmt.formats.range["c02"][abbrLength[i]];
-            templatec03[i] = fmt[i].dateFmt.formats.range["c03"][abbrLength[i]];
-            templatec10[i] = fmt[i].dateFmt.formats.range["c10"][abbrLength[i]];
+        var fmt;
+        var data = setVariables();
+        var length = data["fullLength"];
+        var abbrLength = data["abbrLength"];
 
-            templatec11[i] = fmt[i].dateFmt.formats.range["c11"][abbrLength[i]];
-            templatec12[i] = fmt[i].dateFmt.formats.range["c12"][abbrLength[i]];
-            templatec20[i] = fmt[i].dateFmt.formats.range["c20"][abbrLength[i]];
-            templatec30[i] = fmt[i].dateFmt.formats.range["c30"][abbrLength[i]];
+        var templatec00 = [],templatec01 = [],templatec02 = [],templatec03 = [];
+        var templatec10 = [],templatec11 = [],templatec12 = [],templatec20 = [];
+        var templatec30 = [];
+        for (var i=0; i < 4; i++) {
+            fmt = new DateRngFmt({locale:"en-SD", length: length[i]})
+            templatec00.push(fmt.dateFmt.formats.range["c00"][abbrLength[i]]);
+            templatec01.push(fmt.dateFmt.formats.range["c01"][abbrLength[i]]);
+            templatec02.push(fmt.dateFmt.formats.range["c02"][abbrLength[i]]);
+            templatec03.push(fmt.dateFmt.formats.range["c03"][abbrLength[i]]);
+            templatec10.push(fmt.dateFmt.formats.range["c10"][abbrLength[i]]);
+
+            templatec11.push(fmt.dateFmt.formats.range["c11"][abbrLength[i]]);
+            templatec12.push(fmt.dateFmt.formats.range["c12"][abbrLength[i]]);
+            templatec20.push(fmt.dateFmt.formats.range["c20"][abbrLength[i]]);
+            templatec30.push(fmt.dateFmt.formats.range["c30"][abbrLength[i]]);
         }
 
         test.equal(templatec00[0], '{sd} {sm} {sy} at {st} – {et}');
@@ -10511,19 +11667,26 @@ module.exports.testdaterangefmt = {
     },
     testDateRngFmt_en_SL: function(test) {
         test.expect(36);
-        //dmy
-        for (i=0; i < 4; i++) {
-            fmt[i] = new DateRngFmt({locale:"en-SL", length: length[i]})
-            templatec00[i] = fmt[i].dateFmt.formats.range["c00"][abbrLength[i]];
-            templatec01[i] = fmt[i].dateFmt.formats.range["c01"][abbrLength[i]];
-            templatec02[i] = fmt[i].dateFmt.formats.range["c02"][abbrLength[i]];
-            templatec03[i] = fmt[i].dateFmt.formats.range["c03"][abbrLength[i]];
-            templatec10[i] = fmt[i].dateFmt.formats.range["c10"][abbrLength[i]];
+        var fmt;
+        var data = setVariables();
+        var length = data["fullLength"];
+        var abbrLength = data["abbrLength"];
 
-            templatec11[i] = fmt[i].dateFmt.formats.range["c11"][abbrLength[i]];
-            templatec12[i] = fmt[i].dateFmt.formats.range["c12"][abbrLength[i]];
-            templatec20[i] = fmt[i].dateFmt.formats.range["c20"][abbrLength[i]];
-            templatec30[i] = fmt[i].dateFmt.formats.range["c30"][abbrLength[i]];
+        var templatec00 = [],templatec01 = [],templatec02 = [],templatec03 = [];
+        var templatec10 = [],templatec11 = [],templatec12 = [],templatec20 = [];
+        var templatec30 = [];
+        for (var i=0; i < 4; i++) {
+            fmt = new DateRngFmt({locale:"en-SL", length: length[i]})
+            templatec00.push(fmt.dateFmt.formats.range["c00"][abbrLength[i]]);
+            templatec01.push(fmt.dateFmt.formats.range["c01"][abbrLength[i]]);
+            templatec02.push(fmt.dateFmt.formats.range["c02"][abbrLength[i]]);
+            templatec03.push(fmt.dateFmt.formats.range["c03"][abbrLength[i]]);
+            templatec10.push(fmt.dateFmt.formats.range["c10"][abbrLength[i]]);
+
+            templatec11.push(fmt.dateFmt.formats.range["c11"][abbrLength[i]]);
+            templatec12.push(fmt.dateFmt.formats.range["c12"][abbrLength[i]]);
+            templatec20.push(fmt.dateFmt.formats.range["c20"][abbrLength[i]]);
+            templatec30.push(fmt.dateFmt.formats.range["c30"][abbrLength[i]]);
         }
 
         test.equal(templatec00[0], '{sd} {sm} {sy} at {st} – {et}');
@@ -10575,19 +11738,26 @@ module.exports.testdaterangefmt = {
     },
     testDateRngFmt_en_TZ: function(test) {
         test.expect(36);
-        // dmy
-        for (i=0; i < 4; i++) {
-            fmt[i] = new DateRngFmt({locale:"en-TZ", length: length[i]})
-            templatec00[i] = fmt[i].dateFmt.formats.range["c00"][abbrLength[i]];
-            templatec01[i] = fmt[i].dateFmt.formats.range["c01"][abbrLength[i]];
-            templatec02[i] = fmt[i].dateFmt.formats.range["c02"][abbrLength[i]];
-            templatec03[i] = fmt[i].dateFmt.formats.range["c03"][abbrLength[i]];
-            templatec10[i] = fmt[i].dateFmt.formats.range["c10"][abbrLength[i]];
+        var fmt;        // dmy
+        var data = setVariables();
+        var length = data["fullLength"];
+        var abbrLength = data["abbrLength"];
 
-            templatec11[i] = fmt[i].dateFmt.formats.range["c11"][abbrLength[i]];
-            templatec12[i] = fmt[i].dateFmt.formats.range["c12"][abbrLength[i]];
-            templatec20[i] = fmt[i].dateFmt.formats.range["c20"][abbrLength[i]];
-            templatec30[i] = fmt[i].dateFmt.formats.range["c30"][abbrLength[i]];
+        var templatec00 = [],templatec01 = [],templatec02 = [],templatec03 = [];
+        var templatec10 = [],templatec11 = [],templatec12 = [],templatec20 = [];
+        var templatec30 = [];
+        for (var i=0; i < 4; i++) {
+            fmt = new DateRngFmt({locale:"en-TZ", length: length[i]})
+            templatec00.push(fmt.dateFmt.formats.range["c00"][abbrLength[i]]);
+            templatec01.push(fmt.dateFmt.formats.range["c01"][abbrLength[i]]);
+            templatec02.push(fmt.dateFmt.formats.range["c02"][abbrLength[i]]);
+            templatec03.push(fmt.dateFmt.formats.range["c03"][abbrLength[i]]);
+            templatec10.push(fmt.dateFmt.formats.range["c10"][abbrLength[i]]);
+
+            templatec11.push(fmt.dateFmt.formats.range["c11"][abbrLength[i]]);
+            templatec12.push(fmt.dateFmt.formats.range["c12"][abbrLength[i]]);
+            templatec20.push(fmt.dateFmt.formats.range["c20"][abbrLength[i]]);
+            templatec30.push(fmt.dateFmt.formats.range["c30"][abbrLength[i]]);
         }
 
         test.equal(templatec00[0], '{sd} {sm} {sy} at {st} – {et}');
@@ -10639,19 +11809,26 @@ module.exports.testdaterangefmt = {
     },
     testDateRngFmt_es_CR: function(test) {
         test.expect(36);
-        //dmy
-        for (i=0; i < 4; i++) {
-            fmt[i] = new DateRngFmt({locale:"es-CR", length: length[i]})
-            templatec00[i] = fmt[i].dateFmt.formats.range["c00"][abbrLength[i]];
-            templatec01[i] = fmt[i].dateFmt.formats.range["c01"][abbrLength[i]];
-            templatec02[i] = fmt[i].dateFmt.formats.range["c02"][abbrLength[i]];
-            templatec03[i] = fmt[i].dateFmt.formats.range["c03"][abbrLength[i]];
-            templatec10[i] = fmt[i].dateFmt.formats.range["c10"][abbrLength[i]];
+        var fmt;
+        var data = setVariables();
+        var length = data["fullLength"];
+        var abbrLength = data["abbrLength"];
 
-            templatec11[i] = fmt[i].dateFmt.formats.range["c11"][abbrLength[i]];
-            templatec12[i] = fmt[i].dateFmt.formats.range["c12"][abbrLength[i]];
-            templatec20[i] = fmt[i].dateFmt.formats.range["c20"][abbrLength[i]];
-            templatec30[i] = fmt[i].dateFmt.formats.range["c30"][abbrLength[i]];
+        var templatec00 = [],templatec01 = [],templatec02 = [],templatec03 = [];
+        var templatec10 = [],templatec11 = [],templatec12 = [],templatec20 = [];
+        var templatec30 = [];
+        for (var i=0; i < 4; i++) {
+            fmt = new DateRngFmt({locale:"es-CR", length: length[i]})
+            templatec00.push(fmt.dateFmt.formats.range["c00"][abbrLength[i]]);
+            templatec01.push(fmt.dateFmt.formats.range["c01"][abbrLength[i]]);
+            templatec02.push(fmt.dateFmt.formats.range["c02"][abbrLength[i]]);
+            templatec03.push(fmt.dateFmt.formats.range["c03"][abbrLength[i]]);
+            templatec10.push(fmt.dateFmt.formats.range["c10"][abbrLength[i]]);
+
+            templatec11.push(fmt.dateFmt.formats.range["c11"][abbrLength[i]]);
+            templatec12.push(fmt.dateFmt.formats.range["c12"][abbrLength[i]]);
+            templatec20.push(fmt.dateFmt.formats.range["c20"][abbrLength[i]]);
+            templatec30.push(fmt.dateFmt.formats.range["c30"][abbrLength[i]]);
         }
 
         test.equal(templatec00[0], '{sd} de {sm} de {sy}, {st} – {et}');
@@ -10703,19 +11880,26 @@ module.exports.testdaterangefmt = {
     },
     testDateRngFmt_es_GQ: function(test) {
         test.expect(36);
-        //dmy
-        for (i=0; i < 4; i++) {
-            fmt[i] = new DateRngFmt({locale:"es-GQ", length: length[i]})
-            templatec00[i] = fmt[i].dateFmt.formats.range["c00"][abbrLength[i]];
-            templatec01[i] = fmt[i].dateFmt.formats.range["c01"][abbrLength[i]];
-            templatec02[i] = fmt[i].dateFmt.formats.range["c02"][abbrLength[i]];
-            templatec03[i] = fmt[i].dateFmt.formats.range["c03"][abbrLength[i]];
-            templatec10[i] = fmt[i].dateFmt.formats.range["c10"][abbrLength[i]];
+        var fmt;
+        var data = setVariables();
+        var length = data["fullLength"];
+        var abbrLength = data["abbrLength"];
 
-            templatec11[i] = fmt[i].dateFmt.formats.range["c11"][abbrLength[i]];
-            templatec12[i] = fmt[i].dateFmt.formats.range["c12"][abbrLength[i]];
-            templatec20[i] = fmt[i].dateFmt.formats.range["c20"][abbrLength[i]];
-            templatec30[i] = fmt[i].dateFmt.formats.range["c30"][abbrLength[i]];
+        var templatec00 = [],templatec01 = [],templatec02 = [],templatec03 = [];
+        var templatec10 = [],templatec11 = [],templatec12 = [],templatec20 = [];
+        var templatec30 = [];
+        for (var i=0; i < 4; i++) {
+            fmt = new DateRngFmt({locale:"es-GQ", length: length[i]})
+            templatec00.push(fmt.dateFmt.formats.range["c00"][abbrLength[i]]);
+            templatec01.push(fmt.dateFmt.formats.range["c01"][abbrLength[i]]);
+            templatec02.push(fmt.dateFmt.formats.range["c02"][abbrLength[i]]);
+            templatec03.push(fmt.dateFmt.formats.range["c03"][abbrLength[i]]);
+            templatec10.push(fmt.dateFmt.formats.range["c10"][abbrLength[i]]);
+
+            templatec11.push(fmt.dateFmt.formats.range["c11"][abbrLength[i]]);
+            templatec12.push(fmt.dateFmt.formats.range["c12"][abbrLength[i]]);
+            templatec20.push(fmt.dateFmt.formats.range["c20"][abbrLength[i]]);
+            templatec30.push(fmt.dateFmt.formats.range["c30"][abbrLength[i]]);
         }
 
         test.equal(templatec00[0], '{sd} de {sm} de {sy}, {st} – {et}');
@@ -10767,19 +11951,26 @@ module.exports.testdaterangefmt = {
     },
     testDateRngFmt_es_PH: function(test) {
         test.expect(36);
-        //dmy
-        for (i=0; i < 4; i++) {
-            fmt[i] = new DateRngFmt({locale:"es-PH", length: length[i]})
-            templatec00[i] = fmt[i].dateFmt.formats.range["c00"][abbrLength[i]];
-            templatec01[i] = fmt[i].dateFmt.formats.range["c01"][abbrLength[i]];
-            templatec02[i] = fmt[i].dateFmt.formats.range["c02"][abbrLength[i]];
-            templatec03[i] = fmt[i].dateFmt.formats.range["c03"][abbrLength[i]];
-            templatec10[i] = fmt[i].dateFmt.formats.range["c10"][abbrLength[i]];
+        var fmt;
+        var data = setVariables();
+        var length = data["fullLength"];
+        var abbrLength = data["abbrLength"];
 
-            templatec11[i] = fmt[i].dateFmt.formats.range["c11"][abbrLength[i]];
-            templatec12[i] = fmt[i].dateFmt.formats.range["c12"][abbrLength[i]];
-            templatec20[i] = fmt[i].dateFmt.formats.range["c20"][abbrLength[i]];
-            templatec30[i] = fmt[i].dateFmt.formats.range["c30"][abbrLength[i]];
+        var templatec00 = [],templatec01 = [],templatec02 = [],templatec03 = [];
+        var templatec10 = [],templatec11 = [],templatec12 = [],templatec20 = [];
+        var templatec30 = [];
+        for (var i=0; i < 4; i++) {
+            fmt = new DateRngFmt({locale:"es-PH", length: length[i]})
+            templatec00.push(fmt.dateFmt.formats.range["c00"][abbrLength[i]]);
+            templatec01.push(fmt.dateFmt.formats.range["c01"][abbrLength[i]]);
+            templatec02.push(fmt.dateFmt.formats.range["c02"][abbrLength[i]]);
+            templatec03.push(fmt.dateFmt.formats.range["c03"][abbrLength[i]]);
+            templatec10.push(fmt.dateFmt.formats.range["c10"][abbrLength[i]]);
+
+            templatec11.push(fmt.dateFmt.formats.range["c11"][abbrLength[i]]);
+            templatec12.push(fmt.dateFmt.formats.range["c12"][abbrLength[i]]);
+            templatec20.push(fmt.dateFmt.formats.range["c20"][abbrLength[i]]);
+            templatec30.push(fmt.dateFmt.formats.range["c30"][abbrLength[i]]);
         }
 
         test.equal(templatec00[0], '{sd} de {sm} de {sy}, {st} – {et}');
@@ -10831,19 +12022,26 @@ module.exports.testdaterangefmt = {
     },
     testDateRngFmt_fr_BF: function(test) {
         test.expect(36);
-        //dmy
-        for (i=0; i < 4; i++) {
-            fmt[i] = new DateRngFmt({locale:"fr-BF", length: length[i]})
-            templatec00[i] = fmt[i].dateFmt.formats.range["c00"][abbrLength[i]];
-            templatec01[i] = fmt[i].dateFmt.formats.range["c01"][abbrLength[i]];
-            templatec02[i] = fmt[i].dateFmt.formats.range["c02"][abbrLength[i]];
-            templatec03[i] = fmt[i].dateFmt.formats.range["c03"][abbrLength[i]];
-            templatec10[i] = fmt[i].dateFmt.formats.range["c10"][abbrLength[i]];
+        var fmt;
+        var data = setVariables();
+        var length = data["fullLength"];
+        var abbrLength = data["abbrLength"];
 
-            templatec11[i] = fmt[i].dateFmt.formats.range["c11"][abbrLength[i]];
-            templatec12[i] = fmt[i].dateFmt.formats.range["c12"][abbrLength[i]];
-            templatec20[i] = fmt[i].dateFmt.formats.range["c20"][abbrLength[i]];
-            templatec30[i] = fmt[i].dateFmt.formats.range["c30"][abbrLength[i]];
+        var templatec00 = [],templatec01 = [],templatec02 = [],templatec03 = [];
+        var templatec10 = [],templatec11 = [],templatec12 = [],templatec20 = [];
+        var templatec30 = [];
+        for (var i=0; i < 4; i++) {
+            fmt = new DateRngFmt({locale:"fr-BF", length: length[i]})
+            templatec00.push(fmt.dateFmt.formats.range["c00"][abbrLength[i]]);
+            templatec01.push(fmt.dateFmt.formats.range["c01"][abbrLength[i]]);
+            templatec02.push(fmt.dateFmt.formats.range["c02"][abbrLength[i]]);
+            templatec03.push(fmt.dateFmt.formats.range["c03"][abbrLength[i]]);
+            templatec10.push(fmt.dateFmt.formats.range["c10"][abbrLength[i]]);
+
+            templatec11.push(fmt.dateFmt.formats.range["c11"][abbrLength[i]]);
+            templatec12.push(fmt.dateFmt.formats.range["c12"][abbrLength[i]]);
+            templatec20.push(fmt.dateFmt.formats.range["c20"][abbrLength[i]]);
+            templatec30.push(fmt.dateFmt.formats.range["c30"][abbrLength[i]]);
         }
 
         test.equal(templatec00[0], '{sd} {sm} {sy} à {st} – {et}');
@@ -10895,19 +12093,26 @@ module.exports.testdaterangefmt = {
     },
     testDateRngFmt_fr_BJ: function(test) {
         test.expect(36);
-        //dmy
-        for (i=0; i < 4; i++) {
-            fmt[i] = new DateRngFmt({locale:"fr-BJ", length: length[i]})
-            templatec00[i] = fmt[i].dateFmt.formats.range["c00"][abbrLength[i]];
-            templatec01[i] = fmt[i].dateFmt.formats.range["c01"][abbrLength[i]];
-            templatec02[i] = fmt[i].dateFmt.formats.range["c02"][abbrLength[i]];
-            templatec03[i] = fmt[i].dateFmt.formats.range["c03"][abbrLength[i]];
-            templatec10[i] = fmt[i].dateFmt.formats.range["c10"][abbrLength[i]];
+        var fmt;
+        var data = setVariables();
+        var length = data["fullLength"];
+        var abbrLength = data["abbrLength"];
 
-            templatec11[i] = fmt[i].dateFmt.formats.range["c11"][abbrLength[i]];
-            templatec12[i] = fmt[i].dateFmt.formats.range["c12"][abbrLength[i]];
-            templatec20[i] = fmt[i].dateFmt.formats.range["c20"][abbrLength[i]];
-            templatec30[i] = fmt[i].dateFmt.formats.range["c30"][abbrLength[i]];
+        var templatec00 = [],templatec01 = [],templatec02 = [],templatec03 = [];
+        var templatec10 = [],templatec11 = [],templatec12 = [],templatec20 = [];
+        var templatec30 = [];
+        for (var i=0; i < 4; i++) {
+            fmt = new DateRngFmt({locale:"fr-BJ", length: length[i]})
+            templatec00.push(fmt.dateFmt.formats.range["c00"][abbrLength[i]]);
+            templatec01.push(fmt.dateFmt.formats.range["c01"][abbrLength[i]]);
+            templatec02.push(fmt.dateFmt.formats.range["c02"][abbrLength[i]]);
+            templatec03.push(fmt.dateFmt.formats.range["c03"][abbrLength[i]]);
+            templatec10.push(fmt.dateFmt.formats.range["c10"][abbrLength[i]]);
+
+            templatec11.push(fmt.dateFmt.formats.range["c11"][abbrLength[i]]);
+            templatec12.push(fmt.dateFmt.formats.range["c12"][abbrLength[i]]);
+            templatec20.push(fmt.dateFmt.formats.range["c20"][abbrLength[i]]);
+            templatec30.push(fmt.dateFmt.formats.range["c30"][abbrLength[i]]);
         }
 
         test.equal(templatec00[0], '{sd} {sm} {sy} à {st} – {et}');
@@ -10959,19 +12164,26 @@ module.exports.testdaterangefmt = {
     },
     testDateRngFmt_fr_CD: function(test) {
         test.expect(36);
-        //dmy
-        for (i=0; i < 4; i++) {
-            fmt[i] = new DateRngFmt({locale:"fr-CD", length: length[i]})
-            templatec00[i] = fmt[i].dateFmt.formats.range["c00"][abbrLength[i]];
-            templatec01[i] = fmt[i].dateFmt.formats.range["c01"][abbrLength[i]];
-            templatec02[i] = fmt[i].dateFmt.formats.range["c02"][abbrLength[i]];
-            templatec03[i] = fmt[i].dateFmt.formats.range["c03"][abbrLength[i]];
-            templatec10[i] = fmt[i].dateFmt.formats.range["c10"][abbrLength[i]];
+        var fmt;
+        var data = setVariables();
+        var length = data["fullLength"];
+        var abbrLength = data["abbrLength"];
 
-            templatec11[i] = fmt[i].dateFmt.formats.range["c11"][abbrLength[i]];
-            templatec12[i] = fmt[i].dateFmt.formats.range["c12"][abbrLength[i]];
-            templatec20[i] = fmt[i].dateFmt.formats.range["c20"][abbrLength[i]];
-            templatec30[i] = fmt[i].dateFmt.formats.range["c30"][abbrLength[i]];
+        var templatec00 = [],templatec01 = [],templatec02 = [],templatec03 = [];
+        var templatec10 = [],templatec11 = [],templatec12 = [],templatec20 = [];
+        var templatec30 = [];
+        for (var i=0; i < 4; i++) {
+            fmt = new DateRngFmt({locale:"fr-CD", length: length[i]})
+            templatec00.push(fmt.dateFmt.formats.range["c00"][abbrLength[i]]);
+            templatec01.push(fmt.dateFmt.formats.range["c01"][abbrLength[i]]);
+            templatec02.push(fmt.dateFmt.formats.range["c02"][abbrLength[i]]);
+            templatec03.push(fmt.dateFmt.formats.range["c03"][abbrLength[i]]);
+            templatec10.push(fmt.dateFmt.formats.range["c10"][abbrLength[i]]);
+
+            templatec11.push(fmt.dateFmt.formats.range["c11"][abbrLength[i]]);
+            templatec12.push(fmt.dateFmt.formats.range["c12"][abbrLength[i]]);
+            templatec20.push(fmt.dateFmt.formats.range["c20"][abbrLength[i]]);
+            templatec30.push(fmt.dateFmt.formats.range["c30"][abbrLength[i]]);
         }
 
         test.equal(templatec00[0], '{sd} {sm} {sy} à {st} – {et}');
@@ -11023,19 +12235,26 @@ module.exports.testdaterangefmt = {
     },
     testDateRngFmt_fr_CF: function(test) {
         test.expect(36);
-        // dmy
-        for (i=0; i < 4; i++) {
-            fmt[i] = new DateRngFmt({locale:"fr-CF", length: length[i]})
-            templatec00[i] = fmt[i].dateFmt.formats.range["c00"][abbrLength[i]];
-            templatec01[i] = fmt[i].dateFmt.formats.range["c01"][abbrLength[i]];
-            templatec02[i] = fmt[i].dateFmt.formats.range["c02"][abbrLength[i]];
-            templatec03[i] = fmt[i].dateFmt.formats.range["c03"][abbrLength[i]];
-            templatec10[i] = fmt[i].dateFmt.formats.range["c10"][abbrLength[i]];
+        var fmt;        // dmy
+        var data = setVariables();
+        var length = data["fullLength"];
+        var abbrLength = data["abbrLength"];
 
-            templatec11[i] = fmt[i].dateFmt.formats.range["c11"][abbrLength[i]];
-            templatec12[i] = fmt[i].dateFmt.formats.range["c12"][abbrLength[i]];
-            templatec20[i] = fmt[i].dateFmt.formats.range["c20"][abbrLength[i]];
-            templatec30[i] = fmt[i].dateFmt.formats.range["c30"][abbrLength[i]];
+        var templatec00 = [],templatec01 = [],templatec02 = [],templatec03 = [];
+        var templatec10 = [],templatec11 = [],templatec12 = [],templatec20 = [];
+        var templatec30 = [];
+        for (var i=0; i < 4; i++) {
+            fmt = new DateRngFmt({locale:"fr-CF", length: length[i]})
+            templatec00.push(fmt.dateFmt.formats.range["c00"][abbrLength[i]]);
+            templatec01.push(fmt.dateFmt.formats.range["c01"][abbrLength[i]]);
+            templatec02.push(fmt.dateFmt.formats.range["c02"][abbrLength[i]]);
+            templatec03.push(fmt.dateFmt.formats.range["c03"][abbrLength[i]]);
+            templatec10.push(fmt.dateFmt.formats.range["c10"][abbrLength[i]]);
+
+            templatec11.push(fmt.dateFmt.formats.range["c11"][abbrLength[i]]);
+            templatec12.push(fmt.dateFmt.formats.range["c12"][abbrLength[i]]);
+            templatec20.push(fmt.dateFmt.formats.range["c20"][abbrLength[i]]);
+            templatec30.push(fmt.dateFmt.formats.range["c30"][abbrLength[i]]);
         }
 
         test.equal(templatec00[0], '{sd} {sm} {sy} à {st} – {et}');
@@ -11087,19 +12306,26 @@ module.exports.testdaterangefmt = {
     },
     testDateRngFmt_fr_CG: function(test) {
         test.expect(36);
-        //dmy
-        for (i=0; i < 4; i++) {
-            fmt[i] = new DateRngFmt({locale:"fr-CG", length: length[i]})
-            templatec00[i] = fmt[i].dateFmt.formats.range["c00"][abbrLength[i]];
-            templatec01[i] = fmt[i].dateFmt.formats.range["c01"][abbrLength[i]];
-            templatec02[i] = fmt[i].dateFmt.formats.range["c02"][abbrLength[i]];
-            templatec03[i] = fmt[i].dateFmt.formats.range["c03"][abbrLength[i]];
-            templatec10[i] = fmt[i].dateFmt.formats.range["c10"][abbrLength[i]];
+        var fmt;
+        var data = setVariables();
+        var length = data["fullLength"];
+        var abbrLength = data["abbrLength"];
 
-            templatec11[i] = fmt[i].dateFmt.formats.range["c11"][abbrLength[i]];
-            templatec12[i] = fmt[i].dateFmt.formats.range["c12"][abbrLength[i]];
-            templatec20[i] = fmt[i].dateFmt.formats.range["c20"][abbrLength[i]];
-            templatec30[i] = fmt[i].dateFmt.formats.range["c30"][abbrLength[i]];
+        var templatec00 = [],templatec01 = [],templatec02 = [],templatec03 = [];
+        var templatec10 = [],templatec11 = [],templatec12 = [],templatec20 = [];
+        var templatec30 = [];
+        for (var i=0; i < 4; i++) {
+            fmt = new DateRngFmt({locale:"fr-CG", length: length[i]})
+            templatec00.push(fmt.dateFmt.formats.range["c00"][abbrLength[i]]);
+            templatec01.push(fmt.dateFmt.formats.range["c01"][abbrLength[i]]);
+            templatec02.push(fmt.dateFmt.formats.range["c02"][abbrLength[i]]);
+            templatec03.push(fmt.dateFmt.formats.range["c03"][abbrLength[i]]);
+            templatec10.push(fmt.dateFmt.formats.range["c10"][abbrLength[i]]);
+
+            templatec11.push(fmt.dateFmt.formats.range["c11"][abbrLength[i]]);
+            templatec12.push(fmt.dateFmt.formats.range["c12"][abbrLength[i]]);
+            templatec20.push(fmt.dateFmt.formats.range["c20"][abbrLength[i]]);
+            templatec30.push(fmt.dateFmt.formats.range["c30"][abbrLength[i]]);
         }
 
         test.equal(templatec00[0], '{sd} {sm} {sy} à {st} – {et}');
@@ -11151,19 +12377,26 @@ module.exports.testdaterangefmt = {
     },
     testDateRngFmt_fr_CI: function(test) {
         test.expect(36);
-        //dmy
-        for (i=0; i < 4; i++) {
-            fmt[i] = new DateRngFmt({locale:"fr-CI", length: length[i]})
-            templatec00[i] = fmt[i].dateFmt.formats.range["c00"][abbrLength[i]];
-            templatec01[i] = fmt[i].dateFmt.formats.range["c01"][abbrLength[i]];
-            templatec02[i] = fmt[i].dateFmt.formats.range["c02"][abbrLength[i]];
-            templatec03[i] = fmt[i].dateFmt.formats.range["c03"][abbrLength[i]];
-            templatec10[i] = fmt[i].dateFmt.formats.range["c10"][abbrLength[i]];
+        var fmt;
+        var data = setVariables();
+        var length = data["fullLength"];
+        var abbrLength = data["abbrLength"];
 
-            templatec11[i] = fmt[i].dateFmt.formats.range["c11"][abbrLength[i]];
-            templatec12[i] = fmt[i].dateFmt.formats.range["c12"][abbrLength[i]];
-            templatec20[i] = fmt[i].dateFmt.formats.range["c20"][abbrLength[i]];
-            templatec30[i] = fmt[i].dateFmt.formats.range["c30"][abbrLength[i]];
+        var templatec00 = [],templatec01 = [],templatec02 = [],templatec03 = [];
+        var templatec10 = [],templatec11 = [],templatec12 = [],templatec20 = [];
+        var templatec30 = [];
+        for (var i=0; i < 4; i++) {
+            fmt = new DateRngFmt({locale:"fr-CI", length: length[i]})
+            templatec00.push(fmt.dateFmt.formats.range["c00"][abbrLength[i]]);
+            templatec01.push(fmt.dateFmt.formats.range["c01"][abbrLength[i]]);
+            templatec02.push(fmt.dateFmt.formats.range["c02"][abbrLength[i]]);
+            templatec03.push(fmt.dateFmt.formats.range["c03"][abbrLength[i]]);
+            templatec10.push(fmt.dateFmt.formats.range["c10"][abbrLength[i]]);
+
+            templatec11.push(fmt.dateFmt.formats.range["c11"][abbrLength[i]]);
+            templatec12.push(fmt.dateFmt.formats.range["c12"][abbrLength[i]]);
+            templatec20.push(fmt.dateFmt.formats.range["c20"][abbrLength[i]]);
+            templatec30.push(fmt.dateFmt.formats.range["c30"][abbrLength[i]]);
         }
 
         test.equal(templatec00[0], '{sd} {sm} {sy} à {st} – {et}');
@@ -11215,19 +12448,26 @@ module.exports.testdaterangefmt = {
     },
     testDateRngFmt_fr_CM: function(test) {
         test.expect(36);
-        //dmy
-        for (i=0; i < 4; i++) {
-            fmt[i] = new DateRngFmt({locale:"fr-CM", length: length[i]})
-            templatec00[i] = fmt[i].dateFmt.formats.range["c00"][abbrLength[i]];
-            templatec01[i] = fmt[i].dateFmt.formats.range["c01"][abbrLength[i]];
-            templatec02[i] = fmt[i].dateFmt.formats.range["c02"][abbrLength[i]];
-            templatec03[i] = fmt[i].dateFmt.formats.range["c03"][abbrLength[i]];
-            templatec10[i] = fmt[i].dateFmt.formats.range["c10"][abbrLength[i]];
+        var fmt;
+        var data = setVariables();
+        var length = data["fullLength"];
+        var abbrLength = data["abbrLength"];
 
-            templatec11[i] = fmt[i].dateFmt.formats.range["c11"][abbrLength[i]];
-            templatec12[i] = fmt[i].dateFmt.formats.range["c12"][abbrLength[i]];
-            templatec20[i] = fmt[i].dateFmt.formats.range["c20"][abbrLength[i]];
-            templatec30[i] = fmt[i].dateFmt.formats.range["c30"][abbrLength[i]];
+        var templatec00 = [],templatec01 = [],templatec02 = [],templatec03 = [];
+        var templatec10 = [],templatec11 = [],templatec12 = [],templatec20 = [];
+        var templatec30 = [];
+        for (var i=0; i < 4; i++) {
+            fmt = new DateRngFmt({locale:"fr-CM", length: length[i]})
+            templatec00.push(fmt.dateFmt.formats.range["c00"][abbrLength[i]]);
+            templatec01.push(fmt.dateFmt.formats.range["c01"][abbrLength[i]]);
+            templatec02.push(fmt.dateFmt.formats.range["c02"][abbrLength[i]]);
+            templatec03.push(fmt.dateFmt.formats.range["c03"][abbrLength[i]]);
+            templatec10.push(fmt.dateFmt.formats.range["c10"][abbrLength[i]]);
+
+            templatec11.push(fmt.dateFmt.formats.range["c11"][abbrLength[i]]);
+            templatec12.push(fmt.dateFmt.formats.range["c12"][abbrLength[i]]);
+            templatec20.push(fmt.dateFmt.formats.range["c20"][abbrLength[i]]);
+            templatec30.push(fmt.dateFmt.formats.range["c30"][abbrLength[i]]);
         }
 
         test.equal(templatec00[0], '{sd} {sm} {sy} à {st} – {et}');
@@ -11278,19 +12518,26 @@ module.exports.testdaterangefmt = {
     },
     testDateRngFmt_fr_GQ: function(test) {
         test.expect(36);
-        //dmy
-        for (i=0; i < 4; i++) {
-            fmt[i] = new DateRngFmt({locale:"fr-GQ", length: length[i]})
-            templatec00[i] = fmt[i].dateFmt.formats.range["c00"][abbrLength[i]];
-            templatec01[i] = fmt[i].dateFmt.formats.range["c01"][abbrLength[i]];
-            templatec02[i] = fmt[i].dateFmt.formats.range["c02"][abbrLength[i]];
-            templatec03[i] = fmt[i].dateFmt.formats.range["c03"][abbrLength[i]];
-            templatec10[i] = fmt[i].dateFmt.formats.range["c10"][abbrLength[i]];
+        var fmt;
+        var data = setVariables();
+        var length = data["fullLength"];
+        var abbrLength = data["abbrLength"];
 
-            templatec11[i] = fmt[i].dateFmt.formats.range["c11"][abbrLength[i]];
-            templatec12[i] = fmt[i].dateFmt.formats.range["c12"][abbrLength[i]];
-            templatec20[i] = fmt[i].dateFmt.formats.range["c20"][abbrLength[i]];
-            templatec30[i] = fmt[i].dateFmt.formats.range["c30"][abbrLength[i]];
+        var templatec00 = [],templatec01 = [],templatec02 = [],templatec03 = [];
+        var templatec10 = [],templatec11 = [],templatec12 = [],templatec20 = [];
+        var templatec30 = [];
+        for (var i=0; i < 4; i++) {
+            fmt = new DateRngFmt({locale:"fr-GQ", length: length[i]})
+            templatec00.push(fmt.dateFmt.formats.range["c00"][abbrLength[i]]);
+            templatec01.push(fmt.dateFmt.formats.range["c01"][abbrLength[i]]);
+            templatec02.push(fmt.dateFmt.formats.range["c02"][abbrLength[i]]);
+            templatec03.push(fmt.dateFmt.formats.range["c03"][abbrLength[i]]);
+            templatec10.push(fmt.dateFmt.formats.range["c10"][abbrLength[i]]);
+
+            templatec11.push(fmt.dateFmt.formats.range["c11"][abbrLength[i]]);
+            templatec12.push(fmt.dateFmt.formats.range["c12"][abbrLength[i]]);
+            templatec20.push(fmt.dateFmt.formats.range["c20"][abbrLength[i]]);
+            templatec30.push(fmt.dateFmt.formats.range["c30"][abbrLength[i]]);
         }
 
         test.equal(templatec00[0], '{sd} {sm} {sy} à {st} – {et}');
@@ -11342,19 +12589,26 @@ module.exports.testdaterangefmt = {
     },
     testDateRngFmt_fr_DJ: function(test) {
         test.expect(36);
-        //dmy
-        for (i=0; i < 4; i++) {
-            fmt[i] = new DateRngFmt({locale:"fr-DJ", length: length[i]})
-            templatec00[i] = fmt[i].dateFmt.formats.range["c00"][abbrLength[i]];
-            templatec01[i] = fmt[i].dateFmt.formats.range["c01"][abbrLength[i]];
-            templatec02[i] = fmt[i].dateFmt.formats.range["c02"][abbrLength[i]];
-            templatec03[i] = fmt[i].dateFmt.formats.range["c03"][abbrLength[i]];
-            templatec10[i] = fmt[i].dateFmt.formats.range["c10"][abbrLength[i]];
+        var fmt;
+        var data = setVariables();
+        var length = data["fullLength"];
+        var abbrLength = data["abbrLength"];
 
-            templatec11[i] = fmt[i].dateFmt.formats.range["c11"][abbrLength[i]];
-            templatec12[i] = fmt[i].dateFmt.formats.range["c12"][abbrLength[i]];
-            templatec20[i] = fmt[i].dateFmt.formats.range["c20"][abbrLength[i]];
-            templatec30[i] = fmt[i].dateFmt.formats.range["c30"][abbrLength[i]];
+        var templatec00 = [],templatec01 = [],templatec02 = [],templatec03 = [];
+        var templatec10 = [],templatec11 = [],templatec12 = [],templatec20 = [];
+        var templatec30 = [];
+        for (var i=0; i < 4; i++) {
+            fmt = new DateRngFmt({locale:"fr-DJ", length: length[i]})
+            templatec00.push(fmt.dateFmt.formats.range["c00"][abbrLength[i]]);
+            templatec01.push(fmt.dateFmt.formats.range["c01"][abbrLength[i]]);
+            templatec02.push(fmt.dateFmt.formats.range["c02"][abbrLength[i]]);
+            templatec03.push(fmt.dateFmt.formats.range["c03"][abbrLength[i]]);
+            templatec10.push(fmt.dateFmt.formats.range["c10"][abbrLength[i]]);
+
+            templatec11.push(fmt.dateFmt.formats.range["c11"][abbrLength[i]]);
+            templatec12.push(fmt.dateFmt.formats.range["c12"][abbrLength[i]]);
+            templatec20.push(fmt.dateFmt.formats.range["c20"][abbrLength[i]]);
+            templatec30.push(fmt.dateFmt.formats.range["c30"][abbrLength[i]]);
         }
 
         test.equal(templatec00[0], '{sd} {sm} {sy} à {st} – {et}');
@@ -11406,19 +12660,26 @@ module.exports.testdaterangefmt = {
     },
     testDateRngFmt_fr_DZ: function(test) {
         test.expect(36);
-        //dmy
-        for (i=0; i < 4; i++) {
-            fmt[i] = new DateRngFmt({locale:"fr-DZ", length: length[i]})
-            templatec00[i] = fmt[i].dateFmt.formats.range["c00"][abbrLength[i]];
-            templatec01[i] = fmt[i].dateFmt.formats.range["c01"][abbrLength[i]];
-            templatec02[i] = fmt[i].dateFmt.formats.range["c02"][abbrLength[i]];
-            templatec03[i] = fmt[i].dateFmt.formats.range["c03"][abbrLength[i]];
-            templatec10[i] = fmt[i].dateFmt.formats.range["c10"][abbrLength[i]];
+        var fmt;
+        var data = setVariables();
+        var length = data["fullLength"];
+        var abbrLength = data["abbrLength"];
 
-            templatec11[i] = fmt[i].dateFmt.formats.range["c11"][abbrLength[i]];
-            templatec12[i] = fmt[i].dateFmt.formats.range["c12"][abbrLength[i]];
-            templatec20[i] = fmt[i].dateFmt.formats.range["c20"][abbrLength[i]];
-            templatec30[i] = fmt[i].dateFmt.formats.range["c30"][abbrLength[i]];
+        var templatec00 = [],templatec01 = [],templatec02 = [],templatec03 = [];
+        var templatec10 = [],templatec11 = [],templatec12 = [],templatec20 = [];
+        var templatec30 = [];
+        for (var i=0; i < 4; i++) {
+            fmt = new DateRngFmt({locale:"fr-DZ", length: length[i]})
+            templatec00.push(fmt.dateFmt.formats.range["c00"][abbrLength[i]]);
+            templatec01.push(fmt.dateFmt.formats.range["c01"][abbrLength[i]]);
+            templatec02.push(fmt.dateFmt.formats.range["c02"][abbrLength[i]]);
+            templatec03.push(fmt.dateFmt.formats.range["c03"][abbrLength[i]]);
+            templatec10.push(fmt.dateFmt.formats.range["c10"][abbrLength[i]]);
+
+            templatec11.push(fmt.dateFmt.formats.range["c11"][abbrLength[i]]);
+            templatec12.push(fmt.dateFmt.formats.range["c12"][abbrLength[i]]);
+            templatec20.push(fmt.dateFmt.formats.range["c20"][abbrLength[i]]);
+            templatec30.push(fmt.dateFmt.formats.range["c30"][abbrLength[i]]);
         }
 
         test.equal(templatec00[0], '{sd} {sm} {sy} à {st} – {et}');
@@ -11469,19 +12730,26 @@ module.exports.testdaterangefmt = {
     },
     testDateRngFmt_fr_GA: function(test) {
         test.expect(36);
-        //dmy
-        for (i=0; i < 4; i++) {
-            fmt[i] = new DateRngFmt({locale:"fr-GA", length: length[i]})
-            templatec00[i] = fmt[i].dateFmt.formats.range["c00"][abbrLength[i]];
-            templatec01[i] = fmt[i].dateFmt.formats.range["c01"][abbrLength[i]];
-            templatec02[i] = fmt[i].dateFmt.formats.range["c02"][abbrLength[i]];
-            templatec03[i] = fmt[i].dateFmt.formats.range["c03"][abbrLength[i]];
-            templatec10[i] = fmt[i].dateFmt.formats.range["c10"][abbrLength[i]];
+        var fmt;
+        var data = setVariables();
+        var length = data["fullLength"];
+        var abbrLength = data["abbrLength"];
 
-            templatec11[i] = fmt[i].dateFmt.formats.range["c11"][abbrLength[i]];
-            templatec12[i] = fmt[i].dateFmt.formats.range["c12"][abbrLength[i]];
-            templatec20[i] = fmt[i].dateFmt.formats.range["c20"][abbrLength[i]];
-            templatec30[i] = fmt[i].dateFmt.formats.range["c30"][abbrLength[i]];
+        var templatec00 = [],templatec01 = [],templatec02 = [],templatec03 = [];
+        var templatec10 = [],templatec11 = [],templatec12 = [],templatec20 = [];
+        var templatec30 = [];
+        for (var i=0; i < 4; i++) {
+            fmt = new DateRngFmt({locale:"fr-GA", length: length[i]})
+            templatec00.push(fmt.dateFmt.formats.range["c00"][abbrLength[i]]);
+            templatec01.push(fmt.dateFmt.formats.range["c01"][abbrLength[i]]);
+            templatec02.push(fmt.dateFmt.formats.range["c02"][abbrLength[i]]);
+            templatec03.push(fmt.dateFmt.formats.range["c03"][abbrLength[i]]);
+            templatec10.push(fmt.dateFmt.formats.range["c10"][abbrLength[i]]);
+
+            templatec11.push(fmt.dateFmt.formats.range["c11"][abbrLength[i]]);
+            templatec12.push(fmt.dateFmt.formats.range["c12"][abbrLength[i]]);
+            templatec20.push(fmt.dateFmt.formats.range["c20"][abbrLength[i]]);
+            templatec30.push(fmt.dateFmt.formats.range["c30"][abbrLength[i]]);
         }
 
         test.equal(templatec00[0], '{sd} {sm} {sy} à {st} – {et}');
@@ -11533,19 +12801,26 @@ module.exports.testdaterangefmt = {
     },
     testDateRngFmt_fr_GN: function(test) {
         test.expect(36);
-        //dmy
-        for (i=0; i < 4; i++) {
-            fmt[i] = new DateRngFmt({locale:"fr-GN", length: length[i]})
-            templatec00[i] = fmt[i].dateFmt.formats.range["c00"][abbrLength[i]];
-            templatec01[i] = fmt[i].dateFmt.formats.range["c01"][abbrLength[i]];
-            templatec02[i] = fmt[i].dateFmt.formats.range["c02"][abbrLength[i]];
-            templatec03[i] = fmt[i].dateFmt.formats.range["c03"][abbrLength[i]];
-            templatec10[i] = fmt[i].dateFmt.formats.range["c10"][abbrLength[i]];
+        var fmt;
+        var data = setVariables();
+        var length = data["fullLength"];
+        var abbrLength = data["abbrLength"];
 
-            templatec11[i] = fmt[i].dateFmt.formats.range["c11"][abbrLength[i]];
-            templatec12[i] = fmt[i].dateFmt.formats.range["c12"][abbrLength[i]];
-            templatec20[i] = fmt[i].dateFmt.formats.range["c20"][abbrLength[i]];
-            templatec30[i] = fmt[i].dateFmt.formats.range["c30"][abbrLength[i]];
+        var templatec00 = [],templatec01 = [],templatec02 = [],templatec03 = [];
+        var templatec10 = [],templatec11 = [],templatec12 = [],templatec20 = [];
+        var templatec30 = [];
+        for (var i=0; i < 4; i++) {
+            fmt = new DateRngFmt({locale:"fr-GN", length: length[i]})
+            templatec00.push(fmt.dateFmt.formats.range["c00"][abbrLength[i]]);
+            templatec01.push(fmt.dateFmt.formats.range["c01"][abbrLength[i]]);
+            templatec02.push(fmt.dateFmt.formats.range["c02"][abbrLength[i]]);
+            templatec03.push(fmt.dateFmt.formats.range["c03"][abbrLength[i]]);
+            templatec10.push(fmt.dateFmt.formats.range["c10"][abbrLength[i]]);
+
+            templatec11.push(fmt.dateFmt.formats.range["c11"][abbrLength[i]]);
+            templatec12.push(fmt.dateFmt.formats.range["c12"][abbrLength[i]]);
+            templatec20.push(fmt.dateFmt.formats.range["c20"][abbrLength[i]]);
+            templatec30.push(fmt.dateFmt.formats.range["c30"][abbrLength[i]]);
         }
 
         test.equal(templatec00[0], '{sd} {sm} {sy} à {st} – {et}');
@@ -11597,19 +12872,26 @@ module.exports.testdaterangefmt = {
     },
     testDateRngFmt_fr_LB: function(test) {
         test.expect(36);
-        //dmy
-        for (i=0; i < 4; i++) {
-            fmt[i] = new DateRngFmt({locale:"fr-LB", length: length[i]})
-            templatec00[i] = fmt[i].dateFmt.formats.range["c00"][abbrLength[i]];
-            templatec01[i] = fmt[i].dateFmt.formats.range["c01"][abbrLength[i]];
-            templatec02[i] = fmt[i].dateFmt.formats.range["c02"][abbrLength[i]];
-            templatec03[i] = fmt[i].dateFmt.formats.range["c03"][abbrLength[i]];
-            templatec10[i] = fmt[i].dateFmt.formats.range["c10"][abbrLength[i]];
+        var fmt;
+        var data = setVariables();
+        var length = data["fullLength"];
+        var abbrLength = data["abbrLength"];
 
-            templatec11[i] = fmt[i].dateFmt.formats.range["c11"][abbrLength[i]];
-            templatec12[i] = fmt[i].dateFmt.formats.range["c12"][abbrLength[i]];
-            templatec20[i] = fmt[i].dateFmt.formats.range["c20"][abbrLength[i]];
-            templatec30[i] = fmt[i].dateFmt.formats.range["c30"][abbrLength[i]];
+        var templatec00 = [],templatec01 = [],templatec02 = [],templatec03 = [];
+        var templatec10 = [],templatec11 = [],templatec12 = [],templatec20 = [];
+        var templatec30 = [];
+        for (var i=0; i < 4; i++) {
+            fmt = new DateRngFmt({locale:"fr-LB", length: length[i]})
+            templatec00.push(fmt.dateFmt.formats.range["c00"][abbrLength[i]]);
+            templatec01.push(fmt.dateFmt.formats.range["c01"][abbrLength[i]]);
+            templatec02.push(fmt.dateFmt.formats.range["c02"][abbrLength[i]]);
+            templatec03.push(fmt.dateFmt.formats.range["c03"][abbrLength[i]]);
+            templatec10.push(fmt.dateFmt.formats.range["c10"][abbrLength[i]]);
+
+            templatec11.push(fmt.dateFmt.formats.range["c11"][abbrLength[i]]);
+            templatec12.push(fmt.dateFmt.formats.range["c12"][abbrLength[i]]);
+            templatec20.push(fmt.dateFmt.formats.range["c20"][abbrLength[i]]);
+            templatec30.push(fmt.dateFmt.formats.range["c30"][abbrLength[i]]);
         }
 
         test.equal(templatec00[0], '{sd} {sm} {sy} à {st} – {et}');
@@ -11661,19 +12943,26 @@ module.exports.testdaterangefmt = {
     },
     testDateRngFmt_fr_ML: function(test) {
         test.expect(36);
-        //dmy
-        for (i=0; i < 4; i++) {
-            fmt[i] = new DateRngFmt({locale:"fr-ML", length: length[i]})
-            templatec00[i] = fmt[i].dateFmt.formats.range["c00"][abbrLength[i]];
-            templatec01[i] = fmt[i].dateFmt.formats.range["c01"][abbrLength[i]];
-            templatec02[i] = fmt[i].dateFmt.formats.range["c02"][abbrLength[i]];
-            templatec03[i] = fmt[i].dateFmt.formats.range["c03"][abbrLength[i]];
-            templatec10[i] = fmt[i].dateFmt.formats.range["c10"][abbrLength[i]];
+        var fmt;
+        var data = setVariables();
+        var length = data["fullLength"];
+        var abbrLength = data["abbrLength"];
 
-            templatec11[i] = fmt[i].dateFmt.formats.range["c11"][abbrLength[i]];
-            templatec12[i] = fmt[i].dateFmt.formats.range["c12"][abbrLength[i]];
-            templatec20[i] = fmt[i].dateFmt.formats.range["c20"][abbrLength[i]];
-            templatec30[i] = fmt[i].dateFmt.formats.range["c30"][abbrLength[i]];
+        var templatec00 = [],templatec01 = [],templatec02 = [],templatec03 = [];
+        var templatec10 = [],templatec11 = [],templatec12 = [],templatec20 = [];
+        var templatec30 = [];
+        for (var i=0; i < 4; i++) {
+            fmt = new DateRngFmt({locale:"fr-ML", length: length[i]})
+            templatec00.push(fmt.dateFmt.formats.range["c00"][abbrLength[i]]);
+            templatec01.push(fmt.dateFmt.formats.range["c01"][abbrLength[i]]);
+            templatec02.push(fmt.dateFmt.formats.range["c02"][abbrLength[i]]);
+            templatec03.push(fmt.dateFmt.formats.range["c03"][abbrLength[i]]);
+            templatec10.push(fmt.dateFmt.formats.range["c10"][abbrLength[i]]);
+
+            templatec11.push(fmt.dateFmt.formats.range["c11"][abbrLength[i]]);
+            templatec12.push(fmt.dateFmt.formats.range["c12"][abbrLength[i]]);
+            templatec20.push(fmt.dateFmt.formats.range["c20"][abbrLength[i]]);
+            templatec30.push(fmt.dateFmt.formats.range["c30"][abbrLength[i]]);
         }
 
         test.equal(templatec00[0], '{sd} {sm} {sy} à {st} – {et}');
@@ -11725,19 +13014,26 @@ module.exports.testdaterangefmt = {
     },
     testDateRngFmt_fr_RW: function(test) {
         test.expect(36);
-        //dmy
-        for (i=0; i < 4; i++) {
-            fmt[i] = new DateRngFmt({locale:"fr-RW", length: length[i]})
-            templatec00[i] = fmt[i].dateFmt.formats.range["c00"][abbrLength[i]];
-            templatec01[i] = fmt[i].dateFmt.formats.range["c01"][abbrLength[i]];
-            templatec02[i] = fmt[i].dateFmt.formats.range["c02"][abbrLength[i]];
-            templatec03[i] = fmt[i].dateFmt.formats.range["c03"][abbrLength[i]];
-            templatec10[i] = fmt[i].dateFmt.formats.range["c10"][abbrLength[i]];
+        var fmt;
+        var data = setVariables();
+        var length = data["fullLength"];
+        var abbrLength = data["abbrLength"];
 
-            templatec11[i] = fmt[i].dateFmt.formats.range["c11"][abbrLength[i]];
-            templatec12[i] = fmt[i].dateFmt.formats.range["c12"][abbrLength[i]];
-            templatec20[i] = fmt[i].dateFmt.formats.range["c20"][abbrLength[i]];
-            templatec30[i] = fmt[i].dateFmt.formats.range["c30"][abbrLength[i]];
+        var templatec00 = [],templatec01 = [],templatec02 = [],templatec03 = [];
+        var templatec10 = [],templatec11 = [],templatec12 = [],templatec20 = [];
+        var templatec30 = [];
+        for (var i=0; i < 4; i++) {
+            fmt = new DateRngFmt({locale:"fr-RW", length: length[i]})
+            templatec00.push(fmt.dateFmt.formats.range["c00"][abbrLength[i]]);
+            templatec01.push(fmt.dateFmt.formats.range["c01"][abbrLength[i]]);
+            templatec02.push(fmt.dateFmt.formats.range["c02"][abbrLength[i]]);
+            templatec03.push(fmt.dateFmt.formats.range["c03"][abbrLength[i]]);
+            templatec10.push(fmt.dateFmt.formats.range["c10"][abbrLength[i]]);
+
+            templatec11.push(fmt.dateFmt.formats.range["c11"][abbrLength[i]]);
+            templatec12.push(fmt.dateFmt.formats.range["c12"][abbrLength[i]]);
+            templatec20.push(fmt.dateFmt.formats.range["c20"][abbrLength[i]]);
+            templatec30.push(fmt.dateFmt.formats.range["c30"][abbrLength[i]]);
         }
 
         test.equal(templatec00[0], '{sd} {sm} {sy} à {st} – {et}');
@@ -11789,19 +13085,26 @@ module.exports.testdaterangefmt = {
     },
     testDateRngFmt_fr_SN: function(test) {
         test.expect(36);
-        //dmy
-        for (i=0; i < 4; i++) {
-            fmt[i] = new DateRngFmt({locale:"fr-SN", length: length[i]})
-            templatec00[i] = fmt[i].dateFmt.formats.range["c00"][abbrLength[i]];
-            templatec01[i] = fmt[i].dateFmt.formats.range["c01"][abbrLength[i]];
-            templatec02[i] = fmt[i].dateFmt.formats.range["c02"][abbrLength[i]];
-            templatec03[i] = fmt[i].dateFmt.formats.range["c03"][abbrLength[i]];
-            templatec10[i] = fmt[i].dateFmt.formats.range["c10"][abbrLength[i]];
+        var fmt;
+        var data = setVariables();
+        var length = data["fullLength"];
+        var abbrLength = data["abbrLength"];
 
-            templatec11[i] = fmt[i].dateFmt.formats.range["c11"][abbrLength[i]];
-            templatec12[i] = fmt[i].dateFmt.formats.range["c12"][abbrLength[i]];
-            templatec20[i] = fmt[i].dateFmt.formats.range["c20"][abbrLength[i]];
-            templatec30[i] = fmt[i].dateFmt.formats.range["c30"][abbrLength[i]];
+        var templatec00 = [],templatec01 = [],templatec02 = [],templatec03 = [];
+        var templatec10 = [],templatec11 = [],templatec12 = [],templatec20 = [];
+        var templatec30 = [];
+        for (var i=0; i < 4; i++) {
+            fmt = new DateRngFmt({locale:"fr-SN", length: length[i]})
+            templatec00.push(fmt.dateFmt.formats.range["c00"][abbrLength[i]]);
+            templatec01.push(fmt.dateFmt.formats.range["c01"][abbrLength[i]]);
+            templatec02.push(fmt.dateFmt.formats.range["c02"][abbrLength[i]]);
+            templatec03.push(fmt.dateFmt.formats.range["c03"][abbrLength[i]]);
+            templatec10.push(fmt.dateFmt.formats.range["c10"][abbrLength[i]]);
+
+            templatec11.push(fmt.dateFmt.formats.range["c11"][abbrLength[i]]);
+            templatec12.push(fmt.dateFmt.formats.range["c12"][abbrLength[i]]);
+            templatec20.push(fmt.dateFmt.formats.range["c20"][abbrLength[i]]);
+            templatec30.push(fmt.dateFmt.formats.range["c30"][abbrLength[i]]);
         }
 
         test.equal(templatec00[0], '{sd} {sm} {sy} à {st} – {et}');
@@ -11853,19 +13156,26 @@ module.exports.testdaterangefmt = {
     },
     testDateRngFmt_fr_TG: function(test) {
         test.expect(36);
-        //dmy
-        for (i=0; i < 4; i++) {
-            fmt[i] = new DateRngFmt({locale:"fr-TG", length: length[i]})
-            templatec00[i] = fmt[i].dateFmt.formats.range["c00"][abbrLength[i]];
-            templatec01[i] = fmt[i].dateFmt.formats.range["c01"][abbrLength[i]];
-            templatec02[i] = fmt[i].dateFmt.formats.range["c02"][abbrLength[i]];
-            templatec03[i] = fmt[i].dateFmt.formats.range["c03"][abbrLength[i]];
-            templatec10[i] = fmt[i].dateFmt.formats.range["c10"][abbrLength[i]];
+        var fmt;
+        var data = setVariables();
+        var length = data["fullLength"];
+        var abbrLength = data["abbrLength"];
 
-            templatec11[i] = fmt[i].dateFmt.formats.range["c11"][abbrLength[i]];
-            templatec12[i] = fmt[i].dateFmt.formats.range["c12"][abbrLength[i]];
-            templatec20[i] = fmt[i].dateFmt.formats.range["c20"][abbrLength[i]];
-            templatec30[i] = fmt[i].dateFmt.formats.range["c30"][abbrLength[i]];
+        var templatec00 = [],templatec01 = [],templatec02 = [],templatec03 = [];
+        var templatec10 = [],templatec11 = [],templatec12 = [],templatec20 = [];
+        var templatec30 = [];
+        for (var i=0; i < 4; i++) {
+            fmt = new DateRngFmt({locale:"fr-TG", length: length[i]})
+            templatec00.push(fmt.dateFmt.formats.range["c00"][abbrLength[i]]);
+            templatec01.push(fmt.dateFmt.formats.range["c01"][abbrLength[i]]);
+            templatec02.push(fmt.dateFmt.formats.range["c02"][abbrLength[i]]);
+            templatec03.push(fmt.dateFmt.formats.range["c03"][abbrLength[i]]);
+            templatec10.push(fmt.dateFmt.formats.range["c10"][abbrLength[i]]);
+
+            templatec11.push(fmt.dateFmt.formats.range["c11"][abbrLength[i]]);
+            templatec12.push(fmt.dateFmt.formats.range["c12"][abbrLength[i]]);
+            templatec20.push(fmt.dateFmt.formats.range["c20"][abbrLength[i]]);
+            templatec30.push(fmt.dateFmt.formats.range["c30"][abbrLength[i]]);
         }
 
         test.equal(templatec00[0], '{sd} {sm} {sy} à {st} – {et}');
@@ -11917,19 +13227,26 @@ module.exports.testdaterangefmt = {
     },
     testDateRngFmt_ms_SG: function(test) {
         test.expect(36);
-        //dmy
-        for (i=0; i < 4; i++) {
-            fmt[i] = new DateRngFmt({locale:"ms-SG", length: length[i]})
-            templatec00[i] = fmt[i].dateFmt.formats.range["c00"][abbrLength[i]];
-            templatec01[i] = fmt[i].dateFmt.formats.range["c01"][abbrLength[i]];
-            templatec02[i] = fmt[i].dateFmt.formats.range["c02"][abbrLength[i]];
-            templatec03[i] = fmt[i].dateFmt.formats.range["c03"][abbrLength[i]];
-            templatec10[i] = fmt[i].dateFmt.formats.range["c10"][abbrLength[i]];
+        var fmt;
+        var data = setVariables();
+        var length = data["fullLength"];
+        var abbrLength = data["abbrLength"];
 
-            templatec11[i] = fmt[i].dateFmt.formats.range["c11"][abbrLength[i]];
-            templatec12[i] = fmt[i].dateFmt.formats.range["c12"][abbrLength[i]];
-            templatec20[i] = fmt[i].dateFmt.formats.range["c20"][abbrLength[i]];
-            templatec30[i] = fmt[i].dateFmt.formats.range["c30"][abbrLength[i]];
+        var templatec00 = [],templatec01 = [],templatec02 = [],templatec03 = [];
+        var templatec10 = [],templatec11 = [],templatec12 = [],templatec20 = [];
+        var templatec30 = [];
+        for (var i=0; i < 4; i++) {
+            fmt = new DateRngFmt({locale:"ms-SG", length: length[i]})
+            templatec00.push(fmt.dateFmt.formats.range["c00"][abbrLength[i]]);
+            templatec01.push(fmt.dateFmt.formats.range["c01"][abbrLength[i]]);
+            templatec02.push(fmt.dateFmt.formats.range["c02"][abbrLength[i]]);
+            templatec03.push(fmt.dateFmt.formats.range["c03"][abbrLength[i]]);
+            templatec10.push(fmt.dateFmt.formats.range["c10"][abbrLength[i]]);
+
+            templatec11.push(fmt.dateFmt.formats.range["c11"][abbrLength[i]]);
+            templatec12.push(fmt.dateFmt.formats.range["c12"][abbrLength[i]]);
+            templatec20.push(fmt.dateFmt.formats.range["c20"][abbrLength[i]]);
+            templatec30.push(fmt.dateFmt.formats.range["c30"][abbrLength[i]]);
         }
 
         test.equal(templatec00[0], '{sd} {sm} {sy} {st} – {et}');
@@ -11981,19 +13298,26 @@ module.exports.testdaterangefmt = {
     },
     testDateRngFmt_pa_PK: function(test) {
         test.expect(36);
-        //dmy
-        for (i=0; i < 4; i++) {
-            fmt[i] = new DateRngFmt({locale:"pa-PK", length: length[i]})
-            templatec00[i] = fmt[i].dateFmt.formats.range["c00"][abbrLength[i]];
-            templatec01[i] = fmt[i].dateFmt.formats.range["c01"][abbrLength[i]];
-            templatec02[i] = fmt[i].dateFmt.formats.range["c02"][abbrLength[i]];
-            templatec03[i] = fmt[i].dateFmt.formats.range["c03"][abbrLength[i]];
-            templatec10[i] = fmt[i].dateFmt.formats.range["c10"][abbrLength[i]];
+        var fmt;
+        var data = setVariables();
+        var length = data["fullLength"];
+        var abbrLength = data["abbrLength"];
 
-            templatec11[i] = fmt[i].dateFmt.formats.range["c11"][abbrLength[i]];
-            templatec12[i] = fmt[i].dateFmt.formats.range["c12"][abbrLength[i]];
-            templatec20[i] = fmt[i].dateFmt.formats.range["c20"][abbrLength[i]];
-            templatec30[i] = fmt[i].dateFmt.formats.range["c30"][abbrLength[i]];
+        var templatec00 = [],templatec01 = [],templatec02 = [],templatec03 = [];
+        var templatec10 = [],templatec11 = [],templatec12 = [],templatec20 = [];
+        var templatec30 = [];
+        for (var i=0; i < 4; i++) {
+            fmt = new DateRngFmt({locale:"pa-PK", length: length[i]})
+            templatec00.push(fmt.dateFmt.formats.range["c00"][abbrLength[i]]);
+            templatec01.push(fmt.dateFmt.formats.range["c01"][abbrLength[i]]);
+            templatec02.push(fmt.dateFmt.formats.range["c02"][abbrLength[i]]);
+            templatec03.push(fmt.dateFmt.formats.range["c03"][abbrLength[i]]);
+            templatec10.push(fmt.dateFmt.formats.range["c10"][abbrLength[i]]);
+
+            templatec11.push(fmt.dateFmt.formats.range["c11"][abbrLength[i]]);
+            templatec12.push(fmt.dateFmt.formats.range["c12"][abbrLength[i]]);
+            templatec20.push(fmt.dateFmt.formats.range["c20"][abbrLength[i]]);
+            templatec30.push(fmt.dateFmt.formats.range["c30"][abbrLength[i]]);
         }
 
         test.equal(templatec00[0], '{sd} {sm} {sy} {st} – {et}');
@@ -12045,19 +13369,26 @@ module.exports.testdaterangefmt = {
     },
     testDateRngFmt_pt_AO: function(test) {
         test.expect(36);
-        //dmy
-        for (i=0; i < 4; i++) {
-            fmt[i] = new DateRngFmt({locale:"pt-AO", length: length[i]})
-            templatec00[i] = fmt[i].dateFmt.formats.range["c00"][abbrLength[i]];
-            templatec01[i] = fmt[i].dateFmt.formats.range["c01"][abbrLength[i]];
-            templatec02[i] = fmt[i].dateFmt.formats.range["c02"][abbrLength[i]];
-            templatec03[i] = fmt[i].dateFmt.formats.range["c03"][abbrLength[i]];
-            templatec10[i] = fmt[i].dateFmt.formats.range["c10"][abbrLength[i]];
+        var fmt;
+        var data = setVariables();
+        var length = data["fullLength"];
+        var abbrLength = data["abbrLength"];
 
-            templatec11[i] = fmt[i].dateFmt.formats.range["c11"][abbrLength[i]];
-            templatec12[i] = fmt[i].dateFmt.formats.range["c12"][abbrLength[i]];
-            templatec20[i] = fmt[i].dateFmt.formats.range["c20"][abbrLength[i]];
-            templatec30[i] = fmt[i].dateFmt.formats.range["c30"][abbrLength[i]];
+        var templatec00 = [],templatec01 = [],templatec02 = [],templatec03 = [];
+        var templatec10 = [],templatec11 = [],templatec12 = [],templatec20 = [];
+        var templatec30 = [];
+        for (var i=0; i < 4; i++) {
+            fmt = new DateRngFmt({locale:"pt-AO", length: length[i]})
+            templatec00.push(fmt.dateFmt.formats.range["c00"][abbrLength[i]]);
+            templatec01.push(fmt.dateFmt.formats.range["c01"][abbrLength[i]]);
+            templatec02.push(fmt.dateFmt.formats.range["c02"][abbrLength[i]]);
+            templatec03.push(fmt.dateFmt.formats.range["c03"][abbrLength[i]]);
+            templatec10.push(fmt.dateFmt.formats.range["c10"][abbrLength[i]]);
+
+            templatec11.push(fmt.dateFmt.formats.range["c11"][abbrLength[i]]);
+            templatec12.push(fmt.dateFmt.formats.range["c12"][abbrLength[i]]);
+            templatec20.push(fmt.dateFmt.formats.range["c20"][abbrLength[i]]);
+            templatec30.push(fmt.dateFmt.formats.range["c30"][abbrLength[i]]);
         }
 
         test.equal(templatec00[0], '{sd} de {sm} de {sy} às {st} – {et}');
@@ -12109,19 +13440,26 @@ module.exports.testdaterangefmt = {
     },
     testDateRngFmt_pt_GQ: function(test) {
         test.expect(36);
-        //dmy
-        for (i=0; i < 4; i++) {
-            fmt[i] = new DateRngFmt({locale:"pt-GQ", length: length[i]})
-            templatec00[i] = fmt[i].dateFmt.formats.range["c00"][abbrLength[i]];
-            templatec01[i] = fmt[i].dateFmt.formats.range["c01"][abbrLength[i]];
-            templatec02[i] = fmt[i].dateFmt.formats.range["c02"][abbrLength[i]];
-            templatec03[i] = fmt[i].dateFmt.formats.range["c03"][abbrLength[i]];
-            templatec10[i] = fmt[i].dateFmt.formats.range["c10"][abbrLength[i]];
+        var fmt;
+        var data = setVariables();
+        var length = data["fullLength"];
+        var abbrLength = data["abbrLength"];
 
-            templatec11[i] = fmt[i].dateFmt.formats.range["c11"][abbrLength[i]];
-            templatec12[i] = fmt[i].dateFmt.formats.range["c12"][abbrLength[i]];
-            templatec20[i] = fmt[i].dateFmt.formats.range["c20"][abbrLength[i]];
-            templatec30[i] = fmt[i].dateFmt.formats.range["c30"][abbrLength[i]];
+        var templatec00 = [],templatec01 = [],templatec02 = [],templatec03 = [];
+        var templatec10 = [],templatec11 = [],templatec12 = [],templatec20 = [];
+        var templatec30 = [];
+        for (var i=0; i < 4; i++) {
+            fmt = new DateRngFmt({locale:"pt-GQ", length: length[i]})
+            templatec00.push(fmt.dateFmt.formats.range["c00"][abbrLength[i]]);
+            templatec01.push(fmt.dateFmt.formats.range["c01"][abbrLength[i]]);
+            templatec02.push(fmt.dateFmt.formats.range["c02"][abbrLength[i]]);
+            templatec03.push(fmt.dateFmt.formats.range["c03"][abbrLength[i]]);
+            templatec10.push(fmt.dateFmt.formats.range["c10"][abbrLength[i]]);
+
+            templatec11.push(fmt.dateFmt.formats.range["c11"][abbrLength[i]]);
+            templatec12.push(fmt.dateFmt.formats.range["c12"][abbrLength[i]]);
+            templatec20.push(fmt.dateFmt.formats.range["c20"][abbrLength[i]]);
+            templatec30.push(fmt.dateFmt.formats.range["c30"][abbrLength[i]]);
         }
 
         test.equal(templatec00[0], '{sd} de {sm} de {sy} às {st} – {et}');
@@ -12173,19 +13511,26 @@ module.exports.testdaterangefmt = {
     },
     testDateRngFmt_pt_CV: function(test) {
         test.expect(36);
-        //dmy
-        for (i=0; i < 4; i++) {
-            fmt[i] = new DateRngFmt({locale:"pt-CV", length: length[i]})
-            templatec00[i] = fmt[i].dateFmt.formats.range["c00"][abbrLength[i]];
-            templatec01[i] = fmt[i].dateFmt.formats.range["c01"][abbrLength[i]];
-            templatec02[i] = fmt[i].dateFmt.formats.range["c02"][abbrLength[i]];
-            templatec03[i] = fmt[i].dateFmt.formats.range["c03"][abbrLength[i]];
-            templatec10[i] = fmt[i].dateFmt.formats.range["c10"][abbrLength[i]];
+        var fmt;
+        var data = setVariables();
+        var length = data["fullLength"];
+        var abbrLength = data["abbrLength"];
 
-            templatec11[i] = fmt[i].dateFmt.formats.range["c11"][abbrLength[i]];
-            templatec12[i] = fmt[i].dateFmt.formats.range["c12"][abbrLength[i]];
-            templatec20[i] = fmt[i].dateFmt.formats.range["c20"][abbrLength[i]];
-            templatec30[i] = fmt[i].dateFmt.formats.range["c30"][abbrLength[i]];
+        var templatec00 = [],templatec01 = [],templatec02 = [],templatec03 = [];
+        var templatec10 = [],templatec11 = [],templatec12 = [],templatec20 = [];
+        var templatec30 = [];
+        for (var i=0; i < 4; i++) {
+            fmt = new DateRngFmt({locale:"pt-CV", length: length[i]})
+            templatec00.push(fmt.dateFmt.formats.range["c00"][abbrLength[i]]);
+            templatec01.push(fmt.dateFmt.formats.range["c01"][abbrLength[i]]);
+            templatec02.push(fmt.dateFmt.formats.range["c02"][abbrLength[i]]);
+            templatec03.push(fmt.dateFmt.formats.range["c03"][abbrLength[i]]);
+            templatec10.push(fmt.dateFmt.formats.range["c10"][abbrLength[i]]);
+
+            templatec11.push(fmt.dateFmt.formats.range["c11"][abbrLength[i]]);
+            templatec12.push(fmt.dateFmt.formats.range["c12"][abbrLength[i]]);
+            templatec20.push(fmt.dateFmt.formats.range["c20"][abbrLength[i]]);
+            templatec30.push(fmt.dateFmt.formats.range["c30"][abbrLength[i]]);
         }
 
         test.equal(templatec00[0], '{sd} de {sm} de {sy} às {st} – {et}');
@@ -12237,19 +13582,26 @@ module.exports.testdaterangefmt = {
     },
     testDateRngFmt_ur_PK: function(test) {
         test.expect(36);
-        //dmy
-        for (i=0; i < 4; i++) {
-            fmt[i] = new DateRngFmt({locale:"ur-PK", length: length[i]})
-            templatec00[i] = fmt[i].dateFmt.formats.range["c00"][abbrLength[i]];
-            templatec01[i] = fmt[i].dateFmt.formats.range["c01"][abbrLength[i]];
-            templatec02[i] = fmt[i].dateFmt.formats.range["c02"][abbrLength[i]];
-            templatec03[i] = fmt[i].dateFmt.formats.range["c03"][abbrLength[i]];
-            templatec10[i] = fmt[i].dateFmt.formats.range["c10"][abbrLength[i]];
+        var fmt;
+        var data = setVariables();
+        var length = data["fullLength"];
+        var abbrLength = data["abbrLength"];
 
-            templatec11[i] = fmt[i].dateFmt.formats.range["c11"][abbrLength[i]];
-            templatec12[i] = fmt[i].dateFmt.formats.range["c12"][abbrLength[i]];
-            templatec20[i] = fmt[i].dateFmt.formats.range["c20"][abbrLength[i]];
-            templatec30[i] = fmt[i].dateFmt.formats.range["c30"][abbrLength[i]];
+        var templatec00 = [],templatec01 = [],templatec02 = [],templatec03 = [];
+        var templatec10 = [],templatec11 = [],templatec12 = [],templatec20 = [];
+        var templatec30 = [];
+        for (var i=0; i < 4; i++) {
+            fmt = new DateRngFmt({locale:"ur-PK", length: length[i]})
+            templatec00.push(fmt.dateFmt.formats.range["c00"][abbrLength[i]]);
+            templatec01.push(fmt.dateFmt.formats.range["c01"][abbrLength[i]]);
+            templatec02.push(fmt.dateFmt.formats.range["c02"][abbrLength[i]]);
+            templatec03.push(fmt.dateFmt.formats.range["c03"][abbrLength[i]]);
+            templatec10.push(fmt.dateFmt.formats.range["c10"][abbrLength[i]]);
+
+            templatec11.push(fmt.dateFmt.formats.range["c11"][abbrLength[i]]);
+            templatec12.push(fmt.dateFmt.formats.range["c12"][abbrLength[i]]);
+            templatec20.push(fmt.dateFmt.formats.range["c20"][abbrLength[i]]);
+            templatec30.push(fmt.dateFmt.formats.range["c30"][abbrLength[i]]);
         }
 
         test.equal(templatec00[0], '‏{sd} {sm}، {sy} {st} – {et}');
@@ -12301,20 +13653,28 @@ module.exports.testdaterangefmt = {
     },
     testDateRngFmt_zh_Hans_SG: function(test) {
         test.expect(36);
-        //ymd
+        var fmt;        //ymd
         //dmy(short)
-        for (i=0; i < 4; i++) {
-            fmt[i] = new DateRngFmt({locale:"zh-Hans-SG", length: length[i]})
-        
-            templatec00[i] = fmt[i].dateFmt.formats.range["c00"][abbrLength[i]];
-            templatec01[i] = fmt[i].dateFmt.formats.range["c01"][abbrLength[i]];
-            templatec02[i] = fmt[i].dateFmt.formats.range["c02"][abbrLength[i]];
-            templatec03[i] = fmt[i].dateFmt.formats.range["c03"][abbrLength[i]];
-            templatec10[i] = fmt[i].dateFmt.formats.range["c10"][abbrLength[i]];
-            templatec11[i] = fmt[i].dateFmt.formats.range["c11"][abbrLength[i]];
-            templatec12[i] = fmt[i].dateFmt.formats.range["c12"][abbrLength[i]];
-            templatec20[i] = fmt[i].dateFmt.formats.range["c20"][abbrLength[i]];
-            templatec30[i] = fmt[i].dateFmt.formats.range["c30"][abbrLength[i]];
+
+        var data = setVariables();
+        var length = data["fullLength"];
+        var abbrLength = data["abbrLength"];
+
+        var templatec00 = [],templatec01 = [],templatec02 = [],templatec03 = [];
+        var templatec10 = [],templatec11 = [],templatec12 = [],templatec20 = [];
+        var templatec30 = [];
+        for (var i=0; i < 4; i++) {
+            fmt = new DateRngFmt({locale:"zh-Hans-SG", length: length[i]})
+
+            templatec00.push(fmt.dateFmt.formats.range["c00"][abbrLength[i]]);
+            templatec01.push(fmt.dateFmt.formats.range["c01"][abbrLength[i]]);
+            templatec02.push(fmt.dateFmt.formats.range["c02"][abbrLength[i]]);
+            templatec03.push(fmt.dateFmt.formats.range["c03"][abbrLength[i]]);
+            templatec10.push(fmt.dateFmt.formats.range["c10"][abbrLength[i]]);
+            templatec11.push(fmt.dateFmt.formats.range["c11"][abbrLength[i]]);
+            templatec12.push(fmt.dateFmt.formats.range["c12"][abbrLength[i]]);
+            templatec20.push(fmt.dateFmt.formats.range["c20"][abbrLength[i]]);
+            templatec30.push(fmt.dateFmt.formats.range["c30"][abbrLength[i]]);
         }
 
         test.equal(templatec00[0], '{sy}年{sm}月{sd}日 {st} – {et}');
@@ -12366,18 +13726,27 @@ module.exports.testdaterangefmt = {
     },
     testDateRngFmt_zh_Hans_MY: function(test) {
         test.expect(36);
+        var fmt;
+        var data = setVariables();
+        var length = data["fullLength"];
+        var abbrLength = data["abbrLength"];
+
+        var templatec00 = [],templatec01 = [],templatec02 = [],templatec03 = [];
+        var templatec10 = [],templatec11 = [],templatec12 = [],templatec20 = [];
+        var templatec30 = [];
+
         //ymd
-        for (i=0; i < 4; i++) {
-            fmt[i] = new DateRngFmt({locale:"zh-Hans-MY", length: length[i]})
-            templatec00[i] = fmt[i].dateFmt.formats.range["c00"][abbrLength[i]];
-            templatec01[i] = fmt[i].dateFmt.formats.range["c01"][abbrLength[i]];
-            templatec02[i] = fmt[i].dateFmt.formats.range["c02"][abbrLength[i]];
-            templatec03[i] = fmt[i].dateFmt.formats.range["c03"][abbrLength[i]];
-            templatec10[i] = fmt[i].dateFmt.formats.range["c10"][abbrLength[i]];
-            templatec11[i] = fmt[i].dateFmt.formats.range["c11"][abbrLength[i]];
-            templatec12[i] = fmt[i].dateFmt.formats.range["c12"][abbrLength[i]];
-            templatec20[i] = fmt[i].dateFmt.formats.range["c20"][abbrLength[i]];
-            templatec30[i] = fmt[i].dateFmt.formats.range["c30"][abbrLength[i]];
+        for (var i=0; i < 4; i++) {
+            fmt = new DateRngFmt({locale:"zh-Hans-MY", length: length[i]})
+            templatec00.push(fmt.dateFmt.formats.range["c00"][abbrLength[i]]);
+            templatec01.push(fmt.dateFmt.formats.range["c01"][abbrLength[i]]);
+            templatec02.push(fmt.dateFmt.formats.range["c02"][abbrLength[i]]);
+            templatec03.push(fmt.dateFmt.formats.range["c03"][abbrLength[i]]);
+            templatec10.push(fmt.dateFmt.formats.range["c10"][abbrLength[i]]);
+            templatec11.push(fmt.dateFmt.formats.range["c11"][abbrLength[i]]);
+            templatec12.push(fmt.dateFmt.formats.range["c12"][abbrLength[i]]);
+            templatec20.push(fmt.dateFmt.formats.range["c20"][abbrLength[i]]);
+            templatec30.push(fmt.dateFmt.formats.range["c30"][abbrLength[i]]);
         }
 
         test.equal(templatec00[0], '{sy}年{sm}月{sd}日 {st} – {et}');

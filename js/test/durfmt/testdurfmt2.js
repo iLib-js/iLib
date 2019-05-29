@@ -25,57 +25,42 @@ if (typeof(DurationFmt) === "undefined") {
     var DurationFmt = require("../../lib/DurationFmt.js");
 }
 
+function setVariable() {
+    var obj = {};
+    var length = ["full", "long", "medium", "short"];
+    obj.fullLength = length;
+    return obj;
+}
+
 module.exports.testdurfmt2 = {
     setUp: function(callback) {
         ilib.clearCache();
-        
-        length = ["full", "long", "medium", "short"];
-        textfmt = [], clockfmt = [];
-
-        textformatted_1=[], clockformatted_1=[];
-        textformatted_2=[], clockformatted_2=[];
-        textformatted_3=[], clockformatted_3=[];
-        textformatted_4=[], clockformatted_4=[];
-        textformatted_5=[], clockformatted_5=[];
-        textformatted_7=[], clockformatted_7=[];
-        textformatted_9=[], clockformatted_9=[];
-        textformatted_10=[], clockformatted_10=[];
-        textformatted_11=[], clockformatted_11=[];
-        textformatted_15=[], clockformatted_15=[];
-        textformatted_16=[], clockformatted_16=[];
-        textformatted_17=[], clockformatted_17=[];
-        textformatted_18=[], clockformatted_18=[];
-        textformatted_19=[], clockformatted_19=[];
-        textformatted_20=[], clockformatted_20=[];
-        textformatted_21=[], clockformatted_21=[];
-        textformatted_22=[], clockformatted_22=[];
-        textformatted_23=[], clockformatted_23=[];
-        textformatted_24=[], clockformatted_24=[];
-        textformatted_25=[], clockformatted_25=[];
-        textformatted_31=[], clockformatted_31=[];
-        textformatted_32=[], clockformatted_32=[];
-        textformatted_41=[], clockformatted_41=[];
-        textformatted_100=[], clockformatted_100=[];
-
         callback();
     },
     testDurFmt_ar_EG: function(test) {
         test.expect(40);
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
+
+        var textformatted_1 = [],textformatted_2 = [],textformatted_3 = [], textformatted_11 = [], textformatted_100 = [];
+        var clockformatted_1 = [],clockformatted_2 = [], clockformatted_3 = [], clockformatted_11 = [], clockformatted_100 = [];
+
         // 1 2 3 11 100
         for (var i=0; i<4; i++) {
             textfmt = new DurationFmt({locale: "ar-EG", style:"text", length:length[i], useNative:false});
 
-            textformatted_1[i] = textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString();
-            textformatted_2[i] = textfmt.format({year: 2,month: 2,week: 2,day: 2}).toString();
-            textformatted_3[i] = textfmt.format({year: 3,month: 3,week: 3,day: 3}).toString();
-            textformatted_11[i] = textfmt.format({year: 11,month: 11,week: 11,day: 11}).toString();
-            textformatted_100[i] = textfmt.format({year: 100,month: 100,week: 100,day: 100}).toString();
+            textformatted_1.push(textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString());
+            textformatted_2.push(textfmt.format({year: 2,month: 2,week: 2,day: 2}).toString());
+            textformatted_3.push(textfmt.format({year: 3,month: 3,week: 3,day: 3}).toString());
+            textformatted_11.push(textfmt.format({year: 11,month: 11,week: 11,day: 11}).toString());
+            textformatted_100.push(textfmt.format({year: 100,month: 100,week: 100,day: 100}).toString());
 
-            clockformatted_1[i] = textfmt.format({hour: 1,minute: 1,second: 1}).toString();
-            clockformatted_2[i] = textfmt.format({hour: 2,minute: 2,second: 2}).toString();
-            clockformatted_3[i] = textfmt.format({hour: 3,minute: 3,second: 3}).toString();
-            clockformatted_11[i] = textfmt.format({hour: 11,minute: 11,second: 11}).toString();
-            clockformatted_100[i] = textfmt.format({hour: 100,minute: 100,second: 100}).toString();
+            clockformatted_1.push(textfmt.format({hour: 1,minute: 1,second: 1}).toString());
+            clockformatted_2.push(textfmt.format({hour: 2,minute: 2,second: 2}).toString());
+            clockformatted_3.push(textfmt.format({hour: 3,minute: 3,second: 3}).toString());
+            clockformatted_11.push(textfmt.format({hour: 11,minute: 11,second: 11}).toString());
+            clockformatted_100.push(textfmt.format({hour: 100,minute: 100,second: 100}).toString());
         }
 
         test.equal(textformatted_1[0], '‏سنة، وشهر، وأسبوع، ويوم' );
@@ -133,20 +118,27 @@ module.exports.testdurfmt2 = {
     testDurFmt_ar_IQ: function(test) {
         test.expect(40);
         // 1 2 3 11 100
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
+
+        var textformatted_1 = [],textformatted_2 = [],textformatted_3 = [], textformatted_11 = [], textformatted_100 = [];
+        var clockformatted_1 = [],clockformatted_2 = [], clockformatted_3 = [], clockformatted_11 = [], clockformatted_100 = [];
+
         for (var i=0; i<4; i++) {
             textfmt = new DurationFmt({locale: "ar-IQ", style:"text", length:length[i], useNative:false});
 
-            textformatted_1[i] = textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString();
-            textformatted_2[i] = textfmt.format({year: 2,month: 2,week: 2,day: 2}).toString();
-            textformatted_3[i] = textfmt.format({year: 3,month: 3,week: 3,day: 3}).toString();
-            textformatted_11[i] = textfmt.format({year: 11,month: 11,week: 11,day: 11}).toString();
-            textformatted_100[i] = textfmt.format({year: 100,month: 100,week: 100,day: 100}).toString();
+            textformatted_1.push(textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString());
+            textformatted_2.push(textfmt.format({year: 2,month: 2,week: 2,day: 2}).toString());
+            textformatted_3.push(textfmt.format({year: 3,month: 3,week: 3,day: 3}).toString());
+            textformatted_11.push(textfmt.format({year: 11,month: 11,week: 11,day: 11}).toString());
+            textformatted_100.push(textfmt.format({year: 100,month: 100,week: 100,day: 100}).toString());
 
-            clockformatted_1[i] = textfmt.format({hour: 1,minute: 1,second: 1}).toString();
-            clockformatted_2[i] = textfmt.format({hour: 2,minute: 2,second: 2}).toString();
-            clockformatted_3[i] = textfmt.format({hour: 3,minute: 3,second: 3}).toString();
-            clockformatted_11[i] = textfmt.format({hour: 11,minute: 11,second: 11}).toString();
-            clockformatted_100[i] = textfmt.format({hour: 100,minute: 100,second: 100}).toString();
+            clockformatted_1.push(textfmt.format({hour: 1,minute: 1,second: 1}).toString());
+            clockformatted_2.push(textfmt.format({hour: 2,minute: 2,second: 2}).toString());
+            clockformatted_3.push(textfmt.format({hour: 3,minute: 3,second: 3}).toString());
+            clockformatted_11.push(textfmt.format({hour: 11,minute: 11,second: 11}).toString());
+            clockformatted_100.push(textfmt.format({hour: 100,minute: 100,second: 100}).toString());
         }
 
         test.equal(textformatted_1[0], '‏سنة، وشهر، وأسبوع، ويوم' );
@@ -204,20 +196,27 @@ module.exports.testdurfmt2 = {
     testDurFmt_ar_MA: function(test) {
         test.expect(40);
         // 1 2 3 11 100
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
+
+        var textformatted_1 = [],textformatted_2 = [],textformatted_3 = [], textformatted_11 = [], textformatted_100 = [];
+        var clockformatted_1 = [],clockformatted_2 = [], clockformatted_3 = [], clockformatted_11 = [], clockformatted_100 = [];
+
         for (var i=0; i<4; i++) {
             textfmt = new DurationFmt({locale: "ar-US", style:"text", length:length[i], useNative:false});
 
-            textformatted_1[i] = textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString();
-            textformatted_2[i] = textfmt.format({year: 2,month: 2,week: 2,day: 2}).toString();
-            textformatted_3[i] = textfmt.format({year: 3,month: 3,week: 3,day: 3}).toString();
-            textformatted_11[i] = textfmt.format({year: 11,month: 11,week: 11,day: 11}).toString();
-            textformatted_100[i] = textfmt.format({year: 100,month: 100,week: 100,day: 100}).toString();
+            textformatted_1.push(textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString());
+            textformatted_2.push(textfmt.format({year: 2,month: 2,week: 2,day: 2}).toString());
+            textformatted_3.push(textfmt.format({year: 3,month: 3,week: 3,day: 3}).toString());
+            textformatted_11.push(textfmt.format({year: 11,month: 11,week: 11,day: 11}).toString());
+            textformatted_100.push(textfmt.format({year: 100,month: 100,week: 100,day: 100}).toString());
 
-            clockformatted_1[i] = textfmt.format({hour: 1,minute: 1,second: 1}).toString();
-            clockformatted_2[i] = textfmt.format({hour: 2,minute: 2,second: 2}).toString();
-            clockformatted_3[i] = textfmt.format({hour: 3,minute: 3,second: 3}).toString();
-            clockformatted_11[i] = textfmt.format({hour: 11,minute: 11,second: 11}).toString();
-            clockformatted_100[i] = textfmt.format({hour: 100,minute: 100,second: 100}).toString();
+            clockformatted_1.push(textfmt.format({hour: 1,minute: 1,second: 1}).toString());
+            clockformatted_2.push(textfmt.format({hour: 2,minute: 2,second: 2}).toString());
+            clockformatted_3.push(textfmt.format({hour: 3,minute: 3,second: 3}).toString());
+            clockformatted_11.push(textfmt.format({hour: 11,minute: 11,second: 11}).toString());
+            clockformatted_100.push(textfmt.format({hour: 100,minute: 100,second: 100}).toString());
         }
 
         test.equal(textformatted_1[0], '‏سنة، وشهر، وأسبوع، ويوم' );
@@ -274,15 +273,21 @@ module.exports.testdurfmt2 = {
     },
     testDurFmt_as_IN: function(test) {
         test.expect(16);
-        
+
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
+
+        var textformatted_1 = [],textformatted_2 = [];
+        var clockformatted_1 = [],clockformatted_2 = [];
         for (var i=0; i<4; i++) {
             textfmt = new DurationFmt({locale: "as-IN", style:"text", length:length[i], useNative:false});
 
-            textformatted_1[i] = textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString();
-            textformatted_2[i] = textfmt.format({year: 2,month: 2,week: 2,day: 2}).toString();
+            textformatted_1.push(textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString());
+            textformatted_2.push(textfmt.format({year: 2,month: 2,week: 2,day: 2}).toString());
 
-            clockformatted_1[i] = textfmt.format({hour: 1,minute: 1,second: 1}).toString();
-            clockformatted_2[i] = textfmt.format({hour: 2,minute: 2,second: 2}).toString();
+            clockformatted_1.push(textfmt.format({hour: 1,minute: 1,second: 1}).toString());
+            clockformatted_2.push(textfmt.format({hour: 2,minute: 2,second: 2}).toString());
         }
 
         // CLDR 34 change (all)
@@ -311,15 +316,22 @@ module.exports.testdurfmt2 = {
     },
     testDurFmt_bg_BG: function(test) {
         test.expect(16);
-        //1,2
+
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
+
+        var textformatted_1 = [],textformatted_2 = [];
+        var clockformatted_1 = [],clockformatted_2 = [];
+
         for (var i=0; i<4; i++) {
             textfmt = new DurationFmt({locale: "bg-BG", style:"text", length:length[i]});
 
-            textformatted_1[i] = textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString();
-            textformatted_2[i] = textfmt.format({year: 2,month: 2,week: 2,day: 2}).toString();
+            textformatted_1.push(textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString());
+            textformatted_2.push(textfmt.format({year: 2,month: 2,week: 2,day: 2}).toString());
 
-            clockformatted_1[i] = textfmt.format({hour: 1,minute: 1,second: 1}).toString();
-            clockformatted_2[i] = textfmt.format({hour: 2,minute: 2,second: 2}).toString();
+            clockformatted_1.push(textfmt.format({hour: 1,minute: 1,second: 1}).toString());
+            clockformatted_2.push(textfmt.format({hour: 2,minute: 2,second: 2}).toString());
         }
 
         test.equal(textformatted_1[0], '1 година, 1 месец, 1 седмица и 1 ден');
@@ -346,15 +358,22 @@ module.exports.testdurfmt2 = {
     },
     testDurFmt_bn_IN: function(test) {
         test.expect(16);
-        //1,18
+
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
+
+        var textformatted_1 = [],textformatted_18 = [];
+        var clockformatted_1 = [],clockformatted_18 = [];
+
         for (var i=0; i<4; i++) {
             textfmt = new DurationFmt({locale: "bn-IN", style:"text", length:length[i], useNative:false});
 
-            textformatted_1[i] = textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString();
-            textformatted_18[i] = textfmt.format({year: 18,month: 18,week: 18,day: 18}).toString();
+            textformatted_1.push(textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString());
+            textformatted_18.push(textfmt.format({year: 18,month: 18,week: 18,day: 18}).toString());
 
-            clockformatted_1[i] = textfmt.format({hour: 1,minute: 1,second: 1}).toString();
-            clockformatted_18[i] = textfmt.format({hour: 18,minute: 18,second: 18}).toString();
+            clockformatted_1.push(textfmt.format({hour: 1,minute: 1,second: 1}).toString());
+            clockformatted_18.push(textfmt.format({hour: 18,minute: 18,second: 18}).toString());
         }
 
         test.equal(textformatted_1[0], '1 বছর, 1 মাস, 1 সপ্তাহ, 1 দিন');
@@ -377,22 +396,29 @@ module.exports.testdurfmt2 = {
         test.equal(clockformatted_18[2], '18 ঘঃ, 18 মিঃ, 18 সেঃ');
         test.equal(clockformatted_18[3], '18 ঘঃ, 18 মিঃ, 18 সেঃ');
 
-
         test.done();
     },
     testDurFmt_bs_Latn_BA: function(test) {
         test.expect(24);
         //1,4,5
+
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
+
+        var textformatted_1 = [],textformatted_4 = [], textformatted_5 = [];
+        var clockformatted_1 = [],clockformatted_4 = [], clockformatted_5 = [];
+
         for (var i=0; i<4; i++) {
             textfmt = new DurationFmt({locale: "bs-Latn-BA", style:"text", length:length[i]});
 
-            textformatted_1[i] = textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString();
-            textformatted_4[i] = textfmt.format({year: 4,month: 4,week: 4,day: 4}).toString();
-            textformatted_5[i] = textfmt.format({year: 5,month: 5,week: 5,day: 5}).toString();
+            textformatted_1.push(textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString());
+            textformatted_4.push(textfmt.format({year: 4,month: 4,week: 4,day: 4}).toString());
+            textformatted_5.push(textfmt.format({year: 5,month: 5,week: 5,day: 5}).toString());
 
-            clockformatted_1[i] = textfmt.format({hour: 1,minute: 1,second: 1}).toString();
-            clockformatted_4[i] = textfmt.format({hour: 4,minute: 4,second: 4}).toString();
-            clockformatted_5[i] = textfmt.format({hour: 5,minute: 5,second: 5}).toString();
+            clockformatted_1.push(textfmt.format({hour: 1,minute: 1,second: 1}).toString());
+            clockformatted_4.push(textfmt.format({hour: 4,minute: 4,second: 4}).toString());
+            clockformatted_5.push(textfmt.format({hour: 5,minute: 5,second: 5}).toString());
         }
 
         test.equal(textformatted_1[0], '1 godina, 1 mjesec, 1 sedmica i 1 dan');
@@ -430,16 +456,23 @@ module.exports.testdurfmt2 = {
     testDurFmt_bs_Latn_ME: function(test) {
         test.expect(24);
         // 1,2,20
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
+
+        var textformatted_1 = [],textformatted_2 = [], textformatted_20 = [];
+        var clockformatted_1 = [],clockformatted_2 = [], clockformatted_20 = [];
+
         for (var i=0; i<4; i++) {
             textfmt = new DurationFmt({locale: "bs-Latn-ME", style:"text", length:length[i]});
 
-            textformatted_1[i] = textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString();
-            textformatted_2[i] = textfmt.format({year: 2,month: 2,week: 2,day: 2}).toString();
-            textformatted_20[i] = textfmt.format({year: 20,month: 20,week: 20,day: 20}).toString();
+            textformatted_1.push(textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString());
+            textformatted_2.push(textfmt.format({year: 2,month: 2,week: 2,day: 2}).toString());
+            textformatted_20.push(textfmt.format({year: 20,month: 20,week: 20,day: 20}).toString());
 
-            clockformatted_1[i] = textfmt.format({hour: 1,minute: 1,second: 1}).toString();
-            clockformatted_2[i] = textfmt.format({hour: 2,minute: 2,second: 2}).toString();
-            clockformatted_20[i] = textfmt.format({hour: 20,minute: 20,second: 20}).toString();
+            clockformatted_1.push(textfmt.format({hour: 1,minute: 1,second: 1}).toString());
+            clockformatted_2.push(textfmt.format({hour: 2,minute: 2,second: 2}).toString());
+            clockformatted_20.push(textfmt.format({hour: 20,minute: 20,second: 20}).toString());
         }
 
         test.equal(textformatted_1[0], '1 godina, 1 mjesec, 1 sedmica i 1 dan');
@@ -477,16 +510,23 @@ module.exports.testdurfmt2 = {
     testDurFmt_cs_CZ: function(test) {
         test.expect(24);
         // 1,2,5
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
+
+        var textformatted_1 = [],textformatted_2 = [], textformatted_5 = [];
+        var clockformatted_1 = [],clockformatted_2 = [], clockformatted_5 = [];
+
         for (var i=0; i<4; i++) {
             textfmt = new DurationFmt({locale: "cs-CZ", style:"text", length:length[i]});
 
-            textformatted_1[i] = textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString();
-            textformatted_2[i] = textfmt.format({year: 2,month: 2,week: 2,day: 2}).toString();
-            textformatted_5[i] = textfmt.format({year: 5,month: 5,week: 5,day: 5}).toString();
+            textformatted_1.push(textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString());
+            textformatted_2.push(textfmt.format({year: 2,month: 2,week: 2,day: 2}).toString());
+            textformatted_5.push(textfmt.format({year: 5,month: 5,week: 5,day: 5}).toString());
 
-            clockformatted_1[i] = textfmt.format({hour: 1,minute: 1,second: 1}).toString();
-            clockformatted_2[i] = textfmt.format({hour: 2,minute: 2,second: 2}).toString();
-            clockformatted_5[i] = textfmt.format({hour: 5,minute: 5,second: 5}).toString();
+            clockformatted_1.push(textfmt.format({hour: 1,minute: 1,second: 1}).toString());
+            clockformatted_2.push(textfmt.format({hour: 2,minute: 2,second: 2}).toString());
+            clockformatted_5.push(textfmt.format({hour: 5,minute: 5,second: 5}).toString());
         }
 
         test.equal(textformatted_1[0], '1 rok, 1 měsíc, 1 týden a 1 den');
@@ -524,14 +564,21 @@ module.exports.testdurfmt2 = {
     testDurFmt_da_DK: function(test) {
         test.expect(16);
         // 1,2
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
+
+        var textformatted_1 = [],textformatted_2 = [];
+        var clockformatted_1 = [],clockformatted_2 = [];
+
         for (var i=0; i<4; i++) {
             textfmt = new DurationFmt({locale: "da-DK", style:"text", length:length[i]});
 
-            textformatted_1[i] = textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString();
-            textformatted_2[i] = textfmt.format({year: 2,month: 2,week: 2,day: 2}).toString();
+            textformatted_1.push(textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString());
+            textformatted_2.push(textfmt.format({year: 2,month: 2,week: 2,day: 2}).toString());
 
-            clockformatted_1[i] = textfmt.format({hour: 1,minute: 1,second: 1}).toString();
-            clockformatted_2[i] = textfmt.format({hour: 2,minute: 2,second: 2}).toString();
+            clockformatted_1.push(textfmt.format({hour: 1,minute: 1,second: 1}).toString());
+            clockformatted_2.push(textfmt.format({hour: 2,minute: 2,second: 2}).toString());
         }
 
         test.equal(textformatted_1[0], '1 år, 1 måned, 1 uge og 1 dag');
@@ -559,14 +606,21 @@ module.exports.testdurfmt2 = {
     testDurFmt_de_AT: function(test) {
         test.expect(16);
         // 1,2
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
+
+        var textformatted_1 = [],textformatted_2 = [];
+        var clockformatted_1 = [],clockformatted_2 = [];
+
         for (var i=0; i<4; i++) {
             textfmt = new DurationFmt({locale: "de-AT", style:"text", length:length[i]});
 
-            textformatted_1[i] = textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString();
-            textformatted_2[i] = textfmt.format({year: 2,month: 2,week: 2,day: 2}).toString();
+            textformatted_1.push(textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString());
+            textformatted_2.push(textfmt.format({year: 2,month: 2,week: 2,day: 2}).toString());
 
-            clockformatted_1[i] = textfmt.format({hour: 1,minute: 1,second: 1}).toString();
-            clockformatted_2[i] = textfmt.format({hour: 2,minute: 2,second: 2}).toString();
+            clockformatted_1.push(textfmt.format({hour: 1,minute: 1,second: 1}).toString());
+            clockformatted_2.push(textfmt.format({hour: 2,minute: 2,second: 2}).toString());
         }
 
         test.equal(textformatted_1[0], '1 Jahr, 1 Monat, 1 Woche und 1 Tag');
@@ -594,13 +648,20 @@ module.exports.testdurfmt2 = {
     testDurFmt_de_CH: function(test) {
         test.expect(16);
         // 1,2
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
+
+        var textformatted_1 = [],textformatted_2 = [];
+        var clockformatted_1 = [],clockformatted_2 = [];
+
         for (var i=0; i<4; i++) {
             textfmt = new DurationFmt({locale: "de-CH", style:"text", length:length[i]});
-            textformatted_1[i] = textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString();
-            textformatted_2[i] = textfmt.format({year: 2,month: 2,week: 2,day: 2}).toString();
+            textformatted_1.push(textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString());
+            textformatted_2.push(textfmt.format({year: 2,month: 2,week: 2,day: 2}).toString());
 
-            clockformatted_1[i] = textfmt.format({hour: 1,minute: 1,second: 1}).toString();
-            clockformatted_2[i] = textfmt.format({hour: 2,minute: 2,second: 2}).toString();
+            clockformatted_1.push(textfmt.format({hour: 1,minute: 1,second: 1}).toString());
+            clockformatted_2.push(textfmt.format({hour: 2,minute: 2,second: 2}).toString());
         }
 
         test.equal(textformatted_1[0], '1 Jahr, 1 Monat, 1 Woche und 1 Tag');
@@ -628,13 +689,20 @@ module.exports.testdurfmt2 = {
     testDurFmt_de_DE: function(test) {
         test.expect(16);
         // 1,16
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
+
+        var textformatted_1 = [],textformatted_16 = [];
+        var clockformatted_1 = [],clockformatted_16 = [];
+
         for (var i=0; i<4; i++) {
             textfmt = new DurationFmt({locale: "de-DE", style:"text", length:length[i]});
-            textformatted_1[i] = textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString();
-            textformatted_16[i] = textfmt.format({year: 16,month: 16,week: 16,day: 16}).toString();
+            textformatted_1.push(textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString());
+            textformatted_16.push(textfmt.format({year: 16,month: 16,week: 16,day: 16}).toString());
 
-            clockformatted_1[i] = textfmt.format({hour: 1,minute: 1,second: 1}).toString();
-            clockformatted_16[i] = textfmt.format({hour: 16,minute: 16,second: 16}).toString();
+            clockformatted_1.push(textfmt.format({hour: 1,minute: 1,second: 1}).toString());
+            clockformatted_16.push(textfmt.format({hour: 16,minute: 16,second: 16}).toString());
         }
 
         test.equal(textformatted_1[0], '1 Jahr, 1 Monat, 1 Woche und 1 Tag');
@@ -662,13 +730,20 @@ module.exports.testdurfmt2 = {
     testDurFmt_de_LU: function(test) {
         test.expect(16);
         // 1,17
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
+
+        var textformatted_1 = [],textformatted_17 = [];
+        var clockformatted_1 = [],clockformatted_17 = [];
+
         for (var i=0; i<4; i++) {
             textfmt = new DurationFmt({locale: "de-LU", style:"text", length:length[i]});
-            textformatted_1[i] = textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString();
-            textformatted_17[i] = textfmt.format({year: 17,month: 17,week: 17,day: 17}).toString();
+            textformatted_1.push(textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString());
+            textformatted_17.push(textfmt.format({year: 17,month: 17,week: 17,day: 17}).toString());
 
-            clockformatted_1[i] = textfmt.format({hour: 1,minute: 1,second: 1}).toString();
-            clockformatted_17[i] = textfmt.format({hour: 17,minute: 17,second: 17}).toString();
+            clockformatted_1.push(textfmt.format({hour: 1,minute: 1,second: 1}).toString());
+            clockformatted_17.push(textfmt.format({hour: 17,minute: 17,second: 17}).toString());
         }
 
         test.equal(textformatted_1[0], '1 Jahr, 1 Monat, 1 Woche und 1 Tag');
@@ -696,14 +771,21 @@ module.exports.testdurfmt2 = {
     testDurFmt_el_CY: function(test) {
         test.expect(16);
         // 1,2
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
+
+        var textformatted_1 = [],textformatted_2 = [];
+        var clockformatted_1 = [],clockformatted_2 = [];
+
         for (var i=0; i<4; i++) {
             textfmt = new DurationFmt({locale: "el-CY", style:"text", length:length[i]});
 
-            textformatted_1[i] = textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString();
-            textformatted_2[i] = textfmt.format({year: 2,month: 2,week: 2,day: 2}).toString();
+            textformatted_1.push(textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString());
+            textformatted_2.push(textfmt.format({year: 2,month: 2,week: 2,day: 2}).toString());
 
-            clockformatted_1[i] = textfmt.format({hour: 1,minute: 1,second: 1}).toString();
-            clockformatted_2[i] = textfmt.format({hour: 2,minute: 2,second: 2}).toString();
+            clockformatted_1.push(textfmt.format({hour: 1,minute: 1,second: 1}).toString());
+            clockformatted_2.push(textfmt.format({hour: 2,minute: 2,second: 2}).toString());
         }
 
         test.equal(textformatted_1[0], '1 έτος, 1 μήνας, 1 εβδομάδα, 1 ημέρα');
@@ -731,14 +813,21 @@ module.exports.testdurfmt2 = {
     testDurFmt_el_GR: function(test) {
         test.expect(16);
         // 1,17
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
+
+        var textformatted_1 = [],textformatted_17 = [];
+        var clockformatted_1 = [],clockformatted_17 = [];
+
         for (var i=0; i<4; i++) {
             textfmt = new DurationFmt({locale: "el-GR", style:"text", length:length[i]});
 
-            textformatted_1[i] = textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString();
-            textformatted_17[i] = textfmt.format({year: 17,month: 17,week: 17,day: 17}).toString();
+            textformatted_1.push(textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString());
+            textformatted_17.push(textfmt.format({year: 17,month: 17,week: 17,day: 17}).toString());
 
-            clockformatted_1[i] = textfmt.format({hour: 1,minute: 1,second: 1}).toString();
-            clockformatted_17[i] = textfmt.format({hour: 17,minute: 17,second: 17}).toString();
+            clockformatted_1.push(textfmt.format({hour: 1,minute: 1,second: 1}).toString());
+            clockformatted_17.push(textfmt.format({hour: 17,minute: 17,second: 17}).toString());
         }
 
         test.equal(textformatted_1[0], '1 έτος, 1 μήνας, 1 εβδομάδα, 1 ημέρα');
@@ -766,14 +855,21 @@ module.exports.testdurfmt2 = {
     testDurFmt_en_AM: function(test) {
         test.expect(16);
         // 1,2
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
+
+        var textformatted_1 = [],textformatted_2 = [];
+        var clockformatted_1 = [],clockformatted_2 = [];
+
         for (var i=0; i<4; i++) {
             textfmt = new DurationFmt({locale: "en-AM", style:"text", length:length[i]});
 
-            textformatted_1[i] = textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString();
-            textformatted_2[i] = textfmt.format({year: 2,month: 2,week: 2,day: 2}).toString();
+            textformatted_1.push(textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString());
+            textformatted_2.push(textfmt.format({year: 2,month: 2,week: 2,day: 2}).toString());
 
-            clockformatted_1[i] = textfmt.format({hour: 1,minute: 1,second: 1}).toString();
-            clockformatted_2[i] = textfmt.format({hour: 2,minute: 2,second: 2}).toString();
+            clockformatted_1.push(textfmt.format({hour: 1,minute: 1,second: 1}).toString());
+            clockformatted_2.push(textfmt.format({hour: 2,minute: 2,second: 2}).toString());
         }
 
         test.equal(textformatted_1[0], '1 year, 1 month, 1 week, 1 day');
@@ -801,13 +897,20 @@ module.exports.testdurfmt2 = {
     testDurFmt_en_AU: function(test) {
         test.expect(16);
         // 1.16
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
+
+        var textformatted_1 = [],textformatted_16 = [];
+        var clockformatted_1 = [],clockformatted_16 = [];
+
         for (var i=0; i<4; i++) {
             textfmt = new DurationFmt({locale: "en-AU", style:"text", length:length[i]});
-            textformatted_1[i] = textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString();
-            textformatted_16[i] = textfmt.format({year: 16,month: 16,week: 16,day: 16}).toString();
+            textformatted_1.push(textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString());
+            textformatted_16.push(textfmt.format({year: 16,month: 16,week: 16,day: 16}).toString());
 
-            clockformatted_1[i] = textfmt.format({hour: 1,minute: 1,second: 1}).toString();
-            clockformatted_16[i] = textfmt.format({hour: 16,minute: 16,second: 16}).toString();
+            clockformatted_1.push(textfmt.format({hour: 1,minute: 1,second: 1}).toString());
+            clockformatted_16.push(textfmt.format({hour: 16,minute: 16,second: 16}).toString());
         }
 
         test.equal(textformatted_1[0], '1 year, 1 month, 1 week, 1 day');
@@ -835,13 +938,20 @@ module.exports.testdurfmt2 = {
     testDurFmt_en_AZ: function(test) {
         test.expect(16);
         // 1,17
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
+
+        var textformatted_1 = [],textformatted_17 = [];
+        var clockformatted_1 = [],clockformatted_17 = [];
+
         for (var i=0; i<4; i++) {
             textfmt = new DurationFmt({locale: "en-AZ", style:"text", length:length[i]});
-            textformatted_1[i] = textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString();
-            textformatted_17[i] = textfmt.format({year: 17,month: 17,week: 17,day: 17}).toString();
+            textformatted_1.push(textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString());
+            textformatted_17.push(textfmt.format({year: 17,month: 17,week: 17,day: 17}).toString());
 
-            clockformatted_1[i] = textfmt.format({hour: 1,minute: 1,second: 1}).toString();
-            clockformatted_17[i] = textfmt.format({hour: 17,minute: 17,second: 17}).toString();
+            clockformatted_1.push(textfmt.format({hour: 1,minute: 1,second: 1}).toString());
+            clockformatted_17.push(textfmt.format({hour: 17,minute: 17,second: 17}).toString());
         }
 
         test.equal(textformatted_1[0], '1 year, 1 month, 1 week, 1 day');
@@ -869,13 +979,20 @@ module.exports.testdurfmt2 = {
     testDurFmt_en_CA: function(test) {
         test.expect(16);
         // 1,2
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
+
+        var textformatted_1 = [],textformatted_2 = [];
+        var clockformatted_1 = [],clockformatted_2 = [];
+
         for (var i=0; i<4; i++) {
             textfmt = new DurationFmt({locale: "en-CA", style:"text", length:length[i]});
-            textformatted_1[i] = textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString();
-            textformatted_2[i] = textfmt.format({year: 2,month: 2,week: 2,day: 2}).toString();
+            textformatted_1.push(textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString());
+            textformatted_2.push(textfmt.format({year: 2,month: 2,week: 2,day: 2}).toString());
 
-            clockformatted_1[i] = textfmt.format({hour: 1,minute: 1,second: 1}).toString();
-            clockformatted_2[i] = textfmt.format({hour: 2,minute: 2,second: 2}).toString();
+            clockformatted_1.push(textfmt.format({hour: 1,minute: 1,second: 1}).toString());
+            clockformatted_2.push(textfmt.format({hour: 2,minute: 2,second: 2}).toString());
         }
         //// CLDr 34 change
 
@@ -904,14 +1021,21 @@ module.exports.testdurfmt2 = {
     testDurFmt_en_GB: function(test) {
         test.expect(16);
         // 1,2
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
+
+        var textformatted_1 = [],textformatted_2 = [];
+        var clockformatted_1 = [],clockformatted_2 = [];
+
         for (var i=0; i<4; i++) {
             textfmt = new DurationFmt({locale: "en-GB", style:"text", length:length[i]});
 
-            textformatted_1[i] = textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString();
-            textformatted_2[i] = textfmt.format({year: 2,month: 2,week: 2,day: 2}).toString();
+            textformatted_1.push(textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString());
+            textformatted_2.push(textfmt.format({year: 2,month: 2,week: 2,day: 2}).toString());
 
-            clockformatted_1[i] = textfmt.format({hour: 1,minute: 1,second: 1}).toString();
-            clockformatted_2[i] = textfmt.format({hour: 2,minute: 2,second: 2}).toString();
+            clockformatted_1.push(textfmt.format({hour: 1,minute: 1,second: 1}).toString());
+            clockformatted_2.push(textfmt.format({hour: 2,minute: 2,second: 2}).toString());
         }
 
         test.equal(textformatted_1[0], '1 year, 1 month, 1 week, 1 day');
@@ -939,14 +1063,21 @@ module.exports.testdurfmt2 = {
     testDurFmt_en_GH: function(test) {
         test.expect(16);
         // 1,2
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
+
+        var textformatted_1 = [],textformatted_2 = [];
+        var clockformatted_1 = [],clockformatted_2 = [];
+
         for (var i=0; i<4; i++) {
             textfmt = new DurationFmt({locale: "en-GH", style:"text", length:length[i]});
 
-            textformatted_1[i] = textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString();
-            textformatted_2[i] = textfmt.format({year: 2,month: 2,week: 2,day: 2}).toString();
+            textformatted_1.push(textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString());
+            textformatted_2.push(textfmt.format({year: 2,month: 2,week: 2,day: 2}).toString());
 
-            clockformatted_1[i] = textfmt.format({hour: 1,minute: 1,second: 1}).toString();
-            clockformatted_2[i] = textfmt.format({hour: 2,minute: 2,second: 2}).toString();
+            clockformatted_1.push(textfmt.format({hour: 1,minute: 1,second: 1}).toString());
+            clockformatted_2.push(textfmt.format({hour: 2,minute: 2,second: 2}).toString());
         }
 
         test.equal(textformatted_1[0], '1 year, 1 month, 1 week, 1 day');
@@ -974,14 +1105,20 @@ module.exports.testdurfmt2 = {
     testDurFmt_en_HK: function(test) {
         test.expect(16);
         // 1,2
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
+
+        var textformatted_1 = [],textformatted_2 = [];
+        var clockformatted_1 = [],clockformatted_2 = [];
         for (var i=0; i<4; i++) {
             textfmt = new DurationFmt({locale: "en-HK", style:"text", length:length[i]});
 
-            textformatted_1[i] = textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString();
-            textformatted_2[i] = textfmt.format({year: 2,month: 2,week: 2,day: 2}).toString();
+            textformatted_1.push(textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString());
+            textformatted_2.push(textfmt.format({year: 2,month: 2,week: 2,day: 2}).toString());
 
-            clockformatted_1[i] = textfmt.format({hour: 1,minute: 1,second: 1}).toString();
-            clockformatted_2[i] = textfmt.format({hour: 2,minute: 2,second: 2}).toString();
+            clockformatted_1.push(textfmt.format({hour: 1,minute: 1,second: 1}).toString());
+            clockformatted_2.push(textfmt.format({hour: 2,minute: 2,second: 2}).toString());
         }
 
         test.equal(textformatted_1[0], '1 year, 1 month, 1 week, 1 day');
@@ -1009,13 +1146,20 @@ module.exports.testdurfmt2 = {
     testDurFmt_en_IE: function(test) {
         test.expect(16);
         // 1,2
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
+
+        var textformatted_1 = [],textformatted_2 = [];
+        var clockformatted_1 = [],clockformatted_2 = [];
+
         for (var i=0; i<4; i++) {
             textfmt = new DurationFmt({locale: "en-IE", style:"text", length:length[i]});
-            textformatted_1[i] = textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString();
-            textformatted_2[i] = textfmt.format({year: 2,month: 2,week: 2,day: 2}).toString();
+            textformatted_1.push(textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString());
+            textformatted_2.push(textfmt.format({year: 2,month: 2,week: 2,day: 2}).toString());
 
-            clockformatted_1[i] = textfmt.format({hour: 1,minute: 1,second: 1}).toString();
-            clockformatted_2[i] = textfmt.format({hour: 2,minute: 2,second: 2}).toString();
+            clockformatted_1.push(textfmt.format({hour: 1,minute: 1,second: 1}).toString());
+            clockformatted_2.push(textfmt.format({hour: 2,minute: 2,second: 2}).toString());
         }
 
         test.equal(textformatted_1[0], '1 year, 1 month, 1 week, 1 day');
@@ -1043,14 +1187,21 @@ module.exports.testdurfmt2 = {
     testDurFmt_en_IN: function(test) {
         test.expect(16);
         // 1,2
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
+
+        var textformatted_1 = [],textformatted_2 = [];
+        var clockformatted_1 = [],clockformatted_2 = [];
+
         for (var i=0; i<4; i++) {
             textfmt = new DurationFmt({locale: "en-IN", style:"text", length:length[i]});
 
-            textformatted_1[i] = textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString();
-            textformatted_2[i] = textfmt.format({year: 2,month: 2,week: 2,day: 2}).toString();
+            textformatted_1.push(textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString());
+            textformatted_2.push(textfmt.format({year: 2,month: 2,week: 2,day: 2}).toString());
 
-            clockformatted_1[i] = textfmt.format({hour: 1,minute: 1,second: 1}).toString();
-            clockformatted_2[i] = textfmt.format({hour: 2,minute: 2,second: 2}).toString();
+            clockformatted_1.push(textfmt.format({hour: 1,minute: 1,second: 1}).toString());
+            clockformatted_2.push(textfmt.format({hour: 2,minute: 2,second: 2}).toString());
         }
 
         test.equal(textformatted_1[0], '1 year, 1 month, 1 week, 1 day');
@@ -1078,13 +1229,19 @@ module.exports.testdurfmt2 = {
     testDurFmt_en_IS: function(test) {
         test.expect(16);
         // 1,2
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
+
+        var textformatted_1 = [],textformatted_2 = [];
+        var clockformatted_1 = [],clockformatted_2 = [];
         for (var i=0; i<4; i++) {
             textfmt = new DurationFmt({locale: "en-IS", style:"text", length:length[i]});
-            textformatted_1[i] = textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString();
-            textformatted_2[i] = textfmt.format({year: 2,month: 2,week: 2,day: 2}).toString();
+            textformatted_1.push(textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString());
+            textformatted_2.push(textfmt.format({year: 2,month: 2,week: 2,day: 2}).toString());
 
-            clockformatted_1[i] = textfmt.format({hour: 1,minute: 1,second: 1}).toString();
-            clockformatted_2[i] = textfmt.format({hour: 2,minute: 2,second: 2}).toString();
+            clockformatted_1.push(textfmt.format({hour: 1,minute: 1,second: 1}).toString());
+            clockformatted_2.push(textfmt.format({hour: 2,minute: 2,second: 2}).toString());
         }
 
         test.equal(textformatted_1[0], '1 year, 1 month, 1 week, 1 day');
@@ -1112,13 +1269,19 @@ module.exports.testdurfmt2 = {
     testDurFmt_en_JP: function(test) {
         test.expect(16);
         // 1,2
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
+
+        var textformatted_1 = [],textformatted_2 = [];
+        var clockformatted_1 = [],clockformatted_2 = [];
         for (var i=0; i<4; i++) {
             textfmt = new DurationFmt({locale: "en-JP", style:"text", length:length[i]});
-            textformatted_1[i] = textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString();
-            textformatted_2[i] = textfmt.format({year: 2,month: 2,week: 2,day: 2}).toString();
+            textformatted_1.push(textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString());
+            textformatted_2.push(textfmt.format({year: 2,month: 2,week: 2,day: 2}).toString());
 
-            clockformatted_1[i] = textfmt.format({hour: 1,minute: 1,second: 1}).toString();
-            clockformatted_2[i] = textfmt.format({hour: 2,minute: 2,second: 2}).toString();
+            clockformatted_1.push(textfmt.format({hour: 1,minute: 1,second: 1}).toString());
+            clockformatted_2.push(textfmt.format({hour: 2,minute: 2,second: 2}).toString());
         }
 
         test.equal(textformatted_1[0], '1 year, 1 month, 1 week, 1 day');
@@ -1146,13 +1309,19 @@ module.exports.testdurfmt2 = {
     testDurFmt_en_KE: function(test) {
         test.expect(16);
         // 1,2
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
+
+        var textformatted_1 = [],textformatted_2 = [];
+        var clockformatted_1 = [],clockformatted_2 = [];
         for (var i=0; i<4; i++) {
             textfmt = new DurationFmt({locale: "en-KE", style:"text", length:length[i]});
-            textformatted_1[i] = textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString();
-            textformatted_2[i] = textfmt.format({year: 2,month: 2,week: 2,day: 2}).toString();
+            textformatted_1.push(textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString());
+            textformatted_2.push(textfmt.format({year: 2,month: 2,week: 2,day: 2}).toString());
 
-            clockformatted_1[i] = textfmt.format({hour: 1,minute: 1,second: 1}).toString();
-            clockformatted_2[i] = textfmt.format({hour: 2,minute: 2,second: 2}).toString();
+            clockformatted_1.push(textfmt.format({hour: 1,minute: 1,second: 1}).toString());
+            clockformatted_2.push(textfmt.format({hour: 2,minute: 2,second: 2}).toString());
         }
 
         test.equal(textformatted_1[0], '1 year, 1 month, 1 week, 1 day');
@@ -1180,13 +1349,19 @@ module.exports.testdurfmt2 = {
     testDurFmt_en_KR: function(test) {
         test.expect(16);
         // 1,2
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
+
+        var textformatted_1 = [],textformatted_2 = [];
+        var clockformatted_1 = [],clockformatted_2 = [];
         for (var i=0; i<4; i++) {
             textfmt = new DurationFmt({locale: "en-KR", style:"text", length:length[i]});
-            textformatted_1[i] = textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString();
-            textformatted_2[i] = textfmt.format({year: 2,month: 2,week: 2,day: 2}).toString();
+            textformatted_1.push(textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString());
+            textformatted_2.push(textfmt.format({year: 2,month: 2,week: 2,day: 2}).toString());
 
-            clockformatted_1[i] = textfmt.format({hour: 1,minute: 1,second: 1}).toString();
-            clockformatted_2[i] = textfmt.format({hour: 2,minute: 2,second: 2}).toString();
+            clockformatted_1.push(textfmt.format({hour: 1,minute: 1,second: 1}).toString());
+            clockformatted_2.push(textfmt.format({hour: 2,minute: 2,second: 2}).toString());
         }
 
         test.equal(textformatted_1[0], '1 year, 1 month, 1 week, 1 day');
@@ -1214,13 +1389,20 @@ module.exports.testdurfmt2 = {
     testDurFmt_en_LK: function(test) {
         test.expect(16);
         // 1 2
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
+
+        var textformatted_1 = [],textformatted_2 = [];
+        var clockformatted_1 = [],clockformatted_2 = [];
+
         for (var i=0; i<4; i++) {
             textfmt = new DurationFmt({locale: "en-LK", style:"text", length:length[i]});
-            textformatted_1[i] = textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString();
-            textformatted_2[i] = textfmt.format({year: 2,month: 2,week: 2,day: 2}).toString();
+            textformatted_1.push(textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString());
+            textformatted_2.push(textfmt.format({year: 2,month: 2,week: 2,day: 2}).toString());
 
-            clockformatted_1[i] = textfmt.format({hour: 1,minute: 1,second: 1}).toString();
-            clockformatted_2[i] = textfmt.format({hour: 2,minute: 2,second: 2}).toString();
+            clockformatted_1.push(textfmt.format({hour: 1,minute: 1,second: 1}).toString());
+            clockformatted_2.push(textfmt.format({hour: 2,minute: 2,second: 2}).toString());
         }
 
         test.equal(textformatted_1[0], '1 year, 1 month, 1 week, 1 day');
@@ -1248,13 +1430,19 @@ module.exports.testdurfmt2 = {
     testDurFmt_en_MM: function(test) {
         test.expect(16);
         // 1 2
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
+
+        var textformatted_1 = [],textformatted_2 = [];
+        var clockformatted_1 = [],clockformatted_2 = [];
         for (var i=0; i<4; i++) {
             textfmt = new DurationFmt({locale: "en-MM", style:"text", length:length[i]});
-            textformatted_1[i] = textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString();
-            textformatted_2[i] = textfmt.format({year: 2,month: 2,week: 2,day: 2}).toString();
+            textformatted_1.push(textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString());
+            textformatted_2.push(textfmt.format({year: 2,month: 2,week: 2,day: 2}).toString());
 
-            clockformatted_1[i] = textfmt.format({hour: 1,minute: 1,second: 1}).toString();
-            clockformatted_2[i] = textfmt.format({hour: 2,minute: 2,second: 2}).toString();
+            clockformatted_1.push(textfmt.format({hour: 1,minute: 1,second: 1}).toString());
+            clockformatted_2.push(textfmt.format({hour: 2,minute: 2,second: 2}).toString());
         }
 
         test.equal(textformatted_1[0], '1 year, 1 month, 1 week, 1 day');
@@ -1282,13 +1470,19 @@ module.exports.testdurfmt2 = {
     testDurFmt_en_MW: function(test) {
         test.expect(16);
         // 1 2
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
+
+        var textformatted_1 = [],textformatted_2 = [];
+        var clockformatted_1 = [],clockformatted_2 = [];
         for (var i=0; i<4; i++) {
             textfmt = new DurationFmt({locale: "en-MW", style:"text", length:length[i]});
-            textformatted_1[i] = textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString();
-            textformatted_2[i] = textfmt.format({year: 2,month: 2,week: 2,day: 2}).toString();
+            textformatted_1.push(textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString());
+            textformatted_2.push(textfmt.format({year: 2,month: 2,week: 2,day: 2}).toString());
 
-            clockformatted_1[i] = textfmt.format({hour: 1,minute: 1,second: 1}).toString();
-            clockformatted_2[i] = textfmt.format({hour: 2,minute: 2,second: 2}).toString();
+            clockformatted_1.push(textfmt.format({hour: 1,minute: 1,second: 1}).toString());
+            clockformatted_2.push(textfmt.format({hour: 2,minute: 2,second: 2}).toString());
         }
 
         test.equal(textformatted_1[0], '1 year, 1 month, 1 week, 1 day');
@@ -1316,13 +1510,19 @@ module.exports.testdurfmt2 = {
     testDurFmt_en_MY: function(test) {
         test.expect(16);
         // 1 2
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
+
+        var textformatted_1 = [],textformatted_2 = [];
+        var clockformatted_1 = [],clockformatted_2 = [];
         for (var i=0; i<4; i++) {
             textfmt = new DurationFmt({locale: "en-MY", style:"text", length:length[i]});
-            textformatted_1[i] = textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString();
-            textformatted_2[i] = textfmt.format({year: 2,month: 2,week: 2,day: 2}).toString();
+            textformatted_1.push(textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString());
+            textformatted_2.push(textfmt.format({year: 2,month: 2,week: 2,day: 2}).toString());
 
-            clockformatted_1[i] = textfmt.format({hour: 1,minute: 1,second: 1}).toString();
-            clockformatted_2[i] = textfmt.format({hour: 2,minute: 2,second: 2}).toString();
+            clockformatted_1.push(textfmt.format({hour: 1,minute: 1,second: 1}).toString());
+            clockformatted_2.push(textfmt.format({hour: 2,minute: 2,second: 2}).toString());
         }
 
         test.equal(textformatted_1[0], '1 year, 1 month, 1 week, 1 day');
@@ -1350,13 +1550,19 @@ module.exports.testdurfmt2 = {
     testDurFmt_en_NG: function(test) {
         test.expect(16);
         // 1 2
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
+
+        var textformatted_1 = [],textformatted_2 = [];
+        var clockformatted_1 = [],clockformatted_2 = [];
         for (var i=0; i<4; i++) {
             textfmt = new DurationFmt({locale: "en-NG", style:"text", length:length[i]});
-            textformatted_1[i] = textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString();
-            textformatted_2[i] = textfmt.format({year: 2,month: 2,week: 2,day: 2}).toString();
+            textformatted_1.push(textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString());
+            textformatted_2.push(textfmt.format({year: 2,month: 2,week: 2,day: 2}).toString());
 
-            clockformatted_1[i] = textfmt.format({hour: 1,minute: 1,second: 1}).toString();
-            clockformatted_2[i] = textfmt.format({hour: 2,minute: 2,second: 2}).toString();
+            clockformatted_1.push(textfmt.format({hour: 1,minute: 1,second: 1}).toString());
+            clockformatted_2.push(textfmt.format({hour: 2,minute: 2,second: 2}).toString());
         }
 
         test.equal(textformatted_1[0], '1 year, 1 month, 1 week, 1 day');
@@ -1384,13 +1590,19 @@ module.exports.testdurfmt2 = {
     testDurFmt_en_NZ: function(test) {
         test.expect(16);
         // 1 2
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
+
+        var textformatted_1 = [],textformatted_2 = [];
+        var clockformatted_1 = [],clockformatted_2 = [];
         for (var i=0; i<4; i++) {
             textfmt = new DurationFmt({locale: "en-NZ", style:"text", length:length[i]});
-            textformatted_1[i] = textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString();
-            textformatted_2[i] = textfmt.format({year: 2,month: 2,week: 2,day: 2}).toString();
+            textformatted_1.push(textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString());
+            textformatted_2.push(textfmt.format({year: 2,month: 2,week: 2,day: 2}).toString());
 
-            clockformatted_1[i] = textfmt.format({hour: 1,minute: 1,second: 1}).toString();
-            clockformatted_2[i] = textfmt.format({hour: 2,minute: 2,second: 2}).toString();
+            clockformatted_1.push(textfmt.format({hour: 1,minute: 1,second: 1}).toString());
+            clockformatted_2.push(textfmt.format({hour: 2,minute: 2,second: 2}).toString());
         }
 
         test.equal(textformatted_1[0], '1 year, 1 month, 1 week, 1 day');
@@ -1418,13 +1630,19 @@ module.exports.testdurfmt2 = {
     testDurFmt_en_PH: function(test) {
         test.expect(16);
         // 1 2
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
+
+        var textformatted_1 = [],textformatted_2 = [];
+        var clockformatted_1 = [],clockformatted_2 = [];
         for (var i=0; i<4; i++) {
             textfmt = new DurationFmt({locale: "en-PH", style:"text", length:length[i]});
-            textformatted_1[i] = textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString();
-            textformatted_2[i] = textfmt.format({year: 2,month: 2,week: 2,day: 2}).toString();
+            textformatted_1.push(textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString());
+            textformatted_2.push(textfmt.format({year: 2,month: 2,week: 2,day: 2}).toString());
 
-            clockformatted_1[i] = textfmt.format({hour: 1,minute: 1,second: 1}).toString();
-            clockformatted_2[i] = textfmt.format({hour: 2,minute: 2,second: 2}).toString();
+            clockformatted_1.push(textfmt.format({hour: 1,minute: 1,second: 1}).toString());
+            clockformatted_2.push(textfmt.format({hour: 2,minute: 2,second: 2}).toString());
         }
 
         test.equal(textformatted_1[0], '1 year, 1 month, 1 week, 1 day');
@@ -1452,13 +1670,19 @@ module.exports.testdurfmt2 = {
     testDurFmt_en_PR: function(test) {
         test.expect(16);
         // 1 2
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
+
+        var textformatted_1 = [],textformatted_2 = [];
+        var clockformatted_1 = [],clockformatted_2 = [];
         for (var i=0; i<4; i++) {
             textfmt = new DurationFmt({locale: "en-PR", style:"text", length:length[i]});
-            textformatted_1[i] = textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString();
-            textformatted_2[i] = textfmt.format({year: 2,month: 2,week: 2,day: 2}).toString();
+            textformatted_1.push(textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString());
+            textformatted_2.push(textfmt.format({year: 2,month: 2,week: 2,day: 2}).toString());
 
-            clockformatted_1[i] = textfmt.format({hour: 1,minute: 1,second: 1}).toString();
-            clockformatted_2[i] = textfmt.format({hour: 2,minute: 2,second: 2}).toString();
+            clockformatted_1.push(textfmt.format({hour: 1,minute: 1,second: 1}).toString());
+            clockformatted_2.push(textfmt.format({hour: 2,minute: 2,second: 2}).toString());
         }
 
         test.equal(textformatted_1[0], '1 year, 1 month, 1 week, 1 day');
@@ -1486,13 +1710,20 @@ module.exports.testdurfmt2 = {
     testDurFmt_en_SG: function(test) {
         test.expect(16);
         // 1 2
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
+
+        var textformatted_1 = [],textformatted_2 = [];
+        var clockformatted_1 = [],clockformatted_2 = [];
+
         for (var i=0; i<4; i++) {
             textfmt = new DurationFmt({locale: "en-SG", style:"text", length:length[i]});
-            textformatted_1[i] = textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString();
-            textformatted_2[i] = textfmt.format({year: 2,month: 2,week: 2,day: 2}).toString();
+            textformatted_1.push(textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString());
+            textformatted_2.push(textfmt.format({year: 2,month: 2,week: 2,day: 2}).toString());
 
-            clockformatted_1[i] = textfmt.format({hour: 1,minute: 1,second: 1}).toString();
-            clockformatted_2[i] = textfmt.format({hour: 2,minute: 2,second: 2}).toString();
+            clockformatted_1.push(textfmt.format({hour: 1,minute: 1,second: 1}).toString());
+            clockformatted_2.push(textfmt.format({hour: 2,minute: 2,second: 2}).toString());
         }
 
         test.equal(textformatted_1[0], '1 year, 1 month, 1 week, 1 day');
@@ -1520,14 +1751,20 @@ module.exports.testdurfmt2 = {
     testDurFmt_en_US: function(test) {
         test.expect(16);
         // 1 2
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
+
+        var textformatted_1 = [],textformatted_2 = [];
+        var clockformatted_1 = [],clockformatted_2 = [];
         for (var i=0; i<4; i++) {
             textfmt = new DurationFmt({locale: "en-US", style:"text", length:length[i]});
 
-            textformatted_1[i] = textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString();
-            textformatted_2[i] = textfmt.format({year: 2,month: 2,week: 2,day: 2}).toString();
+            textformatted_1.push(textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString());
+            textformatted_2.push(textfmt.format({year: 2,month: 2,week: 2,day: 2}).toString());
 
-            clockformatted_1[i] = textfmt.format({hour: 1,minute: 1,second: 1}).toString();
-            clockformatted_2[i] = textfmt.format({hour: 2,minute: 2,second: 2}).toString();
+            clockformatted_1.push(textfmt.format({hour: 1,minute: 1,second: 1}).toString());
+            clockformatted_2.push(textfmt.format({hour: 2,minute: 2,second: 2}).toString());
         }
 
         test.equal(textformatted_1[0], '1 year, 1 month, 1 week, 1 day');
@@ -1555,13 +1792,19 @@ module.exports.testdurfmt2 = {
     testDurFmt_en_UG: function(test) {
         test.expect(16);
         // 1 2 
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
+
+        var textformatted_1 = [],textformatted_2 = [];
+        var clockformatted_1 = [],clockformatted_2 = [];
         for (var i=0; i<4; i++) {
             textfmt = new DurationFmt({locale: "en-UG", style:"text", length:length[i]});
-            textformatted_1[i] = textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString();
-            textformatted_2[i] = textfmt.format({year: 2,month: 2,week: 2,day: 2}).toString();
+            textformatted_1.push(textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString());
+            textformatted_2.push(textfmt.format({year: 2,month: 2,week: 2,day: 2}).toString());
 
-            clockformatted_1[i] = textfmt.format({hour: 1,minute: 1,second: 1}).toString();
-            clockformatted_2[i] = textfmt.format({hour: 2,minute: 2,second: 2}).toString();
+            clockformatted_1.push(textfmt.format({hour: 1,minute: 1,second: 1}).toString());
+            clockformatted_2.push(textfmt.format({hour: 2,minute: 2,second: 2}).toString());
         }
 
         test.equal(textformatted_1[0], '1 year, 1 month, 1 week, 1 day');
@@ -1589,13 +1832,19 @@ module.exports.testdurfmt2 = {
     testDurFmt_en_ZA: function(test) {
         test.expect(16);
         // 1 2
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
+
+        var textformatted_1 = [],textformatted_2 = [];
+        var clockformatted_1 = [],clockformatted_2 = [];
         for (var i=0; i<4; i++) {
             textfmt = new DurationFmt({locale: "en-ZA", style:"text", length:length[i]});
-            textformatted_1[i] = textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString();
-            textformatted_2[i] = textfmt.format({year: 2,month: 2,week: 2,day: 2}).toString();
+            textformatted_1.push(textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString());
+            textformatted_2.push(textfmt.format({year: 2,month: 2,week: 2,day: 2}).toString());
 
-            clockformatted_1[i] = textfmt.format({hour: 1,minute: 1,second: 1}).toString();
-            clockformatted_2[i] = textfmt.format({hour: 2,minute: 2,second: 2}).toString();
+            clockformatted_1.push(textfmt.format({hour: 1,minute: 1,second: 1}).toString());
+            clockformatted_2.push(textfmt.format({hour: 2,minute: 2,second: 2}).toString());
         }
 
         test.equal(textformatted_1[0], '1 year, 1 month, 1 week, 1 day');
@@ -1623,13 +1872,19 @@ module.exports.testdurfmt2 = {
     testDurFmt_en_ZM: function(test) {
         test.expect(16);
         // 1 2
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
+
+        var textformatted_1 = [],textformatted_2 = [];
+        var clockformatted_1 = [],clockformatted_2 = [];
         for (var i=0; i<4; i++) {
             textfmt = new DurationFmt({locale: "en-ZM", style:"text", length:length[i]});
-            textformatted_1[i] = textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString();
-            textformatted_2[i] = textfmt.format({year: 2,month: 2,week: 2,day: 2}).toString();
+            textformatted_1.push(textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString());
+            textformatted_2.push(textfmt.format({year: 2,month: 2,week: 2,day: 2}).toString());
 
-            clockformatted_1[i] = textfmt.format({hour: 1,minute: 1,second: 1}).toString();
-            clockformatted_2[i] = textfmt.format({hour: 2,minute: 2,second: 2}).toString();
+            clockformatted_1.push(textfmt.format({hour: 1,minute: 1,second: 1}).toString());
+            clockformatted_2.push(textfmt.format({hour: 2,minute: 2,second: 2}).toString());
         }
 
         test.equal(textformatted_1[0], '1 year, 1 month, 1 week, 1 day');
@@ -1657,13 +1912,19 @@ module.exports.testdurfmt2 = {
     testDurFmt_es_AR: function(test) {
         test.expect(16);
         // 1 2
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
+
+        var textformatted_1 = [],textformatted_2 = [];
+        var clockformatted_1 = [],clockformatted_2 = [];
         for (var i=0; i<4; i++) {
             textfmt = new DurationFmt({locale: "es-AR", style:"text", length:length[i]});
-            textformatted_1[i] = textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString();
-            textformatted_2[i] = textfmt.format({year: 2,month: 2,week: 2,day: 2}).toString();
+            textformatted_1.push(textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString());
+            textformatted_2.push(textfmt.format({year: 2,month: 2,week: 2,day: 2}).toString());
 
-            clockformatted_1[i] = textfmt.format({hour: 1,minute: 1,second: 1}).toString();
-            clockformatted_2[i] = textfmt.format({hour: 2,minute: 2,second: 2}).toString();
+            clockformatted_1.push(textfmt.format({hour: 1,minute: 1,second: 1}).toString());
+            clockformatted_2.push(textfmt.format({hour: 2,minute: 2,second: 2}).toString());
         }
 
         test.equal(textformatted_1[0], '1 año, 1 mes, 1 semana y 1 día');
@@ -1691,13 +1952,20 @@ module.exports.testdurfmt2 = {
     testDurFmt_es_BO: function(test) {
         test.expect(16);
         // 1 16
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
+
+        var textformatted_1 = [],textformatted_16 = [];
+        var clockformatted_1 = [],clockformatted_16 = [];
+
         for (var i=0; i<4; i++) {
             textfmt = new DurationFmt({locale: "es-BO", style:"text", length:length[i]});
-            textformatted_1[i] = textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString();
-            textformatted_16[i] = textfmt.format({year: 2,month: 2,week: 2,day: 2}).toString();
+            textformatted_1.push(textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString());
+            textformatted_16.push(textfmt.format({year: 2,month: 2,week: 2,day: 2}).toString());
 
-            clockformatted_1[i] = textfmt.format({hour: 1,minute: 1,second: 1}).toString();
-            clockformatted_16[i] = textfmt.format({hour: 2,minute: 2,second: 2}).toString();
+            clockformatted_1.push(textfmt.format({hour: 1,minute: 1,second: 1}).toString());
+            clockformatted_16.push(textfmt.format({hour: 2,minute: 2,second: 2}).toString());
         }
 
         test.equal(textformatted_1[0], '1 año, 1 mes, 1 semana y 1 día');
@@ -1725,13 +1993,19 @@ module.exports.testdurfmt2 = {
     testDurFmt_es_CL: function(test) {
         test.expect(16);
         // 1 2
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
+
+        var textformatted_1 = [],textformatted_2 = [];
+        var clockformatted_1 = [],clockformatted_2 = [];
         for (var i=0; i<4; i++) {
             textfmt = new DurationFmt({locale: "es-CL", style:"text", length:length[i]});
-            textformatted_1[i] = textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString();
-            textformatted_2[i] = textfmt.format({year: 2,month: 2,week: 2,day: 2}).toString();
+            textformatted_1.push(textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString());
+            textformatted_2.push(textfmt.format({year: 2,month: 2,week: 2,day: 2}).toString());
 
-            clockformatted_1[i] = textfmt.format({hour: 1,minute: 1,second: 1}).toString();
-            clockformatted_2[i] = textfmt.format({hour: 2,minute: 2,second: 2}).toString();
+            clockformatted_1.push(textfmt.format({hour: 1,minute: 1,second: 1}).toString());
+            clockformatted_2.push(textfmt.format({hour: 2,minute: 2,second: 2}).toString());
         }
 
         test.equal(textformatted_1[0], '1 año, 1 mes, 1 semana y 1 día');
@@ -1759,13 +2033,20 @@ module.exports.testdurfmt2 = {
     testDurFmt_es_CO: function(test) {
         test.expect(16);
         // 1 16
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
+
+        var textformatted_1 = [],textformatted_16 = [];
+        var clockformatted_1 = [],clockformatted_16 = [];
+
         for (var i=0; i<4; i++) {
             textfmt = new DurationFmt({locale: "es-CO", style:"text", length:length[i]});
-            textformatted_1[i] = textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString();
-            textformatted_16[i] = textfmt.format({year: 16,month: 16,week: 16,day: 16}).toString();
+            textformatted_1.push(textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString());
+            textformatted_16.push(textfmt.format({year: 16,month: 16,week: 16,day: 16}).toString());
 
-            clockformatted_1[i] = textfmt.format({hour: 1,minute: 1,second: 1}).toString();
-            clockformatted_16[i] = textfmt.format({hour: 16,minute: 16,second: 16}).toString();
+            clockformatted_1.push(textfmt.format({hour: 1,minute: 1,second: 1}).toString());
+            clockformatted_16.push(textfmt.format({hour: 16,minute: 16,second: 16}).toString());
         }
 
         test.equal(textformatted_1[0], '1 año, 1 mes, 1 semana y 1 día');
@@ -1793,13 +2074,19 @@ module.exports.testdurfmt2 = {
     testDurFmt_es_DO: function(test) {
         test.expect(16);
         // 1 2
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
+
+        var textformatted_1 = [],textformatted_2 = [];
+        var clockformatted_1 = [],clockformatted_2 = [];
         for (var i=0; i<4; i++) {
             textfmt = new DurationFmt({locale: "es-DO", style:"text", length:length[i]});
-            textformatted_1[i] = textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString();
-            textformatted_2[i] = textfmt.format({year: 2,month: 2,week: 2,day: 2}).toString();
+            textformatted_1.push(textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString());
+            textformatted_2.push(textfmt.format({year: 2,month: 2,week: 2,day: 2}).toString());
 
-            clockformatted_1[i] = textfmt.format({hour: 1,minute: 1,second: 1}).toString();
-            clockformatted_2[i] = textfmt.format({hour: 2,minute: 2,second: 2}).toString();
+            clockformatted_1.push(textfmt.format({hour: 1,minute: 1,second: 1}).toString());
+            clockformatted_2.push(textfmt.format({hour: 2,minute: 2,second: 2}).toString());
         }
 
         test.equal(textformatted_1[0], '1 año, 1 mes, 1 semana y 1 día');
@@ -1827,13 +2114,20 @@ module.exports.testdurfmt2 = {
     testDurFmt_es_EC: function(test) {
         test.expect(16);
         // 1 16
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
+
+        var textformatted_1 = [],textformatted_16 = [];
+        var clockformatted_1 = [],clockformatted_16 = [];
+
         for (var i=0; i<4; i++) {
             textfmt = new DurationFmt({locale: "es-EC", style:"text", length:length[i]});
-            textformatted_1[i] = textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString();
-            textformatted_16[i] = textfmt.format({year: 16,month: 16,week: 16,day: 16}).toString();
+            textformatted_1.push(textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString());
+            textformatted_16.push(textfmt.format({year: 16,month: 16,week: 16,day: 16}).toString());
 
-            clockformatted_1[i] = textfmt.format({hour: 1,minute: 1,second: 1}).toString();
-            clockformatted_16[i] = textfmt.format({hour: 16,minute: 16,second: 16}).toString();
+            clockformatted_1.push(textfmt.format({hour: 1,minute: 1,second: 1}).toString());
+            clockformatted_16.push(textfmt.format({hour: 16,minute: 16,second: 16}).toString());
         }
 
         test.equal(textformatted_1[0], '1 año, 1 mes, 1 semana y 1 día');
@@ -1860,14 +2154,20 @@ module.exports.testdurfmt2 = {
     },
     testDurFmt_es_ES: function(test) {
         test.expect(16);
-        // 1 16
+        // 1 2
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
+
+        var textformatted_1 = [],textformatted_2 = [];
+        var clockformatted_1 = [],clockformatted_2 = [];
         for (var i=0; i<4; i++) {
             textfmt = new DurationFmt({locale: "es-ES", style:"text", length:length[i]});
-            textformatted_1[i] = textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString();
-            textformatted_2[i] = textfmt.format({year: 2,month: 2,week: 2,day: 2}).toString();
+            textformatted_1.push(textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString());
+            textformatted_2.push(textfmt.format({year: 2,month: 2,week: 2,day: 2}).toString());
 
-            clockformatted_1[i] = textfmt.format({hour: 1,minute: 1,second: 1}).toString();
-            clockformatted_2[i] = textfmt.format({hour: 2,minute: 2,second: 2}).toString();
+            clockformatted_1.push(textfmt.format({hour: 1,minute: 1,second: 1}).toString());
+            clockformatted_2.push(textfmt.format({hour: 2,minute: 2,second: 2}).toString());
         }
 
         test.equal(textformatted_1[0], '1 año, 1 mes, 1 semana y 1 día');
@@ -1895,13 +2195,20 @@ module.exports.testdurfmt2 = {
     testDurFmt_es_GT: function(test) {
         test.expect(16);
         // 1 16
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
+
+        var textformatted_1 = [],textformatted_16 = [];
+        var clockformatted_1 = [],clockformatted_16 = [];
+
         for (var i=0; i<4; i++) {
             textfmt = new DurationFmt({locale: "es-GT", style:"text", length:length[i]});
-            textformatted_1[i] = textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString();
-            textformatted_16[i] = textfmt.format({year: 16,month: 16,week: 16,day: 16}).toString();
+            textformatted_1.push(textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString());
+            textformatted_16.push(textfmt.format({year: 16,month: 16,week: 16,day: 16}).toString());
 
-            clockformatted_1[i] = textfmt.format({hour: 1,minute: 1,second: 1}).toString();
-            clockformatted_16[i] = textfmt.format({hour: 16,minute: 16,second: 16}).toString();
+            clockformatted_1.push(textfmt.format({hour: 1,minute: 1,second: 1}).toString());
+            clockformatted_16.push(textfmt.format({hour: 16,minute: 16,second: 16}).toString());
         }
 
         test.equal(textformatted_1[0], '1 año, 1 mes, 1 semana y 1 día');
@@ -1929,13 +2236,20 @@ module.exports.testdurfmt2 = {
     testDurFmt_es_HN: function(test) {
         test.expect(16);
         // 1 17
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
+
+        var textformatted_1 = [],textformatted_17 = [];
+        var clockformatted_1 = [],clockformatted_17 = [];
+
         for (var i=0; i<4; i++) {
             textfmt = new DurationFmt({locale: "es-HN", style:"text", length:length[i]});
-            textformatted_1[i] = textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString();
-            textformatted_17[i] = textfmt.format({year: 17,month: 17,week: 17,day: 17}).toString();
+            textformatted_1.push(textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString());
+            textformatted_17.push(textfmt.format({year: 17,month: 17,week: 17,day: 17}).toString());
 
-            clockformatted_1[i] = textfmt.format({hour: 1,minute: 1,second: 1}).toString();
-            clockformatted_17[i] = textfmt.format({hour: 17,minute: 17,second: 17}).toString();
+            clockformatted_1.push(textfmt.format({hour: 1,minute: 1,second: 1}).toString());
+            clockformatted_17.push(textfmt.format({hour: 17,minute: 17,second: 17}).toString());
         }
 
         test.equal(textformatted_1[0], '1 año, 1 mes, 1 semana y 1 día');
@@ -1962,14 +2276,20 @@ module.exports.testdurfmt2 = {
     },
     testDurFmt_es_MX: function(test) {
         test.expect(16);
-        // 1 16
+        // 1 2
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
+
+        var textformatted_1 = [],textformatted_2 = [];
+        var clockformatted_1 = [],clockformatted_2 = [];
         for (var i=0; i<4; i++) {
             textfmt = new DurationFmt({locale: "es-MX", style:"text", length:length[i]});
-            textformatted_1[i] = textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString();
-            textformatted_2[i] = textfmt.format({year: 2,month: 2,week: 2,day: 2}).toString();
+            textformatted_1.push(textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString());
+            textformatted_2.push(textfmt.format({year: 2,month: 2,week: 2,day: 2}).toString());
 
-            clockformatted_1[i] = textfmt.format({hour: 1,minute: 1,second: 1}).toString();
-            clockformatted_2[i] = textfmt.format({hour: 2,minute: 2,second: 2}).toString();
+            clockformatted_1.push(textfmt.format({hour: 1,minute: 1,second: 1}).toString());
+            clockformatted_2.push(textfmt.format({hour: 2,minute: 2,second: 2}).toString());
         }
 
         test.equal(textformatted_1[0], '1 año, 1 mes, 1 semana y 1 día');
@@ -1995,21 +2315,29 @@ module.exports.testdurfmt2 = {
         test.done();
     },
     testDurFmt_es_NI: function(test) {
+        test.expect(16);
         // 1 16
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
+
+        var textformatted_1 = [],textformatted_16 = [];
+        var clockformatted_1 = [],clockformatted_16 = [];
+
         for (var i=0; i<4; i++) {
             textfmt = new DurationFmt({locale: "es-NI", style:"text", length:length[i]});
-            textformatted_1[i] = textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString();
-            textformatted_16[i] = textfmt.format({year: 16,month: 16,week: 16,day: 16}).toString();
+            textformatted_1.push(textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString());
+            textformatted_16.push(textfmt.format({year: 16,month: 16,week: 16,day: 16}).toString());
 
-            clockformatted_1[i] = textfmt.format({hour: 1,minute: 1,second: 1}).toString();
-            clockformatted_16[i] = textfmt.format({hour: 16,minute: 16,second: 16}).toString();
+            clockformatted_1.push(textfmt.format({hour: 1,minute: 1,second: 1}).toString());
+            clockformatted_16.push(textfmt.format({hour: 16,minute: 16,second: 16}).toString());
         }
 
         test.equal(textformatted_1[0], '1 año, 1 mes, 1 semana y 1 día');
         test.equal(textformatted_1[1], '1 a., 1 m., 1 sem., 1 d.');
         test.equal(textformatted_1[2], '1a., 1m., 1sem., 1d.');
         test.equal(textformatted_1[3], '1a. 1m. 1sem. 1d.');
-    
+
         test.equal(textformatted_16[0], '16 años, 16 meses, 16 semanas y 16 días');
         test.equal(textformatted_16[1], '16 aa., 16 mm., 16 sems., 16 dd.');
         test.equal(textformatted_16[2], '16aa., 16mm., 16sems., 16dd.');
@@ -2019,7 +2347,7 @@ module.exports.testdurfmt2 = {
         test.equal(clockformatted_1[1], '1 h, 1 min, 1 s');
         test.equal(clockformatted_1[2], '1h, 1min, 1s');
         test.equal(clockformatted_1[3], '1h 1min 1s');
-    
+
         test.equal(clockformatted_16[0], '16 horas, 16 minutos y 16 segundos');
         test.equal(clockformatted_16[1], '16 h, 16 min, 16 s');
         test.equal(clockformatted_16[2], '16h, 16min, 16s');
@@ -2029,14 +2357,21 @@ module.exports.testdurfmt2 = {
     },
     testDurFmt_es_PA: function(test) {
         test.expect(16);
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
+
+        var textformatted_1 = [],textformatted_17 = [];
+        var clockformatted_1 = [],clockformatted_17 = [];
+
         // 1 17
         for (var i=0; i<4; i++) {
             textfmt = new DurationFmt({locale: "es-PA", style:"text", length:length[i]});
-            textformatted_1[i] = textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString();
-            textformatted_17[i] = textfmt.format({year: 17,month: 17,week: 17,day: 17}).toString();
+            textformatted_1.push(textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString());
+            textformatted_17.push(textfmt.format({year: 17,month: 17,week: 17,day: 17}).toString());
 
-            clockformatted_1[i] = textfmt.format({hour: 1,minute: 1,second: 1}).toString();
-            clockformatted_17[i] = textfmt.format({hour: 17,minute: 17,second: 17}).toString();
+            clockformatted_1.push(textfmt.format({hour: 1,minute: 1,second: 1}).toString());
+            clockformatted_17.push(textfmt.format({hour: 17,minute: 17,second: 17}).toString());
         }
 
         test.equal(textformatted_1[0], '1 año, 1 mes, 1 semana y 1 día');
@@ -2064,20 +2399,27 @@ module.exports.testdurfmt2 = {
     testDurFmt_es_PE: function(test) {
         test.expect(16);
         // 1 16
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
+
+        var textformatted_1 = [],textformatted_16 = [];
+        var clockformatted_1 = [],clockformatted_16 = [];
+
         for (var i=0; i<4; i++) {
             textfmt = new DurationFmt({locale: "es-PE", style:"text", length:length[i]});
-            textformatted_1[i] = textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString();
-            textformatted_16[i] = textfmt.format({year: 16,month: 16,week: 16,day: 16}).toString();
+            textformatted_1.push(textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString());
+            textformatted_16.push(textfmt.format({year: 16,month: 16,week: 16,day: 16}).toString());
 
-            clockformatted_1[i] = textfmt.format({hour: 1,minute: 1,second: 1}).toString();
-            clockformatted_16[i] = textfmt.format({hour: 16,minute: 16,second: 16}).toString();
+            clockformatted_1.push(textfmt.format({hour: 1,minute: 1,second: 1}).toString());
+            clockformatted_16.push(textfmt.format({hour: 16,minute: 16,second: 16}).toString());
         }
 
         test.equal(textformatted_1[0], '1 año, 1 mes, 1 semana y 1 día');
         test.equal(textformatted_1[1], '1 a., 1 m., 1 sem., 1 d.');
         test.equal(textformatted_1[2], '1a., 1m., 1sem., 1d.');
         test.equal(textformatted_1[3], '1a. 1m. 1sem. 1d.');
-    
+
         test.equal(textformatted_16[0], '16 años, 16 meses, 16 semanas y 16 días');
         test.equal(textformatted_16[1], '16 aa., 16 mm., 16 sems., 16 dd.');
         test.equal(textformatted_16[2], '16aa., 16mm., 16sems., 16dd.');
@@ -2087,7 +2429,7 @@ module.exports.testdurfmt2 = {
         test.equal(clockformatted_1[1], '1 h, 1 min, 1 s');
         test.equal(clockformatted_1[2], '1h, 1min, 1s');
         test.equal(clockformatted_1[3], '1h 1min 1s');
-    
+
         test.equal(clockformatted_16[0], '16 horas, 16 minutos y 16 segundos');
         test.equal(clockformatted_16[1], '16 h, 16 min, 16 s');
         test.equal(clockformatted_16[2], '16h, 16min, 16s');
@@ -2098,13 +2440,19 @@ module.exports.testdurfmt2 = {
     testDurFmt_es_PR: function(test) {
         test.expect(16);
         // 1 2
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
+
+        var textformatted_1 = [],textformatted_2 = [];
+        var clockformatted_1 = [],clockformatted_2 = [];
         for (var i=0; i<4; i++) {
             textfmt = new DurationFmt({locale: "es-PR", style:"text", length:length[i]});
-            textformatted_1[i] = textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString();
-            textformatted_2[i] = textfmt.format({year: 2,month: 2,week: 2,day: 2}).toString();
+            textformatted_1.push(textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString());
+            textformatted_2.push(textfmt.format({year: 2,month: 2,week: 2,day: 2}).toString());
 
-            clockformatted_1[i] = textfmt.format({hour: 1,minute: 1,second: 1}).toString();
-            clockformatted_2[i] = textfmt.format({hour: 2,minute: 2,second: 2}).toString();
+            clockformatted_1.push(textfmt.format({hour: 1,minute: 1,second: 1}).toString());
+            clockformatted_2.push(textfmt.format({hour: 2,minute: 2,second: 2}).toString());
         }
 
         test.equal(textformatted_1[0], '1 año, 1 mes, 1 semana y 1 día');
@@ -2132,13 +2480,19 @@ module.exports.testdurfmt2 = {
     testDurFmt_es_PY: function(test) {
         test.expect(16);
         // 1 2
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
+
+        var textformatted_1 = [],textformatted_2 = [];
+        var clockformatted_1 = [],clockformatted_2 = [];
         for (var i=0; i<4; i++) {
             textfmt = new DurationFmt({locale: "es-PY", style:"text", length:length[i]});
-            textformatted_1[i] = textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString();
-            textformatted_2[i] = textfmt.format({year: 2,month: 2,week: 2,day: 2}).toString();
+            textformatted_1.push(textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString());
+            textformatted_2.push(textfmt.format({year: 2,month: 2,week: 2,day: 2}).toString());
 
-            clockformatted_1[i] = textfmt.format({hour: 1,minute: 1,second: 1}).toString();
-            clockformatted_2[i] = textfmt.format({hour: 2,minute: 2,second: 2}).toString();
+            clockformatted_1.push(textfmt.format({hour: 1,minute: 1,second: 1}).toString());
+            clockformatted_2.push(textfmt.format({hour: 2,minute: 2,second: 2}).toString());
         }
 
         test.equal(textformatted_1[0], '1 año, 1 mes, 1 semana y 1 día');
@@ -2166,13 +2520,20 @@ module.exports.testdurfmt2 = {
     testDurFmt_es_SV: function(test) {
         test.expect(16);
         // 1 17
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
+
+        var textformatted_1 = [],textformatted_17 = [];
+        var clockformatted_1 = [],clockformatted_17 = [];
+
         for (var i=0; i<4; i++) {
             textfmt = new DurationFmt({locale: "es-SV", style:"text", length:length[i]});
-            textformatted_1[i] = textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString();
-            textformatted_17[i] = textfmt.format({year: 17,month: 17,week: 17,day: 17}).toString();
+            textformatted_1.push(textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString());
+            textformatted_17.push(textfmt.format({year: 17,month: 17,week: 17,day: 17}).toString());
 
-            clockformatted_1[i] = textfmt.format({hour: 1,minute: 1,second: 1}).toString();
-            clockformatted_17[i] = textfmt.format({hour: 17,minute: 17,second: 17}).toString();
+            clockformatted_1.push(textfmt.format({hour: 1,minute: 1,second: 1}).toString());
+            clockformatted_17.push(textfmt.format({hour: 17,minute: 17,second: 17}).toString());
         }
 
         test.equal(textformatted_1[0], '1 año, 1 mes, 1 semana y 1 día');
@@ -2200,13 +2561,20 @@ module.exports.testdurfmt2 = {
     testDurFmt_es_US: function(test) {
         test.expect(16);
         // 1 17
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
+
+        var textformatted_1 = [],textformatted_17 = [];
+        var clockformatted_1 = [],clockformatted_17 = [];
+        
         for (var i=0; i<4; i++) {
             textfmt = new DurationFmt({locale: "es-US", style:"text", length:length[i]});
-            textformatted_1[i] = textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString();
-            textformatted_17[i] = textfmt.format({year: 17,month: 17,week: 17,day: 17}).toString();
+            textformatted_1.push(textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString());
+            textformatted_17.push(textfmt.format({year: 17,month: 17,week: 17,day: 17}).toString());
 
-            clockformatted_1[i] = textfmt.format({hour: 1,minute: 1,second: 1}).toString();
-            clockformatted_17[i] = textfmt.format({hour: 17,minute: 17,second: 17}).toString();
+            clockformatted_1.push(textfmt.format({hour: 1,minute: 1,second: 1}).toString());
+            clockformatted_17.push(textfmt.format({hour: 17,minute: 17,second: 17}).toString());
         }
 
         test.equal(textformatted_1[0], '1 año, 1 mes, 1 semana y 1 día');
@@ -2234,13 +2602,19 @@ module.exports.testdurfmt2 = {
     testDurFmt_es_UY: function(test) {
         test.expect(16);
         // 1 2
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
+
+        var textformatted_1 = [],textformatted_2 = [];
+        var clockformatted_1 = [],clockformatted_2 = [];
         for (var i=0; i<4; i++) {
             textfmt = new DurationFmt({locale: "es-UY", style:"text", length:length[i]});
-            textformatted_1[i] = textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString();
-            textformatted_2[i] = textfmt.format({year: 2,month: 2,week: 2,day: 2}).toString();
+            textformatted_1.push(textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString());
+            textformatted_2.push(textfmt.format({year: 2,month: 2,week: 2,day: 2}).toString());
 
-            clockformatted_1[i] = textfmt.format({hour: 1,minute: 1,second: 1}).toString();
-            clockformatted_2[i] = textfmt.format({hour: 2,minute: 2,second: 2}).toString();
+            clockformatted_1.push(textfmt.format({hour: 1,minute: 1,second: 1}).toString());
+            clockformatted_2.push(textfmt.format({hour: 2,minute: 2,second: 2}).toString());
         }
 
         test.equal(textformatted_1[0], '1 año, 1 mes, 1 semana y 1 día');
@@ -2268,13 +2642,20 @@ module.exports.testdurfmt2 = {
     testDurFmt_es_VE: function(test) {
         test.expect(16);
         // 1 16
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
+
+        var textformatted_1 = [],textformatted_16 = [];
+        var clockformatted_1 = [],clockformatted_16 = [];
+
         for (var i=0; i<4; i++) {
             textfmt = new DurationFmt({locale: "es-VE", style:"text", length:length[i]});
-            textformatted_1[i] = textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString();
-            textformatted_16[i] = textfmt.format({year: 16,month: 16,week: 16,day: 16}).toString();
+            textformatted_1.push(textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString());
+            textformatted_16.push(textfmt.format({year: 16,month: 16,week: 16,day: 16}).toString());
 
-            clockformatted_1[i] = textfmt.format({hour: 1,minute: 1,second: 1}).toString();
-            clockformatted_16[i] = textfmt.format({hour: 16,minute: 16,second: 16}).toString();
+            clockformatted_1.push(textfmt.format({hour: 1,minute: 1,second: 1}).toString());
+            clockformatted_16.push(textfmt.format({hour: 16,minute: 16,second: 16}).toString());
         }
 
         test.equal(textformatted_1[0], '1 año, 1 mes, 1 semana y 1 día');
@@ -2302,14 +2683,20 @@ module.exports.testdurfmt2 = {
     testDurFmt_et_EE: function(test) {
         test.expect(16);
         // 1 2
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
+
+        var textformatted_1 = [],textformatted_2 = [];
+        var clockformatted_1 = [],clockformatted_2 = [];
         for (var i=0; i<4; i++) {
             textfmt = new DurationFmt({locale: "et-EE", style:"text", length:length[i]});
 
-            textformatted_1[i] = textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString();
-            textformatted_2[i] = textfmt.format({year: 2,month: 2,week: 2,day: 2}).toString();
+            textformatted_1.push(textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString());
+            textformatted_2.push(textfmt.format({year: 2,month: 2,week: 2,day: 2}).toString());
 
-            clockformatted_1[i] = textfmt.format({hour: 1,minute: 1,second: 1}).toString();
-            clockformatted_2[i] = textfmt.format({hour: 2,minute: 2,second: 2}).toString();
+            clockformatted_1.push(textfmt.format({hour: 1,minute: 1,second: 1}).toString());
+            clockformatted_2.push(textfmt.format({hour: 2,minute: 2,second: 2}).toString());
         }
 
         test.equal(textformatted_1[0], '1 aasta, 1 kuu, 1 nädal, 1 ööpäev');
@@ -2337,16 +2724,22 @@ module.exports.testdurfmt2 = {
     testDurFmt_fa_AF: function(test) {
         test.expect(16);
         // 1 2
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
+
+        var textformatted_1 = [],textformatted_2 = [];
+        var clockformatted_1 = [],clockformatted_2 = [];
         for (var i=0; i<4; i++) {
             textfmt = new DurationFmt({locale: "fa-AF", style:"text", length:length[i], useNative:false});
 
-            textformatted_1[i] = textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString();
-            textformatted_2[i] = textfmt.format({year: 2,month: 2,week: 2,day: 2}).toString();
+            textformatted_1.push(textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString());
+            textformatted_2.push(textfmt.format({year: 2,month: 2,week: 2,day: 2}).toString());
 
-            clockformatted_1[i] = textfmt.format({hour: 1,minute: 1,second: 1}).toString();
-            clockformatted_2[i] = textfmt.format({hour: 2,minute: 2,second: 2}).toString();
+            clockformatted_1.push(textfmt.format({hour: 1,minute: 1,second: 1}).toString());
+            clockformatted_2.push(textfmt.format({hour: 2,minute: 2,second: 2}).toString());
         }
-        
+
         test.equal(textformatted_1[0], '‏1 سال،‏ 1 ماه،‏ 1 هفته، و 1 روز');
         test.equal(textformatted_1[1], '‏1 سال،‏ 1 ماه،‏ 1 هفته،‏ 1 روز');
         test.equal(textformatted_1[2], '‏1 سال 1 ماه 1 هفته 1 روز');
@@ -2372,14 +2765,21 @@ module.exports.testdurfmt2 = {
     testDurFmt_fa_IR: function(test) {
         test.expect(16);
         // 1 18
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
+
+        var textformatted_1 = [],textformatted_18 = [];
+        var clockformatted_1 = [],clockformatted_18 = [];
+
         for (var i=0; i<4; i++) {
             textfmt = new DurationFmt({locale: "fa-IR", style:"text", length:length[i], useNative:false});
 
-            textformatted_1[i] = textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString();
-            textformatted_18[i] = textfmt.format({year: 18,month: 18,week: 18,day: 18}).toString();
+            textformatted_1.push(textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString());
+            textformatted_18.push(textfmt.format({year: 18,month: 18,week: 18,day: 18}).toString());
 
-            clockformatted_1[i] = textfmt.format({hour: 1,minute: 1,second: 1}).toString();
-            clockformatted_18[i] = textfmt.format({hour: 18,minute: 18,second: 18}).toString();
+            clockformatted_1.push(textfmt.format({hour: 1,minute: 1,second: 1}).toString());
+            clockformatted_18.push(textfmt.format({hour: 18,minute: 18,second: 18}).toString());
         }
 
         test.equal(textformatted_1[0], '‏1 سال،‏ 1 ماه،‏ 1 هفته، و 1 روز');
@@ -2407,14 +2807,21 @@ module.exports.testdurfmt2 = {
     testDurFmt_fi_FI: function(test) {
         test.expect(16);
         // 1 17
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
+
+        var textformatted_1 = [],textformatted_17 = [];
+        var clockformatted_1 = [],clockformatted_17 = [];
+
         for (var i=0; i<4; i++) {
             textfmt = new DurationFmt({locale: "fi-FI", style:"text", length:length[i]});
 
-            textformatted_1[i] = textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString();
-            textformatted_17[i] = textfmt.format({year: 17,month: 17,week: 17,day: 17}).toString();
+            textformatted_1.push(textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString());
+            textformatted_17.push(textfmt.format({year: 17,month: 17,week: 17,day: 17}).toString());
 
-            clockformatted_1[i] = textfmt.format({hour: 1,minute: 1,second: 1}).toString();
-            clockformatted_17[i] = textfmt.format({hour: 17,minute: 17,second: 17}).toString();
+            clockformatted_1.push(textfmt.format({hour: 1,minute: 1,second: 1}).toString());
+            clockformatted_17.push(textfmt.format({hour: 17,minute: 17,second: 17}).toString());
         }
 
         test.equal(textformatted_1[0], '1 vuosi, 1 kuukausi, 1 viikko ja 1 päivä');
@@ -2431,7 +2838,7 @@ module.exports.testdurfmt2 = {
         test.equal(clockformatted_1[1], '1 t, 1 min, 1 s');
         test.equal(clockformatted_1[2], '1t, 1min, 1s');
         test.equal(clockformatted_1[3], '1t 1min 1s');
-    
+
         test.equal(clockformatted_17[0], '17 tuntia, 17 minuuttia ja 17 sekuntia');
         test.equal(clockformatted_17[1], '17 t, 17 min, 17 s');
         test.equal(clockformatted_17[2], '17t, 17min, 17s');
@@ -2442,13 +2849,20 @@ module.exports.testdurfmt2 = {
     testDurFmt_fr_BE: function(test) {
         test.expect(16);
         // 1 16
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
+
+        var textformatted_1 = [],textformatted_16 = [];
+        var clockformatted_1 = [],clockformatted_16 = [];
+
         for (var i=0; i<4; i++) {
             textfmt = new DurationFmt({locale: "fr-BE", style:"text", length:length[i]});
-            textformatted_1[i] = textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString();
-            textformatted_16[i] = textfmt.format({year: 16,month: 16,week: 16,day: 16}).toString();
+            textformatted_1.push(textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString());
+            textformatted_16.push(textfmt.format({year: 16,month: 16,week: 16,day: 16}).toString());
 
-            clockformatted_1[i] = textfmt.format({hour: 1,minute: 1,second: 1}).toString();
-            clockformatted_16[i] = textfmt.format({hour: 16,minute: 16,second: 16}).toString();
+            clockformatted_1.push(textfmt.format({hour: 1,minute: 1,second: 1}).toString());
+            clockformatted_16.push(textfmt.format({hour: 16,minute: 16,second: 16}).toString());
         }
 
         test.equal(textformatted_1[0], '1 an, 1 mois, 1 semaine et 1 jour');
@@ -2476,20 +2890,27 @@ module.exports.testdurfmt2 = {
     testDurFmt_fr_CA: function(test) {
         test.expect(16);
         // 1 17
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
+
+        var textformatted_1 = [],textformatted_17 = [];
+        var clockformatted_1 = [],clockformatted_17 = [];
+
         for (var i=0; i<4; i++) {
             textfmt = new DurationFmt({locale: "fr-CA", style:"text", length:length[i]});
-            textformatted_1[i] = textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString();
-            textformatted_17[i] = textfmt.format({year: 17,month: 17,week: 17,day: 17}).toString();
+            textformatted_1.push(textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString());
+            textformatted_17.push(textfmt.format({year: 17,month: 17,week: 17,day: 17}).toString());
 
-            clockformatted_1[i] = textfmt.format({hour: 1,minute: 1,second: 1}).toString();
-            clockformatted_17[i] = textfmt.format({hour: 17,minute: 17,second: 17}).toString();
+            clockformatted_1.push(textfmt.format({hour: 1,minute: 1,second: 1}).toString());
+            clockformatted_17.push(textfmt.format({hour: 17,minute: 17,second: 17}).toString());
         }
 
         test.equal(textformatted_1[0], '1 an, 1 mois, 1 semaine et 1 jour');
         test.equal(textformatted_1[1], '1 an, 1 m., 1 sem., 1 j');
         test.equal(textformatted_1[2], '1a, 1m, 1sem, 1j');
         test.equal(textformatted_1[3], '1a 1m 1sem 1j');
-    
+
         test.equal(textformatted_17[0], '17 ans, 17 mois, 17 semaines et 17 jours');
         test.equal(textformatted_17[1], '17 ans, 17 m., 17 sem., 17 j');
         test.equal(textformatted_17[2], '17a, 17m, 17sem, 17j');
@@ -2510,20 +2931,27 @@ module.exports.testdurfmt2 = {
     testDurFmt_fr_CH: function(test) {
         test.expect(16);
         // 1 17
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
+
+        var textformatted_1 = [],textformatted_17 = [];
+        var clockformatted_1 = [],clockformatted_17 = [];
+
         for (var i=0; i<4; i++) {
             textfmt = new DurationFmt({locale: "fr-CH", style:"text", length:length[i]});
-            textformatted_1[i] = textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString();
-            textformatted_17[i] = textfmt.format({year: 17,month: 17,week: 17,day: 17}).toString();
+            textformatted_1.push(textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString());
+            textformatted_17.push(textfmt.format({year: 17,month: 17,week: 17,day: 17}).toString());
 
-            clockformatted_1[i] = textfmt.format({hour: 1,minute: 1,second: 1}).toString();
-            clockformatted_17[i] = textfmt.format({hour: 17,minute: 17,second: 17}).toString();
+            clockformatted_1.push(textfmt.format({hour: 1,minute: 1,second: 1}).toString());
+            clockformatted_17.push(textfmt.format({hour: 17,minute: 17,second: 17}).toString());
         }
 
         test.equal(textformatted_1[0], '1 an, 1 mois, 1 semaine et 1 jour');
         test.equal(textformatted_1[1], '1 an, 1 m., 1 sem., 1 j');
         test.equal(textformatted_1[2], '1a, 1m., 1sem., 1j');
         test.equal(textformatted_1[3], '1a 1m. 1sem. 1j');
-    
+
         test.equal(textformatted_17[0], '17 ans, 17 mois, 17 semaines et 17 jours');
         test.equal(textformatted_17[1], '17 ans, 17 m., 17 sem., 17 j');
         test.equal(textformatted_17[2], '17a, 17m., 17sem., 17j');
@@ -2533,7 +2961,7 @@ module.exports.testdurfmt2 = {
         test.equal(clockformatted_1[1], '1 h, 1 min, 1 s');
         test.equal(clockformatted_1[2], '1h, 1 min, 1s');
         test.equal(clockformatted_1[3], '1h 1 min 1s');
-    
+
         test.equal(clockformatted_17[0], '17 heures, 17 minutes et 17 secondes');
         test.equal(clockformatted_17[1], '17 h, 17 min, 17 s');
         test.equal(clockformatted_17[2], '17h, 17 min, 17s');
@@ -2544,13 +2972,20 @@ module.exports.testdurfmt2 = {
     testDurFmt_fr_FR: function(test) {
         test.expect(16);
         // 1 17
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
+
+        var textformatted_1 = [],textformatted_17 = [];
+        var clockformatted_1 = [],clockformatted_17 = [];
+
         for (var i=0; i<4; i++) {
             textfmt = new DurationFmt({locale: "fr-FR", style:"text", length:length[i]});
-            textformatted_1[i] = textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString();
-            textformatted_17[i] = textfmt.format({year: 17,month: 17,week: 17,day: 17}).toString();
+            textformatted_1.push(textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString());
+            textformatted_17.push(textfmt.format({year: 17,month: 17,week: 17,day: 17}).toString());
 
-            clockformatted_1[i] = textfmt.format({hour: 1,minute: 1,second: 1}).toString();
-            clockformatted_17[i] = textfmt.format({hour: 17,minute: 17,second: 17}).toString();
+            clockformatted_1.push(textfmt.format({hour: 1,minute: 1,second: 1}).toString());
+            clockformatted_17.push(textfmt.format({hour: 17,minute: 17,second: 17}).toString());
         }
 
         // CLDR 34 chang
@@ -2559,7 +2994,7 @@ module.exports.testdurfmt2 = {
         test.equal(textformatted_1[1], '1 an, 1 m., 1 sem., 1 j');
         test.equal(textformatted_1[2], '1a, 1m., 1sem., 1j');
         test.equal(textformatted_1[3], '1a 1m. 1sem. 1j');
-    
+
         test.equal(textformatted_17[0], '17 ans, 17 mois, 17 semaines et 17 jours');
         test.equal(textformatted_17[1], '17 ans, 17 m., 17 sem., 17 j');
         test.equal(textformatted_17[2], '17a, 17m., 17sem., 17j');
@@ -2569,7 +3004,7 @@ module.exports.testdurfmt2 = {
         test.equal(clockformatted_1[1], '1 h, 1 min, 1 s');
         test.equal(clockformatted_1[2], '1h, 1 min, 1s');
         test.equal(clockformatted_1[3], '1h 1 min 1s');
-    
+
         test.equal(clockformatted_17[0], '17 heures, 17 minutes et 17 secondes');
         test.equal(clockformatted_17[1], '17 h, 17 min, 17 s');
         test.equal(clockformatted_17[2], '17h, 17 min, 17s');
@@ -2580,13 +3015,20 @@ module.exports.testdurfmt2 = {
     testDurFmt_fr_LU: function(test) {
         test.expect(16);
         // 1 16
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
+
+        var textformatted_1 = [],textformatted_16 = [];
+        var clockformatted_1 = [],clockformatted_16 = [];
+
         for (var i=0; i<4; i++) {
             textfmt = new DurationFmt({locale: "fr-LU", style:"text", length:length[i]});
-            textformatted_1[i] = textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString();
-            textformatted_16[i] = textfmt.format({year: 16,month: 16,week: 16,day: 16}).toString();
+            textformatted_1.push(textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString());
+            textformatted_16.push(textfmt.format({year: 16,month: 16,week: 16,day: 16}).toString());
 
-            clockformatted_1[i] = textfmt.format({hour: 1,minute: 1,second: 1}).toString();
-            clockformatted_16[i] = textfmt.format({hour: 16,minute: 16,second: 16}).toString();
+            clockformatted_1.push(textfmt.format({hour: 1,minute: 1,second: 1}).toString());
+            clockformatted_16.push(textfmt.format({hour: 16,minute: 16,second: 16}).toString());
         }
         // CLDR 34 change
 
@@ -2615,27 +3057,35 @@ module.exports.testdurfmt2 = {
     testDurFmt_ga_IE: function(test) {
         test.expect(40);
         // 1 2 3 7 11
+
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
+
+        var textformatted_1 = [],textformatted_2 = [],textformatted_3 = [],textformatted_7 = [],textformatted_11 = [];
+        var clockformatted_1 = [],clockformatted_2 = [],clockformatted_3 = [],clockformatted_7 = [],clockformatted_11 = [];
+
         for (var i=0; i<4; i++) {
             textfmt = new DurationFmt({locale: "ga-IE", style:"text", length:length[i]});
 
-            textformatted_1[i] = textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString();
-            textformatted_2[i] = textfmt.format({year: 2,month: 2,week: 2,day: 2}).toString();
-            textformatted_3[i] = textfmt.format({year: 3,month: 3,week: 3,day: 3}).toString();
-            textformatted_7[i] = textfmt.format({year: 7,month: 7,week: 7,day: 7}).toString();
-            textformatted_11[i] = textfmt.format({year: 11,month: 11,week: 11,day: 11}).toString();
+            textformatted_1.push(textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString());
+            textformatted_2.push(textfmt.format({year: 2,month: 2,week: 2,day: 2}).toString());
+            textformatted_3.push(textfmt.format({year: 3,month: 3,week: 3,day: 3}).toString());
+            textformatted_7.push(textfmt.format({year: 7,month: 7,week: 7,day: 7}).toString());
+            textformatted_11.push(textfmt.format({year: 11,month: 11,week: 11,day: 11}).toString());
 
-            clockformatted_1[i] = textfmt.format({hour: 1,minute: 1,second: 1}).toString();
-            clockformatted_2[i] = textfmt.format({hour: 2,minute: 2,second: 2}).toString();
-            clockformatted_3[i] = textfmt.format({hour: 3,minute: 3,second: 3}).toString();
-            clockformatted_7[i] = textfmt.format({hour: 7,minute: 7,second: 7}).toString();
-            clockformatted_11[i] = textfmt.format({hour: 11,minute: 11,second: 11}).toString();
+            clockformatted_1.push(textfmt.format({hour: 1,minute: 1,second: 1}).toString());
+            clockformatted_2.push(textfmt.format({hour: 2,minute: 2,second: 2}).toString());
+            clockformatted_3.push(textfmt.format({hour: 3,minute: 3,second: 3}).toString());
+            clockformatted_7.push(textfmt.format({hour: 7,minute: 7,second: 7}).toString());
+            clockformatted_11.push(textfmt.format({hour: 11,minute: 11,second: 11}).toString());
         }
 
         test.equal(textformatted_1[0], '1 bhliain, 1 mhí, 1 seachtain, agus 1 lá');
         test.equal(textformatted_1[1], '1 bhl, 1 mhí, 1 scht, 1 lá');
         test.equal(textformatted_1[2], '1b, 1m, 1s, 1l');
         test.equal(textformatted_1[3], '1b 1m 1s 1l');
-    
+
         test.equal(textformatted_2[0], '2 bhliain, 2 mhí, 2 sheachtain, agus 2 lá');
         test.equal(textformatted_2[1], '2 bhl, 2 mhí, 2 scht, 2 lá');
         test.equal(textformatted_2[2], '2b, 2m, 2s, 2l');
@@ -2660,7 +3110,7 @@ module.exports.testdurfmt2 = {
         test.equal(clockformatted_1[1], '1 u, 1 nóim, 1 soic');
         test.equal(clockformatted_1[2], '1u, 1n, 1s');
         test.equal(clockformatted_1[3], '1u 1n 1s');
-    
+
         test.equal(clockformatted_2[0], '2 uair, 2 nóiméad, agus 2 shoicind');
         test.equal(clockformatted_2[1], '2 u, 2 nóim, 2 shoic');
         test.equal(clockformatted_2[2], '2u, 2n, 2s');
@@ -2686,14 +3136,20 @@ module.exports.testdurfmt2 = {
     testDurFmt_gu_IN: function(test) {
         test.expect(16);
         // 1 2
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
+
+        var textformatted_1 = [],textformatted_2 = [];
+        var clockformatted_1 = [],clockformatted_2 = [];
         for (var i=0; i<4; i++) {
             textfmt = new DurationFmt({locale: "gu-IN", style:"text", length:length[i]});
 
-            textformatted_1[i] = textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString();
-            textformatted_2[i] = textfmt.format({year: 2,month: 2,week: 2,day: 2}).toString();
+            textformatted_1.push(textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString());
+            textformatted_2.push(textfmt.format({year: 2,month: 2,week: 2,day: 2}).toString());
 
-            clockformatted_1[i] = textfmt.format({hour: 1,minute: 1,second: 1}).toString();
-            clockformatted_2[i] = textfmt.format({hour: 2,minute: 2,second: 2}).toString();
+            clockformatted_1.push(textfmt.format({hour: 1,minute: 1,second: 1}).toString());
+            clockformatted_2.push(textfmt.format({hour: 2,minute: 2,second: 2}).toString());
         }
 
         test.equal(textformatted_1[0], '1 વર્ષ, 1 મહિનો, 1 અઠવાડિયું, 1 દિવસ');
@@ -2721,18 +3177,25 @@ module.exports.testdurfmt2 = {
     testDurFmt_he_IL: function(test) {
         test.expect(32);
         // 1 2 20 19
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
+
+        var textformatted_1 = [],textformatted_2 = [],textformatted_20 = [],textformatted_19 = [];
+        var clockformatted_1 = [],clockformatted_2 = [],clockformatted_20 = [],clockformatted_19 = [];
+
         for (var i=0; i<4; i++) {
             textfmt = new DurationFmt({locale: "he-IL", style:"text", length:length[i]});
 
-            textformatted_1[i] = textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString();
-            textformatted_2[i] = textfmt.format({year: 2,month: 2,week: 2,day: 2}).toString();
-            textformatted_20[i] = textfmt.format({year: 20,month: 20,week: 20,day: 20}).toString();
-            textformatted_19[i] = textfmt.format({year: 19,month: 19,week: 19,day: 19}).toString();
+            textformatted_1.push(textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString());
+            textformatted_2.push(textfmt.format({year: 2,month: 2,week: 2,day: 2}).toString());
+            textformatted_20.push(textfmt.format({year: 20,month: 20,week: 20,day: 20}).toString());
+            textformatted_19.push(textfmt.format({year: 19,month: 19,week: 19,day: 19}).toString());
 
-            clockformatted_1[i] = textfmt.format({hour: 1,minute: 1,second: 1}).toString();
-            clockformatted_2[i] = textfmt.format({hour: 2,minute: 2,second: 2}).toString();
-            clockformatted_20[i] = textfmt.format({hour: 20,minute: 20,second: 20}).toString();
-            clockformatted_19[i] = textfmt.format({hour: 19,minute: 19,second: 19}).toString();
+            clockformatted_1.push(textfmt.format({hour: 1,minute: 1,second: 1}).toString());
+            clockformatted_2.push(textfmt.format({hour: 2,minute: 2,second: 2}).toString());
+            clockformatted_20.push(textfmt.format({hour: 20,minute: 20,second: 20}).toString());
+            clockformatted_19.push(textfmt.format({hour: 19,minute: 19,second: 19}).toString());
         }
 
         // CLDR 34 change (short: year, week)
@@ -2782,14 +3245,21 @@ module.exports.testdurfmt2 = {
     testDurFmt_hi_IN: function(test) {
         test.expect(16);
         // 1 2
+        // 1 2
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
+
+        var textformatted_1 = [],textformatted_2 = [];
+        var clockformatted_1 = [],clockformatted_2 = [];
         for (var i=0; i<4; i++) {
             textfmt = new DurationFmt({locale: "hi-IN", style:"text", length:length[i]});
 
-            textformatted_1[i] = textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString();
-            textformatted_2[i] = textfmt.format({year: 2,month: 2,week: 2,day: 2}).toString();
+            textformatted_1.push(textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString());
+            textformatted_2.push(textfmt.format({year: 2,month: 2,week: 2,day: 2}).toString());
 
-            clockformatted_1[i] = textfmt.format({hour: 1,minute: 1,second: 1}).toString();
-            clockformatted_2[i] = textfmt.format({hour: 2,minute: 2,second: 2}).toString();
+            clockformatted_1.push(textfmt.format({hour: 1,minute: 1,second: 1}).toString());
+            clockformatted_2.push(textfmt.format({hour: 2,minute: 2,second: 2}).toString());
         }
 
         // CLDR 34 change (long/short: hour, minute, second)
@@ -2819,16 +3289,23 @@ module.exports.testdurfmt2 = {
     testDurFmt_hr_HR: function(test) {
         test.expect(24);
         // 1 2 5
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
+
+        var textformatted_1 = [],textformatted_2 = [], textformatted_5 =[];
+        var clockformatted_1 = [],clockformatted_2 = [], clockformatted_5 = [];
+        
         for (var i=0; i<4; i++) {
             textfmt = new DurationFmt({locale: "hr-HR", style:"text", length:length[i]});
 
-            textformatted_1[i] = textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString();
-            textformatted_2[i] = textfmt.format({year: 2,month: 2,week: 2,day: 2}).toString();
-            textformatted_5[i] = textfmt.format({year: 5,month: 5,week: 5,day: 5}).toString();
+            textformatted_1.push(textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString());
+            textformatted_2.push(textfmt.format({year: 2,month: 2,week: 2,day: 2}).toString());
+            textformatted_5.push(textfmt.format({year: 5,month: 5,week: 5,day: 5}).toString());
 
-            clockformatted_1[i] = textfmt.format({hour: 1,minute: 1,second: 1}).toString();
-            clockformatted_2[i] = textfmt.format({hour: 2,minute: 2,second: 2}).toString();
-            clockformatted_5[i] = textfmt.format({hour: 5,minute: 5,second: 5}).toString();
+            clockformatted_1.push(textfmt.format({hour: 1,minute: 1,second: 1}).toString());
+            clockformatted_2.push(textfmt.format({hour: 2,minute: 2,second: 2}).toString());
+            clockformatted_5.push(textfmt.format({hour: 5,minute: 5,second: 5}).toString());
         }
 
         test.equal(textformatted_1[0], '1 godina, 1 mjesec, 1 tjedan i 1 dan');
@@ -2866,16 +3343,23 @@ module.exports.testdurfmt2 = {
     testDurFmt_hr_ME: function(test) {
         test.expect(24);
         // 1 4 19
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
+
+        var textformatted_1 = [],textformatted_4 = [], textformatted_19 = [];
+        var clockformatted_1 = [],clockformatted_4 = [], clockformatted_19 = [];
+
         for (var i=0; i<4; i++) {
             textfmt = new DurationFmt({locale: "hr-ME", style:"text", length:length[i]});
 
-            textformatted_1[i] = textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString();
-            textformatted_4[i] = textfmt.format({year: 4,month: 4,week: 4,day: 4}).toString();
-            textformatted_19[i] = textfmt.format({year: 19,month: 19,week: 19,day: 19}).toString();
+            textformatted_1.push(textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString());
+            textformatted_4.push(textfmt.format({year: 4,month: 4,week: 4,day: 4}).toString());
+            textformatted_19.push(textfmt.format({year: 19,month: 19,week: 19,day: 19}).toString());
 
-            clockformatted_1[i] = textfmt.format({hour: 1,minute: 1,second: 1}).toString();
-            clockformatted_4[i] = textfmt.format({hour: 4,minute: 4,second: 4}).toString();
-            clockformatted_19[i] = textfmt.format({hour: 19,minute: 19,second: 19}).toString();
+            clockformatted_1.push(textfmt.format({hour: 1,minute: 1,second: 1}).toString());
+            clockformatted_4.push(textfmt.format({hour: 4,minute: 4,second: 4}).toString());
+            clockformatted_19.push(textfmt.format({hour: 19,minute: 19,second: 19}).toString());
         }
 
         test.equal(textformatted_1[0], '1 godina, 1 mjesec, 1 tjedan i 1 dan');
@@ -2913,16 +3397,23 @@ module.exports.testdurfmt2 = {
     testDurFmt_hr_HU: function(test) {
         test.expect(24);
         // 1 2 5
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
+
+        var textformatted_1 = [],textformatted_2 = [], textformatted_5 = [];
+        var clockformatted_1 = [],clockformatted_2 = [], clockformatted_5 = [];
+
         for (var i=0; i<4; i++) {
             textfmt = new DurationFmt({locale: "hr-HU", style:"text", length:length[i]});
 
-            textformatted_1[i] = textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString();
-            textformatted_2[i] = textfmt.format({year: 2,month: 2,week: 2,day: 2}).toString();
-            textformatted_5[i] = textfmt.format({year: 5,month: 5,week: 5,day: 5}).toString();
+            textformatted_1.push(textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString());
+            textformatted_2.push(textfmt.format({year: 2,month: 2,week: 2,day: 2}).toString());
+            textformatted_5.push(textfmt.format({year: 5,month: 5,week: 5,day: 5}).toString());
 
-            clockformatted_1[i] = textfmt.format({hour: 1,minute: 1,second: 1}).toString();
-            clockformatted_2[i] = textfmt.format({hour: 2,minute: 2,second: 2}).toString();
-            clockformatted_5[i] = textfmt.format({hour: 5,minute: 5,second: 5}).toString();
+            clockformatted_1.push(textfmt.format({hour: 1,minute: 1,second: 1}).toString());
+            clockformatted_2.push(textfmt.format({hour: 2,minute: 2,second: 2}).toString());
+            clockformatted_5.push(textfmt.format({hour: 5,minute: 5,second: 5}).toString());
         }
 
         test.equal(textformatted_1[0], '1 godina, 1 mjesec, 1 tjedan i 1 dan');
@@ -2960,14 +3451,21 @@ module.exports.testdurfmt2 = {
     testDurFmt_id_ID: function(test) {
         test.expect(16);
         // 1 2
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
+
+        var textformatted_1 = [],textformatted_2 = [];
+        var clockformatted_1 = [],clockformatted_2 = [];
+
         for (var i=0; i<4; i++) {
             textfmt = new DurationFmt({locale: "id-ID", style:"text", length:length[i]});
 
-            textformatted_1[i] = textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString();
-            textformatted_2[i] = textfmt.format({year: 2,month: 2,week: 2,day: 2}).toString();
+            textformatted_1.push(textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString());
+            textformatted_2.push(textfmt.format({year: 2,month: 2,week: 2,day: 2}).toString());
 
-            clockformatted_1[i] = textfmt.format({hour: 1,minute: 1,second: 1}).toString();
-            clockformatted_2[i] = textfmt.format({hour: 2,minute: 2,second: 2}).toString();
+            clockformatted_1.push(textfmt.format({hour: 1,minute: 1,second: 1}).toString());
+            clockformatted_2.push(textfmt.format({hour: 2,minute: 2,second: 2}).toString());
         }
 
         test.equal(textformatted_1[0], '1 tahun, 1 bulan, 1 minggu, 1 hari');
@@ -2995,14 +3493,21 @@ module.exports.testdurfmt2 = {
     testDurFmt_is_IS: function(test) {
         test.expect(16);
         // 1 17
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
+
+        var textformatted_1 = [],textformatted_17 = [];
+        var clockformatted_1 = [],clockformatted_17 = [];
+
         for (var i=0; i<4; i++) {
             textfmt = new DurationFmt({locale: "is-IS", style:"text", length:length[i]});
 
-            textformatted_1[i] = textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString();
-            textformatted_17[i] = textfmt.format({year: 17,month: 17,week: 17,day: 17}).toString();
+            textformatted_1.push(textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString());
+            textformatted_17.push(textfmt.format({year: 17,month: 17,week: 17,day: 17}).toString());
 
-            clockformatted_1[i] = textfmt.format({hour: 1,minute: 1,second: 1}).toString();
-            clockformatted_17[i] = textfmt.format({hour: 17,minute: 17,second: 17}).toString();
+            clockformatted_1.push(textfmt.format({hour: 1,minute: 1,second: 1}).toString());
+            clockformatted_17.push(textfmt.format({hour: 17,minute: 17,second: 17}).toString());
         }
 
         test.equal(textformatted_1[0], '1 ár, 1 mánuður, 1 vika og 1 dagur');
@@ -3030,14 +3535,21 @@ module.exports.testdurfmt2 = {
     testDurFmt_it_CH: function(test) {
         test.expect(16);
         // 1 17
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
+
+        var textformatted_1 = [],textformatted_17 = [];
+        var clockformatted_1 = [],clockformatted_17 = [];
+
         for (var i=0; i<4; i++) {
             textfmt = new DurationFmt({locale: "it-CH", style:"text", length:length[i]});
 
-            textformatted_1[i] = textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString();
-            textformatted_17[i] = textfmt.format({year: 17,month: 17,week: 17,day: 17}).toString();
+            textformatted_1.push(textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString());
+            textformatted_17.push(textfmt.format({year: 17,month: 17,week: 17,day: 17}).toString());
 
-            clockformatted_1[i] = textfmt.format({hour: 1,minute: 1,second: 1}).toString();
-            clockformatted_17[i] = textfmt.format({hour: 17,minute: 17,second: 17}).toString();
+            clockformatted_1.push(textfmt.format({hour: 1,minute: 1,second: 1}).toString());
+            clockformatted_17.push(textfmt.format({hour: 17,minute: 17,second: 17}).toString());
         }
 
         test.equal(textformatted_1[0], '1 anno, 1 mese, 1 settimana e 1 giorno');
@@ -3064,15 +3576,22 @@ module.exports.testdurfmt2 = {
     }, 
     testDurFmt_it_IT: function(test) {
         test.expect(16);
-        // 1 2  
+        // 1 2
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
+
+        var textformatted_1 = [],textformatted_2 = [];
+        var clockformatted_1 = [],clockformatted_2 = [];
+
         for (var i=0; i<4; i++) {
             textfmt = new DurationFmt({locale: "it-IT", style:"text", length:length[i]});
 
-            textformatted_1[i] = textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString();
-            textformatted_2[i] = textfmt.format({year: 2,month: 2,week: 2,day: 2}).toString();
+            textformatted_1.push(textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString());
+            textformatted_2.push(textfmt.format({year: 2,month: 2,week: 2,day: 2}).toString());
 
-            clockformatted_1[i] = textfmt.format({hour: 1,minute: 1,second: 1}).toString();
-            clockformatted_2[i] = textfmt.format({hour: 2,minute: 2,second: 2}).toString();
+            clockformatted_1.push(textfmt.format({hour: 1,minute: 1,second: 1}).toString());
+            clockformatted_2.push(textfmt.format({hour: 2,minute: 2,second: 2}).toString());
         }
 
         test.equal(textformatted_1[0], '1 anno, 1 mese, 1 settimana e 1 giorno');
@@ -3100,14 +3619,21 @@ module.exports.testdurfmt2 = {
     testDurFmt_ja_JP: function(test) {
         test.expect(16);
         // 1 16
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
+
+        var textformatted_1 = [],textformatted_16 = [];
+        var clockformatted_1 = [],clockformatted_16 = [];
+
         for (var i=0; i<4; i++) {
             textfmt = new DurationFmt({locale: "ja-JP", style:"text", length:length[i]});
 
-            textformatted_1[i] = textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString();
-            textformatted_16[i] = textfmt.format({year: 16,month: 16,week: 16,day: 16}).toString();
+            textformatted_1.push(textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString());
+            textformatted_16.push(textfmt.format({year: 16,month: 16,week: 16,day: 16}).toString());
 
-            clockformatted_1[i] = textfmt.format({hour: 1,minute: 1,second: 1}).toString();
-            clockformatted_16[i] = textfmt.format({hour: 16,minute: 16,second: 16}).toString();
+            clockformatted_1.push(textfmt.format({hour: 1,minute: 1,second: 1}).toString());
+            clockformatted_16.push(textfmt.format({hour: 16,minute: 16,second: 16}).toString());
         }
 
         test.equal(textformatted_1[0], '1 年 1 か月 1 週間 1 日');
@@ -3135,14 +3661,21 @@ module.exports.testdurfmt2 = {
     testDurFmt_kk_KZ: function(test) {
         test.expect(16);
         // 1 2
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
+
+        var textformatted_1 = [],textformatted_2 = [];
+        var clockformatted_1 = [],clockformatted_2 = [];
+
         for (var i=0; i<4; i++) {
             textfmt = new DurationFmt({locale: "kk-KZ", style:"text", length:length[i]});
 
-            textformatted_1[i] = textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString();
-            textformatted_2[i] = textfmt.format({year: 2,month: 2,week: 2,day: 2}).toString();
+            textformatted_1.push(textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString());
+            textformatted_2.push(textfmt.format({year: 2,month: 2,week: 2,day: 2}).toString());
 
-            clockformatted_1[i] = textfmt.format({hour: 1,minute: 1,second: 1}).toString();
-            clockformatted_2[i] = textfmt.format({hour: 2,minute: 2,second: 2}).toString();
+            clockformatted_1.push(textfmt.format({hour: 1,minute: 1,second: 1}).toString());
+            clockformatted_2.push(textfmt.format({hour: 2,minute: 2,second: 2}).toString());
         }
 
         test.equal(textformatted_1[0], '1 жыл 1 ай 1 апта 1 тәулік');
@@ -3170,14 +3703,21 @@ module.exports.testdurfmt2 = {
     testDurFmt_kn_IN: function(test) {
         test.expect(16);
         // 1 2
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
+
+        var textformatted_1 = [],textformatted_2 = [];
+        var clockformatted_1 = [],clockformatted_2 = [];
+
         for (var i=0; i<4; i++) {
             textfmt = new DurationFmt({locale: "kn-IN", style:"text", length:length[i]});
 
-            textformatted_1[i] = textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString();
-            textformatted_2[i] = textfmt.format({year: 2,month: 2,week: 2,day: 2}).toString();
+            textformatted_1.push(textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString());
+            textformatted_2.push(textfmt.format({year: 2,month: 2,week: 2,day: 2}).toString());
 
-            clockformatted_1[i] = textfmt.format({hour: 1,minute: 1,second: 1}).toString();
-            clockformatted_2[i] = textfmt.format({hour: 2,minute: 2,second: 2}).toString();
+            clockformatted_1.push(textfmt.format({hour: 1,minute: 1,second: 1}).toString());
+            clockformatted_2.push(textfmt.format({hour: 2,minute: 2,second: 2}).toString());
         }
 
         test.equal(textformatted_1[0], '1 ವರ್ಷ, 1 ತಿಂಗಳು, 1 ವಾರ, 1 ದಿನ');
@@ -3205,14 +3745,21 @@ module.exports.testdurfmt2 = {
     testDurFmt_ko_KR: function(test) {
         test.expect(16);
         // 1 2
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
+
+        var textformatted_1 = [],textformatted_2 = [];
+        var clockformatted_1 = [],clockformatted_2 = [];
+
         for (var i=0; i<4; i++) {
             textfmt = new DurationFmt({locale: "ko-KR", style:"text", length:length[i]});
 
-            textformatted_1[i] = textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString();
-            textformatted_2[i] = textfmt.format({year: 2,month: 2,week: 2,day: 2}).toString();
+            textformatted_1.push(textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString());
+            textformatted_2.push(textfmt.format({year: 2,month: 2,week: 2,day: 2}).toString());
 
-            clockformatted_1[i] = textfmt.format({hour: 1,minute: 1,second: 1}).toString();
-            clockformatted_2[i] = textfmt.format({hour: 2,minute: 2,second: 2}).toString();
+            clockformatted_1.push(textfmt.format({hour: 1,minute: 1,second: 1}).toString());
+            clockformatted_2.push(textfmt.format({hour: 2,minute: 2,second: 2}).toString());
         }
 
         test.equal(textformatted_1[0], '1년 1개월 1주 1일');
@@ -3240,14 +3787,21 @@ module.exports.testdurfmt2 = {
     testDurFmt_ku_IQ: function(test) {
         test.expect(16);
         // 1 2
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
+
+        var textformatted_1 = [],textformatted_2 = [];
+        var clockformatted_1 = [],clockformatted_2 = [];
+
         for (var i=0; i<4; i++) {
             textfmt = new DurationFmt({locale: "ku-IQ", style:"text", length:length[i], useNative:false});
 
-            textformatted_1[i] = textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString();
-            textformatted_2[i] = textfmt.format({year: 2,month: 2,week: 2,day: 2}).toString();
+            textformatted_1.push(textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString());
+            textformatted_2.push(textfmt.format({year: 2,month: 2,week: 2,day: 2}).toString());
 
-            clockformatted_1[i] = textfmt.format({hour: 1,minute: 1,second: 1}).toString();
-            clockformatted_2[i] = textfmt.format({hour: 2,minute: 2,second: 2}).toString();
+            clockformatted_1.push(textfmt.format({hour: 1,minute: 1,second: 1}).toString());
+            clockformatted_2.push(textfmt.format({hour: 2,minute: 2,second: 2}).toString());
         }
 
         test.equal(textformatted_1[0], '‏1 ساڵ, 1 مانگ, 1 هەفتە,  1 رۆژ');
@@ -3275,16 +3829,23 @@ module.exports.testdurfmt2 = {
     testDurFmt_lt_LT: function(test) {
         test.expect(24);
         // 21 9 11
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
+
+        var textformatted_21 = [],textformatted_9 = [],textformatted_11 = [];
+        var clockformatted_21 = [],clockformatted_9 = [],clockformatted_11 = [];
+
         for (var i=0; i<4; i++) {
             textfmt = new DurationFmt({locale: "lt-LT", style:"text", length:length[i]});
 
-            textformatted_21[i] = textfmt.format({year: 21,month: 21,week: 21,day: 21}).toString();
-            textformatted_9[i] = textfmt.format({year: 9,month: 9,week: 9,day: 9}).toString();
-            textformatted_11[i] = textfmt.format({year: 11,month: 11,week: 11,day: 11}).toString();
+            textformatted_21.push(textfmt.format({year: 21,month: 21,week: 21,day: 21}).toString());
+            textformatted_9.push(textfmt.format({year: 9,month: 9,week: 9,day: 9}).toString());
+            textformatted_11.push(textfmt.format({year: 11,month: 11,week: 11,day: 11}).toString());
             
-            clockformatted_21[i] = textfmt.format({hour: 21,minute: 21,second: 21}).toString();
-            clockformatted_9[i] = textfmt.format({hour: 9,minute: 9,second: 9}).toString();
-            clockformatted_11[i] = textfmt.format({hour: 11,minute: 11,second: 11}).toString();
+            clockformatted_21.push(textfmt.format({hour: 21,minute: 21,second: 21}).toString());
+            clockformatted_9.push(textfmt.format({hour: 9,minute: 9,second: 9}).toString());
+            clockformatted_11.push(textfmt.format({hour: 11,minute: 11,second: 11}).toString());
         }
 
         test.equal(textformatted_21[0], '21 metai 21 mėnuo 21 savaitė ir 21 diena');
@@ -3322,14 +3883,21 @@ module.exports.testdurfmt2 = {
     testDurFmt_lv_LV: function(test) {
         test.expect(16);
         // 21 9
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
+
+        var textformatted_21 = [],textformatted_9 = [];
+        var clockformatted_21 = [],clockformatted_9 = [];
+
         for (var i=0; i<4; i++) {
             textfmt = new DurationFmt({locale: "lv-LV", style:"text", length:length[i]});
             
-            textformatted_21[i] = textfmt.format({year: 21,month: 21,week: 21,day: 21}).toString();
-            textformatted_9[i] = textfmt.format({year: 9,month: 9,week: 9,day: 9}).toString();
+            textformatted_21.push(textfmt.format({year: 21,month: 21,week: 21,day: 21}).toString());
+            textformatted_9.push(textfmt.format({year: 9,month: 9,week: 9,day: 9}).toString());
         
-            clockformatted_21[i] = textfmt.format({hour: 21,minute: 21,second: 21}).toString();
-            clockformatted_9[i] = textfmt.format({hour: 9,minute: 9,second: 9}).toString();
+            clockformatted_21.push(textfmt.format({hour: 21,minute: 21,second: 21}).toString());
+            clockformatted_9.push(textfmt.format({hour: 9,minute: 9,second: 9}).toString());
         }
         
         test.equal(textformatted_21[0], '21 gads, 21 mēnesis, 21 nedēļa un 21 diena');
@@ -3357,14 +3925,21 @@ module.exports.testdurfmt2 = {
     testDurFmt_mk_MK: function(test) {
         test.expect(16);
         // 1 2
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
+
+        var textformatted_1 = [],textformatted_2 = [];
+        var clockformatted_1 = [],clockformatted_2 = [];
+
         for (var i=0; i<4; i++) {
             textfmt = new DurationFmt({locale: "mk-MK", style:"text", length:length[i]});
 
-            textformatted_1[i] = textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString();
-            textformatted_2[i] = textfmt.format({year: 2,month: 2,week: 2,day: 2}).toString();
+            textformatted_1.push(textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString());
+            textformatted_2.push(textfmt.format({year: 2,month: 2,week: 2,day: 2}).toString());
 
-            clockformatted_1[i] = textfmt.format({hour: 1,minute: 1,second: 1}).toString();
-            clockformatted_2[i] = textfmt.format({hour: 2,minute: 2,second: 2}).toString();
+            clockformatted_1.push(textfmt.format({hour: 1,minute: 1,second: 1}).toString());
+            clockformatted_2.push(textfmt.format({hour: 2,minute: 2,second: 2}).toString());
         }
 
         // CLDR 34 change (hour,minute, second: short)
@@ -3394,14 +3969,21 @@ module.exports.testdurfmt2 = {
     testDurFmt_ml_IN: function(test) {
         test.expect(16);
         // 1 2
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
+
+        var textformatted_1 = [],textformatted_2 = [];
+        var clockformatted_1 = [],clockformatted_2 = [];
+
         for (var i=0; i<4; i++) {
             textfmt = new DurationFmt({locale: "ml-IN", style:"text", length:length[i]});
 
-            textformatted_1[i] = textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString();
-            textformatted_2[i] = textfmt.format({year: 2,month: 2,week: 2,day: 2}).toString();
+            textformatted_1.push(textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString());
+            textformatted_2.push(textfmt.format({year: 2,month: 2,week: 2,day: 2}).toString());
 
-            clockformatted_1[i] = textfmt.format({hour: 1,minute: 1,second: 1}).toString();
-            clockformatted_2[i] = textfmt.format({hour: 2,minute: 2,second: 2}).toString();
+            clockformatted_1.push(textfmt.format({hour: 1,minute: 1,second: 1}).toString());
+            clockformatted_2.push(textfmt.format({hour: 2,minute: 2,second: 2}).toString());
         }
 
         test.equal(textformatted_1[0], '1 വർഷം, 1 മാസം, 1 ആഴ്ച, 1 ദിവസം');
@@ -3429,14 +4011,21 @@ module.exports.testdurfmt2 = {
     testDurFmt_mr_IN: function(test) {
         test.expect(16);
         // 1 18
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
+
+        var textformatted_1 = [],textformatted_18 = [];
+        var clockformatted_1 = [],clockformatted_18 = [];
+
         for (var i=0; i<4; i++) {
             textfmt = new DurationFmt({locale: "mr-IN", style:"text", length:length[i], useNative:false});
 
-            textformatted_1[i] = textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString();
-            textformatted_18[i] = textfmt.format({year: 18,month: 18,week: 18,day: 18}).toString();
+            textformatted_1.push(textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString());
+            textformatted_18.push(textfmt.format({year: 18,month: 18,week: 18,day: 18}).toString());
 
-            clockformatted_1[i] = textfmt.format({hour: 1,minute: 1,second: 1}).toString();
-            clockformatted_18[i] = textfmt.format({hour: 18,minute: 18,second: 18}).toString();
+            clockformatted_1.push(textfmt.format({hour: 1,minute: 1,second: 1}).toString());
+            clockformatted_18.push(textfmt.format({hour: 18,minute: 18,second: 18}).toString());
         }
 
         test.equal(textformatted_1[0], '1 वर्ष, 1 महिना, 1 आठवडा, 1 दिवस');
@@ -3464,14 +4053,21 @@ module.exports.testdurfmt2 = {
     testDurFmt_ms_MY: function(test) {
         test.expect(16);
         // 1 2
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
+
+        var textformatted_1 = [],textformatted_2 = [];
+        var clockformatted_1 = [],clockformatted_2 = [];
+
         for (var i=0; i<4; i++) {
             textfmt = new DurationFmt({locale: "ms-MY", style:"text", length:length[i]});
 
-            textformatted_1[i] = textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString();
-            textformatted_2[i] = textfmt.format({year: 2,month: 2,week: 2,day: 2}).toString();
+            textformatted_1.push(textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString());
+            textformatted_2.push(textfmt.format({year: 2,month: 2,week: 2,day: 2}).toString());
 
-            clockformatted_1[i] = textfmt.format({hour: 1,minute: 1,second: 1}).toString();
-            clockformatted_2[i] = textfmt.format({hour: 2,minute: 2,second: 2}).toString();
+            clockformatted_1.push(textfmt.format({hour: 1,minute: 1,second: 1}).toString());
+            clockformatted_2.push(textfmt.format({hour: 2,minute: 2,second: 2}).toString());
         }
 
         test.equal(textformatted_1[0], '1 tahun, 1 bulan, 1 minggu, 1 hari');
@@ -3499,14 +4095,21 @@ module.exports.testdurfmt2 = {
     testDurFmt_nb_NO: function(test) {
         test.expect(16);
         // 1 2
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
+
+        var textformatted_1 = [],textformatted_2 = [];
+        var clockformatted_1 = [],clockformatted_2 = [];
+
         for (var i=0; i<4; i++) {
             textfmt = new DurationFmt({locale: "nb-NO", style:"text", length:length[i]});
 
-            textformatted_1[i] = textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString();
-            textformatted_2[i] = textfmt.format({year: 2,month: 2,week: 2,day: 2}).toString();
+            textformatted_1.push(textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString());
+            textformatted_2.push(textfmt.format({year: 2,month: 2,week: 2,day: 2}).toString());
 
-            clockformatted_1[i] = textfmt.format({hour: 1,minute: 1,second: 1}).toString();
-            clockformatted_2[i] = textfmt.format({hour: 2,minute: 2,second: 2}).toString();
+            clockformatted_1.push(textfmt.format({hour: 1,minute: 1,second: 1}).toString());
+            clockformatted_2.push(textfmt.format({hour: 2,minute: 2,second: 2}).toString());
         }
 
         test.equal(textformatted_1[0], '1 år, 1 måned, 1 uke og 1 døgn');
@@ -3534,14 +4137,21 @@ module.exports.testdurfmt2 = {
     testDurFmt_nl_BE: function(test) {
         test.expect(16);
         // 1 2
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
+
+        var textformatted_1 = [],textformatted_2 = [];
+        var clockformatted_1 = [],clockformatted_2 = [];
+
         for (var i=0; i<4; i++) {
             textfmt = new DurationFmt({locale: "nl-BE", style:"text", length:length[i]});
 
-            textformatted_1[i] = textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString();
-            textformatted_2[i] = textfmt.format({year: 2,month: 2,week: 2,day: 2}).toString();
+            textformatted_1.push(textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString());
+            textformatted_2.push(textfmt.format({year: 2,month: 2,week: 2,day: 2}).toString());
 
-            clockformatted_1[i] = textfmt.format({hour: 1,minute: 1,second: 1}).toString();
-            clockformatted_2[i] = textfmt.format({hour: 2,minute: 2,second: 2}).toString();
+            clockformatted_1.push(textfmt.format({hour: 1,minute: 1,second: 1}).toString());
+            clockformatted_2.push(textfmt.format({hour: 2,minute: 2,second: 2}).toString());
         }
 
         test.equal(textformatted_1[0], '1 jaar, 1 maand, 1 week en 1 dag');
@@ -3569,14 +4179,21 @@ module.exports.testdurfmt2 = {
     testDurFmt_nl_NL: function(test) {
         test.expect(16);
         // 1 2
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
+
+        var textformatted_1 = [],textformatted_2 = [];
+        var clockformatted_1 = [],clockformatted_2 = [];
+
         for (var i=0; i<4; i++) {
             textfmt = new DurationFmt({locale: "nl-NL", style:"text", length:length[i]});
 
-            textformatted_1[i] = textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString();
-            textformatted_2[i] = textfmt.format({year: 2,month: 2,week: 2,day: 2}).toString();
+            textformatted_1.push(textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString());
+            textformatted_2.push(textfmt.format({year: 2,month: 2,week: 2,day: 2}).toString());
 
-            clockformatted_1[i] = textfmt.format({hour: 1,minute: 1,second: 1}).toString();
-            clockformatted_2[i] = textfmt.format({hour: 2,minute: 2,second: 2}).toString();
+            clockformatted_1.push(textfmt.format({hour: 1,minute: 1,second: 1}).toString());
+            clockformatted_2.push(textfmt.format({hour: 2,minute: 2,second: 2}).toString());
         }
 
         test.equal(textformatted_1[0], '1 jaar, 1 maand, 1 week en 1 dag');
@@ -3604,14 +4221,21 @@ module.exports.testdurfmt2 = {
     testDurFmt_pa_Guru_IN: function(test) {
         test.expect(16);
         // 1 2
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
+
+        var textformatted_1 = [],textformatted_2 = [];
+        var clockformatted_1 = [],clockformatted_2 = [];
+
         for (var i=0; i<4; i++) {
             textfmt = new DurationFmt({locale: "pa-Guru-IN", style:"text", length:length[i]});
 
-            textformatted_1[i] = textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString();
-            textformatted_2[i] = textfmt.format({year: 2,month: 2,week: 2,day: 2}).toString();
+            textformatted_1.push(textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString());
+            textformatted_2.push(textfmt.format({year: 2,month: 2,week: 2,day: 2}).toString());
 
-            clockformatted_1[i] = textfmt.format({hour: 1,minute: 1,second: 1}).toString();
-            clockformatted_2[i] = textfmt.format({hour: 2,minute: 2,second: 2}).toString();
+            clockformatted_1.push(textfmt.format({hour: 1,minute: 1,second: 1}).toString());
+            clockformatted_2.push(textfmt.format({hour: 2,minute: 2,second: 2}).toString());
         }
 
         test.equal(textformatted_1[0], '1 ਸਾਲ, 1 ਮਹੀਨਾ, 1 ਹਫ਼ਤਾ, 1 ਦਿਨ');
@@ -3639,16 +4263,23 @@ module.exports.testdurfmt2 = {
     testDurFmt_pl_PL: function(test) {
         test.expect(24);
         // 1 2 5
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
+
+        var textformatted_1 = [],textformatted_2 = [], textformatted_5 =[];
+        var clockformatted_1 = [],clockformatted_2 = [], clockformatted_5 = [];
+
         for (var i=0; i<4; i++) {
             textfmt = new DurationFmt({locale: "pl-PL", style:"text", length:length[i]});
 
-            textformatted_1[i] = textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString();
-            textformatted_2[i] = textfmt.format({year: 2,month: 2,week: 2,day: 2}).toString();
-            textformatted_5[i] = textfmt.format({year: 5,month: 5,week: 5,day: 5}).toString();
+            textformatted_1.push(textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString());
+            textformatted_2.push(textfmt.format({year: 2,month: 2,week: 2,day: 2}).toString());
+            textformatted_5.push(textfmt.format({year: 5,month: 5,week: 5,day: 5}).toString());
 
-            clockformatted_1[i] = textfmt.format({hour: 1,minute: 1,second: 1}).toString();
-            clockformatted_2[i] = textfmt.format({hour: 2,minute: 2,second: 2}).toString();
-            clockformatted_5[i] = textfmt.format({hour: 5,minute: 5,second: 5}).toString();
+            clockformatted_1.push(textfmt.format({hour: 1,minute: 1,second: 1}).toString());
+            clockformatted_2.push(textfmt.format({hour: 2,minute: 2,second: 2}).toString());
+            clockformatted_5.push(textfmt.format({hour: 5,minute: 5,second: 5}).toString());
         }
 
         test.equal(textformatted_1[0], '1 rok, 1 miesiąc, 1 tydzień i 1 dzień');
@@ -3685,14 +4316,21 @@ module.exports.testdurfmt2 = {
     },
     testDurFmt_pt_BR: function(test) {
         test.expect(16);
-        // 1 17
+        // 1 2
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
+
+        var textformatted_1 = [],textformatted_2 = [];
+        var clockformatted_1 = [],clockformatted_2 = [];
+
         for (var i=0; i<4; i++) {
             textfmt = new DurationFmt({locale: "pt-BR", style:"text", length:length[i]});
-            textformatted_1[i] = textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString();
-            textformatted_2[i] = textfmt.format({year: 2,month: 2,week: 2,day: 2}).toString();
+            textformatted_1.push(textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString());
+            textformatted_2.push(textfmt.format({year: 2,month: 2,week: 2,day: 2}).toString());
 
-            clockformatted_1[i] = textfmt.format({hour: 1,minute: 1,second: 1}).toString();
-            clockformatted_2[i] = textfmt.format({hour: 2,minute: 2,second: 2}).toString();
+            clockformatted_1.push(textfmt.format({hour: 1,minute: 1,second: 1}).toString());
+            clockformatted_2.push(textfmt.format({hour: 2,minute: 2,second: 2}).toString());
         }
 
         test.equal(textformatted_1[0], '1 ano, 1 mês, 1 semana e 1 dia');
@@ -3720,13 +4358,20 @@ module.exports.testdurfmt2 = {
     testDurFmt_pt_PT: function(test) {
         test.expect(16);
         // 1 17
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
+
+        var textformatted_1 = [],textformatted_17 = [];
+        var clockformatted_1 = [],clockformatted_17 = [];
+
         for (var i=0; i<4; i++) {
             textfmt = new DurationFmt({locale: "pt-PT", style:"text", length:length[i]});
-            textformatted_1[i] = textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString();
-            textformatted_17[i] = textfmt.format({year: 17,month: 17,week: 17,day: 17}).toString();
+            textformatted_1.push(textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString());
+            textformatted_17.push(textfmt.format({year: 17,month: 17,week: 17,day: 17}).toString());
 
-            clockformatted_1[i] = textfmt.format({hour: 1,minute: 1,second: 1}).toString();
-            clockformatted_17[i] = textfmt.format({hour: 17,minute: 17,second: 17}).toString();
+            clockformatted_1.push(textfmt.format({hour: 1,minute: 1,second: 1}).toString());
+            clockformatted_17.push(textfmt.format({hour: 17,minute: 17,second: 17}).toString());
         }
 
         test.equal(textformatted_1[0], '1 ano, 1 mês, 1 semana e 1 dia');
@@ -3754,16 +4399,23 @@ module.exports.testdurfmt2 = {
     testDurFmt_ro_RO: function(test) {
         test.expect(24);
         // 1 2 20
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
+
+        var textformatted_1 = [],textformatted_2 = [], textformatted_20 =[];
+        var clockformatted_1 = [],clockformatted_2 = [], clockformatted_20 =[];
+
         for (var i=0; i<4; i++) {
             textfmt = new DurationFmt({locale: "ro-RO", style:"text", length:length[i]});
 
-            textformatted_1[i] = textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString();
-            textformatted_2[i] = textfmt.format({year: 2,month: 2,week: 2,day: 2}).toString();
-            textformatted_20[i] = textfmt.format({year: 20,month: 20,week: 20,day: 20}).toString();
+            textformatted_1.push(textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString());
+            textformatted_2.push(textfmt.format({year: 2,month: 2,week: 2,day: 2}).toString());
+            textformatted_20.push(textfmt.format({year: 20,month: 20,week: 20,day: 20}).toString());
 
-            clockformatted_1[i] = textfmt.format({hour: 1,minute: 1,second: 1}).toString();
-            clockformatted_2[i] = textfmt.format({hour: 2,minute: 2,second: 2}).toString();
-            clockformatted_20[i] = textfmt.format({hour: 20,minute: 20,second: 20}).toString();
+            clockformatted_1.push(textfmt.format({hour: 1,minute: 1,second: 1}).toString());
+            clockformatted_2.push(textfmt.format({hour: 2,minute: 2,second: 2}).toString());
+            clockformatted_20.push(textfmt.format({hour: 20,minute: 20,second: 20}).toString());
         }
 
         test.equal(textformatted_1[0], '1 an, 1 lună, 1 săptămână, 1 zi');
@@ -3801,16 +4453,24 @@ module.exports.testdurfmt2 = {
     testDurFmt_sr_Cyrl_RS: function(test) {
         test.expect(24);
         // 1 4 20
+
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
+
+        var textformatted_1 = [],textformatted_4 = [], textformatted_20 = [];
+        var clockformatted_1 = [],clockformatted_4 = [], clockformatted_20 = [];
+
         for (var i=0; i<4; i++) {
             textfmt = new DurationFmt({locale: "sr-Cyrl-RS", style:"text", length:length[i]});
 
-            textformatted_1[i] = textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString();
-            textformatted_4[i] = textfmt.format({year: 4,month: 4,week: 4,day: 4}).toString();
-            textformatted_20[i] = textfmt.format({year: 20,month: 20,week: 20,day: 20}).toString();
+            textformatted_1.push(textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString());
+            textformatted_4.push(textfmt.format({year: 4,month: 4,week: 4,day: 4}).toString());
+            textformatted_20.push(textfmt.format({year: 20,month: 20,week: 20,day: 20}).toString());
 
-            clockformatted_1[i] = textfmt.format({hour: 1,minute: 1,second: 1}).toString();
-            clockformatted_4[i] = textfmt.format({hour: 4,minute: 4,second: 4}).toString();
-            clockformatted_20[i] = textfmt.format({hour: 20,minute: 20,second: 20}).toString();
+            clockformatted_1.push(textfmt.format({hour: 1,minute: 1,second: 1}).toString());
+            clockformatted_4.push(textfmt.format({hour: 4,minute: 4,second: 4}).toString());
+            clockformatted_20.push(textfmt.format({hour: 20,minute: 20,second: 20}).toString());
         }
         
         test.equal(textformatted_1[0], '1 година, 1 месец, 1 недеља и 1 дан');
@@ -3848,16 +4508,23 @@ module.exports.testdurfmt2 = {
     testDurFmt_sr_Latn_RS: function(test) {
         test.expect(24);
         // 1 2 5
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
+
+        var textformatted_1 = [],textformatted_2 = [], textformatted_5 =[];
+        var clockformatted_1 = [],clockformatted_2 = [], clockformatted_5 = [];
+
         for (var i=0; i<4; i++) {
             textfmt = new DurationFmt({locale: "sr-Latn-RS", style:"text", length:length[i]});
 
-            textformatted_1[i] = textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString();
-            textformatted_2[i] = textfmt.format({year: 2,month: 2,week: 2,day: 2}).toString();
-            textformatted_5[i] = textfmt.format({year: 5,month: 5,week: 5,day: 5}).toString();
+            textformatted_1.push(textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString());
+            textformatted_2.push(textfmt.format({year: 2,month: 2,week: 2,day: 2}).toString());
+            textformatted_5.push(textfmt.format({year: 5,month: 5,week: 5,day: 5}).toString());
 
-            clockformatted_1[i] = textfmt.format({hour: 1,minute: 1,second: 1}).toString();
-            clockformatted_2[i] = textfmt.format({hour: 2,minute: 2,second: 2}).toString();
-            clockformatted_5[i] = textfmt.format({hour: 5,minute: 5,second: 5}).toString();
+            clockformatted_1.push(textfmt.format({hour: 1,minute: 1,second: 1}).toString());
+            clockformatted_2.push(textfmt.format({hour: 2,minute: 2,second: 2}).toString());
+            clockformatted_5.push(textfmt.format({hour: 5,minute: 5,second: 5}).toString());
         }
 
         test.equal(textformatted_1[0], '1 godina, 1 mesec, 1 nedelja i 1 dan');
@@ -3895,16 +4562,23 @@ module.exports.testdurfmt2 = {
     testDurFmt_ru_BY: function(test) {
         test.expect(24);
         // 1 2 5
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
+
+        var textformatted_1 = [],textformatted_2 = [], textformatted_5 =[];
+        var clockformatted_1 = [],clockformatted_2 = [], clockformatted_5 = [];
+
         for (var i=0; i<4; i++) {
             textfmt = new DurationFmt({locale: "ru-BY", style:"text", length:length[i]});
 
-            textformatted_1[i] = textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString();
-            textformatted_2[i] = textfmt.format({year: 2,month: 2,week: 2,day: 2}).toString();
-            textformatted_5[i] = textfmt.format({year: 5,month: 5,week: 5,day: 5}).toString();
+            textformatted_1.push(textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString());
+            textformatted_2.push(textfmt.format({year: 2,month: 2,week: 2,day: 2}).toString());
+            textformatted_5.push(textfmt.format({year: 5,month: 5,week: 5,day: 5}).toString());
 
-            clockformatted_1[i] = textfmt.format({hour: 1,minute: 1,second: 1}).toString();
-            clockformatted_2[i] = textfmt.format({hour: 2,minute: 2,second: 2}).toString();
-            clockformatted_5[i] = textfmt.format({hour: 5,minute: 5,second: 5}).toString();
+            clockformatted_1.push(textfmt.format({hour: 1,minute: 1,second: 1}).toString());
+            clockformatted_2.push(textfmt.format({hour: 2,minute: 2,second: 2}).toString());
+            clockformatted_5.push(textfmt.format({hour: 5,minute: 5,second: 5}).toString());
         }
 
         test.equal(textformatted_1[0], '1 год 1 месяц 1 неделя 1 день');
@@ -3942,16 +4616,23 @@ module.exports.testdurfmt2 = {
     testDurFmt_ru_KG: function(test) {
         test.expect(24);
         // 41 24 25
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
+
+        var textformatted_41 = [],textformatted_24 = [], textformatted_25 =[];
+        var clockformatted_41 = [],clockformatted_24 = [], clockformatted_25 = [];
+
         for (var i=0; i<4; i++) {
             textfmt = new DurationFmt({locale: "ru-KG", style:"text", length:length[i]});
 
-            textformatted_41[i] = textfmt.format({year: 41,month: 41,week: 41,day: 41}).toString();
-            textformatted_24[i] = textfmt.format({year: 24,month: 24,week: 24,day: 24}).toString();
-            textformatted_25[i] = textfmt.format({year: 25,month: 25,week: 25,day: 25}).toString();
+            textformatted_41.push(textfmt.format({year: 41,month: 41,week: 41,day: 41}).toString());
+            textformatted_24.push(textfmt.format({year: 24,month: 24,week: 24,day: 24}).toString());
+            textformatted_25.push(textfmt.format({year: 25,month: 25,week: 25,day: 25}).toString());
 
-            clockformatted_41[i] = textfmt.format({hour: 41,minute: 41,second: 41}).toString();
-            clockformatted_24[i] = textfmt.format({hour: 24,minute: 24,second: 24}).toString();
-            clockformatted_25[i] = textfmt.format({hour: 25,minute: 25,second: 25}).toString();
+            clockformatted_41.push(textfmt.format({hour: 41,minute: 41,second: 41}).toString());
+            clockformatted_24.push(textfmt.format({hour: 24,minute: 24,second: 24}).toString());
+            clockformatted_25.push(textfmt.format({hour: 25,minute: 25,second: 25}).toString());
         }
 
         test.equal(textformatted_41[0], '41 год 41 месяц 41 неделя 41 день');
@@ -3989,16 +4670,23 @@ module.exports.testdurfmt2 = {
     testDurFmt_ru_KZ: function(test) {
         test.expect(24);
         // 31 22 20
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
+
+        var textformatted_31 = [],textformatted_22 = [], textformatted_20 =[];
+        var clockformatted_31 = [],clockformatted_22 = [], clockformatted_20 = [];
+
         for (var i=0; i<4; i++) {
             textfmt = new DurationFmt({locale: "ru-KZ", style:"text", length:length[i]});
 
-            textformatted_31[i] = textfmt.format({year: 31,month: 31,week: 31,day: 31}).toString();
-            textformatted_22[i] = textfmt.format({year: 22,month: 22,week: 22,day: 22}).toString();
-            textformatted_20[i] = textfmt.format({year: 20,month: 20,week: 20,day: 20}).toString();
+            textformatted_31.push(textfmt.format({year: 31,month: 31,week: 31,day: 31}).toString());
+            textformatted_22.push(textfmt.format({year: 22,month: 22,week: 22,day: 22}).toString());
+            textformatted_20.push(textfmt.format({year: 20,month: 20,week: 20,day: 20}).toString());
 
-            clockformatted_31[i] = textfmt.format({hour: 31,minute: 31,second: 31}).toString();
-            clockformatted_22[i] = textfmt.format({hour: 22,minute: 22,second: 22}).toString();
-            clockformatted_20[i] = textfmt.format({hour: 20,minute: 20,second: 20}).toString();
+            clockformatted_31.push(textfmt.format({hour: 31,minute: 31,second: 31}).toString());
+            clockformatted_22.push(textfmt.format({hour: 22,minute: 22,second: 22}).toString());
+            clockformatted_20.push(textfmt.format({hour: 20,minute: 20,second: 20}).toString());
         }
 
         test.equal(textformatted_31[0], '31 год 31 месяц 31 неделя 31 день');
@@ -4037,16 +4725,23 @@ module.exports.testdurfmt2 = {
     testDurFmt_ru_GE: function(test) {
         test.expect(24);
         // 21 4 19
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
+
+        var textformatted_21 = [],textformatted_4 = [], textformatted_19 =[];
+        var clockformatted_21 = [],clockformatted_4 = [], clockformatted_19 = [];
+
         for (var i=0; i<4; i++) {
             textfmt = new DurationFmt({locale: "ru-GE", style:"text", length:length[i]});
 
-            textformatted_21[i] = textfmt.format({year: 21,month: 21,week: 21,day: 21}).toString();
-            textformatted_4[i] = textfmt.format({year: 4,month: 4,week: 4,day: 4}).toString();
-            textformatted_19[i] = textfmt.format({year: 19,month: 19,week: 19,day: 19}).toString();
+            textformatted_21.push(textfmt.format({year: 21,month: 21,week: 21,day: 21}).toString());
+            textformatted_4.push(textfmt.format({year: 4,month: 4,week: 4,day: 4}).toString());
+            textformatted_19.push(textfmt.format({year: 19,month: 19,week: 19,day: 19}).toString());
 
-            clockformatted_21[i] = textfmt.format({hour: 21,minute: 21,second: 21}).toString();
-            clockformatted_4[i] = textfmt.format({hour: 4,minute: 4,second: 4}).toString();
-            clockformatted_19[i] = textfmt.format({hour: 19,minute: 19,second: 19}).toString();
+            clockformatted_21.push(textfmt.format({hour: 21,minute: 21,second: 21}).toString());
+            clockformatted_4.push(textfmt.format({hour: 4,minute: 4,second: 4}).toString());
+            clockformatted_19.push(textfmt.format({hour: 19,minute: 19,second: 19}).toString());
         }
 
         test.equal(textformatted_21[0], '21 год 21 месяц 21 неделя 21 день');
@@ -4084,16 +4779,23 @@ module.exports.testdurfmt2 = {
     testDurFmt_ru_RU: function(test) {
         test.expect(24);
         // 31 32 19
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
+
+        var textformatted_31 = [],textformatted_32 = [], textformatted_19 =[];
+        var clockformatted_31 = [],clockformatted_32 = [], clockformatted_19 = [];
+
         for (var i=0; i<4; i++) {
             textfmt = new DurationFmt({locale: "ru-RU", style:"text", length:length[i]});
 
-            textformatted_31[i] = textfmt.format({year: 31,month: 31,week: 31,day: 31}).toString();
-            textformatted_32[i] = textfmt.format({year: 32,month: 32,week: 32,day: 32}).toString();
-            textformatted_19[i] = textfmt.format({year: 19,month: 19,week: 19,day: 19}).toString();
+            textformatted_31.push(textfmt.format({year: 31,month: 31,week: 31,day: 31}).toString());
+            textformatted_32.push(textfmt.format({year: 32,month: 32,week: 32,day: 32}).toString());
+            textformatted_19.push(textfmt.format({year: 19,month: 19,week: 19,day: 19}).toString());
 
-            clockformatted_31[i] = textfmt.format({hour: 31,minute: 31,second: 31}).toString();
-            clockformatted_32[i] = textfmt.format({hour: 32,minute: 32,second: 32}).toString();
-            clockformatted_19[i] = textfmt.format({hour: 19,minute: 19,second: 19}).toString();
+            clockformatted_31.push(textfmt.format({hour: 31,minute: 31,second: 31}).toString());
+            clockformatted_32.push(textfmt.format({hour: 32,minute: 32,second: 32}).toString());
+            clockformatted_19.push(textfmt.format({hour: 19,minute: 19,second: 19}).toString());
         }
 
         test.equal(textformatted_31[0], '31 год 31 месяц 31 неделя 31 день');
@@ -4131,16 +4833,23 @@ module.exports.testdurfmt2 = {
     testDurFmt_ru_UA: function(test) {
         test.expect(24);
         // 1 2 5
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
+
+        var textformatted_1 = [],textformatted_2 = [], textformatted_5 =[];
+        var clockformatted_1 = [],clockformatted_2 = [], clockformatted_5 = [];
+
         for (var i=0; i<4; i++) {
             textfmt = new DurationFmt({locale: "ru-UA", style:"text", length:length[i]});
 
-            textformatted_1[i] = textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString();
-            textformatted_2[i] = textfmt.format({year: 2,month: 2,week: 2,day: 2}).toString();
-            textformatted_5[i] = textfmt.format({year: 5,month: 5,week: 5,day: 5}).toString();
+            textformatted_1.push(textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString());
+            textformatted_2.push(textfmt.format({year: 2,month: 2,week: 2,day: 2}).toString());
+            textformatted_5.push(textfmt.format({year: 5,month: 5,week: 5,day: 5}).toString());
 
-            clockformatted_1[i] = textfmt.format({hour: 1,minute: 1,second: 1}).toString();
-            clockformatted_2[i] = textfmt.format({hour: 2,minute: 2,second: 2}).toString();
-            clockformatted_5[i] = textfmt.format({hour: 5,minute: 5,second: 5}).toString();
+            clockformatted_1.push(textfmt.format({hour: 1,minute: 1,second: 1}).toString());
+            clockformatted_2.push(textfmt.format({hour: 2,minute: 2,second: 2}).toString());
+            clockformatted_5.push(textfmt.format({hour: 5,minute: 5,second: 5}).toString());
         }
 
         test.equal(textformatted_1[0], '1 год 1 месяц 1 неделя 1 день');
@@ -4178,16 +4887,23 @@ module.exports.testdurfmt2 = {
     testDurFmt_sk_SK: function(test) {
         test.expect(24);
         // 1 2 5
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
+
+        var textformatted_1 = [],textformatted_2 = [], textformatted_5 =[];
+        var clockformatted_1 = [],clockformatted_2 = [], clockformatted_5 = [];
+
         for (var i=0; i<4; i++) {
             textfmt = new DurationFmt({locale: "sk-SK", style:"text", length:length[i]});
 
-            textformatted_1[i] = textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString();
-            textformatted_2[i] = textfmt.format({year: 2,month: 2,week: 2,day: 2}).toString();
-            textformatted_5[i] = textfmt.format({year: 5,month: 5,week: 5,day: 5}).toString();
+            textformatted_1.push(textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString());
+            textformatted_2.push(textfmt.format({year: 2,month: 2,week: 2,day: 2}).toString());
+            textformatted_5.push(textfmt.format({year: 5,month: 5,week: 5,day: 5}).toString());
 
-            clockformatted_1[i] = textfmt.format({hour: 1,minute: 1,second: 1}).toString();
-            clockformatted_2[i] = textfmt.format({hour: 2,minute: 2,second: 2}).toString();
-            clockformatted_5[i] = textfmt.format({hour: 5,minute: 5,second: 5}).toString();
+            clockformatted_1.push(textfmt.format({hour: 1,minute: 1,second: 1}).toString());
+            clockformatted_2.push(textfmt.format({hour: 2,minute: 2,second: 2}).toString());
+            clockformatted_5.push(textfmt.format({hour: 5,minute: 5,second: 5}).toString());
         }
 
         test.equal(textformatted_1[0], '1 rok, 1 mesiac, 1 týždeň, 1 deň');
@@ -4225,18 +4941,25 @@ module.exports.testdurfmt2 = {
     testDurFmt_sl_SI: function(test) {
         test.expect(32);
         // 1 2 3 5
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
+
+        var textformatted_1 = [],textformatted_2 = [], textformatted_3 = [],textformatted_5 = [];
+        var clockformatted_1 = [],clockformatted_2 = [], clockformatted_3 = [],clockformatted_5 = [];
+
         for (var i=0; i<4; i++) {
             textfmt = new DurationFmt({locale: "sl-SI", style:"text", length:length[i]});
 
-            textformatted_1[i] = textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString();
-            textformatted_2[i] = textfmt.format({year: 2,month: 2,week: 2,day: 2}).toString();
-            textformatted_3[i] = textfmt.format({year: 3,month: 3,week: 3,day: 3}).toString();
-            textformatted_5[i] = textfmt.format({year: 5,month: 5,week: 5,day: 5}).toString();
+            textformatted_1.push(textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString());
+            textformatted_2.push(textfmt.format({year: 2,month: 2,week: 2,day: 2}).toString());
+            textformatted_3.push(textfmt.format({year: 3,month: 3,week: 3,day: 3}).toString());
+            textformatted_5.push(textfmt.format({year: 5,month: 5,week: 5,day: 5}).toString());
 
-            clockformatted_1[i] = textfmt.format({hour: 1,minute: 1,second: 1}).toString();
-            clockformatted_2[i] = textfmt.format({hour: 2,minute: 2,second: 2}).toString();
-            clockformatted_3[i] = textfmt.format({hour: 3,minute: 3,second: 3}).toString();
-            clockformatted_5[i] = textfmt.format({hour: 5,minute: 5,second: 5}).toString();
+            clockformatted_1.push(textfmt.format({hour: 1,minute: 1,second: 1}).toString());
+            clockformatted_2.push(textfmt.format({hour: 2,minute: 2,second: 2}).toString());
+            clockformatted_3.push(textfmt.format({hour: 3,minute: 3,second: 3}).toString());
+            clockformatted_5.push(textfmt.format({hour: 5,minute: 5,second: 5}).toString());
         }
 
         test.equal(textformatted_1[0], '1 leto, 1 mesec, 1 teden in 1 dan');
@@ -4284,14 +5007,21 @@ module.exports.testdurfmt2 = {
     testDurFmt_sq_AL: function(test) {
         test.expect(16);
         // 1 16
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
+
+        var textformatted_1 = [],textformatted_16 = [];
+        var clockformatted_1 = [],clockformatted_16 = [];
+
         for (var i=0; i<4; i++) {
             textfmt = new DurationFmt({locale: "sq-AL", style:"text", length:length[i]});
 
-            textformatted_1[i] = textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString();
-            textformatted_16[i] = textfmt.format({year: 16,month: 16,week: 16,day: 16}).toString();
+            textformatted_1.push(textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString());
+            textformatted_16.push(textfmt.format({year: 16,month: 16,week: 16,day: 16}).toString());
 
-            clockformatted_1[i] = textfmt.format({hour: 1,minute: 1,second: 1}).toString();
-            clockformatted_16[i] = textfmt.format({hour: 16,minute: 16,second: 16}).toString();
+            clockformatted_1.push(textfmt.format({hour: 1,minute: 1,second: 1}).toString());
+            clockformatted_16.push(textfmt.format({hour: 16,minute: 16,second: 16}).toString());
         }
 
         test.equal(textformatted_1[0], '1 vit, 1 muaj, 1 javë e 1 ditë');
@@ -4319,14 +5049,21 @@ module.exports.testdurfmt2 = {
     testDurFmt_sq_ME: function(test) {
         test.expect(16);
         // 1 17
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
+
+        var textformatted_1 = [],textformatted_17 = [];
+        var clockformatted_1 = [],clockformatted_17 = [];
+
         for (var i=0; i<4; i++) {
             textfmt = new DurationFmt({locale: "sq-ME", style:"text", length:length[i]});
 
-            textformatted_1[i] = textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString();
-            textformatted_17[i] = textfmt.format({year: 17,month: 17,week: 17,day: 17}).toString();
+            textformatted_1.push(textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString());
+            textformatted_17.push(textfmt.format({year: 17,month: 17,week: 17,day: 17}).toString());
 
-            clockformatted_1[i] = textfmt.format({hour: 1,minute: 1,second: 1}).toString();
-            clockformatted_17[i] = textfmt.format({hour: 17,minute: 17,second: 17}).toString();
+            clockformatted_1.push(textfmt.format({hour: 1,minute: 1,second: 1}).toString());
+            clockformatted_17.push(textfmt.format({hour: 17,minute: 17,second: 17}).toString());
         }
 
         test.equal(textformatted_1[0], '1 vit, 1 muaj, 1 javë e 1 ditë');
@@ -4354,14 +5091,21 @@ module.exports.testdurfmt2 = {
     testDurFmt_sv_FI: function(test) {
         test.expect(16);
         // 1 2
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
+
+        var textformatted_1 = [],textformatted_2 = [];
+        var clockformatted_1 = [],clockformatted_2 = [];
+
         for (var i=0; i<4; i++) {
             textfmt = new DurationFmt({locale: "sv-FI", style:"text", length:length[i]});
 
-            textformatted_1[i] = textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString();
-            textformatted_2[i] = textfmt.format({year: 2,month: 2,week: 2,day: 2}).toString();
+            textformatted_1.push(textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString());
+            textformatted_2.push(textfmt.format({year: 2,month: 2,week: 2,day: 2}).toString());
 
-            clockformatted_1[i] = textfmt.format({hour: 1,minute: 1,second: 1}).toString();
-            clockformatted_2[i] = textfmt.format({hour: 2,minute: 2,second: 2}).toString();
+            clockformatted_1.push(textfmt.format({hour: 1,minute: 1,second: 1}).toString());
+            clockformatted_2.push(textfmt.format({hour: 2,minute: 2,second: 2}).toString());
         }
 
         test.equal(textformatted_1[0], '1 år, 1 månad, 1 vecka, 1 dygn');
@@ -4389,14 +5133,21 @@ module.exports.testdurfmt2 = {
     testDurFmt_sv_SE: function(test) {
         test.expect(16);
         // 1 17
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
+
+        var textformatted_1 = [],textformatted_17 = [];
+        var clockformatted_1 = [],clockformatted_17 = [];
+
         for (var i=0; i<4; i++) {
             textfmt = new DurationFmt({locale: "sv-SE", style:"text", length:length[i]});
 
-            textformatted_1[i] = textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString();
-            textformatted_17[i] = textfmt.format({year: 17,month: 17,week: 17,day: 17}).toString();
+            textformatted_1.push(textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString());
+            textformatted_17.push(textfmt.format({year: 17,month: 17,week: 17,day: 17}).toString());
 
-            clockformatted_1[i] = textfmt.format({hour: 1,minute: 1,second: 1}).toString();
-            clockformatted_17[i] = textfmt.format({hour: 17,minute: 17,second: 17}).toString();
+            clockformatted_1.push(textfmt.format({hour: 1,minute: 1,second: 1}).toString());
+            clockformatted_17.push(textfmt.format({hour: 17,minute: 17,second: 17}).toString());
         }
 
         test.equal(textformatted_1[0], '1 år, 1 månad, 1 vecka, 1 dygn');
@@ -4424,14 +5175,21 @@ module.exports.testdurfmt2 = {
     testDurFmt_ta_IN: function(test) {
         test.expect(16);
         // 1 2
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
+
+        var textformatted_1 = [],textformatted_2 = [];
+        var clockformatted_1 = [],clockformatted_2 = [];
+
         for (var i=0; i<4; i++) {
             textfmt = new DurationFmt({locale: "ta-IN", style:"text", length:length[i]});
 
-            textformatted_1[i] = textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString();
-            textformatted_2[i] = textfmt.format({year: 2,month: 2,week: 2,day: 2}).toString();
+            textformatted_1.push(textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString());
+            textformatted_2.push(textfmt.format({year: 2,month: 2,week: 2,day: 2}).toString());
 
-            clockformatted_1[i] = textfmt.format({hour: 1,minute: 1,second: 1}).toString();
-            clockformatted_2[i] = textfmt.format({hour: 2,minute: 2,second: 2}).toString();
+            clockformatted_1.push(textfmt.format({hour: 1,minute: 1,second: 1}).toString());
+            clockformatted_2.push(textfmt.format({hour: 2,minute: 2,second: 2}).toString());
         }
 
         test.equal(textformatted_1[0], '1 ஆண்டு, 1 மாதம், 1 வாரம், 1 நாள்');
@@ -4459,14 +5217,21 @@ module.exports.testdurfmt2 = {
     testDurFmt_te_IN: function(test) {
         test.expect(16);
         // 1 16
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
+
+        var textformatted_1 = [],textformatted_16 = [];
+        var clockformatted_1 = [],clockformatted_16 = [];
+
         for (var i=0; i<4; i++) {
             textfmt = new DurationFmt({locale: "te-IN", style:"text", length:length[i]});
 
-            textformatted_1[i] = textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString();
-            textformatted_16[i] = textfmt.format({year: 16,month: 16,week: 16,day: 16}).toString();
+            textformatted_1.push(textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString());
+            textformatted_16.push(textfmt.format({year: 16,month: 16,week: 16,day: 16}).toString());
 
-            clockformatted_1[i] = textfmt.format({hour: 1,minute: 1,second: 1}).toString();
-            clockformatted_16[i] = textfmt.format({hour: 16,minute: 16,second: 16}).toString();
+            clockformatted_1.push(textfmt.format({hour: 1,minute: 1,second: 1}).toString());
+            clockformatted_16.push(textfmt.format({hour: 16,minute: 16,second: 16}).toString());
         }
 
         test.equal(textformatted_1[0], '1 సంవత్సరం, 1 నెల, 1 వారం, 1 రోజు');
@@ -4494,14 +5259,21 @@ module.exports.testdurfmt2 = {
     testDurFmt_th_TH: function(test) {
         test.expect(16);
         // 1 16
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
+
+        var textformatted_1 = [],textformatted_16 = [];
+        var clockformatted_1 = [],clockformatted_16 = [];
+
         for (var i=0; i<4; i++) {
             textfmt = new DurationFmt({locale: "th-TH", style:"text", length:length[i]});
 
-            textformatted_1[i] = textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString();
-            textformatted_16[i] = textfmt.format({year: 16,month: 16,week: 16,day: 16}).toString();
+            textformatted_1.push(textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString());
+            textformatted_16.push(textfmt.format({year: 16,month: 16,week: 16,day: 16}).toString());
 
-            clockformatted_1[i] = textfmt.format({hour: 1,minute: 1,second: 1}).toString();
-            clockformatted_16[i] = textfmt.format({hour: 16,minute: 16,second: 16}).toString();
+            clockformatted_1.push(textfmt.format({hour: 1,minute: 1,second: 1}).toString());
+            clockformatted_16.push(textfmt.format({hour: 16,minute: 16,second: 16}).toString());
         }
 
         test.equal(textformatted_1[0], '1 ปี 1 เดือน 1 สัปดาห์ และ 1 วัน');
@@ -4529,14 +5301,21 @@ module.exports.testdurfmt2 = {
     testDurFmt_tr_AM: function(test) {
         test.expect(16);
         // 1 2
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
+
+        var textformatted_1 = [],textformatted_2 = [];
+        var clockformatted_1 = [],clockformatted_2 = [];
+
         for (var i=0; i<4; i++) {
             textfmt = new DurationFmt({locale: "tr-AM", style:"text", length:length[i]});
 
-            textformatted_1[i] = textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString();
-            textformatted_2[i] = textfmt.format({year: 2,month: 2,week: 2,day: 2}).toString();
+            textformatted_1.push(textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString());
+            textformatted_2.push(textfmt.format({year: 2,month: 2,week: 2,day: 2}).toString());
 
-            clockformatted_1[i] = textfmt.format({hour: 1,minute: 1,second: 1}).toString();
-            clockformatted_2[i] = textfmt.format({hour: 2,minute: 2,second: 2}).toString();
+            clockformatted_1.push(textfmt.format({hour: 1,minute: 1,second: 1}).toString());
+            clockformatted_2.push(textfmt.format({hour: 2,minute: 2,second: 2}).toString());
         }
 
         test.equal(textformatted_1[0], '1 yıl 1 ay 1 hafta 1 gün');
@@ -4564,14 +5343,21 @@ module.exports.testdurfmt2 = {
     testDurFmt_tr_AZ: function(test) {
         test.expect(16);
         // 1 16
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
+
+        var textformatted_1 = [],textformatted_16 = [];
+        var clockformatted_1 = [],clockformatted_16 = [];
+
         for (var i=0; i<4; i++) {
             textfmt = new DurationFmt({locale: "tr-AZ", style:"text", length:length[i]});
 
-            textformatted_1[i] = textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString();
-            textformatted_16[i] = textfmt.format({year: 16,month: 16,week: 16,day: 16}).toString();
+            textformatted_1.push(textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString());
+            textformatted_16.push(textfmt.format({year: 16,month: 16,week: 16,day: 16}).toString());
 
-            clockformatted_1[i] = textfmt.format({hour: 1,minute: 1,second: 1}).toString();
-            clockformatted_16[i] = textfmt.format({hour: 16,minute: 16,second: 16}).toString();
+            clockformatted_1.push(textfmt.format({hour: 1,minute: 1,second: 1}).toString());
+            clockformatted_16.push(textfmt.format({hour: 16,minute: 16,second: 16}).toString());
         }
 
         test.equal(textformatted_1[0], '1 yıl 1 ay 1 hafta 1 gün');
@@ -4599,14 +5385,21 @@ module.exports.testdurfmt2 = {
     testDurFmt_tr_CY: function(test) {
         test.expect(16);
         // 1 17
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
+
+        var textformatted_1 = [],textformatted_17 = [];
+        var clockformatted_1 = [],clockformatted_17 = [];
+
         for (var i=0; i<4; i++) {
             textfmt = new DurationFmt({locale: "tr-CY", style:"text", length:length[i]});
 
-            textformatted_1[i] = textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString();
-            textformatted_17[i] = textfmt.format({year: 17,month: 17,week: 17,day: 17}).toString();
+            textformatted_1.push(textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString());
+            textformatted_17.push(textfmt.format({year: 17,month: 17,week: 17,day: 17}).toString());
 
-            clockformatted_1[i] = textfmt.format({hour: 1,minute: 1,second: 1}).toString();
-            clockformatted_17[i] = textfmt.format({hour: 17,minute: 17,second: 17}).toString();
+            clockformatted_1.push(textfmt.format({hour: 1,minute: 1,second: 1}).toString());
+            clockformatted_17.push(textfmt.format({hour: 17,minute: 17,second: 17}).toString());
         }
 
         test.equal(textformatted_1[0], '1 yıl 1 ay 1 hafta 1 gün');
@@ -4634,14 +5427,21 @@ module.exports.testdurfmt2 = {
     testDurFmt_tr_TR: function(test) {
         test.expect(16);
         // 1 2
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
+
+        var textformatted_1 = [],textformatted_2 = [];
+        var clockformatted_1 = [],clockformatted_2 = [];
+
         for (var i=0; i<4; i++) {
             textfmt = new DurationFmt({locale: "tr-TR", style:"text", length:length[i]});
 
-            textformatted_1[i] = textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString();
-            textformatted_2[i] = textfmt.format({year: 2,month: 2,week: 2,day: 2}).toString();
+            textformatted_1.push(textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString());
+            textformatted_2.push(textfmt.format({year: 2,month: 2,week: 2,day: 2}).toString());
 
-            clockformatted_1[i] = textfmt.format({hour: 1,minute: 1,second: 1}).toString();
-            clockformatted_2[i] = textfmt.format({hour: 2,minute: 2,second: 2}).toString();
+            clockformatted_1.push(textfmt.format({hour: 1,minute: 1,second: 1}).toString());
+            clockformatted_2.push(textfmt.format({hour: 2,minute: 2,second: 2}).toString());
         }
 
         test.equal(textformatted_1[0], '1 yıl 1 ay 1 hafta 1 gün');
@@ -4669,16 +5469,23 @@ module.exports.testdurfmt2 = {
     testDurFmt_uk_UA: function(test) {
         test.expect(24);
         // 1 2 5
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
+
+        var textformatted_1 = [],textformatted_2 = [], textformatted_5 = [];
+        var clockformatted_1 = [],clockformatted_2 = [], clockformatted_5 = [];
+
         for (var i=0; i<4; i++) {
             textfmt = new DurationFmt({locale: "uk-UA", style:"text", length:length[i]});
 
-            textformatted_1[i] = textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString();
-            textformatted_2[i] = textfmt.format({year: 2,month: 2,week: 2,day: 2}).toString();
-            textformatted_5[i] = textfmt.format({year: 5,month: 5,week: 5,day: 5}).toString();
+            textformatted_1.push(textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString());
+            textformatted_2.push(textfmt.format({year: 2,month: 2,week: 2,day: 2}).toString());
+            textformatted_5.push(textfmt.format({year: 5,month: 5,week: 5,day: 5}).toString());
 
-            clockformatted_1[i] = textfmt.format({hour: 1,minute: 1,second: 1}).toString();
-            clockformatted_2[i] = textfmt.format({hour: 2,minute: 2,second: 2}).toString();
-            clockformatted_5[i] = textfmt.format({hour: 5,minute: 5,second: 5}).toString();
+            clockformatted_1.push(textfmt.format({hour: 1,minute: 1,second: 1}).toString());
+            clockformatted_2.push(textfmt.format({hour: 2,minute: 2,second: 2}).toString());
+            clockformatted_5.push(textfmt.format({hour: 5,minute: 5,second: 5}).toString());
         }
 
         test.equal(textformatted_1[0], '1 рік, 1 місяць, 1 тиждень і 1 день');
@@ -4716,14 +5523,21 @@ module.exports.testdurfmt2 = {
     testDurFmt_ur_IN: function(test) {
         test.expect(16);
         // 1 2
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
+
+        var textformatted_1 = [],textformatted_2 = [];
+        var clockformatted_1 = [],clockformatted_2 = [];
+
         for (var i=0; i<4; i++) {
             textfmt = new DurationFmt({locale: "ur-IN", style:"text", length:length[i], useNative:false});
 
-            textformatted_1[i] = textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString();
-            textformatted_2[i] = textfmt.format({year: 2,month: 2,week: 2,day: 2}).toString();
+            textformatted_1.push(textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString());
+            textformatted_2.push(textfmt.format({year: 2,month: 2,week: 2,day: 2}).toString());
 
-            clockformatted_1[i] = textfmt.format({hour: 1,minute: 1,second: 1}).toString();
-            clockformatted_2[i] = textfmt.format({hour: 2,minute: 2,second: 2}).toString();
+            clockformatted_1.push(textfmt.format({hour: 1,minute: 1,second: 1}).toString());
+            clockformatted_2.push(textfmt.format({hour: 2,minute: 2,second: 2}).toString());
         }
 
         test.equal(textformatted_1[0], '‏1 سال, 1 مہینہ, 1 ہفتہ، 1 دن');
@@ -4751,14 +5565,21 @@ module.exports.testdurfmt2 = {
     testDurFmt_uz_Latn_UZ: function(test) {
         test.expect(16);
         // 1 2
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
+
+        var textformatted_1 = [],textformatted_2 = [];
+        var clockformatted_1 = [],clockformatted_2 = [];
+
         for (var i=0; i<4; i++) {
             textfmt = new DurationFmt({locale: "uz-Latn-UZ", style:"text", length:length[i]});
 
-            textformatted_1[i] = textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString();
-            textformatted_2[i] = textfmt.format({year: 2,month: 2,week: 2,day: 2}).toString();
+            textformatted_1.push(textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString());
+            textformatted_2.push(textfmt.format({year: 2,month: 2,week: 2,day: 2}).toString());
 
-            clockformatted_1[i] = textfmt.format({hour: 1,minute: 1,second: 1}).toString();
-            clockformatted_2[i] = textfmt.format({hour: 2,minute: 2,second: 2}).toString();
+            clockformatted_1.push(textfmt.format({hour: 1,minute: 1,second: 1}).toString());
+            clockformatted_2.push(textfmt.format({hour: 2,minute: 2,second: 2}).toString());
         }
 
         test.equal(textformatted_1[0], '1 yil 1 oy 1 hafta 1 kun');
@@ -4786,14 +5607,21 @@ module.exports.testdurfmt2 = {
     testDurFmt_vi_VN: function(test) {
         test.expect(16);
         // 1 2
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
+
+        var textformatted_1 = [],textformatted_2 = [];
+        var clockformatted_1 = [],clockformatted_2 = [];
+
         for (var i=0; i<4; i++) {
             textfmt = new DurationFmt({locale: "vi-VN", style:"text", length:length[i]});
 
-            textformatted_1[i] = textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString();
-            textformatted_2[i] = textfmt.format({year: 2,month: 2,week: 2,day: 2}).toString();
+            textformatted_1.push(textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString());
+            textformatted_2.push(textfmt.format({year: 2,month: 2,week: 2,day: 2}).toString());
 
-            clockformatted_1[i] = textfmt.format({hour: 1,minute: 1,second: 1}).toString();
-            clockformatted_2[i] = textfmt.format({hour: 2,minute: 2,second: 2}).toString();
+            clockformatted_1.push(textfmt.format({hour: 1,minute: 1,second: 1}).toString());
+            clockformatted_2.push(textfmt.format({hour: 2,minute: 2,second: 2}).toString());
         }
 
         test.equal(textformatted_1[0], '1 năm, 1 tháng, 1 tuần, 1 ngày');
@@ -4821,10 +5649,17 @@ module.exports.testdurfmt2 = {
     testDurFmt_zh_Hans_CN: function(test) {
         test.expect(8);;
         // 1
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
+
+        var textformatted_1 = [];
+        var clockformatted_1 = [];
+
         for (var i=0; i<4; i++) {
             textfmt = new DurationFmt({locale: "zh-Hans-CN", style:"text", length:length[i]});
-            textformatted_1[i] = textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString();
-            clockformatted_1[i] = textfmt.format({hour: 1,minute: 1,second: 1}).toString();
+            textformatted_1.push(textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString());
+            clockformatted_1.push(textfmt.format({hour: 1,minute: 1,second: 1}).toString());
         }
 
         test.equal(textformatted_1[0], '1年1个月1周1天');
@@ -4841,12 +5676,19 @@ module.exports.testdurfmt2 = {
     },
     testDurFmt_zh_Hant_HK: function(test) {
         test.expect(8);;
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
+
+        var textformatted_2 = [];
+        var clockformatted_2 = [];
+
         // 2
         for (var i=0; i<4; i++) {
             textfmt = new DurationFmt({locale: "zh-Hant-HK", style:"text", length:length[i]});
 
-            textformatted_2[i] = textfmt.format({year: 2,month: 2,week: 2,day: 2}).toString();
-            clockformatted_2[i] = textfmt.format({hour: 2,minute: 2,second: 2}).toString();
+            textformatted_2.push(textfmt.format({year: 2,month: 2,week: 2,day: 2}).toString());
+            clockformatted_2.push(textfmt.format({hour: 2,minute: 2,second: 2}).toString());
         }
     
         test.equal(textformatted_2[0], '2 年 2 個月 2 星期 2 日');
@@ -4864,10 +5706,17 @@ module.exports.testdurfmt2 = {
     testDurFmt_zh_Hant_TW: function(test) {
         test.expect(8);;
         // 1
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
+
+        var textformatted_1 = [];
+        var clockformatted_1 = [];
+
         for (var i=0; i<4; i++) {
             textfmt = new DurationFmt({locale: "zh-Hant-TW", style:"text", length:length[i]});
-            textformatted_1[i] = textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString();
-            clockformatted_1[i] = textfmt.format({hour: 1,minute: 1,second: 1}).toString();
+            textformatted_1.push(textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString());
+            clockformatted_1.push(textfmt.format({hour: 1,minute: 1,second: 1}).toString());
         }
 
         test.equal(textformatted_1[0], '1 年 1 個月 1 週 1 天');
@@ -4885,13 +5734,20 @@ module.exports.testdurfmt2 = {
     testDurFmt_en_GE: function(test) {
         test.expect(16);
         // 1 2
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
+
+        var textformatted_1 = [],textformatted_2 = [];
+        var clockformatted_1 = [],clockformatted_2 = [];
+
         for (var i=0; i<4; i++) {
             textfmt = new DurationFmt({locale: "en-GE", style:"text", length:length[i]});
-            textformatted_1[i] = textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString();
-            textformatted_2[i] = textfmt.format({year: 2,month: 2,week: 2,day: 2}).toString();
+            textformatted_1.push(textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString());
+            textformatted_2.push(textfmt.format({year: 2,month: 2,week: 2,day: 2}).toString());
 
-            clockformatted_1[i] = textfmt.format({hour: 1,minute: 1,second: 1}).toString();
-            clockformatted_2[i] = textfmt.format({hour: 2,minute: 2,second: 2}).toString();
+            clockformatted_1.push(textfmt.format({hour: 1,minute: 1,second: 1}).toString());
+            clockformatted_2.push(textfmt.format({hour: 2,minute: 2,second: 2}).toString());
         }
 
         test.equal(textformatted_1[0], '1 year, 1 month, 1 week, 1 day');
@@ -4919,13 +5775,20 @@ module.exports.testdurfmt2 = {
     testDurFmt_en_CN: function(test) {
         test.expect(16);
         // 1 2
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
+
+        var textformatted_1 = [],textformatted_2 = [];
+        var clockformatted_1 = [],clockformatted_2 = [];
+
         for (var i=0; i<4; i++) {
             textfmt = new DurationFmt({locale: "en-CN", style:"text", length:length[i]});
-            textformatted_1[i] = textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString();
-            textformatted_2[i] = textfmt.format({year: 2,month: 2,week: 2,day: 2}).toString();
+            textformatted_1.push(textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString());
+            textformatted_2.push(textfmt.format({year: 2,month: 2,week: 2,day: 2}).toString());
 
-            clockformatted_1[i] = textfmt.format({hour: 1,minute: 1,second: 1}).toString();
-            clockformatted_2[i] = textfmt.format({hour: 2,minute: 2,second: 2}).toString();
+            clockformatted_1.push(textfmt.format({hour: 1,minute: 1,second: 1}).toString());
+            clockformatted_2.push(textfmt.format({hour: 2,minute: 2,second: 2}).toString());
         }
 
         test.equal(textformatted_1[0], '1 year, 1 month, 1 week, 1 day');
@@ -4953,13 +5816,20 @@ module.exports.testdurfmt2 = {
     testDurFmt_en_MX: function(test) {
         test.expect(16);
         // 1 2
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
+
+        var textformatted_1 = [],textformatted_2 = [];
+        var clockformatted_1 = [],clockformatted_2 = [];
+
         for (var i=0; i<4; i++) {
             textfmt = new DurationFmt({locale: "en-MX", style:"text", length:length[i]});
-            textformatted_1[i] = textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString();
-            textformatted_2[i] = textfmt.format({year: 2,month: 2,week: 2,day: 2}).toString();
+            textformatted_1.push(textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString());
+            textformatted_2.push(textfmt.format({year: 2,month: 2,week: 2,day: 2}).toString());
 
-            clockformatted_1[i] = textfmt.format({hour: 1,minute: 1,second: 1}).toString();
-            clockformatted_2[i] = textfmt.format({hour: 2,minute: 2,second: 2}).toString();
+            clockformatted_1.push(textfmt.format({hour: 1,minute: 1,second: 1}).toString());
+            clockformatted_2.push(textfmt.format({hour: 2,minute: 2,second: 2}).toString());
         }
 
         test.equal(textformatted_1[0], '1 year, 1 month, 1 week, 1 day');
@@ -4987,13 +5857,20 @@ module.exports.testdurfmt2 = {
     testDurFmt_en_TW: function(test) {
         test.expect(16);
         // 1 2
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
+
+        var textformatted_1 = [],textformatted_2 = [];
+        var clockformatted_1 = [],clockformatted_2 = [];
+
         for (var i=0; i<4; i++) {
             textfmt = new DurationFmt({locale: "en-TW", style:"text", length:length[i]});
-            textformatted_1[i] = textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString();
-            textformatted_2[i] = textfmt.format({year: 2,month: 2,week: 2,day: 2}).toString();
+            textformatted_1.push(textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString());
+            textformatted_2.push(textfmt.format({year: 2,month: 2,week: 2,day: 2}).toString());
 
-            clockformatted_1[i] = textfmt.format({hour: 1,minute: 1,second: 1}).toString();
-            clockformatted_2[i] = textfmt.format({hour: 2,minute: 2,second: 2}).toString();
+            clockformatted_1.push(textfmt.format({hour: 1,minute: 1,second: 1}).toString());
+            clockformatted_2.push(textfmt.format({hour: 2,minute: 2,second: 2}).toString());
         }
 
         test.equal(textformatted_1[0], '1 year, 1 month, 1 week, 1 day');
@@ -5021,14 +5898,21 @@ module.exports.testdurfmt2 = {
     testDurFmt_mn_MN: function(test) {
         test.expect(16);
         // 1 2
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
+
+        var textformatted_1 = [],textformatted_2 = [];
+        var clockformatted_1 = [],clockformatted_2 = [];
+
         for (var i=0; i<4; i++) {
             textfmt = new DurationFmt({locale: "mn-MN", style:"text", length:length[i]});
 
-            textformatted_1[i] = textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString();
-            textformatted_2[i] = textfmt.format({year: 2,month: 2,week: 2,day: 2}).toString();
+            textformatted_1.push(textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString());
+            textformatted_2.push(textfmt.format({year: 2,month: 2,week: 2,day: 2}).toString());
 
-            clockformatted_1[i] = textfmt.format({hour: 1,minute: 1,second: 1}).toString();
-            clockformatted_2[i] = textfmt.format({hour: 2,minute: 2,second: 2}).toString();
+            clockformatted_1.push(textfmt.format({hour: 1,minute: 1,second: 1}).toString());
+            clockformatted_2.push(textfmt.format({hour: 2,minute: 2,second: 2}).toString());
         }
 
         test.equal(textformatted_1[0], '1 жил, 1 сар, 1 долоо хоног, 1 өдөр');
@@ -5056,13 +5940,20 @@ module.exports.testdurfmt2 = {
     testDurFmt_es_CA: function(test) {
         test.expect(16);
         // 1 17
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
+
+        var textformatted_1 = [],textformatted_17 = [];
+        var clockformatted_1 = [],clockformatted_17 = [];
+
         for (var i=0; i<4; i++) {
             textfmt = new DurationFmt({locale: "es-CA", style:"text", length:length[i]});
-            textformatted_1[i] = textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString();
-            textformatted_17[i] = textfmt.format({year: 17,month: 17,week: 17,day: 17}).toString();
+            textformatted_1.push(textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString());
+            textformatted_17.push(textfmt.format({year: 17,month: 17,week: 17,day: 17}).toString());
 
-            clockformatted_1[i] = textfmt.format({hour: 1,minute: 1,second: 1}).toString();
-            clockformatted_17[i] = textfmt.format({hour: 17,minute: 17,second: 17}).toString();
+            clockformatted_1.push(textfmt.format({hour: 1,minute: 1,second: 1}).toString());
+            clockformatted_17.push(textfmt.format({hour: 17,minute: 17,second: 17}).toString());
         }
 
         test.equal(textformatted_1[0], '1 año, 1 mes, 1 semana y 1 día');
@@ -5090,14 +5981,21 @@ module.exports.testdurfmt2 = {
     testDurFmt_af_ZA: function(test) {
         test.expect(16);
         // 1 2
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
+
+        var textformatted_1 = [],textformatted_2 = [];
+        var clockformatted_1 = [],clockformatted_2 = [];
+
         for (var i=0; i<4; i++) {
             textfmt = new DurationFmt({locale: "af-ZA", style:"text", length:length[i]});
 
-            textformatted_1[i] = textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString();
-            textformatted_2[i] = textfmt.format({year: 2,month: 2,week: 2,day: 2}).toString();
+            textformatted_1.push(textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString());
+            textformatted_2.push(textfmt.format({year: 2,month: 2,week: 2,day: 2}).toString());
 
-            clockformatted_1[i] = textfmt.format({hour: 1,minute: 1,second: 1}).toString();
-            clockformatted_2[i] = textfmt.format({hour: 2,minute: 2,second: 2}).toString();
+            clockformatted_1.push(textfmt.format({hour: 1,minute: 1,second: 1}).toString());
+            clockformatted_2.push(textfmt.format({hour: 2,minute: 2,second: 2}).toString());
         }
 
         test.equal(textformatted_1[0], '1 jaar, 1 maand, 1 week en 1 dag');
@@ -5125,14 +6023,21 @@ module.exports.testdurfmt2 = {
     testDurFmt_am_ET: function(test) {
         test.expect(16);
         // 1 18
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
+
+        var textformatted_1 = [],textformatted_18 = [];
+        var clockformatted_1 = [],clockformatted_18 = [];
+
         for (var i=0; i<4; i++) {
             textfmt = new DurationFmt({locale: "am-ET", style:"text", length:length[i]});
 
-            textformatted_1[i] = textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString();
-            textformatted_18[i] = textfmt.format({year: 18,month: 18,week: 18,day: 18}).toString();
+            textformatted_1.push(textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString());
+            textformatted_18.push(textfmt.format({year: 18,month: 18,week: 18,day: 18}).toString());
 
-            clockformatted_1[i] = textfmt.format({hour: 1,minute: 1,second: 1}).toString();
-            clockformatted_18[i] = textfmt.format({hour: 18,minute: 18,second: 18}).toString();
+            clockformatted_1.push(textfmt.format({hour: 1,minute: 1,second: 1}).toString());
+            clockformatted_18.push(textfmt.format({hour: 18,minute: 18,second: 18}).toString());
         }
 
         test.equal(textformatted_1[0], '1 ዓመት፣ 1 ወር፣ 1 ሳምንት፣ 1 ቀናት');
@@ -5160,14 +6065,21 @@ module.exports.testdurfmt2 = {
     testDurFmt_ha_Latn_NG: function(test) {
         test.expect(16);
         // 1 2
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
+
+        var textformatted_1 = [],textformatted_2 = [];
+        var clockformatted_1 = [],clockformatted_2 = [];
+
         for (var i=0; i<4; i++) {
             textfmt = new DurationFmt({locale: "ha-Latn-NG", style:"text", length:length[i]});
 
-            textformatted_1[i] = textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString();
-            textformatted_2[i] = textfmt.format({year: 2,month: 2,week: 2,day: 2}).toString();
+            textformatted_1.push(textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString());
+            textformatted_2.push(textfmt.format({year: 2,month: 2,week: 2,day: 2}).toString());
 
-            clockformatted_1[i] = textfmt.format({hour: 1,minute: 1,second: 1}).toString();
-            clockformatted_2[i] = textfmt.format({hour: 2,minute: 2,second: 2}).toString();
+            clockformatted_1.push(textfmt.format({hour: 1,minute: 1,second: 1}).toString());
+            clockformatted_2.push(textfmt.format({hour: 2,minute: 2,second: 2}).toString());
         }
 
         test.equal(textformatted_1[0], '1 y, 1 m, 1 w, 1 d');
@@ -5195,14 +6107,21 @@ module.exports.testdurfmt2 = {
     testDurFmt_or_IN: function(test) {
         test.expect(16);
         // 1 17
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
+
+        var textformatted_1 = [],textformatted_17 = [];
+        var clockformatted_1 = [],clockformatted_17 = [];
+
         for (var i=0; i<4; i++) {
             textfmt = new DurationFmt({locale: "or-IN", style:"text", length:length[i]});
 
-            textformatted_1[i] = textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString();
-            textformatted_17[i] = textfmt.format({year: 17,month: 17,week: 17,day: 17}).toString();
+            textformatted_1.push(textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString());
+            textformatted_17.push(textfmt.format({year: 17,month: 17,week: 17,day: 17}).toString());
 
-            clockformatted_1[i] = textfmt.format({hour: 1,minute: 1,second: 1}).toString();
-            clockformatted_17[i] = textfmt.format({hour: 17,minute: 17,second: 17}).toString();
+            clockformatted_1.push(textfmt.format({hour: 1,minute: 1,second: 1}).toString());
+            clockformatted_17.push(textfmt.format({hour: 17,minute: 17,second: 17}).toString());
         }
 
         //// CLDR 34 change (all)
@@ -5232,14 +6151,21 @@ module.exports.testdurfmt2 = {
     testDurFmt_az_Latn_AZ: function(test) {
         test.expect(16);
         // 1 19
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
+
+        var textformatted_1 = [],textformatted_19 = [];
+        var clockformatted_1 = [],clockformatted_19 = [];
+
         for (var i=0; i<4; i++) {
             textfmt = new DurationFmt({locale: "az-Latn-AZ", style:"text", length:length[i]});
 
-            textformatted_1[i] = textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString();
-            textformatted_19[i] = textfmt.format({year: 19,month: 19,week: 19,day: 19}).toString();
+            textformatted_1.push(textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString());
+            textformatted_19.push(textfmt.format({year: 19,month: 19,week: 19,day: 19}).toString());
 
-            clockformatted_1[i] = textfmt.format({hour: 1,minute: 1,second: 1}).toString();
-            clockformatted_19[i] = textfmt.format({hour: 19,minute: 19,second: 19}).toString();
+            clockformatted_1.push(textfmt.format({hour: 1,minute: 1,second: 1}).toString());
+            clockformatted_19.push(textfmt.format({hour: 19,minute: 19,second: 19}).toString());
         }
 
         test.equal(textformatted_1[0], '1 il, 1 ay, 1 həftə, 1 gün');
@@ -5266,15 +6192,22 @@ module.exports.testdurfmt2 = {
     },
     testDurFmt_km_KH: function(test) {
         test.expect(16);
-        // 1 23 
+        // 1 23
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
+
+        var textformatted_1 = [],textformatted_23 = [];
+        var clockformatted_1 = [],clockformatted_23 = [];
+
         for (var i=0; i<4; i++) {
             textfmt = new DurationFmt({locale: "km-KH", style:"text", length:length[i]});
 
-            textformatted_1[i] = textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString();
-            textformatted_23[i] = textfmt.format({year: 23,month: 23,week: 23,day: 23}).toString();
+            textformatted_1.push(textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString());
+            textformatted_23.push(textfmt.format({year: 23,month: 23,week: 23,day: 23}).toString());
 
-            clockformatted_1[i] = textfmt.format({hour: 1,minute: 1,second: 1}).toString();
-            clockformatted_23[i] = textfmt.format({hour: 23,minute: 23,second: 23}).toString();
+            clockformatted_1.push(textfmt.format({hour: 1,minute: 1,second: 1}).toString());
+            clockformatted_23.push(textfmt.format({hour: 23,minute: 23,second: 23}).toString());
         }
 
         test.equal(textformatted_1[0], '1 ឆ្នាំ 1 ខែ 1 សប្ដាហ៍ 1 ថ្ងៃ');
@@ -5294,22 +6227,30 @@ module.exports.testdurfmt2 = {
 
         test.equal(clockformatted_23[0], '23 ម៉ោង 23 នាទី 23 វិនាទី');
         test.equal(clockformatted_23[1], '23 ម៉ោង 23 នាទី 23 វិនាទី');
-        test.equal(clockformatted_23[2], '23 ម៉ោង 23 នាទី 23 វិនាទី');                                         
-        test.equal(clockformatted_23[3], '23 ម៉ោង 23 នាទី 23 វិនាទី');                                         
+        test.equal(clockformatted_23[2], '23 ម៉ោង 23 នាទី 23 វិនាទី');
+        test.equal(clockformatted_23[3], '23 ម៉ោង 23 នាទី 23 វិនាទី');
+
 
         test.done();
     },
     testDurFmt_si_LK: function(test) {
         test.expect(16);
         // 1 2
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
+
+        var textformatted_1 = [],textformatted_2 = [];
+        var clockformatted_1 = [],clockformatted_2 = [];
+
         for (var i=0; i<4; i++) {
             textfmt = new DurationFmt({locale: "si-LK", style:"text", length:length[i]});
 
-            textformatted_1[i] = textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString();
-            textformatted_2[i] = textfmt.format({year: 2,month: 2,week: 2,day: 2}).toString();
+            textformatted_1.push(textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString());
+            textformatted_2.push(textfmt.format({year: 2,month: 2,week: 2,day: 2}).toString());
 
-            clockformatted_1[i] = textfmt.format({hour: 1,minute: 1,second: 1}).toString();
-            clockformatted_2[i] = textfmt.format({hour: 2,minute: 2,second: 2}).toString();
+            clockformatted_1.push(textfmt.format({hour: 1,minute: 1,second: 1}).toString());
+            clockformatted_2.push(textfmt.format({hour: 2,minute: 2,second: 2}).toString());
         }
 
         test.equal(textformatted_1[0], 'වසර 1, මාස 1, සති 1, සහ දින 1');                                     
@@ -5336,20 +6277,27 @@ module.exports.testdurfmt2 = {
     testDurFmt_ar_AE: function(test) {
         test.expect(40);
         // 1 2 3 11 100
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
+
+        var textformatted_1 = [],textformatted_2 = [],textformatted_3 = [], textformatted_11 = [], textformatted_100 = [];
+        var clockformatted_1 = [],clockformatted_2 = [], clockformatted_3 = [], clockformatted_11 = [], clockformatted_100 = [];
+
         for (var i=0; i<4; i++) {
             textfmt = new DurationFmt({locale: "ar-AE", style:"text", length:length[i], useNative:false});
 
-            textformatted_1[i] = textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString();
-            textformatted_2[i] = textfmt.format({year: 2,month: 2,week: 2,day: 2}).toString();
-            textformatted_3[i] = textfmt.format({year: 3,month: 3,week: 3,day: 3}).toString();
-            textformatted_11[i] = textfmt.format({year: 11,month: 11,week: 11,day: 11}).toString();
-            textformatted_100[i] = textfmt.format({year: 100,month: 100,week: 100,day: 100}).toString();
+            textformatted_1.push(textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString());
+            textformatted_2.push(textfmt.format({year: 2,month: 2,week: 2,day: 2}).toString());
+            textformatted_3.push(textfmt.format({year: 3,month: 3,week: 3,day: 3}).toString());
+            textformatted_11.push(textfmt.format({year: 11,month: 11,week: 11,day: 11}).toString());
+            textformatted_100.push(textfmt.format({year: 100,month: 100,week: 100,day: 100}).toString());
 
-            clockformatted_1[i] = textfmt.format({hour: 1,minute: 1,second: 1}).toString();
-            clockformatted_2[i] = textfmt.format({hour: 2,minute: 2,second: 2}).toString();
-            clockformatted_3[i] = textfmt.format({hour: 3,minute: 3,second: 3}).toString();
-            clockformatted_11[i] = textfmt.format({hour: 11,minute: 11,second: 11}).toString();
-            clockformatted_100[i] = textfmt.format({hour: 100,minute: 100,second: 100}).toString();
+            clockformatted_1.push(textfmt.format({hour: 1,minute: 1,second: 1}).toString());
+            clockformatted_2.push(textfmt.format({hour: 2,minute: 2,second: 2}).toString());
+            clockformatted_3.push(textfmt.format({hour: 3,minute: 3,second: 3}).toString());
+            clockformatted_11.push(textfmt.format({hour: 11,minute: 11,second: 11}).toString());
+            clockformatted_100.push(textfmt.format({hour: 100,minute: 100,second: 100}).toString());
         }
 
         test.equal(textformatted_1[0], '‏سنة، وشهر، وأسبوع، ويوم' );
@@ -5407,20 +6355,27 @@ module.exports.testdurfmt2 = {
     testDurFmt_ar_BH: function(test) {
         test.expect(40);
         // 1 2 3 11 100
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
+
+        var textformatted_1 = [],textformatted_2 = [],textformatted_3 = [], textformatted_11 = [], textformatted_100 = [];
+        var clockformatted_1 = [],clockformatted_2 = [], clockformatted_3 = [], clockformatted_11 = [], clockformatted_100 = [];
+
         for (var i=0; i<4; i++) {
             textfmt = new DurationFmt({locale: "ar-BH", style:"text", length:length[i], useNative:false});
 
-            textformatted_1[i] = textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString();
-            textformatted_2[i] = textfmt.format({year: 2,month: 2,week: 2,day: 2}).toString();
-            textformatted_3[i] = textfmt.format({year: 3,month: 3,week: 3,day: 3}).toString();
-            textformatted_11[i] = textfmt.format({year: 11,month: 11,week: 11,day: 11}).toString();
-            textformatted_100[i] = textfmt.format({year: 100,month: 100,week: 100,day: 100}).toString();
+            textformatted_1.push(textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString());
+            textformatted_2.push(textfmt.format({year: 2,month: 2,week: 2,day: 2}).toString());
+            textformatted_3.push(textfmt.format({year: 3,month: 3,week: 3,day: 3}).toString());
+            textformatted_11.push(textfmt.format({year: 11,month: 11,week: 11,day: 11}).toString());
+            textformatted_100.push(textfmt.format({year: 100,month: 100,week: 100,day: 100}).toString());
 
-            clockformatted_1[i] = textfmt.format({hour: 1,minute: 1,second: 1}).toString();
-            clockformatted_2[i] = textfmt.format({hour: 2,minute: 2,second: 2}).toString();
-            clockformatted_3[i] = textfmt.format({hour: 3,minute: 3,second: 3}).toString();
-            clockformatted_11[i] = textfmt.format({hour: 11,minute: 11,second: 11}).toString();
-            clockformatted_100[i] = textfmt.format({hour: 100,minute: 100,second: 100}).toString();
+            clockformatted_1.push(textfmt.format({hour: 1,minute: 1,second: 1}).toString());
+            clockformatted_2.push(textfmt.format({hour: 2,minute: 2,second: 2}).toString());
+            clockformatted_3.push(textfmt.format({hour: 3,minute: 3,second: 3}).toString());
+            clockformatted_11.push(textfmt.format({hour: 11,minute: 11,second: 11}).toString());
+            clockformatted_100.push(textfmt.format({hour: 100,minute: 100,second: 100}).toString());
         }
 
         test.equal(textformatted_1[0], '‏سنة، وشهر، وأسبوع، ويوم' );
@@ -5478,20 +6433,27 @@ module.exports.testdurfmt2 = {
     testDurFmt_ar_DJ: function(test) {
         test.expect(40);
         // 1 2 3 11 100
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
+
+        var textformatted_1 = [],textformatted_2 = [],textformatted_3 = [], textformatted_11 = [], textformatted_100 = [];
+        var clockformatted_1 = [],clockformatted_2 = [], clockformatted_3 = [], clockformatted_11 = [], clockformatted_100 = [];
+
         for (var i=0; i<4; i++) {
             textfmt = new DurationFmt({locale: "ar-DJ", style:"text", length:length[i], useNative:false});
 
-            textformatted_1[i] = textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString();
-            textformatted_2[i] = textfmt.format({year: 2,month: 2,week: 2,day: 2}).toString();
-            textformatted_3[i] = textfmt.format({year: 3,month: 3,week: 3,day: 3}).toString();
-            textformatted_11[i] = textfmt.format({year: 11,month: 11,week: 11,day: 11}).toString();
-            textformatted_100[i] = textfmt.format({year: 100,month: 100,week: 100,day: 100}).toString();
+            textformatted_1.push(textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString());
+            textformatted_2.push(textfmt.format({year: 2,month: 2,week: 2,day: 2}).toString());
+            textformatted_3.push(textfmt.format({year: 3,month: 3,week: 3,day: 3}).toString());
+            textformatted_11.push(textfmt.format({year: 11,month: 11,week: 11,day: 11}).toString());
+            textformatted_100.push(textfmt.format({year: 100,month: 100,week: 100,day: 100}).toString());
 
-            clockformatted_1[i] = textfmt.format({hour: 1,minute: 1,second: 1}).toString();
-            clockformatted_2[i] = textfmt.format({hour: 2,minute: 2,second: 2}).toString();
-            clockformatted_3[i] = textfmt.format({hour: 3,minute: 3,second: 3}).toString();
-            clockformatted_11[i] = textfmt.format({hour: 11,minute: 11,second: 11}).toString();
-            clockformatted_100[i] = textfmt.format({hour: 100,minute: 100,second: 100}).toString();
+            clockformatted_1.push(textfmt.format({hour: 1,minute: 1,second: 1}).toString());
+            clockformatted_2.push(textfmt.format({hour: 2,minute: 2,second: 2}).toString());
+            clockformatted_3.push(textfmt.format({hour: 3,minute: 3,second: 3}).toString());
+            clockformatted_11.push(textfmt.format({hour: 11,minute: 11,second: 11}).toString());
+            clockformatted_100.push(textfmt.format({hour: 100,minute: 100,second: 100}).toString());
         }
 
         test.equal(textformatted_1[0], '‏سنة، وشهر، وأسبوع، ويوم' );
@@ -5550,20 +6512,27 @@ module.exports.testdurfmt2 = {
     testDurFmt_ar_DZ: function(test) {
         test.expect(40);
         // 1 2 3 11 100
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
+
+        var textformatted_1 = [],textformatted_2 = [],textformatted_3 = [], textformatted_11 = [], textformatted_100 = [];
+        var clockformatted_1 = [],clockformatted_2 = [], clockformatted_3 = [], clockformatted_11 = [], clockformatted_100 = [];
+
         for (var i=0; i<4; i++) {
             textfmt = new DurationFmt({locale: "ar-DZ", style:"text", length:length[i]});
 
-            textformatted_1[i] = textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString();
-            textformatted_2[i] = textfmt.format({year: 2,month: 2,week: 2,day: 2}).toString();
-            textformatted_3[i] = textfmt.format({year: 3,month: 3,week: 3,day: 3}).toString();
-            textformatted_11[i] = textfmt.format({year: 11,month: 11,week: 11,day: 11}).toString();
-            textformatted_100[i] = textfmt.format({year: 100,month: 100,week: 100,day: 100}).toString();
+            textformatted_1.push(textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString());
+            textformatted_2.push(textfmt.format({year: 2,month: 2,week: 2,day: 2}).toString());
+            textformatted_3.push(textfmt.format({year: 3,month: 3,week: 3,day: 3}).toString());
+            textformatted_11.push(textfmt.format({year: 11,month: 11,week: 11,day: 11}).toString());
+            textformatted_100.push(textfmt.format({year: 100,month: 100,week: 100,day: 100}).toString());
 
-            clockformatted_1[i] = textfmt.format({hour: 1,minute: 1,second: 1}).toString();
-            clockformatted_2[i] = textfmt.format({hour: 2,minute: 2,second: 2}).toString();
-            clockformatted_3[i] = textfmt.format({hour: 3,minute: 3,second: 3}).toString();
-            clockformatted_11[i] = textfmt.format({hour: 11,minute: 11,second: 11}).toString();
-            clockformatted_100[i] = textfmt.format({hour: 100,minute: 100,second: 100}).toString();
+            clockformatted_1.push(textfmt.format({hour: 1,minute: 1,second: 1}).toString());
+            clockformatted_2.push(textfmt.format({hour: 2,minute: 2,second: 2}).toString());
+            clockformatted_3.push(textfmt.format({hour: 3,minute: 3,second: 3}).toString());
+            clockformatted_11.push(textfmt.format({hour: 11,minute: 11,second: 11}).toString());
+            clockformatted_100.push(textfmt.format({hour: 100,minute: 100,second: 100}).toString());
         }
 
         test.equal(textformatted_1[0], '‏سنة، وشهر، وأسبوع، ويوم' );
@@ -5621,21 +6590,28 @@ module.exports.testdurfmt2 = {
     },
     testDurFmt_ar_JO: function(test) {
         test.expect(40);
-        // 1 2 103 99 300
+        
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
+
+        var textformatted_1 = [],textformatted_2 = [],textformatted_3 = [], textformatted_11 = [], textformatted_100 = [];
+        var clockformatted_1 = [],clockformatted_2 = [], clockformatted_3 = [], clockformatted_11 = [], clockformatted_100 = [];
+
         for (var i=0; i<4; i++) {
             textfmt = new DurationFmt({locale: "ar-JO", style:"text", length:length[i], useNative:false});
 
-            textformatted_1[i] = textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString();
-            textformatted_2[i] = textfmt.format({year: 2,month: 2,week: 2,day: 2}).toString();
-            textformatted_3[i] = textfmt.format({year: 3,month: 3,week: 3,day: 3}).toString();
-            textformatted_11[i] = textfmt.format({year: 11,month: 11,week: 11,day: 11}).toString();
-            textformatted_100[i] = textfmt.format({year: 100,month: 100,week: 100,day: 100}).toString();
+            textformatted_1.push(textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString());
+            textformatted_2.push(textfmt.format({year: 2,month: 2,week: 2,day: 2}).toString());
+            textformatted_3.push(textfmt.format({year: 3,month: 3,week: 3,day: 3}).toString());
+            textformatted_11.push(textfmt.format({year: 11,month: 11,week: 11,day: 11}).toString());
+            textformatted_100.push(textfmt.format({year: 100,month: 100,week: 100,day: 100}).toString());
 
-            clockformatted_1[i] = textfmt.format({hour: 1,minute: 1,second: 1}).toString();
-            clockformatted_2[i] = textfmt.format({hour: 2,minute: 2,second: 2}).toString();
-            clockformatted_3[i] = textfmt.format({hour: 3,minute: 3,second: 3}).toString();
-            clockformatted_11[i] = textfmt.format({hour: 11,minute: 11,second: 11}).toString();
-            clockformatted_100[i] = textfmt.format({hour: 100,minute: 100,second: 100}).toString();
+            clockformatted_1.push(textfmt.format({hour: 1,minute: 1,second: 1}).toString());
+            clockformatted_2.push(textfmt.format({hour: 2,minute: 2,second: 2}).toString());
+            clockformatted_3.push(textfmt.format({hour: 3,minute: 3,second: 3}).toString());
+            clockformatted_11.push(textfmt.format({hour: 11,minute: 11,second: 11}).toString());
+            clockformatted_100.push(textfmt.format({hour: 100,minute: 100,second: 100}).toString());
         }
 
         test.equal(textformatted_1[0], '‏سنة، وشهر، وأسبوع، ويوم' );
@@ -5693,20 +6669,27 @@ module.exports.testdurfmt2 = {
     testDurFmt_ar_KW: function(test) {
         test.expect(40);
         // 1 2 3 11 100
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
+
+        var textformatted_1 = [],textformatted_2 = [],textformatted_3 = [], textformatted_11 = [], textformatted_100 = [];
+        var clockformatted_1 = [],clockformatted_2 = [], clockformatted_3 = [], clockformatted_11 = [], clockformatted_100 = [];
+
         for (var i=0; i<4; i++) {
             textfmt = new DurationFmt({locale: "ar-KW", style:"text", length:length[i], useNative:false});
 
-            textformatted_1[i] = textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString();
-            textformatted_2[i] = textfmt.format({year: 2,month: 2,week: 2,day: 2}).toString();
-            textformatted_3[i] = textfmt.format({year: 3,month: 3,week: 3,day: 3}).toString();
-            textformatted_11[i] = textfmt.format({year: 11,month: 11,week: 11,day: 11}).toString();
-            textformatted_100[i] = textfmt.format({year: 100,month: 100,week: 100,day: 100}).toString();
+            textformatted_1.push(textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString());
+            textformatted_2.push(textfmt.format({year: 2,month: 2,week: 2,day: 2}).toString());
+            textformatted_3.push(textfmt.format({year: 3,month: 3,week: 3,day: 3}).toString());
+            textformatted_11.push(textfmt.format({year: 11,month: 11,week: 11,day: 11}).toString());
+            textformatted_100.push(textfmt.format({year: 100,month: 100,week: 100,day: 100}).toString());
 
-            clockformatted_1[i] = textfmt.format({hour: 1,minute: 1,second: 1}).toString();
-            clockformatted_2[i] = textfmt.format({hour: 2,minute: 2,second: 2}).toString();
-            clockformatted_3[i] = textfmt.format({hour: 3,minute: 3,second: 3}).toString();
-            clockformatted_11[i] = textfmt.format({hour: 11,minute: 11,second: 11}).toString();
-            clockformatted_100[i] = textfmt.format({hour: 100,minute: 100,second: 100}).toString();
+            clockformatted_1.push(textfmt.format({hour: 1,minute: 1,second: 1}).toString());
+            clockformatted_2.push(textfmt.format({hour: 2,minute: 2,second: 2}).toString());
+            clockformatted_3.push(textfmt.format({hour: 3,minute: 3,second: 3}).toString());
+            clockformatted_11.push(textfmt.format({hour: 11,minute: 11,second: 11}).toString());
+            clockformatted_100.push(textfmt.format({hour: 100,minute: 100,second: 100}).toString());
         }
 
         test.equal(textformatted_1[0], '‏سنة، وشهر، وأسبوع، ويوم' );
@@ -5765,20 +6748,27 @@ module.exports.testdurfmt2 = {
     testDurFmt_ar_LB: function(test) {
         test.expect(40);
         // 1 2 3 11 100
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
+
+        var textformatted_1 = [],textformatted_2 = [],textformatted_3 = [], textformatted_11 = [], textformatted_100 = [];
+        var clockformatted_1 = [],clockformatted_2 = [], clockformatted_3 = [], clockformatted_11 = [], clockformatted_100 = [];
+
         for (var i=0; i<4; i++) {
             textfmt = new DurationFmt({locale: "ar-LB", style:"text", length:length[i], useNative:false});
 
-            textformatted_1[i] = textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString();
-            textformatted_2[i] = textfmt.format({year: 2,month: 2,week: 2,day: 2}).toString();
-            textformatted_3[i] = textfmt.format({year: 3,month: 3,week: 3,day: 3}).toString();
-            textformatted_11[i] = textfmt.format({year: 11,month: 11,week: 11,day: 11}).toString();
-            textformatted_100[i] = textfmt.format({year: 100,month: 100,week: 100,day: 100}).toString();
+            textformatted_1.push(textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString());
+            textformatted_2.push(textfmt.format({year: 2,month: 2,week: 2,day: 2}).toString());
+            textformatted_3.push(textfmt.format({year: 3,month: 3,week: 3,day: 3}).toString());
+            textformatted_11.push(textfmt.format({year: 11,month: 11,week: 11,day: 11}).toString());
+            textformatted_100.push(textfmt.format({year: 100,month: 100,week: 100,day: 100}).toString());
 
-            clockformatted_1[i] = textfmt.format({hour: 1,minute: 1,second: 1}).toString();
-            clockformatted_2[i] = textfmt.format({hour: 2,minute: 2,second: 2}).toString();
-            clockformatted_3[i] = textfmt.format({hour: 3,minute: 3,second: 3}).toString();
-            clockformatted_11[i] = textfmt.format({hour: 11,minute: 11,second: 11}).toString();
-            clockformatted_100[i] = textfmt.format({hour: 100,minute: 100,second: 100}).toString();
+            clockformatted_1.push(textfmt.format({hour: 1,minute: 1,second: 1}).toString());
+            clockformatted_2.push(textfmt.format({hour: 2,minute: 2,second: 2}).toString());
+            clockformatted_3.push(textfmt.format({hour: 3,minute: 3,second: 3}).toString());
+            clockformatted_11.push(textfmt.format({hour: 11,minute: 11,second: 11}).toString());
+            clockformatted_100.push(textfmt.format({hour: 100,minute: 100,second: 100}).toString());
         }
 
         test.equal(textformatted_1[0], '‏سنة، وشهر، وأسبوع، ويوم' );
@@ -5837,20 +6827,27 @@ module.exports.testdurfmt2 = {
     testDurFmt_ar_LY: function(test) {
         test.expect(40);
         // 1 2 3 11 100
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
+
+        var textformatted_1 = [],textformatted_2 = [],textformatted_3 = [], textformatted_11 = [], textformatted_100 = [];
+        var clockformatted_1 = [],clockformatted_2 = [], clockformatted_3 = [], clockformatted_11 = [], clockformatted_100 = [];
+
         for (var i=0; i<4; i++) {
             textfmt = new DurationFmt({locale: "ar-LY", style:"text", length:length[i]});
 
-            textformatted_1[i] = textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString();
-            textformatted_2[i] = textfmt.format({year: 2,month: 2,week: 2,day: 2}).toString();
-            textformatted_3[i] = textfmt.format({year: 3,month: 3,week: 3,day: 3}).toString();
-            textformatted_11[i] = textfmt.format({year: 11,month: 11,week: 11,day: 11}).toString();
-            textformatted_100[i] = textfmt.format({year: 100,month: 100,week: 100,day: 100}).toString();
+            textformatted_1.push(textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString());
+            textformatted_2.push(textfmt.format({year: 2,month: 2,week: 2,day: 2}).toString());
+            textformatted_3.push(textfmt.format({year: 3,month: 3,week: 3,day: 3}).toString());
+            textformatted_11.push(textfmt.format({year: 11,month: 11,week: 11,day: 11}).toString());
+            textformatted_100.push(textfmt.format({year: 100,month: 100,week: 100,day: 100}).toString());
 
-            clockformatted_1[i] = textfmt.format({hour: 1,minute: 1,second: 1}).toString();
-            clockformatted_2[i] = textfmt.format({hour: 2,minute: 2,second: 2}).toString();
-            clockformatted_3[i] = textfmt.format({hour: 3,minute: 3,second: 3}).toString();
-            clockformatted_11[i] = textfmt.format({hour: 11,minute: 11,second: 11}).toString();
-            clockformatted_100[i] = textfmt.format({hour: 100,minute: 100,second: 100}).toString();
+            clockformatted_1.push(textfmt.format({hour: 1,minute: 1,second: 1}).toString());
+            clockformatted_2.push(textfmt.format({hour: 2,minute: 2,second: 2}).toString());
+            clockformatted_3.push(textfmt.format({hour: 3,minute: 3,second: 3}).toString());
+            clockformatted_11.push(textfmt.format({hour: 11,minute: 11,second: 11}).toString());
+            clockformatted_100.push(textfmt.format({hour: 100,minute: 100,second: 100}).toString());
         }
 
         test.equal(textformatted_1[0], '‏سنة، وشهر، وأسبوع، ويوم' );
@@ -5908,20 +6905,27 @@ module.exports.testdurfmt2 = {
     testDurFmt_ar_MR: function(test) {
         test.expect(40);
         // 1 2 3 11 100
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
+
+        var textformatted_1 = [],textformatted_2 = [],textformatted_3 = [], textformatted_11 = [], textformatted_100 = [];
+        var clockformatted_1 = [],clockformatted_2 = [], clockformatted_3 = [], clockformatted_11 = [], clockformatted_100 = [];
+
         for (var i=0; i<4; i++) {
             textfmt = new DurationFmt({locale: "ar-MR", style:"text", length:length[i], useNative:false});
 
-            textformatted_1[i] = textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString();
-            textformatted_2[i] = textfmt.format({year: 2,month: 2,week: 2,day: 2}).toString();
-            textformatted_3[i] = textfmt.format({year: 3,month: 3,week: 3,day: 3}).toString();
-            textformatted_11[i] = textfmt.format({year: 11,month: 11,week: 11,day: 11}).toString();
-            textformatted_100[i] = textfmt.format({year: 100,month: 100,week: 100,day: 100}).toString();
+            textformatted_1.push(textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString());
+            textformatted_2.push(textfmt.format({year: 2,month: 2,week: 2,day: 2}).toString());
+            textformatted_3.push(textfmt.format({year: 3,month: 3,week: 3,day: 3}).toString());
+            textformatted_11.push(textfmt.format({year: 11,month: 11,week: 11,day: 11}).toString());
+            textformatted_100.push(textfmt.format({year: 100,month: 100,week: 100,day: 100}).toString());
 
-            clockformatted_1[i] = textfmt.format({hour: 1,minute: 1,second: 1}).toString();
-            clockformatted_2[i] = textfmt.format({hour: 2,minute: 2,second: 2}).toString();
-            clockformatted_3[i] = textfmt.format({hour: 3,minute: 3,second: 3}).toString();
-            clockformatted_11[i] = textfmt.format({hour: 11,minute: 11,second: 11}).toString();
-            clockformatted_100[i] = textfmt.format({hour: 100,minute: 100,second: 100}).toString();
+            clockformatted_1.push(textfmt.format({hour: 1,minute: 1,second: 1}).toString());
+            clockformatted_2.push(textfmt.format({hour: 2,minute: 2,second: 2}).toString());
+            clockformatted_3.push(textfmt.format({hour: 3,minute: 3,second: 3}).toString());
+            clockformatted_11.push(textfmt.format({hour: 11,minute: 11,second: 11}).toString());
+            clockformatted_100.push(textfmt.format({hour: 100,minute: 100,second: 100}).toString());
         }
 
         test.equal(textformatted_1[0], '‏سنة، وشهر، وأسبوع، ويوم' );
@@ -5979,20 +6983,27 @@ module.exports.testdurfmt2 = {
     testDurFmt_ar_OM: function(test) {
         test.expect(40);
         // 1 2 3 11 100
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
+
+        var textformatted_1 = [],textformatted_2 = [],textformatted_3 = [], textformatted_11 = [], textformatted_100 = [];
+        var clockformatted_1 = [],clockformatted_2 = [], clockformatted_3 = [], clockformatted_11 = [], clockformatted_100 = [];
+
         for (var i=0; i<4; i++) {
             textfmt = new DurationFmt({locale: "ar-OM", style:"text", length:length[i], useNative:false});
 
-            textformatted_1[i] = textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString();
-            textformatted_2[i] = textfmt.format({year: 2,month: 2,week: 2,day: 2}).toString();
-            textformatted_3[i] = textfmt.format({year: 3,month: 3,week: 3,day: 3}).toString();
-            textformatted_11[i] = textfmt.format({year: 11,month: 11,week: 11,day: 11}).toString();
-            textformatted_100[i] = textfmt.format({year: 100,month: 100,week: 100,day: 100}).toString();
+            textformatted_1.push(textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString());
+            textformatted_2.push(textfmt.format({year: 2,month: 2,week: 2,day: 2}).toString());
+            textformatted_3.push(textfmt.format({year: 3,month: 3,week: 3,day: 3}).toString());
+            textformatted_11.push(textfmt.format({year: 11,month: 11,week: 11,day: 11}).toString());
+            textformatted_100.push(textfmt.format({year: 100,month: 100,week: 100,day: 100}).toString());
 
-            clockformatted_1[i] = textfmt.format({hour: 1,minute: 1,second: 1}).toString();
-            clockformatted_2[i] = textfmt.format({hour: 2,minute: 2,second: 2}).toString();
-            clockformatted_3[i] = textfmt.format({hour: 3,minute: 3,second: 3}).toString();
-            clockformatted_11[i] = textfmt.format({hour: 11,minute: 11,second: 11}).toString();
-            clockformatted_100[i] = textfmt.format({hour: 100,minute: 100,second: 100}).toString();
+            clockformatted_1.push(textfmt.format({hour: 1,minute: 1,second: 1}).toString());
+            clockformatted_2.push(textfmt.format({hour: 2,minute: 2,second: 2}).toString());
+            clockformatted_3.push(textfmt.format({hour: 3,minute: 3,second: 3}).toString());
+            clockformatted_11.push(textfmt.format({hour: 11,minute: 11,second: 11}).toString());
+            clockformatted_100.push(textfmt.format({hour: 100,minute: 100,second: 100}).toString());
         }
 
         test.equal(textformatted_1[0], '‏سنة، وشهر، وأسبوع، ويوم' );
@@ -6050,20 +7061,27 @@ module.exports.testdurfmt2 = {
     testDurFmt_ar_QA: function(test) {
         test.expect(40);
         // 1 2 3 11 100
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
+
+        var textformatted_1 = [],textformatted_2 = [],textformatted_3 = [], textformatted_11 = [], textformatted_100 = [];
+        var clockformatted_1 = [],clockformatted_2 = [], clockformatted_3 = [], clockformatted_11 = [], clockformatted_100 = [];
+
         for (var i=0; i<4; i++) {
             textfmt = new DurationFmt({locale: "ar-QA", style:"text", length:length[i],useNative:false});
 
-            textformatted_1[i] = textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString();
-            textformatted_2[i] = textfmt.format({year: 2,month: 2,week: 2,day: 2}).toString();
-            textformatted_3[i] = textfmt.format({year: 3,month: 3,week: 3,day: 3}).toString();
-            textformatted_11[i] = textfmt.format({year: 11,month: 11,week: 11,day: 11}).toString();
-            textformatted_100[i] = textfmt.format({year: 100,month: 100,week: 100,day: 100}).toString();
+            textformatted_1.push(textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString());
+            textformatted_2.push(textfmt.format({year: 2,month: 2,week: 2,day: 2}).toString());
+            textformatted_3.push(textfmt.format({year: 3,month: 3,week: 3,day: 3}).toString());
+            textformatted_11.push(textfmt.format({year: 11,month: 11,week: 11,day: 11}).toString());
+            textformatted_100.push(textfmt.format({year: 100,month: 100,week: 100,day: 100}).toString());
 
-            clockformatted_1[i] = textfmt.format({hour: 1,minute: 1,second: 1}).toString();
-            clockformatted_2[i] = textfmt.format({hour: 2,minute: 2,second: 2}).toString();
-            clockformatted_3[i] = textfmt.format({hour: 3,minute: 3,second: 3}).toString();
-            clockformatted_11[i] = textfmt.format({hour: 11,minute: 11,second: 11}).toString();
-            clockformatted_100[i] = textfmt.format({hour: 100,minute: 100,second: 100}).toString();
+            clockformatted_1.push(textfmt.format({hour: 1,minute: 1,second: 1}).toString());
+            clockformatted_2.push(textfmt.format({hour: 2,minute: 2,second: 2}).toString());
+            clockformatted_3.push(textfmt.format({hour: 3,minute: 3,second: 3}).toString());
+            clockformatted_11.push(textfmt.format({hour: 11,minute: 11,second: 11}).toString());
+            clockformatted_100.push(textfmt.format({hour: 100,minute: 100,second: 100}).toString());
         }
 
         test.equal(textformatted_1[0], '‏سنة، وشهر، وأسبوع، ويوم' );
@@ -6121,20 +7139,27 @@ module.exports.testdurfmt2 = {
     testDurFmt_ar_SA: function(test) {
         test.expect(40);
         // 1 2 3 11 100
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
+
+        var textformatted_1 = [],textformatted_2 = [],textformatted_3 = [], textformatted_11 = [], textformatted_100 = [];
+        var clockformatted_1 = [],clockformatted_2 = [], clockformatted_3 = [], clockformatted_11 = [], clockformatted_100 = [];
+
         for (var i=0; i<4; i++) {
             textfmt = new DurationFmt({locale: "ar-SA", style:"text", length:length[i], useNative:false});
 
-            textformatted_1[i] = textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString();
-            textformatted_2[i] = textfmt.format({year: 2,month: 2,week: 2,day: 2}).toString();
-            textformatted_3[i] = textfmt.format({year: 3,month: 3,week: 3,day: 3}).toString();
-            textformatted_11[i] = textfmt.format({year: 11,month: 11,week: 11,day: 11}).toString();
-            textformatted_100[i] = textfmt.format({year: 100,month: 100,week: 100,day: 100}).toString();
+            textformatted_1.push(textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString());
+            textformatted_2.push(textfmt.format({year: 2,month: 2,week: 2,day: 2}).toString());
+            textformatted_3.push(textfmt.format({year: 3,month: 3,week: 3,day: 3}).toString());
+            textformatted_11.push(textfmt.format({year: 11,month: 11,week: 11,day: 11}).toString());
+            textformatted_100.push(textfmt.format({year: 100,month: 100,week: 100,day: 100}).toString());
 
-            clockformatted_1[i] = textfmt.format({hour: 1,minute: 1,second: 1}).toString();
-            clockformatted_2[i] = textfmt.format({hour: 2,minute: 2,second: 2}).toString();
-            clockformatted_3[i] = textfmt.format({hour: 3,minute: 3,second: 3}).toString();
-            clockformatted_11[i] = textfmt.format({hour: 11,minute: 11,second: 11}).toString();
-            clockformatted_100[i] = textfmt.format({hour: 100,minute: 100,second: 100}).toString();
+            clockformatted_1.push(textfmt.format({hour: 1,minute: 1,second: 1}).toString());
+            clockformatted_2.push(textfmt.format({hour: 2,minute: 2,second: 2}).toString());
+            clockformatted_3.push(textfmt.format({hour: 3,minute: 3,second: 3}).toString());
+            clockformatted_11.push(textfmt.format({hour: 11,minute: 11,second: 11}).toString());
+            clockformatted_100.push(textfmt.format({hour: 100,minute: 100,second: 100}).toString());
         }
 
         test.equal(textformatted_1[0], '‏سنة، وشهر، وأسبوع، ويوم' );
@@ -6192,20 +7217,27 @@ module.exports.testdurfmt2 = {
     testDurFmt_ar_SD: function(test) {
         test.expect(40);
         // 1 2 3 11 100
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
+
+        var textformatted_1 = [],textformatted_2 = [],textformatted_3 = [], textformatted_11 = [], textformatted_100 = [];
+        var clockformatted_1 = [],clockformatted_2 = [], clockformatted_3 = [], clockformatted_11 = [], clockformatted_100 = [];
+
         for (var i=0; i<4; i++) {
             textfmt = new DurationFmt({locale: "ar-SD", style:"text", length:length[i], useNative:false});
 
-            textformatted_1[i] = textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString();
-            textformatted_2[i] = textfmt.format({year: 2,month: 2,week: 2,day: 2}).toString();
-            textformatted_3[i] = textfmt.format({year: 3,month: 3,week: 3,day: 3}).toString();
-            textformatted_11[i] = textfmt.format({year: 11,month: 11,week: 11,day: 11}).toString();
-            textformatted_100[i] = textfmt.format({year: 100,month: 100,week: 100,day: 100}).toString();
+            textformatted_1.push(textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString());
+            textformatted_2.push(textfmt.format({year: 2,month: 2,week: 2,day: 2}).toString());
+            textformatted_3.push(textfmt.format({year: 3,month: 3,week: 3,day: 3}).toString());
+            textformatted_11.push(textfmt.format({year: 11,month: 11,week: 11,day: 11}).toString());
+            textformatted_100.push(textfmt.format({year: 100,month: 100,week: 100,day: 100}).toString());
 
-            clockformatted_1[i] = textfmt.format({hour: 1,minute: 1,second: 1}).toString();
-            clockformatted_2[i] = textfmt.format({hour: 2,minute: 2,second: 2}).toString();
-            clockformatted_3[i] = textfmt.format({hour: 3,minute: 3,second: 3}).toString();
-            clockformatted_11[i] = textfmt.format({hour: 11,minute: 11,second: 11}).toString();
-            clockformatted_100[i] = textfmt.format({hour: 100,minute: 100,second: 100}).toString();
+            clockformatted_1.push(textfmt.format({hour: 1,minute: 1,second: 1}).toString());
+            clockformatted_2.push(textfmt.format({hour: 2,minute: 2,second: 2}).toString());
+            clockformatted_3.push(textfmt.format({hour: 3,minute: 3,second: 3}).toString());
+            clockformatted_11.push(textfmt.format({hour: 11,minute: 11,second: 11}).toString());
+            clockformatted_100.push(textfmt.format({hour: 100,minute: 100,second: 100}).toString());
         }
 
         test.equal(textformatted_1[0], '‏سنة، وشهر، وأسبوع، ويوم' );
@@ -6263,20 +7295,27 @@ module.exports.testdurfmt2 = {
     testDurFmt_ar_SY: function(test) {
         test.expect(40);
         // 1 2 3 11 100
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
+
+        var textformatted_1 = [],textformatted_2 = [],textformatted_3 = [], textformatted_11 = [], textformatted_100 = [];
+        var clockformatted_1 = [],clockformatted_2 = [], clockformatted_3 = [], clockformatted_11 = [], clockformatted_100 = [];
+
         for (var i=0; i<4; i++) {
             textfmt = new DurationFmt({locale: "ar-SY", style:"text", length:length[i], useNative:false});
 
-            textformatted_1[i] = textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString();
-            textformatted_2[i] = textfmt.format({year: 2,month: 2,week: 2,day: 2}).toString();
-            textformatted_3[i] = textfmt.format({year: 3,month: 3,week: 3,day: 3}).toString();
-            textformatted_11[i] = textfmt.format({year: 11,month: 11,week: 11,day: 11}).toString();
-            textformatted_100[i] = textfmt.format({year: 100,month: 100,week: 100,day: 100}).toString();
+            textformatted_1.push(textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString());
+            textformatted_2.push(textfmt.format({year: 2,month: 2,week: 2,day: 2}).toString());
+            textformatted_3.push(textfmt.format({year: 3,month: 3,week: 3,day: 3}).toString());
+            textformatted_11.push(textfmt.format({year: 11,month: 11,week: 11,day: 11}).toString());
+            textformatted_100.push(textfmt.format({year: 100,month: 100,week: 100,day: 100}).toString());
 
-            clockformatted_1[i] = textfmt.format({hour: 1,minute: 1,second: 1}).toString();
-            clockformatted_2[i] = textfmt.format({hour: 2,minute: 2,second: 2}).toString();
-            clockformatted_3[i] = textfmt.format({hour: 3,minute: 3,second: 3}).toString();
-            clockformatted_11[i] = textfmt.format({hour: 11,minute: 11,second: 11}).toString();
-            clockformatted_100[i] = textfmt.format({hour: 100,minute: 100,second: 100}).toString();
+            clockformatted_1.push(textfmt.format({hour: 1,minute: 1,second: 1}).toString());
+            clockformatted_2.push(textfmt.format({hour: 2,minute: 2,second: 2}).toString());
+            clockformatted_3.push(textfmt.format({hour: 3,minute: 3,second: 3}).toString());
+            clockformatted_11.push(textfmt.format({hour: 11,minute: 11,second: 11}).toString());
+            clockformatted_100.push(textfmt.format({hour: 100,minute: 100,second: 100}).toString());
         }
 
         test.equal(textformatted_1[0], '‏سنة، وشهر، وأسبوع، ويوم' );
@@ -6334,20 +7373,27 @@ module.exports.testdurfmt2 = {
     testDurFmt_ar_TN: function(test) {
         test.expect(40);
         // 1 2 3 11 100
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
+
+        var textformatted_1 = [],textformatted_2 = [],textformatted_3 = [], textformatted_11 = [], textformatted_100 = [];
+        var clockformatted_1 = [],clockformatted_2 = [], clockformatted_3 = [], clockformatted_11 = [], clockformatted_100 = [];
+
         for (var i=0; i<4; i++) {
             textfmt = new DurationFmt({locale: "ar-TN", style:"text", length:length[i]});
 
-            textformatted_1[i] = textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString();
-            textformatted_2[i] = textfmt.format({year: 2,month: 2,week: 2,day: 2}).toString();
-            textformatted_3[i] = textfmt.format({year: 3,month: 3,week: 3,day: 3}).toString();
-            textformatted_11[i] = textfmt.format({year: 11,month: 11,week: 11,day: 11}).toString();
-            textformatted_100[i] = textfmt.format({year: 100,month: 100,week: 100,day: 100}).toString();
+            textformatted_1.push(textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString());
+            textformatted_2.push(textfmt.format({year: 2,month: 2,week: 2,day: 2}).toString());
+            textformatted_3.push(textfmt.format({year: 3,month: 3,week: 3,day: 3}).toString());
+            textformatted_11.push(textfmt.format({year: 11,month: 11,week: 11,day: 11}).toString());
+            textformatted_100.push(textfmt.format({year: 100,month: 100,week: 100,day: 100}).toString());
 
-            clockformatted_1[i] = textfmt.format({hour: 1,minute: 1,second: 1}).toString();
-            clockformatted_2[i] = textfmt.format({hour: 2,minute: 2,second: 2}).toString();
-            clockformatted_3[i] = textfmt.format({hour: 3,minute: 3,second: 3}).toString();
-            clockformatted_11[i] = textfmt.format({hour: 11,minute: 11,second: 11}).toString();
-            clockformatted_100[i] = textfmt.format({hour: 100,minute: 100,second: 100}).toString();
+            clockformatted_1.push(textfmt.format({hour: 1,minute: 1,second: 1}).toString());
+            clockformatted_2.push(textfmt.format({hour: 2,minute: 2,second: 2}).toString());
+            clockformatted_3.push(textfmt.format({hour: 3,minute: 3,second: 3}).toString());
+            clockformatted_11.push(textfmt.format({hour: 11,minute: 11,second: 11}).toString());
+            clockformatted_100.push(textfmt.format({hour: 100,minute: 100,second: 100}).toString());
         }
 
         test.equal(textformatted_1[0], '‏سنة، وشهر، وأسبوع، ويوم' );
@@ -6405,20 +7451,27 @@ module.exports.testdurfmt2 = {
     testDurFmt_ar_YE: function(test) {
         test.expect(40);
         // 1 2 3 11 100
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
+
+        var textformatted_1 = [],textformatted_2 = [],textformatted_3 = [], textformatted_11 = [], textformatted_100 = [];
+        var clockformatted_1 = [],clockformatted_2 = [], clockformatted_3 = [], clockformatted_11 = [], clockformatted_100 = [];
+
         for (var i=0; i<4; i++) {
             textfmt = new DurationFmt({locale: "ar-YE", style:"text", length:length[i], useNative:false});
 
-            textformatted_1[i] = textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString();
-            textformatted_2[i] = textfmt.format({year: 2,month: 2,week: 2,day: 2}).toString();
-            textformatted_3[i] = textfmt.format({year: 3,month: 3,week: 3,day: 3}).toString();
-            textformatted_11[i] = textfmt.format({year: 11,month: 11,week: 11,day: 11}).toString();
-            textformatted_100[i] = textfmt.format({year: 100,month: 100,week: 100,day: 100}).toString();
+            textformatted_1.push(textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString());
+            textformatted_2.push(textfmt.format({year: 2,month: 2,week: 2,day: 2}).toString());
+            textformatted_3.push(textfmt.format({year: 3,month: 3,week: 3,day: 3}).toString());
+            textformatted_11.push(textfmt.format({year: 11,month: 11,week: 11,day: 11}).toString());
+            textformatted_100.push(textfmt.format({year: 100,month: 100,week: 100,day: 100}).toString());
 
-            clockformatted_1[i] = textfmt.format({hour: 1,minute: 1,second: 1}).toString();
-            clockformatted_2[i] = textfmt.format({hour: 2,minute: 2,second: 2}).toString();
-            clockformatted_3[i] = textfmt.format({hour: 3,minute: 3,second: 3}).toString();
-            clockformatted_11[i] = textfmt.format({hour: 11,minute: 11,second: 11}).toString();
-            clockformatted_100[i] = textfmt.format({hour: 100,minute: 100,second: 100}).toString();
+            clockformatted_1.push(textfmt.format({hour: 1,minute: 1,second: 1}).toString());
+            clockformatted_2.push(textfmt.format({hour: 2,minute: 2,second: 2}).toString());
+            clockformatted_3.push(textfmt.format({hour: 3,minute: 3,second: 3}).toString());
+            clockformatted_11.push(textfmt.format({hour: 11,minute: 11,second: 11}).toString());
+            clockformatted_100.push(textfmt.format({hour: 100,minute: 100,second: 100}).toString());
         }
 
         test.equal(textformatted_1[0], '‏سنة، وشهر، وأسبوع، ويوم' );
@@ -6476,13 +7529,20 @@ module.exports.testdurfmt2 = {
     testDurFmt_en_ET: function(test) {
         test.expect(16);
         // 1 2
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
+
+        var textformatted_1 = [],textformatted_2 = [];
+        var clockformatted_1 = [],clockformatted_2 = [];
+
         for (var i=0; i<4; i++) {
             textfmt = new DurationFmt({locale: "en-ET", style:"text", length:length[i]});
-            textformatted_1[i] = textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString();
-            textformatted_2[i] = textfmt.format({year: 2,month: 2,week: 2,day: 2}).toString();
+            textformatted_1.push(textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString());
+            textformatted_2.push(textfmt.format({year: 2,month: 2,week: 2,day: 2}).toString());
 
-            clockformatted_1[i] = textfmt.format({hour: 1,minute: 1,second: 1}).toString();
-            clockformatted_2[i] = textfmt.format({hour: 2,minute: 2,second: 2}).toString();
+            clockformatted_1.push(textfmt.format({hour: 1,minute: 1,second: 1}).toString());
+            clockformatted_2.push(textfmt.format({hour: 2,minute: 2,second: 2}).toString());
         }
 
         test.equal(textformatted_1[0], '1 year, 1 month, 1 week, 1 day');
@@ -6510,14 +7570,21 @@ module.exports.testdurfmt2 = {
     testDurFmt_en_GM: function(test) {
         test.expect(16);
         // 1 2
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
+
+        var textformatted_1 = [],textformatted_2 = [];
+        var clockformatted_1 = [],clockformatted_2 = [];
+
         for (var i=0; i<4; i++) {
             textfmt = new DurationFmt({locale: "en-GM", style:"text", length:length[i]});
 
-            textformatted_1[i] = textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString();
-            textformatted_2[i] = textfmt.format({year: 2,month: 2,week: 2,day: 2}).toString();
+            textformatted_1.push(textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString());
+            textformatted_2.push(textfmt.format({year: 2,month: 2,week: 2,day: 2}).toString());
 
-            clockformatted_1[i] = textfmt.format({hour: 1,minute: 1,second: 1}).toString();
-            clockformatted_2[i] = textfmt.format({hour: 2,minute: 2,second: 2}).toString();
+            clockformatted_1.push(textfmt.format({hour: 1,minute: 1,second: 1}).toString());
+            clockformatted_2.push(textfmt.format({hour: 2,minute: 2,second: 2}).toString());
         }
 
         test.equal(textformatted_1[0], '1 year, 1 month, 1 week, 1 day');
@@ -6545,13 +7612,20 @@ module.exports.testdurfmt2 = {
     testDurFmt_en_LR: function(test) {
         test.expect(16);
         // 1 2
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
+
+        var textformatted_1 = [],textformatted_2 = [];
+        var clockformatted_1 = [],clockformatted_2 = [];
+
         for (var i=0; i<4; i++) {
             textfmt = new DurationFmt({locale: "en-LR", style:"text", length:length[i]});
-            textformatted_1[i] = textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString();
-            textformatted_2[i] = textfmt.format({year: 2,month: 2,week: 2,day: 2}).toString();
+            textformatted_1.push(textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString());
+            textformatted_2.push(textfmt.format({year: 2,month: 2,week: 2,day: 2}).toString());
 
-            clockformatted_1[i] = textfmt.format({hour: 1,minute: 1,second: 1}).toString();
-            clockformatted_2[i] = textfmt.format({hour: 2,minute: 2,second: 2}).toString();
+            clockformatted_1.push(textfmt.format({hour: 1,minute: 1,second: 1}).toString());
+            clockformatted_2.push(textfmt.format({hour: 2,minute: 2,second: 2}).toString());
         }
 
         test.equal(textformatted_1[0], '1 year, 1 month, 1 week, 1 day');
@@ -6579,13 +7653,20 @@ module.exports.testdurfmt2 = {
     testDurFmt_en_PK: function(test) {
         test.expect(16);
         // 1 2
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
+
+        var textformatted_1 = [],textformatted_2 = [];
+        var clockformatted_1 = [],clockformatted_2 = [];
+
         for (var i=0; i<4; i++) {
             textfmt = new DurationFmt({locale: "en-PK", style:"text", length:length[i]});
-            textformatted_1[i] = textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString();
-            textformatted_2[i] = textfmt.format({year: 2,month: 2,week: 2,day: 2}).toString();
+            textformatted_1.push(textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString());
+            textformatted_2.push(textfmt.format({year: 2,month: 2,week: 2,day: 2}).toString());
 
-            clockformatted_1[i] = textfmt.format({hour: 1,minute: 1,second: 1}).toString();
-            clockformatted_2[i] = textfmt.format({hour: 2,minute: 2,second: 2}).toString();
+            clockformatted_1.push(textfmt.format({hour: 1,minute: 1,second: 1}).toString());
+            clockformatted_2.push(textfmt.format({hour: 2,minute: 2,second: 2}).toString());
         }
 
         test.equal(textformatted_1[0], '1 year, 1 month, 1 week, 1 day');
@@ -6613,13 +7694,20 @@ module.exports.testdurfmt2 = {
     testDurFmt_en_RW: function(test) {
         test.expect(16);
         // 1 2
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
+
+        var textformatted_1 = [],textformatted_2 = [];
+        var clockformatted_1 = [],clockformatted_2 = [];
+
         for (var i=0; i<4; i++) {
             textfmt = new DurationFmt({locale: "en-RW", style:"text", length:length[i]});
-            textformatted_1[i] = textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString();
-            textformatted_2[i] = textfmt.format({year: 2,month: 2,week: 2,day: 2}).toString();
+            textformatted_1.push(textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString());
+            textformatted_2.push(textfmt.format({year: 2,month: 2,week: 2,day: 2}).toString());
 
-            clockformatted_1[i] = textfmt.format({hour: 1,minute: 1,second: 1}).toString();
-            clockformatted_2[i] = textfmt.format({hour: 2,minute: 2,second: 2}).toString();
+            clockformatted_1.push(textfmt.format({hour: 1,minute: 1,second: 1}).toString());
+            clockformatted_2.push(textfmt.format({hour: 2,minute: 2,second: 2}).toString());
         }
 
         test.equal(textformatted_1[0], '1 year, 1 month, 1 week, 1 day');
@@ -6647,13 +7735,20 @@ module.exports.testdurfmt2 = {
     testDurFmt_en_SD: function(test) {
         test.expect(16);
         // 1 2
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
+
+        var textformatted_1 = [],textformatted_2 = [];
+        var clockformatted_1 = [],clockformatted_2 = [];
+
         for (var i=0; i<4; i++) {
             textfmt = new DurationFmt({locale: "en-SD", style:"text", length:length[i]});
-            textformatted_1[i] = textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString();
-            textformatted_2[i] = textfmt.format({year: 2,month: 2,week: 2,day: 2}).toString();
+            textformatted_1.push(textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString());
+            textformatted_2.push(textfmt.format({year: 2,month: 2,week: 2,day: 2}).toString());
 
-            clockformatted_1[i] = textfmt.format({hour: 1,minute: 1,second: 1}).toString();
-            clockformatted_2[i] = textfmt.format({hour: 2,minute: 2,second: 2}).toString();
+            clockformatted_1.push(textfmt.format({hour: 1,minute: 1,second: 1}).toString());
+            clockformatted_2.push(textfmt.format({hour: 2,minute: 2,second: 2}).toString());
         }
 
         test.equal(textformatted_1[0], '1 year, 1 month, 1 week, 1 day');
@@ -6681,13 +7776,20 @@ module.exports.testdurfmt2 = {
     testDurFmt_en_SL: function(test) {
         test.expect(16);
         // 1 2
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
+
+        var textformatted_1 = [],textformatted_2 = [];
+        var clockformatted_1 = [],clockformatted_2 = [];
+
         for (var i=0; i<4; i++) {
             textfmt = new DurationFmt({locale: "en-SL", style:"text", length:length[i]});
-            textformatted_1[i] = textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString();
-            textformatted_2[i] = textfmt.format({year: 2,month: 2,week: 2,day: 2}).toString();
+            textformatted_1.push(textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString());
+            textformatted_2.push(textfmt.format({year: 2,month: 2,week: 2,day: 2}).toString());
 
-            clockformatted_1[i] = textfmt.format({hour: 1,minute: 1,second: 1}).toString();
-            clockformatted_2[i] = textfmt.format({hour: 2,minute: 2,second: 2}).toString();
+            clockformatted_1.push(textfmt.format({hour: 1,minute: 1,second: 1}).toString());
+            clockformatted_2.push(textfmt.format({hour: 2,minute: 2,second: 2}).toString());
         }
 
         test.equal(textformatted_1[0], '1 year, 1 month, 1 week, 1 day');
@@ -6715,13 +7817,20 @@ module.exports.testdurfmt2 = {
     testDurFmt_en_TZ: function(test) {
         test.expect(16);
         // 1 2
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
+
+        var textformatted_1 = [],textformatted_2 = [];
+        var clockformatted_1 = [],clockformatted_2 = [];
+
         for (var i=0; i<4; i++) {
             textfmt = new DurationFmt({locale: "en-TZ", style:"text", length:length[i]});
-            textformatted_1[i] = textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString();
-            textformatted_2[i] = textfmt.format({year: 2,month: 2,week: 2,day: 2}).toString();
+            textformatted_1.push(textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString());
+            textformatted_2.push(textfmt.format({year: 2,month: 2,week: 2,day: 2}).toString());
 
-            clockformatted_1[i] = textfmt.format({hour: 1,minute: 1,second: 1}).toString();
-            clockformatted_2[i] = textfmt.format({hour: 2,minute: 2,second: 2}).toString();
+            clockformatted_1.push(textfmt.format({hour: 1,minute: 1,second: 1}).toString());
+            clockformatted_2.push(textfmt.format({hour: 2,minute: 2,second: 2}).toString());
         }
 
         test.equal(textformatted_1[0], '1 year, 1 month, 1 week, 1 day');
@@ -6749,13 +7858,20 @@ module.exports.testdurfmt2 = {
     testDurFmt_es_CR: function(test) {
         test.expect(16);
         // 1 17
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
+
+        var textformatted_1 = [],textformatted_17 = [];
+        var clockformatted_1 = [],clockformatted_17 = [];
+        
         for (var i=0; i<4; i++) {
             textfmt = new DurationFmt({locale: "es-CR", style:"text", length:length[i]});
-            textformatted_1[i] = textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString();
-            textformatted_17[i] = textfmt.format({year: 17,month: 17,week: 17,day: 17}).toString();
+            textformatted_1.push(textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString());
+            textformatted_17.push(textfmt.format({year: 17,month: 17,week: 17,day: 17}).toString());
 
-            clockformatted_1[i] = textfmt.format({hour: 1,minute: 1,second: 1}).toString();
-            clockformatted_17[i] = textfmt.format({hour: 17,minute: 17,second: 17}).toString();
+            clockformatted_1.push(textfmt.format({hour: 1,minute: 1,second: 1}).toString());
+            clockformatted_17.push(textfmt.format({hour: 17,minute: 17,second: 17}).toString());
         }
 
         test.equal(textformatted_1[0], '1 año, 1 mes, 1 semana y 1 día');
@@ -6783,13 +7899,20 @@ module.exports.testdurfmt2 = {
     testDurFmt_es_GQ: function(test) {
         test.expect(16);
         // 1 2
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
+
+        var textformatted_1 = [],textformatted_2 = [];
+        var clockformatted_1 = [],clockformatted_2 = [];
+
         for (var i=0; i<4; i++) {
             textfmt = new DurationFmt({locale: "es-GQ", style:"text", length:length[i]});
-            textformatted_1[i] = textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString();
-            textformatted_2[i] = textfmt.format({year: 2,month: 2,week: 2,day: 2}).toString();
+            textformatted_1.push(textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString());
+            textformatted_2.push(textfmt.format({year: 2,month: 2,week: 2,day: 2}).toString());
 
-            clockformatted_1[i] = textfmt.format({hour: 1,minute: 1,second: 1}).toString();
-            clockformatted_2[i] = textfmt.format({hour: 2,minute: 2,second: 2}).toString();
+            clockformatted_1.push(textfmt.format({hour: 1,minute: 1,second: 1}).toString());
+            clockformatted_2.push(textfmt.format({hour: 2,minute: 2,second: 2}).toString());
         }
 
         test.equal(textformatted_1[0], '1 año, 1 mes, 1 semana y 1 día');
@@ -6817,13 +7940,20 @@ module.exports.testdurfmt2 = {
     testDurFmt_es_PH: function(test) {
         test.expect(16);
         // 1 17
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
+
+        var textformatted_1 = [],textformatted_17 = [];
+        var clockformatted_1 = [],clockformatted_17 = [];
+
         for (var i=0; i<4; i++) {
             textfmt = new DurationFmt({locale: "es-PH", style:"text", length:length[i]});
-            textformatted_1[i] = textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString();
-            textformatted_17[i] = textfmt.format({year: 17,month: 17,week: 17,day: 17}).toString();
+            textformatted_1.push(textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString());
+            textformatted_17.push(textfmt.format({year: 17,month: 17,week: 17,day: 17}).toString());
 
-            clockformatted_1[i] = textfmt.format({hour: 1,minute: 1,second: 1}).toString();
-            clockformatted_17[i] = textfmt.format({hour: 17,minute: 17,second: 17}).toString();
+            clockformatted_1.push(textfmt.format({hour: 1,minute: 1,second: 1}).toString());
+            clockformatted_17.push(textfmt.format({hour: 17,minute: 17,second: 17}).toString());
         }
 
         test.equal(textformatted_1[0], '1 año, 1 mes, 1 semana y 1 día');
@@ -6851,13 +7981,20 @@ module.exports.testdurfmt2 = {
     testDurFmt_fr_BF: function(test) {
         test.expect(16);
         // 1 2
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
+
+        var textformatted_1 = [],textformatted_2 = [];
+        var clockformatted_1 = [],clockformatted_2 = [];
+
         for (var i=0; i<4; i++) {
             textfmt = new DurationFmt({locale: "fr-BF", style:"text", length:length[i]});
-            textformatted_1[i] = textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString();
-            textformatted_2[i] = textfmt.format({year: 2,month: 2,week: 2,day: 2}).toString();
+            textformatted_1.push(textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString());
+            textformatted_2.push(textfmt.format({year: 2,month: 2,week: 2,day: 2}).toString());
 
-            clockformatted_1[i] = textfmt.format({hour: 1,minute: 1,second: 1}).toString();
-            clockformatted_2[i] = textfmt.format({hour: 2,minute: 2,second: 2}).toString();
+            clockformatted_1.push(textfmt.format({hour: 1,minute: 1,second: 1}).toString());
+            clockformatted_2.push(textfmt.format({hour: 2,minute: 2,second: 2}).toString());
         }
 
         // CLDR 34 chang
@@ -6887,13 +8024,20 @@ module.exports.testdurfmt2 = {
     testDurFmt_fr_BJ: function(test) {
         test.expect(16);
         // 1 17
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
+
+        var textformatted_1 = [],textformatted_17 = [];
+        var clockformatted_1 = [],clockformatted_17 = [];
+
         for (var i=0; i<4; i++) {
             textfmt = new DurationFmt({locale: "fr-BJ", style:"text", length:length[i]});
-            textformatted_1[i] = textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString();
-            textformatted_17[i] = textfmt.format({year: 17,month: 17,week: 17,day: 17}).toString();
+            textformatted_1.push(textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString());
+            textformatted_17.push(textfmt.format({year: 17,month: 17,week: 17,day: 17}).toString());
 
-            clockformatted_1[i] = textfmt.format({hour: 1,minute: 1,second: 1}).toString();
-            clockformatted_17[i] = textfmt.format({hour: 17,minute: 17,second: 17}).toString();
+            clockformatted_1.push(textfmt.format({hour: 1,minute: 1,second: 1}).toString());
+            clockformatted_17.push(textfmt.format({hour: 17,minute: 17,second: 17}).toString());
         }
 
         test.equal(textformatted_1[0], '1 an, 1 mois, 1 semaine et 1 jour');
@@ -6921,14 +8065,21 @@ module.exports.testdurfmt2 = {
     testDurFmt_fr_CD: function(test) {
         test.expect(16);
         // 1 17
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
+
+        var textformatted_1 = [],textformatted_17 = [];
+        var clockformatted_1 = [],clockformatted_17 = [];
+
         for (var i=0; i<4; i++) {
             textfmt = new DurationFmt({locale: "fr-CD", style:"text", length:length[i]});
 
-            textformatted_1[i] = textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString();
-            textformatted_17[i] = textfmt.format({year: 17,month: 17,week: 17,day: 17}).toString();
+            textformatted_1.push(textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString());
+            textformatted_17.push(textfmt.format({year: 17,month: 17,week: 17,day: 17}).toString());
 
-            clockformatted_1[i] = textfmt.format({hour: 1,minute: 1,second: 1}).toString();
-            clockformatted_17[i] = textfmt.format({hour: 17,minute: 17,second: 17}).toString();
+            clockformatted_1.push(textfmt.format({hour: 1,minute: 1,second: 1}).toString());
+            clockformatted_17.push(textfmt.format({hour: 17,minute: 17,second: 17}).toString());
         }
 
         test.equal(textformatted_1[0], '1 an, 1 mois, 1 semaine et 1 jour');
@@ -6956,13 +8107,20 @@ module.exports.testdurfmt2 = {
     testDurFmt_fr_CF: function(test) {
         test.expect(16);
         // 1 2
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
+
+        var textformatted_1 = [],textformatted_2 = [];
+        var clockformatted_1 = [],clockformatted_2 = [];
+
         for (var i=0; i<4; i++) {
             textfmt = new DurationFmt({locale: "fr-CF", style:"text", length:length[i]});
-            textformatted_1[i] = textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString();
-            textformatted_2[i] = textfmt.format({year: 2,month: 2,week: 2,day: 2}).toString();
+            textformatted_1.push(textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString());
+            textformatted_2.push(textfmt.format({year: 2,month: 2,week: 2,day: 2}).toString());
 
-            clockformatted_1[i] = textfmt.format({hour: 1,minute: 1,second: 1}).toString();
-            clockformatted_2[i] = textfmt.format({hour: 2,minute: 2,second: 2}).toString();
+            clockformatted_1.push(textfmt.format({hour: 1,minute: 1,second: 1}).toString());
+            clockformatted_2.push(textfmt.format({hour: 2,minute: 2,second: 2}).toString());
         }
 
         test.equal(textformatted_1[0], '1 an, 1 mois, 1 semaine et 1 jour');
@@ -6990,13 +8148,20 @@ module.exports.testdurfmt2 = {
     testDurFmt_fr_CG: function(test) {
         test.expect(16);
         // 1 16
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
+
+        var textformatted_1 = [],textformatted_16 = [];
+        var clockformatted_1 = [],clockformatted_16 = [];
+
         for (var i=0; i<4; i++) {
             textfmt = new DurationFmt({locale: "fr-CG", style:"text", length:length[i]});
-            textformatted_1[i] = textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString();
-            textformatted_16[i] = textfmt.format({year: 16,month: 16,week: 16,day: 16}).toString();
+            textformatted_1.push(textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString());
+            textformatted_16.push(textfmt.format({year: 16,month: 16,week: 16,day: 16}).toString());
 
-            clockformatted_1[i] = textfmt.format({hour: 1,minute: 1,second: 1}).toString();
-            clockformatted_16[i] = textfmt.format({hour: 16,minute: 16,second: 16}).toString();
+            clockformatted_1.push(textfmt.format({hour: 1,minute: 1,second: 1}).toString());
+            clockformatted_16.push(textfmt.format({hour: 16,minute: 16,second: 16}).toString());
         }
 
         test.equal(textformatted_1[0], '1 an, 1 mois, 1 semaine et 1 jour');
@@ -7024,13 +8189,20 @@ module.exports.testdurfmt2 = {
     testDurFmt_fr_CI: function(test) {
         test.expect(16);
         // 1 17
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
+
+        var textformatted_1 = [],textformatted_17 = [];
+        var clockformatted_1 = [],clockformatted_17 = [];
+
         for (var i=0; i<4; i++) {
             textfmt = new DurationFmt({locale: "fr-CI", style:"text", length:length[i]});
-            textformatted_1[i] = textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString();
-            textformatted_17[i] = textfmt.format({year: 17,month: 17,week: 17,day: 17}).toString();
+            textformatted_1.push(textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString());
+            textformatted_17.push(textfmt.format({year: 17,month: 17,week: 17,day: 17}).toString());
 
-            clockformatted_1[i] = textfmt.format({hour: 1,minute: 1,second: 1}).toString();
-            clockformatted_17[i] = textfmt.format({hour: 17,minute: 17,second: 17}).toString();
+            clockformatted_1.push(textfmt.format({hour: 1,minute: 1,second: 1}).toString());
+            clockformatted_17.push(textfmt.format({hour: 17,minute: 17,second: 17}).toString());
         }
 
         test.equal(textformatted_1[0], '1 an, 1 mois, 1 semaine et 1 jour');
@@ -7058,13 +8230,20 @@ module.exports.testdurfmt2 = {
     testDurFmt_fr_CM: function(test) {
         test.expect(16);
         // 1 16
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
+
+        var textformatted_1 = [],textformatted_16 = [];
+        var clockformatted_1 = [],clockformatted_16 = [];
+
         for (var i=0; i<4; i++) {
             textfmt = new DurationFmt({locale: "fr-CM", style:"text", length:length[i]});
-            textformatted_1[i] = textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString();
-            textformatted_16[i] = textfmt.format({year: 16,month: 16,week: 16,day: 16}).toString();
+            textformatted_1.push(textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString());
+            textformatted_16.push(textfmt.format({year: 16,month: 16,week: 16,day: 16}).toString());
 
-            clockformatted_1[i] = textfmt.format({hour: 1,minute: 1,second: 1}).toString();
-            clockformatted_16[i] = textfmt.format({hour: 16,minute: 16,second: 16}).toString();
+            clockformatted_1.push(textfmt.format({hour: 1,minute: 1,second: 1}).toString());
+            clockformatted_16.push(textfmt.format({hour: 16,minute: 16,second: 16}).toString());
         }
 
         test.equal(textformatted_1[0], '1 an, 1 mois, 1 semaine et 1 jour');
@@ -7092,13 +8271,20 @@ module.exports.testdurfmt2 = {
     testDurFmt_fr_GQ: function(test) {
         test.expect(16);
         // 1 16
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
+
+        var textformatted_1 = [],textformatted_16 = [];
+        var clockformatted_1 = [],clockformatted_16 = [];
+        
         for (var i=0; i<4; i++) {
             textfmt = new DurationFmt({locale: "fr-GQ", style:"text", length:length[i]});
-            textformatted_1[i] = textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString();
-            textformatted_16[i] = textfmt.format({year: 16,month: 16,week: 16,day: 16}).toString();
+            textformatted_1.push(textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString());
+            textformatted_16.push(textfmt.format({year: 16,month: 16,week: 16,day: 16}).toString());
 
-            clockformatted_1[i] = textfmt.format({hour: 1,minute: 1,second: 1}).toString();
-            clockformatted_16[i] = textfmt.format({hour: 16,minute: 16,second: 16}).toString();
+            clockformatted_1.push(textfmt.format({hour: 1,minute: 1,second: 1}).toString());
+            clockformatted_16.push(textfmt.format({hour: 16,minute: 16,second: 16}).toString());
         }
 
         test.equal(textformatted_1[0], '1 an, 1 mois, 1 semaine et 1 jour');
@@ -7126,13 +8312,20 @@ module.exports.testdurfmt2 = {
     testDurFmt_fr_DJ: function(test) {
         test.expect(16);
         // 1 2
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
+
+        var textformatted_1 = [],textformatted_2 = [];
+        var clockformatted_1 = [],clockformatted_2 = [];
+
         for (var i=0; i<4; i++) {
             textfmt = new DurationFmt({locale: "fr-DJ", style:"text", length:length[i]});
-            textformatted_1[i] = textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString();
-            textformatted_2[i] = textfmt.format({year: 2,month: 2,week: 2,day: 2}).toString();
+            textformatted_1.push(textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString());
+            textformatted_2.push(textfmt.format({year: 2,month: 2,week: 2,day: 2}).toString());
 
-            clockformatted_1[i] = textfmt.format({hour: 1,minute: 1,second: 1}).toString();
-            clockformatted_2[i] = textfmt.format({hour: 2,minute: 2,second: 2}).toString();
+            clockformatted_1.push(textfmt.format({hour: 1,minute: 1,second: 1}).toString());
+            clockformatted_2.push(textfmt.format({hour: 2,minute: 2,second: 2}).toString());
         }
 
         test.equal(textformatted_1[0], '1 an, 1 mois, 1 semaine et 1 jour');
@@ -7159,14 +8352,21 @@ module.exports.testdurfmt2 = {
     },
     testDurFmt_fr_DZ: function(test) {
         test.expect(16);
-        // 1 2 
+        // 1 2
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
+
+        var textformatted_1 = [],textformatted_2 = [];
+        var clockformatted_1 = [],clockformatted_2 = [];
+
         for (var i=0; i<4; i++) {
             textfmt = new DurationFmt({locale: "fr-DZ", style:"text", length:length[i]});
-            textformatted_1[i] = textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString();
-            textformatted_2[i] = textfmt.format({year: 2,month: 2,week: 2,day: 2}).toString();
+            textformatted_1.push(textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString());
+            textformatted_2.push(textfmt.format({year: 2,month: 2,week: 2,day: 2}).toString());
 
-            clockformatted_1[i] = textfmt.format({hour: 1,minute: 1,second: 1}).toString();
-            clockformatted_2[i] = textfmt.format({hour: 2,minute: 2,second: 2}).toString();
+            clockformatted_1.push(textfmt.format({hour: 1,minute: 1,second: 1}).toString());
+            clockformatted_2.push(textfmt.format({hour: 2,minute: 2,second: 2}).toString());
         }
 
         test.equal(textformatted_1[0], '1 an, 1 mois, 1 semaine et 1 jour');
@@ -7194,13 +8394,20 @@ module.exports.testdurfmt2 = {
     testDurFmt_fr_GA: function(test) {
         test.expect(16);
         // 1 2
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
+
+        var textformatted_1 = [],textformatted_2 = [];
+        var clockformatted_1 = [],clockformatted_2 = [];
+
         for (var i=0; i<4; i++) {
             textfmt = new DurationFmt({locale: "fr-GA", style:"text", length:length[i]});
-            textformatted_1[i] = textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString();
-            textformatted_2[i] = textfmt.format({year: 2,month: 2,week: 2,day: 2}).toString();
+            textformatted_1.push(textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString());
+            textformatted_2.push(textfmt.format({year: 2,month: 2,week: 2,day: 2}).toString());
 
-            clockformatted_1[i] = textfmt.format({hour: 1,minute: 1,second: 1}).toString();
-            clockformatted_2[i] = textfmt.format({hour: 2,minute: 2,second: 2}).toString();
+            clockformatted_1.push(textfmt.format({hour: 1,minute: 1,second: 1}).toString());
+            clockformatted_2.push(textfmt.format({hour: 2,minute: 2,second: 2}).toString());
         }
 
         test.equal(textformatted_1[0], '1 an, 1 mois, 1 semaine et 1 jour');
@@ -7228,13 +8435,20 @@ module.exports.testdurfmt2 = {
     testDurFmt_fr_GN: function(test) {
         test.expect(16);
         // 1 16
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
+
+        var textformatted_1 = [],textformatted_16 = [];
+        var clockformatted_1 = [],clockformatted_16 = [];
+
         for (var i=0; i<4; i++) {
             textfmt = new DurationFmt({locale: "fr-GN", style:"text", length:length[i]});
-            textformatted_1[i] = textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString();
-            textformatted_16[i] = textfmt.format({year: 16,month: 16,week: 16,day: 16}).toString();
+            textformatted_1.push(textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString());
+            textformatted_16.push(textfmt.format({year: 16,month: 16,week: 16,day: 16}).toString());
 
-            clockformatted_1[i] = textfmt.format({hour: 1,minute: 1,second: 1}).toString();
-            clockformatted_16[i] = textfmt.format({hour: 16,minute: 16,second: 16}).toString();
+            clockformatted_1.push(textfmt.format({hour: 1,minute: 1,second: 1}).toString());
+            clockformatted_16.push(textfmt.format({hour: 16,minute: 16,second: 16}).toString());
         }
 
         test.equal(textformatted_1[0], '1 an, 1 mois, 1 semaine et 1 jour');
@@ -7262,13 +8476,20 @@ module.exports.testdurfmt2 = {
     testDurFmt_fr_LB: function(test) {
         test.expect(16);
         // 1 2
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
+
+        var textformatted_1 = [],textformatted_2 = [];
+        var clockformatted_1 = [],clockformatted_2 = [];
+
         for (var i=0; i<4; i++) {
             textfmt = new DurationFmt({locale: "fr-LB", style:"text", length:length[i]});
-            textformatted_1[i] = textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString();
-            textformatted_2[i] = textfmt.format({year: 2,month: 2,week: 2,day: 2}).toString();
+            textformatted_1.push(textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString());
+            textformatted_2.push(textfmt.format({year: 2,month: 2,week: 2,day: 2}).toString());
 
-            clockformatted_1[i] = textfmt.format({hour: 1,minute: 1,second: 1}).toString();
-            clockformatted_2[i] = textfmt.format({hour: 2,minute: 2,second: 2}).toString();
+            clockformatted_1.push(textfmt.format({hour: 1,minute: 1,second: 1}).toString());
+            clockformatted_2.push(textfmt.format({hour: 2,minute: 2,second: 2}).toString());
         }
 
         test.equal(textformatted_1[0], '1 an, 1 mois, 1 semaine et 1 jour');
@@ -7296,13 +8517,20 @@ module.exports.testdurfmt2 = {
     testDurFmt_fr_ML: function(test) {
         test.expect(16);
         // 1 17
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
+
+        var textformatted_1 = [],textformatted_17 = [];
+        var clockformatted_1 = [],clockformatted_17 = [];
+
         for (var i=0; i<4; i++) {
             textfmt = new DurationFmt({locale: "fr-ML", style:"text", length:length[i]});
-            textformatted_1[i] = textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString();
-            textformatted_17[i] = textfmt.format({year: 17,month: 17,week: 17,day: 17}).toString();
+            textformatted_1.push(textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString());
+            textformatted_17.push(textfmt.format({year: 17,month: 17,week: 17,day: 17}).toString());
 
-            clockformatted_1[i] = textfmt.format({hour: 1,minute: 1,second: 1}).toString();
-            clockformatted_17[i] = textfmt.format({hour: 17,minute: 17,second: 17}).toString();
+            clockformatted_1.push(textfmt.format({hour: 1,minute: 1,second: 1}).toString());
+            clockformatted_17.push(textfmt.format({hour: 17,minute: 17,second: 17}).toString());
         }
 
         test.equal(textformatted_1[0], '1 an, 1 mois, 1 semaine et 1 jour');
@@ -7330,13 +8558,20 @@ module.exports.testdurfmt2 = {
     testDurFmt_fr_RW: function(test) {
         test.expect(16);
         // 1 2
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
+
+        var textformatted_1 = [],textformatted_2 = [];
+        var clockformatted_1 = [],clockformatted_2 = [];
+
         for (var i=0; i<4; i++) {
             textfmt = new DurationFmt({locale: "fr-RW", style:"text", length:length[i]});
-            textformatted_1[i] = textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString();
-            textformatted_2[i] = textfmt.format({year: 2,month: 2,week: 2,day: 2}).toString();
+            textformatted_1.push(textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString());
+            textformatted_2.push(textfmt.format({year: 2,month: 2,week: 2,day: 2}).toString());
 
-            clockformatted_1[i] = textfmt.format({hour: 1,minute: 1,second: 1}).toString();
-            clockformatted_2[i] = textfmt.format({hour: 2,minute: 2,second: 2}).toString();
+            clockformatted_1.push(textfmt.format({hour: 1,minute: 1,second: 1}).toString());
+            clockformatted_2.push(textfmt.format({hour: 2,minute: 2,second: 2}).toString());
         }
 
         test.equal(textformatted_1[0], '1 an, 1 mois, 1 semaine et 1 jour');
@@ -7364,13 +8599,20 @@ module.exports.testdurfmt2 = {
     testDurFmt_fr_SN: function(test) {
         test.expect(16);
         // 1 16
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
+
+        var textformatted_1 = [],textformatted_16 = [];
+        var clockformatted_1 = [],clockformatted_16 = [];
+
         for (var i=0; i<4; i++) {
             textfmt = new DurationFmt({locale: "fr-SN", style:"text", length:length[i]});
-            textformatted_1[i] = textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString();
-            textformatted_16[i] = textfmt.format({year: 16,month: 16,week: 16,day: 16}).toString();
+            textformatted_1.push(textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString());
+            textformatted_16.push(textfmt.format({year: 16,month: 16,week: 16,day: 16}).toString());
 
-            clockformatted_1[i] = textfmt.format({hour: 1,minute: 1,second: 1}).toString();
-            clockformatted_16[i] = textfmt.format({hour: 16,minute: 16,second: 16}).toString();
+            clockformatted_1.push(textfmt.format({hour: 1,minute: 1,second: 1}).toString());
+            clockformatted_16.push(textfmt.format({hour: 16,minute: 16,second: 16}).toString());
         }
 
         test.equal(textformatted_1[0], '1 an, 1 mois, 1 semaine et 1 jour');
@@ -7398,13 +8640,20 @@ module.exports.testdurfmt2 = {
     testDurFmt_fr_TG: function(test) {
         test.expect(16);
         // 1 2
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
+
+        var textformatted_1 = [],textformatted_2 = [];
+        var clockformatted_1 = [],clockformatted_2 = [];
+
         for (var i=0; i<4; i++) {
             textfmt = new DurationFmt({locale: "fr-TG", style:"text", length:length[i]});
-            textformatted_1[i] = textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString();
-            textformatted_2[i] = textfmt.format({year: 2,month: 2,week: 2,day: 2}).toString();
+            textformatted_1.push(textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString());
+            textformatted_2.push(textfmt.format({year: 2,month: 2,week: 2,day: 2}).toString());
 
-            clockformatted_1[i] = textfmt.format({hour: 1,minute: 1,second: 1}).toString();
-            clockformatted_2[i] = textfmt.format({hour: 2,minute: 2,second: 2}).toString();
+            clockformatted_1.push(textfmt.format({hour: 1,minute: 1,second: 1}).toString());
+            clockformatted_2.push(textfmt.format({hour: 2,minute: 2,second: 2}).toString());
         }
 
         test.equal(textformatted_1[0], '1 an, 1 mois, 1 semaine et 1 jour');
@@ -7432,14 +8681,21 @@ module.exports.testdurfmt2 = {
     testDurFmt_ms_SG: function(test) {
         test.expect(16);
         // 1 2
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
+
+        var textformatted_1 = [],textformatted_2 = [];
+        var clockformatted_1 = [],clockformatted_2 = [];
+
         for (var i=0; i<4; i++) {
             textfmt = new DurationFmt({locale: "ms-SG", style:"text", length:length[i]});
 
-            textformatted_1[i] = textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString();
-            textformatted_2[i] = textfmt.format({year: 2,month: 2,week: 2,day: 2}).toString();
+            textformatted_1.push(textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString());
+            textformatted_2.push(textfmt.format({year: 2,month: 2,week: 2,day: 2}).toString());
 
-            clockformatted_1[i] = textfmt.format({hour: 1,minute: 1,second: 1}).toString();
-            clockformatted_2[i] = textfmt.format({hour: 2,minute: 2,second: 2}).toString();
+            clockformatted_1.push(textfmt.format({hour: 1,minute: 1,second: 1}).toString());
+            clockformatted_2.push(textfmt.format({hour: 2,minute: 2,second: 2}).toString());
         }
 
         test.equal(textformatted_1[0], '1 tahun, 1 bulan, 1 minggu, 1 hari');
@@ -7467,14 +8723,21 @@ module.exports.testdurfmt2 = {
     testDurFmt_pa_PK: function(test) {
         test.expect(16);
         // 1 18
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
+
+        var textformatted_1 = [],textformatted_18 = [];
+        var clockformatted_1 = [],clockformatted_18 = [];
+
         for (var i=0; i<4; i++) {
             textfmt = new DurationFmt({locale: "pa-PK", style:"text", length:length[i]});
 
-            textformatted_1[i] = textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString();
-            textformatted_18[i] = textfmt.format({year: 18,month: 18,week: 18,day: 18}).toString();
+            textformatted_1.push(textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString());
+            textformatted_18.push(textfmt.format({year: 18,month: 18,week: 18,day: 18}).toString());
 
-            clockformatted_1[i] = textfmt.format({hour: 1,minute: 1,second: 1}).toString();
-            clockformatted_18[i] = textfmt.format({hour: 18,minute: 18,second: 18}).toString();
+            clockformatted_1.push(textfmt.format({hour: 1,minute: 1,second: 1}).toString());
+            clockformatted_18.push(textfmt.format({hour: 18,minute: 18,second: 18}).toString());
         }
 
         test.equal(textformatted_1[0], '‏1 ਸਾਲ, 1 ਮਹੀਨਾ, 1 ਹਫ਼ਤਾ, 1 ਦਿਨ');
@@ -7502,13 +8765,20 @@ module.exports.testdurfmt2 = {
     testDurFmt_pt_AO: function(test) {
         test.expect(16);
         // 1 2
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
+
+        var textformatted_1 = [],textformatted_2 = [];
+        var clockformatted_1 = [],clockformatted_2 = [];
+
         for (var i=0; i<4; i++) {
             textfmt = new DurationFmt({locale: "pt-AO", style:"text", length:length[i]});
-            textformatted_1[i] = textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString();
-            textformatted_2[i] = textfmt.format({year: 2,month: 2,week: 2,day: 2}).toString();
+            textformatted_1.push(textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString());
+            textformatted_2.push(textfmt.format({year: 2,month: 2,week: 2,day: 2}).toString());
 
-            clockformatted_1[i] = textfmt.format({hour: 1,minute: 1,second: 1}).toString();
-            clockformatted_2[i] = textfmt.format({hour: 2,minute: 2,second: 2}).toString();
+            clockformatted_1.push(textfmt.format({hour: 1,minute: 1,second: 1}).toString());
+            clockformatted_2.push(textfmt.format({hour: 2,minute: 2,second: 2}).toString());
         }
 
         test.equal(textformatted_1[0], '1 ano, 1 mês, 1 semana e 1 dia');
@@ -7536,13 +8806,20 @@ module.exports.testdurfmt2 = {
     testDurFmt_pt_GQ: function(test) {
         test.expect(16);
         // 1 2
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
+
+        var textformatted_1 = [],textformatted_2 = [];
+        var clockformatted_1 = [],clockformatted_2 = [];
+
         for (var i=0; i<4; i++) {
             textfmt = new DurationFmt({locale: "pt-GQ", style:"text", length:length[i]});
-            textformatted_1[i] = textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString();
-            textformatted_2[i] = textfmt.format({year: 2,month: 2,week: 2,day: 2}).toString();
+            textformatted_1.push(textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString());
+            textformatted_2.push(textfmt.format({year: 2,month: 2,week: 2,day: 2}).toString());
 
-            clockformatted_1[i] = textfmt.format({hour: 1,minute: 1,second: 1}).toString();
-            clockformatted_2[i] = textfmt.format({hour: 2,minute: 2,second: 2}).toString();
+            clockformatted_1.push(textfmt.format({hour: 1,minute: 1,second: 1}).toString());
+            clockformatted_2.push(textfmt.format({hour: 2,minute: 2,second: 2}).toString());
         }
 
         test.equal(textformatted_1[0], '1 ano, 1 mês, 1 semana e 1 dia');
@@ -7570,13 +8847,20 @@ module.exports.testdurfmt2 = {
     testDurFmt_pt_CV: function(test) {
         test.expect(16);
         // 1 18
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
+
+        var textformatted_1 = [],textformatted_18 = [];
+        var clockformatted_1 = [],clockformatted_18 = [];
+
         for (var i=0; i<4; i++) {
             textfmt = new DurationFmt({locale: "pt-CV", style:"text", length:length[i]});
-            textformatted_1[i] = textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString();
-            textformatted_18[i] = textfmt.format({year: 18,month: 18,week: 18,day: 18}).toString();
+            textformatted_1.push(textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString());
+            textformatted_18.push(textfmt.format({year: 18,month: 18,week: 18,day: 18}).toString());
 
-            clockformatted_1[i] = textfmt.format({hour: 1,minute: 1,second: 1}).toString();
-            clockformatted_18[i] = textfmt.format({hour: 18,minute: 18,second: 18}).toString();
+            clockformatted_1.push(textfmt.format({hour: 1,minute: 1,second: 1}).toString());
+            clockformatted_18.push(textfmt.format({hour: 18,minute: 18,second: 18}).toString());
         }
 
         test.equal(textformatted_1[0], '1 ano, 1 mês, 1 semana e 1 dia');
@@ -7604,14 +8888,21 @@ module.exports.testdurfmt2 = {
     testDurFmt_ur_PK: function(test) {
         test.expect(16);
         // 1 17
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
+
+        var textformatted_1 = [],textformatted_17 = [];
+        var clockformatted_1 = [],clockformatted_17 = [];
+
         for (var i=0; i<4; i++) {
             textfmt = new DurationFmt({locale: "ur-PK", style:"text", length:length[i]});
 
-            textformatted_1[i] = textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString();
-            textformatted_17[i] = textfmt.format({year: 17,month: 17,week: 17,day: 17}).toString();
+            textformatted_1.push(textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString());
+            textformatted_17.push(textfmt.format({year: 17,month: 17,week: 17,day: 17}).toString());
 
-            clockformatted_1[i] = textfmt.format({hour: 1,minute: 1,second: 1}).toString();
-            clockformatted_17[i] = textfmt.format({hour: 17,minute: 17,second: 17}).toString();
+            clockformatted_1.push(textfmt.format({hour: 1,minute: 1,second: 1}).toString());
+            clockformatted_17.push(textfmt.format({hour: 17,minute: 17,second: 17}).toString());
         }
 
         test.equal(textformatted_1[0], '‏1 سال, 1 مہینہ, 1 ہفتہ، اور 1 دن');
@@ -7638,11 +8929,17 @@ module.exports.testdurfmt2 = {
     testDurFmt_zh_Hans_SG: function(test) {
         test.expect(8);;
         // 16
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
+
+        var textformatted_16 = [];
+        var clockformatted_16 = [];
         for (var i=0; i<4; i++) {
             textfmt = new DurationFmt({locale: "zh-Hans-SG", style:"text", length:length[i]});
 
-            textformatted_16[i] = textfmt.format({year: 16,month: 16,week: 16,day: 16}).toString();
-            clockformatted_16[i] = textfmt.format({hour: 16,minute: 16,second: 16}).toString();
+            textformatted_16.push(textfmt.format({year: 16,month: 16,week: 16,day: 16}).toString());
+            clockformatted_16.push(textfmt.format({hour: 16,minute: 16,second: 16}).toString());
         }
 
         test.equal(textformatted_16[0], '16年16个月16周16天');
@@ -7660,11 +8957,18 @@ module.exports.testdurfmt2 = {
     testDurFmt_zh_Hans_MY: function(test) {
         test.expect(8);;
         // 15
+        var textfmt;
+        var data = setVariable();
+        var length = data["fullLength"];
+
+        var textformatted_15 = [];
+        var clockformatted_15 = [];
+
         for (var i=0; i<4; i++) {
             textfmt = new DurationFmt({locale: "zh-Hans-MY", style:"text", length:length[i]});
 
-            textformatted_15[i] = textfmt.format({year: 15,month: 15,week: 15,day: 15}).toString();
-            clockformatted_15[i] = textfmt.format({hour: 15,minute: 15,second: 15}).toString();
+            textformatted_15.push(textfmt.format({year: 15,month: 15,week: 15,day: 15}).toString());
+            clockformatted_15.push(textfmt.format({hour: 15,minute: 15,second: 15}).toString());
         }
 
         test.equal(textformatted_15[0], '15年15个月15周15天');
