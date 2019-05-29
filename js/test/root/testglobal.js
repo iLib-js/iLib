@@ -114,6 +114,8 @@ module.exports.testglobal = {
         var expected = ro && ro.timeZone;
         if (expected) {
             test.expect(1);
+            ilib._platform = undefined;
+            ilib.tz = undefined;
             test.equal(ilib.getTimeZone(), expected);
         }
         test.done();
