@@ -38,15 +38,15 @@ limitations under the License.
 	<!-- =================================================================== -->
 	<!-- Implement the standard targets                                      -->
 	<!-- =================================================================== -->
-	<macrodef name="iterate">
+    <macrodef name="iterate">
         <attribute name="target"/>
         <sequential>
-            <subant target="@{target}"  >
+            <subant target="@{target}">
                 <property name="dist" value="${build.dist}"/>
                 <fileset dir="." includes="*/build.xml"/>
             </subant>
         </sequential>
-	</macrodef>
+    </macrodef>
 
 	<target name="export" description="Export everything that other subprojects will need to build.">
 		<iterate target="export"/>
@@ -118,7 +118,16 @@ limitations under the License.
 	<target name="test" depends="export" description="Run all tests and build all reports">
 		<iterate target="test"/>
 	</target>
-	
+
+    <target name="test.travis" depends="export" description="Run all tests and build all reports">
+        <sequential>
+            <subant target="test">
+                <property name="dist" value="${build.dist}"/>
+                <fileset dir="." includes="java/build.xml,js/build.xml"/>
+            </subant>
+        </sequential>
+    </target>
+
 	<target name="doc" description="Extract all the inline documentation.">
 		<iterate target="doc"/>
 	</target>
