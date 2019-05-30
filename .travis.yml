@@ -29,7 +29,7 @@ script:
   #- sudo ln -s /usr/share/fonts /usr/lib/x86_64-linux-gnu/fonts
 
   # iLib full build / Run nodeunit tests
-  - ant clean test
+  - ant clean test.travis
   #- which qmake
   #- which qmlscene
   #- cd qt/NodeunitTest
