@@ -119,13 +119,10 @@ limitations under the License.
 		<iterate target="test"/>
 	</target>
 
-    <target name="test.travis" depends="export" description="Run all tests and build all reports">
-        <sequential>
-            <subant target="test">
-                <property name="dist" value="${build.dist}"/>
-                <fileset dir="." includes="java/build.xml,js/build.xml"/>
-            </subant>
-        </sequential>
+    <target name="test.travis" description="Run all tests and build all reports">
+        <subant target="export" buildpath="java"/>
+        <subant target="export" buildpath="js"/>
+        <iterate target="test"/>
     </target>
 
 	<target name="doc" description="Extract all the inline documentation.">
