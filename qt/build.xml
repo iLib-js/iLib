@@ -57,10 +57,10 @@ limitations under the License.
 
 	<target name="clean" description="Remove all generated files to start from scratch">
 		<sequential>
-			<exec osfamily="unix" executable="make" dir="${build.filereader}" failifexecutionfails="true" failonerror="false">
+			<exec osfamily="unix" executable="make" dir="${build.filereader}" failifexecutionfails="false" failonerror="false">
 				<arg line="clean"/>
 			</exec>
-			<exec osfamily="windows" executable="make.exe" dir="${build.filereader}" failifexecutionfails="true"  failonerror="false">
+			<exec osfamily="windows" executable="make.exe" dir="${build.filereader}" failifexecutionfails="false"  failonerror="false">
 				<arg line="clean"/>
 			</exec>
 		</sequential>
