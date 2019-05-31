@@ -19,6 +19,7 @@
 
 module.exports.files = [
     "testdurfmt.js",
+    "testdurfmt2.js",
     "testdurfmtasync.js",
     "testdurfmt_am_ET.js",
     "testdurfmt_ar_SA.js",

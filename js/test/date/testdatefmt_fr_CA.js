@@ -919,7 +919,7 @@ module.exports.testdatefmt_fr_CA = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "45:37");
+        test.equal(fmt.format(date), "45 min 37 s");
         test.done();
     },
 
@@ -957,7 +957,7 @@ module.exports.testdatefmt_fr_CA = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "13:45:37");
+        test.equal(fmt.format(date), "13 h 45 min 37 s");
         test.done();
     },
 
@@ -1045,7 +1045,7 @@ module.exports.testdatefmt_fr_CA = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "13:45:37");
+        test.equal(fmt.format(date), "13 h 45 min 37 s");
         test.done();
     },
 
@@ -1070,7 +1070,7 @@ module.exports.testdatefmt_fr_CA = {
             millisecond: 0,
             timezone: "America/Montreal"
         });
-        test.equal(fmt.format(date), "13:45:37 EDT");
+        test.equal(fmt.format(date), "13 h 45 min 37 s EDT");
         test.done();
     },
 
@@ -1095,7 +1095,7 @@ module.exports.testdatefmt_fr_CA = {
             millisecond: 0,
             timezone: "America/Montreal"
         });
-        test.equal(fmt.format(date), "13:45:37 EDT");
+        test.equal(fmt.format(date), "13 h 45 min 37 s EDT");
         test.done();
     },
 
@@ -1172,7 +1172,7 @@ module.exports.testdatefmt_fr_CA = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "45:37");
+        test.equal(fmt.format(date), "45 min 37 s");
         test.done();
     },
 
@@ -1210,7 +1210,7 @@ module.exports.testdatefmt_fr_CA = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "13:45:37");
+        test.equal(fmt.format(date), "13 h 45 min 37 s");
         test.done();
     },
 
@@ -1300,7 +1300,7 @@ module.exports.testdatefmt_fr_CA = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "13:45:37");
+        test.equal(fmt.format(date), "13 h 45 min 37 s");
         test.done();
     },
 
@@ -1326,7 +1326,7 @@ module.exports.testdatefmt_fr_CA = {
             millisecond: 0,
             timezone: "America/Montreal"
         });
-        test.equal(fmt.format(date), "13:45:37 EDT");
+        test.equal(fmt.format(date), "13 h 45 min 37 s EDT");
         test.done();
     },
 
@@ -1352,7 +1352,7 @@ module.exports.testdatefmt_fr_CA = {
             millisecond: 0,
             timezone: "America/Montreal"
         });
-        test.equal(fmt.format(date), "13:45:37 EDT");
+        test.equal(fmt.format(date), "13 h 45 min 37 s EDT");
         test.done();
     },
 
@@ -1378,7 +1378,7 @@ module.exports.testdatefmt_fr_CA = {
             millisecond: 0,
             timezone: "America/Montreal"
         });
-        test.equal(fmt.format(date), "13:45:37 EST");
+        test.equal(fmt.format(date), "13 h 45 min 37 s EST");
         test.done();
     },
 

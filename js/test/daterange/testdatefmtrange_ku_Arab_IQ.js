@@ -58,7 +58,7 @@ module.exports.testdatefmtrange_ku_Arab_IQ = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "‏31‏/12‏/2011 13:45 – 14:30");
+        test.equal(fmt.format(start, end), '‏٢٠١١-١٢-٣١ ‏١:٤٥ د.ن – ‏٢:٣٠ د.ن');
         test.done();
     },
     testDateRngFmtKuRangeInDayMedium: function(test) {
@@ -84,7 +84,7 @@ module.exports.testdatefmtrange_ku_Arab_IQ = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "‏31‏/12‏/2011 13:45 – 14:30");
+        test.equal(fmt.format(start, end), '‏٢٠١١ کانونی یەکەم ٣١ ‏١:٤٥ د.ن – ‏٢:٣٠ د.ن');
         test.done();
     },
     testDateRngFmtKuRangeInDayLong: function(test) {
@@ -110,7 +110,7 @@ module.exports.testdatefmtrange_ku_Arab_IQ = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "‏2011/کانونی یەکەم/31 13:45 – 14:30");
+        test.equal(fmt.format(start, end), '‏٣١ی کانونی یەکەمی ٢٠١١ ‏١:٤٥ د.ن – ‏٢:٣٠ د.ن');
         test.done();
     },
     testDateRngFmtKuRangeInDayFull: function(test) {
@@ -136,7 +136,7 @@ module.exports.testdatefmtrange_ku_Arab_IQ = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "‏2011/کانونی یەکەم/31 13:45 – 14:30");
+        test.equal(fmt.format(start, end), '‏٢٠١١ کانونی یەکەم ٣١ ‏١:٤٥ د.ن – ‏٢:٣٠ د.ن');
         test.done();
     },
     
@@ -163,7 +163,7 @@ module.exports.testdatefmtrange_ku_Arab_IQ = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "‏30‏/12‏/2011 13:45 – 31‏/12‏/2011 14:30");
+        test.equal(fmt.format(start, end), '‏٢٠١١-١٢-٣٠ ‏١:٤٥ د.ن – ‏٢٠١١-١٢-٣١ ‏٢:٣٠ د.ن');
         test.done();
     },
     testDateRngFmtKuRangeNextDayMedium: function(test) {
@@ -189,7 +189,7 @@ module.exports.testdatefmtrange_ku_Arab_IQ = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "‏30‏/12‏/2011 13:45 – 31‏/12‏/2011 14:30");
+        test.equal(fmt.format(start, end), '‏٢٠١١ کانونی یەکەم ٣٠ ‏١:٤٥ د.ن – ‏٢٠١١ کانونی یەکەم ٣١ ‏٢:٣٠ د.ن');
         test.done();
     },
     testDateRngFmtKuRangeNextDayLong: function(test) {
@@ -215,7 +215,7 @@ module.exports.testdatefmtrange_ku_Arab_IQ = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "‏2011/کانونی یەکەم/30 13:45 – 2011/کانونی یەکەم/31 14:30");
+        test.equal(fmt.format(start, end), '‏٣٠ی کانونی یەکەمی ٢٠١١ ‏١:٤٥ د.ن – ‏٣١ی کانونی یەکەمی ٢٠١١ ‏٢:٣٠ د.ن');
         test.done();
     },
     testDateRngFmtKuRangeNextDayFull: function(test) {
@@ -241,7 +241,7 @@ module.exports.testdatefmtrange_ku_Arab_IQ = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "‏2011/کانونی یەکەم/30 13:45 – 2011/کانونی یەکەم/31 14:30");
+        test.equal(fmt.format(start, end), '‏٢٠١١ کانونی یەکەم ٣٠ ‏١:٤٥ د.ن – ‏٢٠١١ کانونی یەکەم ٣١ ‏٢:٣٠ د.ن');
         test.done();
     },
     
@@ -268,7 +268,7 @@ module.exports.testdatefmtrange_ku_Arab_IQ = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "‏20 – 31‏/12‏/2011");
+        test.equal(fmt.format(start, end), '‏٢٠١١-١٢-٢٠ – ٣١');
         test.done();
     },
     testDateRngFmtKuRangeMultiDayMedium: function(test) {
@@ -294,7 +294,7 @@ module.exports.testdatefmtrange_ku_Arab_IQ = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "‏20 – 31‏/12‏/2011");
+        test.equal(fmt.format(start, end), '‏٢٠١١ کانونی یەکەم ٢٠ – ٣١');
         test.done();
     },
     testDateRngFmtKuRangeMultiDayLong: function(test) {
@@ -320,7 +320,7 @@ module.exports.testdatefmtrange_ku_Arab_IQ = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "‏2011/کانونی یەکەم/20 – 31");
+        test.equal(fmt.format(start, end), '‏٢٠ – ‏٣١ی کانونی یەکەمی ٢٠١١');
         test.done();
     },
     testDateRngFmtKuRangeMultiDayFull: function(test) {
@@ -346,7 +346,7 @@ module.exports.testdatefmtrange_ku_Arab_IQ = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "‏2011/کانونی یەکەم/20 – 31");
+        test.equal(fmt.format(start, end), '‏٢٠١١ کانونی یەکەم ٢٠ – ٣١');
         test.done();
     },
     
@@ -373,7 +373,7 @@ module.exports.testdatefmtrange_ku_Arab_IQ = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "‏20‏/11 – 31‏/12‏/2011");
+        test.equal(fmt.format(start, end), '‏٢٠١١-١١-٢٠ – ‏٢٠١١-١٢-٣١');
         test.done();
     },
     testDateRngFmtKuRangeNextMonthMedium: function(test) {
@@ -399,7 +399,7 @@ module.exports.testdatefmtrange_ku_Arab_IQ = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "‏20‏/11 – 31‏/12‏/2011");
+        test.equal(fmt.format(start, end), '‏٢٠١١ تشرینی دووەم ٢٠ – ‏٢٠١١ کانونی یەکەم ٣١');
         test.done();
     },
     testDateRngFmtKuRangeNextMonthLong: function(test) {
@@ -425,7 +425,7 @@ module.exports.testdatefmtrange_ku_Arab_IQ = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "‏2011/تشرینی دووەم/20 – کانونی یەکەم/31");
+        test.equal(fmt.format(start, end), '‏٢٠ی تشرینی دووەم – ‏٣١ی کانونی یەکەمی ٢٠١١');
         test.done();
     },
     testDateRngFmtKuRangeNextMonthFull: function(test) {
@@ -451,7 +451,7 @@ module.exports.testdatefmtrange_ku_Arab_IQ = {
             second: 0,
             millisecond: 0
         }); 
-        test.equal(fmt.format(start, end), "‏2011/تشرینی دووەم/20 – کانونی یەکەم/31");
+        test.equal(fmt.format(start, end), '‏٢٠١١ تشرینی دووەم ٢٠ – ‏کانونی یەکەم ٣١');
         test.done();
     },
     
@@ -478,7 +478,7 @@ module.exports.testdatefmtrange_ku_Arab_IQ = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "‏20‏/11‏/2011 – 31‏/1‏/2012");
+        test.equal(fmt.format(start, end), '‏٢٠١١-١١-٢٠ – ‏٢٠١٢-٠١-٣١');
         test.done();
     },
     testDateRngFmtKuRangeNextYearMedium: function(test) {
@@ -504,7 +504,7 @@ module.exports.testdatefmtrange_ku_Arab_IQ = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "‏20‏/11‏/2011 – 31‏/01‏/2012");
+        test.equal(fmt.format(start, end), '‏٢٠١١ تشرینی دووەم ٢٠ – ‏٢٠١٢ کانوونی دووەم ٣١');
         test.done();
     },
     testDateRngFmtKuRangeNextYearLong: function(test) {
@@ -530,7 +530,7 @@ module.exports.testdatefmtrange_ku_Arab_IQ = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "‏2011/تشرینی دووەم/20 – 2012/کانونی دووەم/31");
+        test.equal(fmt.format(start, end), '‏٢٠ی تشرینی دووەمی ٢٠١١ – ‏٣١ی کانوونی دووەمی ٢٠١٢');
         test.done();
     },
     testDateRngFmtKuRangeNextYearFull: function(test) {
@@ -556,7 +556,7 @@ module.exports.testdatefmtrange_ku_Arab_IQ = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "‏2011/تشرینی دووەم/20 – 2012/کانونی دووەم/31");
+        test.equal(fmt.format(start, end),  '‏٢٠١١ تشرینی دووەم ٢٠ – ‏٢٠١٢ کانوونی دووەم ٣١');
         test.done();
     },
     
@@ -583,7 +583,7 @@ module.exports.testdatefmtrange_ku_Arab_IQ = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "‏11‏/2011 – 1‏/2014");
+        test.equal(fmt.format(start, end), '‏٢٠١١-١١ – ‏٢٠١٤-٠١');
         test.done();
     },
     testDateRngFmtKuRangeMultiYearMedium: function(test) {
@@ -609,7 +609,7 @@ module.exports.testdatefmtrange_ku_Arab_IQ = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "‏11‏/2011 – 01‏/2014");
+        test.equal(fmt.format(start, end), '‏٢٠١١ تشرینی دووەم – ‏٢٠١٤ کانوونی دووەم');
         test.done();
     },
     testDateRngFmtKuRangeMultiYearLong: function(test) {
@@ -635,7 +635,7 @@ module.exports.testdatefmtrange_ku_Arab_IQ = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "‏2011/تشرینی دووەم – 2014/کانونی دووەم");
+        test.equal(fmt.format(start, end), 'تشرینی دووەمی ٢٠١١ – کانوونی دووەمی ٢٠١٤');
         test.done();
     },
     testDateRngFmtKuRangeMultiYearFull: function(test) {
@@ -661,7 +661,7 @@ module.exports.testdatefmtrange_ku_Arab_IQ = {
             second: 0,
             millisecond: 0
         }); 
-        test.equal(fmt.format(start, end), "‏2011/تشرینی دووەم – 2014/کانونی دووەم");
+        test.equal(fmt.format(start, end), '‏٢٠١١ تشرینی دووەم – ‏٢٠١٤ کانوونی دووەم');
         test.done();
     },
     testDateRngFmtKuManyYearsFull: function(test) {
@@ -687,7 +687,7 @@ module.exports.testdatefmtrange_ku_Arab_IQ = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "‏2011 – 2064");
+        test.equal(fmt.format(start, end), '‏٢٠١١ – ٢٠٦٤');
         test.done();
     }
     

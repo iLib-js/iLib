@@ -937,8 +937,16 @@
             "code": "SAB"
         },
         {
+            "name": "Șabran",
+            "code": "SBN"
+        },
+        {
             "name": "Sadarak",
             "code": "SAD"
+        },
+        {
+            "name": "Șaki",
+            "code": "SA"
         },
         {
             "name": "Salyan",
@@ -977,24 +985,16 @@
             "code": "SIY"
         },
         {
+            "name": "Șirvan",
+            "code": "SR"
+        },
+        {
             "name": "Stepanakert",
             "code": "XA"
         },
         {
             "name": "Sumqayıt",
             "code": "SM"
-        },
-        {
-            "name": "Șabran",
-            "code": "SBN"
-        },
-        {
-            "name": "Șaki",
-            "code": "SA"
-        },
-        {
-            "name": "Șirvan",
-            "code": "SR"
         },
         {
             "name": "Tartar",
@@ -5619,6 +5619,10 @@
             "code": "34"
         },
         {
+            "name": "Île-de-France",
+            "code": "IDF"
+        },
+        {
             "name": "Ille-et-Vilaine",
             "code": "35"
         },
@@ -5633,10 +5637,6 @@
         {
             "name": "Isère",
             "code": "38"
-        },
-        {
-            "name": "Île-de-France",
-            "code": "IDF"
         },
         {
             "name": "Jura",
@@ -6695,12 +6695,12 @@
             "code": "SAW"
         },
         {
-            "name": "Scottish Borders",
-            "code": "SCB"
-        },
-        {
             "name": "Scoția",
             "code": "SCT"
+        },
+        {
+            "name": "Scottish Borders",
+            "code": "SCB"
         },
         {
             "name": "Sefton",
@@ -6811,6 +6811,10 @@
             "code": "TAM"
         },
         {
+            "name": "Țara Galilor",
+            "code": "WLS"
+        },
+        {
             "name": "Telford and Wrekin",
             "code": "TFW"
         },
@@ -6833,10 +6837,6 @@
         {
             "name": "Trafford",
             "code": "TRF"
-        },
-        {
-            "name": "Țara Galilor",
-            "code": "WLS"
         },
         {
             "name": "Vale of Glamorgan",
@@ -12039,12 +12039,12 @@
             "code": "CA"
         },
         {
-            "name": "raionul Cantemir",
-            "code": "CT"
-        },
-        {
             "name": "raionul Călărași",
             "code": "CL"
+        },
+        {
+            "name": "raionul Cantemir",
+            "code": "CT"
         },
         {
             "name": "raionul Căușeni",
@@ -12123,20 +12123,20 @@
             "code": "SI"
         },
         {
-            "name": "raionul Soroca",
-            "code": "SO"
-        },
-        {
-            "name": "raionul Strășeni",
-            "code": "ST"
-        },
-        {
             "name": "raionul Șoldănești",
             "code": "SD"
         },
         {
+            "name": "raionul Soroca",
+            "code": "SO"
+        },
+        {
             "name": "raionul Ștefan Vodă",
             "code": "SV"
+        },
+        {
+            "name": "raionul Strășeni",
+            "code": "ST"
         },
         {
             "name": "raionul Taraclia",
@@ -15653,12 +15653,12 @@
             "code": "BT"
         },
         {
-            "name": "Brașov",
-            "code": "BV"
-        },
-        {
             "name": "Brăila",
             "code": "BR"
+        },
+        {
+            "name": "Brașov",
+            "code": "BV"
         },
         {
             "name": "București",
@@ -15669,12 +15669,12 @@
             "code": "BZ"
         },
         {
-            "name": "Caraș-Severin",
-            "code": "CS"
-        },
-        {
             "name": "Călărași",
             "code": "CL"
+        },
+        {
+            "name": "Caraș-Severin",
+            "code": "CS"
         },
         {
             "name": "Cluj",
@@ -15753,12 +15753,12 @@
             "code": "PH"
         },
         {
-            "name": "Satu Mare",
-            "code": "SM"
-        },
-        {
             "name": "Sălaj",
             "code": "SJ"
+        },
+        {
+            "name": "Satu Mare",
+            "code": "SM"
         },
         {
             "name": "Sibiu",
@@ -15781,12 +15781,12 @@
             "code": "TL"
         },
         {
-            "name": "Vaslui",
-            "code": "VS"
-        },
-        {
             "name": "Vâlcea",
             "code": "VL"
+        },
+        {
+            "name": "Vaslui",
+            "code": "VS"
         },
         {
             "name": "Vrancea",
@@ -16221,10 +16221,6 @@
             "code": "TA"
         },
         {
-            "name": "Tuva",
-            "code": "TY"
-        },
-        {
             "name": "Ținutul Altai",
             "code": "ALT"
         },
@@ -16251,6 +16247,10 @@
         {
             "name": "Ținutul Stavropol",
             "code": "STA"
+        },
+        {
+            "name": "Tuva",
+            "code": "TY"
         },
         {
             "name": "Udmurtia",
@@ -20417,16 +20417,16 @@
             "code": "43"
         },
         {
-            "name": "Bạc Liêu",
-            "code": "55"
-        },
-        {
             "name": "Bắc Giang",
             "code": "54"
         },
         {
             "name": "Bắc Kạn",
             "code": "53"
+        },
+        {
+            "name": "Bạc Liêu",
+            "code": "55"
         },
         {
             "name": "Bắc Ninh",
@@ -20549,16 +20549,16 @@
             "code": "01"
         },
         {
+            "name": "Lâm Đồng",
+            "code": "35"
+        },
+        {
             "name": "Lạng Sơn",
             "code": "09"
         },
         {
             "name": "Lào Cai",
             "code": "02"
-        },
-        {
-            "name": "Lâm Đồng",
-            "code": "35"
         },
         {
             "name": "Long An",

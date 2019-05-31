@@ -2080,7 +2080,7 @@ module.exports.testdatefmt_fa_IR = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "‏۱۳۹۲‏/۹‏/۲۱");
+        test.equal(fmt.format(date), '‏۱۳۹۲/۹/۲۱');
         test.done();
     },
     
@@ -2269,7 +2269,7 @@ module.exports.testdatefmt_fa_IR = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "‏۱۳۹۲‏/۹‏/۲۱،‏ ‏۱۳:۴۵");
+        test.equal(fmt.format(date), '‏۱۳۹۲/۹/۲۱،‏ ‏۱۳:۴۵');
         test.done();
     },
     

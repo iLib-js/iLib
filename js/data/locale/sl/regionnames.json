@@ -2823,12 +2823,12 @@
             "code": "NE"
         },
         {
-            "name": "Kanton Zürich",
-            "code": "ZH"
-        },
-        {
             "name": "Kanton Ženeva",
             "code": "GE"
+        },
+        {
+            "name": "Kanton Zürich",
+            "code": "ZH"
         },
         {
             "name": "Nidwalden",
@@ -3639,18 +3639,6 @@
             "code": "801"
         },
         {
-            "name": "Cheb",
-            "code": "411"
-        },
-        {
-            "name": "Chomutov",
-            "code": "422"
-        },
-        {
-            "name": "Chrudim",
-            "code": "531"
-        },
-        {
             "name": "Česká Lípa",
             "code": "511"
         },
@@ -3661,6 +3649,18 @@
         {
             "name": "Český Krumlov",
             "code": "312"
+        },
+        {
+            "name": "Cheb",
+            "code": "411"
+        },
+        {
+            "name": "Chomutov",
+            "code": "422"
+        },
+        {
+            "name": "Chrudim",
+            "code": "531"
         },
         {
             "name": "Děčín",
@@ -3987,12 +3987,12 @@
             "code": "20"
         },
         {
-            "name": "Svitavy",
-            "code": "533"
-        },
-        {
             "name": "Šumperk",
             "code": "715"
+        },
+        {
+            "name": "Svitavy",
+            "code": "533"
         },
         {
             "name": "Tábor",
@@ -4035,12 +4035,16 @@
             "code": "723"
         },
         {
+            "name": "Vyškov",
+            "code": "646"
+        },
+        {
             "name": "Vysočina",
             "code": "63"
         },
         {
-            "name": "Vyškov",
-            "code": "646"
+            "name": "Žďár nad Sázavou",
+            "code": "635"
         },
         {
             "name": "Zlín",
@@ -4053,10 +4057,6 @@
         {
             "name": "Znojmo",
             "code": "647"
-        },
-        {
-            "name": "Žďár nad Sázavou",
-            "code": "635"
         }
     ],
     "DE": [
@@ -6707,6 +6707,10 @@
             "code": "SHR"
         },
         {
+            "name": "Škotska",
+            "code": "SCT"
+        },
+        {
             "name": "Slough, Berkshire, Anglija",
             "code": "SLG"
         },
@@ -6789,10 +6793,6 @@
         {
             "name": "Swindon",
             "code": "SWD"
-        },
-        {
-            "name": "Škotska",
-            "code": "SCT"
         },
         {
             "name": "Tameside",
@@ -7323,6 +7323,10 @@
             "code": "03"
         },
         {
+            "name": "Čamerija",
+            "code": "D"
+        },
+        {
             "name": "Central Greece",
             "code": "H"
         },
@@ -7357,10 +7361,6 @@
         {
             "name": "Cyclades",
             "code": "82"
-        },
-        {
-            "name": "Čamerija",
-            "code": "D"
         },
         {
             "name": "Dodecanese",
@@ -8049,6 +8049,14 @@
             "code": "SH"
         },
         {
+            "name": "Šomodska županija",
+            "code": "SO"
+        },
+        {
+            "name": "Šopron",
+            "code": "SN"
+        },
+        {
             "name": "Szeged",
             "code": "SD"
         },
@@ -8063,14 +8071,6 @@
         {
             "name": "Szolnok",
             "code": "SK"
-        },
-        {
-            "name": "Šomodska županija",
-            "code": "SO"
-        },
-        {
-            "name": "Šopron",
-            "code": "SN"
         },
         {
             "name": "Tatabánya",
@@ -9843,12 +9843,12 @@
             "code": "N"
         },
         {
-            "name": "Osh Region",
-            "code": "O"
-        },
-        {
             "name": "Oš",
             "code": "GO"
+        },
+        {
+            "name": "Osh Region",
+            "code": "O"
         },
         {
             "name": "Talas",
@@ -10887,10 +10887,6 @@
             "name": "Rokiškis"
         },
         {
-            "code": "48",
-            "name": "Skuodas"
-        },
-        {
             "code": "41",
             "name": "Šakiai"
         },
@@ -10921,6 +10917,10 @@
         {
             "code": "47",
             "name": "Širvintos"
+        },
+        {
+            "code": "48",
+            "name": "Skuodas"
         },
         {
             "code": "49",
@@ -20437,12 +20437,12 @@
             "code": "50"
         },
         {
-            "name": "Bình Dương",
-            "code": "57"
-        },
-        {
             "name": "Bình Định",
             "code": "31"
+        },
+        {
+            "name": "Bình Dương",
+            "code": "57"
         },
         {
             "name": "Bình Phước",
@@ -20821,16 +20821,16 @@
             "code": "SD"
         },
         {
+            "name": "Šabva",
+            "code": "SH"
+        },
+        {
             "name": "Sana",
             "code": "SA"
         },
         {
             "name": "Sana’a",
             "code": "SN"
-        },
-        {
-            "name": "Šabva",
-            "code": "SH"
         },
         {
             "name": "Taiz",

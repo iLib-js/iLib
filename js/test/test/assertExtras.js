@@ -1,5 +1,5 @@
 /*
- * ../test/assertExtras.js - extra assertion types to use with nodeunit
+ * assertExtras.js - extra assertion types to use with nodeunit
  *
  * Copyright © 2018, JEDLSoft
  *
@@ -29,6 +29,57 @@ function fail(actual, expected, message, operator, stackStartFunction) {
         operator: operator,
         stackStartFunction: stackStartFunction
     });
+}
+
+function isUndefinedOrNull (value) {
+    return value === null || value === undefined;
+}
+
+function isArguments (object) {
+    return Object.prototype.toString.call(object) == '[object Arguments]';
+}
+
+function objEquiv (a, b) {
+    if (isUndefinedOrNull(a) || isUndefinedOrNull(b))
+        return false;
+    // an identical "prototype" property.
+    if (a.prototype !== b.prototype) return false;
+    //~~~I've managed to break Object.keys through screwy arguments passing.
+    //   Converting to array solves the problem.
+    if (isArguments(a)) {
+        if (!isArguments(b)) {
+            return false;
+        }
+        a = pSlice.call(a);
+        b = pSlice.call(b);
+        return _deepEqual(a, b);
+    }
+    try{
+        var ka = _keys(a),
+        kb = _keys(b),
+        key, i;
+    } catch (e) {//happens when one is a string literal and the other isn't
+        return false;
+    }
+    // having the same number of owned properties (keys incorporates hasOwnProperty)
+    if (ka.length != kb.length)
+        return false;
+    //the same set of keys (although not necessarily the same order),
+    ka.sort();
+    kb.sort();
+    //~~~cheap key test
+    for (i = ka.length - 1; i >= 0; i--) {
+        if (ka[i] != kb[i])
+            return false;
+    }
+    //equivalent values for every corresponding key, and
+    //~~~possibly expensive deep test
+    for (i = ka.length - 1; i >= 0; i--) {
+        key = ka[i];
+        if (!_deepEqual(a[key], b[key] ))
+            return false;
+    }
+    return true;
 }
 
 function _deepEqual(actual, expected) {

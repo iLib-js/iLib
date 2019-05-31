@@ -2,8 +2,8 @@
     "generated": true,
     "native_numfmt": {
         "script": "arabext",
-        "decimalChar": ".",
-        "groupChar": ",",
+        "decimalChar": "٫",
+        "groupChar": "٬",
         "pctChar": "%",
         "exponential": "×۱۰^",
         "prigroupSize": 3,

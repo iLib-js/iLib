@@ -1,6 +1,31 @@
 Release Notes for Version 14
 ============================
 
+Build 005
+-------
+Published as version 14.2.0
+
+New Features:
+* Updated all locale data (except region names) to CLDR 34 and Unicode Character Database 12.0
+    * Region names were not updated because CLDR changed the codes assigned to each region, which
+    would break anything that was depending on these names to be stable. We'll have to figure
+    out some work-around for this later.
+
+Bug Fixes:
+* Updated the Taiwan area code of PhoneNumber according to [Wikipedia](https://en.wikipedia.org/wiki/Telephone_numbers_in_Taiwan).
+* Changed 3 digit iddprefix PhoneNumber format of zh-Hant-TW as corresponding local office feedback.
+* Rollback `js/ilib-web.js` file to support pure Web Application.
+* Added a new platform return type as 'webos-webapp'. If platform type is `webos-webapp`, The iLib won't load any loader as default.
+* Added a new platform return type as 'webos-webapp'. If platform type is `webos-webapp`, The iLib won't load any loader as default.
+* Implemented to include automatically Json data which doesn't exist in CLDR in cldrtool script.
+* Improved the speed of JSUtils.shallowCopy() by using Object.assign if it is available
+* Improved the speed of ilib on QT by re-introducing the concept of caching the already-merged locale data. This
+  trades memory footprint for speed, since merging the locale data is slow on QT and the already merged data is just a duplicate of the
+  locale data already loaded and cached from locale data files. Other platforms may use this form of caching as
+  well if desired by setting ilib._cacheMerged to true, though it only makes a minimal difference in terms of speed.
+* Update some testfiles in order to test properly on QT/QML.
+
+
 Build 004
 -------
 Published as version 14.1.2

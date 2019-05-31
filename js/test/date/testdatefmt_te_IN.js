@@ -267,7 +267,7 @@ module.exports.testdatefmt_te_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "29 సెప్టెంబర్, 2011 1:45 PM");
+        test.equal(fmt.format(date), '29 సెప్టెంబర్, 2011 1:45 PMకి');
         test.done();
     },
 
@@ -286,7 +286,7 @@ module.exports.testdatefmt_te_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "29, సెప్టెంబర్ 2011 1:45 PM");
+        test.equal(fmt.format(date), '29, సెప్టెంబర్ 2011 1:45 PMకి');
         test.done();
     },
 

@@ -261,12 +261,12 @@
             "code": "DV"
         },
         {
-            "name": "Dıraç ili",
-            "code": "02"
-        },
-        {
             "name": "Dibër",
             "code": "DI"
+        },
+        {
+            "name": "Dıraç ili",
+            "code": "02"
         },
         {
             "name": "Durrës",
@@ -455,12 +455,12 @@
             "code": "LO"
         },
         {
-            "name": "Syunik ili",
-            "code": "SU"
-        },
-        {
             "name": "Şirak İdari Bölgesi",
             "code": "SH"
+        },
+        {
+            "name": "Syunik ili",
+            "code": "SU"
         },
         {
             "name": "Tavuş",
@@ -873,12 +873,12 @@
             "code": "QBI"
         },
         {
-            "name": "Kusar Rayonu",
-            "code": "QUS"
-        },
-        {
             "name": "Kürdemir Rayonu",
             "code": "KUR"
+        },
+        {
+            "name": "Kusar Rayonu",
+            "code": "QUS"
         },
         {
             "name": "Laçın Rayonu",
@@ -937,26 +937,6 @@
             "code": "SAB"
         },
         {
-            "name": "Salyan Rayonu",
-            "code": "SAL"
-        },
-        {
-            "name": "Samuh Rayonu",
-            "code": "SMX"
-        },
-        {
-            "name": "Sederek Rayonu",
-            "code": "SAD"
-        },
-        {
-            "name": "Siyezen Rayonu",
-            "code": "SIY"
-        },
-        {
-            "name": "Sumgayıt",
-            "code": "SM"
-        },
-        {
             "name": "Şabran rayonu",
             "code": "SBN"
         },
@@ -965,8 +945,20 @@
             "code": "SAH"
         },
         {
+            "name": "Salyan Rayonu",
+            "code": "SAL"
+        },
+        {
             "name": "Şamahı Rayonu",
             "code": "SMI"
+        },
+        {
+            "name": "Samuh Rayonu",
+            "code": "SMX"
+        },
+        {
+            "name": "Sederek Rayonu",
+            "code": "SAD"
         },
         {
             "name": "Şeki",
@@ -987,6 +979,14 @@
         {
             "name": "Şirvan",
             "code": "SR"
+        },
+        {
+            "name": "Siyezen Rayonu",
+            "code": "SIY"
+        },
+        {
+            "name": "Sumgayıt",
+            "code": "SM"
         },
         {
             "name": "Şuşa Rayonu",
@@ -4801,12 +4801,12 @@
             "code": "KB"
         },
         {
-            "name": "Kızıldeniz",
-            "code": "BA"
-        },
-        {
             "name": "Kina",
             "code": "KN"
+        },
+        {
+            "name": "Kızıldeniz",
+            "code": "BA"
         },
         {
             "name": "Kuzey Sina",
@@ -4833,16 +4833,16 @@
             "code": "PTS"
         },
         {
+            "name": "Şarkiye",
+            "code": "SHR"
+        },
+        {
             "name": "Sevhac",
             "code": "SHG"
         },
         {
             "name": "Süveyş",
             "code": "SUZ"
-        },
-        {
-            "name": "Şarkiye",
-            "code": "SHR"
         },
         {
             "name": "Yeni Vadi",
@@ -6371,20 +6371,20 @@
             "code": "HNS"
         },
         {
-            "name": "Inverclyde",
-            "code": "IVC"
-        },
-        {
-            "name": "Islington",
-            "code": "ISL"
-        },
-        {
             "name": "İngiltere",
             "code": "ENG"
         },
         {
+            "name": "Inverclyde",
+            "code": "IVC"
+        },
+        {
             "name": "İskoçya",
             "code": "SCT"
+        },
+        {
+            "name": "Islington",
+            "code": "ISL"
         },
         {
             "name": "Kensington and Chelsea",
@@ -8207,6 +8207,10 @@
             "code": "KA"
         },
         {
+            "name": "Küçük Sunda Adaları",
+            "code": "NU"
+        },
+        {
             "name": "Kuzey Kalimantan",
             "code": "KU"
         },
@@ -8221,10 +8225,6 @@
         {
             "name": "Kuzey Sumatra",
             "code": "SU"
-        },
-        {
-            "name": "Küçük Sunda Adaları",
-            "code": "NU"
         },
         {
             "name": "Lampung",
@@ -8453,12 +8453,12 @@
             "code": "JK"
         },
         {
-            "name": "Chhattisgarh",
-            "code": "CT"
-        },
-        {
             "name": "Çhandigarh",
             "code": "CH"
+        },
+        {
+            "name": "Chhattisgarh",
+            "code": "CT"
         },
         {
             "name": "Dadra ve Nagar Haveli",
@@ -11021,12 +11021,12 @@
             "code": "G"
         },
         {
-            "name": "Luxembourg²",
-            "code": "L"
-        },
-        {
             "name": "Lüksemburg kantonu",
             "code": "LU"
+        },
+        {
+            "name": "Luxembourg²",
+            "code": "L"
         },
         {
             "name": "Mersch kantonu",
@@ -15253,12 +15253,12 @@
             "code": "WP"
         },
         {
-            "name": "Kuyavya-Pomeranya Voyvodalığı",
-            "code": "KP"
-        },
-        {
             "name": "Küçük Polonya Voyvodalığı",
             "code": "MA"
+        },
+        {
+            "name": "Kuyavya-Pomeranya Voyvodalığı",
+            "code": "KP"
         },
         {
             "name": "Łódź Voyvodalığı",
@@ -15661,12 +15661,12 @@
             "code": "BV"
         },
         {
-            "name": "Buzău ili",
-            "code": "BZ"
-        },
-        {
             "name": "Bükreş",
             "code": "B"
+        },
+        {
+            "name": "Buzău ili",
+            "code": "BZ"
         },
         {
             "name": "Călărași ili",
@@ -16201,12 +16201,12 @@
             "code": "TUL"
         },
         {
-            "name": "Tuva Cumhuriyeti",
-            "code": "TY"
-        },
-        {
             "name": "Tümen Oblastı",
             "code": "TYU"
+        },
+        {
+            "name": "Tuva Cumhuriyeti",
+            "code": "TY"
         },
         {
             "name": "Tver Oblastı",
@@ -17943,12 +17943,12 @@
             "code": "RD"
         },
         {
-            "name": "Süveyde",
-            "code": "SU"
-        },
-        {
             "name": "Şam",
             "code": "DI"
+        },
+        {
+            "name": "Süveyde",
+            "code": "SU"
         },
         {
             "name": "Tartus",
@@ -20817,16 +20817,16 @@
             "code": "SD"
         },
         {
+            "name": "Şabva ili",
+            "code": "SH"
+        },
+        {
             "name": "San’a",
             "code": "SA"
         },
         {
             "name": "San’a ili",
             "code": "SN"
-        },
-        {
-            "name": "Şabva ili",
-            "code": "SH"
         },
         {
             "name": "Taiz ili",

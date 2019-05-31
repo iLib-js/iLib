@@ -909,6 +909,10 @@
             "code": "QUS"
         },
         {
+            "name": "Saatlı",
+            "code": "SAT"
+        },
+        {
             "name": "Sabirabad",
             "code": "SAB"
         },
@@ -971,10 +975,6 @@
         {
             "name": "Şuşa",
             "code": "SUS"
-        },
-        {
-            "name": "Saatlı",
-            "code": "SAT"
         },
         {
             "name": "Tərtər",
@@ -1457,6 +1457,10 @@
             "code": "WNA"
         },
         {
+            "name": "Øst-Flandern",
+            "code": "VOV"
+        },
+        {
             "name": "Vallonia",
             "code": "WAL"
         },
@@ -1467,10 +1471,6 @@
         {
             "name": "Vest-Flandern",
             "code": "VWV"
-        },
-        {
-            "name": "Øst-Flandern",
-            "code": "VOV"
         }
     ],
     "BF": [
@@ -2237,6 +2237,10 @@
             "code": "NE"
         },
         {
+            "name": "Øst Grand Bahama",
+            "code": "EG"
+        },
+        {
             "name": "Ragged øy",
             "code": "RI"
         },
@@ -2247,10 +2251,6 @@
         {
             "name": "San Salvador",
             "code": "SS"
-        },
-        {
-            "name": "Spansk wells",
-            "code": "SW"
         },
         {
             "name": "Sør Abaco",
@@ -2265,12 +2265,12 @@
             "code": "SE"
         },
         {
-            "name": "West Grand Bahama",
-            "code": "WG"
+            "name": "Spansk wells",
+            "code": "SW"
         },
         {
-            "name": "Øst Grand Bahama",
-            "code": "EG"
+            "name": "West Grand Bahama",
+            "code": "WG"
         }
     ],
     "BT": [
@@ -2775,6 +2775,10 @@
     ],
     "CH": [
         {
+            "name": "Aargau",
+            "code": "AG"
+        },
+        {
             "name": "Appenzell Ausserrhoden",
             "code": "AR"
         },
@@ -2873,10 +2877,6 @@
         {
             "name": "Zürich",
             "code": "ZH"
-        },
-        {
-            "name": "Aargau",
-            "code": "AG"
         }
     ],
     "CI": [
@@ -3759,6 +3759,10 @@
             "code": "424"
         },
         {
+            "name": "Mähren-Schlesien region",
+            "code": "80"
+        },
+        {
             "name": "Mělník",
             "code": "206"
         },
@@ -3769,10 +3773,6 @@
         {
             "name": "Most",
             "code": "425"
-        },
-        {
-            "name": "Mähren-Schlesien region",
-            "code": "80"
         },
         {
             "name": "Náchod",
@@ -4105,6 +4105,10 @@
             "code": "RP"
         },
         {
+            "name": "Saarland",
+            "code": "SL"
+        },
+        {
             "name": "Sachsen",
             "code": "SN"
         },
@@ -4115,10 +4119,6 @@
         {
             "name": "Schleswig-Holstein",
             "code": "SH"
-        },
-        {
-            "name": "Saarland",
-            "code": "SL"
         },
         {
             "name": "Thüringen",
@@ -7047,12 +7047,12 @@
             "code": "KU"
         },
         {
-            "name": "Qeqqata",
-            "code": "QE"
-        },
-        {
             "name": "Qaasuitsoq",
             "code": "QA"
+        },
+        {
+            "name": "Qeqqata",
+            "code": "QE"
         },
         {
             "name": "Sermersooq",
@@ -7463,6 +7463,10 @@
             "code": "K"
         },
         {
+            "name": "Øst-Makedonia og Thrakia",
+            "code": "A"
+        },
+        {
             "name": "Pella",
             "code": "59"
         },
@@ -7545,10 +7549,6 @@
         {
             "name": "Zakynthos",
             "code": "21"
-        },
-        {
-            "name": "Øst-Makedonia og Thrakia",
-            "code": "A"
         }
     ],
     "GT": [
@@ -7985,12 +7985,12 @@
             "code": "FE"
         },
         {
-            "name": "Gyor Moson Sopron Fylke",
-            "code": "GS"
-        },
-        {
             "name": "Győr",
             "code": "GY"
+        },
+        {
+            "name": "Gyor Moson Sopron Fylke",
+            "code": "GS"
         },
         {
             "name": "Hajdu-Bihar Fylke",
@@ -8231,6 +8231,10 @@
             "code": "ST"
         },
         {
+            "name": "Sør Sulawesi",
+            "code": "SN"
+        },
+        {
             "name": "South East Sulawesi Provins",
             "code": "SG"
         },
@@ -8253,10 +8257,6 @@
         {
             "name": "Sumatra",
             "code": "SM"
-        },
-        {
-            "name": "Sør Sulawesi",
-            "code": "SN"
         },
         {
             "name": "Vest-Papua",
@@ -9417,16 +9417,16 @@
             "code": "KA"
         },
         {
+            "name": "Maan Governorate",
+            "code": "MN"
+        },
+        {
             "name": "Madaba Governorate",
             "code": "MD"
         },
         {
             "name": "Magraq",
             "code": "MA"
-        },
-        {
-            "name": "Maan Governorate",
-            "code": "MN"
         },
         {
             "name": "Tafilah Governorate",
@@ -10347,12 +10347,12 @@
             "code": "AK"
         },
         {
-            "name": "Beirut governementet",
-            "code": "BA"
-        },
-        {
             "name": "Baalbek-Hermel",
             "code": "BH"
+        },
+        {
+            "name": "Beirut governementet",
+            "code": "BA"
         },
         {
             "name": "Guvernementet Bekaa",
@@ -11771,16 +11771,16 @@
             "code": "KHO"
         },
         {
-            "name": "Larache",
-            "code": "LAR"
-        },
-        {
             "name": "Laâyoune",
             "code": "LAA"
         },
         {
             "name": "Laayoune Boujdoor-Sakia El Harma",
             "code": "15"
+        },
+        {
+            "name": "Larache",
+            "code": "LAR"
         },
         {
             "name": "Marrakech",
@@ -13361,16 +13361,16 @@
             "code": "14"
         },
         {
-            "name": "Gnaviyani Atoll",
-            "code": "29"
-        },
-        {
             "name": "Gaafu Alif Atoll",
             "code": "27"
         },
         {
             "name": "Gaafu Dhaaky Atoll",
             "code": "28"
+        },
+        {
+            "name": "Gnaviyani Atoll",
+            "code": "29"
         },
         {
             "name": "Haa Alif Atoll",
@@ -13385,12 +13385,12 @@
             "code": "26"
         },
         {
-            "name": "Lhaviyani Atoll",
-            "code": "03"
-        },
-        {
             "name": "Laamu Atoll",
             "code": "05"
+        },
+        {
+            "name": "Lhaviyani Atoll",
+            "code": "03"
         },
         {
             "name": "Malé",
@@ -14771,6 +14771,14 @@
             "code": "NPP"
         },
         {
+            "name": "Øst høylands provins",
+            "code": "EHG"
+        },
+        {
+            "name": "Øst Ny Britland",
+            "code": "EBR"
+        },
+        {
             "name": "Port Moresby",
             "code": "NCD"
         },
@@ -14797,14 +14805,6 @@
         {
             "name": "Western",
             "code": "WPD"
-        },
-        {
-            "name": "Øst høylands provins",
-            "code": "EHG"
-        },
-        {
-            "name": "Øst Ny Britland",
-            "code": "EBR"
         }
     ],
     "PH": [
@@ -14845,16 +14845,16 @@
             "code": "BAS"
         },
         {
+            "name": "Bataan",
+            "code": "BAN"
+        },
+        {
             "name": "Batanes",
             "code": "BTN"
         },
         {
             "name": "Batangas",
             "code": "BTG"
-        },
-        {
-            "name": "Bataan",
-            "code": "BAN"
         },
         {
             "name": "Benguet",
@@ -15533,6 +15533,14 @@
             "code": "ASU"
         },
         {
+            "name": "Caaguazu",
+            "code": "5"
+        },
+        {
+            "name": "Caazapa",
+            "code": "6"
+        },
+        {
             "name": "Canindeyu",
             "code": "14"
         },
@@ -15543,14 +15551,6 @@
         {
             "name": "Cordillera",
             "code": "3"
-        },
-        {
-            "name": "Caaguazu",
-            "code": "5"
-        },
-        {
-            "name": "Caazapa",
-            "code": "6"
         },
         {
             "name": "Guaira",
@@ -15887,20 +15887,20 @@
             "code": "02"
         },
         {
-            "name": "Srem Distrikt",
-            "code": "07"
-        },
-        {
-            "name": "Sumadija distrikt",
-            "code": "12"
-        },
-        {
             "name": "Sør Backa",
             "code": "06"
         },
         {
             "name": "Sør Banat distrikt",
             "code": "04"
+        },
+        {
+            "name": "Srem Distrikt",
+            "code": "07"
+        },
+        {
+            "name": "Sumadija distrikt",
+            "code": "12"
         },
         {
             "name": "Toplica distrikt",
@@ -16561,12 +16561,12 @@
             "code": "W"
         },
         {
-            "name": "Gotlands län",
-            "code": "I"
-        },
-        {
             "name": "Gävleborgs län",
             "code": "X"
+        },
+        {
+            "name": "Gotlands län",
+            "code": "I"
         },
         {
             "name": "Hallands län",
@@ -16593,16 +16593,24 @@
             "code": "BD"
         },
         {
+            "name": "Örebro län",
+            "code": "T"
+        },
+        {
+            "name": "Östergötlands län",
+            "code": "E"
+        },
+        {
             "name": "Skåne län",
             "code": "M"
         },
         {
-            "name": "Stockholms län",
-            "code": "AB"
-        },
-        {
             "name": "Södermanlands län",
             "code": "D"
+        },
+        {
+            "name": "Stockholms län",
+            "code": "AB"
         },
         {
             "name": "Uppsala län",
@@ -16627,14 +16635,6 @@
         {
             "name": "Västra Götalands län",
             "code": "O"
-        },
-        {
-            "name": "Örebro län",
-            "code": "T"
-        },
-        {
-            "name": "Östergötlands län",
-            "code": "E"
         }
     ],
     "SG": [
@@ -17805,6 +17805,10 @@
             "code": "BN"
         },
         {
+            "name": "Øst-Ekvatoria",
+            "code": "EE"
+        },
+        {
             "name": "Unity",
             "code": "UY"
         },
@@ -17823,10 +17827,6 @@
         {
             "name": "Western Equatoria",
             "code": "EW"
-        },
-        {
-            "name": "Øst-Ekvatoria",
-            "code": "EE"
         }
     ],
     "ST": [
@@ -19599,16 +19599,16 @@
             "code": "112"
         },
         {
+            "name": "Kibaale",
+            "code": "407"
+        },
+        {
             "name": "Kiboga",
             "code": "103"
         },
         {
             "name": "Kibuku",
             "code": "227"
-        },
-        {
-            "name": "Kibaale",
-            "code": "407"
         },
         {
             "name": "Kiruhura",

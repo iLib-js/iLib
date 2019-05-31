@@ -57,7 +57,7 @@ module.exports.testdatefmt_ar_EG = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "‏٢٩‏/٩‏/٢٠١١");
+        test.equal(fmt.format(date), '‏٢٩/٩/٢٠١١');
         test.done();
     },
     
@@ -76,7 +76,7 @@ module.exports.testdatefmt_ar_EG = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "‏٢٩‏/٠٩‏/٢٠١١");
+        test.equal(fmt.format(date), '‏٢٩/٠٩/٢٠١١');
         test.done();
         
     },
@@ -96,7 +96,7 @@ module.exports.testdatefmt_ar_EG = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "‏٢٩ سبتمبر، ٢٠١١");
+        test.equal(fmt.format(date), '‏٢٩ سبتمبر ٢٠١١');
         test.done();
     },
     
@@ -115,7 +115,7 @@ module.exports.testdatefmt_ar_EG = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "‏٢٩ سبتمبر، ٢٠١١");
+        test.equal(fmt.format(date), '‏٢٩ سبتمبر ٢٠١١');
         test.done();
     },
     
@@ -210,7 +210,7 @@ module.exports.testdatefmt_ar_EG = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "‏٢٩‏/٩‏/٢٠١١ ‏١:٤٥ م");
+        test.equal(fmt.format(date), '‏٢٩/٩/٢٠١١ ‏١:٤٥ م');
         test.done();
     },
     
@@ -229,7 +229,7 @@ module.exports.testdatefmt_ar_EG = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "‏٢٩‏/٠٩‏/٢٠١١ ‏١:٤٥ م");
+        test.equal(fmt.format(date), '‏٢٩/٠٩/٢٠١١ ‏١:٤٥ م');
         test.done();
     },
     
@@ -248,7 +248,7 @@ module.exports.testdatefmt_ar_EG = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "‏٢٩ سبتمبر، ٢٠١١ ‏١:٤٥ م");
+        test.equal(fmt.format(date),'‏٢٩ سبتمبر ٢٠١١ ‏١:٤٥ م');
         test.done();
     },
     
@@ -267,7 +267,7 @@ module.exports.testdatefmt_ar_EG = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "‏٢٩ سبتمبر، ٢٠١١ ‏١:٤٥ م");
+        test.equal(fmt.format(date), '‏٢٩ سبتمبر ٢٠١١ ‏١:٤٥ م');
         test.done();
     },
     
@@ -460,7 +460,7 @@ module.exports.testdatefmt_ar_EG = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "‏٢٩‏/٩‏/٢٠١١");
+        test.equal(fmt.format(date), '‏٢٩/٩/٢٠١١');
         test.done();
     },
     
@@ -498,7 +498,7 @@ module.exports.testdatefmt_ar_EG = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "‏٢٩‏/٩‏/٢٠١١ ‏١:٤٥ م");
+        test.equal(fmt.format(date), '‏٢٩/٩/٢٠١١ ‏١:٤٥ م');
         test.done();
     },
     
@@ -613,7 +613,7 @@ module.exports.testdatefmt_ar_EG = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "‏٩‏/٢٠١١");
+        test.equal(fmt.format(date), '‏٩/٢٠١١');
         test.done();
     },
     
@@ -632,7 +632,7 @@ module.exports.testdatefmt_ar_EG = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "‏٢٩‏/٩‏/٢٠١١");
+        test.equal(fmt.format(date), '‏٢٩/٩/٢٠١١');
         test.done();
     },
     
@@ -651,7 +651,7 @@ module.exports.testdatefmt_ar_EG = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "خ، ‏٢٩‏/٩");
+        test.equal(fmt.format(date), 'خ، ‏٢٩/٩');
         test.done();
     },
     
@@ -670,7 +670,7 @@ module.exports.testdatefmt_ar_EG = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "خ، ٢٩‏/٩‏/٢٠١١");
+        test.equal(fmt.format(date), 'خ، ٢٩/٩/٢٠١١');
         test.done();
     },
     
@@ -766,7 +766,7 @@ module.exports.testdatefmt_ar_EG = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "سبتمبر، ٢٠١١");
+        test.equal(fmt.format(date), 'سبتمبر ٢٠١١');
         test.done();
     },
     
@@ -785,7 +785,7 @@ module.exports.testdatefmt_ar_EG = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "‏٢٩ سبتمبر، ٢٠١١");
+        test.equal(fmt.format(date), '‏٢٩ سبتمبر ٢٠١١');
         test.done();
     },
     
@@ -823,7 +823,7 @@ module.exports.testdatefmt_ar_EG = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "الخميس، ٢٩ سبتمبر، ٢٠١١");
+        test.equal(fmt.format(date), 'الخميس، ٢٩ سبتمبر ٢٠١١');
         test.done();
     },
     
@@ -842,7 +842,7 @@ module.exports.testdatefmt_ar_EG = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "ﺦﻤﻴﺳ");
+        test.equal(fmt.format(date), 'خميس');
         test.done();
     },
     testDateFmtFullDateComponentsW2_ar_EG: function(test) {
@@ -860,7 +860,7 @@ module.exports.testdatefmt_ar_EG = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "ﺃﺮﺒﻋﺍﺀ");
+        test.equal(fmt.format(date), 'أربعاء');
         test.done();
     },
     testDateFmtFullDateComponentsW3_ar_EG: function(test) {
@@ -878,7 +878,7 @@ module.exports.testdatefmt_ar_EG = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "ﺙﻼﺛﺍﺀ");
+        test.equal(fmt.format(date), 'ثلاثاء');
         test.done();
     },
     testDateFmtFullDateComponentsW4_ar_EG: function(test) {
@@ -896,7 +896,7 @@ module.exports.testdatefmt_ar_EG = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "ﺎﺜﻨﻴﻧ");
+        test.equal(fmt.format(date), 'إثنين');
         test.done();
     },
     testDateFmtFullDateComponentsW5_ar_EG: function(test) {
@@ -914,7 +914,7 @@ module.exports.testdatefmt_ar_EG = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "ﺄﺣﺩ");
+        test.equal(fmt.format(date), 'أحد');
         test.done();
     },
     testDateFmtFullDateComponentsW6_ar_EG: function(test) {
@@ -932,7 +932,7 @@ module.exports.testdatefmt_ar_EG = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "السبت");
+        test.equal(fmt.format(date), 'سبت');
         test.done();
     },
     testDateFmtFullDateComponentsW7_ar_EG: function(test) {
@@ -950,7 +950,7 @@ module.exports.testdatefmt_ar_EG = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "ﺞﻤﻋﺓ");
+        test.equal(fmt.format(date), 'جمعة');
         test.done();
     },    
     testDateFmtShortTimeComponentsS_ar_EG: function(test) {
@@ -1926,7 +1926,7 @@ module.exports.testdatefmt_ar_EG = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "‏29‏/9‏/2011");
+        test.equal(fmt.format(date), '‏29/9/2011');
         test.done();
     },
     
@@ -1945,7 +1945,7 @@ module.exports.testdatefmt_ar_EG = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "‏29‏/09‏/2011");
+        test.equal(fmt.format(date), '‏29/09/2011');
         test.done();
         
     },
@@ -1965,7 +1965,7 @@ module.exports.testdatefmt_ar_EG = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "‏29 سبتمبر، 2011");
+        test.equal(fmt.format(date), '‏29 سبتمبر 2011');
         test.done();
     },
     
@@ -1984,7 +1984,7 @@ module.exports.testdatefmt_ar_EG = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "‏29 سبتمبر، 2011");
+        test.equal(fmt.format(date), '‏29 سبتمبر 2011');
         test.done();
     },
     
@@ -2079,7 +2079,7 @@ module.exports.testdatefmt_ar_EG = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "‏29‏/9‏/2011 ‏1:45 م");
+        test.equal(fmt.format(date), '‏29/9/2011 ‏1:45 م');
         test.done();
     },
     
@@ -2098,7 +2098,7 @@ module.exports.testdatefmt_ar_EG = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "‏29‏/09‏/2011 ‏1:45 م");
+        test.equal(fmt.format(date), '‏29/09/2011 ‏1:45 م');
         test.done();
     },
     
@@ -2117,7 +2117,7 @@ module.exports.testdatefmt_ar_EG = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "‏29 سبتمبر، 2011 ‏1:45 م");
+        test.equal(fmt.format(date), '‏29 سبتمبر 2011 ‏1:45 م');
         test.done();
     },
     
@@ -2136,7 +2136,7 @@ module.exports.testdatefmt_ar_EG = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "‏29 سبتمبر، 2011 ‏1:45 م");
+        test.equal(fmt.format(date), '‏29 سبتمبر 2011 ‏1:45 م');
         test.done();
     },
     testDateFmtNativeDateTimeSimpleFullIslamic_ar_EG: function(test) {
@@ -2154,7 +2154,7 @@ module.exports.testdatefmt_ar_EG = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "‏8 مايو، 2018 ‏1:45 م");
+        test.equal(fmt.format(date), '‏8 مايو 2018 ‏1:45 م');
         test.done();
     },
 
@@ -2173,7 +2173,7 @@ module.exports.testdatefmt_ar_EG = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "‏8 مايو، 2018 ‏1:45 م");
+        test.equal(fmt.format(date), '‏8 مايو 2018 ‏1:45 م');
         test.done();
     },
 
@@ -2192,7 +2192,7 @@ module.exports.testdatefmt_ar_EG = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "‏08‏/05‏/2018 ‏1:45 م");
+        test.equal(fmt.format(date), '‏08/05/2018 ‏1:45 م');
         test.done();
     },
 
@@ -2211,7 +2211,7 @@ module.exports.testdatefmt_ar_EG = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date),"‏8‏/5‏/2018 ‏1:45 م");
+        test.equal(fmt.format(date),'‏8/5/2018 ‏1:45 م');
         test.done();
     }
 };

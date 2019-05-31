@@ -116,40 +116,44 @@ var Utils = {};
 Utils.getSublocales = function(locale) {
     var ret = ["root"];
     var loc = typeof(locale) === "string" ? new Locale(locale) : locale;
+    var lang = loc.getLanguage();
+    var region = loc.getRegion();
+    var script = loc.getScript();
+    var variant = loc.getVariant();
 
-    if (loc.getLanguage()) {
-        ret.push(loc.getLanguage());
+    if (lang) {
+        ret.push(lang);
     }
 
-    if (loc.getRegion()) {
-        ret.push('und-' + loc.getRegion());
+    if (region) {
+        ret.push('und-' + region);
     }
 
-    if (loc.getLanguage()) {
-        if (loc.getScript()) {
-            ret.push(loc.getLanguage() + '-' + loc.getScript());
+    if (lang) {
+        if (script) {
+            ret.push(lang + '-' + script);
         }
 
-        if (loc.getRegion()) {
-            ret.push(loc.getLanguage() + '-' + loc.getRegion());
+        if (region) {
+            ret.push(lang + '-' + region);
         }
     }
 
-    if (loc.getRegion() && loc.getVariant()) {
-        ret.push("und-" + loc.getRegion() + '-' + loc.getVariant());
+    if (region && variant) {
+        ret.push("und-" + region + '-' + variant);
     }
 
-    if (loc.getLanguage()) {
-        if (loc.getScript() && loc.getRegion()) {
-            ret.push(loc.getLanguage() + '-' + loc.getScript() + '-' + loc.getRegion());
+    if (lang) {
+        if (script && region) {
+            ret.push(lang + '-' + script + '-' + region);
         }
 
-        if (loc.getRegion() && loc.getVariant()) {
-            ret.push(loc.getLanguage() + '-' + loc.getRegion() + '-' + loc.getVariant());
+        if (region && variant) {
+            ret.push(lang + '-' + region + '-' + variant);
         }
 
-        if (loc.getScript() && loc.getRegion() && loc.getVariant()) {
-            ret.push(loc.getLanguage() + '-' + loc.getScript() + '-' + loc.getRegion() + '-' + loc.getVariant());
+        if (script && region && variant) {
+            ret.push(lang + '-' + script + '-' + region + '-' + variant);
         }
     }
     return ret;
@@ -193,8 +197,11 @@ Utils.mergeLocData = function (prefix, locale, replaceArrays, returnOne) {
         var property = (l === "root") ? prefix : prefix + '_' + l.replace(/-/g, "_");
 
         if (ilib.data[property]) {
-            data = JSUtils.merge(data, ilib.data[property], replaceArrays);
-            mostSpecific = ilib.data[property];
+            if (returnOne) {
+                mostSpecific = ilib.data[property];
+            } else {
+                data = JSUtils.merge(data, ilib.data[property], replaceArrays);
+            }
         }
     });
 
@@ -406,22 +413,34 @@ Utils.loadData = function(params) {
         type = (dot !== -1) ? name.substring(dot+1) : "text";
     }
 
+    if (typeof(ilib.data.cache) === "undefined") {
+        ilib.data.cache = {};
+    }
+    if (typeof(ilib.data.cache.fileSet) === "undefined") {
+        ilib.data.cache.fileSet = new ISet();
+    }
+
     var data, returnOne = ((loadParams && loadParams.returnOne) || type !== "json");
 
     basename = name.substring(0, name.lastIndexOf(".")).replace(/[\.:\(\)\/\\\+\-]/g, "_");
+
+    if (ilib._cacheMerged) {
+        if (typeof(ilib.data.cache.merged) === "undefined") {
+            ilib.data.cache.merged = {};
+        }
+        var spec = ((!nonlocale && locale.getSpec().replace(/-/g, '_')) || "root") + "," + basename + "," + String(JSUtils.hashCode(loadParams));
+        if (typeof(ilib.data.cache.merged[spec]) !== 'undefined') {
+            // cache hit!
+            callback(ilib.data.cache.merged[spec]);
+            return;
+        }
+    }
 
     if (typeof(ilib._load) !== 'undefined') {
         // We have a loader, so we can figure out which json files are loaded already and
         // which are not so that we can load the missing ones.
         // the data is not preassembled, so attempt to load it dynamically
         var files = nonlocale ? [ name || "resources.json" ] : Utils.getLocFiles(locale, name);
-
-        if (typeof(ilib.data.cache) === "undefined") {
-            ilib.data.cache = {};
-        }
-        if (typeof(ilib.data.cache.fileSet) === "undefined") {
-            ilib.data.cache.fileSet = new ISet();
-        }
 
         // find the ones we haven't loaded before
         files = files.filter(ilib.bind(this, function(file) {
@@ -444,6 +463,7 @@ Utils.loadData = function(params) {
 
                 if (!nonlocale) {
                     data = Utils.mergeLocData(basename, locale, replace, returnOne);
+                    if (ilib._cacheMerged) ilib.data.cache.merged[spec] = data;
                 } else {
                     data = ilib.data[basename];
                 }
@@ -459,6 +479,7 @@ Utils.loadData = function(params) {
     // No loader, or data already loaded? Then use whatever data we have already in ilib.data
     if (!nonlocale) {
         data = Utils.mergeLocData(basename, locale, replace, returnOne);
+        if (ilib._cacheMerged) ilib.data.cache.merged[spec] = data;
     } else {
         data = ilib.data[basename];
     }

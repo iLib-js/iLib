@@ -59,7 +59,7 @@ module.exports.testdatefmt_or_IN = {
             minute: 45,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "29-9-11");
+        test.equal(fmt.format(date), "9/29/11");
         test.done();
     },
     
@@ -78,7 +78,7 @@ module.exports.testdatefmt_or_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "29 ସେପ୍ଟେମ୍ବର 2011");
+        test.equal(fmt.format(date), "ସେପ୍ଟେମ୍ବର 29, 2011");
         test.done();
     },
     
@@ -97,7 +97,7 @@ module.exports.testdatefmt_or_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "29 ସେପ୍ଟେମ୍ବର 2011");
+        test.equal(fmt.format(date), "ସେପ୍ଟେମ୍ବର 29, 2011");
         test.done();
     },
     
@@ -116,7 +116,7 @@ module.exports.testdatefmt_or_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "29 ସେପ୍ଟେମ୍ବର 2011");
+        test.equal(fmt.format(date), "ସେପ୍ଟେମ୍ବର 29, 2011");
         test.done();
     },
     
@@ -230,7 +230,7 @@ module.exports.testdatefmt_or_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "29-9-11 1:45 PM");
+        test.equal(fmt.format(date), "9/29/11, 1:45 PM");
         test.done();
     },
     
@@ -249,7 +249,7 @@ module.exports.testdatefmt_or_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "29 ସେପ୍ଟେମ୍ବର 2011 1:45 PM");
+        test.equal(fmt.format(date), "ସେପ୍ଟେମ୍ବର 29, 2011, 1:45 PM");
         test.done();
     },
     
@@ -268,7 +268,7 @@ module.exports.testdatefmt_or_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "29 ସେପ୍ଟେମ୍ବର 2011 1:45 PM");
+        test.equal(fmt.format(date), "1:45 PM ଠାରେ ସେପ୍ଟେମ୍ବର 29, 2011");
         test.done();
     },
     
@@ -287,7 +287,7 @@ module.exports.testdatefmt_or_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "29 ସେପ୍ଟେମ୍ବର 2011 1:45 PM");
+        test.equal(fmt.format(date), "1:45 PM ଠାରେ ସେପ୍ଟେମ୍ବର 29, 2011");
         test.done();
     },
     
@@ -479,7 +479,7 @@ module.exports.testdatefmt_or_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "29-9-11");
+        test.equal(fmt.format(date), "9/29/11");
         test.done();
     },
     
@@ -517,7 +517,7 @@ module.exports.testdatefmt_or_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "29-9-11 1:45 PM");
+        test.equal(fmt.format(date), "9/29/11, 1:45 PM");
         test.done();
     },
     
@@ -613,7 +613,7 @@ module.exports.testdatefmt_or_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "29-9");
+        test.equal(fmt.format(date), "9/29");
         test.done();
     },
     
@@ -632,7 +632,7 @@ module.exports.testdatefmt_or_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "9-11");
+        test.equal(fmt.format(date), "9/11");
         test.done();
     },
     
@@ -651,7 +651,7 @@ module.exports.testdatefmt_or_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "29-9-11");
+        test.equal(fmt.format(date), "9/29/11");
         test.done();
     },
     
@@ -670,7 +670,7 @@ module.exports.testdatefmt_or_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "ଗୁ, 29-9");
+        test.equal(fmt.format(date), "ଗୁ, 9/29");
         test.done();
     },
     
@@ -689,7 +689,7 @@ module.exports.testdatefmt_or_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "ଗୁ, 29-9-11");
+        test.equal(fmt.format(date), "ଗୁ, 9/29/11");
         test.done();
     },
     
@@ -766,7 +766,7 @@ module.exports.testdatefmt_or_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "29 ସେପ୍ଟେମ୍ବର");
+        test.equal(fmt.format(date), "ସେପ୍ଟେମ୍ବର 29");
         test.done();
     },
     
@@ -785,7 +785,7 @@ module.exports.testdatefmt_or_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "ସେପ୍ଟେମ୍ବର 2011");
+        test.equal(fmt.format(date), "ସେପ୍ଟେମ୍ବର, 2011");
         test.done();
     },
     
@@ -804,7 +804,7 @@ module.exports.testdatefmt_or_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "29 ସେପ୍ଟେମ୍ବର 2011");
+        test.equal(fmt.format(date), "ସେପ୍ଟେମ୍ବର 29, 2011");
         test.done();
     },
     
@@ -823,7 +823,7 @@ module.exports.testdatefmt_or_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "ଗୁରୁବାର, 29 ସେପ୍ଟେମ୍ବର");
+        test.equal(fmt.format(date), "ଗୁରୁବାର, ସେପ୍ଟେମ୍ବର 29");
         test.done();
     },
     
@@ -842,7 +842,7 @@ module.exports.testdatefmt_or_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "ଗୁରୁବାର, 29 ସେପ୍ଟେମ୍ବର 2011");
+        test.equal(fmt.format(date), "ଗୁରୁବାର, ସେପ୍ଟେମ୍ବର 29, 2011");
         test.done();
     },
     

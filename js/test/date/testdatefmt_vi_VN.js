@@ -632,7 +632,7 @@ module.exports.testdatefmt_vi_VN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "t");
+        test.equal(fmt.format(date), "t 9");
         test.done();
     },
     

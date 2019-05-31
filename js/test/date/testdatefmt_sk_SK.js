@@ -652,7 +652,7 @@ module.exports.testdatefmt_sk_SK = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "š, 29. 9");
+        test.equal(fmt.format(date), "š 29. 9");
         test.done();
     },
     
@@ -671,7 +671,7 @@ module.exports.testdatefmt_sk_SK = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "š, 29. 9. 2011");
+        test.equal(fmt.format(date), "š 29. 9. 2011");
         test.done();
     },
     
@@ -805,7 +805,7 @@ module.exports.testdatefmt_sk_SK = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "štvrtok, 29. septembra");
+        test.equal(fmt.format(date), "štvrtok 29. septembra");
         test.done();
     },
     
@@ -824,7 +824,7 @@ module.exports.testdatefmt_sk_SK = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "štvrtok, 29. septembra 2011");
+        test.equal(fmt.format(date), "štvrtok 29. septembra 2011");
         test.done();
     },
     
