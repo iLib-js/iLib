@@ -18,6 +18,7 @@
  */
 
 module.exports.files = [
+    "testPower.js",
     "testFuelConsumption.js",
     "testUnknown.js",
     "testVolume.js",
