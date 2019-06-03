@@ -158,7 +158,7 @@ module.exports.testlistfmt_ru = {
     
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["один", "два"]), "один и два");
+        test.equal(fmt.format(["один", "два"]), "один два");
         test.done();
     },
     
@@ -171,7 +171,7 @@ module.exports.testlistfmt_ru = {
     
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["один", "два", "три"]), "один два и три");
+        test.equal(fmt.format(["один", "два", "три"]), "один два три");
         test.done();
     },
     
@@ -184,7 +184,7 @@ module.exports.testlistfmt_ru = {
     
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["один", "два", "три", "четыре"]), "один два три и четыре");
+        test.equal(fmt.format(["один", "два", "три", "четыре"]), "один два три четыре");
         test.done();
     },
     
@@ -197,7 +197,7 @@ module.exports.testlistfmt_ru = {
     
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["один", "два", "три", "четыре", "пять"]), "один два три четыре и пять");
+        test.equal(fmt.format(["один", "два", "три", "четыре", "пять"]), "один два три четыре пять");
         test.done();
     },
 
@@ -333,7 +333,7 @@ module.exports.testlistfmt_ru = {
     
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["один", "два"]), "один и два");
+        test.equal(fmt.format(["один", "два"]), "один два");
         test.done();
     },
     
@@ -346,7 +346,7 @@ module.exports.testlistfmt_ru = {
     
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["один", "два", "три"]), "один два и три");
+        test.equal(fmt.format(["один", "два", "три"]), "один два три");
         test.done();
     },
     
@@ -359,7 +359,7 @@ module.exports.testlistfmt_ru = {
     
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["один", "два", "три", "четыре"]), "один два три и четыре");
+        test.equal(fmt.format(["один", "два", "три", "четыре"]), "один два три четыре");
         test.done();
     },
     
@@ -372,7 +372,7 @@ module.exports.testlistfmt_ru = {
     
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["один", "два", "три", "четыре", "пять"]), "один два три четыре и пять");
+        test.equal(fmt.format(["один", "два", "три", "четыре", "пять"]), "один два три четыре пять");
         test.done();
     },
     // ru-GE
@@ -596,7 +596,7 @@ module.exports.testlistfmt_ru = {
     
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["один", "два"]), "один и два");
+        test.equal(fmt.format(["один", "два"]), "один два");
         test.done();
     },
     
@@ -609,7 +609,7 @@ module.exports.testlistfmt_ru = {
     
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["один", "два", "три"]), "один два и три");
+        test.equal(fmt.format(["один", "два", "три"]), "один два три");
         test.done();
     },
     
@@ -622,7 +622,7 @@ module.exports.testlistfmt_ru = {
     
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["один", "два", "три", "четыре"]), "один два три и четыре");
+        test.equal(fmt.format(["один", "два", "три", "четыре"]), "один два три четыре");
         test.done();
     },
     
@@ -635,7 +635,7 @@ module.exports.testlistfmt_ru = {
     
         test.expect(2);
         test.ok(fmt !== null);
-        test.equal(fmt.format(["один", "два", "три", "четыре", "пять"]), "один два три четыре и пять");
+        test.equal(fmt.format(["один", "два", "три", "четыре", "пять"]), "один два три четыре пять");
         test.done();
     }
 };

@@ -122,6 +122,16 @@ module.exports.testcharmapasync = {
     },
 
     testCharmapAsyncCNMapToNative: function(test) {
+
+        /*
+        * The Uint8Array which used in mapToNative() doesn't support on QT 5.9
+        * It's new in ES2017. It will be enabled when QT support this feature.
+        */
+        if (ilib._getPlatform() === "qt" ) {
+            test.done();
+            return;
+        }
+
         var big5source = [
             0xa4, 0xb1, // 仃
             0xa4, 0x48, // 人

@@ -59,7 +59,7 @@ module.exports.testdatefmt_as_IN = {
             minute: 45,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "২০১১-০৯-২৯");
+        test.equal(fmt.format(date), "২৯-৯-২০১১");
         test.done();
     },
     
@@ -78,7 +78,7 @@ module.exports.testdatefmt_as_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "২০১১ সেপ্ট ২৯");
+        test.equal(fmt.format(date), "২৯-০৯-২০১১");
         test.done();
     },
     
@@ -97,7 +97,7 @@ module.exports.testdatefmt_as_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "২০১১ ছেপ্তেম্বৰ ২৯");
+        test.equal(fmt.format(date), "২৯ ছেপ্তেম্বৰ, ২০১১");
         test.done();
     },
     
@@ -116,7 +116,7 @@ module.exports.testdatefmt_as_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "২০১১ ছেপ্তেম্বৰ ২৯");
+        test.equal(fmt.format(date), "২৯ ছেপ্তেম্বৰ, ২০১১");
         test.done();
     },
     
@@ -135,7 +135,7 @@ module.exports.testdatefmt_as_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "১৩:৪৫");
+        test.equal(fmt.format(date), "অপৰাহ্ন ১.৪৫");
         test.done();
     },
     
@@ -154,7 +154,7 @@ module.exports.testdatefmt_as_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "১৩:৪৫");
+        test.equal(fmt.format(date), "অপৰাহ্ন ১.৪৫");
         test.done();
     },
     
@@ -173,7 +173,7 @@ module.exports.testdatefmt_as_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "১৩:৪৫");
+        test.equal(fmt.format(date), "অপৰাহ্ন ১.৪৫");
         test.done();
     },
     
@@ -192,7 +192,7 @@ module.exports.testdatefmt_as_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "১৩:৪৫");
+        test.equal(fmt.format(date), "অপৰাহ্ন ১.৪৫");
         test.done();
     },
     
@@ -211,7 +211,7 @@ module.exports.testdatefmt_as_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "১৩:৪৫");
+        test.equal(fmt.format(date), "অপৰাহ্ন ১.৪৫");
         test.done();
     },
     
@@ -230,7 +230,7 @@ module.exports.testdatefmt_as_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "২০১১-০৯-২৯ ১৩:৪৫");
+        test.equal(fmt.format(date), "২৯-৯-২০১১ অপৰাহ্ন ১.৪৫");
         test.done();
     },
     
@@ -249,7 +249,7 @@ module.exports.testdatefmt_as_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "২০১১ সেপ্ট ২৯ ১৩:৪৫");
+        test.equal(fmt.format(date), "২৯-০৯-২০১১ অপৰাহ্ন ১.৪৫");
         test.done();
     },
     
@@ -268,7 +268,7 @@ module.exports.testdatefmt_as_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "২০১১ ছেপ্তেম্বৰ ২৯ ১৩:৪৫");
+        test.equal(fmt.format(date), "২৯ ছেপ্তেম্বৰ, ২০১১ অপৰাহ্ন ১.৪৫");
         test.done();
     },
     
@@ -287,7 +287,7 @@ module.exports.testdatefmt_as_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "২০১১ ছেপ্তেম্বৰ ২৯ ১৩:৪৫");
+        test.equal(fmt.format(date), "২৯ ছেপ্তেম্বৰ, ২০১১ অপৰাহ্ন ১.৪৫");
         test.done();
     },
     
@@ -481,7 +481,7 @@ module.exports.testdatefmt_as_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "২০১১-০৯-২৯");
+        test.equal(fmt.format(date), "২৯-৯-২০১১");
         test.done();
     },
     
@@ -500,7 +500,7 @@ module.exports.testdatefmt_as_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "১৩:৪৫");
+        test.equal(fmt.format(date), "অপৰাহ্ন ১.৪৫");
         test.done();
     },
     
@@ -519,7 +519,7 @@ module.exports.testdatefmt_as_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "২০১১-০৯-২৯ ১৩:৪৫");
+        test.equal(fmt.format(date), "২৯-৯-২০১১ অপৰাহ্ন ১.৪৫");
         test.done();
     },
     
@@ -558,7 +558,7 @@ module.exports.testdatefmt_as_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "০৯");
+        test.equal(fmt.format(date), "৯");
         test.done();
     },
     
@@ -577,7 +577,7 @@ module.exports.testdatefmt_as_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "স");
+        test.equal(fmt.format(date), "ছ");
         test.done();
     },
     
@@ -615,7 +615,7 @@ module.exports.testdatefmt_as_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "০৯-২৯");
+        test.equal(fmt.format(date), "২৯-৯");
         test.done();
     },
     
@@ -634,7 +634,7 @@ module.exports.testdatefmt_as_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "২০১১-০৯");
+        test.equal(fmt.format(date), "৯-২০১১");
         test.done();
     },
     
@@ -653,7 +653,7 @@ module.exports.testdatefmt_as_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "২০১১-০৯-২৯");
+        test.equal(fmt.format(date), "২৯-৯-২০১১");
         test.done();
     },
     
@@ -672,7 +672,7 @@ module.exports.testdatefmt_as_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "০৯-২৯, T");
+        test.equal(fmt.format(date), "ব, ২৯-৯");
         test.done();
     },
     
@@ -691,10 +691,9 @@ module.exports.testdatefmt_as_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "২০১১-০৯-২৯, T");
+        test.equal(fmt.format(date), "ব, ২৯-৯-২০১১");
         test.done();
     },
-    
     
     testDateFmtINFullDateComponentsY_as_IN: function(test) {
         test.expect(2);
@@ -768,7 +767,7 @@ module.exports.testdatefmt_as_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "ছেপ্তেম্বৰ ২৯");
+        test.equal(fmt.format(date), "২৯ ছেপ্তেম্বৰ");
         test.done();
     },
     
@@ -787,7 +786,7 @@ module.exports.testdatefmt_as_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "২০১১ ছেপ্তেম্বৰ");
+        test.equal(fmt.format(date), "ছেপ্তেম্বৰ, ২০১১");
         test.done();
     },
     
@@ -806,7 +805,7 @@ module.exports.testdatefmt_as_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "২০১১ ছেপ্তেম্বৰ ২৯");
+        test.equal(fmt.format(date), "২৯ ছেপ্তেম্বৰ, ২০১১");
         test.done();
     },
     
@@ -825,7 +824,7 @@ module.exports.testdatefmt_as_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "ছেপ্তেম্বৰ ২৯, বৃহষ্পতিবাৰ");
+        test.equal(fmt.format(date), "বৃহস্পতিবাৰ, ২৯ ছেপ্তেম্বৰ");
         test.done();
     },
     
@@ -844,7 +843,7 @@ module.exports.testdatefmt_as_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "২০১১ ছেপ্তেম্বৰ ২৯, বৃহষ্পতিবাৰ");
+        test.equal(fmt.format(date), "বৃহস্পতিবাৰ, ২৯ ছেপ্তেম্বৰ, ২০১১");
         test.done();
     },
     
@@ -902,7 +901,7 @@ module.exports.testdatefmt_as_IN = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "১৩");
+        test.equal(fmt.format(date), "১");
         test.done();
     },
     
@@ -922,7 +921,7 @@ module.exports.testdatefmt_as_IN = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "১৩:৪৫");
+        test.equal(fmt.format(date), "১.৪৫");
         test.done();
     },
     
@@ -941,7 +940,7 @@ module.exports.testdatefmt_as_IN = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "১৩:৪৫:৩৭");
+        test.equal(fmt.format(date), "১.৪৫.৩৭");
         test.done();
     },
     
@@ -960,7 +959,7 @@ module.exports.testdatefmt_as_IN = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "১৩:৪৫");
+        test.equal(fmt.format(date), "অপৰাহ্ন ১.৪৫");
         test.done();
     },
     
@@ -983,7 +982,7 @@ module.exports.testdatefmt_as_IN = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "১৩:৪৫:৩৭ IST");
+        test.equal(fmt.format(date), "অপৰাহ্ন ১.৪৫.৩৭ IST");
         test.done();
     },
     
@@ -1007,7 +1006,7 @@ module.exports.testdatefmt_as_IN = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "১৩:৪৫:৩৭ IST");
+        test.equal(fmt.format(date), "অপৰাহ্ন ১.৪৫.৩৭ IST");
         test.done();
     },
     
@@ -1026,7 +1025,7 @@ module.exports.testdatefmt_as_IN = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "১৩:৪৫:৩৭");
+        test.equal(fmt.format(date), "অপৰাহ্ন ১.৪৫.৩৭");
         test.done();
     },
     
@@ -1050,7 +1049,7 @@ module.exports.testdatefmt_as_IN = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "১৩:৪৫:৩৭ IST");
+        test.equal(fmt.format(date), "অপৰাহ্ন ১.৪৫.৩৭ IST");
         test.done();
     },
     
@@ -1074,7 +1073,7 @@ module.exports.testdatefmt_as_IN = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "১৩:৪৫:৩৭ IST");
+        test.equal(fmt.format(date), "অপৰাহ্ন ১.৪৫.৩৭ IST");
         test.done();
     },
     
@@ -1132,7 +1131,7 @@ module.exports.testdatefmt_as_IN = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "১৩");
+        test.equal(fmt.format(date), "১");
         test.done();
     },
     
@@ -1153,7 +1152,7 @@ module.exports.testdatefmt_as_IN = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "১৩:৪৫");
+        test.equal(fmt.format(date), "অপৰাহ্ন ১.৪৫");
         test.done();
     },
     
@@ -1172,7 +1171,7 @@ module.exports.testdatefmt_as_IN = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "১৩:৪৫:৩৭");
+        test.equal(fmt.format(date), "অপৰাহ্ন ১.৪৫.৩৭");
         test.done();
     },
     
@@ -1191,11 +1190,9 @@ module.exports.testdatefmt_as_IN = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "১৩:৪৫");
+        test.equal(fmt.format(date), "অপৰাহ্ন ১.৪৫");
         test.done();
     },
-    
-    
     
     testDateFmtINFullTimeComponentsHMAZ_as_IN: function(test) {
         test.expect(2);
@@ -1218,7 +1215,7 @@ module.exports.testdatefmt_as_IN = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "১৩:৪৫:৩৭ IST");
+        test.equal(fmt.format(date), "অপৰাহ্ন ১.৪৫.৩৭ IST");
         test.done();
     },
     
@@ -1237,7 +1234,7 @@ module.exports.testdatefmt_as_IN = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "১৩:৪৫:৩৭");
+        test.equal(fmt.format(date), "অপৰাহ্ন ১.৪৫.৩৭");
         test.done();
     },
     
@@ -1262,7 +1259,7 @@ module.exports.testdatefmt_as_IN = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "১৩:৪৫:৩৭ IST");
+        test.equal(fmt.format(date), "অপৰাহ্ন ১.৪৫.৩৭ IST");
         test.done();
     },
     
@@ -1287,7 +1284,7 @@ module.exports.testdatefmt_as_IN = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "১৩:৪৫:৩৭ IST");
+        test.equal(fmt.format(date), "অপৰাহ্ন ১.৪৫.৩৭ IST");
         test.done();
     },
     
@@ -1312,7 +1309,7 @@ module.exports.testdatefmt_as_IN = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "১৩:৪৫:৩৭ IST");
+        test.equal(fmt.format(date), "অপৰাহ্ন ১.৪৫.৩৭ IST");
         test.done();
     },
     /*

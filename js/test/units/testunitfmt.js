@@ -485,7 +485,7 @@ module.exports.testunitfmt = {
 
         var uf = new UnitFmt({locale:"fr-FR",autoConvert:false});
         var str = uf.format(m1);
-        test.equal(str, "1 000 centimètres carrés");
+        test.equal(str, "1 000 centimètres carrés");
         test.done();
     },
 
@@ -563,7 +563,7 @@ module.exports.testunitfmt = {
 
         var uf = new UnitFmt({locale:"fr-FR",autoConvert:false});
         var str = uf.format(m1);
-        test.equal(str, "1 000 yards carrés");
+        test.equal(str, "1 000 yards carrés");
         test.done();
     },
 
@@ -617,7 +617,7 @@ module.exports.testunitfmt = {
 
         var uf = new UnitFmt({locale:"fr-FR",autoConvert:false,autoScale:false});
         var str = uf.format(m1);
-        test.equal(str, "1 000 kilooctets");
+        test.equal(str, "1 000 kilooctets");
         test.done();
     },
 
@@ -695,7 +695,7 @@ module.exports.testunitfmt = {
 
         var uf = new UnitFmt({locale:"fr-FR",autoConvert:false,autoScale:false});
         var str = uf.format(m1);
-        test.equal(str, "1 000 gigabits");;
+        test.equal(str, "1 000 gigabits");;
         test.done();
     },
 
@@ -761,7 +761,7 @@ module.exports.testunitfmt = {
 
         var uf = new UnitFmt({locale:"fr-FR",autoConvert:false,autoScale:false});
         var str = uf.format(m1);
-        test.equal(str, "1 000 joules");
+        test.equal(str, "1 000 joules");
         test.done();
     },
 
@@ -892,7 +892,7 @@ module.exports.testunitfmt = {
 
         var uf = new UnitFmt({locale:"fr-FR",autoConvert:false,autoScale:false});
         var str = uf.format(m1);
-        test.equal(str, "1 000 miles par gallon");
+        test.equal(str, "1 000 miles par gallon");
         test.done();
     },
 
@@ -970,7 +970,7 @@ module.exports.testunitfmt = {
 
         var uf = new UnitFmt({locale:"fr-FR",autoConvert:false,autoScale:false});
         var str = uf.format(m1);
-        test.equal(str, "1 000 mètres");
+        test.equal(str, "1 000 mètres");
         test.done();
     },
 
@@ -1048,7 +1048,7 @@ module.exports.testunitfmt = {
 
         var uf = new UnitFmt({locale:"fr-FR",autoConvert:true,autoScale:false});
         var str = uf.format(m1);
-        test.equal(str, "1 000 centimètres");
+        test.equal(str, "1 000 centimètres");
         test.done();
     },
 
@@ -1113,7 +1113,7 @@ module.exports.testunitfmt = {
 
         var uf = new UnitFmt({locale:"fr-FR",autoConvert:false,autoScale:false});
         var str = uf.format(m1);
-        test.equal(str, "1 000 microgrammes");
+        test.equal(str, "1 000 microgrammes");
         test.done();
     },
 
@@ -1126,7 +1126,7 @@ module.exports.testunitfmt = {
 
         var uf = new UnitFmt({locale:"fr-FR",autoConvert:false,autoScale:false,length:"short"});
         var str = uf.format(m1);
-        test.equal(str, "2 000 lb");
+        test.equal(str, "2 000 lb");
         test.done();
     },
 
@@ -1270,7 +1270,7 @@ module.exports.testunitfmt = {
 
         var uf = new UnitFmt({locale:"fr-FR",autoConvert:false,autoScale:false});
         var str = uf.format(m1);
-        test.equal(str, "1 000 miles par heure");
+        test.equal(str, "1 000 miles par heure");
         test.done();
     },
 
@@ -1453,7 +1453,7 @@ module.exports.testunitfmt = {
         var uf = new UnitFmt({locale:"fr-FR",autoConvert:true,autoScale:true,length:"short",maxFractionDigits: 9});
         var str = uf.format(m1);
 
-        test.equal(str, "1 093,333333333 °C");
+        test.equal(str, "1 093,333333333 °C");
         test.done();
     },
 
@@ -1505,7 +1505,7 @@ module.exports.testunitfmt = {
 
         var uf = new UnitFmt({locale:"fr-FR",length:"long"});
         var str = uf.format(m1);
-        test.equal(str, "1 000 degrés Celsius");
+        test.equal(str, "1 000 degrés Celsius");
         test.done();
     },
 
@@ -1570,7 +1570,7 @@ module.exports.testunitfmt = {
 
         var uf = new UnitFmt({locale:"fr-FR",autoConvert:false,autoScale:false});
         var str = uf.format(m1);
-        test.equal(str, "1 000 millisecondes");
+        test.equal(str, "1 000 millisecondes");
         test.done();
     },
 
@@ -1635,7 +1635,7 @@ module.exports.testunitfmt = {
 
         var uf = new UnitFmt({locale:"fr-FR",length:"long",autoConvert:false,autoScale:false});
         var str = uf.format(m1);
-        test.equal(str, "1 000 mois");
+        test.equal(str, "1 000 mois");
         test.done();
     },
 
@@ -1700,7 +1700,7 @@ module.exports.testunitfmt = {
 
         var uf = new UnitFmt({locale:"fr-FR",autoConvert:false,autoScale:false});
         var str = uf.format(m1);
-        test.equal(str, "1 000 litres");
+        test.equal(str, "1 000 litres");
         test.done();
     },
 
@@ -1882,7 +1882,7 @@ module.exports.testunitfmt = {
 
         var uf = new UnitFmt({locale: "fr-FR",length:"long",autoConvert:false,autoScale: false});
         var str = uf.format(m1);
-        test.equal(str, "1 000 mégaoctets par seconde");
+        test.equal(str, "1 000 mégaoctets par seconde");
         test.done();
     },
 
@@ -1895,7 +1895,7 @@ module.exports.testunitfmt = {
 
         var uf = new UnitFmt({locale: "fr-FR",length:"short",autoConvert:false,autoScale: false});
         var str = uf.format(m1);
-        test.equal(str, "1 000 Mo/s");
+        test.equal(str, "1 000 Mo/s");
         test.done();
     },
 

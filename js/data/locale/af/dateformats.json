@@ -3,10 +3,10 @@
         "order": "{date} {time}",
         "date": {
             "dmwy": {
-                "f": "EEEE, dd MMMM yyyy",
-                "l": "EEE, dd MMMM yyyy",
-                "m": "EE, dd MMM yyyy",
-                "s": "E, yyyy-MM-dd"
+                "f": "EEEE dd MMMM yyyy",
+                "l": "EEE dd MMMM yyyy",
+                "m": "EE dd MMM yyyy",
+                "s": "E yyyy-MM-dd"
             },
             "dmy": {
                 "f": "dd MMMM yyyy",
@@ -15,10 +15,10 @@
                 "s": "yyyy-MM-dd"
             },
             "dmw": {
-                "f": "EEEE, dd MMMM",
-                "l": "EEE, dd MMMM",
-                "m": "EE, dd MMM",
-                "s": "E, MM-dd"
+                "f": "EEEE dd MMMM",
+                "l": "EEE dd MMMM",
+                "m": "EE dd MMM",
+                "s": "E MM-dd"
             },
             "dm": {
                 "f": "dd MMMM",
@@ -33,10 +33,10 @@
                 "s": "yyyy-MM"
             },
             "dw": {
-                "f": "EEEE, dd",
-                "l": "EEE, dd",
-                "m": "EE, dd",
-                "s": "E, dd"
+                "f": "EEEE dd",
+                "l": "EEE dd",
+                "m": "EE dd",
+                "s": "E dd"
             },
             "w": {
                 "f": "EEEE",

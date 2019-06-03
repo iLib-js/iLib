@@ -56,7 +56,7 @@ module.exports.testdatefmtrange_he_IL = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "‏31‏.12‏.2011, ‏13:45 – ‏14:30");
+        test.equal(fmt.format(start, end), '‏31.12.2011, ‏13:45 – ‏14:30');
         test.done();
     },
     testDateRngFmtILRangeinDayMedium: function(test) {
@@ -161,7 +161,7 @@ module.exports.testdatefmtrange_he_IL = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "‏30‏.12‏.2011, ‏13:45 – ‏31‏.12‏.2011, ‏14:30");
+        test.equal(fmt.format(start, end), '‏30.12.2011, ‏13:45 – ‏31.12.2011, ‏14:30');
         test.done();
     },
     testDateRngFmtILRangeNextDayMedium: function(test) {
@@ -266,7 +266,7 @@ module.exports.testdatefmtrange_he_IL = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "‏20 – ‏31‏.12‏.2011");
+        test.equal(fmt.format(start, end), '‏20 – ‏31.12.2011');
         test.done();
     },
     testDateRngFmtILRangeMultiDayMedium: function(test) {
@@ -371,7 +371,7 @@ module.exports.testdatefmtrange_he_IL = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "‏20‏.11 – ‏31‏.12‏.2011");
+        test.equal(fmt.format(start, end), '‏20.11 – ‏31.12.2011');
         test.done();
     },
     testDateRngFmtILRangeNextMonthMedium: function(test) {
@@ -476,7 +476,7 @@ module.exports.testdatefmtrange_he_IL = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "‏20‏.11‏.2011 – ‏31‏.1‏.2012");
+        test.equal(fmt.format(start, end), '‏20.11.2011 – ‏31.1.2012');
         test.done();
     },
     testDateRngFmtILRangeNextYearMedium: function(test) {
@@ -581,7 +581,7 @@ module.exports.testdatefmtrange_he_IL = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "‏11‏.2011 – ‏1‏.2014");
+        test.equal(fmt.format(start, end), '‏11.2011 – ‏1.2014');
         test.done();
     },
     testDateRngFmtILRangeMultiYearMedium: function(test) {
@@ -607,7 +607,7 @@ module.exports.testdatefmtrange_he_IL = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "‏נוב׳ 2011 – ינו׳ 2014");
+        test.equal(fmt.format(start, end), 'נוב׳ 2011 – ינו׳ 2014');
         test.done();
     },
     testDateRngFmtILRangeMultiYearLong: function(test) {
@@ -633,7 +633,7 @@ module.exports.testdatefmtrange_he_IL = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "‏נובמבר 2011 – ינואר 2014");
+        test.equal(fmt.format(start, end), 'נובמבר 2011 – ינואר 2014');
         test.done();
     },
     testDateRngFmtILRangeMultiYearFull: function(test) {
@@ -659,7 +659,7 @@ module.exports.testdatefmtrange_he_IL = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "‏נובמבר 2011 – ינואר 2014");
+        test.equal(fmt.format(start, end), 'נובמבר 2011 – ינואר 2014');
         test.done();
     },
     testDateRngFmtILManyYearsFull: function(test) {

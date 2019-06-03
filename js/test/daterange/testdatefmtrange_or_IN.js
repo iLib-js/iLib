@@ -56,7 +56,7 @@ module.exports.testdatefmtrange_or_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "31-12-11 1:45 PM – 2:30 PM");
+        test.equal(fmt.format(start, end), '12/31/11, 1:45 PM – 2:30 PM');
         test.done();
     },
     testDateRngFmtRangeinDayMedium_or_IN: function(test) {
@@ -82,7 +82,7 @@ module.exports.testdatefmtrange_or_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "31 ଡିସେମ୍ବର 2011 1:45 PM – 2:30 PM");
+        test.equal(fmt.format(start, end), 'ଡିସେମ୍ବର 31, 2011, 1:45 PM – 2:30 PM');
         test.done();
     },
     testDateRngFmtRangeinDayLong_or_IN: function(test) {
@@ -108,7 +108,7 @@ module.exports.testdatefmtrange_or_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "31 ଡିସେମ୍ବର 2011 1:45 PM – 2:30 PM");
+        test.equal(fmt.format(start, end), '1:45 PM – 2:30 PM ଠାରେ ଡିସେମ୍ବର 31, 2011');
         test.done();
     },
     testDateRngFmtRangeinDayFull_or_IN: function(test) {
@@ -134,7 +134,7 @@ module.exports.testdatefmtrange_or_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "31 ଡିସେମ୍ବର 2011 1:45 PM – 2:30 PM");
+        test.equal(fmt.format(start, end), '1:45 PM – 2:30 PM ଠାରେ ଡିସେମ୍ବର 31, 2011');
         test.done();
     },
     
@@ -161,7 +161,7 @@ module.exports.testdatefmtrange_or_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "30-12-11 1:45 PM – 31-12-11 2:30 PM");
+        test.equal(fmt.format(start, end), '12/30/11, 1:45 PM – 12/31/11, 2:30 PM');
         test.done();
     },
     testDateRngFmtRangeNextDayMedium_or_IN: function(test) {
@@ -187,7 +187,7 @@ module.exports.testdatefmtrange_or_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "30 ଡିସେମ୍ବର 2011 1:45 PM – 31 ଡିସେମ୍ବର 2011 2:30 PM");
+        test.equal(fmt.format(start, end), 'ଡିସେମ୍ବର 30, 2011, 1:45 PM – ଡିସେମ୍ବର 31, 2011, 2:30 PM');
         test.done();
     },
     testDateRngFmtRangeNextDayLong_or_IN: function(test) {
@@ -213,7 +213,7 @@ module.exports.testdatefmtrange_or_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "30 ଡିସେମ୍ବର 2011 1:45 PM – 31 ଡିସେମ୍ବର 2011 2:30 PM");
+        test.equal(fmt.format(start, end), '1:45 PM ଠାରେ ଡିସେମ୍ବର 30, 2011 – 2:30 PM ଠାରେ ଡିସେମ୍ବର 31, 2011');
         test.done();
     },
     testDateRngFmtRangeNextDayFull_or_IN: function(test) {
@@ -239,7 +239,7 @@ module.exports.testdatefmtrange_or_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "30 ଡିସେମ୍ବର 2011 1:45 PM – 31 ଡିସେମ୍ବର 2011 2:30 PM");
+        test.equal(fmt.format(start, end), '1:45 PM ଠାରେ ଡିସେମ୍ବର 30, 2011 – 2:30 PM ଠାରେ ଡିସେମ୍ବର 31, 2011');
         test.done();
     },
     
@@ -266,7 +266,7 @@ module.exports.testdatefmtrange_or_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "20 – 31-12-11");
+        test.equal(fmt.format(start, end), '12/20/11 – 12/31/11');
         test.done();
     },
     testDateRngFmtRangeMultiDayMedium_or_IN: function(test) {
@@ -292,7 +292,7 @@ module.exports.testdatefmtrange_or_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "20 – 31 ଡିସେମ୍ବର 2011");
+        test.equal(fmt.format(start, end), 'ଡିସେମ୍ବର 20 – 31, 2011');
         test.done();
     },
     testDateRngFmtRangeMultiDayLong_or_IN: function(test) {
@@ -318,7 +318,7 @@ module.exports.testdatefmtrange_or_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "20 – 31 ଡିସେମ୍ବର 2011");
+        test.equal(fmt.format(start, end), 'ଡିସେମ୍ବର 20 – 31, 2011');
         test.done();
     },
     testDateRngFmtRangeMultiDayFull_or_IN: function(test) {
@@ -344,7 +344,7 @@ module.exports.testdatefmtrange_or_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "20 – 31 ଡିସେମ୍ବର 2011");
+        test.equal(fmt.format(start, end), 'ଡିସେମ୍ବର 20 – 31, 2011');
         test.done();
     },
     
@@ -371,7 +371,7 @@ module.exports.testdatefmtrange_or_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "20-11 – 31-12-11");
+        test.equal(fmt.format(start, end), '11/20/11 – 12/31/11');
         test.done();
     },
     testDateRngFmtRangeNextMonthMedium_or_IN: function(test) {
@@ -397,7 +397,7 @@ module.exports.testdatefmtrange_or_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "20 ନଭେମ୍ବର – 31 ଡିସେମ୍ବର 2011");
+        test.equal(fmt.format(start, end), 'ନଭେମ୍ବର 20 – ଡିସେମ୍ବର 31, 2011');
         test.done();
     },
     testDateRngFmtRangeNextMonthLong_or_IN: function(test) {
@@ -423,7 +423,7 @@ module.exports.testdatefmtrange_or_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "20 ନଭେମ୍ବର – 31 ଡିସେମ୍ବର 2011");
+        test.equal(fmt.format(start, end), 'ନଭେମ୍ବର 20 – ଡିସେମ୍ବର 31, 2011');
         test.done();
     },
     testDateRngFmtRangeNextMonthFull_or_IN: function(test) {
@@ -449,7 +449,7 @@ module.exports.testdatefmtrange_or_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "20 ନଭେମ୍ବର – 31 ଡିସେମ୍ବର 2011");
+        test.equal(fmt.format(start, end), 'ନଭେମ୍ବର 20 – ଡିସେମ୍ବର 31, 2011');
         test.done();
     },
     
@@ -476,7 +476,7 @@ module.exports.testdatefmtrange_or_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "20-11-11 – 31-1-12");
+        test.equal(fmt.format(start, end), '11/20/11 – 1/31/12');
         test.done();
     },
     testDateRngFmtRangeNextYearMedium_or_IN: function(test) {
@@ -502,7 +502,7 @@ module.exports.testdatefmtrange_or_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "20 ନଭେମ୍ବର 2011 – 31 ଜାନୁଆରୀ 2012");
+        test.equal(fmt.format(start, end), 'ନଭେମ୍ବର 20, 2011 – ଜାନୁଆରୀ 31, 2012');
         test.done();
     },
     testDateRngFmtRangeNextYearLong_or_IN: function(test) {
@@ -528,7 +528,7 @@ module.exports.testdatefmtrange_or_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "20 ନଭେମ୍ବର 2011 – 31 ଜାନୁଆରୀ 2012");
+        test.equal(fmt.format(start, end), 'ନଭେମ୍ବର 20, 2011 – ଜାନୁଆରୀ 31, 2012');
         test.done();
     },
     testDateRngFmtRangeNextYearFull_or_IN: function(test) {
@@ -554,7 +554,7 @@ module.exports.testdatefmtrange_or_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "20 ନଭେମ୍ବର 2011 – 31 ଜାନୁଆରୀ 2012");
+        test.equal(fmt.format(start, end), 'ନଭେମ୍ବର 20, 2011 – ଜାନୁଆରୀ 31, 2012');
         test.done();
     },
     
@@ -581,7 +581,7 @@ module.exports.testdatefmtrange_or_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "11-11 – 1-14");
+        test.equal(fmt.format(start, end), "11/11 – 1/14");
         test.done();
     },
     testDateRngFmtRangeMultiYearMedium_or_IN: function(test) {

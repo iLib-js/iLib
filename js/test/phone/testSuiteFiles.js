@@ -18,7 +18,6 @@
  */
 
 module.exports.files = [
-    "testimsi.js",
     "testnormalize.js",
     "testnormalize_BR.js",
     "testnormalize_JP.js",
@@ -84,5 +83,6 @@ module.exports.files = [
     "testphonefmtasync.js",
     "testphonegeoasync.js",
     "testphonelocasync.js",
-    "testphonenumasync.js"
+    "testphonenumasync.js",
+    "testimsi.js",
 ];

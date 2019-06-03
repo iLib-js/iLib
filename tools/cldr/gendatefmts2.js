@@ -2,7 +2,7 @@
  * gendatefmts2.js - ilib tool to generate the dateformats.json files from
  * the CLDR data files
  *
- * Copyright © 2013-2017, JEDLSoft
+ * Copyright © 2013-2019, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -22,6 +22,7 @@
  */
 var fs = require('fs');
 var path = require('path');
+var cldr = require('cldr-data');
 
 var common = require('./common');
 var merge = common.merge;
@@ -29,17 +30,38 @@ var Locale = common.Locale;
 var mergeAndPrune = common.mergeAndPrune;
 var makeDirs = common.makeDirs;
 
+var hardCodeData = {
+    "zh": {
+        "azh0": "凌晨",
+        "azh1": "早上",
+        "azh2": "上午",
+        "azh3": "正午",
+        "azh4": "下午",
+        "azh5": "傍晚",
+        "azh6": "晚上",
+        "ordinalChoice": "#{num}天"
+    },
+    "am": {
+      "a0-ethiopic": "ጥዋት",
+      "a1-ethiopic": "ቀትር",
+      "a2-ethiopic": "ከሰዓት",
+      "a3-ethiopic": "ከምሽቱ",
+      "a4-ethiopic": "ከሌሊቱ",
+    },
+    "de": {
+        "ordinalChoice": "#{num}."
+    }
+}
+
 var aux = require("./datefmts.js");
 
 function usage() {
-    console.log("Usage: gendatefmts [-h] CLDR_date_dir locale_data_dir\n" +
+    console.log("Usage: gendatefmts [-h] [ locale_data_dir ]\n" +
         "Generate date formats information files.\n" +
         "-h or --help\n" +
         "  this help\n" +
-        "CLDR_json_dir\n" +
-        "  the top level of the Unicode CLDR distribution in json format\n" +
         "locale_data_dir\n" +
-        "  the top level of the ilib locale data directory\n");
+    "  the top level of the ilib locale data directory\n");
     process.exit(1);
 }
 
@@ -74,19 +96,18 @@ function anyProperties(data) {
 function writeSystemResources(language, script, region, data) {
     var path = calcLocalePath(language, script, region, "");
     // if (data && data.generated) {
-        if (anyProperties(data)) {
-            console.log("Writing " + path + "\n");
-            makeDirs(path);
-            fs.writeFileSync(path + "/sysres.json", JSON.stringify(data, true, 4), "utf-8");
-        } else {
-            console.log("Skipping empty " + path + "\n");
-        }
+    if (anyProperties(data)) {
+        console.log("Writing " + path + "\n");
+        makeDirs(path);
+        fs.writeFileSync(path + "/sysres.json", JSON.stringify(data, true, 4), "utf-8");
+    } else {
+        console.log("Skipping empty " + path + "\n");
+    }
     // } else {
-        // console.log("Skipping existing " + path + "\n");
+    // console.log("Skipping existing " + path + "\n");
     // }
 }
 
-var cldrDirName;
 var localeDirName;
 var tmpDirName = "./tmp";
 process.argv.forEach(function (val, index, array) {
@@ -95,43 +116,15 @@ process.argv.forEach(function (val, index, array) {
     }
 });
 
-if (process.argv.length < 3) {
-    console.error('Error: not enough arguments');
-    usage();
-}
-
-if (!fs.existsSync(process.argv[2])) {
-    console.error("Could not access CLDR dir " + process.argv[2]);
-    usage();
-}
-
-cldrDateDirName = process.argv[2] + "cldr-dates-full/";
-cldrUnitDirName = process.argv[2] + "cldr-units-full/";
-cldrMiscDirName = process.argv[2] + "cldr-misc-full/";
-cldrpersianCalDirName = process.argv[2] + "cldr-cal-persian-full/";
-cldrethiopicCalDirName = process.argv[2] + "cldr-cal-ethiopic-full/";
-localeDirName = process.argv[3];
+localeDirName = process.argv[2];
 
 
-console.log("gendatefmts - generate date and time formats information files.\n" +
-    "Copyright (c) 2013-2017 JEDLSoft\n");
+console.log("gendatefmts2 - generate date and time formats information files.\n" +
+"Copyright (c) 2013-2019 JEDLSoft\n");
 
-console.log("CLDR dates dir: " + cldrDateDirName);
-console.log("CLDR units dir: " + cldrUnitDirName);
-console.log("CLDR misc dir: " + cldrMiscDirName);
-console.log("CLDR persian dir: " + cldrpersianCalDirName);
-console.log("CLDR ethiopic dir: " + cldrethiopicCalDirName);
 console.log("locale dir: " + localeDirName);
 
 
-if (!fs.existsSync(cldrUnitDirName)) {
-    console.error("Could not access CLDR dir " + cldrUnitDirName);
-    usage();
-}
-if (!fs.existsSync(cldrMiscDirName)) {
-    console.error("Could not access CLDR dir " + cldrMiscDirName);
-    usage();
-}
 if (!fs.existsSync(localeDirName)) {
     localeDirName = tmpDirName;
     // console.error("Could not access locale data directory " + localeDirName);
@@ -156,151 +149,142 @@ aux.walkLocaleDir(systemResources, /sysres\.json$/, localeDirName, "");
 
 console.log("\nMerging formats forward ...");
 
-// root is a special case -- if a calendar names another calendar, then it shares the formats with that
-// calendar. Need to copy the formats over in that case, or else the merge will not work correctly.
+//root is a special case -- if a calendar names another calendar, then it shares the formats with that
+//calendar. Need to copy the formats over in that case, or else the merge will not work correctly.
 for (var cal in dateFormats) {
-	if (typeof(dateFormats[cal]) === "string" && typeof(dateFormats[dateFormats[cal]]) === "object") {
-		dateFormats[cal] = dateFormats[dateFormats[cal]];
-	} 
+    if (typeof(dateFormats[cal]) === "string" && typeof(dateFormats[dateFormats[cal]]) === "object") {
+        dateFormats[cal] = dateFormats[dateFormats[cal]];
+    }
 }
 aux.mergeFormats(dateFormats, dateFormats, []);
 aux.mergeFormats(systemResources, systemResources, []);
 
 console.log("\nReading CLDR data ...\n");
 
-//svar dir = path.join(cldrDirName, "main");
-var dateDir = path.join(cldrDateDirName, "main");
-var unitDir = path.join(cldrUnitDirName, "main");
-var miscDir = path.join(cldrMiscDirName, "main");
-var persianDir = path.join(cldrpersianCalDirName, "main");
-var ethiopicDir = path.join(cldrethiopicCalDirName, "main");
-
-var list = fs.readdirSync(dateDir); //list will be same regardless package.
+var list = cldr.availableLocales;
+// uncomment for debugging:
 // var list = ["as"];
 
-// these locales have the wrong data in CLDR and need to be skipped for now
+//these locales have the wrong data in CLDR and need to be skipped for now
 var skipList = [""];
 
 list.forEach(function (file) {
-	var locale = file ? new Locale(file) : undefined;
-	if (locale.getVariant()) {
-		// ignore locales with variants for now
-		return;
-	}
-	
-	if (skipList.indexOf(file) > -1) {
-		// skip these, as the CLDR data has problems
-		return;
-	}
-	
-	var sourcePath = path.join(dateDir, file);
-	var sourceUnitPath = path.join(unitDir, file);
-	var sourceMiscPath = path.join(miscDir, file);
-	var sourcePersianPath = path.join(persianDir, file);
-	var sourceEthiopicPath = path.join(ethiopicDir, file);
+    var locale = file ? new Locale(file) : undefined;
+    if (locale.getVariant()) {
+        // ignore locales with variants for now
+        return;
+    }
 
-	console.log(file);
-	var stat = fs.statSync(sourcePath);
-	if (stat && stat.isDirectory()) {
-		var localeComponents = [];
-		
-		var language = locale.getLanguage(),
-			script = locale.getScript(),
-			region = locale.getRegion();
-		var cal, newFormats, group;
-		var units;
-		
-		if (language) localeComponents.push(language);
-		if (script) localeComponents.push(script);
-		if (region) localeComponents.push(region);
-		
-		if (language === "fa") {
-			// add the settings for the persian calendar as well
-			cal = aux.loadFile(path.join(sourcePersianPath, "ca-persian.json"));
-			newFormats = aux.createDateFormats(language, script, region, cal.main[file].dates.calendars);
-			// console.log("data is " + JSON.stringify(newFormats, undefined, 4) + "\n");
-			group = aux.getFormatGroup(dateFormats, localeComponents);
-			group.data = merge(group.data || {}, newFormats);
-			
-			newFormats = aux.createSystemResources(cal.main[file].dates.calendars, language);
-			// console.log("data is " + JSON.stringify(newFormats, undefined, 4) + "\n");
-			group = aux.getFormatGroup(systemResources, localeComponents);
-			group.data = merge(group.data || {}, newFormats);
-			
-		} else if (language === "am") {
-			// add the settings for the ethiopic calendar as well
-			cal = aux.loadFile(path.join(sourceEthiopicPath, "ca-ethiopic.json"));
-			newFormats = aux.createDateFormats(language, script, region, cal.main[file].dates.calendars);
-			// console.log("data is " + JSON.stringify(newFormats, undefined, 4) + "\n");
-			group = aux.getFormatGroup(dateFormats, localeComponents);
-			group.data = merge(group.data || {}, newFormats);
-			
-			newFormats = aux.createSystemResources(cal.main[file].dates.calendars, language);
-			// console.log("data is " + JSON.stringify(newFormats, undefined, 4) + "\n");
-			var group = aux.getFormatGroup(systemResources, localeComponents);
-			group.data = merge(group.data || {}, newFormats);
-		} else if (language === "th") {
-			// format is the same as gregorian, so load and rename the gregorian settings
-			cal = aux.loadFile(path.join(sourcePath, "ca-gregorian.json"));
-			var cals = cal.main[file].dates.calendars;
-			cals.thaisolar = cals.gregorian;
-			// console.log("cals is " + JSON.stringify(cals, undefined, 4) + "\n");
-			newFormats = aux.createDateFormats(language, script, region, cals);
+    if (skipList.indexOf(file) > -1) {
+        // skip these, as the CLDR data has problems
+        return;
+    }
 
-			group = aux.getFormatGroup(dateFormats, localeComponents);
-			group.data = merge(group.data || {}, newFormats);
-			
-			newFormats = aux.createSystemResources(cals, language);
-			// console.log("data is " + JSON.stringify(newFormats, undefined, 4) + "\n");
-			group = aux.getFormatGroup(systemResources, localeComponents);
-			group.data = merge(group.data || {}, newFormats);
-		}
-		
-		// do regular gregorian for all locales
-		cal = aux.loadFile(path.join(sourcePath, "ca-gregorian.json"));
-		newFormats = aux.createDateFormats(language, script, region, cal.main[file].dates.calendars);
-		//console.log("data is " + JSON.stringify(newFormats, undefined, 4) + "\n");
-		group = aux.getFormatGroup(dateFormats, localeComponents);
-		group.data = merge(group.data || {}, newFormats);
-		
-		newFormats = aux.createSystemResources(cal.main[file].dates.calendars, language);
-		//console.log("data is " + JSON.stringify(newFormats, undefined, 4) + "\n");
-		group = aux.getFormatGroup(systemResources, localeComponents);
-		group.data = merge(group.data || {}, newFormats);
+    console.log(file);
+    var localeComponents = [];
 
-		// date/time duration.
-		units = aux.loadFile(path.join(sourceUnitPath, "units.json"));
-		newFormats = aux.createDurationResources(sourceUnitPath, sourcePath,units.main[file].units, language, script);
-		//console.log("Duration data is " + JSON.stringify(newFormats, undefined, 4) + "\n");
-		group = aux.getFormatGroup(systemResources, localeComponents);
-		group.data = merge(group.data || {}, newFormats);
+    var language = locale.getLanguage(),
+    script = locale.getScript(),
+    region = locale.getRegion();
+    var cal, newFormats, group;
+    var units;
 
-        // relative time format
-        dateFields = aux.loadFile(path.join(sourcePath, "dateFields.json"));
-		newFormats = aux.createRelativeFormatResources(sourceUnitPath, sourcePath, dateFields.main[file].dates.fields, language, script);
-        //console.log("Relative format data is " + JSON.stringify(newFormats, undefined, 4) + "\n");
-		group = aux.getFormatGroup(systemResources, localeComponents);
-		// group.data = merge(group.data || {}, newFormats);
+    if (language) localeComponents.push(language);
+    if (script) localeComponents.push(script);
+    if (region) localeComponents.push(region);
 
-		// separator
-		seperator = aux.loadFile(path.join(sourceMiscPath, "listPatterns.json"));
-		newFormats = aux.createSeperatorResources(sourcePath, seperator.main[file].listPatterns, language);
-		//console.log("listPattern data is " + JSON.stringify(newFormats, undefined, 4) + "\n");
-		group = aux.getFormatGroup(systemResources, localeComponents);
-		group.data = merge(group.data || {}, newFormats);
+    var sourceDir = path.join("cldr-data/main", file);
 
-	}
+    if (language === "fa") {
+        // add the settings for the persian calendar as well
+        cal = require(path.join(sourceDir, "ca-persian.json"));
+        newFormats = aux.createDateFormats(language, script, region, cal.main[file].dates.calendars);
+        // console.log("data is " + JSON.stringify(newFormats, undefined, 4) + "\n");
+        group = aux.getFormatGroup(dateFormats, localeComponents);
+        group.data = merge(group.data || {}, newFormats);
+
+        newFormats = aux.createSystemResources(cal.main[file].dates.calendars, language);
+        // console.log("data is " + JSON.stringify(newFormats, undefined, 4) + "\n");
+        group = aux.getFormatGroup(systemResources, localeComponents);
+        group.data = merge(group.data || {}, newFormats);
+
+    } else if (language === "am") {
+        // add the settings for the ethiopic calendar as well
+        cal = require(path.join(sourceDir, "ca-ethiopic.json"));
+        newFormats = aux.createDateFormats(language, script, region, cal.main[file].dates.calendars);
+        // console.log("data is " + JSON.stringify(newFormats, undefined, 4) + "\n");
+        group = aux.getFormatGroup(dateFormats, localeComponents);
+        group.data = merge(group.data || {}, newFormats);
+
+        newFormats = aux.createSystemResources(cal.main[file].dates.calendars, language);
+        // console.log("data is " + JSON.stringify(newFormats, undefined, 4) + "\n");
+        var group = aux.getFormatGroup(systemResources, localeComponents);
+        group.data = merge(group.data || {}, newFormats);
+    } else if (language === "th") {
+        // format is the same as gregorian, so load and rename the gregorian settings
+        cal = require(path.join(sourceDir, "ca-gregorian.json"));
+        var cals = cal.main[file].dates.calendars;
+        cals.thaisolar = cals.gregorian;
+        // console.log("cals is " + JSON.stringify(cals, undefined, 4) + "\n");
+        newFormats = aux.createDateFormats(language, script, region, cals);
+
+        group = aux.getFormatGroup(dateFormats, localeComponents);
+        group.data = merge(group.data || {}, newFormats);
+
+        newFormats = aux.createSystemResources(cals, language);
+        // console.log("data is " + JSON.stringify(newFormats, undefined, 4) + "\n");
+        group = aux.getFormatGroup(systemResources, localeComponents);
+        group.data = merge(group.data || {}, newFormats);
+    }
+
+    // do regular gregorian for all locales
+    cal = require(path.join(sourceDir, "ca-gregorian.json"));
+    newFormats = aux.createDateFormats(language, script, region, cal.main[file].dates.calendars);
+    //console.log("data is " + JSON.stringify(newFormats, undefined, 4) + "\n");
+    group = aux.getFormatGroup(dateFormats, localeComponents);
+    group.data = merge(group.data || {}, newFormats);
+
+    newFormats = aux.createSystemResources(cal.main[file].dates.calendars, language);
+    //console.log("data is " + JSON.stringify(newFormats, undefined, 4) + "\n");
+    group = aux.getFormatGroup(systemResources, localeComponents);
+    group.data = merge(group.data || {}, newFormats);
+
+    // date/time duration.
+    units = require(path.join(sourceDir, "units.json"));
+    newFormats = aux.createDurationResources(units.main[file].units, language, script);
+    //console.log("Duration data is " + JSON.stringify(newFormats, undefined, 4) + "\n");
+    group = aux.getFormatGroup(systemResources, localeComponents);
+    group.data = merge(group.data || {}, newFormats);
+
+    // relative time format
+    dateFields = require(path.join(sourceDir, "dateFields.json"));
+    newFormats = aux.createRelativeFormatResources(dateFields.main[file].dates.fields, language, script);
+    //console.log("Relative format data is " + JSON.stringify(newFormats, undefined, 4) + "\n");
+    group = aux.getFormatGroup(systemResources, localeComponents);
+    group.data = merge(group.data || {}, newFormats);
+
+    // separator
+    seperator = require(path.join(sourceDir, "listPatterns.json"));
+    newFormats = aux.createSeperatorResources(seperator.main[file].listPatterns, language);
+    //console.log("listPattern data is " + JSON.stringify(newFormats, undefined, 4) + "\n");
+    group = aux.getFormatGroup(systemResources, localeComponents);
+    group.data = merge(group.data || {}, newFormats);
+
+    if (hardCodeData.hasOwnProperty(language)) {
+        group.data = merge(group.data || {}, hardCodeData[language]);
+    }
+
 });
 
 console.log("\nMerging formats forward ...\n");
 
-// Need to merge forward because some of the locales added from CLDR are new and are
-// not fully merged yet. Promoting and pruning do not work so well when the tree is
-// not fully merged.
+//Need to merge forward because some of the locales added from CLDR are new and are
+//not fully merged yet. Promoting and pruning do not work so well when the tree is
+//not fully merged.
 ///aux.mergeFormats(dateFormats, dateFormats, []);
 ///aux.mergeFormats(systemResources, systemResources, []);
 
-// console.log("en-CA is " + JSON.stringify(dateFormats.en.CA.data, undefined, 4) + "\n");
+//console.log("en-CA is " + JSON.stringify(dateFormats.en.CA.data, undefined, 4) + "\n");
 
 console.log("\nPromoting sublocales ...\n");
 
@@ -317,16 +301,16 @@ for (var language in systemResources) {
 
 console.log("\nPruning duplicated formats ...\n");
 
-// Don't prune the root. Iterate through the first level so we can
-// skip the root and only prune the "language" level of the locale 
-// spec. (And recursively everything under it of course.)
+//Don't prune the root. Iterate through the first level so we can
+//skip the root and only prune the "language" level of the locale
+//spec. (And recursively everything under it of course.)
 ///aux.pruneFormats(dateFormats);
 
-// console.log("System resources before:\n" + JSON.stringify(systemResources, undefined, 4) + "\n");
-// fs.writeFileSync("pre.sysres.json", JSON.stringify(systemResources, undefined, 4), "utf-8");
+//console.log("System resources before:\n" + JSON.stringify(systemResources, undefined, 4) + "\n");
+//fs.writeFileSync("pre.sysres.json", JSON.stringify(systemResources, undefined, 4), "utf-8");
 ///aux.pruneFormats(systemResources);
-// console.log("System resources after:\n" + JSON.stringify(systemResources, undefined, 4) + "\n");
-// fs.writeFileSync("post.sysres.json", JSON.stringify(systemResources, undefined, 4), "utf-8");
+//console.log("System resources after:\n" + JSON.stringify(systemResources, undefined, 4) + "\n");
+//fs.writeFileSync("post.sysres.json", JSON.stringify(systemResources, undefined, 4), "utf-8");
 
 console.log("\nWriting out final files ...\n");
 
@@ -364,8 +348,7 @@ for (language in systemResources) {
     }
 }
 writeSystemResources(undefined, undefined, undefined, systemResources.data);
-// aux.writeFormats(localeDirName, "sysres.json", systemResources, []);
+//aux.writeFormats(localeDirName, "sysres.json", systemResources, []);
 console.log("\n");
 
 console.log("Done.");
-process.exit(0);

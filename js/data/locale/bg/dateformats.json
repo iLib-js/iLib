@@ -68,31 +68,31 @@
                 "h": "h",
                 "m": "mm",
                 "s": "ss",
-                "ah": "h a",
-                "hm": "h:mm",
+                "ah": "h 'ч'. a",
+                "hm": "h:mm 'ч'.",
                 "ms": "mm:ss",
-                "ahm": "h:mm a",
-                "hms": "h:mm:ss",
-                "hmz": "h:mm z",
-                "ahmz": "h:mm a z",
-                "ahms": "h:mm:ss a",
-                "hmsz": "h:mm:ss z",
-                "ahmsz": "h:mm:ss a z"
+                "ahm": "h:mm 'ч'. a",
+                "hms": "h:mm:ss 'ч'.",
+                "hmz": "h:mm 'ч'. z",
+                "ahmz": "h:mm 'ч'. a z",
+                "ahms": "h:mm:ss 'ч'. a",
+                "hmsz": "h:mm:ss 'ч'. z",
+                "ahmsz": "h:mm:ss 'ч'. a z"
             },
             "24": {
                 "h": "H",
                 "m": "mm",
                 "s": "ss",
                 "ah": "H",
-                "hm": "H:mm",
+                "hm": "H:mm 'ч'.",
                 "ms": "mm:ss",
-                "ahm": "H:mm",
-                "hms": "H:mm:ss",
-                "hmz": "H:mm z",
-                "ahmz": "H:mm z",
-                "ahms": "H:mm:ss",
-                "hmsz": "H:mm:ss z",
-                "ahmsz": "H:mm:ss z"
+                "ahm": "H:mm 'ч'.",
+                "hms": "H:mm:ss 'ч'.",
+                "hmz": "H:mm 'ч'. z",
+                "ahmz": "H:mm 'ч'. z",
+                "ahms": "H:mm:ss 'ч'.",
+                "hmsz": "H:mm:ss 'ч'. z",
+                "ahmsz": "H:mm:ss 'ч'. z"
             }
         },
         "range": {
@@ -145,11 +145,11 @@
                 "s": "{sm}.{sy} г. – {em}.{ey} г."
             },
             "c30": {
-                "f": "{sy} г. – {ey} г.",
-                "l": "{sy} г. – {ey} г.",
-                "m": "{sy} г. – {ey} г.",
-                "s": "{sy} г. – {ey} г."
-           }
+                "f": "{sy} – {ey}",
+                "l": "{sy} – {ey}",
+                "m": "{sy} – {ey}",
+                "s": "{sy} – {ey}"
+            }
         }
     }
 }

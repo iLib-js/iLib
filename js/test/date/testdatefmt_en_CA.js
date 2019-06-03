@@ -79,7 +79,7 @@ module.exports.testdatefmt_en_CA = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "Sep 29, 2011");
+        test.equal(fmt.format(date), "Sep. 29, 2011");
         test.done();
     },
     
@@ -136,7 +136,7 @@ module.exports.testdatefmt_en_CA = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "1:45 PM");
+        test.equal(fmt.format(date), "1:45 p.m.");
         test.done();
     },
     
@@ -155,7 +155,7 @@ module.exports.testdatefmt_en_CA = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "1:45 PM");
+        test.equal(fmt.format(date), "1:45 p.m.");
         test.done();
     },
     
@@ -174,7 +174,7 @@ module.exports.testdatefmt_en_CA = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "1:45 PM");
+        test.equal(fmt.format(date), "1:45 p.m.");
         test.done();
     },
     
@@ -193,7 +193,7 @@ module.exports.testdatefmt_en_CA = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "1:45 PM");
+        test.equal(fmt.format(date), "1:45 p.m.");
         test.done();
     },
     
@@ -212,7 +212,7 @@ module.exports.testdatefmt_en_CA = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "2011-09-29, 1:45 PM");
+        test.equal(fmt.format(date), "2011-09-29, 1:45 p.m.");
         test.done();
     },
     
@@ -231,7 +231,7 @@ module.exports.testdatefmt_en_CA = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "Sep 29, 2011, 1:45 PM");
+        test.equal(fmt.format(date), "Sep. 29, 2011, 1:45 p.m.");
         test.done();
     },
     
@@ -250,7 +250,7 @@ module.exports.testdatefmt_en_CA = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "September 29, 2011 at 1:45 PM");
+        test.equal(fmt.format(date), "September 29, 2011 at 1:45 p.m.");
         test.done();
     },
     
@@ -269,7 +269,7 @@ module.exports.testdatefmt_en_CA = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "September 29, 2011 at 1:45 PM");
+        test.equal(fmt.format(date), "September 29, 2011 at 1:45 p.m.");
         test.done();
     },
     
@@ -499,7 +499,7 @@ module.exports.testdatefmt_en_CA = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "1:45 PM");
+        test.equal(fmt.format(date), "1:45 p.m.");
         test.done();
     },
     
@@ -518,7 +518,7 @@ module.exports.testdatefmt_en_CA = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "2011-09-29, 1:45 PM");
+        test.equal(fmt.format(date), "2011-09-29, 1:45 p.m.");
         test.done();
     },
     
@@ -977,7 +977,7 @@ module.exports.testdatefmt_en_CA = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "1:45 PM");
+        test.equal(fmt.format(date), "1:45 p.m.");
         test.done();
     },
     
@@ -1027,7 +1027,7 @@ module.exports.testdatefmt_en_CA = {
             millisecond: 0, 
             timezone: "America/Toronto"
         });
-        test.equal(fmt.format(date), "1:45 PM EDT");
+        test.equal(fmt.format(date), "1:45 p.m. EDT");
         test.done();
     },
     
@@ -1047,7 +1047,7 @@ module.exports.testdatefmt_en_CA = {
             millisecond: 0, 
             timezone: "America/Toronto"
         });
-        test.equal(fmt.format(date), "1:45:37 PM");
+        test.equal(fmt.format(date), "1:45:37 p.m.");
         test.done();
     },
     
@@ -1097,7 +1097,7 @@ module.exports.testdatefmt_en_CA = {
             millisecond: 0, 
             timezone: "America/Toronto"
         });
-        test.equal(fmt.format(date), "1:45:37 PM EDT");
+        test.equal(fmt.format(date), "1:45:37 p.m. EDT");
         test.done();
     },
     
@@ -1232,7 +1232,7 @@ module.exports.testdatefmt_en_CA = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "1:45 PM");
+        test.equal(fmt.format(date), "1:45 p.m.");
         test.done();
     },
     
@@ -1282,7 +1282,7 @@ module.exports.testdatefmt_en_CA = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "1:45 PM EDT");
+        test.equal(fmt.format(date), "1:45 p.m. EDT");
         test.done();
     },
     
@@ -1301,7 +1301,7 @@ module.exports.testdatefmt_en_CA = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "1:45:37 PM");
+        test.equal(fmt.format(date), "1:45:37 p.m.");
         test.done();
     },
     
@@ -1351,7 +1351,7 @@ module.exports.testdatefmt_en_CA = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "1:45:37 PM EDT");
+        test.equal(fmt.format(date), "1:45:37 p.m. EDT");
         test.done();
     },
     

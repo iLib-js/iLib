@@ -30,7 +30,7 @@ var likelySubtags = require('cldr-data/supplemental/likelySubtags');
 var territoryContainment = require('cldr-data/supplemental/territoryContainment');
 
 function usage() {
-    console.log("Usage: genlikelyloc [-h] locale_data_dir\n" +
+    console.log("Usage: genlikelyloc [-h] [ locale_data_dir ]\n" +
             "Generate likely locale match information file.\n" +
             "-h or --help\n" +
             "  this help\n" +
@@ -47,12 +47,7 @@ process.argv.forEach(function (val, index, array) {
     }
 });
 
-if (process.argv.length < 3) {
-    console.error('Error: not enough arguments');
-    usage();
-}
-
-localeDirName = process.argv[2];
+localeDirName = process.argv[2] || "tmp";
 
 console.log("genlikelyloc - generate the localematch.json file.\n" +
         "Copyright (c) 2013-2018 JEDLSoft");

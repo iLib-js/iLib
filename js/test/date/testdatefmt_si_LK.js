@@ -564,7 +564,7 @@ module.exports.testdatefmt_si_LK = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "සැ");
+        test.equal(fmt.format(date), "ස");
         test.done();
     },
 

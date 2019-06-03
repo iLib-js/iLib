@@ -2,6 +2,8 @@
     "generated": true,
     "numfmt": {
         "script": "arabext",
+        "decimalChar": "٫",
+        "groupChar": "٬",
         "exponential": "×۱۰^",
         "currencyFormats": {
             "commonNegative": "‎-‎{s} {n}"

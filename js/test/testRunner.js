@@ -1,7 +1,7 @@
 /*
  * testRunner.js - top level test suite
  * 
- * Copyright © 2017-2018, JEDLSoft
+ * Copyright © 2017-2019, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -63,7 +63,7 @@ var suiteDefinitions = {
 };
 
 // override the possible node environment to make the tests uniform
-process.env.TZ = "";
+process.env.TZ = "Etc/UTC";
 process.env.LANG = "";
 process.env.LC_ALL = "";
 
@@ -74,6 +74,14 @@ var suite = suiteDefinitions.full;
 var sync = true;
 var target = "node";
 var reporter;
+
+if (process.argv.length >= 2 &&
+    (process.argv[2] === "help" ||
+     process.argv[2] === "-h" ||
+     process.argv[2] === "--help")) {
+    console.log("Usage: testRunner.js [assembly_style [compilation_style [suite_name_or_collection [sync|async]]]]");
+    process.exit(0);
+}
 
 // Usage: testSuite.js [assembly_style [compilation_style [suite_name_or_collection [sync|async]]]]
 if (process.argv.length > 2) {

@@ -547,12 +547,12 @@
     ],
     "AR": [
         {
-            "name": "Buenos Aires Province",
-            "code": "B"
-        },
-        {
             "name": "Búenos Aíres",
             "code": "C"
+        },
+        {
+            "name": "Buenos Aires Province",
+            "code": "B"
         },
         {
             "name": "Catamarca",
@@ -567,12 +567,12 @@
             "code": "U"
         },
         {
-            "name": "Corrientes",
-            "code": "W"
-        },
-        {
             "name": "Córdoba",
             "code": "X"
+        },
+        {
+            "name": "Corrientes",
+            "code": "W"
         },
         {
             "name": "Entre Ríos",
@@ -1433,12 +1433,12 @@
             "code": "BRU"
         },
         {
-            "name": "Flanders",
-            "code": "VLG"
-        },
-        {
             "name": "Flæmska Brabant",
             "code": "VBR"
+        },
+        {
+            "name": "Flanders",
+            "code": "VLG"
         },
         {
             "name": "Hainaut",
@@ -2091,16 +2091,16 @@
             "code": "MG"
         },
         {
+            "name": "Pará",
+            "code": "PA"
+        },
+        {
             "name": "Paraíba",
             "code": "PB"
         },
         {
             "name": "Paraná",
             "code": "PR"
-        },
-        {
-            "name": "Pará",
-            "code": "PA"
         },
         {
             "name": "Pernambuco",
@@ -3273,16 +3273,16 @@
             "code": "ATL"
         },
         {
+            "name": "Bógóta",
+            "code": "DC"
+        },
+        {
             "name": "Bolívar",
             "code": "BOL"
         },
         {
             "name": "Boyacá",
             "code": "BOY"
-        },
-        {
-            "name": "Bógóta",
-            "code": "DC"
         },
         {
             "name": "Caldas",
@@ -3995,12 +3995,12 @@
             "code": "533"
         },
         {
-            "name": "Tachov",
-            "code": "327"
-        },
-        {
             "name": "Tábor",
             "code": "317"
+        },
+        {
+            "name": "Tachov",
+            "code": "327"
         },
         {
             "name": "Teplice",
@@ -4065,6 +4065,10 @@
             "code": "BW"
         },
         {
+            "name": "Bæjaraland",
+            "code": "BY"
+        },
+        {
             "name": "Berlín",
             "code": "BE"
         },
@@ -4075,10 +4079,6 @@
         {
             "name": "Bremen",
             "code": "HB"
-        },
-        {
-            "name": "Bæjaraland",
-            "code": "BY"
         },
         {
             "name": "Hamborg",
@@ -4881,6 +4881,10 @@
             "code": "C"
         },
         {
+            "name": "Álava",
+            "code": "VI"
+        },
+        {
             "name": "Albacete",
             "code": "AB"
         },
@@ -4901,16 +4905,12 @@
             "code": "AR"
         },
         {
-            "name": "Asturias Province",
-            "code": "O"
-        },
-        {
             "name": "Astúría",
             "code": "AS"
         },
         {
-            "name": "Álava",
-            "code": "VI"
+            "name": "Asturias Province",
+            "code": "O"
         },
         {
             "name": "Ávila",
@@ -4945,6 +4945,14 @@
             "code": "BU"
         },
         {
+            "name": "Cáceres",
+            "code": "CC"
+        },
+        {
+            "name": "Cádiz",
+            "code": "CA"
+        },
+        {
             "name": "Canary Islands",
             "code": "CN"
         },
@@ -4955,14 +4963,6 @@
         {
             "name": "Castellón",
             "code": "CS"
-        },
-        {
-            "name": "Cáceres",
-            "code": "CC"
-        },
-        {
-            "name": "Cádiz",
-            "code": "CA"
         },
         {
             "name": "Ceuta",
@@ -5057,12 +5057,12 @@
             "code": "LU"
         },
         {
-            "name": "Madrid Province",
-            "code": "M"
-        },
-        {
             "name": "Madríd (hérað)",
             "code": "MD"
+        },
+        {
+            "name": "Madrid Province",
+            "code": "M"
         },
         {
             "name": "Málaga",
@@ -6591,6 +6591,10 @@
             "code": "OMH"
         },
         {
+            "name": "Öngulsey",
+            "code": "AGY"
+        },
+        {
             "name": "Orkneyjar",
             "code": "ORK"
         },
@@ -6913,10 +6917,6 @@
         {
             "name": "York",
             "code": "YOR"
-        },
-        {
-            "name": "Öngulsey",
-            "code": "AGY"
         }
     ],
     "GD": [
@@ -7171,6 +7171,10 @@
             "code": "KS"
         },
         {
+            "name": "Kónakrí",
+            "code": "C"
+        },
+        {
             "name": "Koubia",
             "code": "KB"
         },
@@ -7181,10 +7185,6 @@
         {
             "name": "Kouroussa",
             "code": "KO"
-        },
-        {
-            "name": "Kónakrí",
-            "code": "C"
         },
         {
             "name": "Labé",
@@ -7937,12 +7937,12 @@
     ],
     "HU": [
         {
-            "name": "Baranya",
-            "code": "BA"
-        },
-        {
             "name": "Bács-Kiskun",
             "code": "BK"
+        },
+        {
+            "name": "Baranya",
+            "code": "BA"
         },
         {
             "name": "Békés",
@@ -8037,12 +8037,12 @@
             "code": "NY"
         },
         {
-            "name": "Pest",
-            "code": "PE"
-        },
-        {
             "name": "Pécs",
             "code": "PS"
+        },
+        {
+            "name": "Pest",
+            "code": "PE"
         },
         {
             "name": "Salgótarján",
@@ -8065,12 +8065,12 @@
             "code": "SD"
         },
         {
-            "name": "Szekszárd",
-            "code": "SS"
-        },
-        {
             "name": "Székesfehérvár",
             "code": "SF"
+        },
+        {
+            "name": "Szekszárd",
+            "code": "SS"
         },
         {
             "name": "Szolnok",
@@ -8817,6 +8817,10 @@
             "code": "AG"
         },
         {
+            "name": "Ágústudalur",
+            "code": "23"
+        },
+        {
             "name": "Alessandria",
             "code": "AL"
         },
@@ -8847,10 +8851,6 @@
         {
             "name": "Avellino",
             "code": "AV"
-        },
-        {
-            "name": "Ágústudalur",
-            "code": "23"
         },
         {
             "name": "Bari",
@@ -9041,12 +9041,12 @@
             "code": "LC"
         },
         {
-            "name": "Livorno",
-            "code": "LI"
-        },
-        {
             "name": "Lígúría",
             "code": "42"
+        },
+        {
+            "name": "Livorno",
+            "code": "LI"
         },
         {
             "name": "Lodi",
@@ -9093,12 +9093,12 @@
             "code": "MO"
         },
         {
-            "name": "Monza and Brianza",
-            "code": "MB"
-        },
-        {
             "name": "Mólíse",
             "code": "67"
+        },
+        {
+            "name": "Monza and Brianza",
+            "code": "MB"
         },
         {
             "name": "Naples",
@@ -9257,12 +9257,12 @@
             "code": "TR"
         },
         {
-            "name": "Toskana",
-            "code": "52"
-        },
-        {
             "name": "Tórínó",
             "code": "TO"
+        },
+        {
+            "name": "Toskana",
+            "code": "52"
         },
         {
             "name": "Trapani",
@@ -11647,12 +11647,12 @@
             "code": "BES"
         },
         {
-            "name": "Berkane",
-            "code": "BER"
-        },
-        {
             "name": "Béni-Mellal",
             "code": "BEM"
+        },
+        {
+            "name": "Berkane",
+            "code": "BER"
         },
         {
             "name": "Boujdour",
@@ -11799,16 +11799,16 @@
             "code": "SYB"
         },
         {
+            "name": "Médiouna",
+            "code": "MED"
+        },
+        {
             "name": "Meknès",
             "code": "MEK"
         },
         {
             "name": "Meknès-Tafilalet",
             "code": "06"
-        },
-        {
-            "name": "Médiouna",
-            "code": "MED"
         },
         {
             "name": "Mohammedia",
@@ -13789,12 +13789,12 @@
             "code": "B"
         },
         {
-            "name": "Maputo Province",
-            "code": "L"
-        },
-        {
             "name": "Mapútó",
             "code": "MPM"
+        },
+        {
+            "name": "Maputo Province",
+            "code": "L"
         },
         {
             "name": "Nampula",
@@ -14121,12 +14121,12 @@
             "name": "Nueva Segovia"
         },
         {
-            "code": "RI",
-            "name": "Rivas"
-        },
-        {
             "code": "SJ",
             "name": "Río San Juan"
+        },
+        {
+            "code": "RI",
+            "name": "Rivas"
         }
     ],
     "NL": [
@@ -15661,12 +15661,12 @@
             "code": "BV"
         },
         {
-            "name": "Buzău",
-            "code": "BZ"
-        },
-        {
             "name": "Búkarest",
             "code": "B"
+        },
+        {
+            "name": "Buzău",
+            "code": "BZ"
         },
         {
             "name": "Călărași",
@@ -16221,12 +16221,12 @@
             "code": "TYU"
         },
         {
-            "name": "Ulyanovsk",
-            "code": "ULY"
-        },
-        {
             "name": "Údmúrtía",
             "code": "UD"
+        },
+        {
+            "name": "Ulyanovsk",
+            "code": "ULY"
         },
         {
             "name": "Vladimir",
@@ -16561,12 +16561,12 @@
             "code": "W"
         },
         {
-            "name": "Gotland",
-            "code": "I"
-        },
-        {
             "name": "Gävleborg",
             "code": "X"
+        },
+        {
+            "name": "Gotland",
+            "code": "I"
         },
         {
             "name": "Hallands län",
@@ -16593,16 +16593,24 @@
             "code": "BD"
         },
         {
+            "name": "Örebro",
+            "code": "T"
+        },
+        {
+            "name": "Östergötlands län",
+            "code": "E"
+        },
+        {
             "name": "Skåne",
             "code": "M"
         },
         {
-            "name": "Stokkhólms lán",
-            "code": "AB"
-        },
-        {
             "name": "Södermanlands län",
             "code": "D"
+        },
+        {
+            "name": "Stokkhólms lán",
+            "code": "AB"
         },
         {
             "name": "Uppsala län",
@@ -16627,14 +16635,6 @@
         {
             "name": "Västra Götalands län",
             "code": "O"
-        },
-        {
-            "name": "Örebro",
-            "code": "T"
-        },
-        {
-            "name": "Östergötlands län",
-            "code": "E"
         }
     ],
     "SG": [
@@ -19117,12 +19117,12 @@
             "code": "TNN"
         },
         {
-            "name": "Taitung",
-            "code": "TTT"
-        },
-        {
             "name": "Taípei",
             "code": "TPE"
+        },
+        {
+            "name": "Taitung",
+            "code": "TTT"
         },
         {
             "name": "Taoyuan",
@@ -20189,12 +20189,12 @@
             "name": "Paysandú"
         },
         {
-            "code": "RV",
-            "name": "Rivera"
-        },
-        {
             "code": "RN",
             "name": "Río Negro"
+        },
+        {
+            "code": "RV",
+            "name": "Rivera"
         },
         {
             "code": "RO",
@@ -20609,20 +20609,16 @@
             "code": "25"
         },
         {
-            "name": "Sơn La",
-            "code": "05"
-        },
-        {
             "name": "Sóc Trăng",
             "code": "52"
         },
         {
-            "name": "Tây Ninh",
-            "code": "37"
+            "name": "Sơn La",
+            "code": "05"
         },
         {
-            "name": "Thanh Hóa",
-            "code": "21"
+            "name": "Tây Ninh",
+            "code": "37"
         },
         {
             "name": "Thái Bình",
@@ -20631,6 +20627,10 @@
         {
             "name": "Thái Nguyên",
             "code": "69"
+        },
+        {
+            "name": "Thanh Hóa",
+            "code": "21"
         },
         {
             "name": "Thừa Thiên–Huế",

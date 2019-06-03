@@ -1,6 +1,6 @@
 {
     "name": "ilib",
-    "version": "14.1.4",
+    "version": "14.2.0",
     "main": "js/index.js",
     "description": "iLib is a cross-engine library of internationalization (i18n) classes written in pure JS",
     "keywords": [
@@ -52,9 +52,10 @@
         "ringojs": ">=0.9",
         "nodejs": ">= 0.10"
     },
+    "cldr-data-coverage": "full",
     "devDependencies": {
         "babel-loader": "^7.1.5",
-        "cldr-data": "^32.0.0",
+        "cldr-data": "^34.0.0",
         "ejs": "^2.6.1",
         "grunt": "^1.0.3",
         "grunt-cli": "^1.2.0",

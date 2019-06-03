@@ -1613,7 +1613,7 @@ module.exports.testdatefmt_zh_CN = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "中午12:37");
+        test.equal(fmt.format(date), "正午12:37");
         test.done();
     },
     

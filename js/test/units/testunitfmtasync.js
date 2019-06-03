@@ -133,7 +133,7 @@ module.exports.testunitfmtasync = {
             sync: false,
             onLoad: function(fmt) {
                 var str = fmt.format(m1);
-                test.equal(str, "1 000 centimètres carrés");
+                test.equal(str, "1 000 centimètres carrés");
                 test.done();
             }
         });

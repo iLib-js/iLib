@@ -2,7 +2,7 @@
     "generated": true,
     "numfmt": {
         "decimalChar": ",",
-        "groupChar": " ",
+        "groupChar": " ",
         "currencyFormats": {
             "common": "{n} {s}",
             "commonNegative": "-{n} {s}"

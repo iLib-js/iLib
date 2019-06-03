@@ -21,6 +21,7 @@ module.exports.files = [
     "testcurrency.js",
     "testcurrencyasync.js",
     "testnumfmt.js",
+    "testnumfmt2.js",
     "testnumfmtasync.js",
     "testnumfmt_af.js",
     "testnumfmt_am.js",

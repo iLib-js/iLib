@@ -34,6 +34,11 @@ var JSUtils = {};
 JSUtils.shallowCopy = function (source, target) {
     var prop = undefined;
     if (source && target) {
+        // using Object.assign is about 1/3 faster on nodejs
+        if (typeof(Object.assign) === "function") {
+            return Object.assign(target, source);
+        }
+        // polyfill
         for (prop in source) {
             if (prop !== undefined && typeof(source[prop]) !== 'undefined') {
                 target[prop] = source[prop];
@@ -109,6 +114,7 @@ JSUtils.indexOf = function(array, obj) {
     if (typeof(array.indexOf) === 'function') {
         return array.indexOf(obj);
     } else {
+        // polyfill
         for (var i = 0; i < array.length; i++) {
             if (array[i] === obj) {
                 return i;
