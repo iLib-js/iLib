@@ -167,26 +167,21 @@ module.exports.testpower = {
         test.equal(m2.unit, "gigawatt-hour");
         test.done();
     },
-
+*/
     testPowerGetMeasures: function(test) {
         test.expect(1);
         var measures = PowerUnit.getMeasures();
         var expected = [
-            "millijoule",
-            "joule",
-            "BTU",
-            "kilojoule",
-            "watt-hour",
-            "foodcalorie",
-            "megajoule",
-            "kilowatt-hour",
-            "gigajoule",
-            "megawatt-hour",
-            "gigawatt-hour"
-
+            "milliwatt",
+            "watt",
+            "kilowatt",
+            "megawatt",
+            "gigawatt",
+            "foot-pound-per-hour",
+            "horsepower",
+            "btu-per-hour"
         ];
         test.equalIgnoringOrder(measures, expected);
         test.done();
     }
-*/
 };
