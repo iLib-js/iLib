@@ -56,7 +56,7 @@ module.exports.testpower = {
         test.ok(m1 !== null);
         test.ok(m2 !== null);
 
-        test.equal(m2.getAmount(), 2.68204);
+        test.roughlyEqual(m2.getAmount(), 2.68204, 1e-5);
         test.done();
     },
     
@@ -68,55 +68,54 @@ module.exports.testpower = {
         test.done();
     },
 
-    /*
     testPowerStaticConvertWithString: function(test) {
         test.expect(1);
-        var m = PowerUnit.convert("MegaWh", "Wh", "5e+6");
+        var m = PowerUnit.convert("MW", "W", "1e6");
 
-        test.equal(m, 5);
+        test.equal(m, 1);
         test.done();
     },
 
     testPowerStaticConvert2: function(test) {
         test.expect(1);
-        var m = PowerUnit.convert("gigajoule", "kJ", 5e+6);
+        var m = PowerUnit.convert("mW", "kW", 1000);
 
-        test.equal(m, 5);
+        test.equal(m, 1);
         test.done();
     },
 
     testPowerStaticConvert3: function(test) {
         test.expect(1);
-        var m = PowerUnit.convert("MWh", "kJ", 5e+6);
+        var m = PowerUnit.convert("ft lb/h", "W", 1);
 
-        test.roughlyEqual(m, 1.38889, 0.00001);
+        test.roughlyEqual(m, 0.737562149277, 1e-8);
         test.done();
     },
 
     testPowerStaticConvert4: function(test) {
         test.expect(1);
-        var m = PowerUnit.convert("cal", "btu", 200);
+        var m = PowerUnit.convert("hp", "btu/h", 1);
 
-        test.roughlyEqual(m, 50.399, 0.001);
+        test.roughlyEqual(m, 3.93014685e-4, 1e-7);
         test.done();
     },
 
     testPowerStaticConvert5: function(test) {
         test.expect(1);
-        var m = PowerUnit.convert("joule", "btu", 200);
+        var m = PowerUnit.convert("kW", "HP", 1);
 
-        test.roughlyEqual(m, 211011.18, 0.01);
+        test.roughlyEqual(m, 0.7457010335416, 1e-8);
         test.done();
     },
 
     testPowerStaticConvert6: function(test) {
         test.expect(1);
-        var m = PowerUnit.convert("joule", "cal", 50);
+        var m = PowerUnit.convert("MW", "BTU/h", 1);
 
-        test.equal(m, 209340);
+        test.equal(m, 2.93071e-6);
         test.done();
     },
-
+/*
     testPowerScale1: function(test) {
         test.expect(2);
         var m1 = new PowerUnit({

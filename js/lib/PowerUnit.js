@@ -50,16 +50,15 @@ PowerUnit.prototype.parent = Measurement;
 PowerUnit.prototype.constructor = PowerUnit;
 
 PowerUnit.ratios = {
-    /*                        index mW              W           kW                MW          GW                fp/s              HP             BTU/h                gJ             MWh                 GWh         */
-    "milliwatt":             [ 1,   1,              1e-3,       1e-6,             1e-9,       1e-12,            2.3884589663e-7,  1.0e-9,        2.7777777778e-10,  1.0e-12,       2.7777777778e-13,   2.7777777778e-16  ],
-    "watt":                  [ 2,   1e3,            1,          1e-3,             1e-6,       1e-9,             2.3884589663e-4,  1.0e-6,        2.7777777778e-7,   1.0e-9,        2.7777777778e-10,   2.7777777778e-13  ],
-    "kilowatt":              [ 3,   1e6,            1e3,        1,                1e-3,       1e-6,             0.25199577243,    1.34102,       2.9307108333e-4,   1.0550559e-6,  2.9307108333e-7,    2.9307108333e-10  ],
-    "megawatt":              [ 4,   1e9,            1e6,        1e3,              1,          1e-3,             0.23884589663,    0.001,         2.7777777778e-4,   1.0e-6,        2.7777777778e-7,    2.7777777778e-10  ],
-    "gigawatt":              [ 5,   1e12,           1e9,        1e6,              1e3,        1,                0.85984522786,    0.0036,        0.001,             3.6e-6,        1.0e-6,             1.0e-9            ],
-    "foot-pound-per-second": [ 6,   4.868e+5,       4186.8,     3.9683205411,     4.1868,     1.163,            1,                4.1868e-3,     1.163e-3,          4.1868e-6,     1.163e-6,           1.163e-9          ],
-    "horsepower":            [ 7,   745701.0335416, 745.7010335416, 0.7457010335416,  7.457010335416e-4, 7.457010335416e-7,     238.84589663,     1,             0.27777777778,     0.001,         2.7777777778e-4,    2.7777777778e-7   ],
-    "btu-per-hour":          [ 8,   3.6e+9,         3.6e+6,     3412.1414799,     3600,       1000,             859.84522786,     3.6,           1,                 3.6e-3,        0.001,              1e-6              ],
-    "refridgeration-ton":    [ 9,   1e+12,          1e+9,       947817.07775,     1e+6,       277777.77778,     238845.89663,     1000,          277.77777778,      1,             0.27777777778,      2.7777777778e-4   ],
+    /*                        index mW              W               kW                MW                 GW                 ft-lb/h                HP             BTU/h             */
+    "milliwatt":             [ 1,   1,              1e-3,           1e-6,             1e-9,              1e-12,             737.562149277e-4,      1.34102209e-6, 3.412142450123e-3   ],
+    "watt":                  [ 2,   1e3,            1,              1e-3,             1e-6,              1e-9,              0.737562149277,        1.34102209e-3, 3.412142450123      ],
+    "kilowatt":              [ 3,   1e6,            1e3,            1,                1e-3,              1e-6,              7.37562149277e+2,      1.34102209,    3.412142450123e+3   ],
+    "megawatt":              [ 4,   1e9,            1e6,            1e3,              1,                 1e-3,              7.37562149277e+5,      1.34102209e+3, 3.412142450123e+6   ],
+    "gigawatt":              [ 5,   1e12,           1e9,            1e6,              1e3,               1,                 7.37562149277e+8,      1.34102209e+6, 3.412142450123e+9   ],
+    "foot-pound-per-hour":   [ 6,   1.35581795e+3,  1.35581795,     1.35581795e-3,    1.35581795e-6,     1.35581795e-9,     1,                     5.05051e-7,    1.285067782e-3      ],
+    "horsepower":            [ 7,   745701.0335416, 745.7010335416, 0.7457010335416,  7.457010335416e-4, 7.457010335416e-7, 1.9799999829594917e+6, 1,             2.54443418687714e+3 ],
+    "btu-per-hour":          [ 8,   293.071,        0.293071,       2.93071e-3,       2.93071e-6,        2.93071e-9,        778.169069245845,      3.93014685e-4, 1                   ]
 };
 
 /**
@@ -98,22 +97,20 @@ PowerUnit.systems = {
     ],
     "uscustomary": [
         "milliwatt",
-        "foot-pound-per-second",
+        "foot-pound-per-hour",
         "watt",
         "btu-per-hour",
         "kilowatt",
-        "refridgeration-ton",
         "horsepower",
         "megawatt",
         "gigawatt"
     ],
     "imperial": [
         "milliwatt",
-        "foot-pound-per-second",
+        "foot-pound-per-hour",
         "watt",
         "btu-per-hour",
         "kilowatt",
-        "refridgeration-ton",
         "horsepower",
         "megawatt",
         "gigawatt"
@@ -121,7 +118,7 @@ PowerUnit.systems = {
     "conversions": {
         "uscustomary": {
             "metric": {
-                "foot-pound-per-second": "watt",
+                "foot-pound-per-hour": "watt",
                 "btu-per-hour": "watt",
                 "refridgeration-ton": "kilowatt",
                 "horsepower": "kilowatt"
@@ -129,7 +126,7 @@ PowerUnit.systems = {
         },
         "imperial": {
             "metric": {
-                "foot-pound-per-second": "watt",
+                "foot-pound-per-hour": "watt",
                 "btu-per-hour": "watt",
                 "refridgeration-ton": "kilowatt",
                 "horsepower": "kilowatt"
@@ -177,12 +174,17 @@ PowerUnit.aliases = {
     "mW": "megawatt",
     "giga watt": "gigawatt",
     "gW": "gigawatt",
-    "foot pound per second": "foot-pound-per-second",
-    "foot pound/second": "foot-pound-per-second",
-    "foot pound/s": "foot-pound-per-second",
-    "foot lb/second": "foot-pound-per-second",
-    "foot lb/s": "foot-pound-per-second",
-    "f lb/s": "foot-pound-per-second",
+    "foot pound per hour": "foot-pound-per-hour",
+    "foot pound/hour": "foot-pound-per-hour",
+    "foot pound/h": "foot-pound-per-hour",
+    "foot lb/hour": "foot-pound-per-hour",
+    "foot lb/h": "foot-pound-per-hour",
+    "ft lbf/h": "foot-pound-per-hour",
+    "ft lb/h": "foot-pound-per-hour",
+    "ft lbs/h": "foot-pound-per-hour",
+    "ft-lb/h": "foot-pound-per-hour",
+    "ft-lbs/h": "foot-pound-per-hour",
+    "f lb/h": "foot-pound-per-hour",
     "horse power": "horsepower",
     "hp": "horsepower",
     "british thermal units per hour": "btu-per-hour",
@@ -197,10 +199,7 @@ PowerUnit.aliases = {
     "BTU/hr": "btu-per-hour",
     "BTUs/hr": "btu-per-hour",
     "BTU/h": "btu-per-hour",
-    "BTUs/h": "btu-per-hour",
-    "refridgeration tonne": "refridgeration-ton",
-    "ref-ton": "refridgeration-ton",
-    "ref ton": "refridgeration-ton"
+    "BTUs/h": "btu-per-hour"
 };
 
 PowerUnit.aliasesLower = {};
