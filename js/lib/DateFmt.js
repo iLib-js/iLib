@@ -1609,7 +1609,7 @@ DateFmt.prototype = {
 /**
  * @private
  */
-DateFmt.prototype._mapFormatInfo = function(year, tzinfo) {
+DateFmt.prototype._mapFormatInfo = function(year, rb, tzinfo) {
     function sequence(start, end, pad) {
         var constraint = [];
         for (var i = start; i <= end; i++) {
@@ -1619,14 +1619,23 @@ DateFmt.prototype._mapFormatInfo = function(year, tzinfo) {
     }
 
     var isLeap = this.cal.isLeapYear(year);
+    var dateStr = rb.getStringJS("Date"); // i18n: date input form label for the day of the month field
+    var yearStr = rb.getStringJS("Year"); // i18n: date input form label for the year field
+    var monthStr = rb.getStringJS("Month"); // i18n: date input form label for the months field
+    var hourStr = rb.getStringJS("Hour"); // i18n: date input form label for the hours field
+    var minuteStr = rb.getStringJS("Minute"); // i18n: date input form label for the minutes field
+    var secondStr = rb.getStringJS("Second"); // i18n: date input form label for the seconds field
+    var milliStr = rb.getStringJS("Millisecond"); // i18n: date input form label for the milliseconds field
+    var woyStr = rb.getStringJS("Week of Year"); // i18n: date input form label for a week of the year field
+    var doyStr = rb.getStringJS("Day of Year"); // i18n: date input form label for the day of the year field
 
     return this.templateArr.map(ilib.bind(this, function(component) {
         switch (component) {
             case 'd':
                 return {
                     component: "day",
-                    label: "Date",
-                    placeholder: "D",
+                    label: dateStr,
+                    placeholder: rb.getStringJS("D"), // i18n: date format placeholder string for 1 digit date
                     constraint: {
                         "1": [1, 31],
                         "2": [1, isLeap ? 29 : 28],
@@ -1647,8 +1656,8 @@ DateFmt.prototype._mapFormatInfo = function(year, tzinfo) {
             case 'dd':
                 return {
                     component: "day",
-                    label: "Date",
-                    placeholder: "DD",
+                    label: dateStr,
+                    placeholder: rb.getStringJS("DD"), // i18n: date format placeholder string for 2 digit date
                     constraint: {
                         "1": sequence(1, 31, true),
                         "2": sequence(1, isLeap ? 29 : 28, true),
@@ -1669,8 +1678,8 @@ DateFmt.prototype._mapFormatInfo = function(year, tzinfo) {
             case 'yy':
                 return {
                     component: "year",
-                    label: "Year",
-                    placeholder: "YY",
+                    label: yearStr,
+                    placeholder: rb.getStringJS("YY"), // i18n: date format placeholder string for 2 digit year
                     constraint: "[0-9]{2}",
                     validation: "\\d{2}"
                 };
@@ -1678,8 +1687,8 @@ DateFmt.prototype._mapFormatInfo = function(year, tzinfo) {
             case 'yyyy':
                 return {
                     component: "year",
-                    label: "Year",
-                    placeholder: "YYYY",
+                    label: yearStr,
+                    placeholder: rb.getStringJS("YYYY"), // i18n: date format placeholder string for 4 digit year
                     constraint: "[0-9]{4}",
                     validation: "\\d{4}"
                 };
@@ -1687,8 +1696,8 @@ DateFmt.prototype._mapFormatInfo = function(year, tzinfo) {
             case 'M':
                 return {
                     component: "month",
-                    label: "Month",
-                    placeholder: "M",
+                    label: monthStr,
+                    placeholder: rb.getStringJS("M"), // i18n: date format placeholder string for 1 digit month
                     constraint: [1, 12],
                     validation: "\\d{1,2}"
                 };
@@ -1696,8 +1705,8 @@ DateFmt.prototype._mapFormatInfo = function(year, tzinfo) {
             case 'MM':
                 return {
                     component: "month",
-                    label: "Month",
-                    placeholder: "MM",
+                    label: monthStr,
+                    placeholder: rb.getStringJS("MM"), // i18n: date format placeholder string for 2 digit month
                     constraint: "[0-9]+",
                     validation: "\\d{2}"
                 };
@@ -1705,8 +1714,8 @@ DateFmt.prototype._mapFormatInfo = function(year, tzinfo) {
             case 'h':
                 return {
                     component: "hour",
-                    label: "Hour",
-                    placeholder: "H",
+                    label: hourStr,
+                    placeholder: rb.getStringJS("H"), // i18n: date format placeholder string for 1 digit hour
                     constraint: ["12"].concat(sequence(1, 11)),
                     validation: "\\d{1,2}"
                 };
@@ -1714,8 +1723,8 @@ DateFmt.prototype._mapFormatInfo = function(year, tzinfo) {
             case 'hh':
                 return {
                     component: "hour",
-                    label: "Hour",
-                    placeholder: "HH",
+                    label: hourStr,
+                    placeholder: rb.getStringJS("HH"), // i18n: date format placeholder string for 2 digit hour,
                     constraint: ["12"].concat(sequence(1, 11, true)),
                     validation: "\\d{2}"
                 };
@@ -1724,8 +1733,8 @@ DateFmt.prototype._mapFormatInfo = function(year, tzinfo) {
             case 'K':
                 return {
                     component: "hour",
-                    label: "Hour",
-                    placeholder: "H",
+                    label: hourStr,
+                    placeholder: rb.getStringJS("H"), // i18n: date format placeholder string for 1 digit hour
                     constraint: concat(sequence(0, 11)),
                     validation: "\\d{1,2}"
                 };
@@ -1733,8 +1742,8 @@ DateFmt.prototype._mapFormatInfo = function(year, tzinfo) {
             case 'KK':
                 return {
                     component: "hour",
-                    label: "Hour",
-                    placeholder: "HH",
+                    label: hourStr,
+                    placeholder: rb.getStringJS("HH"), // i18n: date format placeholder string for 2 digit hour,
                     constraint: concat(sequence(0, 11, true)),
                     validation: "\\d{2}"
                 };
@@ -1742,8 +1751,8 @@ DateFmt.prototype._mapFormatInfo = function(year, tzinfo) {
             case 'H':
                 return {
                     component: "hour",
-                    label: "Hour",
-                    placeholder: "H",
+                    label: hourStr,
+                    placeholder: rb.getStringJS("H"), // i18n: date format placeholder string for 1 digit hour
                     constraint: [0, 23],
                     validation: "\\d{1,2}"
                 };
@@ -1751,8 +1760,8 @@ DateFmt.prototype._mapFormatInfo = function(year, tzinfo) {
             case 'HH':
                 return {
                     component: "hour",
-                    label: "Hour",
-                    placeholder: "H",
+                    label: hourStr,
+                    placeholder: rb.getStringJS("HH"), // i18n: date format placeholder string for 2 digit hour
                     constraint: concat(sequence(0, 23, true)),
                     validation: "\\d{1,2}"
                 };
@@ -1760,8 +1769,8 @@ DateFmt.prototype._mapFormatInfo = function(year, tzinfo) {
             case 'k':
                 return {
                     component: "hour",
-                    label: "Hour",
-                    placeholder: "H",
+                    label: hourStr,
+                    placeholder: rb.getStringJS("H"), // i18n: date format placeholder string for 1 digit hour
                     constraint: ["24"].concat(sequence(0, 23)),
                     validation: "\\d{1,2}"
                 };
@@ -1769,8 +1778,8 @@ DateFmt.prototype._mapFormatInfo = function(year, tzinfo) {
             case 'kk':
                 return {
                     component: "hour",
-                    label: "Hour",
-                    placeholder: "H",
+                    label: hourStr,
+                    placeholder: rb.getStringJS("H"), // i18n: date format placeholder string for 1 digit hour
                     constraint: ["24"].concat(sequence(0, 23, true)),
                     validation: "\\d{1,2}"
                 };
@@ -1778,8 +1787,8 @@ DateFmt.prototype._mapFormatInfo = function(year, tzinfo) {
             case 'm':
                 return {
                     component: "minute",
-                    label: "Minute",
-                    placeholder: "mm",
+                    label: minuteStr,
+                    placeholder: rb.getStringJS("mm"), // i18n: date format placeholder string for 2 digit minute
                     constraint: [0, 59],
                     validation: "\\d{1,2}"
                 };
@@ -1787,8 +1796,8 @@ DateFmt.prototype._mapFormatInfo = function(year, tzinfo) {
             case 'mm':
                 return {
                     component: "minute",
-                    label: "Minute",
-                    placeholder: "mm",
+                    label: minuteStr,
+                    placeholder: rb.getStringJS("mm"), // i18n: date format placeholder string for 2 digit minute
                     constraint: sequence(0, 59, true),
                     validation: "\\d{2}"
                 };
@@ -1796,8 +1805,8 @@ DateFmt.prototype._mapFormatInfo = function(year, tzinfo) {
             case 's':
                 return {
                     component: "second",
-                    label: "Second",
-                    placeholder: "ss",
+                    label: secondStr,
+                    placeholder: rb.getStringJS("ss"), // i18n: date format placeholder string for 2 digit second
                     constraint: [0, 59],
                     validation: "\\d{1,2}"
                 };
@@ -1805,8 +1814,8 @@ DateFmt.prototype._mapFormatInfo = function(year, tzinfo) {
             case 'ss':
                 return {
                     component: "second",
-                    label: "Second",
-                    placeholder: "ss",
+                    label: secondStr,
+                    placeholder: rb.getStringJS("ss"), // i18n: date format placeholder string for 2 digit second
                     constraint: sequence(0, 59, true),
                     validation: "\\d{2}"
                 };
@@ -1814,8 +1823,8 @@ DateFmt.prototype._mapFormatInfo = function(year, tzinfo) {
             case 'S':
                 return {
                     component: "millisecond",
-                    label: "Millisecond",
-                    placeholder: "ms",
+                    label: milliStr,
+                    placeholder: rb.getStringJS("ms"), // i18n: date format placeholder string for 2 digit millisecond
                     constraint: [0, 999],
                     validation: "\\d{1,3}"
                 };
@@ -1823,8 +1832,8 @@ DateFmt.prototype._mapFormatInfo = function(year, tzinfo) {
             case 'SSS':
                 return {
                     component: "millisecond",
-                    label: "Millisecond",
-                    placeholder: "ms",
+                    label: milliStr,
+                    placeholder: rb.getStringJS("ms"), // i18n: date format placeholder string for 2 digit millisecond
                     constraint: sequence(0, 999, true),
                     validation: "\\d{3}"
                 };
@@ -1839,7 +1848,7 @@ DateFmt.prototype._mapFormatInfo = function(year, tzinfo) {
             case 'LLLL':
                 return {
                     component: "month",
-                    label: "Month",
+                    label: monthStr,
                     constraint: (function() {
                         var ret = [];
                         var months = this.cal.getNumMonths(year);
@@ -1864,7 +1873,7 @@ DateFmt.prototype._mapFormatInfo = function(year, tzinfo) {
             case 'cccc':
                 return {
                     component: "dayofweek",
-                    label: "Day of Week",
+                    label: rb.getStringJS("Day of Week"), // i18n: date input form label for the day of the week field
                     constraint: ilib.bind(this, function(date) {
                         var d = date.getJSDate();
                         var key = component.replace(/c/g, 'E') + d.getDay();
@@ -1879,8 +1888,7 @@ DateFmt.prototype._mapFormatInfo = function(year, tzinfo) {
             case 'a':
                 var ret = {
                     component: "meridiem",
-                    label: "AM/PM",
-                    placeholder: "AM/PM",
+                    label: rb.getStringJS("AM/PM"), // i18n: date input form label for the meridiem field
                     constraint: []
                 };
                 switch (this.meridiems) {
@@ -1905,7 +1913,7 @@ DateFmt.prototype._mapFormatInfo = function(year, tzinfo) {
 
             case 'w':
                 return {
-                    label: "Week of Year",
+                    label: woyStr,
                     value: function(date) {
                         return date.getDayOfYear();
                     }
@@ -1913,7 +1921,7 @@ DateFmt.prototype._mapFormatInfo = function(year, tzinfo) {
 
             case 'ww':
                 return {
-                    label: "Week of Year",
+                    label: woyStr,
                     value: function(date) {
                         var temp = date.getWeekOfYear();
                         return JSUtils.pad(temp, 2)
@@ -1922,7 +1930,7 @@ DateFmt.prototype._mapFormatInfo = function(year, tzinfo) {
 
             case 'D':
                 return {
-                    label: "Day of Year",
+                    label: doyStr,
                     value: function(date) {
                         return date.getDayOfYear();
                     }
@@ -1930,7 +1938,7 @@ DateFmt.prototype._mapFormatInfo = function(year, tzinfo) {
 
             case 'DD':
                 return {
-                    label: "Day of Year",
+                    label: doyStr,
                     value: function(date) {
                         var temp = date.getDayOfYear();
                         return JSUtils.pad(temp, 2)
@@ -1939,7 +1947,7 @@ DateFmt.prototype._mapFormatInfo = function(year, tzinfo) {
 
             case 'DDD':
                 return {
-                    label: "Day of Year",
+                    label: doyStr,
                     value: function(date) {
                         var temp = date.getDayOfYear();
                         return JSUtils.pad(temp, 3)
@@ -1948,7 +1956,7 @@ DateFmt.prototype._mapFormatInfo = function(year, tzinfo) {
 
             case 'W':
                 return {
-                    label: "Week of Month",
+                    label: rb.getStringJS("Week of Month"), // i18n: date input form label for the week of the month field
                     value: function(date) {
                         return date.getWeekOfMonth();
                     }
@@ -1957,7 +1965,7 @@ DateFmt.prototype._mapFormatInfo = function(year, tzinfo) {
             case 'G':
                 var ret = {
                     component: "era",
-                    label: "Era",
+                    label: rb.getString("Era"), // i18n: date input form label for the era field
                     constraint: []
                 };
                 ret.constraint.push(this.sysres.getString(undefined, "G0-" + this.calName) || this.sysres.getString(undefined, "G0"));
@@ -1968,7 +1976,7 @@ DateFmt.prototype._mapFormatInfo = function(year, tzinfo) {
             case 'Z': // RFC 822 time zone
                 return {
                     component: "timezone",
-                    label: "Time Zone",
+                    label: rb.getString("Time Zone"), // i18n: date input form label for the time zone field
                     constraint: tzinfo
                 };
 
@@ -2325,13 +2333,13 @@ DateFmt.prototype.getFormatInfo = function(options) {
                     set.add("Etc/GMT-13");
                     set.add("Etc/GMT-14");
 
-                    info = this._mapFormatInfo(year, set.asArray().sort());
+                    info = this._mapFormatInfo(year, rb, set.asArray().sort());
                     if (callback && typeof(callback) === "function") {
                         callback(info);
                     }
                 }));
             } else {
-                info = this._mapFormatInfo(year);
+                info = this._mapFormatInfo(year, rb);
                 if (callback && typeof(callback) === "function") {
                     callback(info);
                 }
