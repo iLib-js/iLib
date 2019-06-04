@@ -1609,7 +1609,7 @@ DateFmt.prototype = {
 /**
  * @private
  */
-DateFmt.prototype._mapFormatInfo = function(tzinfo) {
+DateFmt.prototype._mapFormatInfo = function(year, tzinfo) {
     function sequence(start, end, pad) {
         var constraint = [];
         for (var i = start; i <= end; i++) {
@@ -1617,6 +1617,8 @@ DateFmt.prototype._mapFormatInfo = function(tzinfo) {
         }
         return constraint;
     }
+
+    var isLeap = this.cal.isLeapYear(year);
 
     return this.templateArr.map(ilib.bind(this, function(component) {
         switch (component) {
@@ -1626,35 +1628,18 @@ DateFmt.prototype._mapFormatInfo = function(tzinfo) {
                     label: "Date",
                     placeholder: "D",
                     constraint: {
-                        "condition": "isLeap",
-                        "regular": {
-                            "1": [1, 31],
-                            "2": [1, 28],
-                            "3": [1, 31],
-                            "4": [1, 30],
-                            "5": [1, 31],
-                            "6": [1, 30],
-                            "7": [1, 31],
-                            "8": [1, 31],
-                            "9": [1, 30],
-                            "10": [1, 31],
-                            "11": [1, 30],
-                            "12": [1, 31]
-                        },
-                        "leap": {
-                            "1": [1, 31],
-                            "2": [1, 29],
-                            "3": [1, 31],
-                            "4": [1, 30],
-                            "5": [1, 31],
-                            "6": [1, 30],
-                            "7": [1, 31],
-                            "8": [1, 31],
-                            "9": [1, 30],
-                            "10": [1, 31],
-                            "11": [1, 30],
-                            "12": [1, 31]
-                        }
+                        "1": [1, 31],
+                        "2": [1, isLeap ? 29 : 28],
+                        "3": [1, 31],
+                        "4": [1, 30],
+                        "5": [1, 31],
+                        "6": [1, 30],
+                        "7": [1, 31],
+                        "8": [1, 31],
+                        "9": [1, 30],
+                        "10": [1, 31],
+                        "11": [1, 30],
+                        "12": [1, 31]
                     },
                     validation: "\\d{1,2}"
                 };
@@ -1665,35 +1650,18 @@ DateFmt.prototype._mapFormatInfo = function(tzinfo) {
                     label: "Date",
                     placeholder: "DD",
                     constraint: {
-                        "condition": "isLeap",
-                        "regular": {
-                            "1": sequence(1, 31, true),
-                            "2": sequence(1, 28, true),
-                            "3": sequence(1, 31, true),
-                            "4": sequence(1, 30, true),
-                            "5": sequence(1, 31, true),
-                            "6": sequence(1, 30, true),
-                            "7": sequence(1, 31, true),
-                            "8": sequence(1, 31, true),
-                            "9": sequence(1, 30, true),
-                            "10": sequence(1, 31, true),
-                            "11": sequence(1, 30, true),
-                            "12": sequence(1, 31, true)
-                        },
-                        "leap": {
-                            "1": sequence(1, 31, true),
-                            "2": sequence(1, 29, true),
-                            "3": sequence(1, 31, true),
-                            "4": sequence(1, 30, true),
-                            "5": sequence(1, 31, true),
-                            "6": sequence(1, 30, true),
-                            "7": sequence(1, 31, true),
-                            "8": sequence(1, 31, true),
-                            "9": sequence(1, 30, true),
-                            "10": sequence(1, 31, true),
-                            "11": sequence(1, 30, true),
-                            "12": sequence(1, 31, true)
-                        }
+                        "1": sequence(1, 31, true),
+                        "2": sequence(1, isLeap ? 29 : 28, true),
+                        "3": sequence(1, 31, true),
+                        "4": sequence(1, 30, true),
+                        "5": sequence(1, 31, true),
+                        "6": sequence(1, 30, true),
+                        "7": sequence(1, 31, true),
+                        "8": sequence(1, 31, true),
+                        "9": sequence(1, 30, true),
+                        "10": sequence(1, 31, true),
+                        "11": sequence(1, 30, true),
+                        "12": sequence(1, 31, true)
                     },
                     validation: "\\d{1,2}"
                 };
@@ -1872,27 +1840,18 @@ DateFmt.prototype._mapFormatInfo = function(tzinfo) {
                 return {
                     component: "month",
                     label: "Month",
-                    constraint: {
-                        "constraint": "isLeap",
-                        "leap": (function() {
-                            var ret = [];
-                            var months = this.cal.getNumMonths(undefined, true);
-                            for (var i = 1; i < months; i++) {
-                                var key = component + i;
-                                ret.push((this.sysres.getString(undefined, key + "-" + this.calName) || this.sysres.getString(undefined, key)));
-                            }
-                            return ret;
-                        })(),
-                        "regular": (function() {
-                            var ret = [];
-                            var months = this.cal.getNumMonths(undefined, false);
-                            for (var i = 1; i < months; i++) {
-                                var key = component + i;
-                                ret.push((this.sysres.getString(undefined, key + "-" + this.calName) || this.sysres.getString(undefined, key)));
-                            }
-                            return ret;
-                        })()
-                    }
+                    constraint: (function() {
+                        var ret = [];
+                        var months = this.cal.getNumMonths(year);
+                        for (var i = 1; i < months; i++) {
+                            var key = component + i;
+                            ret.push({
+                                label: this.sysres.getString(undefined, key + "-" + this.calName) || this.sysres.getString(undefined, key),
+                                value: i
+                            });
+                        }
+                        return ret;
+                    })()
                 };
 
             case 'E':
@@ -1906,16 +1865,14 @@ DateFmt.prototype._mapFormatInfo = function(tzinfo) {
                 return {
                     component: "dayofweek",
                     label: "Day of Week",
-                    constraint: (function() {
-                        var ret = [];
-                        var months = this.cal.getNumMonths(undefined, true);
-                        for (var i = 0; i < 7; i++) {
-                            key = component + i;
-                            //console.log("finding " + key + " in the resources");
-                            ret.push((this.sysres.getString(undefined, key + "-" + this.calName) || this.sysres.getString(undefined, key)));
+                    constraint: ilib.bind(this, function(date) {
+                        var d = date.getJSDate();
+                        var key = component.replace(/c/g, 'E') + d.getDay();
+                        if (this.calName !== "gregorian") {
+                            key += '-' + this.calName;
                         }
-                        return ret;
-                    })()
+                        return this.sysres.getString(undefined, key);
+                    })
                 };
                 break;
 
@@ -2038,6 +1995,13 @@ DateFmt.prototype._mapFormatInfo = function(tzinfo) {
  * order, whereas this locale property only specifies the language
  * used for the labels.
  *
+ * <li><i>year</i> - the year for which the formats are being sought.
+ * For some calendars such as the Hebrew calendar, the number of
+ * and the length of the months depends upon the year. Even in the
+ * Gregorian calendar, the length of February changes in leap
+ * years, though the number of months or their names do not
+ * change. If not specified, the default is the current year.
+ *
  * <li><i>sync</i> - if true, this method should load the data
  * synchronously. If false, load the data asynchronously and
  * call the onLoad callback function when it is done. The onLoad
@@ -2056,7 +2020,7 @@ DateFmt.prototype._mapFormatInfo = function(tzinfo) {
  * interpretted or modified in any way. They are simply passed along. The object
  * may contain any property/value pairs as long as the calling code is in
  * agreement with the loader callback function as to what those parameters mean.
- *</ul>
+ * </ul>
  *
  * The results object returned by this method or passed to the onLoad
  * callback is an array of date
@@ -2094,8 +2058,7 @@ DateFmt.prototype._mapFormatInfo = function(tzinfo) {
  * input is valid, and false otherwise.
  * <li><i>constraint</i> - a rule that describes the constraints
  * on valid values for this component. This is intended to be
- * used with input fields such as drop-down boxes. Constraints
- * are sometimes conditional. (See the description below.)
+ * used with input fields such as drop-down boxes.
  * <li><i>value</i> - a function that this the value of
  * a calculated field. (See the description below.)
  * </ul>
@@ -2131,32 +2094,17 @@ DateFmt.prototype._mapFormatInfo = function(tzinfo) {
  * <ul><i>array[2]&lt;number&gt;</i> - an array of size 2 of numbers
  * that gives the start and end of a numeric range. The input must
  * be between the start and end of the range, inclusive.
+ * <ul><i>array[2]&lt;string&gt;</i> - an array of strings gives
+ * the exact range of values possible for this field. The input must
+ * be one of these values. This is mainly intended for use in
+ * drop-down boxes. The value of the chosen element is the value
+ * that should be returned for the field.
  * <ul><i>array&lt;object&gt; - an array of valid string values
  * given as objects that have "label" and "value" properties. The
  * label is intended to be displayed to the user and the value
  * is to be used to construct the new date object when the
  * user has finished selecting the components and the form is
  * being evaluated or submitted.
- * <ul><i>object</i> - conditional constraints. In some cases,
- * the list of possible values for the months
- * or the days depends on which year and month is being
- * displayed. When this happens, the "constraint" property is
- * given as an object that gives the different sets of values
- * depending on a condition. The name of the condition is
- * given in the "condition" property of this object.
- * For example, the list of month
- * names in a Hebrew calendar depends on whether or not the
- * year is a leap year. In leap years, there are 13 months,
- * and in regular years, there are 12 months. The "constraint"
- * property for Hebrew calendars is returned as an object
- * that contains three properties, "condition", "leap",
- * and "regular". The "condition" property is set to "isLeap"
- * (ie. whether or not it is a leap year), and
- * each of "leap" and "regular" are
- * an array of strings that give the month names in a leap
- * year (13 months) and a regular year (12 months) respectively.
- * It is up to the caller to test if a particular year is a
- * leap year and then display the correct list in the UI.
  * </ol>
  *
  * For a free-form form, the user interface must validate the
@@ -2170,8 +2118,9 @@ DateFmt.prototype._mapFormatInfo = function(tzinfo) {
  * it returns a boolean value: true if the input is valid,
  * and false otherwise. If it does not make sense for a
  * particular date format component to be free-form, such
- * as the "AM/PM" choice for a time, then the validation
- * property will be left off. UI builders should only allow
+ * as the "AM/PM" choice for a meridiem, then the validation
+ * property will be left off. Only the given choices are
+ * valid. UI builders should only allow
  * free-form fields for those components that have a
  * "validation" property. Otherwise, use a constrained
  * input form element instead.<p>
@@ -2179,12 +2128,11 @@ DateFmt.prototype._mapFormatInfo = function(tzinfo) {
  * Some date format components do not represent values that
  * a user may enter, but instead values that are calculated
  * based on other date format components. For example, the
- * day of the week is a
- * property of a date that is calculated based on the day,
- * month, and year that the user has entered. It would not
+ * day of the week is a property that is calculated based
+ * on the date the user has entered. It would not
  * make sense for the user to be able to choose a day of
  * the week that does not correspond to the day, month, and
- * year. To handle calculated
+ * year they have already chosen. To handle calculated
  * date format components, this method returns a "value"
  * property which is a function which returns
  * the calculated value of the field. Its parameter is a date
@@ -2194,8 +2142,8 @@ DateFmt.prototype._mapFormatInfo = function(tzinfo) {
  * pass to the DateFactory function.<p>
  *
  * @example Here is what the result would look like for a US short
- * date/time format that includes the components of day of
- * the week, date, month, year, hour, minute, and meridiem:
+ * date/time format for a leap year. This includes the components
+ * of day of the week, date, month, year, hour, minute, and meridiem:
  *
  * <pre>
  * [
@@ -2205,11 +2153,11 @@ DateFmt.prototype._mapFormatInfo = function(tzinfo) {
  *   },
  *   {
  *     "label": " "              // fixed field (optionally displayed in the UI)
- *   }
+ *   },
  *   {
  *     "component": "month",     // property name to use when calling DateFactory() for this field
  *     "label": "Month",         // label describing this field, in this case translated to English/US
- *     "placeholder": "DD",      // the placeholder text for this field
+ *     "placeholder": "M",       // the placeholder text for this field
  *     "constraint": [1, 12],    // constraint rules for a drop-down box for the month
  *     "validation": "\\d{1,2}"  // validation rule for a free-form text input
  *   },
@@ -2221,37 +2169,22 @@ DateFmt.prototype._mapFormatInfo = function(tzinfo) {
  *     "label": "Date",
  *     "placeholder": "DD",
  *     "constraint": {
- *       "condition": "isLeap ", // condition to switch upon
- *       "leap": {               // if the condition is "leap year" use these constraints
- *          "1": [1, 31],
- *          "2": [1, 29],
- *          "3": [1, 31],
- *          "4": [1, 30],
- *          "5": [1, 31],
- *          "6": [1, 30],
- *          "7": [1, 31],
- *          "8": [1, 31],
- *          "9": [1, 30],
- *          "10": [1, 31],
- *          "11": [1, 30],
- *          "12": [1, 31]
- *       },
- *       "regular": {
- *          "1": [1, 31],
- *          "2": [1, 28],
- *          "3": [1, 31],
- *          "4": [1, 30],
- *          "5": [1, 31],
- *          "6": [1, 30],
- *          "7": [1, 31],
- *          "8": [1, 31],
- *          "9": [1, 30],
- *          "10": [1, 31],
- *          "11": [1, 30],
- *          "12": [1, 31]
- *       }
+ *       // if the given years is a leap year use these constraints
+ *       "1": [1, 31],
+ *       "2": [1, 29],
+ *       "3": [1, 31],
+ *       "4": [1, 30],
+ *       "5": [1, 31],
+ *       "6": [1, 30],
+ *       "7": [1, 31],
+ *       "8": [1, 31],
+ *       "9": [1, 30],
+ *       "10": [1, 31],
+ *       "11": [1, 30],
+ *       "12": [1, 31]
  *     },
  *     "validation": "\\d{1,2}"
+ *   },
  *   {
  *     "label": "/"
  *   },
@@ -2278,7 +2211,7 @@ DateFmt.prototype._mapFormatInfo = function(tzinfo) {
  *     "component": "minute",
  *     "label": "Minute",
  *     "constraint": [
- *       "00",
+ *       "00",                   // note that these are strings so that they can be zero-padded
  *       "01",
  *       "02",
  *       "03",
@@ -2318,6 +2251,7 @@ DateFmt.prototype._mapFormatInfo = function(tzinfo) {
  * // would like the user to enter.
  * new DateFmt({
  *   locale: 'nl-NL', // for dates in the Netherlands
+ *   year: 2019,
  *   onLoad: ilib.bind(this, function(fmt) {
  *     // The following is the locale of the UI you would like to see the labels
  *     // like "Year" and "Minute" translated to. In this example, we
@@ -2327,30 +2261,26 @@ DateFmt.prototype._mapFormatInfo = function(tzinfo) {
  *       locale: "en-US",
  *       sync: true,
  *       callback: ilib.bind(this, function(components) {
- *       // iterate through the component array and dynamically create the input
- *       // elements with the given labels and placeholders and such
+ *       // here you should iterate through the component array and dynamically create the input
+ *       // elements with the given labels and placeholders and such, and install
+ *       // the appropriate validators
  *     }));
  *   })
  * });
  *
- * @param {Locale|string=} locale the locale to translate the labels
- * to. This is distinct from the locale of the date being entered.
- * If not given, the locale of the formatter will be used.
- * @param {boolean=} sync true if this method should load the data
- * synchronously and return it immediately, false if async operation is
- * needed.
- * @param {Function=} callback a callback to call when the data
- * is ready
- * @returns {Array.<Object>} An array date components
+ * @param {Object} options option to control this function. (See the description
+ * above.)
+ * @returns {Array.<Object>} An array of date components
  */
 DateFmt.prototype.getFormatInfo = function(options) {
-    var locale, sync = true, callback, loadParams;
+    var locale, sync = true, callback, loadParams, year;
 
     if (options) {
         locale = options.locale;
         sync = !!options.sync;
-        callback = options.callback;
+        callback = options.onLoad;
         loadParams = options.loadParams;
+        year = options.year;
     }
     var info;
     var loc = new Locale(this.locale);
@@ -2360,6 +2290,13 @@ DateFmt.prototype.getFormatInfo = function(options) {
         }
         loc.language = locale.getLanguage();
         loc.spec = undefined;
+    }
+
+    if (!year) {
+        var now = DateFactory({
+            type: this.calName
+        });
+        year = now.getYear();
     }
 
     new ResBundle({
@@ -2388,13 +2325,13 @@ DateFmt.prototype.getFormatInfo = function(options) {
                     set.add("Etc/GMT-13");
                     set.add("Etc/GMT-14");
 
-                    info = this._mapFormatInfo(set.asArray().sort());
+                    info = this._mapFormatInfo(year, set.asArray().sort());
                     if (callback && typeof(callback) === "function") {
                         callback(info);
                     }
                 }));
             } else {
-                info = this._mapFormatInfo();
+                info = this._mapFormatInfo(year);
                 if (callback && typeof(callback) === "function") {
                     callback(info);
                 }

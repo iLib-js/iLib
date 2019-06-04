@@ -304,5 +304,127 @@ module.exports.testdatefmtasync = {
 
             }
         });
-    }
+    },
+    
+    testDateFmtGetFormatInfoUSShortAsync: function(test) {
+        test.expect(16);
+
+        var fmt = new DateFmt({
+            locale: "en-US",
+            type: "date",
+            date: "short"
+        });
+        test.ok(fmt !== null);
+
+        fmt.getFormatInfo({
+            sync: false,
+            year: 2019,
+            onLoad: function(info) {
+                test.ok(info);
+
+                test.equal(info.length, 5);
+
+                test.equal(info[0].component, "month");
+                test.equal(info[0].label, "Month");
+                test.deepEqual(info[0].constraint, [1, 12]);
+
+                test.ok(!info[1].component);
+                test.equal(info[1].label, "/");
+
+                test.equal(info[2].component, "day");
+                test.equal(info[2].label, "Date");
+                test.deepEqual(info[2].constraint, {
+                    "1": [1, 31],
+                    "2": [1, 28],
+                    "3": [1, 31],
+                    "4": [1, 30],
+                    "5": [1, 31],
+                    "6": [1, 30],
+                    "7": [1, 31],
+                    "8": [1, 31],
+                    "9": [1, 30],
+                    "10": [1, 31],
+                    "11": [1, 30],
+                    "12": [1, 31]
+                });
+
+                test.ok(!info[3].component);
+                test.equal(info[3].label, "/");
+
+                test.equal(info[4].component, "year");
+                test.equal(info[4].label, "Year");
+                test.equal(info[4].constraint, "[0-9]{2}");
+                test.done();
+            }
+        });
+
+    },
+    
+    testDateFmtGetFormatInfoGregorianTranslatedAsync: function(test) {
+        test.expect(16);
+
+        var fmt = new DateFmt({
+            locale: "en-US",
+            type: "date",
+            date: "full"
+        });
+        test.ok(fmt !== null);
+
+        fmt.getFormatInfo({
+            locale: "de-DE",
+            year: 2019,
+            sync: false,
+            onLoad: function(info) {
+                test.ok(info);
+
+                test.equal(info.length, 5);
+
+                test.equal(info[0].component, "month");
+                test.equal(info[0].label, "Monat");
+                test.deepEqual(info[0].constraint, [
+                    {label: "Januar", value: 1},
+                    {label: "Februar", value: 2},
+                    {label: "März", value: 3},
+                    {label: "April", value: 4},
+                    {label: "Mai", value: 5},
+                    {label: "Juni", value: 6},
+                    {label: "Juli", value: 7},
+                    {label: "August", value: 8},
+                    {label: "September", value: 9},
+                    {label: "Oktober", value: 10},
+                    {label: "November", value: 11},
+                    {label: "Dezember", value: 12},
+                ]);
+
+                test.ok(!info[1].component);
+                test.equal(info[1].label, " ");
+
+                test.equal(info[2].component, "day");
+                test.equal(info[2].label, "Datum");
+                test.deepEqual(info[2].constraint, {
+                    "1": [1, 31],
+                    "2": [1, 28],
+                    "3": [1, 31],
+                    "4": [1, 30],
+                    "5": [1, 31],
+                    "6": [1, 30],
+                    "7": [1, 31],
+                    "8": [1, 31],
+                    "9": [1, 30],
+                    "10": [1, 31],
+                    "11": [1, 30],
+                    "12": [1, 31]
+                });
+
+                test.ok(!info[3].component);
+                test.equal(info[3].label, ", ");
+
+                test.equal(info[4].component, "year");
+                test.equal(info[4].label, "Jahr");
+                test.equal(info[4].constraint, "[0-9]+");
+                test.done();
+            }
+        });
+
+    },
 };
