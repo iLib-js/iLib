@@ -551,7 +551,7 @@ limitations under the License.
     <target name="scan.demo.dynamic">
         <sequential>
             <echo>Scanning demo dir for ilib classes</echo>
-            <exec osfamily="unix" executable="ilib-scanner" dir="${build.demo}" failifexecutionfails="@{failquit}" failonerror="@{failquit}" searchpath="true">
+            <exec osfamily="unix" executable="bash" dir="${build.demo}" failifexecutionfails="@{failquit}" failonerror="@{failquit}" searchpath="true">
                 <env key="PATH" path="${env.PATH}:${nm.bin}"/>
                 <arg value="-c"/>
                 <arg value="ilib-scanner scripts/ilib-include.js --assembly=dynamicdata --compilation=compiled --locales=${locales.demo} --ilibRoot=${build.base} --mode=production"/>
