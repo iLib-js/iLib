@@ -1,6 +1,14 @@
 Release Notes for Version 14
 ============================
 
+Build 006
+-------
+Published as version 14.2.1
+
+
+Bug Fixes:
+* Updated to IANA time zone data version 2019a
+
 Build 005
 -------
 Published as version 14.2.0
