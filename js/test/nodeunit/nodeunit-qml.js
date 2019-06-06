@@ -359,7 +359,8 @@ var nodeunit = (function(){
     (function(exports){
         var totalCaseNum = 0, assertionNum = 0;
         var failNum = 0, successNum = 0;
-        var startTime = 0, endTime = 0;
+        var endTime = 0;
+        var startTime = new Date().getTime();
 
         function getFailureDetails(assertion) {
             if (assertion.error && assertion.error.name === "AssertionError") {
@@ -371,8 +372,6 @@ var nodeunit = (function(){
         }
         
         exports.run = function (modules) {
-            startTime = new Date().getTime();
-    
             exports.runModules(modules, {
                 moduleStart: function (name) {
                     console.log("moduleStart");
@@ -465,7 +464,7 @@ var nodeunit = (function(){
             };
         };
 
-        exports.test = function(name, start, options, callback) {
+        exports.test = function(name, options, callback) {
             var expecting;
             var a_list = [];
 
@@ -509,12 +508,11 @@ var nodeunit = (function(){
         exports.runSuite = function (name, fn, opt, callback) {
             var prop = fn;
             var options = exports.options(opt);
-            var start = new Date().getTime();
 
             for (var prop in fn) {
                 if (fn.hasOwnProperty(prop)) {
                     if (typeof fn[prop] === 'function') {
-                        var test = exports.test(prop, start, options, callback);
+                        var test = exports.test(prop, options, callback);
                         try {
                             fn[prop](test);
                         } catch(e) {
@@ -548,6 +546,7 @@ var nodeunit = (function(){
             console.log("[Result] " + successNum + " assertions of " + assertionNum + " passed, " + failNum + " failed");
             console.log("[Result] Test completed in " + (endTime - startTime)/1000 + " seconds");
             console.log("===========================================================================================");
+            console.log("                                                                                           ");
         }
 
     })(reporter);
