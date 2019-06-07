@@ -56,7 +56,7 @@ var hardCodeData = {
 var aux = require("./datefmts.js");
 
 function usage() {
-    console.log("Usage: gendatefmts [-h] [ locale_data_dir ]\n" +
+    console.log("Usage: gendatefmts2 [-h] [ locale_data_dir ]\n" +
         "Generate date formats information files.\n" +
         "-h or --help\n" +
         "  this help\n" +
@@ -93,19 +93,23 @@ function anyProperties(data) {
     return false;
 }
 
-function writeSystemResources(language, script, region, data) {
-    var path = calcLocalePath(language, script, region, "");
+function writeResources(language, script, region, filename, data) {
+    var locpath = calcLocalePath(language, script, region, "");
     // if (data && data.generated) {
     if (anyProperties(data)) {
-        console.log("Writing " + path + "\n");
-        makeDirs(path);
-        fs.writeFileSync(path + "/sysres.json", JSON.stringify(data, true, 4), "utf-8");
+        console.log("Writing " + locpath + "\n");
+        makeDirs(locpath);
+        fs.writeFileSync(path.join(locpath, filename), JSON.stringify(data, true, 4), "utf-8");
     } else {
-        console.log("Skipping empty " + path + "\n");
+        console.log("Skipping empty " + locpath + "\n");
     }
     // } else {
     // console.log("Skipping existing " + path + "\n");
     // }
+}
+
+function writeSystemResources(language, script, region, data) {
+    writeResources(language, script, region, "sysres.json", data);
 }
 
 var localeDirName;
@@ -141,11 +145,14 @@ console.log("Reading existing locale data ...");
 
 var dateFormats = {};
 var systemResources = {};
+var displayNames = {};
 
 console.log("dateformats.json: ");
 aux.walkLocaleDir(dateFormats, /dateformats\.json$/, localeDirName, "");
 console.log("sysres.json: ");
 aux.walkLocaleDir(systemResources, /sysres\.json$/, localeDirName, "");
+console.log("dateres.json:");
+displayNames.data = aux.createRootDisplayNames();
 
 console.log("\nMerging formats forward ...");
 
@@ -263,6 +270,11 @@ list.forEach(function (file) {
     group = aux.getFormatGroup(systemResources, localeComponents);
     group.data = merge(group.data || {}, newFormats);
 
+    // Date/Time display names
+    newFormats = aux.createDisplayNames(dateFields.main[file].dates.fields, language, script, region);
+    group = aux.getFormatGroup(displayNames, localeComponents);
+    group.data = merge(group.data || {}, newFormats);
+
     // separator
     seperator = require(path.join(sourceDir, "listPatterns.json"));
     newFormats = aux.createSeperatorResources(seperator.main[file].listPatterns, language);
@@ -349,6 +361,31 @@ for (language in systemResources) {
 }
 writeSystemResources(undefined, undefined, undefined, systemResources.data);
 //aux.writeFormats(localeDirName, "sysres.json", systemResources, []);
+console.log("\n");
+
+mergeAndPrune(displayNames);
+for (language in displayNames) {
+    if (language && displayNames[language] && language !== 'data' && language !== 'merged') {
+        for (var subpart in displayNames[language]) {
+            if (subpart && displayNames[language][subpart] && subpart !== 'data' && subpart !== 'merged') {
+                if (Locale.isScriptCode(subpart)) {
+                    script = subpart;
+                    for (region in displayNames[language][script]) {
+                        if (region && displayNames[language][script][region] && region !== 'data' && region !== 'merged') {
+                            writeResources(language, script, region, "dateres.json", displayNames[language][script][region].data);
+                        }
+                    }
+                    writeResources(language, script, undefined, "dateres.json", displayNames[language][script].data);
+                } else {
+                    writeResources(language, undefined, subpart, "dateres.json", displayNames[language][subpart].data);
+                }
+            }
+        }
+        writeResources(language, undefined, undefined, "dateres.json", displayNames[language].data);
+    }
+}
+writeResources(undefined, undefined, undefined, "dateres.json", displayNames.data);
+
 console.log("\n");
 
 console.log("Done.");

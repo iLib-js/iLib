@@ -1617,6 +1617,7 @@ module.exports = {
 
         return formats;
     },
+
     createDurationResourceDetail: function (cldrUnitData, durationObject, length, language, script) {
         var durationSysres = {};
         var durationSysresTest = {};
@@ -1655,6 +1656,7 @@ module.exports = {
 
         return durationSysres;
     },
+
     createDurationResources: function (cldrData, language, script) {
         var durationObject = {
             "durationPropertiesFull" : {
@@ -1857,6 +1859,7 @@ module.exports = {
         }
         return mergedSysres;
     },
+
     createRelativeFormatDetail: function (cldrDateFieldsData, relativeObject, relation, length, language, script) {
         var relativeSysres = {};
         var dataLength = "";
@@ -2041,7 +2044,7 @@ module.exports = {
             // already the minimum, so we don't need to do anything
             return;
         }
-        
+
         console.log("Promoting " + totals[0].name + "/" + filename + " to " + parentName + "\n");
         // promote a child as the new root, dropping the current root
         group.data = group[totals[0].name].data;
@@ -2049,8 +2052,8 @@ module.exports = {
 
     pruneFormatsChild: function(parent, child) {
         console.log(".");
-        
-        // first recursively prune all the grandchildren before pruning the child or else the child 
+
+        // first recursively prune all the grandchildren before pruning the child or else the child
         // will be too sparse to prune the grandchildren
         for (var localebit in child) {
             if (localebit !== "und" && localebit !== "data") {
@@ -2099,7 +2102,7 @@ module.exports = {
         // don't write out empty files!
         if (contents !== "{}") {
             console.log(localeComponents.join("-") + " ");
-            
+
             makeDirs(dir);
             fs.writeFileSync(filename, JSON.stringify(group.data, undefined, 4), 'utf8');
         }
@@ -2109,5 +2112,50 @@ module.exports = {
                 module.exports.writeFormats(outputDir, outfile, group[comp], localeComponents.concat([comp]));
             }
         }
+    },
+
+    createRootDisplayNames: function() {
+        return {
+            "AM/PM": "AM/PM",
+            "Day": "Day",
+            "Day of Year": "Day Of Year",
+            "Era": "Era",
+            "Hour": "Hour",
+            "Minute": "Minute",
+            "Month": "Month",
+            "Second": "Second",
+            "Time Zone": "Time Zone",
+            "Week": "Week",
+            "Week of Month": "Week Of Month",
+            "Year": "Year"
+        };
+    },
+
+    createDisplayNames: function(cldrData, language, script) {
+        var formats = {};
+        var fieldNames = {
+            "dayperiod": "AM/PM",
+            "day": "Day",
+            "dayOfYear": "Day of Year",
+            "era": "Era",
+            "hour": "Hour",
+            "minute": "Minute",
+            "month": "Month",
+            "second": "Second",
+            "zone": "Time Zone",
+            "week": "Week",
+            "weekOfMonth": "Week of Month",
+            "year": "Year"
+        };
+
+        for (var dateField in fieldNames) {
+            if (typeof(cldrData[dateField]) !== 'undefined' && cldrData[dateField].displayName) {
+                if (fieldNames[dateField] !== cldrData[dateField].displayName) {
+                    formats[fieldNames[dateField]] = cldrData[dateField].displayName;
+                }
+            }
+        }
+
+        return formats;
     }
 };
