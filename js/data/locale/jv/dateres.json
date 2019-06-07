@@ -8,5 +8,14 @@
     "Second": "detik",
     "Time Zone": "zona wektu",
     "Week": "pekan",
-    "Year": "taun"
+    "Year": "taun",
+    "D": "d",
+    "DD": "dd",
+    "YY": "tt",
+    "YYYY": "taun",
+    "M": "s",
+    "MM": "ss",
+    "H": "j",
+    "HH": "jj",
+    "ss": "dd"
 }

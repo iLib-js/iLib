@@ -9,5 +9,14 @@
     "Time Zone": "zona waktu",
     "Week": "minggu",
     "Week of Month": "minggu",
-    "Year": "tahun"
+    "Year": "tahun",
+    "D": "h",
+    "DD": "hh",
+    "YY": "tt",
+    "YYYY": "tttt",
+    "M": "b",
+    "MM": "bb",
+    "H": "J",
+    "HH": "JJ",
+    "ss": "dd"
 }

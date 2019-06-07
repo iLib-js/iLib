@@ -9,5 +9,13 @@
     "Time Zone": "ordu-zona",
     "Week": "astea",
     "Week of Month": "hileko #. astea",
-    "Year": "urtea"
+    "Year": "urtea",
+    "D": "e",
+    "DD": "ee",
+    "YY": "uu",
+    "YYYY": "uuuu",
+    "M": "h",
+    "MM": "hh",
+    "H": "o",
+    "HH": "oo"
 }

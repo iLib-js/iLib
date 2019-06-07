@@ -5,5 +5,7 @@
     "Minute": "分鐘",
     "Time Zone": "時區",
     "Week": "週",
-    "Week of Month": "週"
+    "Week of Month": "週",
+    "HH": "小時",
+    "mm": "分鐘"
 }

@@ -8,5 +8,13 @@
     "Second": "sekunda",
     "Time Zone": "časowe pasmo",
     "Week": "tydźeń",
-    "Year": "lěto"
+    "Year": "lěto",
+    "D": "d",
+    "DD": "dd",
+    "YY": "ll",
+    "YYYY": "lěto",
+    "M": "m",
+    "MM": "mm",
+    "H": "h",
+    "HH": "hh"
 }

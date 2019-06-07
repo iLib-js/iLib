@@ -8,5 +8,14 @@
     "Second": "Sɛkɛnd",
     "Time Zone": "Bere apaamu",
     "Week": "Dapɛn",
-    "Year": "Afe"
+    "Year": "Afe",
+    "DD": "Da",
+    "YY": "AA",
+    "YYYY": "Afe",
+    "M": "B",
+    "MM": "BB",
+    "H": "D",
+    "HH": "DD",
+    "mm": "SS",
+    "ss": "SS"
 }

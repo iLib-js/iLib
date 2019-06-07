@@ -8,5 +8,15 @@
     "Second": "píndí",
     "Time Zone": "Zone",
     "Week": "disama",
-    "Year": "mbú"
+    "Year": "mbú",
+    "D": "b",
+    "DD": "bb",
+    "YY": "mm",
+    "YYYY": "mbú",
+    "M": "m",
+    "MM": "mm",
+    "H": "ŋ",
+    "HH": "ŋŋ",
+    "mm": "nn",
+    "ss": "pp"
 }

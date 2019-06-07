@@ -8,5 +8,13 @@
     "Second": "segundu",
     "Time Zone": "estaya horaria",
     "Week": "selmana",
-    "Year": "añu"
+    "Year": "añu",
+    "D": "d",
+    "DD": "dd",
+    "YY": "aa",
+    "YYYY": "añu",
+    "M": "m",
+    "MM": "mm",
+    "H": "h",
+    "HH": "hh"
 }

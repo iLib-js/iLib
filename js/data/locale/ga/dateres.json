@@ -10,5 +10,14 @@
     "Time Zone": "Crios Ama",
     "Week": "Seachtain",
     "Week of Month": "Seachtain den mhí",
-    "Year": "Bliain"
+    "Year": "Bliain",
+    "D": "L",
+    "DD": "Lá",
+    "YY": "BB",
+    "YYYY": "BBBB",
+    "MM": "Mí",
+    "H": "U",
+    "HH": "UU",
+    "mm": "NN",
+    "ss": "SS"
 }

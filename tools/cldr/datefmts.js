@@ -2121,13 +2121,25 @@ module.exports = {
             "Day of Year": "Day Of Year",
             "Era": "Era",
             "Hour": "Hour",
+            "Millisecond": "Millisecond",
             "Minute": "Minute",
             "Month": "Month",
             "Second": "Second",
             "Time Zone": "Time Zone",
             "Week": "Week",
             "Week of Month": "Week Of Month",
-            "Year": "Year"
+            "Year": "Year",
+            "D": "D",
+            "DD": "DD",
+            "YY": "YY",
+            "YYYY": "YYYY",
+            "M": "M",
+            "MM": "MM",
+            "H": "H",
+            "HH": "HH",
+            "mm": "mm",
+            "ss": "ss",  
+            "ms": "ms"  
         };
     },
 
@@ -2154,6 +2166,33 @@ module.exports = {
                     formats[fieldNames[dateField]] = cldrData[dateField].displayName;
                 }
             }
+        }
+
+        var placeholders = {
+            "D": "Day",
+            "DD": "Day",
+            "YY": "Year",
+            "YYYY": "Year",
+            "M": "Month",
+            "MM": "Month",
+            "H": "Hour",
+            "HH": "Hour",
+            "mm": "Minute",
+            "ss": "Second"
+        };
+        
+        for (var ph in placeholders) {
+            var name = formats[placeholders[ph]];
+            if (name) {
+                if (name.length <= ph.length || rtlLanguages.indexOf(language) > -1 || rtlScripts.indexOf(script) > -1) {
+                    // if it's short or if it's using the Arabic script, just use the full name of the field
+                    formats[ph] = name;
+                } else {
+                    // else if it's not certain scripts, use the abbreviation
+                    var initial = name[0]; 
+                    formats[ph] = ph.replace(/./g, initial); 
+                }
+            } 
         }
 
         return formats;

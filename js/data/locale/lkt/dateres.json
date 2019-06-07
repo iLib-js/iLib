@@ -7,5 +7,15 @@
     "Second": "Okpí",
     "Time Zone": "Zone",
     "Week": "Okó",
-    "Year": "Ómakȟa"
+    "Year": "Ómakȟa",
+    "D": "A",
+    "DD": "AA",
+    "YY": "ÓÓ",
+    "YYYY": "ÓÓÓÓ",
+    "M": "W",
+    "MM": "Wí",
+    "H": "O",
+    "HH": "OO",
+    "mm": "OO",
+    "ss": "OO"
 }

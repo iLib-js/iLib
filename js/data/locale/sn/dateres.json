@@ -8,5 +8,13 @@
     "Second": "Sekondi",
     "Time Zone": "Nguva",
     "Week": "Vhiki",
-    "Year": "Gore"
+    "Year": "Gore",
+    "D": "Z",
+    "DD": "ZZ",
+    "YY": "GG",
+    "YYYY": "Gore",
+    "H": "A",
+    "HH": "AA",
+    "mm": "MM",
+    "ss": "SS"
 }

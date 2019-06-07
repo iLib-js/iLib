@@ -8,5 +8,13 @@
     "Second": "Sekúunde",
     "Time Zone": "Mpɨɨndɨ ja mɨɨtʉ",
     "Week": "Wíiki",
-    "Year": "Mwaáka"
+    "Year": "Mwaáka",
+    "D": "S",
+    "DD": "SS",
+    "YY": "MM",
+    "YYYY": "MMMM",
+    "H": "S",
+    "HH": "SS",
+    "mm": "DD",
+    "ss": "SS"
 }

@@ -6,5 +6,11 @@
     "Month": "Mwezi",
     "Second": "Segundo",
     "Time Zone": "Zone",
-    "Year": "Chaka"
+    "Year": "Chaka",
+    "D": "N",
+    "DD": "NN",
+    "YY": "CC",
+    "YYYY": "CCCC",
+    "mm": "MM",
+    "ss": "SS"
 }

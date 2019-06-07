@@ -8,5 +8,15 @@
     "Second": "Tusnat",
     "Time Zone": "Aseglem asergan",
     "Week": "Imalass",
-    "Year": "Asseggas"
+    "Year": "Asseggas",
+    "D": "A",
+    "DD": "AA",
+    "YY": "AA",
+    "YYYY": "AAAA",
+    "M": "A",
+    "MM": "AA",
+    "H": "T",
+    "HH": "TT",
+    "mm": "TT",
+    "ss": "TT"
 }

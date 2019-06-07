@@ -4,5 +4,11 @@
     "Month": "iməg",
     "Time Zone": "Zone",
     "Week": "nkap",
-    "Year": "fituʼ"
+    "Year": "fituʼ",
+    "D": "a",
+    "DD": "aa",
+    "YY": "ff",
+    "YYYY": "ffff",
+    "M": "i",
+    "MM": "ii"
 }

@@ -10,5 +10,13 @@
     "Time Zone": "ajavöönd",
     "Week": "nädal",
     "Week of Month": "kuu nädal",
-    "Year": "aasta"
+    "Year": "aasta",
+    "D": "p",
+    "DD": "pp",
+    "YY": "aa",
+    "YYYY": "aaaa",
+    "M": "k",
+    "MM": "kk",
+    "H": "t",
+    "HH": "tt"
 }

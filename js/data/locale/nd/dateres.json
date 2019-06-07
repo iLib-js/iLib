@@ -7,5 +7,15 @@
     "Second": "Isekendi",
     "Time Zone": "Isikhathi",
     "Week": "Iviki",
-    "Year": "Umnyaka"
+    "Year": "Umnyaka",
+    "D": "I",
+    "DD": "II",
+    "YY": "UU",
+    "YYYY": "UUUU",
+    "M": "I",
+    "MM": "II",
+    "H": "I",
+    "HH": "II",
+    "mm": "UU",
+    "ss": "II"
 }

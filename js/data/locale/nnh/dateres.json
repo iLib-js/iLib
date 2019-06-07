@@ -4,5 +4,11 @@
     "Era": "tsɔ́ fʉ̀ʼ",
     "Hour": "fʉ̀ʼ nèm",
     "Time Zone": "Zone",
-    "Year": "ngùʼ"
+    "Year": "ngùʼ",
+    "D": "l",
+    "DD": "ll",
+    "YY": "nn",
+    "YYYY": "ngùʼ",
+    "H": "f",
+    "HH": "ff"
 }

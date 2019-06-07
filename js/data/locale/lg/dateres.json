@@ -7,5 +7,13 @@
     "Second": "Kasikonda",
     "Time Zone": "Ssaawa za:",
     "Week": "Sabbiiti",
-    "Year": "Mwaka"
+    "Year": "Mwaka",
+    "D": "L",
+    "DD": "LL",
+    "YY": "MM",
+    "YYYY": "MMMM",
+    "H": "S",
+    "HH": "SS",
+    "mm": "DD",
+    "ss": "KK"
 }

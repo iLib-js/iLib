@@ -8,5 +8,13 @@
     "Second": "Thekunde",
     "Time Zone": "Majira Athaa",
     "Week": "Ndisha",
-    "Year": "Mwaka"
+    "Year": "Mwaka",
+    "D": "T",
+    "DD": "TT",
+    "YY": "MM",
+    "YYYY": "MMMM",
+    "H": "T",
+    "HH": "TT",
+    "mm": "DD",
+    "ss": "TT"
 }

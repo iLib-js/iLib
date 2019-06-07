@@ -8,5 +8,14 @@
     "Second": "saa",
     "Time Zone": "goxu waxtu",
     "Week": "ayu-bis",
-    "Year": "at"
+    "Year": "at",
+    "D": "f",
+    "DD": "ff",
+    "YY": "at",
+    "YYYY": "at",
+    "M": "w",
+    "MM": "ww",
+    "H": "w",
+    "HH": "ww",
+    "mm": "ss"
 }

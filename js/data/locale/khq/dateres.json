@@ -8,5 +8,15 @@
     "Second": "Miti",
     "Time Zone": "Leerazuu",
     "Week": "Hebu",
-    "Year": "Jiiri"
+    "Year": "Jiiri",
+    "D": "J",
+    "DD": "JJ",
+    "YY": "JJ",
+    "YYYY": "JJJJ",
+    "M": "H",
+    "MM": "HH",
+    "H": "G",
+    "HH": "GG",
+    "mm": "MM",
+    "ss": "MM"
 }

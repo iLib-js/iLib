@@ -8,5 +8,13 @@
     "Second": "Sekunde",
     "Time Zone": "Zone",
     "Week": "Wuche",
-    "Year": "Jaar"
+    "Year": "Jaar",
+    "D": "T",
+    "DD": "TT",
+    "YY": "JJ",
+    "YYYY": "Jaar",
+    "H": "S",
+    "HH": "SS",
+    "mm": "MM",
+    "ss": "SS"
 }

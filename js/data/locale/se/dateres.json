@@ -8,5 +8,13 @@
     "Second": "sekunda",
     "Time Zone": "áigeavádat",
     "Week": "váhkku",
-    "Year": "jáhki"
+    "Year": "jáhki",
+    "D": "b",
+    "DD": "bb",
+    "YY": "jj",
+    "YYYY": "jjjj",
+    "M": "m",
+    "MM": "mm",
+    "H": "d",
+    "HH": "dd"
 }

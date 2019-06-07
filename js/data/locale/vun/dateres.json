@@ -8,5 +8,13 @@
     "Second": "Sekunde",
     "Time Zone": "Mfiri o saa",
     "Week": "Wiikyi",
-    "Year": "Maka"
+    "Year": "Maka",
+    "D": "M",
+    "DD": "MM",
+    "YY": "MM",
+    "YYYY": "Maka",
+    "H": "S",
+    "HH": "SS",
+    "mm": "DD",
+    "ss": "SS"
 }

@@ -8,5 +8,15 @@
     "Second": "Cok comme ma laŋ tǝ biŋ",
     "Time Zone": "Waŋ cok comme",
     "Week": "Luma",
-    "Year": "Syii"
+    "Year": "Syii",
+    "D": "Z",
+    "DD": "ZZ",
+    "YY": "SS",
+    "YYYY": "Syii",
+    "M": "F",
+    "MM": "FF",
+    "H": "C",
+    "HH": "CC",
+    "mm": "CC",
+    "ss": "CC"
 }

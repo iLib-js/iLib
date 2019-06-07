@@ -8,5 +8,13 @@
     "Second": "Kasunsukusu",
     "Time Zone": "Nzeepu",
     "Week": "Lubingu",
-    "Year": "Tshidimu"
+    "Year": "Tshidimu",
+    "YY": "TT",
+    "YYYY": "TTTT",
+    "M": "N",
+    "MM": "NN",
+    "H": "D",
+    "HH": "DD",
+    "mm": "KK",
+    "ss": "KK"
 }

@@ -8,5 +8,15 @@
     "Second": "Nkejinta",
     "Time Zone": "Mpaghara oge",
     "Week": "Izu",
-    "Year": "Afọ"
+    "Year": "Afọ",
+    "D": "Ụ",
+    "DD": "ỤỤ",
+    "YY": "AA",
+    "YYYY": "Afọ",
+    "M": "Ọ",
+    "MM": "ỌỌ",
+    "H": "E",
+    "HH": "EE",
+    "mm": "NN",
+    "ss": "NN"
 }

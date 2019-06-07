@@ -8,5 +8,13 @@
     "Second": "Nyiɛl",
     "Time Zone": "Nkɛ̌l wulā",
     "Week": "Sɔ́ndɔ",
-    "Year": "Mbvu"
+    "Year": "Mbvu",
+    "YY": "MM",
+    "YYYY": "Mbvu",
+    "M": "N",
+    "MM": "NN",
+    "H": "W",
+    "HH": "WW",
+    "mm": "MM",
+    "ss": "NN"
 }

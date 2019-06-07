@@ -9,5 +9,13 @@
     "Time Zone": "fuso orario",
     "Week": "settimana",
     "Week of Month": "settimana del mese",
-    "Year": "anno"
+    "Year": "anno",
+    "D": "g",
+    "DD": "gg",
+    "YY": "aa",
+    "YYYY": "anno",
+    "M": "m",
+    "MM": "mm",
+    "H": "o",
+    "HH": "oo"
 }

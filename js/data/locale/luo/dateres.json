@@ -8,5 +8,15 @@
     "Second": "nyiriri mar saa",
     "Time Zone": "kar saa",
     "Week": "juma",
-    "Year": "higa"
+    "Year": "higa",
+    "D": "c",
+    "DD": "cc",
+    "YY": "hh",
+    "YYYY": "higa",
+    "M": "d",
+    "MM": "dd",
+    "H": "s",
+    "HH": "ss",
+    "mm": "dd",
+    "ss": "nn"
 }

@@ -8,5 +8,13 @@
     "Second": "sekondi",
     "Time Zone": "sigikun tilena",
     "Week": "dɔgɔkun",
-    "Year": "san"
+    "Year": "san",
+    "D": "d",
+    "DD": "dd",
+    "YY": "ss",
+    "YYYY": "san",
+    "M": "k",
+    "MM": "kk",
+    "H": "l",
+    "HH": "ll"
 }

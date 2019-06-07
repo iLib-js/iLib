@@ -8,5 +8,15 @@
     "Second": "tasint",
     "Time Zone": "akud n ugmmaḍ",
     "Week": "imalass",
-    "Year": "asggʷas"
+    "Year": "asggʷas",
+    "D": "a",
+    "DD": "aa",
+    "YY": "aa",
+    "YYYY": "aaaa",
+    "M": "a",
+    "MM": "aa",
+    "H": "t",
+    "HH": "tt",
+    "mm": "tt",
+    "ss": "tt"
 }

@@ -10,5 +10,13 @@
     "Time Zone": "fus orar",
     "Week": "săptămână",
     "Week of Month": "săptămâna din lună",
-    "Year": "an"
+    "Year": "an",
+    "D": "z",
+    "DD": "zi",
+    "YY": "an",
+    "YYYY": "an",
+    "M": "l",
+    "MM": "ll",
+    "H": "o",
+    "HH": "oo"
 }

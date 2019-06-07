@@ -8,5 +8,13 @@
     "Second": "saat",
     "Time Zone": "zon waktu",
     "Week": "minggu",
-    "Year": "tahun"
+    "Year": "tahun",
+    "D": "h",
+    "DD": "hh",
+    "YY": "tt",
+    "YYYY": "tttt",
+    "M": "b",
+    "MM": "bb",
+    "H": "j",
+    "HH": "jj"
 }

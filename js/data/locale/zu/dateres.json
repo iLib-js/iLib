@@ -8,5 +8,15 @@
     "Time Zone": "Isikhathi sendawo",
     "Week": "Iviki",
     "Week of Month": "Iviki leNyanga",
-    "Year": "Unyaka"
+    "Year": "Unyaka",
+    "D": "U",
+    "DD": "UU",
+    "YY": "UU",
+    "YYYY": "UUUU",
+    "M": "I",
+    "MM": "II",
+    "H": "I",
+    "HH": "II",
+    "mm": "II",
+    "ss": "II"
 }

@@ -8,5 +8,13 @@
     "Second": "secunda",
     "Time Zone": "zona d’urari",
     "Week": "emna",
-    "Year": "onn"
+    "Year": "onn",
+    "D": "T",
+    "DD": "TT",
+    "YY": "oo",
+    "YYYY": "onn",
+    "M": "m",
+    "MM": "mm",
+    "H": "u",
+    "HH": "uu"
 }

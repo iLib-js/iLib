@@ -10,5 +10,15 @@
     "Time Zone": "sagat guşaklygy",
     "Week": "hepde",
     "Week of Month": "aýyň hepdesi",
-    "Year": "ýyl"
+    "Year": "ýyl",
+    "D": "gün",
+    "DD": "gün",
+    "YY": "ýyl",
+    "YYYY": "ýyl",
+    "M": "aý",
+    "MM": "aý",
+    "H": "sagat",
+    "HH": "sagat",
+    "mm": "minut",
+    "ss": "sekunt"
 }

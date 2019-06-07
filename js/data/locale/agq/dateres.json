@@ -8,5 +8,13 @@
     "Second": "sɛkɔ̀n",
     "Time Zone": "dɨŋò kɨ enɨ̀gha",
     "Week": "ewɨn",
-    "Year": "kɨnûm"
+    "Year": "kɨnûm",
+    "D": "u",
+    "DD": "uu",
+    "YY": "kk",
+    "YYYY": "kkkk",
+    "M": "n",
+    "MM": "nn",
+    "H": "t",
+    "HH": "tt"
 }

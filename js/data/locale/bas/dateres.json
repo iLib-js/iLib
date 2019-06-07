@@ -8,5 +8,15 @@
     "Second": "hìŋgeŋget",
     "Time Zone": "komboo i ŋgɛŋ",
     "Week": "sɔndɛ̂",
-    "Year": "ŋwìi"
+    "Year": "ŋwìi",
+    "D": "k",
+    "DD": "kk",
+    "YY": "ŋŋ",
+    "YYYY": "ŋwìi",
+    "M": "s",
+    "MM": "ss",
+    "H": "ŋ",
+    "HH": "ŋŋ",
+    "mm": "ŋŋ",
+    "ss": "hh"
 }

@@ -8,5 +8,11 @@
     "Second": "Sekond",
     "Time Zone": "Zickzohn",
     "Week": "Woch",
-    "Year": "Johr"
+    "Year": "Johr",
+    "YY": "JJ",
+    "YYYY": "Johr",
+    "H": "S",
+    "HH": "SS",
+    "mm": "MM",
+    "ss": "SS"
 }

@@ -8,5 +8,14 @@
     "Second": "eilenn",
     "Time Zone": "takad eur",
     "Week": "sizhun",
-    "Year": "bloaz"
+    "Year": "bloaz",
+    "D": "d",
+    "DD": "dd",
+    "YY": "bb",
+    "YYYY": "bbbb",
+    "M": "m",
+    "MM": "mm",
+    "H": "e",
+    "HH": "ee",
+    "ss": "ee"
 }

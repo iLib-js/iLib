@@ -8,5 +8,15 @@
     "Second": "isekunde",
     "Time Zone": "Zone",
     "Week": "iwiki mocha",
-    "Year": "yaka"
+    "Year": "yaka",
+    "D": "n",
+    "DD": "nn",
+    "YY": "yy",
+    "YYYY": "yaka",
+    "M": "m",
+    "MM": "mm",
+    "H": "i",
+    "HH": "ii",
+    "mm": "ii",
+    "ss": "ii"
 }

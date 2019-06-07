@@ -4,5 +4,13 @@
     "Month": "Mes",
     "Second": "Segundo",
     "Week": "Semana",
-    "Year": "Año"
+    "Year": "Año",
+    "D": "D",
+    "DD": "DD",
+    "YY": "AA",
+    "YYYY": "Año",
+    "M": "M",
+    "MM": "MM",
+    "mm": "MM",
+    "ss": "SS"
 }

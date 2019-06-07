@@ -8,5 +8,15 @@
     "Second": "Obutikitiki",
     "Time Zone": "Essawa edha",
     "Week": "Esabiiti",
-    "Year": "Omwaka"
+    "Year": "Omwaka",
+    "D": "O",
+    "DD": "OO",
+    "YY": "OO",
+    "YYYY": "OOOO",
+    "M": "O",
+    "MM": "OO",
+    "H": "E",
+    "HH": "EE",
+    "mm": "EE",
+    "ss": "OO"
 }

@@ -10,5 +10,15 @@
     "Time Zone": "időzóna",
     "Week": "hét",
     "Week of Month": "hónap hete",
-    "Year": "év"
+    "Year": "év",
+    "D": "n",
+    "DD": "nn",
+    "YY": "év",
+    "YYYY": "év",
+    "M": "h",
+    "MM": "hh",
+    "H": "ó",
+    "HH": "óó",
+    "mm": "pp",
+    "ss": "mm"
 }

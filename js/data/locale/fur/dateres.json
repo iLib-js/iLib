@@ -8,5 +8,13 @@
     "Second": "secont",
     "Time Zone": "zone",
     "Week": "setemane",
-    "Year": "an"
+    "Year": "an",
+    "D": "d",
+    "DD": "dì",
+    "YY": "an",
+    "YYYY": "an",
+    "M": "m",
+    "MM": "mm",
+    "H": "o",
+    "HH": "oo"
 }

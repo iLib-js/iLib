@@ -8,5 +8,13 @@
     "Second": "síkɛn",
     "Time Zone": "kinúki kisikɛl ɔ́ pitɔŋ",
     "Week": "sɔ́ndiɛ",
-    "Year": "yɔɔŋ"
+    "Year": "yɔɔŋ",
+    "D": "p",
+    "DD": "pp",
+    "YY": "yy",
+    "YYYY": "yɔɔŋ",
+    "M": "o",
+    "MM": "oo",
+    "H": "k",
+    "HH": "kk"
 }

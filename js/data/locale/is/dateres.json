@@ -10,5 +10,13 @@
     "Time Zone": "tímabelti",
     "Week": "vika",
     "Week of Month": "vika í mánuði",
-    "Year": "ár"
+    "Year": "ár",
+    "D": "d",
+    "DD": "dd",
+    "YY": "ár",
+    "YYYY": "ár",
+    "M": "m",
+    "MM": "mm",
+    "H": "k",
+    "HH": "kk"
 }

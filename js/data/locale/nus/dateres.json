@@ -8,5 +8,15 @@
     "Second": "Thɛkɛni",
     "Time Zone": "Zone",
     "Week": "Jiɔk",
-    "Year": "Ruɔ̱n"
+    "Year": "Ruɔ̱n",
+    "D": "C",
+    "DD": "CC",
+    "YY": "RR",
+    "YYYY": "RRRR",
+    "M": "P",
+    "MM": "PP",
+    "H": "T",
+    "HH": "TT",
+    "mm": "MM",
+    "ss": "TT"
 }

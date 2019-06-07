@@ -7,5 +7,14 @@
     "Second": "hēkona",
     "Time Zone": "rohe wā",
     "Week": "wiki",
-    "Year": "tau"
+    "Year": "tau",
+    "D": "r",
+    "DD": "rā",
+    "YY": "tt",
+    "YYYY": "tau",
+    "M": "m",
+    "MM": "mm",
+    "H": "h",
+    "HH": "hh",
+    "ss": "hh"
 }

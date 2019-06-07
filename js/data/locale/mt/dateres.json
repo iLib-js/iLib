@@ -8,5 +8,13 @@
     "Time Zone": "żona tal-ħin",
     "Week": "ġimgħa",
     "Week of Month": "ġimgħa tax-xahar",
-    "Year": "Sena"
+    "Year": "Sena",
+    "D": "j",
+    "DD": "jj",
+    "YY": "SS",
+    "YYYY": "Sena",
+    "M": "x",
+    "MM": "xx",
+    "H": "s",
+    "HH": "ss"
 }

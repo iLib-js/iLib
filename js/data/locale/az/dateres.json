@@ -8,5 +8,15 @@
     "Time Zone": "Saat Qurşağı",
     "Week": "Həftə",
     "Week of Month": "Ayın həftəsi",
-    "Year": "İl"
+    "Year": "İl",
+    "D": "G",
+    "DD": "GG",
+    "YY": "İl",
+    "YYYY": "İl",
+    "M": "A",
+    "MM": "Ay",
+    "H": "S",
+    "HH": "SS",
+    "mm": "DD",
+    "ss": "SS"
 }

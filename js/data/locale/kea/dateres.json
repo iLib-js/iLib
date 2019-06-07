@@ -7,5 +7,11 @@
     "Second": "Sigundu",
     "Time Zone": "Ora lokal",
     "Week": "Simana",
-    "Year": "Anu"
+    "Year": "Anu",
+    "YY": "AA",
+    "YYYY": "Anu",
+    "H": "O",
+    "HH": "OO",
+    "mm": "MM",
+    "ss": "SS"
 }

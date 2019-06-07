@@ -9,5 +9,12 @@
     "Time Zone": "Zeitzone",
     "Week": "Woche",
     "Week of Month": "Woche des Monats",
-    "Year": "Jahr"
+    "Year": "Jahr",
+    "D": "T",
+    "DD": "TT",
+    "YY": "JJ",
+    "YYYY": "Jahr",
+    "H": "S",
+    "HH": "SS",
+    "ss": "SS"
 }

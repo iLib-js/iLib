@@ -10,5 +10,15 @@
     "Time Zone": "Múi giờ",
     "Week": "Tuần",
     "Week of Month": "tuần trong tháng",
-    "Year": "Năm"
+    "Year": "Năm",
+    "D": "N",
+    "DD": "NN",
+    "YY": "NN",
+    "YYYY": "Năm",
+    "M": "T",
+    "MM": "TT",
+    "H": "G",
+    "HH": "GG",
+    "mm": "PP",
+    "ss": "GG"
 }

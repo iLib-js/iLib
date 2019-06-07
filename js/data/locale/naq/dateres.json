@@ -8,5 +8,15 @@
     "Second": "ǀGâub",
     "Time Zone": "ǁAeb ǀharib",
     "Week": "Wekheb",
-    "Year": "Kurib"
+    "Year": "Kurib",
+    "D": "T",
+    "DD": "TT",
+    "YY": "KK",
+    "YYYY": "KKKK",
+    "M": "ǁ",
+    "MM": "ǁǁ",
+    "H": "I",
+    "HH": "II",
+    "mm": "HH",
+    "ss": "ǀǀ"
 }

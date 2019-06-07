@@ -8,5 +8,15 @@
     "Second": "Nzîna ngbonga",
     "Time Zone": "Zukangbonga",
     "Week": "Dimâsi",
-    "Year": "Ngû"
+    "Year": "Ngû",
+    "D": "L",
+    "DD": "Lâ",
+    "YY": "NN",
+    "YYYY": "Ngû",
+    "M": "N",
+    "MM": "NN",
+    "H": "N",
+    "HH": "NN",
+    "mm": "NN",
+    "ss": "NN"
 }

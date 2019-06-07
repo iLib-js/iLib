@@ -8,5 +8,15 @@
     "Second": "Daƙiƙa",
     "Time Zone": "Agogo",
     "Week": "Mako",
-    "Year": "Shekara"
+    "Year": "Shekara",
+    "D": "K",
+    "DD": "KK",
+    "YY": "SS",
+    "YYYY": "SSSS",
+    "M": "W",
+    "MM": "WW",
+    "H": "A",
+    "HH": "AA",
+    "mm": "MM",
+    "ss": "DD"
 }

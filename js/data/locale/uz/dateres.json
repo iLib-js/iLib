@@ -10,5 +10,15 @@
     "Time Zone": "vaqt mintaqasi",
     "Week": "hafta",
     "Week of Month": "oyning haftasi",
-    "Year": "yil"
+    "Year": "yil",
+    "D": "kun",
+    "DD": "kun",
+    "YY": "yil",
+    "YYYY": "yil",
+    "M": "oy",
+    "MM": "oy",
+    "H": "soat",
+    "HH": "soat",
+    "mm": "daqiqa",
+    "ss": "soniya"
 }

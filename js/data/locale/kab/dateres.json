@@ -8,5 +8,15 @@
     "Second": "Tasint",
     "Time Zone": "Aseglem asergan",
     "Week": "Ddurt",
-    "Year": "Aseggas"
+    "Year": "Aseggas",
+    "D": "A",
+    "DD": "AA",
+    "YY": "AA",
+    "YYYY": "AAAA",
+    "M": "A",
+    "MM": "AA",
+    "H": "T",
+    "HH": "TT",
+    "mm": "TT",
+    "ss": "TT"
 }

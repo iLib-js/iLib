@@ -8,5 +8,13 @@
     "Second": "Segonn",
     "Time Zone": "Peryod letan",
     "Week": "Semenn",
-    "Year": "Lane"
+    "Year": "Lane",
+    "D": "Z",
+    "DD": "ZZ",
+    "YY": "LL",
+    "YYYY": "Lane",
+    "H": "L",
+    "HH": "LL",
+    "mm": "MM",
+    "ss": "SS"
 }

@@ -8,5 +8,15 @@
     "Second": "Isegonda",
     "Time Zone": "Isaha yo mukarere",
     "Week": "Indwi, Iyinga",
-    "Year": "Umwaka"
+    "Year": "Umwaka",
+    "D": "U",
+    "DD": "UU",
+    "YY": "UU",
+    "YYYY": "UUUU",
+    "M": "U",
+    "MM": "UU",
+    "H": "I",
+    "HH": "II",
+    "mm": "UU",
+    "ss": "II"
 }

@@ -8,5 +8,15 @@
     "Second": "Sekondi",
     "Time Zone": "Zone",
     "Week": "Umulungu",
-    "Year": "Umwaka"
+    "Year": "Umwaka",
+    "D": "U",
+    "DD": "UU",
+    "YY": "UU",
+    "YYYY": "UUUU",
+    "M": "U",
+    "MM": "UU",
+    "H": "I",
+    "HH": "II",
+    "mm": "MM",
+    "ss": "SS"
 }

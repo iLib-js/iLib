@@ -9,5 +9,13 @@
     "Time Zone": "time zone",
     "Week": "linggo",
     "Week of Month": "linggo ng buwan",
-    "Year": "taon"
+    "Year": "taon",
+    "D": "a",
+    "DD": "aa",
+    "YY": "tt",
+    "YYYY": "taon",
+    "M": "b",
+    "MM": "bb",
+    "H": "o",
+    "HH": "oo"
 }

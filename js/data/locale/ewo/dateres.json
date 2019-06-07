@@ -8,5 +8,15 @@
     "Second": "Akábəga",
     "Time Zone": "Nkɔŋ Awola",
     "Week": "Sɔ́ndɔ",
-    "Year": "M̀bú"
+    "Year": "M̀bú",
+    "D": "A",
+    "DD": "AA",
+    "YY": "MM",
+    "YYYY": "M̀bú",
+    "M": "N",
+    "MM": "NN",
+    "H": "A",
+    "HH": "AA",
+    "mm": "EE",
+    "ss": "AA"
 }

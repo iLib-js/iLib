@@ -10,5 +10,14 @@
     "Time Zone": "saat dilimi",
     "Week": "hafta",
     "Week of Month": "ayın haftası",
-    "Year": "yıl"
+    "Year": "yıl",
+    "D": "g",
+    "DD": "gg",
+    "YY": "yy",
+    "YYYY": "yıl",
+    "M": "a",
+    "MM": "ay",
+    "H": "s",
+    "HH": "ss",
+    "mm": "dd"
 }

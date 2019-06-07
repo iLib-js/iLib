@@ -10,5 +10,13 @@
     "Time Zone": "fuseau horaire",
     "Week": "semaine",
     "Week of Month": "semaine (mois)",
-    "Year": "année"
+    "Year": "année",
+    "D": "j",
+    "DD": "jj",
+    "YY": "aa",
+    "YYYY": "aaaa",
+    "M": "m",
+    "MM": "mm",
+    "H": "h",
+    "HH": "hh"
 }

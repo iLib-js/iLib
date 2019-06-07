@@ -8,5 +8,15 @@
     "Second": "Esekendi",
     "Time Zone": "Chinse ‘chimo",
     "Week": "Omokubio",
-    "Year": "Omwaka"
+    "Year": "Omwaka",
+    "D": "R",
+    "DD": "RR",
+    "YY": "OO",
+    "YYYY": "OOOO",
+    "M": "O",
+    "MM": "OO",
+    "H": "E",
+    "HH": "EE",
+    "mm": "EE",
+    "ss": "EE"
 }

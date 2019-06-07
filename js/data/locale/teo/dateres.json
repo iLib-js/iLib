@@ -8,5 +8,15 @@
     "Second": "Isekonde",
     "Time Zone": "Majira ya saa",
     "Week": "Ewiki",
-    "Year": "Ekan"
+    "Year": "Ekan",
+    "D": "A",
+    "DD": "AA",
+    "YY": "EE",
+    "YYYY": "Ekan",
+    "M": "E",
+    "MM": "EE",
+    "H": "E",
+    "HH": "EE",
+    "mm": "II",
+    "ss": "II"
 }

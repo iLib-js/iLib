@@ -8,5 +8,13 @@
     "Second": "Sekunde",
     "Time Zone": "Havundu",
     "Week": "Risiza",
-    "Year": "Muhiga"
+    "Year": "Muhiga",
+    "D": "R",
+    "DD": "RR",
+    "YY": "MM",
+    "YYYY": "MMMM",
+    "H": "I",
+    "HH": "II",
+    "mm": "II",
+    "ss": "SS"
 }

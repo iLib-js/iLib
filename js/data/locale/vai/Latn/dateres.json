@@ -5,5 +5,15 @@
     "Month": "kalo",
     "Second": "jaki-jaka",
     "Week": "wiki",
-    "Year": "saŋ"
+    "Year": "saŋ",
+    "D": "t",
+    "DD": "tt",
+    "YY": "ss",
+    "YYYY": "saŋ",
+    "M": "k",
+    "MM": "kk",
+    "H": "h",
+    "HH": "hh",
+    "mm": "mm",
+    "ss": "jj"
 }

@@ -8,5 +8,15 @@
     "Second": "Háu",
     "Time Zone": "Wáas",
     "Week": "Sɔ́ndǝ",
-    "Year": "Bǝk"
+    "Year": "Bǝk",
+    "D": "Ŋ",
+    "DD": "ŊŊ",
+    "YY": "BB",
+    "YYYY": "Bǝk",
+    "M": "Ŋ",
+    "MM": "ŊŊ",
+    "H": "C",
+    "HH": "CC",
+    "mm": "MM",
+    "ss": "HH"
 }

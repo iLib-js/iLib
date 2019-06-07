@@ -7,5 +7,13 @@
     "Second": "Sekunda",
     "Time Zone": "Zitzóna",
     "Week": "Wuča",
-    "Year": "Jár"
+    "Year": "Jár",
+    "D": "T",
+    "DD": "TT",
+    "YY": "JJ",
+    "YYYY": "Jár",
+    "H": "S",
+    "HH": "SS",
+    "mm": "MM",
+    "ss": "SS"
 }

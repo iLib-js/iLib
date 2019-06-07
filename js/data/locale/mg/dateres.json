@@ -6,5 +6,15 @@
     "Second": "Segondra",
     "Time Zone": "Zone",
     "Week": "Herinandro",
-    "Year": "Taona"
+    "Year": "Taona",
+    "D": "A",
+    "DD": "AA",
+    "YY": "TT",
+    "YYYY": "TTTT",
+    "M": "V",
+    "MM": "VV",
+    "H": "O",
+    "HH": "OO",
+    "mm": "MM",
+    "ss": "SS"
 }

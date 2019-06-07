@@ -8,5 +8,13 @@
     "Second": "Sekondi",
     "Time Zone": "Gũntũ kwa thaa",
     "Week": "Kiumia",
-    "Year": "Mwaka"
+    "Year": "Mwaka",
+    "D": "N",
+    "DD": "NN",
+    "YY": "MM",
+    "YYYY": "MMMM",
+    "H": "Ĩ",
+    "HH": "ĨĨ",
+    "mm": "NN",
+    "ss": "SS"
 }

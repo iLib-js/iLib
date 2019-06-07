@@ -8,5 +8,15 @@
     "Second": "Obucweka/Esekendi",
     "Time Zone": "Eshaaha za",
     "Week": "Esande",
-    "Year": "Omwaka"
+    "Year": "Omwaka",
+    "D": "E",
+    "DD": "EE",
+    "YY": "OO",
+    "YYYY": "OOOO",
+    "M": "O",
+    "MM": "OO",
+    "H": "S",
+    "HH": "SS",
+    "mm": "EE",
+    "ss": "OO"
 }

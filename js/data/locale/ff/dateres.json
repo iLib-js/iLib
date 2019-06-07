@@ -8,5 +8,15 @@
     "Second": "Majaango",
     "Time Zone": "Diiwaan waktu",
     "Week": "Yontere",
-    "Year": "Hitaande"
+    "Year": "Hitaande",
+    "D": "Ñ",
+    "DD": "ÑÑ",
+    "YY": "HH",
+    "YYYY": "HHHH",
+    "M": "L",
+    "MM": "LL",
+    "H": "W",
+    "HH": "WW",
+    "mm": "HH",
+    "ss": "MM"
 }
