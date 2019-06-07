@@ -1,0 +1,14 @@
+{
+    "AM/PM": "cadran",
+    "Day": "jour",
+    "Day of Year": "jour (année)",
+    "Era": "ère",
+    "Hour": "heure",
+    "Minute": "minute",
+    "Month": "mois",
+    "Second": "seconde",
+    "Time Zone": "fuseau horaire",
+    "Week": "semaine",
+    "Week of Month": "semaine (mois)",
+    "Year": "année"
+}

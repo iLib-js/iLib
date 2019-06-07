@@ -1,0 +1,14 @@
+{
+    "AM/PM": "napszak",
+    "Day": "nap",
+    "Day of Year": "év napja",
+    "Era": "éra",
+    "Hour": "óra",
+    "Minute": "perc",
+    "Month": "hónap",
+    "Second": "másodperc",
+    "Time Zone": "időzóna",
+    "Week": "hét",
+    "Week of Month": "hónap hete",
+    "Year": "év"
+}

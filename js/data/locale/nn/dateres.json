@@ -1,0 +1,14 @@
+{
+    "AM/PM": "f.m./e.m.",
+    "Day": "dag",
+    "Day of Year": "dag i året",
+    "Era": "tidsalder",
+    "Hour": "time",
+    "Minute": "minutt",
+    "Month": "månad",
+    "Second": "sekund",
+    "Time Zone": "tidssone",
+    "Week": "veke",
+    "Week of Month": "veke i månaden",
+    "Year": "år"
+}

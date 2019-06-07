@@ -1,1 +1,14 @@
-{}
+{
+    "AM/PM": "AM/PM",
+    "Day": "Day",
+    "Day of Year": "Day Of Year",
+    "Era": "Era",
+    "Hour": "Hour",
+    "Minute": "Minute",
+    "Month": "Month",
+    "Second": "Second",
+    "Time Zone": "Time Zone",
+    "Week": "Week",
+    "Week of Month": "Week Of Month",
+    "Year": "Year"
+}
