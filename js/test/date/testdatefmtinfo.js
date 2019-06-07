@@ -1,5 +1,5 @@
 /*
- * testgetformatinfo.js - test the date formatter object's 
+ * testgetformatinfo.js - test the date formatter object's
  * getFormatInfo call
  *
  * Copyright © 2019 JEDLSoft
@@ -21,8 +21,11 @@
 if (typeof(ilib) === "undefined") {
     var ilib = require("../../lib/ilib.js");
 }
-if (typeof(DateFmt) === "undefined") {
-    var DateFmt = require("../../lib/DateFmt.js");
+if (typeof(DateFactory) === "undefined") {
+    var DateFactory = require("../../lib/DateFactory.js");
+}
+if (typeof(DateFmtInfo) === "undefined") {
+    var DateFmtInfo = require("../../lib/DateFmtInfo.js");
 }
 
 module.exports.testdategetformatinfo = {
@@ -31,10 +34,10 @@ module.exports.testdategetformatinfo = {
         callback();
     },
 
-    testDateFmtGetFormatInfoUSShort: function(test) {
+    testDateFmtInfoGetFormatInfoUSShort: function(test) {
         test.expect(16);
 
-        var fmt = new DateFmt({
+        var fmt = new DateFmtInfo({
             locale: "en-US",
             type: "date",
             date: "short"
@@ -85,10 +88,10 @@ module.exports.testdategetformatinfo = {
         test.done();
     },
 
-    testDateFmtGetFormatInfoUSShortLeapYear: function(test) {
+    testDateFmtInfoGetFormatInfoUSShortLeapYear: function(test) {
         test.expect(16);
 
-        var fmt = new DateFmt({
+        var fmt = new DateFmtInfo({
             locale: "en-US",
             type: "date",
             date: "short"
@@ -139,13 +142,13 @@ module.exports.testdategetformatinfo = {
         test.done();
     },
 
-    testDateFmtGetFormatInfoUSFull: function(test) {
+    testDateFmtInfoGetFormatInfoUSFull: function(test) {
         test.expect(16);
 
-        var fmt = new DateFmt({
+        var fmt = new DateFmtInfo({
             locale: "en-US",
             type: "date",
-            date: "full"
+            length: "full"
         });
         test.ok(fmt !== null);
 
@@ -206,18 +209,18 @@ module.exports.testdategetformatinfo = {
         test.done();
     },
 
-    testDateFmtGetFormatInfoGregorianTranslated: function(test) {
+    testDateFmtInfoGetFormatInfoGregorianTranslated: function(test) {
         test.expect(16);
 
-        var fmt = new DateFmt({
+        var fmt = new DateFmtInfo({
             locale: "en-US",
             type: "date",
-            date: "full"
+            length: "full",
+            uiLocale: "de-DE"
         });
         test.ok(fmt !== null);
 
         fmt.getFormatInfo({
-            locale: "de-DE",
             year: 2019,
             sync: true,
             onLoad: function(info) {
@@ -273,14 +276,14 @@ module.exports.testdategetformatinfo = {
 
         test.done();
     },
-    
-    testDateFmtGetFormatInfoUSShortAllFields: function(test) {
-        test.expect(16);
 
-        var fmt = new DateFmt({
+    testDateFmtInfoGetFormatInfoUSShortAllFields: function(test) {
+        test.expect(165);
+
+        var fmt = new DateFmtInfo({
             locale: "en-US",
             type: "datetime",
-            date: "short",
+            length: "short",
             date: "wmdy",
             time: "ahmsz"
         });
@@ -375,13 +378,13 @@ module.exports.testdategetformatinfo = {
         test.done();
     },
 
-    testDateFmtGetFormatInfoDayOfWeekCalculator: function(test) {
+    testDateFmtInfoGetFormatInfoDayOfWeekCalculator: function(test) {
         test.expect(16);
 
-        var fmt = new DateFmt({
+        var fmt = new DateFmtInfo({
             locale: "en-US",
             type: "datetime",
-            date: "short",
+            length: "short",
             date: "wmdy",
         });
         test.ok(fmt !== null);
@@ -404,13 +407,13 @@ module.exports.testdategetformatinfo = {
     },
 
 
-    testDateFmtGetFormatInfoHebrewCalendarNonLeap: function(test) {
+    testDateFmtInfoGetFormatInfoHebrewCalendarNonLeap: function(test) {
         test.expect(16);
 
-        var fmt = new DateFmt({
+        var fmt = new DateFmtInfo({
             locale: "en-US",
             type: "date",
-            date: "full",
+            length: "full",
             calendar: "hebrew"
         });
         test.ok(fmt !== null);
@@ -472,13 +475,13 @@ module.exports.testdategetformatinfo = {
         test.done();
     },
 
-    testDateFmtGetFormatInfoHebrewCalendarLeap: function(test) {
+    testDateFmtInfoGetFormatInfoHebrewCalendarLeap: function(test) {
         test.expect(16);
 
-        var fmt = new DateFmt({
+        var fmt = new DateFmtInfo({
             locale: "en-US",
             type: "date",
-            date: "full",
+            length: "full",
             calendar: "hebrew"
         });
         test.ok(fmt !== null);
@@ -541,14 +544,14 @@ module.exports.testdategetformatinfo = {
 
         test.done();
     },
-    
-    testDateFmtGetFormatInfoHebrewCalendarInHebrew: function(test) {
+
+    testDateFmtInfoGetFormatInfoHebrewCalendarInHebrew: function(test) {
         test.expect(16);
 
-        var fmt = new DateFmt({
+        var fmt = new DateFmtInfo({
             locale: "he-IL",
             type: "date",
-            date: "full",
+            length: "full",
             calendar: "hebrew"
         });
         test.ok(fmt !== null);
@@ -607,6 +610,126 @@ module.exports.testdategetformatinfo = {
             }
         });
 
+        test.done();
+    },
+
+    testDateFmtInfoGetMonthsOfYear1: function(test) {
+        test.expect(2);
+        var fmt = new DateFmtInfo({locale: "en-US"});
+        test.ok(fmt !== null);
+
+        var arrMonths = fmt.getMonthsOfYear();
+        var expected = [undefined, "J", "F", "M", "A", "M", "J", "J", "A", "S", "O", "N", "D"];
+        test.deepEqual(arrMonths, expected);
+        test.done();
+    },
+
+    testDateFmtInfoGetMonthsOfYear2: function(test) {
+        test.expect(2);
+        var fmt = new DateFmtInfo({locale: "en-US"});
+        test.ok(fmt !== null);
+
+        var arrMonths = fmt.getMonthsOfYear({length: "long"});
+        var expected = [undefined, "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+        test.deepEqual(arrMonths, expected);
+        test.done();
+    },
+
+    testDateFmtInfoGetMonthsOfYearThai: function(test) {
+        test.expect(2);
+        // uses ThaiSolar calendar
+        var fmt = new DateFmtInfo({locale: "th-TH"});
+        test.ok(fmt !== null);
+
+        var arrMonths = fmt.getMonthsOfYear({length: "long"});
+
+        var expected = [undefined, "ม.ค.", "ก.พ.", "มี.ค.", "เม.ย.", "พ.ค.", "มิ.ย.", "ก.ค.", "ส.ค.", "ก.ย.", "ต.ค.", "พ.ย.", "ธ.ค."];
+        test.deepEqual(arrMonths, expected);
+        test.done();
+    },
+
+    testDateFmtInfoGetMonthsOfYearLeapYear: function(test) {
+        test.expect(2);
+        var d = DateFactory({type: "hebrew", locale: "en-US", year: 5774, month: 1, day: 1});
+        var fmt = new DateFmtInfo({date: "en-US", calendar: "hebrew"});
+        test.ok(fmt !== null);
+
+        var arrMonths = fmt.getMonthsOfYear({length: "long", date: d});
+
+        var expected = [undefined, "Nis", "Iyy", "Siv", "Tam", "Av", "Elu", "Tis", "Ḥes", "Kis", "Tev", "She", "Ada", "Ad2"];
+        test.deepEqual(arrMonths, expected);
+        test.done();
+    },
+
+    testDateFmtInfoGetMonthsOfYearNonLeapYear: function(test) {
+        test.expect(2);
+        var d = DateFactory({type: "hebrew", locale: "en-US", year: 5775, month: 1, day: 1});
+        var fmt = new DateFmtInfo({date: "en-US", calendar: "hebrew"});
+        test.ok(fmt !== null);
+
+        var arrMonths = fmt.getMonthsOfYear({length: "long", date: d});
+
+        var expected = [undefined, "Nis", "Iyy", "Siv", "Tam", "Av", "Elu", "Tis", "Ḥes", "Kis", "Tev", "She", "Ada"];
+        test.deepEqual(arrMonths, expected);
+        test.done();
+    },
+
+    testDateFmtInfoGetDaysOfWeek1: function(test) {
+        test.expect(2);
+        var fmt = new DateFmtInfo({locale: "en-US"});
+        test.ok(fmt !== null);
+
+        var arrDays = fmt.getDaysOfWeek();
+
+        var expected = ["S", "M", "T", "W", "T", "F", "S"];
+        test.deepEqual(arrDays, expected);
+        test.done();
+    },
+
+    testDateFmtInfoGetDaysOfWeek2: function(test) {
+        test.expect(2);
+        var fmt = new DateFmtInfo({locale: "en-US"});
+        test.ok(fmt !== null);
+
+        var arrDays = fmt.getDaysOfWeek({length: 'long'});
+        var expected = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+        test.deepEqual(arrDays, expected);
+        test.done();
+    },
+
+    testDateFmtInfoGetDaysOfWeekOtherCalendar: function(test) {
+        test.expect(2);
+        var fmt = new DateFmtInfo({locale: "en-US", calendar: "hebrew"});
+        test.ok(fmt !== null);
+
+        var arrDays = fmt.getDaysOfWeek({length: 'long'});
+
+        var expected = ["ris", "she", "shl", "rvi", "ḥam", "shi", "sha"];
+        test.deepEqual(arrDays, expected);
+        test.done();
+    },
+
+    testDateFmtInfoGetDaysOfWeekThai: function(test) {
+        test.expect(2);
+        var fmt = new DateFmtInfo({locale: "th-TH", calendar: "thaisolar"});
+        test.ok(fmt !== null);
+
+        var arrDays = fmt.getDaysOfWeek({length: 'long'});
+
+        var expected = ["อา.", "จ.", "อ.", "พ.", "พฤ.", "ศ.", "ส."];
+        test.deepEqual(arrDays, expected);
+        test.done();
+    },
+
+    testDateFmtInfoGetDaysOfWeekThaiInEnglish: function(test) {
+        test.expect(2);
+        var fmt = new DateFmtInfo({locale: "en-US", calendar: "thaisolar"});
+        test.ok(fmt !== null);
+
+        var arrDays = fmt.getDaysOfWeek({length: 'long'});
+
+        var expected = ["ath", "cha", "ang", "phu", "phr", "suk", "sao"];
+        test.deepEqual(arrDays, expected);
         test.done();
     }
 };

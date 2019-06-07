@@ -18,7 +18,7 @@
  */
 
 module.exports.files = [
-    "testgetformatinfo.js",
+    "testdatefmtinfo.js",
     "testclock.js",
     "testcalendar.js",
     "testdate.js",

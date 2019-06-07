@@ -1,7 +1,7 @@
 /*
  * DateFmt.js - Date formatter definition
  *
- * Copyright © 2012-2015, 2018, JEDLSoft
+ * Copyright © 2012-2015, 2018-2019, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -579,6 +579,7 @@ DateFmt.weekDayLenMap = {
  *
  * @static
  * @public
+ * @deprecated Use DateFmtInfo.getMeridiemsRange() instead
  * @param {Object} options options governing the way this date formatter instance works for getting meridiems range
  * @return {Array.<{name:string,start:string,end:string}>}
  */
@@ -930,6 +931,7 @@ DateFmt.prototype = {
      * CLDR frequently, and possible orderings cannot be predicted. Your code should
      * support all 6 possibilities, just in case.
      *
+     * @deprecated Use DateFmtInfo.getDateComponentOrder() instead
      * @return {string} a string giving the date component order
      */
     getDateComponentOrder: function() {
@@ -1013,12 +1015,13 @@ DateFmt.prototype = {
 
     /**
      * Return the meridiems range in current locale.
+     * @deprecated Use DateFmtInfo.getMeridiemsRange() instead
      * @return {Array.<{name:string,start:string,end:string}>} the range of available meridiems
      */
     getMeridiemsRange: function () {
         var result;
         var _getSysString = function (key) {
-            return (this.sysres.getString(undefined, key + "-" + this.calName) || this.sysres.getString(undefined, key)).toString();
+            return (this.sysres.getStringJS(undefined, key + "-" + this.calName) || this.sysres.getStringJS(undefined, key)).toString();
         };
 
         switch (this.meridiems) {
@@ -1133,6 +1136,7 @@ DateFmt.prototype = {
      * the months have different names depending if that year is a leap year or not.
      * </ul>
      *
+     * @deprecated Use DateFmtInfo.getMonthsOfYear() instead
      * @param  {Object=} options an object-literal that contains any of the above properties
      * @return {Array} an array of the names of all of the months of the year in the current calendar
      */
@@ -1161,7 +1165,7 @@ DateFmt.prototype = {
 
         monthCount = this.cal.getNumMonths(date.getYears());
         for (var i = 1; i <= monthCount; i++) {
-            months[i] = this.sysres.getString(this._getTemplate(template + i, this.cal.getType())).toString();
+            months[i] = this.sysres.getStringJS(this._getTemplate(template + i, this.cal.getType())).toString();
         }
         return months;
     },
@@ -1176,6 +1180,8 @@ DateFmt.prototype = {
      * <li><i>length</i> - length of the names of the months being sought. This may be one of
      * "short", "medium", "long", or "full"
      * </ul>
+     *
+     * @deprecated Use DateFmtInfo.getDaysOfWeek() instead
      * @param  {Object=} options an object-literal that contains one key
      *                   "length" with the standard length strings
      * @return {Array} an array of all of the names of the days of the week
@@ -1185,7 +1191,7 @@ DateFmt.prototype = {
             template = DateFmt.weekDayLenMap[length],
             days = [];
         for (var i = 0; i < 7; i++) {
-            days[i] = this.sysres.getString(this._getTemplate(template + i, this.cal.getType())).toString();
+            days[i] = this.sysres.getStringJS(this._getTemplate(template + i, this.cal.getType())).toString();
         }
         return days;
     },
@@ -1306,7 +1312,7 @@ DateFmt.prototype = {
                 case 'LLL':
                 case 'LLLL':
                     key = templateArr[i] + (date.month || 1);
-                    str += (this.sysres.getString(undefined, key + "-" + this.calName) || this.sysres.getString(undefined, key));
+                    str += (this.sysres.getStringJS(undefined, key + "-" + this.calName) || this.sysres.getStringJS(undefined, key));
                     break;
 
                 case 'E':
@@ -1319,7 +1325,7 @@ DateFmt.prototype = {
                 case 'cccc':
                     key = templateArr[i] + date.getDayOfWeek();
                     //console.log("finding " + key + " in the resources");
-                    str += (this.sysres.getString(undefined, key + "-" + this.calName) || this.sysres.getString(undefined, key));
+                    str += (this.sysres.getStringJS(undefined, key + "-" + this.calName) || this.sysres.getStringJS(undefined, key));
                     break;
 
                 case 'a':
@@ -1359,7 +1365,7 @@ DateFmt.prototype = {
                         break;
                     }
                     //console.log("finding " + key + " in the resources");
-                    str += (this.sysres.getString(undefined, key + "-" + this.calName) || this.sysres.getString(undefined, key));
+                    str += (this.sysres.getStringJS(undefined, key + "-" + this.calName) || this.sysres.getStringJS(undefined, key));
                     break;
 
                 case 'w':
@@ -1384,7 +1390,7 @@ DateFmt.prototype = {
 
                 case 'G':
                     key = "G" + date.getEra();
-                    str += (this.sysres.getString(undefined, key + "-" + this.calName) || this.sysres.getString(undefined, key));
+                    str += (this.sysres.getStringJS(undefined, key + "-" + this.calName) || this.sysres.getStringJS(undefined, key));
                     break;
 
                 case 'O':
@@ -1605,750 +1611,5 @@ DateFmt.prototype = {
         return fmt.formatChoice(num, {num: num});
     }
 };
-
-/**
- * @private
- */
-DateFmt.prototype._mapFormatInfo = function(year, rb, tzinfo) {
-    function sequence(start, end, pad) {
-        var constraint = [];
-        for (var i = start; i <= end; i++) {
-            constraint.push(pad ? JSUtils.pad(i, 2) : String(i));
-        }
-        return constraint;
-    }
-
-    var isLeap = this.cal.isLeapYear(year);
-    var dateStr = rb.getStringJS("Date"); // i18n: date input form label for the day of the month field
-    var yearStr = rb.getStringJS("Year"); // i18n: date input form label for the year field
-    var monthStr = rb.getStringJS("Month"); // i18n: date input form label for the months field
-    var hourStr = rb.getStringJS("Hour"); // i18n: date input form label for the hours field
-    var minuteStr = rb.getStringJS("Minute"); // i18n: date input form label for the minutes field
-    var secondStr = rb.getStringJS("Second"); // i18n: date input form label for the seconds field
-    var milliStr = rb.getStringJS("Millisecond"); // i18n: date input form label for the milliseconds field
-    var woyStr = rb.getStringJS("Week of Year"); // i18n: date input form label for a week of the year field
-    var doyStr = rb.getStringJS("Day of Year"); // i18n: date input form label for the day of the year field
-
-    return this.templateArr.map(ilib.bind(this, function(component) {
-        switch (component) {
-            case 'd':
-                return {
-                    component: "day",
-                    label: dateStr,
-                    placeholder: rb.getStringJS("D"), // i18n: date format placeholder string for 1 digit date
-                    constraint: {
-                        "1": [1, 31],
-                        "2": [1, isLeap ? 29 : 28],
-                        "3": [1, 31],
-                        "4": [1, 30],
-                        "5": [1, 31],
-                        "6": [1, 30],
-                        "7": [1, 31],
-                        "8": [1, 31],
-                        "9": [1, 30],
-                        "10": [1, 31],
-                        "11": [1, 30],
-                        "12": [1, 31]
-                    },
-                    validation: "\\d{1,2}"
-                };
-
-            case 'dd':
-                return {
-                    component: "day",
-                    label: dateStr,
-                    placeholder: rb.getStringJS("DD"), // i18n: date format placeholder string for 2 digit date
-                    constraint: {
-                        "1": sequence(1, 31, true),
-                        "2": sequence(1, isLeap ? 29 : 28, true),
-                        "3": sequence(1, 31, true),
-                        "4": sequence(1, 30, true),
-                        "5": sequence(1, 31, true),
-                        "6": sequence(1, 30, true),
-                        "7": sequence(1, 31, true),
-                        "8": sequence(1, 31, true),
-                        "9": sequence(1, 30, true),
-                        "10": sequence(1, 31, true),
-                        "11": sequence(1, 30, true),
-                        "12": sequence(1, 31, true)
-                    },
-                    validation: "\\d{1,2}"
-                };
-
-            case 'yy':
-                return {
-                    component: "year",
-                    label: yearStr,
-                    placeholder: rb.getStringJS("YY"), // i18n: date format placeholder string for 2 digit year
-                    constraint: "[0-9]{2}",
-                    validation: "\\d{2}"
-                };
-
-            case 'yyyy':
-                return {
-                    component: "year",
-                    label: yearStr,
-                    placeholder: rb.getStringJS("YYYY"), // i18n: date format placeholder string for 4 digit year
-                    constraint: "[0-9]{4}",
-                    validation: "\\d{4}"
-                };
-
-            case 'M':
-                return {
-                    component: "month",
-                    label: monthStr,
-                    placeholder: rb.getStringJS("M"), // i18n: date format placeholder string for 1 digit month
-                    constraint: [1, 12],
-                    validation: "\\d{1,2}"
-                };
-
-            case 'MM':
-                return {
-                    component: "month",
-                    label: monthStr,
-                    placeholder: rb.getStringJS("MM"), // i18n: date format placeholder string for 2 digit month
-                    constraint: "[0-9]+",
-                    validation: "\\d{2}"
-                };
-
-            case 'h':
-                return {
-                    component: "hour",
-                    label: hourStr,
-                    placeholder: rb.getStringJS("H"), // i18n: date format placeholder string for 1 digit hour
-                    constraint: ["12"].concat(sequence(1, 11)),
-                    validation: "\\d{1,2}"
-                };
-
-            case 'hh':
-                return {
-                    component: "hour",
-                    label: hourStr,
-                    placeholder: rb.getStringJS("HH"), // i18n: date format placeholder string for 2 digit hour,
-                    constraint: ["12"].concat(sequence(1, 11, true)),
-                    validation: "\\d{2}"
-                };
-
-
-            case 'K':
-                return {
-                    component: "hour",
-                    label: hourStr,
-                    placeholder: rb.getStringJS("H"), // i18n: date format placeholder string for 1 digit hour
-                    constraint: concat(sequence(0, 11)),
-                    validation: "\\d{1,2}"
-                };
-
-            case 'KK':
-                return {
-                    component: "hour",
-                    label: hourStr,
-                    placeholder: rb.getStringJS("HH"), // i18n: date format placeholder string for 2 digit hour,
-                    constraint: concat(sequence(0, 11, true)),
-                    validation: "\\d{2}"
-                };
-
-            case 'H':
-                return {
-                    component: "hour",
-                    label: hourStr,
-                    placeholder: rb.getStringJS("H"), // i18n: date format placeholder string for 1 digit hour
-                    constraint: [0, 23],
-                    validation: "\\d{1,2}"
-                };
-
-            case 'HH':
-                return {
-                    component: "hour",
-                    label: hourStr,
-                    placeholder: rb.getStringJS("HH"), // i18n: date format placeholder string for 2 digit hour
-                    constraint: concat(sequence(0, 23, true)),
-                    validation: "\\d{1,2}"
-                };
-
-            case 'k':
-                return {
-                    component: "hour",
-                    label: hourStr,
-                    placeholder: rb.getStringJS("H"), // i18n: date format placeholder string for 1 digit hour
-                    constraint: ["24"].concat(sequence(0, 23)),
-                    validation: "\\d{1,2}"
-                };
-
-            case 'kk':
-                return {
-                    component: "hour",
-                    label: hourStr,
-                    placeholder: rb.getStringJS("H"), // i18n: date format placeholder string for 1 digit hour
-                    constraint: ["24"].concat(sequence(0, 23, true)),
-                    validation: "\\d{1,2}"
-                };
-
-            case 'm':
-                return {
-                    component: "minute",
-                    label: minuteStr,
-                    placeholder: rb.getStringJS("mm"), // i18n: date format placeholder string for 2 digit minute
-                    constraint: [0, 59],
-                    validation: "\\d{1,2}"
-                };
-
-            case 'mm':
-                return {
-                    component: "minute",
-                    label: minuteStr,
-                    placeholder: rb.getStringJS("mm"), // i18n: date format placeholder string for 2 digit minute
-                    constraint: sequence(0, 59, true),
-                    validation: "\\d{2}"
-                };
-
-            case 's':
-                return {
-                    component: "second",
-                    label: secondStr,
-                    placeholder: rb.getStringJS("ss"), // i18n: date format placeholder string for 2 digit second
-                    constraint: [0, 59],
-                    validation: "\\d{1,2}"
-                };
-
-            case 'ss':
-                return {
-                    component: "second",
-                    label: secondStr,
-                    placeholder: rb.getStringJS("ss"), // i18n: date format placeholder string for 2 digit second
-                    constraint: sequence(0, 59, true),
-                    validation: "\\d{2}"
-                };
-
-            case 'S':
-                return {
-                    component: "millisecond",
-                    label: milliStr,
-                    placeholder: rb.getStringJS("ms"), // i18n: date format placeholder string for 2 digit millisecond
-                    constraint: [0, 999],
-                    validation: "\\d{1,3}"
-                };
-
-            case 'SSS':
-                return {
-                    component: "millisecond",
-                    label: milliStr,
-                    placeholder: rb.getStringJS("ms"), // i18n: date format placeholder string for 2 digit millisecond
-                    constraint: sequence(0, 999, true),
-                    validation: "\\d{3}"
-                };
-
-            case 'N':
-            case 'NN':
-            case 'MMM':
-            case 'MMMM':
-            case 'L':
-            case 'LL':
-            case 'LLL':
-            case 'LLLL':
-                return {
-                    component: "month",
-                    label: monthStr,
-                    constraint: (function() {
-                        var ret = [];
-                        var months = this.cal.getNumMonths(year);
-                        for (var i = 1; i < months; i++) {
-                            var key = component + i;
-                            ret.push({
-                                label: this.sysres.getString(undefined, key + "-" + this.calName) || this.sysres.getString(undefined, key),
-                                value: i
-                            });
-                        }
-                        return ret;
-                    })()
-                };
-
-            case 'E':
-            case 'EE':
-            case 'EEE':
-            case 'EEEE':
-            case 'c':
-            case 'cc':
-            case 'ccc':
-            case 'cccc':
-                return {
-                    component: "dayofweek",
-                    label: rb.getStringJS("Day of Week"), // i18n: date input form label for the day of the week field
-                    constraint: ilib.bind(this, function(date) {
-                        var d = date.getJSDate();
-                        var key = component.replace(/c/g, 'E') + d.getDay();
-                        if (this.calName !== "gregorian") {
-                            key += '-' + this.calName;
-                        }
-                        return this.sysres.getString(undefined, key);
-                    })
-                };
-                break;
-
-            case 'a':
-                var ret = {
-                    component: "meridiem",
-                    label: rb.getStringJS("AM/PM"), // i18n: date input form label for the meridiem field
-                    constraint: []
-                };
-                switch (this.meridiems) {
-                    case "chinese":
-                        for (var i = 0; i < 7; i++) {
-                            var key = "azh" + i;
-                            ret.constraint.push(this.sysres.getString(undefined, key + "-" + this.calName) || this.sysres.getString(undefined, key));
-                        }
-                        break;
-                    case "ethiopic":
-                        for (var i = 0; i < 7; i++) {
-                            var key = "a" + i + "-ethiopic";
-                            ret.constraint.push(this.sysres.getString(undefined, key + "-" + this.calName) || this.sysres.getString(undefined, key));
-                        }
-                        break;
-                    default:
-                        ret.constraint.push(this.sysres.getString(undefined, "a0-" + this.calName) || this.sysres.getString(undefined, "a0"));
-                        ret.constraint.push(this.sysres.getString(undefined, "a1-" + this.calName) || this.sysres.getString(undefined, "a1"));
-                        break;
-                }
-                return ret;
-
-            case 'w':
-                return {
-                    label: woyStr,
-                    value: function(date) {
-                        return date.getDayOfYear();
-                    }
-                };
-
-            case 'ww':
-                return {
-                    label: woyStr,
-                    value: function(date) {
-                        var temp = date.getWeekOfYear();
-                        return JSUtils.pad(temp, 2)
-                    }
-                };
-
-            case 'D':
-                return {
-                    label: doyStr,
-                    value: function(date) {
-                        return date.getDayOfYear();
-                    }
-                };
-
-            case 'DD':
-                return {
-                    label: doyStr,
-                    value: function(date) {
-                        var temp = date.getDayOfYear();
-                        return JSUtils.pad(temp, 2)
-                    }
-                };
-
-            case 'DDD':
-                return {
-                    label: doyStr,
-                    value: function(date) {
-                        var temp = date.getDayOfYear();
-                        return JSUtils.pad(temp, 3)
-                    }
-                };
-
-            case 'W':
-                return {
-                    label: rb.getStringJS("Week of Month"), // i18n: date input form label for the week of the month field
-                    value: function(date) {
-                        return date.getWeekOfMonth();
-                    }
-                };
-
-            case 'G':
-                var ret = {
-                    component: "era",
-                    label: rb.getString("Era"), // i18n: date input form label for the era field
-                    constraint: []
-                };
-                ret.constraint.push(this.sysres.getString(undefined, "G0-" + this.calName) || this.sysres.getString(undefined, "G0"));
-                ret.constraint.push(this.sysres.getString(undefined, "G1-" + this.calName) || this.sysres.getString(undefined, "G1"));
-                return ret;
-
-            case 'z': // general time zone
-            case 'Z': // RFC 822 time zone
-                return {
-                    component: "timezone",
-                    label: rb.getString("Time Zone"), // i18n: date input form label for the time zone field
-                    constraint: tzinfo
-                };
-
-            default:
-                return {
-                    label: component
-                };
-        }
-    }));
-};
-
-/**
- * Return information about the date format that can be used
- * by UI frameworks to display a locale-sensitive input form.<p>
- *
- * The options parameter is an object that can contain any of
- * the following properties:
- *
- * <ul>
- * <li><i>locale</i> - the locale to translate the labels
- * to. If not given, the locale of the formatter will be used.
- * The locale of the formatter specifies the format of the
- * date input and which components are available and in what
- * order, whereas this locale property only specifies the language
- * used for the labels.
- *
- * <li><i>year</i> - the year for which the formats are being sought.
- * For some calendars such as the Hebrew calendar, the number of
- * and the length of the months depends upon the year. Even in the
- * Gregorian calendar, the length of February changes in leap
- * years, though the number of months or their names do not
- * change. If not specified, the default is the current year.
- *
- * <li><i>sync</i> - if true, this method should load the data
- * synchronously. If false, load the data asynchronously and
- * call the onLoad callback function when it is done. The onLoad
- * parameter must be specified in order to receive the data.
- *
- * <li><i>onLoad</i> - a callback function to call when the data is fully
- * loaded. When the onLoad option is given, this method will attempt to
- * load any missing locale data using the ilib loader callback.
- * When this method is done (even if the data is already preassembled), the
- * onLoad function is called with the results as a parameter, so this
- * callback can be used with preassembled or dynamic data loading or a
- * mix of the two.
- *
- * <li><i>loadParams</i> - an object containing parameters to pass to the
- * loader callback function when locale data is missing. The parameters are not
- * interpretted or modified in any way. They are simply passed along. The object
- * may contain any property/value pairs as long as the calling code is in
- * agreement with the loader callback function as to what those parameters mean.
- * </ul>
- *
- * The results object returned by this method or passed to the onLoad
- * callback is an array of date
- * format components. Each format component is an object
- * that contains information that can be used to display
- * a field in an input form.
- * The list of possible properties on each component object are:
- *
- * <ul>
- * <li><i>component</i> - if this component describes a part
- * of the date format which can be entered by the user (as opposed
- * to the fixed parts which cannot), then this property gives
- * the name of that component when the value is used
- * with the DateFactory() function to construct an IDate instance.
- * For example, if the value of "component" is "year",
- * then the value of the input field can be used as the "year"
- * property when calling DateFactory().
- * <li><i>label</i> - a localized text to display for this
- * component as a label. The text is localized to the given
- * locale. If a locale is not given, then it uses the locale
- * of the formatter.
- * <li><i>placeholder</i> - the localized placeholder text to
- * display in a free-form, empty text input field, which gives
- * the user a hint as to what to enter in that field. The text
- * is localized to the given
- * locale. If a locale is not given, then it uses the locale
- * of the formatter.
- * <li><i>validation</i> - a regular expression or function
- * that validates the input value of a free-form text input
- * field. When the validation property is a regular expression,
- * the expression matches when the value of the field is valid.
- * When the validation property is a function, the function
- * would take a single parameter which is the value of
- * the input field. It returns a boolean value: true if the
- * input is valid, and false otherwise.
- * <li><i>constraint</i> - a rule that describes the constraints
- * on valid values for this component. This is intended to be
- * used with input fields such as drop-down boxes.
- * <li><i>value</i> - a function that this the value of
- * a calculated field. (See the description below.)
- * </ul>
- *
- * Field separators such as slashes or dots, etc., are given
- * as a object with no "component" property. They only contain
- * a "label" property with a string value. A user interface
- * may choose to use these purely formatting components or ignore
- * them as needed.<p>
- *
- * User interfaces can construct two different types of input
- * forms: constrained or free-form. In a constrained form,
- * components such as the month are displayed as
- * as a drop-down box containing a fixed list of month names.
- * The user may only choose from that list and it is therefore
- * impossible to choose an invalid value. In a free-form
- * form, the user is presented with text input fields where
- * they can type whatever they want. The resulting value should
- * be validated using the validation rules before submitting
- * the form. The getFormatInfo
- * method returns information that can be used to create either
- * type of form. It is up to the caller to
- * decide which type of form to present to the user.<p>
- *
- * For a constrained form element, the input value
- * must conform to a particular pattern, range, or a fixed
- * list of possible values. The rule for this is given in
- * the "constraint" property.
- * The values of the constraint property can be one of the
- * following types:
- *
- * <ol>
- * <ul><i>array[2]&lt;number&gt;</i> - an array of size 2 of numbers
- * that gives the start and end of a numeric range. The input must
- * be between the start and end of the range, inclusive.
- * <ul><i>array[2]&lt;string&gt;</i> - an array of strings gives
- * the exact range of values possible for this field. The input must
- * be one of these values. This is mainly intended for use in
- * drop-down boxes. The value of the chosen element is the value
- * that should be returned for the field.
- * <ul><i>array&lt;object&gt; - an array of valid string values
- * given as objects that have "label" and "value" properties. The
- * label is intended to be displayed to the user and the value
- * is to be used to construct the new date object when the
- * user has finished selecting the components and the form is
- * being evaluated or submitted.
- * </ol>
- *
- * For a free-form form, the user interface must validate the
- * values that the user has typed into the text field. To aid
- * with this, this method returns a "validation" property which
- * contains either a regular expression or a function. The
- * regular expression tests whether or not what the user has
- * entered is valid. If the validation property is set to
- * a function, this function would take a single
- * parameter which is the text value of the input field, and
- * it returns a boolean value: true if the input is valid,
- * and false otherwise. If it does not make sense for a
- * particular date format component to be free-form, such
- * as the "AM/PM" choice for a meridiem, then the validation
- * property will be left off. Only the given choices are
- * valid. UI builders should only allow
- * free-form fields for those components that have a
- * "validation" property. Otherwise, use a constrained
- * input form element instead.<p>
- *
- * Some date format components do not represent values that
- * a user may enter, but instead values that are calculated
- * based on other date format components. For example, the
- * day of the week is a property that is calculated based
- * on the date the user has entered. It would not
- * make sense for the user to be able to choose a day of
- * the week that does not correspond to the day, month, and
- * year they have already chosen. To handle calculated
- * date format components, this method returns a "value"
- * property which is a function which returns
- * the calculated value of the field. Its parameter is a date
- * object that has been created from the other date format
- * components. Its single parameter is an object that contains
- * the other date input components, similar to what you might
- * pass to the DateFactory function.<p>
- *
- * @example Here is what the result would look like for a US short
- * date/time format for a leap year. This includes the components
- * of day of the week, date, month, year, hour, minute, and meridiem:
- *
- * <pre>
- * [
- *   {
- *     "label": "Day of Week",   // optional label
- *     "value": function(date) { returns the calculated, localized day of week name }
- *   },
- *   {
- *     "label": " "              // fixed field (optionally displayed in the UI)
- *   },
- *   {
- *     "component": "month",     // property name to use when calling DateFactory() for this field
- *     "label": "Month",         // label describing this field, in this case translated to English/US
- *     "placeholder": "M",       // the placeholder text for this field
- *     "constraint": [1, 12],    // constraint rules for a drop-down box for the month
- *     "validation": "\\d{1,2}"  // validation rule for a free-form text input
- *   },
- *   {
- *     "label": "/"              // fixed field (optionally displayed in the UI)
- *   },
- *   {
- *     "component": "day",
- *     "label": "Date",
- *     "placeholder": "DD",
- *     "constraint": {
- *       // if the given years is a leap year use these constraints
- *       "1": [1, 31],
- *       "2": [1, 29],
- *       "3": [1, 31],
- *       "4": [1, 30],
- *       "5": [1, 31],
- *       "6": [1, 30],
- *       "7": [1, 31],
- *       "8": [1, 31],
- *       "9": [1, 30],
- *       "10": [1, 31],
- *       "11": [1, 30],
- *       "12": [1, 31]
- *     },
- *     "validation": "\\d{1,2}"
- *   },
- *   {
- *     "label": "/"
- *   },
- *   {
- *     "component": "year",
- *     "label": "Year",
- *     "placeholder": "YYYY",
- *     "validation": "[0-9]+"
- *   },
- *   {
- *     "label": " at "
- *   },
- *   {
- *     "component": "hour",
- *     "label": "Hour",
- *     "placeholder": "H",
- *     "constraint": [1, 12],
- *     "validation": "\\d{1,2}"
- *   },
- *   {
- *     "label": ":"
- *   },
- *   {
- *     "component": "minute",
- *     "label": "Minute",
- *     "constraint": [
- *       "00",                   // note that these are strings so that they can be zero-padded
- *       "01",
- *       "02",
- *       "03",
- *       "04",
- *       "05",
- *       "06",
- *       "07",
- *       "08",
- *       "09",
- *       "10",
- *       "11",
- *       ...
- *       "59"
- *     ],
- *     "placeholder": "mm",
- *     "validation": "\\d{2}"
- *   },
- *   {
- *     "label": " "
- *   },
- *   {
- *     "component": "meridiem",
- *     "label": "AM/PM",
- *     "placeholder": "AM/PM",
- *     "constraint": ["AM", "PM"]
- *   }
- * ]
- * </pre>
- * <p>
- * Note that the "minute" component comes with a preformatted list of values
- * as strings, even though the minute is really a number. The preformatting
- * ensures that the leading zero is not lost for minutes less than 10.
- *
- * @example <caption>Example of calling the getFormatInfo method</caption>
- *
- * // the DateFmt should be created with the locale of the date you
- * // would like the user to enter.
- * new DateFmt({
- *   locale: 'nl-NL', // for dates in the Netherlands
- *   year: 2019,
- *   onLoad: ilib.bind(this, function(fmt) {
- *     // The following is the locale of the UI you would like to see the labels
- *     // like "Year" and "Minute" translated to. In this example, we
- *     // are showing an input form for Dutch dates, but the labels are
- *     // written in US English.
- *     fmt.getFormatInfo({
- *       locale: "en-US",
- *       sync: true,
- *       callback: ilib.bind(this, function(components) {
- *       // here you should iterate through the component array and dynamically create the input
- *       // elements with the given labels and placeholders and such, and install
- *       // the appropriate validators
- *     }));
- *   })
- * });
- *
- * @param {Object} options option to control this function. (See the description
- * above.)
- * @returns {Array.<Object>} An array of date components
- */
-DateFmt.prototype.getFormatInfo = function(options) {
-    var locale, sync = true, callback, loadParams, year;
-
-    if (options) {
-        locale = options.locale;
-        sync = !!options.sync;
-        callback = options.onLoad;
-        loadParams = options.loadParams;
-        year = options.year;
-    }
-    var info;
-    var loc = new Locale(this.locale);
-    if (locale) {
-        if (typeof(locale) === "string") {
-            locale = new Locale(locale);
-        }
-        loc.language = locale.getLanguage();
-        loc.spec = undefined;
-    }
-
-    if (!year) {
-        var now = DateFactory({
-            type: this.calName
-        });
-        year = now.getYear();
-    }
-
-    new ResBundle({
-        locale: loc,
-        name: "dateres",
-        sync: sync,
-        loadParams: loadParams,
-        onLoad: ilib.bind(this, function (rb) {
-            var info, zone = false;
-            for (var i = 0; i < this.templateArr.length; i++) {
-                if (this.templateArr[i] === "z" || this.templateArr[i] === "Z") {
-                    zone = true;
-                    break;
-                }
-            }
-
-            if (zone) {
-                TimeZone.getAvailableIds(undefined, sync, ilib.bind(this, function(tzinfo) {
-                    var set = new ISet(tzinfo);
-                    set.add("Etc/UTC");
-                    set.add("Etc/GMT");
-                    for (var j = 1; j < 13; j++) {
-                        set.add("Etc/GMT+" + j);
-                        set.add("Etc/GMT-" + j);
-                    }
-                    set.add("Etc/GMT-13");
-                    set.add("Etc/GMT-14");
-
-                    info = this._mapFormatInfo(year, rb, set.asArray().sort());
-                    if (callback && typeof(callback) === "function") {
-                        callback(info);
-                    }
-                }));
-            } else {
-                info = this._mapFormatInfo(year, rb);
-                if (callback && typeof(callback) === "function") {
-                    callback(info);
-                }
-            }
-        })
-    });
-
-    return info;
-};
-
 
 module.exports = DateFmt;

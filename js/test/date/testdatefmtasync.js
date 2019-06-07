@@ -41,6 +41,9 @@ if (typeof(JulianDate) === "undefined") {
 if (typeof(DateFmt) === "undefined") {
     var DateFmt = require("../../lib/DateFmt.js");
 }
+if (typeof(DateFmtInfo) === "undefined") {
+    var DateFmtInfo = require("../../lib/DateFmtInfo.js");
+}
 if (typeof(DateFactory) === "undefined") {
     var DateFactory = require("../../lib/DateFactory.js");
 }
@@ -305,11 +308,11 @@ module.exports.testdatefmtasync = {
             }
         });
     },
-    
+
     testDateFmtGetFormatInfoUSShortAsync: function(test) {
         test.expect(16);
 
-        var fmt = new DateFmt({
+        var fmt = new DateFmtInfo({
             locale: "en-US",
             type: "date",
             date: "short"
@@ -359,11 +362,11 @@ module.exports.testdatefmtasync = {
         });
 
     },
-    
+
     testDateFmtGetFormatInfoGregorianTranslatedAsync: function(test) {
         test.expect(16);
 
-        var fmt = new DateFmt({
+        var fmt = new DateFmtInfo({
             locale: "en-US",
             type: "date",
             date: "full"
