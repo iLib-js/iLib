@@ -11,12 +11,12 @@
     "Week": "viikko",
     "Week of Month": "kuukauden viikko",
     "Year": "vuosi",
-    "D": "p",
-    "DD": "pp",
-    "YY": "vv",
-    "YYYY": "vvvv",
-    "M": "k",
-    "MM": "kk",
-    "H": "t",
-    "HH": "tt"
+    "D": "P",
+    "DD": "PP",
+    "YY": "VV",
+    "YYYY": "VVVV",
+    "M": "K",
+    "MM": "KK",
+    "H": "T",
+    "HH": "TT"
 }

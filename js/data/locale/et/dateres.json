@@ -11,12 +11,12 @@
     "Week": "nädal",
     "Week of Month": "kuu nädal",
     "Year": "aasta",
-    "D": "p",
-    "DD": "pp",
-    "YY": "aa",
-    "YYYY": "aaaa",
-    "M": "k",
-    "MM": "kk",
-    "H": "t",
-    "HH": "tt"
+    "D": "P",
+    "DD": "PP",
+    "YY": "AA",
+    "YYYY": "AAAA",
+    "M": "K",
+    "MM": "KK",
+    "H": "T",
+    "HH": "TT"
 }

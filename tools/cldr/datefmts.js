@@ -105,6 +105,70 @@ var asianLangs = [
     "ja"
     ];
 
+// from https://meta.wikimedia.org/wiki/Capitalization_of_Wiktionary_pages#Capitalization_of_month_names
+var capitalizedMonthLocales = {
+    "af": 1,
+    "br": 1,
+    "cy": 1,
+    "el": 1,
+    "en": 1,
+    "de": 1,
+    "bar": 1,
+    "gsw": 1,
+    "ksh": 1,
+    "lb": 1,
+    "nds": 1,
+    "pfl": 1,
+    "hz": 1,
+    "id": 1,
+    "la": 1,
+    "ms": 1,
+    "pt": 1,
+    "ve": 1,
+    "xh": 1,
+    "zu": 1,
+};
+var lowercasedMonthLocales = {
+    "bs": 1,
+    "bg": 1,
+    "hr": 1,
+    "ca": 1,
+    "cs": 1,
+    "da": 1,
+    "dsb": 1,
+    "eo": 1,
+    "es": 1,
+    "et": 1,
+    "fi": 1,
+    "fr": 1,
+    "hr": 1,
+    "hsb": 1,
+    "hu": 1,
+    "hy": 1,
+    "is": 1,
+    "it": 1,
+    "li": 1,
+    "lv": 1,
+    "lt": 1,
+    "mk": 1,
+    "no": 1,
+    "nn": 1,
+    "nl": 1,
+    "pl": 1,
+    "BR": 1,
+    "ro": 1,
+    "ru": 1,
+    "os": 1,
+    "sr": 1,
+    "sk": 1,
+    "sl": 1,
+    "sv": 1,
+    "tr": 1,
+    "uk": 1,
+    "vi": 1,
+    "wa": 1
+};
+
 function addDateFormat(formats, locale, data) {
     if (!locale) {
         // root
@@ -2163,7 +2227,12 @@ module.exports = {
         for (var dateField in fieldNames) {
             if (typeof(cldrData[dateField]) !== 'undefined' && cldrData[dateField].displayName) {
                 if (fieldNames[dateField] !== cldrData[dateField].displayName) {
-                    formats[fieldNames[dateField]] = cldrData[dateField].displayName;
+                    if (capitalizedMonthLocales[language]) {
+                        var fieldName = cldrData[dateField].displayName[0].toUpperCase() + cldrData[dateField].displayName.substring(1);
+                        formats[fieldNames[dateField]] = fieldName;
+                    } else {
+                        formats[fieldNames[dateField]] = cldrData[dateField].displayName;
+                    }
                 }
             }
         }
@@ -2181,15 +2250,20 @@ module.exports = {
             "ss": "Second"
         };
         
+        function isUpper(str) {
+            return (str.toUpperCase() === str);
+        }
+
         for (var ph in placeholders) {
             var name = formats[placeholders[ph]];
             if (name) {
-                if (name.length <= ph.length || rtlLanguages.indexOf(language) > -1 || rtlScripts.indexOf(script) > -1) {
+                if (name.length <= 2 || name.length < ph.length || rtlLanguages.indexOf(language) > -1 || rtlScripts.indexOf(script) > -1) {
                     // if it's short or if it's using the Arabic script, just use the full name of the field
-                    formats[ph] = name;
+                    formats[ph] = isUpper(ph) ? name.toUpperCase() : name;
                 } else {
                     // else if it's not certain scripts, use the abbreviation
-                    var initial = name[0]; 
+                    var initial = name[0];
+                    initial = isUpper(ph) ? initial.toUpperCase() : initial.toLowerCase(); 
                     formats[ph] = ph.replace(/./g, initial); 
                 }
             } 

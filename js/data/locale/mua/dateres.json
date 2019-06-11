@@ -12,11 +12,11 @@
     "D": "Z",
     "DD": "ZZ",
     "YY": "SS",
-    "YYYY": "Syii",
+    "YYYY": "SSSS",
     "M": "F",
     "MM": "FF",
     "H": "C",
     "HH": "CC",
-    "mm": "CC",
-    "ss": "CC"
+    "mm": "cc",
+    "ss": "cc"
 }

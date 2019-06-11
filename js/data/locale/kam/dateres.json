@@ -15,5 +15,5 @@
     "YYYY": "MMMM",
     "H": "S",
     "HH": "SS",
-    "mm": "NN"
+    "mm": "nn"
 }

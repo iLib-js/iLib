@@ -60,7 +60,7 @@ module.exports.testdategetformatinfo = {
                 test.equal(info[1].label, "/");
 
                 test.equal(info[2].component, "day");
-                test.equal(info[2].label, "Date");
+                test.equal(info[2].label, "Day");
                 test.deepEqual(info[2].constraint, {
                     "1": [1, 31],
                     "2": [1, 28],
@@ -81,7 +81,7 @@ module.exports.testdategetformatinfo = {
 
                 test.equal(info[4].component, "year");
                 test.equal(info[4].label, "Year");
-                test.equal(info[4].constraint, "[0-9]{2}");
+                test.equal(info[4].constraint, "\\d{2}");
             }
         });
 
@@ -114,7 +114,7 @@ module.exports.testdategetformatinfo = {
                 test.equal(info[1].label, "/");
 
                 test.equal(info[2].component, "day");
-                test.equal(info[2].label, "Date");
+                test.equal(info[2].label, "Day");
                 test.deepEqual(info[2].constraint, {
                     "1": [1, 31],
                     "2": [1, 29],
@@ -135,7 +135,7 @@ module.exports.testdategetformatinfo = {
 
                 test.equal(info[4].component, "year");
                 test.equal(info[4].label, "Year");
-                test.equal(info[4].constraint, "[0-9]{2}");
+                test.equal(info[4].constraint, "\\d{2}");
             }
         });
 
@@ -181,7 +181,7 @@ module.exports.testdategetformatinfo = {
                 test.equal(info[1].label, " ");
 
                 test.equal(info[2].component, "day");
-                test.equal(info[2].label, "Date");
+                test.equal(info[2].label, "Day");
                 test.deepEqual(info[2].constraint, {
                     "1": [1, 31],
                     "2": [1, 28],
@@ -202,7 +202,7 @@ module.exports.testdategetformatinfo = {
 
                 test.equal(info[4].component, "year");
                 test.equal(info[4].label, "Year");
-                test.equal(info[4].constraint, "[0-9]+");
+                test.equal(info[4].constraint, "\\d{4}");
             }
         });
 
@@ -270,7 +270,7 @@ module.exports.testdategetformatinfo = {
 
                 test.equal(info[4].component, "year");
                 test.equal(info[4].label, "Jahr");
-                test.equal(info[4].constraint, "[0-9]+");
+                test.equal(info[4].constraint, "\\d{4}");
             }
         });
 
@@ -332,7 +332,7 @@ module.exports.testdategetformatinfo = {
 
                 test.equal(info[6].component, "year");
                 test.equal(info[6].label, "Year");
-                test.equal(info[6].constraint, "[0-9]{2}");
+                test.equal(info[6].constraint, "\\d{2}");
 
                 test.ok(!info[7].component);
                 test.equal(info[7].label, " at ");
@@ -340,7 +340,7 @@ module.exports.testdategetformatinfo = {
                 test.equal(info[8].component, "hour");
                 test.equal(info[8].label, "Hour");
                 test.equal(info[8].placeholder, "H");
-                test.deepEqual(info[8].constraint, [1, 12]);
+                test.deepEqual(info[8].constraint, ["12", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11"]);
                 test.equal(info[8].validation, "\\d{1,2}");
 
                 test.ok(!info[9].component);
@@ -468,7 +468,7 @@ module.exports.testdategetformatinfo = {
 
                 test.equal(info[4].component, "year");
                 test.equal(info[4].label, "Year");
-                test.equal(info[4].constraint, "[0-9]+");
+                test.equal(info[4].constraint, "\\d{4}");
             }
         });
 
@@ -538,7 +538,7 @@ module.exports.testdategetformatinfo = {
 
                 test.equal(info[4].component, "year");
                 test.equal(info[4].label, "Year");
-                test.equal(info[4].constraint, "[0-9]+");
+                test.equal(info[4].constraint, "\\d{4}");
             }
         });
 
@@ -606,7 +606,7 @@ module.exports.testdategetformatinfo = {
 
                 test.equal(info[4].component, "year");
                 test.equal(info[4].label, "שנה");
-                test.equal(info[4].constraint, "[0-9]+");
+                test.equal(info[4].constraint, "\\d{4}");
             }
         });
 

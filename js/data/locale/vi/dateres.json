@@ -14,11 +14,11 @@
     "D": "N",
     "DD": "NN",
     "YY": "NN",
-    "YYYY": "Năm",
+    "YYYY": "NĂM",
     "M": "T",
     "MM": "TT",
     "H": "G",
     "HH": "GG",
-    "mm": "PP",
-    "ss": "GG"
+    "mm": "pp",
+    "ss": "gg"
 }

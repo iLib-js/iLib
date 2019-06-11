@@ -9,14 +9,14 @@
     "Time Zone": "Zukangbonga",
     "Week": "Dimâsi",
     "Year": "Ngû",
-    "D": "L",
-    "DD": "Lâ",
+    "D": "LÂ",
+    "DD": "LÂ",
     "YY": "NN",
-    "YYYY": "Ngû",
+    "YYYY": "NGÛ",
     "M": "N",
     "MM": "NN",
     "H": "N",
     "HH": "NN",
-    "mm": "NN",
-    "ss": "NN"
+    "mm": "nn",
+    "ss": "nn"
 }

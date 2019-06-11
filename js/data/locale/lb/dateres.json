@@ -10,9 +10,7 @@
     "Week": "Woch",
     "Year": "Joer",
     "YY": "JJ",
-    "YYYY": "Joer",
+    "YYYY": "JJJJ",
     "H": "S",
-    "HH": "SS",
-    "mm": "MM",
-    "ss": "SS"
+    "HH": "SS"
 }

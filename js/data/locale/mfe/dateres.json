@@ -12,9 +12,7 @@
     "D": "Z",
     "DD": "ZZ",
     "YY": "LL",
-    "YYYY": "Lane",
+    "YYYY": "LLLL",
     "H": "L",
-    "HH": "LL",
-    "mm": "MM",
-    "ss": "SS"
+    "HH": "LL"
 }

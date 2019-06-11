@@ -11,12 +11,8 @@
     "Week": "teden",
     "Week of Month": "teden meseca",
     "Year": "leto",
-    "D": "d",
-    "DD": "dd",
-    "YY": "ll",
-    "YYYY": "leto",
-    "M": "m",
-    "MM": "mm",
-    "H": "u",
-    "HH": "uu"
+    "YY": "LL",
+    "YYYY": "LLLL",
+    "H": "U",
+    "HH": "UU"
 }

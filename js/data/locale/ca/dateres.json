@@ -11,12 +11,6 @@
     "Week": "setmana",
     "Week of Month": "setmana del mes",
     "Year": "any",
-    "D": "d",
-    "DD": "dd",
-    "YY": "aa",
-    "YYYY": "any",
-    "M": "m",
-    "MM": "mm",
-    "H": "h",
-    "HH": "hh"
+    "YY": "AA",
+    "YYYY": "ANY"
 }

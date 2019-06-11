@@ -10,12 +10,12 @@
     "Week": "linggo",
     "Week of Month": "linggo ng buwan",
     "Year": "taon",
-    "D": "a",
-    "DD": "aa",
-    "YY": "tt",
-    "YYYY": "taon",
-    "M": "b",
-    "MM": "bb",
-    "H": "o",
-    "HH": "oo"
+    "D": "A",
+    "DD": "AA",
+    "YY": "TT",
+    "YYYY": "TTTT",
+    "M": "B",
+    "MM": "BB",
+    "H": "O",
+    "HH": "OO"
 }

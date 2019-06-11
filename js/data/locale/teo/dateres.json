@@ -12,11 +12,11 @@
     "D": "A",
     "DD": "AA",
     "YY": "EE",
-    "YYYY": "Ekan",
+    "YYYY": "EEEE",
     "M": "E",
     "MM": "EE",
     "H": "E",
     "HH": "EE",
-    "mm": "II",
-    "ss": "II"
+    "mm": "ii",
+    "ss": "ii"
 }

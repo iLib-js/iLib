@@ -12,11 +12,11 @@
     "D": "A",
     "DD": "AA",
     "YY": "MM",
-    "YYYY": "M̀bú",
+    "YYYY": "MMMM",
     "M": "N",
     "MM": "NN",
     "H": "A",
     "HH": "AA",
-    "mm": "EE",
-    "ss": "AA"
+    "mm": "ee",
+    "ss": "aa"
 }

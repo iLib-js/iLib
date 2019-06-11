@@ -9,12 +9,6 @@
     "Time Zone": "estaya horaria",
     "Week": "selmana",
     "Year": "añu",
-    "D": "d",
-    "DD": "dd",
-    "YY": "aa",
-    "YYYY": "añu",
-    "M": "m",
-    "MM": "mm",
-    "H": "h",
-    "HH": "hh"
+    "YY": "AA",
+    "YYYY": "AÑU"
 }

@@ -5,10 +5,10 @@
     "Hour": "fʉ̀ʼ nèm",
     "Time Zone": "Zone",
     "Year": "ngùʼ",
-    "D": "l",
-    "DD": "ll",
-    "YY": "nn",
-    "YYYY": "ngùʼ",
-    "H": "f",
-    "HH": "ff"
+    "D": "L",
+    "DD": "LL",
+    "YY": "NN",
+    "YYYY": "NNNN",
+    "H": "F",
+    "HH": "FF"
 }

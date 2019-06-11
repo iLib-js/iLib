@@ -11,12 +11,8 @@
     "Week": "vika",
     "Week of Month": "vika í mánuði",
     "Year": "ár",
-    "D": "d",
-    "DD": "dd",
-    "YY": "ár",
-    "YYYY": "ár",
-    "M": "m",
-    "MM": "mm",
-    "H": "k",
-    "HH": "kk"
+    "YY": "ÁR",
+    "YYYY": "ÁR",
+    "H": "K",
+    "HH": "KK"
 }

@@ -10,11 +10,10 @@
     "Week": "Sɔ́ndɔ",
     "Year": "Mbvu",
     "YY": "MM",
-    "YYYY": "Mbvu",
+    "YYYY": "MMMM",
     "M": "N",
     "MM": "NN",
     "H": "W",
     "HH": "WW",
-    "mm": "MM",
-    "ss": "NN"
+    "ss": "nn"
 }

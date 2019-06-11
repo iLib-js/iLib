@@ -9,12 +9,10 @@
     "Time Zone": "áigeavádat",
     "Week": "váhkku",
     "Year": "jáhki",
-    "D": "b",
-    "DD": "bb",
-    "YY": "jj",
-    "YYYY": "jjjj",
-    "M": "m",
-    "MM": "mm",
-    "H": "d",
-    "HH": "dd"
+    "D": "B",
+    "DD": "BB",
+    "YY": "JJ",
+    "YYYY": "JJJJ",
+    "H": "D",
+    "HH": "DD"
 }

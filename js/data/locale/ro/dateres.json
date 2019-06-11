@@ -11,12 +11,12 @@
     "Week": "săptămână",
     "Week of Month": "săptămâna din lună",
     "Year": "an",
-    "D": "z",
-    "DD": "zi",
-    "YY": "an",
-    "YYYY": "an",
-    "M": "l",
-    "MM": "ll",
-    "H": "o",
-    "HH": "oo"
+    "D": "ZI",
+    "DD": "ZI",
+    "YY": "AN",
+    "YYYY": "AN",
+    "M": "L",
+    "MM": "LL",
+    "H": "O",
+    "HH": "OO"
 }

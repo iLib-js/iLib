@@ -9,12 +9,10 @@
     "Time Zone": "casowe pasmo",
     "Week": "tyźeń",
     "Year": "lěto",
-    "D": "ź",
-    "DD": "źź",
-    "YY": "ll",
-    "YYYY": "lěto",
-    "M": "m",
-    "MM": "mm",
-    "H": "g",
-    "HH": "gg"
+    "D": "Ź",
+    "DD": "ŹŹ",
+    "YY": "LL",
+    "YYYY": "LLLL",
+    "H": "G",
+    "HH": "GG"
 }

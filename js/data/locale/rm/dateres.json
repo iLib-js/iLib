@@ -11,10 +11,8 @@
     "Year": "onn",
     "D": "T",
     "DD": "TT",
-    "YY": "oo",
-    "YYYY": "onn",
-    "M": "m",
-    "MM": "mm",
-    "H": "u",
-    "HH": "uu"
+    "YY": "OO",
+    "YYYY": "ONN",
+    "H": "U",
+    "HH": "UU"
 }

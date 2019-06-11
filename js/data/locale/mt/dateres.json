@@ -9,12 +9,12 @@
     "Week": "ġimgħa",
     "Week of Month": "ġimgħa tax-xahar",
     "Year": "Sena",
-    "D": "j",
-    "DD": "jj",
+    "D": "J",
+    "DD": "JJ",
     "YY": "SS",
-    "YYYY": "Sena",
-    "M": "x",
-    "MM": "xx",
-    "H": "s",
-    "HH": "ss"
+    "YYYY": "SSSS",
+    "M": "X",
+    "MM": "XX",
+    "H": "S",
+    "HH": "SS"
 }

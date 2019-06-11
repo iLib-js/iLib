@@ -315,7 +315,7 @@ module.exports.testdatefmtasync = {
         var fmt = new DateFmtInfo({
             locale: "en-US",
             type: "date",
-            date: "short"
+            length: "short"
         });
         test.ok(fmt !== null);
 
@@ -356,7 +356,7 @@ module.exports.testdatefmtasync = {
 
                 test.equal(info[4].component, "year");
                 test.equal(info[4].label, "Year");
-                test.equal(info[4].constraint, "[0-9]{2}");
+                test.equal(info[4].constraint, "\\d{2}");
                 test.done();
             }
         });
@@ -369,12 +369,12 @@ module.exports.testdatefmtasync = {
         var fmt = new DateFmtInfo({
             locale: "en-US",
             type: "date",
-            date: "full"
+            length: "full",
+            uiLocale: "de-DE"
         });
         test.ok(fmt !== null);
 
         fmt.getFormatInfo({
-            locale: "de-DE",
             year: 2019,
             sync: false,
             onLoad: function(info) {
@@ -424,7 +424,7 @@ module.exports.testdatefmtasync = {
 
                 test.equal(info[4].component, "year");
                 test.equal(info[4].label, "Jahr");
-                test.equal(info[4].constraint, "[0-9]+");
+                test.equal(info[4].constraint, "\\d{4}");
                 test.done();
             }
         });

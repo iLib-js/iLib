@@ -11,13 +11,13 @@
     "Week": "Seachtain",
     "Week of Month": "Seachtain den mhí",
     "Year": "Bliain",
-    "D": "L",
-    "DD": "Lá",
+    "D": "LÁ",
+    "DD": "LÁ",
     "YY": "BB",
     "YYYY": "BBBB",
-    "MM": "Mí",
+    "M": "MÍ",
+    "MM": "MÍ",
     "H": "U",
     "HH": "UU",
-    "mm": "NN",
-    "ss": "SS"
+    "mm": "nn"
 }

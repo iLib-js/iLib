@@ -8,12 +8,8 @@
     "Time Zone": "Zone",
     "Week": "Wike",
     "Year": "Jier",
-    "D": "d",
-    "DD": "dd",
     "YY": "JJ",
-    "YYYY": "Jier",
-    "H": "o",
-    "HH": "oo",
-    "mm": "MM",
-    "ss": "SS"
+    "YYYY": "JJJJ",
+    "H": "O",
+    "HH": "OO"
 }

@@ -11,12 +11,8 @@
     "Week": "javë",
     "Week of Month": "javë e muajit",
     "Year": "vit",
-    "D": "d",
-    "DD": "dd",
-    "YY": "vv",
-    "YYYY": "vit",
-    "M": "m",
-    "MM": "mm",
-    "H": "o",
-    "HH": "oo"
+    "YY": "VV",
+    "YYYY": "VIT",
+    "H": "O",
+    "HH": "OO"
 }

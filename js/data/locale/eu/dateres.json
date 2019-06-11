@@ -10,12 +10,12 @@
     "Week": "astea",
     "Week of Month": "hileko #. astea",
     "Year": "urtea",
-    "D": "e",
-    "DD": "ee",
-    "YY": "uu",
-    "YYYY": "uuuu",
-    "M": "h",
-    "MM": "hh",
-    "H": "o",
-    "HH": "oo"
+    "D": "E",
+    "DD": "EE",
+    "YY": "UU",
+    "YYYY": "UUUU",
+    "M": "H",
+    "MM": "HH",
+    "H": "O",
+    "HH": "OO"
 }

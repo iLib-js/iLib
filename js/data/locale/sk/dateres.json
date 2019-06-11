@@ -10,12 +10,6 @@
     "Week": "týždeň",
     "Week of Month": "týždeň mesiaca",
     "Year": "rok",
-    "D": "d",
-    "DD": "dd",
-    "YY": "rr",
-    "YYYY": "rok",
-    "M": "m",
-    "MM": "mm",
-    "H": "h",
-    "HH": "hh"
+    "YY": "RR",
+    "YYYY": "ROK"
 }

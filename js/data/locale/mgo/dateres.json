@@ -5,10 +5,10 @@
     "Time Zone": "Zone",
     "Week": "nkap",
     "Year": "fituʼ",
-    "D": "a",
-    "DD": "aa",
-    "YY": "ff",
-    "YYYY": "ffff",
-    "M": "i",
-    "MM": "ii"
+    "D": "A",
+    "DD": "AA",
+    "YY": "FF",
+    "YYYY": "FFFF",
+    "M": "I",
+    "MM": "II"
 }

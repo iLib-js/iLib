@@ -11,12 +11,11 @@
     "Year": "İl",
     "D": "G",
     "DD": "GG",
-    "YY": "İl",
-    "YYYY": "İl",
-    "M": "A",
-    "MM": "Ay",
+    "YY": "İL",
+    "YYYY": "İL",
+    "M": "AY",
+    "MM": "AY",
     "H": "S",
     "HH": "SS",
-    "mm": "DD",
-    "ss": "SS"
+    "mm": "dd"
 }

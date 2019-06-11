@@ -11,12 +11,8 @@
     "Week": "uke",
     "Week of Month": "uke i måneden",
     "Year": "år",
-    "D": "d",
-    "DD": "dd",
-    "YY": "år",
-    "YYYY": "år",
-    "M": "m",
-    "MM": "mm",
-    "H": "t",
-    "HH": "tt"
+    "YY": "ÅR",
+    "YYYY": "ÅR",
+    "H": "T",
+    "HH": "TT"
 }

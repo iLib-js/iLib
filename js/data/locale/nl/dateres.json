@@ -11,12 +11,8 @@
     "Week": "week",
     "Week of Month": "week van de maand",
     "Year": "jaar",
-    "D": "d",
-    "DD": "dd",
-    "YY": "jj",
-    "YYYY": "jaar",
-    "M": "m",
-    "MM": "mm",
-    "H": "u",
-    "HH": "uu"
+    "YY": "JJ",
+    "YYYY": "JJJJ",
+    "H": "U",
+    "HH": "UU"
 }

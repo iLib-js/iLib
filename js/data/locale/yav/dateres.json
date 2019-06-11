@@ -9,12 +9,10 @@
     "Time Zone": "kinúki kisikɛl ɔ́ pitɔŋ",
     "Week": "sɔ́ndiɛ",
     "Year": "yɔɔŋ",
-    "D": "p",
-    "DD": "pp",
-    "YY": "yy",
-    "YYYY": "yɔɔŋ",
-    "M": "o",
-    "MM": "oo",
-    "H": "k",
-    "HH": "kk"
+    "D": "P",
+    "DD": "PP",
+    "M": "O",
+    "MM": "OO",
+    "H": "K",
+    "HH": "KK"
 }

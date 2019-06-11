@@ -9,14 +9,10 @@
     "Time Zone": "Zone",
     "Week": "iwiki mocha",
     "Year": "yaka",
-    "D": "n",
-    "DD": "nn",
-    "YY": "yy",
-    "YYYY": "yaka",
-    "M": "m",
-    "MM": "mm",
-    "H": "i",
-    "HH": "ii",
+    "D": "N",
+    "DD": "NN",
+    "H": "I",
+    "HH": "II",
     "mm": "ii",
     "ss": "ii"
 }

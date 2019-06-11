@@ -93,8 +93,24 @@ DateFmtInfo.prototype = {
             loadParams: loadParams,
             onLoad: ilib.bind(this, function (rb) {
                 this.rb = rb;
-                if (callback && typeof(callback) === "function") {
-                    callback(this);
+                if (locale.getLanguage() !== this.fmt.locale.getLanguage()) {
+                    new ResBundle({
+                        locale: locale,
+                        name: "sysres",
+                        sync: sync,
+                        loadParams: loadParams,
+                        onLoad: ilib.bind(this, function (rb) {
+                            this.sysres = rb;
+                            if (callback && typeof(callback) === "function") {
+                                callback(this);
+                            }
+                        })
+                    });
+                } else {
+                    this.sysres = this.fmt.sysres;
+                    if (callback && typeof(callback) === "function") {
+                        callback(this);
+                    }
                 }
             })
         });
@@ -128,7 +144,7 @@ DateFmtInfo.prototype = {
      * @private
      */
     _getSysString: function (key) {
-        return (this.fmt.sysres.getStringJS(undefined, key + "-" + this.fmt.calName) || this.fmt.sysres.getStringJS(undefined, key)).toString();
+        return (this.sysres.getStringJS(undefined, key + "-" + this.fmt.calName) || this.sysres.getStringJS(undefined, key)).toString();
     },
 
     /**
@@ -268,7 +284,7 @@ DateFmtInfo.prototype = {
 
         monthCount = this.fmt.cal.getNumMonths(date.getYears());
         for (var i = 1; i <= monthCount; i++) {
-            months[i] = this.fmt.sysres.getStringJS(this.fmt._getTemplate(template + i, this.fmt.cal.getType())).toString();
+            months[i] = this.sysres.getStringJS(this.fmt._getTemplate(template + i, this.fmt.cal.getType())).toString();
         }
         return months;
     },
@@ -292,7 +308,7 @@ DateFmtInfo.prototype = {
             template = DateFmt.weekDayLenMap[length],
             days = [];
         for (var i = 0; i < 7; i++) {
-            days[i] = this.fmt.sysres.getStringJS(this.fmt._getTemplate(template + i, this.fmt.cal.getType())).toString();
+            days[i] = this.sysres.getStringJS(this.fmt._getTemplate(template + i, this.fmt.cal.getType())).toString();
         }
         return days;
     },
@@ -310,7 +326,7 @@ DateFmtInfo.prototype = {
         }
 
         var isLeap = this.fmt.cal.isLeapYear(year);
-        var dateStr = RB.getStringJS("Date"); // i18n: date input form label for the day of the month field
+        var dateStr = RB.getStringJS("Day"); // i18n: date input form label for the day of the month field
         var yearStr = RB.getStringJS("Year"); // i18n: date input form label for the year field
         var monthStr = RB.getStringJS("Month"); // i18n: date input form label for the months field
         var hourStr = RB.getStringJS("Hour"); // i18n: date input form label for the hours field
@@ -356,7 +372,7 @@ DateFmtInfo.prototype = {
                         component: "year",
                         label: yearStr,
                         placeholder: RB.getStringJS("YY"), // i18n: date format placeholder string for 2 digit year
-                        constraint: "[0-9]{2}",
+                        constraint: "\\d{2}",
                         validation: "\\d{2}"
                     };
 
@@ -365,7 +381,7 @@ DateFmtInfo.prototype = {
                         component: "year",
                         label: yearStr,
                         placeholder: RB.getStringJS("YYYY"), // i18n: date format placeholder string for 4 digit year
-                        constraint: "[0-9]{4}",
+                        constraint: "\\d{4}",
                         validation: "\\d{4}"
                     };
 
@@ -441,7 +457,7 @@ DateFmtInfo.prototype = {
                         label: hourStr,
                         placeholder: RB.getStringJS("HH"), // i18n: date format placeholder string for 2 digit hour
                         constraint: sequence(0, 23, true),
-                        validation: "\\d{1,2}"
+                        validation: "\\d{2}"
                     };
 
                 case 'k':
@@ -459,7 +475,7 @@ DateFmtInfo.prototype = {
                         label: hourStr,
                         placeholder: RB.getStringJS("H"), // i18n: date format placeholder string for 1 digit hour
                         constraint: ["24"].concat(sequence(0, 23, true)),
-                        validation: "\\d{1,2}"
+                        validation: "\\d{2}"
                     };
 
                 case 'm':
@@ -533,7 +549,7 @@ DateFmtInfo.prototype = {
                             for (i = 1; i <= months; i++) {
                                 var key = component + i;
                                 ret.push({
-                                    label: this.fmt.sysres.getStringJS(undefined, key + "-" + this.fmt.calName) || this.fmt.sysres.getStringJS(undefined, key),
+                                    label: this.sysres.getStringJS(undefined, key + "-" + this.fmt.calName) || this.sysres.getStringJS(undefined, key),
                                     value: i
                                 });
                             }
@@ -558,7 +574,7 @@ DateFmtInfo.prototype = {
                             if (this.fmt.calName !== "gregorian") {
                                 key += '-' + this.fmt.calName;
                             }
-                            return this.fmt.sysres.getStringJS(undefined, key);
+                            return this.sysres.getStringJS(undefined, key);
                         })
                     };
                     break;
@@ -573,18 +589,18 @@ DateFmtInfo.prototype = {
                         case "chinese":
                             for (var i = 0; i < 7; i++) {
                                 var key = "azh" + i;
-                                ret.constraint.push(this.fmt.sysres.getStringJS(undefined, key + "-" + this.fmt.calName) || this.fmt.sysres.getStringJS(undefined, key));
+                                ret.constraint.push(this.sysres.getStringJS(undefined, key + "-" + this.fmt.calName) || this.sysres.getStringJS(undefined, key));
                             }
                             break;
                         case "ethiopic":
                             for (var i = 0; i < 7; i++) {
                                 var key = "a" + i + "-ethiopic";
-                                ret.constraint.push(this.fmt.sysres.getStringJS(undefined, key + "-" + this.fmt.calName) || this.fmt.sysres.getStringJS(undefined, key));
+                                ret.constraint.push(this.sysres.getStringJS(undefined, key + "-" + this.fmt.calName) || this.sysres.getStringJS(undefined, key));
                             }
                             break;
                         default:
-                            ret.constraint.push(this.fmt.sysres.getStringJS(undefined, "a0-" + this.fmt.calName) || this.fmt.sysres.getStringJS(undefined, "a0"));
-                            ret.constraint.push(this.fmt.sysres.getStringJS(undefined, "a1-" + this.fmt.calName) || this.fmt.sysres.getStringJS(undefined, "a1"));
+                            ret.constraint.push(this.sysres.getStringJS(undefined, "a0-" + this.fmt.calName) || this.sysres.getStringJS(undefined, "a0"));
+                            ret.constraint.push(this.sysres.getStringJS(undefined, "a1-" + this.fmt.calName) || this.sysres.getStringJS(undefined, "a1"));
                             break;
                     }
                     return ret;
@@ -646,8 +662,8 @@ DateFmtInfo.prototype = {
                         label: RB.getStringJS("Era"), // i18n: date input form label for the era field
                         constraint: []
                     };
-                    ret.constraint.push(this.fmt.sysres.getStringJS(undefined, "G0-" + this.fmt.calName) || this.fmt.sysres.getStringJS(undefined, "G0"));
-                    ret.constraint.push(this.fmt.sysres.getStringJS(undefined, "G1-" + this.fmt.calName) || this.fmt.sysres.getStringJS(undefined, "G1"));
+                    ret.constraint.push(this.sysres.getStringJS(undefined, "G0-" + this.fmt.calName) || this.sysres.getStringJS(undefined, "G0"));
+                    ret.constraint.push(this.sysres.getStringJS(undefined, "G1-" + this.fmt.calName) || this.sysres.getStringJS(undefined, "G1"));
                     return ret;
 
                 case 'z': // general time zone
@@ -877,7 +893,7 @@ DateFmtInfo.prototype = {
      *     "component": "year",
      *     "label": "Year",
      *     "placeholder": "YYYY",
-     *     "validation": "[0-9]+"
+     *     "validation": "\\d{4}"
      *   },
      *   {
      *     "label": " at "

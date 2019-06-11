@@ -10,7 +10,5 @@
     "D": "N",
     "DD": "NN",
     "YY": "CC",
-    "YYYY": "CCCC",
-    "mm": "MM",
-    "ss": "SS"
+    "YYYY": "CCCC"
 }

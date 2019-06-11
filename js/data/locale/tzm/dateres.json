@@ -17,6 +17,6 @@
     "MM": "AA",
     "H": "T",
     "HH": "TT",
-    "mm": "TT",
-    "ss": "TT"
+    "mm": "tt",
+    "ss": "tt"
 }

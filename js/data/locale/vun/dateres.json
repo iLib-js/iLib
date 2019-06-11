@@ -12,9 +12,8 @@
     "D": "M",
     "DD": "MM",
     "YY": "MM",
-    "YYYY": "Maka",
+    "YYYY": "MMMM",
     "H": "S",
     "HH": "SS",
-    "mm": "DD",
-    "ss": "SS"
+    "mm": "dd"
 }

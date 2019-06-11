@@ -1,21 +1,5 @@
 {
-    "Day": "day",
-    "Day of Year": "day of year",
-    "Era": "era",
-    "Hour": "hour",
-    "Minute": "minute",
-    "Month": "month",
-    "Second": "second",
-    "Time Zone": "time zone",
-    "Week": "week",
-    "Week of Month": "week of month",
-    "Year": "year",
-    "D": "d",
-    "DD": "dd",
-    "YY": "yy",
-    "YYYY": "year",
-    "M": "m",
-    "MM": "mm",
-    "H": "h",
-    "HH": "hh"
+    "Day of Year": "Day of year",
+    "Time Zone": "Time zone",
+    "Week of Month": "Week of month"
 }

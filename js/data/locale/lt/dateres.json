@@ -11,12 +11,8 @@
     "Week": "savaitė",
     "Week of Month": "mėnesio savaitė",
     "Year": "metai",
-    "D": "d",
-    "DD": "dd",
-    "YY": "mm",
-    "YYYY": "mmmm",
-    "M": "m",
-    "MM": "mm",
-    "H": "v",
-    "HH": "vv"
+    "YY": "MM",
+    "YYYY": "MMMM",
+    "H": "V",
+    "HH": "VV"
 }

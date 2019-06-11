@@ -15,6 +15,5 @@
     "YYYY": "MMMM",
     "H": "I",
     "HH": "II",
-    "mm": "DD",
-    "ss": "SS"
+    "mm": "dd"
 }

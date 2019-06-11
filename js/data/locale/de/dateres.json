@@ -13,8 +13,7 @@
     "D": "T",
     "DD": "TT",
     "YY": "JJ",
-    "YYYY": "Jahr",
+    "YYYY": "JJJJ",
     "H": "S",
-    "HH": "SS",
-    "ss": "SS"
+    "HH": "SS"
 }

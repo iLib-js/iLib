@@ -17,6 +17,6 @@
     "MM": "LL",
     "H": "W",
     "HH": "WW",
-    "mm": "HH",
-    "ss": "MM"
+    "mm": "hh",
+    "ss": "mm"
 }

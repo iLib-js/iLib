@@ -12,9 +12,7 @@
     "D": "Z",
     "DD": "ZZ",
     "YY": "GG",
-    "YYYY": "Gore",
+    "YYYY": "GGGG",
     "H": "A",
-    "HH": "AA",
-    "mm": "MM",
-    "ss": "SS"
+    "HH": "AA"
 }

@@ -9,12 +9,10 @@
     "Time Zone": "sigikun tilena",
     "Week": "dɔgɔkun",
     "Year": "san",
-    "D": "d",
-    "DD": "dd",
-    "YY": "ss",
-    "YYYY": "san",
-    "M": "k",
-    "MM": "kk",
-    "H": "l",
-    "HH": "ll"
+    "YY": "SS",
+    "YYYY": "SAN",
+    "M": "K",
+    "MM": "KK",
+    "H": "L",
+    "HH": "LL"
 }

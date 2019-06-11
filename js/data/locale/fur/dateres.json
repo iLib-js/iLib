@@ -9,12 +9,10 @@
     "Time Zone": "zone",
     "Week": "setemane",
     "Year": "an",
-    "D": "d",
-    "DD": "dì",
-    "YY": "an",
-    "YYYY": "an",
-    "M": "m",
-    "MM": "mm",
-    "H": "o",
-    "HH": "oo"
+    "D": "DÌ",
+    "DD": "DÌ",
+    "YY": "AN",
+    "YYYY": "AN",
+    "H": "O",
+    "HH": "OO"
 }

@@ -15,6 +15,6 @@
     "MM": "NN",
     "H": "D",
     "HH": "DD",
-    "mm": "KK",
-    "ss": "KK"
+    "mm": "kk",
+    "ss": "kk"
 }

@@ -12,10 +12,6 @@
     "Year": "taʻu",
     "D": "ʻ",
     "DD": "ʻʻ",
-    "YY": "tt",
-    "YYYY": "taʻu",
-    "M": "m",
-    "MM": "mm",
-    "H": "h",
-    "HH": "hh"
+    "YY": "TT",
+    "YYYY": "TTTT"
 }

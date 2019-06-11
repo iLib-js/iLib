@@ -9,13 +9,13 @@
     "Time Zone": "Bere apaamu",
     "Week": "Dapɛn",
     "Year": "Afe",
-    "DD": "Da",
+    "D": "DA",
+    "DD": "DA",
     "YY": "AA",
-    "YYYY": "Afe",
+    "YYYY": "AFE",
     "M": "B",
     "MM": "BB",
     "H": "D",
     "HH": "DD",
-    "mm": "SS",
-    "ss": "SS"
+    "mm": "ss"
 }

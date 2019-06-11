@@ -12,11 +12,9 @@
     "D": "M",
     "DD": "MM",
     "YY": "MM",
-    "YYYY": "Mobú",
+    "YYYY": "MMMM",
     "M": "S",
     "MM": "SS",
     "H": "N",
-    "HH": "NN",
-    "mm": "MM",
-    "ss": "SS"
+    "HH": "NN"
 }
