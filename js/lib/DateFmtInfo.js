@@ -93,7 +93,7 @@ DateFmtInfo.prototype = {
             loadParams: loadParams,
             onLoad: ilib.bind(this, function (rb) {
                 this.rb = rb;
-                if (locale.getLanguage() !== this.fmt.locale.getLanguage()) {
+                if (locale && locale.getLanguage() !== this.fmt.locale.getLanguage()) {
                     new ResBundle({
                         locale: locale,
                         name: "sysres",
@@ -568,7 +568,7 @@ DateFmtInfo.prototype = {
                     return {
                         component: "dayofweek",
                         label: RB.getStringJS("Day of Week"), // i18n: date input form label for the day of the week field
-                        constraint: ilib.bind(this, function(date) {
+                        value: ilib.bind(this, function(date) {
                             var d = date.getJSDate();
                             var key = component.replace(/c/g, 'E') + d.getDay();
                             if (this.fmt.calName !== "gregorian") {

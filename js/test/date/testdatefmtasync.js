@@ -335,7 +335,7 @@ module.exports.testdatefmtasync = {
                 test.equal(info[1].label, "/");
 
                 test.equal(info[2].component, "day");
-                test.equal(info[2].label, "Date");
+                test.equal(info[2].label, "Day");
                 test.deepEqual(info[2].constraint, {
                     "1": [1, 31],
                     "2": [1, 28],
@@ -403,7 +403,7 @@ module.exports.testdatefmtasync = {
                 test.equal(info[1].label, " ");
 
                 test.equal(info[2].component, "day");
-                test.equal(info[2].label, "Datum");
+                test.equal(info[2].label, "Tag");
                 test.deepEqual(info[2].constraint, {
                     "1": [1, 31],
                     "2": [1, 28],
