@@ -104,7 +104,11 @@ limitations under the License.
 		<delete file="${build.locale.src}/localeinfo.stamp"/>
 		<delete file="${build.locale.src}/jsoncompress.stamp"/>
 		<delete file="${build.demo}/demo.tgz"/>
+		<delete dir="${build.demo}/scripts/assets"/>
 		<delete file="${build.demo}/scripts/ilib-demo.js"/>
+		<delete file="${build.demo}/scripts/ilib-include.js"/>
+		<delete file="${build.demo}/scripts/ilib.js"/>
+		<delete file="${build.demo}/scripts/webpack.config.js"/>
 		<delete file="${build.base}/package.json"/>
 		<delete file="${build.test}/nodeunit/nodeunit-qml.jsc"/>
 		<delete file="${build.lib}/ilib-qt.jsc"/>
