@@ -85,7 +85,7 @@ for (country in countryData) {
     numPlanData["countryCode"] = phoneMetadata["phone_code"];
 
     if (regx.test(countryData[country]["idd_prefix"])){
-        numPlanData["iddCode"] = "It's regular expression. Need to be checked";
+        numPlanData["iddCode"] = phoneMetadata["idd_prefix"] + "  // It's a regular expression. It needs to be checked";
     } else {
         numPlanData["iddCode"] = phoneMetadata["idd_prefix"];
     }
