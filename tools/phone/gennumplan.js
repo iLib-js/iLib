@@ -34,7 +34,7 @@ if (process.argv.length > 2) {
 }
 
 function usage() {
-	console.log("Usage: genlikelyloc [-h] [ locale_data_dir ]\n" +
+	console.log("Usage: gennumplan.js [-h] [ locale_data_dir ]\n" +
             "-h or --help\n" +
             "  this help\n" +
             "locale_data_dir\n" +
@@ -72,24 +72,60 @@ function getFormatChars(phonedata) {
 }
 
 for (country in countryData) {
+    if (country === "001") break;
     var numPlanData = {};
     var regx = RegExp(/[\!|\?|\:]/);
+    var phoneMetadata = countryData[country];
 
     filename = path.join(toDir, 'und', country)
     if (!fs.existsSync(filename)) {
         mkdirs(filename);
     }
     numPlanData["region"] = country;
-    numPlanData["countryCode"] = countryData[country]["phone_code"];
+    numPlanData["countryCode"] = phoneMetadata["phone_code"];
 
     if (regx.test(countryData[country]["idd_prefix"])){
         numPlanData["iddCode"] = "It's regular expression. Need to be checked";
     } else {
-        numPlanData["iddCode"] = countryData[country]["idd_prefix"];
+        numPlanData["iddCode"] = phoneMetadata["idd_prefix"];
     }
 
-    numPlanData["trunkCode"] = countryData[country]["national_prefix"];
-    numPlanData["commonFormatChars"] = getFormatChars(countryData[country]);
+    numPlanData["trunkCode"] = phoneMetadata["national_prefix"];
+
+    /*
+    *  No info in metadata. Just set default value
+    * "skipTrunk" : false
+    * "dialingPlan": "closed"
+    */
+    numPlanData["skipTrunk"] = false;
+    numPlanData["dialingPlan"] = "closed";
+
+    numPlanData["commonFormatChars"] = getFormatChars(phoneMetadata);
+
+    var fieldLength = {
+        "areaCode": 0,
+        "cic": 0,
+        "vsc": 0,
+        "mobilePrefix": 0,
+        "serviceCode": 0,
+        "personal": 0,
+        "minLocalLength": 0,
+        "maxLocalLength": 8,
+        "emergency": 0,
+        "special": 0
+    };
+
+    if (phoneMetadata["types"]["fixed_line"] && phoneMetadata["types"]["fixed_line"]["possible_lengths"]) {
+        countLength = phoneMetadata["types"]["fixed_line"]["possible_lengths"];
+        if (countLength.length == 1) {
+            fieldLength["maxLocalLength"] = countLength[0];
+        } else {
+            fieldLength["minLocalLength"] = countLength[0];
+            fieldLength["maxLocalLength"] = countLength[countLength.length-1];
+        }
+    }
+
+    numPlanData["fieldLengths"] = fieldLength;
 
     exampleNums[country] = countryData[country]["examples"];
 
