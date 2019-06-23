@@ -2221,8 +2221,8 @@ module.exports = {
             "H": "H",
             "HH": "HH",
             "mm": "mm",
-            "ss": "ss",  
-            "ms": "ms"  
+            "ss": "ss",
+            "ms": "ms"
         };
     },
 
@@ -2268,7 +2268,7 @@ module.exports = {
             "mm": "Minute",
             "ss": "Second"
         };
-        
+
         function isUpper(str) {
             return (str.toUpperCase() === str);
         }
@@ -2282,10 +2282,10 @@ module.exports = {
                 } else {
                     // else if it's not certain scripts, use the abbreviation
                     var initial = name[0];
-                    initial = isUpper(ph) ? initial.toUpperCase() : initial.toLowerCase(); 
-                    formats[ph] = ph.replace(/./g, initial); 
+                    initial = isUpper(ph) ? initial.toUpperCase() : initial.toLowerCase();
+                    formats[ph] = ph.replace(/./g, initial);
                 }
-            } 
+            }
         }
 
         return formats;

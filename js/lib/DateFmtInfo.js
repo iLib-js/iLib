@@ -68,7 +68,7 @@ var DateFmtInfo = function(options) {
 
 DateFmtInfo.prototype = {
     /**
-     * 
+     * @private
      */
     _init: function(options) {
         var locale, sync = true, callback, loadParams;
