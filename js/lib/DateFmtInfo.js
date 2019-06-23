@@ -546,10 +546,14 @@ DateFmtInfo.prototype = {
                         constraint: (ilib.bind(this, function() {
                             var ret = [];
                             var months = this.fmt.cal.getNumMonths(year);
+                            var isLeap = this.fmt.cal.isLeapYear(year);
                             for (i = 1; i <= months; i++) {
                                 var key = component + i;
                                 ret.push({
-                                    label: this.sysres.getStringJS(undefined, key + "-" + this.fmt.calName) || this.sysres.getStringJS(undefined, key),
+                                    label:
+                                        (isLeap ? this.sysres.getStringJS(undefined, key + "-leap" + "-" + this.fmt.calName) : false) ||
+                                        this.sysres.getStringJS(undefined, key + "-" + this.fmt.calName) ||
+                                        this.sysres.getStringJS(undefined, key),
                                     value: i
                                 });
                             }
@@ -569,7 +573,7 @@ DateFmtInfo.prototype = {
                         component: "dayofweek",
                         label: RB.getStringJS("Day of Week"), // i18n: date input form label for the day of the week field
                         value: ilib.bind(this, function(date) {
-                            var d = date.getJSDate();
+                            var d = DateFactory._dateToIlib(date).getJSDate();
                             var key = component.replace(/c/g, 'E') + d.getDay();
                             if (this.fmt.calName !== "gregorian") {
                                 key += '-' + this.fmt.calName;
@@ -676,7 +680,7 @@ DateFmtInfo.prototype = {
 
                 default:
                     return {
-                        label: component
+                        label: component.replace(/'/g, "")
                     };
             }
         }));

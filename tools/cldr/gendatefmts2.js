@@ -256,6 +256,16 @@ list.forEach(function (file) {
     group = aux.getFormatGroup(systemResources, localeComponents);
     group.data = merge(group.data || {}, newFormats);
 
+    // do other calendars for some locales
+    if (language === "he" || language === "ar") {
+        cal = require(path.join(sourceDir, "ca-hebrew.json"));
+
+        newFormats = aux.createSystemResources(cal.main[file].dates.calendars, language);
+        //console.log("data is " + JSON.stringify(newFormats, undefined, 4) + "\n");
+        group = aux.getFormatGroup(systemResources, localeComponents);
+        group.data = merge(group.data || {}, newFormats);
+    }
+
     // date/time duration.
     units = require(path.join(sourceDir, "units.json"));
     newFormats = aux.createDurationResources(units.main[file].units, language, script);

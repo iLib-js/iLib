@@ -803,17 +803,7 @@ DateFmt.prototype = {
             while (i < template.length) {
                 ch = template.charAt(i);
                 start = i;
-                if (ch === "'") {
-                    // console.log("found quoted string");
-                    i++;
-                    // escaped string - push as-is, then dequote later
-                    while (i < template.length && template.charAt(i) !== "'") {
-                        i++;
-                    }
-                    if (i < template.length) {
-                        i++;    // grab the other quote too
-                    }
-                } else if ((ch >= 'a' && ch <= 'z') || (ch >= 'A' && ch <= 'Z')) {
+                if ((ch >= 'a' && ch <= 'z') || (ch >= 'A' && ch <= 'Z')) {
                     letter = template.charAt(i);
                     // console.log("found letters " + letter);
                     while (i < template.length && ch === letter) {
@@ -821,7 +811,15 @@ DateFmt.prototype = {
                     }
                 } else {
                     // console.log("found other");
-                    while (i < template.length && ch !== "'" && (ch < 'a' || ch > 'z') && (ch < 'A' || ch > 'Z')) {
+                    while (i < template.length && (ch < 'a' || ch > 'z') && (ch < 'A' || ch > 'Z')) {
+                        if (ch === "'") {
+                            // console.log("found quoted string");
+                            i++;
+                            // escaped string - push as-is, then dequote later
+                            while (i < template.length && template.charAt(i) !== "'") {
+                                i++;
+                            }
+                        }
                         ch = template.charAt(++i);
                     }
                 }
@@ -1312,7 +1310,10 @@ DateFmt.prototype = {
                 case 'LLL':
                 case 'LLLL':
                     key = templateArr[i] + (date.month || 1);
-                    str += (this.sysres.getStringJS(undefined, key + "-" + this.calName) || this.sysres.getStringJS(undefined, key));
+                    isLeap = date.cal.isLeapYear(date.year);
+                    str += (isLeap ? this.sysres.getStringJS(undefined, key + "-leap" + "-" + this.calName) : false) ||
+                        this.sysres.getStringJS(undefined, key + "-" + this.calName) ||
+                        this.sysres.getStringJS(undefined, key);
                     break;
 
                 case 'E':
@@ -1324,8 +1325,11 @@ DateFmt.prototype = {
                 case 'ccc':
                 case 'cccc':
                     key = templateArr[i] + date.getDayOfWeek();
+                    isLeap = date.cal.isLeapYear(date.year);
                     //console.log("finding " + key + " in the resources");
-                    str += (this.sysres.getStringJS(undefined, key + "-" + this.calName) || this.sysres.getStringJS(undefined, key));
+                    str += (isLeap ? this.sysres.getStringJS(undefined, key + "-leap" + "-" + this.calName) : false) ||
+                        this.sysres.getStringJS(undefined, key + "-" + this.calName) ||
+                        this.sysres.getStringJS(undefined, key);
                     break;
 
                 case 'a':

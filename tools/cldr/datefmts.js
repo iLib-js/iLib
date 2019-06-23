@@ -1588,11 +1588,27 @@ module.exports = {
         return formats;
     },
 
+    ilibMonth: function(calendar, cldrMonth) {
+        if (calendar !== "hebrew") return cldrMonth;
+
+        var m;
+        m = parseInt(cldrMonth);
+        // cldr switched "Adar" and "Adar I" around backwards and numbered the months
+        // incorrectly, so now we have to compensate
+        if (m === 6) {
+            return "12-leap";
+        } else if (m === 7) {
+            return cldrMonth.endsWith("-leap") ? "13-leap" : "12";
+        }
+        m = (m + 6) % 13;
+        return String(m);
+    },
+
     createSystemResources: function (cldrData, language) {
         var formats,
-        cldrCalendar,
-        calendarNameSuffix,
-        prop;
+            cldrCalendar,
+            calendarNameSuffix,
+            prop;
 
         var dayNumbers = {
             "sun": 0,
@@ -1617,38 +1633,41 @@ module.exports = {
             var isAsian = isAsianLang(language);
             if (isAsianLang(language)) {
                 for (prop in part.wide) {
-                    formats["MMMM" + prop + calendarNameSuffix] = part.wide[prop].substring(0, part.wide[prop].length-1);
-                    formats["N" + prop + calendarNameSuffix] =
-                        formats["NN" + prop + calendarNameSuffix] =
-                            formats["MMM" + prop + calendarNameSuffix] =
+                    var month = this.ilibMonth(calendarName, prop);
+                    formats["MMMM" + month + calendarNameSuffix] = part.wide[prop].substring(0, part.wide[prop].length-1);
+                    formats["N" + month + calendarNameSuffix] =
+                        formats["NN" + month + calendarNameSuffix] =
+                            formats["MMM" + month + calendarNameSuffix] =
                                 part.abbreviated[prop].substring(0, part.abbreviated[prop].length-1);
                 }
             } else {
                 for (prop in part.wide) {
-                    formats["MMMM" + prop + calendarNameSuffix] = part.wide[prop];
-                    formats["MMM" + prop + calendarNameSuffix] = part.abbreviated[prop];
-                    formats["NN" + prop + calendarNameSuffix] = part.abbreviated[prop].substring(0,2);
-                    formats["N" + prop + calendarNameSuffix] = part.abbreviated[prop].substring(0,1);
+                    var month = this.ilibMonth(calendarName, prop);
+                    formats["MMMM" + month + calendarNameSuffix] = part.wide[prop];
+                    formats["MMM" + month + calendarNameSuffix] = part.abbreviated[prop];
+                    formats["NN" + month + calendarNameSuffix] = part.abbreviated[prop].substring(0,2);
+                    formats["N" + month + calendarNameSuffix] = part.abbreviated[prop].substring(0,1);
                     /* TODO. Some cldr data provide value as number in narrow format which doesn't meet iLib spec.
                              So I update code to create 'N' format value from abbreviated.
                              but I think it's better to reference abbreviated if narrow values are number.
-                             and some cases are haveing same alphabets which are not good.
+                             and some cases are having same alphabets which are not good.
                      */
                     if (language === "mn") {
-                        formats["NN" + prop + calendarNameSuffix] = part.abbreviated[prop].substring(0,1);
+                        formats["NN" + month + calendarNameSuffix] = part.abbreviated[prop].substring(0,1);
                     } else if (language === "vi") {
-                        formats["NN" + prop + calendarNameSuffix] = part.abbreviated[prop].substring(0,2) + prop;
-                        formats["N" + prop + calendarNameSuffix] = part.abbreviated[prop].substring(0,1) + prop;
+                        formats["NN" + month + calendarNameSuffix] = part.abbreviated[prop].substring(0,2) + prop;
+                        formats["N" + month + calendarNameSuffix] = part.abbreviated[prop].substring(0,1) + prop;
                     }
                 }
             }
             if (usesStandAlone) {
                 part = cldrCalendar.months["stand-alone"];
                 for (prop in part.wide) {
-                    formats["LLLL" + prop + calendarNameSuffix] = part.wide[prop];
-                    formats["LLL" + prop + calendarNameSuffix] = part.abbreviated[prop];
-                    formats["LL" + prop + calendarNameSuffix] = part.abbreviated[prop].substring(0,2);
-                    formats["L" + prop + calendarNameSuffix] = part.narrow[prop];
+                    var month = this.ilibMonth(calendarName, prop);
+                    formats["LLLL" + month + calendarNameSuffix] = part.wide[prop];
+                    formats["LLL" + month + calendarNameSuffix] = part.abbreviated[prop];
+                    formats["LL" + month + calendarNameSuffix] = part.abbreviated[prop].substring(0,2);
+                    formats["L" + month + calendarNameSuffix] = part.narrow[prop];
                 }
             }
 

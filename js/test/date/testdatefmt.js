@@ -763,12 +763,9 @@ module.exports.testdatefmt = {
         var fmt = new DateFmt();
         test.ok(fmt !== null);
         var expected = [
-            "'El'",
-            " ",
+            "'El' ",
             "d",
-            " ",
-            "'de'",
-            " ",
+            " 'de' ",
             "MMMM",
             ", ",
             "yyyy"
