@@ -75,7 +75,7 @@ DateFmtInfo.prototype = {
 
         if (options) {
             locale = options.uiLocale || options.locale;
-            sync = !!options.sync;
+            sync = typeof(options.sync) === "boolean" ? options.sync : true;
             callback = options.onLoad;
             loadParams = options.loadParams;
         }
