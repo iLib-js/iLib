@@ -1,6 +1,17 @@
 Release Notes for Version 14
 ============================
 
+Build 006
+-------
+Published as version 14.3.0
+
+New Features:
+* Now uses webpack4 to package up all of the classes and data
+
+Bug Fixes:
+* Updated to IANA time zone data version 2019a
+
+
 Build 005
 -------
 Published as version 14.2.0

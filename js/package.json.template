@@ -61,14 +61,10 @@
             "url": "git@github.com:iLib-js/iLib.git"
         }
     ],
-    "engines": {
-        "ringojs": ">=0.9",
-        "nodejs": ">= 0.10"
-    },
     "scripts": {
        "test": "ant test"
     },
-  "devDependencies": {
-    "http-server": "^0.9.0"
-  }
+    "devDependencies": {
+      "http-server": "^0.9.0"
+    }
 }
