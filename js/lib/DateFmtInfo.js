@@ -52,7 +52,7 @@ var ISet = require("./ISet.js");
  */
 var DateFmtInfo = function(options) {
     var sync = options && typeof(options.sync) === "boolean" ? options.sync : true;
-    if (!options || sync) {
+    if (sync) {
         this.fmt = new DateFmt(options);
         this._init(options);
     } else {
