@@ -51,7 +51,7 @@ var ISet = require("./ISet.js");
  * instance works
  */
 var DateFmtInfo = function(options) {
-    var sync = typeof(options.sync) === "boolean" ? options.sync : true;
+    var sync = options && typeof(options.sync) === "boolean" ? options.sync : true;
     if (!options || sync) {
         this.fmt = new DateFmt(options);
         this._init(options);
