@@ -193,7 +193,7 @@ module.exports.testdatefmtasync = {
     testDateFmtGetMonthsOfYearThai: function(test) {
         test.expect(2);
         // uses ThaiSolar calendar
-        var fmt = new DateFmt({
+        var fmt = new DateFmtInfo({
             locale: "th-TH",
             sync: false,
             onLoad: function(fmt) {

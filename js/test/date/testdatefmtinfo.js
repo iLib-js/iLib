@@ -970,6 +970,66 @@ module.exports.testdategetformatinfo = {
         test.done();
     },
 
+    testDateFmtInfoGetDateComponentOrderEN: function(test) {
+        test.expect(2);
+
+        var fmt = new DateFmtInfo({locale: "en"});
+        test.ok(fmt !== null);
+
+        test.equal(fmt.getDateComponentOrder(), "mdy");
+        test.done();
+    },
+
+    testDateFmtInfoGetDateComponentOrderENGB: function(test) {
+        test.expect(2);
+
+        var fmt = new DateFmtInfo({locale: "en-GB"});
+        test.ok(fmt !== null);
+
+        test.equal(fmt.getDateComponentOrder(), "dmy");
+        test.done();
+    },
+
+    testDateFmtInfoGetDateComponentOrderENUS: function(test) {
+        test.expect(2);
+
+        var fmt = new DateFmtInfo({locale: "en-US"})
+        test.ok(fmt !== null);
+
+        test.equal(fmt.getDateComponentOrder(), "mdy");
+        test.done();
+    },
+
+    testDateFmtInfoGetDateComponentOrderDE: function(test) {
+        test.expect(2);
+
+        var fmt = new DateFmtInfo({locale: "de-DE"});
+        test.ok(fmt !== null);
+
+        test.equal(fmt.getDateComponentOrder(), "dmy");
+        test.done();
+    },
+
+    testDateFmtInfoGetDateComponentOrderAK: function(test) {
+        test.expect(2);
+
+        var fmt = new DateFmtInfo({locale: "ak-GH"});
+        test.ok(fmt !== null);
+
+        test.equal(fmt.getDateComponentOrder(), "ymd");
+        test.done();
+    },
+
+    testDateFmtInfoGetDateComponentOrderLV: function(test) {
+        test.expect(2);
+
+        var fmt = new DateFmtInfo({locale: "lv-LV"});
+        test.ok(fmt !== null);
+
+        test.equal(fmt.getDateComponentOrder(), "ydm");
+        test.done();
+    },
+
     testDateFmtInfoGetMonthsOfYear1: function(test) {
         test.expect(2);
         var fmt = new DateFmtInfo({locale: "en-US"});

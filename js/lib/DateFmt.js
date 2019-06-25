@@ -579,7 +579,7 @@ DateFmt.weekDayLenMap = {
  *
  * @static
  * @public
- * @deprecated Use DateFmtInfo.getMeridiemsRange() instead
+ * @deprecated Use DateFmtInfo.getMeridiemsRange() non-static method instead
  * @param {Object} options options governing the way this date formatter instance works for getting meridiems range
  * @return {Array.<{name:string,start:string,end:string}>}
  */
