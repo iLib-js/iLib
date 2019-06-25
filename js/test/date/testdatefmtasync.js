@@ -304,7 +304,6 @@ module.exports.testdatefmtasync = {
                         test.done();
                     }
                 });
-
             }
         });
     },
@@ -315,122 +314,57 @@ module.exports.testdatefmtasync = {
         var fmt = new DateFmtInfo({
             locale: "en-US",
             type: "date",
-            length: "short"
-        });
-        test.ok(fmt !== null);
-
-        fmt.getFormatInfo({
+            length: "short",
             sync: false,
-            year: 2019,
-            onLoad: function(info) {
-                test.ok(info);
+            onLoad: function(fmt) {
+                test.ok(fmt !== null);
 
-                test.equal(info.length, 5);
+                fmt.getFormatInfo({
+                    sync: false,
+                    year: 2019,
+                    onLoad: function(info) {
+                        test.ok(info);
 
-                test.equal(info[0].component, "month");
-                test.equal(info[0].label, "Month");
-                test.deepEqual(info[0].constraint, [1, 12]);
+                        test.equal(info.length, 5);
 
-                test.ok(!info[1].component);
-                test.equal(info[1].label, "/");
+                        test.equal(info[0].component, "month");
+                        test.equal(info[0].label, "Month");
+                        test.deepEqual(info[0].constraint, [1, 12]);
 
-                test.equal(info[2].component, "day");
-                test.equal(info[2].label, "Day");
-                test.deepEqual(info[2].constraint, {
-                    "1": [1, 31],
-                    "2": [1, 28],
-                    "3": [1, 31],
-                    "4": [1, 30],
-                    "5": [1, 31],
-                    "6": [1, 30],
-                    "7": [1, 31],
-                    "8": [1, 31],
-                    "9": [1, 30],
-                    "10": [1, 31],
-                    "11": [1, 30],
-                    "12": [1, 31]
+                        test.ok(!info[1].component);
+                        test.equal(info[1].label, "/");
+
+                        test.equal(info[2].component, "day");
+                        test.equal(info[2].label, "Day");
+                        test.deepEqual(info[2].constraint, {
+                            "1": [1, 31],
+                            "2": [1, 28],
+                            "3": [1, 31],
+                            "4": [1, 30],
+                            "5": [1, 31],
+                            "6": [1, 30],
+                            "7": [1, 31],
+                            "8": [1, 31],
+                            "9": [1, 30],
+                            "10": [1, 31],
+                            "11": [1, 30],
+                            "12": [1, 31]
+                        });
+
+                        test.ok(!info[3].component);
+                        test.equal(info[3].label, "/");
+
+                        test.equal(info[4].component, "year");
+                        test.equal(info[4].label, "Year");
+                        test.equal(info[4].constraint, "\\d{2}");
+                        test.done();
+                    }
                 });
-
-                test.ok(!info[3].component);
-                test.equal(info[3].label, "/");
-
-                test.equal(info[4].component, "year");
-                test.equal(info[4].label, "Year");
-                test.equal(info[4].constraint, "\\d{2}");
-                test.done();
             }
         });
-
     },
 
     testDateFmtGetFormatInfoGregorianTranslatedAsync: function(test) {
-        test.expect(16);
-
-        var fmt = new DateFmtInfo({
-            locale: "en-US",
-            type: "date",
-            length: "full",
-            uiLocale: "de-DE"
-        });
-        test.ok(fmt !== null);
-
-        fmt.getFormatInfo({
-            year: 2019,
-            sync: false,
-            onLoad: function(info) {
-                test.ok(info);
-
-                test.equal(info.length, 5);
-
-                test.equal(info[0].component, "month");
-                test.equal(info[0].label, "Monat");
-                test.deepEqual(info[0].constraint, [
-                    {label: "Januar", value: 1},
-                    {label: "Februar", value: 2},
-                    {label: "März", value: 3},
-                    {label: "April", value: 4},
-                    {label: "Mai", value: 5},
-                    {label: "Juni", value: 6},
-                    {label: "Juli", value: 7},
-                    {label: "August", value: 8},
-                    {label: "September", value: 9},
-                    {label: "Oktober", value: 10},
-                    {label: "November", value: 11},
-                    {label: "Dezember", value: 12},
-                ]);
-
-                test.ok(!info[1].component);
-                test.equal(info[1].label, " ");
-
-                test.equal(info[2].component, "day");
-                test.equal(info[2].label, "Tag");
-                test.deepEqual(info[2].constraint, {
-                    "1": [1, 31],
-                    "2": [1, 28],
-                    "3": [1, 31],
-                    "4": [1, 30],
-                    "5": [1, 31],
-                    "6": [1, 30],
-                    "7": [1, 31],
-                    "8": [1, 31],
-                    "9": [1, 30],
-                    "10": [1, 31],
-                    "11": [1, 30],
-                    "12": [1, 31]
-                });
-
-                test.ok(!info[3].component);
-                test.equal(info[3].label, ", ");
-
-                test.equal(info[4].component, "year");
-                test.equal(info[4].label, "Jahr");
-                test.equal(info[4].constraint, "\\d{4}");
-                test.done();
-            }
-        });
-    },
-
-    testDateFmtGetFormatInfoGregorianTranslatedAsyncConstructor: function(test) {
         test.expect(16);
 
         var fmt = new DateFmtInfo({
@@ -441,15 +375,15 @@ module.exports.testdatefmtasync = {
             sync: false,
             onLoad: function(fmt) {
                 test.ok(fmt !== null);
-                
+
                 fmt.getFormatInfo({
                     year: 2019,
                     sync: false,
                     onLoad: function(info) {
                         test.ok(info);
-                        
+
                         test.equal(info.length, 5);
-                        
+
                         test.equal(info[0].component, "month");
                         test.equal(info[0].label, "Monat");
                         test.deepEqual(info[0].constraint, [
@@ -465,11 +399,11 @@ module.exports.testdatefmtasync = {
                             {label: "Oktober", value: 10},
                             {label: "November", value: 11},
                             {label: "Dezember", value: 12},
-                        ]);
+                            ]);
 
                         test.ok(!info[1].component);
                         test.equal(info[1].label, " ");
-                        
+
                         test.equal(info[2].component, "day");
                         test.equal(info[2].label, "Tag");
                         test.deepEqual(info[2].constraint, {
@@ -486,10 +420,10 @@ module.exports.testdatefmtasync = {
                             "11": [1, 30],
                             "12": [1, 31]
                         });
-                        
+
                         test.ok(!info[3].component);
                         test.equal(info[3].label, ", ");
-                        
+
                         test.equal(info[4].component, "year");
                         test.equal(info[4].label, "Jahr");
                         test.equal(info[4].constraint, "\\d{4}");
