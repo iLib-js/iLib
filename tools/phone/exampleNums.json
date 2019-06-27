@@ -16,11 +16,13 @@
         "shared_cost": "700012345",
         "uan": "600212345",
         "fixed_line": "22345678",
-        "mobile": "501234567"
+        "mobile": "501234567",
+        "trunkCode": "0"
     },
     "AF": {
         "fixed_line": "234567890",
-        "mobile": "701234567"
+        "mobile": "701234567",
+        "trunkCode": "0"
     },
     "AG": {
         "premium_rate": "9002123456",
@@ -29,14 +31,16 @@
         "personal_number": "5002345678",
         "pager": "2684061234",
         "fixed_line": "2684601234",
-        "mobile": "2684641234"
+        "mobile": "2684641234",
+        "trunkCode": "1"
     },
     "AI": {
         "premium_rate": "9002123456",
         "toll_free": "8002123456",
         "personal_number": "5002345678",
         "fixed_line": "2644612345",
-        "mobile": "2642351234"
+        "mobile": "2642351234",
+        "trunkCode": "1"
     },
     "AL": {
         "premium_rate": "900123",
@@ -44,7 +48,8 @@
         "shared_cost": "808123",
         "personal_number": "70021234",
         "fixed_line": "22345678",
-        "mobile": "662123456"
+        "mobile": "662123456",
+        "trunkCode": "0"
     },
     "AM": {
         "premium_rate": "90012345",
@@ -52,7 +57,8 @@
         "shared_cost": "80112345",
         "voip": "60271234",
         "fixed_line": "10123456",
-        "mobile": "77123456"
+        "mobile": "77123456",
+        "trunkCode": "0"
     },
     "AO": {
         "fixed_line": "222123456",
@@ -63,14 +69,16 @@
         "toll_free": "8001234567",
         "uan": "8101234567",
         "fixed_line": "1123456789",
-        "mobile": "91123456789"
+        "mobile": "91123456789",
+        "trunkCode": "0"
     },
     "AS": {
         "premium_rate": "9002123456",
         "toll_free": "8002123456",
         "personal_number": "5002345678",
         "fixed_line": "6846221234",
-        "mobile": "6847331234"
+        "mobile": "6847331234",
+        "trunkCode": "1"
     },
     "AT": {
         "premium_rate": "900123456",
@@ -78,7 +86,8 @@
         "shared_cost": "810123456",
         "voip": "780123456",
         "fixed_line": "1234567890",
-        "mobile": "664123456"
+        "mobile": "664123456",
+        "trunkCode": "0"
     },
     "AU": {
         "premium_rate": "1900123456",
@@ -87,7 +96,8 @@
         "voip": "550123456",
         "pager": "1612345",
         "fixed_line": "212345678",
-        "mobile": "412345678"
+        "mobile": "412345678",
+        "trunkCode": "0"
     },
     "AW": {
         "premium_rate": "9001234",
@@ -101,13 +111,15 @@
         "toll_free": "800123456",
         "uan": "10112345",
         "fixed_line": "181234567",
-        "mobile": "412345678"
+        "mobile": "412345678",
+        "trunkCode": "0"
     },
     "AZ": {
         "premium_rate": "900200123",
         "toll_free": "881234567",
         "fixed_line": "123123456",
-        "mobile": "401234567"
+        "mobile": "401234567",
+        "trunkCode": "0"
     },
     "BA": {
         "premium_rate": "90123456",
@@ -115,7 +127,8 @@
         "shared_cost": "82123456",
         "uan": "70341234",
         "fixed_line": "30212345",
-        "mobile": "61123456"
+        "mobile": "61123456",
+        "trunkCode": "0"
     },
     "BB": {
         "premium_rate": "9002123456",
@@ -124,13 +137,15 @@
         "personal_number": "5002345678",
         "uan": "2464301234",
         "fixed_line": "2464123456",
-        "mobile": "2462501234"
+        "mobile": "2462501234",
+        "trunkCode": "1"
     },
     "BD": {
         "toll_free": "8001234567",
         "voip": "9604123456",
         "fixed_line": "27111234",
-        "mobile": "1812345678"
+        "mobile": "1812345678",
+        "trunkCode": "0"
     },
     "BE": {
         "premium_rate": "90012345",
@@ -138,7 +153,8 @@
         "shared_cost": "78791234",
         "uan": "78102345",
         "fixed_line": "12345678",
-        "mobile": "470123456"
+        "mobile": "470123456",
+        "trunkCode": "0"
     },
     "BF": {
         "fixed_line": "20491234",
@@ -149,7 +165,8 @@
         "toll_free": "80012345",
         "personal_number": "70012345",
         "fixed_line": "2123456",
-        "mobile": "48123456"
+        "mobile": "48123456",
+        "trunkCode": "0"
     },
     "BH": {
         "premium_rate": "90123456",
@@ -170,14 +187,16 @@
     },
     "BL": {
         "fixed_line": "590271234",
-        "mobile": "690001234"
+        "mobile": "690001234",
+        "trunkCode": "0"
     },
     "BM": {
         "premium_rate": "9002123456",
         "toll_free": "8002123456",
         "personal_number": "5002345678",
         "fixed_line": "4412345678",
-        "mobile": "4413701234"
+        "mobile": "4413701234",
+        "trunkCode": "1"
     },
     "BN": {
         "fixed_line": "2345678",
@@ -186,7 +205,8 @@
     "BO": {
         "toll_free": "800171234",
         "fixed_line": "22123456",
-        "mobile": "71234567"
+        "mobile": "71234567",
+        "trunkCode": "0"
     },
     "BQ": {
         "fixed_line": "7151234",
@@ -197,7 +217,8 @@
         "toll_free": "800123456",
         "shared_cost": "40041234",
         "fixed_line": "1123456789",
-        "mobile": "11961234567"
+        "mobile": "11961234567",
+        "trunkCode": "0"
     },
     "BS": {
         "premium_rate": "9002123456",
@@ -205,7 +226,8 @@
         "personal_number": "5002345678",
         "uan": "2422250123",
         "fixed_line": "2423456789",
-        "mobile": "2423591234"
+        "mobile": "2423591234",
+        "trunkCode": "1"
     },
     "BT": {
         "fixed_line": "2345678",
@@ -222,7 +244,8 @@
         "toll_free": "8011234567",
         "voip": "249123456",
         "fixed_line": "152450911",
-        "mobile": "294911911"
+        "mobile": "294911911",
+        "trunkCode": "8"
     },
     "BZ": {
         "toll_free": "08001234123",
@@ -235,7 +258,8 @@
         "voip": "6002012345",
         "personal_number": "5002345678",
         "fixed_line": "5062345678",
-        "mobile": "5062345678"
+        "mobile": "5062345678",
+        "trunkCode": "1"
     },
     "CC": {
         "premium_rate": "1900123456",
@@ -243,11 +267,13 @@
         "shared_cost": "1300123456",
         "voip": "550123456",
         "fixed_line": "891621234",
-        "mobile": "412345678"
+        "mobile": "412345678",
+        "trunkCode": "0"
     },
     "CD": {
         "fixed_line": "1234567",
-        "mobile": "991234567"
+        "mobile": "991234567",
+        "trunkCode": "0"
     },
     "CF": {
         "premium_rate": "87761234",
@@ -267,7 +293,8 @@
         "pager": "740123456",
         "uan": "581234567",
         "fixed_line": "212345678",
-        "mobile": "781234567"
+        "mobile": "781234567",
+        "trunkCode": "0"
     },
     "CI": {
         "fixed_line": "21234567",
@@ -294,13 +321,15 @@
         "toll_free": "8001234567",
         "shared_cost": "4001234567",
         "fixed_line": "1012345678",
-        "mobile": "13123456789"
+        "mobile": "13123456789",
+        "trunkCode": "0"
     },
     "CO": {
         "premium_rate": "19001234567",
         "toll_free": "18001234567",
         "fixed_line": "12345678",
-        "mobile": "3211234567"
+        "mobile": "3211234567",
+        "trunkCode": "0"
     },
     "CR": {
         "premium_rate": "9001234567",
@@ -311,7 +340,8 @@
     },
     "CU": {
         "fixed_line": "71234567",
-        "mobile": "51234567"
+        "mobile": "51234567",
+        "trunkCode": "0"
     },
     "CV": {
         "fixed_line": "2211234",
@@ -329,7 +359,8 @@
         "shared_cost": "1300123456",
         "voip": "550123456",
         "fixed_line": "891641234",
-        "mobile": "412345678"
+        "mobile": "412345678",
+        "trunkCode": "0"
     },
     "CY": {
         "premium_rate": "90012345",
@@ -358,7 +389,8 @@
         "pager": "16412345",
         "uan": "18500123456",
         "fixed_line": "30123456",
-        "mobile": "15123456789"
+        "mobile": "15123456789",
+        "trunkCode": "0"
     },
     "DJ": {
         "fixed_line": "21360003",
@@ -375,14 +407,16 @@
         "toll_free": "8002123456",
         "personal_number": "5002345678",
         "fixed_line": "7674201234",
-        "mobile": "7672251234"
+        "mobile": "7672251234",
+        "trunkCode": "1"
     },
     "DO": {
         "premium_rate": "9002123456",
         "toll_free": "8002123456",
         "personal_number": "5002345678",
         "fixed_line": "8092345678",
-        "mobile": "8092345678"
+        "mobile": "8092345678",
+        "trunkCode": "1"
     },
     "DZ": {
         "premium_rate": "808123456",
@@ -390,13 +424,15 @@
         "shared_cost": "801123456",
         "voip": "983123456",
         "fixed_line": "12345678",
-        "mobile": "551234567"
+        "mobile": "551234567",
+        "trunkCode": "0"
     },
     "EC": {
         "toll_free": "18001234567",
         "voip": "28901234",
         "fixed_line": "22123456",
-        "mobile": "991234567"
+        "mobile": "991234567",
+        "trunkCode": "0"
     },
     "EE": {
         "premium_rate": "9001234",
@@ -409,18 +445,21 @@
         "premium_rate": "9001234567",
         "toll_free": "8001234567",
         "fixed_line": "234567890",
-        "mobile": "1001234567"
+        "mobile": "1001234567",
+        "trunkCode": "0"
     },
     "EH": {
         "premium_rate": "891234567",
         "toll_free": "801234567",
         "voip": "592401234",
         "fixed_line": "528812345",
-        "mobile": "650123456"
+        "mobile": "650123456",
+        "trunkCode": "0"
     },
     "ER": {
         "fixed_line": "8370362",
-        "mobile": "7123456"
+        "mobile": "7123456",
+        "trunkCode": "0"
     },
     "ES": {
         "premium_rate": "803123456",
@@ -433,14 +472,16 @@
     },
     "ET": {
         "fixed_line": "111112345",
-        "mobile": "911234567"
+        "mobile": "911234567",
+        "trunkCode": "0"
     },
     "FI": {
         "premium_rate": "600123456",
         "toll_free": "800123456",
         "uan": "10112345",
         "fixed_line": "131234567",
-        "mobile": "412345678"
+        "mobile": "412345678",
+        "trunkCode": "0"
     },
     "FJ": {
         "toll_free": "08001234567",
@@ -469,7 +510,8 @@
         "voip": "912345678",
         "uan": "806123456",
         "fixed_line": "123456789",
-        "mobile": "612345678"
+        "mobile": "612345678",
+        "trunkCode": "0"
     },
     "GA": {
         "fixed_line": "01441234",
@@ -483,24 +525,28 @@
         "pager": "7640123456",
         "uan": "5512345678",
         "fixed_line": "1212345678",
-        "mobile": "7400123456"
+        "mobile": "7400123456",
+        "trunkCode": "0"
     },
     "GD": {
         "premium_rate": "9002123456",
         "toll_free": "8002123456",
         "personal_number": "5002345678",
         "fixed_line": "4732691234",
-        "mobile": "4734031234"
+        "mobile": "4734031234",
+        "trunkCode": "1"
     },
     "GE": {
         "toll_free": "800123456",
         "voip": "706123456",
         "fixed_line": "322123456",
-        "mobile": "555123456"
+        "mobile": "555123456",
+        "trunkCode": "0"
     },
     "GF": {
         "fixed_line": "594101234",
-        "mobile": "694201234"
+        "mobile": "694201234",
+        "trunkCode": "0"
     },
     "GG": {
         "premium_rate": "9012345678",
@@ -510,12 +556,14 @@
         "pager": "7640123456",
         "uan": "5512345678",
         "fixed_line": "1481256789",
-        "mobile": "7781123456"
+        "mobile": "7781123456",
+        "trunkCode": "0"
     },
     "GH": {
         "toll_free": "80012345",
         "fixed_line": "302345678",
-        "mobile": "231234567"
+        "mobile": "231234567",
+        "trunkCode": "0"
     },
     "GI": {
         "fixed_line": "20012345",
@@ -538,7 +586,8 @@
     },
     "GP": {
         "fixed_line": "590201234",
-        "mobile": "690001234"
+        "mobile": "690001234",
+        "trunkCode": "0"
     },
     "GQ": {
         "premium_rate": "900123456",
@@ -565,7 +614,8 @@
         "toll_free": "8002123456",
         "personal_number": "5002345678",
         "fixed_line": "6713001234",
-        "mobile": "6713001234"
+        "mobile": "6713001234",
+        "trunkCode": "1"
     },
     "GW": {
         "voip": "4012345",
@@ -597,7 +647,8 @@
         "personal_number": "74123456",
         "uan": "62123456",
         "fixed_line": "12345678",
-        "mobile": "921234567"
+        "mobile": "921234567",
+        "trunkCode": "0"
     },
     "HT": {
         "toll_free": "80012345",
@@ -611,7 +662,8 @@
         "voip": "211234567",
         "uan": "381234567",
         "fixed_line": "12345678",
-        "mobile": "201234567"
+        "mobile": "201234567",
+        "trunkCode": "06"
     },
     "ID": {
         "premium_rate": "8091234567",
@@ -619,7 +671,8 @@
         "shared_cost": "8041234567",
         "uan": "8071123456",
         "fixed_line": "218350123",
-        "mobile": "812345678"
+        "mobile": "812345678",
+        "trunkCode": "0"
     },
     "IE": {
         "premium_rate": "1520123456",
@@ -629,7 +682,8 @@
         "personal_number": "700123456",
         "uan": "818123456",
         "fixed_line": "2212345",
-        "mobile": "850123456"
+        "mobile": "850123456",
+        "trunkCode": "0"
     },
     "IL": {
         "premium_rate": "1919123456",
@@ -638,7 +692,8 @@
         "voip": "771234567",
         "uan": "1599123456",
         "fixed_line": "21234567",
-        "mobile": "502345678"
+        "mobile": "502345678",
+        "trunkCode": "0"
     },
     "IM": {
         "premium_rate": "9016247890",
@@ -647,7 +702,8 @@
         "personal_number": "7012345678",
         "uan": "5512345678",
         "fixed_line": "1624756789",
-        "mobile": "7924123456"
+        "mobile": "7924123456",
+        "trunkCode": "0"
     },
     "IN": {
         "premium_rate": "1861123456789",
@@ -655,7 +711,8 @@
         "shared_cost": "18603451234",
         "uan": "1409305260",
         "fixed_line": "7410410123",
-        "mobile": "8123456789"
+        "mobile": "8123456789",
+        "trunkCode": "0"
     },
     "IO": {
         "fixed_line": "3709100",
@@ -663,13 +720,15 @@
     },
     "IQ": {
         "fixed_line": "12345678",
-        "mobile": "7912345678"
+        "mobile": "7912345678",
+        "trunkCode": "0"
     },
     "IR": {
         "voip": "9932123456",
         "uan": "9601",
         "fixed_line": "2123456789",
-        "mobile": "9123456789"
+        "mobile": "9123456789",
+        "trunkCode": "0"
     },
     "IS": {
         "premium_rate": "9011234",
@@ -696,14 +755,16 @@
         "pager": "7640123456",
         "uan": "5512345678",
         "fixed_line": "1534456789",
-        "mobile": "7797712345"
+        "mobile": "7797712345",
+        "trunkCode": "0"
     },
     "JM": {
         "premium_rate": "9002123456",
         "toll_free": "8002123456",
         "personal_number": "5002345678",
         "fixed_line": "8765230123",
-        "mobile": "8762101234"
+        "mobile": "8762101234",
+        "trunkCode": "1"
     },
     "JO": {
         "premium_rate": "90012345",
@@ -713,7 +774,8 @@
         "pager": "746612345",
         "uan": "88101234",
         "fixed_line": "62001234",
-        "mobile": "790123456"
+        "mobile": "790123456",
+        "trunkCode": "0"
     },
     "JP": {
         "premium_rate": "990123456",
@@ -723,29 +785,34 @@
         "pager": "2012345678",
         "uan": "570123456",
         "fixed_line": "312345678",
-        "mobile": "9012345678"
+        "mobile": "9012345678",
+        "trunkCode": "0"
     },
     "KE": {
         "premium_rate": "900223456",
         "toll_free": "800223456",
         "fixed_line": "202012345",
-        "mobile": "712123456"
+        "mobile": "712123456",
+        "trunkCode": "0"
     },
     "KG": {
         "toll_free": "800123456",
         "fixed_line": "312123456",
-        "mobile": "700123456"
+        "mobile": "700123456",
+        "trunkCode": "0"
     },
     "KH": {
         "premium_rate": "1900123456",
         "toll_free": "1800123456",
         "fixed_line": "23756789",
-        "mobile": "91234567"
+        "mobile": "91234567",
+        "trunkCode": "0"
     },
     "KI": {
         "voip": "30010000",
         "fixed_line": "31234",
-        "mobile": "72001234"
+        "mobile": "72001234",
+        "trunkCode": "0"
     },
     "KM": {
         "premium_rate": "8001234",
@@ -757,11 +824,13 @@
         "toll_free": "8002123456",
         "personal_number": "5002345678",
         "fixed_line": "8692361234",
-        "mobile": "8697652917"
+        "mobile": "8697652917",
+        "trunkCode": "1"
     },
     "KP": {
         "fixed_line": "21234567",
-        "mobile": "1921234567"
+        "mobile": "1921234567",
+        "trunkCode": "0"
     },
     "KR": {
         "premium_rate": "602345678",
@@ -771,7 +840,8 @@
         "pager": "1523456789",
         "uan": "15441234",
         "fixed_line": "22123456",
-        "mobile": "1000000000"
+        "mobile": "1000000000",
+        "trunkCode": "0"
     },
     "KW": {
         "toll_free": "1801234",
@@ -784,7 +854,8 @@
         "personal_number": "5002345678",
         "pager": "3458491234",
         "fixed_line": "3452221234",
-        "mobile": "3453231234"
+        "mobile": "3453231234",
+        "trunkCode": "1"
     },
     "KZ": {
         "premium_rate": "8091234567",
@@ -792,42 +863,49 @@
         "voip": "7511234567",
         "personal_number": "8081234567",
         "fixed_line": "7123456789",
-        "mobile": "7710009998"
+        "mobile": "7710009998",
+        "trunkCode": "8"
     },
     "LA": {
         "uan": "301234567",
         "fixed_line": "21212862",
-        "mobile": "2023123456"
+        "mobile": "2023123456",
+        "trunkCode": "0"
     },
     "LB": {
         "premium_rate": "90123456",
         "shared_cost": "80123456",
         "fixed_line": "1123456",
-        "mobile": "71123456"
+        "mobile": "71123456",
+        "trunkCode": "0"
     },
     "LC": {
         "premium_rate": "9002123456",
         "toll_free": "8002123456",
         "personal_number": "5002345678",
         "fixed_line": "7584305678",
-        "mobile": "7582845678"
+        "mobile": "7582845678",
+        "trunkCode": "1"
     },
     "LI": {
         "premium_rate": "9002222",
         "toll_free": "8002222",
         "uan": "8702812",
         "fixed_line": "2345678",
-        "mobile": "660234567"
+        "mobile": "660234567",
+        "trunkCode": "0"
     },
     "LK": {
         "uan": "197312345",
         "fixed_line": "112345678",
-        "mobile": "712345678"
+        "mobile": "712345678",
+        "trunkCode": "0"
     },
     "LR": {
         "premium_rate": "332021234",
         "fixed_line": "21234567",
-        "mobile": "770123456"
+        "mobile": "770123456",
+        "trunkCode": "0"
     },
     "LS": {
         "toll_free": "80021234",
@@ -841,7 +919,8 @@
         "personal_number": "70012345",
         "uan": "70712345",
         "fixed_line": "31234567",
-        "mobile": "61234567"
+        "mobile": "61234567",
+        "trunkCode": "8"
     },
     "LU": {
         "premium_rate": "90012345",
@@ -860,19 +939,22 @@
     },
     "LY": {
         "fixed_line": "212345678",
-        "mobile": "912345678"
+        "mobile": "912345678",
+        "trunkCode": "0"
     },
     "MA": {
         "premium_rate": "891234567",
         "toll_free": "801234567",
         "voip": "592401234",
         "fixed_line": "520123456",
-        "mobile": "650123456"
+        "mobile": "650123456",
+        "trunkCode": "0"
     },
     "MC": {
         "toll_free": "90123456",
         "fixed_line": "99123456",
-        "mobile": "612345678"
+        "mobile": "612345678",
+        "trunkCode": "0"
     },
     "MD": {
         "premium_rate": "90012345",
@@ -881,7 +963,8 @@
         "voip": "30123456",
         "uan": "80312345",
         "fixed_line": "22212345",
-        "mobile": "62112345"
+        "mobile": "62112345",
+        "trunkCode": "0"
     },
     "ME": {
         "premium_rate": "94515151",
@@ -889,28 +972,33 @@
         "voip": "78108780",
         "uan": "77273012",
         "fixed_line": "30234567",
-        "mobile": "67622901"
+        "mobile": "67622901",
+        "trunkCode": "0"
     },
     "MF": {
         "fixed_line": "590271234",
-        "mobile": "690001234"
+        "mobile": "690001234",
+        "trunkCode": "0"
     },
     "MG": {
         "voip": "221234567",
         "fixed_line": "202123456",
-        "mobile": "321234567"
+        "mobile": "321234567",
+        "trunkCode": "0"
     },
     "MH": {
         "voip": "6351234",
         "fixed_line": "2471234",
-        "mobile": "2351234"
+        "mobile": "2351234",
+        "trunkCode": "1"
     },
     "MK": {
         "premium_rate": "50012345",
         "toll_free": "80012345",
         "shared_cost": "80123456",
         "fixed_line": "22012345",
-        "mobile": "72345678"
+        "mobile": "72345678",
+        "trunkCode": "0"
     },
     "ML": {
         "toll_free": "80012345",
@@ -921,12 +1009,14 @@
         "toll_free": "8008001234",
         "voip": "13331234",
         "fixed_line": "1234567",
-        "mobile": "92123456"
+        "mobile": "92123456",
+        "trunkCode": "0"
     },
     "MN": {
         "voip": "75153456",
         "fixed_line": "50123456",
-        "mobile": "88123456"
+        "mobile": "88123456",
+        "trunkCode": "0"
     },
     "MO": {
         "fixed_line": "28212345",
@@ -937,11 +1027,13 @@
         "toll_free": "8002123456",
         "personal_number": "5002345678",
         "fixed_line": "6702345678",
-        "mobile": "6702345678"
+        "mobile": "6702345678",
+        "trunkCode": "1"
     },
     "MQ": {
         "fixed_line": "596301234",
-        "mobile": "696201234"
+        "mobile": "696201234",
+        "trunkCode": "0"
     },
     "MR": {
         "toll_free": "80012345",
@@ -953,7 +1045,8 @@
         "toll_free": "8002123456",
         "personal_number": "5002345678",
         "fixed_line": "6644912345",
-        "mobile": "6644923456"
+        "mobile": "6644923456",
+        "trunkCode": "1"
     },
     "MT": {
         "premium_rate": "50037123",
@@ -981,7 +1074,8 @@
     "MW": {
         "voip": "310123456",
         "fixed_line": "1234567",
-        "mobile": "991234567"
+        "mobile": "991234567",
+        "trunkCode": "0"
     },
     "MX": {
         "premium_rate": "9001234567",
@@ -989,14 +1083,16 @@
         "shared_cost": "3001234567",
         "personal_number": "5001234567",
         "fixed_line": "2001234567",
-        "mobile": "12221234567"
+        "mobile": "12221234567",
+        "trunkCode": "01"
     },
     "MY": {
         "premium_rate": "1600123456",
         "toll_free": "1300123456",
         "voip": "1546012345",
         "fixed_line": "323856789",
-        "mobile": "123456789"
+        "mobile": "123456789",
+        "trunkCode": "0"
     },
     "MZ": {
         "toll_free": "800123456",
@@ -1008,7 +1104,8 @@
         "toll_free": "800123456",
         "voip": "88612345",
         "fixed_line": "61221234",
-        "mobile": "811234567"
+        "mobile": "811234567",
+        "trunkCode": "0"
     },
     "NC": {
         "premium_rate": "366711",
@@ -1029,7 +1126,8 @@
         "toll_free": "80017591759",
         "uan": "7001234567",
         "fixed_line": "18040123",
-        "mobile": "8021234567"
+        "mobile": "8021234567",
+        "trunkCode": "0"
     },
     "NI": {
         "toll_free": "18001234",
@@ -1043,7 +1141,8 @@
         "pager": "662345678",
         "uan": "14020",
         "fixed_line": "101234567",
-        "mobile": "612345678"
+        "mobile": "612345678",
+        "trunkCode": "0"
     },
     "NO": {
         "premium_rate": "82012345",
@@ -1057,7 +1156,8 @@
     },
     "NP": {
         "fixed_line": "14567890",
-        "mobile": "9841234567"
+        "mobile": "9841234567",
+        "trunkCode": "0"
     },
     "NR": {
         "fixed_line": "4441234",
@@ -1073,7 +1173,8 @@
         "personal_number": "701234567",
         "pager": "26123456",
         "fixed_line": "32345678",
-        "mobile": "211234567"
+        "mobile": "211234567",
+        "trunkCode": "0"
     },
     "OM": {
         "premium_rate": "90012345",
@@ -1093,7 +1194,8 @@
         "shared_cost": "80112345",
         "personal_number": "80212345",
         "fixed_line": "11234567",
-        "mobile": "912345678"
+        "mobile": "912345678",
+        "trunkCode": "0"
     },
     "PF": {
         "fixed_line": "40412345",
@@ -1108,7 +1210,8 @@
     "PH": {
         "toll_free": "180012345678",
         "fixed_line": "21234567",
-        "mobile": "9051234567"
+        "mobile": "9051234567",
+        "trunkCode": "0"
     },
     "PK": {
         "premium_rate": "90012345",
@@ -1116,7 +1219,8 @@
         "personal_number": "122044444",
         "uan": "21111825888",
         "fixed_line": "2123456789",
-        "mobile": "3012345678"
+        "mobile": "3012345678",
+        "trunkCode": "0"
     },
     "PL": {
         "premium_rate": "701234567",
@@ -1130,20 +1234,23 @@
     },
     "PM": {
         "fixed_line": "430123",
-        "mobile": "551234"
+        "mobile": "551234",
+        "trunkCode": "0"
     },
     "PR": {
         "premium_rate": "9002345678",
         "toll_free": "8002345678",
         "personal_number": "5002345678",
         "fixed_line": "7872345678",
-        "mobile": "7872345678"
+        "mobile": "7872345678",
+        "trunkCode": "1"
     },
     "PS": {
         "toll_free": "1800123456",
         "shared_cost": "1700123456",
         "fixed_line": "22234567",
-        "mobile": "599123456"
+        "mobile": "599123456",
+        "trunkCode": "0"
     },
     "PT": {
         "premium_rate": "760123456",
@@ -1163,7 +1270,8 @@
         "voip": "870012345",
         "uan": "201234567",
         "fixed_line": "212345678",
-        "mobile": "961456789"
+        "mobile": "961456789",
+        "trunkCode": "0"
     },
     "QA": {
         "toll_free": "8001234",
@@ -1176,7 +1284,8 @@
         "toll_free": "801234567",
         "shared_cost": "810123456",
         "fixed_line": "262161234",
-        "mobile": "692123456"
+        "mobile": "692123456",
+        "trunkCode": "0"
     },
     "RO": {
         "premium_rate": "900123456",
@@ -1184,27 +1293,31 @@
         "shared_cost": "801123456",
         "uan": "372123456",
         "fixed_line": "211234567",
-        "mobile": "712034567"
+        "mobile": "712034567",
+        "trunkCode": "0"
     },
     "RS": {
         "premium_rate": "90012345",
         "toll_free": "80012345",
         "uan": "700123456",
         "fixed_line": "10234567",
-        "mobile": "601234567"
+        "mobile": "601234567",
+        "trunkCode": "0"
     },
     "RU": {
         "premium_rate": "8091234567",
         "toll_free": "8001234567",
         "personal_number": "8081234567",
         "fixed_line": "3011234567",
-        "mobile": "9123456789"
+        "mobile": "9123456789",
+        "trunkCode": "8"
     },
     "RW": {
         "premium_rate": "900123456",
         "toll_free": "800123456",
         "fixed_line": "250123456",
-        "mobile": "720123456"
+        "mobile": "720123456",
+        "trunkCode": "0"
     },
     "SA": {
         "premium_rate": "925012345",
@@ -1212,7 +1325,8 @@
         "shared_cost": "920012345",
         "uan": "8110123456",
         "fixed_line": "112345678",
-        "mobile": "512345678"
+        "mobile": "512345678",
+        "trunkCode": "0"
     },
     "SB": {
         "toll_free": "18123",
@@ -1228,7 +1342,8 @@
     },
     "SD": {
         "fixed_line": "153123456",
-        "mobile": "911231234"
+        "mobile": "911231234",
+        "trunkCode": "0"
     },
     "SE": {
         "premium_rate": "9001234567",
@@ -1237,7 +1352,8 @@
         "personal_number": "751234567",
         "pager": "740123456",
         "fixed_line": "8123456",
-        "mobile": "701234567"
+        "mobile": "701234567",
+        "trunkCode": "0"
     },
     "SG": {
         "premium_rate": "19001234567",
@@ -1257,7 +1373,8 @@
         "toll_free": "80123456",
         "voip": "59012345",
         "fixed_line": "12345678",
-        "mobile": "31234567"
+        "mobile": "31234567",
+        "trunkCode": "0"
     },
     "SJ": {
         "premium_rate": "82012345",
@@ -1277,11 +1394,13 @@
         "pager": "9090123",
         "uan": "961234567",
         "fixed_line": "221234567",
-        "mobile": "912123456"
+        "mobile": "912123456",
+        "trunkCode": "0"
     },
     "SL": {
         "fixed_line": "22221234",
-        "mobile": "25123456"
+        "mobile": "25123456",
+        "trunkCode": "0"
     },
     "SM": {
         "premium_rate": "71123456",
@@ -1299,7 +1418,8 @@
     },
     "SO": {
         "fixed_line": "4012345",
-        "mobile": "71123456"
+        "mobile": "71123456",
+        "trunkCode": "0"
     },
     "SR": {
         "voip": "561234",
@@ -1308,7 +1428,8 @@
     },
     "SS": {
         "fixed_line": "181234567",
-        "mobile": "977123456"
+        "mobile": "977123456",
+        "trunkCode": "0"
     },
     "ST": {
         "fixed_line": "2221234",
@@ -1325,11 +1446,13 @@
         "toll_free": "8002123456",
         "personal_number": "5002345678",
         "fixed_line": "7215425678",
-        "mobile": "7215205678"
+        "mobile": "7215205678",
+        "trunkCode": "1"
     },
     "SY": {
         "fixed_line": "112345678",
-        "mobile": "944567890"
+        "mobile": "944567890",
+        "trunkCode": "0"
     },
     "SZ": {
         "premium_rate": "900012345",
@@ -1347,7 +1470,8 @@
         "voip": "6497101234",
         "personal_number": "5002345678",
         "fixed_line": "6497121234",
-        "mobile": "6492311234"
+        "mobile": "6492311234",
+        "trunkCode": "1"
     },
     "TD": {
         "fixed_line": "22501234",
@@ -1362,11 +1486,13 @@
         "toll_free": "1800123456",
         "voip": "601234567",
         "fixed_line": "21234567",
-        "mobile": "812345678"
+        "mobile": "812345678",
+        "trunkCode": "0"
     },
     "TJ": {
         "fixed_line": "372123456",
-        "mobile": "917123456"
+        "mobile": "917123456",
+        "trunkCode": "8"
     },
     "TK": {
         "fixed_line": "3101",
@@ -1381,7 +1507,8 @@
     },
     "TM": {
         "fixed_line": "12345678",
-        "mobile": "66123456"
+        "mobile": "66123456",
+        "trunkCode": "8"
     },
     "TN": {
         "premium_rate": "88123456",
@@ -1402,14 +1529,16 @@
         "pager": "5123456789",
         "uan": "4441444",
         "fixed_line": "2123456789",
-        "mobile": "5012345678"
+        "mobile": "5012345678",
+        "trunkCode": "0"
     },
     "TT": {
         "premium_rate": "9002345678",
         "toll_free": "8002345678",
         "personal_number": "5002345678",
         "fixed_line": "8682211234",
-        "mobile": "8682911234"
+        "mobile": "8682911234",
+        "trunkCode": "1"
     },
     "TV": {
         "fixed_line": "20123",
@@ -1422,7 +1551,8 @@
         "personal_number": "990123456",
         "uan": "500123456",
         "fixed_line": "221234567",
-        "mobile": "912345678"
+        "mobile": "912345678",
+        "trunkCode": "0"
     },
     "TZ": {
         "premium_rate": "900123456",
@@ -1430,20 +1560,23 @@
         "shared_cost": "840123456",
         "voip": "412345678",
         "fixed_line": "222345678",
-        "mobile": "621234567"
+        "mobile": "621234567",
+        "trunkCode": "0"
     },
     "UA": {
         "premium_rate": "900212345",
         "toll_free": "800123456",
         "voip": "891234567",
         "fixed_line": "311234567",
-        "mobile": "501234567"
+        "mobile": "501234567",
+        "trunkCode": "0"
     },
     "UG": {
         "premium_rate": "901123456",
         "toll_free": "800123456",
         "fixed_line": "312345678",
-        "mobile": "712345678"
+        "mobile": "712345678",
+        "trunkCode": "0"
     },
     "US": {
         "premium_rate": "9002345678",
@@ -1451,17 +1584,20 @@
         "personal_number": "5002345678",
         "uan": "7102123456",
         "fixed_line": "2015550123",
-        "mobile": "2015550123"
+        "mobile": "2015550123",
+        "trunkCode": "1"
     },
     "UY": {
         "premium_rate": "9001234",
         "toll_free": "8001234",
         "fixed_line": "21231234",
-        "mobile": "94231234"
+        "mobile": "94231234",
+        "trunkCode": "0"
     },
     "UZ": {
         "fixed_line": "669050123",
-        "mobile": "912345678"
+        "mobile": "912345678",
+        "trunkCode": "8"
     },
     "VA": {
         "premium_rate": "899123456",
@@ -1477,27 +1613,31 @@
         "toll_free": "8002345678",
         "personal_number": "5002345678",
         "fixed_line": "7842661234",
-        "mobile": "7844301234"
+        "mobile": "7844301234",
+        "trunkCode": "1"
     },
     "VE": {
         "premium_rate": "9001234567",
         "toll_free": "8001234567",
         "fixed_line": "2121234567",
-        "mobile": "4121234567"
+        "mobile": "4121234567",
+        "trunkCode": "0"
     },
     "VG": {
         "premium_rate": "9002345678",
         "toll_free": "8002345678",
         "personal_number": "5002345678",
         "fixed_line": "2842291234",
-        "mobile": "2843001234"
+        "mobile": "2843001234",
+        "trunkCode": "1"
     },
     "VI": {
         "premium_rate": "9002345678",
         "toll_free": "8002345678",
         "personal_number": "5002345678",
         "fixed_line": "3406421234",
-        "mobile": "3406421234"
+        "mobile": "3406421234",
+        "trunkCode": "1"
     },
     "VN": {
         "premium_rate": "1900123456",
@@ -1505,7 +1645,8 @@
         "voip": "672012345",
         "uan": "1992000",
         "fixed_line": "2101234567",
-        "mobile": "912345678"
+        "mobile": "912345678",
+        "trunkCode": "0"
     },
     "VU": {
         "voip": "9010123",
@@ -1526,16 +1667,19 @@
         "premium_rate": "90001234",
         "toll_free": "80001234",
         "fixed_line": "28012345",
-        "mobile": "43201234"
+        "mobile": "43201234",
+        "trunkCode": "0"
     },
     "YE": {
         "fixed_line": "1234567",
-        "mobile": "712345678"
+        "mobile": "712345678",
+        "trunkCode": "0"
     },
     "YT": {
         "toll_free": "801234567",
         "fixed_line": "269601234",
-        "mobile": "639012345"
+        "mobile": "639012345",
+        "trunkCode": "0"
     },
     "ZA": {
         "premium_rate": "862345678",
@@ -1544,20 +1688,20 @@
         "voip": "871234567",
         "uan": "861123456",
         "fixed_line": "101234567",
-        "mobile": "711234567"
+        "mobile": "711234567",
+        "trunkCode": "0"
     },
     "ZM": {
         "toll_free": "800123456",
         "fixed_line": "211234567",
-        "mobile": "955123456"
+        "mobile": "955123456",
+        "trunkCode": "0"
     },
     "ZW": {
         "toll_free": "8001234",
         "voip": "8686123456",
         "fixed_line": "1312345",
-        "mobile": "712345678"
-    },
-    "001": {
-        "premium_rate": "123456789"
+        "mobile": "712345678",
+        "trunkCode": "0"
     }
 }

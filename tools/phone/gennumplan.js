@@ -127,7 +127,10 @@ for (country in countryData) {
 
     numPlanData["fieldLengths"] = fieldLength;
 
-    exampleNums[country] = countryData[country]["examples"];
+    exampleNums[country]= phoneMetadata["examples"];
+    if (typeof phoneMetadata["national_prefix"] !== "undefined") {
+        exampleNums[country]["trunkCode"] = phoneMetadata["national_prefix"];
+    }
 
     var file1 = path.join(filename, "numplan.json");
     console.log("Creating " + filename + "/numplan.json")

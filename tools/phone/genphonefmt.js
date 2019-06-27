@@ -35,9 +35,12 @@ var numberTemplate =[];
 var wholeTemplate = {};
 var filename;
 var testNumber, i, fixedlineNumber, mobileNumber;
+var trunkNumber;
 
 for (country in sampleNums) {
+    wholeTemplate = {};
     if (country === "001") break;
+    console.log("\n-----------------------------------------------");
 
     filename = path.join(toDir, 'und', country)
 
@@ -48,23 +51,31 @@ for (country in sampleNums) {
     fixedlineNumber = numbers["fixed_line"];
     mobileNumber = numbers ["mobile"];
 
+    trunkNumber = (numbers["trunkCode"] ? numbers["trunkCode"] : "");
+    console.log(country + "  trunkNumber .... " + trunkNumber);
+
     if (fixedlineNumber && (libphonefmt.parsePhoneNumber(fixedlineNumber, country).isValid())) {
+        fixedlineNumber = trunkNumber + fixedlineNumber;
         asYouType.input(fixedlineNumber);
 
         if (asYouType.getTemplate() !== undefined) {
-            console.log(country, " country has a validNumber:  " , fixedlineNumber, "  ", asYouType.getTemplate());
+            console.log(country, " country has a valid Fixedline Number: " , fixedlineNumber, " ", asYouType.getTemplate());
             if (!fs.existsSync(filename)) {
+               console.log("Create a directory....", filename);
                mkdirs(filename);
             }
-
             asYouType.reset();
             numberTemplate =[];
 
             for (i=1; i< fixedlineNumber.length; i++) {
                 testNumber = fixedlineNumber.substring(0,i);
                 inputNum = asYouType.input(testNumber);
-                console.log("###", asYouType.getTemplate());
-                numberTemplate.push(asYouType.getTemplate());
+                //console.log("###", asYouType.getTemplate());
+                if (i == 1 && (typeof asYouType.getTemplate() === 'undefined')) {
+                    numberTemplate.push("x");
+                } else {
+                    numberTemplate.push(asYouType.getTemplate());
+                }
                 asYouType.reset();
             }
             wholeTemplate["fixedline_exampleNumber"] = fixedlineNumber;
@@ -73,11 +84,13 @@ for (country in sampleNums) {
     }
 
     if (mobileNumber && (libphonefmt.parsePhoneNumber(mobileNumber, country).isValid())) {
+        mobileNumber = trunkNumber + mobileNumber;
         asYouType.input(mobileNumber);
 
         if (asYouType.getTemplate() !== undefined) {
-            console.log(country, " country has a valid Mobile Number:  " , mobileNumber, "  ", asYouType.getTemplate());
+            console.log(country, " country has a valid Mobile Number: " , mobileNumber, " ", asYouType.getTemplate());
             if (!fs.existsSync(filename)) {
+               console.log("Create a directory....", filename);
                mkdirs(filename);
             }
 
@@ -87,16 +100,26 @@ for (country in sampleNums) {
             for (i=1; i< mobileNumber.length; i++) {
                 testNumber = mobileNumber.substring(0,i);
                 inputNum = asYouType.input(testNumber);
-                console.log("###", asYouType.getTemplate());
-                numberTemplate.push(asYouType.getTemplate());
+                //console.log("###", asYouType.getTemplate());
+                if (i == 1 && (typeof asYouType.getTemplate() === 'undefined')) {
+                    numberTemplate.push("x");
+                } else {
+                    numberTemplate.push(asYouType.getTemplate());
+                }
                 asYouType.reset();
             }
             wholeTemplate["mobile_exampleNumber"] = mobileNumber;
             wholeTemplate["mobile_template"] = numberTemplate;
-        }       
+        }
     }
 
-    var writefile = path.join(filename, "phonefmt.json");
-    console.log("Creating " + filename + "/phonefmt.json")
-    fs.writeFileSync(writefile, JSON.stringify(wholeTemplate, true, 4), "utf-8");
+    for (var key in wholeTemplate) {
+        if (wholeTemplate.hasOwnProperty(key)) {
+            writefile = path.join(filename, "phonefmt.json");
+            console.log("Creating " + filename + "/phonefmt.json")
+            fs.writeFileSync(writefile, JSON.stringify(wholeTemplate, true, 4), "utf-8");
+            break;
+        }
+        break;
+    }
  }
