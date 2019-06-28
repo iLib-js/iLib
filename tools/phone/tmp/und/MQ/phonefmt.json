@@ -1,0 +1,26 @@
+{
+    "fixedline_exampleNumber": "0596301234",
+    "fixedline_template": [
+        "x",
+        "xx",
+        "xxx",
+        "xxxx",
+        "xxxx x",
+        "xxxx xx",
+        "xxxx xx x",
+        "xxxx xx xx",
+        "xxxx xx xx x"
+    ],
+    "mobile_exampleNumber": "0696201234",
+    "mobile_template": [
+        "x",
+        "xx",
+        "xxx",
+        "xxxx",
+        "xxxx x",
+        "xxxx xx",
+        "xxxx xx x",
+        "xxxx xx xx",
+        "xxxx xx xx x"
+    ]
+}

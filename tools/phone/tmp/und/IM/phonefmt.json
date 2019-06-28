@@ -1,0 +1,41 @@
+{
+    "fixedline_exampleNumber": "01624756789",
+    "fixedline_template": [
+        "x",
+        "xx",
+        "xxx",
+        "xxxx",
+        "xxxxx",
+        "xxxxx x",
+        "xxxxx xx",
+        "xxxxx xxx",
+        "xxxxx xxxx",
+        "xxxxx xxxxx"
+    ],
+    "mobile_exampleNumber": "07924123456",
+    "mobile_template": [
+        "x",
+        "xx",
+        "xxx",
+        "xxxx",
+        "xxxxx",
+        "xxxxx x",
+        "xxxxx xx",
+        "xxxxx xxx",
+        "xxxxx xxxx",
+        "xxxxx xxxxx"
+    ],
+    "service_exampleNumber": "08081624567",
+    "service_template": [
+        "x",
+        "xx",
+        "xxx",
+        "xxxx",
+        "xxxx x",
+        "xxxx xx",
+        "xxxx xxx",
+        "xxxx xxx x",
+        "xxxx xxx xx",
+        "xxxx xxx xxx"
+    ]
+}

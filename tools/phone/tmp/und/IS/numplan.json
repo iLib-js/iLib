@@ -1,0 +1,20 @@
+{
+    "region": "IS",
+    "countryCode": "354",
+    "iddCode": "00|1(?:0(?:01|[12]0)|100)  // It's a regular expression. It needs to be checked",
+    "skipTrunk": false,
+    "dialingPlan": "closed",
+    "commonFormatChars": " ",
+    "fieldLengths": {
+        "areaCode": 0,
+        "cic": 0,
+        "vsc": 0,
+        "mobilePrefix": 0,
+        "serviceCode": 0,
+        "personal": 0,
+        "minLocalLength": 0,
+        "maxLocalLength": 7,
+        "emergency": 0,
+        "special": 0
+    }
+}

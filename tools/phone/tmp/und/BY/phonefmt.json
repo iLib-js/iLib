@@ -1,0 +1,26 @@
+{
+    "fixedline_exampleNumber": "8152450911",
+    "fixedline_template": [
+        "x",
+        "x x",
+        "x xx",
+        "x xxx",
+        "x xxxx",
+        null,
+        "x xxxx xx",
+        "x xxxx xx-x",
+        "x xxxx xx-xx"
+    ],
+    "mobile_exampleNumber": "8294911911",
+    "mobile_template": [
+        "x",
+        "x x",
+        "x xx",
+        "x xxx",
+        "x xxx x",
+        null,
+        "x xxx xxx",
+        "x xxx xxx-x",
+        "x xxx xxx-xx"
+    ]
+}

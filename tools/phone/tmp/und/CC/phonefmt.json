@@ -1,0 +1,26 @@
+{
+    "fixedline_exampleNumber": "0891621234",
+    "fixedline_template": [
+        "x",
+        "(xx)",
+        "(xx) x",
+        "(xx) xx",
+        "(xx) xxx",
+        "(xx) xxxx",
+        "(xx) xxxx x",
+        "(xx) xxxx xx",
+        "(xx) xxxx xxx"
+    ],
+    "mobile_exampleNumber": "0412345678",
+    "mobile_template": [
+        "x",
+        "xx",
+        "xxx",
+        "xxxx",
+        "xxxx x",
+        "xxxx xx",
+        "xxxx xxx",
+        "xxxx xxx x",
+        "xxxx xxx xx"
+    ]
+}

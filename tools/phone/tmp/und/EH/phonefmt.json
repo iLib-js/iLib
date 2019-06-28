@@ -1,0 +1,38 @@
+{
+    "fixedline_exampleNumber": "0528812345",
+    "fixedline_template": [
+        "x",
+        "xx",
+        "xxx",
+        "xxxx",
+        "xxxxx",
+        "xxxxx-x",
+        "xxxxx-xx",
+        "xxxxx-xxx",
+        "xxxxx-xxxx"
+    ],
+    "mobile_exampleNumber": "0650123456",
+    "mobile_template": [
+        "x",
+        "xx",
+        "xxx",
+        "xxxx",
+        "xxxx-x",
+        "xxxx-xx",
+        "xxxx-xxx",
+        "xxxx-xxxx",
+        "xxxx-xxxxx"
+    ],
+    "service_exampleNumber": "0801234567",
+    "service_template": [
+        "x",
+        "xx",
+        "xxx",
+        "xxx-x",
+        "xxx-xx",
+        "xxx-xxx",
+        "xxx-xxxx",
+        "xxx-xxxxx",
+        "xxx-xxxxxx"
+    ]
+}
