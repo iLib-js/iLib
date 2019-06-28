@@ -39,6 +39,7 @@ var trunkNumber;
 
 for (country in sampleNums) {
     wholeTemplate = {};
+    
     if (country === "001") break;
     console.log("\n-----------------------------------------------");
 
@@ -47,7 +48,6 @@ for (country in sampleNums) {
     asYouType = new libphonefmt.AsYouType(country);
     numbers = sampleNums[country];
     
-    asYouType = new libphonefmt.AsYouType(country);
     fixedlineNumber = numbers["fixed_line"];
     mobileNumber = numbers ["mobile"];
     serviceNumber = numbers ["toll_free"];
