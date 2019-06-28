@@ -34,7 +34,7 @@ var sampleNums = require("./exampleNums.json");
 var numberTemplate =[];
 var wholeTemplate = {};
 var filename;
-var testNumber, i, fixedlineNumber, mobileNumber;
+var testNumber, fixedlineNumber, mobileNumber, serviceNumber, i;
 var trunkNumber;
 
 for (country in sampleNums) {
@@ -50,6 +50,7 @@ for (country in sampleNums) {
     asYouType = new libphonefmt.AsYouType(country);
     fixedlineNumber = numbers["fixed_line"];
     mobileNumber = numbers ["mobile"];
+    serviceNumber = numbers ["toll_free"];
 
     trunkNumber = (numbers["trunkCode"] ? numbers["trunkCode"] : "");
     console.log(country + "  trunkNumber .... " + trunkNumber);
@@ -70,7 +71,7 @@ for (country in sampleNums) {
             for (i=1; i< fixedlineNumber.length; i++) {
                 testNumber = fixedlineNumber.substring(0,i);
                 inputNum = asYouType.input(testNumber);
-                //console.log("###", asYouType.getTemplate());
+                console.log("###", ( typeof asYouType.getTemplate() !== "undefined" ? asYouType.getTemplate(): "x"));
                 if (i == 1 && (typeof asYouType.getTemplate() === 'undefined')) {
                     numberTemplate.push("x");
                 } else {
@@ -100,7 +101,7 @@ for (country in sampleNums) {
             for (i=1; i< mobileNumber.length; i++) {
                 testNumber = mobileNumber.substring(0,i);
                 inputNum = asYouType.input(testNumber);
-                //console.log("###", asYouType.getTemplate());
+                console.log("###", ( typeof asYouType.getTemplate() !== "undefined" ? asYouType.getTemplate(): "x"));
                 if (i == 1 && (typeof asYouType.getTemplate() === 'undefined')) {
                     numberTemplate.push("x");
                 } else {
@@ -110,6 +111,36 @@ for (country in sampleNums) {
             }
             wholeTemplate["mobile_exampleNumber"] = mobileNumber;
             wholeTemplate["mobile_template"] = numberTemplate;
+        }
+    }
+
+    if (serviceNumber && (libphonefmt.parsePhoneNumber(serviceNumber, country).isValid())) {
+        serviceNumber = trunkNumber + serviceNumber;
+        asYouType.input(serviceNumber);
+
+        if (asYouType.getTemplate() !== undefined) {
+            console.log(country, " country has a valid Service Number: " , serviceNumber, " ", asYouType.getTemplate());
+            if (!fs.existsSync(filename)) {
+               console.log("Create a directory....", filename);
+               mkdirs(filename);
+            }
+
+            asYouType.reset();
+            numberTemplate =[];
+
+            for (i=1; i< serviceNumber.length; i++) {
+                testNumber = serviceNumber.substring(0,i);
+                inputNum = asYouType.input(testNumber);
+                console.log("###", ( typeof asYouType.getTemplate() !== "undefined" ? asYouType.getTemplate(): "x"));
+                if (i == 1 && (typeof asYouType.getTemplate() === 'undefined')) {
+                    numberTemplate.push("x");
+                } else {
+                    numberTemplate.push(asYouType.getTemplate());
+                }
+                asYouType.reset();
+            }
+            wholeTemplate["service_exampleNumber"] = serviceNumber;
+            wholeTemplate["service_template"] = numberTemplate;
         }
     }
 
