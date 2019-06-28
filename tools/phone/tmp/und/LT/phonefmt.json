@@ -1,6 +1,6 @@
 {
-    "fixedline_exampleNumber": "831234567",
-    "fixedline_template": [
+    "fixedline_example": "831234567",
+    "fixedline": [
         "x",
         "x-x",
         "x-xx",
@@ -10,8 +10,8 @@
         "(x-xxx) xxx",
         "(x-xxx) xxxx"
     ],
-    "mobile_exampleNumber": "861234567",
-    "mobile_template": [
+    "mobile_example": "861234567",
+    "mobile": [
         "x",
         "x-x",
         "x-xx",
@@ -21,8 +21,8 @@
         "(x-xxx) xxx",
         "(x-xxx) xxxx"
     ],
-    "service_exampleNumber": "880012345",
-    "service_template": [
+    "service_example": "880012345",
+    "service": [
         "x",
         "x x",
         "x xx",

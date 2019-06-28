@@ -1,6 +1,6 @@
 {
-    "fixedline_exampleNumber": "012001234567",
-    "fixedline_template": [
+    "fixedline_example": "012001234567",
+    "fixedline": [
         "x",
         null,
         "xx x",

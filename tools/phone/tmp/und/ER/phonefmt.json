@@ -1,6 +1,6 @@
 {
-    "fixedline_exampleNumber": "08370362",
-    "fixedline_template": [
+    "fixedline_example": "08370362",
+    "fixedline": [
         "x",
         "xx",
         "xx x",
@@ -9,8 +9,8 @@
         "xx xxx x",
         "xx xxx xx"
     ],
-    "mobile_exampleNumber": "07123456",
-    "mobile_template": [
+    "mobile_example": "07123456",
+    "mobile": [
         "x",
         "xx",
         "xx x",

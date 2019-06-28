@@ -1,6 +1,6 @@
 {
-    "fixedline_exampleNumber": "20012345",
-    "fixedline_template": [
+    "fixedline_example": "20012345",
+    "fixedline": [
         "x",
         "xx",
         "xxx",

@@ -1,6 +1,6 @@
 {
-    "fixedline_exampleNumber": "4441234",
-    "fixedline_template": [
+    "fixedline_example": "4441234",
+    "fixedline": [
         "x",
         "xx",
         "xxx",
@@ -8,8 +8,8 @@
         "xxx xx",
         "xxx xxx"
     ],
-    "mobile_exampleNumber": "5551234",
-    "mobile_template": [
+    "mobile_example": "5551234",
+    "mobile": [
         "x",
         "xx",
         "xxx",

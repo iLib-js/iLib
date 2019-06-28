@@ -1,13 +1,13 @@
 {
-    "fixedline_exampleNumber": "21234",
-    "fixedline_template": [
+    "fixedline_example": "21234",
+    "fixedline": [
         "x",
         "xx",
         "xx x",
         "xx xx"
     ],
-    "mobile_exampleNumber": "71234",
-    "mobile_template": [
+    "mobile_example": "71234",
+    "mobile": [
         "x",
         "xx",
         "xx x",

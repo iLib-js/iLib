@@ -1,22 +1,22 @@
 {
-    "fixedline_exampleNumber": "201234",
-    "fixedline_template": [
+    "fixedline_example": "201234",
+    "fixedline": [
         "x",
         "xx",
         "xxx",
         "xxxx",
         "xxxxx"
     ],
-    "mobile_exampleNumber": "211234",
-    "mobile_template": [
+    "mobile_example": "211234",
+    "mobile": [
         "x",
         "xx",
         "xxx",
         "xxxx",
         "xxxxx"
     ],
-    "service_exampleNumber": "802123",
-    "service_template": [
+    "service_example": "802123",
+    "service": [
         "x",
         "xx",
         "xxx",

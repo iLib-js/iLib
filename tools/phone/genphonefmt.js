@@ -39,7 +39,7 @@ var trunkNumber;
 
 for (country in sampleNums) {
     wholeTemplate = {};
-    
+
     if (country === "001") break;
     console.log("\n-----------------------------------------------");
 
@@ -79,8 +79,8 @@ for (country in sampleNums) {
                 }
                 asYouType.reset();
             }
-            wholeTemplate["fixedline_exampleNumber"] = fixedlineNumber;
-            wholeTemplate["fixedline_template"] = numberTemplate;
+            wholeTemplate["fixedline_example"] = fixedlineNumber;
+            wholeTemplate["fixedline"] = numberTemplate;
         }
     }
 
@@ -109,8 +109,8 @@ for (country in sampleNums) {
                 }
                 asYouType.reset();
             }
-            wholeTemplate["mobile_exampleNumber"] = mobileNumber;
-            wholeTemplate["mobile_template"] = numberTemplate;
+            wholeTemplate["mobile_example"] = mobileNumber;
+            wholeTemplate["mobile"] = numberTemplate;
         }
     }
 
@@ -139,8 +139,8 @@ for (country in sampleNums) {
                 }
                 asYouType.reset();
             }
-            wholeTemplate["service_exampleNumber"] = serviceNumber;
-            wholeTemplate["service_template"] = numberTemplate;
+            wholeTemplate["service_example"] = serviceNumber;
+            wholeTemplate["service"] = numberTemplate;
         }
     }
 
@@ -151,6 +151,5 @@ for (country in sampleNums) {
             fs.writeFileSync(writefile, JSON.stringify(wholeTemplate, true, 4), "utf-8");
             break;
         }
-        break;
     }
  }
