@@ -10,6 +10,8 @@ New Features:
 
 Bug Fixes:
 * Updated to IANA time zone data version 2019a
+* Fixed a bug where the DateRngFmt was not heeding the specified
+  time zone when formatting the start and end dates
 
 
 Build 005
