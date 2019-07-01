@@ -840,7 +840,7 @@ module.exports.testdatefmtrange = {
             millisecond: 0,
             timezone: "America/Los_Angeles"
         });
-        test.equal(fmt.format(start, end), "6/21/11 – 6/29/2011");
+        test.equal(fmt.format(start, end), "6/21/11 – 6/29/11");
         test.done();
     },
 };
