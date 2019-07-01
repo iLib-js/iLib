@@ -300,9 +300,20 @@ DateRngFmt.prototype = {
         var start = DateFactory._dateToIlib(startDateLike, thisZoneName, this.locale);
         var end = DateFactory._dateToIlib(endDateLike, thisZoneName, this.locale);
 
-        if (typeof(start) !== 'object' || !start.getCalendar || start.getCalendar() !== this.calName ||
-            typeof(end) !== 'object' || !end.getCalendar || end.getCalendar() !== this.calName) {
-            throw "Wrong calendar type";
+        if (typeof(start) !== 'object' || !start.getCalendar || start.getCalendar() !== this.calName || (start.timezone && start.timezone !== thisZoneName)) {
+            start = DateFactory({
+                type: this.calName,
+                timezone: thisZoneName,
+                julianday: start.getJulianDay()
+            });
+        }
+
+        if (typeof(end) !== 'object' || !end.getCalendar || end.getCalendar() !== this.calName || (end.timezone && end.timezone !== thisZoneName)) {
+            end = DateFactory({
+                type: this.calName,
+                timezone: thisZoneName,
+                julianday: end.getJulianDay()
+            });
         }
 
         startRd = start.getRataDie();
