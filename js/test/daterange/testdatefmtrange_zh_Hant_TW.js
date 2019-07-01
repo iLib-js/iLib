@@ -1,7 +1,7 @@
 /*
  * testdatefmtrange_zh_Hant_TW.js - test the date range formatter object in Chinese/Taiwan
- *
- * Copyright © 2012-2017, 2019, JEDLSoft
+ * 
+ * Copyright © 2012-2017, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -37,9 +37,8 @@ module.exports.testdatefmtrange_zh_Hant_TW = {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "zh-Hant-TW", length: "short"});
         test.ok(fmt !== null);
-
+        
         var start = new GregorianDate({
-            locale: "zh-Hant-TW",
             year: 2011,
             month: 12,
             day: 31,
@@ -49,7 +48,6 @@ module.exports.testdatefmtrange_zh_Hant_TW = {
             millisecond: 0
         });
         var end = new GregorianDate({
-            locale: "zh-Hant-TW",
             year: 2011,
             month: 12,
             day: 31,
@@ -65,9 +63,8 @@ module.exports.testdatefmtrange_zh_Hant_TW = {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "zh-Hant-TW", length: "medium"});
         test.ok(fmt !== null);
-
+        
         var start = new GregorianDate({
-            locale: "zh-Hant-TW",
             year: 2011,
             month: 12,
             day: 31,
@@ -77,7 +74,6 @@ module.exports.testdatefmtrange_zh_Hant_TW = {
             millisecond: 0
         });
         var end = new GregorianDate({
-            locale: "zh-Hant-TW",
             year: 2011,
             month: 12,
             day: 31,
@@ -93,9 +89,8 @@ module.exports.testdatefmtrange_zh_Hant_TW = {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "zh-Hant-TW", length: "long"});
         test.ok(fmt !== null);
-
+        
         var start = new GregorianDate({
-            locale: "zh-Hant-TW",
             year: 2011,
             month: 12,
             day: 31,
@@ -105,7 +100,6 @@ module.exports.testdatefmtrange_zh_Hant_TW = {
             millisecond: 0
         });
         var end = new GregorianDate({
-            locale: "zh-Hant-TW",
             year: 2011,
             month: 12,
             day: 31,
@@ -121,9 +115,8 @@ module.exports.testdatefmtrange_zh_Hant_TW = {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "zh-Hant-TW", length: "full"});
         test.ok(fmt !== null);
-
+        
         var start = new GregorianDate({
-            locale: "zh-Hant-TW",
             year: 2011,
             month: 12,
             day: 31,
@@ -133,7 +126,6 @@ module.exports.testdatefmtrange_zh_Hant_TW = {
             millisecond: 0
         });
         var end = new GregorianDate({
-            locale: "zh-Hant-TW",
             year: 2011,
             month: 12,
             day: 31,
@@ -145,14 +137,13 @@ module.exports.testdatefmtrange_zh_Hant_TW = {
         test.equal(fmt.format(start, end), "2011年12月31日 下午1:45 – 下午2:30");
         test.done();
     },
-
+    
     testDateRngFmtTWRangeNextDayShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "zh-Hant-TW", length: "short"});
         test.ok(fmt !== null);
-
+        
         var start = new GregorianDate({
-            locale: "zh-Hant-TW",
             year: 2011,
             month: 12,
             day: 30,
@@ -162,7 +153,6 @@ module.exports.testdatefmtrange_zh_Hant_TW = {
             millisecond: 0
         });
         var end = new GregorianDate({
-            locale: "zh-Hant-TW",
             year: 2011,
             month: 12,
             day: 31,
@@ -178,9 +168,8 @@ module.exports.testdatefmtrange_zh_Hant_TW = {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "zh-Hant-TW", length: "medium"});
         test.ok(fmt !== null);
-
+        
         var start = new GregorianDate({
-            locale: "zh-Hant-TW",
             year: 2011,
             month: 12,
             day: 30,
@@ -190,7 +179,6 @@ module.exports.testdatefmtrange_zh_Hant_TW = {
             millisecond: 0
         });
         var end = new GregorianDate({
-            locale: "zh-Hant-TW",
             year: 2011,
             month: 12,
             day: 31,
@@ -206,9 +194,8 @@ module.exports.testdatefmtrange_zh_Hant_TW = {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "zh-Hant-TW", length: "long"});
         test.ok(fmt !== null);
-
+        
         var start = new GregorianDate({
-            locale: "zh-Hant-TW",
             year: 2011,
             month: 12,
             day: 30,
@@ -218,7 +205,6 @@ module.exports.testdatefmtrange_zh_Hant_TW = {
             millisecond: 0
         });
         var end = new GregorianDate({
-            locale: "zh-Hant-TW",
             year: 2011,
             month: 12,
             day: 31,
@@ -226,7 +212,7 @@ module.exports.testdatefmtrange_zh_Hant_TW = {
             minute: 30,
             second: 0,
             millisecond: 0
-        });
+        });           
         test.equal(fmt.format(start, end), "2011年12月30日 下午1:45 – 2011年12月31日 下午2:30");
         test.done();
     },
@@ -234,9 +220,8 @@ module.exports.testdatefmtrange_zh_Hant_TW = {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "zh-Hant-TW", length: "full"});
         test.ok(fmt !== null);
-
+        
         var start = new GregorianDate({
-            locale: "zh-Hant-TW",
             year: 2011,
             month: 12,
             day: 30,
@@ -246,7 +231,6 @@ module.exports.testdatefmtrange_zh_Hant_TW = {
             millisecond: 0
         });
         var end = new GregorianDate({
-            locale: "zh-Hant-TW",
             year: 2011,
             month: 12,
             day: 31,
@@ -258,14 +242,13 @@ module.exports.testdatefmtrange_zh_Hant_TW = {
         test.equal(fmt.format(start, end), "2011年12月30日 下午1:45 – 2011年12月31日 下午2:30");
         test.done();
     },
-
+    
     testDateRngFmtTWRangeMultiDayShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "zh-Hant-TW", length: "short"});
         test.ok(fmt !== null);
-
+        
         var start = new GregorianDate({
-            locale: "zh-Hant-TW",
             year: 2011,
             month: 12,
             day: 20,
@@ -275,7 +258,6 @@ module.exports.testdatefmtrange_zh_Hant_TW = {
             millisecond: 0
         });
         var end = new GregorianDate({
-            locale: "zh-Hant-TW",
             year: 2011,
             month: 12,
             day: 31,
@@ -291,9 +273,8 @@ module.exports.testdatefmtrange_zh_Hant_TW = {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "zh-Hant-TW", length: "medium"});
         test.ok(fmt !== null);
-
+        
         var start = new GregorianDate({
-            locale: "zh-Hant-TW",
             year: 2011,
             month: 12,
             day: 20,
@@ -303,7 +284,6 @@ module.exports.testdatefmtrange_zh_Hant_TW = {
             millisecond: 0
         });
         var end = new GregorianDate({
-            locale: "zh-Hant-TW",
             year: 2011,
             month: 12,
             day: 31,
@@ -319,9 +299,8 @@ module.exports.testdatefmtrange_zh_Hant_TW = {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "zh-Hant-TW", length: "long"});
         test.ok(fmt !== null);
-
+        
         var start = new GregorianDate({
-            locale: "zh-Hant-TW",
             year: 2011,
             month: 12,
             day: 20,
@@ -331,7 +310,6 @@ module.exports.testdatefmtrange_zh_Hant_TW = {
             millisecond: 0
         });
         var end = new GregorianDate({
-            locale: "zh-Hant-TW",
             year: 2011,
             month: 12,
             day: 31,
@@ -347,9 +325,8 @@ module.exports.testdatefmtrange_zh_Hant_TW = {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "zh-Hant-TW", length: "full"});
         test.ok(fmt !== null);
-
+        
         var start = new GregorianDate({
-            locale: "zh-Hant-TW",
             year: 2011,
             month: 12,
             day: 20,
@@ -359,7 +336,6 @@ module.exports.testdatefmtrange_zh_Hant_TW = {
             millisecond: 0
         });
         var end = new GregorianDate({
-            locale: "zh-Hant-TW",
             year: 2011,
             month: 12,
             day: 31,
@@ -371,14 +347,13 @@ module.exports.testdatefmtrange_zh_Hant_TW = {
         test.equal(fmt.format(start, end), "2011年12月20日 – 31日");
         test.done();
     },
-
+    
     testDateRngFmtTWRangeNextMonthShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "zh-Hant-TW", length: "short"});
         test.ok(fmt !== null);
-
+        
         var start = new GregorianDate({
-            locale: "zh-Hant-TW",
             year: 2011,
             month: 11,
             day: 20,
@@ -388,7 +363,6 @@ module.exports.testdatefmtrange_zh_Hant_TW = {
             millisecond: 0
         });
         var end = new GregorianDate({
-            locale: "zh-Hant-TW",
             year: 2011,
             month: 12,
             day: 31,
@@ -404,9 +378,8 @@ module.exports.testdatefmtrange_zh_Hant_TW = {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "zh-Hant-TW", length: "medium"});
         test.ok(fmt !== null);
-
+        
         var start = new GregorianDate({
-            locale: "zh-Hant-TW",
             year: 2011,
             month: 11,
             day: 20,
@@ -416,7 +389,6 @@ module.exports.testdatefmtrange_zh_Hant_TW = {
             millisecond: 0
         });
         var end = new GregorianDate({
-            locale: "zh-Hant-TW",
             year: 2011,
             month: 12,
             day: 31,
@@ -432,9 +404,8 @@ module.exports.testdatefmtrange_zh_Hant_TW = {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "zh-Hant-TW", length: "long"});
         test.ok(fmt !== null);
-
+        
         var start = new GregorianDate({
-            locale: "zh-Hant-TW",
             year: 2011,
             month: 11,
             day: 20,
@@ -444,7 +415,6 @@ module.exports.testdatefmtrange_zh_Hant_TW = {
             millisecond: 0
         });
         var end = new GregorianDate({
-            locale: "zh-Hant-TW",
             year: 2011,
             month: 12,
             day: 31,
@@ -460,9 +430,8 @@ module.exports.testdatefmtrange_zh_Hant_TW = {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "zh-Hant-TW", length: "full"});
         test.ok(fmt !== null);
-
+        
         var start = new GregorianDate({
-            locale: "zh-Hant-TW",
             year: 2011,
             month: 11,
             day: 20,
@@ -472,7 +441,6 @@ module.exports.testdatefmtrange_zh_Hant_TW = {
             millisecond: 0
         });
         var end = new GregorianDate({
-            locale: "zh-Hant-TW",
             year: 2011,
             month: 12,
             day: 31,
@@ -484,14 +452,13 @@ module.exports.testdatefmtrange_zh_Hant_TW = {
         test.equal(fmt.format(start, end), "2011年11月20日 – 12月31日");
         test.done();
     },
-
+    
     testDateRngFmtTWRangeNextYearShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "zh-Hant-TW", length: "short"});
         test.ok(fmt !== null);
-
+        
         var start = new GregorianDate({
-            locale: "zh-Hant-TW",
             year: 2011,
             month: 11,
             day: 20,
@@ -501,7 +468,6 @@ module.exports.testdatefmtrange_zh_Hant_TW = {
             millisecond: 0
         });
         var end = new GregorianDate({
-            locale: "zh-Hant-TW",
             year: 2012,
             month: 1,
             day: 31,
@@ -517,9 +483,8 @@ module.exports.testdatefmtrange_zh_Hant_TW = {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "zh-Hant-TW", length: "medium"});
         test.ok(fmt !== null);
-
+        
         var start = new GregorianDate({
-            locale: "zh-Hant-TW",
             year: 2011,
             month: 11,
             day: 20,
@@ -529,7 +494,6 @@ module.exports.testdatefmtrange_zh_Hant_TW = {
             millisecond: 0
         });
         var end = new GregorianDate({
-            locale: "zh-Hant-TW",
             year: 2012,
             month: 1,
             day: 31,
@@ -545,9 +509,8 @@ module.exports.testdatefmtrange_zh_Hant_TW = {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "zh-Hant-TW", length: "long"});
         test.ok(fmt !== null);
-
+        
         var start = new GregorianDate({
-            locale: "zh-Hant-TW",
             year: 2011,
             month: 11,
             day: 20,
@@ -557,7 +520,6 @@ module.exports.testdatefmtrange_zh_Hant_TW = {
             millisecond: 0
         });
         var end = new GregorianDate({
-            locale: "zh-Hant-TW",
             year: 2012,
             month: 1,
             day: 31,
@@ -573,9 +535,8 @@ module.exports.testdatefmtrange_zh_Hant_TW = {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "zh-Hant-TW", length: "full"});
         test.ok(fmt !== null);
-
+        
         var start = new GregorianDate({
-            locale: "zh-Hant-TW",
             year: 2011,
             month: 11,
             day: 20,
@@ -585,7 +546,6 @@ module.exports.testdatefmtrange_zh_Hant_TW = {
             millisecond: 0
         });
         var end = new GregorianDate({
-            locale: "zh-Hant-TW",
             year: 2012,
             month: 1,
             day: 31,
@@ -597,14 +557,13 @@ module.exports.testdatefmtrange_zh_Hant_TW = {
         test.equal(fmt.format(start, end), "2011年11月20日 – 2012年1月31日");
         test.done();
     },
-
+    
     testDateRngFmtTWRangeMultiYearShort: function(test) {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "zh-Hant-TW", length: "short"});
         test.ok(fmt !== null);
-
+        
         var start = new GregorianDate({
-            locale: "zh-Hant-TW",
             year: 2011,
             month: 11,
             day: 20,
@@ -614,7 +573,6 @@ module.exports.testdatefmtrange_zh_Hant_TW = {
             millisecond: 0
         });
         var end = new GregorianDate({
-            locale: "zh-Hant-TW",
             year: 2014,
             month: 1,
             day: 31,
@@ -630,9 +588,8 @@ module.exports.testdatefmtrange_zh_Hant_TW = {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "zh-Hant-TW", length: "medium"});
         test.ok(fmt !== null);
-
+        
         var start = new GregorianDate({
-            locale: "zh-Hant-TW",
             year: 2011,
             month: 11,
             day: 20,
@@ -642,7 +599,6 @@ module.exports.testdatefmtrange_zh_Hant_TW = {
             millisecond: 0
         });
         var end = new GregorianDate({
-            locale: "zh-Hant-TW",
             year: 2014,
             month: 1,
             day: 31,
@@ -658,9 +614,8 @@ module.exports.testdatefmtrange_zh_Hant_TW = {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "zh-Hant-TW", length: "long"});
         test.ok(fmt !== null);
-
+        
         var start = new GregorianDate({
-            locale: "zh-Hant-TW",
             year: 2011,
             month: 11,
             day: 20,
@@ -670,7 +625,6 @@ module.exports.testdatefmtrange_zh_Hant_TW = {
             millisecond: 0
         });
         var end = new GregorianDate({
-            locale: "zh-Hant-TW",
             year: 2014,
             month: 1,
             day: 31,
@@ -686,9 +640,8 @@ module.exports.testdatefmtrange_zh_Hant_TW = {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "zh-Hant-TW", length: "full"});
         test.ok(fmt !== null);
-
+        
         var start = new GregorianDate({
-            locale: "zh-Hant-TW",
             year: 2011,
             month: 11,
             day: 20,
@@ -698,7 +651,6 @@ module.exports.testdatefmtrange_zh_Hant_TW = {
             millisecond: 0
         });
         var end = new GregorianDate({
-            locale: "zh-Hant-TW",
             year: 2014,
             month: 1,
             day: 31,
@@ -714,9 +666,8 @@ module.exports.testdatefmtrange_zh_Hant_TW = {
         test.expect(2);
         var fmt = new DateRngFmt({locale: "zh-Hant-TW", length: "full"});
         test.ok(fmt !== null);
-
+        
         var start = new GregorianDate({
-            locale: "zh-Hant-TW",
             year: 2011,
             month: 11,
             day: 20,
@@ -726,7 +677,6 @@ module.exports.testdatefmtrange_zh_Hant_TW = {
             millisecond: 0
         });
         var end = new GregorianDate({
-            locale: "zh-Hant-TW",
             year: 2064,
             month: 1,
             day: 31,
@@ -738,4 +688,5 @@ module.exports.testdatefmtrange_zh_Hant_TW = {
         test.equal(fmt.format(start, end), "2011年 – 2064年");
         test.done();
     }
+    
 };

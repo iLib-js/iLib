@@ -1,7 +1,7 @@
 /*
  * testdatefmtrange_uz_Cyrl_UZ.js - test the date range formatter object Uzbek/Uzbekistan for Cyrillic script
  * 
- * Copyright © 2012-2017, 2019, JEDLSoft
+ * Copyright © 2012-2017, JEDLSoft
  *
  * Licensed unuzr the Apache License, Version 2.0 (the "License");
  * you may not use tens file except in compliance with the License.
@@ -58,7 +58,6 @@ module.exports.testdatefmtrange_uz_Cyrl_UZ = {
         test.ok(fmt !== null);
         
         var start = new GregorianDate({
-            locale: "uz-Cyrl-UZ",
             year: 2011,
             month: 12,
             day: 31,
@@ -68,7 +67,6 @@ module.exports.testdatefmtrange_uz_Cyrl_UZ = {
             millisecond: 0
         });
         var end = new GregorianDate({
-            locale: "uz-Cyrl-UZ",
             year: 2011,
             month: 12,
             day: 31,
@@ -86,7 +84,6 @@ module.exports.testdatefmtrange_uz_Cyrl_UZ = {
         test.ok(fmt !== null);
         
         var start = new GregorianDate({
-            locale: "uz-Cyrl-UZ",
             year: 2011,
             month: 12,
             day: 31,
@@ -96,7 +93,6 @@ module.exports.testdatefmtrange_uz_Cyrl_UZ = {
             millisecond: 0
         });
         var end = new GregorianDate({
-            locale: "uz-Cyrl-UZ",
             year: 2011,
             month: 12,
             day: 31,
@@ -114,7 +110,6 @@ module.exports.testdatefmtrange_uz_Cyrl_UZ = {
         test.ok(fmt !== null);
         
         var start = new GregorianDate({
-            locale: "uz-Cyrl-UZ",
             year: 2011,
             month: 12,
             day: 31,
@@ -124,7 +119,6 @@ module.exports.testdatefmtrange_uz_Cyrl_UZ = {
             millisecond: 0
         });
         var end = new GregorianDate({
-            locale: "uz-Cyrl-UZ",
             year: 2011,
             month: 12,
             day: 31,
@@ -142,7 +136,6 @@ module.exports.testdatefmtrange_uz_Cyrl_UZ = {
         test.ok(fmt !== null);
         
         var start = new GregorianDate({
-            locale: "uz-Cyrl-UZ",
             year: 2011,
             month: 12,
             day: 31,
@@ -152,7 +145,6 @@ module.exports.testdatefmtrange_uz_Cyrl_UZ = {
             millisecond: 0
         });
         var end = new GregorianDate({
-            locale: "uz-Cyrl-UZ",
             year: 2011,
             month: 12,
             day: 31,
@@ -171,7 +163,6 @@ module.exports.testdatefmtrange_uz_Cyrl_UZ = {
         test.ok(fmt !== null);
         
         var start = new GregorianDate({
-            locale: "uz-Cyrl-UZ",
             year: 2011,
             month: 12,
             day: 30,
@@ -181,7 +172,6 @@ module.exports.testdatefmtrange_uz_Cyrl_UZ = {
             millisecond: 0
         });
         var end = new GregorianDate({
-            locale: "uz-Cyrl-UZ",
             year: 2011,
             month: 12,
             day: 31,
@@ -199,7 +189,6 @@ module.exports.testdatefmtrange_uz_Cyrl_UZ = {
         test.ok(fmt !== null);
         
         var start = new GregorianDate({
-            locale: "uz-Cyrl-UZ",
             year: 2011,
             month: 12,
             day: 30,
@@ -209,7 +198,6 @@ module.exports.testdatefmtrange_uz_Cyrl_UZ = {
             millisecond: 0
         });
         var end = new GregorianDate({
-            locale: "uz-Cyrl-UZ",
             year: 2011,
             month: 12,
             day: 31,
@@ -227,7 +215,6 @@ module.exports.testdatefmtrange_uz_Cyrl_UZ = {
         test.ok(fmt !== null);
         
         var start = new GregorianDate({
-            locale: "uz-Cyrl-UZ",
             year: 2011,
             month: 12,
             day: 30,
@@ -237,7 +224,6 @@ module.exports.testdatefmtrange_uz_Cyrl_UZ = {
             millisecond: 0
         });
         var end = new GregorianDate({
-            locale: "uz-Cyrl-UZ",
             year: 2011,
             month: 12,
             day: 31,
@@ -255,7 +241,6 @@ module.exports.testdatefmtrange_uz_Cyrl_UZ = {
         test.ok(fmt !== null);
         
         var start = new GregorianDate({
-            locale: "uz-Cyrl-UZ",
             year: 2011,
             month: 12,
             day: 30,
@@ -265,7 +250,6 @@ module.exports.testdatefmtrange_uz_Cyrl_UZ = {
             millisecond: 0
         });
         var end = new GregorianDate({
-            locale: "uz-Cyrl-UZ",
             year: 2011,
             month: 12,
             day: 31,
@@ -284,7 +268,6 @@ module.exports.testdatefmtrange_uz_Cyrl_UZ = {
         test.ok(fmt !== null);
         
         var start = new GregorianDate({
-            locale: "uz-Cyrl-UZ",
             year: 2011,
             month: 12,
             day: 20,
@@ -294,7 +277,6 @@ module.exports.testdatefmtrange_uz_Cyrl_UZ = {
             millisecond: 0
         });
         var end = new GregorianDate({
-            locale: "uz-Cyrl-UZ",
             year: 2011,
             month: 12,
             day: 31,
@@ -312,7 +294,6 @@ module.exports.testdatefmtrange_uz_Cyrl_UZ = {
         test.ok(fmt !== null);
         
         var start = new GregorianDate({
-            locale: "uz-Cyrl-UZ",
             year: 2011,
             month: 12,
             day: 20,
@@ -322,7 +303,6 @@ module.exports.testdatefmtrange_uz_Cyrl_UZ = {
             millisecond: 0
         });
         var end = new GregorianDate({
-            locale: "uz-Cyrl-UZ",
             year: 2011,
             month: 12,
             day: 31,
@@ -340,7 +320,6 @@ module.exports.testdatefmtrange_uz_Cyrl_UZ = {
         test.ok(fmt !== null);
         
         var start = new GregorianDate({
-            locale: "uz-Cyrl-UZ",
             year: 2011,
             month: 12,
             day: 20,
@@ -350,7 +329,6 @@ module.exports.testdatefmtrange_uz_Cyrl_UZ = {
             millisecond: 0
         });
         var end = new GregorianDate({
-            locale: "uz-Cyrl-UZ",
             year: 2011,
             month: 12,
             day: 31,
@@ -368,7 +346,6 @@ module.exports.testdatefmtrange_uz_Cyrl_UZ = {
         test.ok(fmt !== null);
         
         var start = new GregorianDate({
-            locale: "uz-Cyrl-UZ",
             year: 2011,
             month: 12,
             day: 20,
@@ -378,7 +355,6 @@ module.exports.testdatefmtrange_uz_Cyrl_UZ = {
             millisecond: 0
         });
         var end = new GregorianDate({
-            locale: "uz-Cyrl-UZ",
             year: 2011,
             month: 12,
             day: 31,
@@ -397,7 +373,6 @@ module.exports.testdatefmtrange_uz_Cyrl_UZ = {
         test.ok(fmt !== null);
         
         var start = new GregorianDate({
-            locale: "uz-Cyrl-UZ",
             year: 2011,
             month: 11,
             day: 20,
@@ -407,7 +382,6 @@ module.exports.testdatefmtrange_uz_Cyrl_UZ = {
             millisecond: 0
         });
         var end = new GregorianDate({
-            locale: "uz-Cyrl-UZ",
             year: 2011,
             month: 12,
             day: 31,
@@ -425,7 +399,6 @@ module.exports.testdatefmtrange_uz_Cyrl_UZ = {
         test.ok(fmt !== null);
         
         var start = new GregorianDate({
-            locale: "uz-Cyrl-UZ",
             year: 2011,
             month: 11,
             day: 20,
@@ -435,7 +408,6 @@ module.exports.testdatefmtrange_uz_Cyrl_UZ = {
             millisecond: 0
         });
         var end = new GregorianDate({
-            locale: "uz-Cyrl-UZ",
             year: 2011,
             month: 12,
             day: 31,
@@ -453,7 +425,6 @@ module.exports.testdatefmtrange_uz_Cyrl_UZ = {
         test.ok(fmt !== null);
         
         var start = new GregorianDate({
-            locale: "uz-Cyrl-UZ",
             year: 2011,
             month: 11,
             day: 20,
@@ -463,7 +434,6 @@ module.exports.testdatefmtrange_uz_Cyrl_UZ = {
             millisecond: 0
         });
         var end = new GregorianDate({
-            locale: "uz-Cyrl-UZ",
             year: 2011,
             month: 12,
             day: 31,
@@ -481,7 +451,6 @@ module.exports.testdatefmtrange_uz_Cyrl_UZ = {
         test.ok(fmt !== null);
         
         var start = new GregorianDate({
-            locale: "uz-Cyrl-UZ",
             year: 2011,
             month: 11,
             day: 20,
@@ -491,7 +460,6 @@ module.exports.testdatefmtrange_uz_Cyrl_UZ = {
             millisecond: 0
         });
         var end = new GregorianDate({
-            locale: "uz-Cyrl-UZ",
             year: 2011,
             month: 12,
             day: 31,
@@ -510,7 +478,6 @@ module.exports.testdatefmtrange_uz_Cyrl_UZ = {
         test.ok(fmt !== null);
         
         var start = new GregorianDate({
-            locale: "uz-Cyrl-UZ",
             year: 2011,
             month: 11,
             day: 20,
@@ -520,7 +487,6 @@ module.exports.testdatefmtrange_uz_Cyrl_UZ = {
             millisecond: 0
         });
         var end = new GregorianDate({
-            locale: "uz-Cyrl-UZ",
             year: 2012,
             month: 1,
             day: 31,
@@ -538,7 +504,6 @@ module.exports.testdatefmtrange_uz_Cyrl_UZ = {
         test.ok(fmt !== null);
         
         var start = new GregorianDate({
-            locale: "uz-Cyrl-UZ",
             year: 2011,
             month: 11,
             day: 20,
@@ -548,7 +513,6 @@ module.exports.testdatefmtrange_uz_Cyrl_UZ = {
             millisecond: 0
         });
         var end = new GregorianDate({
-            locale: "uz-Cyrl-UZ",
             year: 2012,
             month: 1,
             day: 31,
@@ -566,7 +530,6 @@ module.exports.testdatefmtrange_uz_Cyrl_UZ = {
         test.ok(fmt !== null);
         
         var start = new GregorianDate({
-            locale: "uz-Cyrl-UZ",
             year: 2011,
             month: 11,
             day: 20,
@@ -576,7 +539,6 @@ module.exports.testdatefmtrange_uz_Cyrl_UZ = {
             millisecond: 0
         });
         var end = new GregorianDate({
-            locale: "uz-Cyrl-UZ",
             year: 2012,
             month: 1,
             day: 31,
@@ -594,7 +556,6 @@ module.exports.testdatefmtrange_uz_Cyrl_UZ = {
         test.ok(fmt !== null);
         
         var start = new GregorianDate({
-            locale: "uz-Cyrl-UZ",
             year: 2011,
             month: 11,
             day: 20,
@@ -604,7 +565,6 @@ module.exports.testdatefmtrange_uz_Cyrl_UZ = {
             millisecond: 0
         });
         var end = new GregorianDate({
-            locale: "uz-Cyrl-UZ",
             year: 2012,
             month: 1,
             day: 31,
@@ -623,7 +583,6 @@ module.exports.testdatefmtrange_uz_Cyrl_UZ = {
         test.ok(fmt !== null);
         
         var start = new GregorianDate({
-            locale: "uz-Cyrl-UZ",
             year: 2011,
             month: 11,
             day: 20,
@@ -633,7 +592,6 @@ module.exports.testdatefmtrange_uz_Cyrl_UZ = {
             millisecond: 0
         });
         var end = new GregorianDate({
-            locale: "uz-Cyrl-UZ",
             year: 2014,
             month: 1,
             day: 31,
@@ -651,7 +609,6 @@ module.exports.testdatefmtrange_uz_Cyrl_UZ = {
         test.ok(fmt !== null);
         
         var start = new GregorianDate({
-            locale: "uz-Cyrl-UZ",
             year: 2011,
             month: 11,
             day: 20,
@@ -661,7 +618,6 @@ module.exports.testdatefmtrange_uz_Cyrl_UZ = {
             millisecond: 0
         });
         var end = new GregorianDate({
-            locale: "uz-Cyrl-UZ",
             year: 2014,
             month: 1,
             day: 31,
@@ -679,7 +635,6 @@ module.exports.testdatefmtrange_uz_Cyrl_UZ = {
         test.ok(fmt !== null);
         
         var start = new GregorianDate({
-            locale: "uz-Cyrl-UZ",
             year: 2011,
             month: 11,
             day: 20,
@@ -689,7 +644,6 @@ module.exports.testdatefmtrange_uz_Cyrl_UZ = {
             millisecond: 0
         });
         var end = new GregorianDate({
-            locale: "uz-Cyrl-UZ",
             year: 2014,
             month: 1,
             day: 31,
@@ -707,7 +661,6 @@ module.exports.testdatefmtrange_uz_Cyrl_UZ = {
         test.ok(fmt !== null);
         
         var start = new GregorianDate({
-            locale: "uz-Cyrl-UZ",
             year: 2011,
             month: 11,
             day: 20,
@@ -717,7 +670,6 @@ module.exports.testdatefmtrange_uz_Cyrl_UZ = {
             millisecond: 0
         });
         var end = new GregorianDate({
-            locale: "uz-Cyrl-UZ",
             year: 2014,
             month: 1,
             day: 31,
@@ -735,7 +687,6 @@ module.exports.testdatefmtrange_uz_Cyrl_UZ = {
         test.ok(fmt !== null);
         
         var start = new GregorianDate({
-            locale: "uz-Cyrl-UZ",
             year: 2011,
             month: 11,
             day: 20,
@@ -745,7 +696,6 @@ module.exports.testdatefmtrange_uz_Cyrl_UZ = {
             millisecond: 0
         });
         var end = new GregorianDate({
-            locale: "uz-Cyrl-UZ",
             year: 2064,
             month: 1,
             day: 31,

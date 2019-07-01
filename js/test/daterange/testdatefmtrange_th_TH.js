@@ -1,7 +1,7 @@
 /*
  * testdatefmtrange_th_TH.js - test the the range formatter object in Thai
  * 
- * Copyright © 2012-2017, 2019, JEDLSoft
+ * Copyright © 2012-2017, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -39,7 +39,6 @@ module.exports.testdatefmtrange_th_TH = {
         test.ok(fmt !== null);
         
         var start = new ThaiSolarDate({
-            locale: "th-TH",
             year: 2011,
             month: 12,
             day: 31,
@@ -49,7 +48,6 @@ module.exports.testdatefmtrange_th_TH = {
             millisecond: 0
         });
         var end = new ThaiSolarDate({
-            locale: "th-TH",
             year: 2011,
             month: 12,
             day: 31,
@@ -67,7 +65,6 @@ module.exports.testdatefmtrange_th_TH = {
         test.ok(fmt !== null);
         
         var start = new ThaiSolarDate({
-            locale: "th-TH",
             year: 2011,
             month: 12,
             day: 31,
@@ -77,7 +74,6 @@ module.exports.testdatefmtrange_th_TH = {
             millisecond: 0
         });
         var end = new ThaiSolarDate({
-            locale: "th-TH",
             year: 2011,
             month: 12,
             day: 31,
@@ -95,7 +91,6 @@ module.exports.testdatefmtrange_th_TH = {
         test.ok(fmt !== null);
         
         var start = new ThaiSolarDate({
-            locale: "th-TH",
             year: 2011,
             month: 12,
             day: 31,
@@ -105,7 +100,6 @@ module.exports.testdatefmtrange_th_TH = {
             millisecond: 0
         });
         var end = new ThaiSolarDate({
-            locale: "th-TH",
             year: 2011,
             month: 12,
             day: 31,
@@ -123,7 +117,6 @@ module.exports.testdatefmtrange_th_TH = {
         test.ok(fmt !== null);
         
         var start = new ThaiSolarDate({
-            locale: "th-TH",
             year: 2011,
             month: 12,
             day: 31,
@@ -133,7 +126,6 @@ module.exports.testdatefmtrange_th_TH = {
             millisecond: 0
         });
         var end = new ThaiSolarDate({
-            locale: "th-TH",
             year: 2011,
             month: 12,
             day: 31,
@@ -152,7 +144,6 @@ module.exports.testdatefmtrange_th_TH = {
         test.ok(fmt !== null);
         
         var start = new ThaiSolarDate({
-            locale: "th-TH",
             year: 2011,
             month: 12,
             day: 30,
@@ -162,7 +153,6 @@ module.exports.testdatefmtrange_th_TH = {
             millisecond: 0
         });
         var end = new ThaiSolarDate({
-            locale: "th-TH",
             year: 2011,
             month: 12,
             day: 31,
@@ -180,7 +170,6 @@ module.exports.testdatefmtrange_th_TH = {
         test.ok(fmt !== null);
         
         var start = new ThaiSolarDate({
-            locale: "th-TH",
             year: 2011,
             month: 12,
             day: 30,
@@ -190,7 +179,6 @@ module.exports.testdatefmtrange_th_TH = {
             millisecond: 0
         });
         var end = new ThaiSolarDate({
-            locale: "th-TH",
             year: 2011,
             month: 12,
             day: 31,
@@ -208,7 +196,6 @@ module.exports.testdatefmtrange_th_TH = {
         test.ok(fmt !== null);
         
         var start = new ThaiSolarDate({
-            locale: "th-TH",
             year: 2011,
             month: 12,
             day: 30,
@@ -218,7 +205,6 @@ module.exports.testdatefmtrange_th_TH = {
             millisecond: 0
         });
         var end = new ThaiSolarDate({
-            locale: "th-TH",
             year: 2011,
             month: 12,
             day: 31,
@@ -236,7 +222,6 @@ module.exports.testdatefmtrange_th_TH = {
         test.ok(fmt !== null);
         
         var start = new ThaiSolarDate({
-            locale: "th-TH",
             year: 2011,
             month: 12,
             day: 30,
@@ -246,7 +231,6 @@ module.exports.testdatefmtrange_th_TH = {
             millisecond: 0
         });
         var end = new ThaiSolarDate({
-            locale: "th-TH",
             year: 2011,
             month: 12,
             day: 31,
@@ -265,7 +249,6 @@ module.exports.testdatefmtrange_th_TH = {
         test.ok(fmt !== null);
         
         var start = new ThaiSolarDate({
-            locale: "th-TH",
             year: 2011,
             month: 12,
             day: 20,
@@ -275,7 +258,6 @@ module.exports.testdatefmtrange_th_TH = {
             millisecond: 0
         });
         var end = new ThaiSolarDate({
-            locale: "th-TH",
             year: 2011,
             month: 12,
             day: 31,
@@ -293,7 +275,6 @@ module.exports.testdatefmtrange_th_TH = {
         test.ok(fmt !== null);
         
         var start = new ThaiSolarDate({
-            locale: "th-TH",
             year: 2011,
             month: 12,
             day: 20,
@@ -303,7 +284,6 @@ module.exports.testdatefmtrange_th_TH = {
             millisecond: 0
         });
         var end = new ThaiSolarDate({
-            locale: "th-TH",
             year: 2011,
             month: 12,
             day: 31,
@@ -321,7 +301,6 @@ module.exports.testdatefmtrange_th_TH = {
         test.ok(fmt !== null);
         
         var start = new ThaiSolarDate({
-            locale: "th-TH",
             year: 2011,
             month: 12,
             day: 20,
@@ -331,7 +310,6 @@ module.exports.testdatefmtrange_th_TH = {
             millisecond: 0
         });
         var end = new ThaiSolarDate({
-            locale: "th-TH",
             year: 2011,
             month: 12,
             day: 31,
@@ -349,7 +327,6 @@ module.exports.testdatefmtrange_th_TH = {
         test.ok(fmt !== null);
         
         var start = new ThaiSolarDate({
-            locale: "th-TH",
             year: 2011,
             month: 12,
             day: 20,
@@ -359,7 +336,6 @@ module.exports.testdatefmtrange_th_TH = {
             millisecond: 0
         });
         var end = new ThaiSolarDate({
-            locale: "th-TH",
             year: 2011,
             month: 12,
             day: 31,
@@ -378,7 +354,6 @@ module.exports.testdatefmtrange_th_TH = {
         test.ok(fmt !== null);
         
         var start = new ThaiSolarDate({
-            locale: "th-TH",
             year: 2011,
             month: 11,
             day: 20,
@@ -388,7 +363,6 @@ module.exports.testdatefmtrange_th_TH = {
             millisecond: 0
         });
         var end = new ThaiSolarDate({
-            locale: "th-TH",
             year: 2011,
             month: 12,
             day: 31,
@@ -406,7 +380,6 @@ module.exports.testdatefmtrange_th_TH = {
         test.ok(fmt !== null);
         
         var start = new ThaiSolarDate({
-            locale: "th-TH",
             year: 2011,
             month: 11,
             day: 20,
@@ -416,7 +389,6 @@ module.exports.testdatefmtrange_th_TH = {
             millisecond: 0
         });
         var end = new ThaiSolarDate({
-            locale: "th-TH",
             year: 2011,
             month: 12,
             day: 31,
@@ -434,7 +406,6 @@ module.exports.testdatefmtrange_th_TH = {
         test.ok(fmt !== null);
         
         var start = new ThaiSolarDate({
-            locale: "th-TH",
             year: 2011,
             month: 11,
             day: 20,
@@ -444,7 +415,6 @@ module.exports.testdatefmtrange_th_TH = {
             millisecond: 0
         });
         var end = new ThaiSolarDate({
-            locale: "th-TH",
             year: 2011,
             month: 12,
             day: 31,
@@ -462,7 +432,6 @@ module.exports.testdatefmtrange_th_TH = {
         test.ok(fmt !== null);
         
         var start = new ThaiSolarDate({
-            locale: "th-TH",
             year: 2011,
             month: 11,
             day: 20,
@@ -472,7 +441,6 @@ module.exports.testdatefmtrange_th_TH = {
             millisecond: 0
         });
         var end = new ThaiSolarDate({
-            locale: "th-TH",
             year: 2011,
             month: 12,
             day: 31,
@@ -491,7 +459,6 @@ module.exports.testdatefmtrange_th_TH = {
         test.ok(fmt !== null);
         
         var start = new ThaiSolarDate({
-            locale: "th-TH",
             year: 2011,
             month: 11,
             day: 20,
@@ -501,7 +468,6 @@ module.exports.testdatefmtrange_th_TH = {
             millisecond: 0
         });
         var end = new ThaiSolarDate({
-            locale: "th-TH",
             year: 2012,
             month: 1,
             day: 31,
@@ -519,7 +485,6 @@ module.exports.testdatefmtrange_th_TH = {
         test.ok(fmt !== null);
         
         var start = new ThaiSolarDate({
-            locale: "th-TH",
             year: 2011,
             month: 11,
             day: 20,
@@ -529,7 +494,6 @@ module.exports.testdatefmtrange_th_TH = {
             millisecond: 0
         });
         var end = new ThaiSolarDate({
-            locale: "th-TH",
             year: 2012,
             month: 1,
             day: 31,
@@ -547,7 +511,6 @@ module.exports.testdatefmtrange_th_TH = {
         test.ok(fmt !== null);
         
         var start = new ThaiSolarDate({
-            locale: "th-TH",
             year: 2011,
             month: 11,
             day: 20,
@@ -557,7 +520,6 @@ module.exports.testdatefmtrange_th_TH = {
             millisecond: 0
         });
         var end = new ThaiSolarDate({
-            locale: "th-TH",
             year: 2012,
             month: 1,
             day: 31,
@@ -575,7 +537,6 @@ module.exports.testdatefmtrange_th_TH = {
         test.ok(fmt !== null);
         
         var start = new ThaiSolarDate({
-            locale: "th-TH",
             year: 2011,
             month: 11,
             day: 20,
@@ -585,7 +546,6 @@ module.exports.testdatefmtrange_th_TH = {
             millisecond: 0
         });
         var end = new ThaiSolarDate({
-            locale: "th-TH",
             year: 2012,
             month: 1,
             day: 31,
@@ -604,7 +564,6 @@ module.exports.testdatefmtrange_th_TH = {
         test.ok(fmt !== null);
         
         var start = new ThaiSolarDate({
-            locale: "th-TH",
             year: 2011,
             month: 11,
             day: 20,
@@ -614,7 +573,6 @@ module.exports.testdatefmtrange_th_TH = {
             millisecond: 0
         });
         var end = new ThaiSolarDate({
-            locale: "th-TH",
             year: 2014,
             month: 1,
             day: 31,
@@ -632,7 +590,6 @@ module.exports.testdatefmtrange_th_TH = {
         test.ok(fmt !== null);
         
         var start = new ThaiSolarDate({
-            locale: "th-TH",
             year: 2011,
             month: 11,
             day: 20,
@@ -642,7 +599,6 @@ module.exports.testdatefmtrange_th_TH = {
             millisecond: 0
         });
         var end = new ThaiSolarDate({
-            locale: "th-TH",
             year: 2014,
             month: 1,
             day: 31,
@@ -660,7 +616,6 @@ module.exports.testdatefmtrange_th_TH = {
         test.ok(fmt !== null);
         
         var start = new ThaiSolarDate({
-            locale: "th-TH",
             year: 2011,
             month: 11,
             day: 20,
@@ -670,7 +625,6 @@ module.exports.testdatefmtrange_th_TH = {
             millisecond: 0
         });
         var end = new ThaiSolarDate({
-            locale: "th-TH",
             year: 2014,
             month: 1,
             day: 31,
@@ -688,7 +642,6 @@ module.exports.testdatefmtrange_th_TH = {
         test.ok(fmt !== null);
         
         var start = new ThaiSolarDate({
-            locale: "th-TH",
             year: 2011,
             month: 11,
             day: 20,
@@ -698,7 +651,6 @@ module.exports.testdatefmtrange_th_TH = {
             millisecond: 0
         });
         var end = new ThaiSolarDate({
-            locale: "th-TH",
             year: 2014,
             month: 1,
             day: 31,
@@ -716,7 +668,6 @@ module.exports.testdatefmtrange_th_TH = {
         test.ok(fmt !== null);
         
         var start = new ThaiSolarDate({
-            locale: "th-TH",
             year: 2011,
             month: 11,
             day: 20,
@@ -726,7 +677,6 @@ module.exports.testdatefmtrange_th_TH = {
             millisecond: 0
         });
         var end = new ThaiSolarDate({
-            locale: "th-TH",
             year: 2064,
             month: 1,
             day: 31,
