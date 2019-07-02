@@ -29,7 +29,7 @@ var mkdirs = common.makeDirs;
 var toDir = "tmp";
 
 var libphonefmt = require('libphonenumber-js/max');
-var sampleNums = require("./exampleNums.json");
+var sampleNums = require("./tmp/exampleNums.json");
 
 var numberTemplate =[];
 var wholeTemplate = {};
@@ -71,7 +71,7 @@ for (country in sampleNums) {
             for (i=1; i< fixedlineNumber.length; i++) {
                 testNumber = fixedlineNumber.substring(0,i);
                 inputNum = asYouType.input(testNumber);
-                console.log("###", ( typeof asYouType.getTemplate() !== "undefined" ? asYouType.getTemplate(): "x"));
+                //console.log("###", ( typeof asYouType.getTemplate() !== "undefined" ? asYouType.getTemplate(): "x"));
                 if (i == 1 && (typeof asYouType.getTemplate() === 'undefined')) {
                     numberTemplate.push("x");
                 } else {
@@ -101,7 +101,7 @@ for (country in sampleNums) {
             for (i=1; i< mobileNumber.length; i++) {
                 testNumber = mobileNumber.substring(0,i);
                 inputNum = asYouType.input(testNumber);
-                console.log("###", ( typeof asYouType.getTemplate() !== "undefined" ? asYouType.getTemplate(): "x"));
+                //console.log("###", ( typeof asYouType.getTemplate() !== "undefined" ? asYouType.getTemplate(): "x"));
                 if (i == 1 && (typeof asYouType.getTemplate() === 'undefined')) {
                     numberTemplate.push("x");
                 } else {
@@ -131,7 +131,7 @@ for (country in sampleNums) {
             for (i=1; i< serviceNumber.length; i++) {
                 testNumber = serviceNumber.substring(0,i);
                 inputNum = asYouType.input(testNumber);
-                console.log("###", ( typeof asYouType.getTemplate() !== "undefined" ? asYouType.getTemplate(): "x"));
+                //console.log("###", ( typeof asYouType.getTemplate() !== "undefined" ? asYouType.getTemplate(): "x"));
                 if (i == 1 && (typeof asYouType.getTemplate() === 'undefined')) {
                     numberTemplate.push("x");
                 } else {

@@ -43,7 +43,7 @@ function usage() {
 }
 console.log("gennumplan - generate the numplan.json file.\n");
 
-var metadata = require("./metadata.json");
+var metadata = require("./libphonenumber-js/metadata.json");
 var countryData = metadata.countries;
 var country, filename, exampleNums = {};
 
