@@ -7,6 +7,8 @@ Published as version 14.3.0
 
 New Features:
 * Now uses webpack4 to package up all of the classes and data
+* Added style "disjunction" to the list formatter do you can now format lists with "or" as well:
+    * "One, Two, Three, or Four" vs. "One, Two, Three, and Four"
 
 Bug Fixes:
 * Updated to IANA time zone data version 2019a

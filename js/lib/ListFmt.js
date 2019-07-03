@@ -1,7 +1,7 @@
 /*
  * ListFmt.js - Represent a list formatter.
  *
- * Copyright © 2017-2018, JEDLSoft
+ * Copyright © 2017-2019, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -24,6 +24,13 @@ var ilib = require("../index.js");
 var Utils = require("./Utils.js");
 var Locale = require("./Locale.js");
 
+// map our style parameter to the cldr style in the list.json files
+var styleMap = {
+    "standard": "standard",
+    "conjunction": "standard",
+    "disjunction": "or",
+    "unit": "unit"
+};
 
 /**
  * @class
@@ -33,16 +40,6 @@ var Locale = require("./Locale.js");
  * The options object can contain zero or more of the following parameters:
  *
  * <ul>
- * <li><i>type</i> The type of this formatter. Valid values are:
- * <ul>
- *   <ul><i>regular</i> create a regular list.
- *   <ul><i>conjunction</i> this list should be concatenated with "and". This is
- *   the default.
- *   <ul><i>disjunction</i> this list should be concatenated with "or".
- *   <ul><i>unit</i> this is a list of measures like "5 minutes, 4 seconds". In
- *   some languages, these type of lists are concatenated without a conjunction.
- * </ul>
- *
  * <li><i>locale</i> locale to use to format this list, or undefined to use the
  * default locale
  *
@@ -57,7 +54,16 @@ var Locale = require("./Locale.js");
  * </ul>
  *
  * <li><i>style</i> the name of style to use to format the list, or undefined
- * to use the default "standard" style. another style option is "units".
+ * to use the default "conjunction" style. Valid values are:
+ *
+ * <ul>
+ *   <ul><i>standard</i> create a standard list.
+ *   <ul><i>conjunction</i> this list should be concatenated with a conjunction "and".
+ *   This is the default style for "standard".
+ *   <ul><i>disjunction</i> this list should be concatenated with a disjunction "or".
+ *   <ul><i>unit</i> this is a list of measures like "5 minutes, 4 seconds". In
+ *   some languages, these type of lists are concatenated without a conjunction.
+ * </ul>
  *
  * <li><i>onLoad</i> - a callback function to call when the locale data is fully loaded and the address has been
  * parsed. When the onLoad option is given, the address formatter object
@@ -87,7 +93,6 @@ var ListFmt = function(options) {
     this.style = "standard";
     this.length = "short";
     this.loadParams = {};
-    this.type = "conjunction";
 
     if (options) {
         if (options.type) {
@@ -111,7 +116,9 @@ var ListFmt = function(options) {
         }
 
         if (options.style) {
-            this.style = options.style;
+            if (styleMap[options.style]) {
+                this.style = styleMap[options.style];
+            }
         }
     }
 
@@ -124,6 +131,11 @@ var ListFmt = function(options) {
         callback: ilib.bind(this, function (fmtdata) {
             this.fmtdata = fmtdata;
 
+            // if the requested style is not available in this locale, fall back
+            // to the default "standard" style
+            if (!fmtdata[this.style]) {
+                this.style = "standard";
+            }
             if (options && typeof(options.onLoad) === 'function') {
                 options.onLoad(this);
             }
