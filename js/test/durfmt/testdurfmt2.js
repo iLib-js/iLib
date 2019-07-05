@@ -8720,7 +8720,7 @@ module.exports.testdurfmt2 = {
 
         test.done();
     },
-    testDurFmt_pa_PK: function(test) {
+    testDurFmt_pa_Arab_PK: function(test) {
         test.expect(16);
         // 1 18
         var textfmt;
@@ -8731,7 +8731,7 @@ module.exports.testdurfmt2 = {
         var clockformatted_1 = [],clockformatted_18 = [];
 
         for (var i=0; i<4; i++) {
-            textfmt = new DurationFmt({locale: "pa-PK", style:"text", length:length[i]});
+            textfmt = new DurationFmt({locale: "pa-Arab-PK", style:"text", length:length[i], useNative:false});
 
             textformatted_1.push(textfmt.format({year: 1,month: 1,week: 1,day: 1}).toString());
             textformatted_18.push(textfmt.format({year: 18,month: 18,week: 18,day: 18}).toString());
@@ -8740,25 +8740,25 @@ module.exports.testdurfmt2 = {
             clockformatted_18.push(textfmt.format({hour: 18,minute: 18,second: 18}).toString());
         }
 
-        test.equal(textformatted_1[0], '‏1 ਸਾਲ, 1 ਮਹੀਨਾ, 1 ਹਫ਼ਤਾ, 1 ਦਿਨ');
-        test.equal(textformatted_1[1], '‏1 ਸਾਲ, 1 ਮਹੀਨਾ, 1 ਹਫ਼ਤਾ, 1 ਦਿਨ');
-        test.equal(textformatted_1[2], '‏1 ਸਾਲ, 1 ਮਹੀਨਾ, 1 ਹਫ਼ਤਾ, 1 ਦਿਨ');
-        test.equal(textformatted_1[3], '‏1 ਸਾਲ, 1 ਮਹੀਨਾ, 1 ਹਫ਼ਤਾ, 1 ਦਿਨ');
+        test.equal(textformatted_1[0], '‏1 y, 1 m, 1 w, 1 d');
+        test.equal(textformatted_1[1], '‏1 y, 1 m, 1 w, 1 d');
+        test.equal(textformatted_1[2], '‏1 y, 1 m, 1 w, 1 d');
+        test.equal(textformatted_1[3], '‏1 y, 1 m, 1 w, 1 d');
 
-        test.equal(textformatted_18[0], '‏18 ਸਾਲ, 18 ਮਹੀਨੇ, 18 ਹਫ਼ਤੇ, 18 ਦਿਨ');
-        test.equal(textformatted_18[1], '‏18 ਸਾਲ, 18 ਮਹੀਨੇ, 18 ਹਫ਼ਤੇ, 18 ਦਿਨ');
-        test.equal(textformatted_18[2], '‏18 ਸਾਲ, 18 ਮਹੀਨੇ, 18 ਹਫ਼ਤੇ, 18 ਦਿਨ');
-        test.equal(textformatted_18[3], '‏18 ਸਾਲ, 18 ਮਹੀਨੇ, 18 ਹਫ਼ਤੇ, 18 ਦਿਨ');
+        test.equal(textformatted_18[0], '‏18 y, 18 m, 18 w, 18 d');
+        test.equal(textformatted_18[1], '‏18 y, 18 m, 18 w, 18 d');
+        test.equal(textformatted_18[2], '‏18 y, 18 m, 18 w, 18 d');
+        test.equal(textformatted_18[3], '‏18 y, 18 m, 18 w, 18 d');
 
-        test.equal(clockformatted_1[0], '‏1 ਘੰਟਾ, 1 ਮਿੰਟ, 1 ਸਕਿੰਟ');
-        test.equal(clockformatted_1[1], '‏1 ਘੰਟਾ, 1 ਮਿੰਟ, 1 ਸਕਿੰਟ');
-        test.equal(clockformatted_1[2], '‏1 ਘੰਟਾ, 1 ਮਿੰਟ, 1 ਸਕਿੰਟ');
-        test.equal(clockformatted_1[3], '‏1 ਘੰਟਾ, 1 ਮਿੰਟ, 1 ਸਕਿੰਟ');
+        test.equal(clockformatted_1[0], '‏1 h, 1 min, 1 s');
+        test.equal(clockformatted_1[1], '‏1 h, 1 min, 1 s');
+        test.equal(clockformatted_1[2], '‏1 h, 1 min, 1 s');
+        test.equal(clockformatted_1[3], '‏1 h, 1 min, 1 s');
     
-        test.equal(clockformatted_18[0], '‏18 ਘੰਟੇ, 18 ਮਿੰਟ, 18 ਸਕਿੰਟ');
-        test.equal(clockformatted_18[1], '‏18 ਘੰਟੇ, 18 ਮਿੰਟ, 18 ਸਕਿੰਟ');
-        test.equal(clockformatted_18[2], '‏18 ਘੰਟੇ, 18 ਮਿੰਟ, 18 ਸਕਿੰਟ');
-        test.equal(clockformatted_18[3], '‏18 ਘੰਟੇ, 18 ਮਿੰਟ, 18 ਸਕਿੰਟ');
+        test.equal(clockformatted_18[0], '‏18 h, 18 min, 18 s');
+        test.equal(clockformatted_18[1], '‏18 h, 18 min, 18 s');
+        test.equal(clockformatted_18[2], '‏18 h, 18 min, 18 s');
+        test.equal(clockformatted_18[3], '‏18 h, 18 min, 18 s');
                                          
         test.done();
     },
