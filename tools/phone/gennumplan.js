@@ -34,14 +34,18 @@ if (process.argv.length > 2) {
 }
 
 function usage() {
-	console.log("Usage: gennumplan.js [-h] [ locale_data_dir ]\n" +
-            "-h or --help\n" +
-            "  this help\n" +
-            "locale_data_dir\n" +
-            "  the top level of the ilib locale data directory\n");
+    console.log("Usage: gengeoinfo.js [-h] [ output_dir ]\n" +
+            "-h or --help\n" + "  this help\n");
     process.exit(1);
 }
-console.log("gennumplan - generate the numplan.json file.\n");
+
+process.argv.forEach(function (val, index, array) {
+    if (val === "-h" || val === "--help") {
+        usage();
+    }
+});
+
+console.log("gennumplan.js - generate the numplan.json file.\n");
 
 var metadata = require("./libphonenumber-js/metadata.json");
 var countryData = metadata.countries;

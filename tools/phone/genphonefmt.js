@@ -37,6 +37,23 @@ var filename;
 var testNumber, fixedlineNumber, mobileNumber, serviceNumber, i;
 var trunkNumber;
 
+if (process.argv.length > 2) {
+    toDir = process.argv[2];
+}
+function usage() {
+    console.log("Usage: gengeoinfo.js [-h] [ output_dir ]\n" +
+            "-h or --help\n" + "  this help\n");
+    process.exit(1);
+}
+
+process.argv.forEach(function (val, index, array) {
+    if (val === "-h" || val === "--help") {
+        usage();
+    }
+});
+
+console.log("gennumplan.js - generate the numplan.json file.\n");
+
 for (country in sampleNums) {
     wholeTemplate = {};
 

@@ -38,13 +38,18 @@ if (process.argv.length > 2) {
 }
 
 function usage() {
-	console.log("Usage: gengeoinfo.js [-h] [ locale_data_dir ]\n" +
-            "-h or --help\n" +
-            "  this help\n" +
-            "locale_data_dir\n" +
-            "  the top level of the ilib locale data directory\n");
+	console.log("Usage: gengeoinfo.js [-h] [ output_dir ]\n" +
+            "-h or --help\n" + "  this help\n");
     process.exit(1);
 }
+
+process.argv.forEach(function (val, index, array) {
+    if (val === "-h" || val === "--help") {
+        usage();
+    }
+});
+
+console.log("gengeoinfo.js - generate the areaInfo.json file.\n");
 
 function getCountry(file) {
     var country;
