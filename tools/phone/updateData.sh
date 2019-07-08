@@ -17,15 +17,14 @@ tasks()
         if [ ! -d "libphonenumber-js" ];then
             echo "libphonenumer-js doesn't exist!"
             git clone https://github.com/catamphetamine/libphonenumber-js.git
-            sh ./libphonenumber-js/autoupdate.sh 
-        else
-            cd libphonenumber-js
-            git pull
-            sh ./autoupdate.sh
         fi
+        cd libphonenumber-js
+        git pull
+        sh ./autoupdate.sh
+        cp metadata.json ../
     elif [ $number = "2" ];then
         if [ ! -d "libphonenumber" ];then
-            echo "libphonenumer-js doesn't exist!"
+            echo "libphonenumer doesn't exist!"
             git clone https://github.com/google/libphonenumber.git
         else
             cd libphonenumber
