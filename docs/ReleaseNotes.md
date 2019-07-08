@@ -11,7 +11,7 @@ New Features:
     * "One, Two, Three, or Four" vs. "One, Two, Three, and Four"
 
 Bug Fixes:
-* Updated to IANA time zone data version 2019a
+* Updated to IANA time zone data version 2019b
 * Fixed a bug where the DateRngFmt was not heeding the specified
   time zone when formatting the start and end dates
 * Fixed a bug which a default script for pa-IN should be Guru instead of Arabic
