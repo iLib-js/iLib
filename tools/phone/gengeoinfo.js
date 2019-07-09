@@ -109,7 +109,7 @@ function walk(root, dir) {
                     if (firstChar !== undefined && firstChar.search(/[0-9]/) === 0)  {
                         //console.log("firstChar: ", firstChar);
                         data = textByLine[i].split("|");
-                        data[0] = data[0].replace(countryNum,""); //Remove phoe_code from the from. ie. South Korea: 82
+                        data[0] = data[0].replace(countryNum,""); //Remove country number in numbers. ie. South Korea: 82
                         numGeoInfo[data[0]] = data[1];
                     }
                 }
@@ -120,5 +120,4 @@ function walk(root, dir) {
             }
         }
     });
-
 }
