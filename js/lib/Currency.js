@@ -92,6 +92,8 @@ var ResBundle = require("./ResBundle.js");
  * known currencies. xxx is replaced with the requested code.
  */
 var Currency = function (options) {
+    console.log("Currency Currency");
+
     if (options) {
         if (options.code) {
             this.code = options.code;

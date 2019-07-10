@@ -883,6 +883,7 @@ Locale.locales = [];
  * this iLib file has locale data for
  */
 Locale.getAvailableLocales = function (sync, onLoad) {
+    console.log("!@#!#!@#!@#!@#!#!@#!@#!@#!@");
     var locales = [];
     if (Locale.locales.length || typeof(ilib._load.listAvailableFiles) !== 'function') {
         locales = Locale.locales;

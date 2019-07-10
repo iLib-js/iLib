@@ -1186,6 +1186,16 @@ module.exports.testscriptinfo = {
         test.equal(scinfo.getScriptDirection(), "ltr");
         test.done();
     },
+    testScriptInfo_pa_PK: function(test) {
+        test.expect(4);
+        var li = new LocaleInfo("pa-PK");
+        var scinfo = new ScriptInfo(li.getScript());
+        test.ok(li !== null);
+        test.ok(scinfo !== null);
+        test.equal(li.getScript(), "Guru");
+        test.equal(scinfo.getScriptDirection(), "ltr");
+        test.done();
+    },
     testScriptInfo_pa_IN: function(test) {
         test.expect(4);
         var li = new LocaleInfo("pa-IN");
