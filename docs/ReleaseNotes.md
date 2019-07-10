@@ -1,6 +1,22 @@
 Release Notes for Version 14
 ============================
 
+Build 006
+-------
+Published as version 14.3.0
+
+New Features:
+* Now uses webpack4 to package up all of the classes and data
+* Added style "disjunction" to the list formatter do you can now format lists with "or" as well:
+    * "One, Two, Three, or Four" vs. "One, Two, Three, and Four"
+
+Bug Fixes:
+* Updated to IANA time zone data version 2019b
+* Fixed a bug where the DateRngFmt was not heeding the specified
+  time zone when formatting the start and end dates
+* Fixed a bug which a default script for pa-IN should be Guru instead of Arabic
+
+
 Build 005
 -------
 Published as version 14.2.0

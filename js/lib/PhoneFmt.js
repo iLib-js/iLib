@@ -1,7 +1,7 @@
 /*
- * phonefmt.js - Represent a phone number formatter.
+ * PhoneFmt.js - Represent a phone number formatter.
  *
- * Copyright © 2014-2015, 2018, JEDLSoft
+ * Copyright © 2014-2015, 2018-2019, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -24,7 +24,6 @@ var Utils = require("./Utils.js");
 var JSUtils = require("./JSUtils.js");
 var Locale = require("./Locale.js");
 var PhoneNumber = require("./PhoneNumber.js");
-var NumberingPlan = require("./NumberingPlan.js");
 var PhoneLocale = require("./PhoneLocale.js");
 
 /**
@@ -105,30 +104,20 @@ var PhoneFmt = function(options) {
             /** @type {PhoneLocale} */
             this.locale = data;
 
-            new NumberingPlan({
+            Utils.loadData({
+                name: "phonefmt.json",
+                object: "PhoneFmt",
                 locale: this.locale,
                 sync: this.sync,
-                loadParms: this.loadParams,
-                onLoad: ilib.bind(this, function (plan) {
-                    /** @type {NumberingPlan} */
-                    this.plan = plan;
+                loadParams: JSUtils.merge(this.loadParams, {
+                    returnOne: true
+                }),
+                callback: ilib.bind(this, function (fmtdata) {
+                    this.fmtdata = fmtdata;
 
-                    Utils.loadData({
-                        name: "phonefmt.json",
-                        object: "PhoneFmt",
-                        locale: this.locale,
-                        sync: this.sync,
-                        loadParams: JSUtils.merge(this.loadParams, {
-                            returnOne: true
-                        }),
-                        callback: ilib.bind(this, function (fmtdata) {
-                            this.fmtdata = fmtdata;
-
-                            if (options && typeof(options.onLoad) === 'function') {
-                                options.onLoad(this);
-                            }
-                        })
-                    });
+                    if (options && typeof(options.onLoad) === 'function') {
+                        options.onLoad(this);
+                    }
                 })
             });
         })

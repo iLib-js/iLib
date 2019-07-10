@@ -1894,13 +1894,13 @@ module.exports.testmeridiems = {
         
         test.done();
     },
-    testMeridiem_pa_PK: function(test) {
+    testMeridiem_pa_Arab_PK: function(test) {
         test.expect(3);
-        var fmt = DateFmt.getMeridiemsRange({locale:"pa-PK"});
+        var fmt = DateFmt.getMeridiemsRange({locale:"pa-Arab-PK"});
         test.ok(fmt !== null);
         
-        test.equal(fmt[0].name,  "ਪੂ.ਦੁ.");
-        test.equal(fmt[1].name,  "ਬਾ.ਦੁ.");
+        test.equal(fmt[0].name, 'AM');
+        test.equal(fmt[1].name, 'PM');
         
         test.done();
     },
