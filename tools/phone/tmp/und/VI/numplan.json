@@ -1,0 +1,21 @@
+{
+    "region": "VI",
+    "countryCode": "1",
+    "iddCode": "011",
+    "trunkCode": "1",
+    "skipTrunk": false,
+    "dialingPlan": "closed",
+    "commonFormatChars": "",
+    "fieldLengths": {
+        "areaCode": 0,
+        "cic": 0,
+        "vsc": 0,
+        "mobilePrefix": 0,
+        "serviceCode": 0,
+        "personal": 0,
+        "minLocalLength": 0,
+        "maxLocalLength": 8,
+        "emergency": 0,
+        "special": 0
+    }
+}

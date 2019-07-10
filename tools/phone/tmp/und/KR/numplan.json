@@ -1,0 +1,21 @@
+{
+    "region": "KR",
+    "countryCode": "82",
+    "iddCode": "00(?:[125689]|3(?:[46]5|91)|7(?:00|27|3|55|6[126]))  // It's a regular expression. It needs to be checked",
+    "trunkCode": "0",
+    "skipTrunk": false,
+    "dialingPlan": "closed",
+    "commonFormatChars": "-",
+    "fieldLengths": {
+        "areaCode": 0,
+        "cic": 0,
+        "vsc": 0,
+        "mobilePrefix": 0,
+        "serviceCode": 0,
+        "personal": 0,
+        "minLocalLength": 5,
+        "maxLocalLength": 10,
+        "emergency": 0,
+        "special": 0
+    }
+}

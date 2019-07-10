@@ -1,0 +1,26 @@
+{
+    "fixedline_example": "201234",
+    "fixedline": [
+        "x",
+        "xx",
+        "xxx",
+        "xxxx",
+        "xxxxx"
+    ],
+    "mobile_example": "211234",
+    "mobile": [
+        "x",
+        "xx",
+        "xxx",
+        "xxxx",
+        "xxxxx"
+    ],
+    "service_example": "802123",
+    "service": [
+        "x",
+        "xx",
+        "xxx",
+        "xxxx",
+        "xxxxx"
+    ]
+}

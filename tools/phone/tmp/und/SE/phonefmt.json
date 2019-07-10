@@ -1,0 +1,35 @@
+{
+    "fixedline_example": "08123456",
+    "fixedline": [
+        "x",
+        "xx",
+        "xx-x",
+        "xx-xx",
+        "xx-xxx",
+        "xx-xxx x",
+        "xx-xxx xx"
+    ],
+    "mobile_example": "0701234567",
+    "mobile": [
+        "x",
+        "xx",
+        "xxx",
+        "xxx-x",
+        "xxx-xx",
+        "xxx-xxx",
+        "xxx-xxx x",
+        "xxx-xxx xx",
+        "xxx-xxx xx x"
+    ],
+    "service_example": "020123456",
+    "service": [
+        "x",
+        "xx",
+        "xxx",
+        "xxx-x",
+        "xxx-xx",
+        "xxx-xxx",
+        "xxx-xx xx",
+        "xxx-xxx xx"
+    ]
+}

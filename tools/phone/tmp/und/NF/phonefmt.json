@@ -1,0 +1,18 @@
+{
+    "fixedline_example": "106609",
+    "fixedline": [
+        "x",
+        "xx",
+        "xx x",
+        "xx xx",
+        null
+    ],
+    "mobile_example": "381234",
+    "mobile": [
+        "x",
+        "x x",
+        "x xx",
+        "x xxx",
+        "x xxxx"
+    ]
+}

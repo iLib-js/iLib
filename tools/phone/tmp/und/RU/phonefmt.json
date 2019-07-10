@@ -1,0 +1,41 @@
+{
+    "fixedline_example": "83011234567",
+    "fixedline": [
+        "x",
+        "x x",
+        "x xx",
+        "x (xxx)",
+        "x (xxx) x",
+        "x (xxx) xx",
+        "x (xxx) xxx",
+        "x (xxx) xxx-x",
+        "x (xxx) xxx-xx",
+        "xxx xxx-xx-xx"
+    ],
+    "mobile_example": "89123456789",
+    "mobile": [
+        "x",
+        "x x",
+        "x xx",
+        "x (xxx)",
+        "x (xxx) x",
+        "x (xxx) xx",
+        "x (xxx) xxx",
+        "x (xxx) xxx-x",
+        "x (xxx) xxx-xx",
+        "xxx xxx-xx-xx"
+    ],
+    "service_example": "88001234567",
+    "service": [
+        "x",
+        "x x",
+        "x xx",
+        "x (xxx)",
+        "x (xxx) x",
+        "x (xxx) xx",
+        "x (xxx) xxx",
+        "x (xxx) xxx-x",
+        "x (xxx) xxx-xx",
+        "xxx xxx-xx-xx"
+    ]
+}

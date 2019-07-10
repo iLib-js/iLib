@@ -1,0 +1,13 @@
+{
+    "fixedline_example": "014567890",
+    "fixedline": [
+        "x",
+        "xx",
+        "xx-x",
+        "xx-xx",
+        "xx-xxx",
+        "xx-xxxx",
+        "xx-xxxxx",
+        "xx-xxxxxx"
+    ]
+}
