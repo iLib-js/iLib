@@ -17,6 +17,7 @@ install:
   #- sudo apt-get -y install qmlscene qt5-default qtdeclarative5-dev qtbase5-dev
   - rm -rf node_modules
   - npm install
+  - npm install -g codecov
   - export PATH=$PWD/node_modules/.bin:$PATH
   - export NODE_OPTIONS="--max-old-space-size=3072"
   - export TZ=America/Los_Angeles
@@ -30,6 +31,7 @@ script:
 
   # iLib full build / Run nodeunit tests
   - ant clean test.travis
+  - codecov
   #- which qmake
   #- which qmlscene
   #- cd qt/NodeunitTest
