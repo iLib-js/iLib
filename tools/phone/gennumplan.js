@@ -89,19 +89,17 @@ for (country in countryData) {
     numPlanData["countryCode"] = phoneMetadata["phone_code"];
 
     if (regx.test(countryData[country]["idd_prefix"])){
-        numPlanData["iddCode"] = phoneMetadata["idd_prefix"] + "  // It's a regular expression. It needs to be checked";
+        numPlanData["iddCode"] = phoneMetadata["idd_prefix"] + "  - It's a regular expression. It needs to be checked";
     } else {
         numPlanData["iddCode"] = phoneMetadata["idd_prefix"];
     }
-
     numPlanData["trunkCode"] = phoneMetadata["national_prefix"];
+    numPlanData["skipTrunk"] = (phoneMetadata["national_prefix"] ? true : false);
 
     /*
     *  No info in metadata. Just set default value
-    * "skipTrunk" : false
     * "dialingPlan": "closed"
     */
-    numPlanData["skipTrunk"] = false;
     numPlanData["dialingPlan"] = "closed";
 
     numPlanData["commonFormatChars"] = getFormatChars(phoneMetadata);
