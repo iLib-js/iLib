@@ -29,7 +29,11 @@ var common = require('../cldr/common.js');
 var mkdirs = common.makeDirs;
 var toDir = "tmp";
 
-var skipCountry = ["KR", "US", "GB", "ES", "MX", "AR", "CO", "BR", "CA", "FR", "IT", "DE", "RU", "JP", "CN", "TW", "NL", "AU", "IN", "BE", "LU". "IE", "NZ"];
+/*
+*  Following country lists are having verified data. especially 'dialingPlan'.
+*  To avoid breaking test cases, I don't generate data for the following countries.
+*/
+var skipCountry = ["KR", "US", "GB", "ES", "MX", "AR", "CO", "BR", "CA", "FR", "IT", "DE", "RU", "JP", "CN", "TW", "NL", "AU", "IN", "BE", "LU", "IE", "NZ", "HK"];
 
 if (process.argv.length > 2) {
     toDir = process.argv[2];
