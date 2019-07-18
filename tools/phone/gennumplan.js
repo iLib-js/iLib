@@ -29,6 +29,8 @@ var common = require('../cldr/common.js');
 var mkdirs = common.makeDirs;
 var toDir = "tmp";
 
+var skipCountry = ["KR", "US", "GB", "ES", "MX", "AR", "CO", "BR", "CA", "FR", "IT", "DE", "RU", "JP", "CN", "TW", "NL"];
+
 if (process.argv.length > 2) {
     toDir = process.argv[2];
 }
@@ -76,7 +78,12 @@ function getFormatChars(phonedata) {
 }
 
 for (country in countryData) {
-    if (country === "001") break;
+    if (country === "001" ||
+       (skipCountry.indexOf(country) !== -1 ) ) {
+        console.log("skip country.... : ", country)
+        continue;
+    }
+
     var numPlanData = {};
     var regx = RegExp(/[\!|\?|\:]/);
     var phoneMetadata = countryData[country];
