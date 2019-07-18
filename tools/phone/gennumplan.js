@@ -29,7 +29,7 @@ var common = require('../cldr/common.js');
 var mkdirs = common.makeDirs;
 var toDir = "tmp";
 
-var skipCountry = ["KR", "US", "GB", "ES", "MX", "AR", "CO", "BR", "CA", "FR", "IT", "DE", "RU", "JP", "CN", "TW", "NL"];
+var skipCountry = ["KR", "US", "GB", "ES", "MX", "AR", "CO", "BR", "CA", "FR", "IT", "DE", "RU", "JP", "CN", "TW", "NL", "AU", "IN", "BE", "LU". "IE", "NZ"];
 
 if (process.argv.length > 2) {
     toDir = process.argv[2];
