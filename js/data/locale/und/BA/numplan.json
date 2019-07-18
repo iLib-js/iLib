@@ -4,5 +4,18 @@
     "iddCode": "00",
     "trunkCode": "0",
     "skipTrunk": true,
-    "dialingPlan": "open"
+    "dialingPlan": "closed",
+    "commonFormatChars": " -",
+    "fieldLengths": {
+        "areaCode": 0,
+        "cic": 0,
+        "vsc": 0,
+        "mobilePrefix": 0,
+        "serviceCode": 0,
+        "personal": 0,
+        "minLocalLength": 0,
+        "maxLocalLength": 8,
+        "emergency": 0,
+        "special": 0
+    }
 }
