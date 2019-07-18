@@ -1,21 +1,21 @@
 {
-    "region": "US",
+    "region": "CA",
     "countryCode": "1",
     "iddCode": "011",
     "trunkCode": "1",
     "skipTrunk": true,
     "dialingPlan": "closed",
-    "commonFormatChars": " ()-.",
+    "commonFormatChars": "",
     "fieldLengths": {
-        "areaCode": 3,
+        "areaCode": 0,
+        "cic": 0,
         "vsc": 0,
-        "cic": 7,
         "mobilePrefix": 0,
         "serviceCode": 0,
-        "minLocalLength": 7,
-        "maxLocalLength": 7,
+        "personal": 0,
+        "minLocalLength": 0,
+        "maxLocalLength": 8,
         "emergency": 0,
-        "special": 0,
-        "cic2": 4
+        "special": 0
     }
 }
