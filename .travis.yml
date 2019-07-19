@@ -31,11 +31,12 @@ script:
 
   # iLib full build / Run nodeunit tests
   - ant clean test.travis
-  - codecov
   #- which qmake
   #- which qmlscene
   #- cd qt/NodeunitTest
   #- /usr/bin/qmlscene NodeunitRunAll.qml -I ../FileReader/imports/
+after_success:
+    - bash <(curl -s https://codecov.io/bash)
 branches:
   only:
     - master
