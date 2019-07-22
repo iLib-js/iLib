@@ -3,6 +3,16 @@ Release Notes for Version 14
 
 Build 006
 -------
+Published as version 14.4.0
+
+New Features:
+* Updated `iddarea.json` file which is used in `PhoneGeoLocator` information and wrote a script file to automatically generate it.
+
+Bug Fixes:
+
+
+Build 006
+-------
 Published as version 14.3.0
 
 New Features:
