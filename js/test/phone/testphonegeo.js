@@ -1037,7 +1037,7 @@ module.exports.phonegeo = {
         var expected = {
             country: {
                 sn: "Australia",
-                ln: "Australia, Isla Christmas, Islas Cocos",
+                ln: "Australia, Cocos (Keeling) Islands, Christmas Island",
                 code: "AU"
             },
             area: {
@@ -1064,7 +1064,7 @@ module.exports.phonegeo = {
         var expected = {
             country: {
                 sn: "Australia",
-                ln: "Australia, Isla Christmas, Islas Cocos",
+                ln: "Australia, Cocos (Keeling) Islands, Christmas Island",
                 code: "AU"
             },
             area: {
@@ -1091,7 +1091,7 @@ module.exports.phonegeo = {
         var expected = {
             country: {
                 sn: "Australia",
-                ln: "Australia, Isla Christmas, Islas Cocos",
+                ln: "Australia, Cocos (Keeling) Islands, Christmas Island",
                 code: "AU"
             },
             area: {
@@ -1118,7 +1118,7 @@ module.exports.phonegeo = {
         var expected = {
             country: {
                 sn: "Australia",
-                ln: "Australia, Isla Christmas, Islas Cocos",
+                ln: "Australia, Cocos (Keeling) Islands, Christmas Island",
                 code: "AU"
             },
             area: {
@@ -2001,8 +2001,8 @@ module.exports.phonegeo = {
         var parsed = new PhoneNumber("+852 2543 2102");
         var expected = {
             country: {
-                sn: "Hong Kong",
-                ln: "Hong Kong",
+                sn: "Hong Kong SAR China",
+                ln: "Hong Kong SAR China",
                 code: "HK"
             }
         };
@@ -2022,8 +2022,8 @@ module.exports.phonegeo = {
         var parsed = new PhoneNumber("2543 2102", {locale: "en-HK"});
         var expected = {
             country: {
-                sn: "Hong Kong",
-                ln: "Hong Kong",
+                sn: "Hong Kong SAR China",
+                ln: "Hong Kong SAR China",
                 code: "HK"
             }
         };
@@ -2043,8 +2043,8 @@ module.exports.phonegeo = {
         var parsed = new PhoneNumber("6543 2102", {locale: "en-HK"});
         var expected = {
             country: {
-                sn: "Hong Kong",
-                ln: "Hong Kong",
+                sn: "Hong Kong SAR China",
+                ln: "Hong Kong SAR China",
                 code: "HK"
             }
         };
