@@ -5,7 +5,7 @@
     },
     "7": {
         "sn": "Russia",
-        "ln": "Russia, Kazakhstan"
+        "ln": "Russia or Kazakhstan"
     },
     "20": {
         "sn": "Egypt",
@@ -41,7 +41,7 @@
     },
     "39": {
         "sn": "Italy",
-        "ln": "Italy, Vatican City"
+        "ln": "Italy or Vatican City"
     },
     "40": {
         "sn": "Romania",
@@ -57,7 +57,7 @@
     },
     "44": {
         "sn": "United Kingdom",
-        "ln": "United Kingdom, Guernsey, Isle of Man, Jersey"
+        "ln": "United Kingdom, Guernsey, Isle of Man, or Jersey"
     },
     "45": {
         "sn": "Denmark",
@@ -69,7 +69,7 @@
     },
     "47": {
         "sn": "Norway",
-        "ln": "Norway, Svalbard & Jan Mayen"
+        "ln": "Norway or Svalbard & Jan Mayen"
     },
     "48": {
         "sn": "Poland",
@@ -117,7 +117,7 @@
     },
     "61": {
         "sn": "Australia",
-        "ln": "Australia, Cocos (Keeling) Islands, Christmas Island"
+        "ln": "Australia, Cocos (Keeling) Islands, or Christmas Island"
     },
     "62": {
         "sn": "Indonesia",
@@ -189,7 +189,7 @@
     },
     "212": {
         "sn": "Morocco",
-        "ln": "Morocco, Western Sahara"
+        "ln": "Morocco or Western Sahara"
     },
     "213": {
         "sn": "Algeria",
@@ -369,7 +369,7 @@
     },
     "262": {
         "sn": "Réunion",
-        "ln": "Réunion, Mayotte"
+        "ln": "Réunion or Mayotte"
     },
     "263": {
         "sn": "Zimbabwe",
@@ -401,7 +401,7 @@
     },
     "290": {
         "sn": "St. Helena",
-        "ln": "St. Helena, Tristan da Cunha"
+        "ln": "St. Helena or Tristan da Cunha"
     },
     "291": {
         "sn": "Eritrea",
@@ -453,7 +453,7 @@
     },
     "358": {
         "sn": "Finland",
-        "ln": "Finland, Åland Islands"
+        "ln": "Finland or Åland Islands"
     },
     "359": {
         "sn": "Bulgaria",
@@ -581,7 +581,7 @@
     },
     "590": {
         "sn": "Guadeloupe",
-        "ln": "Guadeloupe, St. Barthélemy, St. Martin"
+        "ln": "Guadeloupe, St. Barthélemy, or St. Martin"
     },
     "591": {
         "sn": "Bolivia",
@@ -617,7 +617,7 @@
     },
     "599": {
         "sn": "Curaçao",
-        "ln": "Curaçao, Caribbean Netherlands"
+        "ln": "Curaçao or Caribbean Netherlands"
     },
     "670": {
         "sn": "Timor-Leste",
@@ -704,8 +704,8 @@
         "ln": "Marshall Islands"
     },
     "800": {
-        "sn": "World",
-        "ln": "World"
+        "sn": "Freephone",
+        "ln": "Universal international freephone number"
     },
     "808": {
         "sn": "World",
@@ -736,32 +736,32 @@
         "ln": "World"
     },
     "878": {
-        "sn": "World",
-        "ln": "World"
+        "sn": "Universal Personal",
+        "ln": "Universal Personal Telecommunications"
     },
     "880": {
         "sn": "Bangladesh",
         "ln": "Bangladesh"
     },
     "881": {
-        "sn": "World",
-        "ln": "World"
+        "sn": "Global Satellite",
+        "ln": "Global Mobile Satellite System"
     },
     "882": {
-        "sn": "World",
-        "ln": "World"
+        "sn": "International Networks",
+        "ln": "International Networks (country code)"
     },
     "883": {
-        "sn": "World",
-        "ln": "World"
+        "sn": "National Rate",
+        "ln": "International National Rate Service"
     },
     "886": {
         "sn": "Taiwan",
         "ln": "Republic of China"
     },
     "888": {
-        "sn": "World",
-        "ln": "World"
+        "sn": "OCHA",
+        "ln": "OCHA"
     },
     "960": {
         "sn": "Maldives",
@@ -832,8 +832,12 @@
         "ln": "Nepal"
     },
     "979": {
-        "sn": "World",
-        "ln": "World"
+        "sn": "Premium Rate",
+        "ln": "International Premium Rate Service"
+    },
+    "991": {
+        "sn": "ITPCS",
+        "ln": "ITPCS"
     },
     "992": {
         "sn": "Tajikistan",

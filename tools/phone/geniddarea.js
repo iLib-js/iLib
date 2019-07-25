@@ -1,6 +1,5 @@
 /*
- * geniddarea.js - ilib tool to generate the json numplan information from the libphonefmt-js
- * library
+ * geniddarea.js - ilib tool to generate the json numplan information from the libphonenumber-js library
  *
  * Copyright © 2019 JEDLSoft
  *
@@ -28,8 +27,8 @@ var path = require('path');
 var common = require('../cldr/common.js');
 var ListFmt = require("../../js/lib/ListFmt.js");
 var mkdirs = common.makeDirs;
-var toDir = "tmp";
 
+var toDir = "tmp";
 
 if (process.argv.length > 2) {
     toDir = process.argv[2];
@@ -55,30 +54,64 @@ var countries = require("../../js/data/locale/ctryreverse.json");
 var callingCode = metadata.country_calling_codes;
 var countryData = {};
 
-var listfmt = new ListFmt({locale:"en-US", style:"unit", length:"full"});
+var listfmt = new ListFmt({locale:"en-US", style:"disjunction", length:"full"});
 var i, arrayCountry;
 
 var hardCodeData = {
     "1": {
-         "sn": "North America",
-         "ln": "North America and the Caribbean Islands"
-     },
-     "65": {
-         "sn": "Singapore",
-         "ln": "Republic of Singapore" //Wikipedia
-     },
-     "86": {
-         "sn": "China",
-         "ln": "People's Republic of China" //Wikipedia
-     },
-     "886": {
-         "sn": "Taiwan",
-         "ln": "Republic of China" //Wikipedia
-     }
+        "sn": "North America",
+        "ln": "North America and the Caribbean Islands"
+    },
+    "65": {
+        "sn": "Singapore",
+        "ln": "Republic of Singapore" //Wikipedia
+    },
+    "86": {
+        "sn": "China",
+        "ln": "People's Republic of China" //Wikipedia
+    },
+    "886": {
+        "sn": "Taiwan",
+        "ln": "Republic of China" //Wikipedia
+    }
+}
+
+var reservedNumber = {
+    "800": {
+        "sn": "Freephone",
+        "ln": "Universal international freephone number"
+    },
+    "878": {
+        "sn": "Universal Personal",
+        "ln": "Universal Personal Telecommunications"
+    },
+    "881": {
+        "sn": "Global Satellite",
+        "ln": "Global Mobile Satellite System"
+    },
+    "882": {
+        "sn": "International Networks",
+        "ln": "International Networks (country code)"
+    },
+    "883": {
+        "sn": "National Rate",
+        "ln": "International National Rate Service"
+    },
+    "888": {
+        "sn": "OCHA",
+        "ln": "OCHA"
+    },
+    "979": {
+        "sn": "Premium Rate",
+        "ln": "International Premium Rate Service"
+    },
+    "991": {
+        "sn": "ITPCS",
+        "ln": "ITPCS"
+    }
 }
 
 for (number in callingCode) {
-
     if (!fs.existsSync(toDir)) {
         mkdirs(toDir);
     }
@@ -105,10 +138,13 @@ for (number in callingCode) {
     if (numCountry == 1) {
         countryData[number]["ln"] = countries[countryCode[0]];
     } else {
-        console.log("More than one country ......: ", number);
+        console.log("A number used by more than one country ......: ", number);
         countryData[number]["ln"] = listfmt.format(arrayCountry);    
     }
 }
+var mergedData = {...countryData, ...reservedNumber}
 
 var file = path.join(toDir, "iddarea.json");
-fs.writeFileSync(file, JSON.stringify(countryData, true, 4), "utf-8");
+fs.writeFileSync(file, JSON.stringify(mergedData, true, 4), "utf-8");
+
+console.log("Done.");
