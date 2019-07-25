@@ -573,6 +573,22 @@ module.exports.phonefmt_KR = {
         test.equal(formatted, expected);
         test.done();
     },
+    testFormatKRStyle0Whole11: function(test) {
+        test.expect(1);
+        var formatted;
+        var parsed = new PhoneNumber({
+            trunkAccess: "0",
+            areaCode: "33",
+            subscriberNumber: "123456789"
+        });
+        var expected = "033-1234-56789";
+
+        var fmt = new PhoneFmt({locale: "ko-KR", style: "default"});
+        formatted = fmt.format(parsed, {partial: false});
+
+        test.equal(formatted, expected);
+        test.done();
+    },
     
     testFormatKRStyle1Partial0: function(test) {
         test.expect(1);

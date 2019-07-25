@@ -2,5 +2,20 @@
     "region": "SO",
     "countryCode": "252",
     "iddCode": "00",
-    "dialingPlan": "closed"
+    "trunkCode": "0",
+    "skipTrunk": true,
+    "dialingPlan": "closed",
+    "commonFormatChars": " ",
+    "fieldLengths": {
+        "areaCode": 0,
+        "cic": 0,
+        "vsc": 0,
+        "mobilePrefix": 0,
+        "serviceCode": 0,
+        "personal": 0,
+        "minLocalLength": 6,
+        "maxLocalLength": 7,
+        "emergency": 0,
+        "special": 0
+    }
 }
