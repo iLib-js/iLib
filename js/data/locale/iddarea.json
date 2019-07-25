@@ -5,7 +5,7 @@
     },
     "7": {
         "sn": "Russia",
-        "ln": "Russia, Kazakhstan"
+        "ln": "Russia or Kazakhstan"
     },
     "20": {
         "sn": "Egypt",
@@ -14,10 +14,6 @@
     "27": {
         "sn": "South Africa",
         "ln": "South Africa"
-    },
-    "28": {
-        "sn": "Unknown Country",
-        "ln": "Unknown Country"
     },
     "30": {
         "sn": "Greece",
@@ -45,7 +41,7 @@
     },
     "39": {
         "sn": "Italy",
-        "ln": "Italy, Vatican City"
+        "ln": "Italy or Vatican City"
     },
     "40": {
         "sn": "Romania",
@@ -61,7 +57,7 @@
     },
     "44": {
         "sn": "United Kingdom",
-        "ln": "United Kingdom, Guernsey, Isle of Man, Jersey"
+        "ln": "United Kingdom, Guernsey, Isle of Man, or Jersey"
     },
     "45": {
         "sn": "Denmark",
@@ -73,7 +69,7 @@
     },
     "47": {
         "sn": "Norway",
-        "ln": "Norway, Svalbard and Jan Mayen"
+        "ln": "Norway or Svalbard & Jan Mayen"
     },
     "48": {
         "sn": "Poland",
@@ -121,7 +117,7 @@
     },
     "61": {
         "sn": "Australia",
-        "ln": "Australia, Christmas Island, Cocos Islands"
+        "ln": "Australia, Cocos (Keeling) Islands, or Christmas Island"
     },
     "62": {
         "sn": "Indonesia",
@@ -151,10 +147,6 @@
         "sn": "South Korea",
         "ln": "South Korea"
     },
-    "83": {
-        "sn": "Unknown Country",
-        "ln": "Unknown Country"
-    },
     "84": {
         "sn": "Vietnam",
         "ln": "Vietnam"
@@ -163,13 +155,9 @@
         "sn": "China",
         "ln": "People's Republic of China"
     },
-    "89": {
-        "sn": "Unknown Country",
-        "ln": "Unknown Country"
-    },
     "90": {
         "sn": "Turkey",
-        "ln": "Turkey, Turkish Republic of Northern Cyprus"
+        "ln": "Turkey"
     },
     "91": {
         "sn": "India",
@@ -188,16 +176,12 @@
         "ln": "Sri Lanka"
     },
     "95": {
-        "sn": "Burma",
-        "ln": "Burma"
+        "sn": "Myanmar (Burma)",
+        "ln": "Myanmar (Burma)"
     },
     "98": {
         "sn": "Iran",
         "ln": "Iran"
-    },
-    "210": {
-        "sn": "Unknown Country",
-        "ln": "Unknown Country"
     },
     "211": {
         "sn": "South Sudan",
@@ -205,39 +189,23 @@
     },
     "212": {
         "sn": "Morocco",
-        "ln": "Morocco, Western Sahara"
+        "ln": "Morocco or Western Sahara"
     },
     "213": {
         "sn": "Algeria",
         "ln": "Algeria"
     },
-    "214": {
-        "sn": "Unknown Country",
-        "ln": "Unknown Country"
-    },
-    "215": {
-        "sn": "Unknown Country",
-        "ln": "Unknown Country"
-    },
     "216": {
         "sn": "Tunisia",
         "ln": "Tunisia"
-    },
-    "217": {
-        "sn": "Unknown Country",
-        "ln": "Unknown Country"
     },
     "218": {
         "sn": "Libya",
         "ln": "Libya"
     },
-    "219": {
-        "sn": "Unknown Country",
-        "ln": "Unknown Country"
-    },
     "220": {
         "sn": "Gambia",
-        "ln": "The Gambia"
+        "ln": "Gambia"
     },
     "221": {
         "sn": "Senegal",
@@ -256,8 +224,8 @@
         "ln": "Guinea"
     },
     "225": {
-        "sn": "Côte d'Ivoire",
-        "ln": "Côte d'Ivoire"
+        "sn": "Côte d’Ivoire",
+        "ln": "Côte d’Ivoire"
     },
     "226": {
         "sn": "Burkina Faso",
@@ -312,8 +280,8 @@
         "ln": "Cape Verde"
     },
     "239": {
-        "sn": "São Tomé and Príncipe",
-        "ln": "São Tomé and Príncipe"
+        "sn": "São Tomé & Príncipe",
+        "ln": "São Tomé & Príncipe"
     },
     "240": {
         "sn": "Equatorial Guinea",
@@ -324,12 +292,12 @@
         "ln": "Gabon"
     },
     "242": {
-        "sn": "Republic of Congo",
-        "ln": "Republic of Congo"
+        "sn": "Congo - Brazzaville",
+        "ln": "Congo - Brazzaville"
     },
     "243": {
-        "sn": "DRC",
-        "ln": "Democratic Republic of the Congo"
+        "sn": "Congo - Kinshasa",
+        "ln": "Congo - Kinshasa"
     },
     "244": {
         "sn": "Angola",
@@ -340,11 +308,11 @@
         "ln": "Guinea-Bissau"
     },
     "246": {
-        "sn": "British Indian Ocean",
+        "sn": "British Indian Ocean Territory",
         "ln": "British Indian Ocean Territory"
     },
     "247": {
-        "sn": "Ascension",
+        "sn": "Ascension Island",
         "ln": "Ascension Island"
     },
     "248": {
@@ -365,7 +333,7 @@
     },
     "252": {
         "sn": "Somalia",
-        "ln": "Somalia, Somaliland"
+        "ln": "Somalia"
     },
     "253": {
         "sn": "Djibouti",
@@ -391,10 +359,6 @@
         "sn": "Mozambique",
         "ln": "Mozambique"
     },
-    "259": {
-        "sn": "Unknown Country",
-        "ln": "Unknown Country"
-    },
     "260": {
         "sn": "Zambia",
         "ln": "Zambia"
@@ -405,7 +369,7 @@
     },
     "262": {
         "sn": "Réunion",
-        "ln": "Réunion, Mayotte"
+        "ln": "Réunion or Mayotte"
     },
     "263": {
         "sn": "Zimbabwe",
@@ -436,32 +400,12 @@
         "ln": "Comoros"
     },
     "290": {
-        "sn": "Saint Helena",
-        "ln": "Saint Helena, Tristan da Cunha"
+        "sn": "St. Helena",
+        "ln": "St. Helena or Tristan da Cunha"
     },
     "291": {
         "sn": "Eritrea",
         "ln": "Eritrea"
-    },
-    "292": {
-        "sn": "Unknown Country",
-        "ln": "Unknown Country"
-    },
-    "293": {
-        "sn": "Unknown Country",
-        "ln": "Unknown Country"
-    },
-    "294": {
-        "sn": "Unknown Country",
-        "ln": "Unknown Country"
-    },
-    "295": {
-        "sn": "Unknown Country",
-        "ln": "Unknown Country"
-    },
-    "296": {
-        "sn": "Unknown Country",
-        "ln": "Unknown Country"
     },
     "297": {
         "sn": "Aruba",
@@ -489,7 +433,7 @@
     },
     "353": {
         "sn": "Ireland",
-        "ln": "Republic of Ireland"
+        "ln": "Ireland"
     },
     "354": {
         "sn": "Iceland",
@@ -509,7 +453,7 @@
     },
     "358": {
         "sn": "Finland",
-        "ln": "Finland, Åland Islands"
+        "ln": "Finland or Åland Islands"
     },
     "359": {
         "sn": "Bulgaria",
@@ -533,7 +477,7 @@
     },
     "374": {
         "sn": "Armenia",
-        "ln": "Armenia, Nagorno-Karabakh"
+        "ln": "Armenia"
     },
     "375": {
         "sn": "Belarus",
@@ -551,10 +495,6 @@
         "sn": "San Marino",
         "ln": "San Marino"
     },
-    "379": {
-        "sn": "Vatican City",
-        "ln": "Vatican City"
-    },
     "380": {
         "sn": "Ukraine",
         "ln": "Ukraine"
@@ -568,12 +508,8 @@
         "ln": "Montenegro"
     },
     "383": {
-        "sn": "Unknown Country",
-        "ln": "Unknown Country"
-    },
-    "384": {
-        "sn": "Unknown Country",
-        "ln": "Unknown Country"
+        "sn": "Kosovo",
+        "ln": "Kosovo"
     },
     "385": {
         "sn": "Croatia",
@@ -584,59 +520,27 @@
         "ln": "Slovenia"
     },
     "387": {
-        "sn": "Bosnia and Herzegovina",
-        "ln": "Bosnia and Herzegovina"
-    },
-    "388": {
-        "sn": "European Telephony",
-        "ln": "European Telephony Numbering Space"
+        "sn": "Bosnia & Herzegovina",
+        "ln": "Bosnia & Herzegovina"
     },
     "389": {
-        "sn": "FYRoM",
-        "ln": "Former Yugoslav Republic of Macedonia"
+        "sn": "Macedonia",
+        "ln": "Macedonia"
     },
     "420": {
-        "sn": "Czech Republic",
-        "ln": "Czech Republic"
+        "sn": "Czechia",
+        "ln": "Czechia"
     },
     "421": {
         "sn": "Slovakia",
         "ln": "Slovakia"
     },
-    "422": {
-        "sn": "Unknown Country",
-        "ln": "Unknown Country"
-    },
     "423": {
         "sn": "Liechtenstein",
         "ln": "Liechtenstein"
     },
-    "424": {
-        "sn": "Unknown Country",
-        "ln": "Unknown Country"
-    },
-    "425": {
-        "sn": "Unknown Country",
-        "ln": "Unknown Country"
-    },
-    "426": {
-        "sn": "Unknown Country",
-        "ln": "Unknown Country"
-    },
-    "427": {
-        "sn": "Unknown Country",
-        "ln": "Unknown Country"
-    },
-    "428": {
-        "sn": "Unknown Country",
-        "ln": "Unknown Country"
-    },
-    "429": {
-        "sn": "Unknown Country",
-        "ln": "Unknown Country"
-    },
     "500": {
-        "sn": "Falklands",
+        "sn": "Falkland Islands",
         "ln": "Falkland Islands"
     },
     "501": {
@@ -668,8 +572,8 @@
         "ln": "Panama"
     },
     "508": {
-        "sn": "St. Pierre and Miquelon",
-        "ln": "St. Pierre and Miquelon"
+        "sn": "St. Pierre & Miquelon",
+        "ln": "St. Pierre & Miquelon"
     },
     "509": {
         "sn": "Haiti",
@@ -677,7 +581,7 @@
     },
     "590": {
         "sn": "Guadeloupe",
-        "ln": "Guadeloupe, Saint Barthélemy, Saint Martin"
+        "ln": "Guadeloupe, St. Barthélemy, or St. Martin"
     },
     "591": {
         "sn": "Bolivia",
@@ -712,24 +616,20 @@
         "ln": "Uruguay"
     },
     "599": {
-        "sn": "Netherlands Antilles",
-        "ln": "Netherlands Antilles"
+        "sn": "Curaçao",
+        "ln": "Curaçao or Caribbean Netherlands"
     },
     "670": {
-        "sn": "East Timor",
-        "ln": "East Timor"
-    },
-    "671": {
-        "sn": "Unknown Country",
-        "ln": "Unknown Country"
+        "sn": "Timor-Leste",
+        "ln": "Timor-Leste"
     },
     "672": {
         "sn": "Norfolk Island",
-        "ln": "Norfolk Island, Australian Antarctic Territory"
+        "ln": "Norfolk Island"
     },
     "673": {
         "sn": "Brunei",
-        "ln": "Brunei Darussalam"
+        "ln": "Brunei"
     },
     "674": {
         "sn": "Nauru",
@@ -760,8 +660,8 @@
         "ln": "Palau"
     },
     "681": {
-        "sn": "Wallis and Futuna",
-        "ln": "Wallis and Futuna"
+        "sn": "Wallis & Futuna",
+        "ln": "Wallis & Futuna"
     },
     "682": {
         "sn": "Cook Islands",
@@ -770,10 +670,6 @@
     "683": {
         "sn": "Niue",
         "ln": "Niue"
-    },
-    "684": {
-        "sn": "Unknown Country",
-        "ln": "Unknown Country"
     },
     "685": {
         "sn": "Samoa",
@@ -801,99 +697,31 @@
     },
     "691": {
         "sn": "Micronesia",
-        "ln": "Federated States of Micronesia"
+        "ln": "Micronesia"
     },
     "692": {
         "sn": "Marshall Islands",
         "ln": "Marshall Islands"
     },
-    "693": {
-        "sn": "Unknown Country",
-        "ln": "Unknown Country"
-    },
-    "694": {
-        "sn": "Unknown Country",
-        "ln": "Unknown Country"
-    },
-    "695": {
-        "sn": "Unknown Country",
-        "ln": "Unknown Country"
-    },
-    "696": {
-        "sn": "Unknown Country",
-        "ln": "Unknown Country"
-    },
-    "697": {
-        "sn": "Unknown Country",
-        "ln": "Unknown Country"
-    },
-    "698": {
-        "sn": "Unknown Country",
-        "ln": "Unknown Country"
-    },
-    "699": {
-        "sn": "Unknown Country",
-        "ln": "Unknown Country"
-    },
     "800": {
         "sn": "Freephone",
         "ln": "Universal international freephone number"
     },
-    "801": {
-        "sn": "Unknown Country",
-        "ln": "Unknown Country"
-    },
-    "802": {
-        "sn": "Unknown Country",
-        "ln": "Unknown Country"
-    },
-    "803": {
-        "sn": "Unknown Country",
-        "ln": "Unknown Country"
-    },
-    "804": {
-        "sn": "Unknown Country",
-        "ln": "Unknown Country"
-    },
-    "805": {
-        "sn": "Unknown Country",
-        "ln": "Unknown Country"
-    },
-    "806": {
-        "sn": "Unknown Country",
-        "ln": "Unknown Country"
-    },
-    "807": {
-        "sn": "Unknown Country",
-        "ln": "Unknown Country"
-    },
     "808": {
-        "sn": "Shared Cost",
-        "ln": "Shared Cost Service"
-    },
-    "809": {
-        "sn": "Unknown Country",
-        "ln": "Unknown Country"
+        "sn": "World",
+        "ln": "World"
     },
     "850": {
         "sn": "North Korea",
         "ln": "North Korea"
     },
-    "851": {
-        "sn": "Unknown Country",
-        "ln": "Unknown Country"
-    },
     "852": {
-        "sn": "Hong Kong",
-        "ln": "Hong Kong"
+        "sn": "Hong Kong SAR China",
+        "ln": "Hong Kong SAR China"
     },
     "853": {
-        "sn": "Macau",
-        "ln": "Macau"
-    },
-    "854": {
-        "sn": "Unknown Country",
-        "ln": "Unknown Country"
+        "sn": "Macau SAR China",
+        "ln": "Macau SAR China"
     },
     "855": {
         "sn": "Cambodia",
@@ -903,57 +731,13 @@
         "sn": "Laos",
         "ln": "Laos"
     },
-    "857": {
-        "sn": "Unknown Country",
-        "ln": "Unknown Country"
-    },
-    "858": {
-        "sn": "Unknown Country",
-        "ln": "Unknown Country"
-    },
-    "859": {
-        "sn": "Unknown Country",
-        "ln": "Unknown Country"
-    },
     "870": {
-        "sn": "Inmarsat",
-        "ln": "Inmarsat"
-    },
-    "871": {
-        "sn": "Unknown Country",
-        "ln": "Unknown Country"
-    },
-    "872": {
-        "sn": "Pitcairn",
-        "ln": "Pitcairn"
-    },
-    "873": {
-        "sn": "Unknown Country",
-        "ln": "Unknown Country"
-    },
-    "874": {
-        "sn": "Unknown Country",
-        "ln": "Unknown Country"
-    },
-    "875": {
-        "sn": "Unknown Country",
-        "ln": "Unknown Country"
-    },
-    "876": {
-        "sn": "Unknown Country",
-        "ln": "Unknown Country"
-    },
-    "877": {
-        "sn": "Unknown Country",
-        "ln": "Unknown Country"
+        "sn": "World",
+        "ln": "World"
     },
     "878": {
         "sn": "Universal Personal",
         "ln": "Universal Personal Telecommunications"
-    },
-    "879": {
-        "sn": "Unknown Country",
-        "ln": "Unknown Country"
     },
     "880": {
         "sn": "Bangladesh",
@@ -971,29 +755,13 @@
         "sn": "National Rate",
         "ln": "International National Rate Service"
     },
-    "884": {
-        "sn": "Unknown Country",
-        "ln": "Unknown Country"
-    },
-    "885": {
-        "sn": "Unknown Country",
-        "ln": "Unknown Country"
-    },
     "886": {
         "sn": "Taiwan",
         "ln": "Republic of China"
     },
-    "887": {
-        "sn": "Unknown Country",
-        "ln": "Unknown Country"
-    },
     "888": {
         "sn": "OCHA",
         "ln": "OCHA"
-    },
-    "889": {
-        "sn": "Unknown Country",
-        "ln": "Unknown Country"
     },
     "960": {
         "sn": "Maldives",
@@ -1031,21 +799,17 @@
         "sn": "Oman",
         "ln": "Oman"
     },
-    "969": {
-        "sn": "Unknown Country",
-        "ln": "Unknown Country"
-    },
     "970": {
-        "sn": "Palestinian Authority",
-        "ln": "Palestinian Authority"
+        "sn": "Palestinian Territories",
+        "ln": "Palestinian Territories"
     },
     "971": {
-        "sn": "UAE",
+        "sn": "United Arab Emirates",
         "ln": "United Arab Emirates"
     },
     "972": {
         "sn": "Israel",
-        "ln": "Israel, Palestinian Authority"
+        "ln": "Israel"
     },
     "973": {
         "sn": "Bahrain",
@@ -1067,17 +831,9 @@
         "sn": "Nepal",
         "ln": "Nepal"
     },
-    "978": {
-        "sn": "Unknown Country",
-        "ln": "Unknown Country"
-    },
     "979": {
         "sn": "Premium Rate",
         "ln": "International Premium Rate Service"
-    },
-    "990": {
-        "sn": "Unknown Country",
-        "ln": "Unknown Country"
     },
     "991": {
         "sn": "ITPCS",
@@ -1093,7 +849,7 @@
     },
     "994": {
         "sn": "Azerbaijan",
-        "ln": "Azerbaijan, Nagorno-Karabakh"
+        "ln": "Azerbaijan"
     },
     "995": {
         "sn": "Georgia",
@@ -1103,16 +859,8 @@
         "sn": "Kyrgyzstan",
         "ln": "Kyrgyzstan"
     },
-    "997": {
-        "sn": "Unknown Country",
-        "ln": "Unknown Country"
-    },
     "998": {
         "sn": "Uzbekistan",
         "ln": "Uzbekistan"
-    },
-    "999": {
-        "sn": "Unknown Country",
-        "ln": "Unknown Country"
     }
 }
