@@ -1,9 +1,8 @@
 {
     "region": "AU",
-    "countryCode": "61",
-    "iddCode": "0011",
-    "trunkCode": "0",
     "skipTrunk": true,
+    "trunkCode": "0",
+    "iddCode": "0011",
     "dialingPlan": "open",
     "extendedAreaCodes": true,
     "commonFormatChars": " ()",

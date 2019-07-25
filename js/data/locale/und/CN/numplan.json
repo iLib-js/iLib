@@ -1,9 +1,8 @@
 {
     "region": "CN",
-    "countryCode": "86",
-    "iddCode": "00",
-    "trunkCode": "0",
     "skipTrunk": true,
+    "trunkCode": "0",
+    "iddCode": "00",
     "dialingPlan": "open",
     "commonFormatChars": " ()-",
     "fieldLengths": {

@@ -1,9 +1,8 @@
 {
     "region": "MX",
-    "countryCode": "52",
-    "iddCode": "00",
-    "trunkCode": "01",
     "skipTrunk": true,
+    "trunkCode": "01",
+    "iddCode": "00",
     "dialingPlan": "open",
     "commonFormatChars": " ()-/",
     "fieldLengths": {

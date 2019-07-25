@@ -1,9 +1,8 @@
 {
     "region": "FR",
-    "countryCode": "33",
-    "iddCode": "00",
-    "trunkCode": "0",
     "skipTrunk": true,
+    "trunkCode": "0",
+    "iddCode": "00",
     "dialingPlan": "closed",
     "trunkRequired": true,
     "commonFormatChars": " ().-",
