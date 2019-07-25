@@ -1,6 +1,5 @@
 /*
- * gennumplan.js - ilib tool to generate the json numplan information from the libphonefmt-js
- * library
+ * gennumplan.js - ilib tool to generate the json numplan information from the libphonenumber-js library
  *
  * Copyright © 2019 JEDLSoft
  *
@@ -33,7 +32,16 @@ var toDir = "tmp";
 *  Following country lists are having verified data. especially 'dialingPlan'.
 *  To avoid breaking test cases, I don't generate data for the following countries.
 */
-var skipCountry = ["KR", "US", "GB", "ES", "MX", "AR", "CO", "BR", "CA", "FR", "IT", "DE", "RU", "JP", "CN", "TW", "NL", "AU", "IN", "BE", "LU", "IE", "NZ", "HK"];
+var skipCountry = ["KR", "US", "GB", "ES", "MX", "AR", "CO", "BR", "CA", "FR", "IT", "DE",
+                   "RU", "JP", "CN", "TW", "NL", "AU", "IN", "BE", "LU", "IE", "NZ", "HK"];
+/*
+* Following countries are following a number plan other countries.
+* So it does't need to create numplan.json file.
+*/
+var sharedNumplan = ["AG", "AI", "AS", "BB", "BM", "BS", "CA", "DM", "DO", "GD", "GU", "JM",
+                    "KN", "KY", "LC", "MP", "MS", "PR", "SX", "TC", "TT", "VC", "VG", "VI",
+                    "GF", "MQ", "GP", "BL", "MF", "RE", "YT", "KZ", "GG", "IM", "JE", "SJ",
+                    "CC", "CX", "EH","TA", "AX", "BL", "MF", "BQ"];
 
 if (process.argv.length > 2) {
     toDir = process.argv[2];
@@ -83,7 +91,8 @@ function getFormatChars(phonedata) {
 
 for (country in countryData) {
     if (country === "001" ||
-       (skipCountry.indexOf(country) !== -1 ) ) {
+       (skipCountry.indexOf(country) !== -1) ||
+       (sharedNumplan.indexOf(country) !== -1)) {
         console.log("skip country.... : ", country)
         continue;
     }
@@ -152,3 +161,5 @@ for (country in countryData) {
 
 var file2 = path.join(toDir, "exampleNums.json");
 fs.writeFileSync(file2, JSON.stringify(exampleNums, true, 4), "utf-8");
+
+console.log("Done.");
