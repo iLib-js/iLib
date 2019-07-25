@@ -39,7 +39,7 @@ module.exports.phonegeo_RU = {
         var expected = {
             country: {
                 sn: "Russia",
-                ln: "Russia, Kazakhstan",
+                ln: "Russia or Kazakhstan",
                 code: "RU"
             }        
         };
@@ -60,7 +60,7 @@ module.exports.phonegeo_RU = {
         var expected = {
             country: {
                 sn: "Russia",
-                ln: "Russia, Kazakhstan",
+                ln: "Russia or Kazakhstan",
                 code: "RU"
             }        
         };
@@ -81,7 +81,7 @@ module.exports.phonegeo_RU = {
         var expected = {
             country: {
                 sn: "Russia",
-                ln: "Russia, Kazakhstan",
+                ln: "Russia or Kazakhstan",
                 code: "RU"
             },
             area: {
@@ -107,7 +107,7 @@ module.exports.phonegeo_RU = {
         var expected = {
             country: {
                 sn: "Russia",
-                ln: "Russia, Kazakhstan",
+                ln: "Russia or Kazakhstan",
                 code: "RU"
             },
             area: {
@@ -133,7 +133,7 @@ module.exports.phonegeo_RU = {
         var expected = {
             country: {
                 sn: "Russia",
-                ln: "Russia, Kazakhstan",
+                ln: "Russia or Kazakhstan",
                 code: "RU"
             },
             area: {
@@ -159,7 +159,7 @@ module.exports.phonegeo_RU = {
         var expected = {
             country: {
                 sn: "Russia",
-                ln: "Russia, Kazakhstan",
+                ln: "Russia or Kazakhstan",
                 code: "RU"
             },
             area: {
@@ -185,7 +185,7 @@ module.exports.phonegeo_RU = {
         var expected = {
             country: {
                 sn: "Russia",
-                ln: "Russia, Kazakhstan",
+                ln: "Russia or Kazakhstan",
                 code: "RU"
             },
             area: {
@@ -211,7 +211,7 @@ module.exports.phonegeo_RU = {
         var expected = {
             country: {
                 sn: "Russia",
-                ln: "Russia, Kazakhstan",
+                ln: "Russia or Kazakhstan",
                 code: "RU"
             },
             area: {
@@ -237,7 +237,7 @@ module.exports.phonegeo_RU = {
         var expected = {
             country: {
                 sn: "Russie",
-                ln: "Russie, Kazakhstan",
+                ln: "Russia or Kazakhstan",
                 code: "RU"
             },
             area: {
@@ -263,7 +263,7 @@ module.exports.phonegeo_RU = {
         var expected = {
             country: {
                 sn: "Russia",
-                ln: "Russia, Kazakhstan",
+                ln: "Russia or Kazakhstan",
                 code: "RU"
             },
             area: {
@@ -289,7 +289,7 @@ module.exports.phonegeo_RU = {
         var expected = {
             country: {
                 sn: "Russia",
-                ln: "Russia, Kazakhstan",
+                ln: "Russia or Kazakhstan",
                 code: "RU"
             },
             area: {

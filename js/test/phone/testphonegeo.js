@@ -561,7 +561,7 @@ module.exports.phonegeo = {
         var expected = {
             country: {
                 sn: "United Kingdom",
-                ln: "United Kingdom, Guernsey, Isle of Man, Jersey",
+                ln: "United Kingdom, Guernsey, Isle of Man, or Jersey",
                 code: "GB"
             },
             area: {
@@ -588,7 +588,7 @@ module.exports.phonegeo = {
         var expected = {
             country: {
                 sn: "United Kingdom",
-                ln: "United Kingdom, Guernsey, Isle of Man, Jersey",
+                ln: "United Kingdom, Guernsey, Isle of Man, or Jersey",
                 code: "GB"
             },
             area: {
@@ -615,7 +615,7 @@ module.exports.phonegeo = {
         var expected = {
             country: {
                 sn: "United Kingdom",
-                ln: "United Kingdom, Guernsey, Isle of Man, Jersey",
+                ln: "United Kingdom, Guernsey, Isle of Man, or Jersey",
                 code: "GB"
             },
             area: {
@@ -642,7 +642,7 @@ module.exports.phonegeo = {
         var expected = {
             country: {
                 sn: "United Kingdom",
-                ln: "United Kingdom, Guernsey, Isle of Man, Jersey",
+                ln: "United Kingdom, Guernsey, Isle of Man, or Jersey",
                 code: "GB"
             },
             area: {
@@ -669,7 +669,7 @@ module.exports.phonegeo = {
         var expected = {
             country: {
                 sn: "United Kingdom",
-                ln: "United Kingdom, Guernsey, Isle of Man, Jersey",
+                ln: "United Kingdom, Guernsey, Isle of Man, or Jersey",
                 code: "GB"
             }
         };
@@ -880,7 +880,7 @@ module.exports.phonegeo = {
         var expected = {
             country: {
                 sn: "Italia",
-                ln: "Italia, Città del Vaticano",
+                ln: "Italy or Vatican City",
                 code: "IT"
             },
             area: {
@@ -908,7 +908,7 @@ module.exports.phonegeo = {
         var expected = {
             country: {
                 sn: "Italia",
-                ln: "Italia, Città del Vaticano",
+                ln: "Italy or Vatican City",
                 code: "IT"
             },
             area: {
@@ -935,7 +935,7 @@ module.exports.phonegeo = {
         var expected = {
             country: {
                 sn: "Italia",
-                ln: "Italia, Città del Vaticano",
+                ln: "Italy or Vatican City",
                 code: "IT"
             },
             area: {
@@ -1037,7 +1037,7 @@ module.exports.phonegeo = {
         var expected = {
             country: {
                 sn: "Australia",
-                ln: "Australia, Cocos (Keeling) Islands, Christmas Island",
+                ln: "Australia, Cocos (Keeling) Islands, or Christmas Island",
                 code: "AU"
             },
             area: {
@@ -1064,7 +1064,7 @@ module.exports.phonegeo = {
         var expected = {
             country: {
                 sn: "Australia",
-                ln: "Australia, Cocos (Keeling) Islands, Christmas Island",
+                ln: "Australia, Cocos (Keeling) Islands, or Christmas Island",
                 code: "AU"
             },
             area: {
@@ -1091,7 +1091,7 @@ module.exports.phonegeo = {
         var expected = {
             country: {
                 sn: "Australia",
-                ln: "Australia, Cocos (Keeling) Islands, Christmas Island",
+                ln: "Australia, Cocos (Keeling) Islands, or Christmas Island",
                 code: "AU"
             },
             area: {
@@ -1118,7 +1118,7 @@ module.exports.phonegeo = {
         var expected = {
             country: {
                 sn: "Australia",
-                ln: "Australia, Cocos (Keeling) Islands, Christmas Island",
+                ln: "Australia, Cocos (Keeling) Islands, or Christmas Island",
                 code: "AU"
             },
             area: {
