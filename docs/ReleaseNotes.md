@@ -6,7 +6,7 @@ Build 007
 Published as version 14.4.0
 
 New Features:
-* Updated `iddarea.json` file which is used in `PhoneGeoLocator` information and wrote a script file to automatically generate it.
+* Updated `iddarea.json` and 'phoneloc.json' file which are used in `PhoneNumber` information and wrote a script file to automatically generate it.
 
 Bug Fixes:
 
