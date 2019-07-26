@@ -476,7 +476,7 @@ module.exports.testdatefmtasync = {
                             {label: "October", value: 10},
                             {label: "November", value: 11},
                             {label: "December", value: 12}
-                            ]);
+                        ]);
 
                         test.ok(!info[3].component);
                         test.equal(info[3].label, " ");
