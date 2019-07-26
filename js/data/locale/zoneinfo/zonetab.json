@@ -770,7 +770,6 @@
     "RU": [
         "Europe/Kaliningrad",
         "Europe/Moscow",
-        "Europe/Simferopol",
         "Europe/Kirov",
         "Europe/Astrakhan",
         "Europe/Volgograd",
@@ -796,6 +795,12 @@
         "Asia/Kamchatka",
         "Asia/Anadyr",
         "W-SU"
+    ],
+    "UA": [
+        "Europe/Simferopol",
+        "Europe/Kiev",
+        "Europe/Uzhgorod",
+        "Europe/Zaporozhye"
     ],
     "RW": [
         "Africa/Kigali"
@@ -915,11 +920,6 @@
     ],
     "TZ": [
         "Africa/Dar_es_Salaam"
-    ],
-    "UA": [
-        "Europe/Kiev",
-        "Europe/Uzhgorod",
-        "Europe/Zaporozhye"
     ],
     "UG": [
         "Africa/Kampala"

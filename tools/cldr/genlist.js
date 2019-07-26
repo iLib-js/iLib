@@ -1,7 +1,7 @@
 /*
  * genlist.js - ilib tool to generate the ilib format list data from cldr
- * 
- * Copyright © 2017-2018, JEDLSoft
+ *
+ * Copyright © 2017-2019, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,7 +18,7 @@
  */
 
 /*
- * This code is intended to be run under node.js 
+ * This code is intended to be run under node.js
  */
 
 var fs = require('fs');
@@ -83,7 +83,7 @@ locales.forEach(function(locale) {
     };
 
     if (cldrPatterns["listPattern-type-standard"]) {
-        if (comparePatterns(cldrPatterns["listPattern-type-standard-short"], cldrPatterns["listPattern-type-standard"]) || 
+        if (comparePatterns(cldrPatterns["listPattern-type-standard-short"], cldrPatterns["listPattern-type-standard"]) ||
             comparePatterns(cldrPatterns["listPattern-type-standard-narrow"], cldrPatterns["listPattern-type-standard"])) {
             patterns.standard.short = cldrPatterns["listPattern-type-standard"];
             patterns.standard.medium = cldrPatterns["listPattern-type-standard"];
@@ -101,8 +101,28 @@ locales.forEach(function(locale) {
         }
     }
 
+    if (cldrPatterns["listPattern-type-or"]) {
+        if (comparePatterns(cldrPatterns["listPattern-type-or-short"], cldrPatterns["listPattern-type-or"]) ||
+            comparePatterns(cldrPatterns["listPattern-type-or-narrow"], cldrPatterns["listPattern-type-or"])) {
+            patterns.or = {};
+            patterns.or.short = cldrPatterns["listPattern-type-or"];
+            patterns.or.medium = cldrPatterns["listPattern-type-or"];
+            patterns.or.long = cldrPatterns["listPattern-type-or"];
+            patterns.or.full = cldrPatterns["listPattern-type-or"];
+            if (cldrPatterns["listPattern-type-or-short"]) {
+                patterns.or.short = cldrPatterns["listPattern-type-or-short"];
+                patterns.or.medium = cldrPatterns["listPattern-type-or-short"];
+            }
+            if (cldrPatterns["listPattern-type-or-narrow"]) {
+                patterns.or.short = cldrPatterns["listPattern-type-or-narrow"];
+            }
+        } else {
+            patterns.or = cldrPatterns["listPattern-type-or"];
+        }
+    }
+
     if (cldrPatterns["listPattern-type-unit"]) {
-        if (comparePatterns(cldrPatterns["listPattern-type-unit-short"], cldrPatterns["listPattern-type-unit"]) || 
+        if (comparePatterns(cldrPatterns["listPattern-type-unit-short"], cldrPatterns["listPattern-type-unit"]) ||
             comparePatterns(cldrPatterns["listPattern-type-unit-narrow"], cldrPatterns["listPattern-type-unit"])) {
             patterns.unit = {};
             patterns.unit.short = cldrPatterns["listPattern-type-unit"];
@@ -154,7 +174,7 @@ for (var language in localePatterns) {
 console.log("\n\nPruning duplicated formats ...\n");
 
 //Don't prune the root. Iterate through the first level so we can
-//skip the root and only prune the "language" level of the locale 
+//skip the root and only prune the "language" level of the locale
 //spec. (And recursively everything under it of course.)
 
 aux.pruneFormats(localePatterns);

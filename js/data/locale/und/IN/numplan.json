@@ -1,8 +1,9 @@
 {
     "region": "IN",
-    "skipTrunk": true,
-    "trunkCode": "0",
+    "countryCode": "91",
     "iddCode": "00",
+    "trunkCode": "0",
+    "skipTrunk": true,
     "dialingPlan": "open",
     "commonFormatChars": " ()-",
     "fieldLengths": {

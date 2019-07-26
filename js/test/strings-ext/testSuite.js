@@ -1,7 +1,7 @@
 /*
  * testSuite.js - test suite for this directory
  * 
- * Copyright © 2017-2018, JEDLSoft
+ * Copyright © 2017-2019, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -22,8 +22,6 @@ require("../test/assertExtras.js");
 var reporter = nodeunit.reporters.minimal;
 var modules = {};
 var suites = require("./testSuiteFiles.js").files;
-
-var ilib = require("../../lib/ilib-node.js");
 
 var ilib = require("../../lib/ilib-node.js");
 

@@ -2081,9 +2081,9 @@ module.exports.testmeridiems = {
 
         test.done();
     },
-    testMeridiem_pa_PK: function(test) {
+    testMeridiem_pa_Arab_PK: function(test) {
         test.expect(3);
-        var fmtinfo = new DateFmtInfo({locale: "pa-PK"});
+        var fmtinfo = new DateFmtInfo({locale: "pa-Arab-PK"});
         var range = fmtinfo.getMeridiemsRange();
         test.ok(range !== null);
 

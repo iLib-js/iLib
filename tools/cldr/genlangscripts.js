@@ -111,7 +111,7 @@ for (var language in scripts) {
         if (!fs.existsSync(filename)) {
             fs.mkdirSync(filename);
         }
-        if (language === 'ms' || language === 'kk') {
+        if (language === 'ms' || language === 'kk' || language === 'pa') {
             scripts[language] = scripts[language].reverse();
         }
         console.log(language + ':\t"scripts": ' + JSON.stringify(scripts[language]) + ',');
