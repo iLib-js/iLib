@@ -2087,8 +2087,8 @@ module.exports.testmeridiems = {
         var range = fmtinfo.getMeridiemsRange();
         test.ok(range !== null);
 
-        test.equal(range[0].name,  "ਪੂ.ਦੁ.");
-        test.equal(range[1].name,  "ਬਾ.ਦੁ.");
+        test.equal(range[0].name,  "AM");
+        test.equal(range[1].name,  "PM");
 
         test.done();
     },
