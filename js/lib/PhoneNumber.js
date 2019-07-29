@@ -1355,7 +1355,7 @@ PhoneNumber.prototype = {
                 onLoad: ilib.bind(this, function (data) {
                     tempRegion = (data.countryCode && data.locale._mapCCtoRegion(data.countryCode));
 
-                    if (tempRegion && tempRegion !== "unknown" && tempRegion !== "SG") {
+                    if (tempRegion && tempRegion !== "SG") {
                         // only use it if it is a recognized country code. Singapore (SG) is a special case.
                         norm = data;
                         destinationLocale = data.destinationLocale;

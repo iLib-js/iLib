@@ -961,7 +961,7 @@ module.exports.normalize = {
         test.done();
     },
     
-    testAssistedDialNormalizeBogusNumberForVerizonInvalidCountryCode: function(test) {
+    testAssistedDialNormalizeBogusNumberForVerizonvalidCountryCode: function(test) {
         test.expect(1);
         var left = new PhoneNumber("4259876543233");
         
@@ -971,7 +971,7 @@ module.exports.normalize = {
             defaultAreaCode: "650",    // phone is a US phone
             assistedDialing: true
         };
-        var expectedString = "4259876543233"; // don't touch things with an invalid country code. ie. the reparse with a + didn't work.
+        var expectedString = "0114259876543233";
     
         test.equal(left.normalize(hints), expectedString); // 'en-US'
         test.done();
