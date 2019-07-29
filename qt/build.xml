@@ -92,6 +92,17 @@ limitations under the License.
 		</sequential>
 	</target>
 
+     <target name="qt.version" description="Check the currently running on qt version">
+        <sequential>
+            <exec osfamily="unix" executable="qmake" failifexecutionfails="true" failonerror="true">
+                <arg line="--version"/>
+            </exec>
+            <exec osfamily="windows" executable="qmake.exe" failifexecutionfails="true"  failonerror="true">
+                <arg line="--version"/>
+        </exec>
+        </sequential>
+    </target>
+
 	<!-- =================================================================== -->
 	<!-- Create the core jar file                                            -->
 	<!-- =================================================================== -->
@@ -123,7 +134,7 @@ limitations under the License.
 		</copy>
 	</target>
 	
-	<target name="test.all" depends="filereader" description="Run the unit tests in the qt test framework. Make sure you have Qt 5.4 or later, and it is the first Qt in your path.">
+	<target name="test.all" depends="qt.version, filereader" description="Run the unit tests in the qt test framework. Make sure you have Qt 5.4 or later, and it is the first Qt in your path.">
 		<sequential>
 			<exec osfamily="unix" executable="qmlscene" dir="${build.unittest}" failifexecutionfails="true" failonerror="true">
 				<env key="QML2_IMPORT_PATH" value="../FileReader/imports"/>
@@ -136,7 +147,7 @@ limitations under the License.
 		</sequential>
 	</target>
 
-    <target name="test.address" depends="filereader" description="Run the address unit tests in the qt test framework.">
+    <target name="test.address" depends="qt.version, filereader" description="Run the address unit tests in the qt test framework.">
         <sequential>
             <exec osfamily="unix" executable="qmlscene" dir="${build.unittest}" failifexecutionfails="true" failonerror="true">
                 <env key="QML2_IMPORT_PATH" value="../FileReader/imports"/>
@@ -149,7 +160,7 @@ limitations under the License.
         </sequential>
     </target>
 
-    <target name="test.calendar" depends="export" description="Run the calendar unit tests in the qt test framework.">
+    <target name="test.calendar" depends="qt.version, export" description="Run the calendar unit tests in the qt test framework.">
         <sequential>
             <exec osfamily="unix" executable="qmlscene" dir="${build.base}/NodeunitTest" failifexecutionfails="true" failonerror="true">
                 <env key="QML2_IMPORT_PATH" value="../FileReader/imports"/>
@@ -162,7 +173,7 @@ limitations under the License.
         </sequential>
     </target>
 
-    <target name="test.collate" depends="export" description="Run the collate unit tests in the qt test framework.">
+    <target name="test.collate" depends="qt.version, export" description="Run the collate unit tests in the qt test framework.">
         <sequential>
             <exec osfamily="unix" executable="qmlscene" dir="${build.base}/NodeunitTest" failifexecutionfails="true" failonerror="true">
                 <env key="QML2_IMPORT_PATH" value="../FileReader/imports"/>
@@ -175,7 +186,7 @@ limitations under the License.
         </sequential>
     </target>
 
-    <target name="test.ctype" depends="export" description="Run the ctype unit tests in the qt test framework.">
+    <target name="test.ctype" depends="qt.version, export" description="Run the ctype unit tests in the qt test framework.">
         <sequential>
             <exec osfamily="unix" executable="qmlscene" dir="${build.base}/NodeunitTest" failifexecutionfails="true" failonerror="true">
                 <env key="QML2_IMPORT_PATH" value="../FileReader/imports"/>
@@ -188,7 +199,7 @@ limitations under the License.
         </sequential>
     </target>
 
-    <target name="test.date" depends="export" description="Run the date unit tests in the qt test framework.">
+    <target name="test.date" depends="qt.version, export" description="Run the date unit tests in the qt test framework.">
         <sequential>
             <exec osfamily="unix" executable="qmlscene" dir="${build.base}/NodeunitTest" failifexecutionfails="true" failonerror="true">
                 <env key="QML2_IMPORT_PATH" value="../FileReader/imports"/>
@@ -201,7 +212,7 @@ limitations under the License.
         </sequential>
     </target>
 
-    <target name="test.daterange" depends="export" description="Run the daterange unit tests in the qt test framework.">
+    <target name="test.daterange" depends="qt.version, export" description="Run the daterange unit tests in the qt test framework.">
         <sequential>
             <exec osfamily="unix" executable="qmlscene" dir="${build.base}/NodeunitTest" failifexecutionfails="true" failonerror="true">
                 <env key="QML2_IMPORT_PATH" value="../FileReader/imports"/>
@@ -214,7 +225,7 @@ limitations under the License.
         </sequential>
     </target>
 
-    <target name="test.durfmt" depends="export" description="Run the durfmt unit tests in the qt test framework.">
+    <target name="test.durfmt" depends="qt.version, export" description="Run the durfmt unit tests in the qt test framework.">
         <sequential>
             <exec osfamily="unix" executable="qmlscene" dir="${build.base}/NodeunitTest" failifexecutionfails="true" failonerror="true">
                 <env key="QML2_IMPORT_PATH" value="../FileReader/imports"/>
@@ -227,7 +238,7 @@ limitations under the License.
         </sequential>
     </target>
 
-    <target name="test.maps" depends="export" description="Run the maps unit tests in the qt test framework.">
+    <target name="test.maps" depends="qt.version, export" description="Run the maps unit tests in the qt test framework.">
         <sequential>
             <exec osfamily="unix" executable="qmlscene" dir="${build.base}/NodeunitTest" failifexecutionfails="true" failonerror="true">
                 <env key="QML2_IMPORT_PATH" value="../FileReader/imports"/>
@@ -240,7 +251,7 @@ limitations under the License.
         </sequential>
     </target>
 
-    <target name="test.name" depends="export" description="Run the name unit tests in the qt test framework.">
+    <target name="test.name" depends="qt.version, export" description="Run the name unit tests in the qt test framework.">
         <sequential>
             <exec osfamily="unix" executable="qmlscene" dir="${build.base}/NodeunitTest" failifexecutionfails="true" failonerror="true">
                 <env key="QML2_IMPORT_PATH" value="../FileReader/imports"/>
@@ -253,7 +264,7 @@ limitations under the License.
         </sequential>
     </target>
 
-    <target name="test.number" depends="export" description="Run the number unit tests in the qt test framework.">
+    <target name="test.number" depends="qt.version, export" description="Run the number unit tests in the qt test framework.">
         <sequential>
             <exec osfamily="unix" executable="qmlscene" dir="${build.base}/NodeunitTest" failifexecutionfails="true" failonerror="true">
                 <env key="QML2_IMPORT_PATH" value="../FileReader/imports"/>
@@ -266,7 +277,7 @@ limitations under the License.
         </sequential>
     </target>
 
-    <target name="test.phone" depends="export" description="Run the phone unit tests in the qt test framework.">
+    <target name="test.phone" depends="qt.version, export" description="Run the phone unit tests in the qt test framework.">
         <sequential>
             <exec osfamily="unix" executable="qmlscene" dir="${build.base}/NodeunitTest" failifexecutionfails="true" failonerror="true">
                 <env key="QML2_IMPORT_PATH" value="../FileReader/imports"/>
@@ -279,7 +290,7 @@ limitations under the License.
         </sequential>
     </target>
 
-    <target name="test.root" depends="export" description="Run the root unit tests in the qt test framework.">
+    <target name="test.root" depends="qt.version, export" description="Run the root unit tests in the qt test framework.">
         <sequential>
             <exec osfamily="unix" executable="qmlscene" dir="${build.base}/NodeunitTest" failifexecutionfails="true" failonerror="true">
                 <env key="QML2_IMPORT_PATH" value="../FileReader/imports"/>
@@ -292,7 +303,7 @@ limitations under the License.
         </sequential>
     </target>
 
-    <target name="test.strings_ext" depends="export" description="Run the strings_ext unit tests in the qt test framework.">
+    <target name="test.strings_ext" depends="qt.version, export" description="Run the strings_ext unit tests in the qt test framework.">
         <sequential>
             <exec osfamily="unix" executable="qmlscene" dir="${build.base}/NodeunitTest" failifexecutionfails="true" failonerror="true">
                 <env key="QML2_IMPORT_PATH" value="../FileReader/imports"/>
@@ -305,7 +316,7 @@ limitations under the License.
         </sequential>
     </target>
 
-    <target name="test.units" depends="export" description="Run the units unit tests in the qt test framework.">
+    <target name="test.units" depends="qt.version, export" description="Run the units unit tests in the qt test framework.">
         <sequential>
             <exec osfamily="unix" executable="qmlscene" dir="${build.base}/NodeunitTest" failifexecutionfails="true" failonerror="true">
                 <env key="QML2_IMPORT_PATH" value="../FileReader/imports"/>
@@ -318,7 +329,7 @@ limitations under the License.
         </sequential>
     </target>
 
-    <target name="test.util" depends="export" description="Run the util unit tests in the qt test framework.">
+    <target name="test.util" depends="qt.version, export" description="Run the util unit tests in the qt test framework.">
         <sequential>
             <exec osfamily="unix" executable="qmlscene" dir="${build.base}/NodeunitTest" failifexecutionfails="true" failonerror="true">
                 <env key="QML2_IMPORT_PATH" value="../FileReader/imports"/>
