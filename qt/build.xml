@@ -2,7 +2,7 @@
 <!--
 build.xml - build the Qt/QML parts
 
-Copyright © 2015, JEDLSoft
+Copyright © 2015, 2019 JEDLSoft
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -92,7 +92,7 @@ limitations under the License.
 		</sequential>
 	</target>
 
-     <target name="qt.version" description="Check the currently running on qt version">
+     <target name="qt.version" description="Check the currently running on Qt version">
         <sequential>
             <exec osfamily="unix" executable="qmake" failifexecutionfails="true" failonerror="true">
                 <arg line="--version"/>
