@@ -27,6 +27,10 @@ if (typeof(normtests) === "undefined") {
     var normtests = require("./normdata.js");
 }
 
+if (ilib._getPlatform() === "qt" && typeof normtests === "undefined" ) {
+    Qt.include("./normdata.js");
+}
+
 if (ilib.isDynData()) {
     NormString.init();
 }
