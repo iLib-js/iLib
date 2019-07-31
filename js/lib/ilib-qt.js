@@ -62,7 +62,10 @@ requireClass.prototype.normalize = function(pathname) {
 
 requireClass.prototype.require = function(parent, pathname, absolutePath) {
     //console.log("------------------------\nrequire: called with " + pathname);
-    if (pathname === "./TestSuiteModule.js") {
+    if (pathname === "./normdata.js") {
+        return;
+    }
+    else if (pathname === "./TestSuiteModule.js") {
         // special case to redirect to qt instead
         pathname = this.root + "/../../qt/NodeunitTest/TestSuiteModule.js";
     } else if (pathname === "nodeunit") {

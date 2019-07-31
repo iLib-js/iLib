@@ -1562,15 +1562,8 @@ module.exports.testutils = {
     
     testHashCodeNotEqualFunctionDifferentNames: function(test) {
         test.expect(1);
-        if (ilib._getPlatform() === "qt") {
-            // the qt javascript engine doesn't allow you to see the code of a function, so all 
-            // functions should have the same hash
-            var expected = JSUtils.hashCode(function a() { return "a"; });
-            test.equal(JSUtils.hashCode(function b() { return "a"; }), expected);
-        } else {
-            var expected = JSUtils.hashCode(function a() { return "a"; });
-            test.notEqual(JSUtils.hashCode(function b() { return "a"; }), expected);
-        }
+        var expected = JSUtils.hashCode(function a() { return "a"; });
+        test.notEqual(JSUtils.hashCode(function b() { return "a"; }), expected);
         test.done();
     },
     testHashCodeNotEqualFunctionDifferentContents: function(test) {
