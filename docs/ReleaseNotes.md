@@ -9,7 +9,7 @@ New Features:
 * Updated `iddarea.json` file which is used in `PhoneGeoLocator` information and wrote a script file to automatically generate it.
 
 Bug Fixes:
-
+* Fixed unit test failures which occur on QT 5.12
 
 Build 006
 -------
