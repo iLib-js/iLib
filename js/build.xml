@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
 build.xml - build the javascript parts
-Copyright © 2012-2018, JEDLSoft
+Copyright © 2012-2019, JEDLSoft
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
 You may obtain a copy of the License at
@@ -37,8 +37,6 @@ limitations under the License.
 	<property name="build.bin"						value="${build.base}/bin"/>
 	<property name="build.lib"						value="${build.base}/lib"/>
 	<property name="build.output"					value="${build.base}/output"/>
-	<property name="build.output.reports"			value="${build.output}/reports"/>
-	<property name="build.output.jsunit"			value="${build.output}/jsunit"/>
 	<property name="build.output.js"				value="${build.output}/js"/>
 	<property name="build.output.dyncode"			value="${build.output}/dyncode"/>
 	<property name="build.output.test"				value="${build.output}/test"/>
@@ -116,7 +114,6 @@ limitations under the License.
 		<delete dir="${build.locale}"/>
 	</target>
 	<target name="prepare" depends="update.package.json" description="Prepare all directories that are needed before the project can be built">
-		<mkdir dir="${build.output.reports}"/>
 		<mkdir dir="${build.output.js}"/>
 		<mkdir dir="${build.output.dyncode}"/>
 		<mkdir dir="${build.output.test}"/>
@@ -390,50 +387,6 @@ limitations under the License.
 			<fileset dir="${build.output.dyncode}" includes="ilib-node*.js,ilib-stubs*,ilib-web.js,ilib-qt.js"/>
 			<mapper type="glob" from="*.js" to="*.js"/>
 		</apply>
-	</target>
-
-	<target name="testilib.lg" description="test whether or not the ilib-lg file needs to be rebuilt">
-		<uptodate property="ilib-lg.not.needed" targetfile="${build.output.js}/ilib-lg-compiled.js">
-			<srcfiles dir="${build.lib}" includes="**/*.js" excludes="ilib.js,ilib-*.js,*-compiled.js,**/test/**,runner.js,*Loader.js"/>
-			<srcfiles dir="${build.lib}" includes="metafiles/ilib-standard-webpack.js"/>
-			<srcfiles dir="${build.locale}" includes="**/*.json"/>
-		</uptodate>
-	</target>
-	<target name="assemble.lg" depends="prepare,gen.manifest.locale,testilib.lg" unless="ilib-lg.not.needed" description="assembles the set of the js files and locales that LG needs into a single file">
-		<runassemble
-			tgtfilename="${build.output.js}/ilib-lg.js"
-			srcfilename="${build.lib}/ilib-standard-inc.js"
-			locales="en-US,en-GB,de-DE,es-ES,it-IT,fr-FR,fr-CA,pt-BR,ko-KR,zh-Hans-CN,ja-JP,ru-RU"/>
-		<jscomp compilationlevel="simple"
-			warning="verbose"
-			debug="true"
-			output="${build.output.js}/ilib-lg-compiled.js"
-			description="Use the google closure compiler to compress code"
-			encoding="utf-8">
-			<externs dir="${build.lib}">
-				<file name="externs.js"/>
-			</externs>
-			<sources dir="${build.output.js}">
-				<file name="ilib-lg.js"/>
-			</sources>
-		</jscomp>
-		<runassemble
-			tgtfilename="ilib-lg-dyn.js"
-			srcfilename="ilib-lg-inc.js"
-			locales=" "/>
-		<jscomp compilationlevel="simple"
-			warning="verbose"
-			debug="true"
-			output="${build.output.js}/ilib-lg-dyn-compiled.js"
-			description="Use the google closure compiler to compress code"
-			encoding="utf-8">
-			<externs dir="${build.lib}">
-				<file name="externs.js"/>
-			</externs>
-			<sources dir="${build.lib}">
-				<file name="ilib-lg-dyn.js"/>
-			</sources>
-		</jscomp>
 	</target>
 
 	<target name="export"
@@ -863,14 +816,9 @@ limitations under the License.
 	<target name="test.core" depends="test.compiled,test.uncompiled"
 			description="run the tests">
 	</target>
-	<target name="core.junit.report" description="Generate a report on the junit tests">
-		<mkdir dir="${build.output.reports}/junit"/>
-	</target>
 	<!-- target name="test" depends="test.core"/ -->
 	<target name="test.only" depends="test.all" description="Run all tests"/>
-	<target name="reports.only" depends="core.junit.report" description="Generate reports on previously run tests"/>
-	<target name="reports" depends="test.only,reports.only" description="Run all tests, then generate reports on the results"/>
-	<target name="test" depends="reports" description="Run all tests and build all reports"/>
+	<target name="test" description="Run all tests and build all reports"/>
 
     <!-- macrodef name="expand">
         <attribute name="dir"/>
