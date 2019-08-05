@@ -816,9 +816,12 @@ limitations under the License.
 	<target name="test.core" depends="test.compiled,test.uncompiled"
 			description="run the tests">
 	</target>
+	<target name="core.junit.report" description="Generate a report on the junit tests" />
 	<!-- target name="test" depends="test.core"/ -->
 	<target name="test.only" depends="test.all" description="Run all tests"/>
-	<target name="test" description="Run all tests and build all reports"/>
+	<target name="reports.only" depends="core.junit.report" description="Generate reports on previously run tests"/>
+	<target name="reports" depends="test.only,reports.only" description="Run all tests, then generate reports on the results"/>
+	<target name="test" depends="reports" description="Run all tests and build all reports"/>
 
     <!-- macrodef name="expand">
         <attribute name="dir"/>
