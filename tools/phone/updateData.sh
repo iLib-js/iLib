@@ -37,8 +37,10 @@ tasks()
         node genphonefmt.js
         echo "Executing gengeoinfo.js ..."
         node gengeoinfo.js
-        echo "Executing gengiddarea.js ..."
+        echo "Executing geniddarea.js ..."
         node geniddarea.js
+        echo "Executing genphoneloc.js ..."
+        node genphoneloc.js
     elif [ $number = 4 ];then
         echo "Removing libphonenumber directory ..."
         if [ -d "libphonenumber-js" ];then

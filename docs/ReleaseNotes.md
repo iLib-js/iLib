@@ -6,7 +6,7 @@ Build 007
 Published as version 14.4.0
 
 New Features:
-* Updated `iddarea.json` file which is used in `PhoneGeoLocator` information and wrote a script file to automatically generate it.
+* Updated `iddarea.json` and 'phoneloc.json' which are used in `PhoneNumber` information and wrote a script file to automatically generate it.
 
 Bug Fixes:
 * Fixed unit test failures which occur on QT 5.12
@@ -41,7 +41,6 @@ Bug Fixes:
 * Updated the Taiwan area code of PhoneNumber according to [Wikipedia](https://en.wikipedia.org/wiki/Telephone_numbers_in_Taiwan).
 * Changed 3 digit iddprefix PhoneNumber format of zh-Hant-TW as corresponding local office feedback.
 * Rollback `js/ilib-web.js` file to support pure Web Application.
-* Added a new platform return type as 'webos-webapp'. If platform type is `webos-webapp`, The iLib won't load any loader as default.
 * Added a new platform return type as 'webos-webapp'. If platform type is `webos-webapp`, The iLib won't load any loader as default.
 * Implemented to include automatically Json data which doesn't exist in CLDR in cldrtool script.
 * Improved the speed of JSUtils.shallowCopy() by using Object.assign if it is available
