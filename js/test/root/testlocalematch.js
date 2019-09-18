@@ -1,7 +1,7 @@
 /*
  * testlocalematch.js - test the locale matcher object
  *
- * Copyright © 2012-2015,2017, JEDLSoft
+ * Copyright © 2012-2015,2017,2019 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -780,6 +780,126 @@ module.exports.testlocalematch = {
         // asia
         test.equal(lm.smallestCommonRegion("ja"), "142");
 
+        test.done();
+    },
+
+    testLocaleMatcherGetLikelyLocaleMinimalByLanguage1: function(test) {
+        test.expect(3);
+        var lm = new LocaleMatcher({
+            locale: "en"
+        });
+        test.ok(typeof(lm) !== "undefined");
+        var locale = lm.getLikelyLocaleMinimal();
+        test.ok(typeof(locale) !== "undefined");
+        test.equal(locale.getSpec(), "en-US");
+        test.done();
+    },
+
+    testLocaleMatcherGetLikelyLocaleMinimalByLanguage2: function(test) {
+        test.expect(3);
+        var lm = new LocaleMatcher({
+            locale: "fr"
+        });
+        test.ok(typeof(lm) !== "undefined");
+        var locale = lm.getLikelyLocaleMinimal();
+        test.ok(typeof(locale) !== "undefined");
+        test.equal(locale.getSpec(), "fr-FR");
+        test.done();
+    },
+
+    testLocaleMatcherGetLikelyLocaleMinimalByLanguage3: function(test) {
+        test.expect(3);
+        var lm = new LocaleMatcher({
+            locale: "ja"
+        });
+        test.ok(typeof(lm) !== "undefined");
+        var locale = lm.getLikelyLocaleMinimal();
+        test.ok(typeof(locale) !== "undefined");
+        test.equal(locale.getSpec(), "ja-JP");
+        test.done();
+    },
+
+    testLocaleMatcherGetLikelyLocaleMinimalUzbek: function(test) {
+        test.expect(3);
+        var lm = new LocaleMatcher({
+            locale: "uz"
+        });
+        test.ok(typeof(lm) !== "undefined");
+        var locale = lm.getLikelyLocale();
+        test.ok(typeof(locale) !== "undefined");
+        test.equal(locale.getSpec(), "uz-Latn-UZ"); // Uzbek always uses the script
+        test.done();
+    },
+
+    testLocaleMatcherGetLikelyLocaleMinimalChinese: function(test) {
+        test.expect(3);
+        var lm = new LocaleMatcher({
+            locale: "zh"
+        });
+        test.ok(typeof(lm) !== "undefined");
+        var locale = lm.getLikelyLocale();
+        test.ok(typeof(locale) !== "undefined");
+        test.equal(locale.getSpec(), "zh-Hans-CN"); // Chinese always uses the script
+        test.done();
+    },
+
+    testLocaleMatcherGetLikelyLocaleMinimalKazakh: function(test) {
+        test.expect(3);
+        var lm = new LocaleMatcher({
+            locale: "kk"
+        });
+        test.ok(typeof(lm) !== "undefined");
+        var locale = lm.getLikelyLocale();
+        test.ok(typeof(locale) !== "undefined");
+        test.equal(locale.getSpec(), "kk-Cyrl-KZ"); // Kazakh always uses the script
+        test.done();
+    },
+
+    testLocaleMatcherGetLikelyLocaleMinimalDefaultScriptForLanguage: function(test) {
+        test.expect(3);
+        var lm = new LocaleMatcher({
+            locale: "sr"
+        });
+        test.ok(typeof(lm) !== "undefined");
+        var locale = lm.getLikelyLocaleMinimal();
+        test.ok(typeof(locale) !== "undefined");
+        test.equal(locale.getSpec(), "sr-RS"); // default is Cyrillic
+        test.done();
+    },
+
+    testLocaleMatcherGetLikelyLocaleMinimalNonDefaultScriptForLanguage1: function(test) {
+        test.expect(3);
+        var lm = new LocaleMatcher({
+            locale: "sr-ME"
+        });
+        test.ok(typeof(lm) !== "undefined");
+        var locale = lm.getLikelyLocaleMinimal();
+        test.ok(typeof(locale) !== "undefined");
+        test.equal(locale.getSpec(), "sr-Latn-ME"); // default is Cyrillic, so we have to put "Latn" explicitly
+        test.done();
+    },
+
+    testLocaleMatcherGetLikelyLocaleMinimalNonDefaultScriptForLanguage2: function(test) {
+        test.expect(3);
+        var lm = new LocaleMatcher({
+            locale: "sr-Latn-RS"
+        });
+        test.ok(typeof(lm) !== "undefined");
+        var locale = lm.getLikelyLocaleMinimal();
+        test.ok(typeof(locale) !== "undefined");
+        test.equal(locale.getSpec(), "sr-Latn-RS"); // default is Cyrillic, so we have to put "Latn" explicitly
+        test.done();
+    },
+
+    testLocaleMatcherGetLikelyLocaleMinimalNonDefaultScriptForLanguage3: function(test) {
+        test.expect(3);
+        var lm = new LocaleMatcher({
+            locale: "zh-TW"
+        });
+        test.ok(typeof(lm) !== "undefined");
+        var locale = lm.getLikelyLocale();
+        test.ok(typeof(locale) !== "undefined");
+        test.equal(locale.getSpec(), "zh-Hant-TW"); // Chinese always uses the script
         test.done();
     }
 };

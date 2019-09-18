@@ -1,7 +1,7 @@
 /*
  * LocaleMatcher.js - Locale matcher definition
  *
- * Copyright © 2013-2015, 2018, JEDLSoft
+ * Copyright © 2013-2015, 2018-2019, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -29,6 +29,18 @@ var componentWeights = [
     0.25,  // region
     0.05   // variant
 ];
+
+// these are languages where you have to put the script all the time,
+// as none of the scripts are default for the language
+var multiScriptLanguages = {
+    "az": true,   // Azerbaijani
+    "kk": true,   // Kazakh
+    "ku": true,   // Kurdish
+    "ky": true,   // Kyrgyz
+    "tg": true,   // Tajik
+    "uz": true,   // Uzbek
+    "zh": true    // Chinese
+};
 
 /**
  * @class
@@ -170,6 +182,38 @@ LocaleMatcher.prototype = {
      */
     getLikelyLocale: function () {
         return this._getLikelyLocale(this.locale);
+    },
+
+    /**
+     * Return an Locale instance that is specified based on partial information
+     * given to the constructor of this locale matcher instance but which leaves out any
+     * part of the locale specifier that is so common that it is understood. For example,
+     * if the locale
+     * spec given to this locale matcher instance is simply "ru" (for the Russian language),
+     * then it will fill in the missing region and/or script tags and return a locale with
+     * the specifier "ru-RU". (ie. Russian language, Russian Federation). Note that the
+     * default script "Cyrl" is left out because the vast majority of text written in
+     * Russian is written with the Cyrllic script, so that part of the locale is understood
+     * and is commonly left out.<p>
+     *
+     * Any one or two of the language, script, or region parts may be left unspecified,
+     * and the other one or two parts will be filled in automatically. If this
+     * class has no information about the given locale, then the locale of this
+     * locale matcher instance is returned unchanged.<p>
+     *
+     * This method returns the same information as getLikelyLocale but with the very common
+     * parts left out.
+     *
+     * @returns {Locale} the most likely "minimal" completion of the partial locale given
+     * to the constructor of this locale matcher instance where the commonly understood
+     * parts are left out.
+     */
+    getLikelyLocaleMinimal: function() {
+        var fullLocale = this._getLikelyLocale(this.locale);
+        var langLocale = this._getLikelyLocale(new Locale(fullLocale.language));
+        return fullLocale.script === langLocale.script && !multiScriptLanguages[fullLocale.language] ?
+            new Locale(fullLocale.language, undefined, fullLocale.region) :
+            fullLocale;
     },
 
     /**
