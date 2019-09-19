@@ -825,7 +825,7 @@ module.exports.testlocalematch = {
             locale: "uz"
         });
         test.ok(typeof(lm) !== "undefined");
-        var locale = lm.getLikelyLocale();
+        var locale = lm.getLikelyLocaleMinimal();
         test.ok(typeof(locale) !== "undefined");
         test.equal(locale.getSpec(), "uz-Latn-UZ"); // Uzbek always uses the script
         test.done();
@@ -837,7 +837,7 @@ module.exports.testlocalematch = {
             locale: "zh"
         });
         test.ok(typeof(lm) !== "undefined");
-        var locale = lm.getLikelyLocale();
+        var locale = lm.getLikelyLocaleMinimal();
         test.ok(typeof(locale) !== "undefined");
         test.equal(locale.getSpec(), "zh-Hans-CN"); // Chinese always uses the script
         test.done();
@@ -849,7 +849,7 @@ module.exports.testlocalematch = {
             locale: "kk"
         });
         test.ok(typeof(lm) !== "undefined");
-        var locale = lm.getLikelyLocale();
+        var locale = lm.getLikelyLocaleMinimal();
         test.ok(typeof(locale) !== "undefined");
         test.equal(locale.getSpec(), "kk-Cyrl-KZ"); // Kazakh always uses the script
         test.done();
@@ -858,12 +858,12 @@ module.exports.testlocalematch = {
     testLocaleMatcherGetLikelyLocaleMinimalDefaultScriptForLanguage: function(test) {
         test.expect(3);
         var lm = new LocaleMatcher({
-            locale: "sr"
+            locale: "sv"
         });
         test.ok(typeof(lm) !== "undefined");
         var locale = lm.getLikelyLocaleMinimal();
         test.ok(typeof(locale) !== "undefined");
-        test.equal(locale.getSpec(), "sr-RS"); // default is Cyrillic
+        test.equal(locale.getSpec(), "sv-SE"); // default is Latin
         test.done();
     },
 
@@ -897,7 +897,7 @@ module.exports.testlocalematch = {
             locale: "zh-TW"
         });
         test.ok(typeof(lm) !== "undefined");
-        var locale = lm.getLikelyLocale();
+        var locale = lm.getLikelyLocaleMinimal();
         test.ok(typeof(locale) !== "undefined");
         test.equal(locale.getSpec(), "zh-Hant-TW"); // Chinese always uses the script
         test.done();

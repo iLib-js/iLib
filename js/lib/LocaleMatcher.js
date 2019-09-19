@@ -37,6 +37,8 @@ var multiScriptLanguages = {
     "kk": true,   // Kazakh
     "ku": true,   // Kurdish
     "ky": true,   // Kyrgyz
+    "pa": true,   // Panjabi
+    "sr": true,   // Serbian
     "tg": true,   // Tajik
     "uz": true,   // Uzbek
     "zh": true    // Chinese
