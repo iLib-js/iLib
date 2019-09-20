@@ -83,7 +83,7 @@ module.exports.testlocalematch = {
         test.ok(typeof(lm) !== "undefined");
         var locale = lm.getLikelyLocale();
         test.ok(typeof(locale) !== "undefined");
-        test.equal(locale.getSpec(), "ia-Latn-FR");
+        test.equal(locale.getSpec(), "ia-Latn-001");
         test.done();
     },
 
@@ -111,7 +111,7 @@ module.exports.testlocalematch = {
         test.done();
     },
 
-    testLocaleMatcherGetLikelyLocaleByScript: function(test) {
+    testLocaleMatcherGetLikelyLocaleByScript1: function(test) {
         test.expect(3);
         var lm = new LocaleMatcher({
             locale: "Arab"
@@ -120,6 +120,18 @@ module.exports.testlocalematch = {
         var locale = lm.getLikelyLocale();
         test.ok(typeof(locale) !== "undefined");
         test.equal(locale.getSpec(), "ar-Arab-EG");
+        test.done();
+    },
+
+    testLocaleMatcherGetLikelyLocaleByScript2: function(test) {
+        test.expect(3);
+        var lm = new LocaleMatcher({
+            locale: "Aran"
+        });
+        test.ok(typeof(lm) !== "undefined");
+        var locale = lm.getLikelyLocale();
+        test.ok(typeof(locale) !== "undefined");
+        test.equal(locale.getSpec(), "fa-Aran-IR");
         test.done();
     },
 
@@ -147,6 +159,18 @@ module.exports.testlocalematch = {
         test.done();
     },
 
+    testLocaleMatcherGetLikelyLocaleByLanguageAndScript3: function(test) {
+        test.expect(3);
+        var lm = new LocaleMatcher({
+            locale: "ar-Hebr"
+        });
+        test.ok(typeof(lm) !== "undefined");
+        var locale = lm.getLikelyLocale();
+        test.ok(typeof(locale) !== "undefined");
+        test.equal(locale.getSpec(), "ar-Hebr-IL");
+        test.done();
+    },
+
     testLocaleMatcherGetLikelyLocaleByLanguageAndScriptUnknownCombo: function(test) {
         test.expect(3);
         var lm = new LocaleMatcher({
@@ -171,7 +195,7 @@ module.exports.testlocalematch = {
         test.done();
     },
 
-    testLocaleMatcherGetLikelyLocaleByScriptOriya: function(test) {
+    testLocaleMatcherGetLikelyLocaleByLanguageOriya: function(test) {
         test.expect(3);
         var lm = new LocaleMatcher({
             locale: "or"
@@ -183,7 +207,7 @@ module.exports.testlocalematch = {
         test.done();
     },
 
-    testLocaleMatcherGetLikelyLocaleByLanguageOriya: function(test) {
+    testLocaleMatcherGetLikelyLocaleByScriptOriya: function(test) {
         test.expect(3);
         var lm = new LocaleMatcher({
             locale: "Orya"
@@ -239,7 +263,7 @@ module.exports.testlocalematch = {
         test.ok(typeof(lm) !== "undefined");
         var locale = lm.getLikelyLocale();
         test.ok(typeof(locale) !== "undefined");
-        test.equal(locale.getSpec(), "en-Latn-US");
+        test.equal(locale.getSpec(), "zxx-Latn-XX");
         test.done();
     },
 

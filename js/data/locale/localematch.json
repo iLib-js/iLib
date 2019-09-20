@@ -962,6 +962,9 @@
         "es": "es-Latn-ES",
         "es-Latn": "es-Latn-ES",
         "es-ES": "es-Latn-ES",
+        "esg": "esg-Gonm-IN",
+        "esg-Gonm": "esg-Gonm-IN",
+        "esg-IN": "esg-Gonm-IN",
         "esu": "esu-Latn-US",
         "esu-Latn": "esu-Latn-US",
         "esu-US": "esu-Latn-US",
@@ -1428,9 +1431,9 @@
         "hz": "hz-Latn-NA",
         "hz-Latn": "hz-Latn-NA",
         "hz-NA": "hz-Latn-NA",
-        "ia": "ia-Latn-FR",
-        "ia-Latn": "ia-Latn-FR",
-        "ia-FR": "ia-Latn-FR",
+        "ia": "ia-Latn-001",
+        "ia-Latn": "ia-Latn-001",
+        "ia-001": "ia-Latn-001",
         "ian": "ian-Latn-ZZ",
         "ian-Latn": "ian-Latn-ZZ",
         "ian-ZZ": "ian-Latn-ZZ",
@@ -2318,6 +2321,7 @@
         "mis": "mis-Hatr-IQ",
         "mis-Hatr": "mis-Hatr-IQ",
         "mis-IQ": "mis-Hatr-IQ",
+        "mis-Medf": "mis-Medf-NG",
         "miw": "miw-Latn-ZZ",
         "miw-Latn": "miw-Latn-ZZ",
         "miw-ZZ": "miw-Latn-ZZ",
@@ -2937,9 +2941,9 @@
         "rgn": "rgn-Latn-IT",
         "rgn-Latn": "rgn-Latn-IT",
         "rgn-IT": "rgn-Latn-IT",
-        "rhg": "rhg-Arab-ZZ",
-        "rhg-Arab": "rhg-Arab-ZZ",
-        "rhg-ZZ": "rhg-Arab-ZZ",
+        "rhg": "rhg-Arab-MM",
+        "rhg-Arab": "rhg-Arab-MM",
+        "rhg-MM": "rhg-Arab-MM",
         "ria": "ria-Latn-IN",
         "ria-Latn": "ria-Latn-IN",
         "ria-IN": "ria-Latn-IN",
@@ -3208,6 +3212,9 @@
         "so": "so-Latn-SO",
         "so-Latn": "so-Latn-SO",
         "so-SO": "so-Latn-SO",
+        "sog": "sog-Sogd-UZ",
+        "sog-Sogd": "sog-Sogd-UZ",
+        "sog-UZ": "sog-Sogd-UZ",
         "sok": "sok-Latn-ZZ",
         "sok-Latn": "sok-Latn-ZZ",
         "sok-ZZ": "sok-Latn-ZZ",
@@ -3728,6 +3735,8 @@
         "und-Arab-IN": "ur-Arab-IN",
         "Arab-KH": "cja-Arab-KH",
         "und-Arab-KH": "cja-Arab-KH",
+        "Arab-MM": "rhg-Arab-MM",
+        "und-Arab-MM": "rhg-Arab-MM",
         "Arab-MN": "kk-Arab-MN",
         "und-Arab-MN": "kk-Arab-MN",
         "Arab-MU": "ur-Arab-MU",
@@ -3925,6 +3934,8 @@
         "DO": "es-Latn-DO",
         "und-DO": "es-Latn-DO",
         "es-DO": "es-Latn-DO",
+        "Dogr": "doi-Dogr-IN",
+        "und-Dogr": "doi-Dogr-IN",
         "Dupl": "fr-Dupl-FR",
         "und-Dupl": "fr-Dupl-FR",
         "DZ": "ar-Arab-DZ",
@@ -3986,8 +3997,10 @@
         "GN": "fr-Latn-GN",
         "und-GN": "fr-Latn-GN",
         "fr-GN": "fr-Latn-GN",
-        "Gonm": "gon-Gonm-IN",
-        "und-Gonm": "gon-Gonm-IN",
+        "Gong": "wsg-Gong-IN",
+        "und-Gong": "wsg-Gong-IN",
+        "Gonm": "esg-Gonm-IN",
+        "und-Gonm": "esg-Gonm-IN",
         "Goth": "got-Goth-UA",
         "und-Goth": "got-Goth-UA",
         "GP": "fr-Latn-GP",
@@ -4217,6 +4230,8 @@
         "ar-MA": "ar-Arab-MA",
         "Mahj": "hi-Mahj-IN",
         "und-Mahj": "hi-Mahj-IN",
+        "Maka": "mak-Maka-ID",
+        "und-Maka": "mak-Maka-ID",
         "Mand": "myz-Mand-IR",
         "und-Mand": "myz-Mand-IR",
         "Mani": "xmn-Mani-CN",
@@ -4232,6 +4247,8 @@
         "ME": "sr-Latn-ME",
         "und-ME": "sr-Latn-ME",
         "sr-Latn": "sr-Latn-ME",
+        "Medf": "mis-Medf-NG",
+        "und-Medf": "mis-Medf-NG",
         "Mend": "men-Mend-SL",
         "und-Mend": "men-Mend-SL",
         "Merc": "xmr-Merc-SD",
@@ -4390,9 +4407,9 @@
         "QA": "ar-Arab-QA",
         "und-QA": "ar-Arab-QA",
         "ar-QA": "ar-Arab-QA",
-        "QO": "en-Latn-IO",
-        "und-QO": "en-Latn-IO",
-        "en-IO": "en-Latn-IO",
+        "QO": "en-Latn-DG",
+        "und-QO": "en-Latn-DG",
+        "en-DG": "en-Latn-DG",
         "RE": "fr-Latn-RE",
         "und-RE": "fr-Latn-RE",
         "fr-RE": "fr-Latn-RE",
@@ -4400,6 +4417,8 @@
         "und-Rjng": "rej-Rjng-ID",
         "RO": "ro-Latn-RO",
         "und-RO": "ro-Latn-RO",
+        "Rohg": "rhg-Rohg-MM",
+        "und-Rohg": "rhg-Rohg-MM",
         "RS": "sr-Cyrl-RS",
         "und-RS": "sr-Cyrl-RS",
         "RU": "ru-Cyrl-RU",
@@ -4451,6 +4470,10 @@
         "fr-SN": "fr-Latn-SN",
         "SO": "so-Latn-SO",
         "und-SO": "so-Latn-SO",
+        "Sogd": "sog-Sogd-UZ",
+        "und-Sogd": "sog-Sogd-UZ",
+        "Sogo": "sog-Sogo-UZ",
+        "und-Sogo": "sog-Sogo-UZ",
         "Sora": "srb-Sora-IN",
         "und-Sora": "srb-Sora-IN",
         "Soyo": "cmg-Soyo-MN",
@@ -4757,6 +4780,9 @@
         "wrs": "wrs-Latn-ZZ",
         "wrs-Latn": "wrs-Latn-ZZ",
         "wrs-ZZ": "wrs-Latn-ZZ",
+        "wsg": "wsg-Gong-IN",
+        "wsg-Gong": "wsg-Gong-IN",
+        "wsg-IN": "wsg-Gong-IN",
         "wsk": "wsk-Latn-ZZ",
         "wsk-Latn": "wsk-Latn-ZZ",
         "wsk-ZZ": "wsk-Latn-ZZ",
@@ -5084,7 +5110,6 @@
         "Latn-DE": "de-Latn-DE",
         "DG": "en-Latn-DG",
         "und-DG": "en-Latn-DG",
-        "en-DG": "en-Latn-DG",
         "Latn-DG": "en-Latn-DG",
         "so-DJ": "so-Latn-DJ",
         "Latn-DJ": "so-Latn-DJ",
@@ -5182,6 +5207,7 @@
         "Latn-IN": "en-Latn-IN",
         "IO": "en-Latn-IO",
         "und-IO": "en-Latn-IO",
+        "en-IO": "en-Latn-IO",
         "Latn-IO": "en-Latn-IO",
         "Arab-IQ": "ar-Arab-IQ",
         "Arab-IR": "fa-Arab-IR",
@@ -5439,7 +5465,70 @@
         "und-ZM": "en-Latn-ZM",
         "en-ZM": "en-Latn-ZM",
         "Latn-ZM": "en-Latn-ZM",
-        "Latn-ZW": "sn-Latn-ZW"
+        "Latn-ZW": "sn-Latn-ZW",
+        "XX": "zxx-Latn-XX",
+        "und-XX": "zxx-Latn-XX",
+        "zxx": "zxx-Latn-XX",
+        "zxx-Latn": "zxx-Latn-XX",
+        "zxx-XX": "zxx-Latn-XX",
+        "Latn-XX": "zxx-Latn-XX",
+        "und-zxx": "zxx-Latn-XX",
+        "zxx-ZXX": "zxx-Latn-XX",
+        "Latn-ZXX": "zxx-Latn-XX",
+        "ar-Hebr": "ar-Hebr-IL",
+        "und-ar-Hebr": "ar-Hebr-IL",
+        "ar-AR-HEBR": "ar-Hebr-IL",
+        "Hebr-AR-HEBR": "ar-Hebr-IL",
+        "fr-CA": "fr-Latn-CA",
+        "und-fr-CA": "fr-Latn-CA",
+        "fr-FR-CA": "fr-Latn-CA",
+        "Latn-FR-CA": "fr-Latn-CA",
+        "Afak": "djk-Afak-SR",
+        "und-Afak": "djk-Afak-SR",
+        "djk": "djk-Afak-SR",
+        "djk-Afak": "djk-Afak-SR",
+        "djk-AFAK": "djk-Afak-SR",
+        "Afak-AFAK": "djk-Afak-SR",
+        "Aran": "fa-Aran-IR",
+        "und-Aran": "fa-Aran-IR",
+        "fa-Aran": "fa-Aran-IR",
+        "fa-ARAN": "fa-Aran-IR",
+        "Aran-ARAN": "fa-Aran-IR",
+        "Cyrs": "ru-Cyrs-RU",
+        "und-Cyrs": "ru-Cyrs-RU",
+        "ru-Cyrs": "ru-Cyrs-RU",
+        "ru-CYRS": "ru-Cyrs-RU",
+        "Cyrs-CYRS": "ru-Cyrs-RU",
+        "doi-Dogr": "doi-Dogr-IN",
+        "doi-DOGR": "doi-Dogr-IN",
+        "Dogr-DOGR": "doi-Dogr-IN",
+        "Dsrt": "en-Dsrt-US",
+        "und-Dsrt": "en-Dsrt-US",
+        "en-Dsrt": "en-Dsrt-US",
+        "en-DSRT": "en-Dsrt-US",
+        "Dsrt-DSRT": "en-Dsrt-US",
+        "Geok": "ka-Geok-GE",
+        "und-Geok": "ka-Geok-GE",
+        "ka-Geok": "ka-Geok-GE",
+        "ka-GEOK": "ka-Geok-GE",
+        "Geok-GEOK": "ka-Geok-GE",
+        "ka-Gong": "ka-Gong-GE",
+        "ka-GONG": "ka-Gong-GE",
+        "Gong-GONG": "ka-Gong-GE",
+        "Hrkt": "ja-Hrkt-JP",
+        "und-Hrkt": "ja-Hrkt-JP",
+        "ja-Hrkt": "ja-Hrkt-JP",
+        "ja-HRKT": "ja-Hrkt-JP",
+        "Hrkt-HRKT": "ja-Hrkt-JP",
+        "Latn": "en-Latn-US",
+        "en-LATN": "en-Latn-US",
+        "Latn-LATN": "en-Latn-US",
+        "Piqd": "tlh-Piqd",
+        "und-Piqd": "tlh-Piqd",
+        "tlh": "tlh-Piqd",
+        "tlh-Piqd": "tlh-Piqd",
+        "tlh-PIQD": "tlh-Piqd",
+        "Piqd-PIQD": "tlh-Piqd"
     },
     "territoryContainment": {
         "142": [
@@ -5561,11 +5650,13 @@
             "AR",
             "BO",
             "BR",
+            "BV",
             "CL",
             "CO",
             "EC",
             "FK",
             "GF",
+            "GS",
             "GY",
             "PE",
             "PY",
@@ -5614,6 +5705,7 @@
             "DJ",
             "ER",
             "ET",
+            "IO",
             "KE",
             "KM",
             "MG",
@@ -5625,6 +5717,7 @@
             "SC",
             "SO",
             "SS",
+            "TF",
             "TZ",
             "UG",
             "YT",
@@ -5760,6 +5853,9 @@
         ],
         "053": [
             "AU",
+            "CC",
+            "CX",
+            "HM",
             "NF",
             "NZ"
         ],
@@ -5777,7 +5873,8 @@
             "MH",
             "MP",
             "NR",
-            "PW"
+            "PW",
+            "UM"
         ],
         "061": [
             "AS",
@@ -5844,14 +5941,6 @@
         ],
         "QO": [
             "AQ",
-            "BV",
-            "CC",
-            "CX",
-            "GS",
-            "HM",
-            "IO",
-            "TF",
-            "UM",
             "AC",
             "CP",
             "DG",
@@ -6568,6 +6657,12 @@
             "419",
             "005"
         ],
+        "BV": [
+            "001",
+            "019",
+            "419",
+            "005"
+        ],
         "CL": [
             "001",
             "UN",
@@ -6596,6 +6691,12 @@
             "005"
         ],
         "GF": [
+            "001",
+            "019",
+            "419",
+            "005"
+        ],
+        "GS": [
             "001",
             "019",
             "419",
@@ -6873,6 +6974,12 @@
             "202",
             "014"
         ],
+        "IO": [
+            "001",
+            "002",
+            "202",
+            "014"
+        ],
         "KE": [
             "001",
             "UN",
@@ -6945,6 +7052,12 @@
         "SS": [
             "001",
             "UN",
+            "002",
+            "202",
+            "014"
+        ],
+        "TF": [
+            "001",
             "002",
             "202",
             "014"
@@ -7656,6 +7769,21 @@
             "009",
             "053"
         ],
+        "CC": [
+            "001",
+            "009",
+            "053"
+        ],
+        "CX": [
+            "001",
+            "009",
+            "053"
+        ],
+        "HM": [
+            "001",
+            "009",
+            "053"
+        ],
         "NF": [
             "001",
             "009",
@@ -7736,6 +7864,11 @@
             "009",
             "057"
         ],
+        "UM": [
+            "001",
+            "009",
+            "057"
+        ],
         "AS": [
             "001",
             "009",
@@ -7790,46 +7923,6 @@
             "061"
         ],
         "AQ": [
-            "001",
-            "009",
-            "QO"
-        ],
-        "BV": [
-            "001",
-            "009",
-            "QO"
-        ],
-        "CC": [
-            "001",
-            "009",
-            "QO"
-        ],
-        "CX": [
-            "001",
-            "009",
-            "QO"
-        ],
-        "GS": [
-            "001",
-            "009",
-            "QO"
-        ],
-        "HM": [
-            "001",
-            "009",
-            "QO"
-        ],
-        "IO": [
-            "001",
-            "009",
-            "QO"
-        ],
-        "TF": [
-            "001",
-            "009",
-            "QO"
-        ],
-        "UM": [
             "001",
             "009",
             "QO"
