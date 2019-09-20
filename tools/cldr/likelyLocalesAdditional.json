@@ -250,5 +250,15 @@
     "ZA": "en-Latn-ZA",
     "ZM": "en-Latn-ZM",
     "ZW": "sn-Latn-ZW",
-    "fr-CA": "fr-Latn-CA"
+    "fr-CA": "fr-Latn-CA",
+    "Afak": "djk-Afak-SR",
+    "Aran": "fa-Aran-IR",
+    "Cyrs": "ru-Cyrs-RU",
+    "Dogr": "doi-Dogr-IN",
+    "Dsrt": "en-Dsrt-US",
+    "Geok": "ka-Geok-GE",
+    "Gong": "ka-Gong-GE",
+    "Hrkt": "ja-Hrkt-JP",
+    "Latn": "en-Latn-US",
+    "Piqd": "tlh-Piqd"
 }
