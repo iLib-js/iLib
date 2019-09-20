@@ -239,7 +239,7 @@ module.exports.testlocalematch = {
         test.ok(typeof(lm) !== "undefined");
         var locale = lm.getLikelyLocale();
         test.ok(typeof(locale) !== "undefined");
-        test.equal(locale.getSpec(), "en-Latn-US");
+        test.equal(locale.getSpec(), "zxx-Latn-XX"); // the pseudo locale
         test.done();
     },
 
@@ -867,6 +867,18 @@ module.exports.testlocalematch = {
         test.done();
     },
 
+    testLocaleMatcherGetLikelyLocaleMinimalDefaultScriptForCountry: function(test) {
+        test.expect(3);
+        var lm = new LocaleMatcher({
+            locale: "FI"
+        });
+        test.ok(typeof(lm) !== "undefined");
+        var locale = lm.getLikelyLocaleMinimal();
+        test.ok(typeof(locale) !== "undefined");
+        test.equal(locale.getSpec(), "fi-FI"); // default is Latin
+        test.done();
+    },
+
     testLocaleMatcherGetLikelyLocaleMinimalNonDefaultScriptForLanguage1: function(test) {
         test.expect(3);
         var lm = new LocaleMatcher({
@@ -901,5 +913,150 @@ module.exports.testlocalematch = {
         test.ok(typeof(locale) !== "undefined");
         test.equal(locale.getSpec(), "zh-Hant-TW"); // Chinese always uses the script
         test.done();
-    }
+    },
+
+    testLocaleMatcherGetLikelyLocaleMinimalDefaultScriptForCountry1: function(test) {
+        test.expect(3);
+        var lm = new LocaleMatcher({
+            locale: "US"
+        });
+        test.ok(typeof(lm) !== "undefined");
+        var locale = lm.getLikelyLocaleMinimal();
+        test.ok(typeof(locale) !== "undefined");
+        test.equal(locale.getSpec(), "en-US");
+        test.done();
+    },
+
+    testLocaleMatcherGetLikelyLocaleMinimalDefaultScriptForCountry2: function(test) {
+        test.expect(3);
+        var lm = new LocaleMatcher({
+            locale: "HK"
+        });
+        test.ok(typeof(lm) !== "undefined");
+        var locale = lm.getLikelyLocaleMinimal();
+        test.ok(typeof(locale) !== "undefined");
+        test.equal(locale.getSpec(), "zh-Hant-HK"); // Chinese always uses the script
+        test.done();
+    },
+
+    testLocaleMatcherGetLikelyLocaleMinimalDefaultScriptForCountry3: function(test) {
+        test.expect(3);
+        var lm = new LocaleMatcher({
+            locale: "RU"
+        });
+        test.ok(typeof(lm) !== "undefined");
+        var locale = lm.getLikelyLocaleMinimal();
+        test.ok(typeof(locale) !== "undefined");
+        test.equal(locale.getSpec(), "ru-RU");
+        test.done();
+    },
+
+    testLocaleMatcherGetLikelyLocaleMinimalDefaultLocaleForScript1: function(test) {
+        test.expect(3);
+        var lm = new LocaleMatcher({
+            locale: "Latn"
+        });
+        test.ok(typeof(lm) !== "undefined");
+        var locale = lm.getLikelyLocaleMinimal();
+        test.ok(typeof(locale) !== "undefined");
+        test.equal(locale.getSpec(), "en-US");
+        test.done();
+    },
+
+    testLocaleMatcherGetLikelyLocaleMinimalDefaultLocaleForScript2: function(test) {
+        test.expect(3);
+        var lm = new LocaleMatcher({
+            locale: "Jpan"
+        });
+        test.ok(typeof(lm) !== "undefined");
+        var locale = lm.getLikelyLocaleMinimal();
+        test.ok(typeof(locale) !== "undefined");
+        test.equal(locale.getSpec(), "ja-JP");
+        test.done();
+    },
+
+    testLocaleMatcherGetLikelyLocaleMinimalDefaultLocaleForScript3: function(test) {
+        test.expect(3);
+        var lm = new LocaleMatcher({
+            locale: "Hans"
+        });
+        test.ok(typeof(lm) !== "undefined");
+        var locale = lm.getLikelyLocaleMinimal();
+        test.ok(typeof(locale) !== "undefined");
+        test.equal(locale.getSpec(), "zh-Hans-CN");
+        test.done();
+    },
+
+    testLocaleMatcherGetLikelyLocaleMinimalNonDefaultLocaleForScript1: function(test) {
+        test.expect(3);
+        var lm = new LocaleMatcher({
+            locale: "Hira"
+        });
+        test.ok(typeof(lm) !== "undefined");
+        var locale = lm.getLikelyLocaleMinimal();
+        test.ok(typeof(locale) !== "undefined");
+        test.equal(locale.getSpec(), "ja-Hira-JP");
+        test.done();
+    },
+
+    testLocaleMatcherGetLikelyLocaleMinimalDefaultLocaleForLangScript1: function(test) {
+        test.expect(3);
+        var lm = new LocaleMatcher({
+            locale: "uz-Latn"
+        });
+        test.ok(typeof(lm) !== "undefined");
+        var locale = lm.getLikelyLocaleMinimal();
+        test.ok(typeof(locale) !== "undefined");
+        test.equal(locale.getSpec(), "uz-Latn-UZ"); // Uzbek always uses the script
+        test.done();
+    },
+
+    testLocaleMatcherGetLikelyLocaleMinimalDefaultLocaleForLangScript2: function(test) {
+        test.expect(3);
+        var lm = new LocaleMatcher({
+            locale: "ru-Cyrl"
+        });
+        test.ok(typeof(lm) !== "undefined");
+        var locale = lm.getLikelyLocaleMinimal();
+        test.ok(typeof(locale) !== "undefined");
+        test.equal(locale.getSpec(), "ru-RU");
+        test.done();
+    },
+
+    testLocaleMatcherGetLikelyLocaleMinimalDefaultLocaleForLangScript3: function(test) {
+        test.expect(3);
+        var lm = new LocaleMatcher({
+            locale: "no-Latn"
+        });
+        test.ok(typeof(lm) !== "undefined");
+        var locale = lm.getLikelyLocaleMinimal();
+        test.ok(typeof(locale) !== "undefined");
+        test.equal(locale.getSpec(), "no-NO");
+        test.done();
+    },
+
+    testLocaleMatcherGetLikelyLocaleMinimalNonDefaultLocaleForLangScript1: function(test) {
+        test.expect(3);
+        var lm = new LocaleMatcher({
+            locale: "en-Dsrt"
+        });
+        test.ok(typeof(lm) !== "undefined");
+        var locale = lm.getLikelyLocaleMinimal();
+        test.ok(typeof(locale) !== "undefined");
+        test.equal(locale.getSpec(), "en-Dsrt-US");
+        test.done();
+    },
+
+    testLocaleMatcherGetLikelyLocaleMinimalNonDefaultLocaleForLangScript2: function(test) {
+        test.expect(3);
+        var lm = new LocaleMatcher({
+            locale: "ar-Hebr"
+        });
+        test.ok(typeof(lm) !== "undefined");
+        var locale = lm.getLikelyLocaleMinimal();
+        test.ok(typeof(locale) !== "undefined");
+        test.equal(locale.getSpec(), "ar-Hebr-IL");
+        test.done();
+    },
+
 };

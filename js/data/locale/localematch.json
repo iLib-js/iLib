@@ -5439,7 +5439,10 @@
         "und-ZM": "en-Latn-ZM",
         "en-ZM": "en-Latn-ZM",
         "Latn-ZM": "en-Latn-ZM",
-        "Latn-ZW": "sn-Latn-ZW"
+        "Latn-ZW": "sn-Latn-ZW",
+        "XX": "zxx-Latn-XX",
+        "zxx": "zxx-Latn-XX",
+        "ar-Hebr": "ar-Hebr-IL"
     },
     "territoryContainment": {
         "142": [
