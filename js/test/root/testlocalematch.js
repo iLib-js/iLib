@@ -83,7 +83,7 @@ module.exports.testlocalematch = {
         test.ok(typeof(lm) !== "undefined");
         var locale = lm.getLikelyLocale();
         test.ok(typeof(locale) !== "undefined");
-        test.equal(locale.getSpec(), "ia-Latn-FR");
+        test.equal(locale.getSpec(), "ia-Latn-001");
         test.done();
     },
 

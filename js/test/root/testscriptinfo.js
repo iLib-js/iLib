@@ -1,7 +1,7 @@
 /*
  * testscriptinfo.js - test the script info object
  * 
- * Copyright © 2013-2017, JEDLSoft
+ * Copyright © 2013-2017, 2019 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -180,7 +180,7 @@ module.exports.testscriptinfo = {
         var scripts = ScriptInfo.getAllScripts();
         test.ok(scripts !== null);
         
-        test.equal(scripts.length, 189);
+        test.equal(scripts.length, 202);
     
         test.equal(scripts[0], "Adlm");
         test.equal(scripts[1], "Afak");
@@ -198,7 +198,7 @@ module.exports.testscriptinfo = {
         test.equal(si.getCode(), "Kits");
         test.equal(si.getCodeNumber(), 288);
         test.equal(si.getName(), "Khitan small script");
-        test.equal(si.getLongCode(), "Khitan_small_script");
+        test.equal(si.getLongCode(), "Khitan_Small_Script");
         test.equal(si.getScriptDirection(), "ltr");
         test.ok(!si.getNeedsIME());
         test.ok(!si.getCasing());
