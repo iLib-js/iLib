@@ -2,7 +2,7 @@
  * genlikelyloc.js - ilib tool to generate the localematch.json files from 
  * the CLDR data files
  * 
- * Copyright © 2013-2018, JEDLSoft
+ * Copyright © 2013-2019, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -50,7 +50,7 @@ process.argv.forEach(function (val, index, array) {
 localeDirName = process.argv[2] || "tmp";
 
 console.log("genlikelyloc - generate the localematch.json file.\n" +
-        "Copyright (c) 2013-2018 JEDLSoft");
+        "Copyright (c) 2013-2019 JEDLSoft");
 
 console.log("locale dir: " + localeDirName);
 
@@ -115,18 +115,18 @@ for (var partial in likelySubtagsData.likelySubtags) {
         }
     }
 }
+var localeReg = /[a-z][a-z]\-[A-Z][A-Z]/;
 
 // fill in the gaps left by cldr -- these should be submitted to cldr for consideration
 var additional = JSON.parse(fs.readFileSync("likelyLocalesAdditional.json", "utf-8"));
 for (var territory in additional) {
+    var validTerritory = ((localeReg.test(territory) === true) ? false : true);
+
     var fullspec = additional[territory];
     var full = new Locale(fullspec);
     
     if (!likelylocales[territory]) {
         likelylocales[territory] = fullspec;
-    }
-    if (!likelylocales["und-" + territory]) {
-        likelylocales["und-" + territory] = fullspec;
     }
 
     if (!likelylocales[full.language]) {
@@ -137,15 +137,21 @@ for (var territory in additional) {
     if (!likelylocales[langscript.getSpec()]) {
         likelylocales[langscript.getSpec()] = fullspec;
     }
-    
-    var langregion = new Locale(full.language, undefined, territory);
-    if (!likelylocales[langregion.getSpec()]) {
-        likelylocales[langregion.getSpec()] = fullspec;
-    }
-    
-    var scriptregion = new Locale(undefined, full.script, territory);
-    if (!likelylocales[scriptregion.getSpec()]) {
-        likelylocales[scriptregion.getSpec()] = fullspec;
+
+    if (validTerritory) {
+        if (!likelylocales["und-" + territory]){
+            likelylocales["und-" + territory] = fullspec;
+        }
+
+        var langregion = new Locale(full.language, undefined, territory);
+        if (!likelylocales[langregion.getSpec()]) {
+            likelylocales[langregion.getSpec()] = fullspec;
+        }
+
+        var scriptregion = new Locale(undefined, full.script, territory);
+        if (!likelylocales[scriptregion.getSpec()]) {
+            likelylocales[scriptregion.getSpec()] = fullspec;
+        }
     }
 }
 
@@ -201,7 +207,7 @@ function getAncestors(region) {
     var parentsArray = parentsHash[region].map(function(parent) {
         return getAncestors(parent).concat([parent]);
     });
-    
+
     // then add the biggest territories first as measured by the smallest
     // number of steps to the root of the tree
     parentsArray.sort(function(left, right) {
