@@ -249,5 +249,9 @@
     "YT": "fr-Latn-YT",
     "ZA": "en-Latn-ZA",
     "ZM": "en-Latn-ZM",
-    "ZW": "sn-Latn-ZW"
+    "ZW": "sn-Latn-ZW",
+    "XX": "zxx-Latn-XX",
+    "zxx": "zxx-Latn-XX",
+    "ar-Hebr": "ar-Hebr-IL",
+    "en-Dsrt": "en-Dsrt-US"
 }

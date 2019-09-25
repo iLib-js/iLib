@@ -149,7 +149,15 @@ for (var territory in additional) {
     }
 }
 
-localematch.likelyLocales = likelylocales;
+function sortObject(obj) {
+    var ret = {};
+    Object.keys(obj).sort().forEach(function(prop) {
+        ret[prop] = obj[prop];
+    });
+    return ret;
+}
+
+localematch.likelyLocales = sortObject(likelylocales);
 
 // territory containments
 var containment = {};
@@ -232,21 +240,22 @@ for (var region in parentsHash) {
     getAncestors(region);
 }
 
-localematch.territoryContainment = containment;
-localematch.territoryContainmentReverse = containmentReverse;
+localematch.territoryContainment = sortObject(containment);
+localematch.territoryContainmentReverse = sortObject(containmentReverse);
 
 // macro languages
 var ml = JSON.parse(fs.readFileSync("macroLanguages.json", "utf-8"));
 
 var mlReverse = {};
 for (var macrolang in ml) {
+    ml[macrolang].sort();
     ml[macrolang].forEach(function(lang) {
         mlReverse[lang] = macrolang;
     });
 }
 
-localematch.macroLanguages = ml;
-localematch.macroLanguagesReverse = mlReverse;
+localematch.macroLanguages = sortObject(ml);
+localematch.macroLanguagesReverse = sortObject(mlReverse);
 
 // mutual intelligibility
 
