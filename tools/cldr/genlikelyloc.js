@@ -74,19 +74,11 @@ for (var partial in likelySubtagsData.likelySubtags) {
         var full = new Locale(likelySubtagsData.likelySubtags[partial]);
         if (partialLoc.language === "und") {
             var cleanloc = new Locale(undefined, partialLoc.script, partialLoc.region);
-            
+
             // add them with and without the "und" part
             likelylocales[cleanloc.getSpec()] = full.getSpec();
             likelylocales[partial] = full.getSpec();
-            
-            /*
-            if (partialLoc.script) {
-                // also generate the likely match for the language + script because cldr does not contain them for some reason
-                var langscript = new Locale(full.language, full.script);
-                likelylocales[langscript.getSpec()] = full.getSpec();
-            }
-            */
-            
+
             if (!partialLoc.script) {
                 // this is the official locale for the region
                 var langscript = new Locale(full.language, full.script);
@@ -115,21 +107,22 @@ for (var partial in likelySubtagsData.likelySubtags) {
         }
     }
 }
-var localeReg = /[a-z][a-z]\-[A-Z][A-Z]/;
 
 // fill in the gaps left by cldr -- these should be submitted to cldr for consideration
 var additional = JSON.parse(fs.readFileSync("likelyLocalesAdditional.json", "utf-8"));
 for (var territory in additional) {
-    var validTerritory = ((localeReg.test(territory) === true) ? false : true);
-
     var fullspec = additional[territory];
     var full = new Locale(fullspec);
-    
-    if (!likelylocales[territory]) {
+
+    if (territory && !likelylocales[territory]) {
         likelylocales[territory] = fullspec;
     }
 
-    if (!likelylocales[full.language]) {
+    if (full.region && !likelylocales[full.region]) {
+        likelylocales[full.region] = fullspec;
+    }
+
+    if (full.language && !likelylocales[full.language]) {
         likelylocales[full.language] = fullspec;
     }
 
@@ -138,17 +131,17 @@ for (var territory in additional) {
         likelylocales[langscript.getSpec()] = fullspec;
     }
 
-    if (validTerritory) {
-        if (!likelylocales["und-" + territory]){
-            likelylocales["und-" + territory] = fullspec;
+    if (full.region) {
+        if (!likelylocales["und-" + full.region]) {
+            likelylocales["und-" + full.region] = fullspec;
         }
 
-        var langregion = new Locale(full.language, undefined, territory);
+        var langregion = new Locale(full.language, undefined, full.region);
         if (!likelylocales[langregion.getSpec()]) {
             likelylocales[langregion.getSpec()] = fullspec;
         }
 
-        var scriptregion = new Locale(undefined, full.script, territory);
+        var scriptregion = new Locale(undefined, full.script, full.region);
         if (!likelylocales[scriptregion.getSpec()]) {
             likelylocales[scriptregion.getSpec()] = fullspec;
         }
