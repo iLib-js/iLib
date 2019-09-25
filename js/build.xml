@@ -633,109 +633,109 @@ limitations under the License.
 		</sequential>
 	</macrodef>
 
-	<target depends="update.package.json" name="test.address">
+	<target depends="prepare,gen.manifest.locale" name="test.address">
 		<run-nodeunit-sync suite="address" failquit="true"/>
 		<run-nodeunit-async suite="address" failquit="true"/>
 	</target>
-	<target depends="update.package.json" name="test.calendar">
+	<target depends="prepare,gen.manifest.locale" name="test.calendar">
 		<run-nodeunit-sync suite="calendar" failquit="true"/>
 		<run-nodeunit-async suite="calendar" failquit="true"/>
 	</target>
-	<target depends="update.package.json" name="test.collate">
+	<target depends="prepare,gen.manifest.locale" name="test.collate">
 		<run-nodeunit-sync suite="collate" failquit="true"/>
 		<run-nodeunit-async suite="collate" failquit="true"/>
 	</target>
-	<target depends="update.package.json" name="test.ctype">
+	<target depends="prepare,gen.manifest.locale" name="test.ctype">
 		<run-nodeunit-sync suite="ctype" failquit="true"/>
 		<run-nodeunit-async suite="ctype" failquit="true"/>
 	</target>
-	<target depends="update.package.json" name="test.date">
+	<target depends="prepare,gen.manifest.locale" name="test.date">
 		<run-nodeunit-sync suite="date" failquit="true"/>
 		<run-nodeunit-async suite="date" failquit="true"/>
 	</target>
-	<target depends="update.package.json" name="test.daterange">
+	<target depends="prepare,gen.manifest.locale" name="test.daterange">
 		<run-nodeunit-sync suite="daterange" failquit="true"/>
 		<run-nodeunit-async suite="daterange" failquit="true"/>
 	</target>
-	<target depends="update.package.json" name="test.durfmt">
+	<target depends="prepare,gen.manifest.locale" name="test.durfmt">
 		<run-nodeunit-sync suite="durfmt" failquit="true"/>
 		<run-nodeunit-async suite="durfmt" failquit="true"/>
 	</target>
-	<target depends="update.package.json" name="test.maps">
+	<target depends="prepare,gen.manifest.locale" name="test.maps">
 		<run-nodeunit-sync suite="maps" failquit="true"/>
 		<run-nodeunit-async suite="maps" failquit="true"/>
 	</target>
-	<target depends="update.package.json" name="test.name">
+	<target depends="prepare,gen.manifest.locale" name="test.name">
 		<run-nodeunit-sync suite="name" failquit="true"/>
 		<run-nodeunit-async suite="name" failquit="true"/>
 	</target>
-	<target depends="update.package.json" name="test.number">
+	<target depends="prepare,gen.manifest.locale" name="test.number">
 		<run-nodeunit-sync suite="number" failquit="true"/>
 		<run-nodeunit-async suite="number" failquit="true"/>
 	</target>
-	<target depends="update.package.json" name="test.phone">
+	<target depends="prepare,gen.manifest.locale" name="test.phone">
 		<run-nodeunit-sync suite="phone" failquit="true"/>
 		<run-nodeunit-async suite="phone" failquit="true"/>
 	</target>
-	<target depends="update.package.json" name="test.root">
+	<target depends="prepare,gen.manifest.locale" name="test.root">
 		<run-nodeunit-sync suite="root" failquit="true"/>
 		<run-nodeunit-async suite="root" failquit="true"/>
 	</target>
-	<target depends="update.package.json" name="test.strings-ext">
+	<target depends="prepare,gen.manifest.locale" name="test.strings-ext">
 		<run-nodeunit-sync suite="strings-ext" failquit="true"/>
 		<run-nodeunit-async suite="strings-ext" failquit="true"/>
 	</target>
-	<target depends="update.package.json" name="test.units">
+	<target depends="prepare,gen.manifest.locale" name="test.units">
 		<run-nodeunit-sync suite="units" failquit="true"/>
 		<run-nodeunit-async suite="units" failquit="true"/>
 	</target>
-	<target depends="update.package.json" name="test.util">
+	<target depends="prepare,gen.manifest.locale" name="test.util">
 		<run-nodeunit-sync suite="util" failquit="true"/>
 	</target>
 
-	<target depends="update.package.json" name="debug.address">
+	<target depends="prepare,gen.manifest.locale" name="debug.address">
 		<debug-nodeunit suite="address" failquit="true"/>
 	</target>
-	<target depends="update.package.json" name="debug.calendar">
+	<target depends="prepare,gen.manifest.locale" name="debug.calendar">
 		<debug-nodeunit suite="calendar" failquit="true"/>
 	</target>
-	<target depends="update.package.json" name="debug.collate">
+	<target depends="prepare,gen.manifest.locale" name="debug.collate">
 		<debug-nodeunit suite="collate" failquit="true"/>
 	</target>
-	<target depends="update.package.json" name="debug.ctype">
+	<target depends="prepare,gen.manifest.locale" name="debug.ctype">
 		<debug-nodeunit suite="ctype" failquit="true"/>
 	</target>
-	<target depends="update.package.json" name="debug.date">
+	<target depends="prepare,gen.manifest.locale" name="debug.date">
 		<debug-nodeunit suite="date" failquit="true"/>
 	</target>
-	<target depends="update.package.json" name="debug.daterange">
+	<target depends="prepare,gen.manifest.locale" name="debug.daterange">
 		<debug-nodeunit suite="daterange" failquit="true"/>
 	</target>
-	<target depends="update.package.json" name="debug.durfmt">
+	<target depends="prepare,gen.manifest.locale" name="debug.durfmt">
 		<debug-nodeunit suite="durfmt" failquit="true"/>
 	</target>
-	<target depends="update.package.json" name="debug.maps">
+	<target depends="prepare,gen.manifest.locale" name="debug.maps">
 		<debug-nodeunit suite="maps" failquit="true"/>
 	</target>
-	<target depends="update.package.json" name="debug.name">
+	<target depends="prepare,gen.manifest.locale" name="debug.name">
 		<debug-nodeunit suite="name" failquit="true"/>
 	</target>
-	<target depends="update.package.json" name="debug.number">
+	<target depends="prepare,gen.manifest.locale" name="debug.number">
 		<debug-nodeunit suite="number" failquit="true"/>
 	</target>
-	<target depends="update.package.json" name="debug.phone">
+	<target depends="prepare,gen.manifest.locale" name="debug.phone">
 		<debug-nodeunit suite="phone" failquit="true"/>
 	</target>
-	<target depends="update.package.json" name="debug.root">
+	<target depends="prepare,gen.manifest.locale" name="debug.root">
 		<debug-nodeunit suite="root" failquit="true"/>
 	</target>
-	<target depends="update.package.json" name="debug.strings-ext">
+	<target depends="prepare,gen.manifest.locale" name="debug.strings-ext">
 		<debug-nodeunit suite="strings-ext" failquit="true"/>
 	</target>
-	<target depends="update.package.json" name="debug.units">
+	<target depends="prepare,gen.manifest.locale" name="debug.units">
 		<debug-nodeunit suite="units" failquit="true"/>
 	</target>
-	<target depends="update.package.json" name="debug.util">
+	<target depends="prepare,gen.manifest.locale" name="debug.util">
 		<debug-nodeunit suite="util" failquit="true"/>
 	</target>
 
