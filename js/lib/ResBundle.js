@@ -70,6 +70,10 @@ var IString = require("./IString.js");
  * </ul>
  * The default behaviour is the same as before, which is to return the source string
  * unchanged.
+ * 
+ * <li><i>path</i> - look in the given path for the resource bundle files. This can be
+ * an absolute path or a relative path that is relative to the application's root.
+ * Default: "resources".
  *
  * <li><i>onLoad</i> - a callback function to call when the resources are fully
  * loaded. When the onLoad option is given, this class will attempt to
@@ -223,6 +227,7 @@ var ResBundle = function (options) {
     this.loadParams = {};
     this.missing = "source";
     this.sync = true;
+    this.path = "resources";
 
     if (options) {
         if (options.locale) {
@@ -250,6 +255,9 @@ var ResBundle = function (options) {
                 this.missing = options.missing;
             }
         }
+        if (options.path) {
+            this.path = options.path;
+        }
     } else {
         options = {sync: true};
     }
@@ -257,14 +265,13 @@ var ResBundle = function (options) {
     this.map = {};
 
     lookupLocale = this.locale.isPseudo() ? new Locale("en-US") : this.locale;
-    var object = "ResBundle-" + this.baseName;
 
     Utils.loadData({
-        object: object,
         locale: lookupLocale,
         name: this.baseName + ".json",
         sync: this.sync,
         loadParams: this.loadParams,
+        root: this.path,
         callback: ilib.bind(this, function (map) {
             if (!map) {
                 map = ilib.data[this.baseName] || {};

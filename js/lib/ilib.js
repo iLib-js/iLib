@@ -460,7 +460,7 @@ ilib.Loader = function() {};
  * or resources, then that data can be lazy loaded dynamically when it is
  * needed by calling this method. Each ilib class will first
  * check for the existence of data under ilib.data, and if it is not there,
- * it will attempt to load it by calling this method of the laoder, and then place
+ * it will attempt to load it by calling this method of the loader, and then place
  * it there.<p>
  *
  * Suggested implementations of this method might load files
