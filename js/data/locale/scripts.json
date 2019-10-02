@@ -198,6 +198,11 @@
         "ime": false,
         "casing": true
     },
+    "Chrs": {
+        "nb": 109,
+        "nm": "Chorasmian",
+        "lid": "Chorasmian"
+    },
     "Cirt": {
         "nb": 291,
         "nm": "Cirth",
@@ -211,9 +216,14 @@
         "ime": false,
         "casing": true
     },
+    "Cpmn": {
+        "nb": 402,
+        "nm": "Cypro-Minoan",
+        "lid": "Cypro-Minoan"
+    },
     "Cprt": {
         "nb": 403,
-        "nm": "Cypriot",
+        "nm": "Cypriot syllabary",
         "lid": "Cypriot",
         "rtl": true,
         "ime": false,
@@ -240,10 +250,18 @@
         "ime": false,
         "casing": false
     },
+    "Diak": {
+        "nb": 342,
+        "nm": "Dives Akuru",
+        "lid": "Dives_Akuru"
+    },
     "Dogr": {
         "nb": 328,
         "nm": "Dogra",
-        "lid": "Dogra"
+        "lid": "Dogra",
+        "rtl": false,
+        "ime": false,
+        "casing": false
     },
     "Dsrt": {
         "nb": 250,
@@ -287,6 +305,14 @@
         "ime": false,
         "casing": false
     },
+    "Elym": {
+        "nb": 128,
+        "nm": "Elymaic",
+        "lid": "Elymaic",
+        "rtl": true,
+        "ime": false,
+        "casing": false
+    },
     "Ethi": {
         "nb": 430,
         "nm": "Ethiopic (Geʻez)",
@@ -319,12 +345,18 @@
     "Gong": {
         "nb": 312,
         "nm": "Gunjala Gondi",
-        "lid": "Gunjala_Gondi"
+        "lid": "Gunjala_Gondi",
+        "rtl": false,
+        "ime": false,
+        "casing": false
     },
     "Gonm": {
         "nb": 313,
         "nm": "Masaram Gondi",
-        "lid": "Masaram_Gondi"
+        "lid": "Masaram_Gondi",
+        "rtl": false,
+        "ime": false,
+        "casing": false
     },
     "Goth": {
         "nb": 206,
@@ -454,6 +486,14 @@
         "ime": false,
         "casing": false
     },
+    "Hmnp": {
+        "nb": 451,
+        "nm": "Nyiakeng Puachue Hmong",
+        "lid": "Nyiakeng_Puachue_Hmong",
+        "rtl": false,
+        "ime": false,
+        "casing": false
+    },
     "Hrkt": {
         "nb": 412,
         "nm": "Japanese syllabaries (alias for Hiragana + Katakana)",
@@ -557,7 +597,7 @@
     "Kits": {
         "nb": 288,
         "nm": "Khitan small script",
-        "lid": "Khitan_small_script"
+        "lid": "Khitan_Small_Script"
     },
     "Knda": {
         "nb": 345,
@@ -699,7 +739,10 @@
     "Maka": {
         "nb": 366,
         "nm": "Makasar",
-        "lid": "Makasar"
+        "lid": "Makasar",
+        "rtl": false,
+        "ime": false,
+        "casing": false
     },
     "Mand": {
         "nb": 140,
@@ -733,7 +776,10 @@
     "Medf": {
         "nb": 265,
         "nm": "Medefaidrin (Oberi Okaime, Oberi Ɔkaimɛ)",
-        "lid": "Medefaidrin_(Oberi_Okaime,_Oberi_Ɔkaimɛ)"
+        "lid": "Medefaidrin",
+        "rtl": false,
+        "ime": false,
+        "casing": true
     },
     "Mend": {
         "nb": 438,
@@ -820,6 +866,14 @@
         "ime": false,
         "casing": false
     },
+    "Nand": {
+        "nb": 311,
+        "nm": "Nandinagari",
+        "lid": "Nandinagari",
+        "rtl": false,
+        "ime": false,
+        "casing": false
+    },
     "Narb": {
         "nb": 106,
         "nm": "Old North Arabian (Ancient North Arabian)",
@@ -844,10 +898,15 @@
         "ime": false,
         "casing": false
     },
+    "Nkdb": {
+        "nb": 85,
+        "nm": "Naxi Dongba (na²¹ɕi³³ to³³ba²¹, Nakhi Tomba)",
+        "lid": "Naxi_Dongba_(na²¹ɕi³³_to³³ba²¹,_Nakhi_Tomba)"
+    },
     "Nkgb": {
         "nb": 420,
-        "nm": "Nakhi Geba ('Na-'Khi ²Ggŏ-¹baw, Naxi Geba)",
-        "lid": "Nakhi_Geba_('Na-'Khi_²Ggŏ-¹baw,_Naxi_Geba)"
+        "nm": "Naxi Geba (na²¹ɕi³³ gʌ²¹ba²¹, 'Na-'Khi ²Ggŏ-¹baw, Nakhi Geba)",
+        "lid": "Naxi_Geba_(na²¹ɕi³³_gʌ²¹ba²¹,_'Na-'Khi_²Ggŏ-¹baw,_Nakhi_Geba)"
     },
     "Nkoo": {
         "nb": 165,
@@ -860,7 +919,10 @@
     "Nshu": {
         "nb": 499,
         "nm": "Nüshu",
-        "lid": "Nüshu"
+        "lid": "Nushu",
+        "rtl": false,
+        "ime": true,
+        "casing": false
     },
     "Ogam": {
         "nb": 212,
@@ -1010,6 +1072,14 @@
         "ime": false,
         "casing": false
     },
+    "Rohg": {
+        "nb": 167,
+        "nm": "Hanifi Rohingya",
+        "lid": "Hanifi_Rohingya",
+        "rtl": true,
+        "ime": false,
+        "casing": false
+    },
     "Roro": {
         "nb": 620,
         "nm": "Rongorongo",
@@ -1076,6 +1146,11 @@
         "ime": false,
         "casing": false
     },
+    "Shui": {
+        "nb": 530,
+        "nm": "Shuishu",
+        "lid": "Shuishu"
+    },
     "Sidd": {
         "nb": 302,
         "nm": "Siddham, Siddhaṃ, Siddhamātṛkā",
@@ -1100,6 +1175,22 @@
         "ime": false,
         "casing": false
     },
+    "Sogd": {
+        "nb": 141,
+        "nm": "Sogdian",
+        "lid": "Sogdian",
+        "rtl": true,
+        "ime": false,
+        "casing": false
+    },
+    "Sogo": {
+        "nb": 142,
+        "nm": "Old Sogdian",
+        "lid": "Old_Sogdian",
+        "rtl": true,
+        "ime": false,
+        "casing": false
+    },
     "Sora": {
         "nb": 398,
         "nm": "Sora Sompeng",
@@ -1111,7 +1202,10 @@
     "Soyo": {
         "nb": 329,
         "nm": "Soyombo",
-        "lid": "Soyombo"
+        "lid": "Soyombo",
+        "rtl": false,
+        "ime": false,
+        "casing": false
     },
     "Sund": {
         "nb": 362,
@@ -1298,6 +1392,14 @@
         "ime": false,
         "casing": true
     },
+    "Wcho": {
+        "nb": 283,
+        "nm": "Wancho",
+        "lid": "Wancho",
+        "rtl": false,
+        "ime": false,
+        "casing": false
+    },
     "Wole": {
         "nb": 480,
         "nm": "Woleai",
@@ -1319,6 +1421,11 @@
         "ime": true,
         "casing": false
     },
+    "Yezi": {
+        "nb": 192,
+        "nm": "Yezidi",
+        "lid": "Yezidi"
+    },
     "Yiii": {
         "nb": 460,
         "nm": "Yi",
@@ -1330,7 +1437,10 @@
     "Zanb": {
         "nb": 339,
         "nm": "Zanabazar Square (Zanabazarin Dörböljin Useg, Xewtee Dörböljin Bicig, Horizontal Square Script)",
-        "lid": "Zanabazar_Square_(Zanabazarin_Dörböljin_Useg,_Xewtee_Dörböljin_Bicig,_Horizontal_Square_Script)"
+        "lid": "Zanabazar_Square",
+        "rtl": false,
+        "ime": false,
+        "casing": false
     },
     "Zinh": {
         "nb": 994,

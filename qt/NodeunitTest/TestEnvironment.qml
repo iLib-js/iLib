@@ -7,8 +7,8 @@ QtObject {
 	id: thisObj
 	property string path: ""
     property string moduleName: ""
-    property var ilib: {}
-    property var require: {}
+    property var ilib: ({})
+    property var require: ({})
 	
     Component.onCompleted: {
         //console.log(">>>>>>>>>>>> [TestEnvironment.qml] new context. Loading in a fresh copy of ilib.");
@@ -17,7 +17,7 @@ QtObject {
         ilib = QtIlib.ilib;
         var loader = new QtIlib.QmlLoader(FS.FileReader);
         ilib.setLoaderCallback(loader);
-		require = QtIlib.require;
+        require = QtIlib.require;
 
         var testSuites, runTest, i;
         testSuites = require("qmltest", path);

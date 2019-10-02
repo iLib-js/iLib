@@ -6,10 +6,16 @@ Build 007
 Published as version 14.4.0
 
 New Features:
-* Updated `iddarea.json` file which is used in `PhoneGeoLocator` information and wrote a script file to automatically generate it.
+* Updated `iddarea.json` and 'phoneloc.json' which are used in `PhoneNumber` information and wrote a script file to automatically generate it.
+* Added LocaleMatch.getLikelyLocaleMinimal() method which returns the same thing as the getLikelyLocale method but without the script
+part of the locale specifier if it has a very common/default value
+    * For languages such as Chinese which are commonly written in multiple scripts, the script is always given
+    * For languages that are written in multiple scripts, but where one is dominant, the script is only included when it is not the default/dominant one
+    * Most languages are only ever written in one script, so the script is left out
+* Updated the script info to UCD 12.0.0, and the likely locale info to CLDR 35.1
 
 Bug Fixes:
-
+* Fixed unit test failures which occur on QT 5.12
 
 Build 006
 -------
@@ -41,7 +47,6 @@ Bug Fixes:
 * Updated the Taiwan area code of PhoneNumber according to [Wikipedia](https://en.wikipedia.org/wiki/Telephone_numbers_in_Taiwan).
 * Changed 3 digit iddprefix PhoneNumber format of zh-Hant-TW as corresponding local office feedback.
 * Rollback `js/ilib-web.js` file to support pure Web Application.
-* Added a new platform return type as 'webos-webapp'. If platform type is `webos-webapp`, The iLib won't load any loader as default.
 * Added a new platform return type as 'webos-webapp'. If platform type is `webos-webapp`, The iLib won't load any loader as default.
 * Implemented to include automatically Json data which doesn't exist in CLDR in cldrtool script.
 * Improved the speed of JSUtils.shallowCopy() by using Object.assign if it is available
