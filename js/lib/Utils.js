@@ -1,7 +1,7 @@
 /*
  * Utils.js - Core utility routines
  *
- * Copyright © 2012-2015, 2018, JEDLSoft
+ * Copyright © 2012-2015, 2018-2019, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -311,14 +311,14 @@ Utils.getLocFiles = function(locale, name) {
  * @static
  * @private
  */
-Utils._callLoadData = function (files, sync, params, callback) {
+Utils._callLoadData = function (files, sync, params, root, callback) {
     // console.log("Utils._callLoadData called");
     if (typeof(ilib._load) === 'function') {
         // console.log("Utils._callLoadData: calling as a regular function");
         return ilib._load(files, sync, params, callback);
     } else if (typeof(ilib._load) === 'object' && typeof(ilib._load.loadFiles) === 'function') {
         // console.log("Utils._callLoadData: calling as an object");
-        return ilib._load.loadFiles(files, sync, params, callback);
+        return ilib._load.loadFiles(files, sync, params, callback, root);
     }
 
     // console.log("Utils._callLoadData: not calling. Type is " + typeof(ilib._load) + " and instanceof says " + (ilib._load instanceof Loader));
@@ -360,6 +360,9 @@ function dataNotExists(basename, pathname) {
  * <li><i>replace</i> - boolean. When merging json objects, this parameter controls whether to merge arrays
  * or have arrays replace each other. If true, arrays in child objects replace the arrays in parent
  * objects. When false, the arrays in child objects are concatenated with the arrays in parent objects.
+ * <li><i>root</i> - String. If provided, look in this root directory first for files, and then fall back
+ * to the standard include paths if they are not found in this root. If not provided, just search the
+ * standard include paths.
  * <li><i>loadParams</i> - Object. An object with parameters to pass to the loader function
  * <li><i>sync</i> - boolean. Whether or not to load the data synchronously
  * <li><i>callback</i> - function(?)=. callback Call back function to call when the data is available.
@@ -378,6 +381,7 @@ Utils.loadData = function(params) {
         callback = undefined,
         nonlocale = false,
         replace = false,
+        root,
         basename;
 
     if (!params || typeof(params.callback) !== 'function') {
@@ -406,6 +410,7 @@ Utils.loadData = function(params) {
         replace = params.replace;
     }
 
+    root = params.root;
     callback = params.callback;
 
     if (!type) {
@@ -448,7 +453,7 @@ Utils.loadData = function(params) {
         }));
 
         if (files.length) {
-            Utils._callLoadData(files, sync, loadParams, ilib.bind(this, function(arr) {
+            Utils._callLoadData(files, sync, loadParams, root, ilib.bind(this, function(arr) {
                 for (var i = 0; i < files.length; i++) {
                     if (arr[i]) {
                         var localeBits = files[i].split("\/").slice(0, -1).join('_');

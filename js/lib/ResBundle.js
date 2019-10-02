@@ -1,7 +1,7 @@
 /*
  * ResBundle.js - Resource bundle definition
  *
- * Copyright © 2012-2016, 2018, JEDLSoft
+ * Copyright © 2012-2016, 2018-2019, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -71,9 +71,10 @@ var IString = require("./IString.js");
  * The default behaviour is the same as before, which is to return the source string
  * unchanged.
  * 
- * <li><i>path</i> - look in the given path for the resource bundle files. This can be
+ * <li><i>basePath</i> - look in the given path for the resource bundle files. This can be
  * an absolute path or a relative path that is relative to the application's root.
- * Default: "resources".
+ * Default if this is not specified is to look in the standard path (ie. in the root
+ * of the app).
  *
  * <li><i>onLoad</i> - a callback function to call when the resources are fully
  * loaded. When the onLoad option is given, this class will attempt to
@@ -227,7 +228,6 @@ var ResBundle = function (options) {
     this.loadParams = {};
     this.missing = "source";
     this.sync = true;
-    this.path = "resources";
 
     if (options) {
         if (options.locale) {
@@ -255,9 +255,7 @@ var ResBundle = function (options) {
                 this.missing = options.missing;
             }
         }
-        if (options.path) {
-            this.path = options.path;
-        }
+        this.path = options.basePath;
     } else {
         options = {sync: true};
     }
