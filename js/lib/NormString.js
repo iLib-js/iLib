@@ -141,7 +141,7 @@ NormString.init = function(options) {
 
                 if (files.length) {
                     //console.log("loading files " + JSON.stringify(files));
-                    Utils._callLoadData(files, sync, loadParams, function(arr) {
+                    Utils._callLoadData(files, sync, loadParams, undefined, function(arr) {
                         for (var i = 0; i < arr.length; i++) {
                             if (typeof(arr[i]) !== 'undefined') {
                                 ilib.extend(ilib.data.norm[toLoad[i]], arr[i]);

@@ -26,6 +26,26 @@ var ISet = require("./ISet.js");
 var Utils = {};
 
 /**
+ * Return the property name inside of ilib.data that corresponds to the given locale data file.
+ *
+ * @private
+ * @param {String} basename the basename of the file
+ * @param {String} pathname the path from the root to the base file which usually encodes the
+ * locale of the file
+ * @param {String=} root the root directory of the file or undefined for the standard locale dir
+ */
+function getPropertyName(basename, pathname, root) {
+    var bits = [ basename ];
+    if (root) {
+        bits = bits.concat(root.split("\/"));
+    }
+    if (pathname) {
+        bits = bits.concat(pathname.split("\/"));
+    }
+    return bits.join('_');
+}
+
+/**
  * Return an array of locales that represent the sublocales of
  * the given locale. These sublocales are intended to be used
  * to load locale data. Each sublocale might be represented
@@ -182,9 +202,10 @@ Utils.getSublocales = function(locale) {
  * If false, concatenate array elements in object1 with items in object2.
  * @param {boolean=} returnOne if true, only return the most locale-specific data. If false,
  * merge all the relevant locale data together.
+ * @param {string=} root root path if there is one
  * @return {Object?} the merged locale data
  */
-Utils.mergeLocData = function (prefix, locale, replaceArrays, returnOne) {
+Utils.mergeLocData = function (prefix, locale, replaceArrays, returnOne, root) {
     var data = undefined;
     var loc = locale || new Locale();
     var mostSpecific;
@@ -194,7 +215,7 @@ Utils.mergeLocData = function (prefix, locale, replaceArrays, returnOne) {
     mostSpecific = data;
 
     Utils.getSublocales(loc).forEach(function(l) {
-        var property = (l === "root") ? prefix : prefix + '_' + l.replace(/-/g, "_");
+        var property = getPropertyName(prefix, (l === "root") ? undefined : l.replace(/-/g, "/"), root);
 
         if (ilib.data[property]) {
             if (returnOne) {
@@ -325,6 +346,11 @@ Utils._callLoadData = function (files, sync, params, root, callback) {
     return undefined;
 };
 
+function getPropertyNameFromFile(basename, filepath, root) {
+    var dir = Path.dirname(filepath);
+    return getPropertyName(basename, (dir === "." || dir === "/" || dir === "..") ? undefined : dir, root);
+}
+
 /**
  * Return true if the locale data corresponding to the given pathname is not already loaded
  * or assembled.
@@ -334,11 +360,8 @@ Utils._callLoadData = function (files, sync, params, root, callback) {
  * @param locale
  * @returns
  */
-function dataNotExists(basename, pathname) {
-    var localeBits = pathname.split("\/").slice(0, -1).join('_');
-    var property = localeBits ? basename + '_' + localeBits : basename;
-
-    return !ilib.data[property];
+function dataNotExists(basename, pathname, root) {
+    return !ilib.data[getPropertyNameFromFile(basename, pathname, root)];
 }
 
 /**
@@ -449,15 +472,14 @@ Utils.loadData = function(params) {
 
         // find the ones we haven't loaded before
         files = files.filter(ilib.bind(this, function(file) {
-            return !ilib.data.cache.fileSet.has(file) && dataNotExists(basename, file);
+            return !ilib.data.cache.fileSet.has(file) && dataNotExists(basename, file, root);
         }));
 
         if (files.length) {
             Utils._callLoadData(files, sync, loadParams, root, ilib.bind(this, function(arr) {
                 for (var i = 0; i < files.length; i++) {
                     if (arr[i]) {
-                        var localeBits = files[i].split("\/").slice(0, -1).join('_');
-                        var property = !nonlocale && localeBits ? basename + '_' + localeBits : basename;
+                        var property = nonlocale ? basename : getPropertyNameFromFile(basename, files[i], root);
 
                         if (!ilib.data[property]) {
                             ilib.data[property] = arr[i];
@@ -467,7 +489,7 @@ Utils.loadData = function(params) {
                 }
 
                 if (!nonlocale) {
-                    data = Utils.mergeLocData(basename, locale, replace, returnOne);
+                    data = Utils.mergeLocData(basename, locale, replace, returnOne, root);
                     if (ilib._cacheMerged) ilib.data.cache.merged[spec] = data;
                 } else {
                     data = ilib.data[basename];
@@ -483,7 +505,7 @@ Utils.loadData = function(params) {
 
     // No loader, or data already loaded? Then use whatever data we have already in ilib.data
     if (!nonlocale) {
-        data = Utils.mergeLocData(basename, locale, replace, returnOne);
+        data = Utils.mergeLocData(basename, locale, replace, returnOne, root);
         if (ilib._cacheMerged) ilib.data.cache.merged[spec] = data;
     } else {
         data = ilib.data[basename];
