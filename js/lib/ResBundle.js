@@ -70,7 +70,7 @@ var IString = require("./IString.js");
  * </ul>
  * The default behaviour is the same as before, which is to return the source string
  * unchanged.
- * 
+ *
  * <li><i>basePath</i> - look in the given path for the resource bundle files. This can be
  * an absolute path or a relative path that is relative to the application's root.
  * Default if this is not specified is to look in the standard path (ie. in the root
