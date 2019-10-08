@@ -242,6 +242,7 @@ var ResBundle = function (options) {
             this.type = options.type;
         }
         this.lengthen = options.lengthen || false;
+        this.path = options.basePath;
 
         if (typeof(options.sync) !== 'undefined') {
             this.sync = !!options.sync;
@@ -249,13 +250,15 @@ var ResBundle = function (options) {
 
         if (typeof(options.loadParams) !== 'undefined') {
             this.loadParams = options.loadParams;
+            if (typeof (options.loadParams.root) !== 'undefined') {
+                this.path = options.loadParams.root;
+            }
         }
         if (typeof(options.missing) !== 'undefined') {
             if (options.missing === "pseudo" || options.missing === "empty") {
                 this.missing = options.missing;
             }
         }
-        this.path = options.basePath;
     } else {
         options = {sync: true};
     }
