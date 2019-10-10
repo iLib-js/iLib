@@ -33,7 +33,8 @@ function usage() {
 			"-h or --help\n" +
 			"  this help\n" +
 			"ISO-15924-file.txt\n" +
-			"  the Unicode script code definition file downloaded from the Unicode site\n" +
+			"  the Unicode script code definition file downloaded from the Unicode site at\n" +
+			"  https://unicode.org/iso15924/iso15924-text.html\n" +
 			"UCD-dir\n" +
 			"  path to the Unicode Character Database files downloaded from the Unicode site\n" +
 			"CLDR-dir\n" +

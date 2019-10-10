@@ -140,6 +140,7 @@ CalendarFactory._dynLoadCalendar = function (name, fnc) {
     if (!Calendar._constructors[name]) {
         var entry = CalendarFactory._dynMap[name];
         if (entry) {
+            // eslint-disable-next-line
             Calendar._constructors[name] = require(fnc(entry));
         }
     }
