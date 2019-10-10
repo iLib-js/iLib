@@ -1,7 +1,7 @@
 /*
  * NormString.js - ilib normalized string subclass definition
  *
- * Copyright © 2013-2015, 2018, JEDLSoft
+ * Copyright © 2013-2015, 2018-2019, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -141,7 +141,7 @@ NormString.init = function(options) {
 
                 if (files.length) {
                     //console.log("loading files " + JSON.stringify(files));
-                    Utils._callLoadData(files, sync, loadParams, function(arr) {
+                    Utils._callLoadData(files, sync, loadParams, undefined, function(arr) {
                         for (var i = 0; i < arr.length; i++) {
                             if (typeof(arr[i]) !== 'undefined') {
                                 ilib.extend(ilib.data.norm[toLoad[i]], arr[i]);

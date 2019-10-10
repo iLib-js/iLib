@@ -16,6 +16,11 @@ part of the locale specifier if it has a very common/default value
 
 Bug Fixes:
 * Fixed unit test failures which occur on QT 5.12
+* Fixed problem where two resource bundle files with the same name and same locale but loaded from
+different directories were cached in the same place.
+    * Introduced the new "basePath" property to ResBundle constructor to specify which directory
+    to load the resource bundle from. This property is used to differentiate files loaded from
+    different directories.
 
 Build 006
 -------

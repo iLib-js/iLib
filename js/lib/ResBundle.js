@@ -1,7 +1,7 @@
 /*
  * ResBundle.js - Resource bundle definition
  *
- * Copyright © 2012-2016, 2018, JEDLSoft
+ * Copyright © 2012-2016, 2018-2019, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -70,6 +70,11 @@ var IString = require("./IString.js");
  * </ul>
  * The default behaviour is the same as before, which is to return the source string
  * unchanged.
+ *
+ * <li><i>basePath</i> - look in the given path for the resource bundle files. This can be
+ * an absolute path or a relative path that is relative to the application's root.
+ * Default if this is not specified is to look in the standard path (ie. in the root
+ * of the app).
  *
  * <li><i>onLoad</i> - a callback function to call when the resources are fully
  * loaded. When the onLoad option is given, this class will attempt to
@@ -237,6 +242,7 @@ var ResBundle = function (options) {
             this.type = options.type;
         }
         this.lengthen = options.lengthen || false;
+        this.path = options.basePath;
 
         if (typeof(options.sync) !== 'undefined') {
             this.sync = !!options.sync;
@@ -244,6 +250,9 @@ var ResBundle = function (options) {
 
         if (typeof(options.loadParams) !== 'undefined') {
             this.loadParams = options.loadParams;
+            if (typeof (options.loadParams.root) !== 'undefined') {
+                this.path = options.loadParams.root;
+            }
         }
         if (typeof(options.missing) !== 'undefined') {
             if (options.missing === "pseudo" || options.missing === "empty") {
@@ -257,14 +266,13 @@ var ResBundle = function (options) {
     this.map = {};
 
     lookupLocale = this.locale.isPseudo() ? new Locale("en-US") : this.locale;
-    var object = "ResBundle-" + this.baseName;
 
     Utils.loadData({
-        object: object,
         locale: lookupLocale,
         name: this.baseName + ".json",
         sync: this.sync,
         loadParams: this.loadParams,
+        root: this.path,
         callback: ilib.bind(this, function (map) {
             if (!map) {
                 map = ilib.data[this.baseName] || {};

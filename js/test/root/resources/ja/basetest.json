@@ -1,0 +1,6 @@
+{
+  "hello" : "こんにちは",
+  "Hello from {country}": "{country}からこんにちは",
+  "Hello from {city}": "{city}からこんにちは",
+  "Greetings from {city} in {country}": "{city}と{country}からこんにちは"               
+}
