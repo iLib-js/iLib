@@ -1,7 +1,7 @@
 /*
  * testresourcesasync.js - test the Resources object
  *
- * Copyright © 2018, JEDLSoft
+ * Copyright © 2018-2019, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -93,7 +93,38 @@ module.exports.testresourcesasync = {
                 test.done();
             }
         });
+    },
 
+    testResBundleAsyncGetStringWithPathesMX: function(test) {
+        if (ilib._getPlatform() !== "nodejs" || !ilib._dyndata || !ilib._dyncode) {
+            test.done();
+            return;
+        }
+
+        test.expect(4);
+
+        // clear this to be sure it is actually loading something
+        ilib.data.strings = undefined;
+        ilib.data.strings_es = undefined;
+        ilib.data.strings_und_MX = undefined;
+        ilib.data.strings_es_MX = undefined;
+        ilib.clearCache();
+
+        var base = path.relative(process.cwd(), path.resolve(__dirname, "./resources"));
+
+        new ResBundle({
+            locale: "es-MX",
+            sync: false,
+            basePath: base,
+            onLoad: function(rb) {
+                test.ok(rb !== null);
+
+                test.equal(rb.getString("Hello from {country}").toString(), "Que tal de {country}");
+                test.equal(rb.getString("Hello from {city}").toString(), "Que tal de {city}");
+                test.equal(rb.getString("Greetings from {city} in {country}").toString(), "Hola de {city} en {country}");
+                test.done();
+            }
+        });
     },
 
     testResBundleAsyncGetStringOtherBundlePsuedoRaw: function(test) {

@@ -1,7 +1,7 @@
 /*
  * testresources.js - test the Resources object
  * 
- * Copyright © 2012-2015, 2017-2018, JEDLSoft
+ * Copyright © 2012-2015, 2017-2019, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -25,6 +25,9 @@ if (typeof(ResBundle) === "undefined") {
 }
 if (typeof(Locale) === "undefined") {
     var Locale = require("../../lib/Locale.js");
+}
+if (ilib._getPlatform() === "nodejs" && ilib._dyndata && ilib._dyncode) {
+    var path = require("path");
 }
 
 ilib.data.strings = {
@@ -2072,6 +2075,58 @@ module.exports.testresources = {
             "dritte String 2"
         ]);
         
+        test.done();
+    },
+
+    testResBundleGetStringWithBasePath: function(test) {
+        if (ilib._getPlatform() !== "nodejs" || !ilib._dyndata || !ilib._dyncode) {
+            test.done();
+            return;
+        }
+
+        test.expect(4);
+
+        // clear this to be sure it is actually loading something
+        ilib.clearCache();
+
+        var base = path.relative(process.cwd(), path.resolve(__dirname, "./resources"));
+
+        var rb = new ResBundle({
+            locale: "ja-JP",
+            name: "basetest",
+            basePath: base
+        });
+
+        test.ok(rb !== null);
+
+        test.equal(rb.getString("Hello from {country}").toString(), "{country}からこんにちは");
+        test.equal(rb.getString("Hello from {city}").toString(), "{city}からこんにちは");
+        test.equal(rb.getString("Greetings from {city} in {country}").toString(), "{city}と{country}からこんにちは");
+        test.done();
+    },
+
+    testResBundleGetStringWithDifferentBasePath: function(test) {
+        if (ilib._getPlatform() !== "nodejs" || !ilib._dyndata || !ilib._dyncode) {
+            test.done();
+            return;
+        }
+
+        test.expect(4);
+
+        // don't clear the cache
+        var base = path.relative(process.cwd(), path.resolve(__dirname, "./resources2"));
+
+        var rb = new ResBundle({
+            locale: "ja-JP",
+            name: "basetest",
+            basePath: base
+        });
+
+        test.ok(rb !== null);
+
+        test.equal(rb.getString("Hello from {country}").toString(), "{country}からこんにちは2");
+        test.equal(rb.getString("Hello from {city}").toString(), "{city}からこんにちは2");
+        test.equal(rb.getString("Greetings from {city} in {country}").toString(), "{city}と{country}からこんにちは2");
         test.done();
     }
 };

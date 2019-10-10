@@ -1,7 +1,7 @@
 /*
  * Loader.js - shared loader implementation
  *
- * Copyright © 2015, 2018, JEDLSoft
+ * Copyright © 2015, 2018-2019, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -86,8 +86,9 @@ Loader.prototype._loadFileAlongIncludePath = function(includePath, pathname) {
     return undefined;
 };
 
-Loader.prototype.loadFiles = function(paths, sync, params, callback) {
-    var includePath = params && params.base ? [params.base].concat(this.includePath) : this.includePath;
+Loader.prototype.loadFiles = function(paths, sync, params, callback, root) {
+    root = root || (params && params.base);
+    var includePath = root ? [root].concat(this.includePath) : this.includePath;
 
     //console.log("Loader loadFiles called");
     // make sure we know what we can load
