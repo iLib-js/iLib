@@ -1,7 +1,7 @@
 /*
  * testutils.js - test the utility routines
  * 
- * Copyright © 2012-2015, 2017-2018 JEDLSoft
+ * Copyright © 2012-2015, 2017-2019 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -2027,6 +2027,36 @@ module.exports.testutils = {
         } catch (e) {
             console.log("Exception caught: " + e.stack);
             test.fail(e);
+            test.done();
+        }
+    },
+
+    testLoadDataDontMixDifferentBasePaths: function(test) {
+        ilib.data.foo = ilib.data.foo_de = ilib.data.foo_und_DE = ilib.data.foo_de_DE = undefined;
+        ilib.setLoaderCallback(mockLoaderNoMulti);
+        try {
+            Utils.loadData({
+                name: "foo.json",
+                locale: "de-DE",
+                basePath: "asdf",
+                callback: function (results) {
+                    test.ok(results);
+                    Utils.loadData({
+                        name: "foo.json",
+                        locale: "de-DE",
+                        basePath: "foobar",
+                        callback: function (results2) {
+                            // if there is a cache miss when it attempts to load a file from disk twice
+                            // then the mock loader will throw an exception, which is expected here
+                            // because the base paths are different and Utils.loadData should try to
+                            // load two files with the same name but different bases.
+                            test.fail();
+                            test.done();
+                        }
+                    });
+                }
+            });
+        } catch (e) {
             test.done();
         }
     },

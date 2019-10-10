@@ -472,11 +472,7 @@ Utils.loadData = function(params) {
 
         // find the ones we haven't loaded before
         files = files.filter(ilib.bind(this, function(file) {
-            if (typeof root !== 'undefined') {
-                return dataNotExists(basename, file, root);
-            } else {
-                return !ilib.data.cache.fileSet.has(file) && dataNotExists(basename, file, root);
-            }
+            return !ilib.data.cache.fileSet.has(Path.join(root, file)) && dataNotExists(basename, file, root);
         }));
 
         if (files.length) {
@@ -489,7 +485,7 @@ Utils.loadData = function(params) {
                             ilib.data[property] = arr[i];
                         }
                     }
-                    ilib.data.cache.fileSet.add(files[i]);
+                    ilib.data.cache.fileSet.add(Path.join(root, files[i]));
                 }
 
                 if (!nonlocale) {
