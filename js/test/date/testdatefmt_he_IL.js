@@ -51,7 +51,7 @@ module.exports.testdatefmt_he_IL = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "‏29‏.9‏.2011");
+        test.equal(fmt.format(date), '‏29.9.2011');
         test.done();
     },
 
@@ -203,7 +203,7 @@ module.exports.testdatefmt_he_IL = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "‏29‏.9‏.2011, ‏13:45");
+        test.equal(fmt.format(date), '‏29.9.2011, ‏13:45');
         test.done();
     },
 
@@ -454,7 +454,7 @@ module.exports.testdatefmt_he_IL = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "‏29‏.9‏.2011");
+        test.equal(fmt.format(date), '‏29.9.2011');
         test.done();
     },
 
@@ -492,10 +492,9 @@ module.exports.testdatefmt_he_IL = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "‏29‏.9‏.2011, ‏13:45");
+        test.equal(fmt.format(date), '‏29.9.2011, ‏13:45');
         test.done();
     },
-
 
     testDateFmtShortDateComponentsY_he_IL: function(test) {
         test.expect(2);
@@ -588,7 +587,7 @@ module.exports.testdatefmt_he_IL = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "‏29‏.9");
+        test.equal(fmt.format(date), '‏29.9');
         test.done();
     },
 
@@ -607,7 +606,7 @@ module.exports.testdatefmt_he_IL = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "‏9‏.2011");
+        test.equal(fmt.format(date), '‏9.2011');
         test.done();
     },
 
@@ -626,7 +625,7 @@ module.exports.testdatefmt_he_IL = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "‏29‏.9‏.2011");
+        test.equal(fmt.format(date), '‏29.9.2011');
         test.done();
     },
 
@@ -645,7 +644,7 @@ module.exports.testdatefmt_he_IL = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "ה׳, ‏29‏.9");
+        test.equal(fmt.format(date), 'ה׳, ‏29.9');
         test.done();
     },
 
@@ -664,7 +663,7 @@ module.exports.testdatefmt_he_IL = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "ה׳, 29‏.9‏.2011");
+        test.equal(fmt.format(date), 'ה׳, 29.9.2011');
         test.done();
     },
 

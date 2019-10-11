@@ -399,7 +399,30 @@ module.exports.testaddressasync = {
             }
         });
     },
-    
+
+    testFormatAddressUnknownCountry: function(test) {
+        test.expect(1);
+        var parsedAddress = new Address({
+            streetAddress: "1234 Any Street",
+            locality: "Anytown",
+            region: "CA",
+            postalCode: "94085",
+            country: "Unknown",
+            countryCode: "XY"
+        }, {locale: 'en-XY'});
+
+        var expected = "1234 Any Street\nAnytown CA 94085\nUnknown";
+        new AddressFmt({
+            locale: 'en-XY',
+            sync: false,
+            style: 'nocountry',
+            onLoad: function(formatter) {
+                test.equal(formatter.format(parsedAddress), expected);
+                test.done();
+            }
+        });
+    },
+
     testAddressFmtGetFormatInfoUSRightConstraints: function(test) {
         test.expect(19);
         new AddressFmt({
@@ -435,6 +458,31 @@ module.exports.testaddressasync = {
                     r = searchRegions(info[2][0].constraint, "ZA");
                     test.equal(r.code, "ZA");
                     test.equal(r.name, "South Africa");
+
+                    test.done();
+                });
+            }
+        });
+    },
+
+    testAddressFmtGetFormatInfoUnknownCountry: function(test) {
+        test.expect(7);
+        new AddressFmt({
+            locale: 'en-XY',
+            sync: false,
+            onLoad: function(formatter) {
+                formatter.getFormatInfo(undefined, false, function(info) {
+                    test.ok(info);
+
+                    // test for generic data
+                    test.equal(info[1][0].component, "locality");
+                    test.equal(info[1][0].constraint, "([A-zÀÁÈÉÌÍÑÒÓÙÚÜàáèéìíñòóùúü\\.\\-\\']+\\s*){1,2}$");
+
+                    test.equal(info[1][1].component, "region");
+                    test.equal(info[1][1].constraint, "([A-zÀÁÈÉÌÍÑÒÓÙÚÜàáèéìíñòóùúü\\.\\-\\']+\\s*){1,2}$");
+
+                    test.equal(info[1][2].component, "postalCode");
+                    test.equal(info[1][2].constraint, "[0-9]+");
 
                     test.done();
                 });

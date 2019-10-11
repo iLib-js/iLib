@@ -153,6 +153,7 @@ var CharmapFactory = function(options) {
             if (!Charmap._algorithms[name] && ilib.isDynCode()) {
                 // console.log("CharmapFactory: isDynCode. Doing require");
                 var entry = CharmapFactory._dynMap[name] || "CharmapTable";
+                // eslint-disable-next-line
                 cons = Charmap._algorithms[name] = require(circumventWebpackCharmap(entry));
             }
 

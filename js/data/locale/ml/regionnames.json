@@ -31,6 +31,10 @@
     ],
     "AE": [
         {
+            "name": "Dubai",
+            "code": "DU"
+        },
+        {
             "name": "അജ്‌മാൻ",
             "code": "AJ"
         },
@@ -53,25 +57,9 @@
         {
             "name": "റാസ് അൽ ഖൈമ",
             "code": "RK"
-        },
-        {
-            "name": "Dubai",
-            "code": "DU"
         }
     ],
     "AF": [
-        {
-            "name": "നൂറിസ്ഥാൻ",
-            "code": "NUR"
-        },
-        {
-            "name": "ബദഖ്ശാൻ പ്രവിശ്യ",
-            "code": "BDS"
-        },
-        {
-            "name": "ബാദ്ഘീസ് പ്രവിശ്യ",
-            "code": "BDG"
-        },
         {
             "name": "Baghlan",
             "code": "BGL"
@@ -195,6 +183,18 @@
         {
             "name": "Zabul",
             "code": "ZAB"
+        },
+        {
+            "name": "നൂറിസ്ഥാൻ",
+            "code": "NUR"
+        },
+        {
+            "name": "ബദഖ്ശാൻ പ്രവിശ്യ",
+            "code": "BDS"
+        },
+        {
+            "name": "ബാദ്ഘീസ് പ്രവിശ്യ",
+            "code": "BDG"
         }
     ],
     "AG": [
@@ -427,10 +427,6 @@
     ],
     "AM": [
         {
-            "name": "യെറിവാൻ",
-            "code": "ER"
-        },
-        {
             "name": "Aragatsotn",
             "code": "AG"
         },
@@ -469,6 +465,10 @@
         {
             "name": "Vayots Dzor",
             "code": "VD"
+        },
+        {
+            "name": "യെറിവാൻ",
+            "code": "ER"
         }
     ],
     "AO": [
@@ -546,10 +546,6 @@
         }
     ],
     "AR": [
-        {
-            "name": "ബ്യൂണസ് അയേഴ്സ്",
-            "code": "C"
-        },
         {
             "name": "Buenos Aires Province",
             "code": "B"
@@ -641,6 +637,10 @@
         {
             "name": "Tucumán",
             "code": "T"
+        },
+        {
+            "name": "ബ്യൂണസ് അയേഴ്സ്",
+            "code": "C"
         }
     ],
     "AT": [
@@ -683,14 +683,6 @@
     ],
     "AU": [
         {
-            "name": "ടാസ്മേനിയ",
-            "code": "TAS"
-        },
-        {
-            "name": "ന്യൂ സൗത്ത് വെയ്ൽസ്",
-            "code": "NSW"
-        },
-        {
             "name": "Australian Capital Territory",
             "code": "ACT"
         },
@@ -713,25 +705,17 @@
         {
             "name": "Western Australia",
             "code": "WA"
+        },
+        {
+            "name": "ടാസ്മേനിയ",
+            "code": "TAS"
+        },
+        {
+            "name": "ന്യൂ സൗത്ത് വെയ്ൽസ്",
+            "code": "NSW"
         }
     ],
     "AZ": [
-        {
-            "name": "നാഖ്ചിവൻ സിറ്റി",
-            "code": "NV"
-        },
-        {
-            "name": "നാഖ്ചിവൻ സ്വയംഭരണ റിപ്പബ്ലിക്",
-            "code": "NX"
-        },
-        {
-            "name": "ബക്കു",
-            "code": "BA"
-        },
-        {
-            "name": "ലങ്കരാൻ",
-            "code": "LAN"
-        },
         {
             "name": "Absheron",
             "code": "ABS"
@@ -1027,6 +1011,22 @@
         {
             "name": "Zardab",
             "code": "ZAR"
+        },
+        {
+            "name": "നാഖ്ചിവൻ സിറ്റി",
+            "code": "NV"
+        },
+        {
+            "name": "നാഖ്ചിവൻ സ്വയംഭരണ റിപ്പബ്ലിക്",
+            "code": "NX"
+        },
+        {
+            "name": "ബക്കു",
+            "code": "BA"
+        },
+        {
+            "name": "ലങ്കരാൻ",
+            "code": "LAN"
         }
     ],
     "BA": [
@@ -1130,18 +1130,6 @@
         }
     ],
     "BD": [
-        {
-            "name": "കുഷ്തിയ ജില്ല",
-            "code": "30"
-        },
-        {
-            "name": "നവഖാലി",
-            "code": "47"
-        },
-        {
-            "name": "ബന്ദർബൻ",
-            "code": "01"
-        },
         {
             "name": "Bagerhat",
             "code": "05"
@@ -1417,13 +1405,21 @@
         {
             "name": "Thakurgaon",
             "code": "64"
+        },
+        {
+            "name": "കുഷ്തിയ ജില്ല",
+            "code": "30"
+        },
+        {
+            "name": "നവഖാലി",
+            "code": "47"
+        },
+        {
+            "name": "ബന്ദർബൻ",
+            "code": "01"
         }
     ],
     "BE": [
-        {
-            "name": "ബ്രസൽസ്",
-            "code": "BRU"
-        },
         {
             "name": "Antwerp",
             "code": "VAN"
@@ -1471,6 +1467,10 @@
         {
             "name": "West Flanders",
             "code": "VWV"
+        },
+        {
+            "name": "ബ്രസൽസ്",
+            "code": "BRU"
         }
     ],
     "BF": [
@@ -2039,10 +2039,6 @@
     ],
     "BR": [
         {
-            "name": "അക്രേ",
-            "code": "AC"
-        },
-        {
             "name": "Alagoas",
             "code": "AL"
         },
@@ -2145,6 +2141,10 @@
         {
             "name": "Tocantins",
             "code": "TO"
+        },
+        {
+            "name": "അക്രേ",
+            "code": "AC"
         }
     ],
     "BS": [
@@ -2423,10 +2423,6 @@
     ],
     "BY": [
         {
-            "name": "മിൻസ്ക്",
-            "code": "HM"
-        },
-        {
             "name": "Brest",
             "code": "BR"
         },
@@ -2449,6 +2445,10 @@
         {
             "name": "Vitebsk",
             "code": "VI"
+        },
+        {
+            "name": "മിൻസ്ക്",
+            "code": "HM"
         }
     ],
     "BZ": [
@@ -2478,14 +2478,6 @@
         }
     ],
     "CA": [
-        {
-            "name": "ഒണ്ടാറിയോ",
-            "code": "ON"
-        },
-        {
-            "name": "ക്യൂബെക്",
-            "code": "QC"
-        },
         {
             "name": "Alberta",
             "code": "AB"
@@ -2529,13 +2521,17 @@
         {
             "name": "Yukon",
             "code": "YT"
+        },
+        {
+            "name": "ഒണ്ടാറിയോ",
+            "code": "ON"
+        },
+        {
+            "name": "ക്യൂബെക്",
+            "code": "QC"
         }
     ],
     "CD": [
-        {
-            "name": "കിൻഷസ",
-            "code": "KN"
-        },
         {
             "name": "Bandundu",
             "code": "BN"
@@ -2651,6 +2647,10 @@
         {
             "name": "Tshuapa",
             "code": "TU"
+        },
+        {
+            "name": "കിൻഷസ",
+            "code": "KN"
         }
     ],
     "CF": [
@@ -2775,10 +2775,6 @@
     ],
     "CH": [
         {
-            "name": "ടിച്ചീനോ",
-            "code": "TI"
-        },
-        {
             "name": "Aargau",
             "code": "AG"
         },
@@ -2877,13 +2873,13 @@
         {
             "name": "Zürich",
             "code": "ZH"
+        },
+        {
+            "name": "ടിച്ചീനോ",
+            "code": "TI"
         }
     ],
     "CI": [
-        {
-            "name": "അബിജാൻ",
-            "code": "AB"
-        },
         {
             "name": "Agnéby",
             "code": "16"
@@ -3011,13 +3007,13 @@
         {
             "name": "Zanzan²",
             "code": "ZZ"
+        },
+        {
+            "name": "അബിജാൻ",
+            "code": "AB"
         }
     ],
     "CL": [
-        {
-            "name": "റെജിയോൺ ഡെ മഗല്യാൻസ് ഡെല യെ അന്റാർട്ടിക്ക ചിലെന",
-            "code": "MA"
-        },
         {
             "name": "Antofagasta",
             "code": "AN"
@@ -3073,13 +3069,13 @@
         {
             "name": "Valparaíso",
             "code": "VS"
+        },
+        {
+            "name": "റെജിയോൺ ഡെ മഗല്യാൻസ് ഡെല യെ അന്റാർട്ടിക്ക ചിലെന",
+            "code": "MA"
         }
     ],
     "CM": [
-        {
-            "name": "അഡമാവാ",
-            "code": "AD"
-        },
         {
             "name": "Centre",
             "code": "CE"
@@ -3115,6 +3111,10 @@
         {
             "name": "West",
             "code": "OU"
+        },
+        {
+            "name": "അഡമാവാ",
+            "code": "AD"
         }
     ],
     "CN": [
@@ -3257,10 +3257,6 @@
     ],
     "CO": [
         {
-            "name": "ബൊഗോട്ട",
-            "code": "DC"
-        },
-        {
             "name": "Amazonas",
             "code": "AMA"
         },
@@ -3387,6 +3383,10 @@
         {
             "name": "Vichada",
             "code": "VID"
+        },
+        {
+            "name": "ബൊഗോട്ട",
+            "code": "DC"
         }
     ],
     "CR": [
@@ -3610,10 +3610,6 @@
         }
     ],
     "CZ": [
-        {
-            "name": "പ്രാഗ്",
-            "code": "10"
-        },
         {
             "name": "Benešov",
             "code": "201"
@@ -4057,21 +4053,13 @@
         {
             "name": "Znojmo",
             "code": "647"
+        },
+        {
+            "name": "പ്രാഗ്",
+            "code": "10"
         }
     ],
     "DE": [
-        {
-            "name": "ബവേറിയ",
-            "code": "BY"
-        },
-        {
-            "name": "ബെർലിൻ",
-            "code": "BE"
-        },
-        {
-            "name": "ഹാംബർഗ്",
-            "code": "HH"
-        },
         {
             "name": "Baden-Württemberg",
             "code": "BW"
@@ -4123,6 +4111,18 @@
         {
             "name": "Thuringia",
             "code": "TH"
+        },
+        {
+            "name": "ബവേറിയ",
+            "code": "BY"
+        },
+        {
+            "name": "ബെർലിൻ",
+            "code": "BE"
+        },
+        {
+            "name": "ഹാംബർഗ്",
+            "code": "HH"
         }
     ],
     "DJ": [
@@ -4877,14 +4877,6 @@
     ],
     "ES": [
         {
-            "name": "ആൻഡലൂഷ്യ",
-            "code": "AN"
-        },
-        {
-            "name": "കാറ്റലോണിയ",
-            "code": "CT"
-        },
-        {
             "name": "A Coruña",
             "code": "C"
         },
@@ -5151,13 +5143,17 @@
         {
             "name": "Zaragoza",
             "code": "Z"
+        },
+        {
+            "name": "ആൻഡലൂഷ്യ",
+            "code": "AN"
+        },
+        {
+            "name": "കാറ്റലോണിയ",
+            "code": "CT"
         }
     ],
     "ET": [
-        {
-            "name": "അഡിസ് അബെബ",
-            "code": "AA"
-        },
         {
             "name": "Afar",
             "code": "AF"
@@ -5197,6 +5193,10 @@
         {
             "name": "Tigray",
             "code": "TI"
+        },
+        {
+            "name": "അഡിസ് അബെബ",
+            "code": "AA"
         }
     ],
     "FI": [
@@ -5375,10 +5375,6 @@
     ],
     "FR": [
         {
-            "name": "പാരിസ്",
-            "code": "75"
-        },
-        {
             "name": "Ain",
             "code": "01"
         },
@@ -5436,11 +5432,11 @@
         },
         {
             "name": "Brittany",
-            "code": "E"
+            "code": "BRE"
         },
         {
             "name": "Brittany",
-            "code": "BRE"
+            "code": "E"
         },
         {
             "name": "Burgundy-Franche-Comté",
@@ -5881,6 +5877,10 @@
         {
             "name": "Yvelines",
             "code": "78"
+        },
+        {
+            "name": "പാരിസ്",
+            "code": "75"
         }
     ],
     "GA": [
@@ -5922,82 +5922,6 @@
         }
     ],
     "GB": [
-        {
-            "name": "അബർഡീൻ",
-            "code": "ABE"
-        },
-        {
-            "name": "ഇംഗ്ലണ്ട്",
-            "code": "ENG"
-        },
-        {
-            "name": "എഡിൻബറോ",
-            "code": "EDH"
-        },
-        {
-            "name": "കാർഡിഫ്",
-            "code": "CRF"
-        },
-        {
-            "name": "ഗ്രേറ്റ് ബ്രിട്ടൺ",
-            "code": "GBN"
-        },
-        {
-            "name": "ഡെവൺ",
-            "code": "DEV"
-        },
-        {
-            "name": "ഡോർസെറ്റ്",
-            "code": "DOR"
-        },
-        {
-            "name": "നോട്ടിങ്ഹാം",
-            "code": "NGM"
-        },
-        {
-            "name": "നോർത്താംപ്റ്റൺഷയർ",
-            "code": "NTH"
-        },
-        {
-            "name": "ബക്കിങ്ങാംഷയർ",
-            "code": "BKM"
-        },
-        {
-            "name": "ബിർമിങ്ഹാം",
-            "code": "BIR"
-        },
-        {
-            "name": "ബ്രിസ്റ്റൽ",
-            "code": "BST"
-        },
-        {
-            "name": "മാഞ്ചസ്റ്റർ",
-            "code": "MAN"
-        },
-        {
-            "name": "യുണൈറ്റഡ് കിങ്ഡം",
-            "code": "UKM"
-        },
-        {
-            "name": "ലിവർപൂൾ",
-            "code": "LIV"
-        },
-        {
-            "name": "വടക്കൻ അയർലണ്ട്",
-            "code": "NIR"
-        },
-        {
-            "name": "വെയിൽസ്",
-            "code": "WLS"
-        },
-        {
-            "name": "സ്‌കോട്ട്‌ലന്റ്",
-            "code": "SCT"
-        },
-        {
-            "name": "റീഡിംഗ്",
-            "code": "RDG"
-        },
         {
             "name": "Aberdeenshire",
             "code": "ABD"
@@ -6917,6 +6841,82 @@
         {
             "name": "York",
             "code": "YOR"
+        },
+        {
+            "name": "അബർഡീൻ",
+            "code": "ABE"
+        },
+        {
+            "name": "ഇംഗ്ലണ്ട്",
+            "code": "ENG"
+        },
+        {
+            "name": "എഡിൻബറോ",
+            "code": "EDH"
+        },
+        {
+            "name": "കാർഡിഫ്",
+            "code": "CRF"
+        },
+        {
+            "name": "ഗ്രേറ്റ് ബ്രിട്ടൺ",
+            "code": "GBN"
+        },
+        {
+            "name": "ഡെവൺ",
+            "code": "DEV"
+        },
+        {
+            "name": "ഡോർസെറ്റ്",
+            "code": "DOR"
+        },
+        {
+            "name": "നോട്ടിങ്ഹാം",
+            "code": "NGM"
+        },
+        {
+            "name": "നോർത്താംപ്റ്റൺഷയർ",
+            "code": "NTH"
+        },
+        {
+            "name": "ബക്കിങ്ങാംഷയർ",
+            "code": "BKM"
+        },
+        {
+            "name": "ബിർമിങ്ഹാം",
+            "code": "BIR"
+        },
+        {
+            "name": "ബ്രിസ്റ്റൽ",
+            "code": "BST"
+        },
+        {
+            "name": "മാഞ്ചസ്റ്റർ",
+            "code": "MAN"
+        },
+        {
+            "name": "യുണൈറ്റഡ് കിങ്ഡം",
+            "code": "UKM"
+        },
+        {
+            "name": "ലിവർപൂൾ",
+            "code": "LIV"
+        },
+        {
+            "name": "വടക്കൻ അയർലണ്ട്",
+            "code": "NIR"
+        },
+        {
+            "name": "വെയിൽസ്",
+            "code": "WLS"
+        },
+        {
+            "name": "സ്‌കോട്ട്‌ലന്റ്",
+            "code": "SCT"
+        },
+        {
+            "name": "റീഡിംഗ്",
+            "code": "RDG"
         }
     ],
     "GD": [
@@ -6951,22 +6951,6 @@
     ],
     "GE": [
         {
-            "name": "അജാറ",
-            "code": "AJ"
-        },
-        {
-            "name": "അബ്ഖാസിയ",
-            "code": "AB"
-        },
-        {
-            "name": "ഇമെറെതി",
-            "code": "IM"
-        },
-        {
-            "name": "റ്റ്ബിലിസി",
-            "code": "TB"
-        },
-        {
             "name": "Guria",
             "code": "GU"
         },
@@ -6997,13 +6981,25 @@
         {
             "name": "Shida Kartli",
             "code": "SK"
+        },
+        {
+            "name": "അജാറ",
+            "code": "AJ"
+        },
+        {
+            "name": "അബ്ഖാസിയ",
+            "code": "AB"
+        },
+        {
+            "name": "ഇമെറെതി",
+            "code": "IM"
+        },
+        {
+            "name": "റ്റ്ബിലിസി",
+            "code": "TB"
         }
     ],
     "GH": [
-        {
-            "name": "അഷാന്തി",
-            "code": "AH"
-        },
         {
             "name": "Brong-Ahafo",
             "code": "BA"
@@ -7039,6 +7035,10 @@
         {
             "name": "Western",
             "code": "WP"
+        },
+        {
+            "name": "അഷാന്തി",
+            "code": "AH"
         }
     ],
     "GL": [
@@ -7290,10 +7290,6 @@
         }
     ],
     "GR": [
-        {
-            "name": "മൗണ്ട് ആഥോസ്",
-            "code": "69"
-        },
         {
             "name": "Achaea",
             "code": "13"
@@ -7549,6 +7545,10 @@
         {
             "name": "Zakynthos",
             "code": "21"
+        },
+        {
+            "name": "മൗണ്ട് ആഥോസ്",
+            "code": "69"
         }
     ],
     "GT": [
@@ -7937,10 +7937,6 @@
     ],
     "HU": [
         {
-            "name": "ബുഡാപെസ്റ്റ്",
-            "code": "BU"
-        },
-        {
             "name": "Bács-Kiskun",
             "code": "BK"
         },
@@ -8107,53 +8103,13 @@
         {
             "name": "Zalaegerszeg",
             "code": "ZE"
+        },
+        {
+            "name": "ബുഡാപെസ്റ്റ്",
+            "code": "BU"
         }
     ],
     "ID": [
-        {
-            "name": "അക്കെ",
-            "code": "AC"
-        },
-        {
-            "name": "കലിമന്താൻ‌",
-            "code": "KA"
-        },
-        {
-            "name": "ജക്കാർത്ത",
-            "code": "JK"
-        },
-        {
-            "name": "ജംബി പട്ടണം",
-            "code": "JA"
-        },
-        {
-            "name": "ജാവ (ദ്വീപ്)",
-            "code": "JW"
-        },
-        {
-            "name": "പപുവ",
-            "code": "PA"
-        },
-        {
-            "name": "മലുകു ദ്വീപുകൾ",
-            "code": "ML"
-        },
-        {
-            "name": "ലെസ്സർ സന്റ ദ്വീപ് സമൂഹം",
-            "code": "NU"
-        },
-        {
-            "name": "വെസ്റ്റ് പപുവ",
-            "code": "PB"
-        },
-        {
-            "name": "സുമാത്ര",
-            "code": "SM"
-        },
-        {
-            "name": "സുലവേസി",
-            "code": "SL"
-        },
         {
             "name": "Bali",
             "code": "BA"
@@ -8273,6 +8229,50 @@
         {
             "name": "Yogyakarta",
             "code": "YO"
+        },
+        {
+            "name": "അക്കെ",
+            "code": "AC"
+        },
+        {
+            "name": "കലിമന്താൻ‌",
+            "code": "KA"
+        },
+        {
+            "name": "ജക്കാർത്ത",
+            "code": "JK"
+        },
+        {
+            "name": "ജംബി പട്ടണം",
+            "code": "JA"
+        },
+        {
+            "name": "ജാവ (ദ്വീപ്)",
+            "code": "JW"
+        },
+        {
+            "name": "പപുവ",
+            "code": "PA"
+        },
+        {
+            "name": "മലുകു ദ്വീപുകൾ",
+            "code": "ML"
+        },
+        {
+            "name": "ലെസ്സർ സന്റ ദ്വീപ് സമൂഹം",
+            "code": "NU"
+        },
+        {
+            "name": "വെസ്റ്റ് പപുവ",
+            "code": "PB"
+        },
+        {
+            "name": "സുമാത്ര",
+            "code": "SM"
+        },
+        {
+            "name": "സുലവേസി",
+            "code": "SL"
         }
     ],
     "IE": [
@@ -8571,14 +8571,6 @@
     ],
     "IQ": [
         {
-            "name": "അൻബാർ പ്രവിശ്യ",
-            "code": "AN"
-        },
-        {
-            "name": "സലാ അ ദിൻ",
-            "code": "SD"
-        },
-        {
             "name": "Al Muthanna",
             "code": "MU"
         },
@@ -8641,6 +8633,14 @@
         {
             "name": "Wasit",
             "code": "WA"
+        },
+        {
+            "name": "അൻബാർ പ്രവിശ്യ",
+            "code": "AN"
+        },
+        {
+            "name": "സലാ അ ദിൻ",
+            "code": "SD"
         }
     ],
     "IR": [
@@ -8808,30 +8808,6 @@
         }
     ],
     "IT": [
-        {
-            "name": "അയോസ്റ്റ വാലി",
-            "code": "23"
-        },
-        {
-            "name": "ടസ്കനി",
-            "code": "52"
-        },
-        {
-            "name": "ട്രെന്റിനോ ആൾട്ടോ അഡിജേ",
-            "code": "32"
-        },
-        {
-            "name": "ഫ്രിയൂളി-വെനേസിയ ജിയൂളിയ",
-            "code": "36"
-        },
-        {
-            "name": "സാർഡീനിയ",
-            "code": "88"
-        },
-        {
-            "name": "സിസിലി",
-            "code": "82"
-        },
         {
             "name": "Abruzzo",
             "code": "65"
@@ -9327,6 +9303,30 @@
         {
             "name": "Viterbo",
             "code": "VT"
+        },
+        {
+            "name": "അയോസ്റ്റ വാലി",
+            "code": "23"
+        },
+        {
+            "name": "ടസ്കനി",
+            "code": "52"
+        },
+        {
+            "name": "ട്രെന്റിനോ ആൾട്ടോ അഡിജേ",
+            "code": "32"
+        },
+        {
+            "name": "ഫ്രിയൂളി-വെനേസിയ ജിയൂളിയ",
+            "code": "36"
+        },
+        {
+            "name": "സാർഡീനിയ",
+            "code": "88"
+        },
+        {
+            "name": "സിസിലി",
+            "code": "82"
         }
     ],
     "JM": [
@@ -9819,10 +9819,6 @@
     ],
     "KG": [
         {
-            "name": "ബിഷ്കെക്ക്",
-            "code": "GB"
-        },
-        {
             "name": "Batken",
             "code": "B"
         },
@@ -9853,6 +9849,10 @@
         {
             "name": "Talas",
             "code": "T"
+        },
+        {
+            "name": "ബിഷ്കെക്ക്",
+            "code": "GB"
         }
     ],
     "KH": [
@@ -9959,16 +9959,16 @@
     ],
     "KI": [
         {
-            "name": "ലൈൻ ദ്വീപുകൾ",
-            "code": "L"
-        },
-        {
             "name": "Gilbert Islands",
             "code": "G"
         },
         {
             "name": "Phoenix Islands",
             "code": "P"
+        },
+        {
+            "name": "ലൈൻ ദ്വീപുകൾ",
+            "code": "L"
         }
     ],
     "KM": [
@@ -10199,14 +10199,6 @@
     ],
     "KZ": [
         {
-            "name": "അൽമാട്ടി",
-            "code": "ALA"
-        },
-        {
-            "name": "അസ്താന",
-            "code": "AST"
-        },
-        {
             "name": "Akmola",
             "code": "AKM"
         },
@@ -10265,6 +10257,14 @@
         {
             "name": "West Kazakhstan",
             "code": "ZAP"
+        },
+        {
+            "name": "അൽമാട്ടി",
+            "code": "ALA"
+        },
+        {
+            "name": "അസ്താന",
+            "code": "AST"
         }
     ],
     "LA": [
@@ -11051,10 +11051,6 @@
     ],
     "LV": [
         {
-            "name": "റിഗ",
-            "code": "RIX"
-        },
-        {
             "name": "Ādaži",
             "code": "011"
         },
@@ -11525,6 +11521,10 @@
         {
             "name": "Zilupe",
             "code": "110"
+        },
+        {
+            "name": "റിഗ",
+            "code": "RIX"
         }
     ],
     "LY": [
@@ -11618,30 +11618,6 @@
         }
     ],
     "MA": [
-        {
-            "name": "കാസബ്ലങ്ക",
-            "code": "CAS"
-        },
-        {
-            "name": "ടാൻജീർ",
-            "code": "TNG"
-        },
-        {
-            "name": "ഫെസ്, മൊറോക്കോ",
-            "code": "FES"
-        },
-        {
-            "name": "മരാക്കേഷ്",
-            "code": "MMD"
-        },
-        {
-            "name": "മരാക്കേഷ്²",
-            "code": "MMN"
-        },
-        {
-            "name": "മരാക്കേഷ്³",
-            "code": "SYB"
-        },
         {
             "name": "Agadir-Ida Ou Tanane",
             "code": "AGD"
@@ -11933,6 +11909,30 @@
         {
             "name": "Zagora",
             "code": "ZAG"
+        },
+        {
+            "name": "കാസബ്ലങ്ക",
+            "code": "CAS"
+        },
+        {
+            "name": "ടാൻജീർ",
+            "code": "TNG"
+        },
+        {
+            "name": "ഫെസ്, മൊറോക്കോ",
+            "code": "FES"
+        },
+        {
+            "name": "മരാക്കേഷ്",
+            "code": "MMD"
+        },
+        {
+            "name": "മരാക്കേഷ്²",
+            "code": "MMN"
+        },
+        {
+            "name": "മരാക്കേഷ്³",
+            "code": "SYB"
         }
     ],
     "MC": [
@@ -12725,10 +12725,6 @@
     ],
     "ML": [
         {
-            "name": "ബാമാകോ",
-            "code": "BKO"
-        },
-        {
             "name": "Gao",
             "code": "7"
         },
@@ -12767,6 +12763,10 @@
         {
             "name": "Tombouctou",
             "code": "6"
+        },
+        {
+            "name": "ബാമാകോ",
+            "code": "BKO"
         }
     ],
     "MM": [
@@ -13263,10 +13263,6 @@
     ],
     "MU": [
         {
-            "name": "പോർട്ട് ലൂയിസ്",
-            "code": "PU"
-        },
-        {
             "name": "Agaléga",
             "code": "AG"
         },
@@ -13329,13 +13325,13 @@
         {
             "name": "Vacoas-Phoenix",
             "code": "VP"
+        },
+        {
+            "name": "പോർട്ട് ലൂയിസ്",
+            "code": "PU"
         }
     ],
     "MV": [
-        {
-            "name": "മാലി",
-            "code": "MLE"
-        },
         {
             "name": "Addu",
             "code": "01"
@@ -13443,6 +13439,10 @@
         {
             "name": "Vaavu",
             "code": "04"
+        },
+        {
+            "name": "മാലി",
+            "code": "MLE"
         }
     ],
     "MW": [
@@ -13573,18 +13573,6 @@
     ],
     "MX": [
         {
-            "name": "ടബാസ്കോ",
-            "code": "TAB"
-        },
-        {
-            "name": "മെക്സിക്കോ സിറ്റി",
-            "code": "CMX"
-        },
-        {
-            "name": "വഹാക്ക",
-            "code": "OAX"
-        },
-        {
             "name": "Aguascalientes",
             "code": "AGU"
         },
@@ -13703,6 +13691,18 @@
         {
             "name": "Zacatecas",
             "code": "ZAC"
+        },
+        {
+            "name": "ടബാസ്കോ",
+            "code": "TAB"
+        },
+        {
+            "name": "മെക്സിക്കോ സിറ്റി",
+            "code": "CMX"
+        },
+        {
+            "name": "വഹാക്ക",
+            "code": "OAX"
         }
     ],
     "MY": [
@@ -13773,10 +13773,6 @@
     ],
     "MZ": [
         {
-            "name": "മപൂട്ടോ",
-            "code": "MPM"
-        },
-        {
             "name": "Cabo Delgado",
             "code": "P"
         },
@@ -13815,6 +13811,10 @@
         {
             "name": "Zambezia",
             "code": "Q"
+        },
+        {
+            "name": "മപൂട്ടോ",
+            "code": "MPM"
         }
     ],
     "NA": [
@@ -14505,10 +14505,6 @@
     ],
     "OM": [
         {
-            "name": "മുസന്ധം",
-            "code": "MU"
-        },
-        {
             "name": "Ad Dakhiliyah",
             "code": "DA"
         },
@@ -14555,6 +14551,10 @@
         {
             "name": "Shamal ash Sharqiyah",
             "code": "SS"
+        },
+        {
+            "name": "മുസന്ധം",
+            "code": "MU"
         }
     ],
     "PA": [
@@ -14719,10 +14719,6 @@
     ],
     "PG": [
         {
-            "name": "പോർട്ട് മോറെസ്ബി",
-            "code": "NCD"
-        },
-        {
             "name": "Bougainville",
             "code": "NSB"
         },
@@ -14805,17 +14801,13 @@
         {
             "name": "Western Highlands",
             "code": "WHM"
+        },
+        {
+            "name": "പോർട്ട് മോറെസ്ബി",
+            "code": "NCD"
         }
     ],
     "PH": [
-        {
-            "name": "ബൊഹോൾ",
-            "code": "BOH"
-        },
-        {
-            "name": "സെബൂ",
-            "code": "CEB"
-        },
         {
             "name": "Abra",
             "code": "ABR"
@@ -15199,9 +15191,25 @@
         {
             "name": "Zamboanga Sibugay",
             "code": "ZSI"
+        },
+        {
+            "name": "ബൊഹോൾ",
+            "code": "BOH"
+        },
+        {
+            "name": "സെബൂ",
+            "code": "CEB"
         }
     ],
     "PK": [
+        {
+            "name": "Federally Administered Tribal Areas",
+            "code": "TA"
+        },
+        {
+            "name": "Islamabad",
+            "code": "IS"
+        },
         {
             "name": "ആസാദ് കശ്മീർ",
             "code": "JK"
@@ -15225,14 +15233,6 @@
         {
             "name": "സിന്ധ്",
             "code": "SD"
-        },
-        {
-            "name": "Federally Administered Tribal Areas",
-            "code": "TA"
-        },
-        {
-            "name": "Islamabad",
-            "code": "IS"
         }
     ],
     "PL": [
@@ -15517,10 +15517,6 @@
     ],
     "PY": [
         {
-            "name": "അസുൻസിയോൺ",
-            "code": "ASU"
-        },
-        {
             "name": "Alto Paraguay",
             "code": "16"
         },
@@ -15587,13 +15583,13 @@
         {
             "name": "San Pedro",
             "code": "2"
+        },
+        {
+            "name": "അസുൻസിയോൺ",
+            "code": "ASU"
         }
     ],
     "QA": [
-        {
-            "name": "ദോഹ",
-            "code": "DA"
-        },
         {
             "name": "Al Daayen",
             "code": "ZA"
@@ -15621,13 +15617,13 @@
         {
             "name": "Umm Salal",
             "code": "US"
+        },
+        {
+            "name": "ദോഹ",
+            "code": "DA"
         }
     ],
     "RO": [
-        {
-            "name": "ബുക്കാറെസ്റ്റ്",
-            "code": "B"
-        },
         {
             "name": "Alba",
             "code": "AB"
@@ -15791,13 +15787,13 @@
         {
             "name": "Vrancea",
             "code": "VN"
+        },
+        {
+            "name": "ബുക്കാറെസ്റ്റ്",
+            "code": "B"
         }
     ],
     "RS": [
-        {
-            "name": "ബെൽഗ്രേഡ്",
-            "code": "00"
-        },
         {
             "name": "Bor",
             "code": "14"
@@ -15921,37 +15917,13 @@
         {
             "name": "Zlatibor",
             "code": "16"
+        },
+        {
+            "name": "ബെൽഗ്രേഡ്",
+            "code": "00"
         }
     ],
     "RU": [
-        {
-            "name": "കലീന്യിൻഗ്രാഡ് ഒബ്ലാസ്റ്റ്",
-            "code": "KGD"
-        },
-        {
-            "name": "ചെച്‌നിയ",
-            "code": "CE"
-        },
-        {
-            "name": "ടാട്ടർസ്താൻ",
-            "code": "TA"
-        },
-        {
-            "name": "ദാഗസ്താൻ",
-            "code": "DA"
-        },
-        {
-            "name": "ബാഷ്കോർടോസ്ഥാൻ",
-            "code": "BA"
-        },
-        {
-            "name": "മോസ്കോ",
-            "code": "MOW"
-        },
-        {
-            "name": "സെന്റ് പീറ്റേഴ്സ്ബർഗ്",
-            "code": "SPE"
-        },
         {
             "name": "Adygea",
             "code": "AD"
@@ -16255,6 +16227,34 @@
         {
             "name": "Zabaykalsky Krai",
             "code": "ZAB"
+        },
+        {
+            "name": "കലീന്യിൻഗ്രാഡ് ഒബ്ലാസ്റ്റ്",
+            "code": "KGD"
+        },
+        {
+            "name": "ചെച്‌നിയ",
+            "code": "CE"
+        },
+        {
+            "name": "ടാട്ടർസ്താൻ",
+            "code": "TA"
+        },
+        {
+            "name": "ദാഗസ്താൻ",
+            "code": "DA"
+        },
+        {
+            "name": "ബാഷ്കോർടോസ്ഥാൻ",
+            "code": "BA"
+        },
+        {
+            "name": "മോസ്കോ",
+            "code": "MOW"
+        },
+        {
+            "name": "സെന്റ് പീറ്റേഴ്സ്ബർഗ്",
+            "code": "SPE"
         }
     ],
     "RW": [
@@ -16661,16 +16661,16 @@
     ],
     "SH": [
         {
+            "name": "Tristan da Cunha",
+            "code": "TA"
+        },
+        {
             "name": "അസെൻഷൻ ദ്വീപ്",
             "code": "AC"
         },
         {
             "name": "സൈന്റ് ഹെലേന",
             "code": "HL"
-        },
-        {
-            "name": "Tristan da Cunha",
-            "code": "TA"
         }
     ],
     "SI": [
@@ -18091,14 +18091,6 @@
     ],
     "TH": [
         {
-            "name": "പട്ടായ",
-            "code": "S"
-        },
-        {
-            "name": "ബാങ്കോക്ക്",
-            "code": "10"
-        },
-        {
             "name": "Amnat Charoen",
             "code": "37"
         },
@@ -18401,13 +18393,17 @@
         {
             "name": "Yasothon",
             "code": "35"
+        },
+        {
+            "name": "പട്ടായ",
+            "code": "S"
+        },
+        {
+            "name": "ബാങ്കോക്ക്",
+            "code": "10"
         }
     ],
     "TJ": [
-        {
-            "name": "ദുഷാൻബെ",
-            "code": "DU"
-        },
         {
             "name": "Gorno-Badakhshan",
             "code": "GB"
@@ -18423,6 +18419,10 @@
         {
             "name": "Sughd",
             "code": "SU"
+        },
+        {
+            "name": "ദുഷാൻബെ",
+            "code": "DU"
         }
     ],
     "TL": [
@@ -18481,10 +18481,6 @@
     ],
     "TM": [
         {
-            "name": "അഷ്ഗാബാദ്",
-            "code": "S"
-        },
-        {
             "name": "Ahal",
             "code": "A"
         },
@@ -18503,6 +18499,10 @@
         {
             "name": "Mary",
             "code": "M"
+        },
+        {
+            "name": "അഷ്ഗാബാദ്",
+            "code": "S"
         }
     ],
     "TN": [
@@ -18953,10 +18953,6 @@
     ],
     "TT": [
         {
-            "name": "പോർട്ട് ഓഫ് സ്പെയിൻ",
-            "code": "POS"
-        },
-        {
             "name": "Arima",
             "code": "ARI"
         },
@@ -19011,6 +19007,10 @@
         {
             "name": "Tunapuna-Piarco",
             "code": "TUP"
+        },
+        {
+            "name": "പോർട്ട് ഓഫ് സ്പെയിൻ",
+            "code": "POS"
         }
     ],
     "TV": [
@@ -19048,14 +19048,6 @@
         }
     ],
     "TW": [
-        {
-            "name": "കിന്മെൻ",
-            "code": "KIN"
-        },
-        {
-            "name": "തായ്‌പെയ്",
-            "code": "TPE"
-        },
         {
             "name": "Changhua",
             "code": "CHA"
@@ -19135,6 +19127,14 @@
         {
             "name": "Yunlin",
             "code": "YUN"
+        },
+        {
+            "name": "കിന്മെൻ",
+            "code": "KIN"
+        },
+        {
+            "name": "തായ്‌പെയ്",
+            "code": "TPE"
         }
     ],
     "TZ": [
@@ -19915,6 +19915,30 @@
     ],
     "US": [
         {
+            "name": "American Samoa",
+            "code": "AS"
+        },
+        {
+            "name": "Guam",
+            "code": "GU"
+        },
+        {
+            "name": "Northern Mariana Islands",
+            "code": "MP"
+        },
+        {
+            "name": "Puerto Rico",
+            "code": "PR"
+        },
+        {
+            "name": "U.S. Outlying Islands",
+            "code": "UM"
+        },
+        {
+            "name": "U.S. Virgin Islands",
+            "code": "VI"
+        },
+        {
             "name": "അരിസോണ",
             "code": "AZ"
         },
@@ -20117,30 +20141,6 @@
         {
             "name": "റോഡ് ഐലൻഡ്",
             "code": "RI"
-        },
-        {
-            "name": "American Samoa",
-            "code": "AS"
-        },
-        {
-            "name": "Guam",
-            "code": "GU"
-        },
-        {
-            "name": "Northern Mariana Islands",
-            "code": "MP"
-        },
-        {
-            "name": "Puerto Rico",
-            "code": "PR"
-        },
-        {
-            "name": "U.S. Outlying Islands",
-            "code": "UM"
-        },
-        {
-            "name": "U.S. Virgin Islands",
-            "code": "VI"
         }
     ],
     "UY": [
@@ -20223,14 +20223,6 @@
     ],
     "UZ": [
         {
-            "name": "കരാകല്പക്സ്ഥാൻ",
-            "code": "QR"
-        },
-        {
-            "name": "താഷ്കന്റ്",
-            "code": "TK"
-        },
-        {
             "name": "Andijan",
             "code": "AN"
         },
@@ -20277,6 +20269,14 @@
         {
             "name": "Xorazm",
             "code": "XO"
+        },
+        {
+            "name": "കരാകല്പക്സ്ഥാൻ",
+            "code": "QR"
+        },
+        {
+            "name": "താഷ്കന്റ്",
+            "code": "TK"
         }
     ],
     "VC": [
@@ -20408,18 +20408,6 @@
         }
     ],
     "VN": [
-        {
-            "name": "ഹാനോയ്",
-            "code": "HN"
-        },
-        {
-            "name": "ഹൈ ഫോങ്",
-            "code": "HP"
-        },
-        {
-            "name": "ഹോ ചി മിൻ നഗരം",
-            "code": "SG"
-        },
         {
             "name": "An Giang",
             "code": "44"
@@ -20659,6 +20647,18 @@
         {
             "name": "Yên Bái",
             "code": "06"
+        },
+        {
+            "name": "ഹാനോയ്",
+            "code": "HN"
+        },
+        {
+            "name": "ഹൈ ഫോങ്",
+            "code": "HP"
+        },
+        {
+            "name": "ഹോ ചി മിൻ നഗരം",
+            "code": "SG"
         }
     ],
     "VU": [
@@ -20753,10 +20753,6 @@
             "code": "AD"
         },
         {
-            "name": "സന",
-            "code": "SA"
-        },
-        {
             "name": "Abyan",
             "code": "AB"
         },
@@ -20835,6 +20831,10 @@
         {
             "name": "Taiz",
             "code": "TA"
+        },
+        {
+            "name": "സന",
+            "code": "SA"
         }
     ],
     "ZA": [

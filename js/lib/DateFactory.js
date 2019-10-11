@@ -173,6 +173,7 @@ DateFactory._dynLoadDate = function (name, fnc) {
     if (!IDate._constructors[name]) {
         var entry = DateFactory._dynMap[name];
         if (entry) {
+            // eslint-disable-next-line
             IDate._constructors[name] = require(fnc(entry));
         }
     }

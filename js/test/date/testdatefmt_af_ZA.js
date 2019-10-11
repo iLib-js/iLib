@@ -895,7 +895,7 @@ module.exports.testdatefmt_af_ZA = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "S, 09-29");
+        test.equal(fmt.format(date), "S 09-29");
         test.done();
     },
     
@@ -914,7 +914,7 @@ module.exports.testdatefmt_af_ZA = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "S, 2554-09-29");
+        test.equal(fmt.format(date), "S 2554-09-29");
         test.done();
     },
     
@@ -1048,7 +1048,7 @@ module.exports.testdatefmt_af_ZA = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "Donderdag, 19 Februarie");
+        test.equal(fmt.format(date), "Donderdag 19 Februarie");
         test.done();
     },
     
@@ -1067,7 +1067,7 @@ module.exports.testdatefmt_af_ZA = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "Donderdag, 19 Februarie 2015");
+        test.equal(fmt.format(date), "Donderdag 19 Februarie 2015");
         test.done();
     },
     

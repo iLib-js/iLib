@@ -59,7 +59,7 @@ module.exports.testdatefmt_ur_IN = {
             minute: 45,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "‏۲۹‏/۹‏/۱۱");
+        test.equal(fmt.format(date), '‏۲۹/۹/۱۱');
         test.done();
     },
 
@@ -78,7 +78,7 @@ module.exports.testdatefmt_ur_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "‏۲۰۱۱ ستمبر ۲۹");
+        test.equal(fmt.format(date), '‏۲۹ ستمبر، ۲۰۱۱');
         test.done();
     },
 
@@ -135,7 +135,7 @@ module.exports.testdatefmt_ur_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "‏۱:۴۵ ‫PM");
+        test.equal(fmt.format(date), '‏۱:۴۵ PM');
         test.done();
     },
 
@@ -154,7 +154,7 @@ module.exports.testdatefmt_ur_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "‏۱:۴۵ ‫PM");
+        test.equal(fmt.format(date), '‏۱:۴۵ PM');
         test.done();
     },
 
@@ -173,7 +173,7 @@ module.exports.testdatefmt_ur_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "‏۱:۴۵ ‫PM");
+        test.equal(fmt.format(date), '‏۱:۴۵ PM');
         test.done();
     },
 
@@ -192,7 +192,7 @@ module.exports.testdatefmt_ur_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "‏۱:۴۵ ‫PM");
+        test.equal(fmt.format(date), '‏۱:۴۵ PM');
         test.done();
     },
 
@@ -211,7 +211,7 @@ module.exports.testdatefmt_ur_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "‏۱:۴۵ ‫PM");
+        test.equal(fmt.format(date), '‏۱:۴۵ PM');
         test.done();
     },
 
@@ -230,7 +230,7 @@ module.exports.testdatefmt_ur_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "‏۲۹‏/۹‏/۱۱ ‏۱:۴۵ ‫PM");
+        test.equal(fmt.format(date), '‏۲۹/۹/۱۱ ‏۱:۴۵ PM');
         test.done();
     },
 
@@ -249,7 +249,7 @@ module.exports.testdatefmt_ur_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "‏۲۰۱۱ ستمبر ۲۹ ‏۱:۴۵ ‫PM");
+        test.equal(fmt.format(date),'‏۲۹ ستمبر، ۲۰۱۱ ‏۱:۴۵ PM');
         test.done();
     },
 
@@ -268,7 +268,7 @@ module.exports.testdatefmt_ur_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "‏۲۹ ستمبر، ۲۰۱۱ ‏۱:۴۵ ‫PM");
+        test.equal(fmt.format(date), '‏۲۹ ستمبر، ۲۰۱۱ ‏۱:۴۵ PM');
         test.done();
     },
 
@@ -287,7 +287,7 @@ module.exports.testdatefmt_ur_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "‏۲۹ ستمبر، ۲۰۱۱ ‏۱:۴۵ ‫PM");
+        test.equal(fmt.format(date), '‏۲۹ ستمبر، ۲۰۱۱ ‏۱:۴۵ PM');
         test.done();
     },
 
@@ -478,7 +478,7 @@ module.exports.testdatefmt_ur_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "‏۲۹‏/۹‏/۱۱");
+        test.equal(fmt.format(date), '‏۲۹/۹/۱۱');
         test.done();
     },
 
@@ -497,7 +497,7 @@ module.exports.testdatefmt_ur_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "‏۱:۴۵ ‫PM");
+        test.equal(fmt.format(date),'‏۱:۴۵ PM');
         test.done();
     },
 
@@ -516,7 +516,7 @@ module.exports.testdatefmt_ur_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "‏۲۹‏/۹‏/۱۱ ‏۱:۴۵ ‫PM");
+        test.equal(fmt.format(date), '‏۲۹/۹/۱۱ ‏۱:۴۵ PM');
         test.done();
     },
 
@@ -612,7 +612,7 @@ module.exports.testdatefmt_ur_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "‏۲۹‏/۹");
+        test.equal(fmt.format(date),'‏۲۹/۹');
         test.done();
     },
 
@@ -631,7 +631,7 @@ module.exports.testdatefmt_ur_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "‏۹‏/۱۱");
+        test.equal(fmt.format(date), '‏۹/۱۱');
         test.done();
     },
 
@@ -650,7 +650,7 @@ module.exports.testdatefmt_ur_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "‏۲۹‏/۹‏/۱۱");
+        test.equal(fmt.format(date),'‏۲۹/۹/۱۱');
         test.done();
     },
 
@@ -669,7 +669,7 @@ module.exports.testdatefmt_ur_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "T، ‏۲۹‏/۹");
+        test.equal(fmt.format(date), 'T، ‏۲۹/۹');
         test.done();
     },
 
@@ -688,7 +688,7 @@ module.exports.testdatefmt_ur_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "T، ‏۲۹‏/۹‏/۱۱");
+        test.equal(fmt.format(date), 'T، ۲۹/۹/۱۱');
         test.done();
     },
 
@@ -957,7 +957,7 @@ module.exports.testdatefmt_ur_IN = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "‏۱:۴۵ ‫PM");
+        test.equal(fmt.format(date), '‏۱:۴۵ PM');
         test.done();
     },
 
@@ -980,7 +980,7 @@ module.exports.testdatefmt_ur_IN = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "‏۱:۴۵:۳۷ ‫PM IST");
+        test.equal(fmt.format(date), '‏۱:۴۵:۳۷ PM IST');
         test.done();
     },
 
@@ -1004,7 +1004,7 @@ module.exports.testdatefmt_ur_IN = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "‏۱:۴۵:۳۷ ‫PM IST");
+        test.equal(fmt.format(date), '‏۱:۴۵:۳۷ PM IST');
         test.done();
     },
 
@@ -1023,7 +1023,7 @@ module.exports.testdatefmt_ur_IN = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "‏۱:۴۵:۳۷ ‫PM");
+        test.equal(fmt.format(date), '‏۱:۴۵:۳۷ PM');
         test.done();
     },
 
@@ -1047,7 +1047,7 @@ module.exports.testdatefmt_ur_IN = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "‏۱:۴۵:۳۷ ‫PM IST");
+        test.equal(fmt.format(date), '‏۱:۴۵:۳۷ PM IST');
         test.done();
     },
 
@@ -1071,7 +1071,7 @@ module.exports.testdatefmt_ur_IN = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "‏۱:۴۵:۳۷ ‫PM IST");
+        test.equal(fmt.format(date), '‏۱:۴۵:۳۷ PM IST');
         test.done();
     },
 
@@ -1150,7 +1150,7 @@ module.exports.testdatefmt_ur_IN = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "‏۱:۴۵ ‫PM");
+        test.equal(fmt.format(date), '‏۱:۴۵ PM');
         test.done();
     },
 
@@ -1169,7 +1169,7 @@ module.exports.testdatefmt_ur_IN = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "‏۱:۴۵:۳۷ ‫PM");
+        test.equal(fmt.format(date), '‏۱:۴۵:۳۷ PM');
         test.done();
     },
 
@@ -1188,11 +1188,9 @@ module.exports.testdatefmt_ur_IN = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "‏۱:۴۵ ‫PM");
+        test.equal(fmt.format(date), '‏۱:۴۵ PM');
         test.done();
     },
-
-
 
     testDateFmtINFullTimeComponentsHMAZ_ur_IN: function(test) {
         test.expect(2);
@@ -1215,7 +1213,7 @@ module.exports.testdatefmt_ur_IN = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "‏۱:۴۵:۳۷ ‫PM IST");
+        test.equal(fmt.format(date), '‏۱:۴۵:۳۷ PM IST');
         test.done();
     },
 
@@ -1234,7 +1232,7 @@ module.exports.testdatefmt_ur_IN = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "‏۱:۴۵:۳۷ ‫PM");
+        test.equal(fmt.format(date), '‏۱:۴۵:۳۷ PM');
         test.done();
     },
 
@@ -1259,7 +1257,7 @@ module.exports.testdatefmt_ur_IN = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "‏۱:۴۵:۳۷ ‫PM IST");
+        test.equal(fmt.format(date), '‏۱:۴۵:۳۷ PM IST');
         test.done();
     },
 
@@ -1284,7 +1282,7 @@ module.exports.testdatefmt_ur_IN = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "‏۱:۴۵:۳۷ ‫PM IST");
+        test.equal(fmt.format(date), '‏۱:۴۵:۳۷ PM IST');
         test.done();
     },
 
@@ -1309,7 +1307,7 @@ module.exports.testdatefmt_ur_IN = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "‏۱:۴۵:۳۷ ‫PM IST");
+        test.equal(fmt.format(date), '‏۱:۴۵:۳۷ PM IST');
         test.done();
     },
 

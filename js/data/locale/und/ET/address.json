@@ -12,5 +12,8 @@
             "pattern": "(([A-z]+)? ?[A-z]+)$",
             "matchGroup": 1
         }
-    ]
+    ],
+    "fieldNames": {
+        "region": "State"
+    }
 }

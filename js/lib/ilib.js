@@ -1,7 +1,7 @@
 /*
  * ilib.js - define the ilib name space
  *
- * Copyright © 2012-2018, JEDLSoft
+ * Copyright © 2012-2019, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -142,8 +142,11 @@ ilib._getPlatform = function () {
             ilib._platform = "nodejs";
         } else if (typeof(Qt) !== 'undefined') {
             ilib._platform = "qt";
+            ilib._cacheMerged = true; // qt is too slow, so we need to cache the already-merged locale data
+        } else if (typeof(PalmSystem) !== 'undefined') {
+            ilib._platform = (typeof(window) !== 'undefined') ? "webos-webapp" : "webos";
         } else if (typeof(window) !== 'undefined') {
-            ilib._platform = (typeof(PalmSystem) !== 'undefined') ? "webos" : "browser";
+            ilib._platform = "browser";
         } else {
             ilib._platform = "unknown";
         }
@@ -317,6 +320,7 @@ ilib.getLocale = function () {
                     }
                 }
                 break;
+            case 'webos-webapp':
             case 'webos':
                 // webOS
                 if (typeof(PalmSystem.locales) !== 'undefined' &&
@@ -402,6 +406,7 @@ ilib.getTimeZone = function() {
         if (typeof(Intl) !== 'undefined' && typeof(Intl.DateTimeFormat) !== 'undefined') {
             var ro = new Intl.DateTimeFormat().resolvedOptions();
             ilib.tz = ro && ro.timeZone;
+            return ilib.tz;
         }
 
         switch (ilib._getPlatform()) {
@@ -411,6 +416,7 @@ ilib.getTimeZone = function() {
                     ilib.tz = navigator.timezone;
                 }
                 break;
+            case 'webos-webapp':
             case 'webos':
                 // running in webkit on webOS
                 if (PalmSystem.timezone && PalmSystem.timezone.length > 0) {
@@ -454,7 +460,7 @@ ilib.Loader = function() {};
  * or resources, then that data can be lazy loaded dynamically when it is
  * needed by calling this method. Each ilib class will first
  * check for the existence of data under ilib.data, and if it is not there,
- * it will attempt to load it by calling this method of the laoder, and then place
+ * it will attempt to load it by calling this method of the loader, and then place
  * it there.<p>
  *
  * Suggested implementations of this method might load files
@@ -767,5 +773,28 @@ ilib._dyndata = false;
 ilib.isDynData = function() {
     return ilib._dyndata;
 };
+
+/**
+ * When true, this will cause ilib to cache merged locale data. Merged data is created
+ * whenever a locale is specified where the data for a locale data resides in various
+ * files, and these need to be merged together to create the overall data for that locale.<p>
+ *
+ * For example, if the ilib locale is "fr-CA", the final locale data is assembled from the
+ * following locale parts:
+ *
+ * <ul>
+ * <li>root - the root/default locale data shared by every locale
+ * <li>fr - the locale data shared by every flavour of French (eg. translations or date formats)
+ * <li>und/CA - the language-independent locale data for Canada (eg. time zone or official currency)
+ * <li>fr/CA - the locale data that is unique to French for Canada (eg. date or currency formats)
+ * </ul>
+ *
+ * On some platforms, the data loaded from disk is cached and then merged each time it is
+ * needed to create the whole locale data for the current locale. In other platforms, the
+ * merging is too slow, so the already-merged data is cached as well after the first time it
+ * is requested. In this way, we sacrifice the memory footprint for the sake of speed.
+ */
+
+ilib._cacheMerged = false;
 
 ilib._loadtime = new Date().getTime();

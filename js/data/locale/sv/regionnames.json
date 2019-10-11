@@ -789,20 +789,20 @@
             "code": "FUZ"
         },
         {
-            "name": "Gəncə",
-            "code": "GA"
-        },
-        {
-            "name": "Goranboj",
-            "code": "GOR"
-        },
-        {
             "name": "Gädäbäj",
             "code": "GAD"
         },
         {
+            "name": "Gəncə",
+            "code": "GA"
+        },
+        {
             "name": "Göjtjaj",
             "code": "GOY"
+        },
+        {
+            "name": "Goranboj",
+            "code": "GOR"
         },
         {
             "name": "Hadzjyqabul",
@@ -829,6 +829,10 @@
             "code": "CUL"
         },
         {
+            "name": "Kälbädzjär",
+            "code": "KAL"
+        },
+        {
             "name": "Kangarli Rayon",
             "code": "KAN"
         },
@@ -843,10 +847,6 @@
         {
             "name": "Kürdämir",
             "code": "KUR"
-        },
-        {
-            "name": "Kälbädzjär",
-            "code": "KAL"
         },
         {
             "name": "Lankaran",
@@ -973,12 +973,12 @@
             "code": "SA"
         },
         {
-            "name": "Sjamachy",
-            "code": "SMI"
-        },
-        {
             "name": "Sjäki (distrikt)",
             "code": "SAK"
+        },
+        {
+            "name": "Sjamachy",
+            "code": "SMI"
         },
         {
             "name": "Sjämkir",
@@ -993,12 +993,12 @@
             "code": "SM"
         },
         {
-            "name": "Tovuz Rayonu",
-            "code": "TOV"
-        },
-        {
             "name": "Tärtär",
             "code": "TAR"
+        },
+        {
+            "name": "Tovuz Rayonu",
+            "code": "TOV"
         },
         {
             "name": "Udzjar",
@@ -1017,12 +1017,12 @@
             "code": "YEV"
         },
         {
-            "name": "Zaqatala (distrikt)",
-            "code": "ZAQ"
-        },
-        {
             "name": "Zängilan",
             "code": "ZAN"
+        },
+        {
+            "name": "Zaqatala (distrikt)",
+            "code": "ZAQ"
         },
         {
             "name": "Zärdab",
@@ -1457,6 +1457,10 @@
             "code": "WNA"
         },
         {
+            "name": "Östflandern",
+            "code": "VOV"
+        },
+        {
             "name": "Vallonien",
             "code": "WAL"
         },
@@ -1467,10 +1471,6 @@
         {
             "name": "Västflandern",
             "code": "VWV"
-        },
-        {
-            "name": "Östflandern",
-            "code": "VOV"
         }
     ],
     "BF": [
@@ -2633,12 +2633,12 @@
             "code": "SA"
         },
         {
-            "name": "Sud-Ubangi",
-            "code": "SU"
-        },
-        {
             "name": "Södra Kivu-provinsen",
             "code": "SK"
+        },
+        {
+            "name": "Sud-Ubangi",
+            "code": "SU"
         },
         {
             "name": "Tanganyika",
@@ -3101,20 +3101,20 @@
             "code": "NO"
         },
         {
-            "name": "Sydvästra regionen (region i Kamerun)",
-            "code": "SW"
+            "name": "Östra regionen (region i Kamerun)",
+            "code": "ES"
         },
         {
             "name": "Södra regionen (region i Kamerun)",
             "code": "SU"
         },
         {
-            "name": "Västra regionen",
-            "code": "OU"
+            "name": "Sydvästra regionen (region i Kamerun)",
+            "code": "SW"
         },
         {
-            "name": "Östra regionen (region i Kamerun)",
-            "code": "ES"
+            "name": "Västra regionen",
+            "code": "OU"
         }
     ],
     "CN": [
@@ -3715,6 +3715,10 @@
             "code": "513"
         },
         {
+            "name": "Mähren-Schlesien",
+            "code": "80"
+        },
+        {
             "name": "Mellersta Böhmen",
             "code": "20"
         },
@@ -3729,10 +3733,6 @@
         {
             "name": "Mladá Boleslav",
             "code": "207"
-        },
-        {
-            "name": "Mähren-Schlesien",
-            "code": "80"
         },
         {
             "name": "Náchod",
@@ -4023,20 +4023,20 @@
             "code": "514"
         },
         {
-            "name": "Sokolov",
-            "code": "413"
-        },
-        {
-            "name": "Šumperk",
-            "code": "715"
-        },
-        {
             "name": "Södra Böhmen",
             "code": "31"
         },
         {
             "name": "Södra Mähren",
             "code": "64"
+        },
+        {
+            "name": "Sokolov",
+            "code": "413"
+        },
+        {
+            "name": "Šumperk",
+            "code": "715"
         },
         {
             "name": "Trutnov",
@@ -5323,6 +5323,10 @@
             "code": "N"
         },
         {
+            "name": "Östra divisionen",
+            "code": "E"
+        },
+        {
             "name": "Ra Province",
             "code": "11"
         },
@@ -5349,10 +5353,6 @@
         {
             "name": "Västra divisionen",
             "code": "W"
-        },
-        {
-            "name": "Östra divisionen",
-            "code": "E"
         }
     ],
     "FM": [
@@ -5491,16 +5491,16 @@
             "code": "H"
         },
         {
-            "name": "Creuse",
-            "code": "23"
-        },
-        {
             "name": "Côte-d’Or",
             "code": "21"
         },
         {
             "name": "Côtes-d’Armor",
             "code": "22"
+        },
+        {
+            "name": "Creuse",
+            "code": "23"
         },
         {
             "name": "Deux-Sèvres",
@@ -5587,12 +5587,12 @@
             "code": "52"
         },
         {
-            "name": "Haute-Savoie",
-            "code": "74"
-        },
-        {
             "name": "Haute-Saône",
             "code": "70"
+        },
+        {
+            "name": "Haute-Savoie",
+            "code": "74"
         },
         {
             "name": "Haute-Vienne",
@@ -5791,16 +5791,16 @@
             "code": "69"
         },
         {
+            "name": "Saône-et-Loire",
+            "code": "71"
+        },
+        {
             "name": "Sarthe",
             "code": "72"
         },
         {
             "name": "Savoie",
             "code": "73"
-        },
-        {
-            "name": "Saône-et-Loire",
-            "code": "71"
         },
         {
             "name": "Seine-et-Marne",
@@ -7017,28 +7017,28 @@
             "code": "NP"
         },
         {
-            "name": "Storaccra",
-            "code": "AA"
-        },
-        {
-            "name": "Voltaregionen",
-            "code": "TV"
-        },
-        {
-            "name": "Västra regionen (region i Ghana)",
-            "code": "WP"
-        },
-        {
             "name": "Östra regionen (region i Ghana)",
             "code": "EP"
+        },
+        {
+            "name": "Övre östra regionen",
+            "code": "UE"
         },
         {
             "name": "Övre västra regionen",
             "code": "UW"
         },
         {
-            "name": "Övre östra regionen",
-            "code": "UE"
+            "name": "Storaccra",
+            "code": "AA"
+        },
+        {
+            "name": "Västra regionen (region i Ghana)",
+            "code": "WP"
+        },
+        {
+            "name": "Voltaregionen",
+            "code": "TV"
         }
     ],
     "GL": [
@@ -7471,6 +7471,10 @@
             "code": "K"
         },
         {
+            "name": "Östra Makedonien och Thrakien",
+            "code": "A"
+        },
+        {
             "name": "Pella",
             "code": "59"
         },
@@ -7545,10 +7549,6 @@
         {
             "name": "Zakynthos",
             "code": "21"
-        },
-        {
-            "name": "Östra Makedonien och Thrakien",
-            "code": "A"
         }
     ],
     "GT": [
@@ -10235,6 +10235,10 @@
             "code": "SEV"
         },
         {
+            "name": "Östkazakstan",
+            "code": "VOS"
+        },
+        {
             "name": "Pavlodar",
             "code": "PAV"
         },
@@ -10261,10 +10265,6 @@
         {
             "name": "Zjambyl",
             "code": "ZHA"
-        },
-        {
-            "name": "Östkazakstan",
-            "code": "VOS"
         }
     ],
     "LA": [
@@ -15081,6 +15081,14 @@
             "code": "MDR"
         },
         {
+            "name": "Östra Samar",
+            "code": "EAS"
+        },
+        {
+            "name": "Östra Visayas",
+            "code": "08"
+        },
+        {
             "name": "Palawan",
             "code": "PLW"
         },
@@ -15129,6 +15137,18 @@
             "code": "12"
         },
         {
+            "name": "Södra Cotabato",
+            "code": "SCO"
+        },
+        {
+            "name": "Södra Ilocos",
+            "code": "ILS"
+        },
+        {
+            "name": "Södra Leyte",
+            "code": "SLE"
+        },
+        {
             "name": "Sorsogon",
             "code": "SOR"
         },
@@ -15147,18 +15167,6 @@
         {
             "name": "Surigao del Sur",
             "code": "SUR"
-        },
-        {
-            "name": "Södra Cotabato",
-            "code": "SCO"
-        },
-        {
-            "name": "Södra Ilocos",
-            "code": "ILS"
-        },
-        {
-            "name": "Södra Leyte",
-            "code": "SLE"
         },
         {
             "name": "Tarlac",
@@ -15191,14 +15199,6 @@
         {
             "name": "Zamboangahalvön",
             "code": "09"
-        },
-        {
-            "name": "Östra Samar",
-            "code": "EAS"
-        },
-        {
-            "name": "Östra Visayas",
-            "code": "08"
         }
     ],
     "PK": [
@@ -15887,14 +15887,6 @@
             "code": "18"
         },
         {
-            "name": "Srem (distrikt)",
-            "code": "07"
-        },
-        {
-            "name": "Sumadija (distrikt)",
-            "code": "12"
-        },
-        {
             "name": "Södra Bačka",
             "code": "06"
         },
@@ -15903,16 +15895,24 @@
             "code": "04"
         },
         {
+            "name": "Srem (distrikt)",
+            "code": "07"
+        },
+        {
+            "name": "Sumadija (distrikt)",
+            "code": "12"
+        },
+        {
             "name": "Toplica distriktet",
             "code": "21"
         },
         {
-            "name": "Vojvodina",
-            "code": "VO"
-        },
-        {
             "name": "Västra Bačka",
             "code": "05"
+        },
+        {
+            "name": "Vojvodina",
+            "code": "VO"
         },
         {
             "name": "Zajecar (distrikt)",
@@ -16561,12 +16561,12 @@
             "code": "W"
         },
         {
-            "name": "Gotlands län",
-            "code": "I"
-        },
-        {
             "name": "Gävleborgs län",
             "code": "X"
+        },
+        {
+            "name": "Gotlands län",
+            "code": "I"
         },
         {
             "name": "Hallands län",
@@ -16593,16 +16593,24 @@
             "code": "BD"
         },
         {
+            "name": "Örebro län",
+            "code": "T"
+        },
+        {
+            "name": "Östergötlands län",
+            "code": "E"
+        },
+        {
             "name": "Skåne län",
             "code": "M"
         },
         {
-            "name": "Stockholms län",
-            "code": "AB"
-        },
-        {
             "name": "Södermanlands län",
             "code": "D"
+        },
+        {
+            "name": "Stockholms län",
+            "code": "AB"
         },
         {
             "name": "Uppsala län",
@@ -16627,14 +16635,6 @@
         {
             "name": "Västra Götalands län",
             "code": "O"
-        },
-        {
-            "name": "Örebro län",
-            "code": "T"
-        },
-        {
-            "name": "Östergötlands län",
-            "code": "E"
         }
     ],
     "SG": [
@@ -17567,12 +17567,12 @@
             "code": "N"
         },
         {
-            "name": "Södra provinsen",
-            "code": "S"
-        },
-        {
             "name": "Östra provinsen",
             "code": "E"
+        },
+        {
+            "name": "Södra provinsen",
+            "code": "S"
         }
     ],
     "SM": [
@@ -17809,6 +17809,10 @@
             "code": "BN"
         },
         {
+            "name": "Övre Nilen",
+            "code": "NU"
+        },
+        {
             "name": "Unity",
             "code": "UY"
         },
@@ -17823,10 +17827,6 @@
         {
             "name": "Western Equatoria",
             "code": "EW"
-        },
-        {
-            "name": "Övre Nilen",
-            "code": "NU"
         }
     ],
     "ST": [
@@ -20867,12 +20867,12 @@
             "code": "NC"
         },
         {
-            "name": "Västra Kapprovinsen",
-            "code": "WC"
-        },
-        {
             "name": "Östra Kapprovinsen",
             "code": "EC"
+        },
+        {
+            "name": "Västra Kapprovinsen",
+            "code": "WC"
         }
     ],
     "ZM": [

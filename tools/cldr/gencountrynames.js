@@ -31,11 +31,11 @@ var Locale = common.Locale;
 var mergeAndPrune = common.mergeAndPrune;
 var makeDirs = common.makeDirs;
 
-var ilib = require("../../js/lib/ilib-node.js");
+var ilib = require("../../js/index.js");
 var Collator = require("../../js/lib/Collator.js");
 
 function usage() {
-    console.log("Usage: gencountrynames [-h] CLDR_xml_dir locale_data_dir\n" +
+    console.log("Usage: gencountrynames [-h] CLDR_xml_dir [locale_data_dir]\n" +
             "Generate localized country names from the CLDR data.\n\n" +
             "-h or --help\n" +
             "  this help\n" +
@@ -55,13 +55,13 @@ process.argv.forEach(function (val, index, array) {
     }
 });
 
-if (process.argv.length < 4) {
+if (process.argv.length < 3) {
     console.error('Error: not enough arguments');
     usage();
 }
 
 cldrDirName = process.argv[2];
-localeDirName = process.argv[3];
+localeDirName = process.argv[3] || "tmp";
 
 console.log("gencountrynames - generate localized country names from the CLDR data.\n" +
         "Copyright (c) 2013-2018 JEDLSoft");

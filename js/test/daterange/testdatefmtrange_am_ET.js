@@ -714,7 +714,7 @@ module.exports.testdatefmtrange_am_ET = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "6/20/11, 1:45 PM – 4:30 PM");
+        test.equal(fmt.format(start, end), '06/20/2011, 1:45 PM – 4:30 PM');
         test.done();
     },
     
@@ -741,7 +741,7 @@ module.exports.testdatefmtrange_am_ET = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "Yak 20, 2011, 1:45 PM – 4:30 PM");
+        test.equal(fmt.format(start, end), 'Yekatit 20, 2011, 1:45 PM – 4:30 PM');
         test.done();
     },
     
@@ -768,7 +768,7 @@ module.exports.testdatefmtrange_am_ET = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "Yakatit 20, 2011 at 1:45 PM – 4:30 PM");
+        test.equal(fmt.format(start, end), 'Yekatit 20, 2011 at 1:45 PM – 4:30 PM');
         test.done();
     },
     
@@ -795,7 +795,7 @@ module.exports.testdatefmtrange_am_ET = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "Yakatit 20, 2011 at 1:45 PM – 4:30 PM");
+        test.equal(fmt.format(start, end), 'Yekatit 20, 2011 at 1:45 PM – 4:30 PM');
         test.done();
     }
     

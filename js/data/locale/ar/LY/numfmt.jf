@@ -12,8 +12,8 @@
             "commonNegative": "؜-{n} {s}"
         },
         "negativenumFmt": "؜-{n}",
-        "pctFmt": "{n} ٪؜",
-        "negativepctFmt": "؜-{n} ٪؜",
+        "pctFmt": "{n}٪؜",
+        "negativepctFmt": "؜-{n}٪؜",
         "roundingMode": "halfdown",
         "digits": "٠١٢٣٤٥٦٧٨٩",
         "useNative": true

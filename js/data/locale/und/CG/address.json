@@ -11,5 +11,8 @@
 			"line": "startAtLast",
 			"pattern": "([A-zÀÁÈÉÌÍÑÒÓÙÚÜàáèéìíñòóùúü\\.\\-']+)$"
 		}
-	]
+	],
+	"fieldNames": {
+        "region": "Department"
+    }
 }

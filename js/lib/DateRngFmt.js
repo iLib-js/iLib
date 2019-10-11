@@ -136,6 +136,11 @@ var DateRngFmt = function(options) {
                 this.length = options.length.charAt(0);
             }
         }
+
+        if (options.timezone) {
+            this.timezone = options.timezone;
+        }
+
         if (typeof(options.sync) !== 'undefined') {
             sync = !!options.sync;
         }
@@ -300,9 +305,20 @@ DateRngFmt.prototype = {
         var start = DateFactory._dateToIlib(startDateLike, thisZoneName, this.locale);
         var end = DateFactory._dateToIlib(endDateLike, thisZoneName, this.locale);
 
-        if (typeof(start) !== 'object' || !start.getCalendar || start.getCalendar() !== this.calName ||
-            typeof(end) !== 'object' || !end.getCalendar || end.getCalendar() !== this.calName) {
-            throw "Wrong calendar type";
+        if (typeof(start) !== 'object' || !start.getCalendar || start.getCalendar() !== this.calName || (this.timezone && start.timezone && start.timezone !== this.timezone)) {
+            start = DateFactory({
+                type: this.calName,
+                timezone: thisZoneName,
+                julianday: start.getJulianDay()
+            });
+        }
+
+        if (typeof(end) !== 'object' || !end.getCalendar || end.getCalendar() !== this.calName || (this.timezone && end.timezone && end.timezone !== this.timezone)) {
+            end = DateFactory({
+                type: this.calName,
+                timezone: thisZoneName,
+                julianday: end.getJulianDay()
+            });
         }
 
         startRd = start.getRataDie();

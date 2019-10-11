@@ -1,7 +1,7 @@
 /*
  * testglobal.js - test the ilib static routines
  *
- * Copyright © 2012-2015, 2017-2018, JEDLSoft
+ * Copyright © 2012-2015, 2017-2019, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -69,8 +69,12 @@ module.exports.testglobal = {
     },
     
     testGetVersion: function(test) {
+        if (ilib._getPlatform() === "qt" ) {
+            test.done();
+            return;
+        }
         test.expect(1);
-        test.equal(ilib.getVersion().substring(0,4), "14.2");
+        test.equal(ilib.getVersion().substring(0,4), "14.4");
         test.done();
     },
     
@@ -86,7 +90,9 @@ module.exports.testglobal = {
         ilib._platform = undefined;
         ilib.tz = undefined;
 
+        var tmp;
         if (ilib._getPlatform() === "nodejs") {
+            tmp = process.env.TZ;
             process.env.TZ = "";
         }
 
@@ -94,6 +100,7 @@ module.exports.testglobal = {
             navigator.timezone = undefined;
         }
         test.equal(ilib.getTimeZone(), "local");
+        process.env.TZ = tmp;
         test.done();
     },
 
@@ -104,10 +111,14 @@ module.exports.testglobal = {
             return;
         }
 
+        ilib._platform = undefined;
+        ilib.tz = undefined;
         var ro = new Intl.DateTimeFormat().resolvedOptions();
         var expected = ro && ro.timeZone;
         if (expected) {
             test.expect(1);
+            ilib._platform = undefined;
+            ilib.tz = undefined;
             test.equal(ilib.getTimeZone(), expected);
         }
         test.done();
@@ -183,7 +194,6 @@ module.exports.testglobal = {
                 };
             }
             if (!process.env) process.env = {};
-            
             var tmp = process.env.TZ;
             process.env.TZ = "America/Phoenix";
             
@@ -201,7 +211,6 @@ module.exports.testglobal = {
             return;
         }
         ilib.tz = undefined;
-    
         if (typeof(process) === 'undefined') {
             // under plain rhino
             environment.user.timezone = "America/New_York";

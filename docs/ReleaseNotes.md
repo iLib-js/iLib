@@ -1,6 +1,81 @@
 Release Notes for Version 14
 ============================
 
+Build 007
+-------
+Published as version 14.4.0
+
+New Features:
+* Updated `iddarea.json` and 'phoneloc.json' which are used in `PhoneNumber` information and wrote a script file to automatically generate it.
+* Added LocaleMatch.getLikelyLocaleMinimal() method which returns the same thing as the getLikelyLocale method but without the script
+part of the locale specifier if it has a very common/default value
+    * For languages such as Chinese which are commonly written in multiple scripts, the script is always given
+    * For languages that are written in multiple scripts, but where one is dominant, the script is only included when it is not the default/dominant one
+    * Most languages are only ever written in one script, so the script is left out
+* Updated the script info to UCD 12.0.0, and the likely locale info to CLDR 35.1
+
+Bug Fixes:
+* Fixed unit test failures which occur on QT 5.12
+* Fixed problem where two resource bundle files with the same name and same locale but loaded from
+different directories were cached in the same place.
+    * Introduced the new "basePath" property to ResBundle constructor to specify which directory
+    to load the resource bundle from. This property is used to differentiate files loaded from
+    different directories.
+
+Build 006
+-------
+Published as version 14.3.0
+
+New Features:
+* Now uses webpack4 to package up all of the classes and data
+* Added style "disjunction" to the list formatter do you can now format lists with "or" as well:
+    * "One, Two, Three, or Four" vs. "One, Two, Three, and Four"
+
+Bug Fixes:
+* Updated to IANA time zone data version 2019b
+* Fixed a bug where the DateRngFmt was not heeding the specified
+  time zone when formatting the start and end dates
+* Fixed a bug which a default script for pa-IN should be Guru instead of Arabic
+
+
+Build 005
+-------
+Published as version 14.2.0
+
+New Features:
+* Updated all locale data (except region names) to CLDR 34 and Unicode Character Database 12.0
+    * Region names were not updated because CLDR changed the codes assigned to each region, which
+    would break anything that was depending on these names to be stable. We'll have to figure
+    out some work-around for this later.
+
+Bug Fixes:
+* Updated the Taiwan area code of PhoneNumber according to [Wikipedia](https://en.wikipedia.org/wiki/Telephone_numbers_in_Taiwan).
+* Changed 3 digit iddprefix PhoneNumber format of zh-Hant-TW as corresponding local office feedback.
+* Rollback `js/ilib-web.js` file to support pure Web Application.
+* Added a new platform return type as 'webos-webapp'. If platform type is `webos-webapp`, The iLib won't load any loader as default.
+* Implemented to include automatically Json data which doesn't exist in CLDR in cldrtool script.
+* Improved the speed of JSUtils.shallowCopy() by using Object.assign if it is available
+* Improved the speed of ilib on QT by re-introducing the concept of caching the already-merged locale data. This
+  trades memory footprint for speed, since merging the locale data is slow on QT and the already merged data is just a duplicate of the
+  locale data already loaded and cached from locale data files. Other platforms may use this form of caching as
+  well if desired by setting ilib._cacheMerged to true, though it only makes a minimal difference in terms of speed.
+* Update some testfiles in order to test properly on QT/QML.
+
+
+Build 004
+-------
+Published as version 14.1.2
+* Adopt a `JIT` plugin loader for grunt. Load time of Grunt does not slow down even if there are many plugins. instead of `grunt.loadNpmTasks`.
+
+Bug Fixes:
+* Fix a few problems that prevented ilib from running on node version 10. Now version 10 is supported.
+* When the Intl object was available and the code extracted the time zone name from it, it used
+  to overwrite that name with some default data. Now it uses the name properly.
+* Fixed some unit tests that were not testing async operation properly.
+* Many of the countries of the world were missing data about the correct name of their top-level
+  administrative regions. These have been filled in now, and the names are returned properly from
+  AddressFmt.getFormatInfo()
+
 Build 003
 -------
 Published as version 14.1.1
@@ -19,6 +94,9 @@ Bug Fixes:
   of `index.js`. If file name extension is missing, QT cannot load that
   file properly.
 * Added missing `index.js` require statement in MeasurementFactory
+* AddressFmt.getFormatInfo would throw an exception for locales where the locale data was not available. Now,
+  it does not, and instead, it returns some hard-coded info by default that is roughly similar to the en-US
+  settings.
 
 Build 002
 -------

@@ -1,9 +1,10 @@
 {
     "region": "NL",
-    "skipTrunk": true,
-    "trunkCode": "0",
-    "findExtensions": false,
+    "countryCode": "31",
     "iddCode": "00",
+    "trunkCode": "0",
+    "skipTrunk": true,
+    "findExtensions": false,
     "dialingPlan": "open",
     "commonFormatChars": " ()-/",
     "fieldLengths": {

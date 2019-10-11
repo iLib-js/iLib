@@ -42,8 +42,8 @@ TestSuite.prototype = {
     runTests: function() {
         //console.log("[TestSuiteModule.js] TestSuite.runTests: for suite (this.moduleName) " + this.moduleName);
         var suiteComponent = Qt.createComponent("./TestEnvironment.qml");
-		if (suiteComponent.status != Component.Ready) {
-		    if (suiteComponent.status == Component.Error)
+        if (suiteComponent.status !== Component.Ready) {
+            if (suiteComponent.status === Component.Error)
                 console.debug("[TestSuiteModules.js] TestSuite.runTests: Error: "+ suiteComponent.errorString());
 		    return; // or maybe throw
 		}
@@ -51,7 +51,7 @@ TestSuite.prototype = {
         	path: this.path,
             moduleName: this.moduleName
         });
-        if (suiteRunner == null) {
+        if (suiteRunner === null) {
         	console.log("TestSuite.runTests: failed to run test suite " + this.path);
         }
 	}

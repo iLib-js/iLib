@@ -78,7 +78,7 @@ module.exports.testdatefmt_hi_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "29/09/2011");
+        test.equal(fmt.format(date), "29 सित॰ 2011");
         test.done();
     },
     
@@ -249,7 +249,7 @@ module.exports.testdatefmt_hi_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "29/09/2011, 1:45 अपराह्न");
+        test.equal(fmt.format(date), "29 सित॰ 2011, 1:45 अपराह्न");
         test.done();
     },
     

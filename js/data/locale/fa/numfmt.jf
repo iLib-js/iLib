@@ -4,15 +4,15 @@
         "script": "arabext",
         "decimalChar": "٫",
         "groupChar": "٬",
-        "pctChar": "‎٪",
+        "pctChar": "٪",
         "exponential": "×۱۰^",
         "currencyFormats": {
-            "common": "{n} ؜{s}",
-            "commonNegative": "؜-{n} ؜{s}"
+            "common": "‎{s}{n}",
+            "commonNegative": "‎−‎{s}{n}"
         },
         "negativenumFmt": "‎−{n}",
-        "negativepctFmt": "‎٪ -{n}",
-        "pctFmt": "‎٪ {n}",
+        "pctFmt": "{n}٪",
+        "negativepctFmt": "‎−{n}٪",
         "digits": "۰۱۲۳۴۵۶۷۸۹",
         "useNative": true
     }

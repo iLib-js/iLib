@@ -1,7 +1,7 @@
 /*
  * testutils.js - test the utility routines
  * 
- * Copyright © 2012-2015, 2017-2018 JEDLSoft
+ * Copyright © 2012-2015, 2017-2019 JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -34,6 +34,9 @@ if (typeof(Locale) === "undefined") {
 }
 if (typeof(JSUtils) === "undefined") {
     var JSUtils = require("../../lib/JSUtils.js");
+}
+if (typeof(ISet) === "undefined") {
+    var ISet = require("../../lib/ISet.js");
 }
 
 function strcmp(left, right) {
@@ -113,9 +116,29 @@ function mockLoaderUtil(paths, sync, params, callback) {
     }
 
     if (typeof(callback) !== 'undefined') {
-        callback.call(this, data);  
+        callback.call(this, data);
     }
-    
+
+    return data;
+}
+
+var set = new ISet();
+
+function mockLoaderNoMulti(paths, sync, params, callback) {
+    var data = new Array(paths && paths.length || 0);
+
+    for (var i = 0; i < paths.length; i++) {
+        var path = paths[i];
+        if (set.has(path)) {
+            throw "Cache miss";
+        }
+        set.add(path);
+    }
+
+    if (typeof(callback) !== 'undefined') {
+        callback.call(this, data);
+    }
+
     return data;
 }
 
@@ -1539,15 +1562,8 @@ module.exports.testutils = {
     
     testHashCodeNotEqualFunctionDifferentNames: function(test) {
         test.expect(1);
-        if (ilib._getPlatform() === "qt") {
-            // the qt javascript engine doesn't allow you to see the code of a function, so all 
-            // functions should have the same hash
-            var expected = JSUtils.hashCode(function a() { return "a"; });
-            test.equal(JSUtils.hashCode(function b() { return "a"; }), expected);
-        } else {
-            var expected = JSUtils.hashCode(function a() { return "a"; });
-            test.notEqual(JSUtils.hashCode(function b() { return "a"; }), expected);
-        }
+        var expected = JSUtils.hashCode(function a() { return "a"; });
+        test.notEqual(JSUtils.hashCode(function b() { return "a"; }), expected);
         test.done();
     },
     testHashCodeNotEqualFunctionDifferentContents: function(test) {
@@ -1986,6 +2002,100 @@ module.exports.testutils = {
         });
     },
     
+    testLoadDataCacheResult: function(test) {
+        ilib.data.foo = ilib.data.foo_de = ilib.data.foo_und_DE = ilib.data.foo_de_DE = undefined;
+        ilib.setLoaderCallback(mockLoaderNoMulti);
+        try {
+            test.expect(2);
+            Utils.loadData({
+                name: "foo.json",
+                locale: "de-DE",
+                callback: function (results) {
+                    test.ok(results);
+                    Utils.loadData({
+                        name: "foo.json",
+                        locale: "de-DE",
+                        callback: function (results2) {
+                            // if there is a cache miss when it attempts to load a file from disk twice
+                            // then the mock loader will throw an exception
+                            test.ok(results2);
+                            test.done();
+                        }
+                    });
+                }
+            });
+        } catch (e) {
+            console.log("Exception caught: " + e.stack);
+            test.fail(e);
+            test.done();
+        }
+    },
+
+    testLoadDataDontMixDifferentBasePaths: function(test) {
+        ilib.data.foo = ilib.data.foo_de = ilib.data.foo_und_DE = ilib.data.foo_de_DE = undefined;
+        ilib.setLoaderCallback(mockLoaderNoMulti);
+        try {
+            Utils.loadData({
+                name: "foo.json",
+                locale: "de-DE",
+                basePath: "asdf",
+                callback: function (results) {
+                    test.ok(results);
+                    Utils.loadData({
+                        name: "foo.json",
+                        locale: "de-DE",
+                        basePath: "foobar",
+                        callback: function (results2) {
+                            // if there is a cache miss when it attempts to load a file from disk twice
+                            // then the mock loader will throw an exception, which is expected here
+                            // because the base paths are different and Utils.loadData should try to
+                            // load two files with the same name but different bases.
+                            test.fail();
+                            test.done();
+                        }
+                    });
+                }
+            });
+        } catch (e) {
+            test.done();
+        }
+    },
+
+    testLoadDataCacheResultAlreadyMerged: function(test) {
+        ilib.data.foo = ilib.data.foo_de = ilib.data.foo_und_DE = ilib.data.foo_de_DE = undefined;
+        ilib.setLoaderCallback(mockLoaderNoMulti);
+        var cacheMerged = ilib._cacheMerged;
+        set = new ISet(); // clear the mock loader's cache
+        try {
+            test.expect(2);
+            ilib._cacheMerged = true;
+            Utils.loadData({
+                name: "foo.json",
+                locale: "de-DE",
+                callback: function (results) {
+                    test.ok(results);
+                    Utils.loadData({
+                        name: "foo.json",
+                        locale: "de-DE",
+                        callback: function (results2) {
+                            // if there is a cache miss when it attempts to load a file from disk twice
+                            // then the mock loader will throw an exception
+                            test.ok(results2);
+                            ilib._cacheMerged = cacheMerged;
+                            test.done();
+                        }
+                    });
+                }
+            });
+        } catch (e) {
+            console.log("Exception caught: " + e.stack);
+            test.fail(e);
+            test.done();
+        } finally {
+            ilib._cacheMerged = cacheMerged;
+        }
+    },
+
     testMapStringDigits: function(test) {
         test.expect(1);
         var map = "abcdefghij".split("");

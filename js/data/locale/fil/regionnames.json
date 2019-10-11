@@ -1651,12 +1651,12 @@
             "name": "Sahel"
         },
         {
-            "code": "SMT",
-            "name": "Sanmatenga"
-        },
-        {
             "code": "SNG",
             "name": "Sanguié"
+        },
+        {
+            "code": "SMT",
+            "name": "Sanmatenga"
         },
         {
             "code": "SEN",
@@ -5431,11 +5431,11 @@
             "name": "Bouches-du-Rhône"
         },
         {
-            "code": "BRE",
+            "code": "E",
             "name": "Brittany"
         },
         {
-            "code": "E",
+            "code": "BRE",
             "name": "Brittany"
         },
         {
@@ -5931,20 +5931,20 @@
             "code": "ABD"
         },
         {
-            "name": "Antrim",
-            "code": "ANT"
-        },
-        {
-            "name": "Antrim and Newtownabbey",
-            "code": "ANN"
-        },
-        {
             "name": "Anglesey",
             "code": "AGY"
         },
         {
             "name": "Angus",
             "code": "ANS"
+        },
+        {
+            "name": "Antrim",
+            "code": "ANT"
+        },
+        {
+            "name": "Antrim and Newtownabbey",
+            "code": "ANN"
         },
         {
             "name": "Ards",
@@ -8119,12 +8119,12 @@
             "name": "Bali"
         },
         {
-            "code": "BT",
-            "name": "Banten"
-        },
-        {
             "code": "BB",
             "name": "Bangka–Belitung Islands"
+        },
+        {
+            "code": "BT",
+            "name": "Banten"
         },
         {
             "code": "BE",
@@ -18223,16 +18223,16 @@
             "name": "Narathiwat"
         },
         {
-            "code": "12",
-            "name": "Nonthaburi"
-        },
-        {
             "code": "39",
             "name": "Nong Bua Lam Phu"
         },
         {
             "code": "43",
             "name": "Nong Khai"
+        },
+        {
+            "code": "12",
+            "name": "Nonthaburi"
         },
         {
             "code": "13",
@@ -19771,6 +19771,10 @@
             "name": "Nebbi"
         },
         {
+            "code": "231",
+            "name": "Ngora"
+        },
+        {
             "code": "N",
             "name": "Northern"
         },
@@ -19785,10 +19789,6 @@
         {
             "code": "328",
             "name": "Nwoya"
-        },
-        {
-            "code": "231",
-            "name": "Ngora"
         },
         {
             "code": "329",
@@ -20569,16 +20569,16 @@
             "name": "Nam Định"
         },
         {
+            "code": "22",
+            "name": "Nghệ An"
+        },
+        {
             "code": "18",
             "name": "Ninh Bình"
         },
         {
             "code": "36",
             "name": "Ninh Thuận"
-        },
-        {
-            "code": "22",
-            "name": "Nghệ An"
         },
         {
             "code": "68",
@@ -20597,12 +20597,12 @@
             "name": "Quảng Nam"
         },
         {
-            "code": "13",
-            "name": "Quảng Ninh"
-        },
-        {
             "code": "29",
             "name": "Quảng Ngãi"
+        },
+        {
+            "code": "13",
+            "name": "Quảng Ninh"
         },
         {
             "code": "25",

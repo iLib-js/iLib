@@ -17,5 +17,8 @@
 			"pattern": "[A-z\\.\\-']+$",
 			"matchGroup": 0
 		}
-	]
+	],
+    "fieldNames": {
+        "region": "Region"
+    }
 }

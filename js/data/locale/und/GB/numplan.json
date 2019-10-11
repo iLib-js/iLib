@@ -1,9 +1,10 @@
 {
     "region": "GB",
-    "skipTrunk": true,
-    "trunkCode": "0",
-    "contextFree": false,
+    "countryCode": "44",
     "iddCode": "00",
+    "trunkCode": "0",
+    "skipTrunk": true,
+    "contextFree": false,
     "dialingPlan": "open",
     "commonFormatChars": " ()-",
     "fieldLengths": {

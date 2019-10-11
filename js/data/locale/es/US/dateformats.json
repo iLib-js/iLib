@@ -11,13 +11,13 @@
                 "f": "EEEE, d 'de' MMMM 'de' yyyy",
                 "l": "EEE, d 'de' MMMM 'de' yyyy",
                 "m": "EE, d MMM yyyy",
-                "s": "E, d/M/yy"
+                "s": "E, d/M/yyyy"
             },
             "dmy": {
                 "f": "d 'de' MMMM 'de' yyyy",
                 "l": "d 'de' MMMM 'de' yyyy",
                 "m": "d MMM yyyy",
-                "s": "d/M/yy"
+                "s": "d/M/yyyy"
             },
             "dmw": {
                 "f": "EEEE, d 'de' MMMM",
@@ -35,7 +35,7 @@
                 "f": "MMMM 'de' yyyy",
                 "l": "MMMM 'de' yyyy",
                 "m": "MMM yyyy",
-                "s": "M/yy"
+                "s": "M/yyyy"
             },
             "dw": {
                 "f": "EEEE, d",
@@ -65,7 +65,7 @@
                 "f": "yyyy",
                 "l": "yyyy",
                 "m": "yyyy",
-                "s": "yy"
+                "s": "yyyy"
             }
         },
         "time": {

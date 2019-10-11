@@ -160,14 +160,14 @@ module.exports.testarea = {
         var m = AreaUnit.convert( "hectare", "square meter",2.0);
     
         test.equal(m, 0.0002);
+
+
         test.done();
     },
-    
     testAreaStaticConvert13: function(test) {
         test.expect(1);
-        var m = AreaUnit.convert( "square yard","square inch", 2.0);
-    
-        test.roughlyEqual(m, 0.00154321, 00000001);
+        var m = AreaUnit.convert("square yard","square inch", 2.0);
+        test.roughlyEqual(m, 0.00154321, 0.0000001);
         test.done();
     },
     testAreaStaticConvert14: function(test) {

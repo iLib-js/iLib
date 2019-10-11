@@ -51,7 +51,7 @@ module.exports.testdatefmt_ku_Arab_IQ = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "‏29‏/9‏/2011");
+        test.equal(fmt.format(date), '‏٢٠١١-٠٩-٢٩');
         test.done();
     },
 
@@ -70,7 +70,7 @@ module.exports.testdatefmt_ku_Arab_IQ = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "‏29‏/09‏/2011");
+        test.equal(fmt.format(date), '‏٢٠١١ ئەیلوول ٢٩');
         test.done();
     },
 
@@ -89,7 +89,7 @@ module.exports.testdatefmt_ku_Arab_IQ = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "‏2011/ئەیلول/29");
+        test.equal(fmt.format(date), '‏٢٩ی ئەیلوولی ٢٠١١');
         test.done();
     },
 
@@ -108,7 +108,7 @@ module.exports.testdatefmt_ku_Arab_IQ = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "‏2011/ئەیلول/29");
+        test.equal(fmt.format(date), '‏٢٠١١ ئەیلوول ٢٩');
         test.done();
     },
 
@@ -127,7 +127,7 @@ module.exports.testdatefmt_ku_Arab_IQ = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "13:45");
+        test.equal(fmt.format(date), '‏١:٤٥ د.ن');
         test.done();
     },
 
@@ -146,7 +146,7 @@ module.exports.testdatefmt_ku_Arab_IQ = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "13:45");
+        test.equal(fmt.format(date), '‏١:٤٥ د.ن');
         test.done();
     },
 
@@ -165,7 +165,7 @@ module.exports.testdatefmt_ku_Arab_IQ = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "13:45");
+        test.equal(fmt.format(date), '‏١:٤٥ د.ن');
         test.done();
     },
 
@@ -184,7 +184,7 @@ module.exports.testdatefmt_ku_Arab_IQ = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "13:45");
+        test.equal(fmt.format(date), '‏١:٤٥ د.ن');
         test.done();
     },
 
@@ -203,7 +203,7 @@ module.exports.testdatefmt_ku_Arab_IQ = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "‏29‏/9‏/2011 13:45");
+        test.equal(fmt.format(date), '‏٢٠١١-٠٩-٢٩ ‏١:٤٥ د.ن');
         test.done();
     },
 
@@ -222,7 +222,7 @@ module.exports.testdatefmt_ku_Arab_IQ = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "‏29‏/09‏/2011 13:45");
+        test.equal(fmt.format(date), '‏٢٠١١ ئەیلوول ٢٩ ‏١:٤٥ د.ن');
         test.done();
     },
 
@@ -241,7 +241,7 @@ module.exports.testdatefmt_ku_Arab_IQ = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "‏2011/ئەیلول/29 13:45");
+        test.equal(fmt.format(date), '‏٢٩ی ئەیلوولی ٢٠١١ ‏١:٤٥ د.ن');
         test.done();
     },
 
@@ -260,7 +260,7 @@ module.exports.testdatefmt_ku_Arab_IQ = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "‏2011/ئەیلول/29 13:45");
+        test.equal(fmt.format(date), '‏٢٠١١ ئەیلوول ٢٩ ‏١:٤٥ د.ن');
         test.done();
     },
 
@@ -280,7 +280,7 @@ module.exports.testdatefmt_ku_Arab_IQ = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "2011-09-29");
+        test.equal(fmt.format(date), '٢٠١١-٠٩-٢٩');
         test.done();
     },
 
@@ -301,7 +301,7 @@ module.exports.testdatefmt_ku_Arab_IQ = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "01:45");
+        test.equal(fmt.format(date), '٠١:٤٥');
         test.done();
     },
 
@@ -320,7 +320,7 @@ module.exports.testdatefmt_ku_Arab_IQ = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "01:45");
+        test.equal(fmt.format(date), '٠١:٤٥');
         test.done();
     },
 
@@ -339,7 +339,7 @@ module.exports.testdatefmt_ku_Arab_IQ = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "13:45");
+        test.equal(fmt.format(date), '١٣:٤٥');
         test.done();
     },
 
@@ -358,7 +358,7 @@ module.exports.testdatefmt_ku_Arab_IQ = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "13:45");
+        test.equal(fmt.format(date), '١٣:٤٥');
         test.done();
     },
 
@@ -377,7 +377,7 @@ module.exports.testdatefmt_ku_Arab_IQ = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "01:45");
+        test.equal(fmt.format(date), '٠١:٤٥');
         test.done();
     },
 
@@ -396,7 +396,7 @@ module.exports.testdatefmt_ku_Arab_IQ = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "01:45");
+        test.equal(fmt.format(date), '٠١:٤٥');
         test.done();
     },
 
@@ -415,7 +415,7 @@ module.exports.testdatefmt_ku_Arab_IQ = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "13:45");
+        test.equal(fmt.format(date), '١٣:٤٥');
         test.done();
     },
 
@@ -434,7 +434,7 @@ module.exports.testdatefmt_ku_Arab_IQ = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "13:45");
+        test.equal(fmt.format(date),  '١٣:٤٥');
         test.done();
     },
 
@@ -454,7 +454,7 @@ module.exports.testdatefmt_ku_Arab_IQ = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "‏29‏/9‏/2011");
+        test.equal(fmt.format(date), '‏٢٠١١-٠٩-٢٩');
         test.done();
     },
 
@@ -473,7 +473,7 @@ module.exports.testdatefmt_ku_Arab_IQ = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "13:45");
+        test.equal(fmt.format(date), '‏١:٤٥ د.ن');
         test.done();
     },
 
@@ -492,7 +492,7 @@ module.exports.testdatefmt_ku_Arab_IQ = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "‏29‏/9‏/2011 13:45");
+        test.equal(fmt.format(date), '‏٢٠١١-٠٩-٢٩ ‏١:٤٥ د.ن');
         test.done();
     },
 
@@ -512,7 +512,7 @@ module.exports.testdatefmt_ku_Arab_IQ = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "2011");
+        test.equal(fmt.format(date), '٢٠١١');
         test.done();
     },
 
@@ -531,7 +531,7 @@ module.exports.testdatefmt_ku_Arab_IQ = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "9");
+        test.equal(fmt.format(date), '٠٩');
         test.done();
     },
 
@@ -551,7 +551,7 @@ module.exports.testdatefmt_ku_Arab_IQ = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "29");
+        test.equal(fmt.format(date), '٢٩');
         test.done();
     },
 
@@ -570,7 +570,7 @@ module.exports.testdatefmt_ku_Arab_IQ = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "‏29‏/9");
+        test.equal(fmt.format(date), '‏٠٩-٢٩');
         test.done();
     },
 
@@ -589,7 +589,7 @@ module.exports.testdatefmt_ku_Arab_IQ = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "‏9‏/2011");
+        test.equal(fmt.format(date), '‏٢٠١١-٠٩');
         test.done();
     },
 
@@ -609,7 +609,7 @@ module.exports.testdatefmt_ku_Arab_IQ = {
             millisecond: 0
         });
 
-        test.equal(fmt.format(date), "‏29‏/9‏/2011");
+        test.equal(fmt.format(date), '‏٢٠١١-٠٩-٢٩');
         test.done();
 
     },
@@ -629,7 +629,7 @@ module.exports.testdatefmt_ku_Arab_IQ = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "پێن, 29‏/9");
+        test.equal(fmt.format(date), '‏٠٩-٢٩, پ');
         test.done();
 
     },
@@ -649,11 +649,10 @@ module.exports.testdatefmt_ku_Arab_IQ = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "پێن,  29‏/9‏/2011");
+        test.equal(fmt.format(date), '‏٢٠١١-٠٩-٢٩, پ');
         test.done();
 
     },
-
 
     testDateFmtFullDateComponentsY_ku_Arab_IQ: function(test) {
         test.expect(2);
@@ -670,7 +669,7 @@ module.exports.testdatefmt_ku_Arab_IQ = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "2011");
+        test.equal(fmt.format(date), '٢٠١١');
         test.done();
     },
 
@@ -689,7 +688,7 @@ module.exports.testdatefmt_ku_Arab_IQ = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "ئەیلول");
+        test.equal(fmt.format(date), 'ئەیلوول');
         test.done();
     },
 
@@ -708,7 +707,7 @@ module.exports.testdatefmt_ku_Arab_IQ = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "29");
+        test.equal(fmt.format(date), '٢٩');
         test.done();
     },
 
@@ -727,7 +726,7 @@ module.exports.testdatefmt_ku_Arab_IQ = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "‏ئەیلول/29");
+        test.equal(fmt.format(date), 'ئەیلوول ٢٩');
         test.done();
     },
 
@@ -746,7 +745,7 @@ module.exports.testdatefmt_ku_Arab_IQ = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "‏2011/ئەیلول");
+        test.equal(fmt.format(date), '‏٢٠١١ ئەیلوول');
         test.done();
     },
 
@@ -765,7 +764,7 @@ module.exports.testdatefmt_ku_Arab_IQ = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "‏2011/ئەیلول/29");
+        test.equal(fmt.format(date), '‏٢٠١١ ئەیلوول ٢٩');
         test.done();
     },
 
@@ -784,7 +783,7 @@ module.exports.testdatefmt_ku_Arab_IQ = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "پێنج شەممە,ئەیلول/29");
+        test.equal(fmt.format(date), 'ئەیلوول ٢٩, پێنجشەممە');
         test.done();
     },
 
@@ -803,7 +802,7 @@ module.exports.testdatefmt_ku_Arab_IQ = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "پێنج شەممە, 2011/ئەیلول/29");
+        test.equal(fmt.format(date),  '‏٢٠١١ ئەیلوول ٢٩, پێنجشەممە');
         test.done();
     },
 
@@ -823,7 +822,7 @@ module.exports.testdatefmt_ku_Arab_IQ = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "37");
+        test.equal(fmt.format(date), '٣٧');
         test.done();
     },
 
@@ -842,7 +841,7 @@ module.exports.testdatefmt_ku_Arab_IQ = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "45");
+        test.equal(fmt.format(date), '٤٥');
         test.done();
     },
 
@@ -861,7 +860,7 @@ module.exports.testdatefmt_ku_Arab_IQ = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "13");
+        test.equal(fmt.format(date), '١');
         test.done();
     },
 
@@ -880,7 +879,7 @@ module.exports.testdatefmt_ku_Arab_IQ = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "45:37");
+        test.equal(fmt.format(date), '٤٥:٣٧');
         test.done();
     },
 
@@ -899,7 +898,7 @@ module.exports.testdatefmt_ku_Arab_IQ = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "13:45");
+        test.equal(fmt.format(date), '‏١:٤٥');
         test.done();
     },
 
@@ -918,7 +917,7 @@ module.exports.testdatefmt_ku_Arab_IQ = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "13:45:37");
+        test.equal(fmt.format(date), '‏١:٤٥:٣٧');
         test.done();
     },
 
@@ -937,7 +936,7 @@ module.exports.testdatefmt_ku_Arab_IQ = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "13:45");
+        test.equal(fmt.format(date), '‏١:٤٥ د.ن');
         test.done();
     },
 
@@ -960,7 +959,7 @@ module.exports.testdatefmt_ku_Arab_IQ = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "13:45 +03/+04");
+        test.equal(fmt.format(date), '‏١:٤٥ +٠٣/+٠٤');
         test.done();
     },
 
@@ -983,7 +982,7 @@ module.exports.testdatefmt_ku_Arab_IQ = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "13:45 +03/+04");
+        test.equal(fmt.format(date), '‏١:٤٥ د.ن +٠٣/+٠٤');
         test.done();
     },
 
@@ -1002,7 +1001,7 @@ module.exports.testdatefmt_ku_Arab_IQ = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "13:45:37");
+        test.equal(fmt.format(date), '‏١:٤٥:٣٧ د.ن');
         test.done();
     },
 
@@ -1025,7 +1024,7 @@ module.exports.testdatefmt_ku_Arab_IQ = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "13:45:37 +03/+04");
+        test.equal(fmt.format(date), '‏١:٤٥:٣٧ +٠٣/+٠٤');
         test.done();
     },
 
@@ -1048,7 +1047,7 @@ module.exports.testdatefmt_ku_Arab_IQ = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "13:45:37 +03/+04");
+        test.equal(fmt.format(date), '‏١:٤٥:٣٧ د.ن +٠٣/+٠٤');
         test.done();
     },
 
@@ -1068,7 +1067,7 @@ module.exports.testdatefmt_ku_Arab_IQ = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "37");
+        test.equal(fmt.format(date), '٣٧');
         test.done();
     },
 
@@ -1087,7 +1086,7 @@ module.exports.testdatefmt_ku_Arab_IQ = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "45");
+        test.equal(fmt.format(date), '٤٥');
         test.done();
     },
 
@@ -1106,7 +1105,7 @@ module.exports.testdatefmt_ku_Arab_IQ = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "13");
+        test.equal(fmt.format(date), '١');
         test.done();
     },
 
@@ -1125,7 +1124,7 @@ module.exports.testdatefmt_ku_Arab_IQ = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "45:37");
+        test.equal(fmt.format(date), '٤٥:٣٧');
         test.done();
     },
 
@@ -1144,7 +1143,7 @@ module.exports.testdatefmt_ku_Arab_IQ = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "13:45");
+        test.equal(fmt.format(date), '‏١:٤٥');
         test.done();
     },
 
@@ -1163,7 +1162,7 @@ module.exports.testdatefmt_ku_Arab_IQ = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "13:45:37");
+        test.equal(fmt.format(date), '‏١:٤٥:٣٧');
         test.done();
     },
 
@@ -1182,7 +1181,7 @@ module.exports.testdatefmt_ku_Arab_IQ = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "13:45");
+        test.equal(fmt.format(date), '‏١:٤٥ د.ن');
         test.done();
     },
 
@@ -1206,7 +1205,7 @@ module.exports.testdatefmt_ku_Arab_IQ = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "13:45 +03/+04");
+        test.equal(fmt.format(date), '‏١:٤٥ +٠٣/+٠٤');
         test.done();
     },
 
@@ -1230,7 +1229,7 @@ module.exports.testdatefmt_ku_Arab_IQ = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "13:45 +03/+04");
+        test.equal(fmt.format(date), '‏١:٤٥ د.ن +٠٣/+٠٤');
         test.done();
     },
 
@@ -1249,7 +1248,7 @@ module.exports.testdatefmt_ku_Arab_IQ = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "13:45:37");
+        test.equal(fmt.format(date), '‏١:٤٥:٣٧ د.ن');
         test.done();
     },
 
@@ -1273,7 +1272,7 @@ module.exports.testdatefmt_ku_Arab_IQ = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "13:45:37 +03/+04");
+        test.equal(fmt.format(date), '‏١:٤٥:٣٧ +٠٣/+٠٤');
         test.done();
     },
 
@@ -1297,7 +1296,7 @@ module.exports.testdatefmt_ku_Arab_IQ = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "13:45:37 +03/+04");
+        test.equal(fmt.format(date), '‏١:٤٥:٣٧ د.ن +٠٣/+٠٤');
         test.done();
     },
 
@@ -1321,7 +1320,7 @@ module.exports.testdatefmt_ku_Arab_IQ = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "13:45:37 +03/+04");
+        test.equal(fmt.format(date), '‏١:٤٥:٣٧ +٠٣/+٠٤');
         test.done();
     },
     testDateFmtFormatRelativeWithinMinuteAfter_ku_Arab_IQ: function(test) {

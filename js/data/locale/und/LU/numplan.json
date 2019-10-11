@@ -1,9 +1,10 @@
 {
     "region": "LU",
+    "countryCode": "352",
+    "iddCode": "00",
     "skipTrunk": false,
     "trunkCode": "0",
     "findExtensions": false,
-    "iddCode": "00",
     "dialingPlan": "closed",
     "commonFormatChars": " ()-",
     "fieldLengths": {

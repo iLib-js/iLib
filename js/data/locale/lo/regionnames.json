@@ -2479,10 +2479,6 @@
     ],
     "CA": [
         {
-            "name": "ແຂວງເກແບັກ",
-            "code": "QC"
-        },
-        {
             "name": "Alberta",
             "code": "AB"
         },
@@ -2529,6 +2525,10 @@
         {
             "name": "Yukon",
             "code": "YT"
+        },
+        {
+            "name": "ແຂວງເກແບັກ",
+            "code": "QC"
         }
     ],
     "CD": [
@@ -4877,18 +4877,6 @@
     ],
     "ES": [
         {
-            "name": "ແຄວ້ນກາຕາໂລຍ",
-            "code": "CT"
-        },
-        {
-            "name": "ແຄວ້ນວາລັງ",
-            "code": "VC"
-        },
-        {
-            "name": "ແຄວ້ນແອສະຕະເຣມາດູ",
-            "code": "EX"
-        },
-        {
             "name": "A Coruña",
             "code": "C"
         },
@@ -5151,6 +5139,18 @@
         {
             "name": "Zaragoza",
             "code": "Z"
+        },
+        {
+            "name": "ແຄວ້ນກາຕາໂລຍ",
+            "code": "CT"
+        },
+        {
+            "name": "ແຄວ້ນວາລັງ",
+            "code": "VC"
+        },
+        {
+            "name": "ແຄວ້ນແອສະຕະເຣມາດູ",
+            "code": "EX"
         }
     ],
     "ET": [
@@ -5375,10 +5375,6 @@
     ],
     "FR": [
         {
-            "name": "ປາລີ",
-            "code": "75"
-        },
-        {
             "name": "Ain",
             "code": "01"
         },
@@ -5436,11 +5432,11 @@
         },
         {
             "name": "Brittany",
-            "code": "E"
+            "code": "BRE"
         },
         {
             "name": "Brittany",
-            "code": "BRE"
+            "code": "E"
         },
         {
             "name": "Burgundy-Franche-Comté",
@@ -5881,6 +5877,10 @@
         {
             "name": "Yvelines",
             "code": "78"
+        },
+        {
+            "name": "ປາລີ",
+            "code": "75"
         }
     ],
     "GA": [
@@ -5922,26 +5922,6 @@
         }
     ],
     "GB": [
-        {
-            "name": "ສະກັອດແລນ",
-            "code": "SCT"
-        },
-        {
-            "name": "ສະຫະລາຊະອານາຈັກ",
-            "code": "UKM"
-        },
-        {
-            "name": "ເວລສ໌",
-            "code": "WLS"
-        },
-        {
-            "name": "ອັງກິດ",
-            "code": "ENG"
-        },
-        {
-            "name": "ເອແດມບວກ",
-            "code": "EDH"
-        },
         {
             "name": "Aberdeen",
             "code": "ABE"
@@ -6917,6 +6897,26 @@
         {
             "name": "York",
             "code": "YOR"
+        },
+        {
+            "name": "ສະກັອດແລນ",
+            "code": "SCT"
+        },
+        {
+            "name": "ສະຫະລາຊະອານາຈັກ",
+            "code": "UKM"
+        },
+        {
+            "name": "ເວລສ໌",
+            "code": "WLS"
+        },
+        {
+            "name": "ອັງກິດ",
+            "code": "ENG"
+        },
+        {
+            "name": "ເອແດມບວກ",
+            "code": "EDH"
         }
     ],
     "GD": [
@@ -11619,10 +11619,6 @@
     ],
     "MA": [
         {
-            "name": "ກາຊາບັງກາ",
-            "code": "CAS"
-        },
-        {
             "name": "Agadir-Ida Ou Tanane",
             "code": "AGD"
         },
@@ -11933,6 +11929,10 @@
         {
             "name": "Zagora",
             "code": "ZAG"
+        },
+        {
+            "name": "ກາຊາບັງກາ",
+            "code": "CAS"
         }
     ],
     "MC": [
@@ -19915,14 +19915,6 @@
     ],
     "US": [
         {
-            "name": "ລັດນີວຢອກ",
-            "code": "NY"
-        },
-        {
-            "name": "ລັດມິຊິແກນ",
-            "code": "MI"
-        },
-        {
             "name": "Alabama",
             "code": "AL"
         },
@@ -20141,6 +20133,14 @@
         {
             "name": "Wyoming",
             "code": "WY"
+        },
+        {
+            "name": "ລັດນີວຢອກ",
+            "code": "NY"
+        },
+        {
+            "name": "ລັດມິຊິແກນ",
+            "code": "MI"
         }
     ],
     "UY": [
@@ -20409,10 +20409,6 @@
     ],
     "VN": [
         {
-            "name": "ແຂວງກວາງບິນ",
-            "code": "24"
-        },
-        {
             "name": "An Giang",
             "code": "44"
         },
@@ -20659,6 +20655,10 @@
         {
             "name": "Yên Bái",
             "code": "06"
+        },
+        {
+            "name": "ແຂວງກວາງບິນ",
+            "code": "24"
         }
     ],
     "VU": [

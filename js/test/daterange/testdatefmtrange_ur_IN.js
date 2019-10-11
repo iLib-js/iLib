@@ -57,7 +57,7 @@ module.exports.testdatefmtrange_ur_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "‏۳۱‏/۱۲‏/۱۱ ‏۱:۴۵ ‫PM – ‏۲:۳۰ ‫PM");
+        test.equal(fmt.format(start, end),'‏۳۱/۱۲/۱۱ ‏۱:۴۵ PM – ‏۲:۳۰ PM');
         test.done();
     },
     testDateRngFmtRangeinDayMedium_ur_IN: function(test) {
@@ -83,7 +83,7 @@ module.exports.testdatefmtrange_ur_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "‏۲۰۱۱ دسمبر ۳۱ ‏۱:۴۵ ‫PM – ‏۲:۳۰ ‫PM");
+        test.equal(fmt.format(start, end), '‏۳۱ دسمبر، ۲۰۱۱ ‏۱:۴۵ PM – ‏۲:۳۰ PM');
         test.done();
     },
     testDateRngFmtRangeinDayLong_ur_IN: function(test) {
@@ -109,7 +109,7 @@ module.exports.testdatefmtrange_ur_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "‏۳۱ دسمبر، ۲۰۱۱ ‏۱:۴۵ ‫PM – ‏۲:۳۰ ‫PM");
+        test.equal(fmt.format(start, end), '‏۳۱ دسمبر، ۲۰۱۱ ‏۱:۴۵ PM – ‏۲:۳۰ PM');
         test.done();
     },
     testDateRngFmtRangeinDayFull_ur_IN: function(test) {
@@ -135,7 +135,7 @@ module.exports.testdatefmtrange_ur_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "‏۳۱ دسمبر، ۲۰۱۱ ‏۱:۴۵ ‫PM – ‏۲:۳۰ ‫PM");
+        test.equal(fmt.format(start, end), '‏۳۱ دسمبر، ۲۰۱۱ ‏۱:۴۵ PM – ‏۲:۳۰ PM');
         test.done();
     },
     
@@ -162,7 +162,7 @@ module.exports.testdatefmtrange_ur_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "‏۳۰‏/۱۲‏/۱۱ ‏۱:۴۵ ‫PM – ‏۳۱‏/۱۲‏/۱۱ ‏۲:۳۰ ‫PM");
+        test.equal(fmt.format(start, end), '‏۳۰/۱۲/۱۱ ‏۱:۴۵ PM – ‏۳۱/۱۲/۱۱ ‏۲:۳۰ PM');
         test.done();
     },
     testDateRngFmtRangeNextDayMedium_ur_IN: function(test) {
@@ -188,7 +188,7 @@ module.exports.testdatefmtrange_ur_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "‏۲۰۱۱ دسمبر ۳۰ ‏۱:۴۵ ‫PM – ‏۲۰۱۱ دسمبر ۳۱ ‏۲:۳۰ ‫PM");
+        test.equal(fmt.format(start, end), '‏۳۰ دسمبر، ۲۰۱۱ ‏۱:۴۵ PM – ‏۳۱ دسمبر، ۲۰۱۱ ‏۲:۳۰ PM');
         test.done();
     },
     testDateRngFmtRangeNextDayLong_ur_IN: function(test) {
@@ -214,7 +214,7 @@ module.exports.testdatefmtrange_ur_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "‏۳۰ دسمبر، ۲۰۱۱ ‏۱:۴۵ ‫PM – ‏۳۱ دسمبر، ۲۰۱۱ ‏۲:۳۰ ‫PM");
+        test.equal(fmt.format(start, end), '‏۳۰ دسمبر، ۲۰۱۱ ‏۱:۴۵ PM – ‏۳۱ دسمبر، ۲۰۱۱ ‏۲:۳۰ PM');
         test.done();
     },
     testDateRngFmtRangeNextDayFull_ur_IN: function(test) {
@@ -240,7 +240,7 @@ module.exports.testdatefmtrange_ur_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "‏۳۰ دسمبر، ۲۰۱۱ ‏۱:۴۵ ‫PM – ‏۳۱ دسمبر، ۲۰۱۱ ‏۲:۳۰ ‫PM");
+        test.equal(fmt.format(start, end), '‏۳۰ دسمبر، ۲۰۱۱ ‏۱:۴۵ PM – ‏۳۱ دسمبر، ۲۰۱۱ ‏۲:۳۰ PM');
         test.done();
     },
     
@@ -267,7 +267,7 @@ module.exports.testdatefmtrange_ur_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "‏۲۰ – ‏۳۱‏/۱۲‏/۱۱");
+        test.equal(fmt.format(start, end), '‏۲۰ – ‏۳۱/۱۲/۱۱');
         test.done();
     },
     testDateRngFmtRangeMultiDayMedium_ur_IN: function(test) {
@@ -293,7 +293,7 @@ module.exports.testdatefmtrange_ur_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "‏۲۰۱۱ دسمبر ۲۰ – ۳۱");
+        test.equal(fmt.format(start, end), '‏۲۰ – ‏۳۱ دسمبر، ۲۰۱۱');
         test.done();
     },
     testDateRngFmtRangeMultiDayLong_ur_IN: function(test) {
@@ -372,7 +372,7 @@ module.exports.testdatefmtrange_ur_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "‏۲۰‏/۱۱ – ‏۳۱‏/۱۲‏/۱۱");
+        test.equal(fmt.format(start, end), '‏۲۰/۱۱ – ‏۳۱/۱۲/۱۱');
         test.done();
     },
     testDateRngFmtRangeNextMonthMedium_ur_IN: function(test) {
@@ -398,7 +398,7 @@ module.exports.testdatefmtrange_ur_IN = {
             second: 0,
             millisecond: 0
         })
-        test.equal(fmt.format(start, end), "‏۲۰۱۱ نومبر ۲۰ – ‏۲۰۱۱ دسمبر ۳۱");
+        test.equal(fmt.format(start, end), '‏۲۰ نومبر – ‏۳۱ دسمبر، ۲۰۱۱');
         test.done();
     },
     testDateRngFmtRangeNextMonthLong_ur_IN: function(test) {
@@ -477,7 +477,7 @@ module.exports.testdatefmtrange_ur_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "‏۲۰‏/۱۱‏/۱۱ – ‏۳۱‏/۱‏/۱۲");
+        test.equal(fmt.format(start, end), '‏۲۰/۱۱/۱۱ – ‏۳۱/۱/۱۲');
         test.done();
     },
     testDateRngFmtRangeNextYearMedium_ur_IN: function(test) {
@@ -503,7 +503,7 @@ module.exports.testdatefmtrange_ur_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "‏۲۰۱۱ نومبر ۲۰ – ‏۲۰۱۲ جنوری ۳۱");
+        test.equal(fmt.format(start, end), '‏۲۰ نومبر، ۲۰۱۱ – ‏۳۱ جنوری، ۲۰۱۲');
         test.done();
     },
     testDateRngFmtRangeNextYearLong_ur_IN: function(test) {
@@ -582,7 +582,7 @@ module.exports.testdatefmtrange_ur_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "‏۱۱‏/۱۱ – ‏۱‏/۱۴");
+        test.equal(fmt.format(start, end), '‏۱۱/۱۱ – ‏۱/۱۴');
         test.done();
     },
     testDateRngFmtRangeMultiYearMedium_ur_IN: function(test) {
@@ -608,7 +608,7 @@ module.exports.testdatefmtrange_ur_IN = {
             second: 0,
             millisecond: 0
         }); 
-        test.equal(fmt.format(start, end), "‏۲۰۱۱ نومبر – ‏۲۰۱۴ جنوری");
+        test.equal(fmt.format(start, end), 'نومبر، ۲۰۱۱ – جنوری، ۲۰۱۴');
         test.done();
     },
     testDateRngFmtRangeMultiYearLong_ur_IN: function(test) {
@@ -634,7 +634,7 @@ module.exports.testdatefmtrange_ur_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "‏نومبر، ۲۰۱۱ – ‏جنوری، ۲۰۱۴");
+        test.equal(fmt.format(start, end), 'نومبر، ۲۰۱۱ – جنوری، ۲۰۱۴');
         test.done();
     },
     testDateRngFmtRangeMultiYearFull_ur_IN: function(test) {
@@ -660,7 +660,7 @@ module.exports.testdatefmtrange_ur_IN = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(start, end), "‏نومبر، ۲۰۱۱ – ‏جنوری، ۲۰۱۴");
+        test.equal(fmt.format(start, end), 'نومبر، ۲۰۱۱ – جنوری، ۲۰۱۴');
         test.done();
     },
     testDateRngFmtManyYearsFull_ur_IN: function(test) {

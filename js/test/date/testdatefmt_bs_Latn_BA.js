@@ -61,7 +61,7 @@ module.exports.testdatefmt_bs_Latn_BA = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "29.9.11.");
+        test.equal(fmt.format(date), "29. 9. 2011.");
         test.done();
     },
 
@@ -80,7 +80,7 @@ module.exports.testdatefmt_bs_Latn_BA = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "29. sep. 2011.");
+        test.equal(fmt.format(date), "29. sep 2011.");
         test.done();
     },
 
@@ -213,7 +213,7 @@ module.exports.testdatefmt_bs_Latn_BA = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "29.9.11. 13:45");
+        test.equal(fmt.format(date), "29. 9. 2011. 13:45");
         test.done();
     },
 
@@ -232,7 +232,7 @@ module.exports.testdatefmt_bs_Latn_BA = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "29. sep. 2011. 13:45");
+        test.equal(fmt.format(date), "29. sep 2011. 13:45");
         test.done();
     },
 
@@ -465,7 +465,7 @@ module.exports.testdatefmt_bs_Latn_BA = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "29.9.11.");
+        test.equal(fmt.format(date), "29. 9. 2011.");
         test.done();
     },
 
@@ -503,7 +503,7 @@ module.exports.testdatefmt_bs_Latn_BA = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "29.9.11. 13:45");
+        test.equal(fmt.format(date), "29. 9. 2011. 13:45");
         test.done();
     },
 
@@ -523,7 +523,7 @@ module.exports.testdatefmt_bs_Latn_BA = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "11");
+        test.equal(fmt.format(date), "2011");
         test.done();
     },
 
@@ -599,7 +599,7 @@ module.exports.testdatefmt_bs_Latn_BA = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "29.9");
+        test.equal(fmt.format(date), "29. 9");
         test.done();
     },
 
@@ -618,7 +618,7 @@ module.exports.testdatefmt_bs_Latn_BA = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "9.11.");
+        test.equal(fmt.format(date), "9. 2011.");
         test.done();
     },
 
@@ -637,7 +637,7 @@ module.exports.testdatefmt_bs_Latn_BA = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "29.9.11.");
+        test.equal(fmt.format(date), "29. 9. 2011.");
         test.done();
     },
 
@@ -656,7 +656,7 @@ module.exports.testdatefmt_bs_Latn_BA = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "Č, 29.9");
+        test.equal(fmt.format(date), "Č, 29. 9");
         test.done();
     },
 
@@ -675,7 +675,7 @@ module.exports.testdatefmt_bs_Latn_BA = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "Č, 29.9.11.");
+        test.equal(fmt.format(date), "Č, 29. 9. 2011.");
         test.done();
     },
 

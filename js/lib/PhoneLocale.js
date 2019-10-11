@@ -180,53 +180,104 @@ PhoneLocale.prototype._mapAreatoRegion = function(cc, area) {
 PhoneLocale.prototype._normPhoneReg = function(region) {
     var norm;
 
+    /*
+    * Country list has been updated from metadata.json fro, libphonenumber-js library  v1.7.20
+    * and Modified some countries based on Wikipedia
+    */
+
     // Map all NANP regions to the right region, so that they get parsed using the
     // correct state table
     switch (region) {
         case "US": // usa
-        case "CA": // canada
         case "AG": // antigua and barbuda
-        case "BS": // bahamas
+        case "AI": // anguilla
+        case "AS": // American Samoa
         case "BB": // barbados
+        case "BM": // bermuda
+        case "BS": // bahamas
+        case "CA": // canada
         case "DM": // dominica
         case "DO": // dominican republic
         case "GD": // grenada
+        case "GU": // Guam
         case "JM": // jamaica
         case "KN": // st. kitts and nevis
-        case "LC": // st. lucia
-        case "VC": // st. vincent and the grenadines
-        case "TT": // trinidad and tobago
-        case "AI": // anguilla
-        case "BM": // bermuda
-        case "VG": // british virgin islands
         case "KY": // cayman islands
-        case "MS": // montserrat
-        case "TC": // turks and caicos
-        case "AS": // American Samoa
-        case "VI": // Virgin Islands, U.S.
-        case "PR": // Puerto Rico
+        case "LC": // st. lucia
         case "MP": // Northern Mariana Islands
-        case "T:": // East Timor
-        case "GU": // Guam
+        case "MS": // montserrat
+        case "PR": // Puerto Rico
+        case "SX": // Sint Maarten
+        case "TC": // turks and caicos
+        case "TT": // trinidad and tobago
+        case "VC": // st. vincent and the grenadines
+        case "VG": // british virgin islands
+        case "VI": // Virgin Islands, U.S.
             norm = "US";
             break;
 
-        // these all use the Italian dialling plan
-        case "IT": // italy
-        case "SM": // san marino
-        case "VA": // vatican city
-            norm = "IT";
-            break;
-
-        // all the French dependencies are on the French dialling plan
+        /* all the French dependencies are on the French dialling plan
+        *  Update manually following Wikipedia information
+        * https://en.wikipedia.org/wiki/Telephone_numbers_in_France#Others
+        */
         case "FR": // france
         case "GF": // french guiana
         case "MQ": // martinique
         case "GP": // guadeloupe,
         case "BL": // saint barthélemy
         case "MF": // saint martin
-        case "RE": // réunion, mayotte
+        case "RE": // réunion
+        case "YT": // mayotte
             norm = "FR";
+            break;
+
+        // these all use the Italian dialling plan
+        case "IT": // italy
+        case "SM": // san marino
+        case "VA": // vatican city  // Update manually following Wikipedia information
+            norm = "IT";
+            break;
+
+        // all the UK dependencies are on the UK dialling plan
+        case "GB": // United Kingdom
+        case "GG": // Guernsey
+        case "IM": // Isle of Man
+        case "JE": // Jersey
+            norm = "GB";
+            break;
+        case "RU": // Russia
+        case "KZ": // Kazakhstan
+            norm = "RU";
+            break;
+        case "NO": // Norway
+        case "SJ": // Svalbard and Jan Mayen
+            norm = "NO";
+            break;
+        case "AU": // Australia
+        case "CC": // Cocos (Keeling) Islands
+        case "CX": // Christmas Island
+            norm = "AU";
+            break;
+        case "MA": // Morocco
+        case "EH": // Western Sahara
+            norm = "MA";
+            break;
+        case "SH": // Saint Helena
+        case "TA": // ?
+            norm = "SH";
+            break;
+        case "FI": // Finland
+        case "AX": // Aland Islands
+            norm = "FI";
+            break;
+        case "GP": // Guadeloupe
+        case "BL": // Saint-Barthélemy
+        case "MF": // Saint Martin (French part)
+            norm = "GP";
+            break;
+        case "CW": // Curaçao
+        case "BQ": // Caribbean Netherlands
+            norm = "CW";
             break;
         default:
             norm = region;

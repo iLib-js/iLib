@@ -1,9 +1,10 @@
 {
     "region": "NZ",
-    "skipTrunk": true,
-    "trunkCode": "0",
-    "extendedAreaCodes": true,
+    "countryCode": "64",
     "iddCode": "00",
+    "trunkCode": "0",
+    "skipTrunk": true,
+    "extendedAreaCodes": true,
     "dialingPlan": "open",
     "commonFormatChars": " ()-.",
     "fieldLengths": {

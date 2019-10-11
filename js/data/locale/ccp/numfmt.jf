@@ -1,0 +1,13 @@
+{
+    "generated": true,
+    "numfmt": {
+        "script": "Cakm",
+        "secgroupSize": 2,
+        "currencyFormats": {
+            "common": "{n}{s}",
+            "commonNegative": "-{n}{s}"
+        },
+        "digits": "𑄶𑄷𑄸𑄹𑄺𑄻𑄼𑄽𑄾𑄿",
+        "useNative": true
+    }
+}

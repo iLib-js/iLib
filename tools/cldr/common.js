@@ -1,7 +1,7 @@
 /*
  * common.js - common routines shared amongst the cldr/unicode tools
  * 
- * Copyright © 2013, JEDLSoft
+ * Copyright © 2013, 2018, JEDLSoft
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -715,7 +715,7 @@ exports.prune = function prune(parent, child) {
 				//if (prop !== child[prop]) {
 					//ret[prop] = child[prop];
 				//}
-			} else if (!parent || (parent[prop] !== child[prop] && child[prop].toString().length > 0)) {
+			} else if (!parent || (parent[prop] !== child[prop] && child[prop].toString().length !== undefined)) {
 				ret[prop] = child[prop];
 			}
 		}
@@ -730,12 +730,12 @@ exports.mergeAndPrune = function mergeAndPrune(localeData) {
 			localeData.merged = localeData.data;
 		}
 		for (var prop in localeData) {
-			// util.print("merging " + prop + "\n");
+			// console.log("merging " + prop + "\n");
 			if (prop && typeof(localeData[prop]) !== 'undefined' && prop !== 'data' && prop !== 'merged') {
-				// util.print(prop + " ");
+				// console.log(prop + " ");
 				localeData[prop].merged = exports.merge(localeData.merged || {}, localeData[prop].data || {});
 				localeData[prop].data = exports.prune(localeData.merged || {}, localeData[prop].data || {});
-				// util.print("recursing\n");
+				// console.log("recursing\n");
 				exports.mergeAndPrune(localeData[prop]);
 			}
 		}
@@ -928,7 +928,7 @@ exports.Trie = function () {
  * @param {Object} to
  */
 exports.Trie.prototype.add = function(from, to) {
-	//util.print("from length is " + from.length + "\n");
+	//console.log("from length is " + from.length + "\n");
 	var trienode = this.nodes;
 	var dest = new TrieNode(to);
 	
@@ -937,7 +937,7 @@ exports.Trie.prototype.add = function(from, to) {
 		switch (typeof(trienode[from[j]])) {
 			case 'number':
 			case 'string':
-				//util.print("existing leaf node " + from[j] + "\n");
+				//console.log("existing leaf node " + from[j] + "\n");
 				// context-sensitive?
 				var temp = {
 					"__leaf": trienode[from[j]]
@@ -947,7 +947,7 @@ exports.Trie.prototype.add = function(from, to) {
 
 			case 'object':
 				if (trienode[from[j]] instanceof TrieNode) {
-					//util.print("existing leaf node " + from[j] + "\n");
+					//console.log("existing leaf node " + from[j] + "\n");
 					// context-sensitive? We have more to add, but
 					// there is a leaf here already. Push it down as
 					// a leaf and go on.
@@ -959,7 +959,7 @@ exports.Trie.prototype.add = function(from, to) {
 				break;
 			
 			case 'undefined':
-				//util.print("new node " + from[j] + "\n");
+				//console.log("new node " + from[j] + "\n");
 				trienode[from[j]] = {};
 				break;
 		}
@@ -967,13 +967,13 @@ exports.Trie.prototype.add = function(from, to) {
 		trienode = trienode[from[j]];
 	}
 	
-	//util.print("setting node " + from[j] + " to " + to + "\n");
+	//console.log("setting node " + from[j] + " to " + to + "\n");
 	if (!exports.isEmpty(trienode[from[j]])) {
-		//util.print("Add existing node leaf " + from[j] + "\n");
+		//console.log("Add existing node leaf " + from[j] + "\n");
 		// context-sensitive?
 		trienode[from[j]].__leaf = dest;
 	} else {
-		//util.print("Adding new node " + from[j] + "\n");
+		//console.log("Adding new node " + from[j] + "\n");
 		trienode[from[j]] = dest;
 	}
 };

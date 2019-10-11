@@ -136,7 +136,7 @@ module.exports.testdatefmt_bg = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "13:45");
+        test.equal(fmt.format(date), "13:45 ч.");
         test.done();
     },
     
@@ -155,7 +155,7 @@ module.exports.testdatefmt_bg = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "13:45");
+        test.equal(fmt.format(date), "13:45 ч.");
         test.done();
     },
     
@@ -174,7 +174,7 @@ module.exports.testdatefmt_bg = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "13:45");
+        test.equal(fmt.format(date), "13:45 ч.");
         test.done();
     },
     
@@ -193,7 +193,7 @@ module.exports.testdatefmt_bg = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "13:45");
+        test.equal(fmt.format(date), "13:45 ч.");
         test.done();
     },
     
@@ -212,7 +212,7 @@ module.exports.testdatefmt_bg = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "29.09.11 г., 13:45");
+        test.equal(fmt.format(date), "29.09.11 г., 13:45 ч.");
         test.done();
     },
     
@@ -231,7 +231,7 @@ module.exports.testdatefmt_bg = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "29.09.2011 г., 13:45");
+        test.equal(fmt.format(date), "29.09.2011 г., 13:45 ч.");
         test.done();
     },
     
@@ -250,7 +250,7 @@ module.exports.testdatefmt_bg = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "29 септември 2011 г., 13:45");
+        test.equal(fmt.format(date), "29 септември 2011 г., 13:45 ч.");
         test.done();
     },
     
@@ -269,7 +269,7 @@ module.exports.testdatefmt_bg = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "29 септември 2011 г., 13:45");
+        test.equal(fmt.format(date), "29 септември 2011 г., 13:45 ч.");
         test.done();
     },
     
@@ -481,7 +481,7 @@ module.exports.testdatefmt_bg = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "13:45");
+        test.equal(fmt.format(date), "13:45 ч.");
         test.done();
     },
     
@@ -500,7 +500,7 @@ module.exports.testdatefmt_bg = {
             second: 0,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "29.09.11 г., 13:45");
+        test.equal(fmt.format(date), "29.09.11 г., 13:45 ч.");
         test.done();
     },
     
@@ -926,7 +926,7 @@ module.exports.testdatefmt_bg = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "13:45");
+        test.equal(fmt.format(date), "13:45 ч.");
         test.done();
     },
     
@@ -945,7 +945,7 @@ module.exports.testdatefmt_bg = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "13:45:37");
+        test.equal(fmt.format(date), "13:45:37 ч.");
         test.done();
     },
     
@@ -964,7 +964,7 @@ module.exports.testdatefmt_bg = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "13:45");
+        test.equal(fmt.format(date), "13:45 ч.");
         test.done();
     },
     
@@ -988,7 +988,7 @@ module.exports.testdatefmt_bg = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "13:45 EEST");
+        test.equal(fmt.format(date), "13:45 ч. EEST");
         test.done();
     },
     
@@ -1012,7 +1012,7 @@ module.exports.testdatefmt_bg = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "13:45 EEST");
+        test.equal(fmt.format(date), "13:45 ч. EEST");
         test.done();
     },
     
@@ -1031,7 +1031,7 @@ module.exports.testdatefmt_bg = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "13:45:37");
+        test.equal(fmt.format(date), "13:45:37 ч.");
         test.done();
     },
     
@@ -1055,7 +1055,7 @@ module.exports.testdatefmt_bg = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "13:45:37 EEST");
+        test.equal(fmt.format(date), "13:45:37 ч. EEST");
         test.done();
     },
     
@@ -1079,7 +1079,7 @@ module.exports.testdatefmt_bg = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "13:45:37 EEST");
+        test.equal(fmt.format(date), "13:45:37 ч. EEST");
         test.done();
     },
     
@@ -1175,7 +1175,7 @@ module.exports.testdatefmt_bg = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "13:45");
+        test.equal(fmt.format(date), "13:45 ч.");
         test.done();
     },
     
@@ -1194,7 +1194,7 @@ module.exports.testdatefmt_bg = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "13:45:37");
+        test.equal(fmt.format(date), "13:45:37 ч.");
         test.done();
     },
     
@@ -1213,7 +1213,7 @@ module.exports.testdatefmt_bg = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "13:45");
+        test.equal(fmt.format(date), "13:45 ч.");
         test.done();
     },
     
@@ -1238,7 +1238,7 @@ module.exports.testdatefmt_bg = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "13:45 EEST");
+        test.equal(fmt.format(date), "13:45 ч. EEST");
         test.done();
     },
     
@@ -1263,7 +1263,7 @@ module.exports.testdatefmt_bg = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "13:45 EEST");
+        test.equal(fmt.format(date), "13:45 ч. EEST");
         test.done();
     },
     
@@ -1282,7 +1282,7 @@ module.exports.testdatefmt_bg = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "13:45:37");
+        test.equal(fmt.format(date), "13:45:37 ч.");
         test.done();
     },
     
@@ -1307,7 +1307,7 @@ module.exports.testdatefmt_bg = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "13:45:37 EEST");
+        test.equal(fmt.format(date), "13:45:37 ч. EEST");
         test.done();
     },
     
@@ -1332,7 +1332,7 @@ module.exports.testdatefmt_bg = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "13:45:37 EEST");
+        test.equal(fmt.format(date), "13:45:37 ч. EEST");
         test.done();
     },
     
@@ -1357,7 +1357,7 @@ module.exports.testdatefmt_bg = {
             second: 37,
             millisecond: 0
         });
-        test.equal(fmt.format(date), "13:45:37 EET");
+        test.equal(fmt.format(date), "13:45:37 ч. EET");
         test.done();
     },
     

@@ -15,5 +15,8 @@
             "line": "last",
             "pattern": "(FI-)?[0-9]{5}"
         }
-    ]
+    ],
+    "fieldNames": {
+        "region": "County"
+    }
 }

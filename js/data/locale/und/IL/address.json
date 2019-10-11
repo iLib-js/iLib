@@ -16,5 +16,8 @@
             "pattern": "[ABCDEFGHIJKLMNOPQRSTUVXYZa-zבּבגדהוזחטיכּכךלמםנןסעפּפףצץקרשׁשׂתּת\\s-.\"]+"
         }
         
-    ]
+    ],
+    "fieldNames": {
+        "region": "District"
+    }
 }
