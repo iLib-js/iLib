@@ -19,7 +19,7 @@
 
 // !data charmaps/ISO-8859-15 charset/ISO-8859-15
 
-var ilib = require("../index");
+var ilib = require("../index.js");
 var Utils = require("./Utils.js");
 var Charset = require("./Charset.js");
 var Charmap = require("./Charmap.js");

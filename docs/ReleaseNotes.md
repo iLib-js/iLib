@@ -3,16 +3,22 @@ Release Notes for Version 14
 
 Build 003
 -------
-Published as version 14.2.0
+Published as version 14.1.1
 
 New Features:
 * Added source maps to the npm package so that you can debug into the original ilib code easily
 
-Bug Fixes
-* Worked around a problem with uglifyjs which optimized out a block of code that contained the comment that
-  the ilib-webpack-loader was looking for. The loader would replace that comment with dependencies on the
-  webpacked locale data files. Without that comment, no dependencies, and therefore no locale data and no
-  WebpackLoader code would be included in the final webpack bundle.
+Bug Fixes:
+* Worked around a problem with uglifyjs which optimized out a block
+  of code that contained the comment that the ilib-webpack-loader was
+  looking for. The loader would replace that comment with dependencies on
+  the webpacked locale data files. Without that comment, no dependencies,
+  and therefore no locale data and no WebpackLoader code would be
+  included in the final webpack bundle.
+* Added the full file name including the file extension for requires
+  of `index.js`. If file name extension is missing, QT cannot load that
+  file properly.
+* Added missing `index.js` require statement in MeasurementFactory
 
 Build 002
 -------
@@ -27,7 +33,7 @@ New Features:
     * Allows ilib to run in node or within a webpack bundle without changes
     * Allows clients to just require ilib classes directly without first requiring the loader installer
 
-Bug Fixes
+Bug Fixes:
 * Restored a missing mapping from the the native name for "Japan" to the ISO code "JP" in the nativecountries.json
     * Fixes address parsing for Japan
 

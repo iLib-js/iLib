@@ -16,7 +16,7 @@ install:
   - sudo apt-get -y install qmlscene qt5-default qtdeclarative5-dev qtbase5-dev
   - npm install
   - export PATH=$PWD/node_modules/.bin:$PATH
-  - export NODE_OPTIONS="--max-old-space-size=3072"
+  - export NODE_OPTIONS="--max-old-space-size=4096"
 script:
   # [Error] module QtQuick is not installed
   - source /opt/qt55/bin/qt55-env.sh
@@ -25,8 +25,8 @@ script:
   # [Error] QFontDatabase: Cannot find font directory /usr/lib/x86_64-linux-gnu/fonts - is Qt installed correctly?
   - sudo ln -s /usr/share/fonts /usr/lib/x86_64-linux-gnu/fonts
 
-  # iLib Full builde / Running nodeunit test.
-  - ant test
+  # iLib full build / Run nodeunit tests
+  - ant clean test
   #- which qmake
   #- which qmlscene
   #- cd qt/NodeunitTest

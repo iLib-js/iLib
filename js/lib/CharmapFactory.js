@@ -18,7 +18,7 @@
  * limitations under the License.
  */
 
-var ilib = require("../index");
+var ilib = require("../index.js");
 var JSUtils = require("./JSUtils.js");
 
 var Charset = require("./Charset.js");

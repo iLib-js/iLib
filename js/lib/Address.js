@@ -21,7 +21,7 @@
 
 // !data address countries nativecountries ctrynames
 
-var ilib = require("../index");
+var ilib = require("../index.js");
 var Utils = require("./Utils.js");
 var JSUtils = require("./JSUtils.js");
 var Locale = require("./Locale.js");
