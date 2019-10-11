@@ -30,6 +30,7 @@ module.exports = function(env, args) {
         locales = env.locales,
         ilibRoot = path.resolve(env.ilibRoot || "."),
         tempDirRoot = path.resolve(env.tempDir || "temp"),
+        mode = args.mode,
         outputPath;
 
     // "ut" is unit tests
@@ -107,6 +108,11 @@ module.exports = function(env, args) {
             new IlibWebpackPlugin(options)
         ]
     };
+
+    if (mode === "development") {
+        console.log("Using development mode");
+        ret.devtool = "hidden-source-map";
+    }
 
     if (target !== "web") {
         ret.target = target;

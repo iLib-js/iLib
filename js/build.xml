@@ -132,7 +132,7 @@ limitations under the License.
 		<sequential>
 		    <echo>executing webpack</echo>
 			<exec osfamily="unix" executable="webpack-cli" dir="${build.base}" failifexecutionfails="@{failquit}" failonerror="@{failquit}">
-				<env key="NODE_OPTIONS" value="--max-old-space-size=3072"/>
+				<env key="NODE_OPTIONS" value="--max-old-space-size=4096"/>
 				<arg value="--env.assembly=@{assembly}"/>
 				<arg value="--env.size=@{size}"/>
 				<arg value="--env.compilation=@{compilation}"/>
@@ -143,7 +143,7 @@ limitations under the License.
                 <arg value="--mode=@{mode}"/>
 			</exec>
 			<exec osfamily="windows" executable="webpack-cli.bat" dir="${build.base}" failifexecutionfails="@{failquit}"  failonerror="@{failquit}">
-				<env key="NODE_OPTIONS" value="--max-old-space-size=3072"/>
+				<env key="NODE_OPTIONS" value="--max-old-space-size=4096"/>
 				<arg value="--env.assembly=@{assembly}"/>
 				<arg value="--env.size=@{size}"/>
 				<arg value="--env.compilation=@{compilation}"/>
@@ -163,11 +163,11 @@ limitations under the License.
 		</uptodate>
 	</target>
 	<target name="assemble.core.assembled" depends="prepare,gen.manifest.locale,testilib.core" unless="core.ilib.core.not.needed" description="assembles the js files into a single file in the right order to satisfy dependencies">
-		<runassemble size="core"/>
+		<runassemble size="core" mode="development"/>
 		<runassemble size="core" compilation="compiled"/>
 	</target>
     <target name="assemble.core.dyndata" depends="prepare,gen.manifest.locale,testilib.core" unless="core.ilib.core.not.needed" description="assembles the js files into a single file in the right order to satisfy dependencies">
-        <runassemble assembly="dynamicdata" size="core"/>
+        <runassemble assembly="dynamicdata" size="core" mode="development"/>
         <runassemble assembly="dynamicdata" size="core" compilation="compiled"/>
     </target>
     <target name="assemble.core" depends="assemble.core.assembled,assemble.core.dyndata"/>
@@ -196,11 +196,11 @@ limitations under the License.
 		</uptodate>
 	</target>
 	<target name="assemble.standard.assembled" depends="prepare,gen.manifest.locale,testilib.standard" unless="core.ilib.standard.not.needed" description="assembles the js files into a single file in the right order to satisfy dependencies">
-		<runassemble size="standard"/>
+		<runassemble size="standard" mode="development"/>
 		<runassemble size="standard" compilation="compiled"/>
 	</target>
     <target name="assemble.standard.dyndata" depends="prepare,gen.manifest.locale,testilib.standard" unless="core.ilib.standard.not.needed" description="assembles the js files into a single file in the right order to satisfy dependencies">
-        <runassemble assembly="dynamicdata" size="standard"/>
+        <runassemble assembly="dynamicdata" size="standard" mode="development"/>
         <runassemble assembly="dynamicdata" size="standard" compilation="compiled"/>
     </target>
 	<target name="assemble.standard" depends="assemble.standard.assembled,assemble.standard.dyndata"/>
@@ -213,11 +213,11 @@ limitations under the License.
 		</uptodate>
 	</target>
 	<target name="assemble.full.assembled" depends="prepare,gen.manifest.locale,testilib.full" unless="core.ilib.full.not.needed" description="assembles the js files into a single file in the right order to satisfy dependencies">
-		<runassemble size="full"/>
+		<runassemble size="full" mode="development"/>
 		<runassemble size="full" compilation="compiled"/>
 	</target>
 	<target name="assemble.full.dyndata" depends="prepare,gen.manifest.locale,testilib.full" unless="core.ilib.full.not.needed" description="assembles the js files into a single file in the right order to satisfy dependencies">
-        <runassemble assembly="dynamicdata" size="full"/>
+        <runassemble assembly="dynamicdata" size="full" mode="development"/>
         <runassemble assembly="dynamicdata" size="full" compilation="compiled"/>
     </target>
 	<target name="assemble.full" depends="assemble.full.assembled,assemble.full.dyndata"/>
@@ -279,11 +279,11 @@ limitations under the License.
 		</uptodate>
 	</target>
 	<target name="assemble.demo.assembled" depends="prepare,gen.manifest.locale,testilibdemo" unless="ilib-demo.not.needed" description="assembles the js files into a single file for the demo">
-		<runassemble size="demo" locales="${locales.demo}"/>
+		<runassemble size="demo" locales="${locales.demo}" mode="development"/>
 		<runassemble size="demo" compilation="compiled" locales="${locales.demo}"/>
 	</target>
     <target name="assemble.demo.dyndata" depends="prepare,gen.manifest.locale,testilibdemo" unless="ilib-demo.not.needed" description="assembles the js files into a single file for the demo">
-        <runassemble assembly="dynamicdata" size="demo" locales="${locales.demo}"/>
+        <runassemble assembly="dynamicdata" size="demo" locales="${locales.demo}" mode="development"/>
         <runassemble assembly="dynamicdata" size="demo" compilation="compiled" locales="${locales.demo}"/>
     </target>
 	<target name="assemble.demo" depends="assemble.demo.assembled,assemble.demo.dyndata"/>
