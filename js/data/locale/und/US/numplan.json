@@ -1,8 +1,9 @@
 {
     "region": "US",
-    "skipTrunk": true,
-    "trunkCode": "1",
+    "countryCode": "1",
     "iddCode": "011",
+    "trunkCode": "1",
+    "skipTrunk": true,
     "dialingPlan": "closed",
     "commonFormatChars": " ()-.",
     "fieldLengths": {

@@ -1,8 +1,9 @@
 {
     "region": "IE",
-    "skipTrunk": true,
-    "trunkCode": "0",
+    "countryCode": "353",
     "iddCode": "00",
+    "trunkCode": "0",
+    "skipTrunk": true,
     "dialingPlan": "open",
     "commonFormatChars": " ()-",
     "fieldLengths": {

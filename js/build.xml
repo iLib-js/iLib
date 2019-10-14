@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
 build.xml - build the javascript parts
-Copyright © 2012-2018, JEDLSoft
+Copyright © 2012-2019, JEDLSoft
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
 You may obtain a copy of the License at
@@ -37,8 +37,6 @@ limitations under the License.
 	<property name="build.bin"						value="${build.base}/bin"/>
 	<property name="build.lib"						value="${build.base}/lib"/>
 	<property name="build.output"					value="${build.base}/output"/>
-	<property name="build.output.reports"			value="${build.output}/reports"/>
-	<property name="build.output.jsunit"			value="${build.output}/jsunit"/>
 	<property name="build.output.js"				value="${build.output}/js"/>
 	<property name="build.output.dyncode"			value="${build.output}/dyncode"/>
 	<property name="build.output.test"				value="${build.output}/test"/>
@@ -55,6 +53,7 @@ limitations under the License.
 	<property name="locales.default"                value="en-AU,en-CA,en-GB,en-IN,en-NG,en-PH,en-PK,en-SG,en-US,en-ZA,de-DE,fr-CA,fr-FR,es-AR,es-ES,es-MX,id-ID,it-IT,ja-JP,ko-KR,pt-BR,ru-RU,tr-TR,vi-VN,zxx-XX,zh-Hans-CN,zh-Hant-HK,zh-Hant-TW,zh-Hans-SG"/>
     <property name="locales.unittest"               value="aa-DJ,af-NA,agq-CM,ak-GH,am-ET,ar-AE,ar-BH,ar-DJ,ar-DZ,ar-EG,ar-IQ,ar-JO,ar-KW,ar-LB,ar-LY,ar-MA,ar-MR,ar-OM,ar-QA,ar-SA,ar-SD,ar-SY,ar-TN,ar-YE,asa-TZ,as-IN,az-Latn-AZ,bas-CM,be-BY,bem-ZM,bg-BG,bh-IN,bm-ML,bn-IN,br-FR,bs-BS,bs-Cyrl-BA,bs-Latn-BA,bs-ME,ca-FR,cop-EG,cs-CZ,da-DK,de-AT,de-CH,de-DE,el-GR,en-AM,en-AU,en-CA,en-ET,en-GB,en-GH,en-GM,en-HK,en-IE,en-IN,en-IS,en-KE,en-LK,en-LR,en-MW,en-MY,en-NG,en-NZ,en-PA,en-PH,en-PK,en-PR,en-RW,en-SD,en-SG,en-SL,en-TZ,en-UG,en-US,en-ZA,en-ZM,es-AR,es-BO,es-CL,es-CO,es-CR,es-DO,es-EC,es-ES,es-GQ,es-GT,es-HN,es-MX,es-NI,es-PA,es-PE,es-PH,es-PR,es-PY,es-SV,es-US,es-UY,es-VE,et-EE,fa-AF,fa-IR,ff-SN,fi-FI,fj-FJ,fo-FO,fr-AD,fr-BE,fr-BF,fr-BJ,fr-CA,fr-CD,fr-CF,fr-CG,fr-CH,fr-CI,fr-CM,fr-DJ,fr-DZ,fr-FR,fr-GA,fr-GN,fr-LB,fr-LU,fr-MG,fr-ML,fr-RW,fr-SN,fr-TG,fr-YT,ga-IE,gl-ES,gu-IN,ha-Latn-NG,he-IL,hi-IN,hr-HR,hr-ME,hu-HU,hy-AZ,hy-AM,id-ID,id-MY,it-CH,it-IT,is-IS,it-SM,ja-JP,ka-IR,kk-Cyrl-KZ,km-KH,kn-IN,ko-KR,ks-Arab-IN,ku-Arab-IQ,ku-Arab-IR,ku-IR,lg-UG,ln-CF,lt-LT,lv-LV,fr-Latn-MA,mi-CK,mk-MK,ml-IN,mm-MM,mn-CN,mn-Cyrl-MN,mr-IN,ms-BN,ms-MY,ne-NP,nl-BE,nl-NL,nb-NO,nn-NO,no-NO,no-SJ,om-ET,or-IN,os-RU,pa-Arab,pa-IN,pa-Arab-PK,pl-PL,ps-AF,pt-AO,pt-BR,pt-CV,pt-GW,pt-GQ,pt-MO,pt-MZ,pt-PT,pt-ST,pt-TL,ro-RO,ro-RS,ru-GE,ru-KG,ru-KZ,ru-RU,ru-TM,shi-Tfng-MA,si-LK,sk-SK,sl-SI,sl-SL,so-ET,so-SO,sq-AL,sq-ME,sq-MK,sr-Cyrl-BA,sr-Latn-BA,sr-Latn-RS,sr-Latn-ME,sr-RS,sr-Latn-RS,ss-ZA,st-LS,sv-FI,sv-SE,sw-KE,sw-UG,ta-IN,ta-LK,ta-MY,ta-SG,te-IN,th-TH,tr-TR,tr-CY,uk-UA,ur-IN,ur-PK,uz-AF,uz-Arab-AF,uz-Cyrl-UZ,uz-Latn-UZ,uz-UZ,vai-Latn-LR,vi-VN,zh-Hans-CN,zh-Hant-HK,zh-Hans-HK,zh-Hans-MY,zh-Hant-TW,zh-Hans-MO,zh-Hant-MO,zh-Hans-SG,zh-Hant-US,zu-ZA,zxx-Cyrl-XX,zxx-Hans-XX,zxx-Hebr-XX,zxx-XX"/>
 	<property name="locales.demo"                   value="aa-DJ,af-NA,af-ZA,agq-CM,ak-GH,am-ET,ar-AE,ar-BH,ar-DJ,ar-DZ,ar-EG,ar-IQ,ar-JO,ar-KW,ar-LB,ar-LY,ar-MA,ar-MR,ar-OM,ar-QA,ar-SA,ar-SD,ar-SY,ar-TN,ar-YE,as-IN,asa-TZ,az-AZ,bas-CM,be-BY,bem-ZM,bg-BG,bh-IN,bm-ML,bn-IN,br-FR,bs-Cyrl-BA,bs-Latn-BA,bs-ME,ca-FR,cop-EG,cs-CZ,da-DK,de-AT,de-CH,de-DE,el-GR,en-AU,en-CA,en-ET,en-GB,en-GH,en-GM,en-HK,en-IE,en-IN,en-KE,en-LK,en-LR,en-MW,en-MY,en-NG,en-NZ,en-PH,en-PK,en-PR,en-RW,en-SG,en-SL,en-TZ,en-UG,en-US,en-ZA,en-ZM,es-AR,es-CO,es-CR,es-DO,es-EC,es-ES,es-GQ,es-GT,es-HN,es-MX,es-PH,es-SV,es-UY,es-VE,et-EE,fa-AF,fa-IR,ff-SN,fi-FI,fj-FJ,fr-AD,fr-BE,fr-BF,fr-BJ,fr-CA,fr-CD,fr-CF,fr-CG,fr-CH,fr-CI,fr-CM,fr-DJ,fr-DZ,fr-FR,fr-GA,fr-GN,fr-LB,fr-LU,fr-MG,fr-ML,fr-RW,fr-SN,fr-TG,fr-YT,ga-IE,gl-ES,gu-IN,ha-Latn-NG,he-IL,hi-IN,hr-HR,hr-ME,hu-HU,hy-AM,hy-AZ,id-ID,id-MY,it-CH,it-IT,is-IS,it-SM,ja-JP,ka-IR,kk-Cyrl-KZ,km-KH,kn-IN,ko-KR,ks-Arab-IN,ku-IR,lg-UG,ln-CF,lt-LT,lv-LV,mi-CK,mk-MK,ml-IN,mn-CN,mr-IN,ms-BN,ms-MY,nb-NO,ne-IN,nl-BE,nl-CW,nl-GF,nl-NL,nl-SR,no-BV,no-NO,no-SJ,om-ET,or-IN,os-RU,pa-Arab-PK,pl-PL,pt-AO,pt-BR,pt-CV,pt-GW,pt-MO,pt-MZ,pt-PT,pt-ST,pt-TL,ro-RO,ro-RS,ru-KG,ru-KZ,ru-RU,ru-TM,si-LK,sk-SK,sl-SI,so-ET,so-SO,sq-AL,sq-ME,sq-MK,sr-Cyrl-BA,sr-Latn-BA,sr-Latn-ME,sr-Latn-RS,sr-RS,ss-ZA,st-LS,sv-FI,sv-SE,sw-UG,ta-LK,ta-MY,ta-SG,te-IN,th-TH,tr-TR,tr-CY,uk-UA,ur-IN,ur-PK,uz-AF,uz-Arab-AF,uz-Cyrl-UZ,uz-Latn-UZ,vai-Latn-LR,vi-VN,zh-Hans-CN,zh-Hans-MO,zh-Hans-MY,zh-Hans-SG,zh-Hant-HK,zh-Hant-TW,zh-Hant-US,zu-ZA,zxx-Cyrl-XX,zxx-Hans-XX,zxx-Hebr-XX,zxx-XX"/>
+    <property name="keep.these.comments"            value="/(\!data|\!loadLocaleData|\!defineLocaleData|\!macro|eslint-)/"/>
 
 	<!-- =================================================================== -->
 	<!-- Class paths                                                         -->
@@ -115,7 +114,6 @@ limitations under the License.
 		<delete dir="${build.locale}"/>
 	</target>
 	<target name="prepare" depends="update.package.json" description="Prepare all directories that are needed before the project can be built">
-		<mkdir dir="${build.output.reports}"/>
 		<mkdir dir="${build.output.js}"/>
 		<mkdir dir="${build.output.dyncode}"/>
 		<mkdir dir="${build.output.test}"/>
@@ -300,7 +298,7 @@ limitations under the License.
             <env key="PATH" path="${env.PATH}:${nm.bin}"/>
 			<arg value="${build.output.js}/ilib.js"/>
             <arg value="--comments"/>
-            <arg value="/\!(data|loadLocaleData|defineLocaleData|macro)/"/>
+            <arg value="${keep.these.comments}"/>
 			<arg value="-o"/>
 			<arg value="${build.output.dyncode}/ilib.js"/>
 			<arg value="--no-mangle-functions"/>
@@ -311,7 +309,7 @@ limitations under the License.
             <env key="PATH" path="${env.PATH}:${nm.bin}"/>
 			<arg value="${build.output.js}/ilib.js"/>
             <arg value="--comments"/>
-            <arg value="/\!(data|loadLocaleData|defineLocaleData|macro)/"/>
+            <arg value="${keep.these.comments}"/>
             <arg value="-o"/>
 			<arg value="${build.output.dyncode}/ilib.js"/>
 			<arg value="--no-mangle-functions"/>
@@ -335,7 +333,7 @@ limitations under the License.
 		<apply osfamily="unix" executable="uglifyjs" dest="${build.output.dyncode}" parallel="false">
 			<srcfile/>
 			<arg value="--comments"/>
-			<arg value="/\!(data|loadLocaleData|defineLocaleData|macro)/"/>
+			<arg value="${keep.these.comments}"/>
             <arg value="-o"/>
 			<targetfile/>
 			<arg value="--no-mangle-functions"/>
@@ -363,7 +361,7 @@ limitations under the License.
 		<apply osfamily="windows" executable="uglifyjs.bat" dest="${build.output.dyncode}" parallel="false">
 			<srcfile/>
             <arg value="--comments"/>
-            <arg value="/\!(data|loadLocaleData|defineLocaleData|macro)/"/>
+            <arg value="${keep.these.comments}"/>
             <arg value="-o"/>
 			<targetfile/>
 			<arg value="--no-mangle-functions"/>
@@ -389,50 +387,6 @@ limitations under the License.
 			<fileset dir="${build.output.dyncode}" includes="ilib-node*.js,ilib-stubs*,ilib-web.js,ilib-qt.js"/>
 			<mapper type="glob" from="*.js" to="*.js"/>
 		</apply>
-	</target>
-
-	<target name="testilib.lg" description="test whether or not the ilib-lg file needs to be rebuilt">
-		<uptodate property="ilib-lg.not.needed" targetfile="${build.output.js}/ilib-lg-compiled.js">
-			<srcfiles dir="${build.lib}" includes="**/*.js" excludes="ilib.js,ilib-*.js,*-compiled.js,**/test/**,runner.js,*Loader.js"/>
-			<srcfiles dir="${build.lib}" includes="metafiles/ilib-standard-webpack.js"/>
-			<srcfiles dir="${build.locale}" includes="**/*.json"/>
-		</uptodate>
-	</target>
-	<target name="assemble.lg" depends="prepare,gen.manifest.locale,testilib.lg" unless="ilib-lg.not.needed" description="assembles the set of the js files and locales that LG needs into a single file">
-		<runassemble
-			tgtfilename="${build.output.js}/ilib-lg.js"
-			srcfilename="${build.lib}/ilib-standard-inc.js"
-			locales="en-US,en-GB,de-DE,es-ES,it-IT,fr-FR,fr-CA,pt-BR,ko-KR,zh-Hans-CN,ja-JP,ru-RU"/>
-		<jscomp compilationlevel="simple"
-			warning="verbose"
-			debug="true"
-			output="${build.output.js}/ilib-lg-compiled.js"
-			description="Use the google closure compiler to compress code"
-			encoding="utf-8">
-			<externs dir="${build.lib}">
-				<file name="externs.js"/>
-			</externs>
-			<sources dir="${build.output.js}">
-				<file name="ilib-lg.js"/>
-			</sources>
-		</jscomp>
-		<runassemble
-			tgtfilename="ilib-lg-dyn.js"
-			srcfilename="ilib-lg-inc.js"
-			locales=" "/>
-		<jscomp compilationlevel="simple"
-			warning="verbose"
-			debug="true"
-			output="${build.output.js}/ilib-lg-dyn-compiled.js"
-			description="Use the google closure compiler to compress code"
-			encoding="utf-8">
-			<externs dir="${build.lib}">
-				<file name="externs.js"/>
-			</externs>
-			<sources dir="${build.lib}">
-				<file name="ilib-lg-dyn.js"/>
-			</sources>
-		</jscomp>
 	</target>
 
 	<target name="export"
@@ -679,109 +633,109 @@ limitations under the License.
 		</sequential>
 	</macrodef>
 
-	<target depends="update.package.json" name="test.address">
+	<target depends="prepare,gen.manifest.locale" name="test.address">
 		<run-nodeunit-sync suite="address" failquit="true"/>
 		<run-nodeunit-async suite="address" failquit="true"/>
 	</target>
-	<target depends="update.package.json" name="test.calendar">
+	<target depends="prepare,gen.manifest.locale" name="test.calendar">
 		<run-nodeunit-sync suite="calendar" failquit="true"/>
 		<run-nodeunit-async suite="calendar" failquit="true"/>
 	</target>
-	<target depends="update.package.json" name="test.collate">
+	<target depends="prepare,gen.manifest.locale" name="test.collate">
 		<run-nodeunit-sync suite="collate" failquit="true"/>
 		<run-nodeunit-async suite="collate" failquit="true"/>
 	</target>
-	<target depends="update.package.json" name="test.ctype">
+	<target depends="prepare,gen.manifest.locale" name="test.ctype">
 		<run-nodeunit-sync suite="ctype" failquit="true"/>
 		<run-nodeunit-async suite="ctype" failquit="true"/>
 	</target>
-	<target depends="update.package.json" name="test.date">
+	<target depends="prepare,gen.manifest.locale" name="test.date">
 		<run-nodeunit-sync suite="date" failquit="true"/>
 		<run-nodeunit-async suite="date" failquit="true"/>
 	</target>
-	<target depends="update.package.json" name="test.daterange">
+	<target depends="prepare,gen.manifest.locale" name="test.daterange">
 		<run-nodeunit-sync suite="daterange" failquit="true"/>
 		<run-nodeunit-async suite="daterange" failquit="true"/>
 	</target>
-	<target depends="update.package.json" name="test.durfmt">
+	<target depends="prepare,gen.manifest.locale" name="test.durfmt">
 		<run-nodeunit-sync suite="durfmt" failquit="true"/>
 		<run-nodeunit-async suite="durfmt" failquit="true"/>
 	</target>
-	<target depends="update.package.json" name="test.maps">
+	<target depends="prepare,gen.manifest.locale" name="test.maps">
 		<run-nodeunit-sync suite="maps" failquit="true"/>
 		<run-nodeunit-async suite="maps" failquit="true"/>
 	</target>
-	<target depends="update.package.json" name="test.name">
+	<target depends="prepare,gen.manifest.locale" name="test.name">
 		<run-nodeunit-sync suite="name" failquit="true"/>
 		<run-nodeunit-async suite="name" failquit="true"/>
 	</target>
-	<target depends="update.package.json" name="test.number">
+	<target depends="prepare,gen.manifest.locale" name="test.number">
 		<run-nodeunit-sync suite="number" failquit="true"/>
 		<run-nodeunit-async suite="number" failquit="true"/>
 	</target>
-	<target depends="update.package.json" name="test.phone">
+	<target depends="prepare,gen.manifest.locale" name="test.phone">
 		<run-nodeunit-sync suite="phone" failquit="true"/>
 		<run-nodeunit-async suite="phone" failquit="true"/>
 	</target>
-	<target depends="update.package.json" name="test.root">
+	<target depends="prepare,gen.manifest.locale" name="test.root">
 		<run-nodeunit-sync suite="root" failquit="true"/>
 		<run-nodeunit-async suite="root" failquit="true"/>
 	</target>
-	<target depends="update.package.json" name="test.strings-ext">
+	<target depends="prepare,gen.manifest.locale" name="test.strings-ext">
 		<run-nodeunit-sync suite="strings-ext" failquit="true"/>
 		<run-nodeunit-async suite="strings-ext" failquit="true"/>
 	</target>
-	<target depends="update.package.json" name="test.units">
+	<target depends="prepare,gen.manifest.locale" name="test.units">
 		<run-nodeunit-sync suite="units" failquit="true"/>
 		<run-nodeunit-async suite="units" failquit="true"/>
 	</target>
-	<target depends="update.package.json" name="test.util">
+	<target depends="prepare,gen.manifest.locale" name="test.util">
 		<run-nodeunit-sync suite="util" failquit="true"/>
 	</target>
 
-	<target depends="update.package.json" name="debug.address">
+	<target depends="prepare,gen.manifest.locale" name="debug.address">
 		<debug-nodeunit suite="address" failquit="true"/>
 	</target>
-	<target depends="update.package.json" name="debug.calendar">
+	<target depends="prepare,gen.manifest.locale" name="debug.calendar">
 		<debug-nodeunit suite="calendar" failquit="true"/>
 	</target>
-	<target depends="update.package.json" name="debug.collate">
+	<target depends="prepare,gen.manifest.locale" name="debug.collate">
 		<debug-nodeunit suite="collate" failquit="true"/>
 	</target>
-	<target depends="update.package.json" name="debug.ctype">
+	<target depends="prepare,gen.manifest.locale" name="debug.ctype">
 		<debug-nodeunit suite="ctype" failquit="true"/>
 	</target>
-	<target depends="update.package.json" name="debug.date">
+	<target depends="prepare,gen.manifest.locale" name="debug.date">
 		<debug-nodeunit suite="date" failquit="true"/>
 	</target>
-	<target depends="update.package.json" name="debug.daterange">
+	<target depends="prepare,gen.manifest.locale" name="debug.daterange">
 		<debug-nodeunit suite="daterange" failquit="true"/>
 	</target>
-	<target depends="update.package.json" name="debug.durfmt">
+	<target depends="prepare,gen.manifest.locale" name="debug.durfmt">
 		<debug-nodeunit suite="durfmt" failquit="true"/>
 	</target>
-	<target depends="update.package.json" name="debug.maps">
+	<target depends="prepare,gen.manifest.locale" name="debug.maps">
 		<debug-nodeunit suite="maps" failquit="true"/>
 	</target>
-	<target depends="update.package.json" name="debug.name">
+	<target depends="prepare,gen.manifest.locale" name="debug.name">
 		<debug-nodeunit suite="name" failquit="true"/>
 	</target>
-	<target depends="update.package.json" name="debug.number">
+	<target depends="prepare,gen.manifest.locale" name="debug.number">
 		<debug-nodeunit suite="number" failquit="true"/>
 	</target>
-	<target depends="update.package.json" name="debug.phone">
+	<target depends="prepare,gen.manifest.locale" name="debug.phone">
 		<debug-nodeunit suite="phone" failquit="true"/>
 	</target>
-	<target depends="update.package.json" name="debug.root">
+	<target depends="prepare,gen.manifest.locale" name="debug.root">
 		<debug-nodeunit suite="root" failquit="true"/>
 	</target>
-	<target depends="update.package.json" name="debug.strings-ext">
+	<target depends="prepare,gen.manifest.locale" name="debug.strings-ext">
 		<debug-nodeunit suite="strings-ext" failquit="true"/>
 	</target>
-	<target depends="update.package.json" name="debug.units">
+	<target depends="prepare,gen.manifest.locale" name="debug.units">
 		<debug-nodeunit suite="units" failquit="true"/>
 	</target>
-	<target depends="update.package.json" name="debug.util">
+	<target depends="prepare,gen.manifest.locale" name="debug.util">
 		<debug-nodeunit suite="util" failquit="true"/>
 	</target>
 
@@ -862,9 +816,7 @@ limitations under the License.
 	<target name="test.core" depends="test.compiled,test.uncompiled"
 			description="run the tests">
 	</target>
-	<target name="core.junit.report" description="Generate a report on the junit tests">
-		<mkdir dir="${build.output.reports}/junit"/>
-	</target>
+	<target name="core.junit.report" description="Generate a report on the junit tests" />
 	<!-- target name="test" depends="test.core"/ -->
 	<target name="test.only" depends="test.all" description="Run all tests"/>
 	<target name="reports.only" depends="core.junit.report" description="Generate reports on previously run tests"/>
