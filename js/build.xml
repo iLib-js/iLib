@@ -406,16 +406,22 @@ limitations under the License.
 		<copy todir="${build.export}/js/assembled">
 			<fileset dir="${build.output.js}">
 				<include name="core-assembled-uncompiled-web/*.js"/>
+				<include name="core-assembled-uncompiled-web/*.map"/>
 				<include name="core-assembled-compiled-web/*.js"/>
 				<include name="standard-assembled-uncompiled-web/*.js"/>
+				<include name="standard-assembled-uncompiled-web/*.map"/>
 				<include name="standard-assembled-compiled-web/*.js"/>
 				<include name="full-assembled-uncompiled-web/*.js"/>
+				<include name="full-assembled-uncompiled-web/*.map"/>
 				<include name="full-assembled-compiled-web/*.js"/>
 				<include name="core-dynamicdata-uncompiled-web/*.js"/>
+				<include name="core-dynamicdata-uncompiled-web/*.map"/>
 				<include name="core-dynamicdata-compiled-web/*.js"/>
 				<include name="standard-dynamicdata-uncompiled-web/*.js"/>
+				<include name="standard-dynamicdata-uncompiled-web/*.map"/>
 				<include name="standard-dynamicdata-compiled-web/*.js"/>
 				<include name="full-dynamicdata-uncompiled-web/*.js"/>
+				<include name="full-dynamicdata-uncompiled-web/*.map"/>
 				<include name="full-dynamicdata-compiled-web/*.js"/>
 			</fileset>
 		</copy>
