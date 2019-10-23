@@ -23,10 +23,11 @@ Hello, and welcome to the iLib project!
     * [Updating the time zone information](tutorial/timezone.md)
     * [Running unit test on QT/QML](QtTest.md)
 * API Reference: 
-    * [10.0](http://www.translationcircle.com/ilib/doc/10.0/jsdoc/)
-    * [11.0](http://www.translationcircle.com/ilib/doc/11.0/jsdoc/)
-    * [12.0](http://www.translationcircle.com/ilib/doc/jsdoc/) (latest stable)
-    * [latest](http://www.translationcircle.com/ilib/doc/jsdoc/) (latest development release)
+    * [10.0](api/10.0/jsdoc/)
+    * [11.0](api/11.0/jsdoc/)
+    * [12.0](api/12.0/jsdoc/)
+    * [13.0](api/13.0/jsdoc/)
+    * [14.0](api/jsdoc) (latest stable)
 * Javadocs:
     * [10.0](http://www.translationcircle.com/ilib/doc/10.0/javadoc/)
     * [11.0](http://www.translationcircle.com/ilib/doc/11.0/javadoc/)
